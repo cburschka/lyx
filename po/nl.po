@@ -16,11 +16,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lyx-1.6.0rc2\n"
+"Project-Id-Version: lyx-1.1.5pre1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-28 15:22+0100\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Vincent van Ravesteijn <vfr@lyx.org>\n"
+"POT-Creation-Date: 2010-02-28 16:00+0100\n"
+"PO-Revision-Date: 2009-10-18 17:50+0100\n"
+"Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,7 +32,7 @@ msgstr "Versie"
 
 #: src/frontends/qt4/ui/AboutUi.ui:50
 msgid "Version goes here"
-msgstr "Versienummer staat hier"
+msgstr "Versie komt hier"
 
 #: src/frontends/qt4/ui/AboutUi.ui:64
 msgid "Credits"
@@ -61,26 +61,31 @@ msgstr "Copyright"
 msgid "&Close"
 msgstr "Sl&uiten"
 
+# Het label was te lang
 #: src/frontends/qt4/ui/BibitemUi.ui:31 src/frontends/qt4/ui/BibitemUi.ui:64
+#, fuzzy
 msgid "The bibliography key"
-msgstr "Het referentielabel"
+msgstr "Literatuurverw.-sleutels:|#t"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:44 src/frontends/qt4/ui/BibitemUi.ui:51
 msgid "The label as it appears in the document"
-msgstr "Het label zoals het wordt weergegeven in het document"
+msgstr "De label zoals het wordt weergegeven in het document."
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:39
 #: src/frontends/qt4/ui/RefUi.ui:335
+#, fuzzy
 msgid "&Label:"
-msgstr "&Label:"
+msgstr "&Label"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:67
+#, fuzzy
 msgid "&Key:"
-msgstr "&Key:"
+msgstr "&Sleutel"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:19
+#, fuzzy
 msgid "Citation Style"
-msgstr "Referentiestijl:"
+msgstr "Aanhalingsstijl:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:28
 #, fuzzy
@@ -97,8 +102,6 @@ msgid ""
 "Use the natbib styles for natural sciences and arts. Set additional "
 "parameters in document class options."
 msgstr ""
-"Gebruik de natbib stijlen voor natuurwetenschappen en kunsten. Overige "
-"instellingen kunnen bij de opties voor de document klasse worden aangegeven."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:41
 #, fuzzy
@@ -106,30 +109,32 @@ msgid "&Natbib"
 msgstr "&Natbib gebruiken"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:59
+#, fuzzy
 msgid "Natbib &style:"
-msgstr "Natbib &stijl:"
+msgstr "&Paginastijl:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:97
 msgid "Use the jurabib styles for law and humanities"
-msgstr "Gebruik de jurabib stijlen voor rechten en geesteswetenschappen"
+msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:100
 msgid "&Jurabib"
-msgstr "&Jurabib"
+msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:110
 msgid "Select this if you want to split your bibliography into sections"
-msgstr "Selecteer voor een bibliografie die onderverdeeld is in secties"
+msgstr ""
 
+# Literatuurlijst?
 #: src/frontends/qt4/ui/BiblioUi.ui:113
+#, fuzzy
 msgid "S&ectioned bibliography"
-msgstr "R&eferentielijst in secties"
+msgstr "Bibliografie"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:120
 msgid ""
 "Here you can define an alternative program to or specific options of BibTeX."
 msgstr ""
-"Specificeer hier extra opties voor BibTeX of een alternatieve applicatie"
 
 # Literatuurlijst?
 #: src/frontends/qt4/ui/BiblioUi.ui:123 src/frontends/qt4/ui/PrefLatexUi.ui:85
@@ -156,25 +161,24 @@ msgid "&Options:"
 msgstr "Op&ties:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:178
-#, fuzzy
 msgid ""
 "Define options such as --min-crossrefs (see the documentation of BibTeX)"
 msgstr ""
-"Specificeer extra opties voor BibTeX, bijvoorbeeld --min-crossrefs (zie de "
-"documentatie van BibTeX voor meer opties)"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:21
+#, fuzzy
 msgid "LyX: Add BibTeX Database"
-msgstr "LyX: Voeg BibTeX bestand toe"
+msgstr "Database:"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:36 src/frontends/qt4/ui/BibtexUi.ui:47
 msgid "Scan for new databases and styles"
-msgstr "Ververs de lijst van databases en stijlen"
+msgstr ""
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:39 src/frontends/qt4/ui/BibtexUi.ui:50
 #: src/frontends/qt4/ui/TexinfoUi.ui:94
+#, fuzzy
 msgid "&Rescan"
-msgstr "&Opnieuw zoeken"
+msgstr "r Herlezen|#R#r"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:46 src/frontends/qt4/ui/BibtexUi.ui:97
 #: src/frontends/qt4/ui/CompareUi.ui:68 src/frontends/qt4/ui/ExternalUi.ui:70
@@ -185,6 +189,7 @@ msgid "&Browse..."
 msgstr "&Bladeren..."
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83
+#, fuzzy
 msgid "Enter BibTeX database name"
 msgstr "Te gebruiken BibTeX-database"
 
@@ -218,12 +223,14 @@ msgid "Choose a style file"
 msgstr "Kies een stijlbestand"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:131 src/frontends/qt4/ui/BibtexUi.ui:144
+#, fuzzy
 msgid "This bibliography section contains..."
-msgstr "Deze sectie van de referentielijst bevat..."
+msgstr "Literatuurverwijzing"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:134
+#, fuzzy
 msgid "&Content:"
-msgstr "&Inhoud:"
+msgstr "Inhoud"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:207
 #, fuzzy
@@ -232,21 +239,24 @@ msgstr "Verwijzing invoegen"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:153 src/frontends/qt4/GuiBibtex.cpp:328
 #: src/insets/InsetBibtex.cpp:205
+#, fuzzy
 msgid "all uncited references"
-msgstr "alle ongebruikte referenties"
+msgstr "Verwijzing invoegen"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:203
 #, fuzzy
 msgid "all references"
-msgstr "alle referenties"
+msgstr "Verwijzing invoegen"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:166
+#, fuzzy
 msgid "Add bibliography to the table of contents"
-msgstr "Referentielijst aan de inhoudsopgave toevoegen"
+msgstr "Inhoudsopgave bekijken"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:169
+#, fuzzy
 msgid "Add bibliography to &TOC"
-msgstr "Referentielijst aan de &inhoudsopgave toevoegen"
+msgstr "Literatuurverwijzing"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:200
 #: src/frontends/qt4/ui/CharacterUi.ui:357
@@ -273,23 +283,25 @@ msgid "&OK"
 msgstr "&OK"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:225
+#, fuzzy
 msgid "Move the selected database downwards in the list"
-msgstr "Bestand naar beneden in de lijst"
+msgstr "De geselecteerde database verwijderen"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:228 src/frontends/qt4/ui/ModulesUi.ui:117
 #, fuzzy
 msgid "Do&wn"
-msgstr "Naar beneden"
+msgstr "Klaar"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:235
+#, fuzzy
 msgid "Move the selected database upwards in the list"
-msgstr "Bestand naar boven in de lijst"
+msgstr "De geselecteerde database verwijderen"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:238 src/frontends/qt4/ui/CitationUi.ui:127
 #: src/frontends/qt4/ui/ModulesUi.ui:110
 #, fuzzy
 msgid "&Up"
-msgstr "Om&hoog"
+msgstr "Bij&werken"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:253
 msgid "BibTeX database to use"
@@ -306,24 +318,24 @@ msgstr "Een BibTeX-database toevoegen"
 #: src/frontends/qt4/ui/BibtexUi.ui:272
 #, fuzzy
 msgid "&Add..."
-msgstr "&Toevoegen..."
+msgstr "&Toevoegen"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:279
 msgid "Remove the selected database"
-msgstr "Database verwijderen"
+msgstr "De geselecteerde database verwijderen"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:282 src/frontends/qt4/ui/CitationUi.ui:95
 msgid "&Delete"
-msgstr "Verwij&deren"
+msgstr "Verwij&deren van|#d"
 
 #: src/frontends/qt4/ui/BoxUi.ui:28
 msgid "Check this if the box should break across pages"
 msgstr ""
-"Selecteer om toe te staan dat de box zich over meerdere pagina's uitstrekt"
 
 #: src/frontends/qt4/ui/BoxUi.ui:31
+#, fuzzy
 msgid "Allow &page breaks"
-msgstr "Over meerder pagina's uitstrekken toegestaan"
+msgstr "paginascheiding"
 
 #: src/frontends/qt4/ui/BoxUi.ui:38 src/frontends/qt4/ui/MathMatrixUi.ui:151
 #: src/frontends/qt4/ui/ParagraphUi.ui:153
@@ -331,8 +343,9 @@ msgid "Alignment"
 msgstr "Uitlijning"
 
 #: src/frontends/qt4/ui/BoxUi.ui:59 src/frontends/qt4/ui/BoxUi.ui:174
+#, fuzzy
 msgid "Horizontal alignment of the content inside the box"
-msgstr "Horizontale uitlijning van de inhoud in de box"
+msgstr "Hor. uitlijnen|#H"
 
 #: src/frontends/qt4/ui/BoxUi.ui:63 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:146
@@ -356,12 +369,13 @@ msgid "Right"
 msgstr "Rechts"
 
 #: src/frontends/qt4/ui/BoxUi.ui:78 src/frontends/qt4/ui/BoxUi.ui:111
+#, fuzzy
 msgid "Stretch"
-msgstr "Verdeeld"
+msgstr "Zoeken"
 
 #: src/frontends/qt4/ui/BoxUi.ui:92 src/frontends/qt4/ui/BoxUi.ui:164
 msgid "Vertical alignment of the content inside the box"
-msgstr "Verticale uitlijning van de inhoud van de box"
+msgstr ""
 
 #: src/frontends/qt4/ui/BoxUi.ui:96 src/frontends/qt4/ui/BoxUi.ui:123
 #: src/frontends/qt4/ui/MathMatrixUi.ui:167
@@ -372,8 +386,9 @@ msgstr "Boven"
 #: src/frontends/qt4/ui/BoxUi.ui:101 src/frontends/qt4/ui/BoxUi.ui:128
 #: src/frontends/qt4/ui/MathMatrixUi.ui:172
 #: src/frontends/qt4/ui/TabularUi.ui:241 src/frontends/qt4/ui/TabularUi.ui:352
+#, fuzzy
 msgid "Middle"
-msgstr "Midden"
+msgstr "d Midden|#d"
 
 #: src/frontends/qt4/ui/BoxUi.ui:106 src/frontends/qt4/ui/BoxUi.ui:133
 #: src/frontends/qt4/ui/MathMatrixUi.ui:177
@@ -383,24 +398,27 @@ msgstr "Onder"
 
 #: src/frontends/qt4/ui/BoxUi.ui:119 src/frontends/qt4/ui/BoxUi.ui:141
 msgid "Vertical alignment of the box (with regard to baseline)"
-msgstr "Verticale uitlijning van de box (ten opzichte van de grondlijn)"
+msgstr ""
 
 #: src/frontends/qt4/ui/BoxUi.ui:144
+#, fuzzy
 msgid "&Box:"
-msgstr "&Box:"
+msgstr "B&innen:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:154
+#, fuzzy
 msgid "Co&ntent:"
-msgstr "I&nhoud:"
+msgstr "Inhoud"
 
 #: src/frontends/qt4/ui/BoxUi.ui:167
+#, fuzzy
 msgid "Vertical"
-msgstr "&Verticaal"
+msgstr "&Verticaal:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:177
 #, fuzzy
 msgid "Horizontal"
-msgstr "Horizontaal"
+msgstr "&Horizontaal:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:197 src/frontends/qt4/ui/ExternalUi.ui:457
 #: src/frontends/qt4/ui/PageLayoutUi.ui:70
@@ -408,12 +426,14 @@ msgid "&Height:"
 msgstr "&Hoogte:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:213
+#, fuzzy
 msgid "Inner Bo&x:"
-msgstr "B&innengestel:"
+msgstr "B&innen:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:229
+#, fuzzy
 msgid "&Decoration:"
-msgstr "&Dekoratie:"
+msgstr "Dekoratie"
 
 #: src/frontends/qt4/ui/BoxUi.ui:242 src/frontends/qt4/ui/ExternalUi.ui:431
 #: src/frontends/qt4/ui/PageLayoutUi.ui:99
@@ -422,16 +442,18 @@ msgid "&Width:"
 msgstr "&Breedte:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:255
+#, fuzzy
 msgid "Height value"
-msgstr "Hoogte"
+msgstr "Breedte"
 
 #: src/frontends/qt4/ui/BoxUi.ui:262 src/frontends/qt4/ui/WrapUi.ui:103
+#, fuzzy
 msgid "Width value"
 msgstr "Breedte"
 
 #: src/frontends/qt4/ui/BoxUi.ui:269
 msgid "Inner box -- needed for fixed width & line breaks"
-msgstr "Binnengestel -- nodig voor vaste breedte & regeleinden"
+msgstr ""
 
 #: src/frontends/qt4/ui/BoxUi.ui:273 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98
@@ -449,26 +471,29 @@ msgstr "Geen"
 #: src/frontends/qt4/ui/BoxUi.ui:278 src/frontends/qt4/GuiBox.cpp:277
 #: src/frontends/qt4/GuiBox.cpp:349 src/frontends/qt4/GuiBox.cpp:358
 #: src/insets/InsetBox.cpp:138
+#, fuzzy
 msgid "Parbox"
-msgstr "Parbox:"
+msgstr "Hoofddocument:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:283 src/frontends/qt4/GuiBox.cpp:350
 #: src/frontends/qt4/GuiBox.cpp:359 src/insets/InsetBox.cpp:140
 #, fuzzy
 msgid "Minipage"
-msgstr "Minipagina"
+msgstr "Minipagina|#m"
 
 #: src/frontends/qt4/ui/BoxUi.ui:291
 msgid "Supported box types"
-msgstr "Box typen die ondersteund worden"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchUi.ui:19
+#, fuzzy
 msgid "&Available branches:"
-msgstr "&Aanwezige branches:"
+msgstr "Verwijzing invoegen"
 
 #: src/frontends/qt4/ui/BranchUi.ui:29
+#, fuzzy
 msgid "Select your branch"
-msgstr "Branch kiezen"
+msgstr "Selecteren vorig teken"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25 src/frontends/qt4/ui/IndicesUi.ui:114
 #, fuzzy
@@ -480,17 +505,15 @@ msgid ""
 "Append the name of this branch to the output filename, given the branch is "
 "active."
 msgstr ""
-"Voeg de naam van de branch toe aan de geëxporteerde bestanden, mits de "
-"branch actief is"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:38
+#, fuzzy
 msgid "Filename &Suffix"
 msgstr "Bestandsnaam"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
-#, fuzzy
 msgid "Show undefined branches used in this document."
-msgstr "Document"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
 #, fuzzy
@@ -500,23 +523,24 @@ msgstr "Voetnoot Inzet geopend"
 #: src/frontends/qt4/ui/BranchesUi.ui:84
 #, fuzzy
 msgid "A&vailable Branches:"
-msgstr "&Aanwezige Branches:"
+msgstr "Verwijzing invoegen"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:94
+#, fuzzy
 msgid "Toggle the selected branch"
 msgstr "De geselecteerde database verwijderen"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:97
 msgid "(&De)activate"
-msgstr "(&De)activeer"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:107
 msgid "Add a new branch to the list"
-msgstr "Voeg een nieuwe index toe"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:120
 msgid "Define or change background color"
-msgstr "Specificeer een achtergrondkleur"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
 #: src/frontends/qt4/ui/IndicesUi.ui:185
@@ -527,17 +551,19 @@ msgstr "andere..."
 #: src/frontends/qt4/ui/BranchesUi.ui:130
 #, fuzzy
 msgid "Remove the selected branch"
-msgstr "De geselecteerde branch verwijderen"
+msgstr "De geselecteerde database verwijderen"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3469
 #: src/Buffer.cpp:3480
+#, fuzzy
 msgid "&Remove"
-msgstr "Ve&rwijderen"
+msgstr "r Omgekeerde vlg.|#R"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:140
+#, fuzzy
 msgid "Change the name of the selected branch"
-msgstr "Branch aan-/uitzetten"
+msgstr "De geselecteerde database verwijderen"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:143
 #, fuzzy
@@ -556,11 +582,11 @@ msgstr "Verwij&deren van|#d"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:35
 msgid "Add all unknown branches to the list."
-msgstr "Voeg alle nog onbekende branches toe"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:38
 msgid "Add A&ll"
-msgstr "Voeg a&lle toe"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:58
 #: src/frontends/qt4/ui/CitationUi.ui:493
@@ -582,9 +608,8 @@ msgstr "&Annuleren"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
-#, fuzzy
 msgid "Undefined branches used in this document."
-msgstr "Document"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:68
 #, fuzzy
@@ -592,8 +617,9 @@ msgid "&Undefined Branches:"
 msgstr "Verwijzing invoegen"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:34
+#, fuzzy
 msgid "&Font:"
-msgstr "&Lettertype:"
+msgstr "Lettertype: "
 
 #: src/frontends/qt4/ui/BulletsUi.ui:44
 #: src/frontends/qt4/ui/CharacterUi.ui:212
@@ -623,9 +649,8 @@ msgstr "&Grootte:"
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
 #: src/frontends/qt4/GuiPrefs.cpp:2055
 #: src/frontends/qt4/GuiPrintNomencl.cpp:68
-#, fuzzy
 msgid "Default"
-msgstr "&Standaard"
+msgstr "Standaard"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:71
 #: src/frontends/qt4/GuiCharacter.cpp:56 src/frontends/qt4/GuiListings.cpp:152
@@ -680,20 +705,23 @@ msgstr "Gigantisch"
 #: src/frontends/qt4/ui/BulletsUi.ui:144
 #, fuzzy
 msgid "&Custom Bullet:"
-msgstr "Eigen Knop:"
+msgstr "Eigen papiergrootte"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:174
 #: src/frontends/qt4/ui/PDFSupportUi.ui:329
+#, fuzzy
 msgid "&Level:"
-msgstr "&Niveau:"
+msgstr "&Label"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:31
+#, fuzzy
 msgid "Change:"
-msgstr "Verandering:"
+msgstr "Taal:"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:49
+#, fuzzy
 msgid "Go to previous change"
-msgstr "Naar volgende verandering"
+msgstr "Naar volgende foutmelding"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:52
 #, fuzzy
@@ -708,11 +736,11 @@ msgstr "Naar volgende foutmelding"
 #: src/frontends/qt4/ui/ChangesUi.ui:65
 #, fuzzy
 msgid "&Next change"
-msgstr "&Volgende verandering"
+msgstr " (Veranderd)"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:108
 msgid "Accept this change"
-msgstr "Accepteer deze verandering"
+msgstr ""
 
 #: src/frontends/qt4/ui/ChangesUi.ui:111
 msgid "&Accept"
@@ -720,11 +748,12 @@ msgstr "&Accepteren"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:121
 msgid "Reject this change"
-msgstr "Verwerp deze verandering"
+msgstr ""
 
 #: src/frontends/qt4/ui/ChangesUi.ui:124
+#, fuzzy
 msgid "&Reject"
-msgstr "&Weigeren"
+msgstr "Resetten"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:44
 #: src/frontends/qt4/ui/CharacterUi.ui:123
@@ -814,8 +843,9 @@ msgid "Apply each change automatically"
 msgstr "Elke aanpassing automatisch toepassen"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:308
+#, fuzzy
 msgid "Apply changes &immediately"
-msgstr "Elke aanpassing &automatisch toepassen"
+msgstr "Elke aanpassing automatisch toepassen"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:367
 #: src/frontends/qt4/ui/DocumentUi.ui:77
@@ -843,18 +873,18 @@ msgid "Close"
 msgstr "Sluiten"
 
 #: src/frontends/qt4/ui/CitationUi.ui:30
+#, fuzzy
 msgid "A&vailable Citations:"
-msgstr "&Beschikbare Referenties:"
+msgstr "Verwijzing invoegen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:53
 #, fuzzy
 msgid "S&elected Citations:"
-msgstr "&Geselecteerde Referenties:"
+msgstr "selectie"
 
 #: src/frontends/qt4/ui/CitationUi.ui:72
-#, fuzzy
 msgid "Click or press Enter to add the selected citation to the list"
-msgstr "De geselecteerde database verwijderen"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "Click or press Delete to delete the selected citation from the list"
@@ -863,38 +893,36 @@ msgstr ""
 #: src/frontends/qt4/ui/CitationUi.ui:124
 #, fuzzy
 msgid "Move the selected citation up (Ctrl-Up)"
-msgstr "De geselecteerde referentie naar boven verplaatsen"
+msgstr "De geselecteerde literatuurverwijzing naar boven verplaatsen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:148
 #, fuzzy
 msgid "Move the selected citation down (Ctrl-Down)"
-msgstr "De geselcteerde referentie naar beneden verplaatsen"
+msgstr "De geselcteerde literatuurverwijzing naar beneden verplaatsen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:151
+#, fuzzy
 msgid "&Down"
-msgstr "Om&laag"
+msgstr "Klaar"
 
 #: src/frontends/qt4/ui/CitationUi.ui:176
+#, fuzzy
 msgid "Search Citation"
-msgstr "Zoek referentie"
+msgstr "Literatuurverwijzing"
 
 #: src/frontends/qt4/ui/CitationUi.ui:191
 #, fuzzy
 msgid "Searc&h:"
-msgstr "Zoek in veld:"
+msgstr "Zoeken"
 
 #: src/frontends/qt4/ui/CitationUi.ui:204
-#, fuzzy
 msgid ""
 "Enter the text to search for and press Enter or click the button to search"
 msgstr ""
-"Voer de tekst in die gezocht wordt in dit tekstveld. In dit veld kunnen alle "
-"normale LyX functies gebruikt worden."
 
 #: src/frontends/qt4/ui/CitationUi.ui:217
-#, fuzzy
 msgid "Click or press Enter in the search box to search"
-msgstr "Klik om te zoeken of druk op Enter in het tekstvak"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:220
 #, fuzzy
@@ -904,18 +932,17 @@ msgstr "Zoeken"
 #: src/frontends/qt4/ui/CitationUi.ui:230
 #, fuzzy
 msgid "Search field:"
-msgstr "Zoek in veld:"
+msgstr "Zoeken"
 
 #: src/frontends/qt4/ui/CitationUi.ui:250
 #: src/frontends/qt4/GuiCitation.cpp:324
 #, fuzzy
 msgid "All fields"
-msgstr "Alle velden"
+msgstr "Alle bestanden (*)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:271
-#, fuzzy
 msgid "Regular e&xpression"
-msgstr "Reguliere e&xpressie"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:278
 #, fuzzy
@@ -925,43 +952,45 @@ msgstr "&Hoofdlettergevoelig"
 #: src/frontends/qt4/ui/CitationUi.ui:285
 #, fuzzy
 msgid "Entry types:"
-msgstr "Soorten:"
+msgstr "Label invoegen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:302
 #: src/frontends/qt4/GuiCitation.cpp:339
 #, fuzzy
 msgid "All entry types"
-msgstr "Alle soorten"
+msgstr "Label invoegen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:323
-#, fuzzy
 msgid "Search as you &type"
-msgstr "Zoek terwijl U typt"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:333
+#, fuzzy
 msgid "Formatting"
-msgstr "Formattering"
+msgstr "drijvende delen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:342
+#, fuzzy
 msgid "Citation st&yle:"
-msgstr "&Aanhalingsstijl:"
+msgstr "Aanhalingsstijl:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:352
 msgid "Natbib citation style to use"
-msgstr "Te gebruiken Natbib-referentiestijl"
+msgstr "Te gebruiken Natbib-literatuurverwijzing"
 
 #: src/frontends/qt4/ui/CitationUi.ui:359
 #, fuzzy
 msgid "Text &before:"
-msgstr "Tekst &voor:"
+msgstr "Tekst voor:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:369
 msgid "Text to place before citation"
-msgstr "Tekst te plaatsen voor referentie"
+msgstr "Tekst te plaatsen voor literatuurverwijzing"
 
 #: src/frontends/qt4/ui/CitationUi.ui:376
+#, fuzzy
 msgid "Text a&fter:"
-msgstr "Tekst &na:"
+msgstr "Tekst na:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:386
 msgid "Text to place after citation"
@@ -972,14 +1001,16 @@ msgid "List all authors"
 msgstr "Alle auteurs opsommen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:417
+#, fuzzy
 msgid "Full aut&hor list"
-msgstr "&Volledige auteurslijst"
+msgstr "Volledige auteurslijst"
 
 #: src/frontends/qt4/ui/CitationUi.ui:424
 msgid "Force upper case in citation"
-msgstr "Hoofdletters in referentie forceren"
+msgstr "Hoofdletters in literatuurverwijzing forceren"
 
 #: src/frontends/qt4/ui/CitationUi.ui:427
+#, fuzzy
 msgid "Force u&pper case"
 msgstr "&Hoofdletters forceren"
 
@@ -993,6 +1024,7 @@ msgid "&Restore"
 msgstr "&Herstellen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:483
+#, fuzzy
 msgid "App&ly"
 msgstr "&Toepassen"
 
@@ -1032,16 +1064,18 @@ msgstr "Document"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:143
 #: src/frontends/qt4/GuiDelimiter.cpp:275
+#, fuzzy
 msgid "TeX Code: "
-msgstr "TeX regels: "
+msgstr "TeX|T"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:167
+#, fuzzy
 msgid "Match delimiter types"
 msgstr "Begrenzing"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:170
 msgid "&Keep matched"
-msgstr "&Kies alleen bij elkaar horende tekens"
+msgstr ""
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:196
 msgid "&Size:"
@@ -1050,23 +1084,25 @@ msgstr "&Grootte:"
 #: src/frontends/qt4/ui/DelimiterUi.ui:268
 #: src/frontends/qt4/ui/SymbolsUi.ui:56
 msgid "Insert the delimiters"
-msgstr "De tekens in het document invoegen"
+msgstr ""
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:271
 msgid "&Insert"
 msgstr "&Invoegen"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:112
+#, fuzzy
 msgid "Reset to the default settings for the document class"
-msgstr "De defaultwaarden voor deze documentklasse?"
+msgstr "de defaultwaarden voor deze documentklasse?"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:115
 msgid "Use Class Defaults"
 msgstr "Klasse-standaard gebruiken"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:130
+#, fuzzy
 msgid "Save settings as LyX's default document settings"
-msgstr "Instellingen opslaan als LyX standaard"
+msgstr "Instellingen opslaan als LyX standaard-sjabloon"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:133
 msgid "Save as Document Defaults"
@@ -1083,39 +1119,43 @@ msgstr "Alleen ERT-knop tonen"
 
 #: src/frontends/qt4/ui/ERTUi.ui:43
 msgid "&Collapsed"
-msgstr "&Gesloten"
+msgstr "Inge&klapt"
 
 #: src/frontends/qt4/ui/ERTUi.ui:50
 msgid "Show ERT contents"
 msgstr "ERT-inhoud tonen"
 
 #: src/frontends/qt4/ui/ERTUi.ui:53
+#, fuzzy
 msgid "O&pen"
 msgstr "Ge&opend"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:36
 msgid "For more information, refer to the complete log."
-msgstr "Raadpleeg de hele log voor voor verdere informatie"
+msgstr ""
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:43
+#, fuzzy
 msgid "&Errors:"
-msgstr "&Foutmeldingen:"
+msgstr "Pijl"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:53
+#, fuzzy
 msgid "Description:"
 msgstr "Beschrijving"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:83
 msgid "Open the LaTeX Log File dialog"
-msgstr "Bekijk het LaTeX log bestand"
+msgstr ""
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:86
 msgid "View Complete &Log..."
-msgstr "Hele &logbestand"
+msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:35
+#, fuzzy
 msgid "F&ile"
-msgstr "&Bestand"
+msgstr "Bestand"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:47 src/frontends/qt4/ui/ExternalUi.ui:54
 #: lib/layouts/agu_stdclass.inc:80 lib/layouts/db_stdcharstyles.inc:8
@@ -1133,10 +1173,12 @@ msgid "Select a file"
 msgstr "Selecteer een bestand"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:77
+#, fuzzy
 msgid "&Draft"
 msgstr "&Kladmodus"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:84
+#, fuzzy
 msgid "&Template"
 msgstr "&Sjabloon:"
 
@@ -1146,8 +1188,9 @@ msgstr "Beschikbare sjablonen"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:134
 #: src/frontends/qt4/ui/GraphicsUi.ui:448
+#, fuzzy
 msgid "LaTe&X and LyX options"
-msgstr "LaTe&X en LyX opties:"
+msgstr "LaTeX &opties:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:146
 #, fuzzy
@@ -1156,17 +1199,19 @@ msgstr "LaTeX &opties:"
 
 # was eerst bijschrift
 #: src/frontends/qt4/ui/ExternalUi.ui:164
+#, fuzzy
 msgid "O&ption:"
-msgstr "O&ptie:"
+msgstr "O&nderschrift:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:177
+#, fuzzy
 msgid "Forma&t:"
-msgstr "Formaa&t:"
+msgstr "drijvende delen"
 
 # Weergeven
 #: src/frontends/qt4/ui/ExternalUi.ui:201
 msgid "&Show in LyX"
-msgstr "In LyX &tonen"
+msgstr "In LyX tonen"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:219
 #: src/frontends/qt4/ui/ExternalUi.ui:243
@@ -1175,19 +1220,22 @@ msgstr "In LyX &tonen"
 msgid "Percentage to scale by in LyX"
 msgstr "Schalingspercentage voor LyX"
 
+# onvertaald laten?
 #: src/frontends/qt4/ui/ExternalUi.ui:222
 #: src/frontends/qt4/ui/GraphicsUi.ui:569
 #, fuzzy
 msgid "Sca&le on Screen (%):"
-msgstr "Schaa&l op beeld (%):"
+msgstr "Zonder &schreef:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:280
+#, fuzzy
 msgid "Si&ze and Rotation"
-msgstr "&Grootte en Rotatie"
+msgstr "Literatuurverwijzing"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:292
+#, fuzzy
 msgid "Rotate"
-msgstr "Roteer"
+msgstr "s Opslaan"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:339
 #: src/frontends/qt4/ui/ExternalUi.ui:369
@@ -1204,6 +1252,7 @@ msgid "The origin of the rotation"
 msgstr "De oorsprong van de rotatie"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:352
+#, fuzzy
 msgid "Ori&gin:"
 msgstr "&Oorsprong:"
 
@@ -1212,8 +1261,9 @@ msgid "A&ngle:"
 msgstr "&Hoek:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:387
+#, fuzzy
 msgid "Scale"
-msgstr "Schaal"
+msgstr "Kleiner"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:411
 #: src/frontends/qt4/ui/GraphicsUi.ui:131
@@ -1227,27 +1277,28 @@ msgstr "Breedte van afbeelding in uitvoer"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:444
 msgid "Maintain aspect ratio with largest dimension"
-msgstr "Behoud the verhouding en de grootste afmeting"
+msgstr ""
 
 # Verhoudingen respecteren
 #: src/frontends/qt4/ui/ExternalUi.ui:447
 #: src/frontends/qt4/ui/GraphicsUi.ui:177
 msgid "&Maintain aspect ratio"
-msgstr "&Verhouding behouden"
+msgstr "&Verhouding intact laten"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:470
+#, fuzzy
 msgid "Crop"
-msgstr "Grootte aanpassen"
+msgstr "Kopiëren"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:485
 #: src/frontends/qt4/ui/GraphicsUi.ui:309
 msgid "Clip to bounding box values"
-msgstr "Verklein tot de grootte van het kader"
+msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:488
 #: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to &bounding box"
-msgstr "Verklein tot het &kader"
+msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:495
 #: src/frontends/qt4/ui/GraphicsUi.ui:345
@@ -1266,41 +1317,40 @@ msgstr "Rechts&boven:"
 #: src/frontends/qt4/ui/ExternalUi.ui:525
 #: src/frontends/qt4/ui/GraphicsUi.ui:437
 msgid "Get bounding box from the (EPS) file"
-msgstr "Gebruik de grootte van het kader als in het (EPS) bestand"
+msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:528
 #: src/frontends/qt4/ui/GraphicsUi.ui:440
+#, fuzzy
 msgid "&Get from File"
-msgstr "&Grootte als in bestand"
+msgstr "[geen bestand]"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:558
 msgid "y"
 msgstr "y"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:39
+#, fuzzy
 msgid "Find LyX Text"
-msgstr "Zoek LyX tekst"
+msgstr "Volge&nde zoeken"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:107
-#, fuzzy
 msgid "&Basic"
-msgstr "BibTeX-stijlen"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:159
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:183
 msgid "Enter the text to replace in this full-featured LyX editing area"
 msgstr ""
-"Voer de tekst in waarmee vervangen wordt in dit tekstveld. In dit veld "
-"kunnen alle normale LyX functies gebruikt worden"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:162
+#, fuzzy
 msgid "&Replace with..."
 msgstr "&Vervangen door:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:222
-#, fuzzy
 msgid "Replace and find next occurrence [Enter]"
-msgstr "Zoek de volgende [Enter]"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:225
 #, fuzzy
@@ -1308,9 +1358,8 @@ msgid "Ne&xt"
 msgstr "tekst"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:243
-#, fuzzy
 msgid "Replace and find previous occurrence [Shift+Enter]"
-msgstr "Zoek de vorige [Shift+Enter]"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:246
 #, fuzzy
@@ -1333,9 +1382,9 @@ msgid ""
 "Keep the case of the replacement's first letter as in each matching text "
 "first letter"
 msgstr ""
-"Behoud de hoofdletters in de vervangende tekst zoals in de gevonden tekst"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:285
+#, fuzzy
 msgid "&Keep case"
 msgstr "Cellen samenvoegen"
 
@@ -1343,16 +1392,15 @@ msgstr "Cellen samenvoegen"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:368
 msgid "Enter the text to search for in this full-featured LyX editing area"
 msgstr ""
-"Voer de tekst in die gezocht wordt in dit tekstveld. In dit veld kunnen alle "
-"normale LyX functies gebruikt worden."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:347
+#, fuzzy
 msgid "&Find..."
-msgstr "&Zoeken..."
+msgstr "&Zoeken:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:404
 msgid "Perform a case-sensitive search"
-msgstr "Zoek hoofdlettergevoelig"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:407
 #: src/frontends/qt4/ui/SearchUi.ui:105
@@ -1361,25 +1409,24 @@ msgstr "&Hoofdlettergevoelig"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:422
 msgid "Choose one of the pre-arranged regular expressions."
-msgstr "Kies een standaard reguliere expressie"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:425
-#, fuzzy
 msgid "Insert Re&gular Expression..."
-msgstr "Versie"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:443
 msgid "Find next occurrence [Enter]"
-msgstr "Zoek de volgende [Enter]"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:446
 #, fuzzy
 msgid "&Next"
-msgstr "tekst"
+msgstr "latex"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:467
 msgid "Find previous occurrence [Shift+Enter]"
-msgstr "Zoek de vorige [Shift+Enter]"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:470
 #, fuzzy
@@ -1388,7 +1435,7 @@ msgstr " (Veranderd)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:491
 msgid "Restrict search to whole words only"
-msgstr "Zoek alleen hele woorden"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:494
 #, fuzzy
@@ -1398,16 +1445,16 @@ msgstr "k Sleutel:|#K"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:522
 #, fuzzy
 msgid "&Advanced"
-msgstr "Meer"
+msgstr "&Annuleren"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:550
-#, fuzzy
 msgid "The scope to which the search horizon is restricted"
-msgstr "Zoek alleen in:"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:556
+#, fuzzy
 msgid "Sco&pe"
-msgstr "Zoek&gebied"
+msgstr "&Vorm:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:582
 #, fuzzy
@@ -1422,15 +1469,13 @@ msgstr "Een alinea omhoog"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:606
 #, fuzzy
 msgid "Current &document"
-msgstr "Document"
+msgstr "Document importeren"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:627
-#, fuzzy
 msgid ""
 "Current document and all related documents belonging to the same master "
 "document"
 msgstr ""
-"Huidig document en alle gerelateerde documenten die bij de master horen"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:630
 #, fuzzy
@@ -1438,18 +1483,18 @@ msgid "&Master document"
 msgstr "Document opslaan?"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:648
+#, fuzzy
 msgid "All open documents"
 msgstr "Document openen "
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:651
 #, fuzzy
 msgid "&Open documents"
-msgstr "Alle ge&opende bestanden"
+msgstr "Document openen "
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:669
-#, fuzzy
 msgid "All ma&nuals"
-msgstr "LaTeX_Titel"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:690
 #, fuzzy
@@ -1469,13 +1514,14 @@ msgstr "u Bijwerken|#U"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
 #: src/frontends/qt4/ui/OutputUi.ui:13 src/frontends/qt4/ui/PDFSupportUi.ui:13
+#, fuzzy
 msgid "Form"
-msgstr "Formulier"
+msgstr "drijvende delen"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:23
 #, fuzzy
 msgid "Float Type:"
-msgstr "Informatie Type:"
+msgstr "TeX-informatie|X"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:47
 msgid "Use &default placement"
@@ -1491,9 +1537,10 @@ msgstr "&Bovenkant van pagina"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:73
 msgid "&Ignore LaTeX rules"
-msgstr "LaTeX-regels negeren"
+msgstr "LaTeX-regels _negeren"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:80
+#, fuzzy
 msgid "Here de&finitely"
 msgstr "Hier, zonder enige twijfel"
 
@@ -1514,12 +1561,14 @@ msgid "&Span columns"
 msgstr "Kolommen &omvatten"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:131
+#, fuzzy
 msgid "&Rotate sideways"
 msgstr "90° roteren"
 
 #: src/frontends/qt4/ui/FontUi.ui:13
+#, fuzzy
 msgid "FontUi"
-msgstr "Lettertype"
+msgstr "Lettertype: "
 
 #: src/frontends/qt4/ui/FontUi.ui:28
 #, fuzzy
@@ -1531,6 +1580,7 @@ msgid "Specify the font encoding (e.g., T1)."
 msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:45
+#, fuzzy
 msgid "&Default Family:"
 msgstr "&Standaard"
 
@@ -1540,6 +1590,7 @@ msgid "Select the default family for the document"
 msgstr "de defaultwaarden voor deze documentklasse?"
 
 #: src/frontends/qt4/ui/FontUi.ui:69
+#, fuzzy
 msgid "&Base Size:"
 msgstr "&Grootte:"
 
@@ -1559,18 +1610,20 @@ msgstr "Zonder &schreef:"
 
 #: src/frontends/qt4/ui/FontUi.ui:148
 msgid "Select the Sans Serif (grotesque) typeface"
-msgstr "Schaal het Zonder Schreef lettertype aan het basislettertype"
+msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:155
+#, fuzzy
 msgid "S&cale (%):"
-msgstr "S&chaal (%):"
+msgstr "Kleiner"
 
 #: src/frontends/qt4/ui/FontUi.ui:165
 msgid "Scale the Sans Serif font to match the base font's dimensions"
-msgstr "Kies het Zonder Schreef (grotesque) lettertype"
+msgstr ""
 
 # Schrijfmachine
 #: src/frontends/qt4/ui/FontUi.ui:178
+#, fuzzy
 msgid "&Typewriter:"
 msgstr "T&ypemachine:"
 
@@ -1598,20 +1651,20 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:248
 msgid "Use a real small caps shape, if the font provides one"
-msgstr "Gebruik een echte klein kapitaal vorm, als het lettype dat toelaat"
+msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:251
+#, fuzzy
 msgid "Use true S&mall Caps"
-msgstr "Gebruik echt &Klein Kapitaal"
+msgstr "Kapiteel"
 
 #: src/frontends/qt4/ui/FontUi.ui:258
-#, fuzzy
 msgid "Use old style instead of lining figures"
-msgstr "Gebruik de oude stijl in plaat van ??"
+msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:261
 msgid "Use &Old Style Figures"
-msgstr "Gebruik de oude stijl plaatjes"
+msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
@@ -1622,54 +1675,59 @@ msgid "Select an image file"
 msgstr "Selecteer een afbeelding"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:65
+#, fuzzy
 msgid "Output Size"
-msgstr "Grootte in de uitvoer"
+msgstr "Uitvoer"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:141
 msgid "Sets height of graphic. Leave unchecked to set automatically."
-msgstr "Geef de hoogte van de figuur. Laat open voor automatische selectie"
+msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:144
+#, fuzzy
 msgid "Set &height:"
-msgstr "Hoogte:"
+msgstr "&Kophoogte:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:151
+#, fuzzy
 msgid "&Scale Graphics (%):"
-msgstr "&Schaal Afbeeldingen (%):"
+msgstr "&Afbeeldingen"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:161
 msgid "Sets width of graphic. Leave unchecked to set automatically."
-msgstr "Geef de breedte van de figuur. Laat open voor automatische selectie"
+msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:164
+#, fuzzy
 msgid "Set &width:"
 msgstr "&Breedte:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Scale image to maximum size not exceeding width and height"
 msgstr ""
-"Schaal figuur tot de maximale grootte, waarbij het niet de breedte en hoogte "
-"overschreid"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:187
+#, fuzzy
 msgid "Rotate Graphics"
-msgstr "Roteer Plaatjes"
+msgstr "Plaatjes"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:202
 msgid "Check to change the order of rotating and scaling"
-msgstr "Selecteer om de volgorde van roteren en schalen om te draaien"
+msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:205
+#, fuzzy
 msgid "Ro&tate after scaling"
-msgstr "Roteer na schaling"
+msgstr "Tabel &Roteren"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:222
+#, fuzzy
 msgid "Or&igin:"
 msgstr "&Oorsprong:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:250
 msgid "A&ngle (Degrees):"
-msgstr "&Hoek (Graden):"
+msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:263
 #: src/frontends/qt4/ui/GraphicsUi.ui:276
@@ -1677,18 +1735,21 @@ msgid "File name of image"
 msgstr "Bestandsnaam van afbeelding"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:284
+#, fuzzy
 msgid "&Clipping"
-msgstr "&Grootte-aanpassing"
+msgstr "Sluiten"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:393
 #: src/frontends/qt4/ui/GraphicsUi.ui:400
+#, fuzzy
 msgid "y:"
-msgstr "y:"
+msgstr "y"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:407
 #: src/frontends/qt4/ui/GraphicsUi.ui:414
+#, fuzzy
 msgid "x:"
-msgstr "x:"
+msgstr "x"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:460
 msgid "Don't uncompress image before exporting to LaTeX"
@@ -1699,7 +1760,6 @@ msgstr "Afbeelding niet uitpakken voor de export naar LaTeX"
 msgid "Don't un&zip on export"
 msgstr "Niet &uitpakken bij export"
 
-# TODO
 #: src/frontends/qt4/ui/GraphicsUi.ui:491
 #: src/frontends/qt4/ui/GraphicsUi.ui:498
 msgid "Additional LaTeX options"
@@ -1717,6 +1777,7 @@ msgstr ""
 
 # Weergeven
 #: src/frontends/qt4/ui/GraphicsUi.ui:530
+#, fuzzy
 msgid "Sho&w in LyX"
 msgstr "In LyX tonen"
 
@@ -1735,15 +1796,15 @@ msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:647
 msgid "Click to define a new graphics group."
-msgstr "Klik hier om een nieuwe groep van figuren te maken."
+msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:650
 msgid "O&pen new group..."
-msgstr "O&pen nieuwe groep..."
+msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:657
 msgid "Select an existing group for the current graphics."
-msgstr "Kies een bestaande groep voor de huidige figuur."
+msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:670
 msgid "Draft mode"
@@ -1755,7 +1816,7 @@ msgstr "&Kladmodus"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
 msgid "Select a fill pattern style for HFills"
-msgstr "Kies een vulpatroon stijl voor horizontale opvullingen"
+msgstr ""
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:37
 msgid "..............."
@@ -1782,66 +1843,73 @@ msgid "/-----^-----\\"
 msgstr "/-----^-----\\"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:70 src/frontends/qt4/ui/VSpaceUi.ui:22
+#, fuzzy
 msgid "&Spacing:"
-msgstr "&Regelafstand:"
+msgstr "Regelafstand|#g"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:80 src/frontends/qt4/ui/VSpaceUi.ui:78
 msgid "Supported spacing types"
-msgstr "Ondersteunde opvulpatronen"
+msgstr ""
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:87 src/frontends/qt4/ui/VSpaceUi.ui:68
 msgid "&Value:"
 msgstr "&Waarde:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:100 src/frontends/qt4/ui/VSpaceUi.ui:61
-#, fuzzy
 msgid "Custom value. Needs spacing type &quot;Custom&quot;."
-msgstr "Aangepaste waarde. Alleen bij type \"Aangepast\"."
+msgstr ""
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:110
+#, fuzzy
 msgid "&Fill Pattern:"
-msgstr "&Opvulpatroon:"
+msgstr "&Bestand:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:123 src/frontends/qt4/ui/VSpaceUi.ui:45
+#, fuzzy
 msgid "&Protect:"
-msgstr "&Beveiligd:"
+msgstr "Helaas."
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:133 src/frontends/qt4/GuiHSpace.cpp:208
 #: src/frontends/qt4/GuiHSpace.cpp:214
+#, fuzzy
 msgid "Insert the spacing even after a line break"
-msgstr "Voeg de spatie in zelfs na een regeleinde"
+msgstr "Figuur invoegen"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:28
+#, fuzzy
 msgid "Specify the link target"
-msgstr "Geef de link locatie"
+msgstr "Geef de standaard papierformaat."
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:31
 msgid "Link type"
-msgstr "Link type"
+msgstr ""
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:43
 msgid "Link to the web or to every other target"
-msgstr "Link naar het web of iets anders"
+msgstr ""
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:46
 msgid "&Web"
-msgstr "&Web"
+msgstr ""
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:53
 msgid "Link to an email address"
-msgstr "Link naar een e-mail adres"
+msgstr ""
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:56
+#, fuzzy
 msgid "&Email"
-msgstr "&E-mail"
+msgstr "Email"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:63
+#, fuzzy
 msgid "Link to a file"
-msgstr "Link naar een bestand"
+msgstr "Afdrukken op"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:66
+#, fuzzy
 msgid "&File"
-msgstr "&Bestand"
+msgstr "&Bestand:"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:76
 #: src/frontends/qt4/ui/HyperlinkUi.ui:90 lib/layouts/scrlttr2.layout:205
@@ -1854,11 +1922,12 @@ msgstr "URL"
 #: src/frontends/qt4/ui/HyperlinkUi.ui:83
 #: src/frontends/qt4/ui/HyperlinkUi.ui:103
 msgid "Name associated with the URL"
-msgstr "Naam behorend bij het URL"
+msgstr ""
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:93
+#, fuzzy
 msgid "&Target:"
-msgstr "&Doel:"
+msgstr "Grootst:"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:106
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:257
@@ -1866,31 +1935,34 @@ msgid "&Name:"
 msgstr "&Naam:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
+#, fuzzy
 msgid "Listing Parameters"
-msgstr "Programmacode Parameters"
+msgstr "Argument ontbreekt"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:66 src/frontends/qt4/ui/ListingsUi.ui:507
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:83
 msgid "Check it to enter parameters that are not recognizable by LyX"
-msgstr "Selecteer om voor LyX onbekende parameters te kunnen invoeren"
+msgstr ""
 
 #: src/frontends/qt4/ui/IncludeUi.ui:69 src/frontends/qt4/ui/ListingsUi.ui:510
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:86
 msgid "&Bypass validation"
-msgstr "&Niet valideren"
+msgstr ""
 
 # was eerst bijschrift
 #: src/frontends/qt4/ui/IncludeUi.ui:86
+#, fuzzy
 msgid "C&aption:"
 msgstr "O&nderschrift:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:99
+#, fuzzy
 msgid "La&bel:"
-msgstr "&Label:"
+msgstr "&Label"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:109
 msgid "Mo&re parameters"
-msgstr "Meer parameters"
+msgstr ""
 
 #: src/frontends/qt4/ui/IncludeUi.ui:183
 msgid "Underline spaces in generated output"
@@ -1910,9 +1982,10 @@ msgstr "&Voorbeeld tonen"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:275
 msgid "File name to include"
-msgstr "Bestandsnaam om in te voegen"
+msgstr "Bestandsnaam voor invoeging"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:282
+#, fuzzy
 msgid "&Include Type:"
 msgstr "&Invoegtype:"
 
@@ -1930,18 +2003,20 @@ msgstr "Letterlijk"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1065
 #: src/insets/InsetInclude.cpp:1071
+#, fuzzy
 msgid "Program Listing"
-msgstr "Programmacode"
+msgstr "(geen oorspronkelijke omschrijving)"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:342
+#, fuzzy
 msgid "Edit the file"
-msgstr "Het bestand bewerken"
+msgstr "Het bestand laden"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:345
+#, fuzzy
 msgid "&Edit"
-msgstr "&Bewerken"
+msgstr "Bewerken|w"
 
-# TODO
 #: src/frontends/qt4/ui/IndexUi.ui:59
 #, fuzzy
 msgid "A&vailable indices:"
@@ -1983,7 +2058,7 @@ msgstr ""
 #: src/frontends/qt4/ui/IndicesUi.ui:131
 #, fuzzy
 msgid "Add a new index to the list"
-msgstr "Voeg een nieuwe index toe"
+msgstr "Linkerlijn|L"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:143
 #, fuzzy
@@ -2016,13 +2091,14 @@ msgid "Define or change button color"
 msgstr ""
 
 #: src/frontends/qt4/ui/InfoUi.ui:24
+#, fuzzy
 msgid "Information Type:"
-msgstr "Informatie Type:"
+msgstr "TeX-informatie|X"
 
-# TODO
 #: src/frontends/qt4/ui/InfoUi.ui:34
+#, fuzzy
 msgid "Information Name:"
-msgstr "Informatie Naam:"
+msgstr "TeX-informatie|X"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:16
 #, fuzzy
@@ -2032,7 +2108,7 @@ msgstr "Literatuurverwijzing invoegen"
 #: src/frontends/qt4/ui/InsetParamsUi.ui:44
 #: src/frontends/qt4/ui/ParagraphUi.ui:44
 msgid "I&mmediate Apply"
-msgstr "Automatisch Toepassen"
+msgstr ""
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:69
 #, fuzzy
@@ -2040,18 +2116,21 @@ msgid "New Inset"
 msgstr "Voetnoot Inzet geopend"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:19
+#, fuzzy
 msgid "Document &class"
 msgstr "Documentklasse:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:44
 msgid "Click to select a local document class definition file"
-msgstr "Klik om een lokale documentklasse te kiezen"
+msgstr ""
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:47
+#, fuzzy
 msgid "&Local Layout..."
-msgstr "Locale opmaak..."
+msgstr "Opmaak"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:57
+#, fuzzy
 msgid "Class options"
 msgstr "Opties"
 
@@ -2060,20 +2139,20 @@ msgid ""
 "The options that are predefined in the layout file. Click to the left to "
 "select/deselect."
 msgstr ""
-"De opties die zijn gespecificeerd in de layout. Klik links om te (de)"
-"selecteren."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:92
 msgid "Enable to use the options that are predefined in the layout file"
-msgstr "Gebruik de opties die in de layout zijn gespecificeerd"
+msgstr ""
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:95
+#, fuzzy
 msgid "P&redefined:"
-msgstr "&Gespecificeerd:"
+msgstr "P&rinter"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:102
+#, fuzzy
 msgid "Cust&om:"
-msgstr "&Aangepast:"
+msgstr "Eigen papiergrootte"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:115
 #, fuzzy
@@ -2082,38 +2161,44 @@ msgstr "&Afbeeldingen"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:145
 msgid "Select if the current document is included to a master file"
-msgstr "Kies als het huidige document onderdeel is van een hoofddocument"
+msgstr ""
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:151
+#, fuzzy
 msgid "Select de&fault master document"
-msgstr "Kies &standaard hoofddocument"
+msgstr "de defaultwaarden voor deze documentklasse?"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:166
+#, fuzzy
 msgid "&Master:"
-msgstr "&Hoofddocument:"
+msgstr "B&uiten:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:183
+#, fuzzy
 msgid "Enter the name of the default master document"
-msgstr "Geef de naam van het standaard hoofddocument"
+msgstr "Papier:|#P"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:202
 msgid "Suppress default date on front page"
 msgstr ""
 
 #: src/frontends/qt4/ui/LanguageUi.ui:25
+#, fuzzy
 msgid "Encoding"
-msgstr "Encodering"
+msgstr "Teken&set:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:40
+#, fuzzy
 msgid "Language &Default"
-msgstr "&Standaard Taal"
+msgstr "Koptekst"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:63
+#, fuzzy
 msgid "&Other:"
-msgstr "&Andere:"
+msgstr "B&uiten:"
 
-# TODO
 #: src/frontends/qt4/ui/LanguageUi.ui:109
+#, fuzzy
 msgid "&Quote Style:"
 msgstr "Aanhalingstekens bij citaat"
 
@@ -2121,31 +2206,36 @@ msgstr "Aanhalingstekens bij citaat"
 #: src/insets/InsetListings.cpp:355 src/insets/InsetListings.cpp:357
 #, fuzzy
 msgid "Listing"
-msgstr "Programmacode"
+msgstr "Lijst"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:23
+#, fuzzy
 msgid "&Main Settings"
-msgstr "Alge&mene instellingen"
+msgstr "Literatuurverwijzing"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:29
+#, fuzzy
 msgid "Placement"
-msgstr "Plaatsing"
+msgstr "&Plaatsing:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:35
 msgid "Check for inline listings"
-msgstr "Selecteer voor programmacode in de regel"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:38
+#, fuzzy
 msgid "&Inline listing"
-msgstr "&Voeg programmacode in"
+msgstr "&Ingevoegd"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:45
+#, fuzzy
 msgid "Check for floating listings"
-msgstr "Selecteer voor een drijvende programmacode"
+msgstr "Overige lettertype-instellingen"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:48
+#, fuzzy
 msgid "&Float"
-msgstr "&Drijvend"
+msgstr "drijvende delen"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:55 src/frontends/qt4/ui/WrapUi.ui:185
 msgid "&Placement:"
@@ -2153,35 +2243,40 @@ msgstr "&Plaatsing:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:68
 msgid "Specify placement (htbp) for floating listings"
-msgstr "Geef de plaatsing (htbp) van drijvende programmacode"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:78
+#, fuzzy
 msgid "Line numbering"
-msgstr "Regelnummering"
+msgstr "Nummering"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:84
+#, fuzzy
 msgid "&Side:"
-msgstr "&Zijde:"
+msgstr "&Grootte:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:94
 msgid "On which side should line numbers be printed?"
-msgstr "Aan welke kant moeten de regelnummers worden gezet?"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:119
+#, fuzzy
 msgid "S&tep:"
-msgstr "S&tapgrootte:"
+msgstr "s Opslaan"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:132
 msgid "Difference between two numbered lines"
-msgstr "Verschil tussen twee genummerde regels"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:148
+#, fuzzy
 msgid "Font si&ze:"
-msgstr "&Lettergrootte:"
+msgstr "Lettergrootte"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:169
+#, fuzzy
 msgid "Choose the font size for line numbers"
-msgstr "Kies de nummergrootte van de regelnummers"
+msgstr "Kies een stijlbestand"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:188
 #: src/frontends/qt4/ui/TabularUi.ui:994
@@ -2189,112 +2284,121 @@ msgid "Style"
 msgstr "Stijl"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:194
+#, fuzzy
 msgid "F&ont size:"
-msgstr "&Lettergrootte"
+msgstr "Lettergrootte"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:215
 msgid "The content's base font size"
-msgstr "De grootte van het basislettertype van de inhoud"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:231
+#, fuzzy
 msgid "Font Famil&y:"
-msgstr "Lettertype&familie:"
+msgstr "Lettertypefamilie"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:252
 msgid "The content's base font style"
-msgstr "Het basislettertype van de inhoud"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:268
 msgid "Break lines longer than the linewidth"
-msgstr "Breek regels af die te breed zijn"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:271
 msgid "&Break long lines"
-msgstr "&Breek lange regels af"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:281
 msgid "Make spaces visible by a special symbol"
-msgstr "Laat spaties zijn als een speciaal symbool"
+msgstr ""
 
+# Selecteren
 #: src/frontends/qt4/ui/ListingsUi.ui:284
+#, fuzzy
 msgid "S&pace as symbol"
-msgstr "S&paties als symbool"
+msgstr "Een pagina met symbolen kiezen"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:294
 msgid "Make spaces in strings visible by a special symbol"
-msgstr "Laat spaties in strings zien als een speciaal symbool"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:297
 msgid "Space i&n string as symbol"
-msgstr "Spaties i&n string als symbool"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:307
+#, fuzzy
 msgid "Tab&ulator size:"
-msgstr "Tabel&formaat:"
+msgstr "Tabelformaat"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:323
 msgid "Use extended character table"
-msgstr "Gebruik uitgebreide karaktertabel"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:326
 msgid "&Extended character table"
-msgstr "&Uitgebreide karakter tabel"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:345
+#, fuzzy
 msgid "Lan&guage:"
 msgstr "&Taal:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:355
 msgid "Select the programming language"
-msgstr "Kies de programmeertaal"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:362
+#, fuzzy
 msgid "&Dialect:"
-msgstr "&Dialect:"
+msgstr "&Bestand:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:372
 msgid "Select the dialect of the programming language, if available"
-msgstr "Kies het dialect van de programmeertaal, zo mogelijk"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:382
+#, fuzzy
 msgid "Range"
-msgstr "Bereik"
+msgstr "Enkel"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:388
+#, fuzzy
 msgid "Fi&rst line:"
-msgstr "Ee&rste regel:"
+msgstr "Eerste koptekst"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:401
 msgid "The first line to be printed"
-msgstr "De eerste regel die geprint wordt"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:414
+#, fuzzy
 msgid "&Last line:"
-msgstr "&Laatste regel:"
+msgstr "wiskunde lijn"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:427
 msgid "The last line to be printed"
-msgstr "The laatste regel die geprint wordt"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:444
 #, fuzzy
 msgid "Ad&vanced"
-msgstr "Meer"
+msgstr "&Annuleren"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:458
+#, fuzzy
 msgid "More Parameters"
-msgstr "Meer Parameters"
+msgstr "Argument ontbreekt"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:477
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:67
 msgid "Feedback window"
-msgstr "Terugkoppelingsvenster"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:499
 msgid "Input listing parameters here. Enter ? for a list of parameters."
 msgstr ""
-"Voer hier de parameters voor de programmacode in. Type ? voor een lijst van "
-"beschikbare parameters."
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:49
 #, fuzzy
@@ -2307,7 +2411,7 @@ msgstr "&Zoeken:"
 
 #: src/frontends/qt4/ui/LogUi.ui:38
 msgid "Hit Enter to search, or click Go!"
-msgstr "Druk op Enter of klik op de knop om te zoeken"
+msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:45
 #, fuzzy
@@ -2317,7 +2421,7 @@ msgstr "T&ype:"
 #: src/frontends/qt4/ui/LogUi.ui:74
 #, fuzzy
 msgid "Update the display"
-msgstr "Het venster verversen"
+msgstr "De weergave verversen"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:90
 #: src/frontends/qt4/ui/ViewSourceUi.ui:56
@@ -2330,19 +2434,20 @@ msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:130
 msgid "&Go!"
-msgstr "&Zoek"
+msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:137
 msgid "Jump to the next warning message."
 msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:140
+#, fuzzy
 msgid "Next &Warning"
 msgstr "Waarschuwing!"
 
 #: src/frontends/qt4/ui/LogUi.ui:147
 msgid "Jump to the next error message."
-msgstr "Kopieer naar het klem&bord"
+msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:150
 #, fuzzy
@@ -2351,11 +2456,12 @@ msgstr "Zoeken"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:28
 msgid "Use the margin settings provided by the document class"
-msgstr "Gebruik de margeinstellingen zoals in de documentklasse gedefineerd"
+msgstr ""
 
 #: src/frontends/qt4/ui/MarginsUi.ui:31
+#, fuzzy
 msgid "&Default Margins"
-msgstr "&Standaard Marges"
+msgstr "&Standaard"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:89
 msgid "&Top:"
@@ -2386,8 +2492,9 @@ msgid "&Foot skip:"
 msgstr "&Voetafstand:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:180
+#, fuzzy
 msgid "&Column Sep:"
-msgstr "&Kolomafstand:"
+msgstr "&Kolommen:"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:25
 #, fuzzy
@@ -2411,7 +2518,7 @@ msgstr ""
 #: src/frontends/qt4/ui/MasterChildUi.ui:53
 #, fuzzy
 msgid "&Maintain counters and references"
-msgstr "alle ongebruikte referenties"
+msgstr "Verwijzing invoegen"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:63
 msgid "Include all subdocuments in the output"
@@ -2451,22 +2558,25 @@ msgid "Resize this to the correct table dimensions"
 msgstr "Naar de juiste tabel-afmetingen schalen"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:163 src/frontends/qt4/ui/WrapUi.ui:195
+#, fuzzy
 msgid "Vertical alignment"
-msgstr "Verticaal uitlijnen"
+msgstr "Vert. uitlijnen|#V"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:185
 msgid "&Vertical:"
 msgstr "&Verticaal:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:204
+#, fuzzy
 msgid "Horizontal alignment per column (l,c,r)"
-msgstr "Horizontaal uitlijnen per kolom (l,c,r)"
+msgstr "Hor. uitlijnen|#H"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:211
 msgid "&Horizontal:"
 msgstr "&Horizontaal:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:224
+#, fuzzy
 msgid "Decoration"
 msgstr "Dekoratie"
 
@@ -2507,15 +2617,16 @@ msgstr ""
 #: src/frontends/qt4/ui/MathsUi.ui:22
 #, fuzzy
 msgid "&Use AMS math package automatically"
-msgstr "&Gebruik automatisch het AMS wiskunde pakket"
+msgstr "Elke aanpassing automatisch toepassen"
 
 #: src/frontends/qt4/ui/MathsUi.ui:32
 msgid "The AMS LaTeX packages are always used"
 msgstr ""
 
 #: src/frontends/qt4/ui/MathsUi.ui:35
+#, fuzzy
 msgid "Use AMS &math package"
-msgstr "AMS &wiskunde gebruiken"
+msgstr "AMS Math gebruiken"
 
 #: src/frontends/qt4/ui/MathsUi.ui:42
 msgid ""
@@ -2526,15 +2637,16 @@ msgstr ""
 #: src/frontends/qt4/ui/MathsUi.ui:45
 #, fuzzy
 msgid "Use esint package &automatically"
-msgstr "Gebruik &automatisch het esint pakket"
+msgstr "Elke aanpassing automatisch toepassen"
 
 #: src/frontends/qt4/ui/MathsUi.ui:55
 msgid "The LaTeX package esint is always used"
 msgstr ""
 
 #: src/frontends/qt4/ui/MathsUi.ui:58
+#, fuzzy
 msgid "Use &esint package"
-msgstr "Esint gebruiken"
+msgstr "AMS Math gebruiken"
 
 #: src/frontends/qt4/ui/MathsUi.ui:65
 msgid ""
@@ -2543,6 +2655,7 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/MathsUi.ui:68
+#, fuzzy
 msgid "Use mhchem &package automatically"
 msgstr "Elke aanpassing automatisch toepassen"
 
@@ -2558,7 +2671,7 @@ msgstr "AMS Math gebruiken"
 #: src/frontends/qt4/ui/ModulesUi.ui:60
 #, fuzzy
 msgid "A&vailable:"
-msgstr "&Beschikbaar:"
+msgstr "Verwijzing invoegen"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:96
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:187
@@ -2567,60 +2680,71 @@ msgid "A&dd"
 msgstr "&Toevoegen"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:103
+#, fuzzy
 msgid "De&lete"
-msgstr "Verwij&deren"
+msgstr "Verwij&deren van|#d"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:147
+#, fuzzy
 msgid "S&elected:"
-msgstr "G&eselecteerd:"
+msgstr "Verwij&deren van|#d"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:31
+#, fuzzy
 msgid "Sort &as:"
-msgstr "Sorteren &als:"
+msgstr "s Opslaan"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:41
+#, fuzzy
 msgid "&Description:"
-msgstr "&Beschrijving:"
+msgstr "Beschrijving"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:51
+#, fuzzy
 msgid "&Symbol:"
-msgstr "&Symbool:"
+msgstr "Symbool"
 
 #: src/frontends/qt4/ui/NoteUi.ui:48 src/frontends/qt4/ui/PhantomUi.ui:48
+#, fuzzy
 msgid "Type"
 msgstr "Type"
 
 #: src/frontends/qt4/ui/NoteUi.ui:60
 msgid "LyX internal only"
-msgstr "Alleen voor LyX zelf"
+msgstr ""
 
 #: src/frontends/qt4/ui/NoteUi.ui:63
+#, fuzzy
 msgid "LyX &Note"
-msgstr "LyX &Notitie"
+msgstr "Notitie"
 
 #: src/frontends/qt4/ui/NoteUi.ui:70
 msgid "Export to LaTeX/Docbook but don't print"
-msgstr "Exporteer naar LaTeX/Docbook, maar print niets"
+msgstr ""
 
 #: src/frontends/qt4/ui/NoteUi.ui:73
+#, fuzzy
 msgid "&Comment"
-msgstr "&Commentaar"
+msgstr "Commentaar:"
 
 #: src/frontends/qt4/ui/NoteUi.ui:80
+#, fuzzy
 msgid "Print as grey text"
-msgstr "Als grijze tekst printen"
+msgstr "Alle pagina's afdrukken"
 
 #: src/frontends/qt4/ui/NoteUi.ui:83
 msgid "&Greyed out"
-msgstr "&Grijze notitie"
+msgstr ""
 
 #: src/frontends/qt4/ui/NumberingUi.ui:60
+#, fuzzy
 msgid "&List in Table of Contents"
-msgstr "&Opnemen in de inhoudsopgave"
+msgstr "Inhoudsopgave"
 
 #: src/frontends/qt4/ui/NumberingUi.ui:70
+#, fuzzy
 msgid "&Numbering"
-msgstr "&Nummering"
+msgstr "Nummering"
 
 #: src/frontends/qt4/ui/OutputUi.ui:25
 #, fuzzy
@@ -2628,6 +2752,7 @@ msgid "Output Format"
 msgstr "is leeg"
 
 #: src/frontends/qt4/ui/OutputUi.ui:48 src/frontends/qt4/ui/OutputUi.ui:61
+#, fuzzy
 msgid "Specify the default output format (for view/update)"
 msgstr "Geef de standaard papierformaat."
 
@@ -2642,14 +2767,13 @@ msgid "Use the XeTeX processing engine"
 msgstr ""
 
 #: src/frontends/qt4/ui/OutputUi.ui:73
-#, fuzzy
 msgid "Use &XeTeX"
-msgstr "&Babel gebruiken"
+msgstr ""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:19
 #, fuzzy
 msgid "Paper Format"
-msgstr "Papierformaat"
+msgstr "u Bijwerken|#U"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:246
@@ -2659,11 +2783,12 @@ msgstr "&Formaat:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:44
 msgid "Choose a particular paper size, or set your own with &quot;Custom&quot;"
-msgstr "Stijl voor de paginakoptekst en -voettekst"
+msgstr ""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:125
+#, fuzzy
 msgid "&Orientation:"
-msgstr "&Oriëntatie"
+msgstr "Oriëntatie"
 
 # Staand
 #: src/frontends/qt4/ui/PageLayoutUi.ui:135
@@ -2692,7 +2817,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:206
 msgid "Lay out the page for double-sided printing"
-msgstr "Maak de pagina op voor dubbelzijdig printen"
+msgstr ""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:209
 msgid "&Two-sided document"
@@ -2718,21 +2843,24 @@ msgid "R&eset"
 msgstr "Resetten"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:54
+#, fuzzy
 msgid "Label Width"
-msgstr "Labelbreedte"
+msgstr "d Labelbreedte:|#d"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:69
 #: src/frontends/qt4/ui/ParagraphUi.ui:82
 msgid "This text defines the width of the paragraph label"
-msgstr "Deze tekst geeft de breedte van het paragraaf label"
+msgstr ""
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:72
+#, fuzzy
 msgid "Lo&ngest label"
-msgstr "La&ngste label"
+msgstr "Lange tabel"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:92
+#, fuzzy
 msgid "Line &spacing"
-msgstr "R&egelafstand"
+msgstr "R&egelafstand:"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1792
 #: src/frontends/qt4/GuiDocument.cpp:609
@@ -2764,43 +2892,49 @@ msgid "Custom"
 msgstr "Eigen papiergrootte"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:146
+#, fuzzy
 msgid "&Indent Paragraph"
-msgstr "Paragraaf &Inspringen"
+msgstr "Een alinea omhoog"
 
 # Uitgevuld
 #: src/frontends/qt4/ui/ParagraphUi.ui:168
+#, fuzzy
 msgid "&Justified"
-msgstr "&Uitgevuld"
+msgstr "Uitgelijnd"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:175
+#, fuzzy
 msgid "&Left"
-msgstr "&Links"
+msgstr "Links"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:182
+#, fuzzy
 msgid "C&enter"
-msgstr "&Midden"
+msgstr "Midden"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:189
+#, fuzzy
 msgid "Ri&ght"
-msgstr "&Rechts"
+msgstr "Rechts"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:196
 msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr "Gebruik de standaard uitlijning voor deze paragraaf."
+msgstr ""
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:199
+#, fuzzy
 msgid "Paragraph's &Default"
-msgstr "Standaard van deze paragraaf"
+msgstr "Alineaopmaak ingesteld"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:28
 msgid "&Use hyperref support"
-msgstr "&Gebruik hyperref"
+msgstr ""
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:53
+#, fuzzy
 msgid "&General"
-msgstr "&Algemeen"
+msgstr "Duits"
 
-# TODO
 #: src/frontends/qt4/ui/PDFSupportUi.ui:99
 msgid ""
 "If not stated explicitly, fill title and author from appropriate environments"
@@ -2808,91 +2942,105 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:102
 msgid "Automatically fi&ll header"
-msgstr "Automatisch de koptekst vu&llen"
+msgstr ""
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:109
 msgid "Enable fullscreen PDF presentation"
-msgstr "Sta volledig scherm toe voor het tonen van de PDF"
+msgstr ""
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:112
 msgid "Load in &fullscreen mode"
-msgstr "Leze in de &volledig scherm modus"
+msgstr ""
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:121
+#, fuzzy
 msgid "Header Information"
-msgstr "Koptekst Informatie"
+msgstr "TeX-informatie|X"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:133
+#, fuzzy
 msgid "&Title:"
-msgstr "&Titel:"
+msgstr "Titel"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:146
+#, fuzzy
 msgid "&Author:"
-msgstr "&Auteur"
+msgstr "Auteur"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:159
+#, fuzzy
 msgid "&Subject:"
-msgstr "&Onderwerp:"
+msgstr "selectie"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:172
+#, fuzzy
 msgid "&Keywords:"
-msgstr "&Sleutelwoorden:"
+msgstr "k Sleutel:|#K"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:189
+#, fuzzy
 msgid "H&yperlinks"
-msgstr "&Linken"
+msgstr "Spatiering invoegen"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:222
 msgid "Allows link text to break across lines."
-msgstr "Sta regeleinden in link tekst toe"
+msgstr ""
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:225
 msgid "B&reak links over lines"
-msgstr "Gebruik meerdere regels voor links"
+msgstr ""
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:232
 msgid "No &frames around links"
-msgstr "Geen &omlijning om de links heen"
+msgstr ""
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:242
+#, fuzzy
 msgid "C&olor links"
-msgstr "&Kleur van de verwijzingen"
+msgstr "Sluiten"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:249
 msgid "Bibliographical backreferences"
-msgstr "Bibliografisch terugverwijzing"
+msgstr ""
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:252
+#, fuzzy
 msgid "B&ackreferences:"
-msgstr "Teru&verwijzingen:"
+msgstr "Voorkeuren"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:281
+#, fuzzy
 msgid "&Bookmarks"
-msgstr "&Boektabs"
+msgstr "b Onder|#B"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:293
+#, fuzzy
 msgid "G&enerate Bookmarks"
-msgstr "&Boektabs genereren"
+msgstr "b Onder|#B"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:314
+#, fuzzy
 msgid "&Numbered bookmarks"
-msgstr "Ge&nummerde boektabs"
+msgstr " Getal "
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:339
+#, fuzzy
 msgid "Number of levels"
-msgstr "Aantal niveaus"
+msgstr "Aantal kopieën"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:348
+#, fuzzy
 msgid "&Open bookmarks"
-msgstr "&Open boektabs"
+msgstr "b Onder|#B"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:388
+#, fuzzy
 msgid "Additional o&ptions"
-msgstr "Extra op&ties"
+msgstr "Extra LaTeX-opties"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:417
 msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
-msgstr "b.v: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:60
 msgid "Horizontal and vertical space of the phantom content"
@@ -2909,9 +3057,8 @@ msgid "Horizontal space of the phantom content"
 msgstr "Hor. uitlijnen|#H"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:73
-#, fuzzy
 msgid "&Horiz. Phantom"
-msgstr "Esperanto"
+msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:80
 #, fuzzy
@@ -2919,17 +3066,19 @@ msgid "Vertical space of the phantom content"
 msgstr "Verticale afstanden"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:83
-#, fuzzy
 msgid "&Vert. Phantom"
-msgstr "Esperanto"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
+#, fuzzy
 msgid "A&lter..."
-msgstr "&Aanpassen..."
+msgstr "andere..."
 
+# Paden
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:25
+#, fuzzy
 msgid "In Math"
-msgstr "In Wiskunde"
+msgstr "Locaties"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:40
 msgid ""
@@ -2938,164 +3087,170 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:43
+#, fuzzy
 msgid "Automatic in&line completion"
-msgstr "Automatisch suggesties in de regel"
+msgstr "&Ingevoegd"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:50
 msgid "Show the popup in math mode after the delay."
-msgstr "Laat het venster zien in wiskunde na de vertraging."
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:53
 msgid "Automatic p&opup"
-msgstr "Automatisch v&enster"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:60
 msgid "Autoco&rrection"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:70
+#, fuzzy
 msgid "In Text"
-msgstr "In Tekst"
+msgstr "Vervangen"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:85
 msgid ""
 "Show the grey inline completion behind the cursor in text mode after the "
 "delay."
 msgstr ""
-"Laat de grijze suggestie zien achter de aanwijzer in tekst na de vertraging."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:88
+#, fuzzy
 msgid "Automatic &inline completion"
-msgstr "Automatische suggesties in de regel"
+msgstr "&Ingevoegd"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:95
 msgid "Show the popup after the set delay in text mode."
-msgstr "Laat het venster zien na de ingestelde vertraging in de tekstmodus"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:98
 msgid "Automatic &popup"
-msgstr "Automatisch &venster"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:105
 msgid ""
 "Show a small triangle on the cursor if a completion is available in text "
 "mode."
 msgstr ""
-"Laat een kleine driehoek op de aanwijzer zijn als er een suggestie "
-"beschikbaar is in de tekstmodus."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:108
 msgid "Cursor i&ndicator"
-msgstr "Aanwijzer"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:118
 #: lib/layouts/hollywood.layout:280
+#, fuzzy
 msgid "General"
-msgstr "Algemeen"
+msgstr "Duits"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:141
 msgid ""
 "After the cursor has not moved for this time, the inline completion is shown "
 "if it is available."
 msgstr ""
-"Een suggestie laten zien in de regel nadat de aanwijzer zolang niet heeft "
-"bewogen."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:154
+#, fuzzy
 msgid "s inline completion dela&y"
-msgstr "sec &vertraging voor een suggestie in de regel"
+msgstr "&Ingevoegd"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:187
 msgid ""
 "After the cursor has not moved for this time, the completion popup is shown "
 "if it is available."
 msgstr ""
-"De lijst met suggesties laten zien in de regel nadat de aanwijzer zolang "
-"niet heeft bewogen."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:200
 msgid "s popup d&elay"
-msgstr "sec vertraging voor de lijst"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:225
 msgid ""
 "When the TAB completion is not unique, there won't be a delay of the popup. "
 "It will be shown right away."
 msgstr ""
-"Wanneer er meerder suggesties zijn zal er geen vertraging zijn van de lijst. "
-"Ze zal meteen getoond worden."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:228
 msgid "Sho&w popup without delay for non-unique completions"
-msgstr "Toon de lijst zonder een vertraging als er meerdere suggesties zijn"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:235
 msgid "Long completions are cut-off and shown with \"...\"."
-msgstr "Lange suggesties worden afgekapt en krijgen \"...\"."
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:238
 msgid "&Use \"...\" to shorten long completions"
-msgstr "&Gebruik \"...\" om lane suggesties in te korten"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:81
+#, fuzzy
 msgid "C&onverter:"
-msgstr "C&onverter:"
+msgstr "n Centreren|#n"
 
-# TODO
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:91
+#, fuzzy
 msgid "E&xtra flag:"
-msgstr "E&xtra optie:"
+msgstr "EPS-bestand|#E"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:121
+#, fuzzy
 msgid "&From format:"
-msgstr "&Van formaat:"
+msgstr "&Formaat:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:153
+#, fuzzy
 msgid "&To format:"
-msgstr "&Naar formaat:"
+msgstr "u Bijwerken|#U"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:194
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:54
+#, fuzzy
 msgid "&Modify"
-msgstr "&Veranderen"
+msgstr "Middel|#m"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
 #: src/frontends/qt4/GuiPrefs.cpp:2633 src/frontends/qt4/GuiPrefs.cpp:2697
+#, fuzzy
 msgid "Remo&ve"
-msgstr "&Verwijderen"
+msgstr "r Omgekeerde vlg.|#R"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:239
+#, fuzzy
 msgid "Converter Defi&nitions"
-msgstr "&Specificaties van de converter"
+msgstr "Definitie"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:252
+#, fuzzy
 msgid "Converter File Cache"
-msgstr "Converter bestandscache"
+msgstr "Figuur invoegen"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:272
+#, fuzzy
 msgid "&Enabled"
-msgstr "&Beschikbaar"
+msgstr "&Lange tabel"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
 msgid "Maximum A&ge (in days):"
-msgstr "&Maximale Leeftijd (in dagen):"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefDateUi.ui:33
+#, fuzzy
 msgid "&Date format:"
-msgstr "&Datum formaat:"
+msgstr "u Bijwerken|#U"
 
 #: src/frontends/qt4/ui/PrefDateUi.ui:43
 msgid "Date format for strftime output"
-msgstr "Datumformaat voor strftime uitvoer"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:25
+#, fuzzy
 msgid "Display &Graphics"
-msgstr "&Plaatjes tonen"
+msgstr "Plaatjes"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:45
 msgid "Instant &Preview:"
-msgstr "Onmiddelijk &voorproefje:"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:56 src/Font.cpp:76
 #: src/frontends/qt4/GuiDocument.cpp:169
@@ -3103,8 +3258,9 @@ msgid "Off"
 msgstr "Uit"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:61
+#, fuzzy
 msgid "No math"
-msgstr "Geen wiskunde"
+msgstr "wiskunde"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:66 src/Font.cpp:76
 msgid "On"
@@ -3131,11 +3287,12 @@ msgstr "Een alinea omhoog"
 #: src/frontends/qt4/ui/PrefEditUi.ui:33 src/frontends/qt4/GuiPrefs.cpp:226
 #, fuzzy
 msgid "Editing"
-msgstr "Bewerken"
+msgstr "Afsluiten|f"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:51
+#, fuzzy
 msgid "Cursor &follows scrollbar"
-msgstr "Aanwijzer volgt wel/niet de scrollbalk"
+msgstr "Cursor volgt wel/niet de rolbalk"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:58
 #, fuzzy
@@ -3145,11 +3302,11 @@ msgstr "Kon document niet openen"
 #: src/frontends/qt4/ui/PrefEditUi.ui:65
 #, fuzzy
 msgid "Sort &environments alphabetically"
-msgstr "Omgevingen in alfabetische volgorde sorteren"
+msgstr "Verwijzingen in alfabetische volgorde sorteren"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:72
 msgid "&Group environments by their category"
-msgstr "Omgevingen &groeperen naar categorie"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:80
 msgid "Edit Math Macros inline with a box around"
@@ -3537,7 +3694,7 @@ msgstr "A3"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:364
 #: src/frontends/qt4/GuiDocument.cpp:751
 msgid "A4"
-msgstr ""
+msgstr "A4"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:369
 #: src/frontends/qt4/GuiDocument.cpp:752
@@ -3598,10 +3755,11 @@ msgstr "Document is als HTML weggeschreven naar bestand `"
 msgid "&Working directory:"
 msgstr "LyX: Maak map aan "
 
+# Persoonlijke
 #: src/frontends/qt4/ui/PrefPathsUi.ui:215
 #, fuzzy
 msgid "Hunspell dictionaries:"
-msgstr "Backup locatie"
+msgstr "Eigen &woordenlijst:"
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2832
 msgid ""
@@ -3853,11 +4011,10 @@ msgstr ""
 msgid "&Use pixmap cache to speed up font rendering"
 msgstr ""
 
-# TODO
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:68
 #, fuzzy
 msgid "&New"
-msgstr "&Nieuw"
+msgstr "latex"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:90
 #, fuzzy
@@ -4155,7 +4312,7 @@ msgstr ""
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
 #, fuzzy
 msgid "&Clear automatically"
-msgstr "Mathematica"
+msgstr "Elke aanpassing automatisch toepassen"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
 #, fuzzy
@@ -4179,7 +4336,7 @@ msgstr ""
 #: src/frontends/qt4/ui/ProgressViewUi.ui:216
 #, fuzzy
 msgid "S&elected"
-msgstr "G&eselecteerd:"
+msgstr "Verwij&deren van|#d"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:223
 #, fuzzy
@@ -4246,7 +4403,7 @@ msgstr ""
 #: src/frontends/qt4/ui/RefUi.ui:193
 #, fuzzy
 msgid "Grou&p"
-msgstr "Grootte aanpassen"
+msgstr "&Naam:"
 
 #: src/frontends/qt4/ui/RefUi.ui:223 src/frontends/qt4/GuiRef.cpp:314
 #, fuzzy
@@ -4471,28 +4628,33 @@ msgid "&Table Settings"
 msgstr "&Tabel-instellingen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:121
+#, fuzzy
 msgid "Column settings"
 msgstr "Document-instellingen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:127
+#, fuzzy
 msgid "&Horizontal alignment:"
-msgstr "&Horizontale uitlijning"
+msgstr "Hor. uitlijnen|#H"
 
 #: src/frontends/qt4/ui/TabularUi.ui:137
+#, fuzzy
 msgid "Horizontal alignment in column"
-msgstr "Horizontale uitlijning in de kolom"
+msgstr "Hor. uitlijnen|#H"
 
 # Uitgevuld
 #: src/frontends/qt4/ui/TabularUi.ui:141
 #: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:642
+#, fuzzy
 msgid "Justified"
-msgstr "Uitgevuld"
+msgstr "Uitgelijnd"
 
 #: src/frontends/qt4/ui/TabularUi.ui:193
 msgid "Fixed width of the column"
 msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:222
+#, fuzzy
 msgid "&Vertical alignment in row:"
 msgstr "Vert. uitlijnen|#V"
 
@@ -4513,7 +4675,7 @@ msgstr "&Multikolom"
 #: src/frontends/qt4/ui/TabularUi.ui:283
 #, fuzzy
 msgid "Row setting"
-msgstr "Instellingen van de rij"
+msgstr "Instellingen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:289
 msgid "Merge cells of different rows"
@@ -4524,14 +4686,17 @@ msgid "M&ultirow"
 msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:302
+#, fuzzy
 msgid "Cell setting"
 msgstr "Opties"
 
 #: src/frontends/qt4/ui/TabularUi.ui:308
+#, fuzzy
 msgid "Rotate this cell by 90 degrees"
 msgstr "Deze cel met 90° roteren"
 
 #: src/frontends/qt4/ui/TabularUi.ui:311
+#, fuzzy
 msgid "Rotate &cell 90 degrees"
 msgstr "Deze cel met 90° roteren"
 
@@ -4587,48 +4752,55 @@ msgid "All Borders"
 msgstr "Alle randen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:971
+#, fuzzy
 msgid "Set all borders of the current (selected) cell(s)"
-msgstr "Alle randen van de geselecteerde cel(len) aanzetten"
+msgstr "de defaultwaarden voor deze documentklasse?"
 
 #: src/frontends/qt4/ui/TabularUi.ui:974
+#, fuzzy
 msgid "&Set"
-msgstr "Aan&zetten"
+msgstr "Op&slaan"
 
 #: src/frontends/qt4/ui/TabularUi.ui:981
+#, fuzzy
 msgid "Unset all borders of the current (selected) cell(s)"
-msgstr "All randen van de geselecteerde cel(len) uitzetten"
+msgstr "de defaultwaarden voor deze documentklasse?"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1006
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
-msgstr "Gebruik formele (booktabs) stijl voor randen (geen verticale randen)"
+msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:1009
+#, fuzzy
 msgid "Fo&rmal"
-msgstr "Fo&rmeel"
+msgstr "Normaal"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1019
 msgid "Use default (grid-like) border style"
-msgstr "Gebruik standaard stijl voor randen (als in een grid)"
+msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:1022
+#, fuzzy
 msgid "De&fault"
-msgstr "&Standaard"
+msgstr "Standaard"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1061
+#, fuzzy
 msgid "Additional Space"
-msgstr "Extra ruimte"
+msgstr "Extra LaTeX-opties"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1073
 msgid "T&op of row:"
-msgstr "&Bovenkant van rij:"
+msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:1133
+#, fuzzy
 msgid "Botto&m of row:"
-msgstr "&Onderkant van rij:"
+msgstr "&Onderkant van Pagina"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1146
 msgid "Bet&ween rows:"
-msgstr "&Tussen rijen:"
+msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:1195
 msgid "&Longtable"
@@ -4636,27 +4808,29 @@ msgstr "&Lange tabel"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1201
 msgid "Select for tables that span multiple pages"
-msgstr "Begin een nieuwe pagina op deze rij"
+msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:1204
 msgid "&Use long table"
 msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:1214
+#, fuzzy
 msgid "Row settings"
-msgstr "Instellingen van de rij"
+msgstr "Instellingen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1220
 msgid "Status"
 msgstr "Status"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1227
+#, fuzzy
 msgid "Border above"
-msgstr "Rand boven"
+msgstr "Randen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1234
 msgid "Border below"
-msgstr "Rand beneden"
+msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:1241
 msgid "Contents"
@@ -4668,7 +4842,7 @@ msgstr "Koptekst:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1255
 msgid "Repeat this row as header on every (except the first) page"
-msgstr "Herhaal deze rij als koptekst op iedere pagina (m.u.v. de eerste)"
+msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:1258
 #: src/frontends/qt4/ui/TabularUi.ui:1295
@@ -4696,12 +4870,14 @@ msgid "First header:"
 msgstr "Eerste koptekst:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1289
+#, fuzzy
 msgid "This row is the header of the first page"
-msgstr "Deze rij is de koptekst van de eerste pagina"
+msgstr "De volgorde van de afgedrukte pagina's omkeren."
 
 #: src/frontends/qt4/ui/TabularUi.ui:1316
+#, fuzzy
 msgid "Don't output the first header"
-msgstr "De eerste koptekst niet in de uitvoer opnemen"
+msgstr "Uitvoer naar de printer sturen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1319
 #: src/frontends/qt4/ui/TabularUi.ui:1391
@@ -4714,28 +4890,31 @@ msgstr "Voettekst:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1333
 msgid "Repeat this row as footer on every (except the last) page"
-msgstr "Herhaal deze rij als voettekst op iedere pagina (m.u.v. de laatste)"
+msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:1357
 msgid "Last footer:"
 msgstr "Laatste voettekst:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1364
+#, fuzzy
 msgid "This row is the footer of the last page"
-msgstr "Deze rij is de voettekst van de laatste pagina"
+msgstr "De volgorde van de afgedrukte pagina's omkeren."
 
 #: src/frontends/qt4/ui/TabularUi.ui:1388
+#, fuzzy
 msgid "Don't output the last footer"
-msgstr "De laatste voettekst niet opnemen in de uitvoer"
+msgstr "Volgende regel selecteren"
 
 # was eerst bijschrift
 #: src/frontends/qt4/ui/TabularUi.ui:1398
+#, fuzzy
 msgid "Caption:"
 msgstr "O&nderschrift:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1415
 msgid "Set a page break on the current row"
-msgstr "Zet aan voor tabellen die zich over meerdere pagina's strekken"
+msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:1418
 #, fuzzy
@@ -4764,16 +4943,15 @@ msgstr ""
 msgid ""
 "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
-"De inhoud laten zien van het geselecteerde bestand. Dit is alleen mogelijk "
-"als de bestanden worden laten zien met het volledige pad."
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:107
 msgid "&View"
 msgstr "&Beeld"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:124
+#, fuzzy
 msgid "Selected classes or styles"
-msgstr "Geselecteerde klassen of stijlen"
+msgstr "Volgende regel selecteren"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:128
 msgid "LaTeX classes"
@@ -4789,7 +4967,7 @@ msgstr "BibTeX-stijlen"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:162
 msgid "Toggles view of the file list"
-msgstr "De bestandenlijst laten zien of niet"
+msgstr ""
 
 # weergeven
 #: src/frontends/qt4/ui/TexinfoUi.ui:165
@@ -4797,14 +4975,17 @@ msgid "Show &path"
 msgstr "&Pad tonen"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:55
+#, fuzzy
 msgid "Separate paragraphs with"
-msgstr "Paragrafen scheiden met"
+msgstr "Inspringende alinea|#I"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:76
+#, fuzzy
 msgid "Indent consecutive paragraphs"
 msgstr "Selecteer de volgende alinea"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:79
+#, fuzzy
 msgid "&Indentation"
 msgstr "&Inspringen"
 
@@ -4814,14 +4995,17 @@ msgid "Size of the indentation"
 msgstr "Literatuurverwijzing"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:152
+#, fuzzy
 msgid "&Vertical space"
-msgstr "&Verticale afstanden"
+msgstr "Verticale afstanden"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:162
+#, fuzzy
 msgid "Size of the vertical space"
 msgstr "Verticale afstanden"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:256
+#, fuzzy
 msgid "Spacing"
 msgstr "Regelafstand|#g"
 
@@ -4849,41 +5033,45 @@ msgid "Two-&column document"
 msgstr "Twee&koloms document"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:36
+#, fuzzy
 msgid "Language of the thesaurus"
-msgstr "Taal van de thesaurus"
+msgstr "&Taal:"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:51
 msgid "Word to look up"
-msgstr "Het woord om op te zoeken"
+msgstr ""
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:64
 msgid "L&ookup"
-msgstr "Op&zoeken"
+msgstr ""
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:71
 msgid "Click to select a proposal, double click to look it up."
-msgstr "Klik om een voorstel te selecten, klik dubbel om het op te zoeken."
+msgstr ""
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:86
 #: src/frontends/qt4/ui/ThesaurusUi.ui:99
+#, fuzzy
 msgid "The selected entry"
-msgstr "Het geselecteerde item"
+msgstr "Volgende regel selecteren"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:89
+#, fuzzy
 msgid "&Selection:"
-msgstr "&Selectie:"
+msgstr "selectie"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:106
 msgid "Replace the entry with the selection"
-msgstr "Vervang het item met de selectie"
+msgstr ""
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:161
 msgid "Index entry"
-msgstr "Item in index"
+msgstr ""
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:164
+#, fuzzy
 msgid "&Keyword:"
-msgstr "&Sleutel:"
+msgstr "k Sleutel:|#K"
 
 #: src/frontends/qt4/ui/TocUi.ui:36
 #, fuzzy
@@ -4899,18 +5087,16 @@ msgid ""
 "Switch between available lists (table of contents, list of figures, list of "
 "tables, and others)"
 msgstr ""
-"Schakel tussen lijsten (inhoudsopgave, lijst van figuren, lijst van tabellen "
-"en andere lijsten)"
 
 #: src/frontends/qt4/ui/TocUi.ui:90
 msgid "Update navigation tree"
-msgstr "De boom verversen"
+msgstr ""
 
 #: src/frontends/qt4/ui/TocUi.ui:93 src/frontends/qt4/ui/TocUi.ui:125
 #: src/frontends/qt4/ui/TocUi.ui:144 src/frontends/qt4/ui/TocUi.ui:163
 #: src/frontends/qt4/ui/TocUi.ui:182
 msgid "..."
-msgstr "..."
+msgstr ""
 
 #: src/frontends/qt4/ui/TocUi.ui:122
 msgid "Decrease nesting depth of selected item"
@@ -4931,20 +5117,22 @@ msgid "Move selected item up by one"
 msgstr "De geselecteerde literatuurverwijzing naar boven verplaatsen"
 
 #: src/frontends/qt4/ui/TocUi.ui:225
+#, fuzzy
 msgid "Sort"
 msgstr "Sorteren"
 
 #: src/frontends/qt4/ui/TocUi.ui:246
 msgid "Try to keep persistent view of the uncollapsed nodes"
-msgstr "Probeer de open items consequent te laten zien"
+msgstr ""
 
 #: src/frontends/qt4/ui/TocUi.ui:249
+#, fuzzy
 msgid "Keep"
-msgstr "Zet vast"
+msgstr "Onderschrift"
 
 #: src/frontends/qt4/ui/TocUi.ui:266
 msgid "Adjust the depth of the navigation tree"
-msgstr "De diepte van de boom aanpassen"
+msgstr ""
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:13
 msgid "LyX: Enter text"
@@ -5737,8 +5925,9 @@ msgid "Teaser image:"
 msgstr "&Wissen"
 
 #: lib/layouts/acmsiggraph.layout:84
+#, fuzzy
 msgid "CRcat"
-msgstr ""
+msgstr "Hoofdstuk"
 
 # was eerst bijschrift
 #: lib/layouts/acmsiggraph.layout:89
@@ -5950,7 +6139,7 @@ msgstr "ert"
 #: lib/layouts/apa.layout:412 lib/layouts/apa.layout:413
 #: lib/layouts/stdcounters.inc:48
 msgid "(\\alph{enumii})"
-msgstr ""
+msgstr "(\\alph{enumii})"
 
 #: lib/layouts/armenian-article.layout:9
 #, fuzzy
@@ -6008,9 +6197,8 @@ msgstr "Subsectie"
 
 #: lib/layouts/beamer.layout:168 lib/layouts/powerdot.layout:238
 #: lib/layouts/numarticle.inc:10
-#, fuzzy
 msgid "\\Alph{section}"
-msgstr "selectie"
+msgstr "\\Alph{section}"
 
 #: lib/layouts/beamer.layout:198
 #, fuzzy
@@ -6018,9 +6206,8 @@ msgid "Subsection \\arabic{section}.\\arabic{subsection}"
 msgstr "Subsubsectie"
 
 #: lib/layouts/beamer.layout:211
-#, fuzzy
 msgid "\\arabic{section}.\\arabic{subsection}"
-msgstr "Subsubsectie"
+msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:227 lib/layouts/beamer.layout:271
 #: lib/layouts/beamer.layout:311 lib/layouts/beamer.layout:352
@@ -6059,7 +6246,7 @@ msgstr "Afdrukken"
 
 #: lib/layouts/beamer.layout:365
 msgid "________________________________"
-msgstr ""
+msgstr "________________________________"
 
 #: lib/layouts/beamer.layout:380
 #, fuzzy
@@ -6111,7 +6298,7 @@ msgstr "Sloveens"
 
 #: lib/layouts/beamer.layout:536
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
-msgstr ""
+msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
 #: lib/layouts/beamer.layout:546 lib/layouts/beamer.layout:557
 #, fuzzy
@@ -6397,7 +6584,7 @@ msgstr "Nieuwe alinea"
 
 #: lib/layouts/beamer.layout:1081
 msgid "___"
-msgstr ""
+msgstr "___"
 
 #: lib/layouts/beamer.layout:1091 lib/layouts/egs.layout:636
 #: lib/layouts/db_lyxmacros.inc:18 lib/layouts/lyxmacros.inc:12
@@ -6520,11 +6707,11 @@ msgstr "Matrix"
 
 #: lib/layouts/broadway.layout:145 lib/layouts/hollywood.layout:170
 msgid "("
-msgstr ""
+msgstr "("
 
 #: lib/layouts/broadway.layout:147 lib/layouts/hollywood.layout:172
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: lib/layouts/broadway.layout:158 lib/layouts/broadway.layout:168
 msgid "CURTAIN"
@@ -6673,9 +6860,8 @@ msgstr ""
 #: lib/layouts/revtex.layout:132 lib/layouts/revtex4.layout:185
 #: lib/layouts/scrlettr.layout:142 lib/layouts/scrlttr2.layout:60
 #: lib/layouts/siamltex.layout:286 lib/layouts/amsdefs.inc:136
-#, fuzzy
 msgid "Address:"
-msgstr "Adres"
+msgstr "Adres:"
 
 #: lib/layouts/dinbrief.layout:61 lib/layouts/heb-letter.layout:10
 #: lib/layouts/stdletter.inc:24
@@ -7023,7 +7209,7 @@ msgstr ""
 
 #: lib/layouts/egs.layout:145 lib/layouts/stdlists.inc:101
 msgid "00.00.0000"
-msgstr ""
+msgstr "00.00.0000"
 
 #: lib/layouts/egs.layout:273
 msgid "LaTeX Title"
@@ -7119,9 +7305,8 @@ msgid "Author Email"
 msgstr ""
 
 #: lib/layouts/elsart.layout:156 lib/layouts/llncs.layout:240
-#, fuzzy
 msgid "Email:"
-msgstr "Email"
+msgstr "Email:"
 
 #: lib/layouts/elsart.layout:167 lib/layouts/revtex4.layout:211
 msgid "Author URL"
@@ -7129,9 +7314,8 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:177 lib/layouts/revtex4.layout:216
 #: lib/layouts/amsdefs.inc:163
-#, fuzzy
 msgid "URL:"
-msgstr "&URL"
+msgstr "URL:"
 
 #: lib/layouts/elsart.layout:189 lib/layouts/revtex4.layout:189
 #: lib/layouts/amsdefs.inc:174
@@ -7483,7 +7667,7 @@ msgstr ""
 
 #: lib/layouts/foils.layout:97
 msgid "_/"
-msgstr ""
+msgstr "_/"
 
 #: lib/layouts/foils.layout:101
 msgid "CrossList"
@@ -7491,7 +7675,7 @@ msgstr ""
 
 #: lib/layouts/foils.layout:116
 msgid "><"
-msgstr ""
+msgstr "><"
 
 #: lib/layouts/foils.layout:160
 msgid "My Logo"
@@ -8440,16 +8624,15 @@ msgstr ""
 #: lib/layouts/iopart.layout:217 lib/layouts/revtex4.layout:248
 #: lib/layouts/svglobal3.layout:62 lib/layouts/svglobal3.layout:65
 msgid "PACS"
-msgstr ""
+msgstr "PACS"
 
 #: lib/layouts/iopart.layout:220
 msgid "Physics and Astronomy Classification System number:"
 msgstr ""
 
 #: lib/layouts/iopart.layout:224
-#, fuzzy
 msgid "MSC"
-msgstr "AMS"
+msgstr "MSC"
 
 #: lib/layouts/iopart.layout:227
 #, fuzzy
@@ -8523,9 +8706,8 @@ msgid "Running author:"
 msgstr ""
 
 #: lib/layouts/latex8.layout:72
-#, fuzzy
 msgid "E-mail:"
-msgstr "Email"
+msgstr "Email:"
 
 #: lib/layouts/llncs.layout:39 lib/layouts/memoir.layout:51
 #: lib/layouts/recipebook.layout:41 lib/layouts/scrbook.layout:16
@@ -8721,7 +8903,7 @@ msgstr ""
 
 #: lib/layouts/powerdot.layout:135
 msgid "    "
-msgstr ""
+msgstr "    "
 
 # Liggend
 #: lib/layouts/powerdot.layout:145
@@ -8731,7 +8913,7 @@ msgstr "&Liggend"
 
 #: lib/layouts/powerdot.layout:159
 msgid "~=~"
-msgstr ""
+msgstr "~=~"
 
 #: lib/layouts/powerdot.layout:172
 msgid "WideSlide"
@@ -8748,9 +8930,8 @@ msgid "Empty slide:"
 msgstr "leeg"
 
 #: lib/layouts/powerdot.layout:232 lib/layouts/numarticle.inc:9
-#, fuzzy
 msgid "\\arabic{section}"
-msgstr "Subsectie"
+msgstr "\\arabic{section}"
 
 #: lib/layouts/powerdot.layout:261
 msgid "ItemizeType1"
@@ -8766,9 +8947,8 @@ msgid "List of Algorithms"
 msgstr "Lijst van Algoritmen"
 
 #: lib/layouts/recipebook.layout:42 lib/layouts/scrbook.layout:17
-#, fuzzy
 msgid "\\thechapter"
-msgstr "Hoofdstuk"
+msgstr "\\thechapter"
 
 #: lib/layouts/recipebook.layout:78
 #, fuzzy
@@ -8825,12 +9005,11 @@ msgstr "tabel lijn"
 
 #: lib/layouts/scrlettr.layout:50
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #: lib/layouts/scrlettr.layout:63
-#, fuzzy
 msgid "O"
-msgstr "Aan"
+msgstr "O"
 
 #: lib/layouts/scrlettr.layout:105 lib/layouts/scrlttr2.layout:136
 #, fuzzy
@@ -9091,7 +9270,7 @@ msgstr "t Boven|#T"
 
 #: lib/layouts/simplecv.layout:71
 msgid "MMMMM"
-msgstr ""
+msgstr "MMMMM"
 
 #: lib/layouts/slides.layout:105
 msgid "New Slide:"
@@ -9703,7 +9882,7 @@ msgstr "&Plaatsing:"
 
 #: lib/layouts/agu_stdtitle.inc:323
 msgid "ISSN"
-msgstr ""
+msgstr "ISSN"
 
 #: lib/layouts/agu_stdtitle.inc:332
 #, fuzzy
@@ -10044,49 +10223,43 @@ msgstr ""
 
 #: lib/layouts/numreport.inc:12
 msgid "\\arabic{chapter}"
-msgstr ""
+msgstr "\\arabic{chapter}"
 
 #: lib/layouts/numreport.inc:13
 msgid "\\Alph{chapter}"
-msgstr ""
+msgstr "\\Alph{chapter}"
 
 #: lib/layouts/numreport.inc:44
-#, fuzzy
 msgid "\\arabic{footnote}"
-msgstr "Subsectie"
+msgstr "\\arabic{footnote}"
 
 #: lib/layouts/numrevtex.inc:9
 msgid "\\Roman{section}."
-msgstr ""
+msgstr "\\Roman{section}."
 
 #: lib/layouts/numrevtex.inc:10
 msgid "Appendix \\Alph{section}:"
 msgstr ""
 
 #: lib/layouts/numrevtex.inc:18
-#, fuzzy
 msgid "\\Alph{subsection}."
-msgstr "Subsubsectie"
+msgstr "\\Alph{subsection}."
 
 #: lib/layouts/numrevtex.inc:19
-#, fuzzy
 msgid "\\arabic{subsection}."
-msgstr "Subsubsectie"
+msgstr "\\arabic{subsection}."
 
 #: lib/layouts/numrevtex.inc:27
-#, fuzzy
 msgid "\\arabic{subsubsection}."
-msgstr "Subsubsectie"
+msgstr "\\arabic{subsubsection}."
 
 #: lib/layouts/numrevtex.inc:28
-#, fuzzy
 msgid "\\alph{subsubsection}."
-msgstr "Subsubsectie"
+msgstr "\\alph{subsubsection}."
 
 #: lib/layouts/numrevtex.inc:36 lib/layouts/numrevtex.inc:37
-#, fuzzy
 msgid "\\alph{paragraph}."
-msgstr "Alineaopmaak ingesteld"
+msgstr "\\alph{paragraph}."
 
 #: lib/layouts/scrclass.inc:113
 #, fuzzy
@@ -10165,14 +10338,13 @@ msgid "UNDEFINED"
 msgstr ""
 
 #: lib/layouts/stdcounters.inc:9
-#, fuzzy
 msgid "\\Roman{part}"
-msgstr "Roemeens"
+msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
 #, fuzzy
 msgid "Part \\Roman{part}"
-msgstr "Roemeens"
+msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:14
 #, fuzzy
@@ -10192,15 +10364,15 @@ msgstr "Alineaopmaak ingesteld"
 
 #: lib/layouts/stdcounters.inc:43
 msgid "\\arabic{enumi}."
-msgstr ""
+msgstr "\\arabic{enumi}."
 
 #: lib/layouts/stdcounters.inc:53
 msgid "\\roman{enumiii}."
-msgstr ""
+msgstr "\\roman{enumiii}."
 
 #: lib/layouts/stdcounters.inc:58
 msgid "\\Alph{enumiv}."
-msgstr ""
+msgstr "\\Alph{enumiv}."
 
 #: lib/layouts/stdcounters.inc:68
 #, fuzzy
@@ -10652,7 +10824,7 @@ msgstr "Aanhalingsteken invoegen"
 #: lib/layouts/initials.module:12
 #, fuzzy
 msgid "Initial"
-msgstr "Negeren"
+msgstr "Cursief"
 
 #: lib/layouts/linguistics.module:2
 #, fuzzy
@@ -11570,7 +11742,7 @@ msgstr "Welsh"
 
 #: lib/encodings:14
 msgid "Unicode (utf8)"
-msgstr ""
+msgstr "Unicode (utf8)"
 
 #: lib/encodings:19
 msgid "Unicode (ucs-extended) (utf8x)"
@@ -11634,11 +11806,11 @@ msgstr ""
 
 #: lib/encodings:67
 msgid "DOS (CP 437)"
-msgstr ""
+msgstr "DOS (CP 437)"
 
 #: lib/encodings:71
 msgid "DOS-de (CP 437-de)"
-msgstr ""
+msgstr "DOS-de (CP 437-de)"
 
 #: lib/encodings:74
 msgid "Western European (CP 850)"
@@ -11728,7 +11900,7 @@ msgstr ""
 
 #: lib/encodings:165
 msgid "Unicode (CJK) (utf8)"
-msgstr ""
+msgstr "Unicode (CJK) (utf8)"
 
 #: lib/encodings:169
 msgid "Chinese (traditional) (EUC-TW)"
@@ -11760,7 +11932,7 @@ msgstr ""
 
 #: lib/encodings:200
 msgid "ASCII"
-msgstr ""
+msgstr "ASCII"
 
 #: lib/ui/classic.ui:32 lib/ui/stdcontext.inc:420 lib/ui/stdmenus.inc:28
 msgid "File|F"
@@ -13691,12 +13863,12 @@ msgstr "Opties"
 #: lib/ui/stdmenus.inc:139
 #, fuzzy
 msgid "Index Entry Settings...|y"
-msgstr "Extra opties"
+msgstr "Opties"
 
 #: lib/ui/stdmenus.inc:140
 #, fuzzy
 msgid "Index Settings...|x"
-msgstr "Extra opties"
+msgstr "Opties"
 
 #: lib/ui/stdmenus.inc:141
 #, fuzzy
@@ -14089,12 +14261,12 @@ msgstr ""
 #: lib/ui/stdmenus.inc:466
 #, fuzzy
 msgid "Horizontal Phantom"
-msgstr "Esperanto"
+msgstr "Hor. uitlijnen|#H"
 
 #: lib/ui/stdmenus.inc:467
 #, fuzzy
 msgid "Vertical Phantom"
-msgstr "Esperanto"
+msgstr "Vert. uitlijnen|#V"
 
 #: lib/ui/stdmenus.inc:479
 #, fuzzy
@@ -14248,7 +14420,6 @@ msgstr "Opnieuw"
 msgid "Find and replace"
 msgstr "Zoeken en vervangen"
 
-# Ik beschouw dit &-teken als een slordigheid in de Engelse tekst..
 #: lib/ui/stdtoolbars.inc:82
 #, fuzzy
 msgid "Find and replace (advanced)"
@@ -14331,12 +14502,12 @@ msgstr "Document opslaan?"
 #: lib/ui/stdtoolbars.inc:104
 #, fuzzy
 msgid "View other formats"
-msgstr "Overige lettertype-instellingen"
+msgstr "drijvende delen"
 
 #: lib/ui/stdtoolbars.inc:105
 #, fuzzy
 msgid "Update other formats"
-msgstr "De weergave verversen"
+msgstr "u Bijwerken|#U"
 
 #: lib/ui/stdtoolbars.inc:108
 #, fuzzy
@@ -14846,9 +15017,8 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:278 lib/ui/stdtoolbars.inc:417
 #: src/frontends/qt4/GuiSymbols.cpp:89
-#, fuzzy
 msgid "Arrows"
-msgstr "Bladeren|#B"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:279
 #, fuzzy
@@ -14889,159 +15059,136 @@ msgstr "AMS overig"
 
 #: lib/ui/stdtoolbars.inc:290
 msgid "arccos"
-msgstr ""
+msgstr "arccos"
 
 #: lib/ui/stdtoolbars.inc:291
-#, fuzzy
 msgid "arcsin"
-msgstr "marge"
+msgstr "arcsin"
 
 #: lib/ui/stdtoolbars.inc:292
-#, fuzzy
 msgid "arctan"
-msgstr "Catalaans"
+msgstr "arctan"
 
 #: lib/ui/stdtoolbars.inc:293
-#, fuzzy
 msgid "arg"
-msgstr "Groot"
+msgstr "arg"
 
 #: lib/ui/stdtoolbars.inc:294
 msgid "bmod"
-msgstr ""
+msgstr "bmod"
 
 #: lib/ui/stdtoolbars.inc:295
 msgid "cos"
-msgstr ""
+msgstr "cos"
 
 #: lib/ui/stdtoolbars.inc:296
-#, fuzzy
 msgid "cosh"
-msgstr "Schots"
+msgstr "cosh"
 
 #: lib/ui/stdtoolbars.inc:297
-#, fuzzy
 msgid "cot"
-msgstr "t Boven|#T"
+msgstr "cot"
 
 #: lib/ui/stdtoolbars.inc:298
-#, fuzzy
 msgid "coth"
-msgstr "Schots"
+msgstr "coth"
 
 #: lib/ui/stdtoolbars.inc:299
-#, fuzzy
 msgid "csc"
-msgstr "cc"
+msgstr "csc"
 
 #: lib/ui/stdtoolbars.inc:300
 msgid "deg"
-msgstr ""
+msgstr "deg"
 
 #: lib/ui/stdtoolbars.inc:301
-#, fuzzy
 msgid "det"
-msgstr "standaard"
+msgstr "det"
 
 #: lib/ui/stdtoolbars.inc:302
-#, fuzzy
 msgid "dim"
-msgstr "Medium"
+msgstr "dim"
 
 #: lib/ui/stdtoolbars.inc:303
-#, fuzzy
 msgid "exp"
-msgstr "ex"
+msgstr "exp"
 
 #: lib/ui/stdtoolbars.inc:304
 msgid "gcd"
-msgstr ""
+msgstr "gcd"
 
 #: lib/ui/stdtoolbars.inc:305
-#, fuzzy
 msgid "hom"
-msgstr "stelling"
+msgstr "hom"
 
 #: lib/ui/stdtoolbars.inc:306
-#, fuzzy
 msgid "inf"
-msgstr "in"
+msgstr "inf"
 
 #: lib/ui/stdtoolbars.inc:307
-#, fuzzy
 msgid "ker"
-msgstr "Spellingscontrole"
+msgstr "ker"
 
 #: lib/ui/stdtoolbars.inc:308
 msgid "lg"
-msgstr ""
+msgstr "lg"
 
 #: lib/ui/stdtoolbars.inc:309
 msgid "lim"
-msgstr ""
+msgstr "lim"
 
 #: lib/ui/stdtoolbars.inc:310
 msgid "liminf"
-msgstr ""
+msgstr "liminf"
 
 #: lib/ui/stdtoolbars.inc:311
 msgid "limsup"
-msgstr ""
+msgstr "limsup"
 
 #: lib/ui/stdtoolbars.inc:312
 msgid "ln"
-msgstr ""
+msgstr "ln"
 
 #: lib/ui/stdtoolbars.inc:313
-#, fuzzy
 msgid "log"
-msgstr "Floatflt|#f"
+msgstr "log"
 
 #: lib/ui/stdtoolbars.inc:314
-#, fuzzy
 msgid "max"
-msgstr "Fax"
+msgstr "max"
 
 #: lib/ui/stdtoolbars.inc:315
-#, fuzzy
 msgid "min"
-msgstr "in"
+msgstr "min"
 
 #: lib/ui/stdtoolbars.inc:316
-#, fuzzy
 msgid "sec"
-msgstr "Div."
+msgstr "sec"
 
 #: lib/ui/stdtoolbars.inc:317
-#, fuzzy
 msgid "sin"
-msgstr "in"
+msgstr "sin"
 
 #: lib/ui/stdtoolbars.inc:318
-#, fuzzy
 msgid "sinh"
-msgstr "in"
+msgstr "sinh"
 
 #: lib/ui/stdtoolbars.inc:319
-#, fuzzy
 msgid "sup"
-msgstr "sp"
+msgstr "sup"
 
 #: lib/ui/stdtoolbars.inc:320
-#, fuzzy
 msgid "tan"
-msgstr " en "
+msgstr "tan"
 
 # Pad kan ook maar is onduidelijker
 #: lib/ui/stdtoolbars.inc:321
-#, fuzzy
 msgid "tanh"
-msgstr "Backup-locatie|:#B"
+msgstr "tanh"
 
 #: lib/ui/stdtoolbars.inc:322
-#, fuzzy
 msgid "Pr"
-msgstr "Kopiëren"
+msgstr "Pr"
 
 #: lib/ui/stdtoolbars.inc:325
 #, fuzzy
@@ -15221,24 +15368,20 @@ msgid "Normal text mode\t\\textrm"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:380
-#, fuzzy
 msgid "ldots"
-msgstr "Punten"
+msgstr "ldots"
 
 #: lib/ui/stdtoolbars.inc:381
-#, fuzzy
 msgid "cdots"
-msgstr "Punten"
+msgstr "cdots"
 
 #: lib/ui/stdtoolbars.inc:382
-#, fuzzy
 msgid "vdots"
-msgstr "Punten"
+msgstr "vdots"
 
 #: lib/ui/stdtoolbars.inc:383
-#, fuzzy
 msgid "ddots"
-msgstr "Punten"
+msgstr "ddots"
 
 #: lib/ui/stdtoolbars.inc:388
 #, fuzzy
@@ -15246,520 +15389,470 @@ msgid "Frame Decorations"
 msgstr "Dekoratie"
 
 #: lib/ui/stdtoolbars.inc:389
-#, fuzzy
 msgid "hat"
-msgstr "Hoofdstuk"
+msgstr "hat"
 
 #: lib/ui/stdtoolbars.inc:390
-#, fuzzy
 msgid "tilde"
-msgstr "Bestand"
+msgstr "tilde"
 
 #: lib/ui/stdtoolbars.inc:391
 msgid "bar"
-msgstr ""
+msgstr "bar"
 
 #: lib/ui/stdtoolbars.inc:392
-#, fuzzy
 msgid "grave"
-msgstr "groen"
+msgstr "grave"
 
 #: lib/ui/stdtoolbars.inc:393
-#, fuzzy
 msgid "dot"
-msgstr "t Boven|#T"
+msgstr "dot"
 
 #: lib/ui/stdtoolbars.inc:394
 msgid "check"
-msgstr ""
+msgstr "check"
 
 #: lib/ui/stdtoolbars.inc:395
 msgid "widehat"
-msgstr ""
+msgstr "widehat"
 
 #: lib/ui/stdtoolbars.inc:396
 msgid "widetilde"
-msgstr ""
+msgstr "widetilde"
 
 #: lib/ui/stdtoolbars.inc:397
 msgid "vec"
-msgstr ""
+msgstr "vec"
 
 #: lib/ui/stdtoolbars.inc:398
-#, fuzzy
 msgid "acute"
-msgstr "Datum"
+msgstr "acute"
 
 #: lib/ui/stdtoolbars.inc:399
-#, fuzzy
 msgid "ddot"
-msgstr "dd"
+msgstr "ddot"
 
 #: lib/ui/stdtoolbars.inc:400
 #, fuzzy
 msgid "dddot"
-msgstr "dd"
+msgstr "ddot"
 
 #: lib/ui/stdtoolbars.inc:401
 #, fuzzy
 msgid "ddddot"
-msgstr "dd"
+msgstr "ddot"
 
 #: lib/ui/stdtoolbars.inc:402
-#, fuzzy
 msgid "breve"
-msgstr "Voorbeeld|#V"
+msgstr "breve"
 
 #: lib/ui/stdtoolbars.inc:403
-#, fuzzy
 msgid "overline"
-msgstr "Sloveens"
+msgstr "overline"
 
 #: lib/ui/stdtoolbars.inc:404
 msgid "overbrace"
-msgstr ""
+msgstr "overbrace"
 
 #: lib/ui/stdtoolbars.inc:405
-#, fuzzy
 msgid "overleftarrow"
-msgstr "Rij verwijderen|w"
+msgstr "overleftarrow"
 
 #: lib/ui/stdtoolbars.inc:406
 msgid "overrightarrow"
-msgstr ""
+msgstr "overrightarrow"
 
 #: lib/ui/stdtoolbars.inc:407
 msgid "overleftrightarrow"
-msgstr ""
+msgstr "overleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:408
-#, fuzzy
 msgid "overset"
-msgstr "Resetten"
+msgstr "overset"
 
 #: lib/ui/stdtoolbars.inc:409
-#, fuzzy
 msgid "underline"
-msgstr "Onderstreept "
+msgstr "underline"
 
 #: lib/ui/stdtoolbars.inc:410
 msgid "underbrace"
-msgstr ""
+msgstr "underbrace"
 
 #: lib/ui/stdtoolbars.inc:411
 msgid "underleftarrow"
-msgstr ""
+msgstr "underleftarrow"
 
 #: lib/ui/stdtoolbars.inc:412
 msgid "underrightarrow"
-msgstr ""
+msgstr "underrightarrow"
 
 #: lib/ui/stdtoolbars.inc:413
 msgid "underleftrightarrow"
-msgstr ""
+msgstr "underleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:414
-#, fuzzy
 msgid "underset"
-msgstr "Vers"
+msgstr "underset"
 
 #: lib/ui/stdtoolbars.inc:418
-#, fuzzy
 msgid "leftarrow"
-msgstr "Rij verwijderen|w"
+msgstr "leftarrow"
 
 #: lib/ui/stdtoolbars.inc:419
 msgid "rightarrow"
-msgstr ""
+msgstr "rightarrow"
 
 #: lib/ui/stdtoolbars.inc:420
 msgid "downarrow"
-msgstr ""
+msgstr "downarrow"
 
 #: lib/ui/stdtoolbars.inc:421
-#, fuzzy
 msgid "uparrow"
-msgstr "Pijl"
+msgstr "uparrow"
 
 #: lib/ui/stdtoolbars.inc:422
 msgid "updownarrow"
-msgstr ""
+msgstr "updownarrow"
 
 #: lib/ui/stdtoolbars.inc:423
 msgid "leftrightarrow"
-msgstr ""
+msgstr "leftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:424
-#, fuzzy
 msgid "Leftarrow"
-msgstr "Links"
+msgstr "Leftarrow"
 
 #: lib/ui/stdtoolbars.inc:425
-#, fuzzy
 msgid "Rightarrow"
-msgstr "Rechts"
+msgstr "Rightarrow"
 
 #: lib/ui/stdtoolbars.inc:426
 msgid "Downarrow"
-msgstr ""
+msgstr "Downarrow"
 
 #: lib/ui/stdtoolbars.inc:427
-#, fuzzy
 msgid "Uparrow"
-msgstr "Pijl"
+msgstr "Uparrow"
 
 #: lib/ui/stdtoolbars.inc:428
 msgid "Updownarrow"
-msgstr ""
+msgstr "Updownarrow"
 
 #: lib/ui/stdtoolbars.inc:429
 msgid "Leftrightarrow"
-msgstr ""
+msgstr "Leftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:430
 msgid "Longleftrightarrow"
-msgstr ""
+msgstr "Longleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:431
 msgid "Longleftarrow"
-msgstr ""
+msgstr "Longleftarrow"
 
 #: lib/ui/stdtoolbars.inc:432
 msgid "Longrightarrow"
-msgstr ""
+msgstr "Longrightarrow"
 
 #: lib/ui/stdtoolbars.inc:433
 msgid "longleftrightarrow"
-msgstr ""
+msgstr "longleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:434
 msgid "longleftarrow"
-msgstr ""
+msgstr "longleftarrow"
 
 #: lib/ui/stdtoolbars.inc:435
 msgid "longrightarrow"
-msgstr ""
+msgstr "longrightarrow"
 
 #: lib/ui/stdtoolbars.inc:436
 msgid "leftharpoondown"
-msgstr ""
+msgstr "leftharpoondown"
 
 #: lib/ui/stdtoolbars.inc:437
 msgid "rightharpoondown"
-msgstr ""
+msgstr "rightharpoondown"
 
 #: lib/ui/stdtoolbars.inc:438
-#, fuzzy
 msgid "mapsto"
-msgstr "Onderschrift"
+msgstr "mapsto"
 
 #: lib/ui/stdtoolbars.inc:439
 msgid "longmapsto"
-msgstr ""
+msgstr "longmapsto"
 
 #: lib/ui/stdtoolbars.inc:440
-#, fuzzy
 msgid "nwarrow"
-msgstr "Pijl"
+msgstr "nwarrow"
 
 #: lib/ui/stdtoolbars.inc:441
-#, fuzzy
 msgid "nearrow"
-msgstr "Pijl"
+msgstr "nearrow"
 
 #: lib/ui/stdtoolbars.inc:442
 msgid "leftharpoonup"
-msgstr ""
+msgstr "leftharpoonup"
 
 #: lib/ui/stdtoolbars.inc:443
 msgid "rightharpoonup"
-msgstr ""
+msgstr "rightharpoonup"
 
 #: lib/ui/stdtoolbars.inc:444
 msgid "hookleftarrow"
-msgstr ""
+msgstr "hookleftarrow"
 
 #: lib/ui/stdtoolbars.inc:445
 msgid "hookrightarrow"
-msgstr ""
+msgstr "hookrightarrow"
 
 #: lib/ui/stdtoolbars.inc:446
-#, fuzzy
 msgid "swarrow"
-msgstr "Pijl"
+msgstr "swarrow"
 
 #: lib/ui/stdtoolbars.inc:447
-#, fuzzy
 msgid "searrow"
-msgstr "Pijl"
+msgstr "searrow"
 
 #: lib/ui/stdtoolbars.inc:448 lib/ui/stdtoolbars.inc:723
 msgid "rightleftharpoons"
-msgstr ""
+msgstr "rightleftharpoons"
 
 #: lib/ui/stdtoolbars.inc:452
 msgid "pm"
-msgstr ""
+msgstr "pm"
 
 #: lib/ui/stdtoolbars.inc:453
 msgid "cap"
-msgstr ""
+msgstr "cap"
 
 #: lib/ui/stdtoolbars.inc:454
-#, fuzzy
 msgid "diamond"
-msgstr " en "
+msgstr "diamond"
 
 #: lib/ui/stdtoolbars.inc:455
-#, fuzzy
 msgid "oplus"
-msgstr "Kolommen"
+msgstr "oplus"
 
 #: lib/ui/stdtoolbars.inc:456
-#, fuzzy
 msgid "mp"
-msgstr "Nadruk "
+msgstr "mp"
 
 #: lib/ui/stdtoolbars.inc:457
 msgid "cup"
-msgstr ""
+msgstr "cup"
 
 #: lib/ui/stdtoolbars.inc:458
 msgid "bigtriangleup"
-msgstr ""
+msgstr "bigtriangleup"
 
 #: lib/ui/stdtoolbars.inc:459
-#, fuzzy
 msgid "ominus"
-msgstr "minuten"
+msgstr "ominus"
 
 #: lib/ui/stdtoolbars.inc:460
 msgid "times"
-msgstr ""
+msgstr "times"
 
 #: lib/ui/stdtoolbars.inc:461
-#, fuzzy
 msgid "uplus"
-msgstr "Uitvoer"
+msgstr "uplus"
 
 #: lib/ui/stdtoolbars.inc:462
 msgid "bigtriangledown"
-msgstr ""
+msgstr "bigtriangledown"
 
 #: lib/ui/stdtoolbars.inc:463
-#, fuzzy
 msgid "otimes"
-msgstr "Kopiën"
+msgstr "otimes"
 
 #: lib/ui/stdtoolbars.inc:464
 msgid "div"
-msgstr ""
+msgstr "div"
 
 #: lib/ui/stdtoolbars.inc:465
 msgid "sqcap"
-msgstr ""
+msgstr "sqcap"
 
 #: lib/ui/stdtoolbars.inc:466
-#, fuzzy
 msgid "triangleright"
-msgstr "Rechtsboven"
+msgstr "triangleright"
 
 #: lib/ui/stdtoolbars.inc:467
-#, fuzzy
 msgid "oslash"
-msgstr "Pools"
+msgstr "oslash"
 
 #: lib/ui/stdtoolbars.inc:468
 msgid "cdot"
-msgstr ""
+msgstr "cdot"
 
 #: lib/ui/stdtoolbars.inc:469
 msgid "sqcup"
-msgstr ""
+msgstr "sqcup"
 
 #: lib/ui/stdtoolbars.inc:470
 msgid "triangleleft"
-msgstr ""
+msgstr "triangleleft"
 
 #: lib/ui/stdtoolbars.inc:471
-#, fuzzy
 msgid "odot"
-msgstr "voettekst"
+msgstr "odot"
 
 #: lib/ui/stdtoolbars.inc:472
 msgid "star"
-msgstr ""
+msgstr "star"
 
 #: lib/ui/stdtoolbars.inc:473
-#, fuzzy
 msgid "vee"
-msgstr "Sloveens"
+msgstr "vee"
 
 #: lib/ui/stdtoolbars.inc:474
-#, fuzzy
 msgid "amalg"
-msgstr "Email"
+msgstr "amalg"
 
 #: lib/ui/stdtoolbars.inc:475
 msgid "bigcirc"
-msgstr ""
+msgstr "bigcirc"
 
 #: lib/ui/stdtoolbars.inc:476
-#, fuzzy
 msgid "setminus"
-msgstr "minuten"
+msgstr "setminus"
 
 #: lib/ui/stdtoolbars.inc:477
 msgid "wedge"
-msgstr ""
+msgstr "wedge"
 
 #: lib/ui/stdtoolbars.inc:478
-#, fuzzy
 msgid "dagger"
-msgstr "Groter"
+msgstr "dagger"
 
 #: lib/ui/stdtoolbars.inc:479
-#, fuzzy
 msgid "circ"
-msgstr "cc"
+msgstr "circ"
 
 #: lib/ui/stdtoolbars.inc:480
-#, fuzzy
 msgid "bullet"
-msgstr "Lijsten"
+msgstr "bullet"
 
 #: lib/ui/stdtoolbars.inc:481
 msgid "wr"
-msgstr ""
+msgstr "wr"
 
 #: lib/ui/stdtoolbars.inc:482
-#, fuzzy
 msgid "ddagger"
-msgstr "Groter"
+msgstr "ddagger"
 
 #: lib/ui/stdtoolbars.inc:486
 msgid "leq"
-msgstr ""
+msgstr "leq"
 
 #: lib/ui/stdtoolbars.inc:487
 msgid "geq"
-msgstr ""
+msgstr "geq"
 
 #: lib/ui/stdtoolbars.inc:488
 msgid "equiv"
-msgstr ""
+msgstr "equiv"
 
 #: lib/ui/stdtoolbars.inc:489
-#, fuzzy
 msgid "models"
-msgstr "Sluiten"
+msgstr "models"
 
 #: lib/ui/stdtoolbars.inc:490
-#, fuzzy
 msgid "prec"
-msgstr "pc"
+msgstr "prec"
 
 #: lib/ui/stdtoolbars.inc:491
-#, fuzzy
 msgid "succ"
-msgstr "cc"
+msgstr "succ"
 
 #: lib/ui/stdtoolbars.inc:492
 msgid "sim"
-msgstr ""
+msgstr "sim"
 
 #: lib/ui/stdtoolbars.inc:493
 msgid "perp"
-msgstr ""
+msgstr "perp"
 
 #: lib/ui/stdtoolbars.inc:494
-#, fuzzy
 msgid "preceq"
-msgstr " fouten gevonden."
+msgstr "preceq"
 
 #: lib/ui/stdtoolbars.inc:495
 msgid "succeq"
-msgstr ""
+msgstr "succeq"
 
 #: lib/ui/stdtoolbars.inc:496
 msgid "simeq"
-msgstr ""
+msgstr "simeq"
 
 #: lib/ui/stdtoolbars.inc:497
 msgid "mid"
-msgstr ""
+msgstr "mid"
 
 #: lib/ui/stdtoolbars.inc:498
-#, fuzzy
 msgid "ll"
-msgstr "&Alle"
+msgstr "ll"
 
 #: lib/ui/stdtoolbars.inc:499
 msgid "gg"
-msgstr ""
+msgstr "gg"
 
 #: lib/ui/stdtoolbars.inc:500
 msgid "asymp"
-msgstr ""
+msgstr "asymp"
 
 #: lib/ui/stdtoolbars.inc:501
-#, fuzzy
 msgid "parallel"
-msgstr "tabular lijn"
+msgstr "parallel"
 
 #: lib/ui/stdtoolbars.inc:502
-#, fuzzy
 msgid "subset"
-msgstr "Subsubsectie"
+msgstr "subset"
 
 #: lib/ui/stdtoolbars.inc:503
 msgid "supset"
-msgstr ""
+msgstr "supset"
 
 #: lib/ui/stdtoolbars.inc:504
-#, fuzzy
 msgid "approx"
-msgstr "Hoofddocument:"
+msgstr "approx"
 
 #: lib/ui/stdtoolbars.inc:505
-#, fuzzy
 msgid "smile"
-msgstr "Bestand"
+msgstr "smile"
 
 #: lib/ui/stdtoolbars.inc:506
 msgid "subseteq"
-msgstr ""
+msgstr "subseteq"
 
 #: lib/ui/stdtoolbars.inc:507
 msgid "supseteq"
-msgstr ""
+msgstr "supseteq"
 
 #: lib/ui/stdtoolbars.inc:508
-#, fuzzy
 msgid "cong"
-msgstr "aan"
+msgstr "cong"
 
 #: lib/ui/stdtoolbars.inc:509
-#, fuzzy
 msgid "frown"
-msgstr "Twee|#w"
+msgstr "frown"
 
 #: lib/ui/stdtoolbars.inc:510
 msgid "sqsubseteq"
-msgstr ""
+msgstr "sqsubseteq"
 
 #: lib/ui/stdtoolbars.inc:511
 msgid "sqsupseteq"
-msgstr ""
+msgstr "sqsupseteq"
 
 #: lib/ui/stdtoolbars.inc:512
-#, fuzzy
 msgid "doteq"
-msgstr "opmerking"
+msgstr "doteq"
 
 #: lib/ui/stdtoolbars.inc:513
 msgid "neq"
-msgstr ""
+msgstr "neq"
 
 #: lib/ui/stdtoolbars.inc:514 src/frontends/qt4/GuiGraphics.cpp:476
 #: src/lengthcommon.cpp:38
@@ -15768,89 +15861,79 @@ msgstr "in"
 
 #: lib/ui/stdtoolbars.inc:515
 msgid "ni"
-msgstr ""
+msgstr "ni"
 
 #: lib/ui/stdtoolbars.inc:516
-#, fuzzy
 msgid "propto"
-msgstr "t Boven|#T"
+msgstr "propto"
 
 #: lib/ui/stdtoolbars.inc:517
-#, fuzzy
 msgid "notin"
-msgstr "opmerking"
+msgstr "notin"
 
 #: lib/ui/stdtoolbars.inc:518
 msgid "vdash"
-msgstr ""
+msgstr "vdash"
 
 #: lib/ui/stdtoolbars.inc:519
 msgid "dashv"
-msgstr ""
+msgstr "dashv"
 
 #: lib/ui/stdtoolbars.inc:520
-#, fuzzy
 msgid "bowtie"
-msgstr "opmerking"
+msgstr "bowtie"
 
 #: lib/ui/stdtoolbars.inc:524
 msgid "alpha"
-msgstr ""
+msgstr "alpha"
 
 #: lib/ui/stdtoolbars.inc:525
 msgid "beta"
-msgstr ""
+msgstr "beta"
 
 #: lib/ui/stdtoolbars.inc:526
-#, fuzzy
 msgid "gamma"
-msgstr "Lemma"
+msgstr "gamma"
 
 #: lib/ui/stdtoolbars.inc:527
-#, fuzzy
 msgid "delta"
-msgstr "standaard"
+msgstr "delta"
 
 #: lib/ui/stdtoolbars.inc:528
-#, fuzzy
 msgid "epsilon"
-msgstr "Versie"
+msgstr "epsilon"
 
 #: lib/ui/stdtoolbars.inc:529
 msgid "varepsilon"
-msgstr ""
+msgstr "varepsilon"
 
 #: lib/ui/stdtoolbars.inc:530
 msgid "zeta"
-msgstr ""
+msgstr "zeta"
 
 #: lib/ui/stdtoolbars.inc:531
-#, fuzzy
 msgid "eta"
-msgstr "Magenta"
+msgstr "eta"
 
 #: lib/ui/stdtoolbars.inc:532
-#, fuzzy
 msgid "theta"
-msgstr "tekst"
+msgstr "theta"
 
 #: lib/ui/stdtoolbars.inc:533
-#, fuzzy
 msgid "vartheta"
-msgstr "Matrix"
+msgstr "vartheta"
 
 #: lib/ui/stdtoolbars.inc:534
-#, fuzzy
 msgid "iota"
-msgstr "s Opslaan"
+msgstr "iota"
 
 #: lib/ui/stdtoolbars.inc:535
 msgid "kappa"
-msgstr ""
+msgstr "kappa"
 
 #: lib/ui/stdtoolbars.inc:536
 msgid "lambda"
-msgstr ""
+msgstr "lambda"
 
 #: lib/ui/stdtoolbars.inc:537
 msgid "mu"
@@ -15858,327 +15941,284 @@ msgstr "mu"
 
 #: lib/ui/stdtoolbars.inc:538
 msgid "nu"
-msgstr ""
+msgstr "nu"
 
 #: lib/ui/stdtoolbars.inc:539
-#, fuzzy
 msgid "xi"
-msgstr "x"
+msgstr "xi"
 
 #: lib/ui/stdtoolbars.inc:540
 msgid "pi"
-msgstr ""
+msgstr "pi"
 
 #: lib/ui/stdtoolbars.inc:541
 msgid "varpi"
-msgstr ""
+msgstr "varpi"
 
 #: lib/ui/stdtoolbars.inc:542
 msgid "rho"
-msgstr ""
+msgstr "rho"
 
 #: lib/ui/stdtoolbars.inc:543
-#, fuzzy
 msgid "varrho"
-msgstr "Pijl"
+msgstr "varrho"
 
 #: lib/ui/stdtoolbars.inc:544
 msgid "sigma"
-msgstr ""
+msgstr "sigma"
 
 #: lib/ui/stdtoolbars.inc:545
 msgid "varsigma"
-msgstr ""
+msgstr "varsigma"
 
 #: lib/ui/stdtoolbars.inc:546
-#, fuzzy
 msgid "tau"
-msgstr "Status"
+msgstr "tau"
 
 #: lib/ui/stdtoolbars.inc:547
-#, fuzzy
 msgid "upsilon"
-msgstr "Oostenrijks"
+msgstr "upsilon"
 
 #: lib/ui/stdtoolbars.inc:548
 msgid "phi"
-msgstr ""
+msgstr "phi"
 
 #: lib/ui/stdtoolbars.inc:549
 msgid "varphi"
-msgstr ""
+msgstr "varphi"
 
 #: lib/ui/stdtoolbars.inc:550
 msgid "chi"
-msgstr ""
+msgstr "chi"
 
 #: lib/ui/stdtoolbars.inc:551
-#, fuzzy
 msgid "psi"
-msgstr "ps"
+msgstr "psi"
 
 #: lib/ui/stdtoolbars.inc:552
-#, fuzzy
 msgid "omega"
-msgstr "Romeins"
+msgstr "omega"
 
 #: lib/ui/stdtoolbars.inc:553
-#, fuzzy
 msgid "Gamma"
-msgstr "Lemma"
+msgstr "Gamma"
 
 #: lib/ui/stdtoolbars.inc:554
-#, fuzzy
 msgid "Delta"
-msgstr "Verwij&deren"
+msgstr "Delta"
 
 #: lib/ui/stdtoolbars.inc:555
-#, fuzzy
 msgid "Theta"
-msgstr "Thais"
+msgstr "Theta"
 
 #: lib/ui/stdtoolbars.inc:556
 msgid "Lambda"
-msgstr ""
+msgstr "Lambda"
 
 #: lib/ui/stdtoolbars.inc:557
 msgid "Xi"
-msgstr ""
+msgstr "Xi"
 
 #: lib/ui/stdtoolbars.inc:558
 msgid "Pi"
-msgstr ""
+msgstr "Pi"
 
 #: lib/ui/stdtoolbars.inc:559
-#, fuzzy
 msgid "Sigma"
-msgstr "Klein"
+msgstr "Sigma"
 
 #: lib/ui/stdtoolbars.inc:560
 msgid "Upsilon"
-msgstr ""
+msgstr "Upsilon"
 
 #: lib/ui/stdtoolbars.inc:561
 msgid "Phi"
-msgstr ""
+msgstr "Phi"
 
 #: lib/ui/stdtoolbars.inc:562
 msgid "Psi"
-msgstr ""
+msgstr "Psi"
 
 #: lib/ui/stdtoolbars.inc:563
 msgid "Omega"
-msgstr ""
+msgstr "Omega"
 
 #: lib/ui/stdtoolbars.inc:567
-#, fuzzy
 msgid "nabla"
-msgstr "&Lange tabel"
+msgstr "nabla"
 
 #: lib/ui/stdtoolbars.inc:568
-#, fuzzy
 msgid "partial"
-msgstr "tabular lijn"
+msgstr "partial"
 
 #: lib/ui/stdtoolbars.inc:569
-#, fuzzy
 msgid "infty"
-msgstr "Minuscuul"
+msgstr "infty"
 
 #: lib/ui/stdtoolbars.inc:570
 msgid "prime"
-msgstr ""
+msgstr "prime"
 
 #: lib/ui/stdtoolbars.inc:571
-#, fuzzy
 msgid "ell"
-msgstr "ispell"
+msgstr "ell"
 
 #: lib/ui/stdtoolbars.inc:572
-#, fuzzy
 msgid "emptyset"
-msgstr "leeg"
+msgstr "emptyset"
 
 #: lib/ui/stdtoolbars.inc:573
-#, fuzzy
 msgid "exists"
-msgstr "Met dank aan"
+msgstr "exists"
 
 #: lib/ui/stdtoolbars.inc:574
-#, fuzzy
 msgid "forall"
-msgstr "Normaal"
+msgstr "forall"
 
 #: lib/ui/stdtoolbars.inc:575
-#, fuzzy
 msgid "imath"
-msgstr "wiskunde"
+msgstr "imath"
 
 #: lib/ui/stdtoolbars.inc:576
-#, fuzzy
 msgid "jmath"
-msgstr "wiskunde"
+msgstr "jmath"
 
 #: lib/ui/stdtoolbars.inc:577
-#, fuzzy
 msgid "Re"
-msgstr "Rood"
+msgstr "Re"
 
 #: lib/ui/stdtoolbars.inc:578
-#, fuzzy
 msgid "Im"
-msgstr "em"
+msgstr "Im"
 
 #: lib/ui/stdtoolbars.inc:579
-#, fuzzy
 msgid "aleph"
-msgstr ", Diepte: "
+msgstr "aleph"
 
 #: lib/ui/stdtoolbars.inc:580
 msgid "wp"
-msgstr ""
+msgstr "wp"
 
 #: lib/ui/stdtoolbars.inc:581 lib/ui/stdtoolbars.inc:666
-#, fuzzy
 msgid "hbar"
-msgstr "dieptestreep"
+msgstr "hbar"
 
 #: lib/ui/stdtoolbars.inc:582 lib/ui/stdtoolbars.inc:673
-#, fuzzy
 msgid "angle"
-msgstr "Enkel"
+msgstr "angle"
 
 #: lib/ui/stdtoolbars.inc:583
-#, fuzzy
 msgid "top"
-msgstr "t Boven|#T"
+msgstr "top"
 
 #: lib/ui/stdtoolbars.inc:584
-#, fuzzy
 msgid "bot"
-msgstr "t Boven|#T"
+msgstr "bot"
 
 #: lib/ui/stdtoolbars.inc:585
-#, fuzzy
 msgid "Vert"
-msgstr "Vers"
+msgstr "Vert"
 
 #: lib/ui/stdtoolbars.inc:586
 msgid "neg"
-msgstr ""
+msgstr "neg"
 
 #: lib/ui/stdtoolbars.inc:587
-#, fuzzy
 msgid "flat"
-msgstr "drijvende delen"
+msgstr "flat"
 
 #: lib/ui/stdtoolbars.inc:588
-#, fuzzy
 msgid "natural"
-msgstr "Figuur"
+msgstr "natural"
 
 #: lib/ui/stdtoolbars.inc:589
 msgid "sharp"
-msgstr ""
+msgstr "sharp"
 
 #: lib/ui/stdtoolbars.inc:590
 msgid "surd"
-msgstr ""
+msgstr "surd"
 
 #: lib/ui/stdtoolbars.inc:591
-#, fuzzy
 msgid "triangle"
-msgstr "Enkel"
+msgstr "triangle"
 
 #: lib/ui/stdtoolbars.inc:592
 msgid "diamondsuit"
-msgstr ""
+msgstr "diamondsuit"
 
 #: lib/ui/stdtoolbars.inc:593
-#, fuzzy
 msgid "heartsuit"
-msgstr "erven"
+msgstr "heartsuit"
 
 #: lib/ui/stdtoolbars.inc:594
 msgid "clubsuit"
-msgstr ""
+msgstr "clubsuit"
 
 #: lib/ui/stdtoolbars.inc:595
 msgid "spadesuit"
-msgstr ""
+msgstr "spadesuit"
 
 #: lib/ui/stdtoolbars.inc:596
 msgid "textrm \\AA"
-msgstr ""
+msgstr "textrm \\AA"
 
 #: lib/ui/stdtoolbars.inc:597
-#, fuzzy
 msgid "textrm \\O"
-msgstr "tekst"
+msgstr "textrm \\O"
 
 #: lib/ui/stdtoolbars.inc:598
 msgid "mathcircumflex"
-msgstr ""
+msgstr "mathcircumflex"
 
 #: lib/ui/stdtoolbars.inc:599
 msgid "_"
-msgstr ""
+msgstr "_"
 
 # `mode' is eigenlijk een anglicisme
 #: lib/ui/stdtoolbars.inc:600
-#, fuzzy
 msgid "mathrm T"
-msgstr "wiskunde frame"
+msgstr "mathrm T"
 
 #: lib/ui/stdtoolbars.inc:601
-#, fuzzy
 msgid "mathbb N"
-msgstr "wiskunde"
+msgstr "mathbb N"
 
 #: lib/ui/stdtoolbars.inc:602
-#, fuzzy
 msgid "mathbb Z"
-msgstr "wiskunde"
+msgstr "mathbb Z"
 
 #: lib/ui/stdtoolbars.inc:603
-#, fuzzy
 msgid "mathbb Q"
-msgstr "wiskunde"
+msgstr "mathbb Q"
 
 #: lib/ui/stdtoolbars.inc:604
-#, fuzzy
 msgid "mathbb R"
-msgstr "wiskunde"
+msgstr "mathbb R"
 
 #: lib/ui/stdtoolbars.inc:605
-#, fuzzy
 msgid "mathbb C"
-msgstr "wiskunde"
+msgstr "mathbb C"
 
 #: lib/ui/stdtoolbars.inc:606
-#, fuzzy
 msgid "mathbb H"
-msgstr "wiskunde"
+msgstr "mathbb H"
 
 #: lib/ui/stdtoolbars.inc:607
-#, fuzzy
 msgid "mathcal F"
-msgstr "wiskunde"
+msgstr "mathcal F"
 
 #: lib/ui/stdtoolbars.inc:608
-#, fuzzy
 msgid "mathcal L"
-msgstr "wiskunde"
+msgstr "mathcal L"
 
 #: lib/ui/stdtoolbars.inc:609
-#, fuzzy
 msgid "mathcal H"
-msgstr "wiskunde"
+msgstr "mathcal H"
 
 #: lib/ui/stdtoolbars.inc:610
-#, fuzzy
 msgid "mathcal O"
-msgstr "wiskunde"
+msgstr "mathcal O"
 
 #: lib/ui/stdtoolbars.inc:613
 #, fuzzy
@@ -16186,179 +16226,164 @@ msgid "Big Operators"
 msgstr "Grote operanden"
 
 #: lib/ui/stdtoolbars.inc:614
-#, fuzzy
 msgid "intop"
-msgstr "t Lijn boven"
+msgstr "intop"
 
 #: lib/ui/stdtoolbars.inc:615
-#, fuzzy
 msgid "int"
-msgstr "in"
+msgstr "int"
 
 #: lib/ui/stdtoolbars.inc:616
-#, fuzzy
 msgid "iint"
-msgstr "in"
+msgstr "iint"
 
 #: lib/ui/stdtoolbars.inc:617
-#, fuzzy
 msgid "iintop"
-msgstr "t Lijn boven"
+msgstr "iintop"
 
 #: lib/ui/stdtoolbars.inc:618
 msgid "iiint"
-msgstr ""
+msgstr "iiint"
 
 #: lib/ui/stdtoolbars.inc:619
-#, fuzzy
 msgid "iiintop"
-msgstr "t Lijn boven"
+msgstr "iiintop"
 
 #: lib/ui/stdtoolbars.inc:620
 msgid "iiiint"
-msgstr ""
+msgstr "iiiint"
 
 #: lib/ui/stdtoolbars.inc:621
 msgid "iiiintop"
-msgstr ""
+msgstr "iiiintop"
 
 #: lib/ui/stdtoolbars.inc:622
 msgid "dotsint"
-msgstr ""
+msgstr "dotsint"
 
 #: lib/ui/stdtoolbars.inc:623
 msgid "dotsintop"
-msgstr ""
+msgstr "dotsintop"
 
 #: lib/ui/stdtoolbars.inc:624
-#, fuzzy
 msgid "oint"
-msgstr "in"
+msgstr "oint"
 
 #: lib/ui/stdtoolbars.inc:625
-#, fuzzy
 msgid "ointop"
-msgstr "t Lijn boven"
+msgstr "ointop"
 
 #: lib/ui/stdtoolbars.inc:626
-#, fuzzy
 msgid "oiint"
-msgstr "Lettertype: "
+msgstr "oiint"
 
 #: lib/ui/stdtoolbars.inc:627
-#, fuzzy
 msgid "oiintop"
-msgstr "t Lijn boven"
+msgstr "oiintop"
 
 #: lib/ui/stdtoolbars.inc:628
 msgid "ointctrclockwiseop"
-msgstr ""
+msgstr "ointctrclockwiseop"
 
 #: lib/ui/stdtoolbars.inc:629
 msgid "ointctrclockwise"
-msgstr ""
+msgstr "ointctrclockwise"
 
 #: lib/ui/stdtoolbars.inc:630
 msgid "ointclockwiseop"
-msgstr ""
+msgstr "ointclockwiseop"
 
 #: lib/ui/stdtoolbars.inc:631
 msgid "ointclockwise"
-msgstr ""
+msgstr "ointclockwise"
 
 #: lib/ui/stdtoolbars.inc:632
 msgid "sqint"
-msgstr ""
+msgstr "sqint"
 
 #: lib/ui/stdtoolbars.inc:633
-#, fuzzy
 msgid "sqintop"
-msgstr "t Lijn boven"
+msgstr "sqintop"
 
 #: lib/ui/stdtoolbars.inc:634
 msgid "sqiint"
-msgstr ""
+msgstr "sqiint"
 
 #: lib/ui/stdtoolbars.inc:635
 msgid "sqiintop"
-msgstr ""
+msgstr "sqiintop"
 
 #: lib/ui/stdtoolbars.inc:636
-#, fuzzy
 msgid "fint"
-msgstr "in"
+msgstr "fint"
 
 #: lib/ui/stdtoolbars.inc:637
-#, fuzzy
 msgid "fintop"
-msgstr "t Lijn boven"
+msgstr "fintop"
 
 #: lib/ui/stdtoolbars.inc:638
 msgid "landupint"
-msgstr ""
+msgstr "landupint"
 
 #: lib/ui/stdtoolbars.inc:639
-#, fuzzy
 msgid "landupintop"
-msgstr "t Lijn boven"
+msgstr "landupintop"
 
 #: lib/ui/stdtoolbars.inc:640
 msgid "landdownint"
-msgstr ""
+msgstr "landdownint"
 
 #: lib/ui/stdtoolbars.inc:641
-#, fuzzy
 msgid "landdownintop"
-msgstr "t Lijn boven"
+msgstr "landdownintop"
 
 #: lib/ui/stdtoolbars.inc:642
 msgid "sum"
-msgstr ""
+msgstr "sum"
 
 #: lib/ui/stdtoolbars.inc:643
-#, fuzzy
 msgid "prod"
-msgstr " fouten gevonden."
+msgstr "prod"
 
 #: lib/ui/stdtoolbars.inc:644
 msgid "coprod"
-msgstr ""
+msgstr "coprod"
 
 #: lib/ui/stdtoolbars.inc:645
 msgid "bigsqcup"
-msgstr ""
+msgstr "bigsqcup"
 
 #: lib/ui/stdtoolbars.inc:646
 msgid "bigotimes"
-msgstr ""
+msgstr "bigotimes"
 
 #: lib/ui/stdtoolbars.inc:647
 msgid "bigodot"
-msgstr ""
+msgstr "bigodot"
 
 #: lib/ui/stdtoolbars.inc:648
 msgid "bigoplus"
-msgstr ""
+msgstr "bigoplus"
 
 #: lib/ui/stdtoolbars.inc:649
 msgid "bigcap"
-msgstr ""
+msgstr "bigcap"
 
 #: lib/ui/stdtoolbars.inc:650
 msgid "bigcup"
-msgstr ""
+msgstr "bigcup"
 
 #: lib/ui/stdtoolbars.inc:651
 msgid "biguplus"
-msgstr ""
+msgstr "biguplus"
 
 #: lib/ui/stdtoolbars.inc:652
 msgid "bigvee"
-msgstr ""
+msgstr "bigvee"
 
 #: lib/ui/stdtoolbars.inc:653
 msgid "bigwedge"
-msgstr ""
+msgstr "bigwedge"
 
 #: lib/ui/stdtoolbars.inc:656
 msgid "AMS Miscellaneous"
@@ -16366,152 +16391,140 @@ msgstr "AMS overig"
 
 #: lib/ui/stdtoolbars.inc:657
 msgid "digamma"
-msgstr ""
+msgstr "digamma"
 
 #: lib/ui/stdtoolbars.inc:658
 msgid "varkappa"
-msgstr ""
+msgstr "varkappa"
 
 #: lib/ui/stdtoolbars.inc:659
-#, fuzzy
 msgid "beth"
-msgstr ", Diepte: "
+msgstr "beth"
 
 #: lib/ui/stdtoolbars.inc:660
-#, fuzzy
 msgid "daleth"
-msgstr "standaard"
+msgstr "daleth"
 
 #: lib/ui/stdtoolbars.inc:661
 msgid "gimel"
-msgstr ""
+msgstr "gimel"
 
 #: lib/ui/stdtoolbars.inc:662
 msgid "ulcorner"
-msgstr ""
+msgstr "ulcorner"
 
 #: lib/ui/stdtoolbars.inc:663
 msgid "urcorner"
-msgstr ""
+msgstr "urcorner"
 
 #: lib/ui/stdtoolbars.inc:664
-#, fuzzy
 msgid "llcorner"
-msgstr "Alle randen"
+msgstr "llcorner"
 
 #: lib/ui/stdtoolbars.inc:665
 msgid "lrcorner"
-msgstr ""
+msgstr "lrcorner"
 
 #: lib/ui/stdtoolbars.inc:667
 msgid "hslash"
-msgstr ""
+msgstr "hslash"
 
 #: lib/ui/stdtoolbars.inc:668
-#, fuzzy
 msgid "vartriangle"
-msgstr "tabular lijn"
+msgstr "vartriangle"
 
 #: lib/ui/stdtoolbars.inc:669
 msgid "triangledown"
-msgstr ""
+msgstr "triangledown"
 
 #: lib/ui/stdtoolbars.inc:670
-#, fuzzy
 msgid "square"
-msgstr "blauw"
+msgstr "square"
 
 #: lib/ui/stdtoolbars.inc:671
-#, fuzzy
 msgid "lozenge"
-msgstr "Sloveens"
+msgstr "lozenge"
 
 #: lib/ui/stdtoolbars.inc:672
 msgid "circledS"
-msgstr ""
+msgstr "circledS"
 
 #: lib/ui/stdtoolbars.inc:674
 msgid "measuredangle"
-msgstr ""
+msgstr "measuredangle"
 
 #: lib/ui/stdtoolbars.inc:675
-#, fuzzy
 msgid "nexists"
-msgstr "i Inspringen|#I"
+msgstr "nexists"
 
 #: lib/ui/stdtoolbars.inc:676
 msgid "mho"
-msgstr ""
+msgstr "mho"
 
 #: lib/ui/stdtoolbars.inc:677
-#, fuzzy
 msgid "Finv"
-msgstr "in"
+msgstr "Finv"
 
 #: lib/ui/stdtoolbars.inc:678
-#, fuzzy
 msgid "Game"
-msgstr "Naam"
+msgstr "Game"
 
 #: lib/ui/stdtoolbars.inc:679
 msgid "Bbbk"
-msgstr ""
+msgstr "Bbbk"
 
 #: lib/ui/stdtoolbars.inc:680
 msgid "backprime"
-msgstr ""
+msgstr "backprime"
 
 #: lib/ui/stdtoolbars.inc:681
 msgid "varnothing"
-msgstr ""
+msgstr "varnothing"
 
 #: lib/ui/stdtoolbars.inc:682
 #, fuzzy
 msgid "Diamond"
-msgstr " en "
+msgstr "diamond"
 
 #: lib/ui/stdtoolbars.inc:683
 msgid "blacktriangle"
-msgstr ""
+msgstr "blacktriangle"
 
 #: lib/ui/stdtoolbars.inc:684
 msgid "blacktriangledown"
-msgstr ""
+msgstr "blacktriangledown"
 
 #: lib/ui/stdtoolbars.inc:685
-#, fuzzy
 msgid "blacksquare"
-msgstr "zwart"
+msgstr "blacksquare"
 
 #: lib/ui/stdtoolbars.inc:686
 msgid "blacklozenge"
-msgstr ""
+msgstr "blacklozenge"
 
 #: lib/ui/stdtoolbars.inc:687
 msgid "bigstar"
-msgstr ""
+msgstr "bigstar"
 
 #: lib/ui/stdtoolbars.inc:688
 msgid "sphericalangle"
-msgstr ""
+msgstr "sphericalangle"
 
 #: lib/ui/stdtoolbars.inc:689
-#, fuzzy
 msgid "complement"
-msgstr "Commentaar:"
+msgstr "complement"
 
 #: lib/ui/stdtoolbars.inc:690
-#, fuzzy
 msgid "eth"
-msgstr ", Diepte: "
+msgstr "eth"
 
 #: lib/ui/stdtoolbars.inc:691
 msgid "diagup"
-msgstr ""
+msgstr "diagup"
 
 #: lib/ui/stdtoolbars.inc:692
 msgid "diagdown"
-msgstr ""
+msgstr "diagdown"
 
 #: lib/ui/stdtoolbars.inc:695
 #, fuzzy
@@ -16520,153 +16533,147 @@ msgstr "AMS pijlen"
 
 #: lib/ui/stdtoolbars.inc:696
 msgid "dashleftarrow"
-msgstr ""
+msgstr "dashleftarrow"
 
 #: lib/ui/stdtoolbars.inc:697
 msgid "dashrightarrow"
-msgstr ""
+msgstr "dashrightarrow"
 
 #: lib/ui/stdtoolbars.inc:698
 msgid "leftleftarrows"
-msgstr ""
+msgstr "leftleftarrows"
 
 #: lib/ui/stdtoolbars.inc:699
 msgid "leftrightarrows"
-msgstr ""
+msgstr "leftrightarrows"
 
 #: lib/ui/stdtoolbars.inc:700
 msgid "rightrightarrows"
-msgstr ""
+msgstr "rightrightarrows"
 
 #: lib/ui/stdtoolbars.inc:701
 msgid "rightleftarrows"
-msgstr ""
+msgstr "rightleftarrows"
 
 #: lib/ui/stdtoolbars.inc:702
-#, fuzzy
 msgid "Lleftarrow"
-msgstr "Rij verwijderen|w"
+msgstr "Lleftarrow"
 
 #: lib/ui/stdtoolbars.inc:703
-#, fuzzy
 msgid "Rrightarrow"
-msgstr "Rechts"
+msgstr "Rrightarrow"
 
 #: lib/ui/stdtoolbars.inc:704
 msgid "twoheadleftarrow"
-msgstr ""
+msgstr "twoheadleftarrow"
 
 #: lib/ui/stdtoolbars.inc:705
 msgid "twoheadrightarrow"
-msgstr ""
+msgstr "twoheadrightarrow"
 
 #: lib/ui/stdtoolbars.inc:706
 msgid "leftarrowtail"
-msgstr ""
+msgstr "leftarrowtail"
 
 #: lib/ui/stdtoolbars.inc:707
 msgid "rightarrowtail"
-msgstr ""
+msgstr "rightarrowtail"
 
 #: lib/ui/stdtoolbars.inc:708
 msgid "looparrowleft"
-msgstr ""
+msgstr "looparrowleft"
 
 #: lib/ui/stdtoolbars.inc:709
-#, fuzzy
 msgid "looparrowright"
-msgstr "Copyright"
+msgstr "looparrowright"
 
 #: lib/ui/stdtoolbars.inc:710
 msgid "curvearrowleft"
-msgstr ""
+msgstr "curvearrowleft"
 
 #: lib/ui/stdtoolbars.inc:711
 msgid "curvearrowright"
-msgstr ""
+msgstr "curvearrowright"
 
 #: lib/ui/stdtoolbars.inc:712
 msgid "circlearrowleft"
-msgstr ""
+msgstr "circlearrowleft"
 
 #: lib/ui/stdtoolbars.inc:713
 msgid "circlearrowright"
-msgstr ""
+msgstr "circlearrowright"
 
 #: lib/ui/stdtoolbars.inc:714
 msgid "Lsh"
-msgstr ""
+msgstr "Lsh"
 
 #: lib/ui/stdtoolbars.inc:715
 msgid "Rsh"
-msgstr ""
+msgstr "Rsh"
 
 #: lib/ui/stdtoolbars.inc:716
-#, fuzzy
 msgid "upuparrows"
-msgstr "Bladeren|#B"
+msgstr "upuparrows"
 
 #: lib/ui/stdtoolbars.inc:717
 msgid "downdownarrows"
-msgstr ""
+msgstr "downdownarrows"
 
 #: lib/ui/stdtoolbars.inc:718
 msgid "upharpoonleft"
-msgstr ""
+msgstr "upharpoonleft"
 
 #: lib/ui/stdtoolbars.inc:719
 msgid "upharpoonright"
-msgstr ""
+msgstr "upharpoonright"
 
 #: lib/ui/stdtoolbars.inc:720
 msgid "downharpoonleft"
-msgstr ""
+msgstr "downharpoonleft"
 
 #: lib/ui/stdtoolbars.inc:721
 msgid "downharpoonright"
-msgstr ""
+msgstr "downharpoonright"
 
 #: lib/ui/stdtoolbars.inc:722
 msgid "leftrightharpoons"
-msgstr ""
+msgstr "leftrightharpoons"
 
 #: lib/ui/stdtoolbars.inc:724
 msgid "rightsquigarrow"
-msgstr ""
+msgstr "rightsquigarrow"
 
 #: lib/ui/stdtoolbars.inc:725
 msgid "leftrightsquigarrow"
-msgstr ""
+msgstr "leftrightsquigarrow"
 
 #: lib/ui/stdtoolbars.inc:726
-#, fuzzy
 msgid "nleftarrow"
-msgstr "Rij verwijderen|w"
+msgstr "nleftarrow"
 
 #: lib/ui/stdtoolbars.inc:727
 msgid "nrightarrow"
-msgstr ""
+msgstr "nrightarrow"
 
 #: lib/ui/stdtoolbars.inc:728
 msgid "nleftrightarrow"
-msgstr ""
+msgstr "nleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:729
 msgid "nLeftarrow"
-msgstr ""
+msgstr "nLeftarrow"
 
 #: lib/ui/stdtoolbars.inc:730
-#, fuzzy
 msgid "nRightarrow"
-msgstr "Rechts"
+msgstr "nRightarrow"
 
 #: lib/ui/stdtoolbars.inc:731
 msgid "nLeftrightarrow"
-msgstr ""
+msgstr "nLeftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:732
 msgid "multimap"
-msgstr ""
+msgstr "multimap"
 
 #: lib/ui/stdtoolbars.inc:735
 #, fuzzy
@@ -16675,281 +16682,267 @@ msgstr "AMS relaties"
 
 #: lib/ui/stdtoolbars.inc:736
 msgid "leqq"
-msgstr ""
+msgstr "leqq"
 
 #: lib/ui/stdtoolbars.inc:737
 msgid "geqq"
-msgstr ""
+msgstr "geqq"
 
 #: lib/ui/stdtoolbars.inc:738
 msgid "leqslant"
-msgstr ""
+msgstr "leqslant"
 
 #: lib/ui/stdtoolbars.inc:739
 msgid "geqslant"
-msgstr ""
+msgstr "geqslant"
 
 #: lib/ui/stdtoolbars.inc:740
 msgid "eqslantless"
-msgstr ""
+msgstr "eqslantless"
 
 #: lib/ui/stdtoolbars.inc:741
 msgid "eqslantgtr"
-msgstr ""
+msgstr "eqslantgtr"
 
 #: lib/ui/stdtoolbars.inc:742
 msgid "lesssim"
-msgstr ""
+msgstr "lesssim"
 
 #: lib/ui/stdtoolbars.inc:743
 msgid "gtrsim"
-msgstr ""
+msgstr "gtrsim"
 
 #: lib/ui/stdtoolbars.inc:744
 msgid "lessapprox"
-msgstr ""
+msgstr "lessapprox"
 
 #: lib/ui/stdtoolbars.inc:745
 msgid "gtrapprox"
-msgstr ""
+msgstr "gtrapprox"
 
 #: lib/ui/stdtoolbars.inc:746
 msgid "approxeq"
-msgstr ""
+msgstr "approxeq"
 
 #: lib/ui/stdtoolbars.inc:747
-#, fuzzy
 msgid "triangleq"
-msgstr "Enkel"
+msgstr "triangleq"
 
 #: lib/ui/stdtoolbars.inc:748
 msgid "lessdot"
-msgstr ""
+msgstr "lessdot"
 
 #: lib/ui/stdtoolbars.inc:749
 msgid "gtrdot"
-msgstr ""
+msgstr "gtrdot"
 
 #: lib/ui/stdtoolbars.inc:750
 msgid "lll"
-msgstr ""
+msgstr "lll"
 
 #: lib/ui/stdtoolbars.inc:751
 msgid "ggg"
-msgstr ""
+msgstr "ggg"
 
 #: lib/ui/stdtoolbars.inc:752
 msgid "lessgtr"
-msgstr ""
+msgstr "lessgtr"
 
 #: lib/ui/stdtoolbars.inc:753
-#, fuzzy
 msgid "gtrless"
-msgstr "Parameters"
+msgstr "gtrless"
 
 #: lib/ui/stdtoolbars.inc:754
 msgid "lesseqgtr"
-msgstr ""
+msgstr "lesseqgtr"
 
 #: lib/ui/stdtoolbars.inc:755
-#, fuzzy
 msgid "gtreqless"
-msgstr "Parameters"
+msgstr "gtreqless"
 
 #: lib/ui/stdtoolbars.inc:756
 msgid "lesseqqgtr"
-msgstr ""
+msgstr "lesseqqgtr"
 
 #: lib/ui/stdtoolbars.inc:757
-#, fuzzy
 msgid "gtreqqless"
-msgstr "Parameters"
+msgstr "gtreqqless"
 
 #: lib/ui/stdtoolbars.inc:758
 msgid "eqcirc"
-msgstr ""
+msgstr "eqcirc"
 
 #: lib/ui/stdtoolbars.inc:759
 msgid "circeq"
-msgstr ""
+msgstr "circeq"
 
 #: lib/ui/stdtoolbars.inc:760
 msgid "thicksim"
-msgstr ""
+msgstr "thicksim"
 
 #: lib/ui/stdtoolbars.inc:761
 msgid "thickapprox"
-msgstr ""
+msgstr "thickapprox"
 
 #: lib/ui/stdtoolbars.inc:762
-#, fuzzy
 msgid "backsim"
-msgstr "zwart"
+msgstr "backsim"
 
 #: lib/ui/stdtoolbars.inc:763
 msgid "backsimeq"
-msgstr ""
+msgstr "backsimeq"
 
 #: lib/ui/stdtoolbars.inc:764
 msgid "subseteqq"
-msgstr ""
+msgstr "subseteqq"
 
 #: lib/ui/stdtoolbars.inc:765
 msgid "supseteqq"
-msgstr ""
+msgstr "supseteqq"
 
 #: lib/ui/stdtoolbars.inc:766
-#, fuzzy
 msgid "Subset"
-msgstr "Subsectie"
+msgstr "Subset"
 
 #: lib/ui/stdtoolbars.inc:767
-#, fuzzy
 msgid "Supset"
-msgstr "Subsectie"
+msgstr "Supset"
 
 #: lib/ui/stdtoolbars.inc:768
 msgid "sqsubset"
-msgstr ""
+msgstr "sqsubset"
 
 #: lib/ui/stdtoolbars.inc:769
 msgid "sqsupset"
-msgstr ""
+msgstr "sqsupset"
 
 #: lib/ui/stdtoolbars.inc:770
 msgid "preccurlyeq"
-msgstr ""
+msgstr "preccurlyeq"
 
 #: lib/ui/stdtoolbars.inc:771
 msgid "succcurlyeq"
-msgstr ""
+msgstr "succcurlyeq"
 
 #: lib/ui/stdtoolbars.inc:772
 msgid "curlyeqprec"
-msgstr ""
+msgstr "curlyeqprec"
 
 #: lib/ui/stdtoolbars.inc:773
 msgid "curlyeqsucc"
-msgstr ""
+msgstr "curlyeqsucc"
 
 #: lib/ui/stdtoolbars.inc:774
 msgid "precsim"
-msgstr ""
+msgstr "precsim"
 
 #: lib/ui/stdtoolbars.inc:775
 msgid "succsim"
-msgstr ""
+msgstr "succsim"
 
 #: lib/ui/stdtoolbars.inc:776
 msgid "precapprox"
-msgstr ""
+msgstr "precapprox"
 
 #: lib/ui/stdtoolbars.inc:777
 msgid "succapprox"
-msgstr ""
+msgstr "succapprox"
 
 #: lib/ui/stdtoolbars.inc:778
 msgid "vartriangleleft"
-msgstr ""
+msgstr "vartriangleleft"
 
 #: lib/ui/stdtoolbars.inc:779
-#, fuzzy
 msgid "vartriangleright"
-msgstr "Rechterlijn|R"
+msgstr "vartriangleright"
 
 #: lib/ui/stdtoolbars.inc:780
 msgid "trianglelefteq"
-msgstr ""
+msgstr "trianglelefteq"
 
 #: lib/ui/stdtoolbars.inc:781
 msgid "trianglerighteq"
-msgstr ""
+msgstr "trianglerighteq"
 
 #: lib/ui/stdtoolbars.inc:782
-#, fuzzy
 msgid "bumpeq"
-msgstr "blauw"
+msgstr "bumpeq"
 
 #: lib/ui/stdtoolbars.inc:783
-#, fuzzy
 msgid "Bumpeq"
-msgstr "Blauw"
+msgstr "Bumpeq"
 
 #: lib/ui/stdtoolbars.inc:784
 msgid "doteqdot"
-msgstr ""
+msgstr "doteqdot"
 
 #: lib/ui/stdtoolbars.inc:785
 msgid "risingdotseq"
-msgstr ""
+msgstr "risingdotseq"
 
 #: lib/ui/stdtoolbars.inc:786
 msgid "fallingdotseq"
-msgstr ""
+msgstr "fallingdotseq"
 
 #: lib/ui/stdtoolbars.inc:787
-#, fuzzy
 msgid "vDash"
-msgstr "Deens"
+msgstr "vDash"
 
 #: lib/ui/stdtoolbars.inc:788
 msgid "Vvdash"
-msgstr ""
+msgstr "Vvdash"
 
 #: lib/ui/stdtoolbars.inc:789
 msgid "Vdash"
-msgstr ""
+msgstr "Vdash"
 
 #: lib/ui/stdtoolbars.inc:790
 msgid "shortmid"
-msgstr ""
+msgstr "shortmid"
 
 #: lib/ui/stdtoolbars.inc:791
 msgid "shortparallel"
-msgstr ""
+msgstr "shortparallel"
 
 #: lib/ui/stdtoolbars.inc:792
-#, fuzzy
 msgid "smallsmile"
-msgstr "Kleinst"
+msgstr "smallsmile"
 
 #: lib/ui/stdtoolbars.inc:793
 msgid "smallfrown"
-msgstr ""
+msgstr "smallfrown"
 
 #: lib/ui/stdtoolbars.inc:794
 msgid "blacktriangleleft"
-msgstr ""
+msgstr "blacktriangleleft"
 
 #: lib/ui/stdtoolbars.inc:795
 msgid "blacktriangleright"
-msgstr ""
+msgstr "blacktriangleright"
 
 #: lib/ui/stdtoolbars.inc:796
-#, fuzzy
 msgid "because"
-msgstr "Verklein"
+msgstr "because"
 
 #: lib/ui/stdtoolbars.inc:797
-#, fuzzy
 msgid "therefore"
-msgstr "stelling"
+msgstr "therefore"
 
 #: lib/ui/stdtoolbars.inc:798
 msgid "backepsilon"
-msgstr ""
+msgstr "backepsilon"
 
 #: lib/ui/stdtoolbars.inc:799
 msgid "varpropto"
-msgstr ""
+msgstr "varpropto"
 
 #: lib/ui/stdtoolbars.inc:800
 msgid "between"
-msgstr ""
+msgstr "between"
 
 #: lib/ui/stdtoolbars.inc:801
 msgid "pitchfork"
-msgstr ""
+msgstr "pitchfork"
 
 #: lib/ui/stdtoolbars.inc:804
 #, fuzzy
@@ -16958,215 +16951,203 @@ msgstr "AMS negaties"
 
 #: lib/ui/stdtoolbars.inc:805
 msgid "nless"
-msgstr ""
+msgstr "nless"
 
 #: lib/ui/stdtoolbars.inc:806
-#, fuzzy
 msgid "ngtr"
-msgstr "Label invoegen"
+msgstr "ngtr"
 
 #: lib/ui/stdtoolbars.inc:807
-#, fuzzy
 msgid "nleq"
-msgstr "Enkel"
+msgstr "nleq"
 
 #: lib/ui/stdtoolbars.inc:808
-#, fuzzy
 msgid "ngeq"
-msgstr "Enkel"
+msgstr "ngeq"
 
 #: lib/ui/stdtoolbars.inc:809
 msgid "nleqslant"
-msgstr ""
+msgstr "nleqslant"
 
 #: lib/ui/stdtoolbars.inc:810
 msgid "ngeqslant"
-msgstr ""
+msgstr "ngeqslant"
 
 #: lib/ui/stdtoolbars.inc:811
 msgid "nleqq"
-msgstr ""
+msgstr "nleqq"
 
 #: lib/ui/stdtoolbars.inc:812
 msgid "ngeqq"
-msgstr ""
+msgstr "ngeqq"
 
 #: lib/ui/stdtoolbars.inc:813
 msgid "lneq"
-msgstr ""
+msgstr "lneq"
 
 #: lib/ui/stdtoolbars.inc:814
-#, fuzzy
 msgid "gneq"
-msgstr "Negeren"
+msgstr "gneq"
 
 #: lib/ui/stdtoolbars.inc:815
 msgid "lneqq"
-msgstr ""
+msgstr "lneqq"
 
 #: lib/ui/stdtoolbars.inc:816
 msgid "gneqq"
-msgstr ""
+msgstr "gneqq"
 
 #: lib/ui/stdtoolbars.inc:817
-#, fuzzy
 msgid "lvertneqq"
-msgstr "Sloveens"
+msgstr "lvertneqq"
 
 #: lib/ui/stdtoolbars.inc:818
 msgid "gvertneqq"
-msgstr ""
+msgstr "gvertneqq"
 
 #: lib/ui/stdtoolbars.inc:819
 msgid "lnsim"
-msgstr ""
+msgstr "lnsim"
 
 #: lib/ui/stdtoolbars.inc:820
 msgid "gnsim"
-msgstr ""
+msgstr "gnsim"
 
 #: lib/ui/stdtoolbars.inc:821
 msgid "lnapprox"
-msgstr ""
+msgstr "lnapprox"
 
 #: lib/ui/stdtoolbars.inc:822
 msgid "gnapprox"
-msgstr ""
+msgstr "gnapprox"
 
 #: lib/ui/stdtoolbars.inc:823
 msgid "nprec"
-msgstr ""
+msgstr "nprec"
 
 #: lib/ui/stdtoolbars.inc:824
 msgid "nsucc"
-msgstr ""
+msgstr "nsucc"
 
 #: lib/ui/stdtoolbars.inc:825
-#, fuzzy
 msgid "npreceq"
-msgstr " fouten gevonden."
+msgstr "npreceq"
 
 #: lib/ui/stdtoolbars.inc:826
 msgid "nsucceq"
-msgstr ""
+msgstr "nsucceq"
 
 #: lib/ui/stdtoolbars.inc:827
 msgid "precnsim"
-msgstr ""
+msgstr "precnsim"
 
 #: lib/ui/stdtoolbars.inc:828
 msgid "succnsim"
-msgstr ""
+msgstr "succnsim"
 
 #: lib/ui/stdtoolbars.inc:829
 msgid "precnapprox"
-msgstr ""
+msgstr "precnapprox"
 
 #: lib/ui/stdtoolbars.inc:830
 msgid "succnapprox"
-msgstr ""
+msgstr "succnapprox"
 
 #: lib/ui/stdtoolbars.inc:831
-#, fuzzy
 msgid "subsetneq"
-msgstr "Subsubsectie"
+msgstr "subsetneq"
 
 #: lib/ui/stdtoolbars.inc:832
 msgid "supsetneq"
-msgstr ""
+msgstr "supsetneq"
 
 #: lib/ui/stdtoolbars.inc:833
-#, fuzzy
 msgid "subsetneqq"
-msgstr "Subsubsectie"
+msgstr "subsetneqq"
 
 #: lib/ui/stdtoolbars.inc:834
 msgid "supsetneqq"
-msgstr ""
+msgstr "supsetneqq"
 
 #: lib/ui/stdtoolbars.inc:835
 msgid "nsubseteq"
-msgstr ""
+msgstr "nsubseteq"
 
 #: lib/ui/stdtoolbars.inc:836
 msgid "nsupseteq"
-msgstr ""
+msgstr "nsupseteq"
 
 #: lib/ui/stdtoolbars.inc:837
 msgid "nsupseteqq"
-msgstr ""
+msgstr "nsupseteqq"
 
 #: lib/ui/stdtoolbars.inc:838
 msgid "nvdash"
-msgstr ""
+msgstr "nvdash"
 
 #: lib/ui/stdtoolbars.inc:839
-#, fuzzy
 msgid "nvDash"
-msgstr "Deens"
+msgstr "nvDash"
 
 #: lib/ui/stdtoolbars.inc:840
-#, fuzzy
 msgid "nVDash"
-msgstr "Deens"
+msgstr "nVDash"
 
 #: lib/ui/stdtoolbars.inc:841
 msgid "varsubsetneq"
-msgstr ""
+msgstr "varsubsetneq"
 
 #: lib/ui/stdtoolbars.inc:842
 msgid "varsupsetneq"
-msgstr ""
+msgstr "varsupsetneq"
 
 #: lib/ui/stdtoolbars.inc:843
 msgid "varsubsetneqq"
-msgstr ""
+msgstr "varsubsetneqq"
 
 #: lib/ui/stdtoolbars.inc:844
 msgid "varsupsetneqq"
-msgstr ""
+msgstr "varsupsetneqq"
 
 #: lib/ui/stdtoolbars.inc:845
 msgid "ntriangleleft"
-msgstr ""
+msgstr "ntriangleleft"
 
 #: lib/ui/stdtoolbars.inc:846
-#, fuzzy
 msgid "ntriangleright"
-msgstr "Rechtsboven"
+msgstr "ntriangleright"
 
 #: lib/ui/stdtoolbars.inc:847
 msgid "ntrianglelefteq"
-msgstr ""
+msgstr "ntrianglelefteq"
 
 #: lib/ui/stdtoolbars.inc:848
 msgid "ntrianglerighteq"
-msgstr ""
+msgstr "ntrianglerighteq"
 
 #: lib/ui/stdtoolbars.inc:849
-#, fuzzy
 msgid "ncong"
-msgstr "geen"
+msgstr "ncong"
 
 #: lib/ui/stdtoolbars.inc:850
 msgid "nsim"
-msgstr ""
+msgstr "nsim"
 
 #: lib/ui/stdtoolbars.inc:851
 msgid "nmid"
-msgstr ""
+msgstr "nmid"
 
 #: lib/ui/stdtoolbars.inc:852
 msgid "nshortmid"
-msgstr ""
+msgstr "nshortmid"
 
 #: lib/ui/stdtoolbars.inc:853
 msgid "nparallel"
-msgstr ""
+msgstr "nparallel"
 
 #: lib/ui/stdtoolbars.inc:854
 msgid "nshortparallel"
-msgstr ""
+msgstr "nshortparallel"
 
 #: lib/ui/stdtoolbars.inc:857
 #, fuzzy
@@ -17175,107 +17156,97 @@ msgstr "AMS operanden"
 
 #: lib/ui/stdtoolbars.inc:858
 msgid "dotplus"
-msgstr ""
+msgstr "dotplus"
 
 #: lib/ui/stdtoolbars.inc:859
 msgid "smallsetminus"
-msgstr ""
+msgstr "smallsetminus"
 
 #: lib/ui/stdtoolbars.inc:860
-#, fuzzy
 msgid "Cap"
-msgstr "Onderschrift"
+msgstr "Cap"
 
 #: lib/ui/stdtoolbars.inc:861
-#, fuzzy
 msgid "Cup"
-msgstr "Knippen"
+msgstr "Cup"
 
 #: lib/ui/stdtoolbars.inc:862
-#, fuzzy
 msgid "barwedge"
-msgstr "Groot"
+msgstr "barwedge"
 
 #: lib/ui/stdtoolbars.inc:863
 msgid "veebar"
-msgstr ""
+msgstr "veebar"
 
 # dubbel
 #: lib/ui/stdtoolbars.inc:864
-#, fuzzy
 msgid "doublebarwedge"
-msgstr "dubbele"
+msgstr "doublebarwedge"
 
 #: lib/ui/stdtoolbars.inc:865
-#, fuzzy
 msgid "boxminus"
-msgstr "minuten"
+msgstr "boxminus"
 
 #: lib/ui/stdtoolbars.inc:866
 msgid "boxtimes"
-msgstr ""
+msgstr "boxtimes"
 
 #: lib/ui/stdtoolbars.inc:867
-#, fuzzy
 msgid "boxdot"
-msgstr "voettekst"
+msgstr "boxdot"
 
 #: lib/ui/stdtoolbars.inc:868
 msgid "boxplus"
-msgstr ""
+msgstr "boxplus"
 
 #: lib/ui/stdtoolbars.inc:869
-#, fuzzy
 msgid "divideontimes"
-msgstr "Inhoudsopgave"
+msgstr "divideontimes"
 
 #: lib/ui/stdtoolbars.inc:870
 msgid "ltimes"
-msgstr ""
+msgstr "ltimes"
 
 # wat is het onderscheid tussen Engels en Brits?
 #: lib/ui/stdtoolbars.inc:871
-#, fuzzy
 msgid "rtimes"
-msgstr "Brits"
+msgstr "rtimes"
 
 #: lib/ui/stdtoolbars.inc:872
 msgid "leftthreetimes"
-msgstr ""
+msgstr "leftthreetimes"
 
 #: lib/ui/stdtoolbars.inc:873
 msgid "rightthreetimes"
-msgstr ""
+msgstr "rightthreetimes"
 
 #: lib/ui/stdtoolbars.inc:874
 msgid "curlywedge"
-msgstr ""
+msgstr "curlywedge"
 
 #: lib/ui/stdtoolbars.inc:875
 msgid "curlyvee"
-msgstr ""
+msgstr "curlyvee"
 
 #: lib/ui/stdtoolbars.inc:876
 msgid "circleddash"
-msgstr ""
+msgstr "circleddash"
 
 #: lib/ui/stdtoolbars.inc:877
 msgid "circledast"
-msgstr ""
+msgstr "circledast"
 
 #: lib/ui/stdtoolbars.inc:878
 msgid "circledcirc"
-msgstr ""
+msgstr "circledcirc"
 
 #: lib/ui/stdtoolbars.inc:879
-#, fuzzy
 msgid "centerdot"
-msgstr "Midden"
+msgstr "centerdot"
 
 #: lib/ui/stdtoolbars.inc:880
-#, fuzzy
 msgid "intercal"
-msgstr "Printer"
+msgstr "intercal"
 
 #: lib/external_templates:37
 msgid "RasterImage"
@@ -17290,9 +17261,8 @@ msgid "A bitmap file.\n"
 msgstr ""
 
 #: lib/external_templates:109
-#, fuzzy
 msgid "XFig"
-msgstr "Figuur"
+msgstr "XFig"
 
 #: lib/external_templates:110 lib/external_templates:113
 msgid "Xfig: $$AbsOrRelPathParent$$Basename"
@@ -17379,9 +17349,8 @@ msgstr ""
 
 # Weergave van de afbeelding (grijstint/kleur/etc) ?
 #: lib/external_templates:333
-#, fuzzy
 msgid "Dia"
-msgstr "Weergave"
+msgstr "Dia"
 
 #: lib/external_templates:334 lib/external_templates:337
 msgid "Dia: $$AbsOrRelPathParent$$Basename"
@@ -17393,25 +17362,24 @@ msgstr ""
 
 #: lib/configure.py:445
 msgid "Tgif"
-msgstr ""
+msgstr "Tgif"
 
 #: lib/configure.py:448
 msgid "FIG"
-msgstr ""
+msgstr "FIG"
 
 #: lib/configure.py:451
 msgid "DIA"
-msgstr ""
+msgstr "DIA"
 
 # Zwart-wit beter?
 #: lib/configure.py:454
-#, fuzzy
 msgid "Grace"
-msgstr "Grijstinten"
+msgstr "Grace"
 
 #: lib/configure.py:457
 msgid "FEN"
-msgstr ""
+msgstr "FEN"
 
 #: lib/configure.py:460
 msgid "SVG"
@@ -17419,45 +17387,45 @@ msgstr ""
 
 #: lib/configure.py:463 lib/configure.py:474 lib/configure.py:484
 msgid "BMP"
-msgstr ""
+msgstr "BMP"
 
 #: lib/configure.py:464 lib/configure.py:475 lib/configure.py:485
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: lib/configure.py:465 lib/configure.py:476 lib/configure.py:486
 #: src/frontends/qt4/GuiClipboard.cpp:138
 msgid "JPEG"
-msgstr ""
+msgstr "JPEG"
 
 #: lib/configure.py:466 lib/configure.py:477 lib/configure.py:487
 msgid "PBM"
-msgstr ""
+msgstr "PBM"
 
 #: lib/configure.py:467 lib/configure.py:478 lib/configure.py:488
 msgid "PGM"
-msgstr ""
+msgstr "PGM"
 
 #: lib/configure.py:468 lib/configure.py:479 lib/configure.py:489
 #: src/frontends/qt4/GuiClipboard.cpp:137
 msgid "PNG"
-msgstr ""
+msgstr "PNG"
 
 #: lib/configure.py:469 lib/configure.py:480 lib/configure.py:490
 msgid "PPM"
-msgstr ""
+msgstr "PPM"
 
 #: lib/configure.py:470 lib/configure.py:481 lib/configure.py:491
 msgid "TIFF"
-msgstr ""
+msgstr "TIFF"
 
 #: lib/configure.py:471 lib/configure.py:482 lib/configure.py:492
 msgid "XBM"
-msgstr ""
+msgstr "XBM"
 
 #: lib/configure.py:472 lib/configure.py:483 lib/configure.py:493
 msgid "XPM"
-msgstr ""
+msgstr "XPM"
 
 #: lib/configure.py:498
 msgid "Plain text (chess output)"
@@ -17479,36 +17447,31 @@ msgstr "&Postscript stuurprogramma:"
 
 #: lib/configure.py:502
 msgid "DocBook"
-msgstr ""
+msgstr "DocBook"
 
 #: lib/configure.py:502
-#, fuzzy
 msgid "DocBook|B"
-msgstr "b Onder|#B"
+msgstr "DocBook|B"
 
 #: lib/configure.py:503
 msgid "Docbook (XML)"
-msgstr ""
+msgstr "Docbook (XML)"
 
 #: lib/configure.py:504
-#, fuzzy
 msgid "Graphviz Dot"
-msgstr "Plaatjes"
+msgstr "Graphviz Dot"
 
 #: lib/configure.py:505
-#, fuzzy
 msgid "LaTeX (pLaTeX)"
-msgstr "LaTeX &opties:"
+msgstr "LaTeX (pLaTeX)"
 
 #: lib/configure.py:506
-#, fuzzy
 msgid "NoWeb"
-msgstr "Geen"
+msgstr "NoWeb"
 
 #: lib/configure.py:506
-#, fuzzy
 msgid "NoWeb|N"
-msgstr "andere"
+msgstr "NoWeb|N"
 
 #: lib/configure.py:507
 #, fuzzy
@@ -17537,7 +17500,7 @@ msgstr "LaTeX tekst"
 #: lib/configure.py:511
 #, fuzzy
 msgid "LaTeX (XeTeX)"
-msgstr "LaTeX &opties:"
+msgstr "LaTeX (pLaTeX)"
 
 #: lib/configure.py:512 src/frontends/qt4/GuiPrefs.cpp:335
 #, fuzzy
@@ -17572,55 +17535,52 @@ msgstr "Selecteer de volgende alinea"
 #: lib/configure.py:519 lib/configure.py:521
 #, fuzzy
 msgid "LyXHTML"
-msgstr "LyX: "
+msgstr "HTML"
 
 #: lib/configure.py:519 lib/configure.py:521
 #, fuzzy
 msgid "LyXHTML|X"
-msgstr "LyX: "
+msgstr "HTML|H"
 
 #: lib/configure.py:528 src/frontends/qt4/GuiLog.cpp:230
-#, fuzzy
 msgid "BibTeX"
-msgstr "LaTeX"
+msgstr "BibTeX"
 
 #: lib/configure.py:533
 msgid "EPS"
-msgstr ""
+msgstr "EPS"
 
 #: lib/configure.py:534
-#, fuzzy
 msgid "Postscript"
-msgstr "&Postscript stuurprogramma:"
+msgstr "Postscript"
 
 #: lib/configure.py:534
-#, fuzzy
 msgid "Postscript|t"
-msgstr "&Postscript stuurprogramma:"
+msgstr "Postscript|t"
 
 #: lib/configure.py:538
 msgid "PDF (ps2pdf)"
-msgstr ""
+msgstr "PDF (ps2pdf)"
 
 #: lib/configure.py:538
 msgid "PDF (ps2pdf)|P"
-msgstr ""
+msgstr "PDF (ps2pdf)|P"
 
 #: lib/configure.py:539
 msgid "PDF (pdflatex)"
-msgstr ""
+msgstr "PDF (pdflatex)"
 
 #: lib/configure.py:539
 msgid "PDF (pdflatex)|F"
-msgstr ""
+msgstr "PDF (pdflatex)|F"
 
 #: lib/configure.py:540
 msgid "PDF (dvipdfm)"
-msgstr ""
+msgstr "PDF (dvipdfm)"
 
 #: lib/configure.py:540
 msgid "PDF (dvipdfm)|m"
-msgstr ""
+msgstr "PDF (dvipdfm)|m"
 
 #: lib/configure.py:541
 msgid "PDF (XeTeX)"
@@ -17632,11 +17592,11 @@ msgstr ""
 
 #: lib/configure.py:544
 msgid "DVI"
-msgstr ""
+msgstr "DVI"
 
 #: lib/configure.py:544
 msgid "DVI|D"
-msgstr ""
+msgstr "DVI|D"
 
 #: lib/configure.py:547
 #, fuzzy
@@ -17645,11 +17605,11 @@ msgstr "&Kladmodus"
 
 #: lib/configure.py:550
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: lib/configure.py:550
 msgid "HTML|H"
-msgstr ""
+msgstr "HTML|H"
 
 #: lib/configure.py:553
 #, fuzzy
@@ -17657,13 +17617,12 @@ msgid "Noteedit"
 msgstr "Notitie"
 
 #: lib/configure.py:556
-#, fuzzy
 msgid "OpenDocument"
-msgstr "Document openen "
+msgstr "OpenDocument"
 
 #: lib/configure.py:557
 msgid "OpenOffice.Org (sxw)"
-msgstr ""
+msgstr "OpenOffice.Org (sxw)"
 
 #: lib/configure.py:560
 #, fuzzy
@@ -17671,14 +17630,12 @@ msgid "Rich Text Format"
 msgstr "' na "
 
 #: lib/configure.py:561
-#, fuzzy
 msgid "MS Word"
-msgstr "Randen"
+msgstr "MS Word"
 
 #: lib/configure.py:561
-#, fuzzy
 msgid "MS Word|W"
-msgstr "Huidige woord"
+msgstr "MS Word|W"
 
 #: lib/configure.py:564
 #, fuzzy
@@ -17697,31 +17654,32 @@ msgstr "LyX"
 
 #: lib/configure.py:568
 msgid "LyX 1.3.x"
-msgstr ""
+msgstr "LyX 1.3.x"
 
 #: lib/configure.py:569
 msgid "LyX 1.4.x"
-msgstr ""
+msgstr "LyX 1.4.x"
 
 #: lib/configure.py:570
 msgid "LyX 1.5.x"
-msgstr ""
+msgstr "LyX 1.5.x"
 
 #: lib/configure.py:571
+#, fuzzy
 msgid "LyX 1.6.x"
-msgstr ""
+msgstr "LyX 1.3.x"
 
 #: lib/configure.py:572
 msgid "CJK LyX 1.4.x (big5)"
-msgstr ""
+msgstr "CJK LyX 1.4.x (big5)"
 
 #: lib/configure.py:573
 msgid "CJK LyX 1.4.x (euc-jp)"
-msgstr ""
+msgstr "CJK LyX 1.4.x (euc-jp)"
 
 #: lib/configure.py:574
 msgid "CJK LyX 1.4.x (euc-kr)"
-msgstr ""
+msgstr "CJK LyX 1.4.x (euc-kr)"
 
 #: lib/configure.py:575
 #, fuzzy
@@ -17735,7 +17693,7 @@ msgstr "Voorbeeld|#V"
 
 #: lib/configure.py:577
 msgid "PDFTEX"
-msgstr ""
+msgstr "PDFTEX"
 
 #: lib/configure.py:578
 #, fuzzy
@@ -17744,7 +17702,7 @@ msgstr "(geen oorspronkelijke omschrijving)"
 
 #: lib/configure.py:579
 msgid "PSTEX"
-msgstr ""
+msgstr "PSTEX"
 
 #: lib/configure.py:580 src/frontends/qt4/GuiClipboard.cpp:134
 #, fuzzy
@@ -17757,7 +17715,7 @@ msgstr ""
 
 #: lib/configure.py:582
 msgid "HTML (MS Word)"
-msgstr ""
+msgstr "HTML (MS Word)"
 
 #: src/BiblioInfo.cpp:241 src/frontends/qt4/GuiDocument.cpp:1658
 #, c-format
@@ -18044,7 +18002,7 @@ msgstr "Conversiefouten!"
 
 #: src/Buffer.cpp:1329
 #, fuzzy
-msgid "Uncodable character in path"
+msgid "Uncodable character in file path"
 msgstr "speciaal teken"
 
 #: src/Buffer.cpp:1330
@@ -18057,7 +18015,7 @@ msgid ""
 "This will likely result in incomplete output.\n"
 "\n"
 "Chose an appropriate document encoding (such as utf8)\n"
-"or change the path name."
+"or change the file path name."
 msgstr ""
 
 #: src/Buffer.cpp:1604
@@ -20149,9 +20107,8 @@ msgid "No valid math formula"
 msgstr ""
 
 #: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1009
-#, fuzzy
 msgid "Already in regular expression mode"
-msgstr "Versie"
+msgstr ""
 
 #: src/Text3.cpp:216
 #, fuzzy
@@ -20312,18 +20269,17 @@ msgstr ""
 #: src/frontends/qt4/FindAndReplace.cpp:395
 #, fuzzy
 msgid "&Yes"
-msgstr "&Ja"
+msgstr "Ja"
 
 #: src/VCBackend.cpp:815 src/VCBackend.cpp:819
 #: src/frontends/qt4/FindAndReplace.cpp:395
 #, fuzzy
 msgid "&No"
-msgstr "&Nee"
+msgstr "Nee"
 
 #: src/VCBackend.cpp:815
-#, fuzzy
 msgid "View &Log ..."
-msgstr "Hele &logbestand"
+msgstr ""
 
 #: src/VCBackend.cpp:881
 msgid "VCN File Locking"
@@ -20444,24 +20400,20 @@ msgid "Maths"
 msgstr "Locaties"
 
 #: src/frontends/qt4/BulletsModule.cpp:43
-#, fuzzy
 msgid "Dings 1"
-msgstr "Ding 1|#D"
+msgstr "Dings 1"
 
 #: src/frontends/qt4/BulletsModule.cpp:44
-#, fuzzy
 msgid "Dings 2"
-msgstr "Ding 2|#i"
+msgstr "Dings 2"
 
 #: src/frontends/qt4/BulletsModule.cpp:45
-#, fuzzy
 msgid "Dings 3"
-msgstr "Ding 3|#n"
+msgstr "Dings 3"
 
 #: src/frontends/qt4/BulletsModule.cpp:46
-#, fuzzy
 msgid "Dings 4"
-msgstr "Ding 4|#g"
+msgstr "Dings 4"
 
 #: src/frontends/qt4/FileDialog.cpp:181
 msgid "Directories"
@@ -20470,22 +20422,21 @@ msgstr "Mappen"
 #: src/frontends/qt4/FindAndReplace.cpp:68
 #, fuzzy
 msgid "&Anything"
-msgstr "opmerking"
+msgstr "varnothing"
 
 #: src/frontends/qt4/FindAndReplace.cpp:70
-#, fuzzy
 msgid "Any non-&empty"
-msgstr "Elke niet lege"
+msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:72
 #, fuzzy
 msgid "Any &word"
-msgstr "Elk woord"
+msgstr "k Sleutel:|#K"
 
 #: src/frontends/qt4/FindAndReplace.cpp:74
 #, fuzzy
 msgid "Any &number"
-msgstr "Elk getal"
+msgstr "Getal"
 
 #: src/frontends/qt4/FindAndReplace.cpp:76
 #, fuzzy
@@ -20555,13 +20506,13 @@ msgid "amount of work other people have done for the LyX project."
 msgstr "werk dat anderen voor het projekt hebben verzet."
 
 #: src/frontends/qt4/GuiAbout.cpp:84
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995--%1$s LyX Team"
 msgstr ""
 "LyX is Copyright (C) 1995 Mattias Ettrich,\n"
-"1995-2001 het LyX Team"
+"1995--%1$s het LyX Team"
 
 #: src/frontends/qt4/GuiAbout.cpp:92
 msgid ""
@@ -20880,9 +20831,8 @@ msgstr "Bestandsnaam"
 #: src/frontends/qt4/GuiProgressView.cpp:122
 #: src/frontends/qt4/GuiProgressView.cpp:136
 #: src/frontends/qt4/GuiProgressView.cpp:157
-#, fuzzy
 msgid "Yes"
-msgstr "&Ja"
+msgstr "Ja"
 
 #: src/frontends/qt4/GuiBranches.cpp:99 src/frontends/qt4/GuiBranches.cpp:107
 #: src/frontends/qt4/GuiDocument.cpp:1804
@@ -20890,9 +20840,8 @@ msgstr "&Ja"
 #: src/frontends/qt4/GuiProgressView.cpp:88
 #: src/frontends/qt4/GuiProgressView.cpp:121
 #: src/frontends/qt4/GuiProgressView.cpp:157
-#, fuzzy
 msgid "No"
-msgstr "&Nee"
+msgstr "Nee"
 
 #: src/frontends/qt4/GuiBranches.cpp:168
 #, fuzzy
@@ -20971,8 +20920,9 @@ msgid "Double underbar"
 msgstr "Dubbel"
 
 #: src/frontends/qt4/GuiCharacter.cpp:80
+#, fuzzy
 msgid "Wavy underbar"
-msgstr ""
+msgstr "underbrace"
 
 #: src/frontends/qt4/GuiCharacter.cpp:81
 #, fuzzy
@@ -21036,7 +20986,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiClipboard.cpp:136
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 #: src/frontends/qt4/GuiClipboard.cpp:147
 #, fuzzy
@@ -21120,7 +21070,7 @@ msgstr "Fins"
 #: src/frontends/qt4/GuiCompare.cpp:261
 #, fuzzy
 msgid "Aborting process..."
-msgstr "Importeren%m"
+msgstr "Bezig met opmaken document..."
 
 #: src/frontends/qt4/GuiCompare.cpp:297
 #, fuzzy
@@ -21161,80 +21111,75 @@ msgstr "tabular lijn"
 
 #: src/frontends/qt4/GuiDocument.cpp:126
 msgid "Computer Modern Roman"
-msgstr ""
+msgstr "Computer Modern Roman"
 
 #: src/frontends/qt4/GuiDocument.cpp:126
 msgid "Latin Modern Roman"
-msgstr ""
+msgstr "Latin Modern Roman"
 
 #: src/frontends/qt4/GuiDocument.cpp:127
 msgid "AE (Almost European)"
-msgstr ""
+msgstr "AE (Almost European)"
 
 #: src/frontends/qt4/GuiDocument.cpp:127
-#, fuzzy
 msgid "Times Roman"
-msgstr "Romeins"
+msgstr "Times Roman"
 
 #: src/frontends/qt4/GuiDocument.cpp:127
-#, fuzzy
 msgid "Palatino"
-msgstr "Vervangen"
+msgstr "Palatino"
 
 #: src/frontends/qt4/GuiDocument.cpp:128
 msgid "Bitstream Charter"
-msgstr ""
+msgstr "Bitstream Charter"
 
 #: src/frontends/qt4/GuiDocument.cpp:128
 msgid "New Century Schoolbook"
-msgstr ""
+msgstr "New Century Schoolbook"
 
 #: src/frontends/qt4/GuiDocument.cpp:128
-#, fuzzy
 msgid "Bookman"
-msgstr "Romeins"
+msgstr "Bookman"
 
 #: src/frontends/qt4/GuiDocument.cpp:129
 msgid "Utopia"
-msgstr ""
+msgstr "Utopia"
 
 #: src/frontends/qt4/GuiDocument.cpp:129
-#, fuzzy
 msgid "Bera Serif"
-msgstr "Zonder schreef"
+msgstr "Bera Serif"
 
 #: src/frontends/qt4/GuiDocument.cpp:129
 msgid "Concrete Roman"
-msgstr ""
+msgstr "Concrete Roman"
 
 #: src/frontends/qt4/GuiDocument.cpp:129
 msgid "Zapf Chancery"
-msgstr ""
+msgstr "Zapf Chancery"
 
 #: src/frontends/qt4/GuiDocument.cpp:142
 msgid "Computer Modern Sans"
-msgstr ""
+msgstr "Computer Modern Sans"
 
 #: src/frontends/qt4/GuiDocument.cpp:142
 msgid "Latin Modern Sans"
-msgstr ""
+msgstr "Latin Modern Sans"
 
 #: src/frontends/qt4/GuiDocument.cpp:143
 msgid "Helvetica"
-msgstr ""
+msgstr "Helvetica"
 
 #: src/frontends/qt4/GuiDocument.cpp:143
 msgid "Avant Garde"
-msgstr ""
+msgstr "Avant Garde"
 
 #: src/frontends/qt4/GuiDocument.cpp:143
 msgid "Bera Sans"
-msgstr ""
+msgstr "Bera Sans"
 
 #: src/frontends/qt4/GuiDocument.cpp:143
-#, fuzzy
 msgid "CM Bright"
-msgstr "Rechtsboven"
+msgstr "CM Bright"
 
 #: src/frontends/qt4/GuiDocument.cpp:155
 msgid "Computer Modern Typewriter"
@@ -21246,17 +21191,16 @@ msgid "Latin Modern Typewriter"
 msgstr "Schrijfmachine"
 
 #: src/frontends/qt4/GuiDocument.cpp:156
-#, fuzzy
 msgid "Courier"
-msgstr "Kopiën"
+msgstr "Courier"
 
 #: src/frontends/qt4/GuiDocument.cpp:156
 msgid "Bera Mono"
-msgstr ""
+msgstr "Bera Mono"
 
 #: src/frontends/qt4/GuiDocument.cpp:157
 msgid "LuxiMono"
-msgstr ""
+msgstr "LuxiMono"
 
 #: src/frontends/qt4/GuiDocument.cpp:157
 #, fuzzy
@@ -21533,9 +21477,9 @@ msgid "Unable to set document class."
 msgstr "Als documentstandaard opslaan"
 
 #: src/frontends/qt4/GuiDocument.cpp:1664
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s, %2$s"
-msgstr "%1$s en %2$s"
+msgstr "%1$s, %2$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:1669
 #, fuzzy, c-format
@@ -21889,7 +21833,7 @@ msgstr "Helaas."
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "lyxrc"
-msgstr ""
+msgstr "lyxrc"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 #, fuzzy
@@ -21962,7 +21906,7 @@ msgstr "LaTeX-logboek"
 #: src/frontends/qt4/GuiLog.cpp:237
 #, fuzzy
 msgid "Literate"
-msgstr "ert"
+msgstr "Zichtbare spatie|#s"
 
 #: src/frontends/qt4/GuiLog.cpp:240
 #, fuzzy
@@ -22352,7 +22296,7 @@ msgstr ""
 #: src/frontends/qt4/GuiProgressView.cpp:82
 #, fuzzy
 msgid "Set"
-msgstr "Aan&zetten"
+msgstr "Op&slaan"
 
 #: src/frontends/qt4/GuiRef.cpp:44
 #, fuzzy
@@ -22876,9 +22820,8 @@ msgid "Automatic save failed!"
 msgstr "Auto-opslaan mislukte!"
 
 #: src/frontends/qt4/GuiView.cpp:1306
-#, fuzzy
 msgid "Automatic save done."
-msgstr "Automatisch v&enster"
+msgstr ""
 
 # opdracht alleen toegestaan met document open zou mooier zijn.
 #: src/frontends/qt4/GuiView.cpp:1348
@@ -23112,7 +23055,7 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2461
 #, fuzzy
 msgid "Reload externally changed document?"
-msgstr "Terug naar opgeslagen versie"
+msgstr "Document opslaan?"
 
 #: src/frontends/qt4/GuiView.cpp:2515
 msgid "Error when setting the locking property."
@@ -23128,9 +23071,9 @@ msgid "Opening child document %1$s..."
 msgstr "Document %1$s openen... "
 
 #: src/frontends/qt4/GuiView.cpp:2725
-#, fuzzy, c-format
+#, c-format
 msgid "Successful export to format: %1$s"
-msgstr "Fout tijdens lezen "
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2726
 #, fuzzy, c-format
@@ -23143,9 +23086,9 @@ msgid "Successful preview of format: %1$s"
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2739
-#, fuzzy, c-format
+#, c-format
 msgid "Error previewing format: %1$s"
-msgstr "Fout tijdens lezen "
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2798
 #, fuzzy
@@ -23153,8 +23096,9 @@ msgid "Exporting ..."
 msgstr "Importeren%m"
 
 #: src/frontends/qt4/GuiView.cpp:2818
+#, fuzzy
 msgid "Previewing ..."
-msgstr ""
+msgstr "Voorbeeld|#V"
 
 #: src/frontends/qt4/GuiView.cpp:2871
 #, fuzzy
@@ -23305,9 +23249,8 @@ msgid "<No Bookmarks Saved Yet>"
 msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:951
-#, fuzzy
 msgid "View (Other Formats)|F"
-msgstr "Overige lettertype-instellingen"
+msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:952
 #, fuzzy
@@ -23317,12 +23260,12 @@ msgstr "De weergave verversen"
 #: src/frontends/qt4/Menus.cpp:985
 #, fuzzy, c-format
 msgid "View [%1$s]|V"
-msgstr "&Beeld"
+msgstr "Beeld|e"
 
 #: src/frontends/qt4/Menus.cpp:986
 #, fuzzy, c-format
 msgid "Update [%1$s]|U"
-msgstr "Bij&werken"
+msgstr "Bijwerken|w"
 
 #: src/frontends/qt4/Menus.cpp:1079
 #, fuzzy
@@ -23400,9 +23343,9 @@ msgid "Update %1$s"
 msgstr "Bij&werken"
 
 #: src/frontends/qt4/Toolbars.cpp:229
-#, fuzzy, c-format
+#, c-format
 msgid "View %1$s"
-msgstr "&Beeld"
+msgstr ""
 
 #: src/frontends/qt4/Validator.cpp:161
 #, fuzzy
@@ -23422,11 +23365,9 @@ msgid "Could not update TeX information"
 msgstr "Geen verdere Herhaal mogelijk"
 
 #: src/frontends/qt4/qt_helpers.cpp:216
-#, fuzzy, c-format
+#, c-format
 msgid "The script `%1$s' failed."
 msgstr ""
-"De spellingscontrole is om een of andere reden opgehouden.\n"
-"Misschien heeft het proces een kill opdracht ontvangen."
 
 #: src/frontends/qt4/qt_helpers.cpp:468
 #, fuzzy
@@ -23632,14 +23573,14 @@ msgid "double frame"
 msgstr "dubbele"
 
 #: src/insets/InsetBox.cpp:151 src/insets/InsetBox.cpp:154
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (%2$s)"
-msgstr "%1$s en %2$s"
+msgstr "%1$s (%2$s)"
 
 #: src/insets/InsetBox.cpp:157
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (%2$s, %3$s)"
-msgstr "%1$s en %2$s"
+msgstr "%1$s (%2$s, %3$s)"
 
 #: src/insets/InsetBranch.cpp:66
 #, fuzzy
@@ -23742,8 +23683,8 @@ msgstr "speciaal teken"
 #: src/insets/InsetCommandParams.cpp:387
 #, c-format
 msgid ""
-"The following characters that are used in an inset (%1$s) are\n"
-"not representable in the current encoding and have been omitted:\n"
+"The following characters that are used in the inset %1$s are not\n"
+"representable in the current encoding and therefore have been omitted:\n"
 "%2$s."
 msgstr ""
 
@@ -23897,7 +23838,7 @@ msgstr "Onbekende handeling"
 #: src/insets/InsetIndex.cpp:448
 #, fuzzy
 msgid "All indices"
-msgstr "Verwijzing invoegen"
+msgstr "Alle bestanden (*)"
 
 # Index
 #: src/insets/InsetIndex.cpp:452
@@ -23920,14 +23861,12 @@ msgid "undefined"
 msgstr "Onderstreept "
 
 #: src/insets/InsetInfo.cpp:307 src/insets/InsetInfo.cpp:311
-#, fuzzy
 msgid "yes"
-msgstr "Stijl"
+msgstr "ja"
 
 #: src/insets/InsetInfo.cpp:307 src/insets/InsetInfo.cpp:311
-#, fuzzy
 msgid "no"
-msgstr "Herstellen"
+msgstr "nee"
 
 #: src/insets/InsetInfo.cpp:393
 #, fuzzy
@@ -24593,9 +24532,8 @@ msgid "entered math text mode (textrm)"
 msgstr ""
 
 #: src/mathed/InsetMathNest.cpp:1019
-#, fuzzy
 msgid "Regular expression editor mode"
-msgstr "Wiskunde editor modus"
+msgstr ""
 
 #: src/mathed/InsetMathNest.cpp:1595 src/mathed/InsetMathNest.cpp:1715
 msgid "Autocorrect Off ('!' to enter)"
@@ -24620,9 +24558,8 @@ msgid "optional"
 msgstr "&Horizontaal:"
 
 #: src/mathed/MathMacroTemplate.cpp:538
-#, fuzzy
 msgid "TeX"
-msgstr "LaTeX"
+msgstr "TeX"
 
 #: src/mathed/MathMacroTemplate.cpp:1239
 #, fuzzy
@@ -24885,43 +24822,60 @@ msgstr "Onbekend:"
 #~ msgid "&Dummy"
 #~ msgstr "&Dummy"
 
+#, fuzzy
 #~ msgid "F&ind:"
 #~ msgstr "&Zoeken:"
 
-#~ msgid "The Enter key works, too"
-#~ msgstr "Klik of druk op Enter om de geselecteerde referentie toe te voegen"
-
-#~ msgid "The delete key works, too"
-#~ msgstr ""
-#~ "Klik of druk op Delete om de geselecteerde referentie te verwijderen"
-
+#, fuzzy
 #~ msgid "D&elete"
 #~ msgstr "Verwij&deren"
 
-#~ msgid "Find next occurrence and replace it [Enter]"
-#~ msgstr "Zoek de volgende en vervang [Enter]"
-
-#~ msgid "Find previous occurrence and replace it [Shift+Enter]"
-#~ msgstr "Zoek de vorige en vervang [Shift+Enter]"
+#, fuzzy
+#~ msgid "&Default language:"
+#~ msgstr "u Gebruik alternatieve taal|#U"
 
 #, fuzzy
-#~ msgid "Prev"
-#~ msgstr "Voorbeeld|#V"
-
-#~ msgid "Close this panel"
-#~ msgstr "Dit dialoogvenster sluiten"
-
-# TODO
-#, fuzzy
-#~ msgid "Match..."
-#~ msgstr "Locaties"
+#~ msgid "Select the default language of your documents"
+#~ msgstr "de defaultwaarden voor deze documentklasse?"
 
 #, fuzzy
-#~ msgid "Document in current file"
-#~ msgstr "Document"
+#~ msgid "&BibTeX command:"
+#~ msgstr "Opdracht uitvoeren"
+
+#, fuzzy
+#~ msgid "&Index command:"
+#~ msgstr "Volgende opdracht"
+
+#, fuzzy
+#~ msgid "BibTeX command (&Japanese):"
+#~ msgstr "LaTeX-Log"
+
+#, fuzzy
+#~ msgid "Index command (Ja&panese):"
+#~ msgstr "Volgende opdracht"
+
+#, fuzzy
+#~ msgid "&roff command:"
+#~ msgstr "commando-inzet"
+
+#, fuzzy
+#~ msgid "Spellchec&ker executable:"
+#~ msgstr "Spellings&controleprogramma:"
+
+#, fuzzy
+#~ msgid "Use input encod&ing"
+#~ msgstr "Gebruik input|#I"
+
+#, fuzzy
+#~ msgid "Jump to the label"
+#~ msgstr "Lange tabel"
 
 #~ msgid "Merge cells"
 #~ msgstr "Cellen samenvoegen"
+
+#, fuzzy
+#~ msgid "Listing settings"
+#~ msgstr "streep minipagina"
 
 #, fuzzy
 #~ msgid "Absender:"
@@ -24964,6 +24918,34 @@ msgstr "Onbekend:"
 #~ msgstr "&Verticaal:"
 
 #, fuzzy
+#~ msgid "LangHeader"
+#~ msgstr "Koptekst"
+
+#, fuzzy
+#~ msgid "Language Header:"
+#~ msgstr "Koptekst"
+
+#, fuzzy
+#~ msgid "Language:"
+#~ msgstr "&Taal:"
+
+#, fuzzy
+#~ msgid "LastLanguage"
+#~ msgstr "Taal"
+
+#, fuzzy
+#~ msgid "Last Language:"
+#~ msgstr "&Taal:"
+
+#, fuzzy
+#~ msgid "LangFooter"
+#~ msgstr "Voettekst:"
+
+#, fuzzy
+#~ msgid "End"
+#~ msgstr " en "
+
+#, fuzzy
 #~ msgid "Text:"
 #~ msgstr "Tekst"
 
@@ -24997,24 +24979,82 @@ msgstr "Onbekend:"
 #~ msgstr "Uitlijning"
 
 #, fuzzy
-#~ msgid "Find LyX Dialog"
-#~ msgstr "Volge&nde zoeken"
+#~ msgid "Computer"
+#~ msgstr "Kopiën"
+
+#, fuzzy
+#~ msgid "Computer:"
+#~ msgstr "Kopiën:"
+
+#, fuzzy
+#~ msgid "EmptySection"
+#~ msgstr "Sectie"
+
+#, fuzzy
+#~ msgid "Empty Section"
+#~ msgstr "Sectie"
+
+#, fuzzy
+#~ msgid "CloseSection"
+#~ msgstr "selectie"
+
+#, fuzzy
+#~ msgid "Close Section"
+#~ msgstr "selectie"
+
+#, fuzzy
+#~ msgid "Insert|n"
+#~ msgstr "Invoegen|I"
+
+#, fuzzy
+#~ msgid "View DVI"
+#~ msgstr "Beeld|e"
+
+#, fuzzy
+#~ msgid "Update DVI"
+#~ msgstr "Bij&werken"
+
+#, fuzzy
+#~ msgid "View PostScript"
+#~ msgstr "&Postscript stuurprogramma:"
+
+#, fuzzy
+#~ msgid "Update PostScript"
+#~ msgstr "&Postscript stuurprogramma:"
+
+#, fuzzy
+#~ msgid "No horizontal line\t\\atop"
+#~ msgstr "Geen verdere notities"
+
+#, fuzzy
+#~ msgid "Can't create pipe for spellchecker."
+#~ msgstr "Spellingscontrole starten."
+
+#, fuzzy
+#~ msgid "Can't open pipe for spellchecker."
+#~ msgstr "Spellingscontrole beeindigen"
+
+#, fuzzy
+#~ msgid "What command runs the spellchecker?"
+#~ msgstr "Welke opdracht voert de spellingscontrole uit?"
+
+#, fuzzy
+#~ msgid "Native OS API not yet supported."
+#~ msgstr "Nog niet ondersteund"
+
+#~ msgid "Unknown spacing argument: "
+#~ msgstr "Onbekend spatiëringsargument: "
 
 #, fuzzy
 #~ msgid "Bibliography Entry Settings"
 #~ msgstr "Literatuurverwijzing"
 
 #, fuzzy
-#~ msgid "Box Settings"
-#~ msgstr "Instellingen"
-
-#, fuzzy
 #~ msgid "Branch Settings"
 #~ msgstr "Literatuurverwijzing"
 
-#, fuzzy
-#~ msgid "(cancelling)"
-#~ msgstr "marge"
+#~ msgid "Length"
+#~ msgstr "Lengte"
 
 #, fuzzy
 #~ msgid "TeX Code Settings"
@@ -25031,113 +25071,36 @@ msgstr "Onbekend:"
 #~ msgid "No LaTeX log file found."
 #~ msgstr "Geen LaTeX-logboek gevonden."
 
-#~ msgid "Table Settings"
-#~ msgstr "Tabelinstellingen"
+#~ msgid "ispell"
+#~ msgstr "ispell"
+
+#~ msgid "*.pws"
+#~ msgstr "*.pws"
 
 #, fuzzy
-#~ msgid "Vertical Space Settings"
-#~ msgstr "Verticale afstanden"
+#~ msgid "*.ispell"
+#~ msgstr "ispell"
 
 #, fuzzy
-#~ msgid "Match found and replaced !"
-#~ msgstr "Zoeken en vervangen"
+#~ msgid "Spellchecker error"
+#~ msgstr "Spellingscontrole"
 
 #, fuzzy
-#~ msgid "Latex"
-#~ msgstr "Datum"
+#~ msgid "The spellchecker could not be started\n"
+#~ msgstr ""
+#~ "De spellingscontrole is om een of andere reden opgehouden.\n"
+#~ "Misschien heeft het proces een kill opdracht ontvangen."
 
 #, fuzzy
-#~ msgid "View Output|V"
-#~ msgstr "Beeld|e"
+#~ msgid ""
+#~ "The spellchecker has died for some reason.\n"
+#~ "Maybe it has been killed."
+#~ msgstr ""
+#~ "De spellingscontrole is om een of andere reden opgehouden.\n"
+#~ "Misschien heeft het proces een kill opdracht ontvangen."
 
-#, fuzzy
-#~ msgid "Update Output|U"
-#~ msgstr "&Postscript stuurprogramma:"
-
-#, fuzzy
-#~ msgid "Advanced Search"
-#~ msgstr "&Annuleren"
-
-#, fuzzy
-#~ msgid "Replace Ne&xt"
-#~ msgstr "&Vervangen door:"
-
-#, fuzzy
-#~ msgid "Find &Prev"
-#~ msgstr "Volge&nde zoeken"
-
-#, fuzzy
-#~ msgid "Replace P&rev"
-#~ msgstr "&Alles vervangen"
-
-#, fuzzy
-#~ msgid "Current buffer only"
-#~ msgstr "Huidige cel:"
-
-#, fuzzy
-#~ msgid "Buffer"
-#~ msgstr "blauw"
-
-#, fuzzy
-#~ msgid "Document"
-#~ msgstr "Document"
-
-#, fuzzy
-#~ msgid "Open buffers"
-#~ msgstr "blauw"
-
-#, fuzzy
-#~ msgid "Select the default language of your documents"
-#~ msgstr "de defaultwaarden voor deze documentklasse?"
-
-# Persoonlijke
-#~ msgid "Personal &dictionary:"
-#~ msgstr "Eigen &woordenlijst:"
-
-#, fuzzy
-#~ msgid "Use input encod&ing"
-#~ msgstr "Gebruik input|#I"
-
-#, fuzzy
-#~ msgid "Jump to the label"
-#~ msgstr "Lange tabel"
-
-#~ msgid "Column Width"
-#~ msgstr "Kolombreedte"
-
-#, fuzzy
-#~ msgid "Listing settings"
-#~ msgstr "streep minipagina"
-
-#, fuzzy
-#~ msgid "Insert|n"
-#~ msgstr "Invoegen|I"
-
-#, fuzzy
-#~ msgid "Toggle Label|L"
-#~ msgstr "Allemaal aan/uitschakelen"
-
-#, fuzzy
-#~ msgid "Move Section down|d"
-#~ msgstr "De geselcteerde literatuurverwijzing naar beneden verplaatsen"
-
-#, fuzzy
-#~ msgid "Move Section up|u"
-#~ msgstr "selectie"
-
-#, fuzzy
-#~ msgid "Regexp"
-#~ msgstr "ex"
-
-#, fuzzy
-#~ msgid "No file open!"
-#~ msgstr "Geen bestand gevonden!"
-
-#~ msgid "Unknown spacing argument: "
-#~ msgstr "Onbekend spatiëringsargument: "
-
-#~ msgid "Length"
-#~ msgstr "Lengte"
+#~ msgid "No Table of contents"
+#~ msgstr "Geen inhoudsopgave"
 
 #~ msgid "Opened inset"
 #~ msgstr "Inzet geopend"
@@ -25181,10 +25144,6 @@ msgstr "Onbekend:"
 #~ msgstr "Voetnoot Inzet geopend"
 
 #, fuzzy
-#~ msgid "Opened Phantom Inset"
-#~ msgstr "Voetnoot Inzet geopend"
-
-#, fuzzy
 #~ msgid "Opened table"
 #~ msgstr "Openen helpbestand"
 
@@ -25195,61 +25154,20 @@ msgstr "Onbekend:"
 #~ msgid "Opened Wrap Inset"
 #~ msgstr "Voetnoot Inzet geopend"
 
-#, fuzzy
-#~ msgid "Accept Change|C"
-#~ msgstr "Accepteren|#A"
-
-#, fuzzy
-#~ msgid "C&ommand:"
-#~ msgstr "&Opdracht:"
-
-#, fuzzy
-#~ msgid "&BibTeX command:"
-#~ msgstr "Opdracht uitvoeren"
-
-#, fuzzy
-#~ msgid "&Index command:"
-#~ msgstr "Volgende opdracht"
-
-#, fuzzy
-#~ msgid "BibTeX command (&Japanese):"
-#~ msgstr "LaTeX-Log"
-
-#, fuzzy
-#~ msgid "Index command (Ja&panese):"
-#~ msgstr "Volgende opdracht"
+#~ msgid "Latex"
+#~ msgstr "Latex"
 
 #, fuzzy
 #~ msgid "Toggle Labeling/Numbering|T"
 #~ msgstr "Onderlijning aan/uit"
 
 #, fuzzy
-#~ msgid "Copy Label as Reference|C"
-#~ msgstr "Kruisverwijzing|w"
+#~ msgid "Toggle Label|L"
+#~ msgstr "Allemaal aan/uitschakelen"
 
 #, fuzzy
-#~ msgid "View DVI"
-#~ msgstr "Beeld|e"
-
-#, fuzzy
-#~ msgid "View PostScript"
-#~ msgstr "&Postscript stuurprogramma:"
-
-#, fuzzy
-#~ msgid "Update DVI"
-#~ msgstr "Bij&werken"
-
-#, fuzzy
-#~ msgid "Update PostScript"
-#~ msgstr "&Postscript stuurprogramma:"
-
-#, fuzzy
-#~ msgid "Thesaurus failure"
-#~ msgstr "Backup locatie"
-
-#, fuzzy
-#~ msgid "Indices"
-#~ msgstr "Negeren"
+#~ msgid "No file open!"
+#~ msgstr "Geen bestand gevonden!"
 
 #~ msgid "B&rowse..."
 #~ msgstr "B&laderen..."
@@ -25267,95 +25185,8 @@ msgstr "Onbekend:"
 #~ msgstr "latex"
 
 #, fuzzy
-#~ msgid "No horizontal line\t\\atop"
-#~ msgstr "Geen verdere notities"
-
-#, fuzzy
-#~ msgid "Native OS API not yet supported."
-#~ msgstr "Nog niet ondersteund"
-
-#, fuzzy
-#~ msgid "Spellchecker error"
-#~ msgstr "Spellingscontrole"
-
-#, fuzzy
-#~ msgid ""
-#~ "The spellchecker has died for some reason.\n"
-#~ "Maybe it has been killed."
-#~ msgstr ""
-#~ "De spellingscontrole is om een of andere reden opgehouden.\n"
-#~ "Misschien heeft het proces een kill opdracht ontvangen."
-
-#, fuzzy
-#~ msgid "LangHeader"
-#~ msgstr "Koptekst"
-
-#, fuzzy
-#~ msgid "Language Header:"
-#~ msgstr "Koptekst"
-
-#, fuzzy
-#~ msgid "Language:"
-#~ msgstr "&Taal:"
-
-#, fuzzy
-#~ msgid "LastLanguage"
-#~ msgstr "Taal"
-
-#, fuzzy
-#~ msgid "Last Language:"
-#~ msgstr "&Taal:"
-
-#, fuzzy
-#~ msgid "LangFooter"
-#~ msgstr "Voettekst:"
-
-#, fuzzy
-#~ msgid "Language Footer:"
-#~ msgstr "&Taal:"
-
-#, fuzzy
-#~ msgid "End"
-#~ msgstr " en "
-
-#, fuzzy
-#~ msgid "Computer"
-#~ msgstr "Kopiën"
-
-#, fuzzy
-#~ msgid "Computer:"
-#~ msgstr "Kopiën:"
-
-#, fuzzy
-#~ msgid "EmptySection"
-#~ msgstr "Sectie"
-
-#, fuzzy
-#~ msgid "Empty Section"
-#~ msgstr "Sectie"
-
-#, fuzzy
-#~ msgid "CloseSection"
-#~ msgstr "selectie"
-
-#, fuzzy
-#~ msgid "Close Section"
-#~ msgstr "selectie"
-
-#, fuzzy
-#~ msgid "Phantom Text"
-#~ msgstr "Vervangen"
-
-#, fuzzy
-#~ msgid "RegExp"
-#~ msgstr "ex"
-
-#, fuzzy
 #~ msgid "&Postscript driver:"
 #~ msgstr "&Postscript stuurprogramma:"
-
-#~ msgid "No Table of contents"
-#~ msgstr "Geen inhoudsopgave"
 
 #, fuzzy
 #~ msgid "Append Parameter"
@@ -25372,37 +25203,6 @@ msgstr "Onbekend:"
 #, fuzzy
 #~ msgid "Remove Optional Parameter"
 #~ msgstr "Voetnoot Inzet geopend"
-
-#, fuzzy
-#~ msgid "&Default language:"
-#~ msgstr "u Gebruik alternatieve taal|#U"
-
-#, fuzzy
-#~ msgid "&roff command:"
-#~ msgstr "commando-inzet"
-
-#, fuzzy
-#~ msgid "Spellchec&ker executable:"
-#~ msgstr "Spellings&controleprogramma:"
-
-#, fuzzy
-#~ msgid "Can't create pipe for spellchecker."
-#~ msgstr "Spellingscontrole starten."
-
-#, fuzzy
-#~ msgid "Can't open pipe for spellchecker."
-#~ msgstr "Spellingscontrole beeindigen"
-
-#, fuzzy
-#~ msgid "What command runs the spellchecker?"
-#~ msgstr "Welke opdracht voert de spellingscontrole uit?"
-
-#~ msgid "ispell"
-#~ msgstr "ispell"
-
-#, fuzzy
-#~ msgid "*.ispell"
-#~ msgstr "ispell"
 
 #, fuzzy
 #~ msgid "figure"
@@ -25629,6 +25429,10 @@ msgstr "Onbekend:"
 #, fuzzy
 #~ msgid "Extra embedded file"
 #~ msgstr "Kon niet draaien met bestand:"
+
+#, fuzzy
+#~ msgid "Plain Text"
+#~ msgstr "Vervangen"
 
 #, fuzzy
 #~ msgid "Enspace|E"
@@ -25965,6 +25769,9 @@ msgstr "Onbekend:"
 #, fuzzy
 #~ msgid "Upper"
 #~ msgstr "Bijwerken|w"
+
+#~ msgid "Table of contents"
+#~ msgstr "Inhoudsopgave"
 
 #~ msgid "Opened Theorem Inset"
 #~ msgstr "Stelling inzet geopend"

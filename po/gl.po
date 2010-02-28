@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-28 15:22+0100\n"
-"PO-Revision-Date: 2008-08-04 22:31+0100\n"
+"POT-Creation-Date: 2010-02-28 16:00+0100\n"
+"PO-Revision-Date: 2007-07-11 18:31+0100\n"
 "Last-Translator: Ramon Flores <fa2ramon@usc.es>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -465,9 +465,8 @@ msgid "Filename &Suffix"
 msgstr "Ficheiro"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
-#, fuzzy
 msgid "Show undefined branches used in this document."
-msgstr "Nengunha pola no documento!"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
 #, fuzzy
@@ -558,9 +557,8 @@ msgstr "&Cancelar"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
-#, fuzzy
 msgid "Undefined branches used in this document."
-msgstr "Nengunha pola no documento!"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:68
 #, fuzzy
@@ -824,9 +822,8 @@ msgid "S&elected Citations:"
 msgstr "Citas seleccio&nadas:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:72
-#, fuzzy
 msgid "Click or press Enter to add the selected citation to the list"
-msgstr "Engadir unha pola nova á lista"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "Click or press Delete to delete the selected citation from the list"
@@ -1254,9 +1251,8 @@ msgid "Find LyX Text"
 msgstr "Procurar se&guinte"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:107
-#, fuzzy
 msgid "&Basic"
-msgstr "Variación"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:159
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:183
@@ -1269,9 +1265,8 @@ msgid "&Replace with..."
 msgstr "Su&bstituir por:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:222
-#, fuzzy
 msgid "Replace and find next occurrence [Enter]"
-msgstr "Substitui a palabra coa escolla actual"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:225
 #, fuzzy
@@ -1344,7 +1339,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:446
 #, fuzzy
 msgid "&Next"
-msgstr "texto"
+msgstr "&Nova:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:467
 msgid "Find previous occurrence [Shift+Enter]"
@@ -1363,7 +1358,7 @@ msgstr "Palabra(s) &completa(s)"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:494
 #, fuzzy
 msgid "Whole &words"
-msgstr "Palabra(s) &completa(s)"
+msgstr "Palabras chave."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:522
 #, fuzzy
@@ -1392,14 +1387,13 @@ msgstr "&Indentar parágrafo"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:606
 #, fuzzy
 msgid "Current &document"
-msgstr "Imprimir documento"
+msgstr "Imprime documento"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:627
-#, fuzzy
 msgid ""
 "Current document and all related documents belonging to the same master "
 "document"
-msgstr "Nome da impresora predefinida"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:630
 #, fuzzy
@@ -1417,9 +1411,8 @@ msgid "&Open documents"
 msgstr "Abre documento"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:669
-#, fuzzy
 msgid "All ma&nuals"
-msgstr "Predefinida do LaTeX"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:690
 #, fuzzy
@@ -1435,7 +1428,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:711
 #, fuzzy
 msgid "Ignore &format"
-msgstr "Formato de data"
+msgstr "A&o formato:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
 #: src/frontends/qt4/ui/OutputUi.ui:13 src/frontends/qt4/ui/PDFSupportUi.ui:13
@@ -1445,7 +1438,7 @@ msgstr "Forma"
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:23
 #, fuzzy
 msgid "Float Type:"
-msgstr "Tipo"
+msgstr "Información TeX"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:47
 msgid "Use &default placement"
@@ -2288,9 +2281,8 @@ msgid "Hit Enter to search, or click Go!"
 msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:45
-#, fuzzy
 msgid "Log &Type:"
-msgstr "Tipo"
+msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:74
 msgid "Update the display"
@@ -2378,9 +2370,8 @@ msgid "Include only the selected subdocuments in the output"
 msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:43
-#, fuzzy
 msgid "Include only &selected children"
-msgstr "Inclui ficheiro"
+msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:50
 msgid ""
@@ -2394,9 +2385,8 @@ msgid "&Maintain counters and references"
 msgstr "todas as referéncias sen citar"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:63
-#, fuzzy
 msgid "Include all subdocuments in the output"
-msgstr "Subliñar espazos na saída xerada"
+msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:66
 #, fuzzy
@@ -2627,9 +2617,8 @@ msgid "Use the XeTeX processing engine"
 msgstr ""
 
 #: src/frontends/qt4/ui/OutputUi.ui:73
-#, fuzzy
 msgid "Use &XeTeX"
-msgstr "Usar &babel"
+msgstr ""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:19
 #, fuzzy
@@ -2916,9 +2905,8 @@ msgid "Horizontal space of the phantom content"
 msgstr "Aliñamento horizontal do contido dentro do cadro"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:73
-#, fuzzy
 msgid "&Horiz. Phantom"
-msgstr "phantom"
+msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:80
 #, fuzzy
@@ -2926,9 +2914,8 @@ msgid "Vertical space of the phantom content"
 msgstr "Aliñamento vertical do contido dentro do cadro"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:83
-#, fuzzy
 msgid "&Vert. Phantom"
-msgstr "phantom"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 #, fuzzy
@@ -3600,7 +3587,7 @@ msgstr "&Directória de traballo:"
 #: src/frontends/qt4/ui/PrefPathsUi.ui:215
 #, fuzzy
 msgid "Hunspell dictionaries:"
-msgstr "Fallo do Tesouro"
+msgstr "&Dicionário persoal:"
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2832
 msgid ""
@@ -3872,7 +3859,6 @@ msgid "&Spellchecker engine:"
 msgstr "Corrector ortográfico"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
-#, fuzzy
 msgid "Accept words such as \"diskdrive\""
 msgstr "Aceita palabras como \"ervamoura\""
 
@@ -4140,17 +4126,17 @@ msgstr ""
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
 #, fuzzy
 msgid "&Clear automatically"
-msgstr "Actualización automática"
+msgstr "Aplica cada mudanza automáticamente"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
 #, fuzzy
 msgid "Debug messages"
-msgstr "Nengunha mensaxe de depuración"
+msgstr "Todas as mensaxes de depuración"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:203
 #, fuzzy
 msgid "Display no debug messages"
-msgstr "Nengunha mensaxe de depuración"
+msgstr "Todas as mensaxes de depuración"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:206
 #, fuzzy
@@ -4172,9 +4158,8 @@ msgid "Display all debug messages"
 msgstr "Todas as mensaxes de depuración"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
-#, fuzzy
 msgid "Display statusbar messages?"
-msgstr "Mensaxes recadros-texto/tabulares"
+msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:239
 #, fuzzy
@@ -4231,7 +4216,7 @@ msgstr ""
 #: src/frontends/qt4/ui/RefUi.ui:193
 #, fuzzy
 msgid "Grou&p"
-msgstr "Recortar"
+msgstr "&Nome:"
 
 #: src/frontends/qt4/ui/RefUi.ui:223 src/frontends/qt4/GuiRef.cpp:314
 msgid "&Go to Label"
@@ -4504,7 +4489,7 @@ msgstr ""
 #: src/frontends/qt4/ui/TabularUi.ui:302
 #, fuzzy
 msgid "Cell setting"
-msgstr "Configuración"
+msgstr "Configuración de nota"
 
 #: src/frontends/qt4/ui/TabularUi.ui:308
 msgid "Rotate this cell by 90 degrees"
@@ -5684,8 +5669,9 @@ msgid "Teaser image:"
 msgstr "Imaxe rasterizada"
 
 #: lib/layouts/acmsiggraph.layout:84
+#, fuzzy
 msgid "CRcat"
-msgstr ""
+msgstr "hat"
 
 #: lib/layouts/acmsiggraph.layout:89
 #, fuzzy
@@ -8440,9 +8426,8 @@ msgid "List of Algorithms"
 msgstr "Lista de algoritmos"
 
 #: lib/layouts/recipebook.layout:42 lib/layouts/scrbook.layout:17
-#, fuzzy
 msgid "\\thechapter"
-msgstr "\\Alph{chapter}"
+msgstr "\\thechapter"
 
 #: lib/layouts/recipebook.layout:78
 #, fuzzy
@@ -9312,7 +9297,7 @@ msgstr "U&bicación:"
 
 #: lib/layouts/agu_stdtitle.inc:323
 msgid "ISSN"
-msgstr ""
+msgstr "ISSN"
 
 #: lib/layouts/agu_stdtitle.inc:332
 msgid "Element:CODEN"
@@ -10211,7 +10196,7 @@ msgstr "Mudanza: "
 #: lib/layouts/initials.module:12
 #, fuzzy
 msgid "Initial"
-msgstr "TextoInvisíbel"
+msgstr "Itálica"
 
 #: lib/layouts/linguistics.module:2
 msgid "Linguistics"
@@ -10383,7 +10368,7 @@ msgstr ""
 #: lib/layouts/noweb.module:5 lib/layouts/sweave.module:5
 #, fuzzy
 msgid "literate"
-msgstr "En série"
+msgstr "Literal"
 
 #: lib/layouts/sweave.module:2 lib/layouts/sweave.module:18
 #: lib/configure.py:507
@@ -10891,6 +10876,7 @@ msgid "Catalan"
 msgstr "Catalán"
 
 #: lib/languages:26
+#, fuzzy
 msgid "Chinese (simplified)"
 msgstr "Chinés (simplificado)"
 
@@ -11190,7 +11176,7 @@ msgstr "DOS (CP 437)"
 
 #: lib/encodings:71
 msgid "DOS-de (CP 437-de)"
-msgstr ""
+msgstr "DOS-de (CP 437-de)"
 
 #: lib/encodings:74
 msgid "Western European (CP 850)"
@@ -11288,7 +11274,7 @@ msgstr ""
 
 #: lib/encodings:165
 msgid "Unicode (CJK) (utf8)"
-msgstr ""
+msgstr "Unicode (CJK) (utf8)"
 
 #: lib/encodings:169
 #, fuzzy
@@ -11321,7 +11307,7 @@ msgstr ""
 
 #: lib/encodings:196
 msgid "Unicode (XeTeX) (utf8)"
-msgstr ""
+msgstr "Unicode (XeTeX) (utf8)"
 
 #: lib/encodings:200
 msgid "ASCII"
@@ -12923,7 +12909,7 @@ msgstr ""
 #: lib/ui/stdcontext.inc:564
 #, fuzzy
 msgid "All Indexes|A"
-msgstr "Factura"
+msgstr "Abrir todos os obxectos|o"
 
 #: lib/ui/stdcontext.inc:567
 msgid "Subindex|b"
@@ -13087,7 +13073,7 @@ msgstr "Configuración do axuste de texto...|a"
 #: lib/ui/stdmenus.inc:140
 #, fuzzy
 msgid "Index Settings...|x"
-msgstr "Configuración do código LaTeX...|X"
+msgstr "Configuración do cadro...|i"
 
 #: lib/ui/stdmenus.inc:141
 #, fuzzy
@@ -13435,12 +13421,12 @@ msgstr ""
 #: lib/ui/stdmenus.inc:466
 #, fuzzy
 msgid "Horizontal Phantom"
-msgstr "phantom"
+msgstr "Liña horizontal"
 
 #: lib/ui/stdmenus.inc:467
 #, fuzzy
 msgid "Vertical Phantom"
-msgstr "phantom"
+msgstr "Aliñamento vertical"
 
 #: lib/ui/stdmenus.inc:479
 msgid "Change Tracking|C"
@@ -13584,7 +13570,7 @@ msgstr "Procura e substitue"
 #: lib/ui/stdtoolbars.inc:82
 #, fuzzy
 msgid "Find and replace (advanced)"
-msgstr "Procurar e substituir...|P"
+msgstr "Procura e substitue"
 
 #: lib/ui/stdtoolbars.inc:83
 #, fuzzy
@@ -13657,12 +13643,12 @@ msgstr "Documento mestre"
 #: lib/ui/stdtoolbars.inc:104
 #, fuzzy
 msgid "View other formats"
-msgstr "Outros flutuantes"
+msgstr "Formatos de ficheiro"
 
 #: lib/ui/stdtoolbars.inc:105
 #, fuzzy
 msgid "Update other formats"
-msgstr "Actualizar a vista"
+msgstr "Formato de data"
 
 #: lib/ui/stdtoolbars.inc:108
 msgid "Extra"
@@ -14374,14 +14360,12 @@ msgid "Unit fraction (20 km/h)\t\\unitfrac"
 msgstr "Oblícua\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:356
-#, fuzzy
 msgid "Text fraction\t\\tfrac"
-msgstr "Texto (amsmath)\t\\tfrac"
+msgstr "Texto\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:357
-#, fuzzy
 msgid "Display fraction\t\\dfrac"
-msgstr "Grande (amsmath)\t\\dfrac"
+msgstr "Grande\t\\dfrac"
 
 #: lib/ui/stdtoolbars.inc:358
 #, fuzzy
@@ -15395,33 +15379,28 @@ msgid "sqiintop"
 msgstr "sqiintop"
 
 #: lib/ui/stdtoolbars.inc:636
-#, fuzzy
 msgid "fint"
-msgstr "int"
+msgstr "fint"
 
 #: lib/ui/stdtoolbars.inc:637
-#, fuzzy
 msgid "fintop"
-msgstr "intop"
+msgstr "fintop"
 
 #: lib/ui/stdtoolbars.inc:638
-#, fuzzy
 msgid "landupint"
-msgstr "diamondsuit"
+msgstr "landupint"
 
 #: lib/ui/stdtoolbars.inc:639
-#, fuzzy
 msgid "landupintop"
-msgstr "intop"
+msgstr "landupintop"
 
 #: lib/ui/stdtoolbars.inc:640
 msgid "landdownint"
-msgstr ""
+msgstr "landdownint"
 
 #: lib/ui/stdtoolbars.inc:641
-#, fuzzy
 msgid "landdownintop"
-msgstr "dotsintop"
+msgstr "landdownintop"
 
 #: lib/ui/stdtoolbars.inc:642
 msgid "sum"
@@ -16451,9 +16430,8 @@ msgstr ""
 "Lea 'info date' para obter mais información.\n"
 
 #: lib/external_templates:333
-#, fuzzy
 msgid "Dia"
-msgstr "Pantalla"
+msgstr "Dia"
 
 #: lib/external_templates:334 lib/external_templates:337
 #, fuzzy
@@ -16473,9 +16451,8 @@ msgid "FIG"
 msgstr "FIG"
 
 #: lib/configure.py:451
-#, fuzzy
 msgid "DIA"
-msgstr "DVI"
+msgstr "DIA"
 
 #: lib/configure.py:454
 #, fuzzy
@@ -16555,33 +16532,28 @@ msgid "DocBook"
 msgstr "DocBook"
 
 #: lib/configure.py:502
-#, fuzzy
 msgid "DocBook|B"
-msgstr "Marcadores|M"
+msgstr "DocBook|B"
 
 #: lib/configure.py:503
 msgid "Docbook (XML)"
 msgstr "Docbook (XML)"
 
 #: lib/configure.py:504
-#, fuzzy
 msgid "Graphviz Dot"
-msgstr "Gráficos"
+msgstr "Graphviz Dot"
 
 #: lib/configure.py:505
-#, fuzzy
 msgid "LaTeX (pLaTeX)"
-msgstr "O&pcións LaTeX:"
+msgstr "LaTeX (pLaTeX)"
 
 #: lib/configure.py:506
-#, fuzzy
 msgid "NoWeb"
-msgstr "Nengun"
+msgstr "NoWeb"
 
 #: lib/configure.py:506
-#, fuzzy
 msgid "NoWeb|N"
-msgstr "Nota|N"
+msgstr "NoWeb|N"
 
 #: lib/configure.py:507
 #, fuzzy
@@ -16611,7 +16583,7 @@ msgstr "Actualiza PDF (pdflatex)"
 #: lib/configure.py:511
 #, fuzzy
 msgid "LaTeX (XeTeX)"
-msgstr "O&pcións LaTeX:"
+msgstr "LaTeX (pLaTeX)"
 
 #: lib/configure.py:512 src/frontends/qt4/GuiPrefs.cpp:335
 msgid "Plain text"
@@ -16649,27 +16621,23 @@ msgstr "HTML"
 #: lib/configure.py:519 lib/configure.py:521
 #, fuzzy
 msgid "LyXHTML|X"
-msgstr "HTML"
+msgstr "HTML|H"
 
 #: lib/configure.py:528 src/frontends/qt4/GuiLog.cpp:230
-#, fuzzy
 msgid "BibTeX"
-msgstr "LaTeX"
+msgstr "BibTeX"
 
 #: lib/configure.py:533
-#, fuzzy
 msgid "EPS"
-msgstr "PS"
+msgstr "EPS"
 
 #: lib/configure.py:534
-#, fuzzy
 msgid "Postscript"
-msgstr "Post Scriptum:"
+msgstr "Postscript"
 
 #: lib/configure.py:534
-#, fuzzy
 msgid "Postscript|t"
-msgstr "Post Scriptum:"
+msgstr "Postscript|t"
 
 #: lib/configure.py:538
 msgid "PDF (ps2pdf)"
@@ -16680,14 +16648,12 @@ msgid "PDF (ps2pdf)|P"
 msgstr "PDF (ps2pdf)|P"
 
 #: lib/configure.py:539
-#, fuzzy
 msgid "PDF (pdflatex)"
-msgstr "Mostra PDF (pdflatex)"
+msgstr "PDF (pdflatex)"
 
 #: lib/configure.py:539
-#, fuzzy
 msgid "PDF (pdflatex)|F"
-msgstr "Mostra PDF (pdflatex)"
+msgstr "PDF (pdflatex)|F"
 
 #: lib/configure.py:540
 msgid "PDF (dvipdfm)"
@@ -17135,7 +17101,7 @@ msgstr "Fallou a conversión"
 
 #: src/Buffer.cpp:1329
 #, fuzzy
-msgid "Uncodable character in path"
+msgid "Uncodable character in file path"
 msgstr "carácter especial"
 
 #: src/Buffer.cpp:1330
@@ -17148,7 +17114,7 @@ msgid ""
 "This will likely result in incomplete output.\n"
 "\n"
 "Chose an appropriate document encoding (such as utf8)\n"
-"or change the path name."
+"or change the file path name."
 msgstr ""
 
 #: src/Buffer.cpp:1604
@@ -19333,7 +19299,7 @@ msgstr ""
 #: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1009
 #, fuzzy
 msgid "Already in regular expression mode"
-msgstr "Expresión de longura LaTeX inválida."
+msgstr "Expresión regu&lar"
 
 #: src/Text3.cpp:216
 #, fuzzy
@@ -19490,15 +19456,13 @@ msgstr ""
 
 #: src/VCBackend.cpp:815 src/VCBackend.cpp:819
 #: src/frontends/qt4/FindAndReplace.cpp:395
-#, fuzzy
 msgid "&Yes"
-msgstr "Sí"
+msgstr "&Sí"
 
 #: src/VCBackend.cpp:815 src/VCBackend.cpp:819
 #: src/frontends/qt4/FindAndReplace.cpp:395
-#, fuzzy
 msgid "&No"
-msgstr "Non"
+msgstr "&Non"
 
 #: src/VCBackend.cpp:815
 msgid "View &Log ..."
@@ -19675,14 +19639,12 @@ msgid "master document[[scope]]"
 msgstr "Documento mestre"
 
 #: src/frontends/qt4/FindAndReplace.cpp:330
-#, fuzzy
 msgid "open files[[scope]]"
-msgstr "Exemplo #:"
+msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:333
-#, fuzzy
 msgid "manuals[[scope]]"
-msgstr "Predefinida do LaTeX"
+msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:337
 #, c-format
@@ -19730,14 +19692,14 @@ msgid "amount of work other people have done for the LyX project."
 msgstr "cantidade de traballo que outra xente realizou no proxecto LyX."
 
 #: src/frontends/qt4/GuiAbout.cpp:84
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995--%1$s LyX Team"
 msgstr ""
 "Os direitos autorais sobre LyX son de\n"
 "Matthias Ettrich (1995) e da\n"
-"Equipa LyX (1995-2006)"
+"Equipa LyX (1995--%1$s)"
 
 #: src/frontends/qt4/GuiAbout.cpp:92
 msgid ""
@@ -20298,7 +20260,7 @@ msgstr "Finlandés"
 #: src/frontends/qt4/GuiCompare.cpp:261
 #, fuzzy
 msgid "Aborting process..."
-msgstr "Importando %1$s..."
+msgstr "Formatando documento..."
 
 #: src/frontends/qt4/GuiCompare.cpp:297
 #, fuzzy
@@ -20689,9 +20651,9 @@ msgid "Unable to set document class."
 msgstr "Non foi posíbel gravar as configuracións predefinidas do documento"
 
 #: src/frontends/qt4/GuiDocument.cpp:1664
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s, %2$s"
-msgstr "%1$s e %2$s"
+msgstr "%1$s, %2$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:1669
 #, fuzzy, c-format
@@ -21039,7 +21001,7 @@ msgstr "A&celerador:"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "lyxrc"
-msgstr ""
+msgstr "lyxrc"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 #, fuzzy
@@ -21108,7 +21070,7 @@ msgstr "Rexisto de LaTeX"
 #: src/frontends/qt4/GuiLog.cpp:237
 #, fuzzy
 msgid "Literate"
-msgstr "En série"
+msgstr "Literal"
 
 #: src/frontends/qt4/GuiLog.cpp:240
 #, fuzzy
@@ -21466,17 +21428,15 @@ msgstr "Configuración do cadro"
 #: src/frontends/qt4/GuiPrintindex.cpp:69
 #, fuzzy
 msgid "<All indexes>"
-msgstr "Polas &disponíbeis:"
+msgstr "Todos os ficheiros (*)"
 
 #: src/frontends/qt4/GuiProgressView.cpp:52
-#, fuzzy
 msgid "Progress/Debug Messages"
-msgstr "Nengunha mensaxe de depuración"
+msgstr ""
 
 #: src/frontends/qt4/GuiProgressView.cpp:81
-#, fuzzy
 msgid "Debug Level"
-msgstr "Nengunha mensaxe de depuración"
+msgstr ""
 
 #: src/frontends/qt4/GuiProgressView.cpp:82
 #, fuzzy
@@ -22250,15 +22210,16 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2461
 #, fuzzy
 msgid "Reload externally changed document?"
-msgstr "Reverter ao documento gravado?"
+msgstr "Gravar o documento modificado?"
 
 #: src/frontends/qt4/GuiView.cpp:2515
 msgid "Error when setting the locking property."
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2558
+#, fuzzy
 msgid "Directory is not accessible."
-msgstr ""
+msgstr "Non se pudo ler %1$s ."
 
 #: src/frontends/qt4/GuiView.cpp:2641
 #, c-format
@@ -22266,9 +22227,9 @@ msgid "Opening child document %1$s..."
 msgstr "Abrindo documento fillo %1$s..."
 
 #: src/frontends/qt4/GuiView.cpp:2725
-#, fuzzy, c-format
+#, c-format
 msgid "Successful export to format: %1$s"
-msgstr "Sen información para exportar o formato %1$s."
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2726
 #, fuzzy, c-format
@@ -22281,9 +22242,9 @@ msgid "Successful preview of format: %1$s"
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2739
-#, fuzzy, c-format
+#, c-format
 msgid "Error previewing format: %1$s"
-msgstr "Sen información para exportar o formato %1$s."
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2798
 #, fuzzy
@@ -22440,9 +22401,8 @@ msgid "<No Bookmarks Saved Yet>"
 msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:951
-#, fuzzy
 msgid "View (Other Formats)|F"
-msgstr "Outros flutuantes"
+msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:952
 #, fuzzy
@@ -22452,12 +22412,12 @@ msgstr "Actualizar a vista"
 #: src/frontends/qt4/Menus.cpp:985
 #, fuzzy, c-format
 msgid "View [%1$s]|V"
-msgstr "&Ver"
+msgstr "Ver|V"
 
 #: src/frontends/qt4/Menus.cpp:986
 #, fuzzy, c-format
 msgid "Update [%1$s]|U"
-msgstr "&Actualizar"
+msgstr "Actualizar|A"
 
 #: src/frontends/qt4/Menus.cpp:1079
 #, fuzzy
@@ -22485,7 +22445,7 @@ msgstr "Outros flutuantes"
 #: src/frontends/qt4/Menus.cpp:1208
 #, fuzzy
 msgid "<Empty Table of Contents>"
-msgstr "Sen Índice xeral"
+msgstr "Índice xeral"
 
 #: src/frontends/qt4/Menus.cpp:1243
 #, fuzzy
@@ -22532,9 +22492,9 @@ msgid "Update %1$s"
 msgstr "&Actualizar"
 
 #: src/frontends/qt4/Toolbars.cpp:229
-#, fuzzy, c-format
+#, c-format
 msgid "View %1$s"
-msgstr "&Ver"
+msgstr ""
 
 #: src/frontends/qt4/Validator.cpp:161
 msgid "space"
@@ -22766,14 +22726,14 @@ msgid "double frame"
 msgstr "duplo"
 
 #: src/insets/InsetBox.cpp:151 src/insets/InsetBox.cpp:154
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (%2$s)"
-msgstr "%1$s e %2$s"
+msgstr "%1$s (%2$s)"
 
 #: src/insets/InsetBox.cpp:157
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (%2$s, %3$s)"
-msgstr "%1$s e %2$s"
+msgstr "%1$s (%2$s, %3$s)"
 
 #: src/insets/InsetBranch.cpp:66
 #, fuzzy
@@ -22871,8 +22831,8 @@ msgstr "carácter especial"
 #: src/insets/InsetCommandParams.cpp:387
 #, c-format
 msgid ""
-"The following characters that are used in an inset (%1$s) are\n"
-"not representable in the current encoding and have been omitted:\n"
+"The following characters that are used in the inset %1$s are not\n"
+"representable in the current encoding and therefore have been omitted:\n"
 "%2$s."
 msgstr ""
 
@@ -23031,7 +22991,7 @@ msgstr "Tipo de índice descoñecido"
 #: src/insets/InsetIndex.cpp:448
 #, fuzzy
 msgid "All indices"
-msgstr "Polas &disponíbeis:"
+msgstr "Todos os ficheiros (*)"
 
 #: src/insets/InsetIndex.cpp:452
 #, fuzzy
@@ -23714,7 +23674,7 @@ msgstr "introducido modo de texto matemático (textrm)"
 #: src/mathed/InsetMathNest.cpp:1019
 #, fuzzy
 msgid "Regular expression editor mode"
-msgstr "Modo do editor matemático"
+msgstr "Expresión regu&lar"
 
 #: src/mathed/InsetMathNest.cpp:1595 src/mathed/InsetMathNest.cpp:1715
 msgid "Autocorrect Off ('!' to enter)"
@@ -23789,7 +23749,6 @@ msgstr ""
 "`chkconfig.ltx'."
 
 #: src/support/Package.cpp:626 src/support/Package.cpp:653
-#, fuzzy
 msgid "File not found"
 msgstr "Non se achou o ficheiro"
 
@@ -24003,12 +23962,221 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Usuário descoñecido"
 
+#~ msgid "&Dummy"
+#~ msgstr "&Postizo"
+
+#~ msgid "F&ind:"
+#~ msgstr "Proc&urar:"
+
+#~ msgid "D&elete"
+#~ msgstr "Apa&gar"
+
+#~ msgid "&Default language:"
+#~ msgstr "&Língua predefinida:"
+
 #, fuzzy
-#~ msgid "TextLabel"
-#~ msgstr "Etiqueta"
+#~ msgid "Select the default language of your documents"
+#~ msgstr "Reiniciar aos valores predefinidos para a clase do documento"
+
+#~ msgid "&BibTeX command:"
+#~ msgstr "Comando &BibTeX:"
+
+#, fuzzy
+#~ msgid "&Index command:"
+#~ msgstr "Comando índice:"
+
+#, fuzzy
+#~ msgid "BibTeX command (&Japanese):"
+#~ msgstr "Comando BibTeX e opcións"
+
+#, fuzzy
+#~ msgid "Index command (Ja&panese):"
+#~ msgstr "Comando índice:"
+
+#~ msgid "&roff command:"
+#~ msgstr "Comando &roff:"
+
+#~ msgid "External app for formating tables in plain text output"
+#~ msgstr "Programa externo para formatar táboas en saída de texto simples"
+
+#~ msgid "Specify a personal dictionary file other than the default"
+#~ msgstr "Especifica un dicionário persoal distinto do predefinido"
+
+#~ msgid "Spellchec&ker executable:"
+#~ msgstr "&Corrector ortográfico:"
+
+#~ msgid "Use input encod&ing"
+#~ msgstr "&Usar codificación de entrada"
+
+#~ msgid "Jump to the label"
+#~ msgstr "Salta á etiqueta"
 
 #~ msgid "Merge cells"
 #~ msgstr "Une celas"
+
+#~ msgid "Listing settings"
+#~ msgstr "Configuración listas"
+
+#~ msgid "LangHeader"
+#~ msgstr "CabezalloLingua"
+
+#~ msgid "Language Header:"
+#~ msgstr "Cabezallo de língua:"
+
+#~ msgid "Language:"
+#~ msgstr "Língua:"
+
+#~ msgid "LastLanguage"
+#~ msgstr "UltimaLingua"
+
+#~ msgid "Last Language:"
+#~ msgstr "Última língua:"
+
+#~ msgid "LangFooter"
+#~ msgstr "PeLingua"
+
+#~ msgid "End"
+#~ msgstr "Fin"
+
+#~ msgid "End of CV"
+#~ msgstr "Fin do CV"
+
+#~ msgid "Strasse"
+#~ msgstr "Strasse"
+
+#~ msgid "Land"
+#~ msgstr "Land"
+
+#~ msgid "BLZ"
+#~ msgstr "BLZ"
+
+#~ msgid "Konto"
+#~ msgstr "Konto"
+
+#~ msgid "Computer"
+#~ msgstr "Computador"
+
+#~ msgid "Computer:"
+#~ msgstr "Computador:"
+
+#~ msgid "EmptySection"
+#~ msgstr "SecciónValeira"
+
+#~ msgid "Empty Section"
+#~ msgstr "Sección valeira"
+
+#~ msgid "CloseSection"
+#~ msgstr "FechaSección"
+
+#~ msgid "Close Section"
+#~ msgstr "Fecha sección"
+
+#, fuzzy
+#~ msgid "Insert|n"
+#~ msgstr "Inserir|I"
+
+#~ msgid "Dissolve Inset|l"
+#~ msgstr "Elimina obxecto inserido|o"
+
+#~ msgid "View DVI"
+#~ msgstr "Mostra DVI"
+
+#~ msgid "Update DVI"
+#~ msgstr "Actualiza DVI"
+
+#~ msgid "View PDF (pdflatex)"
+#~ msgstr "Mostra PDF (pdflatex)"
+
+#~ msgid "Update PDF (pdflatex)"
+#~ msgstr "Actualiza PDF (pdflatex)"
+
+#~ msgid "View PostScript"
+#~ msgstr "Mostra PostScript"
+
+#~ msgid "Update PostScript"
+#~ msgstr "Actualiza PostScript"
+
+#, fuzzy
+#~ msgid "No horizontal line\t\\atop"
+#~ msgstr "Sem linha hor.\t\\atop"
+
+#~ msgid "Can't create pipe for spellchecker."
+#~ msgstr "Non se pode criar \"pipe\" para o corrector ortográfico."
+
+#~ msgid "Can't open pipe for spellchecker."
+#~ msgstr "Non se pode abrir \"pipe\" para o corrector ortográfico."
+
+#~ msgid ""
+#~ "Could not create an ispell process.\n"
+#~ "You may not have the right languages installed."
+#~ msgstr ""
+#~ "Non foi posíbel criar un proceso ispell.\n"
+#~ "Se cadra non ten instalados as línguas axeitadas."
+
+#~ msgid ""
+#~ "The ispell process returned an error.\n"
+#~ "Perhaps it has been configured wrongly ?"
+#~ msgstr ""
+#~ "O proceso ispell devolveu un erro.\n"
+#~ "Se cadra non foi ben configurado?"
+
+#~ msgid ""
+#~ "Could not check word `%1$s' because it could not be converted to encoding "
+#~ "`%2$s'."
+#~ msgstr ""
+#~ "Non se pode verificar a  palabra `%1$s' xa que non se pode converter á "
+#~ "codificación `%2$s'."
+
+#~ msgid "Could not communicate with the ispell spellchecker process."
+#~ msgstr "Non foi posíbel comunicar-se co proceso do corrector ispell."
+
+#~ msgid ""
+#~ "Could not insert word `%1$s' because it could not be converted to "
+#~ "encoding `%2$s'."
+#~ msgstr ""
+#~ "Non se pode inserir a  palabra `%1$s' xa que non se pode converter á "
+#~ "codificación `%2$s'."
+
+#~ msgid ""
+#~ "Could not accept word `%1$s' because it could not be converted to "
+#~ "encoding `%2$s'."
+#~ msgstr ""
+#~ "Non se pode aceitar a  palabra `%1$s' xa que non se pode converter á "
+#~ "codificación `%2$s'."
+
+#~ msgid ""
+#~ "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+#~ msgstr ""
+#~ "Especificar dicionário personal alternativo. Ex. \".ispell_english\"."
+
+#~ msgid "What command runs the spellchecker?"
+#~ msgstr "Qué comando executa o corrector ortográfico?"
+
+#~ msgid ""
+#~ "Specify whether to pass the -T input encoding option to ispell. Enable "
+#~ "this if you cannot check the spelling of words containing accented "
+#~ "letters. This may not work with all dictionaries."
+#~ msgstr ""
+#~ "Especifica se pasa a opción de codificación de entrada -T a ispell. "
+#~ "Activar en caso de non poder comprobar a ortografia das palabras "
+#~ "acentuadas.Mais pode ser que no funcione con todos os dicionários."
+
+#~ msgid "Native OS API not yet supported."
+#~ msgstr "API nativa do OS ainda sen implementar."
+
+#~ msgid "Unknown author index for deletion: %1$d\n"
+#~ msgstr "Índice de autor descoñecido para a eliminación: %1$d\n"
+
+#~ msgid "Unknown spacing argument: "
+#~ msgstr "Argumento de espazado descoñecido: "
+
+#~ msgid ""
+#~ "Aiksaurus returned the following error:\n"
+#~ "\n"
+#~ "%1$s."
+#~ msgstr ""
+#~ "Aiksauros devolve o seguinte erro:\\ \n"
+#~ "%1$s."
 
 #~ msgid "Bibliography Entry Settings"
 #~ msgstr "Configuración de entrada bibliográfica"
@@ -24016,126 +24184,124 @@ msgstr "Usuário descoñecido"
 #~ msgid "Branch Settings"
 #~ msgstr "Configuración de pola"
 
-#, fuzzy
-#~ msgid "Horizontal Space Settings"
-#~ msgstr "Configuración do espazo vertical"
+#~ msgid ""
+#~ "Input listings parameters on the right. Enter ? for a list of parameters."
+#~ msgstr ""
+#~ "Introduza parámetros de listas na direita. Dixite ? para obter unha lista "
+#~ "de parámetros."
 
-#~ msgid "Table Settings"
-#~ msgstr "Configuración da táboa"
-
-#~ msgid "Vertical Space Settings"
-#~ msgstr "Configuración do espazo vertical"
-
-#, fuzzy
-#~ msgid "Language ...|L"
-#~ msgstr "Língua"
-
-#~ msgid " Macro: %1$s: "
-#~ msgstr " Macro: %1$s: "
-
-#, fuzzy
-#~ msgid "&Debug messages"
-#~ msgstr "Nengunha mensaxe de depuración"
-
-#, fuzzy
-#~ msgid "Clear &automatically"
-#~ msgstr "Actualización automática"
-
-#~ msgid "Dissolve Inset|l"
-#~ msgstr "Elimina obxecto inserido|o"
-
-#~ msgid "Box Settings"
-#~ msgstr "Configuración do cadro"
+#~ msgid "Length"
+#~ msgstr "Longura"
 
 #~ msgid "TeX Code Settings"
 #~ msgstr "Configuración do código TeX"
+
+#, fuzzy
+#~ msgid "pLaTeX"
+#~ msgstr "LaTeX"
 
 #~ msgid "Float Settings"
 #~ msgstr "Configuración do flutuante"
 
 #, fuzzy
-#~ msgid "Match found and replaced !"
-#~ msgstr "Procura e substitue"
+#~ msgid "Horizontal Space Settings"
+#~ msgstr "Configuración do espazo vertical"
+
+#~ msgid "No LaTeX log file found."
+#~ msgstr "Non se achou nengun ficheiro de registo LaTeX."
+
+#~ msgid "ispell"
+#~ msgstr "ispell"
+
+#~ msgid "pspell (library)"
+#~ msgstr "pspell (library)"
+
+#~ msgid "aspell (library)"
+#~ msgstr "aspell (library)"
+
+#~ msgid "*.pws"
+#~ msgstr "*.pws"
+
+#~ msgid "*.ispell"
+#~ msgstr "*.ispell"
+
+#~ msgid "Spellchecker error"
+#~ msgstr "Erro do corrector ortográfico"
+
+#~ msgid "The spellchecker could not be started\n"
+#~ msgstr "Non se pudo iniciar o corrector ortográfico.\n"
+
+#~ msgid ""
+#~ "The spellchecker has died for some reason.\n"
+#~ "Maybe it has been killed."
+#~ msgstr ""
+#~ "Por algunha razón interrompeu-se o corrector ortográfico.\n"
+#~ "Se cadra matou o proceso."
+
+#~ msgid "The spellchecker has failed.\n"
+#~ msgstr "Fallou o corrector ortográfico.\n"
+
+#~ msgid "The spellchecker has failed"
+#~ msgstr "Fallou o corrector ortográfico"
+
+#~ msgid "Vertical Space Settings"
+#~ msgstr "Configuración do espazo vertical"
+
+#~ msgid "No Table of contents"
+#~ msgstr "Sen Índice xeral"
+
+#~ msgid "Opened inset"
+#~ msgstr "Recadro aberto"
 
 #, fuzzy
-#~ msgid "Close this panel"
-#~ msgstr "Fecha este diálogo"
+#~ msgid "Uncodable characters in bibliography item"
+#~ msgstr "carácter especial"
+
+#~ msgid "Opened Box Inset"
+#~ msgstr "Recadro de cadro aberto"
+
+#~ msgid "Opened Branch Inset"
+#~ msgstr "Recadro de pola aberto"
+
+#~ msgid "Opened Caption Inset"
+#~ msgstr "Recadro de lexenda aberto"
+
+#~ msgid "Opened ERT Inset"
+#~ msgstr "Recadro ERT aberto"
 
 #, fuzzy
-#~ msgid "Prev"
-#~ msgstr "Vista preliminar"
+#~ msgid "Opened Flex Inset"
+#~ msgstr "Recadro de texto aberto"
 
-#, fuzzy
-#~ msgid "Match..."
-#~ msgstr "Matemática"
+#~ msgid "Opened Float Inset"
+#~ msgstr "Recadro flutuante aberto"
 
-#, fuzzy
-#~ msgid "Find LyX Dialog"
-#~ msgstr "Procurar se&guinte"
+#~ msgid "Opened Footnote Inset"
+#~ msgstr "Recadro de nota de rodapé aberto"
 
-#~ msgid "D&elete"
-#~ msgstr "Apa&gar"
+#~ msgid "Opened Listing Inset"
+#~ msgstr "Recadro de código aberto"
 
-#~ msgid "F&ind:"
-#~ msgstr "Proc&urar:"
+#~ msgid "Opened Marginal Note Inset"
+#~ msgstr "Recadro de nota ao marxe aberto"
 
-#, fuzzy
-#~ msgid "Current &Paragraph"
-#~ msgstr "&Indentar parágrafo"
+#~ msgid "Opened Note Inset"
+#~ msgstr "Recadro de nota aberto"
 
-#, fuzzy
-#~ msgid "Document in current file"
-#~ msgstr "Fallo ao formatar documento"
+#~ msgid "Opened Optional Argument Inset"
+#~ msgstr "Recadro de argumento opcional aberto"
 
-#, fuzzy
-#~ msgid "diamond2"
-#~ msgstr "diamond"
+#~ msgid "Opened table"
+#~ msgstr "Táboa aberta"
 
-#~ msgid "End"
-#~ msgstr "Fin"
+#~ msgid "Opened Text Inset"
+#~ msgstr "Recadro de texto aberto"
 
-#, fuzzy
-#~ msgid "begin"
-#~ msgstr "Início"
+#~ msgid "Opened Wrap Inset"
+#~ msgstr "recadro de envolucro aberto"
 
-#, fuzzy
-#~ msgid "end"
-#~ msgstr "E"
-
-#, fuzzy
-#~ msgid "file"
-#~ msgstr "Inclui ficheiro"
-
-#, fuzzy
-#~ msgid "forward"
-#~ msgstr "forall"
-
-#, fuzzy
-#~ msgid "backwards"
-#~ msgstr "Proc&urar cara tras"
-
-#, fuzzy
-#~ msgid " of "
-#~ msgstr "Fin do CV"
-
-#, fuzzy
-#~ msgid "Continue searching from "
-#~ msgstr "Oblícua\t\\nicefrac"
-
-#~ msgid "&Dummy"
-#~ msgstr "&Postizo"
-
-#, fuzzy
-#~ msgid "&Automatic clear"
-#~ msgstr "Actualización automática"
-
-#, fuzzy
-#~ msgid "Show progress messages"
-#~ msgstr "(sen mensaxe de registro)"
-
-#, fuzzy
-#~ msgid "(cancelling)"
-#~ msgstr "marxe"
+#~ msgid " Macro: %1$s: "
+#~ msgstr " Macro: %1$s: "
 
 #, fuzzy
 #~ msgid "Anschrift:"
@@ -24197,14 +24363,8 @@ msgstr "Usuário descoñecido"
 #~ msgid "Text:"
 #~ msgstr "Texto:"
 
-#~ msgid "Strasse"
-#~ msgstr "Strasse"
-
 #~ msgid "Strasse:"
 #~ msgstr "Strasse:"
-
-#~ msgid "Land"
-#~ msgstr "Land"
 
 #~ msgid "Land:"
 #~ msgstr "Land:"
@@ -24221,14 +24381,8 @@ msgstr "Usuário descoñecido"
 #~ msgid "IhrSchreiben:"
 #~ msgstr "IhrSchreiben:"
 
-#~ msgid "BLZ"
-#~ msgstr "BLZ"
-
 #~ msgid "BLZ:"
 #~ msgstr "BLZ:"
-
-#~ msgid "Konto"
-#~ msgstr "Konto"
 
 #~ msgid "Konto:"
 #~ msgstr "Konto:"
@@ -24239,274 +24393,33 @@ msgstr "Usuário descoñecido"
 #~ msgid "Anlagen:"
 #~ msgstr "Anlagen:"
 
-#~ msgid "No LaTeX log file found."
-#~ msgstr "Non se achou nengun ficheiro de registo LaTeX."
-
 #, fuzzy
 #~ msgid "Latex"
 #~ msgstr "Data"
 
 #, fuzzy
-#~ msgid "View Output|V"
-#~ msgstr "Ver|V"
-
-#, fuzzy
-#~ msgid "Update Output|U"
-#~ msgstr "Actualiza PostScript"
-
-#, fuzzy
-#~ msgid "Advanced Search"
-#~ msgstr "A&vanzadas"
-
-#, fuzzy
-#~ msgid "Replace Ne&xt"
-#~ msgstr "Su&bstituir por:"
-
-#, fuzzy
-#~ msgid "Find &Prev"
-#~ msgstr "Procurar se&guinte"
-
-#, fuzzy
-#~ msgid "Replace P&rev"
-#~ msgstr "Substituir &todo"
-
-#, fuzzy
-#~ msgid "Current buffer only"
-#~ msgstr "Cela actual:"
-
-#, fuzzy
-#~ msgid "Buffer"
-#~ msgstr "azul"
-
-#, fuzzy
-#~ msgid "Document"
-#~ msgstr "Documentos"
-
-#, fuzzy
-#~ msgid "Open buffers"
-#~ msgstr "azul"
-
-#, fuzzy
-#~ msgid "CharStyle:DropCapital"
-#~ msgstr "Mudanza: "
-
-#, fuzzy
-#~ msgid "Regexp"
-#~ msgstr "exp"
-
-#, fuzzy
 #~ msgid "No file open!"
 #~ msgstr "Ficheiro non achado!"
 
-#~ msgid "Jump to the label"
-#~ msgstr "Salta á etiqueta"
-
-#~ msgid "Unknown author index for deletion: %1$d\n"
-#~ msgstr "Índice de autor descoñecido para a eliminación: %1$d\n"
+#, fuzzy
+#~ msgid "You cannot paste into a multicell selection."
+#~ msgstr "No se pode pór unha multicoluna vertical."
 
 #, fuzzy
-#~ msgid "Click to edit the settings of the child document"
-#~ msgstr "Reiniciar aos valores predefinidos para a clase do documento"
+#~ msgid "Check in Changes...|I"
+#~ msgstr "Introducir mudanzas...|I"
 
 #, fuzzy
-#~ msgid "Master Settings"
-#~ msgstr "Configuración de nota"
-
-#~ msgid "Column Width"
-#~ msgstr "Largura da coluna"
-
-#~ msgid "Listing settings"
-#~ msgstr "Configuración listas"
-
-#, fuzzy
-#~ msgid "\\alph{enumii}."
-#~ msgstr "(\\alph{enumii})"
-
-#, fuzzy
-#~ msgid "Insert|n"
-#~ msgstr "Inserir|I"
-
-#~ msgid "Unknown spacing argument: "
-#~ msgstr "Argumento de espazado descoñecido: "
-
-#~ msgid ""
-#~ "Input listings parameters on the right. Enter ? for a list of parameters."
-#~ msgstr ""
-#~ "Introduza parámetros de listas na direita. Dixite ? para obter unha lista "
-#~ "de parámetros."
-
-#~ msgid "Length"
-#~ msgstr "Longura"
-
-#~ msgid "Opened inset"
-#~ msgstr "Recadro aberto"
-
-#~ msgid "Opened Box Inset"
-#~ msgstr "Recadro de cadro aberto"
-
-#~ msgid "Opened Branch Inset"
-#~ msgstr "Recadro de pola aberto"
-
-#~ msgid "Opened Caption Inset"
-#~ msgstr "Recadro de lexenda aberto"
-
-#~ msgid "Opened ERT Inset"
-#~ msgstr "Recadro ERT aberto"
-
-#, fuzzy
-#~ msgid "Opened Flex Inset"
-#~ msgstr "Recadro de texto aberto"
-
-#~ msgid "Opened Float Inset"
-#~ msgstr "Recadro flutuante aberto"
-
-#~ msgid "Opened Footnote Inset"
-#~ msgstr "Recadro de nota de rodapé aberto"
-
-#~ msgid "Opened Listing Inset"
-#~ msgstr "Recadro de código aberto"
-
-#~ msgid "Opened Marginal Note Inset"
-#~ msgstr "Recadro de nota ao marxe aberto"
-
-#~ msgid "Opened Note Inset"
-#~ msgstr "Recadro de nota aberto"
-
-#~ msgid "Opened Optional Argument Inset"
-#~ msgstr "Recadro de argumento opcional aberto"
-
-#, fuzzy
-#~ msgid "Opened Phantom Inset"
-#~ msgstr "Recadro de lexenda aberto"
-
-#~ msgid "Opened table"
-#~ msgstr "Táboa aberta"
-
-#~ msgid "Opened Text Inset"
-#~ msgstr "Recadro de texto aberto"
-
-#~ msgid "Opened Wrap Inset"
-#~ msgstr "recadro de envolucro aberto"
-
-#, fuzzy
-#~ msgid "Select the default language of your documents"
-#~ msgstr "Reiniciar aos valores predefinidos para a clase do documento"
-
-#~ msgid "Personal &dictionary:"
-#~ msgstr "&Dicionário persoal:"
-
-#~ msgid "Specify a personal dictionary file other than the default"
-#~ msgstr "Especifica un dicionário persoal distinto do predefinido"
-
-#~ msgid "Use input encod&ing"
-#~ msgstr "&Usar codificación de entrada"
-
-#, fuzzy
-#~ msgid "Toggle Label|L"
-#~ msgstr "Comutar &todo"
-
-#, fuzzy
-#~ msgid "Move Section down|d"
-#~ msgstr "Fecha sección"
-
-#, fuzzy
-#~ msgid "Move Section up|u"
-#~ msgstr "Fecha sección"
-
-#, fuzzy
-#~ msgid "The spellchecker has failed."
-#~ msgstr "Fallou o corrector ortográfico.\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "Specify an alternate personal dictionary file. E.g. \".aspell_english\"."
-#~ msgstr ""
-#~ "Especificar dicionário personal alternativo. Ex. \".ispell_english\"."
-
-#, fuzzy
-#~ msgid ""
-#~ "Specify whether to pass the -T input encoding option to aspell. Enable "
-#~ "this if you cannot check the spelling of words containing accented "
-#~ "letters. This may not work with all dictionaries."
-#~ msgstr ""
-#~ "Especifica se pasa a opción de codificación de entrada -T a ispell. "
-#~ "Activar en caso de non poder comprobar a ortografia das palabras "
-#~ "acentuadas.Mais pode ser que no funcione con todos os dicionários."
-
-#~ msgid "*.pws"
-#~ msgstr "*.pws"
-
-#, fuzzy
-#~ msgid "Accept Change|C"
-#~ msgstr "Aceitar mudanza|A"
-
-#, fuzzy
-#~ msgid "C&ommand:"
-#~ msgstr "&Comando:"
-
-#~ msgid "&BibTeX command:"
-#~ msgstr "Comando &BibTeX:"
-
-#, fuzzy
-#~ msgid "&Index command:"
-#~ msgstr "Comando índice:"
-
-#, fuzzy
-#~ msgid "BibTeX command (&Japanese):"
-#~ msgstr "Comando BibTeX e opcións"
-
-#, fuzzy
-#~ msgid "Index command (Ja&panese):"
-#~ msgstr "Comando índice:"
+#~ msgid "Check out for Edit|O"
+#~ msgstr "Comprobar para editar|O"
 
 #, fuzzy
 #~ msgid "Toggle Labeling/Numbering|T"
 #~ msgstr "Comutar numeración|C"
 
 #, fuzzy
-#~ msgid "Copy Label as Reference|C"
-#~ msgstr "Referéncia cruzada...|z"
-
-#, fuzzy
-#~ msgid "View|V[[show]]"
-#~ msgstr "Ver|V"
-
-#~ msgid "View DVI"
-#~ msgstr "Mostra DVI"
-
-#~ msgid "View PDF (pdflatex)"
-#~ msgstr "Mostra PDF (pdflatex)"
-
-#~ msgid "View PostScript"
-#~ msgstr "Mostra PostScript"
-
-#~ msgid "Update DVI"
-#~ msgstr "Actualiza DVI"
-
-#~ msgid "Update PDF (pdflatex)"
-#~ msgstr "Actualiza PDF (pdflatex)"
-
-#~ msgid "Update PostScript"
-#~ msgstr "Actualiza PostScript"
-
-#~ msgid "Thesaurus failure"
-#~ msgstr "Fallo do Tesouro"
-
-#~ msgid ""
-#~ "Aiksaurus returned the following error:\n"
-#~ "\n"
-#~ "%1$s."
-#~ msgstr ""
-#~ "Aiksauros devolve o seguinte erro:\\ \n"
-#~ "%1$s."
-
-#, fuzzy
-#~ msgid "Indices"
-#~ msgstr "Factura"
-
-#, fuzzy
-#~ msgid "You cannot paste into a multicell selection."
-#~ msgstr "No se pode pór unha multicoluna vertical."
+#~ msgid "Toggle Label|L"
+#~ msgstr "Comutar &todo"
 
 #~ msgid "B&rowse..."
 #~ msgstr "E&xaminar..."
@@ -24520,80 +24433,6 @@ msgstr "Usuário descoñecido"
 #, fuzzy
 #~ msgid "Ne&w"
 #~ msgstr "&Nova:"
-
-#, fuzzy
-#~ msgid "No horizontal line\t\\atop"
-#~ msgstr "Sem linha hor.\t\\atop"
-
-#~ msgid "Native OS API not yet supported."
-#~ msgstr "API nativa do OS ainda sen implementar."
-
-#~ msgid "Spellchecker error"
-#~ msgstr "Erro do corrector ortográfico"
-
-#~ msgid "The spellchecker could not be started\n"
-#~ msgstr "Non se pudo iniciar o corrector ortográfico.\n"
-
-#~ msgid ""
-#~ "The spellchecker has died for some reason.\n"
-#~ "Maybe it has been killed."
-#~ msgstr ""
-#~ "Por algunha razón interrompeu-se o corrector ortográfico.\n"
-#~ "Se cadra matou o proceso."
-
-#~ msgid "The spellchecker has failed"
-#~ msgstr "Fallou o corrector ortográfico"
-
-#~ msgid "LangHeader"
-#~ msgstr "CabezalloLingua"
-
-#~ msgid "Language Header:"
-#~ msgstr "Cabezallo de língua:"
-
-#~ msgid "Language:"
-#~ msgstr "Língua:"
-
-#~ msgid "LastLanguage"
-#~ msgstr "UltimaLingua"
-
-#~ msgid "Last Language:"
-#~ msgstr "Última língua:"
-
-#~ msgid "LangFooter"
-#~ msgstr "PeLingua"
-
-#~ msgid "Language Footer:"
-#~ msgstr "Pé de páxina de língua:"
-
-#~ msgid "Computer"
-#~ msgstr "Computador"
-
-#~ msgid "Computer:"
-#~ msgstr "Computador:"
-
-#~ msgid "EmptySection"
-#~ msgstr "SecciónValeira"
-
-#~ msgid "Empty Section"
-#~ msgstr "Sección valeira"
-
-#~ msgid "CloseSection"
-#~ msgstr "FechaSección"
-
-#~ msgid "Close Section"
-#~ msgstr "Fecha sección"
-
-#, fuzzy
-#~ msgid "Phantom:Phantom"
-#~ msgstr "hphantom"
-
-#, fuzzy
-#~ msgid "Phantom Text"
-#~ msgstr "Texto simples"
-
-#, fuzzy
-#~ msgid "RegExp"
-#~ msgstr "exp"
 
 #, fuzzy
 #~ msgid "&Postscript driver:"
@@ -24614,77 +24453,6 @@ msgstr "Usuário descoñecido"
 #, fuzzy
 #~ msgid "Remove Optional Parameter"
 #~ msgstr "Recadro de argumento opcional aberto"
-
-#~ msgid "&Default language:"
-#~ msgstr "&Língua predefinida:"
-
-#~ msgid "&roff command:"
-#~ msgstr "Comando &roff:"
-
-#~ msgid "External app for formating tables in plain text output"
-#~ msgstr "Programa externo para formatar táboas en saída de texto simples"
-
-#~ msgid "Spellchec&ker executable:"
-#~ msgstr "&Corrector ortográfico:"
-
-#~ msgid "Can't create pipe for spellchecker."
-#~ msgstr "Non se pode criar \"pipe\" para o corrector ortográfico."
-
-#~ msgid "Can't open pipe for spellchecker."
-#~ msgstr "Non se pode abrir \"pipe\" para o corrector ortográfico."
-
-#~ msgid ""
-#~ "Could not create an ispell process.\n"
-#~ "You may not have the right languages installed."
-#~ msgstr ""
-#~ "Non foi posíbel criar un proceso ispell.\n"
-#~ "Se cadra non ten instalados as línguas axeitadas."
-
-#~ msgid ""
-#~ "The ispell process returned an error.\n"
-#~ "Perhaps it has been configured wrongly ?"
-#~ msgstr ""
-#~ "O proceso ispell devolveu un erro.\n"
-#~ "Se cadra non foi ben configurado?"
-
-#~ msgid ""
-#~ "Could not check word `%1$s' because it could not be converted to encoding "
-#~ "`%2$s'."
-#~ msgstr ""
-#~ "Non se pode verificar a  palabra `%1$s' xa que non se pode converter á "
-#~ "codificación `%2$s'."
-
-#~ msgid "Could not communicate with the ispell spellchecker process."
-#~ msgstr "Non foi posíbel comunicar-se co proceso do corrector ispell."
-
-#~ msgid ""
-#~ "Could not insert word `%1$s' because it could not be converted to "
-#~ "encoding `%2$s'."
-#~ msgstr ""
-#~ "Non se pode inserir a  palabra `%1$s' xa que non se pode converter á "
-#~ "codificación `%2$s'."
-
-#~ msgid ""
-#~ "Could not accept word `%1$s' because it could not be converted to "
-#~ "encoding `%2$s'."
-#~ msgstr ""
-#~ "Non se pode aceitar a  palabra `%1$s' xa que non se pode converter á "
-#~ "codificación `%2$s'."
-
-#~ msgid "What command runs the spellchecker?"
-#~ msgstr "Qué comando executa o corrector ortográfico?"
-
-#~ msgid "ispell"
-#~ msgstr "ispell"
-
-#~ msgid "pspell (library)"
-#~ msgstr "pspell (library)"
-
-#~ msgid "aspell (library)"
-#~ msgstr "aspell (library)"
-
-#~ msgid "*.ispell"
-#~ msgstr "*.ispell"
 
 #, fuzzy
 #~ msgid "figure"
@@ -24850,6 +24618,9 @@ msgstr "Usuário descoñecido"
 #~ msgid "Grayscale"
 #~ msgstr "Escala de cincentos"
 
+#~ msgid "Preview"
+#~ msgstr "Vista preliminar"
+
 #~ msgid "%"
 #~ msgstr "%"
 
@@ -24884,6 +24655,9 @@ msgstr "Usuário descoñecido"
 
 #~ msgid " (auto)"
 #~ msgstr "(auto)"
+
+#~ msgid "Plain Text"
+#~ msgstr "Texto simples"
 
 #, fuzzy
 #~ msgid "Toggle tabba&r"

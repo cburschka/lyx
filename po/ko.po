@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-28 15:22+0100\n"
-"PO-Revision-Date: 2007-05-15 16:13+0900\n"
+"POT-Creation-Date: 2010-02-28 16:00+0100\n"
+"PO-Revision-Date: 2009-10-18 18:45+0100\n"
 "Last-Translator: cghan <cghan@pusan.ac.kr>\n"
 "Language-Team: hangul <ko@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -456,9 +456,8 @@ msgid "Filename &Suffix"
 msgstr "파일이름 "
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
-#, fuzzy
 msgid "Show undefined branches used in this document."
-msgstr "문서 인쇄"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
 #, fuzzy
@@ -546,9 +545,8 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
-#, fuzzy
 msgid "Undefined branches used in this document."
-msgstr "문서 인쇄"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:68
 #, fuzzy
@@ -972,7 +970,7 @@ msgstr "노우트(Note) 구성"
 #: src/frontends/qt4/ui/CompareUi.ui:165
 #, fuzzy
 msgid "N&ew Document"
-msgstr "문서(Document)|D"
+msgstr "문서 열기"
 
 #: src/frontends/qt4/ui/CompareUi.ui:172
 #, fuzzy
@@ -1234,9 +1232,8 @@ msgid "Find LyX Text"
 msgstr "보통 문(Plain Text)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:107
-#, fuzzy
 msgid "&Basic"
-msgstr "표제(Caption)"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:159
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:183
@@ -1320,7 +1317,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:446
 #, fuzzy
 msgid "&Next"
-msgstr "본문(Text):"
+msgstr "새 파일(New)|N"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:467
 msgid "Find previous occurrence [Shift+Enter]"
@@ -1390,9 +1387,8 @@ msgid "&Open documents"
 msgstr "문서 열기"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:669
-#, fuzzy
 msgid "All ma&nuals"
-msgstr "LaTeX 실행 실패함"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:690
 #, fuzzy
@@ -1408,7 +1404,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:711
 #, fuzzy
 msgid "Ignore &format"
-msgstr "날짜 형태(format)"
+msgstr "날짜 형태(&Date format):"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
 #: src/frontends/qt4/ui/OutputUi.ui:13 src/frontends/qt4/ui/PDFSupportUi.ui:13
@@ -1693,27 +1689,27 @@ msgstr ""
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:37
 msgid "..............."
-msgstr ""
+msgstr "..............."
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:42
 msgid "________"
-msgstr ""
+msgstr "________"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:47
 msgid "<-----------"
-msgstr ""
+msgstr "<-----------"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:52
 msgid "----------->"
-msgstr ""
+msgstr "----------->"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:57
 msgid "\\-----v-----/"
-msgstr ""
+msgstr "\\-----v-----/"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:62
 msgid "/-----^-----\\"
-msgstr ""
+msgstr "/-----^-----\\"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:70 src/frontends/qt4/ui/VSpaceUi.ui:22
 msgid "&Spacing:"
@@ -1898,9 +1894,8 @@ msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:180
-#, fuzzy
 msgid "Index generation"
-msgstr "상자 구성(Box Settings)"
+msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
@@ -2263,9 +2258,8 @@ msgid "Hit Enter to search, or click Go!"
 msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:45
-#, fuzzy
 msgid "Log &Type:"
-msgstr "제목:"
+msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:74
 msgid "Update the display"
@@ -2866,9 +2860,8 @@ msgid "Horizontal and vertical space of the phantom content"
 msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:63
-#, fuzzy
 msgid "&Phantom"
-msgstr "보통 문(Plain Text)|T"
+msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:70
 #, fuzzy
@@ -3531,9 +3524,8 @@ msgid "&Working directory:"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:215
-#, fuzzy
 msgid "Hunspell dictionaries:"
-msgstr "LaTeX 실행 실패함"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2832
 msgid ""
@@ -4029,7 +4021,7 @@ msgstr "인용(Citation):"
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:48
 #, fuzzy
 msgid "Custom &Width:"
-msgstr "고객 번호(Customer no.):"
+msgstr "열 복사"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:61
 msgid ""
@@ -4043,9 +4035,8 @@ msgid "Output"
 msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:133
-#, fuzzy
 msgid "Settings"
-msgstr "상자 구성(Box Settings)"
+msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:145
 msgid "Select the debug messages that should be displayed"
@@ -4058,7 +4049,7 @@ msgstr ""
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
 #, fuzzy
 msgid "&Clear automatically"
-msgstr "음성 표기 부호(Phonetic Symbols)|y"
+msgstr "AMS 수식꾸러미(math package) 자동 사용(&Use)"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
 msgid "Debug messages"
@@ -4784,7 +4775,7 @@ msgstr ""
 #: src/frontends/qt4/ui/TocUi.ui:144 src/frontends/qt4/ui/TocUi.ui:163
 #: src/frontends/qt4/ui/TocUi.ui:182
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: src/frontends/qt4/ui/TocUi.ui:122
 msgid "Decrease nesting depth of selected item"
@@ -5570,8 +5561,9 @@ msgid "Teaser image:"
 msgstr "언어"
 
 #: lib/layouts/acmsiggraph.layout:84
+#, fuzzy
 msgid "CRcat"
-msgstr ""
+msgstr "형식(Style)"
 
 #: lib/layouts/acmsiggraph.layout:89
 #, fuzzy
@@ -5764,7 +5756,7 @@ msgstr ""
 #: lib/layouts/egs.layout:181 lib/layouts/powerdot.layout:258
 #: lib/layouts/simplecv.layout:93 lib/layouts/stdlists.inc:27
 msgid "*"
-msgstr ""
+msgstr "*"
 
 #: lib/layouts/apa.layout:396
 msgid "Seriate"
@@ -5826,7 +5818,7 @@ msgstr ""
 #: lib/layouts/beamer.layout:168 lib/layouts/powerdot.layout:238
 #: lib/layouts/numarticle.inc:10
 msgid "\\Alph{section}"
-msgstr ""
+msgstr "\\Alph{section}"
 
 #: lib/layouts/beamer.layout:198
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
@@ -5834,7 +5826,7 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:211
 msgid "\\arabic{section}.\\arabic{subsection}"
-msgstr ""
+msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:227 lib/layouts/beamer.layout:271
 #: lib/layouts/beamer.layout:311 lib/layouts/beamer.layout:352
@@ -5870,7 +5862,7 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:365
 msgid "________________________________"
-msgstr ""
+msgstr "________________________________"
 
 #: lib/layouts/beamer.layout:380
 msgid "FrameSubtitle"
@@ -5918,7 +5910,7 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:536
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
-msgstr ""
+msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
 #: lib/layouts/beamer.layout:546 lib/layouts/beamer.layout:557
 msgid "Overprint"
@@ -6179,7 +6171,7 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:1081
 msgid "___"
-msgstr ""
+msgstr "___"
 
 #: lib/layouts/beamer.layout:1091 lib/layouts/egs.layout:636
 #: lib/layouts/db_lyxmacros.inc:18 lib/layouts/lyxmacros.inc:12
@@ -6296,11 +6288,11 @@ msgstr ""
 
 #: lib/layouts/broadway.layout:145 lib/layouts/hollywood.layout:170
 msgid "("
-msgstr ""
+msgstr "("
 
 #: lib/layouts/broadway.layout:147 lib/layouts/hollywood.layout:172
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: lib/layouts/broadway.layout:158 lib/layouts/broadway.layout:168
 msgid "CURTAIN"
@@ -7187,7 +7179,7 @@ msgstr ""
 
 #: lib/layouts/foils.layout:97
 msgid "_/"
-msgstr ""
+msgstr "_/"
 
 #: lib/layouts/foils.layout:101
 msgid "CrossList"
@@ -7195,7 +7187,7 @@ msgstr ""
 
 #: lib/layouts/foils.layout:116
 msgid "><"
-msgstr ""
+msgstr "><"
 
 #: lib/layouts/foils.layout:160
 msgid "My Logo"
@@ -8275,7 +8267,7 @@ msgstr ""
 
 #: lib/layouts/powerdot.layout:135
 msgid "    "
-msgstr ""
+msgstr "    "
 
 #: lib/layouts/powerdot.layout:145
 msgid "EndSlide"
@@ -8283,7 +8275,7 @@ msgstr ""
 
 #: lib/layouts/powerdot.layout:159
 msgid "~=~"
-msgstr ""
+msgstr "~=~"
 
 #: lib/layouts/powerdot.layout:172
 msgid "WideSlide"
@@ -8299,7 +8291,7 @@ msgstr ""
 
 #: lib/layouts/powerdot.layout:232 lib/layouts/numarticle.inc:9
 msgid "\\arabic{section}"
-msgstr ""
+msgstr "\\arabic{section}"
 
 #: lib/layouts/powerdot.layout:261
 msgid "ItemizeType1"
@@ -8315,7 +8307,7 @@ msgstr "알고리듬 목록"
 
 #: lib/layouts/recipebook.layout:42 lib/layouts/scrbook.layout:17
 msgid "\\thechapter"
-msgstr ""
+msgstr "\\thechapter"
 
 #: lib/layouts/recipebook.layout:78
 #, fuzzy
@@ -8707,7 +8699,7 @@ msgstr "여기에서 부록을 시작하시오(Start Appendix Here)|S"
 #: lib/layouts/svmono.layout:135 lib/layouts/svmult.layout:119
 #, fuzzy
 msgid "Preface"
-msgstr "그림(&Graphics)"
+msgstr "Grace"
 
 #: lib/layouts/svmono.layout:145 lib/layouts/svmult.layout:129
 #, fuzzy
@@ -9474,11 +9466,11 @@ msgstr ""
 
 #: lib/layouts/numreport.inc:12
 msgid "\\arabic{chapter}"
-msgstr ""
+msgstr "\\arabic{chapter}"
 
 #: lib/layouts/numreport.inc:13
 msgid "\\Alph{chapter}"
-msgstr ""
+msgstr "\\Alph{chapter}"
 
 #: lib/layouts/numreport.inc:44
 #, fuzzy
@@ -9487,7 +9479,7 @@ msgstr "각주(footnote)"
 
 #: lib/layouts/numrevtex.inc:9
 msgid "\\Roman{section}."
-msgstr ""
+msgstr "\\Roman{section}."
 
 #: lib/layouts/numrevtex.inc:10
 msgid "Appendix \\Alph{section}:"
@@ -9495,23 +9487,23 @@ msgstr ""
 
 #: lib/layouts/numrevtex.inc:18
 msgid "\\Alph{subsection}."
-msgstr ""
+msgstr "\\Alph{subsection}."
 
 #: lib/layouts/numrevtex.inc:19
 msgid "\\arabic{subsection}."
-msgstr ""
+msgstr "\\arabic{subsection}."
 
 #: lib/layouts/numrevtex.inc:27
 msgid "\\arabic{subsubsection}."
-msgstr ""
+msgstr "\\arabic{subsubsection}."
 
 #: lib/layouts/numrevtex.inc:28
 msgid "\\alph{subsubsection}."
-msgstr ""
+msgstr "\\alph{subsubsection}."
 
 #: lib/layouts/numrevtex.inc:36 lib/layouts/numrevtex.inc:37
 msgid "\\alph{paragraph}."
-msgstr ""
+msgstr "\\alph{paragraph}."
 
 #: lib/layouts/scrclass.inc:113
 msgid "Addpart"
@@ -9584,11 +9576,12 @@ msgstr ""
 
 #: lib/layouts/stdcounters.inc:9
 msgid "\\Roman{part}"
-msgstr ""
+msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
+#, fuzzy
 msgid "Part \\Roman{part}"
-msgstr ""
+msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:14
 #, fuzzy
@@ -9613,11 +9606,11 @@ msgstr "각주(footnote)"
 
 #: lib/layouts/stdcounters.inc:53
 msgid "\\roman{enumiii}."
-msgstr ""
+msgstr "\\roman{enumiii}."
 
 #: lib/layouts/stdcounters.inc:58
 msgid "\\Alph{enumiv}."
-msgstr ""
+msgstr "\\Alph{enumiv}."
 
 #: lib/layouts/stdcounters.inc:68
 #, fuzzy
@@ -9686,8 +9679,9 @@ msgstr ""
 #: lib/layouts/stdinsets.inc:199 lib/ui/stdcontext.inc:193
 #: lib/ui/stdmenus.inc:392 lib/ui/stdmenus.inc:465
 #: src/insets/InsetPhantom.cpp:65
+#, fuzzy
 msgid "Phantom"
-msgstr ""
+msgstr "hom"
 
 #: lib/layouts/stdinsets.inc:208 lib/layouts/stdinsets.inc:209
 #: src/frontends/qt4/GuiDocument.cpp:1103
@@ -10036,9 +10030,8 @@ msgid "CharStyle:Initial"
 msgstr "열려있는 문자스타일 삽입구(CharStyle Inset) "
 
 #: lib/layouts/initials.module:12
-#, fuzzy
 msgid "Initial"
-msgstr "보이지 않는 본문(Invisible Text)"
+msgstr ""
 
 #: lib/layouts/linguistics.module:2
 msgid "Linguistics"
@@ -10199,7 +10192,7 @@ msgstr ""
 #: lib/layouts/noweb.module:5 lib/layouts/sweave.module:5
 #, fuzzy
 msgid "literate"
-msgstr "적분 삽입"
+msgstr "intercal"
 
 #: lib/layouts/sweave.module:2 lib/layouts/sweave.module:18
 #: lib/configure.py:507
@@ -10281,7 +10274,7 @@ msgstr ""
 #: lib/layouts/theorems-std.module:8
 #, fuzzy
 msgid "theorems"
-msgstr "수식용 판"
+msgstr "therefore"
 
 #: lib/layouts/theorems-ams-extended.module:40
 msgid "Criterion \\thetheorem."
@@ -10441,13 +10434,14 @@ msgid "Question \\thetheorem."
 msgstr "열기(Open)...|O"
 
 #: lib/layouts/theorems-ams-extended.module:395
+#, fuzzy
 msgid "Question*"
-msgstr ""
+msgstr "epsilon"
 
 #: lib/layouts/theorems-ams-extended.module:398
 #, fuzzy
 msgid "Question."
-msgstr "열기(Open)...|O"
+msgstr "epsilon"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
 msgid "Theorems (AMS-Extended, Numbered by Type)"
@@ -10964,11 +10958,11 @@ msgstr ""
 
 #: lib/encodings:67
 msgid "DOS (CP 437)"
-msgstr ""
+msgstr "DOS (CP 437)"
 
 #: lib/encodings:71
 msgid "DOS-de (CP 437-de)"
-msgstr ""
+msgstr "DOS-de (CP 437-de)"
 
 #: lib/encodings:74
 msgid "Western European (CP 850)"
@@ -12827,7 +12821,7 @@ msgstr "본문 감싸기 구성(Text Wrap Settings)...|W"
 #: lib/ui/stdmenus.inc:140
 #, fuzzy
 msgid "Index Settings...|x"
-msgstr "TeX 코드(Code) 구성...|C"
+msgstr "상자 구성(Box Settings)...|x"
 
 #: lib/ui/stdmenus.inc:141
 #, fuzzy
@@ -13314,7 +13308,7 @@ msgstr "찾아서 교체하기"
 #: lib/ui/stdtoolbars.inc:82
 #, fuzzy
 msgid "Find and replace (advanced)"
-msgstr "찾아서 교체(Find & Replace)...|F"
+msgstr "찾아서 교체하기"
 
 #: lib/ui/stdtoolbars.inc:83
 #, fuzzy
@@ -13358,7 +13352,7 @@ msgstr "수식용 판"
 #: lib/ui/stdtoolbars.inc:95
 #, fuzzy
 msgid "Toggle table toolbar"
-msgstr "도구 단추들(Toolbars)|b"
+msgstr "수식용 판"
 
 #: lib/ui/stdtoolbars.inc:98
 msgid "View/Update"
@@ -13387,7 +13381,7 @@ msgstr "문서 저장하기"
 #: lib/ui/stdtoolbars.inc:104
 #, fuzzy
 msgid "View other formats"
-msgstr "날짜 형태(format)"
+msgstr "파일 형태(formats)"
 
 #: lib/ui/stdtoolbars.inc:105
 #, fuzzy
@@ -13837,7 +13831,7 @@ msgstr ""
 #: lib/ui/stdtoolbars.inc:278 lib/ui/stdtoolbars.inc:417
 #: src/frontends/qt4/GuiSymbols.cpp:89
 msgid "Arrows"
-msgstr ""
+msgstr "Arrows"
 
 #: lib/ui/stdtoolbars.inc:279
 #, fuzzy
@@ -13850,7 +13844,7 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:281 lib/ui/stdtoolbars.inc:485
 msgid "Relations"
-msgstr ""
+msgstr "Relations"
 
 #: lib/ui/stdtoolbars.inc:282
 #, fuzzy
@@ -13878,135 +13872,135 @@ msgstr "음성 표기 부호(Phonetic Symbols)|y"
 
 #: lib/ui/stdtoolbars.inc:290
 msgid "arccos"
-msgstr ""
+msgstr "arccos"
 
 #: lib/ui/stdtoolbars.inc:291
 msgid "arcsin"
-msgstr ""
+msgstr "arcsin"
 
 #: lib/ui/stdtoolbars.inc:292
 msgid "arctan"
-msgstr ""
+msgstr "arctan"
 
 #: lib/ui/stdtoolbars.inc:293
 msgid "arg"
-msgstr ""
+msgstr "arg"
 
 #: lib/ui/stdtoolbars.inc:294
 msgid "bmod"
-msgstr ""
+msgstr "bmod"
 
 #: lib/ui/stdtoolbars.inc:295
 msgid "cos"
-msgstr ""
+msgstr "cos"
 
 #: lib/ui/stdtoolbars.inc:296
 msgid "cosh"
-msgstr ""
+msgstr "cosh"
 
 #: lib/ui/stdtoolbars.inc:297
 msgid "cot"
-msgstr ""
+msgstr "cot"
 
 #: lib/ui/stdtoolbars.inc:298
 msgid "coth"
-msgstr ""
+msgstr "coth"
 
 #: lib/ui/stdtoolbars.inc:299
 msgid "csc"
-msgstr ""
+msgstr "csc"
 
 #: lib/ui/stdtoolbars.inc:300
 msgid "deg"
-msgstr ""
+msgstr "deg"
 
 #: lib/ui/stdtoolbars.inc:301
 msgid "det"
-msgstr ""
+msgstr "det"
 
 #: lib/ui/stdtoolbars.inc:302
 msgid "dim"
-msgstr ""
+msgstr "dim"
 
 #: lib/ui/stdtoolbars.inc:303
 msgid "exp"
-msgstr ""
+msgstr "exp"
 
 #: lib/ui/stdtoolbars.inc:304
 msgid "gcd"
-msgstr ""
+msgstr "gcd"
 
 #: lib/ui/stdtoolbars.inc:305
 msgid "hom"
-msgstr ""
+msgstr "hom"
 
 #: lib/ui/stdtoolbars.inc:306
 msgid "inf"
-msgstr ""
+msgstr "inf"
 
 #: lib/ui/stdtoolbars.inc:307
 msgid "ker"
-msgstr ""
+msgstr "ker"
 
 #: lib/ui/stdtoolbars.inc:308
 msgid "lg"
-msgstr ""
+msgstr "lg"
 
 #: lib/ui/stdtoolbars.inc:309
 msgid "lim"
-msgstr ""
+msgstr "lim"
 
 #: lib/ui/stdtoolbars.inc:310
 msgid "liminf"
-msgstr ""
+msgstr "liminf"
 
 #: lib/ui/stdtoolbars.inc:311
 msgid "limsup"
-msgstr ""
+msgstr "limsup"
 
 #: lib/ui/stdtoolbars.inc:312
 msgid "ln"
-msgstr ""
+msgstr "ln"
 
 #: lib/ui/stdtoolbars.inc:313
 msgid "log"
-msgstr ""
+msgstr "log"
 
 #: lib/ui/stdtoolbars.inc:314
 msgid "max"
-msgstr ""
+msgstr "max"
 
 #: lib/ui/stdtoolbars.inc:315
 msgid "min"
-msgstr ""
+msgstr "min"
 
 #: lib/ui/stdtoolbars.inc:316
 msgid "sec"
-msgstr ""
+msgstr "sec"
 
 #: lib/ui/stdtoolbars.inc:317
 msgid "sin"
-msgstr ""
+msgstr "sin"
 
 #: lib/ui/stdtoolbars.inc:318
 msgid "sinh"
-msgstr ""
+msgstr "sinh"
 
 #: lib/ui/stdtoolbars.inc:319
 msgid "sup"
-msgstr ""
+msgstr "sup"
 
 #: lib/ui/stdtoolbars.inc:320
 msgid "tan"
-msgstr ""
+msgstr "tan"
 
 #: lib/ui/stdtoolbars.inc:321
 msgid "tanh"
-msgstr ""
+msgstr "tanh"
 
 #: lib/ui/stdtoolbars.inc:322
 msgid "Pr"
-msgstr ""
+msgstr "Pr"
 
 #: lib/ui/stdtoolbars.inc:325
 msgid "Spacings"
@@ -14175,24 +14169,20 @@ msgid "Normal text mode\t\\textrm"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:380
-#, fuzzy
 msgid "ldots"
-msgstr "뜨내기들(Floats)|a"
+msgstr "ldots"
 
 #: lib/ui/stdtoolbars.inc:381
-#, fuzzy
 msgid "cdots"
-msgstr "폰트"
+msgstr "cdots"
 
 #: lib/ui/stdtoolbars.inc:382
-#, fuzzy
 msgid "vdots"
-msgstr "폰트"
+msgstr "vdots"
 
 #: lib/ui/stdtoolbars.inc:383
-#, fuzzy
 msgid "ddots"
-msgstr "폰트"
+msgstr "ddots"
 
 #: lib/ui/stdtoolbars.inc:388
 msgid "Frame Decorations"
@@ -14200,1039 +14190,998 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:389
 msgid "hat"
-msgstr ""
+msgstr "hat"
 
 #: lib/ui/stdtoolbars.inc:390
-#, fuzzy
 msgid "tilde"
-msgstr "파일"
+msgstr "tilde"
 
 #: lib/ui/stdtoolbars.inc:391
 msgid "bar"
-msgstr ""
+msgstr "bar"
 
 #: lib/ui/stdtoolbars.inc:392
-#, fuzzy
 msgid "grave"
-msgstr "저장(&Save)"
+msgstr "grave"
 
 #: lib/ui/stdtoolbars.inc:393
 msgid "dot"
-msgstr ""
+msgstr "dot"
 
 #: lib/ui/stdtoolbars.inc:394
 msgid "check"
-msgstr ""
+msgstr "check"
 
 #: lib/ui/stdtoolbars.inc:395
 msgid "widehat"
-msgstr ""
+msgstr "widehat"
 
 #: lib/ui/stdtoolbars.inc:396
 msgid "widetilde"
-msgstr ""
+msgstr "widetilde"
 
 #: lib/ui/stdtoolbars.inc:397
 msgid "vec"
-msgstr ""
+msgstr "vec"
 
 #: lib/ui/stdtoolbars.inc:398
-#, fuzzy
 msgid "acute"
-msgstr "날짜"
+msgstr "acute"
 
 #: lib/ui/stdtoolbars.inc:399
 msgid "ddot"
-msgstr ""
+msgstr "ddot"
 
 #: lib/ui/stdtoolbars.inc:400
 #, fuzzy
 msgid "dddot"
-msgstr "폰트"
+msgstr "ddot"
 
 #: lib/ui/stdtoolbars.inc:401
 #, fuzzy
 msgid "ddddot"
-msgstr "폰트"
+msgstr "ddot"
 
 #: lib/ui/stdtoolbars.inc:402
 msgid "breve"
-msgstr ""
+msgstr "breve"
 
 #: lib/ui/stdtoolbars.inc:403
 msgid "overline"
-msgstr ""
+msgstr "overline"
 
 #: lib/ui/stdtoolbars.inc:404
 msgid "overbrace"
-msgstr ""
+msgstr "overbrace"
 
 #: lib/ui/stdtoolbars.inc:405
-#, fuzzy
 msgid "overleftarrow"
-msgstr "행 지우기"
+msgstr "overleftarrow"
 
 #: lib/ui/stdtoolbars.inc:406
 msgid "overrightarrow"
-msgstr ""
+msgstr "overrightarrow"
 
 #: lib/ui/stdtoolbars.inc:407
 msgid "overleftrightarrow"
-msgstr ""
+msgstr "overleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:408
 msgid "overset"
-msgstr ""
+msgstr "overset"
 
 #: lib/ui/stdtoolbars.inc:409
 msgid "underline"
-msgstr ""
+msgstr "underline"
 
 #: lib/ui/stdtoolbars.inc:410
 msgid "underbrace"
-msgstr ""
+msgstr "underbrace"
 
 #: lib/ui/stdtoolbars.inc:411
 msgid "underleftarrow"
-msgstr ""
+msgstr "underleftarrow"
 
 #: lib/ui/stdtoolbars.inc:412
 msgid "underrightarrow"
-msgstr ""
+msgstr "underrightarrow"
 
 #: lib/ui/stdtoolbars.inc:413
 msgid "underleftrightarrow"
-msgstr ""
+msgstr "underleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:414
-#, fuzzy
 msgid "underset"
-msgstr "삽입(Insert)|I"
+msgstr "underset"
 
 #: lib/ui/stdtoolbars.inc:418
-#, fuzzy
 msgid "leftarrow"
-msgstr "행 지우기"
+msgstr "leftarrow"
 
 #: lib/ui/stdtoolbars.inc:419
 msgid "rightarrow"
-msgstr ""
+msgstr "rightarrow"
 
 #: lib/ui/stdtoolbars.inc:420
 msgid "downarrow"
-msgstr ""
+msgstr "downarrow"
 
 #: lib/ui/stdtoolbars.inc:421
-#, fuzzy
 msgid "uparrow"
-msgstr "화살표"
+msgstr "uparrow"
 
 #: lib/ui/stdtoolbars.inc:422
 msgid "updownarrow"
-msgstr ""
+msgstr "updownarrow"
 
 #: lib/ui/stdtoolbars.inc:423
 msgid "leftrightarrow"
-msgstr ""
+msgstr "leftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:424
 msgid "Leftarrow"
-msgstr ""
+msgstr "Leftarrow"
 
 #: lib/ui/stdtoolbars.inc:425
 msgid "Rightarrow"
-msgstr ""
+msgstr "Rightarrow"
 
 #: lib/ui/stdtoolbars.inc:426
 msgid "Downarrow"
-msgstr ""
+msgstr "Downarrow"
 
 #: lib/ui/stdtoolbars.inc:427
-#, fuzzy
 msgid "Uparrow"
-msgstr "화살표"
+msgstr "Uparrow"
 
 #: lib/ui/stdtoolbars.inc:428
 msgid "Updownarrow"
-msgstr ""
+msgstr "Updownarrow"
 
 #: lib/ui/stdtoolbars.inc:429
 msgid "Leftrightarrow"
-msgstr ""
+msgstr "Leftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:430
 msgid "Longleftrightarrow"
-msgstr ""
+msgstr "Longleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:431
 msgid "Longleftarrow"
-msgstr ""
+msgstr "Longleftarrow"
 
 #: lib/ui/stdtoolbars.inc:432
 msgid "Longrightarrow"
-msgstr ""
+msgstr "Longrightarrow"
 
 #: lib/ui/stdtoolbars.inc:433
 msgid "longleftrightarrow"
-msgstr ""
+msgstr "longleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:434
 msgid "longleftarrow"
-msgstr ""
+msgstr "longleftarrow"
 
 #: lib/ui/stdtoolbars.inc:435
 msgid "longrightarrow"
-msgstr ""
+msgstr "longrightarrow"
 
 #: lib/ui/stdtoolbars.inc:436
 msgid "leftharpoondown"
-msgstr ""
+msgstr "leftharpoondown"
 
 #: lib/ui/stdtoolbars.inc:437
 msgid "rightharpoondown"
-msgstr ""
+msgstr "rightharpoondown"
 
 #: lib/ui/stdtoolbars.inc:438
-#, fuzzy
 msgid "mapsto"
-msgstr "표제(Caption)"
+msgstr "mapsto"
 
 #: lib/ui/stdtoolbars.inc:439
 msgid "longmapsto"
-msgstr ""
+msgstr "longmapsto"
 
 #: lib/ui/stdtoolbars.inc:440
-#, fuzzy
 msgid "nwarrow"
-msgstr "화살표"
+msgstr "nwarrow"
 
 #: lib/ui/stdtoolbars.inc:441
-#, fuzzy
 msgid "nearrow"
-msgstr "화살표"
+msgstr "nearrow"
 
 #: lib/ui/stdtoolbars.inc:442
 msgid "leftharpoonup"
-msgstr ""
+msgstr "leftharpoonup"
 
 #: lib/ui/stdtoolbars.inc:443
 msgid "rightharpoonup"
-msgstr ""
+msgstr "rightharpoonup"
 
 #: lib/ui/stdtoolbars.inc:444
 msgid "hookleftarrow"
-msgstr ""
+msgstr "hookleftarrow"
 
 #: lib/ui/stdtoolbars.inc:445
 msgid "hookrightarrow"
-msgstr ""
+msgstr "hookrightarrow"
 
 #: lib/ui/stdtoolbars.inc:446
-#, fuzzy
 msgid "swarrow"
-msgstr "화살표"
+msgstr "swarrow"
 
 #: lib/ui/stdtoolbars.inc:447
-#, fuzzy
 msgid "searrow"
-msgstr "화살표"
+msgstr "searrow"
 
 #: lib/ui/stdtoolbars.inc:448 lib/ui/stdtoolbars.inc:723
 msgid "rightleftharpoons"
-msgstr ""
+msgstr "rightleftharpoons"
 
 #: lib/ui/stdtoolbars.inc:452
 msgid "pm"
-msgstr ""
+msgstr "pm"
 
 #: lib/ui/stdtoolbars.inc:453
 msgid "cap"
-msgstr ""
+msgstr "cap"
 
 #: lib/ui/stdtoolbars.inc:454
 msgid "diamond"
-msgstr ""
+msgstr "diamond"
 
 #: lib/ui/stdtoolbars.inc:455
 msgid "oplus"
-msgstr ""
+msgstr "oplus"
 
 #: lib/ui/stdtoolbars.inc:456
 msgid "mp"
-msgstr ""
+msgstr "mp"
 
 #: lib/ui/stdtoolbars.inc:457
 msgid "cup"
-msgstr ""
+msgstr "cup"
 
 #: lib/ui/stdtoolbars.inc:458
 msgid "bigtriangleup"
-msgstr ""
+msgstr "bigtriangleup"
 
 #: lib/ui/stdtoolbars.inc:459
 msgid "ominus"
-msgstr ""
+msgstr "ominus"
 
 #: lib/ui/stdtoolbars.inc:460
 msgid "times"
-msgstr ""
+msgstr "times"
 
 #: lib/ui/stdtoolbars.inc:461
 msgid "uplus"
-msgstr ""
+msgstr "uplus"
 
 #: lib/ui/stdtoolbars.inc:462
 msgid "bigtriangledown"
-msgstr ""
+msgstr "bigtriangledown"
 
 #: lib/ui/stdtoolbars.inc:463
-#, fuzzy
 msgid "otimes"
-msgstr "노우트(Note)"
+msgstr "otimes"
 
 #: lib/ui/stdtoolbars.inc:464
 msgid "div"
-msgstr ""
+msgstr "div"
 
 #: lib/ui/stdtoolbars.inc:465
 msgid "sqcap"
-msgstr ""
+msgstr "sqcap"
 
 #: lib/ui/stdtoolbars.inc:466
 msgid "triangleright"
-msgstr ""
+msgstr "triangleright"
 
 #: lib/ui/stdtoolbars.inc:467
 msgid "oslash"
-msgstr ""
+msgstr "oslash"
 
 #: lib/ui/stdtoolbars.inc:468
 msgid "cdot"
-msgstr ""
+msgstr "cdot"
 
 #: lib/ui/stdtoolbars.inc:469
 msgid "sqcup"
-msgstr ""
+msgstr "sqcup"
 
 #: lib/ui/stdtoolbars.inc:470
 msgid "triangleleft"
-msgstr ""
+msgstr "triangleleft"
 
 #: lib/ui/stdtoolbars.inc:471
 msgid "odot"
-msgstr ""
+msgstr "odot"
 
 #: lib/ui/stdtoolbars.inc:472
 msgid "star"
-msgstr ""
+msgstr "star"
 
 #: lib/ui/stdtoolbars.inc:473
 msgid "vee"
-msgstr ""
+msgstr "vee"
 
 #: lib/ui/stdtoolbars.inc:474
 msgid "amalg"
-msgstr ""
+msgstr "amalg"
 
 #: lib/ui/stdtoolbars.inc:475
 msgid "bigcirc"
-msgstr ""
+msgstr "bigcirc"
 
 #: lib/ui/stdtoolbars.inc:476
 msgid "setminus"
-msgstr ""
+msgstr "setminus"
 
 #: lib/ui/stdtoolbars.inc:477
 msgid "wedge"
-msgstr ""
+msgstr "wedge"
 
 #: lib/ui/stdtoolbars.inc:478
 msgid "dagger"
-msgstr ""
+msgstr "dagger"
 
 #: lib/ui/stdtoolbars.inc:479
 msgid "circ"
-msgstr ""
+msgstr "circ"
 
 #: lib/ui/stdtoolbars.inc:480
 msgid "bullet"
-msgstr ""
+msgstr "bullet"
 
 #: lib/ui/stdtoolbars.inc:481
 msgid "wr"
-msgstr ""
+msgstr "wr"
 
 #: lib/ui/stdtoolbars.inc:482
 msgid "ddagger"
-msgstr ""
+msgstr "ddagger"
 
 #: lib/ui/stdtoolbars.inc:486
 msgid "leq"
-msgstr ""
+msgstr "leq"
 
 #: lib/ui/stdtoolbars.inc:487
 msgid "geq"
-msgstr ""
+msgstr "geq"
 
 #: lib/ui/stdtoolbars.inc:488
 msgid "equiv"
-msgstr ""
+msgstr "equiv"
 
 #: lib/ui/stdtoolbars.inc:489
 msgid "models"
-msgstr ""
+msgstr "models"
 
 #: lib/ui/stdtoolbars.inc:490
 msgid "prec"
-msgstr ""
+msgstr "prec"
 
 #: lib/ui/stdtoolbars.inc:491
 msgid "succ"
-msgstr ""
+msgstr "succ"
 
 #: lib/ui/stdtoolbars.inc:492
 msgid "sim"
-msgstr ""
+msgstr "sim"
 
 #: lib/ui/stdtoolbars.inc:493
 msgid "perp"
-msgstr ""
+msgstr "perp"
 
 #: lib/ui/stdtoolbars.inc:494
 msgid "preceq"
-msgstr ""
+msgstr "preceq"
 
 #: lib/ui/stdtoolbars.inc:495
 msgid "succeq"
-msgstr ""
+msgstr "succeq"
 
 #: lib/ui/stdtoolbars.inc:496
 msgid "simeq"
-msgstr ""
+msgstr "simeq"
 
 #: lib/ui/stdtoolbars.inc:497
 msgid "mid"
-msgstr ""
+msgstr "mid"
 
 #: lib/ui/stdtoolbars.inc:498
 msgid "ll"
-msgstr ""
+msgstr "ll"
 
 #: lib/ui/stdtoolbars.inc:499
 msgid "gg"
-msgstr ""
+msgstr "gg"
 
 #: lib/ui/stdtoolbars.inc:500
 msgid "asymp"
-msgstr ""
+msgstr "asymp"
 
 #: lib/ui/stdtoolbars.inc:501
 msgid "parallel"
-msgstr ""
+msgstr "parallel"
 
 #: lib/ui/stdtoolbars.inc:502
 msgid "subset"
-msgstr ""
+msgstr "subset"
 
 #: lib/ui/stdtoolbars.inc:503
 msgid "supset"
-msgstr ""
+msgstr "supset"
 
 #: lib/ui/stdtoolbars.inc:504
 msgid "approx"
-msgstr ""
+msgstr "approx"
 
 #: lib/ui/stdtoolbars.inc:505
-#, fuzzy
 msgid "smile"
-msgstr "파일"
+msgstr "smile"
 
 #: lib/ui/stdtoolbars.inc:506
 msgid "subseteq"
-msgstr ""
+msgstr "subseteq"
 
 #: lib/ui/stdtoolbars.inc:507
 msgid "supseteq"
-msgstr ""
+msgstr "supseteq"
 
 #: lib/ui/stdtoolbars.inc:508
 msgid "cong"
-msgstr ""
+msgstr "cong"
 
 #: lib/ui/stdtoolbars.inc:509
-#, fuzzy
 msgid "frown"
-msgstr "화살표"
+msgstr "frown"
 
 #: lib/ui/stdtoolbars.inc:510
 msgid "sqsubseteq"
-msgstr ""
+msgstr "sqsubseteq"
 
 #: lib/ui/stdtoolbars.inc:511
 msgid "sqsupseteq"
-msgstr ""
+msgstr "sqsupseteq"
 
 #: lib/ui/stdtoolbars.inc:512
-#, fuzzy
 msgid "doteq"
-msgstr "노우트(Note)"
+msgstr "doteq"
 
 #: lib/ui/stdtoolbars.inc:513
 msgid "neq"
-msgstr ""
+msgstr "neq"
 
 #: lib/ui/stdtoolbars.inc:514 src/frontends/qt4/GuiGraphics.cpp:476
 #: src/lengthcommon.cpp:38
 msgid "in"
-msgstr ""
+msgstr "in"
 
 #: lib/ui/stdtoolbars.inc:515
 msgid "ni"
-msgstr ""
+msgstr "ni"
 
 #: lib/ui/stdtoolbars.inc:516
 msgid "propto"
-msgstr ""
+msgstr "propto"
 
 #: lib/ui/stdtoolbars.inc:517
 msgid "notin"
-msgstr ""
+msgstr "notin"
 
 #: lib/ui/stdtoolbars.inc:518
 msgid "vdash"
-msgstr ""
+msgstr "vdash"
 
 #: lib/ui/stdtoolbars.inc:519
 msgid "dashv"
-msgstr ""
+msgstr "dashv"
 
 #: lib/ui/stdtoolbars.inc:520
-#, fuzzy
 msgid "bowtie"
-msgstr "노우트(Note)"
+msgstr "bowtie"
 
 #: lib/ui/stdtoolbars.inc:524
 msgid "alpha"
-msgstr ""
+msgstr "alpha"
 
 #: lib/ui/stdtoolbars.inc:525
 msgid "beta"
-msgstr ""
+msgstr "beta"
 
 #: lib/ui/stdtoolbars.inc:526
 msgid "gamma"
-msgstr ""
+msgstr "gamma"
 
 #: lib/ui/stdtoolbars.inc:527
 msgid "delta"
-msgstr ""
+msgstr "delta"
 
 #: lib/ui/stdtoolbars.inc:528
 msgid "epsilon"
-msgstr ""
+msgstr "epsilon"
 
 #: lib/ui/stdtoolbars.inc:529
 msgid "varepsilon"
-msgstr ""
+msgstr "varepsilon"
 
 #: lib/ui/stdtoolbars.inc:530
 msgid "zeta"
-msgstr ""
+msgstr "zeta"
 
 #: lib/ui/stdtoolbars.inc:531
 msgid "eta"
-msgstr ""
+msgstr "eta"
 
 #: lib/ui/stdtoolbars.inc:532
 msgid "theta"
-msgstr ""
+msgstr "theta"
 
 #: lib/ui/stdtoolbars.inc:533
 msgid "vartheta"
-msgstr ""
+msgstr "vartheta"
 
 #: lib/ui/stdtoolbars.inc:534
 msgid "iota"
-msgstr ""
+msgstr "iota"
 
 #: lib/ui/stdtoolbars.inc:535
 msgid "kappa"
-msgstr ""
+msgstr "kappa"
 
 #: lib/ui/stdtoolbars.inc:536
 msgid "lambda"
-msgstr ""
+msgstr "lambda"
 
 #: lib/ui/stdtoolbars.inc:537
 msgid "mu"
-msgstr ""
+msgstr "mu"
 
 #: lib/ui/stdtoolbars.inc:538
 msgid "nu"
-msgstr ""
+msgstr "nu"
 
 #: lib/ui/stdtoolbars.inc:539
 msgid "xi"
-msgstr ""
+msgstr "xi"
 
 #: lib/ui/stdtoolbars.inc:540
 msgid "pi"
-msgstr ""
+msgstr "pi"
 
 #: lib/ui/stdtoolbars.inc:541
 msgid "varpi"
-msgstr ""
+msgstr "varpi"
 
 #: lib/ui/stdtoolbars.inc:542
 msgid "rho"
-msgstr ""
+msgstr "rho"
 
 #: lib/ui/stdtoolbars.inc:543
-#, fuzzy
 msgid "varrho"
-msgstr "화살표"
+msgstr "varrho"
 
 #: lib/ui/stdtoolbars.inc:544
 msgid "sigma"
-msgstr ""
+msgstr "sigma"
 
 #: lib/ui/stdtoolbars.inc:545
 msgid "varsigma"
-msgstr ""
+msgstr "varsigma"
 
 #: lib/ui/stdtoolbars.inc:546
 msgid "tau"
-msgstr ""
+msgstr "tau"
 
 #: lib/ui/stdtoolbars.inc:547
 msgid "upsilon"
-msgstr ""
+msgstr "upsilon"
 
 #: lib/ui/stdtoolbars.inc:548
 msgid "phi"
-msgstr ""
+msgstr "phi"
 
 #: lib/ui/stdtoolbars.inc:549
 msgid "varphi"
-msgstr ""
+msgstr "varphi"
 
 #: lib/ui/stdtoolbars.inc:550
 msgid "chi"
-msgstr ""
+msgstr "chi"
 
 #: lib/ui/stdtoolbars.inc:551
 msgid "psi"
-msgstr ""
+msgstr "psi"
 
 #: lib/ui/stdtoolbars.inc:552
 msgid "omega"
-msgstr ""
+msgstr "omega"
 
 #: lib/ui/stdtoolbars.inc:553
 msgid "Gamma"
-msgstr ""
+msgstr "Gamma"
 
 #: lib/ui/stdtoolbars.inc:554
-#, fuzzy
 msgid "Delta"
-msgstr "기본 설정(Default)"
+msgstr "Delta"
 
 #: lib/ui/stdtoolbars.inc:555
-#, fuzzy
 msgid "Theta"
-msgstr "본문(Text):"
+msgstr "Theta"
 
 #: lib/ui/stdtoolbars.inc:556
 msgid "Lambda"
-msgstr ""
+msgstr "Lambda"
 
 #: lib/ui/stdtoolbars.inc:557
 msgid "Xi"
-msgstr ""
+msgstr "Xi"
 
 #: lib/ui/stdtoolbars.inc:558
 msgid "Pi"
-msgstr ""
+msgstr "Pi"
 
 #: lib/ui/stdtoolbars.inc:559
 msgid "Sigma"
-msgstr ""
+msgstr "Sigma"
 
 #: lib/ui/stdtoolbars.inc:560
 msgid "Upsilon"
-msgstr ""
+msgstr "Upsilon"
 
 #: lib/ui/stdtoolbars.inc:561
 msgid "Phi"
-msgstr ""
+msgstr "Phi"
 
 #: lib/ui/stdtoolbars.inc:562
 msgid "Psi"
-msgstr ""
+msgstr "Psi"
 
 #: lib/ui/stdtoolbars.inc:563
 msgid "Omega"
-msgstr ""
+msgstr "Omega"
 
 #: lib/ui/stdtoolbars.inc:567
-#, fuzzy
 msgid "nabla"
-msgstr "레이블(Label)"
+msgstr "nabla"
 
 #: lib/ui/stdtoolbars.inc:568
 msgid "partial"
-msgstr ""
+msgstr "partial"
 
 #: lib/ui/stdtoolbars.inc:569
 msgid "infty"
-msgstr ""
+msgstr "infty"
 
 #: lib/ui/stdtoolbars.inc:570
 msgid "prime"
-msgstr ""
+msgstr "prime"
 
 #: lib/ui/stdtoolbars.inc:571
 msgid "ell"
-msgstr ""
+msgstr "ell"
 
 #: lib/ui/stdtoolbars.inc:572
-#, fuzzy
 msgid "emptyset"
-msgstr "본보기 파일(Template)"
+msgstr "emptyset"
 
 #: lib/ui/stdtoolbars.inc:573
 msgid "exists"
-msgstr ""
+msgstr "exists"
 
 #: lib/ui/stdtoolbars.inc:574
 msgid "forall"
-msgstr ""
+msgstr "forall"
 
 #: lib/ui/stdtoolbars.inc:575
-#, fuzzy
 msgid "imath"
-msgstr "수식(Math)"
+msgstr "imath"
 
 #: lib/ui/stdtoolbars.inc:576
-#, fuzzy
 msgid "jmath"
-msgstr "수식(Math)"
+msgstr "jmath"
 
 #: lib/ui/stdtoolbars.inc:577
-#, fuzzy
 msgid "Re"
-msgstr "빨강색"
+msgstr "Re"
 
 #: lib/ui/stdtoolbars.inc:578
 msgid "Im"
-msgstr ""
+msgstr "Im"
 
 #: lib/ui/stdtoolbars.inc:579
-#, fuzzy
 msgid "aleph"
-msgstr "축적(Scale)"
+msgstr "aleph"
 
 #: lib/ui/stdtoolbars.inc:580
 msgid "wp"
-msgstr ""
+msgstr "wp"
 
 #: lib/ui/stdtoolbars.inc:581 lib/ui/stdtoolbars.inc:666
 msgid "hbar"
-msgstr ""
+msgstr "hbar"
 
 #: lib/ui/stdtoolbars.inc:582 lib/ui/stdtoolbars.inc:673
-#, fuzzy
 msgid "angle"
-msgstr "각(A&ngle):"
+msgstr "angle"
 
 #: lib/ui/stdtoolbars.inc:583
 msgid "top"
-msgstr ""
+msgstr "top"
 
 #: lib/ui/stdtoolbars.inc:584
 msgid "bot"
-msgstr ""
+msgstr "bot"
 
 #: lib/ui/stdtoolbars.inc:585
 msgid "Vert"
-msgstr ""
+msgstr "Vert"
 
 #: lib/ui/stdtoolbars.inc:586
 msgid "neg"
-msgstr ""
+msgstr "neg"
 
 #: lib/ui/stdtoolbars.inc:587
-#, fuzzy
 msgid "flat"
-msgstr "뜨내기(float):"
+msgstr "flat"
 
 #: lib/ui/stdtoolbars.inc:588
 msgid "natural"
-msgstr ""
+msgstr "natural"
 
 #: lib/ui/stdtoolbars.inc:589
 msgid "sharp"
-msgstr ""
+msgstr "sharp"
 
 #: lib/ui/stdtoolbars.inc:590
 msgid "surd"
-msgstr ""
+msgstr "surd"
 
 #: lib/ui/stdtoolbars.inc:591
 msgid "triangle"
-msgstr ""
+msgstr "triangle"
 
 #: lib/ui/stdtoolbars.inc:592
 msgid "diamondsuit"
-msgstr ""
+msgstr "diamondsuit"
 
 #: lib/ui/stdtoolbars.inc:593
 msgid "heartsuit"
-msgstr ""
+msgstr "heartsuit"
 
 #: lib/ui/stdtoolbars.inc:594
 msgid "clubsuit"
-msgstr ""
+msgstr "clubsuit"
 
 #: lib/ui/stdtoolbars.inc:595
 msgid "spadesuit"
-msgstr ""
+msgstr "spadesuit"
 
 #: lib/ui/stdtoolbars.inc:596
 msgid "textrm \\AA"
-msgstr ""
+msgstr "textrm \\AA"
 
 #: lib/ui/stdtoolbars.inc:597
 msgid "textrm \\O"
-msgstr ""
+msgstr "textrm \\O"
 
 #: lib/ui/stdtoolbars.inc:598
 msgid "mathcircumflex"
-msgstr ""
+msgstr "mathcircumflex"
 
 #: lib/ui/stdtoolbars.inc:599
 msgid "_"
-msgstr ""
+msgstr "_"
 
 #: lib/ui/stdtoolbars.inc:600
 msgid "mathrm T"
-msgstr ""
+msgstr "mathrm T"
 
 #: lib/ui/stdtoolbars.inc:601
 msgid "mathbb N"
-msgstr ""
+msgstr "mathbb N"
 
 #: lib/ui/stdtoolbars.inc:602
 msgid "mathbb Z"
-msgstr ""
+msgstr "mathbb Z"
 
 #: lib/ui/stdtoolbars.inc:603
 msgid "mathbb Q"
-msgstr ""
+msgstr "mathbb Q"
 
 #: lib/ui/stdtoolbars.inc:604
 msgid "mathbb R"
-msgstr ""
+msgstr "mathbb R"
 
 #: lib/ui/stdtoolbars.inc:605
 msgid "mathbb C"
-msgstr ""
+msgstr "mathbb C"
 
 #: lib/ui/stdtoolbars.inc:606
 msgid "mathbb H"
-msgstr ""
+msgstr "mathbb H"
 
 #: lib/ui/stdtoolbars.inc:607
 msgid "mathcal F"
-msgstr ""
+msgstr "mathcal F"
 
 #: lib/ui/stdtoolbars.inc:608
 msgid "mathcal L"
-msgstr ""
+msgstr "mathcal L"
 
 #: lib/ui/stdtoolbars.inc:609
 msgid "mathcal H"
-msgstr ""
+msgstr "mathcal H"
 
 #: lib/ui/stdtoolbars.inc:610
 msgid "mathcal O"
-msgstr ""
+msgstr "mathcal O"
 
 #: lib/ui/stdtoolbars.inc:613
 msgid "Big Operators"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:614
-#, fuzzy
 msgid "intop"
-msgstr "상단(top) 정렬"
+msgstr "intop"
 
 #: lib/ui/stdtoolbars.inc:615
 msgid "int"
-msgstr ""
+msgstr "int"
 
 #: lib/ui/stdtoolbars.inc:616
 msgid "iint"
-msgstr ""
+msgstr "iint"
 
 #: lib/ui/stdtoolbars.inc:617
-#, fuzzy
 msgid "iintop"
-msgstr "상단(top) 정렬"
+msgstr "iintop"
 
 #: lib/ui/stdtoolbars.inc:618
 msgid "iiint"
-msgstr ""
+msgstr "iiint"
 
 #: lib/ui/stdtoolbars.inc:619
-#, fuzzy
 msgid "iiintop"
-msgstr "상단(top) 정렬"
+msgstr "iiintop"
 
 #: lib/ui/stdtoolbars.inc:620
 msgid "iiiint"
-msgstr ""
+msgstr "iiiint"
 
 #: lib/ui/stdtoolbars.inc:621
 msgid "iiiintop"
-msgstr ""
+msgstr "iiiintop"
 
 #: lib/ui/stdtoolbars.inc:622
 msgid "dotsint"
-msgstr ""
+msgstr "dotsint"
 
 #: lib/ui/stdtoolbars.inc:623
 msgid "dotsintop"
-msgstr ""
+msgstr "dotsintop"
 
 #: lib/ui/stdtoolbars.inc:624
-#, fuzzy
 msgid "oint"
-msgstr "폰트"
+msgstr "oint"
 
 #: lib/ui/stdtoolbars.inc:625
-#, fuzzy
 msgid "ointop"
-msgstr "상단(top) 정렬"
+msgstr "ointop"
 
 #: lib/ui/stdtoolbars.inc:626
-#, fuzzy
 msgid "oiint"
-msgstr "폰트"
+msgstr "oiint"
 
 #: lib/ui/stdtoolbars.inc:627
-#, fuzzy
 msgid "oiintop"
-msgstr "상단(top) 정렬"
+msgstr "oiintop"
 
 #: lib/ui/stdtoolbars.inc:628
 msgid "ointctrclockwiseop"
-msgstr ""
+msgstr "ointctrclockwiseop"
 
 #: lib/ui/stdtoolbars.inc:629
 msgid "ointctrclockwise"
-msgstr ""
+msgstr "ointctrclockwise"
 
 #: lib/ui/stdtoolbars.inc:630
 msgid "ointclockwiseop"
-msgstr ""
+msgstr "ointclockwiseop"
 
 #: lib/ui/stdtoolbars.inc:631
 msgid "ointclockwise"
-msgstr ""
+msgstr "ointclockwise"
 
 #: lib/ui/stdtoolbars.inc:632
 msgid "sqint"
-msgstr ""
+msgstr "sqint"
 
 #: lib/ui/stdtoolbars.inc:633
-#, fuzzy
 msgid "sqintop"
-msgstr "상단(top) 정렬"
+msgstr "sqintop"
 
 #: lib/ui/stdtoolbars.inc:634
 msgid "sqiint"
-msgstr ""
+msgstr "sqiint"
 
 #: lib/ui/stdtoolbars.inc:635
 msgid "sqiintop"
-msgstr ""
+msgstr "sqiintop"
 
 #: lib/ui/stdtoolbars.inc:636
-#, fuzzy
 msgid "fint"
-msgstr "폰트"
+msgstr "fint"
 
 #: lib/ui/stdtoolbars.inc:637
-#, fuzzy
 msgid "fintop"
-msgstr "상단(top) 정렬"
+msgstr "fintop"
 
 #: lib/ui/stdtoolbars.inc:638
 msgid "landupint"
-msgstr ""
+msgstr "landupint"
 
 #: lib/ui/stdtoolbars.inc:639
-#, fuzzy
 msgid "landupintop"
-msgstr "상단(top) 정렬"
+msgstr "landupintop"
 
 #: lib/ui/stdtoolbars.inc:640
 msgid "landdownint"
-msgstr ""
+msgstr "landdownint"
 
 #: lib/ui/stdtoolbars.inc:641
-#, fuzzy
 msgid "landdownintop"
-msgstr "상단(top) 정렬"
+msgstr "landdownintop"
 
 #: lib/ui/stdtoolbars.inc:642
 msgid "sum"
-msgstr ""
+msgstr "sum"
 
 #: lib/ui/stdtoolbars.inc:643
 msgid "prod"
-msgstr ""
+msgstr "prod"
 
 #: lib/ui/stdtoolbars.inc:644
 msgid "coprod"
-msgstr ""
+msgstr "coprod"
 
 #: lib/ui/stdtoolbars.inc:645
 msgid "bigsqcup"
-msgstr ""
+msgstr "bigsqcup"
 
 #: lib/ui/stdtoolbars.inc:646
 msgid "bigotimes"
-msgstr ""
+msgstr "bigotimes"
 
 #: lib/ui/stdtoolbars.inc:647
 msgid "bigodot"
-msgstr ""
+msgstr "bigodot"
 
 #: lib/ui/stdtoolbars.inc:648
 msgid "bigoplus"
-msgstr ""
+msgstr "bigoplus"
 
 #: lib/ui/stdtoolbars.inc:649
 msgid "bigcap"
-msgstr ""
+msgstr "bigcap"
 
 #: lib/ui/stdtoolbars.inc:650
 msgid "bigcup"
-msgstr ""
+msgstr "bigcup"
 
 #: lib/ui/stdtoolbars.inc:651
 msgid "biguplus"
-msgstr ""
+msgstr "biguplus"
 
 #: lib/ui/stdtoolbars.inc:652
 msgid "bigvee"
-msgstr ""
+msgstr "bigvee"
 
 #: lib/ui/stdtoolbars.inc:653
 msgid "bigwedge"
-msgstr ""
+msgstr "bigwedge"
 
 #: lib/ui/stdtoolbars.inc:656
 msgid "AMS Miscellaneous"
@@ -15240,142 +15189,140 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:657
 msgid "digamma"
-msgstr ""
+msgstr "digamma"
 
 #: lib/ui/stdtoolbars.inc:658
 msgid "varkappa"
-msgstr ""
+msgstr "varkappa"
 
 #: lib/ui/stdtoolbars.inc:659
 msgid "beth"
-msgstr ""
+msgstr "beth"
 
 #: lib/ui/stdtoolbars.inc:660
-#, fuzzy
 msgid "daleth"
-msgstr "수식(Math)"
+msgstr "daleth"
 
 #: lib/ui/stdtoolbars.inc:661
 msgid "gimel"
-msgstr ""
+msgstr "gimel"
 
 #: lib/ui/stdtoolbars.inc:662
 msgid "ulcorner"
-msgstr ""
+msgstr "ulcorner"
 
 #: lib/ui/stdtoolbars.inc:663
 msgid "urcorner"
-msgstr ""
+msgstr "urcorner"
 
 #: lib/ui/stdtoolbars.inc:664
 msgid "llcorner"
-msgstr ""
+msgstr "llcorner"
 
 #: lib/ui/stdtoolbars.inc:665
 msgid "lrcorner"
-msgstr ""
+msgstr "lrcorner"
 
 #: lib/ui/stdtoolbars.inc:667
 msgid "hslash"
-msgstr ""
+msgstr "hslash"
 
 #: lib/ui/stdtoolbars.inc:668
 msgid "vartriangle"
-msgstr ""
+msgstr "vartriangle"
 
 #: lib/ui/stdtoolbars.inc:669
 msgid "triangledown"
-msgstr ""
+msgstr "triangledown"
 
 #: lib/ui/stdtoolbars.inc:670
 msgid "square"
-msgstr ""
+msgstr "square"
 
 #: lib/ui/stdtoolbars.inc:671
 msgid "lozenge"
-msgstr ""
+msgstr "lozenge"
 
 #: lib/ui/stdtoolbars.inc:672
 msgid "circledS"
-msgstr ""
+msgstr "circledS"
 
 #: lib/ui/stdtoolbars.inc:674
 msgid "measuredangle"
-msgstr ""
+msgstr "measuredangle"
 
 #: lib/ui/stdtoolbars.inc:675
-#, fuzzy
 msgid "nexists"
-msgstr "색인 목록(Index List)|I"
+msgstr "nexists"
 
 #: lib/ui/stdtoolbars.inc:676
 msgid "mho"
-msgstr ""
+msgstr "mho"
 
 #: lib/ui/stdtoolbars.inc:677
 msgid "Finv"
-msgstr ""
+msgstr "Finv"
 
 #: lib/ui/stdtoolbars.inc:678
 msgid "Game"
-msgstr ""
+msgstr "Game"
 
 #: lib/ui/stdtoolbars.inc:679
 msgid "Bbbk"
-msgstr ""
+msgstr "Bbbk"
 
 #: lib/ui/stdtoolbars.inc:680
 msgid "backprime"
-msgstr ""
+msgstr "backprime"
 
 #: lib/ui/stdtoolbars.inc:681
 msgid "varnothing"
-msgstr ""
+msgstr "varnothing"
 
 #: lib/ui/stdtoolbars.inc:682
+#, fuzzy
 msgid "Diamond"
-msgstr ""
+msgstr "diamond"
 
 #: lib/ui/stdtoolbars.inc:683
 msgid "blacktriangle"
-msgstr ""
+msgstr "blacktriangle"
 
 #: lib/ui/stdtoolbars.inc:684
 msgid "blacktriangledown"
-msgstr ""
+msgstr "blacktriangledown"
 
 #: lib/ui/stdtoolbars.inc:685
 msgid "blacksquare"
-msgstr ""
+msgstr "blacksquare"
 
 #: lib/ui/stdtoolbars.inc:686
 msgid "blacklozenge"
-msgstr ""
+msgstr "blacklozenge"
 
 #: lib/ui/stdtoolbars.inc:687
 msgid "bigstar"
-msgstr ""
+msgstr "bigstar"
 
 #: lib/ui/stdtoolbars.inc:688
 msgid "sphericalangle"
-msgstr ""
+msgstr "sphericalangle"
 
 #: lib/ui/stdtoolbars.inc:689
-#, fuzzy
 msgid "complement"
-msgstr "주석(Comment)"
+msgstr "complement"
 
 #: lib/ui/stdtoolbars.inc:690
 msgid "eth"
-msgstr ""
+msgstr "eth"
 
 #: lib/ui/stdtoolbars.inc:691
 msgid "diagup"
-msgstr ""
+msgstr "diagup"
 
 #: lib/ui/stdtoolbars.inc:692
 msgid "diagdown"
-msgstr ""
+msgstr "diagdown"
 
 #: lib/ui/stdtoolbars.inc:695
 #, fuzzy
@@ -15384,150 +15331,147 @@ msgstr "AMS 화살표들"
 
 #: lib/ui/stdtoolbars.inc:696
 msgid "dashleftarrow"
-msgstr ""
+msgstr "dashleftarrow"
 
 #: lib/ui/stdtoolbars.inc:697
 msgid "dashrightarrow"
-msgstr ""
+msgstr "dashrightarrow"
 
 #: lib/ui/stdtoolbars.inc:698
 msgid "leftleftarrows"
-msgstr ""
+msgstr "leftleftarrows"
 
 #: lib/ui/stdtoolbars.inc:699
 msgid "leftrightarrows"
-msgstr ""
+msgstr "leftrightarrows"
 
 #: lib/ui/stdtoolbars.inc:700
 msgid "rightrightarrows"
-msgstr ""
+msgstr "rightrightarrows"
 
 #: lib/ui/stdtoolbars.inc:701
 msgid "rightleftarrows"
-msgstr ""
+msgstr "rightleftarrows"
 
 #: lib/ui/stdtoolbars.inc:702
-#, fuzzy
 msgid "Lleftarrow"
-msgstr "행 지우기"
+msgstr "Lleftarrow"
 
 #: lib/ui/stdtoolbars.inc:703
 msgid "Rrightarrow"
-msgstr ""
+msgstr "Rrightarrow"
 
 #: lib/ui/stdtoolbars.inc:704
 msgid "twoheadleftarrow"
-msgstr ""
+msgstr "twoheadleftarrow"
 
 #: lib/ui/stdtoolbars.inc:705
 msgid "twoheadrightarrow"
-msgstr ""
+msgstr "twoheadrightarrow"
 
 #: lib/ui/stdtoolbars.inc:706
 msgid "leftarrowtail"
-msgstr ""
+msgstr "leftarrowtail"
 
 #: lib/ui/stdtoolbars.inc:707
 msgid "rightarrowtail"
-msgstr ""
+msgstr "rightarrowtail"
 
 #: lib/ui/stdtoolbars.inc:708
 msgid "looparrowleft"
-msgstr ""
+msgstr "looparrowleft"
 
 #: lib/ui/stdtoolbars.inc:709
 msgid "looparrowright"
-msgstr ""
+msgstr "looparrowright"
 
 #: lib/ui/stdtoolbars.inc:710
 msgid "curvearrowleft"
-msgstr ""
+msgstr "curvearrowleft"
 
 #: lib/ui/stdtoolbars.inc:711
 msgid "curvearrowright"
-msgstr ""
+msgstr "curvearrowright"
 
 #: lib/ui/stdtoolbars.inc:712
 msgid "circlearrowleft"
-msgstr ""
+msgstr "circlearrowleft"
 
 #: lib/ui/stdtoolbars.inc:713
 msgid "circlearrowright"
-msgstr ""
+msgstr "circlearrowright"
 
 #: lib/ui/stdtoolbars.inc:714
 msgid "Lsh"
-msgstr ""
+msgstr "Lsh"
 
 #: lib/ui/stdtoolbars.inc:715
 msgid "Rsh"
-msgstr ""
+msgstr "Rsh"
 
 #: lib/ui/stdtoolbars.inc:716
-#, fuzzy
 msgid "upuparrows"
-msgstr "AMS 화살표들"
+msgstr "upuparrows"
 
 #: lib/ui/stdtoolbars.inc:717
 msgid "downdownarrows"
-msgstr ""
+msgstr "downdownarrows"
 
 #: lib/ui/stdtoolbars.inc:718
 msgid "upharpoonleft"
-msgstr ""
+msgstr "upharpoonleft"
 
 #: lib/ui/stdtoolbars.inc:719
 msgid "upharpoonright"
-msgstr ""
+msgstr "upharpoonright"
 
 #: lib/ui/stdtoolbars.inc:720
 msgid "downharpoonleft"
-msgstr ""
+msgstr "downharpoonleft"
 
 #: lib/ui/stdtoolbars.inc:721
 msgid "downharpoonright"
-msgstr ""
+msgstr "downharpoonright"
 
 #: lib/ui/stdtoolbars.inc:722
 msgid "leftrightharpoons"
-msgstr ""
+msgstr "leftrightharpoons"
 
 #: lib/ui/stdtoolbars.inc:724
 msgid "rightsquigarrow"
-msgstr ""
+msgstr "rightsquigarrow"
 
 #: lib/ui/stdtoolbars.inc:725
 msgid "leftrightsquigarrow"
-msgstr ""
+msgstr "leftrightsquigarrow"
 
 #: lib/ui/stdtoolbars.inc:726
-#, fuzzy
 msgid "nleftarrow"
-msgstr "행 지우기"
+msgstr "nleftarrow"
 
 #: lib/ui/stdtoolbars.inc:727
 msgid "nrightarrow"
-msgstr ""
+msgstr "nrightarrow"
 
 #: lib/ui/stdtoolbars.inc:728
 msgid "nleftrightarrow"
-msgstr ""
+msgstr "nleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:729
 msgid "nLeftarrow"
-msgstr ""
+msgstr "nLeftarrow"
 
 #: lib/ui/stdtoolbars.inc:730
 msgid "nRightarrow"
-msgstr ""
+msgstr "nRightarrow"
 
 #: lib/ui/stdtoolbars.inc:731
 msgid "nLeftrightarrow"
-msgstr ""
+msgstr "nLeftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:732
 msgid "multimap"
-msgstr ""
+msgstr "multimap"
 
 #: lib/ui/stdtoolbars.inc:735
 #, fuzzy
@@ -15536,269 +15480,267 @@ msgstr "AMS 화살표들"
 
 #: lib/ui/stdtoolbars.inc:736
 msgid "leqq"
-msgstr ""
+msgstr "leqq"
 
 #: lib/ui/stdtoolbars.inc:737
 msgid "geqq"
-msgstr ""
+msgstr "geqq"
 
 #: lib/ui/stdtoolbars.inc:738
 msgid "leqslant"
-msgstr ""
+msgstr "leqslant"
 
 #: lib/ui/stdtoolbars.inc:739
 msgid "geqslant"
-msgstr ""
+msgstr "geqslant"
 
 #: lib/ui/stdtoolbars.inc:740
 msgid "eqslantless"
-msgstr ""
+msgstr "eqslantless"
 
 #: lib/ui/stdtoolbars.inc:741
 msgid "eqslantgtr"
-msgstr ""
+msgstr "eqslantgtr"
 
 #: lib/ui/stdtoolbars.inc:742
 msgid "lesssim"
-msgstr ""
+msgstr "lesssim"
 
 #: lib/ui/stdtoolbars.inc:743
 msgid "gtrsim"
-msgstr ""
+msgstr "gtrsim"
 
 #: lib/ui/stdtoolbars.inc:744
 msgid "lessapprox"
-msgstr ""
+msgstr "lessapprox"
 
 #: lib/ui/stdtoolbars.inc:745
 msgid "gtrapprox"
-msgstr ""
+msgstr "gtrapprox"
 
 #: lib/ui/stdtoolbars.inc:746
 msgid "approxeq"
-msgstr ""
+msgstr "approxeq"
 
 #: lib/ui/stdtoolbars.inc:747
 msgid "triangleq"
-msgstr ""
+msgstr "triangleq"
 
 #: lib/ui/stdtoolbars.inc:748
 msgid "lessdot"
-msgstr ""
+msgstr "lessdot"
 
 #: lib/ui/stdtoolbars.inc:749
 msgid "gtrdot"
-msgstr ""
+msgstr "gtrdot"
 
 #: lib/ui/stdtoolbars.inc:750
 msgid "lll"
-msgstr ""
+msgstr "lll"
 
 #: lib/ui/stdtoolbars.inc:751
 msgid "ggg"
-msgstr ""
+msgstr "ggg"
 
 #: lib/ui/stdtoolbars.inc:752
 msgid "lessgtr"
-msgstr ""
+msgstr "lessgtr"
 
 #: lib/ui/stdtoolbars.inc:753
 msgid "gtrless"
-msgstr ""
+msgstr "gtrless"
 
 #: lib/ui/stdtoolbars.inc:754
 msgid "lesseqgtr"
-msgstr ""
+msgstr "lesseqgtr"
 
 #: lib/ui/stdtoolbars.inc:755
 msgid "gtreqless"
-msgstr ""
+msgstr "gtreqless"
 
 #: lib/ui/stdtoolbars.inc:756
 msgid "lesseqqgtr"
-msgstr ""
+msgstr "lesseqqgtr"
 
 #: lib/ui/stdtoolbars.inc:757
 msgid "gtreqqless"
-msgstr ""
+msgstr "gtreqqless"
 
 #: lib/ui/stdtoolbars.inc:758
 msgid "eqcirc"
-msgstr ""
+msgstr "eqcirc"
 
 #: lib/ui/stdtoolbars.inc:759
 msgid "circeq"
-msgstr ""
+msgstr "circeq"
 
 #: lib/ui/stdtoolbars.inc:760
 msgid "thicksim"
-msgstr ""
+msgstr "thicksim"
 
 #: lib/ui/stdtoolbars.inc:761
 msgid "thickapprox"
-msgstr ""
+msgstr "thickapprox"
 
 #: lib/ui/stdtoolbars.inc:762
 msgid "backsim"
-msgstr ""
+msgstr "backsim"
 
 #: lib/ui/stdtoolbars.inc:763
 msgid "backsimeq"
-msgstr ""
+msgstr "backsimeq"
 
 #: lib/ui/stdtoolbars.inc:764
 msgid "subseteqq"
-msgstr ""
+msgstr "subseteqq"
 
 #: lib/ui/stdtoolbars.inc:765
 msgid "supseteqq"
-msgstr ""
+msgstr "supseteqq"
 
 #: lib/ui/stdtoolbars.inc:766
-#, fuzzy
 msgid "Subset"
-msgstr "하부 글자(Subscript)"
+msgstr "Subset"
 
 #: lib/ui/stdtoolbars.inc:767
 msgid "Supset"
-msgstr ""
+msgstr "Supset"
 
 #: lib/ui/stdtoolbars.inc:768
 msgid "sqsubset"
-msgstr ""
+msgstr "sqsubset"
 
 #: lib/ui/stdtoolbars.inc:769
 msgid "sqsupset"
-msgstr ""
+msgstr "sqsupset"
 
 #: lib/ui/stdtoolbars.inc:770
 msgid "preccurlyeq"
-msgstr ""
+msgstr "preccurlyeq"
 
 #: lib/ui/stdtoolbars.inc:771
 msgid "succcurlyeq"
-msgstr ""
+msgstr "succcurlyeq"
 
 #: lib/ui/stdtoolbars.inc:772
 msgid "curlyeqprec"
-msgstr ""
+msgstr "curlyeqprec"
 
 #: lib/ui/stdtoolbars.inc:773
 msgid "curlyeqsucc"
-msgstr ""
+msgstr "curlyeqsucc"
 
 #: lib/ui/stdtoolbars.inc:774
 msgid "precsim"
-msgstr ""
+msgstr "precsim"
 
 #: lib/ui/stdtoolbars.inc:775
 msgid "succsim"
-msgstr ""
+msgstr "succsim"
 
 #: lib/ui/stdtoolbars.inc:776
 msgid "precapprox"
-msgstr ""
+msgstr "precapprox"
 
 #: lib/ui/stdtoolbars.inc:777
 msgid "succapprox"
-msgstr ""
+msgstr "succapprox"
 
 #: lib/ui/stdtoolbars.inc:778
 msgid "vartriangleleft"
-msgstr ""
+msgstr "vartriangleleft"
 
 #: lib/ui/stdtoolbars.inc:779
-#, fuzzy
 msgid "vartriangleright"
-msgstr "기준선(Baseline) 오른쪽"
+msgstr "vartriangleright"
 
 #: lib/ui/stdtoolbars.inc:780
 msgid "trianglelefteq"
-msgstr ""
+msgstr "trianglelefteq"
 
 #: lib/ui/stdtoolbars.inc:781
 msgid "trianglerighteq"
-msgstr ""
+msgstr "trianglerighteq"
 
 #: lib/ui/stdtoolbars.inc:782
 msgid "bumpeq"
-msgstr ""
+msgstr "bumpeq"
 
 #: lib/ui/stdtoolbars.inc:783
 msgid "Bumpeq"
-msgstr ""
+msgstr "Bumpeq"
 
 #: lib/ui/stdtoolbars.inc:784
 msgid "doteqdot"
-msgstr ""
+msgstr "doteqdot"
 
 #: lib/ui/stdtoolbars.inc:785
 msgid "risingdotseq"
-msgstr ""
+msgstr "risingdotseq"
 
 #: lib/ui/stdtoolbars.inc:786
 msgid "fallingdotseq"
-msgstr ""
+msgstr "fallingdotseq"
 
 #: lib/ui/stdtoolbars.inc:787
 msgid "vDash"
-msgstr ""
+msgstr "vDash"
 
 #: lib/ui/stdtoolbars.inc:788
 msgid "Vvdash"
-msgstr ""
+msgstr "Vvdash"
 
 #: lib/ui/stdtoolbars.inc:789
 msgid "Vdash"
-msgstr ""
+msgstr "Vdash"
 
 #: lib/ui/stdtoolbars.inc:790
 msgid "shortmid"
-msgstr ""
+msgstr "shortmid"
 
 #: lib/ui/stdtoolbars.inc:791
 msgid "shortparallel"
-msgstr ""
+msgstr "shortparallel"
 
 #: lib/ui/stdtoolbars.inc:792
 msgid "smallsmile"
-msgstr ""
+msgstr "smallsmile"
 
 #: lib/ui/stdtoolbars.inc:793
 msgid "smallfrown"
-msgstr ""
+msgstr "smallfrown"
 
 #: lib/ui/stdtoolbars.inc:794
 msgid "blacktriangleleft"
-msgstr ""
+msgstr "blacktriangleleft"
 
 #: lib/ui/stdtoolbars.inc:795
 msgid "blacktriangleright"
-msgstr ""
+msgstr "blacktriangleright"
 
 #: lib/ui/stdtoolbars.inc:796
 msgid "because"
-msgstr ""
+msgstr "because"
 
 #: lib/ui/stdtoolbars.inc:797
 msgid "therefore"
-msgstr ""
+msgstr "therefore"
 
 #: lib/ui/stdtoolbars.inc:798
 msgid "backepsilon"
-msgstr ""
+msgstr "backepsilon"
 
 #: lib/ui/stdtoolbars.inc:799
 msgid "varpropto"
-msgstr ""
+msgstr "varpropto"
 
 #: lib/ui/stdtoolbars.inc:800
 msgid "between"
-msgstr ""
+msgstr "between"
 
 #: lib/ui/stdtoolbars.inc:801
 msgid "pitchfork"
-msgstr ""
+msgstr "pitchfork"
 
 #: lib/ui/stdtoolbars.inc:804
 msgid "AMS Negative Relations"
@@ -15806,204 +15748,203 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:805
 msgid "nless"
-msgstr ""
+msgstr "nless"
 
 #: lib/ui/stdtoolbars.inc:806
-#, fuzzy
 msgid "ngtr"
-msgstr "중심(Center)"
+msgstr "ngtr"
 
 #: lib/ui/stdtoolbars.inc:807
 msgid "nleq"
-msgstr ""
+msgstr "nleq"
 
 #: lib/ui/stdtoolbars.inc:808
 msgid "ngeq"
-msgstr ""
+msgstr "ngeq"
 
 #: lib/ui/stdtoolbars.inc:809
 msgid "nleqslant"
-msgstr ""
+msgstr "nleqslant"
 
 #: lib/ui/stdtoolbars.inc:810
 msgid "ngeqslant"
-msgstr ""
+msgstr "ngeqslant"
 
 #: lib/ui/stdtoolbars.inc:811
 msgid "nleqq"
-msgstr ""
+msgstr "nleqq"
 
 #: lib/ui/stdtoolbars.inc:812
 msgid "ngeqq"
-msgstr ""
+msgstr "ngeqq"
 
 #: lib/ui/stdtoolbars.inc:813
 msgid "lneq"
-msgstr ""
+msgstr "lneq"
 
 #: lib/ui/stdtoolbars.inc:814
 msgid "gneq"
-msgstr ""
+msgstr "gneq"
 
 #: lib/ui/stdtoolbars.inc:815
 msgid "lneqq"
-msgstr ""
+msgstr "lneqq"
 
 #: lib/ui/stdtoolbars.inc:816
 msgid "gneqq"
-msgstr ""
+msgstr "gneqq"
 
 #: lib/ui/stdtoolbars.inc:817
 msgid "lvertneqq"
-msgstr ""
+msgstr "lvertneqq"
 
 #: lib/ui/stdtoolbars.inc:818
 msgid "gvertneqq"
-msgstr ""
+msgstr "gvertneqq"
 
 #: lib/ui/stdtoolbars.inc:819
 msgid "lnsim"
-msgstr ""
+msgstr "lnsim"
 
 #: lib/ui/stdtoolbars.inc:820
 msgid "gnsim"
-msgstr ""
+msgstr "gnsim"
 
 #: lib/ui/stdtoolbars.inc:821
 msgid "lnapprox"
-msgstr ""
+msgstr "lnapprox"
 
 #: lib/ui/stdtoolbars.inc:822
 msgid "gnapprox"
-msgstr ""
+msgstr "gnapprox"
 
 #: lib/ui/stdtoolbars.inc:823
 msgid "nprec"
-msgstr ""
+msgstr "nprec"
 
 #: lib/ui/stdtoolbars.inc:824
 msgid "nsucc"
-msgstr ""
+msgstr "nsucc"
 
 #: lib/ui/stdtoolbars.inc:825
 msgid "npreceq"
-msgstr ""
+msgstr "npreceq"
 
 #: lib/ui/stdtoolbars.inc:826
 msgid "nsucceq"
-msgstr ""
+msgstr "nsucceq"
 
 #: lib/ui/stdtoolbars.inc:827
 msgid "precnsim"
-msgstr ""
+msgstr "precnsim"
 
 #: lib/ui/stdtoolbars.inc:828
 msgid "succnsim"
-msgstr ""
+msgstr "succnsim"
 
 #: lib/ui/stdtoolbars.inc:829
 msgid "precnapprox"
-msgstr ""
+msgstr "precnapprox"
 
 #: lib/ui/stdtoolbars.inc:830
 msgid "succnapprox"
-msgstr ""
+msgstr "succnapprox"
 
 #: lib/ui/stdtoolbars.inc:831
 msgid "subsetneq"
-msgstr ""
+msgstr "subsetneq"
 
 #: lib/ui/stdtoolbars.inc:832
 msgid "supsetneq"
-msgstr ""
+msgstr "supsetneq"
 
 #: lib/ui/stdtoolbars.inc:833
 msgid "subsetneqq"
-msgstr ""
+msgstr "subsetneqq"
 
 #: lib/ui/stdtoolbars.inc:834
 msgid "supsetneqq"
-msgstr ""
+msgstr "supsetneqq"
 
 #: lib/ui/stdtoolbars.inc:835
 msgid "nsubseteq"
-msgstr ""
+msgstr "nsubseteq"
 
 #: lib/ui/stdtoolbars.inc:836
 msgid "nsupseteq"
-msgstr ""
+msgstr "nsupseteq"
 
 #: lib/ui/stdtoolbars.inc:837
 msgid "nsupseteqq"
-msgstr ""
+msgstr "nsupseteqq"
 
 #: lib/ui/stdtoolbars.inc:838
 msgid "nvdash"
-msgstr ""
+msgstr "nvdash"
 
 #: lib/ui/stdtoolbars.inc:839
 msgid "nvDash"
-msgstr ""
+msgstr "nvDash"
 
 #: lib/ui/stdtoolbars.inc:840
 msgid "nVDash"
-msgstr ""
+msgstr "nVDash"
 
 #: lib/ui/stdtoolbars.inc:841
 msgid "varsubsetneq"
-msgstr ""
+msgstr "varsubsetneq"
 
 #: lib/ui/stdtoolbars.inc:842
 msgid "varsupsetneq"
-msgstr ""
+msgstr "varsupsetneq"
 
 #: lib/ui/stdtoolbars.inc:843
 msgid "varsubsetneqq"
-msgstr ""
+msgstr "varsubsetneqq"
 
 #: lib/ui/stdtoolbars.inc:844
 msgid "varsupsetneqq"
-msgstr ""
+msgstr "varsupsetneqq"
 
 #: lib/ui/stdtoolbars.inc:845
 msgid "ntriangleleft"
-msgstr ""
+msgstr "ntriangleleft"
 
 #: lib/ui/stdtoolbars.inc:846
 msgid "ntriangleright"
-msgstr ""
+msgstr "ntriangleright"
 
 #: lib/ui/stdtoolbars.inc:847
 msgid "ntrianglelefteq"
-msgstr ""
+msgstr "ntrianglelefteq"
 
 #: lib/ui/stdtoolbars.inc:848
 msgid "ntrianglerighteq"
-msgstr ""
+msgstr "ntrianglerighteq"
 
 #: lib/ui/stdtoolbars.inc:849
 msgid "ncong"
-msgstr ""
+msgstr "ncong"
 
 #: lib/ui/stdtoolbars.inc:850
 msgid "nsim"
-msgstr ""
+msgstr "nsim"
 
 #: lib/ui/stdtoolbars.inc:851
 msgid "nmid"
-msgstr ""
+msgstr "nmid"
 
 #: lib/ui/stdtoolbars.inc:852
 msgid "nshortmid"
-msgstr ""
+msgstr "nshortmid"
 
 #: lib/ui/stdtoolbars.inc:853
 msgid "nparallel"
-msgstr ""
+msgstr "nparallel"
 
 #: lib/ui/stdtoolbars.inc:854
 msgid "nshortparallel"
-msgstr ""
+msgstr "nshortparallel"
 
 #: lib/ui/stdtoolbars.inc:857
 #, fuzzy
@@ -16012,99 +15953,95 @@ msgstr "AMS 화살표들"
 
 #: lib/ui/stdtoolbars.inc:858
 msgid "dotplus"
-msgstr ""
+msgstr "dotplus"
 
 #: lib/ui/stdtoolbars.inc:859
 msgid "smallsetminus"
-msgstr ""
+msgstr "smallsetminus"
 
 #: lib/ui/stdtoolbars.inc:860
-#, fuzzy
 msgid "Cap"
-msgstr "표제(Caption)"
+msgstr "Cap"
 
 #: lib/ui/stdtoolbars.inc:861
-#, fuzzy
 msgid "Cup"
-msgstr "자르기"
+msgstr "Cup"
 
 #: lib/ui/stdtoolbars.inc:862
 msgid "barwedge"
-msgstr ""
+msgstr "barwedge"
 
 #: lib/ui/stdtoolbars.inc:863
 msgid "veebar"
-msgstr ""
+msgstr "veebar"
 
 #: lib/ui/stdtoolbars.inc:864
 msgid "doublebarwedge"
-msgstr ""
+msgstr "doublebarwedge"
 
 #: lib/ui/stdtoolbars.inc:865
 msgid "boxminus"
-msgstr ""
+msgstr "boxminus"
 
 #: lib/ui/stdtoolbars.inc:866
 msgid "boxtimes"
-msgstr ""
+msgstr "boxtimes"
 
 #: lib/ui/stdtoolbars.inc:867
 msgid "boxdot"
-msgstr ""
+msgstr "boxdot"
 
 #: lib/ui/stdtoolbars.inc:868
 msgid "boxplus"
-msgstr ""
+msgstr "boxplus"
 
 #: lib/ui/stdtoolbars.inc:869
 msgid "divideontimes"
-msgstr ""
+msgstr "divideontimes"
 
 #: lib/ui/stdtoolbars.inc:870
 msgid "ltimes"
-msgstr ""
+msgstr "ltimes"
 
 #: lib/ui/stdtoolbars.inc:871
 msgid "rtimes"
-msgstr ""
+msgstr "rtimes"
 
 #: lib/ui/stdtoolbars.inc:872
 msgid "leftthreetimes"
-msgstr ""
+msgstr "leftthreetimes"
 
 #: lib/ui/stdtoolbars.inc:873
 msgid "rightthreetimes"
-msgstr ""
+msgstr "rightthreetimes"
 
 #: lib/ui/stdtoolbars.inc:874
 msgid "curlywedge"
-msgstr ""
+msgstr "curlywedge"
 
 #: lib/ui/stdtoolbars.inc:875
 msgid "curlyvee"
-msgstr ""
+msgstr "curlyvee"
 
 #: lib/ui/stdtoolbars.inc:876
 msgid "circleddash"
-msgstr ""
+msgstr "circleddash"
 
 #: lib/ui/stdtoolbars.inc:877
 msgid "circledast"
-msgstr ""
+msgstr "circledast"
 
 #: lib/ui/stdtoolbars.inc:878
 msgid "circledcirc"
-msgstr ""
+msgstr "circledcirc"
 
 #: lib/ui/stdtoolbars.inc:879
-#, fuzzy
 msgid "centerdot"
-msgstr "가운데로 맞추기(Align Center)|C"
+msgstr "centerdot"
 
 #: lib/ui/stdtoolbars.inc:880
-#, fuzzy
 msgid "intercal"
-msgstr "적분 삽입"
+msgstr "intercal"
 
 #: lib/external_templates:37
 msgid "RasterImage"
@@ -16119,9 +16056,8 @@ msgid "A bitmap file.\n"
 msgstr ""
 
 #: lib/external_templates:109
-#, fuzzy
 msgid "XFig"
-msgstr "그림"
+msgstr "XFig"
 
 #: lib/external_templates:110 lib/external_templates:113
 msgid "Xfig: $$AbsOrRelPathParent$$Basename"
@@ -16162,7 +16098,7 @@ msgstr ""
 
 #: lib/external_templates:212
 msgid "LilyPond"
-msgstr ""
+msgstr "LilyPond"
 
 #: lib/external_templates:213 lib/external_templates:219
 msgid "Lilypond typeset music"
@@ -16205,7 +16141,7 @@ msgstr ""
 
 #: lib/external_templates:333
 msgid "Dia"
-msgstr ""
+msgstr "Dia"
 
 #: lib/external_templates:334 lib/external_templates:337
 msgid "Dia: $$AbsOrRelPathParent$$Basename"
@@ -16217,24 +16153,23 @@ msgstr ""
 
 #: lib/configure.py:445
 msgid "Tgif"
-msgstr ""
+msgstr "Tgif"
 
 #: lib/configure.py:448
 msgid "FIG"
-msgstr ""
+msgstr "FIG"
 
 #: lib/configure.py:451
 msgid "DIA"
-msgstr ""
+msgstr "DIA"
 
 #: lib/configure.py:454
-#, fuzzy
 msgid "Grace"
-msgstr "그림(&Graphics)"
+msgstr "Grace"
 
 #: lib/configure.py:457
 msgid "FEN"
-msgstr ""
+msgstr "FEN"
 
 #: lib/configure.py:460
 msgid "SVG"
@@ -16242,45 +16177,45 @@ msgstr ""
 
 #: lib/configure.py:463 lib/configure.py:474 lib/configure.py:484
 msgid "BMP"
-msgstr ""
+msgstr "BMP"
 
 #: lib/configure.py:464 lib/configure.py:475 lib/configure.py:485
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: lib/configure.py:465 lib/configure.py:476 lib/configure.py:486
 #: src/frontends/qt4/GuiClipboard.cpp:138
 msgid "JPEG"
-msgstr ""
+msgstr "JPEG"
 
 #: lib/configure.py:466 lib/configure.py:477 lib/configure.py:487
 msgid "PBM"
-msgstr ""
+msgstr "PBM"
 
 #: lib/configure.py:467 lib/configure.py:478 lib/configure.py:488
 msgid "PGM"
-msgstr ""
+msgstr "PGM"
 
 #: lib/configure.py:468 lib/configure.py:479 lib/configure.py:489
 #: src/frontends/qt4/GuiClipboard.cpp:137
 msgid "PNG"
-msgstr ""
+msgstr "PNG"
 
 #: lib/configure.py:469 lib/configure.py:480 lib/configure.py:490
 msgid "PPM"
-msgstr ""
+msgstr "PPM"
 
 #: lib/configure.py:470 lib/configure.py:481 lib/configure.py:491
 msgid "TIFF"
-msgstr ""
+msgstr "TIFF"
 
 #: lib/configure.py:471 lib/configure.py:482 lib/configure.py:492
 msgid "XBM"
-msgstr ""
+msgstr "XBM"
 
 #: lib/configure.py:472 lib/configure.py:483 lib/configure.py:493
 msgid "XPM"
-msgstr ""
+msgstr "XPM"
 
 #: lib/configure.py:498
 msgid "Plain text (chess output)"
@@ -16301,36 +16236,31 @@ msgstr ""
 
 #: lib/configure.py:502
 msgid "DocBook"
-msgstr ""
+msgstr "DocBook"
 
 #: lib/configure.py:502
-#, fuzzy
 msgid "DocBook|B"
-msgstr "책갈피(Bookmarks)|B"
+msgstr "DocBook|B"
 
 #: lib/configure.py:503
 msgid "Docbook (XML)"
-msgstr ""
+msgstr "Docbook (XML)"
 
 #: lib/configure.py:504
-#, fuzzy
 msgid "Graphviz Dot"
-msgstr "그림(&Graphics)"
+msgstr "Graphviz Dot"
 
 #: lib/configure.py:505
-#, fuzzy
 msgid "LaTeX (pLaTeX)"
-msgstr "수식 선택 사항(Math Options)"
+msgstr "LaTeX (pLaTeX)"
 
 #: lib/configure.py:506
-#, fuzzy
 msgid "NoWeb"
-msgstr "노우트(Note)"
+msgstr "NoWeb"
 
 #: lib/configure.py:506
-#, fuzzy
 msgid "NoWeb|N"
-msgstr "노우트(Note)|N"
+msgstr "NoWeb|N"
 
 #: lib/configure.py:507
 #, fuzzy
@@ -16352,14 +16282,13 @@ msgid "LaTeX (plain)|L"
 msgstr "수식 선택 사항(Math Options)"
 
 #: lib/configure.py:510
-#, fuzzy
 msgid "LaTeX (pdflatex)"
-msgstr "LaTeX 텍스트"
+msgstr "LaTeX (pdflatex)"
 
 #: lib/configure.py:511
 #, fuzzy
 msgid "LaTeX (XeTeX)"
-msgstr "수식 선택 사항(Math Options)"
+msgstr "LaTeX (pLaTeX)"
 
 #: lib/configure.py:512 src/frontends/qt4/GuiPrefs.cpp:335
 #, fuzzy
@@ -16392,55 +16321,54 @@ msgid "Plain Text, Join Lines"
 msgstr "보통 문(Plain Text)"
 
 #: lib/configure.py:519 lib/configure.py:521
+#, fuzzy
 msgid "LyXHTML"
-msgstr ""
+msgstr "HTML"
 
 #: lib/configure.py:519 lib/configure.py:521
+#, fuzzy
 msgid "LyXHTML|X"
-msgstr ""
+msgstr "HTML|H"
 
 #: lib/configure.py:528 src/frontends/qt4/GuiLog.cpp:230
-#, fuzzy
 msgid "BibTeX"
-msgstr "BibTeX 형식(styles) 파일들"
+msgstr "BibTeX"
 
 #: lib/configure.py:533
 msgid "EPS"
-msgstr ""
+msgstr "EPS"
 
 #: lib/configure.py:534
-#, fuzzy
 msgid "Postscript"
-msgstr "하부 글자(Subscript)"
+msgstr "Postscript"
 
 #: lib/configure.py:534
-#, fuzzy
 msgid "Postscript|t"
-msgstr "하부 글자(Subscript)|u"
+msgstr "Postscript|t"
 
 #: lib/configure.py:538
 msgid "PDF (ps2pdf)"
-msgstr ""
+msgstr "PDF (ps2pdf)"
 
 #: lib/configure.py:538
 msgid "PDF (ps2pdf)|P"
-msgstr ""
+msgstr "PDF (ps2pdf)|P"
 
 #: lib/configure.py:539
 msgid "PDF (pdflatex)"
-msgstr ""
+msgstr "PDF (pdflatex)"
 
 #: lib/configure.py:539
 msgid "PDF (pdflatex)|F"
-msgstr ""
+msgstr "PDF (pdflatex)|F"
 
 #: lib/configure.py:540
 msgid "PDF (dvipdfm)"
-msgstr ""
+msgstr "PDF (dvipdfm)"
 
 #: lib/configure.py:540
 msgid "PDF (dvipdfm)|m"
-msgstr ""
+msgstr "PDF (dvipdfm)|m"
 
 #: lib/configure.py:541
 msgid "PDF (XeTeX)"
@@ -16452,11 +16380,11 @@ msgstr ""
 
 #: lib/configure.py:544
 msgid "DVI"
-msgstr ""
+msgstr "DVI"
 
 #: lib/configure.py:544
 msgid "DVI|D"
-msgstr ""
+msgstr "DVI|D"
 
 #: lib/configure.py:547
 msgid "DraftDVI"
@@ -16464,11 +16392,11 @@ msgstr ""
 
 #: lib/configure.py:550
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: lib/configure.py:550
 msgid "HTML|H"
-msgstr ""
+msgstr "HTML|H"
 
 #: lib/configure.py:553
 #, fuzzy
@@ -16482,7 +16410,7 @@ msgstr "문서 열기"
 
 #: lib/configure.py:557
 msgid "OpenOffice.Org (sxw)"
-msgstr ""
+msgstr "OpenOffice.Org (sxw)"
 
 #: lib/configure.py:560
 #, fuzzy
@@ -16510,23 +16438,24 @@ msgstr ""
 #: lib/configure.py:567 src/frontends/qt4/GuiView.cpp:959
 #: src/frontends/qt4/GuiView.cpp:960 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
-msgstr ""
+msgstr "LyX"
 
 #: lib/configure.py:568
 msgid "LyX 1.3.x"
-msgstr ""
+msgstr "LyX 1.3.x"
 
 #: lib/configure.py:569
 msgid "LyX 1.4.x"
-msgstr ""
+msgstr "LyX 1.4.x"
 
 #: lib/configure.py:570
 msgid "LyX 1.5.x"
-msgstr ""
+msgstr "LyX 1.5.x"
 
 #: lib/configure.py:571
+#, fuzzy
 msgid "LyX 1.6.x"
-msgstr ""
+msgstr "LyX 1.3.x"
 
 #: lib/configure.py:572
 msgid "CJK LyX 1.4.x (big5)"
@@ -16550,7 +16479,7 @@ msgstr ""
 
 #: lib/configure.py:577
 msgid "PDFTEX"
-msgstr ""
+msgstr "PDFTEX"
 
 #: lib/configure.py:578
 #, fuzzy
@@ -16559,7 +16488,7 @@ msgstr "단락 구성(Paragraph settings)"
 
 #: lib/configure.py:579
 msgid "PSTEX"
-msgstr ""
+msgstr "PSTEX"
 
 #: lib/configure.py:580 src/frontends/qt4/GuiClipboard.cpp:134
 #, fuzzy
@@ -16854,7 +16783,7 @@ msgstr "bind 파일을 고르시오"
 
 #: src/Buffer.cpp:1329
 #, fuzzy
-msgid "Uncodable character in path"
+msgid "Uncodable character in file path"
 msgstr "특수 문자"
 
 #: src/Buffer.cpp:1330
@@ -16867,7 +16796,7 @@ msgid ""
 "This will likely result in incomplete output.\n"
 "\n"
 "Chose an appropriate document encoding (such as utf8)\n"
-"or change the path name."
+"or change the file path name."
 msgstr ""
 
 #: src/Buffer.cpp:1604
@@ -17969,9 +17898,9 @@ msgid "Double underline %1$s, "
 msgstr ""
 
 #: src/Font.cpp:172
-#, c-format
+#, fuzzy, c-format
 msgid "Wavy underline %1$s, "
-msgstr ""
+msgstr "underline"
 
 #: src/Font.cpp:175
 #, fuzzy, c-format
@@ -19245,8 +19174,9 @@ msgid "Directories"
 msgstr "파일을 발견할 수 없음"
 
 #: src/frontends/qt4/FindAndReplace.cpp:68
+#, fuzzy
 msgid "&Anything"
-msgstr ""
+msgstr "varnothing"
 
 #: src/frontends/qt4/FindAndReplace.cpp:70
 msgid "Any non-&empty"
@@ -19660,7 +19590,7 @@ msgstr "노우트(Note)"
 #: src/frontends/qt4/GuiBranches.cpp:168
 #, fuzzy
 msgid "Enter new branch name"
-msgstr "모르는 인용구(Inset)"
+msgstr "열려있는 Branch 삽입구(Inset)"
 
 #: src/frontends/qt4/GuiBranches.cpp:173
 #, c-format
@@ -19735,8 +19665,9 @@ msgid "Double underbar"
 msgstr "테이블 삽입"
 
 #: src/frontends/qt4/GuiCharacter.cpp:80
+#, fuzzy
 msgid "Wavy underbar"
-msgstr ""
+msgstr "underbrace"
 
 #: src/frontends/qt4/GuiCharacter.cpp:81
 msgid "Strikeout"
@@ -19801,7 +19732,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiClipboard.cpp:136
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 #: src/frontends/qt4/GuiClipboard.cpp:147
 #, fuzzy
@@ -19873,7 +19804,7 @@ msgstr "문서를 저장하고 있습니다 %1$s..."
 #: src/frontends/qt4/GuiCompare.cpp:219
 #, fuzzy
 msgid "Aborted"
-msgstr "노우트(Note)"
+msgstr "bowtie"
 
 #: src/frontends/qt4/GuiCompare.cpp:227
 msgid "Finished"
@@ -19882,7 +19813,7 @@ msgstr ""
 #: src/frontends/qt4/GuiCompare.cpp:261
 #, fuzzy
 msgid "Aborting process..."
-msgstr "문서를 삽입합니다 %1$s..."
+msgstr "문서를 저장하고 있습니다 %1$s..."
 
 #: src/frontends/qt4/GuiCompare.cpp:297
 #, fuzzy
@@ -20299,7 +20230,7 @@ msgstr "문서의 기본 설정(Document Defaults)으로 저장하시오 "
 #: src/frontends/qt4/GuiDocument.cpp:1664
 #, c-format
 msgid "%1$s, %2$s"
-msgstr ""
+msgstr "%1$s, %2$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:1669
 #, c-format
@@ -20644,7 +20575,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "lyxrc"
-msgstr ""
+msgstr "lyxrc"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 #, fuzzy
@@ -20715,11 +20646,12 @@ msgstr "LaTeX 경과 기록(Log)"
 #: src/frontends/qt4/GuiLog.cpp:237
 #, fuzzy
 msgid "Literate"
-msgstr "적분 삽입"
+msgstr "LaTeX 에러"
 
 #: src/frontends/qt4/GuiLog.cpp:240
+#, fuzzy
 msgid "LyX2LyX"
-msgstr ""
+msgstr "LyX"
 
 #: src/frontends/qt4/GuiLog.cpp:267
 msgid "Literate Programming Build Log"
@@ -20885,8 +20817,9 @@ msgid "aspell"
 msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:1318
+#, fuzzy
 msgid "enchant"
-msgstr ""
+msgstr "hat"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1321
 msgid "hunspell"
@@ -21087,7 +21020,7 @@ msgstr ""
 #: src/frontends/qt4/GuiProgressView.cpp:82
 #, fuzzy
 msgid "Set"
-msgstr "하부 글자(Subscript)"
+msgstr "det"
 
 #: src/frontends/qt4/GuiRef.cpp:44
 #, fuzzy
@@ -21830,7 +21763,7 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2461
 #, fuzzy
 msgid "Reload externally changed document?"
-msgstr "저장된 문서로 되돌릴까요?"
+msgstr "변경된 문서를 저장하시겠습니까?"
 
 #: src/frontends/qt4/GuiView.cpp:2515
 msgid "Error when setting the locking property."
@@ -21846,9 +21779,9 @@ msgid "Opening child document %1$s..."
 msgstr "하위 문서(child document)를 엽니다 %1$s..."
 
 #: src/frontends/qt4/GuiView.cpp:2725
-#, fuzzy, c-format
+#, c-format
 msgid "Successful export to format: %1$s"
-msgstr "테이블 뜨내기(table float) 삽입"
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2726
 #, fuzzy, c-format
@@ -21861,9 +21794,9 @@ msgid "Successful preview of format: %1$s"
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2739
-#, fuzzy, c-format
+#, c-format
 msgid "Error previewing format: %1$s"
-msgstr "테이블 뜨내기(table float) 삽입"
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2798
 #, fuzzy
@@ -21992,9 +21925,8 @@ msgid "Add to personal dictionary|c"
 msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:758
-#, fuzzy
 msgid "Ignore all|I"
-msgstr "날짜 형태(format)"
+msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:789
 #, fuzzy
@@ -22020,19 +21952,17 @@ msgid "<No Bookmarks Saved Yet>"
 msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:951
-#, fuzzy
 msgid "View (Other Formats)|F"
-msgstr "날짜 형태(format)"
+msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:952
-#, fuzzy
 msgid "Update (Other Formats)|p"
-msgstr "날짜 형태(format)"
+msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:985
 #, fuzzy, c-format
 msgid "View [%1$s]|V"
-msgstr "보기(&View)"
+msgstr "보기(View)|V"
 
 #: src/frontends/qt4/Menus.cpp:986
 #, fuzzy, c-format
@@ -22110,12 +22040,12 @@ msgstr "문서를 삽입합니다 %1$s..."
 #: src/frontends/qt4/Toolbars.cpp:225
 #, fuzzy, c-format
 msgid "Update %1$s"
-msgstr "갱신(Update)|U"
+msgstr "DVI 갱신"
 
 #: src/frontends/qt4/Toolbars.cpp:229
-#, fuzzy, c-format
+#, c-format
 msgid "View %1$s"
-msgstr "보기(&View)"
+msgstr ""
 
 #: src/frontends/qt4/Validator.cpp:161
 msgid "space"
@@ -22443,8 +22373,8 @@ msgstr "특수 문자"
 #: src/insets/InsetCommandParams.cpp:387
 #, c-format
 msgid ""
-"The following characters that are used in an inset (%1$s) are\n"
-"not representable in the current encoding and have been omitted:\n"
+"The following characters that are used in the inset %1$s are not\n"
+"representable in the current encoding and therefore have been omitted:\n"
 "%2$s."
 msgstr ""
 
@@ -22595,7 +22525,7 @@ msgstr "모르는 표시(token)"
 #: src/insets/InsetIndex.cpp:448
 #, fuzzy
 msgid "All indices"
-msgstr "이용 가능한(A&vailable) Branches: "
+msgstr "bind 파일을 고르시오"
 
 #: src/insets/InsetIndex.cpp:452
 #, fuzzy
@@ -22863,8 +22793,9 @@ msgid "VPhantom"
 msgstr ""
 
 #: src/insets/InsetPhantom.cpp:332
+#, fuzzy
 msgid "phantom"
-msgstr ""
+msgstr "hom"
 
 #: src/insets/InsetPhantom.cpp:334
 msgid "hphantom"
@@ -23294,9 +23225,8 @@ msgid "entered math text mode (textrm)"
 msgstr ""
 
 #: src/mathed/InsetMathNest.cpp:1019
-#, fuzzy
 msgid "Regular expression editor mode"
-msgstr "수식 편집 모드(Math editor mode)"
+msgstr ""
 
 #: src/mathed/InsetMathNest.cpp:1595 src/mathed/InsetMathNest.cpp:1715
 msgid "Autocorrect Off ('!' to enter)"
@@ -23320,9 +23250,8 @@ msgid "optional"
 msgstr "표제(Caption)"
 
 #: src/mathed/MathMacroTemplate.cpp:538
-#, fuzzy
 msgid "TeX"
-msgstr "BibTeX 형식(styles) 파일들"
+msgstr "TeX"
 
 #: src/mathed/MathMacroTemplate.cpp:1239
 #, fuzzy
@@ -23584,32 +23513,66 @@ msgstr "모르는 사용자(user)"
 #~ msgid "D&elete"
 #~ msgstr "지우기(D&elete)"
 
-#, fuzzy
-#~ msgid "Close this panel"
-#~ msgstr "수식 판 보이기"
+#~ msgid "&Default language:"
+#~ msgstr "기본(&Default) 언어"
 
 #, fuzzy
-#~ msgid "Match..."
-#~ msgstr "수식(Math)"
+#~ msgid "&Index command:"
+#~ msgstr "수식 삽입"
 
 #, fuzzy
-#~ msgid "Current &Paragraph"
-#~ msgstr "인덴트(In&dent) 소절"
+#~ msgid "Index command (Ja&panese):"
+#~ msgstr "수식 삽입"
 
 #, fuzzy
-#~ msgid "Document in current file"
-#~ msgstr "문서 형식(Document Class)"
+#~ msgid "Listing settings"
+#~ msgstr "언어 구성"
 
 #, fuzzy
 #~ msgid "Absender:"
 #~ msgstr "보내는 자(Sender)의 URL:"
 
+#, fuzzy
+#~ msgid "LangHeader"
+#~ msgstr "언어"
+
+#, fuzzy
+#~ msgid "Language Header:"
+#~ msgstr "언어(&Language):"
+
+#, fuzzy
+#~ msgid "Language:"
+#~ msgstr "언어(&Language):"
+
+#, fuzzy
+#~ msgid "LastLanguage"
+#~ msgstr "언어"
+
+#, fuzzy
+#~ msgid "Last Language:"
+#~ msgstr "언어(&Language):"
+
 #~ msgid "Text:"
 #~ msgstr "본문(Text):"
 
 #, fuzzy
-#~ msgid "Find LyX Dialog"
-#~ msgstr "보통 문(Plain Text)"
+#~ msgid "Computer"
+#~ msgstr "바깥쪽(Outer)"
+
+#, fuzzy
+#~ msgid "Insert|n"
+#~ msgstr "삽입(Insert)|I"
+
+#~ msgid "View DVI"
+#~ msgstr "DVI 보기"
+
+#, fuzzy
+#~ msgid "No horizontal line\t\\atop"
+#~ msgstr "가로(&Horizontal) 맞추기"
+
+#, fuzzy
+#~ msgid "Unknown spacing argument: "
+#~ msgstr "모르는 인용구(Inset)"
 
 #~ msgid "Bibliography Entry Settings"
 #~ msgstr "참고 문헌 목록 기재 사항 구성(Bibliography Entry Settings)"
@@ -23619,8 +23582,8 @@ msgstr "모르는 사용자(user)"
 #~ msgstr "뜨내기 구성(Float Settings)"
 
 #, fuzzy
-#~ msgid "(cancelling)"
-#~ msgstr "첫글(Opening):"
+#~ msgid "Length"
+#~ msgstr "중심(Center)"
 
 #~ msgid "TeX Code Settings"
 #~ msgstr "TeX 코드(Code) 구성"
@@ -23629,91 +23592,14 @@ msgstr "모르는 사용자(user)"
 #~ msgstr "뜨내기 구성(Float Settings)"
 
 #, fuzzy
-#~ msgid "Horizontal Space Settings"
-#~ msgstr "테이블 구성"
-
-#, fuzzy
 #~ msgid "No LaTeX log file found."
 #~ msgstr "LaTeX 실행 실패함"
 
-#~ msgid "Table Settings"
-#~ msgstr "테이블 구성"
+#~ msgid "Spellchecker error"
+#~ msgstr "철자 검사기 에러"
 
-#, fuzzy
-#~ msgid "Vertical Space Settings"
-#~ msgstr "테이블 구성"
-
-#, fuzzy
-#~ msgid "Match found and replaced !"
-#~ msgstr "찾아서 교체하기"
-
-#, fuzzy
-#~ msgid "Latex"
-#~ msgstr "날짜"
-
-#, fuzzy
-#~ msgid "View Output|V"
-#~ msgstr "보기(View)|V"
-
-#, fuzzy
-#~ msgid "Update Output|U"
-#~ msgstr "갱신(Update)|U"
-
-#, fuzzy
-#~ msgid "Replace Ne&xt"
-#~ msgstr "모두(&All) 교체하기"
-
-#, fuzzy
-#~ msgid "Replace P&rev"
-#~ msgstr "모두(&All) 교체하기"
-
-#, fuzzy
-#~ msgid "Buffer"
-#~ msgstr "테이블들"
-
-#, fuzzy
-#~ msgid "Open buffers"
-#~ msgstr "테이블들"
-
-#, fuzzy
-#~ msgid "Listing settings"
-#~ msgstr "언어 구성"
-
-#, fuzzy
-#~ msgid "\\alph{enumii}."
-#~ msgstr "각주(footnote)"
-
-#, fuzzy
-#~ msgid "Insert|n"
-#~ msgstr "삽입(Insert)|I"
-
-#, fuzzy
-#~ msgid "Toggle Label|L"
-#~ msgstr "레이블로 가기(Go to Label)|L"
-
-#, fuzzy
-#~ msgid "Move Section down|d"
-#~ msgstr "노우트(Note) 구성"
-
-#, fuzzy
-#~ msgid "Move Section up|u"
-#~ msgstr "노우트(Note) 구성"
-
-#, fuzzy
-#~ msgid "Regexp"
-#~ msgstr "표제(Caption)"
-
-#, fuzzy
-#~ msgid "No file open!"
-#~ msgstr "파일을 발견할 수 없음"
-
-#, fuzzy
-#~ msgid "Unknown spacing argument: "
-#~ msgstr "모르는 인용구(Inset)"
-
-#, fuzzy
-#~ msgid "Length"
-#~ msgstr "중심(Center)"
+#~ msgid "No Table of contents"
+#~ msgstr "목차 없음"
 
 #, fuzzy
 #~ msgid "Opened inset"
@@ -23753,10 +23639,6 @@ msgstr "모르는 사용자(user)"
 #~ msgid "Opened Optional Argument Inset"
 #~ msgstr "열려있는 선택적 인수 삽입구(Optional Argument Inset)"
 
-#, fuzzy
-#~ msgid "Opened Phantom Inset"
-#~ msgstr "열려있는 표제 삽입구(Opened Caption Inset)"
-
 #~ msgid "Opened table"
 #~ msgstr "열려있는 테이블"
 
@@ -23768,84 +23650,24 @@ msgstr "모르는 사용자(user)"
 #~ msgstr "열려있는 싸개 삽입구(Wrap Inset)"
 
 #, fuzzy
-#~ msgid "Accept Change|C"
-#~ msgstr "다음 변경(Next Change)|C"
+#~ msgid "Latex"
+#~ msgstr "날짜"
 
 #, fuzzy
-#~ msgid "C&ommand:"
-#~ msgstr "주석(Comment)"
+#~ msgid "Toggle Label|L"
+#~ msgstr "레이블로 가기(Go to Label)|L"
 
 #, fuzzy
-#~ msgid "&Index command:"
-#~ msgstr "수식 삽입"
-
-#, fuzzy
-#~ msgid "Index command (Ja&panese):"
-#~ msgstr "수식 삽입"
-
-#, fuzzy
-#~ msgid "Copy Label as Reference|C"
-#~ msgstr "인용(Citation) 참조...|C"
-
-#~ msgid "View DVI"
-#~ msgstr "DVI 보기"
-
-#~ msgid "Update DVI"
-#~ msgstr "DVI 갱신"
-
-#, fuzzy
-#~ msgid "Thesaurus failure"
-#~ msgstr "LaTeX 실행 실패함"
-
-#, fuzzy
-#~ msgid "Indices"
-#~ msgstr "저장(&Save)"
+#~ msgid "No file open!"
+#~ msgstr "파일을 발견할 수 없음"
 
 #, fuzzy
 #~ msgid "Ne&w"
 #~ msgstr "새 파일(New)|N"
 
 #, fuzzy
-#~ msgid "No horizontal line\t\\atop"
-#~ msgstr "가로(&Horizontal) 맞추기"
-
-#~ msgid "Spellchecker error"
-#~ msgstr "철자 검사기 에러"
-
-#, fuzzy
-#~ msgid "LangHeader"
-#~ msgstr "언어"
-
-#, fuzzy
-#~ msgid "Language Header:"
-#~ msgstr "언어(&Language):"
-
-#, fuzzy
-#~ msgid "Language:"
-#~ msgstr "언어(&Language):"
-
-#, fuzzy
-#~ msgid "LastLanguage"
-#~ msgstr "언어"
-
-#, fuzzy
-#~ msgid "Last Language:"
-#~ msgstr "언어(&Language):"
-
-#, fuzzy
-#~ msgid "Language Footer:"
-#~ msgstr "언어(&Language):"
-
-#, fuzzy
-#~ msgid "Computer"
-#~ msgstr "바깥쪽(Outer)"
-
-#, fuzzy
 #~ msgid "Go back to Reference|G"
 #~ msgstr "인용(Citation) 참조...|C"
-
-#~ msgid "No Table of contents"
-#~ msgstr "목차 없음"
 
 #, fuzzy
 #~ msgid "Append Parameter"
@@ -23858,9 +23680,6 @@ msgstr "모르는 사용자(user)"
 #, fuzzy
 #~ msgid "Remove Optional Parameter"
 #~ msgstr "열려있는 선택적 인수 삽입구(Optional Argument Inset)"
-
-#~ msgid "&Default language:"
-#~ msgstr "기본(&Default) 언어"
 
 #, fuzzy
 #~ msgid "figure"
@@ -24094,6 +23913,12 @@ msgstr "모르는 사용자(user)"
 
 #~ msgid "Insert glossary entry"
 #~ msgstr "용어집 기재사항(glossary entry) 삽입"
+
+#~ msgid "Table of contents"
+#~ msgstr "목차"
+
+#~ msgid "Show math panel"
+#~ msgstr "수식 판 보이기"
 
 #, fuzzy
 #~ msgid "Paste External Clipboard/Selection"

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-28 15:22+0100\n"
-"PO-Revision-Date: 2009-04-19 17:35+0100\n"
+"POT-Creation-Date: 2010-02-28 16:00+0100\n"
+"PO-Revision-Date: 2009-10-18 18:12+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -482,9 +482,8 @@ msgid "Filename &Suffix"
 msgstr "Filnavn"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
-#, fuzzy
 msgid "Show undefined branches used in this document."
-msgstr "Udskriv dokument"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
 #, fuzzy
@@ -575,9 +574,8 @@ msgstr "&Anullér"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
-#, fuzzy
 msgid "Undefined branches used in this document."
-msgstr "Udskriv dokument"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:68
 #, fuzzy
@@ -845,9 +843,8 @@ msgid "S&elected Citations:"
 msgstr "&Valg:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:72
-#, fuzzy
 msgid "Click or press Enter to add the selected citation to the list"
-msgstr "Føj en ny gren til listen"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "Click or press Delete to delete the selected citation from the list"
@@ -904,9 +901,8 @@ msgid "All fields"
 msgstr "Alle filer (*)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:271
-#, fuzzy
 msgid "Regular e&xpression"
-msgstr "Version"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:278
 #, fuzzy
@@ -1285,9 +1281,8 @@ msgid "Find LyX Text"
 msgstr "Find &næste"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:107
-#, fuzzy
 msgid "&Basic"
-msgstr "BibTeX-stile"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:159
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:183
@@ -1363,9 +1358,8 @@ msgid "Choose one of the pre-arranged regular expressions."
 msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:425
-#, fuzzy
 msgid "Insert Re&gular Expression..."
-msgstr "Version"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:443
 msgid "Find next occurrence [Enter]"
@@ -1374,7 +1368,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:446
 #, fuzzy
 msgid "&Next"
-msgstr "tekst"
+msgstr "&Ny:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:467
 msgid "Find previous occurrence [Shift+Enter]"
@@ -1443,12 +1437,11 @@ msgstr "Åbn dokument"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:651
 #, fuzzy
 msgid "&Open documents"
-msgstr "OpenDocument"
+msgstr "Åbn dokument"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:669
-#, fuzzy
 msgid "All ma&nuals"
-msgstr "LaTeX fejlede"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:690
 #, fuzzy
@@ -1464,7 +1457,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:711
 #, fuzzy
 msgid "Ignore &format"
-msgstr "Datoformat"
+msgstr "Dato&format:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
 #: src/frontends/qt4/ui/OutputUi.ui:13 src/frontends/qt4/ui/PDFSupportUi.ui:13
@@ -3685,7 +3678,7 @@ msgstr "&Arbejdsmappe:"
 #: src/frontends/qt4/ui/PrefPathsUi.ui:215
 #, fuzzy
 msgid "Hunspell dictionaries:"
-msgstr "Begrebsordbog"
+msgstr "&Personlig ordliste:"
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2832
 msgid ""
@@ -4228,7 +4221,7 @@ msgstr ""
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
 #, fuzzy
 msgid "&Clear automatically"
-msgstr "Forfatter_e-post"
+msgstr "Aktivér ændringer automatisk"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
 #, fuzzy
@@ -6081,9 +6074,8 @@ msgstr "Undersektion"
 
 #: lib/layouts/beamer.layout:168 lib/layouts/powerdot.layout:238
 #: lib/layouts/numarticle.inc:10
-#, fuzzy
 msgid "\\Alph{section}"
-msgstr "markeret"
+msgstr "\\Alph{section}"
 
 #: lib/layouts/beamer.layout:198
 #, fuzzy
@@ -6091,9 +6083,8 @@ msgid "Subsection \\arabic{section}.\\arabic{subsection}"
 msgstr "Underundersektion"
 
 #: lib/layouts/beamer.layout:211
-#, fuzzy
 msgid "\\arabic{section}.\\arabic{subsection}"
-msgstr "Underundersektion"
+msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:227 lib/layouts/beamer.layout:271
 #: lib/layouts/beamer.layout:311 lib/layouts/beamer.layout:352
@@ -8810,9 +8801,8 @@ msgid "List of Algorithms"
 msgstr "Algoritme"
 
 #: lib/layouts/recipebook.layout:42 lib/layouts/scrbook.layout:17
-#, fuzzy
 msgid "\\thechapter"
-msgstr "Kapitel"
+msgstr "\\thechapter"
 
 #: lib/layouts/recipebook.layout:78
 #, fuzzy
@@ -10062,20 +10052,19 @@ msgstr "Scrap"
 
 #: lib/layouts/numreport.inc:12
 msgid "\\arabic{chapter}"
-msgstr ""
+msgstr "\\arabic{chapter}"
 
 #: lib/layouts/numreport.inc:13
 msgid "\\Alph{chapter}"
-msgstr ""
+msgstr "\\Alph{chapter}"
 
 #: lib/layouts/numreport.inc:44
-#, fuzzy
 msgid "\\arabic{footnote}"
-msgstr "Undersektion"
+msgstr "\\arabic{footnote}"
 
 #: lib/layouts/numrevtex.inc:9
 msgid "\\Roman{section}."
-msgstr ""
+msgstr "\\Roman{section}."
 
 #: lib/layouts/numrevtex.inc:10
 #, fuzzy
@@ -10083,29 +10072,24 @@ msgid "Appendix \\Alph{section}:"
 msgstr "markeret"
 
 #: lib/layouts/numrevtex.inc:18
-#, fuzzy
 msgid "\\Alph{subsection}."
-msgstr "markeret"
+msgstr "\\Alph{subsection}."
 
 #: lib/layouts/numrevtex.inc:19
-#, fuzzy
 msgid "\\arabic{subsection}."
-msgstr "Underundersektion"
+msgstr "\\arabic{subsection}."
 
 #: lib/layouts/numrevtex.inc:27
-#, fuzzy
 msgid "\\arabic{subsubsection}."
-msgstr "Underundersektion"
+msgstr "\\arabic{subsubsection}."
 
 #: lib/layouts/numrevtex.inc:28
-#, fuzzy
 msgid "\\alph{subsubsection}."
-msgstr "Underundersektion"
+msgstr "\\alph{subsubsection}."
 
 #: lib/layouts/numrevtex.inc:36 lib/layouts/numrevtex.inc:37
-#, fuzzy
 msgid "\\alph{paragraph}."
-msgstr "Underafsnit"
+msgstr "\\alph{paragraph}."
 
 #: lib/layouts/scrclass.inc:113
 msgid "Addpart"
@@ -10177,14 +10161,13 @@ msgid "UNDEFINED"
 msgstr ""
 
 #: lib/layouts/stdcounters.inc:9
-#, fuzzy
 msgid "\\Roman{part}"
-msgstr "Ordinær"
+msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
 #, fuzzy
 msgid "Part \\Roman{part}"
-msgstr "Ordinær"
+msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:14
 #, fuzzy
@@ -10654,7 +10637,7 @@ msgstr "Institut"
 #: lib/layouts/initials.module:12
 #, fuzzy
 msgid "Initial"
-msgstr "UsynligTekst"
+msgstr "Kursiv"
 
 #: lib/layouts/linguistics.module:2
 #, fuzzy
@@ -11571,7 +11554,7 @@ msgstr "Walisisk"
 
 #: lib/encodings:14
 msgid "Unicode (utf8)"
-msgstr ""
+msgstr "Unicode (utf8)"
 
 #: lib/encodings:19
 msgid "Unicode (ucs-extended) (utf8x)"
@@ -11635,11 +11618,11 @@ msgstr ""
 
 #: lib/encodings:67
 msgid "DOS (CP 437)"
-msgstr ""
+msgstr "DOS (CP 437)"
 
 #: lib/encodings:71
 msgid "DOS-de (CP 437-de)"
-msgstr ""
+msgstr "DOS-de (CP 437-de)"
 
 #: lib/encodings:74
 msgid "Western European (CP 850)"
@@ -11729,7 +11712,7 @@ msgstr ""
 
 #: lib/encodings:165
 msgid "Unicode (CJK) (utf8)"
-msgstr ""
+msgstr "Unicode (CJK) (utf8)"
 
 #: lib/encodings:169
 msgid "Chinese (traditional) (EUC-TW)"
@@ -13871,9 +13854,8 @@ msgid "Table...|T"
 msgstr "Tabel...|T"
 
 #: lib/ui/stdmenus.inc:360
-#, fuzzy
 msgid "URL|U"
-msgstr "URL...|U"
+msgstr "URL|U"
 
 #: lib/ui/stdmenus.inc:361
 #, fuzzy
@@ -13967,7 +13949,7 @@ msgstr "Vandret linje"
 #: lib/ui/stdmenus.inc:467
 #, fuzzy
 msgid "Vertical Phantom"
-msgstr "Esperanto"
+msgstr "Lodret justering"
 
 #: lib/ui/stdmenus.inc:479
 msgid "Change Tracking|C"
@@ -14117,7 +14099,7 @@ msgstr "Søg og erstat"
 #: lib/ui/stdtoolbars.inc:82
 #, fuzzy
 msgid "Find and replace (advanced)"
-msgstr "Søg og erstat...|S"
+msgstr "Søg og erstat"
 
 #: lib/ui/stdtoolbars.inc:83
 #, fuzzy
@@ -14194,12 +14176,12 @@ msgstr "Gem dokument"
 #: lib/ui/stdtoolbars.inc:104
 #, fuzzy
 msgid "View other formats"
-msgstr "Andre skrifttypevalg"
+msgstr "Filformater"
 
 #: lib/ui/stdtoolbars.inc:105
 #, fuzzy
 msgid "Update other formats"
-msgstr "Opdatér skærmen"
+msgstr "Datoformat"
 
 #: lib/ui/stdtoolbars.inc:108
 #, fuzzy
@@ -15975,33 +15957,28 @@ msgid "sqiintop"
 msgstr "sqiintop"
 
 #: lib/ui/stdtoolbars.inc:636
-#, fuzzy
 msgid "fint"
-msgstr "int"
+msgstr "fint"
 
 #: lib/ui/stdtoolbars.inc:637
-#, fuzzy
 msgid "fintop"
-msgstr "intop"
+msgstr "fintop"
 
 #: lib/ui/stdtoolbars.inc:638
-#, fuzzy
 msgid "landupint"
-msgstr "diamondsuit"
+msgstr "landupint"
 
 #: lib/ui/stdtoolbars.inc:639
-#, fuzzy
 msgid "landupintop"
-msgstr "intop"
+msgstr "landupintop"
 
 #: lib/ui/stdtoolbars.inc:640
 msgid "landdownint"
-msgstr ""
+msgstr "landdownint"
 
 #: lib/ui/stdtoolbars.inc:641
-#, fuzzy
 msgid "landdownintop"
-msgstr "dotsintop"
+msgstr "landdownintop"
 
 #: lib/ui/stdtoolbars.inc:642
 msgid "sum"
@@ -17199,7 +17176,7 @@ msgstr "HTML"
 #: lib/configure.py:519 lib/configure.py:521
 #, fuzzy
 msgid "LyXHTML|X"
-msgstr "HTML"
+msgstr "HTML|H"
 
 #: lib/configure.py:528 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
@@ -17664,7 +17641,7 @@ msgstr "Konvertering mislykkedes"
 
 #: src/Buffer.cpp:1329
 #, fuzzy
-msgid "Uncodable character in path"
+msgid "Uncodable character in file path"
 msgstr "specialtegn"
 
 #: src/Buffer.cpp:1330
@@ -17677,7 +17654,7 @@ msgid ""
 "This will likely result in incomplete output.\n"
 "\n"
 "Chose an appropriate document encoding (such as utf8)\n"
-"or change the path name."
+"or change the file path name."
 msgstr ""
 
 #: src/Buffer.cpp:1604
@@ -19834,9 +19811,8 @@ msgid "No valid math formula"
 msgstr ""
 
 #: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1009
-#, fuzzy
 msgid "Already in regular expression mode"
-msgstr "Version"
+msgstr ""
 
 #: src/Text3.cpp:216
 #, fuzzy
@@ -20819,11 +20795,26 @@ msgstr "importeret."
 msgid "Finished"
 msgstr "Finsk"
 
-# , c-format
+# Inset = indstik
+# Float = flyder
+# Paragraph = afsnit
+# Environment depth = omgivelsesdybde
+# Bullet = Punktliste
+# Horizontal/Vertical fill = udfylder
+# Keymap = Tastaturudlægning
+# Label = referencemærke
+# Margin note = marginnotat
+# Note = notat
+# Document class = tekstklasse
+# Protected space = hårdt mellemrum
+# Error box = fejlbesked
+# Paper layout = papirindstillinger
+# Layout = layout
+# Minipage = miniside
 #: src/frontends/qt4/GuiCompare.cpp:261
 #, fuzzy
 msgid "Aborting process..."
-msgstr "Importerer %1$s..."
+msgstr "Formaterer dokument..."
 
 #: src/frontends/qt4/GuiCompare.cpp:297
 #, fuzzy
@@ -21635,7 +21626,7 @@ msgstr "LaTeX-log"
 #: src/frontends/qt4/GuiLog.cpp:237
 #, fuzzy
 msgid "Literate"
-msgstr "Seriate"
+msgstr "Råt"
 
 #: src/frontends/qt4/GuiLog.cpp:240
 #, fuzzy
@@ -22772,7 +22763,7 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2461
 #, fuzzy
 msgid "Reload externally changed document?"
-msgstr "Gendan gemte dokument?"
+msgstr "Gem ændret dokument?"
 
 #: src/frontends/qt4/GuiView.cpp:2515
 msgid "Error when setting the locking property."
@@ -22788,9 +22779,9 @@ msgid "Opening child document %1$s..."
 msgstr "Åbner dokument %1$s..."
 
 #: src/frontends/qt4/GuiView.cpp:2725
-#, fuzzy, c-format
+#, c-format
 msgid "Successful export to format: %1$s"
-msgstr "Ingen oplysninger om eksport i formatet %1$s"
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2726
 #, fuzzy, c-format
@@ -22803,9 +22794,9 @@ msgid "Successful preview of format: %1$s"
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2739
-#, fuzzy, c-format
+#, c-format
 msgid "Error previewing format: %1$s"
-msgstr "Ingen oplysninger om eksport i formatet %1$s"
+msgstr ""
 
 # , c-format
 #: src/frontends/qt4/GuiView.cpp:2798
@@ -22966,9 +22957,8 @@ msgid "<No Bookmarks Saved Yet>"
 msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:951
-#, fuzzy
 msgid "View (Other Formats)|F"
-msgstr "Andre skrifttypevalg"
+msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:952
 #, fuzzy
@@ -22983,7 +22973,7 @@ msgstr "Vis|V"
 #: src/frontends/qt4/Menus.cpp:986
 #, fuzzy, c-format
 msgid "Update [%1$s]|U"
-msgstr "&Opdatér"
+msgstr "Opdatér|O"
 
 #: src/frontends/qt4/Menus.cpp:1079
 #, fuzzy
@@ -23397,8 +23387,8 @@ msgstr "specialtegn"
 #: src/insets/InsetCommandParams.cpp:387
 #, c-format
 msgid ""
-"The following characters that are used in an inset (%1$s) are\n"
-"not representable in the current encoding and have been omitted:\n"
+"The following characters that are used in the inset %1$s are not\n"
+"representable in the current encoding and therefore have been omitted:\n"
 "%2$s."
 msgstr ""
 
@@ -24245,9 +24235,8 @@ msgid "entered math text mode (textrm)"
 msgstr "Normal teksttilstand\t\\textrm"
 
 #: src/mathed/InsetMathNest.cpp:1019
-#, fuzzy
 msgid "Regular expression editor mode"
-msgstr "Matematikredigering"
+msgstr ""
 
 #: src/mathed/InsetMathNest.cpp:1595 src/mathed/InsetMathNest.cpp:1715
 msgid "Autocorrect Off ('!' to enter)"
@@ -24272,9 +24261,8 @@ msgid "optional"
 msgstr "&Vandret:"
 
 #: src/mathed/MathMacroTemplate.cpp:538
-#, fuzzy
 msgid "TeX"
-msgstr "LaTeX"
+msgstr "TeX"
 
 #: src/mathed/MathMacroTemplate.cpp:1239
 #, fuzzy
@@ -24537,28 +24525,56 @@ msgstr "Ukendt indstik"
 #~ msgid "D&elete"
 #~ msgstr "&Slet"
 
-#, fuzzy
-#~ msgid "Prev"
-#~ msgstr "Smugkig"
+#~ msgid "&Default language:"
+#~ msgstr "&Standardsprog:"
 
 #, fuzzy
-#~ msgid "Close this panel"
-#~ msgstr "Luk dette vindue"
+#~ msgid "Select the default language of your documents"
+#~ msgstr "Nulstil dokumentklassens standardværdier"
 
 #, fuzzy
-#~ msgid "Match..."
-#~ msgstr "&Matematik"
+#~ msgid "&BibTeX command:"
+#~ msgstr "Chec&kTeX-kommando:"
 
 #, fuzzy
-#~ msgid "Current &Paragraph"
-#~ msgstr "In&dryk afsnit"
+#~ msgid "&Index command:"
+#~ msgstr "Næste kommando"
 
 #, fuzzy
-#~ msgid "Document in current file"
-#~ msgstr "Dokumentformat-fejl"
+#~ msgid "BibTeX command (&Japanese):"
+#~ msgstr "LaTeX-pakker og -tilvalg"
+
+#, fuzzy
+#~ msgid "Index command (Ja&panese):"
+#~ msgstr "Næste kommando"
+
+#~ msgid "&roff command:"
+#~ msgstr "&roff-kommando:"
+
+#, fuzzy
+#~ msgid "External app for formating tables in plain text output"
+#~ msgstr "Eksternt program til formatering af tabeller i ASCII-uddata"
+
+#~ msgid "Specify a personal dictionary file other than the default"
+#~ msgstr "Angiv en alternativ personlig ordliste-fil."
+
+#, fuzzy
+#~ msgid "Spellchec&ker executable:"
+#~ msgstr "Stavekontrol:"
+
+#~ msgid "Use input encod&ing"
+#~ msgstr "Brug f&ilens tegnsæt"
+
+#, fuzzy
+#~ msgid "Jump to the label"
+#~ msgstr "Gå til referencen"
 
 #~ msgid "Merge cells"
 #~ msgstr "Sammenflet celler"
+
+#, fuzzy
+#~ msgid "Listing settings"
+#~ msgstr "Afsnits-indstillinger"
 
 #, fuzzy
 #~ msgid "Anschrift:"
@@ -24624,6 +24640,34 @@ msgstr "Ukendt indstik"
 #~ msgstr "PS:"
 
 #, fuzzy
+#~ msgid "LangHeader"
+#~ msgstr "Hoved"
+
+#, fuzzy
+#~ msgid "Language Header:"
+#~ msgstr "Venstre_Hoved"
+
+#, fuzzy
+#~ msgid "Language:"
+#~ msgstr "&Sprog:"
+
+#, fuzzy
+#~ msgid "LastLanguage"
+#~ msgstr "Sprog"
+
+#, fuzzy
+#~ msgid "Last Language:"
+#~ msgstr "&Sprog:"
+
+#, fuzzy
+#~ msgid "LangFooter"
+#~ msgstr "Bundnote:"
+
+#, fuzzy
+#~ msgid "End"
+#~ msgstr "Vedlagt"
+
+#, fuzzy
 #~ msgid "Text:"
 #~ msgstr "Tekst"
 
@@ -24680,279 +24724,6 @@ msgstr "Ukendt indstik"
 #~ msgstr "Anlagen"
 
 #, fuzzy
-#~ msgid "Bibliography Entry Settings"
-#~ msgstr "Litteraturliste-indgang"
-
-#, fuzzy
-#~ msgid "Box Settings"
-#~ msgstr "Rammeindstillinger"
-
-#~ msgid "Branch Settings"
-#~ msgstr "Grenindstillinger"
-
-#, fuzzy
-#~ msgid "(cancelling)"
-#~ msgstr "margin"
-
-#, fuzzy
-#~ msgid "TeX Code Settings"
-#~ msgstr "TeX-kodeindstillinger...|X"
-
-#~ msgid "Float Settings"
-#~ msgstr "Flyderindstillinger"
-
-#, fuzzy
-#~ msgid "Horizontal Space Settings"
-#~ msgstr "LyX: Lodrette afstandsindstillinger"
-
-#~ msgid "No LaTeX log file found."
-#~ msgstr "Ingen LaTeX-logfil fundet."
-
-#~ msgid "Table Settings"
-#~ msgstr "Tabelindstillinger"
-
-#, fuzzy
-#~ msgid "Vertical Space Settings"
-#~ msgstr "LyX: Lodrette afstandsindstillinger"
-
-#, fuzzy
-#~ msgid "Match found and replaced !"
-#~ msgstr "Søg og erstat"
-
-#, fuzzy
-#~ msgid "Latex"
-#~ msgstr "Dato"
-
-#, fuzzy
-#~ msgid "View Output|V"
-#~ msgstr "Vis|V"
-
-#, fuzzy
-#~ msgid "Update Output|U"
-#~ msgstr "Overtag &uddata"
-
-#, fuzzy
-#~ msgid "Advanced Search"
-#~ msgstr "&Anullér"
-
-#, fuzzy
-#~ msgid "Replace Ne&xt"
-#~ msgstr "Erstat &med:"
-
-#, fuzzy
-#~ msgid "Find &Prev"
-#~ msgstr "Find &næste"
-
-#, fuzzy
-#~ msgid "Replace P&rev"
-#~ msgstr "Erstat &alle"
-
-#, fuzzy
-#~ msgid "Current buffer only"
-#~ msgstr "Aktuelle celle:"
-
-#, fuzzy
-#~ msgid "Buffer"
-#~ msgstr "blå"
-
-#, fuzzy
-#~ msgid "Document"
-#~ msgstr "Dokumenter"
-
-#, fuzzy
-#~ msgid "Open buffers"
-#~ msgstr "blå"
-
-#, fuzzy
-#~ msgid "Select the default language of your documents"
-#~ msgstr "Nulstil dokumentklassens standardværdier"
-
-#~ msgid "Personal &dictionary:"
-#~ msgstr "&Personlig ordliste:"
-
-#~ msgid "Specify a personal dictionary file other than the default"
-#~ msgstr "Angiv en alternativ personlig ordliste-fil."
-
-#~ msgid "Use input encod&ing"
-#~ msgstr "Brug f&ilens tegnsæt"
-
-#, fuzzy
-#~ msgid "Jump to the label"
-#~ msgstr "Gå til referencen"
-
-#~ msgid "Column Width"
-#~ msgstr "Kolonnebredde"
-
-#, fuzzy
-#~ msgid "Listing settings"
-#~ msgstr "Afsnits-indstillinger"
-
-#, fuzzy
-#~ msgid "\\alph{enumii}."
-#~ msgstr "(\\alph{enumii})"
-
-#, fuzzy
-#~ msgid "Insert|n"
-#~ msgstr "Indsæt|I"
-
-#, fuzzy
-#~ msgid "Toggle Label|L"
-#~ msgstr "&Alternér alle"
-
-#, fuzzy
-#~ msgid "Move Section down|d"
-#~ msgstr "Flyt den markerede litteraturhenvisning ned"
-
-#, fuzzy
-#~ msgid "Move Section up|u"
-#~ msgstr "markeret"
-
-#, fuzzy
-#~ msgid "Regexp"
-#~ msgstr "exp"
-
-#, fuzzy
-#~ msgid "The spellchecker has failed."
-#~ msgstr "Stavekontrollen mislykkedes"
-
-#, fuzzy
-#~ msgid "No file open!"
-#~ msgstr "Fandt ingen fil!"
-
-#, fuzzy
-#~ msgid ""
-#~ "Specify an alternate personal dictionary file. E.g. \".aspell_english\"."
-#~ msgstr "Angiv en alternativ personlig ordliste. F.eks. \".ispell_danish\"."
-
-#, fuzzy
-#~ msgid ""
-#~ "Specify whether to pass the -T input encoding option to aspell. Enable "
-#~ "this if you cannot check the spelling of words containing accented "
-#~ "letters. This may not work with all dictionaries."
-#~ msgstr ""
-#~ "Angiv, om tegnsæt-tilvalget -T skal gives til ispell. Vælg dette, hvis du "
-#~ "ikke kan kontrollere ord med fremmede bogstaver i dem. Dette virker ikke "
-#~ "med alle ordbøger."
-
-#~ msgid "Unknown spacing argument: "
-#~ msgstr "Ukendt linjeafstandsparameter: "
-
-#~ msgid "Length"
-#~ msgstr "Længde"
-
-#~ msgid "*.pws"
-#~ msgstr "*.pws"
-
-#~ msgid "Opened inset"
-#~ msgstr "Indstik åbnet"
-
-#~ msgid "Opened Box Inset"
-#~ msgstr "Åbnede ramme-indstik"
-
-#~ msgid "Opened Branch Inset"
-#~ msgstr "Åbnede grenindstik"
-
-#~ msgid "Opened Caption Inset"
-#~ msgstr "Åbnede billedtekst-indstik"
-
-#~ msgid "Opened ERT Inset"
-#~ msgstr "ERT-indstik åbnet"
-
-#, fuzzy
-#~ msgid "Opened Flex Inset"
-#~ msgstr "Tekst-indstik åbnet"
-
-#~ msgid "Opened Float Inset"
-#~ msgstr "Åbnede flyder-indstik"
-
-#~ msgid "Opened Footnote Inset"
-#~ msgstr "Åbnede fodnote-indstik"
-
-#, fuzzy
-#~ msgid "Opened Listing Inset"
-#~ msgstr "Åbnede billedtekst-indstik"
-
-#~ msgid "Opened Marginal Note Inset"
-#~ msgstr "Marginnote-indstik åbnet"
-
-#~ msgid "Opened Note Inset"
-#~ msgstr "Åbnede note-indstik"
-
-#~ msgid "Opened Optional Argument Inset"
-#~ msgstr "Åbnede valgfrit parameterindstik"
-
-#, fuzzy
-#~ msgid "Opened Phantom Inset"
-#~ msgstr "Åbnede billedtekst-indstik"
-
-#~ msgid "Opened table"
-#~ msgstr "Åbnede tabel"
-
-#~ msgid "Opened Text Inset"
-#~ msgstr "Tekst-indstik åbnet"
-
-#~ msgid "Opened Wrap Inset"
-#~ msgstr "Åbnede ombrydningsindstik"
-
-#, fuzzy
-#~ msgid "Accept Change|C"
-#~ msgstr "Acceptér ændring|#A"
-
-#, fuzzy
-#~ msgid "C&ommand:"
-#~ msgstr "&Kommando:"
-
-#~ msgid "&Default language:"
-#~ msgstr "&Standardsprog:"
-
-#, fuzzy
-#~ msgid "&Index command:"
-#~ msgstr "Næste kommando"
-
-#, fuzzy
-#~ msgid "&BibTeX command:"
-#~ msgstr "Chec&kTeX-kommando:"
-
-#~ msgid "&roff command:"
-#~ msgstr "&roff-kommando:"
-
-#, fuzzy
-#~ msgid "External app for formating tables in plain text output"
-#~ msgstr "Eksternt program til formatering af tabeller i ASCII-uddata"
-
-#, fuzzy
-#~ msgid "Spellchec&ker executable:"
-#~ msgstr "Stavekontrol:"
-
-#, fuzzy
-#~ msgid "LangHeader"
-#~ msgstr "Hoved"
-
-#, fuzzy
-#~ msgid "Language Header:"
-#~ msgstr "Venstre_Hoved"
-
-#, fuzzy
-#~ msgid "Language:"
-#~ msgstr "&Sprog:"
-
-#, fuzzy
-#~ msgid "LastLanguage"
-#~ msgstr "Sprog"
-
-#, fuzzy
-#~ msgid "Last Language:"
-#~ msgstr "&Sprog:"
-
-#, fuzzy
-#~ msgid "LangFooter"
-#~ msgstr "Bundnote:"
-
-#, fuzzy
-#~ msgid "End"
-#~ msgstr "Vedlagt"
-
-#, fuzzy
 #~ msgid "Computer"
 #~ msgstr "Kopier"
 
@@ -24977,8 +24748,8 @@ msgstr "Ukendt indstik"
 #~ msgstr "markeret"
 
 #, fuzzy
-#~ msgid "Toggle Labeling/Numbering|T"
-#~ msgstr "Nummerering til/fra|u"
+#~ msgid "Insert|n"
+#~ msgstr "Indsæt|I"
 
 #, fuzzy
 #~ msgid "View DVI"
@@ -25025,9 +24796,50 @@ msgstr "Ukendt indstik"
 #~ msgid "Could not communicate with the ispell spellchecker process."
 #~ msgstr "Kunne ikke kommunikere med stavekontrol-programmet."
 
+#~ msgid ""
+#~ "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+#~ msgstr "Angiv en alternativ personlig ordliste. F.eks. \".ispell_danish\"."
+
 #, fuzzy
 #~ msgid "What command runs the spellchecker?"
 #~ msgstr "Kommando for stavekontrollen?"
+
+#, fuzzy
+#~ msgid ""
+#~ "Specify whether to pass the -T input encoding option to ispell. Enable "
+#~ "this if you cannot check the spelling of words containing accented "
+#~ "letters. This may not work with all dictionaries."
+#~ msgstr ""
+#~ "Angiv, om tegnsæt-tilvalget -T skal gives til ispell. Vælg dette, hvis du "
+#~ "ikke kan kontrollere ord med fremmede bogstaver i dem. Dette virker ikke "
+#~ "med alle ordbøger."
+
+#~ msgid "Unknown spacing argument: "
+#~ msgstr "Ukendt linjeafstandsparameter: "
+
+#, fuzzy
+#~ msgid "Bibliography Entry Settings"
+#~ msgstr "Litteraturliste-indgang"
+
+#~ msgid "Branch Settings"
+#~ msgstr "Grenindstillinger"
+
+#~ msgid "Length"
+#~ msgstr "Længde"
+
+#, fuzzy
+#~ msgid "TeX Code Settings"
+#~ msgstr "TeX-kodeindstillinger...|X"
+
+#~ msgid "Float Settings"
+#~ msgstr "Flyderindstillinger"
+
+#, fuzzy
+#~ msgid "Horizontal Space Settings"
+#~ msgstr "LyX: Lodrette afstandsindstillinger"
+
+#~ msgid "No LaTeX log file found."
+#~ msgstr "Ingen LaTeX-logfil fundet."
 
 #~ msgid "ispell"
 #~ msgstr "ispell"
@@ -25038,9 +24850,11 @@ msgstr "Ukendt indstik"
 #~ msgid "aspell (library)"
 #~ msgstr "aspell (bibliotek)"
 
-#, fuzzy
+#~ msgid "*.pws"
+#~ msgstr "*.pws"
+
 #~ msgid "*.ispell"
-#~ msgstr "ispell"
+#~ msgstr "*.ispell"
 
 #, fuzzy
 #~ msgid "Spellchecker error"
@@ -25061,11 +24875,82 @@ msgstr "Ukendt indstik"
 #~ "Måske blev den dræbt."
 
 #, fuzzy
+#~ msgid "The spellchecker has failed.\n"
+#~ msgstr "Stavekontrollen mislykkedes"
+
+#, fuzzy
 #~ msgid "The spellchecker has failed"
 #~ msgstr "Stavekontrollen mislykkedes"
 
+#, fuzzy
+#~ msgid "Vertical Space Settings"
+#~ msgstr "LyX: Lodrette afstandsindstillinger"
+
 #~ msgid "No Table of contents"
 #~ msgstr "Ingen indholdsfortegnelse"
+
+#~ msgid "Opened inset"
+#~ msgstr "Indstik åbnet"
+
+#~ msgid "Opened Box Inset"
+#~ msgstr "Åbnede ramme-indstik"
+
+#~ msgid "Opened Branch Inset"
+#~ msgstr "Åbnede grenindstik"
+
+#~ msgid "Opened Caption Inset"
+#~ msgstr "Åbnede billedtekst-indstik"
+
+#~ msgid "Opened ERT Inset"
+#~ msgstr "ERT-indstik åbnet"
+
+#, fuzzy
+#~ msgid "Opened Flex Inset"
+#~ msgstr "Tekst-indstik åbnet"
+
+#~ msgid "Opened Float Inset"
+#~ msgstr "Åbnede flyder-indstik"
+
+#~ msgid "Opened Footnote Inset"
+#~ msgstr "Åbnede fodnote-indstik"
+
+#, fuzzy
+#~ msgid "Opened Listing Inset"
+#~ msgstr "Åbnede billedtekst-indstik"
+
+#~ msgid "Opened Marginal Note Inset"
+#~ msgstr "Marginnote-indstik åbnet"
+
+#~ msgid "Opened Note Inset"
+#~ msgstr "Åbnede note-indstik"
+
+#~ msgid "Opened Optional Argument Inset"
+#~ msgstr "Åbnede valgfrit parameterindstik"
+
+#~ msgid "Opened table"
+#~ msgstr "Åbnede tabel"
+
+#~ msgid "Opened Text Inset"
+#~ msgstr "Tekst-indstik åbnet"
+
+#~ msgid "Opened Wrap Inset"
+#~ msgstr "Åbnede ombrydningsindstik"
+
+#, fuzzy
+#~ msgid "Latex"
+#~ msgstr "Dato"
+
+#, fuzzy
+#~ msgid "Toggle Labeling/Numbering|T"
+#~ msgstr "Nummerering til/fra|u"
+
+#, fuzzy
+#~ msgid "Toggle Label|L"
+#~ msgstr "&Alternér alle"
+
+#, fuzzy
+#~ msgid "No file open!"
+#~ msgstr "Fandt ingen fil!"
 
 #, fuzzy
 #~ msgid "You cannot paste into a multicell selection."
@@ -25261,6 +25146,9 @@ msgstr "Ukendt indstik"
 
 #~ msgid "Grayscale"
 #~ msgstr "Gråtoner"
+
+#~ msgid "Preview"
+#~ msgstr "Smugkig"
 
 #~ msgid "%"
 #~ msgstr "%"
@@ -25804,6 +25692,9 @@ msgstr "Ukendt indstik"
 #, fuzzy
 #~ msgid "Upper"
 #~ msgstr "Opdatér|O"
+
+#~ msgid "Table of contents"
+#~ msgstr "Indholdsfortegnelse"
 
 #~ msgid "Opened Theorem Inset"
 #~ msgstr "Teorem-indstik åbnet"

@@ -69,8 +69,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-28 15:22+0100\n"
-"PO-Revision-Date: 2008-08-04 23:53+0100\n"
+"POT-Creation-Date: 2010-02-28 16:00+0100\n"
+"PO-Revision-Date: 2007-07-14 16:48+0100\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -523,9 +523,8 @@ msgid "Filename &Suffix"
 msgstr "Tiedostonimi"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
-#, fuzzy
 msgid "Show undefined branches used in this document."
-msgstr "Asiakirja ei sisällä haaroja!"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
 #, fuzzy
@@ -616,9 +615,8 @@ msgstr "&Peru"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
-#, fuzzy
 msgid "Undefined branches used in this document."
-msgstr "Asiakirja ei sisällä haaroja!"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:68
 #, fuzzy
@@ -882,9 +880,8 @@ msgid "S&elected Citations:"
 msgstr "&Valitut lähdeviitteet:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:72
-#, fuzzy
 msgid "Click or press Enter to add the selected citation to the list"
-msgstr "Lisää uusi haara listaan"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "Click or press Delete to delete the selected citation from the list"
@@ -1312,9 +1309,8 @@ msgid "Find LyX Text"
 msgstr "Etsi &seuraava"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:107
-#, fuzzy
 msgid "&Basic"
-msgstr "BibTeX-tyylit"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:159
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:183
@@ -1327,9 +1323,8 @@ msgid "&Replace with..."
 msgstr "K&orvaava teksti:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:222
-#, fuzzy
 msgid "Replace and find next occurrence [Enter]"
-msgstr "Haluatko korvata sanan nykyisellä valinnalla"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:225
 #, fuzzy
@@ -1402,7 +1397,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:446
 #, fuzzy
 msgid "&Next"
-msgstr "teksti"
+msgstr "Uu&si:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:467
 msgid "Find previous occurrence [Shift+Enter]"
@@ -1421,7 +1416,7 @@ msgstr "Löydä &vain kokonaiset sanat"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:494
 #, fuzzy
 msgid "Whole &words"
-msgstr "Löydä &vain kokonaiset sanat"
+msgstr "Avainsanat."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:522
 #, fuzzy
@@ -1453,11 +1448,10 @@ msgid "Current &document"
 msgstr "Tulosta asiakirja"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:627
-#, fuzzy
 msgid ""
 "Current document and all related documents belonging to the same master "
 "document"
-msgstr "Oletusarvoisen tulostimen nimi"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:630
 #, fuzzy
@@ -1472,12 +1466,11 @@ msgstr "Asiakirja avautuu"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:651
 #, fuzzy
 msgid "&Open documents"
-msgstr "OpenDocument"
+msgstr "Asiakirja avautuu"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:669
-#, fuzzy
 msgid "All ma&nuals"
-msgstr "LaTeXin oletus"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:690
 #, fuzzy
@@ -1493,7 +1486,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:711
 #, fuzzy
 msgid "Ignore &format"
-msgstr "Päiväysmuoto"
+msgstr "Muotoon:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
 #: src/frontends/qt4/ui/OutputUi.ui:13 src/frontends/qt4/ui/PDFSupportUi.ui:13
@@ -1503,7 +1496,7 @@ msgstr "Muoto"
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:23
 #, fuzzy
 msgid "Float Type:"
-msgstr "T&yyppi:"
+msgstr "TeX-tietoja"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:47
 msgid "Use &default placement"
@@ -2431,9 +2424,8 @@ msgid "Include only the selected subdocuments in the output"
 msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:43
-#, fuzzy
 msgid "Include only &selected children"
-msgstr "Sisällytä tiedosto"
+msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:50
 msgid ""
@@ -2447,9 +2439,8 @@ msgid "&Maintain counters and references"
 msgstr "Kaikki viitteet joihin ei viitattu"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:63
-#, fuzzy
 msgid "Include all subdocuments in the output"
-msgstr "Alleviivaa välilyönnit tulosteessa"
+msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:66
 #, fuzzy
@@ -2679,9 +2670,8 @@ msgid "Use the XeTeX processing engine"
 msgstr ""
 
 #: src/frontends/qt4/ui/OutputUi.ui:73
-#, fuzzy
 msgid "Use &XeTeX"
-msgstr "Käytä &Babelia"
+msgstr ""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:19
 #, fuzzy
@@ -2955,9 +2945,8 @@ msgid "Horizontal and vertical space of the phantom content"
 msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:63
-#, fuzzy
 msgid "&Phantom"
-msgstr "hom"
+msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:70
 #, fuzzy
@@ -2965,9 +2954,8 @@ msgid "Horizontal space of the phantom content"
 msgstr "Laatikon sisällön vaakatasaus"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:73
-#, fuzzy
 msgid "&Horiz. Phantom"
-msgstr "hom"
+msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:80
 #, fuzzy
@@ -2975,9 +2963,8 @@ msgid "Vertical space of the phantom content"
 msgstr "Laatikon sisällön pystytasaus"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:83
-#, fuzzy
 msgid "&Vert. Phantom"
-msgstr "hom"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 #, fuzzy
@@ -3649,7 +3636,7 @@ msgstr "&Työhakemisto:"
 #: src/frontends/qt4/ui/PrefPathsUi.ui:215
 #, fuzzy
 msgid "Hunspell dictionaries:"
-msgstr "Synonyymit -toiminta epäonnistui"
+msgstr "Oma sa&nasto:"
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2832
 msgid ""
@@ -3920,7 +3907,6 @@ msgid "&Spellchecker engine:"
 msgstr "Oikoluku"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
-#, fuzzy
 msgid "Accept words such as \"diskdrive\""
 msgstr "Hyväksi sanat tyyppi \"saippuakauppias\""
 
@@ -4187,17 +4173,17 @@ msgstr ""
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
 #, fuzzy
 msgid "&Clear automatically"
-msgstr "Automaattinen päivitys"
+msgstr "Ota kukin muutos käyttöön automaattisesti"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
 #, fuzzy
 msgid "Debug messages"
-msgstr "Ei virheviestiä"
+msgstr "Kaikki virheviestit"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:203
 #, fuzzy
 msgid "Display no debug messages"
-msgstr "Ei virheviestiä"
+msgstr "Kaikki virheviestit"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:206
 #, fuzzy
@@ -4219,9 +4205,8 @@ msgid "Display all debug messages"
 msgstr "Kaikki virheviestit"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
-#, fuzzy
 msgid "Display statusbar messages?"
-msgstr "Teksti- tai taulukko-upotteen viestit"
+msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:239
 #, fuzzy
@@ -4278,7 +4263,7 @@ msgstr ""
 #: src/frontends/qt4/ui/RefUi.ui:193
 #, fuzzy
 msgid "Grou&p"
-msgstr "Leikkaa reunus"
+msgstr "&Nimi:"
 
 #: src/frontends/qt4/ui/RefUi.ui:223 src/frontends/qt4/GuiRef.cpp:314
 msgid "&Go to Label"
@@ -4553,7 +4538,7 @@ msgstr ""
 #: src/frontends/qt4/ui/TabularUi.ui:302
 #, fuzzy
 msgid "Cell setting"
-msgstr "Asetukset"
+msgstr "Muistiinpanoasetukset"
 
 #: src/frontends/qt4/ui/TabularUi.ui:308
 msgid "Rotate this cell by 90 degrees"
@@ -5733,8 +5718,9 @@ msgid "Teaser image:"
 msgstr "Pikselikuva"
 
 #: lib/layouts/acmsiggraph.layout:84
+#, fuzzy
 msgid "CRcat"
-msgstr ""
+msgstr "hat"
 
 #: lib/layouts/acmsiggraph.layout:89
 #, fuzzy
@@ -5936,7 +5922,7 @@ msgstr "Luetelma"
 #: lib/layouts/apa.layout:412 lib/layouts/apa.layout:413
 #: lib/layouts/stdcounters.inc:48
 msgid "(\\alph{enumii})"
-msgstr ""
+msgstr "(\\alph{enumii})"
 
 #: lib/layouts/armenian-article.layout:9
 msgid "LatinOn"
@@ -5988,7 +5974,7 @@ msgstr "Kappale \\arabic{section}"
 #: lib/layouts/beamer.layout:168 lib/layouts/powerdot.layout:238
 #: lib/layouts/numarticle.inc:10
 msgid "\\Alph{section}"
-msgstr ""
+msgstr "\\Alph{section}"
 
 #: lib/layouts/beamer.layout:198
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
@@ -5996,7 +5982,7 @@ msgstr "Alialikappale \\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:211
 msgid "\\arabic{section}.\\arabic{subsection}"
-msgstr ""
+msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:227 lib/layouts/beamer.layout:271
 #: lib/layouts/beamer.layout:311 lib/layouts/beamer.layout:352
@@ -8208,7 +8194,7 @@ msgstr "Pika"
 #: lib/layouts/iopart.layout:217 lib/layouts/revtex4.layout:248
 #: lib/layouts/svglobal3.layout:62 lib/layouts/svglobal3.layout:65
 msgid "PACS"
-msgstr ""
+msgstr "PACS"
 
 #: lib/layouts/iopart.layout:220
 msgid "Physics and Astronomy Classification System number:"
@@ -8216,7 +8202,7 @@ msgstr ""
 
 #: lib/layouts/iopart.layout:224
 msgid "MSC"
-msgstr ""
+msgstr "MSC"
 
 #: lib/layouts/iopart.layout:227
 msgid "Mathematics Subject Classification number:"
@@ -8476,7 +8462,7 @@ msgstr "Tyhjä kalvo"
 
 #: lib/layouts/powerdot.layout:232 lib/layouts/numarticle.inc:9
 msgid "\\arabic{section}"
-msgstr ""
+msgstr "\\arabic{section}"
 
 #: lib/layouts/powerdot.layout:261
 msgid "ItemizeType1"
@@ -8491,9 +8477,8 @@ msgid "List of Algorithms"
 msgstr "Algoritmien taulukko"
 
 #: lib/layouts/recipebook.layout:42 lib/layouts/scrbook.layout:17
-#, fuzzy
 msgid "\\thechapter"
-msgstr "Luku"
+msgstr "\\thechapter"
 
 #: lib/layouts/recipebook.layout:78
 #, fuzzy
@@ -9692,20 +9677,19 @@ msgstr "Koodinpätkä"
 
 #: lib/layouts/numreport.inc:12
 msgid "\\arabic{chapter}"
-msgstr ""
+msgstr "\\arabic{chapter}"
 
 #: lib/layouts/numreport.inc:13
 msgid "\\Alph{chapter}"
-msgstr ""
+msgstr "\\Alph{chapter}"
 
 #: lib/layouts/numreport.inc:44
-#, fuzzy
 msgid "\\arabic{footnote}"
-msgstr "alaviite"
+msgstr "\\arabic{footnote}"
 
 #: lib/layouts/numrevtex.inc:9
 msgid "\\Roman{section}."
-msgstr ""
+msgstr "\\Roman{section}."
 
 #: lib/layouts/numrevtex.inc:10
 msgid "Appendix \\Alph{section}:"
@@ -9713,23 +9697,23 @@ msgstr "Liite \\Alph{section}:"
 
 #: lib/layouts/numrevtex.inc:18
 msgid "\\Alph{subsection}."
-msgstr ""
+msgstr "\\Alph{subsection}."
 
 #: lib/layouts/numrevtex.inc:19
 msgid "\\arabic{subsection}."
-msgstr ""
+msgstr "\\arabic{subsection}."
 
 #: lib/layouts/numrevtex.inc:27
 msgid "\\arabic{subsubsection}."
-msgstr ""
+msgstr "\\arabic{subsubsection}."
 
 #: lib/layouts/numrevtex.inc:28
 msgid "\\alph{subsubsection}."
-msgstr ""
+msgstr "\\alph{subsubsection}."
 
 #: lib/layouts/numrevtex.inc:36 lib/layouts/numrevtex.inc:37
 msgid "\\alph{paragraph}."
-msgstr ""
+msgstr "\\alph{paragraph}."
 
 #: lib/layouts/scrclass.inc:113
 msgid "Addpart"
@@ -9801,14 +9785,13 @@ msgid "UNDEFINED"
 msgstr ""
 
 #: lib/layouts/stdcounters.inc:9
-#, fuzzy
 msgid "\\Roman{part}"
-msgstr "Osa \\Roman{osa}"
+msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
 #, fuzzy
 msgid "Part \\Roman{part}"
-msgstr "Osa \\Roman{osa}"
+msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:14
 #, fuzzy
@@ -9827,19 +9810,16 @@ msgid "Paragraph ##"
 msgstr "Osakappale"
 
 #: lib/layouts/stdcounters.inc:43
-#, fuzzy
 msgid "\\arabic{enumi}."
-msgstr "Askel \\arabic{step}."
+msgstr "\\arabic{enumi}."
 
 #: lib/layouts/stdcounters.inc:53
-#, fuzzy
 msgid "\\roman{enumiii}."
-msgstr "Askel \\arabic{step}."
+msgstr "\\roman{enumiii}."
 
 #: lib/layouts/stdcounters.inc:58
-#, fuzzy
 msgid "\\Alph{enumiv}."
-msgstr "Askel \\arabic{step}."
+msgstr "\\Alph{enumiv}."
 
 #: lib/layouts/stdcounters.inc:68
 #, fuzzy
@@ -10274,7 +10254,7 @@ msgstr "Muutos: "
 #: lib/layouts/initials.module:12
 #, fuzzy
 msgid "Initial"
-msgstr "Näkymätön_teksti"
+msgstr "Kursiivi"
 
 #: lib/layouts/linguistics.module:2
 #, fuzzy
@@ -10446,7 +10426,7 @@ msgstr ""
 #: lib/layouts/noweb.module:5 lib/layouts/sweave.module:5
 #, fuzzy
 msgid "literate"
-msgstr "Luetelma"
+msgstr "Sanatarkasti"
 
 #: lib/layouts/sweave.module:2 lib/layouts/sweave.module:18
 #: lib/configure.py:507
@@ -10956,6 +10936,7 @@ msgid "Catalan"
 msgstr "katalaani"
 
 #: lib/languages:26
+#, fuzzy
 msgid "Chinese (simplified)"
 msgstr "kiina (yksinkert.)"
 
@@ -11255,7 +11236,7 @@ msgstr "DOS (CP 437)"
 
 #: lib/encodings:71
 msgid "DOS-de (CP 437-de)"
-msgstr ""
+msgstr "DOS-de (CP 437-de)"
 
 #: lib/encodings:74
 msgid "Western European (CP 850)"
@@ -11353,7 +11334,7 @@ msgstr ""
 
 #: lib/encodings:165
 msgid "Unicode (CJK) (utf8)"
-msgstr ""
+msgstr "Unicode (CJK) (utf8)"
 
 #: lib/encodings:169
 #, fuzzy
@@ -11386,7 +11367,7 @@ msgstr ""
 
 #: lib/encodings:196
 msgid "Unicode (XeTeX) (utf8)"
-msgstr ""
+msgstr "Unicode (XeTeX) (utf8)"
 
 #: lib/encodings:200
 msgid "ASCII"
@@ -12987,7 +12968,7 @@ msgstr ""
 #: lib/ui/stdcontext.inc:564
 #, fuzzy
 msgid "All Indexes|A"
-msgstr "Lasku"
+msgstr "Avaa kaikki upotteet"
 
 #: lib/ui/stdcontext.inc:567
 msgid "Subindex|b"
@@ -13151,7 +13132,7 @@ msgstr "Tyköupotteiden asetukset..."
 #: lib/ui/stdmenus.inc:140
 #, fuzzy
 msgid "Index Settings...|x"
-msgstr "TeX-koodiasetukset"
+msgstr "Laatikoiden asetukset..."
 
 #: lib/ui/stdmenus.inc:141
 #, fuzzy
@@ -13416,9 +13397,8 @@ msgid "Table...|T"
 msgstr "Taulukko...|T"
 
 #: lib/ui/stdmenus.inc:360
-#, fuzzy
 msgid "URL|U"
-msgstr "URL...|U"
+msgstr "URL|U"
 
 #: lib/ui/stdmenus.inc:361
 #, fuzzy
@@ -13499,12 +13479,12 @@ msgstr ""
 #: lib/ui/stdmenus.inc:466
 #, fuzzy
 msgid "Horizontal Phantom"
-msgstr "hom"
+msgstr "Vaakaviiva"
 
 #: lib/ui/stdmenus.inc:467
 #, fuzzy
 msgid "Vertical Phantom"
-msgstr "hom"
+msgstr "Pystytasaus"
 
 #: lib/ui/stdmenus.inc:479
 msgid "Change Tracking|C"
@@ -13649,7 +13629,7 @@ msgstr "Etsi ja korvaa"
 #: lib/ui/stdtoolbars.inc:82
 #, fuzzy
 msgid "Find and replace (advanced)"
-msgstr "Etsi tai korvaa...|E"
+msgstr "Etsi ja korvaa"
 
 #: lib/ui/stdtoolbars.inc:83
 #, fuzzy
@@ -13723,12 +13703,12 @@ msgstr "Pääasiakirja"
 #: lib/ui/stdtoolbars.inc:104
 #, fuzzy
 msgid "View other formats"
-msgstr "Muut kelluvat upotteet"
+msgstr "Tiedostomuodot"
 
 #: lib/ui/stdtoolbars.inc:105
 #, fuzzy
 msgid "Update other formats"
-msgstr "Päivitä näyttö"
+msgstr "Päiväysmuoto"
 
 #: lib/ui/stdtoolbars.inc:108
 msgid "Extra"
@@ -14440,14 +14420,12 @@ msgid "Unit fraction (20 km/h)\t\\unitfrac"
 msgstr "Kaunis murtoluku\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:356
-#, fuzzy
 msgid "Text fraction\t\\tfrac"
-msgstr "Teksti-murtoluku (amsmath)\t\\tfrac"
+msgstr "Teksti-murtoluku\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:357
-#, fuzzy
 msgid "Display fraction\t\\dfrac"
-msgstr "Esitys-murtoluku (masmath)\t\\dfrac"
+msgstr "Esitys-murtoluku\t\\dfrac"
 
 #: lib/ui/stdtoolbars.inc:358
 #, fuzzy
@@ -15461,33 +15439,28 @@ msgid "sqiintop"
 msgstr "sqiintop"
 
 #: lib/ui/stdtoolbars.inc:636
-#, fuzzy
 msgid "fint"
-msgstr "int"
+msgstr "fint"
 
 #: lib/ui/stdtoolbars.inc:637
-#, fuzzy
 msgid "fintop"
-msgstr "intop"
+msgstr "fintop"
 
 #: lib/ui/stdtoolbars.inc:638
-#, fuzzy
 msgid "landupint"
-msgstr "ruudut"
+msgstr "landupint"
 
 #: lib/ui/stdtoolbars.inc:639
-#, fuzzy
 msgid "landupintop"
-msgstr "intop"
+msgstr "landupintop"
 
 #: lib/ui/stdtoolbars.inc:640
 msgid "landdownint"
-msgstr ""
+msgstr "landdownint"
 
 #: lib/ui/stdtoolbars.inc:641
-#, fuzzy
 msgid "landdownintop"
-msgstr "dotsintop"
+msgstr "landdownintop"
 
 #: lib/ui/stdtoolbars.inc:642
 msgid "sum"
@@ -16510,9 +16483,8 @@ msgstr ""
 "Lue 'info date' jos haluat tietää lisää.\n"
 
 #: lib/external_templates:333
-#, fuzzy
 msgid "Dia"
-msgstr "Näyttö"
+msgstr "Dia"
 
 #: lib/external_templates:334 lib/external_templates:337
 #, fuzzy
@@ -16532,9 +16504,8 @@ msgid "FIG"
 msgstr "FIG"
 
 #: lib/configure.py:451
-#, fuzzy
 msgid "DIA"
-msgstr "DVI"
+msgstr "DIA"
 
 #: lib/configure.py:454
 msgid "Grace"
@@ -16625,9 +16596,8 @@ msgid "Graphviz Dot"
 msgstr "Graphviz Dot"
 
 #: lib/configure.py:505
-#, fuzzy
 msgid "LaTeX (pLaTeX)"
-msgstr "LaTeX-&valinnat:"
+msgstr "LaTeX (pLaTeX)"
 
 #: lib/configure.py:506
 msgid "NoWeb"
@@ -16664,7 +16634,7 @@ msgstr "LaTeX (pdflatex)"
 #: lib/configure.py:511
 #, fuzzy
 msgid "LaTeX (XeTeX)"
-msgstr "LaTeX-&valinnat:"
+msgstr "LaTeX (pLaTeX)"
 
 #: lib/configure.py:512 src/frontends/qt4/GuiPrefs.cpp:335
 msgid "Plain text"
@@ -16702,7 +16672,7 @@ msgstr "HTML"
 #: lib/configure.py:519 lib/configure.py:521
 #, fuzzy
 msgid "LyXHTML|X"
-msgstr "HTML"
+msgstr "HTML|H"
 
 #: lib/configure.py:528 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
@@ -17174,7 +17144,7 @@ msgstr "Muuntaminen epäonnistui"
 
 #: src/Buffer.cpp:1329
 #, fuzzy
-msgid "Uncodable character in path"
+msgid "Uncodable character in file path"
 msgstr "erikoismerkki"
 
 #: src/Buffer.cpp:1330
@@ -17187,7 +17157,7 @@ msgid ""
 "This will likely result in incomplete output.\n"
 "\n"
 "Chose an appropriate document encoding (such as utf8)\n"
-"or change the path name."
+"or change the file path name."
 msgstr ""
 
 #: src/Buffer.cpp:1604
@@ -19336,7 +19306,7 @@ msgstr ""
 #: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1009
 #, fuzzy
 msgid "Already in regular expression mode"
-msgstr "Epäkelpo LaTeX-tyyppinen pituusilmaisu."
+msgstr "Jokerikortti-ilmaisu"
 
 #: src/Text3.cpp:216
 #, fuzzy
@@ -19678,14 +19648,12 @@ msgid "master document[[scope]]"
 msgstr "Pääasiakirja"
 
 #: src/frontends/qt4/FindAndReplace.cpp:330
-#, fuzzy
 msgid "open files[[scope]]"
-msgstr "Esimerkki #:"
+msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:333
-#, fuzzy
 msgid "manuals[[scope]]"
-msgstr "LaTeXin oletus"
+msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:337
 #, c-format
@@ -19733,13 +19701,13 @@ msgid "amount of work other people have done for the LyX project."
 msgstr "työtä ihmiset ovat tehneet LyXin aikaansaamiseksi."
 
 #: src/frontends/qt4/GuiAbout.cpp:84
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995--%1$s LyX Team"
 msgstr ""
 "LyX, Copyright © 1995 Matthias Ettrich, \n"
-"1995-2001 LyX-tiimi"
+"1995--%1$s LyX-tiimi"
 
 #: src/frontends/qt4/GuiAbout.cpp:92
 msgid ""
@@ -20295,7 +20263,7 @@ msgstr "suomi"
 #: src/frontends/qt4/GuiCompare.cpp:261
 #, fuzzy
 msgid "Aborting process..."
-msgstr "Tuo: %1$s..."
+msgstr "Asiakirja muotoutuu..."
 
 #: src/frontends/qt4/GuiCompare.cpp:297
 #, fuzzy
@@ -20350,9 +20318,8 @@ msgid "Times Roman"
 msgstr "Times Antiikva"
 
 #: src/frontends/qt4/GuiDocument.cpp:127
-#, fuzzy
 msgid "Palatino"
-msgstr "Latinalaiset päälle"
+msgstr "Palatino"
 
 #: src/frontends/qt4/GuiDocument.cpp:128
 msgid "Bitstream Charter"
@@ -20363,19 +20330,16 @@ msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
 
 #: src/frontends/qt4/GuiDocument.cpp:128
-#, fuzzy
 msgid "Bookman"
-msgstr "Kirjanmerkit|#m"
+msgstr "Bookman"
 
 #: src/frontends/qt4/GuiDocument.cpp:129
-#, fuzzy
 msgid "Utopia"
-msgstr "Aiheellinen"
+msgstr "Utopia"
 
 #: src/frontends/qt4/GuiDocument.cpp:129
-#, fuzzy
 msgid "Bera Serif"
-msgstr "Sans serif"
+msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:129
 #, fuzzy
@@ -20405,14 +20369,12 @@ msgid "Avant Garde"
 msgstr "Avant Garde"
 
 #: src/frontends/qt4/GuiDocument.cpp:143
-#, fuzzy
 msgid "Bera Sans"
-msgstr "Sans serif"
+msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:143
-#, fuzzy
 msgid "CM Bright"
-msgstr "Copyright"
+msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:155
 msgid "Computer Modern Typewriter"
@@ -20423,9 +20385,8 @@ msgid "Latin Modern Typewriter"
 msgstr "Latin Modern Kirjoituskone"
 
 #: src/frontends/qt4/GuiDocument.cpp:156
-#, fuzzy
 msgid "Courier"
-msgstr "Toistimet"
+msgstr "Courier"
 
 #: src/frontends/qt4/GuiDocument.cpp:156
 msgid "Bera Mono"
@@ -21048,7 +21009,7 @@ msgstr "P&ikanäppäin:"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "lyxrc"
-msgstr ""
+msgstr "lyxrc"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 #, fuzzy
@@ -21117,7 +21078,7 @@ msgstr "LaTeX-lokitiedosto"
 #: src/frontends/qt4/GuiLog.cpp:237
 #, fuzzy
 msgid "Literate"
-msgstr "Luetelma"
+msgstr "Sanatarkasti"
 
 #: src/frontends/qt4/GuiLog.cpp:240
 #, fuzzy
@@ -21474,17 +21435,15 @@ msgstr "Laatikoiden asetukset"
 #: src/frontends/qt4/GuiPrintindex.cpp:69
 #, fuzzy
 msgid "<All indexes>"
-msgstr "Olemassa olevat haarat:"
+msgstr "Kaikki tiedostot (*)"
 
 #: src/frontends/qt4/GuiProgressView.cpp:52
-#, fuzzy
 msgid "Progress/Debug Messages"
-msgstr "Ei virheviestiä"
+msgstr ""
 
 #: src/frontends/qt4/GuiProgressView.cpp:81
-#, fuzzy
 msgid "Debug Level"
-msgstr "Ei virheviestiä"
+msgstr ""
 
 #: src/frontends/qt4/GuiProgressView.cpp:82
 #, fuzzy
@@ -22254,15 +22213,16 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2461
 #, fuzzy
 msgid "Reload externally changed document?"
-msgstr "Perutaanko kaikki muokkaukset?"
+msgstr "Tallennetaanko muutunut asiakirja?"
 
 #: src/frontends/qt4/GuiView.cpp:2515
 msgid "Error when setting the locking property."
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2558
+#, fuzzy
 msgid "Directory is not accessible."
-msgstr ""
+msgstr "%1$s ei voitu lukea"
 
 #: src/frontends/qt4/GuiView.cpp:2641
 #, fuzzy, c-format
@@ -22270,9 +22230,9 @@ msgid "Opening child document %1$s..."
 msgstr "Asiakirja %1$s avautuu..."
 
 #: src/frontends/qt4/GuiView.cpp:2725
-#, fuzzy, c-format
+#, c-format
 msgid "Successful export to format: %1$s"
-msgstr "Ei tietoa, miten tuoda formaattia %1$s"
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2726
 #, fuzzy, c-format
@@ -22285,9 +22245,9 @@ msgid "Successful preview of format: %1$s"
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2739
-#, fuzzy, c-format
+#, c-format
 msgid "Error previewing format: %1$s"
-msgstr "Ei tietoa, miten tuoda formaattia %1$s"
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2798
 #, fuzzy
@@ -22442,9 +22402,8 @@ msgid "<No Bookmarks Saved Yet>"
 msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:951
-#, fuzzy
 msgid "View (Other Formats)|F"
-msgstr "Muut kelluvat upotteet"
+msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:952
 #, fuzzy
@@ -22454,12 +22413,12 @@ msgstr "Päivitä näyttö"
 #: src/frontends/qt4/Menus.cpp:985
 #, fuzzy, c-format
 msgid "View [%1$s]|V"
-msgstr "&Katsele"
+msgstr "Näytä|N"
 
 #: src/frontends/qt4/Menus.cpp:986
 #, fuzzy, c-format
 msgid "Update [%1$s]|U"
-msgstr "Päi&vitä"
+msgstr "Päivitä|v"
 
 #: src/frontends/qt4/Menus.cpp:1079
 #, fuzzy
@@ -22534,9 +22493,9 @@ msgid "Update %1$s"
 msgstr "Päi&vitä"
 
 #: src/frontends/qt4/Toolbars.cpp:229
-#, fuzzy, c-format
+#, c-format
 msgid "View %1$s"
-msgstr "&Katsele"
+msgstr ""
 
 #: src/frontends/qt4/Validator.cpp:161
 #, fuzzy
@@ -22762,14 +22721,14 @@ msgid "double frame"
 msgstr "kaksinkertainen"
 
 #: src/insets/InsetBox.cpp:151 src/insets/InsetBox.cpp:154
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (%2$s)"
-msgstr "%1$s, %2$s"
+msgstr "%1$s (%2$s)"
 
 #: src/insets/InsetBox.cpp:157
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (%2$s, %3$s)"
-msgstr "%1$s ja %2$s"
+msgstr "%1$s (%2$s, %3$s)"
 
 #: src/insets/InsetBranch.cpp:66
 #, fuzzy
@@ -22866,8 +22825,8 @@ msgstr "erikoismerkki"
 #: src/insets/InsetCommandParams.cpp:387
 #, c-format
 msgid ""
-"The following characters that are used in an inset (%1$s) are\n"
-"not representable in the current encoding and have been omitted:\n"
+"The following characters that are used in the inset %1$s are not\n"
+"representable in the current encoding and therefore have been omitted:\n"
 "%2$s."
 msgstr ""
 
@@ -23022,7 +22981,7 @@ msgstr "Tuntematon sisällysluettelotyyppi"
 #: src/insets/InsetIndex.cpp:448
 #, fuzzy
 msgid "All indices"
-msgstr "Olemassa olevat haarat:"
+msgstr "Kaikki tiedostot (*)"
 
 #: src/insets/InsetIndex.cpp:452
 #, fuzzy
@@ -23698,7 +23657,7 @@ msgstr "siirryttiin matikkamoodiin (textrm)"
 #: src/mathed/InsetMathNest.cpp:1019
 #, fuzzy
 msgid "Regular expression editor mode"
-msgstr "Matematiikkaeditoritila"
+msgstr "Jokerikortti-ilmaisu"
 
 #: src/mathed/InsetMathNest.cpp:1595 src/mathed/InsetMathNest.cpp:1715
 msgid "Autocorrect Off ('!' to enter)"
@@ -23773,7 +23732,6 @@ msgstr ""
 "\"."
 
 #: src/support/Package.cpp:626 src/support/Package.cpp:653
-#, fuzzy
 msgid "File not found"
 msgstr "Tiedostoa ei löydy"
 
@@ -23990,12 +23948,216 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Tuntematon käyttäjä"
 
+#~ msgid "&Dummy"
+#~ msgstr "&Testi"
+
+#~ msgid "F&ind:"
+#~ msgstr "&Etsi:"
+
+#~ msgid "D&elete"
+#~ msgstr "P&oista"
+
+#~ msgid "&Default language:"
+#~ msgstr "&Oletuskieli:"
+
 #, fuzzy
-#~ msgid "TextLabel"
-#~ msgstr "Nimike"
+#~ msgid "Select the default language of your documents"
+#~ msgstr "Palauta nykyisen luokan oletusasetukset"
+
+#~ msgid "&BibTeX command:"
+#~ msgstr "BibTeX-komento:"
+
+#, fuzzy
+#~ msgid "&Index command:"
+#~ msgstr "Luo hakemisto -komento:"
+
+#, fuzzy
+#~ msgid "BibTeX command (&Japanese):"
+#~ msgstr "BibTeX-komento ja optiot"
+
+#, fuzzy
+#~ msgid "Index command (Ja&panese):"
+#~ msgstr "Luo hakemisto -komento:"
+
+#~ msgid "&roff command:"
+#~ msgstr "&roff-komento:"
+
+#~ msgid "External app for formating tables in plain text output"
+#~ msgstr "Erillinen ohjelma taulukoiden muotoilemista perustekstimuotoon"
+
+#~ msgid "Specify a personal dictionary file other than the default"
+#~ msgstr ""
+#~ "Anna vaihtoehtoinen henkilökohtainen sanasto. Esimerkiksi \"."
+#~ "ispell_english\"."
+
+#~ msgid "Spellchec&ker executable:"
+#~ msgstr "&Oikolukuohjelman binääri:"
+
+#~ msgid "Use input encod&ing"
+#~ msgstr "Käytä syötteen &merkistöä"
+
+#~ msgid "Jump to the label"
+#~ msgstr "Siirry nimikkeeseen"
 
 #~ msgid "Merge cells"
 #~ msgstr "Yhdistä solut"
+
+#~ msgid "Listing settings"
+#~ msgstr "Listauksen asetukset"
+
+#~ msgid "LangHeader"
+#~ msgstr "Kieliyläotsikko"
+
+#~ msgid "Language Header:"
+#~ msgstr "Kieliyläotsikko"
+
+#~ msgid "Language:"
+#~ msgstr "Kieli:"
+
+#~ msgid "LastLanguage"
+#~ msgstr "ViimeinenKieli"
+
+#~ msgid "Last Language:"
+#~ msgstr "Viimeinen kieli:"
+
+#~ msgid "LangFooter"
+#~ msgstr "Kielialaotsikko"
+
+#~ msgid "End"
+#~ msgstr "Loppu"
+
+#~ msgid "End of CV"
+#~ msgstr "CV:n loppu"
+
+#~ msgid "Strasse"
+#~ msgstr "Katu"
+
+#~ msgid "Land"
+#~ msgstr "Maa"
+
+#~ msgid "BLZ"
+#~ msgstr "BLZ"
+
+#~ msgid "Konto"
+#~ msgstr "Tili"
+
+#~ msgid "Computer"
+#~ msgstr "Tietokone"
+
+#~ msgid "Computer:"
+#~ msgstr "Tietokone:"
+
+#~ msgid "EmptySection"
+#~ msgstr "TyhjäKappale"
+
+#~ msgid "Empty Section"
+#~ msgstr "Tyhjä Kappale"
+
+#~ msgid "CloseSection"
+#~ msgstr "SuljeKappale"
+
+#~ msgid "Close Section"
+#~ msgstr "Sulje kappale"
+
+#, fuzzy
+#~ msgid "Insert|n"
+#~ msgstr "Lisää|L"
+
+#~ msgid "Dissolve Inset|l"
+#~ msgstr "Sulaa upote"
+
+#~ msgid "View DVI"
+#~ msgstr "Katsele DVI"
+
+#~ msgid "Update DVI"
+#~ msgstr "Päi&vitä DVI"
+
+#~ msgid "View PDF (pdflatex)"
+#~ msgstr "Katsele PDF (pdflatex)"
+
+#~ msgid "Update PDF (pdflatex)"
+#~ msgstr "Päivitä PDF (pdflatex)"
+
+#~ msgid "View PostScript"
+#~ msgstr "Katsele PostScript"
+
+#~ msgid "Update PostScript"
+#~ msgstr "Päivitä PostScript"
+
+#, fuzzy
+#~ msgid "No horizontal line\t\\atop"
+#~ msgstr "Ilman jakoviivaa\t\\atop"
+
+#~ msgid "Can't create pipe for spellchecker."
+#~ msgstr "Oikolukuohjelmaan ei voi luoda putkea."
+
+#~ msgid "Can't open pipe for spellchecker."
+#~ msgstr "Oikolukuohjelmaan ei voi avata putkea."
+
+#~ msgid ""
+#~ "Could not create an ispell process.\n"
+#~ "You may not have the right languages installed."
+#~ msgstr ""
+#~ "Ispell-prosessin luonti epäonnistui.\n"
+#~ "Ehkäpä oikeita kieliä ei ole asennettu."
+
+#~ msgid ""
+#~ "The ispell process returned an error.\n"
+#~ "Perhaps it has been configured wrongly ?"
+#~ msgstr ""
+#~ "Oikolukuprosessi palautti virheen.\n"
+#~ "Ehkäpä sen asetuksissa on vikaa?"
+
+#~ msgid ""
+#~ "Could not check word `%1$s' because it could not be converted to encoding "
+#~ "`%2$s'."
+#~ msgstr ""
+#~ "En voinut tarkistaa sana `%1$s' koska sitä ei saatu muunnetuksi "
+#~ "merkistöön `%2$s'."
+
+#~ msgid "Could not communicate with the ispell spellchecker process."
+#~ msgstr "Viestintä ispell- oikolukuohjelman prosessin kanssa epäonnistui."
+
+#~ msgid ""
+#~ "Could not insert word `%1$s' because it could not be converted to "
+#~ "encoding `%2$s'."
+#~ msgstr ""
+#~ "En voinut lisätä sana `%1$s' koska sitä ei saatu muunnetuksi merkistöön `%"
+#~ "2$s'."
+
+#~ msgid ""
+#~ "Could not accept word `%1$s' because it could not be converted to "
+#~ "encoding `%2$s'."
+#~ msgstr ""
+#~ "En voinut hyväksyä sana `%1$s' koska sitä ei saatu muunnetuksi merkistöön "
+#~ "`%2$s'."
+
+#~ msgid ""
+#~ "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+#~ msgstr ""
+#~ "Anna vaihtoehtoinen henkilökohtainen sanasto. Esimerkiksi \"."
+#~ "ispell_english\"."
+
+#~ msgid "What command runs the spellchecker?"
+#~ msgstr "Mitä oikolukukomentoa käytetään?"
+
+#~ msgid ""
+#~ "Specify whether to pass the -T input encoding option to ispell. Enable "
+#~ "this if you cannot check the spelling of words containing accented "
+#~ "letters. This may not work with all dictionaries."
+#~ msgstr ""
+#~ "Määritä, annetaanko syötemerkistön valitsin -T ispellille. Käytä tätä, "
+#~ "jos et voi oikolukea sanoja, joissa on kansainvälisiä merkkejä. Tämä ei "
+#~ "välttämättä toimi kaikkien sanastojen kanssa."
+
+#~ msgid "Native OS API not yet supported."
+#~ msgstr "Käyttöjärj. natiivi ohjelmointiliitäntä ei vielä tuettu"
+
+#~ msgid "Unknown author index for deletion: %1$d\n"
+#~ msgstr "Tuntematon tekijätunnus poistettavaksi: %1$d\n"
+
+#~ msgid "Unknown spacing argument: "
+#~ msgstr "Tuntematon väliparametri: "
 
 #~ msgid "Bibliography Entry Settings"
 #~ msgstr "Kirjallisuusviitteiden asetukset"
@@ -24004,125 +24166,122 @@ msgstr "Tuntematon käyttäjä"
 #~ msgstr "Haarojen asetukset"
 
 #, fuzzy
-#~ msgid "Horizontal Space Settings"
-#~ msgstr "Pystyväliasetukset"
+#~ msgid ""
+#~ "Input listings parameters on the right. Enter ? for a list of parameters."
+#~ msgstr "Syötä listauksen parametrit. Syötä ? jos haluat niiden lista."
 
-#~ msgid "Table Settings"
-#~ msgstr "Taulukkoasetukset"
-
-#~ msgid "Vertical Space Settings"
-#~ msgstr "Pystyväliasetukset"
-
-#, fuzzy
-#~ msgid "Language ...|L"
-#~ msgstr "Kieli"
-
-#~ msgid " Macro: %1$s: "
-#~ msgstr " Makro: %1$s: "
-
-#, fuzzy
-#~ msgid "&Debug messages"
-#~ msgstr "Ei virheviestiä"
-
-#, fuzzy
-#~ msgid "Clear &automatically"
-#~ msgstr "Automaattinen päivitys"
-
-#~ msgid "Dissolve Inset|l"
-#~ msgstr "Sulaa upote"
-
-#~ msgid "Box Settings"
-#~ msgstr "Laatikoiden asetukset"
+#~ msgid "Length"
+#~ msgstr "Pituus"
 
 #~ msgid "TeX Code Settings"
 #~ msgstr "LaTeX-asetukset"
+
+#, fuzzy
+#~ msgid "pLaTeX"
+#~ msgstr "LaTeX"
 
 #~ msgid "Float Settings"
 #~ msgstr "Kelluvien asetukset"
 
 #, fuzzy
-#~ msgid "Match found and replaced !"
-#~ msgstr "Etsi ja korvaa"
+#~ msgid "Horizontal Space Settings"
+#~ msgstr "Pystyväliasetukset"
+
+#~ msgid "No LaTeX log file found."
+#~ msgstr "LaTeXin lokitiedostoa ei ole."
+
+#~ msgid "ispell"
+#~ msgstr "ispell"
+
+#~ msgid "pspell (library)"
+#~ msgstr "pspell (kirjasto)"
+
+#~ msgid "aspell (library)"
+#~ msgstr "aspell (kirjasto)"
+
+#~ msgid "*.pws"
+#~ msgstr "*.pws"
+
+#~ msgid "*.ispell"
+#~ msgstr "*.ispell"
+
+#~ msgid "Spellchecker error"
+#~ msgstr "Oikolukuohjelman virhe"
+
+#~ msgid "The spellchecker could not be started\n"
+#~ msgstr "Oikolukuohjelma ei käynnistynyt\n"
+
+#~ msgid ""
+#~ "The spellchecker has died for some reason.\n"
+#~ "Maybe it has been killed."
+#~ msgstr ""
+#~ "Oikolukuohjelma sulkeutui jostakin syystä.\n"
+#~ "Se saatettiin sulkea väkisin."
+
+#~ msgid "The spellchecker has failed.\n"
+#~ msgstr "Oikoluku epäonnistui.\n"
+
+#~ msgid "The spellchecker has failed"
+#~ msgstr "Oikoluku epäonnistui"
+
+#~ msgid "Vertical Space Settings"
+#~ msgstr "Pystyväliasetukset"
+
+#~ msgid "No Table of contents"
+#~ msgstr "Ei sisällysluetteloa"
+
+#~ msgid "Opened inset"
+#~ msgstr "Upote avattiin"
 
 #, fuzzy
-#~ msgid "Close this panel"
-#~ msgstr "Sulje tämä ikkuna"
+#~ msgid "Uncodable characters in bibliography item"
+#~ msgstr "erikoismerkki"
+
+#~ msgid "Opened Box Inset"
+#~ msgstr "Laatikko-upote avattu"
+
+#~ msgid "Opened Branch Inset"
+#~ msgstr "Haara-upote avattu"
+
+#~ msgid "Opened Caption Inset"
+#~ msgstr "Kuvatekstiupote avattu"
+
+#~ msgid "Opened ERT Inset"
+#~ msgstr "ERT-upote avattiin"
 
 #, fuzzy
-#~ msgid "Prev"
-#~ msgstr "Esikatselu|#E"
+#~ msgid "Opened Flex Inset"
+#~ msgstr "Tekstiupote avattiin"
 
-#, fuzzy
-#~ msgid "Match..."
-#~ msgstr "Matematiikka"
+#~ msgid "Opened Float Inset"
+#~ msgstr "Kelluva upote avattu"
 
-#, fuzzy
-#~ msgid "Find LyX Dialog"
-#~ msgstr "Etsi &seuraava"
+#~ msgid "Opened Footnote Inset"
+#~ msgstr "Alaviiteupote avattiin"
 
-#~ msgid "D&elete"
-#~ msgstr "P&oista"
+#~ msgid "Opened Listing Inset"
+#~ msgstr "Ohjelmalistausupote avattu"
 
-#~ msgid "F&ind:"
-#~ msgstr "&Etsi:"
+#~ msgid "Opened Marginal Note Inset"
+#~ msgstr "Reunahuomautusupote avattu"
 
-#, fuzzy
-#~ msgid "Current &Paragraph"
-#~ msgstr "Sisennä kappale"
+#~ msgid "Opened Note Inset"
+#~ msgstr "Muistiinpanoupote avattu"
 
-#, fuzzy
-#~ msgid "Document in current file"
-#~ msgstr "Asiakirjan muotoilu epäonnistui"
+#~ msgid "Opened Optional Argument Inset"
+#~ msgstr "Valinnaisen parametrin upote avattu"
 
-#, fuzzy
-#~ msgid "diamond2"
-#~ msgstr "diamond"
+#~ msgid "Opened table"
+#~ msgstr "Avaa taulukko"
 
-#~ msgid "End"
-#~ msgstr "Loppu"
+#~ msgid "Opened Text Inset"
+#~ msgstr "Tekstiupote avattiin"
 
-#, fuzzy
-#~ msgid "begin"
-#~ msgstr "Alku"
+#~ msgid "Opened Wrap Inset"
+#~ msgstr "Tykö-upote avattu"
 
-#, fuzzy
-#~ msgid "end"
-#~ msgstr "Ja"
-
-#, fuzzy
-#~ msgid "file"
-#~ msgstr "Sisällytä tiedosto"
-
-#, fuzzy
-#~ msgid "forward"
-#~ msgstr "kaikille"
-
-#, fuzzy
-#~ msgid "backwards"
-#~ msgstr "Etsi e&dellinen"
-
-#, fuzzy
-#~ msgid " of "
-#~ msgstr "CV:n loppu"
-
-#, fuzzy
-#~ msgid "Continue searching from "
-#~ msgstr "Kaunis murtoluku\t\\nicefrac"
-
-#~ msgid "&Dummy"
-#~ msgstr "&Testi"
-
-#, fuzzy
-#~ msgid "&Automatic clear"
-#~ msgstr "Automaattinen päivitys"
-
-#, fuzzy
-#~ msgid "Show progress messages"
-#~ msgstr "(ei lokiviestejä)"
-
-#, fuzzy
-#~ msgid "(cancelling)"
-#~ msgstr "reunahuomautus"
+#~ msgid " Macro: %1$s: "
+#~ msgstr " Makro: %1$s: "
 
 #, fuzzy
 #~ msgid "Anschrift:"
@@ -24184,14 +24343,8 @@ msgstr "Tuntematon käyttäjä"
 #~ msgid "Text:"
 #~ msgstr "Teksti:"
 
-#~ msgid "Strasse"
-#~ msgstr "Katu"
-
 #~ msgid "Strasse:"
 #~ msgstr "Katu:"
-
-#~ msgid "Land"
-#~ msgstr "Maa"
 
 #~ msgid "Land:"
 #~ msgstr "Maa:"
@@ -24208,8 +24361,8 @@ msgstr "Tuntematon käyttäjä"
 #~ msgid "IhrSchreiben:"
 #~ msgstr "Kirjoituksenne:"
 
-#~ msgid "Konto"
-#~ msgstr "Tili"
+#~ msgid "BLZ:"
+#~ msgstr "BLZ:"
 
 #~ msgid "Konto:"
 #~ msgstr "Tili:"
@@ -24221,268 +24374,32 @@ msgstr "Tuntematon käyttäjä"
 #~ msgid "Anlagen:"
 #~ msgstr "Laitos"
 
-#~ msgid "No LaTeX log file found."
-#~ msgstr "LaTeXin lokitiedostoa ei ole."
-
-#, fuzzy
 #~ msgid "Latex"
-#~ msgstr "Päiväys"
-
-#, fuzzy
-#~ msgid "View Output|V"
-#~ msgstr "Näytä|N"
-
-#, fuzzy
-#~ msgid "Update Output|U"
-#~ msgstr "&Mukauta tuloste"
-
-#, fuzzy
-#~ msgid "Advanced Search"
-#~ msgstr "Edistyneet"
-
-#, fuzzy
-#~ msgid "Replace Ne&xt"
-#~ msgstr "K&orvaava teksti:"
-
-#, fuzzy
-#~ msgid "Find &Prev"
-#~ msgstr "Etsi &seuraava"
-
-#, fuzzy
-#~ msgid "Replace P&rev"
-#~ msgstr "Korvaa k&aikki"
-
-#, fuzzy
-#~ msgid "Current buffer only"
-#~ msgstr "Nykyinen solu:"
-
-#, fuzzy
-#~ msgid "Buffer"
-#~ msgstr "sininen"
-
-#, fuzzy
-#~ msgid "Document"
-#~ msgstr "Asiakirjat"
-
-#, fuzzy
-#~ msgid "Open buffers"
-#~ msgstr "sininen"
-
-#, fuzzy
-#~ msgid "CharStyle:DropCapital"
-#~ msgstr "Muutos: "
-
-#, fuzzy
-#~ msgid "Regexp"
-#~ msgstr "exp"
+#~ msgstr "Latex"
 
 #, fuzzy
 #~ msgid "No file open!"
 #~ msgstr "Ei tiedostoa!"
 
-#~ msgid "Jump to the label"
-#~ msgstr "Siirry nimikkeeseen"
-
-#~ msgid "Unknown author index for deletion: %1$d\n"
-#~ msgstr "Tuntematon tekijätunnus poistettavaksi: %1$d\n"
+#, fuzzy
+#~ msgid "You cannot paste into a multicell selection."
+#~ msgstr "Monisarake ei toimi pystysuuntaan."
 
 #, fuzzy
-#~ msgid "Click to edit the settings of the child document"
-#~ msgstr "Palauta nykyisen luokan oletusasetukset"
+#~ msgid "Check in Changes...|I"
+#~ msgstr "Kirjaa muutokset...|K"
 
 #, fuzzy
-#~ msgid "Master Settings"
-#~ msgstr "Muistiinpanoasetukset"
-
-#~ msgid "Column Width"
-#~ msgstr "Sarakkeen leveys"
-
-#~ msgid "Listing settings"
-#~ msgstr "Listauksen asetukset"
-
-#, fuzzy
-#~ msgid "\\alph{enumii}."
-#~ msgstr "Askel \\arabic{step}."
-
-#, fuzzy
-#~ msgid "Insert|n"
-#~ msgstr "Lisää|L"
-
-#~ msgid "Unknown spacing argument: "
-#~ msgstr "Tuntematon väliparametri: "
-
-#, fuzzy
-#~ msgid ""
-#~ "Input listings parameters on the right. Enter ? for a list of parameters."
-#~ msgstr "Syötä listauksen parametrit. Syötä ? jos haluat niiden lista."
-
-#~ msgid "Length"
-#~ msgstr "Pituus"
-
-#~ msgid "Opened inset"
-#~ msgstr "Upote avattiin"
-
-#~ msgid "Opened Box Inset"
-#~ msgstr "Laatikko-upote avattu"
-
-#~ msgid "Opened Branch Inset"
-#~ msgstr "Haara-upote avattu"
-
-#~ msgid "Opened Caption Inset"
-#~ msgstr "Kuvatekstiupote avattu"
-
-#~ msgid "Opened ERT Inset"
-#~ msgstr "ERT-upote avattiin"
-
-#, fuzzy
-#~ msgid "Opened Flex Inset"
-#~ msgstr "Tekstiupote avattiin"
-
-#~ msgid "Opened Float Inset"
-#~ msgstr "Kelluva upote avattu"
-
-#~ msgid "Opened Footnote Inset"
-#~ msgstr "Alaviiteupote avattiin"
-
-#~ msgid "Opened Listing Inset"
-#~ msgstr "Ohjelmalistausupote avattu"
-
-#~ msgid "Opened Marginal Note Inset"
-#~ msgstr "Reunahuomautusupote avattu"
-
-#~ msgid "Opened Note Inset"
-#~ msgstr "Muistiinpanoupote avattu"
-
-#~ msgid "Opened Optional Argument Inset"
-#~ msgstr "Valinnaisen parametrin upote avattu"
-
-#, fuzzy
-#~ msgid "Opened Phantom Inset"
-#~ msgstr "Kuvatekstiupote avattu"
-
-#~ msgid "Opened table"
-#~ msgstr "Avaa taulukko"
-
-#~ msgid "Opened Text Inset"
-#~ msgstr "Tekstiupote avattiin"
-
-#~ msgid "Opened Wrap Inset"
-#~ msgstr "Tykö-upote avattu"
-
-#, fuzzy
-#~ msgid "Select the default language of your documents"
-#~ msgstr "Palauta nykyisen luokan oletusasetukset"
-
-#~ msgid "Personal &dictionary:"
-#~ msgstr "Oma sa&nasto:"
-
-#~ msgid "Specify a personal dictionary file other than the default"
-#~ msgstr ""
-#~ "Anna vaihtoehtoinen henkilökohtainen sanasto. Esimerkiksi \"."
-#~ "ispell_english\"."
-
-#~ msgid "Use input encod&ing"
-#~ msgstr "Käytä syötteen &merkistöä"
-
-#, fuzzy
-#~ msgid "Toggle Label|L"
-#~ msgstr "Kaikki &pois/päälle"
-
-#, fuzzy
-#~ msgid "Move Section down|d"
-#~ msgstr "Sulje kappale"
-
-#, fuzzy
-#~ msgid "Move Section up|u"
-#~ msgstr "Sulje kappale"
-
-#, fuzzy
-#~ msgid "The spellchecker has failed."
-#~ msgstr "Oikoluku epäonnistui.\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "Specify an alternate personal dictionary file. E.g. \".aspell_english\"."
-#~ msgstr ""
-#~ "Anna vaihtoehtoinen henkilökohtainen sanasto. Esimerkiksi \"."
-#~ "ispell_english\"."
-
-#, fuzzy
-#~ msgid ""
-#~ "Specify whether to pass the -T input encoding option to aspell. Enable "
-#~ "this if you cannot check the spelling of words containing accented "
-#~ "letters. This may not work with all dictionaries."
-#~ msgstr ""
-#~ "Määritä, annetaanko syötemerkistön valitsin -T ispellille. Käytä tätä, "
-#~ "jos et voi oikolukea sanoja, joissa on kansainvälisiä merkkejä. Tämä ei "
-#~ "välttämättä toimi kaikkien sanastojen kanssa."
-
-#~ msgid "*.pws"
-#~ msgstr "*.pws"
-
-#, fuzzy
-#~ msgid "Accept Change|C"
-#~ msgstr "Hyväksy muutos"
-
-#, fuzzy
-#~ msgid "C&ommand:"
-#~ msgstr "&Komento:"
-
-#~ msgid "&BibTeX command:"
-#~ msgstr "BibTeX-komento:"
-
-#, fuzzy
-#~ msgid "&Index command:"
-#~ msgstr "Luo hakemisto -komento:"
-
-#, fuzzy
-#~ msgid "BibTeX command (&Japanese):"
-#~ msgstr "BibTeX-komento ja optiot"
-
-#, fuzzy
-#~ msgid "Index command (Ja&panese):"
-#~ msgstr "Luo hakemisto -komento:"
+#~ msgid "Check out for Edit|O"
+#~ msgstr "Kirjaa ulos muokattavaksi|u"
 
 #, fuzzy
 #~ msgid "Toggle Labeling/Numbering|T"
 #~ msgstr "Numerointi pois/päälle|N"
 
 #, fuzzy
-#~ msgid "Copy Label as Reference|C"
-#~ msgstr "Viittaus...|V"
-
-#, fuzzy
-#~ msgid "View|V[[show]]"
-#~ msgstr "Näytä|N"
-
-#~ msgid "View DVI"
-#~ msgstr "Katsele DVI"
-
-#~ msgid "View PDF (pdflatex)"
-#~ msgstr "Katsele PDF (pdflatex)"
-
-#~ msgid "View PostScript"
-#~ msgstr "Katsele PostScript"
-
-#~ msgid "Update DVI"
-#~ msgstr "Päi&vitä DVI"
-
-#~ msgid "Update PDF (pdflatex)"
-#~ msgstr "Päivitä PDF (pdflatex)"
-
-#~ msgid "Update PostScript"
-#~ msgstr "Päivitä PostScript"
-
-#~ msgid "Thesaurus failure"
-#~ msgstr "Synonyymit -toiminta epäonnistui"
-
-#, fuzzy
-#~ msgid "Indices"
-#~ msgstr "Lasku"
-
-#, fuzzy
-#~ msgid "You cannot paste into a multicell selection."
-#~ msgstr "Monisarake ei toimi pystysuuntaan."
+#~ msgid "Toggle Label|L"
+#~ msgstr "Kaikki &pois/päälle"
 
 #~ msgid "B&rowse..."
 #~ msgstr "S&elaa..."
@@ -24498,81 +24415,8 @@ msgstr "Tuntematon käyttäjä"
 #~ msgstr "Uu&si:"
 
 #, fuzzy
-#~ msgid "No horizontal line\t\\atop"
-#~ msgstr "Ilman jakoviivaa\t\\atop"
-
-#~ msgid "Native OS API not yet supported."
-#~ msgstr "Käyttöjärj. natiivi ohjelmointiliitäntä ei vielä tuettu"
-
-#~ msgid "Spellchecker error"
-#~ msgstr "Oikolukuohjelman virhe"
-
-#~ msgid "The spellchecker could not be started\n"
-#~ msgstr "Oikolukuohjelma ei käynnistynyt\n"
-
-#~ msgid ""
-#~ "The spellchecker has died for some reason.\n"
-#~ "Maybe it has been killed."
-#~ msgstr ""
-#~ "Oikolukuohjelma sulkeutui jostakin syystä.\n"
-#~ "Se saatettiin sulkea väkisin."
-
-#~ msgid "The spellchecker has failed"
-#~ msgstr "Oikoluku epäonnistui"
-
-#~ msgid "LangHeader"
-#~ msgstr "Kieliyläotsikko"
-
-#~ msgid "Language Header:"
-#~ msgstr "Kieliyläotsikko"
-
-#~ msgid "Language:"
-#~ msgstr "Kieli:"
-
-#~ msgid "LastLanguage"
-#~ msgstr "ViimeinenKieli"
-
-#~ msgid "Last Language:"
-#~ msgstr "Viimeinen kieli:"
-
-#~ msgid "LangFooter"
-#~ msgstr "Kielialaotsikko"
-
-#~ msgid "Language Footer:"
-#~ msgstr "Kielialaotsikko:"
-
-#~ msgid "Computer"
-#~ msgstr "Tietokone"
-
-#~ msgid "Computer:"
-#~ msgstr "Tietokone:"
-
-#~ msgid "EmptySection"
-#~ msgstr "TyhjäKappale"
-
-#~ msgid "Empty Section"
-#~ msgstr "Tyhjä Kappale"
-
-#~ msgid "CloseSection"
-#~ msgstr "SuljeKappale"
-
-#~ msgid "Close Section"
-#~ msgstr "Sulje kappale"
-
-#, fuzzy
-#~ msgid "Phantom Text"
-#~ msgstr "Perusteksti"
-
-#, fuzzy
-#~ msgid "RegExp"
-#~ msgstr "exp"
-
-#, fuzzy
 #~ msgid "&Postscript driver:"
 #~ msgstr "PostS&cript-ajuri:"
-
-#~ msgid "No Table of contents"
-#~ msgstr "Ei sisällysluetteloa"
 
 #, fuzzy
 #~ msgid "Append Parameter"
@@ -24589,78 +24433,6 @@ msgstr "Tuntematon käyttäjä"
 #, fuzzy
 #~ msgid "Remove Optional Parameter"
 #~ msgstr "Valinnaisen parametrin upote avattu"
-
-#~ msgid "&Default language:"
-#~ msgstr "&Oletuskieli:"
-
-#~ msgid "&roff command:"
-#~ msgstr "&roff-komento:"
-
-#~ msgid "External app for formating tables in plain text output"
-#~ msgstr "Erillinen ohjelma taulukoiden muotoilemista perustekstimuotoon"
-
-#~ msgid "Spellchec&ker executable:"
-#~ msgstr "&Oikolukuohjelman binääri:"
-
-#~ msgid "Can't create pipe for spellchecker."
-#~ msgstr "Oikolukuohjelmaan ei voi luoda putkea."
-
-#~ msgid "Can't open pipe for spellchecker."
-#~ msgstr "Oikolukuohjelmaan ei voi avata putkea."
-
-#~ msgid ""
-#~ "Could not create an ispell process.\n"
-#~ "You may not have the right languages installed."
-#~ msgstr ""
-#~ "Ispell-prosessin luonti epäonnistui.\n"
-#~ "Ehkäpä oikeita kieliä ei ole asennettu."
-
-#~ msgid ""
-#~ "The ispell process returned an error.\n"
-#~ "Perhaps it has been configured wrongly ?"
-#~ msgstr ""
-#~ "Oikolukuprosessi palautti virheen.\n"
-#~ "Ehkäpä sen asetuksissa on vikaa?"
-
-#~ msgid ""
-#~ "Could not check word `%1$s' because it could not be converted to encoding "
-#~ "`%2$s'."
-#~ msgstr ""
-#~ "En voinut tarkistaa sana `%1$s' koska sitä ei saatu muunnetuksi "
-#~ "merkistöön `%2$s'."
-
-#~ msgid "Could not communicate with the ispell spellchecker process."
-#~ msgstr "Viestintä ispell- oikolukuohjelman prosessin kanssa epäonnistui."
-
-#~ msgid ""
-#~ "Could not insert word `%1$s' because it could not be converted to "
-#~ "encoding `%2$s'."
-#~ msgstr ""
-#~ "En voinut lisätä sana `%1$s' koska sitä ei saatu muunnetuksi merkistöön `%"
-#~ "2$s'."
-
-#~ msgid ""
-#~ "Could not accept word `%1$s' because it could not be converted to "
-#~ "encoding `%2$s'."
-#~ msgstr ""
-#~ "En voinut hyväksyä sana `%1$s' koska sitä ei saatu muunnetuksi merkistöön "
-#~ "`%2$s'."
-
-#~ msgid "What command runs the spellchecker?"
-#~ msgstr "Mitä oikolukukomentoa käytetään?"
-
-#~ msgid "ispell"
-#~ msgstr "ispell"
-
-#~ msgid "pspell (library)"
-#~ msgstr "pspell (kirjasto)"
-
-#~ msgid "aspell (library)"
-#~ msgstr "aspell (kirjasto)"
-
-#, fuzzy
-#~ msgid "*.ispell"
-#~ msgstr "ispell"
 
 #, fuzzy
 #~ msgid "figure"
@@ -24829,6 +24601,9 @@ msgstr "Tuntematon käyttäjä"
 #~ msgid "Grayscale"
 #~ msgstr "Harmaasävyinen"
 
+#~ msgid "Preview"
+#~ msgstr "Esikatselu|#E"
+
 #~ msgid "%"
 #~ msgstr "%"
 
@@ -24864,6 +24639,9 @@ msgstr "Tuntematon käyttäjä"
 #, fuzzy
 #~ msgid " (auto)"
 #~ msgstr "automaattinen"
+
+#~ msgid "Plain Text"
+#~ msgstr "Perusteksti"
 
 #~ msgid "Edit the file externally"
 #~ msgstr "Muokkaa tiedostoa ulkoisesti"
@@ -25452,6 +25230,9 @@ msgstr "Tuntematon käyttäjä"
 #, fuzzy
 #~ msgid "Upper"
 #~ msgstr "Päivitä|v"
+
+#~ msgid "Table of contents"
+#~ msgstr "Sisällysluettelo"
 
 #, fuzzy
 #~ msgid "Number style"

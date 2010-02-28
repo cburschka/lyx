@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-28 15:22+0100\n"
-"PO-Revision-Date: 2008-08-04 23:16+0100\n"
+"POT-Creation-Date: 2010-02-28 16:00+0100\n"
+"PO-Revision-Date: 2006-11-08 17:53+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -463,9 +463,8 @@ msgid "Filename &Suffix"
 msgstr "Fitxategia"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
-#, fuzzy
 msgid "Show undefined branches used in this document."
-msgstr "Inprimatua dokumentua"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
 #, fuzzy
@@ -556,9 +555,8 @@ msgstr "&Utzi"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
-#, fuzzy
 msgid "Undefined branches used in this document."
-msgstr "Inprimatua dokumentua"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:68
 #, fuzzy
@@ -824,9 +822,8 @@ msgid "S&elected Citations:"
 msgstr "&Hautatutako aipuak:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:72
-#, fuzzy
 msgid "Click or press Enter to add the selected citation to the list"
-msgstr "Gehitu adar berria zerrendari"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "Click or press Delete to delete the selected citation from the list"
@@ -884,7 +881,7 @@ msgstr "Fitxategi guztiak (*)"
 #: src/frontends/qt4/ui/CitationUi.ui:271
 #, fuzzy
 msgid "Regular e&xpression"
-msgstr "Saioa"
+msgstr "Aldaketa: "
 
 #: src/frontends/qt4/ui/CitationUi.ui:278
 #, fuzzy
@@ -1260,9 +1257,8 @@ msgid "Find LyX Text"
 msgstr "Bilatu &hurrengoa"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:107
-#, fuzzy
 msgid "&Basic"
-msgstr "BibTeX estiloak"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:159
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:183
@@ -1275,9 +1271,8 @@ msgid "&Replace with..."
 msgstr "Ordeztu &honekin:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:222
-#, fuzzy
 msgid "Replace and find next occurrence [Enter]"
-msgstr "Ordeztu hitza uneko aukerarekin"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:225
 #, fuzzy
@@ -1339,9 +1334,8 @@ msgid "Choose one of the pre-arranged regular expressions."
 msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:425
-#, fuzzy
 msgid "Insert Re&gular Expression..."
-msgstr "Saioa"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:443
 msgid "Find next occurrence [Enter]"
@@ -1350,7 +1344,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:446
 #, fuzzy
 msgid "&Next"
-msgstr "testua"
+msgstr "&Berria:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:467
 msgid "Find previous occurrence [Shift+Enter]"
@@ -1369,7 +1363,7 @@ msgstr "&Hitz osoak bakarrik"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:494
 #, fuzzy
 msgid "Whole &words"
-msgstr "&Hitz osoak bakarrik"
+msgstr "Gako-hitzak."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:522
 #, fuzzy
@@ -1398,14 +1392,13 @@ msgstr "&Koskatu paragrafoa"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:606
 #, fuzzy
 msgid "Current &document"
-msgstr "Inprimatua dokumentua"
+msgstr "Inprimatu dokumentua"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:627
-#, fuzzy
 msgid ""
 "Current document and all related documents belonging to the same master "
 "document"
-msgstr "Inprimagailu-izen lehenetsia"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:630
 #, fuzzy
@@ -1420,12 +1413,11 @@ msgstr "Ireki dokumentua"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:651
 #, fuzzy
 msgid "&Open documents"
-msgstr "OpenDocument"
+msgstr "Ireki dokumentua"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:669
-#, fuzzy
 msgid "All ma&nuals"
-msgstr "LaTeX-ek huts egin du"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:690
 #, fuzzy
@@ -1441,7 +1433,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:711
 #, fuzzy
 msgid "Ignore &format"
-msgstr "Data-formatua"
+msgstr "&Data-formatua:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
 #: src/frontends/qt4/ui/OutputUi.ui:13 src/frontends/qt4/ui/PDFSupportUi.ui:13
@@ -1451,7 +1443,7 @@ msgstr "Inprimakia"
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:23
 #, fuzzy
 msgid "Float Type:"
-msgstr "&Mota:"
+msgstr "TeX informazioa"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:47
 msgid "Use &default placement"
@@ -2417,9 +2409,8 @@ msgid "Include only the selected subdocuments in the output"
 msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:43
-#, fuzzy
 msgid "Include only &selected children"
-msgstr "Txertatu fitxategia"
+msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:50
 msgid ""
@@ -2433,9 +2424,8 @@ msgid "&Maintain counters and references"
 msgstr "aipatu gabeko erreferentzia guztiak"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:63
-#, fuzzy
 msgid "Include all subdocuments in the output"
-msgstr "Azpimarratu zuriuneak sortutako irteeran"
+msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:66
 #, fuzzy
@@ -2670,9 +2660,8 @@ msgid "Use the XeTeX processing engine"
 msgstr ""
 
 #: src/frontends/qt4/ui/OutputUi.ui:73
-#, fuzzy
 msgid "Use &XeTeX"
-msgstr "Erabili &babel"
+msgstr ""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:19
 #, fuzzy
@@ -2959,9 +2948,8 @@ msgid "Horizontal space of the phantom content"
 msgstr "Kutxako edukiaren lerrokadura horizontala"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:73
-#, fuzzy
 msgid "&Horiz. Phantom"
-msgstr "Esperantoa"
+msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:80
 #, fuzzy
@@ -2969,9 +2957,8 @@ msgid "Vertical space of the phantom content"
 msgstr "Kutxako edukiaren lerrokadura bertikala"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:83
-#, fuzzy
 msgid "&Vert. Phantom"
-msgstr "Esperantoa"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 #, fuzzy
@@ -3651,7 +3638,7 @@ msgstr "&Laneko direktorioa:"
 #: src/frontends/qt4/ui/PrefPathsUi.ui:215
 #, fuzzy
 msgid "Hunspell dictionaries:"
-msgstr "Sinonimoak"
+msgstr "Hiztegi &pertsonala:"
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2832
 msgid ""
@@ -3929,7 +3916,6 @@ msgid "&Spellchecker engine:"
 msgstr "Zuzentzaile ortografikoa"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
-#, fuzzy
 msgid "Accept words such as \"diskdrive\""
 msgstr "Onartu \"diskdrive\" bezalako hitzak"
 
@@ -4196,17 +4182,17 @@ msgstr ""
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
 #, fuzzy
 msgid "&Clear automatically"
-msgstr "Eguneraketa automatikoa"
+msgstr "Aplikatu automatikoki aldaketa guztiak"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
 #, fuzzy
 msgid "Debug messages"
-msgstr "Araztatze-mezurik ez"
+msgstr "Araazte-mezu guztiak"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:203
 #, fuzzy
 msgid "Display no debug messages"
-msgstr "Araztatze-mezurik ez"
+msgstr "Araazte-mezu guztiak"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:206
 #, fuzzy
@@ -4228,9 +4214,8 @@ msgid "Display all debug messages"
 msgstr "Araazte-mezu guztiak"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
-#, fuzzy
 msgid "Display statusbar messages?"
-msgstr "Barne-testuaren/-taularen mezuak"
+msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:239
 #, fuzzy
@@ -4287,7 +4272,7 @@ msgstr ""
 #: src/frontends/qt4/ui/RefUi.ui:193
 #, fuzzy
 msgid "Grou&p"
-msgstr "Moztu"
+msgstr "&Izena:"
 
 #: src/frontends/qt4/ui/RefUi.ui:223 src/frontends/qt4/GuiRef.cpp:314
 msgid "&Go to Label"
@@ -4561,7 +4546,7 @@ msgstr ""
 #: src/frontends/qt4/ui/TabularUi.ui:302
 #, fuzzy
 msgid "Cell setting"
-msgstr "Ezarpenak"
+msgstr "Oharren ezarpenak"
 
 #: src/frontends/qt4/ui/TabularUi.ui:308
 msgid "Rotate this cell by 90 degrees"
@@ -5745,8 +5730,9 @@ msgid "Teaser image:"
 msgstr "G&arbitu"
 
 #: lib/layouts/acmsiggraph.layout:84
+#, fuzzy
 msgid "CRcat"
-msgstr ""
+msgstr "hat"
 
 #: lib/layouts/acmsiggraph.layout:89
 #, fuzzy
@@ -8266,9 +8252,8 @@ msgid "Physics and Astronomy Classification System number:"
 msgstr ""
 
 #: lib/layouts/iopart.layout:224
-#, fuzzy
 msgid "MSC"
-msgstr "AMS"
+msgstr "MSC"
 
 #: lib/layouts/iopart.layout:227
 #, fuzzy
@@ -8559,9 +8544,8 @@ msgid "List of Algorithms"
 msgstr "Algoritmoen zerrenda"
 
 #: lib/layouts/recipebook.layout:42 lib/layouts/scrbook.layout:17
-#, fuzzy
 msgid "\\thechapter"
-msgstr "\\Alph{chapter}"
+msgstr "\\thechapter"
 
 #: lib/layouts/recipebook.layout:78
 #, fuzzy
@@ -9762,9 +9746,8 @@ msgid "\\Alph{chapter}"
 msgstr "\\Alph{chapter}"
 
 #: lib/layouts/numreport.inc:44
-#, fuzzy
 msgid "\\arabic{footnote}"
-msgstr "\\arabic{note}. ohar."
+msgstr "\\arabic{footnote}"
 
 #: lib/layouts/numrevtex.inc:9
 msgid "\\Roman{section}."
@@ -9864,14 +9847,13 @@ msgid "UNDEFINED"
 msgstr ""
 
 #: lib/layouts/stdcounters.inc:9
-#, fuzzy
 msgid "\\Roman{part}"
-msgstr "\\Roman{part}. zatia"
+msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
 #, fuzzy
 msgid "Part \\Roman{part}"
-msgstr "\\Roman{part}. zatia"
+msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:14
 #, fuzzy
@@ -10338,7 +10320,7 @@ msgstr "Aldaketa: "
 #: lib/layouts/initials.module:12
 #, fuzzy
 msgid "Initial"
-msgstr "Testu ikuskaitza"
+msgstr "Etzana"
 
 #: lib/layouts/linguistics.module:2
 #, fuzzy
@@ -10511,7 +10493,7 @@ msgstr ""
 #: lib/layouts/noweb.module:5 lib/layouts/sweave.module:5
 #, fuzzy
 msgid "literate"
-msgstr "Seriea"
+msgstr "Hitzez hitz"
 
 #: lib/layouts/sweave.module:2 lib/layouts/sweave.module:18
 #: lib/configure.py:507
@@ -11326,7 +11308,7 @@ msgstr "DOS (CP 437)"
 
 #: lib/encodings:71
 msgid "DOS-de (CP 437-de)"
-msgstr ""
+msgstr "DOS-de (CP 437-de)"
 
 #: lib/encodings:74
 msgid "Western European (CP 850)"
@@ -13066,7 +13048,7 @@ msgstr ""
 #: lib/ui/stdcontext.inc:564
 #, fuzzy
 msgid "All Indexes|A"
-msgstr "Faktura"
+msgstr "Ireki barneko guztiak|I"
 
 #: lib/ui/stdcontext.inc:567
 msgid "Subindex|b"
@@ -13235,7 +13217,7 @@ msgstr "Testua doitzeko ezarpenak...|d"
 #: lib/ui/stdmenus.inc:140
 #, fuzzy
 msgid "Index Settings...|x"
-msgstr "TeX kode-ezarpenak...|k"
+msgstr "Kutxaren ezarpenak...|K"
 
 #: lib/ui/stdmenus.inc:141
 #, fuzzy
@@ -13610,12 +13592,12 @@ msgstr ""
 #: lib/ui/stdmenus.inc:466
 #, fuzzy
 msgid "Horizontal Phantom"
-msgstr "Esperantoa"
+msgstr "Marra horizontala"
 
 #: lib/ui/stdmenus.inc:467
 #, fuzzy
 msgid "Vertical Phantom"
-msgstr "Esperantoa"
+msgstr "Lerrokatze bertikala"
 
 #: lib/ui/stdmenus.inc:479
 msgid "Change Tracking|C"
@@ -13762,7 +13744,7 @@ msgstr "Bilatu eta ordeztu"
 #: lib/ui/stdtoolbars.inc:82
 #, fuzzy
 msgid "Find and replace (advanced)"
-msgstr "Bilatu eta ordeztu|o"
+msgstr "Bilatu eta ordeztu"
 
 #: lib/ui/stdtoolbars.inc:83
 #, fuzzy
@@ -13836,12 +13818,12 @@ msgstr "Gorde dokumentua"
 #: lib/ui/stdtoolbars.inc:104
 #, fuzzy
 msgid "View other formats"
-msgstr "Beste letra-ezarpen batzuk"
+msgstr "Fitxategi-formatuak"
 
 #: lib/ui/stdtoolbars.inc:105
 #, fuzzy
 msgid "Update other formats"
-msgstr "Eguneratu bistaraketa"
+msgstr "Data-formatua"
 
 #: lib/ui/stdtoolbars.inc:108
 #, fuzzy
@@ -14579,14 +14561,12 @@ msgid "Unit fraction (20 km/h)\t\\unitfrac"
 msgstr "Polita\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:356
-#, fuzzy
 msgid "Text fraction\t\\tfrac"
-msgstr "Testu-frakzioa (amsmath)\t\\tfrac"
+msgstr "Testu-frakzioa\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:357
-#, fuzzy
 msgid "Display fraction\t\\dfrac"
-msgstr "Adierazpen frak. (amsmath)\t\\dfrac"
+msgstr "Adierazpen frak.\t\\dfrac"
 
 #: lib/ui/stdtoolbars.inc:358
 #, fuzzy
@@ -15612,33 +15592,28 @@ msgid "sqiintop"
 msgstr "sqiintop"
 
 #: lib/ui/stdtoolbars.inc:636
-#, fuzzy
 msgid "fint"
-msgstr "int"
+msgstr "fint"
 
 #: lib/ui/stdtoolbars.inc:637
-#, fuzzy
 msgid "fintop"
-msgstr "intop"
+msgstr "fintop"
 
 #: lib/ui/stdtoolbars.inc:638
-#, fuzzy
 msgid "landupint"
-msgstr "diamondsuit"
+msgstr "landupint"
 
 #: lib/ui/stdtoolbars.inc:639
-#, fuzzy
 msgid "landupintop"
-msgstr "intop"
+msgstr "landupintop"
 
 #: lib/ui/stdtoolbars.inc:640
 msgid "landdownint"
-msgstr ""
+msgstr "landdownint"
 
 #: lib/ui/stdtoolbars.inc:641
-#, fuzzy
 msgid "landdownintop"
-msgstr "dotsintop"
+msgstr "landdownintop"
 
 #: lib/ui/stdtoolbars.inc:642
 msgid "sum"
@@ -16649,9 +16624,8 @@ msgid ""
 msgstr ""
 
 #: lib/external_templates:333
-#, fuzzy
 msgid "Dia"
-msgstr "Bistaratu"
+msgstr "Dia"
 
 #: lib/external_templates:334 lib/external_templates:337
 msgid "Dia: $$AbsOrRelPathParent$$Basename"
@@ -16670,9 +16644,8 @@ msgid "FIG"
 msgstr "FIG"
 
 #: lib/configure.py:451
-#, fuzzy
 msgid "DIA"
-msgstr "DVI"
+msgstr "DIA"
 
 #: lib/configure.py:454
 msgid "Grace"
@@ -16763,9 +16736,8 @@ msgid "Graphviz Dot"
 msgstr "Graphviz Dot"
 
 #: lib/configure.py:505
-#, fuzzy
 msgid "LaTeX (pLaTeX)"
-msgstr "LaTeX &aukerak:"
+msgstr "LaTeX (pLaTeX)"
 
 #: lib/configure.py:506
 msgid "NoWeb"
@@ -16801,7 +16773,7 @@ msgstr "LaTeX (pdflatex)"
 #: lib/configure.py:511
 #, fuzzy
 msgid "LaTeX (XeTeX)"
-msgstr "LaTeX &aukerak:"
+msgstr "LaTeX (pLaTeX)"
 
 #: lib/configure.py:512 src/frontends/qt4/GuiPrefs.cpp:335
 msgid "Plain text"
@@ -16840,7 +16812,7 @@ msgstr "HTML"
 #: lib/configure.py:519 lib/configure.py:521
 #, fuzzy
 msgid "LyXHTML|X"
-msgstr "HTML"
+msgstr "HTML|H"
 
 #: lib/configure.py:528 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
@@ -17308,7 +17280,7 @@ msgstr "Bihurketak huts egin du"
 
 #: src/Buffer.cpp:1329
 #, fuzzy
-msgid "Uncodable character in path"
+msgid "Uncodable character in file path"
 msgstr "karaktere berezia"
 
 #: src/Buffer.cpp:1330
@@ -17321,7 +17293,7 @@ msgid ""
 "This will likely result in incomplete output.\n"
 "\n"
 "Chose an appropriate document encoding (such as utf8)\n"
-"or change the path name."
+"or change the file path name."
 msgstr ""
 
 #: src/Buffer.cpp:1604
@@ -19497,9 +19469,8 @@ msgid "No valid math formula"
 msgstr ""
 
 #: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1009
-#, fuzzy
 msgid "Already in regular expression mode"
-msgstr "Saioa"
+msgstr ""
 
 #: src/Text3.cpp:216
 #, fuzzy
@@ -19841,14 +19812,12 @@ msgid "master document[[scope]]"
 msgstr "Gorde dokumentua"
 
 #: src/frontends/qt4/FindAndReplace.cpp:330
-#, fuzzy
 msgid "open files[[scope]]"
-msgstr "Adibidea #:"
+msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:333
-#, fuzzy
 msgid "manuals[[scope]]"
-msgstr "LaTeX-ek huts egin du"
+msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:337
 #, c-format
@@ -19897,13 +19866,13 @@ msgstr ""
 "beste pertsona batzuek LyX proiektuan eginiko lan ikaragarria eskertzeko."
 
 #: src/frontends/qt4/GuiAbout.cpp:84
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995--%1$s LyX Team"
 msgstr ""
 "LyX Copyright (C) 1995 Matthias Ettrich,\n"
-"1995-2001 LyX Taldea"
+"1995--%1$s LyX Taldea"
 
 #: src/frontends/qt4/GuiAbout.cpp:92
 msgid ""
@@ -20465,7 +20434,7 @@ msgstr "Finlandiera"
 #: src/frontends/qt4/GuiCompare.cpp:261
 #, fuzzy
 msgid "Aborting process..."
-msgstr "%1$s inportatzen..."
+msgstr "Dokumentua formateatzen..."
 
 #: src/frontends/qt4/GuiCompare.cpp:297
 #, fuzzy
@@ -20854,9 +20823,9 @@ msgid "Unable to set document class."
 msgstr "Ezin dira dokumentuaren lehenetsiak gorde"
 
 #: src/frontends/qt4/GuiDocument.cpp:1664
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s, %2$s"
-msgstr "%1$s eta %2$s"
+msgstr "%1$s, %2$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:1669
 #, fuzzy, c-format
@@ -21273,7 +21242,7 @@ msgstr "LaTeX egunkaria"
 #: src/frontends/qt4/GuiLog.cpp:237
 #, fuzzy
 msgid "Literate"
-msgstr "Seriea"
+msgstr "Hitzez hitz"
 
 #: src/frontends/qt4/GuiLog.cpp:240
 #, fuzzy
@@ -21624,17 +21593,15 @@ msgstr "Markoaren ezarpenak"
 #: src/frontends/qt4/GuiPrintindex.cpp:69
 #, fuzzy
 msgid "<All indexes>"
-msgstr "Adar &erabilgarriak:"
+msgstr "Fitxategi guztiak (*)"
 
 #: src/frontends/qt4/GuiProgressView.cpp:52
-#, fuzzy
 msgid "Progress/Debug Messages"
-msgstr "Araztatze-mezurik ez"
+msgstr ""
 
 #: src/frontends/qt4/GuiProgressView.cpp:81
-#, fuzzy
 msgid "Debug Level"
-msgstr "Araztatze-mezurik ez"
+msgstr ""
 
 #: src/frontends/qt4/GuiProgressView.cpp:82
 #, fuzzy
@@ -22413,15 +22380,16 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2461
 #, fuzzy
 msgid "Reload externally changed document?"
-msgstr "Gordetako dokumentua berreskuratu?"
+msgstr "Gorde aldatutako dokumentua?"
 
 #: src/frontends/qt4/GuiView.cpp:2515
 msgid "Error when setting the locking property."
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2558
+#, fuzzy
 msgid "Directory is not accessible."
-msgstr ""
+msgstr "Ezin izan da %1$s irakurri."
 
 #: src/frontends/qt4/GuiView.cpp:2641
 #, fuzzy, c-format
@@ -22429,9 +22397,9 @@ msgid "Opening child document %1$s..."
 msgstr "%1$s dokumentua irekitzen..."
 
 #: src/frontends/qt4/GuiView.cpp:2725
-#, fuzzy, c-format
+#, c-format
 msgid "Successful export to format: %1$s"
-msgstr "Ez dago informaziorik %1$s formatua esportatzeko."
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2726
 #, fuzzy, c-format
@@ -22444,9 +22412,9 @@ msgid "Successful preview of format: %1$s"
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2739
-#, fuzzy, c-format
+#, c-format
 msgid "Error previewing format: %1$s"
-msgstr "Ez dago informaziorik %1$s formatua esportatzeko."
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2798
 #, fuzzy
@@ -22606,9 +22574,8 @@ msgid "<No Bookmarks Saved Yet>"
 msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:951
-#, fuzzy
 msgid "View (Other Formats)|F"
-msgstr "Beste letra-ezarpen batzuk"
+msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:952
 #, fuzzy
@@ -22618,12 +22585,12 @@ msgstr "Eguneratu bistaraketa"
 #: src/frontends/qt4/Menus.cpp:985
 #, fuzzy, c-format
 msgid "View [%1$s]|V"
-msgstr "&Ikusi"
+msgstr "Ikusi|I"
 
 #: src/frontends/qt4/Menus.cpp:986
 #, fuzzy, c-format
 msgid "Update [%1$s]|U"
-msgstr "&Eguneratu"
+msgstr "Eguneratu|E"
 
 #: src/frontends/qt4/Menus.cpp:1079
 #, fuzzy
@@ -22699,9 +22666,9 @@ msgid "Update %1$s"
 msgstr "&Eguneratu"
 
 #: src/frontends/qt4/Toolbars.cpp:229
-#, fuzzy, c-format
+#, c-format
 msgid "View %1$s"
-msgstr "&Ikusi"
+msgstr ""
 
 #: src/frontends/qt4/Validator.cpp:161
 msgid "space"
@@ -22931,14 +22898,14 @@ msgid "double frame"
 msgstr "bikoitza"
 
 #: src/insets/InsetBox.cpp:151 src/insets/InsetBox.cpp:154
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (%2$s)"
-msgstr "%1$s eta %2$s"
+msgstr "%1$s (%2$s)"
 
 #: src/insets/InsetBox.cpp:157
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (%2$s, %3$s)"
-msgstr "%1$s eta %2$s"
+msgstr "%1$s (%2$s, %3$s)"
 
 #: src/insets/InsetBranch.cpp:66
 #, fuzzy
@@ -23038,8 +23005,8 @@ msgstr "karaktere berezia"
 #: src/insets/InsetCommandParams.cpp:387
 #, c-format
 msgid ""
-"The following characters that are used in an inset (%1$s) are\n"
-"not representable in the current encoding and have been omitted:\n"
+"The following characters that are used in the inset %1$s are not\n"
+"representable in the current encoding and therefore have been omitted:\n"
 "%2$s."
 msgstr ""
 
@@ -23200,7 +23167,7 @@ msgstr "Token ezezaguna"
 #: src/insets/InsetIndex.cpp:448
 #, fuzzy
 msgid "All indices"
-msgstr "Adar &erabilgarriak:"
+msgstr "Fitxategi guztiak (*)"
 
 #: src/insets/InsetIndex.cpp:452
 #, fuzzy
@@ -23878,9 +23845,8 @@ msgid "entered math text mode (textrm)"
 msgstr "sartu matematika-testu moduan (textrm)"
 
 #: src/mathed/InsetMathNest.cpp:1019
-#, fuzzy
 msgid "Regular expression editor mode"
-msgstr "Mat. editore-modua"
+msgstr ""
 
 #: src/mathed/InsetMathNest.cpp:1595 src/mathed/InsetMathNest.cpp:1715
 msgid "Autocorrect Off ('!' to enter)"
@@ -24169,12 +24135,204 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Erabiltzaile ezezaguna"
 
+#~ msgid "&Dummy"
+#~ msgstr "&Probakoa"
+
 #, fuzzy
-#~ msgid "TextLabel"
-#~ msgstr "Etiketa"
+#~ msgid "F&ind:"
+#~ msgstr "&Bilatu:"
+
+#~ msgid "D&elete"
+#~ msgstr "E&zabatu"
+
+#~ msgid "&Default language:"
+#~ msgstr "Hizkuntza &lehenetsia:"
+
+#, fuzzy
+#~ msgid "Select the default language of your documents"
+#~ msgstr "Berrezarri uneko klasearen parametro lehenetsiak"
+
+#~ msgid "&BibTeX command:"
+#~ msgstr "&BibTeX komandoa:"
+
+#, fuzzy
+#~ msgid "&Index command:"
+#~ msgstr "Indize-komandoa:"
+
+#, fuzzy
+#~ msgid "BibTeX command (&Japanese):"
+#~ msgstr "BibTeX komandoa eta aukerak"
+
+#, fuzzy
+#~ msgid "Index command (Ja&panese):"
+#~ msgstr "Indize-komandoa:"
+
+#~ msgid "&roff command:"
+#~ msgstr "&roff komandoa:"
+
+#~ msgid "External app for formating tables in plain text output"
+#~ msgstr "Kanpoko aplikazioa taulei formatu emateko testu soileko irteeran"
+
+#~ msgid "Specify a personal dictionary file other than the default"
+#~ msgstr "Zure hiztegi pertsonalaren fitxategia zehaztu, lehenetsiaren ordez."
+
+#~ msgid "Spellchec&ker executable:"
+#~ msgstr "Zuzentzaile orto&grafikoa:"
+
+#~ msgid "Use input encod&ing"
+#~ msgstr "E&rabili sarrera kodetua"
+
+#~ msgid "Jump to the label"
+#~ msgstr "Joan etiketara"
 
 #~ msgid "Merge cells"
 #~ msgstr "Bateratu gelaxkak"
+
+#, fuzzy
+#~ msgid "Listing settings"
+#~ msgstr "Paragrafo-ezarpenak"
+
+#, fuzzy
+#~ msgid "LangHeader"
+#~ msgstr "Goiburua"
+
+#, fuzzy
+#~ msgid "Language Header:"
+#~ msgstr "Ezker-goiburua:"
+
+#, fuzzy
+#~ msgid "Language:"
+#~ msgstr "&Hizkuntza:"
+
+#, fuzzy
+#~ msgid "LastLanguage"
+#~ msgstr "Hizkuntza"
+
+#, fuzzy
+#~ msgid "Last Language:"
+#~ msgstr "&Hizkuntza:"
+
+#, fuzzy
+#~ msgid "LangFooter"
+#~ msgstr "Orri-oina:"
+
+#, fuzzy
+#~ msgid "End"
+#~ msgstr "\tAmaiera)"
+
+#~ msgid "Strasse"
+#~ msgstr "Kalea"
+
+#~ msgid "Land"
+#~ msgstr "Herrialdea"
+
+#~ msgid "BLZ"
+#~ msgstr "BLZ"
+
+#~ msgid "Konto"
+#~ msgstr "Kontua"
+
+#, fuzzy
+#~ msgid "Computer"
+#~ msgstr "Courier"
+
+#, fuzzy
+#~ msgid "Computer:"
+#~ msgstr "&Kopiatzailea:"
+
+#, fuzzy
+#~ msgid "EmptySection"
+#~ msgstr "Atala"
+
+#, fuzzy
+#~ msgid "Empty Section"
+#~ msgstr "Atala"
+
+#, fuzzy
+#~ msgid "CloseSection"
+#~ msgstr "hautapena"
+
+#, fuzzy
+#~ msgid "Close Section"
+#~ msgstr "hautapena"
+
+#, fuzzy
+#~ msgid "Insert|n"
+#~ msgstr "Txertatu|T"
+
+#, fuzzy
+#~ msgid "Dissolve Inset|l"
+#~ msgstr "Desegin barnekoa|s"
+
+#, fuzzy
+#~ msgid "View DVI"
+#~ msgstr "Ikusi|I"
+
+#, fuzzy
+#~ msgid "Update DVI"
+#~ msgstr "&Eguneratu"
+
+#, fuzzy
+#~ msgid "View PostScript"
+#~ msgstr "Post Scriptum:"
+
+#, fuzzy
+#~ msgid "Update PostScript"
+#~ msgstr "Post Scriptum:"
+
+#, fuzzy
+#~ msgid "No horizontal line\t\\atop"
+#~ msgstr "Marra hor. ez\\atop"
+
+#~ msgid "Can't create pipe for spellchecker."
+#~ msgstr "Ezin da zuzentzailearen kanalizaziorik sortu."
+
+#~ msgid "Can't open pipe for spellchecker."
+#~ msgstr "Ezin da zuzentzailearen kanalizaziorik ireki."
+
+#~ msgid ""
+#~ "Could not create an ispell process.\n"
+#~ "You may not have the right languages installed."
+#~ msgstr ""
+#~ "Ezin izan da ispell prozesua sortu.\n"
+#~ "Badirudi ez dituzula hizkuntza egokiak instalatuta."
+
+#~ msgid ""
+#~ "The ispell process returned an error.\n"
+#~ "Perhaps it has been configured wrongly ?"
+#~ msgstr ""
+#~ "ispell prozesuak errore bat itzuli du.\n"
+#~ "Gaizki konfiguratua egon daiteke?"
+
+#~ msgid "Could not communicate with the ispell spellchecker process."
+#~ msgstr "Ezin izan da komunikatu ispell prozesuarekin."
+
+#~ msgid ""
+#~ "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+#~ msgstr ""
+#~ "Zehaztu aukerako hiztegi pertsonalaren fitxategia. Adbz.  \"."
+#~ "ispell_english\"."
+
+#~ msgid "What command runs the spellchecker?"
+#~ msgstr "Zein komandok exekutatzen du zuzentzaile ortografikoa?"
+
+#~ msgid ""
+#~ "Specify whether to pass the -T input encoding option to ispell. Enable "
+#~ "this if you cannot check the spelling of words containing accented "
+#~ "letters. This may not work with all dictionaries."
+#~ msgstr ""
+#~ "Zehaztu Ispell programari \"-T\" sarrerako kodeketa aukera pasatuko zaion "
+#~ "ala ez. Gaitu hau azentuak dituzten hizkien ezin badituzu zuzendu. "
+#~ "Baliteke aukera hau hiztegi guztiekin ez funtzionatzea."
+
+#~ msgid "Native OS API not yet supported."
+#~ msgstr "Jatorrizko SEaren APIa ez dago onartuta."
+
+#~ msgid "Unknown author index for deletion: %1$d\n"
+#~ msgstr "Egileen indize ezezaguna ezabatzeko: %1$d\n"
+
+#~ msgid "Unknown spacing argument: "
+#~ msgstr "Tartekatze-argumentu ezezaguna: "
 
 #~ msgid "Bibliography Entry Settings"
 #~ msgstr "Bibliografia-sarreren ezarpenak"
@@ -24182,125 +24340,119 @@ msgstr "Erabiltzaile ezezaguna"
 #~ msgid "Branch Settings"
 #~ msgstr "Adarraren ezarpenak"
 
-#, fuzzy
-#~ msgid "Horizontal Space Settings"
-#~ msgstr "Tarte bertikalaren ezarpenak"
-
-#~ msgid "Table Settings"
-#~ msgstr "Taularen ezarpenak"
-
-#~ msgid "Vertical Space Settings"
-#~ msgstr "Tarte bertikalaren ezarpenak"
-
-#, fuzzy
-#~ msgid "Language ...|L"
-#~ msgstr "Hizkuntza"
-
-#~ msgid " Macro: %1$s: "
-#~ msgstr " Makroa: %1$s: "
-
-#, fuzzy
-#~ msgid "&Debug messages"
-#~ msgstr "Araztatze-mezurik ez"
-
-#, fuzzy
-#~ msgid "Clear &automatically"
-#~ msgstr "Eguneraketa automatikoa"
-
-#, fuzzy
-#~ msgid "Dissolve Inset|l"
-#~ msgstr "Desegin barnekoa|s"
-
-#~ msgid "Box Settings"
-#~ msgstr "Markoaren ezarpenak"
+#~ msgid "Length"
+#~ msgstr "Luzera"
 
 #~ msgid "TeX Code Settings"
 #~ msgstr "TeX kode-ezarpenak"
+
+#, fuzzy
+#~ msgid "pLaTeX"
+#~ msgstr "LaTeX"
 
 #~ msgid "Float Settings"
 #~ msgstr "Mugikorren ezarpenak"
 
 #, fuzzy
-#~ msgid "Match found and replaced !"
-#~ msgstr "Bilatu eta ordeztu"
+#~ msgid "Horizontal Space Settings"
+#~ msgstr "Tarte bertikalaren ezarpenak"
+
+#~ msgid "No LaTeX log file found."
+#~ msgstr "Ez da LaTeX egunkaririk aurkitu."
+
+#~ msgid "ispell"
+#~ msgstr "ispell"
+
+#~ msgid "pspell (library)"
+#~ msgstr "pspell (liburutegia)"
+
+#~ msgid "aspell (library)"
+#~ msgstr "aspell (liburutegia)"
+
+#~ msgid "*.pws"
+#~ msgstr "*.pws"
+
+#~ msgid "*.ispell"
+#~ msgstr "*.ispell"
+
+#~ msgid "Spellchecker error"
+#~ msgstr "Zuzentzaile ortografikoaren errorea"
+
+#~ msgid "The spellchecker could not be started\n"
+#~ msgstr "Zuzentzailea ez da abiatu.\n"
+
+#~ msgid ""
+#~ "The spellchecker has died for some reason.\n"
+#~ "Maybe it has been killed."
+#~ msgstr ""
+#~ "Zerbaitengatik zuzentzailea bertan hil da.\n"
+#~ "Agian akatu egin dute."
+
+#~ msgid "The spellchecker has failed.\n"
+#~ msgstr "Zuzentzaielak huts egin du.\n"
+
+#~ msgid "The spellchecker has failed"
+#~ msgstr "Zuzentzaielak huts egin du"
+
+#~ msgid "Vertical Space Settings"
+#~ msgstr "Tarte bertikalaren ezarpenak"
+
+#~ msgid "No Table of contents"
+#~ msgstr "Ez dago gaien aurkibiderik"
+
+#~ msgid "Opened inset"
+#~ msgstr "Irekitako barnekoa"
 
 #, fuzzy
-#~ msgid "Close this panel"
-#~ msgstr "Itxi elkarrizketa-koadroa"
+#~ msgid "Uncodable characters in bibliography item"
+#~ msgstr "karaktere berezia"
+
+#~ msgid "Opened Box Inset"
+#~ msgstr "Barneko markoa irekita"
+
+#~ msgid "Opened Branch Inset"
+#~ msgstr "Barneko adarra irekita"
+
+#~ msgid "Opened Caption Inset"
+#~ msgstr "Epigrafe barnekoa irekia"
+
+#~ msgid "Opened ERT Inset"
+#~ msgstr "ERT barnekoa irekita"
 
 #, fuzzy
-#~ msgid "Prev"
-#~ msgstr "Aurrebista"
+#~ msgid "Opened Flex Inset"
+#~ msgstr "Testuen barnekoa irekita"
+
+#~ msgid "Opened Float Inset"
+#~ msgstr "Irekitako mugikorren barnekoa"
+
+#~ msgid "Opened Footnote Inset"
+#~ msgstr "Irekitako oin-oharren barnekoa"
 
 #, fuzzy
-#~ msgid "Match..."
-#~ msgstr "Matematikak"
+#~ msgid "Opened Listing Inset"
+#~ msgstr "Epigrafe barnekoa irekia"
 
-#, fuzzy
-#~ msgid "Find LyX Dialog"
-#~ msgstr "Bilatu &hurrengoa"
+#~ msgid "Opened Marginal Note Inset"
+#~ msgstr "Albo-oharren barnekoa irekita"
 
-#~ msgid "D&elete"
-#~ msgstr "E&zabatu"
+#~ msgid "Opened Note Inset"
+#~ msgstr "Oharren barnekoa irekita"
 
-#, fuzzy
-#~ msgid "F&ind:"
-#~ msgstr "&Bilatu:"
+#~ msgid "Opened Optional Argument Inset"
+#~ msgstr "Aukerako argumentu barnekoa irekita"
 
-#, fuzzy
-#~ msgid "Current &Paragraph"
-#~ msgstr "&Koskatu paragrafoa"
+#~ msgid "Opened table"
+#~ msgstr "Irekitako taula"
 
-#, fuzzy
-#~ msgid "Document in current file"
-#~ msgstr "Huts egitea dokumentu-formatuan"
+#~ msgid "Opened Text Inset"
+#~ msgstr "Testuen barnekoa irekita"
 
-#, fuzzy
-#~ msgid "diamond2"
-#~ msgstr "diamond"
+#~ msgid "Opened Wrap Inset"
+#~ msgstr "Doitze-barnekoa irekita"
 
-#, fuzzy
-#~ msgid "End"
-#~ msgstr "\tAmaiera)"
-
-#, fuzzy
-#~ msgid "begin"
-#~ msgstr "Hasierako markoa"
-
-#, fuzzy
-#~ msgid "end"
-#~ msgstr "Eta"
-
-#, fuzzy
-#~ msgid "file"
-#~ msgstr "Txertatu fitxategia"
-
-#, fuzzy
-#~ msgid "forward"
-#~ msgstr "forall"
-
-#, fuzzy
-#~ msgid "backwards"
-#~ msgstr "Bilatu &atzerantz"
-
-#, fuzzy
-#~ msgid "Continue searching from "
-#~ msgstr "Polita\t\\nicefrac"
-
-#~ msgid "&Dummy"
-#~ msgstr "&Probakoa"
-
-#, fuzzy
-#~ msgid "&Automatic clear"
-#~ msgstr "Eguneraketa automatikoa"
-
-#, fuzzy
-#~ msgid "Show progress messages"
-#~ msgstr "(egunkari-mezurik ez)"
-
-#, fuzzy
-#~ msgid "(cancelling)"
-#~ msgstr "albo"
+#~ msgid " Macro: %1$s: "
+#~ msgstr " Makroa: %1$s: "
 
 #, fuzzy
 #~ msgid "Anschrift:"
@@ -24362,14 +24514,8 @@ msgstr "Erabiltzaile ezezaguna"
 #~ msgid "Text:"
 #~ msgstr "Testua:"
 
-#~ msgid "Strasse"
-#~ msgstr "Kalea"
-
 #~ msgid "Strasse:"
 #~ msgstr "Kalea:"
-
-#~ msgid "Land"
-#~ msgstr "Herrialdea"
 
 #~ msgid "Land:"
 #~ msgstr "Herrialdea:"
@@ -24386,14 +24532,8 @@ msgstr "Erabiltzaile ezezaguna"
 #~ msgid "IhrSchreiben:"
 #~ msgstr "IdatziHari:"
 
-#~ msgid "BLZ"
-#~ msgstr "BLZ"
-
 #~ msgid "BLZ:"
 #~ msgstr "BLZ:"
-
-#~ msgid "Konto"
-#~ msgstr "Kontua"
 
 #~ msgid "Konto:"
 #~ msgstr "Kontua:"
@@ -24404,262 +24544,32 @@ msgstr "Erabiltzaile ezezaguna"
 #~ msgid "Anlagen:"
 #~ msgstr "Inbertsioa:"
 
-#~ msgid "No LaTeX log file found."
-#~ msgstr "Ez da LaTeX egunkaririk aurkitu."
-
-#, fuzzy
 #~ msgid "Latex"
-#~ msgstr "Data"
-
-#, fuzzy
-#~ msgid "View Output|V"
-#~ msgstr "Ikusi|I"
-
-#, fuzzy
-#~ msgid "Update Output|U"
-#~ msgstr "Egokitu ir&teera"
-
-#, fuzzy
-#~ msgid "Advanced Search"
-#~ msgstr "&Utzi"
-
-#, fuzzy
-#~ msgid "Replace Ne&xt"
-#~ msgstr "Ordeztu &honekin:"
-
-#, fuzzy
-#~ msgid "Find &Prev"
-#~ msgstr "Bilatu &hurrengoa"
-
-#, fuzzy
-#~ msgid "Replace P&rev"
-#~ msgstr "Ordeztu &guztiak"
-
-#, fuzzy
-#~ msgid "Current buffer only"
-#~ msgstr "Uneko gelaxka:"
-
-#, fuzzy
-#~ msgid "Buffer"
-#~ msgstr "urdina"
-
-#, fuzzy
-#~ msgid "Document"
-#~ msgstr "Dokumentuak"
-
-#, fuzzy
-#~ msgid "Open buffers"
-#~ msgstr "urdina"
-
-#, fuzzy
-#~ msgid "CharStyle:DropCapital"
-#~ msgstr "Aldaketa: "
-
-#, fuzzy
-#~ msgid "Regexp"
-#~ msgstr "exp"
+#~ msgstr "Latex"
 
 #, fuzzy
 #~ msgid "No file open!"
 #~ msgstr "Ez da fitxategirik aurkitu!"
 
-#~ msgid "Jump to the label"
-#~ msgstr "Joan etiketara"
-
-#~ msgid "Unknown author index for deletion: %1$d\n"
-#~ msgstr "Egileen indize ezezaguna ezabatzeko: %1$d\n"
+#, fuzzy
+#~ msgid "You cannot paste into a multicell selection."
+#~ msgstr "Ezin duzu zutabe anitza bertikalki ezarri."
 
 #, fuzzy
-#~ msgid "Click to edit the settings of the child document"
-#~ msgstr "Berrezarri uneko klasearen parametro lehenetsiak"
+#~ msgid "Check in Changes...|I"
+#~ msgstr "Egiaztatu aldaketak...|E"
 
 #, fuzzy
-#~ msgid "Master Settings"
-#~ msgstr "Oharren ezarpenak"
-
-#~ msgid "Column Width"
-#~ msgstr "Zutabe zabalera"
-
-#, fuzzy
-#~ msgid "Listing settings"
-#~ msgstr "Paragrafo-ezarpenak"
-
-#, fuzzy
-#~ msgid "\\alph{enumii}."
-#~ msgstr "(\\alph{enumii})"
-
-#, fuzzy
-#~ msgid "Insert|n"
-#~ msgstr "Txertatu|T"
-
-#~ msgid "Unknown spacing argument: "
-#~ msgstr "Tartekatze-argumentu ezezaguna: "
-
-#~ msgid "Length"
-#~ msgstr "Luzera"
-
-#~ msgid "Opened inset"
-#~ msgstr "Irekitako barnekoa"
-
-#~ msgid "Opened Box Inset"
-#~ msgstr "Barneko markoa irekita"
-
-#~ msgid "Opened Branch Inset"
-#~ msgstr "Barneko adarra irekita"
-
-#~ msgid "Opened Caption Inset"
-#~ msgstr "Epigrafe barnekoa irekia"
-
-#~ msgid "Opened ERT Inset"
-#~ msgstr "ERT barnekoa irekita"
-
-#, fuzzy
-#~ msgid "Opened Flex Inset"
-#~ msgstr "Testuen barnekoa irekita"
-
-#~ msgid "Opened Float Inset"
-#~ msgstr "Irekitako mugikorren barnekoa"
-
-#~ msgid "Opened Footnote Inset"
-#~ msgstr "Irekitako oin-oharren barnekoa"
-
-#, fuzzy
-#~ msgid "Opened Listing Inset"
-#~ msgstr "Epigrafe barnekoa irekia"
-
-#~ msgid "Opened Marginal Note Inset"
-#~ msgstr "Albo-oharren barnekoa irekita"
-
-#~ msgid "Opened Note Inset"
-#~ msgstr "Oharren barnekoa irekita"
-
-#~ msgid "Opened Optional Argument Inset"
-#~ msgstr "Aukerako argumentu barnekoa irekita"
-
-#, fuzzy
-#~ msgid "Opened Phantom Inset"
-#~ msgstr "Epigrafe barnekoa irekia"
-
-#~ msgid "Opened table"
-#~ msgstr "Irekitako taula"
-
-#~ msgid "Opened Text Inset"
-#~ msgstr "Testuen barnekoa irekita"
-
-#~ msgid "Opened Wrap Inset"
-#~ msgstr "Doitze-barnekoa irekita"
-
-#, fuzzy
-#~ msgid "Select the default language of your documents"
-#~ msgstr "Berrezarri uneko klasearen parametro lehenetsiak"
-
-#~ msgid "Personal &dictionary:"
-#~ msgstr "Hiztegi &pertsonala:"
-
-#~ msgid "Specify a personal dictionary file other than the default"
-#~ msgstr "Zure hiztegi pertsonalaren fitxategia zehaztu, lehenetsiaren ordez."
-
-#~ msgid "Use input encod&ing"
-#~ msgstr "E&rabili sarrera kodetua"
-
-#, fuzzy
-#~ msgid "Toggle Label|L"
-#~ msgstr "Txandakatu &guztiak"
-
-#, fuzzy
-#~ msgid "Move Section down|d"
-#~ msgstr "hautapena"
-
-#, fuzzy
-#~ msgid "Move Section up|u"
-#~ msgstr "hautapena"
-
-#, fuzzy
-#~ msgid "The spellchecker has failed."
-#~ msgstr "Zuzentzaielak huts egin du.\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "Specify an alternate personal dictionary file. E.g. \".aspell_english\"."
-#~ msgstr ""
-#~ "Zehaztu aukerako hiztegi pertsonalaren fitxategia. Adbz.  \"."
-#~ "ispell_english\"."
-
-#, fuzzy
-#~ msgid ""
-#~ "Specify whether to pass the -T input encoding option to aspell. Enable "
-#~ "this if you cannot check the spelling of words containing accented "
-#~ "letters. This may not work with all dictionaries."
-#~ msgstr ""
-#~ "Zehaztu Ispell programari \"-T\" sarrerako kodeketa aukera pasatuko zaion "
-#~ "ala ez. Gaitu hau azentuak dituzten hizkien ezin badituzu zuzendu. "
-#~ "Baliteke aukera hau hiztegi guztiekin ez funtzionatzea."
-
-#~ msgid "*.pws"
-#~ msgstr "*.pws"
-
-#, fuzzy
-#~ msgid "Accept Change|C"
-#~ msgstr "Onartu aldaketa|O"
-
-#, fuzzy
-#~ msgid "C&ommand:"
-#~ msgstr "&Komandoa:"
-
-#~ msgid "&BibTeX command:"
-#~ msgstr "&BibTeX komandoa:"
-
-#, fuzzy
-#~ msgid "&Index command:"
-#~ msgstr "Indize-komandoa:"
-
-#, fuzzy
-#~ msgid "BibTeX command (&Japanese):"
-#~ msgstr "BibTeX komandoa eta aukerak"
-
-#, fuzzy
-#~ msgid "Index command (Ja&panese):"
-#~ msgstr "Indize-komandoa:"
+#~ msgid "Check out for Edit|O"
+#~ msgstr "Egiaztatu editatzeko|E"
 
 #, fuzzy
 #~ msgid "Toggle Labeling/Numbering|T"
 #~ msgstr "Txandakatu zenbakera|n"
 
 #, fuzzy
-#~ msgid "Copy Label as Reference|C"
-#~ msgstr "Erreferentzia gurutzatua...|u"
-
-#, fuzzy
-#~ msgid "View|V[[show]]"
-#~ msgstr "Ikusi|I"
-
-#, fuzzy
-#~ msgid "View DVI"
-#~ msgstr "Ikusi|I"
-
-#, fuzzy
-#~ msgid "View PostScript"
-#~ msgstr "Post Scriptum:"
-
-#, fuzzy
-#~ msgid "Update DVI"
-#~ msgstr "&Eguneratu"
-
-#, fuzzy
-#~ msgid "Update PostScript"
-#~ msgstr "Post Scriptum:"
-
-#, fuzzy
-#~ msgid "Thesaurus failure"
-#~ msgstr "Sinonimoak"
-
-#, fuzzy
-#~ msgid "Indices"
-#~ msgstr "Faktura"
-
-#, fuzzy
-#~ msgid "You cannot paste into a multicell selection."
-#~ msgstr "Ezin duzu zutabe anitza bertikalki ezarri."
+#~ msgid "Toggle Label|L"
+#~ msgstr "Txandakatu &guztiak"
 
 #~ msgid "B&rowse..."
 #~ msgstr "A&rakatu..."
@@ -24676,94 +24586,8 @@ msgstr "Erabiltzaile ezezaguna"
 #~ msgstr "&Berria:"
 
 #, fuzzy
-#~ msgid "No horizontal line\t\\atop"
-#~ msgstr "Marra hor. ez\\atop"
-
-#~ msgid "Native OS API not yet supported."
-#~ msgstr "Jatorrizko SEaren APIa ez dago onartuta."
-
-#~ msgid "Spellchecker error"
-#~ msgstr "Zuzentzaile ortografikoaren errorea"
-
-#~ msgid "The spellchecker could not be started\n"
-#~ msgstr "Zuzentzailea ez da abiatu.\n"
-
-#~ msgid ""
-#~ "The spellchecker has died for some reason.\n"
-#~ "Maybe it has been killed."
-#~ msgstr ""
-#~ "Zerbaitengatik zuzentzailea bertan hil da.\n"
-#~ "Agian akatu egin dute."
-
-#~ msgid "The spellchecker has failed"
-#~ msgstr "Zuzentzaielak huts egin du"
-
-#, fuzzy
-#~ msgid "LangHeader"
-#~ msgstr "Goiburua"
-
-#, fuzzy
-#~ msgid "Language Header:"
-#~ msgstr "Ezker-goiburua:"
-
-#, fuzzy
-#~ msgid "Language:"
-#~ msgstr "&Hizkuntza:"
-
-#, fuzzy
-#~ msgid "LastLanguage"
-#~ msgstr "Hizkuntza"
-
-#, fuzzy
-#~ msgid "Last Language:"
-#~ msgstr "&Hizkuntza:"
-
-#, fuzzy
-#~ msgid "LangFooter"
-#~ msgstr "Orri-oina:"
-
-#, fuzzy
-#~ msgid "Language Footer:"
-#~ msgstr "&Hizkuntza:"
-
-#, fuzzy
-#~ msgid "Computer"
-#~ msgstr "Courier"
-
-#, fuzzy
-#~ msgid "Computer:"
-#~ msgstr "&Kopiatzailea:"
-
-#, fuzzy
-#~ msgid "EmptySection"
-#~ msgstr "Atala"
-
-#, fuzzy
-#~ msgid "Empty Section"
-#~ msgstr "Atala"
-
-#, fuzzy
-#~ msgid "CloseSection"
-#~ msgstr "hautapena"
-
-#, fuzzy
-#~ msgid "Close Section"
-#~ msgstr "hautapena"
-
-#, fuzzy
-#~ msgid "Phantom Text"
-#~ msgstr "Testu soila"
-
-#, fuzzy
-#~ msgid "RegExp"
-#~ msgstr "exp"
-
-#, fuzzy
 #~ msgid "&Postscript driver:"
 #~ msgstr "Postscript &kontrolatzailea:"
-
-#~ msgid "No Table of contents"
-#~ msgstr "Ez dago gaien aurkibiderik"
 
 #, fuzzy
 #~ msgid "Append Parameter"
@@ -24780,56 +24604,6 @@ msgstr "Erabiltzaile ezezaguna"
 #, fuzzy
 #~ msgid "Remove Optional Parameter"
 #~ msgstr "Aukerako argumentu barnekoa irekita"
-
-#~ msgid "&Default language:"
-#~ msgstr "Hizkuntza &lehenetsia:"
-
-#~ msgid "&roff command:"
-#~ msgstr "&roff komandoa:"
-
-#~ msgid "External app for formating tables in plain text output"
-#~ msgstr "Kanpoko aplikazioa taulei formatu emateko testu soileko irteeran"
-
-#~ msgid "Spellchec&ker executable:"
-#~ msgstr "Zuzentzaile orto&grafikoa:"
-
-#~ msgid "Can't create pipe for spellchecker."
-#~ msgstr "Ezin da zuzentzailearen kanalizaziorik sortu."
-
-#~ msgid "Can't open pipe for spellchecker."
-#~ msgstr "Ezin da zuzentzailearen kanalizaziorik ireki."
-
-#~ msgid ""
-#~ "Could not create an ispell process.\n"
-#~ "You may not have the right languages installed."
-#~ msgstr ""
-#~ "Ezin izan da ispell prozesua sortu.\n"
-#~ "Badirudi ez dituzula hizkuntza egokiak instalatuta."
-
-#~ msgid ""
-#~ "The ispell process returned an error.\n"
-#~ "Perhaps it has been configured wrongly ?"
-#~ msgstr ""
-#~ "ispell prozesuak errore bat itzuli du.\n"
-#~ "Gaizki konfiguratua egon daiteke?"
-
-#~ msgid "Could not communicate with the ispell spellchecker process."
-#~ msgstr "Ezin izan da komunikatu ispell prozesuarekin."
-
-#~ msgid "What command runs the spellchecker?"
-#~ msgstr "Zein komandok exekutatzen du zuzentzaile ortografikoa?"
-
-#~ msgid "ispell"
-#~ msgstr "ispell"
-
-#~ msgid "pspell (library)"
-#~ msgstr "pspell (liburutegia)"
-
-#~ msgid "aspell (library)"
-#~ msgstr "aspell (liburutegia)"
-
-#~ msgid "*.ispell"
-#~ msgstr "*.ispell"
 
 #, fuzzy
 #~ msgid "figure"
@@ -25000,6 +24774,9 @@ msgstr "Erabiltzaile ezezaguna"
 #~ msgid "Grayscale"
 #~ msgstr "Gris-eskala"
 
+#~ msgid "Preview"
+#~ msgstr "Aurrebista"
+
 #~ msgid "%"
 #~ msgstr "%"
 
@@ -25035,6 +24812,10 @@ msgstr "Erabiltzaile ezezaguna"
 #, fuzzy
 #~ msgid " (auto)"
 #~ msgstr "Data"
+
+#, fuzzy
+#~ msgid "Plain Text"
+#~ msgstr "Testu soila"
 
 #, fuzzy
 #~ msgid "Toggle tabba&r"
@@ -25688,6 +25469,9 @@ msgstr "Erabiltzaile ezezaguna"
 #, fuzzy
 #~ msgid "Upper"
 #~ msgstr "Maiuskulak|i"
+
+#~ msgid "Table of contents"
+#~ msgstr "Gaien aurkibidea"
 
 #, fuzzy
 #~ msgid "Number style"

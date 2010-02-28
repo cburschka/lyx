@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-28 15:22+0100\n"
-"PO-Revision-Date: 2009-01-12 17:42+0100\n"
+"POT-Creation-Date: 2010-02-28 16:00+0100\n"
+"PO-Revision-Date: 2009-01-12 17:51+0100\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -465,9 +465,8 @@ msgid "Filename &Suffix"
 msgstr "שם קובץ"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
-#, fuzzy
 msgid "Show undefined branches used in this document."
-msgstr "אין ענף במסמך!"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
 #, fuzzy
@@ -558,9 +557,8 @@ msgstr "ביטול"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
-#, fuzzy
 msgid "Undefined branches used in this document."
-msgstr "אין ענף במסמך!"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:68
 #, fuzzy
@@ -824,9 +822,8 @@ msgid "S&elected Citations:"
 msgstr "מובאות נבחרות:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:72
-#, fuzzy
 msgid "Click or press Enter to add the selected citation to the list"
-msgstr "הוסף ענף חדש לרשימה"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "Click or press Delete to delete the selected citation from the list"
@@ -1252,9 +1249,8 @@ msgid "Find LyX Text"
 msgstr "חפש הבא"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:107
-#, fuzzy
 msgid "&Basic"
-msgstr "פרסית"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:159
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:183
@@ -1267,9 +1263,8 @@ msgid "&Replace with..."
 msgstr "החלף עם:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:222
-#, fuzzy
 msgid "Replace and find next occurrence [Enter]"
-msgstr "החלף מילה עם הבחירה הנוכחית"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:225
 #, fuzzy
@@ -1342,7 +1337,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:446
 #, fuzzy
 msgid "&Next"
-msgstr "טקסט"
+msgstr "&חדש:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:467
 msgid "Find previous occurrence [Shift+Enter]"
@@ -1361,7 +1356,7 @@ msgstr "התאם מילים שלמות בלבד"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:494
 #, fuzzy
 msgid "Whole &words"
-msgstr "התאם מילים שלמות בלבד"
+msgstr "מילות מפתח"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:522
 #, fuzzy
@@ -1393,11 +1388,10 @@ msgid "Current &document"
 msgstr "הדפס מסמך"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:627
-#, fuzzy
 msgid ""
 "Current document and all related documents belonging to the same master "
 "document"
-msgstr "שם מדפסת ברירת המחדל"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:630
 #, fuzzy
@@ -1412,12 +1406,11 @@ msgstr "פתח מסמך"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:651
 #, fuzzy
 msgid "&Open documents"
-msgstr "OpenDocument"
+msgstr "פתח מסמך"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:669
-#, fuzzy
 msgid "All ma&nuals"
-msgstr "חיצוני (ברירת מחדל"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:690
 #, fuzzy
@@ -1433,7 +1426,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:711
 #, fuzzy
 msgid "Ignore &format"
-msgstr "תצורת תאריך"
+msgstr "לפורמט:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
 #: src/frontends/qt4/ui/OutputUi.ui:13 src/frontends/qt4/ui/PDFSupportUi.ui:13
@@ -1443,7 +1436,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:23
 #, fuzzy
 msgid "Float Type:"
-msgstr "סוג"
+msgstr "מידע TeX"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:47
 msgid "Use &default placement"
@@ -2284,9 +2277,8 @@ msgid "Hit Enter to search, or click Go!"
 msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:45
-#, fuzzy
 msgid "Log &Type:"
-msgstr "סוג"
+msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:74
 msgid "Update the display"
@@ -2374,9 +2366,8 @@ msgid "Include only the selected subdocuments in the output"
 msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:43
-#, fuzzy
 msgid "Include only &selected children"
-msgstr "כלול קובץ"
+msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:50
 msgid ""
@@ -2390,9 +2381,8 @@ msgid "&Maintain counters and references"
 msgstr "כל ההפניות אשר אינן מובאות בטקסט"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:63
-#, fuzzy
 msgid "Include all subdocuments in the output"
-msgstr "קו תחתי במקום רווחים בפלט הנוצר"
+msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:66
 #, fuzzy
@@ -2623,9 +2613,8 @@ msgid "Use the XeTeX processing engine"
 msgstr ""
 
 #: src/frontends/qt4/ui/OutputUi.ui:73
-#, fuzzy
 msgid "Use &XeTeX"
-msgstr "השתמש &ב- Babel"
+msgstr ""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:19
 #, fuzzy
@@ -2895,9 +2884,8 @@ msgid "Horizontal and vertical space of the phantom content"
 msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:63
-#, fuzzy
 msgid "&Phantom"
-msgstr "hom"
+msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:70
 #, fuzzy
@@ -2905,9 +2893,8 @@ msgid "Horizontal space of the phantom content"
 msgstr "יישור אופקי של תוכן התיבה"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:73
-#, fuzzy
 msgid "&Horiz. Phantom"
-msgstr "hom"
+msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:80
 #, fuzzy
@@ -2915,9 +2902,8 @@ msgid "Vertical space of the phantom content"
 msgstr "יישור אנכי של תוכן התיבה"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:83
-#, fuzzy
 msgid "&Vert. Phantom"
-msgstr "hom"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 #, fuzzy
@@ -3583,7 +3569,7 @@ msgstr "תיקיית עבודה:"
 #: src/frontends/qt4/ui/PrefPathsUi.ui:215
 #, fuzzy
 msgid "Hunspell dictionaries:"
-msgstr "כשל באגרון"
+msgstr "&מילון אישי:"
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2832
 msgid ""
@@ -3857,7 +3843,6 @@ msgstr "בודק איות"
 
 # An Hebrew example for a coumpound word is needed.
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
-#, fuzzy
 msgid "Accept words such as \"diskdrive\""
 msgstr "אשר מילים כמו \"diskdrive\""
 
@@ -4124,17 +4109,17 @@ msgstr ""
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
 #, fuzzy
 msgid "&Clear automatically"
-msgstr "עדכון אוטומטי"
+msgstr "החל כל שינוי אוטומטית"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
 #, fuzzy
 msgid "Debug messages"
-msgstr "אין הודעת דיבאגינג."
+msgstr "כל הודעות הדיבאגינג"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:203
 #, fuzzy
 msgid "Display no debug messages"
-msgstr "אין הודעת דיבאגינג."
+msgstr "כל הודעות הדיבאגינג"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:206
 #, fuzzy
@@ -4213,7 +4198,7 @@ msgstr ""
 #: src/frontends/qt4/ui/RefUi.ui:193
 #, fuzzy
 msgid "Grou&p"
-msgstr "חתוך"
+msgstr "שם:"
 
 #: src/frontends/qt4/ui/RefUi.ui:223 src/frontends/qt4/GuiRef.cpp:314
 msgid "&Go to Label"
@@ -4485,7 +4470,7 @@ msgstr ""
 #: src/frontends/qt4/ui/TabularUi.ui:302
 #, fuzzy
 msgid "Cell setting"
-msgstr "הגדרות"
+msgstr "הגדרות הערה"
 
 #: src/frontends/qt4/ui/TabularUi.ui:308
 msgid "Rotate this cell by 90 degrees"
@@ -5655,8 +5640,9 @@ msgid "Teaser image:"
 msgstr "מפת סיביות"
 
 #: lib/layouts/acmsiggraph.layout:84
+#, fuzzy
 msgid "CRcat"
-msgstr ""
+msgstr "hat"
 
 #: lib/layouts/acmsiggraph.layout:89
 #, fuzzy
@@ -5858,7 +5844,7 @@ msgstr ""
 #: lib/layouts/apa.layout:412 lib/layouts/apa.layout:413
 #: lib/layouts/stdcounters.inc:48
 msgid "(\\alph{enumii})"
-msgstr ""
+msgstr "(\\alph{enumii})"
 
 #: lib/layouts/armenian-article.layout:9
 msgid "LatinOn"
@@ -5910,7 +5896,7 @@ msgstr ""
 #: lib/layouts/beamer.layout:168 lib/layouts/powerdot.layout:238
 #: lib/layouts/numarticle.inc:10
 msgid "\\Alph{section}"
-msgstr ""
+msgstr "\\Alph{section}"
 
 #: lib/layouts/beamer.layout:198
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
@@ -5918,7 +5904,7 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:211
 msgid "\\arabic{section}.\\arabic{subsection}"
-msgstr ""
+msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:227 lib/layouts/beamer.layout:271
 #: lib/layouts/beamer.layout:311 lib/layouts/beamer.layout:352
@@ -6381,11 +6367,11 @@ msgstr ""
 
 #: lib/layouts/broadway.layout:145 lib/layouts/hollywood.layout:170
 msgid "("
-msgstr ""
+msgstr "("
 
 #: lib/layouts/broadway.layout:147 lib/layouts/hollywood.layout:172
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: lib/layouts/broadway.layout:158 lib/layouts/broadway.layout:168
 msgid "CURTAIN"
@@ -7277,7 +7263,7 @@ msgstr ""
 
 #: lib/layouts/foils.layout:97
 msgid "_/"
-msgstr ""
+msgstr "_/"
 
 #: lib/layouts/foils.layout:101
 msgid "CrossList"
@@ -8364,7 +8350,7 @@ msgstr ""
 
 #: lib/layouts/powerdot.layout:135
 msgid "    "
-msgstr ""
+msgstr "    "
 
 #: lib/layouts/powerdot.layout:145
 msgid "EndSlide"
@@ -8372,7 +8358,7 @@ msgstr ""
 
 #: lib/layouts/powerdot.layout:159
 msgid "~=~"
-msgstr ""
+msgstr "~=~"
 
 #: lib/layouts/powerdot.layout:172
 msgid "WideSlide"
@@ -8388,7 +8374,7 @@ msgstr ""
 
 #: lib/layouts/powerdot.layout:232 lib/layouts/numarticle.inc:9
 msgid "\\arabic{section}"
-msgstr ""
+msgstr "\\arabic{section}"
 
 #: lib/layouts/powerdot.layout:261
 msgid "ItemizeType1"
@@ -8403,9 +8389,8 @@ msgid "List of Algorithms"
 msgstr "רשימת אלגוריתמים"
 
 #: lib/layouts/recipebook.layout:42 lib/layouts/scrbook.layout:17
-#, fuzzy
 msgid "\\thechapter"
-msgstr "פרק"
+msgstr "\\thechapter"
 
 #: lib/layouts/recipebook.layout:78
 #, fuzzy
@@ -9571,20 +9556,19 @@ msgstr ""
 
 #: lib/layouts/numreport.inc:12
 msgid "\\arabic{chapter}"
-msgstr ""
+msgstr "\\arabic{chapter}"
 
 #: lib/layouts/numreport.inc:13
 msgid "\\Alph{chapter}"
-msgstr ""
+msgstr "\\Alph{chapter}"
 
 #: lib/layouts/numreport.inc:44
-#, fuzzy
 msgid "\\arabic{footnote}"
-msgstr "הערת תחתית"
+msgstr "\\arabic{footnote}"
 
 #: lib/layouts/numrevtex.inc:9
 msgid "\\Roman{section}."
-msgstr ""
+msgstr "\\Roman{section}."
 
 #: lib/layouts/numrevtex.inc:10
 msgid "Appendix \\Alph{section}:"
@@ -9592,23 +9576,23 @@ msgstr ""
 
 #: lib/layouts/numrevtex.inc:18
 msgid "\\Alph{subsection}."
-msgstr ""
+msgstr "\\Alph{subsection}."
 
 #: lib/layouts/numrevtex.inc:19
 msgid "\\arabic{subsection}."
-msgstr ""
+msgstr "\\arabic{subsection}."
 
 #: lib/layouts/numrevtex.inc:27
 msgid "\\arabic{subsubsection}."
-msgstr ""
+msgstr "\\arabic{subsubsection}."
 
 #: lib/layouts/numrevtex.inc:28
 msgid "\\alph{subsubsection}."
-msgstr ""
+msgstr "\\alph{subsubsection}."
 
 #: lib/layouts/numrevtex.inc:36 lib/layouts/numrevtex.inc:37
 msgid "\\alph{paragraph}."
-msgstr ""
+msgstr "\\alph{paragraph}."
 
 #: lib/layouts/scrclass.inc:113
 msgid "Addpart"
@@ -9680,14 +9664,13 @@ msgid "UNDEFINED"
 msgstr ""
 
 #: lib/layouts/stdcounters.inc:9
-#, fuzzy
 msgid "\\Roman{part}"
-msgstr "רומנית"
+msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
 #, fuzzy
 msgid "Part \\Roman{part}"
-msgstr "רומנית"
+msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:14
 #, fuzzy
@@ -10146,9 +10129,8 @@ msgid "CharStyle:Initial"
 msgstr "מכון"
 
 #: lib/layouts/initials.module:12
-#, fuzzy
 msgid "Initial"
-msgstr "חשבונית"
+msgstr ""
 
 #: lib/layouts/linguistics.module:2
 msgid "Linguistics"
@@ -10311,7 +10293,7 @@ msgstr ""
 #: lib/layouts/noweb.module:5 lib/layouts/sweave.module:5
 #, fuzzy
 msgid "literate"
-msgstr "intercal"
+msgstr "מקור LaTeX"
 
 #: lib/layouts/sweave.module:2 lib/layouts/sweave.module:18
 #: lib/configure.py:507
@@ -10812,6 +10794,7 @@ msgid "Catalan"
 msgstr "קטלונית"
 
 #: lib/languages:26
+#, fuzzy
 msgid "Chinese (simplified)"
 msgstr "סינית (פשוטה)"
 
@@ -11039,7 +11022,7 @@ msgstr "וולשית"
 
 #: lib/encodings:14
 msgid "Unicode (utf8)"
-msgstr ""
+msgstr "Unicode (utf8)"
 
 #: lib/encodings:19
 msgid "Unicode (ucs-extended) (utf8x)"
@@ -11103,11 +11086,11 @@ msgstr ""
 
 #: lib/encodings:67
 msgid "DOS (CP 437)"
-msgstr ""
+msgstr "DOS (CP 437)"
 
 #: lib/encodings:71
 msgid "DOS-de (CP 437-de)"
-msgstr ""
+msgstr "DOS-de (CP 437-de)"
 
 #: lib/encodings:74
 msgid "Western European (CP 850)"
@@ -11231,11 +11214,11 @@ msgstr ""
 
 #: lib/encodings:196
 msgid "Unicode (XeTeX) (utf8)"
-msgstr ""
+msgstr "Unicode (XeTeX) (utf8)"
 
 #: lib/encodings:200
 msgid "ASCII"
-msgstr ""
+msgstr "ASCII"
 
 #: lib/ui/classic.ui:32 lib/ui/stdcontext.inc:420 lib/ui/stdmenus.inc:28
 msgid "File|F"
@@ -12829,10 +12812,11 @@ msgstr "הפעל (או שתק)"
 msgid "Insert Reference at Cursor Position|I"
 msgstr ""
 
+# הכוונה להערות למיניהן
 #: lib/ui/stdcontext.inc:564
 #, fuzzy
 msgid "All Indexes|A"
-msgstr "חשבונית"
+msgstr "פתח את כל תוספות הטקסט"
 
 #: lib/ui/stdcontext.inc:567
 msgid "Subindex|b"
@@ -12996,7 +12980,7 @@ msgstr "הגדרות גלישת שורות..."
 #: lib/ui/stdmenus.inc:140
 #, fuzzy
 msgid "Index Settings...|x"
-msgstr "הגדרות קוד TeX..."
+msgstr "הגדרות תיבה..."
 
 #: lib/ui/stdmenus.inc:141
 #, fuzzy
@@ -13346,12 +13330,12 @@ msgstr ""
 #: lib/ui/stdmenus.inc:466
 #, fuzzy
 msgid "Horizontal Phantom"
-msgstr "hom"
+msgstr "קו אופקי"
 
 #: lib/ui/stdmenus.inc:467
 #, fuzzy
 msgid "Vertical Phantom"
-msgstr "hom"
+msgstr "יישור אנכי"
 
 #: lib/ui/stdmenus.inc:479
 msgid "Change Tracking|C"
@@ -13495,7 +13479,7 @@ msgstr "חיפוש והחלפה"
 #: lib/ui/stdtoolbars.inc:82
 #, fuzzy
 msgid "Find and replace (advanced)"
-msgstr "חיפוש והחלפה..."
+msgstr "חיפוש והחלפה"
 
 #: lib/ui/stdtoolbars.inc:83
 #, fuzzy
@@ -13568,12 +13552,12 @@ msgstr "מסמך ראשי"
 #: lib/ui/stdtoolbars.inc:104
 #, fuzzy
 msgid "View other formats"
-msgstr "תצורת תאריך"
+msgstr "סוגי קבצים"
 
 #: lib/ui/stdtoolbars.inc:105
 #, fuzzy
 msgid "Update other formats"
-msgstr "עדכן את התצוגה"
+msgstr "תצורת תאריך"
 
 #: lib/ui/stdtoolbars.inc:108
 msgid "Extra"
@@ -14283,14 +14267,12 @@ msgid "Unit fraction (20 km/h)\t\\unitfrac"
 msgstr "קו אלכסוני (3/4)\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:356
-#, fuzzy
 msgid "Text fraction\t\\tfrac"
-msgstr "שבר לטקסט (amsmath)\t\\tfrac"
+msgstr "שבר לטקסט\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:357
-#, fuzzy
 msgid "Display fraction\t\\dfrac"
-msgstr "שבר תצוגה (amsmath)\t\\dfrac"
+msgstr "שבר תצוגה\t\\dfrac"
 
 #: lib/ui/stdtoolbars.inc:358
 #, fuzzy
@@ -15304,33 +15286,28 @@ msgid "sqiintop"
 msgstr "sqiintop"
 
 #: lib/ui/stdtoolbars.inc:636
-#, fuzzy
 msgid "fint"
-msgstr "int"
+msgstr "fint"
 
 #: lib/ui/stdtoolbars.inc:637
-#, fuzzy
 msgid "fintop"
-msgstr "intop"
+msgstr "fintop"
 
 #: lib/ui/stdtoolbars.inc:638
-#, fuzzy
 msgid "landupint"
-msgstr "diamondsuit"
+msgstr "landupint"
 
 #: lib/ui/stdtoolbars.inc:639
-#, fuzzy
 msgid "landupintop"
-msgstr "intop"
+msgstr "landupintop"
 
 #: lib/ui/stdtoolbars.inc:640
 msgid "landdownint"
-msgstr ""
+msgstr "landdownint"
 
 #: lib/ui/stdtoolbars.inc:641
-#, fuzzy
 msgid "landdownintop"
-msgstr "dotsintop"
+msgstr "landdownintop"
 
 #: lib/ui/stdtoolbars.inc:642
 msgid "sum"
@@ -16355,9 +16332,8 @@ msgstr ""
 "קרא את 'info date' בשביל מידע נוסף.\n"
 
 #: lib/external_templates:333
-#, fuzzy
 msgid "Dia"
-msgstr "תצוגה"
+msgstr "Dia"
 
 #: lib/external_templates:334 lib/external_templates:337
 msgid "Dia: $$AbsOrRelPathParent$$Basename"
@@ -16376,9 +16352,8 @@ msgid "FIG"
 msgstr "FIG"
 
 #: lib/configure.py:451
-#, fuzzy
 msgid "DIA"
-msgstr "DVI"
+msgstr "DIA"
 
 #: lib/configure.py:454
 msgid "Grace"
@@ -16467,9 +16442,8 @@ msgid "Graphviz Dot"
 msgstr "Graphviz Dot"
 
 #: lib/configure.py:505
-#, fuzzy
 msgid "LaTeX (pLaTeX)"
-msgstr "LaTeX (רגיל)"
+msgstr "LaTeX (pLaTeX)"
 
 #: lib/configure.py:506
 msgid "NoWeb"
@@ -16503,7 +16477,7 @@ msgstr "LaTeX (pdflatex)"
 #: lib/configure.py:511
 #, fuzzy
 msgid "LaTeX (XeTeX)"
-msgstr "LaTeX (רגיל)"
+msgstr "LaTeX (pLaTeX)"
 
 #: lib/configure.py:512 src/frontends/qt4/GuiPrefs.cpp:335
 msgid "Plain text"
@@ -16537,12 +16511,11 @@ msgstr "HTML"
 #: lib/configure.py:519 lib/configure.py:521
 #, fuzzy
 msgid "LyXHTML|X"
-msgstr "HTML"
+msgstr "HTML|H"
 
 #: lib/configure.py:528 src/frontends/qt4/GuiLog.cpp:230
-#, fuzzy
 msgid "BibTeX"
-msgstr "סגנונות BibTeX"
+msgstr "BibTeX"
 
 #: lib/configure.py:533
 msgid "EPS"
@@ -16654,9 +16627,8 @@ msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
 #: lib/configure.py:570
-#, fuzzy
 msgid "LyX 1.5.x"
-msgstr "LyX 1.3.x"
+msgstr "LyX 1.5.x"
 
 #: lib/configure.py:571
 #, fuzzy
@@ -16992,7 +16964,7 @@ msgstr "המרה נכשלה"
 
 #: src/Buffer.cpp:1329
 #, fuzzy
-msgid "Uncodable character in path"
+msgid "Uncodable character in file path"
 msgstr "תו שלא ניתן לקידוד"
 
 #: src/Buffer.cpp:1330
@@ -17005,7 +16977,7 @@ msgid ""
 "This will likely result in incomplete output.\n"
 "\n"
 "Chose an appropriate document encoding (such as utf8)\n"
-"or change the path name."
+"or change the file path name."
 msgstr ""
 
 #: src/Buffer.cpp:1604
@@ -17868,7 +17840,7 @@ msgstr ""
 #: src/Color.cpp:244
 #, fuzzy
 msgid "regexp frame"
-msgstr "מצב עורך מתמטיקה"
+msgstr "שם"
 
 #: src/Color.cpp:245
 msgid "ignore"
@@ -18153,13 +18125,10 @@ msgid "Could not find `cua.bind' file"
 msgstr "לא יכול לקרוא קובץ הגדרות"
 
 #: src/KeyMap.cpp:230
-#, fuzzy
 msgid ""
 "Unable to find the default bind file `cua.bind'.\n"
 "Please check your installation."
 msgstr ""
-"לא מצליח לטעון את shfolder.dll \n"
-"אנא התקן קובץ זה."
 
 #: src/KeyMap.cpp:237
 #, c-format
@@ -19064,7 +19033,7 @@ msgstr ""
 #: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1009
 #, fuzzy
 msgid "Already in regular expression mode"
-msgstr "ביטוי אורך של LaTeX שגוי."
+msgstr "ביטוי רגולרי"
 
 #: src/Text3.cpp:216
 #, fuzzy
@@ -19406,14 +19375,12 @@ msgid "master document[[scope]]"
 msgstr "מסמך ראשי"
 
 #: src/frontends/qt4/FindAndReplace.cpp:330
-#, fuzzy
 msgid "open files[[scope]]"
-msgstr "דוגמה #:"
+msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:333
-#, fuzzy
 msgid "manuals[[scope]]"
-msgstr "חיצוני (ברירת מחדל"
+msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:337
 #, c-format
@@ -19462,13 +19429,13 @@ msgid "amount of work other people have done for the LyX project."
 msgstr "לעבודה הרבה של אנשים אחרים למען פרוייקט LyX."
 
 #: src/frontends/qt4/GuiAbout.cpp:84
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995--%1$s LyX Team"
 msgstr ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
-"1995-2006 LyX Team"
+"1995--%1$s LyX Team"
 
 #: src/frontends/qt4/GuiAbout.cpp:92
 msgid ""
@@ -20007,9 +19974,8 @@ msgid "Error"
 msgstr "חץ"
 
 #: src/frontends/qt4/GuiCompare.cpp:200
-#, fuzzy
 msgid "Error while comparing documents."
-msgstr "פתח מסמך"
+msgstr ""
 
 #: src/frontends/qt4/GuiCompare.cpp:219
 #, fuzzy
@@ -20755,7 +20721,7 @@ msgstr "&קיצור דרך:"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "lyxrc"
-msgstr ""
+msgstr "lyxrc"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 #, fuzzy
@@ -20824,7 +20790,7 @@ msgstr "תיעוד LaTeX"
 #: src/frontends/qt4/GuiLog.cpp:237
 #, fuzzy
 msgid "Literate"
-msgstr "intercal"
+msgstr "מקור LaTeX"
 
 #: src/frontends/qt4/GuiLog.cpp:240
 #, fuzzy
@@ -21178,17 +21144,15 @@ msgstr "הגדרות תיבה"
 #: src/frontends/qt4/GuiPrintindex.cpp:69
 #, fuzzy
 msgid "<All indexes>"
-msgstr "ענפים זמינים:"
+msgstr "כל הקבצים"
 
 #: src/frontends/qt4/GuiProgressView.cpp:52
-#, fuzzy
 msgid "Progress/Debug Messages"
-msgstr "אין הודעת דיבאגינג."
+msgstr ""
 
 #: src/frontends/qt4/GuiProgressView.cpp:81
-#, fuzzy
 msgid "Debug Level"
-msgstr "אין הודעת דיבאגינג."
+msgstr ""
 
 #: src/frontends/qt4/GuiProgressView.cpp:82
 #, fuzzy
@@ -21943,15 +21907,16 @@ msgstr "המסמך %1$s שונה באופן חיצוני. האם אתה בטוח
 #: src/frontends/qt4/GuiView.cpp:2461
 #, fuzzy
 msgid "Reload externally changed document?"
-msgstr "לחזור למסמך השמור?"
+msgstr "האם לשמור את המסמך שעבר שינוי?"
 
 #: src/frontends/qt4/GuiView.cpp:2515
 msgid "Error when setting the locking property."
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2558
+#, fuzzy
 msgid "Directory is not accessible."
-msgstr ""
+msgstr "לא יכול לקרוא את הקובץ %1$s."
 
 #: src/frontends/qt4/GuiView.cpp:2641
 #, c-format
@@ -21959,9 +21924,9 @@ msgid "Opening child document %1$s..."
 msgstr "פותח את מסמך הבת %1$s..."
 
 #: src/frontends/qt4/GuiView.cpp:2725
-#, fuzzy, c-format
+#, c-format
 msgid "Successful export to format: %1$s"
-msgstr "אין מידע לייצוא לפורמט %1$s."
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2726
 #, fuzzy, c-format
@@ -21974,9 +21939,9 @@ msgid "Successful preview of format: %1$s"
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2739
-#, fuzzy, c-format
+#, c-format
 msgid "Error previewing format: %1$s"
-msgstr "אין מידע לייצוא לפורמט %1$s."
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2798
 #, fuzzy
@@ -22130,9 +22095,8 @@ msgid "<No Bookmarks Saved Yet>"
 msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:951
-#, fuzzy
 msgid "View (Other Formats)|F"
-msgstr "תצורת תאריך"
+msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:952
 #, fuzzy
@@ -22142,7 +22106,7 @@ msgstr "עדכן את התצוגה"
 #: src/frontends/qt4/Menus.cpp:985
 #, fuzzy, c-format
 msgid "View [%1$s]|V"
-msgstr "&הצג"
+msgstr "תצוגה|ת"
 
 #: src/frontends/qt4/Menus.cpp:986
 #, fuzzy, c-format
@@ -22175,7 +22139,7 @@ msgstr "אובייקטים צפים אחרים"
 #: src/frontends/qt4/Menus.cpp:1208
 #, fuzzy
 msgid "<Empty Table of Contents>"
-msgstr "אין תוכן עניינים"
+msgstr "תוכן עניינים"
 
 #: src/frontends/qt4/Menus.cpp:1243
 #, fuzzy
@@ -22223,9 +22187,9 @@ msgid "Update %1$s"
 msgstr "עדכן"
 
 #: src/frontends/qt4/Toolbars.cpp:229
-#, fuzzy, c-format
+#, c-format
 msgid "View %1$s"
-msgstr "&הצג"
+msgstr ""
 
 #: src/frontends/qt4/Validator.cpp:161
 msgid "space"
@@ -22450,14 +22414,14 @@ msgid "double frame"
 msgstr "כפול"
 
 #: src/insets/InsetBox.cpp:151 src/insets/InsetBox.cpp:154
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (%2$s)"
-msgstr "%1$s ו-  %2$s"
+msgstr "%1$s (%2$s)"
 
 #: src/insets/InsetBox.cpp:157
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (%2$s, %3$s)"
-msgstr "%1$s ו-  %2$s"
+msgstr "%1$s (%2$s, %3$s)"
 
 #: src/insets/InsetBranch.cpp:66
 #, fuzzy
@@ -22555,8 +22519,8 @@ msgstr "תו שלא ניתן לקידוד"
 #: src/insets/InsetCommandParams.cpp:387
 #, c-format
 msgid ""
-"The following characters that are used in an inset (%1$s) are\n"
-"not representable in the current encoding and have been omitted:\n"
+"The following characters that are used in the inset %1$s are not\n"
+"representable in the current encoding and therefore have been omitted:\n"
 "%2$s."
 msgstr ""
 
@@ -22715,7 +22679,7 @@ msgstr "סוג תוכן עניינים לא ידוע"
 #: src/insets/InsetIndex.cpp:448
 #, fuzzy
 msgid "All indices"
-msgstr "ענפים זמינים:"
+msgstr "כל הקבצים"
 
 #: src/insets/InsetIndex.cpp:452
 #, fuzzy
@@ -23392,7 +23356,7 @@ msgstr "נכנס למצב טקסט מתמטי (textrm)"
 #: src/mathed/InsetMathNest.cpp:1019
 #, fuzzy
 msgid "Regular expression editor mode"
-msgstr "מצב עורך מתמטיקה"
+msgstr "ביטוי רגולרי"
 
 #: src/mathed/InsetMathNest.cpp:1595 src/mathed/InsetMathNest.cpp:1715
 msgid "Autocorrect Off ('!' to enter)"
@@ -23416,9 +23380,8 @@ msgid "optional"
 msgstr "אופקי"
 
 #: src/mathed/MathMacroTemplate.cpp:538
-#, fuzzy
 msgid "TeX"
-msgstr "LaTeX"
+msgstr "TeX"
 
 #: src/mathed/MathMacroTemplate.cpp:1239
 msgid "math macro"
@@ -23465,7 +23428,6 @@ msgstr ""
 "לתיקיית המערכת של LyX המכילה את הקובץ `chkconfig.ltx'."
 
 #: src/support/Package.cpp:626 src/support/Package.cpp:653
-#, fuzzy
 msgid "File not found"
 msgstr "קובץ לא נמצא"
 
@@ -23677,237 +23639,121 @@ msgstr ""
 msgid "Unknown user"
 msgstr "משתמש לא מוכר"
 
+#~ msgid "&Dummy"
+#~ msgstr "דמה"
+
+#~ msgid "F&ind:"
+#~ msgstr "חפש:"
+
+#~ msgid "D&elete"
+#~ msgstr "מחק"
+
+#~ msgid "&Default language:"
+#~ msgstr "שפת ברירת המחדל:"
+
 #, fuzzy
-#~ msgid "TextLabel"
-#~ msgstr "תווית"
+#~ msgid "Select the default language of your documents"
+#~ msgstr "חזור להגדרות ברירת המחדל עבור מחלקת המסמך"
+
+#~ msgid "&BibTeX command:"
+#~ msgstr "פקו&דה BibTeX:"
+
+#, fuzzy
+#~ msgid "&Index command:"
+#~ msgstr "פקודת אינדקס:"
+
+#, fuzzy
+#~ msgid "BibTeX command (&Japanese):"
+#~ msgstr "אפשרויות ופקודת BibTeX"
+
+#, fuzzy
+#~ msgid "Index command (Ja&panese):"
+#~ msgstr "פקודת אינדקס:"
+
+#~ msgid "&roff command:"
+#~ msgstr "&פקודת roff:"
+
+#~ msgid "External app for formating tables in plain text output"
+#~ msgstr "יישום חיצוני לעריכת טבלאות עם פלט של טקסט רגיל"
+
+#~ msgid "Specify a personal dictionary file other than the default"
+#~ msgstr "הגדר מילון אישי אחר מלבד מילון ברירת המחדל"
+
+#~ msgid "Spellchec&ker executable:"
+#~ msgstr "&קובץ בודק האיות:"
+
+#~ msgid "Use input encod&ing"
+#~ msgstr "&השתמש בקידוד של הקלט"
+
+#~ msgid "Jump to the label"
+#~ msgstr "דלג לתווית"
 
 #~ msgid "Merge cells"
 #~ msgstr "אחד תאים"
+
+#~ msgid "Listing settings"
+#~ msgstr "הגדרות רישום קוד"
+
+#~ msgid "Language:"
+#~ msgstr "שפה:"
+
+#~ msgid "LastLanguage"
+#~ msgstr "שפה אחרונה"
+
+#~ msgid "Last Language:"
+#~ msgstr "שפה אחרונה:"
+
+#~ msgid "End"
+#~ msgstr "סוף"
+
+#~ msgid "End of CV"
+#~ msgstr "סוף קורות חיים"
+
+#~ msgid "Computer"
+#~ msgstr "מחשב"
+
+#~ msgid "Computer:"
+#~ msgstr "מחשב:"
+
+#, fuzzy
+#~ msgid "Insert|n"
+#~ msgstr "הוספה|ה"
+
+#~ msgid "Dissolve Inset|l"
+#~ msgstr "מזג תוסף לתוך הטקסט"
+
+#~ msgid "View DVI"
+#~ msgstr "הצג DVI"
+
+#~ msgid "Update DVI"
+#~ msgstr "עדכן DVI"
+
+#~ msgid "View PDF (pdflatex)"
+#~ msgstr "הצג PDF (pdflatex)"
+
+#~ msgid "Update PDF (pdflatex)"
+#~ msgstr "עדכן PDF (pdflatex)"
+
+#~ msgid "View PostScript"
+#~ msgstr "הצג PostScript"
+
+#~ msgid "Update PostScript"
+#~ msgstr "עדכן PostScript"
+
+#~ msgid "No horizontal line\t\\atop"
+#~ msgstr "ללא קו אופקי\t\\atop"
+
+#~ msgid "What command runs the spellchecker?"
+#~ msgstr "איזו פקודה מפעילה את בודק האיות?"
+
+#~ msgid "Unknown spacing argument: "
+#~ msgstr "ארגומנט מרווח לא ידוע:"
 
 #~ msgid "Bibliography Entry Settings"
 #~ msgstr "הגדרות ערך ביבליוגרפיה"
 
 #~ msgid "Branch Settings"
 #~ msgstr "הגדרות ענף"
-
-#, fuzzy
-#~ msgid "Horizontal Space Settings"
-#~ msgstr "הגדרות מרווח אנכי"
-
-#~ msgid "Table Settings"
-#~ msgstr "הגדרות טבלה"
-
-#~ msgid "Vertical Space Settings"
-#~ msgstr "הגדרות מרווח אנכי"
-
-#, fuzzy
-#~ msgid "Language ...|L"
-#~ msgstr "שפה"
-
-#~ msgid " Macro: %1$s: "
-#~ msgstr "מאקרו: %1$s: "
-
-#, fuzzy
-#~ msgid "&Debug messages"
-#~ msgstr "אין הודעת דיבאגינג."
-
-#, fuzzy
-#~ msgid "Clear &automatically"
-#~ msgstr "עדכון אוטומטי"
-
-#~ msgid "Dissolve Inset|l"
-#~ msgstr "מזג תוסף לתוך הטקסט"
-
-#~ msgid "Box Settings"
-#~ msgstr "הגדרות תיבה"
-
-#~ msgid "TeX Code Settings"
-#~ msgstr "הגדרות קוד TeX"
-
-#~ msgid "Float Settings"
-#~ msgstr "הגדרות אובייקטים צפים"
-
-#, fuzzy
-#~ msgid "Match found and replaced !"
-#~ msgstr "חיפוש והחלפה"
-
-#, fuzzy
-#~ msgid "Close this panel"
-#~ msgstr "סגור דיאלוג זה"
-
-#, fuzzy
-#~ msgid "Prev"
-#~ msgstr "תצוגה מקדימה"
-
-#, fuzzy
-#~ msgid "Match..."
-#~ msgstr "מתמטיקה"
-
-#, fuzzy
-#~ msgid "Find LyX Dialog"
-#~ msgstr "חפש הבא"
-
-#~ msgid "D&elete"
-#~ msgstr "מחק"
-
-#~ msgid "F&ind:"
-#~ msgstr "חפש:"
-
-#, fuzzy
-#~ msgid "Current &Paragraph"
-#~ msgstr "הזח פסקה"
-
-#, fuzzy
-#~ msgid "Document in current file"
-#~ msgstr "שגיאה בפורמט המסמך"
-
-#, fuzzy
-#~ msgid "diamond2"
-#~ msgstr "diamond"
-
-#~ msgid "End"
-#~ msgstr "סוף"
-
-#, fuzzy
-#~ msgid "begin"
-#~ msgstr "התחל אוטומטית"
-
-#, fuzzy
-#~ msgid "end"
-#~ msgstr "אדום"
-
-#, fuzzy
-#~ msgid "file"
-#~ msgstr "כלול קובץ"
-
-#, fuzzy
-#~ msgid "forward"
-#~ msgstr "forall"
-
-#, fuzzy
-#~ msgid "backwards"
-#~ msgstr "חפש אחורנית"
-
-#, fuzzy
-#~ msgid " of "
-#~ msgstr "סוף קורות חיים"
-
-#, fuzzy
-#~ msgid "Continue searching from "
-#~ msgstr "קו אלכסוני (3/4)\t\\nicefrac"
-
-#~ msgid "&Dummy"
-#~ msgstr "דמה"
-
-#, fuzzy
-#~ msgid "&Automatic clear"
-#~ msgstr "עדכון אוטומטי"
-
-#, fuzzy
-#~ msgid "Show progress messages"
-#~ msgstr "(אין הודעת יומן)"
-
-#, fuzzy
-#~ msgid "(cancelling)"
-#~ msgstr "הערת שוליים"
-
-#, fuzzy
-#~ msgid "Absender:"
-#~ msgstr "שורת כותרת:"
-
-#, fuzzy
-#~ msgid "Vorwahl:"
-#~ msgstr "רגיל:"
-
-#~ msgid "Text:"
-#~ msgstr "טקסט:"
-
-#~ msgid "No LaTeX log file found."
-#~ msgstr "לא נמצא תיעוד LaTeX."
-
-#, fuzzy
-#~ msgid "Latex"
-#~ msgstr "תאריך"
-
-#, fuzzy
-#~ msgid "View Output|V"
-#~ msgstr "תצוגה|ת"
-
-#, fuzzy
-#~ msgid "Update Output|U"
-#~ msgstr "תאריך (פלט)"
-
-#, fuzzy
-#~ msgid "Advanced Search"
-#~ msgstr "מתקדם"
-
-#, fuzzy
-#~ msgid "Replace Ne&xt"
-#~ msgstr "החלף עם:"
-
-#, fuzzy
-#~ msgid "Find &Prev"
-#~ msgstr "חפש הבא"
-
-#, fuzzy
-#~ msgid "Replace P&rev"
-#~ msgstr "החלף הכל"
-
-#, fuzzy
-#~ msgid "Current buffer only"
-#~ msgstr "תא נוכחי:"
-
-#, fuzzy
-#~ msgid "Buffer"
-#~ msgstr "כחול"
-
-#, fuzzy
-#~ msgid "Document"
-#~ msgstr "מסמכים"
-
-#, fuzzy
-#~ msgid "Open buffers"
-#~ msgstr "כחול"
-
-#, fuzzy
-#~ msgid "CharStyle:DropCapital"
-#~ msgstr "מכון"
-
-#, fuzzy
-#~ msgid "Regexp"
-#~ msgstr "exp"
-
-#, fuzzy
-#~ msgid "No file open!"
-#~ msgstr "אף קובץ לא נמצא!"
-
-#~ msgid "Jump to the label"
-#~ msgstr "דלג לתווית"
-
-#, fuzzy
-#~ msgid "Click to edit the settings of the child document"
-#~ msgstr "חזור להגדרות ברירת המחדל עבור מחלקת המסמך"
-
-#, fuzzy
-#~ msgid "Master Settings"
-#~ msgstr "הגדרות הערה"
-
-#~ msgid "Column Width"
-#~ msgstr "רוחב עמודה"
-
-#~ msgid "Listing settings"
-#~ msgstr "הגדרות רישום קוד"
-
-#, fuzzy
-#~ msgid "\\alph{enumii}."
-#~ msgstr ".\\Alph{enumiv}"
-
-#, fuzzy
-#~ msgid "Insert|n"
-#~ msgstr "הוספה|ה"
-
-#~ msgid "Unknown spacing argument: "
-#~ msgstr "ארגומנט מרווח לא ידוע:"
 
 #~ msgid ""
 #~ "Input listings parameters on the right. Enter ? for a list of parameters."
@@ -23916,14 +23762,69 @@ msgstr "משתמש לא מוכר"
 #~ msgid "Length"
 #~ msgstr "אורך"
 
+#~ msgid "TeX Code Settings"
+#~ msgstr "הגדרות קוד TeX"
+
+#, fuzzy
+#~ msgid "pLaTeX"
+#~ msgstr "LaTeX"
+
+#~ msgid "Float Settings"
+#~ msgstr "הגדרות אובייקטים צפים"
+
+#, fuzzy
+#~ msgid "Horizontal Space Settings"
+#~ msgstr "הגדרות מרווח אנכי"
+
+#~ msgid "No LaTeX log file found."
+#~ msgstr "לא נמצא תיעוד LaTeX."
+
+#~ msgid "ispell"
+#~ msgstr "ispell"
+
+#~ msgid "pspell (library)"
+#~ msgstr "pspell (ספרייה)"
+
+#~ msgid "aspell (library)"
+#~ msgstr "aspell (ספרייה)"
+
+#~ msgid "*.pws"
+#~ msgstr "*.pws"
+
+#~ msgid "*.ispell"
+#~ msgstr "*.ispell"
+
+#~ msgid "Spellchecker error"
+#~ msgstr "שגיאה בבודק האיות"
+
+#~ msgid ""
+#~ "The spellchecker has died for some reason.\n"
+#~ "Maybe it has been killed."
+#~ msgstr ""
+#~ "בודק האיות מת מסיבה כל שהיא.\n"
+#~ "יכול להיות שהוא נהרג."
+
+#~ msgid "The spellchecker has failed.\n"
+#~ msgstr "בודק האיות נכשל.\n"
+
+#~ msgid "The spellchecker has failed"
+#~ msgstr "בודק האיות נכשל"
+
+#~ msgid "Vertical Space Settings"
+#~ msgstr "הגדרות מרווח אנכי"
+
+#~ msgid "No Table of contents"
+#~ msgstr "אין תוכן עניינים"
+
 #~ msgid "Opened inset"
 #~ msgstr "תוסף טקסט פתוח"
 
+#, fuzzy
+#~ msgid "Uncodable characters in bibliography item"
+#~ msgstr "תו שלא ניתן לקידוד"
+
 #~ msgid "Opened Box Inset"
 #~ msgstr "התוסף \"תיבה\" פתוח"
-
-#~ msgid "Opened Branch Inset"
-#~ msgstr "התוסף \"ענף\" פתוח"
 
 #~ msgid "Opened Caption Inset"
 #~ msgstr "התוסף \"כותרת\" פתוח"
@@ -23953,10 +23854,6 @@ msgstr "משתמש לא מוכר"
 #~ msgid "Opened Optional Argument Inset"
 #~ msgstr "תוסף \"ארגומנט רשות\" פתוח"
 
-#, fuzzy
-#~ msgid "Opened Phantom Inset"
-#~ msgstr "התוסף \"כותרת\" פתוח"
-
 #~ msgid "Opened table"
 #~ msgstr "טבלה פתוחה"
 
@@ -23966,102 +23863,43 @@ msgstr "משתמש לא מוכר"
 #~ msgid "Opened Wrap Inset"
 #~ msgstr "תוסף טקסט \"עטוף\" פתוח"
 
-#, fuzzy
-#~ msgid "Select the default language of your documents"
-#~ msgstr "חזור להגדרות ברירת המחדל עבור מחלקת המסמך"
-
-#~ msgid "Personal &dictionary:"
-#~ msgstr "&מילון אישי:"
-
-#~ msgid "Specify a personal dictionary file other than the default"
-#~ msgstr "הגדר מילון אישי אחר מלבד מילון ברירת המחדל"
-
-#~ msgid "Use input encod&ing"
-#~ msgstr "&השתמש בקידוד של הקלט"
+#~ msgid " Macro: %1$s: "
+#~ msgstr "מאקרו: %1$s: "
 
 #, fuzzy
-#~ msgid "Toggle Label|L"
-#~ msgstr "החלף הכל"
+#~ msgid "Absender:"
+#~ msgstr "שורת כותרת:"
 
 #, fuzzy
-#~ msgid "Move Section down|d"
-#~ msgstr "הזז את המובאה הנוכחית למטה"
+#~ msgid "Vorwahl:"
+#~ msgstr "רגיל:"
+
+#~ msgid "Text:"
+#~ msgstr "טקסט:"
 
 #, fuzzy
-#~ msgid "Move Section up|u"
-#~ msgstr "הזז את המובאה הנוכחית למעלה"
+#~ msgid "Latex"
+#~ msgstr "תאריך"
 
 #, fuzzy
-#~ msgid "The spellchecker has failed."
-#~ msgstr "בודק האיות נכשל.\n"
+#~ msgid "No file open!"
+#~ msgstr "אף קובץ לא נמצא!"
 
 #, fuzzy
-#~ msgid ""
-#~ "Specify an alternate personal dictionary file. E.g. \".aspell_english\"."
-#~ msgstr "הגדר מילון אישי אחר מלבד מילון ברירת המחדל"
-
-#~ msgid "*.pws"
-#~ msgstr "*.pws"
+#~ msgid "Check in Changes...|I"
+#~ msgstr "בדוק בשינויים..."
 
 #, fuzzy
-#~ msgid "Accept Change|C"
-#~ msgstr "אשר שינוי"
-
-#, fuzzy
-#~ msgid "C&ommand:"
-#~ msgstr "&פקודה:"
-
-#~ msgid "&BibTeX command:"
-#~ msgstr "פקו&דה BibTeX:"
-
-#, fuzzy
-#~ msgid "&Index command:"
-#~ msgstr "פקודת אינדקס:"
-
-#, fuzzy
-#~ msgid "BibTeX command (&Japanese):"
-#~ msgstr "אפשרויות ופקודת BibTeX"
-
-#, fuzzy
-#~ msgid "Index command (Ja&panese):"
-#~ msgstr "פקודת אינדקס:"
+#~ msgid "Check out for Edit|O"
+#~ msgstr "בחר בשביל רישומים בתוך השורה"
 
 #, fuzzy
 #~ msgid "Toggle Labeling/Numbering|T"
 #~ msgstr "הצג מספור"
 
 #, fuzzy
-#~ msgid "Copy Label as Reference|C"
-#~ msgstr "הפניה"
-
-#, fuzzy
-#~ msgid "View|V[[show]]"
-#~ msgstr "תצוגה|ת"
-
-#~ msgid "View DVI"
-#~ msgstr "הצג DVI"
-
-#~ msgid "View PDF (pdflatex)"
-#~ msgstr "הצג PDF (pdflatex)"
-
-#~ msgid "View PostScript"
-#~ msgstr "הצג PostScript"
-
-#~ msgid "Update DVI"
-#~ msgstr "עדכן DVI"
-
-#~ msgid "Update PDF (pdflatex)"
-#~ msgstr "עדכן PDF (pdflatex)"
-
-#~ msgid "Update PostScript"
-#~ msgstr "עדכן PostScript"
-
-#~ msgid "Thesaurus failure"
-#~ msgstr "כשל באגרון"
-
-#, fuzzy
-#~ msgid "Indices"
-#~ msgstr "חשבונית"
+#~ msgid "Toggle Label|L"
+#~ msgstr "החלף הכל"
 
 #~ msgid "B&rowse..."
 #~ msgstr "עיון..."
@@ -24075,45 +23913,6 @@ msgstr "משתמש לא מוכר"
 #, fuzzy
 #~ msgid "Ne&w"
 #~ msgstr "&חדש:"
-
-#~ msgid "No horizontal line\t\\atop"
-#~ msgstr "ללא קו אופקי\t\\atop"
-
-#~ msgid "Spellchecker error"
-#~ msgstr "שגיאה בבודק האיות"
-
-#~ msgid ""
-#~ "The spellchecker has died for some reason.\n"
-#~ "Maybe it has been killed."
-#~ msgstr ""
-#~ "בודק האיות מת מסיבה כל שהיא.\n"
-#~ "יכול להיות שהוא נהרג."
-
-#~ msgid "The spellchecker has failed"
-#~ msgstr "בודק האיות נכשל"
-
-#~ msgid "Language:"
-#~ msgstr "שפה:"
-
-#~ msgid "LastLanguage"
-#~ msgstr "שפה אחרונה"
-
-#~ msgid "Last Language:"
-#~ msgstr "שפה אחרונה:"
-
-#~ msgid "Computer"
-#~ msgstr "מחשב"
-
-#~ msgid "Computer:"
-#~ msgstr "מחשב:"
-
-#, fuzzy
-#~ msgid "Phantom Text"
-#~ msgstr "טקסט רגיל"
-
-#, fuzzy
-#~ msgid "RegExp"
-#~ msgstr "exp"
 
 #, fuzzy
 #~ msgid "&Postscript driver:"
@@ -24134,33 +23933,6 @@ msgstr "משתמש לא מוכר"
 #, fuzzy
 #~ msgid "Remove Optional Parameter"
 #~ msgstr "תוסף \"ארגומנט רשות\" פתוח"
-
-#~ msgid "&Default language:"
-#~ msgstr "שפת ברירת המחדל:"
-
-#~ msgid "&roff command:"
-#~ msgstr "&פקודת roff:"
-
-#~ msgid "External app for formating tables in plain text output"
-#~ msgstr "יישום חיצוני לעריכת טבלאות עם פלט של טקסט רגיל"
-
-#~ msgid "Spellchec&ker executable:"
-#~ msgstr "&קובץ בודק האיות:"
-
-#~ msgid "What command runs the spellchecker?"
-#~ msgstr "איזו פקודה מפעילה את בודק האיות?"
-
-#~ msgid "ispell"
-#~ msgstr "ispell"
-
-#~ msgid "pspell (library)"
-#~ msgstr "pspell (ספרייה)"
-
-#~ msgid "aspell (library)"
-#~ msgstr "aspell (ספרייה)"
-
-#~ msgid "*.ispell"
-#~ msgstr "*.ispell"
 
 #, fuzzy
 #~ msgid "figure"
@@ -24254,6 +24026,9 @@ msgstr "משתמש לא מוכר"
 
 #~ msgid "Grayscale"
 #~ msgstr "גווני אפור"
+
+#~ msgid "Preview"
+#~ msgstr "תצוגה מקדימה"
 
 #~ msgid "%"
 #~ msgstr "%"

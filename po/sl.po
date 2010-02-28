@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-28 15:22+0100\n"
-"PO-Revision-Date: 2009-04-19 18:00+0100\n"
+"POT-Creation-Date: 2010-02-28 16:00+0100\n"
+"PO-Revision-Date: 2009-10-18 17:34+0100\n"
 "Last-Translator:  Roman Maurer <>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -496,9 +496,8 @@ msgid "Filename &Suffix"
 msgstr "Ime datoteke"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
-#, fuzzy
 msgid "Show undefined branches used in this document."
-msgstr "Spis"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
 #, fuzzy
@@ -592,9 +591,8 @@ msgstr "&Prekliči"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
-#, fuzzy
 msgid "Undefined branches used in this document."
-msgstr "Spis"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:68
 #, fuzzy
@@ -869,9 +867,8 @@ msgid "S&elected Citations:"
 msgstr "&Izbor:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:72
-#, fuzzy
 msgid "Click or press Enter to add the selected citation to the list"
-msgstr "Odstrani izbrano zbirko podatkov"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "Click or press Delete to delete the selected citation from the list"
@@ -928,9 +925,8 @@ msgid "All fields"
 msgstr " v datoteko ,"
 
 #: src/frontends/qt4/ui/CitationUi.ui:271
-#, fuzzy
 msgid "Regular e&xpression"
-msgstr "Različica"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:278
 #, fuzzy
@@ -1318,9 +1314,8 @@ msgid "Find LyX Text"
 msgstr "Najdi &naslednjo"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:107
-#, fuzzy
 msgid "&Basic"
-msgstr "Slogi za BibTeX"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:159
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:183
@@ -1396,9 +1391,8 @@ msgid "Choose one of the pre-arranged regular expressions."
 msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:425
-#, fuzzy
 msgid "Insert Re&gular Expression..."
-msgstr "Različica"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:443
 msgid "Find next occurrence [Enter]"
@@ -1407,7 +1401,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:446
 #, fuzzy
 msgid "&Next"
-msgstr "besedilo"
+msgstr "&Novo"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:467
 msgid "Find previous occurrence [Shift+Enter]"
@@ -1455,7 +1449,7 @@ msgstr "en odstavek"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:606
 #, fuzzy
 msgid "Current &document"
-msgstr "Spis"
+msgstr "Uvozi spis"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:627
 msgid ""
@@ -1476,12 +1470,11 @@ msgstr "Odpira se spis "
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:651
 #, fuzzy
 msgid "&Open documents"
-msgstr "OpenDocument"
+msgstr "Odpira se spis "
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:669
-#, fuzzy
 msgid "All ma&nuals"
-msgstr "Naslov_za_LaTeX "
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:690
 #, fuzzy
@@ -1497,7 +1490,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:711
 #, fuzzy
 msgid "Ignore &format"
-msgstr "Format datuma"
+msgstr "&Datumski format"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
 #: src/frontends/qt4/ui/OutputUi.ui:13 src/frontends/qt4/ui/PDFSupportUi.ui:13
@@ -2037,7 +2030,7 @@ msgstr ""
 #: src/frontends/qt4/ui/IndicesUi.ui:131
 #, fuzzy
 msgid "Add a new index to the list"
-msgstr "Odstrani izbrano zbirko podatkov"
+msgstr "Črta levo|l"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:143
 #, fuzzy
@@ -3721,7 +3714,7 @@ msgstr "&Delovni imenik"
 #: src/frontends/qt4/ui/PrefPathsUi.ui:215
 #, fuzzy
 msgid "Hunspell dictionaries:"
-msgstr "Tezaver"
+msgstr "Osebni &slovar:"
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2832
 msgid ""
@@ -4272,7 +4265,7 @@ msgstr ""
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
 #, fuzzy
 msgid "&Clear automatically"
-msgstr "Epošta_avtorja"
+msgstr "Samodejni uporabi vsako spremembo"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
 #, fuzzy
@@ -6076,7 +6069,7 @@ msgstr "Uredi v zaporedja"
 #: lib/layouts/apa.layout:412 lib/layouts/apa.layout:413
 #: lib/layouts/stdcounters.inc:48
 msgid "(\\alph{enumii})"
-msgstr ""
+msgstr "(\\alph{enumii})"
 
 #: lib/layouts/armenian-article.layout:9
 #, fuzzy
@@ -6132,9 +6125,8 @@ msgstr "Podrazdelek"
 
 #: lib/layouts/beamer.layout:168 lib/layouts/powerdot.layout:238
 #: lib/layouts/numarticle.inc:10
-#, fuzzy
 msgid "\\Alph{section}"
-msgstr "izbor"
+msgstr "\\Alph{section}"
 
 #: lib/layouts/beamer.layout:198
 #, fuzzy
@@ -6142,9 +6134,8 @@ msgid "Subsection \\arabic{section}.\\arabic{subsection}"
 msgstr "Podpodrazdelek"
 
 #: lib/layouts/beamer.layout:211
-#, fuzzy
 msgid "\\arabic{section}.\\arabic{subsection}"
-msgstr "Podpodrazdelek"
+msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:227 lib/layouts/beamer.layout:271
 #: lib/layouts/beamer.layout:311 lib/layouts/beamer.layout:352
@@ -8535,16 +8526,15 @@ msgstr ""
 #: lib/layouts/iopart.layout:217 lib/layouts/revtex4.layout:248
 #: lib/layouts/svglobal3.layout:62 lib/layouts/svglobal3.layout:65
 msgid "PACS"
-msgstr ""
+msgstr "PACS"
 
 #: lib/layouts/iopart.layout:220
 msgid "Physics and Astronomy Classification System number:"
 msgstr ""
 
 #: lib/layouts/iopart.layout:224
-#, fuzzy
 msgid "MSC"
-msgstr "AMS"
+msgstr "MSC"
 
 #: lib/layouts/iopart.layout:227
 #, fuzzy
@@ -8837,9 +8827,8 @@ msgid "Empty slide:"
 msgstr "Globina"
 
 #: lib/layouts/powerdot.layout:232 lib/layouts/numarticle.inc:9
-#, fuzzy
 msgid "\\arabic{section}"
-msgstr "Podrazdelek"
+msgstr "\\arabic{section}"
 
 #: lib/layouts/powerdot.layout:261
 #, fuzzy
@@ -8857,9 +8846,8 @@ msgid "List of Algorithms"
 msgstr "Algoritem"
 
 #: lib/layouts/recipebook.layout:42 lib/layouts/scrbook.layout:17
-#, fuzzy
 msgid "\\thechapter"
-msgstr "Poglavje"
+msgstr "\\thechapter"
 
 #: lib/layouts/recipebook.layout:78
 #, fuzzy
@@ -10122,49 +10110,43 @@ msgstr "Odlomek"
 
 #: lib/layouts/numreport.inc:12
 msgid "\\arabic{chapter}"
-msgstr ""
+msgstr "\\arabic{chapter}"
 
 #: lib/layouts/numreport.inc:13
 msgid "\\Alph{chapter}"
-msgstr ""
+msgstr "\\Alph{chapter}"
 
 #: lib/layouts/numreport.inc:44
-#, fuzzy
 msgid "\\arabic{footnote}"
-msgstr "Podrazdelek"
+msgstr "\\arabic{footnote}"
 
 #: lib/layouts/numrevtex.inc:9
 msgid "\\Roman{section}."
-msgstr ""
+msgstr "\\Roman{section}."
 
 #: lib/layouts/numrevtex.inc:10
 msgid "Appendix \\Alph{section}:"
 msgstr ""
 
 #: lib/layouts/numrevtex.inc:18
-#, fuzzy
 msgid "\\Alph{subsection}."
-msgstr "Podpodrazdelek"
+msgstr "\\Alph{subsection}."
 
 #: lib/layouts/numrevtex.inc:19
-#, fuzzy
 msgid "\\arabic{subsection}."
-msgstr "Podpodrazdelek"
+msgstr "\\arabic{subsection}."
 
 #: lib/layouts/numrevtex.inc:27
-#, fuzzy
 msgid "\\arabic{subsubsection}."
-msgstr "Podpodrazdelek"
+msgstr "\\arabic{subsubsection}."
 
 #: lib/layouts/numrevtex.inc:28
-#, fuzzy
 msgid "\\alph{subsubsection}."
-msgstr "Podpodrazdelek"
+msgstr "\\alph{subsubsection}."
 
 #: lib/layouts/numrevtex.inc:36 lib/layouts/numrevtex.inc:37
-#, fuzzy
 msgid "\\alph{paragraph}."
-msgstr " odstavkov"
+msgstr "\\alph{paragraph}."
 
 #: lib/layouts/scrclass.inc:113
 msgid "Addpart"
@@ -10236,14 +10218,13 @@ msgid "UNDEFINED"
 msgstr ""
 
 #: lib/layouts/stdcounters.inc:9
-#, fuzzy
 msgid "\\Roman{part}"
-msgstr "romunsko"
+msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
 #, fuzzy
 msgid "Part \\Roman{part}"
-msgstr "romunsko"
+msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:14
 #, fuzzy
@@ -10719,7 +10700,7 @@ msgstr "Inštitut"
 #: lib/layouts/initials.module:12
 #, fuzzy
 msgid "Initial"
-msgstr "NevidnoBesedilo"
+msgstr "ležeča"
 
 #: lib/layouts/linguistics.module:2
 #, fuzzy
@@ -11700,11 +11681,11 @@ msgstr ""
 
 #: lib/encodings:67
 msgid "DOS (CP 437)"
-msgstr ""
+msgstr "DOS (CP 437)"
 
 #: lib/encodings:71
 msgid "DOS-de (CP 437-de)"
-msgstr ""
+msgstr "DOS-de (CP 437-de)"
 
 #: lib/encodings:74
 msgid "Western European (CP 850)"
@@ -11794,7 +11775,7 @@ msgstr ""
 
 #: lib/encodings:165
 msgid "Unicode (CJK) (utf8)"
-msgstr ""
+msgstr "Unicode (CJK) (utf8)"
 
 #: lib/encodings:169
 msgid "Chinese (traditional) (EUC-TW)"
@@ -13990,9 +13971,8 @@ msgid "Table...|T"
 msgstr "Tabela...|T"
 
 #: lib/ui/stdmenus.inc:360
-#, fuzzy
 msgid "URL|U"
-msgstr "URL...|U"
+msgstr "URL|U"
 
 #: lib/ui/stdmenus.inc:361
 #, fuzzy
@@ -14088,7 +14068,7 @@ msgstr "&Vodoravna poravnava:"
 #: lib/ui/stdmenus.inc:467
 #, fuzzy
 msgid "Vertical Phantom"
-msgstr "esperanto"
+msgstr "Navpična poravnava"
 
 #: lib/ui/stdmenus.inc:479
 #, fuzzy
@@ -14245,7 +14225,7 @@ msgstr "Poišči in zamenjaj"
 #: lib/ui/stdtoolbars.inc:82
 #, fuzzy
 msgid "Find and replace (advanced)"
-msgstr "Poišči in zamenjaj...|P"
+msgstr "Poišči in zamenjaj"
 
 #: lib/ui/stdtoolbars.inc:83
 #, fuzzy
@@ -14324,12 +14304,12 @@ msgstr "Želite shraniti spis?"
 #: lib/ui/stdtoolbars.inc:104
 #, fuzzy
 msgid "View other formats"
-msgstr "Druge nastavitve pisav"
+msgstr "Datotečni formati"
 
 #: lib/ui/stdtoolbars.inc:105
 #, fuzzy
 msgid "Update other formats"
-msgstr "Osveži zaslon"
+msgstr "Format datuma"
 
 #: lib/ui/stdtoolbars.inc:108
 #, fuzzy
@@ -16131,33 +16111,28 @@ msgid "sqiintop"
 msgstr "sqiintop"
 
 #: lib/ui/stdtoolbars.inc:636
-#, fuzzy
 msgid "fint"
-msgstr "int"
+msgstr "fint"
 
 #: lib/ui/stdtoolbars.inc:637
-#, fuzzy
 msgid "fintop"
-msgstr "intop"
+msgstr "fintop"
 
 #: lib/ui/stdtoolbars.inc:638
-#, fuzzy
 msgid "landupint"
-msgstr "diamondsuit"
+msgstr "landupint"
 
 #: lib/ui/stdtoolbars.inc:639
-#, fuzzy
 msgid "landupintop"
-msgstr "intop"
+msgstr "landupintop"
 
 #: lib/ui/stdtoolbars.inc:640
 msgid "landdownint"
-msgstr ""
+msgstr "landdownint"
 
 #: lib/ui/stdtoolbars.inc:641
-#, fuzzy
 msgid "landdownintop"
-msgstr "dotsintop"
+msgstr "landdownintop"
 
 #: lib/ui/stdtoolbars.inc:642
 msgid "sum"
@@ -17356,7 +17331,7 @@ msgstr "HTML"
 #: lib/configure.py:519 lib/configure.py:521
 #, fuzzy
 msgid "LyXHTML|X"
-msgstr "HTML"
+msgstr "HTML|H"
 
 #: lib/configure.py:528 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
@@ -17816,7 +17791,7 @@ msgstr "Pretvorba"
 
 #: src/Buffer.cpp:1329
 #, fuzzy
-msgid "Uncodable character in path"
+msgid "Uncodable character in file path"
 msgstr "Posebni znak|z"
 
 #: src/Buffer.cpp:1330
@@ -17829,7 +17804,7 @@ msgid ""
 "This will likely result in incomplete output.\n"
 "\n"
 "Chose an appropriate document encoding (such as utf8)\n"
-"or change the path name."
+"or change the file path name."
 msgstr ""
 
 #: src/Buffer.cpp:1604
@@ -19105,9 +19080,8 @@ msgid "&Exit LyX"
 msgstr "Izhod"
 
 #: src/LyX.cpp:660 src/frontends/qt4/GuiView.cpp:798
-#, fuzzy
 msgid "LyX: "
-msgstr "LyX: Url"
+msgstr "LyX: "
 
 #: src/LyX.cpp:783
 #, fuzzy
@@ -19927,9 +19901,8 @@ msgid "No valid math formula"
 msgstr ""
 
 #: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1009
-#, fuzzy
 msgid "Already in regular expression mode"
-msgstr "Različica"
+msgstr ""
 
 #: src/Text3.cpp:216
 #, fuzzy
@@ -20387,9 +20360,9 @@ msgstr "Uporabniški imenik: "
 #: src/frontends/qt4/GuiAlert.cpp:145 src/frontends/qt4/GuiAlert.cpp:180
 #: src/frontends/qt4/GuiAlert.cpp:214 src/frontends/qt4/GuiAlert.cpp:242
 #: src/frontends/qt4/GuiAlert.cpp:274
-#, fuzzy, c-format
+#, c-format
 msgid "LyX: %1$s"
-msgstr "LyX: Url"
+msgstr "LyX: %1$s"
 
 #: src/frontends/qt4/GuiApplication.cpp:479
 #, fuzzy
@@ -20901,7 +20874,7 @@ msgstr "finsko"
 #: src/frontends/qt4/GuiCompare.cpp:261
 #, fuzzy
 msgid "Aborting process..."
-msgstr "Uvoz%m"
+msgstr "Urejanje spisa..."
 
 #: src/frontends/qt4/GuiCompare.cpp:297
 #, fuzzy
@@ -21741,7 +21714,7 @@ msgstr "Dnevnik LaTeXa"
 #: src/frontends/qt4/GuiLog.cpp:237
 #, fuzzy
 msgid "Literate"
-msgstr "Uredi v zaporedja"
+msgstr "Dobesedno"
 
 #: src/frontends/qt4/GuiLog.cpp:240
 #, fuzzy
@@ -22882,7 +22855,7 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2461
 #, fuzzy
 msgid "Reload externally changed document?"
-msgstr "Vrni se k shranjenemu"
+msgstr "Želite shraniti spis?"
 
 #: src/frontends/qt4/GuiView.cpp:2515
 msgid "Error when setting the locking property."
@@ -22898,9 +22871,9 @@ msgid "Opening child document %1$s..."
 msgstr "Odpira se spis %1$s..."
 
 #: src/frontends/qt4/GuiView.cpp:2725
-#, fuzzy, c-format
+#, c-format
 msgid "Successful export to format: %1$s"
-msgstr "Ni podatkov za pretvarjanje iz "
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2726
 #, fuzzy, c-format
@@ -22913,9 +22886,9 @@ msgid "Successful preview of format: %1$s"
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2739
-#, fuzzy, c-format
+#, c-format
 msgid "Error previewing format: %1$s"
-msgstr "Ni podatkov za pretvarjanje iz "
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2798
 #, fuzzy
@@ -22923,8 +22896,9 @@ msgid "Exporting ..."
 msgstr "Uvoz%m"
 
 #: src/frontends/qt4/GuiView.cpp:2818
+#, fuzzy
 msgid "Previewing ..."
-msgstr ""
+msgstr "Predogled|#P"
 
 #: src/frontends/qt4/GuiView.cpp:2871
 #, fuzzy
@@ -23073,9 +23047,8 @@ msgid "<No Bookmarks Saved Yet>"
 msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:951
-#, fuzzy
 msgid "View (Other Formats)|F"
-msgstr "Druge nastavitve pisav"
+msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:952
 #, fuzzy
@@ -23090,7 +23063,7 @@ msgstr "Ogled|O"
 #: src/frontends/qt4/Menus.cpp:986
 #, fuzzy, c-format
 msgid "Update [%1$s]|U"
-msgstr "&Osveži"
+msgstr "Osveži|O"
 
 #: src/frontends/qt4/Menus.cpp:1079
 #, fuzzy
@@ -23398,12 +23371,12 @@ msgstr "dvojni"
 #: src/insets/InsetBox.cpp:151 src/insets/InsetBox.cpp:154
 #, c-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #: src/insets/InsetBox.cpp:157
 #, c-format
 msgid "%1$s (%2$s, %3$s)"
-msgstr ""
+msgstr "%1$s (%2$s, %3$s)"
 
 #: src/insets/InsetBranch.cpp:66
 #, fuzzy
@@ -23504,8 +23477,8 @@ msgstr "Posebni znak|z"
 #: src/insets/InsetCommandParams.cpp:387
 #, c-format
 msgid ""
-"The following characters that are used in an inset (%1$s) are\n"
-"not representable in the current encoding and have been omitted:\n"
+"The following characters that are used in the inset %1$s are not\n"
+"representable in the current encoding and therefore have been omitted:\n"
 "%2$s."
 msgstr ""
 
@@ -24365,9 +24338,8 @@ msgid "entered math text mode (textrm)"
 msgstr ""
 
 #: src/mathed/InsetMathNest.cpp:1019
-#, fuzzy
 msgid "Regular expression editor mode"
-msgstr "Način matematičnega urejanja"
+msgstr ""
 
 #: src/mathed/InsetMathNest.cpp:1595 src/mathed/InsetMathNest.cpp:1715
 msgid "Autocorrect Off ('!' to enter)"
@@ -24659,28 +24631,53 @@ msgstr "Neznana beseda:"
 #~ msgid "D&elete"
 #~ msgstr "&Zbriši"
 
-#, fuzzy
-#~ msgid "Prev"
-#~ msgstr "Predogled|#P"
+#~ msgid "&Default language:"
+#~ msgstr "&Privzeti jezik:"
 
 #, fuzzy
-#~ msgid "Close this panel"
-#~ msgstr "Zapri ta pogovor"
+#~ msgid "Select the default language of your documents"
+#~ msgstr "Ponastavi privzete parametre trenutnega razreda"
 
 #, fuzzy
-#~ msgid "Match..."
-#~ msgstr "Poti"
+#~ msgid "&BibTeX command:"
+#~ msgstr "Ukaz za Chec&kTeX:"
 
 #, fuzzy
-#~ msgid "Current &Paragraph"
-#~ msgstr "en odstavek"
+#~ msgid "&Index command:"
+#~ msgstr "Naslednji ukaz"
 
 #, fuzzy
-#~ msgid "Document in current file"
-#~ msgstr "Slog spisa"
+#~ msgid "BibTeX command (&Japanese):"
+#~ msgstr "Dnevnik LaTeXa"
+
+#, fuzzy
+#~ msgid "Index command (Ja&panese):"
+#~ msgstr "Naslednji ukaz"
+
+#~ msgid "&roff command:"
+#~ msgstr "Ukaz &roff:"
+
+#, fuzzy
+#~ msgid "External app for formating tables in plain text output"
+#~ msgstr "Zunanji program za formatiranje tabel v izhodu ASCII"
+
+#, fuzzy
+#~ msgid "Spellchec&ker executable:"
+#~ msgstr "Program za č&rkovalnik:"
+
+#~ msgid "Use input encod&ing"
+#~ msgstr "Uporabi vhodno &kodiranje"
+
+#, fuzzy
+#~ msgid "Jump to the label"
+#~ msgstr "Naj&daljša oznaka"
 
 #~ msgid "Merge cells"
 #~ msgstr "Združi celice"
+
+#, fuzzy
+#~ msgid "Listing settings"
+#~ msgstr "Nastavitve tiskalnika"
 
 #, fuzzy
 #~ msgid "Anschrift:"
@@ -24746,6 +24743,34 @@ msgstr "Neznana beseda:"
 #~ msgstr "PS:"
 
 #, fuzzy
+#~ msgid "LangHeader"
+#~ msgstr "Glava"
+
+#, fuzzy
+#~ msgid "Language Header:"
+#~ msgstr "Glava"
+
+#, fuzzy
+#~ msgid "Language:"
+#~ msgstr "&Jezik:"
+
+#, fuzzy
+#~ msgid "LastLanguage"
+#~ msgstr "Jezik"
+
+#, fuzzy
+#~ msgid "Last Language:"
+#~ msgstr "&Jezik:"
+
+#, fuzzy
+#~ msgid "LangFooter"
+#~ msgstr "Noga:"
+
+#, fuzzy
+#~ msgid "End"
+#~ msgstr "Encl."
+
+#, fuzzy
 #~ msgid "Text:"
 #~ msgstr "Besedilo"
 
@@ -24802,20 +24827,71 @@ msgstr "Neznana beseda:"
 #~ msgstr "Priloge"
 
 #, fuzzy
-#~ msgid "Bibliography Entry Settings"
-#~ msgstr "Postavka literature"
+#~ msgid "Computer"
+#~ msgstr "Izvodi"
 
 #, fuzzy
-#~ msgid "Box Settings"
-#~ msgstr "Nastavitve"
+#~ msgid "Computer:"
+#~ msgstr "Izvodi:"
+
+#, fuzzy
+#~ msgid "EmptySection"
+#~ msgstr "Razdelek"
+
+#, fuzzy
+#~ msgid "Empty Section"
+#~ msgstr "Razdelek"
+
+#, fuzzy
+#~ msgid "CloseSection"
+#~ msgstr "izbor"
+
+#, fuzzy
+#~ msgid "Close Section"
+#~ msgstr "izbor"
+
+#, fuzzy
+#~ msgid "Insert|n"
+#~ msgstr "Vstavi|V"
+
+#, fuzzy
+#~ msgid "View DVI"
+#~ msgstr "Ogled|O"
+
+#, fuzzy
+#~ msgid "Update DVI"
+#~ msgstr "&Osveži"
+
+#, fuzzy
+#~ msgid "View PostScript"
+#~ msgstr "&Gonilnik za postscript:"
+
+#, fuzzy
+#~ msgid "Update PostScript"
+#~ msgstr "&Gonilnik za postscript:"
+
+#, fuzzy
+#~ msgid "No horizontal line\t\\atop"
+#~ msgstr "Ni več opomb"
+
+#, fuzzy
+#~ msgid "Native OS API not yet supported."
+#~ msgstr "Še ni podprto"
+
+#, fuzzy
+#~ msgid "Unknown spacing argument: "
+#~ msgstr "Manjkajoči argument"
+
+#, fuzzy
+#~ msgid "Bibliography Entry Settings"
+#~ msgstr "Postavka literature"
 
 #, fuzzy
 #~ msgid "Branch Settings"
 #~ msgstr "Postavka literature"
 
-#, fuzzy
-#~ msgid "(cancelling)"
-#~ msgstr "Robovi"
+#~ msgid "Length"
+#~ msgstr "Dolžina"
 
 #, fuzzy
 #~ msgid "TeX Code Settings"
@@ -24832,120 +24908,47 @@ msgstr "Neznana beseda:"
 #~ msgid "No LaTeX log file found."
 #~ msgstr "Nobenih odkritih opozoril."
 
-#~ msgid "Table Settings"
-#~ msgstr "Nastavitve tabele"
+#~ msgid "ispell"
+#~ msgstr "ispell"
+
+#~ msgid "*.pws"
+#~ msgstr "*.pws"
+
+#~ msgid "*.ispell"
+#~ msgstr "*.ispell"
+
+#, fuzzy
+#~ msgid "Spellchecker error"
+#~ msgstr "Črkovalnik"
+
+#, fuzzy
+#~ msgid "The spellchecker could not be started\n"
+#~ msgstr ""
+#~ "Črkovalnika ni bilo moč zagnati.\n"
+#~ "Morda je napačno prikrojen."
+
+#, fuzzy
+#~ msgid ""
+#~ "The spellchecker has died for some reason.\n"
+#~ "Maybe it has been killed."
+#~ msgstr ""
+#~ "Črkovalnik je iz neznanega razloga umrl.\n"
+#~ "Morda je bil pobit."
+
+#, fuzzy
+#~ msgid "The spellchecker has failed.\n"
+#~ msgstr "Črkovalniku je spodletelo."
+
+#, fuzzy
+#~ msgid "The spellchecker has failed"
+#~ msgstr "Črkovalniku je spodletelo."
 
 #, fuzzy
 #~ msgid "Vertical Space Settings"
 #~ msgstr "Navpični presledek:|#p"
 
-#, fuzzy
-#~ msgid "Match found and replaced !"
-#~ msgstr "Poišči in zamenjaj"
-
-#, fuzzy
-#~ msgid "Latex"
-#~ msgstr "Datum"
-
-#, fuzzy
-#~ msgid "View Output|V"
-#~ msgstr "Ogled|O"
-
-#, fuzzy
-#~ msgid "Update Output|U"
-#~ msgstr "pri&lagodi izhod"
-
-#, fuzzy
-#~ msgid "Advanced Search"
-#~ msgstr "&Prekliči"
-
-#, fuzzy
-#~ msgid "Replace Ne&xt"
-#~ msgstr "Nadomesti &z:"
-
-#, fuzzy
-#~ msgid "Find &Prev"
-#~ msgstr "Najdi &naslednjo"
-
-#, fuzzy
-#~ msgid "Replace P&rev"
-#~ msgstr "Nadomesti &vse"
-
-#, fuzzy
-#~ msgid "Current buffer only"
-#~ msgstr "Trenutna celica:"
-
-#, fuzzy
-#~ msgid "Buffer"
-#~ msgstr "modra"
-
-#, fuzzy
-#~ msgid "Document"
-#~ msgstr "Spisi"
-
-#, fuzzy
-#~ msgid "Open buffers"
-#~ msgstr "modra"
-
-#, fuzzy
-#~ msgid "Select the default language of your documents"
-#~ msgstr "Ponastavi privzete parametre trenutnega razreda"
-
-#~ msgid "Personal &dictionary:"
-#~ msgstr "Osebni &slovar:"
-
-#~ msgid "Use input encod&ing"
-#~ msgstr "Uporabi vhodno &kodiranje"
-
-#, fuzzy
-#~ msgid "Jump to the label"
-#~ msgstr "Naj&daljša oznaka"
-
-#~ msgid "Column Width"
-#~ msgstr "Širina stolpcev "
-
-#, fuzzy
-#~ msgid "Listing settings"
-#~ msgstr "Nastavitve tiskalnika"
-
-#, fuzzy
-#~ msgid "\\alph{enumii}."
-#~ msgstr "\\Alph{enumiv}."
-
-#, fuzzy
-#~ msgid "Insert|n"
-#~ msgstr "Vstavi|V"
-
-#, fuzzy
-#~ msgid "Toggle Label|L"
-#~ msgstr "&Spremeni vse"
-
-#, fuzzy
-#~ msgid "Move Section down|d"
-#~ msgstr "Pomakni izbrani citat navzdol"
-
-#, fuzzy
-#~ msgid "Move Section up|u"
-#~ msgstr "izbor"
-
-#, fuzzy
-#~ msgid "Regexp"
-#~ msgstr "exp"
-
-#, fuzzy
-#~ msgid "The spellchecker has failed."
-#~ msgstr "Črkovalniku je spodletelo."
-
-#, fuzzy
-#~ msgid "No file open!"
-#~ msgstr "Nobenih odkritih opozoril."
-
-#, fuzzy
-#~ msgid "Unknown spacing argument: "
-#~ msgstr "Manjkajoči argument"
-
-#~ msgid "Length"
-#~ msgstr "Dolžina"
+#~ msgid "No Table of contents"
+#~ msgstr "Ni vsebinskega kazala"
 
 #~ msgid "Opened inset"
 #~ msgstr "Odprt vstavek"
@@ -24991,10 +24994,6 @@ msgstr "Neznana beseda:"
 #~ msgstr "Odprta zabeležka"
 
 #, fuzzy
-#~ msgid "Opened Phantom Inset"
-#~ msgstr "Odprta zabeležka"
-
-#, fuzzy
 #~ msgid "Opened table"
 #~ msgstr "Odpira se datoteko s pomočjo"
 
@@ -25007,146 +25006,20 @@ msgstr "Neznana beseda:"
 #~ msgstr "Odprta zabeležka"
 
 #, fuzzy
-#~ msgid "Accept Change|C"
-#~ msgstr "Sprememba pisave|p"
-
-#, fuzzy
-#~ msgid "C&ommand:"
-#~ msgstr "&Ukaz:"
-
-#~ msgid "&Default language:"
-#~ msgstr "&Privzeti jezik:"
-
-#, fuzzy
-#~ msgid "&Index command:"
-#~ msgstr "Naslednji ukaz"
-
-#, fuzzy
-#~ msgid "&BibTeX command:"
-#~ msgstr "Ukaz za Chec&kTeX:"
-
-#~ msgid "&roff command:"
-#~ msgstr "Ukaz &roff:"
-
-#, fuzzy
-#~ msgid "External app for formating tables in plain text output"
-#~ msgstr "Zunanji program za formatiranje tabel v izhodu ASCII"
-
-#, fuzzy
-#~ msgid "Spellchec&ker executable:"
-#~ msgstr "Program za č&rkovalnik:"
-
-#, fuzzy
-#~ msgid "LangHeader"
-#~ msgstr "Glava"
-
-#, fuzzy
-#~ msgid "Language Header:"
-#~ msgstr "Glava"
-
-#, fuzzy
-#~ msgid "Language:"
-#~ msgstr "&Jezik:"
-
-#, fuzzy
-#~ msgid "LastLanguage"
-#~ msgstr "Jezik"
-
-#, fuzzy
-#~ msgid "Last Language:"
-#~ msgstr "&Jezik:"
-
-#, fuzzy
-#~ msgid "LangFooter"
-#~ msgstr "Noga:"
-
-#, fuzzy
-#~ msgid "End"
-#~ msgstr "Encl."
-
-#, fuzzy
-#~ msgid "Computer"
-#~ msgstr "Izvodi"
-
-#, fuzzy
-#~ msgid "Computer:"
-#~ msgstr "Izvodi:"
-
-#, fuzzy
-#~ msgid "EmptySection"
-#~ msgstr "Razdelek"
-
-#, fuzzy
-#~ msgid "Empty Section"
-#~ msgstr "Razdelek"
-
-#, fuzzy
-#~ msgid "CloseSection"
-#~ msgstr "izbor"
-
-#, fuzzy
-#~ msgid "Close Section"
-#~ msgstr "izbor"
+#~ msgid "Latex"
+#~ msgstr "Datum"
 
 #, fuzzy
 #~ msgid "Toggle Labeling/Numbering|T"
 #~ msgstr "Preklopi številčenje|t"
 
 #, fuzzy
-#~ msgid "View DVI"
-#~ msgstr "Ogled|O"
+#~ msgid "Toggle Label|L"
+#~ msgstr "&Spremeni vse"
 
 #, fuzzy
-#~ msgid "Update DVI"
-#~ msgstr "&Osveži"
-
-#, fuzzy
-#~ msgid "View PostScript"
-#~ msgstr "&Gonilnik za postscript:"
-
-#, fuzzy
-#~ msgid "Update PostScript"
-#~ msgstr "&Gonilnik za postscript:"
-
-#, fuzzy
-#~ msgid "No horizontal line\t\\atop"
-#~ msgstr "Ni več opomb"
-
-#, fuzzy
-#~ msgid "Native OS API not yet supported."
-#~ msgstr "Še ni podprto"
-
-#~ msgid "ispell"
-#~ msgstr "ispell"
-
-#, fuzzy
-#~ msgid "*.ispell"
-#~ msgstr "ispell"
-
-#, fuzzy
-#~ msgid "Spellchecker error"
-#~ msgstr "Črkovalnik"
-
-#, fuzzy
-#~ msgid "The spellchecker could not be started\n"
-#~ msgstr ""
-#~ "Črkovalnika ni bilo moč zagnati.\n"
-#~ "Morda je napačno prikrojen."
-
-#, fuzzy
-#~ msgid ""
-#~ "The spellchecker has died for some reason.\n"
-#~ "Maybe it has been killed."
-#~ msgstr ""
-#~ "Črkovalnik je iz neznanega razloga umrl.\n"
-#~ "Morda je bil pobit."
-
-#, fuzzy
-#~ msgid "The spellchecker has failed"
-#~ msgstr "Črkovalniku je spodletelo."
-
-#~ msgid "No Table of contents"
-#~ msgstr "Ni vsebinskega kazala"
+#~ msgid "No file open!"
+#~ msgstr "Nobenih odkritih opozoril."
 
 #~ msgid "B&rowse..."
 #~ msgstr "B&rskaj..."
@@ -25806,6 +25679,9 @@ msgstr "Neznana beseda:"
 #, fuzzy
 #~ msgid "Upper"
 #~ msgstr "Osveži|O"
+
+#~ msgid "Table of contents"
+#~ msgstr "Vsebinsko kazalo"
 
 #, fuzzy
 #~ msgid "Opened Theorem Inset"

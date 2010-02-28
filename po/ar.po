@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-28 15:22+0100\n"
-"PO-Revision-Date: 2008-09-29 03:28+0300\n"
+"POT-Creation-Date: 2010-02-28 16:00+0100\n"
+"PO-Revision-Date: 2008-09-29 17:28+0100\n"
 "Last-Translator: Hatim Alahmadi <Dr.Hatim@hotmail.com>\n"
 "Language-Team: LyX team <Dr.Hatim@hotmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -460,9 +460,8 @@ msgid "Filename &Suffix"
 msgstr "اسم الملف"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
-#, fuzzy
 msgid "Show undefined branches used in this document."
-msgstr "لا فرع في المستند!"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
 #, fuzzy
@@ -553,9 +552,8 @@ msgstr "الغاء"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
-#, fuzzy
 msgid "Undefined branches used in this document."
-msgstr "لا فرع في المستند!"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:68
 #, fuzzy
@@ -819,9 +817,8 @@ msgid "S&elected Citations:"
 msgstr "مقتبسات محددة:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:72
-#, fuzzy
 msgid "Click or press Enter to add the selected citation to the list"
-msgstr "اضافة فرع جديد للقائمة"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "Click or press Delete to delete the selected citation from the list"
@@ -967,7 +964,7 @@ msgstr "مستند جديد"
 #: src/frontends/qt4/ui/CompareUi.ui:80
 #, fuzzy
 msgid "&Old Document:"
-msgstr "فتح مستند"
+msgstr "مستندات"
 
 #: src/frontends/qt4/ui/CompareUi.ui:115 src/frontends/qt4/ui/PrefUi.ui:248
 msgid "Bro&wse..."
@@ -1243,9 +1240,8 @@ msgid "Find LyX Text"
 msgstr "بحث التالي"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:107
-#, fuzzy
 msgid "&Basic"
-msgstr "فارسي"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:159
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:183
@@ -1258,9 +1254,8 @@ msgid "&Replace with..."
 msgstr "استبدال بـ:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:222
-#, fuzzy
 msgid "Replace and find next occurrence [Enter]"
-msgstr "استبدل الكلمة بالاختيار الحالي"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:225
 #, fuzzy
@@ -1332,7 +1327,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:446
 #, fuzzy
 msgid "&Next"
-msgstr "نص"
+msgstr "&جديد"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:467
 msgid "Find previous occurrence [Shift+Enter]"
@@ -1369,12 +1364,12 @@ msgstr "الشكل:"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:582
 #, fuzzy
 msgid "Current paragraph"
-msgstr "نقل الفقرة لاسفل"
+msgstr "الكلمة الحالية"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:585
 #, fuzzy
 msgid "Current &paragraph"
-msgstr "نقل الفقرة لاسفل"
+msgstr "الكلمة الحالية"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:606
 #, fuzzy
@@ -1382,11 +1377,10 @@ msgid "Current &document"
 msgstr "طباعة مستند"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:627
-#, fuzzy
 msgid ""
 "Current document and all related documents belonging to the same master "
 "document"
-msgstr "لاعادة ضبط الاعدادات الافتراضيه لصنف الوثيقة"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:630
 #, fuzzy
@@ -1404,9 +1398,8 @@ msgid "&Open documents"
 msgstr "فتح مستند"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:669
-#, fuzzy
 msgid "All ma&nuals"
-msgstr "برايل (افتراضي)"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:690
 #, fuzzy
@@ -1422,7 +1415,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:711
 #, fuzzy
 msgid "Ignore &format"
-msgstr "هيئة الورق"
+msgstr "إلى الهيئة:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
 #: src/frontends/qt4/ui/OutputUi.ui:13 src/frontends/qt4/ui/PDFSupportUi.ui:13
@@ -1432,7 +1425,7 @@ msgstr "من"
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:23
 #, fuzzy
 msgid "Float Type:"
-msgstr "النوع"
+msgstr "نوع المعلومات:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:47
 msgid "Use &default placement"
@@ -2249,9 +2242,8 @@ msgid "Hit Enter to search, or click Go!"
 msgstr "انقر انتر للبحث, أوانقر اذهب!"
 
 #: src/frontends/qt4/ui/LogUi.ui:45
-#, fuzzy
 msgid "Log &Type:"
-msgstr "النوع"
+msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:74
 msgid "Update the display"
@@ -2338,9 +2330,8 @@ msgid "Include only the selected subdocuments in the output"
 msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:43
-#, fuzzy
 msgid "Include only &selected children"
-msgstr "ملف مضمن"
+msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:50
 msgid ""
@@ -2582,9 +2573,8 @@ msgid "Use the XeTeX processing engine"
 msgstr ""
 
 #: src/frontends/qt4/ui/OutputUi.ui:73
-#, fuzzy
 msgid "Use &XeTeX"
-msgstr "استخدام babel"
+msgstr ""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:19
 msgid "Paper Format"
@@ -2832,9 +2822,8 @@ msgid "Horizontal and vertical space of the phantom content"
 msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:63
-#, fuzzy
 msgid "&Phantom"
-msgstr "hom"
+msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:70
 #, fuzzy
@@ -2842,9 +2831,8 @@ msgid "Horizontal space of the phantom content"
 msgstr "محاذاة افقية للمحتوى داخل الصندوق"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:73
-#, fuzzy
 msgid "&Horiz. Phantom"
-msgstr "hom"
+msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:80
 #, fuzzy
@@ -2852,9 +2840,8 @@ msgid "Vertical space of the phantom content"
 msgstr "محاذاة رأسية للمحتوى داخل الصندوق"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:83
-#, fuzzy
 msgid "&Vert. Phantom"
-msgstr "hom"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 #, fuzzy
@@ -4020,7 +4007,7 @@ msgstr ""
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
 #, fuzzy
 msgid "&Clear automatically"
-msgstr "مساعدة آلية"
+msgstr "تطبيق كل التغييرات آلياً"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
 #, fuzzy
@@ -4050,9 +4037,8 @@ msgid "Display all debug messages"
 msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
-#, fuzzy
 msgid "Display statusbar messages?"
-msgstr "نص مدرج/رسائل مجدولة"
+msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:239
 #, fuzzy
@@ -4069,9 +4055,8 @@ msgid "Enter string to filter the label list"
 msgstr ""
 
 #: src/frontends/qt4/ui/RefUi.ui:59
-#, fuzzy
 msgid "Filter case-sensitively"
-msgstr "قضية حساسه"
+msgstr ""
 
 #: src/frontends/qt4/ui/RefUi.ui:62
 #, fuzzy
@@ -4258,7 +4243,7 @@ msgstr "استبدال بالكلمة المحددة"
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:110
 #, fuzzy
 msgid "S&uggestions:"
-msgstr "عملاق:"
+msgstr "سؤال"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:133
 msgid "Ignore this word"
@@ -4376,7 +4361,7 @@ msgstr ""
 #: src/frontends/qt4/ui/TabularUi.ui:302
 #, fuzzy
 msgid "Cell setting"
-msgstr "اعدادات"
+msgstr "اعدادات المدونة"
 
 #: src/frontends/qt4/ui/TabularUi.ui:308
 msgid "Rotate this cell by 90 degrees"
@@ -5537,8 +5522,9 @@ msgid "Teaser image:"
 msgstr "صفحة فارغة"
 
 #: lib/layouts/acmsiggraph.layout:84
+#, fuzzy
 msgid "CRcat"
-msgstr ""
+msgstr "hat"
 
 #: lib/layouts/acmsiggraph.layout:89
 msgid "CR category"
@@ -5788,7 +5774,7 @@ msgstr "قسم \\عربي{قسم}"
 #: lib/layouts/beamer.layout:168 lib/layouts/powerdot.layout:238
 #: lib/layouts/numarticle.inc:10
 msgid "\\Alph{section}"
-msgstr ""
+msgstr "\\Alph{section}"
 
 #: lib/layouts/beamer.layout:198
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
@@ -5796,7 +5782,7 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:211
 msgid "\\arabic{section}.\\arabic{subsection}"
-msgstr ""
+msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:227 lib/layouts/beamer.layout:271
 #: lib/layouts/beamer.layout:311 lib/layouts/beamer.layout:352
@@ -8315,11 +8301,11 @@ msgstr ""
 
 #: lib/layouts/scrlettr.layout:50
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #: lib/layouts/scrlettr.layout:63
 msgid "O"
-msgstr ""
+msgstr "O"
 
 #: lib/layouts/scrlettr.layout:105 lib/layouts/scrlttr2.layout:136
 msgid "Encl"
@@ -8499,7 +8485,7 @@ msgstr "الخوارزم*"
 
 #: lib/layouts/siamltex.layout:131
 msgid "AMS"
-msgstr ""
+msgstr "AMS"
 
 #: lib/layouts/siamltex.layout:306 lib/layouts/amsdefs.inc:195
 msgid "Subjectclass"
@@ -9401,7 +9387,7 @@ msgstr "\\Alph{فصل}"
 
 #: lib/layouts/numreport.inc:44
 msgid "\\arabic{footnote}"
-msgstr ""
+msgstr "\\arabic{footnote}"
 
 #: lib/layouts/numrevtex.inc:9
 msgid "\\Roman{section}."
@@ -9501,12 +9487,12 @@ msgstr ""
 
 #: lib/layouts/stdcounters.inc:9
 msgid "\\Roman{part}"
-msgstr ""
+msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
 #, fuzzy
 msgid "Part \\Roman{part}"
-msgstr "جزء //الجزء"
+msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:14
 #, fuzzy
@@ -10088,7 +10074,7 @@ msgstr ""
 #: lib/layouts/noweb.module:5 lib/layouts/sweave.module:5
 #, fuzzy
 msgid "literate"
-msgstr "intercal"
+msgstr "قائمة المواد"
 
 #: lib/layouts/sweave.module:2 lib/layouts/sweave.module:18
 #: lib/configure.py:507
@@ -10573,6 +10559,7 @@ msgid "Catalan"
 msgstr "Catalan"
 
 #: lib/languages:26
+#, fuzzy
 msgid "Chinese (simplified)"
 msgstr "Chinese (simplified)"
 
@@ -12518,7 +12505,7 @@ msgstr ""
 #: lib/ui/stdcontext.inc:564
 #, fuzzy
 msgid "All Indexes|A"
-msgstr "شكر"
+msgstr "فتح كل الادراجات|O"
 
 #: lib/ui/stdcontext.inc:567
 msgid "Subindex|b"
@@ -12677,12 +12664,12 @@ msgstr "اعدادات الصندوق..."
 #: lib/ui/stdmenus.inc:139
 #, fuzzy
 msgid "Index Entry Settings...|y"
-msgstr "اعدادات كود تيك..."
+msgstr "اعدادات الصندوق..."
 
 #: lib/ui/stdmenus.inc:140
 #, fuzzy
 msgid "Index Settings...|x"
-msgstr "اعدادات كود تيك..."
+msgstr "اعدادات الصندوق..."
 
 #: lib/ui/stdmenus.inc:141
 #, fuzzy
@@ -13025,12 +13012,12 @@ msgstr ""
 #: lib/ui/stdmenus.inc:466
 #, fuzzy
 msgid "Horizontal Phantom"
-msgstr "hom"
+msgstr "خط  افقي"
 
 #: lib/ui/stdmenus.inc:467
 #, fuzzy
 msgid "Vertical Phantom"
-msgstr "hom"
+msgstr "محاذاة رأسية"
 
 #: lib/ui/stdmenus.inc:479
 msgid "Change Tracking|C"
@@ -13172,7 +13159,7 @@ msgstr "بحث واستبدال"
 #: lib/ui/stdtoolbars.inc:82
 #, fuzzy
 msgid "Find and replace (advanced)"
-msgstr "بحث واستبدال..."
+msgstr "بحث واستبدال"
 
 #: lib/ui/stdtoolbars.inc:83
 #, fuzzy
@@ -13235,22 +13222,22 @@ msgstr "تحديث"
 #: lib/ui/stdtoolbars.inc:101
 #, fuzzy
 msgid "View master document"
-msgstr "مستند رئيسي"
+msgstr "حدد المستند الرئيسي"
 
 #: lib/ui/stdtoolbars.inc:102
 #, fuzzy
 msgid "Update master document"
-msgstr "مستند رئيسي"
+msgstr "حدد المستند الرئيسي"
 
 #: lib/ui/stdtoolbars.inc:104
 #, fuzzy
 msgid "View other formats"
-msgstr "هيئة الورق"
+msgstr "هيئات الملفات"
 
 #: lib/ui/stdtoolbars.inc:105
 #, fuzzy
 msgid "Update other formats"
-msgstr "تحديث العرض"
+msgstr "هيئة التاريخ"
 
 #: lib/ui/stdtoolbars.inc:108
 msgid "Extra"
@@ -13708,7 +13695,7 @@ msgstr "Relations"
 #: lib/ui/stdtoolbars.inc:283
 #, fuzzy
 msgid "AMS negative relations"
-msgstr "خيارات لتيك"
+msgstr "منتسب:"
 
 #: lib/ui/stdtoolbars.inc:284 lib/ui/stdtoolbars.inc:379
 msgid "Dots"
@@ -14963,33 +14950,28 @@ msgid "sqiintop"
 msgstr "sqiintop"
 
 #: lib/ui/stdtoolbars.inc:636
-#, fuzzy
 msgid "fint"
-msgstr "int"
+msgstr "fint"
 
 #: lib/ui/stdtoolbars.inc:637
-#, fuzzy
 msgid "fintop"
-msgstr "intop"
+msgstr "fintop"
 
 #: lib/ui/stdtoolbars.inc:638
-#, fuzzy
 msgid "landupint"
-msgstr "diamondsuit"
+msgstr "landupint"
 
 #: lib/ui/stdtoolbars.inc:639
-#, fuzzy
 msgid "landupintop"
-msgstr "intop"
+msgstr "landupintop"
 
 #: lib/ui/stdtoolbars.inc:640
 msgid "landdownint"
-msgstr ""
+msgstr "landdownint"
 
 #: lib/ui/stdtoolbars.inc:641
-#, fuzzy
 msgid "landdownintop"
-msgstr "dotsintop"
+msgstr "landdownintop"
 
 #: lib/ui/stdtoolbars.inc:642
 msgid "sum"
@@ -15993,9 +15975,8 @@ msgid ""
 msgstr ""
 
 #: lib/external_templates:333
-#, fuzzy
 msgid "Dia"
-msgstr "يوم"
+msgstr "Dia"
 
 #: lib/external_templates:334 lib/external_templates:337
 msgid "Dia: $$AbsOrRelPathParent$$Basename"
@@ -16014,9 +15995,8 @@ msgid "FIG"
 msgstr "FIG"
 
 #: lib/configure.py:451
-#, fuzzy
 msgid "DIA"
-msgstr "DVI"
+msgstr "DIA"
 
 #: lib/configure.py:454
 msgid "Grace"
@@ -16105,9 +16085,8 @@ msgid "Graphviz Dot"
 msgstr "Graphviz Dot"
 
 #: lib/configure.py:505
-#, fuzzy
 msgid "LaTeX (pLaTeX)"
-msgstr "LaTeX (plain)"
+msgstr "LaTeX (pLaTeX)"
 
 #: lib/configure.py:506
 msgid "NoWeb"
@@ -16141,7 +16120,7 @@ msgstr "LaTeX (pdflatex)"
 #: lib/configure.py:511
 #, fuzzy
 msgid "LaTeX (XeTeX)"
-msgstr "LaTeX (plain)"
+msgstr "LaTeX (pLaTeX)"
 
 #: lib/configure.py:512 src/frontends/qt4/GuiPrefs.cpp:335
 msgid "Plain text"
@@ -16175,7 +16154,7 @@ msgstr "HTML"
 #: lib/configure.py:519 lib/configure.py:521
 #, fuzzy
 msgid "LyXHTML|X"
-msgstr "HTML"
+msgstr "HTML|H"
 
 #: lib/configure.py:528 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
@@ -16316,9 +16295,8 @@ msgid "LyX Preview"
 msgstr "مستعرض ليك"
 
 #: lib/configure.py:576
-#, fuzzy
 msgid "LyX Preview (pLaTeX)"
-msgstr "مستعرض ليك"
+msgstr "LyX Preview (pLaTeX)"
 
 #: lib/configure.py:577
 msgid "PDFTEX"
@@ -16611,7 +16589,7 @@ msgid "conversion failed"
 msgstr ""
 
 #: src/Buffer.cpp:1329
-msgid "Uncodable character in path"
+msgid "Uncodable character in file path"
 msgstr ""
 
 #: src/Buffer.cpp:1330
@@ -16624,7 +16602,7 @@ msgid ""
 "This will likely result in incomplete output.\n"
 "\n"
 "Chose an appropriate document encoding (such as utf8)\n"
-"or change the path name."
+"or change the file path name."
 msgstr ""
 
 #: src/Buffer.cpp:1604
@@ -18587,7 +18565,7 @@ msgstr ""
 #: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1009
 #, fuzzy
 msgid "Already in regular expression mode"
-msgstr "تحميل في نظام الشاشة الكاملة"
+msgstr "التعبير العاديه"
 
 #: src/Text3.cpp:216
 #, fuzzy
@@ -18910,14 +18888,12 @@ msgid "master document[[scope]]"
 msgstr "مستند رئيسي"
 
 #: src/frontends/qt4/FindAndReplace.cpp:330
-#, fuzzy
 msgid "open files[[scope]]"
-msgstr "ملفات الامثلة:"
+msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:333
-#, fuzzy
 msgid "manuals[[scope]]"
-msgstr "برايل (افتراضي)"
+msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:337
 #, c-format
@@ -19465,9 +19441,8 @@ msgid "Error"
 msgstr "خطأ"
 
 #: src/frontends/qt4/GuiCompare.cpp:200
-#, fuzzy
 msgid "Error while comparing documents."
-msgstr "فتح مستند"
+msgstr ""
 
 #: src/frontends/qt4/GuiCompare.cpp:219
 #, fuzzy
@@ -20187,7 +20162,7 @@ msgstr "اختصارات"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "lyxrc"
-msgstr ""
+msgstr "lyxrc"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "package"
@@ -20251,7 +20226,7 @@ msgstr "سجل لتيك"
 #: src/frontends/qt4/GuiLog.cpp:237
 #, fuzzy
 msgid "Literate"
-msgstr "intercal"
+msgstr "قائمة المواد"
 
 #: src/frontends/qt4/GuiLog.cpp:240
 #, fuzzy
@@ -20583,17 +20558,15 @@ msgstr "اعدادات الصندوق"
 #: src/frontends/qt4/GuiPrintindex.cpp:69
 #, fuzzy
 msgid "<All indexes>"
-msgstr "الافرع المتاحة:"
+msgstr "كل الحقول"
 
 #: src/frontends/qt4/GuiProgressView.cpp:52
-#, fuzzy
 msgid "Progress/Debug Messages"
-msgstr "نص مدرج/رسائل مجدولة"
+msgstr ""
 
 #: src/frontends/qt4/GuiProgressView.cpp:81
-#, fuzzy
 msgid "Debug Level"
-msgstr "نص مدرج/رسائل مجدولة"
+msgstr ""
 
 #: src/frontends/qt4/GuiProgressView.cpp:82
 #, fuzzy
@@ -21300,15 +21273,16 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2461
 #, fuzzy
 msgid "Reload externally changed document?"
-msgstr "اعادة تحميل المستند المحفوظ؟"
+msgstr "حفظ المستند المغير؟"
 
 #: src/frontends/qt4/GuiView.cpp:2515
 msgid "Error when setting the locking property."
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2558
+#, fuzzy
 msgid "Directory is not accessible."
-msgstr ""
+msgstr "ملف غير قابل للقراءة!"
 
 #: src/frontends/qt4/GuiView.cpp:2641
 #, c-format
@@ -21316,9 +21290,9 @@ msgid "Opening child document %1$s..."
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2725
-#, fuzzy, c-format
+#, c-format
 msgid "Successful export to format: %1$s"
-msgstr "لا معلومات لتصدير الهيئة %1$s."
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2726
 #, fuzzy, c-format
@@ -21333,7 +21307,7 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2739
 #, fuzzy, c-format
 msgid "Error previewing format: %1$s"
-msgstr "لا معلومات لتصدير الهيئة %1$s."
+msgstr "خطأ في قراءة النموذج %1$s\n"
 
 #: src/frontends/qt4/GuiView.cpp:2798
 #, fuzzy
@@ -21478,9 +21452,8 @@ msgid "<No Bookmarks Saved Yet>"
 msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:951
-#, fuzzy
 msgid "View (Other Formats)|F"
-msgstr "هيئة الورق"
+msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:952
 #, fuzzy
@@ -21522,7 +21495,7 @@ msgstr "قوائم أخرى"
 #: src/frontends/qt4/Menus.cpp:1208
 #, fuzzy
 msgid "<Empty Table of Contents>"
-msgstr "لا جدول في المحتوى"
+msgstr "جدول المحتويات"
 
 #: src/frontends/qt4/Menus.cpp:1243
 msgid "Other Toolbars"
@@ -21568,9 +21541,9 @@ msgid "Update %1$s"
 msgstr "تحديث"
 
 #: src/frontends/qt4/Toolbars.cpp:229
-#, fuzzy, c-format
+#, c-format
 msgid "View %1$s"
-msgstr "عرض"
+msgstr ""
 
 #: src/frontends/qt4/Validator.cpp:161
 msgid "space"
@@ -21771,14 +21744,14 @@ msgid "double frame"
 msgstr "اطار مزدوج"
 
 #: src/insets/InsetBox.cpp:151 src/insets/InsetBox.cpp:154
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (%2$s)"
-msgstr "%1$s, %2$s"
+msgstr "%1$s (%2$s)"
 
 #: src/insets/InsetBox.cpp:157
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (%2$s, %3$s)"
-msgstr "%1$s, %2$s"
+msgstr "%1$s (%2$s, %3$s)"
 
 #: src/insets/InsetBranch.cpp:66
 #, fuzzy
@@ -21870,8 +21843,8 @@ msgstr "محارف خاصة"
 #: src/insets/InsetCommandParams.cpp:387
 #, c-format
 msgid ""
-"The following characters that are used in an inset (%1$s) are\n"
-"not representable in the current encoding and have been omitted:\n"
+"The following characters that are used in the inset %1$s are not\n"
+"representable in the current encoding and therefore have been omitted:\n"
 "%2$s."
 msgstr ""
 
@@ -22017,7 +21990,7 @@ msgstr ""
 #: src/insets/InsetIndex.cpp:448
 #, fuzzy
 msgid "All indices"
-msgstr "الافرع المتاحة:"
+msgstr "كل الحقول"
 
 #: src/insets/InsetIndex.cpp:452
 #, fuzzy
@@ -22385,8 +22358,9 @@ msgid "Negative Thin Space"
 msgstr ""
 
 #: src/insets/InsetSpace.cpp:98
+#, fuzzy
 msgid "Negative Medium Space"
-msgstr ""
+msgstr "وسط"
 
 #: src/insets/InsetSpace.cpp:101
 msgid "Negative Thick Space"
@@ -22665,7 +22639,7 @@ msgstr ""
 #: src/mathed/InsetMathNest.cpp:1019
 #, fuzzy
 msgid "Regular expression editor mode"
-msgstr "نظام تحرير الرياضيات"
+msgstr "التعبير العاديه"
 
 #: src/mathed/InsetMathNest.cpp:1595 src/mathed/InsetMathNest.cpp:1715
 msgid "Autocorrect Off ('!' to enter)"
@@ -22731,7 +22705,6 @@ msgid ""
 msgstr ""
 
 #: src/support/Package.cpp:626 src/support/Package.cpp:653
-#, fuzzy
 msgid "File not found"
 msgstr "الملف غير موجود"
 
@@ -22931,66 +22904,11 @@ msgstr ""
 msgid "Unknown user"
 msgstr "مستخدم مجهول"
 
-#, fuzzy
-#~ msgid "TextLabel"
-#~ msgstr "ملصق"
+#~ msgid "&Dummy"
+#~ msgstr "نموذج طباعة"
 
-#~ msgid "Merge cells"
-#~ msgstr "دمج الخلايا"
-
-#~ msgid "Branch Settings"
-#~ msgstr "اعدادات الفرع"
-
-#~ msgid "Horizontal Space Settings"
-#~ msgstr "اعدادات المسافة الافقية"
-
-#~ msgid "Table Settings"
-#~ msgstr "اعدادات الجدول"
-
-#, fuzzy
-#~ msgid "Language ...|L"
-#~ msgstr "اللغة"
-
-#, fuzzy
-#~ msgid " Macro: %1$s: "
-#~ msgstr "معطيات %1$s: "
-
-#, fuzzy
-#~ msgid "&Debug messages"
-#~ msgstr "نص مدرج/رسائل مجدولة"
-
-#, fuzzy
-#~ msgid "Clear &automatically"
-#~ msgstr "مساعدة آلية"
-
-#~ msgid "Box Settings"
-#~ msgstr "اعدادات الصندوق"
-
-#~ msgid "TeX Code Settings"
-#~ msgstr "اعدادات كود تيك"
-
-#~ msgid "Float Settings"
-#~ msgstr "اعدادات التعويم"
-
-#, fuzzy
-#~ msgid "Match found and replaced !"
-#~ msgstr "بحث واستبدال"
-
-#, fuzzy
-#~ msgid "Close this panel"
-#~ msgstr "اغلاق هذا الحوار"
-
-#, fuzzy
-#~ msgid "Prev"
-#~ msgstr "Pr"
-
-#, fuzzy
-#~ msgid "Match..."
-#~ msgstr "رياضيات"
-
-#, fuzzy
-#~ msgid "Find LyX Dialog"
-#~ msgstr "بحث التالي"
+#~ msgid "F&ind:"
+#~ msgstr "بحث:"
 
 #~ msgid "The Enter key works, too"
 #~ msgstr "ادخل كلمات مفتاحية, ايضاً"
@@ -23001,54 +22919,125 @@ msgstr "مستخدم مجهول"
 #~ msgid "D&elete"
 #~ msgstr "حذف"
 
-#~ msgid "F&ind:"
-#~ msgstr "بحث:"
+#~ msgid "&Default language:"
+#~ msgstr "اللغة الافتراضية:"
+
+#~ msgid "Select the default language of your documents"
+#~ msgstr "حدد اللغة الافتراضية لمستنداتك"
+
+#~ msgid "&BibTeX command:"
+#~ msgstr "اوامر BibTeX:"
 
 #, fuzzy
-#~ msgid "Current &Paragraph"
-#~ msgstr "نقل الفقرة لاسفل"
+#~ msgid "BibTeX command (&Japanese):"
+#~ msgstr "اوامر وخيارات BibTeX"
 
-#, fuzzy
-#~ msgid "Document in current file"
-#~ msgstr "المستند للقراءة فقط"
+#~ msgid "Merge cells"
+#~ msgstr "دمج الخلايا"
 
-#, fuzzy
-#~ msgid "diamond2"
-#~ msgstr "diamond"
+#~ msgid "Listing settings"
+#~ msgstr "اعدادات القوائم"
+
+#~ msgid "Language:"
+#~ msgstr "اللغة:"
+
+#~ msgid "LastLanguage"
+#~ msgstr "آخر لغة"
+
+#~ msgid "Last Language:"
+#~ msgstr "آخر لغة:"
 
 #~ msgid "End"
 #~ msgstr "نهاية"
 
-#, fuzzy
-#~ msgid "begin"
-#~ msgstr "بداية"
+#~ msgid "BLZ"
+#~ msgstr "BLZ"
+
+#~ msgid "Konto"
+#~ msgstr "Konto"
+
+#~ msgid "Computer"
+#~ msgstr "الحاسب"
+
+#~ msgid "Computer:"
+#~ msgstr "الحاسب:"
+
+#~ msgid "EmptySection"
+#~ msgstr "قسم فارغ"
+
+#~ msgid "CloseSection"
+#~ msgstr "اغلاق الجلسة"
+
+#~ msgid "Close Section"
+#~ msgstr "اغلاق الجلسة"
+
+#~ msgid "Insert|n"
+#~ msgstr "ادراج"
+
+#~ msgid "View DVI"
+#~ msgstr "عرض DVI"
+
+#~ msgid "Update DVI"
+#~ msgstr "تحديث DVI"
+
+#~ msgid "View PostScript"
+#~ msgstr "عرض بوستكربت"
+
+#~ msgid "Update PostScript"
+#~ msgstr "تحديث بوستكربت"
+
+#~ msgid "What command runs the spellchecker?"
+#~ msgstr "ما هو الامر الذي يشغل المصحح الاملائي؟"
+
+#~ msgid "Branch Settings"
+#~ msgstr "اعدادات الفرع"
+
+#~ msgid "Length"
+#~ msgstr "الطول"
+
+#~ msgid "TeX Code Settings"
+#~ msgstr "اعدادات كود تيك"
 
 #, fuzzy
-#~ msgid "end"
-#~ msgstr "و"
+#~ msgid "pLaTeX"
+#~ msgstr "لتيك"
+
+#~ msgid "Float Settings"
+#~ msgstr "اعدادات التعويم"
+
+#~ msgid "Horizontal Space Settings"
+#~ msgstr "اعدادات المسافة الافقية"
+
+#~ msgid "No LaTeX log file found."
+#~ msgstr "لا يوجد ملف سجل لتيك"
+
+#~ msgid "ispell"
+#~ msgstr "ispell "
+
+#~ msgid "*.pws"
+#~ msgstr "*.pws"
+
+#~ msgid "*.ispell"
+#~ msgstr "*.ispell"
+
+#~ msgid "Spellchecker error"
+#~ msgstr "خطأ تصحيح املائي"
+
+#~ msgid "The spellchecker has failed.\n"
+#~ msgstr "فشل المصحح الاملائي.\n"
+
+#~ msgid "The spellchecker has failed"
+#~ msgstr "فشل المصحح الاملائي"
+
+#~ msgid "No Table of contents"
+#~ msgstr "لا جدول في المحتوى"
+
+#~ msgid "Opened table"
+#~ msgstr "فتح جدول"
 
 #, fuzzy
-#~ msgid "file"
-#~ msgstr "ملف مضمن"
-
-#, fuzzy
-#~ msgid "forward"
-#~ msgstr "forall"
-
-#, fuzzy
-#~ msgid "backwards"
-#~ msgstr "الخلفية"
-
-#~ msgid "&Dummy"
-#~ msgstr "نموذج طباعة"
-
-#, fuzzy
-#~ msgid "&Automatic clear"
-#~ msgstr "مساعدة آلية"
-
-#, fuzzy
-#~ msgid "(cancelling)"
-#~ msgstr "معالجة خط"
+#~ msgid " Macro: %1$s: "
+#~ msgstr "معطيات %1$s: "
 
 #, fuzzy
 #~ msgid "Absender:"
@@ -23067,14 +23056,8 @@ msgstr "مستخدم مجهول"
 #~ msgid "Text:"
 #~ msgstr "النص:"
 
-#~ msgid "BLZ"
-#~ msgstr "BLZ"
-
 #~ msgid "BLZ:"
 #~ msgstr "BLZ:"
-
-#~ msgid "Konto"
-#~ msgstr "Konto"
 
 #~ msgid "Konto:"
 #~ msgstr "Konto:"
@@ -23082,134 +23065,18 @@ msgstr "مستخدم مجهول"
 #~ msgid "Adresse:"
 #~ msgstr "العنوان:"
 
-#~ msgid "No LaTeX log file found."
-#~ msgstr "لا يوجد ملف سجل لتيك"
-
 #~ msgid "Latex"
 #~ msgstr "لتيك"
 
-#, fuzzy
-#~ msgid "View Output|V"
-#~ msgstr "عرض"
-
-#, fuzzy
-#~ msgid "Update Output|U"
-#~ msgstr "تحديث"
-
-#, fuzzy
-#~ msgid "Advanced Search"
-#~ msgstr "متقدم"
-
-#, fuzzy
-#~ msgid "Replace Ne&xt"
-#~ msgstr "استبدال بـ:"
-
-#, fuzzy
-#~ msgid "Find &Prev"
-#~ msgstr "بحث التالي"
-
-#, fuzzy
-#~ msgid "Replace P&rev"
-#~ msgstr "استبدال الكل"
-
-#, fuzzy
-#~ msgid "Current buffer only"
-#~ msgstr "الخلية الحالية:"
-
-#, fuzzy
-#~ msgid "Buffer"
-#~ msgstr "سطر الاوامر"
-
 #~ msgid "Close Tab Group|G"
 #~ msgstr "اغلاق مجموعة الجدولة"
-
-#, fuzzy
-#~ msgid "Regexp"
-#~ msgstr "قهـ"
 
 #~ msgid "No file open!"
 #~ msgstr "لا ملف مفتوح"
 
 #, fuzzy
-#~ msgid "Click to edit the settings of the child document"
-#~ msgstr "لاعادة ضبط الاعدادات الافتراضيه لصنف الوثيقة"
-
-#, fuzzy
-#~ msgid "Master Settings"
-#~ msgstr "اعدادات المدونة"
-
-#~ msgid "Column Width"
-#~ msgstr "عرض العمود"
-
-#~ msgid "Listing settings"
-#~ msgstr "اعدادات القوائم"
-
-#, fuzzy
-#~ msgid "\\alph{enumii}."
-#~ msgstr ".\\Alph{enumiv}"
-
-#~ msgid "Insert|n"
-#~ msgstr "ادراج"
-
-#~ msgid "Length"
-#~ msgstr "الطول"
-
-#~ msgid "Opened table"
-#~ msgstr "فتح جدول"
-
-#~ msgid "Select the default language of your documents"
-#~ msgstr "حدد اللغة الافتراضية لمستنداتك"
-
-#~ msgid "Personal &dictionary:"
-#~ msgstr "المسار الشخصي:"
-
-#~ msgid "Move Section down|d"
-#~ msgstr "نقل القسم لأسفل"
-
-#~ msgid "Move Section up|u"
-#~ msgstr "نقل القسم لأعلى"
-
-#~ msgid "*.pws"
-#~ msgstr "*.pws"
-
-#, fuzzy
-#~ msgid "Accept Change|C"
-#~ msgstr "اعتماد التغيير"
-
-#, fuzzy
-#~ msgid "C&ommand:"
-#~ msgstr "الامر:"
-
-#~ msgid "&BibTeX command:"
-#~ msgstr "اوامر BibTeX:"
-
-#, fuzzy
-#~ msgid "BibTeX command (&Japanese):"
-#~ msgstr "اوامر وخيارات BibTeX"
-
-#, fuzzy
-#~ msgid "Copy Label as Reference|C"
-#~ msgstr "العودة للمرجع"
-
-#, fuzzy
-#~ msgid "View|V[[show]]"
-#~ msgstr "عرض"
-
-#~ msgid "View DVI"
-#~ msgstr "عرض DVI"
-
-#~ msgid "View PostScript"
-#~ msgstr "عرض بوستكربت"
-
-#~ msgid "Update DVI"
-#~ msgstr "تحديث DVI"
-
-#~ msgid "Update PostScript"
-#~ msgstr "تحديث بوستكربت"
-
-#, fuzzy
-#~ msgid "Indices"
-#~ msgstr "شكر"
+#~ msgid "Check in Changes...|I"
+#~ msgstr "مسار التغييرات"
 
 #~ msgid "B&rowse..."
 #~ msgstr "استعراض..."
@@ -23220,48 +23087,17 @@ msgstr "مستخدم مجهول"
 #~ msgid "Ne&w"
 #~ msgstr "جديد"
 
-#~ msgid "Spellchecker error"
-#~ msgstr "خطأ تصحيح املائي"
-
-#~ msgid "The spellchecker has failed"
-#~ msgstr "فشل المصحح الاملائي"
-
-#~ msgid "Language:"
-#~ msgstr "اللغة:"
-
-#~ msgid "LastLanguage"
-#~ msgstr "آخر لغة"
-
-#~ msgid "Last Language:"
-#~ msgstr "آخر لغة:"
-
-#~ msgid "Computer"
-#~ msgstr "الحاسب"
-
-#~ msgid "Computer:"
-#~ msgstr "الحاسب:"
-
-#~ msgid "EmptySection"
-#~ msgstr "قسم فارغ"
-
-#~ msgid "CloseSection"
-#~ msgstr "اغلاق الجلسة"
-
-#~ msgid "Close Section"
-#~ msgstr "اغلاق الجلسة"
-
 #~ msgid "Go back to Reference|G"
 #~ msgstr "العودة للمرجع"
 
 #, fuzzy
-#~ msgid "Phantom Text"
-#~ msgstr "Plain text"
+#~ msgid "Grou&p Name:"
+#~ msgstr "الاسم:"
 
 #, fuzzy
-#~ msgid "RegExp"
-#~ msgstr "قهـ"
-
-#~ msgid "Group Name to be set up from the current parameters"
+#~ msgid ""
+#~ "Group Name to be set up from the current parameters. Use context menu to "
+#~ "assign the existing one."
 #~ msgstr "اسم المجموعة التي ستنشأ من المعطيات الحالية"
 
 #~ msgid "&Postscript driver:"
@@ -23269,18 +23105,6 @@ msgstr "مستخدم مجهول"
 
 #~ msgid "Remove Last Parameter"
 #~ msgstr "ازالة المعطى الاخير"
-
-#~ msgid "&Default language:"
-#~ msgstr "اللغة الافتراضية:"
-
-#~ msgid "What command runs the spellchecker?"
-#~ msgstr "ما هو الامر الذي يشغل المصحح الاملائي؟"
-
-#~ msgid "ispell"
-#~ msgstr "ispell "
-
-#~ msgid "*.ispell"
-#~ msgstr "*.ispell"
 
 #~ msgid "figure"
 #~ msgstr "صورة توضيحية"

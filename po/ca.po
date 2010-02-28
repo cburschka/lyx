@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-28 15:22+0100\n"
-"PO-Revision-Date: 2008-08-04 22:25+0100\n"
+"POT-Creation-Date: 2010-02-28 16:00+0100\n"
+"PO-Revision-Date: 2008-07-28 17:53+0100\n"
 "Last-Translator: joan <joan@montane.cat>\n"
 "Language-Team: Catalan\n"
 "MIME-Version: 1.0\n"
@@ -824,9 +824,8 @@ msgid "S&elected Citations:"
 msgstr "Citacions &seleccionades:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:72
-#, fuzzy
 msgid "Click or press Enter to add the selected citation to the list"
-msgstr "Afegeix una branca nova a la llista"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "Click or press Delete to delete the selected citation from the list"
@@ -1249,9 +1248,8 @@ msgid "Find LyX Text"
 msgstr "Cerca el següent"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:107
-#, fuzzy
 msgid "&Basic"
-msgstr "Llatí bàsic"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:159
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:183
@@ -1264,9 +1262,8 @@ msgid "&Replace with..."
 msgstr "Substitueix amb"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:222
-#, fuzzy
 msgid "Replace and find next occurrence [Enter]"
-msgstr "Substitueix la paraula amb la selecció actual"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:225
 #, fuzzy
@@ -1339,7 +1336,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:446
 #, fuzzy
 msgid "&Next"
-msgstr "text"
+msgstr "&Nou:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:467
 msgid "Find previous occurrence [Shift+Enter]"
@@ -1358,7 +1355,7 @@ msgstr "Només paraules senceres"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:494
 #, fuzzy
 msgid "Whole &words"
-msgstr "Només paraules senceres"
+msgstr "Paraules clau."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:522
 #, fuzzy
@@ -1390,11 +1387,10 @@ msgid "Current &document"
 msgstr "Imprimeix el document"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:627
-#, fuzzy
 msgid ""
 "Current document and all related documents belonging to the same master "
 "document"
-msgstr "Introduïu el nom del document mestre predeterminat"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:630
 #, fuzzy
@@ -1409,12 +1405,11 @@ msgstr "Obre el document"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:651
 #, fuzzy
 msgid "&Open documents"
-msgstr "OpenDocument"
+msgstr "Obre el document"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:669
-#, fuzzy
 msgid "All ma&nuals"
-msgstr "Braille (predeterminat)"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:690
 #, fuzzy
@@ -1430,7 +1425,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:711
 #, fuzzy
 msgid "Ignore &format"
-msgstr "Format del paper"
+msgstr "&Al format:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
 #: src/frontends/qt4/ui/OutputUi.ui:13 src/frontends/qt4/ui/PDFSupportUi.ui:13
@@ -1440,7 +1435,7 @@ msgstr "Formulari"
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:23
 #, fuzzy
 msgid "Float Type:"
-msgstr "Tipus"
+msgstr "Tipus d'informació:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:47
 msgid "Use &default placement"
@@ -2274,9 +2269,8 @@ msgid "Hit Enter to search, or click Go!"
 msgstr "Pitgeu Retorn per cercar, o feu clic a Ves!"
 
 #: src/frontends/qt4/ui/LogUi.ui:45
-#, fuzzy
 msgid "Log &Type:"
-msgstr "Tipus"
+msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:74
 msgid "Update the display"
@@ -2363,9 +2357,8 @@ msgid "Include only the selected subdocuments in the output"
 msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:43
-#, fuzzy
 msgid "Include only &selected children"
-msgstr "Inclou fitxer"
+msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:50
 msgid ""
@@ -2379,9 +2372,8 @@ msgid "&Maintain counters and references"
 msgstr "totes les referències no citades"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:63
-#, fuzzy
 msgid "Include all subdocuments in the output"
-msgstr "Subratlla els espais a la sortida generada"
+msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:66
 #, fuzzy
@@ -2609,9 +2601,8 @@ msgid "Use the XeTeX processing engine"
 msgstr ""
 
 #: src/frontends/qt4/ui/OutputUi.ui:73
-#, fuzzy
 msgid "Use &XeTeX"
-msgstr "Usa el paquet b&abel"
+msgstr ""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:19
 msgid "Paper Format"
@@ -2862,9 +2853,8 @@ msgid "Horizontal and vertical space of the phantom content"
 msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:63
-#, fuzzy
 msgid "&Phantom"
-msgstr "hom"
+msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:70
 #, fuzzy
@@ -2872,9 +2862,8 @@ msgid "Horizontal space of the phantom content"
 msgstr "Aliniament horitzontal del contingut dins la caixa"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:73
-#, fuzzy
 msgid "&Horiz. Phantom"
-msgstr "hom"
+msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:80
 #, fuzzy
@@ -2882,9 +2871,8 @@ msgid "Vertical space of the phantom content"
 msgstr "Alineament vertical del contingut dins la caixa"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:83
-#, fuzzy
 msgid "&Vert. Phantom"
-msgstr "hom"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 #, fuzzy
@@ -3569,7 +3557,7 @@ msgstr "Directori de t&reball:"
 #: src/frontends/qt4/ui/PrefPathsUi.ui:215
 #, fuzzy
 msgid "Hunspell dictionaries:"
-msgstr "Tesaurus"
+msgstr "Diccionari personal:"
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2832
 msgid ""
@@ -3843,7 +3831,6 @@ msgid "&Spellchecker engine:"
 msgstr "Corrector ortogràfic"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
-#, fuzzy
 msgid "Accept words such as \"diskdrive\""
 msgstr "Accepta paraules compostes com \"discdur\""
 
@@ -4111,17 +4098,17 @@ msgstr ""
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
 #, fuzzy
 msgid "&Clear automatically"
-msgstr "Ajuda automàtica"
+msgstr "Aplica cada canvi automàticament"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
 #, fuzzy
 msgid "Debug messages"
-msgstr "No hi ha cap missatge de depuració"
+msgstr "Tots el missatges de depuració"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:203
 #, fuzzy
 msgid "Display no debug messages"
-msgstr "No hi ha cap missatge de depuració"
+msgstr "Tots el missatges de depuració"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:206
 #, fuzzy
@@ -4200,7 +4187,7 @@ msgstr ""
 #: src/frontends/qt4/ui/RefUi.ui:193
 #, fuzzy
 msgid "Grou&p"
-msgstr "Escapça"
+msgstr "&Nom:"
 
 #: src/frontends/qt4/ui/RefUi.ui:223 src/frontends/qt4/GuiRef.cpp:314
 msgid "&Go to Label"
@@ -4470,7 +4457,7 @@ msgstr ""
 #: src/frontends/qt4/ui/TabularUi.ui:302
 #, fuzzy
 msgid "Cell setting"
-msgstr "Paràmetres"
+msgstr "Paràmetres de la nota"
 
 #: src/frontends/qt4/ui/TabularUi.ui:308
 msgid "Rotate this cell by 90 degrees"
@@ -5651,8 +5638,9 @@ msgid "Teaser image:"
 msgstr "ImatgeRaster"
 
 #: lib/layouts/acmsiggraph.layout:84
+#, fuzzy
 msgid "CRcat"
-msgstr ""
+msgstr "hat"
 
 #: lib/layouts/acmsiggraph.layout:89
 #, fuzzy
@@ -8139,9 +8127,8 @@ msgid "Physics and Astronomy Classification System number:"
 msgstr ""
 
 #: lib/layouts/iopart.layout:224
-#, fuzzy
 msgid "MSC"
-msgstr "AMS"
+msgstr "MSC"
 
 #: lib/layouts/iopart.layout:227
 msgid "Mathematics Subject Classification number:"
@@ -8420,9 +8407,8 @@ msgid "List of Algorithms"
 msgstr "Llista d'algorismes"
 
 #: lib/layouts/recipebook.layout:42 lib/layouts/scrbook.layout:17
-#, fuzzy
 msgid "\\thechapter"
-msgstr "\\Alph{chapter}"
+msgstr "\\thechapter"
 
 #: lib/layouts/recipebook.layout:78
 #, fuzzy
@@ -9717,7 +9703,6 @@ msgid "UNDEFINED"
 msgstr ""
 
 #: lib/layouts/stdcounters.inc:9
-#, fuzzy
 msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
@@ -9743,19 +9728,16 @@ msgid "Paragraph ##"
 msgstr "Paràgraf"
 
 #: lib/layouts/stdcounters.inc:43
-#, fuzzy
 msgid "\\arabic{enumi}."
-msgstr "Decoració"
+msgstr "\\arabic{enumi}."
 
 #: lib/layouts/stdcounters.inc:53
-#, fuzzy
 msgid "\\roman{enumiii}."
-msgstr "Decoració"
+msgstr "\\roman{enumiii}."
 
 #: lib/layouts/stdcounters.inc:58
-#, fuzzy
 msgid "\\Alph{enumiv}."
-msgstr "Decoració"
+msgstr "\\Alph{enumiv}."
 
 #: lib/layouts/stdcounters.inc:68
 #, fuzzy
@@ -10172,7 +10154,7 @@ msgstr "CharStyle:Institut"
 #: lib/layouts/initials.module:12
 #, fuzzy
 msgid "Initial"
-msgstr "TextInvisible"
+msgstr "Cursiva"
 
 #: lib/layouts/linguistics.module:2
 msgid "Linguistics"
@@ -10825,6 +10807,7 @@ msgid "Catalan"
 msgstr "Català"
 
 #: lib/languages:26
+#, fuzzy
 msgid "Chinese (simplified)"
 msgstr "Xinès (simplificat)"
 
@@ -12840,9 +12823,8 @@ msgid "Insert Reference at Cursor Position|I"
 msgstr ""
 
 #: lib/ui/stdcontext.inc:564
-#, fuzzy
 msgid "All Indexes|A"
-msgstr "Apèndixs"
+msgstr ""
 
 #: lib/ui/stdcontext.inc:567
 msgid "Subindex|b"
@@ -13006,12 +12988,12 @@ msgstr "Paràmetres de la caixa...|x"
 #: lib/ui/stdmenus.inc:139
 #, fuzzy
 msgid "Index Entry Settings...|y"
-msgstr "Paràmetres de codi TeX...|C"
+msgstr "Paràmetres de la caixa...|x"
 
 #: lib/ui/stdmenus.inc:140
 #, fuzzy
 msgid "Index Settings...|x"
-msgstr "Paràmetres de codi TeX...|C"
+msgstr "Paràmetres de la caixa...|x"
 
 #: lib/ui/stdmenus.inc:141
 #, fuzzy
@@ -13277,9 +13259,8 @@ msgid "Table...|T"
 msgstr "Taula...|T"
 
 #: lib/ui/stdmenus.inc:360
-#, fuzzy
 msgid "URL|U"
-msgstr "URL...|U"
+msgstr "URL|U"
 
 #: lib/ui/stdmenus.inc:361
 #, fuzzy
@@ -13361,12 +13342,12 @@ msgstr ""
 #: lib/ui/stdmenus.inc:466
 #, fuzzy
 msgid "Horizontal Phantom"
-msgstr "hom"
+msgstr "Línia horitzontal"
 
 #: lib/ui/stdmenus.inc:467
 #, fuzzy
 msgid "Vertical Phantom"
-msgstr "hom"
+msgstr "Alineament vertical"
 
 #: lib/ui/stdmenus.inc:479
 msgid "Change Tracking|C"
@@ -13513,7 +13494,7 @@ msgstr "Cerca i substitueix"
 #: lib/ui/stdtoolbars.inc:82
 #, fuzzy
 msgid "Find and replace (advanced)"
-msgstr "Cerca i substitueix...|F"
+msgstr "Cerca i substitueix"
 
 #: lib/ui/stdtoolbars.inc:83
 #, fuzzy
@@ -13579,22 +13560,22 @@ msgstr "&Actualitza"
 #: lib/ui/stdtoolbars.inc:101
 #, fuzzy
 msgid "View master document"
-msgstr "Document mestre"
+msgstr "Vols salvar el document?"
 
 #: lib/ui/stdtoolbars.inc:102
 #, fuzzy
 msgid "Update master document"
-msgstr "Document mestre"
+msgstr "Vols salvar el document?"
 
 #: lib/ui/stdtoolbars.inc:104
 #, fuzzy
 msgid "View other formats"
-msgstr "Format del paper"
+msgstr "Formats de fitxer"
 
 #: lib/ui/stdtoolbars.inc:105
 #, fuzzy
 msgid "Update other formats"
-msgstr "Actualitza la vista"
+msgstr "Format de data"
 
 #: lib/ui/stdtoolbars.inc:108
 msgid "Extra"
@@ -15321,33 +15302,28 @@ msgid "sqiintop"
 msgstr "sqiintop"
 
 #: lib/ui/stdtoolbars.inc:636
-#, fuzzy
 msgid "fint"
-msgstr "int"
+msgstr "fint"
 
 #: lib/ui/stdtoolbars.inc:637
-#, fuzzy
 msgid "fintop"
-msgstr "intop"
+msgstr "fintop"
 
 #: lib/ui/stdtoolbars.inc:638
-#, fuzzy
 msgid "landupint"
-msgstr "diamondsuit"
+msgstr "landupint"
 
 #: lib/ui/stdtoolbars.inc:639
-#, fuzzy
 msgid "landupintop"
-msgstr "intop"
+msgstr "landupintop"
 
 #: lib/ui/stdtoolbars.inc:640
 msgid "landdownint"
-msgstr ""
+msgstr "landdownint"
 
 #: lib/ui/stdtoolbars.inc:641
-#, fuzzy
 msgid "landdownintop"
-msgstr "dotsintop"
+msgstr "landdownintop"
 
 #: lib/ui/stdtoolbars.inc:642
 msgid "sum"
@@ -16373,9 +16349,8 @@ msgstr ""
 "Llegiu 'info date' per a més informació.\n"
 
 #: lib/external_templates:333
-#, fuzzy
 msgid "Dia"
-msgstr "Ajustament de pantalla"
+msgstr "Dia"
 
 #: lib/external_templates:334 lib/external_templates:337
 #, fuzzy
@@ -16395,9 +16370,8 @@ msgid "FIG"
 msgstr "FIG"
 
 #: lib/configure.py:451
-#, fuzzy
 msgid "DIA"
-msgstr "DVI"
+msgstr "DIA"
 
 #: lib/configure.py:454
 msgid "Grace"
@@ -16557,7 +16531,7 @@ msgstr "HTML"
 #: lib/configure.py:519 lib/configure.py:521
 #, fuzzy
 msgid "LyXHTML|X"
-msgstr "HTML"
+msgstr "HTML|H"
 
 #: lib/configure.py:528 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
@@ -17019,7 +16993,7 @@ msgstr "La conversió ha fallat"
 
 #: src/Buffer.cpp:1329
 #, fuzzy
-msgid "Uncodable character in path"
+msgid "Uncodable character in file path"
 msgstr "caràcter especial"
 
 #: src/Buffer.cpp:1330
@@ -17032,7 +17006,7 @@ msgid ""
 "This will likely result in incomplete output.\n"
 "\n"
 "Chose an appropriate document encoding (such as utf8)\n"
-"or change the path name."
+"or change the file path name."
 msgstr ""
 
 #: src/Buffer.cpp:1604
@@ -17877,7 +17851,7 @@ msgstr "herència"
 #: src/Color.cpp:244
 #, fuzzy
 msgid "regexp frame"
-msgstr "Mode editor matemàtic"
+msgstr "Nom"
 
 #: src/Color.cpp:245
 msgid "ignore"
@@ -19116,7 +19090,7 @@ msgstr ""
 #: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1009
 #, fuzzy
 msgid "Already in regular expression mode"
-msgstr "Carrega en mode pantalla completa"
+msgstr "E&xpressió regular"
 
 #: src/Text3.cpp:216
 #, fuzzy
@@ -19271,15 +19245,13 @@ msgstr ""
 
 #: src/VCBackend.cpp:815 src/VCBackend.cpp:819
 #: src/frontends/qt4/FindAndReplace.cpp:395
-#, fuzzy
 msgid "&Yes"
-msgstr "Sí"
+msgstr "&Sí"
 
 #: src/VCBackend.cpp:815 src/VCBackend.cpp:819
 #: src/frontends/qt4/FindAndReplace.cpp:395
-#, fuzzy
 msgid "&No"
-msgstr "No"
+msgstr "&No"
 
 #: src/VCBackend.cpp:815
 msgid "View &Log ..."
@@ -19460,14 +19432,12 @@ msgid "master document[[scope]]"
 msgstr "Document mestre"
 
 #: src/frontends/qt4/FindAndReplace.cpp:330
-#, fuzzy
 msgid "open files[[scope]]"
-msgstr "Fitxers d&exemple:"
+msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:333
-#, fuzzy
 msgid "manuals[[scope]]"
-msgstr "Braille (predeterminat)"
+msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:337
 #, c-format
@@ -19515,13 +19485,13 @@ msgid "amount of work other people have done for the LyX project."
 msgstr "la feinada amb que altra gent ha contribuït al projecte LyX"
 
 #: src/frontends/qt4/GuiAbout.cpp:84
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995--%1$s LyX Team"
 msgstr ""
 "LyX és Copyright (C) 1995 d'en Matthias Ettrich,\n"
-"1995-1998 Equip del LyX"
+"1995--%1$s Equip del LyX"
 
 #: src/frontends/qt4/GuiAbout.cpp:92
 msgid ""
@@ -20077,9 +20047,8 @@ msgid "Error"
 msgstr "Fletxa"
 
 #: src/frontends/qt4/GuiCompare.cpp:200
-#, fuzzy
 msgid "Error while comparing documents."
-msgstr "Obre el document"
+msgstr ""
 
 #: src/frontends/qt4/GuiCompare.cpp:219
 #, fuzzy
@@ -20841,7 +20810,7 @@ msgstr "&Drecera:"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "lyxrc"
-msgstr ""
+msgstr "lyxrc"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 #, fuzzy
@@ -21256,17 +21225,15 @@ msgstr "Paràmetres de la caixa"
 #: src/frontends/qt4/GuiPrintindex.cpp:69
 #, fuzzy
 msgid "<All indexes>"
-msgstr "Branques &disponibles:"
+msgstr "Tots els camps"
 
 #: src/frontends/qt4/GuiProgressView.cpp:52
-#, fuzzy
 msgid "Progress/Debug Messages"
-msgstr "No hi ha cap missatge de depuració"
+msgstr ""
 
 #: src/frontends/qt4/GuiProgressView.cpp:81
-#, fuzzy
 msgid "Debug Level"
-msgstr "No hi ha cap missatge de depuració"
+msgstr ""
 
 #: src/frontends/qt4/GuiProgressView.cpp:82
 #, fuzzy
@@ -21800,9 +21767,8 @@ msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "Documents LyX-1.5.x (*.lyx15)"
 
 #: src/frontends/qt4/GuiView.cpp:1696
-#, fuzzy
 msgid "LyX-1.6.x Documents (*.lyx16)"
-msgstr "Documents LyX-1.3.x (*.lyx13)"
+msgstr "Documents LyX-1.6.x (*.lyx16)"
 
 #: src/frontends/qt4/GuiView.cpp:1721 src/frontends/qt4/Validator.cpp:188
 #: src/insets/ExternalSupport.cpp:367 src/insets/InsetBibtex.cpp:285
@@ -21990,15 +21956,18 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2461
 #, fuzzy
 msgid "Reload externally changed document?"
-msgstr "Voleu revertir al document salvat?"
+msgstr "Voleu desar els canvis?"
 
 #: src/frontends/qt4/GuiView.cpp:2515
 msgid "Error when setting the locking property."
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2558
+#, fuzzy
 msgid "Directory is not accessible."
 msgstr ""
+"%1$s\n"
+" no es pot llegir."
 
 #: src/frontends/qt4/GuiView.cpp:2641
 #, c-format
@@ -22006,9 +21975,9 @@ msgid "Opening child document %1$s..."
 msgstr "S'està obrint el document fill %1$s..."
 
 #: src/frontends/qt4/GuiView.cpp:2725
-#, fuzzy, c-format
+#, c-format
 msgid "Successful export to format: %1$s"
-msgstr "No hi ha informació per exportar el format %1$s."
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2726
 #, fuzzy, c-format
@@ -22023,7 +21992,7 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2739
 #, fuzzy, c-format
 msgid "Error previewing format: %1$s"
-msgstr "No hi ha informació per exportar el format %1$s."
+msgstr "S'ha produït un error en llegir el mòdul %1$s\n"
 
 #: src/frontends/qt4/GuiView.cpp:2798
 #, fuzzy
@@ -22174,9 +22143,8 @@ msgid "<No Bookmarks Saved Yet>"
 msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:951
-#, fuzzy
 msgid "View (Other Formats)|F"
-msgstr "Format del paper"
+msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:952
 #, fuzzy
@@ -22186,12 +22154,12 @@ msgstr "Actualitza la vista"
 #: src/frontends/qt4/Menus.cpp:985
 #, fuzzy, c-format
 msgid "View [%1$s]|V"
-msgstr "&Visualitza"
+msgstr "Visualitza|V"
 
 #: src/frontends/qt4/Menus.cpp:986
 #, fuzzy, c-format
 msgid "Update [%1$s]|U"
-msgstr "&Actualitza"
+msgstr "Actualitza|U"
 
 #: src/frontends/qt4/Menus.cpp:1079
 #, fuzzy
@@ -22218,7 +22186,7 @@ msgstr "Altres llistes"
 #: src/frontends/qt4/Menus.cpp:1208
 #, fuzzy
 msgid "<Empty Table of Contents>"
-msgstr "No hi ha taula de continguts"
+msgstr "Taula de continguts"
 
 #: src/frontends/qt4/Menus.cpp:1243
 msgid "Other Toolbars"
@@ -22263,9 +22231,9 @@ msgid "Update %1$s"
 msgstr "&Actualitza"
 
 #: src/frontends/qt4/Toolbars.cpp:229
-#, fuzzy, c-format
+#, c-format
 msgid "View %1$s"
-msgstr "&Visualitza"
+msgstr ""
 
 #: src/frontends/qt4/Validator.cpp:161
 msgid "space"
@@ -22474,14 +22442,14 @@ msgid "double frame"
 msgstr "marc doble"
 
 #: src/insets/InsetBox.cpp:151 src/insets/InsetBox.cpp:154
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (%2$s)"
-msgstr "%1$s, %2$s"
+msgstr "%1$s (%2$s)"
 
 #: src/insets/InsetBox.cpp:157
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (%2$s, %3$s)"
-msgstr "%1$s i %2$s"
+msgstr "%1$s (%2$s, %3$s)"
 
 #: src/insets/InsetBranch.cpp:66
 #, fuzzy
@@ -22576,8 +22544,8 @@ msgstr "caràcter especial"
 #: src/insets/InsetCommandParams.cpp:387
 #, c-format
 msgid ""
-"The following characters that are used in an inset (%1$s) are\n"
-"not representable in the current encoding and have been omitted:\n"
+"The following characters that are used in the inset %1$s are not\n"
+"representable in the current encoding and therefore have been omitted:\n"
 "%2$s."
 msgstr ""
 
@@ -22728,7 +22696,7 @@ msgstr "Tipus de TOC desconegut"
 #: src/insets/InsetIndex.cpp:448
 #, fuzzy
 msgid "All indices"
-msgstr "Branques &disponibles:"
+msgstr "Tots els camps"
 
 #: src/insets/InsetIndex.cpp:452
 #, fuzzy
@@ -23237,9 +23205,8 @@ msgid "ex"
 msgstr "ex"
 
 #: src/lengthcommon.cpp:38
-#, fuzzy
 msgid "mu[[unit of measure]]"
-msgstr "cc[[unitat de mesura]]"
+msgstr "mu[[unitat de mesura]]"
 
 #: src/lengthcommon.cpp:38
 msgid "pc"
@@ -23384,7 +23351,7 @@ msgstr ""
 #: src/mathed/InsetMathNest.cpp:1019
 #, fuzzy
 msgid "Regular expression editor mode"
-msgstr "Mode editor matemàtic"
+msgstr "E&xpressió regular"
 
 #: src/mathed/InsetMathNest.cpp:1595 src/mathed/InsetMathNest.cpp:1715
 msgid "Autocorrect Off ('!' to enter)"
@@ -23451,9 +23418,8 @@ msgid ""
 msgstr ""
 
 #: src/support/Package.cpp:626 src/support/Package.cpp:653
-#, fuzzy
 msgid "File not found"
-msgstr "No s'ha trobat el mòdul"
+msgstr "No s'ha trobat el fitxer"
 
 #: src/support/Package.cpp:627
 #, fuzzy, c-format
@@ -23665,77 +23631,11 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Usuari desconegut"
 
-#, fuzzy
-#~ msgid "TextLabel"
-#~ msgstr "Etiqueta"
+#~ msgid "&Dummy"
+#~ msgstr "&Dummy"
 
-#~ msgid "Merge cells"
-#~ msgstr "Uneix cel·les"
-
-#, fuzzy
-#~ msgid "Bibliography Entry Settings"
-#~ msgstr "Bibliografia"
-
-#, fuzzy
-#~ msgid "Branch Settings"
-#~ msgstr "Paràmetres &principals"
-
-#, fuzzy
-#~ msgid "Horizontal Space Settings"
-#~ msgstr "Espai vertical"
-
-#~ msgid "Table Settings"
-#~ msgstr "Paràmetres de la taula"
-
-#~ msgid "Vertical Space Settings"
-#~ msgstr "Paràmetres d'espai vertical"
-
-#, fuzzy
-#~ msgid "Language ...|L"
-#~ msgstr "Llengua"
-
-#, fuzzy
-#~ msgid " Macro: %1$s: "
-#~ msgstr "Paràmetre %1$s: "
-
-#, fuzzy
-#~ msgid "&Debug messages"
-#~ msgstr "No hi ha cap missatge de depuració"
-
-#, fuzzy
-#~ msgid "Clear &automatically"
-#~ msgstr "Ajuda automàtica"
-
-#~ msgid "Box Settings"
-#~ msgstr "Paràmetres de la caixa"
-
-#, fuzzy
-#~ msgid "TeX Code Settings"
-#~ msgstr "Paràmetres de codi TeX...|C"
-
-#, fuzzy
-#~ msgid "Float Settings"
-#~ msgstr "Paràmetres del flotant...|a"
-
-#, fuzzy
-#~ msgid "Match found and replaced !"
-#~ msgstr "Cerca i substitueix"
-
-#, fuzzy
-#~ msgid "Close this panel"
-#~ msgstr "Tanca aquest quadre"
-
-#, fuzzy
-#~ msgid "Prev"
-#~ msgstr "Pr"
-
-#, fuzzy
-#~ msgid "Match..."
-#~ msgstr "Matemàtiques"
-
-#, fuzzy
-#~ msgid "Find LyX Dialog"
-#~ msgstr "Cerca el següent"
+#~ msgid "F&ind:"
+#~ msgstr "&Cerca:"
 
 #~ msgid "The Enter key works, too"
 #~ msgstr "La tecla Retorn també funciona"
@@ -23746,62 +23646,231 @@ msgstr "Usuari desconegut"
 #~ msgid "D&elete"
 #~ msgstr "&Suprimeix"
 
-#~ msgid "F&ind:"
-#~ msgstr "&Cerca:"
+#~ msgid "&Default language:"
+#~ msgstr "Llengua &predeterminada:"
+
+#~ msgid "Select the default language of your documents"
+#~ msgstr "Seleccioneu la llengua predeterminada dels documents"
+
+#~ msgid "&BibTeX command:"
+#~ msgstr "Ordre &BibTeX:"
+
+#~ msgid "&Index command:"
+#~ msgstr "Ordre índex:"
 
 #, fuzzy
-#~ msgid "Current &Paragraph"
-#~ msgstr "&Sagna el paràgraf"
+#~ msgid "BibTeX command (&Japanese):"
+#~ msgstr "Ordre BibTeX i opcions"
 
 #, fuzzy
-#~ msgid "Document in current file"
-#~ msgstr "Fallada en el format de document"
+#~ msgid "Index command (Ja&panese):"
+#~ msgstr "Ordre índex:"
 
-#, fuzzy
-#~ msgid "diamond2"
-#~ msgstr "diamond"
+#~ msgid "&roff command:"
+#~ msgstr "Ordre &roff:"
+
+#~ msgid "External app for formating tables in plain text output"
+#~ msgstr ""
+#~ "Aplicació externa per a donar format a les taules en sortida de text pla"
+
+#~ msgid "Specify a personal dictionary file other than the default"
+#~ msgstr ""
+#~ "Especifiqueu un fitxer de diccionari personal diferent que el "
+#~ "predeterminat"
+
+#~ msgid "Spellchec&ker executable:"
+#~ msgstr "Corrector ortogràfic:"
+
+#~ msgid "Use input encod&ing"
+#~ msgstr "Usa la &codificació d'entrada"
+
+#~ msgid "Jump to the label"
+#~ msgstr "Vés a l'etiqueta"
+
+#~ msgid "Merge cells"
+#~ msgstr "Uneix cel·les"
+
+#~ msgid "Listing settings"
+#~ msgstr "Paràmetres de llistats"
+
+#~ msgid "LangHeader"
+#~ msgstr "CapçaleraLlengua"
+
+#~ msgid "Language Header:"
+#~ msgstr "Capçalera de la llengua:"
+
+#~ msgid "Language:"
+#~ msgstr "Idioma:"
+
+#~ msgid "LastLanguage"
+#~ msgstr "ÚltimaLlengua"
+
+#~ msgid "Last Language:"
+#~ msgstr "Última llengua:"
 
 #~ msgid "End"
 #~ msgstr "Final"
 
-#, fuzzy
-#~ msgid "begin"
-#~ msgstr "Inici"
-
-#, fuzzy
-#~ msgid "end"
-#~ msgstr "I"
-
-#, fuzzy
-#~ msgid "file"
-#~ msgstr "Inclou fitxer"
-
-#, fuzzy
-#~ msgid "forward"
-#~ msgstr "forall"
-
-#, fuzzy
-#~ msgid "backwards"
-#~ msgstr "Cerca enrere"
-
-#, fuzzy
-#~ msgid " of "
+#~ msgid "End of CV"
 #~ msgstr "Final del CV"
 
-#~ msgid "&Dummy"
-#~ msgstr "&Dummy"
+#~ msgid "BLZ"
+#~ msgstr "BLZ"
+
+#~ msgid "Computer"
+#~ msgstr "Ordinador"
+
+#~ msgid "Computer:"
+#~ msgstr "Ordinador:"
+
+#~ msgid "EmptySection"
+#~ msgstr "SeccióBuida"
+
+#~ msgid "Empty Section"
+#~ msgstr "Secció Buida"
+
+#~ msgid "CloseSection"
+#~ msgstr "TancaSecció"
+
+#~ msgid "Close Section"
+#~ msgstr "Tanca la secció"
 
 #, fuzzy
-#~ msgid "&Automatic clear"
-#~ msgstr "Ajuda automàtica"
+#~ msgid "Insert|n"
+#~ msgstr "Insereix|I"
+
+#~ msgid "View DVI"
+#~ msgstr "Mostra el DVI"
+
+#~ msgid "Update DVI"
+#~ msgstr "Actualitza DVI"
+
+#~ msgid "View PDF (pdflatex)"
+#~ msgstr "Mostra el PDF (pdflatex)"
+
+#~ msgid "Update PDF (pdflatex)"
+#~ msgstr "Actualitza el PDF (pdflatex)"
+
+#~ msgid "View PostScript"
+#~ msgstr "Mostra el PostScript"
+
+#~ msgid "Update PostScript"
+#~ msgstr "Actualitza PostScript"
 
 #, fuzzy
-#~ msgid "Show progress messages"
-#~ msgstr "No hi ha cap missatge de depuració"
+#~ msgid "No horizontal line\t\\atop"
+#~ msgstr "Sense línia horitzontal\t\\atop"
 
 #, fuzzy
-#~ msgid "(cancelling)"
-#~ msgstr "Gestió de fitxers"
+#~ msgid "Can't create pipe for spellchecker."
+#~ msgstr "No s'ha pogut crear la pipe pel corrector ortogràfic"
+
+#, fuzzy
+#~ msgid "Can't open pipe for spellchecker."
+#~ msgstr "No s'ha pogut obrir la pipe pel corrector ortogràfic"
+
+#~ msgid ""
+#~ "Could not create an ispell process.\n"
+#~ "You may not have the right languages installed."
+#~ msgstr ""
+#~ "No s'ha pogut crear el procés ispell.\n"
+#~ "Potser no teniu les llengües adients instal·lades."
+
+#~ msgid ""
+#~ "The ispell process returned an error.\n"
+#~ "Perhaps it has been configured wrongly ?"
+#~ msgstr ""
+#~ "El procés ispell ha retornat un error.\n"
+#~ "Potser no s'ha configurat correctament?"
+
+#, fuzzy
+#~ msgid ""
+#~ "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+#~ msgstr ""
+#~ "Especifiqueu un fitxer de diccionari personal diferent que el "
+#~ "predeterminat"
+
+#, fuzzy
+#~ msgid "Unknown spacing argument: "
+#~ msgstr "Argument manquant"
+
+#, fuzzy
+#~ msgid "Bibliography Entry Settings"
+#~ msgstr "Bibliografia"
+
+#, fuzzy
+#~ msgid "Branch Settings"
+#~ msgstr "Paràmetres &principals"
+
+#~ msgid "Length"
+#~ msgstr "Longitud"
+
+#, fuzzy
+#~ msgid "TeX Code Settings"
+#~ msgstr "Paràmetres de codi TeX...|C"
+
+#, fuzzy
+#~ msgid "pLaTeX"
+#~ msgstr "LaTeX"
+
+#, fuzzy
+#~ msgid "Float Settings"
+#~ msgstr "Paràmetres del flotant...|a"
+
+#, fuzzy
+#~ msgid "Horizontal Space Settings"
+#~ msgstr "Espai vertical"
+
+#~ msgid "No LaTeX log file found."
+#~ msgstr "No s'ha trobat cap fitxer d'informes de LaTeX"
+
+#~ msgid "ispell"
+#~ msgstr "ispell"
+
+#~ msgid "pspell (library)"
+#~ msgstr "pspell (biblioteca)"
+
+#~ msgid "aspell (library)"
+#~ msgstr "aspell (biblioteca)"
+
+#~ msgid "*.pws"
+#~ msgstr "*.pws"
+
+#~ msgid "*.ispell"
+#~ msgstr "*.ispell"
+
+#~ msgid "Spellchecker error"
+#~ msgstr "Error del corrector ortogràfic"
+
+#~ msgid ""
+#~ "The spellchecker has died for some reason.\n"
+#~ "Maybe it has been killed."
+#~ msgstr ""
+#~ "El corrector ortogràfic ha mort per alguna raó.\n"
+#~ "Potser l'ha aturat un altre procés."
+
+#~ msgid "The spellchecker has failed.\n"
+#~ msgstr "Ha fallat el corrector ortogràfic.\n"
+
+#~ msgid "The spellchecker has failed"
+#~ msgstr "Ha fallat el corrector ortogràfic"
+
+#~ msgid "Vertical Space Settings"
+#~ msgstr "Paràmetres d'espai vertical"
+
+#~ msgid "No Table of contents"
+#~ msgstr "No hi ha taula de continguts"
+
+#, fuzzy
+#~ msgid "Uncodable characters in bibliography item"
+#~ msgstr "caràcter especial"
+
+#~ msgid "Opened table"
+#~ msgstr "Taula oberta"
+
+#, fuzzy
+#~ msgid " Macro: %1$s: "
+#~ msgstr "Paràmetre %1$s: "
 
 #, fuzzy
 #~ msgid "Absender:"
@@ -23827,211 +23896,34 @@ msgstr "Usuari desconegut"
 #~ msgid "RetourAdresse:"
 #~ msgstr "AdreçaRemitent:"
 
-#~ msgid "BLZ"
-#~ msgstr "BLZ"
-
 #~ msgid "BLZ:"
 #~ msgstr "BLZ:"
 
 #~ msgid "Adresse:"
 #~ msgstr "Adreça:"
 
-#~ msgid "No LaTeX log file found."
-#~ msgstr "No s'ha trobat cap fitxer d'informes de LaTeX"
-
 #~ msgid "Latex"
 #~ msgstr "Latex"
-
-#, fuzzy
-#~ msgid "View Output|V"
-#~ msgstr "Visualitza|V"
-
-#, fuzzy
-#~ msgid "Update Output|U"
-#~ msgstr "data (sortida)"
-
-#, fuzzy
-#~ msgid "Advanced Search"
-#~ msgstr "A&vançat"
-
-#, fuzzy
-#~ msgid "Replace Ne&xt"
-#~ msgstr "Substitueix amb"
-
-#, fuzzy
-#~ msgid "Find &Prev"
-#~ msgstr "Cerca el següent"
-
-#, fuzzy
-#~ msgid "Replace P&rev"
-#~ msgstr "Substitueix-ho tot"
-
-#, fuzzy
-#~ msgid "Current buffer only"
-#~ msgstr "Cel·la actual:"
-
-#, fuzzy
-#~ msgid "Buffer"
-#~ msgstr "blau"
-
-#, fuzzy
-#~ msgid "Document"
-#~ msgstr "Documents"
-
-#, fuzzy
-#~ msgid "Open buffers"
-#~ msgstr "blau"
-
-#, fuzzy
-#~ msgid "CharStyle:DropCapital"
-#~ msgstr "CharStyle:Correu-e"
-
-#, fuzzy
-#~ msgid "Regexp"
-#~ msgstr "exp"
 
 #, fuzzy
 #~ msgid "No file open!"
 #~ msgstr "No s'ha trobat cap fitxer!"
 
-#~ msgid "Jump to the label"
-#~ msgstr "Vés a l'etiqueta"
+#, fuzzy
+#~ msgid "Check in Changes...|I"
+#~ msgstr "Verifica els canvis...|I"
 
 #, fuzzy
-#~ msgid "Click to edit the settings of the child document"
-#~ msgstr "Restaura als paràmetres predeterminats de la classe del document"
-
-#, fuzzy
-#~ msgid "Master Settings"
-#~ msgstr "Paràmetres de la nota"
-
-#~ msgid "Column Width"
-#~ msgstr "Amplada de columna"
-
-#~ msgid "Listing settings"
-#~ msgstr "Paràmetres de llistats"
-
-#, fuzzy
-#~ msgid "\\alph{enumii}."
-#~ msgstr "(\\alph{enumii})"
-
-#, fuzzy
-#~ msgid "Insert|n"
-#~ msgstr "Insereix|I"
-
-#, fuzzy
-#~ msgid "Unknown spacing argument: "
-#~ msgstr "Argument manquant"
-
-#~ msgid "Length"
-#~ msgstr "Longitud"
-
-#, fuzzy
-#~ msgid "Opened Phantom Inset"
-#~ msgstr "Taula oberta"
-
-#~ msgid "Opened table"
-#~ msgstr "Taula oberta"
-
-#~ msgid "Select the default language of your documents"
-#~ msgstr "Seleccioneu la llengua predeterminada dels documents"
-
-#~ msgid "Personal &dictionary:"
-#~ msgstr "Diccionari personal:"
-
-#~ msgid "Specify a personal dictionary file other than the default"
-#~ msgstr ""
-#~ "Especifiqueu un fitxer de diccionari personal diferent que el "
-#~ "predeterminat"
-
-#~ msgid "Use input encod&ing"
-#~ msgstr "Usa la &codificació d'entrada"
-
-#, fuzzy
-#~ msgid "Toggle Label|L"
-#~ msgstr "&Canvia-ho tot"
-
-#, fuzzy
-#~ msgid "Move Section down|d"
-#~ msgstr "Tanca la secció"
-
-#, fuzzy
-#~ msgid "Move Section up|u"
-#~ msgstr "Tanca la secció"
-
-#, fuzzy
-#~ msgid "The spellchecker has failed."
-#~ msgstr "Ha fallat el corrector ortogràfic.\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "Specify an alternate personal dictionary file. E.g. \".aspell_english\"."
-#~ msgstr ""
-#~ "Especifiqueu un fitxer de diccionari personal diferent que el "
-#~ "predeterminat"
-
-#~ msgid "*.pws"
-#~ msgstr "*.pws"
-
-#, fuzzy
-#~ msgid "Accept Change|C"
-#~ msgstr "Accepta el canvi|A"
-
-#, fuzzy
-#~ msgid "C&ommand:"
-#~ msgstr "&Ordre:"
-
-#~ msgid "&BibTeX command:"
-#~ msgstr "Ordre &BibTeX:"
-
-#~ msgid "&Index command:"
-#~ msgstr "Ordre índex:"
-
-#, fuzzy
-#~ msgid "BibTeX command (&Japanese):"
-#~ msgstr "Ordre BibTeX i opcions"
-
-#, fuzzy
-#~ msgid "Index command (Ja&panese):"
-#~ msgstr "Ordre índex:"
+#~ msgid "Check out for Edit|O"
+#~ msgstr "Verifica per editar|O"
 
 #, fuzzy
 #~ msgid "Toggle Labeling/Numbering|T"
 #~ msgstr "Activa/desactiva la numeració|N"
 
 #, fuzzy
-#~ msgid "Copy Label as Reference|C"
-#~ msgstr "Referència creuada...|R"
-
-#, fuzzy
-#~ msgid "View|V[[show]]"
-#~ msgstr "Visualitza|V"
-
-#~ msgid "View DVI"
-#~ msgstr "Mostra el DVI"
-
-#~ msgid "View PDF (pdflatex)"
-#~ msgstr "Mostra el PDF (pdflatex)"
-
-#~ msgid "View PostScript"
-#~ msgstr "Mostra el PostScript"
-
-#~ msgid "Update DVI"
-#~ msgstr "Actualitza DVI"
-
-#~ msgid "Update PDF (pdflatex)"
-#~ msgstr "Actualitza el PDF (pdflatex)"
-
-#~ msgid "Update PostScript"
-#~ msgstr "Actualitza PostScript"
-
-#, fuzzy
-#~ msgid "Thesaurus failure"
-#~ msgstr "Tesaurus"
-
-#, fuzzy
-#~ msgid "Indices"
-#~ msgstr "Apèndixs"
+#~ msgid "Toggle Label|L"
+#~ msgstr "&Canvia-ho tot"
 
 #~ msgid "B&rowse..."
 #~ msgstr "Navega..."
@@ -24046,68 +23938,13 @@ msgstr "Usuari desconegut"
 #~ msgstr "&Nova:"
 
 #, fuzzy
-#~ msgid "No horizontal line\t\\atop"
-#~ msgstr "Sense línia horitzontal\t\\atop"
-
-#~ msgid "Spellchecker error"
-#~ msgstr "Error del corrector ortogràfic"
-
 #~ msgid ""
-#~ "The spellchecker has died for some reason.\n"
-#~ "Maybe it has been killed."
-#~ msgstr ""
-#~ "El corrector ortogràfic ha mort per alguna raó.\n"
-#~ "Potser l'ha aturat un altre procés."
-
-#~ msgid "The spellchecker has failed"
-#~ msgstr "Ha fallat el corrector ortogràfic"
-
-#~ msgid "LangHeader"
-#~ msgstr "CapçaleraLlengua"
-
-#~ msgid "Language Header:"
-#~ msgstr "Capçalera de la llengua:"
-
-#~ msgid "Language:"
-#~ msgstr "Idioma:"
-
-#~ msgid "LastLanguage"
-#~ msgstr "ÚltimaLlengua"
-
-#~ msgid "Last Language:"
-#~ msgstr "Última llengua:"
-
-#~ msgid "Computer"
-#~ msgstr "Ordinador"
-
-#~ msgid "Computer:"
-#~ msgstr "Ordinador:"
-
-#~ msgid "EmptySection"
-#~ msgstr "SeccióBuida"
-
-#~ msgid "Empty Section"
-#~ msgstr "Secció Buida"
-
-#~ msgid "CloseSection"
-#~ msgstr "TancaSecció"
-
-#~ msgid "Close Section"
-#~ msgstr "Tanca la secció"
-
-#, fuzzy
-#~ msgid "Phantom Text"
-#~ msgstr "Text pla|T"
-
-#, fuzzy
-#~ msgid "RegExp"
-#~ msgstr "exp"
+#~ "Group Name to be set up from the current parameters. Use context menu to "
+#~ "assign the existing one."
+#~ msgstr "Nom de grup a establir a partir dels paràmetres actuals"
 
 #~ msgid "&Initialize Group Name:"
 #~ msgstr "&Inicialitza el nom de grup:"
-
-#~ msgid "Group Name to be set up from the current parameters"
-#~ msgstr "Nom de grup a establir a partir dels paràmetres actuals"
 
 #~ msgid "&Postscript driver:"
 #~ msgstr "Controlador &Postscript:"
@@ -24127,53 +23964,6 @@ msgstr "Usuari desconegut"
 #, fuzzy
 #~ msgid "Remove Optional Parameter"
 #~ msgstr "Paràmetres de llistat"
-
-#~ msgid "&Default language:"
-#~ msgstr "Llengua &predeterminada:"
-
-#~ msgid "&roff command:"
-#~ msgstr "Ordre &roff:"
-
-#~ msgid "External app for formating tables in plain text output"
-#~ msgstr ""
-#~ "Aplicació externa per a donar format a les taules en sortida de text pla"
-
-#~ msgid "Spellchec&ker executable:"
-#~ msgstr "Corrector ortogràfic:"
-
-#, fuzzy
-#~ msgid "Can't create pipe for spellchecker."
-#~ msgstr "No s'ha pogut crear la pipe pel corrector ortogràfic"
-
-#, fuzzy
-#~ msgid "Can't open pipe for spellchecker."
-#~ msgstr "No s'ha pogut obrir la pipe pel corrector ortogràfic"
-
-#~ msgid ""
-#~ "Could not create an ispell process.\n"
-#~ "You may not have the right languages installed."
-#~ msgstr ""
-#~ "No s'ha pogut crear el procés ispell.\n"
-#~ "Potser no teniu les llengües adients instal·lades."
-
-#~ msgid ""
-#~ "The ispell process returned an error.\n"
-#~ "Perhaps it has been configured wrongly ?"
-#~ msgstr ""
-#~ "El procés ispell ha retornat un error.\n"
-#~ "Potser no s'ha configurat correctament?"
-
-#~ msgid "ispell"
-#~ msgstr "ispell"
-
-#~ msgid "pspell (library)"
-#~ msgstr "pspell (biblioteca)"
-
-#~ msgid "aspell (library)"
-#~ msgstr "aspell (biblioteca)"
-
-#~ msgid "*.ispell"
-#~ msgstr "*.ispell"
 
 #~ msgid "figure"
 #~ msgstr "figura"

@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-28 15:22+0100\n"
-"PO-Revision-Date: 2008-08-04 22:57+0100\n"
-"Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>>\n"
+"POT-Creation-Date: 2010-02-28 16:00+0100\n"
+"PO-Revision-Date: 2007-06-26 17:10+0100\n"
+"Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -462,9 +462,8 @@ msgid "Filename &Suffix"
 msgstr "檔名"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
-#, fuzzy
 msgid "Show undefined branches used in this document."
-msgstr "文件中沒有分支！"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
 #, fuzzy
@@ -555,9 +554,8 @@ msgstr "取消(&C)"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
-#, fuzzy
 msgid "Undefined branches used in this document."
-msgstr "文件中沒有分支！"
+msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:68
 #, fuzzy
@@ -821,9 +819,8 @@ msgid "S&elected Citations:"
 msgstr "已選取的引用(&S)："
 
 #: src/frontends/qt4/ui/CitationUi.ui:72
-#, fuzzy
 msgid "Click or press Enter to add the selected citation to the list"
-msgstr "加入新的分支到清單"
+msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "Click or press Delete to delete the selected citation from the list"
@@ -1251,9 +1248,8 @@ msgid "Find LyX Text"
 msgstr "找下一個(&N)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:107
-#, fuzzy
 msgid "&Basic"
-msgstr "變異"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:159
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:183
@@ -1266,9 +1262,8 @@ msgid "&Replace with..."
 msgstr "置換成(&W)："
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:222
-#, fuzzy
 msgid "Replace and find next occurrence [Enter]"
-msgstr "以目前選擇置換字詞"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:225
 #, fuzzy
@@ -1341,7 +1336,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:446
 #, fuzzy
 msgid "&Next"
-msgstr "文字"
+msgstr "新增(&N)："
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:467
 msgid "Find previous occurrence [Shift+Enter]"
@@ -1360,7 +1355,7 @@ msgstr "只媒合全字拼寫(&Y)"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:494
 #, fuzzy
 msgid "Whole &words"
-msgstr "只媒合全字拼寫(&Y)"
+msgstr "關鍵字詞。"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:522
 #, fuzzy
@@ -1392,11 +1387,10 @@ msgid "Current &document"
 msgstr "列印文件"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:627
-#, fuzzy
 msgid ""
 "Current document and all related documents belonging to the same master "
 "document"
-msgstr "預設的印表機名稱"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:630
 #, fuzzy
@@ -1414,9 +1408,8 @@ msgid "&Open documents"
 msgstr "開啟文件"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:669
-#, fuzzy
 msgid "All ma&nuals"
-msgstr "LaTeX 預設"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:690
 #, fuzzy
@@ -1432,7 +1425,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:711
 #, fuzzy
 msgid "Ignore &format"
-msgstr "日期格式"
+msgstr "到格式(&T)："
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
 #: src/frontends/qt4/ui/OutputUi.ui:13 src/frontends/qt4/ui/PDFSupportUi.ui:13
@@ -1442,7 +1435,7 @@ msgstr "表單"
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:23
 #, fuzzy
 msgid "Float Type:"
-msgstr "型態"
+msgstr "TeX 資訊"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:47
 msgid "Use &default placement"
@@ -2280,9 +2273,8 @@ msgid "Hit Enter to search, or click Go!"
 msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:45
-#, fuzzy
 msgid "Log &Type:"
-msgstr "型態"
+msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:74
 msgid "Update the display"
@@ -2370,9 +2362,8 @@ msgid "Include only the selected subdocuments in the output"
 msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:43
-#, fuzzy
 msgid "Include only &selected children"
-msgstr "包含檔"
+msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:50
 msgid ""
@@ -2386,9 +2377,8 @@ msgid "&Maintain counters and references"
 msgstr "所有未被引用的參考資料"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:63
-#, fuzzy
 msgid "Include all subdocuments in the output"
-msgstr "所產生輸出中的底線空間"
+msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:66
 #, fuzzy
@@ -2619,9 +2609,8 @@ msgid "Use the XeTeX processing engine"
 msgstr ""
 
 #: src/frontends/qt4/ui/OutputUi.ui:73
-#, fuzzy
 msgid "Use &XeTeX"
-msgstr "使用 b&abel"
+msgstr ""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:19
 #, fuzzy
@@ -2906,9 +2895,8 @@ msgid "Horizontal space of the phantom content"
 msgstr "水平對齊方框內部的內容"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:73
-#, fuzzy
 msgid "&Horiz. Phantom"
-msgstr "phantom"
+msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:80
 #, fuzzy
@@ -2916,9 +2904,8 @@ msgid "Vertical space of the phantom content"
 msgstr "垂直對齊方框內部的內容"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:83
-#, fuzzy
 msgid "&Vert. Phantom"
-msgstr "phantom"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 #, fuzzy
@@ -3588,7 +3575,7 @@ msgstr "工作目錄(&W)："
 #: src/frontends/qt4/ui/PrefPathsUi.ui:215
 #, fuzzy
 msgid "Hunspell dictionaries:"
-msgstr "同義詞錯誤"
+msgstr "個人字典(&D)："
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2832
 msgid ""
@@ -3856,7 +3843,6 @@ msgid "&Spellchecker engine:"
 msgstr "拼寫檢查器"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
-#, fuzzy
 msgid "Accept words such as \"diskdrive\""
 msgstr "接受像是「diskdrive」的字詞"
 
@@ -4123,17 +4109,17 @@ msgstr ""
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
 #, fuzzy
 msgid "&Clear automatically"
-msgstr "自動更新"
+msgstr "自動地套用每個變更"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
 #, fuzzy
 msgid "Debug messages"
-msgstr "沒有偵錯訊息"
+msgstr "所有偵錯訊息"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:203
 #, fuzzy
 msgid "Display no debug messages"
-msgstr "沒有偵錯訊息"
+msgstr "所有偵錯訊息"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:206
 #, fuzzy
@@ -4155,9 +4141,8 @@ msgid "Display all debug messages"
 msgstr "所有偵錯訊息"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
-#, fuzzy
 msgid "Display statusbar messages?"
-msgstr "Insettext/tabular 訊息"
+msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:239
 #, fuzzy
@@ -4214,7 +4199,7 @@ msgstr ""
 #: src/frontends/qt4/ui/RefUi.ui:193
 #, fuzzy
 msgid "Grou&p"
-msgstr "裁剪"
+msgstr "名稱(&N)："
 
 #: src/frontends/qt4/ui/RefUi.ui:223 src/frontends/qt4/GuiRef.cpp:314
 msgid "&Go to Label"
@@ -4487,7 +4472,7 @@ msgstr ""
 #: src/frontends/qt4/ui/TabularUi.ui:302
 #, fuzzy
 msgid "Cell setting"
-msgstr "設定值"
+msgstr "註記設定值"
 
 #: src/frontends/qt4/ui/TabularUi.ui:308
 msgid "Rotate this cell by 90 degrees"
@@ -5664,8 +5649,9 @@ msgid "Teaser image:"
 msgstr "RasterImage"
 
 #: lib/layouts/acmsiggraph.layout:84
+#, fuzzy
 msgid "CRcat"
-msgstr ""
+msgstr "hat"
 
 #: lib/layouts/acmsiggraph.layout:89
 #, fuzzy
@@ -10191,7 +10177,7 @@ msgstr "變更："
 #: lib/layouts/initials.module:12
 #, fuzzy
 msgid "Initial"
-msgstr "不可見的文字"
+msgstr "斜體"
 
 #: lib/layouts/linguistics.module:2
 msgid "Linguistics"
@@ -10363,7 +10349,7 @@ msgstr ""
 #: lib/layouts/noweb.module:5 lib/layouts/sweave.module:5
 #, fuzzy
 msgid "literate"
-msgstr "連續"
+msgstr "實文"
 
 #: lib/layouts/sweave.module:2 lib/layouts/sweave.module:18
 #: lib/configure.py:507
@@ -10871,6 +10857,7 @@ msgid "Catalan"
 msgstr "加泰羅尼亞語"
 
 #: lib/languages:26
+#, fuzzy
 msgid "Chinese (simplified)"
 msgstr "中文(簡體)"
 
@@ -12903,7 +12890,7 @@ msgstr ""
 #: lib/ui/stdcontext.inc:564
 #, fuzzy
 msgid "All Indexes|A"
-msgstr "發票"
+msgstr "開啟所有內欄|O"
 
 #: lib/ui/stdcontext.inc:567
 msgid "Subindex|b"
@@ -13067,7 +13054,7 @@ msgstr "換列設定值…|W"
 #: lib/ui/stdmenus.inc:140
 #, fuzzy
 msgid "Index Settings...|x"
-msgstr "TeX 代碼設定值...|C"
+msgstr "方框設定值…|x"
 
 #: lib/ui/stdmenus.inc:141
 #, fuzzy
@@ -13415,12 +13402,12 @@ msgstr ""
 #: lib/ui/stdmenus.inc:466
 #, fuzzy
 msgid "Horizontal Phantom"
-msgstr "phantom"
+msgstr "水平線"
 
 #: lib/ui/stdmenus.inc:467
 #, fuzzy
 msgid "Vertical Phantom"
-msgstr "phantom"
+msgstr "垂直對齊"
 
 #: lib/ui/stdmenus.inc:479
 msgid "Change Tracking|C"
@@ -13564,7 +13551,7 @@ msgstr "尋找和置換"
 #: lib/ui/stdtoolbars.inc:82
 #, fuzzy
 msgid "Find and replace (advanced)"
-msgstr "尋找 & 置換…|F"
+msgstr "尋找和置換"
 
 #: lib/ui/stdtoolbars.inc:83
 #, fuzzy
@@ -13637,12 +13624,12 @@ msgstr "主控文件"
 #: lib/ui/stdtoolbars.inc:104
 #, fuzzy
 msgid "View other formats"
-msgstr "其他浮動"
+msgstr "檔案格式"
 
 #: lib/ui/stdtoolbars.inc:105
 #, fuzzy
 msgid "Update other formats"
-msgstr "更新顯示"
+msgstr "日期格式"
 
 #: lib/ui/stdtoolbars.inc:108
 msgid "Extra"
@@ -14354,14 +14341,12 @@ msgid "Unit fraction (20 km/h)\t\\unitfrac"
 msgstr "好\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:356
-#, fuzzy
 msgid "Text fraction\t\\tfrac"
-msgstr "文字分數 (amsmath)\t\\tfrac"
+msgstr "文字分數\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:357
-#, fuzzy
 msgid "Display fraction\t\\dfrac"
-msgstr "顯示分數 (amsmath)\t\\dfrac"
+msgstr "顯示分數\t\\dfrac"
 
 #: lib/ui/stdtoolbars.inc:358
 #, fuzzy
@@ -16622,12 +16607,11 @@ msgstr "純文字，聯結線"
 #: lib/configure.py:519 lib/configure.py:521
 #, fuzzy
 msgid "LyXHTML"
-msgstr "LyX："
+msgstr "LyX"
 
 #: lib/configure.py:519 lib/configure.py:521
-#, fuzzy
 msgid "LyXHTML|X"
-msgstr "LyX："
+msgstr ""
 
 #: lib/configure.py:528 src/frontends/qt4/GuiLog.cpp:230
 #, fuzzy
@@ -17098,7 +17082,7 @@ msgstr "轉換失敗"
 
 #: src/Buffer.cpp:1329
 #, fuzzy
-msgid "Uncodable character in path"
+msgid "Uncodable character in file path"
 msgstr "特殊字元"
 
 #: src/Buffer.cpp:1330
@@ -17111,7 +17095,7 @@ msgid ""
 "This will likely result in incomplete output.\n"
 "\n"
 "Chose an appropriate document encoding (such as utf8)\n"
-"or change the path name."
+"or change the file path name."
 msgstr ""
 
 #: src/Buffer.cpp:1604
@@ -19224,7 +19208,7 @@ msgstr ""
 #: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1009
 #, fuzzy
 msgid "Already in regular expression mode"
-msgstr "無效的 LaTeX 長度運算式。"
+msgstr "正規表示式(&X)"
 
 #: src/Text3.cpp:216
 #, fuzzy
@@ -19566,14 +19550,12 @@ msgid "master document[[scope]]"
 msgstr "主控文件"
 
 #: src/frontends/qt4/FindAndReplace.cpp:330
-#, fuzzy
 msgid "open files[[scope]]"
-msgstr "範例 #："
+msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:333
-#, fuzzy
 msgid "manuals[[scope]]"
-msgstr "LaTeX 預設"
+msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:337
 #, c-format
@@ -20183,7 +20165,7 @@ msgstr "芬蘭語"
 #: src/frontends/qt4/GuiCompare.cpp:261
 #, fuzzy
 msgid "Aborting process..."
-msgstr "匯入 %1$s…"
+msgstr "格式化文件…"
 
 #: src/frontends/qt4/GuiCompare.cpp:297
 #, fuzzy
@@ -20989,7 +20971,7 @@ msgstr "LaTeX 記錄檔"
 #: src/frontends/qt4/GuiLog.cpp:237
 #, fuzzy
 msgid "Literate"
-msgstr "連續"
+msgstr "實文"
 
 #: src/frontends/qt4/GuiLog.cpp:240
 #, fuzzy
@@ -21343,17 +21325,15 @@ msgstr "方框設定值"
 #: src/frontends/qt4/GuiPrintindex.cpp:69
 #, fuzzy
 msgid "<All indexes>"
-msgstr "可用分支(&V)："
+msgstr "所有檔案 (*)"
 
 #: src/frontends/qt4/GuiProgressView.cpp:52
-#, fuzzy
 msgid "Progress/Debug Messages"
-msgstr "沒有偵錯訊息"
+msgstr ""
 
 #: src/frontends/qt4/GuiProgressView.cpp:81
-#, fuzzy
 msgid "Debug Level"
-msgstr "沒有偵錯訊息"
+msgstr ""
 
 #: src/frontends/qt4/GuiProgressView.cpp:82
 #, fuzzy
@@ -22125,15 +22105,16 @@ msgstr "文件 %1$s 已經由外部修改過。您確定要覆寫該檔案嗎？
 #: src/frontends/qt4/GuiView.cpp:2461
 #, fuzzy
 msgid "Reload externally changed document?"
-msgstr "恢復原儲存文件？"
+msgstr "儲存變更的文件？"
 
 #: src/frontends/qt4/GuiView.cpp:2515
 msgid "Error when setting the locking property."
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2558
+#, fuzzy
 msgid "Directory is not accessible."
-msgstr ""
+msgstr "%1$s 無法讀取。"
 
 #: src/frontends/qt4/GuiView.cpp:2641
 #, c-format
@@ -22141,9 +22122,9 @@ msgid "Opening child document %1$s..."
 msgstr "開啟子文件 %1$s…"
 
 #: src/frontends/qt4/GuiView.cpp:2725
-#, fuzzy, c-format
+#, c-format
 msgid "Successful export to format: %1$s"
-msgstr "沒有資訊用於匯出格式 %1$s。"
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2726
 #, fuzzy, c-format
@@ -22156,9 +22137,9 @@ msgid "Successful preview of format: %1$s"
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2739
-#, fuzzy, c-format
+#, c-format
 msgid "Error previewing format: %1$s"
-msgstr "沒有資訊用於匯出格式 %1$s。"
+msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2798
 #, fuzzy
@@ -22313,9 +22294,8 @@ msgid "<No Bookmarks Saved Yet>"
 msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:951
-#, fuzzy
 msgid "View (Other Formats)|F"
-msgstr "其他浮動"
+msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:952
 #, fuzzy
@@ -22325,12 +22305,12 @@ msgstr "更新顯示"
 #: src/frontends/qt4/Menus.cpp:985
 #, fuzzy, c-format
 msgid "View [%1$s]|V"
-msgstr "檢視(&V)"
+msgstr "檢視|V"
 
 #: src/frontends/qt4/Menus.cpp:986
 #, fuzzy, c-format
 msgid "Update [%1$s]|U"
-msgstr "更新(&U)"
+msgstr "更新|U"
 
 #: src/frontends/qt4/Menus.cpp:1079
 #, fuzzy
@@ -22358,7 +22338,7 @@ msgstr "其他浮動"
 #: src/frontends/qt4/Menus.cpp:1208
 #, fuzzy
 msgid "<Empty Table of Contents>"
-msgstr "沒有內容表"
+msgstr "內容表"
 
 #: src/frontends/qt4/Menus.cpp:1243
 #, fuzzy
@@ -22405,9 +22385,9 @@ msgid "Update %1$s"
 msgstr "更新(&U)"
 
 #: src/frontends/qt4/Toolbars.cpp:229
-#, fuzzy, c-format
+#, c-format
 msgid "View %1$s"
-msgstr "檢視(&V)"
+msgstr ""
 
 #: src/frontends/qt4/Validator.cpp:161
 msgid "space"
@@ -22739,8 +22719,8 @@ msgstr "特殊字元"
 #: src/insets/InsetCommandParams.cpp:387
 #, c-format
 msgid ""
-"The following characters that are used in an inset (%1$s) are\n"
-"not representable in the current encoding and have been omitted:\n"
+"The following characters that are used in the inset %1$s are not\n"
+"representable in the current encoding and therefore have been omitted:\n"
 "%2$s."
 msgstr ""
 
@@ -22899,7 +22879,7 @@ msgstr "不明的內容表型態"
 #: src/insets/InsetIndex.cpp:448
 #, fuzzy
 msgid "All indices"
-msgstr "可用分支(&V)："
+msgstr "所有檔案 (*)"
 
 #: src/insets/InsetIndex.cpp:452
 #, fuzzy
@@ -23578,7 +23558,7 @@ msgstr "已進入數學文字模式 (textrm)"
 #: src/mathed/InsetMathNest.cpp:1019
 #, fuzzy
 msgid "Regular expression editor mode"
-msgstr "數學編輯器模式"
+msgstr "正規表示式(&X)"
 
 #: src/mathed/InsetMathNest.cpp:1595 src/mathed/InsetMathNest.cpp:1715
 msgid "Autocorrect Off ('!' to enter)"
@@ -23651,7 +23631,6 @@ msgstr ""
 "檔案「chkconfig.ltx」。"
 
 #: src/support/Package.cpp:626 src/support/Package.cpp:653
-#, fuzzy
 msgid "File not found"
 msgstr "找不到檔案"
 
@@ -23865,12 +23844,214 @@ msgstr ""
 msgid "Unknown user"
 msgstr "不明的使用者"
 
+#~ msgid "&Dummy"
+#~ msgstr "虛設(&D)"
+
+#~ msgid "F&ind:"
+#~ msgstr "尋找(&I)："
+
+#~ msgid "D&elete"
+#~ msgstr "刪除(&E)"
+
+#~ msgid "&Default language:"
+#~ msgstr "預設語言(&D)："
+
 #, fuzzy
-#~ msgid "TextLabel"
-#~ msgstr "標籤"
+#~ msgid "Select the default language of your documents"
+#~ msgstr "重置文件類別的設定為預設值"
+
+#~ msgid "&BibTeX command:"
+#~ msgstr "&BibTeX 命令："
+
+#, fuzzy
+#~ msgid "&Index command:"
+#~ msgstr "索引命令："
+
+#, fuzzy
+#~ msgid "BibTeX command (&Japanese):"
+#~ msgstr "BibTeX 命令和選項"
+
+#, fuzzy
+#~ msgid "Index command (Ja&panese):"
+#~ msgstr "索引命令："
+
+#~ msgid "&roff command:"
+#~ msgstr "&roff 命令："
+
+#~ msgid "External app for formating tables in plain text output"
+#~ msgstr "在純文字輸出中用於格式化表格的外部應用程式"
+
+#~ msgid "Specify a personal dictionary file other than the default"
+#~ msgstr "指定不同於預設的個人字典檔案"
+
+#~ msgid "Spellchec&ker executable:"
+#~ msgstr "拼寫檢查器可執行檔案(&K)："
+
+#~ msgid "Use input encod&ing"
+#~ msgstr "使用輸入編碼(&I)"
+
+#~ msgid "Jump to the label"
+#~ msgstr "跳到標籤"
 
 #~ msgid "Merge cells"
 #~ msgstr "合併儲存格"
+
+#~ msgid "Listing settings"
+#~ msgstr "列表設定值"
+
+#~ msgid "LangHeader"
+#~ msgstr "語言頁首"
+
+#~ msgid "Language Header:"
+#~ msgstr "語言頁首："
+
+#~ msgid "Language:"
+#~ msgstr "語言："
+
+#~ msgid "LastLanguage"
+#~ msgstr "上一種語言"
+
+#~ msgid "Last Language:"
+#~ msgstr "上一種語言："
+
+#~ msgid "LangFooter"
+#~ msgstr "語言頁尾"
+
+#~ msgid "End"
+#~ msgstr "結束"
+
+#~ msgid "End of CV"
+#~ msgstr "CV 的結束"
+
+#~ msgid "Strasse"
+#~ msgstr "Strasse"
+
+#~ msgid "Land"
+#~ msgstr "Land"
+
+#~ msgid "BLZ"
+#~ msgstr "BLZ"
+
+#~ msgid "Konto"
+#~ msgstr "Konto"
+
+#~ msgid "Computer"
+#~ msgstr "電腦"
+
+#~ msgid "Computer:"
+#~ msgstr "電腦："
+
+#~ msgid "EmptySection"
+#~ msgstr "清空區段"
+
+#~ msgid "Empty Section"
+#~ msgstr "清空區段"
+
+#~ msgid "CloseSection"
+#~ msgstr "關閉區段"
+
+#~ msgid "Close Section"
+#~ msgstr "關閉區段"
+
+#, fuzzy
+#~ msgid "Insert|n"
+#~ msgstr "插入|I"
+
+#~ msgid "Dissolve Inset|l"
+#~ msgstr "拆解內欄|l"
+
+#~ msgid "View DVI"
+#~ msgstr "檢視 DVI"
+
+#~ msgid "Update DVI"
+#~ msgstr "更新 DVI"
+
+#~ msgid "View PDF (pdflatex)"
+#~ msgstr "檢視 PDF (pdflatex)"
+
+#~ msgid "Update PDF (pdflatex)"
+#~ msgstr "更新 PDF (pdflatex)"
+
+#~ msgid "View PostScript"
+#~ msgstr "檢視 PostScript"
+
+#~ msgid "Update PostScript"
+#~ msgstr "更新 PostScript"
+
+#, fuzzy
+#~ msgid "No horizontal line\t\\atop"
+#~ msgstr "無平行列\t\\atop"
+
+#~ msgid "Can't create pipe for spellchecker."
+#~ msgstr "無法為拼寫檢查器建立管道。"
+
+#~ msgid "Can't open pipe for spellchecker."
+#~ msgstr "無法為拼寫檢查器開啟管道。"
+
+#~ msgid ""
+#~ "Could not create an ispell process.\n"
+#~ "You may not have the right languages installed."
+#~ msgstr ""
+#~ "無法建立 ispell 程序。\n"
+#~ "您也許沒有安裝正確的語言集。"
+
+#~ msgid ""
+#~ "The ispell process returned an error.\n"
+#~ "Perhaps it has been configured wrongly ?"
+#~ msgstr ""
+#~ "ispell 程序回傳一個錯誤。\n"
+#~ "也許它已被錯誤地配置？"
+
+#~ msgid ""
+#~ "Could not check word `%1$s' because it could not be converted to encoding "
+#~ "`%2$s'."
+#~ msgstr "無法檢查字詞「%1$s」因為它無法轉換到編碼「%2$s」。"
+
+#~ msgid "Could not communicate with the ispell spellchecker process."
+#~ msgstr "無法與 ispell 拼寫檢查器程序通訊。"
+
+#~ msgid ""
+#~ "Could not insert word `%1$s' because it could not be converted to "
+#~ "encoding `%2$s'."
+#~ msgstr "無法插入字詞「%1$s」因為它無法轉換到編碼「%2$s」。"
+
+#~ msgid ""
+#~ "Could not accept word `%1$s' because it could not be converted to "
+#~ "encoding `%2$s'."
+#~ msgstr "無法接受字詞「%1$s」因為它無法轉換到編碼「%2$s」。"
+
+#~ msgid ""
+#~ "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+#~ msgstr "指定替代個人字典的檔案。例如：「.ispell_english」。"
+
+#~ msgid "What command runs the spellchecker?"
+#~ msgstr "用什麼命令運行拼寫檢查器？"
+
+#~ msgid ""
+#~ "Specify whether to pass the -T input encoding option to ispell. Enable "
+#~ "this if you cannot check the spelling of words containing accented "
+#~ "letters. This may not work with all dictionaries."
+#~ msgstr ""
+#~ "指定是否要傳遞 -T 輸入編碼選項給 ispell。啟用此如果您無法檢查包含揚音字母"
+#~ "的字詞拼寫，就啟用它。這可能不適用於所有字典。"
+
+#~ msgid "Native OS API not yet supported."
+#~ msgstr "原生 OS API 尚未支援。"
+
+#~ msgid "Unknown author index for deletion: %1$d\n"
+#~ msgstr "刪除時不明的作者索引：%1$d\n"
+
+#~ msgid "Unknown spacing argument: "
+#~ msgstr "不明的間隔引數："
+
+#~ msgid ""
+#~ "Aiksaurus returned the following error:\n"
+#~ "\n"
+#~ "%1$s."
+#~ msgstr ""
+#~ "Aiksaurus 回傳下列錯誤：\n"
+#~ "\n"
+#~ "%1$s。"
 
 #~ msgid "Bibliography Entry Settings"
 #~ msgstr "參考文獻項目設定值"
@@ -23878,126 +24059,122 @@ msgstr "不明的使用者"
 #~ msgid "Branch Settings"
 #~ msgstr "分支設定值"
 
-#, fuzzy
-#~ msgid "Horizontal Space Settings"
-#~ msgstr "垂直空格設定值"
+#~ msgid ""
+#~ "Input listings parameters on the right. Enter ? for a list of parameters."
+#~ msgstr "在右側輸入列表參數。輸入 ? 以取得參數清單。"
 
-#~ msgid "Table Settings"
-#~ msgstr "表格設定值"
-
-#~ msgid "Vertical Space Settings"
-#~ msgstr "垂直空格設定值"
-
-#, fuzzy
-#~ msgid "Language ...|L"
-#~ msgstr "語言"
-
-#~ msgid " Macro: %1$s: "
-#~ msgstr " 巨集：%1$s："
-
-#, fuzzy
-#~ msgid "&Debug messages"
-#~ msgstr "沒有偵錯訊息"
-
-#, fuzzy
-#~ msgid "Clear &automatically"
-#~ msgstr "自動更新"
-
-#~ msgid "Dissolve Inset|l"
-#~ msgstr "拆解內欄|l"
-
-#~ msgid "Box Settings"
-#~ msgstr "方框設定值"
+#~ msgid "Length"
+#~ msgstr "長度"
 
 #~ msgid "TeX Code Settings"
 #~ msgstr "TeX 代碼設定值"
+
+#, fuzzy
+#~ msgid "pLaTeX"
+#~ msgstr "LaTeX"
 
 #~ msgid "Float Settings"
 #~ msgstr "浮動設定值"
 
 #, fuzzy
-#~ msgid "Match found and replaced !"
-#~ msgstr "尋找和置換"
+#~ msgid "Horizontal Space Settings"
+#~ msgstr "垂直空格設定值"
+
+#~ msgid "No LaTeX log file found."
+#~ msgstr "找不到 LaTeX 記錄檔。"
+
+#~ msgid "ispell"
+#~ msgstr "ispell"
+
+#~ msgid "pspell (library)"
+#~ msgstr "pspell (函式庫)"
+
+#~ msgid "aspell (library)"
+#~ msgstr "aspell (函式庫)"
+
+#~ msgid "*.pws"
+#~ msgstr "*.pws"
+
+#~ msgid "*.ispell"
+#~ msgstr "*.ispell"
+
+#~ msgid "Spellchecker error"
+#~ msgstr "拼寫檢查器錯誤"
+
+#~ msgid "The spellchecker could not be started\n"
+#~ msgstr "拼寫檢查器無法開始\n"
+
+#~ msgid ""
+#~ "The spellchecker has died for some reason.\n"
+#~ "Maybe it has been killed."
+#~ msgstr ""
+#~ "拼寫檢查器基於某些原因而死去。\n"
+#~ "也許它已被砍掉。"
+
+#~ msgid "The spellchecker has failed.\n"
+#~ msgstr "拼寫檢查器失敗。\n"
+
+#~ msgid "The spellchecker has failed"
+#~ msgstr "拼寫檢查器失敗"
+
+#~ msgid "Vertical Space Settings"
+#~ msgstr "垂直空格設定值"
+
+#~ msgid "No Table of contents"
+#~ msgstr "沒有內容表"
+
+#~ msgid "Opened inset"
+#~ msgstr "開啟的內欄"
 
 #, fuzzy
-#~ msgid "Close this panel"
-#~ msgstr "關閉此對話框"
+#~ msgid "Uncodable characters in bibliography item"
+#~ msgstr "特殊字元"
+
+#~ msgid "Opened Box Inset"
+#~ msgstr "開啟的框內欄"
+
+#~ msgid "Opened Branch Inset"
+#~ msgstr "開啟的分支內欄"
+
+#~ msgid "Opened Caption Inset"
+#~ msgstr "開啟的題要內欄"
+
+#~ msgid "Opened ERT Inset"
+#~ msgstr "開啟的 ERT 內欄"
 
 #, fuzzy
-#~ msgid "Prev"
-#~ msgstr "預覽"
+#~ msgid "Opened Flex Inset"
+#~ msgstr "開啟的文字內欄"
 
-#, fuzzy
-#~ msgid "Match..."
-#~ msgstr "數學"
+#~ msgid "Opened Float Inset"
+#~ msgstr "開啟的浮動內欄"
 
-#, fuzzy
-#~ msgid "Find LyX Dialog"
-#~ msgstr "找下一個(&N)"
+#~ msgid "Opened Footnote Inset"
+#~ msgstr "開啟的註腳內欄"
 
-#~ msgid "D&elete"
-#~ msgstr "刪除(&E)"
+#~ msgid "Opened Listing Inset"
+#~ msgstr "開啟的清單內欄"
 
-#~ msgid "F&ind:"
-#~ msgstr "尋找(&I)："
+#~ msgid "Opened Marginal Note Inset"
+#~ msgstr "開啟的邊界註記內欄"
 
-#, fuzzy
-#~ msgid "Current &Paragraph"
-#~ msgstr "縮排段落(&P)"
+#~ msgid "Opened Note Inset"
+#~ msgstr "開啟的註記內欄"
 
-#, fuzzy
-#~ msgid "Document in current file"
-#~ msgstr "文件格式錯誤"
+#~ msgid "Opened Optional Argument Inset"
+#~ msgstr "開啟的選擇性引數內欄"
 
-#, fuzzy
-#~ msgid "diamond2"
-#~ msgstr "diamond"
+#~ msgid "Opened table"
+#~ msgstr "開啟的表格"
 
-#~ msgid "End"
-#~ msgstr "結束"
+#~ msgid "Opened Text Inset"
+#~ msgstr "開啟的文字內欄"
 
-#, fuzzy
-#~ msgid "begin"
-#~ msgstr "開始"
+#~ msgid "Opened Wrap Inset"
+#~ msgstr "開啟的換列內欄"
 
-#, fuzzy
-#~ msgid "end"
-#~ msgstr "和"
-
-#, fuzzy
-#~ msgid "file"
-#~ msgstr "包含檔"
-
-#, fuzzy
-#~ msgid "forward"
-#~ msgstr "forall"
-
-#, fuzzy
-#~ msgid "backwards"
-#~ msgstr "向後搜尋(&B)"
-
-#, fuzzy
-#~ msgid " of "
-#~ msgstr "CV 的結束"
-
-#, fuzzy
-#~ msgid "Continue searching from "
-#~ msgstr "好\t\\nicefrac"
-
-#~ msgid "&Dummy"
-#~ msgstr "虛設(&D)"
-
-#, fuzzy
-#~ msgid "&Automatic clear"
-#~ msgstr "自動更新"
-
-#, fuzzy
-#~ msgid "Show progress messages"
-#~ msgstr "(無記錄檔訊息)"
-
-#, fuzzy
-#~ msgid "(cancelling)"
-#~ msgstr "邊界"
+#~ msgid " Macro: %1$s: "
+#~ msgstr " 巨集：%1$s："
 
 #, fuzzy
 #~ msgid "Anschrift:"
@@ -24059,14 +24236,8 @@ msgstr "不明的使用者"
 #~ msgid "Text:"
 #~ msgstr "文字："
 
-#~ msgid "Strasse"
-#~ msgstr "Strasse"
-
 #~ msgid "Strasse:"
 #~ msgstr "Strasse："
-
-#~ msgid "Land"
-#~ msgstr "Land"
 
 #~ msgid "Land:"
 #~ msgstr "Land："
@@ -24083,14 +24254,8 @@ msgstr "不明的使用者"
 #~ msgid "IhrSchreiben:"
 #~ msgstr "IhrSchreiben："
 
-#~ msgid "BLZ"
-#~ msgstr "BLZ"
-
 #~ msgid "BLZ:"
 #~ msgstr "BLZ："
-
-#~ msgid "Konto"
-#~ msgstr "Konto"
 
 #~ msgid "Konto:"
 #~ msgstr "Konto："
@@ -24101,271 +24266,33 @@ msgstr "不明的使用者"
 #~ msgid "Anlagen:"
 #~ msgstr "Anlagen："
 
-#~ msgid "No LaTeX log file found."
-#~ msgstr "找不到 LaTeX 記錄檔。"
-
 #, fuzzy
 #~ msgid "Latex"
 #~ msgstr "日期"
 
 #, fuzzy
-#~ msgid "View Output|V"
-#~ msgstr "檢視|V"
-
-#, fuzzy
-#~ msgid "Update Output|U"
-#~ msgstr "更新 PostScript"
-
-#, fuzzy
-#~ msgid "Advanced Search"
-#~ msgstr "進階(&V)"
-
-#, fuzzy
-#~ msgid "Replace Ne&xt"
-#~ msgstr "置換成(&W)："
-
-#, fuzzy
-#~ msgid "Find &Prev"
-#~ msgstr "找下一個(&N)"
-
-#, fuzzy
-#~ msgid "Replace P&rev"
-#~ msgstr "全部置換(&A)"
-
-#, fuzzy
-#~ msgid "Current buffer only"
-#~ msgstr "目前儲存格："
-
-#, fuzzy
-#~ msgid "Buffer"
-#~ msgstr "藍色"
-
-#, fuzzy
-#~ msgid "Document"
-#~ msgstr "文件"
-
-#, fuzzy
-#~ msgid "Open buffers"
-#~ msgstr "藍色"
-
-#, fuzzy
-#~ msgid "CharStyle:DropCapital"
-#~ msgstr "變更："
-
-#, fuzzy
-#~ msgid "Regexp"
-#~ msgstr "exp"
-
-#, fuzzy
 #~ msgid "No file open!"
 #~ msgstr "找不到檔案！"
 
-#~ msgid "Jump to the label"
-#~ msgstr "跳到標籤"
-
-#~ msgid "Unknown author index for deletion: %1$d\n"
-#~ msgstr "刪除時不明的作者索引：%1$d\n"
+#, fuzzy
+#~ msgid "You cannot paste into a multicell selection."
+#~ msgstr "您無法垂直地設定多欄。"
 
 #, fuzzy
-#~ msgid "Click to edit the settings of the child document"
-#~ msgstr "重置文件類別的設定為預設值"
+#~ msgid "Check in Changes...|I"
+#~ msgstr "簽入變更…|I"
 
 #, fuzzy
-#~ msgid "Master Settings"
-#~ msgstr "註記設定值"
-
-#~ msgid "Column Width"
-#~ msgstr "欄寬"
-
-#~ msgid "Listing settings"
-#~ msgstr "列表設定值"
-
-#, fuzzy
-#~ msgid "\\alph{enumii}."
-#~ msgstr "(\\alph{enumii})"
-
-#, fuzzy
-#~ msgid "Insert|n"
-#~ msgstr "插入|I"
-
-#~ msgid "Unknown spacing argument: "
-#~ msgstr "不明的間隔引數："
-
-#~ msgid ""
-#~ "Input listings parameters on the right. Enter ? for a list of parameters."
-#~ msgstr "在右側輸入列表參數。輸入 ? 以取得參數清單。"
-
-#~ msgid "Length"
-#~ msgstr "長度"
-
-#~ msgid "Opened inset"
-#~ msgstr "開啟的內欄"
-
-#~ msgid "Opened Box Inset"
-#~ msgstr "開啟的框內欄"
-
-#~ msgid "Opened Branch Inset"
-#~ msgstr "開啟的分支內欄"
-
-#~ msgid "Opened Caption Inset"
-#~ msgstr "開啟的題要內欄"
-
-#~ msgid "Opened ERT Inset"
-#~ msgstr "開啟的 ERT 內欄"
-
-#, fuzzy
-#~ msgid "Opened Flex Inset"
-#~ msgstr "開啟的文字內欄"
-
-#~ msgid "Opened Float Inset"
-#~ msgstr "開啟的浮動內欄"
-
-#~ msgid "Opened Footnote Inset"
-#~ msgstr "開啟的註腳內欄"
-
-#~ msgid "Opened Listing Inset"
-#~ msgstr "開啟的清單內欄"
-
-#~ msgid "Opened Marginal Note Inset"
-#~ msgstr "開啟的邊界註記內欄"
-
-#~ msgid "Opened Note Inset"
-#~ msgstr "開啟的註記內欄"
-
-#~ msgid "Opened Optional Argument Inset"
-#~ msgstr "開啟的選擇性引數內欄"
-
-#, fuzzy
-#~ msgid "Opened Phantom Inset"
-#~ msgstr "開啟的題要內欄"
-
-#~ msgid "Opened table"
-#~ msgstr "開啟的表格"
-
-#~ msgid "Opened Text Inset"
-#~ msgstr "開啟的文字內欄"
-
-#~ msgid "Opened Wrap Inset"
-#~ msgstr "開啟的換列內欄"
-
-#, fuzzy
-#~ msgid "Select the default language of your documents"
-#~ msgstr "重置文件類別的設定為預設值"
-
-#~ msgid "Personal &dictionary:"
-#~ msgstr "個人字典(&D)："
-
-#~ msgid "Specify a personal dictionary file other than the default"
-#~ msgstr "指定不同於預設的個人字典檔案"
-
-#~ msgid "Use input encod&ing"
-#~ msgstr "使用輸入編碼(&I)"
-
-#, fuzzy
-#~ msgid "Toggle Label|L"
-#~ msgstr "切換所有(&T)"
-
-#, fuzzy
-#~ msgid "Move Section down|d"
-#~ msgstr "關閉區段"
-
-#, fuzzy
-#~ msgid "Move Section up|u"
-#~ msgstr "關閉區段"
-
-#, fuzzy
-#~ msgid "The spellchecker has failed."
-#~ msgstr "拼寫檢查器失敗。\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "Specify an alternate personal dictionary file. E.g. \".aspell_english\"."
-#~ msgstr "指定替代個人字典的檔案。例如：「.ispell_english」。"
-
-#, fuzzy
-#~ msgid ""
-#~ "Specify whether to pass the -T input encoding option to aspell. Enable "
-#~ "this if you cannot check the spelling of words containing accented "
-#~ "letters. This may not work with all dictionaries."
-#~ msgstr ""
-#~ "指定是否要傳遞 -T 輸入編碼選項給 ispell。啟用此如果您無法檢查包含揚音字母"
-#~ "的字詞拼寫，就啟用它。這可能不適用於所有字典。"
-
-#~ msgid "*.pws"
-#~ msgstr "*.pws"
-
-#, fuzzy
-#~ msgid "Accept Change|C"
-#~ msgstr "接受變更|A"
-
-#, fuzzy
-#~ msgid "C&ommand:"
-#~ msgstr "命令(&C)："
-
-#~ msgid "&BibTeX command:"
-#~ msgstr "&BibTeX 命令："
-
-#, fuzzy
-#~ msgid "&Index command:"
-#~ msgstr "索引命令："
-
-#, fuzzy
-#~ msgid "BibTeX command (&Japanese):"
-#~ msgstr "BibTeX 命令和選項"
-
-#, fuzzy
-#~ msgid "Index command (Ja&panese):"
-#~ msgstr "索引命令："
+#~ msgid "Check out for Edit|O"
+#~ msgstr "簽出編輯|O"
 
 #, fuzzy
 #~ msgid "Toggle Labeling/Numbering|T"
 #~ msgstr "切換編號|N"
 
 #, fuzzy
-#~ msgid "Copy Label as Reference|C"
-#~ msgstr "交叉參照…|R"
-
-#, fuzzy
-#~ msgid "View|V[[show]]"
-#~ msgstr "檢視|V"
-
-#~ msgid "View DVI"
-#~ msgstr "檢視 DVI"
-
-#~ msgid "View PDF (pdflatex)"
-#~ msgstr "檢視 PDF (pdflatex)"
-
-#~ msgid "View PostScript"
-#~ msgstr "檢視 PostScript"
-
-#~ msgid "Update DVI"
-#~ msgstr "更新 DVI"
-
-#~ msgid "Update PDF (pdflatex)"
-#~ msgstr "更新 PDF (pdflatex)"
-
-#~ msgid "Update PostScript"
-#~ msgstr "更新 PostScript"
-
-#~ msgid "Thesaurus failure"
-#~ msgstr "同義詞錯誤"
-
-#~ msgid ""
-#~ "Aiksaurus returned the following error:\n"
-#~ "\n"
-#~ "%1$s."
-#~ msgstr ""
-#~ "Aiksaurus 回傳下列錯誤：\n"
-#~ "\n"
-#~ "%1$s。"
-
-#, fuzzy
-#~ msgid "Indices"
-#~ msgstr "發票"
-
-#, fuzzy
-#~ msgid "You cannot paste into a multicell selection."
-#~ msgstr "您無法垂直地設定多欄。"
+#~ msgid "Toggle Label|L"
+#~ msgstr "切換所有(&T)"
 
 #~ msgid "B&rowse..."
 #~ msgstr "瀏覽(&R)…"
@@ -24379,80 +24306,6 @@ msgstr "不明的使用者"
 #, fuzzy
 #~ msgid "Ne&w"
 #~ msgstr "新增(&N)："
-
-#, fuzzy
-#~ msgid "No horizontal line\t\\atop"
-#~ msgstr "無平行列\t\\atop"
-
-#~ msgid "Native OS API not yet supported."
-#~ msgstr "原生 OS API 尚未支援。"
-
-#~ msgid "Spellchecker error"
-#~ msgstr "拼寫檢查器錯誤"
-
-#~ msgid "The spellchecker could not be started\n"
-#~ msgstr "拼寫檢查器無法開始\n"
-
-#~ msgid ""
-#~ "The spellchecker has died for some reason.\n"
-#~ "Maybe it has been killed."
-#~ msgstr ""
-#~ "拼寫檢查器基於某些原因而死去。\n"
-#~ "也許它已被砍掉。"
-
-#~ msgid "The spellchecker has failed"
-#~ msgstr "拼寫檢查器失敗"
-
-#~ msgid "LangHeader"
-#~ msgstr "語言頁首"
-
-#~ msgid "Language Header:"
-#~ msgstr "語言頁首："
-
-#~ msgid "Language:"
-#~ msgstr "語言："
-
-#~ msgid "LastLanguage"
-#~ msgstr "上一種語言"
-
-#~ msgid "Last Language:"
-#~ msgstr "上一種語言："
-
-#~ msgid "LangFooter"
-#~ msgstr "語言頁尾"
-
-#~ msgid "Language Footer:"
-#~ msgstr "語言頁尾："
-
-#~ msgid "Computer"
-#~ msgstr "電腦"
-
-#~ msgid "Computer:"
-#~ msgstr "電腦："
-
-#~ msgid "EmptySection"
-#~ msgstr "清空區段"
-
-#~ msgid "Empty Section"
-#~ msgstr "清空區段"
-
-#~ msgid "CloseSection"
-#~ msgstr "關閉區段"
-
-#~ msgid "Close Section"
-#~ msgstr "關閉區段"
-
-#, fuzzy
-#~ msgid "Phantom:Phantom"
-#~ msgstr "hphantom"
-
-#, fuzzy
-#~ msgid "Phantom Text"
-#~ msgstr "純文字"
-
-#, fuzzy
-#~ msgid "RegExp"
-#~ msgstr "exp"
 
 #, fuzzy
 #~ msgid "&Postscript driver:"
@@ -24473,71 +24326,6 @@ msgstr "不明的使用者"
 #, fuzzy
 #~ msgid "Remove Optional Parameter"
 #~ msgstr "開啟的選擇性引數內欄"
-
-#~ msgid "&Default language:"
-#~ msgstr "預設語言(&D)："
-
-#~ msgid "&roff command:"
-#~ msgstr "&roff 命令："
-
-#~ msgid "External app for formating tables in plain text output"
-#~ msgstr "在純文字輸出中用於格式化表格的外部應用程式"
-
-#~ msgid "Spellchec&ker executable:"
-#~ msgstr "拼寫檢查器可執行檔案(&K)："
-
-#~ msgid "Can't create pipe for spellchecker."
-#~ msgstr "無法為拼寫檢查器建立管道。"
-
-#~ msgid "Can't open pipe for spellchecker."
-#~ msgstr "無法為拼寫檢查器開啟管道。"
-
-#~ msgid ""
-#~ "Could not create an ispell process.\n"
-#~ "You may not have the right languages installed."
-#~ msgstr ""
-#~ "無法建立 ispell 程序。\n"
-#~ "您也許沒有安裝正確的語言集。"
-
-#~ msgid ""
-#~ "The ispell process returned an error.\n"
-#~ "Perhaps it has been configured wrongly ?"
-#~ msgstr ""
-#~ "ispell 程序回傳一個錯誤。\n"
-#~ "也許它已被錯誤地配置？"
-
-#~ msgid ""
-#~ "Could not check word `%1$s' because it could not be converted to encoding "
-#~ "`%2$s'."
-#~ msgstr "無法檢查字詞「%1$s」因為它無法轉換到編碼「%2$s」。"
-
-#~ msgid "Could not communicate with the ispell spellchecker process."
-#~ msgstr "無法與 ispell 拼寫檢查器程序通訊。"
-
-#~ msgid ""
-#~ "Could not insert word `%1$s' because it could not be converted to "
-#~ "encoding `%2$s'."
-#~ msgstr "無法插入字詞「%1$s」因為它無法轉換到編碼「%2$s」。"
-
-#~ msgid ""
-#~ "Could not accept word `%1$s' because it could not be converted to "
-#~ "encoding `%2$s'."
-#~ msgstr "無法接受字詞「%1$s」因為它無法轉換到編碼「%2$s」。"
-
-#~ msgid "What command runs the spellchecker?"
-#~ msgstr "用什麼命令運行拼寫檢查器？"
-
-#~ msgid "ispell"
-#~ msgstr "ispell"
-
-#~ msgid "pspell (library)"
-#~ msgstr "pspell (函式庫)"
-
-#~ msgid "aspell (library)"
-#~ msgstr "aspell (函式庫)"
-
-#~ msgid "*.ispell"
-#~ msgstr "*.ispell"
 
 #, fuzzy
 #~ msgid "figure"
@@ -24697,6 +24485,9 @@ msgstr "不明的使用者"
 #~ msgid "Grayscale"
 #~ msgstr "灰階"
 
+#~ msgid "Preview"
+#~ msgstr "預覽"
+
 #~ msgid "%"
 #~ msgstr "%"
 
@@ -24731,6 +24522,9 @@ msgstr "不明的使用者"
 
 #~ msgid " (auto)"
 #~ msgstr " (自動)"
+
+#~ msgid "Plain Text"
+#~ msgstr "純文字"
 
 #, fuzzy
 #~ msgid "Toggle tabba&r"
