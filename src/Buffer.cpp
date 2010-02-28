@@ -1326,14 +1326,14 @@ void Buffer::writeLaTeXSource(odocstream & os,
 
 			// warn user if we found uncodable glyphs.
 			if (!uncodable_glyphs.empty()) {
-				frontend::Alert::warning(_("Uncodable character in path"),
+				frontend::Alert::warning(_("Uncodable character in file path"),
 						support::bformat(_("The path of your document\n"
 						  "(%1$s)\n"
 						  "contains glyphs that are unknown in the\n"
 						  "current document encoding (namely %2$s).\n"
 						  "This will likely result in incomplete output.\n\n"
 						  "Chose an appropriate document encoding (such as utf8)\n"
-						  "or change the path name."), inputpath, uncodable_glyphs));
+						  "or change the file path name."), inputpath, uncodable_glyphs));
 			} else {
 				os << "\\makeatletter\n"
 				   << "\\def\\input@path{{"

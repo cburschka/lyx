@@ -384,8 +384,8 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 			// issue a warning about omitted characters
 			// FIXME: should be passed to the error dialog
 			frontend::Alert::warning(_("Uncodable characters"),
-				bformat(_("The following characters that are used in an inset (%1$s) are\n"
-					  "not representable in the current encoding and have been omitted:\n%2$s."),
+				bformat(_("The following characters that are used in the inset %1$s are not\n"
+					  "representable in the current encoding and therefore have been omitted:\n%2$s."),
 					from_utf8(insetType()), uncodable));
 		}
 	} else if (handling == ParamInfo::HANDLING_ESCAPE)
