@@ -760,23 +760,37 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 	
 }
 
+struct sortLanguageByName {
+	bool operator()(const Language * a, const Language * b) const {
+		return qt_(a->display()).localeAwareCompare(qt_(b->display())) < 0;
+	}
+};
 
 void MenuDefinition::expandLanguageSelector(Buffer const * buf)
 {
 	if (!buf)
 		return;
 
-	std::set<Language const *> languages =
+	std::set<Language const *> languages_buffer =
 		buf->masterBuffer()->getLanguages();
-
-	if (languages.size() < 2)
+	
+	if (languages_buffer.size() < 2)
 		return;
+
+	std::set<Language const *, sortLanguageByName> languages;
+
+	std::set<Language const *>::const_iterator const beg =
+		languages_buffer.begin();
+	for (std::set<Language const *>::const_iterator cit = beg;
+	     cit != languages_buffer.end(); ++cit) {
+		languages.insert(*cit);
+	}
 
 	MenuItem item(MenuItem::Submenu, qt_("Language|L"));
 	item.setSubmenu(MenuDefinition(qt_("Language")));
 	QStringList accelerators;
-	std::set<Language const *>::const_iterator const begin = languages.begin();
-	for (std::set<Language const *>::const_iterator cit = begin;
+	std::set<Language const *, sortLanguageByName>::const_iterator const begin = languages.begin();
+	for (std::set<Language const *, sortLanguageByName>::const_iterator cit = begin;
 	     cit != languages.end(); ++cit) {
 		QString label = qt_((*cit)->display());
 		// try to add an accelerator
