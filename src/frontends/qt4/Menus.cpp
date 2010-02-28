@@ -788,7 +788,10 @@ void MenuDefinition::expandLanguageSelector(Buffer const * buf)
 
 	MenuItem item(MenuItem::Submenu, qt_("Language|L"));
 	item.setSubmenu(MenuDefinition(qt_("Language")));
+	QString morelangs = qt_("More Languages ...|M");
 	QStringList accelerators;
+	if (morelangs.contains('|'))
+		accelerators.append(morelangs.section('|', -1));
 	std::set<Language const *, sortLanguageByName>::const_iterator const begin = languages.begin();
 	for (std::set<Language const *, sortLanguageByName>::const_iterator cit = begin;
 	     cit != languages.end(); ++cit) {
@@ -825,7 +828,7 @@ void MenuDefinition::expandLanguageSelector(Buffer const * buf)
 		item.submenu().addWithStatusCheck(w);
 	}
 	item.submenu().add(MenuItem(MenuItem::Separator));
-	item.submenu().add(MenuItem(MenuItem::Command, qt_("More Languages ..."),
+	item.submenu().add(MenuItem(MenuItem::Command, morelangs,
 			FuncRequest(LFUN_DIALOG_SHOW, "character")));
 	add(item);
 }
