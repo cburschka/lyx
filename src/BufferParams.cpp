@@ -1534,13 +1534,23 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	//   before hyperref. Then hyperref has a chance to detect babel.
 	// * Has to be loaded before the "LyX specific LaTeX commands" to
 	//   avoid errors with algorithm floats.
-	// use hyperref explicitly when it is required
+	// use hyperref explicitly if it is required
 	if (features.isRequired("hyperref")) {
-		odocstringstream oss;
-		pdfoptions().writeLaTeX(oss, documentClass().provides("hyperref"));
-		lyxpreamble += oss.str();
+		// pass what we have to stream here, since we need 
+		// to access the stream itself in PDFOptions.
+		os << lyxpreamble;
+
+		int lines =
+			int(count(lyxpreamble.begin(), lyxpreamble.end(), '\n'));
+
+		OutputParams tmp_params = features.runparams();
+		lines += pdfoptions().writeLaTeX(tmp_params, os,
+					documentClass().provides("hyperref"));
+		texrow.newlines(lines);
+		// set back for the rest
+		lyxpreamble.clear();
 	}
-	
+
 	// Will be surrounded by \makeatletter and \makeatother when not empty
 	docstring atlyxpreamble;
 
@@ -1644,9 +1654,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	int const nlines =
 		int(count(lyxpreamble.begin(), lyxpreamble.end(), '\n'));
-	for (int j = 0; j != nlines; ++j) {
-		texrow.newline();
-	}
+	texrow.newlines(nlines);
 
 	os << lyxpreamble;
 

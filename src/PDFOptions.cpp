@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Pavel Sanda
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,6 +13,7 @@
 
 #include "PDFOptions.h"
 
+#include "Encoding.h"
 #include "Lexer.h"
 
 #include "support/convert.h"
@@ -86,8 +88,11 @@ void PDFOptions::writeFile(ostream & os) const
 }
 
 
-void PDFOptions::writeLaTeX(odocstream & os, bool hyperref_already_provided) const
+int PDFOptions::writeLaTeX(OutputParams & runparams, odocstream & os,
+			    bool hyperref_already_provided) const
 {
+	int lines = 0;
+	// FIXME Unicode
 	string opt;
 	
 	// since LyX uses unicode, also set the PDF strings to unicode strings with the
@@ -105,17 +110,18 @@ void PDFOptions::writeLaTeX(odocstream & os, bool hyperref_already_provided) con
 		opt += "bookmarksnumbered=" + convert<string>(bookmarksnumbered) + ',';
 		opt += "bookmarksopen=" + convert<string>(bookmarksopen) + ',';
 		if (bookmarksopen)
-			opt += "bookmarksopenlevel=" + convert<string>(bookmarksopenlevel) + ',';
+			opt += "bookmarksopenlevel="
+			    + convert<string>(bookmarksopenlevel) + ',';
 	}
 	opt += "\n ";
-	opt += "breaklinks="     + convert<string>(breaklinks) + ',';
+	opt += "breaklinks=" + convert<string>(breaklinks) + ',';
 
-	opt += "pdfborder={0 0 " ;
-	opt += (pdfborder ?'0':'1');
+	opt += "pdfborder={0 0 ";
+	opt += (pdfborder ? '0' : '1');
 	opt += "},";
 
 	opt += "backref=" + backref + ',';
-	opt += "colorlinks="     + convert<string>(colorlinks) + ',';
+	opt += "colorlinks=" + convert<string>(colorlinks) + ',';
 	if (!pagemode.empty())
 		opt += "pdfpagemode=" + pagemode + ',';
 	
@@ -125,9 +131,9 @@ void PDFOptions::writeLaTeX(odocstream & os, bool hyperref_already_provided) con
 	// LaTeX-errors when using non-latin characters
 	string hyperset;
 	if (!title.empty())
-		hyperset += "pdftitle={"   + title + "},";
+		hyperset += "pdftitle={" + title + "},";
 	if (!author.empty())
-		hyperset += "\n pdfauthor={"  + author + "},";
+		hyperset += "\n pdfauthor={" + author + "},";
 	if (!subject.empty())
 		hyperset += "\n pdfsubject={" + subject + "},";
 	if (!keywords.empty())
@@ -138,14 +144,25 @@ void PDFOptions::writeLaTeX(odocstream & os, bool hyperref_already_provided) con
 	}
 	hyperset = rtrim(hyperset,",");
 
+	// check if the hyperref settings use an encoding that exceeds
+	// ours. If so, we have to switch to utf8.
+	Encoding const * const enc = runparams.encoding;
+	docstring const hs = from_utf8(hyperset);
+	bool need_unicode = false;
+	if (enc) {
+		for (size_t n = 0; n < hs.size(); ++n) {
+			if (enc->latexChar(hs[n], true) != docstring(1, hs[n]))
+				need_unicode = true;
+		}
+	}
 
 	// use in \\usepackage parameter as not all options can be handled inside \\hypersetup
 	if (!hyperref_already_provided) {
-		opt = rtrim(opt,",");
+		opt = rtrim(opt, ",");
 		opt = "\\usepackage[" + opt + "]\n {hyperref}\n";
 
 		if (!hyperset.empty())
-			opt += "\\hypersetup{" + hyperset + "}\n ";
+			opt += "\\hypersetup{" + hyperset + "}\n";
 	} else
 		// only in case hyperref is already loaded by the current text class
 		// try to put it into hyperset
@@ -154,11 +171,24 @@ void PDFOptions::writeLaTeX(odocstream & os, bool hyperref_already_provided) con
 		//        and the option is active only when part of usepackage parameter
 		//        (e.g. pdfusetitle).
 		{
-			opt = "\\hypersetup{" + opt + hyperset + "}\n ";
+			opt = "\\hypersetup{" + opt + hyperset + "}\n";
 		}
-	
-	// FIXME UNICODE
+
+	lines = int(count(opt.begin(), opt.end(), '\n'));
+
+	// hyperref expects utf8!
+	if (need_unicode && enc && enc->iconvName() != "UTF-8") {
+		os << "\\inputencoding{utf8}\n"
+		   << setEncoding("UTF-8");
+		++lines;
+	}
 	os << from_utf8(opt);
+	if (need_unicode && enc && enc->iconvName() != "UTF-8") {
+		os << setEncoding(enc->iconvName())
+		   << "\\inputencoding{" << from_ascii(enc->latexName()) << "}\n";
+		++lines;
+	}
+	return lines;
 }
 
 
