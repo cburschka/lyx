@@ -430,6 +430,17 @@ if(NOT ${_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
     endif()
 endif()
 
+option(debug_glibc "Enable libstdc++ debug mode" OFF)
+option(debug_glibc_pedantic "Enable libstdc++pedantic debug mode" OFF)
+
+if(debug_glibc)
+  set(_GLIBCXX_DEBUG 1)
+endif()
+
+if(debug_glibc_pedantic)
+  set(_GLIBCXX_DEBUG_PEDANTIC 1)
+endif()
+
 # compiler tests, config.h generation
 if(MSVC AND NOT CONFIGURECHECKS)
 	configure_file(configCompiler.h.msvc ${CMAKE_BINARY_DIR}/configCompiler.h)
