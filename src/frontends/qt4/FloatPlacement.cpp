@@ -44,6 +44,8 @@ FloatPlacement::FloatPlacement(bool show_options, QWidget * parent)
 	connect(spanCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
 	connect(sidewaysCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
 
+	floatTypeTitle->setVisible(show_options);
+	floatTypeCO->setVisible(show_options);
 	spanCB->setVisible(show_options);
 	sidewaysCB->setVisible(show_options);
 }
