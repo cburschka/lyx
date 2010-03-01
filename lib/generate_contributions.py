@@ -520,6 +520,14 @@ contributers = [
                  "22 February 2005",
                  u"Qt2 port"),
 
+     contributer(u"Ulysse Danglis",
+                 "o2d () freemail ! gr",
+                 "GPL",
+                 "License of el.po",
+                 "m=126738357204586",
+                 "28 February 2010",
+                 u"Greek translations"),
+
      contributer(u"Ewan Davies",
                  "ewan.davies () googlemail ! com",
                  "GPL",
