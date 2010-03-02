@@ -32,7 +32,7 @@ class Buffer;
 std::vector<CiteStyle> citeStyles(CiteEngine);
 /// \param latex_str a LaTeX command, "cite", "Citep*", etc
 CitationStyle citationStyleFromString(std::string const & latex_str);
-/// the other way rounf
+/// the other way round
 std::string citationStyleToString(CitationStyle const &);
 
 
