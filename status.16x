@@ -94,6 +94,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix a crash when opening an emergency file which is not a
+  valid LyX file (bug 6491).
+
 - Fix crash when viewing files that contain math macros as PDF
   (bug 6388).
 

@@ -95,6 +95,8 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 			// Buffer creation is not possible.
 			return 0;
 		if (!b->loadLyXFile(filename)) {
+			// do not save an emergency file when releasing the buffer
+			b->markClean();
 			theBufferList().release(b);
 			return 0;
 		}
