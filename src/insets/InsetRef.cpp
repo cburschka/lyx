@@ -65,12 +65,6 @@ ParamInfo const & InsetRef::findInfo(string const & /* cmdName */)
 }
 
 
-docstring InsetRef::screenLabel() const
-{
-	return screen_label_;
-}
-
-
 int InsetRef::latex(odocstream & os, OutputParams const &) const
 {
 	// We don't want to output p_["name"], since that is only used 
@@ -123,22 +117,36 @@ void InsetRef::tocString(odocstream & os) const
 
 void InsetRef::updateLabels(ParIterator const & it)
 {
-	docstring const & label = getParam("reference");
+	docstring const & ref = getParam("reference");
 	// register this inset into the buffer reference cache.
-	buffer().references(label).push_back(make_pair(this, it));
+	buffer().references(ref).push_back(make_pair(this, it));
 
+	docstring label;
 	for (int i = 0; !types[i].latex_name.empty(); ++i) {
 		if (getCmdName() == types[i].latex_name) {
-			screen_label_ = _(types[i].short_gui_name);
+			label = _(types[i].short_gui_name);
 			break;
 		}
 	}
-	screen_label_ += getParam("reference");
+	label += ref;
 
 	if (!isLatex && !getParam("name").empty()) {
-		screen_label_ += "||";
-		screen_label_ += getParam("name");
+		label += "||";
+		label += getParam("name");
 	}
+	
+	screen_label_ = label;
+	bool shortened = false;
+	unsigned int const maxLabelChars = 24;
+	if (screen_label_.size() > maxLabelChars) {
+		screen_label_.erase(maxLabelChars - 3);
+		screen_label_ += "...";
+		shortened = true;
+	}
+	if (shortened)
+		tooltip_ = label;
+	else 
+		tooltip_ = from_ascii("");
 }
 
 

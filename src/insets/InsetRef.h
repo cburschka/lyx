@@ -41,9 +41,12 @@ public:
 	///
 	bool isLabeled() const { return true; }
 	///
-	docstring screenLabel() const;
+	docstring screenLabel() const { return screen_label_; }
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
+	///
+	docstring toolTip(BufferView const &, int, int) const
+		{ return tooltip_; }
 	///
 	InsetCode lyxCode() const { return REF_CODE; }
 	///
@@ -78,6 +81,8 @@ private:
 	bool isLatex;
 	///
 	mutable docstring screen_label_;
+	///
+	mutable docstring tooltip_;
 };
 
 } // namespace lyx
