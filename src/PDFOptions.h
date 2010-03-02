@@ -12,6 +12,8 @@
 #ifndef PDFOPTIONS_H
 #define PDFOPTIONS_H
 
+#include "OutputParams.h"
+
 #include "support/strfwd.h"
 
 #include <string>
@@ -34,7 +36,8 @@ public:
 	/// output to lyx header
 	void writeFile(std::ostream &) const;
 	/// output to tex header
-	void writeLaTeX(odocstream &, bool hyperref_already_provided) const;
+	int writeLaTeX(OutputParams &, odocstream &,
+			bool hyperref_already_provided) const;
 	/// read tokens from lyx header
 	std::string readToken(Lexer &lex, std::string const & token);
 	/// set implicit settings for hyperref

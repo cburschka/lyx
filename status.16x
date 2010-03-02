@@ -106,6 +106,9 @@ What's new
 - Fix encoding problem in bibliography items that broke the compilation
   of documents (bug 6534).
 
+- Fix encoding problem in PDF (i.e. hyperref) settings that broke the
+  compilation of documents.
+
 - Issue a warning if a path contains uncodable characters (bug 6301).
 
 - Allow using single quotes in filenames (bug 4063).
