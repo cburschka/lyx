@@ -130,8 +130,8 @@ docstring convertLaTeXCommands(docstring const & str)
 				scanning_cmd = false;
 			}
 
-			// was the last character a \? If so, then this is something like: \\
-			// or \$, so we'll just output it. That's probably not always right...
+			// was the last character a \? If so, then this is something like: \\ or
+			// \$, so we'll just output it. That's probably not always right...
 			if (escaped) {
 				// exception: output \, as THIN SPACE
 				if (ch == ',')
@@ -472,7 +472,7 @@ docstring const BiblioInfo::getInfo(docstring const & key) const
 }
 
 
-bool const BiblioInfo::isBibtex(docstring const & key) const
+bool BiblioInfo::isBibtex(docstring const & key) const
 {
 	BiblioInfo::const_iterator it = find(key);
 	if (it == end())
