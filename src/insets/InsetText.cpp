@@ -631,7 +631,7 @@ ParagraphList & InsetText::paragraphs()
 }
 
 
-void InsetText::updateLabels(ParIterator const & it, UpdateType utype)
+void InsetText::updateBuffer(ParIterator const & it, UpdateType utype)
 {
 	ParIterator it2 = it;
 	it2.forwardPos();
@@ -645,7 +645,7 @@ void InsetText::updateLabels(ParIterator const & it, UpdateType utype)
 			cnt.clearLastLayout();
 			// FIXME cnt.saveLastCounter()?
 		}
-		buffer().updateLabels(it2, utype);
+		buffer().updateBuffer(it2, utype);
 		if (save_layouts) {
 			// LYXERR0("Exiting " << name());
 			cnt.restoreLastLayout();
@@ -657,7 +657,7 @@ void InsetText::updateLabels(ParIterator const & it, UpdateType utype)
 		//	tclass.counters().clearLastLayout()
 		// since we are saving and restoring the existing counters, etc.
 		Counters const savecnt = tclass.counters();
-		buffer().updateLabels(it2, utype);
+		buffer().updateBuffer(it2, utype);
 		tclass.counters() = savecnt;
 	}
 }

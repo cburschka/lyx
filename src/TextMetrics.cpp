@@ -135,7 +135,7 @@ TextMetrics::TextMetrics(BufferView * bv, Text * text)
 	dim_.asc = 10;
 	dim_.des = 10;
 
-	//text_->updateLabels(bv->buffer());
+	//text_->updateBuffer(bv->buffer());
 }
 
 
@@ -414,7 +414,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		LYXERR(Debug::INFO, "MacroContext not initialised!"
 			<< " Going through the buffer again and hope"
 			<< " the context is better then.");
-		bv_->buffer().updateLabels();
+		bv_->buffer().updateBuffer();
 		parPos = text_->macrocontextPosition();
 		LASSERT(!parPos.empty(), /**/);
 		parPos.pit() = pit;

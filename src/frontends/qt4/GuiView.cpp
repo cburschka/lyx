@@ -1176,7 +1176,7 @@ void GuiView::setBuffer(Buffer * newBuffer)
 
 	GuiWorkArea * wa = workArea(*newBuffer);
 	if (wa == 0) {
-		newBuffer->masterBuffer()->updateLabels();
+		newBuffer->masterBuffer()->updateBuffer();
 		wa = addWorkArea(*newBuffer);
 	} else {
 		//Disconnect the old buffer...there's no new one.
@@ -1738,7 +1738,7 @@ void GuiView::openDocument(string const & fname)
 	docstring str2;
 	Buffer * buf = loadDocument(fullname);
 	if (buf) {
-		buf->updateLabels();
+		buf->updateBuffer();
 		setBuffer(buf);
 		buf->errors("Parse");
 		str2 = bformat(_("Document %1$s opened."), disp_fn);
@@ -1787,7 +1787,7 @@ static bool import(GuiView * lv, FileName const & filename,
 		Buffer * buf = lv->loadDocument(lyxfile);
 		if (!buf)
 			return false;
-		buf->updateLabels();
+		buf->updateBuffer();
 		lv->setBuffer(buf);
 		buf->errors("Parse");
 	} else {
@@ -2650,7 +2650,7 @@ void GuiView::openChildDocument(string const & fname)
 	// This makes insertion of citations and references in the child work,
 	// when the target is in the parent or another child document.
 	child->setParent(&buffer);
-	child->masterBuffer()->updateLabels();
+	child->masterBuffer()->updateBuffer();
 	setBuffer(child);
 	if (parsed)
 		child->errors("Parse");
@@ -2698,7 +2698,7 @@ bool GuiView::goToFileRow(string const & argument)
 			buf = theBufferList().getBuffer(s);
 		else if (s.exists()) {
 			buf = loadDocument(s);
-			buf->updateLabels();
+			buf->updateBuffer();
 			buf->errors("Parse");
 		} else {
 			message(bformat(

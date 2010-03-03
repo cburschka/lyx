@@ -38,7 +38,7 @@ private:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	/// Update the counters of this inset and of its contents
-	void updateLabels(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType);
 	///
 	void addToToc(DocIterator const &);
 	///

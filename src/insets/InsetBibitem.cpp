@@ -95,7 +95,7 @@ void InsetBibitem::updateCommand(docstring const & new_key, bool)
 	}
 	setParam("key", key);
 
-	buffer().updateLabels();
+	buffer().updateBuffer();
 }
 
 
@@ -273,7 +273,7 @@ void InsetBibitem::fillWithBibKeys(BiblioInfo & keys, InsetIterator const & it) 
 
 
 // Update the counters of this inset and of its contents
-void InsetBibitem::updateLabels(ParIterator const & it, UpdateType utype)
+void InsetBibitem::updateBuffer(ParIterator const & it, UpdateType utype)
 {
 	BufferParams const & bp = buffer().masterBuffer()->params();
 	Counters & counters = bp.documentClass().counters();

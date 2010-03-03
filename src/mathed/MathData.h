@@ -168,7 +168,7 @@ public:
 	/// stay visually at the same position (cur==0 is allowed)
 	void updateMacros(Cursor * cur, MacroContext const & mc);
 	///
-	void updateLabels(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType);
 
 protected:
 	/// cached values for super/subscript placement

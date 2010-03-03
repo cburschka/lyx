@@ -635,11 +635,11 @@ void InsetMathGrid::drawT(TextPainter & /*pain*/, int /*x*/, int /*y*/) const
 }
 
 
-void InsetMathGrid::updateLabels(ParIterator const & it, UpdateType utype)
+void InsetMathGrid::updateBuffer(ParIterator const & it, UpdateType utype)
 {
 	// pass down
 	for (idx_type idx = 0; idx < nargs(); ++idx)
-		cell(idx).updateLabels(it, utype);
+		cell(idx).updateBuffer(it, utype);
 }
 
 
@@ -1336,10 +1336,10 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 					cell(i).append(grid.cell(grid.index(r, c)));
 		}
 		cur.clearSelection(); // bug 393
-		// FIXME audit setBuffer/updateLabels calls
+		// FIXME audit setBuffer/updateBuffer calls
 		cur.inset().setBuffer(*buffer_);
-		// FIXME audit setBuffer/updateLabels calls
-		cur.buffer()->updateLabels();
+		// FIXME audit setBuffer/updateBuffer calls
+		cur.buffer()->updateBuffer();
 		cur.finishUndo();
 		break;
 	}

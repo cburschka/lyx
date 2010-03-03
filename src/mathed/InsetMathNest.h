@@ -44,7 +44,7 @@ public:
 	void drawDecoration(PainterInfo & pi, int x, int y) const
 	{ drawMarkers(pi, x, y); }
 	///
-	void updateLabels(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType);
 	/// identifies NestInsets
 	InsetMathNest * asNestInset() { return this; }
 	/// identifies NestInsets

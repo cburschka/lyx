@@ -377,12 +377,12 @@ void MathData::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-void MathData::updateLabels(ParIterator const & it, UpdateType utype)
+void MathData::updateBuffer(ParIterator const & it, UpdateType utype)
 {
 	// pass down
 	for (size_t i = 0, n = size(); i != n; ++i) {
 		MathAtom & at = operator[](i);
-		at.nucleus()->updateLabels(it, utype);
+		at.nucleus()->updateBuffer(it, utype);
 	}
 }
 

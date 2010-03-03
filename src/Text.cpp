@@ -717,7 +717,7 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 			break; // the character couldn't be deleted physically due to change tracking
 	}
 
-	cur.buffer()->updateLabels();
+	cur.buffer()->updateBuffer();
 
 	// A singlePar update is not enough in this case.
 	cur.updateFlags(Update::Force);
@@ -1294,7 +1294,7 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 	cur.clearSelection();
 	setCursorIntern(cur, begPit, begPos);
 	cur.updateFlags(Update::Force);
-	cur.buffer()->updateLabels();
+	cur.buffer()->updateBuffer();
 }
 
 
@@ -1445,7 +1445,7 @@ bool Text::handleBibitems(Cursor & cur)
 		cur.recordUndo(ATOMIC_UNDO, prevcur.pit());
 		mergeParagraph(bufparams, cur.text()->paragraphs(),
 							prevcur.pit());
-		cur.buffer()->updateLabels();
+		cur.buffer()->updateBuffer();
 		setCursorIntern(cur, prevcur.pit(), prevcur.pos());
 		cur.updateFlags(Update::Force);
 		return true;
@@ -1473,7 +1473,7 @@ bool Text::erase(Cursor & cur)
 			cur.top().forwardPos();
 
 		if (was_inset)
-			cur.buffer()->updateLabels();
+			cur.buffer()->updateBuffer();
 		else
 			cur.checkBufferStructure();
 		needsUpdate = true;
@@ -1549,7 +1549,7 @@ bool Text::backspacePos0(Cursor & cur)
 	}
 
 	if (needsUpdate) {
-		cur.buffer()->updateLabels();
+		cur.buffer()->updateBuffer();
 		setCursorIntern(cur, prevcur.pit(), prevcur.pos());
 	}
 
@@ -1589,7 +1589,7 @@ bool Text::backspace(Cursor & cur)
 		bool const was_inset = cur.paragraph().isInset(cur.pos());
 		cur.paragraph().eraseChar(cur.pos(), cur.buffer()->params().trackChanges);
 		if (was_inset)
-			cur.buffer()->updateLabels();
+			cur.buffer()->updateBuffer();
 		else
 			cur.checkBufferStructure();
 	}
@@ -1647,7 +1647,7 @@ bool Text::dissolveInset(Cursor & cur)
 	} else
 		// this is the least that needs to be done (bug 6003)
 		// in the above case, pasteParagraphList handles this
-		cur.buffer()->updateLabels();
+		cur.buffer()->updateBuffer();
 
 	// Ensure the current language is set correctly (bug 6292)
 	cur.text()->setCursor(cur, cur.pit(), cur.pos());

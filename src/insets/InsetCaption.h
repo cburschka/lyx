@@ -64,7 +64,7 @@ private:
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	// Update the counters of this inset and of its contents
-	void updateLabels(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType);
 	///
 	int latex(odocstream & os, OutputParams const &) const;
 	///

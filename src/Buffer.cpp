@@ -1550,7 +1550,7 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 {
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
-	updateLabels(UpdateMaster, OutputUpdate);
+	updateBuffer(UpdateMaster, OutputUpdate);
 	checkBibInfoCache();
 	d->bibinfo_.makeCitationLabels(*this);
 	updateMacros();
@@ -3564,7 +3564,7 @@ void Buffer::setBuffersForInsets() const
 }
 
 
-void Buffer::updateLabels(UpdateScope scope, UpdateType utype) const
+void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 {
 	// Use the master text class also for child documents
 	Buffer const * const master = masterBuffer();
@@ -3582,7 +3582,7 @@ void Buffer::updateLabels(UpdateScope scope, UpdateType utype) const
 		// If this is a child document start with the master
 		if (master != this) {
 			bufToUpdate.insert(this);
-			master->updateLabels(UpdateMaster, utype);
+			master->updateBuffer(UpdateMaster, utype);
 			// Do this here in case the master has no gui associated with it. Then, 
 			// the TocModel is not updated and TocModel::toc_ is invalid (bug 5699).
 			if (!master->d->gui_)
@@ -3610,7 +3610,7 @@ void Buffer::updateLabels(UpdateScope scope, UpdateType utype) const
 
 	// do the real work
 	ParIterator parit = cbuf.par_iterator_begin();
-	updateLabels(parit, utype);
+	updateBuffer(parit, utype);
 
 	if (master != this)
 		// TocBackend update will be done later.
@@ -3821,7 +3821,7 @@ void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 }
 
 
-void Buffer::updateLabels(ParIterator & parit, UpdateType utype) const
+void Buffer::updateBuffer(ParIterator & parit, UpdateType utype) const
 {
 	LASSERT(parit.pit() == 0, /**/);
 
@@ -3854,7 +3854,7 @@ void Buffer::updateLabels(ParIterator & parit, UpdateType utype) const
 		InsetList::const_iterator end = parit->insetList().end();
 		for (; iit != end; ++iit) {
 			parit.pos() = iit->pos;
-			iit->inset->updateLabels(parit, utype);
+			iit->inset->updateBuffer(parit, utype);
 		}
 	}
 }
@@ -3905,7 +3905,7 @@ bool Buffer::reload()
 
 	bool const success = loadLyXFile(d->filename);
 	if (success) {
-		updateLabels();
+		updateBuffer();
 		changed(true);
 		markClean();
 		message(bformat(_("Document %1$s reloaded."), disp_fn));

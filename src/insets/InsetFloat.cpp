@@ -152,7 +152,7 @@ void InsetFloat::doDispatch(Cursor & cur, FuncRequest & cmd)
 		setNewLabel();
 		if (params_.type != params.type) {
 			params_.type = params.type;
-			buffer().updateLabels();
+			buffer().updateBuffer();
 		}
 		break;
 	}
@@ -192,7 +192,7 @@ bool InsetFloat::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetFloat::updateLabels(ParIterator const & it, UpdateType utype)
+void InsetFloat::updateBuffer(ParIterator const & it, UpdateType utype)
 {
 	Counters & cnts =
 		buffer().masterBuffer()->params().documentClass().counters();
@@ -214,7 +214,7 @@ void InsetFloat::updateLabels(ParIterator const & it, UpdateType utype)
 	cnts.current_float(params().type);
 	cnts.isSubfloat(subflt);
 
-	InsetCollapsable::updateLabels(it, utype);
+	InsetCollapsable::updateBuffer(it, utype);
 
 	//reset afterwards
 	cnts.current_float(saveflt);

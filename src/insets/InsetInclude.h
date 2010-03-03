@@ -94,7 +94,7 @@ public:
 	///
 	void updateCommand();
 	///
-	void updateLabels(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType);
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///

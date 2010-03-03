@@ -173,10 +173,10 @@ void InsetMathNest::metrics(MetricsInfo const & mi) const
 }
 
 
-void InsetMathNest::updateLabels(ParIterator const & it, UpdateType utype)
+void InsetMathNest::updateBuffer(ParIterator const & it, UpdateType utype)
 {
 	for (idx_type i = 0, n = nargs(); i != n; ++i)
-		cell(i).updateLabels(it, utype);
+		cell(i).updateBuffer(it, utype);
 }
 
 
@@ -564,8 +564,8 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		cur.niceInsert(topaste, parseflg, false);
 		cur.clearSelection(); // bug 393
-		// FIXME audit setBuffer/updateLabels calls
-		cur.buffer()->updateLabels();
+		// FIXME audit setBuffer/updateBuffer calls
+		cur.buffer()->updateBuffer();
 		cur.finishUndo();
 		break;
 	}
@@ -577,8 +577,8 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// Prevent stale position >= size crash
 		// Probably not necessary anymore, see eraseSelection (gb 2005-10-09)
 		cur.normalize();
-		// FIXME audit setBuffer/updateLabels calls
-		cur.buffer()->updateLabels();
+		// FIXME audit setBuffer/updateBuffer calls
+		cur.buffer()->updateBuffer();
 		break;
 
 	case LFUN_COPY:
@@ -988,8 +988,8 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.posBackward();
 		cur.pushBackward(*cur.nextInset());
 		cur.niceInsert(save_selection);
-		// FIXME audit setBuffer/updateLabels calls
-		cur.buffer()->updateLabels();
+		// FIXME audit setBuffer/updateBuffer calls
+		cur.buffer()->updateBuffer();
 #else
 		if (currentMode() == Inset::TEXT_MODE) {
 			cur.recordUndoSelection();
@@ -1203,8 +1203,8 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (createInsetMath_fromDialogStr(cmd.argument(), ar)) {
 			cur.recordUndoSelection();
 			cur.insert(ar);
-			// FIXME audit setBuffer/updateLabels calls
-			cur.buffer()->updateLabels();
+			// FIXME audit setBuffer/updateBuffer calls
+			cur.buffer()->updateBuffer();
 		} else
 			cur.undispatched();
 		break;

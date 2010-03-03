@@ -97,7 +97,7 @@ private:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	// Update the counters of this inset and of its contents
-	void updateLabels(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType);
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///

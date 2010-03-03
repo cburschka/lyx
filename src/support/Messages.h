@@ -43,7 +43,7 @@ private:
 	///
 	typedef std::map<std::string, docstring> TranslationCache;
 	/// Internal cache for gettext translated strings.
-	/// This is needed for performance reason within \c updateLabels()
+	/// This is needed for performance reason within \c updateBuffer()
 	/// under Windows.
 	mutable TranslationCache cache_;
 };

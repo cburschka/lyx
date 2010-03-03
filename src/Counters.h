@@ -167,10 +167,10 @@ public:
 	/// We're trying to track \refstepcounter in LaTeX, more or less.
 	/// Note that this may be empty.
 	docstring currentCounter() const;
-	/// Called during update labels as we go through various paragraphs,
+	/// Called during updateBuffer() as we go through various paragraphs,
 	/// to track the layouts as we go through.
 	void setActiveLayout(Layout const & lay);
-	/// Also for updateLabels().
+	/// Also for updateBuffer().
 	/// Call this when entering things like footnotes, where there is now
 	/// no "last layout" and we want to restore the "last layout" on exit.
 	void clearLastLayout() { layout_stack_.push_back(0); }

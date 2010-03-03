@@ -485,7 +485,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		recUndo(cur, pit, pit + 1);
 		cur.finishUndo();
 		pars_.swap(pit, pit + 1);
-		cur.buffer()->updateLabels();
+		cur.buffer()->updateBuffer();
 		needsUpdate = true;
 		++cur.pit();
 		break;
@@ -496,7 +496,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		recUndo(cur, pit - 1, pit);
 		cur.finishUndo();
 		pars_.swap(pit, pit - 1);
-		cur.buffer()->updateLabels();
+		cur.buffer()->updateBuffer();
 		--cur.pit();
 		needsUpdate = true;
 		break;
@@ -522,7 +522,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		par.params().startOfAppendix(start);
 
 		// we can set the refreshing parameters now
-		cur.buffer()->updateLabels();
+		cur.buffer()->updateBuffer();
 		break;
 	}
 
@@ -1577,7 +1577,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cur.posForward();
 		// Some insets are numbered, others are shown in the outline pane so
 		// let's update the labels and the toc backend.
-		bv->buffer().updateLabels();
+		bv->buffer().updateBuffer();
 		break;
 
 	case LFUN_TABULAR_INSERT:
@@ -1631,7 +1631,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// date metrics.
 		FuncRequest cmd_caption(LFUN_CAPTION_INSERT);
 		doInsertInset(cur, cur.text(), cmd_caption, true, false);
-		bv->buffer().updateLabels();
+		bv->buffer().updateBuffer();
 		cur.updateFlags(Update::Force);
 		// FIXME: When leaving the Float (or Wrap) inset we should
 		// delete any empty paragraph left above or below the
@@ -2072,26 +2072,26 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_OUTLINE_UP:
 		outline(OutlineUp, cur);
 		setCursor(cur, cur.pit(), 0);
-		cur.buffer()->updateLabels();
+		cur.buffer()->updateBuffer();
 		needsUpdate = true;
 		break;
 
 	case LFUN_OUTLINE_DOWN:
 		outline(OutlineDown, cur);
 		setCursor(cur, cur.pit(), 0);
-		cur.buffer()->updateLabels();
+		cur.buffer()->updateBuffer();
 		needsUpdate = true;
 		break;
 
 	case LFUN_OUTLINE_IN:
 		outline(OutlineIn, cur);
-		cur.buffer()->updateLabels();
+		cur.buffer()->updateBuffer();
 		needsUpdate = true;
 		break;
 
 	case LFUN_OUTLINE_OUT:
 		outline(OutlineOut, cur);
-		cur.buffer()->updateLabels();
+		cur.buffer()->updateBuffer();
 		needsUpdate = true;
 		break;
 

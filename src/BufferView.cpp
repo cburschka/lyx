@@ -912,7 +912,7 @@ void BufferView::updateLayout(DocumentClass const * const oldlayout)
 	setCursor(backcur.asDocIterator(&buffer_));
 
 	buffer_.errors("Class Switch");
-	buffer_.updateLabels();
+	buffer_.updateBuffer();
 }
 
 /** Return the change status at cursor position, taking in account the
@@ -2227,7 +2227,7 @@ bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 
 	d->cursor_ = cur;
 
-	buffer_.updateLabels();
+	buffer_.updateBuffer();
 	buffer_.changed(true);
 	return true;
 }

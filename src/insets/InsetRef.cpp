@@ -155,7 +155,7 @@ void InsetRef::tocString(odocstream & os) const
 }
 
 
-void InsetRef::updateLabels(ParIterator const & it, UpdateType)
+void InsetRef::updateBuffer(ParIterator const & it, UpdateType)
 {
 	docstring const & ref = getParam("reference");
 	// register this inset into the buffer reference cache.

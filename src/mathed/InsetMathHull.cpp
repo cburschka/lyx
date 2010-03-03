@@ -214,7 +214,7 @@ void InsetMathHull::setBuffer(Buffer & buffer)
 }
 
 
-void InsetMathHull::updateLabels(ParIterator const & it, UpdateType utype)
+void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype)
 {
 	if (!buffer_) {
 		//FIXME: buffer_ should be set at creation for this inset! Problem is
@@ -224,10 +224,10 @@ void InsetMathHull::updateLabels(ParIterator const & it, UpdateType utype)
 	}
 	for (size_t i = 0; i != label_.size(); ++i) {
 		if (label_[i])
-			label_[i]->updateLabels(it, utype);
+			label_[i]->updateBuffer(it, utype);
 	}
 	// pass down
-	InsetMathGrid::updateLabels(it, utype);
+	InsetMathGrid::updateBuffer(it, utype);
 }
 
 
@@ -553,9 +553,9 @@ void InsetMathHull::label(row_type row, docstring const & label)
 			delete label_[row];
 			label_[row] = dummy_pointer;
 			// We need an update of the Buffer reference cache.
-			// This is achieved by updateLabels().
+			// This is achieved by updateBuffer().
 			if (buffer_)
-				buffer().updateLabels();
+				buffer().updateBuffer();
 		} else {
 			if (buffer_)
 				label_[row]->updateCommand(label);
@@ -584,8 +584,8 @@ void InsetMathHull::numbered(row_type row, bool num)
 			return;
 		}
 		// We need an update of the Buffer reference cache.
-		// This is achieved by updateLabels().
-		buffer().updateLabels();
+		// This is achieved by updateBuffer().
+		buffer().updateBuffer();
 	}
 }
 

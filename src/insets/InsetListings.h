@@ -48,7 +48,7 @@ private:
 	///
 	docstring name() const { return from_ascii("Listings"); }
 	// Update the counters of this inset and of its contents
-	void updateLabels(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType);
 	///
 	void write(std::ostream & os) const;
 	///

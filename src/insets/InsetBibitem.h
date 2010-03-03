@@ -65,7 +65,7 @@ private:
 	///
 	virtual void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
 	/// Update the counter of this inset
-	void updateLabels(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType);
 	///
 	void updateCommand(docstring const & new_key, bool dummy = false);
 	///
@@ -74,7 +74,7 @@ private:
 	Inset * clone() const { return new InsetBibitem(*this); }
 
 	friend docstring bibitemWidest(Buffer const & buffer, OutputParams const &);
-	/// The label that is set by updateLabels
+	/// The label that is set by updateBuffer
 	docstring autolabel_;
 	///
 	static int key_counter;

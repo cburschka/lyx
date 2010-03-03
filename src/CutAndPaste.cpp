@@ -258,7 +258,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 							static_cast<InsetMathHull &>(*itt);
 						// this is necessary to prevent an uninitialized
 						// buffer when the RefInset is in a MathBox.
-						// FIXME audit setBuffer/updateLabels calls
+						// FIXME audit setBuffer/updateBuffer calls
 						mi.setBuffer(const_cast<Buffer &>(buffer));
 						if (mi.asRefInset()->getTarget() == oldname)
 							mi.asRefInset()->changeTarget(newname);
@@ -287,7 +287,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 						static_cast<InsetMathHull &>(*itt);
 					// this is necessary to prevent an uninitialized
 					// buffer when the RefInset is in a MathBox.
-					// FIXME audit setBuffer/updateLabels calls
+					// FIXME audit setBuffer/updateBuffer calls
 					mi.setBuffer(const_cast<Buffer &>(buffer));
 					if (mi.asRefInset()->getTarget() == oldname)
 						mi.asRefInset()->changeTarget(newname);
@@ -382,7 +382,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	pit = last_paste;
 	pos = pars[last_paste].size();
 
-	// FIXME Should we do it here, or should we let updateLabels() do it?
+	// FIXME Should we do it here, or should we let updateBuffer() do it?
 	// Set paragraph buffers. It's important to do this right away
 	// before something calls Inset::buffer() and causes a crash.
 	for (pit_type p = startpit; p <= pit; ++p)
@@ -775,7 +775,7 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 
 		// need a valid cursor. (Lgb)
 		cur.clearSelection();
-		cur.buffer()->updateLabels();
+		cur.buffer()->updateBuffer();
 
 		// tell tabular that a recent copy happened
 		dirtyTabularStack(false);
@@ -953,7 +953,7 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 
 		boost::tie(ppp, endpit) =
 			pasteSelectionHelper(cur, parlist, docclass, errorList);
-		cur.buffer()->updateLabels();
+		cur.buffer()->updateBuffer();
 		cur.clearSelection();
 		text->setCursor(cur, ppp.first, ppp.second);
 	}

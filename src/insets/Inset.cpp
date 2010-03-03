@@ -229,7 +229,7 @@ bool Inset::forceLTR() const
 void Inset::initView()
 {
 	if (isLabeled())
-		buffer().updateLabels();
+		buffer().updateBuffer();
 }
 
 

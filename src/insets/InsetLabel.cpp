@@ -99,8 +99,8 @@ void InsetLabel::updateCommand(docstring const & new_label, bool updaterefs)
 	buffer().undo().endUndoGroup();
 
 	// We need an update of the Buffer reference cache. This is achieved by
-	// updateLabels().
-	buffer().updateLabels();
+	// updateBuffer().
+	buffer().updateBuffer();
 }
 
 
@@ -120,7 +120,7 @@ docstring InsetLabel::screenLabel() const
 }
 
 
-void InsetLabel::updateLabels(ParIterator const & par, UpdateType utype)
+void InsetLabel::updateBuffer(ParIterator const & par, UpdateType utype)
 {
 	docstring const & label = getParam("name");
 	if (buffer().insetLabel(label)) {

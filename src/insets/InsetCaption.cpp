@@ -307,7 +307,7 @@ docstring InsetCaption::getCaptionAsHTML(XHTMLStream & xs,
 }
 
 
-void InsetCaption::updateLabels(ParIterator const & it, UpdateType utype)
+void InsetCaption::updateBuffer(ParIterator const & it, UpdateType utype)
 {
 	Buffer const & master = *buffer().masterBuffer();
 	DocumentClass const & tclass = master.params().documentClass();
@@ -346,7 +346,7 @@ void InsetCaption::updateLabels(ParIterator const & it, UpdateType utype)
 	}
 
 	// Do the real work now.
-	InsetText::updateLabels(it, utype);
+	InsetText::updateBuffer(it, utype);
 	if (utype == OutputUpdate)
 		cnts.restoreLastCounter();
 }

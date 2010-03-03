@@ -27,7 +27,7 @@ public:
 	///
 	explicit InsetMathRef(Buffer * buf, docstring const & data);
 	///
-	void updateLabels(ParIterator const &, UpdateType);
+	void updateBuffer(ParIterator const &, UpdateType);
 	///
 	//void write(WriteStream & os) const;
 	///

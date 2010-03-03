@@ -70,7 +70,7 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s);
 	///
-	void updateLabels(ParIterator const & it, UpdateType);
+	void updateBuffer(ParIterator const & it, UpdateType);
 	///
 	void addToToc(DocIterator const &);
 protected:

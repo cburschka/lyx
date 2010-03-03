@@ -36,7 +36,7 @@ InsetFoot::InsetFoot(Buffer * buf)
 {}
 
 
-void InsetFoot::updateLabels(ParIterator const & it, UpdateType utype)
+void InsetFoot::updateBuffer(ParIterator const & it, UpdateType utype)
 {
 	BufferParams const & bp = buffer().masterBuffer()->params();
 	Counters & cnts = bp.documentClass().counters();
@@ -53,7 +53,7 @@ void InsetFoot::updateLabels(ParIterator const & it, UpdateType utype)
 			+ ' ' + cnts.theCounter(count, outer.getParLanguage(bp)->code());
 		setLabel(custom_label_);	
 	}
-	InsetCollapsable::updateLabels(it, utype);
+	InsetCollapsable::updateBuffer(it, utype);
 	if (utype == OutputUpdate)
 		cnts.restoreLastCounter();	
 }

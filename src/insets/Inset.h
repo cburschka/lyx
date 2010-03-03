@@ -115,7 +115,7 @@ public:
 	/**
 	  * This is typically used after this inset is created interactively.
 	  * Intented purpose is to sanitize internal state with regard to current
-	  * Buffer. The default implementation calls buffer().updateLabels() if
+	  * Buffer. The default implementation calls buffer().updateBuffer() if
 	  * the inset is labeled.
 	  *
 	  * \sa isLabeled()
@@ -478,7 +478,7 @@ public:
 	/// Update the counters of this inset and of its contents.
 	/// The boolean indicates whether we are preparing for output, e.g.,
 	/// of XHTML.
-	virtual void updateLabels(ParIterator const &, UpdateType) {}
+	virtual void updateBuffer(ParIterator const &, UpdateType) {}
 
 	/// Updates the inset's dialog
 	virtual Buffer const * updateFrontend() const;

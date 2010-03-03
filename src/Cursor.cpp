@@ -1350,7 +1350,7 @@ void Cursor::insert(MathData const & ar)
 		cap::eraseSelection(*this);
 	cell().insert(pos(), ar);
 	pos() += ar.size();
-	// FIXME audit setBuffer/updateLabels calls
+	// FIXME audit setBuffer/updateBuffer calls
 	inset().setBuffer(bv_->buffer());
 }
 

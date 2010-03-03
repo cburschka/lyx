@@ -1321,7 +1321,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 #ifndef DEVEL_VERSION
 			buf->setReadonly(true);
 #endif
-			buf->updateLabels();
+			buf->updateBuffer();
 			buf->errors("Parse");
 		}
 		break;

@@ -358,7 +358,7 @@ public:
 	/// Updates the cached bibliography information.
 	/// Note that you MUST call this method to update the cache. It will
 	/// not happen otherwise. (Currently, it is called at the start of
-	/// updateLabels() and from GuiCitation.)
+	/// updateBuffer() and from GuiCitation.)
 	void checkBibInfoCache() const;
 	/// \return the bibliography information for this buffer's master,
 	/// or just for it, if it isn't a child.
@@ -545,13 +545,13 @@ public:
 	/// Updates screen labels and some other information associated with
 	/// insets and paragraphs. Actually, it's more like a general "recurse
 	/// through the Buffer" routine, that visits all the insets and paragraphs.
-	void updateLabels() const { updateLabels(UpdateMaster, InternalUpdate); }
+	void updateBuffer() const { updateBuffer(UpdateMaster, InternalUpdate); }
 	/// \param scope: whether to start with the master document or just
 	/// do this one.
 	/// \param output: whether we are preparing for output.
-	void updateLabels(UpdateScope scope, UpdateType utype) const;
+	void updateBuffer(UpdateScope scope, UpdateType utype) const;
 	/// 
-	void updateLabels(ParIterator & parit, UpdateType utype) const;
+	void updateBuffer(ParIterator & parit, UpdateType utype) const;
 
 	/// Spellcheck starting from \p from.
 	/// \p from initial position, will then points to the next misspelled

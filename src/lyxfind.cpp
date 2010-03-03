@@ -194,7 +194,7 @@ int replaceAll(BufferView * bv,
 		++num;
 	}
 
-	buf.updateLabels();
+	buf.updateBuffer();
 	bv->putSelectionAt(doc_iterator_begin(&buf), 0, false);
 	if (num)
 		buf.markDirty();

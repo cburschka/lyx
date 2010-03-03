@@ -176,10 +176,10 @@ int InsetMathRef::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-void InsetMathRef::updateLabels(ParIterator const & it, UpdateType /*utype*/)
+void InsetMathRef::updateBuffer(ParIterator const & it, UpdateType /*utype*/)
 {
 	if (!buffer_) {
-		LYXERR0("InsetMathRef::updateLabels: no buffer_!");
+		LYXERR0("InsetMathRef::updateBuffer: no buffer_!");
 		return;
 	}
 	// register this inset into the buffer reference cache.
@@ -214,7 +214,7 @@ void InsetMathRef::changeTarget(docstring const & target)
 	if (createInsetMath_fromDialogStr(
 	    from_utf8(InsetCommand::params2string("ref", icp)), ar)) {
 		*this = *ar[0].nucleus()->asRefInset();
-		// FIXME audit setBuffer/updateLabels calls
+		// FIXME audit setBuffer/updateBuffer calls
 		setBuffer(buf);
 	}
 }
