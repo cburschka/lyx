@@ -121,7 +121,7 @@ int InsetFloatList::latex(odocstream & os, OutputParams const &) const
 	if (cit != floats.end()) {
 		if (cit->second.builtin()) {
 			// Only two different types allowed here:
-			string const type = cit->second.type();
+			string const type = cit->second.floattype();
 			if (type == "table") {
 				os << "\\listoftables\n";
 			} else if (type == "figure") {
@@ -165,7 +165,7 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const &) const {
 	docstring toclabel;
 	if (cit->second.builtin()) {
 		// Only two different types allowed here:
-		string const type = cit->second.type();
+		string const type = cit->second.floattype();
 		if (type == "table") {
 			toctype = "table";
 			toclabel = _("List of Tables");

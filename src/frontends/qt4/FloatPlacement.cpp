@@ -126,7 +126,7 @@ void FloatPlacement::initFloatTypeCO(FloatList const & floats)
 	FloatList::const_iterator const end = floats.end();
 	for (; it != end; ++it) {
 		floatTypeCO->addItem(qt_(it->second.name()),
-				     toqstr(it->second.type()));
+				     toqstr(it->second.floattype()));
 	}
 }
 

@@ -35,32 +35,32 @@ public:
 		 std::string const & htmlClass, std::string const & htmlStyle,
 		 bool builtin = false);
 	///
-	std::string const & type() const;
+	std::string const & floattype() const { return floattype_; }
 	///
-	std::string const & placement() const;
+	std::string const & placement() const { return placement_; }
 	///
-	std::string const & ext() const;
+	std::string const & ext() const {return ext_; }
 	///
-	std::string const & within() const;
+	std::string const & within() const { return within_; }
 	///
-	std::string const & style() const;
+	std::string const & style() const { return style_; }
 	///
-	std::string const & name() const;
+	std::string const & name() const { return name_; }
 	///
-	std::string const & listName() const;
+	std::string const & listName() const { return listname_; }
+	///
+	bool builtin() const { return builtin_; }
 	/// style information, for preamble
-	std::string const & htmlStyle() const;
+	std::string const & htmlStyle() const { return html_style_; }
 	/// class, for css, defaults to "float-" + type()
 	std::string const & htmlAttrib() const;
 	/// tag type, defaults to "div"
 	std::string const & htmlTag() const;
-	///
-	bool builtin() const;
 private:
 	///
 	std::string defaultCSSClass() const;
 	///
-	std::string type_;
+	std::string floattype_;
 	///
 	std::string placement_;
 	///
@@ -72,7 +72,9 @@ private:
 	///
 	std::string name_;
 	///
-	std::string listName_;
+	std::string listname_;
+	///
+	bool builtin_;
 	/// 
 	mutable std::string html_tag_;
 	/// 
@@ -81,8 +83,6 @@ private:
 	mutable std::string defaultcssclass_;
 	/// 
 	std::string html_style_;
-	///
-	bool builtin_;
 };
 
 

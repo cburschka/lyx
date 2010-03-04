@@ -1033,7 +1033,7 @@ void MenuDefinition::expandFloatListInsert(Buffer const * buf)
 		addWithStatusCheck(MenuItem(MenuItem::Command,
 				    qt_(cit->second.listName()),
 				    FuncRequest(LFUN_FLOAT_LIST_INSERT,
-						cit->second.type())));
+						cit->second.floattype())));
 	}
 }
 
@@ -1051,7 +1051,7 @@ void MenuDefinition::expandFloatInsert(Buffer const * buf)
 		QString const label = qt_(cit->second.name());
 		addWithStatusCheck(MenuItem(MenuItem::Command, label,
 				    FuncRequest(LFUN_FLOAT_INSERT,
-						cit->second.type())));
+						cit->second.floattype())));
 	}
 }
 

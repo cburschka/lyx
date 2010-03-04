@@ -32,58 +32,10 @@ Floating::Floating(string const & type, string const & placement,
 		   string const & listName, string const & htmlTag,
 		   string const & htmlAttrib, string const & htmlStyle,
 		   bool builtin)
-	: type_(type), placement_(placement), ext_(ext), within_(within),
-	  style_(style), name_(name), listName_(listName), html_tag_(htmlTag),
-	  html_attrib_(htmlAttrib), html_style_(htmlStyle), builtin_(builtin)
+	: floattype_(type), placement_(placement), ext_(ext), within_(within),
+	  style_(style), name_(name), listname_(listName), builtin_(builtin),
+    html_tag_(htmlTag), html_attrib_(htmlAttrib), html_style_(htmlStyle)
 {}
-
-
-string const & Floating::type() const
-{
-	return type_;
-}
-
-
-string const & Floating::placement() const
-{
-	return placement_;
-}
-
-
-string const & Floating::ext() const
-{
-	return ext_;
-}
-
-
-string const & Floating::within() const
-{
-	return within_;
-}
-
-
-string const & Floating::style() const
-{
-	return style_;
-}
-
-
-string const & Floating::name() const
-{
-	return name_;
-}
-
-
-string const & Floating::listName() const
-{
-	return listName_;
-}
-
-
-string const & Floating::htmlStyle() const
-{
-	return html_style_;
-}
 
 
 string const & Floating::htmlAttrib() const
@@ -107,7 +59,7 @@ string Floating::defaultCSSClass() const
 	if (!defaultcssclass_.empty())
 		return defaultcssclass_;
 	string d;
-	string n = type_;
+	string n = floattype_;
 	string::const_iterator it = n.begin();
 	string::const_iterator en = n.end();
 	for (; it != en; ++it) {
@@ -121,12 +73,6 @@ string Floating::defaultCSSClass() const
 	// are there other characters we need to remove?
 	defaultcssclass_ = "float-" + d;
 	return defaultcssclass_;
-}
-
-
-bool Floating::builtin() const
-{
-	return builtin_;
 }
 
 

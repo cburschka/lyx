@@ -35,7 +35,7 @@ FloatList::const_iterator FloatList::end() const
 
 void FloatList::newFloat(Floating const & fl)
 {
-	list[fl.type()] = fl;
+	list[fl.floattype()] = fl;
 }
 
 

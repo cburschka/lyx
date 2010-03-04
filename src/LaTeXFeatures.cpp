@@ -432,7 +432,7 @@ void LaTeXFeatures::useFloat(string const & name, bool subfloat)
 	// use the "H" modifier. This includes modified table and
 	// figure floats. (Lgb)
 	Floating const & fl = params_.documentClass().floats().getType(name);
-	if (!fl.type().empty() && !fl.builtin()) {
+	if (!fl.floattype().empty() && !fl.builtin()) {
 		require("float");
 	}
 }
@@ -1055,7 +1055,7 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel) const
 		UsedFloats::const_iterator fend = usedFloats_.end();
 		for (; fit != fend; ++fit) {
 			Floating const & fl = floats.getType(fit->first);
-			docstring const type = from_ascii(fl.type());
+			docstring const type = from_ascii(fl.floattype());
 			docstring const flname = from_utf8(fl.name());
 			docstring name = translateIfPossible(flname,
 				buffer().language()->code());
@@ -1156,15 +1156,16 @@ void LaTeXFeatures::getFloatDefinitions(odocstream & os) const
 		Floating const & fl = floats.getType(cit->first);
 
 		// For builtin floats we do nothing.
-		if (fl.builtin()) continue;
+		if (fl.builtin()) 
+			continue;
 
 		// We have to special case "table" and "figure"
-		if (fl.type() == "tabular" || fl.type() == "figure") {
+		if (fl.floattype() == "tabular" || fl.floattype() == "figure") {
 			// Output code to modify "table" or "figure"
 			// but only if builtin == false
 			// and that have to be true at this point in the
 			// function.
-			docstring const type = from_ascii(fl.type());
+			docstring const type = from_ascii(fl.floattype());
 			docstring const placement = from_ascii(fl.placement());
 			docstring const style = from_ascii(fl.style());
 			if (!style.empty()) {
@@ -1178,7 +1179,7 @@ void LaTeXFeatures::getFloatDefinitions(odocstream & os) const
 		} else {
 			// The other non builtin floats.
 
-			docstring const type = from_ascii(fl.type());
+			docstring const type = from_ascii(fl.floattype());
 			docstring const placement = from_ascii(fl.placement());
 			docstring const ext = from_ascii(fl.ext());
 			docstring const within = from_ascii(fl.within());
@@ -1203,7 +1204,7 @@ void LaTeXFeatures::getFloatDefinitions(odocstream & os) const
 			// effect. (Lgb)
 		}
 		if (cit->second)
-			os << "\n\\newsubfloat{" << from_ascii(fl.type()) << "}\n";
+			os << "\n\\newsubfloat{" << from_ascii(fl.floattype()) << "}\n";
 	}
 }
 
