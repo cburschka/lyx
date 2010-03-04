@@ -1607,6 +1607,7 @@ int Buffer::runChktex()
 	OutputParams runparams(&params().encoding());
 	runparams.flavor = OutputParams::LATEX;
 	runparams.nice = false;
+	runparams.linelen = lyxrc.plaintext_linelen;
 	makeLaTeXFile(FileName(name), org_path, runparams);
 
 	TeXErrors terr;
