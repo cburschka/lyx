@@ -12635,8 +12635,11 @@ string
 \begin_inset Quotes erd
 \end_inset
 
-] The heading used for the list of floats.
- This is translated to the document language.
+] A title for a list of floats of this kind (list of figures, tables, or
+ whatever).
+ It is used for the screen label within LyX; it is passed to LaTeX for use
+ as the title there; and it is used as the title in XHTML output.
+ It will be translated to the document language.
 \end_layout
 
 \begin_layout Description
