@@ -4063,16 +4063,20 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case Tabular::MULTICOLUMN:
 			// If a row is set as longtable caption, it must not be allowed
 			// to unset that this row is a multicolumn.
+			// don't allow to set a multirow as multicolumn
 			status.setEnabled(sel_row_start == sel_row_end
-				&& !tabular.ltCaption(tabular.cellRow(cur.idx())));
+				&& !tabular.ltCaption(tabular.cellRow(cur.idx()))
+				&& !tabular.isMultiRow(cur.idx()) );
 			status.setOnOff(tabular.isMultiColumn(cur.idx()));
 			break;
 
 		case Tabular::MULTIROW:
 			// If a row is set as longtable caption, it must not be allowed
 			// to unset that this row is a multirow.
+			// don't allow to set a multicolumn as multirow
 			status.setEnabled(sel_col_start == sel_col_end
-				&& !tabular.ltCaption(tabular.cellRow(cur.idx())));
+				&& !tabular.ltCaption(tabular.cellRow(cur.idx()))
+				&& !tabular.isMultiColumn(cur.idx()) );
 			status.setOnOff(tabular.isMultiRow(cur.idx()));
 			break;
 
@@ -4258,6 +4262,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		// only one row can be the caption
+		// and a multirow cannot be set as caption
 		case Tabular::TOGGLE_LTCAPTION:
 			status.setEnabled(sel_row_start == sel_row_end
 				&& !tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)
@@ -4265,7 +4270,8 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 				&& !tabular.getRowOfLTFoot(sel_row_start, dummyltt)
 				&& !tabular.getRowOfLTLastFoot(sel_row_start, dummyltt)
 				&& (!tabular.haveLTCaption()
-					|| tabular.ltCaption(sel_row_start)));
+					|| tabular.ltCaption(sel_row_start))
+				&& !tabular.isMultiRow(sel_row_start));
 			status.setOnOff(tabular.ltCaption(sel_row_start));
 			break;
 
