@@ -375,8 +375,6 @@ public:
 	///
 	bool isMultiColumn(idx_type cell) const;
 	///
-	bool isMultiColumnReal(idx_type cell) const;
-	///
 	void setMultiColumn(idx_type cell, idx_type number);
 	///
 	void unsetMultiColumn(idx_type cell);
@@ -394,8 +392,6 @@ public:
 	row_type cellRow(idx_type cell) const;
 	///
 	col_type cellColumn(idx_type cell) const;
-	///
-	col_type cellRightColumn(idx_type cell) const;
 	///
 	void setRotateCell(idx_type cell, bool);
 	///

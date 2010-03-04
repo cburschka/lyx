@@ -1302,17 +1302,6 @@ Tabular::col_type Tabular::cellColumn(idx_type cell) const
 }
 
 
-Tabular::col_type Tabular::cellRightColumn(idx_type cell) const
-{
-	row_type const row = cellRow(cell);
-	col_type column = cellColumn(cell);
-	while (column < column_info.size() - 1 &&
-		   cell_info[row][column + 1].multicolumn == CELL_PART_OF_MULTICOLUMN)
-		++column;
-	return column;
-}
-
-
 void Tabular::write(ostream & os) const
 {
 	// header line
@@ -1526,12 +1515,6 @@ bool Tabular::isMultiColumn(idx_type cell) const
 {
 	return (cellInfo(cell).multicolumn == CELL_BEGIN_OF_MULTICOLUMN 
 		|| cellInfo(cell).multicolumn == CELL_PART_OF_MULTICOLUMN);
-}
-
-
-bool Tabular::isMultiColumnReal(idx_type cell) const
-{
-	return cellColumn(cell) != cellRightColumn(cell) && isMultiColumn(cell);
 }
 
 
@@ -2957,12 +2940,12 @@ void Tabular::plaintext(odocstream & os,
 	vector<unsigned int> clen(column_info.size());
 
 	if (!onlydata) {
-		// first all non (real) multicolumn cells!
+		// first all non multicolumn cells!
 		for (col_type j = 0; j < column_info.size(); ++j) {
 			clen[j] = 0;
 			for (row_type i = 0; i < row_info.size(); ++i) {
 				idx_type cell = cellIndex(i, j);
-				if (isMultiColumnReal(cell))
+				if (isMultiColumn(cell))
 					continue;
 				odocstringstream sstr;
 				cellInset(cell)->plaintext(sstr, runparams);
@@ -2970,11 +2953,11 @@ void Tabular::plaintext(odocstream & os,
 					clen[j] = sstr.str().length();
 			}
 		}
-		// then all (real) multicolumn cells!
+		// then all multicolumn cells!
 		for (col_type j = 0; j < column_info.size(); ++j) {
 			for (row_type i = 0; i < row_info.size(); ++i) {
 				idx_type cell = cellIndex(i, j);
-				if (!isMultiColumnReal(cell) || isPartOfMultiColumn(i, j))
+				if (cell_info[i][j].multicolumn != CELL_BEGIN_OF_MULTICOLUMN)
 					continue;
 				odocstringstream sstr;
 				cellInset(cell)->plaintext(sstr, runparams);
@@ -5436,12 +5419,8 @@ void InsetTabular::getSelection(Cursor & cur,
 	CursorSlice const & end = cur.selEnd();
 	cs = tabular.cellColumn(beg.idx());
 	ce = tabular.cellColumn(end.idx());
-	if (cs > ce) {
-		ce = cs;
-		cs = tabular.cellColumn(end.idx());
-	} else {
-		ce = tabular.cellRightColumn(end.idx());
-	}
+	if (cs > ce)
+		swap(cs, ce);
 
 	rs = tabular.cellRow(beg.idx());
 	re = tabular.cellRow(end.idx());
