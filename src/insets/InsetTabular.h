@@ -298,8 +298,6 @@ public:
 	///
 	void setCellWidth(idx_type cell, int new_width);
 	///
-	void setAllLines(idx_type cell, bool line);
-	///
 	void setTopLine(idx_type cell, bool line);
 	///
 	void setBottomLine(idx_type cell, bool line);

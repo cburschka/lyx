@@ -1100,15 +1100,6 @@ void Tabular::setAlignSpecial(idx_type cell, docstring const & special,
 }
 
 
-void Tabular::setAllLines(idx_type cell, bool line)
-{
-	setTopLine(cell, line);
-	setBottomLine(cell, line);
-	setRightLine(cell, line);
-	setLeftLine(cell, line);
-}
-
-
 void Tabular::setTopLine(idx_type i, bool line)
 {
 	cellInfo(i).top_line = line;
@@ -1533,19 +1524,14 @@ void Tabular::read(Lexer & lex)
 
 bool Tabular::isMultiColumn(idx_type cell) const
 {
-	if (cellInfo(cell).multicolumn == CELL_BEGIN_OF_MULTICOLUMN
-		|| cellInfo(cell).multicolumn == CELL_PART_OF_MULTICOLUMN)
-		return true;
-	else
-		return false;
+	return (cellInfo(cell).multicolumn == CELL_BEGIN_OF_MULTICOLUMN 
+		|| cellInfo(cell).multicolumn == CELL_PART_OF_MULTICOLUMN);
 }
 
 
 bool Tabular::isMultiColumnReal(idx_type cell) const
 {
-	return cellColumn(cell) != cellRightColumn(cell) &&
-		(cellInfo(cell).multicolumn == CELL_BEGIN_OF_MULTICOLUMN
-		 || cellInfo(cell).multicolumn == CELL_PART_OF_MULTICOLUMN);
+	return cellColumn(cell) != cellRightColumn(cell) && isMultiColumn(cell);
 }
 
 
@@ -1557,10 +1543,16 @@ Tabular::CellData & Tabular::cellInfo(idx_type cell) const
 
 void Tabular::setMultiColumn(idx_type cell, idx_type number)
 {
+	idx_type const col = cellColumn(cell);
+	idx_type const row = cellRow(cell);
+	for (idx_type i = 0; i < number; ++i)
+		unsetMultiRow(cellIndex(row, col + i));
+
 	CellData & cs = cellInfo(cell);
 	cs.multicolumn = CELL_BEGIN_OF_MULTICOLUMN;
 	cs.alignment = column_info[cellColumn(cell)].alignment;
 	setRightLine(cell, rightLine(cell + number - 1));
+
 	for (idx_type i = 1; i < number; ++i) {
 		CellData & cs1 = cellInfo(cell + i);
 		cs1.multicolumn = CELL_PART_OF_MULTICOLUMN;
@@ -1580,9 +1572,12 @@ bool Tabular::isMultiRow(idx_type cell) const
 
 void Tabular::setMultiRow(idx_type cell, idx_type number)
 {
-	idx_type const column = cellColumn(cell);
-	idx_type row = cellRow(cell);
-	idx_type const ncolumns = column_info.size();
+	idx_type const col = cellColumn(cell);
+	idx_type const row = cellRow(cell);
+	for (idx_type i = 0; i < number; ++i)
+		unsetMultiColumn(cellIndex(row + i, col));
+
+	idx_type const ncols = column_info.size();
 	CellData & cs = cellInfo(cell);
 	cs.multirow = CELL_BEGIN_OF_MULTIROW;
 	// FIXME: the horizontal alignment can only be changed for
@@ -1590,9 +1585,10 @@ void Tabular::setMultiRow(idx_type cell, idx_type number)
 	// assigning this to uwestoehr
 	cs.valignment = LYX_VALIGN_MIDDLE;
 	// set the bottom row of the last selected cell
-	setBottomLine(cell, bottomLine(cell + (number - 1)*ncolumns));
+	setBottomLine(cell, bottomLine(cell + (number - 1)*ncols));
+
 	for (idx_type i = 1; i < number; ++i) {
-		CellData & cs1 = cell_info[row + i][column];
+		CellData & cs1 = cell_info[row + i][col];
 		cs1.multirow = CELL_PART_OF_MULTIROW;
 		cs.inset->appendParagraphs(cs1.inset->paragraphs());
 		cs1.inset->clear();
@@ -1627,22 +1623,28 @@ Tabular::idx_type Tabular::rowSpan(idx_type cell) const
 
 void Tabular::unsetMultiColumn(idx_type cell)
 {
+	if (!isMultiColumn(cell))
+		return;
+
 	row_type const row = cellRow(cell);
-	col_type const column = cellColumn(cell);
+	col_type const col = cellColumn(cell);
 	row_type const span = columnSpan(cell);
 	for (col_type c = 0; c < span; ++c)
-		cell_info[row][column + c].multicolumn = CELL_NORMAL;
+		cell_info[row][col + c].multicolumn = CELL_NORMAL;
 	updateIndexes();
 }
 
 
 void Tabular::unsetMultiRow(idx_type cell)
 {
+	if (!isMultiRow(cell))
+		return;
+
 	row_type const row = cellRow(cell);
-	col_type const column = cellColumn(cell);
+	col_type const col = cellColumn(cell);
 	row_type const span = rowSpan(cell);
 	for (row_type r = 0; r < span; ++r)
-		cell_info[row + r][column].multirow = CELL_NORMAL;
+		cell_info[row + r][col].multirow = CELL_NORMAL;
 	updateIndexes();
 }
 
@@ -4068,20 +4070,16 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case Tabular::MULTICOLUMN:
 			// If a row is set as longtable caption, it must not be allowed
 			// to unset that this row is a multicolumn.
-			// don't allow to set a multirow as multicolumn
 			status.setEnabled(sel_row_start == sel_row_end
-				&& !tabular.ltCaption(tabular.cellRow(cur.idx()))
-				&& !tabular.isMultiRow(cur.idx()) );
+				&& !tabular.ltCaption(tabular.cellRow(cur.idx())));
 			status.setOnOff(tabular.isMultiColumn(cur.idx()));
 			break;
 
 		case Tabular::MULTIROW:
 			// If a row is set as longtable caption, it must not be allowed
 			// to unset that this row is a multirow.
-			// don't allow to set a multicolumn as multirow
 			status.setEnabled(sel_col_start == sel_col_end
-				&& !tabular.ltCaption(tabular.cellRow(cur.idx()))
-				&& !tabular.isMultiColumn(cur.idx()) );
+				&& !tabular.ltCaption(tabular.cellRow(cur.idx())));
 			status.setOnOff(tabular.isMultiRow(cur.idx()));
 			break;
 
@@ -5048,9 +5046,13 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		setLines = true;
 	case Tabular::UNSET_ALL_LINES:
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
-			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
-				tabular.setAllLines(
-					tabular.cellIndex(i,j), setLines);
+			for (col_type j = sel_col_start; j <= sel_col_end; ++j) {
+				idx_type const cell = tabular.cellIndex(i,j);
+				tabular.setTopLine(cell, setLines);
+				tabular.setBottomLine(cell, setLines);
+				tabular.setRightLine(cell, setLines);
+				tabular.setLeftLine(cell, setLines);
+			}
 		break;
 
 	case Tabular::SET_BORDER_LINES:
