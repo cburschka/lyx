@@ -2275,11 +2275,24 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// not allowed in description items
 		enable = !inDescriptionItem(cur);
 		break;
-	case LFUN_FLOAT_LIST_INSERT:
+	case LFUN_FLOAT_LIST_INSERT: {
 		code = FLOAT_LIST_CODE;
 		// not allowed in description items
 		enable = !inDescriptionItem(cur);
+		if (enable) {
+			FloatList const & floats = cur.buffer()->params().documentClass().floats();
+			FloatList::const_iterator cit = floats[to_ascii(cmd.argument())];
+			// make sure we know about such floats
+			if (cit == floats.end() ||
+					// and that we know how to generate a list of them
+			    (!cit->second.needsFloatPkg() && cit->second.listCommand().empty())) {
+				flag.unknown(true);
+				// probably not necessary, but...
+				enable = false;
+			}
+		}
 		break;
+	}
 	case LFUN_CAPTION_INSERT:
 		code = CAPTION_CODE;
 		// not allowed in description items

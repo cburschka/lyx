@@ -124,8 +124,14 @@ int InsetFloatList::latex(odocstream & os, OutputParams const &) const
 		if (fl.needsFloatPkg())
 			os << "\\listof{" << getParam("type") << "}{"
 			   << buffer().B_(fl.listName()) << "}\n"; 
-		else
-			os << "\\" << from_ascii(fl.listCommand()) << "\n";
+		else {
+			if (!fl.listCommand().empty())
+				os << "\\" << from_ascii(fl.listCommand()) << "\n";
+			else 
+				os << "%% "
+				   << bformat(_("LyX cannot generate a list of %1$s"), getParam("type"))
+				   << "\n";
+		}
 	} else {
 		os << "%%\\listof{" << getParam("type") << "}{"
 		   << bformat(_("List of %1$s"), getParam("type"))
