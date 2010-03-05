@@ -994,7 +994,6 @@ src_frontends_qt4_ui_files = Split('''
 
 
 src_frontends_qt4_ui_extra_files = Split('''
-    compile_uic.sh
     Makefile.am    
 ''')
 
