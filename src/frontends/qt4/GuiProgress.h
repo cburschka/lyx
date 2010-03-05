@@ -35,7 +35,7 @@ class GuiProgress :
 	Q_OBJECT
 
 public:
-	GuiProgress(GuiView * view);
+	GuiProgress();
 	~GuiProgress();
 
 	void lyxerrConnect();
@@ -43,12 +43,18 @@ public:
 	void lyxerrFlush();
 
 Q_SIGNALS:
+
+	// ProgressInterface
 	void processStarted(QString const &);
 	void processFinished(QString const &);
 	void appendMessage(QString const &);
 	void appendError(QString const &);
 	void clearMessages();
 	void appendLyXErrMessage(QString const & text);
+
+
+	void clearMessageText();    
+	void updateStatusBarMessage(QString const &);
 
 	// Alert interface
 	void warning(QString const & title, QString const & message);
@@ -70,10 +76,8 @@ private Q_SLOTS:
 
 
 private:
-	GuiView* view_;
 	void appendText(QString const &);
 	std::ostringstream lyxerr_stream_;
-
 };
 
 

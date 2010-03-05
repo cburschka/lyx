@@ -64,6 +64,7 @@ class GuiView : public QMainWindow, public GuiBufferViewDelegate,
 	public GuiBufferDelegate
 {
 	Q_OBJECT
+
 public:
 	/// create a main window of the given dimensions
 	GuiView(int id);
@@ -96,9 +97,7 @@ public:
 	/// display a message in the view
 	/// could be called from any thread
 	void message(docstring const &);
-	/// must be called from GUI thread
-	void updateMessage(QString const & str);
-
+	
 	bool getStatus(FuncRequest const & cmd, FuncStatus & flag);
 	/// dispatch command.
 	/// \return true if the \c FuncRequest has been dispatched.
@@ -224,6 +223,10 @@ private Q_SLOTS:
 	/// must be called in GUI thread
 	void doShowDialog(QString const & qname, QString const & qdata,
 	Inset * inset);
+
+	/// must be called from GUI thread
+	void updateStatusBarMessage(QString const & str);
+	void clearMessageText();
 
 private:
 	/// Open given child document in current buffer directory.

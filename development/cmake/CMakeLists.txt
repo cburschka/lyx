@@ -289,7 +289,7 @@ message(STATUS "")
 # Not sure if it works for all non-msvc compilers
 include(PCHSupport_26)
 if (MSVC)
-	option(disable-pch "Disable precompiled headers" OFF)
+	option(disable-pch "Disable precompiled headers" ON)
 else()
 	option(disable-pch "Disable precompiled headers" ON)
 endif()

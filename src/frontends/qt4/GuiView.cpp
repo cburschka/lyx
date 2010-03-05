@@ -200,7 +200,7 @@ struct GuiView::GuiViewPrivate
 		// hardcode here the platform specific icon size
 		smallIconSize = 14;  // scaling problems
 		normalIconSize = 20; // ok, default
-		bigIconSize = 26;    // better for some math icons
+		bigIconSize = 26;	// better for some math icons
 
 		splitter_ = new QSplitter;
 		bg_widget_ = new BackgroundWidget;
@@ -208,7 +208,21 @@ struct GuiView::GuiViewPrivate
 		stack_widget_->addWidget(bg_widget_);
 		stack_widget_->addWidget(splitter_);
 		setBackground();
-		progress_ = new GuiProgress(gv);
+
+		// TODO cleanup, remove the singleton, handle multiple Windows?
+		progress_ = ProgressInterface::instance();
+		if (!dynamic_cast<GuiProgress*>(progress_)) {		
+			progress_ = new GuiProgress();  // TODO who deletes it
+			ProgressInterface::setInstance(progress_);			
+		}
+		QObject::connect(
+				dynamic_cast<GuiProgress*>(progress_), 
+				SIGNAL(updateStatusBarMessage(QString const&)), 
+				gv, SLOT(updateStatusBarMessage(QString const&)));
+		QObject::connect(
+				dynamic_cast<GuiProgress*>(progress_), 
+				SIGNAL(clearMessageText()), 
+				gv, SLOT(clearMessageText()));
 	}
 
 	~GuiViewPrivate()
@@ -216,7 +230,6 @@ struct GuiView::GuiViewPrivate
 		delete splitter_;
 		delete bg_widget_;
 		delete stack_widget_;
-		delete progress_;
 	}
 
 	QMenu * toolBarPopup(GuiView * parent)
@@ -752,7 +765,13 @@ void GuiView::message(docstring const & str)
 }
 
 
-void GuiView::updateMessage(QString const & str)
+void GuiView::clearMessageText()
+{
+	message(docstring());
+}
+
+
+void GuiView::updateStatusBarMessage(QString const & str)
 {
 	statusBar()->showMessage(str);
 	d.statusbar_timer_.stop();
@@ -793,7 +812,7 @@ void GuiView::clearMessage()
 void GuiView::updateWindowTitle(GuiWorkArea * wa)
 {
 	if (wa != d.current_work_area_
-	    || wa->bufferView().buffer().isInternal())
+		|| wa->bufferView().buffer().isInternal())
 		return;
 	setWindowTitle(qt_("LyX: ") + wa->windowTitle());
 	setWindowIconText(wa->windowIconText());
@@ -956,8 +975,8 @@ bool GuiView::event(QEvent * e)
 
 void GuiView::resetWindowTitleAndIconText()
 {
-    setWindowTitle(qt_("LyX"));
-    setWindowIconText(qt_("LyX"));
+	setWindowTitle(qt_("LyX"));
+	setWindowIconText(qt_("LyX"));
 }
 
 bool GuiView::focusNextPrevChild(bool /*next*/)
@@ -987,7 +1006,7 @@ void GuiView::setBusy(bool busy)
 GuiWorkArea * GuiView::workArea(Buffer & buffer)
 {
 	if (currentWorkArea()
-	    && &currentWorkArea()->bufferView().buffer() == &buffer)
+		&& &currentWorkArea()->bufferView().buffer() == &buffer)
 		return (GuiWorkArea *) currentWorkArea();
 	if (TabWorkArea * twa = d.currentTabWorkArea())
 		return twa->workArea(buffer);
@@ -1346,7 +1365,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	if (!lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer) && !buf) {
 		// no, exit directly
 		flag.message(from_utf8(N_("Command not allowed with"
-				    "out any document open")));
+					"out any document open")));
 		flag.setEnabled(false);
 		return true;
 	}
@@ -1521,28 +1540,28 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_COMPLETION_INLINE:
 		if (!d.current_work_area_
-		    || !d.current_work_area_->completer().inlinePossible(
+			|| !d.current_work_area_->completer().inlinePossible(
 			currentBufferView()->cursor()))
-		    enable = false;
+			enable = false;
 		break;
 
 	case LFUN_COMPLETION_POPUP:
 		if (!d.current_work_area_
-		    || !d.current_work_area_->completer().popupPossible(
+			|| !d.current_work_area_->completer().popupPossible(
 			currentBufferView()->cursor()))
-		    enable = false;
+			enable = false;
 		break;
 
 	case LFUN_COMPLETION_COMPLETE:
 		if (!d.current_work_area_
 			|| !d.current_work_area_->completer().inlinePossible(
 			currentBufferView()->cursor()))
-		    enable = false;
+			enable = false;
 		break;
 
 	case LFUN_COMPLETION_ACCEPT:
 		if (!d.current_work_area_
-		    || (!d.current_work_area_->completer().popupVisible()
+			|| (!d.current_work_area_->completer().popupVisible()
 			&& !d.current_work_area_->completer().inlineVisible()
 			&& !d.current_work_area_->completer().completionAvailable()))
 			enable = false;
@@ -1550,7 +1569,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_COMPLETION_CANCEL:
 		if (!d.current_work_area_
-		    || (!d.current_work_area_->completer().popupVisible()
+			|| (!d.current_work_area_->completer().popupVisible()
 			&& !d.current_work_area_->completer().inlineVisible()))
 			enable = false;
 		break;
@@ -1631,7 +1650,7 @@ static FileName selectTemplateFile()
 	dlg.setButton1(qt_("Templates|#T#t"), toqstr(lyxrc.template_path));
 
 	FileDialog::Result result = dlg.open(toqstr(lyxrc.template_path),
-			     QStringList(qt_("LyX Documents (*.lyx)")));
+				 QStringList(qt_("LyX Documents (*.lyx)")));
 
 	if (result.first == FileDialog::Later)
 		return FileName();
@@ -1761,7 +1780,7 @@ static bool import(GuiView * lv, FileName const & filename,
 	vector<string> loaders = theConverters().loaders();
 	if (find(loaders.begin(), loaders.end(), format) == loaders.end()) {
 		for (vector<string>::const_iterator it = loaders.begin();
-		     it != loaders.end(); ++it) {
+			 it != loaders.end(); ++it) {
 			if (!theConverters().isReachable(format, *it))
 				continue;
 
@@ -1776,7 +1795,7 @@ static bool import(GuiView * lv, FileName const & filename,
 		}
 		if (loader_format.empty()) {
 			frontend::Alert::error(_("Couldn't import file"),
-				     bformat(_("No information for importing the format %1$s."),
+					 bformat(_("No information for importing the format %1$s."),
 					 formats.prettyName(format)));
 			return false;
 		}
@@ -1963,7 +1982,7 @@ void GuiView::insertLyXFile(docstring const & fname)
 		"examples")));
 
 	FileDialog::Result result = dlg.open(toqstr(initpath),
-			     QStringList(qt_("LyX Documents (*.lyx)")));
+				 QStringList(qt_("LyX Documents (*.lyx)")));
 
 	if (result.first == FileDialog::Later)
 		return;
@@ -2049,8 +2068,8 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 
 		FileDialog::Result result =
 			dlg.save(toqstr(fname.onlyPath().absFilename()),
-			       QStringList(qt_("LyX Documents (*.lyx)")),
-				     toqstr(fname.onlyFileName()));
+				   QStringList(qt_("LyX Documents (*.lyx)")),
+					 toqstr(fname.onlyFileName()));
 
 		if (result.first == FileDialog::Later)
 			return false;
@@ -2322,8 +2341,8 @@ bool GuiView::saveBufferIfNeeded(Buffer & buf, bool hiding)
 	int ret;
 	if (hiding && buf.isUnnamed()) {
 		docstring const text = bformat(_("The document %1$s has not been "
-					     "saved yet.\n\nDo you want to save "
-					     "the document?"), file);
+						 "saved yet.\n\nDo you want to save "
+						 "the document?"), file);
 		ret = Alert::prompt(_("Save new document?"), 
 			text, 0, 1, _("&Save"), _("&Cancel"));
 		if (ret == 1)
@@ -2422,14 +2441,14 @@ static bool ensureBufferClean(Buffer * buffer)
 	docstring text;
 	if (!buffer->isUnnamed()) {
 		text = bformat(_("The document %1$s has unsaved "
-					     "changes.\n\nDo you want to save "
-					     "the document?"), file);
+						 "changes.\n\nDo you want to save "
+						 "the document?"), file);
 		title = _("Save changed document?");
 		
 	} else {
 		text = bformat(_("The document %1$s has not been "
-					     "saved yet.\n\nDo you want to save "
-					     "the document?"), file);
+						 "saved yet.\n\nDo you want to save "
+						 "the document?"), file);
 		title = _("Save new document?");
 	}
 	int const ret = Alert::prompt(title, text, 0, 1, _("&Save"), _("&Cancel"));
@@ -2454,7 +2473,7 @@ void GuiView::checkExternallyModifiedBuffers()
 	BufferList::iterator const bend = theBufferList().end();
 	for (; bit != bend; ++bit) {
 		if ((*bit)->fileName().exists()
-		    && (*bit)->isExternallyModified(Buffer::checksum_method)) {
+			&& (*bit)->isExternallyModified(Buffer::checksum_method)) {
 			docstring text = bformat(_("Document \n%1$s\n has been externally modified."
 					" Reload now? Any local changes will be lost."),
 					from_utf8((*bit)->absFileName()));
@@ -2692,7 +2711,7 @@ bool GuiView::goToFileRow(string const & argument)
 		// Must replace extension of the file to be .lyx
 		// and get full path
 		FileName const s = fileSearch(string(),
-					      support::changeExtension(file_name, ".lyx"), "lyx");
+						  support::changeExtension(file_name, ".lyx"), "lyx");
 		// Either change buffer or load the file
 		if (theBufferList().exists(s))
 			buf = theBufferList().getBuffer(s);
@@ -2916,7 +2935,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			LASSERT(doc_buffer, break);
 			docstring const file = makeDisplayPath(doc_buffer->absFileName(), 20);
 			docstring text = bformat(_("Any changes will be lost. Are you sure "
-							     "you want to revert to the saved version of the document %1$s?"), file);
+								 "you want to revert to the saved version of the document %1$s?"), file);
 			int const ret = Alert::prompt(_("Revert to saved document?"),
 				text, 1, 1, _("&Revert"), _("&Cancel"));
 
@@ -3310,7 +3329,7 @@ private:
 bool isValidName(string const & name)
 {
 	return find_if(dialognames, end_dialognames,
-			    cmpCStr(name.c_str())) != end_dialognames;
+				cmpCStr(name.c_str())) != end_dialognames;
 }
 
 } // namespace anon

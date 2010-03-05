@@ -41,7 +41,7 @@ public:
 };
 
 
-GuiProgress::GuiProgress(GuiView * view) : view_(view)
+GuiProgress::GuiProgress()
 {
 	connect(this, SIGNAL(processStarted(QString const &)), SLOT(doProcessStarted(QString const &)));
 	connect(this, SIGNAL(processFinished(QString const &)), SLOT(doProcessFinished(QString const &)));
@@ -58,8 +58,6 @@ GuiProgress::GuiProgress(GuiView * view) : view_(view)
 		SLOT(doError(QString const &, QString const &)));
 	connect(this, SIGNAL(information(QString const &, QString const &)),
 		SLOT(doInformation(QString const &, QString const &)));
-
-	support::ProgressInterface::setInstance(this);
 }
 
 
@@ -91,7 +89,7 @@ void GuiProgress::doAppendError(QString const & msg)
 
 void GuiProgress::doClearMessages()
 {
-	view_->message(docstring());
+	Q_EMIT clearMessageText();
 }
 
 
@@ -123,7 +121,7 @@ GuiProgress::~GuiProgress()
 void GuiProgress::appendText(QString const & text)
 {
 	if (!text.isEmpty())
-		view_->updateMessage(text);
+		Q_EMIT updateStatusBarMessage(text);
 }
 
 
