@@ -1563,10 +1563,16 @@ void Tabular::setMultiRow(idx_type cell, idx_type number)
 	idx_type const ncols = column_info.size();
 	CellData & cs = cellInfo(cell);
 	cs.multirow = CELL_BEGIN_OF_MULTIROW;
+	// reset the vertical alignment to top because multirows cells
+	// cannot be vertically aligned (they can also only have one paragraph)
+	column_info[col].valignment = LYX_VALIGN_TOP;
+
 	// FIXME: the horizontal alignment can only be changed for
 	// the whole table, support for this needs to be implemented
-	// assigning this to uwestoehr
-	cs.valignment = LYX_VALIGN_MIDDLE;
+	// (assigning this to uwestoehr)
+	// until LyX supports this, the alignment is always left
+	column_info[col].alignment = LYX_ALIGN_LEFT;
+
 	// set the bottom row of the last selected cell
 	setBottomLine(cell, bottomLine(cell + (number - 1)*ncols));
 
@@ -4102,30 +4108,35 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case Tabular::M_ALIGN_LEFT:
 			flag = false;
 		case Tabular::ALIGN_LEFT:
+			status.setEnabled(!tabular.isMultiRow(cur.idx()));
 			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_LEFT);
 			break;
 
 		case Tabular::M_ALIGN_RIGHT:
 			flag = false;
 		case Tabular::ALIGN_RIGHT:
+			status.setEnabled(!tabular.isMultiRow(cur.idx()));
 			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_RIGHT);
 			break;
 
 		case Tabular::M_ALIGN_CENTER:
 			flag = false;
 		case Tabular::ALIGN_CENTER:
+			status.setEnabled(!tabular.isMultiRow(cur.idx()));
 			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_CENTER);
 			break;
 
 		case Tabular::ALIGN_BLOCK:
-			status.setEnabled(!tabular.getPWidth(cur.idx()).zero());
+			status.setEnabled(!tabular.getPWidth(cur.idx()).zero()
+				&& !tabular.isMultiRow(cur.idx()));
 			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_BLOCK);
 			break;
 
 		case Tabular::M_VALIGN_TOP:
 			flag = false;
 		case Tabular::VALIGN_TOP:
-			status.setEnabled(!tabular.getPWidth(cur.idx()).zero());
+			status.setEnabled(!tabular.getPWidth(cur.idx()).zero()
+				&& !tabular.isMultiRow(cur.idx()));
 			status.setOnOff(
 				tabular.getVAlignment(cur.idx(), flag) == Tabular::LYX_VALIGN_TOP);
 			break;
@@ -4133,7 +4144,8 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case Tabular::M_VALIGN_BOTTOM:
 			flag = false;
 		case Tabular::VALIGN_BOTTOM:
-			status.setEnabled(!tabular.getPWidth(cur.idx()).zero());
+			status.setEnabled(!tabular.getPWidth(cur.idx()).zero()
+				&& !tabular.isMultiRow(cur.idx()));
 			status.setOnOff(
 				tabular.getVAlignment(cur.idx(), flag) == Tabular::LYX_VALIGN_BOTTOM);
 			break;
@@ -4141,7 +4153,8 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case Tabular::M_VALIGN_MIDDLE:
 			flag = false;
 		case Tabular::VALIGN_MIDDLE:
-			status.setEnabled(!tabular.getPWidth(cur.idx()).zero());
+			status.setEnabled(!tabular.getPWidth(cur.idx()).zero()
+				&& !tabular.isMultiRow(cur.idx()));
 			status.setOnOff(
 				tabular.getVAlignment(cur.idx(), flag) == Tabular::LYX_VALIGN_MIDDLE);
 			break;
