@@ -6,7 +6,7 @@
 # ftp://ftp.agu.org/journals/latex/journals
 
 
-Format 22
+Format 24
 Input stdclass.inc
 
 SecNumDepth             4
@@ -184,7 +184,7 @@ Float
 	Extension             lof
 	NumberWithin          none
 	Style                 plain
-	LatexBuiltin          true
+	NeedsFloatPkg         false
 End
 
 
@@ -195,7 +195,7 @@ Float
 	Extension             lot
 	NumberWithin          none
 	Style                 Ruled
-	LatexBuiltin          true
+	NeedsFloatPkg         false
 End
 
 

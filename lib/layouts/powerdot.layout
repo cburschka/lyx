@@ -4,7 +4,7 @@
 # Created: 29-Aug-05 by Mael Hilléreau
 # Last modified: 20-May-06 by Uwe Stöhr
 
-Format 22
+Format 24
 
 Input stdcounters.inc
 Input stdinsets.inc
@@ -377,12 +377,13 @@ End
 ###
 Float
   Type                  table
-  GuiName       Table
+  GuiName               Table
   Extension             lot
   NumberWithin          none
   Style                 plain
   ListName              "List of Tables"
-  LaTeXBuiltin          true
+  NeedsFloatPkg         false
+	ListCommand           listoftables
 End
   
 Float
@@ -392,7 +393,8 @@ Float
   NumberWithin          none
   Style                 plain
   ListName              "List of Figures"
-  LaTeXBuiltin          true
+  NeedsFloatPkg         false
+	ListCommand           listoffigures
 End
 
 Float
@@ -402,7 +404,7 @@ Float
   NumberWithin          none
   Style                 ruled
   ListName              "List of Algorithms"
-  LaTeXBuiltin          false
+  NeedsFloatPkg         true
 End
 
 ###

@@ -7,7 +7,7 @@
 
 # Author: Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 22
+Format 24
 
 # single numbered example with covington.sty
 Style Numbered_Example_(multiline)
@@ -169,6 +169,6 @@ Float
 	NumberWithin          none
 	Style                 plain
 	ListName              "List of Tableaux"
-	LaTeXBuiltin          false
+	NeedsFloatPkg         true
 End
 

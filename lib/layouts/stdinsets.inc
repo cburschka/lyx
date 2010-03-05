@@ -53,7 +53,7 @@
 #                         be comma-separated.
 #End
 
-Format 22
+Format 24
 
 Provides stdinsets 1
 

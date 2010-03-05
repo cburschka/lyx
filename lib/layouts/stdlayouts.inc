@@ -7,7 +7,7 @@
 # quotations and such.
 
 
-Format 22
+Format 24
 
 Style Quotation
 	Category              MainText
