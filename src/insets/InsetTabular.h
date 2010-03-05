@@ -288,6 +288,10 @@ public:
 	///
 	int height() const;
 	///
+	row_type nrows() const {return row_info.size();}
+	///
+	col_type ncols() const {return column_info.size();}
+	///
 	int rowAscent(row_type row) const;
 	///
 	int rowDescent(row_type row) const;
