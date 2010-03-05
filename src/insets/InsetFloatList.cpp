@@ -18,6 +18,7 @@
 #include "Floating.h"
 #include "FloatList.h"
 #include "FuncRequest.h"
+#include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
@@ -119,23 +120,10 @@ int InsetFloatList::latex(odocstream & os, OutputParams const &) const
 	FloatList::const_iterator cit = floats[to_ascii(getParam("type"))];
 
 	if (cit != floats.end()) {
-		if (!cit->second.needsFloatPkg()) {
-			// Only two different types allowed here:
-			string const type = cit->second.floattype();
-			if (type == "table") {
-				os << "\\listoftables\n";
-			} else if (type == "figure") {
-				os << "\\listoffigures\n";
-			} else {
-				os << "%% unknown builtin float\n";
-			}
-		} else {
-			os << "\\listof{" << getParam("type") << "}{"
-			   << buffer().B_(cit->second.listName()) << "}\n";
-		}
+		os << cit->second.listCommand(buffer().params().language->code());
 	} else {
 		os << "%%\\listof{" << getParam("type") << "}{"
-		   << bformat(_("List of %1$s"), from_utf8(cit->second.name()))
+		   << bformat(_("List of %1$s"), getParam("type"))
 		   << "}\n";
 	}
 	return 1;

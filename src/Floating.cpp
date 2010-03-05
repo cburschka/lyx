@@ -14,7 +14,9 @@
 
 #include "Floating.h"
 
+#include "support/docstring.h"
 #include "support/lstrings.h"
+#include "support/Messages.h"
 
 using namespace std;
 
@@ -36,6 +38,26 @@ Floating::Floating(string const & type, string const & placement,
 	  style_(style), name_(name), listname_(listName), needsfloatpkg_(needsfloat),
     html_tag_(htmlTag), html_attrib_(htmlAttrib), html_style_(htmlStyle)
 {}
+
+
+docstring const & Floating::listCommand(string const & lang) const
+{
+	if (listcommand_.empty()) {
+		if (needsFloatPkg())	
+			listcommand_ = from_ascii("\\listof{" + floattype_ + "}{")
+			   + getMessages(lang).get(listName()) + "}";
+		else {
+			if (floattype_ == "table")
+				listcommand_ = from_ascii("\\listoftables");
+			else if (floattype_ == "figure")
+				listcommand_ = from_ascii("\\listoffigures");
+			else
+				// FIXME We really need a special tag for this.
+				listcommand_ = from_ascii("\\listof" + floattype_ + "s");
+		}
+	}
+	return listcommand_;
+}
 
 
 string const & Floating::htmlAttrib() const

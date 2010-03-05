@@ -12,11 +12,13 @@
 #ifndef FLOATING_H
 #define FLOATING_H
 
+#include "support/strfwd.h"
+
 #include <string>
 
 
 namespace lyx {
-
+	
 /** This is a "float layout" object. It contains the parameters for how to
  *  handle the different kinds of floats, default ones and user created ones.
  *  Objects of this class is stored in a container in FloatList. The different
@@ -46,8 +48,13 @@ public:
 	std::string const & style() const { return style_; }
 	///
 	std::string const & name() const { return name_; }
-	///
+	/// the title of a list of this kind of float
 	std::string const & listName() const { return listname_; }
+	/// the command used to generate that list, in LaTeX
+	/// if needsFloatPkg() is true, then this is
+	///   \listof{floattype()}
+	/// otherwise it is hardcoded, at present.
+	docstring const & listCommand(std::string const & lang) const;
 	///
 	bool needsFloatPkg() const { return needsfloatpkg_; }
 	/// style information, for preamble
@@ -73,6 +80,8 @@ private:
 	std::string name_;
 	///
 	std::string listname_;
+	///
+	mutable docstring listcommand_;
 	///
 	bool needsfloatpkg_;
 	/// 
