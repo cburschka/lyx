@@ -120,7 +120,12 @@ int InsetFloatList::latex(odocstream & os, OutputParams const &) const
 	FloatList::const_iterator cit = floats[to_ascii(getParam("type"))];
 
 	if (cit != floats.end()) {
-		os << cit->second.listCommand(buffer().params().language->code());
+		Floating const & fl = cit->second;
+		if (fl.needsFloatPkg())
+			os << "\\listof{" << getParam("type") << "}{"
+			   << buffer().B_(fl.listName()) << "}\n"; 
+		else
+			os << "\\" << from_ascii(fl.listCommand()) << "\n";
 	} else {
 		os << "%%\\listof{" << getParam("type") << "}{"
 		   << bformat(_("List of %1$s"), getParam("type"))

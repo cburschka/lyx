@@ -14,9 +14,8 @@
 
 #include "Floating.h"
 
-#include "support/docstring.h"
+#include "support/debug.h"
 #include "support/lstrings.h"
-#include "support/Messages.h"
 
 using namespace std;
 
@@ -31,33 +30,14 @@ Floating::Floating()
 Floating::Floating(string const & type, string const & placement,
 		   string const & ext, string const & within,
 		   string const & style, string const & name,
-		   string const & listName, string const & htmlTag,
-		   string const & htmlAttrib, string const & htmlStyle,
-		   bool needsfloat)
+		   string const & listName, std::string const & listCmd, 
+			 string const & htmlTag, string const & htmlAttrib, 
+			 string const & htmlStyle, bool needsfloat)
 	: floattype_(type), placement_(placement), ext_(ext), within_(within),
-	  style_(style), name_(name), listname_(listName), needsfloatpkg_(needsfloat),
-    html_tag_(htmlTag), html_attrib_(htmlAttrib), html_style_(htmlStyle)
+	  style_(style), name_(name), listname_(listName), listcommand_(listCmd),
+	  needsfloatpkg_(needsfloat), html_tag_(htmlTag), html_attrib_(htmlAttrib), 
+	  html_style_(htmlStyle)
 {}
-
-
-docstring const & Floating::listCommand(string const & lang) const
-{
-	if (listcommand_.empty()) {
-		if (needsFloatPkg())	
-			listcommand_ = from_ascii("\\listof{" + floattype_ + "}{")
-			   + getMessages(lang).get(listName()) + "}";
-		else {
-			if (floattype_ == "table")
-				listcommand_ = from_ascii("\\listoftables");
-			else if (floattype_ == "figure")
-				listcommand_ = from_ascii("\\listoffigures");
-			else
-				// FIXME We really need a special tag for this.
-				listcommand_ = from_ascii("\\listof" + floattype_ + "s");
-		}
-	}
-	return listcommand_;
-}
 
 
 string const & Floating::htmlAttrib() const

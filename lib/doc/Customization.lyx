@@ -12539,6 +12539,73 @@ HTML*
 
  These are used for XHTML output.
  See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Tags-for-XHTML"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+ListCommand
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+] The command used to generate a list of floats of this type; the leading
+ `
+\backslash
+' should be omitted.
+ This 
+\emph on
+must
+\emph default
+ be given if 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+NeedsFloatPkg
+\end_layout
+
+\end_inset
+
+ is false, since there is no standard way to generate this command.
+ It is ignored if 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+NeedsFloatPkg
+\end_layout
+
+\end_inset
+
+ is true, since in that case there is a standard way.
 \end_layout
 
 \begin_layout Description

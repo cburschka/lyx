@@ -12,8 +12,6 @@
 #ifndef FLOATING_H
 #define FLOATING_H
 
-#include "support/strfwd.h"
-
 #include <string>
 
 
@@ -33,9 +31,9 @@ public:
 	Floating(std::string const & type, std::string const & placement,
 		 std::string const & ext, std::string const & within,
 		 std::string const & style, std::string const & name,
-		 std::string const & listName, std::string const & htmlType,
-		 std::string const & htmlClass, std::string const & htmlStyle,
-		 bool builtin = false);
+		 std::string const & listName, std::string const & listCmd,
+		 std::string const & htmlType, std::string const & htmlClass, 
+		 std::string const & htmlStyle, bool builtin = false);
 	///
 	std::string const & floattype() const { return floattype_; }
 	///
@@ -50,11 +48,10 @@ public:
 	std::string const & name() const { return name_; }
 	/// the title of a list of this kind of float
 	std::string const & listName() const { return listname_; }
-	/// the command used to generate that list, in LaTeX
-	/// if needsFloatPkg() is true, then this is
-	///   \listof{floattype()}
-	/// otherwise it is hardcoded, at present.
-	docstring const & listCommand(std::string const & lang) const;
+	/// the command used to generate that list. this has to be given
+	/// if needsFloatPkg() is false. note that this should not contain
+	/// the leading "\".
+	std::string const & listCommand() const { return listcommand_; }
 	///
 	bool needsFloatPkg() const { return needsfloatpkg_; }
 	/// style information, for preamble
@@ -81,7 +78,7 @@ private:
 	///
 	std::string listname_;
 	///
-	mutable docstring listcommand_;
+	std::string listcommand_;
 	///
 	bool needsfloatpkg_;
 	/// 

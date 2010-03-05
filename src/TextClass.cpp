@@ -860,6 +860,7 @@ void TextClass::readFloat(Lexer & lexrc)
 		FT_HTMLSTYLE,
 		FT_HTMLATTR,
 		FT_HTMLTAG,
+		FT_LISTCOMMAND,
 		FT_END
 	};
 
@@ -870,6 +871,7 @@ void TextClass::readFloat(Lexer & lexrc)
 		{ "htmlattr", FT_HTMLATTR },
 		{ "htmlstyle", FT_HTMLSTYLE },
 		{ "htmltag", FT_HTMLTAG },
+		{ "listcommand", FT_LISTCOMMAND },
 		{ "listname", FT_LISTNAME },
 		{ "needsfloatpkg", FT_NEEDSFLOAT },
 		{ "numberwithin", FT_WITHIN },
@@ -885,6 +887,7 @@ void TextClass::readFloat(Lexer & lexrc)
 	string htmlstyle;
 	string htmltag;
 	string listName;
+	string listCommand;
 	string name;
 	string placement;
 	string style;
@@ -914,6 +917,7 @@ void TextClass::readFloat(Lexer & lexrc)
 				name = fl.name();
 				listName = fl.listName();
 				needsfloat = fl.needsFloatPkg();
+				listCommand = fl.listCommand();
 			} 
 			break;
 		case FT_NAME:
@@ -937,6 +941,10 @@ void TextClass::readFloat(Lexer & lexrc)
 		case FT_STYLE:
 			lexrc.next();
 			style = lexrc.getString();
+			break;
+		case FT_LISTCOMMAND:
+			lexrc.next();
+			listCommand = lexrc.getString();
 			break;
 		case FT_LISTNAME:
 			lexrc.next();
@@ -964,10 +972,15 @@ void TextClass::readFloat(Lexer & lexrc)
 		}
 	}
 
-	// Here if have a full float if getout == true
+	// Here we have a full float if getout == true
 	if (getout) {
+		if (!needsfloat && listCommand.empty())
+			LYXERR0("The layout does not provide a list command " <<
+			        "for the builtin float `" << type << "'. LyX will " <<
+			        "not be able to produce a float list.");
 		Floating fl(type, placement, ext, within, style, name, 
-				listName, htmltag, htmlattr, htmlstyle, needsfloat);
+				listName, listCommand, htmltag, htmlattr, htmlstyle, 
+				needsfloat);
 		floatlist_.newFloat(fl);
 		// each float has its own counter
 		counters_.newCounter(from_ascii(type), from_ascii(within),

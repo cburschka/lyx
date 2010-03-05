@@ -85,7 +85,8 @@ import os, re, string, sys
 # Added Spellcheck tag.
 
 # Incremented to format 24, 5 March 2010 by rgh
-# Changed LaTeXBuiltin tag to NeedsFloatPkg.
+# Changed LaTeXBuiltin tag to NeedsFloatPkg and
+# added new tag ListCommand.
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
@@ -174,6 +175,8 @@ def convert(lines):
     re_TocLevel = re.compile(r'^(\s*)(TocLevel)(\s+)(\S+)', re.IGNORECASE)
     re_I18nPreamble = re.compile(r'^(\s*)I18nPreamble', re.IGNORECASE)
     re_EndI18nPreamble = re.compile(r'^(\s*)EndI18nPreamble', re.IGNORECASE)
+    re_Float = re.compile(r'^\s*Float\s*$', re.IGNORECASE)
+    re_Type = re.compile(r'\s*Type\s+(\w+)', re.IGNORECASE)
     re_Builtin = re.compile(r'^(\s*)LaTeXBuiltin\s+(\w*)', re.IGNORECASE)
     re_True = re.compile(r'^\s*(?:true|1)\s*$', re.IGNORECASE)
 
@@ -265,17 +268,45 @@ def convert(lines):
             continue
 
         if format == 23:
-          match = re_Builtin.match(lines[i])
-          if match:
-            ws = match.group(1)
-            arg = match.group(2)
-            newarg = ""
-            if re_True.match(arg):
-              newarg = "false"
-            else:
-              newarg = "true"
-            lines[i] = ws + "NeedsFloatPkg " + newarg
-              
+          match = re_Float.match(lines[i])
+          i += 1
+          if not match:
+            continue
+          # we need to do two things:
+          # (i)  Convert Builtin to NeedsFloatPkg
+          # (ii) Write ListCommand lines for the builtin floats table and figure
+          builtin = False
+          cmd = ""
+          while True and i < len(lines):
+            m1 = re_End.match(lines[i])
+            if m1:
+              if builtin and cmd:
+                line = "    ListCommand " + cmd
+                lines.insert(i, line)
+                i += 1
+              break
+            m2 = re_Builtin.match(lines[i])
+            if m2:
+              builtin = True
+              ws1 = m2.group(1)
+              arg = m2.group(2)
+              newarg = ""
+              if re_True.match(arg):
+                newarg = "false"
+              else:
+                newarg = "true"
+              lines[i] = ws1 + "NeedsFloatPkg " + newarg
+            m3 = re_Type.match(lines[i])
+            if m3:
+              fltype = m3.group(1)
+              fltype = fltype.lower()
+              if fltype == "table":
+                cmd = "listoftables"
+              elif fltype == "figure":
+                cmd = "listoffigures"
+              # else unknown, which is why we're doing this
+            i += 1
+          continue              
           
         # This just involved new features, not any changes to old ones
         if format >= 14 and format <= 22:
