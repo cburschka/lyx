@@ -151,6 +151,12 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const &) const {
 
 	string toctype;
 	docstring toclabel;
+	// FIXME
+	// Other builtin floats should be handled here. But I'm not sure if that is
+	// even possible yet, since I'm not sure if we have a TOC for such things.
+	// If so, then they should define ListName, as non-builtin floats do, and
+	// then we can use that. 
+	// Really, all floats should define that.
 	if (!cit->second.needsFloatPkg()) {
 		// Only two different types allowed here:
 		string const type = cit->second.floattype();
