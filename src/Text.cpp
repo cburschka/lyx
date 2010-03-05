@@ -1198,7 +1198,7 @@ bool Text::backspace(Cursor & cur)
 	needsUpdate |= handleBibitems(cur);
 
 	// A singlePar update is not enough in this case.
-//		cur.updateFlags(Update::Force);
+	// cur.updateFlags(Update::Force);
 	setCursor(cur.top(), cur.pit(), cur.pos());
 
 	return needsUpdate;
