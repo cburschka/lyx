@@ -66,7 +66,7 @@ private:
 };
 
 // Keep the changes documented in the Customization manual. 
-int const FORMAT = 23;
+int const FORMAT = 24;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)
@@ -856,7 +856,7 @@ void TextClass::readFloat(Lexer & lexrc)
 		FT_WITHIN,
 		FT_STYLE,
 		FT_LISTNAME,
-		FT_BUILTIN,
+		FT_NEEDSFLOAT,
 		FT_HTMLSTYLE,
 		FT_HTMLATTR,
 		FT_HTMLTAG,
@@ -870,8 +870,8 @@ void TextClass::readFloat(Lexer & lexrc)
 		{ "htmlattr", FT_HTMLATTR },
 		{ "htmlstyle", FT_HTMLSTYLE },
 		{ "htmltag", FT_HTMLTAG },
-		{ "latexbuiltin", FT_BUILTIN },
 		{ "listname", FT_LISTNAME },
+		{ "needsfloatpkg", FT_NEEDSFLOAT },
 		{ "numberwithin", FT_WITHIN },
 		{ "placement", FT_PLACEMENT },
 		{ "style", FT_STYLE },
@@ -890,7 +890,7 @@ void TextClass::readFloat(Lexer & lexrc)
 	string style;
 	string type;
 	string within;
-	bool builtin = false;
+	bool needsfloat = true;
 
 	bool getout = false;
 	while (!getout && lexrc.isOK()) {
@@ -913,7 +913,7 @@ void TextClass::readFloat(Lexer & lexrc)
 				style = fl.style();
 				name = fl.name();
 				listName = fl.listName();
-				builtin = fl.builtin();
+				needsfloat = fl.needsFloatPkg();
 			} 
 			break;
 		case FT_NAME:
@@ -942,9 +942,9 @@ void TextClass::readFloat(Lexer & lexrc)
 			lexrc.next();
 			listName = lexrc.getString();
 			break;
-		case FT_BUILTIN:
+		case FT_NEEDSFLOAT:
 			lexrc.next();
-			builtin = lexrc.getBool();
+			needsfloat = lexrc.getBool();
 			break;
 		case FT_HTMLATTR:
 			lexrc.next();
@@ -967,7 +967,7 @@ void TextClass::readFloat(Lexer & lexrc)
 	// Here if have a full float if getout == true
 	if (getout) {
 		Floating fl(type, placement, ext, within, style, name, 
-				listName, htmltag, htmlattr, htmlstyle, builtin);
+				listName, htmltag, htmlattr, htmlstyle, needsfloat);
 		floatlist_.newFloat(fl);
 		// each float has its own counter
 		counters_.newCounter(from_ascii(type), from_ascii(within),

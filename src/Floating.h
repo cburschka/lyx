@@ -49,7 +49,7 @@ public:
 	///
 	std::string const & listName() const { return listname_; }
 	///
-	bool builtin() const { return builtin_; }
+	bool needsFloatPkg() const { return needsfloatpkg_; }
 	/// style information, for preamble
 	std::string const & htmlStyle() const { return html_style_; }
 	/// class, for css, defaults to "float-" + type()
@@ -74,7 +74,7 @@ private:
 	///
 	std::string listname_;
 	///
-	bool builtin_;
+	bool needsfloatpkg_;
 	/// 
 	mutable std::string html_tag_;
 	/// 

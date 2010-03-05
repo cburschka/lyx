@@ -119,7 +119,7 @@ int InsetFloatList::latex(odocstream & os, OutputParams const &) const
 	FloatList::const_iterator cit = floats[to_ascii(getParam("type"))];
 
 	if (cit != floats.end()) {
-		if (cit->second.builtin()) {
+		if (!cit->second.needsFloatPkg()) {
 			// Only two different types allowed here:
 			string const type = cit->second.floattype();
 			if (type == "table") {
@@ -163,7 +163,7 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const &) const {
 
 	string toctype;
 	docstring toclabel;
-	if (cit->second.builtin()) {
+	if (!cit->second.needsFloatPkg()) {
 		// Only two different types allowed here:
 		string const type = cit->second.floattype();
 		if (type == "table") {

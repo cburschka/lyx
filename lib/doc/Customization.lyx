@@ -12546,72 +12546,6 @@ HTML*
 status collapsed
 
 \begin_layout Plain Layout
-LaTeXBuiltin
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-0
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-
-] Set to 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-
- if the float is already defined by the LaTeX document class.
- If this is set to 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-0
-\end_layout
-
-\end_inset
-
-, the float will be defined using the LaTeX package 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-float
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Description
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
 ListName
 \end_layout
 
@@ -12640,6 +12574,84 @@ string
  It is used for the screen label within LyX; it is passed to LaTeX for use
  as the title there; and it is used as the title in XHTML output.
  It will be translated to the document language.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+NeedsFloatPkg
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status open
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+1
+\end_layout
+
+\end_inset
+
+] Indicates whether the float is already defined in the document class or
+ if we instead need to load 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+float.sty
+\end_layout
+
+\end_inset
+
+ and use what it provides.
+ The default is 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+, which means: use 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+float.sty
+\end_layout
+
+\end_inset
+
+.
+ It should be set to 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ if the float is already defined by the LaTeX document class.
 \end_layout
 
 \begin_layout Description

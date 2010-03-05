@@ -31,9 +31,9 @@ Floating::Floating(string const & type, string const & placement,
 		   string const & style, string const & name,
 		   string const & listName, string const & htmlTag,
 		   string const & htmlAttrib, string const & htmlStyle,
-		   bool builtin)
+		   bool needsfloat)
 	: floattype_(type), placement_(placement), ext_(ext), within_(within),
-	  style_(style), name_(name), listname_(listName), builtin_(builtin),
+	  style_(style), name_(name), listname_(listName), needsfloatpkg_(needsfloat),
     html_tag_(htmlTag), html_attrib_(htmlAttrib), html_style_(htmlStyle)
 {}
 

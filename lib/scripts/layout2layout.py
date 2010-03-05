@@ -84,6 +84,9 @@ import os, re, string, sys
 # Incremented to format 23, 13 February 2010 by spitz
 # Added Spellcheck tag.
 
+# Incremented to format 24, 5 March 2010 by rgh
+# Changed LaTeXBuiltin tag to NeedsFloatPkg.
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -91,7 +94,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 23
+currentFormat = 24
 
 
 def usage(prog_name):
@@ -171,6 +174,8 @@ def convert(lines):
     re_TocLevel = re.compile(r'^(\s*)(TocLevel)(\s+)(\S+)', re.IGNORECASE)
     re_I18nPreamble = re.compile(r'^(\s*)I18nPreamble', re.IGNORECASE)
     re_EndI18nPreamble = re.compile(r'^(\s*)EndI18nPreamble', re.IGNORECASE)
+    re_Builtin = re.compile(r'^(\s*)LaTeXBuiltin\s+(\w*)', re.IGNORECASE)
+    re_True = re.compile(r'^\s*(?:true|1)\s*$', re.IGNORECASE)
 
     # counters for sectioning styles (hardcoded in 1.3)
     counters = {"part"          : "\\Roman{part}",
@@ -259,6 +264,19 @@ def convert(lines):
                 i += 1
             continue
 
+        if format == 23:
+          match = re_Builtin.match(lines[i])
+          if match:
+            ws = match.group(1)
+            arg = match.group(2)
+            newarg = ""
+            if re_True.match(arg):
+              newarg = "false"
+            else:
+              newarg = "true"
+            lines[i] = ws + "NeedsFloatPkg " + newarg
+              
+          
         # This just involved new features, not any changes to old ones
         if format >= 14 and format <= 22:
           i += 1
