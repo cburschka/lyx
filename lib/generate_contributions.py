@@ -1112,14 +1112,6 @@ contributers = [
                  "24 December 2007",
                  u"Russian translation of the user interface"),
 
-     contributer(u'Sanda Pavel',
-                 "ps () ucw ! cz",
-                 "GPL",
-                 "Re: czech translation",
-                 "m=115522417204086",
-                 "10 August 2006",
-                 u"Czech translation, support for the LaTeX package hyperref, fullscreen support, lfuns docs/review"),
-
      contributer(u'Bo Peng',
                  "ben.bob () gmail ! com",
                  "GPL",
@@ -1303,6 +1295,14 @@ contributers = [
                  "m=116172457024967",
                  "24 October 2006",
                  u"Hebrew translation"),
+
+     contributer(u'Pavel Sanda',
+                 "ps () ucw ! cz",
+                 "GPL",
+                 "Re: czech translation",
+                 "m=115522417204086",
+                 "10 August 2006",
+                 u"Czech translation, support for the LaTeX package hyperref, fullscreen support, lfuns docs/review"),
 
      contributer(u"Szõke Sándor",
                  "alex () lyx ! hu",
