@@ -246,14 +246,14 @@ bool isValidGlueLength(string const & data, GlueLength * result)
 
 	int  pattern_index = 0;
 	int  table_index = 0;
-	char pattern[20];
+	char pattern[22]; // 20 + 1 for pattern[20], + 1 for '\0'
 
 	number_index = 1;
 	unit_index = 1;  // entries at index 0 are sentinels
 
 	// construct "pattern" from "data"
 	while (!isEndOfData(buffer)) {
-		if (pattern_index > 20)
+		if (pattern_index > (sizeof(pattern) - 2))
 			return false;
 		pattern[pattern_index] = nextToken(buffer);
 		if (pattern[pattern_index] == 'E')

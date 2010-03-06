@@ -66,13 +66,8 @@ GuiMathMatrix::GuiMathMatrix(GuiView & lv)
 
 void GuiMathMatrix::columnsChanged(int)
 {
-	char h_align_str[80] = "c";
 	int const nx = int(columnsSB->value());
-	for (int i = 0; i < nx; ++i)
-		h_align_str[i] = 'c';
-
-	h_align_str[nx] = '\0';
-	halignED->setText(h_align_str);
+	halignED->setText(QString(nx, 'c'));
 }
 
 

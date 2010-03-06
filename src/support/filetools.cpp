@@ -739,8 +739,7 @@ docstring const makeDisplayPath(string const & path, unsigned int threshold)
 bool readLink(FileName const & file, FileName & link)
 {
 #ifdef HAVE_READLINK
-	char linkbuffer[512];
-	// Should be PATH_MAX but that needs autconf support
+	char linkbuffer[PATH_MAX + 1];
 	string const encoded = file.toFilesystemEncoding();
 	int const nRead = ::readlink(encoded.c_str(),
 				     linkbuffer, sizeof(linkbuffer) - 1);

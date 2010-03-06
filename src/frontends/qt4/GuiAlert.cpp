@@ -108,8 +108,9 @@ static docstring const formatted(docstring const & text)
 void noAppDialog(QString const & title, QString const & msg, QMessageBox::Icon mode)
 {
 	int argc = 1;
-	char * argv[1];
-	QApplication app(argc, argv);
+	const char *argv[] = { "lyx", 0 };
+
+	QApplication app(argc, (char**)argv);
 	switch (mode)
 	{
 		case QMessageBox::Information: QMessageBox::information(0, title, msg); break;
