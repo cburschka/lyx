@@ -1280,7 +1280,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 				incfile = mangled;
 			// \includeonly doesn't want an extension 
 			incfile = changeExtension(incfile, string());
-			incfile = latex_path(incfile);
+			incfile = support::latex_path(incfile);
 			if (!incfile.empty()) {
 				if (!first)
 					os << ",";

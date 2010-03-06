@@ -1308,7 +1308,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		if (!original_path.empty()) {
 			// FIXME UNICODE
 			// We don't know the encoding of inputpath
-			docstring const inputpath = from_utf8(latex_path(original_path));
+			docstring const inputpath = from_utf8(support::latex_path(original_path));
 			docstring uncodable_glyphs;
 			Encoding const * const enc = runparams.encoding;
 			if (enc) {
