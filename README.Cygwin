@@ -12,8 +12,8 @@ To build lyx, you will need to install the following cygwin packages
 
     aspell        gzip             libiconv           libQtGui4
     aspell-dev    gettext          libpng             libQtGui4-devel
-    gcc           gettext-devel    libQtCore4         python
-    gcc4          libintl8         libQtCore4-devel
+    gcc           gettext-devel    libQtCore4         pkg-config
+    gcc4          libintl8         libQtCore4-devel   python
 
 Two building systems can be used to build lyx on cygwin: the traditional
 autotools (autoconf, automake, make etc), and a scons build system.
