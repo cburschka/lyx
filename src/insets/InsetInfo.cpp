@@ -199,11 +199,11 @@ bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MOUSE_DOUBLE:
 	case LFUN_MOUSE_TRIPLE:
 	case LFUN_COPY:
+	case LFUN_INSET_SETTINGS:
 		return InsetCollapsable::getStatus(cur, cmd, flag);
 
 	case LFUN_INSET_DIALOG_UPDATE:
 	case LFUN_INSET_MODIFY:
-	case LFUN_INSET_SETTINGS:
 		flag.setEnabled(true);
 		return true;
 
