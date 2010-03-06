@@ -374,6 +374,7 @@ src_support_extra_src_files = Split('''
 src_support_extra_files = Split('''
     Makefile.am
     pch.h
+    mythes/license.readme
 ''')
 
 
