@@ -80,15 +80,6 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(borderSet_clicked()));
 	connect(borderUnsetPB, SIGNAL(clicked()), 
 		this, SLOT(borderUnset_clicked()));
-	connect(longTabularCB, SIGNAL(toggled(bool)),
-		longtableGB, SLOT(setEnabled(bool)));
-	connect(longTabularCB, SIGNAL(toggled(bool)),
-		newpageCB, SLOT(setEnabled(bool)));
-	connect(longTabularCB, SIGNAL(toggled(bool)),
-		alignmentGB, SLOT(setEnabled(bool)));
-	// longtables cannot have a vertical alignment
-	connect(longTabularCB, SIGNAL(toggled(bool)),
-		TableAlignCB, SLOT(setDisabled(bool)));
 	connect(hAlignCB, SIGNAL(activated(int)),
 		this, SLOT(checkEnabled()));
 	connect(vAlignCB, SIGNAL(activated(int)),
@@ -167,12 +158,82 @@ GuiTabular::GuiTabular(QWidget * parent)
 
 void GuiTabular::checkEnabled()
 {
+	hAlignCB->setEnabled(true);
+	vAlignCB->setEnabled(!multirowCB->isChecked() 
+		&& !widgetsToLength(widthED, widthUnitCB).empty());
+
 	topspaceED->setEnabled(topspaceCO->currentIndex() == 2);
 	topspaceUnit->setEnabled(topspaceCO->currentIndex() == 2);
 	bottomspaceED->setEnabled(bottomspaceCO->currentIndex() == 2);
 	bottomspaceUnit->setEnabled(bottomspaceCO->currentIndex() == 2);
 	interlinespaceED->setEnabled(interlinespaceCO->currentIndex() == 2);
 	interlinespaceUnit->setEnabled(interlinespaceCO->currentIndex() == 2);
+
+	bool const longtabular = longTabularCB->isChecked();
+	longtableGB->setEnabled(true);
+	newpageCB->setEnabled(longtabular);
+	alignmentGB->setEnabled(longtabular);
+	// longtables cannot have a vertical alignment
+	TableAlignCB->setDisabled(longtabular);
+
+	// FIXME: This Dialog is really horrible, disabling/enabling a checkbox
+	// depending on the cursor position is very very unintuitive...
+	// We need some edit boxes to show which rows are header/footer/etc
+	// without having to move the cursor first.
+	headerStatusCB->setEnabled(longtabular);
+	headerBorderAboveCB->setEnabled(longtabular
+		&& headerStatusCB->isChecked());
+	headerBorderBelowCB->setEnabled(longtabular
+		&& headerStatusCB->isChecked());
+
+	// first header can only be suppressed when there is a header
+	// FIXME: old code also checked for
+	//  tabular.haveLTHead() && !tabular.haveLTFirstHead());
+	firstheaderNoContentsCB->setEnabled(longtabular);
+	// check if setting a first header is allowed
+	// additionally check firstheaderNoContentsCB because when this is
+	// the case a first header makes no sense
+	// FIXME: verify that some previous row was not set.
+	firstheaderStatusCB->setEnabled(longtabular
+		&& !firstheaderNoContentsCB->isChecked());
+	firstheaderBorderAboveCB->setEnabled(longtabular
+		&& firstheaderStatusCB->isChecked());
+	firstheaderBorderBelowCB->setEnabled(longtabular
+		&& firstheaderStatusCB->isChecked());
+
+	footerStatusCB->setEnabled(longtabular);
+	footerBorderAboveCB->setEnabled(longtabular
+		&& footerBorderAboveCB->isChecked());
+	footerBorderBelowCB->setEnabled(longtabular
+		&& footerBorderAboveCB->isChecked());
+
+	// last footer can only be suppressed when there is a footer
+	// FIXME: old code also checked for
+	//   tabular.haveLTFoot() && !tabular.haveLTLastFoot());
+	lastfooterNoContentsCB->setEnabled(longtabular);
+	// check if setting a last footer is allowed
+	// additionally check lastfooterNoContentsCB because when this is
+	// the case a last footer makes no sense
+	lastfooterStatusCB->setEnabled(longtabular
+		&& !lastfooterNoContentsCB->isChecked());
+	lastfooterBorderAboveCB->setEnabled(longtabular
+		&& lastfooterBorderAboveCB->isChecked());
+	lastfooterBorderBelowCB->setEnabled(longtabular
+		&& lastfooterBorderAboveCB->isChecked());
+
+	// FIXME: verify if previous row doesn't have a caption already.
+	captionStatusCB->setEnabled(longtabular);
+
+	// When a row is set as longtable caption, it must not be allowed
+	// to unset that this row is a multicolumn.
+	// FIXME: old code also checked for:
+	//    funcEnabled(Tabular::MULTICOLUMN)
+	multicolumnCB->setEnabled(longtabular);
+
+	// FIXME: old code also checked for:
+	//    funcEnabled(Tabular::MULTICOLUMN)
+	multirowCB->setEnabled(longtabular);
+
 	changed();
 }
 
@@ -205,14 +266,6 @@ static void setParam(string & param_str, Tabular::Feature f, string const & arg 
 {
 	param_str += ' ';
 	param_str += featureAsString(f) + ' ' + arg;
-}
-
-
-// to get the status of the longtable row settings
-static bool funcEnabled(Tabular::Feature f)
-{
-	return getStatus(
-		FuncRequest(LFUN_INSET_MODIFY, featureAsString(f))).enabled();
 }
 
 
@@ -683,10 +736,6 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 		valign = 0;
 	vAlignCB->setCurrentIndex(valign);
 
-	hAlignCB->setEnabled(true);
-	if (!multirow && !pwidth.zero())
-	vAlignCB->setEnabled(true);
-
 	int tableValign = 1;
 	switch (tabular.tabular_valignment) {
 	case Tabular::LYX_VALIGN_TOP:
@@ -720,7 +769,6 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 		lastfooterBorderBelowCB->setChecked(false);
 		lastfooterNoContentsCB->setChecked(false);
 		newpageCB->setChecked(false);
-		newpageCB->setEnabled(false);
 		captionStatusCB->blockSignals(true);
 		captionStatusCB->setChecked(false);
 		captionStatusCB->blockSignals(false);
@@ -747,41 +795,6 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	captionStatusCB->setChecked(tabular.ltCaption(row));
 	captionStatusCB->blockSignals(false);
 
-	// FIXME: shouldn't this be handled by GuiDialog?
-	// FIXME: Some of them should be handled directly in TabularUI.ui
-	firstheaderBorderAboveCB->setEnabled(
-		funcEnabled(Tabular::SET_LTFIRSTHEAD));
-	firstheaderBorderBelowCB->setEnabled(
-		funcEnabled(Tabular::SET_LTFIRSTHEAD));
-	// first header can only be suppressed when there is a header
-	firstheaderNoContentsCB->setEnabled(tabular.haveLTHead()
-		&& !tabular.haveLTFirstHead());
-
-	//firstheaderStatusCB->setEnabled(
-	//	!firstheaderNoContentsCB->isChecked());
-	headerBorderAboveCB->setEnabled(funcEnabled(Tabular::SET_LTHEAD));
-	headerBorderBelowCB->setEnabled(funcEnabled(Tabular::SET_LTHEAD));
-	headerStatusCB->setEnabled(funcEnabled(Tabular::SET_LTHEAD));
-
-	footerBorderAboveCB->setEnabled(funcEnabled(Tabular::SET_LTFOOT));
-	footerBorderBelowCB->setEnabled(funcEnabled(Tabular::SET_LTFOOT));
-	footerStatusCB->setEnabled(funcEnabled(Tabular::SET_LTFOOT));
-
-	lastfooterBorderAboveCB->setEnabled(
-		funcEnabled(Tabular::SET_LTLASTFOOT));
-	lastfooterBorderBelowCB->setEnabled(
-		funcEnabled(Tabular::SET_LTLASTFOOT));
-	// last footer can only be suppressed when there is a footer
-	lastfooterNoContentsCB->setEnabled(tabular.haveLTFoot()
-		&& !tabular.haveLTLastFoot());
-
-	captionStatusCB->setEnabled(
-		funcEnabled(Tabular::TOGGLE_LTCAPTION));
-	// When a row is set as longtable caption, it must not be allowed
-	// to unset that this row is a multicolumn.
-	multicolumnCB->setEnabled(funcEnabled(Tabular::MULTICOLUMN));
-	multirowCB->setEnabled(funcEnabled(Tabular::MULTIROW));
-
 	Tabular::ltType ltt;
 	bool use_empty;
 	bool row_set = tabular.getRowOfLTHead(row, ltt);
@@ -793,33 +806,18 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	} else {
 		headerBorderAboveCB->setChecked(false);
 		headerBorderBelowCB->setChecked(false);
-		headerBorderAboveCB->setEnabled(false);
-		headerBorderBelowCB->setEnabled(false);
 		firstheaderNoContentsCB->setChecked(false);
-		firstheaderNoContentsCB->setEnabled(false);
 		use_empty = false;
 	}
 
 	row_set = tabular.getRowOfLTFirstHead(row, ltt);
-	// check if setting a first header is allowed
-	// additionally check firstheaderNoContentsCB because when this is
-	// the case a first header makes no sense
-	firstheaderStatusCB->setEnabled(
-		funcEnabled(Tabular::SET_LTFIRSTHEAD)
-		&& !firstheaderNoContentsCB->isChecked());
 	firstheaderStatusCB->setChecked(row_set);
 	if (ltt.set && (!ltt.empty || !use_empty)) {
 		firstheaderBorderAboveCB->setChecked(ltt.topDL);
 		firstheaderBorderBelowCB->setChecked(ltt.bottomDL);
 	} else {
-		firstheaderBorderAboveCB->setEnabled(false);
-		firstheaderBorderBelowCB->setEnabled(false);
 		firstheaderBorderAboveCB->setChecked(false);
 		firstheaderBorderBelowCB->setChecked(false);
-		if (use_empty) {
-			if (ltt.empty)
-				firstheaderStatusCB->setEnabled(false);
-		}
 	}
 
 	row_set = tabular.getRowOfLTFoot(row, ltt);
@@ -831,33 +829,18 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	} else {
 		footerBorderAboveCB->setChecked(false);
 		footerBorderBelowCB->setChecked(false);
-		footerBorderAboveCB->setEnabled(false);
-		footerBorderBelowCB->setEnabled(false);
 		lastfooterNoContentsCB->setChecked(false);
-		lastfooterNoContentsCB->setEnabled(false);
 		use_empty = false;
 	}
 
 	row_set = tabular.getRowOfLTLastFoot(row, ltt);
-	// check if setting a last footer is allowed
-	// additionally check lastfooterNoContentsCB because when this is
-	// the case a last footer makes no sense
-	lastfooterStatusCB->setEnabled(
-		funcEnabled(Tabular::SET_LTLASTFOOT)
-		&& !lastfooterNoContentsCB->isChecked());
 	lastfooterStatusCB->setChecked(row_set);
 	if (ltt.set && (!ltt.empty || !use_empty)) {
 		lastfooterBorderAboveCB->setChecked(ltt.topDL);
 		lastfooterBorderBelowCB->setChecked(ltt.bottomDL);
 	} else {
-		lastfooterBorderAboveCB->setEnabled(false);
-		lastfooterBorderBelowCB->setEnabled(false);
 		lastfooterBorderAboveCB->setChecked(false);
 		lastfooterBorderBelowCB->setChecked(false);
-		if (use_empty) {
-			if (ltt.empty)
-				lastfooterStatusCB->setEnabled(false);
-		}
 	}
 	newpageCB->setChecked(tabular.getLTNewPage(row));
 }
