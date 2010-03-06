@@ -1,7 +1,7 @@
-Compiling LyX 1.6 for Win32
+Compiling LyX 2.0 for Win32
 ===========================
 
-LyX 1.6 can be compiled with Microsoft Visual C++ 2008 (recommended) or MinGW.
+LyX 2.0 can be compiled with Microsoft Visual C++ 2008 (recommended) or MinGW.
 Note that you should not have spaces in the path of the source code.
 
 Compiling with MSVC 2008
@@ -80,7 +80,7 @@ Compiling with MinGW
 3	install python and scons as instructed above. Set $path for python
 	   to make your life a bit easier.
 
-4	Check out lyx svn to c:\lyx-devel\lyx-1.6.x
+4	Check out lyx svn to c:\lyx-devel\lyx-2.0.x
 
 5	Download zlib binaries and developer files (zlib-1.2.3-bin.zip and
 	   zlib-1.2.3-lib.zip) from http://gnuwin32.sourceforge.net/packages/zlib.htm
@@ -89,13 +89,13 @@ Compiling with MinGW
 	   unpack all of them to the same directory c:\lyx-devel\mingw_deps.
 
 6	start a command window, run commands:
-	   $ cd c:\lyx-devel\lyx-1.6.x
+	   $ cd c:\lyx-devel\lyx-2.0.x
 	   $ scons -f development\scons\SConstruct \
 	       extra_lib_path=..\mingw_deps\lib  \
 		   extra_inc_path=..\mingw_deps\include \
 		   extra_bin_path=..\mingw_deps\bin \
 		   qt_dir=c:\qt \
-		   DESTDIR=..\lyx-1.6-install \
+		   DESTDIR=..\lyx-2.0-install \
 		   install
 
 

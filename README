@@ -30,8 +30,8 @@ What do I need to run LyX?
     * Windows 2000 or newer
     * Mac OS 10.2 or newer
 
-    A decent LaTeX2e installation (e.g. teTeX for unix) not older
-       than 1995/12/01.
+    A decent LaTeX2e installation (e.g. TeX Live for Linux, MikTeX for
+       Windows).
     Python 2.3 or later to convert old LyX files and for helper scripts
     (note that you need at least Python 2.3.4 for exporting LyX files
     to a pre-unicode format, as previous versions are affected by a bug
@@ -65,7 +65,7 @@ How does the LyX version scheme work?
     kernel --the team is too small to afford that-- but rather to
     include all the simple and safe bug fixes. This is so that the
     maintenance burden on us is not too high, and so that system
-    administrators can install new releases without fear.  Experience
+    administrators can install new releases without fear. Experience
     shows that these releases will contain a few new features, and
     that the bulk of the patches will be documentation updates.
 
@@ -91,7 +91,8 @@ What do I need to compile LyX from the source distribution?
       gcc/g++, but some others work also. As of LyX 1.6.0, you need at
       least gcc 3.2.x.
 
-    * The Qt4 library, version 4.2.0 or newer.
+    * The Qt4 library, at least version 4.2.0. For all features
+      newer versions (e.g. Qt 4.5) are recommended.
 
     Read the file "INSTALL" for more information on compiling.
 
@@ -110,14 +111,11 @@ Okay, I've installed LyX. What now?
 Does LyX have support for non-English speakers/writers/readers?
 
     Yes. LyX supports writing in many languages, including
-    right-to-left languages like Arabic or Hebrew. There is a port
-    of LyX named CJK-LyX which adds support for Chinese, Korean
-    and Japanese (http://cellular.phys.pusan.ac.kr/cjk.html)
-    [This support is being merged in lyx-1.5]
+    right-to-left languages like Arabic or Hebrew.
 
-    Menus and error messages have been translated to 17 languages.
+    Menus and error messages have been translated to many languages.
     For the status of the different translations, see
-    http://www.lyx.org/devel/i18n.php
+    http://www.lyx.org/I18n
 
     Keymaps can ease typing in many languages.
 
@@ -147,7 +145,7 @@ How do I submit a bug report?
     You'll find detailed info on submitting bug reports there.
 
     If you can't do that, send details to the LyX Developers' mailing
-    list, or use the LyX bug tracker at http://bugzilla.lyx.org/.
+    list, or use the LyX bug tracker at http://www.lyx.org/trac/.
     Don't forget to mention which version you are having problems with!
 
 How can I participate in the development of LyX?
