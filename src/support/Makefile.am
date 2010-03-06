@@ -12,7 +12,7 @@ BUILT_SOURCES = $(PCH_FILE)
 #########################  Qt stuff  #############################
 #
 
-MOCHEADER = SignalSlotPrivate.h SystemcallPrivate.h
+MOCHEADER = SystemcallPrivate.h
 
 MOCEDFILES = $(MOCHEADER:%.h=moc_%.cpp)
 
@@ -85,10 +85,6 @@ liblyxsupport_a_SOURCES = \
 	strfwd.h \
 	Systemcall.cpp \
 	Systemcall.h \
-	SignalSlot.cpp \
-	SignalSlot.h \
-	SignalSlotPrivate.cpp \
-	SignalSlotPrivate.h \
 	SystemcallPrivate.h \
 	textutils.h \
 	Translator.h \
