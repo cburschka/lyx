@@ -1407,8 +1407,17 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 		istringstream is(to_utf8(cmd.argument()));
 		string s;
 		is >> s;
-		if (s != "tabular")
-			return InsetMathNest::getStatus(cur, cmd, status);
+		if (s != "tabular") {
+			// We only now about table actions here.
+			break;
+		}
+		if (&cur.inset() != this) {
+			// Table actions requires that the cursor is _inside_ the
+			// table.
+			status.setEnabled(false);
+			status.message(from_utf8(N_("Cursor not in table")));
+			return true;
+		}
 		is >> s;
 		if (nrows() <= 1 && (s == "delete-row" || s == "swap-row")) {
 			status.setEnabled(false);
@@ -1499,8 +1508,9 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	default:
-		return InsetMathNest::getStatus(cur, cmd, status);
+		break;
 	}
+	return InsetMathNest::getStatus(cur, cmd, status);
 }
 
 
