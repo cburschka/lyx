@@ -76,6 +76,12 @@ The following new LyX functions have been introduced:
 
 - LFUN_MATH_AMS_MATRIX ("math-ams-matrix").
 
+- LFUN_VC_COMPARE ("vc-compare").
+
+- LFUN_SPELLING_ADD ("spelling-add").
+
+- LFUN_SPELLING_IGNORE ("spelling-ignore").
+
 
 The following LyX functions have been removed:
 
@@ -89,6 +95,9 @@ The following LyX functions have been removed:
     notes-mutate <SOURCE> <TARGET>
   with the more general function inset-forall
     inset-forall Note:<SOURCE> inset-modify note Note <TARGET>
+
+- LFUN_TABULAR_FEATURE ("tabular-feature"): use "inset-modify" instead.
+
 
 The following LyX functions have been changed:
 
