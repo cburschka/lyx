@@ -183,7 +183,7 @@ def main(argv):
         # The data is input to legacy_conversion in as similar
         # as possible a manner to that input to the code used in
         # LyX 1.3.x.
-        vec = [ argv[0], argv[2], argv[3], argv[1], argv[4], argv[5], argv[6] ]
+        vec = [ argv[0], argv[2], argv[3], argv[1], argv[4], argv[5], latex ]
         return legacy_conversion(vec)
 
     pngtopnm = ""
