@@ -138,6 +138,7 @@ Menuset
 		OptItem "Box Settings...|x" "inset-settings box"
 		OptItem "Index Entry Settings...|y" "inset-settings index"
 		OptItem "Index Settings...|x" "inset-settings index_print"
+		OptItem "Info Settings...|n" "inset-settings info"
 		OptItem "Listings Settings...|g" "inset-settings listings"
 # Hey, guess what's broken ? Surprise surprise, it's tabular stuff
 # This is in the Table submenu instead for now.
