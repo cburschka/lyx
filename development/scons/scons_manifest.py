@@ -310,8 +310,6 @@ src_support_header_files = Split('''
     ProgressInterface.h
     qstring_helpers.h
     RandomAccessList.h
-    SignalSlot.h
-    SignalSlotPrivate.h
     socktools.h
     Systemcall.h
     SystemcallPrivate.h
@@ -346,8 +344,6 @@ src_support_files = Split('''
     Package.cpp
     Path.cpp
     qstring_helpers.cpp
-    SignalSlot.cpp
-    SignalSlotPrivate.cpp
     socktools.cpp
     Systemcall.cpp
     Timeout.cpp
