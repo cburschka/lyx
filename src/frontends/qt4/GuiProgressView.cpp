@@ -190,7 +190,7 @@ void GuiProgressView::appendText(QString const & text)
 {
 	if (text.isEmpty() || !widget_->sbarCB->isChecked())
 		return;
-	QString str = QTime::currentTime().toString();
+	QString str = GuiProgress::currentTime();
 	str += ": " + text;
 	if (!text.endsWith("\n"))
 		str += "\n";

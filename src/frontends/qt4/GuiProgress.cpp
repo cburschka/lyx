@@ -61,17 +61,21 @@ GuiProgress::GuiProgress()
 }
 
 
+QString GuiProgress::currentTime()
+{
+	return QTime::currentTime().toString("hh:mm:ss:zzz") + "ms";
+}
+
+
 void GuiProgress::doProcessStarted(QString const & cmd)
 {
-	QString time = QTime::currentTime().toString();
-	appendText(time + ": <" + cmd + "> started");
+	appendText(currentTime() + ": <" + cmd + "> started");
 }
 
 
 void GuiProgress::doProcessFinished(QString const & cmd)
 {
-	QString time = QTime::currentTime().toString();
-	appendText(time + ": <" + cmd + "> done");
+	appendText(currentTime() + ": <" + cmd + "> done");
 }
 
 

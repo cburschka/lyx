@@ -41,6 +41,8 @@ public:
 	void lyxerrConnect();
 	void lyxerrDisconnect();
 	void lyxerrFlush();
+        
+        static QString currentTime();
 
 Q_SIGNALS:
 
@@ -77,7 +79,7 @@ private Q_SLOTS:
 
 private:
 	void appendText(QString const &);
-	std::ostringstream lyxerr_stream_;
+	std::ostringstream lyxerr_stream_;      
 };
 
 
