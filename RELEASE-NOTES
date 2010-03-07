@@ -108,6 +108,52 @@ The following LyX functions have been changed:
 - LFUN_WORD_REPLACE ("word-replace"): The replacement and searched strings
   arguments have been inverted in order to allow the replacement of the word
   at current cursor position, even if it is not selected.
+  
+  
+New external programs and libaries:
+-----------------------------------
+
+LyX 2.0 introduces support for some new external helper programs/libraries,
+while the support for some existing programs has been dropped. This
+particularly applies to spell checking and the thesaurus.
+
+1.) SPELLCHECKING:
+
+* Direct support for ispell and hspell has been dropped. However, ispell
+  and hspell are still accessible via the enchant wrapper (see below).
+
+* Support for the aspell command line program has been dropped. Note that
+  the aspell library (aspell 0.60.x) is still supported.
+  
+* Next to aspell (library), LyX now also supports hunspell (the spell
+  checker used by OpenOffice and Firefox) and enchant, a wrapper that
+  provides automatic access to many spell checking libraries (ispell,
+  aspell, hspell, hunspell, etc.).
+
+LyX 2.0 is configured for any and multiple of these three possibilities,
+given that they are installed on the machine where LyX is configured on.
+The actual spell checker can be selected in Tools > Preferences.
+Packagers are advised to pre-select whatever is most common on their
+platform/distribution.
+
+2.) THESAURUS:
+
+* Support for the aiksaurus library has been dropped in favour of the
+  MyThes thesaurus library (the thesaurus library used by OpenOffice).
+  
+* LyX ships the MyThes library itself, so contrary to LyX 1.6.x, no
+  extra thesaurus library needs to be installed. However, LyX does not
+  ship any thesaurus dictionary.
+
+* The OpenOffice thesaurus dictionaries can be used, but the path to those
+  dictionary needs to be set in Tools > Preferences. Please refer to the
+  UserGuide, sec. 6.13, for further instructions.
+
+Packagers are advised to preset the thesaurus for their distribution/
+platform. Packagers of installation bundles (on Windows and the Mac)
+are advised to provide automatic installation of thesaurus disctionaries
+in the installation process (analoguous to the spellchecker installation).
+
 
 Known issues in version 2.0.0
 -----------------------------
