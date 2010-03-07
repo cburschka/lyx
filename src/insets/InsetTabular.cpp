@@ -4448,8 +4448,6 @@ void InsetTabular::cursorPos(BufferView const & bv,
 
 	// y offset	correction
 	for (int r = 0;	r <= row; ++r) {
-		if (tabular.isPartOfMultiRow(r, col))
-			continue;
 		if (r != 0) {
 			y += tabular.rowAscent(r);
 			y += tabular.interRowSpace(r);
@@ -4480,7 +4478,7 @@ int InsetTabular::dist(BufferView & bv, idx_type const cell, int x, int y) const
 	row_type const row = tabular.cellRow(cell);
 	int const ybeg = o.y_ - tabular.rowAscent(row)
 		- tabular.interRowSpace(row);
-	int const yend = o.y_ + tabular.rowDescent(row);
+	int const yend = ybeg + tabular.rowHeight(cell);
 
 	if (x < xbeg)
 		xx = xbeg - x;
@@ -4599,8 +4597,10 @@ void InsetTabular::moveNextCell(Cursor & cur, EntryDirection entry_from)
 			return;
 		if (cur.idx() == tabular.getLastCellInRow(row))
 			cur.idx() = tabular.cellIndex(row + 1, 0);
-		else
-			cur.idx() = tabular.cellIndex(row, col + 1);
+		else {
+			col_type const colnextcell = col + tabular.columnSpan(cur.idx());
+			cur.idx() = tabular.cellIndex(row, colnextcell);
+		}
 	}
 
 	cur.boundary(false);
