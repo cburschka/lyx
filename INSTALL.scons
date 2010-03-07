@@ -256,21 +256,15 @@ extra_inc_path etc is needed.
 4. Windows/cygwin
 =================
 
-LyX should be easy to compile, but you must use the most recent cygwin
-dll (version 1.5.20-1 as of July 2006) because qt library in older
-cygwin distribution does not work with previous versions due to broken
-threading support.
-
 To build lyx for cygwin, you should
 
   * install (using the cygwin setup program) at least the following
     packages and all other packages pulled in by dependencies:
 
-    aspell        gzip       libiconv     qt4-bin
-    aspell-dev    jpeg       libpng       qt4-devel
-    gcc           libintl    libpng2
-    gettext       libintl1   jpeg
-    gettext-devel libintl2   python
+    aspell        gzip             libiconv           libQtGui4
+    aspell-dev    gettext          libpng             libQtGui4-devel
+    gcc           gettext-devel    libQtCore4         pkg-config
+    gcc4          libintl8         libQtCore4-devel   python
 
   * install aiksaurus (http://aiksaurus.sourceforge.net/, optional):
     There is no cygwin package for aiksaurus, so you should build it from
