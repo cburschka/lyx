@@ -97,8 +97,10 @@ What's new
 - Fix a crash when opening an emergency file which is not a
   valid LyX file (bug 6491).
 
-- Fix crash when viewing files that contain math macros as PDF
+- Fix a crash when viewing files that contain math macros as PDF
   (bug 6388).
+
+- Fix a crash when a document includes itself (bug 6503).
 
 - Export the image when generating a preview, after an image
   reload (bug 6356).

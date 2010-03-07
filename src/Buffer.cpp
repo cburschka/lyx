@@ -1846,12 +1846,17 @@ std::vector<Buffer *> Buffer::getChildren() const
 	Impl::BufferPositionMap::iterator end = d->children_positions.end();
 	for (; it != end; ++it) {
 		Buffer * child = const_cast<Buffer *>(it->first);
-		clist.push_back(child);
+		// ignore recursive includes
+		if (child != this)
+			clist.push_back(child);
 		// there might be grandchildren
 		std::vector<Buffer *> glist = child->getChildren();
 		for (vector<Buffer *>::const_iterator git = glist.begin();
-		     git != glist.end(); ++git)
-			clist.push_back(*git);
+		     git != glist.end(); ++git) {
+			// ignore recursive includes
+			if (*git != this)
+				clist.push_back(*git);
+		}
 	}
 	return clist;
 }

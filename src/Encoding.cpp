@@ -554,11 +554,10 @@ void Encodings::initUnicodeMath(Buffer const & buffer, bool clear_sets)
 		it->initUnicodeMath();
 
 	// Check children
-	BufferList::iterator bit = theBufferList().begin();
-	BufferList::iterator const bend = theBufferList().end();
-	for (; bit != bend; ++bit)
-		if (buffer.isChild(*bit))
-			initUnicodeMath(**bit, false);
+	std::vector<Buffer *> clist = buffer.getChildren();
+	for (vector<Buffer *>::const_iterator cit = clist.begin();
+	     cit != clist.end(); ++cit) 
+		initUnicodeMath(**cit, false);
 #endif
 }
 
