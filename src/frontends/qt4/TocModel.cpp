@@ -359,8 +359,8 @@ void TocModels::reset(BufferView const * bv)
 		names_->setData(index, gui_name, Qt::DisplayRole);
 		names_->setData(index, type, Qt::UserRole);
 	}
-	names_->reset();
 	names_->blockSignals(false);
+	names_->reset();
 }
 
 
