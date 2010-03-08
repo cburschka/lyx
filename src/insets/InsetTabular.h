@@ -910,8 +910,6 @@ private:
 	///
 	void resetPos(Cursor & cur) const;
 	///
-	void removeTabularRow();
-	///
 	bool copySelection(Cursor & cur);
 	///
 	bool pasteClipboard(Cursor & cur);

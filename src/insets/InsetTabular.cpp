@@ -893,19 +893,19 @@ int Tabular::columnWidth(idx_type cell) const
 
 int Tabular::rowHeight(idx_type cell) const
 {
-       row_type const span = rowSpan(cell);
-       row_type const row = cellRow(cell);
-       int h = rowAscent(row) + rowDescent(row);
+	row_type const span = rowSpan(cell);
+	row_type const row = cellRow(cell);
+	int h = rowAscent(row) + rowDescent(row);
 
-       for(row_type r = row; r < row + span ; ++r) {
-               if (r > row) {
-                       h += rowAscent(r);
-                       h += interRowSpace(r);
-               }
-               if (r < row + span - 1)
-                       h += rowDescent(r);
-       }
-       return h;
+	for(row_type r = row; r < row + span ; ++r) {
+		if (r > row) {
+			h += rowAscent(r);
+			h += interRowSpace(r);
+		}
+		if (r < row + span - 1)
+			h += rowDescent(r);
+	}
+	return h;
 }
 
 
