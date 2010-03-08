@@ -402,12 +402,11 @@ Buffer * InsetInclude::getChildBuffer() const
 
 Buffer * InsetInclude::loadIfNeeded() const
 {
-	// This is for background export and preview. We don't want to load the
-	// cloned child document again.
-	if (child_buffer_ && theBufferList().isLoaded(child_buffer_)
-		  && child_buffer_->isClone())
+	// This is for background export and preview. We don't even want to
+	// try to load the cloned child document again.
+	if (buffer().isClone())
 		return child_buffer_;
-
+	
 	// Don't try to load it again if we failed before.
 	if (failedtoload_ || isVerbatim(params()) || isListings(params()))
 		return 0;
@@ -415,10 +414,10 @@ Buffer * InsetInclude::loadIfNeeded() const
 	FileName const included_file = includedFilename(buffer(), params());
 	// Use cached Buffer if possible.
 	if (child_buffer_ != 0) {
-		if (theBufferList().isLoaded(child_buffer_) 
-				// additional sanity check: make sure the Buffer really is
-				// associated with the file we want.
-				&& child_buffer_ == theBufferList().getBuffer(included_file))
+		if (theBufferList().isLoaded(child_buffer_)
+    		// additional sanity check: make sure the Buffer really is
+		    // associated with the file we want.
+		    && child_buffer_ == theBufferList().getBuffer(included_file))
 			return child_buffer_;
 		// Buffer vanished, so invalidate cache and try to reload.
 		child_buffer_ = 0;
