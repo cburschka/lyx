@@ -198,7 +198,7 @@ Buffer const & Inset::buffer() const
 }
 
 
-bool Inset::isBufferValid() const
+bool Inset::isBufferLoaded() const
 {
 	return buffer_ && theBufferList().isLoaded(buffer_);
 }

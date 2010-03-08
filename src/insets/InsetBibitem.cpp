@@ -62,7 +62,7 @@ InsetBibitem::InsetBibitem(Buffer * buf, InsetCommandParams const & p)
 
 InsetBibitem::~InsetBibitem()
 {
-	if (isBufferValid())
+	if (isBufferLoaded())
 		buffer_->invalidateBibinfoCache();
 }
 

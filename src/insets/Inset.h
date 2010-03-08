@@ -107,9 +107,10 @@ public:
 	/// retrieve associated Buffer
 	virtual Buffer & buffer();
 	virtual Buffer const & buffer() const;
-	/// This checks whether the Buffer * actually points to an open 
-	/// Buffer. It might not if that Buffer has been closed.
-	bool isBufferValid() const;
+	/// Returns true if buffer_ actually points to a Buffer that has
+	/// been loaded into LyX and is still open. Note that this will
+	/// always return false for cloned Buffers. 
+	bool isBufferLoaded() const;
 
 	/// initialize view for this inset.
 	/**
