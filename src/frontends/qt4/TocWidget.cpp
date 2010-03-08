@@ -440,6 +440,9 @@ void TocWidget::updateView()
 
 void TocWidget::filterContents()
 {
+	if (!tocTV->model())
+		return;
+
 	QModelIndexList indices = tocTV->model()->match(
 		tocTV->model()->index(0, 0),
 		Qt::DisplayRole, "*", -1,
