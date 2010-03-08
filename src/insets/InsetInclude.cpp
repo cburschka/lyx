@@ -679,9 +679,7 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const &rp) const
 	// We don't (yet) know how to Input or Include non-LyX files.
 	// (If we wanted to get really arcane, we could run some tex2html
 	// converter on the included file. But that's just masochistic.)
-	string const parent_filename = buffer().absFileName();
-	FileName const included_file = 
-		makeAbsPath(to_utf8(params()["filename"]), onlyPath(parent_filename));
+	FileName const included_file = includedFilename(buffer());
 	if (!isLyXFilename(included_file.absFilename())) {
 		frontend::Alert::warning(_("Unsupported Inclusion"),
 					 bformat(_("LyX does not know how to include non-LyX files when "
