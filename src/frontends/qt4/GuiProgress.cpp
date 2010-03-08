@@ -93,7 +93,7 @@ void GuiProgress::doAppendError(QString const & msg)
 
 void GuiProgress::doClearMessages()
 {
-	Q_EMIT clearMessageText();
+	clearMessageText();
 }
 
 
@@ -125,7 +125,7 @@ GuiProgress::~GuiProgress()
 void GuiProgress::appendText(QString const & text)
 {
 	if (!text.isEmpty())
-		Q_EMIT updateStatusBarMessage(text);
+		updateStatusBarMessage(text);
 }
 
 
