@@ -471,7 +471,7 @@ static docstring latexString(InsetMathHull const & inset)
 	// first time as a whole, and the second time only the inner math.
 	// In this last case inset.buffer() would be invalid.
 	static Encoding const * encoding = 0;
-	if (inset.isBufferLoaded())
+	if (inset.isBufferValid())
 		encoding = &(inset.buffer().params().encoding());
 	WriteStream wi(ls, false, true, WriteStream::wsPreview, encoding);
 	inset.write(wi);

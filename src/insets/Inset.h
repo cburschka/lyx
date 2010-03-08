@@ -109,8 +109,11 @@ public:
 	virtual Buffer const & buffer() const;
 	/// Returns true if buffer_ actually points to a Buffer that has
 	/// been loaded into LyX and is still open. Note that this will
-	/// always return false for cloned Buffers. 
+	/// always return false for cloned Buffers. If you want to allow
+	/// for the case of cloned Buffers, use isBufferValid().
 	bool isBufferLoaded() const;
+	/// Returns true if this is a loaded buffer or a cloned buffer.
+	bool isBufferValid() const;
 
 	/// initialize view for this inset.
 	/**

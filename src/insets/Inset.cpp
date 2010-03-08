@@ -204,6 +204,13 @@ bool Inset::isBufferLoaded() const
 }
 
 
+bool Inset::isBufferValid() const
+{
+	return buffer_ 
+		&& (isBufferLoaded() || buffer_->isClone());
+}
+
+
 docstring Inset::name() const
 {
 	return from_ascii("unknown");

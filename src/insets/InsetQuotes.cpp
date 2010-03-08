@@ -185,7 +185,8 @@ void InsetQuotes::parseString(string const & s)
 
 docstring InsetQuotes::displayString() const
 {
-	Language const * loclang = isBufferLoaded() ? buffer().params().language : 0;
+	Language const * loclang = 
+		isBufferValid() ? buffer().params().language : 0;
 	int const index = quote_index[side_][language_];
 	docstring retdisp = docstring(1, display_quote_char[times_][index]);
 
