@@ -412,17 +412,17 @@ Buffer * InsetInclude::loadIfNeeded() const
 	if (failedtoload_ || isVerbatim(params()) || isListings(params()))
 		return 0;
 
+	FileName const included_file = includedFilename(buffer(), params());
 	// Use cached Buffer if possible.
 	if (child_buffer_ != 0) {
-		if (theBufferList().isLoaded(child_buffer_))
+		if (theBufferList().isLoaded(child_buffer_) 
+				// additional sanity check: make sure the Buffer really is
+				// associated with the file we want.
+				&& child_buffer_ == theBufferList().getBuffer(included_file))
 			return child_buffer_;
 		// Buffer vanished, so invalidate cache and try to reload.
 		child_buffer_ = 0;
 	}
-
-	string const parent_filename = buffer().absFileName();
-	FileName const included_file = 
-		makeAbsPath(to_utf8(params()["filename"]), onlyPath(parent_filename));
 
 	if (!isLyXFilename(included_file.absFilename()))
 		return 0;
