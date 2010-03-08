@@ -3180,7 +3180,7 @@ int InsetTabular::rowFromY(Cursor & cur, int y) const
 	// top y coordinate of tabular
 	int h = yo(cur.bv()) - tabular.rowAscent(0);
 	row_type r = 0;
-	for (; r < nrows() && y > h; ++r)
+	for (; r < tabular.nrows() && y > h; ++r)
 		h += tabular.rowAscent(r) + tabular.rowDescent(r)
 		+ tabular.interRowSpace(r);
 
