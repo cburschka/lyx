@@ -75,7 +75,6 @@ void InsetBibitem::initView()
 
 void InsetBibitem::updateCommand(docstring const & new_key, bool)
 {
-	docstring const old_key = getParam("key");
 	docstring key = new_key;
 
 	vector<docstring> bibkeys = buffer().masterBibInfo().getKeys();
