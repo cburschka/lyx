@@ -333,7 +333,7 @@ private:
 		) const;
 
 	///
-	void updateLayout(DocumentClass const * const oldlayout);
+	void updateDocumentClass(DocumentClass const * const olddc);
 	///
 	int width_;
 	///

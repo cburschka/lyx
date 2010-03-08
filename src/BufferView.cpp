@@ -899,14 +899,14 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool recenter)
 }
 
 
-void BufferView::updateLayout(DocumentClass const * const oldlayout)
+void BufferView::updateDocumentClass(DocumentClass const * const olddc)
 {
 	message(_("Converting document to new document class..."));
 	
 	StableDocIterator backcur(d->cursor_);
 	ErrorList & el = buffer_.errorList("Class Switch");
 	cap::switchBetweenClasses(
-			oldlayout, buffer_.params().documentClassPtr(),
+			olddc, buffer_.params().documentClassPtr(),
 			static_cast<InsetText &>(buffer_.inset()), el);
 
 	setCursor(backcur.asDocIterator(&buffer_));
@@ -1179,7 +1179,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 						<< unknown_tokens << " unknown token"
 						<< (unknown_tokens == 1 ? "" : "s"));
 		}
-		updateLayout(oldClass);
+		updateDocumentClass(oldClass);
 			
 		// We are most certainly here because of a change in the document
 		// It is then better to make sure that all dialogs are in sync with
@@ -1194,7 +1194,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		cur.recordUndoFullDocument();
 		buffer_.params().clearLayoutModules();
 		buffer_.params().makeDocumentClass();
-		updateLayout(oldClass);
+		updateDocumentClass(oldClass);
 		dr.update(Update::Force | Update::FitCursor);
 		break;
 	}
@@ -1211,7 +1211,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		cur.recordUndoFullDocument();
 		buffer_.params().addLayoutModule(argument);
 		buffer_.params().makeDocumentClass();
-		updateLayout(oldClass);
+		updateDocumentClass(oldClass);
 		dr.update(Update::Force | Update::FitCursor);
 		break;
 	}
@@ -1234,7 +1234,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		cur.recordUndoFullDocument();
 		buffer_.params().setBaseClass(argument);
 		buffer_.params().makeDocumentClass();
-		updateLayout(oldDocClass);
+		updateDocumentClass(oldDocClass);
 		dr.update(Update::Force | Update::FitCursor);
 		break;
 	}
@@ -1250,7 +1250,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		LayoutFileList::get().reset(bc);
 		buffer_.params().setBaseClass(bc);
 		buffer_.params().makeDocumentClass();
-		updateLayout(oldClass);
+		updateDocumentClass(oldClass);
 		dr.update(Update::Force | Update::FitCursor);
 		break;
 	}
