@@ -1321,7 +1321,7 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 	spellcheckerCB->addItem(qt_("hunspell"), QString("hunspell"));
 #endif
 
-	if (theSpellChecker()) {
+	#if defined(USE_ASPELL) || defined(USE_ENCHANT) || defined(USE_HUNSPELL)
 		connect(spellcheckerCB, SIGNAL(currentIndexChanged(int)),
 			this, SIGNAL(changed()));
 		connect(altLanguageED, SIGNAL(textChanged(QString)),
@@ -1334,14 +1334,14 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 			this, SIGNAL(changed()));
 		connect(spellcheckNotesCB, SIGNAL(clicked()),
 			this, SIGNAL(changed()));
-	} else {
+	#else
 		spellcheckerCB->setEnabled(false);
 		altLanguageED->setEnabled(false);
 		escapeCharactersED->setEnabled(false);
 		compoundWordCB->setEnabled(false);
 		spellcheckContinuouslyCB->setEnabled(false);
 		spellcheckNotesCB->setEnabled(false);
-	}
+	#endif
 }
 
 
