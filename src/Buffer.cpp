@@ -3920,4 +3920,41 @@ bool Buffer::reload()
 }
 
 
+// FIXME We could do better here, but it is complicated. What would be
+// nice is to offer either (a) to save the child buffer to an appropriate
+// location, so that it would "move with the master", or else (b) to update
+// the InsetInclude so that it pointed to the same file. But (a) is a bit
+// complicated, because the code for this lives in GuiView.
+void Buffer::checkChildBuffers()
+{
+	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
+	Impl::BufferPositionMap::iterator const en = d->children_positions.end();
+	for (; it != en; ++it) {
+		DocIterator dit = it->second;
+		Buffer * cbuf = const_cast<Buffer *>(it->first);
+		if (!cbuf || !theBufferList().isLoaded(cbuf))
+			continue;
+		Inset * inset = dit.nextInset();
+		LASSERT(inset && inset->lyxCode() == INCLUDE_CODE, continue);
+		InsetInclude * inset_inc = static_cast<InsetInclude *>(inset);
+		docstring const & incfile = inset_inc->getParam("filename");
+		string oldloc = cbuf->absFileName();
+		string newloc = makeAbsPath(to_utf8(incfile),
+				onlyPath(absFileName())).absFilename();
+		if (oldloc == newloc)
+			continue;
+		// the location of the child file is incorrect.
+		Alert::warning(_("Included File Invalid"),
+				bformat(_("Saving this document to a new location has made the file:\n"
+				"  %1$s\n"
+				"inaccessible. You will need to update the included filename."),
+				from_utf8(oldloc)));
+		cbuf->setParent(0);
+		inset_inc->setChildBuffer(0);
+	}
+	// invalidate cache of children
+	d->children_positions.clear();
+	d->position_to_children.clear();
+}
+
 } // namespace lyx

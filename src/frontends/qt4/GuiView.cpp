@@ -2083,6 +2083,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 			fname.changeExtension(".lyx");
 	}
 
+	// fname is now the new Buffer location.
 	if (FileName(fname).exists()) {
 		docstring const file = makeDisplayPath(fname.absFilename(), 30);
 		docstring text = bformat(_("The document %1$s already "
@@ -2118,6 +2119,11 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 		b.moveAutosaveFile(oldauto);
 		return false;
 	}
+
+	// the file has now been saved to the new location.
+	// we need to check that the locations of child buffers
+	// are still valid.
+	b.checkChildBuffers();
 
 	return true;
 }
