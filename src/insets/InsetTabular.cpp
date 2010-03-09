@@ -3979,6 +3979,12 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setEnabled(false);
 			break;
 		}
+		if (&cur.inset() != this) {
+			// we need the cursor to be _inside_ the table.
+			status.setEnabled(false);
+			status.message(from_utf8(N_("Cursor not in table")));
+			return true;
+		}
 		is >> s;
 		// FIXME: We only check for the very first argument...
 		int action = Tabular::LAST_ACTION;
