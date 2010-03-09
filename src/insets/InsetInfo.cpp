@@ -193,20 +193,20 @@ bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {
-	case LFUN_MOUSE_PRESS:
-	case LFUN_MOUSE_RELEASE:
-	case LFUN_MOUSE_MOTION:
-	case LFUN_MOUSE_DOUBLE:
-	case LFUN_MOUSE_TRIPLE:
-	case LFUN_COPY:
 	case LFUN_INSET_SETTINGS:
 		return InsetCollapsable::getStatus(cur, cmd, flag);
-
+		
 	case LFUN_INSET_DIALOG_UPDATE:
-	case LFUN_INSET_MODIFY:
 		flag.setEnabled(true);
 		return true;
-
+		
+	case LFUN_INSET_MODIFY:
+		if (validateModifyArgument(cmd.argument())) {
+			flag.setEnabled(true);
+			return true;
+		}
+		//fall back
+		
 	default:
 		return false;
 	}
@@ -217,19 +217,12 @@ void InsetInfo::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	// allow selection, copy but not cut, delete etc
 	switch (cmd.action) {
-	case LFUN_MOUSE_PRESS:
-	case LFUN_MOUSE_RELEASE:
-	case LFUN_MOUSE_MOTION:
-	case LFUN_MOUSE_DOUBLE:
-	case LFUN_MOUSE_TRIPLE:
-	case LFUN_COPY:
 	case LFUN_INSET_SETTINGS:
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 
 	case LFUN_INSET_MODIFY:
 		setInfo(to_utf8(cmd.argument()));
-		cur.pos() = 0;
 		break;
 
 	default:
