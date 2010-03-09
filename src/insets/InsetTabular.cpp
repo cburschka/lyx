@@ -1000,6 +1000,11 @@ void Tabular::setColumnPWidth(Cursor & cur, idx_type cell,
 	col_type const j = cellColumn(cell);
 
 	column_info[j].p_width = width;
+	// reset the vertical alignment to top if the fixed with
+	// is removed or zero because only fixed width columns can
+	// have a vertical alignment
+	if (column_info[j].p_width.zero())
+		column_info[j].valignment = LYX_VALIGN_TOP;
 	for (row_type i = 0; i < row_info.size(); ++i) {
 		idx_type const cell = cellIndex(i, j);
 		// because of multicolumns
@@ -1931,7 +1936,7 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell, bool & ismulticol) 
 	if (is_long_tabular && row_info[r].caption)
 		return ret;
 
-	Tabular::VAlignment valign =  getVAlignment(cell, !isMultiColumn(cell));
+	Tabular::VAlignment valign = getVAlignment(cell, !isMultiColumn(cell));
 	LyXAlignment align = getAlignment(cell, !isMultiColumn(cell));
 	// figure out how to set the lines
 	// we always set double lines to the right of the cell
@@ -3854,6 +3859,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case Tabular::M_VALIGN_TOP:
 			flag = false;
 		case Tabular::VALIGN_TOP:
+			status.setEnabled(!tabular.getPWidth(cur.idx()).zero());
 			status.setOnOff(
 				tabular.getVAlignment(cur.idx(), flag) == Tabular::LYX_VALIGN_TOP);
 			break;
@@ -3861,6 +3867,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case Tabular::M_VALIGN_BOTTOM:
 			flag = false;
 		case Tabular::VALIGN_BOTTOM:
+			status.setEnabled(!tabular.getPWidth(cur.idx()).zero());
 			status.setOnOff(
 				tabular.getVAlignment(cur.idx(), flag) == Tabular::LYX_VALIGN_BOTTOM);
 			break;
@@ -3868,6 +3875,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case Tabular::M_VALIGN_MIDDLE:
 			flag = false;
 		case Tabular::VALIGN_MIDDLE:
+			status.setEnabled(!tabular.getPWidth(cur.idx()).zero());
 			status.setOnOff(
 				tabular.getVAlignment(cur.idx(), flag) == Tabular::LYX_VALIGN_MIDDLE);
 			break;

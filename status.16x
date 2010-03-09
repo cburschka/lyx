@@ -176,6 +176,9 @@ What's new
 
 - Detect user-specified package dependencies for modules (bug 6361).
 
+- Fix bug that LyX allowed to specify the vertical alignment of table
+  columns without a fixed width.
+
 - Prevent the error dialog from jumping to the first item when
   clicking outside the dialog (bug 2179).
   
