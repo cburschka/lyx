@@ -3974,16 +3974,10 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		istringstream is(to_utf8(cmd.argument()));
 		string s;
 		is >> s;
-		if (insetCode(s) != TABULAR_CODE) {
+		if (&cur.inset() != this || insetCode(s) != TABULAR_CODE) {
 			status.clear();
 			status.setEnabled(false);
 			break;
-		}
-		if (&cur.inset() != this) {
-			// we need the cursor to be _inside_ the table.
-			status.setEnabled(false);
-			status.message(from_utf8(N_("Cursor not in table")));
-			return true;
 		}
 		is >> s;
 		// FIXME: We only check for the very first argument...
