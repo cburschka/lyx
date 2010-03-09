@@ -3971,21 +3971,15 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
-		istringstream is(to_utf8(cmd.argument()));
-		string s;
-		is >> s;
-		if (&cur.inset() != this || insetCode(s) != TABULAR_CODE) {
-			status.clear();
-			status.setEnabled(false);
+		if (&cur.inset() != this || cmd.getArg(0) != "tabular") 
 			break;
-		}
-		is >> s;
+
+		string const s = cmd.getArg(1);
 		// FIXME: We only check for the very first argument...
 		int action = Tabular::LAST_ACTION;
 		int i = 0;
 		for (; tabularFeature[i].action != Tabular::LAST_ACTION; ++i) {
-			string const tmp = tabularFeature[i].feature;
-			if (tmp == s.substr(0, tmp.length())) {
+			if (tabularFeature[i].feature == s) {
 				action = tabularFeature[i].action;
 				break;
 			}
@@ -3996,8 +3990,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			return true;
 		}
 
-		string const argument
-			= ltrim(s.substr(tabularFeature[i].feature.length()));
+		string const argument = cmd.getLongArg(2);
 
 		row_type sel_row_start = 0;
 		row_type sel_row_end = 0;
