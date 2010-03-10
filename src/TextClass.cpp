@@ -95,7 +95,7 @@ bool layout2layout(FileName const & filename, FileName const & tempfile)
 }
 
 
-std::string translateRT(TextClass::ReadType rt) 
+string translateRT(TextClass::ReadType rt) 
 {
 	switch (rt) {
 	case TextClass::BASECLASS:
