@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-03-06 13:29+0100\n"
+"POT-Creation-Date: 2010-03-10 21:03+0100\n"
 "PO-Revision-Date: 2010-02-26 02:01+0100\n"
 "Last-Translator: Οδυσσέας Δαγκλής <o2d@freemail.gr>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -311,21 +311,21 @@ msgstr "Οριζόντια στοίχιση του περιεχομένου μέ
 #: src/frontends/qt4/ui/BoxUi.ui:63 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:146
 #: src/frontends/qt4/ui/TabularUi.ui:1440 src/frontends/qt4/ui/WrapUi.ui:209
-#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:638
+#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:691
 msgid "Left"
 msgstr "Αριστερά"
 
 #: src/frontends/qt4/ui/BoxUi.ui:68 src/frontends/qt4/ui/TabularUi.ui:151
 #: src/frontends/qt4/ui/TabularUi.ui:1447 src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:73 src/frontends/qt4/GuiParagraph.cpp:111
-#: src/frontends/qt4/GuiTabular.cpp:639
+#: src/frontends/qt4/GuiTabular.cpp:692
 msgid "Center"
 msgstr "Κέντρο"
 
 #: src/frontends/qt4/ui/BoxUi.ui:73 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:156
 #: src/frontends/qt4/ui/TabularUi.ui:1457 src/frontends/qt4/ui/WrapUi.ui:214
-#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:640
+#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:693
 msgid "Right"
 msgstr "Δεξιά"
 
@@ -497,8 +497,8 @@ msgid "Remove the selected branch"
 msgstr "Αφαίρεση επιλεγμένου κλάδου"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3470
-#: src/Buffer.cpp:3481 src/frontends/qt4/ui_IndicesUi.h:219
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3469
+#: src/Buffer.cpp:3480 src/frontends/qt4/ui_IndicesUi.h:219
 msgid "&Remove"
 msgstr "&Αφαίρεση"
 
@@ -530,17 +530,17 @@ msgstr "Προσθήκη Όλ&ων"
 #: src/frontends/qt4/ui/CitationUi.ui:493
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
-#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1009
-#: src/Buffer.cpp:2142 src/Buffer.cpp:3454 src/Buffer.cpp:3500
+#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1010
+#: src/Buffer.cpp:2143 src/Buffer.cpp:3453 src/Buffer.cpp:3499
 #: src/LyXVC.cpp:88 src/LyXVC.cpp:215 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1535
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1902
-#: src/frontends/qt4/GuiView.cpp:2093 src/frontends/qt4/GuiView.cpp:2148
-#: src/frontends/qt4/GuiView.cpp:2347 src/frontends/qt4/GuiView.cpp:2354
-#: src/frontends/qt4/GuiView.cpp:2454 src/frontends/qt4/GuiView.cpp:2481
-#: src/frontends/qt4/GuiView.cpp:2940 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiView.cpp:2094 src/frontends/qt4/GuiView.cpp:2154
+#: src/frontends/qt4/GuiView.cpp:2353 src/frontends/qt4/GuiView.cpp:2360
+#: src/frontends/qt4/GuiView.cpp:2460 src/frontends/qt4/GuiView.cpp:2487
+#: src/frontends/qt4/GuiView.cpp:2946 src/insets/InsetBibtex.cpp:143
 msgid "&Cancel"
 msgstr "&Ακύρωση"
 
@@ -1833,8 +1833,8 @@ msgstr "Είσοδος"
 msgid "Verbatim"
 msgstr "Αυτολεξεί"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1065
-#: src/insets/InsetInclude.cpp:1071
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1062
+#: src/insets/InsetInclude.cpp:1068
 msgid "Program Listing"
 msgstr "Κώδικας Προγράμματος"
 
@@ -3816,8 +3816,8 @@ msgstr "&Ενεργοποίηση εργαλειοσυμβουλών στον κ
 msgid "&User interface file:"
 msgstr "Αρχείο &διεπαφής χρήστη:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/frontends/qt4/GuiView.cpp:2347
-#: src/frontends/qt4/GuiView.cpp:2354 src/frontends/qt4/GuiView.cpp:2454
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/frontends/qt4/GuiView.cpp:2353
+#: src/frontends/qt4/GuiView.cpp:2360 src/frontends/qt4/GuiView.cpp:2460
 msgid "&Save"
 msgstr "Α&ποθήκευση"
 
@@ -4262,7 +4262,7 @@ msgid "Horizontal alignment in column"
 msgstr "Οριζόντια στοίχιση στη στήλη"
 
 #: src/frontends/qt4/ui/TabularUi.ui:141
-#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:642
+#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:695
 msgid "Justified"
 msgstr "Πλήρης στοίχιση"
 
@@ -5496,7 +5496,7 @@ msgstr "Ταχυδρομείο"
 #: lib/layouts/siamltex.layout:224 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:73 lib/layouts/db_stdtitle.inc:35
 #: lib/layouts/scrclass.inc:176 lib/layouts/stdtitle.inc:87
-#: lib/layouts/svjour.inc:188 lib/ui/stdmenus.inc:367
+#: lib/layouts/svjour.inc:188 lib/ui/stdmenus.inc:368
 #: lib/external_templates:301 lib/external_templates:302
 #: lib/external_templates:306
 msgid "Date"
@@ -9430,7 +9430,7 @@ msgid "ERT"
 msgstr ""
 
 #: lib/layouts/stdinsets.inc:199 lib/ui/stdcontext.inc:193
-#: lib/ui/stdmenus.inc:392 lib/ui/stdmenus.inc:465
+#: lib/ui/stdmenus.inc:393 lib/ui/stdmenus.inc:466
 #: src/insets/InsetPhantom.cpp:65
 msgid "Phantom"
 msgstr ""
@@ -9446,7 +9446,7 @@ msgid "Branch"
 msgstr "Κλάδος"
 
 #: lib/layouts/stdinsets.inc:239 lib/layouts/minimalistic.module:8
-#: src/Buffer.cpp:796 src/BufferParams.cpp:378
+#: src/Buffer.cpp:797 src/BufferParams.cpp:378
 #: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:442
 #: src/insets/InsetIndex.cpp:707
 msgid "Index"
@@ -9497,7 +9497,7 @@ msgstr ""
 msgid "Info:shortcuts"
 msgstr ""
 
-#: lib/layouts/stdinsets.inc:400 lib/ui/stdmenus.inc:354
+#: lib/layouts/stdinsets.inc:400 lib/ui/stdmenus.inc:355
 msgid "Caption"
 msgstr "Λεζάντα"
 
@@ -10945,11 +10945,11 @@ msgstr "Εύρεση & Αντικατάσταση...|η"
 msgid "Tabular|T"
 msgstr "Περί Πινάκων|Π"
 
-#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:120 lib/ui/stdmenus.inc:553
+#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:120 lib/ui/stdmenus.inc:554
 msgid "Math|M"
 msgstr "Μαθηματικά|Μ"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:530
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:531
 msgid "Spellchecker...|S"
 msgstr "Ορθογράφος...|Ο"
 
@@ -10961,7 +10961,7 @@ msgstr "Θησαυρός..."
 msgid "Statistics...|i"
 msgstr "Στατιστικά...|Σ"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:533
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:534
 msgid "Check TeX|h"
 msgstr "Έλεγχος TeX|λ"
 
@@ -10969,11 +10969,11 @@ msgstr "Έλεγχος TeX|λ"
 msgid "Change Tracking|g"
 msgstr "Αλλαγή Παρακολούθησης|γ"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:541
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:542
 msgid "Preferences...|P"
 msgstr "Προτιμήσεις...|Π"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:540
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:541
 msgid "Reconfigure|R"
 msgstr "Επαναδιαμόρφωση|Ε"
 
@@ -10985,7 +10985,7 @@ msgstr "Επιλογή κατά Γραμμές|Γ"
 msgid "Selection as Paragraphs|P"
 msgstr "Επιλογή κατά Παραγράφους|Π"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:179
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:180
 msgid "Multicolumn|M"
 msgstr "Πολλαπλές Στήλες|λ"
 
@@ -11009,7 +11009,7 @@ msgstr "Γραμμή Δεξιά|Δ"
 msgid "Alignment|i"
 msgstr "Στοίχιση|Σ"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:402 lib/ui/stdmenus.inc:200
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:402 lib/ui/stdmenus.inc:201
 msgid "Add Row|A"
 msgstr "Προσθήκη Γραμμής|θ"
 
@@ -11025,7 +11025,7 @@ msgstr "Αντιγραφή Γραμμής"
 msgid "Swap Rows"
 msgstr "Εναλλαγή Γραμμών"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:407 lib/ui/stdmenus.inc:205
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:407 lib/ui/stdmenus.inc:206
 msgid "Add Column|u"
 msgstr "Προσθήκη Στήλης|η"
 
@@ -11041,27 +11041,27 @@ msgstr "Αντιγραφή Στήλης"
 msgid "Swap Columns"
 msgstr "Εναλλαγή Στηλών"
 
-#: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:192
+#: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:193
 msgid "Left|L"
 msgstr "Αριστερά|Α"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:395 lib/ui/stdmenus.inc:193
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:395 lib/ui/stdmenus.inc:194
 msgid "Center|C"
 msgstr "Κέντρο|Κ"
 
-#: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:194
+#: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:195
 msgid "Right|R"
 msgstr "Δεξιά|Δ"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:398 lib/ui/stdmenus.inc:196
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:398 lib/ui/stdmenus.inc:197
 msgid "Top|T"
 msgstr "Πάνω|Π"
 
-#: lib/ui/classic.ui:146 lib/ui/stdmenus.inc:197
+#: lib/ui/classic.ui:146 lib/ui/stdmenus.inc:198
 msgid "Middle|M"
 msgstr "Μέση|Μ"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:400 lib/ui/stdmenus.inc:198
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:400 lib/ui/stdmenus.inc:199
 msgid "Bottom|B"
 msgstr "Κάτω|τ"
 
@@ -11073,15 +11073,15 @@ msgstr "Εναλλαγή Αρίθμησης|λ"
 msgid "Toggle Numbering of Line|u"
 msgstr "Εναλλαγή Αρίθμησης Γραμμής|Γ"
 
-#: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:214
+#: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:215
 msgid "Change Limits Type|L"
 msgstr "Αλλαγή Τύπου Ορίων|Ο"
 
-#: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:217
+#: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:218
 msgid "Change Formula Type|F"
 msgstr "Αλλαγή Τύπου Φόρμουλας|Φ"
 
-#: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:221
+#: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:222
 msgid "Use Computer Algebra System|S"
 msgstr "Χρήση του Computer Algebra System|Χ"
 
@@ -11093,7 +11093,7 @@ msgstr "Στοίχιση|Σ"
 msgid "Add Row|R"
 msgstr "Προσθήκη Γραμμής|Γ"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:403 lib/ui/stdmenus.inc:201
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:403 lib/ui/stdmenus.inc:202
 msgid "Delete Row|D"
 msgstr "Διαγραφή Γραμμής|γ"
 
@@ -11101,19 +11101,19 @@ msgstr "Διαγραφή Γραμμής|γ"
 msgid "Add Column|C"
 msgstr "Προσθήκη Στήλης|Σ"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:408 lib/ui/stdmenus.inc:206
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:408 lib/ui/stdmenus.inc:207
 msgid "Delete Column|e"
 msgstr "Διαγραφή Στήλης|φ"
 
-#: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:251
+#: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:252
 msgid "Default|t"
 msgstr "Προεπιλεγμένο|ε"
 
-#: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:252
+#: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:253
 msgid "Display|D"
 msgstr "Προβολή|β"
 
-#: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:253
+#: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:254
 msgid "Inline|I"
 msgstr "Εντός Γραμμής|τ"
 
@@ -11146,11 +11146,11 @@ msgid "Maple, evalf"
 msgstr ""
 
 #: lib/ui/classic.ui:199 lib/ui/classic.ui:265 lib/ui/stdcontext.inc:49
-#: lib/ui/stdmenus.inc:293 lib/ui/stdmenus.inc:406
+#: lib/ui/stdmenus.inc:294 lib/ui/stdmenus.inc:407
 msgid "Inline Formula|I"
 msgstr "Φόρμουλα Εντός Γραμμής|ρ"
 
-#: lib/ui/classic.ui:200 lib/ui/stdcontext.inc:50 lib/ui/stdmenus.inc:294
+#: lib/ui/classic.ui:200 lib/ui/stdcontext.inc:50 lib/ui/stdmenus.inc:295
 msgid "Displayed Formula|D"
 msgstr "Εμφανιζόμενη Φόρμουλα|ζ"
 
@@ -11178,7 +11178,7 @@ msgstr ""
 msgid "Multline Environment"
 msgstr ""
 
-#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:340
+#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:341
 msgid "Math|h"
 msgstr "Μαθηματικά|θ"
 
@@ -11186,7 +11186,7 @@ msgstr "Μαθηματικά|θ"
 msgid "Special Character|S"
 msgstr "Ειδικοί Χαρακτήρες|Ε"
 
-#: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:351
+#: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:352
 msgid "Citation...|C"
 msgstr "Παραπομπή...|Π"
 
@@ -11194,15 +11194,15 @@ msgstr "Παραπομπή...|Π"
 msgid "Cross-reference...|r"
 msgstr "Αναφορά...|Α"
 
-#: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:353
+#: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:354
 msgid "Label...|L"
 msgstr "Ετικέτα...|τ"
 
-#: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:362
+#: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:363
 msgid "Footnote|F"
 msgstr "Υποσημείωση|μ"
 
-#: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:363
+#: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:364
 msgid "Marginal Note|M"
 msgstr "Σημείωση Περιθωρίου|ω"
 
@@ -11222,7 +11222,7 @@ msgstr "Καταχώρηση Ονοματολογίας"
 msgid "URL...|U"
 msgstr ""
 
-#: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:345
+#: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:346
 msgid "Note|N"
 msgstr "Σημείωση|η"
 
@@ -11238,7 +11238,7 @@ msgstr "Κώδικας TeX|ι"
 msgid "Minipage|p"
 msgstr ""
 
-#: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:359
+#: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:360
 msgid "Graphics...|G"
 msgstr "Γραφικά...|Γ"
 
@@ -11262,15 +11262,15 @@ msgstr "Εισαγωγή Αρχείου|σ"
 msgid "External Material...|x"
 msgstr "Εξωτερικό Υλικό...|ξ"
 
-#: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:371
+#: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:372
 msgid "Symbols...|b"
 msgstr "Σύμβολα...|β"
 
-#: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:383
+#: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:384
 msgid "Superscript|S"
 msgstr "Εκθέτης|Ε"
 
-#: lib/ui/classic.ui:243 lib/ui/stdmenus.inc:384
+#: lib/ui/classic.ui:243 lib/ui/stdmenus.inc:385
 msgid "Subscript|u"
 msgstr "Δείκτης|Δ"
 
@@ -11278,11 +11278,11 @@ msgstr "Δείκτης|Δ"
 msgid "Hyphenation Point|P"
 msgstr "Σημείο Συλλαβισμού|Σ"
 
-#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:376
+#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:377
 msgid "Protected Hyphen|y"
 msgstr "Προστατευμένη Παύλα Συλλαβισμού|Π"
 
-#: lib/ui/classic.ui:246 lib/ui/stdmenus.inc:395
+#: lib/ui/classic.ui:246 lib/ui/stdmenus.inc:396
 msgid "Ligature Break|k"
 msgstr "Διαχωρισμός Λογογράμματος|χ"
 
@@ -11290,16 +11290,16 @@ msgstr "Διαχωρισμός Λογογράμματος|χ"
 msgid "Protected Space|r"
 msgstr "Προστατευμένο Διάστημα|Δ"
 
-#: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:387
+#: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:388
 msgid "Inter-word Space|w"
 msgstr "Διάστημα Μεταξύ Λέξεων|Λ"
 
 #: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:206 lib/ui/stdcontext.inc:229
-#: lib/ui/stdmenus.inc:388
+#: lib/ui/stdmenus.inc:389
 msgid "Thin Space|T"
 msgstr "Λεπτό Διάστημα|μ"
 
-#: lib/ui/classic.ui:250 lib/ui/stdmenus.inc:389
+#: lib/ui/classic.ui:250 lib/ui/stdmenus.inc:390
 msgid "Horizontal Space...|o"
 msgstr "Οριζόντιο Διάστημα...|Ο"
 
@@ -11311,11 +11311,11 @@ msgstr "Κατακόρυφο Διάστημα..."
 msgid "Line Break|L"
 msgstr "Αλλαγή Γραμμής|γ"
 
-#: lib/ui/classic.ui:253 lib/ui/stdmenus.inc:372
+#: lib/ui/classic.ui:253 lib/ui/stdmenus.inc:373
 msgid "Ellipsis|i"
 msgstr "Αποσιωποιητικά|ο"
 
-#: lib/ui/classic.ui:254 lib/ui/stdmenus.inc:373
+#: lib/ui/classic.ui:254 lib/ui/stdmenus.inc:374
 msgid "End of Sentence|E"
 msgstr "Τέλος Πρότασης|Τ"
 
@@ -11323,7 +11323,7 @@ msgstr "Τέλος Πρότασης|Τ"
 msgid "Protected Dash|D"
 msgstr "Προστατευμένη Παύλα|ρ"
 
-#: lib/ui/classic.ui:256 lib/ui/stdmenus.inc:377
+#: lib/ui/classic.ui:256 lib/ui/stdmenus.inc:378
 msgid "Breakable Slash|a"
 msgstr "Διαχωριστική Κάθετος|Κ"
 
@@ -11335,7 +11335,7 @@ msgstr "Μονό Εισαγωγικό|Μ"
 msgid "Ordinary Quote|O"
 msgstr "Σύνηθες Εισαγωγικό|ν"
 
-#: lib/ui/classic.ui:259 lib/ui/stdmenus.inc:378
+#: lib/ui/classic.ui:259 lib/ui/stdmenus.inc:379
 msgid "Menu Separator|M"
 msgstr "Διαχωριστικό Μενού|χ"
 
@@ -11347,49 +11347,49 @@ msgstr "Οριζόντια Γραμμή"
 msgid "Page Break"
 msgstr "Αλλαγή Γραμμής"
 
-#: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:407
+#: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:408
 msgid "Display Formula|D"
 msgstr "Προβολή Φόρμουλας|Φ"
 
-#: lib/ui/classic.ui:267 lib/ui/stdcontext.inc:51 lib/ui/stdmenus.inc:295
-#: lib/ui/stdmenus.inc:409
+#: lib/ui/classic.ui:267 lib/ui/stdcontext.inc:51 lib/ui/stdmenus.inc:296
+#: lib/ui/stdmenus.inc:410
 msgid "Eqnarray Environment|E"
 msgstr ""
 
-#: lib/ui/classic.ui:268 lib/ui/stdcontext.inc:41 lib/ui/stdmenus.inc:296
-#: lib/ui/stdmenus.inc:410
+#: lib/ui/classic.ui:268 lib/ui/stdcontext.inc:41 lib/ui/stdmenus.inc:297
+#: lib/ui/stdmenus.inc:411
 msgid "AMS align Environment|a"
 msgstr ""
 
-#: lib/ui/classic.ui:269 lib/ui/stdcontext.inc:42 lib/ui/stdmenus.inc:297
-#: lib/ui/stdmenus.inc:411
+#: lib/ui/classic.ui:269 lib/ui/stdcontext.inc:42 lib/ui/stdmenus.inc:298
+#: lib/ui/stdmenus.inc:412
 msgid "AMS alignat Environment|t"
 msgstr ""
 
-#: lib/ui/classic.ui:270 lib/ui/stdcontext.inc:43 lib/ui/stdmenus.inc:298
-#: lib/ui/stdmenus.inc:412
+#: lib/ui/classic.ui:270 lib/ui/stdcontext.inc:43 lib/ui/stdmenus.inc:299
+#: lib/ui/stdmenus.inc:413
 msgid "AMS flalign Environment|f"
 msgstr ""
 
-#: lib/ui/classic.ui:273 lib/ui/stdcontext.inc:44 lib/ui/stdmenus.inc:299
-#: lib/ui/stdmenus.inc:413
+#: lib/ui/classic.ui:273 lib/ui/stdcontext.inc:44 lib/ui/stdmenus.inc:300
+#: lib/ui/stdmenus.inc:414
 msgid "AMS gather Environment|g"
 msgstr ""
 
-#: lib/ui/classic.ui:274 lib/ui/stdcontext.inc:45 lib/ui/stdmenus.inc:300
-#: lib/ui/stdmenus.inc:414
+#: lib/ui/classic.ui:274 lib/ui/stdcontext.inc:45 lib/ui/stdmenus.inc:301
+#: lib/ui/stdmenus.inc:415
 msgid "AMS multline Environment|m"
 msgstr ""
 
-#: lib/ui/classic.ui:276 lib/ui/stdcontext.inc:28 lib/ui/stdmenus.inc:416
+#: lib/ui/classic.ui:276 lib/ui/stdcontext.inc:28 lib/ui/stdmenus.inc:417
 msgid "Array Environment|y"
 msgstr ""
 
-#: lib/ui/classic.ui:277 lib/ui/stdcontext.inc:29 lib/ui/stdmenus.inc:417
+#: lib/ui/classic.ui:277 lib/ui/stdcontext.inc:29 lib/ui/stdmenus.inc:418
 msgid "Cases Environment|C"
 msgstr ""
 
-#: lib/ui/classic.ui:278 lib/ui/stdcontext.inc:33 lib/ui/stdmenus.inc:421
+#: lib/ui/classic.ui:278 lib/ui/stdcontext.inc:33 lib/ui/stdmenus.inc:422
 msgid "Split Environment|S"
 msgstr ""
 
@@ -11425,39 +11425,39 @@ msgstr "Σειρά Έντονων Μαθηματικών"
 msgid "Text Normal Font"
 msgstr "Κανονική Γραμματοσειρά Κειμένου"
 
-#: lib/ui/classic.ui:295 lib/ui/stdmenus.inc:268
+#: lib/ui/classic.ui:295 lib/ui/stdmenus.inc:269
 msgid "Text Roman Family"
 msgstr "Οικογένεια Κειμένου Roman"
 
-#: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:269
+#: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:270
 msgid "Text Sans Serif Family"
 msgstr "Οικογένεια Κειμένου Sans Serif"
 
-#: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:270
+#: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:271
 msgid "Text Typewriter Family"
 msgstr "Οικογένεια Κειμένου Typewriter"
 
-#: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:272
+#: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:273
 msgid "Text Bold Series"
 msgstr "Σειρά Έντονου Κειμένου"
 
-#: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:273
+#: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:274
 msgid "Text Medium Series"
 msgstr "Σειρά Κανονικού Κειμένου"
 
-#: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:275
+#: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:276
 msgid "Text Italic Shape"
 msgstr "Σχήμα Πλάγιου Κειμένου"
 
-#: lib/ui/classic.ui:303 lib/ui/stdmenus.inc:276
+#: lib/ui/classic.ui:303 lib/ui/stdmenus.inc:277
 msgid "Text Small Caps Shape"
 msgstr "Σχήμα Μικρών Κεφαλαίων Κειμένου"
 
-#: lib/ui/classic.ui:304 lib/ui/stdmenus.inc:277
+#: lib/ui/classic.ui:304 lib/ui/stdmenus.inc:278
 msgid "Text Slanted Shape"
 msgstr "Σχήμα Κεκλιμένου Κειμένου"
 
-#: lib/ui/classic.ui:305 lib/ui/stdmenus.inc:278
+#: lib/ui/classic.ui:305 lib/ui/stdmenus.inc:279
 msgid "Text Upright Shape"
 msgstr "Σχήμα Όρθιου Κειμένου"
 
@@ -11465,7 +11465,7 @@ msgstr "Σχήμα Όρθιου Κειμένου"
 msgid "Floatflt Figure"
 msgstr ""
 
-#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:436
+#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:437
 msgid "Table of Contents|C"
 msgstr "Πίνακας Περιεχομένων|Π"
 
@@ -11473,31 +11473,31 @@ msgstr "Πίνακας Περιεχομένων|Π"
 msgid "Index List|I"
 msgstr "Λίστα Ευρετηρίου|Λ"
 
-#: lib/ui/classic.ui:317 lib/ui/stdmenus.inc:439
+#: lib/ui/classic.ui:317 lib/ui/stdmenus.inc:440
 msgid "Nomenclature|N"
 msgstr "Επιστημονική Ορολογία|Ε"
 
-#: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:440
+#: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:441
 msgid "BibTeX Bibliography...|B"
 msgstr "Βιβλιογραφία BibTeX...|Β"
 
-#: lib/ui/classic.ui:322 lib/ui/stdmenus.inc:444
+#: lib/ui/classic.ui:322 lib/ui/stdmenus.inc:445
 msgid "LyX Document...|X"
 msgstr "Έγγραφο LyX|γ"
 
-#: lib/ui/classic.ui:323 lib/ui/stdmenus.inc:445
+#: lib/ui/classic.ui:323 lib/ui/stdmenus.inc:446
 msgid "Plain Text...|T"
 msgstr "Απλό Κείμενο...|Α"
 
-#: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:446
+#: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:447
 msgid "Plain Text, Join Lines...|J"
 msgstr "Απλό Κείμενο, Ένωση Γραμμών|ν"
 
-#: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:491
+#: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:492
 msgid "Track Changes|T"
 msgstr "Παρακολούθηση Αλλαγών|Π"
 
-#: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:492
+#: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:493
 msgid "Merge Changes...|M"
 msgstr "Συγχώνευση Αλλαγών...|Σ"
 
@@ -11509,7 +11509,7 @@ msgstr "Αποδοχή Όλων των Αλλαγών|Α"
 msgid "Reject All Changes|R"
 msgstr "Απόρριψη Όλων των Αλλαγών|ψ"
 
-#: lib/ui/classic.ui:332 lib/ui/stdmenus.inc:497
+#: lib/ui/classic.ui:332 lib/ui/stdmenus.inc:498
 msgid "Show Changes in Output|S"
 msgstr "Εμφάνιση Αλλαγών στην Έξοδο|φ"
 
@@ -11553,7 +11553,7 @@ msgstr "Αύξηση Βάθους Περιβάλλοντος|ξ"
 msgid "Start Appendix Here|S"
 msgstr "Έναρξη Παραρτήματος Εδώ|η"
 
-#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:480
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:481
 msgid "Build Program|B"
 msgstr ""
 
@@ -11561,11 +11561,11 @@ msgstr ""
 msgid "Update|U"
 msgstr "Ενημέρωση|ω"
 
-#: lib/ui/classic.ui:363 lib/ui/stdmenus.inc:481
+#: lib/ui/classic.ui:363 lib/ui/stdmenus.inc:482
 msgid "LaTeX Log|L"
 msgstr "Ιστορικό LaTeX|Ι"
 
-#: lib/ui/classic.ui:364 lib/ui/stdmenus.inc:482
+#: lib/ui/classic.ui:364 lib/ui/stdmenus.inc:483
 msgid "Outline|O"
 msgstr "Γενική Εικόνα|Γ"
 
@@ -11573,35 +11573,35 @@ msgstr "Γενική Εικόνα|Γ"
 msgid "TeX Information|X"
 msgstr "Πληροφορίες TeX|ρ"
 
-#: lib/ui/classic.ui:378 lib/ui/stdmenus.inc:505
+#: lib/ui/classic.ui:378 lib/ui/stdmenus.inc:506
 msgid "Next Note|N"
 msgstr "Επόμενη Σημείωση|Σ"
 
-#: lib/ui/classic.ui:379 lib/ui/stdmenus.inc:508
+#: lib/ui/classic.ui:379 lib/ui/stdmenus.inc:509
 msgid "Go to Label|L"
 msgstr "Πήγαινε στην Ετικέτα|Ε"
 
-#: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:504
+#: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:505
 msgid "Bookmarks|B"
 msgstr "Σελιδοδείκτες|δ"
 
-#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:514
+#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:515
 msgid "Save Bookmark 1|S"
 msgstr "Αποθήκευση Σελιδοδείκτη|θ"
 
-#: lib/ui/classic.ui:385 lib/ui/stdmenus.inc:515
+#: lib/ui/classic.ui:385 lib/ui/stdmenus.inc:516
 msgid "Save Bookmark 2"
 msgstr "Αποθήκευση Σελιδοδείκτη 2"
 
-#: lib/ui/classic.ui:386 lib/ui/stdmenus.inc:516
+#: lib/ui/classic.ui:386 lib/ui/stdmenus.inc:517
 msgid "Save Bookmark 3"
 msgstr "Αποθήκευση Σελιδοδείκτη 3"
 
-#: lib/ui/classic.ui:387 lib/ui/stdmenus.inc:517
+#: lib/ui/classic.ui:387 lib/ui/stdmenus.inc:518
 msgid "Save Bookmark 4"
 msgstr "Αποθήκευση Σελιδοδείκτη 4"
 
-#: lib/ui/classic.ui:388 lib/ui/stdmenus.inc:518
+#: lib/ui/classic.ui:388 lib/ui/stdmenus.inc:519
 msgid "Save Bookmark 5"
 msgstr "Αποθήκευση Σελιδοδείκτη 5"
 
@@ -11625,15 +11625,15 @@ msgstr "Πήγαινε στον Σελιδοδείκτη 4|4"
 msgid "Go to Bookmark 5|5"
 msgstr "Πήγαινε στον Σελιδοδείκτη 5|5"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:548
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:549
 msgid "Introduction|I"
 msgstr "Εισαγωγή|Ε"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:549
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:550
 msgid "Tutorial|T"
 msgstr "Διδακτικό Εγχειρίδιο|γ"
 
-#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:550
+#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:551
 msgid "User's Guide|U"
 msgstr "Οδηγός Χρήστη|Ο"
 
@@ -11645,15 +11645,15 @@ msgstr "Εκτεταμένα Χαρακτηριστικά|κ"
 msgid "Embedded Objects|m"
 msgstr "Ενσωματωμένα Αντικείμενα|σ"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:554
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:555
 msgid "Customization|C"
 msgstr "Προσαρμογή|α"
 
-#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:557
+#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:558
 msgid "LaTeX Configuration|L"
 msgstr "Διαμόρφωση LaTeX|Δ"
 
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:560
+#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:561
 msgid "About LyX|X"
 msgstr "Περί του LyX|ρ"
 
@@ -11669,27 +11669,27 @@ msgstr "Προτιμήσεις..."
 msgid "Quit LyX"
 msgstr "Έξοδος από το LyX"
 
-#: lib/ui/stdcontext.inc:30 lib/ui/stdmenus.inc:418
+#: lib/ui/stdcontext.inc:30 lib/ui/stdmenus.inc:419
 msgid "Aligned Environment|l"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:31 lib/ui/stdmenus.inc:419
+#: lib/ui/stdcontext.inc:31 lib/ui/stdmenus.inc:420
 msgid "AlignedAt Environment|v"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:32 lib/ui/stdmenus.inc:420
+#: lib/ui/stdcontext.inc:32 lib/ui/stdmenus.inc:421
 msgid "Gathered Environment|h"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:35 lib/ui/stdmenus.inc:423
+#: lib/ui/stdcontext.inc:35 lib/ui/stdmenus.inc:424
 msgid "Delimiters...|r"
 msgstr "Διαχωριστικά...|Δ"
 
-#: lib/ui/stdcontext.inc:36 lib/ui/stdmenus.inc:424
+#: lib/ui/stdcontext.inc:36 lib/ui/stdmenus.inc:425
 msgid "Matrix...|x"
 msgstr "Μητρείο...|Μ"
 
-#: lib/ui/stdcontext.inc:37 lib/ui/stdmenus.inc:425
+#: lib/ui/stdcontext.inc:37 lib/ui/stdmenus.inc:426
 msgid "Macro|o"
 msgstr "Μακροεντολή|κ"
 
@@ -11697,11 +11697,11 @@ msgstr "Μακροεντολή|κ"
 msgid "AMS Environment|A"
 msgstr "Περιβάλλον AMS|ε"
 
-#: lib/ui/stdcontext.inc:54 lib/ui/stdmenus.inc:212
+#: lib/ui/stdcontext.inc:54 lib/ui/stdmenus.inc:213
 msgid "Number Whole Formula|N"
 msgstr "Αρίθμηση Σύνολης Φόρμουλας|Α"
 
-#: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:213
+#: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:214
 msgid "Number This Line|u"
 msgstr "Αρίθμηση Τρέχουσας Γραμμής|ρ"
 
@@ -11713,7 +11713,7 @@ msgstr "Ετικέτα Εξίσωσης|Ε"
 msgid "Copy as Reference|R"
 msgstr "Αντιγραφή ως Αναφορά|Α"
 
-#: lib/ui/stdcontext.inc:59 lib/ui/stdmenus.inc:223
+#: lib/ui/stdcontext.inc:59 lib/ui/stdmenus.inc:224
 msgid "Split Cell|C"
 msgstr "Διαίρεση Κελιού|Δ"
 
@@ -11725,31 +11725,31 @@ msgstr "Εισαγωγή|σ"
 msgid "Add Line Above|o"
 msgstr "Προσθήκη Γραμμής Πάνω|Π"
 
-#: lib/ui/stdcontext.inc:64 lib/ui/stdmenus.inc:226
+#: lib/ui/stdcontext.inc:64 lib/ui/stdmenus.inc:227
 msgid "Add Line Below|B"
 msgstr "Προσθήκη Γραμμής Κάτω|Κ"
 
-#: lib/ui/stdcontext.inc:65 lib/ui/stdmenus.inc:227
+#: lib/ui/stdcontext.inc:65 lib/ui/stdmenus.inc:228
 msgid "Delete Line Above|D"
 msgstr "Διαγραφή Γραμμής Πάνω|ν"
 
-#: lib/ui/stdcontext.inc:66 lib/ui/stdmenus.inc:228
+#: lib/ui/stdcontext.inc:66 lib/ui/stdmenus.inc:229
 msgid "Delete Line Below|e"
 msgstr "Διαγραφή Γραμμής Κάτω|ω"
 
-#: lib/ui/stdcontext.inc:68 lib/ui/stdmenus.inc:230
+#: lib/ui/stdcontext.inc:68 lib/ui/stdmenus.inc:231
 msgid "Add Line to Left"
 msgstr "Προσθήκη Γραμμής Αριστερά"
 
-#: lib/ui/stdcontext.inc:69 lib/ui/stdmenus.inc:231
+#: lib/ui/stdcontext.inc:69 lib/ui/stdmenus.inc:232
 msgid "Add Line to Right"
 msgstr "Προσθήκη Γραμμής Δεξιά"
 
-#: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:232
+#: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:233
 msgid "Delete Line to Left"
 msgstr "Διαγραφή Γραμμής Αριστερά"
 
-#: lib/ui/stdcontext.inc:71 lib/ui/stdmenus.inc:233
+#: lib/ui/stdcontext.inc:71 lib/ui/stdmenus.inc:234
 msgid "Delete Line to Right"
 msgstr "Διαγραφή Γραμμής Δεξιά"
 
@@ -11814,7 +11814,7 @@ msgstr "Μορφοποιημένη Αναφορά|Μ"
 #: lib/ui/stdcontext.inc:510 lib/ui/stdcontext.inc:518
 #: lib/ui/stdcontext.inc:531 lib/ui/stdcontext.inc:541
 #: lib/ui/stdcontext.inc:556 lib/ui/stdcontext.inc:569
-#: lib/ui/stdcontext.inc:577 lib/ui/stdmenus.inc:487
+#: lib/ui/stdcontext.inc:577 lib/ui/stdmenus.inc:488
 msgid "Settings...|S"
 msgstr "Ρυθμίσεις...|Ρ"
 
@@ -11885,7 +11885,7 @@ msgstr "Σκιασμένο Φόντο|Φ"
 msgid "Double Frame|u"
 msgstr "Διπλό Πλαίσιο|Δ"
 
-#: lib/ui/stdcontext.inc:175 lib/ui/stdmenus.inc:453
+#: lib/ui/stdcontext.inc:175 lib/ui/stdmenus.inc:454
 msgid "LyX Note|N"
 msgstr "Σημείωση LyX|Σ"
 
@@ -11893,7 +11893,7 @@ msgstr "Σημείωση LyX|Σ"
 msgid "Comment|m"
 msgstr "Σχόλιο|χ"
 
-#: lib/ui/stdcontext.inc:177 lib/ui/stdmenus.inc:455
+#: lib/ui/stdcontext.inc:177 lib/ui/stdmenus.inc:456
 msgid "Greyed Out|G"
 msgstr "Γκριζαρισμένο|ζ"
 
@@ -12045,27 +12045,27 @@ msgstr "Καταλογοποίηση|τ"
 msgid "Edit Included File...|E"
 msgstr "Επεξεργασία συμπεριλαμβανομένου αρχείου...|Ε"
 
-#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:399
+#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:400
 msgid "New Page|N"
 msgstr "Νέα Σελίδα|Ν"
 
-#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:400
+#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:401
 msgid "Page Break|a"
 msgstr "Αλλαγή Σελίδας|Σ"
 
-#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:401
+#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:402
 msgid "Clear Page|C"
 msgstr "Καθαρισμός Σελίδας|θ"
 
-#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:402
+#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:403
 msgid "Clear Double Page|D"
 msgstr "Καθαρισμός Διπλής Σελίδας|ρ"
 
-#: lib/ui/stdcontext.inc:286 lib/ui/stdmenus.inc:396
+#: lib/ui/stdcontext.inc:286 lib/ui/stdmenus.inc:397
 msgid "Ragged Line Break|R"
 msgstr "Τραχιά Αλλαγή Γραμμής|Τ"
 
-#: lib/ui/stdcontext.inc:287 lib/ui/stdmenus.inc:397
+#: lib/ui/stdcontext.inc:287 lib/ui/stdmenus.inc:398
 msgid "Justified Line Break|J"
 msgstr "Στοιχισμένη Αλλαγή Γραμμής|η"
 
@@ -12147,11 +12147,11 @@ msgstr "Ρυθμίσεις Παραγράφου...|Π"
 msgid "Fullscreen Mode"
 msgstr "Κατάσταση Πλήρους Οθόνης"
 
-#: lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:237
+#: lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:238
 msgid "Append Argument"
 msgstr "Προσθήκη Ορίσματος"
 
-#: lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:238
+#: lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:239
 msgid "Remove Last Argument"
 msgstr "Απαλοιφή Τελευταίου Ορίσματος"
 
@@ -12163,23 +12163,23 @@ msgstr "Μετατροπή Πρώτου Ορίσματος από Μη σε Πρ
 msgid "Make Last Optional Into Non-Optional Argument"
 msgstr "Μετατροπή Τελευταίου Ορίσματος από Προαιρετικό σε Μη"
 
-#: lib/ui/stdcontext.inc:333 lib/ui/stdmenus.inc:242
+#: lib/ui/stdcontext.inc:333 lib/ui/stdmenus.inc:243
 msgid "Insert Optional Argument"
 msgstr "Εισαγωγή Προαιρετικού Ορίσματος"
 
-#: lib/ui/stdcontext.inc:334 lib/ui/stdmenus.inc:243
+#: lib/ui/stdcontext.inc:334 lib/ui/stdmenus.inc:244
 msgid "Remove Optional Argument"
 msgstr "Απαλοιφή Προαιρετικού Ορίσματος"
 
-#: lib/ui/stdcontext.inc:336 lib/ui/stdmenus.inc:245
+#: lib/ui/stdcontext.inc:336 lib/ui/stdmenus.inc:246
 msgid "Append Argument Eating From the Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:337 lib/ui/stdmenus.inc:246
+#: lib/ui/stdcontext.inc:337 lib/ui/stdmenus.inc:247
 msgid "Append Optional Argument Eating From the Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:338 lib/ui/stdmenus.inc:247
+#: lib/ui/stdcontext.inc:338 lib/ui/stdmenus.inc:248
 msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "Απαλοιφή Τελευταίου Ορίσματος που Προεξέχει Δεξιά"
 
@@ -12197,19 +12197,19 @@ msgstr "Εξωτερική επεξεργασία...|ξ"
 msgid "Multirow|i"
 msgstr "Πολλαπλές Στήλες|λ"
 
-#: lib/ui/stdcontext.inc:389 lib/ui/stdmenus.inc:181
+#: lib/ui/stdcontext.inc:389 lib/ui/stdmenus.inc:182
 msgid "Top Line|T"
 msgstr "Πάνω Γραμμή|Π"
 
-#: lib/ui/stdcontext.inc:390 lib/ui/stdmenus.inc:182
+#: lib/ui/stdcontext.inc:390 lib/ui/stdmenus.inc:183
 msgid "Bottom Line|B"
 msgstr "Κάτω Γραμμή|Κ"
 
-#: lib/ui/stdcontext.inc:391 lib/ui/stdmenus.inc:183
+#: lib/ui/stdcontext.inc:391 lib/ui/stdmenus.inc:184
 msgid "Left Line|L"
 msgstr "Αριστερή Γραμμή|Α"
 
-#: lib/ui/stdcontext.inc:392 lib/ui/stdmenus.inc:184
+#: lib/ui/stdcontext.inc:392 lib/ui/stdmenus.inc:185
 msgid "Right Line|R"
 msgstr "Δεξιά Γραμμή|Δ"
 
@@ -12228,11 +12228,11 @@ msgstr "Δεξιά|Δ"
 msgid "Middle|d"
 msgstr "Μέση|Μ"
 
-#: lib/ui/stdcontext.inc:404 lib/ui/stdmenus.inc:202
+#: lib/ui/stdcontext.inc:404 lib/ui/stdmenus.inc:203
 msgid "Copy Row|o"
 msgstr "Αντιγραφή Γραμμής|μ"
 
-#: lib/ui/stdcontext.inc:409 lib/ui/stdmenus.inc:207
+#: lib/ui/stdcontext.inc:409 lib/ui/stdmenus.inc:208
 msgid "Copy Column|p"
 msgstr "Αντιγραφή Στήλης|λ"
 
@@ -12298,7 +12298,7 @@ msgstr "Όλα τα Ευρετήρια|Ε"
 msgid "Subindex|b"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:587 lib/ui/stdmenus.inc:494
+#: lib/ui/stdcontext.inc:587 lib/ui/stdmenus.inc:495
 msgid "Reject Change|R"
 msgstr "Απόρριψη Αλλαγής|ρ"
 
@@ -12447,426 +12447,431 @@ msgid "Index Settings...|x"
 msgstr "Ρυθμίσεις Ευρετηρίου...|μ"
 
 #: lib/ui/stdmenus.inc:141
+#, fuzzy
+msgid "Info Settings...|n"
+msgstr "Ρυθμίσεις Ευρετηρίου...|μ"
+
+#: lib/ui/stdmenus.inc:142
 msgid "Listings Settings...|g"
 msgstr "Ρυθμίσεις λίστας...|λ"
 
-#: lib/ui/stdmenus.inc:145
+#: lib/ui/stdmenus.inc:146
 msgid "Table Settings...|a"
 msgstr "Ρυθμίσεις Πίνακα...|ι"
 
-#: lib/ui/stdmenus.inc:149
+#: lib/ui/stdmenus.inc:150
 msgid "Plain Text|T"
 msgstr "Απλό Κείμενο|π"
 
-#: lib/ui/stdmenus.inc:150
+#: lib/ui/stdmenus.inc:151
 msgid "Plain Text, Join Lines|J"
 msgstr "Απλό Κείμενο, Ένωση Γραμμών|ν"
 
-#: lib/ui/stdmenus.inc:152
+#: lib/ui/stdmenus.inc:153
 msgid "Selection|S"
 msgstr "Επιλογή|Ε"
 
-#: lib/ui/stdmenus.inc:153
+#: lib/ui/stdmenus.inc:154
 msgid "Selection, Join Lines|i"
 msgstr "Επιλογή, Ένωση Γραμμών|ω"
 
-#: lib/ui/stdmenus.inc:155
+#: lib/ui/stdmenus.inc:156
 msgid "Paste as LinkBack PDF"
 msgstr "Επικόλληση ως LinkBack PDF"
 
-#: lib/ui/stdmenus.inc:156
+#: lib/ui/stdmenus.inc:157
 msgid "Paste as PDF"
 msgstr "Επικόλληση ως PDF"
 
-#: lib/ui/stdmenus.inc:157
+#: lib/ui/stdmenus.inc:158
 msgid "Paste as PNG"
 msgstr "Επικόλληση ως PNG"
 
-#: lib/ui/stdmenus.inc:158
+#: lib/ui/stdmenus.inc:159
 msgid "Paste as JPEG"
 msgstr "Επικόλληση ως JPEG"
 
-#: lib/ui/stdmenus.inc:166
+#: lib/ui/stdmenus.inc:167
 msgid "Dissolve Text Style"
 msgstr "Κλείσιμο Στυλ Χαρακτήρων"
 
-#: lib/ui/stdmenus.inc:170
+#: lib/ui/stdmenus.inc:171
 msgid "Customized...|C"
 msgstr "Προσαρμοσμένο...|Π"
 
-#: lib/ui/stdmenus.inc:172
+#: lib/ui/stdmenus.inc:173
 msgid "Capitalize|a"
 msgstr "Κεφαλαιοποίηση|Κ"
 
-#: lib/ui/stdmenus.inc:173
+#: lib/ui/stdmenus.inc:174
 msgid "Uppercase|U"
 msgstr "Κεφαλαία Γράμματα|φ"
 
-#: lib/ui/stdmenus.inc:174
+#: lib/ui/stdmenus.inc:175
 msgid "Lowercase|L"
 msgstr "Μικρά Γράμματα|μ"
 
-#: lib/ui/stdmenus.inc:186
+#: lib/ui/stdmenus.inc:187
 msgid "Top|p"
 msgstr "Πάνω|Π"
 
-#: lib/ui/stdmenus.inc:187
+#: lib/ui/stdmenus.inc:188
 msgid "Middle|i"
 msgstr "Μέση|Μ"
 
-#: lib/ui/stdmenus.inc:188
+#: lib/ui/stdmenus.inc:189
 msgid "Bottom|o"
 msgstr "Κάτω|τ"
 
-#: lib/ui/stdmenus.inc:215
+#: lib/ui/stdmenus.inc:216
 msgid "Macro Definition"
 msgstr "Ορισμός Μακροεντολής"
 
-#: lib/ui/stdmenus.inc:219
+#: lib/ui/stdmenus.inc:220
 msgid "Text Style|T"
 msgstr "Στυλ Κειμένου|Σ"
 
-#: lib/ui/stdmenus.inc:225
+#: lib/ui/stdmenus.inc:226
 msgid "Add Line Above|A"
 msgstr "Προσθήκη Γραμμής Πάνω|Π"
 
-#: lib/ui/stdmenus.inc:240
+#: lib/ui/stdmenus.inc:241
 msgid "Make First Non-Optional into Optional Argument"
 msgstr "Μετατροπή Πρώτου Ορίσματος από Μη σε Προαιρετικό"
 
-#: lib/ui/stdmenus.inc:241
+#: lib/ui/stdmenus.inc:242
 msgid "Make Last Optional into Non-Optional Argument"
 msgstr "Μετατροπή Τελευταίου Ορίσματος από Προαιρετικό σε Μη"
 
-#: lib/ui/stdmenus.inc:257
+#: lib/ui/stdmenus.inc:258
 msgid "Math Normal Font|N"
 msgstr "Κανονική Γραμματοσειρά Μαθηματικών|Μ"
 
-#: lib/ui/stdmenus.inc:259
+#: lib/ui/stdmenus.inc:260
 msgid "Math Calligraphic Family|C"
 msgstr "Καλλιγραφική Οικογένεια Μαθηματικών|λ"
 
-#: lib/ui/stdmenus.inc:260
+#: lib/ui/stdmenus.inc:261
 msgid "Math Fraktur Family|F"
 msgstr "Fraktur Οικογένεια Μαθηματικών|κ"
 
-#: lib/ui/stdmenus.inc:261
+#: lib/ui/stdmenus.inc:262
 msgid "Math Roman Family|R"
 msgstr "Roman Οικογένεια Μαθηματικών|ο"
 
-#: lib/ui/stdmenus.inc:262
+#: lib/ui/stdmenus.inc:263
 msgid "Math Sans Serif Family|S"
 msgstr "Sans Serif Οικογένεια Μαθηματικών|γ"
 
-#: lib/ui/stdmenus.inc:264
+#: lib/ui/stdmenus.inc:265
 msgid "Math Bold Series|B"
 msgstr "Έντονη Μαθηματική Σειρά|ν"
 
-#: lib/ui/stdmenus.inc:266
+#: lib/ui/stdmenus.inc:267
 msgid "Text Normal Font|T"
 msgstr "Κανονική Γραμματοσειρά Κειμένου|α"
 
-#: lib/ui/stdmenus.inc:282
+#: lib/ui/stdmenus.inc:283
 msgid "Octave|O"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:283
+#: lib/ui/stdmenus.inc:284
 msgid "Maxima|M"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:284
+#: lib/ui/stdmenus.inc:285
 msgid "Mathematica|a"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:286
+#: lib/ui/stdmenus.inc:287
 msgid "Maple, Simplify|S"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:287
+#: lib/ui/stdmenus.inc:288
 msgid "Maple, Factor|F"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:288
+#: lib/ui/stdmenus.inc:289
 msgid "Maple, Evalm|E"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:289
+#: lib/ui/stdmenus.inc:290
 msgid "Maple, Evalf|v"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:308
+#: lib/ui/stdmenus.inc:309
 msgid "Open All Insets|O"
 msgstr "Άνοιγμα Όλων των Ενθέτων|ο"
 
-#: lib/ui/stdmenus.inc:309
+#: lib/ui/stdmenus.inc:310
 msgid "Close All Insets|C"
 msgstr "Κλείσιμο Όλων των Ενθέτων|Κ"
 
-#: lib/ui/stdmenus.inc:311
+#: lib/ui/stdmenus.inc:312
 msgid "Unfold Math Macro|n"
 msgstr "Ανάπτυξη Μαθηματικής Μακροεντολής|ξ"
 
-#: lib/ui/stdmenus.inc:312
+#: lib/ui/stdmenus.inc:313
 msgid "Fold Math Macro|d"
 msgstr "Σύμπτηξη Μαθηματικής Μακροεντολής|η"
 
-#: lib/ui/stdmenus.inc:314
+#: lib/ui/stdmenus.inc:315
 msgid "View Messages|g"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:315
+#: lib/ui/stdmenus.inc:316
 msgid "View Source|S"
 msgstr "Προβολή Προέλευσης|Π"
 
-#: lib/ui/stdmenus.inc:318
+#: lib/ui/stdmenus.inc:319
 msgid "View Master Document|M"
 msgstr "Προβολή Κύριου Εγγράφου|β"
 
-#: lib/ui/stdmenus.inc:319
+#: lib/ui/stdmenus.inc:320
 msgid "Update Master Document|a"
 msgstr "Ενημέρωση Κύριου Εγγράφου|ω"
 
-#: lib/ui/stdmenus.inc:321
+#: lib/ui/stdmenus.inc:322
 msgid "Split View Into Left and Right Half|i"
 msgstr "Διαίρεση Προβολής σε Αριστερό και Δεξί Μισό|Δ"
 
-#: lib/ui/stdmenus.inc:322
+#: lib/ui/stdmenus.inc:323
 msgid "Split View Into Upper and Lower Half|e"
 msgstr "Διαίρεση Προβολής σε Άνω και Κάτω Μισό|η"
 
-#: lib/ui/stdmenus.inc:323
+#: lib/ui/stdmenus.inc:324
 msgid "Close Current View|w"
 msgstr "Κλείσιμο Τρέχουσας Όψης|ψ"
 
-#: lib/ui/stdmenus.inc:324
+#: lib/ui/stdmenus.inc:325
 msgid "Fullscreen|l"
 msgstr "Πλήρης Οθόνη|θ"
 
-#: lib/ui/stdmenus.inc:325
+#: lib/ui/stdmenus.inc:326
 msgid "Toolbars|b"
 msgstr "Γραμμές Εργαλείων|γ"
 
-#: lib/ui/stdmenus.inc:341
+#: lib/ui/stdmenus.inc:342
 msgid "Special Character|p"
 msgstr "Ειδικός Χαρακτήρας|Χ"
 
-#: lib/ui/stdmenus.inc:342
+#: lib/ui/stdmenus.inc:343
 msgid "Formatting|o"
 msgstr "Μορφοποίηση|φ"
 
-#: lib/ui/stdmenus.inc:343
+#: lib/ui/stdmenus.inc:344
 msgid "List / TOC|i"
 msgstr "Λίστα / Πίνακας Περιεχομένων|Λ"
 
-#: lib/ui/stdmenus.inc:344
+#: lib/ui/stdmenus.inc:345
 msgid "Float|a"
 msgstr "Αιωρούμενο|ρ"
 
-#: lib/ui/stdmenus.inc:346
+#: lib/ui/stdmenus.inc:347
 msgid "Branch|B"
 msgstr "Κλάδος|δ"
 
-#: lib/ui/stdmenus.inc:347
+#: lib/ui/stdmenus.inc:348
 msgid "Custom Insets"
 msgstr "Προσαρμοσμένα Ενθέματα"
 
-#: lib/ui/stdmenus.inc:348
+#: lib/ui/stdmenus.inc:349
 msgid "File|e"
 msgstr "Αρχείο|ρ"
 
-#: lib/ui/stdmenus.inc:349
+#: lib/ui/stdmenus.inc:350
 msgid "Box[[Menu]]"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:352
+#: lib/ui/stdmenus.inc:353
 msgid "Cross-Reference...|R"
 msgstr "Ενδο-Αναφορά...|Ε"
 
-#: lib/ui/stdmenus.inc:356
+#: lib/ui/stdmenus.inc:357
 msgid "Nomenclature Entry...|y"
 msgstr "Καταχώρηση Επιστημονικής Ορολογίας|Ο"
 
-#: lib/ui/stdmenus.inc:358
+#: lib/ui/stdmenus.inc:359
 msgid "Table...|T"
 msgstr "Πίνακας...|κ"
 
-#: lib/ui/stdmenus.inc:360
+#: lib/ui/stdmenus.inc:361
 msgid "URL|U"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:361
+#: lib/ui/stdmenus.inc:362
 msgid "Hyperlink...|k"
 msgstr "Υπερσύνδεσμος|ν"
 
-#: lib/ui/stdmenus.inc:364
+#: lib/ui/stdmenus.inc:365
 msgid "Short Title|S"
 msgstr "Σύντομος Τίτλος|Σ"
 
-#: lib/ui/stdmenus.inc:365
+#: lib/ui/stdmenus.inc:366
 msgid "TeX Code|X"
 msgstr "Κώδικας TeX|ι"
 
-#: lib/ui/stdmenus.inc:366
+#: lib/ui/stdmenus.inc:367
 msgid "Program Listing[[Menu]]"
 msgstr "Κώδικας Προγράμματος[[Μενού]]"
 
-#: lib/ui/stdmenus.inc:374
+#: lib/ui/stdmenus.inc:375
 msgid "Ordinary Quote|Q"
 msgstr "Συνήθη Εισαγωγικά|γ"
 
-#: lib/ui/stdmenus.inc:375
+#: lib/ui/stdmenus.inc:376
 msgid "Single Quote|S"
 msgstr "Απλά Εισαγωγικά|Α"
 
-#: lib/ui/stdmenus.inc:379
+#: lib/ui/stdmenus.inc:380
 msgid "Phonetic Symbols|P"
 msgstr "Φωνητικά Σύμβολα|Φ"
 
-#: lib/ui/stdmenus.inc:386
+#: lib/ui/stdmenus.inc:387
 msgid "Protected Space|P"
 msgstr "Προστατευμένο Διάστημα|Π"
 
-#: lib/ui/stdmenus.inc:390
+#: lib/ui/stdmenus.inc:391
 msgid "Horizontal Line|L"
 msgstr "Οριζόντια Γραμμή|ζ"
 
-#: lib/ui/stdmenus.inc:391
+#: lib/ui/stdmenus.inc:392
 msgid "Vertical Space...|V"
 msgstr "Κατακόρυφο Διάστημα...|Κ"
 
-#: lib/ui/stdmenus.inc:394
+#: lib/ui/stdmenus.inc:395
 msgid "Hyphenation Point|H"
 msgstr "Σημείο Συλλαβισμού|β"
 
-#: lib/ui/stdmenus.inc:408
+#: lib/ui/stdmenus.inc:409
 msgid "Numbered Formula|N"
 msgstr "Αριθμημένη Φόρμουλα|Α"
 
-#: lib/ui/stdmenus.inc:431
+#: lib/ui/stdmenus.inc:432
 msgid "Figure Wrap Float|F"
 msgstr "Αιωρούμενο Αναδίπλωσης Εικόνας|ρ"
 
-#: lib/ui/stdmenus.inc:432
+#: lib/ui/stdmenus.inc:433
 msgid "Table Wrap Float|T"
 msgstr "Αιωρούμενο Αναδίπλωσης Πίνακα|κ"
 
-#: lib/ui/stdmenus.inc:448
+#: lib/ui/stdmenus.inc:449
 msgid "External Material...|M"
 msgstr "Εξωτερικό Υλικό...|Υ"
 
-#: lib/ui/stdmenus.inc:449
+#: lib/ui/stdmenus.inc:450
 msgid "Child Document...|d"
 msgstr "Έγγραφο Παιδί...|δ"
 
-#: lib/ui/stdmenus.inc:454
+#: lib/ui/stdmenus.inc:455
 msgid "Comment|C"
 msgstr "Σχόλιο|χ"
 
-#: lib/ui/stdmenus.inc:461
+#: lib/ui/stdmenus.inc:462
 msgid "Insert New Branch...|I"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:466
+#: lib/ui/stdmenus.inc:467
 msgid "Horizontal Phantom"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:467
+#: lib/ui/stdmenus.inc:468
 msgid "Vertical Phantom"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:479
+#: lib/ui/stdmenus.inc:480
 msgid "Change Tracking|C"
 msgstr "Αλλαγή Παρακολούθησης|Α"
 
-#: lib/ui/stdmenus.inc:483
+#: lib/ui/stdmenus.inc:484
 msgid "Start Appendix Here|A"
 msgstr "Έναρξη Παραρτήματος Εδώ|η"
 
-#: lib/ui/stdmenus.inc:485
+#: lib/ui/stdmenus.inc:486
 msgid "Save in Bundled Format|F"
 msgstr "Αποθήκευση σε Μορφή Πακέτου|Π"
 
-#: lib/ui/stdmenus.inc:486
+#: lib/ui/stdmenus.inc:487
 msgid "Compressed|m"
 msgstr "Συμπιεσμένο|Σ"
 
-#: lib/ui/stdmenus.inc:493
+#: lib/ui/stdmenus.inc:494
 msgid "Accept Change|A"
 msgstr "Αποδοχή Αλλαγής|Α"
 
-#: lib/ui/stdmenus.inc:495
+#: lib/ui/stdmenus.inc:496
 msgid "Accept All Changes|c"
 msgstr "Αποδοχή Όλων των Αλλαγών|ω"
 
-#: lib/ui/stdmenus.inc:496
+#: lib/ui/stdmenus.inc:497
 msgid "Reject All Changes|e"
 msgstr "Απόρριψη Όλων των Αλλαγών|ψ"
 
-#: lib/ui/stdmenus.inc:506
+#: lib/ui/stdmenus.inc:507
 msgid "Next Change|C"
 msgstr "Επόμενη Αλλαγή|Α"
 
-#: lib/ui/stdmenus.inc:507
+#: lib/ui/stdmenus.inc:508
 msgid "Next Cross-Reference|R"
 msgstr "Επόμενη Ενδο-Αναφορά|φ"
 
-#: lib/ui/stdmenus.inc:519
+#: lib/ui/stdmenus.inc:520
 msgid "Clear Bookmarks|C"
 msgstr "Καθαρισμός Σελιδοδεικτών|Κ"
 
-#: lib/ui/stdmenus.inc:521
+#: lib/ui/stdmenus.inc:522
 msgid "Navigate Back|B"
 msgstr "Πλοήγηση Πίσω|Π"
 
-#: lib/ui/stdmenus.inc:531
+#: lib/ui/stdmenus.inc:532
 msgid "Thesaurus...|T"
 msgstr "Θησαυρός...|Θ"
 
-#: lib/ui/stdmenus.inc:532
+#: lib/ui/stdmenus.inc:533
 msgid "Statistics...|a"
 msgstr "Στατιστικά...|Σ"
 
-#: lib/ui/stdmenus.inc:534
+#: lib/ui/stdmenus.inc:535
 msgid "TeX Information|I"
 msgstr "Πληροφορίες TeX|ρ"
 
-#: lib/ui/stdmenus.inc:535
+#: lib/ui/stdmenus.inc:536
 msgid "Compare...|C"
 msgstr "Σύγκριση...|Σ"
 
-#: lib/ui/stdmenus.inc:551
+#: lib/ui/stdmenus.inc:552
 msgid "Additional Features|F"
 msgstr "Πρόσθετα Χαρακτηριστικά|Π"
 
-#: lib/ui/stdmenus.inc:552
+#: lib/ui/stdmenus.inc:553
 msgid "Embedded Objects|O"
 msgstr "Ενσωματωμένα Αντικείμενα|ν"
 
-#: lib/ui/stdmenus.inc:555
+#: lib/ui/stdmenus.inc:556
 msgid "Shortcuts|S"
 msgstr "Συντομεύσεις|Σ"
 
-#: lib/ui/stdmenus.inc:556
+#: lib/ui/stdmenus.inc:557
 msgid "LyX Functions|y"
 msgstr "Συναρτήσεις LyX|υ"
 
-#: lib/ui/stdmenus.inc:558
+#: lib/ui/stdmenus.inc:559
 msgid "Specific Manuals|p"
 msgstr "Συγκεκριμένα Εγχειρίδια Χρήσης|Χ"
 
-#: lib/ui/stdmenus.inc:564
+#: lib/ui/stdmenus.inc:565
 msgid "Linguistics Manual|L"
 msgstr "Εγχειρίδιο Χρήσης Γλωσσολογίας|Γ"
 
-#: lib/ui/stdmenus.inc:565
+#: lib/ui/stdmenus.inc:566
 msgid "Braille Manual|B"
 msgstr "Εγχειρίδιο Χρήσης Γραφής Braille|ρ"
 
-#: lib/ui/stdmenus.inc:566
+#: lib/ui/stdmenus.inc:567
 msgid "XY-pic Manual|X"
 msgstr "Εγχειρίδιο Χρήσης XY-pic|ς"
 
-#: lib/ui/stdmenus.inc:567
+#: lib/ui/stdmenus.inc:568
 msgid "Multicolumn Manual|M"
 msgstr "Εγχειρίδιο Χρήσης Πολλαπλών Στηλών|Π"
 
@@ -16075,11 +16080,11 @@ msgstr ""
 msgid "Print document failed"
 msgstr "Η εκτύπωση του εγγράφου απέτυχε"
 
-#: src/Buffer.cpp:308
+#: src/Buffer.cpp:309
 msgid "Disk Error: "
 msgstr "Σφάλμα Δίσκου:"
 
-#: src/Buffer.cpp:309
+#: src/Buffer.cpp:310
 #, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
@@ -16087,57 +16092,57 @@ msgstr ""
 "To LyX δεν μπόρεσε να δημιουργήσει τον προσωρινό φάκελο '%1$s' (Δίσκος "
 "γεμάτος;)"
 
-#: src/Buffer.cpp:389
+#: src/Buffer.cpp:390
 msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr ""
 "Το LyX επιχείρησε να κλείσει ένα έγγραφο με μη αποθηκευμένες αλλαγές!\n"
 
-#: src/Buffer.cpp:391
+#: src/Buffer.cpp:392
 msgid "Attempting to close changed document!"
 msgstr "Απόπειρα κλεισίματος τροποποιημένου εγγράφου!"
 
-#: src/Buffer.cpp:399
+#: src/Buffer.cpp:400
 msgid "Could not remove temporary directory"
 msgstr "Δεν ήταν δυνατή η διαγραφή του προσωρινού φακέλου"
 
-#: src/Buffer.cpp:400
+#: src/Buffer.cpp:401
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Δεν ήταν δυνατή η διαγραφή του προσωρινού φακέλου %1$s"
 
-#: src/Buffer.cpp:700
+#: src/Buffer.cpp:701
 msgid "Unknown document class"
 msgstr "Άγνωστη κλάση εγγράφου"
 
-#: src/Buffer.cpp:701
+#: src/Buffer.cpp:702
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 "Χρήση της προεπιλεγμένης κλάσης εγγράφου, επειδή η κλάση %1$s είναι άγνωστη."
 
-#: src/Buffer.cpp:705 src/Text.cpp:461
+#: src/Buffer.cpp:706 src/Text.cpp:461
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Άγνωστο κουπόνι (token): %1$s %2$s\n"
 
-#: src/Buffer.cpp:709 src/Buffer.cpp:716 src/Buffer.cpp:736
+#: src/Buffer.cpp:710 src/Buffer.cpp:717 src/Buffer.cpp:737
 msgid "Document header error"
 msgstr "Σφάλμα κεφαλίδας εγγράφου"
 
-#: src/Buffer.cpp:715
+#: src/Buffer.cpp:716
 msgid "\\begin_header is missing"
 msgstr "\\λείπει το begin_header"
 
-#: src/Buffer.cpp:735
+#: src/Buffer.cpp:736
 msgid "\\begin_document is missing"
 msgstr "\\λείπει το begin_document"
 
-#: src/Buffer.cpp:751 src/Buffer.cpp:757 src/BufferView.cpp:1376
+#: src/Buffer.cpp:752 src/Buffer.cpp:758 src/BufferView.cpp:1376
 #: src/BufferView.cpp:1382
 msgid "Changes not shown in LaTeX output"
 msgstr "Οι αλλαγές δεν εμφανίζονται στην έξοδο LaTeX"
 
-#: src/Buffer.cpp:752 src/BufferView.cpp:1377
+#: src/Buffer.cpp:753 src/BufferView.cpp:1377
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -16149,7 +16154,7 @@ msgstr ""
 "Εγκαταστείστε αυτά τα πακέτα ή ορίστε ξανά τα \\lyxadded και \\lyxdeleted "
 "στο προοίμιο LaTeX."
 
-#: src/Buffer.cpp:758 src/BufferView.cpp:1383
+#: src/Buffer.cpp:759 src/BufferView.cpp:1383
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -16161,20 +16166,20 @@ msgstr ""
 "Εγκαταστείστε αυτά τα πακέτα ή ορίστε ξανά τα \\lyxadded και \\lyxdeleted "
 "στο προοίμιο LaTeX."
 
-#: src/Buffer.cpp:872 src/Buffer.cpp:962
+#: src/Buffer.cpp:873 src/Buffer.cpp:963
 msgid "Document format failure"
 msgstr "Αποτυχία μορφής εγγράφου"
 
-#: src/Buffer.cpp:873
+#: src/Buffer.cpp:874
 #, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "Το %1$s δεν είναι ένα αναγνώσιμο έγγραφο LyX."
 
-#: src/Buffer.cpp:910
+#: src/Buffer.cpp:911
 msgid "Conversion failed"
 msgstr "Η μετατροπή απέτυχε"
 
-#: src/Buffer.cpp:911
+#: src/Buffer.cpp:912
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -16183,11 +16188,11 @@ msgstr ""
 "Το %1$s είναι από διαφορετική έκδοση του LyX, αλλά δεν ήταν δυνατή η "
 "δημιουργία του προσωρινού αρχείου μετατροπής."
 
-#: src/Buffer.cpp:920
+#: src/Buffer.cpp:921
 msgid "Conversion script not found"
 msgstr "Το σενάριο μετατροπής δεν βρέθηκε"
 
-#: src/Buffer.cpp:921
+#: src/Buffer.cpp:922
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -16196,11 +16201,11 @@ msgstr ""
 "Το %1$s είναι από διαφορετική έκδοση του LyX, αλλά το σενάριο μετατροπής "
 "lyx2lyx δεν βρέθηκε."
 
-#: src/Buffer.cpp:941 src/Buffer.cpp:947
+#: src/Buffer.cpp:942 src/Buffer.cpp:948
 msgid "Conversion script failed"
 msgstr "Το σενάριο μετατροπής απέτυχε"
 
-#: src/Buffer.cpp:942
+#: src/Buffer.cpp:943
 #, c-format
 msgid ""
 "%1$s is from an older version of LyX, but the lyx2lyx script failed to "
@@ -16209,7 +16214,7 @@ msgstr ""
 "Το %1$s είναι από παλαιότερη έκδοση του LyX, αλλά το σενάριο lyx2lyx απέτυχε "
 "να το μετατρέψει."
 
-#: src/Buffer.cpp:948
+#: src/Buffer.cpp:949
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and cannot be converted by the lyx2lyx "
@@ -16218,17 +16223,17 @@ msgstr ""
 "Το %1$s είναι από νεότερη έκδοση του LyX και το σενάριο lyx2lyx αδυνατεί να "
 "το μετατρέψει."
 
-#: src/Buffer.cpp:963
+#: src/Buffer.cpp:964
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 "Το %1$s τελείωσε απρόσμενα, που σημαίνει ότι είναι πιθανόν κατεστραμμένο."
 
-#: src/Buffer.cpp:995
+#: src/Buffer.cpp:996
 msgid "Backup failure"
 msgstr "Αποτυχία αντιγράφου ασφαλείας"
 
-#: src/Buffer.cpp:996
+#: src/Buffer.cpp:997
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -16237,7 +16242,7 @@ msgstr ""
 "Αποτυχία δημιουργίας αντιγράφου ασφαλείας για το %1$s.\n"
 "Ελέγξτε εάν ο φάκελος υπάρχει και είναι εγγράψιμος."
 
-#: src/Buffer.cpp:1006
+#: src/Buffer.cpp:1007
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
@@ -16246,56 +16251,56 @@ msgstr ""
 "Το έγγραφο %1$s έχει τροποποιηθεί εξωτερικά. Είστε σίγουροι ότι θέλετε να το "
 "αντικαταστήσετε;"
 
-#: src/Buffer.cpp:1008
+#: src/Buffer.cpp:1009
 msgid "Overwrite modified file?"
 msgstr "Αντικατάσταση τροποποιημένου αρχείου;"
 
-#: src/Buffer.cpp:1009 src/Buffer.cpp:2142 src/Exporter.cpp:49
+#: src/Buffer.cpp:1010 src/Buffer.cpp:2143 src/Exporter.cpp:49
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1902
-#: src/frontends/qt4/GuiView.cpp:2093
+#: src/frontends/qt4/GuiView.cpp:2094
 msgid "&Overwrite"
 msgstr "&Αντικατάσταση"
 
-#: src/Buffer.cpp:1033
+#: src/Buffer.cpp:1034
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Αποθήκευση εγγράφου %1$s..."
 
-#: src/Buffer.cpp:1048
+#: src/Buffer.cpp:1049
 msgid " could not write file!"
 msgstr " το αρχείο δεν γράφτηκε!"
 
-#: src/Buffer.cpp:1055
+#: src/Buffer.cpp:1056
 msgid " done."
 msgstr " έγινε."
 
-#: src/Buffer.cpp:1070
+#: src/Buffer.cpp:1071
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Προσπάθεια αποθήκευσης εγγράφου %1$s\n"
 
-#: src/Buffer.cpp:1080 src/Buffer.cpp:1093 src/Buffer.cpp:1107
+#: src/Buffer.cpp:1081 src/Buffer.cpp:1094 src/Buffer.cpp:1108
 #, c-format
 msgid "  Saved to %1$s. Phew.\n"
 msgstr "  Αποθηκεύτηκε στο %1$s. Ουφ.\n"
 
-#: src/Buffer.cpp:1083
+#: src/Buffer.cpp:1084
 msgid "  Save failed! Trying again...\n"
 msgstr "  Η αποθήκευση απέτυχε! Προσπάθεια...\n"
 
-#: src/Buffer.cpp:1097
+#: src/Buffer.cpp:1098
 msgid "  Save failed! Trying yet again...\n"
 msgstr "  Η αποθήκευση απέτυχε! Προσπάθεια...\n"
 
-#: src/Buffer.cpp:1111
+#: src/Buffer.cpp:1112
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Η αποθήκευση απέτυχε! Καταστροφή. Το έγγραφο χάθηκε!"
 
-#: src/Buffer.cpp:1195
+#: src/Buffer.cpp:1196
 msgid "Iconv software exception Detected"
 msgstr "Εντοπίστηκε εξαίρεση λογισμικού Iconv."
 
-#: src/Buffer.cpp:1195
+#: src/Buffer.cpp:1196
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
@@ -16304,12 +16309,12 @@ msgstr ""
 "Επιβεβαιώστε ότι το λογισμικό υποστήριξης της κωδικοποίησής σας (%1$s) είναι "
 "σωστά εγκατεστημένο."
 
-#: src/Buffer.cpp:1217
+#: src/Buffer.cpp:1218
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr "Δεν βρέθηκε εντολή LaTeX για τον χαρακτήρα '%1$s' (σημείο κώδικα %2$s)"
 
-#: src/Buffer.cpp:1220
+#: src/Buffer.cpp:1221
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -16319,20 +16324,20 @@ msgstr ""
 "επιλεγμένη κωδικοποίηση.\n"
 "Η μετατροπή της κωδικοποίησης εγγράφου σε utf8 ίσως να βοηθήσει."
 
-#: src/Buffer.cpp:1227
+#: src/Buffer.cpp:1228
 msgid "iconv conversion failed"
 msgstr "η μετατροπή iconv απέτυχε"
 
-#: src/Buffer.cpp:1232
+#: src/Buffer.cpp:1233
 msgid "conversion failed"
 msgstr "η μετατροπή απέτυχε"
 
-#: src/Buffer.cpp:1329
+#: src/Buffer.cpp:1330
 #, fuzzy
 msgid "Uncodable character in file path"
 msgstr "Μη κωδικοποιήσιμος χαρακτήρας στο όνομα συγγραφέα"
 
-#: src/Buffer.cpp:1330
+#: src/Buffer.cpp:1331
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -16341,57 +16346,57 @@ msgid ""
 "current document encoding (namely %2$s).\n"
 "This will likely result in incomplete output.\n"
 "\n"
-"Chose an appropriate document encoding (such as utf8)\n"
+"Choose an appropriate document encoding (such as utf8)\n"
 "or change the file path name."
 msgstr ""
 
-#: src/Buffer.cpp:1604
+#: src/Buffer.cpp:1605
 msgid "Running chktex..."
 msgstr "Εκτέλεση chktex..."
 
-#: src/Buffer.cpp:1618
+#: src/Buffer.cpp:1619
 msgid "chktex failure"
 msgstr "αποτυχία chktex"
 
-#: src/Buffer.cpp:1619
+#: src/Buffer.cpp:1620
 msgid "Could not run chktex successfully."
 msgstr "Δεν ήταν δυνατή η επιτυχής εκτέλεση του chktex."
 
-#: src/Buffer.cpp:1827
+#: src/Buffer.cpp:1828
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Δεν υπάρχουν πληροφορίες για εξαγωγή σε τύπο: %1$s"
 
-#: src/Buffer.cpp:1899 src/frontends/qt4/GuiView.cpp:2803
+#: src/Buffer.cpp:1900 src/frontends/qt4/GuiView.cpp:2809
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Σφάλμα εξαγωγής σε τύπο: %1$s."
 
-#: src/Buffer.cpp:1974
+#: src/Buffer.cpp:1975
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Ο κλάδος \"%1$s\" υπάρχει ήδη."
 
-#: src/Buffer.cpp:2002
+#: src/Buffer.cpp:2003
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr ""
 
-#: src/Buffer.cpp:2059
+#: src/Buffer.cpp:2060
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Αδυναμία επεξεργασίας του \"%1$s\""
 
-#: src/Buffer.cpp:2066
+#: src/Buffer.cpp:2067
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Άφνωστος προορισμός \"%1$s\""
 
-#: src/Buffer.cpp:2076
+#: src/Buffer.cpp:2077
 msgid "Error exporting to DVI."
 msgstr "Σφάλμα εξαγωγής σε DVI."
 
-#: src/Buffer.cpp:2138 src/Exporter.cpp:44
+#: src/Buffer.cpp:2139 src/Exporter.cpp:44
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -16402,73 +16407,73 @@ msgstr ""
 "\n"
 "Θέλετε να το αντικαταστήσετε;"
 
-#: src/Buffer.cpp:2141 src/Exporter.cpp:47
+#: src/Buffer.cpp:2142 src/Exporter.cpp:47
 msgid "Overwrite file?"
 msgstr "Αντικατάσταση αρχείου;"
 
-#: src/Buffer.cpp:2158
+#: src/Buffer.cpp:2159
 msgid "Error running external commands."
 msgstr "Σφάλμα εκτέλεσης εξωτερικής εντολής."
 
-#: src/Buffer.cpp:2935
+#: src/Buffer.cpp:2934
 msgid "Preview source code"
 msgstr "Προεπισκόπηση κώδικα πηγής"
 
-#: src/Buffer.cpp:2949
+#: src/Buffer.cpp:2948
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Προεπισκόπηση κώδικα πηγής για την παράγραφο %1$d"
 
-#: src/Buffer.cpp:2953
+#: src/Buffer.cpp:2952
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Προεπισκόπηση κώδικα πηγής από την παράγραφο %1$s έως την %2$s"
 
-#: src/Buffer.cpp:3061
+#: src/Buffer.cpp:3060
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Αυτόματη αποθήκευση του %1$s"
 
-#: src/Buffer.cpp:3115
+#: src/Buffer.cpp:3114
 msgid "Autosave failed!"
 msgstr "Η αυτόματη αποθήκευση απέτυχε"
 
-#: src/Buffer.cpp:3173
+#: src/Buffer.cpp:3172
 msgid "Autosaving current document..."
 msgstr "Αυτόματη αποθήκευση τρέχοντος εγγράφου..."
 
-#: src/Buffer.cpp:3241
+#: src/Buffer.cpp:3240
 msgid "Couldn't export file"
 msgstr "Δεν ήταν δυνατή η εξαγωγή του αρχείου"
 
-#: src/Buffer.cpp:3242
+#: src/Buffer.cpp:3241
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Δεν υπάρχουν πληροφορίες για την εξαγωγή της μορφής %1$s."
 
-#: src/Buffer.cpp:3287
+#: src/Buffer.cpp:3286
 msgid "File name error"
 msgstr "Σφάλμα ονόματος αρχείου"
 
-#: src/Buffer.cpp:3288
+#: src/Buffer.cpp:3287
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Το μονοπάτι προς το έγγραφο δεν μπορεί να περιέχει κενά."
 
-#: src/Buffer.cpp:3347
+#: src/Buffer.cpp:3346
 msgid "Document export cancelled."
 msgstr "Η εξαγωγή του εγγράφου ακυρώθηκε."
 
-#: src/Buffer.cpp:3353
+#: src/Buffer.cpp:3352
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Το έγγραφο εξήχθη ως %1$s στο αρχείο `%2$s'"
 
-#: src/Buffer.cpp:3359
+#: src/Buffer.cpp:3358
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Το έγγραφο εξήχθη ως %1$s"
 
-#: src/Buffer.cpp:3437
+#: src/Buffer.cpp:3436
 #, c-format
 msgid ""
 "The specified document\n"
@@ -16479,11 +16484,11 @@ msgstr ""
 "%1$s\n"
 "δεν ήταν δυνατό να αναγνωστεί."
 
-#: src/Buffer.cpp:3439
+#: src/Buffer.cpp:3438
 msgid "Could not read document"
 msgstr "Δεν ήταν δυνατή η ανάγνωση του εγγράφου"
 
-#: src/Buffer.cpp:3449
+#: src/Buffer.cpp:3448
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -16494,27 +16499,27 @@ msgstr ""
 "\n"
 "Επαναφορά αυτού του αντιγράφου;"
 
-#: src/Buffer.cpp:3452
+#: src/Buffer.cpp:3451
 msgid "Load emergency save?"
 msgstr "Φόρτωση αντιγράφου εκτάκτου ανάγκης;"
 
-#: src/Buffer.cpp:3453
+#: src/Buffer.cpp:3452
 msgid "&Recover"
 msgstr "&Επαναφορά"
 
-#: src/Buffer.cpp:3453
+#: src/Buffer.cpp:3452
 msgid "&Load Original"
 msgstr "&Φόρτωση Αυθεντικού"
 
-#: src/Buffer.cpp:3463
+#: src/Buffer.cpp:3462
 msgid "Document was successfully recovered."
 msgstr "Το έγγραφο ανακτήθηκε επιτυχώς."
 
-#: src/Buffer.cpp:3465
+#: src/Buffer.cpp:3464
 msgid "Document was NOT successfully recovered."
 msgstr "Το έγγραφο ΔΕΝ ανακτήθηκε επιτυχώς."
 
-#: src/Buffer.cpp:3466
+#: src/Buffer.cpp:3465
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -16523,27 +16528,27 @@ msgstr ""
 "Διαγραφή αρχείου έκτακτης ανάγκης τώρα;\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3469 src/Buffer.cpp:3479
+#: src/Buffer.cpp:3468 src/Buffer.cpp:3478
 msgid "Delete emergency file?"
 msgstr "Διαγραφή αρχείου έκτακτης ανάγκης;"
 
-#: src/Buffer.cpp:3470 src/Buffer.cpp:3481
+#: src/Buffer.cpp:3469 src/Buffer.cpp:3480
 msgid "&Keep it"
 msgstr "&Διατήρησέ το"
 
-#: src/Buffer.cpp:3473
+#: src/Buffer.cpp:3472
 msgid "Emergency file deleted"
 msgstr "Το αρχείο έκτακτης ανάγκης διαγράφηκε"
 
-#: src/Buffer.cpp:3474
+#: src/Buffer.cpp:3473
 msgid "Do not forget to save your file now!"
 msgstr "Μη ξεχάσετε να αποθηκεύσετε το αρχείο σας τώρα!"
 
-#: src/Buffer.cpp:3480
+#: src/Buffer.cpp:3479
 msgid "Remove emergency file now?"
 msgstr "Διαγραφή αρχείου έκτακτης ανάγκης τώρα;"
 
-#: src/Buffer.cpp:3495
+#: src/Buffer.cpp:3494
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -16554,31 +16559,44 @@ msgstr ""
 "\n"
 "Να φορτωθεί αυτό εναλλακτικά;"
 
-#: src/Buffer.cpp:3498
+#: src/Buffer.cpp:3497
 msgid "Load backup?"
 msgstr "Φόρτωση αντιγράφου ασφαλείας;"
 
-#: src/Buffer.cpp:3499
+#: src/Buffer.cpp:3498
 msgid "&Load backup"
 msgstr "Φό&ρτωση αντιγράφου ασφαλείας"
 
-#: src/Buffer.cpp:3499
+#: src/Buffer.cpp:3498
 msgid "Load &original"
 msgstr "Φόρτωση &αυθεντικού"
 
-#: src/Buffer.cpp:3794 src/insets/InsetCaption.cpp:324
+#: src/Buffer.cpp:3793 src/insets/InsetCaption.cpp:324
 msgid "Senseless!!! "
 msgstr "Επιπόλαιο!!!"
 
-#: src/Buffer.cpp:3912
+#: src/Buffer.cpp:3911
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Το έγγραφο %1$s επαναφορτώθηκε."
 
-#: src/Buffer.cpp:3914
+#: src/Buffer.cpp:3913
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Δεν ήταν δυνατή η επαναφόρτωση του εγγράφου %1$s."
+
+#: src/Buffer.cpp:3945
+#, fuzzy
+msgid "Included File Invalid"
+msgstr "Συμπερίληψη Αρχείου...|υ"
+
+#: src/Buffer.cpp:3946
+#, c-format
+msgid ""
+"Saving this document to a new location has made the file:\n"
+"  %1$s\n"
+"inaccessible. You will need to update the included filename."
+msgstr ""
 
 #: src/BufferParams.cpp:523
 #, c-format
@@ -16805,14 +16823,14 @@ msgstr ""
 "σε UTF-8 με διαφορετικό πρόγραμμα από το LyX.\n"
 
 #: src/Changes.cpp:363 src/Paragraph.cpp:2205
-#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:249
+#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:248
 #: src/insets/InsetCommandParams.cpp:375 src/insets/InsetListings.cpp:180
 #: src/insets/InsetListings.cpp:188 src/insets/InsetListings.cpp:212
 #: src/insets/InsetNomencl.cpp:282 src/mathed/InsetMathString.cpp:161
 msgid "LyX Warning: "
 msgstr "Προειδοποίηση  LyX:"
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2206 src/insets/InsetBibitem.cpp:250
+#: src/Changes.cpp:364 src/Paragraph.cpp:2206 src/insets/InsetBibitem.cpp:249
 #: src/insets/InsetCommandParams.cpp:376 src/insets/InsetListings.cpp:181
 #: src/insets/InsetListings.cpp:189 src/insets/InsetNomencl.cpp:283
 #: src/mathed/InsetMathString.cpp:162
@@ -16831,7 +16849,7 @@ msgid ""
 "represented in the current encoding. The respective glyphs\n"
 "will be omitted in the exported LaTeX file.\n"
 "\n"
-"Chose an appropriate document encoding (such as utf8)\n"
+"Choose an appropriate document encoding (such as utf8)\n"
 "or change the spelling of the author name."
 msgstr ""
 
@@ -17405,7 +17423,7 @@ msgstr "  Αριθμός %1$s"
 msgid "Cannot view file"
 msgstr "Δεν είναι δυνατή η προβολή του αρχείου"
 
-#: src/Format.cpp:265 src/Format.cpp:336 src/frontends/qt4/GuiView.cpp:2724
+#: src/Format.cpp:265 src/Format.cpp:336 src/frontends/qt4/GuiView.cpp:2730
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Το αρχείο δεν υπάρχει: %1$s"
@@ -18342,7 +18360,7 @@ msgstr "(καμία αρχική περιγραφή)"
 msgid "(no log message)"
 msgstr "(κανένα μήνυμα ημερολογίου)"
 
-#: src/LyXVC.cpp:166 src/frontends/qt4/GuiView.cpp:2568
+#: src/LyXVC.cpp:166 src/frontends/qt4/GuiView.cpp:2574
 msgid "LyX VC: Log Message"
 msgstr "LyX Έλεγχος Έκδοσης: Μήνυμα Ημερολογίου"
 
@@ -18363,7 +18381,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Επιστροφή στην αποθηκευμένη εκδοχή του εγγράφου;"
 
-#: src/LyXVC.cpp:215 src/frontends/qt4/GuiView.cpp:2940
+#: src/LyXVC.cpp:215 src/frontends/qt4/GuiView.cpp:2946
 msgid "&Revert"
 msgstr "&Επαναφορά"
 
@@ -18591,7 +18609,7 @@ msgstr "Σφάλμα ανάγνωσης μονάδας %1$s\n"
 
 #: src/VCBackend.cpp:63 src/VCBackend.cpp:676 src/VCBackend.cpp:745
 #: src/VCBackend.cpp:751 src/VCBackend.cpp:772
-#: src/frontends/qt4/GuiView.cpp:2533
+#: src/frontends/qt4/GuiView.cpp:2539
 msgid "Revision control error."
 msgstr "Σφάλμα ελέγχου αναθεώρησης."
 
@@ -18619,15 +18637,15 @@ msgstr ""
 
 #: src/VCBackend.cpp:746
 msgid ""
-"Error when acquiring write lock.\n"
-"Most probably another user is editing\n"
+"Error while acquiring write lock.\n"
+"Another user is most probably editing\n"
 "the current document now!\n"
 "Also check the access to the repository."
 msgstr ""
 
 #: src/VCBackend.cpp:752
 msgid ""
-"Error when releasing write lock.\n"
+"Error while releasing write lock.\n"
 "Check the access to the repository."
 msgstr ""
 
@@ -18688,27 +18706,27 @@ msgid "Do not forget to commit the locking property into the repository."
 msgstr ""
 "Μην ξεχάσετε να οριστικοποιήσετε την ιδιότητα κλειδώματος στο repository."
 
-#: src/VSpace.cpp:472
+#: src/VSpace.cpp:468
 msgid "Default skip"
 msgstr "Προεπιλεγμένο κενό"
 
-#: src/VSpace.cpp:475
+#: src/VSpace.cpp:471
 msgid "Small skip"
 msgstr "Μικρό κενό"
 
-#: src/VSpace.cpp:478
+#: src/VSpace.cpp:474
 msgid "Medium skip"
 msgstr "Μεσαίο κενό"
 
-#: src/VSpace.cpp:481
+#: src/VSpace.cpp:477
 msgid "Big skip"
 msgstr "Μεγάλο κενό"
 
-#: src/VSpace.cpp:484
+#: src/VSpace.cpp:480
 msgid "Vertical fill"
 msgstr "Κατακόρυφο γέμισμα"
 
-#: src/VSpace.cpp:491
+#: src/VSpace.cpp:487
 msgid "protected"
 msgstr "προστατευμένο"
 
@@ -18726,7 +18744,7 @@ msgstr ""
 msgid "Reload saved document?"
 msgstr "Επαναφόρτωση αποθηκευμένου εγγράφου;"
 
-#: src/buffer_funcs.cpp:74 src/frontends/qt4/GuiView.cpp:2481
+#: src/buffer_funcs.cpp:74 src/frontends/qt4/GuiView.cpp:2487
 msgid "&Reload"
 msgstr "&Επαναφόρτωση"
 
@@ -18944,9 +18962,9 @@ msgstr "Φάκελος βιβλιοθήκης:"
 msgid "User directory: "
 msgstr "Φάκελος χρήστη:"
 
-#: src/frontends/qt4/GuiAlert.cpp:145 src/frontends/qt4/GuiAlert.cpp:180
-#: src/frontends/qt4/GuiAlert.cpp:214 src/frontends/qt4/GuiAlert.cpp:242
-#: src/frontends/qt4/GuiAlert.cpp:274
+#: src/frontends/qt4/GuiAlert.cpp:146 src/frontends/qt4/GuiAlert.cpp:181
+#: src/frontends/qt4/GuiAlert.cpp:215 src/frontends/qt4/GuiAlert.cpp:243
+#: src/frontends/qt4/GuiAlert.cpp:275
 #, c-format
 msgid "LyX: %1$s"
 msgstr ""
@@ -21067,7 +21085,7 @@ msgstr "Έγγραφα LyX-1.6.x (*.lyx16)"
 
 #: src/frontends/qt4/GuiView.cpp:1740 src/frontends/qt4/Validator.cpp:188
 #: src/insets/ExternalSupport.cpp:367 src/insets/InsetBibtex.cpp:285
-#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:510
+#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:509
 msgid "Invalid filename"
 msgstr "Άκυρο όνομα αρχείου"
 
@@ -21115,7 +21133,7 @@ msgstr "Καμιά πληροφορία για την εισαγωγή του τ
 msgid "Select %1$s file to import"
 msgstr "Επιλογή %1$s αρχείου για εισαγωγή"
 
-#: src/frontends/qt4/GuiView.cpp:1899 src/frontends/qt4/GuiView.cpp:2088
+#: src/frontends/qt4/GuiView.cpp:1899 src/frontends/qt4/GuiView.cpp:2089
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -21126,7 +21144,7 @@ msgstr ""
 "\n"
 "Θέλετε να το αντικαταστήσετε;"
 
-#: src/frontends/qt4/GuiView.cpp:1901 src/frontends/qt4/GuiView.cpp:2092
+#: src/frontends/qt4/GuiView.cpp:1901 src/frontends/qt4/GuiView.cpp:2093
 msgid "Overwrite document?"
 msgstr "Αντικατάσταση εγγράφου;"
 
@@ -21167,11 +21185,11 @@ msgstr "Όλα τα Αρχεία (*)"
 msgid "Choose a filename to save document as"
 msgstr "Επιλέξτε ένα όνομα αρχείου για αποθήκευση του εγγράφου"
 
-#: src/frontends/qt4/GuiView.cpp:2093 src/frontends/qt4/GuiView.cpp:2148
+#: src/frontends/qt4/GuiView.cpp:2094 src/frontends/qt4/GuiView.cpp:2154
 msgid "&Rename"
 msgstr "&Μετονομασία"
 
-#: src/frontends/qt4/GuiView.cpp:2144
+#: src/frontends/qt4/GuiView.cpp:2150
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -21182,15 +21200,15 @@ msgstr ""
 "\n"
 "Θέλετε να μετονομάσετε το έγγραφο και να προσπαθήσετε ξανά;"
 
-#: src/frontends/qt4/GuiView.cpp:2147
+#: src/frontends/qt4/GuiView.cpp:2153
 msgid "Rename and save?"
 msgstr "Μετονομασία και αποθήκευση;"
 
-#: src/frontends/qt4/GuiView.cpp:2148
+#: src/frontends/qt4/GuiView.cpp:2154
 msgid "&Retry"
 msgstr "Δοκιμή &Ξανά"
 
-#: src/frontends/qt4/GuiView.cpp:2343 src/frontends/qt4/GuiView.cpp:2449
+#: src/frontends/qt4/GuiView.cpp:2349 src/frontends/qt4/GuiView.cpp:2455
 #, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -21201,11 +21219,11 @@ msgstr ""
 "\n"
 "Θέλετε να αποθηκεύσετε το έγγραφο;"
 
-#: src/frontends/qt4/GuiView.cpp:2346 src/frontends/qt4/GuiView.cpp:2452
+#: src/frontends/qt4/GuiView.cpp:2352 src/frontends/qt4/GuiView.cpp:2458
 msgid "Save new document?"
 msgstr "Αποθήκευση νέου εγγράφου;"
 
-#: src/frontends/qt4/GuiView.cpp:2351
+#: src/frontends/qt4/GuiView.cpp:2357
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -21216,15 +21234,15 @@ msgstr ""
 "\n"
 "Θέλετε να αποθηκεύσετε το έγγραφο ή να απορρίψετε τις αλλαγές;"
 
-#: src/frontends/qt4/GuiView.cpp:2353 src/frontends/qt4/GuiView.cpp:2446
+#: src/frontends/qt4/GuiView.cpp:2359 src/frontends/qt4/GuiView.cpp:2452
 msgid "Save changed document?"
 msgstr "Αποθήκευση τροποποιημένου εγγράφου;"
 
-#: src/frontends/qt4/GuiView.cpp:2354
+#: src/frontends/qt4/GuiView.cpp:2360
 msgid "&Discard"
 msgstr "&Απόρριψη"
 
-#: src/frontends/qt4/GuiView.cpp:2443
+#: src/frontends/qt4/GuiView.cpp:2449
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -21235,7 +21253,7 @@ msgstr ""
 "\n"
 "Θέλετε να αποθηκεύσετε το έγγραφο;"
 
-#: src/frontends/qt4/GuiView.cpp:2477
+#: src/frontends/qt4/GuiView.cpp:2483
 #, c-format
 msgid ""
 "Document \n"
@@ -21246,56 +21264,56 @@ msgstr ""
 "%1$s\n"
 " έχει τροποποιηθεί εξωτερικά. Επαναφόρτωση τώρα; Κάθε τοπική αλλαγή θα χαθεί."
 
-#: src/frontends/qt4/GuiView.cpp:2480
+#: src/frontends/qt4/GuiView.cpp:2486
 msgid "Reload externally changed document?"
 msgstr "Επαναφόρτωση εξωτερικά τροποποιημένου εγγράφου;"
 
-#: src/frontends/qt4/GuiView.cpp:2534
+#: src/frontends/qt4/GuiView.cpp:2540
 msgid "Error when setting the locking property."
 msgstr "Σφάλμα κατά τη θέση της ιδιότητας κλειδώματος."
 
-#: src/frontends/qt4/GuiView.cpp:2577
+#: src/frontends/qt4/GuiView.cpp:2583
 msgid "Directory is not accessible."
 msgstr "Ο φάκελος δεν είναι προσβάσιμος."
 
-#: src/frontends/qt4/GuiView.cpp:2660
+#: src/frontends/qt4/GuiView.cpp:2666
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Άνοιγμα εγγράφου παιδιού %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2744
+#: src/frontends/qt4/GuiView.cpp:2750
 #, c-format
 msgid "Successful export to format: %1$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2745
+#: src/frontends/qt4/GuiView.cpp:2751
 #, c-format
 msgid "Error exporting to format: %1$s"
 msgstr "Σφάλμα εξαγωγής σε τύπο: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2757
+#: src/frontends/qt4/GuiView.cpp:2763
 #, c-format
 msgid "Successful preview of format: %1$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2758
+#: src/frontends/qt4/GuiView.cpp:2764
 #, c-format
 msgid "Error previewing format: %1$s"
 msgstr "Σφάλμα προεπισκόπησης τύπου: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2817
+#: src/frontends/qt4/GuiView.cpp:2823
 msgid "Exporting ..."
 msgstr "Εξαγωγή..."
 
-#: src/frontends/qt4/GuiView.cpp:2837
+#: src/frontends/qt4/GuiView.cpp:2843
 msgid "Previewing ..."
 msgstr "Προεπισκόπηση..."
 
-#: src/frontends/qt4/GuiView.cpp:2890
+#: src/frontends/qt4/GuiView.cpp:2896
 msgid "Document not loaded"
 msgstr "Το έγγραφο δεν φορτώθηκε"
 
-#: src/frontends/qt4/GuiView.cpp:2937
+#: src/frontends/qt4/GuiView.cpp:2943
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -21304,19 +21322,19 @@ msgstr ""
 "Οποιαδήποτε τροποποίηση θα χαθεί. Θέλετε σίγουρα να επαναφέρετε την "
 "αποθηκευμένη έκδοση του εγγράφου %1$s;"
 
-#: src/frontends/qt4/GuiView.cpp:2939
+#: src/frontends/qt4/GuiView.cpp:2945
 msgid "Revert to saved document?"
 msgstr "Επαναφορά στο αποθηκευμένο αρχείο;"
 
-#: src/frontends/qt4/GuiView.cpp:2963
+#: src/frontends/qt4/GuiView.cpp:2969
 msgid "Saving all documents..."
 msgstr "Αποθήκευση όλων των εγγράφων..."
 
-#: src/frontends/qt4/GuiView.cpp:2973
+#: src/frontends/qt4/GuiView.cpp:2979
 msgid "All documents saved."
 msgstr "Όλα τα έγγραφα αποθηκεύτηκαν."
 
-#: src/frontends/qt4/GuiView.cpp:3074
+#: src/frontends/qt4/GuiView.cpp:3080
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s άγνωστη εντολή!"
@@ -21583,7 +21601,7 @@ msgid "List of Changes"
 msgstr "Λίστα Αλλαγών"
 
 #: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:286
-#: src/insets/InsetGraphics.cpp:594 src/insets/InsetInclude.cpp:511
+#: src/insets/InsetGraphics.cpp:594 src/insets/InsetInclude.cpp:510
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
@@ -21615,11 +21633,11 @@ msgstr "Κατακόρυφο Διάστημα"
 msgid "Horizontal Math Space"
 msgstr "Οριζόντιο Διάστημα...|Ο"
 
-#: src/insets/InsetBibitem.cpp:92
+#: src/insets/InsetBibitem.cpp:91
 msgid "Keys must be unique!"
 msgstr "Τα κλειδιά πρέπει να είναι μοναδικά"
 
-#: src/insets/InsetBibitem.cpp:93
+#: src/insets/InsetBibitem.cpp:92
 #, c-format
 msgid ""
 "The key %1$s already exists,\n"
@@ -21862,7 +21880,7 @@ msgstr "Λίστα %1$s"
 msgid "footnote"
 msgstr "υποσημείωση"
 
-#: src/insets/InsetGraphics.cpp:472 src/insets/InsetInclude.cpp:592
+#: src/insets/InsetGraphics.cpp:472 src/insets/InsetInclude.cpp:591
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -21895,18 +21913,18 @@ msgstr "Είσοδος Αυτολεξεί*"
 msgid "Include (excluded)"
 msgstr "Συμπερίληψη (αποκλεισμός)"
 
-#: src/insets/InsetInclude.cpp:476 src/insets/InsetInclude.cpp:698
-#: src/insets/InsetInclude.cpp:743
+#: src/insets/InsetInclude.cpp:475 src/insets/InsetInclude.cpp:695
+#: src/insets/InsetInclude.cpp:740
 msgid "Recursive input"
 msgstr "Αναδρομική είσοδος"
 
-#: src/insets/InsetInclude.cpp:477 src/insets/InsetInclude.cpp:699
-#: src/insets/InsetInclude.cpp:744
+#: src/insets/InsetInclude.cpp:476 src/insets/InsetInclude.cpp:696
+#: src/insets/InsetInclude.cpp:741
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:533
+#: src/insets/InsetInclude.cpp:532
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -21914,11 +21932,11 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:539
+#: src/insets/InsetInclude.cpp:538
 msgid "Different textclasses"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:554
+#: src/insets/InsetInclude.cpp:553
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -21926,15 +21944,15 @@ msgid ""
 "which is not used in parent file."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:558
+#: src/insets/InsetInclude.cpp:557
 msgid "Module not found"
 msgstr "Η μονάδα δε βρέθηκε"
 
-#: src/insets/InsetInclude.cpp:686
+#: src/insets/InsetInclude.cpp:683
 msgid "Unsupported Inclusion"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:687
+#: src/insets/InsetInclude.cpp:684
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -21984,19 +22002,19 @@ msgstr "Πληροφορία σχετικά με %1$s '%2$s'"
 msgid "Missing \\end_inset at this point."
 msgstr "Λείπει \\end_inset σε αυτό το σημείο."
 
-#: src/insets/InsetInfo.cpp:284
+#: src/insets/InsetInfo.cpp:277
 msgid "undefined"
 msgstr "μη ορισμένο"
 
-#: src/insets/InsetInfo.cpp:307 src/insets/InsetInfo.cpp:311
+#: src/insets/InsetInfo.cpp:300 src/insets/InsetInfo.cpp:304
 msgid "yes"
 msgstr "ναι"
 
-#: src/insets/InsetInfo.cpp:307 src/insets/InsetInfo.cpp:311
+#: src/insets/InsetInfo.cpp:300 src/insets/InsetInfo.cpp:304
 msgid "no"
 msgstr "όχι"
 
-#: src/insets/InsetInfo.cpp:393
+#: src/insets/InsetInfo.cpp:386
 msgid "Unknown buffer info"
 msgstr "Άγνωστη πληροφορία buffer"
 
@@ -22381,7 +22399,7 @@ msgstr "Προστατευμένο Οριζόντιο Διάστημα (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Άγνωστος τύπος Πίνακα Περιεχομένων"
 
-#: src/insets/InsetTabular.cpp:4323
+#: src/insets/InsetTabular.cpp:4316
 msgid "Selection size should match clipboard content."
 msgstr ""
 "Το μέγεθος επιλογής θα πρέπει να ταιριάζει με τα περιεχόμενα του πρόχειρου."
@@ -22559,23 +22577,28 @@ msgstr ""
 msgid "Changing number of columns not allowed in 'cases': feature %1$s"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.cpp:1415
+#: src/mathed/InsetMathGrid.cpp:1418
+#, fuzzy
+msgid "Cursor not in table"
+msgstr " (δεν είναι εγκατεστημμένο)"
+
+#: src/mathed/InsetMathGrid.cpp:1424
 msgid "Only one row"
 msgstr "Μόνο μία γραμμή"
 
-#: src/mathed/InsetMathGrid.cpp:1421
+#: src/mathed/InsetMathGrid.cpp:1430
 msgid "Only one column"
 msgstr "Μόνο μία στήλη"
 
-#: src/mathed/InsetMathGrid.cpp:1429
+#: src/mathed/InsetMathGrid.cpp:1438
 msgid "No hline to delete"
 msgstr "Δεν υπάρχει hline για διαγραφή"
 
-#: src/mathed/InsetMathGrid.cpp:1438
+#: src/mathed/InsetMathGrid.cpp:1447
 msgid "No vline to delete"
 msgstr "Δεν υπάρχει vline για διαγραφή"
 
-#: src/mathed/InsetMathGrid.cpp:1467
+#: src/mathed/InsetMathGrid.cpp:1476
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
