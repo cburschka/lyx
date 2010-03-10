@@ -76,6 +76,9 @@ public:
 		Font const & font, bool toggleall = false);
 
 	/// what you expect when pressing \<enter\> at cursor position
+	/// \param inverse_logic if false, the same layout is set for the
+	/// new paragraph if the layout is an environment; if true, the
+	/// same layout is set if it is not an environment
 	void breakParagraph(Cursor & cur, bool inverse_logic = false);
 
 	/// set layout over selection
