@@ -2466,18 +2466,16 @@ void Buffer::getChildren(std::vector<Buffer *> & clist, bool grand_children) con
 		clist.push_back(child);
 		if (grand_children) {
 			// there might be grandchildren
-			std::vector<Buffer *> glist = child->getChildren();
-			for (vector<Buffer *>::const_iterator git = glist.begin();
-				 git != glist.end(); ++git)
-				clist.push_back(*git);
+			vector<Buffer *> glist = child->getChildren();
+			clist.insert(clist.end(), glist.begin(), glist.end());
 		}
 	}
 }
 
 
-std::vector<Buffer *> Buffer::getChildren(bool grand_children) const
+vector<Buffer *> Buffer::getChildren(bool grand_children) const
 {
-	std::vector<Buffer *> v;
+	vector<Buffer *> v;
 	getChildren(v, grand_children);
 	return v;
 }
