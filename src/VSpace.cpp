@@ -244,6 +244,8 @@ bool isValidGlueLength(string const & data, GlueLength * result)
 	}
 	// end of hack
 
+	number_index = unit_index = 1;  // entries at index 0 are sentinels
+
 	// construct "pattern" from "data"
 	size_t const pattern_max_size = 20;
 	string pattern;
