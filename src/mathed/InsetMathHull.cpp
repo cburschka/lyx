@@ -313,18 +313,18 @@ int InsetMathHull::defaultColSpace(col_type col)
 
 docstring InsetMathHull::standardFont() const
 {
-	const char *font_name;
+	docstring font_name;
 	switch (type_) {
 	case hullRegexp:
-		font_name = "texttt";
+		font_name = from_ascii("texttt");
 		break;
 	case hullNone:
-		font_name = "lyxnochange";
+		font_name = from_ascii("lyxnochange");
 		break;
 	default:
-		font_name = "mathnormal";
+		font_name = from_ascii("mathnormal");
 	}
-	return from_ascii(font_name);
+	return font_name;
 }
 
 
