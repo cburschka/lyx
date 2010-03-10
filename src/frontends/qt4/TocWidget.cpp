@@ -315,11 +315,6 @@ void TocWidget::on_typeCO_currentIndexChanged(int index)
 {
 	current_type_ = typeCO->itemData(index).toString();
 	updateView();
-	// In Qt 4.6.x, we can end up here programmatically, when the
-	// model is rebuilt. But the Buffer may not be ready for us to
-	// reset focus, start the cursor, etc. So we check to see if the
-	// combo box has focus. It will, if the user has changed the 
-	// value.
 	if (typeCO->hasFocus())
 		gui_view_.setFocus();
 }
