@@ -1887,8 +1887,7 @@ void InsetMathNest::completionPosAndDim(Cursor const & cur, int & x, int & y,
 	dim.asc += 3;
 
 	// and position
-	Point xy
-	= cur.bv().coordCache().insets().xy(inset);
+	Point xy = cur.bv().coordCache().insets().xy(inset);
 	x = xy.x_;
 	y = xy.y_;
 }
