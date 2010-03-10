@@ -33,34 +33,37 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-///////////////////////////////////////////////////////////////////////////////
-//
-// TocTypeModel
-//
-///////////////////////////////////////////////////////////////////////////////
-
-TocTypeModel::TocTypeModel(QObject * parent)
-	: QStandardItemModel(parent)
-{}
-
-
-void TocTypeModel::reset()
+/// A QStandardItemModel that gives access to the reset method.
+/// This is needed in order to fix http://www.lyx.org/trac/ticket/3740
+class TocTypeModel : public QStandardItemModel
 {
-	QStandardItemModel::reset();
-}
+public:
+	///
+	TocTypeModel(QObject * parent) : QStandardItemModel(parent)
+	{}
 
-#if QT_VERSION >= 0x040600
-void TocTypeModel::beginResetModel() { 
-	QStandardItemModel::beginResetModel(); 
-}
-
-
-void TocTypeModel::endResetModel() 
-{ 
-	QStandardItemModel::endResetModel(); 
-}
-#endif
-
+	///
+	void reset()
+	{
+		QStandardItemModel::reset();
+	}
+	///
+	void beginResetModel()
+	{ 
+	#if QT_VERSION >= 0x040600
+		QStandardItemModel::beginResetModel(); 
+	#endif
+	}
+	///
+	void endResetModel()
+	{ 
+	#if QT_VERSION >= 0x040600
+		QStandardItemModel::endResetModel(); 
+	#else
+		reset();
+	#endif
+	}
+};
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -350,9 +353,7 @@ void TocModels::reset(BufferView const * bv)
 	}
 
 	names_->blockSignals(true);
-#if QT_VERSION >= 0x040600
 	names_->beginResetModel();
-#endif	
 	names_->insertColumns(0, 1);
 	TocList const & tocs = bv_->buffer().masterBuffer()->tocBackend().tocs();
 	TocList::const_iterator it = tocs.begin();
@@ -375,11 +376,7 @@ void TocModels::reset(BufferView const * bv)
 		names_->setData(index, type, Qt::UserRole);
 	}
 	names_->blockSignals(false);
-#if QT_VERSION >= 0x040600
 	names_->endResetModel();
-#else
-	names_->reset();
-#endif
 }
 
 

@@ -29,20 +29,7 @@ class TocItem;
 
 namespace frontend {
 
-/// A QStandardItemModel that gives access to the reset method.
-/// This is needed in order to fix http://www.lyx.org/trac/ticket/3740
-class TocTypeModel : public QStandardItemModel
-{
-public:
-	///
-	TocTypeModel(QObject * parent);
-	///
-	void reset();
-#if QT_VERSION >= 0x040600
-	void beginResetModel();
-	void endResetModel();
-#endif
-};
+class TocTypeModel;
 
 /// A class that adapt the TocBackend of a Buffer into standard Qt models for
 /// GUI visualisation.
