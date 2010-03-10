@@ -1237,9 +1237,9 @@ void GuiView::disconnectBufferView()
 
 void GuiView::errors(string const & error_type, bool from_master)
 {
-	ErrorList & el = from_master ? 
-		documentBufferView()->buffer().masterBuffer()->errorList(error_type)
-		: documentBufferView()->buffer().errorList(error_type);
+	ErrorList & el = from_master ?
+		currentBufferView()->buffer().masterBuffer()->errorList(error_type)
+		: currentBufferView()->buffer().errorList(error_type);
 	string data = error_type;
 	if (from_master)
 		data = "from_master|" + error_type;
