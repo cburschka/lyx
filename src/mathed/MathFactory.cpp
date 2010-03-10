@@ -134,6 +134,7 @@ void initSymbols()
 			continue;
 		} else if (line.size() >= 4 && line.substr(0, 4) == "else") {
 			skip = !skip;
+			continue;
 		} else if (line.size() >= 5 && line.substr(0, 5) == "endif") {
 			skip = false;
 			continue;
