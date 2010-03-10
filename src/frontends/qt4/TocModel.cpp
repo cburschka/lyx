@@ -41,14 +41,26 @@ namespace frontend {
 
 TocTypeModel::TocTypeModel(QObject * parent)
 	: QStandardItemModel(parent)
-{
-}
+{}
 
 
 void TocTypeModel::reset()
 {
 	QStandardItemModel::reset();
 }
+
+#if QT_VERSION >= 0x040600
+void TocTypeModel::beginResetModel() { 
+	QStandardItemModel::beginResetModel(); 
+}
+
+
+void TocTypeModel::endResetModel() 
+{ 
+	QStandardItemModel::endResetModel(); 
+}
+#endif
+
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -338,6 +350,9 @@ void TocModels::reset(BufferView const * bv)
 	}
 
 	names_->blockSignals(true);
+#if QT_VERSION >= 0x040600
+	names_->beginResetModel();
+#endif	
 	names_->insertColumns(0, 1);
 	TocList const & tocs = bv_->buffer().masterBuffer()->tocBackend().tocs();
 	TocList::const_iterator it = tocs.begin();
@@ -360,7 +375,11 @@ void TocModels::reset(BufferView const * bv)
 		names_->setData(index, type, Qt::UserRole);
 	}
 	names_->blockSignals(false);
+#if QT_VERSION >= 0x040600
+	names_->endResetModel();
+#else
 	names_->reset();
+#endif
 }
 
 

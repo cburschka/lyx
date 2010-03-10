@@ -38,6 +38,10 @@ public:
 	TocTypeModel(QObject * parent);
 	///
 	void reset();
+#if QT_VERSION >= 0x040600
+	void beginResetModel();
+	void endResetModel();
+#endif
 };
 
 /// A class that adapt the TocBackend of a Buffer into standard Qt models for
