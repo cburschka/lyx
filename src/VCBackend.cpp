@@ -743,13 +743,13 @@ void SVN::fileLock(bool lock, FileName const & tmpf, string &status)
 
 	if (!isLocked() && lock)
 		frontend::Alert::error(_("Revision control error."),
-			_("Error when acquiring write lock.\n"
-			"Most probably another user is editing\n"
+			_("Error while acquiring write lock.\n"
+			"Another user is most probably editing\n"
 			"the current document now!\n"
 			"Also check the access to the repository."));
 	if (isLocked() && !lock)
 		frontend::Alert::error(_("Revision control error."),
-			_("Error when releasing write lock.\n"
+			_("Error while releasing write lock.\n"
 			"Check the access to the repository."));
 }
 
@@ -767,7 +767,7 @@ string SVN::checkOut()
 		    FileName(owner_->filePath()));
 
 	string log;
-	string res = scanLogFile(tmpf, log);
+	string const res = scanLogFile(tmpf, log);
 	if (!res.empty())
 		frontend::Alert::error(_("Revision control error."),
 			bformat(_("Error when updating from repository.\n"
