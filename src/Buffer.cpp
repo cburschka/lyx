@@ -1333,7 +1333,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 						  "contains glyphs that are unknown in the\n"
 						  "current document encoding (namely %2$s).\n"
 						  "This will likely result in incomplete output.\n\n"
-						  "Chose an appropriate document encoding (such as utf8)\n"
+						  "Choose an appropriate document encoding (such as utf8)\n"
 						  "or change the file path name."), inputpath, uncodable_glyphs));
 			} else {
 				os << "\\makeatletter\n"

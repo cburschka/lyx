@@ -381,7 +381,7 @@ docstring getLaTeXMarkup(docstring const & macro, docstring const & author,
 				  "used for change tracking, contains glyphs that cannot be\n"
 				  "represented in the current encoding. The respective glyphs\n"
 				  "will be omitted in the exported LaTeX file.\n\n"
-				  "Chose an appropriate document encoding (such as utf8)\n"
+				  "Choose an appropriate document encoding (such as utf8)\n"
 				  "or change the spelling of the author name."), uncodable_author));
 		warned_author = uncodable_author;
 	}
