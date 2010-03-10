@@ -935,6 +935,14 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			// in an unreliable way. See this thread
 			// http://www.mail-archive.com/lyx-devel%40lists.lyx.org/msg104917.html
 			// for more details.
+			// However, we remove empty braces because they look
+			// ugly on screen and we are sure that they were added
+			// by the write() method (and will be re-added on save).
+			if (p->nuc().size() == 1 &&
+			    p->nuc().back()->asBraceInset() &&
+			    p->nuc().back()->asBraceInset()->cell(0).empty())
+				p->nuc().erase(0);
+
 			parse(p->cell(p->idxOfScript(up)), FLAG_ITEM, mode);
 			if (limits) {
 				p->limits(limits);
