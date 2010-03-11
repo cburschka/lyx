@@ -2255,7 +2255,7 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 
 	// go through row and draw from RTL boundary to RTL boundary
 	while (cur < end) {
-		bool drawNow = false;
+		bool draw_now = false;
 
 		// simplified cursorForward code below which does not
 		// descend into insets and which does not go into the
@@ -2270,7 +2270,7 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 			// because:  ab|cDDEEFFghi -> abc|DDEEFFghi
 			++cur.pos();
 			cur.boundary(true);
-			drawNow = true;
+			draw_now = true;
 		} else {
 			// move right
 			++cur.pos();
@@ -2285,7 +2285,7 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 			x1 = cursorX(cur.top(), cur.boundary());
 		}
 
-		if (!(cur < end) || drawNow) {
+		if (!(cur < end) || draw_now) {
 			x2 = cursorX(cur.top(), cur.boundary());
 			pi.pain.fillRectangle(x + min(x1,x2), y1, abs(x2 - x1), y2 - y1,
 				Color_selection);
