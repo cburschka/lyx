@@ -2645,7 +2645,7 @@ void PrefShortcuts::modifyShortcut()
 	QTreeWidgetItem * item = shortcutsTW->currentItem();
 	if (item->flags() & Qt::ItemIsSelectable) {
 		shortcut_->lfunLE->setText(item->text(0));
-		save_lfun_ = item->text(0);
+		save_lfun_ = item->text(0).trimmed();
 		shortcut_->shortcutWG->setText(item->text(1));
 		KeySequence seq;
 		seq.parse(fromqstr(item->data(1, Qt::UserRole).toString()));
@@ -2810,19 +2810,19 @@ void PrefShortcuts::shortcutOkPressed()
 	
 	// make sure this key isn't already bound---and, if so, not unbound
 	FuncCode const unbind = user_unbind_.getBinding(k).action;
-	if (oldBinding.action != LFUN_UNKNOWN_ACTION && unbind == LFUN_UNKNOWN_ACTION)
-	{
+	docstring const action_string = makeCmdString(oldBinding);
+	if (oldBinding.action != LFUN_UNKNOWN_ACTION && unbind == LFUN_UNKNOWN_ACTION
+		  && save_lfun_ != toqstr(action_string)) {
 		// FIXME Perhaps we should offer to over-write the old shortcut?
 		// If so, we'll need to remove it from our list, etc.
-		docstring const actionStr = makeCmdString(oldBinding);
 		Alert::error(_("Failed to create shortcut"),
 			bformat(_("Shortcut `%1$s' is already bound to:\n%2$s\n"
 			  "You need to remove that binding before creating a new one."), 
-			k.print(KeySequence::ForGui), actionStr));
+			k.print(KeySequence::ForGui), action_string));
 		return;
 	}
 
-	if (!save_lfun_.isEmpty() && new_lfun == save_lfun_)
+	if (!save_lfun_.isEmpty())
 		// real modification of the lfun's shortcut,
 		// so remove the previous one
 		removeShortcut();
