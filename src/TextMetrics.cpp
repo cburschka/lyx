@@ -179,17 +179,6 @@ ParagraphMetrics & TextMetrics::parMetrics(pit_type pit, bool redo)
 }
 
 
-int TextMetrics::parPosition(pit_type pit) const
-{
-	if (pit < par_metrics_.begin()->first)
-		return -1000000;
-	if (pit > par_metrics_.rbegin()->first)
-		return +1000000;
-
-	return par_metrics_[pit].position();
-}
-
-
 bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width)
 {
 	LASSERT(mi.base.textwidth > 0, /**/);

@@ -47,9 +47,6 @@ public:
 	std::pair<pit_type, ParagraphMetrics const *> last() const;
 
 	///
-	int parPosition(pit_type pit) const;
-
-	///
 	Dimension const & dimension() const { return dim_; }
 	///
 	Point const & origin() const { return origin_; }
