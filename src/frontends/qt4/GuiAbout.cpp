@@ -124,6 +124,11 @@ static QString version()
 	out << "\n";
 	out << qt_("User directory: ");
 	out << toqstr(makeDisplayPath(package().user_support().absFilename()));
+#ifdef DEVEL_VERSION
+	out << "\n";
+	out << "Qt Version (run-time): " << toqstr(qVersion()) << "\n";
+	out << "Qt Version (compile-time): " << QT_VERSION_STR << "\n";
+#endif
 	return res;
 }
 
