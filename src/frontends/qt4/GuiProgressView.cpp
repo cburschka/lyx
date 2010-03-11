@@ -237,11 +237,7 @@ void GuiProgressView::hideEvent(QHideEvent*)
 
 Dialog * createGuiProgressView(GuiView & guiview)
 {
-#ifdef Q_WS_MACX
-	return new GuiProgressView(guiview, Qt::RightDockWidgetArea, Qt::Drawer);
-#else
 	return new GuiProgressView(guiview, Qt::BottomDockWidgetArea);
-#endif
 }
 
 

@@ -338,7 +338,15 @@ void GuiSpellchecker::showSummary()
 }
 
 
-Dialog * createGuiSpellchecker(GuiView & lv) { return new GuiSpellchecker(lv); }
+Dialog * createGuiSpellchecker(GuiView & lv) 
+{ 
+	GuiSpellchecker * gui = new GuiSpellchecker(lv);
+#ifdef Q_WS_MACX
+	gui->setFloating(true);
+#endif
+	return gui;
+}
+
 
 } // namespace frontend
 } // namespace lyx
