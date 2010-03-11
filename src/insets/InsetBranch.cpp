@@ -48,6 +48,7 @@ InsetBranch::InsetBranch(Buffer * buf, InsetBranchParams const & params)
 
 void InsetBranch::write(ostream & os) const
 {
+	os << "Branch ";
 	params_.write(os);
 	os << '\n';
 	InsetCollapsable::write(os);
@@ -260,7 +261,6 @@ string InsetBranch::params2string(InsetBranchParams const & params)
 {
 	ostringstream data;
 	params.write(data);
-	data << '\n';
 	return data.str();
 }
 
@@ -275,7 +275,6 @@ void InsetBranch::string2params(string const & in, InsetBranchParams & params)
 	Lexer lex;
 	lex.setStream(data);
 	lex.setContext("InsetBranch::string2params");
-	lex >> "Branch";
 	params.read(lex);
 }
 
@@ -295,7 +294,7 @@ void InsetBranch::addToToc(DocIterator const & cpit)
 
 void InsetBranchParams::write(ostream & os) const
 {
-	os << "Branch " << to_utf8(branch);
+	os << to_utf8(branch);
 }
 
 
