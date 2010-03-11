@@ -412,7 +412,7 @@ void CVS::scanMaster()
 				locker_ = "Unlocked";
 				vcstatus = UNLOCKED;
 			} else {
-				// Here we should also to some more checking
+				// Here we should also do some more checking
 				// to see if there are conflicts or not.
 				locker_ = "Locked";
 				vcstatus = LOCKED;
