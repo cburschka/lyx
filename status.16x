@@ -152,6 +152,8 @@ What's new
 - On Windows, allow loading and saving files whose path and/or name contains
   characters not encodable in the current code page (bug 5238).
 
+- Do not try to move the autosave file if it does not yet exist (bug 6525.)
+
 
 * USER INTERFACE
 
