@@ -36,7 +36,6 @@ Function ConfigureLyX
   Delete "${PRODUCT_BAT}"
   FileOpen $R1 "${PRODUCT_BAT}" w
   FileWrite $R1 '@echo off$\r$\n\
-		 SET LANG=$LangCode$\r$\n\
 		 SET AIK_DATA_DIR=${AiksaurusDir}$\r$\n\
 		 start "${PRODUCT_NAME}" "${LAUNCHER_EXE}" %*$\r$\n'
   FileClose $R1
@@ -49,7 +48,8 @@ Function ConfigureLyX
   FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" w
   # set some general things
   FileWrite $R1 '\screen_zoom "120"$\r$\n\
-                 \accept_compound true$\r$\n'
+                 \accept_compound true$\r$\n\
+                 \gui_language $LangNameLyX$\r$\n'
   ${if} "$PathPrefix" != ""
    FileWrite $R1 '\path_prefix "$PathPrefix"$\r$\n'
   ${endif}

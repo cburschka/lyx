@@ -522,160 +522,191 @@
 # To set later LyX's menu language
 # therefore here are only declared the languages LyX is translated to
 
-!macro GetLangCode LangCde Name LangEnc
+!macro GetLangCode LangCde Name LangNmeLyX LangEnc
 
   ${if} ${Name} = "Arabic"
    StrCpy ${LangCde} "ar_SA"
+   StrCpy ${LangNmeLyX} "arabic_arabi"
    StrCpy ${LangEnc} "cp-1256"
   ${endif}
 
   ${if} ${Name} == "Català"
    StrCpy ${LangCde} "ca_ES"
+   StrCpy ${LangNmeLyX} "catalan"
    StrCpy ${LangEnc} "cp-1252"
   ${endif}
 
   ${if} ${Name} == "Ceština"
    StrCpy ${LangCde} "cs_CZ"
+   StrCpy ${LangNmeLyX} "czech"
    StrCpy ${LangEnc} "cp-1250"
   ${endif}
 
   ${if} ${Name} == "Chinese (China)"
    StrCpy ${LangCde} "zh_CN"
+   StrCpy ${LangNmeLyX} "chinese-simplified"
    StrCpy ${LangEnc} "cp-936"
   ${endif}
 
   ${if} ${Name} == "Chinese (Taiwan)"
    StrCpy ${LangCde} "zh_TW"
+   StrCpy ${LangNmeLyX} "chinese-traditional"
    StrCpy ${LangEnc} "cp-936"
   ${endif}
 
   ${if} ${Name} == "Dansk"
    StrCpy ${LangCde} "da_DK"
+   StrCpy ${LangNmeLyX} "danish"
    StrCpy ${LangEnc} "cp-1252"
   ${endif}
 
   ${if} ${Name} == "Deutsch"
    StrCpy ${LangCde} "de_DE"
+   StrCpy ${LangNmeLyX} "ngerman"
    StrCpy ${LangEnc} "cp-1252"
   ${endif}
 
   ${if} ${Name} == "English"
    StrCpy ${LangCde} "en_EN"
+   StrCpy ${LangNmeLyX} "english"
    StrCpy ${LangEnc} "cp-1252"
   ${endif}
 
   ${if} ${Name} == "Español"
    StrCpy ${LangCde} "es_ES"
+   StrCpy ${LangNmeLyX} "spanish"
    StrCpy ${LangEnc} "cp-1252"
   ${endif}
 
   ${if} ${Name} == "Euskara"
    StrCpy ${LangCde} "eu_EU"
+   StrCpy ${LangNmeLyX} "basque"
    StrCpy ${LangEnc} "cp-1252"
   ${endif}
 
   ${if} ${Name} == "Français"
    StrCpy ${LangCde} "fr_FR"
+   StrCpy ${LangNmeLyX} "french"
    StrCpy ${LangEnc} "cp-1252"
   ${endif}
 
   ${if} ${Name} == "Galego"
    StrCpy ${LangCde} "gl_ES"
+   StrCpy ${LangNmeLyX} "galician"
    StrCpy ${LangEnc} "cp-1252"
   ${endif}
 
   ${if} ${Name} == "Greek"
    StrCpy ${LangCde} "el_GR"
+   StrCpy ${LangNmeLyX} "greek"
    StrCpy ${LangEnc} "cp-1253"
   ${endif}
 
   ${if} ${Name} == "Hebrew"
    StrCpy ${LangCde} "he_IL"
+   StrCpy ${LangNmeLyX} "hebrew"
    StrCpy ${LangEnc} "cp-1255"
   ${endif}
   
   ${if} ${Name} == "Bahasa Indonesia"
    StrCpy ${LangCde} "id_ID"
+   StrCpy ${LangNmeLyX} "bahasa"
    StrCpy ${LangEnc} "cp-1252"
   ${endif}
 
   ${if} ${Name} == "Italiano"
    StrCpy ${LangCde} "it_IT"
+   StrCpy ${LangNmeLyX} "italian"
    StrCpy ${LangEnc} "cp-1252"
   ${endif}
 
   ${if} ${Name} == "Japanese"
    StrCpy ${LangCde} "ja_JP"
+   StrCpy ${LangNmeLyX} "japanese"
    StrCpy ${LangEnc} "cp-932"
   ${endif}
 
   ${if} ${Name} == "Korean"
    StrCpy ${LangCde} "ko" # no country code, see the definition in the file "SVN ~/lib/languages"
+   StrCpy ${LangNmeLyX} "korean"
    StrCpy ${LangEnc} "cp-949"
   ${endif}
 
   ${if} ${Name} == "Magyar"
    StrCpy ${LangCde} "hu_HU"
+   StrCpy ${LangNmeLyX} "magyar"
    StrCpy ${LangEnc} "cp-1250"
   ${endif}
 
   ${if} ${Name} == "Nederlands"
    StrCpy ${LangCde} "nl_NL"
+   StrCpy ${LangNmeLyX} "dutch"
    StrCpy ${LangEnc} "cp-1252"
   ${endif}
 
   ${if} ${Name} == "Norsk"
    StrCpy ${LangCde} "nb_NO"
+   StrCpy ${LangNmeLyX} "norsk"
    StrCpy ${LangEnc} "cp-1252"
   ${endif}
 
   ${if} ${Name} == "Nynorsk"
    StrCpy ${LangCde} "nn_NO"
+   StrCpy ${LangNmeLyX} "nynorsk"
    StrCpy ${LangEnc} "cp-1252"
   ${endif}
 
   ${if} ${Name} == "Polski"
    StrCpy ${LangCde} "pl_PL"
+   StrCpy ${LangNmeLyX} "polish"
    StrCpy ${LangEnc} "cp-1250"
   ${endif}
 
   ${if} ${Name} == "Português"
    StrCpy ${LangCde} "pt_PT"
+   StrCpy ${LangNmeLyX} "portuguese"
    StrCpy ${LangEnc} "cp-1252"
   ${endif}
 
   ${if} ${Name} == "Româna"
    StrCpy ${LangCde} "ro_RO"
+   StrCpy ${LangNmeLyX} "romanian"
    StrCpy ${LangEnc} "cp-1250"
   ${endif}
 
   ${if} ${Name} == "Russian"
    StrCpy ${LangCde} "ru_RU"
+   StrCpy ${LangNmeLyX} "russian"
    StrCpy ${LangEnc} "cp-1251"
   ${endif}
 
   ${if} ${Name} == "Slovenský"
    StrCpy ${LangCde} "sk_SK"
+   StrCpy ${LangNmeLyX} "slovak"
    StrCpy ${LangEnc} "cp-1250"
   ${endif}
 
   ${if} ${Name} == "Slovenšcina"
    StrCpy ${LangCde} "sl_SI"
+   StrCpy ${LangNmeLyX} "slovene"
    StrCpy ${LangEnc} "cp-1250"
   ${endif}
 
   ${if} ${Name} == "Suomi"
    StrCpy ${LangCde} "fi_FI"
+   StrCpy ${LangNmeLyX} "finnish"
    StrCpy ${LangEnc} "cp-1252"
   ${endif}
 
   ${if} ${Name} == "Türkçe"
    StrCpy ${LangCde} "tr_TR"
+   StrCpy ${LangNmeLyX} "turkish"
    StrCpy ${LangEnc} "cp-1254"
   ${endif}
 
   ${if} ${Name} == "Ukrainian"
    StrCpy ${LangCde} "uk_UA"
+   StrCpy ${LangNmeLyX} "ukrainian"
    StrCpy ${LangEnc} "cp-1251"
   ${endif}
 
@@ -708,9 +739,9 @@ FunctionEnd
 Function SelectMenuLanguage_LeaveFunction
 
   !insertmacro MUI_INSTALLOPTIONS_READ $LangName "io_ui_language.ini" "Field 2" "State"
-  # Get the language code
-  StrCpy $LangCode ""
-  !insertmacro GetLangCode $LangCode $LangName $LangEncoding
+  # Get the LyX GUI language name
+  StrCpy $LangNameLyX ""
+  !insertmacro GetLangCode $LangCode $LangName $LangNameLyX $LangEncoding
 
 FunctionEnd
 
