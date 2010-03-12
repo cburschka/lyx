@@ -35,7 +35,6 @@
 #include "LyX.h"
 #include "LyXRC.h"
 #include "LyXVC.h"
-#include "MetricsInfo.h"
 #include "qt_helpers.h"
 #include "Text.h"
 #include "version.h"
