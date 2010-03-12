@@ -57,6 +57,10 @@ private:
 private:
 	///
 	std::string error_type_;
+	///
+	mutable ErrorList error_list_;
+	///
+	Buffer const * buf_;
 	/// the parent document name
 	docstring name_;
 	///

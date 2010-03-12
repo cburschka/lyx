@@ -12,11 +12,13 @@
 
 #include "GuiErrorList.h"
 
+#include "GuiView.h"
 #include "qt_helpers.h"
 
 #include "Buffer.h"
 #include "BufferView.h"
 #include "FuncRequest.h"
+#include "BufferList.h"
 #include "ParIterator.h"
 #include "Text.h"
 
@@ -90,6 +92,12 @@ void GuiErrorList::select()
 
 void GuiErrorList::viewLog()
 {
+	if (&buffer() != buf_) {
+		if (!theBufferList().isLoaded(buf_))
+			return;
+		FuncRequest fr(LFUN_BUFFER_SWITCH, buf_->absFileName());
+		dispatch(fr);
+	}
 	dispatch(FuncRequest(LFUN_DIALOG_SHOW, "latexlog"));
 }
 
@@ -110,9 +118,12 @@ void GuiErrorList::paramsToDialog()
 
 ErrorList const & GuiErrorList::errorList() const
 {
-	return from_master_ ? 
-		bufferview()->buffer().masterBuffer()->errorList(error_type_)
-		: bufferview()->buffer().errorList(error_type_);
+	if (&bufferview()->buffer() == buf_) {
+		error_list_ = from_master_ ?
+			bufferview()->buffer().masterBuffer()->errorList(error_type_)
+			: bufferview()->buffer().errorList(error_type_);
+	}
+	return error_list_;
 }
 
 
@@ -123,12 +134,12 @@ bool GuiErrorList::initialiseParams(string const & data)
 	if (from_master_)
 		error_type = split(data, '|');
 	error_type_ = error_type;
-	Buffer const * buf = from_master_ ?
+	buf_ = from_master_ ?
 		bufferview()->buffer().masterBuffer()
 		: &bufferview()->buffer();
 	name_ = bformat(_("%1$s Errors (%2$s)"), 
 			        _(guiErrorType(error_type)),
-				    from_utf8(buf->absFileName()));
+				    from_utf8(buf_->absFileName()));
 	paramsToDialog();
 	return true;
 }
@@ -136,6 +147,12 @@ bool GuiErrorList::initialiseParams(string const & data)
 
 bool GuiErrorList::goTo(int item)
 {
+	if (&buffer() != buf_) {
+		if (!theBufferList().isLoaded(buf_))
+			return false;
+		FuncRequest fr(LFUN_BUFFER_SWITCH, buf_->absFileName());
+		dispatch(fr);
+	}
 	ErrorItem const & err = errorList()[item];
 
 	if (err.par_id == -1)
@@ -145,10 +162,9 @@ bool GuiErrorList::goTo(int item)
 		// FIXME: implement
 		return false;
 
-	Buffer const & buf = buffer();
-	DocIterator dit = buf.getParFromID(err.par_id);
+	DocIterator dit = buf_->getParFromID(err.par_id);
 
-	if (dit == doc_iterator_end(&buf)) {
+	if (dit == doc_iterator_end(buf_)) {
         // FIXME: Happens when loading a read-only doc with 
         // unknown layout. Should this be the case?
 		LYXERR0("par id " << err.par_id << " not found");
