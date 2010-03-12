@@ -50,7 +50,8 @@ bool operator==(TeXFont const & f1, TeXFont const & f2)
 		f1.size == f2.size &&
 		f1.family == f2.family &&
 		f1.series == f2.series &&
-		f1.shape == f2.shape;
+		f1.shape == f2.shape &&
+		f1.language == f2.language;
 }
 
 
@@ -65,6 +66,8 @@ void output_font_change(ostream & os, TeXFont const & oldfont,
 		os << "\n\\shape " << newfont.shape << '\n';
 	if (oldfont.size != newfont.size)
 		os << "\n\\size " << newfont.size << '\n';
+	if (oldfont.language != newfont.language)
+		os << "\n\\lang " << newfont.language << '\n';
 }
 
 
