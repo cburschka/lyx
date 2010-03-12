@@ -1,0 +1,185 @@
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass scrbook
+\begin_preamble
+% increase link area for cross-references and autoname them
+\AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
+\newlength{\abc}
+\settowidth{\abc}{\space}
+\addto\extrasenglish{
+ \renewcommand{\equationautorefname}{\hspace{-\abc}}
+ \renewcommand{\sectionautorefname}{sec.\negthinspace}
+ \renewcommand{\subsectionautorefname}{sec.\negthinspace}
+ \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}
+ \renewcommand{\figureautorefname}{Fig.\negthinspace}
+ \renewcommand{\tableautorefname}{Tab.\negthinspace}
+}
+
+% in case somebody want to have the label "Gleichung"
+%\renewcommand{\eqref}[1]{Gleichung~(\negthinspace\autoref{#1})}
+
+% put the link to figure floats to the beginning
+% of the figure and not to its end
+\usepackage[figure]{hypcap}
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% make caption labels bold
+\setkomafont{captionlabel}{\bfseries}
+\setcapindent{1em}
+
+% enable calculations
+\usepackage{calc}
+
+% fancy page header/footer settings
+\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\lhead[\fancyplain{}{\chaptername\;\thechapter}]{\fancyplain{}{\rightmark}}
+\rhead[\fancyplain{}{\leftmark}]{\fancyplain{}{}}
+\lfoot[\thepage]{}
+\rfoot[]{\thepage}
+\cfoot{}
+
+% increase the bottom float placement fraction
+\renewcommand{\bottomfraction}{0.5}
+
+% avoid that floats are placed above its sections
+\let\mySection\section\renewcommand{\section}{\suppressfloats[t]\mySection}
+
+% widen the space for the nomenclature entry labels 
+\renewcommand{\nomlabelwidth}{2.5cm}
+\end_preamble
+\options intoc,bibtotoc,idxtotoc,BCOR10mm,titlepage,tablecaptionabove, fleqn
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman lmodern
+\font_sans lmss
+\font_typewriter lmtt
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Your title"
+\pdf_author "Your name"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry false
+\use_amsmath 2
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\branch NoChildDocument
+\selected 1
+\color #ff0000
+\end_branch
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Title of first chapter
+\end_layout
+
+\begin_layout Section
+Overview
+\end_layout
+
+\begin_layout Standard
+bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+ bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+ bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+ bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+ bla bla bla bla coatings
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "coatings"
+description "bla bla"
+
+\end_inset
+
+ bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+ bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla,
+ see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fowl1928"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+The next section
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch NoChildDocument
+status open
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "thesisExample"
+options "alpha"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomencl_print
+LatexCommand printnomenclature
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

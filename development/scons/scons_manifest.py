@@ -1353,6 +1353,17 @@ lib_templates_files = Split('''
 ''')
 
 
+lib_templates_thesis_files = Split('''
+    Acknowledgments.lyx
+    alpha.bst
+    chapter-1.lyx
+    chapter-2.lyx
+    Summary.lyx
+    thesis.lyx
+    thesisExample.bib
+''')
+
+
 lib_ui_files = Split('''
     classic.ui
     default.ui

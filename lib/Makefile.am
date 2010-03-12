@@ -1232,6 +1232,16 @@ dist_templates_DATA = \
 	templates/svmult_author.lyx \
 	templates/svmult_editor.lyx
 
+thesistemplatesdir = $(pkgdatadir)/templates/thesis
+dist_thesistemplates_DATA = \
+	templates/thesis/Acknowledgments.lyx \
+	templates/thesis/alpha.bst \
+	templates/thesis/chapter-1.lyx \
+	templates/thesis/chapter-2.lyx \
+	templates/thesis/Summary.lyx \
+	templates/thesis/thesis.lyx \
+	templates/thesis/thesisExample.bib
+
 texdir = $(pkgdatadir)/tex
 dist_tex_DATA = \
 	tex/broadway.cls \
