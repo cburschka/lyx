@@ -23,7 +23,6 @@
 #include "IndicesList.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
-#include "MetricsInfo.h"
 #include "output_latex.h"
 #include "output_xhtml.h"
 #include "sgml.h"

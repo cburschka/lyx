@@ -26,7 +26,6 @@
 #include "LaTeXFeatures.h"
 #include "Length.h"
 #include "LyX.h"
-#include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "output_xhtml.h"
 #include "sgml.h"

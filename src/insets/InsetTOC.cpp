@@ -18,7 +18,6 @@
 #include "FuncRequest.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "output_xhtml.h"
 #include "Paragraph.h"

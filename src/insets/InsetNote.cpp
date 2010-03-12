@@ -28,7 +28,6 @@
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "LyXRC.h"
-#include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "ParIterator.h"
 #include "TextClass.h"

@@ -24,7 +24,6 @@
 #include "Layout.h"
 #include "Lexer.h"
 #include "LyXAction.h"
-#include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "ParagraphParameters.h"
 #include "Paragraph.h"

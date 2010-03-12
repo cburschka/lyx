@@ -25,7 +25,6 @@
 #include "LyXRC.h"
 #include "LyXVC.h"
 #include "Lexer.h"
-#include "MetricsInfo.h"
 #include "ParagraphParameters.h"
 
 #include "frontends/Application.h"

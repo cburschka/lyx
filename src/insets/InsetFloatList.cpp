@@ -21,7 +21,6 @@
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
-#include "MetricsInfo.h"
 #include "Paragraph.h"
 #include "output_xhtml.h"
 #include "TextClass.h"
