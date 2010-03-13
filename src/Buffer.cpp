@@ -2971,11 +2971,11 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 ErrorList & Buffer::errorList(string const & type) const
 {
 	static ErrorList emptyErrorList;
-	map<string, ErrorList>::iterator I = d->errorLists.find(type);
-	if (I == d->errorLists.end())
+	map<string, ErrorList>::iterator it = d->errorLists.find(type);
+	if (it == d->errorLists.end())
 		return emptyErrorList;
 
-	return I->second;
+	return it->second;
 }
 
 

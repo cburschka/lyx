@@ -110,8 +110,8 @@ void GuiErrorList::paramsToDialog()
 
 	ErrorList const & el = errorList();
 	ErrorList::const_iterator it = el.begin();
-	ErrorList::const_iterator end = el.end();
-	for (; it != end; ++it)
+	ErrorList::const_iterator const en = el.end();
+	for (; it != en; ++it)
 		errorsLW->addItem(toqstr(it->error));
 	errorsLW->setCurrentRow(0);
 }
