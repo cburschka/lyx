@@ -351,6 +351,8 @@ public:
 	///
 	QFutureWatcher<docstring> autosave_watcher_;
 	QFutureWatcher<docstring> preview_watcher_;
+	///
+	string last_export_format;
 #else
 	struct DummyWatcher { bool isRunning(){return false;} }; 
 	DummyWatcher preview_watcher_;
@@ -447,6 +449,7 @@ void GuiView::threadFinished()
 	QFutureWatcher<docstring> const * watcher =
 		static_cast<QFutureWatcher<docstring> const *>(sender());
 	message(watcher->result());
+	errors(d.last_export_format);
 #endif
 }
 
@@ -2824,6 +2827,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			QFuture<docstring> f = QtConcurrent::run(exportAndDestroy,
 				doc_buffer->clone(), format);
 			d.setPreviewFuture(f);
+			d.last_export_format = doc_buffer->bufferFormat();
 #else
 			bool const update_unincluded =
 				doc_buffer->params().maintain_unincluded_children
@@ -2844,6 +2848,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			QFuture<docstring> f = QtConcurrent::run(previewAndDestroy,
 				doc_buffer->clone(), format);
 			d.setPreviewFuture(f);
+			d.last_export_format = doc_buffer->bufferFormat();
 #else
 			bool const update_unincluded =
 				doc_buffer->params().maintain_unincluded_children
@@ -2863,6 +2868,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			QFuture<docstring> f = QtConcurrent::run(exportAndDestroy,
 				master->clone(), format);
 			d.setPreviewFuture(f);
+			d.last_export_format = doc_buffer->bufferFormat();
 #else
 			bool const update_unincluded =
 				master->params().maintain_unincluded_children
@@ -2880,6 +2886,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			QFuture<docstring> f = QtConcurrent::run(previewAndDestroy,
 				master->clone(), format);
 			d.setPreviewFuture(f);
+			d.last_export_format = doc_buffer->bufferFormat();
 #else
 			master->preview(format);
 #endif

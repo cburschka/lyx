@@ -108,8 +108,9 @@ void GuiErrorList::paramsToDialog()
 	errorsLW->clear();
 	descriptionTB->setPlainText(QString());
 
-	ErrorList::const_iterator it = errorList().begin();
-	ErrorList::const_iterator end = errorList().end();
+	ErrorList const & el = errorList();
+	ErrorList::const_iterator it = el.begin();
+	ErrorList::const_iterator end = el.end();
 	for (; it != end; ++it)
 		errorsLW->addItem(toqstr(it->error));
 	errorsLW->setCurrentRow(0);

@@ -3300,17 +3300,26 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	bool const success = theConverters().convert(this, FileName(filename),
 		tmp_result_file, FileName(absFileName()), backend_format, format,
 		error_list);
-	// Emit the signal to show the error list.
+
+	// Emit the signal to show the error list or copy it back to the
+	// cloned Buffer so that it cab be emitted afterwards.
 	if (format != backend_format) {
-		errors(error_type);
+		if (d->cloned_buffer_) {
+			d->cloned_buffer_->d->errorLists[error_type] = 
+				d->errorLists[error_type];
+		} else 
+			errors(error_type);
 		// also to the children, in case of master-buffer-view
 		std::vector<Buffer *> clist = getChildren();
 		for (vector<Buffer *>::const_iterator cit = clist.begin();
-		     cit != clist.end(); ++cit)
-			(*cit)->errors(error_type, true);
+			cit != clist.end(); ++cit) {
+			if (d->cloned_buffer_) {
+				(*cit)->d->cloned_buffer_->d->errorLists[error_type] = 
+					(*cit)->d->errorLists[error_type];
+			} else
+				(*cit)->errors(error_type, true);
+		}
 	}
-	if (!success)
-		return false;
 
 	if (d->cloned_buffer_) {
 		// Enable reverse dvi or pdf to work by copying back the texrow
@@ -3318,7 +3327,12 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		// FIXME: There is a possibility of concurrent access to texrow
 		// here from the main GUI thread that should be securized.
 		d->cloned_buffer_->d->texrow = d->texrow;
+		string const error_type = bufferFormat();
+		d->cloned_buffer_->d->errorLists[error_type] = d->errorLists[error_type];
 	}
+
+	if (!success)
+		return false;
 
 	if (put_in_tempdir) {
 		result_file = tmp_result_file.absFilename();
