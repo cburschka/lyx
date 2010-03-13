@@ -3314,8 +3314,8 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 		}
 
 		if (r + 1 < tabular.nrows())
-			y += tabular.rowDescent(r) + tabular.rowAscent(r + 1)
-			     + tabular.interRowSpace(r + 1);
+			y += tabular.rowDescent(r) + tabular.rowAscent(r + 1) 
+				+ tabular.interRowSpace(r + 1);
 	}
 }
 
@@ -3347,7 +3347,6 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 		tabular.cellRow(cur.idx()), tabular.cellColumn(cur.idx()));
 
 	if (cur.selIsMultiCell() || full_cell_selected) {
-		y -= tabular.rowAscent(0);
 		for (row_type r = 0; r < tabular.nrows(); ++r) {
 			int xx = x;
 			for (col_type c = 0; c < tabular.ncols(); ++c) {
@@ -3362,12 +3361,13 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 				}
 				int const w = tabular.columnWidth(cell);
 				int const h = tabular.rowHeight(cell);
+				int const yy = y - tabular.rowAscent(r);
 				if (isCellSelected(cur, r, c))
-					pi.pain.fillRectangle(xx, y, w, h, Color_selection);
+					pi.pain.fillRectangle(xx, yy, w, h, Color_selection);
 				xx += w;
 			}
 			if (r + 1 < tabular.nrows())
-				y += tabular.rowDescent(r) + tabular.rowAscent(r)
+				y += tabular.rowDescent(r) + tabular.rowAscent(r + 1)
 				     + tabular.interRowSpace(r + 1);
 		}
 
@@ -4434,10 +4434,10 @@ void InsetTabular::cursorPos(BufferView const & bv,
 	int const col = tabular.cellColumn(sl.idx());
 
 	// y offset	correction
-	for (int r = 0;	r < row; ++r) {
-		y += tabular.rowAscent(r + 1) + tabular.rowDescent(r) 
+	for (int r = 0;	r < row; ++r)
+		y += tabular.rowDescent(r) + tabular.rowAscent(r + 1) 
 			+ tabular.interRowSpace(r + 1);
-	}
+
 	y += tabular.textVOffset(sl.idx());
 
 	// x offset correction
