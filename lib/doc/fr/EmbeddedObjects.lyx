@@ -27998,7 +27998,7 @@ name "sec:Décorations"
 
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Boîtes ! Décorations
@@ -28396,7 +28396,7 @@ Paquetages LaTeX ! fancybox
 \begin_layout Section
 Personnalisation des boîtes
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Boîtes! Personnalisation
@@ -28900,8 +28900,6 @@ FrameSep}{0.5cm}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -29010,7 +29008,7 @@ fboxsep
 \series bold
 
 \backslash
-definecolor{shadebox}
+definecolor{shadecolor}
 \series default
 , soit globalement avec le menu 
 \family sans
@@ -29106,8 +29104,6 @@ definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status collapsed
 
