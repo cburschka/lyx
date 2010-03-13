@@ -895,16 +895,13 @@ int Tabular::rowHeight(idx_type cell) const
 {
 	row_type const span = rowSpan(cell);
 	row_type const row = cellRow(cell);
-	int h = rowAscent(row) + rowDescent(row);
-
+	int h = 0;
 	for(row_type r = row; r < row + span ; ++r) {
-		if (r > row) {
-			h += rowAscent(r);
-			h += interRowSpace(r);
-		}
-		if (r < row + span - 1)
-			h += rowDescent(r);
+		h += rowAscent(r) + rowDescent(r);
+		if (r != row + span - 1)
+			h += interRowSpace(r + 1);
 	}
+
 	return h;
 }
 
@@ -1180,7 +1177,7 @@ LyXAlignment Tabular::getAlignment(idx_type cell, bool onlycolumn) const
 Tabular::VAlignment
 Tabular::getVAlignment(idx_type cell, bool onlycolumn) const
 {
-	if (!onlycolumn && isMultiColumn(cell))
+	if (!onlycolumn && (isMultiColumn(cell) || isMultiRow(cell)))
 		return cellInfo(cell).valignment;
 	return column_info[cellColumn(cell)].valignment;
 }
@@ -1225,7 +1222,11 @@ int Tabular::textHOffset(idx_type cell) const
 int Tabular::textVOffset(idx_type cell) const
 {
 	int h = rowHeight(cell);
-	
+
+	row_type const r = cellRow(cell);
+	if (rowSpan(cell) > 1)
+		h -= rowDescent(r) + rowAscent(r);
+
 	int y = 0;
 	switch (getVAlignment(cell)) {
 	   case LYX_VALIGN_TOP:
@@ -1541,15 +1542,7 @@ void Tabular::setMultiRow(idx_type cell, idx_type number)
 
 	CellData & cs = cellInfo(cell);
 	cs.multirow = CELL_BEGIN_OF_MULTIROW;
-	// reset the vertical alignment to top because multirows cells
-	// cannot be vertically aligned (they can also only have one paragraph)
-	column_info[col].valignment = LYX_VALIGN_TOP;
-
-	// FIXME: the horizontal alignment can only be changed for
-	// the whole table, support for this needs to be implemented
-	// (assigning this to uwestoehr)
-	// until LyX supports this, the alignment is always left
-	column_info[col].alignment = LYX_ALIGN_LEFT;
+	cs.valignment = LYX_VALIGN_MIDDLE;
 
 	// set the bottom row of the last selected cell
 	setBottomLine(cell, bottomLine(cell + (number - 1)*ncols()));
@@ -1605,6 +1598,7 @@ void Tabular::unsetMultiRow(idx_type cell)
 	if (!isMultiRow(cell))
 		return;
 
+	cellInfo(cell).valignment = LYX_VALIGN_TOP;
 	row_type const row = cellRow(cell);
 	col_type const col = cellColumn(cell);
 	row_type const span = rowSpan(cell);
@@ -3373,7 +3367,7 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 				xx += w;
 			}
 			if (r + 1 < tabular.nrows())
-				y += tabular.rowDescent(r) + tabular.rowAscent(r + 1)
+				y += tabular.rowDescent(r) + tabular.rowAscent(r)
 				     + tabular.interRowSpace(r + 1);
 		}
 
@@ -4440,13 +4434,9 @@ void InsetTabular::cursorPos(BufferView const & bv,
 	int const col = tabular.cellColumn(sl.idx());
 
 	// y offset	correction
-	for (int r = 0;	r <= row; ++r) {
-		if (r != 0) {
-			y += tabular.rowAscent(r);
-			y += tabular.interRowSpace(r);
-		}
-		if (r != row)
-			y += tabular.rowDescent(r);
+	for (int r = 0;	r < row; ++r) {
+		y += tabular.rowAscent(r + 1) + tabular.rowDescent(r) 
+			+ tabular.interRowSpace(r + 1);
 	}
 	y += tabular.textVOffset(sl.idx());
 
