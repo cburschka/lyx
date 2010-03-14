@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-03-10 21:03+0100\n"
-"PO-Revision-Date: 2010-03-14 16:37+0100\n"
+"PO-Revision-Date: 2010-03-14 19:40+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -83,11 +83,12 @@ msgid "&Default (numerical)"
 msgstr "&Štandard (numerický)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:38
-#, fuzzy
 msgid ""
 "Use the natbib styles for natural sciences and arts. Set additional "
 "parameters in document class options."
-msgstr "Použite štýl natbib pre prírodné a umelecké odbory"
+msgstr ""
+"Použite štýl natbib pre prírodné a umelecké odbory. Zadajte prídavné "
+"parametri v možnostiach pre triedu dokumentu."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:41
 msgid "&Natbib"
@@ -117,24 +118,22 @@ msgstr "&Bibliografia (sekcie)"
 msgid ""
 "Here you can define an alternative program to or specific options of BibTeX."
 msgstr ""
+"Tu môžte definovať alternatívny program alebo špecifické možnosti pre BibTeX."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:123 src/frontends/qt4/ui/PrefLatexUi.ui:85
-#, fuzzy
 msgid "Bibliography generation"
-msgstr "Nadpis bibliografie"
+msgstr "Generácia bibliografie"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:108
 #: src/frontends/qt4/ui_IndicesUi.h:193
-#, fuzzy
 msgid "&Processor:"
-msgstr "Pokračovať"
+msgstr "&Procesor:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
 #: src/frontends/qt4/ui_IndicesUi.h:195
-#, fuzzy
 msgid "Select a processor"
-msgstr "Vyberte jeden súbor"
+msgstr "Vyberte jeden procesor"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:131 src/frontends/qt4/GuiPrefs.cpp:655
@@ -145,7 +144,7 @@ msgstr "Možnos&ti:"
 #: src/frontends/qt4/ui/BiblioUi.ui:178
 msgid ""
 "Define options such as --min-crossrefs (see the documentation of BibTeX)"
-msgstr ""
+msgstr "Definujte možnosti ako napr. --min-crossrefs (viď dokumentáciu BibTeX)"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:21
 msgid "LyX: Add BibTeX Database"
@@ -456,15 +455,15 @@ msgid ""
 "Append the name of this branch to the output filename, given the branch is "
 "active."
 msgstr ""
+"Pripoj meno vetvy k mene výstupného súboru, v prípade, že vetva ja aktívna."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:38
-#, fuzzy
 msgid "Filename &Suffix"
-msgstr "Názov súboru"
+msgstr "Sufix súboru"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
 msgid "Show undefined branches used in this document."
-msgstr ""
+msgstr "Ukáž ne-definované vetvy použité v tomto dokumente."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
 msgid "&Undefined Branches"
@@ -510,18 +509,16 @@ msgid "Change the name of the selected branch"
 msgstr "Premenuj označenú vetvu"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:143
-#, fuzzy
 msgid "Re&name..."
-msgstr "Premenuj"
+msgstr "Premenuj..."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:25
 msgid "Add the selected branches to the list."
 msgstr "Pridaj označené vetvy do zoznamu"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:28
-#, fuzzy
 msgid "&Add Selected"
-msgstr "&Vybrané:"
+msgstr "Pridaj Označené"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:35
 msgid "Add all unknown branches to the list."
@@ -529,7 +526,7 @@ msgstr "Pridaj všetky neznáme vetvy do zoznamu"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:38
 msgid "Add A&ll"
-msgstr ""
+msgstr "Pridaj Všetko"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:58
 #: src/frontends/qt4/ui/CitationUi.ui:493
@@ -774,7 +771,6 @@ msgid "Apply each change automatically"
 msgstr "Použiť každú zmenu automaticky"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:308
-#, fuzzy
 msgid "Apply changes &immediately"
 msgstr "Okamžite použiť zmeny"
 
@@ -808,27 +804,24 @@ msgid "A&vailable Citations:"
 msgstr "Dostupné citácie:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:53
-#, fuzzy
 msgid "S&elected Citations:"
-msgstr "Vybrané citácie:"
+msgstr "Označené Citácie:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:72
 msgid "Click or press Enter to add the selected citation to the list"
-msgstr ""
+msgstr "Klikni alebo stlač Enter na pridanie označenej citácie do zoznamu"
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "Click or press Delete to delete the selected citation from the list"
-msgstr ""
+msgstr "Klikni alebo stlač Delete na zmazanie označenej citácie zo zoznamu"
 
 #: src/frontends/qt4/ui/CitationUi.ui:124
-#, fuzzy
 msgid "Move the selected citation up (Ctrl-Up)"
-msgstr "Presunúť označenú citáciu nahor (skús Ctrl-Up)"
+msgstr "Presunúť označenú citáciu nahor (Ctrl-Up)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:148
-#, fuzzy
 msgid "Move the selected citation down (Ctrl-Down)"
-msgstr "Presunúť označenú citáciu nadol (skús Ctrl-Down)"
+msgstr "Presunúť označenú citáciu nadol (Ctrl-Down)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:151
 msgid "&Down"
@@ -839,33 +832,29 @@ msgid "Search Citation"
 msgstr "Hľadať citáciu"
 
 #: src/frontends/qt4/ui/CitationUi.ui:191
-#, fuzzy
 msgid "Searc&h:"
-msgstr "Kde vyhľadávať:"
+msgstr "Hľadať:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:204
 msgid ""
 "Enter the text to search for and press Enter or click the button to search"
 msgstr ""
+"Vlož text na hľadanie a stlač Enter alebo klikni tlačidlo aby hľadanie začalo"
 
 #: src/frontends/qt4/ui/CitationUi.ui:217
-#, fuzzy
 msgid "Click or press Enter in the search box to search"
-msgstr "Vo vyhľadávacom poli môžete použiť aj Enter"
+msgstr "Klikni alebo stlač Enter vo vyhľadávacom aby hľadanie začalo"
 
 #: src/frontends/qt4/ui/CitationUi.ui:220
-#, fuzzy
 msgid "&Search"
-msgstr "Chyba pri hľadaní"
+msgstr "Hľadať"
 
 #: src/frontends/qt4/ui/CitationUi.ui:230
-#, fuzzy
 msgid "Search field:"
-msgstr "Kde vyhľadávať:"
+msgstr "Priestor hľadania:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:250
 #: src/frontends/qt4/GuiCitation.cpp:324
-#, fuzzy
 msgid "All fields"
 msgstr "Všetky políčka"
 
@@ -874,23 +863,19 @@ msgid "Regular e&xpression"
 msgstr "&Regulárny Výraz"
 
 #: src/frontends/qt4/ui/CitationUi.ui:278
-#, fuzzy
 msgid "Case se&nsitive"
 msgstr "Rozlišovať veľkosť písmen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:285
-#, fuzzy
 msgid "Entry types:"
 msgstr "Typy záznamov:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:302
 #: src/frontends/qt4/GuiCitation.cpp:339
-#, fuzzy
 msgid "All entry types"
 msgstr "Všetky typy záznamov"
 
 #: src/frontends/qt4/ui/CitationUi.ui:323
-#, fuzzy
 msgid "Search as you &type"
 msgstr "&Vyhľadávať pri zadávaní"
 
@@ -952,38 +937,32 @@ msgid "App&ly"
 msgstr "Použiť"
 
 #: src/frontends/qt4/ui/CompareUi.ui:33
-#, fuzzy
 msgid "&New Document:"
-msgstr "Nový dokument"
+msgstr "Nový Dokument:"
 
 #: src/frontends/qt4/ui/CompareUi.ui:80
-#, fuzzy
 msgid "&Old Document:"
-msgstr "Dokument potomka"
+msgstr "Bývalí Dokument:"
 
 #: src/frontends/qt4/ui/CompareUi.ui:115 src/frontends/qt4/ui/PrefUi.ui:248
 msgid "Bro&wse..."
 msgstr "Prechádzať..."
 
 #: src/frontends/qt4/ui/CompareUi.ui:135
-#, fuzzy
 msgid "Options"
-msgstr "Možnos&ti:"
+msgstr "Možnosti"
 
 #: src/frontends/qt4/ui/CompareUi.ui:155
-#, fuzzy
 msgid "Copy Document Settings from:"
-msgstr "Nastavenia dokumentu"
+msgstr "Nastavenia dokumentu z:"
 
 #: src/frontends/qt4/ui/CompareUi.ui:165
-#, fuzzy
 msgid "N&ew Document"
-msgstr "Nový dokument"
+msgstr "Nový Dokument"
 
 #: src/frontends/qt4/ui/CompareUi.ui:172
-#, fuzzy
 msgid "Ol&d Document"
-msgstr "Dokument potomka"
+msgstr "Bývalí Dokument"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:143
 #: src/frontends/qt4/GuiDelimiter.cpp:275
@@ -1048,9 +1027,8 @@ msgid "O&pen"
 msgstr "&Otvorené"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:36
-#, fuzzy
 msgid "For more information, refer to the complete log."
-msgstr "Žiadne informácie pre export formátu %1$s"
+msgstr "Pre viac informácie, pozri na kompletný protokol."
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:43
 msgid "&Errors:"
@@ -1062,12 +1040,11 @@ msgstr "Popis:"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:83
 msgid "Open the LaTeX Log File dialog"
-msgstr ""
+msgstr "Otvor dialog pre LaTeX-protokol"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:86
-#, fuzzy
 msgid "View Complete &Log..."
-msgstr "Prehliadnuť zápisný súbor..."
+msgstr "Prehliadnuť Kompletný Protokol..."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:35
 msgid "F&ile"
@@ -1229,46 +1206,41 @@ msgid "y"
 msgstr "y"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:39
-#, fuzzy
 msgid "Find LyX Text"
-msgstr "Hľadať ďalšie"
+msgstr "Nájsť LyX Text"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:107
 msgid "&Basic"
-msgstr ""
+msgstr "Základné"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:159
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:183
 msgid "Enter the text to replace in this full-featured LyX editing area"
-msgstr ""
+msgstr "Vlož sem ten náhradný text"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:162
-#, fuzzy
 msgid "&Replace with..."
-msgstr "Nahradiť s:"
+msgstr "Nahradiť s..."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:222
 msgid "Replace and find next occurrence [Enter]"
-msgstr ""
+msgstr "Nahradiť a nájsť ďalší výskyt [Enter]"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:225
-#, fuzzy
 msgid "Ne&xt"
-msgstr "text"
+msgstr "Ďalší"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:243
 msgid "Replace and find previous occurrence [Shift+Enter]"
-msgstr ""
+msgstr "Nahradiť a nájsť predošlí výskyt [Shift+Enter]"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:246
-#, fuzzy
 msgid "Pre&vious"
-msgstr "&Predošlá zmena"
+msgstr "Predošlí"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:264
-#, fuzzy
 msgid "Replace all occurences at once"
-msgstr "Nahradiť slovo s aktuálnou voľbou"
+msgstr "Nahradiť každý výskyt naraz"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:267
 #: src/frontends/qt4/ui/SearchUi.ui:193
@@ -1280,26 +1252,24 @@ msgstr "Nahradiť všetko"
 msgid ""
 "Keep the case of the replacement's first letter as in each matching text "
 "first letter"
-msgstr ""
+msgstr "Udržovať veľkosť prvých písiem v slove tak, ako v nájdenom texte"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:285
-#, fuzzy
 msgid "&Keep case"
-msgstr "Drža&ť spárované"
+msgstr "Držať veľkosť písiem"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:344
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:368
 msgid "Enter the text to search for in this full-featured LyX editing area"
-msgstr ""
+msgstr "Vlož sem hľadaný text"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:347
-#, fuzzy
 msgid "&Find..."
-msgstr "Nájsť:"
+msgstr "Nájsť..."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:404
 msgid "Perform a case-sensitive search"
-msgstr ""
+msgstr "Hľadaj citlivo na veľkosť písiem"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:407
 #: src/frontends/qt4/ui/SearchUi.ui:105
@@ -1311,107 +1281,97 @@ msgid "Choose one of the pre-arranged regular expressions."
 msgstr "Vyberte jeden z pre-zostavených regulárnych výrazov."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:425
-#, fuzzy
 msgid "Insert Re&gular Expression..."
-msgstr "&Regulárny výraz"
+msgstr "Vlož Regulárny Výraz..."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:443
 msgid "Find next occurrence [Enter]"
-msgstr ""
+msgstr "Nájdi ďalší výskyt [Enter]"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:446
-#, fuzzy
 msgid "&Next"
-msgstr "&Nová"
+msgstr "Ďalší"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:467
 msgid "Find previous occurrence [Shift+Enter]"
-msgstr ""
+msgstr "Nájdi predošlí výskyt [Shift+Enter]"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:470
-#, fuzzy
 msgid "&Previous"
-msgstr "&Predošlá zmena"
+msgstr "&Predošlí"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:491
-#, fuzzy
 msgid "Restrict search to whole words only"
 msgstr "Hľadať len celé slová"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:494
-#, fuzzy
 msgid "Whole &words"
-msgstr "Heslá."
+msgstr "Celé slová"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:522
-#, fuzzy
 msgid "&Advanced"
-msgstr "Rozšírené voľby"
+msgstr "Pokročilé"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:550
 msgid "The scope to which the search horizon is restricted"
-msgstr ""
+msgstr "Rozsah v ktorom sa má hľadať"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:556
-#, fuzzy
 msgid "Sco&pe"
-msgstr "&Tvar:"
+msgstr "Rozsah"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:582
-#, fuzzy
 msgid "Current paragraph"
-msgstr "O&dsadiť odstavec"
+msgstr "Aktuálny odstavec"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:585
-#, fuzzy
 msgid "Current &paragraph"
-msgstr "O&dsadiť odstavec"
+msgstr "Aktuálny odstavec"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:606
-#, fuzzy
 msgid "Current &document"
-msgstr "Tlač dokument"
+msgstr "Aktuálny dokument"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:627
 msgid ""
 "Current document and all related documents belonging to the same master "
 "document"
 msgstr ""
+"Aktuálny dokument a všetky súvisiace dokumenty patriace k tomu istému "
+"hlavnému "
+"dokumentu"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:630
-#, fuzzy
 msgid "&Master document"
 msgstr "Hlavný dokument"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:648
-#, fuzzy
 msgid "All open documents"
-msgstr "Otvoriť dokument"
+msgstr "Všetky otvorené dokumenty"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:651
-#, fuzzy
 msgid "&Open documents"
-msgstr "Otvoriť dokument"
+msgstr "Otvoriť dokumenty"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:669
 msgid "All ma&nuals"
-msgstr ""
+msgstr "Všetky príručky"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:690
-#, fuzzy
 msgid "&Expand macros"
-msgstr "mat. makrá"
+msgstr "Rozvinúť makrá"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:708
 msgid ""
 "If unchecked, the search will be limited to occurrences of the selected text "
 "and paragraph style"
 msgstr ""
+"Keď nezaškrtnuté, hľadanie je ohraničené na výskyty v označenom texte "
+"a v štýle odstavca"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:711
-#, fuzzy
 msgid "Ignore &format"
-msgstr "D&o formátu:"
+msgstr "Ignoruj formát"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
 #: src/frontends/qt4/ui/OutputUi.ui:13 src/frontends/qt4/ui/PDFSupportUi.ui:13
@@ -1419,9 +1379,8 @@ msgid "Form"
 msgstr "Form"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:19
-#, fuzzy
 msgid "Float Type:"
-msgstr "Typ informácie:"
+msgstr "Typ plávajúceho objektu:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:42
 msgid "Use &default placement"
@@ -1468,13 +1427,12 @@ msgid "FontUi"
 msgstr "FontUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:28
-#, fuzzy
 msgid "LaTe&X font encoding:"
-msgstr "Te&X kódovanie:"
+msgstr "Kódovanie písma laTeX:"
 
 #: src/frontends/qt4/ui/FontUi.ui:38 src/frontends/qt4/ui/PrefLatexUi.ui:51
 msgid "Specify the font encoding (e.g., T1)."
-msgstr ""
+msgstr "Urči kódovanie písma (napr. T1)"
 
 #: src/frontends/qt4/ui/FontUi.ui:45
 msgid "&Default Family:"
@@ -1740,9 +1698,8 @@ msgid "&Value:"
 msgstr "&Hodnota:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:100 src/frontends/qt4/ui/VSpaceUi.ui:61
-#, fuzzy
 msgid "Custom value. Needs spacing type &quot;Custom&quot;."
-msgstr "Vlastná hodnota. Nastavte typ rozstupu na \"Vlastná\"."
+msgstr "Vlastná hodnota. Nastavte typ rozstupu na  &quot;Vlastný&quot;."
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:110
 msgid "&Fill Pattern:"
@@ -1890,80 +1847,73 @@ msgid "&Edit"
 msgstr "&Upraviť"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59
-#, fuzzy
 msgid "A&vailable indices:"
-msgstr "Dostupné &vetvy:"
+msgstr "Dostupné indexy:"
 
 #: src/frontends/qt4/ui/IndexUi.ui:69
 msgid "Select the index this entry should be listed in."
-msgstr ""
+msgstr "Označ index v ktorom by tento záznam mal byť uvedený"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
+"To môžte definovať procesor pre alternatívny index a špecifikovať jeho "
+"možnosti."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:180
 #: src/frontends/qt4/ui_IndicesUi.h:192
-#, fuzzy
 msgid "Index generation"
-msgstr "Odsadzovanie"
+msgstr "Generácia indexu"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
 msgid "Define program options of the selected processor."
-msgstr ""
+msgstr "Urči programové možnosti označeného procesora."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
-msgstr ""
+msgstr "Zaškrtnite keď potrebujete viacnásobné indexy (napr. Index Mien)"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
-#, fuzzy
 msgid "&Use multiple indexes"
-msgstr "Zrušiť všetky čiary"
+msgstr "Použiť viacnásobné indexy"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
+"Vložte meno želaného indexu (napr. \"Index Mien\") a stlačte \"Pridať\""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
-#, fuzzy
 msgid "Add a new index to the list"
-msgstr "Pridajte novú vetvu do listiny"
+msgstr "Pridajte nový index do zoznamu"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:143 src/frontends/qt4/ui_IndicesUi.h:213
-#, fuzzy
 msgid "A&vailable Indexes:"
-msgstr "Dostupné &vetvy:"
+msgstr "Dostupné Indexy:"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
 #: src/frontends/qt4/ui_IndicesUi.h:215
-#, fuzzy
 msgid "1"
-msgstr "10"
+msgstr "1"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:217
-#, fuzzy
 msgid "Remove the selected index"
-msgstr "Odstrániť vybranú databázu"
+msgstr "Odstrániť označený index"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:221
-#, fuzzy
 msgid "Rename the selected index"
-msgstr "Odstrániť vybranú databázu"
+msgstr "Odstrániť označený index"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:223
-#, fuzzy
 msgid "R&ename..."
-msgstr "Premenuj"
+msgstr "Premenuj..."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:225
-#, fuzzy
 msgid "Define or change button color"
-msgstr "Určiť alebo zmeniť farbu pozadia"
+msgstr "Určiť alebo zmeniť farbu tlačidla"
 
 #: src/frontends/qt4/ui/InfoUi.ui:24
 msgid "Information Type:"
@@ -1974,9 +1924,8 @@ msgid "Information Name:"
 msgstr "Meno informácie:"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:16
-#, fuzzy
 msgid "Inset Parameter Configuration"
-msgstr "Vložiť zlomok"
+msgstr "Konfigurácia Parametrov Vložky"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:44
 #: src/frontends/qt4/ui/ParagraphUi.ui:44
@@ -1984,9 +1933,8 @@ msgid "I&mmediate Apply"
 msgstr "Okamžite použiť"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:69
-#, fuzzy
 msgid "New Inset"
-msgstr "Otvoriť vložku"
+msgstr "Nová vložka"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:19
 msgid "Document &class"
@@ -2046,7 +1994,7 @@ msgstr "Udajte meno hlavného dokumentu"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:202
 msgid "Suppress default date on front page"
-msgstr ""
+msgstr "Potlačiť štandardný dátum na titulnej stránke"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:25
 msgid "Encoding"
@@ -2065,9 +2013,8 @@ msgid "&Quote Style:"
 msgstr "Typ úvodzoviek:"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:49
-#, fuzzy
 msgid "Input here the listings parameters"
-msgstr "Neplatné (prázdne) meno parametru výpisu."
+msgstr "Vložte sem parametri výpisu"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:67
 #: src/frontends/qt4/ui/ListingsUi.ui:477
@@ -2254,9 +2201,8 @@ msgid "Hit Enter to search, or click Go!"
 msgstr "Stlačte Enter alebo kliknite na \"Hľadaj!\""
 
 #: src/frontends/qt4/ui/LogUi.ui:45
-#, fuzzy
 msgid "Log &Type:"
-msgstr "&Typ:"
+msgstr "Typ Protokolu:"
 
 #: src/frontends/qt4/ui/LogUi.ui:74
 msgid "Update the display"
@@ -2332,37 +2278,37 @@ msgid "&Column Sep:"
 msgstr "&Odstup stĺpcov:"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:25
-#, fuzzy
 msgid "Master Document Output"
-msgstr "Hlavný dokument"
+msgstr "Výstup Hlavného dokumentu"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:40
 msgid "Include only the selected subdocuments in the output"
-msgstr ""
+msgstr "Zahrnúť len označené dokumenty do výstupu"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:43
 msgid "Include only &selected children"
-msgstr ""
+msgstr "Zahrnúť len označené potomky"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:50
 msgid ""
 "Assure counters and references are as in the complete document (prolonges "
 "compilation)"
 msgstr ""
+"Zaisti, aby číslovanie a referencie boli ako v kompletnom dokumente "
+"(predĺžená "
+"kompilácia)"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:53
-#, fuzzy
 msgid "&Maintain counters and references"
-msgstr "všetky necitované referencie"
+msgstr "Údržba číslovanie a referencií"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:63
 msgid "Include all subdocuments in the output"
-msgstr ""
+msgstr "Zahrň každého potomka do výstupu"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:66
-#, fuzzy
 msgid "&Include all children"
-msgstr "Zahrnúť súbor"
+msgstr "Zahrnúť každého potomka"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:30
 #: src/frontends/qt4/ui/MathMatrixUi.ui:43
@@ -2409,9 +2355,8 @@ msgid "&Horizontal:"
 msgstr "&Horizontálne:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:224
-#, fuzzy
 msgid "Decoration"
-msgstr "&Dekorácia:"
+msgstr "Dekorácia"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:230
 msgid "&Type:"
@@ -2419,27 +2364,27 @@ msgstr "&Typ:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:243
 msgid "decoration type / matrix border"
-msgstr ""
+msgstr "Typ dekorácie / okraje matrice"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:252
 msgid "[x]"
-msgstr ""
+msgstr "[x]"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:257
 msgid "(x)"
-msgstr ""
+msgstr "(x)"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:262
 msgid "{x}"
-msgstr ""
+msgstr "{x}"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:267
 msgid "|x|"
-msgstr ""
+msgstr "|x|"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:272
 msgid "||x||"
-msgstr ""
+msgstr "||x||"
 
 #: src/frontends/qt4/ui/MathsUi.ui:19
 msgid ""
@@ -2482,28 +2427,24 @@ msgid "Use &esint package"
 msgstr "Použiť balík e&sint"
 
 #: src/frontends/qt4/ui/MathsUi.ui:65
-#, fuzzy
 msgid ""
 "The LaTeX package mhchem is only used if either the command \\ce or \\cf is "
 "inserted into formulas"
 msgstr ""
-"LaTeX balík esint použiť len v prípade, keď sa vo formulách nájdu aj "
-"špeciálne integrálne symboly"
+"LaTeX balík mhchem použiť len v prípade, keď sa vo formulách nájdu aj "
+"symboly \\ce alebo \\cf"
 
 #: src/frontends/qt4/ui/MathsUi.ui:68
-#, fuzzy
 msgid "Use mhchem &package automatically"
-msgstr "Automaticky použiť balík &esint"
+msgstr "Automaticky použiť balík mhchem"
 
 #: src/frontends/qt4/ui/MathsUi.ui:78
-#, fuzzy
 msgid "The LaTeX package mhchem is always used"
-msgstr "LaTeX balík esint použiť každopádne"
+msgstr "LaTeX balík mhchem použiť každopádne"
 
 #: src/frontends/qt4/ui/MathsUi.ui:81
-#, fuzzy
 msgid "Use mh&chem package"
-msgstr "Použiť balík e&sint"
+msgstr "Použiť balík mhchem"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:60
 msgid "A&vailable:"
@@ -2572,28 +2513,25 @@ msgid "&Numbering"
 msgstr "Čís&lovanie"
 
 #: src/frontends/qt4/ui/OutputUi.ui:25
-#, fuzzy
 msgid "Output Format"
-msgstr "Výstup je prázdny"
+msgstr "Výstupný formát"
 
 #: src/frontends/qt4/ui/OutputUi.ui:48 src/frontends/qt4/ui/OutputUi.ui:61
-#, fuzzy
 msgid "Specify the default output format (for view/update)"
-msgstr "Určite štandardné veľkosti stránky"
+msgstr "Určite štandardný výstupný formát (pre Náhľad/Aktualizovať)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:51
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:178
-#, fuzzy
 msgid "De&fault Output Format:"
-msgstr "Štandardná tlačiareň:"
+msgstr "Štandardný Výstupný Formát:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:70
 msgid "Use the XeTeX processing engine"
-msgstr ""
+msgstr "Použi XeTeX na spracovanie"
 
 #: src/frontends/qt4/ui/OutputUi.ui:73
 msgid "Use &XeTeX"
-msgstr ""
+msgstr "Použi XeTeX"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:28
 msgid "&Use hyperref support"
@@ -2709,7 +2647,6 @@ msgid "&Format:"
 msgstr "&Formát:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:44
-#, fuzzy
 msgid "Choose a particular paper size, or set your own with &quot;Custom&quot;"
 msgstr ""
 "Zvoľte si konkrétnu veľkosť stránky, alebo nastavte si svoju vo \"Vlastné\""
@@ -2748,21 +2685,18 @@ msgid "&Two-sided document"
 msgstr "Dvojs&tranný dokument"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:216
-#, fuzzy
 msgid "Background Color:"
-msgstr "pozadie"
+msgstr "Farba Pozadia:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:237
-#, fuzzy
 msgid "&Change..."
-msgstr "Zmena:"
+msgstr "Zmena..."
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:250
 msgid "Revert the color to the default"
-msgstr ""
+msgstr "Návrat farby na štandard"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:253
-#, fuzzy
 msgid "R&eset"
 msgstr "Vynulovať"
 
@@ -2842,30 +2776,27 @@ msgstr "Štandardné nastavenie odstavca"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:60
 msgid "Horizontal and vertical space of the phantom content"
-msgstr ""
+msgstr "Horizontálny a vertikálny priestor obsahu phantom"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:63
-#, fuzzy
 msgid "&Phantom"
-msgstr "Esperanto"
+msgstr "Phantom"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:70
-#, fuzzy
 msgid "Horizontal space of the phantom content"
-msgstr "Horizontálne miesto\t\\hphantom"
+msgstr "Horizontálny priestor obsahu phantom"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:73
 msgid "&Horiz. Phantom"
-msgstr ""
+msgstr "Horiz. Phantom"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:80
-#, fuzzy
 msgid "Vertical space of the phantom content"
-msgstr "Vertikálne miesto\t\\vphantom"
+msgstr "Vertikálny priestor obsahu phantom"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:83
 msgid "&Vert. Phantom"
-msgstr ""
+msgstr "Vert. Phantom"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "A&lter..."
@@ -2894,9 +2825,8 @@ msgid "Automatic p&opup"
 msgstr "Automatické &menu"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:60
-#, fuzzy
 msgid "Autoco&rrection"
-msgstr "Automatický &začiatok"
+msgstr "Automatická korektúra"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:70
 msgid "In Text"
@@ -3078,9 +3008,8 @@ msgid "Cursor &follows scrollbar"
 msgstr "Kurzor &sleduje posuvník"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:58
-#, fuzzy
 msgid "Scroll &below end of document"
-msgstr "Nedá sa čítať dokument"
+msgstr "Roluj až pod koniec dokumentu"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:65
 msgid "Sort &environments alphabetically"
@@ -3115,9 +3044,8 @@ msgid "Screen used (&pixels):"
 msgstr "Použitá šírka obrazovky (pixel):"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:176
-#, fuzzy
 msgid "Hide &menubar"
-msgstr "Skryť lištu dokumentov"
+msgstr "Skryť ponukovú lištu"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:183
 msgid "Hide &tabbar"
@@ -3156,14 +3084,12 @@ msgid "E&xtension:"
 msgstr "Príp&ona:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:160
-#, fuzzy
 msgid "Specify the default output format when using (PDF)LaTeX"
-msgstr "Určite štandardné veľkosti stránky"
+msgstr "Určite štandardný výstupný formát pre (PDF)LaTeX"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:163
-#, fuzzy
 msgid "Default Format"
-msgstr "Formát dátumu"
+msgstr "Štandardný Formát"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:194
 msgid "Vector &graphics format"
@@ -3345,11 +3271,12 @@ msgstr "Vizuálny"
 msgid ""
 "Enable if a specific font encoding (such as T1) should be used (via fontenc)"
 msgstr ""
+"Zapnúť keď potrebujete špecifické kódovanie písiem (ako napr. T1) (cez "
+"fontenc)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:28
-#, fuzzy
 msgid "Use LaTe&X font encoding:"
-msgstr "Te&X kódovanie:"
+msgstr "Použiť LaTeX kódovanie:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:58
 msgid "Default paper si&ze:"
@@ -3370,7 +3297,7 @@ msgstr "BibTeX príkaz a voľby"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:158
 #: src/frontends/qt4/ui/PrefLatexUi.ui:253
 msgid "Processor for &Japanese:"
-msgstr ""
+msgstr "Procesor pre Japončinu:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:168
 msgid "Specific BibTeX command and options for pLaTeX (Japanese)"
@@ -3378,13 +3305,12 @@ msgstr "BibTeX príkaz a voľby pre pLaTeX (Japonsky)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:203
 msgid "Pr&ocessor:"
-msgstr ""
+msgstr "Procesor:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:226 src/frontends/qt4/GuiPrefs.cpp:680
 #: src/frontends/qt4/GuiPrefs.cpp:777
-#, fuzzy
 msgid "Op&tions:"
-msgstr "Možnos&ti:"
+msgstr "Možnosti:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:236
 msgid "Index command and options (makeindex, xindy)"
@@ -3483,9 +3409,8 @@ msgid "Browse..."
 msgstr "Prechádzať..."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:64
-#, fuzzy
 msgid "T&hesaurus dictionaries:"
-msgstr "Chyba tezauru"
+msgstr "Knižnice tezauru:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:90
 msgid "&Temporary directory:"
@@ -3512,9 +3437,8 @@ msgid "&Working directory:"
 msgstr "P&racovný adresár:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:215
-#, fuzzy
 msgid "Hunspell dictionaries:"
-msgstr "Osobný slovník:"
+msgstr "Knižnice hunspell:"
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2832
 msgid ""
@@ -3753,16 +3677,15 @@ msgstr "&Zobraziť skratky obsahujúce:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:41
 msgid "If unchecked, notes and comments will be excluded from spell checking"
-msgstr ""
+msgstr "Keď nezaškrtnuté, poznámky a komentáre sú vyňaté z kontroly pravopisu"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:44
 msgid "Spellcheck &notes and comments"
-msgstr ""
+msgstr "Kontrola pravopisu pre poznámky a komentáre"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:51
-#, fuzzy
 msgid "&Spellchecker engine:"
-msgstr "Kontrola pravopisu"
+msgstr "Prostriedok pre kontrolu pravopisu:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
 msgid "Accept words such as \"diskdrive\""
@@ -3774,16 +3697,15 @@ msgstr "Akceptovať zložené slová"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:74
 msgid "Mark misspelled words with a wavy underline."
-msgstr ""
+msgstr "Podčiarkni vlnovkou nesprávne písané slová."
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:77
 msgid "S&pellcheck continuously"
-msgstr ""
+msgstr "Kontroluj pravopis nepretržite"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:100
-#, fuzzy
 msgid "The characters inserted here are ignored by the spellchecker. "
-msgstr "Kontrola pravopisu ignoruje tu uložené písmená"
+msgstr "Kontrola pravopisu ignoruje tu uložené písmená."
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:107
 msgid "&Escape characters:"
@@ -3880,23 +3802,23 @@ msgstr "Uložiť"
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:24
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:37
 msgid "Define hanging indendation/label length for the nomenclature list."
-msgstr ""
+msgstr "Definuj dĺžku označenie pre listinu nomenklatúry."
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:27
-#, fuzzy
 msgid "&List Indendation:"
-msgstr "Odsadzovanie"
+msgstr "Odsadzovanie zoznamu:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:48
-#, fuzzy
 msgid "Custom &Width:"
-msgstr "Šírka stĺpca"
+msgstr "Vlastná Šírka:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:61
 msgid ""
 "Custom value. &quot;List Indendation&quot; needs to be set to &quot;"
 "Custom&quot;."
 msgstr ""
+"Vlastná hodnota. &quot;Odsadzovanie Zoznamov&quot; je treba nastaviť "
+"na &quot;Vlastná&quot;."
 
 #: src/frontends/qt4/ui/PrintUi.ui:28
 msgid "Pages"
@@ -3985,17 +3907,15 @@ msgstr "Poslať výstup do súboru"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:61
 msgid "Check if this index should be part (e.g., a section) of the former one."
-msgstr ""
+msgstr "Vyberte, keď sa tento index (napr. sekcia) má stať časťou predošlého."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:64
-#, fuzzy
 msgid "&Subindex"
-msgstr "&Strana:"
+msgstr "Podindex"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:79
-#, fuzzy
 msgid "A&vailable indexes:"
-msgstr "Dostupné &vetvy:"
+msgstr "Dostupné indexy:"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:89
 #, fuzzy
@@ -4697,9 +4617,8 @@ msgid "Two-&column document"
 msgstr "Dvojstĺpcový dokument"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:36
-#, fuzzy
 msgid "Language of the thesaurus"
-msgstr "Jazyk Päta:"
+msgstr "Jazyk tezauru"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:51
 msgid "Word to look up"
@@ -20609,7 +20528,7 @@ msgstr "Vyberte adresár pre dokumenty"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1279
 msgid "Set the path to the thesaurus dictionaries"
-msgstr "Nastaviť cestu ku knižniciam thesaurus"
+msgstr "Nastaviť cestu ku knižniciam tezaurus"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1288
 #, fuzzy
@@ -21252,7 +21171,7 @@ msgstr "TeX informácia"
 
 #: src/frontends/qt4/GuiThesaurus.cpp:188
 msgid "No thesaurus available for this language!"
-msgstr "Nedostupný thesaurus pre tento jazyk!"
+msgstr "Nedostupný tezaurus pre tento jazyk!"
 
 #: src/frontends/qt4/GuiToc.cpp:36
 msgid "Outline"
