@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-03-10 21:03+0100\n"
-"PO-Revision-Date: 2010-02-20 08:08+0100\n"
+"PO-Revision-Date: 2010-03-14 16:37+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -467,9 +467,8 @@ msgid "Show undefined branches used in this document."
 msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
-#, fuzzy
 msgid "&Undefined Branches"
-msgstr "Nedefinovaný znakový štýl"
+msgstr "&Nedefinované vetvy"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:84
 msgid "A&vailable Branches:"
@@ -507,9 +506,8 @@ msgid "&Remove"
 msgstr "&Odstrániť"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:140
-#, fuzzy
 msgid "Change the name of the selected branch"
-msgstr "Zmazať vybranú vetvu"
+msgstr "Premenuj označenú vetvu"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:143
 #, fuzzy
@@ -517,9 +515,8 @@ msgid "Re&name..."
 msgstr "Premenuj"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:25
-#, fuzzy
 msgid "Add the selected branches to the list."
-msgstr "Pridajte novú vetvu do listiny"
+msgstr "Pridaj označené vetvy do zoznamu"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:28
 #, fuzzy
@@ -527,9 +524,8 @@ msgid "&Add Selected"
 msgstr "&Vybrané:"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:35
-#, fuzzy
 msgid "Add all unknown branches to the list."
-msgstr "Pridajte novú vetvu do listiny"
+msgstr "Pridaj všetky neznáme vetvy do zoznamu"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:38
 msgid "Add A&ll"
@@ -556,12 +552,11 @@ msgstr "Z&rušiť"
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
 msgid "Undefined branches used in this document."
-msgstr ""
+msgstr "Nedefinované vetvy použite v aktuálnom dokumente."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:68
-#, fuzzy
 msgid "&Undefined Branches:"
-msgstr "Nedefinovaný znakový štýl"
+msgstr "&Nedefinované Vetvy:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:34
 msgid "&Font:"
@@ -875,9 +870,8 @@ msgid "All fields"
 msgstr "Všetky políčka"
 
 #: src/frontends/qt4/ui/CitationUi.ui:271
-#, fuzzy
 msgid "Regular e&xpression"
-msgstr "&Regulárny výraz"
+msgstr "&Regulárny Výraz"
 
 #: src/frontends/qt4/ui/CitationUi.ui:278
 #, fuzzy
@@ -1314,7 +1308,7 @@ msgstr "Rozlišovať veľkosť písmen"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:422
 msgid "Choose one of the pre-arranged regular expressions."
-msgstr ""
+msgstr "Vyberte jeden z pre-zostavených regulárnych výrazov."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:425
 #, fuzzy
@@ -12454,14 +12448,12 @@ msgid "Document Info|D"
 msgstr "Dokument|D"
 
 #: lib/ui/stdcontext.inc:450 lib/ui/stdcontext.inc:473
-#, fuzzy
 msgid "Activate Branch|A"
-msgstr "Aktivované"
+msgstr "Aktivuj Vetvu|A"
 
 #: lib/ui/stdcontext.inc:451 lib/ui/stdcontext.inc:474
-#, fuzzy
 msgid "Deactivate Branch|e"
-msgstr "(&De)aktivovať"
+msgstr "Dezaktivuj Vetvu|e"
 
 #: lib/ui/stdcontext.inc:463
 msgid "Insert Reference at Cursor Position|I"
@@ -12967,7 +12959,7 @@ msgstr "Komentár"
 
 #: lib/ui/stdmenus.inc:462
 msgid "Insert New Branch...|I"
-msgstr ""
+msgstr "Vlož Novú Vetvu..."
 
 #: lib/ui/stdmenus.inc:467
 #, fuzzy
@@ -16614,15 +16606,14 @@ msgstr "Žiadne informácie pre export formátu %1$s"
 msgid "Error exporting to format: %1$s."
 msgstr "Žiadne informácie pre export formátu %1$s"
 
-#: src/Buffer.cpp:1975
-#, fuzzy, c-format
+#: src/Buffer.cpp:1975, c-format
 msgid "Branch \"%1$s\" already exists."
-msgstr "Skupina obrázkov s menom '%1$s' už existuje."
+msgstr "Vetva \"%1$s\" už existuje."
 
 #: src/Buffer.cpp:2003
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
-msgstr ""
+msgstr "Vetva \"%1$s\" neexistuje."
 
 #: src/Buffer.cpp:2060
 #, fuzzy, c-format
@@ -16998,13 +16989,12 @@ msgid "Applied \"%1$s\" to %2$d insets"
 msgstr ""
 
 #: src/BufferView.cpp:1759
-#, fuzzy
 msgid "Branch name"
-msgstr "Vetvy"
+msgstr "Meno vetvy"
 
 #: src/BufferView.cpp:1766 src/frontends/qt4/GuiBranches.cpp:176
 msgid "Branch already exists"
-msgstr ""
+msgstr "Vetva už existuje"
 
 #: src/BufferView.cpp:2449
 #, c-format
@@ -17226,7 +17216,7 @@ msgstr "pozadie výpisov"
 
 #: src/Color.cpp:188
 msgid "branch label"
-msgstr "návestie vetvy"
+msgstr "označenie vetvy"
 
 #: src/Color.cpp:189
 msgid "footnote label"
@@ -17520,20 +17510,17 @@ msgstr "Výstup je prázdny"
 msgid "An empty output file was generated."
 msgstr "Bol generovaný prázdny výstupný súbor."
 
-#: src/CutAndPaste.cpp:341
-#, fuzzy, c-format
+#: src/CutAndPaste.cpp:341, c-format
 msgid ""
 "The pasted branch \"%1$s\" is undefined.\n"
 "Do you want to add it to the document's branch list?"
 msgstr ""
-"Dokument %1$s obsahuje neuložené zmeny.\n"
-"\n"
-"Chcete ho uložiť ?"
+"Vlepená vetva %1$s nie je definovaná.\n"
+"Chcete ju uložiť do zoznamu vetiev tohto dokumentu?"
 
 #: src/CutAndPaste.cpp:344
-#, fuzzy
 msgid "Unknown branch"
-msgstr "Neznáma akcia"
+msgstr "Neznáma vetva"
 
 #: src/CutAndPaste.cpp:345
 msgid "&Don't Add"
@@ -18732,9 +18719,8 @@ msgid "No valid math formula"
 msgstr "Neplatný matematický vzorec"
 
 #: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1009
-#, fuzzy
 msgid "Already in regular expression mode"
-msgstr "&Regulárny výraz"
+msgstr "Už v postupe pre regulárny výraz"
 
 #: src/Text3.cpp:216
 #, fuzzy
@@ -19087,9 +19073,8 @@ msgid "file[[scope]]"
 msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:327
-#, fuzzy
 msgid "master document[[scope]]"
-msgstr "Hlavný dokument"
+msgstr "hlavný dokument"
 
 #: src/frontends/qt4/FindAndReplace.cpp:330
 msgid "open files[[scope]]"
@@ -19097,7 +19082,7 @@ msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:333
 msgid "manuals[[scope]]"
-msgstr ""
+msgstr "príručiek"
 
 #: src/frontends/qt4/FindAndReplace.cpp:337
 #, c-format
@@ -19105,6 +19090,8 @@ msgid ""
 "End of %1$s reached while searching forward.\n"
 "Continue searching from the beginning?"
 msgstr ""
+"Dosiahol som koniec %1$s hľadajúc dopredu.\n"
+"Pokračovať hľadaním od začiatku?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:340
 #, c-format
@@ -19112,25 +19099,24 @@ msgid ""
 "Beginning of %1$s reached while searching backward.\n"
 "Continue searching from the end?"
 msgstr ""
+"Dosiahol som začiatok %1$s hľadajúc spätne.\n"
+"Pokračovať hľadaním od konca?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:394
 msgid "Wrap search?"
-msgstr ""
+msgstr "Od začiatku hľadať?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:450
-#, fuzzy
 msgid "Nothing to search"
-msgstr "Nie je čo robiť."
+msgstr "Nie je čo hľadať"
 
 #: src/frontends/qt4/FindAndReplace.cpp:501
-#, fuzzy
 msgid "No open document(s) in which to search"
-msgstr "Otvoriť dokumenty v paneloch"
+msgstr "Nemám otvorené dokumenty v ktorých by som mohol hľadať"
 
 #: src/frontends/qt4/FindAndReplace.cpp:594
-#, fuzzy
 msgid "Advanced Find and Replace"
-msgstr "Hľadať a nahradiť"
+msgstr "Pokročilé Hľadať a Nahradiť"
 
 #: src/frontends/qt4/GuiAbout.cpp:51
 msgid "ERROR: LyX wasn't able to read CREDITS file\n"
@@ -19345,8 +19331,7 @@ msgstr ""
 msgid "Could not find UI definition file"
 msgstr "Nemôžem nájsť súbor definíc pre UI"
 
-#: src/frontends/qt4/GuiApplication.cpp:2312
-#, fuzzy, c-format
+#: src/frontends/qt4/GuiApplication.cpp:2312, c-format
 msgid ""
 "Error while reading the included file\n"
 "%1$s\n"
@@ -19368,8 +19353,7 @@ msgstr ""
 "LyX nenašiel predvolený UI súbor!\n"
 "Skontrolujte prosím vašu inštaláciu."
 
-#: src/frontends/qt4/GuiApplication.cpp:2324
-#, fuzzy, c-format
+#: src/frontends/qt4/GuiApplication.cpp:2324, c-format
 msgid ""
 "Error while reading the configuration file\n"
 "%1$s\n"
@@ -19466,9 +19450,8 @@ msgid "Color"
 msgstr "Farebné"
 
 #: src/frontends/qt4/GuiBranches.cpp:52
-#, fuzzy
 msgid "Filename Suffix"
-msgstr "Názov súboru"
+msgstr "Sufix Súboru"
 
 #: src/frontends/qt4/GuiBranches.cpp:99 src/frontends/qt4/GuiBranches.cpp:107
 #: src/frontends/qt4/GuiDocument.cpp:1805
@@ -19489,34 +19472,28 @@ msgid "No"
 msgstr "Nie"
 
 #: src/frontends/qt4/GuiBranches.cpp:168
-#, fuzzy
 msgid "Enter new branch name"
-msgstr "Vložte unikátne meno skupiny:"
+msgstr "Zadajte meno novej vetvy"
 
-#: src/frontends/qt4/GuiBranches.cpp:173
-#, fuzzy, c-format
+#: src/frontends/qt4/GuiBranches.cpp:173, c-format
 msgid ""
 "A branch with the name \"%1$s\" already exists.\n"
 "Do you want to merge branch \"%2$s\" with that one?"
 msgstr ""
-"Súbor %1$s už existuje.\n"
-"\n"
-"Chcete tento súbor prepísať?"
+"Vetva s menom \"%1$s\" už existuje.\n"
+"Chcete zlúčiť vetvu \"%2$s\" s ňou?"
 
 #: src/frontends/qt4/GuiBranches.cpp:177
-#, fuzzy
 msgid "&Merge"
-msgstr "Veľké:"
+msgstr "Zlúčiť"
 
 #: src/frontends/qt4/GuiBranches.cpp:185 src/frontends/qt4/GuiIndices.cpp:214
-#, fuzzy
 msgid "Renaming failed"
-msgstr "Triedenie indexu zlyhalo"
+msgstr "Premenovanie zlyhalo"
 
 #: src/frontends/qt4/GuiBranches.cpp:186
-#, fuzzy
 msgid "The branch could not be renamed."
-msgstr "%1$s odstavce nie je možné skonvertovať"
+msgstr "Túto vetvu nebolo možné premenovať."
 
 #: src/frontends/qt4/GuiChanges.cpp:39
 msgid "Merge Changes"
@@ -19562,19 +19539,16 @@ msgid "Underbar"
 msgstr "Podčiarknuť"
 
 #: src/frontends/qt4/GuiCharacter.cpp:79
-#, fuzzy
 msgid "Double underbar"
-msgstr "Dvojité"
+msgstr "Dvojito podčiarknuté"
 
 #: src/frontends/qt4/GuiCharacter.cpp:80
-#, fuzzy
 msgid "Wavy underbar"
-msgstr "Podčiarknuť"
+msgstr "Vlnovkou podčiarknuté"
 
 #: src/frontends/qt4/GuiCharacter.cpp:81
-#, fuzzy
 msgid "Strikeout"
-msgstr "Ulica"
+msgstr "Preškrtnuté"
 
 #: src/frontends/qt4/GuiCharacter.cpp:82
 msgid "Noun"
@@ -19671,7 +19645,7 @@ msgstr "Nasledujúci príkaz"
 
 #: src/frontends/qt4/GuiCompare.cpp:43
 msgid "Compare LyX files"
-msgstr ""
+msgstr "Porovnaj LyX- súbory"
 
 #: src/frontends/qt4/GuiCompare.cpp:156
 #, fuzzy
@@ -19876,7 +19850,7 @@ msgstr "12"
 
 #: src/frontends/qt4/GuiDocument.cpp:695
 msgid "None (no fontenc)"
-msgstr ""
+msgstr "Žiadne (bez fontenc)"
 
 #: src/frontends/qt4/GuiDocument.cpp:734
 msgid "empty"
@@ -20414,7 +20388,7 @@ msgstr "Vložte názov BibTeX databázy"
 
 #: src/frontends/qt4/GuiIndices.cpp:215
 msgid "The index could not be renamed. Check if the new name already exists."
-msgstr ""
+msgstr "Index sa nedal premenovať. Overte si, či nové meno už existuje."
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "unknown"
@@ -20635,7 +20609,7 @@ msgstr "Vyberte adresár pre dokumenty"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1279
 msgid "Set the path to the thesaurus dictionaries"
-msgstr ""
+msgstr "Nastaviť cestu ku knižniciam thesaurus"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1288
 #, fuzzy
@@ -20840,11 +20814,11 @@ msgstr "Všetky políčka"
 
 #: src/frontends/qt4/GuiProgressView.cpp:52
 msgid "Progress/Debug Messages"
-msgstr ""
+msgstr "Hlásenia pre Pokrok/Ladenie"
 
 #: src/frontends/qt4/GuiProgressView.cpp:81
 msgid "Debug Level"
-msgstr ""
+msgstr "Stupeň Ladenia"
 
 #: src/frontends/qt4/GuiProgressView.cpp:82
 #, fuzzy
@@ -20869,7 +20843,7 @@ msgstr "Skok na značku"
 
 #: src/frontends/qt4/GuiRef.cpp:371 src/frontends/qt4/GuiRef.cpp:390
 msgid "<No prefix>"
-msgstr ""
+msgstr "<Bez prefixu>"
 
 #: src/frontends/qt4/GuiSearch.cpp:41
 msgid "Find and Replace"
@@ -21278,7 +21252,7 @@ msgstr "TeX informácia"
 
 #: src/frontends/qt4/GuiThesaurus.cpp:188
 msgid "No thesaurus available for this language!"
-msgstr ""
+msgstr "Nedostupný thesaurus pre tento jazyk!"
 
 #: src/frontends/qt4/GuiToc.cpp:36
 msgid "Outline"
@@ -21456,9 +21430,8 @@ msgid "file not imported!"
 msgstr "Súbor nie je importovaný!"
 
 #: src/frontends/qt4/GuiView.cpp:1940
-#, fuzzy
 msgid "newfile"
-msgstr "Zahrnúť súbor"
+msgstr "novýsúbor"
 
 #: src/frontends/qt4/GuiView.cpp:1978
 msgid "Select LyX document to insert"
@@ -21578,17 +21551,16 @@ msgstr "Otváram dokument potomku %1$s..."
 #: src/frontends/qt4/GuiView.cpp:2750
 #, c-format
 msgid "Successful export to format: %1$s"
-msgstr ""
+msgstr "Úspešný export do formátu: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2751
-#, fuzzy, c-format
+#: src/frontends/qt4/GuiView.cpp:2751, c-format
 msgid "Error exporting to format: %1$s"
-msgstr "Žiadne informácie pre export formátu %1$s"
+msgstr "Chyba pri exporte na formát: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2763
 #, c-format
 msgid "Successful preview of format: %1$s"
-msgstr ""
+msgstr "Úspešné prehliadnutie formátu: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2764
 #, fuzzy, c-format
@@ -21601,9 +21573,8 @@ msgid "Exporting ..."
 msgstr "Importujem %1$s..."
 
 #: src/frontends/qt4/GuiView.cpp:2843
-#, fuzzy
 msgid "Previewing ..."
-msgstr "Nahranie náhľadu"
+msgstr "Predbežný náhľad ..."
 
 #: src/frontends/qt4/GuiView.cpp:2896
 msgid "Document not loaded"
@@ -21704,7 +21675,7 @@ msgstr "Žiadna skupina"
 
 #: src/frontends/qt4/Menus.cpp:739 src/frontends/qt4/Menus.cpp:740
 msgid "More Spelling Suggestions"
-msgstr ""
+msgstr "Viacej Pravopisných Návrhov"
 
 #: src/frontends/qt4/Menus.cpp:756
 #, fuzzy
@@ -21712,37 +21683,32 @@ msgid "Add to personal dictionary|c"
 msgstr "Zvoľte osobný slovník"
 
 #: src/frontends/qt4/Menus.cpp:758
-#, fuzzy
 msgid "Ignore all|I"
 msgstr "Ignorovať všetko"
 
 #: src/frontends/qt4/Menus.cpp:789
-#, fuzzy
 msgid "Language|L"
 msgstr "Jazyk"
 
 #: src/frontends/qt4/Menus.cpp:791
-#, fuzzy
 msgid "More Languages ...|M"
-msgstr "Zmeny prijať, alebo zahodiť..."
+msgstr "Viac Jazykov ..."
 
 #: src/frontends/qt4/Menus.cpp:860 src/frontends/qt4/Menus.cpp:861
-#, fuzzy
 msgid "Invisible"
 msgstr "Neviditeľný text"
 
 #: src/frontends/qt4/Menus.cpp:893
-#, fuzzy
 msgid "<No Documents Open>"
-msgstr "Žiadne otvorené dokumenty!"
+msgstr "<Niet Otvorených Dokumentov>"
 
 #: src/frontends/qt4/Menus.cpp:913
 msgid "<No Bookmarks Saved Yet>"
-msgstr ""
+msgstr "<Zatiaľ Nie Uložených Záložiek>"
 
 #: src/frontends/qt4/Menus.cpp:951
 msgid "View (Other Formats)|F"
-msgstr ""
+msgstr "Zobraziť (Iné Formáty)|F"
 
 #: src/frontends/qt4/Menus.cpp:952
 #, fuzzy
@@ -21791,7 +21757,6 @@ msgid "Other Toolbars"
 msgstr "Iné lišty nástrojov"
 
 #: src/frontends/qt4/Menus.cpp:1258
-#, fuzzy
 msgid "No Branches Set for Document!"
 msgstr "Dokument neobsahuje vetvenie!"
 
@@ -21832,7 +21797,7 @@ msgstr "&Aktualizovať"
 #: src/frontends/qt4/Toolbars.cpp:229
 #, c-format
 msgid "View %1$s"
-msgstr ""
+msgstr "Zobraziť %1$s"
 
 #: src/frontends/qt4/Validator.cpp:161
 msgid "space"
@@ -22075,9 +22040,8 @@ msgid "Branch (child only): "
 msgstr "Vetva (len potomok): "
 
 #: src/insets/InsetBranch.cpp:86
-#, fuzzy
 msgid "Branch (undefined): "
-msgstr "Vetva (len potomok): "
+msgstr "Vetva (ne-definovaná): "
 
 #: src/insets/InsetBranch.cpp:91
 msgid "Undef: "
@@ -22129,25 +22093,22 @@ msgid "Unknown parameter name: "
 msgstr "Neznáme meno parametra: "
 
 #: src/insets/InsetCommandParams.cpp:306
-#, fuzzy
 msgid "Missing \\end_inset at this point: "
-msgstr "Tu chýba \\end_inset ."
+msgstr "Tu chýba \\end_inset: "
 
 #: src/insets/InsetCommandParams.cpp:386
-#, fuzzy
 msgid "Uncodable characters"
-msgstr "Nekódovatelný znak"
+msgstr "Nekódovateľné znaky"
 
-#: src/insets/InsetCommandParams.cpp:387
-#, fuzzy, c-format
+#: src/insets/InsetCommandParams.cpp:387, c-format
 msgid ""
 "The following characters that are used in the inset %1$s are not\n"
 "representable in the current encoding and therefore have been omitted:\n"
 "%2$s."
 msgstr ""
-"Nasledujúce znaky vo výpisoch zdrojových kódov sú nereprezentovateľné\n"
-"vo zvolenom kódovaní a boli vynechané:\n"
-"%1$s."
+"Nasledujúce znaky použité vo vložke %1$s sú nereprezentovateľné\n"
+"v aktuálnom kódovaní a boli vynechané:\n"
+"%2$s."
 
 #: src/insets/InsetExternal.cpp:485
 #, c-format
@@ -22182,7 +22143,7 @@ msgstr "CHYBA: Neexistujúci typ plávajúceho objektu!"
 #: src/insets/InsetFloatList.cpp:132
 #, c-format
 msgid "LyX cannot generate a list of %1$s"
-msgstr ""
+msgstr "LyX nemôže generovať zoznam od %1$s"
 
 #: src/insets/InsetFloatList.cpp:137
 #, c-format
@@ -22223,9 +22184,8 @@ msgid "Verbatim Input*"
 msgstr "Doslovný vstup*"
 
 #: src/insets/InsetInclude.cpp:374
-#, fuzzy
 msgid "Include (excluded)"
-msgstr "Zahrnúť súbor"
+msgstr "Zahrnúť (vylúčené)"
 
 #: src/insets/InsetInclude.cpp:475 src/insets/InsetInclude.cpp:695
 #: src/insets/InsetInclude.cpp:740
@@ -22270,7 +22230,7 @@ msgstr "Modul nenájdený"
 
 #: src/insets/InsetInclude.cpp:683
 msgid "Unsupported Inclusion"
-msgstr ""
+msgstr "Nepodporovaná Inklúzia"
 
 #: src/insets/InsetInclude.cpp:684
 #, c-format
@@ -22279,6 +22239,9 @@ msgid ""
 "Offending file:\n"
 "%1$s"
 msgstr ""
+"LyX nevie ako zahrnúť ne-LyX-ové súbory pri generácii výstupu HTML. "
+"Problematický súbor:\n"
+"%1$s"
 
 #: src/insets/InsetIndex.cpp:145
 msgid "Index sorting failed"
@@ -22298,24 +22261,20 @@ msgstr ""
 "vysvetlené v užívateľskej príručke."
 
 #: src/insets/InsetIndex.cpp:276 src/insets/InsetIndex.cpp:301
-#, fuzzy
 msgid "unknown type!"
-msgstr "Neznámy typ obsahu"
+msgstr "neznámy typ!"
 
 #: src/insets/InsetIndex.cpp:447
-#, fuzzy
 msgid "Unknown index type!"
-msgstr "Neznámy typ obsahu"
+msgstr "Neznámy typ indexu!"
 
 #: src/insets/InsetIndex.cpp:448
-#, fuzzy
 msgid "All indices"
-msgstr "Všetky políčka"
+msgstr "Všetky indexy"
 
 #: src/insets/InsetIndex.cpp:452
-#, fuzzy
 msgid "subindex"
-msgstr "Index"
+msgstr "Podindex"
 
 #: src/insets/InsetInfo.cpp:116
 #, c-format
@@ -22579,34 +22538,28 @@ msgid "Greyed out"
 msgstr "Zosivelé"
 
 #: src/insets/InsetPhantom.cpp:66
-#, fuzzy
 msgid "HPhantom"
-msgstr "Esperanto"
+msgstr "HPhantom"
 
 #: src/insets/InsetPhantom.cpp:67
-#, fuzzy
 msgid "VPhantom"
-msgstr "Esperanto"
+msgstr "VPhantom"
 
 #: src/insets/InsetPhantom.cpp:332
-#, fuzzy
 msgid "phantom"
-msgstr "Esperanto"
+msgstr "phantom"
 
 #: src/insets/InsetPhantom.cpp:334
-#, fuzzy
 msgid "hphantom"
-msgstr "Esperanto"
+msgstr "hphantom"
 
 #: src/insets/InsetPhantom.cpp:336
-#, fuzzy
 msgid "vphantom"
-msgstr "Esperanto"
+msgstr "vphantom"
 
 #: src/insets/InsetRef.cpp:132
-#, fuzzy
 msgid "elsewhere"
-msgstr "Mormónska abeceda"
+msgstr "niekde inde"
 
 #: src/insets/InsetRef.cpp:201
 msgid "BROKEN: "
@@ -22653,9 +22606,8 @@ msgid "PrettyRef"
 msgstr "PeknýOdkaz"
 
 #: src/insets/InsetRef.cpp:224
-#, fuzzy
 msgid "FrmtRef: "
-msgstr "FormatRef: "
+msgstr "FrmtRef: "
 
 #: src/insets/InsetSpace.cpp:68
 msgid "Interword Space"
@@ -22888,24 +22840,20 @@ msgid " strings have been replaced."
 msgstr " reťazce boli nahradené."
 
 #: src/lyxfind.cpp:1209
-#, fuzzy
 msgid "Search text is empty!"
-msgstr "Reťazec na hľadanie je prázdny"
+msgstr "Hľadaný text je prázdny"
 
 #: src/lyxfind.cpp:1223
-#, fuzzy
 msgid "Invalid regular expression!"
-msgstr "Neplatná dĺžka."
+msgstr "Neplatný regulárny výraz!"
 
 #: src/lyxfind.cpp:1228
-#, fuzzy
 msgid "Match not found!"
-msgstr "Reťazec nebol nájdený!"
+msgstr "Vhodný výraz nebol nájdený!"
 
 #: src/lyxfind.cpp:1232
-#, fuzzy
 msgid "Match found!"
-msgstr "Modul nenájdený!"
+msgstr "Vhodný výraz nájdený!"
 
 #: src/mathed/InsetFormulaMacro.cpp:120
 #, c-format
@@ -22929,9 +22877,8 @@ msgid "Changing number of columns not allowed in 'cases': feature %1$s"
 msgstr "Počet stĺpcov sa nedá zmeniť v 'cases':vlastnosť '%1$s'"
 
 #: src/mathed/InsetMathGrid.cpp:1418
-#, fuzzy
 msgid "Cursor not in table"
-msgstr " (nie je inštalovaný)"
+msgstr "Kurzor nie je v tabuľke"
 
 #: src/mathed/InsetMathGrid.cpp:1424
 msgid "Only one row"
@@ -22986,17 +22933,16 @@ msgid "entered math text mode (textrm)"
 msgstr "vstup do text. prostredia vnútri matem. (textrm)"
 
 #: src/mathed/InsetMathNest.cpp:1019
-#, fuzzy
 msgid "Regular expression editor mode"
-msgstr "&Regulárny výraz"
+msgstr "Modus  pre editáciu regulárnych výrazov"
 
 #: src/mathed/InsetMathNest.cpp:1595 src/mathed/InsetMathNest.cpp:1715
 msgid "Autocorrect Off ('!' to enter)"
-msgstr ""
+msgstr "Automatická korektúra vypnutá ('!' na zapnutie)"
 
 #: src/mathed/InsetMathNest.cpp:1600 src/mathed/InsetMathNest.cpp:1717
 msgid "Autocorrect On (<space> to exit)"
-msgstr ""
+msgstr "Automatická korektúra zapnutá (<medzerník> na vypnutie)"
 
 #: src/mathed/InsetMathRef.cpp:224
 msgid "Standard[[mathref]]"
@@ -23036,7 +22982,6 @@ msgid "References: "
 msgstr "Referencie: "
 
 #: src/support/debug.cpp:40
-#, fuzzy
 msgid "No debugging messages"
 msgstr "Žiadne správy pre ladenie"
 
@@ -23101,9 +23046,8 @@ msgid "User commands"
 msgstr "Používateľské príkazy"
 
 #: src/support/debug.cpp:56
-#, fuzzy
 msgid "The LyX Lexer"
-msgstr "LyX Lexxer"
+msgstr "LyX Lexer"
 
 #: src/support/debug.cpp:57
 msgid "Dependency information"
@@ -23142,9 +23086,8 @@ msgid "RowPainter profiling"
 msgstr "Profilovanie RowPainter-u"
 
 #: src/support/debug.cpp:66
-#, fuzzy
 msgid "Scrolling debugging"
-msgstr "ladenie rolovania textu"
+msgstr "ladenie rolovania"
 
 #: src/support/debug.cpp:67
 msgid "Math macros"
@@ -23163,9 +23106,8 @@ msgid "Selection copy/paste mechanism"
 msgstr "Výber kopírovania/vlepenia z/do schránky"
 
 #: src/support/debug.cpp:71
-#, fuzzy
 msgid "Find and replace mechanism"
-msgstr "Hľadať a nahradiť"
+msgstr "Mechanizmus hľadať a nahradiť"
 
 #: src/support/debug.cpp:72
 msgid "Developers' general debug messages"
