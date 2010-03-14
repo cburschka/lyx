@@ -2110,7 +2110,7 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell,
 		else
 			// we need to set a default value
 			// needs to be discussed
-			os << "2.0cm";
+			os << "*";
 		os << "}{";
 		} // end if ismultirow
 
