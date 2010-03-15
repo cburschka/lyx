@@ -43,6 +43,9 @@ void init(int argc, char * argv[]);
 /// Returns the i-th program argument in utf8 encoding.
 std::string utf8_argv(int i);
 
+/// Removes from the internal copy \p num program arguments starting from \p i.
+void remove_internal_args(int i, int num);
+
 /// Returns the name of the NULL device (/dev/null, null).
 std::string const & nulldev();
 

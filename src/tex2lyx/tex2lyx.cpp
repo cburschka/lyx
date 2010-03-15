@@ -366,13 +366,14 @@ void easyParse(int & argc, char * argv[])
 				continue;
 		}
 
-		string arg(to_utf8(from_local8bit((i + 1 < argc) ? argv[i + 1] : "")));
-		string arg2(to_utf8(from_local8bit((i + 2 < argc) ? argv[i + 2] : "")));
+		string arg = (i + 1 < argc) ? os::utf8_argv(i + 1) : string();
+		string arg2 = (i + 2 < argc) ? os::utf8_argv(i + 2) : string();
 
 		int const remove = 1 + it->second(arg, arg2);
 
 		// Now, remove used arguments by shifting
 		// the following ones remove places down.
+		os::remove_internal_args(i, remove);
 		argc -= remove;
 		for (int j = i; j < argc; ++j)
 			argv[j] = argv[j + remove];
@@ -502,13 +503,15 @@ int main(int argc, char * argv[])
 
 	lyxerr.setStream(cerr);
 
+	os::init(argc, argv);
+
 	easyParse(argc, argv);
 
 	if (argc <= 1) 
 		error_message("Not enough arguments.");
-	os::init(argc, argv);
 
-	try { init_package(internal_path(to_utf8(from_local8bit(argv[0]))),
+	try {
+		init_package(internal_path(os::utf8_argv(0)),
 			     cl_system_support, cl_user_support,
 			     top_build_dir_is_two_levels_up);
 	} catch (ExceptionMessage const & message) {
@@ -520,12 +523,12 @@ int main(int argc, char * argv[])
 
 	// Now every known option is parsed. Look for input and output
 	// file name (the latter is optional).
-	string infilename = internal_path(to_utf8(from_local8bit(argv[1])));
+	string infilename = internal_path(os::utf8_argv(1));
 	infilename = makeAbsPath(infilename).absFilename();
 
 	string outfilename;
 	if (argc > 2) {
-		outfilename = internal_path(to_utf8(from_local8bit(argv[2])));
+		outfilename = internal_path(os::utf8_argv(2));
 		if (outfilename != "-")
 			outfilename = makeAbsPath(outfilename).absFilename();
 	} else

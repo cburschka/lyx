@@ -25,7 +25,7 @@ What's new
 * DOCUMENT INPUT/OUTPUT
 
 - LyX now supports SVG images when either the librsvg library or
-  or Inkscape (version 0.47 recommended) is installed (bug 3349).
+  Inkscape (version 0.47 recommended) is installed (bug 3349).
 
 - LaTeX import (tex2lyx) now recognizes the types of quotes dependent
   on the document language. (When importing e.g. a Spanish document,
@@ -153,6 +153,9 @@ What's new
 
 - On Windows, allow loading and saving files whose path and/or name contains
   characters not encodable in the current code page (bug 5238).
+
+- On Windows, allow using unicode characters in the command line arguments
+  for lyx and tex2lyx.
 
 - Do not try to move the autosave file if it does not yet exist (bug 6525.)
 

@@ -1108,6 +1108,7 @@ void LyX::easyParse(int & argc, char * argv[])
 		// Now, remove used arguments by shifting
 		// the following ones remove places down.
 		if (remove > 0) {
+			os::remove_internal_args(i, remove);
 			argc -= remove;
 			for (int j = i; j < argc; ++j)
 				argv[j] = argv[j + remove];

@@ -52,6 +52,10 @@ string utf8_argv(int i)
 }
 
 
+void remove_internal_args(int, int)
+{}
+
+
 string current_root()
 {
 	return "/";

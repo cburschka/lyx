@@ -209,6 +209,14 @@ string utf8_argv(int i)
 }
 
 
+void remove_internal_args(int i, int num)
+{
+	argc_ -= num;
+	for (int j = i; j < argc_; ++j)
+		argv_[j] = argv_[j + num];
+}
+
+
 string current_root()
 {
 	// _getdrive returns the current drive (1=A, 2=B, and so on).
