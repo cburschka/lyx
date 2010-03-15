@@ -50,9 +50,7 @@ namespace lyx {
 
 InsetLabel::InsetLabel(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p, "label")
-{
-	screen_label_ = p["name"];
-}
+{}
 
 
 void InsetLabel::initView()
@@ -103,7 +101,6 @@ void InsetLabel::updateCommand(docstring const & new_label, bool updaterefs)
 	// We need an update of the Buffer reference cache. This is achieved by
 	// updateBuffer().
 	buffer().updateBuffer();
-	screen_label_ = label;
 }
 
 

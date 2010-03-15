@@ -3868,8 +3868,7 @@ void Buffer::updateBuffer(ParIterator & parit, UpdateType utype) const
 		InsetList::const_iterator end = parit->insetList().end();
 		for (; iit != end; ++iit) {
 			parit.pos() = iit->pos;
-			if (!parit->isDeleted(iit->pos))
-				iit->inset->updateBuffer(parit, utype);
+			iit->inset->updateBuffer(parit, utype);
 		}
 	}
 }
