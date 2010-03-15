@@ -104,6 +104,8 @@ What's new
 
 - Fix a crash when a document includes itself (bug 6503).
 
+- Fix the parsing of spaces in the preamble of tex files (bug 6474).
+
 - Export the image when generating a preview, after an image
   reload (bug 6356).
 

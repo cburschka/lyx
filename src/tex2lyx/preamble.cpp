@@ -871,9 +871,6 @@ void parse_preamble(Parser & p, ostream & os,
 
 		else if (!t.cs().empty() && !in_lyx_preamble)
 			h_preamble << '\\' << t.cs();
-
-		// remove the whitespace
-		p.skip_spaces();
 	}
 
 	// remove the whitespace
