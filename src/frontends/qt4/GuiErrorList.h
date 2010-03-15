@@ -57,6 +57,10 @@ private:
 	std::string error_type_;
 	/// the parent document name
 	docstring name_;
+	///
+	Buffer const * buf_;
+	///
+	mutable ErrorList error_list_;
 };
 
 } // namespace frontend
