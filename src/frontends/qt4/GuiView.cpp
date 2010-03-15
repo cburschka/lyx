@@ -1999,7 +1999,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				if (buffer)
 					setBuffer(buffer);
 				else
-					bv->cursor().message(_("Document not loaded"));
+					theLyXFunc().setMessage(_("Document not loaded"));
 			}
 			break;
 
