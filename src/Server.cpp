@@ -829,7 +829,7 @@ int LyXComm::startPipe(string const & file, bool write)
 		return -1;
 	}
 	int const fd = ::open(filename.toFilesystemEncoding().c_str(),
-			      write ? (O_RDWR) : (O_RDONLY|O_NONBLOCK));
+			      write ? (O_WRONLY) : (O_RDONLY|O_NONBLOCK));
 
 	if (fd < 0) {
 		lyxerr << "LyXComm: Could not open pipe " << filename << '\n'
