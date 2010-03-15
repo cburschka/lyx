@@ -379,7 +379,7 @@ public:
 	///
 	bool isMultiColumn(idx_type cell) const;
 	///
-	void setMultiColumn(idx_type cell, idx_type number);
+	idx_type setMultiColumn(idx_type cell, idx_type number);
 	///
 	void unsetMultiColumn(idx_type cell);
 	///
@@ -389,7 +389,7 @@ public:
 	///
 	bool isMultiRow(idx_type cell) const;
 	///
-	void setMultiRow(idx_type cell, idx_type number);
+	idx_type setMultiRow(idx_type cell, idx_type number);
 	///
 	void unsetMultiRow(idx_type cell);
 	///

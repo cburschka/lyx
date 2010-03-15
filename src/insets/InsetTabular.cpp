@@ -1504,17 +1504,20 @@ Tabular::CellData & Tabular::cellInfo(idx_type cell) const
 }
 
 
-void Tabular::setMultiColumn(idx_type cell, idx_type number)
+Tabular::idx_type Tabular::setMultiColumn(idx_type cell, idx_type number)
 {
 	idx_type const col = cellColumn(cell);
 	idx_type const row = cellRow(cell);
 	for (idx_type i = 0; i < number; ++i)
 		unsetMultiRow(cellIndex(row, col + i));
 
+	// unsetting of multirow may have invalidated cell index
+	cell = cellIndex(row, col);
 	CellData & cs = cellInfo(cell);
 	cs.multicolumn = CELL_BEGIN_OF_MULTICOLUMN;
-	cs.alignment = column_info[cellColumn(cell)].alignment;
-	setRightLine(cell, rightLine(cell + number - 1));
+	cs.alignment = column_info[col].alignment;
+	if (col > 0)
+		setRightLine(cell, rightLine(cellIndex(row, col - 1)));
 
 	for (idx_type i = 1; i < number; ++i) {
 		CellData & cs1 = cellInfo(cell + i);
@@ -1523,6 +1526,7 @@ void Tabular::setMultiColumn(idx_type cell, idx_type number)
 		cs1.inset->clear();
 	}
 	updateIndexes();
+	return cell;
 }
 
 
@@ -1533,13 +1537,15 @@ bool Tabular::isMultiRow(idx_type cell) const
 }
 
 
-void Tabular::setMultiRow(idx_type cell, idx_type number)
+Tabular::idx_type Tabular::setMultiRow(idx_type cell, idx_type number)
 {
 	idx_type const col = cellColumn(cell);
 	idx_type const row = cellRow(cell);
 	for (idx_type i = 0; i < number; ++i)
 		unsetMultiColumn(cellIndex(row + i, col));
 
+	// unsetting of multicol may have invalidated cell index
+	cell = cellIndex(row, col);
 	CellData & cs = cellInfo(cell);
 	cs.multirow = CELL_BEGIN_OF_MULTIROW;
 	cs.valignment = LYX_VALIGN_MIDDLE;
@@ -1554,6 +1560,7 @@ void Tabular::setMultiRow(idx_type cell, idx_type number)
 		cs1.inset->clear();
 	}
 	updateIndexes();
+	return cell;
 }
 
 
@@ -4958,8 +4965,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		idx_type const s_start = cur.selBegin().idx();
 		row_type const col_start = tabular.cellColumn(s_start);
 		row_type const col_end = tabular.cellColumn(cur.selEnd().idx());
-		tabular.setMultiColumn(s_start, col_end - col_start + 1);
-		cur.idx() = s_start;
+		cur.idx() = tabular.setMultiColumn(s_start, col_end - col_start + 1);
 		cur.pit() = 0;
 		cur.pos() = 0;
 		cur.setSelection(false);
@@ -4981,8 +4987,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		idx_type const s_start = cur.selBegin().idx();
 		row_type const row_start = tabular.cellRow(s_start);
 		row_type const row_end = tabular.cellRow(cur.selEnd().idx());
-		tabular.setMultiRow(s_start, row_end - row_start + 1);
-		cur.idx() = s_start;
+		cur.idx() = tabular.setMultiRow(s_start, row_end - row_start + 1);
 		cur.pit() = 0;
 		cur.pos() = 0;
 		cur.setSelection(false);
