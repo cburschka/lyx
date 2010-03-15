@@ -1945,10 +1945,10 @@ void GuiApplication::setGuiLanguage()
 	case QLocale::Hebrew :
 	case QLocale::Persian :
 	case QLocale::Urdu :
-        setLayoutDirection(Qt::RightToLeft);
+		setLayoutDirection(Qt::RightToLeft);
 		break;
 	default:
-        setLayoutDirection(Qt::LeftToRight);
+		setLayoutDirection(Qt::LeftToRight);
 	}
 }
 
