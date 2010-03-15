@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-03-15 13:47+0100\n"
+"POT-Creation-Date: 2010-03-15 15:25+0100\n"
 "PO-Revision-Date: 2010-02-28 16:22+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: Ukrainian <kde-i18n-doc@kde.org>\n"
@@ -49,7 +49,7 @@ msgstr "Авторські права"
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:189
 #: src/frontends/qt4/ui/SymbolsUi.ui:66 src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:297
+#: src/frontends/qt4/GuiParagraph.cpp:161
 msgid "&Close"
 msgstr "&Закрити"
 
@@ -62,7 +62,7 @@ msgid "The label as it appears in the document"
 msgstr "Мітка, як вона буде показана в документі"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:39
-#: src/frontends/qt4/ui/RefUi.ui:335 src/frontends/qt4/ui_RefUi.h:334
+#: src/frontends/qt4/ui/RefUi.ui:335
 msgid "&Label:"
 msgstr "&Мітка:"
 
@@ -126,18 +126,16 @@ msgstr "Створення списку літератури"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:108
-#: src/frontends/qt4/ui_IndicesUi.h:192
 msgid "&Processor:"
 msgstr "П&роцесор:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
-#: src/frontends/qt4/ui_IndicesUi.h:195
 msgid "Select a processor"
 msgstr "Оберіть інструмент обробки (процесор)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:131 src/frontends/qt4/GuiPrefs.cpp:655
-#: src/frontends/qt4/GuiPrefs.cpp:750 src/frontends/qt4/ui_IndicesUi.h:198
+#: src/frontends/qt4/GuiPrefs.cpp:750
 msgid "&Options:"
 msgstr "П&араметри:"
 
@@ -175,7 +173,7 @@ msgstr "Використовувана база даних BiBTeX"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:110
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:345 src/frontends/qt4/ui_IndicesUi.h:221
+#: src/CutAndPaste.cpp:345
 msgid "&Add"
 msgstr "&Додати"
 
@@ -250,7 +248,7 @@ msgstr "Додавати бібліографію у &зміст"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:295
+#: src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
 msgstr "&Гаразд"
 
@@ -447,7 +445,6 @@ msgid "Select your branch"
 msgstr "Обрати версію"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25 src/frontends/qt4/ui/IndicesUi.ui:114
-#: src/frontends/qt4/ui_IndicesUi.h:210
 msgid "&New:"
 msgstr "&Нові:"
 
@@ -492,7 +489,7 @@ msgid "Define or change background color"
 msgstr "Визначте або змініть колір тла"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
-#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:241
+#: src/frontends/qt4/ui/IndicesUi.ui:185
 msgid "Alter Co&lor..."
 msgstr "&Інші кольори..."
 
@@ -502,7 +499,7 @@ msgstr "Вилучити обрану базу даних"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3483
-#: src/Buffer.cpp:3494 src/frontends/qt4/ui_IndicesUi.h:229
+#: src/Buffer.cpp:3494
 msgid "&Remove"
 msgstr "Ви&лучити"
 
@@ -787,7 +784,7 @@ msgstr "Застосовувати кожну зміну &негайно"
 #: src/frontends/qt4/ui/RefUi.ui:126 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1611
-#: src/frontends/qt4/GuiDocument.cpp:2797 src/frontends/qt4/ui_RefUi.h:296
+#: src/frontends/qt4/GuiDocument.cpp:2797
 msgid "&Apply"
 msgstr "&Застосувати"
 
@@ -1800,7 +1797,6 @@ msgstr "&Призначення:"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:106
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:257
-#: src/frontends/qt4/ui_RefUi.h:318
 msgid "&Name:"
 msgstr "&Назва:"
 
@@ -1889,7 +1885,7 @@ msgstr "До&ступні покажчики:"
 msgid "Select the index this entry should be listed in."
 msgstr "Оберіть покажчик для цього запису."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:188
+#: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
@@ -1898,59 +1894,57 @@ msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:180
-#: src/frontends/qt4/ui_IndicesUi.h:191
 msgid "Index generation"
 msgstr "Створення покажчика"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:201
+#: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
 msgstr "Вказати параметри програми позначеного інструменту обробки."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:206
+#: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr ""
 "Позначте, якщо у вашому документі декілька покажчиків (наприклад, є «Покажчик "
 "назв»)"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:209
+#: src/frontends/qt4/ui/IndicesUi.ui:92
 msgid "&Use multiple indexes"
 msgstr "&Декілька покажчиків"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:213
+#: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 "Введіть назву бажаного покажчика (наприклад, «Покажчик назв») і натисніть "
 "кнопку «Додати»"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:218
+#: src/frontends/qt4/ui/IndicesUi.ui:131
 #, fuzzy
 msgid "Add a new index to the list"
 msgstr "Додати нову версію до списку"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:143 src/frontends/qt4/ui_IndicesUi.h:222
+#: src/frontends/qt4/ui/IndicesUi.ui:143
 msgid "A&vailable Indexes:"
 msgstr "До&ступні покажчики:"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
-#: src/frontends/qt4/ui_IndicesUi.h:223
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:226
+#: src/frontends/qt4/ui/IndicesUi.ui:162
 msgid "Remove the selected index"
 msgstr "Вилучити обраний покажчик"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:232
+#: src/frontends/qt4/ui/IndicesUi.ui:172
 msgid "Rename the selected index"
 msgstr "Змінити назву обраного покажчика"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:235
+#: src/frontends/qt4/ui/IndicesUi.ui:175
 msgid "R&ename..."
 msgstr "Пере&йменувати..."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:238
+#: src/frontends/qt4/ui/IndicesUi.ui:182
 msgid "Define or change button color"
 msgstr "Визначте або змініть колір кнопок"
 
@@ -2252,7 +2246,7 @@ msgid "Update the display"
 msgstr "Оновити екран"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:90
-#: src/frontends/qt4/ui/ViewSourceUi.ui:56 src/frontends/qt4/ui_RefUi.h:294
+#: src/frontends/qt4/ui/ViewSourceUi.ui:56
 msgid "&Update"
 msgstr "&Оновити"
 
@@ -2687,7 +2681,7 @@ msgstr "Формат паперу"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:246
-#: src/frontends/qt4/ui/RefUi.ui:277 src/frontends/qt4/ui_RefUi.h:319
+#: src/frontends/qt4/ui/RefUi.ui:277
 msgid "&Format:"
 msgstr "&Формат:"
 
@@ -4053,31 +4047,31 @@ msgstr "Повідомлення в таблицях або текстових �
 msgid "&Statusbar messages"
 msgstr "Повідомлення в таблицях або текстових вкладках"
 
-#: src/frontends/qt4/ui/RefUi.ui:36 src/frontends/qt4/ui_RefUi.h:276
+#: src/frontends/qt4/ui/RefUi.ui:36
 #, fuzzy
 msgid "Fil&ter:"
 msgstr "&Файл:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:279
+#: src/frontends/qt4/ui/RefUi.ui:49
 #, fuzzy
 msgid "Enter string to filter the label list"
 msgstr "Введіть символи для фільтрування списку форматів."
 
-#: src/frontends/qt4/ui/RefUi.ui:59 src/frontends/qt4/ui_RefUi.h:285
+#: src/frontends/qt4/ui/RefUi.ui:59
 #, fuzzy
 msgid "Filter case-sensitively"
 msgstr "З в&рахуванням регістру"
 
-#: src/frontends/qt4/ui/RefUi.ui:62 src/frontends/qt4/ui_RefUi.h:288
+#: src/frontends/qt4/ui/RefUi.ui:62
 #, fuzzy
 msgid "Case-sensiti&ve"
 msgstr "З в&рахуванням регістру"
 
-#: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui_RefUi.h:291
+#: src/frontends/qt4/ui/RefUi.ui:87
 msgid "Update the label list"
 msgstr "Оновити список міток"
 
-#: src/frontends/qt4/ui/RefUi.ui:167 src/frontends/qt4/ui_RefUi.h:300
+#: src/frontends/qt4/ui/RefUi.ui:167
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
@@ -4085,61 +4079,60 @@ msgstr ""
 "Впорядкувати мітки за абеткою (без врахування регістру, якщо не позначено "
 "пункт «З врахуванням регістру»)"
 
-#: src/frontends/qt4/ui/RefUi.ui:170 src/frontends/qt4/ui_RefUi.h:303
+#: src/frontends/qt4/ui/RefUi.ui:170
 msgid "&Sort"
 msgstr "&Впорядкувати"
 
-#: src/frontends/qt4/ui/RefUi.ui:180 src/frontends/qt4/ui_RefUi.h:306
+#: src/frontends/qt4/ui/RefUi.ui:180
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "Впорядкувати мітки за абетвою з врахуванням регістру"
 
-#: src/frontends/qt4/ui/RefUi.ui:183 src/frontends/qt4/ui_RefUi.h:309
+#: src/frontends/qt4/ui/RefUi.ui:183
 msgid "Cas&e-sensitive"
 msgstr "З в&рахуванням регістру"
 
-#: src/frontends/qt4/ui/RefUi.ui:190 src/frontends/qt4/ui_RefUi.h:312
+#: src/frontends/qt4/ui/RefUi.ui:190
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:193 src/frontends/qt4/ui_RefUi.h:315
+#: src/frontends/qt4/ui/RefUi.ui:193
 #, fuzzy
 msgid "Grou&p"
 msgstr "Без групування"
 
 #: src/frontends/qt4/ui/RefUi.ui:223 src/frontends/qt4/GuiRef.cpp:314
-#: src/frontends/qt4/ui_RefUi.h:316
 msgid "&Go to Label"
 msgstr "&Перейти до мітки"
 
-#: src/frontends/qt4/ui/RefUi.ui:232 src/frontends/qt4/ui_RefUi.h:317
+#: src/frontends/qt4/ui/RefUi.ui:232
 msgid "La&bels in:"
 msgstr "Міт&ки в:"
 
-#: src/frontends/qt4/ui/RefUi.ui:298 src/frontends/qt4/ui_RefUi.h:331
+#: src/frontends/qt4/ui/RefUi.ui:298
 msgid "Cross-reference as it appears in output"
 msgstr "Перехресне посилання, як воно буде показане у виводі"
 
-#: src/frontends/qt4/ui/RefUi.ui:302 src/frontends/qt4/ui_RefUi.h:322
+#: src/frontends/qt4/ui/RefUi.ui:302
 msgid "<reference>"
 msgstr "<посилання>"
 
-#: src/frontends/qt4/ui/RefUi.ui:307 src/frontends/qt4/ui_RefUi.h:323
+#: src/frontends/qt4/ui/RefUi.ui:307
 msgid "(<reference>)"
 msgstr "<посилання>"
 
-#: src/frontends/qt4/ui/RefUi.ui:312 src/frontends/qt4/ui_RefUi.h:324
+#: src/frontends/qt4/ui/RefUi.ui:312
 msgid "<page>"
 msgstr "<сторінка>"
 
-#: src/frontends/qt4/ui/RefUi.ui:317 src/frontends/qt4/ui_RefUi.h:325
+#: src/frontends/qt4/ui/RefUi.ui:317
 msgid "on page <page>"
 msgstr "на сторінці <номер>"
 
-#: src/frontends/qt4/ui/RefUi.ui:322 src/frontends/qt4/ui_RefUi.h:326
+#: src/frontends/qt4/ui/RefUi.ui:322
 msgid "<reference> on page <page>"
 msgstr "<посилання> на сторінці <номер>"
 
-#: src/frontends/qt4/ui/RefUi.ui:327 src/frontends/qt4/ui_RefUi.h:327
+#: src/frontends/qt4/ui/RefUi.ui:327
 msgid "Formatted reference"
 msgstr "форматоване посилання"
 

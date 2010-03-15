@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-03-15 13:47+0100\n"
+"POT-Creation-Date: 2010-03-15 15:25+0100\n"
 "PO-Revision-Date: 2010-03-12 18:09+0100\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -51,7 +51,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:189
 #: src/frontends/qt4/ui/SymbolsUi.ui:66 src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:297
+#: src/frontends/qt4/GuiParagraph.cpp:161
 msgid "&Close"
 msgstr "&Cerrar"
 
@@ -64,7 +64,7 @@ msgid "The label as it appears in the document"
 msgstr "La etiqueta tal como aparece en el documento"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:39
-#: src/frontends/qt4/ui/RefUi.ui:335 src/frontends/qt4/ui_RefUi.h:334
+#: src/frontends/qt4/ui/RefUi.ui:335
 msgid "&Label:"
 msgstr "Eti&queta:"
 
@@ -129,18 +129,16 @@ msgstr "Generación  de bibliografía"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:108
-#: src/frontends/qt4/ui_IndicesUi.h:192
 msgid "&Processor:"
 msgstr "Pr&ocesador:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
-#: src/frontends/qt4/ui_IndicesUi.h:195
 msgid "Select a processor"
 msgstr "Seleccionar un procesador"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:131 src/frontends/qt4/GuiPrefs.cpp:655
-#: src/frontends/qt4/GuiPrefs.cpp:750 src/frontends/qt4/ui_IndicesUi.h:198
+#: src/frontends/qt4/GuiPrefs.cpp:750
 msgid "&Options:"
 msgstr "Opc&iones:"
 
@@ -179,7 +177,7 @@ msgstr "Introducir nombre de la base de datos BibTeX"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:110
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:345 src/frontends/qt4/ui_IndicesUi.h:221
+#: src/CutAndPaste.cpp:345
 msgid "&Add"
 msgstr "A&ñadir"
 
@@ -254,7 +252,7 @@ msgstr "Añadir bibliografía al I&G"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:295
+#: src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
 msgstr "&Aceptar"
 
@@ -451,7 +449,6 @@ msgid "Select your branch"
 msgstr "Seleccionar rama"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25 src/frontends/qt4/ui/IndicesUi.ui:114
-#: src/frontends/qt4/ui_IndicesUi.h:210
 msgid "&New:"
 msgstr "&Nuevo:"
 
@@ -496,7 +493,7 @@ msgid "Define or change background color"
 msgstr "Definir o cambiar el color del fondo"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
-#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:241
+#: src/frontends/qt4/ui/IndicesUi.ui:185
 msgid "Alter Co&lor..."
 msgstr "Cambiar co&lor..."
 
@@ -506,7 +503,7 @@ msgstr "Quitar la rama seleccionada"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3483
-#: src/Buffer.cpp:3494 src/frontends/qt4/ui_IndicesUi.h:229
+#: src/Buffer.cpp:3494
 msgid "&Remove"
 msgstr "&Quitar"
 
@@ -792,7 +789,7 @@ msgstr "Aplicar cam&bios inmediatamente"
 #: src/frontends/qt4/ui/RefUi.ui:126 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1611
-#: src/frontends/qt4/GuiDocument.cpp:2797 src/frontends/qt4/ui_RefUi.h:296
+#: src/frontends/qt4/GuiDocument.cpp:2797
 msgid "&Apply"
 msgstr "A&plicar"
 
@@ -1775,7 +1772,6 @@ msgstr "&Dirección:"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:106
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:257
-#: src/frontends/qt4/ui_RefUi.h:318
 msgid "&Name:"
 msgstr "&Nombre:"
 
@@ -1864,7 +1860,7 @@ msgstr "Ín&dices disponibles:"
 msgid "Select the index this entry should be listed in."
 msgstr "Seleccionar el índice en el que debería listarse esta entrada."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:188
+#: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
@@ -1873,56 +1869,54 @@ msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:180
-#: src/frontends/qt4/ui_IndicesUi.h:191
 msgid "Index generation"
 msgstr "Generación de índice"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:201
+#: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
 msgstr "Definir las opciones de programa del procesador seleccionado."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:206
+#: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr "Marcar si se necesitan índices múltiples (p.e., un índice de Nombres)"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:209
+#: src/frontends/qt4/ui/IndicesUi.ui:92
 msgid "&Use multiple indexes"
 msgstr "&Usar índices múltiples"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:213
+#: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 "Introducir el nombre del índice deseado (p.e., \"Índice de Nombres\") y "
 "pulsar \"Add\""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:218
+#: src/frontends/qt4/ui/IndicesUi.ui:131
 msgid "Add a new index to the list"
 msgstr "Añadir un índice nuevo a la lista"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:143 src/frontends/qt4/ui_IndicesUi.h:222
+#: src/frontends/qt4/ui/IndicesUi.ui:143
 msgid "A&vailable Indexes:"
 msgstr "Ín&dices disponibles:"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
-#: src/frontends/qt4/ui_IndicesUi.h:223
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:226
+#: src/frontends/qt4/ui/IndicesUi.ui:162
 msgid "Remove the selected index"
 msgstr "Quitar el índice seleccionado"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:232
+#: src/frontends/qt4/ui/IndicesUi.ui:172
 msgid "Rename the selected index"
 msgstr "Renombrar el índice seleccionado"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:235
+#: src/frontends/qt4/ui/IndicesUi.ui:175
 msgid "R&ename..."
 msgstr "R&enombrar"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:238
+#: src/frontends/qt4/ui/IndicesUi.ui:182
 msgid "Define or change button color"
 msgstr "Definir o cambiar el color del botón"
 
@@ -2226,7 +2220,7 @@ msgid "Update the display"
 msgstr "Actualizar la vista"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:90
-#: src/frontends/qt4/ui/ViewSourceUi.ui:56 src/frontends/qt4/ui_RefUi.h:294
+#: src/frontends/qt4/ui/ViewSourceUi.ui:56
 msgid "&Update"
 msgstr "Actuali&zar"
 
@@ -2663,7 +2657,7 @@ msgstr "Formato del papel"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:246
-#: src/frontends/qt4/ui/RefUi.ui:277 src/frontends/qt4/ui_RefUi.h:319
+#: src/frontends/qt4/ui/RefUi.ui:277
 msgid "&Format:"
 msgstr "&Formato:"
 
@@ -4027,27 +4021,27 @@ msgstr "¿Mostrar mensajes en la barra de estado?"
 msgid "&Statusbar messages"
 msgstr "Mensajes recuadros-texto/tabulares"
 
-#: src/frontends/qt4/ui/RefUi.ui:36 src/frontends/qt4/ui_RefUi.h:276
+#: src/frontends/qt4/ui/RefUi.ui:36
 msgid "Fil&ter:"
 msgstr "Fil&tro:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:279
+#: src/frontends/qt4/ui/RefUi.ui:49
 msgid "Enter string to filter the label list"
 msgstr "Introducir caracteres para filtrar la lista de etiquetas."
 
-#: src/frontends/qt4/ui/RefUi.ui:59 src/frontends/qt4/ui_RefUi.h:285
+#: src/frontends/qt4/ui/RefUi.ui:59
 msgid "Filter case-sensitively"
 msgstr "Filtrar distinguiendo &mayúsculas"
 
-#: src/frontends/qt4/ui/RefUi.ui:62 src/frontends/qt4/ui_RefUi.h:288
+#: src/frontends/qt4/ui/RefUi.ui:62
 msgid "Case-sensiti&ve"
 msgstr "Distinguir ma&yúsculas"
 
-#: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui_RefUi.h:291
+#: src/frontends/qt4/ui/RefUi.ui:87
 msgid "Update the label list"
 msgstr "Actualizar lista de etiquetas"
 
-#: src/frontends/qt4/ui/RefUi.ui:167 src/frontends/qt4/ui_RefUi.h:300
+#: src/frontends/qt4/ui/RefUi.ui:167
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
@@ -4055,60 +4049,59 @@ msgstr ""
 "Ordenar etiquetas alfabéticamente (sin distinguir mayúsculas, a menos que la "
 "opción Distinguir mayúsculas esté marcada)"
 
-#: src/frontends/qt4/ui/RefUi.ui:170 src/frontends/qt4/ui_RefUi.h:303
+#: src/frontends/qt4/ui/RefUi.ui:170
 msgid "&Sort"
 msgstr "&Ordenar"
 
-#: src/frontends/qt4/ui/RefUi.ui:180 src/frontends/qt4/ui_RefUi.h:306
+#: src/frontends/qt4/ui/RefUi.ui:180
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "Ordenar etiquetas en orden alfabético distinguiendo mayúsculas"
 
-#: src/frontends/qt4/ui/RefUi.ui:183 src/frontends/qt4/ui_RefUi.h:309
+#: src/frontends/qt4/ui/RefUi.ui:183
 msgid "Cas&e-sensitive"
 msgstr "Distinguir &mayúsculas"
 
-#: src/frontends/qt4/ui/RefUi.ui:190 src/frontends/qt4/ui_RefUi.h:312
+#: src/frontends/qt4/ui/RefUi.ui:190
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr "Agrupar etiquetas por prefijo (p.e. \"sec:\")"
 
-#: src/frontends/qt4/ui/RefUi.ui:193 src/frontends/qt4/ui_RefUi.h:315
+#: src/frontends/qt4/ui/RefUi.ui:193
 msgid "Grou&p"
 msgstr "Agr&upar"
 
 #: src/frontends/qt4/ui/RefUi.ui:223 src/frontends/qt4/GuiRef.cpp:314
-#: src/frontends/qt4/ui_RefUi.h:316
 msgid "&Go to Label"
 msgstr "&Ir a la etiqueta"
 
-#: src/frontends/qt4/ui/RefUi.ui:232 src/frontends/qt4/ui_RefUi.h:317
+#: src/frontends/qt4/ui/RefUi.ui:232
 msgid "La&bels in:"
 msgstr "&Etiquetas en:"
 
-#: src/frontends/qt4/ui/RefUi.ui:298 src/frontends/qt4/ui_RefUi.h:331
+#: src/frontends/qt4/ui/RefUi.ui:298
 msgid "Cross-reference as it appears in output"
 msgstr "Referencia cruzada tal como aparece en la salida"
 
-#: src/frontends/qt4/ui/RefUi.ui:302 src/frontends/qt4/ui_RefUi.h:322
+#: src/frontends/qt4/ui/RefUi.ui:302
 msgid "<reference>"
 msgstr "<referencia>"
 
-#: src/frontends/qt4/ui/RefUi.ui:307 src/frontends/qt4/ui_RefUi.h:323
+#: src/frontends/qt4/ui/RefUi.ui:307
 msgid "(<reference>)"
 msgstr "(<referencia>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:312 src/frontends/qt4/ui_RefUi.h:324
+#: src/frontends/qt4/ui/RefUi.ui:312
 msgid "<page>"
 msgstr "<página>"
 
-#: src/frontends/qt4/ui/RefUi.ui:317 src/frontends/qt4/ui_RefUi.h:325
+#: src/frontends/qt4/ui/RefUi.ui:317
 msgid "on page <page>"
 msgstr "en página <página>"
 
-#: src/frontends/qt4/ui/RefUi.ui:322 src/frontends/qt4/ui_RefUi.h:326
+#: src/frontends/qt4/ui/RefUi.ui:322
 msgid "<reference> on page <page>"
 msgstr "<referencia> en página <página>"
 
-#: src/frontends/qt4/ui/RefUi.ui:327 src/frontends/qt4/ui_RefUi.h:327
+#: src/frontends/qt4/ui/RefUi.ui:327
 msgid "Formatted reference"
 msgstr "Referencias con formato"
 

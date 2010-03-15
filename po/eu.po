@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-03-15 13:47+0100\n"
+"POT-Creation-Date: 2010-03-15 15:25+0100\n"
 "PO-Revision-Date: 2006-11-08 17:53+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -48,7 +48,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:189
 #: src/frontends/qt4/ui/SymbolsUi.ui:66 src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:297
+#: src/frontends/qt4/GuiParagraph.cpp:161
 msgid "&Close"
 msgstr "It&xi"
 
@@ -61,7 +61,7 @@ msgid "The label as it appears in the document"
 msgstr "Etiketa dokumentuan agertzen den bezala"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:39
-#: src/frontends/qt4/ui/RefUi.ui:335 src/frontends/qt4/ui_RefUi.h:334
+#: src/frontends/qt4/ui/RefUi.ui:335
 msgid "&Label:"
 msgstr "&Etiketa:"
 
@@ -124,20 +124,18 @@ msgstr "Bibliografia"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:108
-#: src/frontends/qt4/ui_IndicesUi.h:192
 #, fuzzy
 msgid "&Processor:"
 msgstr "&Babestu:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
-#: src/frontends/qt4/ui_IndicesUi.h:195
 #, fuzzy
 msgid "Select a processor"
 msgstr "Hautatu fitxategia"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:131 src/frontends/qt4/GuiPrefs.cpp:655
-#: src/frontends/qt4/GuiPrefs.cpp:750 src/frontends/qt4/ui_IndicesUi.h:198
+#: src/frontends/qt4/GuiPrefs.cpp:750
 msgid "&Options:"
 msgstr "&Aukerak:"
 
@@ -174,7 +172,7 @@ msgstr "Sartu BibTeX datu-basearen izena"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:110
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:345 src/frontends/qt4/ui_IndicesUi.h:221
+#: src/CutAndPaste.cpp:345
 msgid "&Add"
 msgstr "&Gehitu"
 
@@ -249,7 +247,7 @@ msgstr "Gehitu bibliografia &Aurk.-ra"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:295
+#: src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
 msgstr "&Ados"
 
@@ -450,7 +448,6 @@ msgid "Select your branch"
 msgstr "Hautatu adarra"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25 src/frontends/qt4/ui/IndicesUi.ui:114
-#: src/frontends/qt4/ui_IndicesUi.h:210
 msgid "&New:"
 msgstr "&Berria:"
 
@@ -495,7 +492,7 @@ msgid "Define or change background color"
 msgstr "Adierazi edo aldatu atzeko planoko kolorea"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
-#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:241
+#: src/frontends/qt4/ui/IndicesUi.ui:185
 msgid "Alter Co&lor..."
 msgstr "Aldatu &kolorea..."
 
@@ -505,7 +502,7 @@ msgstr "Kendu hautatutako adarra"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3483
-#: src/Buffer.cpp:3494 src/frontends/qt4/ui_IndicesUi.h:229
+#: src/Buffer.cpp:3494
 msgid "&Remove"
 msgstr "&Kendu"
 
@@ -800,7 +797,7 @@ msgstr "Aplikatu aldaketak berehala"
 #: src/frontends/qt4/ui/RefUi.ui:126 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1611
-#: src/frontends/qt4/GuiDocument.cpp:2797 src/frontends/qt4/ui_RefUi.h:296
+#: src/frontends/qt4/GuiDocument.cpp:2797
 msgid "&Apply"
 msgstr "&Aplikatu"
 
@@ -1840,7 +1837,6 @@ msgstr "Handiena:"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:106
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:257
-#: src/frontends/qt4/ui_RefUi.h:318
 msgid "&Name:"
 msgstr "&Izena:"
 
@@ -1935,69 +1931,67 @@ msgstr "Adar &erabilgarriak:"
 msgid "Select the index this entry should be listed in."
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:188
+#: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:180
-#: src/frontends/qt4/ui_IndicesUi.h:191
 #, fuzzy
 msgid "Index generation"
 msgstr "&Koska"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:201
+#: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:206
+#: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:209
+#: src/frontends/qt4/ui/IndicesUi.ui:92
 #, fuzzy
 msgid "&Use multiple indexes"
 msgstr "Kendu ertz guztiak"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:213
+#: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:218
+#: src/frontends/qt4/ui/IndicesUi.ui:131
 #, fuzzy
 msgid "Add a new index to the list"
 msgstr "Gehitu adar berria zerrendari"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:143 src/frontends/qt4/ui_IndicesUi.h:222
+#: src/frontends/qt4/ui/IndicesUi.ui:143
 #, fuzzy
 msgid "A&vailable Indexes:"
 msgstr "Adar &erabilgarriak:"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
-#: src/frontends/qt4/ui_IndicesUi.h:223
 #, fuzzy
 msgid "1"
 msgstr "10"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:226
+#: src/frontends/qt4/ui/IndicesUi.ui:162
 #, fuzzy
 msgid "Remove the selected index"
 msgstr "Kendu hautatutako datu-basea"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:232
+#: src/frontends/qt4/ui/IndicesUi.ui:172
 #, fuzzy
 msgid "Rename the selected index"
 msgstr "Kendu hautatutako datu-basea"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:235
+#: src/frontends/qt4/ui/IndicesUi.ui:175
 #, fuzzy
 msgid "R&ename..."
 msgstr "&aldatu izenez"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:238
+#: src/frontends/qt4/ui/IndicesUi.ui:182
 #, fuzzy
 msgid "Define or change button color"
 msgstr "Adierazi edo aldatu atzeko planoko kolorea"
@@ -2336,7 +2330,7 @@ msgid "Update the display"
 msgstr "Eguneratu bistaraketa"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:90
-#: src/frontends/qt4/ui/ViewSourceUi.ui:56 src/frontends/qt4/ui_RefUi.h:294
+#: src/frontends/qt4/ui/ViewSourceUi.ui:56
 msgid "&Update"
 msgstr "&Eguneratu"
 
@@ -2797,7 +2791,7 @@ msgstr "Data-formatua"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:246
-#: src/frontends/qt4/ui/RefUi.ui:277 src/frontends/qt4/ui_RefUi.h:319
+#: src/frontends/qt4/ui/RefUi.ui:277
 msgid "&Format:"
 msgstr "&Formatua:"
 
@@ -4230,92 +4224,91 @@ msgstr ""
 msgid "&Statusbar messages"
 msgstr "Barne-testuaren/-taularen mezuak"
 
-#: src/frontends/qt4/ui/RefUi.ui:36 src/frontends/qt4/ui_RefUi.h:276
+#: src/frontends/qt4/ui/RefUi.ui:36
 #, fuzzy
 msgid "Fil&ter:"
 msgstr "&Fitxategia:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:279
+#: src/frontends/qt4/ui/RefUi.ui:49
 msgid "Enter string to filter the label list"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:59 src/frontends/qt4/ui_RefUi.h:285
+#: src/frontends/qt4/ui/RefUi.ui:59
 #, fuzzy
 msgid "Filter case-sensitively"
 msgstr "Maiuskula/&Minuskula"
 
-#: src/frontends/qt4/ui/RefUi.ui:62 src/frontends/qt4/ui_RefUi.h:288
+#: src/frontends/qt4/ui/RefUi.ui:62
 #, fuzzy
 msgid "Case-sensiti&ve"
 msgstr "Maiuskula/&Minuskula"
 
-#: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui_RefUi.h:291
+#: src/frontends/qt4/ui/RefUi.ui:87
 msgid "Update the label list"
 msgstr "Eguneratu etiketa-zerrenda"
 
-#: src/frontends/qt4/ui/RefUi.ui:167 src/frontends/qt4/ui_RefUi.h:300
+#: src/frontends/qt4/ui/RefUi.ui:167
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:170 src/frontends/qt4/ui_RefUi.h:303
+#: src/frontends/qt4/ui/RefUi.ui:170
 msgid "&Sort"
 msgstr "&Ordenatu"
 
-#: src/frontends/qt4/ui/RefUi.ui:180 src/frontends/qt4/ui_RefUi.h:306
+#: src/frontends/qt4/ui/RefUi.ui:180
 #, fuzzy
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "Ordenatu etiketak alfabetikoki"
 
-#: src/frontends/qt4/ui/RefUi.ui:183 src/frontends/qt4/ui_RefUi.h:309
+#: src/frontends/qt4/ui/RefUi.ui:183
 #, fuzzy
 msgid "Cas&e-sensitive"
 msgstr "Maiuskula/&Minuskula"
 
-#: src/frontends/qt4/ui/RefUi.ui:190 src/frontends/qt4/ui_RefUi.h:312
+#: src/frontends/qt4/ui/RefUi.ui:190
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:193 src/frontends/qt4/ui_RefUi.h:315
+#: src/frontends/qt4/ui/RefUi.ui:193
 #, fuzzy
 msgid "Grou&p"
 msgstr "&Izena:"
 
 #: src/frontends/qt4/ui/RefUi.ui:223 src/frontends/qt4/GuiRef.cpp:314
-#: src/frontends/qt4/ui_RefUi.h:316
 msgid "&Go to Label"
 msgstr "&Joan etiketara"
 
-#: src/frontends/qt4/ui/RefUi.ui:232 src/frontends/qt4/ui_RefUi.h:317
+#: src/frontends/qt4/ui/RefUi.ui:232
 msgid "La&bels in:"
 msgstr "E&tiketak hemen:"
 
-#: src/frontends/qt4/ui/RefUi.ui:298 src/frontends/qt4/ui_RefUi.h:331
+#: src/frontends/qt4/ui/RefUi.ui:298
 msgid "Cross-reference as it appears in output"
 msgstr "Erreferentzia-gurutzatua irteeran ageri den bezala"
 
-#: src/frontends/qt4/ui/RefUi.ui:302 src/frontends/qt4/ui_RefUi.h:322
+#: src/frontends/qt4/ui/RefUi.ui:302
 msgid "<reference>"
 msgstr "<erreferentzia>"
 
-#: src/frontends/qt4/ui/RefUi.ui:307 src/frontends/qt4/ui_RefUi.h:323
+#: src/frontends/qt4/ui/RefUi.ui:307
 msgid "(<reference>)"
 msgstr "(<erreferentzia>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:312 src/frontends/qt4/ui_RefUi.h:324
+#: src/frontends/qt4/ui/RefUi.ui:312
 msgid "<page>"
 msgstr "<orrialdea>"
 
-#: src/frontends/qt4/ui/RefUi.ui:317 src/frontends/qt4/ui_RefUi.h:325
+#: src/frontends/qt4/ui/RefUi.ui:317
 msgid "on page <page>"
 msgstr "<orrialdea> orrialdean"
 
-#: src/frontends/qt4/ui/RefUi.ui:322 src/frontends/qt4/ui_RefUi.h:326
+#: src/frontends/qt4/ui/RefUi.ui:322
 msgid "<reference> on page <page>"
 msgstr "<erreferentzia> <orrialdea> orrialdean"
 
-#: src/frontends/qt4/ui/RefUi.ui:327 src/frontends/qt4/ui_RefUi.h:327
+#: src/frontends/qt4/ui/RefUi.ui:327
 msgid "Formatted reference"
 msgstr "Formatudun erreferentziak"
 
