@@ -176,6 +176,9 @@ What's new
 - Fix a crash when clicking on an error in the error dialog, while either
   the active document is changed or the document is closed (bug 6462).
 
+- Fix a crash when a pending completion pop-up in math is scrolled out
+  of view (bug 6552).
+
 - While in ERT, disable non-functional sub- and superscript functions that
   crashed LyX (bug 6459).
   
