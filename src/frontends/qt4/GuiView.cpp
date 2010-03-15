@@ -140,6 +140,8 @@ public:
 	BackgroundWidget()
 	{
 		LYXERR(Debug::GUI, "show banner: " << lyxrc.show_banner);
+		if (!lyxrc.show_banner)
+			return;
 		/// The text to be written on top of the pixmap
 		QString const text = lyx_version ?
 			qt_("version ") + lyx_version : qt_("unknown version");
