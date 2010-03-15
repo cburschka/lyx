@@ -108,11 +108,14 @@ bool GuiSpellchecker::eventFilter(QObject *obj, QEvent *event)
 	if (obj == d->ui.suggestionsLW && event->type() == QEvent::KeyPress) {
 		QKeyEvent *e = static_cast<QKeyEvent *> (event);
 		if (e->key() == Qt::Key_Enter || e->key() == Qt::Key_Return) {
-			on_suggestionsLW_itemClicked(d->ui.suggestionsLW->currentItem());
-			on_replacePB_clicked();
+			if (d->ui.suggestionsLW->currentItem()) {
+				on_suggestionsLW_itemClicked(d->ui.suggestionsLW->currentItem());
+				on_replacePB_clicked();
+			}
 			return true;
 		} else if (e->key() == Qt::Key_Right) {
-			on_suggestionsLW_itemClicked(d->ui.suggestionsLW->currentItem());
+			if (d->ui.suggestionsLW->currentItem())
+				on_suggestionsLW_itemClicked(d->ui.suggestionsLW->currentItem());
 			return true;
 		}
 	}
