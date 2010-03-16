@@ -12,7 +12,7 @@ changes should be needed for other platforms.
 3) Copy lyx.spec to the SPECS directory (on Redhat, this is located at
    /usr/src/redhat/SPECS, on other systems at /usr/src/packages/SPECS)
 
-4) Copy the tarball (lyx-1.x.y.tar.gz) to your SOURCES directory (located
+4) Copy the tarball (lyx-2.x.y.tar.gz) to your SOURCES directory (located
    in the same path as SPECS, e.g. /usr/src/packages/SOURCES).
 
 5) Issue the command
@@ -27,7 +27,7 @@ Note that building lyx requires about 150M free space on your disk.
 
 6) Now install the package:
 
-	rpm -Uvh /usr/src/redhat/RPMS/i386/lyx-1.x.y-1.i386.rpm
+	rpm -Uvh /usr/src/redhat/RPMS/i386/lyx-2.x.y-1.i386.rpm
 
 (again, adjust the path and filename as needed)
 
@@ -35,7 +35,7 @@ If you get dependency errors about qt4 or tetex/texlive, then you need to
 use the --nodeps option (because you installed qt4 or TeX not in
 rpm form):
 
-        rpm -Uvh --nodeps /usr/src/redhat/RPMS/i386/lyx-1.x.y-1.i386.rpm
+        rpm -Uvh --nodeps /usr/src/redhat/RPMS/i386/lyx-2.x.y-1.i386.rpm
 
 (again, adjust the path and filename as needed)
 
