@@ -1549,6 +1549,13 @@ Tabular::idx_type Tabular::setMultiRow(idx_type cell, idx_type number)
 	CellData & cs = cellInfo(cell);
 	cs.multirow = CELL_BEGIN_OF_MULTIROW;
 	cs.valignment = LYX_VALIGN_MIDDLE;
+	// FIXME: the horizontal alignment of multirow cells can only
+	// be changed for the whole table,
+	// support for this needs to be implemented but us a fileformat
+	// change (assigning this to uwestoehr)
+	// until LyX supports this, use the deault alignment of multirow
+	// cells: left
+	cs.alignment = LYX_ALIGN_LEFT; 
 
 	// set the bottom row of the last selected cell
 	setBottomLine(cell, bottomLine(cell + (number - 1)*ncols()));
@@ -1606,6 +1613,7 @@ void Tabular::unsetMultiRow(idx_type cell)
 		return;
 
 	cellInfo(cell).valignment = LYX_VALIGN_TOP;
+	cellInfo(cell).alignment = LYX_ALIGN_CENTER;
 	row_type const row = cellRow(cell);
 	col_type const col = cellColumn(cell);
 	row_type const span = rowSpan(cell);
