@@ -3260,8 +3260,10 @@ bool InsetTabular::isCellSelected(Cursor & cur, row_type row, col_type col)
 			getSelection(cur, rs, re, cs, ce);
 			
 			idx_type const cell = tabular.cellIndex(row, col);
-			row_type const span = tabular.rowSpan(cell);
-			if (col >= cs && col <= ce && row + span - 1 >= rs && row <= re)
+			col_type const cspan = tabular.columnSpan(cell);
+			row_type const rspan = tabular.rowSpan(cell);
+			if (col + cspan - 1 >= cs && col <= ce 
+				&& row + rspan - 1 >= rs && row <= re)
 				return true;
 		} else 
 			if (col == tabular.cellColumn(cur.idx()) 
