@@ -3495,49 +3495,42 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 
 
 void InsetTabular::drawCellLines(Painter & pain, int x, int y,
-				 row_type row, idx_type cell, Change const & change) const
+								 row_type row, idx_type cell, Change const & change) const
 {
-	y = y - tabular.rowAscent(row);
+	y -= tabular.rowAscent(row);
 	int const w = tabular.columnWidth(cell);
 	int const h = tabular.cellHeight(cell);
-	bool on_off = false;
-	Color col = Color_tabularline;
-	Color onoffcol = Color_tabularonoffline;
+	Color linecolor = change.changed() ? change.color() : Color_tabularline;
+	Color gridcolor = change.changed() ? change.color() : Color_tabularonoffline;
 
-	if (change.changed()) {
-		col = change.color();
-		onoffcol = change.color();
-	}
-
-	bool topalreadydrawn = row > 0 && !tabular.rowTopLine(row) 
+	// Top
+	bool drawline = tabular.topLine(cell) || row > 0
 		&& tabular.bottomLine(tabular.cellAbove(cell));
+	pain.line(x, y, x + w, y,
+		drawline ? linecolor : gridcolor,
+		drawline ? Painter::line_solid : Painter::line_onoffdash);
 
-	if (!topalreadydrawn) {
-		on_off = !tabular.topLine(cell);
-		pain.line(x, y, x + w, y,
-			on_off ? onoffcol : col,
-			on_off ? Painter::line_onoffdash : Painter::line_solid);
-	}
-	on_off = !tabular.bottomLine(cell);
+	// Bottom
+	drawline = tabular.bottomLine(cell);
 	pain.line(x, y + h, x + w, y + h,
-		on_off ? onoffcol : col,
-		on_off ? Painter::line_onoffdash : Painter::line_solid);
+		drawline ? linecolor : gridcolor,
+		drawline ? Painter::line_solid : Painter::line_onoffdash);
 
-	col_type const column = tabular.cellColumn(cell);
-	bool leftalreadydrawn = column > 0  && !tabular.leftLine(cell)
-		&& tabular.rightLine(tabular.cellIndex(row, column - 1));
+	// Left
+	col_type const col = tabular.cellColumn(cell);
+	drawline = tabular.leftLine(cell) || col > 0
+		&& tabular.rightLine(tabular.cellIndex(row, col - 1));
+	pain.line(x, y, x, y + h,
+		drawline ? linecolor : gridcolor,
+		drawline ? Painter::line_solid : Painter::line_onoffdash);
 
-	if (!leftalreadydrawn) {
-		on_off = !tabular.leftLine(cell);
-		pain.line(x, y, x, y + h,
-			on_off ? onoffcol : col,
-			on_off ? Painter::line_onoffdash : Painter::line_solid);
-	}
-	on_off = !tabular.rightLine(cell);
-	pain.line(x + w - tabular.interColumnSpace(cell), y,
-		x + w - tabular.interColumnSpace(cell), y + h,
-		on_off ? onoffcol : col,
-		on_off ? Painter::line_onoffdash : Painter::line_solid);
+	// Right
+	x -= tabular.interColumnSpace(cell);
+	drawline = tabular.rightLine(cell) || col + 1 < tabular.ncols() 
+		&& tabular.leftLine(tabular.cellIndex(row, col + 1));
+	pain.line(x + w, y, x + w, y + h,
+		drawline ? linecolor : gridcolor,
+		drawline ? Painter::line_solid : Painter::line_onoffdash);
 }
 
 
