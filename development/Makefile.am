@@ -8,9 +8,9 @@ if INSTALL_CYGWIN
 SUBDIRS = cygwin
 endif
 
-EXTRA_DIST = boostworkaround.txt coding/Rules coding/Recommendations \
+EXTRA_DIST = coding/Rules coding/Recommendations \
 	FORMAT lyx.rpm.README \
-	lyxserver lyx.spec.in lyx.spec Seminar.txt \
+	lyxserver lyx.spec.in lyx.spec \
 	\
 tools/convert_kmap.py \
 tools/gen_lfuns.py \
