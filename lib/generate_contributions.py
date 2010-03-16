@@ -952,6 +952,14 @@ contributers = [
                  "1 July 2007",
                  u"Bugfixes"),
 
+     contributer(u"Mohamed Magdy",
+                 "physicist2010 () gmail ! com>",
+                 "GPL",
+                 "A permission to use my Arabic-Translation for LyX?",
+                 "m=126877445318267",
+                 "16 March 2010",
+                 u"Arabic translation"),
+
      contributer(u"Tetsuya Makimura",
                  "makimura () ims ! tsukuba.ac ! jp",
                  "GPL",
