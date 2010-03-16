@@ -56,6 +56,9 @@ What's new
 - <Enter> in empty enumerations and other environments decreases depth if
   possible and otherwise resets the layout to standard.
 
+- Don't show the empty base of a script inset as an empty brace inset
+  on screen (bug 6581).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
