@@ -483,6 +483,12 @@ public:
 		///
 		int width;
 		///
+		int height;
+		///
+		int ascent;
+		///
+		int descent;
+		///
 		int multicolumn;
 		///
 		int multirow;
@@ -549,6 +555,10 @@ public:
 		bool newpage;
 		/// caption
 		bool caption;
+		///
+		VAlignment valignment;
+		///
+		int maxheight;
 	};
 	///
 	typedef std::vector<RowData> row_vector;
