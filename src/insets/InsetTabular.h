@@ -282,7 +282,7 @@ public:
 	///
 	int columnWidth(idx_type cell) const;
 	///
-	int rowHeight(idx_type cell) const;
+	int cellHeight(idx_type cell) const;
 	///
 	int width() const;
 	///

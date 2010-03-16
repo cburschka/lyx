@@ -696,8 +696,8 @@ void Tabular::deleteRow(row_type const row)
 		// Care about multirow cells
 		if (row + 1 < nrows() &&
 		    cell_info[row][c].multirow == CELL_BEGIN_OF_MULTIROW &&
-		    cell_info[row][c + 1].multirow == CELL_PART_OF_MULTIROW) {
-				cell_info[row][c + 1].multirow = CELL_BEGIN_OF_MULTIROW;
+		    cell_info[row + 1][c].multirow == CELL_PART_OF_MULTIROW) {
+				cell_info[row + 1][c].multirow = CELL_BEGIN_OF_MULTIROW;
 		}
 	}
 	row_info.erase(row_info.begin() + row);
@@ -891,7 +891,7 @@ int Tabular::columnWidth(idx_type cell) const
 }
 
 
-int Tabular::rowHeight(idx_type cell) const
+int Tabular::cellHeight(idx_type cell) const
 {
 	row_type const span = rowSpan(cell);
 	row_type const row = cellRow(cell);
@@ -1221,24 +1221,19 @@ int Tabular::textHOffset(idx_type cell) const
 
 int Tabular::textVOffset(idx_type cell) const
 {
-	int h = rowHeight(cell);
-
 	row_type const r = cellRow(cell);
-	if (rowSpan(cell) > 1)
-		h -= rowDescent(r) + rowAscent(r);
-
-	int y = 0;
+	int y = cellHeight(cell) - rowDescent(r) - rowAscent(r);
 	switch (getVAlignment(cell)) {
 	   case LYX_VALIGN_TOP:
+		   y = 0;
 		   break;
 	   case LYX_VALIGN_MIDDLE:
-		   y += h/2;
+		   y = y/2;
 		   break;
 	   case LYX_VALIGN_BOTTOM:
-		   y += h;
 		   break;
 	}
-	
+
 	return y;
 }
 
@@ -3317,7 +3312,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 			int const cx = nx + tabular.textHOffset(idx);
 			int const cy = y  + tabular.textVOffset(idx);
 			// Cache the Inset position.
-			bv->coordCache().insets().add(cell(idx).get(), cx, y);
+			bv->coordCache().insets().add(cell(idx).get(), cx, cy);
 			cell(idx)->draw(pi, cx, cy);
 			drawCellLines(pi.pain, nx, y, r, idx, pi.change_);
 			nx += tabular.columnWidth(idx);
@@ -3371,7 +3366,7 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 					continue;
 				}
 				int const w = tabular.columnWidth(cell);
-				int const h = tabular.rowHeight(cell);
+				int const h = tabular.cellHeight(cell);
 				int const yy = y - tabular.rowAscent(r);
 				if (isCellSelected(cur, r, c))
 					pi.pain.fillRectangle(xx, yy, w, h, Color_selection);
@@ -3395,7 +3390,7 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 {
 	y = y - tabular.rowAscent(row);
 	int const w = tabular.columnWidth(cell);
-	int const h = tabular.rowHeight(cell);
+	int const h = tabular.cellHeight(cell);
 	bool on_off = false;
 	Color col = Color_tabularline;
 	Color onoffcol = Color_tabularonoffline;
@@ -4472,7 +4467,7 @@ int InsetTabular::dist(BufferView & bv, idx_type const cell, int x, int y) const
 	row_type const row = tabular.cellRow(cell);
 	int const ybeg = o.y_ - tabular.rowAscent(row)
 		- tabular.interRowSpace(row);
-	int const yend = ybeg + tabular.rowHeight(cell);
+	int const yend = ybeg + tabular.cellHeight(cell);
 
 	if (x < xbeg)
 		xx = xbeg - x;
