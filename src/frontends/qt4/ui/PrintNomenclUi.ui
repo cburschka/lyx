@@ -21,10 +21,10 @@
      <item>
       <widget class="QLabel" name="setWidthLA">
        <property name="toolTip">
-        <string>Define hanging indendation/label length for the nomenclature list.</string>
+        <string>Define hanging indentation/label length for the nomenclature list.</string>
        </property>
        <property name="text">
-        <string>&amp;List Indendation:</string>
+        <string>&amp;List Indentation:</string>
        </property>
        <property name="buddy">
         <cstring>setWidthCO</cstring>
@@ -34,7 +34,7 @@
      <item>
       <widget class="QComboBox" name="setWidthCO">
        <property name="toolTip">
-        <string>Define hanging indendation/label length for the nomenclature list.</string>
+        <string>Define hanging indentation/label length for the nomenclature list.</string>
        </property>
       </widget>
      </item>
@@ -58,7 +58,7 @@
         <bool>false</bool>
        </property>
        <property name="toolTip">
-        <string>Custom value. &quot;List Indendation&quot; needs to be set to &quot;Custom&quot;.</string>
+        <string>Custom value. &quot;List Indentation&quot; needs to be set to &quot;Custom&quot;.</string>
        </property>
       </widget>
      </item>
