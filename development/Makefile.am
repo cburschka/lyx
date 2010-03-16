@@ -13,6 +13,7 @@ EXTRA_DIST = boostworkaround.txt coding/Rules coding/Recommendations \
 	lyxserver lyx.spec.in lyx.spec Seminar.txt \
 	\
 tools/convert_kmap.py \
+tools/gen_lfuns.py \
 tools/generate_symbols_list.py \
 tools/unicodesymbols.py \
 tools/x-font \
