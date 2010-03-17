@@ -598,6 +598,9 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	ifstream ifs(fn.toFilesystemEncoding().c_str());
 	bool fle_style = false;
 	static regex file_line_error(".+\\.\\D+:[0-9]+: (.+)");
+	// Flag for 'File ended while scanning' message.
+	// We need to wait for subsequent processing.
+	string wait_for_error;
 
 	string token;
 	while (getline(ifs, token)) {
@@ -684,6 +687,30 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				desc = sub.str();
 			if (contains(token, "LaTeX Error:"))
 				retval |= LATEX_ERROR;
+
+			// bug 6445. At this point its not clear we finish with error.
+			if (prefixIs(token, "! File ended while scanning")){
+				wait_for_error = desc;
+				continue;
+			}
+			if (!wait_for_error.empty() && prefixIs(token, "! Emergency stop.")){
+				retval |= LATEX_ERROR;
+				string errstr;
+				int count = 0;
+				errstr = wait_for_error;
+				do {
+					if (!getline(ifs, tmp))
+						break;
+					errstr += "\n" + tmp;
+					if (++count > 5)
+						break;
+				} while (!contains(tmp, "(job aborted"));
+
+				terr.insertError(0,
+						 from_local8bit("Emergency stop"),
+						 from_local8bit(errstr));
+			}
+
 			// get the next line
 			string tmp;
 			int count = 0;
