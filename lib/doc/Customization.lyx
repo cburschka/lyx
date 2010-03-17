@@ -12106,12 +12106,37 @@ EndPreamble
 status collapsed
 
 \begin_layout Plain Layout
+RefPrefix
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] The prefix to use when creating labels referring to paragraphs of this
+ type.
+ This allows the use of formatted references.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 Requires 
 \end_layout
 
 \end_inset
 
-[
+ [
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -12895,6 +12920,30 @@ tbp
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+RefPrefix
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] The prefix to use when creating labels referring to floats of this type.
+ This allows the use of formatted references.
 \end_layout
 
 \begin_layout Description
@@ -14310,6 +14359,30 @@ reference "des:Preamble"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+RefPrefix
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] The prefix to use when creating labels referring to insets of this type.
+ This allows the use of formatted references.
 \end_layout
 
 \begin_layout Description
