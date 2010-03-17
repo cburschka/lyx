@@ -66,7 +66,7 @@ private:
 };
 
 // Keep the changes documented in the Customization manual. 
-int const FORMAT = 24;
+int const FORMAT = 25;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)
@@ -861,6 +861,7 @@ void TextClass::readFloat(Lexer & lexrc)
 		FT_HTMLATTR,
 		FT_HTMLTAG,
 		FT_LISTCOMMAND,
+		FT_REFPREFIX,
 		FT_END
 	};
 
@@ -876,6 +877,7 @@ void TextClass::readFloat(Lexer & lexrc)
 		{ "needsfloatpkg", FT_NEEDSFLOAT },
 		{ "numberwithin", FT_WITHIN },
 		{ "placement", FT_PLACEMENT },
+		{ "refprefix", FT_REFPREFIX },
 		{ "style", FT_STYLE },
 		{ "type", FT_TYPE }
 	};
@@ -886,10 +888,11 @@ void TextClass::readFloat(Lexer & lexrc)
 	string htmlattr;
 	string htmlstyle;
 	string htmltag;
-	string listName;
-	string listCommand;
+	string listname;
+	string listcommand;
 	string name;
 	string placement;
+	string refprefix;
 	string style;
 	string type;
 	string within;
@@ -915,9 +918,10 @@ void TextClass::readFloat(Lexer & lexrc)
 				within = fl.within();
 				style = fl.style();
 				name = fl.name();
-				listName = fl.listName();
+				listname = fl.listName();
 				needsfloat = fl.needsFloatPkg();
-				listCommand = fl.listCommand();
+				listcommand = fl.listCommand();
+				refprefix = fl.refPrefix();
 			} 
 			break;
 		case FT_NAME:
@@ -944,11 +948,15 @@ void TextClass::readFloat(Lexer & lexrc)
 			break;
 		case FT_LISTCOMMAND:
 			lexrc.next();
-			listCommand = lexrc.getString();
+			listcommand = lexrc.getString();
+			break;
+		case FT_REFPREFIX:
+			lexrc.next();
+			refprefix = lexrc.getString();
 			break;
 		case FT_LISTNAME:
 			lexrc.next();
-			listName = lexrc.getString();
+			listname = lexrc.getString();
 			break;
 		case FT_NEEDSFLOAT:
 			lexrc.next();
@@ -974,13 +982,13 @@ void TextClass::readFloat(Lexer & lexrc)
 
 	// Here we have a full float if getout == true
 	if (getout) {
-		if (!needsfloat && listCommand.empty())
+		if (!needsfloat && listcommand.empty())
 			LYXERR0("The layout does not provide a list command " <<
 			        "for the builtin float `" << type << "'. LyX will " <<
 			        "not be able to produce a float list.");
 		Floating fl(type, placement, ext, within, style, name, 
-				listName, listCommand, htmltag, htmlattr, htmlstyle, 
-				needsfloat);
+				listname, listcommand, refprefix, 
+				htmltag, htmlattr, htmlstyle, needsfloat);
 		floatlist_.newFloat(fl);
 		// each float has its own counter
 		counters_.newCounter(from_ascii(type), from_ascii(within),

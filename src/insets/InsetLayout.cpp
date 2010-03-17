@@ -106,6 +106,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_PREAMBLE,
 		IL_REQUIRES,
 		IL_SPELLCHECK,
+		IL_REFPREFIX,
 		IL_END
 	};
 
@@ -143,6 +144,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "needprotect", IL_NEEDPROTECT },
 		{ "passthru", IL_PASSTHRU },
 		{ "preamble", IL_PREAMBLE },
+		{ "refprefix", IL_REFPREFIX },
 		{ "requires", IL_REQUIRES },
 		{ "spellcheck", IL_SPELLCHECK }
 	};
@@ -289,6 +291,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_PREAMBLE:
 			preamble_ = from_utf8(lex.getLongString("EndPreamble"));
+			break;
+		case IL_REFPREFIX:
+			lex >> refprefix_;
 			break;
 		case IL_HTMLTAG:
 			lex >> htmltag_;

@@ -16,6 +16,7 @@ Float
 	ListName              "List of Tables"
 	NeedsFloatPkg         false
 	ListCommand           listoftables
+	RefPrefix             tab
 End
 
 
@@ -29,6 +30,7 @@ Float
 	ListName              "List of Figures"
 	NeedsFloatPkg         false
 	ListCommand           listoffigures
+	RefPrefix             fig
 End
 
 
@@ -41,4 +43,5 @@ Float
 	Style                 ruled
 	ListName              "List of Algorithms"
 	NeedsFloatPkg         true
+	RefPrefix             alg
 End

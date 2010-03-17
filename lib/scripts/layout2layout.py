@@ -88,6 +88,9 @@ import os, re, string, sys
 # Changed LaTeXBuiltin tag to NeedsFloatPkg and
 # added new tag ListCommand.
 
+# Incremented to format 25, 12 March 2010 by rgh
+# Added RefPrefix tag for layouts and floats.
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -95,7 +98,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 24
+currentFormat = 25
 
 
 def usage(prog_name):
@@ -265,6 +268,11 @@ def convert(lines):
             i += 1
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
+            continue
+        
+        # Only new features
+        if format == 24:
+            i += 1
             continue
 
         if format == 23:

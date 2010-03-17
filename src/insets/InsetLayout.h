@@ -84,6 +84,8 @@ public:
 	docstring preamble() const { return preamble_; }
 	///
 	docstring counter() const { return counter_; }
+	///
+	docstring refprefix() const { return refprefix_; }
 	/// The tag enclosing all the material in this inset. Default is "span".
 	std::string const & htmltag() const;
 	/// Additional attributes for inclusion with the start tag. Default (if
@@ -175,6 +177,8 @@ private:
 	docstring counter_;
 	///
 	docstring preamble_;
+	///
+	docstring refprefix_;
 	///
 	mutable std::string htmltag_;
 	///

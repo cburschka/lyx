@@ -32,6 +32,7 @@ public:
 		 std::string const & ext, std::string const & within,
 		 std::string const & style, std::string const & name,
 		 std::string const & listName, std::string const & listCmd,
+		 std::string const & refPrefix,
 		 std::string const & htmlType, std::string const & htmlClass, 
 		 std::string const & htmlStyle, bool builtin = false);
 	///
@@ -52,6 +53,8 @@ public:
 	/// if needsFloatPkg() is false. note that this should not contain
 	/// the leading "\".
 	std::string const & listCommand() const { return listcommand_; }
+	/// prefix to use for formatted references to such floats
+	std::string const & refPrefix() const { return refprefix_; }
 	///
 	bool needsFloatPkg() const { return needsfloatpkg_; }
 	/// style information, for preamble
@@ -79,6 +82,8 @@ private:
 	std::string listname_;
 	///
 	std::string listcommand_;
+	///
+	std::string refprefix_;
 	///
 	bool needsfloatpkg_;
 	/// 

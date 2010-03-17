@@ -245,6 +245,8 @@ public:
 	int optionalargs;
 	/// Which counter to step
 	docstring counter;
+	/// Prefix to use when creating labels
+	docstring refprefix;
 	/// Depth of XML command
 	int commanddepth;
 

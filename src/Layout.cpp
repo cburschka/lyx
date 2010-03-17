@@ -105,6 +105,7 @@ enum LayoutTags {
 	LT_INPREAMBLE,
 	LT_HTMLTITLE,
 	LT_SPELLCHECK,
+	LT_REFPREFIX,
 	LT_INTITLE // keep this last!
 };
 
@@ -212,6 +213,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "parskip",        LT_PARSKIP },
 		{ "passthru",       LT_PASS_THRU },
 		{ "preamble",       LT_PREAMBLE },
+		{ "refprefix",      LT_REFPREFIX },
 		{ "requires",       LT_REQUIRES },
 		{ "rightmargin",    LT_RIGHTMARGIN },
 		{ "spacing",        LT_SPACING },
@@ -497,6 +499,10 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			requires_.insert(req.begin(), req.end());
 			break;
 		}
+			
+		case LT_REFPREFIX:
+			lex >> refprefix;
+			break;
 
 		case LT_HTMLTAG:
 			lex >> htmltag_;

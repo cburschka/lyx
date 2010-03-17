@@ -97,6 +97,7 @@ InsetLayout Foot
 	  Size                Small
 	EndFont
 	MultiPar              true
+	RefPrefix             fn
 	HTMLLabel             \arabic{footnote}
 	HTMLInnerTag          div
 	HTMLStyle
@@ -223,6 +224,7 @@ InsetLayout Listings
 	KeepEmpty             true
 	FreeSpacing           true
 	ForceLTR              true
+	RefPrefix             lst
 End
 
 InsetLayout Branch
@@ -292,6 +294,7 @@ InsetLayout Wrap
 	  Size                Small
 	EndFont
 	MultiPar              true
+	RefPrefix             wrap
 	HTMLStyle
 		div.wrap { 
 			float: right;

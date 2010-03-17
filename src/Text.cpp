@@ -1864,40 +1864,32 @@ docstring Text::getPossibleLabel(Cursor const & cur) const
 		}
 	}
 	if (layout->latextype != LATEX_PARAGRAPH)
-		name = from_ascii(layout->latexname());
+		name = layout->refprefix;
 
 	// for captions, we just take the caption type
 	Inset * caption_inset = cur.innerInsetOfType(CAPTION_CODE);
-	if (caption_inset)
-		name = from_ascii(static_cast<InsetCaption *>(caption_inset)->type());
-
-	// If none of the above worked, we'll see if we're inside various
-	// types of insets and take our abbreviation from them.
-	if (name.empty()) {
-		InsetCode const codes[] = {
-			FLOAT_CODE,
-			WRAP_CODE,
-			FOOT_CODE
-		};
-		for (unsigned int i = 0; i < (sizeof codes / sizeof codes[0]); ++i) {
-			Inset * float_inset = cur.innerInsetOfType(codes[i]);
-			if (float_inset) {
-				name = float_inset->name();
-				break;
-			}
+	if (caption_inset) {
+		string const & ftype = static_cast<InsetCaption *>(caption_inset)->type();
+		FloatList const & fl = cur.buffer()->params().documentClass().floats();
+		if (fl.typeExist(ftype)) {
+			Floating const & flt = fl.getType(ftype);
+			name = from_utf8(flt.refPrefix());
 		}
+		if (name.empty())
+			name = from_utf8(ftype.substr(0,3));
 	}
 
-	// Create a correct prefix for prettyref
-	if (name == "theorem")
-		name = from_ascii("thm");
-	else if (name == "Foot")
-		name = from_ascii("fn");
-	else if (name == "listing")
-		name = from_ascii("lst");
+	// If none of the above worked, see if the inset knows.
+	if (name.empty()) {
+		InsetLayout const & il = cur.inset().getLayout();
+		name = il.refprefix();
+	}
 
 	if (!name.empty())
-		text = name.substr(0, 3) + ':' + text;
+		// FIXME
+		// we should allow customization of the separator or else change it
+		// once we have refstyle
+		text = name + ':' + text;
 
 	return text;
 }
