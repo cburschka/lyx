@@ -96,7 +96,6 @@ public:
 		RC_KBMAP,
 		RC_KBMAP_PRIMARY,
 		RC_KBMAP_SECONDARY,
-		RC_LABEL_INIT_LENGTH,
 		RC_LANGUAGE_AUTO_BEGIN,
 		RC_LANGUAGE_AUTO_END,
 		RC_LANGUAGE_COMMAND_BEGIN,
@@ -416,8 +415,6 @@ public:
 	MacroEditStyle macro_edit_style;
 	///
 	bool dialogs_iconify_with_main;
-	///
-	int label_init_length;
 	///
 	bool display_graphics;
 	///

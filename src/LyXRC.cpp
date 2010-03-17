@@ -111,7 +111,6 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\kbmap", LyXRC::RC_KBMAP },
 	{ "\\kbmap_primary", LyXRC::RC_KBMAP_PRIMARY },
 	{ "\\kbmap_secondary", LyXRC::RC_KBMAP_SECONDARY },
-	{ "\\label_init_length", LyXRC::RC_LABEL_INIT_LENGTH },
 	{ "\\language_auto_begin", LyXRC::RC_LANGUAGE_AUTO_BEGIN },
 	{ "\\language_auto_end", LyXRC::RC_LANGUAGE_AUTO_END },
 	{ "\\language_command_begin", LyXRC::RC_LANGUAGE_COMMAND_BEGIN },
@@ -314,7 +313,6 @@ void LyXRC::setDefaults()
 	mac_like_word_movement = false;
 	macro_edit_style = MACRO_EDIT_INLINE_BOX;
 	dialogs_iconify_with_main = false;
-	label_init_length = 3;
 	preview = PREVIEW_OFF;
 	preview_hashed_labels  = false;
 	preview_scale_factor = 1.0;
@@ -1077,10 +1075,6 @@ int LyXRC::read(Lexer & lexrc)
 			lexrc >> gui_language;
 			break;
 
-		case RC_LABEL_INIT_LENGTH:
-			lexrc >> label_init_length;
-			break;
-
 		case RC_SHOW_BANNER:
 			lexrc >> show_banner;
 			break;
@@ -1520,14 +1514,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    date_insert_format != system_lyxrc.date_insert_format) {
 			os << "\\date_insert_format \"" << date_insert_format
 			   << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
-	case RC_LABEL_INIT_LENGTH:
-		if (ignore_system_lyxrc ||
-		    label_init_length != system_lyxrc.label_init_length) {
-			os << "\\label_init_length " << label_init_length
-			   << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
@@ -2708,7 +2694,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_KBMAP:
 	case LyXRC::RC_KBMAP_PRIMARY:
 	case LyXRC::RC_KBMAP_SECONDARY:
-	case LyXRC::RC_LABEL_INIT_LENGTH:
 	case LyXRC::RC_LANGUAGE_AUTO_BEGIN:
 	case LyXRC::RC_LANGUAGE_AUTO_END:
 	case LyXRC::RC_LANGUAGE_COMMAND_BEGIN:
@@ -2961,10 +2946,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_KBMAP_PRIMARY:
 	case RC_KBMAP_SECONDARY:
 		str = _("Use this to set the correct mapping file for your keyboard. You'll need this if you for instance want to type German documents on an American keyboard.");
-		break;
-
-	case RC_LABEL_INIT_LENGTH:
-		str = _("Maximum number of words in the initialization string for a new label");
 		break;
 
 	case RC_LANGUAGE_AUTO_BEGIN:

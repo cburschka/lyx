@@ -1834,10 +1834,11 @@ docstring Text::getPossibleLabel(Cursor const & cur) const
 
 	docstring text;
 	docstring par_text = pars_[pit].asString();
-	string piece;
-	// the return string of math matrices might contain linebreaks
+
+	// The return string of math matrices might contain linebreaks
 	par_text = subst(par_text, '\n', '-');
-	for (int i = 0; i < lyxrc.label_init_length; ++i) {
+	int const numwords = 3;
+	for (int i = 0; i < numwords; ++i) {
 		if (par_text.empty())
 			break;
 		docstring head;
@@ -1847,12 +1848,13 @@ docstring Text::getPossibleLabel(Cursor const & cur) const
 			text += '-';
 		text += head;
 	}
+	
+	// Make sure it isn't too long
+	unsigned int const max_label_length = 32;
+	if (text.size() > max_label_length)
+		text.resize(max_label_length);
 
-	// No need for a prefix if the user said so.
-	if (lyxrc.label_init_length <= 0)
-		return text;
-
-	// Will contain the label type.
+	// Will contain the label prefix.
 	docstring name;
 
 	// For section, subsection, etc...
@@ -1866,7 +1868,7 @@ docstring Text::getPossibleLabel(Cursor const & cur) const
 	if (layout->latextype != LATEX_PARAGRAPH)
 		name = layout->refprefix;
 
-	// for captions, we just take the caption type
+	// For captions, we just take the caption type
 	Inset * caption_inset = cur.innerInsetOfType(CAPTION_CODE);
 	if (caption_inset) {
 		string const & ftype = static_cast<InsetCaption *>(caption_inset)->type();
@@ -1886,9 +1888,8 @@ docstring Text::getPossibleLabel(Cursor const & cur) const
 	}
 
 	if (!name.empty())
-		// FIXME
-		// we should allow customization of the separator or else change it
-		// once we have refstyle
+		// FIXME refstyle
+		// We should allow customization of the separator or else change it
 		text = name + ':' + text;
 
 	return text;
