@@ -1176,7 +1176,8 @@ void GuiView::updateToolbars()
 	ToolbarMap::iterator end = d.toolbars_.end();
 	if (d.current_work_area_) {
 		bool const math =
-			d.current_work_area_->bufferView().cursor().inMathed();
+			d.current_work_area_->bufferView().cursor().inMathed()
+			&& !d.current_work_area_->bufferView().cursor().inRegexped();
 		bool const table =
 			lyx::getStatus(FuncRequest(LFUN_LAYOUT_TABULAR)).enabled();
 		bool const review =
