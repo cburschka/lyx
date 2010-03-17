@@ -1,398 +1,377 @@
 <ui version="4.0" >
  <class>PrefLatexUi</class>
- <widget class="QWidget" name="PrefLatexUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="PrefLatexUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>489</width>
-    <height>636</height>
+    <width>468</width>
+    <height>466</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>10</y>
+     <width>444</width>
+     <height>441</height>
+    </rect>
    </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item row="0" column="0" colspan="2" >
-    <widget class="QCheckBox" name="latexEncodingCB" >
-     <property name="toolTip" >
-      <string>Enable if a specific font encoding (such as T1) should be used (via fontenc)</string>
-     </property>
-     <property name="text" >
-      <string>Use LaTe&amp;X font encoding:</string>
-     </property>
-    </widget>
-   </item>
-   <item rowspan="2" row="0" column="3" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>121</width>
-       <height>51</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="2" >
-    <widget class="QLineEdit" name="latexEncodingED" >
-     <property name="toolTip" >
-      <string>Specify the font encoding (e.g., T1).</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="2" >
-    <widget class="QLabel" name="latexPaperSizeLA" >
-     <property name="text" >
-      <string>Default paper si&amp;ze:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>latexPaperSizeCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="2" >
-    <widget class="QLabel" name="latexDviPaperLA" >
-     <property name="text" >
-      <string>&amp;DVI viewer paper size options:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>latexDviPaperED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2" colspan="2" >
-    <widget class="QLineEdit" name="latexDviPaperED" >
-     <property name="toolTip" >
-      <string>Optional paper size flag (-paper) for some DVI viewers</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0" colspan="4" >
-    <widget class="QGroupBox" name="bibtexGB" >
-     <property name="title" >
-      <string>Bibliography generation</string>
-     </property>
-     <property name="flat" >
-      <bool>true</bool>
-     </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="0" column="0" >
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="latexEncodingCB">
+        <property name="toolTip">
+         <string>Enable if a specific font encoding (such as T1) should be used (via fontenc)</string>
         </property>
-        <property name="spacing" >
-         <number>6</number>
+        <property name="text">
+         <string>Use LaTe&amp;X font encoding:</string>
         </property>
-        <item>
-         <widget class="QLabel" name="latexBibtexLA" >
-          <property name="text" >
-           <string>&amp;Processor:</string>
-          </property>
-          <property name="buddy" >
-           <cstring>latexBibtexCO</cstring>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="latexBibtexCO" />
-        </item>
-       </layout>
+       </widget>
       </item>
-      <item row="1" column="0" >
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="latexBibtexOptionsLA" >
-          <property name="text" >
-           <string>&amp;Options:</string>
-          </property>
-          <property name="buddy" >
-           <cstring>latexBibtexED</cstring>
+      <item row="0" column="1" rowspan="3">
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <widget class="QLineEdit" name="latexEncodingED">
+          <property name="toolTip">
+           <string>Specify the font encoding (e.g., T1).</string>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QLineEdit" name="latexBibtexED" >
-          <property name="toolTip" >
-           <string>BibTeX command and options</string>
+        <item row="1" column="0">
+         <widget class="QComboBox" name="latexPaperSizeCO">
+          <item>
+           <property name="text">
+            <string>Default</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>US letter</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>US legal</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>US executive</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>A3</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>A4</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>A5</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>B5</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLineEdit" name="latexDviPaperED">
+          <property name="toolTip">
+           <string>Optional paper size flag (-paper) for some DVI viewers</string>
           </property>
          </widget>
         </item>
        </layout>
       </item>
-      <item row="2" column="0" >
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+      <item row="0" column="2" rowspan="3">
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
-        <property name="spacing" >
-         <number>6</number>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>78</width>
+          <height>58</height>
+         </size>
         </property>
-        <item>
-         <widget class="QLabel" name="latexJBibtexLA" >
-          <property name="text" >
-           <string>Processor for &amp;Japanese:</string>
-          </property>
-          <property name="buddy" >
-           <cstring>latexJBibtexED</cstring>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="latexJBibtexED" >
-          <property name="toolTip" >
-           <string>Specific BibTeX command and options for pLaTeX (Japanese)</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       </spacer>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="latexPaperSizeLA">
+        <property name="text">
+         <string>Default paper si&amp;ze:</string>
+        </property>
+        <property name="buddy">
+         <cstring>latexPaperSizeCO</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="latexDviPaperLA">
+        <property name="text">
+         <string>&amp;DVI viewer paper size options:</string>
+        </property>
+        <property name="buddy">
+         <cstring>latexDviPaperED</cstring>
+        </property>
+       </widget>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="4" >
-    <widget class="QGroupBox" name="indexGB" >
-     <property name="title" >
-      <string>Index generation</string>
-     </property>
-     <property name="flat" >
-      <bool>true</bool>
-     </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="bibtexGB">
+      <property name="title">
+       <string>Bibliography generation</string>
       </property>
-      <property name="spacing" >
-       <number>6</number>
+      <property name="flat">
+       <bool>true</bool>
       </property>
-      <item row="0" column="0" >
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="latexBibtexLA">
+         <property name="text">
+          <string>&amp;Processor:</string>
+         </property>
+         <property name="buddy">
+          <cstring>latexBibtexCO</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" rowspan="3">
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QComboBox" name="latexBibtexCO"/>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="latexBibtexED">
+           <property name="toolTip">
+            <string>BibTeX command and options</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="latexJBibtexED">
+           <property name="toolTip">
+            <string>Specific BibTeX command and options for pLaTeX (Japanese)</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="2" rowspan="3">
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>158</width>
+           <height>71</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="latexBibtexOptionsLA">
+         <property name="text">
+          <string>&amp;Options:</string>
+         </property>
+         <property name="buddy">
+          <cstring>latexBibtexED</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="latexJBibtexLA">
+         <property name="text">
+          <string>Processor for &amp;Japanese:</string>
+         </property>
+         <property name="buddy">
+          <cstring>latexJBibtexED</cstring>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="indexGB">
+      <property name="title">
+       <string>Index generation</string>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="QLabel" name="latexIndexLA">
+         <property name="text">
+          <string>Pr&amp;ocessor:</string>
+         </property>
+         <property name="buddy">
+          <cstring>latexIndexCO</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" rowspan="3">
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="0">
+          <widget class="QComboBox" name="latexIndexCO"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLineEdit" name="latexIndexED">
+           <property name="toolTip">
+            <string>Index command and options (makeindex, xindy)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLineEdit" name="latexJIndexED">
+           <property name="toolTip">
+            <string>Specific index command and options for pLaTeX (Japanese)</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="latexIndexOptionsLA">
+         <property name="text">
+          <string>Op&amp;tions:</string>
+         </property>
+         <property name="buddy">
+          <cstring>latexIndexED</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="latexJIndexLA">
+         <property name="text">
+          <string>Processor for &amp;Japanese:</string>
+         </property>
+         <property name="buddy">
+          <cstring>latexJIndexED</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2" rowspan="3">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>118</width>
+           <height>68</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QGridLayout" name="gridLayout_6">
+      <item row="0" column="0">
+       <widget class="QLabel" name="latexNomenclLA">
+        <property name="text">
+         <string>&amp;Nomenclature command:</string>
         </property>
-        <property name="spacing" >
-         <number>6</number>
+        <property name="buddy">
+         <cstring>latexNomenclED</cstring>
         </property>
-        <item>
-         <widget class="QLabel" name="latexIndexLA" >
-          <property name="text" >
-           <string>Pr&amp;ocessor:</string>
-          </property>
-          <property name="buddy" >
-           <cstring>latexIndexCO</cstring>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="latexIndexCO" />
-        </item>
-       </layout>
+       </widget>
       </item>
-      <item row="1" column="0" >
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="latexNomenclED">
+        <property name="toolTip">
+         <string>Command and options for nomencl (usually makeindex)</string>
         </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="latexIndexOptionsLA" >
-          <property name="text" >
-           <string>Op&amp;tions:</string>
-          </property>
-          <property name="buddy" >
-           <cstring>latexIndexED</cstring>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="latexIndexED" >
-          <property name="toolTip" >
-           <string>Index command and options (makeindex, xindy)</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       </widget>
       </item>
-      <item row="2" column="0" >
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+      <item row="1" column="0">
+       <widget class="QLabel" name="latexChecktexLA">
+        <property name="text">
+         <string>Chec&amp;kTeX command:</string>
         </property>
-        <property name="spacing" >
-         <number>6</number>
+        <property name="buddy">
+         <cstring>latexChecktexED</cstring>
         </property>
-        <item>
-         <widget class="QLabel" name="latexJIndexLA" >
-          <property name="text" >
-           <string>Processor for &amp;Japanese:</string>
-          </property>
-          <property name="buddy" >
-           <cstring>latexJIndexED</cstring>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="latexJIndexED" >
-          <property name="toolTip" >
-           <string>Specific index command and options for pLaTeX (Japanese)</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="latexChecktexED">
+        <property name="toolTip">
+         <string>CheckTeX start options and flags</string>
+        </property>
+       </widget>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item row="5" column="0" >
-    <widget class="QLabel" name="latexNomenclLA" >
-     <property name="text" >
-      <string>&amp;Nomenclature command:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>latexNomenclED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1" colspan="3" >
-    <widget class="QLineEdit" name="latexNomenclED" >
-     <property name="toolTip" >
-      <string>Command and options for nomencl (usually makeindex)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0" >
-    <widget class="QLabel" name="latexChecktexLA" >
-     <property name="text" >
-      <string>Chec&amp;kTeX command:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>latexChecktexED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1" colspan="3" >
-    <widget class="QLineEdit" name="latexChecktexED" >
-     <property name="toolTip" >
-      <string>CheckTeX start options and flags</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0" colspan="4" >
-    <widget class="QCheckBox" name="pathCB" >
-     <property name="enabled" >
-      <bool>true</bool>
-     </property>
-     <property name="toolTip" >
-      <string/>
-     </property>
-     <property name="whatsThis" >
-      <string>Select if LyX should output Windows-style paths rather than Posix-style paths to LaTeX files. Useful if you're using the native Windows MikTeX rather than the Cygwin teTeX.</string>
-     </property>
-     <property name="layoutDirection" >
-      <enum>Qt::LeftToRight</enum>
-     </property>
-     <property name="text" >
-      <string>&amp;Use Windows-style paths in LaTeX files</string>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="0" colspan="4" >
-    <widget class="QCheckBox" name="latexAutoresetCB" >
-     <property name="toolTip" >
-      <string>Set class options to default on class change</string>
-     </property>
-     <property name="text" >
-      <string>R&amp;eset class options when document class changes</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="2" >
-    <widget class="QComboBox" name="latexPaperSizeCO" >
-     <item>
-      <property name="text" >
-       <string>Default</string>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="pathCB">
+      <property name="enabled">
+       <bool>true</bool>
       </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>US letter</string>
+      <property name="toolTip">
+       <string/>
       </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>US legal</string>
+      <property name="whatsThis">
+       <string>Select if LyX should output Windows-style paths rather than Posix-style paths to LaTeX files. Useful if you're using the native Windows MikTeX rather than the Cygwin teTeX.</string>
       </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>US executive</string>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
       </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>A3</string>
+      <property name="text">
+       <string>&amp;Use Windows-style paths in LaTeX files</string>
       </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>A4</string>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="latexAutoresetCB">
+      <property name="toolTip">
+       <string>Set class options to default on class change</string>
       </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>A5</string>
+      <property name="text">
+       <string>R&amp;eset class options when document class changes</string>
       </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>B5</string>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
       </property>
-     </item>
-    </widget>
-   </item>
-   <item row="9" column="0" colspan="4" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>409</width>
-       <height>21</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-  </layout>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>18</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
  </widget>
  <tabstops>
   <tabstop>latexEncodingED</tabstop>
@@ -405,7 +384,7 @@
   <tabstop>latexAutoresetCB</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>
