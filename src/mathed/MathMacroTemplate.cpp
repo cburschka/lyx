@@ -1233,6 +1233,11 @@ int MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) const
 }
 
 
+docstring MathMacroTemplate::xhtml(XHTMLStream &, OutputParams const &) const
+{
+	return docstring();
+}
+
 int MathMacroTemplate::plaintext(odocstream & os,
 				 OutputParams const &) const
 {

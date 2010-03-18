@@ -22,6 +22,9 @@
 
 namespace lyx {
 
+class OutputParams;
+class XHTMLStream;
+
 /// This class contains the macro definition.
 class MathMacroTemplate : public InsetMathNest {
 public:
@@ -50,6 +53,8 @@ public:
 	/// Output LaTeX code, but assume that the macro is not definied yet
 	/// if overwriteRedefinition is true
 	int write(WriteStream & os, bool overwriteRedefinition) const;
+	/// Nothing happens. This is simply to suppress the default output.
+	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
