@@ -3245,11 +3245,6 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 
 			// store the height for every cell
 			// this is later needed in InsetTabular::draw to determine the valignment
-			int const top_space_cell = tabular.row_info[r].top_space_default ?
-			default_line_space :
-			tabular.row_info[r].top_space.inPixels(mi.base.textwidth);
-			int const bottom_space_cell = tabular.row_info[r].bottom_space_default ?
-			default_line_space :
 			tabular.cell_info[r][c].height = dim.asc + dim.des;
 			tabular.cell_info[r][c].ascent = dim.asc;
 			tabular.cell_info[r][c].descent = dim.des;
@@ -3322,7 +3317,6 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	// determine the highest cell because its valignment sets the row valignment
 	// also store its height
 	for (row_type r = 0; r < tabular.nrows(); ++r) {
-		int nx = x;
 		for (col_type c = 0; c < tabular.ncols(); ++c) {
 			if (tabular.cell_info[r][c].height >= tabular.row_info[r].maxheight) {
 				tabular.row_info[r].maxheight = tabular.cell_info[r][c].height;
@@ -3512,8 +3506,8 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 	Color gridcolor = change.changed() ? change.color() : Color_tabularonoffline;
 
 	// Top
-	bool drawline = tabular.topLine(cell) || row > 0
-		&& tabular.bottomLine(tabular.cellAbove(cell));
+	bool drawline = tabular.topLine(cell)
+		|| (row > 0 && tabular.bottomLine(tabular.cellAbove(cell)));
 	pain.line(x, y, x + w, y,
 		drawline ? linecolor : gridcolor,
 		drawline ? Painter::line_solid : Painter::line_onoffdash);
@@ -3526,16 +3520,17 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 
 	// Left
 	col_type const col = tabular.cellColumn(cell);
-	drawline = tabular.leftLine(cell) || col > 0
-		&& tabular.rightLine(tabular.cellIndex(row, col - 1));
+	drawline = tabular.leftLine(cell)
+		|| (col > 0 && tabular.rightLine(tabular.cellIndex(row, col - 1)));
 	pain.line(x, y, x, y + h,
 		drawline ? linecolor : gridcolor,
 		drawline ? Painter::line_solid : Painter::line_onoffdash);
 
 	// Right
 	x -= tabular.interColumnSpace(cell);
-	drawline = tabular.rightLine(cell) || col + 1 < tabular.ncols() 
-		&& tabular.leftLine(tabular.cellIndex(row, col + 1));
+	drawline = tabular.rightLine(cell)
+		   || (col + 1 < tabular.ncols()
+		       && tabular.leftLine(tabular.cellIndex(row, col + 1)));
 	pain.line(x + w, y, x + w, y + h,
 		drawline ? linecolor : gridcolor,
 		drawline ? Painter::line_solid : Painter::line_onoffdash);
