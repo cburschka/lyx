@@ -514,9 +514,6 @@ string const featureAsString(Tabular::Feature action)
 Tabular::CellData::CellData(Buffer * buf)
 	: cellno(0),
 	  width(0),
-	  height(0),
-	  ascent(0),
-	  descent(0),
 	  multicolumn(Tabular::CELL_NORMAL),
 	  multirow(Tabular::CELL_NORMAL),
 	  alignment(LYX_ALIGN_CENTER),
@@ -589,9 +586,7 @@ Tabular::RowData::RowData()
 	  endfoot(false),
 	  endlastfoot(false),
 	  newpage(false),
-	  caption(false),
-	  valignment(LYX_VALIGN_TOP),
-	  maxheight(0)
+	  caption(false)
 {}
 
 
@@ -3242,12 +3237,6 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			tabular.setCellWidth(cell, dim.wid);
 			maxAsc  = max(maxAsc, dim.asc);
 			maxDesc = max(maxDesc, dim.des);
-
-			// store the height for every cell
-			// this is later needed in InsetTabular::draw to determine the valignment
-			tabular.cell_info[r][c].height = dim.asc + dim.des;
-			tabular.cell_info[r][c].ascent = dim.asc;
-			tabular.cell_info[r][c].descent = dim.des;
 		}
 		int const top_space = tabular.row_info[r].top_space_default ?
 			default_line_space :
@@ -3263,7 +3252,6 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des = tabular.height() - dim.asc;
 	dim.wid = tabular.width() + 2 * ADD_TO_TABULAR_WIDTH;
 }
-
 
 bool InsetTabular::isCellSelected(Cursor & cur, row_type row, col_type col) 
 	const
@@ -3311,31 +3299,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	bool const original_selection_state = pi.selected;
 
 	idx_type idx = 0;
-	int cy = 0;
 	first_visible_cell = Tabular::npos;
-
-	// determine the highest cell because its valignment sets the row valignment
-	// also store its height
-	for (row_type r = 0; r < tabular.nrows(); ++r) {
-		for (col_type c = 0; c < tabular.ncols(); ++c) {
-			if (tabular.cell_info[r][c].height >= tabular.row_info[r].maxheight) {
-				tabular.row_info[r].maxheight = tabular.cell_info[r][c].height;
-				switch (tabular.getVAlignment(tabular.cellIndex(r, c))) {
-					case Tabular::LYX_VALIGN_TOP:
-						tabular.row_info[r].valignment = Tabular::LYX_VALIGN_TOP;
-						break;
-					case Tabular::LYX_VALIGN_MIDDLE:
-						tabular.row_info[r].valignment = Tabular::LYX_VALIGN_MIDDLE;
-						break;
-					case Tabular::LYX_VALIGN_BOTTOM:
-						tabular.row_info[r].valignment = Tabular::LYX_VALIGN_BOTTOM;
-						break;
-				}
-			}
-		}
-	}
-
-	// step over all cells
 	for (row_type r = 0; r < tabular.nrows(); ++r) {
 		int nx = x;
 		for (col_type c = 0; c < tabular.ncols(); ++c) {
@@ -3353,75 +3317,8 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 				first_visible_cell = idx;
 
 			pi.selected |= isCellSelected(cur, r, c);
-
-			// set the position for the vertical alignment
-			// if the cell is not the highest, align it according to the row valignment
-			// and according to its own valignment
-			// Note: The fractions of the scent values were found by testing
-			// there is no bettwer way for the calculation because of LyX's definition
-			// of ascent and descent. The correct way would be to calculate based
-			// on the text height, the line space and paragraph separation.
-			cy = y;
-			if (tabular.cell_info[r][c].height < tabular.row_info[r].maxheight) {
-				switch (tabular.row_info[r].valignment) {
-					case Tabular::LYX_VALIGN_TOP:
-						switch (tabular.getVAlignment(idx)) {
-							case Tabular::LYX_VALIGN_TOP:
-								break;
-							case Tabular::LYX_VALIGN_MIDDLE:
-								cy += - tabular.cell_info[r][c].descent / 2
-									+ 0.3 * tabular.cell_info[r][c].ascent;
-								// FIXME the row also needs to be increased at the upper border
-								break;
-							case Tabular::LYX_VALIGN_BOTTOM:
-								cy += - tabular.cell_info[r][c].descent
-									+ 0.6 * tabular.cell_info[r][c].ascent;
-								// FIXME the row also needs to be increased at the upper border
-								break;
-						}
-						break;
-					case Tabular::LYX_VALIGN_MIDDLE:
-						switch (tabular.getVAlignment(idx)) {
-							case Tabular::LYX_VALIGN_TOP:
-								cy += tabular.row_info[r].maxheight / 2
-									- 0.75 * tabular.cell_info[r][c].ascent;
-								break;
-							case Tabular::LYX_VALIGN_MIDDLE:
-								cy += tabular.row_info[r].maxheight / 2
-									- tabular.cell_info[r][c].descent / 2
-									- 0.5 * tabular.cell_info[r][c].ascent;
-								break;
-							case Tabular::LYX_VALIGN_BOTTOM:
-								cy += tabular.row_info[r].maxheight / 2
-									- tabular.cell_info[r][c].descent
-									- 0.2 * tabular.cell_info[r][c].ascent;
-								break;
-						}
-						break;
-					case Tabular::LYX_VALIGN_BOTTOM:
-						switch (tabular.getVAlignment(idx)) {
-							case Tabular::LYX_VALIGN_TOP:
-								cy += tabular.row_info[r].maxheight
-									- 1.5 * tabular.cell_info[r][c].ascent;
-								break;
-							case Tabular::LYX_VALIGN_MIDDLE:
-								cy += tabular.row_info[r].maxheight
-									- tabular.cell_info[r][c].descent / 2
-									- 1.2 * tabular.cell_info[r][c].ascent;
-								// FIXME the row also needs to be increased at the lower border
-								break;
-							case Tabular::LYX_VALIGN_BOTTOM:
-								cy += tabular.row_info[r].maxheight
-									- tabular.cell_info[r][c].descent
-									- 0.9 * tabular.cell_info[r][c].ascent;
-								// FIXME the row also needs to be increased at the lower border
-								break;
-						}
-						break;
-				}
-			}
-
 			int const cx = nx + tabular.textHOffset(idx);
+			int const cy = y  + tabular.textVOffset(idx);
 			// Cache the Inset position.
 			bv->coordCache().insets().add(cell(idx).get(), cx, cy);
 			cell(idx)->draw(pi, cx, cy);
