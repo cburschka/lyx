@@ -1,6 +1,11 @@
 LyX file-format changes
 -----------------------
 
+2010-03-18: Richard Heck <rgheck@comcast.net>
+  * Format incremented to 379: revise format 374
+	  Replace boolean \html_use_mathml with \html_math_output,
+		which at the moment can be: MathML, HTML, or Images.
+
 2010-02-12 Pavel Sanda <sanda@lyx.org>
 	* Format incremented to 378: support for revision InsetInfo.
 	  Various "vcs-*" strings could be argument of arg parameter

@@ -377,7 +377,7 @@ BufferParams::BufferParams()
 	// default index
 	indiceslist().addDefault(B_("Index"));
 	html_be_strict = true;
-	html_use_mathml = true;
+	html_math_output = MathML;
 }
 
 
@@ -775,8 +775,10 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 				toktmp << endl;
 			return toktmp;
 		}
-	} else if (token == "\\html_use_mathml") {
-		lex >> html_use_mathml;
+	} else if (token == "\\html_math_output") {
+		int temp;
+		lex >> temp;
+		html_math_output = static_cast<MathOutput>(temp);
 	} else if (token == "\\html_be_strict") {
 		lex >> html_be_strict;
 	} else {
@@ -992,7 +994,7 @@ void BufferParams::writeFile(ostream & os) const
 
 	os << "\\tracking_changes " << convert<string>(trackChanges) << "\n"
 	   << "\\output_changes " << convert<string>(outputChanges) << "\n"
-	   << "\\html_use_mathml " << convert<string>(html_use_mathml) << "\n"
+	   << "\\html_math_output " << html_math_output << "\n"
 	   << "\\html_be_strict " << convert<string>(html_be_strict) << "\n";
 
 	os << pimpl_->authorlist;

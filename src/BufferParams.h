@@ -375,8 +375,13 @@ public:
 	PDFOptions & pdfoptions();
 	PDFOptions const & pdfoptions() const;
 
-	/// whether to use MathML for math output, or instead images
-	bool html_use_mathml;
+	enum MathOutput {
+		MathML,
+		HTML,
+		Images		
+	};
+	/// what to use for math output. present choices are above
+	MathOutput html_math_output;
 	/// whether to attempt to be XHTML 1.1 compliant or instead be
 	/// a little more mellow
 	bool html_be_strict;

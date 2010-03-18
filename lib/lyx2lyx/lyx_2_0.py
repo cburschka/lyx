@@ -1205,6 +1205,36 @@ def revert_multirow(document):
         add_to_preamble(document, ["\\usepackage{multirow}"])
 
 
+def convert_math_output(document):
+    " Convert \html_use_mathml to \html_math_output "
+    i = find_token(document.header, "\\html_use_mathml", 0)
+    if i == -1:
+        return
+    rgx = re.compile(r'\\html_use_mathml\s+(\w+)')
+    m = rgx.match(document.header[i])
+    if rgx:
+        newval = "MathML"
+        val = m.group(1)
+        if val != "true":
+            newval = "Images"
+        document.header[i] = "\\html_math_output " + newval
+
+
+def revert_math_output(document):
+    " Revert \html_math_output to \html_use_mathml "
+    i = find_token(document.header, "\\html_math_output", 0)
+    if i == -1:
+        return
+    rgx = re.compile(r'\\html_math_output\s+(\w+)')
+    m = rgx.match(document.header[i])
+    if rgx:
+        newval = "false"
+        val = m.group(1)
+        if val != "MathML":
+            newval = "true"
+        document.header[i] = "\\html_use_mathml " + newval
+                
+
 ##
 # Conversion hub
 #
@@ -1242,10 +1272,12 @@ convert = [[346, []],
            [375, []],
            [376, []],
            [377, []],
-           [378, []]
+           [378, []],
+           [379, [convert_math_output]]
           ]
 
-revert =  [[377, []],
+revert =  [[378, [revert_math_output]],
+           [377, []],
            [376, [revert_multirow]],
            [375, [revert_includeall]],
            [374, [revert_includeonly]],
