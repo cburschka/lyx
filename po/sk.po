@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-03-15 15:25+0100\n"
-"PO-Revision-Date: 2010-03-14 19:40+0100\n"
+"PO-Revision-Date: 2010-03-19 20:17+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -3910,9 +3910,8 @@ msgid "A&vailable indexes:"
 msgstr "Dostupné indexy:"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:89
-#, fuzzy
 msgid "Select the index that shall be printed at this place of the document."
-msgstr "Nastavte štandardnú rodinu písma pre dokument"
+msgstr "Vyberte si ktorý index by mal byť tlačený na tomto mieste v dokumente."
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
 #: src/frontends/qt4/GuiDocument.cpp:1106 src/frontends/qt4/GuiPrefs.cpp:228
@@ -3925,72 +3924,61 @@ msgstr "Nastavenia"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:145
 msgid "Select the debug messages that should be displayed"
-msgstr ""
+msgstr "Vyberte ladiace správy ktoré majú byť zobrazené"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:173
 msgid "Automatic cleanup of the window before LaTeX compilation proceeds"
-msgstr ""
+msgstr "Pred pokračovaním kompilácie LaTeX-om okno automaticky vyčistiť"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
-#, fuzzy
 msgid "&Clear automatically"
-msgstr "Použiť každú zmenu automaticky"
+msgstr "Vyčistiť automaticky"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
-#, fuzzy
 msgid "Debug messages"
-msgstr "Všetky ladiace správy"
+msgstr "Ladiace správy"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:203
-#, fuzzy
 msgid "Display no debug messages"
-msgstr "Všetky ladiace správy"
+msgstr "Neukazuj žiadne ladiace správy"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:206
-#, fuzzy
 msgid "&None"
 msgstr "Žiadne"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:213
 msgid "Display the debug messages selected to the right"
-msgstr ""
+msgstr "Ukazuj vpravo označené ladiace správy"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:216
-#, fuzzy
 msgid "S&elected"
-msgstr "&Vybrané:"
+msgstr "Vybrané"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:223
-#, fuzzy
 msgid "Display all debug messages"
-msgstr "Všetky ladiace správy"
+msgstr "Ukazuj všetky ladiace správy"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
 msgid "Display statusbar messages?"
-msgstr ""
+msgstr "Ukázať správy v stavovom pruhu?"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:239
-#, fuzzy
 msgid "&Statusbar messages"
-msgstr "Správy z tabuliek/vložiek textu"
+msgstr "Správy v stavovom pruhu"
 
 #: src/frontends/qt4/ui/RefUi.ui:36
-#, fuzzy
 msgid "Fil&ter:"
-msgstr "&Súbor:"
+msgstr "Filter:"
 
 #: src/frontends/qt4/ui/RefUi.ui:49
-#, fuzzy
 msgid "Enter string to filter the label list"
-msgstr "Zadajte znaky na výber z listiny formátov."
+msgstr "Zadajte reťazec na výber z listiny značiek"
 
 #: src/frontends/qt4/ui/RefUi.ui:59
-#, fuzzy
 msgid "Filter case-sensitively"
-msgstr "Rozlišovať veľkosť písmen"
+msgstr "Filtrovať aj podľa veľkosti písmen"
 
 #: src/frontends/qt4/ui/RefUi.ui:62
-#, fuzzy
 msgid "Case-sensiti&ve"
 msgstr "Rozlišovať veľkosť písmen"
 
@@ -4003,29 +3991,28 @@ msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
 msgstr ""
+"Triediť značky podľa abecedy (bez ohľadu na veľkosť písmen, ibaže je vybrané "
+"rozlišovanie)"
 
 #: src/frontends/qt4/ui/RefUi.ui:170
 msgid "&Sort"
 msgstr "Triedenie"
 
 #: src/frontends/qt4/ui/RefUi.ui:180
-#, fuzzy
 msgid "Sort labels case-sensitively in alphabetical order"
-msgstr "Triediť značky v abecednom poradí"
+msgstr "Triediť značky s ohľadom na veľkosť písmen v abecednom poradí"
 
 #: src/frontends/qt4/ui/RefUi.ui:183
-#, fuzzy
 msgid "Cas&e-sensitive"
 msgstr "Rozlišovať veľkosť písmen"
 
 #: src/frontends/qt4/ui/RefUi.ui:190
 msgid "Group labels by prefix (e.g. \"sec:\")"
-msgstr ""
+msgstr "Zoskupiť značky podľa prefixu (napr. \"sec:\")"
 
 #: src/frontends/qt4/ui/RefUi.ui:193
-#, fuzzy
 msgid "Grou&p"
-msgstr "Žiadna skupina"
+msgstr "Skupina"
 
 #: src/frontends/qt4/ui/RefUi.ui:223 src/frontends/qt4/GuiRef.cpp:314
 msgid "&Go to Label"
@@ -4140,12 +4127,12 @@ msgstr ""
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:13
 msgid "DockWidget"
-msgstr ""
+msgstr "DockWidget"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:36
 msgid ""
 "The checked language. Switching this alters the language of the checked word."
-msgstr ""
+msgstr "Kontrolovaný jazyk. Tu môžte zmeniť jazyk kontrolovaného slova."
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:43
 msgid "Current word"
@@ -4158,7 +4145,6 @@ msgid "Replace word with current choice"
 msgstr "Nahradiť slovo s aktuálnou voľbou"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:53
-#, fuzzy
 msgid "&Find Next"
 msgstr "Hľadať ďalšie"
 
@@ -4171,9 +4157,8 @@ msgid "Replace with selected word"
 msgstr "Nahradiť so zvoleným slovom"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:110
-#, fuzzy
 msgid "S&uggestions:"
-msgstr "Ná&vrhy:"
+msgstr "Návrhy:"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:133
 msgid "Ignore this word"
@@ -4236,9 +4221,8 @@ msgid "&Table Settings"
 msgstr "Nastavenia tabuľky"
 
 #: src/frontends/qt4/ui/TabularUi.ui:121
-#, fuzzy
 msgid "Column settings"
-msgstr "Nastavenia dokumentu"
+msgstr "Nastavenia stĺpca"
 
 #: src/frontends/qt4/ui/TabularUi.ui:127
 msgid "&Horizontal alignment:"
@@ -4270,29 +4254,27 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:270
 msgid "Merge cells of different columns"
-msgstr ""
+msgstr "Zlúčiť bunky rozličných stĺpcov"
 
 #: src/frontends/qt4/ui/TabularUi.ui:273
 msgid "&Multicolumn"
 msgstr "Viacstĺpcové"
 
 #: src/frontends/qt4/ui/TabularUi.ui:283
-#, fuzzy
 msgid "Row setting"
-msgstr "Nastavenia Rámku"
+msgstr "Nastavenie riadku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:289
 msgid "Merge cells of different rows"
-msgstr ""
+msgstr "Zlúčiť bunky rozličných riadkov"
 
 #: src/frontends/qt4/ui/TabularUi.ui:292
 msgid "M&ultirow"
-msgstr ""
+msgstr "Viacriadková"
 
 #: src/frontends/qt4/ui/TabularUi.ui:302
-#, fuzzy
 msgid "Cell setting"
-msgstr "Nastavenia poznámky"
+msgstr "Nastavenie bunky"
 
 #: src/frontends/qt4/ui/TabularUi.ui:308
 msgid "Rotate this cell by 90 degrees"
@@ -4303,19 +4285,16 @@ msgid "Rotate &cell 90 degrees"
 msgstr "Otočiť bunku o 90 stupňov"
 
 #: src/frontends/qt4/ui/TabularUi.ui:324
-#, fuzzy
 msgid "Table-wide settings"
-msgstr "Nastavenia tabuľky"
+msgstr "Nastavenia na celú tabuľku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:330
-#, fuzzy
 msgid "Verti&cal alignment:"
-msgstr "Vertikálne zarovnanie"
+msgstr "Vertikálne zarovnanie:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:340
-#, fuzzy
 msgid "Vertical alignment of the table"
-msgstr "Vertikálne zarovnanie"
+msgstr "Vertikálne zarovnanie tabuľky"
 
 #: src/frontends/qt4/ui/TabularUi.ui:384
 msgid "Rotate the table by 90 degrees"
@@ -4406,9 +4385,8 @@ msgid "&Use long table"
 msgstr "Použiť dlhú tabuľku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1214
-#, fuzzy
 msgid "Row settings"
-msgstr "Nastavenia Rámku"
+msgstr "Nastavenia riadku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1220
 msgid "Status"
@@ -4504,14 +4482,12 @@ msgid "Page &break on current row"
 msgstr "Zalomenie strany na aktuálnom riadku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1431
-#, fuzzy
 msgid "Horizontal alignment of the longtable"
-msgstr "Horizontálne zarovnanie obsahu vnútri rámku"
+msgstr "Horizontálne zarovnanie dlhej tabuľky"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1434
-#, fuzzy
 msgid "Longtable alignment"
-msgstr "Horizontálne zarovnanie:"
+msgstr "Zarovnanie dlhej tabuľky"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:55
 msgid "Close this dialog"
@@ -4568,18 +4544,16 @@ msgid "&Indentation"
 msgstr "Odsadzovanie"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:89
-#, fuzzy
 msgid "Size of the indentation"
-msgstr "Veľkosť a rotácia"
+msgstr "Veľkosť odsadzovania"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:152
 msgid "&Vertical space"
 msgstr "Vertikálna medzera"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:162
-#, fuzzy
 msgid "Size of the vertical space"
-msgstr "Vertikálna medzera"
+msgstr "Veľkosť vertikálnej medzery"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:256
 msgid "Spacing"
@@ -4590,14 +4564,12 @@ msgid "&Line spacing:"
 msgstr "Rozstup riadkov:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:306
-#, fuzzy
 msgid "Spacing type"
-msgstr "Rozstupy"
+msgstr "Typ rozstupu"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:327
-#, fuzzy
 msgid "Number of lines"
-msgstr "Počet úrovní"
+msgstr "Počet riadkov"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:334
 msgid "Format text into two columns"
@@ -4613,16 +4585,15 @@ msgstr "Jazyk tezauru"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:51
 msgid "Word to look up"
-msgstr ""
+msgstr "Hľadané slovo"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:64
 msgid "L&ookup"
-msgstr ""
+msgstr "Pozrieť si"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:71
-#, fuzzy
 msgid "Click to select a proposal, double click to look it up."
-msgstr "Klikni na výber súboru pre lokálne definície dokumentovej triedy"
+msgstr "Klikni na výber návrhu, dvojmo na pozretie."
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:86
 #: src/frontends/qt4/ui/ThesaurusUi.ui:99
@@ -4646,14 +4617,12 @@ msgid "&Keyword:"
 msgstr "Heslo:"
 
 #: src/frontends/qt4/ui/TocUi.ui:36
-#, fuzzy
 msgid "Filter:"
-msgstr "&Súbor:"
+msgstr "Filter:"
 
 #: src/frontends/qt4/ui/TocUi.ui:46
-#, fuzzy
 msgid "Enter string to filter contents"
-msgstr "Zadajte znaky na výber z listiny formátov."
+msgstr "Zadajte reťazec na filtrovanie obsahu"
 
 #: src/frontends/qt4/ui/TocUi.ui:63
 msgid ""
@@ -9340,25 +9309,21 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
-#, fuzzy
 msgid "Part \\Roman{part}"
-msgstr "\\Roman{part}"
+msgstr "Časť \\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:14
-#, fuzzy
 msgid "Chapter ##"
-msgstr "Kapitola"
+msgstr "Kapitola ##"
 
 #: lib/layouts/stdcounters.inc:19 lib/layouts/stdcounters.inc:24
 #: lib/layouts/stdcounters.inc:29
-#, fuzzy
 msgid "Section ##"
-msgstr "Sekcia"
+msgstr "Sekcia ##"
 
 #: lib/layouts/stdcounters.inc:34 lib/layouts/stdcounters.inc:39
-#, fuzzy
 msgid "Paragraph ##"
-msgstr "Odstavec"
+msgstr "Odstavec ##"
 
 #: lib/layouts/stdcounters.inc:43
 msgid "\\arabic{enumi}."
@@ -9373,14 +9338,12 @@ msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
 #: lib/layouts/stdcounters.inc:68
-#, fuzzy
 msgid "Equation ##"
-msgstr "Rovnica"
+msgstr "Rovnica ##"
 
 #: lib/layouts/stdcounters.inc:72
-#, fuzzy
 msgid "Footnote ##"
-msgstr "Poznámka pri päte"
+msgstr "Poznámka pri päte ##"
 
 #: lib/layouts/stdinsets.inc:60
 msgid "Marginal"
@@ -9430,9 +9393,8 @@ msgstr "ERT"
 #: lib/layouts/stdinsets.inc:199 lib/ui/stdcontext.inc:193
 #: lib/ui/stdmenus.inc:393 lib/ui/stdmenus.inc:466
 #: src/insets/InsetPhantom.cpp:65
-#, fuzzy
 msgid "Phantom"
-msgstr "Esperanto"
+msgstr "Phantom"
 
 #: lib/layouts/stdinsets.inc:208 lib/layouts/stdinsets.inc:209
 #: src/frontends/qt4/GuiDocument.cpp:1103
@@ -9761,28 +9723,28 @@ msgstr ""
 
 #: lib/layouts/initials.module:2
 msgid "Initials"
-msgstr ""
+msgstr "Iniciálky"
 
 #: lib/layouts/initials.module:6
 msgid ""
 "Define character style for initials. Hint: try to use math and its artistic "
 "font styles like Fractur or the Calligraphic one."
 msgstr ""
+"Definujte štýl znakov pre iniciálky. Tip: pokúste sa použiť matematiku a jej "
+"umelecké "
+"štýly ako Fractur alebo Calligraphic."
 
 #: lib/layouts/initials.module:6 lib/layouts/logicalmkup.module:5
-#, fuzzy
 msgid "charstyles"
-msgstr "Štýl znaku"
+msgstr "Štýly znakov"
 
 #: lib/layouts/initials.module:10
-#, fuzzy
 msgid "CharStyle:Initial"
-msgstr "Štýl znaku:Institute"
+msgstr "Štýl znaku:Iniciálka"
 
 #: lib/layouts/initials.module:12
-#, fuzzy
 msgid "Initial"
-msgstr "Kurzíva (italic)"
+msgstr "Iniciálka"
 
 #: lib/layouts/linguistics.module:2
 msgid "Linguistics"
@@ -9924,59 +9886,51 @@ msgstr ""
 "Predefinovať niektoré z vložiek ako minimalistické (Index, Vetva, URL)."
 
 #: lib/layouts/noweb.module:2
-#, fuzzy
 msgid "Noweb literate programming"
-msgstr ""
-"Žiadny protokolový súbor zostavovania pre \"Literate Programming\" sa "
-"nenašiel."
+msgstr "\"Literate Programming\" pre Noweb"
 
 #: lib/layouts/noweb.module:5
 msgid "Allows to use Noweb as a literate programming tool."
-msgstr ""
+msgstr "Dovoľuje použiť Noweb ako nástroj pre \"literate programming\""
 
 #: lib/layouts/noweb.module:5 lib/layouts/sweave.module:5
-#, fuzzy
 msgid "literate"
-msgstr "Literárne"
+msgstr "literárne"
 
 #: lib/layouts/sweave.module:2 lib/layouts/sweave.module:18
 #: lib/configure.py:507
-#, fuzzy
 msgid "Sweave"
-msgstr "Uložiť"
+msgstr "Sweave"
 
 #: lib/layouts/sweave.module:5
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool."
 msgstr ""
+"Umožní použiť štatistický jazyk S/R ako nástroj pre \"literate programming\"."
 
 #: lib/layouts/sweave.module:17
 msgid "Chunk"
-msgstr ""
+msgstr "Kus"
 
 #: lib/layouts/sweave.module:43
-#, fuzzy
 msgid "Sweave Options"
-msgstr "LaTeX Voľby"
+msgstr "Sweave Voľby"
 
 #: lib/layouts/sweave.module:44
-#, fuzzy
 msgid "Sweave opts"
-msgstr "Písma obrazovky"
+msgstr "Sweave voľby"
 
 #: lib/layouts/sweave.module:63
-#, fuzzy
 msgid "S/R expression"
-msgstr "&Regulárny výraz"
+msgstr "S/R výraz"
 
 #: lib/layouts/sweave.module:64
-#, fuzzy
 msgid "S/R expr"
-msgstr "výraz"
+msgstr "S/R výraz"
 
 #: lib/layouts/sweave.module:83 lib/layouts/sweave.module:84
 msgid "Sweave Input File"
-msgstr ""
+msgstr "Sweave Vstupný Súbor"
 
 #: lib/layouts/tabs-within-sections.module:2
 msgid "Number Tables by Section"
@@ -10184,7 +10138,6 @@ msgid "Theorems (AMS-Extended)"
 msgstr "Teorémy (rozšírenie AMS)"
 
 #: lib/layouts/theorems-ams-extended.module:9
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -10193,16 +10146,16 @@ msgid ""
 msgstr ""
 "Definuje niektoré prídavné prostredie teorémov pre použitie s balíkmi AMS. "
 "Zahrňuje Criterion, Algorithm, Axiom, Condition, Note, Notation, Summary, "
-"Acknowledgement, Conclusion, Fact, Assumption, and Case v oboch formách "
+"Acknowledgement, Conclusion, Fact, Assumption, Case a Question v oboch "
+"formách "
 "(číslované/nečíslované)."
 
 #: lib/layouts/theorems-ams-extended.module:10
 #: lib/layouts/theorems-ams.module:9 lib/layouts/theorems-chap.module:9
 #: lib/layouts/theorems-sec.module:8 lib/layouts/theorems-starred.module:7
 #: lib/layouts/theorems-std.module:8
-#, fuzzy
 msgid "theorems"
-msgstr "teoréma"
+msgstr "teorémy"
 
 #: lib/layouts/theorems-ams-extended.module:40
 msgid "Criterion \\thetheorem."
@@ -10245,19 +10198,16 @@ msgid "Assumption \\thetheorem."
 msgstr "Predpoklad \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:382
-#, fuzzy
 msgid "Question \\thetheorem."
-msgstr "Definícia \\thetheorem"
+msgstr "Otázka \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:395
-#, fuzzy
 msgid "Question*"
-msgstr "Otázka"
+msgstr "Otázka*"
 
 #: lib/layouts/theorems-ams-extended.module:398
-#, fuzzy
 msgid "Question."
-msgstr "Otázka"
+msgstr "Otázka."
 
 #: lib/layouts/theorems-ams.module:2
 msgid "Theorems (AMS)"
@@ -10523,9 +10473,8 @@ msgid "German"
 msgstr "Nemecky"
 
 #: lib/languages:44
-#, fuzzy
 msgid "German (Switzerland)"
-msgstr "Nemecky (Rakúsko)"
+msgstr "Nemecky (Švajčiarsko)"
 
 #: lib/languages:45 lib/ui/stdtoolbars.inc:277 lib/ui/stdtoolbars.inc:523
 #: src/frontends/qt4/GuiSymbols.cpp:61
@@ -10741,9 +10690,8 @@ msgid "South-Eastern European (ISO 8859-16)"
 msgstr "Juho-východoeurópske (ISO 8859-16)"
 
 #: lib/encodings:64
-#, fuzzy
 msgid "Western European (Macintosh Roman)"
-msgstr "Západoeurópske (CP 850)"
+msgstr "Západoeurópske (Macintosh Roman)"
 
 #: lib/encodings:67
 msgid "DOS (CP 437)"
@@ -11790,9 +11738,8 @@ msgid "Split Cell|C"
 msgstr "Rozdeliť bunku"
 
 #: lib/ui/stdcontext.inc:61
-#, fuzzy
 msgid "Insert|s"
-msgstr "Vložiť|V"
+msgstr "Vložiť"
 
 #: lib/ui/stdcontext.inc:63
 msgid "Add Line Above|o"
@@ -11839,9 +11786,8 @@ msgid "Show Table Toolbar"
 msgstr "Zobraz lištu nástrojov pre tabuľku"
 
 #: lib/ui/stdcontext.inc:77
-#, fuzzy
 msgid "Use Computer Algebra System|m"
-msgstr "Použiť algebraické programy"
+msgstr "Použiť System Computer Algebra"
 
 #: lib/ui/stdcontext.inc:85 lib/ui/stdcontext.inc:102
 msgid "Next Cross-Reference|N"
@@ -11981,12 +11927,11 @@ msgstr "Zavri všetky poznámky|o"
 
 #: lib/ui/stdcontext.inc:194
 msgid "Horiz. Phantom"
-msgstr ""
+msgstr "Horiz. Phantom"
 
 #: lib/ui/stdcontext.inc:195
-#, fuzzy
 msgid "Vert. Phantom"
-msgstr "Esperanto"
+msgstr "Vert. Phantom"
 
 #: lib/ui/stdcontext.inc:204
 msgid "Interword Space|w"
@@ -12199,14 +12144,12 @@ msgid "Insert Short Title|T"
 msgstr "Vložiť Krátky Titul"
 
 #: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:586
-#, fuzzy
 msgid "Accept Change|c"
-msgstr "Akceptovať zmenu"
+msgstr "Akceptovať Zmenu"
 
 #: lib/ui/stdcontext.inc:313
-#, fuzzy
 msgid "Reject Change|j"
-msgstr "Odmietnuť zmenu"
+msgstr "Odmietnuť Zmenu"
 
 #: lib/ui/stdcontext.inc:315
 msgid "Apply Last Text Style|A"
@@ -12270,9 +12213,8 @@ msgid "Edit Externally...|x"
 msgstr "Externe upraviť...|x"
 
 #: lib/ui/stdcontext.inc:387
-#, fuzzy
 msgid "Multirow|i"
-msgstr "Viacstĺpcové"
+msgstr "Viacriadkové"
 
 #: lib/ui/stdcontext.inc:389 lib/ui/stdmenus.inc:182
 msgid "Top Line|T"
@@ -12291,19 +12233,16 @@ msgid "Right Line|R"
 msgstr "Pravý riadok"
 
 #: lib/ui/stdcontext.inc:394
-#, fuzzy
 msgid "Left|f"
 msgstr "Vľavo"
 
 #: lib/ui/stdcontext.inc:396
-#, fuzzy
 msgid "Right|h"
 msgstr "Vpravo"
 
 #: lib/ui/stdcontext.inc:399
-#, fuzzy
 msgid "Middle|d"
-msgstr "Na stred"
+msgstr "Stredné"
 
 #: lib/ui/stdcontext.inc:404 lib/ui/stdmenus.inc:203
 msgid "Copy Row|o"
@@ -12314,49 +12253,40 @@ msgid "Copy Column|p"
 msgstr "Kopíruj stĺpec"
 
 #: lib/ui/stdcontext.inc:412
-#, fuzzy
 msgid "Settings...|g"
 msgstr "Nastavenia...|a"
 
 #: lib/ui/stdcontext.inc:421
-#, fuzzy
 msgid "Path|P"
 msgstr "Cesty"
 
 #: lib/ui/stdcontext.inc:422
-#, fuzzy
 msgid "Class|C"
-msgstr "Zavrieť|Z"
+msgstr "Trieda"
 
 #: lib/ui/stdcontext.inc:424
-#, fuzzy
 msgid "File Revision|R"
-msgstr "Revízia"
+msgstr "Revízia Súboru"
 
 #: lib/ui/stdcontext.inc:425
-#, fuzzy
 msgid "Tree Revision|T"
-msgstr "Revízia"
+msgstr "Revízia Stromu"
 
 #: lib/ui/stdcontext.inc:426
-#, fuzzy
 msgid "Revision Author|A"
-msgstr "Revízna História"
+msgstr "Autor Revízie"
 
 #: lib/ui/stdcontext.inc:427
-#, fuzzy
 msgid "Revision Date|D"
-msgstr "Revízia"
+msgstr "Dátum Revízie"
 
 #: lib/ui/stdcontext.inc:428
-#, fuzzy
 msgid "Revision Time|i"
-msgstr "Revízia"
+msgstr "Čas Revízie"
 
 #: lib/ui/stdcontext.inc:437
-#, fuzzy
 msgid "Document Info|D"
-msgstr "Dokument|D"
+msgstr "Info Dokumentu"
 
 #: lib/ui/stdcontext.inc:450 lib/ui/stdcontext.inc:473
 msgid "Activate Branch|A"
@@ -12368,40 +12298,35 @@ msgstr "Dezaktivuj Vetvu|e"
 
 #: lib/ui/stdcontext.inc:463
 msgid "Insert Reference at Cursor Position|I"
-msgstr ""
+msgstr "Vlož Referenciu na Pozícii Kurzoru"
 
 #: lib/ui/stdcontext.inc:564
-#, fuzzy
 msgid "All Indexes|A"
-msgstr "Otvor všetky vložky"
+msgstr "Všetky Indexy"
 
 #: lib/ui/stdcontext.inc:567
 msgid "Subindex|b"
-msgstr ""
+msgstr "Podindex"
 
 #: lib/ui/stdcontext.inc:587 lib/ui/stdmenus.inc:495
 msgid "Reject Change|R"
 msgstr "Odmietnuť zmenu"
 
 #: lib/ui/stdcontext.inc:595
-#, fuzzy
 msgid "Promote Section|P"
 msgstr "Zvýšiť úroveň Sekcie"
 
 #: lib/ui/stdcontext.inc:596
-#, fuzzy
 msgid "Demote Section|D"
-msgstr "Znížiť úroveň sekcie"
+msgstr "Znížiť úroveň Sekcie"
 
 #: lib/ui/stdcontext.inc:598
-#, fuzzy
 msgid "Move Section Down|w"
-msgstr "Presunúť sekciu nadol|D"
+msgstr "Presunúť Sekciu Nadol"
 
 #: lib/ui/stdcontext.inc:600
-#, fuzzy
 msgid "Select Section|S"
-msgstr "Výber"
+msgstr "Vyber Sekciu"
 
 #: lib/ui/stdmenus.inc:33
 msgid "Document|D"
@@ -12440,18 +12365,16 @@ msgid "Close Window|d"
 msgstr "Zavrieť okno|r"
 
 #: lib/ui/stdmenus.inc:75
-#, fuzzy
 msgid "Update Local Directory From Repository|d"
-msgstr "Aktualizuj lokálny adresár z repositáru"
+msgstr "Aktualizuj Lokálny Adresár Z Repositáru"
 
 #: lib/ui/stdmenus.inc:76
-#, fuzzy
 msgid "Revert to Repository Version|v"
-msgstr "Vrátiť sa k repozitárnej verzii"
+msgstr "Vrátiť sa k Repozitárnej Verzii"
 
 #: lib/ui/stdmenus.inc:78
 msgid "Compare with Older Revision|C"
-msgstr ""
+msgstr "Porovnaj zo Staršou Revíziou"
 
 #: lib/ui/stdmenus.inc:80
 msgid "Use Locking Property|L"
@@ -12470,14 +12393,12 @@ msgid "Select All"
 msgstr "Vybrať všetko"
 
 #: lib/ui/stdmenus.inc:108
-#, fuzzy
 msgid "Find & Replace (Quick)...|F"
-msgstr "Nájsť a nahradiť...|N"
+msgstr "Nájsť a Nahradiť (Rýchle)..."
 
 #: lib/ui/stdmenus.inc:109
-#, fuzzy
 msgid "Find & Replace (Advanced)..."
-msgstr "Nájsť a nahradiť...|N"
+msgstr "Nájsť a Nahradiť (Rozšírené)..."
 
 #: lib/ui/stdmenus.inc:119
 msgid "Table|T"
@@ -12496,9 +12417,8 @@ msgid "Decrease List Depth|D"
 msgstr "Znížiť hĺbku listiny"
 
 #: lib/ui/stdmenus.inc:130
-#, fuzzy
 msgid "Dissolve Inset"
-msgstr "Rozpustiť vložku do textu"
+msgstr "Rozpustiť vložku"
 
 #: lib/ui/stdmenus.inc:131
 msgid "TeX Code Settings...|C"
@@ -12517,9 +12437,8 @@ msgid "Note Settings...|N"
 msgstr "Nastavenia poznámky..."
 
 #: lib/ui/stdmenus.inc:136
-#, fuzzy
 msgid "Phantom Settings...|h"
-msgstr "Nastavenia plávajúceho objektu"
+msgstr "Nastavenia pre Phantom..."
 
 #: lib/ui/stdmenus.inc:137
 msgid "Branch Settings...|B"
@@ -12530,19 +12449,16 @@ msgid "Box Settings...|x"
 msgstr "Nastavenia rámku..."
 
 #: lib/ui/stdmenus.inc:139
-#, fuzzy
 msgid "Index Entry Settings...|y"
-msgstr "Nastavenia obtekania textu..."
+msgstr "Nastavenia pre Záznam Indexu..."
 
 #: lib/ui/stdmenus.inc:140
-#, fuzzy
 msgid "Index Settings...|x"
-msgstr "Nastavenia rámku..."
+msgstr "Nastavenia pre Index..."
 
 #: lib/ui/stdmenus.inc:141
-#, fuzzy
 msgid "Info Settings...|n"
-msgstr "Nastavenia rámku..."
+msgstr "Nastavenia pre Info..."
 
 #: lib/ui/stdmenus.inc:142
 msgid "Listings Settings...|g"
@@ -12605,17 +12521,14 @@ msgid "Lowercase|L"
 msgstr "Malé písmená"
 
 #: lib/ui/stdmenus.inc:187
-#, fuzzy
 msgid "Top|p"
 msgstr "Hore"
 
 #: lib/ui/stdmenus.inc:188
-#, fuzzy
 msgid "Middle|i"
-msgstr "Na stred"
+msgstr "Stred"
 
 #: lib/ui/stdmenus.inc:189
-#, fuzzy
 msgid "Bottom|o"
 msgstr "Dole"
 
@@ -12704,41 +12617,36 @@ msgid "Close All Insets|C"
 msgstr "Zavri všetky vložky"
 
 #: lib/ui/stdmenus.inc:312
-#, fuzzy
 msgid "Unfold Math Macro|n"
-msgstr "Rozbaliť matematické makro"
+msgstr "Rozbaliť Matematické Makro"
 
 #: lib/ui/stdmenus.inc:313
-#, fuzzy
 msgid "Fold Math Macro|d"
-msgstr "Zabaliť matematické makro"
+msgstr "Zabaliť Matematické Makro"
 
 #: lib/ui/stdmenus.inc:315
 msgid "View Messages|g"
-msgstr ""
+msgstr "Zobraz Správy"
 
 #: lib/ui/stdmenus.inc:316
 msgid "View Source|S"
 msgstr "Zobraziť zdrojový text (LaTeX)"
 
 #: lib/ui/stdmenus.inc:319
-#, fuzzy
 msgid "View Master Document|M"
-msgstr "Hlavný dokument"
+msgstr "Zobraz Hlavný Dokument"
 
 #: lib/ui/stdmenus.inc:320
-#, fuzzy
 msgid "Update Master Document|a"
-msgstr "Hlavný dokument"
+msgstr "Aktualizuj Hlavný Dokument"
 
 #: lib/ui/stdmenus.inc:322
 msgid "Split View Into Left and Right Half|i"
 msgstr "Pohľad rozdeliť na ľavú a pravú polovičku"
 
 #: lib/ui/stdmenus.inc:323
-#, fuzzy
 msgid "Split View Into Upper and Lower Half|e"
-msgstr "Pohľad rozdeliť na vrchnú a spodnú polovičku"
+msgstr "Pohľad Rozdeliť na Vrchnú a Spodnú Polovičku"
 
 #: lib/ui/stdmenus.inc:324
 msgid "Close Current View|w"
@@ -12873,14 +12781,12 @@ msgid "Insert New Branch...|I"
 msgstr "Vlož Novú Vetvu..."
 
 #: lib/ui/stdmenus.inc:467
-#, fuzzy
 msgid "Horizontal Phantom"
-msgstr "Horizontálna čiara"
+msgstr "Horizontálny Phantom"
 
 #: lib/ui/stdmenus.inc:468
-#, fuzzy
 msgid "Vertical Phantom"
-msgstr "Vertikálne zarovnanie"
+msgstr "Vertikálny Phantom"
 
 #: lib/ui/stdmenus.inc:480
 msgid "Change Tracking|C"
@@ -12939,9 +12845,8 @@ msgid "TeX Information|I"
 msgstr "TeX informácia|X"
 
 #: lib/ui/stdmenus.inc:536
-#, fuzzy
 msgid "Compare...|C"
-msgstr "Vlastné..."
+msgstr "Porovnaj..."
 
 #: lib/ui/stdmenus.inc:552
 msgid "Additional Features|F"
