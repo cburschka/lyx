@@ -518,6 +518,7 @@ Tabular::CellData::CellData(Buffer * buf)
 	  multirow(Tabular::CELL_NORMAL),
 	  alignment(LYX_ALIGN_CENTER),
 	  valignment(LYX_VALIGN_TOP),
+	  voffset(0),
 	  top_line(false),
 	  bottom_line(false),
 	  left_line(false),
@@ -1221,20 +1222,7 @@ int Tabular::textHOffset(idx_type cell) const
 
 int Tabular::textVOffset(idx_type cell) const
 {
-	row_type const r = cellRow(cell);
-	int y = cellHeight(cell) - rowDescent(r) - rowAscent(r);
-	switch (getVAlignment(cell)) {
-	   case LYX_VALIGN_TOP:
-		   y = 0;
-		   break;
-	   case LYX_VALIGN_MIDDLE:
-		   y = y/2;
-		   break;
-	   case LYX_VALIGN_BOTTOM:
-		   break;
-	}
-
-	return y;
+	return cellInfo(cell).voffset;
 }
 
 
@@ -3235,8 +3223,26 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			if (!p_width.zero())
 				dim.wid = m.base.textwidth;
 			tabular.setCellWidth(cell, dim.wid);
-			maxAsc  = max(maxAsc, dim.asc);
-			maxDesc = max(maxDesc, dim.des);
+
+			// FIXME?: do we need a second metrics call
+			// to get the descent of the text in last par?
+			TextMetrics const & tm = 
+				mi.base.bv->textMetrics(tabular.cellInset(cell)->getText(0));
+			int const backdes = tm.last().second->descent();
+
+			switch (tabular.getVAlignment(cell)) { 
+				case Tabular::LYX_VALIGN_TOP:
+					tabular.cell_info[r][c].voffset = 0; 
+					break; 
+				case Tabular::LYX_VALIGN_MIDDLE:
+					tabular.cell_info[r][c].voffset = -(dim.des - backdes - TEXT_TO_INSET_OFFSET)/2; 
+					break; 
+				case Tabular::LYX_VALIGN_BOTTOM:
+					tabular.cell_info[r][c].voffset = -(dim.des - backdes - TEXT_TO_INSET_OFFSET);
+					break;
+			}
+			maxAsc  = max(maxAsc, dim.asc - tabular.cell_info[r][c].voffset);
+			maxDesc = max(maxDesc, dim.des + tabular.cell_info[r][c].voffset);
 		}
 		int const top_space = tabular.row_info[r].top_space_default ?
 			default_line_space :

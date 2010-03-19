@@ -491,6 +491,8 @@ public:
 		///
 		VAlignment valignment;
 		///
+		int voffset;
+		///
 		bool top_line;
 		///
 		bool bottom_line;
