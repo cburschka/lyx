@@ -160,7 +160,9 @@ What's new
 - On Windows, allow using unicode characters in the command line arguments
   for lyx and tex2lyx.
 
-- Do not try to move the autosave file if it does not yet exist (bug 6525.)
+- Do not try to move the autosave file if it does not yet exist (bug 6525).
+
+- Detect more warnings from LaTeX run (bug 6593).
 
 
 * USER INTERFACE
