@@ -1827,7 +1827,7 @@ void GuiDocument::updateDefaultFormat()
 	if (!bufferview())
 		return;
 	// make a copy in order to consider unapplied changes
-	Buffer * tmpbuf = const_cast<Buffer *>(&buffer());
+	Buffer * tmpbuf = buffer().clone();
 	tmpbuf->params().useXetex = outputModule->xetexCB->isChecked();
 	int idx = latexModule->classCO->currentIndex();
 	if (idx >= 0) {
@@ -1847,6 +1847,8 @@ void GuiDocument::updateDefaultFormat()
 		outputModule->defaultFormatCO->addItem(qt_((*cit)->prettyname()),
 				QVariant(toqstr((*cit)->name())));
 	outputModule->defaultFormatCO->blockSignals(false);
+	// delete the copy
+	delete tmpbuf;
 }
 
 
