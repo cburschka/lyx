@@ -397,6 +397,7 @@ void GuiWorkArea::stopBlinkingCursor()
 void GuiWorkArea::startBlinkingCursor()
 {
 	showCursor();
+
 	//we're not supposed to cache this value.
 	int const time = QApplication::cursorFlashTime() / 2;
 	if (time <= 0)
@@ -544,6 +545,12 @@ void GuiWorkArea::showCursor()
 	if (cursor_visible_)
 		return;
 
+	Point p;
+	int h = 0;
+	buffer_view_->cursorPosAndHeight(p, h);
+	if (!buffer_view_->cursorInView(p, h))
+		return;
+
 	// RTL or not RTL
 	bool l_shape = false;
 	Font const & realfont = buffer_view_->cursor().real_current_font;
@@ -558,19 +565,14 @@ void GuiWorkArea::showCursor()
 	if (realfont.language() == latex_language)
 		l_shape = false;
 
-	Point p;
-	int h = 0;
-	buffer_view_->cursorPosAndHeight(p, h);
 	// show cursor on screen
 	Cursor & cur = buffer_view_->cursor();
 	bool completable = cur.inset().showCompletionCursor()
 		&& completer_->completionAvailable()
 		&& !completer_->popupVisible()
 		&& !completer_->inlineVisible();
-	if (buffer_view_->cursorInView(p, h)) {
-		cursor_visible_ = true;
-		showCursor(p.x_, p.y_, h, l_shape, isrtl, completable);
-	}
+	cursor_visible_ = true;
+	showCursor(p.x_, p.y_, h, l_shape, isrtl, completable);
 }
 
 
