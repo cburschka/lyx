@@ -344,13 +344,6 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 		return false;
 
 	Paragraph const & par = text_->getPar(pit);
-	bool left = font.isVisibleRightToLeft();
-	bool right;
-	if (pos == par.size())
-		right = par.isRTL(bv_->buffer().params());
-	else
-		right = displayFont(pit, pos).isVisibleRightToLeft();
-	
 	// no RTL boundary at line break:
 	// abc|\n    -> move right ->   abc\n       (and not:    abc\n|
 	// FED                          FED|                     FED     )
@@ -359,6 +352,13 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 			|| par.isLineSeparator(pos - 1) 
 			|| par.isSeparator(pos - 1)))
 		return false;
+	
+	bool left = font.isVisibleRightToLeft();
+	bool right;
+	if (pos == par.size())
+		right = par.isRTL(bv_->buffer().params());
+	else
+		right = displayFont(pit, pos).isVisibleRightToLeft();
 	
 	return left != right;
 }
