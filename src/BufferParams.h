@@ -378,7 +378,8 @@ public:
 	enum MathOutput {
 		MathML,
 		HTML,
-		Images		
+		Images,
+		LaTeX
 	};
 	/// what to use for math output. present choices are above
 	MathOutput html_math_output;

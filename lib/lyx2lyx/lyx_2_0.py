@@ -1225,14 +1225,16 @@ def revert_math_output(document):
     i = find_token(document.header, "\\html_math_output", 0)
     if i == -1:
         return
-    rgx = re.compile(r'\\html_math_output\s+(\w+)')
+    rgx = re.compile(r'\\html_math_output\s+(\d)')
     m = rgx.match(document.header[i])
+    newval = "true"
     if rgx:
-        newval = "false"
         val = m.group(1)
-        if val != "MathML":
-            newval = "true"
-        document.header[i] = "\\html_use_mathml " + newval
+        if val == "1" or val == "2":
+            newval = "false"
+    else:
+        document.warning("Unable to match " + document.header[i])
+    document.header[i] = "\\html_use_mathml " + newval
                 
 
 ##
