@@ -328,7 +328,12 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 	// no RTL boundary at paragraph start
 	if (pos == 0)
 		return false;
-	
+
+	// if the metrics have not been calculated, then we are not
+	// on screen and can safely ignore issues about boundaries.
+	if (!contains(pit))
+		return false;
+
 	ParagraphMetrics & pm = par_metrics_[pit];
 	// no RTL boundary in empty paragraph
 	if (pm.rows().empty())
