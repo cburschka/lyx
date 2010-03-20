@@ -206,8 +206,10 @@ bool stringSelected(BufferView * bv, docstring & searchstr,
 		    bool cs, bool mw, bool fw)
 {
 	// if nothing selected and searched string is empty, this
-	// means that we want to search current word at cursor position.
-	if (!bv->cursor().selection() && searchstr.empty()) {
+	// means that we want to search current word at cursor position,
+	// but only if we are in texted() mode.
+	if (!bv->cursor().selection() && searchstr.empty()
+	    && bv->cursor().inTexted()) {
 		bv->cursor().innerText()->selectWord(bv->cursor(), WHOLE_WORD);
 		searchstr = bv->cursor().selectionAsString(false);
 		return true;
