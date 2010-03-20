@@ -538,6 +538,7 @@ Tabular::CellData::CellData(CellData const & cs)
 	  multirow(cs.multirow),
 	  alignment(cs.alignment),
 	  valignment(cs.valignment),
+	  voffset(cs.voffset),
 	  top_line(cs.top_line),
 	  bottom_line(cs.bottom_line),
 	  left_line(cs.left_line),
@@ -564,6 +565,7 @@ void Tabular::CellData::swap(CellData & rhs)
 	std::swap(multirow, rhs.multirow);
 	std::swap(alignment, rhs.alignment);
 	std::swap(valignment, rhs.valignment);
+	std::swap(voffset, rhs.voffset);
 	std::swap(top_line, rhs.top_line);
 	std::swap(bottom_line, rhs.bottom_line);
 	std::swap(left_line, rhs.left_line);
