@@ -355,7 +355,7 @@ void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt)
 	Buffer * buf = &bv->buffer();
 
 	Buffer * buf_orig = &bv->buffer();
-	Cursor cur_orig(bv->cursor());
+	DocIterator cur_orig(bv->cursor());
 
 	if (opt.scope == FindAndReplaceOptions::S_ALL_MANUALS) {
 		vector<string> const & v = allManualsFiles();
@@ -378,6 +378,7 @@ void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt)
 	do {
 		LYXERR(Debug::FIND, "Dispatching LFUN_WORD_FINDADV");
 		dispatch(cmd);
+		LYXERR(Debug::FIND, "dispatched");
 		if (bv->cursor().result().dispatched()) {
 			// Match found, selected and replaced if needed
 			return;
@@ -396,14 +397,15 @@ void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt)
 			if (wrap_answer == 1)
 				break;
 		}
-		lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
-					  buf->absFileName()));
+		if (buf != &view_.documentBufferView()->buffer())
+			lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
+						  buf->absFileName()));
 		bv = view_.documentBufferView();
 		if (opt.forward) {
 			bv->cursor().clear();
 			bv->cursor().push_back(CursorSlice(buf->inset()));
 		} else {
-			lyx::dispatch(FuncRequest(LFUN_BUFFER_END));
+			//lyx::dispatch(FuncRequest(LFUN_BUFFER_END));
 			bv->cursor().setCursor(doc_iterator_end(buf));
 			bv->cursor().backwardPos();
 			LYXERR(Debug::FIND, "findBackAdv5: cur: "
@@ -411,11 +413,11 @@ void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt)
 		}
 		bv->clearSelection();
 	} while (wrap_answer != 1);
-	if (buf != buf_orig)
+	if (buf_orig != &view_.documentBufferView()->buffer())
 		lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
 					  buf_orig->absFileName()));
 	bv = view_.documentBufferView();
-	bv->cursor() = cur_orig;
+	bv->cursor().setCursor(cur_orig);
 }
 
 

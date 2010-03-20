@@ -980,25 +980,21 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 void findMostBackwards(DocIterator & cur, MatchStringAdv const & match, int & len)
 {
 	DocIterator cur_begin = doc_iterator_begin(cur.buffer());
-	len = findAdvFinalize(cur, match);
-	if (cur != cur_begin) {
-		Inset & inset = cur.inset();
-		int old_len;
-		DocIterator old_cur;
-		DocIterator dit2;
-		do {
-			old_cur = cur;
-			old_len = len;
-			cur.backwardPos();
-			LYXERR(Debug::FIND, "findMostBackwards(): old_cur=" 
-				<< old_cur << ", old_len=" << len << ", cur=" << cur);
-			dit2 = cur;
-		} while (cur != cur_begin && &cur.inset() == &inset && match(cur)
-			 && (len = findAdvFinalize(dit2, match)) > old_len);
-		cur = old_cur;
-		len = old_len;
+	DocIterator tmp_cur = cur;
+	len = findAdvFinalize(tmp_cur, match);
+	Inset & inset = cur.inset();
+	for (; cur != cur_begin; cur.backwardPos()) {
+		LYXERR(Debug::FIND, "findMostBackwards(): cur=" << cur);
+		DocIterator new_cur = cur;
+		new_cur.backwardPos();
+		if (new_cur == cur || &new_cur.inset() != &inset || !match(new_cur))
+			break;
+		int new_len = findAdvFinalize(new_cur, match);
+		if (new_len == len)
+			break;
+		len = new_len;
 	}
-	LYXERR(Debug::FIND, "findMostBackwards(): cur=" << cur);
+	LYXERR(Debug::FIND, "findMostBackwards(): exiting with cur=" << cur);
 }
 
 
@@ -1007,10 +1003,11 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match) {
 	if (! cur)
 		return 0;
 	// Backup of original position
-	DocIterator cur_orig(cur);
 	DocIterator cur_begin = doc_iterator_begin(cur.buffer());
 	if (cur == cur_begin)
 		return 0;
+	cur.backwardPos();
+	DocIterator cur_orig(cur);
 	bool found_match;
 	bool pit_changed = false;
 	found_match = false;
@@ -1025,22 +1022,21 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match) {
 				cur.pos() = cur_orig.pos();
 			LYXERR(Debug::FIND, "findBackAdv2: cur: " << cur);
 			DocIterator cur_prev_iter;
-			while (true) {
+			do {
 				found_match = match(cur);
 				LYXERR(Debug::FIND, "findBackAdv3: found_match=" 
 				       << found_match << ", cur: " << cur);
 				if (found_match) {
 					int len;
 					findMostBackwards(cur, match, len);
-					if (cur < cur_orig)
-						return len;
+					return len;
 				}
-				// Prevent infinite loop at begin of document
-				if (cur == cur_begin || cur == cur_prev_iter)
+				// Stop if begin of document reached
+				if (cur == cur_begin)
 					break;
 				cur_prev_iter = cur;
 				cur.backwardPos();
-			}
+			} while (true);
 		}
 		if (cur == cur_begin)
 			break;
