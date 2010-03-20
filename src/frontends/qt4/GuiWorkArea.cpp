@@ -396,6 +396,13 @@ void GuiWorkArea::stopBlinkingCursor()
 
 void GuiWorkArea::startBlinkingCursor()
 {
+	Point p;
+	int h = 0;
+	buffer_view_->cursorPosAndHeight(p, h);
+	// Don't start blinking if the cursor isn't on screen.
+	if (!buffer_view_->cursorInView(p, h))
+		return;
+
 	showCursor();
 
 	//we're not supposed to cache this value.
