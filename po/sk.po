@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-03-15 15:25+0100\n"
-"PO-Revision-Date: 2010-03-20 09:40+0100\n"
+"PO-Revision-Date: 2010-03-21 13:12+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -4610,7 +4610,7 @@ msgstr "Zameň záznam s vybraním"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:161
 msgid "Index entry"
-msgstr "Heslo"
+msgstr "Heslo indexu"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:164
 msgid "&Keyword:"
@@ -11232,7 +11232,7 @@ msgstr "Krátky titul"
 
 #: lib/ui/classic.ui:223
 msgid "Index Entry|I"
-msgstr "Heslo"
+msgstr "Heslo Indexu"
 
 #: lib/ui/classic.ui:224
 msgid "Nomenclature Entry"
@@ -12450,7 +12450,7 @@ msgstr "Nastavenia rámku..."
 
 #: lib/ui/stdmenus.inc:139
 msgid "Index Entry Settings...|y"
-msgstr "Nastavenia pre Heslá..."
+msgstr "Nastavenia pre Heslá Indexu..."
 
 #: lib/ui/stdmenus.inc:140
 msgid "Index Settings...|x"
@@ -13030,7 +13030,7 @@ msgstr "Vložiť citáciu"
 
 #: lib/ui/stdtoolbars.inc:122
 msgid "Insert index entry"
-msgstr "Vložiť heslo"
+msgstr "Vložiť heslo indexu"
 
 #: lib/ui/stdtoolbars.inc:123
 msgid "Insert nomenclature entry"
@@ -20140,15 +20140,15 @@ msgstr "LaTeX/LyX dokumenty (p.tex *.lyx)"
 
 #: src/frontends/qt4/GuiIndex.cpp:34
 msgid "Index Entry Settings"
-msgstr "Nastavenia hesiel"
+msgstr "Nastavenia hesiel Indexu"
 
 #: src/frontends/qt4/GuiIndices.cpp:52
 msgid "Label Color"
-msgstr "Farba heslovej značky"
+msgstr "Farba značky"
 
 #: src/frontends/qt4/GuiIndices.cpp:186
 msgid "Cannot remove standard index"
-msgstr "Nedá sa odstrániť zoznam hesiel"
+msgstr "Nedá sa odstrániť štandardný zoznam hesiel"
 
 #: src/frontends/qt4/GuiIndices.cpp:187
 msgid "The default index cannot be removed."
@@ -21509,12 +21509,12 @@ msgstr "Dokument neobsahuje vetvenie!"
 
 #: src/frontends/qt4/Menus.cpp:1318
 msgid "Index Entry|d"
-msgstr "Heslo"
+msgstr "Heslo Indexu"
 
 #: src/frontends/qt4/Menus.cpp:1336 src/frontends/qt4/Menus.cpp:1366
 #: src/insets/InsetIndex.cpp:268
 msgid "Index Entry"
-msgstr "Heslo"
+msgstr "Heslo Indexu"
 
 #: src/frontends/qt4/Menus.cpp:1384
 msgid "No Citation in Scope!"
