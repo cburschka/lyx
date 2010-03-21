@@ -3203,8 +3203,8 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 
 	for (row_type r = 0; r < tabular.nrows(); ++r) {
-		int maxAsc = 0;
-		int maxDesc = 0;
+		int maxasc = 0;
+		int maxdes = 0;
 		for (col_type c = 0; c < tabular.ncols(); ++c) {
 			if (tabular.isPartOfMultiColumn(r, c)
 				|| tabular.isPartOfMultiRow(r, c))
@@ -3213,12 +3213,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			idx_type const cell = tabular.cellIndex(r, c);
 			Dimension dim;
 			MetricsInfo m = mi;
-			Length p_width;
-			if (tabular.cell_info[r][c].multicolumn ==
-				Tabular::CELL_BEGIN_OF_MULTICOLUMN)
-				p_width = tabular.cellInfo(cell).p_width;
-			else
-				p_width = tabular.column_info[c].p_width;
+			Length const p_width = tabular.getPWidth(cell);
 			if (!p_width.zero())
 				m.base.textwidth = p_width.inPixels(mi.base.textwidth);
 			tabular.cellInset(cell)->metrics(m, dim);
@@ -3226,40 +3221,44 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 				dim.wid = m.base.textwidth;
 			tabular.setCellWidth(cell, dim.wid);
 
-			// FIXME?: do we need a second metrics call
-			// to get the descent of the text in last par?
+			// FIXME(?): do we need a second metrics call?
 			TextMetrics const & tm = 
 				mi.base.bv->textMetrics(tabular.cellInset(cell)->getText(0));
-			int const backdes = tm.last().second->descent();
-
+			// with LYX_VALIGN_BOTTOM the descent is relative to the last par
+			// = descent of text in last par + TEXT_TO_INSET_OFFSET:
+			int const lastpardes = tm.last().second->descent()
+				+ TEXT_TO_INSET_OFFSET;
+			int offset;
 			switch (tabular.getVAlignment(cell)) { 
 				case Tabular::LYX_VALIGN_TOP:
-					tabular.cell_info[r][c].voffset = 0; 
+					offset = 0;
 					break; 
 				case Tabular::LYX_VALIGN_MIDDLE:
-					tabular.cell_info[r][c].voffset = -(dim.des - backdes - TEXT_TO_INSET_OFFSET)/2; 
+					offset = -(dim.des - lastpardes)/2; 
 					break; 
 				case Tabular::LYX_VALIGN_BOTTOM:
-					tabular.cell_info[r][c].voffset = -(dim.des - backdes - TEXT_TO_INSET_OFFSET);
+					offset = -(dim.des - lastpardes); 
 					break;
 			}
-			maxAsc  = max(maxAsc, dim.asc - tabular.cell_info[r][c].voffset);
-			maxDesc = max(maxDesc, dim.des + tabular.cell_info[r][c].voffset);
+			tabular.cell_info[r][c].voffset = offset;
+			maxasc = max(maxasc, dim.asc - offset);
+			maxdes = max(maxdes, dim.des + offset);
 		}
 		int const top_space = tabular.row_info[r].top_space_default ?
 			default_line_space :
 			tabular.row_info[r].top_space.inPixels(mi.base.textwidth);
-		tabular.setRowAscent(r, maxAsc + ADD_TO_HEIGHT + top_space);
+		tabular.setRowAscent(r, maxasc + ADD_TO_HEIGHT + top_space);
 		int const bottom_space = tabular.row_info[r].bottom_space_default ?
 			default_line_space :
 			tabular.row_info[r].bottom_space.inPixels(mi.base.textwidth);
-		tabular.setRowDescent(r, maxDesc + ADD_TO_HEIGHT + bottom_space);
+		tabular.setRowDescent(r, maxdes + ADD_TO_HEIGHT + bottom_space);
 	}
 	tabular.updateColumnWidths();
 	dim.asc = tabular.rowAscent(0);
 	dim.des = tabular.height() - dim.asc;
 	dim.wid = tabular.width() + 2 * ADD_TO_TABULAR_WIDTH;
 }
+
 
 bool InsetTabular::isCellSelected(Cursor & cur, row_type row, col_type col) 
 	const
