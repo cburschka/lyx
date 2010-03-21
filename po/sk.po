@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-03-15 15:25+0100\n"
-"PO-Revision-Date: 2010-03-21 13:12+0100\n"
+"PO-Revision-Date: 2010-03-21 16:44+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -445,7 +445,7 @@ msgstr "Vyberte svoju vetvu"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25 src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:"
-msgstr "&Nový:"
+msgstr "&Nové:"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:35
 msgid ""
@@ -489,7 +489,7 @@ msgstr "Určiť alebo zmeniť farbu pozadia"
 #: src/frontends/qt4/ui/BranchesUi.ui:123
 #: src/frontends/qt4/ui/IndicesUi.ui:185
 msgid "Alter Co&lor..."
-msgstr "&Zmeniť farbu..."
+msgstr "&Zmeniť Farbu..."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:130
 msgid "Remove the selected branch"
@@ -585,7 +585,7 @@ msgstr "&Veľkosť:"
 #: src/frontends/qt4/GuiPrefs.cpp:2055
 #: src/frontends/qt4/GuiPrintNomencl.cpp:68
 msgid "Default"
-msgstr "Štandardné"
+msgstr "Štandard"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:71
 #: src/frontends/qt4/GuiCharacter.cpp:56 src/frontends/qt4/GuiListings.cpp:152
@@ -1001,7 +1001,7 @@ msgstr "Uložiť nastavenia ako štandardné nastavenia pre LyX dokument"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:133
 msgid "Save as Document Defaults"
-msgstr "Uložiť ako štandardné rozloženie"
+msgstr "Uložiť ako štandardné nastavenia dokumentu"
 
 #: src/frontends/qt4/ui/ERTUi.ui:28 src/frontends/qt4/GuiPrefs.cpp:1087
 msgid "Display"
@@ -1778,7 +1778,7 @@ msgstr "Vyberte pre parametri ináč nerozpoznávané LyX-om"
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:86
 #: src/frontends/qt4/ui/ListingsUi.ui:510
 msgid "&Bypass validation"
-msgstr "&Preskočiť kontrolu platnosti"
+msgstr "&Preskočiť overenia platnosti"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:86
 msgid "C&aption:"
@@ -1898,7 +1898,7 @@ msgstr "Odstrániť označený index"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:172
 msgid "Rename the selected index"
-msgstr "Odstrániť označený index"
+msgstr "Premenovať označený index"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:175
 msgid "R&ename..."
@@ -2735,7 +2735,7 @@ msgstr "Dvojitý"
 #: src/frontends/qt4/GuiPrefs.cpp:1916 src/frontends/qt4/GuiPrefs.cpp:1939
 #: src/frontends/qt4/GuiPrintNomencl.cpp:72
 msgid "Custom"
-msgstr "Vlastný"
+msgstr "Vlastné"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:146
 msgid "&Indent Paragraph"
@@ -18453,7 +18453,7 @@ msgstr ", Rozstup: "
 
 #: src/Text.cpp:1795 src/frontends/qt4/GuiDocument.cpp:611
 msgid "OneHalf"
-msgstr "Polovičné"
+msgstr "Polovičný"
 
 #: src/Text.cpp:1801
 msgid "Other ("
@@ -19221,11 +19221,11 @@ msgstr "Šírka"
 
 #: src/frontends/qt4/GuiBranches.cpp:50
 msgid "Activated"
-msgstr "Aktivované"
+msgstr "Aktivovaná"
 
 #: src/frontends/qt4/GuiBranches.cpp:51
 msgid "Color"
-msgstr "Farebné"
+msgstr "Farba"
 
 #: src/frontends/qt4/GuiBranches.cpp:52
 msgid "Filename Suffix"
@@ -19701,7 +19701,7 @@ msgstr "Nedostupné: %1$s"
 #: src/frontends/qt4/GuiDocument.cpp:1190
 msgid "Input listings parameters below. Enter ? for a list of parameters."
 msgstr ""
-"Poniže vkladajte parametri výpisu. Pre prehľad parametrov vložte znak '?'"
+"Poniže vkladajte parametri pre výpis. Na prehľad parametrov vložte znak '?'"
 
 #: src/frontends/qt4/GuiDocument.cpp:1089
 #: src/frontends/qt4/GuiDocument.cpp:1108
