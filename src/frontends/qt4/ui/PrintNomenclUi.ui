@@ -17,55 +17,47 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0" colspan="2">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QLabel" name="setWidthLA">
-       <property name="toolTip">
-        <string>Define hanging indentation/label length for the nomenclature list.</string>
-       </property>
-       <property name="text">
-        <string>&amp;List Indentation:</string>
-       </property>
-       <property name="buddy">
-        <cstring>setWidthCO</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="setWidthCO">
-       <property name="toolTip">
-        <string>Define hanging indentation/label length for the nomenclature list.</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <widget class="QLabel" name="setWidthLA">
+     <property name="toolTip">
+      <string>Define hanging indentation/label length for the nomenclature list.</string>
+     </property>
+     <property name="text">
+      <string>&amp;List Indentation:</string>
+     </property>
+     <property name="buddy">
+      <cstring>setWidthCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2" colspan="2">
+    <widget class="QComboBox" name="setWidthCO">
+     <property name="toolTip">
+      <string>Define hanging indentation/label length for the nomenclature list.</string>
+     </property>
+    </widget>
    </item>
    <item row="1" column="0" colspan="2">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="valueLA">
-       <property name="text">
-        <string>Custom &amp;Width:</string>
-       </property>
-       <property name="buddy">
-        <cstring>valueLE</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="valueLE">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="toolTip">
-        <string>Custom value. &quot;List Indentation&quot; needs to be set to &quot;Custom&quot;.</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="LengthCombo" name="unitLC"/>
-     </item>
-    </layout>
+    <widget class="QLabel" name="valueLA">
+     <property name="text">
+      <string>Custom &amp;Width:</string>
+     </property>
+     <property name="buddy">
+      <cstring>valueLE</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QLineEdit" name="valueLE">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="toolTip">
+      <string>Custom value. &quot;List Indentation&quot; needs to be set to &quot;Custom&quot;.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="LengthCombo" name="unitLC"/>
    </item>
    <item row="2" column="0">
     <spacer name="horizontalSpacer">
@@ -80,7 +72,7 @@
      </property>
     </spacer>
    </item>
-   <item row="2" column="1">
+   <item row="2" column="1" colspan="3">
     <layout class="QHBoxLayout">
      <item>
       <widget class="QPushButton" name="okPB">

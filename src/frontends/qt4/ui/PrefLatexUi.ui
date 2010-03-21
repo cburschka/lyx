@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>374</width>
-    <height>399</height>
+    <width>355</width>
+    <height>402</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -111,7 +111,20 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0">
+   <item row="0" column="1">
+    <spacer name="horizontalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>33</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0" colspan="2">
     <widget class="QGroupBox" name="bibtexGB">
      <property name="title">
       <string>Bibliography generation</string>
@@ -156,6 +169,19 @@
         </property>
        </widget>
       </item>
+      <item row="1" column="2">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>52</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
       <item row="2" column="0">
        <widget class="QLabel" name="latexJBibtexLA">
         <property name="text">
@@ -176,7 +202,7 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item row="2" column="0" colspan="2">
     <widget class="QGroupBox" name="indexGB">
      <property name="title">
       <string>Index generation</string>
@@ -203,6 +229,19 @@
       </item>
       <item row="0" column="1">
        <widget class="QComboBox" name="latexIndexCO"/>
+      </item>
+      <item row="0" column="2" rowspan="2">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>52</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="latexIndexOptionsLA">
@@ -241,7 +280,7 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="0">
+   <item row="3" column="0" colspan="2">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
       <string/>
@@ -250,8 +289,11 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
+      <property name="topMargin">
+       <number>3</number>
+      </property>
       <property name="bottomMargin">
-       <number>0</number>
+       <number>3</number>
       </property>
       <item row="0" column="0">
        <widget class="QLabel" name="latexNomenclLA">
@@ -287,6 +329,19 @@
         </property>
        </widget>
       </item>
+      <item row="1" column="2">
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>51</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
       <item row="2" column="0" colspan="2">
        <widget class="QCheckBox" name="pathCB">
         <property name="enabled">
@@ -306,7 +361,7 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="0" colspan="2">
+      <item row="3" column="0" colspan="3">
        <widget class="QCheckBox" name="latexAutoresetCB">
         <property name="toolTip">
          <string>Set class options to default on class change</string>

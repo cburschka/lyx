@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>622</width>
-    <height>696</height>
+    <width>449</width>
+    <height>487</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -160,6 +160,72 @@
      </property>
     </widget>
    </item>
+   <item row="9" column="0" colspan="3">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
+      <number>6</number>
+     </property>
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="restorePB">
+       <property name="text">
+        <string>&amp;Restore</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okPB">
+       <property name="text">
+        <string>&amp;OK</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+       <property name="default">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="applyPB">
+       <property name="text">
+        <string>App&amp;ly</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelPB">
+       <property name="text">
+        <string>&amp;Cancel</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
    <item row="6" column="0" colspan="3">
     <widget class="QTextEdit" name="infoML">
      <property name="acceptDrops">
@@ -168,6 +234,112 @@
      <property name="readOnly">
       <bool>true</bool>
      </property>
+    </widget>
+   </item>
+   <item row="8" column="0" colspan="3">
+    <widget class="QGroupBox" name="styleGB">
+     <property name="title">
+      <string>Formatting</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="citationStyleLA">
+        <property name="text">
+         <string>Citation st&amp;yle:</string>
+        </property>
+        <property name="buddy">
+         <cstring>citationStyleCO</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" colspan="3">
+       <widget class="QComboBox" name="citationStyleCO">
+        <property name="toolTip">
+         <string>Natbib citation style to use</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="textBeforeLA">
+        <property name="text">
+         <string>Text &amp;before:</string>
+        </property>
+        <property name="buddy">
+         <cstring>textBeforeED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="textBeforeED">
+        <property name="toolTip">
+         <string>Text to place before citation</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="textAfterLA">
+        <property name="text">
+         <string>Text a&amp;fter:</string>
+        </property>
+        <property name="buddy">
+         <cstring>textAfterED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLineEdit" name="textAfterED">
+        <property name="toolTip">
+         <string>Text to place after citation</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="4">
+       <layout class="QHBoxLayout">
+        <property name="spacing">
+         <number>6</number>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item>
+         <spacer>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>21</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="fulllistCB">
+          <property name="toolTip">
+           <string>List all authors</string>
+          </property>
+          <property name="text">
+           <string>Full aut&amp;hor list</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="forceuppercaseCB">
+          <property name="toolTip">
+           <string>Force upper case in citation</string>
+          </property>
+          <property name="text">
+           <string>Force u&amp;pper case</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </widget>
    </item>
    <item row="7" column="0" colspan="3">
@@ -327,179 +499,13 @@
      </layout>
     </widget>
    </item>
-   <item row="8" column="0" colspan="3">
-    <widget class="QGroupBox" name="styleGB">
-     <property name="title">
-      <string>Formatting</string>
-     </property>
-     <property name="flat">
-      <bool>true</bool>
-     </property>
-     <layout class="QGridLayout">
-      <item row="0" column="0">
-       <widget class="QLabel" name="citationStyleLA">
-        <property name="text">
-         <string>Citation st&amp;yle:</string>
-        </property>
-        <property name="buddy">
-         <cstring>citationStyleCO</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" colspan="3">
-       <widget class="QComboBox" name="citationStyleCO">
-        <property name="toolTip">
-         <string>Natbib citation style to use</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="textBeforeLA">
-        <property name="text">
-         <string>Text &amp;before:</string>
-        </property>
-        <property name="buddy">
-         <cstring>textBeforeED</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="textBeforeED">
-        <property name="toolTip">
-         <string>Text to place before citation</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="textAfterLA">
-        <property name="text">
-         <string>Text a&amp;fter:</string>
-        </property>
-        <property name="buddy">
-         <cstring>textAfterED</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3">
-       <widget class="QLineEdit" name="textAfterED">
-        <property name="toolTip">
-         <string>Text to place after citation</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" colspan="4">
-       <layout class="QHBoxLayout">
-        <property name="spacing">
-         <number>6</number>
-        </property>
-        <property name="margin">
-         <number>0</number>
-        </property>
-        <item>
-         <spacer>
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>21</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="fulllistCB">
-          <property name="toolTip">
-           <string>List all authors</string>
-          </property>
-          <property name="text">
-           <string>Full aut&amp;hor list</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="forceuppercaseCB">
-          <property name="toolTip">
-           <string>Force upper case in citation</string>
-          </property>
-          <property name="text">
-           <string>Force u&amp;pper case</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="9" column="0" colspan="3">
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>6</number>
-     </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QPushButton" name="restorePB">
-       <property name="text">
-        <string>&amp;Restore</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="okPB">
-       <property name="text">
-        <string>&amp;OK</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="applyPB">
-       <property name="text">
-        <string>App&amp;ly</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="cancelPB">
-       <property name="text">
-        <string>&amp;Cancel</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
   </layout>
+  <zorder>availableLV</zorder>
+  <zorder>addPB</zorder>
+  <zorder>selectedLV</zorder>
+  <zorder>deletePB</zorder>
+  <zorder>upPB</zorder>
+  <zorder>downPB</zorder>
   <zorder>infoML</zorder>
   <zorder>styleGB</zorder>
   <zorder>groupBox</zorder>

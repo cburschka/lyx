@@ -15,7 +15,7 @@
   <property name="toolTip">
    <string/>
   </property>
-  <layout class="QGridLayout" name="gridLayout_3">
+  <layout class="QGridLayout" name="gridLayout_4">
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="focusPolicy">
@@ -245,17 +245,11 @@
       <attribute name="title">
        <string>&amp;Advanced</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0" colspan="2">
         <widget class="QGroupBox" name="groupBox_2">
          <property name="enabled">
           <bool>true</bool>
-         </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
          </property>
          <property name="minimumSize">
           <size>
@@ -275,23 +269,11 @@
          <property name="flat">
           <bool>false</bool>
          </property>
-         <layout class="QGridLayout" name="gridLayout_4">
-          <property name="margin">
-           <number>3</number>
-          </property>
-          <property name="spacing">
-           <number>0</number>
-          </property>
-          <item row="0" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
            <widget class="QRadioButton" name="CurrentParagraph">
             <property name="enabled">
              <bool>false</bool>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
             </property>
             <property name="toolTip">
              <string>Current paragraph</string>
@@ -304,16 +286,10 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
+          <item>
            <widget class="QRadioButton" name="CurrentDocument">
             <property name="enabled">
              <bool>true</bool>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
             </property>
             <property name="text">
              <string>Current &amp;document</string>
@@ -323,7 +299,7 @@
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
+          <item>
            <widget class="QRadioButton" name="MasterDocument">
             <property name="enabled">
              <bool>true</bool>
@@ -342,16 +318,10 @@
             </property>
            </widget>
           </item>
-          <item row="3" column="0">
+          <item>
            <widget class="QRadioButton" name="OpenDocuments">
             <property name="enabled">
              <bool>true</bool>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
             </property>
             <property name="toolTip">
              <string>All open documents</string>
@@ -361,16 +331,10 @@
             </property>
            </widget>
           </item>
-          <item row="4" column="0">
+          <item>
            <widget class="QRadioButton" name="AllManualsRB">
             <property name="enabled">
              <bool>true</bool>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
             </property>
             <property name="text">
              <string>All ma&amp;nuals</string>
@@ -380,16 +344,10 @@
          </layout>
         </widget>
        </item>
-       <item>
+       <item row="1" column="0">
         <widget class="QCheckBox" name="ignoreFormatCB">
          <property name="enabled">
           <bool>true</bool>
-         </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
          </property>
          <property name="toolTip">
           <string>If unchecked, the search will be limited to occurrences of the selected text and paragraph style</string>
@@ -402,14 +360,8 @@
          </property>
         </widget>
        </item>
-       <item>
+       <item row="2" column="0" colspan="2">
         <widget class="QCheckBox" name="keepCaseCB">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-           <horstretch>1</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
          <property name="toolTip">
           <string>Keep the case of the replacement's first letter as in each matching text first letter</string>
          </property>
@@ -418,23 +370,17 @@
          </property>
         </widget>
        </item>
-       <item>
+       <item row="3" column="0">
         <widget class="QCheckBox" name="expandMacrosCB">
          <property name="enabled">
           <bool>false</bool>
-         </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
          </property>
          <property name="text">
           <string>&amp;Expand macros</string>
          </property>
         </widget>
        </item>
-       <item>
+       <item row="4" column="1">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>

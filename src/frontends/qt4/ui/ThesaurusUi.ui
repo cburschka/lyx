@@ -1,7 +1,7 @@
-<ui version="4.0" >
+<ui version="4.0">
  <class>ThesaurusUi</class>
- <widget class="QDialog" name="ThesaurusUi" >
-  <property name="geometry" >
+ <widget class="QDialog" name="ThesaurusUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,126 +9,122 @@
     <height>414</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <property name="sizeGripEnabled" >
+  <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item row="0" column="1" colspan="2" >
-    <widget class="QComboBox" name="languageCO" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>3</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="languageLA">
+     <property name="text">
+      <string>&amp;Language:</string>
      </property>
-     <property name="toolTip" >
+     <property name="buddy">
+      <cstring>languageCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="2">
+    <widget class="QComboBox" name="languageCO">
+     <property name="toolTip">
       <string>Language of the thesaurus</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="1" >
-    <widget class="QComboBox" name="entryCO" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>3</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+   <item row="1" column="0">
+    <widget class="QLabel" name="entryLA">
+     <property name="toolTip">
+      <string>Index entry</string>
      </property>
-     <property name="toolTip" >
+     <property name="text">
+      <string>&amp;Keyword:</string>
+     </property>
+     <property name="buddy">
+      <cstring>entryCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QComboBox" name="entryCO">
+     <property name="toolTip">
       <string>Word to look up</string>
      </property>
-     <property name="editable" >
+     <property name="editable">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="1" column="2" >
-    <widget class="QPushButton" name="lookupPB" >
-     <property name="toolTip" >
+   <item row="1" column="2">
+    <widget class="QPushButton" name="lookupPB">
+     <property name="toolTip">
       <string/>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>L&amp;ookup</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="3" >
-    <widget class="QTreeWidget" name="meaningsTV" >
-     <property name="toolTip" >
-      <string>Click to select a proposal, double click to look it up.</string>
+   <item row="2" column="0">
+    <widget class="QLabel" name="selectionLA">
+     <property name="toolTip">
+      <string>The selected entry</string>
+     </property>
+     <property name="text">
+      <string>&amp;Selection:</string>
+     </property>
+     <property name="buddy">
+      <cstring>replaceED</cstring>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="3" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="replaceED">
+     <property name="toolTip">
+      <string>The selected entry</string>
      </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="selectionLA" >
-       <property name="toolTip" >
-        <string>The selected entry</string>
-       </property>
-       <property name="text" >
-        <string>&amp;Selection:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>replaceED</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="replaceED" >
-       <property name="toolTip" >
-        <string>The selected entry</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="replacePB" >
-       <property name="toolTip" >
-        <string>Replace the entry with the selection</string>
-       </property>
-       <property name="text" >
-        <string>&amp;Replace</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    </widget>
    </item>
-   <item row="4" column="0" colspan="3" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+   <item row="2" column="2">
+    <widget class="QPushButton" name="replacePB">
+     <property name="toolTip">
+      <string>Replace the entry with the selection</string>
      </property>
-     <property name="spacing" >
+     <property name="text">
+      <string>&amp;Replace</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="3">
+    <widget class="QTreeWidget" name="meaningsTV">
+     <property name="toolTip">
+      <string>Click to select a proposal, double click to look it up.</string>
+     </property>
+     <column>
+      <property name="text">
+       <string notr="true">1</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>6</number>
+     </property>
+     <property name="margin">
+      <number>0</number>
      </property>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeType" >
+       <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>20</width>
          <height>20</height>
@@ -137,36 +133,13 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="closePB" >
-       <property name="text" >
+      <widget class="QPushButton" name="closePB">
+       <property name="text">
         <string>&amp;Close</string>
        </property>
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="languageLA" >
-     <property name="text" >
-      <string>&amp;Language:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>languageCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="entryLA" >
-     <property name="toolTip" >
-      <string>Index entry</string>
-     </property>
-     <property name="text" >
-      <string>&amp;Keyword:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>entryCO</cstring>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>
@@ -180,7 +153,7 @@
   <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>
