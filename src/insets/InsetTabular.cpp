@@ -4849,7 +4849,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		break;
 
 	case Tabular::SET_SPECIAL_MULTIROW:
-		//FIXME: noting to do here?
+		// nothing to do
 		break;
 
 	case Tabular::APPEND_ROW:
