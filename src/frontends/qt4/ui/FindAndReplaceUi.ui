@@ -5,35 +5,9 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>327</width>
-    <height>523</height>
+    <width>288</width>
+    <height>366</height>
    </rect>
-  </property>
-  <property name="sizePolicy">
-   <sizepolicy>
-    <hsizetype>1</hsizetype>
-    <vsizetype>7</vsizetype>
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>0</width>
-    <height>0</height>
-   </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>16777215</width>
-    <height>16777215</height>
-   </size>
-  </property>
-  <property name="baseSize">
-   <size>
-    <width>0</width>
-    <height>0</height>
-   </size>
   </property>
   <property name="windowTitle">
    <string>Find LyX Text</string>
@@ -41,698 +15,437 @@
   <property name="toolTip">
    <string/>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <widget class="QScrollArea" name="scrollArea">
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="tabWidget">
      <property name="focusPolicy">
       <enum>Qt::NoFocus</enum>
      </property>
-     <property name="widgetResizable">
-      <bool>true</bool>
+     <property name="toolTip">
+      <string/>
      </property>
-     <widget class="QWidget" name="scrollAreaWidgetContents">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>289</width>
-        <height>532</height>
-       </rect>
+     <property name="statusTip">
+      <string/>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="BasicTab">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="toolTip">
+       <string/>
+      </property>
+      <property name="statusTip">
+       <string/>
+      </property>
+      <attribute name="title">
+       <string>&amp;Basic</string>
+      </attribute>
       <layout class="QGridLayout" name="gridLayout">
        <item row="0" column="0">
-        <widget class="QTabWidget" name="tabWidget">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>&amp;Find:</string>
+         </property>
+         <property name="buddy">
+          <cstring>find_work_area_</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="lyx::frontend::EmbeddedWorkArea" name="find_work_area_">
+         <property name="toolTip">
+          <string>Enter the text to search for in this full-featured LyX editing area</string>
+         </property>
+         <widget class="QWidget" name="find_scroll_area_">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>192</width>
+            <height>57</height>
+           </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="caseCB">
+         <property name="toolTip">
+          <string>Perform a case-sensitive search</string>
+         </property>
+         <property name="text">
+          <string>Case &amp;sensitive</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QCheckBox" name="wordsCB">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="toolTip">
+          <string>Restrict search to whole words only</string>
+         </property>
+         <property name="text">
+          <string>Whole &amp;words</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QPushButton" name="regexpInsertPB">
+         <property name="toolTip">
+          <string>Choose one of the pre-arranged regular expressions.</string>
+         </property>
+         <property name="text">
+          <string>Insert Re&amp;gular Expression...</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>&amp;Replace with:</string>
+         </property>
+         <property name="buddy">
+          <cstring>replace_work_area_</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="2">
+        <widget class="lyx::frontend::EmbeddedWorkArea" name="replace_work_area_">
+         <property name="toolTip">
+          <string>Enter the text to replace in this full-featured LyX editing area</string>
+         </property>
+         <widget class="QWidget" name="replace_scroll_area_">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>202</width>
+            <height>57</height>
+           </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item row="6" column="0" colspan="2">
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="0">
+          <widget class="QPushButton" name="findPrevPB">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="toolTip">
+            <string>Find previous occurrence [Shift+Enter]</string>
+           </property>
+           <property name="text">
+            <string>Find &amp;Previous</string>
+           </property>
+           <property name="default">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QPushButton" name="findNextPB">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="toolTip">
+            <string>Find next occurrence [Enter]</string>
+           </property>
+           <property name="text">
+            <string>Find &amp;Next</string>
+           </property>
+           <property name="default">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="replacePrevPB">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="toolTip">
+            <string>Replace and find previous occurrence [Shift+Enter]</string>
+           </property>
+           <property name="text">
+            <string>Replace Pre&amp;vious</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="replaceNextPB">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="toolTip">
+            <string>Replace and find next occurrence [Enter]</string>
+           </property>
+           <property name="text">
+            <string>Replace Ne&amp;xt</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QPushButton" name="replaceallPB">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="toolTip">
+            <string>Replace all occurences at once</string>
+           </property>
+           <property name="text">
+            <string>Replace &amp;All</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="AdvancedTab">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="toolTip">
+       <string/>
+      </property>
+      <property name="statusTip">
+       <string/>
+      </property>
+      <attribute name="title">
+       <string>&amp;Advanced</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
          <property name="sizePolicy">
-          <sizepolicy>
-           <hsizetype>7</hsizetype>
-           <vsizetype>7</vsizetype>
+          <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="focusPolicy">
-          <enum>Qt::NoFocus</enum>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
          </property>
          <property name="toolTip">
-          <string/>
-         </property>
-         <property name="statusTip">
-          <string/>
+          <string>The scope to which the search horizon is restricted</string>
          </property>
          <property name="autoFillBackground">
           <bool>false</bool>
          </property>
-         <property name="currentIndex">
-          <number>0</number>
+         <property name="title">
+          <string>Sco&amp;pe</string>
          </property>
-         <widget class="QWidget" name="BasicTab">
-          <property name="sizePolicy">
-           <sizepolicy>
-            <hsizetype>5</hsizetype>
-            <vsizetype>7</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <property name="margin">
+           <number>3</number>
           </property>
-          <property name="focusPolicy">
-           <enum>Qt::NoFocus</enum>
+          <property name="spacing">
+           <number>0</number>
           </property>
-          <property name="toolTip">
-           <string/>
-          </property>
-          <property name="statusTip">
-           <string/>
-          </property>
-          <attribute name="title">
-           <string>&amp;Basic</string>
-          </attribute>
-          <layout class="QGridLayout" name="gridLayout_3">
-           <item row="2" column="0">
-            <widget class="QFrame" name="replace_frame">
-             <property name="sizePolicy">
-              <sizepolicy>
-               <hsizetype>7</hsizetype>
-               <vsizetype>7</vsizetype>
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="accessibleName">
-              <string/>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Box</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_7">
-              <property name="margin">
-               <number>4</number>
-              </property>
-              <property name="spacing">
-               <number>0</number>
-              </property>
-              <item row="1" column="0">
-               <widget class="QGroupBox" name="groupBox_3">
-                <property name="sizePolicy">
-                 <sizepolicy>
-                  <hsizetype>7</hsizetype>
-                  <vsizetype>7</vsizetype>
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="toolTip">
-                 <string>Enter the text to replace in this full-featured LyX editing area</string>
-                </property>
-                <property name="title">
-                 <string>&amp;Replace with...</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_6">
-                 <property name="margin">
-                  <number>4</number>
-                 </property>
-                 <item row="0" column="0" colspan="2">
-                  <widget class="lyx::frontend::EmbeddedWorkArea" name="replace_work_area_">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="baseSize">
-                    <size>
-                     <width>0</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="toolTip">
-                    <string>Enter the text to replace in this full-featured LyX editing area</string>
-                   </property>
-                   <property name="widgetResizable">
-                    <bool>true</bool>
-                   </property>
-                   <widget class="QWidget" name="replace_scroll_area_">
-                    <property name="geometry">
-                     <rect>
-                      <x>0</x>
-                      <y>0</y>
-                      <width>221</width>
-                      <height>80</height>
-                     </rect>
-                    </property>
-                    <property name="sizePolicy">
-                     <sizepolicy>
-                      <hsizetype>7</hsizetype>
-                      <vsizetype>7</vsizetype>
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                   </widget>
-                  </widget>
-                 </item>
-                 <item row="2" column="1">
-                  <widget class="QPushButton" name="replaceNextPB">
-                   <property name="enabled">
-                    <bool>true</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
-                     <horstretch>1</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="toolTip">
-                    <string>Replace and find next occurrence [Enter]</string>
-                   </property>
-                   <property name="text">
-                    <string>Ne&amp;xt</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="0">
-                  <widget class="QPushButton" name="replacePrevPB">
-                   <property name="enabled">
-                    <bool>true</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
-                     <horstretch>1</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="toolTip">
-                    <string>Replace and find previous occurrence [Shift+Enter]</string>
-                   </property>
-                   <property name="text">
-                    <string>Pre&amp;vious</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="3" column="0">
-                  <widget class="QPushButton" name="replaceallPB">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="toolTip">
-                    <string>Replace all occurences at once</string>
-                   </property>
-                   <property name="text">
-                    <string>Replace &amp;All</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="0" colspan="2">
-                  <widget class="QCheckBox" name="keepCaseCB">
-                   <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
-                     <horstretch>1</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="toolTip">
-                    <string>Keep the case of the replacement's first letter as in each matching text first letter</string>
-                   </property>
-                   <property name="text">
-                    <string>&amp;Keep case</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QFrame" name="find_frame">
-             <property name="sizePolicy">
-              <sizepolicy>
-               <hsizetype>7</hsizetype>
-               <vsizetype>7</vsizetype>
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Box</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_8">
-              <property name="margin">
-               <number>4</number>
-              </property>
-              <item row="0" column="0">
-               <widget class="QGroupBox" name="groupBox">
-                <property name="sizePolicy">
-                 <sizepolicy>
-                  <hsizetype>7</hsizetype>
-                  <vsizetype>7</vsizetype>
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="baseSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="toolTip">
-                 <string>Enter the text to search for in this full-featured LyX editing area</string>
-                </property>
-                <property name="title">
-                 <string>&amp;Find...</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_5">
-                 <property name="margin">
-                  <number>4</number>
-                 </property>
-                 <item row="0" column="0" colspan="2">
-                  <widget class="lyx::frontend::EmbeddedWorkArea" name="find_work_area_">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="baseSize">
-                    <size>
-                     <width>0</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="toolTip">
-                    <string>Enter the text to search for in this full-featured LyX editing area</string>
-                   </property>
-                   <property name="widgetResizable">
-                    <bool>true</bool>
-                   </property>
-                   <widget class="QWidget" name="find_scroll_area_">
-                    <property name="geometry">
-                     <rect>
-                      <x>0</x>
-                      <y>0</y>
-                      <width>221</width>
-                      <height>79</height>
-                     </rect>
-                    </property>
-                    <property name="sizePolicy">
-                     <sizepolicy>
-                      <hsizetype>7</hsizetype>
-                      <vsizetype>7</vsizetype>
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                   </widget>
-                  </widget>
-                 </item>
-                 <item row="1" column="0" colspan="2">
-                  <widget class="QCheckBox" name="caseCB">
-                   <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="toolTip">
-                    <string>Perform a case-sensitive search</string>
-                   </property>
-                   <property name="text">
-                    <string>Case &amp;sensitive</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="3" column="0" colspan="2">
-                  <widget class="QPushButton" name="regexpInsertPB">
-                   <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>3</hsizetype>
-                     <vsizetype>0</vsizetype>
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="toolTip">
-                    <string>Choose one of the pre-arranged regular expressions.</string>
-                   </property>
-                   <property name="text">
-                    <string>Insert Re&amp;gular Expression...</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="4" column="1">
-                  <widget class="QPushButton" name="findNextPB">
-                   <property name="enabled">
-                    <bool>true</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="toolTip">
-                    <string>Find next occurrence [Enter]</string>
-                   </property>
-                   <property name="text">
-                    <string>&amp;Next</string>
-                   </property>
-                   <property name="default">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="4" column="0">
-                  <widget class="QPushButton" name="findPrevPB">
-                   <property name="enabled">
-                    <bool>true</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="toolTip">
-                    <string>Find previous occurrence [Shift+Enter]</string>
-                   </property>
-                   <property name="text">
-                    <string>&amp;Previous</string>
-                   </property>
-                   <property name="default">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="0" colspan="2">
-                  <widget class="QCheckBox" name="wordsCB">
-                   <property name="enabled">
-                    <bool>true</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="toolTip">
-                    <string>Restrict search to whole words only</string>
-                   </property>
-                   <property name="text">
-                    <string>Whole &amp;words</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="AdvancedTab">
-          <property name="sizePolicy">
-           <sizepolicy>
-            <hsizetype>7</hsizetype>
-            <vsizetype>7</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="toolTip">
-           <string/>
-          </property>
-          <property name="statusTip">
-           <string/>
-          </property>
-          <attribute name="title">
-           <string>&amp;Advanced</string>
-          </attribute>
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
-            <layout class="QGridLayout" name="gridLayout_2">
-             <property name="sizeConstraint">
-              <enum>QLayout::SetDefaultConstraint</enum>
-             </property>
-             <item row="0" column="0">
-              <widget class="QGroupBox" name="groupBox_2">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="sizePolicy">
-                <sizepolicy>
-                 <hsizetype>7</hsizetype>
-                 <vsizetype>1</vsizetype>
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="toolTip">
-                <string>The scope to which the search horizon is restricted</string>
-               </property>
-               <property name="autoFillBackground">
-                <bool>false</bool>
-               </property>
-               <property name="title">
-                <string>Sco&amp;pe</string>
-               </property>
-               <property name="flat">
-                <bool>false</bool>
-               </property>
-               <layout class="QGridLayout" name="gridLayout_4">
-                <property name="margin">
-                 <number>3</number>
-                </property>
-                <property name="spacing">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QRadioButton" name="CurrentParagraph">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="sizePolicy">
-                   <sizepolicy>
-                    <hsizetype>1</hsizetype>
-                    <vsizetype>1</vsizetype>
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="toolTip">
-                   <string>Current paragraph</string>
-                  </property>
-                  <property name="text">
-                   <string>Current &amp;paragraph</string>
-                  </property>
-                  <property name="checked">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QRadioButton" name="CurrentDocument">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="sizePolicy">
-                   <sizepolicy>
-                    <hsizetype>1</hsizetype>
-                    <vsizetype>1</vsizetype>
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="text">
-                   <string>Current &amp;document</string>
-                  </property>
-                  <property name="checked">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0">
-                 <widget class="QRadioButton" name="MasterDocument">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="sizePolicy">
-                   <sizepolicy>
-                    <hsizetype>1</hsizetype>
-                    <vsizetype>1</vsizetype>
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="toolTip">
-                   <string>Current document and all related documents belonging to the same master document</string>
-                  </property>
-                  <property name="text">
-                   <string>&amp;Master document</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="0">
-                 <widget class="QRadioButton" name="OpenDocuments">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="sizePolicy">
-                   <sizepolicy>
-                    <hsizetype>1</hsizetype>
-                    <vsizetype>1</vsizetype>
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="toolTip">
-                   <string>All open documents</string>
-                  </property>
-                  <property name="text">
-                   <string>&amp;Open documents</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="0">
-                 <widget class="QRadioButton" name="AllManualsRB">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="sizePolicy">
-                   <sizepolicy>
-                    <hsizetype>1</hsizetype>
-                    <vsizetype>1</vsizetype>
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="text">
-                   <string>All ma&amp;nuals</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QCheckBox" name="expandMacrosCB">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="sizePolicy">
-                <sizepolicy>
-                 <hsizetype>7</hsizetype>
-                 <vsizetype>1</vsizetype>
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>&amp;Expand macros</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QCheckBox" name="ignoreFormatCB">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="sizePolicy">
-                <sizepolicy>
-                 <hsizetype>7</hsizetype>
-                 <vsizetype>1</vsizetype>
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="toolTip">
-                   <string>If unchecked, the search will be limited to occurrences of the selected text and paragraph style</string>
-                  </property>
-               <property name="text">
-                <string>Ignore &amp;format</string>
-               </property>
-               <property name="checked">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <spacer name="verticalSpacer">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>0</width>
-                 <height>0</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </widget>
+          <item row="0" column="0">
+           <widget class="QRadioButton" name="CurrentParagraph">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>Current paragraph</string>
+            </property>
+            <property name="text">
+             <string>Current &amp;paragraph</string>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QRadioButton" name="CurrentDocument">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Current &amp;document</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QRadioButton" name="MasterDocument">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>Current document and all related documents belonging to the same master document</string>
+            </property>
+            <property name="text">
+             <string>&amp;Master document</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QRadioButton" name="OpenDocuments">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>All open documents</string>
+            </property>
+            <property name="text">
+             <string>&amp;Open documents</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QRadioButton" name="AllManualsRB">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>All ma&amp;nuals</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="ignoreFormatCB">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>If unchecked, the search will be limited to occurrences of the selected text and paragraph style</string>
+         </property>
+         <property name="text">
+          <string>Ignore &amp;format</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="keepCaseCB">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>Keep the case of the replacement's first letter as in each matching text first letter</string>
+         </property>
+         <property name="text">
+          <string>&amp;Preserve first case on replace</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="expandMacrosCB">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>&amp;Expand macros</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>13</width>
+           <height>168</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>

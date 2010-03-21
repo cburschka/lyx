@@ -1280,6 +1280,18 @@ void EmbeddedWorkArea::hideEvent(QHideEvent * ev)
 }
 
 
+QSize EmbeddedWorkArea::sizeHint () const
+{
+	// FIXME(?):
+	// GuiWorkArea sets the size to the screen's viewport
+	// by returning a value this gets overridden
+	// EmbeddedWorkArea is now sized to fit in the layout
+	// of the parent, and has a minimum size set in GuiWorkArea
+	// which is what we return here
+	return QSize(100, 70);
+}
+
+
 void EmbeddedWorkArea::disable()
 {
 	stopBlinkingCursor();

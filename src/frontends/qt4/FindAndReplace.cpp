@@ -58,12 +58,13 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 #endif
 	find_work_area_->setGuiView(view_);
 	find_work_area_->init();
+	find_work_area_->setFrameStyle(QFrame::StyledPanel);
 	setFocusProxy(find_work_area_);
 	replace_work_area_->setGuiView(view_);
 	replace_work_area_->init();
+	replace_work_area_->setFrameStyle(QFrame::StyledPanel);
 	// We don't want two cursors blinking.
 	replace_work_area_->stopBlinkingCursor();
-
 	QMenu * menu = new QMenu();
 	QAction * regAny = menu->addAction(qt_("&Anything"));
 	regAny->setData(".*");

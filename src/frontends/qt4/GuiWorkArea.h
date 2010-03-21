@@ -281,6 +281,7 @@ public:
 	void setWidgetResizable(bool) {}
 	void setWidget(QWidget *) {}
 
+	QSize sizeHint () const;
 	///
 	void disable();
 
