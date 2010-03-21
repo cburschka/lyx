@@ -590,7 +590,7 @@ void GuiPainter::dashedUnderline(FontInfo const & f, int x, int y, int width)
 void GuiPainter::wavyHorizontalLine(int x, int y, int width, ColorCode col)
 {
 	setQPainterPen(computeColor(col));
-	int const step = 4;
+	int const step = 2;
 	int const xend = x + width;
 	int height = 1;
 	//FIXME: I am not sure if Antialiasing gives the best effect.
@@ -599,8 +599,8 @@ void GuiPainter::wavyHorizontalLine(int x, int y, int width, ColorCode col)
 		height = - height;
 		drawLine(x, y - height, x + step, y + height);
 		x += step;
-		drawLine(x, y + height, x + 2, y + height);
-		x += 2;
+		drawLine(x, y + height, x + step/2, y + height);
+		x += step/2;
 	}
 	//setRenderHint(Antialiasing, false);
 }
