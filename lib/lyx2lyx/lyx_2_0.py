@@ -1213,10 +1213,10 @@ def convert_math_output(document):
     rgx = re.compile(r'\\html_use_mathml\s+(\w+)')
     m = rgx.match(document.header[i])
     if rgx:
-        newval = "MathML"
+        newval = "0" # MathML
         val = m.group(1)
         if val != "true":
-            newval = "Images"
+            newval = "2" # Images
         document.header[i] = "\\html_math_output " + newval
 
 
