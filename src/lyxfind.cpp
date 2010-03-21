@@ -171,6 +171,8 @@ int replaceAll(BufferView * bv,
 	if (!searchAllowed(bv, searchstr) || buf.isReadonly())
 		return 0;
 
+	DocIterator cur_orig(bv->cursor());
+
 	MatchString const match(searchstr, cs, mw);
 	int num = 0;
 
@@ -198,6 +200,10 @@ int replaceAll(BufferView * bv,
 	bv->putSelectionAt(doc_iterator_begin(&buf), 0, false);
 	if (num)
 		buf.markDirty();
+
+	cur_orig.fixIfBroken();
+	bv->setCursor(cur_orig);
+
 	return num;
 }
 
