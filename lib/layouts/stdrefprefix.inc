@@ -14,7 +14,7 @@ IfStyle Part
 End
 
 IfStyle Chapter
-	RefPrefix chap
+	RefPrefix cha
 End
 
 IfStyle Section
