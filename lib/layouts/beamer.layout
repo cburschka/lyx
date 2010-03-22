@@ -123,6 +123,7 @@ Style Part
   Align            Center
   LabelType        Static
   LabelString      "Part"
+	RefPrefix        part
 
   # standard font definition
   Font 
@@ -154,6 +155,7 @@ Style Section
   LabelType        Counter
   LabelCounter     section
   LabelString      "Section \arabic{section}"
+	RefPrefix        sec
   OptionalArgs     1
 
   Font 
@@ -196,6 +198,7 @@ Style Subsection
   LabelType        Counter
   LabelCounter     subsection
   LabelString      "Subsection \arabic{section}.\arabic{subsection}"
+	RefPrefix        sub
   OptionalArgs     1
 
   # standard font definition
@@ -1235,4 +1238,3 @@ Preamble
     \def\gobbletableofcontents#1{\origtableofcontents}
   }
 EndPreamble
-

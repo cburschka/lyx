@@ -57,6 +57,7 @@ Style Chapter
 	BottomSep	0.8
 	ParSep		0.8
 	Align		Block
+	RefPrefix chap
 	OptionalArgs	1
 	Font
 	  Series	Bold
@@ -80,6 +81,7 @@ Style Section
 	BottomSep	0.7
 	ParSep		0.7
 	Align		Block
+	RefPrefix sec
 	OptionalArgs	1
 	Font
 	  Series	Bold
@@ -94,6 +96,7 @@ Style Subsection
 	TopSep		0.9
 	BottomSep	0.5
 	ParSep		0.5
+	RefPrefix sub
 	Font
 	  Series	Bold
 	  Size		Large

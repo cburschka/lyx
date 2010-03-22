@@ -26,7 +26,6 @@ Style Part
 	BottomSep             4
 	ParSep                0.8
 	Align                 Center
-	RefPrefix             part
 	Alignpossible         Center
 	Font
 	  Series              Bold
@@ -54,7 +53,6 @@ Style Chapter
 	ParSep                0.8
 	Align                 Block
 	OptionalArgs          1
-	RefPrefix             cha
 	Font
 	  Series              Bold
 	  Size                Huge
@@ -80,7 +78,6 @@ Style Section
 	ParSep                0.7
 	Align                 Block
 	OptionalArgs          1
-	RefPrefix             sec
 	Font
 	  Series              Bold
 	  Size                Larger
@@ -101,7 +98,6 @@ Style Subsection
 	  Series              Bold
 	  Size                Large
 	EndFont
-	RefPrefix             sub
 	HTMLTag               h3
 End
 
@@ -117,7 +113,6 @@ Style Subsubsection
 	  Series              Bold
 	  Size                Normal
 	EndFont
-	RefPrefix             sub
 	HTMLTag               h4
 End
 
@@ -129,7 +124,6 @@ Style Paragraph
 	LatexName             paragraph
 	TopSep                0.4
 	BottomSep             0
-	RefPrefix             par
 End
 
 
@@ -140,7 +134,7 @@ Style Subparagraph
 	LatexName             subparagraph
 	NextNoIndent          0
 	LeftMargin            MM
-	RefPrefix             subp
 End
 
+Input stdrefprefix.inc
 Input numarticle.inc
