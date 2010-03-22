@@ -3228,10 +3228,9 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			// = descent of text in last par + TEXT_TO_INSET_OFFSET:
 			int const lastpardes = tm.last().second->descent()
 				+ TEXT_TO_INSET_OFFSET;
-			int offset;
+			int offset = 0;
 			switch (tabular.getVAlignment(cell)) { 
 				case Tabular::LYX_VALIGN_TOP:
-					offset = 0;
 					break; 
 				case Tabular::LYX_VALIGN_MIDDLE:
 					offset = -(dim.des - lastpardes)/2; 
