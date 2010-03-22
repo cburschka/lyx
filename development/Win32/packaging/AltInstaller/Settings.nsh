@@ -1,16 +1,16 @@
 # installer settings
 # You should need to change only these macros for new releases.
 
-!define INSTALLER_SUBVERSION "21"
-!define PRODUCT_DIR "D:\LyXPackage1.6"
+!define INSTALLER_SUBVERSION "1"
+!define PRODUCT_DIR "D:\LyXPackage2.0"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.6.4"
-!define PRODUCT_VERSION_SHORT "164"
-!define PRODUCT_SUBFOLDER "lyx16"
+!define PRODUCT_VERSION "2.0svn"
+!define PRODUCT_VERSION_SHORT "20svn"
+!define PRODUCT_SUBFOLDER "lyx20"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
 !define PRODUCT_SOURCEDIR "${PRODUCT_DIR}\LyX"
 !define PRODUCT_EXE "$INSTDIR\bin\lyx.exe"
-!define PRODUCT_BAT "$INSTDIR\bin\lyx.bat"
+!define PRODUCT_BAT "$INSTDIR\bin\lyxLauncher.exe"
 !define PRODUCT_EXT ".lyx"
 !define PRODUCT_REGNAME "LyX.Document"
 !define PRODUCT_MIME_TYPE "application/lyx"
@@ -20,12 +20,12 @@
 !define PRODUCT_INFO_URL "http://www.lyx.org/"
 !define LAUNCHER_EXE "$INSTDIR\bin\LyXLauncher.exe"
 
-BrandingText "LyXWinInstaller v4.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
+BrandingText "LyXWinInstaller v5.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
 
 # to check later if this installer version is running at the same time
-!define INSTALLER_EXE "LyX-${PRODUCT_VERSION_SHORT}-4-${INSTALLER_SUBVERSION}-AltInstaller-${INSTALLER_VERSION}.exe"
-!define INSTALLER2_EXE "LyX-${PRODUCT_VERSION_SHORT}-4-${INSTALLER_SUBVERSION}-AltInstaller-${INSTALLER2_VERSION}.exe"
-!define INSTALLER3_EXE "LyX-${PRODUCT_VERSION_SHORT}-4-${INSTALLER_SUBVERSION}-AltInstaller-${INSTALLER3_VERSION}.exe"
+!define INSTALLER_EXE "LyX-${PRODUCT_VERSION_SHORT}-5-${INSTALLER_SUBVERSION}-AltInstaller-${INSTALLER_VERSION}.exe"
+!define INSTALLER2_EXE "LyX-${PRODUCT_VERSION_SHORT}-5-${INSTALLER_SUBVERSION}-AltInstaller-${INSTALLER2_VERSION}.exe"
+!define INSTALLER3_EXE "LyX-${PRODUCT_VERSION_SHORT}-5-${INSTALLER_SUBVERSION}-AltInstaller-${INSTALLER3_VERSION}.exe"
 !define VERSION_BITMAP "${PRODUCT_DIR}\icons\lyx_logo_vert${PRODUCT_VERSION_SHORT}.bmp"
 
 # Replaced by HKLM or HKCU depending on SetShellVarContext.
@@ -40,13 +40,13 @@ BrandingText "LyXWinInstaller v4.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
 
 # definitions for the Update installer
 !if ${INSTALLER_VERSION} == "Update"
- !define PRODUCT_VERSION_SHORT_OLD "163"
+ !define PRODUCT_VERSION_SHORT_OLD "166"
  !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX${PRODUCT_VERSION_SHORT_OLD}"
- !define PRODUCT_VERSION_OLD "LyX 1.6.3"
- !define JabRefVersion "2.4.2" # could be an older version
- !define ImageMagickVersion_Old "6.5.3" # could be an older version
+ !define PRODUCT_VERSION_OLD "LyX 1.6.6"
+ !define JabRefVersion "2.5" # could be an older version
+ !define ImageMagickVersion_Old "6.5.8" # could be an older version
  !define GhostscriptVersion_Old "8.64" # could be an older version
- !define MiKTeXDeliveredVersion "2.7" # could be an older version
+ !define MiKTeXDeliveredVersion "2.8" # could be an older version
 !endif
 
 # definitions for the Small installer
@@ -66,11 +66,11 @@ BrandingText "LyXWinInstaller v4.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
 
 !define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
 
-!define ImageMagickVersion "6.5.7"
+!define ImageMagickVersion "6.5.8"
 # for some odd reason the ImageMagick folder may not be a subfolder of $INSTDIR\bin!
 !define ImageMagickDir "$INSTDIR\etc\ImageMagick"
 !define GhostscriptDir "$INSTDIR\etc\Ghostscript"
-!define GhostscriptVersion "8.64"
+!define GhostscriptVersion "8.71"
 !define Metafile2epsDir "$INSTDIR\etc\Metafile2eps"
 !define AiksaurusDir "$APPDATA\Aiksaurus"
 !define AiksaurusInstall "external\Aiksaurus"

@@ -31,17 +31,6 @@ Function ConfigureLyX
    StrCpy $PathPrefix "$PathPrefix;$WMFPath"
   ${endif}
   
-  # Create a batch file to start LyX with the environment variables set
-  ClearErrors
-  Delete "${PRODUCT_BAT}"
-  FileOpen $R1 "${PRODUCT_BAT}" w
-  FileWrite $R1 '@echo off$\r$\n\
-		 SET AIK_DATA_DIR=${AiksaurusDir}$\r$\n\
-		 start "${PRODUCT_NAME}" "${LAUNCHER_EXE}" %*$\r$\n'
-  FileClose $R1
-  IfErrors 0 +2
-   MessageBox MB_OK|MB_ICONEXCLAMATION "$(CreateCmdFilesFailed)"
-   
   # Set the path prefix in lyxrc.dist
   ClearErrors
   Delete "$INSTDIR\Resources\lyxrc.dist"
