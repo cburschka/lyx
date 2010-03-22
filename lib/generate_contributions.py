@@ -1278,7 +1278,7 @@ contributers = [
                  "Re: #6361: configure.py ignores packages required by user-defined modules",
                  "m=125986505101722",
                  "3 December 2009",
-                 u"Bug fix"),
+                 u"Bug fixes"),
 
      contributer(u"Bernhard Roider",
                  "bernhard.roider () sonnenkinder ! org",

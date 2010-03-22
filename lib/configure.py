@@ -890,10 +890,17 @@ def processLayoutFile(file, bool_docbook):
 
         we expect output:
         
-        "article" "article" "article" "false"
-        "scrbook" "scrbook" "book (koma-script)" "false"
-        "svjog" "svjour" "article (Springer - svjour/jog)" "false"
+        "article" "article" "article" "false" "article.cls"
+        "scrbook" "scrbook" "book (koma-script)" "false" "scrbook.cls"
+        "svjog" "svjour" "article (Springer - svjour/jog)" "false" "svjour.cls, svjog.clo"
     '''
+    def checkForClassExtension(x):
+        '''if the extension for a latex class is not
+           provided, add .cls to the classname'''
+        if not '.' in x:
+            return x.strip() + '.cls'
+        else:
+            return x.strip()
     classname = file.split(os.sep)[-1].split('.')[0]
     # return ('LaTeX', '[a,b]', 'a', ',b,c', 'article') for \DeclareLaTeXClass[a,b,c]{article}
     p = re.compile(r'\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}')
@@ -904,7 +911,14 @@ def processLayoutFile(file, bool_docbook):
             avai = {'LaTeX':'false', 'DocBook':bool_docbook}[classtype]
             if opt == None:
                 opt = classname
-            return '"%s" "%s" "%s" "%s"\n' % (classname, opt, desc, avai)
+                prereq_latex = checkForClassExtension(classname)
+            else:
+                prereq_list = optAll[1:-1].split(',')
+                prereq_list = map(checkForClassExtension, prereq_list)
+                prereq_latex = ', '.join(prereq_list)
+            prereq_docbook = {'true':'', 'false':'docbook'}[bool_docbook]
+            prereq = {'LaTeX':prereq_latex, 'DocBook':prereq_docbook}[classtype]
+            return '"%s" "%s" "%s" "%s" "%s"\n' % (classname, opt, desc, avai, prereq)
     logger.warning("Layout file " + file + " has no \DeclareXXClass line. ")
     return ""
 

@@ -42,13 +42,16 @@ using boost::regex;
 using boost::smatch;
 
 LayoutFile::LayoutFile(string const & fn, string const & cln,
-			   string const & desc, bool texClassAvail )
+			   string const & desc, string const & prereq,
+				 bool texclassavail) 
 {
 	name_ = fn;
 	latexname_ = cln;
 	description_ = desc;
-	texClassAvail_ = texClassAvail;
+	prerequisites_ = prereq;
+	texClassAvail_ = texclassavail;
 }
+
 
 LayoutFileList::~LayoutFileList()
 {
@@ -58,6 +61,7 @@ LayoutFileList::~LayoutFileList()
 		delete it->second;
 	}
 }
+
 
 LayoutFileList & LayoutFileList::get() 
 {
@@ -151,9 +155,13 @@ bool LayoutFileList::read()
 				break;
 			bool avail = lex.getBool();
 			LYXERR(Debug::TCLASS, "Avail: " << avail);
+			if (!lex.next()) 
+				break;
+			string const prereq = lex.getString();
+			LYXERR(Debug::TCLASS, "Prereq: " << prereq);
 			// This code is run when we have
-			// fname, clname, desc, and avail
-			LayoutFile * tmpl = new LayoutFile(fname, clname, desc, avail);
+			// fname, clname, desc, prereq, and avail
+			LayoutFile * tmpl = new LayoutFile(fname, clname, desc, prereq, avail);
 			if (lyxerr.debugging(Debug::TCLASS)) {
 				// only system layout files are loaded here so no
 				// buffer path is needed.
@@ -190,7 +198,7 @@ void LayoutFileList::reset(LayoutFileIndex const & classname) {
 	LayoutFile * tc = classmap_[classname];
 	LayoutFile * tmpl = 
 		new LayoutFile(tc->name(), tc->latexname(), tc->description(),
-		               tc->isTeXClassAvailable());
+		               tc->prerequisites(), tc->isTeXClassAvailable());
 	classmap_[classname] = tmpl;
 	delete tc;
 }
@@ -228,7 +236,8 @@ LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 	// We do not know if a LaTeX class is available for this document, but setting
 	// the last parameter to true will suppress a warning message about missing
 	// tex class.
-	LayoutFile * tc = new LayoutFile(textclass, textclass, "Unknown text class " + textclass, true);
+	LayoutFile * tc = new LayoutFile(textclass, textclass, 
+			"Unknown text class " + textclass, textclass + ".cls", true);
 	if (!tc->load(tempLayout.absFilename())) {
 		// The only way this happens is because the hardcoded layout file above
 		// is wrong.
@@ -268,9 +277,13 @@ LayoutFileIndex
 				// returns: whole string, classtype (not used here), class name, description
 				LASSERT(sub.size() == 4, /**/);
 				// now, create a TextClass with description containing path information
-				string className(sub.str(2) == "" ? textclass : sub.str(2));
+				string class_name(sub.str(2) == "" ? textclass : sub.str(2));
+				string class_prereq(class_name + ".cls");
 				LayoutFile * tmpl = 
-					new LayoutFile(textclass, className, textclass, true);
+					new LayoutFile(textclass, class_name, textclass, class_prereq, true);
+				//FIXME: The prerequisites are available from the layout file and
+				//       can be extracted from the above regex, but for now this
+				//       field is simply set to class_name + ".cls"
 				// This textclass is added on request so it will definitely be
 				// used. Load it now because other load() calls may fail if they
 				// are called in a context without buffer path information.

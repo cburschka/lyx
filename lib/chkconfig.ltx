@@ -57,9 +57,9 @@
 
 \newcommand{\prefix}{+} % the character used by grep to filter 'good' output
 
-\newcommand{\AddLayout}[4][\default]{
+\newcommand{\AddLayout}[5][\default]{
   \def\default{#2}
-  \immediate\write\layouts{"#2"   "#1"   "#3"   "#4"}}
+  \immediate\write\layouts{"#2"   "#1"   "#3"   "#4"   "#5"}}
 
 \newcommand{\AddVariable}[2]{
   \immediate\write\vars{chk_#1='#2'}}
@@ -76,14 +76,28 @@
   \def\files{#1}
   \message{^^J\prefix checking for #3 #2 [#1]...}
   \let\firstelement\relax
+  \let\missingelements\empty
   \existstrue
   \@for\file:=\files\do{
     \ifx\firstelement\relax
        \edef\firstelement{\file}
     \fi
-    \IfFileExists{\file}
+    \@expandtwoargs\in@{.}{\file}
+    \ifin@
+      \def\myfile{\file}
+    \else
+      \def\myfile{\file.#4}
+    \fi
+    \IfFileExists{\myfile}
       {}
-      {\IfFileExists{\file.#4}{}{\existsfalse}}
+      {
+        \existsfalse
+        \ifx\missingelements\empty
+          \edef\missingelements{\myfile}
+        \else
+          \edef\missingelements{\missingelements, \myfile}
+        \fi
+      }
   }
   \ifexists
     \message{yes^^J}
@@ -108,8 +122,8 @@
 
 \newcommand{\DeclareLaTeXClass}[2][\default]{
   \TestItem[#1]{\layoutname}{document class}{cls}
-           {\AddLayout[\firstelement]{\layoutname}{#2}{true}}
-           {\AddLayout[\firstelement]{\layoutname}{#2}{false}}
+           {\AddLayout[\firstelement]{\layoutname}{#2}{true}{\missingelements}}
+           {\AddLayout[\firstelement]{\layoutname}{#2}{false}{\missingelements}}
 }
 
 % Only for compatibility. Will be removed later.
@@ -119,9 +133,9 @@
   \message{^^J\prefix checking for docbook\space\space class \layoutname... }
   \@ifundefined{hasdocbook}
     {\message{no^^J}
-     \AddLayout[#1]{\layoutname}{#2}{false}}
+     \AddLayout[#1]{\layoutname}{#2}{false}{docbook}}
     {\message{yes^^J}
-     \AddLayout[#1]{\layoutname}{#2}{true}}
+     \AddLayout[#1]{\layoutname}{#2}{true}{}}
 }
 
 % Stolen from article.cls

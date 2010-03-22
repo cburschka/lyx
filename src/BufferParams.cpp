@@ -522,13 +522,12 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 			docstring const msg =
 				bformat(_("The layout file requested by this document,\n"
 						 "%1$s.layout,\n"
-						 "is not usable. This is probably because a LaTeX\n"
-						 "class or style file required by it is not\n"
-						 "available. See the Customization documentation\n"
-						 "for more information.\n"), from_utf8(classname));
+						 "is not usable. The following prerequisites\n"
+						 "are missing:\n%2$s\n"),
+						 from_utf8(classname), from_utf8(baseClass()->prerequisites()));
 			frontend::Alert::warning(_("Document class not available"),
 				       msg + _("LyX will not be able to produce output."));
-		} 
+		}
 	} else if (token == "\\begin_preamble") {
 		readPreamble(lex);
 	} else if (token == "\\begin_local_layout") {

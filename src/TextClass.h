@@ -189,6 +189,8 @@ public:
 	std::string const & description() const { return description_; }
 	///
 	std::string const & latexname() const { return latexname_; }
+	///
+	std::string const & prerequisites() const { return prerequisites_; }
 	/// Can be LaTeX, DocBook, etc.
 	OutputType outputType() const { return outputType_; }
 	/// Can be latex, docbook ... (the name of a format)
@@ -238,6 +240,8 @@ protected:
 	mutable bool loaded_;
 	/// Is the TeX class available?
 	bool texClassAvail_;
+	/// document class prerequisites
+	std::string prerequisites_;
 	///
 	std::string opt_fontsize_;
 	///
