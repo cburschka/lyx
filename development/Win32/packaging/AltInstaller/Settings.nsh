@@ -10,7 +10,7 @@
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
 !define PRODUCT_SOURCEDIR "${PRODUCT_DIR}\LyX"
 !define PRODUCT_EXE "$INSTDIR\bin\lyx.exe"
-!define PRODUCT_BAT "$INSTDIR\bin\lyx.bat"
+!define PRODUCT_BAT "$INSTDIR\bin\lyxLauncher.exe"
 !define PRODUCT_EXT ".lyx"
 !define PRODUCT_REGNAME "LyX.Document"
 !define PRODUCT_MIME_TYPE "application/lyx"
@@ -46,7 +46,7 @@ BrandingText "LyXWinInstaller v4.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
  !define JabRefVersion "2.5" # could be an older version
  !define ImageMagickVersion_Old "6.5.8" # could be an older version
  !define GhostscriptVersion_Old "8.64" # could be an older version
- !define MiKTeXDeliveredVersion "2.7" # could be an older version
+ !define MiKTeXDeliveredVersion "2.8" # could be an older version
 !endif
 
 # definitions for the Small installer
@@ -66,7 +66,7 @@ BrandingText "LyXWinInstaller v4.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
 
 !define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
 
-!define ImageMagickVersion "6.5.8"
+!define ImageMagickVersion "6.6.0"
 # for some odd reason the ImageMagick folder may not be a subfolder of $INSTDIR\bin!
 !define ImageMagickDir "$INSTDIR\etc\ImageMagick"
 !define GhostscriptDir "$INSTDIR\etc\Ghostscript"

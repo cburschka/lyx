@@ -274,7 +274,7 @@ FunctionEnd
 #--------------------------------
 
 Function LaunchProduct
-  # call the lyx.exe and not the lyx.bat to show the console window. This is
+  # call the lyx.exe and not the lyxLauncher.exe to show the console window. This is
   # necessary because sometimes LyX's configure run that is started by the
   # installer fails when MiKTeX was installed together with this installer.
   # Showing the console gives the user feedback otherwise he would wonder why

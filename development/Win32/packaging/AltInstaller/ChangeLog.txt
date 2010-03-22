@@ -1,10 +1,14 @@
 ﻿Version 4.23
 - LyX 1.6.6
-- updated to eLyXer 0.41
+- updated to eLyXer 0.42
 - updated to Ghostscript 8.71
+- updated to ImageMagick 6.6.0-8
+- updated to Python 2.6.5
 - support to set Greek as LyX menu language (new feature in LyX 1.6.6)
 - fix bug that it was not possible to change the language of the
   LyX menus via the LyX menu Tools->Preferences->Language Settings
+- no longer use a *.bat file to start LyX
+  (this avoids the window that appeared for a few milliseconds when starting LyX)
 
 
 Version 4.22
