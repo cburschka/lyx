@@ -600,6 +600,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_ESCAPE
  * \li Action: Clears the selection. If no text is selected call #LFUN_FINISHED_FORWARD.
+               Inside math mode jumps out of the math inset.
  * \li Syntax: escape
  * \li Origin: Lgb, 17 May 2001
  * \endvar
