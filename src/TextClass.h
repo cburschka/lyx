@@ -239,7 +239,7 @@ protected:
 	/// Has this layout file been loaded yet?
 	mutable bool loaded_;
 	/// Is the TeX class available?
-	bool texClassAvail_;
+	bool tex_class_avail_;
 	/// document class prerequisites
 	std::string prerequisites_;
 	///

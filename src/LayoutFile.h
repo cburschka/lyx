@@ -64,7 +64,7 @@ private:
 class LayoutFile : public TextClass, boost::noncopyable {
 public:
 	/// check whether the TeX class is available
-	bool isTeXClassAvailable() const { return texClassAvail_; }
+	bool isTeXClassAvailable() const { return tex_class_avail_; }
 	///
 	LayoutModuleList const & defaultModules() const 
 			{ return default_modules_; }

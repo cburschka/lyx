@@ -49,7 +49,7 @@ LayoutFile::LayoutFile(string const & fn, string const & cln,
 	latexname_ = cln;
 	description_ = desc;
 	prerequisites_ = prereq;
-	texClassAvail_ = texclassavail;
+	tex_class_avail_ = texclassavail;
 }
 
 
