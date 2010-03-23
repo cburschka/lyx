@@ -15,7 +15,6 @@ Var JabRefInstalled
 Var LangCode
 Var LangCodeSys
 Var LangName
-Var LangNameLyX
 Var LangNameSys
 Var LatexPath
 Var MiKTeXInstalled

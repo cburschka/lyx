@@ -49,6 +49,7 @@ Var ImageEditorPath
 Var LangEncoding
 Var LangSysEncoding
 Var LaTeXName
+Var LangNameLyX
 Var MiKTeXVersion
 Var MiKTeXUser
 Var MissedProg

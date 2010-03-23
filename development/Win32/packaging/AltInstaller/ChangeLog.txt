@@ -8,7 +8,8 @@
 - fix bug that it was not possible to change the language of the
   LyX menus via the LyX menu Tools->Preferences->Language Settings
 - no longer use a *.bat file to start LyX
-  (this avoids the window that appeared for a few milliseconds when starting LyX)
+  (avoids one of the two windows that appeared for a few milliseconds
+   when starting LyX)
 
 
 Version 4.22
