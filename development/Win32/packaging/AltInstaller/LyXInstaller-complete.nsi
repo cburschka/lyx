@@ -51,6 +51,7 @@ Var InstallJabRef
 Var LangEncoding
 Var LangSysEncoding
 Var LaTeXName
+Var LangNameLyX
 Var MiKTeXVersion
 Var MiKTeXUser
 Var MiKTeXPath
