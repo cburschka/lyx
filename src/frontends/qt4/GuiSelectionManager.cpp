@@ -78,12 +78,8 @@ GuiSelectionManager::GuiSelectionManager(
 	        this, SLOT(upPB_clicked()));
 	connect(downPB, SIGNAL(clicked()), 
 	        this, SLOT(downPB_clicked()));
-	connect(availableLV, SIGNAL(clicked(QModelIndex)), 
-	        this, SLOT(availableLV_clicked(QModelIndex)));
 	connect(availableLV, SIGNAL(doubleClicked(QModelIndex)), 
 	        this, SLOT(availableLV_doubleClicked(QModelIndex)));
-	connect(selectedLV, SIGNAL(clicked(QModelIndex)), 
-	        this, SLOT(selectedLV_clicked(QModelIndex)));
 	
 	availableLV->installEventFilter(this);
 	selectedLV->installEventFilter(this);
@@ -325,18 +321,6 @@ void GuiSelectionManager::downPB_clicked()
 }
 
 
-// FIXME These slots do not really do what they need to do, since focus
-// can enter the QListView in other ways. But there are no signals sent
-// in that case. We need to reimplement focusInEvent() to capture those,
-// which means subclassing QListView. (rgh)
-// Or by installing an event listener.. (andre)
-void GuiSelectionManager::availableLV_clicked(const QModelIndex &)
-{
-	selectedHasFocus_ = false;
-	updateHook();
-}
-
-
 void GuiSelectionManager::availableLV_doubleClicked(const QModelIndex & idx)
 {
 	if (isSelected(idx) || !addPB->isEnabled())
@@ -349,74 +333,82 @@ void GuiSelectionManager::availableLV_doubleClicked(const QModelIndex & idx)
 }
 
 
-void GuiSelectionManager::selectedLV_clicked(const QModelIndex &)
-{
-	selectedHasFocus_ = true;
-	updateHook();
-}
-
-
 bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event) 
 {
+	QEvent::Type etype = event->type();
 	if (obj == availableLV) {
-		if (event->type() != QEvent::KeyPress)
-			return QObject::eventFilter(obj, event);
-		QKeyEvent * keyEvent = static_cast<QKeyEvent *>(event);
-		int const keyPressed = keyEvent->key();
-		Qt::KeyboardModifiers const keyModifiers = keyEvent->modifiers();
-		// Enter key without modifier will add current item.
-		// Ctrl-Enter will add it and close the dialog.
-		// This is designed to work both with the main enter key
-		// and the one on the numeric keypad.
-		if (keyPressed == Qt::Key_Enter || keyPressed == Qt::Key_Return) {
-			if (!keyModifiers)
-				addPB_clicked();
-			else if (keyModifiers == Qt::ControlModifier ||
-					keyModifiers == Qt::KeypadModifier  ||
-					keyModifiers == (Qt::ControlModifier | Qt::KeypadModifier)) {
-				if (addPB->isEnabled()) {
+		if (etype == QEvent::KeyPress) {
+			QKeyEvent * keyEvent = static_cast<QKeyEvent *>(event);
+			int const keyPressed = keyEvent->key();
+			Qt::KeyboardModifiers const keyModifiers = keyEvent->modifiers();
+			// Enter key without modifier will add current item.
+			// Ctrl-Enter will add it and close the dialog.
+			// This is designed to work both with the main enter key
+			// and the one on the numeric keypad.
+			if (keyPressed == Qt::Key_Enter || keyPressed == Qt::Key_Return) {
+				if (!keyModifiers)
 					addPB_clicked();
-					okHook(); //signal
+				else if (keyModifiers == Qt::ControlModifier ||
+						keyModifiers == Qt::KeypadModifier  ||
+						keyModifiers == (Qt::ControlModifier | Qt::KeypadModifier)) {
+					if (addPB->isEnabled()) {
+						addPB_clicked();
+						okHook(); //signal
+					}
 				}
+				event->accept();
+				return true;
+			}
+		} else if (etype == QEvent::FocusIn) {
+			if (selectedHasFocus_) {
+				selectedHasFocus_ = false;
+				updateHook();
 			}
 			event->accept();
 			return true;
-		}
+		} 
 	} else if (obj == selectedLV) {
-		if (event->type() != QEvent::KeyPress)
-			return QObject::eventFilter(obj, event);
-		QKeyEvent * keyEvent = static_cast<QKeyEvent *>(event);
-		int const keyPressed = keyEvent->key();
-		Qt::KeyboardModifiers const keyModifiers = keyEvent->modifiers();
-		// Delete or backspace key will delete current item
-		// ...with control modifier will clear the list
-		if (keyPressed == Qt::Key_Delete || keyPressed == Qt::Key_Backspace) {
-			if (keyModifiers == Qt::NoModifier && deletePB->isEnabled()) {
-				deletePB_clicked();
-				updateHook();
-			} else if (keyModifiers == Qt::ControlModifier) {
-				selectedModel->removeRows(0, selectedModel->rowCount());
-				updateHook();
-			} else
-				return QObject::eventFilter(obj, event);
-		} 
-		// Ctrl-Up activates upPB
-		else if (keyPressed == Qt::Key_Up) {
-			if (keyModifiers == Qt::ControlModifier) {
-				if (upPB->isEnabled())
-					upPB_clicked();
-				event->accept();
-				return true;
+		if (etype == QEvent::KeyPress) {
+			QKeyEvent * keyEvent = static_cast<QKeyEvent *>(event);
+			int const keyPressed = keyEvent->key();
+			Qt::KeyboardModifiers const keyModifiers = keyEvent->modifiers();
+			// Delete or backspace key will delete current item
+			// ...with control modifier will clear the list
+			if (keyPressed == Qt::Key_Delete || keyPressed == Qt::Key_Backspace) {
+				if (keyModifiers == Qt::NoModifier && deletePB->isEnabled()) {
+					deletePB_clicked();
+					updateHook();
+				} else if (keyModifiers == Qt::ControlModifier) {
+					selectedModel->removeRows(0, selectedModel->rowCount());
+					updateHook();
+				} else
+					return QObject::eventFilter(obj, event);
+			} 
+			// Ctrl-Up activates upPB
+			else if (keyPressed == Qt::Key_Up) {
+				if (keyModifiers == Qt::ControlModifier) {
+					if (upPB->isEnabled())
+						upPB_clicked();
+					event->accept();
+					return true;
+				}
+			} 
+			// Ctrl-Down activates downPB
+			else if (keyPressed == Qt::Key_Down) {
+				if (keyModifiers == Qt::ControlModifier) {
+					if (downPB->isEnabled())
+						downPB_clicked();
+					event->accept();
+					return true;
+				}
 			}
-		} 
-		// Ctrl-Down activates downPB
-		else if (keyPressed == Qt::Key_Down) {
-			if (keyModifiers == Qt::ControlModifier) {
-				if (downPB->isEnabled())
-					downPB_clicked();
-				event->accept();
-				return true;
+		} else if (etype == QEvent::FocusIn) {
+			if (!selectedHasFocus_) {
+				selectedHasFocus_ = true;
+				updateHook();
 			}
+			event->accept();
+			return true;
 		}
 	}
 	return QObject::eventFilter(obj, event);

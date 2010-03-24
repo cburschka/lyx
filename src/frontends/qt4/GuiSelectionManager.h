@@ -123,11 +123,7 @@ protected Q_SLOTS:
 	///
 	virtual void downPB_clicked();
 	///
-	void availableLV_clicked(const QModelIndex &);
-	///
 	void availableLV_doubleClicked(const QModelIndex &);
-	///
-	void selectedLV_clicked(const QModelIndex &);
 	///
 	bool eventFilter(QObject *, QEvent *);
 
