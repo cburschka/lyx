@@ -281,7 +281,11 @@ void GuiSelectionManager::deletePB_clicked()
 
 void GuiSelectionManager::upPB_clicked()
 {
-	QModelIndex idx = selectedLV->currentIndex();
+	QModelIndexList selIdx =
+		selectedLV->selectionModel()->selectedIndexes();
+	if (selIdx.isEmpty())
+		return;
+	QModelIndex idx = selIdx.first();
 
 	int const pos = idx.row();
 	if (pos <= 0)
@@ -302,7 +306,11 @@ void GuiSelectionManager::upPB_clicked()
 
 void GuiSelectionManager::downPB_clicked()
 {
-	QModelIndex idx = selectedLV->currentIndex();
+	QModelIndexList selIdx =
+		selectedLV->selectionModel()->selectedIndexes();
+	if (selIdx.isEmpty())
+		return;
+	QModelIndex idx = selIdx.first();
 
 	int const pos = idx.row();
 	if (pos >= selectedModel->rowCount() - 1)
