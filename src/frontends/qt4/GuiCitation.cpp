@@ -193,7 +193,8 @@ void GuiCitation::updateControls()
 // such as when addPB is pressed, as the list of fields, entries, etc,
 // will not have changed. At the moment, however, the division between
 // fillStyles() and updateStyle() doesn't lend itself to dividing the
-// two methods, though they should be divisible.
+// two methods, though they should be divisible. That is, we should
+// not have to call fillStyles() every time through here.
 void GuiCitation::updateControls(BiblioInfo const & bi)
 {
 	QModelIndex idx = selectionManager->getSelectedIndex();
@@ -249,11 +250,16 @@ void GuiCitation::updateStyle()
 		std::find(styles.begin(), styles.end(), cs.style);
 
 	if (cit != styles.end()) {
-		int const i = int(cit - styles.begin());
-		citationStyleCO->setCurrentIndex(i);
 		fulllistCB->setChecked(cs.full);
 		forceuppercaseCB->setChecked(cs.forceUpperCase);
 	} else {
+		// restore the last used natbib style
+		if (style_ >= 0 && style_ < citationStyleCO->count()) {
+			// the necessary update will be performed later
+			citationStyleCO->blockSignals(true);
+			citationStyleCO->setCurrentIndex(style_);
+			citationStyleCO->blockSignals(false);
+		}
 		fulllistCB->setChecked(false);
 		forceuppercaseCB->setChecked(false);
 	}
@@ -302,9 +308,6 @@ void GuiCitation::fillStyles(BiblioInfo const & bi)
 		citationStyleCO->setCurrentIndex(oldIndex);
 
 	citationStyleCO->blockSignals(false);
-	
-	// simulate a change of index to trigger updateFormatting().
-	on_citationStyleCO_currentIndexChanged(citationStyleCO->currentIndex());
 }
 
 
@@ -528,16 +531,26 @@ void GuiCitation::init()
 		selectedLV->selectionModel()->select(idx, 
 				QItemSelectionModel::ClearAndSelect);
 		selectedLV->blockSignals(false);
+		
+		// set the style combo appropriately
+		string const & command = params_.getCmdName();
+		vector<CiteStyle> const & styles = citeStyles_;
+		CitationStyle const cs = citationStyleFromString(command);
+	
+		vector<CiteStyle>::const_iterator cit =
+			std::find(styles.begin(), styles.end(), cs.style);
+		if (cit != styles.end()) {
+			int const i = int(cit - styles.begin());
+			// the necessary update will be performed later
+			citationStyleCO->blockSignals(true);
+			citationStyleCO->setCurrentIndex(i);
+			citationStyleCO->blockSignals(false);
+		}
 	} else
 		availableLV->setFocus();
 	fillFields(bi);
 	fillEntries(bi);
 	updateControls(bi);
-	// restore the last used natbib style
-	if (style_ >= 0 && style_ < citationStyleCO->count())
-		citationStyleCO->setCurrentIndex(style_);
-	else
-		citationStyleCO->setCurrentIndex(0);
 }
 
 
