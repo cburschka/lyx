@@ -60,7 +60,10 @@ public:
 	/// to be used, for example, in displaying information about a
 	/// highlighted item: should it be the highlighted available item
 	/// or the highlighted selected item that is displayed?
-	bool selectedFocused() { return selectedHasFocus_; };
+	bool selectedFocused() const { return selectedHasFocus_; };
+	/// Returns the selected index. Note that this will depend upon
+	/// selectedFocused().
+	QModelIndex getSelectedIndex() const;
 
 Q_SIGNALS:
 	/// Emitted when the list of selected items has changed. 

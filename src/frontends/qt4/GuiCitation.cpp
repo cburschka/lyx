@@ -198,17 +198,8 @@ void GuiCitation::updateControls()
 // two methods, though they should be divisible.
 void GuiCitation::updateControls(BiblioInfo const & bi)
 {
-	if (selectionManager->selectedFocused()) { 
-		if (selectedLV->selectionModel()->selectedIndexes().isEmpty())
-			updateInfo(bi, availableLV->currentIndex());
-		else
-			updateInfo(bi, selectedLV->currentIndex());
-	} else {
-		if (availableLV->selectionModel()->selectedIndexes().isEmpty())
-			updateInfo(bi, QModelIndex());
-		else
-			updateInfo(bi, availableLV->currentIndex());
-	}
+	QModelIndex idx = selectionManager->getSelectedIndex();
+	updateInfo(bi, idx);
 	setButtons();
 
 	textBeforeED->setText(toqstr(params_["before"]));
@@ -344,7 +335,7 @@ void GuiCitation::fillEntries(BiblioInfo const & bi)
 }
 
 
-bool GuiCitation::isSelected(const QModelIndex & idx)
+bool GuiCitation::isSelected(QModelIndex const & idx)
 {
 	QString const str = idx.data().toString();
 	return selected_model_.stringList().contains(str);

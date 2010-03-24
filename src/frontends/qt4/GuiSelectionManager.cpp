@@ -92,6 +92,29 @@ void GuiSelectionManager::update()
 }
 
 
+QModelIndex GuiSelectionManager::getSelectedIndex() const
+{
+	bool const have_avl = 
+		!availableLV->selectionModel()->selectedIndexes().isEmpty();
+	bool const have_sel =
+		!selectedLV->selectionModel()->selectedIndexes().isEmpty();
+
+	if (selectedFocused()) { 
+		if (have_sel)
+			return selectedLV->currentIndex();
+		if (have_avl)
+			return availableLV->currentIndex();
+	} 
+	else { // available has focus
+		if (have_avl)
+			return availableLV->currentIndex();
+		if (have_sel)
+			return selectedLV->currentIndex();
+	}
+	return QModelIndex();
+}
+
+
 void GuiSelectionManager::updateAddPB()
 {
 	int const arows = availableModel->rowCount();
