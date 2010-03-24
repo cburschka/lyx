@@ -225,8 +225,10 @@ void GuiSelectionManager::selectedChanged(const QModelIndex & idx, const QModelI
 bool GuiSelectionManager::insertRowToSelected(int i, 
 		QMap<int, QVariant> const & itemData)
 {
-	if (i <= -1 || i > selectedModel->rowCount())
-		return false;
+	if (i <= -1)
+		i = 0;
+	if (i > selectedModel->rowCount())
+		i = selectedModel->rowCount();
 	if (!selectedModel->insertRow(i))
 		return false;
 	return selectedModel->setItemData(selectedModel->index(i), itemData);
