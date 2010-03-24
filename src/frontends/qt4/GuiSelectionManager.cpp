@@ -68,7 +68,7 @@ GuiSelectionManager::GuiSelectionManager(
 	        SIGNAL(selectionChanged(QItemSelection, QItemSelection)),
 	        this, SLOT(availableChanged(QItemSelection, QItemSelection)));
 	connect(selectedLV->selectionModel(),
-	        SIGNAL(currentChanged(QItemSelection, QItemSelection)),
+	        SIGNAL(selectionChanged(QItemSelection, QItemSelection)),
 	        this, SLOT(selectedChanged(QItemSelection, QItemSelection)));
 	connect(addPB, SIGNAL(clicked()), 
 	        this, SLOT(addPB_clicked()));
