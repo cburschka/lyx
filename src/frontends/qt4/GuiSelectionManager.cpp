@@ -94,22 +94,22 @@ void GuiSelectionManager::update()
 
 QModelIndex GuiSelectionManager::getSelectedIndex() const
 {
-	bool const have_avl = 
-		!availableLV->selectionModel()->selectedIndexes().isEmpty();
-	bool const have_sel =
-		!selectedLV->selectionModel()->selectedIndexes().isEmpty();
+	QModelIndexList avail = availableLV->selectionModel()->selectedIndexes();
+	QModelIndexList sel   = selectedLV->selectionModel()->selectedIndexes();
+	bool const have_avl = !avail.isEmpty();
+	bool const have_sel = !sel.isEmpty();
 
 	if (selectedFocused()) { 
 		if (have_sel)
-			return selectedLV->currentIndex();
+			return sel.front();
 		if (have_avl)
-			return availableLV->currentIndex();
+			return avail.front();
 	} 
 	else { // available has focus
 		if (have_avl)
-			return availableLV->currentIndex();
+			return avail.front();
 		if (have_sel)
-			return selectedLV->currentIndex();
+			return sel.front();
 	}
 	return QModelIndex();
 }
