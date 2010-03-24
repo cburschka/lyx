@@ -53,9 +53,6 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 	:	view_(view)
 {
 	setupUi(this);
-#if QT_VERSION < 0x040400
-	scrollArea->setWidget(scrollAreaWidgetContents);
-#endif
 	find_work_area_->setGuiView(view_);
 	find_work_area_->init();
 	find_work_area_->setFrameStyle(QFrame::StyledPanel);
