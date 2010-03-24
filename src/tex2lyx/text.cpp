@@ -1113,8 +1113,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		Context & context)
 {
 	Layout const * newlayout = 0;
-	// store the current selectlanguage to be used after \foreignlanguage
-	string selectlang;
 	// Store the latest bibliographystyle (needed for bibtex inset)
 	string bibliographystyle;
 	bool const use_natbib = used_packages.find("natbib") != used_packages.end();
@@ -2207,10 +2205,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// save the language for the case that a
 			// \foreignlanguage is used 
 
-			//FIXME: this is wrong, the language should
-			// be saved in the context. (JMarc)
-			selectlang = subst(p.verbatim_item(), "\n", " ");
-			os << "\\lang " << selectlang << "\n";
+			context.font.language = subst(p.verbatim_item(), "\n", " ");
+			os << "\\lang " << context.font.language << "\n";
 		}
 
 		else if (t.cs() == "foreignlanguage") {
@@ -2221,7 +2217,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// has to be parsed (like for \textsf, for
 			// example). 
 			// set back to last selectlanguage
-			os << "\n\\lang " << selectlang << "\n";
+			os << "\n\\lang " << context.font.language << "\n";
 		}
 
 		else if (t.cs() == "inputencoding") {

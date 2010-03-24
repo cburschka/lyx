@@ -40,11 +40,13 @@ public:
 		family = "default";
 		series = "default";
 		shape = "default";
+		language = "default";
 	}
 	std::string size;
 	std::string family;
 	std::string series;
 	std::string shape;
+	std::string language;
 };
 
 
