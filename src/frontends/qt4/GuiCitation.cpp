@@ -276,27 +276,35 @@ void GuiCitation::fillStyles(BiblioInfo const & bi)
 		return;
 	}
 
-	int const oldIndex = citationStyleCO->currentIndex();
-
 	if (!selectedLV->selectionModel()->selectedIndexes().empty())
 		curr = selectedLV->selectionModel()->selectedIndexes()[0].row();
 
 	QStringList sty = citationStyles(bi, curr);
-	citationStyleCO->clear();
 
 	if (sty.isEmpty()) { 
 		// some error
 		citationStyleCO->setEnabled(false);
 		citationStyleLA->setEnabled(false);
+		citationStyleCO->clear();
 		return;
 	}
 	
+	citationStyleCO->blockSignals(true);
+	
+	// save old index
+	int const oldIndex = citationStyleCO->currentIndex();
+	citationStyleCO->clear();
 	citationStyleCO->insertItems(0, sty);
 	citationStyleCO->setEnabled(true);
 	citationStyleLA->setEnabled(true);
-
+	// restore old index
 	if (oldIndex != -1 && oldIndex < citationStyleCO->count())
 		citationStyleCO->setCurrentIndex(oldIndex);
+
+	citationStyleCO->blockSignals(false);
+	
+	// simulate a change of index to trigger updateFormatting().
+	on_citationStyleCO_currentIndexChanged(citationStyleCO->currentIndex());
 }
 
 
