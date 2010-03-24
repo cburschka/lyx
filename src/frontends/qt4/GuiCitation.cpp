@@ -248,12 +248,6 @@ void GuiCitation::updateStyle()
 	vector<CiteStyle>::const_iterator cit =
 		std::find(styles.begin(), styles.end(), cs.style);
 
-	// restore the latest natbib style
-	if (style_ >= 0 && style_ < citationStyleCO->count())
-		citationStyleCO->setCurrentIndex(style_);
-	else
-		citationStyleCO->setCurrentIndex(0);
-
 	if (cit != styles.end()) {
 		int const i = int(cit - styles.begin());
 		citationStyleCO->setCurrentIndex(i);
@@ -531,6 +525,11 @@ void GuiCitation::init()
 	fillFields(bi);
 	fillEntries(bi);
 	updateControls(bi);
+	// restore the last used natbib style
+	if (style_ >= 0 && style_ < citationStyleCO->count())
+		citationStyleCO->setCurrentIndex(style_);
+	else
+		citationStyleCO->setCurrentIndex(0);
 }
 
 
