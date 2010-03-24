@@ -20,6 +20,7 @@ class QListView;
 class QPushButton;
 class QVariant;
 class QAbstractItemView;
+class QItemSelection;
 template <class T, class U> class QMap;
 
 namespace lyx {
@@ -106,9 +107,13 @@ protected:
 
 protected Q_SLOTS:
 	///
-	void availableChanged(const QModelIndex & idx, const QModelIndex &);
+	void availableChanged(QModelIndex const & idx, QModelIndex const &);
 	///
-	void selectedChanged(const QModelIndex & idx, const QModelIndex &);
+	void selectedChanged(QModelIndex const & idx, QModelIndex const &);
+	///
+	void availableChanged(QItemSelection const & qis, QItemSelection const &);
+	///
+	void selectedChanged(QItemSelection const & qis, QItemSelection const &);
 	///
 	virtual void addPB_clicked();
 	///

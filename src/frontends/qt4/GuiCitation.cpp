@@ -114,8 +114,6 @@ GuiCitation::GuiCitation(GuiView & lv)
 	connect(selectionManager, SIGNAL(okHook()),
 		this, SLOT(on_okPB_clicked()));
 
-	setFocusProxy(availableLV);
-
 	// FIXME: the sizeHint() for this is _way_ too high
 	infoML->setFixedHeight(60);
 }
@@ -268,38 +266,40 @@ void GuiCitation::updateStyle()
 	updateFormatting(cs.style);
 }
 
+
 // This one needs to be called whenever citationStyleCO needs
 // to be updated---and this would be on anything that changes the
 // selection in selectedLV, or on a general update.
 void GuiCitation::fillStyles(BiblioInfo const & bi)
 {
-	int const oldIndex = citationStyleCO->currentIndex();
-
-	citationStyleCO->clear();
-
 	QStringList selected_keys = selected_model_.stringList();
-	if (selected_keys.empty()) {
+	int curr = selectedLV->model()->rowCount() - 1;
+
+	if (curr < 0 || selected_keys.empty()) {
+		citationStyleCO->clear();
 		citationStyleCO->setEnabled(false);
 		citationStyleLA->setEnabled(false);
 		return;
 	}
 
-	int curr = selectedLV->model()->rowCount() - 1;
-	if (curr < 0)
-		return;
+	int const oldIndex = citationStyleCO->currentIndex();
 
 	if (!selectedLV->selectionModel()->selectedIndexes().empty())
 		curr = selectedLV->selectionModel()->selectedIndexes()[0].row();
 
 	QStringList sty = citationStyles(bi, curr);
+	citationStyleCO->clear();
 
-	citationStyleCO->setEnabled(!sty.isEmpty());
-	citationStyleLA->setEnabled(!sty.isEmpty());
-
-	if (sty.isEmpty())
+	if (sty.isEmpty()) { 
+		// some error
+		citationStyleCO->setEnabled(false);
+		citationStyleLA->setEnabled(false);
 		return;
-
+	}
+	
 	citationStyleCO->insertItems(0, sty);
+	citationStyleCO->setEnabled(true);
+	citationStyleLA->setEnabled(true);
 
 	if (oldIndex != -1 && oldIndex < citationStyleCO->count())
 		citationStyleCO->setCurrentIndex(oldIndex);
@@ -519,6 +519,15 @@ void GuiCitation::init()
 	else
 		cited_keys_ = str.split(",");
 	selected_model_.setStringList(cited_keys_);
+	if (selected_model_.rowCount()) {
+		selectedLV->blockSignals(true);
+		selectedLV->setFocus();
+		QModelIndex idx = selected_model_.index(0, 0);
+		selectedLV->selectionModel()->select(idx, 
+				QItemSelectionModel::ClearAndSelect);
+		selectedLV->blockSignals(false);
+	} else
+		availableLV->setFocus();
 	fillFields(bi);
 	fillEntries(bi);
 	updateControls(bi);

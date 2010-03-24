@@ -18,10 +18,11 @@
 
 #include "support/debug.h"
 
-#include <QKeyEvent>
-#include <QListView>
-#include <QPushButton>
 #include <QAbstractListModel>
+#include <QItemSelection>
+#include <QListView>
+#include <QKeyEvent>
+#include <QPushButton>
 
 #ifdef KeyPress
 #undef KeyPress
@@ -58,11 +59,17 @@ GuiSelectionManager::GuiSelectionManager(
 	availableLV->setModel(amod);
 	
 	connect(availableLV->selectionModel(),
-	        SIGNAL(currentChanged(QModelIndex,QModelIndex)),
+	        SIGNAL(currentChanged(QModelIndex, QModelIndex)),
 	        this, SLOT(availableChanged(QModelIndex, QModelIndex)));
 	connect(selectedLV->selectionModel(),
 	        SIGNAL(currentChanged(QModelIndex, QModelIndex)),
 	        this, SLOT(selectedChanged(QModelIndex, QModelIndex)));
+	connect(availableLV->selectionModel(),
+	        SIGNAL(selectionChanged(QItemSelection, QItemSelection)),
+	        this, SLOT(availableChanged(QItemSelection, QItemSelection)));
+	connect(selectedLV->selectionModel(),
+	        SIGNAL(currentChanged(QItemSelection, QItemSelection)),
+	        this, SLOT(selectedChanged(QItemSelection, QItemSelection)));
 	connect(addPB, SIGNAL(clicked()), 
 	        this, SLOT(addPB_clicked()));
 	connect(deletePB, SIGNAL(clicked()), 
@@ -181,6 +188,15 @@ bool GuiSelectionManager::isSelected(const QModelIndex & idx)
 }
 
 
+void GuiSelectionManager::availableChanged(QItemSelection const & qis, QItemSelection const &)
+{
+	QModelIndexList il = qis.indexes();
+	if (il.empty())	
+		return;
+	availableChanged(il.front(), QModelIndex());
+}
+
+
 void GuiSelectionManager::availableChanged(const QModelIndex & idx, const QModelIndex &)
 {
 	if (!idx.isValid())
@@ -188,6 +204,15 @@ void GuiSelectionManager::availableChanged(const QModelIndex & idx, const QModel
 	
 	selectedHasFocus_ = false;
 	updateHook();
+}
+
+
+void GuiSelectionManager::selectedChanged(QItemSelection const & qis, QItemSelection const &)
+{
+	QModelIndexList il = qis.indexes();
+	if (il.empty())	
+		return;
+	selectedChanged(il.front(), QModelIndex());
 }
 
 
