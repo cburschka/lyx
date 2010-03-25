@@ -68,6 +68,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\dinbrief.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\g-brief-de.layout"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\memoir.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\stdinsets.inc"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
