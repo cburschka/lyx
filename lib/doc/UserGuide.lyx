@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 378
+\lyxformat 379
 \begin_document
 \begin_header
 \textclass scrbook
@@ -123,10 +123,11 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
-\html_use_mathml true
+\html_math_output 0
 \html_be_strict true
+\author 1 "Richard Heck" 
 \end_header
 
 \begin_body
@@ -432,31 +433,35 @@ name "sec:LaTeX-Setup"
 \end_layout
 
 \begin_layout Standard
-LyX needs several LaTeX packages to work properly.
- The packages found on the system by LyX are listed in the file 
-\emph on
-LaT
-\emph default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
+\change_inserted 1 1269457017
+You can edit documents in LyX without having LaTeX installed, but you will
+ not to able to create PDFs or print your documents unless you do have it
+ installed.
+ Actually, that isn't quite true.
+ Some LyX documents use DocBook as the `backend' that produces PDFs and
+ the like, and any LyX document can be outupt as plain text or as XHTML.
+ Still, most of the documents people edit in LyX use LaTeX as the backend,
+ and so exporting these documents to PDF, or printing them, requires you
+ to have LaTeX properly installed.
 \end_layout
 
-\end_inset
+\begin_layout Standard
 
+\change_inserted 1 1269457113
+Moreover, specific document classes may depend upon specific LaTeX or DocBook
+ classes or packages.
+ Again, such document classes can be used even if you do not have the required
+ files installed, but you will not be able to produce certain kinds of output.
+\end_layout
 
-\emph on
-eX
-\begin_inset space ~
-\end_inset
-
-Configuration
-\emph default
- that will be created when using the menu 
+\begin_layout Standard
+The 
+\change_inserted 1 1269457161
+LaTeX 
+\change_unchanged
+packages that LyX has found on your system are listed in a file you can
+ view from the menu 
 \family sans
 Help\SpecialChar \menuseparator
 LaT
@@ -477,7 +482,17 @@ eX
 Configuration
 \family default
 .
- You should install the required missing packages and then reconfigure LyX.
+
+\change_inserted 1 1269457187
+ If you are missing packages you need, then
+\change_unchanged
+ 
+\change_deleted 1 1269457188
+Y
+\change_inserted 1 1269457189
+y
+\change_unchanged
+ou should install the required missing packages and then reconfigure LyX.
 \begin_inset Note Note
 status collapsed
 
@@ -490,7 +505,7 @@ LaTeX
 \begin_inset Quotes erd
 \end_inset
 
- is printed with sub- and superscript letters.
+ from being printed with sub- and superscript letters.
  More about TeX Code is described in section
 \begin_inset space ~
 \end_inset
@@ -528,6 +543,14 @@ Reconfiguration of LyX
 
 \end_inset
 
+
+\change_inserted 1 1269457202
+ See section 5.1 of the 
+\emph on
+Customization
+\emph default
+ manual for more information on installing additional LaTeX packages.
+\change_unchanged
 
 \end_layout
 
@@ -1706,7 +1729,7 @@ Return
 \end_layout
 
 \begin_layout Standard
-In the preferences dialog, that is opened with the menu 
+In the preferences dialog, which is opened with the menu 
 \family sans
 Tools\SpecialChar \menuseparator
 Preferences
@@ -2333,6 +2356,11 @@ You can select a class using the
 \family sans
 Document\SpecialChar \menuseparator
 Settings
+\change_inserted 1 1269457473
+\SpecialChar \menuseparator
+Document Class
+\change_unchanged
+
 \begin_inset Index idx
 status collapsed
 
@@ -2564,13 +2592,140 @@ TUGboat
 \begin_layout Standard
 We won't go into any detail about how to use these different document classes
  here.
- You can find all the details about the non-standard classes in the 
+ You can find all the details about the non-standard classes in Chapter
+ 6 of the 
 \emph on
 Additional Features
 \emph default
  manual.
  Here, we will settle with a list of some of the common properties of all
  of the document classes.
+\change_inserted 1 1269457401
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 1 1269457704
+Why Is My Document Class `Unavailable'?
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1 1269458954
+New users are sometimes puzzled by the fact that many of the document classes
+ listed under 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document Class
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1 1269457484
+Document ! Settings
+\end_layout
+
+\end_inset
+
+ 
+\family default
+are marked as 
+\begin_inset Quotes eld
+\end_inset
+
+Unavailable
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Or they are surprised that, when they try to open the 
+\family sans
+hollywood
+\family default
+ template, they receive a message saying that the document class requires
+ external files to produce output, files that are not installed.
+ Surely something is wrong.
+ Right?
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1 1269458991
+Nothing is wrong.
+ LyX includes many more document classes than you will ever need to use,
+ and some of them, like 
+\family sans
+hollywood
+\family default
+ (which is used for screenplays), are highly specialized.
+ Indeed, we want LyX to support as many different types of documents as
+ possible, and, as of LyX 2.0, it includes almost one hundred different layout
+ files, with the number growing all the time.
+ No sensible LaTeX distribution will install all of the different files
+ that might be needed by some LyX document class by default.
+ There are too many, and they are too various.
+ That is why some of the document classes are unavailable.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1 1269459048
+So, if there is a document class you would like to use that is marked as
+ `Unavailable', all you need to do is install the appropriate class or package
+ files.
+ The easiest way to find out which files you need to install is to try selecting
+ that document class.
+ LyX will display a dialog that, among other things, will list the missing
+ files.
+ Most TeX distributions now include a See section 5.1 of the 
+\emph on
+Customization
+\emph default
+ manual for information on how to install them.
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 1 1269458726
+I Need a Document Class That Isn't Even Listed
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1 1269459092
+Although, as said, LyX provides support for many different sorts of documents,
+ it does not include support for every document class people might want
+ to use.
+ For example, many universities provide LaTeX class files to be used for
+ dissertations submitted to those universities.
+ For example, the LaTeX document class 
+\family sans
+ucthesis
+\family default
+ is used for dissertations at the University of California.
+ The LyX team cannot write `layout files' to support every one of these.
+ There are too many.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1 1269459143
+Fortunately, however, users can write their own layout files, and many users
+ have done so.
+ Sometimes, this is quite easy, but sometimes it can be quite hard.
+ Chapter 5 of the 
+\emph on
+Customization
+\emph default
+ manual contains information on how to add support for your favorite document
+ type.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -2595,11 +2750,11 @@ Document ! Modules
 \end_layout
 
 \begin_layout Standard
-Modules load additional features to a document that are not by default available
- in the chosen document class.
+Modules load additional features that are not by default available in the
+ chosen document class.
  For example you might want to write Braille (embossed printing) in a document.
- This is of course not available in any document class, so you have to load
- the corresponding module in the 
+ This is not available in any document class, so you have to load the correspond
+ing module in the 
 \family sans
 Modules
 \family default
@@ -2621,23 +2776,42 @@ Document ! Settings
  dialog.
  Highlighting a module in the dialog will bring up a description of the
  module.
+\change_inserted 1 1269456873
+
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
+
+\change_inserted 1 1269456922
+Some modules require LaTeX packages that are not always installed by default.
+ LyX will warn you if you do not have the needed package.
+ You can still use the module while editing your file, but you will not
+ be able to export PDF or print your document, since LyX will not be able
+ to compile the LaTeX file without the missing package.
+ If you want to be able to produce output, then you need to install the
+ missing package and then reconfigure LyX by selecting 
+\family sans
+Tools\SpecialChar \menuseparator
+Reconfigure
+\family default
+.
+\begin_inset Index idx
+status collapsed
 
 \begin_layout Plain Layout
 
-\series bold
-Note:
-\series default
- Some modules require LaTeX packages that are not always installed by default.
- LyX will warn you if you do not have the needed package.
+\change_inserted 1 1269456873
+Reconfiguration of LyX
 \end_layout
 
 \end_inset
 
+ See section 5.1 of the 
+\emph on
+Customization
+\emph default
+ manual for more information on installing needed packages.
+\change_unchanged
 
 \end_layout
 

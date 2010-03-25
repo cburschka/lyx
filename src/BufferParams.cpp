@@ -520,13 +520,18 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		// will only be given for system layouts.
 		if (!baseClass()->isTeXClassAvailable()) {
 			docstring const msg =
-				bformat(_("The layout file requested by this document,\n"
-						 "%1$s.layout,\n"
-						 "is not usable. The following prerequisites\n"
-						 "are missing:\n%2$s\n"),
+				bformat(_("The document class requested\n"
+						 "\t%1$s\n"
+						 "requires external files that are not available.\n"
+						 "The document class can still be used, but LyX\n"
+						 "will not be able to produce output until the\n"
+						 "following prerequisites are installed:\n"
+						 "\t%2$s\n"
+						 "See section 3.1.2.2 of the User's Guide"
+						 "for more information."),
 						 from_utf8(classname), from_utf8(baseClass()->prerequisites()));
 			frontend::Alert::warning(_("Document class not available"),
-				       msg + _("LyX will not be able to produce output."));
+				       msg);
 		}
 	} else if (token == "\\begin_preamble") {
 		readPreamble(lex);

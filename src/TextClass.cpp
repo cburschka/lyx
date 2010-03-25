@@ -1003,6 +1003,15 @@ void TextClass::readFloat(Lexer & lexrc)
 }
 
 
+string const & TextClass::prerequisites() const
+{ 
+	if (contains(prerequisites_, ',')) {
+		vector<string> const pres = getVectorFromString(prerequisites_);
+		prerequisites_ = getStringFromVector(pres, "\n\t");
+	}
+	return prerequisites_; 
+}
+
 bool TextClass::hasLayout(docstring const & n) const
 {
 	docstring const name = n.empty() ? defaultLayoutName() : n;

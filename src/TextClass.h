@@ -190,7 +190,7 @@ public:
 	///
 	std::string const & latexname() const { return latexname_; }
 	///
-	std::string const & prerequisites() const { return prerequisites_; }
+	std::string const & prerequisites() const;
 	/// Can be LaTeX, DocBook, etc.
 	OutputType outputType() const { return outputType_; }
 	/// Can be latex, docbook ... (the name of a format)
@@ -241,7 +241,7 @@ protected:
 	/// Is the TeX class available?
 	bool tex_class_avail_;
 	/// document class prerequisites
-	std::string prerequisites_;
+	mutable std::string prerequisites_;
 	///
 	std::string opt_fontsize_;
 	///
