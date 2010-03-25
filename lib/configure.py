@@ -892,7 +892,7 @@ def processLayoutFile(file, bool_docbook):
         
         "article" "article" "article" "false" "article.cls"
         "scrbook" "scrbook" "book (koma-script)" "false" "scrbook.cls"
-        "svjog" "svjour" "article (Springer - svjour/jog)" "false" "svjour.cls, svjog.clo"
+        "svjog" "svjour" "article (Springer - svjour/jog)" "false" "svjour.cls,svjog.clo"
     '''
     def checkForClassExtension(x):
         '''if the extension for a latex class is not
@@ -915,7 +915,7 @@ def processLayoutFile(file, bool_docbook):
             else:
                 prereq_list = optAll[1:-1].split(',')
                 prereq_list = map(checkForClassExtension, prereq_list)
-                prereq_latex = ', '.join(prereq_list)
+                prereq_latex = ','.join(prereq_list)
             prereq_docbook = {'true':'', 'false':'docbook'}[bool_docbook]
             prereq = {'LaTeX':prereq_latex, 'DocBook':prereq_docbook}[classtype]
             return '"%s" "%s" "%s" "%s" "%s"\n' % (classname, opt, desc, avai, prereq)
