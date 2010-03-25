@@ -519,6 +519,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		// We assume that a tex class exists for local or unknown layouts so this warning
 		// will only be given for system layouts.
 		if (!baseClass()->isTeXClassAvailable()) {
+			docstring desc = 
+				translateIfPossible(from_utf8(baseClass()->description()));
 			docstring const msg =
 				bformat(_("The document class requested\n"
 						 "\t%1$s\n"
@@ -527,9 +529,9 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 						 "will not be able to produce output until the\n"
 						 "following prerequisites are installed:\n"
 						 "\t%2$s\n"
-						 "See section 3.1.2.2 of the User's Guide"
-						 "for more information."),
-						 from_utf8(classname), from_utf8(baseClass()->prerequisites()));
+						 "See section 3.1.2.2 of the User's Guide for\n"
+						 "more information."), 
+						 desc, from_utf8(baseClass()->prerequisites()));
 			frontend::Alert::warning(_("Document class not available"),
 				       msg);
 		}
