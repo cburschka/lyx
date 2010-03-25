@@ -96,22 +96,21 @@ bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 		break;
 
 	case Qt::Key_Enter:
-	case Qt::Key_Return:
-		if (e->modifiers() == Qt::ShiftModifier) {
-			if (obj == find_work_area_)
-				on_findPrevPB_clicked();
-			else
-				on_replacePrevPB_clicked();
-			return true;
-		} else if (e->modifiers() == Qt::NoModifier) {
-			if (obj == find_work_area_)
-				on_findNextPB_clicked();
-			else
-				on_replaceNextPB_clicked();
-			return true;
-		}
-		break;
+	case Qt::Key_Return: {
+		// with shift we (temporarily) change search/replace direction
+		bool const searchback = searchbackCB->isChecked();
+		if (e->modifiers() == Qt::ShiftModifier && !searchback)
+			searchbackCB->setChecked(!searchback);
 
+		if (obj == find_work_area_)
+			on_findNextPB_clicked();
+		else
+			on_replacePB_clicked();
+		// back to how it was
+		searchbackCB->setChecked(searchback);
+		return true;
+		break;
+		}
 	case Qt::Key_Tab:
 		if (e->modifiers() == Qt::NoModifier) {
 			if (obj == find_work_area_){
@@ -532,28 +531,16 @@ void FindAndReplaceWidget::hideDialog()
 }
 
 
-void FindAndReplaceWidget::on_findNextPB_clicked() {
-	findAndReplace(false, false);
+void FindAndReplaceWidget::on_findNextPB_clicked() 
+{
+	findAndReplace(searchbackCB->isChecked(), false);
 	find_work_area_->setFocus();
 }
 
 
-void FindAndReplaceWidget::on_findPrevPB_clicked() {
-	findAndReplace(true, false);
-	find_work_area_->setFocus();
-}
-
-
-void FindAndReplaceWidget::on_replaceNextPB_clicked()
+void FindAndReplaceWidget::on_replacePB_clicked()
 {
-	findAndReplace(false, true);
-	replace_work_area_->setFocus();
-}
-
-
-void FindAndReplaceWidget::on_replacePrevPB_clicked()
-{
-	findAndReplace(true, true);
+	findAndReplace(searchbackCB->isChecked(), true);
 	replace_work_area_->setFocus();
 }
 

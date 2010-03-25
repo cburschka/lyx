@@ -67,9 +67,7 @@ private:
 
 protected Q_SLOTS:
 	void on_findNextPB_clicked();
-	void on_findPrevPB_clicked();
-	void on_replaceNextPB_clicked();
-	void on_replacePrevPB_clicked();
+	void on_replacePB_clicked();
 	void on_replaceallPB_clicked();
 	void insertRegexp(QAction *);
 };

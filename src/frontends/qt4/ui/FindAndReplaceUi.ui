@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>288</width>
-    <height>366</height>
+    <width>247</width>
+    <height>341</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -63,7 +63,7 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0" colspan="2">
+       <item row="1" column="0" colspan="3">
         <widget class="lyx::frontend::EmbeddedWorkArea" name="find_work_area_">
          <property name="toolTip">
           <string>Enter the text to search for in this full-featured LyX editing area</string>
@@ -77,39 +77,23 @@
             <height>57</height>
            </rect>
           </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
          </widget>
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QCheckBox" name="caseCB">
-         <property name="toolTip">
-          <string>Perform a case-sensitive search</string>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
          </property>
-         <property name="text">
-          <string>Case &amp;sensitive</string>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>52</width>
+           <height>20</height>
+          </size>
          </property>
-        </widget>
+        </spacer>
        </item>
-       <item row="2" column="1">
-        <widget class="QCheckBox" name="wordsCB">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="toolTip">
-          <string>Restrict search to whole words only</string>
-         </property>
-         <property name="text">
-          <string>Whole &amp;words</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0" colspan="2">
+       <item row="2" column="1" colspan="2">
         <widget class="QPushButton" name="regexpInsertPB">
          <property name="toolTip">
           <string>Choose one of the pre-arranged regular expressions.</string>
@@ -119,7 +103,7 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="0">
+       <item row="3" column="0" colspan="2">
         <widget class="QLabel" name="label_2">
          <property name="text">
           <string>&amp;Replace with:</string>
@@ -129,7 +113,7 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="0" colspan="2">
+       <item row="4" column="0" colspan="3">
         <widget class="lyx::frontend::EmbeddedWorkArea" name="replace_work_area_">
          <property name="toolTip">
           <string>Enter the text to replace in this full-featured LyX editing area</string>
@@ -143,89 +127,80 @@
             <height>57</height>
            </rect>
           </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
          </widget>
         </widget>
        </item>
+       <item row="5" column="0" colspan="2">
+        <widget class="QCheckBox" name="caseCB">
+         <property name="toolTip">
+          <string>Perform a case-sensitive search</string>
+         </property>
+         <property name="text">
+          <string>Case &amp;sensitive</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QPushButton" name="findNextPB">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="toolTip">
+          <string>Find next occurrence [Enter]</string>
+         </property>
+         <property name="text">
+          <string>Find &amp;Next</string>
+         </property>
+         <property name="default">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
        <item row="6" column="0" colspan="2">
-        <layout class="QGridLayout" name="gridLayout_2">
-         <item row="0" column="0">
-          <widget class="QPushButton" name="findPrevPB">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="toolTip">
-            <string>Find previous occurrence [Shift+Enter]</string>
-           </property>
-           <property name="text">
-            <string>Find &amp;Previous</string>
-           </property>
-           <property name="default">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QPushButton" name="findNextPB">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="toolTip">
-            <string>Find next occurrence [Enter]</string>
-           </property>
-           <property name="text">
-            <string>Find &amp;Next</string>
-           </property>
-           <property name="default">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QPushButton" name="replacePrevPB">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="toolTip">
-            <string>Replace and find previous occurrence [Shift+Enter]</string>
-           </property>
-           <property name="text">
-            <string>Replace Pre&amp;vious</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QPushButton" name="replaceNextPB">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="toolTip">
-            <string>Replace and find next occurrence [Enter]</string>
-           </property>
-           <property name="text">
-            <string>Replace Ne&amp;xt</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QPushButton" name="replaceallPB">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="toolTip">
-            <string>Replace all occurences at once</string>
-           </property>
-           <property name="text">
-            <string>Replace &amp;All</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <widget class="QCheckBox" name="wordsCB">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="toolTip">
+          <string>Restrict search to whole words only</string>
+         </property>
+         <property name="text">
+          <string>Whole &amp;words</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="2">
+        <widget class="QPushButton" name="replacePB">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="toolTip">
+          <string>Replace and find next occurrence [Enter]</string>
+         </property>
+         <property name="text">
+          <string>&amp;Replace</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0" colspan="2">
+        <widget class="QCheckBox" name="searchbackCB">
+         <property name="text">
+          <string>Search backwards</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="2">
+        <widget class="QPushButton" name="replaceallPB">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>Replace all occurences at once</string>
+         </property>
+         <property name="text">
+          <string>Replace &amp;All</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
