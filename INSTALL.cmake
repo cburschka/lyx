@@ -9,37 +9,31 @@ July, 2007
 All systems
 ===========
 
-    * CMake 2.4 or CVS version from www.cmake.org
+    * CMake or CVS version from www.cmake.org
     * Install Qt 4 and make sure qmake 4 is found
-      (add the folder with qmake to the environment variable PATH).
+      (add the folder with qmake to the environment variable PATH,
+       e.g. set PATH=<your path to qt>\bin;%PATH%).
       
-    * Faster build process: with file merging enabled compilation 
-      is up to 5 times faster: '-Dmerge=1'.
-      To force a complete regeneration of the created files use
-      '-Dmerge_rebuild=1'.
-
-
 
 Windows only
 =============
 
-    Install the windows supplementary modules
-     * as described in INSTALL.scons
-     * install win32libs with the 'KDE on Windows' installer
-       http://download.cegit.de/kde-windows/installer/
-       - use the msvc packages
-       - a release version of Qt is also available by the installer
-    
+    Install the windows supplementary modules:
+      Download ftp://ftp.lyx.org/pub/lyx/contrib/lyx-windows-deps-msvc2008.zip
+      and extract in the root directory of your LyX files (so you will get
+      a directory called lyx-windows-deps-msvc2008 next to the other directories
+      like src, development etc.).
+     
     If cmake couldn't find these modules set GNUWIN32_DIR, eg. 
     -DGNUWIN32_DIR=c:\gnuwin32. By default cmake searches in your 
     program folder
 
 
-Building Visual C++ 2005 project files
+Building Visual C++ project files
 --------------------------------------
 
-    * install Visual C++ 2005
-    * install Platform SDK 2005, "Core" and "Web Workshop"
+    * install Visual C++ 2008
+    * install Platform SDK 2008, "Core" and "Web Workshop"
     * add include and library paths of the SDK to the IDE search paths.
       Menu entry: Tools->Options->'VC++ directories'->'Library files' and 'Include files'
     * create a build directory, e.g. ..\trunk\..\build
@@ -72,8 +66,6 @@ Building Visual C++ 2005 project files
       
 Some tips:
 
-    * rename Microsoft Visual Studio 8\VC\vcpackages\feacp.dll 
-      to disable Intellisense
     * the Release build links much faster 
     * for the 'Debug' and 'Release' build all precompiled headers are enabled
       to compile without pch (non file merge mode) This is usefull to check 
@@ -139,6 +131,19 @@ Some tips:
       Qt4 package for Mac. So no need to compile Qt on your own.
 
 
+
+Experts only:
+
+    * Faster build process: with file merging enabled compilation 
+      is up to 5 times faster: '-Dmerge=1'.
+      To force a complete regeneration of the created files use
+      '-Dmerge_rebuild=1'.
+
+    * install win32libs with the 'KDE on Windows' installer
+       http://download.cegit.de/kde-windows/installer/
+       - use the msvc packages
+       - a release version of Qt is also available by the installer
+    
 
 
 To generate other build files call 'cmake' 
