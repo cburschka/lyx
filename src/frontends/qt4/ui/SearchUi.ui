@@ -1,127 +1,123 @@
-<ui version="4.0" >
+<ui version="4.0">
  <class>SearchUi</class>
- <widget class="QDialog" name="SearchUi" >
-  <property name="geometry" >
+ <widget class="QDialog" name="SearchUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>379</width>
-    <height>168</height>
+    <width>357</width>
+    <height>152</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <property name="sizeGripEnabled" >
+  <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
+  <layout class="QGridLayout">
+   <property name="margin">
     <number>11</number>
    </property>
-   <property name="spacing" >
+   <property name="spacing">
     <number>6</number>
    </property>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="findLA" >
-     <property name="text" >
+   <item row="0" column="0">
+    <widget class="QLabel" name="findLA">
+     <property name="text">
       <string>&amp;Find:</string>
      </property>
-     <property name="buddy" >
+     <property name="buddy">
       <cstring>findCO</cstring>
      </property>
     </widget>
    </item>
-   <item row="0" column="1" colspan="2" >
-    <widget class="QComboBox" name="findCO" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>3</hsizetype>
-       <vsizetype>0</vsizetype>
+   <item row="0" column="1" colspan="2">
+    <widget class="QComboBox" name="findCO">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="focusPolicy" >
+     <property name="focusPolicy">
       <enum>Qt::StrongFocus</enum>
      </property>
-     <property name="editable" >
+     <property name="editable">
       <bool>true</bool>
      </property>
-     <property name="maxCount" >
+     <property name="maxCount">
       <number>666</number>
      </property>
-     <property name="insertPolicy" >
+     <property name="insertPolicy">
       <enum>QComboBox::InsertAtTop</enum>
      </property>
-     <property name="autoCompletion" >
+     <property name="autoCompletion">
       <bool>false</bool>
      </property>
-     <property name="duplicatesEnabled" >
+     <property name="duplicatesEnabled">
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="replaceLA" >
-     <property name="text" >
+   <item row="1" column="0">
+    <widget class="QLabel" name="replaceLA">
+     <property name="text">
       <string>Replace &amp;with:</string>
      </property>
-     <property name="buddy" >
+     <property name="buddy">
       <cstring>replaceCO</cstring>
      </property>
     </widget>
    </item>
-   <item row="1" column="1" colspan="2" >
-    <widget class="QComboBox" name="replaceCO" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>3</hsizetype>
-       <vsizetype>0</vsizetype>
+   <item row="1" column="1" colspan="2">
+    <widget class="QComboBox" name="replaceCO">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="editable" >
+     <property name="editable">
       <bool>true</bool>
      </property>
-     <property name="maxCount" >
+     <property name="maxCount">
       <number>666</number>
      </property>
-     <property name="insertPolicy" >
+     <property name="insertPolicy">
       <enum>QComboBox::InsertAtTop</enum>
      </property>
-     <property name="autoCompletion" >
+     <property name="autoCompletion">
       <bool>false</bool>
      </property>
-     <property name="duplicatesEnabled" >
+     <property name="duplicatesEnabled">
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2" >
-    <widget class="QCheckBox" name="caseCB" >
-     <property name="text" >
+   <item row="2" column="0" colspan="2">
+    <widget class="QCheckBox" name="caseCB">
+     <property name="text">
       <string>Case &amp;sensitive</string>
      </property>
     </widget>
    </item>
-   <item rowspan="2" row="3" column="0" colspan="2" >
-    <widget class="QCheckBox" name="wordsCB" >
-     <property name="text" >
-      <string>Match whole words onl&amp;y</string>
+   <item row="3" column="0" rowspan="2" colspan="2">
+    <widget class="QCheckBox" name="wordsCB">
+     <property name="text">
+      <string>Match w&amp;hole words only</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="2" >
+   <item row="2" column="2">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="sizeType" >
+     <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
        <height>20</height>
@@ -129,15 +125,15 @@
      </property>
     </spacer>
    </item>
-   <item row="6" column="0" colspan="2" >
+   <item row="6" column="0" colspan="2">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeType" >
+     <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
        <height>20</height>
@@ -145,15 +141,15 @@
      </property>
     </spacer>
    </item>
-   <item row="6" column="3" >
+   <item row="6" column="3">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeType" >
+     <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
        <height>20</height>
@@ -161,59 +157,55 @@
      </property>
     </spacer>
    </item>
-   <item row="0" column="3" >
-    <widget class="QPushButton" name="findPB" >
-     <property name="enabled" >
+   <item row="0" column="3">
+    <widget class="QPushButton" name="findPB">
+     <property name="enabled">
       <bool>false</bool>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Find &amp;Next</string>
      </property>
-     <property name="default" >
+     <property name="default">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="1" column="3" >
-    <widget class="QPushButton" name="replacePB" >
-     <property name="enabled" >
+   <item row="1" column="3">
+    <widget class="QPushButton" name="replacePB">
+     <property name="enabled">
       <bool>false</bool>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>&amp;Replace</string>
      </property>
     </widget>
    </item>
-   <item rowspan="2" row="2" column="3" >
-    <widget class="QPushButton" name="replaceallPB" >
-     <property name="enabled" >
+   <item row="2" column="3" rowspan="2">
+    <widget class="QPushButton" name="replaceallPB">
+     <property name="enabled">
       <bool>false</bool>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Replace &amp;All</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="0" colspan="2" >
-    <widget class="QCheckBox" name="backwardsCB" >
-     <property name="text" >
+   <item row="5" column="0" colspan="2">
+    <widget class="QCheckBox" name="backwardsCB">
+     <property name="text">
       <string>Search &amp;backwards</string>
      </property>
     </widget>
    </item>
-   <item rowspan="2" row="4" column="3" >
-    <widget class="QPushButton" name="closePB" >
-     <property name="text" >
+   <item row="4" column="3" rowspan="2">
+    <widget class="QPushButton" name="closePB">
+     <property name="text">
       <string>&amp;Close</string>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_i18n.h</include>
- </includes>
  <tabstops>
   <tabstop>findCO</tabstop>
   <tabstop>replaceCO</tabstop>
@@ -225,6 +217,9 @@
   <tabstop>replaceallPB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local">qt_i18n.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>
