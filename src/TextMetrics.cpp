@@ -306,11 +306,8 @@ bool TextMetrics::isRTL(CursorSlice const & sl, bool boundary) const
 
 bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos) const
 {
-	if (!lyxrc.rtl_support)
-		return false;
-
 	// no RTL boundary at paragraph start
-	if (pos == 0)
+	if (!lyxrc.rtl_support || pos == 0)
 		return false;
 
 	Font const & left_font = displayFont(pit, pos - 1);
