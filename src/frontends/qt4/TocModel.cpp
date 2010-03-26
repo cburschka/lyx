@@ -40,18 +40,38 @@ namespace frontend {
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-TocTypeModel::TocTypeModel(QObject * parent)
-	: QStandardItemModel(parent)
+/// A QStandardItemModel that gives access to the reset methods.
+/// This is needed in order to fix http://www.lyx.org/trac/ticket/3740
+class TocTypeModel : public QStandardItemModel
 {
-}
-
-
-void TocTypeModel::reset()
-{
-	QStandardItemModel::reset();
-}
-
-
+public:
+	///
+	TocTypeModel(QObject * parent) : QStandardItemModel(parent)
+	{}
+	///
+	void reset()
+	{
+		QStandardItemModel::reset();
+	}
+	///
+	void beginResetModel()
+	{ 
+	#if QT_VERSION >= 0x040600
+		QStandardItemModel::beginResetModel(); 
+	#endif
+	}
+	///
+	void endResetModel()
+	{ 
+	#if QT_VERSION >= 0x040600
+		QStandardItemModel::endResetModel(); 
+	#else
+		QStandardItemModel::reset();
+	#endif
+	}
+};
+	
+	
 ///////////////////////////////////////////////////////////////////////////////
 //
 // TocModel
@@ -149,6 +169,7 @@ void TocModel::reset(Toc const & toc)
 	}
 
 	model_->blockSignals(true);
+	model_->beginResetModel();
 	model_->insertColumns(0, 1);
 	maxdepth_ = 0;
 	mindepth_ = INT_MAX;
@@ -176,7 +197,7 @@ void TocModel::reset(Toc const & toc)
 	if (is_sorted_)
 		sorted_model_->sort(0);
 	model_->blockSignals(false);
-	reset();
+	model_->endResetModel();
 //	emit headerDataChanged();
 }
 
@@ -325,6 +346,7 @@ void TocModels::reset(BufferView const * bv)
 	}
 
 	names_->blockSignals(true);
+	names_->beginResetModel();
 	names_->insertColumns(0, 1);
 	TocList const & tocs = bv_->buffer().masterBuffer()->tocBackend().tocs();
 	TocList::const_iterator it = tocs.begin();
@@ -347,7 +369,7 @@ void TocModels::reset(BufferView const * bv)
 		names_->setData(index, type, Qt::UserRole);
 	}
 	names_->blockSignals(false);
-	names_->reset();
+	names_->endResetModel();
 }
 
 
