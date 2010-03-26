@@ -2304,6 +2304,7 @@ bool GuiView::closeBuffer(Buffer & buf)
 		guiApp->gotoBookmark(i+1, false, false);
 
 	if (saveBufferIfNeeded(buf, false)) {
+		buf.removeAutosaveFile();
 		theBufferList().release(&buf);
 		return true;
 	}
@@ -2376,7 +2377,8 @@ bool GuiView::saveBufferIfNeeded(Buffer & buf, bool hiding)
 		// if we crash after this we could
 		// have no autosave file but I guess
 		// this is really improbable (Jug)
-		buf.removeAutosaveFile();
+		// Sometime improbable things happen, bug 6857 (ps)
+		// buf.removeAutosaveFile();
 		if (hiding)
 			// revert all changes
 			buf.reload();
