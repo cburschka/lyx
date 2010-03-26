@@ -264,6 +264,11 @@ What's new
 
 - Fix the numbering of subsections for the memoir layout (bug 6527).
 
+- Fix TOC-related crashes on Qt 4.6.x (bug 6522).
+
+- Fix strange scrolling bug that could cause the document to jump
+  after mouse clicks (bug 6454).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
