@@ -308,6 +308,7 @@ Menuset
 		OptItem "Move Section Down|D" "outline-down"
 		OptItem "Move Section Up|U" "outline-up"
 		OptItem "Insert Short Title|T" "optional-insert"
+		OptSubMenu "Insert Regular Expression..." "context-edit-regexp"
 		Separator
 		OptItem "Accept Change|c" "change-accept"
 		OptItem "Reject Change|j" "change-reject"
@@ -319,6 +320,19 @@ Menuset
 		Separator
 		Item "Fullscreen Mode" "ui-toggle fullscreen"
 	End
+
+
+#
+# Regular Expression context menu
+#
+	Menu "context-edit-regexp"
+		Item "Anything|A" "command-sequence regexp-mode; self-insert .*"
+		Item "Anything Non-Empty|o" "command-sequence regexp-mode; self-insert .+"
+		Item "Any Word|W" "command-sequence regexp-mode; self-insert [a-z]+"
+		Item "Any Number|N" "command-sequence regexp-mode; self-insert [0-9]+"
+		Item "User Defined|U" "regexp-mode"
+	End
+
 
 #
 # Math Macro context menu

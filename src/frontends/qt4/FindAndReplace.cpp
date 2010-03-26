@@ -62,21 +62,6 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 	replace_work_area_->setFrameStyle(QFrame::StyledPanel);
 	// We don't want two cursors blinking.
 	replace_work_area_->stopBlinkingCursor();
-	QMenu * menu = new QMenu();
-	QAction * regAny = menu->addAction(qt_("&Anything"));
-	regAny->setData(".*");
-	QAction * regAnyNonEmpty = menu->addAction(qt_("Any non-&empty"));
-	regAnyNonEmpty->setData(".+");
-	QAction * regAnyWord = menu->addAction(qt_("Any &word"));
-	regAnyWord->setData("[a-z]+");
-	QAction * regAnyNumber = menu->addAction(qt_("Any &number"));
-	regAnyNumber->setData("[0-9]+");
-	QAction * regCustom = menu->addAction(qt_("&User-defined"));
-	regCustom->setData("");
-	regexpInsertPB->setMenu(menu);
-
-	connect(menu, SIGNAL(triggered(QAction *)),
-		this, SLOT(insertRegexp(QAction *)));
 }
 
 
@@ -510,18 +495,6 @@ void FindAndReplaceWidget::findAndReplace(bool backwards, bool replace)
 		ignoreFormatCB->isChecked(),
 		replace,
 		keepCaseCB->isChecked());
-}
-
-
-void FindAndReplaceWidget::insertRegexp(QAction * action)
-{
-	string const regexp = fromqstr(action->data().toString());
-	LYXERR(Debug::FIND, "Regexp: " << regexp);
-	find_work_area_->setFocus();
-	Cursor & cur = find_work_area_->bufferView().cursor();
-	if (!cur.inRegexped())
-		dispatch(FuncRequest(LFUN_REGEXP_MODE));
-	dispatch(FuncRequest(LFUN_SELF_INSERT, regexp));
 }
 
 

@@ -63,7 +63,7 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0" colspan="3">
+       <item row="1" column="0" colspan="2">
         <widget class="lyx::frontend::EmbeddedWorkArea" name="find_work_area_">
          <property name="toolTip">
           <string>Enter the text to search for in this full-featured LyX editing area</string>
@@ -81,29 +81,6 @@
         </widget>
        </item>
        <item row="2" column="0">
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>52</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="2" column="1" colspan="2">
-        <widget class="QPushButton" name="regexpInsertPB">
-         <property name="toolTip">
-          <string>Choose one of the pre-arranged regular expressions.</string>
-         </property>
-         <property name="text">
-          <string>Insert Re&amp;gular Expression...</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0" colspan="2">
         <widget class="QLabel" name="label_2">
          <property name="text">
           <string>&amp;Replace with:</string>
@@ -113,7 +90,7 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="0" colspan="3">
+       <item row="3" column="0" colspan="2">
         <widget class="lyx::frontend::EmbeddedWorkArea" name="replace_work_area_">
          <property name="toolTip">
           <string>Enter the text to replace in this full-featured LyX editing area</string>
@@ -130,8 +107,14 @@
          </widget>
         </widget>
        </item>
-       <item row="5" column="0" colspan="2">
+       <item row="4" column="0">
         <widget class="QCheckBox" name="caseCB">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="toolTip">
           <string>Perform a case-sensitive search</string>
          </property>
@@ -140,7 +123,7 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="2">
+       <item row="4" column="1">
         <widget class="QPushButton" name="findNextPB">
          <property name="enabled">
           <bool>true</bool>
@@ -156,7 +139,7 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="0" colspan="2">
+       <item row="5" column="0">
         <widget class="QCheckBox" name="wordsCB">
          <property name="enabled">
           <bool>true</bool>
@@ -169,7 +152,7 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="2">
+       <item row="5" column="1">
         <widget class="QPushButton" name="replacePB">
          <property name="enabled">
           <bool>true</bool>
@@ -182,14 +165,14 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="0" colspan="2">
+       <item row="6" column="0">
         <widget class="QCheckBox" name="searchbackCB">
          <property name="text">
           <string>Search backwards</string>
          </property>
         </widget>
        </item>
-       <item row="7" column="2">
+       <item row="6" column="1">
         <widget class="QPushButton" name="replaceallPB">
          <property name="enabled">
           <bool>false</bool>
