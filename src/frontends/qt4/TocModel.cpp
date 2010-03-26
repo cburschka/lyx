@@ -33,7 +33,7 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-/// A QStandardItemModel that gives access to the reset method.
+/// A QStandardItemModel that gives access to the reset methods.
 /// This is needed in order to fix http://www.lyx.org/trac/ticket/3740
 class TocTypeModel : public QStandardItemModel
 {
@@ -41,7 +41,6 @@ public:
 	///
 	TocTypeModel(QObject * parent) : QStandardItemModel(parent)
 	{}
-
 	///
 	void reset()
 	{
@@ -60,7 +59,7 @@ public:
 	#if QT_VERSION >= 0x040600
 		QStandardItemModel::endResetModel(); 
 	#else
-		reset();
+		QStandardItemModel::reset();
 	#endif
 	}
 };
@@ -163,6 +162,7 @@ void TocModel::reset(Toc const & toc)
 	}
 
 	model_->blockSignals(true);
+	model_->beginResetModel();
 	model_->insertColumns(0, 1);
 	maxdepth_ = 0;
 	mindepth_ = INT_MAX;
@@ -190,7 +190,7 @@ void TocModel::reset(Toc const & toc)
 	if (is_sorted_)
 		sorted_model_->sort(0);
 	model_->blockSignals(false);
-	reset();
+	model_->endResetModel();
 //	emit headerDataChanged();
 }
 
