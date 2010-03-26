@@ -2248,6 +2248,8 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(backupCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
+	connect(saveCompressedCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 	connect(lastfilesSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
 	connect(tooltipCB, SIGNAL(toggled(bool)),
@@ -2262,8 +2264,9 @@ void PrefUserInterface::apply(LyXRC & rc) const
 	rc.use_lastfilepos = restoreCursorCB->isChecked();
 	rc.load_session = loadSessionCB->isChecked();
 	rc.allow_geometry_session = allowGeometrySessionCB->isChecked();
-	rc.autosave = autoSaveCB->isChecked()?  autoSaveSB->value() * 60 : 0;
+	rc.autosave = autoSaveCB->isChecked() ?  autoSaveSB->value() * 60 : 0;
 	rc.make_backup = backupCB->isChecked();
+	rc.save_compressed = saveCompressedCB->isChecked();
 	rc.num_lastfiles = lastfilesSB->value();
 	rc.use_tooltip = tooltipCB->isChecked();
 	rc.open_buffers_in_tabs = openDocumentsInTabsCB->isChecked();
@@ -2289,6 +2292,7 @@ void PrefUserInterface::update(LyXRC const & rc)
 	autoSaveCB->setChecked(autosave);
 	autoSaveSB->setEnabled(autosave);
 	backupCB->setChecked(rc.make_backup);
+	saveCompressedCB->setChecked(rc.save_compressed);
 	lastfilesSB->setValue(rc.num_lastfiles);
 	tooltipCB->setChecked(rc.use_tooltip);
 	openDocumentsInTabsCB->setChecked(rc.open_buffers_in_tabs);

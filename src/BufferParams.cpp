@@ -369,7 +369,7 @@ BufferParams::BufferParams()
 	suppress_date = false;
 	// white is equal to no background color
 	backgroundcolor = lyx::rgbFromHexName("#ffffff");
-	compressed = false;
+	compressed = lyxrc.save_compressed;
 	for (int iter = 0; iter < 4; ++iter) {
 		user_defined_bullet(iter) = ITEMIZE_DEFAULTS[iter];
 		temp_bullet(iter) = ITEMIZE_DEFAULTS[iter];

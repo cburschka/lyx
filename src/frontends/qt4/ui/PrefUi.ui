@@ -91,7 +91,7 @@
      <property name="flat">
       <bool>true</bool>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
+     <layout class="QGridLayout" name="gridLayout_4">
       <item row="0" column="0" colspan="2">
        <widget class="QCheckBox" name="allowGeometrySessionCB">
         <property name="enabled">
@@ -196,6 +196,13 @@
        </spacer>
       </item>
       <item row="2" column="0">
+       <widget class="QCheckBox" name="saveCompressedCB">
+        <property name="text">
+         <string>&amp;Save documents compressed by default</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
        <widget class="QLabel" name="lastfilesLA">
         <property name="text">
          <string>&amp;Maximum last files:</string>
@@ -205,14 +212,14 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
+      <item row="3" column="1">
        <widget class="QSpinBox" name="lastfilesSB">
         <property name="maximum">
          <number>9</number>
         </property>
        </widget>
       </item>
-      <item row="2" column="2" colspan="2">
+      <item row="3" column="2" colspan="2">
        <spacer>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -225,14 +232,14 @@
         </property>
        </spacer>
       </item>
-      <item row="3" column="0" colspan="2">
+      <item row="4" column="0" colspan="2">
        <widget class="QCheckBox" name="openDocumentsInTabsCB">
         <property name="text">
          <string>&amp;Open documents in tabs</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="0" colspan="2">
+      <item row="5" column="0" colspan="2">
        <widget class="QCheckBox" name="singleCloseTabButtonCB">
         <property name="toolTip">
          <string>Whether to place close button on each tab or only one in the top left.</string>

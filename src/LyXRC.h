@@ -140,6 +140,7 @@ public:
 		RC_PRINT_ADAPTOUTPUT,
 		RC_PRINT_COMMAND,
 		RC_RTL_SUPPORT,
+		RC_SAVE_COMPRESSED,
 		RC_SCREEN_DPI,
 		RC_SCREEN_FONT_ROMAN,
 		RC_SCREEN_FONT_ROMAN_FOUNDRY,
@@ -302,6 +303,8 @@ public:
 	bool use_lastfilepos;
 	/// load files from last session automatically
 	bool load_session;
+	/// do we save new documents as compressed by default
+	bool save_compressed;
 	/// shall a backup file be created
 	bool make_backup;
 	/// A directory for storing backup files
