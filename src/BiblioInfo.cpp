@@ -395,12 +395,13 @@ namespace {
 
 
 docstring BibTeXInfo::expandFormat(docstring const & format, 
-		BibTeXInfo const * const xref) const
+		BibTeXInfo const * const xref, bool richtext) const
 {
 	// return value
 	docstring ret;
 	docstring key;
 	bool scanning_key = false;
+	bool scanning_rich = false;
 
 	docstring fmt = format;
 	// we'll remove characters from the front of fmt as we 
@@ -427,34 +428,56 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 				LYXERR0("ERROR: Found `{' when scanning key in `" << format << "'.");
 				return _("ERROR!");
 			}
-			if (fmt.size() > 1 && fmt[1] == '%') {
-				// it is the beginning of an optional format
-				docstring optkey;
-				docstring ifpart;
-				docstring elsepart;
-				docstring const newfmt = 
+			if (fmt.size() > 1) {
+				if (fmt[1] == '%') {
+					// it is the beginning of an optional format
+					docstring optkey;
+					docstring ifpart;
+					docstring elsepart;
+					docstring const newfmt = 
 						parseOptions(fmt, optkey, ifpart, elsepart);
-				if (newfmt == fmt) // parse error
-					return _("ERROR!");
-				fmt = newfmt;
-				docstring const val = getValueForKey(to_utf8(optkey), xref);
-				if (!val.empty())
-					ret += expandFormat(ifpart, xref);
-				else if (!elsepart.empty())
-					ret += expandFormat(elsepart, xref);
-				// fmt will have been shortened for us already
-				continue; 
-			} 
+					if (newfmt == fmt) // parse error
+						return _("ERROR!");
+					fmt = newfmt;
+					docstring const val = getValueForKey(to_utf8(optkey), xref);
+					if (!val.empty())
+						ret += expandFormat(ifpart, xref, richtext);
+					else if (!elsepart.empty())
+						ret += expandFormat(elsepart, xref, richtext);
+					// fmt will have been shortened for us already
+					continue; 
+				}
+				if (fmt[1] == '!') {
+					// beginning of rich text
+					scanning_rich = true;
+					fmt = fmt.substr(2);
+					continue;
+				}
+			}
+			// we are here if the '{' was at the end of the format. hmm.
 			ret += thischar;
-		} 
+		}
+		else if (scanning_rich && thischar == '!' 
+		         && fmt.size() > 1 && fmt[1] == '}') {
+			// end of rich text
+			scanning_rich = false;
+			fmt = fmt.substr(2);
+			continue;
+		}
 		else if (scanning_key)
 			key += thischar;
-		else
+		else if (richtext || !scanning_rich)
 			ret += thischar;
+		// else the character is discarded, which will happen only if
+		// richtext == false and we are scanning rich text
 		fmt = fmt.substr(1);
 	} // for loop
 	if (scanning_key) {
 		LYXERR0("Never found end of key in `" << format << "'!");
+		return _("ERROR!");
+	}
+	if (scanning_rich) {
+		LYXERR0("Never found end of rich text in `" << format << "'!");
 		return _("ERROR!");
 	}
 	return ret;
@@ -466,19 +489,20 @@ namespace {
 // FIXME These would be better read from a file, so that they
 // could be customized.
 
-	static docstring articleFormat = from_ascii("%author%, \"%title%\", %journal% {%volume%[[ %volume%{%number%[[, %number%]]}]]} (%year%){%pages%[[, pp. %pages%]]}.{%note%[[ %note%]]}");
+	static docstring articleFormat = from_ascii("%author%, \"%title%\", {!<i>!}%journal%{!</i>!} {%volume%[[ %volume%{%number%[[, %number%]]}]]} (%year%){%pages%[[, pp. %pages%]]}.{%note%[[ %note%]]}");
 
-static docstring bookFormat = from_ascii("{%author%[[%author%]][[%editor%, ed.]]}, %title%{%volume%[[ vol. %volume%]][[{%number%[[no. %number%]]}]]}{%edition%[[%edition%]]} ({%address%[[%address%: ]]}%publisher%, %year%).{%note%[[ %note%]]}");
+	static docstring bookFormat = from_ascii("{%author%[[%author%]][[%editor%, ed.]]}, {!<i>!}%title%{!</i>!}{%volume%[[ vol. %volume%]][[{%number%[[no. %number%]]}]]}{%edition%[[%edition%]]} ({%address%[[%address%: ]]}%publisher%, %year%).{%note%[[ %note%]]}");
 
-static docstring inSomething = from_ascii("%author%, \"%title%\", in{%editor%[[ %editor%, ed.,]]} %booktitle%{%volume%[[ vol. %volume%]][[{%number%[[no. %number%]]}]]}{%edition%[[%edition%]]} ({%address%[[%address%: ]]}%publisher%, %year%){%pages%[[, pp. %pages%]]}.{%note%[[ %note%]]}");
+static docstring inSomething = from_ascii("%author%, \"%title%\", in{%editor%[[ %editor%, ed.,]]} {!<i>!}%booktitle%{!</i>!}{%volume%[[ vol. %volume%]][[{%number%[[no. %number%]]}]]}{%edition%[[%edition%]]} ({%address%[[%address%: ]]}%publisher%, %year%){%pages%[[, pp. %pages%]]}.{%note%[[ %note%]]}");
 
 static docstring thesis = from_ascii("%author%, %title% ({%address%[[%address%: ]]}%school%, %year%).{%note%[[ %note%]]}");
 
-static docstring defaultFormat = from_ascii("{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}%title%{%journal%[[, %journal%]][[{%publisher%[[, %publisher%]][[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}.");
+static docstring defaultFormat = from_ascii("{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]][[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}.");
 
 }
 
-docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref) const
+docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref,
+	bool richtext) const
 {
 	if (!info_.empty())
 		return info_;
@@ -490,15 +514,15 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref) const
 	}
 
 	if (entry_type_ == "article")
-		info_ = expandFormat(articleFormat, xref);
+		info_ = expandFormat(articleFormat, xref, richtext);
 	else if (entry_type_ == "book")
-		info_ = expandFormat(bookFormat, xref);
+		info_ = expandFormat(bookFormat, xref, richtext);
 	else if (entry_type_.substr(0,2) == "in")
-		info_ = expandFormat(inSomething, xref);
+		info_ = expandFormat(inSomething, xref, richtext);
 	else if (entry_type_ == "phdthesis" || entry_type_ == "mastersthesis")
-		info_ = expandFormat(thesis, xref);
+		info_ = expandFormat(thesis, xref, richtext);
 	else 
-		info_ = expandFormat(defaultFormat, xref);
+		info_ = expandFormat(defaultFormat, xref, richtext);
 
 	if (!info_.empty())
 		info_ = convertLaTeXCommands(info_);
@@ -629,7 +653,7 @@ docstring const BiblioInfo::getYear(docstring const & key, bool use_modifier) co
 }
 
 
-docstring const BiblioInfo::getInfo(docstring const & key) const
+docstring const BiblioInfo::getInfo(docstring const & key, bool richtext) const
 {
 	BiblioInfo::const_iterator it = find(key);
 	if (it == end())
@@ -642,7 +666,7 @@ docstring const BiblioInfo::getInfo(docstring const & key) const
 		if (xrefit != end())
 			xrefptr = &(xrefit->second);
 	}
-	return data.getInfo(xrefptr);
+	return data.getInfo(xrefptr, richtext);
 }
 
 

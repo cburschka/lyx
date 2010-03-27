@@ -61,7 +61,8 @@ public:
 	docstring const getXRef() const;
 	/// \return formatted BibTeX data suitable for framing.
 	/// \param pointer to crossref information
-	docstring const & getInfo(BibTeXInfo const * const xref = 0) const;
+	docstring const & getInfo(BibTeXInfo const * const xref,
+			bool richtext) const;
 	///
 	const_iterator find(docstring const & f) const { return bimap_.find(f); }
 	///
@@ -113,7 +114,11 @@ private:
 	///   {%key%[[format]]}, which prints format if key is non-empty
 	/// the latter may optionally contain an `else' clause as well:
 	///   {%key%[[if format]][[else format]]}
-	docstring expandFormat(docstring const & fmt, BibTeXInfo const * const xref) const;
+	/// material intended only for rich text (HTML) output should be 
+	/// wrapped in "{!" and "!}". it will be removed if richtext is
+	/// false.
+	docstring expandFormat(docstring const & fmt, 
+			BibTeXInfo const * const xref, bool richtext) const;
 	/// true if from BibTeX; false if from bibliography environment
 	bool is_bibtex_;
 	/// the BibTeX key for this entry
@@ -163,7 +168,8 @@ public:
 	/// \return formatted BibTeX data associated with a given key.
 	/// Empty if no info exists. 
 	/// Note that this will retrieve data from the crossref as needed.
-	docstring const getInfo(docstring const & key) const;
+	docstring const getInfo(docstring const & key, 
+			bool richtext = false) const;
 	/// Is this a reference from a bibtex database
 	/// or from a bibliography environment?
 	bool isBibtex(docstring const & key) const;

@@ -364,8 +364,8 @@ void GuiCitation::updateInfo(BiblioInfo const & bi, QModelIndex const & idx)
 	}
 
 	QString const keytxt = toqstr(
-		bi.getInfo(qstring_to_ucs4(idx.data().toString())));
-	infoML->document()->setPlainText(keytxt);
+		bi.getInfo(qstring_to_ucs4(idx.data().toString()), true));
+	infoML->document()->setHtml(keytxt);
 }
 
 
