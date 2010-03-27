@@ -27,6 +27,7 @@
 #include "insets/InsetInclude.h"
 
 #include "support/convert.h"
+#include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
@@ -232,6 +233,9 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 			return bib_key_;
 	}
 
+	// FIXME Move this to a separate routine that can
+	// be called from elsewhere.
+	// 
 	// OK, we've got some names. Let's format them.
 	// Try to split the author list on " and "
 	vector<docstring> const authors =
@@ -276,6 +280,204 @@ docstring const BibTeXInfo::getXRef() const
 }
 
 
+namespace {
+	docstring parseOptions(docstring const & format, docstring & optkey, 
+			docstring & ifpart, docstring & elsepart);
+
+	/// Calls parseOptions to deal with an embedded option, such as:
+	///   {%number%[[, no.~%number%]]}
+	/// which must appear at the start of format. ifelsepart gets the 
+	/// whole of the option, and we return what's left after the option.
+	/// we return format if there is an error.
+	docstring parseEmbeddedOption(docstring const & format, 
+			docstring & ifelsepart)
+	{
+		LASSERT(format[0] == '{' && format[1] == '%', return format);
+		docstring optkey;
+		docstring ifpart;
+		docstring elsepart;
+		docstring const rest = parseOptions(format, optkey, ifpart, elsepart);
+		if (format == rest) { // parse error
+			LYXERR0("ERROR! Couldn't parse `" << format <<"'.");
+			return format;
+		}
+		LASSERT(rest.size() <= format.size(), /* */);
+		ifelsepart = format.substr(0, format.size() - rest.size());
+		return rest;
+	}
+	
+	
+	// Gets a "clause" from a format string, where the clause is 
+	// delimited by '[[' and ']]'. Returns what is left after the
+	// clause is removed, and returns format if there is an error.
+	docstring getClause(docstring const & format, docstring & clause)
+	{
+		docstring fmt = format;
+		// remove '[['
+		fmt = fmt.substr(2);
+		// we'll remove characters from the front of fmt as we 
+		// deal with them
+		while (fmt.size()) { 
+			if (fmt[0] == ']' && fmt.size() > 1 && fmt[1] == ']') {
+			  // that's the end
+				fmt = fmt.substr(2);
+				break;
+			}
+			// check for an embedded option
+			if (fmt[0] == '{' && fmt.size() > 1 && fmt[1] == '%') {
+				docstring part;
+				docstring const rest = parseEmbeddedOption(fmt, part);
+				if (fmt == rest) {
+					LYXERR0("ERROR! Couldn't parse `" << format <<"'.");
+					return format;
+				}
+				clause += part;
+				fmt = rest;
+			} else { // it's just a normal character
+				clause += fmt[0];
+				fmt = fmt.substr(1);
+			}
+		}
+		return fmt;
+	}
+
+
+	/// parse an options string, which must appear at the start of the
+	/// format parameter. puts the parsed bits in optkey, ifpart, and
+	/// elsepart and returns what's left after the option is removed.
+	/// if there's an error, it returns format itself.
+	docstring parseOptions(docstring const & format, docstring & optkey, 
+			docstring & ifpart, docstring & elsepart) 
+	{
+		LASSERT(format[0] == '{' && format[1] == '%', return format);
+		// strip '{%'
+		docstring fmt = format.substr(2);
+		size_t pos = fmt.find('%'); // end of key
+		if (pos == string::npos) {
+			LYXERR0("Error parsing  `" << format <<"'. Can't find end of key.");
+			return format;
+		}
+		optkey = fmt.substr(0,pos);
+		fmt = fmt.substr(pos + 1);
+		// [[format]] should be next
+		if (fmt[0] != '[' || fmt[1] != '[') {
+			LYXERR0("Error parsing  `" << format <<"'. Can't find '[[' after key.");
+			return format;
+		}
+
+		docstring curfmt = fmt;
+		fmt = getClause(curfmt, ifpart);
+		if (fmt == curfmt) {
+			LYXERR0("Error parsing  `" << format <<"'. Couldn't get if clause.");
+			return format;
+		}
+
+		if (fmt[0] == '}') // we're done, no else clause
+			return fmt.substr(1);
+	
+		// else part should follow
+		if (fmt[0] != '[' || fmt[1] != '[') {
+			LYXERR0("Error parsing  `" << format <<"'. Can't find else clause.");
+			return format;
+		}
+		
+		curfmt = fmt;
+		fmt = getClause(curfmt, elsepart);
+		// we should be done
+		if (fmt == curfmt || fmt[0] != '}') {
+			LYXERR0("Error parsing  `" << format <<"'. Can't find end of option.");
+			return format;
+		}
+		return fmt.substr(1);
+}
+
+} // anon namespace
+
+
+docstring BibTeXInfo::expandFormat(docstring const & format, 
+		BibTeXInfo const * const xref) const
+{
+	// return value
+	docstring ret;
+	docstring key;
+	bool scanning_key = false;
+
+	docstring fmt = format;
+	// we'll remove characters from the front of fmt as we 
+	// deal with them
+	while (fmt.size()) {
+		char_type thischar = fmt[0];
+		if (thischar == '%') { 
+			// beginning or end of key
+			if (scanning_key) { 
+				// end of key
+				scanning_key = false;
+				// so we replace the key with its value, which may be empty
+				docstring const val = getValueForKey(to_utf8(key), xref);
+				key.clear();
+				ret += val;
+			} else {
+				// beginning of key
+				scanning_key = true;
+			}
+		} 
+		else if (thischar == '{') { 
+			// beginning of option?
+			if (scanning_key) {
+				LYXERR0("ERROR: Found `{' when scanning key in `" << format << "'.");
+				return _("ERROR!");
+			}
+			if (fmt.size() > 1 && fmt[1] == '%') {
+				// it is the beginning of an optional format
+				docstring optkey;
+				docstring ifpart;
+				docstring elsepart;
+				docstring const newfmt = 
+						parseOptions(fmt, optkey, ifpart, elsepart);
+				if (newfmt == fmt) // parse error
+					return _("ERROR!");
+				fmt = newfmt;
+				docstring const val = getValueForKey(to_utf8(optkey), xref);
+				if (!val.empty())
+					ret += expandFormat(ifpart, xref);
+				else if (!elsepart.empty())
+					ret += expandFormat(elsepart, xref);
+				// fmt will have been shortened for us already
+				continue; 
+			} 
+			ret += thischar;
+		} 
+		else if (scanning_key)
+			key += thischar;
+		else
+			ret += thischar;
+		fmt = fmt.substr(1);
+	} // for loop
+	if (scanning_key) {
+		LYXERR0("Never found end of key in `" << format << "'!");
+		return _("ERROR!");
+	}
+	return ret;
+}
+
+
+namespace {
+
+// FIXME These would be better read from a file, so that they
+// could be customized.
+
+	static docstring articleFormat = from_ascii("%author%, \"%title%\", %journal% {%volume%[[ %volume%{%number%[[, %number%]]}]]} (%year%){%pages%[[, pp. %pages%]]}.{%note%[[ %note%]]}");
+
+static docstring bookFormat = from_ascii("{%author%[[%author%]][[%editor%, ed.]]}, %title%{%volume%[[ vol. %volume%]][[{%number%[[no. %number%]]}]]}{%edition%[[%edition%]]} ({%address%[[%address%: ]]}%publisher%, %year%).{%note%[[ %note%]]}");
+
+static docstring inSomething = from_ascii("%author%, \"%title%\", in{%editor%[[ %editor%, ed.,]]} %booktitle%{%volume%[[ vol. %volume%]][[{%number%[[no. %number%]]}]]}{%edition%[[%edition%]]} ({%address%[[%address%: ]]}%publisher%, %year%){%pages%[[, pp. %pages%]]}.{%note%[[ %note%]]}");
+
+static docstring thesis = from_ascii("%author%, %title% ({%address%[[%address%: ]]}%school%, %year%).{%note%[[ %note%]]}");
+
+static docstring defaultFormat = from_ascii("{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}%title%{%journal%[[, %journal%]][[{%publisher%[[, %publisher%]][[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}.");
+
+}
+
 docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref) const
 {
 	if (!info_.empty())
@@ -286,59 +488,21 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref) const
 		info_ = it->second;
 		return info_;
 	}
- 
-	// FIXME
-	// This could be made a lot better using the entry_type_
-	// field to customize the output based upon entry type.
-	
-	// Search for all possible "required" fields
-	docstring author = getValueForKey("author", xref);
-	if (author.empty())
-		author = getValueForKey("editor", xref);
- 
-	docstring year   = getValueForKey("year", xref);
-	docstring title  = getValueForKey("title", xref);
-	docstring docLoc = getValueForKey("pages", xref);
-	if (docLoc.empty()) {
-		docLoc = getValueForKey("chapter", xref);
-		if (!docLoc.empty())
-			docLoc = _("Ch. ") + docLoc;
-	}	else {
-		docLoc = _("pp. ") + docLoc;
-	}
 
-	docstring media = getValueForKey("journal", xref);
-	if (media.empty()) {
-		media = getValueForKey("publisher", xref);
-		if (media.empty()) {
-			media = getValueForKey("school", xref);
-			if (media.empty())
-				media = getValueForKey("institution");
-		}
-	}
-	docstring volume = getValueForKey("volume", xref);
+	if (entry_type_ == "article")
+		info_ = expandFormat(articleFormat, xref);
+	else if (entry_type_ == "book")
+		info_ = expandFormat(bookFormat, xref);
+	else if (entry_type_.substr(0,2) == "in")
+		info_ = expandFormat(inSomething, xref);
+	else if (entry_type_ == "phdthesis" || entry_type_ == "mastersthesis")
+		info_ = expandFormat(thesis, xref);
+	else 
+		info_ = expandFormat(defaultFormat, xref);
 
-	odocstringstream result;
-	if (!author.empty())
-		result << author << ", ";
-	if (!title.empty())
-		result << title;
-	if (!media.empty())
-		result << ", " << media;
-	if (!year.empty())
-		result << " (" << year << ")";
-	if (!docLoc.empty())
-		result << ", " << docLoc;
-
-	docstring const result_str = rtrim(result.str());
-	if (!result_str.empty()) {
-		info_ = convertLaTeXCommands(result_str);
-		return info_;
-	}
-
-	// This should never happen (or at least be very unusual!)
-	static docstring e = docstring();
-	return e;
+	if (!info_.empty())
+		info_ = convertLaTeXCommands(info_);
+	return info_;
 }
 
 

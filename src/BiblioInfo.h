@@ -106,6 +106,14 @@ private:
 	/// be the one referenced in the crossref field.
 	docstring getValueForKey(std::string const & key, 
 			BibTeXInfo const * const xref = 0) const;
+	/// replace %keys% in a format string with their values
+	/// called from getInfo()
+	/// format strings may contain:
+	///   %key%, which represents a key
+	///   {%key%[[format]]}, which prints format if key is non-empty
+	/// the latter may optionally contain an `else' clause as well:
+	///   {%key%[[if format]][[else format]]}
+	docstring expandFormat(docstring const & fmt, BibTeXInfo const * const xref) const;
 	/// true if from BibTeX; false if from bibliography environment
 	bool is_bibtex_;
 	/// the BibTeX key for this entry
