@@ -281,22 +281,21 @@ docstring const BibTeXInfo::getXRef() const
 
 
 namespace {
-	docstring parseOptions(docstring const & format, docstring & optkey, 
-			docstring & ifpart, docstring & elsepart);
+	string parseOptions(string const & format, string & optkey, 
+			string & ifpart, string & elsepart);
 
 	/// Calls parseOptions to deal with an embedded option, such as:
 	///   {%number%[[, no.~%number%]]}
 	/// which must appear at the start of format. ifelsepart gets the 
 	/// whole of the option, and we return what's left after the option.
 	/// we return format if there is an error.
-	docstring parseEmbeddedOption(docstring const & format, 
-			docstring & ifelsepart)
+	string parseEmbeddedOption(string const & format, string & ifelsepart)
 	{
 		LASSERT(format[0] == '{' && format[1] == '%', return format);
-		docstring optkey;
-		docstring ifpart;
-		docstring elsepart;
-		docstring const rest = parseOptions(format, optkey, ifpart, elsepart);
+		string optkey;
+		string ifpart;
+		string elsepart;
+		string const rest = parseOptions(format, optkey, ifpart, elsepart);
 		if (format == rest) { // parse error
 			LYXERR0("ERROR! Couldn't parse `" << format <<"'.");
 			return format;
@@ -310,9 +309,9 @@ namespace {
 	// Gets a "clause" from a format string, where the clause is 
 	// delimited by '[[' and ']]'. Returns what is left after the
 	// clause is removed, and returns format if there is an error.
-	docstring getClause(docstring const & format, docstring & clause)
+	string getClause(string const & format, string & clause)
 	{
-		docstring fmt = format;
+		string fmt = format;
 		// remove '[['
 		fmt = fmt.substr(2);
 		// we'll remove characters from the front of fmt as we 
@@ -325,8 +324,8 @@ namespace {
 			}
 			// check for an embedded option
 			if (fmt[0] == '{' && fmt.size() > 1 && fmt[1] == '%') {
-				docstring part;
-				docstring const rest = parseEmbeddedOption(fmt, part);
+				string part;
+				string const rest = parseEmbeddedOption(fmt, part);
 				if (fmt == rest) {
 					LYXERR0("ERROR! Couldn't parse `" << format <<"'.");
 					return format;
@@ -346,12 +345,12 @@ namespace {
 	/// format parameter. puts the parsed bits in optkey, ifpart, and
 	/// elsepart and returns what's left after the option is removed.
 	/// if there's an error, it returns format itself.
-	docstring parseOptions(docstring const & format, docstring & optkey, 
-			docstring & ifpart, docstring & elsepart) 
+	string parseOptions(string const & format, string & optkey, 
+			string & ifpart, string & elsepart) 
 	{
 		LASSERT(format[0] == '{' && format[1] == '%', return format);
 		// strip '{%'
-		docstring fmt = format.substr(2);
+		string fmt = format.substr(2);
 		size_t pos = fmt.find('%'); // end of key
 		if (pos == string::npos) {
 			LYXERR0("Error parsing  `" << format <<"'. Can't find end of key.");
@@ -365,7 +364,7 @@ namespace {
 			return format;
 		}
 
-		docstring curfmt = fmt;
+		string curfmt = fmt;
 		fmt = getClause(curfmt, ifpart);
 		if (fmt == curfmt) {
 			LYXERR0("Error parsing  `" << format <<"'. Couldn't get if clause.");
@@ -394,16 +393,16 @@ namespace {
 } // anon namespace
 
 
-docstring BibTeXInfo::expandFormat(docstring const & format, 
+docstring BibTeXInfo::expandFormat(string const & format, 
 		BibTeXInfo const * const xref, bool richtext) const
 {
 	// return value
 	docstring ret;
-	docstring key;
+	string key;
 	bool scanning_key = false;
 	bool scanning_rich = false;
 
-	docstring fmt = format;
+	string fmt = format;
 	// we'll remove characters from the front of fmt as we 
 	// deal with them
 	while (fmt.size()) {
@@ -414,7 +413,7 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 				// end of key
 				scanning_key = false;
 				// so we replace the key with its value, which may be empty
-				docstring const val = getValueForKey(to_utf8(key), xref);
+				docstring const val = getValueForKey(key, xref);
 				key.clear();
 				ret += val;
 			} else {
@@ -431,15 +430,15 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 			if (fmt.size() > 1) {
 				if (fmt[1] == '%') {
 					// it is the beginning of an optional format
-					docstring optkey;
-					docstring ifpart;
-					docstring elsepart;
-					docstring const newfmt = 
+					string optkey;
+					string ifpart;
+					string elsepart;
+					string const newfmt = 
 						parseOptions(fmt, optkey, ifpart, elsepart);
 					if (newfmt == fmt) // parse error
 						return _("ERROR!");
 					fmt = newfmt;
-					docstring const val = getValueForKey(to_utf8(optkey), xref);
+					docstring const val = getValueForKey(optkey, xref);
 					if (!val.empty())
 						ret += expandFormat(ifpart, xref, richtext);
 					else if (!elsepart.empty())
@@ -489,15 +488,15 @@ namespace {
 // FIXME These would be better read from a file, so that they
 // could be customized.
 
-	static docstring articleFormat = from_ascii("%author%, \"%title%\", {!<i>!}%journal%{!</i>!} {%volume%[[ %volume%{%number%[[, %number%]]}]]} (%year%){%pages%[[, pp. %pages%]]}.{%note%[[ %note%]]}");
+	static string articleFormat = "%author%, \"%title%\", {!<i>!}%journal%{!</i>!} {%volume%[[ %volume%{%number%[[, %number%]]}]]} (%year%){%pages%[[, pp. %pages%]]}.{%note%[[ %note%]]}";
 
-	static docstring bookFormat = from_ascii("{%author%[[%author%]][[%editor%, ed.]]}, {!<i>!}%title%{!</i>!}{%volume%[[ vol. %volume%]][[{%number%[[no. %number%]]}]]}{%edition%[[%edition%]]} ({%address%[[%address%: ]]}%publisher%, %year%).{%note%[[ %note%]]}");
+	static string bookFormat = "{%author%[[%author%]][[%editor%, ed.]]}, {!<i>!}%title%{!</i>!}{%volume%[[ vol. %volume%]][[{%number%[[no. %number%]]}]]}{%edition%[[%edition%]]} ({%address%[[%address%: ]]}%publisher%, %year%).{%note%[[ %note%]]}";
 
-static docstring inSomething = from_ascii("%author%, \"%title%\", in{%editor%[[ %editor%, ed.,]]} {!<i>!}%booktitle%{!</i>!}{%volume%[[ vol. %volume%]][[{%number%[[no. %number%]]}]]}{%edition%[[%edition%]]} ({%address%[[%address%: ]]}%publisher%, %year%){%pages%[[, pp. %pages%]]}.{%note%[[ %note%]]}");
+	static string inSomething = "%author%, \"%title%\", in{%editor%[[ %editor%, ed.,]]} {!<i>!}%booktitle%{!</i>!}{%volume%[[ vol. %volume%]][[{%number%[[no. %number%]]}]]}{%edition%[[%edition%]]} ({%address%[[%address%: ]]}%publisher%, %year%){%pages%[[, pp. %pages%]]}.{%note%[[ %note%]]}";
 
-static docstring thesis = from_ascii("%author%, %title% ({%address%[[%address%: ]]}%school%, %year%).{%note%[[ %note%]]}");
+	static string thesis = "%author%, %title% ({%address%[[%address%: ]]}%school%, %year%).{%note%[[ %note%]]}";
 
-static docstring defaultFormat = from_ascii("{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]][[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}.");
+	static string defaultFormat = "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]][[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}.";
 
 }
 

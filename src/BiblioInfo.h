@@ -117,7 +117,7 @@ private:
 	/// material intended only for rich text (HTML) output should be 
 	/// wrapped in "{!" and "!}". it will be removed if richtext is
 	/// false.
-	docstring expandFormat(docstring const & fmt, 
+	docstring expandFormat(std::string const & fmt, 
 			BibTeXInfo const * const xref, bool richtext) const;
 	/// true if from BibTeX; false if from bibliography environment
 	bool is_bibtex_;
