@@ -30,7 +30,7 @@
 namespace lyx {
 namespace frontend {
 
-class FindAndReplaceWidget : public QWidget, public Ui::FindAndReplaceUi
+class FindAndReplaceWidget : public QTabWidget, public Ui::FindAndReplaceUi
 {
 	Q_OBJECT
 
