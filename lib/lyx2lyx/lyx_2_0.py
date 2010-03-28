@@ -1262,7 +1262,42 @@ def revert_inset_preview(document):
           del document.body[i]
           del document.body[j-1]
           i -= 2
+                
 
+def revert_equalspacing_xymatrix(document):
+    " Revert a Formula with xymatrix@! to an ERT inset "
+    i = 0
+    j = 0
+    has_preamble = 0
+    while True:
+      found = -1
+      i = find_token(document.body, "\\begin_inset Formula", i)
+      if i == -1:
+          break
+      j = find_end_of_inset(document.body, i)
+      if j == -1:
+          document.warning("Malformed LyX document: Could not find end of Formula inset.")
+          break
+          
+      for curline in range(len(document.body[i:j])):
+          found = document.body[i+curline].find("\\xymatrix@!")
+          if found != -1:
+              break
+ 
+      if found != -1:
+          content = document.body[i][21:]
+          for curline in range(len(document.body[i+1:j])):
+              content += document.body[i+1+curline]
+          subst = [put_cmd_in_ert(content)]
+          document.body[i:j+1] = subst
+      else:
+          for curline in range(len(document.body[i:j])):
+              l = document.body[i+curline].find("\\xymatrix")
+              if l != -1:
+                  has_preamble = 1;
+          i += 1
+    if has_preamble == 0:
+        add_to_preamble(document, ['\\usepackage[all]{xy}'])
 
 ##
 # Conversion hub
@@ -1303,10 +1338,12 @@ convert = [[346, []],
            [377, []],
            [378, []],
            [379, [convert_math_output]],
-           [380, []]
+           [380, []],
+           [381, []]
           ]
 
-revert =  [[379, [revert_inset_preview]],
+revert =  [[380, [revert_equalspacing_xymatrix]],
+           [379, [revert_inset_preview]],
            [378, [revert_math_output]],
            [377, []],
            [376, [revert_multirow]],
