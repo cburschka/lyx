@@ -1,0 +1,1620 @@
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 381
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage[all, knot]{xy}
+\xyoption{arc} 
+\usepackage{qtree}
+\usepackage{tipa}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\inputencoding auto
+\fontencoding global
+\font_roman lmodern
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_xetex false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+The following packages are needed to be installed at your computer in order
+ to typeset the document properly and have instant preview working:
+\end_layout
+
+\begin_layout LyX-Code
+xy.sty, qtree.sty, tipa.sty
+\end_layout
+
+\begin_layout Section
+Diagrams from by XY(-pic)
+\end_layout
+
+\begin_layout Standard
+Few examples of diagrams were taken from Aaron Landa's archive of xy-pic
+ examples, see 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.math.columbia.edu/~lauda/xy/
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Braid
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+xy
+\end_layout
+
+\begin_layout Plain Layout
+
+(5,10)*{}; (-10,-10)*{} **
+\backslash
+crv{(6,-2)&(-12,4)}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+POS?(.25)*{
+\backslash
+hole}="x" 
+\backslash
+POS?(.45)*{
+\backslash
+hole}="y" 
+\backslash
+POS?(.6)*{
+\backslash
+hole}="z";
+\end_layout
+
+\begin_layout Plain Layout
+
+"y"+(0,-1); (2,-10)*{} **
+\backslash
+crv{}
+\backslash
+POS?(.2)*{
+\backslash
+hole}="M";
+\end_layout
+
+\begin_layout Plain Layout
+
+(-10,10)*{}; "z" **
+\backslash
+crv{(-9,0)};
+\end_layout
+
+\begin_layout Plain Layout
+
+"z"; "M" **
+\backslash
+crv{};
+\end_layout
+
+\begin_layout Plain Layout
+
+"M"; "x" **
+\backslash
+crv{(5,0)};
+\end_layout
+
+\begin_layout Plain Layout
+
+"x"; "y" **
+\backslash
+crv{(0,7) & (-5,6)};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+endxy 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Knots
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+xy
+\end_layout
+
+\begin_layout Plain Layout
+
+(6,9)*{}="1";
+\end_layout
+
+\begin_layout Plain Layout
+
+(-8.5,-1)*{}="2";
+\end_layout
+
+\begin_layout Plain Layout
+
+"1";"2" **
+\backslash
+crv{~*=<.5pt>{.} (0,30)}?(.75)*
+\backslash
+dir{>}+(-2,2)*{z};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-6.5,8)*{}="1";
+\end_layout
+
+\begin_layout Plain Layout
+
+(-.5,-9)*{}="2";
+\end_layout
+
+\begin_layout Plain Layout
+
+"1";"2" **
+\backslash
+crv{~*=<.5pt>{.} (-28.5,9.3)}?(.7)*
+\backslash
+dir{>}+(-2,-2)*{u};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-9.5,-3.35)*{}="1";
+\end_layout
+
+\begin_layout Plain Layout
+
+(8.5,-3)*{}="2";
+\end_layout
+
+\begin_layout Plain Layout
+
+"1";"2" **
+\backslash
+crv{~*=<.5pt>{.} (-17.67,-24.19)}?(.7)*
+\backslash
+dir{>}+(-1,-3)*{x};
+\end_layout
+
+\begin_layout Plain Layout
+
+(1,-10)*{}="1";
+\end_layout
+
+\begin_layout Plain Layout
+
+(6.5,7.13)*{}="2";
+\end_layout
+
+\begin_layout Plain Layout
+
+"1";"2" **
+\backslash
+crv{~*=<.5pt>{.} (17.67,-24.19)}?(.7)*
+\backslash
+dir{>}+(3,-1)*{y};
+\end_layout
+
+\begin_layout Plain Layout
+
+(11,-1)*{}="1";
+\end_layout
+
+\begin_layout Plain Layout
+
+(-4,8)*{}="2";
+\end_layout
+
+\begin_layout Plain Layout
+
+"1";"2" **
+\backslash
+crv{~*=<.5pt>{.} (28.5,9.3)}?(.93)*
+\backslash
+dir{>}+(1,2)*{w};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+endxy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Circles
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+xy
+\end_layout
+
+\begin_layout Plain Layout
+
+(0,0)*
+\backslash
+xycircle(14,8){++
+\backslash
+dir{<}};
+\end_layout
+
+\begin_layout Plain Layout
+
+(0,0)*
+\backslash
+xycircle<10pt>{{.}};
+\end_layout
+
+\begin_layout Plain Layout
+
+(0,0)*
+\backslash
+xycircle(5,2){:};
+\end_layout
+
+\begin_layout Plain Layout
+
+(0,15)*
+\backslash
+xycircle(10,4){--};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+endxy 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Cobordism
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+xy
+\end_layout
+
+\begin_layout Plain Layout
+
+(0,0)*
+\backslash
+ellipse(3,1){.};
+\end_layout
+
+\begin_layout Plain Layout
+
+(0,0)*
+\backslash
+ellipse(3,1)__,=:a(-180){-};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-6,-8)*
+\backslash
+ellipse(3,1){.};
+\end_layout
+
+\begin_layout Plain Layout
+
+(6,-8)*
+\backslash
+ellipse(3,1){.};
+\end_layout
+
+\begin_layout Plain Layout
+
+(0,-8)*
+\backslash
+ellipse(3,1){.};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-6,-8)*
+\backslash
+ellipse(3,1)__,=:a(-180){-};
+\end_layout
+
+\begin_layout Plain Layout
+
+(6,-8)*
+\backslash
+ellipse(3,1)__,=:a(-180){-};
+\end_layout
+
+\begin_layout Plain Layout
+
+(0,-8)*
+\backslash
+ellipse(3,1)__,=:a(180){-};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-3,6)*
+\backslash
+ellipse(3,1){-};
+\end_layout
+
+\begin_layout Plain Layout
+
+(3,6)*
+\backslash
+ellipse(3,1){-};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-3,12)*{}="1";
+\end_layout
+
+\begin_layout Plain Layout
+
+(3,12)*{}="2";
+\end_layout
+
+\begin_layout Plain Layout
+
+(-9,12)*{}="A2";
+\end_layout
+
+\begin_layout Plain Layout
+
+(9,12)*{}="B2";
+\end_layout
+
+\begin_layout Plain Layout
+
+"1";"2" **
+\backslash
+crv{(-3,7) & (3,7)};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-3,0)*{}="A";
+\end_layout
+
+\begin_layout Plain Layout
+
+(3,0)*{}="B";
+\end_layout
+
+\begin_layout Plain Layout
+
+(-3,1)*{}="A1";
+\end_layout
+
+\begin_layout Plain Layout
+
+(3,1)*{}="B1";
+\end_layout
+
+\begin_layout Plain Layout
+
+"A";"A1" **
+\backslash
+dir{-};
+\end_layout
+
+\begin_layout Plain Layout
+
+"B";"B1" **
+\backslash
+dir{-};
+\end_layout
+
+\begin_layout Plain Layout
+
+"B2";"B1" **
+\backslash
+crv{(8,7) & (3,5)};
+\end_layout
+
+\begin_layout Plain Layout
+
+"A2";"A1" **
+\backslash
+crv{(-8,7) & (-3,5)};
+\end_layout
+
+\begin_layout Plain Layout
+
+%REFLECT
+\end_layout
+
+\begin_layout Plain Layout
+
+(3,-16)*{}="1";
+\end_layout
+
+\begin_layout Plain Layout
+
+(9,-16)*{}="2";
+\end_layout
+
+\begin_layout Plain Layout
+
+"1";"2" **
+\backslash
+crv{(3,-10) & (9,-10)};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-3,-16)*{}="1";
+\end_layout
+
+\begin_layout Plain Layout
+
+(-9,-16)*{}="2";
+\end_layout
+
+\begin_layout Plain Layout
+
+"1";"2" **
+\backslash
+crv{(-3,-10) & (-9,-10)};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-15,-16)*{}="A2";
+\end_layout
+
+\begin_layout Plain Layout
+
+(15,-16)*{}="B2";
+\end_layout
+
+\begin_layout Plain Layout
+
+(-3,0)*{}="A";
+\end_layout
+
+\begin_layout Plain Layout
+
+(3,0)*{}="B";
+\end_layout
+
+\begin_layout Plain Layout
+
+(-3,-1)*{}="A1";
+\end_layout
+
+\begin_layout Plain Layout
+
+(3,-1)*{}="B1";
+\end_layout
+
+\begin_layout Plain Layout
+
+"A";"A1" **
+\backslash
+dir{-};
+\end_layout
+
+\begin_layout Plain Layout
+
+"B";"B1" **
+\backslash
+dir{-};
+\end_layout
+
+\begin_layout Plain Layout
+
+"B2";"B1" **
+\backslash
+crv{(13,-6) & (2,-8)};
+\end_layout
+
+\begin_layout Plain Layout
+
+"A2";"A1" **
+\backslash
+crv{(-13,-6) & (-2,-8)};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+endxy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+xy 0;/r.18pc/:
+\end_layout
+
+\begin_layout Plain Layout
+
+(20,2)*{
+\backslash
+bullet}="RU"+(1,3)*{x^{
+\backslash
+ast}};
+\end_layout
+
+\begin_layout Plain Layout
+
+(16,-3)*{
+\backslash
+bullet}="RD"+(2.5,2)*{x^{
+\backslash
+ast}};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-16,2)*{
+\backslash
+bullet}="LU"+(-1,2)*{x};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-20,-3)*{
+\backslash
+bullet}="LD"+(-1,2)*{x};
+\end_layout
+
+\begin_layout Plain Layout
+
+"RU";"RD" **
+\backslash
+crv{(4,2) & (4,-1)}; ?(.1)*
+\backslash
+dir{<}; ?(.85)*
+\backslash
+dir{<};
+\end_layout
+
+\begin_layout Plain Layout
+
+"LD";"LU" **
+\backslash
+crv{(-4,-2) & (-4,1)};
+\end_layout
+
+\begin_layout Plain Layout
+
+?(.08)*
+\backslash
+dir{<}; ?(.85)*
+\backslash
+dir{<};
+\end_layout
+
+\begin_layout Plain Layout
+
+(7.5,0)*{}="x1"; (-7.5,0)*{}="x2";
+\end_layout
+
+\begin_layout Plain Layout
+
+"x1"; "x2" **
+\backslash
+crv{(7,-10) & (-7,-10)};
+\end_layout
+
+\begin_layout Plain Layout
+
+(16,-20)*{
+\backslash
+bullet}="RDD"+(2.5,-1)*{x^{
+\backslash
+ast}};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-20,-20)*{
+\backslash
+bullet}="LDD"+(-1,-3)*{x};
+\end_layout
+
+\begin_layout Plain Layout
+
+(20,-12.5)*{
+\backslash
+bullet}="RUD"+(3.5,1)*{x^{
+\backslash
+ast}};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-16,-15)*{
+\backslash
+bullet}="LUD";
+\end_layout
+
+\begin_layout Plain Layout
+
+(-16,-2.5)*{}="A"; (16.1,-14.9)*{}="B";
+\end_layout
+
+\begin_layout Plain Layout
+
+"RD"; "RDD" **
+\backslash
+dir{-};
+\end_layout
+
+\begin_layout Plain Layout
+
+"LD"; "LDD" **
+\backslash
+dir{-};
+\end_layout
+
+\begin_layout Plain Layout
+
+"A"; "LUD" **
+\backslash
+dir{.};
+\end_layout
+
+\begin_layout Plain Layout
+
+"RDD"; "LDD" **
+\backslash
+crv{(0,-17)}; ?(.57)*
+\backslash
+dir{>};
+\end_layout
+
+\begin_layout Plain Layout
+
+"RU"; "RUD" **
+\backslash
+dir{-};
+\end_layout
+
+\begin_layout Plain Layout
+
+"LU"; "A" **
+\backslash
+dir{-};
+\end_layout
+
+\begin_layout Plain Layout
+
+"B"; "RUD" **
+\backslash
+crv{(18,-14.15)};
+\end_layout
+
+\begin_layout Plain Layout
+
+"B"; "LUD" **
+\backslash
+crv{~*=<4pt>{.}(0,-18)}; ?(.4)*
+\backslash
+dir{<};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+endxy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Strings
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+xy (-15,0)*{};(15,0)*{};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+endxy
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+qquad = 
+\backslash
+qquad 
+\backslash
+xy
+\end_layout
+
+\begin_layout Plain Layout
+
+(-10,12)*{}; (-10,-12)*{}; **
+\backslash
+dir{-}?(.5)*
+\backslash
+dir{<}+(-4,0)*{F(x)};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-2,12)*{}="1";
+\end_layout
+
+\begin_layout Plain Layout
+
+(6,-7) *{}="2";
+\end_layout
+
+\begin_layout Plain Layout
+
+(14,-7) *{}="3";
+\end_layout
+
+\begin_layout Plain Layout
+
+(14,-13)*{}="3'";
+\end_layout
+
+\begin_layout Plain Layout
+
+(18,0) *={}="";
+\end_layout
+
+\begin_layout Plain Layout
+
+"1";"2" **
+\backslash
+crv{(-4,-21)&(5,-15)};
+\end_layout
+
+\begin_layout Plain Layout
+
+?(.15)*
+\backslash
+dir{<}+(5,10)*{
+\backslash
+overline{F(x)}};
+\end_layout
+
+\begin_layout Plain Layout
+
+"2";"3" **
+\backslash
+crv{(6,1)&(14,1)};
+\end_layout
+
+\begin_layout Plain Layout
+
+?(0)*
+\backslash
+dir{<}+(4,8)*{
+\backslash
+widetilde{F(i_x)}} ;
+\end_layout
+
+\begin_layout Plain Layout
+
+?(.95)*
+\backslash
+dir{<}+(5,-2)*{F(
+\backslash
+overline x)};
+\end_layout
+
+\begin_layout Plain Layout
+
+"3";"3'" **
+\backslash
+dir{-};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-2,6)*{}="X1";
+\end_layout
+
+\begin_layout Plain Layout
+
+(-10,6)*{}="X2";
+\end_layout
+
+\begin_layout Plain Layout
+
+"X1";"X2" **
+\backslash
+crv{~*=<2pt>{.}(-2,-1)&(-10,-1)};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-2,-6)*{}="XA";
+\end_layout
+
+\begin_layout Plain Layout
+
+(-10,-6)*{}="XB";
+\end_layout
+
+\begin_layout Plain Layout
+
+"XA";"XB" **
+\backslash
+crv{~*=<2pt>{.}(-2,1)&(-10,1)};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+endxy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Categories
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+xymatrix{
+\end_layout
+
+\begin_layout Plain Layout
+
+(x 
+\backslash
+otimes 1) 
+\backslash
+otimes y
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+ar[rr]^{a_{x,1,y}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+ar[dr]_{r_x 
+\backslash
+otimes 1_y}
+\end_layout
+
+\begin_layout Plain Layout
+
+&& x 
+\backslash
+otimes(1 
+\backslash
+otimes y)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+ar[dl]^{1_x 
+\backslash
+otimes
+\backslash
+ell_y } 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+& x 
+\backslash
+otimes y }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+xy
+\end_layout
+
+\begin_layout Plain Layout
+
+(-9,0)*+{
+\backslash
+bullet}="1";
+\end_layout
+
+\begin_layout Plain Layout
+
+(0,0)*+{
+\backslash
+bullet}="2";
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/^.9pc/ "1";"2"};
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/_.9pc/ "1";"2"};
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/^2pc/ "1";"2"};
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/_2pc/ "1";"2"};
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@{=>} (-4.5,1.5)*{};(-4.5,-1.5)*{}} ;
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@{=>} (-4.5,7.25)*{};(-4.5,4.75)*{}} ;
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@{=>} (-4.5,-4.75)*{};(-4.5,-7.25)*{}} ;
+\end_layout
+
+\begin_layout Plain Layout
+
+(0,0)*+{
+\backslash
+bullet}="1";
+\end_layout
+
+\begin_layout Plain Layout
+
+(9,0)*+{
+\backslash
+bullet}="2";
+\end_layout
+
+\begin_layout Plain Layout
+
+(18,0)*+{
+\backslash
+bullet}="3";
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar "1";"2"};
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar "2";"3"};
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/^1pc/ "1";"2"};
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/_1pc/ "1";"2"};
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@{=>} (4.5,3)*{};(4.5,.75)*{}} ;
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@{=>} (4.5,-.75)*{};(4.5,-3)*{}} ;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+endxy 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Transformations
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+xy %FIG.19.
+ Natural transformation between functors.
+\end_layout
+
+\begin_layout Plain Layout
+
+(-26,-2)*+{
+\backslash
+bullet}="a";
+\end_layout
+
+\begin_layout Plain Layout
+
+(-12,3)*+{
+\backslash
+bullet}="b";
+\end_layout
+
+\begin_layout Plain Layout
+
+(-16,-5)*+{
+\backslash
+bullet}="c";
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/^.25pc/ "a";"b"};
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/_.25pc/"a";"c"};
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/_.15pc/ "b";"c"};
+\end_layout
+
+\begin_layout Plain Layout
+
+%START TOP
+\end_layout
+
+\begin_layout Plain Layout
+
+(12,10)*+{
+\backslash
+bullet}="ta";
+\end_layout
+
+\begin_layout Plain Layout
+
+(26,15)*+{
+\backslash
+bullet}="tb";
+\end_layout
+
+\begin_layout Plain Layout
+
+(22,8)*+{
+\backslash
+bullet}="tc";
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/^.25pc/ "ta";"tb"};
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/_.25pc/ "ta";"tc"};
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/_.15pc/ "tb";"tc"};
+\end_layout
+
+\begin_layout Plain Layout
+
+%START bottom
+\end_layout
+
+\begin_layout Plain Layout
+
+(12,-10)*+{
+\backslash
+bullet}="ba";
+\end_layout
+
+\begin_layout Plain Layout
+
+(26,-5)*+{
+\backslash
+bullet}="bb";
+\end_layout
+
+\begin_layout Plain Layout
+
+(22,-12)*+{
+\backslash
+bullet}="bc";
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/^.25pc/@{.>} "ba";"bb"};
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/_.25pc/ "ba";"bc"};
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/_.15pc/ "bb";"bc"};
+\end_layout
+
+\begin_layout Plain Layout
+
+%START CONNECT
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/_.15pc/ "ta";"ba"};
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/_.15pc/ "tb";"bb"};
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/_.15pc/ "tc";"bc"};
+\end_layout
+
+\begin_layout Plain Layout
+
+%START ARROWS AND LABELS
+\end_layout
+
+\begin_layout Plain Layout
+
+(-12,6)*{}="DF";
+\end_layout
+
+\begin_layout Plain Layout
+
+(6,10)*{}="CF";
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/^.35pc/^F "DF";"CF"};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-12,-6)*{}="DF";
+\end_layout
+
+\begin_layout Plain Layout
+
+(6,-10)*{}="CF";
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@/_.35pc/_G "DF";"CF"};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-2,5)*{}="DF";
+\end_layout
+
+\begin_layout Plain Layout
+
+(-2,-5)*{}="CF";
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+ar@{=>}^{
+\backslash
+alpha} "DF";"CF"};
+\end_layout
+
+\begin_layout Plain Layout
+
+(29,3)*{D};
+\end_layout
+
+\begin_layout Plain Layout
+
+(-23,3)*{C};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+endxy 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+IPA
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textipa{Ekspl@"neIS@n}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+QTree
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Tree[.S [.N This ] [.V is ] [.NP [.Det a ] [.N test ] ] ] 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Tree [.$
+\backslash
+sigma$ $
+\backslash
+mu$ $
+\backslash
+mu$ ]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
