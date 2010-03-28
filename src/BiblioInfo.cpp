@@ -477,7 +477,7 @@ docstring BibTeXInfo::expandFormat(string const & format,
 			continue;
 		}
 		else if (scanning_key)
-			key += thischar;
+			key += char(thischar);
 		else if (richtext || !scanning_rich)
 			ret += thischar;
 		// else the character is discarded, which will happen only if
