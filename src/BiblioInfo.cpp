@@ -195,6 +195,12 @@ docstring convertLaTeXCommands(docstring const & str)
 	return ret;
 }
 
+// these are used in the expandFormat() routine, etc.
+
+static string const pp_text   = N_("pp.");
+static string const ed_text   = N_("ed.");
+static string const edby_text = N_("ed. by");
+
 } // anon namespace
 
 
@@ -413,9 +419,17 @@ docstring BibTeXInfo::expandFormat(string const & format,
 				// end of key
 				scanning_key = false;
 				// so we replace the key with its value, which may be empty
-				docstring const val = getValueForKey(key, xref);
+				if (key == "pp_text")
+					ret += _(pp_text);
+				else if (key == "ed_text")
+					ret += _(ed_text);
+				else if(key == "edby_text")
+					ret += _(edby_text);
+				else {
+					docstring const val = getValueForKey(key, xref);
+					ret += val;
+				}
 				key.clear();
-				ret += val;
 			} else {
 				// beginning of key
 				scanning_key = true;
@@ -488,15 +502,15 @@ namespace {
 // FIXME These would be better read from a file, so that they
 // could be customized.
 
-	static string articleFormat = "%author%, \"%title%\", {!<i>!}%journal%{!</i>!} {%volume%[[ %volume%{%number%[[, %number%]]}]]} (%year%){%pages%[[, pp. %pages%]]}.{%note%[[ %note%]]}";
+	static string articleFormat = "%author%, \"%title%\", {!<i>!}%journal%{!</i>!} {%volume%[[ %volume%{%number%[[, %number%]]}]]} (%year%){%pages%[[, %pp_text% %pages%]]}.{%note%[[ %note%]]}";
 
-	static string bookFormat = "{%author%[[%author%]][[%editor%, ed.]]}, {!<i>!}%title%{!</i>!}{%volume%[[ vol. %volume%]][[{%number%[[no. %number%]]}]]}{%edition%[[%edition%]]} ({%address%[[%address%: ]]}%publisher%, %year%).{%note%[[ %note%]]}";
+	static string bookFormat = "{%author%[[%author%]][[%editor%, %ed_text%]]}, {!<i>!}%title%{!</i>!}{%volume%[[ vol. %volume%]][[{%number%[[no. %number%]]}]]}{%edition%[[%edition%]]} ({%address%[[%address%: ]]}%publisher%, %year%).{%note%[[ %note%]]}";
 
-	static string inSomething = "%author%, \"%title%\", in{%editor%[[ %editor%, ed.,]]} {!<i>!}%booktitle%{!</i>!}{%volume%[[ vol. %volume%]][[{%number%[[no. %number%]]}]]}{%edition%[[%edition%]]} ({%address%[[%address%: ]]}%publisher%, %year%){%pages%[[, pp. %pages%]]}.{%note%[[ %note%]]}";
+	static string inSomething = "%author%, \"%title%\", in{%editor%[[ %editor%, %ed_text%,]]} {!<i>!}%booktitle%{!</i>!}{%volume%[[ vol. %volume%]][[{%number%[[no. %number%]]}]]}{%edition%[[%edition%]]} ({%address%[[%address%: ]]}%publisher%, %year%){%pages%[[, %pp_text% %pages%]]}.{%note%[[ %note%]]}";
 
 	static string thesis = "%author%, %title% ({%address%[[%address%: ]]}%school%, %year%).{%note%[[ %note%]]}";
 
-	static string defaultFormat = "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]][[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}.";
+	static string defaultFormat = "{%author%[[%author%, ]][[{%editor%[[%editor%, %ed_text%, ]]}]]}\"%title%\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]][[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}.";
 
 }
 
