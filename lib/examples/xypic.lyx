@@ -3382,7 +3382,36 @@ Xy
 \end_inset
 
 -pic to make braids, cobordism, string diagrams, and much more.
- A good and rather systematic introduction to 
+ You might want to look on 
+\family typewriter
+inset_preview.lyx
+\family default
+ example shipped with LyX, which demonstrate how to use 
+more advanced 
+\lang english
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-commands via 
+\family typewriter
+ERT
+\family default
+ and 
+\family typewriter
+Instant preview
+\family default
+ insets.
+ the A good and rather systematic introduction to 
 \family typewriter
 
 \begin_inset ERT
@@ -3551,7 +3580,7 @@ tutorial with an archive of examples
 \emph default
 .
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
