@@ -47,6 +47,7 @@
 #include "insets/InsetNote.h"
 #include "insets/InsetOptArg.h"
 #include "insets/InsetPhantom.h"
+#include "insets/InsetPreview.h"
 #include "insets/InsetRef.h"
 #include "insets/InsetSpace.h"
 #include "insets/InsetTabular.h"
@@ -211,6 +212,9 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			return inset;
 		}
 
+		case LFUN_PREVIEW_INSERT:
+			return new InsetPreview(buf);
+
 		case LFUN_INSET_INSERT: {
 			string const name = cmd.getArg(0);
 			InsetCode code = insetCode(name);
@@ -323,6 +327,9 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 				InsetVSpace::string2params(to_utf8(cmd.argument()), vspace);
 				return new InsetVSpace(vspace);
 			}
+
+			case PREVIEW_CODE:
+				return new InsetPreview(buf);
 			
 			default:
 				lyxerr << "Inset '" << name << "' not permitted with LFUN_INSET_INSERT."
@@ -571,6 +578,8 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 			inset.reset(new InsetFloatList(buf));
 		} else if (tmptok == "Info") {
 			inset.reset(new InsetInfo(buf));
+		} else if (tmptok == "Preview") {
+			inset.reset(new InsetPreview(buf));
 		} else {
 			lyxerr << "unknown Inset type '" << tmptok
 			       << "'" << endl;

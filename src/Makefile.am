@@ -549,6 +549,7 @@ SOURCEFILESINSETS = \
 	insets/InsetNote.cpp \
 	insets/InsetOptArg.cpp \
 	insets/InsetPhantom.cpp \
+	insets/InsetPreview.cpp \
 	insets/InsetQuotes.cpp \
 	insets/InsetRef.cpp \
 	insets/InsetSpace.cpp \
@@ -591,6 +592,7 @@ HEADERFILESINSETS = \
 	insets/InsetInclude.h \
 	insets/InsetIndex.h \
 	insets/InsetInfo.h \
+	insets/InsetPreview.h \
 	insets/InsetLabel.h \
 	insets/InsetLayout.h \
 	insets/InsetLine.h \

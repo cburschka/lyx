@@ -411,3 +411,9 @@ InsetLayout Caption
 	EndHTMLStyle
 End
 
+
+InsetLayout Preview
+	LabelString           Preview	
+	Decoration            minimalistic
+	MultiPar              true
+End

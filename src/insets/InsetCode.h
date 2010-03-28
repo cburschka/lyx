@@ -221,6 +221,8 @@ enum InsetCode {
 	///
 	ARGUMENT_PROXY_CODE, // 100
 	///
+	PREVIEW_CODE,
+	///
 	INSET_CODE_SIZE,
 };
 

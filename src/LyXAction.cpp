@@ -369,6 +369,14 @@ void LyXAction::init()
  */
 		{ LFUN_LISTING_INSERT, "listing-insert", Noop, Edit },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_PREVIEW_INSERT
+ * \li Action: Inserts a new preview inset.
+ * \li Syntax: preview-insert
+ * \li Origin: vfr, 28 Mar 2010
+ * \endvar
+ */
+		{ LFUN_PREVIEW_INSERT, "preview-insert", Noop, Edit },
+/*!
  * \var lyx::FuncCode lyx::LFUN_TAB_INSERT
  * \li Action: Insert a tab into a listings inset.
  * \li Notion: It also works on a selection.

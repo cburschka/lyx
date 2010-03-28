@@ -592,6 +592,14 @@ Menuset
 	End
 
 
+# InsetPreview context menu
+#
+
+	Menu "context-preview"
+		Item "Dissolve Inset|D" "inset-dissolve"
+	End
+
+
 #
 # Toc Changes context menu
 #

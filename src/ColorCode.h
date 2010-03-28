@@ -191,6 +191,8 @@ enum ColorCode
 	Color_buttonhoverbg,
 	/// Color used for the pilcrow sign to mark the end of a paragraph
 	Color_paragraphmarker,
+	/// Preview frame color
+	Color_previewframe,
 
 	// Logical attributes
 

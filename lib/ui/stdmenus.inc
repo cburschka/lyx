@@ -70,13 +70,13 @@ Menuset
 
 	Menu "file_vc"
 		OptItem "Register...|R" "vc-register"
-		OptItem "Check In Changes...|I" "vc-check-in"
-		OptItem "Check Out for Edit|O" "vc-check-out"
+		OptItem "Check In Changes...|I" "vc-command DR \".\" \"TortoiseProc /command:commit /path:$$p\""
+		OptItem "Check Out for Edit|O" "vc-command DR \".\" \"TortoiseProc /command:update /path:$$p\""
 		OptItem "Update Local Directory From Repository|d" "vc-repo-update"
-		OptItem "Revert to Repository Version|v" "vc-revert"
+		OptItem "Revert to Repository Version|v" "vc-command DR \".\" \"TortoiseProc /command:revert /path:$$p\""
 		OptItem "Undo Last Check In|U" "vc-undo-last"
 		OptItem "Compare with Older Revision|C" "vc-compare"
-		OptItem "Show History...|H" "dialog-show vclog"
+		OptItem "Show History...|H" "vc-command D \".\" \"TortoiseProc /command:log /path:$$p\""
 		OptItem "Use Locking Property|L" "vc-locking-toggle"
 	End
 
@@ -366,6 +366,7 @@ Menuset
 		Item "TeX Code|X" "ert-insert"
 		Item "Program Listing[[Menu]]" "listing-insert"
 		Item "Date" "date-insert"
+		Item "Preview|w" "preview-insert"
 	End
 
 	Menu "insert_special"

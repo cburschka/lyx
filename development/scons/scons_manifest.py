@@ -1035,6 +1035,7 @@ src_insets_header_files = Split('''
     InsetNote.h
     InsetOptArg.h
     InsetPhantom.h
+    InsetPreview.h
     InsetQuotes.h
     InsetRef.h
     InsetSpace.h
@@ -1090,6 +1091,7 @@ src_insets_files = Split('''
     InsetNote.cpp
     InsetOptArg.cpp
     InsetPhantom.cpp
+    InsetPreview.cpp
     InsetQuotes.cpp
     InsetRef.cpp
     InsetSpace.cpp
