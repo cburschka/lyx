@@ -290,11 +290,11 @@ namespace {
 	string parseOptions(string const & format, string & optkey, 
 			string & ifpart, string & elsepart);
 
-	/// Calls parseOptions to deal with an embedded option, such as:
-	///   {%number%[[, no.~%number%]]}
-	/// which must appear at the start of format. ifelsepart gets the 
-	/// whole of the option, and we return what's left after the option.
-	/// we return format if there is an error.
+	// Calls parseOptions to deal with an embedded option, such as:
+	//   {%number%[[, no.~%number%]]}
+	// which must appear at the start of format. ifelsepart gets the
+	// whole of the option, and we return what's left after the option.
+	// we return format if there is an error.
 	string parseEmbeddedOption(string const & format, string & ifelsepart)
 	{
 		LASSERT(format[0] == '{' && format[1] == '%', return format);
@@ -324,7 +324,7 @@ namespace {
 		// deal with them
 		while (fmt.size()) { 
 			if (fmt[0] == ']' && fmt.size() > 1 && fmt[1] == ']') {
-			  // that's the end
+				// that's the end
 				fmt = fmt.substr(2);
 				break;
 			}
@@ -333,7 +333,7 @@ namespace {
 				string part;
 				string const rest = parseEmbeddedOption(fmt, part);
 				if (fmt == rest) {
-					LYXERR0("ERROR! Couldn't parse `" << format <<"'.");
+					LYXERR0("ERROR! Couldn't parse embedded option in `" << format <<"'.");
 					return format;
 				}
 				clause += part;
@@ -347,10 +347,10 @@ namespace {
 	}
 
 
-	/// parse an options string, which must appear at the start of the
-	/// format parameter. puts the parsed bits in optkey, ifpart, and
-	/// elsepart and returns what's left after the option is removed.
-	/// if there's an error, it returns format itself.
+	// parse an options string, which must appear at the start of the
+	// format parameter. puts the parsed bits in optkey, ifpart, and
+	// elsepart and returns what's left after the option is removed.
+	// if there's an error, it returns format itself.
 	string parseOptions(string const & format, string & optkey, 
 			string & ifpart, string & elsepart) 
 	{
@@ -402,8 +402,7 @@ namespace {
 docstring BibTeXInfo::expandFormat(string const & format, 
 		BibTeXInfo const * const xref, bool richtext) const
 {
-	// return value
-	docstring ret;
+	docstring ret; // return value
 	string key;
 	bool scanning_key = false;
 	bool scanning_rich = false;
