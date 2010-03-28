@@ -46,7 +46,7 @@ public:
 	
 	bool descendable(BufferView const & /*bv*/) const { return true; }
 
-	docstring contextMenu(BufferView const & bv, int x, int y) const
+	docstring contextMenu(BufferView const &, int, int) const
 		{ return from_ascii("context-preview"); }
 
 	void metrics(MetricsInfo & mi, Dimension & dim) const;

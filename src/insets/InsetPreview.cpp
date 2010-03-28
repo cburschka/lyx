@@ -60,7 +60,7 @@ void InsetPreview::write(ostream & os) const
 
 
 void InsetPreview::addPreview(DocIterator const & inset_pos,
-	graphics::PreviewLoader & ploader) const
+	graphics::PreviewLoader &) const
 {
 	preparePreview(inset_pos);
 }
