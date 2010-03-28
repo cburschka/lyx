@@ -1237,6 +1237,33 @@ def revert_math_output(document):
     document.header[i] = "\\html_use_mathml " + newval
                 
 
+
+def revert_inset_preview(document):
+    " Dissolves the preview inset "
+    i = 0
+    j = 0
+    k = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset Preview", i)
+      if i == -1:
+          return
+      j = find_end_of_inset(document.body, i)
+      if j == -1:
+          document.warning("Malformed LyX document: Could not find end of Preview inset.")
+          return
+      #If the layout is Standard we need to remove it, otherwise there
+      #will be paragraph breaks that shouldn't be there.
+      k = find_token(document.body, "\\begin_layout Standard", i)
+      if k == i+2:
+          del document.body[i : i+3]
+          del document.body[j-5 : j-2]
+          i -= 6
+      else:
+          del document.body[i]
+          del document.body[j-1]
+          i -= 2
+
+
 ##
 # Conversion hub
 #
@@ -1275,10 +1302,12 @@ convert = [[346, []],
            [376, []],
            [377, []],
            [378, []],
-           [379, [convert_math_output]]
+           [379, [convert_math_output]],
+           [380, []]
           ]
 
-revert =  [[378, [revert_math_output]],
+revert =  [[379, [revert_inset_preview]],
+           [378, [revert_math_output]],
            [377, []],
            [376, [revert_multirow]],
            [375, [revert_includeall]],
