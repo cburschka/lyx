@@ -26,19 +26,19 @@ Windows only
      
     If cmake couldn't find these modules set GNUWIN32_DIR, eg. 
     -DGNUWIN32_DIR=c:\gnuwin32. By default cmake searches in your 
-    program folder
+    program folder. Or use the cmake GUI to set the GNUWIN32_DIR path.
 
 
 Building Visual C++ project files
 --------------------------------------
 
-    * install Visual C++ 2008
-    * install Platform SDK 2008, "Core" and "Web Workshop"
-    * add include and library paths of the SDK to the IDE search paths.
+    * Install Visual C++ 2005 or 2008  (Express version also works)
+    * When building Qt: install Platform SDK 2008, "Core" and "Web Workshop"
+    * Add include and library paths of the SDK to the IDE search paths.
       Menu entry: Tools->Options->'VC++ directories'->'Library files' and 'Include files'
-    * create a build directory, e.g. ..\trunk\..\build
-    * call in the build directory 'cmake ..\trunk\development\cmake'
-    * start lyx.sln
+    * Create a build directory, e.g. ..\trunk\..\build
+    * Call in the build directory 'cmake ..\trunk\development\cmake'
+    * Start lyx.sln
     
     * Warnings: The default warning level of the msvc cmake builds 
       is /W3. To enable /W4 use
