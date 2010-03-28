@@ -198,7 +198,7 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 
 void regexpDispatch(Cursor & cur, FuncRequest const & cmd)
 {
-	BOOST_ASSERT(cmd.action == LFUN_REGEXP_MODE);
+	LASSERT(cmd.action == LFUN_REGEXP_MODE, return);
 	if (cur.inRegexped()) {
 		cur.message(_("Already in regular expression mode"));
 		return;
