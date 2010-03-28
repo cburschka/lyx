@@ -352,8 +352,6 @@ TeXOnePar(Buffer const & buf,
 	Layout const style = pit->forcePlainLayout() ?
 		bparams.documentClass().plainLayout() : pit->layout();
 
-	runparams.moving_arg |= style.needprotect;
-
 	// This paragraph's language
 	Language const * const par_language = pit->getParLanguage(bparams);
 	// The document's language
@@ -466,7 +464,9 @@ TeXOnePar(Buffer const & buf,
 		// Look ahead for future encoding changes.
 		// We try to output them at the beginning of the paragraph,
 		// since the \inputencoding command is not allowed e.g. in
-		// sections.
+		// sections. For this reason we only set runparams.moving_arg
+		// after checking for the encoding change, otherwise the
+		// change would be always avoided by switchEncoding().
 		for (pos_type i = 0; i < pit->size(); ++i) {
 			char_type const c = pit->getChar(i);
 			Encoding const * const encoding =
@@ -517,6 +517,7 @@ TeXOnePar(Buffer const & buf,
 		}
 	}
 
+	runparams.moving_arg |= style.needprotect;
 	Encoding const * const prev_encoding = runparams.encoding;
 
 	bool const useSetSpace = bparams.documentClass().provides("SetSpace");
