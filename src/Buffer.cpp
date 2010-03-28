@@ -3928,6 +3928,9 @@ bool Buffer::reload()
 		message(bformat(_("Could not reload document %1$s."), disp_fn));
 	}	
 	setBusy(false);
+	thePreviews().removeLoader(*this);
+	if (graphics::Previews::status() != LyXRC::PREVIEW_OFF)
+		thePreviews().generateBufferPreviews(*this);
 	errors("Parse");
 	return success;
 }
