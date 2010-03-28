@@ -2,8 +2,6 @@
 #  from kdelibs
 #
 
-set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
-
 if(WIN32)
 
 	# check if GNUWIN32_DIR is already set 
@@ -14,15 +12,12 @@ if(WIN32)
 		if(NOT GNUWIN32_DIR)
 			# search in the default program install folder
 			file(TO_CMAKE_PATH "$ENV{PROGRAMFILES}" _progFiles)
-			find_file(GNUWIN32_DIR_tmp gnuwin32 win32libs 
+			find_file(GNUWIN32_DIR gnuwin32 win32libs 
 					PATHS
 					"${_progFiles}"
 					"C:/" "D:/" "E:/" "F:/" "G:/"
 			)
-			set(GNUWIN32_DIR ${GNUWIN32_DIR_tmp})
 		endif()
-	else()
-		set(GNUWIN32_DIR ${GNUWIN32_DIR} CACHE TYPE STRING)
 	endif()
 
 	if(GNUWIN32_DIR)
@@ -42,7 +37,8 @@ if(WIN32)
 		endif()
 	else()
 		if (GNUWIN32_FIND_REQUIRED)
-			message(SEND_ERROR "Could NOT find GNUWIN32, please set GNUWIN32_DIR")
+			set(GNUWIN32_DIR CACHE PATH FORCE)
+			message(FATAL_ERROR "Could NOT find GNUWIN32, please set GNUWIN32_DIR")
 		endif()
 	endif()
 
