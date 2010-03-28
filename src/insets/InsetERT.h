@@ -37,6 +37,9 @@ public:
 	static CollapseStatus string2params(std::string const &);
 	///
 	static std::string params2string(CollapseStatus);
+
+	docstring contextMenu(BufferView const &, int, int) const
+		{ return from_ascii("context-ert"); }
 private:
 	///
 	InsetCode lyxCode() const { return ERT_CODE; }

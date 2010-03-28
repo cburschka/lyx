@@ -622,4 +622,17 @@ Menuset
 		Item "Select Section|S" "section-select"
 	End	
 
+#
+# InsetERT context menu
+#
+	Menu "context-ert"
+		OptItem "Open Inset|O" "inset-toggle open"
+		OptItem "Close Inset|C" "inset-toggle close"
+		Separator
+		Item "Wrap by Preview|P" "command-sequence inset-begin;char-backward;char-forward-select;preview-insert"
+		Separator
+		Item "Dissolve Inset|D" "inset-dissolve"
+		OptItem "Settings...|S" "inset-settings"
+	End
+
 End
