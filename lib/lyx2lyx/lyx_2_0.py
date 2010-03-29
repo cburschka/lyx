@@ -1268,7 +1268,8 @@ def revert_equalspacing_xymatrix(document):
     " Revert a Formula with xymatrix@! to an ERT inset "
     i = 0
     j = 0
-    has_preamble = 0
+    has_preamble = False
+    has_equal_spacing = False
     while True:
       found = -1
       i = find_token(document.body, "\\begin_inset Formula", i)
@@ -1279,24 +1280,26 @@ def revert_equalspacing_xymatrix(document):
           document.warning("Malformed LyX document: Could not find end of Formula inset.")
           break
           
-      for curline in range(len(document.body[i:j])):
-          found = document.body[i+curline].find("\\xymatrix@!")
+      for curline in range(i,j):
+          found = document.body[curline].find("\\xymatrix@!")
           if found != -1:
               break
  
       if found != -1:
+          has_equal_spacing = True
           content = document.body[i][21:]
-          for curline in range(len(document.body[i+1:j])):
-              content += document.body[i+1+curline]
+          content += '\n'.join(document.body[i+1:j])
           subst = [put_cmd_in_ert(content)]
           document.body[i:j+1] = subst
-      else:
-          for curline in range(len(document.body[i:j])):
-              l = document.body[i+curline].find("\\xymatrix")
-              if l != -1:
-                  has_preamble = 1;
           i += 1
-    if has_preamble == 0:
+      else:
+          for curline in range(i,j):
+              l = document.body[curline].find("\\xymatrix")
+              if l != -1:
+                  has_preamble = True;
+                  break;
+          i = j + 1
+    if has_equal_spacing and not has_preamble:
         add_to_preamble(document, ['\\usepackage[all]{xy}'])
 
 ##
