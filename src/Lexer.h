@@ -110,16 +110,20 @@ public:
 	/// returns a lex code
 	int lex();
 
-	/** Just read the next word. If esc is true remember that
-	    some chars might be escaped: "\ at least
-	*/
+	/// Read the next string, as delimited by double quotes or 
+	/// whitespace. If esc is true, then we remember that some chars 
+	/// might be escaped: \" at least.
 	bool next(bool esc = false);
 
-	/** Read next token. This one is almost the same as next,
-	    but it will consider " as a regular character and always
-	    split a word if it contains a backslash.
-	*/
+	/// Read next token. This one is almost the same as next(),
+	/// but it will consider " as a regular character and always
+	/// split a word if it contains a backslash.
 	bool nextToken();
+
+	/// Puts the rest of the line in the buffer, where it will 
+	/// be available via getString() or getDocString().
+	bool eatLine();
+
 	/// Push a token, that next token got from lyxlex.
 	void pushToken(std::string const &);
 
@@ -134,10 +138,8 @@ public:
 	double getFloat() const;
 	///
 	std::string const getString() const;
-
 	///
 	docstring const getDocString() const;
-
 	/** Get a long string, ended by the tag `endtag'.
 	    This string can span several lines. The first line
 	    serves as a template for how many spaces the lines
@@ -146,9 +148,6 @@ public:
 	    perfectly if you use tabs.
 	*/
 	std::string const getLongString(std::string const & endtag);
-
-	///
-	bool eatLine();
 
 	/// Pushes a token list on a stack and replaces it with a new one.
 	template<int N> void pushTable(LexerKeyword (&table)[N])
