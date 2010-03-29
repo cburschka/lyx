@@ -816,7 +816,7 @@ void BufferView::showCursor()
 void BufferView::showCursor(DocIterator const & dit, bool recenter)
 {
 	if (scrollToCursor(dit, recenter)) {
-		buffer_.changed(false);
+		buffer_.changed(true);
 		updateHoveredInset();
 	}
 }
@@ -824,8 +824,10 @@ void BufferView::showCursor(DocIterator const & dit, bool recenter)
 
 void BufferView::scrollToCursor()
 {
-	if (scrollToCursor(d->cursor_, false))
+	if (scrollToCursor(d->cursor_, false)) {
+		buffer_.changed(true);
 		updateHoveredInset();
+	}
 }
 
 
@@ -873,11 +875,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool recenter)
 			scrolled = scrollDown(ypos - height_ + defaultRowHeight() ); 
 
 		// else, nothing to do, the cursor is already visible so we just return.
-		if (scrolled != 0) {
-			updateMetrics();
-			return true;
-		}
-		return false;
+		return scrolled != 0;
 	}
 
 	// fix inline completion position
@@ -904,7 +902,6 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool recenter)
 	else
 		d->anchor_ypos_ = defaultRowHeight() * 2;
 
-	updateMetrics();
 	return true;
 }
 
