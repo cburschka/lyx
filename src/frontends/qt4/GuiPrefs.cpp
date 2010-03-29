@@ -2803,13 +2803,9 @@ void PrefShortcuts::shortcutOkPressed()
 	FuncRequest oldBinding = system_bind_.getBinding(k);
 	if (oldBinding.action == LFUN_UNKNOWN_ACTION)
 		oldBinding = user_bind_.getBinding(k);
-	if (oldBinding == func) {
-		docstring const actionStr = makeCmdString(func);
-		Alert::error(_("Failed to create shortcut"),
-			bformat(_("Shortcut `%1$s' is already bound to:\n%2$s"), 
-			k.print(KeySequence::ForGui), actionStr));
+	if (oldBinding == func)
+		// nothing has changed
 		return;
-	}
 	
 	// make sure this key isn't already bound---and, if so, not unbound
 	FuncCode const unbind = user_unbind_.getBinding(k).action;
