@@ -18,6 +18,7 @@
 #include "buffer_funcs.h"
 #include "Encoding.h"
 #include "InsetIterator.h"
+#include "Language.h"
 #include "Paragraph.h"
 #include "TextClass.h"
 #include "TocBackend.h"
@@ -433,7 +434,9 @@ docstring BibTeXInfo::expandFormat(string const & format,
 					// a translatable bit
 					string const val = 
 						buf.params().documentClass().getCiteMacro(key);
-					ret += _(val);
+					docstring const trans = 
+						translateIfPossible(from_utf8(val), buf.params().language->code());
+					ret += trans;
 				} else {
 					docstring const val = getValueForKey(key, xref);
 					ret += val;

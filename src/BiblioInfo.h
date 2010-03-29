@@ -117,6 +117,10 @@ private:
 	/// material intended only for rich text (HTML) output should be 
 	/// wrapped in "{!" and "!}". it will be removed if richtext is
 	/// false.
+	/// a simple macro facility is also available. keys that look like
+	/// "%!key%" are substituted with their definition.
+	/// moreover, keys that look like "%_key%" are treated as translatable
+	/// so that things like "pp." and "vol." can be translated.
 	docstring expandFormat(std::string const & fmt,
 			BibTeXInfo const * const xref, 
 			Buffer const & buf, bool richtext) const;
