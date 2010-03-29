@@ -2047,10 +2047,12 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 void BufferView::lfunScroll(FuncRequest const & cmd)
 {
 	string const scroll_type = cmd.getArg(0);
-	int const scroll_step = 
-		(scroll_type == "line") ? d->scrollbarParameters_.single_step
-		: (scroll_type == "page") ? d->scrollbarParameters_.page_step : 0;
-	if (scroll_step == 0)
+	int scroll_step = 0;
+	if (scroll_type == "line")
+		scroll_step = d->scrollbarParameters_.single_step;
+	else if (scroll_type == "page")
+		scroll_step = d->scrollbarParameters_.page_step;
+	else
 		return;
 	string const scroll_quantity = cmd.getArg(1);
 	if (scroll_quantity == "up")
