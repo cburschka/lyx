@@ -306,6 +306,8 @@ protected:
 	int max_toclevel_;
 	/// Citation formatting information
 	std::map<std::string, std::string> cite_formats_;
+	/// Citation macros
+	std::map<std::string, std::string> cite_macros_;
 private:
 	///////////////////////////////////////////////////////////////////
 	// helper routines for reading layout files
@@ -429,6 +431,8 @@ public:
 	bool hasTocLevels() const;
 	///
 	std::string const & getCiteFormat(std::string const & entry_type) const;
+	///
+	std::string const & getCiteMacro(std::string const & macro) const;
 protected:
 	/// Constructs a DocumentClass based upon a LayoutFile.
 	DocumentClass(LayoutFile const & tc);

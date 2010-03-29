@@ -395,17 +395,27 @@ namespace {
 
 
 docstring BibTeXInfo::expandFormat(string const & format, 
-		BibTeXInfo const * const xref, bool richtext) const
+		BibTeXInfo const * const xref, Buffer const & buf, 
+		bool richtext) const
 {
+	// incorrect use of macros could put us in an infinite loop
+	static int max_passes = 1000;
 	docstring ret; // return value
 	string key;
 	bool scanning_key = false;
 	bool scanning_rich = false;
 
+	int passes = 0;
 	string fmt = format;
 	// we'll remove characters from the front of fmt as we 
 	// deal with them
 	while (fmt.size()) {
+		if (passes++ > max_passes) {
+			LYXERR0("Recursion limit reached while parsing `" 
+			        << format << "'.");
+			return _("ERROR!");
+		}
+				
 		char_type thischar = fmt[0];
 		if (thischar == '%') { 
 			// beginning or end of key
@@ -413,14 +423,27 @@ docstring BibTeXInfo::expandFormat(string const & format,
 				// end of key
 				scanning_key = false;
 				// so we replace the key with its value, which may be empty
-				docstring const val = getValueForKey(key, xref);
-				ret += val;
-				key.clear();
+				if (key[0] == '!') {
+					// macro
+					string const val = 
+						buf.params().documentClass().getCiteMacro(key);
+					fmt = val + fmt.substr(1);
+					continue;
+				} else if (key[0] == '_') {
+					// a translatable bit
+					string const val = 
+						buf.params().documentClass().getCiteMacro(key);
+					ret += _(val);
+				} else {
+					docstring const val = getValueForKey(key, xref);
+					ret += val;
+				}
 			} else {
 				// beginning of key
+				key.clear();
 				scanning_key = true;
 			}
-		} 
+		}
 		else if (thischar == '{') { 
 			// beginning of option?
 			if (scanning_key) {
@@ -440,9 +463,9 @@ docstring BibTeXInfo::expandFormat(string const & format,
 					fmt = newfmt;
 					docstring const val = getValueForKey(optkey, xref);
 					if (!val.empty())
-						ret += expandFormat(ifpart, xref, richtext);
+						ret += expandFormat(ifpart, xref, buf, richtext);
 					else if (!elsepart.empty())
-						ret += expandFormat(elsepart, xref, richtext);
+						ret += expandFormat(elsepart, xref, buf, richtext);
 					// fmt will have been shortened for us already
 					continue; 
 				}
@@ -453,7 +476,8 @@ docstring BibTeXInfo::expandFormat(string const & format,
 					continue;
 				}
 			}
-			// we are here if the '{' was at the end of the format. hmm.
+			// we are here if '{' was not followed by % or !. 
+			// So it's just a character.
 			ret += thischar;
 		}
 		else if (scanning_rich && thischar == '!' 
@@ -497,7 +521,7 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref,
 
 	DocumentClass const & dc = buf.params().documentClass();
 	string const & format = dc.getCiteFormat(to_utf8(entry_type_));
-	info_ = expandFormat(format, xref, richtext);
+	info_ = expandFormat(format, xref, buf, richtext);
 
 	if (!info_.empty())
 		info_ = convertLaTeXCommands(info_);

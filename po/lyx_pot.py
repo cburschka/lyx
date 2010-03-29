@@ -92,10 +92,14 @@ def layouts_l10n(input_files, output, base):
     EndI18nPreamble = re.compile(r'\s*End(Lang)|(Babel)Preamble\s*$')
     I18nString = re.compile(r'_\(([^\)]+)\)')
     CounterFormat = re.compile(r'\s*PrettyFormat\s+"?(.*)"?')
-
+    CiteFormat = re.compile(r'\s*CiteFormat')
+    KeyVal = re.compile(r'^\s*_\w+\s+(.*)$')
+    End = re.compile(r'\s*End')
+    
     for src in input_files:
         readingDescription = False
         readingI18nPreamble = False
+        readingCiteFormats = False
         descStartLine = -1
         descLines = []
         lineno = 0
@@ -179,6 +183,18 @@ def layouts_l10n(input_files, output, base):
                 string = res.group(1)
                 writeString(out, src, base, lineno, string)
                 continue
+            res = CiteFormat.search(line)
+            if res != None:
+                readingCiteFormats = True
+            res = End.search(line)
+            if res != None and readingCiteFormats:
+                readingCiteFormats = False
+            if readingCiteFormats:
+                res = KeyVal.search(line)
+                if res != None:
+                    val = res.group(1)
+                    writeString(out, src, base, lineno, val)
+                
     out.close()
 
 

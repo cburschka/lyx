@@ -863,7 +863,13 @@ void TextClass::readCiteFormat(Lexer & lexrc)
 			break;
 		lexrc.eatLine();
 		definition = lexrc.getString();
-		cite_formats_[etype] = definition;
+		char initchar = etype[0];
+		if (initchar == '#')
+			continue;
+		if (initchar == '!' || initchar == '_')
+			cite_macros_[etype] = definition;
+		else
+			cite_formats_[etype] = definition;
 	}
 }
 
@@ -1358,6 +1364,16 @@ string const & DocumentClass::getCiteFormat(string const & entry_type) const
 	if (it != cite_formats_.end())
 		return it->second;
 	return default_format;
+}
+
+
+string const & DocumentClass::getCiteMacro(string const & macro) const
+{
+	static string empty;
+	map<string, string>::const_iterator it = cite_macros_.find(macro);
+	if (it != cite_macros_.end())
+		return it->second;
+	return empty;
 }
 
 
