@@ -5,9 +5,7 @@
 Format 26
 
 CiteFormat 
-	!pages {%pages%[[, pp. %pages%]]}
-	!edtext ed.
-	article %author%, "%title%", {!<i>!}%journal%{!</i>!} {%volume%[[ %volume%{%number%[[, %number%]]}]]} (%year%)%!pages%.{%note%[[ %note%]]}
+	article %author%, "%title%", {!<i>!}%journal%{!</i>!} {%volume%[[ %volume%{%number%[[, %number%]]}]]} (%year%){%pages%[[, pp. %pages%]]}.{%note%[[ %note%]]}
 	
 	book {%author%[[%author%, ]][[{%editor%[[%editor%, %ed_text%, ]]}]]}{!<i>!}%title%{!</i>!}{%volume%[[ vol. %volume%]][[{%number%[[no. %number%]]}]]}{%edition%[[%edition%]]} ({%address%[[%address%: ]]}%publisher%, %year%).{%note%[[ %note%]]}
 
