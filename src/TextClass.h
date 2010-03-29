@@ -25,10 +25,11 @@
 
 #include <boost/noncopyable.hpp>
 
+#include <list>
 #include <map>
 #include <set>
+#include <string>
 #include <vector>
-#include <list>
 
 namespace lyx {
 
@@ -81,22 +82,20 @@ public:
 	///////////////////////////////////////////////////////////////////
 	// typedefs
 	///////////////////////////////////////////////////////////////////
-	/// The individual paragraph layouts comprising the document class
 	// NOTE Do NOT try to make this a container of Layout pointers, e.g.,
-	// std::vector<Layout *>. This will lead to problems. The reason is
+	// std::list<Layout *>. This will lead to problems. The reason is
 	// that DocumentClass objects are generally created by copying a 
 	// LayoutFile, which serves as a base for the DocumentClass. If the
 	// LayoutList is a container of pointers, then every DocumentClass
 	// that derives from a given LayoutFile (e.g., article) will SHARE
 	// a basic set of layouts. So if one Buffer were to modify a layout
 	// (say, Standard), that would modify that layout for EVERY Buffer
-	// that was based upon the same DocumentClass. (Of course, if you 
-	// really, REALLY want to make LayoutList a vector<Layout *>, then
-	// you can implement custom assignment and copy constructors.)
+	// that was based upon the same DocumentClass.
 	//
 	// NOTE: Layout pointers are directly assigned to paragraphs so a
 	// container that does not invalidate these pointers after insertion
 	// is needed.
+	/// The individual paragraph layouts comprising the document class
 	typedef std::list<Layout> LayoutList;
 	/// The inset layouts available to this class
 	typedef std::map<docstring, InsetLayout> InsetLayouts;
@@ -305,6 +304,8 @@ protected:
 	int min_toclevel_;
 	/// The maximal TocLevel of sectioning layouts
 	int max_toclevel_;
+	/// Citation formatting information
+	std::map<std::string, std::string> cite_formats_;
 private:
 	///////////////////////////////////////////////////////////////////
 	// helper routines for reading layout files
@@ -329,6 +330,8 @@ private:
 	void readCharStyle(Lexer &, std::string const &);
 	///
 	void readFloat(Lexer &);
+	///
+	void readCiteFormat(Lexer &);
 };
 
 
@@ -424,6 +427,8 @@ public:
 	int max_toclevel() const { return max_toclevel_; }
 	/// returns true if the class has a ToC structure
 	bool hasTocLevels() const;
+	///
+	std::string const & getCiteFormat(std::string const & entry_type) const;
 protected:
 	/// Constructs a DocumentClass based upon a LayoutFile.
 	DocumentClass(LayoutFile const & tc);

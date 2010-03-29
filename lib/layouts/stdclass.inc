@@ -55,3 +55,4 @@ Input stdtitle.inc
 Input stdstruct.inc
 Input lyxmacros.inc
 Input stdlayouts.inc
+Input stdciteformats.inc

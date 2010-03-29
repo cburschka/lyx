@@ -91,6 +91,9 @@ import os, re, string, sys
 # Incremented to format 25, 12 March 2010 by rgh
 # Added RefPrefix tag for layouts and floats.
 
+# Incremented to format 26, 29 March 2010 by rgh
+# Added CiteFormat.
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -98,7 +101,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 25
+currentFormat = 26
 
 
 def usage(prog_name):
@@ -271,7 +274,7 @@ def convert(lines):
             continue
         
         # Only new features
-        if format == 24:
+        if format >= 24 and format <= 25:
             i += 1
             continue
 

@@ -66,7 +66,7 @@ private:
 };
 
 // Keep the changes documented in the Customization manual. 
-int const FORMAT = 25;
+int const FORMAT = 26;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)
@@ -197,7 +197,8 @@ enum TextClassTags {
 	TC_DEFAULTMODULE,
 	TC_PROVIDESMODULE,
 	TC_EXCLUDESMODULE,
-	TC_HTMLTOCSECTION
+	TC_HTMLTOCSECTION,
+	TC_CITEFORMAT
 };
 
 
@@ -206,6 +207,7 @@ namespace {
 	LexerKeyword textClassTags[] = {
 		{ "addtohtmlpreamble", TC_ADDTOHTMLPREAMBLE },
 		{ "addtopreamble",     TC_ADDTOPREAMBLE },
+		{ "citeformat",        TC_CITEFORMAT },
 		{ "classoptions",      TC_CLASSOPTIONS },
 		{ "columns",           TC_COLUMNS },
 		{ "counter",           TC_COUNTER },
@@ -634,6 +636,10 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 		case TC_FLOAT:
 			readFloat(lexrc);
 			break;
+		
+		case TC_CITEFORMAT:
+			readCiteFormat(lexrc);
+			break;
 
 		case TC_IFCOUNTER:
 			ifcounter = true;
@@ -843,6 +849,22 @@ void TextClass::readClassOptions(Lexer & lexrc)
 		}
 	}
 	lexrc.popTable();
+}
+
+
+void TextClass::readCiteFormat(Lexer & lexrc)
+{
+	string etype;
+	string definition;
+	while (lexrc.isOK()) {
+		lexrc.next();
+		etype = lexrc.getString();
+		if (!lexrc.isOK() || compare_ascii_no_case(etype, "end") == 0)
+			break;
+		lexrc.eatLine();
+		definition = lexrc.getString();
+		cite_formats_[etype] = definition;
+	}
 }
 
 
@@ -1325,6 +1347,17 @@ Layout const & DocumentClass::htmlTOCLayout() const
 			html_toc_section_ = defaultLayoutName();
 	}
 	return operator[](html_toc_section_);
+}
+
+
+string const & DocumentClass::getCiteFormat(string const & entry_type) const
+{
+	static string default_format = "{%author%[[%author%, ]][[{%editor%[[%editor%, %ed_text%, ]]}]]}\"%title%\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]][[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}.";
+	
+	map<string, string>::const_iterator it = cite_formats_.find(entry_type);
+	if (it != cite_formats_.end())
+		return it->second;
+	return default_format;
 }
 
 

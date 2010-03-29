@@ -1127,6 +1127,7 @@ dist_layouts_DATA =\
 	layouts/singlecol-new.layout \
 	layouts/slides.layout \
 	layouts/spie.layout \
+	layouts/stdciteformats.inc \
 	layouts/stdclass.inc \
 	layouts/stdcharstyles.inc \
 	layouts/stdcounters.inc \

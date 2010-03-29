@@ -62,7 +62,7 @@ public:
 	/// \return formatted BibTeX data suitable for framing.
 	/// \param pointer to crossref information
 	docstring const & getInfo(BibTeXInfo const * const xref,
-			bool richtext) const;
+			Buffer const & buf, bool richtext) const;
 	///
 	const_iterator find(docstring const & f) const { return bimap_.find(f); }
 	///
@@ -168,7 +168,7 @@ public:
 	/// \return formatted BibTeX data associated with a given key.
 	/// Empty if no info exists. 
 	/// Note that this will retrieve data from the crossref as needed.
-	docstring const getInfo(docstring const & key, 
+	docstring const getInfo(docstring const & key, Buffer const & buf,
 			bool richtext = false) const;
 	/// Is this a reference from a bibtex database
 	/// or from a bibliography environment?

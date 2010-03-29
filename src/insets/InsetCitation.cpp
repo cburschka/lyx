@@ -119,7 +119,7 @@ docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
 	vector<docstring>::const_iterator en = keys.end();
 	docstring tip;
 	for (; it != en; ++it) {
-		docstring const key_info = bi.getInfo(*it);
+		docstring const key_info = bi.getInfo(*it, buffer());
 		if (key_info.empty())
 			continue;
 		if (!tip.empty())
