@@ -15,7 +15,7 @@ CiteFormat
 	# macros
 	!pages {%pages%[[, %_pptext% %pages%]]}
 	!authoredit {%author%[[%author%, ]][[{%editor%[[%editor%, %_edtext%, ]]}]]}
-	!volnum {%volume%[[ %_voltext% %volume%]][[{%number%[[%_numtext% %number%]]}]]}
+	!volnum {%volume%[[ %_voltext% %volume%, {%number%[[%_numtext% %number%]]}]]}
 	!quotetitle "%title%"
 	!emphtitle {!<i>!}%title%{!</i>!}
 	!emphjournal {!<i>!}%journal%{!</i>!}
