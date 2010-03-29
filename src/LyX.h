@@ -123,8 +123,8 @@ private:
 	friend ServerSocket & theServerSocket();
 	friend Converters & theConverters();
 	friend Converters & theSystemConverters();
-	friend Messages & getMessages(std::string const & language);
-	friend Messages & getGuiMessages();
+	friend Messages const & getMessages(std::string const & language);
+	friend Messages const & getGuiMessages();
 	friend KeyMap & theTopLevelKeymap();
 	friend Movers & theMovers();
 	friend Mover const & getMover(std::string  const & fmt);

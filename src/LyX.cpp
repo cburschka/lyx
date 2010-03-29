@@ -1238,14 +1238,14 @@ Movers & theSystemMovers()
 }
 
 
-Messages & getMessages(string const & language)
+Messages const & getMessages(string const & language)
 {
 	LASSERT(singleton_, /**/);
 	return singleton_->messages(language);
 }
 
 
-Messages & getGuiMessages()
+Messages const & getGuiMessages()
 {
 	LASSERT(singleton_, /**/);
 	return singleton_->pimpl_->messages_["GUI"];

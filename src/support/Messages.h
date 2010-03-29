@@ -50,10 +50,10 @@ private:
 
 /// Access to the unique Messages object for the passed \p language.
 /// Implementation is in LyX.cpp.
-extern Messages & getMessages(std::string const & language);
+extern Messages const & getMessages(std::string const & language);
 /// Access to the unique Messages object used for GUI element.
 /// Implementation is in LyX.cpp.
-extern Messages & getGuiMessages();
+extern Messages const & getGuiMessages();
 
 } // namespace lyx
 

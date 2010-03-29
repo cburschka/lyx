@@ -44,13 +44,13 @@ namespace lyx {
 
 // Dummy translation support
 Messages messages_;
-Messages & getMessages(std::string const &)
+Messages const & getMessages(std::string const &)
 {
 	return messages_;
 }
 
 
-Messages & getGuiMessages()
+Messages const & getGuiMessages()
 {
 	return messages_;
 }
