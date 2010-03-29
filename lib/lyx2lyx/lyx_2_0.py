@@ -90,7 +90,7 @@ def read_unicodesymbols():
 unicode_reps = read_unicodesymbols()
 
 
-def put_cmd_in_ert(string):
+def old_put_cmd_in_ert(string):
     for rep in unicode_reps:
         string = string.replace(rep[1], rep[0].replace('\\\\', '\\'))
     string = string.replace('\\', "\\backslash\n")
@@ -581,7 +581,7 @@ def revert_splitindex(document):
             content = lyx2latex(document, document.body[i:k])
             # escape quotes
             content = content.replace('"', r'\"')
-            subst = [put_cmd_in_ert("\\sindex[" + itype + "]{" + content + "}")]
+            subst = [old_put_cmd_in_ert("\\sindex[" + itype + "]{" + content + "}")]
             document.body[i:k+1] = subst
         i = i + 1
     i = 0
@@ -597,7 +597,7 @@ def revert_splitindex(document):
         elif indices == "false":
             del document.body[i:k+1]
         else:
-            subst = [put_cmd_in_ert("\\printindex[" + ptype + "]{}")]
+            subst = [old_put_cmd_in_ert("\\printindex[" + ptype + "]{}")]
             document.body[i:k+1] = subst
         i = i + 1
 
@@ -647,7 +647,7 @@ def revert_subindex(document):
         if indices == "false":
             del document.body[i:k+1]
         else:
-            subst = [put_cmd_in_ert("\\printsubindex[" + ptype + "]{}")]
+            subst = [old_put_cmd_in_ert("\\printsubindex[" + ptype + "]{}")]
             document.body[i:k+1] = subst
         i = i + 1
 
@@ -672,7 +672,7 @@ def revert_printindexall(document):
         if indices == "false":
             del document.body[i:k+1]
         else:
-            subst = [put_cmd_in_ert("\\" + ctype + "{}")]
+            subst = [old_put_cmd_in_ert("\\" + ctype + "{}")]
             document.body[i:k+1] = subst
         i = i + 1
 
@@ -887,9 +887,9 @@ def revert_percent_vspace_lengths(document):
           # revert the VSpace inset to ERT
           if percent == "True":
               if protected:
-                  subst = [put_cmd_in_ert("\\vspace*{" + length + "}")]
+                  subst = [old_put_cmd_in_ert("\\vspace*{" + length + "}")]
               else:
-                  subst = [put_cmd_in_ert("\\vspace{" + length + "}")]
+                  subst = [old_put_cmd_in_ert("\\vspace{" + length + "}")]
               document.body[i:i+2] = subst
       i = i + 1
 
@@ -916,9 +916,9 @@ def revert_percent_hspace_lengths(document):
       # revert the HSpace inset to ERT
       if percent == "True":
           if protected:
-              subst = [put_cmd_in_ert("\\hspace*{" + length + "}")]
+              subst = [old_put_cmd_in_ert("\\hspace*{" + length + "}")]
           else:
-              subst = [put_cmd_in_ert("\\hspace{" + length + "}")]
+              subst = [old_put_cmd_in_ert("\\hspace{" + length + "}")]
           document.body[i:i+3] = subst
       i = i + 2
 
@@ -943,9 +943,9 @@ def revert_hspace_glue_lengths(document):
           length = latex_length(length).split(",")[1]
           # revert the HSpace inset to ERT
           if protected:
-              subst = [put_cmd_in_ert("\\hspace*{" + length + "}")]
+              subst = [old_put_cmd_in_ert("\\hspace*{" + length + "}")]
           else:
-              subst = [put_cmd_in_ert("\\hspace{" + length + "}")]
+              subst = [old_put_cmd_in_ert("\\hspace{" + length + "}")]
           document.body[i:i+3] = subst
       i = i + 2
 
@@ -1182,13 +1182,13 @@ def revert_multirow(document):
       # write ERT to create the multirow cell
       # use 2 rows and 2cm as default with because the multirow span
       # and the column width is only hardly accessible
-      subst = [put_cmd_in_ert("\\multirow{2}{2cm}{")]
+      subst = [old_put_cmd_in_ert("\\multirow{2}{2cm}{")]
       document.body[i + 4:i + 4] = subst
       i = find_token(document.body, "</cell>", i)
       if i == -1:
            document.warning("Malformed LyX document: Could not find end of tabular cell.")
            break
-      subst = [put_cmd_in_ert("}")]
+      subst = [old_put_cmd_in_ert("}")]
       document.body[i - 3:i - 3] = subst
       # cell type 4 is multirow part cell
       i = find_token(document.body, '<cell multirow="4"', i)
@@ -1289,7 +1289,7 @@ def revert_equalspacing_xymatrix(document):
           has_equal_spacing = True
           content = document.body[i][21:]
           content += '\n'.join(document.body[i+1:j])
-          subst = [put_cmd_in_ert(content)]
+          subst = [old_put_cmd_in_ert(content)]
           document.body[i:j+1] = subst
           i += 1
       else:
