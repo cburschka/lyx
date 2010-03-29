@@ -334,7 +334,7 @@ private:
 
 	/// Update the hovering status of the insets. This is called when
 	/// either the screen is updated or when the buffer has scolled.
-	void BufferView::updateHoveredInset() const;
+	void updateHoveredInset() const;
 
 	///
 	void updateDocumentClass(DocumentClass const * const olddc);
