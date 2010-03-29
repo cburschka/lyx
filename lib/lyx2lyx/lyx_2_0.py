@@ -1323,11 +1323,11 @@ def revert_equalspacing_xymatrix(document):
  
       if found != -1:
           has_equal_spacing = True
-          content = document.body[i][21:]
-          content += '\n'.join(document.body[i+1:j])
-          subst = [old_put_cmd_in_ert(content)]
+          content = [document.body[i][21:]]
+          content += document.body[i+1:j]
+          subst = put_cmd_in_ert(content)
           document.body[i:j+1] = subst
-          i += 1
+          i += len(subst)
       else:
           for curline in range(i,j):
               l = document.body[curline].find("\\xymatrix")
