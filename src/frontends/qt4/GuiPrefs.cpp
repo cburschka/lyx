@@ -2417,8 +2417,6 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form)
 		this, SLOT(selectBind()));
 	connect(bindFileED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(removePB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
 
 	shortcut_ = new GuiShortcutDialog(this);
 	shortcut_bc_.setPolicy(ButtonPolicy::OkCancelPolicy);
@@ -2742,6 +2740,7 @@ void PrefShortcuts::on_newPB_pressed()
 
 void PrefShortcuts::on_removePB_pressed()
 {
+	changed();
 	removeShortcut();
 }
 
