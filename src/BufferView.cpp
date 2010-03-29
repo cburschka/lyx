@@ -220,7 +220,8 @@ struct BufferView::Private
 	Private(BufferView & bv): wh_(0), cursor_(bv),
 		anchor_pit_(0), anchor_ypos_(0),
 		inlineCompletionUniqueChars_(0),
-		last_inset_(0), bookmark_edit_position_(0), gui_(0)
+		last_inset_(0), mouse_position_cache_(),
+		bookmark_edit_position_(0), gui_(0)
 	{}
 
 	///
@@ -262,6 +263,11 @@ struct BufferView::Private
 	  * Not owned, so don't delete.
 	  */
 	Inset * last_inset_;
+
+	/// position of the mouse at the time of the last mouse move
+	/// This is used to update the hovering status of inset in
+	/// cases where the buffer is scrolled, but the mouse didn't move.
+	Point mouse_position_cache_;
 
 	// cache for id of the paragraph which was edited the last time
 	int bookmark_edit_position_;
@@ -397,10 +403,6 @@ bool BufferView::fitCursor()
 
 void BufferView::processUpdateFlags(Update::flags flags)
 {
-	// last_inset_ points to the last visited inset. This pointer may become
-	// invalid because of keyboard editing. Since all such operations
-	// causes screen update(), I reset last_inset_ to avoid such a problem.
-	d->last_inset_ = 0;
 	// This is close to a hot-path.
 	LYXERR(Debug::DEBUG, "BufferView::processUpdateFlags()"
 		<< "[fitcursor = " << (flags & Update::FitCursor)
@@ -465,6 +467,8 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		// refresh it:
 		showCursor();
 	}
+
+	updateHoveredInset();
 }
 
 
@@ -573,6 +577,7 @@ void BufferView::scrollDocView(int value)
 	if (abs(offset) <= 2 * height_) {
 		d->anchor_ypos_ -= offset;
 		buffer_.changed(true);
+		updateHoveredInset();
 		return;
 	}
 
@@ -810,14 +815,17 @@ void BufferView::showCursor()
 
 void BufferView::showCursor(DocIterator const & dit, bool recenter)
 {
-	if (scrollToCursor(dit, recenter))
+	if (scrollToCursor(dit, recenter)) {
 		buffer_.changed(false);
+		updateHoveredInset();
+	}
 }
 
 
 void BufferView::scrollToCursor()
 {
-	scrollToCursor(d->cursor_, false);
+	if (scrollToCursor(d->cursor_, false))
+		updateHoveredInset();
 }
 
 
@@ -1634,6 +1642,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		bool const in_texted = cur.inTexted();
 		cur.reset();
 		buffer_.changed(true);
+		updateHoveredInset();
+
 		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_,
 			true, cmd.action == LFUN_SCREEN_UP); 
 		//FIXME: what to do with cur.x_target()?
@@ -1935,6 +1945,42 @@ Inset const * BufferView::getCoveringInset(Text const & text,
 }
 
 
+void BufferView::updateHoveredInset() const
+{
+	// Get inset under mouse, if there is one.
+	Inset const * covering_inset = getCoveringInset(buffer_.text(),
+			d->mouse_position_cache_.x_, d->mouse_position_cache_.y_);
+	if (covering_inset == d->last_inset_)
+		// Same inset, no need to do anything...
+		return;
+
+	bool need_redraw = false;
+	if (d->last_inset_)
+		// Remove the hint on the last hovered inset (if any).
+		need_redraw |= d->last_inset_->setMouseHover(false);
+	
+	// const_cast because of setMouseHover().
+	Inset * inset = const_cast<Inset *>(covering_inset);
+	if (inset)
+		// Highlight the newly hovered inset (if any).
+		need_redraw |= inset->setMouseHover(true);
+
+	d->last_inset_ = inset;
+	
+	if (need_redraw) {
+		LYXERR(Debug::PAINTING, "Mouse hover detected at: ("
+				<< d->mouse_position_cache_.x_ << ", " 
+				<< d->mouse_position_cache_.y_ << ")");
+	
+		d->update_strategy_ = DecorationUpdate;
+
+		// This event (moving without mouse click) is not passed further.
+		// This should be changed if it is further utilized.
+		buffer_.changed(false);
+	}
+}
+
+
 void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 {
 	//lyxerr << "[ cmd0 " << cmd0 << "]" << endl;
@@ -1954,36 +2000,11 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 	// make sure we stay within the screen...
 	cmd.y = min(max(cmd.y, -1), height_);
 
+	d->mouse_position_cache_.x_ = cmd.x;
+	d->mouse_position_cache_.y_ = cmd.y;
+
 	if (cmd.action == LFUN_MOUSE_MOTION && cmd.button() == mouse_button::none) {
-
-		// Get inset under mouse, if there is one.
-		Inset const * covering_inset =
-			getCoveringInset(buffer_.text(), cmd.x, cmd.y);
-		if (covering_inset == d->last_inset_)
-			// Same inset, no need to do anything...
-			return;
-
-		bool need_redraw = false;
-		// const_cast because of setMouseHover().
-		Inset * inset = const_cast<Inset *>(covering_inset);
-		if (d->last_inset_)
-			// Remove the hint on the last hovered inset (if any).
-			need_redraw |= d->last_inset_->setMouseHover(false);
-		if (inset)
-			// Highlighted the newly hovered inset (if any).
-			need_redraw |= inset->setMouseHover(true);
-		d->last_inset_ = inset;
-		if (!need_redraw)
-			return;
-
-		LYXERR(Debug::PAINTING, "Mouse hover detected at: ("
-			<< cmd.x << ", " << cmd.y << ")");
-
-		d->update_strategy_ = DecorationUpdate;
-
-		// This event (moving without mouse click) is not passed further.
-		// This should be changed if it is further utilized.
-		buffer_.changed(false);
+		updateHoveredInset();
 		return;
 	}
 
@@ -2045,6 +2066,7 @@ void BufferView::lfunScroll(FuncRequest const & cmd)
 			scroll(scroll_step * scroll_value);
 	}
 	buffer_.changed(true);
+	updateHoveredInset();
 }
 
 
