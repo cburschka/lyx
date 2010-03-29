@@ -159,9 +159,10 @@ docstring const Messages::get(string const & m) const
 	char const * m_c = m.c_str();
 	char const * trans_c = gettext(m_c);
 	docstring trans;
-	if (!trans_c)
-		LYXERR(Debug::LOCALE, "Undefined result from gettext");
-	else if (trans_c == m_c) {
+	if (!trans_c) {
+		LYXERR(Debug::LOCALE, "Undefined result from gettext for `" << m << "'.");
+		trans = from_ascii(m);
+	} else if (trans_c == m_c) {
 		//LYXERR(Debug::LOCALE, "Same as entered returned");
 		trans = from_ascii(m);
 	} else {
