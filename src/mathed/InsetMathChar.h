@@ -42,6 +42,8 @@ public:
 	void octave(OctaveStream & os) const;
 	///
 	void mathmlize(MathStream & ms) const;
+	///
+	void htmlize(HtmlStream & ms) const;
 	/// identifies Charinsets
 	InsetMathChar const * asCharInset() const { return this; }
 	///
