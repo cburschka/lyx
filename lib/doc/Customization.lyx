@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 378
+\lyxformat 381
 \begin_document
 \begin_header
 \textclass scrbook
@@ -124,7 +124,7 @@ End
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\html_use_mathml true
+\html_math_output 0
 \html_be_strict true
 \end_header
 
@@ -6877,7 +6877,7 @@ default
 \end_layout
 
 \begin_layout Subsection
-The Document Class Declaration
+The document class declaration
 \end_layout
 
 \begin_layout Standard
@@ -7271,7 +7271,7 @@ While we're giving advice: make regular backups.
 \end_layout
 
 \begin_layout Subsection
-The Module Declaration
+The Module declaration
 \end_layout
 
 \begin_layout Standard
@@ -7622,6 +7622,39 @@ status collapsed
 
 \begin_layout Plain Layout
 EndPreamble
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+CiteFormat
+\end_layout
+
+\end_inset
+
+ Defines formats for use in the display of bibliographic information.
+ See Section for details.
+ Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+End
 \end_layout
 
 \end_inset
@@ -9265,7 +9298,7 @@ End
 \end_layout
 
 \begin_layout Subsection
-Paragraph Styles
+Paragraph styles
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Paragraph-Styles"
@@ -15468,6 +15501,406 @@ giant
 \end_inset
 
 ]
+\end_layout
+
+\begin_layout Subsection
+Citation format description
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+CiteFormat
+\end_layout
+
+\end_inset
+
+ blocks are used to describe how bibliographic information should be displayed,
+ both within LyX itself (in the citation dialog and in tooltips, for example)
+ and in XHTML output.
+ Such a block might look like this:
+\end_layout
+
+\begin_layout LyX-Code
+CiteFormat
+\end_layout
+
+\begin_layout LyX-Code
+ article ...
+\end_layout
+
+\begin_layout LyX-Code
+ book ...
+\end_layout
+
+\begin_layout LyX-Code
+End
+\end_layout
+
+\begin_layout Standard
+The individual lines define how the bibliographic information associated
+ with an article or book, respectively, is to be displayed, and such a definitio
+n can be given for any `entry type' that might be present in a BibTeX file.
+ LyX defines a default format in the source code that will be used if no
+ specific definition has been given.
+ LyX predefines several formats in the file 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+stdciteformats.inc
+\end_layout
+
+\end_inset
+
+, which is included in most of LyX's document classes.
+\end_layout
+
+\begin_layout Standard
+The definitions use a simple language that allows BibTeX keys to be replaced
+ with their values.
+ Keys should be enclosed in % signs, e.g.: 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+%author%
+\end_layout
+
+\end_inset
+
+.
+ So a simple definition might look like this:
+\end_layout
+
+\begin_layout LyX-Code
+misc %author%, 
+\begin_inset Quotes eld
+\end_inset
+
+%title
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This would print the author, followed by a comma, followed by the title,
+ in quotes, followed by a period.
+\end_layout
+
+\begin_layout Standard
+Of course, sometimes you may want to print a key only if it exists.
+ This can be done by using a conditional construction, such as: 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+{%volume%[[vol.
+\begin_inset space ~
+\end_inset
+
+%volume%]]}
+\end_layout
+
+\end_inset
+
+.
+ This says: If the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+volume
+\end_layout
+
+\end_inset
+
+ key exists, then print 
+\begin_inset Quotes eld
+\end_inset
+
+vol.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ followed by the volume key.
+ It is also possible to have an else clause in the conditional, such as:
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+{%author%[[%author%]][[%editor%, ed.]]}
+\end_layout
+
+\end_inset
+
+.
+ Here, the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+author
+\end_layout
+
+\end_inset
+
+ key is printed if it exists; otherwise, the editor key is printed, followed
+ by 
+\begin_inset Quotes eld
+\end_inset
+
+,
+\begin_inset space ~
+\end_inset
+
+ed.
+\begin_inset Quotes erd
+\end_inset
+
+ Note that the key is again enclosed in % signs; the entire conditional
+ is enclosed in braces; and the if and else clauses are enclosed in double
+ brackets, 
+\begin_inset Quotes eld
+\end_inset
+
+[[
+\begin_inset Quotes eld
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+]]
+\begin_inset Quotes erd
+\end_inset
+
+.
+ There must be no space between any of these.
+\end_layout
+
+\begin_layout Standard
+There is one other piece of syntax available in definitions, which looks
+ like this: 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+{!<i>!}
+\end_layout
+
+\end_inset
+
+.
+ This defines a piece of formatting information that is to be used when
+ creating 
+\begin_inset Quotes eld
+\end_inset
+
+rich text
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Obviously, we do not want to output HTML tags when writing plain text,
+ so they should be wrapped in 
+\begin_inset Quotes eld
+\end_inset
+
+{!
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+!}
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Two special sorts of definitions are also possible in a 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+CiteFormat
+\end_layout
+
+\end_inset
+
+ block.
+ An example of the first would be:
+\end_layout
+
+\begin_layout LyX-Code
+!quotetitle 
+\begin_inset Quotes eld
+\end_inset
+
+%title%
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is an abbreviation, or macro, and it can be used by treating it as
+ if it were a key: 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+%!quotetitle%
+\end_layout
+
+\end_inset
+
+.
+ LyX will treat 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+%!quotetitle%
+\end_layout
+
+\end_inset
+
+ exactly as it would treat its definition.
+ So, let us issue the obvious 
+\emph on
+warning
+\emph default
+.
+ Do not do this:
+\end_layout
+
+\begin_layout LyX-Code
+!funfun %funfun%
+\end_layout
+
+\begin_layout Standard
+or anything like it.
+ LyX shouldn't go into an infinite loop, but it may go into a long one before
+ it gives up.
+\end_layout
+
+\begin_layout Standard
+The second sort of special definition might look like this:
+\end_layout
+
+\begin_layout LyX-Code
+_pptext pp.
+\end_layout
+
+\begin_layout Standard
+This defines a translatable piece of text, which allows relevant parts of
+ the bibliography to be translated.
+ It can be included in a definition by treating it as a key: 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+%_pptext%
+\end_layout
+
+\end_inset
+
+.
+ Several of these are predefined in 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+stdciteformats.inc
+\end_layout
+
+\end_inset
+
+.
+ Note that these are not macros, in the sense just defined.
+ They will not be expanded.
+\end_layout
+
+\begin_layout Standard
+So here then is an example that use all these features:
+\end_layout
+
+\begin_layout LyX-Code
+!authoredit {%author%[[%author%, ]][[{%editor%[[%editor%, %_edtext%, ]]}]]}
+\end_layout
+
+\begin_layout Standard
+The defines a macro that prints the author, followed by a comma, if the
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+author
+\end_layout
+
+\end_inset
+
+ key is defined, or else prints the name of the editor, followed by the
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+_edtext
+\end_layout
+
+\end_inset
+
+ or its translation (it is by default 
+\begin_inset Quotes eld
+\end_inset
+
+ed.
+\begin_inset Quotes erd
+\end_inset
+
+), if the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+editor
+\end_layout
+
+\end_inset
+
+ key is defined.
+ Note that this is in fact defined in 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+stdciteformats.inc
+\end_layout
+
+\end_inset
+
+, so you can use it in your own definitions, or re-definitions, if you load
+ that file first.
 \end_layout
 
 \begin_layout Section
