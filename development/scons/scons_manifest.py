@@ -2811,6 +2811,7 @@ lib_layouts_inc_files = Split('''
     numrevtex.inc
     scrclass.inc
     stdcharstyles.inc
+    stdciteformats.inc
     stdclass.inc
     stdcounters.inc
     stdcustom.inc
