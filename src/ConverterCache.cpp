@@ -249,6 +249,8 @@ void ConverterCache::init()
 
 void ConverterCache::writeIndex() const
 {
+	if (!lyxrc.use_converter_cache || cache_dir.empty())
+		return;
 	pimpl_->writeIndex();
 }
 
