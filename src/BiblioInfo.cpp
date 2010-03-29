@@ -396,22 +396,21 @@ namespace {
 
 
 docstring BibTeXInfo::expandFormat(string const & format, 
-		BibTeXInfo const * const xref, Buffer const & buf, 
+		BibTeXInfo const * const xref, int & counter, Buffer const & buf, 
 		bool richtext) const
 {
 	// incorrect use of macros could put us in an infinite loop
-	static int max_passes = 1000;
+	static int max_passes = 5000;
 	docstring ret; // return value
 	string key;
 	bool scanning_key = false;
 	bool scanning_rich = false;
 
-	int passes = 0;
 	string fmt = format;
 	// we'll remove characters from the front of fmt as we 
 	// deal with them
 	while (fmt.size()) {
-		if (passes++ > max_passes) {
+		if (counter++ > max_passes) {
 			LYXERR0("Recursion limit reached while parsing `" 
 			        << format << "'.");
 			return _("ERROR!");
@@ -466,9 +465,9 @@ docstring BibTeXInfo::expandFormat(string const & format,
 					fmt = newfmt;
 					docstring const val = getValueForKey(optkey, xref);
 					if (!val.empty())
-						ret += expandFormat(ifpart, xref, buf, richtext);
+						ret += expandFormat(ifpart, xref, counter, buf, richtext);
 					else if (!elsepart.empty())
-						ret += expandFormat(elsepart, xref, buf, richtext);
+						ret += expandFormat(elsepart, xref, counter, buf, richtext);
 					// fmt will have been shortened for us already
 					continue; 
 				}
@@ -524,7 +523,8 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref,
 
 	DocumentClass const & dc = buf.params().documentClass();
 	string const & format = dc.getCiteFormat(to_utf8(entry_type_));
-	info_ = expandFormat(format, xref, buf, richtext);
+	int counter = 0;
+	info_ = expandFormat(format, xref, counter, buf, richtext);
 
 	if (!info_.empty())
 		info_ = convertLaTeXCommands(info_);

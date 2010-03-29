@@ -122,7 +122,7 @@ private:
 	/// moreover, keys that look like "%_key%" are treated as translatable
 	/// so that things like "pp." and "vol." can be translated.
 	docstring expandFormat(std::string const & fmt,
-			BibTeXInfo const * const xref, 
+			BibTeXInfo const * const xref, int & counter, 
 			Buffer const & buf, bool richtext) const;
 	/// true if from BibTeX; false if from bibliography environment
 	bool is_bibtex_;
