@@ -1896,6 +1896,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened, bool mark_active)
 		theLyXFunc().gotoBookmark(i+1, false, false);
 
 	if (buf.isClean() || buf.paragraphs().empty()) {
+		buf.removeAutosaveFile();
 		// save in sessions if requested
 		// do not save childs if their master
 		// is opened as well
@@ -1936,13 +1937,14 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened, bool mark_active)
 		// if we crash after this we could
 		// have no autosave file but I guess
 		// this is really improbable (Jug)
-		buf.removeAutosaveFile();
+		//buf.removeAutosaveFile();
 		buf.markClean();
 		break;
 	case 2:
 		return false;
 	}
 
+	buf.removeAutosaveFile();
 	// save file names to .lyx/session
 	if (tolastopened)
 		theSession().lastOpened().add(buf.fileName(), mark_active);

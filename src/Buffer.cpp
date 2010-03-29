@@ -928,7 +928,7 @@ bool Buffer::writeFile(FileName const & fname) const
 		return false;
 	}
 
-	removeAutosaveFile();
+	// removeAutosaveFile();
 
 	saveCheckSum(d->filename);
 	message(str + _(" done."));
