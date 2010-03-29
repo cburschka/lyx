@@ -346,6 +346,99 @@ MathStream & operator<<(MathStream & ms, docstring const & s)
 }
 
 
+//////////////////////////////////////////////////////////////////////
+
+
+HtmlStream::HtmlStream(odocstream & os)
+	: os_(os), tab_(0), line_(0), lastchar_(0), in_text_(false)
+{}
+
+
+void HtmlStream::defer(docstring const & s)
+{
+	deferred_ << s;
+}
+
+
+void HtmlStream::defer(string const & s)
+{
+	deferred_ << from_utf8(s);
+}
+
+
+docstring HtmlStream::deferred() const
+{ 
+	return deferred_.str();
+}
+
+
+HtmlStream & operator<<(HtmlStream & ms, MathAtom const & at)
+{
+	at->htmlize(ms);
+	return ms;
+}
+
+
+HtmlStream & operator<<(HtmlStream & ms, MathData const & ar)
+{
+	htmlize(ar, ms);
+	return ms;
+}
+
+
+HtmlStream & operator<<(HtmlStream & ms, char const * s)
+{
+	ms.os() << s;
+	return ms;
+}
+
+
+HtmlStream & operator<<(HtmlStream & ms, char c)
+{
+	ms.os() << c;
+	return ms;
+}
+
+
+HtmlStream & operator<<(HtmlStream & ms, char_type c)
+{
+	ms.os().put(c);
+	return ms;
+}
+
+
+HtmlStream & operator<<(HtmlStream & ms, MTag const & t)
+{
+	++ms.tab();
+	ms.os() << "\n";
+	ms.os() << '<' << from_ascii(t.tag_);
+	if (!t.attr_.empty())
+		ms.os() << " " << from_ascii(t.attr_);
+	ms << '>';
+	return ms;
+}
+
+
+HtmlStream & operator<<(HtmlStream & ms, ETag const & t)
+{
+	ms.os() << "\n";
+	if (ms.tab() > 0)
+		--ms.tab();
+	ms.os() << "</" << from_ascii(t.tag_) << '>';
+	return ms;
+}
+
+
+HtmlStream & operator<<(HtmlStream & ms, docstring const & s)
+{
+	ms.os() << s;
+	return ms;
+}
+
+
+//////////////////////////////////////////////////////////////////////
+
+
 SetMode::SetMode(MathStream & os, bool text)
 	: os_(os), opened_(false)
 {

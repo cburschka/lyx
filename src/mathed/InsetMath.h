@@ -73,6 +73,7 @@ class InsetMathUnknown;
 
 class InsetMathRef;
 
+class HtmlStream;
 class NormalStream;
 class OctaveStream;
 class MapleStream;
@@ -186,8 +187,13 @@ public:
 	virtual void maxima(MaximaStream &) const;
 	/// write content as something readable by Mathematica
 	virtual void mathematica(MathematicaStream &) const;
-	/// write content as something resembling MathML
+	/// write content as MathML
 	virtual void mathmlize(MathStream &) const;
+	/// write content as HTML, best we can.
+	/// the idea for this, and some of the details, come from
+	/// eLyXer, written by Alex Fernandez. no code is borrowed. rather,
+	/// we try to mimic how eLyXer outputs some math.
+	virtual void htmlize(HtmlStream &) const;
 	/// write content as something readable by Octave
 	virtual void octave(OctaveStream &) const;
 

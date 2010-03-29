@@ -16,6 +16,7 @@
 
 namespace lyx {
 
+class HtmlStream;
 class NormalStream;
 class MapleStream;
 class MaximaStream;
@@ -26,6 +27,7 @@ class WriteStream;
 class MathData;
 
 void write(MathData const &, WriteStream &);
+void htmlize(MathData const &, HtmlStream &);
 void normalize(MathData const &, NormalStream &);
 void maple(MathData const &, MapleStream &);
 void maxima(MathData const &, MaximaStream &);

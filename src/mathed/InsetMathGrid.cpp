@@ -998,6 +998,27 @@ void InsetMathGrid::mathmlize(MathStream & os) const
 }
 
 
+void InsetMathGrid::htmlize(HtmlStream & os) const
+{
+	bool const havetable = nrows() > 1 || ncols() > 1;
+	if (!havetable) {
+		os << cell(index(0, 0));
+		return;
+	}
+	os << MTag("table", "class='mathtable'");
+	for (row_type row = 0; row < nrows(); ++row) {
+		os << MTag("tr");;
+		for (col_type col = 0; col < ncols(); ++col) {
+			os << MTag("td");
+			os << cell(index(row, col));
+			os << ETag("td");
+		}
+		os << ETag("tr");;
+	}
+	os << ETag("table");
+}
+
+
 void InsetMathGrid::write(WriteStream & os) const
 {
 	write(os, 0, 0, nrows(), ncols());

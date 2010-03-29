@@ -352,6 +352,67 @@ private:
 };
 
 
+class HtmlStream {
+public:
+	///
+	explicit HtmlStream(odocstream & os);
+	///
+	void cr();
+	///
+	odocstream & os() { return os_; }
+	///
+	int line() const { return line_; }
+	///
+	int & tab() { return tab_; }
+	///
+	friend HtmlStream & operator<<(HtmlStream &, char const *);
+	///
+	void defer(docstring const &);
+	///
+	void defer(std::string const &);
+	///
+	docstring deferred() const;
+	///
+	bool inText() const { return in_text_; }
+private:
+	///
+	void setTextMode() { in_text_ = true; }
+	///
+	void setMathMode() { in_text_ = false; }
+	///
+	odocstream & os_;
+	///
+	int tab_;
+	///
+	int line_;
+	///
+	char lastchar_;
+	///
+	bool in_text_;
+	///
+	odocstringstream deferred_;
+	///
+	friend class SetMode;
+};
+
+///
+HtmlStream & operator<<(HtmlStream &, MathAtom const &);
+///
+HtmlStream & operator<<(HtmlStream &, MathData const &);
+///
+HtmlStream & operator<<(HtmlStream &, docstring const &);
+///
+HtmlStream & operator<<(HtmlStream &, char const *);
+///
+HtmlStream & operator<<(HtmlStream &, char);
+///
+HtmlStream & operator<<(HtmlStream &, char_type);
+///
+HtmlStream & operator<<(HtmlStream &, MTag const &);
+///
+HtmlStream & operator<<(HtmlStream &, ETag const &);
+
+
 //
 // Debugging
 //

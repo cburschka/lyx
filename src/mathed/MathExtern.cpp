@@ -54,6 +54,7 @@ namespace lyx {
 namespace {
 
 enum ExternalMath {
+	HTML,
 	MAPLE,
 	MAXIMA,
 	MATHEMATICA,
@@ -120,7 +121,7 @@ MathData::iterator extractArgument(MathData & ar,
 		// leave out delimiters if this is a function argument
 		// unless we are doing MathML, in which case we do want
 		// the delimiters
-		if (function && kind != MATHML) {
+		if (function && kind != MATHML && kind != HTML) {
 			MathData const & arg = (*pos)->asDelimInset()->cell(0);
 			MathData::const_iterator cur = arg.begin();
 			MathData::const_iterator end = arg.end();
@@ -948,16 +949,16 @@ void extractLims(MathData & ar)
 void extractStructure(MathData & ar, ExternalMath kind)
 {
 	//lyxerr << "\nStructure from: " << ar << endl;
-	if (kind != MATHML)
+	if (kind != MATHML && kind != HTML)
 		splitScripts(ar);
 	extractDelims(ar);
 	extractIntegrals(ar, kind);
-	if (kind != MATHML)
+	if (kind != MATHML && kind != HTML)
 		extractSums(ar);
 	extractNumbers(ar);
 	extractMatrices(ar);
 	extractFunctions(ar, kind);
-	if (kind != MATHML) {
+	if (kind != MATHML && kind != HTML) {
 		extractDets(ar);
 		extractDiff(ar);
 		extractExps(ar);
@@ -1431,6 +1432,21 @@ void mathmlize(MathData const & dat, MathStream & os)
 		if (!os.inText())
 			os << ETag("mrow");
 	}
+}
+
+
+void htmlize(MathData const & dat, HtmlStream & os)
+{
+	MathData ar = dat;
+	extractStructure(ar, HTML);
+	if (ar.size() == 0) 
+		return;
+	if (ar.size() == 1) {
+		os << ar.front();
+		return;
+	}
+	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		(*it)->htmlize(os);
 }
 
 

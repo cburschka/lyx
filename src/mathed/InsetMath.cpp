@@ -130,6 +130,16 @@ void InsetMath::mathmlize(MathStream & os) const
 }
 
 
+void InsetMath::htmlize(HtmlStream & os) const
+{
+	os << "<!-- " << from_utf8(insetName(lyxCode())) << " -->";
+	os << MTag("span", "style='color: red;'");
+	NormalStream ns(os.os());
+	normalize(ns);
+	os << ETag("span");
+}
+
+
 HullType InsetMath::getType() const
 {
 	return hullNone;

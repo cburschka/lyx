@@ -222,6 +222,8 @@ public:
 	//void maple(MapleStream &) const;
 	///
 	void mathmlize(MathStream &) const;
+	/// 
+	void htmlize(HtmlStream &) const;
 	///
 	//void octave(OctaveStream &) const;
 

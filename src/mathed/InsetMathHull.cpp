@@ -1810,14 +1810,38 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 
 docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
-	if (getType() == hullSimple)
-		xs << html::StartTag("math", "xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
-	else 
-		xs << html::StartTag("math", 
-		        "display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
-	MathStream ms(xs.os());
-	InsetMathGrid::mathmlize(ms);
-	xs << html::EndTag("math");
+	BufferParams::MathOutput mathtype = buffer().params().html_math_output;
+	// FIXME Eventually we would like to do this inset by inset.
+	switch (mathtype) {
+	case BufferParams::MathML: {
+		if (getType() == hullSimple)
+			xs << html::StartTag("math", 
+			      "xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
+		else 
+			xs << html::StartTag("math", 
+			      "display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
+		MathStream ms(xs.os());
+		InsetMathGrid::mathmlize(ms);
+		xs << html::EndTag("math");
+		break;
+	} 
+	case BufferParams::HTML: {
+		string tag = (getType() == hullSimple) ? "span" : "div";
+		xs << html::StartTag(tag, "class='formula'", true);
+		HtmlStream ms(xs.os());
+		InsetMathGrid::htmlize(ms);
+		xs << html::EndTag(tag);
+		break;
+	} 
+	case BufferParams::Images: {
+		LYXERR0("Image output for math presently unsupported.");
+		break;
+	} 
+	case BufferParams::LaTeX: {
+		// FIXME Obviously, the only real question is how to wrap this.
+		LYXERR0("LaTeX output for math presently unsupported.");
+	}
+	} // end switch
 	return docstring();
 }
 
