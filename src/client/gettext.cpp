@@ -26,7 +26,7 @@ namespace lyx {
 
 namespace {
 
-Messages & getLyXMessages()
+Messages const & getLyXMessages()
 {
 	static Messages lyx_messages;
 
