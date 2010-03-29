@@ -194,12 +194,17 @@ public:
 	~MenuItem() {}
 
 	/// The label of a given menuitem
-	QString label() const {	return label_.split('|')[0]; }
+	QString label() const 
+	{	
+		int const index = label_.lastIndexOf('|');
+		return index == -1 ? label_ : label_.left(index);
+	}
 
 	/// The keyboard shortcut (usually underlined in the entry)
 	QString shortcut() const
 	{
-		return label_.contains('|') ? label_.split('|')[1] : QString();
+		int const index = label_.lastIndexOf('|');
+		return index == -1 ? QString() : label_.mid(index + 1); 
 	}
 	/// The complete label, with label and shortcut separated by a '|'
 	QString fulllabel() const { return label_;}
@@ -717,7 +722,7 @@ void MenuDefinition::expandGraphicsGroups(BufferView const * bv)
 	add(MenuItem(MenuItem::Command, qt_("No Group"), 
 		     FuncRequest(LFUN_SET_GRAPHICS_GROUP)));
 	for (; it != end; it++) {
-		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(*it),
+		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(*it) + '|',
 				FuncRequest(LFUN_SET_GRAPHICS_GROUP, *it)));
 	}
 }
@@ -1098,10 +1103,12 @@ void MenuDefinition::expandToc2(Toc const & toc_list,
 		for (size_t i = from; i < to; ++i) {
 			QString label(4 * max(0, toc_list[i].depth() - depth), ' ');
 			label += limitStringLength(toc_list[i].str());
-			if (toc_list[i].depth() == depth
-			    && shortcut_count < 9) {
-				if (label.contains(QString::number(shortcut_count + 1)))
-					label += '|' + QString::number(++shortcut_count);
+			if (toc_list[i].depth() == depth) {
+				label += '|';
+			    if (shortcut_count < 9) {
+					if (label.contains(QString::number(shortcut_count + 1)))
+						label += QString::number(++shortcut_count);
+				}
 			}
 			add(MenuItem(MenuItem::Command, label,
 					    FuncRequest(toc_list[i].action())));
@@ -1115,10 +1122,12 @@ void MenuDefinition::expandToc2(Toc const & toc_list,
 
 			QString label(4 * max(0, toc_list[pos].depth() - depth), ' ');
 			label += limitStringLength(toc_list[pos].str());
-			if (toc_list[pos].depth() == depth &&
-			    shortcut_count < 9) {
-				if (label.contains(QString::number(shortcut_count + 1)))
-					label += '|' + QString::number(++shortcut_count);
+			if (toc_list[pos].depth() == depth) {
+				label += '|';
+			    if (shortcut_count < 9) {
+					if (label.contains(QString::number(shortcut_count + 1)))
+						label += QString::number(++shortcut_count);
+				}
 			}
 			if (new_pos == pos + 1) {
 				add(MenuItem(MenuItem::Command,
@@ -1177,7 +1186,7 @@ void MenuDefinition::expandToc(Buffer const * buf)
 			TocIterator eend = cit->second.end();
 			for (; ccit != eend; ++ccit) {
 				submenu.add(MenuItem(MenuItem::Command,
-					limitStringLength(ccit->str()),
+					limitStringLength(ccit->str()) + '|',
 					FuncRequest(ccit->action())));
 			}
 		}
@@ -1218,7 +1227,7 @@ void MenuDefinition::expandPasteRecent(Buffer const * buf)
 	docstring_list::const_iterator end = sel.end();
 
 	for (unsigned int index = 0; cit != end; ++cit, ++index) {
-		add(MenuItem(MenuItem::Command, toqstr(*cit),
+		add(MenuItem(MenuItem::Command, toqstr(*cit) + '|',
 				    FuncRequest(LFUN_PASTE, convert<string>(index))));
 	}
 }
@@ -1286,7 +1295,8 @@ void MenuDefinition::expandBranches(Buffer const * buf)
 		if (ii < 10) {
 			label = convert<docstring>(ii) + ". " + label
 				+ char_type('|') + convert<docstring>(ii);
-		}
+		} else
+			label += char_type('|');
 		child_branches.addWithStatusCheck(MenuItem(MenuItem::Command,
 				    toqstr(label),
 				    FuncRequest(LFUN_BRANCH_INSERT,
