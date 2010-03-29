@@ -533,8 +533,7 @@ void GuiWorkArea::resizeBufferView()
 	buffer_view_->resize(viewport()->width(), viewport()->height());
 	if (cursor_in_view)
 		buffer_view_->scrollToCursor();
-	else
-		updateScreen();
+	updateScreen();
 
 	// Update scrollbars which might have changed due different
 	// BufferView dimension. This is especially important when the
