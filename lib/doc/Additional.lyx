@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 378
+\lyxformat 381
 \begin_document
 \begin_header
 \textclass scrbook
@@ -125,7 +125,7 @@ End
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\html_use_mathml true
+\html_math_output 0
 \html_be_strict true
 \end_header
 
@@ -4520,10 +4520,20 @@ Bibliography output is handled by the same machinery that handles the presentati
 on of reference information in the citation dialog, so you will see in the
  XHTML output pretty much what you would see if you were to look at a given
  entry in the citation dialog.
- Unfortunately, the formatting of bibliography entries, too, is at present
- not customizable, and it is fairly primitive, though this should change
- shortly.
- 
+ The formatting can be customized in your layout file or, preferably, in
+ a module.
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Citation-format-description"
+
+\end_inset
+
+ of the 
+\emph on
+Customization
+\emph default
+ manual for the details.
 \end_layout
 
 \begin_layout Standard
@@ -4567,7 +4577,7 @@ Language in Context: Selected Essays
 \end_layout
 
 \begin_layout Standard
-Again, this should be fixed before long.
+This should be fixed before long.
 \end_layout
 
 \begin_layout Standard

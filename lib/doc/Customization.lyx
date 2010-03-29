@@ -7644,7 +7644,14 @@ CiteFormat
 \end_inset
 
  Defines formats for use in the display of bibliographic information.
- See Section for details.
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Citation-format-description"
+
+\end_inset
+
+ for details.
  Must end with 
 \begin_inset Quotes eld
 \end_inset
@@ -15504,6 +15511,12 @@ giant
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Citation-format-description"
+
+\end_inset
+
 Citation format description
 \end_layout
 
@@ -17497,6 +17510,32 @@ div
 \end_inset
 
  and will rarely need changing.
+\end_layout
+
+\begin_layout Subsection
+Bibliography formatting
+\end_layout
+
+\begin_layout Standard
+The bibliography can be formatted using 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+CiteFormat
+\end_layout
+
+\end_inset
+
+ blocks.
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Citation-format-description"
+
+\end_inset
+
+ for the details.
 \end_layout
 
 \begin_layout Subsection
