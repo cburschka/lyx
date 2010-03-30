@@ -43,8 +43,6 @@ public:
 	///
 	void mathematica(MathematicaStream &) const;
 	///
-	void mathmlize(MathStream &) const;
-	///
 	void octave(OctaveStream &) const;
 	///
 	InsetCode lyxCode() const { return MATH_EXFUNC_CODE; }
