@@ -655,8 +655,8 @@ void InsetMathScript::htmlize(HtmlStream & os) const
 
 	if (u && d)
 		os << MTag("span", "class='scripts'")
-			 << MTag("span", "class='sup'") << up() << ETag("span")
-			 << MTag("span", "class='sub'") << down() << ETag("span")
+			 << MTag("span") << up() << ETag("span")
+			 << MTag("span") << down() << ETag("span")
 			 << ETag("span");
 	else if (u)
 		os << MTag("sup", "class='math'") << up() << ETag("sup");
@@ -778,8 +778,7 @@ void InsetMathScript::validate(LaTeXFeatures & features) const
 	if (features.runparams().flavor == OutputParams::HTML)
 		features.addPreambleSnippet("<style type=\"text/css\">\n"
 			"span.scripts{display: inline-block; vertical-align: middle; text-align:center; font-size: 75%;}\n"
-			"span.sup{display: block;}\n"
-			"span.sub{display: block;}\n"
+			"span.scripts span {display: block;}\n"
 			"sub.math{font-size: 75%;}\n"
 			"sup.math{font-size: 75%;}\n"
 			"</style>");
