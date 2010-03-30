@@ -93,19 +93,39 @@ void InsetMathDots::mathmlize(MathStream & os) const
 	std::string ent;
 	if (n == "dots" || n == "dotsc" || n == "dotso" || n == "ldots")
 		ent = "&hellip;";
-	else if (n == "adots")
+	else if (n == "adots" || n == "iddots")
 		ent = "&utdot;";
 	else if (n == "cdots" || n == "dotsb" || n == "dotsi" || n == "dotsm")
 		ent = "&ctdot;";
 	else if (n == "ddots")
 		ent = "&dtdot;";
-	else if (n == "iddots")
-		ent = "&utdot;";
 	else if (n == "vdots")
 		ent = "&vellip;";
 	else
 		LASSERT(false, ent = "&hellip;");
 	os << MTag("mi") << from_ascii(ent) << ETag("mi");
+}
+
+
+void InsetMathDots::htmlize(HtmlStream & os) const
+{
+	// which symbols we support is decided by what is listed in
+	// lib/symbols as generating a dots inset
+	docstring const & n = key_->name;
+	std::string ent;
+	if (n == "dots" || n == "dotsc" || n == "dotso" || n == "ldots")
+		ent = "&#x02026;";
+	else if (n == "adots" || n == "iddots")
+		ent = "&#x022F0;";
+	else if (n == "cdots" || n == "dotsb" || n == "dotsi" || n == "dotsm")
+		ent = "&#x022EF;";
+	else if (n == "ddots")
+		ent = "&#x022F1;";
+	else if (n == "vdots")
+		ent = "&#x022EE;";
+	else
+		LASSERT(false, ent = "#x02026;");
+	os << from_ascii(ent);
 }
 
 } // namespace lyx
