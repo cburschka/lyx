@@ -168,6 +168,12 @@ void InsetMathDelim::mathmlize(MathStream & os) const
 }
 
 
+void InsetMathDelim::htmlize(HtmlStream & os) const
+{
+	os << left_ << cell(0) << right_;
+}
+
+
 void InsetMathDelim::octave(OctaveStream & os) const
 {
 	if (isAbs())
