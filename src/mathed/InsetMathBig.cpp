@@ -12,6 +12,7 @@
 
 #include "InsetMathBig.h"
 
+#include "LaTeXFeatures.h"
 #include "MathSupport.h"
 #include "MathStream.h"
 #include "MetricsInfo.h"
@@ -149,6 +150,60 @@ void InsetMathBig::mathmlize(MathStream & os) const
 }
 
 
+void InsetMathBig::htmlize(HtmlStream & os) const
+{
+	std::string name;
+	switch (size()) {
+	case 0: case 1: name = "big"; break;
+	case 2: case 3: name = "bigg"; break;
+	case 4: case 5: name = "biggg"; break;
+	default: name  = "big"; break;
+	}
+	os << MTag("span", "class='" + name + "symbol'");
+	if (delim_ == "(" || delim_ == ")"
+			|| delim_ == "[" || delim_ == "]"
+			|| delim_ == "|" || delim_ == "/")
+		os << delim_;
+	else if (delim_ == "\\{" || delim_ == "\\lbrace")
+		os << "{";
+	else if (delim_ == "\\}" || delim_ == "\\rbrace")
+		os << "}";
+	else if (delim_ == "\\slash")
+		os << "/";
+	else if (delim_ == "\\|" || delim_ == "\\vert")
+		os << "|";
+	else if (delim_ == "\\Vert")
+		os << "&par;";
+	else if (delim_ == "\\\\" || delim_ == "\\backslash")
+		os <<" \\";
+	else if (delim_ == "\\langle")
+		os << "&lt;";
+	else if (delim_ == "\\rangle")
+		os << "&gt;";
+	else if (delim_ == "\\lceil")
+		os << "&lceil;";
+	else if (delim_ == "\\rceil")
+		os << "&rceil;";
+	else if (delim_ == "\\lfloor")
+		os << "&lfloor;";
+	else if (delim_ == "\\rfloor")
+		os << "&rfloor;";
+	else if (delim_ == "\\downarrow")
+		os << "&darr;";
+	else if (delim_ == "\\uparrow")
+		os << "&uarr;";
+	else if (delim_ == "\\Downarrow")
+		os << "&dArr;";
+	else if (delim_ == "\\Uparrow")
+		os << "&uArr;";
+	else if (delim_ == "\\updownarrow")
+		os << "&varr;";
+	else if (delim_ == "\\Updownarrow")
+		os << "&vArr;";
+	os << ETag("span");
+}
+
+
 void InsetMathBig::infoize2(odocstream & os) const
 {
 	os << name_;
@@ -169,6 +224,17 @@ bool InsetMathBig::isBigInsetDelim(docstring const & delim)
 		"\\updownarrow", "\\Updownarrow", ""
 	};
 	return support::findToken(delimiters, to_utf8(delim)) >= 0;
+}
+
+
+void InsetMathBig::validate(LaTeXFeatures & features) const
+{
+	if (features.runparams().flavor == OutputParams::HTML)
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"span.bigsymbol{font-size: 150%;}\n"
+			"span.biggsymbol{font-size: 200%;}\n"
+			"span.bigggsymbol{font-size: 225%;}\n"
+			"</style>");
 }
 
 
