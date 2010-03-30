@@ -211,9 +211,9 @@ void InsetMathChar::htmlize(HtmlStream & ms) const
 		default: break;
 	}
 	
-	bool have_entity = entity.empty();
+	bool have_entity = !entity.empty();
 	
-	if (ms.inText() || have_entity) {
+	if (ms.inText()) {
 		if (have_entity)
 			ms << from_ascii(entity);
 		else
@@ -221,16 +221,17 @@ void InsetMathChar::htmlize(HtmlStream & ms) const
 		return;
 	}
 	
-	if (!entity.empty()) {
+	if (have_entity) {
 		ms << ' ' << from_ascii(entity) << ' ';
 		return;
 	}		
 
-	char const * space = 
-		(isalpha(char_) || Encodings::isMathAlpha(char_))
-			? "" : " ";
-	// we don't use MTag and ETag because we do not want the spacing
-	ms << space << char_type(char_) << space;	
+	if (isalpha(char_) || Encodings::isMathAlpha(char_))
+		// we don't use MTag and ETag because we do not want the spacing
+		ms << MTag("i") << char_type(char_) << ETag("i");
+	else
+		// an operator, so give some space
+		ms << " " << char_type(char_) << " ";
 }
 
 

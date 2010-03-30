@@ -409,8 +409,6 @@ HtmlStream & operator<<(HtmlStream & ms, char_type c)
 
 HtmlStream & operator<<(HtmlStream & ms, MTag const & t)
 {
-	++ms.tab();
-	ms.os() << "\n";
 	ms.os() << '<' << from_ascii(t.tag_);
 	if (!t.attr_.empty())
 		ms.os() << " " << from_ascii(t.attr_);
@@ -421,9 +419,6 @@ HtmlStream & operator<<(HtmlStream & ms, MTag const & t)
 
 HtmlStream & operator<<(HtmlStream & ms, ETag const & t)
 {
-	ms.os() << "\n";
-	if (ms.tab() > 0)
-		--ms.tab();
 	ms.os() << "</" << from_ascii(t.tag_) << '>';
 	return ms;
 }
