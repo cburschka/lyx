@@ -646,6 +646,13 @@ def checkConverterEntries():
       else:
         addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py $$i $$o"''')
 
+    # Check if LyxBlogger is installed.
+    path, lyxblogger = checkProg('A LyX to WordPress Blog Publishing Tool',
+      ['lyxblogger $$i'], rc_entry = [])
+    if lyxblogger.find('lyxblogger') >= 0:
+      addToRC(r'\Format    blog       blog       "LyxBlogger"           "" "" ""  "document"')
+			addToRC(r'\converter xhtml      blog       "lyxblogger $$i"       ""')
+
     # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
     path, htmlconv = checkProg('a LaTeX -> MS Word converter', ["htlatex $$i 'html,word' 'symbol/!' '-cvalidate'", \
         "htlatex.sh $$i 'html,word' 'symbol/!' '-cvalidate'", \
