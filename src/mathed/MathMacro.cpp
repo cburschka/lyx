@@ -75,6 +75,8 @@ public:
 	///
 	void mathmlize(MathStream & ms) const { ms << mathMacro_.cell(idx_); }
 	///
+	void htmlize(HtmlStream & ms) const { ms << mathMacro_.cell(idx_); }
+	///
 	void draw(PainterInfo & pi, int x, int y) const {
 		if (mathMacro_.editMetrics(pi.base.bv)) {
 			// The only way a ArgumentProxy can appear is in a cell of the 
@@ -738,6 +740,12 @@ void MathMacro::maple(MapleStream & os) const
 
 
 void MathMacro::mathmlize(MathStream & os) const
+{
+	os << expanded_.cell(0);
+}
+
+
+void MathMacro::htmlize(HtmlStream & os) const
 {
 	os << expanded_.cell(0);
 }
