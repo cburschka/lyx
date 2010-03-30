@@ -76,6 +76,12 @@ void InsetMathNumber::mathmlize(MathStream & os) const
 }
 
 
+void InsetMathNumber::htmlize(HtmlStream & os) const
+{
+	os << str_;
+}
+
+
 void InsetMathNumber::write(WriteStream & os) const
 {
 	os << str_;
