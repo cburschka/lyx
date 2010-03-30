@@ -393,6 +393,15 @@ void InsetMathFrac::mathmlize(MathStream & os) const
 }
 
 
+void InsetMathFrac::htmlize(HtmlStream & os) const
+{
+	os << MTag("span", "class='frac'")
+		 << MTag("span", "class='numer'") << cell(0) << ETag("span")
+		 << MTag("span", "class='denom'") << cell(1) << ETag("span")
+		 << ETag("span");
+}
+
+
 void InsetMathFrac::validate(LaTeXFeatures & features) const
 {
 	if (kind_ == NICEFRAC || kind_ == UNITFRAC || kind_ == UNIT)
@@ -400,6 +409,13 @@ void InsetMathFrac::validate(LaTeXFeatures & features) const
 	if (kind_ == CFRAC || kind_ == CFRACLEFT || kind_ == CFRACRIGHT
 		|| kind_ == DFRAC || kind_ == TFRAC)
 		features.require("amsmath");
+	if (features.runparams().flavor == OutputParams::HTML)
+		// CSS adapted from eLyXer
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"span.frac{display: inline-block; vertical-align: middle; text-align:center;}\n"
+			"span.numer{display: block;}\n"
+			"span.denom{display: block; border-top: thin solid #000040;}\n"
+			"</style>");
 	InsetMathNest::validate(features);
 }
 
