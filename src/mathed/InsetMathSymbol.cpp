@@ -130,13 +130,6 @@ bool InsetMathSymbol::takesLimits() const
 }
 
 
-void InsetMathSymbol::validate(LaTeXFeatures & features) const
-{
-	if (!sym_->requires.empty())
-		features.require(to_utf8(sym_->requires));
-}
-
-
 void InsetMathSymbol::normalize(NormalStream & os) const
 {
 	os << "[symbol " << name() << ']';
@@ -199,7 +192,7 @@ void InsetMathSymbol::mathmlize(MathStream & os) const
 }
 
 
-void InsetMathSymbol::htmlize(HtmlStream & os) const
+void InsetMathSymbol::htmlize(HtmlStream & os, bool spacing) const
 {
 	// FIXME We may need to do more interesting things 
 	// with MathMLtype.
@@ -209,10 +202,16 @@ void InsetMathSymbol::htmlize(HtmlStream & os) const
 	if (sym_->xmlname == "x") 
 		// unknown so far
 		os << ' ' << name() << ' ';
-	else if (op) 
+	else if (op && spacing) 
 		os << ' ' << sym_->xmlname << ' ';
 	else
 		os << sym_->xmlname;
+}
+
+
+void InsetMathSymbol::htmlize(HtmlStream & os) const
+{
+	htmlize(os, true);
 }
 
 
@@ -245,5 +244,24 @@ void InsetMathSymbol::infoize2(odocstream & os) const
 	os << from_ascii("Symbol: ") << name();
 }
 
+
+void InsetMathSymbol::validate(LaTeXFeatures & features) const
+{
+	// this is not really the ideal place to do this, but we can't
+	// validate in InsetMathExInt.
+	if (features.runparams().flavor == OutputParams::HTML
+	    && sym_->name == from_ascii("int")) {
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"span.limits{display: inline-block; vertical-align: middle; text-align:center; font-size: 75%;}\n"
+			"span.limits span{display: block;}\n"
+			"span.intsym{font-size: 150%;}\n"
+			"sub.limit{font-size: 75%;}\n"
+			"sup.limit{font-size: 75%;}\n"
+			"</style>");
+	} else {
+		if (!sym_->requires.empty())
+			features.require(to_utf8(sym_->requires));
+	}
+}
 
 } // namespace lyx

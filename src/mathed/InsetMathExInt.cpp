@@ -11,6 +11,8 @@
 #include <config.h>
 
 #include "InsetMathExInt.h"
+
+#include "LaTeXFeatures.h"
 #include "MathData.h"
 #include "MathStream.h"
 #include "MathStream.h"
@@ -156,10 +158,35 @@ void InsetMathExInt::mathmlize(MathStream & os) const
 }
 
 
+void InsetMathExInt::htmlize(HtmlStream & os) const
+{
+	// At the moment, we are not extracting sums and the like for HTML.
+	// So right now this only handles integrals.
+	InsetMathSymbol sym(symbol_);
+	bool const lower = !cell(2).empty();
+	bool const upper = !cell(3).empty();
+	
+	os << MTag("span", "class='integral'")
+	   << MTag("span", "class='intsym'");
+	sym.htmlize(os, false);
+	os << ETag("span");
+	
+	if (lower && upper) {
+		os << MTag("span", "class='limits'")
+		   << MTag("span") << cell(2) << ETag("span")
+			 << MTag("span") << cell(3) << ETag("span")
+			 << ETag("span");
+	} else if (lower)
+		os << MTag("sub", "class='limit'") << cell(2) << ETag("sub");
+	else if (upper)
+		os << MTag("sup", "class='limit'") << cell(3) << ETag("sup");
+	os << cell(0) << "<b>d</b>" << cell(1) << ETag("span");
+}
+
+
 void InsetMathExInt::write(WriteStream &) const
 {
 	LYXERR0("should not happen");
 }
-
 
 } // namespace lyx

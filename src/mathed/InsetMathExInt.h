@@ -54,6 +54,8 @@ public:
 	///
 	void mathmlize(MathStream &) const;
 	///
+	void htmlize(HtmlStream &) const;
+	///
 	void write(WriteStream & os) const;
 	///
 	InsetCode lyxCode() const { return MATH_EXINT_CODE; }

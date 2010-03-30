@@ -64,6 +64,9 @@ public:
 	void mathmlize(MathStream &) const;
 	///
 	void htmlize(HtmlStream &) const;
+	/// \param spacing controls whether we print spaces around
+	/// "operator"-type symbols or just print them raw
+	void htmlize(HtmlStream &, bool spacing) const;
 	///
 	void octave(OctaveStream &) const;
 	///
