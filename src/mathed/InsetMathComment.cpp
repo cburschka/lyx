@@ -78,17 +78,15 @@ void InsetMathComment::maple(MapleStream & os) const
 }
 
 
-void InsetMathComment::mathematica(MathematicaStream &) const
-{}
-
-
-void InsetMathComment::octave(OctaveStream &) const
-{}
-
-
 void InsetMathComment::mathmlize(MathStream & os) const
 {
 	os << MTag("comment") << cell(0) << cell(1) << ETag("comment");
+}
+
+
+void InsetMathComment::htmlize(HtmlStream & os) const
+{
+	os << "<!-- " << cell(0) << cell(1) << " -->";
 }
 
 

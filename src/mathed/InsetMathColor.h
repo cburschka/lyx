@@ -37,6 +37,11 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	void write(WriteStream & os) const;
+	/// FIXME XHTML For now, we do nothing with color.
+	void mathmlize(MathStream &) const {}
+	/// FIXME XHTML For now, we do nothing with color.
+	void htmlize(HtmlStream &) const {}
+	///
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
 	///
