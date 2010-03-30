@@ -490,6 +490,43 @@ SetMode::~SetMode()
 //////////////////////////////////////////////////////////////////////
 
 
+SetHTMLMode::SetHTMLMode(HtmlStream & os, bool text)
+	: os_(os), opened_(false)
+{
+	was_text_ = os_.inText();
+	if (text)
+		os_.setTextMode();
+	else
+		os_.setMathMode();
+}
+
+
+SetHTMLMode::SetHTMLMode(HtmlStream & os, bool text, string attrs)
+	: os_(os), opened_(true)
+{
+	was_text_ = os_.inText();
+	if (text) {
+		os_.setTextMode();
+		os_ << MTag("span", attrs);
+	} else
+		os_.setMathMode();
+}
+
+
+SetHTMLMode::~SetHTMLMode()
+{
+	if (opened_)
+		os_ << ETag("span");
+	if (was_text_)
+		os_.setTextMode();
+	else
+		os_.setMathMode();
+}
+
+
+//////////////////////////////////////////////////////////////////////
+
+
 MapleStream & operator<<(MapleStream & ms, MathAtom const & at)
 {
 	at->maple(ms);

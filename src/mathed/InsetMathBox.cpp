@@ -59,6 +59,13 @@ void InsetMathBox::mathmlize(MathStream & ms) const
 }
 
 
+void InsetMathBox::htmlize(HtmlStream & ms) const
+{
+	SetHTMLMode textmode(ms, true);
+	ms << cell(0);
+}
+
+
 void InsetMathBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
@@ -85,6 +92,7 @@ void InsetMathBox::validate(LaTeXFeatures & features) const
 {
 	if (name_ == "tag" || name_ == "tag*")
 		features.require("amsmath");
+
 	cell(0).validate(features);
 }
 
@@ -141,6 +149,13 @@ void InsetMathFBox::mathmlize(MathStream & ms) const
 }
 
 
+void InsetMathFBox::htmlize(HtmlStream & ms) const
+{
+	SetHTMLMode textmode(ms, true, "class='fbox'");
+	ms << cell(0);
+}
+
+
 void InsetMathFBox::infoize(odocstream & os) const
 {
 	os << "FBox: ";
@@ -155,6 +170,7 @@ void InsetMathFBox::validate(LaTeXFeatures & features) const
 	if (features.runparams().flavor == OutputParams::HTML)
 		features.addPreambleSnippet("<style type=\"text/css\">\n"
 			"mtext.fbox { border: 1px solid black; }\n"
+			"span.fbox { border: 1px solid black; }\n"
 			"</style>");
 }
 
@@ -275,6 +291,15 @@ void InsetMathMakebox::mathmlize(MathStream & ms) const
 }
 
 
+void InsetMathMakebox::htmlize(HtmlStream & ms) const
+{
+	// FIXME We could do something with the other arguments.
+	std::string const cssclass = framebox_ ? "framebox" : "makebox";
+	SetHTMLMode textmode(ms, true, "class='" + cssclass + "'");
+	ms << cell(2);
+}
+
+
 void InsetMathMakebox::validate(LaTeXFeatures & features) const
 {
 	// FIXME XHTML
@@ -283,6 +308,7 @@ void InsetMathMakebox::validate(LaTeXFeatures & features) const
 	if (features.runparams().flavor == OutputParams::HTML)
 		features.addPreambleSnippet("<style type=\"text/css\">\n"
 			"mtext.framebox { border: 1px solid black; }\n"
+			"span.framebox { border: 1px solid black; }\n"
 			"</style>");
 }
 
@@ -342,6 +368,13 @@ void InsetMathBoxed::mathmlize(MathStream & ms) const
 }
 
 
+void InsetMathBoxed::htmlize(HtmlStream & ms) const
+{
+	SetHTMLMode mathmode(ms, false, "class='boxed'");
+	ms << cell(0);
+}
+
+
 void InsetMathBoxed::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
@@ -351,6 +384,7 @@ void InsetMathBoxed::validate(LaTeXFeatures & features) const
 	if (features.runparams().flavor == OutputParams::HTML)
 		features.addPreambleSnippet("<style type=\"text/css\">\n"
 			"mstyle.boxed { border: 1px solid black; }\n"
+			"span.boxed { border: 1px solid black; }\n"
 			"</style>");
 	InsetMathNest::validate(features);
 }

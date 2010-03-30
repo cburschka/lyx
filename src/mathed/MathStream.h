@@ -392,7 +392,7 @@ private:
 	///
 	odocstringstream deferred_;
 	///
-	friend class SetMode;
+	friend class SetHTMLMode;
 };
 
 ///
@@ -411,6 +411,24 @@ HtmlStream & operator<<(HtmlStream &, char_type);
 HtmlStream & operator<<(HtmlStream &, MTag const &);
 ///
 HtmlStream & operator<<(HtmlStream &, ETag const &);
+
+
+class SetHTMLMode {
+public:
+	///
+	explicit SetHTMLMode(HtmlStream & os, bool text, std::string attrs);
+	///
+	explicit SetHTMLMode(HtmlStream & os, bool text);
+	///
+	~SetHTMLMode();
+private:
+	///
+	HtmlStream & os_;
+	///
+	bool opened_;
+	///
+	bool was_text_;
+};
 
 
 //
