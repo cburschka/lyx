@@ -100,6 +100,12 @@ void InsetMathBrace::mathmlize(MathStream & os) const
 }
 
 
+void InsetMathBrace::htmlize(HtmlStream & os) const
+{
+	os << cell(0);
+}
+
+
 void InsetMathBrace::mathematica(MathematicaStream & os) const
 {
 	os << cell(0);
