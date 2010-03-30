@@ -63,6 +63,8 @@ public:
 	///
 	void mathmlize(MathStream &) const;
 	///
+	void htmlize(HtmlStream &) const;
+	///
 	void octave(OctaveStream &) const;
 	///
 	void write(WriteStream & os) const;

@@ -186,9 +186,8 @@ char const * MathMLtype(docstring const & s)
 
 void InsetMathSymbol::mathmlize(MathStream & os) const
 {
-	// FIXME To get this working properly, we need to do add the 
-	// XML entity definitions to lib/symbols. And probably do more
-	// interesting things with MathMLtype
+	// FIXME We may need to do more interesting things 
+	// with MathMLtype.
 	char const * type = MathMLtype(sym_->extra);
 	os << '<' << type << "> ";
 	if (sym_->xmlname == "x") 
@@ -197,6 +196,23 @@ void InsetMathSymbol::mathmlize(MathStream & os) const
 	else
 		os << sym_->xmlname;
 	os << " </" << type << '>';
+}
+
+
+void InsetMathSymbol::htmlize(HtmlStream & os) const
+{
+	// FIXME We may need to do more interesting things 
+	// with MathMLtype.
+	char const * type = MathMLtype(sym_->extra);
+	bool op = (std::string(type) == "mo");
+	
+	if (sym_->xmlname == "x") 
+		// unknown so far
+		os << ' ' << name() << ' ';
+	else if (op) 
+		os << ' ' << sym_->xmlname << ' ';
+	else
+		os << sym_->xmlname;
 }
 
 
