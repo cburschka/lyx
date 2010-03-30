@@ -150,13 +150,6 @@ void InsetMathDecoration::infoize(odocstream & os) const
 }
 
 
-void InsetMathDecoration::validate(LaTeXFeatures & features) const
-{
-	if (!key_->requires.empty())
-		features.require(to_utf8(key_->requires));
-	InsetMathNest::validate(features);
-}
-
 namespace {
 	struct Attributes {
 		Attributes() {}
@@ -184,7 +177,7 @@ namespace {
 		t["overbrace"] = Attributes(true, "&OverBrace;");
 		t["overleftarrow"] = Attributes(true, "&xlarr;");
 		t["overleftrightarrow"] = Attributes(true, "&xharr;");
-		t["overline"] = Attributes(false, "&macr;");
+		t["overline"] = Attributes(true, "&macr;");
 		t["overrightarrow"] = Attributes(true, "&xrarr;");
 		t["tilde"] = Attributes(true, "&tilde;");
 		t["underbar"] = Attributes(false, "&UnderBar;");
@@ -219,5 +212,46 @@ void InsetMathDecoration::mathmlize(MathStream & os) const
 		 << ETag(outag);
 }
 
+
+void InsetMathDecoration::htmlize(HtmlStream & os) const
+{
+	Translator const & t = translator();
+	Translator::const_iterator cur = t.find(to_utf8(key_->name));
+	LASSERT(cur != t.end(), return);
+	bool symontop = cur->second.over;
+	string const symclass = symontop ? "symontop" : "symonbot";
+	os << MTag("span", "class='symbolpair " + symclass + "'")
+	   << '\n';
+	
+	if (symontop)
+		os << MTag("span", "class='symbol'") << from_ascii(cur->second.tag);
+	else
+		os << MTag("span", "class='base'") << cell(0);
+	os << ETag("span") << '\n';
+	if (symontop)
+		os << MTag("span", "class='base'") << cell(0);
+	else
+		os << MTag("span", "class='symbol'") << from_ascii(cur->second.tag);
+	os << ETag("span") << '\n' << ETag("span") << '\n';
+}
+
+
+// ideas borrowed from the eLyXer code
+void InsetMathDecoration::validate(LaTeXFeatures & features) const
+{
+	if (features.runparams().flavor == OutputParams::HTML) {
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"span.symbolpair{display: inline-block; text-align:center;}\n"
+			"span.symontop{vertical-align: top;}\n"
+			"span.symonbot{vertical-align: bottom;}\n"
+			"span.symbolpair span{display: block;}\n"			
+			"span.symbol{height: 0.5ex;}\n"
+			"</style>");
+	} else {
+		if (!key_->requires.empty())
+			features.require(to_utf8(key_->requires));
+	}
+	InsetMathNest::validate(features);
+}
 
 } // namespace lyx

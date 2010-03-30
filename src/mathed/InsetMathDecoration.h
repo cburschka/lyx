@@ -43,7 +43,8 @@ public:
 	InsetCode lyxCode() const { return MATH_DECORATION_CODE; }
 	///
 	void mathmlize(MathStream &) const;
-
+	///
+	void htmlize(HtmlStream &) const;
 private:
 	virtual Inset * clone() const;
 	///
