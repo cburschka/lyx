@@ -163,6 +163,14 @@ void InsetMathCases::mathmlize(MathStream & ms) const
 }
 
 
+// FIXME XHTML
+// We need a brace here, somehow.
+void InsetMathCases::htmlize(HtmlStream & ms) const
+{
+	InsetMathGrid::htmlize(ms, "cases");
+}
+
+
 void InsetMathCases::infoize(odocstream & os) const
 {
 	os << "Cases ";
@@ -173,6 +181,13 @@ void InsetMathCases::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
 	InsetMathGrid::validate(features);
+	if (features.runparams().flavor == OutputParams::HTML)
+		// CSS based on eLyXer's
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"table.cases{display: inline-block; text-align: center;"
+			"border-left: thin solid black; vertical-align: middle; padding-left: 0.5ex;}\n"
+			"table.cases td {text-align: left;}\n"
+			"</style>");
 }
 
 

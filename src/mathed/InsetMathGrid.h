@@ -225,6 +225,8 @@ public:
 	/// 
 	void htmlize(HtmlStream &) const;
 	///
+	void htmlize(HtmlStream &, std::string attrib) const;
+	///
 	//void octave(OctaveStream &) const;
 
 protected:
