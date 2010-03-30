@@ -536,6 +536,14 @@ contributers = [
                  "17 May 2009",
                  u"doxygen to LFUNs.lyx conversion"),
 
+     contributer(u"Jack Dessert",
+                 "jackdesert556 () gmail ! com",
+                 "GPL",
+                 "License",
+                 "m=126994985831115",
+                 "30 March 2010",
+                 u"Patches for configure.py"),
+
      contributer(u"Anders Ekberg",
                  "anek () chalmers ! se",
                  "GPL",
