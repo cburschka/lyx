@@ -112,6 +112,12 @@ void InsetMathBoldSymbol::mathmlize(MathStream & os) const
 }
 
 
+void InsetMathBoldSymbol::htmlize(HtmlStream & os) const
+{
+	os << MTag("b") << cell(0) << ETag("b");
+}
+
+
 void InsetMathBoldSymbol::infoize(odocstream & os) const
 {
 	switch (kind_) {
