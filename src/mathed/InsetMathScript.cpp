@@ -17,6 +17,7 @@
 #include "InsetMathFont.h"
 #include "InsetMathScript.h"
 #include "InsetMathSymbol.h"
+#include "LaTeXFeatures.h"
 #include "MathData.h"
 #include "MathStream.h"
 #include "MathSupport.h"
@@ -644,6 +645,26 @@ void InsetMathScript::mathmlize(MathStream & os) const
 }
 
 
+void InsetMathScript::htmlize(HtmlStream & os) const
+{
+	bool d = hasDown() && down().size();
+	bool u = hasUp() && up().size();
+
+	if (nuc().size())
+		os << nuc();
+
+	if (u && d)
+		os << MTag("span", "class='scripts'")
+			 << MTag("span", "class='sup'") << up() << ETag("span")
+			 << MTag("span", "class='sub'") << down() << ETag("span")
+			 << ETag("span");
+	else if (u)
+		os << MTag("sup", "class='math'") << up() << ETag("sup");
+	else if (d)
+		os << MTag("sub", "class='math'") << down() << ETag("sub");
+}
+
+
 void InsetMathScript::octave(OctaveStream & os) const
 {
 	if (nuc().size())
@@ -750,5 +771,18 @@ void InsetMathScript::doDispatch(Cursor & cur, FuncRequest & cmd)
 	InsetMathNest::doDispatch(cur, cmd);
 }
 
+
+// the idea for dual scripts came from the eLyXer code
+void InsetMathScript::validate(LaTeXFeatures & features) const
+{
+	if (features.runparams().flavor == OutputParams::HTML)
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"span.scripts{display: inline-block; vertical-align: middle; text-align:center; font-size: 75%;}\n"
+			"span.sup{display: block;}\n"
+			"span.sub{display: block;}\n"
+			"sub.math{font-size: 75%;}\n"
+			"sup.math{font-size: 75%;}\n"
+			"</style>");
+}
 
 } // namespace lyx

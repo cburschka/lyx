@@ -60,8 +60,10 @@ public:
 	void maple(MapleStream &) const;
 	/// write content as something readable by Mathematica
 	void mathematica(MathematicaStream &) const;
-	/// write content as something resembling MathML
+	/// write content as MathML
 	void mathmlize(MathStream &) const;
+	/// write content as HTML
+	void htmlize(HtmlStream &) const;
 	/// write content as something readable by Octave
 	void octave(OctaveStream &) const;
 
@@ -104,7 +106,8 @@ public:
 	void infoize2(odocstream & os) const;
 	///
 	InsetCode lyxCode() const { return MATH_SCRIPT_CODE; }
-
+	///
+	void validate(LaTeXFeatures &features) const;
 protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
