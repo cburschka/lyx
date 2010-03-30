@@ -215,9 +215,21 @@ void InsetMathDecoration::mathmlize(MathStream & os) const
 
 void InsetMathDecoration::htmlize(HtmlStream & os) const
 {
+	string const name = to_utf8(key_->name);
+	if (name == "bar") {
+		os << MTag("span", "class='overbar'") << cell(0) << ETag("span");
+		return;
+	}
+	
+	if (name == "underbar" || name == "underline") {
+		os << MTag("span", "class='underbar'") << cell(0) << ETag("span");
+		return;
+	}
+
 	Translator const & t = translator();
-	Translator::const_iterator cur = t.find(to_utf8(key_->name));
+	Translator::const_iterator cur = t.find(name);
 	LASSERT(cur != t.end(), return);
+	
 	bool symontop = cur->second.over;
 	string const symclass = symontop ? "symontop" : "symonbot";
 	os << MTag("span", "class='symbolpair " + symclass + "'")
@@ -240,13 +252,24 @@ void InsetMathDecoration::htmlize(HtmlStream & os) const
 void InsetMathDecoration::validate(LaTeXFeatures & features) const
 {
 	if (features.runparams().flavor == OutputParams::HTML) {
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
-			"span.symbolpair{display: inline-block; text-align:center;}\n"
-			"span.symontop{vertical-align: top;}\n"
-			"span.symonbot{vertical-align: bottom;}\n"
-			"span.symbolpair span{display: block;}\n"			
-			"span.symbol{height: 0.5ex;}\n"
-			"</style>");
+		string const name = to_utf8(key_->name);
+		if (name == "bar") {
+			features.addPreambleSnippet("<style type=\"text/css\">\n"
+				"span.overbar{border-top: thin black solid;}\n"
+				"</style>");
+		} else if (name == "underbar" || name == "underline") {
+			features.addPreambleSnippet("<style type=\"text/css\">\n"
+				"span.underbar{border-bottom: thin black solid;}\n"
+				"</style>");
+		} else {
+			features.addPreambleSnippet("<style type=\"text/css\">\n"
+				"span.symbolpair{display: inline-block; text-align:center;}\n"
+				"span.symontop{vertical-align: top;}\n"
+				"span.symonbot{vertical-align: bottom;}\n"
+				"span.symbolpair span{display: block;}\n"			
+				"span.symbol{height: 0.5ex;}\n"
+				"</style>");
+		}
 	} else {
 		if (!key_->requires.empty())
 			features.require(to_utf8(key_->requires));
