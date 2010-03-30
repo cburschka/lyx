@@ -651,7 +651,7 @@ def checkConverterEntries():
       ['lyxblogger $$i'], rc_entry = [])
     if lyxblogger.find('lyxblogger') >= 0:
       addToRC(r'\Format    blog       blog       "LyxBlogger"           "" "" ""  "document"')
-			addToRC(r'\converter xhtml      blog       "lyxblogger $$i"       ""')
+      addToRC(r'\converter xhtml      blog       "lyxblogger $$i"       ""')
 
     # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
     path, htmlconv = checkProg('a LaTeX -> MS Word converter', ["htlatex $$i 'html,word' 'symbol/!' '-cvalidate'", \
