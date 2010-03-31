@@ -26,6 +26,8 @@ public:
 	///
 	explicit InsetMathDecoration(Buffer * buf, latexkeys const * key);
 	///
+	mode_type currentMode() const;
+	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
