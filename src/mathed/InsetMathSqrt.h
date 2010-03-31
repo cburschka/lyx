@@ -46,7 +46,11 @@ public:
 	///
 	void mathmlize(MathStream &) const;
 	///
+	void htmlize(HtmlStream &) const;
+	///
 	InsetCode lyxCode() const { return MATH_SQRT_CODE; }
+	///
+	void validate(LaTeXFeatures &) const;
 
 private:
 	virtual Inset * clone() const;

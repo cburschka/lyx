@@ -38,6 +38,8 @@ public:
 	///
 	void mathmlize(MathStream &) const;
 	///
+	void htmlize(HtmlStream &) const;
+	///
 	void maple(MapleStream &) const;
 	///
 	void mathematica(MathematicaStream &) const;
@@ -45,6 +47,8 @@ public:
 	void octave(OctaveStream &) const;
 	///
 	InsetCode lyxCode() const { return MATH_ROOT_CODE; }
+	///
+	void validate(LaTeXFeatures &) const;
 
 private:
 	virtual Inset * clone() const;
