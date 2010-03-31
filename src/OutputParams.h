@@ -54,11 +54,11 @@ public:
 	OutputParams(Encoding const *);
 	~OutputParams();
 
-	/** The latex that we export depends occasionally on what is to
+	/** The file that we export depends occasionally on what is to
 	    compile the file.
 	*/
 	FLAVOR flavor;
-
+	
 	/** Are we to write a 'nice' LaTeX file or not.
 	    This esentially seems to mean whether InsetInclude, InsetGraphics
 	    and InsetExternal should add the absolute path to any external
