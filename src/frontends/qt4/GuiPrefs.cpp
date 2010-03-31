@@ -1005,7 +1005,8 @@ PrefColors::PrefColors(GuiPreferences * form)
 			|| lc == Color_magenta
 			|| lc == Color_yellow
 			|| lc == Color_inherit
-			|| lc == Color_ignore) continue;
+			|| lc == Color_ignore
+			|| lc == Color_greyedouttext) continue;
 
 		lcolors_.push_back(lc);
 	}
@@ -1013,7 +1014,7 @@ PrefColors::PrefColors(GuiPreferences * form)
 	vector<ColorCode>::const_iterator cit = lcolors_.begin();
 	vector<ColorCode>::const_iterator const end = lcolors_.end();
 	for (; cit != end; ++cit) {
-			(void) new QListWidgetItem(QIcon(icon),
+		(void) new QListWidgetItem(QIcon(icon),
 			toqstr(lcolor.getGUIName(*cit)), lyxObjectsLW);
 	}
 	curcolors_.resize(lcolors_.size());

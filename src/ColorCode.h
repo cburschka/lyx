@@ -65,6 +65,8 @@ enum ColorCode
 	Color_commentbg,
 	/// Label color for greyedout insets
 	Color_greyedoutlabel,
+	/// Color for greyedout inset text
+	Color_greyedouttext,
 	/// Background color of greyedout inset
 	Color_greyedoutbg,
 	/// Background color of shaded box

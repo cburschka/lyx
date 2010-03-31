@@ -1338,6 +1338,44 @@ def revert_equalspacing_xymatrix(document):
     if has_equal_spacing and not has_preamble:
         add_to_preamble(document, ['\\usepackage[all]{xy}'])
 
+
+def revert_notefontcolor(document):
+    " Reverts greyed-out note font color to preamble code "
+    i = 0
+    colorcode = ""
+    while True:
+      i = find_token(document.header, "\\notefontcolor", i)
+      if i == -1:
+          return
+      colorcode = get_value(document.header, '\\notefontcolor', 0)
+      del document.header[i]
+      # the color code is in the form #rrggbb where every character denotes a hex number
+      # convert the string to an int
+      red = string.atoi(colorcode[1:3],16)
+      # we want the output "0.5" for the value "127" therefore increment here
+      if red != 0:
+          red = red + 1
+      redout = float(red) / 256
+      green = string.atoi(colorcode[3:5],16)
+      if green != 0:
+          green = green + 1
+      greenout = float(green) / 256
+      blue = string.atoi(colorcode[5:7],16)
+      if blue != 0:
+          blue = blue + 1
+      blueout = float(blue) / 256
+      # write the preamble
+      insert_to_preamble(0, document,
+                           '% Commands inserted by lyx2lyx to set the font color\n'
+                           '% for greyed-out notes\n'
+                           + '\\@ifundefined{definecolor}{\\usepackage{color}}{}\n'
+                           + '\\definecolor{note_fontcolor}{rgb}{'
+                           + str(redout) + ', ' + str(greenout)
+                           + ', ' + str(blueout) + '}\n'
+                           + '\\renewenvironment{lyxgreyedout}\n'
+                           + ' {\\textcolor{note_fontcolor}\\bgroup}{\\egroup}\n')
+
+
 ##
 # Conversion hub
 #
@@ -1378,10 +1416,12 @@ convert = [[346, []],
            [378, []],
            [379, [convert_math_output]],
            [380, []],
-           [381, []]
+           [381, []],
+           [382, []]
           ]
 
-revert =  [[380, [revert_equalspacing_xymatrix]],
+revert =  [[381, [revert_notefontcolor]],
+           [380, [revert_equalspacing_xymatrix]],
            [379, [revert_inset_preview]],
            [378, [revert_math_output]],
            [377, []],

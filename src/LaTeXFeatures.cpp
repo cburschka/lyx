@@ -160,7 +160,7 @@ static docstring const tabularnewline_def = from_ascii(
 	
 static docstring const lyxgreyedout_def = from_ascii(
 	"%% The greyedout annotation environment\n"
-	"\\newenvironment{lyxgreyedout}{\\textcolor[gray]{0.8}\\bgroup}{\\egroup}\n");
+	"\\newenvironment{lyxgreyedout}{\\textcolor{note_fontcolor}\\bgroup}{\\egroup}\n");
 
 // We want to omit the file extension for includegraphics, but this does not
 // work when the filename contains other dots.
@@ -580,14 +580,21 @@ string const LaTeXFeatures::getColorOptions() const
 	if (mustProvide("pdfcolmk"))
 		colors << "\\usepackage{pdfcolmk}\n";
 
+	// the following 3 color commands must be set after color
+	// is loaded and before pdfpages, therefore add the command
+	// here define the set color
 	if (mustProvide("pagecolor")) {
-		// the \pagecolor command must be set after color is loaded and
-		// before pdfpages, therefore add the command here
-		// define the set color
 		colors << "\\definecolor{page_backgroundcolor}{rgb}{";
 		colors << outputLaTeXColor(params_.backgroundcolor) << "}\n";
 		// set the page color
 		colors << "\\pagecolor{page_backgroundcolor}\n";
+	}
+
+	if (mustProvide("lyxgreyedout")) {
+		colors << "\\definecolor{note_fontcolor}{rgb}{";
+		colors << outputLaTeXColor(params_.notefontcolor) << "}\n";
+		// the color will be set together with the definition of
+		// the lyxgreyedout environment (lyxgreyedout_def)
 	}
 
 	return colors.str();
@@ -885,7 +892,9 @@ docstring const LaTeXFeatures::getMacros() const
 	if (mustProvide("NeedTabularnewline"))
 		macros << tabularnewline_def;
 
-	// greyedout environment (note inset)
+	// greyed-out environment (note inset)
+	// the color is specified in the routine
+	// getColorOptions() to avoid LaTeX-package clashes
 	if (mustProvide("lyxgreyedout"))
 		macros << lyxgreyedout_def;
 

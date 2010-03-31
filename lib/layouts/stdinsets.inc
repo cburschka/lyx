@@ -160,6 +160,9 @@ InsetLayout Note:Greyedout
 	LatexType             environment
 	LatexName             lyxgreyedout
 	BgColor               greyedoutbg
+	Font
+	  Color               greyedouttext
+	EndFont
 	LabelFont
 	  Color               greyedout
 	  Size                Small

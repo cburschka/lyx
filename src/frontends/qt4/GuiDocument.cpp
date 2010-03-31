@@ -178,6 +178,7 @@ vector<pair<string, QString> > pagestyles;
 namespace lyx {
 
 RGBColor set_backgroundcolor;
+RGBColor set_notefontcolor;
 
 namespace {
 // used when sorting the textclass list.
@@ -682,6 +683,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(fontModule->fontOsfCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+	connect(fontModule->noteFontColorPB, SIGNAL(clicked()),
+		this, SLOT(changeNoteFontColor()));
+	connect(fontModule->delNoteFontColorTB, SIGNAL(clicked()),
+		this, SLOT(deleteNoteFontColor()));
 
 	updateFontlist();
 
@@ -1345,6 +1350,32 @@ void GuiDocument::deleteBackgroundColor()
 		colorButtonStyleSheet(QColor(Qt::white)));
 	// save white as the set color
 	set_backgroundcolor = rgbFromHexName("#ffffff");
+	changed();
+}
+
+
+void GuiDocument::changeNoteFontColor()
+{
+	QColor const & newColor = QColorDialog::getColor(
+		rgb2qcolor(set_notefontcolor), asQWidget());
+	if (!newColor.isValid())
+		return;
+	// set the button color
+	fontModule->noteFontColorPB->setStyleSheet(
+		colorButtonStyleSheet(newColor));
+	// save color
+	set_notefontcolor = rgbFromHexName(fromqstr(newColor.name()));
+	changed();
+}
+
+
+void GuiDocument::deleteNoteFontColor()
+{
+	// set the button color back to light gray
+	fontModule->noteFontColorPB->setStyleSheet(
+		colorButtonStyleSheet(QColor(204, 204, 204, 255)));
+	// save light gray as the set color
+	set_notefontcolor = rgbFromHexName("#cccccc");
 	changed();
 }
 
@@ -2210,6 +2241,7 @@ void GuiDocument::applyView()
 		bp_.orientation = ORIENTATION_PORTRAIT;
 
 	bp_.backgroundcolor = set_backgroundcolor;
+	bp_.notefontcolor = set_notefontcolor;
 
 	// margins
 	bp_.use_geometry = !marginsModule->marginCB->isChecked()
@@ -2591,6 +2623,9 @@ void GuiDocument::paramsToDialog()
 	fontModule->fontOsfCB->setChecked(bp_.fontsOSF);
 	fontModule->scaleSansSB->setValue(bp_.fontsSansScale);
 	fontModule->scaleTypewriterSB->setValue(bp_.fontsTypewriterScale);
+	fontModule->noteFontColorPB->setStyleSheet(
+		colorButtonStyleSheet(rgb2qcolor(bp_.notefontcolor)));
+	set_notefontcolor = bp_.notefontcolor;
 
 	int nn = findToken(GuiDocument::fontfamilies, bp_.fontsDefaultFamily);
 	if (nn >= 0)
