@@ -39,6 +39,10 @@ public:
 	void infoize(odocstream & os) const;
 	///
 	InsetCode lyxCode() const { return MATH_PHANTOM_CODE; }
+	/// Nothing for now
+	void mathmlize(MathStream &) const {}
+	/// Nothing for HTML
+	void htmlize(HtmlStream &) const {}
 
 private:
 	///
