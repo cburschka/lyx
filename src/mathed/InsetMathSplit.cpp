@@ -131,6 +131,17 @@ void InsetMathSplit::mathmlize(MathStream & ms) const
 }
 
 
+void InsetMathSplit::htmlize(HtmlStream & ms) const
+{
+	// split, gathered, aligned, alignedat
+	// At the moment, those seem to display just fine without any
+	// special treatment.
+	// FIXME
+	// lgathered and rgathered could use the proper alignment.
+	InsetMathGrid::htmlize(ms);
+}
+
+
 void InsetMathSplit::validate(LaTeXFeatures & features) const
 {
 	if (name_ == "split" || name_ == "gathered" || name_ == "aligned" ||

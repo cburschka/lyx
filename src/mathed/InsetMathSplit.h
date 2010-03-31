@@ -35,6 +35,8 @@ public:
 	///
 	void mathmlize(MathStream &) const;
 	///
+	void htmlize(HtmlStream &) const;
+	///
 	void validate(LaTeXFeatures & features) const;
 	///
 	int defaultColSpace(col_type) { return 0; }
