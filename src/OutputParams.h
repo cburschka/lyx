@@ -12,7 +12,6 @@
 #ifndef OUTPUTPARAMS_H
 #define OUTPUTPARAMS_H
 
-#include <string>
 
 #include <boost/shared_ptr.hpp>
 #include "Changes.h"
