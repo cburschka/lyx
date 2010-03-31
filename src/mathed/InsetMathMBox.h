@@ -50,6 +50,8 @@ public:
 	///
 	void mathmlize(MathStream &) const;
 	///
+	void htmlize(HtmlStream &) const;
+	///
 	Text * getText(int) const;
 	///
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,

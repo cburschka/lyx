@@ -120,7 +120,13 @@ void InsetMathMBox::cursorPos(BufferView const & bv,
 
 void InsetMathMBox::mathmlize(MathStream & ms) const
 {	
-	SetMode textmode(ms, true, from_ascii("class='mbox'"));
+	SetMode textmode(ms, true, "class='mbox'");
+	ms << cell(0);
+}
+
+void InsetMathMBox::htmlize(HtmlStream & ms) const
+{	
+	SetHTMLMode textmode(ms, true, "class='mbox'");
 	ms << cell(0);
 }
 
