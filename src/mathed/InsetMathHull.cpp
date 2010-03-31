@@ -634,26 +634,37 @@ bool InsetMathHull::numberedType() const
 
 void InsetMathHull::validate(LaTeXFeatures & features) const
 {
-	if (ams())
-		features.require("amsmath");
-
-	if (type_ == hullRegexp) {
-		features.require("color");
-		string frcol = lcolor.getLaTeXName(Color_regexpframe);
-		string bgcol = "white";
-		features.addPreambleSnippet(
-			string("\\newcommand{\\regexp}[1]{\\fcolorbox{")
-			+ frcol + string("}{")
-			+ bgcol + string("}{\\texttt{#1}}}"));
+	if (features.runparams().isLaTeX()) {
+		if (ams())
+			features.require("amsmath");
+	
+		if (type_ == hullRegexp) {
+			features.require("color");
+			string frcol = lcolor.getLaTeXName(Color_regexpframe);
+			string bgcol = "white";
+			features.addPreambleSnippet(
+				string("\\newcommand{\\regexp}[1]{\\fcolorbox{")
+				+ frcol + string("}{")
+				+ bgcol + string("}{\\texttt{#1}}}"));
+		}
+	
+		// Validation is necessary only if not using AMS math.
+		// To be safe, we will always run mathedvalidate.
+		//if (features.amsstyle)
+		//  return;
+	
+		//features.binom      = true;
+	} else if (features.runparams().math_flavor == OutputParams::MathAsHTML) {
+		// it would be better to do this elsewhere, but we can't validate in
+		// InsetMathMatrix and we have no way, outside MathExtern, to know if
+		// we even have any matrices.
+				features.addPreambleSnippet("<style type=\"text/css\">\n"
+					"table.matrix{display: inline-block; vertical-align: middle; text-align:center;}\n"
+					"table.matrix td{padding: 0.25px;}\n"
+					"td.ldelim{width: 0.5ex; border: thin solid black; border-right: none;}\n"
+					"td.rdelim{width: 0.5ex; border: thin solid black; border-left: none;}\n"
+					"</style>");
 	}
-
-	// Validation is necessary only if not using AMS math.
-	// To be safe, we will always run mathedvalidate.
-	//if (features.amsstyle)
-	//  return;
-
-	//features.binom      = true;
-
 	InsetMathGrid::validate(features);
 }
 

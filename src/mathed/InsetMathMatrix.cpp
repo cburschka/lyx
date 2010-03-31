@@ -14,6 +14,9 @@
 #include "MathData.h"
 #include "MathStream.h"
 
+#include "support/convert.h"
+
+using namespace std;
 
 namespace lyx {
 
@@ -103,6 +106,31 @@ void InsetMathMatrix::mathmlize(MathStream & os) const
 	os << ETag("mtable");
 	os << "<mo form='postfix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>"
 	   << right_ << "</mo>";
+}
+
+
+void InsetMathMatrix::htmlize(HtmlStream & os) const
+{
+	os << MTag("table", "class='matrix'") << '\n';
+
+	// we do not print the delimiters but instead try to hack them
+	string const rows = convert<string>(nrows());
+	string const lattrib = 
+			"class='ldelim' rowspan='" + rows + "'";
+	string const rattrib = 
+			"class='rdelim' rowspan='" + rows + "'";
+	
+	for (row_type row = 0; row < nrows(); ++row) {
+		os << MTag("tr") << '\n';
+		if (row == 0)
+			os << MTag("td", lattrib) << ETag("td") << '\n';
+		for (col_type col = 0; col < ncols(); ++col)
+			os << MTag("td") << cell(index(row, col)) << ETag("td") << '\n';
+		if (row == 0)
+			os << MTag("td", rattrib) << ETag("td") << '\n';
+		os << ETag("tr") << '\n';
+	}
+	os << ETag("table") << '\n';
 }
 
 
