@@ -409,7 +409,7 @@ void InsetMathFrac::validate(LaTeXFeatures & features) const
 	if (kind_ == CFRAC || kind_ == CFRACLEFT || kind_ == CFRACRIGHT
 		|| kind_ == DFRAC || kind_ == TFRAC)
 		features.require("amsmath");
-	if (features.runparams().flavor == OutputParams::HTML)
+	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		// CSS adapted from eLyXer
 		features.addPreambleSnippet("<style type=\"text/css\">\n"
 			"span.frac{display: inline-block; vertical-align: middle; text-align:center;}\n"

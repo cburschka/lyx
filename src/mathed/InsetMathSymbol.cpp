@@ -249,7 +249,7 @@ void InsetMathSymbol::validate(LaTeXFeatures & features) const
 {
 	// this is not really the ideal place to do this, but we can't
 	// validate in InsetMathExInt.
-	if (features.runparams().flavor == OutputParams::HTML
+	if (features.runparams().math_flavor == OutputParams::MathAsHTML
 	    && sym_->name == from_ascii("int")) {
 		features.addPreambleSnippet("<style type=\"text/css\">\n"
 			"span.limits{display: inline-block; vertical-align: middle; text-align:center; font-size: 75%;}\n"

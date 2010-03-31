@@ -229,7 +229,7 @@ bool InsetMathBig::isBigInsetDelim(docstring const & delim)
 
 void InsetMathBig::validate(LaTeXFeatures & features) const
 {
-	if (features.runparams().flavor == OutputParams::HTML)
+	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		features.addPreambleSnippet("<style type=\"text/css\">\n"
 			"span.bigsymbol{font-size: 150%;}\n"
 			"span.biggsymbol{font-size: 200%;}\n"

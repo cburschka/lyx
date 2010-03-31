@@ -181,7 +181,7 @@ void InsetMathCases::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
 	InsetMathGrid::validate(features);
-	if (features.runparams().flavor == OutputParams::HTML)
+	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		// CSS based on eLyXer's
 		features.addPreambleSnippet("<style type=\"text/css\">\n"
 			"table.cases{display: inline-block; text-align: center;"

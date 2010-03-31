@@ -3270,6 +3270,21 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	// HTML backend
 	else if (backend_format == "xhtml") {
 		runparams.flavor = OutputParams::HTML;
+		switch (params().html_math_output) {
+		case BufferParams::MathML: 
+			runparams.math_flavor = OutputParams::MathAsMathML; 
+			break;
+		case BufferParams::HTML: 
+			runparams.math_flavor = OutputParams::MathAsHTML; 
+			break;
+		case BufferParams::Images:
+			runparams.math_flavor = OutputParams::MathAsImages; 
+			break;
+		case BufferParams::LaTeX:
+			runparams.math_flavor = OutputParams::MathAsLaTeX; 
+			break;											
+		}
+		
 		makeLyXHTMLFile(FileName(filename), runparams);
 	}	else if (backend_format == "lyx")
 		writeFile(FileName(filename));

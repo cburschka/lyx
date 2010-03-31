@@ -775,7 +775,7 @@ void InsetMathScript::doDispatch(Cursor & cur, FuncRequest & cmd)
 // the idea for dual scripts came from the eLyXer code
 void InsetMathScript::validate(LaTeXFeatures & features) const
 {
-	if (features.runparams().flavor == OutputParams::HTML)
+	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		features.addPreambleSnippet("<style type=\"text/css\">\n"
 			"span.scripts{display: inline-block; vertical-align: middle; text-align:center; font-size: 75%;}\n"
 			"span.scripts span {display: block;}\n"

@@ -167,11 +167,15 @@ void InsetMathFBox::validate(LaTeXFeatures & features) const
 	// FIXME XHTML
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
-	if (features.runparams().flavor == OutputParams::HTML)
+	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
 		features.addPreambleSnippet("<style type=\"text/css\">\n"
 			"mtext.fbox { border: 1px solid black; }\n"
+			"</style>");
+	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
 			"span.fbox { border: 1px solid black; }\n"
 			"</style>");
+	InsetMathNest::validate(features);
 }
 
 
@@ -305,13 +309,16 @@ void InsetMathMakebox::validate(LaTeXFeatures & features) const
 	// FIXME XHTML
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
-	if (features.runparams().flavor == OutputParams::HTML)
+	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
 		features.addPreambleSnippet("<style type=\"text/css\">\n"
-			"mtext.framebox { border: 1px solid black; }\n"
 			"span.framebox { border: 1px solid black; }\n"
 			"</style>");
+	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"span.framebox { border: 1px solid black; }\n"
+			"</style>");
+	InsetMathNest::validate(features);
 }
-
 
 
 /////////////////////////////////////////////////////////////////////
@@ -378,14 +385,19 @@ void InsetMathBoxed::htmlize(HtmlStream & ms) const
 void InsetMathBoxed::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
+
 	// FIXME XHTML
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
-	if (features.runparams().flavor == OutputParams::HTML)
+	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
 		features.addPreambleSnippet("<style type=\"text/css\">\n"
 			"mstyle.boxed { border: 1px solid black; }\n"
+			"</style>");
+	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
 			"span.boxed { border: 1px solid black; }\n"
 			"</style>");
+	
 	InsetMathNest::validate(features);
 }
 

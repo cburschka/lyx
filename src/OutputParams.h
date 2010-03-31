@@ -27,7 +27,6 @@ class ExportData;
 class Font;
 class Language;
 
-
 class OutputParams {
 public:
 	enum FLAVOR {
@@ -37,6 +36,13 @@ public:
 		XML,
 		HTML,
 		TEXT
+	};
+	
+	enum MathFlavor {
+		MathAsMathML,
+		MathAsHTML,
+		MathAsImages,
+		MathAsLaTeX
 	};
 
 	enum TableCell {
@@ -58,6 +64,9 @@ public:
 	    compile the file.
 	*/
 	FLAVOR flavor;
+	
+	/// Same, but for math output, which only matter is XHTML output.
+	MathFlavor math_flavor;
 	
 	/** Are we to write a 'nice' LaTeX file or not.
 	    This esentially seems to mean whether InsetInclude, InsetGraphics

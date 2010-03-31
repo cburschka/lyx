@@ -265,7 +265,7 @@ void InsetMathDecoration::htmlize(HtmlStream & os) const
 // ideas borrowed from the eLyXer code
 void InsetMathDecoration::validate(LaTeXFeatures & features) const
 {
-	if (features.runparams().flavor == OutputParams::HTML) {
+	if (features.runparams().math_flavor == OutputParams::MathAsHTML) {
 		string const name = to_utf8(key_->name);
 		if (name == "bar") {
 			features.addPreambleSnippet("<style type=\"text/css\">\n"
