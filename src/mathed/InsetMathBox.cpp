@@ -54,7 +54,7 @@ void InsetMathBox::normalize(NormalStream & os) const
 
 void InsetMathBox::mathmlize(MathStream & ms) const
 {	
-	SetMode textmode(ms, true, from_ascii("class='mathbox'"));
+	SetMode textmode(ms, true, "class='mathbox'");
 	ms << cell(0);
 }
 
@@ -144,7 +144,7 @@ void InsetMathFBox::normalize(NormalStream & os) const
 
 void InsetMathFBox::mathmlize(MathStream & ms) const
 {	
-	SetMode textmode(ms, true, from_ascii("class='fbox'"));
+	SetMode textmode(ms, true, "class='fbox'");
 	ms << cell(0);
 }
 
@@ -290,7 +290,7 @@ void InsetMathMakebox::mathmlize(MathStream & ms) const
 {
 	// FIXME We could do something with the other arguments.
 	std::string const cssclass = framebox_ ? "framebox" : "makebox";
-	SetMode textmode(ms, true, from_ascii("class='" + cssclass + "'"));
+	SetMode textmode(ms, true, "class='" + cssclass + "'");
 	ms << cell(2);
 }
 
@@ -370,7 +370,7 @@ void InsetMathBoxed::infoize(odocstream & os) const
 
 void InsetMathBoxed::mathmlize(MathStream & ms) const
 {
-	SetMode mathmode(ms, false, from_ascii("class='boxed'"));
+	SetMode mathmode(ms, false, "class='boxed'");
 	ms << cell(0);
 }
 

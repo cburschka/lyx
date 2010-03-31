@@ -335,14 +335,14 @@ MathStream & operator<<(MathStream &, ETag const &);
 class SetMode {
 public:
 	///
-	explicit SetMode(MathStream & os, bool text, docstring attrs);
+	explicit SetMode(MathStream & os, bool text, std::string const & attrs);
 	///
 	explicit SetMode(MathStream & os, bool text);
 	///
 	~SetMode();
 private:
 	///
-	void init(bool, docstring);
+	void init(bool, std::string const &);
 	///
 	MathStream & os_;
 	///
@@ -422,6 +422,8 @@ public:
 	///
 	~SetHTMLMode();
 private:
+	///
+	void init(bool, std::string const &);
 	///
 	HtmlStream & os_;
 	///
