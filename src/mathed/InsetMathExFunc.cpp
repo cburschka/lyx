@@ -122,6 +122,13 @@ void InsetMathExFunc::mathematica(MathematicaStream & os) const
 }
 
 
+void InsetMathExFunc::mathmlize(MathStream & os) const
+{
+	os << "<mi>" << name_ << "</mi><mo>&af;</mo>";
+	os << cell(0);
+}
+
+
 void InsetMathExFunc::octave(OctaveStream & os) const
 {
 	os << name_ << '(' << cell(0) << ')';
