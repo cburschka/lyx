@@ -118,9 +118,25 @@ void InsetMathSubstack::maple(MapleStream & os) const
 }
 
 
+void InsetMathSubstack::htmlize(HtmlStream & os) const
+{
+	os << MTag("span", "class='substack'");
+	for (row_type row = 0; row < nrows(); ++row) 
+		os << MTag("span") << cell(index(row, 0)) << ETag("span");
+	os << ETag("span");
+}
+
+	
 void InsetMathSubstack::validate(LaTeXFeatures & features) const
 {
-	features.require("amsmath");
+	if (features.runparams().isLaTeX())
+		features.require("amsmath");
+	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"span.substack{display: inline-block; vertical-align: middle; text-align:center; font-size: 75%;}\n"
+			"span.substack span{display: block;}\n"
+			"</style>");
+	
 	InsetMathGrid::validate(features);
 }
 

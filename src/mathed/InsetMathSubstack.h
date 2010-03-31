@@ -39,11 +39,13 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
+	void htmlize(HtmlStream &) const;
+	///
 	void normalize(NormalStream &) const;
 	///
 	void maple(MapleStream &) const;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures &) const;
 	///
 	InsetCode lyxCode() const { return MATH_SUBSTACK_CODE; }
 
