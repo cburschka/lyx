@@ -90,9 +90,26 @@ void InsetMathOverset::mathmlize(MathStream & ms) const
 }
 
 
+void InsetMathOverset::htmlize(HtmlStream & os) const
+{
+	os << MTag("span", "class='overset'")
+		 << MTag("span", "class='top'") << cell(0) << ETag("span")
+		 << MTag("span") << cell(1) << ETag("span")
+		 << ETag("span");
+}
+
+
 void InsetMathOverset::validate(LaTeXFeatures & features) const
 {
-	features.require("amsmath");
+	if (features.runparams().isLaTeX())
+		features.require("amsmath");
+	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"span.overset{display: inline-block; vertical-align: bottom; text-align:center;}\n"
+			"span.overset span {display: block;}\n"
+			"span.top{font-size: 66%;}\n"
+			"</style>");
+
 	InsetMathNest::validate(features);
 }
 
