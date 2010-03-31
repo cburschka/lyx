@@ -1882,6 +1882,7 @@ void LyXFunc::reloadBuffer()
 void LyXFunc::reloadBuffer(Buffer * buf)
 {
 	FileName filename = buf->fileName();
+	buf->removeAutosaveFile();
 	// e.g., read-only status could have changed due to version control
 	filename.refresh();
 	Buffer const * master = buf->masterBuffer();
