@@ -757,8 +757,12 @@ def checkConverterEntries():
 \converter agr        ppm        "gracebat -hardcopy -printfile $$o -hdevice PNM $$i 2>/dev/null"	""''',
             ''])
     #
-    checkProg('a Dot -> PDF converter', ['dot -Tpdf $$i -o $$o'],
-        rc_entry = [ r'\converter dot        pdf        "%%"	""'])
+    checkProg('a Dot -> Image converter', ['dot'],
+        rc_entry = [
+            r'''\converter dot        eps        "dot -Teps $$i -o $$o"	""
+\converter dot        pdf        "dot -Tpdf $$i -o $$o"	""
+\converter dot        png        "dot -Tpng $$i -o $$o"	""''',
+            ''])
     #
     checkProg('a Dia -> PNG converter', ['dia -e $$o -t png $$i'],
         rc_entry = [ r'\converter dia        png        "%%"	""'])
