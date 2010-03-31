@@ -37,9 +37,6 @@
 #include "ui_OutputUi.h"
 #include "ui_ListingsSettingsUi.h"
 
-#include <list>
-#include <map>
-
 namespace lyx {
 
 class BufferParams;
