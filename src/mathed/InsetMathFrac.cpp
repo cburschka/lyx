@@ -578,12 +578,49 @@ void InsetMathBinom::mathmlize(MathStream & os) const
 }
 
 
+void InsetMathBinom::htmlize(HtmlStream & os) const
+{
+	char ldelim = ' ';
+	char rdelim = ' ';
+	switch (kind_) {
+	case BINOM:
+	case TBINOM:
+	case DBINOM:
+	case CHOOSE:
+		ldelim = '(';
+		rdelim = ')';
+		break;
+	case BRACE:
+		ldelim = '{';
+		rdelim = '}';
+		break;
+	case BRACK:
+		ldelim = '[';
+		rdelim = ']';
+		break;
+	}
+	os << MTag("span", "class='binomdelim'") << ldelim << ETag("span") << '\n'
+	   << MTag("span", "class='binom'") << '\n'
+	   << MTag("span") << cell(0) << ETag("span") << '\n'
+	   << MTag("span") << cell(1) << ETag("span") << '\n'
+	   << ETag("span") << '\n'
+		 << MTag("span", "class='binomdelim'") << rdelim << ETag("span") << '\n';
+}
+
+
 void InsetMathBinom::validate(LaTeXFeatures & features) const
 {
-	if (kind_ == BINOM)
-		features.require("binom");
-	if (kind_ == DBINOM || kind_ == TBINOM)
-		features.require("amsmath");
+	if (features.runparams().isLaTeX()) {
+		if (kind_ == BINOM)
+			features.require("binom");
+		if (kind_ == DBINOM || kind_ == TBINOM)
+			features.require("amsmath");
+	} else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"span.binom{display: inline-block; vertical-align: bottom; text-align:center;}\n"
+			"span.binom span{display: block;}\n"
+			"span.binomdelim{font-size: 2em;}\n"
+			"</style>");
 	InsetMathNest::validate(features);
 }
 
