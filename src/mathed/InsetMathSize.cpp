@@ -12,6 +12,7 @@
 
 #include "InsetMathSize.h"
 
+#include "LaTeXFeatures.h"
 #include "MathData.h"
 #include "MathParser.h"
 #include "MathStream.h"
@@ -84,6 +85,14 @@ void InsetMathSize::mathmlize(MathStream & ms) const
 }
 
 
+void InsetMathSize::htmlize(HtmlStream & os) const
+{
+	string const & name = to_utf8(key_->name);
+	os <<	MTag("span", "class='" + name + "'")
+			<< cell(0) << ETag("span");
+}
+
+
 void InsetMathSize::normalize(NormalStream & os) const
 {
 	os << '[' << key_->name << ' ' << cell(0) << ']';
@@ -95,5 +104,15 @@ void InsetMathSize::infoize(odocstream & os) const
 	os << "Size: " << key_->name;
 }
 
+
+void InsetMathSize::validate(LaTeXFeatures & features) const
+{
+	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"span.displaystyle, span.textstyle{font-size: normal;}\n"
+			"span.scriptstyle {font-size: small;}\n"
+			"span.scriptscriptstyle {font-size: x-small;}\n"
+			"</style>");
+}
 
 } // namespace lyx
