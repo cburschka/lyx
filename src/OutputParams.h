@@ -14,7 +14,6 @@
 
 #include <string>
 
-#include "support/types.h"
 #include <boost/shared_ptr.hpp>
 #include "Changes.h"
 
