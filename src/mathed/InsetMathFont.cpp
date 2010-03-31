@@ -92,17 +92,70 @@ docstring InsetMathFont::name() const
 void InsetMathFont::validate(LaTeXFeatures & features) const
 {
 	InsetMathNest::validate(features);
-	// Make sure amssymb is put in preamble if Blackboard Bold or
-	// Fraktur used:
-	if (key_->name == "mathfrak" || key_->name == "mathbb")
-		features.require("amssymb");
-	if (key_->name == "text" || key_->name == "textnormal"
-	    || (key_->name.length() == 6 && key_->name.substr(0, 4) == "text"))
-		features.require("amstext");
-	if (key_->name == "textipa")
-		features.require("tipa");
-	if (key_->name == "ce" || key_->name == "cf")
-		features.require("mhchem");
+	if (features.runparams().isLaTeX()) {
+		// Make sure amssymb is put in preamble if Blackboard Bold or
+		// Fraktur used:
+		if (key_->name == "mathfrak" || key_->name == "mathbb")
+			features.require("amssymb");
+		if (key_->name == "text" || key_->name == "textnormal"
+				|| (key_->name.length() == 6 && key_->name.substr(0, 4) == "text"))
+			features.require("amstext");
+		if (key_->name == "textipa")
+			features.require("tipa");
+		if (key_->name == "ce" || key_->name == "cf")
+			features.require("mhchem");
+	} else if (features.runparams().math_flavor == OutputParams::MathAsHTML) {
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"span.normal{font: normal normal normal inherit serif;}\n"
+			"span.fraktur{font: normal normal normal inherit cursive;}\n"
+			"span.bold{font: normal normal bold inherit serif;}\n"
+			"span.script{font: normal normal normal inherit cursive;}\n"
+			"span.italic{font: italic normal normal inherit serif;}\n"
+			"span.sans{font: normal normal normal inherit sans-serif;}\n"
+			"span.monospace{font: normal normal normal inherit monospace;}\n"
+			"span.noun{font: normal small-caps normal inherit normal;}\n"
+			"</style>");
+	}
+}
+
+
+// The fonts we want to support are listed in lib/symbols
+void InsetMathFont::htmlize(HtmlStream & os) const
+{
+	// FIXME These are not quite right, because they do not nest
+	// correctly. A proper fix would presumably involve tracking
+	// the fonts already in effect.
+	std::string variant;
+	docstring const & tag = key_->name;
+	if (tag == "mathnormal" || tag == "mathrm"
+	    || tag == "text" || tag == "textnormal"
+	    || tag == "textrm" || tag == "textup"
+	    || tag == "textmd")
+		variant = "normal";
+	else if (tag == "frak" || tag == "mathfrak")
+		variant = "fraktur";
+	else if (tag == "mathbb" || tag == "mathbf"
+	         || tag == "textbf")
+		variant = "bold";
+	else if (tag == "mathcal")
+		variant == "script";
+	else if (tag == "mathit" || tag == "textsl"
+	         || tag == "emph" || tag == "textit")
+		variant = "italic";
+	else if (tag == "mathsf" || tag == "textsf")
+		variant = "sans";
+	else if (tag == "mathtt" || tag == "texttt")
+		variant = "monospace";
+	else if (tag == "textipa" || tag == "textsc" || tag == "noun")
+		variant = "noun";
+	
+	docstring const beg = (tag.size() < 4) ? from_ascii("") : tag.substr(0, 4);
+	bool const textmode = (beg == "text");
+	if (!variant.empty()) {
+		SetHTMLMode sm(os, textmode, "class='" + variant + "'");
+		os << cell(0);
+	} else
+		os << cell(0);
 }
 
 
@@ -138,7 +191,7 @@ void InsetMathFont::mathmlize(MathStream & os) const
 	docstring const beg = (tag.size() < 4) ? from_ascii("") : tag.substr(0, 4);
 	bool const textmode = (beg == "text");
 	if (!variant.empty()) {
-		docstring const attrs = from_ascii("mathvariant='" + variant + "'");
+		std::string const attrs = "mathvariant='" + variant + "'";
 		SetMode sm(os, textmode, attrs);
 		os << cell(0);
 	} else

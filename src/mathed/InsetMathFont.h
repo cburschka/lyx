@@ -48,6 +48,8 @@ public:
 	///
 	void mathmlize(MathStream &) const;
 	///
+	void htmlize(HtmlStream &) const;
+	///
 	void infoize(odocstream & os) const;
 	///
 	int kerning(BufferView const * bv) const { return cell(0).kerning(bv); }
