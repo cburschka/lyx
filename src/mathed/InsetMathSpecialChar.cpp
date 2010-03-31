@@ -160,4 +160,17 @@ void InsetMathSpecialChar::mathmlize(MathStream & ms) const
 }
 
 
+void InsetMathSpecialChar::htmlize(HtmlStream & ms) const
+{
+	switch (char_) {
+	case '&':
+		ms << "&amp;";
+		break;
+	default:
+		ms.os().put(char_);
+		break;
+	}
+}
+
+
 } // namespace lyx
