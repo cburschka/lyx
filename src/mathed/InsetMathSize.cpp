@@ -113,6 +113,7 @@ void InsetMathSize::validate(LaTeXFeatures & features) const
 			"span.scriptstyle {font-size: small;}\n"
 			"span.scriptscriptstyle {font-size: x-small;}\n"
 			"</style>");
+	InsetMathNest::validate(features);
 }
 
 } // namespace lyx

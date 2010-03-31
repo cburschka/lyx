@@ -130,6 +130,7 @@ void InsetMathSqrt::validate(LaTeXFeatures & features) const
 		features.addPreambleSnippet("<style type=\"text/css\">\n"
 			"span.sqrtof{border-top: thin solid black;}\n"
 			"</style>");
+	InsetMathNest::validate(features);
 }
 
 } // namespace lyx

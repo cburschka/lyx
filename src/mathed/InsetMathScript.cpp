@@ -782,6 +782,7 @@ void InsetMathScript::validate(LaTeXFeatures & features) const
 			"sub.math{font-size: 75%;}\n"
 			"sup.math{font-size: 75%;}\n"
 			"</style>");
+	InsetMathNest::validate(features);
 }
 
 } // namespace lyx

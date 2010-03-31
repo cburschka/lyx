@@ -137,6 +137,7 @@ void InsetMathRoot::validate(LaTeXFeatures & features) const
 			"span.rootof{border-top: thin solid black;}\n"
 			"span.root sup{font-size: 75%;}\n"
 			"</style>");
+	InsetMathNest::validate(features);
 }
 
 } // namespace lyx
