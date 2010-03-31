@@ -11,6 +11,8 @@
 #include <config.h>
 
 #include "InsetMathStackrel.h"
+
+#include "LaTeXFeatures.h"
 #include "MathData.h"
 #include "MathStream.h"
 
@@ -72,6 +74,30 @@ void InsetMathStackrel::normalize(NormalStream & os) const
 void InsetMathStackrel::mathmlize(MathStream & ms) const
 {
 	ms << "<mover accent='false'>" << cell(1) << cell(0) << "</mover>";
+}
+
+
+void InsetMathStackrel::htmlize(HtmlStream & os) const
+{
+	// at the moment, this is exactly the same as overset
+	os << MTag("span", "class='overset'")
+		 << MTag("span", "class='top'") << cell(0) << ETag("span")
+		 << MTag("span") << cell(1) << ETag("span")
+		 << ETag("span");
+}
+
+
+void InsetMathStackrel::validate(LaTeXFeatures & features) const
+{
+	// from overset
+	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"span.overset{display: inline-block; vertical-align: bottom; text-align:center;}\n"
+			"span.overset span {display: block;}\n"
+			"span.top{font-size: 66%;}\n"
+			"</style>");
+
+	InsetMathNest::validate(features);
 }
 
 } // namespace lyx
