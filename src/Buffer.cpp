@@ -3930,6 +3930,8 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 bool Buffer::reload()
 {
 	setBusy(true);
+	// c.f. bug 6587
+	removeAutosaveFile();
 	// e.g., read-only status could have changed due to version control
 	d->filename.refresh();
 	docstring const disp_fn = makeDisplayPath(d->filename.absFilename());
