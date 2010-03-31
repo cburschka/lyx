@@ -39,6 +39,7 @@ public:
 	};
 	
 	enum MathFlavor {
+		NotApplicable,
 		MathAsMathML,
 		MathAsHTML,
 		MathAsImages,
@@ -64,6 +65,8 @@ public:
 	    compile the file.
 	*/
 	FLAVOR flavor;
+	/// is it some flavor of LaTeX?
+	bool isLaTeX() const;
 	
 	/// Same, but for math output, which only matter is XHTML output.
 	MathFlavor math_flavor;

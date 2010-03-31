@@ -19,8 +19,8 @@ namespace lyx {
 
 
 OutputParams::OutputParams(Encoding const * enc)
-	: flavor(LATEX), nice(false), moving_arg(false), inulemcmd(false),
-	  local_font(0), master_language(0), encoding(enc),
+	: flavor(LATEX), math_flavor(NotApplicable), nice(false), moving_arg(false), 
+	  inulemcmd(false), local_font(0), master_language(0), encoding(enc),
 	  free_spacing(false), use_babel(false),
 	  use_indices(false), use_japanese(false), linelen(0), depth(0),
 	  exportdata(new ExportData),
@@ -42,5 +42,10 @@ OutputParams::OutputParams(Encoding const * enc)
 OutputParams::~OutputParams()
 {}
 
+
+bool OutputParams::isLaTeX() const
+{
+	return flavor == LATEX || flavor == PDFLATEX || flavor == XETEX; 
+}
 
 } // namespace lyx
