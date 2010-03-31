@@ -167,7 +167,7 @@ void InsetMathCases::mathmlize(MathStream & ms) const
 // We need a brace here, somehow.
 void InsetMathCases::htmlize(HtmlStream & ms) const
 {
-	InsetMathGrid::htmlize(ms, "cases");
+	InsetMathGrid::htmlize(ms, "class='cases'");
 }
 
 
