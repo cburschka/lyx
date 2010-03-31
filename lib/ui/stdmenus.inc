@@ -70,13 +70,13 @@ Menuset
 
 	Menu "file_vc"
 		OptItem "Register...|R" "vc-register"
-		OptItem "Check In Changes...|I" "vc-command DR \".\" \"TortoiseProc /command:commit /path:$$p\""
-		OptItem "Check Out for Edit|O" "vc-command DR \".\" \"TortoiseProc /command:update /path:$$p\""
+		OptItem "Check In Changes...|I" "vc-check-in"
+		OptItem "Check Out for Edit|O" "vc-check-out"
 		OptItem "Update Local Directory From Repository|d" "vc-repo-update"
-		OptItem "Revert to Repository Version|v" "vc-command DR \".\" \"TortoiseProc /command:revert /path:$$p\""
+		OptItem "Revert to Repository Version|v" "vc-revert"
 		OptItem "Undo Last Check In|U" "vc-undo-last"
 		OptItem "Compare with Older Revision|C" "vc-compare"
-		OptItem "Show History...|H" "vc-command D \".\" \"TortoiseProc /command:log /path:$$p\""
+		OptItem "Show History...|H" "dialog-show vclog"
 		OptItem "Use Locking Property|L" "vc-locking-toggle"
 	End
 
