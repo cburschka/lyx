@@ -101,9 +101,26 @@ void InsetMathUnderset::mathmlize(MathStream & ms) const
 }
 
 
+void InsetMathUnderset::htmlize(HtmlStream & os) const
+{
+	os << MTag("span", "class='underset'")
+		 << MTag("span") << cell(0) << ETag("span")
+		 << MTag("span", "class='bottom'") << cell(1) << ETag("span")
+		 << ETag("span");
+}
+
+
 void InsetMathUnderset::validate(LaTeXFeatures & features) const
 {
-	features.require("amsmath");
+	if (features.runparams().isLaTeX())
+		features.require("amsmath");
+	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"span.underset{display: inline-block; vertical-align: top; text-align:center;}\n"
+			"span.underset span {display: block;}\n"
+			"span.bottom{font-size: 66%;}\n"
+			"</style>");
+
 	InsetMathNest::validate(features);
 }
 
