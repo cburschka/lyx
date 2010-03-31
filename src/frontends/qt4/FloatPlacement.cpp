@@ -21,6 +21,8 @@
 #include "insets/InsetFloat.h"
 #include "support/lstrings.h"
 
+#include <map>
+
 using namespace std;
 using namespace lyx::support;
 

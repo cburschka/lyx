@@ -14,6 +14,7 @@
 
 #include "BufferParams.h"
 #include "Changes.h"
+#include "Font.h"
 
 #include "insets/InsetText.h"
 

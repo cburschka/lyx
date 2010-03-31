@@ -16,18 +16,14 @@
 #define BUFFERPARAMS_H
 
 #include "Citation.h"
-#include "Font.h"
 #include "LayoutModuleList.h"
 #include "paper.h"
 
 #include "insets/InsetQuotes.h"
 
 #include "support/copied_ptr.h"
-#include "support/FileName.h"
 
-#include <list>
 #include <map>
-#include <vector>
 
 namespace lyx {
 
@@ -38,6 +34,7 @@ class BranchList;
 class Bullet;
 class DocumentClass;
 class Encoding;
+class Font;
 class HSpace;
 class IndicesList;
 class Language;

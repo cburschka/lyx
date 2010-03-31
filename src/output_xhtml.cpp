@@ -18,6 +18,7 @@
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "Counters.h"
+#include "Font.h"
 #include "Layout.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
