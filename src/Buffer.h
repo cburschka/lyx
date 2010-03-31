@@ -13,7 +13,6 @@
 #define BUFFER_H
 
 #include "OutputEnums.h"
-#include "update_flags.h"
 
 #include "insets/InsetCode.h"
 
@@ -38,8 +37,8 @@ class ErrorList;
 class FuncRequest;
 class FuncStatus;
 class Inset;
-class InsetRef;
 class InsetLabel;
+class InsetRef;
 class Font;
 class Format;
 class Lexer;
