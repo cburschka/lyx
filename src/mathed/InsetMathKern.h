@@ -41,6 +41,8 @@ public:
 	///
 	void mathmlize(MathStream &) const { }
 	///
+	void htmlize(HtmlStream &) const { }
+	///
 	InsetCode lyxCode() const { return MATH_KERN_CODE; }
 
 private:
