@@ -207,6 +207,40 @@ void InsetMathSpace::mathmlize(MathStream & ms) const
 }
 
 	
+void InsetMathSpace::htmlize(HtmlStream & ms) const
+{
+	SpaceInfo const & si = space_info[space_];
+	switch (si.kind) {
+	case InsetSpaceParams::THIN:
+		ms << from_ascii("&thinsp;");
+		break;
+	case InsetSpaceParams::MEDIUM:
+		ms << from_ascii("&nbsp;");
+		break;
+	case InsetSpaceParams::THICK:
+		ms << from_ascii("&emsp;");
+		break;
+	case InsetSpaceParams::ENSKIP:
+		ms << from_ascii("&ensp;");
+		break;
+	case InsetSpaceParams::QUAD:
+		ms << from_ascii("&emsp;");
+		break;
+	case InsetSpaceParams::QQUAD:
+		ms << from_ascii("&emsp;&emsp;");
+		break;
+	case InsetSpaceParams::CUSTOM: {
+		string l = length_.asHTMLString();
+		ms << MTag("span", "width='" + l + "'") 
+		   << from_ascii("&nbsp;") << ETag("span");
+		break;
+	}
+	default:
+		break;
+	}
+}
+
+	
 void InsetMathSpace::normalize(NormalStream & os) const
 {
 	os << "[space " << int(space_) << "] ";

@@ -53,6 +53,8 @@ public:
 	///
 	void mathmlize(MathStream & ms) const;
 	///
+	void htmlize(HtmlStream & ms) const;
+	///
 	void write(WriteStream & os) const;
 	/// generate something that will be understood by the Dialogs.
 	InsetSpaceParams params() const;
