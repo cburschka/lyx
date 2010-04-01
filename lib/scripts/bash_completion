@@ -13,7 +13,7 @@ _lyx()
         if [[ "$cur" == -* ]]; then
                 COMPREPLY=( $( compgen -W '-help -userdir -sysdir \
 				-geometry -dbg -x --execute -e --export \
- 				-i --import -version' -- $cur ) ) 
+ 				-i --import -version -batch' -- $cur ) ) 
         else
                 _filedir '@(lyx)'
         fi
