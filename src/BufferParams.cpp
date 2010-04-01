@@ -1210,10 +1210,12 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		// viet = string::npos when not found
 		// the same is for all other languages that are not directly supported by
 		// babel, but where LaTeX-packages add babel support.
-		// this is currently the case for Latvian, Lithuanian, and Mongolian
+		// this is currently the case for Latvian, Lithuanian, Mongolian
+		// and Turkmen
 		size_t latvian = language_options.str().find("latvian");
 		size_t lithu = language_options.str().find("lithuanian");
 		size_t mongo = language_options.str().find("mongolian");
+		size_t turkmen = language_options.str().find("turkmen");
 		// if Japanese is used, babel must directly be loaded
 		// with language options, not in the class options, see
 		// http://www.lyx.org/trac/ticket/4597#c4
@@ -1221,7 +1223,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		if (lyxrc.language_global_options && !language_options.str().empty()
 			&& viet == string::npos && japan == string::npos
 			&& latvian == string::npos && lithu == string::npos
-			&& mongo == string::npos)
+			&& mongo == string::npos && turkmen == string::npos)
 			clsoptions << language_options.str() << ',';
 	}
 
@@ -2103,17 +2105,20 @@ string BufferParams::babelCall(string const & lang_opts) const
 	// viet = string::npos when not found
 	// the same is for all other languages that are not directly supported by
 	// babel, but where LaTeX-packages add babel support.
-	// this is currently the case for Latvian, Lithuanian, and Mongolian
+	// this is currently the case for Latvian, Lithuanian, Mongolian
+	// and Turkmen
 	size_t latvian = lang_opts.find("latvian");
 	size_t lithu = lang_opts.find("lithuanian");
 	size_t mongo = lang_opts.find("mongolian");
+	size_t turkmen = lang_opts.find("turkmen");
 	// If Japanese is used, babel must directly be loaded with the
 	// language options, see
 	// http://www.lyx.org/trac/ticket/4597#c4
 	size_t japan = lang_opts.find("japanese");
 	if (!lyxrc.language_global_options || viet != string::npos
 		|| japan != string::npos || latvian != string::npos
-		|| lithu != string::npos || mongo != string::npos)
+		|| lithu != string::npos || mongo != string::npos
+		|| turkmen != string::npos)
 		return "\\usepackage[" + lang_opts + "]{babel}";
 	return lang_pack;
 }
