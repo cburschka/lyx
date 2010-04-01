@@ -5,18 +5,36 @@
 have lyx &&
 _lyx()
 {
-        local cur
+        local cur g last
 
         COMPREPLY=()
         cur=${COMP_WORDS[COMP_CWORD]}
 
-        if [[ "$cur" == -* ]]; then
+	if [[ $COMP_CWORD > 1 ]]; then
+		last=${COMP_WORDS[$(($COMP_CWORD - 1))]}
+	else
+		last=''
+	fi
+
+	# turn on extglob
+	shopt -q extglob && g=1
+	test $g -eq 0 && shopt -s extglob
+
+	if [[ $last == +(--export|-e) ]]; then #'+(--export|-e)'
+		_filedir '+(pdf[1234]|PDF[1234]|pdf|PDF|ps|PS|xhtml|XHTML)'
+	else
+        case "$cur" in
+        -*)
                 COMPREPLY=( $( compgen -W '-help -userdir -sysdir \
 				-geometry -dbg -x --execute -e --export \
- 				-i --import -version -batch' -- $cur ) ) 
-        else
-                _filedir '@(lyx)'
-        fi
+ 				-i --import -version -batch' -- $cur ) ) ;;
+        *)
+                _filedir '@(lyx)' 
+        esac
+	fi
+
+	# turn it off if necessary
+	test $g -eq 0 && shopt -u extglob
 
 }
-[ "${have:-}" ] && complete -F _lyx $filenames lyx
+[ "${have:-}" ] && complete -F _lyxz $filenames lyx
