@@ -1981,10 +1981,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (!after.empty()) {
 				after.erase(0, 1);
 				after.erase(after.length() - 1, 1);
+				// LyX cannot handle newlines in the parameter
+				after = subst(after, "\n", " ");
 			}
 			if (!before.empty()) {
 				before.erase(0, 1);
 				before.erase(before.length() - 1, 1);
+				// LyX cannot handle newlines in the parameter
+				before = subst(before, "\n", " ");
 			}
 			begin_inset(os, "LatexCommand ");
 			os << t.cs() << "\n";
