@@ -17,6 +17,8 @@ the default print settings (which, of course, have to have been configured
 already). At present, not many commands can be used this way, but there will
 be more eventually.
 
+Bash completion script was added to the tarball.
+
 The following variables are obsoleted in 2.0
 
 - \plaintext_roff_command (was not used anymore)
@@ -108,8 +110,8 @@ The following LyX functions have been changed:
 - LFUN_WORD_REPLACE ("word-replace"): The replacement and searched strings
   arguments have been inverted in order to allow the replacement of the word
   at current cursor position, even if it is not selected.
-  
-  
+
+
 New external programs and libaries:
 -----------------------------------
 
@@ -172,7 +174,3 @@ TODO
 ----
 - Somebody should create a rc2rc script...
   http://www.lyx.org/trac/changeset/27531
-  
-- some summary about 3rd party programs additions/removals should be
-  written for packagers (eg aiksauraus, libtool).
-
