@@ -11,8 +11,12 @@
 #   the size of produced plots.
 
 Format 26
-OutputType              literate
+OutputType             literate
 OutputFormat           sweave
+
+ClassOptions
+	Other          "noae"
+End
 
 Style Chunk
 	Category              Sweave

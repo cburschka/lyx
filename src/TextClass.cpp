@@ -837,7 +837,10 @@ void TextClass::readClassOptions(Lexer & lexrc)
 			break;
 		case CO_OTHER:
 			lexrc.next();
-			options_ = lexrc.getString();
+			if (options_.empty())
+				options_ = lexrc.getString();
+			else
+				options_ += ',' + lexrc.getString();
 			break;
 		case CO_HEADER:
 			lexrc.next();
