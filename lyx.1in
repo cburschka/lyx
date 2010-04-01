@@ -73,6 +73,16 @@ Note that the order of -e and -x switches matters.
 .TP
 \fB \-i [\-\-import]\fP \fIfmt file.xxx
 where fmt is the import format of choice and file.xxx is the file to be imported.
+.TP
+.BI --batch
+causes LyX to run the given commands without opening a GUI window.
+Thus, something like:
+.br
+    lyx --batch -x "buffer-print printer default dvips" myfile.lyx
+.br
+will cause LyX to print myfile.lyx to the default printer, using dvips and
+the default print settings (which, of course, have to have been configured
+already).
 
 .SH ENVIRONMENT
 .TP
