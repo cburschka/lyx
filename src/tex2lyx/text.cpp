@@ -2265,6 +2265,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p);
 		}
 
+		else if (t.cs() == "textquotedbl") {
+			context.check_layout(os);
+			os << "\"";
+			skip_braces(p);
+		}
+
 		else if (t.cs() == "@" && p.next_token().asInput() == ".") {
 			context.check_layout(os);
 			os << "\\SpecialChar \\@.\n";
