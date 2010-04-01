@@ -1181,6 +1181,7 @@ scriptsdir = $(pkgdatadir)/scripts
 # Note that we "chmod 755" manually these files in install-data-hook.
 dist_scripts_PYTHON = \
 	scripts/TeXFiles.py \
+	scripts/bash_completion \
 	scripts/clean_dvi.py \
 	scripts/csv2lyx.py \
 	scripts/convertDefault.py \
