@@ -12,10 +12,10 @@ Format 26
 Style Part
 	Category              Section
 	Margin                Dynamic
-	LabelString	          "Part \thepart"
-	LabelType	            Counter
+	LabelString           "Part \thepart"
+	LabelType             Counter
 	TocLevel              0
-	LabelCounter	        part
+	LabelCounter          part
 	LatexType             Command
 	LatexName             part
 	NeedProtect           1
@@ -38,10 +38,10 @@ End
 Style Chapter
 	Margin                Static
 	Category              Section
-	LabelString	          "Chapter \thechapter"
+	LabelString           "Chapter \thechapter"
 	LabelStringAppendix   "Appendix \thechapter"
-	LabelType	            Counter
-	LabelCounter	        chapter
+	LabelType             Counter
+	LabelCounter          chapter
 	TocLevel              0
 	LatexType             Command
 	LatexName             chapter
@@ -64,8 +64,8 @@ End
 Style Section
 	Category              Section
 	Margin                Dynamic
-	LabelType	            Counter
-	LabelCounter	        section
+	LabelType             Counter
+	LabelCounter          section
 	TocLevel              1
 	LatexType             Command
 	LatexName             section
@@ -88,7 +88,7 @@ End
 
 Style Subsection
 	CopyStyle             Section
-	LabelCounter	        subsection
+	LabelCounter          subsection
 	TocLevel              2
 	LatexName             subsection
 	TopSep                0.9
@@ -104,7 +104,7 @@ End
 
 Style Subsubsection
 	CopyStyle             Subsection
-	LabelCounter	        subsubsection
+	LabelCounter          subsubsection
 	TocLevel              3
 	LatexName             subsubsection
 	TopSep                0.7
@@ -119,7 +119,7 @@ End
 
 Style Paragraph
 	CopyStyle             Subsubsection
-	LabelCounter	        paragraph
+	LabelCounter          paragraph
 	TocLevel              4
 	LatexName             paragraph
 	TopSep                0.4
@@ -129,7 +129,7 @@ End
 
 Style Subparagraph
 	CopyStyle             Paragraph
-	LabelCounter	        subparagraph
+	LabelCounter          subparagraph
 	TocLevel              5
 	LatexName             subparagraph
 	NextNoIndent          0
