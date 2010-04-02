@@ -927,11 +927,11 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\paperorientation " << string_orientation[orientation]
 	   << "\n\\suppress_date " << convert<string>(suppress_date)
 	   << '\n';
-	   if (backgroundcolor != lyx::rgbFromHexName("#ffffff"))
+	if (backgroundcolor != lyx::rgbFromHexName("#ffffff"))
 		os << "\\backgroundcolor " << lyx::X11hexname(backgroundcolor) << '\n';
-	   if (isfontcolor == true)
+	if (isfontcolor == true)
 		os << "\\fontcolor " << lyx::X11hexname(fontcolor) << '\n';
-	   if (notefontcolor != lyx::rgbFromHexName("#cccccc"))
+	if (notefontcolor != lyx::rgbFromHexName("#cccccc"))
 		os << "\\notefontcolor " << lyx::X11hexname(notefontcolor) << '\n';
 
 	BranchList::const_iterator it = branchlist().begin();
@@ -1464,7 +1464,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		features.require("pagecolor");
 	}
 
-	// only output when the font color is not black
+	// only output when the font color is not default
 	if (isfontcolor == true) {
 		// only require color here, the font color will be defined
 		// in LaTeXFeatures.cpp to avoid interferences with the LaTeX
