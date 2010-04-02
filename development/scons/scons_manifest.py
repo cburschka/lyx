@@ -910,6 +910,7 @@ src_frontends_qt4_ui_files = Split('''
     ChangesUi.ui
     CharacterUi.ui
     CitationUi.ui
+    ColorUi.ui
     CompareUi.ui
     DelimiterUi.ui
     DocumentUi.ui

@@ -20,22 +20,23 @@
 #include "GuiDialog.h"
 #include "GuiIdListModel.h"
 
+#include "ui_BiblioUi.h"
+#include "ui_ColorUi.h"
 #include "ui_DocumentUi.h"
 #include "ui_FontUi.h"
-#include "ui_TextLayoutUi.h"
+#include "ui_LanguageUi.h"
+#include "ui_LaTeXUi.h"
+#include "ui_ListingsSettingsUi.h"
+#include "ui_MarginsUi.h"
 #include "ui_MasterChildUi.h"
 #include "ui_MathsUi.h"
-#include "ui_LaTeXUi.h"
-#include "ui_PageLayoutUi.h"
-#include "ui_LanguageUi.h"
-#include "ui_BiblioUi.h"
-#include "ui_NumberingUi.h"
-#include "ui_MarginsUi.h"
-#include "ui_PreambleUi.h"
-#include "ui_PDFSupportUi.h"
 #include "ui_ModulesUi.h"
+#include "ui_NumberingUi.h"
 #include "ui_OutputUi.h"
-#include "ui_ListingsSettingsUi.h"
+#include "ui_PageLayoutUi.h"
+#include "ui_PDFSupportUi.h"
+#include "ui_PreambleUi.h"
+#include "ui_TextLayoutUi.h"
 
 namespace lyx {
 
@@ -122,6 +123,7 @@ private:
 	UiWidget<Ui::PageLayoutUi> *pageLayoutModule;
 	UiWidget<Ui::MarginsUi> *marginsModule;
 	UiWidget<Ui::LanguageUi> *langModule;
+	UiWidget<Ui::ColorUi> *colorModule;
 	UiWidget<Ui::NumberingUi> *numberingModule;
 	UiWidget<Ui::BiblioUi> *biblioModule;
 	UiWidget<Ui::MathsUi> *mathsModule;

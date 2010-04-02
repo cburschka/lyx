@@ -259,6 +259,7 @@ UIFILES = \
 	ChangesUi.ui \
 	CharacterUi.ui \
 	CitationUi.ui \
+	ColorUi.ui \
 	CompareUi.ui \
 	DelimiterUi.ui \
 	DocumentUi.ui \

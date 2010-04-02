@@ -548,8 +548,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	bc().setCancel(closePB);
 	bc().setRestore(restorePB);
 
-	textLayoutModule = new UiWidget<Ui::TextLayoutUi>;
+
 	// text layout
+	textLayoutModule = new UiWidget<Ui::TextLayoutUi>;
 	connect(textLayoutModule->lspacingCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(textLayoutModule->lspacingCO, SIGNAL(activated(int)),
@@ -618,6 +619,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	bc().addCheckedLineEdit(textLayoutModule->indentLE);
 	bc().addCheckedLineEdit(textLayoutModule->skipLE);
 
+
 	// master/child handling
 	masterChildModule = new UiWidget<Ui::MasterChildUi>;
 
@@ -639,6 +641,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	masterChildModule->childrenTW->resizeColumnToContents(1);
 	masterChildModule->childrenTW->resizeColumnToContents(2);
 
+
 	// output
 	outputModule = new UiWidget<Ui::OutputUi>;
 
@@ -648,6 +651,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(xetexChanged(bool)));
 	connect(outputModule->defaultFormatCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
+
 
 	// fonts
 	fontModule = new UiWidget<Ui::FontUi>;
@@ -683,10 +687,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(fontModule->fontOsfCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
-	connect(fontModule->noteFontColorPB, SIGNAL(clicked()),
-		this, SLOT(changeNoteFontColor()));
-	connect(fontModule->delNoteFontColorTB, SIGNAL(clicked()),
-		this, SLOT(deleteNoteFontColor()));
 
 	updateFontlist();
 
@@ -704,8 +704,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 			qt_(GuiDocument::fontfamilies_gui[n]));
 
 
-	pageLayoutModule = new UiWidget<Ui::PageLayoutUi>;
 	// page layout
+	pageLayoutModule = new UiWidget<Ui::PageLayoutUi>;
 	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)),
 		this, SLOT(papersizeChanged(int)));
 	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)),
@@ -730,11 +730,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(pageLayoutModule->pagestyleCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-	connect(pageLayoutModule->backgroundPB, SIGNAL(clicked()),
-		this, SLOT(changeBackgroundColor()));
-	connect(pageLayoutModule->delbackgroundTB, SIGNAL(clicked()),
-		this, SLOT(deleteBackgroundColor()));
-
+	
 	pageLayoutModule->pagestyleCO->addItem(qt_("Default"));
 	pageLayoutModule->pagestyleCO->addItem(qt_("empty"));
 	pageLayoutModule->pagestyleCO->addItem(qt_("plain"));
@@ -745,7 +741,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 	bc().addCheckedLineEdit(pageLayoutModule->paperwidthLE,
 		pageLayoutModule->paperwidthL);
 
-	// paper
 	QComboBox * cb = pageLayoutModule->papersizeCO;
 	cb->addItem(qt_("Default"));
 	cb->addItem(qt_("Custom"));
@@ -767,8 +762,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		pageLayoutModule->paperwidthLE));
 
 
-	marginsModule = new UiWidget<Ui::MarginsUi>;
 	// margins
+	marginsModule = new UiWidget<Ui::MarginsUi>;
 	connect(marginsModule->marginCB, SIGNAL(toggled(bool)),
 		this, SLOT(setCustomMargins(bool)));
 	connect(marginsModule->marginCB, SIGNAL(clicked()),
@@ -840,8 +835,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		marginsModule->columnsepL);
 
 
-	langModule = new UiWidget<Ui::LanguageUi>;
 	// language & quote
+	langModule = new UiWidget<Ui::LanguageUi>;
 	connect(langModule->languageCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(langModule->defaultencodingRB, SIGNAL(clicked()),
@@ -852,7 +847,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(langModule->quoteStyleCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-	// language & quotes
+
 	QAbstractItemModel * language_model = guiApp->languageModel();
 	// FIXME: it would be nice if sorting was enabled/disabled via a checkbox.
 	language_model->sort(0);
@@ -877,8 +872,20 @@ GuiDocument::GuiDocument(GuiView & lv)
 	langModule->quoteStyleCO->addItem(qt_(">>text<<"));
 
 
-	numberingModule = new UiWidget<Ui::NumberingUi>;
+	// color
+	colorModule = new UiWidget<Ui::ColorUi>;
+	connect(colorModule->noteFontColorPB, SIGNAL(clicked()),
+		this, SLOT(changeNoteFontColor()));
+	connect(colorModule->delNoteFontColorTB, SIGNAL(clicked()),
+		this, SLOT(deleteNoteFontColor()));
+	connect(colorModule->backgroundPB, SIGNAL(clicked()),
+		this, SLOT(changeBackgroundColor()));
+	connect(colorModule->delbackgroundTB, SIGNAL(clicked()),
+		this, SLOT(deleteBackgroundColor()));
+
+
 	// numbering
+	numberingModule = new UiWidget<Ui::NumberingUi>;
 	connect(numberingModule->depthSL, SIGNAL(valueChanged(int)),
 		this, SLOT(change_adaptor()));
 	connect(numberingModule->tocSL, SIGNAL(valueChanged(int)),
@@ -893,12 +900,12 @@ GuiDocument::GuiDocument(GuiView & lv)
 	numberingModule->tocTW->headerItem()->setText(2, qt_("Appears in TOC"));
 
 
+	// biblio
 	biblioModule = new UiWidget<Ui::BiblioUi>;
 	connect(biblioModule->citeNatbibRB, SIGNAL(toggled(bool)),
 		biblioModule->citationStyleL, SLOT(setEnabled(bool)));
 	connect(biblioModule->citeNatbibRB, SIGNAL(toggled(bool)),
 		biblioModule->citeStyleCO, SLOT(setEnabled(bool)));
-	// biblio
 	connect(biblioModule->citeDefaultRB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(biblioModule->citeNatbibRB, SIGNAL(clicked()),
@@ -913,19 +920,19 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(bibtexChanged(int)));
 	connect(biblioModule->bibtexOptionsED, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
-	// biblio
+
 	biblioModule->citeStyleCO->addItem(qt_("Author-year"));
 	biblioModule->citeStyleCO->addItem(qt_("Numerical"));
 	biblioModule->citeStyleCO->setCurrentIndex(0);
 	
 	biblioModule->bibtexCO->clear();
-
 	biblioModule->bibtexCO->addItem(qt_("Default"), QString("default"));
 	for (set<string>::const_iterator it = lyxrc.bibtex_alternatives.begin();
 			     it != lyxrc.bibtex_alternatives.end(); ++it) {
 		QString const command = toqstr(*it).left(toqstr(*it).indexOf(" "));
 		biblioModule->bibtexCO->addItem(command, command);
 	}
+	
 
 	// indices
 	indicesModule = new GuiIndices;
@@ -933,6 +940,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 
 
+	// maths
 	mathsModule = new UiWidget<Ui::MathsUi>;
 	connect(mathsModule->amsautoCB, SIGNAL(toggled(bool)),
 		mathsModule->amsCB, SLOT(setDisabled(bool)));
@@ -940,7 +948,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		mathsModule->esintCB, SLOT(setDisabled(bool)));
 	connect(mathsModule->mhchemautoCB, SIGNAL(toggled(bool)),
 		mathsModule->mhchemCB, SLOT(setDisabled(bool)));
-	// maths
+	
 	connect(mathsModule->amsCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(mathsModule->amsautoCB, SIGNAL(clicked()),
@@ -954,8 +962,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(mathsModule->mhchemautoCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 
-	latexModule = new UiWidget<Ui::LaTeXUi>;
+
 	// latex class
+	latexModule = new UiWidget<Ui::LaTeXUi>;
 	connect(latexModule->optionsLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(latexModule->defaultOptionsCB, SIGNAL(clicked()),
@@ -1000,6 +1009,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		classes_model_.insertRow(i, toqstr(item), *cit);
 	}
 
+
 	// branches
 	branchesModule = new GuiBranches;
 	connect(branchesModule, SIGNAL(changed()),
@@ -1008,15 +1018,18 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(branchesRename(docstring const &, docstring const &)));
 	updateUnknownBranches();
 
+
 	// preamble
 	preambleModule = new PreambleModule;
 	connect(preambleModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
 
+
 	// bullets
 	bulletsModule = new BulletsModule;
 	connect(bulletsModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
+
 
 	// Modules
 	modulesModule = new UiWidget<Ui::ModulesUi>;
@@ -1034,9 +1047,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(selectionManager, SIGNAL(selectionChanged()),
 		this, SLOT(modulesChanged()));
 
+
 	// PDF support
 	pdfSupportModule = new UiWidget<Ui::PDFSupportUi>;
-
 	connect(pdfSupportModule->use_hyperrefGB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->titleLE, SIGNAL(textChanged(QString)),
@@ -1073,10 +1086,12 @@ GuiDocument::GuiDocument(GuiView & lv)
 	for (int i = 0; backref_opts[i][0]; ++i)
 		pdfSupportModule->backrefCO->addItem(qt_(backref_opts_gui[i]));
 
+
 	// float
 	floatModule = new FloatPlacement;
 	connect(floatModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
+
 
 	// listings
 	listingsModule = new UiWidget<Ui::ListingsSettingsUi>;
@@ -1091,6 +1106,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	listingsModule->listingsTB->setPlainText(
 		qt_("Input listings parameters below. Enter ? for a list of parameters."));
 
+
+	// add the panels
 	docPS->addPanel(latexModule, qt_("Document Class"));
 	docPS->addPanel(masterChildModule, qt_("Child Documents"));
 	docPS->addPanel(modulesModule, qt_("Modules"));
@@ -1099,6 +1116,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	docPS->addPanel(pageLayoutModule, qt_("Page Layout"));
 	docPS->addPanel(marginsModule, qt_("Page Margins"));
 	docPS->addPanel(langModule, qt_("Language"));
+	docPS->addPanel(colorModule, qt_("Colors"));
 	docPS->addPanel(numberingModule, qt_("Numbering & TOC"));
 	docPS->addPanel(biblioModule, qt_("Bibliography"));
 	docPS->addPanel(indicesModule, qt_("Indexes"));
@@ -1328,6 +1346,7 @@ void GuiDocument::setCustomMargins(bool custom)
 	marginsModule->columnsepUnit->setEnabled(enableColSep);
 }
 
+
 void GuiDocument::changeBackgroundColor()
 {
 	QColor const & newColor = QColorDialog::getColor(
@@ -1335,7 +1354,7 @@ void GuiDocument::changeBackgroundColor()
 	if (!newColor.isValid())
 		return;
 	// set the button color
-	pageLayoutModule->backgroundPB->setStyleSheet(
+	colorModule->backgroundPB->setStyleSheet(
 		colorButtonStyleSheet(newColor));
 	// save color
 	set_backgroundcolor = rgbFromHexName(fromqstr(newColor.name()));
@@ -1346,7 +1365,7 @@ void GuiDocument::changeBackgroundColor()
 void GuiDocument::deleteBackgroundColor()
 {
 	// set the button color back to white
-	pageLayoutModule->backgroundPB->setStyleSheet(
+	colorModule->backgroundPB->setStyleSheet(
 		colorButtonStyleSheet(QColor(Qt::white)));
 	// save white as the set color
 	set_backgroundcolor = rgbFromHexName("#ffffff");
@@ -1361,7 +1380,7 @@ void GuiDocument::changeNoteFontColor()
 	if (!newColor.isValid())
 		return;
 	// set the button color
-	fontModule->noteFontColorPB->setStyleSheet(
+	colorModule->noteFontColorPB->setStyleSheet(
 		colorButtonStyleSheet(newColor));
 	// save color
 	set_notefontcolor = rgbFromHexName(fromqstr(newColor.name()));
@@ -1372,7 +1391,7 @@ void GuiDocument::changeNoteFontColor()
 void GuiDocument::deleteNoteFontColor()
 {
 	// set the button color back to light gray
-	fontModule->noteFontColorPB->setStyleSheet(
+	colorModule->noteFontColorPB->setStyleSheet(
 		colorButtonStyleSheet(QColor(204, 204, 204, 255)));
 	// save light gray as the set color
 	set_notefontcolor = rgbFromHexName("#cccccc");
@@ -1985,6 +2004,10 @@ void GuiDocument::applyView()
 		langModule->languageCO->currentIndex()).toString();
 	bp_.language = lyx::languages.getLanguage(fromqstr(lang));
 
+	//color
+	bp_.backgroundcolor = set_backgroundcolor;
+	bp_.notefontcolor = set_notefontcolor;
+
 	// numbering
 	if (bp_.documentClass().hasTocLevels()) {
 		bp_.tocdepth = numberingModule->tocSL->value();
@@ -2240,9 +2263,6 @@ void GuiDocument::applyView()
 	else
 		bp_.orientation = ORIENTATION_PORTRAIT;
 
-	bp_.backgroundcolor = set_backgroundcolor;
-	bp_.notefontcolor = set_notefontcolor;
-
 	// margins
 	bp_.use_geometry = !marginsModule->marginCB->isChecked()
 		|| geom_papersize;
@@ -2369,6 +2389,14 @@ void GuiDocument::paramsToDialog()
 	}
 	langModule->defaultencodingRB->setChecked(default_enc);
 	langModule->otherencodingRB->setChecked(!default_enc);
+
+	//color
+	colorModule->noteFontColorPB->setStyleSheet(
+		colorButtonStyleSheet(rgb2qcolor(bp_.notefontcolor)));
+	set_notefontcolor = bp_.notefontcolor;
+	colorModule->backgroundPB->setStyleSheet(
+		colorButtonStyleSheet(rgb2qcolor(bp_.backgroundcolor)));
+	set_backgroundcolor = bp_.backgroundcolor;
 
 	// numbering
 	int const min_toclevel = documentClass().min_toclevel();
@@ -2623,10 +2651,7 @@ void GuiDocument::paramsToDialog()
 	fontModule->fontOsfCB->setChecked(bp_.fontsOSF);
 	fontModule->scaleSansSB->setValue(bp_.fontsSansScale);
 	fontModule->scaleTypewriterSB->setValue(bp_.fontsTypewriterScale);
-	fontModule->noteFontColorPB->setStyleSheet(
-		colorButtonStyleSheet(rgb2qcolor(bp_.notefontcolor)));
-	set_notefontcolor = bp_.notefontcolor;
-
+	
 	int nn = findToken(GuiDocument::fontfamilies, bp_.fontsDefaultFamily);
 	if (nn >= 0)
 		fontModule->fontsDefaultCO->setCurrentIndex(nn);
@@ -2657,10 +2682,6 @@ void GuiDocument::paramsToDialog()
 
 	pageLayoutModule->facingPagesCB->setChecked(
 		bp_.sides == TwoSides);
-
-	pageLayoutModule->backgroundPB->setStyleSheet(
-		colorButtonStyleSheet(rgb2qcolor(bp_.backgroundcolor)));
-	set_backgroundcolor = bp_.backgroundcolor;
 
 	lengthToWidgets(pageLayoutModule->paperwidthLE,
 		pageLayoutModule->paperwidthUnitCO, bp_.paperwidth, defaultUnit);
