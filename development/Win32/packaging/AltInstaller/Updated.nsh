@@ -63,6 +63,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\images"
  File "${PRODUCT_SOURCEDIR}\Resources\images\math\diamond2.png"
  SetOutPath "$INSTDIR\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\amsart.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\dinbrief.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\g-brief-de.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\memoir.layout"
