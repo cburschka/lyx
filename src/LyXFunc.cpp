@@ -1885,8 +1885,8 @@ void LyXFunc::reloadBuffer(Buffer * buf)
 	buf->removeAutosaveFile();
 	// e.g., read-only status could have changed due to version control
 	filename.refresh();
-	Buffer const * master = buf->masterBuffer();
-	bool const is_child = master != buf;
+	Buffer const * parent = buf->parent();
+	bool const is_child = parent != buf;
 	// The user has already confirmed that the changes, if any, should
 	// be discarded. So we just release the Buffer and don't call closeBuffer();
 	theBufferList().release(buf);
@@ -1898,9 +1898,9 @@ void LyXFunc::reloadBuffer(Buffer * buf)
 	docstring str;
 	if (buf) {
 		// re-allocate master if necessary
-		if (is_child && theBufferList().isLoaded(master)
-		    && buf->masterBuffer() != master)
-			buf->setParent(master);
+		if (is_child && theBufferList().isLoaded(parent)
+		      && buf->parent() != parent)
+			buf->setParent(parent);
 		updateLabels(*buf);
 		lyx_view_->setBuffer(buf);
 		buf->errors("Parse");
