@@ -386,6 +386,14 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
+ColorCode InsetMathHull::backgroundColor(PainterInfo const & pi) const
+{
+	if (previewState(pi.base.bv))
+		return Color_background;
+	return Color_mathbg;
+}
+
+
 void InsetMathHull::drawBackground(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);

@@ -64,7 +64,7 @@ private:
 	///
 	docstring const buttonLabel(BufferView const & bv) const;
 	///
-	ColorCode backgroundColor() const;
+	ColorCode backgroundColor(PainterInfo const &) const;
 	///
 	bool showInsetDialog(BufferView *) const;
 	///

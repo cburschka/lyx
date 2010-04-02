@@ -139,7 +139,8 @@ public:
 	///
 	bool setMouseHover(bool mouse_hover);
 	///
-	ColorCode backgroundColor() const { return layout_->bgcolor(); }
+	ColorCode backgroundColor(PainterInfo const &) const
+		{ return layout_->bgcolor(); }
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///

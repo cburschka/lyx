@@ -60,7 +60,7 @@ public:
 	///
 	std::vector<InsetLabel *> const & getLabels() { return label_; }
 	///
-	ColorCode backgroundColor() const { return Color_mathbg; }
+	ColorCode backgroundColor(PainterInfo const & pi) const;
 	///
 	void numbered(row_type row, bool num);
 	///

@@ -499,7 +499,7 @@ public:
 	///
 	int scroll() const { return 0; }
 	///
-	virtual ColorCode backgroundColor() const;
+	virtual ColorCode backgroundColor(PainterInfo const &) const;
 	///
 	enum CollapseStatus {
 		Collapsed,

@@ -86,7 +86,7 @@ void PainterInfo::draw(int x, int y, docstring const & str)
 
 ColorCode PainterInfo::backgroundColor(Inset const * inset, bool sel) const
 {
-	ColorCode const color_bg = inset->backgroundColor();
+	ColorCode const color_bg = inset->backgroundColor(*this);
 
 	if (selected && sel)
 		// This inset is in a selection

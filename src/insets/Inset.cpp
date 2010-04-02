@@ -428,7 +428,7 @@ void Inset::dump() const
 }
 
 
-ColorCode Inset::backgroundColor() const
+ColorCode Inset::backgroundColor(PainterInfo const & /*pi*/) const
 {
 	return Color_none;
 }
