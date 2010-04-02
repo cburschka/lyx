@@ -735,6 +735,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		string color = lex.getString();
 		notefontcolor = lyx::rgbFromHexName(color);
 		// set the font color within LyX
+		// FIXME: the color is correctly set but later overwritten by the default
 		lcolor.setColor(Color_greyedouttext, color);
 	} else if (token == "\\paperwidth") {
 		lex >> paperwidth;
