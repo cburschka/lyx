@@ -416,7 +416,7 @@ End
 
 
 InsetLayout Preview
-	LabelString           Preview	
+	LabelString           Preview
 	Decoration            minimalistic
 	MultiPar              true
 End
