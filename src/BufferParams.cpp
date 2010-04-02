@@ -369,6 +369,9 @@ BufferParams::BufferParams()
 	suppress_date = false;
 	// white is equal to no background color
 	backgroundcolor = lyx::rgbFromHexName("#ffffff");
+	// no color is the default (black)
+	fontcolor = lyx::rgbFromHexName("#000000");
+	isfontcolor = false;
 	// light gray is the default font color for greyed-out notes
 	notefontcolor = lyx::rgbFromHexName("#cccccc");
 	compressed = lyxrc.save_compressed;
@@ -723,6 +726,10 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\backgroundcolor") {
 		lex.eatLine();
 		backgroundcolor = lyx::rgbFromHexName(lex.getString());
+	} else if (token == "\\fontcolor") {
+		lex.eatLine();
+		fontcolor = lyx::rgbFromHexName(lex.getString());
+		isfontcolor = true;
 	} else if (token == "\\notefontcolor") {
 		lex.eatLine();
 		string color = lex.getString();
@@ -921,6 +928,8 @@ void BufferParams::writeFile(ostream & os) const
 	   << '\n';
 	   if (backgroundcolor != lyx::rgbFromHexName("#ffffff"))
 		os << "\\backgroundcolor " << lyx::X11hexname(backgroundcolor) << '\n';
+	   if (isfontcolor == true)
+		os << "\\fontcolor " << lyx::X11hexname(fontcolor) << '\n';
 	   if (notefontcolor != lyx::rgbFromHexName("#cccccc"))
 		os << "\\notefontcolor " << lyx::X11hexname(notefontcolor) << '\n';
 
@@ -1452,6 +1461,15 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		// package pdfpages 
 		features.require("color");
 		features.require("pagecolor");
+	}
+
+	// only output when the font color is not black
+	if (isfontcolor == true) {
+		// only require color here, the font color will be defined
+		// in LaTeXFeatures.cpp to avoid interferences with the LaTeX
+		// package pdfpages 
+		features.require("color");
+		features.require("fontcolor");
 	}
 
 	// Only if class has a ToC hierarchy

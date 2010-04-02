@@ -178,6 +178,8 @@ vector<pair<string, QString> > pagestyles;
 namespace lyx {
 
 RGBColor set_backgroundcolor;
+RGBColor set_fontcolor;
+bool is_fontcolor;
 RGBColor set_notefontcolor;
 
 namespace {
@@ -874,6 +876,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	// color
 	colorModule = new UiWidget<Ui::ColorUi>;
+	connect(colorModule->fontColorPB, SIGNAL(clicked()),
+		this, SLOT(changeFontColor()));
+	connect(colorModule->delFontColorTB, SIGNAL(clicked()),
+		this, SLOT(deleteFontColor()));
 	connect(colorModule->noteFontColorPB, SIGNAL(clicked()),
 		this, SLOT(changeNoteFontColor()));
 	connect(colorModule->delNoteFontColorTB, SIGNAL(clicked()),
@@ -1369,6 +1375,36 @@ void GuiDocument::deleteBackgroundColor()
 		colorButtonStyleSheet(QColor(Qt::white)));
 	// save white as the set color
 	set_backgroundcolor = rgbFromHexName("#ffffff");
+	changed();
+}
+
+
+void GuiDocument::changeFontColor()
+{
+	QColor const & newColor = QColorDialog::getColor(
+		rgb2qcolor(set_fontcolor), asQWidget());
+	if (!newColor.isValid())
+		return;
+	// set the button color and text
+	colorModule->fontColorPB->setStyleSheet(
+		colorButtonStyleSheet(newColor));
+	colorModule->fontColorPB->setText(toqstr("Change..."));
+	// save color
+	set_fontcolor = rgbFromHexName(fromqstr(newColor.name()));
+	is_fontcolor = true;
+	changed();
+}
+
+
+void GuiDocument::deleteFontColor()
+{
+	// set the button color back to default by setting an epmty StyleSheet
+	colorModule->fontColorPB->setStyleSheet(QLatin1String(""));
+	// change button text
+	colorModule->fontColorPB->setText(toqstr("Default..."));
+	// save default color (black)
+	set_fontcolor = rgbFromHexName("#000000");
+	is_fontcolor = false;
 	changed();
 }
 
@@ -2006,6 +2042,8 @@ void GuiDocument::applyView()
 
 	//color
 	bp_.backgroundcolor = set_backgroundcolor;
+	bp_.fontcolor = set_fontcolor;
+	bp_.isfontcolor = is_fontcolor;
 	bp_.notefontcolor = set_notefontcolor;
 
 	// numbering
@@ -2391,9 +2429,17 @@ void GuiDocument::paramsToDialog()
 	langModule->otherencodingRB->setChecked(!default_enc);
 
 	//color
+	if (bp_.isfontcolor) {
+		colorModule->fontColorPB->setStyleSheet(
+			colorButtonStyleSheet(rgb2qcolor(bp_.fontcolor)));
+	}
+	set_fontcolor = bp_.fontcolor;
+	is_fontcolor = bp_.isfontcolor;
+
 	colorModule->noteFontColorPB->setStyleSheet(
 		colorButtonStyleSheet(rgb2qcolor(bp_.notefontcolor)));
 	set_notefontcolor = bp_.notefontcolor;
+
 	colorModule->backgroundPB->setStyleSheet(
 		colorButtonStyleSheet(rgb2qcolor(bp_.backgroundcolor)));
 	set_backgroundcolor = bp_.backgroundcolor;

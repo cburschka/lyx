@@ -126,7 +126,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 383; // uwestoehr: support for Turkmen
+int const LYX_FORMAT = 384; // uwestoehr: support for document-wide font color
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
@@ -668,6 +668,8 @@ int Buffer::readHeader(Lexer & lex)
 	params().pdfoptions().clear();
 	params().indiceslist().clear();
 	params().backgroundcolor = lyx::rgbFromHexName("#ffffff");
+	params().fontcolor = lyx::rgbFromHexName("#000000");
+	params().isfontcolor = false;
 	params().notefontcolor = lyx::rgbFromHexName("#cccccc");
 
 	for (int i = 0; i < 4; ++i) {

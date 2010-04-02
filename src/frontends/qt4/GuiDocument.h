@@ -109,6 +109,8 @@ private Q_SLOTS:
 	void modulesChanged();
 	void changeBackgroundColor();
 	void deleteBackgroundColor();
+	void changeFontColor();
+	void deleteFontColor();
 	void changeNoteFontColor();
 	void deleteNoteFontColor();
 	void xetexChanged(bool);

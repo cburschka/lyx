@@ -286,6 +286,10 @@ public:
 	///
 	RGBColor backgroundcolor;
 	///
+	RGBColor fontcolor;
+	///
+	bool isfontcolor;
+	///
 	RGBColor notefontcolor;
 	/// \param index should lie in the range 0 <= \c index <= 3.
 	Bullet & temp_bullet(size_type index);

@@ -7,12 +7,16 @@ The good example would be 2010-01-10 entry.
 
 -----------------------
 
+2010-04-03 Uwe Stöhr <uwestoehr@web.de>
+	* Format incremented to 384: support to specify a document-wide
+	  font color: new buffer parameter \fontcolor
+
 2010-03-31 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 383: support for Turkmen
 
 2010-03-31 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 382: support to change the font color
-	  for greyed-out notes: new parameter \notefontcolor
+	  for greyed-out notes: new buffer parameter \notefontcolor
 
 2010-03-28: Vincent van Ravesteijn <vfr@lyx.org>
 	* Format incremented to 381: support for new parameters

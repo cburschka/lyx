@@ -590,11 +590,18 @@ string const LaTeXFeatures::getColorOptions() const
 		colors << "\\pagecolor{page_backgroundcolor}\n";
 	}
 
+	if (mustProvide("fontcolor")) {
+		colors << "\\definecolor{document_fontcolor}{rgb}{";
+		colors << outputLaTeXColor(params_.fontcolor) << "}\n";
+		// set the color
+		colors << "\\color{document_fontcolor}\n";
+	}
+
 	if (mustProvide("lyxgreyedout")) {
 		colors << "\\definecolor{note_fontcolor}{rgb}{";
 		colors << outputLaTeXColor(params_.notefontcolor) << "}\n";
 		// the color will be set together with the definition of
-		// the lyxgreyedout environment (lyxgreyedout_def)
+		// the lyxgreyedout environment (see lyxgreyedout_def)
 	}
 
 	return colors.str();
