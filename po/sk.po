@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-03-29 16:01-0400\n"
-"PO-Revision-Date: 2010-03-21 16:44+0100\n"
+"PO-Revision-Date: 2010-04-02 17:02+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1200,12 +1200,10 @@ msgid "y"
 msgstr "y"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:13
-#, fuzzy
 msgid "TabWidget"
-msgstr "DockWidget"
+msgstr "TabWidget"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:20
-#, fuzzy
 msgid "Basi&c"
 msgstr "Základné"
 
@@ -1242,7 +1240,6 @@ msgid "Restrict search to whole words only"
 msgstr "Hľadať len celé slová"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:104
-#, fuzzy
 msgid "W&hole words"
 msgstr "Celé slová"
 
@@ -3743,9 +3740,8 @@ msgid "minutes"
 msgstr "min."
 
 #: src/frontends/qt4/ui/PrefUi.ui:201
-#, fuzzy
 msgid "&Save documents compressed by default"
-msgstr "Uložiť ako štandardné nastavenia dokumentu"
+msgstr "Štandardne ukladať dokumenty komprimované"
 
 #: src/frontends/qt4/ui/PrefUi.ui:208
 msgid "&Maximum last files:"
@@ -3770,12 +3766,10 @@ msgstr "Uložiť"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:22
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:35
-#, fuzzy
 msgid "Define hanging indentation/label length for the nomenclature list."
-msgstr "Definuj dĺžku označenie pre listinu nomenklatúry."
+msgstr "Definuj dĺžku označenia pre listinu nomenklatúry."
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:25
-#, fuzzy
 msgid "&List Indentation:"
 msgstr "Odsadzovanie zoznamu:"
 
@@ -3784,7 +3778,6 @@ msgid "Custom &Width:"
 msgstr "Vlastná Šírka:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:55
-#, fuzzy
 msgid ""
 "Custom value. &quot;List Indentation&quot; needs to be set to &quot;"
 "Custom&quot;."
@@ -4032,7 +4025,6 @@ msgid "Formatted reference"
 msgstr "Formátovaná referencia"
 
 #: src/frontends/qt4/ui/SearchUi.ui:108
-#, fuzzy
 msgid "Match w&hole words only"
 msgstr "Hľadať len celé slová"
 
@@ -9269,23 +9261,20 @@ msgid "UNDEFINED"
 msgstr "NEDEFINOVANÉ"
 
 #: lib/layouts/stdciteformats.inc:9
-#, fuzzy
 msgid "pp."
-msgstr "str. "
+msgstr "pp."
 
 #: lib/layouts/stdciteformats.inc:10
-#, fuzzy
 msgid "ed."
-msgstr "červená"
+msgstr "ed."
 
 #: lib/layouts/stdciteformats.inc:11
 msgid "vol."
 msgstr ""
 
 #: lib/layouts/stdciteformats.inc:12
-#, fuzzy
 msgid "no."
-msgstr "nie"
+msgstr "nie."
 
 #: lib/layouts/stdciteformats.inc:13 lib/ui/stdtoolbars.inc:514
 #: src/frontends/qt4/GuiGraphics.cpp:476 src/lengthcommon.cpp:38
@@ -9455,9 +9444,8 @@ msgid "Preview"
 msgstr "Náhľad"
 
 #: lib/layouts/stdinsets.inc:416
-#, fuzzy
 msgid "Preview\t"
-msgstr "Náhľad"
+msgstr "Náhľad\t"
 
 #: lib/layouts/stdlayouts.inc:74
 msgid "--Separator--"
@@ -12166,29 +12154,24 @@ msgid "Fullscreen Mode"
 msgstr "Celoobrazovkový mód"
 
 #: lib/ui/stdcontext.inc:329
-#, fuzzy
 msgid "Anything|A"
-msgstr "Hocijaký reťazec"
+msgstr "Hocičo"
 
 #: lib/ui/stdcontext.inc:330
-#, fuzzy
 msgid "Anything Non-Empty|o"
-msgstr "Hocijaký neprázdny"
+msgstr "Hocijaký Neprázdny"
 
 #: lib/ui/stdcontext.inc:331
-#, fuzzy
 msgid "Any Word|W"
-msgstr "MS Word"
+msgstr "Hocijaké Slovo"
 
 #: lib/ui/stdcontext.inc:332
-#, fuzzy
 msgid "Any Number|N"
-msgstr "Hocijaké číslo"
+msgstr "Hocijaké Číslo"
 
 #: lib/ui/stdcontext.inc:333
-#, fuzzy
 msgid "User Defined|U"
-msgstr "Užívateľom definované"
+msgstr "Užívateľom Definované"
 
 #: lib/ui/stdcontext.inc:342 lib/ui/stdmenus.inc:238
 msgid "Append Argument"
@@ -12352,9 +12335,8 @@ msgid "Select Section|S"
 msgstr "Vyber Sekciu"
 
 #: lib/ui/stdcontext.inc:632
-#, fuzzy
 msgid "Wrap by Preview|P"
-msgstr "Náhľad LyX"
+msgstr "Obtekať pri náhľade"
 
 #: lib/ui/stdmenus.inc:33
 msgid "Document|D"
@@ -12753,7 +12735,6 @@ msgid "Program Listing[[Menu]]"
 msgstr "Výpis programu[[Menu]]"
 
 #: lib/ui/stdmenus.inc:369
-#, fuzzy
 msgid "Preview|w"
 msgstr "Náhľad"
 
@@ -17244,9 +17225,8 @@ msgid "paragraph marker"
 msgstr "Znak konca odstavca"
 
 #: src/Color.cpp:243
-#, fuzzy
 msgid "preview frame"
-msgstr "Náhľad zlyhal"
+msgstr "Náhľad rám"
 
 #: src/Color.cpp:244
 msgid "inherit"
