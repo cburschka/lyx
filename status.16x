@@ -180,6 +180,9 @@ What's new
 
 - Fix usage of the \underbar macro in math mode (bug 4565).
 
+- Fix the import of \limits and \nolimits when it is not followed by a
+  sub or superscript (bug 6633).
+
 
 * USER INTERFACE
 

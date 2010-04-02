@@ -1315,11 +1315,15 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 #endif
 
-		else if (t.cs() == "limits")
-			limits = 1;
-
-		else if (t.cs() == "nolimits")
-			limits = -1;
+		else if (t.cs() == "limits" || t.cs() == "nolimits") {
+			CatCode cat = nextToken().cat();
+			if (cat == catSuper || cat == catSub)
+				limits = t.cs() == "limits" ? 1 : -1;
+			else {
+				MathAtom at = createInsetMath(t.cs(), buf);
+				cell->push_back(at);
+			}
+		}
 
 		else if (t.cs() == "nonumber") {
 			if (grid.asHullInset())
