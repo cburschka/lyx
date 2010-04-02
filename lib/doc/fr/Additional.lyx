@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -3239,47 +3239,18 @@ Il existe des commandes plus complexes qui vous permettent d'introduire
 fancyhdr
 \family default
  pour plus de précisions.
- Par exemple, si vous avez une installation teTeX
-\begin_inset Foot
+ (
+\begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
-Avec MiKTeX, ça peut être quelque chose comme 
-\family typewriter
-c:
-\backslash
-Program
-\begin_inset space ~
-\end_inset
 
-Files
-\backslash
-MiKTeX
-\begin_inset space ~
-\end_inset
-
-2.6
-\backslash
-\SpecialChar \-
-doc
-\backslash
-latex
-\backslash
-fancyhdr
-\backslash
-fancyhdr.dvi 
-\family default
-(NdT).
+http://www.ctan.org/tex-archive/help/Catalogue/entries/fancyhdr.html
 \end_layout
 
 \end_inset
 
-, voyez 
-\family typewriter
-/usr/share/texmf/\SpecialChar \-
-doc/latex/fancyhdr/fancyhdr.dvi
-\family default
-.
+)
 \end_layout
 
 \begin_layout Standard

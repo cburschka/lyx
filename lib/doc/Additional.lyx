@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 381
+\lyxformat 382
 \begin_document
 \begin_header
 \textclass scrbook
@@ -3144,25 +3144,18 @@ fancyhdr
 \end_inset
 
  package documentation.
- This can be found in the file 
-\begin_inset Flex CharStyle:Code
+ (
+\begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
-fancyhdr.dvi
+
+http://www.ctan.org/tex-archive/help/Catalogue/entries/fancyhdr.html
 \end_layout
 
 \end_inset
 
-, which should have been installed with your LaTeX distribution, or 
-\begin_inset CommandInset href
-LatexCommand href
-name "online"
-target "http://www.ctan.org/tex-archive/macros/latex/contrib/fancyhdr/"
-
-\end_inset
-
-.
+)
 \end_layout
 
 \begin_layout Standard
