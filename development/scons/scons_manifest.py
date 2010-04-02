@@ -2866,6 +2866,7 @@ lib_layouts_module_files = Split('''
 ''')
 
 lib_scripts_files = Split('''
+    bash_completion
     clean_dvi.py
     convertDefault.py
     csv2lyx.py
