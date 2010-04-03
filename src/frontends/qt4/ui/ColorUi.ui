@@ -1,89 +1,107 @@
-<ui version="4.0">
+<ui version="4.0" >
  <class>ColorUi</class>
- <widget class="QWidget" name="ColorUi">
-  <property name="geometry">
+ <widget class="QWidget" name="ColorUi" >
+  <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>404</width>
-    <height>216</height>
+    <width>406</width>
+    <height>275</height>
    </rect>
   </property>
-  <property name="contextMenuPolicy">
+  <property name="contextMenuPolicy" >
    <enum>Qt::DefaultContextMenu</enum>
   </property>
-  <property name="windowTitle">
+  <property name="windowTitle" >
    <string>ColorUi</string>
   </property>
-  <property name="toolTip">
+  <property name="toolTip" >
    <string/>
   </property>
-  <layout class="QGridLayout" name="gridLayout_3">
-   <item row="0" column="0">
-    <widget class="QGroupBox" name="fontcolorGB">
-     <property name="title">
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="0" column="0" >
+    <widget class="QGroupBox" name="fontcolorGB" >
+     <property name="title" >
       <string>Font colors</string>
      </property>
-     <property name="flat">
+     <property name="flat" >
       <bool>true</bool>
      </property>
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="0">
-       <widget class="QLabel" name="fontColorLA">
-        <property name="text">
-         <string>Font color:</string>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>11</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="fontColorLA" >
+        <property name="text" >
+         <string>Main text:</string>
         </property>
-        <property name="buddy">
+        <property name="buddy" >
          <cstring>fontColorPB</cstring>
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item row="0" column="1" >
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>11</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
         <item>
-         <widget class="QPushButton" name="fontColorPB">
-          <property name="maximumSize">
+         <widget class="QPushButton" name="fontColorPB" >
+          <property name="maximumSize" >
            <size>
             <width>16777215</width>
             <height>16777215</height>
            </size>
           </property>
-          <property name="toolTip">
+          <property name="toolTip" >
            <string>Click to change the color</string>
           </property>
-          <property name="text">
+          <property name="text" >
            <string>Default...</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="delFontColorTB">
-          <property name="minimumSize">
+         <widget class="QToolButton" name="delFontColorTB" >
+          <property name="minimumSize" >
            <size>
             <width>23</width>
             <height>23</height>
            </size>
           </property>
-          <property name="toolTip">
+          <property name="toolTip" >
            <string>Revert the color to the default</string>
           </property>
-          <property name="text">
+          <property name="text" >
            <string>R&amp;eset</string>
           </property>
-          <property name="toolButtonStyle">
+          <property name="toolButtonStyle" >
            <enum>Qt::ToolButtonTextOnly</enum>
           </property>
-          <property name="arrowType">
+          <property name="arrowType" >
            <enum>Qt::LeftArrow</enum>
           </property>
          </widget>
         </item>
         <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
+         <spacer>
+          <property name="orientation" >
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeHint" stdset="0">
+          <property name="sizeHint" >
            <size>
             <width>40</width>
             <height>20</height>
@@ -93,63 +111,68 @@
         </item>
        </layout>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="noteFontColorLA">
-        <property name="text">
-         <string>Font color for
-greyed-out notes:</string>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="noteFontColorLA" >
+        <property name="text" >
+         <string>Greyed-out notes:</string>
         </property>
-        <property name="buddy">
+        <property name="buddy" >
          <cstring>fontColorPB</cstring>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item row="1" column="1" >
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>11</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
         <item>
-         <widget class="QPushButton" name="noteFontColorPB">
-          <property name="maximumSize">
+         <widget class="QPushButton" name="noteFontColorPB" >
+          <property name="maximumSize" >
            <size>
             <width>16777215</width>
             <height>16777215</height>
            </size>
           </property>
-          <property name="toolTip">
+          <property name="toolTip" >
            <string>Click to change the color</string>
           </property>
-          <property name="text">
+          <property name="text" >
            <string>&amp;Change...</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="delNoteFontColorTB">
-          <property name="minimumSize">
+         <widget class="QToolButton" name="delNoteFontColorTB" >
+          <property name="minimumSize" >
            <size>
             <width>23</width>
             <height>23</height>
            </size>
           </property>
-          <property name="toolTip">
+          <property name="toolTip" >
            <string>Revert the color to the default</string>
           </property>
-          <property name="text">
+          <property name="text" >
            <string>R&amp;eset</string>
           </property>
-          <property name="toolButtonStyle">
+          <property name="toolButtonStyle" >
            <enum>Qt::ToolButtonTextOnly</enum>
           </property>
-          <property name="arrowType">
+          <property name="arrowType" >
            <enum>Qt::LeftArrow</enum>
           </property>
          </widget>
         </item>
         <item>
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
+         <spacer>
+          <property name="orientation" >
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeHint" stdset="0">
+          <property name="sizeHint" >
            <size>
             <width>40</width>
             <height>20</height>
@@ -162,71 +185,83 @@ greyed-out notes:</string>
      </layout>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QGroupBox" name="backgroundGB">
-     <property name="title">
+   <item row="1" column="0" >
+    <widget class="QGroupBox" name="backgroundGB" >
+     <property name="title" >
       <string>Background colors</string>
      </property>
-     <property name="flat">
+     <property name="flat" >
       <bool>true</bool>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="QLabel" name="backgroundColorLA">
-        <property name="text">
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>11</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="backgroundColorLA" >
+        <property name="text" >
          <string>Background color:</string>
         </property>
-        <property name="buddy">
+        <property name="buddy" >
          <cstring>backgroundPB</cstring>
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item row="0" column="1" >
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>11</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
         <item>
-         <widget class="QPushButton" name="backgroundPB">
-          <property name="maximumSize">
+         <widget class="QPushButton" name="backgroundPB" >
+          <property name="maximumSize" >
            <size>
             <width>16777215</width>
             <height>16777215</height>
            </size>
           </property>
-          <property name="toolTip">
+          <property name="toolTip" >
            <string>Click to change the color</string>
           </property>
-          <property name="text">
+          <property name="text" >
            <string>&amp;Change...</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="delbackgroundTB">
-          <property name="minimumSize">
+         <widget class="QToolButton" name="delbackgroundTB" >
+          <property name="minimumSize" >
            <size>
             <width>23</width>
             <height>23</height>
            </size>
           </property>
-          <property name="toolTip">
+          <property name="toolTip" >
            <string>Revert the color to the default</string>
           </property>
-          <property name="text">
+          <property name="text" >
            <string>R&amp;eset</string>
           </property>
-          <property name="toolButtonStyle">
+          <property name="toolButtonStyle" >
            <enum>Qt::ToolButtonTextOnly</enum>
           </property>
-          <property name="arrowType">
+          <property name="arrowType" >
            <enum>Qt::LeftArrow</enum>
           </property>
          </widget>
         </item>
         <item>
-         <spacer name="horizontalSpacer_3">
-          <property name="orientation">
+         <spacer>
+          <property name="orientation" >
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeHint" stdset="0">
+          <property name="sizeHint" >
            <size>
             <width>40</width>
             <height>20</height>
@@ -239,12 +274,12 @@ greyed-out notes:</string>
      </layout>
     </widget>
    </item>
-   <item row="2" column="0">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
+   <item row="2" column="0" >
+    <spacer>
+     <property name="orientation" >
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeHint" stdset="0">
+     <property name="sizeHint" >
       <size>
        <width>20</width>
        <height>126</height>
@@ -254,9 +289,9 @@ greyed-out notes:</string>
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="6" margin="11"/>
+ <layoutdefault spacing="6" margin="11" />
  <includes>
-  <include location="local">qt_i18n.h</include>
+  <include location="local" >qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>
