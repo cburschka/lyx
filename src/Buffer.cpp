@@ -1563,20 +1563,24 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 	updateMacroInstances();
 
 	if (!only_body) {
-		os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-		os << "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN\" \"http://www.w3.org/TR/MathML2/dtd/xhtml-math11-f.dtd\">\n";
-		// FIXME Language should be set properly.
-		os << "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n";
-		os << "<head>\n";
-		os << "<meta name=\"GENERATOR\" content=\"" << PACKAGE_STRING << "\" />\n";
-		// FIXME Presumably need to set this right
-		os << "<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\" />\n";
-		os << "<title>" << features.htmlTitle() << "</title>\n";
+		os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+		   << "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN\" \"http://www.w3.org/TR/MathML2/dtd/xhtml-math11-f.dtd\">\n"
+		   // FIXME Language should be set properly.
+		   << "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
+		   << "<head>\n"
+		   << "<meta name=\"GENERATOR\" content=\"" << PACKAGE_STRING << "\" />\n"
+		   // FIXME Presumably need to set this right
+		   << "<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\" />\n";
+
+		docstring const & doctitle = features.htmlTitle();
+		os << "<title>"
+		   << (doctitle.empty() ? from_ascii("LyX Document") : doctitle)
+		   << "</title>\n";
 
 		os << "\n<!-- Text Class Preamble -->\n"
-			<< features.getTClassHTMLPreamble()
-			<< "\n<!-- Premable Snippets -->\n"
-			<< from_utf8(features.getPreambleSnippets());
+		   << features.getTClassHTMLPreamble()
+		   << "\n<!-- Premable Snippets -->\n"
+		   << from_utf8(features.getPreambleSnippets());
 
 		os << "\n<!-- Layout-provided Styles -->\n";
 		docstring const styleinfo = features.getTClassHTMLStyles();
