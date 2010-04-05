@@ -3313,13 +3313,20 @@ void GuiView::toggleFullScreen()
 
 Buffer const * GuiView::updateInset(Inset const * inset)
 {
-	if (!d.current_work_area_)
+	if (!inset)
 		return 0;
 
-	if (inset)
-		d.current_work_area_->scheduleRedraw();
+	Buffer const * inset_buffer = &(inset->buffer());
 
-	return &d.current_work_area_->bufferView().buffer();
+	for (int i = 0; i != d.splitter_->count(); ++i) {
+		GuiWorkArea * wa = d.tabWorkArea(i)->currentWorkArea();
+		if (!wa)
+			continue;
+		Buffer const * buffer = &(wa->bufferView().buffer());
+		if (inset_buffer == buffer)
+			wa->scheduleRedraw();
+	}
+	return inset_buffer;
 }
 
 
