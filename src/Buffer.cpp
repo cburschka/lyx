@@ -1568,6 +1568,7 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 		// FIXME Language should be set properly.
 		os << "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n";
 		os << "<head>\n";
+		os << "<meta name=\"GENERATOR\" content=\"" << PACKAGE_STRING << "\" />\n";
 		// FIXME Presumably need to set this right
 		os << "<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\" />\n";
 		os << "<title>" << features.htmlTitle() << "</title>\n";
