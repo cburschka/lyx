@@ -611,26 +611,34 @@ static void error_handler(int err_sig)
 
 	// This shouldn't matter here, however, as we've already invoked
 	// emergencyCleanup.
+	docstring msg;
 	switch (err_sig) {
 #ifdef SIGHUP
 	case SIGHUP:
-		lyxerr << "\nlyx: SIGHUP signal caught\nBye." << endl;
+		msg = _("SIGHUP signal caught!\nBye.");
 		break;
 #endif
 	case SIGFPE:
-		lyxerr << "\nlyx: SIGFPE signal caught\nBye." << endl;
+		msg = _("SIGFPE signal caught!\nBye.");
 		break;
 	case SIGSEGV:
-		lyxerr << "\nlyx: SIGSEGV signal caught\n"
-			  "Sorry, you have found a bug in LyX. "
+		msg = _("SIGSEGV signal caught!\n"
+			  "Sorry, you have found a bug in LyX, "
+			  "hope you have not lost any data.\n"
 			  "Please read the bug-reporting instructions "
-			  "in Help->Introduction and send us a bug report, "
-			  "if necessary. Thanks !\nBye." << endl;
+			  "in 'Help->Introduction' and send us a bug report, "
+			  "if necessary. Thanks !\nBye.");
 		break;
 	case SIGINT:
 	case SIGTERM:
 		// no comments
 		break;
+	}
+
+	if (!msg.empty()) {
+		lyxerr << "\nlyx: " << msg << endl;
+		// try to make a GUI message
+		Alert::error(_("LyX crashed!"), msg);
 	}
 
 	// Deinstall the signal handlers
@@ -644,11 +652,18 @@ static void error_handler(int err_sig)
 
 #ifdef SIGHUP
 	if (err_sig == SIGSEGV ||
-	    (err_sig != SIGHUP && !getEnv("LYXDEBUG").empty()))
+    (err_sig != SIGHUP && !getEnv("LYXDEBUG").empty())) {
 #else
-	if (err_sig == SIGSEGV || !getEnv("LYXDEBUG").empty())
-#endif
+  if (err_sig == SIGSEGV || !getEnv("LYXDEBUG").empty()) {
+#endif 
+#ifdef _MSC_VER
+		// with abort() it crashes again.
+		exit(err_sig);
+#else
 		abort();
+#endif
+	}
+
 	exit(0);
 }
 
