@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-03-29 16:01-0400\n"
-"PO-Revision-Date: 2010-03-30 01:39+0100\n"
+"PO-Revision-Date: 2010-04-06 00:36+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1414,14 +1414,12 @@ msgid "y"
 msgstr "y"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:13
-#, fuzzy
 msgid "TabWidget"
-msgstr "DockWidget"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:20
-#, fuzzy
 msgid "Basi&c"
-msgstr "Grun&deinstellungen"
+msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:26
 #: src/frontends/qt4/ui/LogUi.ui:28
@@ -1457,7 +1455,6 @@ msgid "Restrict search to whole words only"
 msgstr "Suche auf vollständige Wörter beschränken"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:104
-#, fuzzy
 msgid "W&hole words"
 msgstr "Gan&ze Wörter"
 
@@ -2111,9 +2108,8 @@ msgid "Information Name:"
 msgstr "Informationsname:"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:16
-#, fuzzy
 msgid "Inset Parameter Configuration"
-msgstr "Standard-Bruch einfügen"
+msgstr ""
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:47
 #: src/frontends/qt4/ui/ParagraphUi.ui:44
@@ -3892,9 +3888,8 @@ msgid "minutes"
 msgstr "Minuten"
 
 #: src/frontends/qt4/ui/PrefUi.ui:201
-#, fuzzy
 msgid "&Save documents compressed by default"
-msgstr "Als Dokument-Standards speichern"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefUi.ui:208
 msgid "&Maximum last files:"
@@ -3921,12 +3916,10 @@ msgstr "&Speichern"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:22
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:35
-#, fuzzy
 msgid "Define hanging indentation/label length for the nomenclature list."
 msgstr "Bestimmt die Länge des Einzugs/der Marke für die Nomenklaturliste."
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:25
-#, fuzzy
 msgid "&List Indentation:"
 msgstr "&Einrückung der Liste:"
 
@@ -3935,9 +3928,8 @@ msgid "Custom &Width:"
 msgstr "Benutzerdefinierte &Breite:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:55
-#, fuzzy
 msgid "Custom value. &quot;List Indentation&quot; needs to be set to &quot;Custom&quot;."
-msgstr "Benutzerdefinierter Wert. &quot;Listeneinrückung&quot; muss auf &quot;Benutzer&quot; gesetzt werden."
+msgstr "Benutzerdefinierter Wert. &quot;Listeneinrückung&quot; muss auf &quot;Benutzerdefiniert&quot; gesetzt werden."
 
 #: src/frontends/qt4/ui/PrintUi.ui:28
 msgid "Pages"
@@ -4200,7 +4192,6 @@ msgid "Formatted reference"
 msgstr "Formatierter Querverweis"
 
 #: src/frontends/qt4/ui/SearchUi.ui:108
-#, fuzzy
 msgid "Match w&hole words only"
 msgstr "Nur ganze &Wörter"
 
@@ -10269,18 +10260,16 @@ msgid "pp."
 msgstr "S. "
 
 #: lib/layouts/stdciteformats.inc:10
-#, fuzzy
 msgid "ed."
-msgstr "Rot"
+msgstr "Ed."
 
 #: lib/layouts/stdciteformats.inc:11
 msgid "vol."
 msgstr "Vol."
 
 #: lib/layouts/stdciteformats.inc:12
-#, fuzzy
 msgid "no."
-msgstr "nein"
+msgstr "Nr."
 
 #: lib/layouts/stdciteformats.inc:13
 #: lib/ui/stdtoolbars.inc:514
@@ -11838,7 +11827,7 @@ msgstr "Zur Bearbeitung auschecken|B"
 
 #: lib/ui/classic.ui:71
 msgid "Revert to Repository Version|R"
-msgstr "Zuletzt eingecheckte Version wiederherstellen|w"
+msgstr "Zu Version aus dem Repositorium zurückkehren|z"
 
 #: lib/ui/classic.ui:72
 #: lib/ui/stdmenus.inc:77
@@ -13294,29 +13283,24 @@ msgid "Fullscreen Mode"
 msgstr "Vollbildmodus"
 
 #: lib/ui/stdcontext.inc:329
-#, fuzzy
 msgid "Anything|A"
-msgstr "Beliebige &Sequenz (mit Leerzeichen)"
+msgstr ""
 
 #: lib/ui/stdcontext.inc:330
-#, fuzzy
 msgid "Anything Non-Empty|o"
-msgstr "Beliebige Sequenz (&ohne Leerzeichen)"
+msgstr ""
 
 #: lib/ui/stdcontext.inc:331
-#, fuzzy
 msgid "Any Word|W"
-msgstr "MS Word|W"
+msgstr ""
 
 #: lib/ui/stdcontext.inc:332
-#, fuzzy
 msgid "Any Number|N"
-msgstr "Beliebige &Ziffer"
+msgstr ""
 
 #: lib/ui/stdcontext.inc:333
-#, fuzzy
 msgid "User Defined|U"
-msgstr "&Benutzerdefiniert"
+msgstr "Benutzerdefiniert|u"
 
 #: lib/ui/stdcontext.inc:342
 #: lib/ui/stdmenus.inc:238
@@ -13430,34 +13414,28 @@ msgid "Class|C"
 msgstr "Klasse|K"
 
 #: lib/ui/stdcontext.inc:438
-#, fuzzy
 msgid "File Revision|R"
-msgstr "Überarbeitung"
+msgstr ""
 
 #: lib/ui/stdcontext.inc:439
-#, fuzzy
 msgid "Tree Revision|T"
-msgstr "Überarbeitung"
+msgstr ""
 
 #: lib/ui/stdcontext.inc:440
-#, fuzzy
 msgid "Revision Author|A"
-msgstr "Überarbeitungsverlauf"
+msgstr ""
 
 #: lib/ui/stdcontext.inc:441
-#, fuzzy
 msgid "Revision Date|D"
-msgstr "Überarbeitung"
+msgstr ""
 
 #: lib/ui/stdcontext.inc:442
-#, fuzzy
 msgid "Revision Time|i"
-msgstr "Überarbeitung"
+msgstr ""
 
 #: lib/ui/stdcontext.inc:451
-#, fuzzy
 msgid "Document Info|D"
-msgstr "Dokument|o"
+msgstr ""
 
 #: lib/ui/stdcontext.inc:464
 #: lib/ui/stdcontext.inc:487
@@ -13503,9 +13481,8 @@ msgid "Select Section|S"
 msgstr "Abschnitt auswählen|h"
 
 #: lib/ui/stdcontext.inc:632
-#, fuzzy
 msgid "Wrap by Preview|P"
-msgstr "LyX-Vorschau"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:33
 msgid "Document|D"
@@ -13549,7 +13526,7 @@ msgstr "Lokales Verzeichnis aus dem Repositorium aktualisieren|p"
 
 #: lib/ui/stdmenus.inc:76
 msgid "Revert to Repository Version|v"
-msgstr "Zuletzt eingecheckte Version wiederherstellen|w"
+msgstr "Zu Version aus dem Repositorium zurückkehren|z"
 
 #: lib/ui/stdmenus.inc:78
 msgid "Compare with Older Revision|C"
@@ -13636,9 +13613,8 @@ msgid "Index Settings...|x"
 msgstr "Index-Einstellungen...|x"
 
 #: lib/ui/stdmenus.inc:141
-#, fuzzy
 msgid "Info Settings...|n"
-msgstr "Index-Einstellungen...|x"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:142
 msgid "Listings Settings...|g"
@@ -14547,9 +14523,8 @@ msgid "Compare with last revision"
 msgstr "Vergleiche mit letzter Überarbeitung"
 
 #: lib/ui/stdtoolbars.inc:261
-#, fuzzy
 msgid "Insert Version Info"
-msgstr "Randnotiz einfügen"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:263
 msgid "Use SVN file locking property"
@@ -17856,9 +17831,8 @@ msgid "Could not reload document %1$s."
 msgstr "Kann Dokument %1$s nicht neu laden."
 
 #: src/Buffer.cpp:3963
-#, fuzzy
 msgid "Included File Invalid"
-msgstr "Datei einbinden...|b"
+msgstr ""
 
 #: src/Buffer.cpp:3964
 #, c-format
@@ -18114,7 +18088,7 @@ msgid "Uncodable character in author name"
 msgstr "Unkodierbares Zeichen im Autornamen"
 
 #: src/Changes.cpp:380
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The author name '%1$s',\n"
 "used for change tracking, contains glyphs that cannot be\n"
@@ -18127,10 +18101,10 @@ msgstr ""
 "Der Name des Autors '%1$s',\n"
 "der bei der Änderungsverfolgung verwendet wird, enthält Zeichen,\n"
 "die in der aktuellen Kodierung nicht dargestellt werden können.\n"
-"Die betroffenen Zeichen werden in der LaTeX-Ausgabe unterdrückt.\n"
+"Die betroffenen Zeichen werden in der LaTeX-Ausgabe weggelassen.\n"
 "\n"
-"Wählen Sie eine passende Kodierung (bspw. UTF-8)\n"
-"oder ändern Sie die Schreibung des betroffenen Namens."
+"Wählen Sie eine passende Kodierung (bspw. utf8)\n"
+"oder ändern Sie die Schreibweise des betroffenen Autornamens."
 
 #: src/Chktex.cpp:63
 #, c-format
@@ -18465,9 +18439,8 @@ msgid "paragraph marker"
 msgstr "Absatzmarkierung"
 
 #: src/Color.cpp:243
-#, fuzzy
 msgid "preview frame"
-msgstr "Die Vorschau ist fehlgeschlagen"
+msgstr "Vorschaurahmen"
 
 #: src/Color.cpp:244
 msgid "inherit"
@@ -19743,7 +19716,6 @@ msgstr ""
 "Sie OK gedrückt haben."
 
 #: src/VCBackend.cpp:746
-#, fuzzy
 msgid ""
 "Error while acquiring write lock.\n"
 "Another user is most probably editing\n"
@@ -19752,17 +19724,16 @@ msgid ""
 msgstr ""
 "Fehler beim Setzen der Schreibsperre.\n"
 "Vermutlich bearbeitet gerade ein\n"
-"anderer Benutzer das Dokument.\n"
-"Überprüfen Sie auch den Zugang zum Repositorium."
+"anderer Benutzer das Dokument!\n"
+"Überprüfen Sie auch das Zugriffsrecht auf das Repositorium."
 
 #: src/VCBackend.cpp:752
-#, fuzzy
 msgid ""
 "Error while releasing write lock.\n"
 "Check the access to the repository."
 msgstr ""
 "Fehler beim Aufheben der Schreibsperre.\n"
-"Überprüfen Sie den Zugang zum Repositorium."
+"Überprüfen Sie das Zugriffsrecht auf das Repositorium."
 
 #: src/VCBackend.cpp:773
 #, c-format
@@ -23753,9 +23724,8 @@ msgid "Changing number of columns not allowed in 'cases': feature %1$s"
 msgstr "In einer 'Fallunterscheidung' kann die Spaltenanzahl nicht geändert werden: '%1$s'"
 
 #: src/mathed/InsetMathGrid.cpp:1418
-#, fuzzy
 msgid "Cursor not in table"
-msgstr " (nicht installiert)"
+msgstr ""
 
 #: src/mathed/InsetMathGrid.cpp:1424
 msgid "Only one row"
