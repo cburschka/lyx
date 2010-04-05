@@ -669,7 +669,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	LYXERR(Debug::DEBUG, "GuiView::closeEvent()");
 
 	if (!GuiViewPrivate::busyBuffers.isEmpty()) {
-		Alert::warning(_("Exit LyX "), _("Could not exit LyX, because documents are procressed by LyX."));
+		Alert::warning(_("Exit LyX"), _("Could not exit LyX, because documents are processed by LyX."));
 		close_event->setAccepted(false);
 		return;
 	}

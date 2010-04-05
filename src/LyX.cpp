@@ -652,9 +652,9 @@ static void error_handler(int err_sig)
 
 #ifdef SIGHUP
 	if (err_sig == SIGSEGV ||
-    (err_sig != SIGHUP && !getEnv("LYXDEBUG").empty())) {
+		(err_sig != SIGHUP && !getEnv("LYXDEBUG").empty())) {
 #else
-  if (err_sig == SIGSEGV || !getEnv("LYXDEBUG").empty()) {
+	if (err_sig == SIGSEGV || !getEnv("LYXDEBUG").empty()) {
 #endif 
 #ifdef _MSC_VER
 		// with abort() it crashes again.
