@@ -178,6 +178,7 @@ vector<pair<string, QString> > pagestyles;
 namespace lyx {
 
 RGBColor set_backgroundcolor;
+bool is_backgroundcolor;
 RGBColor set_fontcolor;
 bool is_fontcolor;
 RGBColor set_notefontcolor;
@@ -886,7 +887,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(deleteNoteFontColor()));
 	connect(colorModule->backgroundPB, SIGNAL(clicked()),
 		this, SLOT(changeBackgroundColor()));
-	connect(colorModule->delbackgroundTB, SIGNAL(clicked()),
+	connect(colorModule->delBackgroundTB, SIGNAL(clicked()),
 		this, SLOT(deleteBackgroundColor()));
 
 
@@ -1359,22 +1360,26 @@ void GuiDocument::changeBackgroundColor()
 		rgb2qcolor(set_backgroundcolor), asQWidget());
 	if (!newColor.isValid())
 		return;
-	// set the button color
+	// set the button color and text
 	colorModule->backgroundPB->setStyleSheet(
 		colorButtonStyleSheet(newColor));
+	colorModule->backgroundPB->setText(toqstr("Change..."));
 	// save color
 	set_backgroundcolor = rgbFromHexName(fromqstr(newColor.name()));
+	is_backgroundcolor = true;
 	changed();
 }
 
 
 void GuiDocument::deleteBackgroundColor()
 {
-	// set the button color back to white
-	colorModule->backgroundPB->setStyleSheet(
-		colorButtonStyleSheet(QColor(Qt::white)));
-	// save white as the set color
+	// set the button color back to default by setting an epmty StyleSheet
+	colorModule->backgroundPB->setStyleSheet(QLatin1String(""));
+	// change button text
+	colorModule->backgroundPB->setText(toqstr("Default..."));
+	// save default color (white)
 	set_backgroundcolor = rgbFromHexName("#ffffff");
+	is_backgroundcolor = false;
 	changed();
 }
 
@@ -2042,6 +2047,7 @@ void GuiDocument::applyView()
 
 	//color
 	bp_.backgroundcolor = set_backgroundcolor;
+	bp_.isbackgroundcolor = is_backgroundcolor;
 	bp_.fontcolor = set_fontcolor;
 	bp_.isfontcolor = is_fontcolor;
 	bp_.notefontcolor = set_notefontcolor;
@@ -2440,9 +2446,12 @@ void GuiDocument::paramsToDialog()
 		colorButtonStyleSheet(rgb2qcolor(bp_.notefontcolor)));
 	set_notefontcolor = bp_.notefontcolor;
 
-	colorModule->backgroundPB->setStyleSheet(
-		colorButtonStyleSheet(rgb2qcolor(bp_.backgroundcolor)));
+	if (bp_.isbackgroundcolor) {
+		colorModule->backgroundPB->setStyleSheet(
+			colorButtonStyleSheet(rgb2qcolor(bp_.backgroundcolor)));
+	}
 	set_backgroundcolor = bp_.backgroundcolor;
+	is_backgroundcolor = bp_.isbackgroundcolor;
 
 	// numbering
 	int const min_toclevel = documentClass().min_toclevel();

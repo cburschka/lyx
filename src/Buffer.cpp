@@ -668,6 +668,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().pdfoptions().clear();
 	params().indiceslist().clear();
 	params().backgroundcolor = lyx::rgbFromHexName("#ffffff");
+	params().isbackgroundcolor = false;
 	params().fontcolor = lyx::rgbFromHexName("#000000");
 	params().isfontcolor = false;
 	params().notefontcolor = lyx::rgbFromHexName("#cccccc");

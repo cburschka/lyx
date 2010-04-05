@@ -367,8 +367,9 @@ BufferParams::BufferParams()
 	listings_params = string();
 	pagestyle = "default";
 	suppress_date = false;
-	// white is equal to no background color
+	// no color is the default (white)
 	backgroundcolor = lyx::rgbFromHexName("#ffffff");
+	isbackgroundcolor = false;
 	// no color is the default (black)
 	fontcolor = lyx::rgbFromHexName("#000000");
 	isfontcolor = false;
@@ -726,6 +727,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\backgroundcolor") {
 		lex.eatLine();
 		backgroundcolor = lyx::rgbFromHexName(lex.getString());
+		isbackgroundcolor = true;
 	} else if (token == "\\fontcolor") {
 		lex.eatLine();
 		fontcolor = lyx::rgbFromHexName(lex.getString());
@@ -927,7 +929,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\paperorientation " << string_orientation[orientation]
 	   << "\n\\suppress_date " << convert<string>(suppress_date)
 	   << '\n';
-	if (backgroundcolor != lyx::rgbFromHexName("#ffffff"))
+	if (isbackgroundcolor == true)
 		os << "\\backgroundcolor " << lyx::X11hexname(backgroundcolor) << '\n';
 	if (isfontcolor == true)
 		os << "\\fontcolor " << lyx::X11hexname(fontcolor) << '\n';
@@ -1455,8 +1457,8 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		texrow.newline();
 	}
 
-	// only output when the background color is not white
-	if (backgroundcolor != lyx::rgbFromHexName("#ffffff")) {
+	// only output when the background color is not default
+	if (isbackgroundcolor == true) {
 		// only require color here, the background color will be defined
 		// in LaTeXFeatures.cpp to avoid interferences with the LaTeX
 		// package pdfpages 

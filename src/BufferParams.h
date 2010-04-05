@@ -286,6 +286,8 @@ public:
 	///
 	RGBColor backgroundcolor;
 	///
+	bool isbackgroundcolor;
+	///
 	RGBColor fontcolor;
 	///
 	bool isfontcolor;
