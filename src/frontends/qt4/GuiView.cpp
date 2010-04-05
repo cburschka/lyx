@@ -106,6 +106,8 @@
 #include <QUrl>
 #include <QScrollBar>
 
+
+
 #define EXPORT_in_THREAD 1
 
 // QtConcurrent was introduced in Qt 4.4
@@ -360,7 +362,15 @@ public:
 	struct DummyWatcher { bool isRunning(){return false;} }; 
 	DummyWatcher preview_watcher_;
 #endif
+
+	static QSet<Buffer const *> busyBuffers;
+	static docstring previewAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
+	static docstring exportAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
+	static docstring saveAndDestroy(Buffer const * orig, Buffer * buffer, FileName const & fname);
+
 };
+
+QSet<Buffer const *> GuiView::GuiViewPrivate::busyBuffers;
 
 
 GuiView::GuiView(int id)
@@ -657,6 +667,13 @@ void GuiView::showEvent(QShowEvent * e)
 void GuiView::closeEvent(QCloseEvent * close_event)
 {
 	LYXERR(Debug::DEBUG, "GuiView::closeEvent()");
+
+	if (!GuiViewPrivate::busyBuffers.isEmpty()) {
+		Alert::warning(_("Exit LyX "), _("Could not exit LyX, because documents are procressed by LyX."));
+		close_event->setAccepted(false);
+		return;
+	}
+
 	closing_ = true;
 
 	writeSession();
@@ -1314,7 +1331,7 @@ BufferView const * GuiView::currentBufferView() const
 
 
 #if (QT_VERSION >= 0x040400)
-static docstring saveAndDestroyBuffer(Buffer * buffer, FileName const & fname)
+docstring GuiView::GuiViewPrivate::saveAndDestroy(Buffer const * orig, Buffer * buffer, FileName const & fname)
 {
 	bool failed = true;
 	FileName const tmp_ret = FileName::tempName("lyxauto");
@@ -1327,6 +1344,7 @@ static docstring saveAndDestroyBuffer(Buffer * buffer, FileName const & fname)
 		failed = buffer->writeFile(fname);
 	}
 	delete buffer;
+	busyBuffers.remove(orig);
 	return failed
 		? _("Automatic save failed!")
 		: _("Automatic save done.");
@@ -1344,7 +1362,8 @@ void GuiView::autoSave()
 		return;
 
 #if (QT_VERSION >= 0x040400)
-	QFuture<docstring> f = QtConcurrent::run(saveAndDestroyBuffer, buffer->clone(),
+	GuiViewPrivate::busyBuffers.insert(buffer);
+	QFuture<docstring> f = QtConcurrent::run(GuiViewPrivate::saveAndDestroy, buffer, buffer->clone(),
 		buffer->getAutosaveFilename());
 	d.autosave_watcher_.setFuture(f);
 #else
@@ -2263,6 +2282,11 @@ bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer)
 
 	Buffer & buf = wa->bufferView().buffer();
 
+	if (close_buffer && GuiViewPrivate::busyBuffers.contains(&buf)) {
+		Alert::warning(_("Close document "), _("Could not close document, because it is processed by LyX."));
+		return false;
+	}
+
 	if (close_buffer)
 		return closeBuffer(buf);
 	else {
@@ -2748,26 +2772,28 @@ bool GuiView::goToFileRow(string const & argument)
 
 
 #if (QT_VERSION >= 0x040400)
-static docstring exportAndDestroy(Buffer * buffer, string const & format)
+docstring GuiView::GuiViewPrivate::exportAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
 {
 	bool const update_unincluded =
 				buffer->params().maintain_unincluded_children
 				&& !buffer->params().getIncludedChildren().empty();
 	bool const success = buffer->doExport(format, true, update_unincluded);
 	delete buffer;
+	busyBuffers.remove(orig);
 	return success
 		? bformat(_("Successful export to format: %1$s"), from_utf8(format))
 		: bformat(_("Error exporting to format: %1$s"), from_utf8(format));
 }
 
 
-static docstring previewAndDestroy(Buffer * buffer, string const & format)
+docstring GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
 {
 	bool const update_unincluded =
 				buffer->params().maintain_unincluded_children
 				&& !buffer->params().getIncludedChildren().empty();
 	bool const success = buffer->preview(format, update_unincluded);
 	delete buffer;
+	busyBuffers.remove(orig);
 	return success
 		? bformat(_("Successful preview of format: %1$s"), from_utf8(format))
 		: bformat(_("Error previewing format: %1$s"), from_utf8(format));
@@ -2830,8 +2856,9 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
 			d.progress_->clearMessages();
 			message(_("Exporting ..."));
-			QFuture<docstring> f = QtConcurrent::run(exportAndDestroy,
-				doc_buffer->clone(), format);
+			GuiViewPrivate::busyBuffers.insert(doc_buffer);
+			QFuture<docstring> f = QtConcurrent::run(GuiViewPrivate::exportAndDestroy,
+				doc_buffer, doc_buffer->clone(), format);
 			d.setPreviewFuture(f);
 			d.last_export_format = doc_buffer->bufferFormat();
 #else
@@ -2851,8 +2878,9 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
 			d.progress_->clearMessages();
 			message(_("Previewing ..."));
-			QFuture<docstring> f = QtConcurrent::run(previewAndDestroy,
-				doc_buffer->clone(), format);
+			GuiViewPrivate::busyBuffers.insert(doc_buffer);
+			QFuture<docstring> f = QtConcurrent::run(GuiViewPrivate::previewAndDestroy,
+				doc_buffer, doc_buffer->clone(), format);
 			d.setPreviewFuture(f);
 			d.last_export_format = doc_buffer->bufferFormat();
 #else
@@ -2871,8 +2899,9 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			if (argument.empty())
 				format = master->getDefaultOutputFormat();
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
-			QFuture<docstring> f = QtConcurrent::run(exportAndDestroy,
-				master->clone(), format);
+			GuiViewPrivate::busyBuffers.insert(master);
+			QFuture<docstring> f = QtConcurrent::run(GuiViewPrivate::exportAndDestroy,
+				master, master->clone(), format);
 			d.setPreviewFuture(f);
 			d.last_export_format = doc_buffer->bufferFormat();
 #else
@@ -2889,8 +2918,9 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			if (argument.empty())
 				format = master->getDefaultOutputFormat();
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
-			QFuture<docstring> f = QtConcurrent::run(previewAndDestroy,
-				master->clone(), format);
+			GuiViewPrivate::busyBuffers.insert(master);
+			QFuture<docstring> f = QtConcurrent::run(GuiViewPrivate::previewAndDestroy,
+				master, master->clone(), format);
 			d.setPreviewFuture(f);
 			d.last_export_format = doc_buffer->bufferFormat();
 #else
