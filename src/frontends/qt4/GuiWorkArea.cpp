@@ -1427,6 +1427,8 @@ GuiWorkArea * TabWorkArea::currentWorkArea()
 
 GuiWorkArea * TabWorkArea::workArea(Buffer & buffer)
 {
+	// FIXME: this method doesn't work if we have more than work area
+	// showing the same buffer.
 	for (int i = 0; i != count(); ++i) {
 		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(i));
 		LASSERT(wa, return 0);
