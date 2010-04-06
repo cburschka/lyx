@@ -26,7 +26,7 @@ fi
 AM_MAINTAINER_MODE
 
 save_PACKAGE=$PACKAGE
-AM_INIT_AUTOMAKE([foreign dist-lzma no-define 1.8])
+AM_INIT_AUTOMAKE([foreign dist-lzma no-define 1.10])
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 PACKAGE=$save_PACKAGE
 
