@@ -89,7 +89,7 @@ lyx::Converter const * setConverter(string const from)
 	if (first) {
 		first = false;
 		LYXERR0("PreviewLoader::startLoading()\n"
-		  << "No converter from \"lyxpreview\" format has been defined.");
+			<< "No converter from \"" << from << "\" format has been defined.");
 	}
 	return 0;
 }
