@@ -1225,7 +1225,6 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	// Assumes that the action will be dispatched.
 	dr.dispatched(true);
 
-	GuiView * lv = current_view_;
 	switch (cmd.action) {
 
 	case LFUN_WINDOW_NEW:
@@ -1560,15 +1559,15 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	default:
 		// Everything below is only for active window
-		if (lv == 0)
+		if (current_view_ == 0)
 			break;
 	
 		// Let the current GuiView dispatch its own actions.
-		lv->dispatch(cmd, dr);
+		current_view_->dispatch(cmd, dr);
 		if (dr.dispatched())
 			break;
 	
-		BufferView * bv = lv->currentBufferView();
+		BufferView * bv = current_view_->currentBufferView();
 		LASSERT(bv, /**/);
 	
 		// Let the current BufferView dispatch its own actions.
@@ -1576,7 +1575,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (dr.dispatched())
 			break;
 	
-		BufferView * doc_bv = lv->documentBufferView();
+		BufferView * doc_bv = current_view_->documentBufferView();
 		// Try with the document BufferView dispatch if any.
 		if (doc_bv) {
 			doc_bv->dispatch(cmd, dr);
@@ -1614,24 +1613,24 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (cmd.origin == FuncRequest::KEYBOARD) {
 			if (cmd.action == LFUN_SELF_INSERT
 					|| (cmd.action == LFUN_ERT_INSERT && bv->cursor().inMathed()))
-				lv->updateCompletion(bv->cursor(), true, true);
+				current_view_->updateCompletion(bv->cursor(), true, true);
 			else if (cmd.action == LFUN_CHAR_DELETE_BACKWARD)
-				lv->updateCompletion(bv->cursor(), false, true);
+				current_view_->updateCompletion(bv->cursor(), false, true);
 			else
-				lv->updateCompletion(bv->cursor(), false, false);
+				current_view_->updateCompletion(bv->cursor(), false, false);
 		}
 	
 		dr = bv->cursor().result();
 	}
 	
 	// if we executed a mutating lfun, mark the buffer as dirty
-	Buffer * doc_buffer = (lv && lv->documentBufferView())
-		      ? &(lv->documentBufferView()->buffer()) : 0;
+	Buffer * doc_buffer = (current_view_ && current_view_->documentBufferView())
+		      ? &(current_view_->documentBufferView()->buffer()) : 0;
 	if (doc_buffer && theBufferList().isLoaded(doc_buffer)
 		&& flag.enabled()
 		&& !lyxaction.funcHasFlag(action, LyXAction::NoBuffer)
 		&& !lyxaction.funcHasFlag(action, LyXAction::ReadOnly))
-		lv->currentBufferView()->buffer().markDirty();
+		current_view_->currentBufferView()->buffer().markDirty();
 }
 
 
