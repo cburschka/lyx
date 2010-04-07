@@ -1818,6 +1818,7 @@ void BufferParams::makeDocumentClass()
 	}
 }
 
+
 bool BufferParams::moduleCanBeAdded(string const & modName) const
 {
 	return layoutModules_.moduleCanBeAdded(modName, baseClass());
