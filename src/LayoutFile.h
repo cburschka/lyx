@@ -29,10 +29,6 @@ namespace lyx {
 
 class Layout;
 
-/// Reads the style files
-extern bool LyXSetStyle();
-
-
 /// Index into LayoutFileList. Basically a 'strong typedef'.
 class LayoutFileIndex {
 public:

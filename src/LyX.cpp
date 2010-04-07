@@ -502,16 +502,16 @@ void LyX::execCommands()
 	// aknowledged.
 
 	// if reconfiguration is needed.
-	while (LayoutFileList::get().empty()) {
+	if (LayoutFileList::get().empty()) {
 		switch (Alert::prompt(
 			_("No textclass is found"),
-			_("LyX cannot continue because no textclass is found. "
-				"You can either reconfigure normally, or reconfigure using "
-				"default textclasses, or quit LyX."),
+			_("LyX will have minimal functionality because no textclasses "
+				"have been found. You can either try to reconfigure LyX normally, "
+				"try to reconfigure using only the defaults, or continue."),
 			0, 2,
 			_("&Reconfigure"),
-			_("&Use Default"),
-			_("&Exit LyX")))
+			_("&Use Defaults"),
+			_("&Continue")))
 		{
 		case 0:
 			// regular reconfigure
@@ -523,8 +523,7 @@ void LyX::execCommands()
 				" --without-latex-config"));
 			break;
 		default:
-			lyx::dispatch(FuncRequest(LFUN_LYX_QUIT));
-			return;
+			break;
 		}
 	}
 	
@@ -762,10 +761,9 @@ bool LyX::init()
 	// Set the language defined by the user.
 	setRcGuiLanguage();
 
-	// Load the layouts
 	LYXERR(Debug::INIT, "Reading layouts...");
-	if (!LyXSetStyle())
-		return false;
+	// Load the layouts
+	LayoutFileList::get().read();
 	//...and the modules
 	theModuleList.read();
 

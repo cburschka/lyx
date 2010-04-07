@@ -99,86 +99,74 @@ LayoutFile & LayoutFileList::operator[](string const & classname)
 // Reads LyX textclass definitions according to textclass config file
 bool LayoutFileList::read()
 {
+	bool success = false;
 	Lexer lex;
 	FileName const real_file = libFileSearch("", "textclass.lst");
-	LYXERR(Debug::TCLASS, "Reading textclasses from `" << real_file << '\'');
+	LYXERR(Debug::TCLASS, "Reading textclasses from `" << real_file << "'.");
 
 	if (real_file.empty()) {
-		lyxerr << "LayoutFileList::Read: unable to find "
-			  "textclass file  `"
-		       << to_utf8(makeDisplayPath(real_file.absFilename(), 1000))
-		       << "'. Exiting." << endl;
-		return false;
-		// This causes LyX to end... Not a desirable behaviour. Lgb
-		// What do you propose? That the user gets a file dialog
-		// and is allowed to hunt for the file? (Asger)
-		// more that we have a layout for minimal.cls statically
-		// compiled in... (Lgb)
-	}
-
-	if (!lex.setFile(real_file)) {
-		lyxerr << "LayoutFileList::Read: "
-			"lyxlex was not able to set file: "
-		       << real_file << endl;
-	}
-
-	if (!lex.isOK()) {
-		lyxerr << "LayoutFileList::Read: unable to open "
-			  "textclass file  `"
-		       << to_utf8(makeDisplayPath(real_file.absFilename(), 1000))
-		       << "'\nCheck your installation. LyX can't continue."
-		       << endl;
-		return false;
-	}
-
-	bool finished = false;
-	// Parse config-file
-	LYXERR(Debug::TCLASS, "Starting parsing of textclass.lst");
-	while (lex.isOK() && !finished) {
-		LYXERR(Debug::TCLASS, "\tline by line");
-		switch (lex.lex()) {
-		case Lexer::LEX_FEOF:
-			finished = true;
-			break;
-		default:
-			string const fname = lex.getString();
-			LYXERR(Debug::TCLASS, "Fname: " << fname);
-			if (!lex.next()) 
+		LYXERR0("LayoutFileList::Read: unable to find textclass file  `"
+		    << makeDisplayPath(real_file.absFilename(), 1000)
+		    << "'.");
+		success = false;
+	} else if (!lex.setFile(real_file)) {
+		LYXERR0("LayoutFileList::Read: lyxlex was not able to set file: "
+		       << real_file << '.');
+	} else if (!lex.isOK()) {
+		LYXERR0("LayoutFileList::Read: unable to open textclass file  `"
+		       << makeDisplayPath(real_file.absFilename(), 1000)
+		       << "'\nCheck your installation.");
+	} else {
+		// we have a file we can read.
+		bool finished = false;
+		LYXERR(Debug::TCLASS, "Starting parsing of textclass.lst");
+		while (lex.isOK() && !finished) {
+			LYXERR(Debug::TCLASS, "\tline by line");
+			switch (lex.lex()) {
+			case Lexer::LEX_FEOF:
+				finished = true;
 				break;
-			string const clname = lex.getString();
-			LYXERR(Debug::TCLASS, "Clname: " << clname);
-			if (!lex.next()) 
-				break;
-			string const desc = lex.getString();
-			LYXERR(Debug::TCLASS, "Desc: " << desc);
-			if (!lex.next()) 
-				break;
-			bool avail = lex.getBool();
-			LYXERR(Debug::TCLASS, "Avail: " << avail);
-			if (!lex.next()) 
-				break;
-			string const prereq = lex.getString();
-			LYXERR(Debug::TCLASS, "Prereq: " << prereq);
-			// This code is run when we have
-			// fname, clname, desc, prereq, and avail
-			LayoutFile * tmpl = new LayoutFile(fname, clname, desc, prereq, avail);
-			if (lyxerr.debugging(Debug::TCLASS)) {
-				// only system layout files are loaded here so no
-				// buffer path is needed.
-				tmpl->load();
-			}
-			classmap_[fname] = tmpl;
-		}
-	}
-	LYXERR(Debug::TCLASS, "End of parsing of textclass.lst");
+			default:
+				string const fname = lex.getString();
+				LYXERR(Debug::TCLASS, "Fname: " << fname);
+				if (!lex.next()) 
+					break;
+				string const clname = lex.getString();
+				LYXERR(Debug::TCLASS, "Clname: " << clname);
+				if (!lex.next()) 
+					break;
+				string const desc = lex.getString();
+				LYXERR(Debug::TCLASS, "Desc: " << desc);
+				if (!lex.next()) 
+					break;
+				bool avail = lex.getBool();
+				LYXERR(Debug::TCLASS, "Avail: " << avail);
+				if (!lex.next()) 
+					break;
+				string const prereq = lex.getString();
+				LYXERR(Debug::TCLASS, "Prereq: " << prereq);
+				// This code is run when we have
+				// fname, clname, desc, prereq, and avail
+				LayoutFile * tmpl = new LayoutFile(fname, clname, desc, prereq, avail);
+				if (lyxerr.debugging(Debug::TCLASS)) {
+					// only system layout files are loaded here so no
+					// buffer path is needed.
+					tmpl->load();
+				}
+				classmap_[fname] = tmpl;
+			} // end of switch
+		} // end of while loop
+		LYXERR(Debug::TCLASS, "End parsing of textclass.lst");
+		success = true;
+	} // end of else
 
-	// lyx will start with an empty classmap_, but only reconfigure is allowed
-	// in this case. This gives users a second chance to configure lyx if
-	// initial configuration fails. (c.f. bug 2829)
+	// LyX will start with an empty classmap_. This is OK because
+	// (a) we will give the user a chance to reconfigure (see bug 2829) and
+	// (b) even if that fails, we can use addEmptyClass() to get some basic
+	// functionality.
 	if (classmap_.empty())
-		lyxerr << "LayoutFileList::Read: no textclasses found!"
-		       << endl;
-	return true;
+		LYXERR0("LayoutFileList::Read: no textclasses found!");
+	return success;
 }
 
 
@@ -346,26 +334,10 @@ LayoutFileIndex defaultBaseclass()
 	if (LayoutFileList::get().haveClass("article"))
 		return string("article");
 	if (LayoutFileList::get().empty())
-		return string();
+		// we'll call it that, since this gives the user a chance to
+		// have a functioning document when things improve.
+		return string("article");
 	return LayoutFileList::get().classList().front();
 }
-
-
-
-// Reads the style files
-bool LyXSetStyle()
-{
-	LYXERR(Debug::TCLASS, "LyXSetStyle: parsing configuration...");
-
-	if (!LayoutFileList::get().read()) {
-		LYXERR(Debug::TCLASS, "LyXSetStyle: an error occured "
-			"during parsing.\n             Exiting.");
-		return false;
-	}
-
-	LYXERR(Debug::TCLASS, "LyXSetStyle: configuration parsed.");
-	return true;
-}
-
 
 } // namespace lyx
