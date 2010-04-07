@@ -1674,19 +1674,17 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 {
 	LYXERR(Debug::KEY, "KeySym is " << keysym.getSymbolName());
 
-	GuiView * lv = currentView();
-
 	// Do nothing if we have nothing (JMarc)
 	if (!keysym.isOK()) {
 		LYXERR(Debug::KEY, "Empty kbd action (probably composing)");
-		lv->restartCursor();
+		current_view_->restartCursor();
 		return;
 	}
 
 	if (keysym.isModifier()) {
 		LYXERR(Debug::KEY, "isModifier true");
-		if (lv)
-			lv->restartCursor();
+		if (current_view_)
+			current_view_->restartCursor();
 		return;
 	}
 
@@ -1723,7 +1721,7 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	// num_bytes == 0? (Lgb)
 
 	if (d->keyseq.length() > 1)
-		lv->message(d->keyseq.print(KeySequence::ForGui));
+		current_view_->message(d->keyseq.print(KeySequence::ForGui));
 
 
 	// Maybe user can only reach the key via holding down shift.
@@ -1744,8 +1742,8 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 					   FuncRequest::KEYBOARD);
 		} else {
 			LYXERR(Debug::KEY, "Unknown, !isText() - giving up");
-			lv->message(_("Unknown function."));
-			lv->restartCursor();
+			current_view_->message(_("Unknown function."));
+			current_view_->restartCursor();
 			return;
 		}
 	}
@@ -1757,11 +1755,8 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 					     FuncRequest::KEYBOARD));
 			LYXERR(Debug::KEY, "SelfInsert arg[`" << to_utf8(arg) << "']");
 		}
-	} else {
+	} else
 		lyx::dispatch(func);
-		if (!lv)
-			return;
-	}
 }
 
 
