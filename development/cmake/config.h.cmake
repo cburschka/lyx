@@ -25,6 +25,7 @@
 
 #cmakedefine PACKAGE "${PACKAGE}"
 #cmakedefine PACKAGE_VERSION "${PACKAGE_VERSION}"
+#define PACKAGE_STRING "LyX ${PACKAGE_VERSION}"
 #cmakedefine PACKAGE_BUGREPORT "${PACKAGE_BUGREPORT}"
 #cmakedefine LYX_DATE "${LYX_DATE}"
 #cmakedefine VERSION_INFO "${VERSION_INFO}"
