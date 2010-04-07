@@ -1160,11 +1160,11 @@ void GuiApplication::gotoBookmark(unsigned int idx, bool openFile, bool switchTo
 
 // This function runs "configure" and then rereads lyx.defaults to
 // reconfigure the automatic settings.
-static void reconfigure(GuiView * lv, string const & option)
+void GuiApplication::reconfigure(string const & option)
 {
 	// emit message signal.
-	if (lv)
-		lv->message(_("Running configure..."));
+	if (current_view_)
+		current_view_->message(_("Running configure..."));
 
 	// Run configure in user lyx directory
 	PathChanger p(package().user_support());
@@ -1174,8 +1174,8 @@ static void reconfigure(GuiView * lv, string const & option)
 	int ret = one.startscript(Systemcall::Wait, configure_command);
 	p.pop();
 	// emit message signal.
-	if (lv)
-		lv->message(_("Reloading configuration..."));
+	if (current_view_)
+		current_view_->message(_("Reloading configuration..."));
 	lyxrc.read(libFileSearch(QString(), "lyxrc.defaults"));
 	// Re-read packages.lst
 	LaTeXFeatures::getAvailable();
@@ -1187,13 +1187,11 @@ static void reconfigure(GuiView * lv, string const & option)
 				  "not be able to work properly.\n"
 				  "Please reconfigure again if needed."));
 	else
-
 		Alert::information(_("System reconfigured"),
 			   _("The system has been reconfigured.\n"
 			     "You need to restart LyX to make use of any\n"
 			     "updated document class specifications."));
 }
-
 
 
 void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
@@ -1413,7 +1411,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	// --- Menus -----------------------------------------------
 	case LFUN_RECONFIGURE:
 		// argument is any additional parameter to the configure.py command
-		reconfigure(currentView(), to_utf8(cmd.argument()));
+		reconfigure(to_utf8(cmd.argument()));
 		break;
 
 	// --- lyxserver commands ----------------------------

@@ -160,6 +160,8 @@ private:
 	bool readUIFile(QString const & name, bool include = false);
 	///
 	void setGuiLanguage();
+	///
+	void reconfigure(std::string const & option);
 
 	/// This GuiView is the one receiving Clipboard and Selection
 	/// events
