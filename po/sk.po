@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-03-29 16:01-0400\n"
-"PO-Revision-Date: 2010-04-02 17:02+0200\n"
+"PO-Revision-Date: 2010-04-07 16:02+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1338,7 +1338,7 @@ msgstr "Udržovať veľkosť prvých písiem v slove tak, ako v nájdenom texte"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:268
 msgid "&Preserve first case on replace"
-msgstr ""
+msgstr "Zachovať veľkosť písiem pri substitúcii"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:278
 msgid "&Expand macros"
@@ -9270,7 +9270,7 @@ msgstr "ed."
 
 #: lib/layouts/stdciteformats.inc:11
 msgid "vol."
-msgstr ""
+msgstr "vol."
 
 #: lib/layouts/stdciteformats.inc:12
 msgid "no."
@@ -16096,7 +16096,7 @@ msgstr "%1$s et al."
 #: src/BiblioInfo.cpp:416 src/BiblioInfo.cpp:451 src/BiblioInfo.cpp:462
 #: src/BiblioInfo.cpp:500 src/BiblioInfo.cpp:504
 msgid "ERROR!"
-msgstr ""
+msgstr "CHYBA!"
 
 #: src/BiblioInfo.cpp:642 src/BiblioInfo.cpp:645
 msgid "No year"
@@ -16652,6 +16652,15 @@ msgid ""
 "See section 3.1.2.2 of the User's Guide for\n"
 "more information."
 msgstr ""
+"Želaná trieda dokumentu\n"
+"\t%1$s\n"
+"požaduje nedostupné externé súbory.\n"
+"Dokumentná trieda sa stále dá používať, ale LyX\n"
+"nebude schopný zrobiť výstup pokiaľ sú\n"
+"nasledujúce predpoklady neinštalované:\n"
+"\t%2$s\n"
+"Pozri na sekciu 3.1.2.2 Užívateľskej Príručky pre\n"
+"viac informácií."
 
 #: src/BufferParams.cpp:535
 msgid "Document class not available"
@@ -18609,6 +18618,9 @@ msgid ""
 "%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]][[{%institution"
 "%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}."
 msgstr ""
+"{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%\"{%journal"
+"%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]][[{%institution"
+"%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}."
 
 #: src/VCBackend.cpp:63 src/VCBackend.cpp:676 src/VCBackend.cpp:745
 #: src/VCBackend.cpp:751 src/VCBackend.cpp:772
