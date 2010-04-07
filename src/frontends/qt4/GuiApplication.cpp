@@ -1225,6 +1225,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	// Assumes that the action will be dispatched.
 	dr.dispatched(true);
 
+	GuiView * lv = current_view_;
 	switch (cmd.action) {
 
 	case LFUN_WINDOW_NEW:
@@ -1558,81 +1559,71 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 
 	default:
-		// Notify the caller that the action has not been dispatched.
-		dr.dispatched(false);
-		break;
-	}
-
-	// The action has been dispatched in this method, nothing more to do.
-	if (dr.dispatched())
-		return;
-
-	GuiView * lv = current_view_;
-
-	// Everything below is only for active window
-	if (lv == 0)
-		return;
-
-	// Let the current GuiView dispatch its own actions.
-	lv->dispatch(cmd, dr);
-	if (dr.dispatched() && lv )
-		return;
-
-	BufferView * bv = lv->currentBufferView();
-	LASSERT(bv, /**/);
-
-	// Let the current BufferView dispatch its own actions.
-	bv->dispatch(cmd, dr);
-	if (dr.dispatched())
-		return;
-
-	BufferView * doc_bv = lv->documentBufferView();
-	// Try with the document BufferView dispatch if any.
-	if (doc_bv) {
-		doc_bv->dispatch(cmd, dr);
+		// Everything below is only for active window
+		if (lv == 0)
+			break;
+	
+		// Let the current GuiView dispatch its own actions.
+		lv->dispatch(cmd, dr);
 		if (dr.dispatched())
-			return;
-	}
-
-	// OK, so try the current Buffer itself...
-	bv->buffer().dispatch(cmd, dr);
-	if (dr.dispatched())
-		return;
-
-	// and with the document Buffer.
-	if (doc_bv) {
-		doc_bv->buffer().dispatch(cmd, dr);
+			break;
+	
+		BufferView * bv = lv->currentBufferView();
+		LASSERT(bv, /**/);
+	
+		// Let the current BufferView dispatch its own actions.
+		bv->dispatch(cmd, dr);
 		if (dr.dispatched())
-			return;
+			break;
+	
+		BufferView * doc_bv = lv->documentBufferView();
+		// Try with the document BufferView dispatch if any.
+		if (doc_bv) {
+			doc_bv->dispatch(cmd, dr);
+			if (dr.dispatched())
+				break;
+		}
+	
+		// OK, so try the current Buffer itself...
+		bv->buffer().dispatch(cmd, dr);
+		if (dr.dispatched())
+			break;
+	
+		// and with the document Buffer.
+		if (doc_bv) {
+			doc_bv->buffer().dispatch(cmd, dr);
+			if (dr.dispatched())
+				break;
+		}
+	
+		// Let the current Cursor dispatch its own actions.
+		Cursor old = bv->cursor();
+		bv->cursor().dispatch(cmd);
+	
+		// notify insets we just left
+		if (bv->cursor() != old) {
+			old.fixIfBroken();
+			bool badcursor = notifyCursorLeavesOrEnters(old, bv->cursor());
+			if (badcursor)
+				bv->cursor().fixIfBroken();
+		}
+	
+		// update completion. We do it here and not in
+		// processKeySym to avoid another redraw just for a
+		// changed inline completion
+		if (cmd.origin == FuncRequest::KEYBOARD) {
+			if (cmd.action == LFUN_SELF_INSERT
+					|| (cmd.action == LFUN_ERT_INSERT && bv->cursor().inMathed()))
+				lv->updateCompletion(bv->cursor(), true, true);
+			else if (cmd.action == LFUN_CHAR_DELETE_BACKWARD)
+				lv->updateCompletion(bv->cursor(), false, true);
+			else
+				lv->updateCompletion(bv->cursor(), false, false);
+		}
+	
+		dr = bv->cursor().result();
 	}
-
-	// Let the current Cursor dispatch its own actions.
-	Cursor old = bv->cursor();
-	bv->cursor().dispatch(cmd);
-
-	// notify insets we just left
-	if (bv->cursor() != old) {
-		old.fixIfBroken();
-		bool badcursor = notifyCursorLeavesOrEnters(old, bv->cursor());
-		if (badcursor)
-			bv->cursor().fixIfBroken();
-	}
-
-	// update completion. We do it here and not in
-	// processKeySym to avoid another redraw just for a
-	// changed inline completion
-	if (cmd.origin == FuncRequest::KEYBOARD) {
-		if (cmd.action == LFUN_SELF_INSERT
-		    || (cmd.action == LFUN_ERT_INSERT && bv->cursor().inMathed()))
-			lv->updateCompletion(bv->cursor(), true, true);
-		else if (cmd.action == LFUN_CHAR_DELETE_BACKWARD)
-			lv->updateCompletion(bv->cursor(), false, true);
-		else
-			lv->updateCompletion(bv->cursor(), false, false);
-	}
-
-	dr = bv->cursor().result();
-
+	
 	// if we executed a mutating lfun, mark the buffer as dirty
 	Buffer * doc_buffer = (lv && lv->documentBufferView())
 		      ? &(lv->documentBufferView()->buffer()) : 0;
