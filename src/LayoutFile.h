@@ -115,7 +115,9 @@ public:
 	/// Clears the textclass so as to force it to be reloaded
 	void reset(LayoutFileIndex const & tc);
 
-	/// add a default textclass with all standard layouts.
+	/// Add a default textclass with all standard layouts.
+	/// Note that this will over-write any information we may have
+	/// gotten from textclass.lst about this class.
 	LayoutFileIndex addEmptyClass(std::string const & textclass);
 
 	/// add a textclass from user local directory.

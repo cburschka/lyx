@@ -1764,10 +1764,11 @@ bool BufferParams::setBaseClass(string const & classname)
 	LayoutFileList & bcl = LayoutFileList::get();
 	if (!bcl.haveClass(classname)) {
 		docstring s = 
-			bformat(_("The document class %1$s could not be found. "
-				"A default textclass with default layouts will be used. "
-				"LyX might not be able to produce output unless a correct "
-				"textclass is selected from the document settings dialog."),
+			bformat(_("The layout file:\n"
+				"%1$s\n"
+				"could not be found. A default textclass with default\n"
+				"layouts will be used. LyX will not be able to produce\n"
+				"correct output."),
 			from_utf8(classname));
 		frontend::Alert::error(_("Document class not found"), s);
 		bcl.addEmptyClass(classname);
@@ -1776,10 +1777,14 @@ bool BufferParams::setBaseClass(string const & classname)
 	bool const success = bcl[classname].load();
 	if (!success) {
 		docstring s = 
-			bformat(_("The document class %1$s could not be loaded."),
+			bformat(_("Due to some error in it, the layout file:\n"
+				"%1$s\n"
+				"could not be loaded. A default textclass with default\n"
+				"layouts will be used. LyX will not be able to produce\n"
+				"correct output."),
 			from_utf8(classname));
 		frontend::Alert::error(_("Could not load class"), s);
-		return false;
+		bcl.addEmptyClass(classname);
 	}
 
 	pimpl_->baseClass_ = classname;

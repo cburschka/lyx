@@ -204,21 +204,13 @@ void LayoutFileList::reset(LayoutFileIndex const & classname) {
 }
 
 
-LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
-{
-	if (haveClass(textclass))
-		return textclass;
+namespace {
 
-	FileName const tempLayout = FileName::tempName();
-	ofstream ofs(tempLayout.toFilesystemEncoding().c_str());
-	ofs << "# This layout is automatically generated\n"
-		"# \\DeclareLaTeXClass{" << textclass << "}\n\n"
-		"Format		7\n"
-		"Input stdclass.inc\n\n"
-		"Columns		1\n"
-		"Sides			1\n"
-		"SecNumDepth	2\n"
-		"TocDepth		2\n"
+string layoutpost =			
+		"Columns      1\n"
+		"Sides        1\n"
+		"SecNumDepth  2\n"
+		"TocDepth     2\n"
 		"DefaultStyle	Standard\n\n"
 		"Style Standard\n"
 		"	Category              MainText\n"
@@ -231,6 +223,20 @@ LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 		"	AlignPossible         Block, Left, Right, Center\n"
 		"	LabelType             No_Label\n"
 		"End\n";
+	
+}
+
+LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
+{
+	FileName const tempLayout = FileName::tempName();
+	ofstream ofs(tempLayout.toFilesystemEncoding().c_str());
+	// This writes a very basic class, but it also attempts to include 
+	// stdclass.inc. That would give us something moderately usable.
+	ofs << "# This layout is automatically generated\n"
+	       "# \\DeclareLaTeXClass{" << textclass << "}\n\n"
+	       "Format 26\n"
+	       "Input stdclass.inc\n\n"
+	    << layoutpost;
 	ofs.close();
 
 	// We do not know if a LaTeX class is available for this document, but setting
@@ -238,11 +244,24 @@ LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 	// tex class.
 	LayoutFile * tc = new LayoutFile(textclass, textclass, 
 			"Unknown text class " + textclass, textclass + ".cls", true);
+
 	if (!tc->load(tempLayout.absFilename())) {
-		// The only way this happens is because the hardcoded layout file above
-		// is wrong.
-		LASSERT(false, /**/);
+		// The only way this happens is because the hardcoded layout file 
+		// aboveis wrong or stdclass.inc cannot be found. So try again 
+		// without stdclass.inc.
+		ofstream ofs2(tempLayout.toFilesystemEncoding().c_str());
+		ofs2 << "# This layout is automatically generated\n"
+		        "# \\DeclareLaTeXClass{" << textclass << "}\n\n"
+		        "Format 26\n"
+		        "Input stdclass.inc\n\n"
+		     << layoutpost;
+		ofs2.close();
+		if (!tc->load(tempLayout.absFilename())) {
+			// This can only happen if the hardcoded file above is wrong.
+			LASSERT(false, /* */);
+		}
 	}
+
 	classmap_[textclass] = tc;
 	return textclass;
 }
