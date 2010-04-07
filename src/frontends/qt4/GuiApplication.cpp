@@ -1102,8 +1102,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd)
 
 void GuiApplication::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 {
-	GuiView * lv = current_view_;
-	LASSERT(lv, /**/);
+	LASSERT(current_view_, /**/);
 	if (!theSession().bookmarks().isValid(idx))
 		return;
 	BookmarksSection::Bookmark const & bm = theSession().bookmarks().bookmark(idx);
@@ -1128,15 +1127,15 @@ void GuiApplication::gotoBookmark(unsigned int idx, bool openFile, bool switchTo
 		dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"));
 
 	// if the current buffer is not that one, switch to it.
-	if (!lv->documentBufferView()
-		|| lv->documentBufferView()->buffer().fileName() != tmp.filename) {
+	if (!current_view_->documentBufferView()
+		|| current_view_->documentBufferView()->buffer().fileName() != tmp.filename) {
 		if (!switchToBuffer)
 			return;
 		dispatch(FuncRequest(LFUN_BUFFER_SWITCH, file));
 	}
 
 	// moveToPosition try paragraph id first and then paragraph (pit, pos).
-	if (!lv->documentBufferView()->moveToPosition(
+	if (!current_view_->documentBufferView()->moveToPosition(
 		tmp.bottom_pit, tmp.bottom_pos, tmp.top_id, tmp.top_pos))
 		return;
 
@@ -1145,7 +1144,7 @@ void GuiApplication::gotoBookmark(unsigned int idx, bool openFile, bool switchTo
 		return;
 
 	// Cursor jump succeeded!
-	Cursor const & cur = lv->documentBufferView()->cursor();
+	Cursor const & cur = current_view_->documentBufferView()->cursor();
 	pit_type new_pit = cur.pit();
 	pos_type new_pos = cur.pos();
 	int new_id = cur.paragraph().id();
@@ -1419,10 +1418,9 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	// --- lyxserver commands ----------------------------
 	case LFUN_SERVER_GET_FILENAME: {
-		GuiView * lv = currentView();
-		LASSERT(lv && lv->documentBufferView(), return);
+		LASSERT(current_view_ && current_view_->documentBufferView(), return);
 		docstring const fname = from_utf8(
-				lv->documentBufferView()->buffer().absFileName());
+				current_view_->documentBufferView()->buffer().absFileName());
 		dr.setMessage(fname);
 		LYXERR(Debug::INFO, "FNAME[" << fname << ']');
 		break;
