@@ -31,7 +31,7 @@ Note for Subversion (SVN) checkouts
 -----------------------------
 
 If you have checked this out from Subversion, you need to have:
-* automake >= 1.10.1
+* automake >= 1.8
 * autoconf >= 2.59c
 * gettext >= 0.12
 Then type "./autogen.sh" to build the needed configuration
