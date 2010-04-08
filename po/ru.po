@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-02-19 15:33+0100\n"
-"PO-Revision-Date: 2010-03-02 14:21+0300\n"
+"PO-Revision-Date: 2010-04-08 17:02+0300\n"
 "Last-Translator: Sergey Tereschenko <serg.partizan@gmail.com>\n"
 "Language-Team: Russian <kruvalig@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -1751,13 +1751,12 @@ msgstr "&Размещение"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:35
 msgid "Check for inline listings"
-msgstr "Проверить наличие открытых (inline) списков"
+msgstr "Проверить наличие листингов в строках"
 
 # ?
 #: src/frontends/qt4/ui/ListingsUi.ui:38
-#, fuzzy
 msgid "&Inline listing"
-msgstr "&Встроенный список"
+msgstr "&Внутристрочный листинг"
 
 # ?
 #: src/frontends/qt4/ui/ListingsUi.ui:45
@@ -11517,14 +11516,13 @@ msgstr "Maple, evalm"
 msgid "Maple, evalf"
 msgstr "Maple, численно оценить"
 
-# ?
 #: lib/ui/classic.ui:199
 #: lib/ui/classic.ui:265
 #: lib/ui/stdcontext.inc:49
 #: lib/ui/stdmenus.inc:284
 #: lib/ui/stdmenus.inc:397
 msgid "Inline Formula|I"
-msgstr "Формула внутри строки|с"
+msgstr "Внутристрочная формула|с"
 
 #: lib/ui/classic.ui:200
 #: lib/ui/stdcontext.inc:50
@@ -21456,7 +21454,7 @@ msgstr "Пользовательские вклейки не оперделен�
 
 #: src/frontends/qt4/Menus.cpp:944
 msgid "Master Document"
-msgstr "Головной документ"
+msgstr "Главный документ"
 
 #: src/frontends/qt4/Menus.cpp:961
 msgid "Open Navigator..."
@@ -22887,6 +22885,7 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Konto:"
 #~ msgstr "Konto"
+
 #~ msgid "Adresse:"
 #~ msgstr "Адрес:"
 
@@ -22905,8 +22904,10 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Directory not found"
 #~ msgstr "Строка не найдена!"
+
 #~ msgid "Numbers theorems and the like by section."
 #~ msgstr "Нумеровать теоремы и прочее по разделам."
+
 #~ msgid "Latex"
 #~ msgstr "Latex"
 
@@ -22925,10 +22926,13 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Toggle Label|L"
 #~ msgstr "&Переключить всё"
+
 #~ msgid "B&rowse..."
 #~ msgstr "&Выбрать..."
+
 #~ msgid "Number of Co&pies:"
 #~ msgstr "Количество ко&пий:"
+
 #~ msgid "Sa&ns Serif:"
 #~ msgstr "&Рубленый:"
 
@@ -22939,8 +22943,10 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "&Postscript driver:"
 #~ msgstr "Драйвер &PostScript:"
+
 #~ msgid "Append Parameter"
 #~ msgstr "Добавить параметр"
+
 #~ msgid "Remove Last Parameter"
 #~ msgstr "Убрать последний параметр"
 
@@ -22951,8 +22957,10 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Make Last Optional into Non-Optional Parameter"
 #~ msgstr "Вставить необязательный параметр"
+
 #~ msgid "Insert Optional Parameter"
 #~ msgstr "Вставить необязательный параметр"
+
 #~ msgid "Remove Optional Parameter"
 #~ msgstr "Убрать необязательный параметр"
 
@@ -22987,8 +22995,10 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "keywords"
 #~ msgstr "Ключевые слова"
+
 #~ msgid "Table of Contents|a"
 #~ msgstr "Содержание|д"
+
 #~ msgid "FAQ|F"
 #~ msgstr "Вопросы и ответы|ы"
 
@@ -22999,24 +23009,30 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Progress Contents"
 #~ msgstr "ProgressContents"
+
 #~ msgid "&Options:"
 #~ msgstr "&Параметры:"
 
 #, fuzzy
 #~ msgid "Backreference by pa&ge number"
 #~ msgstr "<ссылка> на странице <номер>"
+
 #~ msgid "."
 #~ msgstr "."
+
 #~ msgid "American"
 #~ msgstr "Американский"
 
 #, fuzzy
 #~ msgid "Austrian (old spelling)"
 #~ msgstr "Австрийский немецкий (новая орфография)"
+
 #~ msgid "Austrian"
 #~ msgstr "Австрийский"
+
 #~ msgid "British"
 #~ msgstr "Британский"
+
 #~ msgid "Canadian"
 #~ msgstr "Канадский"
 
@@ -23063,16 +23079,20 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Stadt:"
 #~ msgstr "Stadt"
+
 #~ msgid "Vertical alignment for fixed width columns"
 #~ msgstr "Вертикальное выравнивание для столбцов фиксированной ширины"
+
 #~ msgid "LaTeX default"
 #~ msgstr "LaTeX по умолчанию"
+
 #~ msgid "Keep *roff temporary files"
 #~ msgstr "Сохранять временные файлы *roff"
 
 #, fuzzy
 #~ msgid "The document class %1$s could not be found."
 #~ msgstr "Класс документа %1$s невозможно загрузить"
+
 #~ msgid ""
 #~ "Layout had to be changed from\n"
 #~ "%1$s to %2$s\n"
@@ -23099,26 +23119,35 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Opened Environment Inset: "
 #~ msgstr "Раскрытая вкладка дополнительный аргументов"
+
 #~ msgid "Display image in LyX"
 #~ msgstr "Показывать изображение в LyX"
+
 #~ msgid "Screen display"
 #~ msgstr "Цветность"
+
 #~ msgid "Monochrome"
 #~ msgstr "Одноцветное"
+
 #~ msgid "Grayscale"
 #~ msgstr "Чёрно-белое"
+
 #~ msgid "Preview"
 #~ msgstr "Предварительный просмотр"
+
 #~ msgid "%"
 #~ msgstr "%"
+
 #~ msgid "&Display:"
 #~ msgstr "&Дисплей:"
+
 #~ msgid "Sca&le:"
 #~ msgstr "Масштаб:"
 
 #, fuzzy
 #~ msgid "Scr&een Display:"
 #~ msgstr "Цветность"
+
 #~ msgid "Do not display"
 #~ msgstr "Не показывать"
 
@@ -23137,8 +23166,10 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Clear group"
 #~ msgstr "Новая страница (\\clearpage)"
+
 #~ msgid " (auto)"
 #~ msgstr " (авто)"
+
 #~ msgid "Plain Text"
 #~ msgstr "Простой текст"
 
@@ -23149,34 +23180,43 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Toggle tabba&r"
 #~ msgstr "Вкл/выкл панель таблиц"
+
 #~ msgid "Edit the file externally"
 #~ msgstr "Редактировать файл внешне"
+
 #~ msgid "&Edit File..."
 #~ msgstr "Р&едактировать файл..."
+
 #~ msgid "LyX View"
 #~ msgstr "Просмотр в LyX"
 
 #, fuzzy
 #~ msgid "Movie"
 #~ msgstr "Больше"
+
 #~ msgid "<- C&lear"
 #~ msgstr "<- Оч&истить"
+
 #~ msgid "A&pply"
 #~ msgstr "&Применить"
+
 #~ msgid "Clear"
 #~ msgstr "Оч&истить"
+
 #~ msgid "EmbeddedFiles"
 #~ msgstr "Встроенные объекты"
 
 #, fuzzy
 #~ msgid "Extra embedded files:"
 #~ msgstr " записываются внедрённые файлы!"
+
 #~ msgid "Add"
 #~ msgstr "Добавить"
 
 #, fuzzy
 #~ msgid "E&mbed"
 #~ msgstr "Имя"
+
 #~ msgid "&Center"
 #~ msgstr "По середине"
 
@@ -23214,6 +23254,7 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Failed to embed file"
 #~ msgstr "Встроенные объекты:"
+
 #~ msgid "Update embedded file?"
 #~ msgstr "Обновить внедрённый файл?"
 
@@ -23255,6 +23296,7 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Save failure"
 #~ msgstr "Резервный каталог"
+
 #~ msgid "Embedded Files"
 #~ msgstr "Встроенные файлы"
 
@@ -23273,8 +23315,10 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Enspace|E"
 #~ msgstr "пробел"
+
 #~ msgid "Document could not be read"
 #~ msgstr "Документ невозможно прочесть"
+
 #~ msgid "%1$s could not be read."
 #~ msgstr "%1$s невозможно прочесть."
 
@@ -23285,10 +23329,13 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Properties...|P"
 #~ msgstr "Настроить...|Н"
+
 #~ msgid "New Line|e"
 #~ msgstr "Новая строка|Н"
+
 #~ msgid "Line Break|B"
 #~ msgstr "Разрыв строки|Р"
+
 #~ msgid "line break"
 #~ msgstr "разрыв строки"
 
@@ -23303,12 +23350,16 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Embedded files:"
 #~ msgstr "Встроенные файлы"
+
 #~ msgid "Links"
 #~ msgstr "Ссылки"
+
 #~ msgid "Horizontal Fill|H"
 #~ msgstr "Горизонтальное заполнение|Г"
+
 #~ msgid "Swap Rows|S"
 #~ msgstr "Поменять местами строки"
+
 #~ msgid "Swap Columns|w"
 #~ msgstr "Поменять местами столбцы"
 
@@ -23327,10 +23378,13 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "&float"
 #~ msgstr "плавающий объект"
+
 #~ msgid "S&ubfigure"
 #~ msgstr "По&дрисунок"
+
 #~ msgid "The caption for the sub-figure"
 #~ msgstr "Подпись для вложенного изображения"
+
 #~ msgid "Ca&ption:"
 #~ msgstr "По&дпись:"
 
@@ -23409,8 +23463,10 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Scrolling"
 #~ msgstr "Отступ"
+
 #~ msgid "Pixmap Cache"
 #~ msgstr "Кэш растровых изображений"
+
 #~ msgid "Enable Pi&xmap Cache"
 #~ msgstr "Использовать кэш растровых изображений"
 
@@ -23425,6 +23481,7 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Step \\arabic{step}."
 #~ msgstr "Подраздел"
+
 #~ msgid "Theorem \\arabic{theorem}."
 #~ msgstr "Теорема \\arabic{theorem}."
 
@@ -23483,8 +23540,10 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Conjecture @Section@.\\arabic{conjecture}."
 #~ msgstr "Предположение"
+
 #~ msgid "Theorem \\arabic{thm}."
 #~ msgstr "Теорема \\thetheorem."
+
 #~ msgid "Axiom \\arabic{axiom}."
 #~ msgstr "Аксиома \\arabic{axiom}."
 
@@ -23615,8 +23674,10 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Binomial\t\\choose"
 #~ msgstr "Биномиальный коэф.\t\\binom"
+
 #~ msgid "Can't load document class"
 #~ msgstr "Невозможно загрузить класс документа "
+
 #~ msgid ""
 #~ "Using the default document class, because the class %1$s could not be "
 #~ "loaded."
@@ -23662,6 +23723,7 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Double box"
 #~ msgstr "Двойной"
+
 #~ msgid "Index Entry"
 #~ msgstr "Пункт в указателе"
 
@@ -23696,16 +23758,20 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Opened CharStyle Inset"
 #~ msgstr "Открытая текстовая вкладка"
+
 #~ msgid "Unknown inset name: "
 #~ msgstr "Неизвестное название вкладки: "
+
 #~ msgid "Program Listing "
 #~ msgstr "Листинг программы "
 
 #, fuzzy
 #~ msgid "Framed"
 #~ msgstr "Рамка"
+
 #~ msgid "theorem"
 #~ msgstr "теорема"
+
 #~ msgid "Opened Theorem Inset"
 #~ msgstr "Открытая вкладка теоремы"
 
@@ -23720,16 +23786,22 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Text Wrap Settings"
 #~ msgstr "Настройки плавающих объектов"
+
 #~ msgid "%1$d words in selection."
 #~ msgstr "Выделенный фрагмент содержит %1$d слов."
+
 #~ msgid "%1$d words in document."
 #~ msgstr "Документ содержит %1$d слов."
+
 #~ msgid "One word in selection."
 #~ msgstr "Одно слово в выделении."
+
 #~ msgid "One word in document."
 #~ msgstr "Одно слово в документе."
+
 #~ msgid "Count words"
 #~ msgstr "Количество слов"
+
 #~ msgid " error while writing embedded files."
 #~ msgstr " ошибка при записи внедрённых файлов."
 
@@ -23784,6 +23856,7 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "phantom"
 #~ msgstr "Эсперанто"
+
 #~ msgid "Encoding error"
 #~ msgstr "Ошибка кодировки"
 
@@ -23806,4 +23879,3 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Select a file to embed"
 #~ msgstr "Выберите файл для вставки"
-
