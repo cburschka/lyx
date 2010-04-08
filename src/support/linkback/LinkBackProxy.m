@@ -1,5 +1,5 @@
 /**
- * \file LinkBackProxy.mm
+ * \file LinkBackProxy.m
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -195,7 +195,7 @@ int isLinkBackDataInPasteboard()
 	}
 }
 
-	
+
 void getLinkBackData(void const * * buf, unsigned * len)
 {
 	checkAutoReleasePool() ;
@@ -216,6 +216,7 @@ void getLinkBackData(void const * * buf, unsigned * len)
 		*len = [nsdata length];
 	}
 }
+
 
 int editLinkBackFile(char const * docName)
 {

@@ -94,7 +94,7 @@ NSString* FindLinkBackServer(NSString* bundleIdentifier, NSString* serverName, N
 	NSString* ret = nil ;
 
 	NSFileManager* fm = [NSFileManager defaultManager] ;
-	NSArray* contents = [fm directoryContentsAtPath: dir] ;
+	NSArray* contents = [fm contentsOfDirectoryAtPath: dir error: nil] ;
 	int idx ;
 
 	NSLog(@"searching for %@ in folder: %@", serverName, dir) ;

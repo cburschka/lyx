@@ -364,30 +364,27 @@ NSMutableDictionary* keyedLinkBacks = nil ;
 	LinkBack* ret = [keyedLinkBacks objectForKey: aKey] ;
 	
 	if(nil==ret) {
-		BOOL ok ;
-		NSString* serverName = nil ;
-		NSString* serverId = nil ;
-		NSString* appName = nil ;
-		NSURL* url = nil ;
+		BOOL ok = [data isKindOfClass: [NSDictionary class]] ;
 		
-		// collect server contact information from data.
-		ok = [data isKindOfClass: [NSDictionary class]] ;
 		if (ok) {
-			serverName = [data objectForKey: LinkBackServerNameKey] ;
-			serverId = [data objectForKey: LinkBackServerBundleIdentifierKey];
-			appName = [data linkBackSourceApplicationName] ;
-			url = [data linkBackApplicationURL] ;
-		}
-		
-		if (!ok || !serverName || !serverId)
-			[NSException raise: NSInvalidArgumentException format: @"LinkBackData is not of the correct format: %@", data] ;
+			// collect server contact information from data.
+			NSString* serverName = [data objectForKey: LinkBackServerNameKey] ;
+			NSString* serverId = [data objectForKey: LinkBackServerBundleIdentifierKey];
+			NSString* appName = [data linkBackSourceApplicationName] ;
+			NSURL* url = [data linkBackApplicationURL] ;
 
-		// create the live link object and try to connect to the server.
-		ret = [[LinkBack alloc] initClientWithSourceName: aName delegate: del itemKey: aKey] ;
+			if ( !serverName || !serverId)
+				[NSException raise: NSInvalidArgumentException format: @"LinkBackData is not of the correct format: %@", data] ;
+
+			// create the live link object and try to connect to the server.
+			ret = [[LinkBack alloc] initClientWithSourceName: aName delegate: del itemKey: aKey] ;
 		
-		if (![ret connectToServerWithName: serverName inApplication: serverId fallbackURL: url appName: appName]) {
-			[ret release] ;
-			ret = nil ;
+			if (![ret connectToServerWithName: serverName inApplication: serverId fallbackURL: url appName: appName]) {
+				[ret release] ;
+				ret = nil ;
+			}
+		} else {
+			[NSException raise: NSInvalidArgumentException format: @"LinkBackData is not of the correct format: %@", data] ;
 		}
 	}
 	
@@ -401,9 +398,6 @@ NSMutableDictionary* keyedLinkBacks = nil ;
 		[ret requestEdit] ;
 		
 	// if connection to server failed, return nil.
-	} else {
-		[ret release] ;
-		ret = nil ;
 	}
 
 	return ret ;
