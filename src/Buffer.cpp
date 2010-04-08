@@ -673,10 +673,10 @@ int Buffer::readHeader(Lexer & lex)
 	params().isfontcolor = false;
 	params().notefontcolor = lyx::rgbFromHexName("#cccccc");
 	lyx::dispatch(FuncRequest(LFUN_SET_COLOR,
-		from_utf8("greyedouttext #cccccc")));
+		from_ascii("greyedouttext #cccccc")));
 	params().boxbgcolor = lyx::rgbFromHexName("#ff0000");
 	lyx::dispatch(FuncRequest(LFUN_SET_COLOR,
-		from_utf8("shaded #ff0000")));
+		from_ascii("shaded #ff0000")));
 
 	for (int i = 0; i < 4; ++i) {
 		params().user_defined_bullet(i) = ITEMIZE_DEFAULTS[i];
