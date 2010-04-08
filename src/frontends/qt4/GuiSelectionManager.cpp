@@ -32,6 +32,10 @@
 #undef ControlModifier
 #endif
 
+#ifdef FocusIn
+#undef FocusIn
+#endif
+
 
 namespace lyx {
 namespace frontend {
