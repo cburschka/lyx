@@ -245,7 +245,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-03-16 09:24+0100\n"
-"PO-Revision-Date: 2010-03-21 18:40+0100\n"
+"PO-Revision-Date: 2010-04-07 21:48+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -16333,7 +16333,7 @@ msgstr "Échec conversion"
 #: src/Buffer.cpp:798
 #, c-format
 msgid "%1$s is from a different version of LyX, but a temporary file for converting it could not be created."
-msgstr "%1$s est d'une ancienne version de LyX, et la création d'un fichier temporaire de conversion a échoué."
+msgstr "%1$s est d'une version différente de LyX, et la création d'un fichier temporaire de conversion a échoué."
 
 #: src/Buffer.cpp:807
 msgid "Conversion script not found"
@@ -16342,7 +16342,7 @@ msgstr "Script de conversion introuvable"
 #: src/Buffer.cpp:808
 #, c-format
 msgid "%1$s is from a different version of LyX, but the conversion script lyx2lyx could not be found."
-msgstr "%1$s est d'une ancienne version de LyX, et le script de conversion lyx2lyx est introuvable."
+msgstr "%1$s est d'une version différente de LyX, et le script de conversion lyx2lyx est introuvable."
 
 #: src/Buffer.cpp:827
 msgid "Conversion script failed"
@@ -16351,7 +16351,7 @@ msgstr "Échec du script de conversion"
 #: src/Buffer.cpp:828
 #, c-format
 msgid "%1$s is from a different version of LyX, but the lyx2lyx script failed to convert it."
-msgstr "%1$s est d'une ancienne version de LyX, et le script lyx2lyx n'a pas réussi à le convertir."
+msgstr "%1$s est d'une version différente de LyX, et le script lyx2lyx n'a pas réussi à le convertir."
 
 #: src/Buffer.cpp:843
 #, c-format
