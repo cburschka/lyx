@@ -179,8 +179,8 @@ Menuset
 		OptItem "Open Inset|O" "inset-toggle open"
 		OptItem "Close Inset|C" "inset-toggle close"
 		Separator
-		Item "Open All Notes|A" "all-insets-toggle open note"
-		Item "Close All Notes|l" "all-insets-toggle close note"
+		Item "Open All Notes|A" "inset-forall Note inset-toggle open"
+		Item "Close All Notes|l" "inset-forall Note inset-toggle close"
 		Separator
 		Item "Dissolve Inset|D" "inset-dissolve"
 	End

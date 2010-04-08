@@ -2389,17 +2389,6 @@ void LyXAction::init()
  */
 		{ LFUN_INSET_TOGGLE, "inset-toggle", ReadOnly | AtPoint, Edit },
 /*!
- * \var lyx::FuncCode lyx::LFUN_ALL_INSETS_TOGGLE
- * \li Action: Toggles (open/closes) all collapsable insets (of a given type) in the document.
- * \li Notion: Used for box, branch, ert, float, listings, note, tabular, wrap insets.
- * \li Syntax: all-insets-toggle [<STATE>] [<INSET>]
- * \li Params: <STATE>: <toggle|open|close|assign> default: toggle \n
-               <INSET>: <box|branch|ert|float|listings|note|tabular|wrap> default: all insets
- * \li Origin: leeming, 30 Mar 2004
- * \endvar
- */
-		{ LFUN_ALL_INSETS_TOGGLE, "all-insets-toggle", ReadOnly, Edit },
-/*!
  * \var lyx::FuncCode lyx::LFUN_INSET_FORALL
  * \li Action: Apply the given commands on insets of a given name.
  * \li Notion: WARNING: use at your own risks; this function gives
@@ -2408,6 +2397,9 @@ void LyXAction::init()
                    inset-forall Note note-insert
                which starts an infinite loop. This is mitigated by the fact
                that the number of actions is arbitrarily limited to 10000.
+               Note also that inset-forall does not update metrics between 
+               iterations, which can lead to bugs. This has to be eventually
+               fixed.
  * \li Syntax: inset-forall <NAME> <LFUN-COMMAND> \n
                <NAME>: Type of Inset. If <NAME> is *, all insets are matched.
                The name is used like for InsetLayout in layout files: "Note"

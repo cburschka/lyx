@@ -3126,8 +3126,8 @@ void GuiDocument::dispatchParams()
 		}
 
 		// Open insets of selected branches, close deselected ones
-		dispatch(FuncRequest(LFUN_ALL_INSETS_TOGGLE,
-			"assign branch"));
+		dispatch(FuncRequest(LFUN_INSET_FORALL,
+			"Branch inset-toggle assign"));
 	}
 	// rename branches in the document
 	executeBranchRenaming();

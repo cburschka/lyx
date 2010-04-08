@@ -306,8 +306,8 @@ Menuset
 #
 
 	Menu "view"
-		Item "Open All Insets|O" "all-insets-toggle open"
-		Item "Close All Insets|C" "all-insets-toggle close"
+		Item "Open All Insets|O" "inset-forall * inset-toggle open"
+		Item "Close All Insets|C" "inset-forall * inset-toggle close"
 		Separator
 		Item "Unfold Math Macro|n" "math-macro-unfold"
 		Item "Fold Math Macro|d" "math-macro-fold"

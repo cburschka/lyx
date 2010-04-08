@@ -160,6 +160,9 @@ FuncStatus getStatus(FuncRequest const & action);
 ///
 void dispatch(FuncRequest const & action);
 
+///
+void dispatch(FuncRequest const & action, DispatchResult & dr);
+
 } // namespace lyx
 
 #endif // LYX_H

@@ -98,6 +98,15 @@ The following LyX functions have been removed:
   with the more general function inset-forall
     inset-forall Note:<SOURCE> inset-modify note Note <TARGET>
 
+- LFUN_ALL_INSETS_TOGGLE ("all-insets-toggle"): replace
+    all-insets-toggle <ACTION> <TARGET>
+    all-insets-toggle <ACTION>
+  with the more generic function inset-forall
+    inset-forall <TARGET> inset-toggle <ACTION>
+    inset-forall * inset-toggle <ACTION>
+  There is a difference in the <TARGET> parameter, which is would be
+  like "note" in the first case and "Note" in the second.
+
 - LFUN_TABULAR_FEATURE ("tabular-feature"): use "inset-modify" instead.
 
 

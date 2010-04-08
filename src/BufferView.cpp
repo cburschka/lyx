@@ -1020,7 +1020,6 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_SCREEN_SHOW_CURSOR:
 	case LFUN_BIBTEX_DATABASE_ADD:
 	case LFUN_BIBTEX_DATABASE_DEL:
-	case LFUN_ALL_INSETS_TOGGLE:
 	case LFUN_STATISTICS:
 	case LFUN_BRANCH_ADD_INSERT:
 	case LFUN_KEYMAP_OFF:
@@ -1714,7 +1713,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			while (!insname.empty()) {
 				if (insname == name || name == from_utf8("*")) {
 					cur.recordUndo();
-					lyx::dispatch(fr);
+					lyx::dispatch(fr, dr);
 					++iterations;
 					break;
 				}
@@ -1738,29 +1737,6 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 	}
 
-
-	case LFUN_ALL_INSETS_TOGGLE: {
-		string action;
-		string const name = split(to_utf8(cmd.argument()), action, ' ');
-		InsetCode const inset_code = insetCode(name);
-
-		FuncRequest fr(LFUN_INSET_TOGGLE, action);
-
-		Inset & inset = cur.buffer()->inset();
-		InsetIterator it  = inset_iterator_begin(inset);
-		InsetIterator const end = inset_iterator_end(inset);
-		for (; it != end; ++it) {
-			if (it->asInsetCollapsable()
-			    && (inset_code == NO_CODE
-			    || inset_code == it->lyxCode())) {
-				Cursor tmpcur = cur;
-				tmpcur.pushBackward(*it);
-				it->dispatch(tmpcur, fr);
-			}
-		}
-		dr.update(Update::Force | Update::FitCursor);
-		break;
-	}
 
 	case LFUN_BRANCH_ADD_INSERT: {
 		docstring branch_name = from_utf8(cmd.getArg(0));
