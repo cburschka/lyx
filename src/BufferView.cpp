@@ -970,7 +970,7 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	switch (cmd.action) {
 
-	// FIXME: This is a bit problematic because we don't check is if this is
+	// FIXME: This is a bit problematic because we don't check if this is
 	// a document BufferView or not for these LFUNs. We probably have to
 	// dispatch both to currentBufferView() and, if that fails,
 	// to documentBufferView(); same as we do know for current Buffer and
