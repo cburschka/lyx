@@ -604,6 +604,13 @@ string const LaTeXFeatures::getColorOptions() const
 		// the lyxgreyedout environment (see lyxgreyedout_def)
 	}
 
+	// color for shaded boxes
+	if (isRequired("framed") && mustProvide("color")) {
+		colors << "\\definecolor{shadecolor}{rgb}{";
+		colors << outputLaTeXColor(params_.boxbgcolor) << "}\n";
+		// this color is automatically used by the LaTeX-package "framed"
+	}
+
 	return colors.str();
 }
 
@@ -693,21 +700,7 @@ string const LaTeXFeatures::getPackages() const
 				 << params_.graphicsDriver
 				 << "]{graphicx}\n";
 	}
-	// shadecolor for shaded
-	if (isRequired("framed") && mustProvide("color")) {
-		RGBColor c = rgbFromHexName(lcolor.getX11Name(Color_shadedbg));
-		//255.0 to force conversion to double
-		//NOTE As Jürgen Spitzmüller pointed out, an alternative would be
-		//to use the xcolor package instead, and then we can do
-		// \define{shadcolor}{RGB}...
-		//and not do any conversion. We'd then need to require xcolor
-		//in InsetNote::validate().
-		int const stmSize = packages.precision(2);
-		packages << "\\definecolor{shadecolor}{rgb}{"
-			<< c.r / 255.0 << ',' << c.g / 255.0 << ',' << c.b / 255.0 << "}\n";
-		packages.precision(stmSize);
-	}
-
+	
 	// lyxskak.sty --- newer chess support based on skak.sty
 	if (mustProvide("chess"))
 		packages << "\\usepackage[ps,mover]{lyxskak}\n";

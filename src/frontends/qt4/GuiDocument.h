@@ -113,6 +113,8 @@ private Q_SLOTS:
 	void deleteFontColor();
 	void changeNoteFontColor();
 	void deleteNoteFontColor();
+	void changeBoxBackgroundColor();
+	void deleteBoxBackgroundColor();
 	void xetexChanged(bool);
 	void branchesRename(docstring const &, docstring const &);
 private:

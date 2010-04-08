@@ -126,7 +126,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 384; // uwestoehr: support for document-wide font color
+int const LYX_FORMAT = 385; // uwestoehr: support to change the shaded box color
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
@@ -672,6 +672,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().fontcolor = lyx::rgbFromHexName("#000000");
 	params().isfontcolor = false;
 	params().notefontcolor = lyx::rgbFromHexName("#cccccc");
+	params().boxbgcolor = lyx::rgbFromHexName("#ff0000");
 
 	for (int i = 0; i < 4; ++i) {
 		params().user_defined_bullet(i) = ITEMIZE_DEFAULTS[i];

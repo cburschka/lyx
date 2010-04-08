@@ -1431,6 +1431,41 @@ def revert_fontcolor(document):
                            + '\\color{document_fontcolor}\n')
 
 
+def revert_shadedboxcolor(document):
+    " Reverts shaded box color to preamble code "
+    i = 0
+    colorcode = ""
+    while True:
+      i = find_token(document.header, "\\boxbgcolor", i)
+      if i == -1:
+          return
+      colorcode = get_value(document.header, '\\boxbgcolor', 0)
+      del document.header[i]
+      # the color code is in the form #rrggbb where every character denotes a hex number
+      # convert the string to an int
+      red = string.atoi(colorcode[1:3],16)
+      # we want the output "0.5" for the value "127" therefore increment here
+      if red != 0:
+          red = red + 1
+      redout = float(red) / 256
+      green = string.atoi(colorcode[3:5],16)
+      if green != 0:
+          green = green + 1
+      greenout = float(green) / 256
+      blue = string.atoi(colorcode[5:7],16)
+      if blue != 0:
+          blue = blue + 1
+      blueout = float(blue) / 256
+      # write the preamble
+      insert_to_preamble(0, document,
+                           '% Commands inserted by lyx2lyx to set the color\n'
+                           '% of boxes with shaded background\n'
+                           + '\\@ifundefined{definecolor}{\\usepackage{color}}{}\n'
+                           + '\\definecolor{shadecolor}{rgb}{'
+                           + str(redout) + ', ' + str(greenout)
+                           + ', ' + str(blueout) + '}\n')
+
+
 ##
 # Conversion hub
 #
@@ -1474,10 +1509,12 @@ convert = [[346, []],
            [381, []],
            [382, []],
            [383, []],
-           [384, []]
+           [384, []],
+           [385, []]
           ]
 
-revert =  [[383, [revert_fontcolor]],
+revert =  [[384, [revert_shadedboxcolor]],
+           [383, [revert_fontcolor]],
            [382, [revert_turkmen]],
            [381, [revert_notefontcolor]],
            [380, [revert_equalspacing_xymatrix]],

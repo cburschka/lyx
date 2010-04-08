@@ -375,6 +375,7 @@ BufferParams::BufferParams()
 	isfontcolor = false;
 	// light gray is the default font color for greyed-out notes
 	notefontcolor = lyx::rgbFromHexName("#cccccc");
+	boxbgcolor = lyx::rgbFromHexName("#ff0000");
 	compressed = lyxrc.save_compressed;
 	for (int iter = 0; iter < 4; ++iter) {
 		user_defined_bullet(iter) = ITEMIZE_DEFAULTS[iter];
@@ -739,6 +740,13 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		// set the font color within LyX
 		// FIXME: the color is correctly set but later overwritten by the default
 		lcolor.setColor(Color_greyedouttext, color);
+	} else if (token == "\\boxbgcolor") {
+		lex.eatLine();
+		string color = lex.getString();
+		boxbgcolor = lyx::rgbFromHexName(color);
+		// set the font color within LyX
+		// FIXME: the color is correctly set but later overwritten by the default
+		lcolor.setColor(Color_shadedbg, color);
 	} else if (token == "\\paperwidth") {
 		lex >> paperwidth;
 	} else if (token == "\\paperheight") {
@@ -935,6 +943,8 @@ void BufferParams::writeFile(ostream & os) const
 		os << "\\fontcolor " << lyx::X11hexname(fontcolor) << '\n';
 	if (notefontcolor != lyx::rgbFromHexName("#cccccc"))
 		os << "\\notefontcolor " << lyx::X11hexname(notefontcolor) << '\n';
+	if (boxbgcolor != lyx::rgbFromHexName("#ff0000"))
+		os << "\\boxbgcolor " << lyx::X11hexname(boxbgcolor) << '\n';
 
 	BranchList::const_iterator it = branchlist().begin();
 	BranchList::const_iterator end = branchlist().end();

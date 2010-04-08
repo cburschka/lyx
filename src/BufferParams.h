@@ -293,6 +293,8 @@ public:
 	bool isfontcolor;
 	///
 	RGBColor notefontcolor;
+	///
+	RGBColor boxbgcolor;
 	/// \param index should lie in the range 0 <= \c index <= 3.
 	Bullet & temp_bullet(size_type index);
 	Bullet const & temp_bullet(size_type index) const;

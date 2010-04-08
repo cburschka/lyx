@@ -1006,7 +1006,8 @@ PrefColors::PrefColors(GuiPreferences * form)
 			|| lc == Color_yellow
 			|| lc == Color_inherit
 			|| lc == Color_ignore
-			|| lc == Color_greyedouttext) continue;
+			|| lc == Color_greyedouttext
+			|| lc == Color_shadedbg) continue;
 
 		lcolors_.push_back(lc);
 	}

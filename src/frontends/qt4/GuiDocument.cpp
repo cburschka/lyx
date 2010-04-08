@@ -182,6 +182,7 @@ bool is_backgroundcolor;
 RGBColor set_fontcolor;
 bool is_fontcolor;
 RGBColor set_notefontcolor;
+RGBColor set_boxbgcolor;
 
 namespace {
 // used when sorting the textclass list.
@@ -889,6 +890,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(changeBackgroundColor()));
 	connect(colorModule->delBackgroundTB, SIGNAL(clicked()),
 		this, SLOT(deleteBackgroundColor()));
+	connect(colorModule->boxBackgroundPB, SIGNAL(clicked()),
+		this, SLOT(changeBoxBackgroundColor()));
+	connect(colorModule->delBoxBackgroundTB, SIGNAL(clicked()),
+		this, SLOT(deleteBoxBackgroundColor()));
 
 
 	// numbering
@@ -1436,6 +1441,32 @@ void GuiDocument::deleteNoteFontColor()
 		colorButtonStyleSheet(QColor(204, 204, 204, 255)));
 	// save light gray as the set color
 	set_notefontcolor = rgbFromHexName("#cccccc");
+	changed();
+}
+
+
+void GuiDocument::changeBoxBackgroundColor()
+{
+	QColor const & newColor = QColorDialog::getColor(
+		rgb2qcolor(set_boxbgcolor), asQWidget());
+	if (!newColor.isValid())
+		return;
+	// set the button color
+	colorModule->boxBackgroundPB->setStyleSheet(
+		colorButtonStyleSheet(newColor));
+	// save color
+	set_boxbgcolor = rgbFromHexName(fromqstr(newColor.name()));
+	changed();
+}
+
+
+void GuiDocument::deleteBoxBackgroundColor()
+{
+	// set the button color back to red
+	colorModule->boxBackgroundPB->setStyleSheet(
+		colorButtonStyleSheet(QColor(Qt::red)));
+	// save red as the set color
+	set_boxbgcolor = rgbFromHexName("#ff0000");
 	changed();
 }
 
@@ -2051,6 +2082,7 @@ void GuiDocument::applyView()
 	bp_.fontcolor = set_fontcolor;
 	bp_.isfontcolor = is_fontcolor;
 	bp_.notefontcolor = set_notefontcolor;
+	bp_.boxbgcolor = set_boxbgcolor;
 
 	// numbering
 	if (bp_.documentClass().hasTocLevels()) {
@@ -2452,6 +2484,10 @@ void GuiDocument::paramsToDialog()
 	}
 	set_backgroundcolor = bp_.backgroundcolor;
 	is_backgroundcolor = bp_.isbackgroundcolor;
+
+	colorModule->boxBackgroundPB->setStyleSheet(
+		colorButtonStyleSheet(rgb2qcolor(bp_.boxbgcolor)));
+	set_boxbgcolor = bp_.boxbgcolor;
 
 	// numbering
 	int const min_toclevel = documentClass().min_toclevel();
