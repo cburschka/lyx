@@ -18,7 +18,7 @@
   <property name="toolTip">
    <string/>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
+  <layout class="QGridLayout" name="gridLayout_1">
    <item row="0" column="0">
     <widget class="QGroupBox" name="fontcolorGB">
      <property name="title">
@@ -27,7 +27,7 @@
      <property name="flat">
       <bool>true</bool>
      </property>
-     <layout class="QGridLayout">
+     <layout class="QGridLayout" name="gridLayout_2">
       <property name="margin">
        <number>11</number>
       </property>
@@ -187,7 +187,7 @@
      <property name="flat">
       <bool>true</bool>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
+     <layout class="QGridLayout" name="gridLayout_3">
       <item row="0" column="0">
        <widget class="QLabel" name="backgroundColorLA">
         <property name="text">
