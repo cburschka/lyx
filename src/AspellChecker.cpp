@@ -19,6 +19,9 @@
 #include "support/debug.h"
 #include "support/docstring_list.h"
 
+#include "support/FileName.h"
+#include "support/Path.h"
+
 #include <aspell.h>
 
 #include <map>
@@ -83,10 +86,32 @@ AspellChecker::Private::~Private()
 }
 
 
+AspellConfig * getConfig()
+{
+	AspellConfig * config = new_aspell_config();
+#ifdef __APPLE__
+	char buf[2048] ;
+
+	if ( getPrivateFrameworkPathName(buf, sizeof(buf), "Aspell.framework") ) {
+		lyx::support::FileName const base(buf);
+		lyx::support::FileName const data(base.absFilename() + "/lib/aspell-0.60");
+		lyx::support::FileName const dict(base.absFilename() + "/share/aspell");
+		LYXERR(Debug::FILES, "aspell bundle path: " << buf);
+		if (dict.isDirectory() && data.isDirectory()) {
+			aspell_config_replace(config, "dict-dir", dict.absFilename().c_str());
+			aspell_config_replace(config, "data-dir", data.absFilename().c_str());
+			LYXERR(Debug::FILES, "aspell dict: " << dict);
+		}
+	}
+#endif
+	return config ;
+}
+
+
 AspellSpeller * AspellChecker::Private::addSpeller(string const & lang,
 						   string const & variety)
 {
-	AspellConfig * config = new_aspell_config();
+	AspellConfig * config = getConfig();
 	// Aspell supports both languages and varieties (such as German
 	// old vs. new spelling). The respective naming convention is
 	// lang_REGION-variety (e.g. de_DE-alt).
@@ -107,6 +132,7 @@ AspellSpeller * AspellChecker::Private::addSpeller(string const & lang,
 	else
 		// Report run-together words as errors
 		aspell_config_replace(config, "run-together", "false");
+
 	AspellCanHaveError * err = new_aspell_speller(config);
 	if (spell_error_object)
 		delete_aspell_can_have_error(spell_error_object);
@@ -116,6 +142,7 @@ AspellSpeller * AspellChecker::Private::addSpeller(string const & lang,
 		// FIXME: We should we indicate somehow that this language is not
 		// supported.
 		spell_error_object = err;
+		LYXERR(Debug::FILES, "aspell error: " << aspell_error_message(err));
 		return 0;
 	}
 	Speller m;
@@ -233,7 +260,7 @@ bool AspellChecker::hasDictionary(Language const * lang) const
 	AspellDictInfoEnumeration * dels;
 	const AspellDictInfo * entry;
 
-	config = new_aspell_config();
+	config = getConfig();
 
 	/* the returned pointer should _not_ need to be deleted */
 	dlist = get_aspell_dict_info_list(config);

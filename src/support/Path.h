@@ -63,4 +63,18 @@ private:
 } // namespace support
 } // namespace lyx
 
+#ifdef __APPLE__
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+int getPrivateFrameworkPathName(char * buf, unsigned len, char const * framework);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif
+
+
 #endif // PATH_H
