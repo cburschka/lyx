@@ -148,6 +148,7 @@ Buffer * newFile(string const & filename, string const & templatename,
 
 	b->setReadonly(false);
 	b->setFullyLoaded(true);
+	b->markDirty();
 
 	return b;
 }
