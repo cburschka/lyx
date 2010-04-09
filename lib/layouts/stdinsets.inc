@@ -2,56 +2,7 @@
 # Author : Martin vermeer <martin.vermeer@hut.fi>
 # Inset layouts definition
 #
-# More detailled format description is available in the customization manual
-# FIXME: create the contents in the manual and put the link here.  
-#
-#InsetLayout <string identifier used by LyX>
-#	LabelString           used for the inset decoration (either the inset button
-#	                      or the text underneath the inset).
-#	LatexType             associated LateX type: command, environment, or none.
-#	LatexName             associated LateX command.
-#	BgColor               Color of the inset background within LyX.
-#                         FIXME: link to a doc file describing the different
-#                         color codes as defined in 'ColorCode.h'
-#	Font                  Nothing to put here, below are descriptions of the different
-#                         allowable adjustments for the font used to draw the text
-#                         appearing within the inset text. All these items are optional.
-#	  Color               Color of text
-#	  Size                Font size of the textallowed value: Small, Smaller, ...
-#                         FIXME defined in FontSize in FontEnums.h
-#	  Family              FIXME defined in FontFamily in FontEnums.h
-#	  Shape               FIXME defined in FontShape in FontEnums.h
-#	  Series              FIXME defined in FontSeries in FontEnums.h
-#	  Misc                FIXME defined in FontMisc in FontEnums.h
-#	EndFont               Nothing to put here, it's just a markup to indicate that we are
-#                         finished with the Font definition.
-#	LabelFont             Nothing to put here, below are descriptions of the different
-#                         allowable adjustments for the font used to draw the text
-#                         appearing within the inset decoration. All these items are
-#                         optional.
-#	  Color               see definition above (in the Font node).
-#	  Size                see definition above (in the Font node).
-#
-#	EndFont               Nothing to put here, it's just a markup to indicate that we are
-#                         finished with the LabelFont definition.
-#	MultiPar              Indicates that multiple paragraphs are allowed within the inset
-#                         or not. Defaults to false. Sets CustomPars, as well, to the same
-#                         value, and sets ForcePlain to the opposite value. If you want
-#                         those to be different, then, you must set them after you set 
-#                         MultiPar.
-# CustomPars            Whether to allow the use of the Paragraph Settings dialog. Default is
-#                         false.
-# ForcePlain            Whether to force the PlainLayout. Default is true.
-#	Decoration:           Classic, Minimalistic, Conglomerate. Decoration styles
-#	PassThru              Do not do various LaTeX conversions, like the phrases
-#	                        LaTeX, LyX, quote commands, etc.
-#	KeepEmpty             Do not delete empty paragraphs (?)
-#	FreeSpacing           Preserve multiple spaces etc.
-#	ForceLTR              Force the "latex" language, leading to Left-to-Right
-#	                        (latin) output, e.g., in ERT or URL. A kludge.
-#	Requires              Require a given (supported) feature. Multiple features must
-#                         be comma-separated.
-#End
+# Detailled format description is available in the customization manual
 
 Format 26
 
