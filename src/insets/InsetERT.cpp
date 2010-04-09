@@ -111,7 +111,7 @@ int InsetERT::docbook(odocstream & os, OutputParams const &) const
 
 void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY: {
 		setStatus(cur, string2params(to_utf8(cmd.argument())));
 		break;
@@ -126,7 +126,7 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetERT::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY:
 		status.setEnabled(true);
 		return true;

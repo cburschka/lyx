@@ -946,18 +946,21 @@ static Change::Type lookupChangeType(DocIterator const & dit, bool outer = false
 
 bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 {
+	FuncCode const act = cmd.action();
+
 	// Can we use a readonly buffer?
 	if (buffer_.isReadonly()
-	    && !lyxaction.funcHasFlag(cmd.action_, LyXAction::ReadOnly)
-	    && !lyxaction.funcHasFlag(cmd.action_, LyXAction::NoBuffer)) {
+	    && !lyxaction.funcHasFlag(act, LyXAction::ReadOnly)
+	    && !lyxaction.funcHasFlag(act, LyXAction::NoBuffer)) {
 		flag.message(from_utf8(N_("Document is read-only")));
 		flag.setEnabled(false);
 		return true;
 	}
+
 	// Are we in a DELETED change-tracking region?
 	if (lookupChangeType(d->cursor_, true) == Change::DELETED
-	    && !lyxaction.funcHasFlag(cmd.action_, LyXAction::ReadOnly)
-	    && !lyxaction.funcHasFlag(cmd.action_, LyXAction::NoBuffer)) {
+	    && !lyxaction.funcHasFlag(act, LyXAction::ReadOnly)
+	    && !lyxaction.funcHasFlag(act, LyXAction::NoBuffer)) {
 		flag.message(from_utf8(N_("This portion of the document is deleted.")));
 		flag.setEnabled(false);
 		return true;
@@ -968,7 +971,7 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	if (cur.getStatus(cmd, flag))
 		return true;
 
-	switch (cmd.action_) {
+	switch (act) {
 
 	// FIXME: This is a bit problematic because we don't check if this is
 	// a document BufferView or not for these LFUNs. We probably have to
@@ -1153,10 +1156,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	//lyxerr << [ cmd = " << cmd << "]" << endl;
 
 	// Make sure that the cached BufferView is correct.
-	LYXERR(Debug::ACTION, " action[" << cmd.action_ << ']'
+	LYXERR(Debug::ACTION, " action[" << cmd.action() << ']'
 		<< " arg[" << to_utf8(cmd.argument()) << ']'
-		<< " x[" << cmd.x_ << ']'
-		<< " y[" << cmd.y_ << ']'
+		<< " x[" << cmd.x() << ']'
+		<< " y[" << cmd.y() << ']'
 		<< " button[" << cmd.button() << ']');
 
 	string const argument = to_utf8(cmd.argument());
@@ -1164,14 +1167,15 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	// Don't dispatch function that does not apply to internal buffers.
 	if (buffer_.isInternal() 
-	    && lyxaction.funcHasFlag(cmd.action_, LyXAction::NoInternal))
+	    && lyxaction.funcHasFlag(cmd.action(), LyXAction::NoInternal))
 		return;
 
 	// We'll set this back to false if need be.
 	bool dispatched = true;
 	buffer_.undo().beginUndoGroup();
 
-	switch (cmd.action_) {
+	FuncCode const act = cmd.action();
+	switch (act) {
 
 	case LFUN_BUFFER_PARAMS_APPLY: {
 		DocumentClass const * const oldClass = buffer_.params().documentClassPtr();
@@ -1451,7 +1455,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (searched_string.empty())
 			break;
 
-		bool const fw = cmd.action_ == LFUN_WORD_FIND_FORWARD;
+		bool const fw = act == LFUN_WORD_FIND_FORWARD;
 		docstring const data =
 			find2string(searched_string, true, false, fw);
 		find(this, FuncRequest(LFUN_WORD_FIND, data));
@@ -1628,11 +1632,11 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			showCursor();
 			p = getPos(cur, cur.boundary());
 		}*/
-		int const scrolled = scroll(cmd.action_ == LFUN_SCREEN_UP
+		int const scrolled = scroll(act == LFUN_SCREEN_UP
 			? -height_ : height_);
-		if (cmd.action_ == LFUN_SCREEN_UP && scrolled > -height_)
+		if (act == LFUN_SCREEN_UP && scrolled > -height_)
 			p = Point(0, 0);
-		if (cmd.action_ == LFUN_SCREEN_DOWN && scrolled < height_)
+		if (act == LFUN_SCREEN_DOWN && scrolled < height_)
 			p = Point(width_, height_);
 		Cursor old = cur;
 		bool const in_texted = cur.inTexted();
@@ -1641,7 +1645,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		updateHoveredInset();
 
 		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_,
-			true, cmd.action_ == LFUN_SCREEN_UP); 
+			true, act == LFUN_SCREEN_UP); 
 		//FIXME: what to do with cur.x_target()?
 		bool update = in_texted && cur.bv().checkDepm(cur, old);
 		cur.finishUndo();
@@ -1971,18 +1975,18 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 	// surrounding Text will handle this event.
 
 	// make sure we stay within the screen...
-	cmd.y_ = min(max(cmd.y_, -1), height_);
+	cmd.set_y(min(max(cmd.y(), -1), height_));
 
-	d->mouse_position_cache_.x_ = cmd.x_;
-	d->mouse_position_cache_.y_ = cmd.y_;
+	d->mouse_position_cache_.x_ = cmd.x();
+	d->mouse_position_cache_.y_ = cmd.y();
 
-	if (cmd.action_ == LFUN_MOUSE_MOTION && cmd.button() == mouse_button::none) {
+	if (cmd.action() == LFUN_MOUSE_MOTION && cmd.button() == mouse_button::none) {
 		updateHoveredInset();
 		return;
 	}
 
 	// Build temporary cursor.
-	Inset * inset = d->text_metrics_[&buffer_.text()].editXY(cur, cmd.x_, cmd.y_);
+	Inset * inset = d->text_metrics_[&buffer_.text()].editXY(cur, cmd.x(), cmd.y());
 
 	// Put anchor at the same position.
 	cur.resetAnchor();

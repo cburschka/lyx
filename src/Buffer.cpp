@@ -1815,7 +1815,7 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	bool enable = true;
 
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 		case LFUN_BUFFER_TOGGLE_READ_ONLY:
 			flag.setOnOff(isReadonly());
@@ -1887,7 +1887,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 {
 	if (isInternal()) {
 		// FIXME? if there is an Buffer LFUN that can be dispatched even
-		// if internal, put a switch '(cmd.action_)' here.
+		// if internal, put a switch '(cmd.action())' here.
 		dr.dispatched(false);
 		return;
 	}
@@ -1896,7 +1896,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 	bool dispatched = true;
 	undo().beginUndoGroup();
 
-	switch (func.action_) {
+	switch (func.action()) {
 	case LFUN_BUFFER_TOGGLE_READ_ONLY:
 		if (lyxvc().inUse())
 			lyxvc().toggleReadOnly();
@@ -2014,7 +2014,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 				bformat(_("Branch \"%1$s\" does not exist."), branchName);
 			dr.setMessage(msg);
 		} else {
-			branch->setSelected(func.action_ == LFUN_BRANCH_ACTIVATE);
+			branch->setSelected(func.action() == LFUN_BRANCH_ACTIVATE);
 			dr.setError(false);
 			dr.update(Update::Force);
 		}

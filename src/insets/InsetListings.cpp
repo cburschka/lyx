@@ -312,7 +312,7 @@ docstring InsetListings::contextMenu(BufferView const &, int, int) const
 
 void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY: {
 		InsetListings::string2params(to_utf8(cmd.argument()), params());
@@ -333,7 +333,7 @@ void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetListings::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 		case LFUN_INSET_MODIFY:
 		case LFUN_INSET_DIALOG_UPDATE:
 			status.setEnabled(true);

@@ -322,7 +322,7 @@ bool Inset::showInsetDialog(BufferView * bv) const
 
 void Inset::doDispatch(Cursor & cur, FuncRequest &cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_MOUSE_RELEASE:
 		// if the derived inset did not explicitly handle mouse_release,
 		// we assume we request the settings dialog
@@ -360,7 +360,7 @@ bool Inset::getStatus(Cursor &, FuncRequest const & cmd,
 	// Dialogs::checkStatus() ensures that the dialog is deactivated if
 	// LFUN_INSET_APPLY is disabled.
 
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY:
 		// Allow modification of our data.
 		// This needs to be handled in the doDispatch method of our

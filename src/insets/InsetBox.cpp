@@ -186,7 +186,7 @@ bool InsetBox::forcePlainLayout(idx_type) const
 
 void InsetBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY: {
 		//lyxerr << "InsetBox::dispatch MODIFY" << endl;
@@ -208,7 +208,7 @@ void InsetBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "changetype")

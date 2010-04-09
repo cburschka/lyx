@@ -141,7 +141,7 @@ docstring InsetSpace::toolTip(BufferView const &, int, int) const
 
 void InsetSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY:
 		string2params(to_utf8(cmd.argument()), params_);
@@ -161,7 +161,7 @@ void InsetSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	// we handle these
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "space") {

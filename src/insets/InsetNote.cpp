@@ -171,7 +171,7 @@ bool InsetNote::showInsetDialog(BufferView * bv) const
 
 void InsetNote::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY:
 		string2params(to_utf8(cmd.argument()), params_);
@@ -192,7 +192,7 @@ void InsetNote::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetNote::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY:
 		// disallow comment and greyed out in commands

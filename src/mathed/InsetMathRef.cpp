@@ -61,7 +61,7 @@ void InsetMathRef::infoize(odocstream & os) const
 
 void InsetMathRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "ref") {
 			MathData ar;
@@ -110,7 +110,7 @@ void InsetMathRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetMathRef::getStatus(Cursor & cur, FuncRequest const & cmd,
 			 FuncStatus & status) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	// we handle these
 	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_DIALOG_UPDATE:

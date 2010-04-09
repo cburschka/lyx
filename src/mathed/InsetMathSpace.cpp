@@ -277,7 +277,7 @@ docstring InsetMathSpace::contextMenu(BufferView const &, int, int) const
 bool InsetMathSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
                                FuncStatus & status) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	// we handle these
 	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_DIALOG_UPDATE:
@@ -295,7 +295,7 @@ bool InsetMathSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetMathSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "mathspace") {
 			MathData ar;

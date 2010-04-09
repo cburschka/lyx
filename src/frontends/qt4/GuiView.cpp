@@ -1388,7 +1388,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		? &(documentBufferView()->buffer()) : 0;
 
 	// Check whether we need a buffer
-	if (!lyxaction.funcHasFlag(cmd.action_, LyXAction::NoBuffer) && !buf) {
+	if (!lyxaction.funcHasFlag(cmd.action(), LyXAction::NoBuffer) && !buf) {
 		// no, exit directly
 		flag.message(from_utf8(N_("Command not allowed with"
 					"out any document open")));
@@ -1396,7 +1396,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		return true;
 	}
 
-	if (cmd.origin_ == FuncRequest::TOC) {
+	if (cmd.origin() == FuncRequest::TOC) {
 		GuiToc * toc = static_cast<GuiToc*>(findOrBuild("toc", false));
 		FuncStatus fs;
 		if (toc->getStatus(documentBufferView()->cursor(), cmd, fs))
@@ -1406,7 +1406,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		return true;
 	}
 
-	switch(cmd.action_) {
+	switch(cmd.action()) {
 	case LFUN_BUFFER_IMPORT:
 		break;
 
@@ -2533,7 +2533,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 	Buffer * buffer = documentBufferView()
 		? &(documentBufferView()->buffer()) : 0;
 
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_VC_REGISTER:
 		if (!buffer || !ensureBufferClean(buffer))
 			break;
@@ -2812,7 +2812,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	Buffer * doc_buffer = documentBufferView()
 		? &(documentBufferView()->buffer()) : 0;
 
-	if (cmd.origin_ == FuncRequest::TOC) {
+	if (cmd.origin() == FuncRequest::TOC) {
 		GuiToc * toc = static_cast<GuiToc*>(findOrBuild("toc", false));
 		// FIXME: do we need to pass a DispatchResult object here?
 		toc->doDispatch(bv->cursor(), cmd);
@@ -2821,7 +2821,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	string const argument = to_utf8(cmd.argument());
 
-	switch(cmd.action_) {
+	switch(cmd.action()) {
 		case LFUN_BUFFER_CHILD_OPEN:
 			openChildDocument(to_utf8(cmd.argument()));
 			break;
@@ -3186,7 +3186,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		case LFUN_BUFFER_ZOOM_IN:
 		case LFUN_BUFFER_ZOOM_OUT:
 			if (cmd.argument().empty()) {
-				if (cmd.action_ == LFUN_BUFFER_ZOOM_IN)
+				if (cmd.action() == LFUN_BUFFER_ZOOM_IN)
 					lyxrc.zoom += 20;
 				else
 					lyxrc.zoom -= 20;

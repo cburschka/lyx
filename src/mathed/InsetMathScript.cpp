@@ -753,7 +753,7 @@ void InsetMathScript::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	//LYXERR("InsetMathScript: request: " << cmd);
 
-	if (cmd.action_ == LFUN_MATH_LIMITS) {
+	if (cmd.action() == LFUN_MATH_LIMITS) {
 		if (!cmd.argument().empty()) {
 			if (cmd.argument() == "limits")
 				limits_ = 1;

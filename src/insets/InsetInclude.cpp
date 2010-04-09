@@ -227,7 +227,7 @@ bool InsetInclude::isCompatibleCommand(string const & s)
 
 void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_INSET_EDIT: {
 		editIncluded(to_utf8(params()["filename"]));
@@ -304,7 +304,7 @@ void InsetInclude::editIncluded(string const & file)
 bool InsetInclude::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_INSET_EDIT:
 		flag.setEnabled(true);

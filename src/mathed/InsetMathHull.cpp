@@ -1230,14 +1230,14 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 
 void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	//lyxerr << "action: " << cmd.action_ << endl;
-	switch (cmd.action_) {
+	//lyxerr << "action: " << cmd.action() << endl;
+	switch (cmd.action()) {
 
 	case LFUN_FINISHED_BACKWARD:
 	case LFUN_FINISHED_FORWARD:
 	case LFUN_FINISHED_RIGHT:
 	case LFUN_FINISHED_LEFT:
-		//lyxerr << "action: " << cmd.action_ << endl;
+		//lyxerr << "action: " << cmd.action() << endl;
 		InsetMathGrid::doDispatch(cur, cmd);
 		cur.undispatched();
 		break;
@@ -1425,7 +1425,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_FINISHED_BACKWARD:
 	case LFUN_FINISHED_FORWARD:
 	case LFUN_FINISHED_RIGHT:

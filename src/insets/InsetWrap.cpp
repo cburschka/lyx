@@ -77,7 +77,7 @@ docstring InsetWrap::toolTip(BufferView const & bv, int x, int y) const
 
 void InsetWrap::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY: {
 		InsetWrapParams params;
 		InsetWrap::string2params(to_utf8(cmd.argument()), params);
@@ -102,7 +102,7 @@ void InsetWrap::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetWrap::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_DIALOG_UPDATE:
 		flag.setEnabled(true);

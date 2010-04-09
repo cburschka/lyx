@@ -241,7 +241,7 @@ Inset * InsetText::editXY(Cursor & cur, int x, int y)
 void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	LYXERR(Debug::ACTION, "InsetText::doDispatch()"
-		<< " [ cmd.action_ = " << cmd.action_ << ']');
+		<< " [ cmd.action() = " << cmd.action() << ']');
 
 	if (getLayout().isPassThru()) {
 		// Force any new text to latex_language FIXME: This
@@ -254,7 +254,7 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.real_current_font.setLanguage(latex_language);
 	}
 
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_PASTE:
 	case LFUN_CLIPBOARD_PASTE:
 	case LFUN_SELECTION_PASTE:
@@ -297,7 +297,7 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_INSET_DISSOLVE: {
 		bool const main_inset = &buffer().inset() == this;
 		bool const target_inset = cmd.argument().empty() 

@@ -198,7 +198,7 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 
 void regexpDispatch(Cursor & cur, FuncRequest const & cmd)
 {
-	LASSERT(cmd.action_ == LFUN_REGEXP_MODE, return);
+	LASSERT(cmd.action() == LFUN_REGEXP_MODE, return);
 	if (cur.inRegexped()) {
 		cur.message(_("Already in regular expression mode"));
 		return;
@@ -239,7 +239,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 		ci->setButtonLabel();
 
 	cur.recordUndo();
-	if (cmd.action_ == LFUN_INDEX_INSERT) {
+	if (cmd.action() == LFUN_INDEX_INSERT) {
 		docstring ds = subst(text->getStringToIndex(cur), '\n', ' ');
 		text->insertInset(cur, inset);
 		if (edit)
@@ -472,13 +472,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	bool sel = cur.selection();
 	// Signals that, even if needsUpdate == false, an update of the
 	// cursor paragraph is required
-	bool singleParUpdate = lyxaction.funcHasFlag(cmd.action_,
+	bool singleParUpdate = lyxaction.funcHasFlag(cmd.action(),
 		LyXAction::SingleParUpdate);
 	// Signals that a full-screen update is required
-	bool needsUpdate = !(lyxaction.funcHasFlag(cmd.action_,
+	bool needsUpdate = !(lyxaction.funcHasFlag(cmd.action(),
 		LyXAction::NoUpdate) || singleParUpdate);
 
-	switch (cmd.action_) {
+	FuncCode const act = cmd.action();
+	switch (act) {
 
 	case LFUN_PARAGRAPH_MOVE_DOWN: {
 		pit_type const pit = cur.pit();
@@ -552,7 +553,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_BUFFER_BEGIN:
 	case LFUN_BUFFER_BEGIN_SELECT:
-		needsUpdate |= cur.selHandle(cmd.action_ == LFUN_BUFFER_BEGIN_SELECT);
+		needsUpdate |= cur.selHandle(act == LFUN_BUFFER_BEGIN_SELECT);
 		if (cur.depth() == 1)
 			needsUpdate |= cursorTop(cur);
 		else
@@ -562,7 +563,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_BUFFER_END:
 	case LFUN_BUFFER_END_SELECT:
-		needsUpdate |= cur.selHandle(cmd.action_ == LFUN_BUFFER_END_SELECT);
+		needsUpdate |= cur.selHandle(act == LFUN_BUFFER_END_SELECT);
 		if (cur.depth() == 1)
 			needsUpdate |= cursorBottom(cur);
 		else
@@ -572,7 +573,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_BEGIN:
 	case LFUN_INSET_BEGIN_SELECT:
-		needsUpdate |= cur.selHandle(cmd.action_ == LFUN_INSET_BEGIN_SELECT);
+		needsUpdate |= cur.selHandle(act == LFUN_INSET_BEGIN_SELECT);
 		if (cur.depth() == 1 || !cur.top().at_begin())
 			needsUpdate |= cursorTop(cur);
 		else
@@ -582,7 +583,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_END:
 	case LFUN_INSET_END_SELECT:
-		needsUpdate |= cur.selHandle(cmd.action_ == LFUN_INSET_END_SELECT);
+		needsUpdate |= cur.selHandle(act == LFUN_INSET_END_SELECT);
 		if (cur.depth() == 1 || !cur.top().at_end())
 			needsUpdate |= cursorBottom(cur);
 		else
@@ -605,7 +606,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_FORWARD:
 	case LFUN_CHAR_FORWARD_SELECT:
 		//LYXERR0(" LFUN_CHAR_FORWARD[SEL]:\n" << cur);
-		needsUpdate |= cur.selHandle(cmd.action_ == LFUN_CHAR_FORWARD_SELECT);
+		needsUpdate |= cur.selHandle(act == LFUN_CHAR_FORWARD_SELECT);
 		needsUpdate |= cursorForward(cur);
 
 		if (!needsUpdate && oldTopSlice == cur.top()
@@ -631,7 +632,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_BACKWARD:
 	case LFUN_CHAR_BACKWARD_SELECT:
 		//lyxerr << "handle LFUN_CHAR_BACKWARD[_SELECT]:\n" << cur << endl;
-		needsUpdate |= cur.selHandle(cmd.action_ == LFUN_CHAR_BACKWARD_SELECT);
+		needsUpdate |= cur.selHandle(act == LFUN_CHAR_BACKWARD_SELECT);
 		needsUpdate |= cursorBackward(cur);
 
 		if (!needsUpdate && oldTopSlice == cur.top()
@@ -657,7 +658,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_LEFT:
 	case LFUN_CHAR_LEFT_SELECT:
 		if (lyxrc.visual_cursor) {
-			needsUpdate |= cur.selHandle(cmd.action_ == LFUN_CHAR_LEFT_SELECT);
+			needsUpdate |= cur.selHandle(act == LFUN_CHAR_LEFT_SELECT);
 			needsUpdate |= cursorVisLeft(cur);
 			if (!needsUpdate && oldTopSlice == cur.top()
 					&& cur.boundary() == oldBoundary) {
@@ -666,11 +667,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 		} else {
 			if (reverseDirectionNeeded(cur)) {
-				cmd.action_ = cmd.action_ == LFUN_CHAR_LEFT_SELECT ?
-					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD;
+				cmd.setAction(cmd.action() == LFUN_CHAR_LEFT_SELECT ?
+					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD);
 			} else {
-				cmd.action_ = cmd.action_ == LFUN_CHAR_LEFT_SELECT ?
-					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD;
+				cmd.setAction(cmd.action() == LFUN_CHAR_LEFT_SELECT ?
+					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD);
 			}
 			dispatch(cur, cmd);
 			return;
@@ -680,7 +681,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_RIGHT:
 	case LFUN_CHAR_RIGHT_SELECT:
 		if (lyxrc.visual_cursor) {
-			needsUpdate |= cur.selHandle(cmd.action_ == LFUN_CHAR_RIGHT_SELECT);
+			needsUpdate |= cur.selHandle(cmd.action() == LFUN_CHAR_RIGHT_SELECT);
 			needsUpdate |= cursorVisRight(cur);
 			if (!needsUpdate && oldTopSlice == cur.top()
 					&& cur.boundary() == oldBoundary) {
@@ -689,11 +690,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 		} else {
 			if (reverseDirectionNeeded(cur)) {
-				cmd.action_ = cmd.action_ == LFUN_CHAR_RIGHT_SELECT ?
-					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD;
+				cmd.setAction(cmd.action() == LFUN_CHAR_RIGHT_SELECT ?
+					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD);
 			} else {
-				cmd.action_ = cmd.action_ == LFUN_CHAR_RIGHT_SELECT ?
-					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD;
+				cmd.setAction(cmd.action() == LFUN_CHAR_RIGHT_SELECT ?
+					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD);
 			}
 			dispatch(cur, cmd);
 			return;
@@ -706,11 +707,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_UP:
 	case LFUN_DOWN: {
 		// stop/start the selection
-		bool select = cmd.action_ == LFUN_DOWN_SELECT ||
-			cmd.action_ == LFUN_UP_SELECT;
+		bool select = cmd.action() == LFUN_DOWN_SELECT ||
+			cmd.action() == LFUN_UP_SELECT;
 
 		// move cursor up/down
-		bool up = cmd.action_ == LFUN_UP_SELECT || cmd.action_ == LFUN_UP;
+		bool up = cmd.action() == LFUN_UP_SELECT || cmd.action() == LFUN_UP;
 		bool const atFirstOrLastRow = cur.atFirstOrLastRow(up);
 
 		if (!atFirstOrLastRow) {
@@ -732,25 +733,25 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_PARAGRAPH_UP:
 	case LFUN_PARAGRAPH_UP_SELECT:
-		needsUpdate |= cur.selHandle(cmd.action_ == LFUN_PARAGRAPH_UP_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action() == LFUN_PARAGRAPH_UP_SELECT);
 		needsUpdate |= cursorUpParagraph(cur);
 		break;
 
 	case LFUN_PARAGRAPH_DOWN:
 	case LFUN_PARAGRAPH_DOWN_SELECT:
-		needsUpdate |= cur.selHandle(cmd.action_ == LFUN_PARAGRAPH_DOWN_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action() == LFUN_PARAGRAPH_DOWN_SELECT);
 		needsUpdate |= cursorDownParagraph(cur);
 		break;
 
 	case LFUN_LINE_BEGIN:
 	case LFUN_LINE_BEGIN_SELECT:
-		needsUpdate |= cur.selHandle(cmd.action_ == LFUN_LINE_BEGIN_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action() == LFUN_LINE_BEGIN_SELECT);
 		needsUpdate |= tm->cursorHome(cur);
 		break;
 
 	case LFUN_LINE_END:
 	case LFUN_LINE_END_SELECT:
-		needsUpdate |= cur.selHandle(cmd.action_ == LFUN_LINE_END_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action() == LFUN_LINE_END_SELECT);
 		needsUpdate |= tm->cursorEnd(cur);
 		break;
 
@@ -792,7 +793,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_RIGHT:
 	case LFUN_WORD_RIGHT_SELECT:
 		if (lyxrc.visual_cursor) {
-			needsUpdate |= cur.selHandle(cmd.action_ == LFUN_WORD_RIGHT_SELECT);
+			needsUpdate |= cur.selHandle(cmd.action() == LFUN_WORD_RIGHT_SELECT);
 			needsUpdate |= cursorVisRightOneWord(cur);
 			if (!needsUpdate && oldTopSlice == cur.top()
 					&& cur.boundary() == oldBoundary) {
@@ -801,11 +802,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 		} else {
 			if (reverseDirectionNeeded(cur)) {
-				cmd.action_ = cmd.action_ == LFUN_WORD_RIGHT_SELECT ?
-						LFUN_WORD_BACKWARD_SELECT : LFUN_WORD_BACKWARD;
+				cmd.setAction(cmd.action() == LFUN_WORD_RIGHT_SELECT ?
+						LFUN_WORD_BACKWARD_SELECT : LFUN_WORD_BACKWARD);
 			} else {
-				cmd.action_ = cmd.action_ == LFUN_WORD_RIGHT_SELECT ?
-						LFUN_WORD_FORWARD_SELECT : LFUN_WORD_FORWARD;
+				cmd.setAction(cmd.action() == LFUN_WORD_RIGHT_SELECT ?
+						LFUN_WORD_FORWARD_SELECT : LFUN_WORD_FORWARD);
 			}
 			dispatch(cur, cmd);
 			return;
@@ -814,14 +815,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_WORD_FORWARD:
 	case LFUN_WORD_FORWARD_SELECT:
-		needsUpdate |= cur.selHandle(cmd.action_ == LFUN_WORD_FORWARD_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action() == LFUN_WORD_FORWARD_SELECT);
 		needsUpdate |= cursorForwardOneWord(cur);
 		break;
 
 	case LFUN_WORD_LEFT:
 	case LFUN_WORD_LEFT_SELECT:
 		if (lyxrc.visual_cursor) {
-			needsUpdate |= cur.selHandle(cmd.action_ == LFUN_WORD_LEFT_SELECT);
+			needsUpdate |= cur.selHandle(cmd.action() == LFUN_WORD_LEFT_SELECT);
 			needsUpdate |= cursorVisLeftOneWord(cur);
 			if (!needsUpdate && oldTopSlice == cur.top()
 					&& cur.boundary() == oldBoundary) {
@@ -830,11 +831,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 		} else {
 			if (reverseDirectionNeeded(cur)) {
-				cmd.action_ = cmd.action_ == LFUN_WORD_LEFT_SELECT ?
-						LFUN_WORD_FORWARD_SELECT : LFUN_WORD_FORWARD;
+				cmd.setAction(cmd.action() == LFUN_WORD_LEFT_SELECT ?
+						LFUN_WORD_FORWARD_SELECT : LFUN_WORD_FORWARD);
 			} else {
-				cmd.action_ = cmd.action_ == LFUN_WORD_LEFT_SELECT ?
-						LFUN_WORD_BACKWARD_SELECT : LFUN_WORD_BACKWARD;
+				cmd.setAction(cmd.action() == LFUN_WORD_LEFT_SELECT ?
+						LFUN_WORD_BACKWARD_SELECT : LFUN_WORD_BACKWARD);
 			}
 			dispatch(cur, cmd);
 			return;
@@ -843,7 +844,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_WORD_BACKWARD:
 	case LFUN_WORD_BACKWARD_SELECT:
-		needsUpdate |= cur.selHandle(cmd.action_ == LFUN_WORD_BACKWARD_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action() == LFUN_WORD_BACKWARD_SELECT);
 		needsUpdate |= cursorBackwardOneWord(cur);
 		break;
 
@@ -1409,19 +1410,19 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		CursorSlice old = bvcur.top();
 
 		int const wh = bv->workHeight();
-		int const y = max(0, min(wh - 1, cmd.y_));
+		int const y = max(0, min(wh - 1, cmd.y()));
 
-		tm->setCursorFromCoordinates(cur, cmd.x_, y);
-		cur.setTargetX(cmd.x_);
-		if (cmd.y_ >= wh)
+		tm->setCursorFromCoordinates(cur, cmd.x(), y);
+		cur.setTargetX(cmd.x());
+		if (cmd.y() >= wh)
 			lyx::dispatch(FuncRequest(LFUN_DOWN_SELECT));
-		else if (cmd.y_ < 0)
+		else if (cmd.y() < 0)
 			lyx::dispatch(FuncRequest(LFUN_UP_SELECT));
 		// This is to allow jumping over large insets
 		if (cur.top() == old) {
-			if (cmd.y_ >= wh)
+			if (cmd.y() >= wh)
 				lyx::dispatch(FuncRequest(LFUN_DOWN_SELECT));
-			else if (cmd.y_ < 0)
+			else if (cmd.y() < 0)
 				lyx::dispatch(FuncRequest(LFUN_UP_SELECT));
 		}
 		// We continue with our existing selection or start a new one, so don't
@@ -1933,7 +1934,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_ACCENT_HUNGARIAN_UMLAUT:
 	case LFUN_ACCENT_CIRCLE:
 	case LFUN_ACCENT_OGONEK:
-		theApp()->handleKeyFunc(cmd.action_);
+		theApp()->handleKeyFunc(cmd.action());
 		if (!cmd.argument().empty())
 			// FIXME: Are all these characters encoded in one byte in utf8?
 			bv->translateAndInsert(cmd.argument()[0], this, cur);
@@ -2153,7 +2154,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	bool enable = true;
 	InsetCode code = NO_CODE;
 
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_DEPTH_DECREMENT:
 		enable = changeDepthAllowed(cur, DEC_DEPTH);

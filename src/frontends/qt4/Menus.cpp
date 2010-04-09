@@ -187,7 +187,7 @@ public:
 		 FuncRequest::Origin origin = FuncRequest::MENU)
 		: kind_(kind), label_(label), func_(func), optional_(optional)
 	{
-		func_.origin_ = origin;
+		func_.setOrigin(origin);
 	}
 
 	// boost::shared_ptr<MenuDefinition> needs this apprently...
@@ -233,7 +233,7 @@ public:
 			return toqstr(bindings.begin()->print(KeySequence::ForGui));
 
 		LYXERR(Debug::KBMAP, "No binding for "
-			<< lyxaction.getActionName(func_.action_)
+			<< lyxaction.getActionName(func_.action())
 			<< '(' << func_.argument() << ')');
 		return QString();
 	}

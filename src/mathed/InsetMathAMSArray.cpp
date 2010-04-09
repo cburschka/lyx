@@ -106,7 +106,7 @@ void InsetMathAMSArray::draw(PainterInfo & pi, int x, int y) const
 bool InsetMathAMSArray::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY: {
 		istringstream is(to_utf8(cmd.argument()));
 		string s;

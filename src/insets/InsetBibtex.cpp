@@ -77,7 +77,7 @@ ParamInfo const & InsetBibtex::findInfo(string const & /* cmdName */)
 
 void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_INSET_EDIT:
 		editDatabases();
@@ -115,7 +115,7 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetBibtex::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_INSET_EDIT:
 		flag.setEnabled(true);
 		return true;

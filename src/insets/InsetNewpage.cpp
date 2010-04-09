@@ -137,7 +137,7 @@ void InsetNewpage::draw(PainterInfo & pi, int x, int y) const
 
 void InsetNewpage::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY: {
 		InsetNewpageParams params;
@@ -156,7 +156,7 @@ void InsetNewpage::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetNewpage::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	// we handle these
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "newpage") {

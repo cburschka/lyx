@@ -542,7 +542,8 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	Parse::flags parseflg = Parse::QUIET | Parse::USETEXT;
 
-	switch (cmd.action_) {
+	FuncCode const act = cmd.action();
+	switch (act) {
 
 	case LFUN_CLIPBOARD_PASTE:
 		parseflg |= Parse::VERBATIM;
@@ -619,10 +620,10 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_BACKWARD_SELECT:
 	case LFUN_CHAR_FORWARD_SELECT: {
 		// are we in a selection?
-		bool select = (cmd.action_ == LFUN_CHAR_RIGHT_SELECT
-					   || cmd.action_ == LFUN_CHAR_LEFT_SELECT
-					   || cmd.action_ == LFUN_CHAR_BACKWARD_SELECT
-					   || cmd.action_ == LFUN_CHAR_FORWARD_SELECT);
+		bool select = (act == LFUN_CHAR_RIGHT_SELECT
+					   || act == LFUN_CHAR_LEFT_SELECT
+					   || act == LFUN_CHAR_BACKWARD_SELECT
+					   || act == LFUN_CHAR_FORWARD_SELECT);
 		// are we moving forward or backwards?
 		// If the command was RIGHT or LEFT, then whether we're moving forward
 		// or backwards depends on the cursor movement mode (logical or visual):
@@ -634,19 +635,19 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		bool forward;
 		FuncCode finish_lfun;
 
-		if (cmd.action_ == LFUN_CHAR_FORWARD
-				|| cmd.action_ == LFUN_CHAR_FORWARD_SELECT) {
+		if (act == LFUN_CHAR_FORWARD
+				|| act == LFUN_CHAR_FORWARD_SELECT) {
 			forward = true;
 			finish_lfun = LFUN_FINISHED_FORWARD;
 		}
-		else if (cmd.action_ == LFUN_CHAR_BACKWARD
-				|| cmd.action_ == LFUN_CHAR_BACKWARD_SELECT) {
+		else if (act == LFUN_CHAR_BACKWARD
+				|| act == LFUN_CHAR_BACKWARD_SELECT) {
 			forward = false;
 			finish_lfun = LFUN_FINISHED_BACKWARD;
 		}
 		else {
-			bool right = (cmd.action_ == LFUN_CHAR_RIGHT_SELECT
-						  || cmd.action_ == LFUN_CHAR_RIGHT);
+			bool right = (act == LFUN_CHAR_RIGHT_SELECT
+						  || act == LFUN_CHAR_RIGHT);
 			if (lyxrc.visual_cursor || !reverseDirectionNeeded(cur))
 				forward = right;
 			else
@@ -683,12 +684,12 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 
 		// stop/start the selection
-		bool select = cmd.action_ == LFUN_DOWN_SELECT ||
-			cmd.action_ == LFUN_UP_SELECT;
+		bool select = act == LFUN_DOWN_SELECT ||
+			act == LFUN_UP_SELECT;
 		cur.selHandle(select);
 
 		// go up/down
-		bool up = cmd.action_ == LFUN_UP || cmd.action_ == LFUN_UP_SELECT;
+		bool up = act == LFUN_UP || act == LFUN_UP_SELECT;
 		bool successful = cur.upDownInMath(up);
 		if (successful)
 			break;
@@ -728,9 +729,9 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_LINE_BEGIN_SELECT:
 	case LFUN_WORD_BACKWARD_SELECT:
 	case LFUN_WORD_LEFT_SELECT:
-		cur.selHandle(cmd.action_ == LFUN_WORD_BACKWARD_SELECT ||
-				cmd.action_ == LFUN_WORD_LEFT_SELECT ||
-				cmd.action_ == LFUN_LINE_BEGIN_SELECT);
+		cur.selHandle(act == LFUN_WORD_BACKWARD_SELECT ||
+				act == LFUN_WORD_LEFT_SELECT ||
+				act == LFUN_LINE_BEGIN_SELECT);
 		cur.macroModeClose();
 		if (cur.pos() != 0) {
 			cur.pos() = 0;
@@ -753,9 +754,9 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_FORWARD_SELECT:
 	case LFUN_WORD_RIGHT_SELECT:
 	case LFUN_LINE_END_SELECT:
-		cur.selHandle(cmd.action_ == LFUN_WORD_FORWARD_SELECT ||
-				cmd.action_ == LFUN_WORD_RIGHT_SELECT ||
-				cmd.action_ == LFUN_LINE_END_SELECT);
+		cur.selHandle(act == LFUN_WORD_FORWARD_SELECT ||
+				act == LFUN_WORD_RIGHT_SELECT ||
+				act == LFUN_LINE_END_SELECT);
 		cur.macroModeClose();
 		cur.clearTargetX();
 		if (cur.pos() != cur.lastpos()) {
@@ -1146,7 +1147,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_MACRO_FOLD:
 	case LFUN_MATH_MACRO_UNFOLD: {
 		Cursor it = cur;
-		bool fold = cmd.action_ == LFUN_MATH_MACRO_FOLD;
+		bool fold = act == LFUN_MATH_MACRO_FOLD;
 		bool found = findMacroToFoldUnfold(it, fold);
 		if (found) {
 			MathMacro * macro = it.nextInset()->asInsetMath()->asMacro();
@@ -1264,7 +1265,7 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 	//string tc = "mathnormal";
 	bool ret = true;
 	string const arg = to_utf8(cmd.argument());
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY:
 		flag.setEnabled(false);
 		break;
@@ -1353,7 +1354,7 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_MACRO_FOLD:
 	case LFUN_MATH_MACRO_UNFOLD: {
 		Cursor it = cur;
-		bool found = findMacroToFoldUnfold(it, cmd.action_ == LFUN_MATH_MACRO_FOLD);
+		bool found = findMacroToFoldUnfold(it, cmd.action() == LFUN_MATH_MACRO_FOLD);
 		flag.setEnabled(found);
 		break;
 	}

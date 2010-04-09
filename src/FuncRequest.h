@@ -58,18 +58,30 @@ public:
 	FuncRequest(FuncRequest const & cmd, std::string const & arg,
 		    Origin o = INTERNAL);
 
-	/// access to button
-	mouse_button::state button() const;
+	/// access the whole argument
+	docstring const & argument() const { return argument_; }
+	///
+	FuncCode action() const { return action_ ; }
+	///
+	void setAction(FuncCode act) { action_ = act; }
+	///
+	Origin origin() const { return origin_; }
+	///
+	void setOrigin(Origin o) { origin_ = o; }
+	///
+	int x() const { return x_; }
+	///
+	int y() const { return y_; }
+	///
+	void set_y(int y) { y_ = y; }
+	/// 
+	mouse_button::state button() const { return button_; }
 
 	/// argument parsing, extract argument i as std::string
 	std::string getArg(unsigned int i) const;
-
 	/// argument parsing, extract argument i as std::string,
 	/// eating all characters up to the end of the command line
 	std::string getLongArg(unsigned int i) const;
-
-	/// access the whole argument
-	docstring const & argument() const { return argument_; }
 
 	/// 
 	static FuncRequest const unknown;
@@ -78,7 +90,6 @@ public:
 private:
 	/// the action's string argument
 	docstring argument_;
-public:
 	/// the action
 	FuncCode action_;
 	/// who initiated the action

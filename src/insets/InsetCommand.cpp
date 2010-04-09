@@ -131,7 +131,7 @@ int InsetCommand::docbook(odocstream &, OutputParams const &) const
 
 void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY: {
 		if (cmd.getArg(0) == "changetype") {
 			p_.setCmdName(cmd.getArg(1));
@@ -164,7 +164,7 @@ void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	// suppress these
 	case LFUN_ERT_INSERT:
 		status.setEnabled(false);

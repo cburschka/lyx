@@ -137,7 +137,7 @@ docstring InsetFloat::toolTip(BufferView const & bv, int x, int y) const
 
 void InsetFloat::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY: {
 		InsetFloatParams params;
@@ -172,7 +172,7 @@ void InsetFloat::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetFloat::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_DIALOG_UPDATE:

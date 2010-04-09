@@ -472,7 +472,7 @@ void GuiWorkArea::processKeySym(KeySymbol const & key, KeyModifier mod)
 void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 {
 	// Handle drag&drop
-	if (cmd0.action_ == LFUN_FILE_OPEN) {
+	if (cmd0.action() == LFUN_FILE_OPEN) {
 		DispatchResult dr;
 		lyx_view_->dispatch(cmd0, dr);
 		return;
@@ -480,7 +480,7 @@ void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 
 	FuncRequest cmd;
 
-	if (cmd0.action_ == LFUN_MOUSE_PRESS) {
+	if (cmd0.action() == LFUN_MOUSE_PRESS) {
 		if (mod == ShiftModifier)
 			cmd = FuncRequest(cmd0, "region-select");
 		else if (mod == ControlModifier)
@@ -492,7 +492,7 @@ void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 		cmd = cmd0;
 
 	bool const notJustMovingTheMouse =
-		cmd.action_ != LFUN_MOUSE_MOTION || cmd.button() != mouse_button::none;
+		cmd.action() != LFUN_MOUSE_MOTION || cmd.button() != mouse_button::none;
 
 	// In order to avoid bad surprise in the middle of an operation, we better stop
 	// the blinking cursor.
@@ -502,7 +502,7 @@ void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 	buffer_view_->mouseEventDispatch(cmd);
 
 	// Skip these when selecting
-	if (cmd.action_ != LFUN_MOUSE_MOTION) {
+	if (cmd.action() != LFUN_MOUSE_MOTION) {
 		completer_->updateVisibility(false, false);
 		lyx_view_->updateDialogs();
 		lyx_view_->updateStatusBar();
@@ -776,9 +776,9 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 		// so they come at a steady rate:
 		if (e->y() <= 20)
 			// _Force_ a scroll up:
-			cmd.y_ = -40;
+			cmd.set_y(-40);
 		else
-			cmd.y_ = viewport()->height();
+			cmd.set_y(viewport()->height());
 		// Store the event, to be handled when the timeout expires.
 		synthetic_mouse_event_.cmd = cmd;
 

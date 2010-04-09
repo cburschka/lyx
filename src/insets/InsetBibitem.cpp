@@ -113,7 +113,7 @@ ParamInfo const & InsetBibitem::findInfo(string const & /* cmdName */)
 
 void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p(BIBITEM_CODE);

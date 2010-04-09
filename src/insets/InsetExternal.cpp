@@ -393,7 +393,7 @@ void InsetExternal::statusChanged() const
 
 void InsetExternal::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_INSET_EDIT: {
 		InsetExternalParams p =  params();
@@ -424,7 +424,7 @@ void InsetExternal::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetExternal::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_INSET_EDIT:
 	case LFUN_INSET_MODIFY:

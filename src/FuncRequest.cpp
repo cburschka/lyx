@@ -58,21 +58,15 @@ FuncRequest::FuncRequest(FuncCode act, int ax, int ay,
 
 
 FuncRequest::FuncRequest(FuncRequest const & cmd, docstring const & arg, Origin o)
-	: argument_(arg), action_(cmd.action_), origin_(o),
+	: argument_(arg), action_(cmd.action()), origin_(o),
 	  x_(cmd.x_), y_(cmd.y_), button_(cmd.button_)
 {}
 
 
 FuncRequest::FuncRequest(FuncRequest const & cmd, string const & arg, Origin o)
-	: argument_(from_utf8(arg)), action_(cmd.action_), origin_(o),
+	: argument_(from_utf8(arg)), action_(cmd.action()), origin_(o),
 	  x_(cmd.x_), y_(cmd.y_), button_(cmd.button_)
 {}
-
-
-mouse_button::state FuncRequest::button() const
-{
-	return button_;
-}
 
 
 namespace {
@@ -130,18 +124,18 @@ string FuncRequest::getLongArg(unsigned int i) const
 
 bool operator==(FuncRequest const & lhs, FuncRequest const & rhs)
 {
-	return lhs.action_ == rhs.action_ && lhs.argument() == rhs.argument();
+	return lhs.action() == rhs.action() && lhs.argument() == rhs.argument();
 }
 
 
 ostream & operator<<(ostream & os, FuncRequest const & cmd)
 {
 	return os
-		<< " action: " << cmd.action_ 
-		<< " [" << lyxaction.getActionName(cmd.action_) << "] " 
+		<< " action: " << cmd.action() 
+		<< " [" << lyxaction.getActionName(cmd.action()) << "] " 
 		<< " arg: '" << to_utf8(cmd.argument()) << "'"
-		<< " x: " << cmd.x_
-		<< " y: " << cmd.y_;
+		<< " x: " << cmd.x()
+		<< " y: " << cmd.y();
 }
 
 

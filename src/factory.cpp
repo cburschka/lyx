@@ -80,7 +80,7 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 {
 	try {
 
-		switch (cmd.action_) {
+		switch (cmd.action()) {
 
 		case LFUN_LINE_INSERT:
 			return new InsetLine;

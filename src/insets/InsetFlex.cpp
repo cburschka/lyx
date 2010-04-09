@@ -60,7 +60,7 @@ void InsetFlex::write(ostream & os) const
 bool InsetFlex::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_INSET_DISSOLVE:
 		if (!cmd.argument().empty()) {
 			InsetLayout const & il = getLayout();
@@ -81,7 +81,7 @@ bool InsetFlex::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetFlex::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_INSET_DISSOLVE:
 		if (!cmd.argument().empty()) {
 			InsetLayout const & il = getLayout();

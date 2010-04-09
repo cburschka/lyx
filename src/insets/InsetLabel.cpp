@@ -177,7 +177,7 @@ bool InsetLabel::getStatus(Cursor & cur, FuncRequest const & cmd,
 			   FuncStatus & status) const
 {
 	bool enabled;
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 	case LFUN_LABEL_INSERT_AS_REF:
 	case LFUN_LABEL_COPY_AS_REF:
 		enabled = true;
@@ -193,7 +193,7 @@ bool InsetLabel::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p(LABEL_CODE);

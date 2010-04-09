@@ -164,7 +164,7 @@ docstring InsetPrintNomencl::screenLabel() const
 
 void InsetPrintNomencl::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p(NOMENCL_PRINT_CODE);
@@ -189,7 +189,7 @@ void InsetPrintNomencl::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetPrintNomencl::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_INSET_DIALOG_UPDATE:
 	case LFUN_INSET_MODIFY:

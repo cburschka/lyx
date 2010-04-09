@@ -192,7 +192,7 @@ bool InsetCaption::insetAllowed(InsetCode code) const
 bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
-	switch (cmd.action_) {
+	switch (cmd.action()) {
 
 	case LFUN_BREAK_PARAGRAPH:
 		status.setEnabled(false);
