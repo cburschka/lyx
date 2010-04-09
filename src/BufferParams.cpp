@@ -737,14 +737,10 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex.eatLine();
 		string color = lex.getString();
 		notefontcolor = lyx::rgbFromHexName(color);
-		// set the font color within LyX
-		lcolor.setColor(Color_greyedouttext, color);
 	} else if (token == "\\boxbgcolor") {
 		lex.eatLine();
 		string color = lex.getString();
 		boxbgcolor = lyx::rgbFromHexName(color);
-		// set the font color within LyX
-		lcolor.setColor(Color_shadedbg, color);
 	} else if (token == "\\paperwidth") {
 		lex >> paperwidth;
 	} else if (token == "\\paperheight") {
