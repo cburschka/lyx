@@ -162,7 +162,7 @@ bool InsetInfo::validateModifyArgument(docstring const & arg) const
 	case MENU_INFO:
 	case ICON_INFO: {
 		FuncRequest func = lyxaction.lookupFunc(name);
-		return func.action != LFUN_UNKNOWN_ACTION;
+		return func.action_ != LFUN_UNKNOWN_ACTION;
 	}
 	case LYXRC_INFO: {
 		ostringstream oss;
@@ -191,7 +191,7 @@ bool InsetInfo::showInsetDialog(BufferView * bv) const
 bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
-	switch (cmd.action) {
+	switch (cmd.action_) {
 	case LFUN_INSET_SETTINGS:
 		return InsetCollapsable::getStatus(cur, cmd, flag);
 		
@@ -215,7 +215,7 @@ bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 void InsetInfo::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	// allow selection, copy but not cut, delete etc
-	switch (cmd.action) {
+	switch (cmd.action_) {
 	case LFUN_INSET_SETTINGS:
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
@@ -266,7 +266,7 @@ void InsetInfo::updateInfo()
 	case SHORTCUT_INFO:
 	case SHORTCUTS_INFO: {
 		FuncRequest func = lyxaction.lookupFunc(name_);
-		if (func.action == LFUN_UNKNOWN_ACTION) {
+		if (func.action_ == LFUN_UNKNOWN_ACTION) {
 			error("Unknown action %1$s");
 			break;
 		}
@@ -306,7 +306,7 @@ void InsetInfo::updateInfo()
 	case MENU_INFO: {
 		docstring_list names;
 		FuncRequest func = lyxaction.lookupFunc(name_);
-		if (func.action == LFUN_UNKNOWN_ACTION) {
+		if (func.action_ == LFUN_UNKNOWN_ACTION) {
 			error("Unknown action %1$s");
 			break;
 		}

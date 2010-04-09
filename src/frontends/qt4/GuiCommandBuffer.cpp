@@ -357,7 +357,7 @@ void GuiCommandBuffer::dispatch(string const & str)
 	upPB->setEnabled(history_pos_ != history_.begin());
 	downPB->setEnabled(history_pos_ != history_.end());
 	FuncRequest func = lyxaction.lookupFunc(str);
-	func.origin = FuncRequest::COMMANDBUFFER;
+	func.origin_ = FuncRequest::COMMANDBUFFER;
 	lyx::dispatch(func);
 }
 

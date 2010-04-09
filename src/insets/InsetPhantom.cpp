@@ -256,7 +256,7 @@ bool InsetPhantom::showInsetDialog(BufferView * bv) const
 
 void InsetPhantom::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action) {
+	switch (cmd.action_) {
 
 	case LFUN_INSET_MODIFY:
 		string2params(to_utf8(cmd.argument()), params_);
@@ -276,7 +276,7 @@ void InsetPhantom::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetPhantom::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
-	switch (cmd.action) {
+	switch (cmd.action_) {
 
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "phantom") {

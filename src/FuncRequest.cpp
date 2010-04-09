@@ -29,43 +29,43 @@ FuncRequest const FuncRequest::unknown(LFUN_UNKNOWN_ACTION);
 FuncRequest const FuncRequest::noaction(LFUN_NOACTION);
 
 FuncRequest::FuncRequest(Origin o)
-	: action(LFUN_NOACTION), origin(o), x(0), y(0),
+	: action_(LFUN_NOACTION), origin_(o), x_(0), y_(0),
 	  button_(mouse_button::none)
 {}
 
 
 FuncRequest::FuncRequest(FuncCode act, Origin o)
-	: action(act), origin(o), x(0), y(0), button_(mouse_button::none)
+	: action_(act), origin_(o), x_(0), y_(0), button_(mouse_button::none)
 {}
 
 
 FuncRequest::FuncRequest(FuncCode act, docstring const & arg, Origin o)
-	: action(act), argument_(arg), origin(o), x(0), y(0),
+	: argument_(arg), action_(act), origin_(o), x_(0), y_(0),
 	  button_(mouse_button::none)
 {}
 
 
 FuncRequest::FuncRequest(FuncCode act, string const & arg, Origin o)
-	: action(act), argument_(from_utf8(arg)), origin(o), x(0), y(0),
+	: argument_(from_utf8(arg)), action_(act), origin_(o), x_(0), y_(0),
 	  button_(mouse_button::none)
 {}
 
 
 FuncRequest::FuncRequest(FuncCode act, int ax, int ay,
 			 mouse_button::state but, Origin o)
-	: action(act), origin(o), x(ax), y(ay), button_(but)
+	: action_(act), origin_(o), x_(ax), y_(ay), button_(but)
 {}
 
 
 FuncRequest::FuncRequest(FuncRequest const & cmd, docstring const & arg, Origin o)
-	: action(cmd.action), argument_(arg), origin(o),
-	  x(cmd.x), y(cmd.y), button_(cmd.button_)
+	: argument_(arg), action_(cmd.action_), origin_(o),
+	  x_(cmd.x_), y_(cmd.y_), button_(cmd.button_)
 {}
 
 
 FuncRequest::FuncRequest(FuncRequest const & cmd, string const & arg, Origin o)
-	: action(cmd.action), argument_(from_utf8(arg)), origin(o),
-	  x(cmd.x), y(cmd.y), button_(cmd.button_)
+	: argument_(from_utf8(arg)), action_(cmd.action_), origin_(o),
+	  x_(cmd.x_), y_(cmd.y_), button_(cmd.button_)
 {}
 
 
@@ -130,18 +130,18 @@ string FuncRequest::getLongArg(unsigned int i) const
 
 bool operator==(FuncRequest const & lhs, FuncRequest const & rhs)
 {
-	return lhs.action == rhs.action && lhs.argument() == rhs.argument();
+	return lhs.action_ == rhs.action_ && lhs.argument() == rhs.argument();
 }
 
 
 ostream & operator<<(ostream & os, FuncRequest const & cmd)
 {
 	return os
-		<< " action: " << cmd.action 
-		<< " [" << lyxaction.getActionName(cmd.action) << "] " 
+		<< " action: " << cmd.action_ 
+		<< " [" << lyxaction.getActionName(cmd.action_) << "] " 
 		<< " arg: '" << to_utf8(cmd.argument()) << "'"
-		<< " x: " << cmd.x
-		<< " y: " << cmd.y;
+		<< " x: " << cmd.x_
+		<< " y: " << cmd.y_;
 }
 
 

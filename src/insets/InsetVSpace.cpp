@@ -55,7 +55,7 @@ InsetVSpace::InsetVSpace(VSpace const & space)
 
 void InsetVSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action) {
+	switch (cmd.action_) {
 
 	case LFUN_INSET_MODIFY: {
 		InsetVSpace::string2params(to_utf8(cmd.argument()), space_);
@@ -72,7 +72,7 @@ void InsetVSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetVSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
-	switch (cmd.action) {
+	switch (cmd.action_) {
 	// we handle these
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "vspace") {

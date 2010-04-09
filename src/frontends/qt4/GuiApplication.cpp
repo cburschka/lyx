@@ -313,7 +313,7 @@ QString iconName(FuncRequest const & f, bool unknown)
 	QString name1;
 	QString name2;
 	QString path;
-	switch (f.action) {
+	switch (f.action_) {
 	case LFUN_MATH_INSERT:
 		if (!f.argument().empty()) {
 			path = "math/";
@@ -353,7 +353,7 @@ QString iconName(FuncRequest const & f, bool unknown)
 		}
 	}
 	default:
-		name2 = toqstr(lyxaction.getActionName(f.action));
+		name2 = toqstr(lyxaction.getActionName(f.action_));
 		name1 = name2;
 
 		if (!f.argument().empty()) {
@@ -390,7 +390,7 @@ QString iconName(FuncRequest const & f, bool unknown)
 			   << " or filename "
 			   << "\"" << name2 << "\"" 
 			   << " for command \""
-			   << lyxaction.getActionName(f.action)
+			   << lyxaction.getActionName(f.action_)
 			   << '(' << to_utf8(f.argument()) << ")\"");
 
 	if (unknown) {
@@ -856,13 +856,13 @@ FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 {
 	FuncStatus flag;
 
-	if (cmd.action == LFUN_NOACTION) {
+	if (cmd.action_ == LFUN_NOACTION) {
 		flag.message(from_utf8(N_("Nothing to do")));
 		flag.setEnabled(false);
 		return flag;
 	}
 
-	if (cmd.action == LFUN_UNKNOWN_ACTION) {
+	if (cmd.action_ == LFUN_UNKNOWN_ACTION) {
 		flag.unknown(true);
 		flag.setEnabled(false);
 		flag.message(from_utf8(N_("Unknown action")));
@@ -874,7 +874,7 @@ FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 	// -- And I'd rather let an inset decide which LFUNs it is willing
 	// to handle (Andre')
 	bool enable = true;
-	switch (cmd.action) {
+	switch (cmd.action_) {
 
 	// This could be used for the no-GUI version. The GUI version is handled in
 	// GuiView::getStatus(). See above.
@@ -903,7 +903,7 @@ FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 		// argument contains ';'-terminated commands
 		string const firstcmd = token(to_utf8(cmd.argument()), ';', 0);
 		FuncRequest func(lyxaction.lookupFunc(firstcmd));
-		func.origin = cmd.origin;
+		func.origin_ = cmd.origin_;
 		flag = getStatus(func);
 		break;
 	}
@@ -916,7 +916,7 @@ FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 			string first;
 			arg = split(arg, first, ';');
 			FuncRequest func(lyxaction.lookupFunc(first));
-			func.origin = cmd.origin;
+			func.origin_ = cmd.origin_;
 			flag = getStatus(func);
 			// if this one is enabled, the whole thing is
 			if (flag.enabled())
@@ -929,7 +929,7 @@ FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 		FuncRequest func;
 		string name = to_utf8(cmd.argument());
 		if (theTopLevelCmdDef().lock(name, func)) {
-			func.origin = cmd.origin;
+			func.origin_ = cmd.origin_;
 			flag = getStatus(func);
 			theTopLevelCmdDef().release(name);
 		} else {
@@ -989,7 +989,7 @@ FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 		// entries that are buffer or view-related.
 		//FIXME: Abdel (09/02/10) This has very bad effect on Linux, don't know why...
 		/*
-		if (cmd.origin == FuncRequest::MENU && !current_view_->hasFocus()) {
+		if (cmd.origin_ == FuncRequest::MENU && !current_view_->hasFocus()) {
 			enable = false;
 			break;
 		}
@@ -1026,11 +1026,11 @@ FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 static docstring makeDispatchMessage(docstring const & msg,
 				     FuncRequest const & cmd)
 {
-	const bool verbose = (cmd.origin == FuncRequest::MENU
-			      || cmd.origin == FuncRequest::TOOLBAR
-			      || cmd.origin == FuncRequest::COMMANDBUFFER);
+	const bool verbose = (cmd.origin_ == FuncRequest::MENU
+			      || cmd.origin_ == FuncRequest::TOOLBAR
+			      || cmd.origin_ == FuncRequest::COMMANDBUFFER);
 
-	if (cmd.action == LFUN_SELF_INSERT || !verbose) {
+	if (cmd.action_ == LFUN_SELF_INSERT || !verbose) {
 		LYXERR(Debug::ACTION, "dispatch msg is " << msg);
 		return msg;
 	}
@@ -1039,12 +1039,12 @@ static docstring makeDispatchMessage(docstring const & msg,
 	if (!dispatch_msg.empty())
 		dispatch_msg += ' ';
 
-	docstring comname = from_utf8(lyxaction.getActionName(cmd.action));
+	docstring comname = from_utf8(lyxaction.getActionName(cmd.action_));
 
 	bool argsadded = false;
 
 	if (!cmd.argument().empty()) {
-		if (cmd.action != LFUN_UNKNOWN_ACTION) {
+		if (cmd.action_ != LFUN_UNKNOWN_ACTION) {
 			comname += ' ' + cmd.argument();
 			argsadded = true;
 		}
@@ -1197,7 +1197,7 @@ void GuiApplication::reconfigure(string const & option)
 void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 {
 	string const argument = to_utf8(cmd.argument());
-	FuncCode const action = cmd.action;
+	FuncCode const action = cmd.action_;
 
 	LYXERR(Debug::ACTION, "cmd: " << cmd);
 
@@ -1222,7 +1222,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	// Assumes that the action will be dispatched.
 	dr.dispatched(true);
 
-	switch (cmd.action) {
+	switch (cmd.action_) {
 
 	case LFUN_WINDOW_NEW:
 		createView(toqstr(cmd.argument()));
@@ -1459,7 +1459,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			string first;
 			arg = split(arg, first, ';');
 			FuncRequest func(lyxaction.lookupFunc(first));
-			func.origin = cmd.origin;
+			func.origin_ = cmd.origin_;
 			dispatch(func);
 		}
 		// the buffer may have been closed by one action
@@ -1475,7 +1475,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			string first;
 			arg = split(arg, first, ';');
 			FuncRequest func(lyxaction.lookupFunc(first));
-			func.origin = cmd.origin;
+			func.origin_ = cmd.origin_;
 			FuncStatus stat = getStatus(func);
 			if (stat.enabled()) {
 				dispatch(func);
@@ -1488,11 +1488,11 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_CALL: {
 		FuncRequest func;
 		if (theTopLevelCmdDef().lock(argument, func)) {
-			func.origin = cmd.origin;
+			func.origin_ = cmd.origin_;
 			dispatch(func);
 			theTopLevelCmdDef().release(argument);
 		} else {
-			if (func.action == LFUN_UNKNOWN_ACTION) {
+			if (func.action_ == LFUN_UNKNOWN_ACTION) {
 				// unknown command definition
 				lyxerr << "Warning: unknown command definition `"
 						<< argument << "'"
@@ -1606,11 +1606,11 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// update completion. We do it here and not in
 		// processKeySym to avoid another redraw just for a
 		// changed inline completion
-		if (cmd.origin == FuncRequest::KEYBOARD) {
-			if (cmd.action == LFUN_SELF_INSERT
-					|| (cmd.action == LFUN_ERT_INSERT && bv->cursor().inMathed()))
+		if (cmd.origin_ == FuncRequest::KEYBOARD) {
+			if (cmd.action_ == LFUN_SELF_INSERT
+					|| (cmd.action_ == LFUN_ERT_INSERT && bv->cursor().inMathed()))
 				current_view_->updateCompletion(bv->cursor(), true, true);
-			else if (cmd.action == LFUN_CHAR_DELETE_BACKWARD)
+			else if (cmd.action_ == LFUN_CHAR_DELETE_BACKWARD)
 				current_view_->updateCompletion(bv->cursor(), false, true);
 			else
 				current_view_->updateCompletion(bv->cursor(), false, false);
@@ -1691,25 +1691,25 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	d->cancel_meta_seq.reset();
 
 	FuncRequest func = d->cancel_meta_seq.addkey(keysym, state);
-	LYXERR(Debug::KEY, "action first set to [" << func.action << ']');
+	LYXERR(Debug::KEY, "action first set to [" << func.action_ << ']');
 
 	// When not cancel or meta-fake, do the normal lookup.
 	// Note how the meta_fake Mod1 bit is OR-ed in and reset afterwards.
 	// Mostly, meta_fake_bit = NoModifier. RVDK_PATCH_5.
-	if ((func.action != LFUN_CANCEL) && (func.action != LFUN_META_PREFIX)) {
+	if ((func.action_ != LFUN_CANCEL) && (func.action_ != LFUN_META_PREFIX)) {
 		// remove Caps Lock and Mod2 as a modifiers
 		func = d->keyseq.addkey(keysym, (state | d->meta_fake_bit));
-		LYXERR(Debug::KEY, "action now set to [" << func.action << ']');
+		LYXERR(Debug::KEY, "action now set to [" << func.action_ << ']');
 	}
 
 	// Dont remove this unless you know what you are doing.
 	d->meta_fake_bit = NoModifier;
 
 	// Can this happen now ?
-	if (func.action == LFUN_NOACTION)
+	if (func.action_ == LFUN_NOACTION)
 		func = FuncRequest(LFUN_COMMAND_PREFIX);
 
-	LYXERR(Debug::KEY, " Key [action=" << func.action << "]["
+	LYXERR(Debug::KEY, " Key [action=" << func.action_ << "]["
 		<< d->keyseq.print(KeySequence::Portable) << ']');
 
 	// already here we know if it any point in going further
@@ -1722,13 +1722,13 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 
 	// Maybe user can only reach the key via holding down shift.
 	// Let's see. But only if shift is the only modifier
-	if (func.action == LFUN_UNKNOWN_ACTION && state == ShiftModifier) {
+	if (func.action_ == LFUN_UNKNOWN_ACTION && state == ShiftModifier) {
 		LYXERR(Debug::KEY, "Trying without shift");
 		func = d->keyseq.addkey(keysym, NoModifier);
-		LYXERR(Debug::KEY, "Action now " << func.action);
+		LYXERR(Debug::KEY, "Action now " << func.action_);
 	}
 
-	if (func.action == LFUN_UNKNOWN_ACTION) {
+	if (func.action_ == LFUN_UNKNOWN_ACTION) {
 		// Hmm, we didn't match any of the keysequences. See
 		// if it's normal insertable text not already covered
 		// by a binding
@@ -1744,7 +1744,7 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 		}
 	}
 
-	if (func.action == LFUN_SELF_INSERT) {
+	if (func.action_ == LFUN_SELF_INSERT) {
 		if (encoded_last_key != 0) {
 			docstring const arg(1, encoded_last_key);
 			lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, arg,

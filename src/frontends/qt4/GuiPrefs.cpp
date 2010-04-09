@@ -2562,7 +2562,7 @@ void PrefShortcuts::setItemType(QTreeWidgetItem * item, KeyMap::ItemType tag)
 QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 		KeySequence const & seq, KeyMap::ItemType tag)
 {
-	FuncCode action = lfun.action;
+	FuncCode action = lfun.action_;
 	string const action_name = lyxaction.getActionName(action);
 	QString const lfun_name = toqstr(from_utf8(action_name)
 			+ ' ' + lfun.argument());
@@ -2776,7 +2776,7 @@ void PrefShortcuts::on_searchLE_textEdited()
 
 docstring makeCmdString(FuncRequest const & f)
 {
-	docstring actionStr = from_ascii(lyxaction.getActionName(f.action));
+	docstring actionStr = from_ascii(lyxaction.getActionName(f.action_));
 	if (!f.argument().empty())
 		actionStr += " " + f.argument();
 	return actionStr;
@@ -2788,7 +2788,7 @@ void PrefShortcuts::shortcutOkPressed()
 	QString const new_lfun = shortcut_->lfunLE->text();
 	FuncRequest func = lyxaction.lookupFunc(fromqstr(new_lfun));
 
-	if (func.action == LFUN_UNKNOWN_ACTION) {
+	if (func.action_ == LFUN_UNKNOWN_ACTION) {
 		Alert::error(_("Failed to create shortcut"),
 			_("Unknown or invalid LyX function"));
 		return;
@@ -2803,16 +2803,16 @@ void PrefShortcuts::shortcutOkPressed()
 
 	// check to see if there's been any change
 	FuncRequest oldBinding = system_bind_.getBinding(k);
-	if (oldBinding.action == LFUN_UNKNOWN_ACTION)
+	if (oldBinding.action_ == LFUN_UNKNOWN_ACTION)
 		oldBinding = user_bind_.getBinding(k);
 	if (oldBinding == func)
 		// nothing has changed
 		return;
 	
 	// make sure this key isn't already bound---and, if so, not unbound
-	FuncCode const unbind = user_unbind_.getBinding(k).action;
+	FuncCode const unbind = user_unbind_.getBinding(k).action_;
 	docstring const action_string = makeCmdString(oldBinding);
-	if (oldBinding.action > LFUN_NOACTION && unbind == LFUN_UNKNOWN_ACTION
+	if (oldBinding.action_ > LFUN_NOACTION && unbind == LFUN_UNKNOWN_ACTION
 		  && save_lfun_ != toqstr(action_string)) {
 		// FIXME Perhaps we should offer to over-write the old shortcut?
 		// If so, we'll need to remove it from our list, etc.

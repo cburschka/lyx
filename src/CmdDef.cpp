@@ -163,8 +163,8 @@ CmdDef::newCmdDefResult CmdDef::newCmdDef(string const & name,
 		return CmdDefExists;
 
 	FuncRequest	func = lyxaction.lookupFunc(def);
-	if (func.action == LFUN_NOACTION
-		|| func.action == LFUN_UNKNOWN_ACTION) {
+	if (func.action_ == LFUN_NOACTION
+		|| func.action_ == LFUN_UNKNOWN_ACTION) {
 			return CmdDefInvalid;
 	}
 

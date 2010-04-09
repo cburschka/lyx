@@ -55,7 +55,7 @@ ToolbarItem::ToolbarItem(Type type, string const & name, docstring const & label
 void ToolbarInfo::add(ToolbarItem const & item)
 {
 	items.push_back(item);
-	items.back().func_.origin = FuncRequest::TOOLBAR;
+	items.back().func_.origin_ = FuncRequest::TOOLBAR;
 }
 
 

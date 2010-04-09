@@ -285,7 +285,7 @@ docstring const replace2string(docstring const & replace,
 
 bool find(BufferView * bv, FuncRequest const & ev)
 {
-	if (!bv || ev.action != LFUN_WORD_FIND)
+	if (!bv || ev.action_ != LFUN_WORD_FIND)
 		return false;
 
 	//lyxerr << "find called, cmd: " << ev << endl;
@@ -306,7 +306,7 @@ bool find(BufferView * bv, FuncRequest const & ev)
 
 void replace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
 {
-	if (!bv || ev.action != LFUN_WORD_REPLACE)
+	if (!bv || ev.action_ != LFUN_WORD_REPLACE)
 		return;
 
 	// data is of the form

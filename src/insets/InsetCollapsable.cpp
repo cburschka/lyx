@@ -405,7 +405,7 @@ bool InsetCollapsable::descendable(BufferView const & bv) const
 
 bool InsetCollapsable::hitButton(FuncRequest const & cmd) const
 {
-	return button_dim.contains(cmd.x, cmd.y);
+	return button_dim.contains(cmd.x_, cmd.y_);
 }
 
 
@@ -455,7 +455,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 	//lyxerr << "InsetCollapsable::doDispatch (begin): cmd: " << cmd
 	//	<< " cur: " << cur << " bvcur: " << cur.bv().cursor() << endl;
 
-	switch (cmd.action) {
+	switch (cmd.action_) {
 	case LFUN_MOUSE_PRESS:
 		if (hitButton(cmd)) {
 			switch (cmd.button()) {
@@ -548,7 +548,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
-	switch (cmd.action) {
+	switch (cmd.action_) {
 	case LFUN_INSET_TOGGLE:
 		if (cmd.argument() == "open")
 			flag.setEnabled(status_ != Open);

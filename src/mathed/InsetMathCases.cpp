@@ -70,7 +70,7 @@ void InsetMathCases::draw(PainterInfo & pi, int x, int y) const
 void InsetMathCases::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "*** InsetMathCases: request: " << cmd << endl;
-	switch (cmd.action) {
+	switch (cmd.action_) {
 	case LFUN_INSET_MODIFY: {
 		istringstream is(to_utf8(cmd.argument()));
 		string s;
@@ -96,7 +96,7 @@ void InsetMathCases::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetMathCases::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
-	switch (cmd.action) {
+	switch (cmd.action_) {
 	case LFUN_INSET_MODIFY: {
 		istringstream is(to_utf8(cmd.argument()));
 		string s;

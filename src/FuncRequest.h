@@ -75,19 +75,18 @@ public:
 	static FuncRequest const unknown;
 	/// 
 	static FuncRequest const noaction;
-public:  // should be private
-	/// the action
-	FuncCode action;
 private:
 	/// the action's string argument
 	docstring argument_;
-public:  // should be private
+public:
+	/// the action
+	FuncCode action_;
 	/// who initiated the action
-	Origin origin;
+	Origin origin_;
 	/// the x coordinate of a mouse press
-	int x;
+	int x_;
 	/// the y coordinate of a mouse press
-	int y;
+	int y_;
 	/// some extra information (like button number)
 	mouse_button::state button_;
 };

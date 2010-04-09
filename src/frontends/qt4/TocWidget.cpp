@@ -139,7 +139,7 @@ bool TocWidget::getStatus(Cursor & cur, FuncRequest const & cmd,
 	TocItem const & item =
 		gui_view_.tocModels().currentItem(current_type_, index);
 
-	switch (cmd.action)
+	switch (cmd.action_)
 	{
 	case LFUN_CHANGE_ACCEPT:
 	case LFUN_CHANGE_REJECT:
@@ -179,7 +179,7 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 	// Start an undo group.
 	cur.beginUndoGroup();
 
-	switch (cmd.action)
+	switch (cmd.action_)
 	{
 	case LFUN_CHANGE_ACCEPT:
 	case LFUN_CHANGE_REJECT:
@@ -200,7 +200,7 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 	case LFUN_OUTLINE_DOWN:
 	case LFUN_OUTLINE_IN:
 	case LFUN_OUTLINE_OUT:
-		outline(cmd.action);
+		outline(cmd.action_);
 		break;
 
 	default:

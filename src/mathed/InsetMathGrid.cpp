@@ -1126,7 +1126,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	Parse::flags parseflg = Parse::QUIET | Parse::USETEXT;
 
-	switch (cmd.action) {
+	switch (cmd.action_) {
 
 	// insert file functions
 	case LFUN_LINE_DELETE:
@@ -1379,9 +1379,9 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_BACKWARD:
 	case LFUN_WORD_LEFT_SELECT:
 	case LFUN_WORD_LEFT:
-		cur.selHandle(cmd.action == LFUN_WORD_BACKWARD_SELECT ||
-				cmd.action == LFUN_WORD_LEFT_SELECT ||
-				cmd.action == LFUN_LINE_BEGIN_SELECT);
+		cur.selHandle(cmd.action_ == LFUN_WORD_BACKWARD_SELECT ||
+				cmd.action_ == LFUN_WORD_LEFT_SELECT ||
+				cmd.action_ == LFUN_LINE_BEGIN_SELECT);
 		cur.macroModeClose();
 		if (cur.pos() != 0) {
 			cur.pos() = 0;
@@ -1403,9 +1403,9 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_RIGHT:
 	case LFUN_LINE_END_SELECT:
 	case LFUN_LINE_END:
-		cur.selHandle(cmd.action == LFUN_WORD_FORWARD_SELECT ||
-				cmd.action == LFUN_WORD_RIGHT_SELECT ||
-				cmd.action == LFUN_LINE_END_SELECT);
+		cur.selHandle(cmd.action_ == LFUN_WORD_FORWARD_SELECT ||
+				cmd.action_ == LFUN_WORD_RIGHT_SELECT ||
+				cmd.action_ == LFUN_LINE_END_SELECT);
 		cur.macroModeClose();
 		cur.clearTargetX();
 		if (cur.pos() != cur.lastpos()) {
@@ -1431,7 +1431,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const
 {
-	switch (cmd.action) {
+	switch (cmd.action_) {
 	case LFUN_INSET_MODIFY: {
 		istringstream is(to_utf8(cmd.argument()));
 		string s;

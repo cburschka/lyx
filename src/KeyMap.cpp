@@ -59,7 +59,7 @@ string const KeyMap::printKeySym(KeySymbol const & key, KeyModifier mod)
 size_t KeyMap::bind(string const & seq, FuncRequest const & func)
 {
 	LYXERR(Debug::KBMAP, "BIND: Sequence `" << seq << "' Action `"
-	       << func.action << '\'');
+	       << func.action_ << '\'');
 
 	KeySequence k(0, 0);
 
@@ -113,7 +113,7 @@ void KeyMap::bind(KeySequence * seq, FuncRequest const & func, unsigned int r)
 					it->prefixes.reset();
 				}
 				it->func = func;
-				it->func.origin = FuncRequest::KEYBOARD;
+				it->func.origin_ = FuncRequest::KEYBOARD;
 				return;
 			} else if (!it->prefixes.get()) {
 				lyxerr << "Error: New binding for '"
@@ -133,7 +133,7 @@ void KeyMap::bind(KeySequence * seq, FuncRequest const & func, unsigned int r)
 	newone->mod = seq->modifiers[r];
 	if (r + 1 == seq->length()) {
 		newone->func = func;
-		newone->func.origin = FuncRequest::KEYBOARD;
+		newone->func.origin_ = FuncRequest::KEYBOARD;
 		newone->prefixes.reset();
 	} else {
 		newone->prefixes.reset(new KeyMap);
@@ -296,7 +296,7 @@ bool KeyMap::read(FileName const & bind_file, KeyMap * unbind_map)
 			string cmd = lexrc.getString();
 
 			FuncRequest func = lyxaction.lookupFunc(cmd);
-			if (func.action == LFUN_UNKNOWN_ACTION) {
+			if (func.action_ == LFUN_UNKNOWN_ACTION) {
 				lexrc.printError("BN_BIND: Unknown LyX function `$$Token'");
 				error = true;
 				break;
@@ -322,7 +322,7 @@ bool KeyMap::read(FileName const & bind_file, KeyMap * unbind_map)
 			string cmd = lexrc.getString();
 
 			FuncRequest func = lyxaction.lookupFunc(cmd);
-			if (func.action == LFUN_UNKNOWN_ACTION) {
+			if (func.action_ == LFUN_UNKNOWN_ACTION) {
 				lexrc.printError("BN_UNBIND: Unknown LyX"
 						 " function `$$Token'");
 				error = true;
@@ -368,7 +368,7 @@ void KeyMap::write(string const & bind_file, bool append, bool unbind) const
 	BindingList::const_iterator it = list.begin();
 	BindingList::const_iterator it_end = list.end();
 	for (; it != it_end; ++it) {
-		FuncCode action = it->request.action;
+		FuncCode action = it->request.action_;
 		string arg = to_utf8(it->request.argument());
 
 		os << tag << " \""
@@ -493,7 +493,7 @@ KeyMap::BindingList KeyMap::listBindings(bool unbound, KeyMap::ItemType tag) con
 			BindingList::const_iterator bit = list.begin();
 			BindingList::const_iterator const ben = list.end();
 			for (; bit != ben; ++bit)
-				if (bit->request.action == action) {
+				if (bit->request.action_ == action) {
 					has_action = true;
 					break;
 				}

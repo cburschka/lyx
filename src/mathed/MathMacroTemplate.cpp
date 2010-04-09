@@ -974,7 +974,7 @@ void MathMacroTemplate::makeNonOptional(Cursor & cur,
 void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	string const arg = to_utf8(cmd.argument());
-	switch (cmd.action) {
+	switch (cmd.action_) {
 
 	case LFUN_MATH_MACRO_ADD_PARAM:
 		if (numargs_ < 9) {
@@ -1064,7 +1064,7 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 {
 	bool ret = true;
 	string const arg = to_utf8(cmd.argument());
-	switch (cmd.action) {
+	switch (cmd.action_) {
 		case LFUN_MATH_MACRO_ADD_PARAM: {
 			int num = numargs_ + 1;
 			if (arg.size() != 0)

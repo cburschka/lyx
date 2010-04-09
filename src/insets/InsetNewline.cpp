@@ -90,7 +90,7 @@ void InsetNewline::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetNewline::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action) {
+	switch (cmd.action_) {
 
 	case LFUN_INSET_MODIFY: {
 		InsetNewlineParams params;
@@ -109,7 +109,7 @@ void InsetNewline::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetNewline::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
-	switch (cmd.action) {
+	switch (cmd.action_) {
 	// we handle these
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "newline") {

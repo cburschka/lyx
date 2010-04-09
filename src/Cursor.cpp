@@ -286,7 +286,7 @@ bool Cursor::getStatus(FuncRequest const & cmd, FuncStatus & status) const
 
 	// Is this a function that acts on inset at point?
 	Inset * inset = cur.nextInset();
-	if (lyxaction.funcHasFlag(cmd.action, LyXAction::AtPoint)
+	if (lyxaction.funcHasFlag(cmd.action_, LyXAction::AtPoint)
 	    && inset && inset->getStatus(cur, cmd, status))
 		return true;
 
@@ -333,7 +333,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	buffer()->undo().beginUndoGroup();
 	
 	// Is this a function that acts on inset at point?
-	if (lyxaction.funcHasFlag(cmd.action, LyXAction::AtPoint)
+	if (lyxaction.funcHasFlag(cmd.action_, LyXAction::AtPoint)
 	    && nextInset()) {
 		result().dispatched(true);
 		result().update(Update::FitCursor | Update::Force);

@@ -114,7 +114,7 @@ ColorCode InsetBranch::backgroundColor(PainterInfo const & pi) const
 
 void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action) {
+	switch (cmd.action_) {
 	case LFUN_INSET_MODIFY: {
 		InsetBranchParams params;
 		InsetBranch::string2params(to_utf8(cmd.argument()), params);
@@ -133,7 +133,7 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 			if (!our_branch)
 				break;
 		}
-		our_branch->setSelected(cmd.action == LFUN_BRANCH_ACTIVATE);
+		our_branch->setSelected(cmd.action_ == LFUN_BRANCH_ACTIVATE);
 		break;
 	}
 	case LFUN_INSET_TOGGLE:
@@ -153,7 +153,7 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
-	switch (cmd.action) {
+	switch (cmd.action_) {
 	case LFUN_INSET_MODIFY:
 		flag.setEnabled(true);
 		break;

@@ -3050,7 +3050,7 @@ bool InsetTableCell::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	bool enabled;
-	switch (cmd.action) {
+	switch (cmd.action_) {
 	case LFUN_LAYOUT:
 		enabled = !forcePlainLayout();
 		break;
@@ -3505,14 +3505,14 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	CursorSlice sl = cur.top();
 	Cursor & bvcur = cur.bv().cursor();
 
-	switch (cmd.action) {
+	switch (cmd.action_) {
 
 	case LFUN_MOUSE_PRESS: {
 		//lyxerr << "# InsetTabular::MousePress\n" << cur.bv().cursor() << endl;
 		// select row
-		if (cmd.x < xo(cur.bv()) + ADD_TO_TABULAR_WIDTH
-			|| cmd.x > xo(cur.bv()) + tabular.width()) {
-			row_type r = rowFromY(cur, cmd.y);
+		if (cmd.x_ < xo(cur.bv()) + ADD_TO_TABULAR_WIDTH
+			|| cmd.x_ > xo(cur.bv()) + tabular.width()) {
+			row_type r = rowFromY(cur, cmd.y_);
 			cur.idx() = tabular.getFirstCellInRow(r);
 			cur.pos() = 0;
 			cur.resetAnchor();
@@ -3525,9 +3525,9 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		// select column
 		int const y0 = yo(cur.bv()) - tabular.rowAscent(0);
-		if (cmd.y < y0 + ADD_TO_TABULAR_WIDTH 
-			|| cmd.y > y0 + tabular.height()) {
-			col_type c = columnFromX(cur, cmd.x);
+		if (cmd.y_ < y0 + ADD_TO_TABULAR_WIDTH 
+			|| cmd.y_ > y0 + tabular.height()) {
+			col_type c = columnFromX(cur, cmd.x_);
 			cur.idx() = tabular.cellIndex(0, c);
 			cur.pos() = 0;
 			cur.resetAnchor();
@@ -3559,7 +3559,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			}
 			// select (additional) row
 			if (rowselect_) {
-				row_type r = rowFromY(cur, cmd.y);
+				row_type r = rowFromY(cur, cmd.y_);
 				cur.idx() = tabular.getLastCellInRow(r);
 				// we need to reset the cursor's pit and pos now, as the old ones
 				// may no longer be valid.
@@ -3571,7 +3571,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			}
 			// select (additional) column
 			if (colselect_) {
-				col_type c = columnFromX(cur, cmd.x);
+				col_type c = columnFromX(cur, cmd.x_);
 				cur.idx() = tabular.cellIndex(tabular.nrows() - 1, c);
 				// we need to reset the cursor's pit and pos now, as the old ones
 				// may no longer be valid.
@@ -3585,7 +3585,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			if (bvcur.idx() == cur.idx() &&
 				!(bvcur.anchor_.idx() == cur.idx() && bvcur.pos() != cur.pos()))
 				cur.noUpdate();
-			setCursorFromCoordinates(cur, cmd.x, cmd.y);
+			setCursorFromCoordinates(cur, cmd.x_, cmd.y_);
 			bvcur.setCursor(cur);
 			bvcur.setSelection(true);
 			// if this is a multicell selection, we just set the cursor to
@@ -3627,21 +3627,21 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE;
 		FuncCode finish_lfun;
 
-		if (cmd.action == LFUN_CHAR_FORWARD 
-				|| cmd.action == LFUN_CHAR_FORWARD_SELECT) {
+		if (cmd.action_ == LFUN_CHAR_FORWARD 
+				|| cmd.action_ == LFUN_CHAR_FORWARD_SELECT) {
 			next_cell = true;
 			finish_lfun = LFUN_FINISHED_FORWARD;
 		}
-		else if (cmd.action == LFUN_CHAR_BACKWARD
-				|| cmd.action == LFUN_CHAR_BACKWARD_SELECT) {
+		else if (cmd.action_ == LFUN_CHAR_BACKWARD
+				|| cmd.action_ == LFUN_CHAR_BACKWARD_SELECT) {
 			next_cell = false;
 			finish_lfun = LFUN_FINISHED_BACKWARD;
 		}
 		// LEFT or RIGHT commands --- the interpretation will depend on the 
 		// table's direction.
 		else {
-			bool const right = cmd.action == LFUN_CHAR_RIGHT
-				|| cmd.action == LFUN_CHAR_RIGHT_SELECT;
+			bool const right = cmd.action_ == LFUN_CHAR_RIGHT
+				|| cmd.action_ == LFUN_CHAR_RIGHT_SELECT;
 			next_cell = isRightToLeft(cur) != right;
 			
 			if (lyxrc.visual_cursor)
@@ -3650,10 +3650,10 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			finish_lfun = right ? LFUN_FINISHED_RIGHT : LFUN_FINISHED_LEFT;
 		}
 
-		bool const select = cmd.action == LFUN_CHAR_FORWARD_SELECT ||
-		    cmd.action == LFUN_CHAR_BACKWARD_SELECT ||
-		    cmd.action == LFUN_CHAR_RIGHT_SELECT ||
-		    cmd.action == LFUN_CHAR_LEFT_SELECT;
+		bool const select = cmd.action_ == LFUN_CHAR_FORWARD_SELECT ||
+		    cmd.action_ == LFUN_CHAR_BACKWARD_SELECT ||
+		    cmd.action_ == LFUN_CHAR_RIGHT_SELECT ||
+		    cmd.action_ == LFUN_CHAR_LEFT_SELECT;
 
 		// If we have a multicell selection or we're 
 		// not doing some LFUN_*_SELECT thing anyway...
@@ -3715,7 +3715,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// if our Text didn't do anything to the cursor
 			// then we try to put the cursor into the cell below
 			// setting also the right targetX.
-			cur.selHandle(cmd.action == LFUN_DOWN_SELECT);
+			cur.selHandle(cmd.action_ == LFUN_DOWN_SELECT);
 			if (tabular.cellRow(cur.idx()) != tabular.nrows() - 1) {
 				cur.idx() = tabular.cellBelow(cur.idx());
 				cur.pit() = 0;
@@ -3748,7 +3748,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// if our Text didn't do anything to the cursor
 			// then we try to put the cursor into the cell above
 			// setting also the right targetX.
-			cur.selHandle(cmd.action == LFUN_UP_SELECT);
+			cur.selHandle(cmd.action_ == LFUN_UP_SELECT);
 			if (tabular.cellRow(cur.idx()) != 0) {
 				cur.idx() = tabular.cellAbove(cur.idx());
 				cur.pit() = cur.lastpit();
@@ -3876,7 +3876,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_CLIPBOARD_PASTE:
 	case LFUN_PRIMARY_SELECTION_PASTE: {
-		docstring const clip = (cmd.action == LFUN_CLIPBOARD_PASTE) ?
+		docstring const clip = (cmd.action_ == LFUN_CLIPBOARD_PASTE) ?
 			theClipboard().getAsText() :
 			theSelection().get();
 		if (clip.empty())
@@ -3977,7 +3977,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
-	switch (cmd.action) {
+	switch (cmd.action_) {
 	case LFUN_INSET_MODIFY: {
 		if (&cur.inset() != this || cmd.getArg(0) != "tabular") 
 			break;

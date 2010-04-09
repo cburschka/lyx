@@ -196,7 +196,7 @@ bool InsetIndex::showInsetDialog(BufferView * bv) const
 
 void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action) {
+	switch (cmd.action_) {
 
 	case LFUN_INSET_MODIFY: {
 		if (cmd.getArg(0) == "changetype") {
@@ -223,7 +223,7 @@ void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
-	switch (cmd.action) {
+	switch (cmd.action_) {
 
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "changetype") {
@@ -462,7 +462,7 @@ bool InsetPrintIndex::isCompatibleCommand(string const & s)
 
 void InsetPrintIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action) {
+	switch (cmd.action_) {
 
 	case LFUN_INSET_MODIFY: {
 		if (cmd.argument() == from_ascii("toggle-subindex")) {
@@ -504,7 +504,7 @@ void InsetPrintIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetPrintIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
-	switch (cmd.action) {
+	switch (cmd.action_) {
 
 	case LFUN_INSET_MODIFY: {
 		if (cmd.argument() == from_ascii("toggle-subindex")) {
