@@ -36,18 +36,23 @@ namespace lyx {
 
 namespace Alert = frontend::Alert;
 
-/// ask the user what to do if a file already exists
-static int checkOverwrite(FileName const & filename)
+/// Ask the user what to do if the destination file already exists
+/// and is different from the source file.
+static int checkOverwrite(FileName const & src_file, FileName const & dst_file)
 {
-	if (!filename.exists())
+	if (!dst_file.exists())
 		return 0;
+
+	if (src_file.checksum() == dst_file.checksum())
+		return -1;
+
 	docstring text = bformat(_("The file %1$s already exists.\n\n"
-							 "Do you want to overwrite that file?"),
-						makeDisplayPath(filename.absFilename()));
+				   "Do you want to overwrite that file?"),
+				   makeDisplayPath(dst_file.absFilename()));
 	return Alert::prompt(_("Overwrite file?"),
-					 text, 0, 2,
-					 _("&Overwrite"), _("Overwrite &all"),
-					 _("&Cancel export"));
+				text, 0, 2,
+				_("&Overwrite"), _("Overwrite &all"),
+				_("&Cancel export"));
 }
 
 
@@ -73,7 +78,9 @@ CopyStatus copyFile(string const & format,
 		return ret;
 
 	if (!force) {
-		switch(checkOverwrite(destFile)) {
+		switch(checkOverwrite(sourceFile, destFile)) {
+		case -1:
+			return SUCCESS;
 		case 0:
 			ret = SUCCESS;
 			break;
