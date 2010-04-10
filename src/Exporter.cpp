@@ -49,10 +49,21 @@ static int checkOverwrite(FileName const & src_file, FileName const & dst_file)
 	docstring text = bformat(_("The file %1$s already exists.\n\n"
 				   "Do you want to overwrite that file?"),
 				   makeDisplayPath(dst_file.absFilename()));
-	return Alert::prompt(_("Overwrite file?"),
+	int choice = Alert::prompt(_("Overwrite file?"),
 				text, 0, 2,
-				_("&Overwrite"), _("Overwrite &all"),
+				_("&Keep file"), _("&Overwrite"),
 				_("&Cancel export"));
+
+	if (choice == 0)
+		return -1;
+
+	if (choice == 1) {
+		text = _("Should I continue asking for overwriting files?");
+		return Alert::prompt(_("Overwrite all files?"),
+				text, 0, 0,
+				_("Continue &asking"), _("&Overwrite all"));
+	}
+	return choice;
 }
 
 
