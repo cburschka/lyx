@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-03-29 16:01-0400\n"
-"PO-Revision-Date: 2010-04-04 12:34+0100\n"
+"PO-Revision-Date: 2010-04-10 08:37+0100\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1124,7 +1124,7 @@ msgstr "Guardar como predeterminados"
 #: src/frontends/qt4/ui/ERTUi.ui:28
 #: src/frontends/qt4/GuiPrefs.cpp:1087
 msgid "Display"
-msgstr "Pantalla"
+msgstr "Visualización"
 
 #: src/frontends/qt4/ui/ERTUi.ui:40
 msgid "Show ERT button only"
@@ -1550,7 +1550,7 @@ msgstr "Sa&ns Serif:"
 
 #: src/frontends/qt4/ui/FontUi.ui:100
 msgid "Select the Sans Serif (grotesque) typeface"
-msgstr "Seleccionar el tipo de letra Sans Serif"
+msgstr "Seleccionar el tipo de letra Sans Serif (grotesca)"
 
 #: src/frontends/qt4/ui/FontUi.ui:107
 msgid "S&cale (%):"
@@ -3736,7 +3736,7 @@ msgstr "Usar caracteres de &escape:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:117
 msgid "Override the language used for the spellchecker"
-msgstr "Sobreescribir el idioma usado por el corrector ortográfico"
+msgstr "Sobrescribir el idioma usado por el corrector ortográfico"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:124
 msgid "Al&ternative language:"
@@ -5985,7 +5985,7 @@ msgstr "EstiloCarácter:Institución"
 
 #: lib/layouts/aa.layout:395
 msgid "CharStyle:E-Mail"
-msgstr "EstiloCarácter:Correo-E"
+msgstr "Correo-E"
 
 #: lib/layouts/aa.layout:406
 #: lib/layouts/aapaper.layout:88
@@ -6583,15 +6583,15 @@ msgstr "ComenzarFotogramaSencillo"
 
 #: lib/layouts/beamer.layout:290
 msgid "Frame (no head/foot/sidebars)"
-msgstr "Fotograma (sin encabezado/pie/barras laterales)"
+msgstr "Fotograma (sin encabezado/pie/barra lateral)"
 
 #: lib/layouts/beamer.layout:313
 msgid "AgainFrame"
-msgstr "FotogramaDeNuevo"
+msgstr "RepetirFotograma"
 
 #: lib/layouts/beamer.layout:330
 msgid "Again frame with label"
-msgstr "Fotograma de nuevo con etiqueta"
+msgstr "Repetir fotograma con etiqueta"
 
 #: lib/layouts/beamer.layout:354
 msgid "EndFrame"
@@ -6628,7 +6628,7 @@ msgstr "ColumnasAlineaciónCentro"
 
 #: lib/layouts/beamer.layout:472
 msgid "Columns (center aligned)"
-msgstr "Columnas (alineadas al centro)"
+msgstr "Columnas (alin. centro)"
 
 #: lib/layouts/beamer.layout:491
 msgid "ColumnsTopAligned"
@@ -6636,7 +6636,7 @@ msgstr "ColumnasAlineaciónSuperior"
 
 #: lib/layouts/beamer.layout:503
 msgid "Columns (top aligned)"
-msgstr "Columnas (alineadas a la parte superior)"
+msgstr "Columnas (alin. superior)"
 
 #: lib/layouts/beamer.layout:523
 msgid "Pause"
@@ -6648,7 +6648,7 @@ msgstr "Pausa"
 #: lib/layouts/beamer.layout:603
 #: lib/layouts/beamer.layout:629
 msgid "Overlays"
-msgstr "Superpuestos"
+msgstr "Transiciones"
 
 #: lib/layouts/beamer.layout:539
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
@@ -6661,19 +6661,19 @@ msgstr "SobreImprimir"
 
 #: lib/layouts/beamer.layout:576
 msgid "OverlayArea"
-msgstr "ÁreaRecubrimiento"
+msgstr "CubrirÁrea"
 
 #: lib/layouts/beamer.layout:587
 msgid "Overlayarea"
-msgstr "ÁreaRecubrimiento"
+msgstr "Cubrir área"
 
 #: lib/layouts/beamer.layout:602
 msgid "Uncover"
-msgstr "SinCubrir"
+msgstr "Descubrir"
 
 #: lib/layouts/beamer.layout:613
 msgid "Uncovered on slides"
-msgstr "Sin cubrir en diapositivas"
+msgstr "Descubrir en diapositivas"
 
 #: lib/layouts/beamer.layout:628
 msgid "Only"
@@ -6695,7 +6695,7 @@ msgstr "Bloques"
 
 #: lib/layouts/beamer.layout:666
 msgid "Block ( ERT[{title}] body ):"
-msgstr "Bloque ( ERT[{title}] cuerpo ):"
+msgstr "Bloque ( ERT[{título}] cuerpo ):"
 
 #: lib/layouts/beamer.layout:681
 msgid "ExampleBlock"
@@ -6703,7 +6703,7 @@ msgstr "BloqueEjemplo"
 
 #: lib/layouts/beamer.layout:692
 msgid "Block ( ERT[{title}] example text ):"
-msgstr "Bloque ( ERT[{title}] texto ejemplo ):"
+msgstr "Bloque ( ERT[{título}] texto ejemplo ):"
 
 #: lib/layouts/beamer.layout:711
 msgid "AlertBlock"
@@ -6711,7 +6711,7 @@ msgstr "BloqueAviso"
 
 #: lib/layouts/beamer.layout:722
 msgid "Block ( ERT[{title}] alert text ):"
-msgstr "Bloque ( ERT[{title}] texto aviso ):"
+msgstr "Bloque ( ERT[{título}] texto aviso ):"
 
 #: lib/layouts/beamer.layout:744
 #: lib/layouts/beamer.layout:776
@@ -6724,7 +6724,7 @@ msgstr "Titulación"
 
 #: lib/layouts/beamer.layout:767
 msgid "Title (Plain Frame)"
-msgstr "Título (Fotograma sencillo)"
+msgstr "Título(FotogramaSencillo)"
 
 #: lib/layouts/beamer.layout:822
 #: lib/layouts/cl2emult.layout:70
@@ -6732,15 +6732,15 @@ msgstr "Título (Fotograma sencillo)"
 #: lib/layouts/svmult.layout:48
 #: lib/layouts/svjour.inc:177
 msgid "Institute"
-msgstr "Instituto"
+msgstr "Institución"
 
 #: lib/layouts/beamer.layout:843
 msgid "InstituteMark"
-msgstr "MarcaInstituto"
+msgstr "Marca de Institución"
 
 #: lib/layouts/beamer.layout:847
 msgid "Institute mark"
-msgstr "Marca de Instituto"
+msgstr "Marca Institución"
 
 #: lib/layouts/beamer.layout:912
 #: lib/layouts/egs.layout:98
@@ -6854,7 +6854,7 @@ msgstr "Nota:"
 
 #: lib/layouts/beamer.layout:1160
 msgid "CharStyle:Alert"
-msgstr "EstiloCarácter:Alerta "
+msgstr "Alerta "
 
 #: lib/layouts/beamer.layout:1162
 msgid "Alert"
@@ -6862,7 +6862,7 @@ msgstr "Alerta"
 
 #: lib/layouts/beamer.layout:1171
 msgid "CharStyle:Structure"
-msgstr "EstiloCarácter:estructura "
+msgstr "Estructura "
 
 #: lib/layouts/beamer.layout:1173
 #: lib/layouts/svmono.layout:29
@@ -6873,7 +6873,7 @@ msgstr "Estructura"
 
 #: lib/layouts/beamer.layout:1182
 msgid "Custom:ArticleMode"
-msgstr "Personalizado: modo Artículo"
+msgstr "Modo Artículo"
 
 #: lib/layouts/beamer.layout:1187
 msgid "Article"
@@ -6881,7 +6881,7 @@ msgstr "Artículo"
 
 #: lib/layouts/beamer.layout:1192
 msgid "Custom:PresentationMode"
-msgstr "Personalizado:ModoPresentación"
+msgstr "Modo Presentación"
 
 #: lib/layouts/beamer.layout:1197
 msgid "Presentation"
@@ -8861,7 +8861,7 @@ msgstr "Institución"
 #: lib/layouts/slides.layout:89
 #: src/frontends/qt4/GuiDocument.cpp:169
 msgid "Slide"
-msgstr "Transparencia"
+msgstr "Diapositiva"
 
 #: lib/layouts/powerdot.layout:135
 msgid "    "
@@ -8869,7 +8869,7 @@ msgstr "    "
 
 #: lib/layouts/powerdot.layout:145
 msgid "EndSlide"
-msgstr "FinTransparencia"
+msgstr "FinDiapositiva"
 
 #: lib/layouts/powerdot.layout:159
 msgid "~=~"
@@ -8877,15 +8877,15 @@ msgstr "~=~"
 
 #: lib/layouts/powerdot.layout:172
 msgid "WideSlide"
-msgstr "TransparenciaAmplia"
+msgstr "DiapositivaAmplia"
 
 #: lib/layouts/powerdot.layout:184
 msgid "EmptySlide"
-msgstr "TransparenciaVacía"
+msgstr "DiapositivaVacía"
 
 #: lib/layouts/powerdot.layout:188
 msgid "Empty slide:"
-msgstr "Transparencia vacía:"
+msgstr "Diapositiva vacía:"
 
 #: lib/layouts/powerdot.layout:232
 #: lib/layouts/numarticle.inc:9
@@ -9086,51 +9086,51 @@ msgstr "Fin de carta"
 
 #: lib/layouts/seminar.layout:24
 msgid "LandscapeSlide"
-msgstr "TransparenciaApaisada"
+msgstr "DiapositivaApaisada"
 
 #: lib/layouts/seminar.layout:34
 msgid "Landscape Slide:"
-msgstr "Transparencia apaisada:"
+msgstr "Diapositiva apaisada:"
 
 #: lib/layouts/seminar.layout:40
 msgid "PortraitSlide"
-msgstr "TransparenciaRetrato"
+msgstr "DiapositivaRetrato"
 
 #: lib/layouts/seminar.layout:43
 msgid "Portrait Slide:"
-msgstr "Transparencia retrato:"
+msgstr "Diapositiva retrato:"
 
 #: lib/layouts/seminar.layout:45
 msgid "Slide*"
-msgstr "Transparencia*"
+msgstr "Diapositiva*"
 
 #: lib/layouts/seminar.layout:52
 msgid "EndOfSlide"
-msgstr "FinTransparencia"
+msgstr "FinDiapositiva"
 
 #: lib/layouts/seminar.layout:57
 msgid "SlideHeading"
-msgstr "EncabezadoTransparencia"
+msgstr "EncabezadoDiapositiva"
 
 #: lib/layouts/seminar.layout:64
 msgid "SlideSubHeading"
-msgstr "SubEncabezadoTransparencia"
+msgstr "SubEncabezadoDiapositiva"
 
 #: lib/layouts/seminar.layout:70
 msgid "ListOfSlides"
-msgstr "ListaDeTransparencias"
+msgstr "ListaDeDiapositiva"
 
 #: lib/layouts/seminar.layout:78
 msgid "[List Of Slides]"
-msgstr "[Lista de transparencias]"
+msgstr "[Lista de Diapositivas]"
 
 #: lib/layouts/seminar.layout:81
 msgid "SlideContents"
-msgstr "ContenidosTransparencia"
+msgstr "ContenidosDiapositiva"
 
 #: lib/layouts/seminar.layout:84
 msgid "[Slide Contents]"
-msgstr "[Contenidos Transparencia]"
+msgstr "[Contenidos Diapositiva]"
 
 #: lib/layouts/seminar.layout:87
 msgid "ProgressContents"
@@ -9207,7 +9207,7 @@ msgstr "MMMMM"
 
 #: lib/layouts/slides.layout:105
 msgid "New Slide:"
-msgstr "Nueva transparencia:"
+msgstr "Nueva Diapositiva:"
 
 #: lib/layouts/slides.layout:127
 msgid "Overlay"
@@ -10140,7 +10140,7 @@ msgstr "ReversoTítuloInferior"
 
 #: lib/layouts/scrclass.inc:223
 msgid "Extratitle"
-msgstr "ExtraTítulo"
+msgstr "TítuloExtra"
 
 #: lib/layouts/scrclass.inc:245
 msgid "Captionabove"
@@ -10401,7 +10401,7 @@ msgstr "Separatas:"
 #: lib/layouts/theorems-ams-bytype.inc:138
 #: lib/layouts/theorems-bytype.inc:112
 msgid "Fact \\thefact."
-msgstr "Dato  \\thefact."
+msgstr "Hecho  \\thefact."
 
 #: lib/layouts/theorems-ams-bytype.inc:182
 #: lib/layouts/theorems-bytype.inc:156
@@ -10576,19 +10576,19 @@ msgstr "Cuadro de Braille"
 
 #: lib/layouts/endnotes.module:2
 msgid "Endnote"
-msgstr "Nota final"
+msgstr "Notas finales"
 
 #: lib/layouts/endnotes.module:6
 msgid "Adds an endnote inset, in addition to footnotes. You will need to add \\theendnotes in ERT where you want the endnotes to appear."
-msgstr "Añade un recuadro de nota final, además de las notas al pie. Necesitarás añadir \\theendnotes en código TeX donde quieras que se muestren las notas al pie."
+msgstr "Permite insertar recuadros de nota final, aparte de las notas al pie. Deberás añadir \\theendnotes en código TeX en el lugar en el que quieras que se muestren las notas finales."
 
 #: lib/layouts/endnotes.module:9
 msgid "Custom:Endnote"
-msgstr "Personalizado:NotaFinal"
+msgstr "Nota final"
 
 #: lib/layouts/endnotes.module:18
 msgid "endnote"
-msgstr "nota al final"
+msgstr "nota final"
 
 #: lib/layouts/eqs-within-sections.module:2
 msgid "Number Equations by Section"
@@ -10608,11 +10608,11 @@ msgstr "Reinicia el número de figura al principio de cada sección y antepone e
 
 #: lib/layouts/foottoend.module:2
 msgid "Foot to End"
-msgstr "Pie a Final"
+msgstr "Pies al final"
 
 #: lib/layouts/foottoend.module:6
 msgid "Sets all footnotes as endnotes. You will need to add \\theendnotes in ERT where you want the endnotes to appear."
-msgstr "Pone todas las notas al pie como notas finales. Necesitarás añadir \\theendnotes en código TeX donde quieras que aparezcan las notas finales."
+msgstr "Agrupa todas las notas al pie al final. Deberás añadir \\theendnotes en código TeX en el lugar en el que quieras que aparezcan las notas."
 
 #: lib/layouts/hanging.module:2
 #: lib/layouts/hanging.module:16
@@ -10638,11 +10638,11 @@ msgstr "estilos de texto"
 
 #: lib/layouts/initials.module:10
 msgid "CharStyle:Initial"
-msgstr "EstiloCarácter:Inicial"
+msgstr "Inicial"
 
 #: lib/layouts/initials.module:12
 msgid "Initial"
-msgstr "Inicial"
+msgstr "inicial"
 
 #: lib/layouts/linguistics.module:2
 msgid "Linguistics"
@@ -10678,7 +10678,7 @@ msgstr "Subejemplo:"
 
 #: lib/layouts/linguistics.module:65
 msgid "Custom:Glosse"
-msgstr "Personalizado:Glosse"
+msgstr "Glosa"
 
 #: lib/layouts/linguistics.module:67
 msgid "Glosse"
@@ -10686,7 +10686,7 @@ msgstr "Glosa"
 
 #: lib/layouts/linguistics.module:93
 msgid "Custom:Tri-Glosse"
-msgstr "Personalizado:Tri-Glosa"
+msgstr "Tri-Glosa"
 
 #: lib/layouts/linguistics.module:95
 msgid "Tri-Glosse"
@@ -10694,7 +10694,7 @@ msgstr "Tri-Glosa"
 
 #: lib/layouts/linguistics.module:120
 msgid "CharStyle:Expression"
-msgstr "EstiloCaracter:Expresión "
+msgstr "Expresión "
 
 #: lib/layouts/linguistics.module:122
 msgid "expr."
@@ -10702,7 +10702,7 @@ msgstr "expr."
 
 #: lib/layouts/linguistics.module:135
 msgid "CharStyle:Concepts"
-msgstr "EstiloCarácter:Conceptos"
+msgstr "Concepto"
 
 #: lib/layouts/linguistics.module:137
 msgid "concept"
@@ -10710,7 +10710,7 @@ msgstr "concepto"
 
 #: lib/layouts/linguistics.module:150
 msgid "CharStyle:Meaning"
-msgstr "EstiloCarácter:Significado"
+msgstr "Significado"
 
 #: lib/layouts/linguistics.module:152
 msgid "meaning"
@@ -10726,23 +10726,23 @@ msgstr "Lista de tablas"
 
 #: lib/layouts/logicalmkup.module:2
 msgid "Logical Markup"
-msgstr "Diseño lógico"
+msgstr "Marcación lógica"
 
 #: lib/layouts/logicalmkup.module:5
 msgid "Defines some character styles for logical markup: noun, emph, strong, and code."
-msgstr "Define algunos estilos de carácter para notación lógica: ninguno, énfasis, fuerte y código. "
+msgstr "Define algunos estilos de carácter para notación lógica: nombre, énfasis, intenso y código. "
 
 #: lib/layouts/logicalmkup.module:11
 msgid "CharStyle:Noun"
-msgstr "EstiloCarácter:Nominal"
+msgstr "Nombre"
 
 #: lib/layouts/logicalmkup.module:13
 msgid "noun"
-msgstr "nominal"
+msgstr "nombre"
 
 #: lib/layouts/logicalmkup.module:31
 msgid "CharStyle:Emph"
-msgstr "EstiloCarácter:Énfasis "
+msgstr "Énfasis "
 
 #: lib/layouts/logicalmkup.module:33
 msgid "emph"
@@ -10750,7 +10750,7 @@ msgstr "énfasis"
 
 #: lib/layouts/logicalmkup.module:44
 msgid "CharStyle:Strong"
-msgstr "EstiloCarácter:Intenso"
+msgstr "Intenso"
 
 #: lib/layouts/logicalmkup.module:46
 msgid "strong"
@@ -10758,7 +10758,7 @@ msgstr "intenso"
 
 #: lib/layouts/logicalmkup.module:60
 msgid "CharStyle:Code"
-msgstr "EstiloCarácter:Código "
+msgstr "Código "
 
 #: lib/layouts/logicalmkup.module:62
 msgid "code"
@@ -10994,7 +10994,7 @@ msgstr "Teoremas (AMS-extendido)"
 
 #: lib/layouts/theorems-ams-extended.module:9
 msgid "Defines some additional theorem environments for use with the AMS theorems packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, Summary, Acknowledgement, Conclusion, Fact, Assumption, Case, and Question, in both numbered and non-numbered forms."
-msgstr "Define algunos entornos adicionales para usar con los paquetes de teoremas AMS. Incluye Criterio, Algoritmo, Axioma, Condición, Nota, Anotación, Resumen, Agradecimiento, Conclusión, Dato, Suposición,  Caso y Pregunta, tanto en modo numerado como no numerado."
+msgstr "Define algunos entornos adicionales para usar con los paquetes de teoremas AMS. Incluye Criterio, Algoritmo, Axioma, Condición, Nota, Anotación, Resumen, Agradecimiento, Conclusión, Hecho, Suposición,  Caso y Pregunta, tanto en modo numerado como no numerado."
 
 #: lib/layouts/theorems-ams-extended.module:10
 #: lib/layouts/theorems-ams.module:9
@@ -12166,7 +12166,7 @@ msgstr "Subíndice|u"
 
 #: lib/ui/classic.ui:244
 msgid "Hyphenation Point|P"
-msgstr "Punto de guión|g"
+msgstr "Guión silábico|G"
 
 #: lib/ui/classic.ui:245
 #: lib/ui/stdmenus.inc:378
@@ -13164,7 +13164,7 @@ msgstr "Insertar Título breve|T"
 #: lib/ui/stdcontext.inc:313
 #: lib/ui/stdcontext.inc:608
 msgid "Accept Change|c"
-msgstr "Aceptar cambio|i"
+msgstr "Aceptar cambio|e"
 
 #: lib/ui/stdcontext.inc:314
 msgid "Reject Change|j"
@@ -17371,11 +17371,11 @@ msgstr "%1$s terminó inesperadamente, lo que quiere decir que probablemente est
 #: src/Buffer.cpp:981
 #, c-format
 msgid "Document %1$s has been externally modified. Are you sure you want to overwrite this file?"
-msgstr "El documento %1$s ha sido modificado externamente. ¿Está seguro de que desea sobreescribir este archivo?"
+msgstr "El documento %1$s ha sido modificado externamente. ¿Está seguro de que desea sobrescribir este archivo?"
 
 #: src/Buffer.cpp:983
 msgid "Overwrite modified file?"
-msgstr "¿Sobreescribir archivo modificado?"
+msgstr "¿Sobrescribir archivo modificado?"
 
 #: src/Buffer.cpp:984
 #: src/Buffer.cpp:2144
@@ -17384,7 +17384,7 @@ msgstr "¿Sobreescribir archivo modificado?"
 #: src/frontends/qt4/GuiView.cpp:1909
 #: src/frontends/qt4/GuiView.cpp:2101
 msgid "&Overwrite"
-msgstr "&Sobreescribir"
+msgstr "&Sobrescribir"
 
 #: src/Buffer.cpp:1007
 msgid "Backup failure"
@@ -17548,12 +17548,12 @@ msgid ""
 msgstr ""
 "El archivo %1$s ya existe.\n"
 "\n"
-"¿Desea sobreescribir ese archivo?"
+"¿Desea sobrescribir ese archivo?"
 
 #: src/Buffer.cpp:2143
 #: src/Exporter.cpp:47
 msgid "Overwrite file?"
-msgstr "¿Sobreescribir archivo?"
+msgstr "¿Sobrescribir archivo?"
 
 #: src/Buffer.cpp:2160
 msgid "Error running external commands."
@@ -18438,7 +18438,7 @@ msgstr "La salida está vacía"
 
 #: src/Converter.cpp:619
 msgid "An empty output file was generated."
-msgstr "Un archivo de salida vacío fue generado."
+msgstr "Se ha generado un archivo de salida vacío."
 
 #: src/CutAndPaste.cpp:341
 #, c-format
@@ -18472,7 +18472,7 @@ msgstr "Inserción flexible no definida"
 
 #: src/Exporter.cpp:49
 msgid "Overwrite &all"
-msgstr "Sobreescribir &todo"
+msgstr "Sobrescribir &todo"
 
 #: src/Exporter.cpp:50
 msgid "&Cancel export"
@@ -18571,7 +18571,7 @@ msgstr "Énfasis %1$s, "
 #: src/Font.cpp:163
 #, c-format
 msgid "Underline %1$s, "
-msgstr "Subrayar %1$s, "
+msgstr "Subrayado %1$s, "
 
 #: src/Font.cpp:166
 #, c-format
@@ -18625,7 +18625,7 @@ msgstr "No hay información para ver %1$s"
 #: src/Format.cpp:288
 #, c-format
 msgid "Auto-view file %1$s failed"
-msgstr "Auto-vista del archivo %1$s falló"
+msgstr "Auto-visión del archivo %1$s falló"
 
 #: src/Format.cpp:335
 #: src/Format.cpp:347
@@ -19236,7 +19236,7 @@ msgstr "Marcar para tener movimiento bidimensional visual del cursor, desmarcar 
 
 #: src/LyXRC.cpp:3161
 msgid "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes wrong, override the setting here."
-msgstr "DPI (puntos por pulgada) de su monitor son autodetectados por LyX. Si no funciona, sobreescriba su valor aquí."
+msgstr "DPI (puntos por pulgada) de su monitor son autodetectados por LyX. Si no funciona, sobrescriba su valor aquí."
 
 #: src/LyXRC.cpp:3167
 msgid "The screen fonts used to display the text while editing."
@@ -20381,7 +20381,7 @@ msgstr "Cancelado."
 
 #: src/frontends/qt4/GuiClipboard.cpp:206
 msgid "Overwrite external file?"
-msgstr "¿Sobreescribir archivo externo?"
+msgstr "¿Sobrescribir archivo externo?"
 
 #: src/frontends/qt4/GuiClipboard.cpp:207
 #, c-format
@@ -20389,7 +20389,7 @@ msgid "File %1$s already exists, do you want to overwrite it?"
 msgstr ""
 "El archivo %1$s ya existe.\n"
 "\n"
-"¿Desea sobreescribir ese archivo?"
+"¿Desea sobrescribir ese archivo?"
 
 #: src/frontends/qt4/GuiCommandBuffer.cpp:98
 msgid "List of previous commands"
@@ -22165,12 +22165,12 @@ msgid ""
 msgstr ""
 "El documento %1$s ya existe.\n"
 "\n"
-"¿Desea sobreescribir ese documento?"
+"¿Desea sobrescribir ese documento?"
 
 #: src/frontends/qt4/GuiView.cpp:1908
 #: src/frontends/qt4/GuiView.cpp:2100
 msgid "Overwrite document?"
-msgstr "¿Sobreescribir documento?"
+msgstr "¿Sobrescribir documento?"
 
 #: src/frontends/qt4/GuiView.cpp:1917
 #, c-format
