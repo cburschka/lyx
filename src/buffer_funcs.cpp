@@ -146,7 +146,8 @@ Buffer * newFile(string const & filename, string const & templatename,
 	if (!isNamed) {
 		b->setUnnamed();
 		b->setFileName(filename);
-	}
+	} else
+		b->markDirty();
 
 	b->setReadonly(false);
 	b->setFullyLoaded(true);
