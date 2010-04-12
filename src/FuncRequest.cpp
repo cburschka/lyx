@@ -29,13 +29,14 @@ FuncRequest const FuncRequest::unknown(LFUN_UNKNOWN_ACTION);
 FuncRequest const FuncRequest::noaction(LFUN_NOACTION);
 
 FuncRequest::FuncRequest(Origin o)
-	: action_(LFUN_NOACTION), origin_(o), x_(0), y_(0),
+	: argument_(0), action_(LFUN_NOACTION), origin_(o), x_(0), y_(0),
 	  button_(mouse_button::none)
 {}
 
 
 FuncRequest::FuncRequest(FuncCode act, Origin o)
-	: action_(act), origin_(o), x_(0), y_(0), button_(mouse_button::none)
+	: argument_(0), action_(act), origin_(o), x_(0), y_(0),
+	button_(mouse_button::none)
 {}
 
 
@@ -53,7 +54,7 @@ FuncRequest::FuncRequest(FuncCode act, string const & arg, Origin o)
 
 FuncRequest::FuncRequest(FuncCode act, int ax, int ay,
 			 mouse_button::state but, Origin o)
-	: action_(act), origin_(o), x_(ax), y_(ay), button_(but)
+	: argument_(0), action_(act), origin_(o), x_(ax), y_(ay), button_(but)
 {}
 
 
