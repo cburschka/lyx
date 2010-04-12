@@ -147,6 +147,8 @@ Buffer * newFile(string const & filename, string const & templatename,
 		b->setUnnamed();
 		b->setFileName(filename);
 	} else
+		// in this case, the user chose the filename, so we assume that she
+		// really does want this file.
 		b->markDirty();
 
 	b->setReadonly(false);
