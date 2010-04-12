@@ -29,43 +29,43 @@ FuncRequest const FuncRequest::unknown(LFUN_UNKNOWN_ACTION);
 FuncRequest const FuncRequest::noaction(LFUN_NOACTION);
 
 FuncRequest::FuncRequest(Origin o)
-	: argument_(), action_(LFUN_NOACTION), origin_(o), x_(0), y_(0),
+	: action_(LFUN_NOACTION), argument_(), origin_(o), x_(0), y_(0),
 	  button_(mouse_button::none)
 {}
 
 
 FuncRequest::FuncRequest(FuncCode act, Origin o)
-	: argument_(), action_(act), origin_(o), x_(0), y_(0),
+	: action_(act), argument_(), origin_(o), x_(0), y_(0),
 	button_(mouse_button::none)
 {}
 
 
 FuncRequest::FuncRequest(FuncCode act, docstring const & arg, Origin o)
-	: argument_(arg), action_(act), origin_(o), x_(0), y_(0),
+	: action_(act), argument_(arg), origin_(o), x_(0), y_(0),
 	  button_(mouse_button::none)
 {}
 
 
 FuncRequest::FuncRequest(FuncCode act, string const & arg, Origin o)
-	: argument_(from_utf8(arg)), action_(act), origin_(o), x_(0), y_(0),
+	: action_(act), argument_(from_utf8(arg)), origin_(o), x_(0), y_(0),
 	  button_(mouse_button::none)
 {}
 
 
 FuncRequest::FuncRequest(FuncCode act, int ax, int ay,
 			 mouse_button::state but, Origin o)
-	: argument_(), action_(act), origin_(o), x_(ax), y_(ay), button_(but)
+	: action_(act), argument_(), origin_(o), x_(ax), y_(ay), button_(but)
 {}
 
 
 FuncRequest::FuncRequest(FuncRequest const & cmd, docstring const & arg, Origin o)
-	: argument_(arg), action_(cmd.action()), origin_(o),
+	: action_(cmd.action()), argument_(arg), origin_(o),
 	  x_(cmd.x_), y_(cmd.y_), button_(cmd.button_)
 {}
 
 
 FuncRequest::FuncRequest(FuncRequest const & cmd, string const & arg, Origin o)
-	: argument_(from_utf8(arg)), action_(cmd.action()), origin_(o),
+	: action_(cmd.action()), argument_(from_utf8(arg)), origin_(o),
 	  x_(cmd.x_), y_(cmd.y_), button_(cmd.button_)
 {}
 

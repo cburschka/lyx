@@ -88,10 +88,10 @@ public:
 	/// 
 	static FuncRequest const noaction;
 private:
-	/// the action's string argument
-	docstring argument_;
 	/// the action
 	FuncCode action_;
+	/// the action's string argument
+	docstring argument_;
 	/// who initiated the action
 	Origin origin_;
 	/// the x coordinate of a mouse press
