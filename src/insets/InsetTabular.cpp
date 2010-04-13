@@ -1224,7 +1224,12 @@ int Tabular::textHOffset(idx_type cell) const
 
 int Tabular::textVOffset(idx_type cell) const
 {
-	return cellInfo(cell).voffset;
+	int voffset = cellInfo(cell).voffset;
+	if (isMultiRow(cell)) {
+		row_type const row = cellRow(cell);
+		voffset += (cellHeight(cell) - rowAscent(row) - rowDescent(row))/2; 
+	}
+	return voffset;
 }
 
 
