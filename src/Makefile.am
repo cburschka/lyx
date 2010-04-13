@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 ############################### Core  ##############################
 
-DISTCLEANFILES += config.h libintl.h
+DISTCLEANFILES += libintl.h
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES) $(ENCHANT_CFLAGS)
 AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES)
@@ -13,8 +13,7 @@ endif
 
 SUBDIRS = support frontends . $(CLIENT) tex2lyx
 
-EXTRA_DIST = paper.h \
-	pch.h
+EXTRA_DIST = pch.h
 
 OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(MYTHES_LIBS) $(AIKSAURUS_LIBS) \
 		 $(ENCHANT_LIBS) @LIBS@ $(SOCKET_LIBS) $(LIBSHLWAPI) $(LIBPSAPI)
