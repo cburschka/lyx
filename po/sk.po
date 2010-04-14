@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-04-13 15:38+0200\n"
-"PO-Revision-Date: 2010-04-07 16:02+0200\n"
+"PO-Revision-Date: 2010-04-14 14:58+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -935,30 +935,25 @@ msgid "Search as you &type"
 msgstr "&Vyhľadávať pri zadávaní"
 
 #: src/frontends/qt4/ui/ColorUi.ui:16
-#, fuzzy
 msgid "ColorUi"
-msgstr "Farba"
+msgstr "ColorUi"
 
 #: src/frontends/qt4/ui/ColorUi.ui:25
-#, fuzzy
 msgid "Font colors"
-msgstr "Farba písma"
+msgstr "Farby fontov"
 
 #: src/frontends/qt4/ui/ColorUi.ui:40
-#, fuzzy
 msgid "Main text:"
-msgstr "Prostý text"
+msgstr "Hlavný text:"
 
 #: src/frontends/qt4/ui/ColorUi.ui:64 src/frontends/qt4/ui/ColorUi.ui:135
 #: src/frontends/qt4/ui/ColorUi.ui:218 src/frontends/qt4/ui/ColorUi.ui:289
-#, fuzzy
 msgid "Click to change the color"
-msgstr "Určiť alebo zmeniť farbu tlačidla"
+msgstr "Klikni na zmenu farby"
 
 #: src/frontends/qt4/ui/ColorUi.ui:67 src/frontends/qt4/ui/ColorUi.ui:221
-#, fuzzy
 msgid "Default..."
-msgstr "Štandard"
+msgstr "Štandard..."
 
 #: src/frontends/qt4/ui/ColorUi.ui:80 src/frontends/qt4/ui/ColorUi.ui:151
 #: src/frontends/qt4/ui/ColorUi.ui:234 src/frontends/qt4/ui/ColorUi.ui:305
@@ -971,28 +966,24 @@ msgid "R&eset"
 msgstr "Vynulovať"
 
 #: src/frontends/qt4/ui/ColorUi.ui:111
-#, fuzzy
 msgid "Greyed-out notes:"
-msgstr "Zosivelé"
+msgstr "Zosivelé poznámky:"
 
 #: src/frontends/qt4/ui/ColorUi.ui:138 src/frontends/qt4/ui/ColorUi.ui:292
 msgid "&Change..."
 msgstr "Zmena..."
 
 #: src/frontends/qt4/ui/ColorUi.ui:185
-#, fuzzy
 msgid "Background colors"
-msgstr "Farba Pozadia:"
+msgstr "Farby pozadia"
 
 #: src/frontends/qt4/ui/ColorUi.ui:194
-#, fuzzy
 msgid "Page:"
-msgstr "Strana: "
+msgstr "Strana:"
 
 #: src/frontends/qt4/ui/ColorUi.ui:265
-#, fuzzy
 msgid "Shaded boxes:"
-msgstr "tieňovaný rámok"
+msgstr "Tieňované rámky:"
 
 #: src/frontends/qt4/ui/CompareUi.ui:19
 msgid "&New Document:"
@@ -10638,7 +10629,7 @@ msgstr "Turecky"
 
 #: lib/languages:85
 msgid "Turkmen"
-msgstr ""
+msgstr "Turkménsky"
 
 #: lib/languages:86
 msgid "Ukrainian"
@@ -16125,7 +16116,7 @@ msgstr "HTML (MS Word)"
 
 #: lib/configure.py:653
 msgid "LyxBlogger"
-msgstr ""
+msgstr "LyxBlogger"
 
 #: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1780
 #, c-format
@@ -16710,8 +16701,7 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Nedostupná trieda dokumentu"
 
-#: src/BufferParams.cpp:1771
-#, fuzzy, c-format
+#: src/BufferParams.cpp:1771, c-format
 msgid ""
 "The layout file:\n"
 "%1$s\n"
@@ -16719,16 +16709,17 @@ msgid ""
 "layouts will be used. LyX will not be able to produce\n"
 "correct output."
 msgstr ""
-"Trieda dokumentu %1$s sa nedá nájsť. Bude použitá štandardná trieda a "
-"formát. LyX možno nebude schopný zrobiť výstup kým nezvolíte správnu triedu "
-"v nastaveniach dokumentu."
+"Súbor formátov:\n"
+"%1$s\n"
+"sa nedá nájsť. Bude použitá štandardná\n"
+"trieda a formát. LyX nebude schopný zrobiť\n"
+"správny výstup."
 
 #: src/BufferParams.cpp:1777
 msgid "Document class not found"
 msgstr "Nenájdená trieda dokumentu"
 
-#: src/BufferParams.cpp:1784
-#, fuzzy, c-format
+#: src/BufferParams.cpp:1784, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
 "%1$s\n"
@@ -16736,9 +16727,11 @@ msgid ""
 "layouts will be used. LyX will not be able to produce\n"
 "correct output."
 msgstr ""
-"Trieda dokumentu %1$s sa nedá nájsť. Bude použitá štandardná trieda a "
-"formát. LyX možno nebude schopný zrobiť výstup kým nezvolíte správnu triedu "
-"v nastaveniach dokumentu."
+"Kvôli chybe v ňom, súbor formátov:\n"
+"%1$s\n"
+"sa nedá nahrať. Bude použitá štandardná\n"
+"trieda a formát. LyX nebude schopný zrobiť\n"
+"správny výstup."
 
 #: src/BufferParams.cpp:1790 src/LayoutFile.cpp:325
 msgid "Could not load class"
@@ -17060,9 +17053,8 @@ msgid "greyedout inset label"
 msgstr "zosivelá vložka (návestie)"
 
 #: src/Color.cpp:184
-#, fuzzy
 msgid "greyedout inset text"
-msgstr "zosivelá vložka (návestie)"
+msgstr "zosivelý text vložky"
 
 #: src/Color.cpp:185
 msgid "greyedout inset background"
@@ -17410,9 +17402,8 @@ msgid "Undefined flex inset"
 msgstr "Nedefinované flexibilná vložka"
 
 #: src/Exporter.cpp:50
-#, fuzzy
 msgid "&Keep file"
-msgstr "Nezmazať"
+msgstr "Súbor držať"
 
 #: src/Exporter.cpp:51
 msgid "&Cancel export"
@@ -17420,20 +17411,17 @@ msgstr "&Zrušiť export"
 
 #: src/Exporter.cpp:57
 msgid "Should I continue asking for overwriting files?"
-msgstr ""
+msgstr "Mám pokračovať so spytovaním na prepísanie súborov?"
 
 #: src/Exporter.cpp:58
-#, fuzzy
 msgid "Overwrite all files?"
-msgstr "Prepísať súbor?"
+msgstr "Prepísať všetky súbory?"
 
 #: src/Exporter.cpp:60
-#, fuzzy
 msgid "Continue &asking"
-msgstr "Pokračovanie"
+msgstr "Pokračuj so spytovaním"
 
 #: src/Exporter.cpp:60
-#, fuzzy
 msgid "&Overwrite all"
 msgstr "Prepísať všetko"
 
@@ -17702,41 +17690,42 @@ msgid "No textclass is found"
 msgstr "Nenašiel sa žiadny súbor tried (textclass)"
 
 #: src/LyX.cpp:508
-#, fuzzy
 msgid ""
 "LyX will have minimal functionality because no textclasses have been found. "
 "You can either try to reconfigure LyX normally, try to reconfigure using "
 "only the defaults, or continue."
 msgstr ""
-"LyX nemôže pokračovať, lebo sa nenašli žiadne súbory tried (textclass). "
-"Alebo použijete rekonfiguráciu normálne, alebo rekonfigurujte použitím "
-"štandardných tried."
+"LyX bude mať minimálnu funkčnosť lebo sa nenašli žiadne súbory tried. "
+"Môžte skúsiť normálnu rekonfiguráciu, alebo rekonfigurovať použitím "
+"štandardných tried, alebo pokračovať."
 
 #: src/LyX.cpp:512
 msgid "&Reconfigure"
 msgstr "Rekonfigurácia"
 
 #: src/LyX.cpp:513
-#, fuzzy
 msgid "&Use Defaults"
-msgstr "Použiť Štandard"
+msgstr "Použiť Štandardy"
 
 #: src/LyX.cpp:514
-#, fuzzy
 msgid "&Continue"
-msgstr "Pokračovanie"
+msgstr "Pokračovať"
 
 #: src/LyX.cpp:617
 msgid ""
 "SIGHUP signal caught!\n"
 "Bye."
 msgstr ""
+"Zachytený signál SIGHUP!\n"
+"Ahoj."
 
 #: src/LyX.cpp:621
 msgid ""
 "SIGFPE signal caught!\n"
 "Bye."
 msgstr ""
+"Zachytený signál SIGFPE!\n"
+"Ahoj."
 
 #: src/LyX.cpp:624
 msgid ""
@@ -17746,10 +17735,15 @@ msgid ""
 "us a bug report, if necessary. Thanks !\n"
 "Bye."
 msgstr ""
+"Zachytený signál SIGSEGV!\n"
+"Ľutujem, našli ste chybu v LyXe, dúfam že ste nestratili žiadne dáta.\n"
+"Prečítajte si prosím údaje pre oznámenie chyby v 'Pomocník->Úvod' a "
+"keď treba, pošlite nám to oznámenie. Ďakujem !\n"
+"Ahoj."
 
 #: src/LyX.cpp:640
 msgid "LyX crashed!"
-msgstr ""
+msgstr "LyX havaroval!"
 
 #: src/LyX.cpp:674 src/frontends/qt4/GuiView.cpp:840
 msgid "LyX: "
@@ -17814,7 +17808,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Nastavenie úrovne ladenia na %1$s"
 
 #: src/LyX.cpp:984
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -17855,10 +17848,11 @@ msgstr ""
 "                  Pozrite si Nástroje->Preferencie->Obsluha súborov->Formáty "
 "súborov\n"
 "                  aby ste prišli na to, ktorý parameter by sa mal použiť.\n"
+"                  Uvedomte si, že poradie prepínačov -e a -x je významné."
 "\t-i [--import] fmt file.xxx\n"
 "                  kde fmt je vybraný formát k importu\n"
 "                  a file.xxx je meno súboru určeného pre import.\n"
-"\t--batch    spusti príkazy a skonč\n"
+"\t--batch    spusti príkazy bez GUI a skonč\n"
 "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu."
 
@@ -21169,13 +21163,12 @@ msgid "Big-sized icons"
 msgstr "Veľké ikony"
 
 #: src/frontends/qt4/GuiView.cpp:672
-#, fuzzy
 msgid "Exit LyX"
 msgstr "Skončiť LyX"
 
 #: src/frontends/qt4/GuiView.cpp:672
 msgid "Could not exit LyX, because documents are processed by LyX."
-msgstr ""
+msgstr "Nemohol som ukončiť LyX, lebo LyX ešte spracováva dokumenty."
 
 #: src/frontends/qt4/GuiView.cpp:921
 msgid "Welcome to LyX!"
@@ -21361,13 +21354,12 @@ msgid "&Retry"
 msgstr "Zopakuj"
 
 #: src/frontends/qt4/GuiView.cpp:2288
-#, fuzzy
 msgid "Close document "
-msgstr "Nový dokument"
+msgstr "Zavrieť dokument"
 
 #: src/frontends/qt4/GuiView.cpp:2288
 msgid "Could not close document, because it is processed by LyX."
-msgstr ""
+msgstr "Nemohol som zavrieť dokument, lebo ho LyX ešte spracováva."
 
 #: src/frontends/qt4/GuiView.cpp:2383 src/frontends/qt4/GuiView.cpp:2490
 #, c-format
