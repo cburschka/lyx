@@ -26,7 +26,7 @@ fi
 AM_MAINTAINER_MODE
 
 save_PACKAGE=$PACKAGE
-AM_INIT_AUTOMAKE([foreign dist-bzip2 no-define subdir-objects 1.8])
+AM_INIT_AUTOMAKE([foreign dist-bzip2 no-define 1.8])
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 PACKAGE=$save_PACKAGE
 
@@ -67,7 +67,6 @@ AC_C_BIGENDIAN
 LYX_USE_FRONTENDS
 
 ### Check for a C++ compiler
-AM_PROG_CC_C_O
 LYX_PROG_CXX
 
 ### Objective-C compiler

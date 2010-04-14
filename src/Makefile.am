@@ -23,11 +23,11 @@ bin_PROGRAMS = lyx
 
 lyx_LDADD = \
 	liblyxcore.a \
-	mathed/liblyxmathed.a \
-	insets/liblyxinsets.a \
+	liblyxmathed.a \
+	liblyxinsets.a \
 	frontends/liblyxfrontends.a \
 	frontends/qt4/liblyxqt4.a \
-	graphics/liblyxgraphics.a \
+	liblyxgraphics.a \
 	support/liblyxsupport.a \
 	$(OTHERLIBS) \
 	$(QT4_LDFLAGS) \
@@ -321,9 +321,9 @@ liblyxcore_a_DEPENDENCIES = $(MOCEDFILES)
 
 ############################### Graphics ##############################
 
-noinst_LIBRARIES += graphics/liblyxgraphics.a
+noinst_LIBRARIES += liblyxgraphics.a
 
-graphics_liblyxgraphics_a_SOURCES = \
+liblyxgraphics_a_SOURCES = \
 	graphics/GraphicsCache.h \
 	graphics/GraphicsCache.cpp \
 	graphics/GraphicsCacheItem.h \
@@ -348,7 +348,7 @@ graphics_liblyxgraphics_a_SOURCES = \
 
 EXTRA_DIST += mathed/InsetFormulaMacro.cpp
 
-noinst_LIBRARIES += mathed/liblyxmathed.a
+noinst_LIBRARIES += liblyxmathed.a
 
 SOURCEFILESMATHED = \
 	mathed/InsetMathAMSArray.cpp \
@@ -486,25 +486,25 @@ HEADERFILESMATHED = \
 	mathed/MathSupport.h \
 	mathed/TextPainter.h
 
-mathed/lyxmathed.cpp:
+lyxmathed.cpp:
 	@echo -e '$(SOURCEFILESMATHED:%=\n#include "%")\n' > $@
 
 if MONOLITHIC_MATHED
 
-BUILT_SOURCES += mathed/lyxmathed.cpp
-CLEANFILES += mathed/lyxmathed.cpp
+BUILT_SOURCES += lyxmathed.cpp
+CLEANFILES += lyxmathed.cpp
 
-mathed_liblyxmathed_a_SOURCES = mathed/lyxmathed.cpp $(HEADERFILESMATHED)
+liblyxmathed_a_SOURCES = lyxmathed.cpp $(HEADERFILESMATHED)
 
 else
 
-mathed_liblyxmathed_a_SOURCES = $(SOURCEFILESMATHED) $(HEADERFILESMATHED)
+liblyxmathed_a_SOURCES = $(SOURCEFILESMATHED) $(HEADERFILESMATHED)
 
 endif
 
 ############################### Insets  ##############################
 
-noinst_LIBRARIES += insets/liblyxinsets.a
+noinst_LIBRARIES += liblyxinsets.a
 
 SOURCEFILESINSETS = \
 	insets/ExternalSupport.cpp \
@@ -619,18 +619,18 @@ HEADERFILESINSETS = \
 #	insets/InsetSection.h \
 #	insets/InsetSection.cpp
 
-insets/lyxinsets.cpp:
+lyxinsets.cpp:
 	@echo -e '$(SOURCEFILESINSETS:%=\n#include "%")\n' > $@
 
 if MONOLITHIC_INSETS
 
-BUILT_SOURCES += insets/lyxinsets.cpp
-CLEANFILES += insets/lyxinsets.cpp
+BUILT_SOURCES += lyxinsets.cpp
+CLEANFILES += lyxinsets.cpp
 
-insets_liblyxinsets_a_SOURCES = insets/lyxinsets.cpp $(HEADERFILESINSETS)
+liblyxinsets_a_SOURCES = lyxinsets.cpp $(HEADERFILESINSETS)
 
 else
 
-insets_liblyxinsets_a_SOURCES = $(SOURCEFILESINSETS) $(HEADERFILESINSETS)
+liblyxinsets_a_SOURCES = $(SOURCEFILESINSETS) $(HEADERFILESINSETS)
 
 endif
