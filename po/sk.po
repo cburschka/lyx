@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-04-13 15:38+0200\n"
+"POT-Creation-Date: 2010-04-14 22:14+0200\n"
 "PO-Revision-Date: 2010-04-14 14:58+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
@@ -16701,7 +16701,8 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Nedostupná trieda dokumentu"
 
-#: src/BufferParams.cpp:1771, c-format
+#: src/BufferParams.cpp:1771
+#, c-format
 msgid ""
 "The layout file:\n"
 "%1$s\n"
@@ -16719,7 +16720,8 @@ msgstr ""
 msgid "Document class not found"
 msgstr "Nenájdená trieda dokumentu"
 
-#: src/BufferParams.cpp:1784, c-format
+#: src/BufferParams.cpp:1784
+#, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
 "%1$s\n"
@@ -17695,9 +17697,9 @@ msgid ""
 "You can either try to reconfigure LyX normally, try to reconfigure using "
 "only the defaults, or continue."
 msgstr ""
-"LyX bude mať minimálnu funkčnosť lebo sa nenašli žiadne súbory tried. "
-"Môžte skúsiť normálnu rekonfiguráciu, alebo rekonfigurovať použitím "
-"štandardných tried, alebo pokračovať."
+"LyX bude mať minimálnu funkčnosť lebo sa nenašli žiadne súbory tried. Môžte "
+"skúsiť normálnu rekonfiguráciu, alebo rekonfigurovať použitím štandardných "
+"tried, alebo pokračovať."
 
 #: src/LyX.cpp:512
 msgid "&Reconfigure"
@@ -17737,8 +17739,8 @@ msgid ""
 msgstr ""
 "Zachytený signál SIGSEGV!\n"
 "Ľutujem, našli ste chybu v LyXe, dúfam že ste nestratili žiadne dáta.\n"
-"Prečítajte si prosím údaje pre oznámenie chyby v 'Pomocník->Úvod' a "
-"keď treba, pošlite nám to oznámenie. Ďakujem !\n"
+"Prečítajte si prosím údaje pre oznámenie chyby v 'Pomocník->Úvod' a keď "
+"treba, pošlite nám to oznámenie. Ďakujem !\n"
 "Ahoj."
 
 #: src/LyX.cpp:640
@@ -17848,8 +17850,8 @@ msgstr ""
 "                  Pozrite si Nástroje->Preferencie->Obsluha súborov->Formáty "
 "súborov\n"
 "                  aby ste prišli na to, ktorý parameter by sa mal použiť.\n"
-"                  Uvedomte si, že poradie prepínačov -e a -x je významné."
-"\t-i [--import] fmt file.xxx\n"
+"                  Uvedomte si, že poradie prepínačov -e a -x je významné.\t-"
+"i [--import] fmt file.xxx\n"
 "                  kde fmt je vybraný formát k importu\n"
 "                  a file.xxx je meno súboru určeného pre import.\n"
 "\t--batch    spusti príkazy bez GUI a skonč\n"
@@ -22574,7 +22576,7 @@ msgstr "Chránená horizontálna medzera (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Neznámy typ obsahu"
 
-#: src/insets/InsetTabular.cpp:4327
+#: src/insets/InsetTabular.cpp:4332
 msgid "Selection size should match clipboard content."
 msgstr "Veľkosť výberu by mala zodpovedať obsahu klipsovej dosky."
 
