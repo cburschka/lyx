@@ -72,18 +72,19 @@ int getPrivateFrameworkPathName(char * buf, unsigned len, char const * framework
 {
 	// Get our application's main bundle from Core Foundation
 	CFBundleRef myAppsBundle = CFBundleGetMainBundle();
+	int result = 0 ;
 	if (NULL != myAppsBundle) {
 		CFURLRef baseURL = CFBundleCopyPrivateFrameworksURL( myAppsBundle );
 		if (NULL != baseURL) {
 			CFURLRef bundleURL = CFURLCreateCopyAppendingPathComponent( kCFAllocatorSystemDefault, baseURL,
-				CFStringCreateWithCString(kCFAllocatorSystemDefault, framework, kCFStringEncodingMacRoman),
+				CFStringCreateWithCString( kCFAllocatorSystemDefault, framework, CFStringGetSystemEncoding() ),
 				false );
-			if ( NULL != bundleURL && CFURLGetFileSystemRepresentation(bundleURL, TRUE, (UInt8*)buf, len) ) {
-				return 1 ;
+			if (NULL != bundleURL) {
+				result = CFURLGetFileSystemRepresentation( bundleURL, TRUE, (UInt8*)buf, len );
 			}
 		}
 	}
-	return 0;
+	return result;
 }
 
 #endif
