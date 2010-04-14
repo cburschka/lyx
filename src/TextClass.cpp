@@ -1278,7 +1278,7 @@ DocumentClass & DocumentClassBundle::makeDocumentClass(
 						"this document but has not been found in the list of\n"
 						"available modules. If you recently installed it, you\n"
 						"probably need to reconfigure LyX.\n"), from_utf8(modName));
-			ExceptionMessage(WarningException,_("Module not available"),
+			throw ExceptionMessage(WarningException,_("Module not available"),
 					msg + _("Some layouts may not be available."));
 			continue;
 		}
@@ -1287,7 +1287,7 @@ DocumentClass & DocumentClassBundle::makeDocumentClass(
 						bformat(_("The module %1$s requires a package that is\n"
 						"not available in your LaTeX installation. LaTeX output\n"
 						"may not be possible.\n"), from_utf8(modName));
-			ExceptionMessage(WarningException, _("Package not available"), msg);
+			throw ExceptionMessage(WarningException, _("Package not available"), msg);
 		}
 		FileName layout_file = libFileSearch("layouts", lm->getFilename());
 		if (!doc_class.read(layout_file, TextClass::MODULE)) {
