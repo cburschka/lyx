@@ -78,7 +78,8 @@ public:
 		RC_EXAMPLEPATH,
 		RC_FONT_ENCODING,
 		RC_FORMAT,
-		RC_FORWARD_SEARCH,
+		RC_FORWARD_SEARCH_DVI,
+		RC_FORWARD_SEARCH_PDF,
 		RC_FULL_SCREEN_LIMIT,
 		RC_FULL_SCREEN_SCROLLBAR,
 		RC_FULL_SCREEN_TABBAR,
@@ -492,7 +493,9 @@ public:
 	///
 	bool single_close_tab_button;
 	///
-	std::string forward_search;
+	std::string forward_search_dvi;
+	///
+	std::string forward_search_pdf;
 };
 
 

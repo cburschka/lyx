@@ -3224,25 +3224,27 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 
 		case LFUN_FORWARD_SEARCH: {
-			string out_type="dvi";
-			if (argument == "pdf")
-				out_type = "pdf";
-
+			string command = lyxrc.forward_search_dvi;
 			FileName const path(doc_buffer->temppath());
-			support::PathChanger p(path);
 			string const texname = doc_buffer->latexName();
-			string const outname = support::changeExtension(doc_buffer->latexName(), out_type);
+			string outname = support::changeExtension(texname, "dvi");
+			if (!FileName(addName(path.absFilename(), outname)).exists()) {
+				outname = support::changeExtension(texname, "pdf");
+				command = lyxrc.forward_search_pdf;
+				if (!FileName(addName(path.absFilename(), outname)).exists())
+					break;
+			}
 
 			int row = doc_buffer->texrow().getRowFromIdPos(bv->cursor().paragraph().id(), bv->cursor().pos());
-			if (!row)
+			if (!row || command.empty())
 				break;
 			string texrow = convert<string>(row);
 
-			string command = lyxrc.forward_search;
 			command = subst(command, "$$n", texrow);
 			command = subst(command, "$$t", texname);
 			command = subst(command, "$$o", outname);
 
+			PathChanger p(path);
 			Systemcall one;
 			one.startscript(Systemcall::Wait, command);
 			break;

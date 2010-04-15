@@ -94,7 +94,8 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\example_path", LyXRC::RC_EXAMPLEPATH },
 	{ "\\font_encoding", LyXRC::RC_FONT_ENCODING },
 	{ "\\format", LyXRC::RC_FORMAT },
-	{ "\\forward_search", LyXRC::RC_FORWARD_SEARCH },
+	{ "\\forward_search_dvi", LyXRC::RC_FORWARD_SEARCH_DVI },
+	{ "\\forward_search_pdf", LyXRC::RC_FORWARD_SEARCH_PDF },
 	{ "\\fullscreen_limit", LyXRC::RC_FULL_SCREEN_LIMIT },
 	{ "\\fullscreen_menubar", LyXRC::RC_FULL_SCREEN_MENUBAR },
 	{ "\\fullscreen_scrollbar", LyXRC::RC_FULL_SCREEN_SCROLLBAR },
@@ -327,7 +328,8 @@ void LyXRC::setDefaults()
 	user_email = to_utf8(support::user_email());
 	open_buffers_in_tabs = true;
 	single_close_tab_button = false;
-	forward_search = "xdvi -sourceposition $$n:$$t $$o";
+	forward_search_dvi = "xdvi -sourceposition $$n:$$t $$o";
+	forward_search_pdf = string();
 
 	// Fullscreen settings
 	full_screen_limit = false;
@@ -1158,9 +1160,13 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_SINGLE_CLOSE_TAB_BUTTON:
 			lexrc >> single_close_tab_button;
 			break;
-		case RC_FORWARD_SEARCH:
+		case RC_FORWARD_SEARCH_DVI:
 			if (lexrc.next(true)) 
-				forward_search = lexrc.getString();
+				forward_search_dvi = lexrc.getString();
+			break;
+		case RC_FORWARD_SEARCH_PDF:
+			if (lexrc.next(true)) 
+				forward_search_pdf = lexrc.getString();
 			break;
 
 		// Obsoteted in 1.4.0
@@ -1857,10 +1863,17 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-	case RC_FORWARD_SEARCH:
+	case RC_FORWARD_SEARCH_DVI:
 		if (ignore_system_lyxrc ||
-		    forward_search != system_lyxrc.forward_search) {
-			os << "\\forward_search \"" << escapeCommand(forward_search) << "\"\n";
+		    forward_search_dvi != system_lyxrc.forward_search_dvi) {
+			os << "\\forward_search_dvi \"" << escapeCommand(forward_search_dvi) << "\"\n";
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_FORWARD_SEARCH_PDF:
+		if (ignore_system_lyxrc ||
+		    forward_search_pdf != system_lyxrc.forward_search_pdf) {
+			os << "\\forward_search_pdf \"" << escapeCommand(forward_search_pdf) << "\"\n";
 		}
 		if (tag != RC_LAST)
 			break;
@@ -2816,7 +2829,8 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_VISUAL_CURSOR:
 	case LyXRC::RC_VIEWER:
 	case LyXRC::RC_VIEWER_ALTERNATIVES:
-	case LyXRC::RC_FORWARD_SEARCH:
+	case LyXRC::RC_FORWARD_SEARCH_DVI:
+	case LyXRC::RC_FORWARD_SEARCH_PDF:
 	case LyXRC::RC_LAST:
 		break;
 	}
