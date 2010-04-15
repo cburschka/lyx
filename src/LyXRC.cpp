@@ -1159,7 +1159,8 @@ int LyXRC::read(Lexer & lexrc)
 			lexrc >> single_close_tab_button;
 			break;
 		case RC_FORWARD_SEARCH:
-			lexrc >> forward_search;
+			if (lexrc.next(true)) 
+				forward_search = lexrc.getString();
 			break;
 
 		// Obsoteted in 1.4.0
@@ -1859,7 +1860,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 	case RC_FORWARD_SEARCH:
 		if (ignore_system_lyxrc ||
 		    forward_search != system_lyxrc.forward_search) {
-			os << "\\forward_search " << forward_search << '\n';
+			os << "\\forward_search \"" << forward_search << "\"\n";
 		}
 		if (tag != RC_LAST)
 			break;
