@@ -289,8 +289,6 @@ public:
 	void checkBufferStructure();
 
 public:
-	///
-	BufferView * bv_;
 //private:
 	
 	///
@@ -299,6 +297,8 @@ public:
 	void saveBeforeDispatchPosXY();
 
 private:
+	///
+	BufferView * bv_;
 	/// the anchor position
 	DocIterator anchor_;
 	///
