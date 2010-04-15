@@ -2020,8 +2020,8 @@ bool Text::insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/
 	LASSERT(cur.bv().cursor() == cur, /**/);
 	cur.insert(s);
 	cur.bv().cursor() = cur;
-	if (!(cur.disp_.update() & Update::Force))
-		cur.updateFlags(cur.disp_.update() | Update::SinglePar);
+	if (!(cur.result().update() & Update::Force))
+		cur.updateFlags(cur.result().update() | Update::SinglePar);
 	return true;
 }
 	

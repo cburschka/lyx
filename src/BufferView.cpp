@@ -2838,10 +2838,10 @@ void BufferView::setInlineCompletion(Cursor & cur, DocIterator const & pos,
 	
 	// set update flags
 	if (changed) {
-		if (singlePar && !(cur.disp_.update() & Update::Force))
-			cur.updateFlags(cur.disp_.update() | Update::SinglePar);
+		if (singlePar && !(cur.result().update() & Update::Force))
+			cur.updateFlags(cur.result().update() | Update::SinglePar);
 		else
-			cur.updateFlags(cur.disp_.update() | Update::Force);
+			cur.updateFlags(cur.result().update() | Update::Force);
 	}
 }
 

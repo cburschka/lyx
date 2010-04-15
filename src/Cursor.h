@@ -292,13 +292,13 @@ public:
 	DocIterator anchor_;
 	
 	///
-	mutable DispatchResult disp_;
-	///
 	DocIterator const & beforeDispatchCursor() const { return beforeDispatchCursor_; }
 	///
 	void saveBeforeDispatchPosXY();
 
 private:
+	///
+	mutable DispatchResult disp_;
 	/**
 	 * The target x position of the cursor. This is used for when
 	 * we have text like :
