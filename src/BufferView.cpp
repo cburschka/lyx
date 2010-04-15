@@ -1859,10 +1859,10 @@ docstring const BufferView::requestSelection()
 	LYXERR(Debug::SELECTION, "requestSelection: xsel_cache.set: " << d->xsel_cache_.set);
 	if (!d->xsel_cache_.set ||
 	    cur.top() != d->xsel_cache_.cursor ||
-	    cur.anchor_.top() != d->xsel_cache_.anchor)
+	    cur.realAnchor().top() != d->xsel_cache_.anchor)
 	{
 		d->xsel_cache_.cursor = cur.top();
-		d->xsel_cache_.anchor = cur.anchor_.top();
+		d->xsel_cache_.anchor = cur.realAnchor().top();
 		d->xsel_cache_.set = cur.selection();
 		return cur.selectionAsString(false);
 	}

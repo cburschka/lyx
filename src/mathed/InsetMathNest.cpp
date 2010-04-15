@@ -1454,7 +1454,7 @@ void InsetMathNest::lfunMouseMotion(Cursor & cur, FuncRequest & cmd)
 	// only select with button 1
 	if (cmd.button() == mouse_button::button1) {
 		Cursor & bvcur = cur.bv().cursor();
-		if (bvcur.anchor_.hasPart(cur)) {
+		if (bvcur.realAnchor().hasPart(cur)) {
 			//lyxerr << "## lfunMouseMotion: cursor: " << cur << endl;
 			bvcur.setCursor(cur);
 			bvcur.setSelection(true);

@@ -885,8 +885,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 						      bv->buffer().params().trackChanges);
 				// Update the selection pos to make sure the selection does not
 				// change as the inserted tab will increase the logical pos.
-				if (cur.anchor_.pit() == pit)
-					cur.anchor_.forwardPos();
+				if (cur.realAnchor().pit() == pit)
+					cur.realAnchor().forwardPos();
 				if (cur.pit() == pit)
 					cur.forwardPos();
 			}
@@ -912,8 +912,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				if (par.getChar(0) == '\t') {
 					if (cur.pit() == pit)
 						cur.posBackward();
-					if (cur.anchor_.pit() == pit && cur.anchor_.pos() > 0 )
-						cur.anchor_.backwardPos();
+					if (cur.realAnchor().pit() == pit && cur.realAnchor().pos() > 0 )
+						cur.realAnchor().backwardPos();
 					
 					par.eraseChar(0, tc);
 				} else 
@@ -922,8 +922,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 					     par.getChar(0) == ' ' && n_spaces < 4; ++n_spaces) {
 						if (cur.pit() == pit)
 							cur.posBackward();
-						if (cur.anchor_.pit() == pit && cur.anchor_.pos() > 0 )
-							cur.anchor_.backwardPos();
+						if (cur.realAnchor().pit() == pit && cur.realAnchor().pos() > 0 )
+							cur.realAnchor().backwardPos();
 						
 						par.eraseChar(0, tc);
 					}
@@ -1403,7 +1403,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		// ignore motions deeper nested than the real anchor
 		Cursor & bvcur = cur.bv().cursor();
-		if (!bvcur.anchor_.hasPart(cur)) {
+		if (!bvcur.realAnchor().hasPart(cur)) {
 			cur.undispatched();
 			break;
 		}

@@ -3560,7 +3560,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		//lyxerr << "# InsetTabular::MouseMotion\n" << bvcur << endl;
 		if (cmd.button() == mouse_button::button1) {
 			// only accept motions to places not deeper nested than the real anchor
-			if (!bvcur.anchor_.hasPart(cur)) {
+			if (!bvcur.realAnchor().hasPart(cur)) {
 				cur.undispatched();
 				break;
 			}
@@ -3590,7 +3590,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			}
 			// only update if selection changes
 			if (bvcur.idx() == cur.idx() &&
-				!(bvcur.anchor_.idx() == cur.idx() && bvcur.pos() != cur.pos()))
+				!(bvcur.realAnchor().idx() == cur.idx() && bvcur.pos() != cur.pos()))
 				cur.noUpdate();
 			setCursorFromCoordinates(cur, cmd.x(), cmd.y());
 			bvcur.setCursor(cur);

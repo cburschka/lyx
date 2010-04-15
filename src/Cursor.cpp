@@ -214,7 +214,7 @@ bool bruteFind3(Cursor & cur, int x, int y, bool up)
 	for ( ; it != et; it.forwardPos()) {
 		// avoid invalid nesting when selecting
 		if (bv.cursorStatus(it) == CUR_INSIDE
-				&& (!cur.selection() || positionable(it, cur.anchor_))) {
+				&& (!cur.selection() || positionable(it, cur.realAnchor()))) {
 			Point p = bv.getPos(it, false);
 			int xo = p.x_;
 			int yo = p.y_;
@@ -991,6 +991,12 @@ CursorSlice Cursor::normalAnchor() const
 		++normal.pos();
 	}
 	return normal;
+}
+
+
+DocIterator & Cursor::realAnchor()
+{
+	return anchor_;
 }
 
 
