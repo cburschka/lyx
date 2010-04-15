@@ -78,6 +78,7 @@ public:
 		RC_EXAMPLEPATH,
 		RC_FONT_ENCODING,
 		RC_FORMAT,
+		RC_FORWARD_SEARCH,
 		RC_FULL_SCREEN_LIMIT,
 		RC_FULL_SCREEN_SCROLLBAR,
 		RC_FULL_SCREEN_TABBAR,
@@ -490,6 +491,8 @@ public:
 	bool open_buffers_in_tabs;
 	///
 	bool single_close_tab_button;
+	///
+	std::string forward_search;
 };
 
 

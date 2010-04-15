@@ -2825,6 +2825,23 @@ void LyXAction::init()
  */
 		{ LFUN_SERVER_GOTO_FILE_ROW, "server-goto-file-row", ReadOnly | NoBuffer, System },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_FORWARD_SEARCH
+ * \li Action: Sets the cursor position in the previewed (e.g. dvi) file based on the row
+               number in LyX window.
+ * \li Notion: The external program used for forward search call can be specified in
+               \\forward_search RC setting. By default its value is\n
+	       "xdvi -sourceposition $$n:$$t $$o"\n
+	       The values replaced in the call: $$n for row number, $$t for
+	       exported temporary .tex file, $$o exported output file, either
+	       dvi or pdf, depending on the argument of #LFUN_FORWARD_SEARCH.
+ * \li Syntax: forward-search [dvi|pdf]
+ * \li Params: By default dvi route is taken.
+ * \li Origin: sanda, 14 Apr 2010
+ * \endvar
+ */
+		{ LFUN_FORWARD_SEARCH, "forward-search", ReadOnly, System },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_SERVER_NOTIFY
  * \li Action: Sends notify message about the last key-sequence to client.
  * \li Notion: This can be used to grab last key-sequence used inside the LyX window.

@@ -68,6 +68,9 @@ bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 int TexRow::getRowFromIdPos(int id, int pos) const
 {
 	bool foundid = false;
+	//lyxerr<<"Table:";
+	//for (unsigned int i=0; i<rowlist.size(); i++)
+	//lyxerr<<i<<" (id,pos):\t"<<rowlist[i].id()<<" "<<rowlist[i].pos()<<"\n";
 
 	// this loop finds the last *nonempty* row with the same id
 	// and position <= pos

@@ -445,6 +445,7 @@ enum FuncCode
 	LFUN_SPELLING_IGNORE,           // spitz 20100118
 	// 345
 	LFUN_PREVIEW_INSERT,            // vfr, 20100328
+	LFUN_FORWARD_SEARCH,
 
 	LFUN_LASTACTION                 // end of the table
 };

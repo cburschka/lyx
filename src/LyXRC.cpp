@@ -94,6 +94,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\example_path", LyXRC::RC_EXAMPLEPATH },
 	{ "\\font_encoding", LyXRC::RC_FONT_ENCODING },
 	{ "\\format", LyXRC::RC_FORMAT },
+	{ "\\forward_search", LyXRC::RC_FORWARD_SEARCH },
 	{ "\\fullscreen_limit", LyXRC::RC_FULL_SCREEN_LIMIT },
 	{ "\\fullscreen_menubar", LyXRC::RC_FULL_SCREEN_MENUBAR },
 	{ "\\fullscreen_scrollbar", LyXRC::RC_FULL_SCREEN_SCROLLBAR },
@@ -326,6 +327,7 @@ void LyXRC::setDefaults()
 	user_email = to_utf8(support::user_email());
 	open_buffers_in_tabs = true;
 	single_close_tab_button = false;
+	forward_search = "xdvi -sourceposition $$n:$$t $$o";
 
 	// Fullscreen settings
 	full_screen_limit = false;
@@ -1156,6 +1158,9 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_SINGLE_CLOSE_TAB_BUTTON:
 			lexrc >> single_close_tab_button;
 			break;
+		case RC_FORWARD_SEARCH:
+			lexrc >> forward_search;
+			break;
 
 		// Obsoteted in 1.4.0
 		case RC_USETEMPDIR:
@@ -1840,12 +1845,21 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			   << convert<string>(open_buffers_in_tabs)
 			   << '\n';
 		}
+		if (tag != RC_LAST)
+			break;
 	case RC_SINGLE_CLOSE_TAB_BUTTON:
 		if (ignore_system_lyxrc ||
 		    single_close_tab_button != system_lyxrc.single_close_tab_button) {
 			os << "\\single_close_tab_button "
 			   << convert<string>(single_close_tab_button)
 			   << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_FORWARD_SEARCH:
+		if (ignore_system_lyxrc ||
+		    forward_search != system_lyxrc.forward_search) {
+			os << "\\forward_search " << forward_search << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
@@ -2801,6 +2815,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_VISUAL_CURSOR:
 	case LyXRC::RC_VIEWER:
 	case LyXRC::RC_VIEWER_ALTERNATIVES:
+	case LyXRC::RC_FORWARD_SEARCH:
 	case LyXRC::RC_LAST:
 		break;
 	}

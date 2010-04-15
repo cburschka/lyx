@@ -57,6 +57,7 @@
 #include "LyXVC.h"
 #include "Paragraph.h"
 #include "SpellChecker.h"
+#include "TexRow.h"
 #include "TextClass.h"
 #include "Text.h"
 #include "Toolbars.h"
@@ -1656,6 +1657,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_SERVER_GOTO_FILE_ROW:
+	case LFUN_FORWARD_SEARCH:
 		break;
 
 	default:
@@ -3221,6 +3223,30 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			goToFileRow(to_utf8(cmd.argument()));
 			break;
 
+		case LFUN_FORWARD_SEARCH: {
+			string out_type="dvi";
+			if (argument == "pdf")
+				out_type = "pdf";
+
+			FileName const path(doc_buffer->temppath());
+			support::PathChanger p(path);
+			string const texname = doc_buffer->latexName();
+			string const outname = support::changeExtension(doc_buffer->latexName(), out_type);
+
+			int row = doc_buffer->texrow().getRowFromIdPos(bv->cursor().paragraph().id(), bv->cursor().pos());
+			if (!row)
+				break;
+			string texrow = convert<string>(row);
+
+			string command = lyxrc.forward_search;
+			command = subst(command, "$$n", texrow);
+			command = subst(command, "$$t", texname);
+			command = subst(command, "$$o", outname);
+
+			Systemcall one;
+			one.startscript(Systemcall::Wait, command);
+			break;
+		}
 		default:
 			dr.dispatched(false);
 			break;
