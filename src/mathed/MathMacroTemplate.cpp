@@ -771,7 +771,7 @@ class NullMacroInstanceFix
 {
 public:
 	///
-	void operator()(MathMacro * macro) {}
+	void operator()(MathMacro * ) {}
 };
 
 
