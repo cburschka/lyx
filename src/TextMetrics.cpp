@@ -2078,7 +2078,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		// This is our text.
 		&& cur.text() == text_
 		// if the anchor is outside, this is not our selection
-		&& cur.anchor().text() == text_
+		&& cur.normalAnchor().text() == text_
 		&& pit >= sel_beg.pit() && pit <= sel_end.pit();
 
 	// We store the begin and end pos of the selection relative to this par

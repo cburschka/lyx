@@ -2258,7 +2258,7 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 		d->cursor_.fixIfBroken();
 
 	// FIXME: shift-mouse selection doesn't work well across insets.
-	bool do_selection = select && &d->cursor_.anchor().inset() == &cur.inset();
+	bool do_selection = select && &d->cursor_.normalAnchor().inset() == &cur.inset();
 
 	// do the dEPM magic if needed
 	// FIXME: (1) move this to InsetText::notifyCursorLeaves?

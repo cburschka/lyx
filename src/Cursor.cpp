@@ -980,7 +980,7 @@ void Cursor::posVisToRowExtremity(bool left)
 }
 
 
-CursorSlice Cursor::anchor() const
+CursorSlice Cursor::normalAnchor() const
 {
 	if (!selection())
 		return top();
@@ -998,7 +998,7 @@ CursorSlice Cursor::selBegin() const
 {
 	if (!selection())
 		return top();
-	return anchor() < top() ? anchor() : top();
+	return normalAnchor() < top() ? normalAnchor() : top();
 }
 
 
@@ -1006,7 +1006,7 @@ CursorSlice Cursor::selEnd() const
 {
 	if (!selection())
 		return top();
-	return anchor() > top() ? anchor() : top();
+	return normalAnchor() > top() ? normalAnchor() : top();
 }
 
 
@@ -1018,10 +1018,10 @@ DocIterator Cursor::selectionBegin() const
 	DocIterator di;
 	// FIXME: This is a work-around for the problem that
 	// CursorSlice doesn't keep track of the boundary.
-	if (anchor() == top())
+	if (normalAnchor() == top())
 		di = anchor_.boundary() > boundary() ? anchor_ : *this;
 	else
-		di = anchor() < top() ? anchor_ : *this;
+		di = normalAnchor() < top() ? anchor_ : *this;
 	di.resize(depth());
 	return di;
 }
@@ -1035,10 +1035,10 @@ DocIterator Cursor::selectionEnd() const
 	DocIterator di;
 	// FIXME: This is a work-around for the problem that
 	// CursorSlice doesn't keep track of the boundary.
-	if (anchor() == top())
+	if (normalAnchor() == top())
 		di = anchor_.boundary() < boundary() ? anchor_ : *this;
 	else
-		di = anchor() > top() ? anchor_ : *this;
+		di = normalAnchor() > top() ? anchor_ : *this;
 
 	if (di.depth() > depth()) {
 		di.resize(depth());
@@ -1053,9 +1053,9 @@ void Cursor::setSelection()
 	setSelection(true);
 	// A selection with no contents is not a selection
 	// FIXME: doesnt look ok
-	if (idx() == anchor().idx() && 
-	    pit() == anchor().pit() && 
-	    pos() == anchor().pos())
+	if (idx() == normalAnchor().idx() && 
+	    pit() == normalAnchor().pit() && 
+	    pos() == normalAnchor().pos())
 		setSelection(false);
 }
 

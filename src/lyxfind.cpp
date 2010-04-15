@@ -371,7 +371,7 @@ bool findChange(BufferView * bv, bool next)
 	if (bv->cursor().selection()) {
 		// set the cursor at the beginning or at the end of the selection
 		// before searching. Otherwise, the current change will be found.
-		if (next != (bv->cursor().top() > bv->cursor().anchor()))
+		if (next != (bv->cursor().top() > bv->cursor().normalAnchor()))
 			bv->cursor().setCursorToAnchor();
 	}
 

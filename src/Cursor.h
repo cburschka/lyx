@@ -201,7 +201,7 @@ public:
 	int textTargetOffset() const;
 
 	/// access to normalized selection anchor
-	CursorSlice anchor() const;
+	CursorSlice normalAnchor() const;
 	/// sets anchor to cursor position
 	void resetAnchor();
 	/// access to owning BufferView

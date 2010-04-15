@@ -716,7 +716,7 @@ void RowPainter::paintOnlyInsets()
 		bool const pi_selected = pi_.selected;
 		Cursor const & cur = pi_.base.bv->cursor();
 		if (cur.selection() && cur.text() == &text_ 
-			  && cur.anchor().text() == &text_)
+			  && cur.normalAnchor().text() == &text_)
 			pi_.selected = row_.sel_beg <= pos && row_.sel_end > pos; 
 		paintInset(inset, pos);
 		pi_.selected = pi_selected;
@@ -858,7 +858,7 @@ void RowPainter::paintText()
 			bool const pi_selected = pi_.selected;
 			Cursor const & cur = pi_.base.bv->cursor();
 			if (cur.selection() && cur.text() == &text_ 
-				  && cur.anchor().text() == &text_)
+				  && cur.normalAnchor().text() == &text_)
 				pi_.selected = row_.sel_beg <= pos && row_.sel_end > pos; 
 			paintInset(inset, pos);
 			pi_.selected = pi_selected;
