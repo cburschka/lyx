@@ -324,34 +324,6 @@ static void setComboxFont(QComboBox * cb, string const & family,
 }
 
 
-
-/////////////////////////////////////////////////////////////////////
-//
-// PrefPlaintext
-//
-/////////////////////////////////////////////////////////////////////
-
-PrefPlaintext::PrefPlaintext(GuiPreferences * form)
-	: PrefModule(qt_(catOutput), qt_("Plain text"), form)
-{
-	setupUi(this);
-	connect(plaintextLinelengthSB, SIGNAL(valueChanged(int)),
-		this, SIGNAL(changed()));
-}
-
-
-void PrefPlaintext::apply(LyXRC & rc) const
-{
-	rc.plaintext_linelen = plaintextLinelengthSB->value();
-}
-
-
-void PrefPlaintext::update(LyXRC const & rc)
-{
-	plaintextLinelengthSB->setValue(rc.plaintext_linelen);
-}
-
-
 /////////////////////////////////////////////////////////////////////
 //
 // StrftimeValidator
@@ -383,21 +355,23 @@ QValidator::State StrftimeValidator::validate(QString & input, int & /*pos*/) co
 
 /////////////////////////////////////////////////////////////////////
 //
-// PrefDate
+// PrefOutput
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefDate::PrefDate(GuiPreferences * form)
-	: PrefModule(qt_(catOutput), qt_("Date format"), form)
+PrefOutput::PrefOutput(GuiPreferences * form)
+	: PrefModule(qt_(catOutput), qt_("General"), form)
 {
 	setupUi(this);
 	DateED->setValidator(new StrftimeValidator(DateED));
 	connect(DateED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+	connect(plaintextLinelengthSB, SIGNAL(valueChanged(int)),
+		this, SIGNAL(changed()));
 }
 
 
-void PrefDate::on_DateED_textChanged(const QString &)
+void PrefOutput::on_DateED_textChanged(const QString &)
 {
 	QString t = DateED->text();
 	int p = 0;
@@ -407,15 +381,17 @@ void PrefDate::on_DateED_textChanged(const QString &)
 }
 
 
-void PrefDate::apply(LyXRC & rc) const
+void PrefOutput::apply(LyXRC & rc) const
 {
 	rc.date_insert_format = fromqstr(DateED->text());
+	rc.plaintext_linelen = plaintextLinelengthSB->value();
 }
 
 
-void PrefDate::update(LyXRC const & rc)
+void PrefOutput::update(LyXRC const & rc)
 {
 	DateED->setText(toqstr(rc.date_insert_format));
+	plaintextLinelengthSB->setValue(rc.plaintext_linelen);
 }
 
 
@@ -2927,10 +2903,10 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	addModule(new PrefLanguage(this));
 	addModule(new PrefSpellchecker(this));
 
+	//for strftime validator
+	PrefOutput * output = new PrefOutput(this); 
+	addModule(output);
 	addModule(new PrefPrinter(this));
-	PrefDate * dateFormat = new PrefDate(this);
-	addModule(dateFormat);
-	addModule(new PrefPlaintext(this));
 	addModule(new PrefLatex(this));
 
 	PrefConverters * converters = new PrefConverters(this);
@@ -2954,7 +2930,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	bc().setRestore(restorePB);
 
 	// initialize the strftime validator
-	bc().addCheckedLineEdit(dateFormat->DateED);
+	bc().addCheckedLineEdit(output->DateED);
 }
 
 
