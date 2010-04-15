@@ -335,13 +335,13 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	// Is this a function that acts on inset at point?
 	if (lyxaction.funcHasFlag(cmd.action(), LyXAction::AtPoint)
 	    && nextInset()) {
-		result().dispatched(true);
-		result().update(Update::FitCursor | Update::Force);
+		disp_.dispatched(true);
+		disp_.update(Update::FitCursor | Update::Force);
 		FuncRequest tmpcmd = cmd;
 		LYXERR(Debug::DEBUG, "Cursor::dispatch: (AtPoint) cmd: "
 			<< cmd0 << endl << *this);
 		nextInset()->dispatch(*this, tmpcmd);
-		if (result().dispatched()) {
+		if (disp_.dispatched()) {
 			buffer()->undo().endUndoGroup();
 			return;
 		}
@@ -391,7 +391,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 }
 
 
-DispatchResult Cursor::result() const
+DispatchResult const & Cursor::result() const
 {
 	return disp_;
 }

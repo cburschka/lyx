@@ -50,7 +50,7 @@ public:
 	/// dispatch from innermost inset upwards
 	void dispatch(FuncRequest const & cmd);
 	/// get the resut of the last dispatch
-	DispatchResult result() const;
+	DispatchResult const & result() const;
 	/// add a new cursor slice
 	void push(Inset & inset);
 	/// add a new cursor slice, place cursor at front (move backwards)
