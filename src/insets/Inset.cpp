@@ -384,6 +384,11 @@ bool Inset::getStatus(Cursor &, FuncRequest const & cmd,
 			flag.setEnabled(false);
 			return false;
 		}
+	
+	case LFUN_IN_MATHMACROTEMPLATE:
+		// By default we're not in a MathMacroTemplate inset
+		flag.setEnabled(false);
+		return true;
 
 	default:
 		break;
