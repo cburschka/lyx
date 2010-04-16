@@ -368,9 +368,9 @@ PrefOutput::PrefOutput(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(plaintextLinelengthSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
-	connect(dviCB, SIGNAL(textChanged(QString)),
+	connect(dviCB, SIGNAL(editTextChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(pdfCB, SIGNAL(textChanged(QString)),
+	connect(pdfCB, SIGNAL(editTextChanged(QString)),
 		this, SIGNAL(changed()));
 	dviCB->addItem("");
 	dviCB->addItem("xdvi -sourceposition $$n:$$t $$o");
