@@ -58,7 +58,7 @@ Menuset
 		Separator
 		Item "Split Cell|C" "cell-split"
 		Separator
-		Submenu "Insert|n" "insert_math_context"
+		Submenu "Insert|s" "insert_math_context"
 		Separator
 		OptItem "Add Line Above|o" "tabular-feature add-hline-above"
 		OptItem "Add Line Below|B" "tabular-feature add-hline-below"
