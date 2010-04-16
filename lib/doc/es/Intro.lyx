@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -210,7 +210,7 @@ qué carácter va en qué lugar
  cada cosa.
  Resaltar texto significa cambiar el tipo de letra, similar a cambiar la
  rueda en una máquina de escribir.
- Esta es la filosofía subyacente en un preocesador de textos del tipo WYSIWYG:
+ Esta es la filosofía subyacente en un procesador de textos del tipo WYSIWYG:
  
 \begin_inset Quotes eld
 \end_inset
@@ -269,7 +269,7 @@ Para ser sinceros, las versiones recientes de los procesadores de texto
 \end_layout
 
 \begin_layout Standard
-Supón que vas a escribir un informe.
+Supongamos que vas a escribir un informe.
  Quieres que comience con una sección llamada 
 \begin_inset Quotes eld
 \end_inset
@@ -344,7 +344,7 @@ Veamos ahora el problema de la consistencia.
 
 \begin_layout Standard
 Otro ejemplo.
- Supón que estás haciendo una lista.
+ Supongamos que estás haciendo una lista.
  En otros procesadores de texto una lista es sólo una mera secuencia de
  tabuladores y saltos de línea.
  Necesitas pensar dónde poner la etiqueta de cada elemento de la lista,
@@ -1586,7 +1586,11 @@ dd)
 \begin_inset Text
 
 \begin_layout Plain Layout
-Scale%
+escala
+\begin_inset space \thinspace{}
+\end_inset
+
+%
 \end_layout
 
 \end_inset
@@ -1606,7 +1610,11 @@ Scale%
 \begin_inset Text
 
 \begin_layout Plain Layout
-text%
+texto
+\begin_inset space \thinspace{}
+\end_inset
+
+%
 \end_layout
 
 \end_inset
@@ -1626,7 +1634,11 @@ text%
 \begin_inset Text
 
 \begin_layout Plain Layout
-col%
+columna
+\begin_inset space \thinspace{}
+\end_inset
+
+%
 \end_layout
 
 \end_inset
@@ -1646,7 +1658,11 @@ col%
 \begin_inset Text
 
 \begin_layout Plain Layout
-page%
+página
+\begin_inset space \thinspace{}
+\end_inset
+
+%
 \end_layout
 
 \end_inset
@@ -1666,7 +1682,11 @@ page%
 \begin_inset Text
 
 \begin_layout Plain Layout
-line%
+línea
+\begin_inset space \thinspace{}
+\end_inset
+
+%
 \end_layout
 
 \end_inset
@@ -1686,7 +1706,11 @@ line%
 \begin_inset Text
 
 \begin_layout Plain Layout
-theight%
+alt_texto
+\begin_inset space \thinspace{}
+\end_inset
+
+%
 \end_layout
 
 \end_inset
@@ -1706,7 +1730,11 @@ theight%
 \begin_inset Text
 
 \begin_layout Plain Layout
-pheight%
+alt_página
+\begin_inset space \thinspace{}
+\end_inset
+
+%
 \end_layout
 
 \end_inset
@@ -2026,11 +2054,7 @@ Al usar LyX puede que observes comportamientos que puedes considerar como
 \end_layout
 
 \begin_layout Standard
-LyX tiene un sistema de seguimiento de errores alojado en
-\begin_inset Newline newline
-\end_inset
-
-
+LyX tiene un sistema de seguimiento de errores alojado en 
 \family typewriter
 
 \begin_inset Flex URL
@@ -2173,7 +2197,7 @@ http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc
 \end_layout
 
 \begin_layout Enumerate
-Léelo el 
+Lee el 
 \emph on
 Tutorial
 \emph default
