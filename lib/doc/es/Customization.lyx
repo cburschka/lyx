@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -1165,7 +1165,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-LYX_USERDIR_VER
+LYX_USERDIR_16x
 \end_layout
 
 \end_inset
@@ -1240,13 +1240,14 @@ Guía del usuario
 \end_layout
 
 \begin_layout Section
+Formatos
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Formatos"
 
 \end_inset
 
-Formatos
+
 \end_layout
 
 \begin_layout Standard
@@ -1269,7 +1270,7 @@ Preferencias
 status collapsed
 
 \begin_layout Plain Layout
-Formatos externos\SpecialChar \menuseparator
+Gestión de archivos\SpecialChar \menuseparator
 Formatos de archivo
 \end_layout
 
@@ -1801,7 +1802,7 @@ Preferencias
 status collapsed
 
 \begin_layout Plain Layout
-Formatos externos\SpecialChar \menuseparator
+Gestión de archivos\SpecialChar \menuseparator
 Formatos de archivo
 \end_layout
 
@@ -1944,13 +1945,14 @@ status collapsed
 \end_layout
 
 \begin_layout Section
+Convertidores
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Convertidores"
 
 \end_inset
 
-Convertidores
+
 \end_layout
 
 \begin_layout Standard
@@ -1963,7 +1965,7 @@ status collapsed
 \begin_layout Plain Layout
 Herramientas\SpecialChar \menuseparator
 Preferencias\SpecialChar \menuseparator
-Formatos externos\SpecialChar \menuseparator
+Gestión de archivos\SpecialChar \menuseparator
 Convertidores
 \end_layout
 
@@ -2089,46 +2091,17 @@ $$p
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\begin_inset Flex CharStyle:Code
+status collapsed
 
-\color red
-
-\backslash
-begin_layout Labeling 
-\backslash
-labelwidthstring 00.00.0000 
-\backslash
-begin_inset Flex CharStyle:Code status collapsed
+\begin_layout Plain Layout
+$$r
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\end_inset
 
-\color red
-
-\backslash
-begin_layout Plain Layout $$r 
-\backslash
-end_layout
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\color red
-
-\backslash
-end_inset
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\color red
-The path to the original input file (this is different from $$p when chain
- of converters is called).
- 
-\backslash
-end_layout 
+ La ruta al archivo de entrada original (esto es diferente de $$p cuando
+ se invoca una cadena de convertidores).
 \end_layout
 
 \begin_layout Standard
@@ -14555,7 +14528,7 @@ Convertidores
 status collapsed
 
 \begin_layout Plain Layout
-Formatos externos
+Gestión de archivos
 \end_layout
 
 \end_inset

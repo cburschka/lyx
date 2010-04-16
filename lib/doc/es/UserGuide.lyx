@@ -53,6 +53,10 @@
 % only uncomment this when you are using makindex
 %\let\OrgIndex\index 
 %\renewcommand*{\index}[1]{\OrgIndex{#1}}
+
+% specify font encoding explicitely to be able to compile
+% all characters in Table 6.1 "Conjunto de caracteres latin1"
+\usepackage[T1]{fontenc}
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove
 \use_default_options false
@@ -13938,11 +13942,7 @@ h3knix/m0n0wall
 \family sans
 Insertar\SpecialChar \menuseparator
 Formato\SpecialChar \menuseparator
-Punto
-\begin_inset space ~
-\end_inset
-
-guionado
+Guión silábico
 \family default
 .
  Estos guiones extras sólo son recomendaciones para LaTeX.
@@ -36118,11 +36118,11 @@ reference "sub:Espacio-vertical"
 \end_layout
 
 \begin_layout Description
-Punto
+Guión
 \begin_inset space ~
 \end_inset
 
-guionado Inserta un guión, véase la sección
+silábico Inserta un guión, véase la sección
 \begin_inset space ~
 \end_inset
 
@@ -37341,10 +37341,6 @@ reference "sec:LaTeX-conf"
 \end_inset
 
 ).
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard
@@ -41132,10 +41128,6 @@ Usar Pixmap Cache
 OS o Windows.
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Subsection
 Colores
 \begin_inset Index
@@ -41966,7 +41958,7 @@ Paquete
 \begin_inset space ~
 \end_inset
 
-del
+de
 \begin_inset space ~
 \end_inset
 
@@ -42959,12 +42951,12 @@ Configuración
 \end_layout
 
 \begin_layout Section
-Formatos externos
+Gestión de archivos
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Formatos externos
+Gestión de archivos
 \end_layout
 
 \end_inset
