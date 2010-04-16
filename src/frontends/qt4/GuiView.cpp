@@ -3238,8 +3238,10 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			}
 
 			int row = doc_buffer->texrow().getRowFromIdPos(bv->cursor().paragraph().id(), bv->cursor().pos());
-			if (!row || command.empty())
+			if (!row || command.empty()) {
+				dr.setMessage(_("Couldn't proceed."));
 				break;
+			}
 			string texrow = convert<string>(row);
 
 			command = subst(command, "$$n", texrow);
