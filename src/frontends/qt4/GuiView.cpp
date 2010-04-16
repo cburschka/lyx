@@ -1399,10 +1399,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	if (cmd.origin() == FuncRequest::TOC) {
 		GuiToc * toc = static_cast<GuiToc*>(findOrBuild("toc", false));
-		FuncStatus fs;
-		if (toc->getStatus(documentBufferView()->cursor(), cmd, fs))
-			flag = fs;
-		else
+		if (!toc || !toc->getStatus(documentBufferView()->cursor(), cmd, flag))
 			flag.setEnabled(false);
 		return true;
 	}
