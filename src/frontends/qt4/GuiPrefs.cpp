@@ -377,7 +377,7 @@ PrefOutput::PrefOutput(GuiPreferences * form)
 	dviCB->addItem("yap -1 -s $$n$$t $$o");
 	pdfCB->addItem("");
 	pdfCB->addItem("CMCDDE SUMATRA control [ForwardSearch(\\\"$$o\\\",\\\"$$t\\\",$$n,0,0,1)]");
-	pdfCB->addItem("synctex view -i $$n:1:$$t -o $$o -x \"xpdf -raise -remote $$t.tmp $$o %{page+1}\"");
+	pdfCB->addItem("synctex view -i $$n:0:$$t -o $$o -x \"xpdf -raise -remote $$t.tmp $$o %{page+1}\"");
 }
 
 
