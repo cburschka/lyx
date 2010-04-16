@@ -62,8 +62,8 @@ Menuset
 		Separator
 		OptItem "Add Line Above|o" "inset-modify tabular add-hline-above"
 		OptItem "Add Line Below|B" "inset-modify tabular add-hline-below"
-		OptItem "Delete Line Above|D" "inset-modify tabular delete-hline-above"
-		OptItem "Delete Line Below|e" "inset-modify tabular delete-hline-below"
+		OptItem "Delete Line Above|v" "inset-modify tabular delete-hline-above"
+		OptItem "Delete Line Below|w" "inset-modify tabular delete-hline-below"
 		Separator
 		OptItem "Add Line to Left" "inset-modify tabular add-vline-left"
 		OptItem "Add Line to Right" "inset-modify tabular add-vline-right"
