@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 382
+\lyxformat 385
 \begin_document
 \begin_header
 \textclass scrbook
@@ -123,10 +123,11 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_be_strict true
+\author 1 "ab" 
 \end_header
 
 \begin_body
@@ -5277,6 +5278,16 @@ lyxclient
 \end_layout
 
 \begin_layout Subsection
+
+\change_inserted 1 1271453726
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:rev-search"
+
+\end_inset
+
+
+\change_unchanged
 Enabling reverse search
 \end_layout
 
@@ -6414,6 +6425,72 @@ lyxpipe
 
 \begin_layout Standard
 Reverse search is triggered by double-click.
+\change_inserted 1 1271453423
+
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 1 1271453442
+Forward search
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1 1271454338
+To make forward search possible you need to provide generated output PDF/DVI
+ file with additional information about TeX sources.
+ This can be done via the methods described in the section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:rev-search"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1 1271454479
+Secondly you need to configure LyX for using your viewers in 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1 1271453866
+Preferences\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+General
+\end_layout
+
+\end_inset
+
+.
+ Only some of the viewers allows this operation --- yap, xdvi, okular, Sumatra
+ PDF
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1 1271454273
+For Sumatra CMCDDE is needed --- downloadable from http://www.istri.fr/zip/CMCDDE.z
+ip
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+ Some other viewers allow at least reloading and positioning to particular
+ page of the file --- Evince or xpdf --- for these cases you can use external
+ call of synctex.
+ Please study the prepared examples in the Preferences dialog.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Chapter
