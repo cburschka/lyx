@@ -173,6 +173,9 @@ std::string const subst(std::string const & a,
 docstring const subst(docstring const & a,
 		docstring const & oldstr, docstring const & newstr);
 
+/// Count all occurences of char \a chr inside \a str
+int count_char(docstring const & str, docstring::value_type chr);
+
 /** Trims characters off the end and beginning of a string.
     \code
     trim("ccabccc", "c") == "ab".

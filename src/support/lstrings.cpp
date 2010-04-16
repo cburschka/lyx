@@ -666,6 +666,7 @@ basic_string<Ch> const subst_char(basic_string<Ch> const & a,
 	return tmp;
 }
 
+
 /// Substitute all \a oldchar with \a newchar
 docstring const subst_char(docstring const & a,
 	docstring::value_type oldchar, docstring::value_type newchar)
@@ -696,6 +697,7 @@ String const subst_string(String const & a,
 	}
 	return lstr;
 }
+
 
 docstring const subst_string(docstring const & a,
 		docstring const & oldstr, docstring const & newstr)
@@ -739,6 +741,19 @@ docstring const subst(docstring const & a,
 		docstring const & oldstr, docstring const & newstr)
 {
 	return subst_string(a, oldstr, newstr);
+}
+
+
+/// Count all occurences of char \a chr inside \a str
+int count_char(docstring const & str, docstring::value_type chr)
+{
+	int count = 0;
+	docstring::const_iterator lit = str.begin();
+	docstring::const_iterator end = str.end();
+	for (; lit != end; ++lit)
+		if ((*lit) == chr)
+			count++;
+	return count;
 }
 
 
