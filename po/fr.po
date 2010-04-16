@@ -245,7 +245,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-03-16 09:24+0100\n"
-"PO-Revision-Date: 2010-04-07 21:48+0100\n"
+"PO-Revision-Date: 2010-04-15 08:56+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -11266,7 +11266,7 @@ msgstr "Changer le type de limite|i"
 #: lib/ui/classic.ui:164
 #: lib/ui/stdmenus.inc:208
 msgid "Change Formula Type|F"
-msgstr "Changer le type de formule|f"
+msgstr "Changer le type de formule|C"
 
 #: lib/ui/classic.ui:166
 #: lib/ui/stdmenus.inc:212
@@ -11980,11 +11980,11 @@ msgstr "Macro|o"
 
 #: lib/ui/stdcontext.inc:52
 msgid "AMS Environment|A"
-msgstr "Environnement AMS|A"
+msgstr "Environnement AMS|S"
 
 #: lib/ui/stdcontext.inc:54
 msgid "Equation Label|L"
-msgstr "Étiquette d'équation|a"
+msgstr "Étiquette d'équation|q"
 
 #: lib/ui/stdcontext.inc:55
 msgid "Copy as Reference|R"
@@ -12004,7 +12004,7 @@ msgstr "Numéroter cette ligne|m"
 #: lib/ui/stdcontext.inc:59
 #: lib/ui/stdmenus.inc:214
 msgid "Split Cell|C"
-msgstr "Fractionner cellule|c"
+msgstr "Fractionner cellule|F"
 
 #: lib/ui/stdcontext.inc:61
 msgid "Insert|n"
@@ -12407,7 +12407,7 @@ msgstr "Coller"
 #: lib/ui/stdcontext.inc:330
 #: lib/ui/stdmenus.inc:102
 msgid "Paste Recent|e"
-msgstr "Coller une sélection récente|t"
+msgstr "Coller une sélection récente|o"
 
 #: lib/ui/stdcontext.inc:286
 msgid "Jump Back to Saved Bookmark|B"
