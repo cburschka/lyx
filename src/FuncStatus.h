@@ -52,8 +52,6 @@ public:
 	///
 	void clear();
 	///
-	void operator|=(FuncStatus const & f);
-	///
 	void setUnknown(bool b);
 	///
 	bool unknown() const;

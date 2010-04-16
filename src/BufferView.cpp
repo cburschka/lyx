@@ -1121,15 +1121,13 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		Inset * inset = editedInset(name);
 		if (inset) {
 			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
-			FuncStatus fs;
-			if (!inset->getStatus(cur, fr, fs)) {
+			if (!inset->getStatus(cur, fr, flag)) {
 				// Every inset is supposed to handle this
 				LASSERT(false, break);
 			}
-			flag |= fs;
 		} else {
 			FuncRequest fr(LFUN_INSET_INSERT, cmd.argument());
-			flag |= lyx::getStatus(fr);
+			flag = lyx::getStatus(fr);
 		}
 		break;
 	}

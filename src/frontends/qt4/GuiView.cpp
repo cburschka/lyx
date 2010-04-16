@@ -1401,7 +1401,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		GuiToc * toc = static_cast<GuiToc*>(findOrBuild("toc", false));
 		FuncStatus fs;
 		if (toc->getStatus(documentBufferView()->cursor(), cmd, fs))
-			flag |= fs;
+			flag = fs;
 		else
 			flag.setEnabled(false);
 		return true;

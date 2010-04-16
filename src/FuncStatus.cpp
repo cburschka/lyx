@@ -28,14 +28,6 @@ void FuncStatus::clear()
 }
 
 
-void FuncStatus::operator|=(FuncStatus const & f)
-{
-	v_ |= f.v_;
-	if (!f.message_.empty())
-		message_ = f.message_;
-}
-
-
 void FuncStatus::setUnknown(bool b)
 {
 	if (b)
