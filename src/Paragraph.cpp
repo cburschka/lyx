@@ -846,9 +846,7 @@ void Paragraph::Private::latexInset(
 	}
 
 	if (tmp) {
-		for (int j = 0; j < tmp; ++j)
-			texrow.newline();
-
+		texrow.newlines(tmp);
 		texrow.start(owner_->id(), i + 1);
 		column = 0;
 	} else {
