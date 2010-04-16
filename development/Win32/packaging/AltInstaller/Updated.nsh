@@ -75,8 +75,8 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\templates"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\dinbrief.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\elsarticle.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\templates\es_beamer-conference-ornate-20min.lyx"
  SetOutPath "$INSTDIR\Resources\ui"
- File "${PRODUCT_SOURCEDIR}\Resources\ui\stdcontext.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
 
