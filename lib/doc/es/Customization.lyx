@@ -1,4 +1,4 @@
-#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -159,7 +159,7 @@ type "mailto:"
 \begin_inset Newline newline
 \end_inset
 
-Versión 1.6.x
+Versión 2.0.x
 \end_layout
 
 \begin_layout Standard
@@ -1165,7 +1165,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-LYX_USERDIR_16x
+LYX_USERDIR_VER
 \end_layout
 
 \end_inset
@@ -7029,6 +7029,26 @@ NoStyle
 status collapsed
 
 \begin_layout Plain Layout
+OutputFormat
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+A string indicating the file format (as defined in the Preferences dialog)
+ produced by this class.
+ It is mainly useful when OutputType is `literate' and one wants to define
+ a new type of literate document.
+ This string is reset to `docbook', `latex', or `literate' when the correspondin
+g OutputType parameter is encountered.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 OutputType
 \end_layout
 
@@ -8016,7 +8036,7 @@ float=0
 
 ]
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Anotar que aquí un 'float' es un número de verdad, como: 1.5.
@@ -10625,6 +10645,9 @@ string
 \end_inset
 
 ] La cadena que se usará en los menús y también para la leyenda.
+ 
+\lang english
+This is translated to the current language if babel is used.
 \end_layout
 
 \begin_layout Description
@@ -10722,6 +10745,9 @@ string
 \end_inset
 
 ] El encabezado usado para la lista de flotantes.
+ 
+\lang english
+This is translated to the document language.
 \end_layout
 
 \begin_layout Description
