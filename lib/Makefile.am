@@ -1212,6 +1212,7 @@ dist_templates_DATA = \
 	templates/dinbrief.lyx \
 	templates/docbook_article.lyx \
 	templates/elsarticle.lyx \
+	templates/es_beamer-conference-ornate-20min.lyx \
 	templates/fr_beamer-conference-ornate-20min.lyx \
 	templates/g-brief2.lyx \
 	templates/g-brief-de.lyx \
