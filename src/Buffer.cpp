@@ -1417,6 +1417,12 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	// Just to be sure. (Asger)
 	d->texrow.newline();
 
+	//for (int i = 0; i<d->texrow.rows(); i++) {
+	// int id,pos;
+	// if (d->texrow.getIdFromRow(i+1,id,pos) && id>0)
+	//	lyxerr << i+1 << ":" << id << ":" << getParFromID(id).paragraph().asString()<<"\n";
+	//}
+
 	LYXERR(Debug::INFO, "Finished making LaTeX file.");
 	LYXERR(Debug::INFO, "Row count was " << d->texrow.rows() - 1 << '.');
 }
