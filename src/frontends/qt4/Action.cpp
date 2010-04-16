@@ -45,10 +45,10 @@ void Action::update()
 {
 	FuncStatus const status = getStatus(func_);
 
-	if (status.onoff(true)) {
+	if (status.onOff(true)) {
 		setCheckable(true);
 		setChecked(true);
-	} else if (status.onoff(false)) {
+	} else if (status.onOff(false)) {
 		setCheckable(true);
 		setChecked(false);
 	} else {

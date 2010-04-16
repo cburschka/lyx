@@ -36,7 +36,7 @@ void FuncStatus::operator|=(FuncStatus const & f)
 }
 
 
-void FuncStatus::unknown(bool b)
+void FuncStatus::setUnknown(bool b)
 {
 	if (b)
 		v_ |= UNKNOWN;
@@ -73,7 +73,7 @@ void FuncStatus::setOnOff(bool b)
 }
 
 
-bool FuncStatus::onoff(bool b) const
+bool FuncStatus::onOff(bool b) const
 {
 	if (b)
 		return (v_ & ON);

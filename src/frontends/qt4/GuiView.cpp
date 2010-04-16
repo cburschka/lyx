@@ -1200,7 +1200,7 @@ void GuiView::updateToolbars()
 			lyx::getStatus(FuncRequest(LFUN_LAYOUT_TABULAR)).enabled();
 		bool const review =
 			lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).enabled() &&
-			lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).onoff(true);
+			lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).onOff(true);
 		bool const mathmacrotemplate =
 			lyx::getStatus(FuncRequest(LFUN_IN_MATHMACROTEMPLATE)).enabled();
 

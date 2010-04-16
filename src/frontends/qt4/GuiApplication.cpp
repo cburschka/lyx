@@ -863,7 +863,7 @@ FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 	}
 
 	if (cmd.action() == LFUN_UNKNOWN_ACTION) {
-		flag.unknown(true);
+		flag.setUnknown(true);
 		flag.setEnabled(false);
 		flag.message(from_utf8(N_("Unknown action")));
 		return flag;

@@ -4001,7 +4001,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 		if (action == Tabular::LAST_ACTION) {
 			status.clear();
-			status.unknown(true);
+			status.setUnknown(true);
 			return true;
 		}
 

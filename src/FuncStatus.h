@@ -54,7 +54,7 @@ public:
 	///
 	void operator|=(FuncStatus const & f);
 	///
-	void unknown(bool b);
+	void setUnknown(bool b);
 	///
 	bool unknown() const;
 
@@ -67,7 +67,7 @@ public:
 	void setOnOff(bool b);
 	/// tells whether the menu item should have a check mark
 	/// (or the toolbar icon should be pushed).
-	bool onoff(bool b) const;
+	bool onOff(bool b) const;
 
 	///
 	void message(docstring const & m);
