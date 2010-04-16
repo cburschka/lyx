@@ -34,8 +34,10 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Tutorial.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\es"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\es\Customization.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\Extended.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\es\Intro.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\Math.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\Tutorial.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\UserGuide.lyx"
@@ -74,6 +76,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\templates\dinbrief.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\elsarticle.lyx"
  SetOutPath "$INSTDIR\Resources\ui"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdcontext.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
 
