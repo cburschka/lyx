@@ -854,21 +854,76 @@ docstring GuiApplication::iconName(FuncRequest const & f, bool unknown)
 
 FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 {
-	FuncStatus flag;
+	FuncStatus status;
 
+	BufferView * bv = 0;
+	BufferView * doc_bv = 0;
+	
 	if (cmd.action() == LFUN_NOACTION) {
-		flag.message(from_utf8(N_("Nothing to do")));
-		flag.setEnabled(false);
-		return flag;
+		status.message(from_utf8(N_("Nothing to do")));
+		status.setEnabled(false);
 	}
 
-	if (cmd.action() == LFUN_UNKNOWN_ACTION) {
-		flag.setUnknown(true);
-		flag.setEnabled(false);
-		flag.message(from_utf8(N_("Unknown action")));
-		return flag;
+	else if (cmd.action() == LFUN_UNKNOWN_ACTION) {
+		status.setUnknown(true);
+		status.message(from_utf8(N_("Unknown action")));
+		status.setEnabled(false);
 	}
 
+	// Does the GuiApplication know something?
+	else if (getStatus(cmd, status)) { }
+
+	// If we do not have a GuiView, then other functions are disabled
+	else if (!current_view_)
+		status.setEnabled(false);
+		
+	// Does the GuiView know something?
+	else if (current_view_->getStatus(cmd, status))	{ }
+
+	// In LyX/Mac, when a dialog is open, the menus of the
+	// application can still be accessed without giving focus to
+	// the main window. In this case, we want to disable the menu
+	// entries that are buffer or view-related.
+	//FIXME: Abdel (09/02/10) This has very bad effect on Linux, don't know why...
+	/*
+	else if (cmd.origin() == FuncRequest::MENU && !current_view_->hasFocus())
+		status.setEnabled(false);
+	*/
+
+	// If we do not have a BufferView, then other functions are disabled
+	else if (!(bv = current_view_->currentBufferView()))
+		status.setEnabled(false);
+	
+	// Does the current BufferView know something?
+	else if (bv->getStatus(cmd, status)) { }
+		
+	// Does the current Buffer know something?
+	else if (bv->buffer().getStatus(cmd, status)) { }
+
+	// If we do not have a document BufferView, different from the
+	// current BufferView, then other functions are disabled
+	else if (!(doc_bv = current_view_->documentBufferView()) || doc_bv == bv)
+		status.setEnabled(false);
+
+	// Does the document Buffer know something?
+	else if (doc_bv->buffer().getStatus(cmd, status)) { }
+
+	else { 
+		LYXERR(Debug::ACTION, "LFUN not handled in getStatus(): " << cmd);
+		status.message(from_utf8(N_("Command not handled")));
+		status.setEnabled(false);
+	}
+	
+	// the default error message if we disable the command
+	if (!status.enabled() && status.message().empty())
+		status.message(from_utf8(N_("Command disabled")));
+
+	return status;
+}
+
+
+bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
+{
 	// I would really like to avoid having this switch and rather try to
 	// encode this in the function itself.
 	// -- And I'd rather let an inset decide which LFUNs it is willing
@@ -974,52 +1029,12 @@ FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 		break;
 
 	default:
-		// Does the view know something?
-		if (!current_view_) {
-			enable = false;
-			break;
-		}
-
-		if (current_view_->getStatus(cmd, flag))
-			break;
-
-		// In LyX/Mac, when a dialog is open, the menus of the
-		// application can still be accessed without giving focus to
-		// the main window. In this case, we want to disable the menu
-		// entries that are buffer or view-related.
-		//FIXME: Abdel (09/02/10) This has very bad effect on Linux, don't know why...
-		/*
-		if (cmd.origin() == FuncRequest::MENU && !current_view_->hasFocus()) {
-			enable = false;
-			break;
-		}
-		*/
-
-		BufferView * bv = current_view_->currentBufferView();
-		BufferView * doc_bv = current_view_->documentBufferView();
-		// If we do not have a BufferView, then other functions are disabled
-		if (!bv) {
-			enable = false;
-			break;
-		}
-		// try the BufferView
-		bool decided = bv->getStatus(cmd, flag);
-		if (!decided)
-			// try the Buffer
-			decided = bv->buffer().getStatus(cmd, flag);
-		if (!decided && doc_bv)
-			// try the Document Buffer
-			decided = doc_bv->buffer().getStatus(cmd, flag);
+		return false;
 	}
 
 	if (!enable)
 		flag.setEnabled(false);
-
-	// the default error message if we disable the command
-	if (!flag.enabled() && flag.message().empty())
-		flag.message(from_utf8(N_("Command disabled")));
-
-	return flag;
+	return true;
 }
 
 /// make a post-dispatch status message

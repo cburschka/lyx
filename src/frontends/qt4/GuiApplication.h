@@ -78,6 +78,8 @@ public:
 	void handleKeyFunc(FuncCode action);
 	//@}
 	///
+	bool getStatus(FuncRequest const & cmd, FuncStatus & status) const;
+	///
 	void hideDialogs(std::string const & name, Inset * inset) const;
 	///
 	void resetGui();
