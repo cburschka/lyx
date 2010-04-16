@@ -84,7 +84,7 @@ int TexRow::getRowFromIdPos(int id, int pos) const
 	}
 	if (!foundid)
 		return rowlist.size();
-	return distance(rowlist.begin(), bestrow);
+	return distance(rowlist.begin(), bestrow) + 1;
 }
 
 
