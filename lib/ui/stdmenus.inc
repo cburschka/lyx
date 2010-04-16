@@ -508,6 +508,7 @@ Menuset
 		Item "Next Change|C" "change-next"
 		Item "Next Cross-Reference|R" "reference-next"
 		OptItem "Go to Label|L" "label-goto"
+		Item "Forward search|F" "forward-search"
 		Separator
 		Toc
 	End

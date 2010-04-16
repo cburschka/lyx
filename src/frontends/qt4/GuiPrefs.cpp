@@ -368,6 +368,15 @@ PrefOutput::PrefOutput(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(plaintextLinelengthSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
+	connect(dviCB, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
+	connect(pdfCB, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
+	dviCB->addItem("");
+	dviCB->addItem("xdvi -sourceposition $$n:$$t $$o");
+	dviCB->addItem("yap -1 -s $$n$$t $$o");
+	pdfCB->addItem("");
+	pdfCB->addItem("CMCDDE SUMATRA control [ForwardSearch(\\\"$$o\\\",\\\"$$t\\\",$$n,0,0,1)]");
 }
 
 
@@ -385,6 +394,8 @@ void PrefOutput::apply(LyXRC & rc) const
 {
 	rc.date_insert_format = fromqstr(DateED->text());
 	rc.plaintext_linelen = plaintextLinelengthSB->value();
+	rc.forward_search_dvi = fromqstr(dviCB->currentText());
+	rc.forward_search_pdf = fromqstr(pdfCB->currentText());
 }
 
 
@@ -392,6 +403,8 @@ void PrefOutput::update(LyXRC const & rc)
 {
 	DateED->setText(toqstr(rc.date_insert_format));
 	plaintextLinelengthSB->setValue(rc.plaintext_linelen);
+	dviCB->setEditText(toqstr(rc.forward_search_dvi));
+	pdfCB->setEditText(toqstr(rc.forward_search_pdf));
 }
 
 

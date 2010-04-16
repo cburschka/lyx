@@ -328,7 +328,7 @@ void LyXRC::setDefaults()
 	user_email = to_utf8(support::user_email());
 	open_buffers_in_tabs = true;
 	single_close_tab_button = false;
-	forward_search_dvi = "xdvi -sourceposition $$n:$$t $$o";
+	forward_search_dvi = string();
 	forward_search_pdf = string();
 
 	// Fullscreen settings
