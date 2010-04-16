@@ -3247,7 +3247,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 			PathChanger p(path);
 			Systemcall one;
-			one.startscript(Systemcall::Wait, command);
+			one.startscript(Systemcall::DontWait, command);
 			break;
 		}
 		default:
