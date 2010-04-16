@@ -1133,7 +1133,6 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	}
 
 	default:
-		flag.setEnabled(false);
 		return false;
 	}
 

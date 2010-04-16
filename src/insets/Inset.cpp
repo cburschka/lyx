@@ -381,7 +381,6 @@ bool Inset::getStatus(Cursor &, FuncRequest const & cmd,
 			flag.setEnabled(enable);
 			return true;
 		} else {
-			flag.setEnabled(false);
 			return false;
 		}
 	
