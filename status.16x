@@ -126,12 +126,12 @@ What's new
 
 - Allow using single quotes in filenames (bug 4063).
 
-- Do not insert \foreignlanguage in ERTs (bug 6426).
+- Do not insert \foreignlanguage in TeX-code (bug 6426).
 
 - Allow using greek symbols also when the package grtimes is installed but
   actual fonts are not and "Times Roman" glyphs are requested (bug 6469).
 
-- Fix premature closing of the CJK environment after ERT or URL insets
+- Fix premature closing of the CJK environment after TeX-code or URL insets
   nested in other insets (bug 6510).
 
 - Allow using labels with non-ascii characters in mathed (bug 3325).
@@ -206,10 +206,10 @@ What's new
 - Fix a crash when a pending completion pop-up in math is scrolled out
   of view (bug 6552).
 
-- While in ERT, disable non-functional sub- and superscript functions that
+- While in TeX-code, disable non-functional sub- and superscript functions that
   crashed LyX (bug 6459).
   
-- Fix a stdlib assertion when deleting from an ERT in math (bug 6489).
+- Fix a stdlib assertion when deleting from TeX-code in math (bug 6489).
   
 - Resolve duplicate labels in mathed on pasting (bug 6218).
 
