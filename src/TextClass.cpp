@@ -30,7 +30,6 @@
 
 #include "support/lassert.h"
 #include "support/debug.h"
-#include "support/ExceptionMessage.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
@@ -715,11 +714,11 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 		FileName tmp = libFileSearch("layouts", "stdinsets.inc");
 
 		if (tmp.empty()) {
-			throw ExceptionMessage(WarningException, _("Missing File"),
+			frontend::Alert::warning(_("Missing File"),
 				_("Could not find stdinsets.inc! This may lead to data loss!"));
 			error = true;
 		} else if (!read(tmp, MERGE)) {
-			throw ExceptionMessage(WarningException, _("Corrupt File"),
+			frontend::Alert::warning(_("Corrupt File"),
 				_("Could not read stdinsets.inc! This may lead to data loss!"));
 			error = true;
 		}
