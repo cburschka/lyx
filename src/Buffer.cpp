@@ -126,7 +126,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 385; // uwestoehr: support to change the shaded box color
+int const LYX_FORMAT = 386; // rgh: LyX version for InsetInfo
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;

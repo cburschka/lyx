@@ -22,6 +22,7 @@
 import re, string
 import unicodedata
 import sys, os
+import lyx2lyx_version
 
 from parser_tools import find_token, find_end_of, find_tokens, get_value, get_value_string
 
@@ -1466,6 +1467,44 @@ def revert_shadedboxcolor(document):
                            + ', ' + str(blueout) + '}\n')
 
 
+def revert_lyx_version(document):
+    " Reverts LyX Version information from Inset Info "
+    i = 0
+    while 1:
+        i = find_token(document.body, '\\begin_inset Info', i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            # should not happen
+            document.warning("Malformed LyX document: Could not find end of Info inset.")
+        # We expect:
+        # \begin_inset Info
+        # type  "lyxinfo"
+        # arg   "version"
+        # \end_inset
+        # but we shall try to be forgiving.
+        arg = typ = ""
+        for k in range(i, j):
+            if document.body[k].startswith("arg"):
+                arg = document.body[k][3:].strip().strip('"')
+            if document.body[k].startswith("type"):
+                typ = document.body[k][4:].strip().strip('"')
+        if arg != "version" or typ != "lyxinfo":
+            i = j+1
+            continue
+        # We do not actually know the version of LyX used to produce the document.
+        # But we can use our version, since we are reverting.
+        s = [lyx2lyx_version.version]
+        # Now we want to check if the line after "\end_inset" is empty. It normally
+        # is, so we want to remove it, too.
+        lastline = j+1
+        if document.body[j+1].strip() == "":
+            lastline = j+2
+        document.body[i: lastline] = s
+        i = i+1
+
+
 ##
 # Conversion hub
 #
@@ -1510,10 +1549,12 @@ convert = [[346, []],
            [382, []],
            [383, []],
            [384, []],
-           [385, []]
+           [385, []],
+           [386, []]
           ]
 
-revert =  [[384, [revert_shadedboxcolor]],
+revert =  [[385, [revert_lyx_version]],
+           [384, [revert_shadedboxcolor]],
            [383, [revert_fontcolor]],
            [382, [revert_turkmen]],
            [381, [revert_notefontcolor]],

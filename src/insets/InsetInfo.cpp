@@ -61,6 +61,7 @@ NameTranslator const initTranslator()
 	translator.addPair(InsetInfo::MENU_INFO, "menu");
 	translator.addPair(InsetInfo::ICON_INFO, "icon");
 	translator.addPair(InsetInfo::BUFFER_INFO, "buffer");
+	translator.addPair(InsetInfo::LYX_INFO, "lyxinfo");
 
 	return translator;
 }
@@ -176,6 +177,8 @@ bool InsetInfo::validateModifyArgument(docstring const & arg) const
 		return name == "name" || name == "path" || name == "class" ||
 		       name == "vcs-revision" || name == "vcs-tree-revision" ||
 		       name == "vcs-author" || name == "vcs-date" || name == "vcs-time";
+	case LYX_INFO:
+		return name == "version";
 	}
 	return false;
 }
@@ -385,6 +388,9 @@ void InsetInfo::updateInfo()
 			setText(_("Unknown buffer info"));
 		break;
 	}
+	case LYX_INFO:
+		if (name_ == "version")
+			setText(from_ascii(PACKAGE_VERSION));
 	}
 }
 

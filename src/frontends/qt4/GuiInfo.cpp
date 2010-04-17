@@ -40,11 +40,11 @@ namespace frontend {
 /////////////////////////////////////////////////////////////////
 
 char const * info_types[] =
-{ "unknown", "shortcut", "shortcuts", "lyxrc", "package", "textclass", "menu", "icon", "buffer", "" };
+{ "unknown", "shortcut", "shortcuts", "lyxrc", "package", "textclass", "menu", "icon", "buffer", "lyxinfo", "" };
 
 char const * info_types_gui[] =
 { N_("unknown"), N_("shortcut"), N_("shortcuts"), N_("lyxrc"), N_("package"), N_("textclass"),
-  N_("menu"), N_("icon"), N_("buffer"), ""};
+  N_("menu"), N_("icon"), N_("buffer"), N_("lyxinfo"), ""};
 
 
 GuiInfo::GuiInfo(QWidget * parent) : InsetParamsWidget(parent)
