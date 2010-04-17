@@ -403,6 +403,7 @@ void InsetInfo::updateInfo()
 	case LYX_INFO:
 		if (name_ == "version")
 			setText(from_ascii(PACKAGE_VERSION));
+		break;
 	}
 }
 
