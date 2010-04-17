@@ -2,21 +2,21 @@
 # Copyright (C) 2008 LyX Developers
 # This file is distributed under the same license as the LyX package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2007, 2008, 2009.
+# Yuri Chornoivan <yurchor@ukr.net>, 2007, 2008, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: uk-163\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-02-19 15:33+0100\n"
-"PO-Revision-Date: 2009-11-23 19:34+0200\n"
+"PO-Revision-Date: 2010-04-17 14:19+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <kde-i18n-doc@kde.org>\n"
+"Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -176,7 +176,7 @@ msgstr "&Пересканувати"
 #: src/frontends/qt4/ui/LaTeXUi.ui:184 src/frontends/qt4/ui/PrefInputUi.ui:109
 #: src/frontends/qt4/ui/PrintUi.ui:313
 msgid "&Browse..."
-msgstr "&Навігація..."
+msgstr "Ви&брати..."
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83
 msgid "Enter BibTeX database name"
@@ -1496,15 +1496,15 @@ msgstr "&Тип включення:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:347
 msgid "Include"
-msgstr "Включити файл"
+msgstr "Включення"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:298 src/insets/InsetInclude.cpp:338
 msgid "Input"
-msgstr "Ввід"
+msgstr "Вставка"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:303
 msgid "Verbatim"
-msgstr "Стенограма"
+msgstr "Дослівно"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:975
 #: src/insets/InsetInclude.cpp:981
@@ -1779,7 +1779,7 @@ msgstr "Вікно зворотної реакції"
 #: src/frontends/qt4/ui/ListingsUi.ui:499
 msgid "Input listing parameters here. Enter ? for a list of parameters."
 msgstr ""
-"Тут слід ввести параметри тексту програм. Введіть «?», щоб побачити список."
+"Тут слід ввести параметри тексту програм. Введіть «?», щоб переглянути список."
 
 #: src/frontends/qt4/ui/LogUi.ui:28
 msgid "Update the display"
@@ -2272,8 +2272,7 @@ msgstr "Автоматичне &завершення у рядку"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:88
 msgid "Show the popup after the set delay in text mode."
-msgstr ""
-"Показувати з встановленою затримкою вікно підказки у текстовому режимі."
+msgstr "Показувати з встановленою затримкою вікно підказки у текстовому режимі."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:91
 msgid "Automatic &popup"
@@ -2632,7 +2631,6 @@ msgid "&Global"
 msgstr "&Глобально"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:136
-#, fuzzy
 msgid ""
 "If checked, the document language is not explicitly set by a language switch "
 "command"
@@ -2645,7 +2643,6 @@ msgid "Auto &begin"
 msgstr "Автоматично &починати"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:146
-#, fuzzy
 msgid ""
 "If checked, the document language is not explicitly closed by a language "
 "switch command"
@@ -2688,7 +2685,7 @@ msgstr "Пересування курсора:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:244
 msgid "&Logical"
-msgstr "&Логічний"
+msgstr "&Логічне"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:254
 msgid "&Visual"
@@ -2827,7 +2824,7 @@ msgstr "&Тека користувача:"
 #: src/frontends/qt4/ui/PrefPathsUi.ui:130
 #: src/frontends/qt4/ui/PrefPathsUi.ui:153
 msgid "Browse..."
-msgstr "Навігація..."
+msgstr "Вибрати..."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:48
 msgid "&Document templates:"
@@ -2839,7 +2836,7 @@ msgstr "&Файли прикладів:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:94
 msgid "&Backup directory:"
-msgstr "&Тека резервного копіювання:"
+msgstr "Те&ка резервного копіювання:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:117
 msgid "Ly&XServer pipe:"
@@ -2847,11 +2844,11 @@ msgstr "Канал сервера Ly&X:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:140
 msgid "&Temporary directory:"
-msgstr "&Тимчасова тека:"
+msgstr "Тим&часова тека:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:163
 msgid "&PATH prefix:"
-msgstr "Префікс &шляху:"
+msgstr "Пре&фікс PATH:"
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2493
 msgid ""
@@ -3108,8 +3105,7 @@ msgstr "&Інша мова:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:74
 msgid "The characters inserted here are ignored by the spellchecker"
-msgstr ""
-"Вказані тут символи буде проігноровано інструментом перевірки правопису"
+msgstr "Вказані тут символи буде проігноровано інструментом перевірки правопису"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:81
 msgid "Specify a personal dictionary file other than the default"
@@ -3219,7 +3215,7 @@ msgstr "Увімкнути &підказки у основній робочій 
 
 #: src/frontends/qt4/ui/PrefUi.ui:248
 msgid "Bro&wse..."
-msgstr "&Навігація..."
+msgstr "Ви&брати..."
 
 #: src/frontends/qt4/ui/PrefUi.ui:258
 msgid "&User interface file:"
@@ -3292,7 +3288,7 @@ msgstr "&Збирати"
 
 #: src/frontends/qt4/ui/PrintUi.ui:230
 msgid "&Print"
-msgstr "&Надрукувати"
+msgstr "На&друкувати"
 
 #: src/frontends/qt4/ui/PrintUi.ui:258
 msgid "Print Destination"
@@ -3398,8 +3394,7 @@ msgstr "Зворотній &пошук"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:42
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
-"Обробити перетворений файл за допомогою команди ($$FName = назва файла)"
+msgstr "Обробити перетворений файл за допомогою команди ($$FName = назва файла)"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:101
 msgid "&Export formats:"
@@ -3451,9 +3446,8 @@ msgstr ""
 "спорожнити вміст поля за допомогою кнопки «Спорожнити»"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:35
-#, fuzzy
 msgid "Su&ggestions:"
-msgstr "Пропонується:"
+msgstr "П&ропозиції:"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:45
 msgid "Replace word with current choice"
@@ -3480,9 +3474,8 @@ msgid "I&gnore All"
 msgstr "І&гнорувати всі"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:101
-#, fuzzy
 msgid "Re&placement:"
-msgstr "Замінити на:"
+msgstr "За&міна:"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:111
 msgid "Current word"
@@ -5713,18 +5706,16 @@ msgid "Postal comment"
 msgstr "Поштовий коментар"
 
 #: lib/layouts/dinbrief.layout:83
-#, fuzzy
 msgid "Postal Remark:"
-msgstr "Postvermerk:"
+msgstr "Поштова примітка:"
 
 #: lib/layouts/dinbrief.layout:88
 msgid "Handling"
 msgstr "Спосіб поводження"
 
 #: lib/layouts/dinbrief.layout:90
-#, fuzzy
 msgid "Handling:"
-msgstr "Спосіб поводження"
+msgstr "Спосіб поводження:"
 
 #: lib/layouts/dinbrief.layout:94 lib/layouts/g-brief-en.layout:103
 #: lib/layouts/g-brief2.layout:758
@@ -5748,12 +5739,11 @@ msgstr "Наше посилання:"
 
 #: lib/layouts/dinbrief.layout:106
 msgid "Writer"
-msgstr "Письменник"
+msgstr "Дописувач"
 
 #: lib/layouts/dinbrief.layout:108
-#, fuzzy
 msgid "Writer:"
-msgstr "Письменник"
+msgstr "Дописувач:"
 
 #: lib/layouts/dinbrief.layout:112 lib/layouts/g-brief-en.layout:54
 #: lib/layouts/g-brief2.layout:892 lib/layouts/scrlettr.layout:132
@@ -5773,18 +5763,16 @@ msgid "Bottomtext"
 msgstr "Текст внизу"
 
 #: lib/layouts/dinbrief.layout:121
-#, fuzzy
 msgid "Bottom text:"
-msgstr "Текст внизу"
+msgstr "Текст внизу:"
 
 #: lib/layouts/dinbrief.layout:129
 msgid "Area code"
 msgstr "Код області"
 
 #: lib/layouts/dinbrief.layout:131
-#, fuzzy
 msgid "Area Code:"
-msgstr "Код області"
+msgstr "Код області:"
 
 #: lib/layouts/dinbrief.layout:135 lib/layouts/scrlettr.layout:146
 #: lib/layouts/scrlttr2.layout:181 lib/layouts/stdletter.inc:126
@@ -7020,7 +7008,7 @@ msgstr "Припущення \\theconjecture."
 
 #: lib/layouts/ijmpc.layout:290 lib/layouts/ijmpd.layout:300
 msgid "Appendices Section"
-msgstr "Розділ Додатків"
+msgstr "Розділ додатків"
 
 #: lib/layouts/ijmpc.layout:299 lib/layouts/ijmpd.layout:309
 msgid "--- Appendices ---"
@@ -9993,7 +9981,7 @@ msgstr "Експортувати до...|Е"
 
 #: lib/ui/classic.ui:59 lib/ui/stdmenus.inc:58
 msgid "Print...|P"
-msgstr "Надрукувати...|Н"
+msgstr "Надрукувати...|д"
 
 #: lib/ui/classic.ui:60 lib/ui/stdmenus.inc:59
 msgid "Fax...|F"
@@ -10065,7 +10053,7 @@ msgstr "Таблиця|Т"
 
 #: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:117 lib/ui/stdmenus.inc:535
 msgid "Math|M"
-msgstr "Математичне|М"
+msgstr "Математичне|а"
 
 #: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:513
 msgid "Spellchecker...|S"
@@ -10181,7 +10169,7 @@ msgstr "Центр|Ц"
 
 #: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:380 lib/ui/stdmenus.inc:189
 msgid "Bottom|B"
-msgstr "Низ|Н"
+msgstr "Низ|и"
 
 #: lib/ui/classic.ui:159
 msgid "Toggle Numbering|N"
@@ -10266,11 +10254,11 @@ msgstr "Maple, evalf"
 #: lib/ui/classic.ui:199 lib/ui/classic.ui:265 lib/ui/stdcontext.inc:49
 #: lib/ui/stdmenus.inc:284 lib/ui/stdmenus.inc:397
 msgid "Inline Formula|I"
-msgstr "Формулу|Ф"
+msgstr "Рядкова формула|ф"
 
 #: lib/ui/classic.ui:200 lib/ui/stdcontext.inc:50 lib/ui/stdmenus.inc:285
 msgid "Displayed Formula|D"
-msgstr "Виключну формулу|ю"
+msgstr "Виключна формула|ю"
 
 #: lib/ui/classic.ui:201
 msgid "Eqnarray Environment|q"
@@ -10318,7 +10306,7 @@ msgstr "Мітка...|М"
 
 #: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:354
 msgid "Footnote|F"
-msgstr "Зноску|н"
+msgstr "Зноска|н"
 
 #: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:355
 msgid "Marginal Note|M"
@@ -10338,7 +10326,7 @@ msgstr "Елемент номенклатури"
 
 #: lib/ui/classic.ui:225
 msgid "URL...|U"
-msgstr "URL...|U"
+msgstr "Адреса URL...|А"
 
 #: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:337
 msgid "Note|N"
@@ -10350,11 +10338,11 @@ msgstr "Списки і зміст|С"
 
 #: lib/ui/classic.ui:229
 msgid "TeX Code|T"
-msgstr "Команду TeX|T"
+msgstr "Команда TeX|T"
 
 #: lib/ui/classic.ui:230
 msgid "Minipage|p"
-msgstr "Міністорінку|М"
+msgstr "Міністорінка|М"
 
 #: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:351
 msgid "Graphics...|G"
@@ -10386,11 +10374,11 @@ msgstr "Символи...|л"
 
 #: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:375
 msgid "Superscript|S"
-msgstr "Верхній індекс|і"
+msgstr "Верхній індекс|х"
 
 #: lib/ui/classic.ui:243 lib/ui/stdmenus.inc:376
 msgid "Subscript|u"
-msgstr "Нижній індекс|Н"
+msgstr "Нижній індекс|ж"
 
 #: lib/ui/classic.ui:244
 msgid "Hyphenation Point|P"
@@ -10410,7 +10398,7 @@ msgstr "Нерозривний пробіл|б"
 
 #: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:379
 msgid "Inter-word Space|w"
-msgstr "Міжслівний проміжок|ж"
+msgstr "Міжслівний проміжок|і"
 
 #: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:193 lib/ui/stdcontext.inc:216
 #: lib/ui/stdmenus.inc:380
@@ -10431,11 +10419,11 @@ msgstr "Розрив рядка|Р"
 
 #: lib/ui/classic.ui:253 lib/ui/stdmenus.inc:364
 msgid "Ellipsis|i"
-msgstr "Багатокрапку|Б"
+msgstr "Багатокрапка|Б"
 
 #: lib/ui/classic.ui:254 lib/ui/stdmenus.inc:365
 msgid "End of Sentence|E"
-msgstr "Крапку у кінці речення|к"
+msgstr "Крапка у кінці речення|к"
 
 #: lib/ui/classic.ui:255
 msgid "Protected Dash|D"
@@ -10447,11 +10435,11 @@ msgstr "Розбивна риска|а"
 
 #: lib/ui/classic.ui:257
 msgid "Single Quote|Q"
-msgstr "Одинарну лапку|О"
+msgstr "Одинарна лапка|О"
 
 #: lib/ui/classic.ui:258
 msgid "Ordinary Quote|O"
-msgstr "Звичайну лапку|З"
+msgstr "Звичайна лапка|З"
 
 #: lib/ui/classic.ui:259 lib/ui/stdmenus.inc:370
 msgid "Menu Separator|M"
@@ -10467,7 +10455,7 @@ msgstr "Розрив сторінки"
 
 #: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:398
 msgid "Display Formula|D"
-msgstr "Виключну формулу|В"
+msgstr "Виключна формула|В"
 
 #: lib/ui/classic.ui:267 lib/ui/stdcontext.inc:51 lib/ui/stdmenus.inc:286
 #: lib/ui/stdmenus.inc:400
@@ -10501,7 +10489,7 @@ msgstr "Багаторядкове рівняння AMS|р"
 
 #: lib/ui/classic.ui:276 lib/ui/stdcontext.inc:28 lib/ui/stdmenus.inc:407
 msgid "Array Environment|y"
-msgstr "Матрицю|М"
+msgstr "Матриця|М"
 
 #: lib/ui/classic.ui:277 lib/ui/stdcontext.inc:29 lib/ui/stdmenus.inc:408
 msgid "Cases Environment|C"
@@ -10593,11 +10581,11 @@ msgstr "Предметний покажчик|п"
 
 #: lib/ui/classic.ui:317 lib/ui/stdmenus.inc:430
 msgid "Nomenclature|N"
-msgstr "Номенклатуру|Н"
+msgstr "Номенклатура|Н"
 
 #: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:431
 msgid "BibTeX Bibliography...|B"
-msgstr "Бібліографію BibTeX...|B"
+msgstr "Бібліографія BibTeX...|B"
 
 #: lib/ui/classic.ui:322 lib/ui/stdmenus.inc:435
 msgid "LyX Document...|X"
@@ -10629,7 +10617,7 @@ msgstr "Відкинути всі зміни|к"
 
 #: lib/ui/classic.ui:332 lib/ui/stdmenus.inc:480
 msgid "Show Changes in Output|S"
-msgstr "Показати Зміни у Виведенні|о"
+msgstr "Показати зміни у виведенні|о"
 
 #: lib/ui/classic.ui:339
 msgid "Character...|C"
@@ -10685,7 +10673,7 @@ msgstr "Повідомлення LaTeX|L"
 
 #: lib/ui/classic.ui:364 lib/ui/stdmenus.inc:465
 msgid "Outline|O"
-msgstr "Ескіз|Е"
+msgstr "Структура|у"
 
 #: lib/ui/classic.ui:365
 msgid "TeX Information|X"
@@ -10924,7 +10912,7 @@ msgstr "Форматоване посилання|а"
 #: lib/ui/stdcontext.inc:357 lib/ui/stdcontext.inc:392
 #: lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:470
 msgid "Settings...|S"
-msgstr "Налаштування...|Н"
+msgstr "Налаштувати...|Н"
 
 #: lib/ui/stdcontext.inc:101
 msgid "Go Back|G"
@@ -11160,7 +11148,7 @@ msgstr "Дві порожні сторінки|Д"
 
 #: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:387
 msgid "Ragged Line Break|R"
-msgstr "Нерівний розрив рядка|Н"
+msgstr "Нерівний розрив рядка|р"
 
 #: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:388
 msgid "Justified Line Break|J"
@@ -11318,20 +11306,19 @@ msgstr "Створити з шаблона...|ш"
 
 #: lib/ui/stdmenus.inc:46
 msgid "Open Recent|t"
-msgstr "Відкрити недавній|д"
+msgstr "Відкрити недавній|а"
 
 #: lib/ui/stdmenus.inc:49
-#, fuzzy
 msgid "Close All"
-msgstr "Закрити файл"
+msgstr "Закрити всі"
 
 #: lib/ui/stdmenus.inc:52
 msgid "Save All|l"
-msgstr "Вибрати все|с"
+msgstr "Зберегти все|г"
 
 #: lib/ui/stdmenus.inc:53
 msgid "Revert to Saved|R"
-msgstr "Повернутися до збереженого|в"
+msgstr "Повернутися до збереженого|н"
 
 #: lib/ui/stdmenus.inc:61
 msgid "New Window|W"
@@ -11543,11 +11530,11 @@ msgstr "Maple, Evalf|v"
 
 #: lib/ui/stdmenus.inc:299
 msgid "Open All Insets|O"
-msgstr "Відкрити всі врізки|В"
+msgstr "Відкрити всі вкладки|В"
 
 #: lib/ui/stdmenus.inc:300
 msgid "Close All Insets|C"
-msgstr "Закрити всі врізки|З"
+msgstr "Закрити всі вкладки|З"
 
 #: lib/ui/stdmenus.inc:302
 msgid "Unfold Math Macro"
@@ -11647,7 +11634,7 @@ msgstr "Короткий заголовок|К"
 
 #: lib/ui/stdmenus.inc:357
 msgid "TeX Code|X"
-msgstr "Команду TeX|X"
+msgstr "Команда TeX|X"
 
 #: lib/ui/stdmenus.inc:358
 msgid "Program Listing[[Menu]]"
@@ -11655,15 +11642,15 @@ msgstr "Текст програми"
 
 #: lib/ui/stdmenus.inc:366
 msgid "Ordinary Quote|Q"
-msgstr "Звичайну лапку|З"
+msgstr "Звичайна лапка|З"
 
 #: lib/ui/stdmenus.inc:367
 msgid "Single Quote|S"
-msgstr "Одинарну лапку|О"
+msgstr "Одинарна лапка|О"
 
 #: lib/ui/stdmenus.inc:371
 msgid "Phonetic Symbols|P"
-msgstr "Фонетичні символи|Ф"
+msgstr "Фонетичні символи|н"
 
 #: lib/ui/stdmenus.inc:378
 msgid "Protected Space|P"
@@ -11671,11 +11658,11 @@ msgstr "Нерозривний пробіл|б"
 
 #: lib/ui/stdmenus.inc:382
 msgid "Horizontal Line|L"
-msgstr "Горизонтальну лінію|л"
+msgstr "Горизонтальна лінія|л"
 
 #: lib/ui/stdmenus.inc:383
 msgid "Vertical Space...|V"
-msgstr "Вертикальний пробіл...|В"
+msgstr "Вертикальний пробіл...|е"
 
 #: lib/ui/stdmenus.inc:385
 msgid "Hyphenation Point|H"
@@ -11683,7 +11670,7 @@ msgstr "М’який перенос|М"
 
 #: lib/ui/stdmenus.inc:399
 msgid "Numbered Formula|N"
-msgstr "Нумеровану формулу|Н"
+msgstr "Нумерована формула|Н"
 
 #: lib/ui/stdmenus.inc:422
 msgid "Figure Wrap Float|F"
@@ -11691,7 +11678,7 @@ msgstr "Плаваючий рисунок з обрізкою|о"
 
 #: lib/ui/stdmenus.inc:423
 msgid "Table Wrap Float|T"
-msgstr "Плаваючий таблиця з обрізкою|о"
+msgstr "Плаваюча таблиця з обрізкою|р"
 
 #: lib/ui/stdmenus.inc:439
 msgid "External Material...|M"
@@ -11719,7 +11706,7 @@ msgstr "Зберегти у з’єднаному форматі|ф"
 
 #: lib/ui/stdmenus.inc:469
 msgid "Compressed|m"
-msgstr "Стиснутий|у"
+msgstr "Стиснутий|т"
 
 #: lib/ui/stdmenus.inc:476
 msgid "Accept Change|A"
@@ -11755,7 +11742,7 @@ msgstr "Перейти назад|н"
 
 #: lib/ui/stdmenus.inc:514
 msgid "Thesaurus...|T"
-msgstr "Тезаурус...|П"
+msgstr "Тезаурус...|з"
 
 #: lib/ui/stdmenus.inc:515
 msgid "Statistics...|a"
@@ -11863,7 +11850,7 @@ msgstr "Вставити таблицю"
 
 #: lib/ui/stdtoolbars.inc:92
 msgid "Toggle outline"
-msgstr "Перемкнути режим ескізів"
+msgstr "Перемкнути режим структури"
 
 #: lib/ui/stdtoolbars.inc:93
 msgid "Toggle math toolbar"
@@ -12039,7 +12026,7 @@ msgstr "Повернути таблицю"
 
 #: lib/ui/stdtoolbars.inc:152
 msgid "Set multi-column"
-msgstr "Багатоколонкове"
+msgstr "Багатоколонкова"
 
 #: lib/ui/stdtoolbars.inc:155
 msgid "Math"
@@ -12171,11 +12158,11 @@ msgstr "Наступна зміна"
 
 #: lib/ui/stdtoolbars.inc:206
 msgid "Accept change inside selection"
-msgstr "Прийняти зміну у виділеному фрагменті"
+msgstr "Прийняти зміну у позначеному фрагменті"
 
 #: lib/ui/stdtoolbars.inc:207
 msgid "Reject change inside selection"
-msgstr "Заборонити зміни у виділеному фрагменті"
+msgstr "Заборонити зміни у позначеному фрагменті"
 
 #: lib/ui/stdtoolbars.inc:209
 msgid "Merge changes"
@@ -13728,9 +13715,8 @@ msgid "varnothing"
 msgstr "varnothing"
 
 #: lib/ui/stdtoolbars.inc:649
-#, fuzzy
 msgid "Diamond"
-msgstr "diamond"
+msgstr "Ромб"
 
 #: lib/ui/stdtoolbars.inc:650
 msgid "blacktriangle"
@@ -14650,7 +14636,7 @@ msgstr "FEN"
 
 #: lib/configure.py:280
 msgid "SVG"
-msgstr ""
+msgstr "SVG"
 
 #: lib/configure.py:284
 msgid "BMP"
@@ -15200,12 +15186,11 @@ msgid "conversion failed"
 msgstr "невдале перетворення"
 
 #: src/Buffer.cpp:1208
-#, fuzzy
 msgid "Uncodable character in path"
-msgstr "Непридатні для кодування символи у імені автора"
+msgstr "Непридатні для кодування символи у шляху"
 
 #: src/Buffer.cpp:1209
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The path of your document\n"
 "(%1$s)\n"
@@ -15216,13 +15201,14 @@ msgid ""
 "Chose an appropriate document encoding (such as utf8)\n"
 "or change the path name."
 msgstr ""
-"Ім’я автора, «%1$s»,\n"
-"використане для стеження за змінами, містить символи, які\n"
-"неможливо показати за поточного кодування. Відповідні\n"
-"символи буде пропущено під час експортування до файла LaTeX.\n"
+"Шлях до вашого документа\n"
+"(%1$s)\n"
+"містить символи, що не належать до кодування\n"
+"поточного документа (а саме %2$s).\n"
+"Це може призвести до пошкодження виведених даних.\n"
 "\n"
-"Оберіть відповідне кодування документа (наприклад, utf8)\n"
-"або змініть запис імені автора."
+"Виберіть належне кодування документа (наприклад, utf8)\n"
+"або змініть шлях."
 
 #: src/Buffer.cpp:1418
 msgid "Running chktex..."
@@ -15526,19 +15512,19 @@ msgstr "Рядок не знайдено!"
 
 #: src/BufferView.cpp:1288
 msgid "Mark off"
-msgstr "Мітку вимкнено"
+msgstr "Позначку вимкнено"
 
 #: src/BufferView.cpp:1295
 msgid "Mark on"
-msgstr "Мітку увімкнено"
+msgstr "Позначку увімкнено"
 
 #: src/BufferView.cpp:1302
 msgid "Mark removed"
-msgstr "Мітку вилучено"
+msgstr "Позначку вилучено"
 
 #: src/BufferView.cpp:1305
 msgid "Mark set"
-msgstr "Мітку встановлено"
+msgstr "Позначку встановлено"
 
 #: src/BufferView.cpp:1356
 msgid "Statistics for the selection:"
@@ -15569,7 +15555,7 @@ msgstr "Один символ (разом з пробілами)"
 #: src/BufferView.cpp:1372
 #, c-format
 msgid "%1$d characters (excluding blanks)"
-msgstr "%1$d символи (без пробілів)"
+msgstr "%1$d символів (без пробілів)"
 
 #: src/BufferView.cpp:1375
 msgid "One character (excluding blanks)"
@@ -15659,7 +15645,7 @@ msgid "Uncodable character in author name"
 msgstr "Непридатні для кодування символи у імені автора"
 
 #: src/Changes.cpp:380
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The author name '%1$s',\n"
 "used for change tracking, contains glyphs that cannot be\n"
@@ -15717,7 +15703,7 @@ msgstr "блакитний"
 
 #: src/Color.cpp:142
 msgid "magenta"
-msgstr "маджента"
+msgstr "бузковий"
 
 #: src/Color.cpp:143
 msgid "yellow"
@@ -15741,7 +15727,7 @@ msgstr "обране"
 
 #: src/Color.cpp:148
 msgid "selected text"
-msgstr "виділений текст"
+msgstr "позначений текст"
 
 #: src/Color.cpp:150
 msgid "LaTeX text"
@@ -15777,11 +15763,11 @@ msgstr "тло коментарів"
 
 #: src/Color.cpp:160
 msgid "greyedout inset label"
-msgstr "висірена мітка вставки"
+msgstr "висірена мітка вкладки"
 
 #: src/Color.cpp:161
 msgid "greyedout inset background"
-msgstr "тло вкладки"
+msgstr "висірене тло вкладки"
 
 #: src/Color.cpp:162
 msgid "shaded box"
@@ -15825,15 +15811,15 @@ msgstr "мова"
 
 #: src/Color.cpp:172
 msgid "command inset"
-msgstr "Вкладка команд"
+msgstr "вкладка команд"
 
 #: src/Color.cpp:173
 msgid "command inset background"
-msgstr "Тло вкладки команд"
+msgstr "тло вкладки команд"
 
 #: src/Color.cpp:174
 msgid "command inset frame"
-msgstr "Рамка вкладки команд"
+msgstr "рамка вкладки команд"
 
 #: src/Color.cpp:175
 msgid "special character"
@@ -15861,11 +15847,11 @@ msgstr "Рамка матем. режиму"
 
 #: src/Color.cpp:181
 msgid "math corners"
-msgstr "math кутики"
+msgstr "кутики математичних об’єктів"
 
 #: src/Color.cpp:182
 msgid "math line"
-msgstr "Математичний рядок"
+msgstr "математичний рядок"
 
 #: src/Color.cpp:184
 msgid "math macro hovered background"
@@ -15893,31 +15879,31 @@ msgstr "новий параметр матем. макросу"
 
 #: src/Color.cpp:190
 msgid "caption frame"
-msgstr "Рамка підпису"
+msgstr "рамка підпису"
 
 #: src/Color.cpp:191
 msgid "collapsable inset text"
-msgstr "Текст вкладки, що згортається"
+msgstr "текст вкладки, що згортається"
 
 #: src/Color.cpp:192
 msgid "collapsable inset frame"
-msgstr "Рамка вкладки, що згортається"
+msgstr "рамка вкладки, що згортається"
 
 #: src/Color.cpp:193
 msgid "inset background"
-msgstr "Тло вкладки"
+msgstr "тло вкладки"
 
 #: src/Color.cpp:194
 msgid "inset frame"
-msgstr "Рамка вкладки"
+msgstr "рамка вкладки"
 
 #: src/Color.cpp:195
 msgid "LaTeX error"
-msgstr "Помилка LaTeX"
+msgstr "помилка LaTeX"
 
 #: src/Color.cpp:196
 msgid "end-of-line marker"
-msgstr "Маркер кінця рядки"
+msgstr "маркер кінця рядки"
 
 #: src/Color.cpp:197
 msgid "appendix marker"
@@ -15993,11 +15979,11 @@ msgstr "рамка кнопки"
 
 #: src/Color.cpp:216
 msgid "button background"
-msgstr "Тло кнопок"
+msgstr "тло кнопок"
 
 #: src/Color.cpp:217
 msgid "button background under focus"
-msgstr "тло кнопки під фокусом"
+msgstr "тло кнопок у фокусі"
 
 #: src/Color.cpp:218
 msgid "paragraph marker"
@@ -16022,7 +16008,7 @@ msgid ""
 "No information for converting %1$s format files to %2$s.\n"
 "Define a converter in the preferences."
 msgstr ""
-"Відсутня інформація для перетворення файлів формату %1$s у %2$s.\n"
+"Немає даних для перетворення файлів формату %1$s у %2$s.\n"
 "Визначте перетворювач у налаштуваннях."
 
 #: src/Converter.cpp:409 src/Format.cpp:305 src/Format.cpp:377
@@ -16040,7 +16026,7 @@ msgstr "Під час створення вихідного файла стал�
 #: src/Converter.cpp:455 src/Format.cpp:312 src/Format.cpp:384
 #, c-format
 msgid "An error occurred whilst running %1$s"
-msgstr "Відбулася помилка при запуску %1$s"
+msgstr "Сталася помилка при запуску %1$s"
 
 #: src/Converter.cpp:478
 #, c-format
@@ -16087,12 +16073,12 @@ msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
-"Вставка гнучкого об’єкта %1$s є невизначеною через зміну класу\n"
+"Вкладка гнучкого об’єкта %1$s є невизначеною через зміну класу\n"
 "з %2$s на %3$s"
 
 #: src/CutAndPaste.cpp:606
 msgid "Undefined flex inset"
-msgstr "Відкрита вставка гнучкого об’єкта"
+msgstr "Відкрита вкладка гнучкого об’єкта"
 
 #: src/Exporter.cpp:44 src/LyXFunc.cpp:1038
 #, c-format
@@ -16714,19 +16700,20 @@ msgid "Could not reload document %1$s"
 msgstr "Не вдалося перезавантажити документ %1$s"
 
 #: src/LyXFunc.cpp:1921
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Document \n"
 "%1$s\n"
 " has been externally modified. Reload now? Any local changes will be lost."
 msgstr ""
-"Документ %1$s було змінено зовнішньою програмою. ви справді бажаєте "
-"перезаписати цей файл?"
+"Документ\n"
+"%1$s\n"
+" було змінено зовнішньою програмою. Перезавантажити його? У разі "
+"перезавантаження всі локальні зміни буде втрачено."
 
 #: src/LyXFunc.cpp:1924
-#, fuzzy
 msgid "Reload externally changed document?"
-msgstr "Зберегти змінений документ?"
+msgstr "Перезавантажити змінений зовні документ?"
 
 #: src/LyXFunc.cpp:1925 src/buffer_funcs.cpp:75
 msgid "&Reload"
@@ -16770,7 +16757,7 @@ msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
 msgstr ""
-"Зніміть позначку, якщо ви не бажаєте, щоб виділений текст автоматично "
+"Зніміть позначку, якщо ви не бажаєте, щоб позначений текст автоматично "
 "заміщався тим, що ви друкуєте."
 
 #: src/LyXRC.cpp:2501
@@ -16782,8 +16769,7 @@ msgstr ""
 "типово після зміни класу."
 
 #: src/LyXRC.cpp:2505
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Проміжок часу між автозбереженнями (в секундах). 0 означає не виконувати "
 "автозбереження."
@@ -17007,8 +16993,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2662
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr ""
-"Не позначайте, якщо ви не бажаєте щоб LyX гортав до збереженої позиції."
+msgstr "Не позначайте, якщо ви не бажаєте щоб LyX гортав до збереженої позиції."
 
 #: src/LyXRC.cpp:2666
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -17047,8 +17032,7 @@ msgstr "Позначте для показу підказки-доповненн
 #: src/LyXRC.cpp:2695
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
-msgstr ""
-"Показувати підказку без затримки після неоднозначної спроби доповнення."
+msgstr "Показувати підказку без затримки після неоднозначної спроби доповнення."
 
 #: src/LyXRC.cpp:2699
 msgid ""
@@ -17088,8 +17072,7 @@ msgstr ""
 "тому вигляді, як прийнято в вашій операційній системі."
 
 #: src/LyXRC.cpp:2731
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Вкажіть додатковий особистий словниковий файл. Наприклад, \".ispell_english"
 "\"."
@@ -17186,8 +17169,7 @@ msgstr "Параметр для зазначення програмі друку
 
 #: src/LyXRC.cpp:2807
 msgid "Option to pass to the print program to print on a specific printer."
-msgstr ""
-"Параметр для зазначення програмі друку друкувати на вказаному принтері."
+msgstr "Параметр для зазначення програмі друку друкувати на вказаному принтері."
 
 #: src/LyXRC.cpp:2811
 msgid ""
@@ -17380,7 +17362,7 @@ msgstr "Native OS API ще не підтримується"
 
 #: src/Text.cpp:146
 msgid "Unknown Inset"
-msgstr "Невідомий Inset"
+msgstr "Невідома вкладка"
 
 #: src/Text.cpp:219 src/Text.cpp:232
 msgid "Change tracking error"
@@ -17434,7 +17416,7 @@ msgstr "Шрифт: %1$s"
 #: src/Text.cpp:1415
 #, c-format
 msgid ", Depth: %1$d"
-msgstr ", Рівень: %1$d"
+msgstr ", Глибина: %1$d"
 
 #: src/Text.cpp:1421
 msgid ", Spacing: "
@@ -17641,7 +17623,7 @@ msgstr "&Ні"
 
 #: src/VCBackend.cpp:732
 msgid "View &Log ..."
-msgstr ""
+msgstr "П&ереглянути журнал..."
 
 #: src/VCBackend.cpp:798
 msgid "VCN File Locking"
@@ -17703,8 +17685,7 @@ msgstr "&Зберегти зміни"
 #: src/buffer_funcs.cpp:87
 #, c-format
 msgid "The file %1$s exists but is not readable by the current user."
-msgstr ""
-"Файл %1$s існує, але він недоступний для читання поточним користувачем."
+msgstr "Файл %1$s існує, але він недоступний для читання поточним користувачем."
 
 #: src/buffer_funcs.cpp:90
 msgid "File not readable!"
@@ -18657,14 +18638,12 @@ msgid "TeX Code Settings"
 msgstr "Параметри LaTeX"
 
 #: src/frontends/qt4/GuiErrorList.cpp:41
-#, fuzzy
 msgid "Literate"
 msgstr "Буквально"
 
 #: src/frontends/qt4/GuiErrorList.cpp:43
-#, fuzzy
 msgid "pLaTeX"
-msgstr "LaTeX"
+msgstr "pLaTeX"
 
 #: src/frontends/qt4/GuiErrorList.cpp:55
 msgid "Error List"
@@ -18862,15 +18841,15 @@ msgstr "Гіперпосилання"
 
 #: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1088
 msgid "Child Document"
-msgstr "Спадковий документ"
+msgstr "Дочірній документ"
 
 #: src/frontends/qt4/GuiInclude.cpp:120 src/frontends/qt4/GuiInclude.cpp:182
 #: src/frontends/qt4/GuiListings.cpp:239 src/frontends/qt4/GuiListings.cpp:375
 #: src/frontends/qt4/GuiListings.cpp:450
-msgid ""
-"Input listing parameters on the right. Enter ? for a list of parameters."
+msgid "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
-"Введіть параметри текстів програм праворуч. Введіть «?», щоб побачити список "
+"Введіть параметри текстів програм праворуч. Введіть «?», щоб переглянути "
+"список "
 "команд."
 
 #: src/frontends/qt4/GuiInclude.cpp:315
@@ -19101,9 +19080,8 @@ msgid "hspell"
 msgstr "hspell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1152
-#, fuzzy
 msgid "enchant"
-msgstr "діаграма"
+msgstr "enchant"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1155
 msgid "pspell (library)"
@@ -19731,7 +19709,7 @@ msgstr "Інформація про TeX"
 
 #: src/frontends/qt4/GuiToc.cpp:36
 msgid "Outline"
-msgstr "Контур"
+msgstr "Структура"
 
 #: src/frontends/qt4/GuiToolbar.cpp:369
 #, c-format
@@ -19964,7 +19942,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:1928
 msgid "&Discard"
-msgstr "&Викинути"
+msgstr "&Відкинути"
 
 #: src/frontends/qt4/GuiView.cpp:2002
 msgid "Document not loaded"
@@ -20187,18 +20165,17 @@ msgstr ""
 "його буде замінено на %2$s."
 
 #: src/insets/InsetBibitem.cpp:206
-#, fuzzy
 msgid "Uncodable characters in bibliography item"
-msgstr "Непридатні для кодування символи у вкладці тексту програми"
+msgstr "Непридатні для кодування символи у пункті бібліографії"
 
 #: src/insets/InsetBibitem.cpp:207
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters in one of the bibliography items are\n"
 "not representable in the current encoding and have been omitted:\n"
 "%1$s."
 msgstr ""
-"Наведені нижче символи у одному з текстів програм неможливо\n"
+"Наведені нижче символи у одному з пунктів бібліографії неможливо\n"
 "представити у поточному кодуванні, ці символи буде вилучено:\n"
 "%1$s."
 
@@ -20208,7 +20185,7 @@ msgid ""
 "The BibTeX inset includes %1$s databases.\n"
 "If you proceed, all of them will be opened."
 msgstr ""
-"До вставка BibTeX включено бази даних %1$s.\n"
+"До вкладки BibTeX включено бази даних %1$s.\n"
 "Якщо ви продовжуватимете, всі ці бази буде відкрито."
 
 #: src/insets/InsetBibtex.cpp:142
@@ -20468,7 +20445,7 @@ msgstr "Буквальна вставка* файла"
 
 #: src/insets/InsetInclude.cpp:444 src/insets/InsetInclude.cpp:647
 msgid "Recursive input"
-msgstr "Рекурсивне введення"
+msgstr "Рекурсивна вставка"
 
 #: src/insets/InsetInclude.cpp:445 src/insets/InsetInclude.cpp:648
 #, c-format
@@ -21329,7 +21306,7 @@ msgstr "Локаль/Інтернаціоналізація"
 
 #: src/support/debug.cpp:68
 msgid "Selection copy/paste mechanism"
-msgstr "Механізм копіювання/вставлення виділеного"
+msgstr "Механізм копіювання/вставлення позначеного"
 
 #: src/support/debug.cpp:69
 msgid "Developers' general debug messages"
@@ -21376,133 +21353,4 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Невідомий користувач"
 
-#~ msgid "Anschrift:"
-#~ msgstr "Адреса:"
 
-#~ msgid "Briefkopf:"
-#~ msgstr "Оголівка:"
-
-#~ msgid "Absender:"
-#~ msgstr "Відправник:"
-
-#~ msgid "Zusatz:"
-#~ msgstr "Постскриптум:"
-
-#~ msgid "Ihre Zeichen:"
-#~ msgstr "Ihre Zeichen:"
-
-#~ msgid "Unsere Zeichen:"
-#~ msgstr "Unsere Zeichen:"
-
-#~ msgid "Sachbearbeiter:"
-#~ msgstr "Відповідальний виконавець:"
-
-#~ msgid "Unterschrift:"
-#~ msgstr "Unterschrift:"
-
-#~ msgid "Fusszeile(n):"
-#~ msgstr "Fusszeile(n):"
-
-#~ msgid "Vorwahl:"
-#~ msgstr "Код:"
-
-#~ msgid "Telefon:"
-#~ msgstr "Телефон:"
-
-#~ msgid "Ort:"
-#~ msgstr "Ort:"
-
-#~ msgid "Datum:"
-#~ msgstr "Дата:"
-
-#~ msgid "Betreff:"
-#~ msgstr "Betreff:"
-
-#~ msgid "Anrede:"
-#~ msgstr "Anrede:"
-
-#~ msgid "Gruss:"
-#~ msgstr "Gruss:"
-
-#~ msgid "Anlage(n):"
-#~ msgstr "Anlage(n):"
-
-#~ msgid "Verteiler:"
-#~ msgstr "Verteiler:"
-
-#~ msgid "PS:"
-#~ msgstr "PS:"
-
-#~ msgid "Text:"
-#~ msgstr "Текст:"
-
-#~ msgid "Strasse:"
-#~ msgstr "Вулиця:"
-
-#~ msgid "Land:"
-#~ msgstr "Land:"
-
-#~ msgid "RetourAdresse:"
-#~ msgstr "Зворотня адреса:"
-
-#~ msgid "MeinZeichen:"
-#~ msgstr "MeinZeichen:"
-
-#~ msgid "IhrZeichen:"
-#~ msgstr "IhrZeichen:"
-
-#~ msgid "IhrSchreiben:"
-#~ msgstr "IhrSchreiben:"
-
-#~ msgid "BLZ:"
-#~ msgstr "BLZ:"
-
-#~ msgid "Konto:"
-#~ msgstr "Рахунок:"
-
-#~ msgid "Adresse:"
-#~ msgstr "Адреса:"
-
-#~ msgid "Anlagen:"
-#~ msgstr "Anlagen:"
-
-#, fuzzy
-#~ msgid "LyX binary not found"
-#~ msgstr "Рядок не знайдено!"
-
-#, fuzzy
-#~ msgid "File not found"
-#~ msgstr "Модуль не знайдено"
-
-#, fuzzy
-#~ msgid "Directory not found"
-#~ msgstr "Рядок не знайдено!"
-
-#~ msgid "Numbers theorems and the like by section."
-#~ msgstr "Нумерує теореми і подібні середовища за розділами."
-
-#~ msgid "Latex"
-#~ msgstr "Latex"
-
-#~ msgid "Close Tab Group|G"
-#~ msgstr "Закрити групу вкладок|г"
-
-#~ msgid "No file open!"
-#~ msgstr "Жодного файла не відкрито!"
-
-#~ msgid "You cannot paste into a multicell selection."
-#~ msgstr "ви не можете вставляти у декілька обраних комірок одразу"
-
-#, fuzzy
-#~ msgid "Check in Changes...|I"
-#~ msgstr "Перевірити у Змінах...|у"
-
-#, fuzzy
-#~ msgid "Check out for Edit|O"
-#~ msgstr "Пошукати редакції|р"
-
-#~ msgid "Toggle Labeling/Numbering|T"
-#~ msgstr "Перемкнути нумерацію/Мітки|м"
-
-#~ msgid "Toggle Label|L"
-#~ msgstr "Перемкнути мітку|м"
