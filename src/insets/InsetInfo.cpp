@@ -363,29 +363,41 @@ void InsetInfo::updateInfo()
 		break;
 	}
 	case BUFFER_INFO: {
-		if (name_ == "name")
+		if (name_ == "name") {
 			setText(from_utf8(buffer().fileName().onlyFileName()));
-		else if (name_ == "path")
+			break;
+		}
+		if (name_ == "path") {
 			setText(from_utf8(buffer().filePath()));
-		else if (name_ == "class")
+			break;
+		}
+		if (name_ == "class") {
 			setText(from_utf8(bp.documentClass().name()));
-		else if (name_ == "vcs-revision" && buffer().lyxvc().inUse() &&
-			 !buffer().lyxvc().revisionInfo(LyXVC::File).empty())
-			setText(from_utf8(buffer().lyxvc().revisionInfo(LyXVC::File)));
-		else if (name_ == "vcs-tree-revision" && buffer().lyxvc().inUse() &&
-			 !buffer().lyxvc().revisionInfo(LyXVC::Tree).empty())
-			setText(from_utf8(buffer().lyxvc().revisionInfo(LyXVC::Tree)));
-		else if (name_ == "vcs-author" && buffer().lyxvc().inUse() &&
-			 !buffer().lyxvc().revisionInfo(LyXVC::Author).empty())
-			setText(from_utf8(buffer().lyxvc().revisionInfo(LyXVC::Author)));
-		else if (name_ == "vcs-time" && buffer().lyxvc().inUse() &&
-			 !buffer().lyxvc().revisionInfo(LyXVC::Time).empty())
-			setText(from_utf8(buffer().lyxvc().revisionInfo(LyXVC::Time)));
-		else if (name_ == "vcs-date" && buffer().lyxvc().inUse() &&
-			 !buffer().lyxvc().revisionInfo(LyXVC::Date).empty())
-			setText(from_utf8(buffer().lyxvc().revisionInfo(LyXVC::Date)));
+			break;
+		}
+		
+		// everything that follows is for version control.
+		// nothing that isn't version control should go below this line.
+		if (!buffer().lyxvc().inUse()) {
+			setText(_("No version control"));
+			break;
+		}
+		LyXVC::RevisionInfo itype = LyXVC::Unknown;
+		if (name_ == "vcs-revision")
+			itype = LyXVC::File;
+		else if (name_ == "vcs-tree-revision")
+			itype = LyXVC::Tree;
+		else if (name_ == "vcs-author")
+			itype = LyXVC::Author;
+		else if (name_ == "vcs-time")
+			itype = LyXVC::Time;
+		else if (name_ == "vcs-date")
+			itype = LyXVC::Date;
+		string binfo = buffer().lyxvc().revisionInfo(itype);
+		if (binfo.empty())
+			setText(bformat(_("[[%1$s unknown]]"), name_));
 		else
-			setText(_("Unknown buffer info"));
+			setText(from_utf8(binfo));
 		break;
 	}
 	case LYX_INFO:
