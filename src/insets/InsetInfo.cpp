@@ -155,9 +155,11 @@ bool InsetInfo::validateModifyArgument(docstring const & arg) const
 {
 	string type;
 	string const name = trim(split(to_utf8(arg), type, ' '));
+
 	switch (nameTranslator().find(type)) {
 	case UNKNOWN_INFO:
 		return false;
+
 	case SHORTCUT_INFO:
 	case SHORTCUTS_INFO:
 	case MENU_INFO:
@@ -165,21 +167,29 @@ bool InsetInfo::validateModifyArgument(docstring const & arg) const
 		FuncRequest func = lyxaction.lookupFunc(name);
 		return func.action() != LFUN_UNKNOWN_ACTION;
 	}
+
 	case LYXRC_INFO: {
 		ostringstream oss;
 		lyxrc.write(oss, true, name);
 		return !oss.str().empty();
 	}
+
 	case PACKAGE_INFO:
 	case TEXTCLASS_INFO:
 		return true;
+
 	case BUFFER_INFO:
-		return name == "name" || name == "path" || name == "class" ||
-		       name == "vcs-revision" || name == "vcs-tree-revision" ||
-		       name == "vcs-author" || name == "vcs-date" || name == "vcs-time";
+		if (name == "name" || name == "path" || name == "class")
+			return true;
+		if (name == "vcs-revision" || name == "vcs-tree-revision" ||
+		       name == "vcs-author" || name == "vcs-date" || name == "vcs-time")
+			return buffer().lyxvc().inUse();
+		return false;
+
 	case LYX_INFO:
 		return name == "version";
 	}
+
 	return false;
 }
 
