@@ -42,6 +42,18 @@ using namespace lyx::support::os;
 
 namespace lyx {
 
+namespace frontend {
+namespace Alert {
+	void warning(docstring const & title, docstring const & message,
+				 bool const &)
+	{
+		LYXERR0(title);
+		LYXERR0(message);
+	}
+}
+}
+
+
 // Dummy translation support
 Messages messages_;
 Messages const & getMessages(std::string const &)

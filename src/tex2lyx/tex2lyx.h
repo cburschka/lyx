@@ -26,6 +26,14 @@ namespace lyx {
 
 namespace support { class FileName; }
 
+/// Simple support for frontend::Alert::warning().
+namespace frontend { 
+namespace Alert {
+	void warning(docstring const & title, docstring const & message,
+				 bool const &);
+}
+}
+
 class Context;
 
 /// A trivial subclass, just to give us a public default constructor
