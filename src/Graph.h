@@ -51,6 +51,8 @@ private:
 	void clearMarks();
 	/// used to recover a marked path 
 	void getMarkedPath(int from, int to, EdgePath & path);
+	///
+	void dumpGraph() const;
 	/// these represent the arrows connecting the nodes of the graph.
 	/// this is the basic representation of the graph: as a bunch of 
 	/// arrows.

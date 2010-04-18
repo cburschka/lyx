@@ -216,11 +216,15 @@ void Graph::getMarkedPath(int from, int to, EdgePath & path) {
 	}
 	// find marked in_arrow
 	vector<Arrow *>::const_iterator it = vertices_[to].in_arrows.begin();
-	vector<Arrow *>::const_iterator en = vertices_[to].in_arrows.end();
+	vector<Arrow *>::const_iterator const en = vertices_[to].in_arrows.end();
 	for (; it != en; ++it)
 		if ((*it)->marked) 
 			break;
 	if (it == en) {
+		// debug code to try to figure out what's up.
+		LYXERR0("Failed to find marked arrow.\n"
+						"From: " << from << ", To: " << to);
+		dumpGraph();
 		LASSERT(false, /* */);
 		return;
 	}
@@ -244,6 +248,28 @@ void Graph::addEdge(int from, int to)
 	Arrow * ar = &(arrows_.back());
 	vertices_[to].in_arrows.push_back(ar);
 	vertices_[from].out_arrows.push_back(ar);
+}
+
+
+void Graph::dumpGraph() const
+{
+	vector<Vertex>::const_iterator it = vertices_.begin();
+	vector<Vertex>::const_iterator en = vertices_.end();
+	for (; it != en; ++it) {
+		LYXERR0("Next vertex...");
+		LYXERR0("In arrows...");
+		std::vector<Arrow *>::const_iterator iit = it->in_arrows.begin();
+		std::vector<Arrow *>::const_iterator ien = it->in_arrows.end();
+		for (; iit != ien; ++iit)
+			LYXERR0("From " << (*iit)->from << " to " << (*iit)->to
+					<< ". Marked: " << (*iit)->marked);
+		LYXERR0("Out arrows...");
+		iit = it->out_arrows.begin();
+		ien = it->out_arrows.end();
+		for (; iit != ien; ++iit)
+			LYXERR0("From " << (*iit)->from << " to " << (*iit)->to
+						<< ". Marked: " << (*iit)->marked);
+	}
 }
 
 
