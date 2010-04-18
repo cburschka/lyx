@@ -341,10 +341,12 @@ bool TextClass::read(std::string const & str, ReadType rt)
 // Reads a textclass structure from file.
 TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt) 
 {
-	bool error = !lexrc.isOK();
+	if (!lexrc.isOK())
+		return ERROR;
 
 	// Format of files before the 'Format' tag was introduced
 	int format = 1;
+	bool error = false;
 
 	// parsing
 	while (lexrc.isOK() && !error) {
@@ -696,7 +698,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 	if (defaultlayout_.empty()) {
 		LYXERR0("Error: Textclass '" << name_
 						<< "' is missing a defaultstyle.");
-		error = true;
+		return ERROR;
 	}
 		
 	// Try to erase "stdinsets" from the provides_ set. 
