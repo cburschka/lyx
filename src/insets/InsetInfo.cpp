@@ -227,32 +227,13 @@ bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetInfo::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	// allow selection, copy but not cut, delete etc
 	switch (cmd.action()) {
-	case LFUN_INSET_SETTINGS:
-		InsetCollapsable::doDispatch(cur, cmd);
-		break;
-
 	case LFUN_INSET_MODIFY:
 		setInfo(to_utf8(cmd.argument()));
 		break;
 
-	case LFUN_MOUSE_PRESS:
-		switch (cmd.button()) {
-		case mouse_button::button1:
-		case mouse_button::button3:
-			cur.undispatched();
-			break;
-		case mouse_button::none:
-		case mouse_button::button2:
-		case mouse_button::button4:
-		case mouse_button::button5:
-			// Nothing to do.
-			cur.noUpdate();
-			break;
-		}
-
 	default:
+		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 	}
 }
