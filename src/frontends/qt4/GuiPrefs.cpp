@@ -375,9 +375,11 @@ PrefOutput::PrefOutput(GuiPreferences * form)
 	dviCB->addItem("");
 	dviCB->addItem("xdvi -sourceposition $$n:$$t $$o");
 	dviCB->addItem("yap -1 -s $$n$$t $$o");
+	dviCB->addItem("okular --unique $$o#src:$$n$$t");
 	pdfCB->addItem("");
 	pdfCB->addItem("CMCDDE SUMATRA control [ForwardSearch(\\\"$$o\\\",\\\"$$t\\\",$$n,0,0,1)]");
 	pdfCB->addItem("synctex view -i $$n:0:$$t -o $$o -x \"xpdf -raise -remote $$t.tmp $$o %{page+1}\"");
+	pdfCB->addItem("okular --unique $$o#src:$$n$$t");
 }
 
 
