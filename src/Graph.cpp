@@ -178,9 +178,8 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 		int const current = Q_.front();
 		Q_.pop();
 
-		vector<Arrow *>::const_iterator const beg =
+		vector<Arrow *>::const_iterator cit =
 			vertices_[current].out_arrows.begin();
-		vector<Arrow *>::const_iterator cit = beg;
 		vector<Arrow *>::const_iterator end =
 			vertices_[current].out_arrows.end();
 		for (; cit != end; ++cit) {
