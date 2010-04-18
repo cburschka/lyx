@@ -1468,11 +1468,13 @@ def revert_shadedboxcolor(document):
 
 def revert_lyx_version(document):
     " Reverts LyX Version information from Inset Info "
-    # let's figure out why this doesn't work in the build directory.
-    # import lyx2lyx_version
-    # version = lyx2lyx_version.version
-    version = "2.0.0svn"
-		
+    version = "LyX version"
+    try:
+        import lyx2lyx_version
+        version = lyx2lyx_version.version
+    except:
+   	    pass
+	
     i = 0
     while 1:
         i = find_token(document.body, '\\begin_inset Info', i)
@@ -1497,6 +1499,7 @@ def revert_lyx_version(document):
         if arg != "version" or typ != "lyxinfo":
             i = j+1
             continue
+
         # We do not actually know the version of LyX used to produce the document.
         # But we can use our version, since we are reverting.
         s = [version]
