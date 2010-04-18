@@ -434,7 +434,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			if (name.empty()) {
 				string s = "Could not read name for style: `$$Token' "
 					+ lexrc.getString() + " is probably not valid UTF-8!";
-				lexrc.printError(s.c_str());
+				lexrc.printError(s);
 				Layout lay;
 				// Since we couldn't read the name, we just scan the rest
 				// of the style and discard it.
@@ -456,10 +456,10 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				}
 			}
 			else {
+				// this was an ifstyle where we didn't have the style
 				// scan the rest and discard it
 				Layout lay;
 				readStyle(lexrc, lay);
-				error = false;
 			}
 
 			// reset flag
@@ -614,12 +614,13 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			if (name.empty()) {
 				string s = "Could not read name for InsetLayout: `$$Token' "
 					+ lexrc.getString() + " is probably not valid UTF-8!";
-				lexrc.printError(s.c_str());
+				lexrc.printError(s);
 				InsetLayout il;
 				// Since we couldn't read the name, we just scan the rest
 				// of the style and discard it.
 				il.read(lexrc, *this);
-				error = true;
+				// Let's try to continue rather than abort.
+				// error = true;
 			} else if (hasInsetLayout(name)) {
 				InsetLayout & il = insetlayoutlist_[name];
 				error = !il.read(lexrc, *this);
@@ -634,7 +635,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 		}
 
 		case TC_FLOAT:
-			readFloat(lexrc);
+			error = readFloat(lexrc);
 			break;
 		
 		case TC_CITEFORMAT:
@@ -826,7 +827,8 @@ void TextClass::readClassOptions(Lexer & lexrc)
 		case Lexer::LEX_UNDEF:
 			lexrc.printError("Unknown ClassOption tag `$$Token'");
 			continue;
-		default: break;
+		default:
+			break;
 		}
 		switch (le) {
 		case CO_FONTSIZE:
@@ -879,7 +881,7 @@ void TextClass::readCiteFormat(Lexer & lexrc)
 }
 
 
-void TextClass::readFloat(Lexer & lexrc)
+bool TextClass::readFloat(Lexer & lexrc)
 {
 	enum {
 		FT_TYPE = 1,
@@ -938,7 +940,8 @@ void TextClass::readFloat(Lexer & lexrc)
 		case Lexer::LEX_UNDEF:
 			lexrc.printError("Unknown float tag `$$Token'");
 			continue;
-		default: break;
+		default:
+			break;
 		}
 		switch (le) {
 		case FT_TYPE:
@@ -1013,6 +1016,8 @@ void TextClass::readFloat(Lexer & lexrc)
 		}
 	}
 
+	lexrc.popTable();
+
 	// Here we have a full float if getout == true
 	if (getout) {
 		if (!needsfloat && listcommand.empty())
@@ -1032,7 +1037,7 @@ void TextClass::readFloat(Lexer & lexrc)
 				      "\\alph{" + subtype + "}", docstring());
 	}
 
-	lexrc.popTable();
+	return getout;
 }
 
 

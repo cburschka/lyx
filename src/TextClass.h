@@ -331,7 +331,7 @@ private:
 	///
 	void readCharStyle(Lexer &, std::string const &);
 	///
-	void readFloat(Lexer &);
+	bool readFloat(Lexer &);
 	///
 	void readCiteFormat(Lexer &);
 };
