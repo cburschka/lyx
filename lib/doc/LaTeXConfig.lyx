@@ -1,11 +1,13 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 370
+\lyxformat 386
 \begin_document
 \begin_header
 \textclass article
 \use_default_options false
+\maintain_unincluded_children false
 \language english
 \inputencoding default
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -27,11 +29,16 @@
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
+\use_mhchem 0
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -42,6 +49,8 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
+\html_math_output 0
+\html_be_strict true
 \end_header
 
 \begin_body
@@ -4055,6 +4064,35 @@ index of algorithms
 \end_layout
 
 \begin_layout Subsection
+arabi
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "arabi"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+language/arabic/arabi/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+arabi
+\family default
+ is needed by LyX to be able to output documents with the document language
+ Arabic.
+\end_layout
+
+\begin_layout Subsection
 bibtopic
 \end_layout
 
@@ -4262,6 +4300,35 @@ fancy
 
  page style in the document layout popup.
  It provides alternate headers and footers to your pages.
+\end_layout
+
+\begin_layout Subsection
+hyphenat
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "hyphenat"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/hyphenat/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+hyphenat
+\family default
+ is needed by some document classes and document languages to disable hyphenatio
+n.
 \end_layout
 
 \begin_layout Subsection
