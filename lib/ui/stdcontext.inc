@@ -442,7 +442,7 @@ Menuset
 		Item "Revision Date|D" "inset-modify buffer vcs-date"
 		Item "Revision Time|i" "inset-modify buffer vcs-time"
 		Separator
-		Item "LyX Version|x" "inset-modify lyxinfo version"
+		Item "LyX Version|X" "inset-modify lyxinfo version"
 	End
 
 
