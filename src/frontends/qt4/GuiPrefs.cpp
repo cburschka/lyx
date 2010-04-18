@@ -382,6 +382,7 @@ PrefOutput::PrefOutput(GuiPreferences * form)
 	pdfCB->addItem("synctex view -i $$n:0:$$t -o $$o -x \"xpdf -raise -remote $$t.tmp $$o %{page+1}\"");
 	pdfCB->addItem("okular --unique $$o#src:$$n$$t");
 	pdfCB->addItem("synctex view -i $$n:0:$$t -o $$o -x \"evince -p %{page+1} $$o\"");
+	pdfCB->addItem("/Applications/Skim.app/Contents/SharedSupport/displayline $$n $$o $$t");
 }
 
 
