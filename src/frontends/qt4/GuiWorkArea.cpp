@@ -1391,6 +1391,20 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 }
 
 
+void TabWorkArea::mouseDoubleClickEvent(QMouseEvent * event)
+{
+	if (event->button() != Qt::LeftButton)
+		return;
+
+	// return early if double click on existing tabs
+	for (int i = 0; i < count(); ++i)
+		if (tabBar()->tabRect(i).contains(event->pos()))
+			return;
+
+	dispatch(FuncRequest(LFUN_BUFFER_NEW));
+}
+
+
 void TabWorkArea::setFullScreen(bool full_screen)
 {
 	for (int i = 0; i != count(); ++i) {

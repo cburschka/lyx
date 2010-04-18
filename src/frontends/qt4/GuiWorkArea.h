@@ -337,6 +337,8 @@ private Q_SLOTS:
 	void showContextMenu(const QPoint & pos);
 	///
 	void moveTab(int fromIndex, int toIndex);
+	///
+	void mouseDoubleClickEvent(QMouseEvent * event);
 
 private:
 	///
