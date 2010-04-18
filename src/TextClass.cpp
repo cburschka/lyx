@@ -635,7 +635,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 		}
 
 		case TC_FLOAT:
-			error = readFloat(lexrc);
+			error = !readFloat(lexrc);
 			break;
 		
 		case TC_CITEFORMAT:
@@ -1036,7 +1036,6 @@ bool TextClass::readFloat(Lexer & lexrc)
 		counters_.newCounter(subtype, from_ascii(type),
 				      "\\alph{" + subtype + "}", docstring());
 	}
-
 	return getout;
 }
 
