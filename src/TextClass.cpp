@@ -406,8 +406,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 					lexrc.printError("Could not find input file: " + inc);
 					error = true;
 				} else if (!read(tmp, MERGE)) {
-					lexrc.printError("Error reading input"
-							 "file: " + tmp.absFilename());
+					lexrc.printError("Error reading input file: " + tmp.absFilename());
 					error = true;
 				}
 			}
@@ -683,16 +682,18 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			break;
 		} // end of switch
 
-		//Note that this is triggered the first time through the loop unless
-		//we hit a format tag.
+		// Note that this is triggered the first time through the loop unless
+		// we hit a format tag.
 		if (format != FORMAT)
-			break;
+			return FORMAT_MISMATCH;
 	}
 
-	if (format != FORMAT)
-		return FORMAT_MISMATCH;
+	// at present, we abort if we encounter an error,
+	// so there is no point continuing.
+	if (error)
+		return ERROR;
 
-	if (rt != BASECLASS) 
+	if (rt != BASECLASS)
 		return (error ? ERROR : OK);
 
 	if (defaultlayout_.empty()) {
