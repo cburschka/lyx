@@ -22,7 +22,6 @@
 import re, string
 import unicodedata
 import sys, os
-import lyx2lyx_version
 
 from parser_tools import find_token, find_end_of, find_tokens, get_value, get_value_string
 
@@ -1469,6 +1468,11 @@ def revert_shadedboxcolor(document):
 
 def revert_lyx_version(document):
     " Reverts LyX Version information from Inset Info "
+    # let's figure out why this doesn't work in the build directory.
+    # import lyx2lyx_version
+    # version = lyx2lyx_version.version
+    version = "2.0.0svn"
+		
     i = 0
     while 1:
         i = find_token(document.body, '\\begin_inset Info', i)
@@ -1495,7 +1499,7 @@ def revert_lyx_version(document):
             continue
         # We do not actually know the version of LyX used to produce the document.
         # But we can use our version, since we are reverting.
-        s = [lyx2lyx_version.version]
+        s = [version]
         # Now we want to check if the line after "\end_inset" is empty. It normally
         # is, so we want to remove it, too.
         lastline = j+1
