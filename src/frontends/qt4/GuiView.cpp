@@ -3223,20 +3223,27 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 
 		case LFUN_FORWARD_SEARCH: {
-			string command = lyxrc.forward_search_dvi;
 			FileName const path(doc_buffer->temppath());
 			string const texname = doc_buffer->latexName();
-			string outname = support::changeExtension(texname, "dvi");
-			if (!FileName(addName(path.absFilename(), outname)).exists()) {
-				outname = support::changeExtension(texname, "pdf");
+			FileName const dviname(addName(path.absFilename(),
+				    support::changeExtension(texname, "dvi")));
+			FileName const pdfname(addName(path.absFilename(),
+				    support::changeExtension(texname, "pdf")));
+			if (!dviname.exists() && !pdfname.exists()) {
+				dr.setMessage(_("Please, preview the document first."));
+				break;
+			}
+			string outname = dviname.onlyFileName();
+			string command = lyxrc.forward_search_dvi;
+			if (!dviname.exists() ||
+			    pdfname.lastModified() > dviname.lastModified()) {
+				outname = pdfname.onlyFileName();
 				command = lyxrc.forward_search_pdf;
-				if (!FileName(addName(path.absFilename(), outname)).exists())
-					break;
 			}
 
 			int row = doc_buffer->texrow().getRowFromIdPos(bv->cursor().paragraph().id(), bv->cursor().pos());
 			LYXERR(Debug::ACTION, "Forward search: row:" << row
-						<< " id:" << bv->cursor().paragraph().id() << "\n");
+				<< " id:" << bv->cursor().paragraph().id());
 			if (!row || command.empty()) {
 				dr.setMessage(_("Couldn't proceed."));
 				break;
