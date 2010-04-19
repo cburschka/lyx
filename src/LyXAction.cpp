@@ -2053,7 +2053,7 @@ void LyXAction::init()
  * \li Origin: JSpitzm, 27 Apr 2006
  * \endvar
  */
-		{ LFUN_INSET_EDIT, "inset-edit", ReadOnly, Edit },
+		{ LFUN_INSET_EDIT, "inset-edit", ReadOnly | AtPoint, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_TABULAR_INSERT
@@ -3464,7 +3464,8 @@ void LyXAction::init()
  * \li Origin: sts, 16 Nov 2008
  * \endvar
  */
-		{ LFUN_LABEL_COPY_AS_REF, "copy-label-as-reference", ReadOnly | NoUpdate, Edit },
+		{ LFUN_LABEL_COPY_AS_REF, "copy-label-as-reference",
+			ReadOnly | NoUpdate | AtPoint, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_LABEL_INSERT_AS_REF

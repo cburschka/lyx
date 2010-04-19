@@ -1012,7 +1012,6 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_FONT_STATE:
 	case LFUN_LABEL_INSERT:
 	case LFUN_INFO_INSERT:
-	case LFUN_INSET_EDIT:
 	case LFUN_PARAGRAPH_GOTO:
 	case LFUN_NOTE_NEXT:
 	case LFUN_REFERENCE_NEXT:
@@ -1036,15 +1035,6 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_KEYMAP_TOGGLE:
 		flag.setEnabled(true);
 		break;
-
-	case LFUN_LABEL_COPY_AS_REF: {
-		// if there is an inset at cursor, see whether it
-		// handles the lfun
-		Inset * inset = cur.nextInset();
-		if (!inset || !inset->getStatus(cur, cmd, flag))
-			flag.setEnabled(false);
-		break;
-	}
 
 	case LFUN_LABEL_GOTO: {
 		flag.setEnabled(!cmd.argument().empty()
@@ -1309,25 +1299,6 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 	}
 	
-	case LFUN_INSET_EDIT: {
-		FuncRequest fr(cmd);
-		// if there is an inset at cursor, see whether it
-		// can be modified.
-		Inset * inset = cur.nextInset();
-		if (inset)
-			inset->dispatch(cur, fr);
-		// if it did not work, try the underlying inset.
-		if (!inset || !cur.result().dispatched())
-			cur.dispatch(cmd);
-
-		// FIXME I'm adding the last break to solve a crash,
-		// but that is obviously not right.
-		if (!cur.result().dispatched())
-			// It did not work too; no action needed.
-			break;
-		break;
-	}
-
 	case LFUN_PARAGRAPH_GOTO: {
 		int const id = convert<int>(cmd.getArg(0));
 		int const pos = convert<int>(cmd.getArg(1));
@@ -1606,23 +1577,6 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// turn compression on/off
 		buffer_.params().compressed = !buffer_.params().compressed;
 		break;
-
-	case LFUN_LABEL_COPY_AS_REF: {
-		// if there is an inset at cursor, try to copy it
-		Inset * inset = &cur.inset();
-		if (!inset || !inset->asInsetMath())
-			inset = cur.nextInset();
-		if (inset) {
-			FuncRequest tmpcmd = cmd;
-			inset->dispatch(cur, tmpcmd);
-		}
-		if (!cur.result().dispatched())
-			// It did not work too; no action needed.
-			break;
-		cur.clearSelection();
-		dr.update(Update::SinglePar | Update::FitCursor);
-		break;
-	}
 
 	case LFUN_SCREEN_UP:
 	case LFUN_SCREEN_DOWN: {
