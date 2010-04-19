@@ -88,6 +88,13 @@ namespace os = support::os;
 
 bool use_gui = true;
 
+
+// Tell what files can be silently overwritten during batch export.
+// Possible values are: NO_FILES, MAIN_FILE, ALL_FILES.
+
+overwrite_files force_overwrite = NO_FILES;
+
+
 namespace {
 
 // Filled with the command line arguments "foo" of "-sysdir foo" or
@@ -1000,6 +1007,11 @@ int parse_help(string const &, string const &, string &)
 		  "\t-i [--import] fmt file.xxx\n"
 		  "                  where fmt is the import format of choice\n"
 		  "                  and file.xxx is the file to be imported.\n"
+		  "\t-f [--force-overwrite] what\n"
+		  "                  where what is either `all' or `main'.\n"
+		  "                  Using `all', all files are overwritten during\n"
+		  "                  a batch export, otherwise only the main file will be.\n"
+		  "                  Anything else is equivalent to `all', but is not consumed.\n"
 		  "\t-batch          execute commands without launching GUI and exit.\n"
 		  "\t-version        summarize version and build info\n"
 			       "Check the LyX man page for more details.")) << endl;
@@ -1102,6 +1114,20 @@ int parse_batch(string const &, string const &, string &)
 }
 
 
+int parse_force(string const & arg, string const &, string &) 
+{
+	if (arg == "all") {
+		force_overwrite = ALL_FILES;
+		return 1;
+	} else if (arg == "main") {
+		force_overwrite = MAIN_FILE;
+		return 1;
+	}
+	force_overwrite = ALL_FILES;
+	return 0;
+}
+
+
 } // namespace anon
 
 
@@ -1124,6 +1150,8 @@ void LyX::easyParse(int & argc, char * argv[])
 	cmdmap["--import"] = parse_import;
 	cmdmap["-geometry"] = parse_geometry;
 	cmdmap["-batch"] = parse_batch;
+	cmdmap["-f"] = parse_force;
+	cmdmap["--force-overwrite"] = parse_force;
 
 	for (int i = 1; i < argc; ++i) {
 		map<string, cmd_helper>::const_iterator it
