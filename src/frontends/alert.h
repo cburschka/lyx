@@ -32,7 +32,9 @@ namespace Alert {
  */
 int prompt(docstring const & title, docstring const & question,
 	   int default_button, int cancel_button,
-	   docstring const & b1, docstring const & b2, docstring const & b3 = docstring());
+	   docstring const & b1, docstring const & b2,
+	   docstring const & b3 = docstring(),
+	   docstring const & b4 = docstring());
 
 /**
  * Display a warning to the user. Title should be a short (general) summary.

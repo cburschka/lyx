@@ -40,26 +40,15 @@ namespace Alert = frontend::Alert;
 static int checkOverwrite(FileName const & filename)
 {
 	if (!filename.exists())
-		return 0;
+		return 1;
 
 	docstring text = bformat(_("The file %1$s already exists.\n\n"
 				   "Do you want to overwrite that file?"),
 				   makeDisplayPath(filename.absFilename()));
-	int choice = Alert::prompt(_("Overwrite file?"),
-				text, 0, 2,
+	return Alert::prompt(_("Overwrite file?"),
+				text, 0, 3,
 				_("&Keep file"), _("&Overwrite"),
-				_("&Cancel export"));
-
-	if (choice == 0)
-		return -1;
-
-	if (choice == 1) {
-		text = _("Should I continue asking for overwriting files?");
-		return Alert::prompt(_("Overwrite all files?"),
-				text, 0, 0,
-				_("Continue &asking"), _("&Overwrite all"));
-	}
-	return choice;
+				_("Overwrite &all"), _("&Cancel export"));
 }
 
 
@@ -89,12 +78,12 @@ CopyStatus copyFile(string const & format,
 
 	if (!force) {
 		switch(checkOverwrite(destFile)) {
-		case -1:
-			return SUCCESS;
 		case 0:
+			return SUCCESS;
+		case 1:
 			ret = SUCCESS;
 			break;
-		case 1:
+		case 2:
 			ret = FORCE;
 			break;
 		default:

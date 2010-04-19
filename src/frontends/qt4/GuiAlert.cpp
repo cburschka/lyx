@@ -31,6 +31,7 @@
 #include <QMessageBox>
 #include <QLineEdit>
 #include <QInputDialog>
+#include <QPushButton>
 #include <QSettings>
 
 #include <iomanip>
@@ -125,7 +126,8 @@ namespace Alert {
 
 int prompt(docstring const & title0, docstring const & question,
 		  int default_button, int cancel_button,
-		  docstring const & b1, docstring const & b2, docstring const & b3)
+		  docstring const & b1, docstring const & b2,
+		  docstring const & b3, docstring const & b4)
 {
 	//lyxerr << "PROMPT" << title0 << "FOCUS: " << qApp->focusWidget() << endl;
 	if (!use_gui || lyxerr.debugging()) {
@@ -138,6 +140,7 @@ int prompt(docstring const & title0, docstring const & question,
 		case 0: lyxerr << b1 << endl;
 		case 1: lyxerr << b2 << endl;
 		case 2: lyxerr << b3 << endl;
+		case 3: lyxerr << b4 << endl;
 		}
 		if (!use_gui)
 			return default_button;
@@ -151,13 +154,21 @@ int prompt(docstring const & title0, docstring const & question,
 
 	// FIXME replace that with guiApp->currentView()
 	//LYXERR0("FOCUS: " << qApp->focusWidget());
-	int res = QMessageBox::information(qApp->focusWidget(),
-					   toqstr(title),
-					   toqstr(formatted(question)),
-					   toqstr(b1),
-					   toqstr(b2),
-					   b3.empty() ? QString::null : toqstr(b3),
-					   default_button, cancel_button);
+	QPushButton * b[4] = { 0, 0, 0, 0 };
+	QMessageBox msg_box(QMessageBox::Information,
+			toqstr(title), toqstr(formatted(question)),
+			QMessageBox::NoButton, qApp->focusWidget());
+	b[0] = msg_box.addButton(b1.empty() ? "OK" : toqstr(b1),
+					QMessageBox::ActionRole);
+	if (!b2.empty())
+		b[1] = msg_box.addButton(toqstr(b2), QMessageBox::ActionRole);
+	if (!b3.empty())
+		b[2] = msg_box.addButton(toqstr(b3), QMessageBox::ActionRole);
+	if (!b4.empty())
+		b[3] = msg_box.addButton(toqstr(b4), QMessageBox::ActionRole);
+	msg_box.setDefaultButton(b[default_button]);
+	msg_box.setEscapeButton(static_cast<QAbstractButton *>(b[cancel_button]));
+	int res = msg_box.exec();
 
 	qApp->restoreOverrideCursor();
 
