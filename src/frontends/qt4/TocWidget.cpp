@@ -455,7 +455,7 @@ void TocWidget::filterContents()
 		QModelIndex index = indices[i];
 		bool const matches =
 			index.data().toString().contains(
-				filterLE->text(), Qt::CaseSensitive);
+				filterLE->text(), Qt::CaseInsensitive);
 		tocTV->setRowHidden(index.row(), index.parent(), !matches);
 	}
 	// recursively unhide parents of unhidden children 
