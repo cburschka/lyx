@@ -453,6 +453,7 @@ Menuset
 	Menu "context-info"
 		Submenu "Document Info|D" "buffer-info"
 		Separator
+		Item "Copy Text|o" "inset-copy-as"
 		Item "Settings...|S" "inset-settings info"
 	End
 

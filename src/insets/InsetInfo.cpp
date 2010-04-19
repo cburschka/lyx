@@ -14,6 +14,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "CutAndPaste.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetGraphics.h"
@@ -209,6 +210,7 @@ bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return InsetCollapsable::getStatus(cur, cmd, flag);
 		
 	case LFUN_INSET_DIALOG_UPDATE:
+	case LFUN_INSET_COPY_AS:
 		flag.setEnabled(true);
 		return true;
 		
@@ -231,6 +233,20 @@ void InsetInfo::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY:
 		setInfo(to_utf8(cmd.argument()));
 		break;
+
+	case LFUN_INSET_COPY_AS: {
+		cap::clearSelection();
+		Cursor copy(cur);
+		copy.pushBackward(*this);
+		copy.pit() = 0;
+		copy.pos() = 0;
+		copy.resetAnchor();
+		copy.pit() = copy.lastpit();
+		copy.pos() = copy.lastpos();
+		copy.setSelection();
+		cap::copySelection(copy);
+		break;
+	}
 
 	default:
 		InsetCollapsable::doDispatch(cur, cmd);

@@ -3496,7 +3496,17 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_ZOOM_OUT, "buffer-zoom-out", ReadOnly, Buffer },
 
-
+/*!
+ * \var lyx::FuncCode lyx::LFUN_INSET_COPY_AS
+ * \li Action: Copies the inset to the clipboard as a certain type
+ * \li Syntax: inset-copy-as [<TYPE>]
+ * \li Params: <TYPE>: The type as which the inset is copied. This 
+                       can vary from inset to inset.
+ * \li Sample: InsetInfo is copied as text
+ * \li Origin: vfr, 18 Apr 2010
+ * \endvar
+ */
+		{ LFUN_INSET_COPY_AS, "inset-copy-as", ReadOnly | NoUpdate | AtPoint, Edit },
 
 		{ LFUN_NOACTION, "", Noop, Hidden }
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
