@@ -104,7 +104,7 @@
 #include <QTextCodec>
 #include <QTimer>
 #include <QTranslator>
-#if QT_VERSION >= 0x040300
+#if QT_VERSION >= 0x040400
 #include <QThreadPool>
 #endif
 #include <QWidget>
@@ -824,7 +824,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 		this, SLOT(handleRegularEvents()));
 	d->general_timer_.start();
 
-#if QT_VERSION >= 0x040300
+#if QT_VERSION >= 0x040400
 	// maxThreadCount() defaults in general to 2 on single or dual-processor.
 	// This is clearly not enough in a time where we use threads for
 	// document preview and/or export. 20 should be OK.
