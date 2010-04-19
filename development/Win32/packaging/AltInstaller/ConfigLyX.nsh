@@ -109,9 +109,9 @@ Function ConfigureLyX
    # .lyx15 don't set this, because this is designed to be opened with LyX 1.5.x
    #WriteRegStr SHCTX "Software\Classes\${PRODUCT_EXT}15" "" "${PRODUCT_REGNAME}"
    #WriteRegStr SHCTX "Software\Classes\${PRODUCT_EXT}15" "Content Type" "${PRODUCT_MIME_TYPE}"
-   # .lyx16
-   WriteRegStr SHCTX "Software\Classes\${PRODUCT_EXT}16" "" "${PRODUCT_REGNAME}"
-   WriteRegStr SHCTX "Software\Classes\${PRODUCT_EXT}16" "Content Type" "${PRODUCT_MIME_TYPE}"
+   # .lyx16 don't set this, because this is designed to be opened with LyX 1.6.x
+   #WriteRegStr SHCTX "Software\Classes\${PRODUCT_EXT}16" "" "${PRODUCT_REGNAME}"
+   #WriteRegStr SHCTX "Software\Classes\${PRODUCT_EXT}16" "Content Type" "${PRODUCT_MIME_TYPE}"
    # refresh shell
    System::Call 'shell32.dll::SHChangeNotify(i, i, i, i) (${SHCNE_ASSOCCHANGED}, ${SHCNF_IDLIST}, 0, 0)'
   ${endif}

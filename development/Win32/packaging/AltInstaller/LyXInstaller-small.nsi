@@ -19,7 +19,7 @@
 CRCCheck force
 
 # Make the installer as small as possible.
-#SetCompressor lzma
+SetCompressor lzma
 
 #--------------------------------
 # You should need to change only these macros...
@@ -177,10 +177,11 @@ Section "$(SecAllUsersTitle)" SecAllUsers
   SetShellVarContext all
   StrCpy $ProductRootKey "HKLM"
 SectionEnd
-Section "$(SecFileAssocTitle)" SecFileAssoc
+# remove the /o for LyX 2.0 final!
+Section /o "$(SecFileAssocTitle)" SecFileAssoc
   StrCpy $CreateFileAssociations "true"
 SectionEnd
-Section "$(SecDesktopTitle)" SecDesktop
+Section /o "$(SecDesktopTitle)" SecDesktop
   StrCpy $CreateDesktopIcon "true"
 SectionEnd
 
