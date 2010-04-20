@@ -47,8 +47,8 @@ static int checkOverwrite(FileName const & filename)
 				   makeDisplayPath(filename.absFilename()));
 	return Alert::prompt(_("Overwrite file?"),
 				text, 0, 3,
-				_("&Keep file"), _("&Overwrite"),
-				_("Overwrite &all"), _("&Cancel export"));
+				_("&Overwrite"), _("Overwrite &all"),
+				_("&Keep file"), _("&Cancel export"));
 }
 
 
@@ -79,13 +79,13 @@ CopyStatus copyFile(string const & format,
 	if (!force) {
 		switch(checkOverwrite(destFile)) {
 		case 0:
-			return SUCCESS;
-		case 1:
 			ret = SUCCESS;
 			break;
-		case 2:
+		case 1:
 			ret = FORCE;
 			break;
+		case 2:
+			return SUCCESS;
 		default:
 			return CANCEL;
 		}
