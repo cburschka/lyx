@@ -156,6 +156,10 @@ void GuiThesaurus::selectionClicked(QTreeWidgetItem * item, int col)
 void GuiThesaurus::updateLists()
 {
 	meaningsTV->clear();
+
+	if (entryCO->currentText().isEmpty())
+		return;
+
 	meaningsTV->setUpdatesEnabled(false);
 
 	QString const lang = languageCO->itemData(
