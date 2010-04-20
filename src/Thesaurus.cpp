@@ -116,6 +116,9 @@ pair<string, string> Thesaurus::Private::getThesaurus(docstring const & lang)
 
 bool Thesaurus::Private::addThesaurus(docstring const & lang)
 {
+	if (thesaurusAvailable(lang))
+		return true;
+
 	ThesFiles files = getThesaurus(lang);
 	string const idx = files.first;
 	string const data = files.second;
