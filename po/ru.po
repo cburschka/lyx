@@ -5,12 +5,13 @@
 # Modified by Andrew Zabolotny <zap@cobra.ru>, 2002.
 # Modified by Andrey V. Panov <panov@canopus.iacp.dvo.ru>, 2007.
 # Modified by Nick A. Gusev <guusev@yandex.ru> and Valeriy Kruchko <lerkru@gmail.com>, 2009.
+# Modified by Sergey Tereschenko <serg.partizan@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-02-19 15:33+0100\n"
-"PO-Revision-Date: 2010-04-08 17:02+0300\n"
+"PO-Revision-Date: 2010-04-21 02:16+0300\n"
 "Last-Translator: Sergey Tereschenko <serg.partizan@gmail.com>\n"
 "Language-Team: Russian <kruvalig@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -1233,11 +1234,9 @@ msgstr "&Охватывать все столбцы"
 msgid "&Rotate sideways"
 msgstr "Пов&ернуть в сторону"
 
-# ?
 #: src/frontends/qt4/ui/FontUi.ui:13
-#, fuzzy
 msgid "FontUi"
-msgstr "Шрифт"
+msgstr "FontUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:41
 msgid "C&JK:"
@@ -2742,18 +2741,16 @@ msgid "&Global"
 msgstr "&Глобально"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:136
-#, fuzzy
 msgid "If checked, the document language is not explicitly set by a language switch command"
-msgstr "Если отмечено, язык документа не задаётся явно командой переключения языка"
+msgstr "Если отмечено, язык документа не устанавливается явно командой переключения языка"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:139
 msgid "Auto &begin"
 msgstr "Автоматически &начинать"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:146
-#, fuzzy
 msgid "If checked, the document language is not explicitly closed by a language switch command"
-msgstr "Если отмечено, язык документа не задаётся явно командой переключения языка"
+msgstr "Если отмечено, язык документа не закрывается явно командой переключения языка"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:149
 msgid "Auto &end"
@@ -3513,9 +3510,8 @@ msgid "Type shortcut after clicking on this field. You can reset the content wit
 msgstr "Введите клавишную комбинацию быстрого вызова после нажатия на это поле. Вы можете сбросить содержимое поля с помощью кнопки \"Очистить\"Введите сочетание после нажатия на этом поле. Вы можете сбросить содержимое кнопкой 'Очистить'"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:35
-#, fuzzy
 msgid "Su&ggestions:"
-msgstr "Предлагается:"
+msgstr "П&редложения:"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:45
 msgid "Replace word with current choice"
@@ -3542,9 +3538,8 @@ msgid "I&gnore All"
 msgstr "&Пропустить все"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:101
-#, fuzzy
 msgid "Re&placement:"
-msgstr "Заменить на:"
+msgstr "&Замена:"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:111
 msgid "Current word"
@@ -5680,24 +5675,20 @@ msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
 #: lib/layouts/armenian-article.layout:9
-#, fuzzy
 msgid "LatinOn"
 msgstr "LatinOn"
 
 #: lib/layouts/armenian-article.layout:18
-#, fuzzy
 msgid "Latin on"
-msgstr "Latin on"
+msgstr "Включить латиницу"
 
 #: lib/layouts/armenian-article.layout:25
-#, fuzzy
 msgid "LatinOff"
 msgstr "LatinOff"
 
 #: lib/layouts/armenian-article.layout:34
-#, fuzzy
 msgid "Latin off"
-msgstr "Latin off"
+msgstr "Отключить латиницу"
 
 #: lib/layouts/article-beamer.layout:26
 #: lib/layouts/beamer.layout:224
@@ -5745,7 +5736,6 @@ msgstr "Раздел \\arabic{section}"
 #: lib/layouts/beamer.layout:166
 #: lib/layouts/powerdot.layout:237
 #: lib/layouts/numarticle.inc:10
-#, fuzzy
 msgid "\\Alph{section}"
 msgstr "\\Alph{section}"
 
@@ -8247,7 +8237,6 @@ msgid "Chapter*"
 msgstr "Глава*"
 
 #: lib/layouts/memoir.layout:85
-#, fuzzy
 msgid "Chapterprecis"
 msgstr "Chapterprecis"
 
@@ -11130,12 +11119,12 @@ msgstr "Формат|Ф"
 #: lib/ui/classic.ui:36
 #: lib/ui/stdmenus.inc:30
 msgid "View|V"
-msgstr "Вид|м"
+msgstr "Вид|В"
 
 #: lib/ui/classic.ui:37
 #: lib/ui/stdmenus.inc:32
 msgid "Navigate|N"
-msgstr "Навигация|й"
+msgstr "Навигация|Н"
 
 #: lib/ui/classic.ui:38
 msgid "Documents|D"
@@ -11149,7 +11138,7 @@ msgstr "Помощь|щ"
 #: lib/ui/classic.ui:47
 #: lib/ui/stdmenus.inc:43
 msgid "New|N"
-msgstr "Новый|Н"
+msgstr "Новый|ы"
 
 #: lib/ui/classic.ui:48
 msgid "New from Template...|T"
@@ -11197,7 +11186,7 @@ msgstr "Экспортировать в|Э"
 #: lib/ui/classic.ui:59
 #: lib/ui/stdmenus.inc:58
 msgid "Print...|P"
-msgstr "Печать...|п"
+msgstr "Печать...|П"
 
 #: lib/ui/classic.ui:60
 #: lib/ui/stdmenus.inc:59
@@ -11442,7 +11431,7 @@ msgstr "Изменить тип пределов|ь"
 #: lib/ui/classic.ui:164
 #: lib/ui/stdmenus.inc:208
 msgid "Change Formula Type|F"
-msgstr "Изменить вид формулы|ф"
+msgstr "Изменить вид формулы|в"
 
 #: lib/ui/classic.ui:166
 #: lib/ui/stdmenus.inc:212
@@ -11528,7 +11517,7 @@ msgstr "Внутристрочная формула|с"
 #: lib/ui/stdcontext.inc:50
 #: lib/ui/stdmenus.inc:285
 msgid "Displayed Formula|D"
-msgstr "Формула|ф"
+msgstr "Формула|Ф"
 
 #: lib/ui/classic.ui:201
 msgid "Eqnarray Environment|q"
@@ -11623,7 +11612,7 @@ msgstr "Мини-страница|и"
 #: lib/ui/classic.ui:231
 #: lib/ui/stdmenus.inc:351
 msgid "Graphics...|G"
-msgstr "Графика...|Г"
+msgstr "Графика...|р"
 
 #: lib/ui/classic.ui:232
 msgid "Tabular Material...|b"
@@ -11631,7 +11620,7 @@ msgstr "Табличный материал|Т"
 
 #: lib/ui/classic.ui:233
 msgid "Floats|a"
-msgstr "Плавающий объект|П"
+msgstr "Плавающий объект|л"
 
 #: lib/ui/classic.ui:235
 msgid "Include File...|d"
@@ -11676,7 +11665,7 @@ msgstr "Разрыв лигатуры|л"
 
 #: lib/ui/classic.ui:247
 msgid "Protected Space|r"
-msgstr "Неразрывный пробел|п"
+msgstr "Неразрывный пробел|Н"
 
 #: lib/ui/classic.ui:248
 #: lib/ui/stdmenus.inc:379
@@ -11711,7 +11700,7 @@ msgstr "Многоточие|М"
 #: lib/ui/classic.ui:254
 #: lib/ui/stdmenus.inc:365
 msgid "End of Sentence|E"
-msgstr "Конец предложения|к"
+msgstr "Конец предложения|К"
 
 #: lib/ui/classic.ui:255
 msgid "Protected Dash|D"
@@ -11720,7 +11709,7 @@ msgstr "Неразрывный дефис|п"
 #: lib/ui/classic.ui:256
 #: lib/ui/stdmenus.inc:369
 msgid "Breakable Slash|a"
-msgstr "Хрупкий слэш|a"
+msgstr "Хрупкий слэш|Х"
 
 #: lib/ui/classic.ui:257
 msgid "Single Quote|Q"
@@ -11799,7 +11788,7 @@ msgstr "Окружение AMS multline|m"
 #: lib/ui/stdcontext.inc:28
 #: lib/ui/stdmenus.inc:407
 msgid "Array Environment|y"
-msgstr "Массив|р"
+msgstr "Массив|М"
 
 #: lib/ui/classic.ui:277
 #: lib/ui/stdcontext.inc:29
@@ -12079,7 +12068,7 @@ msgstr "Перейти к закладке 3|3"
 #: lib/ui/classic.ui:409
 #: lib/ui/stdmenus.inc:530
 msgid "Introduction|I"
-msgstr "Введение|В"
+msgstr "Введение|е"
 
 #: lib/ui/classic.ui:410
 #: lib/ui/stdmenus.inc:531
@@ -12135,7 +12124,7 @@ msgstr "Окружение align|l"
 #: lib/ui/stdcontext.inc:31
 #: lib/ui/stdmenus.inc:410
 msgid "AlignedAt Environment|v"
-msgstr "Окружение AlignedAt|о"
+msgstr "Окружение AlignedAt|A"
 
 #: lib/ui/stdcontext.inc:32
 #: lib/ui/stdmenus.inc:411
@@ -12145,12 +12134,12 @@ msgstr "Окружение Gathered"
 #: lib/ui/stdcontext.inc:35
 #: lib/ui/stdmenus.inc:414
 msgid "Delimiters...|r"
-msgstr "Разделители...|р"
+msgstr "Разделители...|Р"
 
 #: lib/ui/stdcontext.inc:36
 #: lib/ui/stdmenus.inc:415
 msgid "Matrix...|x"
-msgstr "Матрица|м"
+msgstr "Матрица|М"
 
 #: lib/ui/stdcontext.inc:37
 #: lib/ui/stdmenus.inc:416
@@ -12507,11 +12496,11 @@ msgstr "Настройки...|Н"
 
 #: lib/ui/stdcontext.inc:248
 msgid "Include|c"
-msgstr "Включить|В"
+msgstr "Включение|к"
 
 #: lib/ui/stdcontext.inc:249
 msgid "Input|p"
-msgstr "Входной файл|ф"
+msgstr "Вхождение|х"
 
 #: lib/ui/stdcontext.inc:250
 msgid "Verbatim|V"
@@ -12519,7 +12508,7 @@ msgstr "Дословно|Д"
 
 #: lib/ui/stdcontext.inc:251
 msgid "Verbatim (marked blanks)|b"
-msgstr ""
+msgstr "Дословно (отмеченные пробелы)|Д"
 
 #: lib/ui/stdcontext.inc:252
 msgid "Listing|L"
@@ -12537,7 +12526,7 @@ msgstr "Новая страница|с"
 #: lib/ui/stdcontext.inc:264
 #: lib/ui/stdmenus.inc:391
 msgid "Page Break|a"
-msgstr "Разрыв страницы|Р"
+msgstr "Разрыв страницы|с"
 
 #: lib/ui/stdcontext.inc:265
 #: lib/ui/stdmenus.inc:392
@@ -12759,7 +12748,7 @@ msgstr "Закрыть файл"
 
 #: lib/ui/stdmenus.inc:52
 msgid "Save All|l"
-msgstr "Сохранить все|в"
+msgstr "Сохранить все|а"
 
 #: lib/ui/stdmenus.inc:53
 msgid "Revert to Saved|R"
@@ -12767,7 +12756,7 @@ msgstr "Вернуться к сохранённому|р"
 
 #: lib/ui/stdmenus.inc:61
 msgid "New Window|W"
-msgstr "Новое окно|о"
+msgstr "Новое окно|Н"
 
 #: lib/ui/stdmenus.inc:62
 msgid "Close Window|d"
@@ -12788,7 +12777,7 @@ msgstr "Повторить|П"
 
 #: lib/ui/stdmenus.inc:103
 msgid "Paste Special"
-msgstr "Вставить как|с"
+msgstr "Вставить как"
 
 #: lib/ui/stdmenus.inc:105
 msgid "Select All"
@@ -12998,23 +12987,23 @@ msgstr "Просмотреть исходный текст|и"
 
 #: lib/ui/stdmenus.inc:309
 msgid "Split View Into Left and Right Half|i"
-msgstr "Разделить вид на левую и правую половины|i"
+msgstr "Разделить вид на левую и правую половины|п"
 
 #: lib/ui/stdmenus.inc:310
 msgid "Split View Into Upper and Lower Half|V"
-msgstr "Разделить вид на верхнюю и нижнюю половины|V"
+msgstr "Разделить вид на верхнюю и нижнюю половины|н"
 
 #: lib/ui/stdmenus.inc:311
 msgid "Close Current View|w"
-msgstr "Закрыть текущий вид|w"
+msgstr "Закрыть текущий вид|к"
 
 #: lib/ui/stdmenus.inc:312
 msgid "Fullscreen|l"
-msgstr "На весь экран|l"
+msgstr "На весь экран|е"
 
 #: lib/ui/stdmenus.inc:313
 msgid "Toolbars|b"
-msgstr "Панели инструментов|П"
+msgstr "Панели инструментов|и"
 
 #: lib/ui/stdmenus.inc:333
 msgid "Special Character|p"
@@ -13026,7 +13015,7 @@ msgstr "Форматирование"
 
 #: lib/ui/stdmenus.inc:335
 msgid "List / TOC|i"
-msgstr "Списки / содержание|с"
+msgstr "Списки / содержание|п"
 
 #: lib/ui/stdmenus.inc:336
 msgid "Float|a"
@@ -13190,7 +13179,7 @@ msgstr "Обратная прокрутка|б"
 
 #: lib/ui/stdmenus.inc:514
 msgid "Thesaurus...|T"
-msgstr "Тезаурус...|T"
+msgstr "Тезаурус...|Т"
 
 #: lib/ui/stdmenus.inc:515
 msgid "Statistics...|a"
@@ -13198,7 +13187,7 @@ msgstr "Статистика...|С"
 
 #: lib/ui/stdmenus.inc:517
 msgid "TeX Information|I"
-msgstr "Информация о TeX|T"
+msgstr "Информация о TeX|И"
 
 #: lib/ui/stdmenus.inc:533
 msgid "Additional Features|F"
@@ -19579,7 +19568,7 @@ msgstr "AE (Almost European)"
 
 #: src/frontends/qt4/GuiDocument.cpp:104
 msgid "Times Roman"
-msgstr "Таймс"
+msgstr "Times Roman"
 
 #: src/frontends/qt4/GuiDocument.cpp:104
 msgid "Palatino"
@@ -19623,7 +19612,7 @@ msgstr "Latin Modern Sans"
 
 #: src/frontends/qt4/GuiDocument.cpp:120
 msgid "Helvetica"
-msgstr "Гельветика"
+msgstr "Helvetica"
 
 #: src/frontends/qt4/GuiDocument.cpp:120
 msgid "Avant Garde"
@@ -20261,7 +20250,7 @@ msgstr "буфер"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:707
 msgid "Shift-"
-msgstr ""
+msgstr "Shift-"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:708
 #, fuzzy
