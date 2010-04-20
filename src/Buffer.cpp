@@ -3377,8 +3377,9 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	vector<ExportedFile> const files =
 		runparams.exportdata->externalFiles(format);
 	string const dest = onlyPath(result_file);
-	CopyStatus status = !use_gui && force_overwrite == ALL_FILES ? FORCE
-								     : SUCCESS;
+	bool use_force = use_gui ? lyxrc.export_overwrite == ALL_FILES
+				 : force_overwrite == ALL_FILES;
+	CopyStatus status = use_force ? FORCE : SUCCESS;
 	
 	vector<ExportedFile>::const_iterator it = files.begin();
 	vector<ExportedFile>::const_iterator const en = files.end();
@@ -3393,7 +3394,9 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		message(_("Document export cancelled."));
 	} else if (tmp_result_file.exists()) {
 		// Finally copy the main file
-		if (!use_gui && force_overwrite != NO_FILES)
+		use_force = use_gui ? lyxrc.export_overwrite != NO_FILES
+				    : force_overwrite != NO_FILES;
+		if (status == SUCCESS && use_force)
 			status = FORCE;
 		status = copyFile(format, tmp_result_file,
 			FileName(result_file), result_file,

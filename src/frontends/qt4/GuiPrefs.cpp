@@ -31,6 +31,7 @@
 #include "KeySequence.h"
 #include "Language.h"
 #include "LyXAction.h"
+#include "LyX.h"
 #include "PanelStack.h"
 #include "paper.h"
 #include "Session.h"
@@ -368,6 +369,8 @@ PrefOutput::PrefOutput(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(plaintextLinelengthSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
+	connect(overwriteCO, SIGNAL(activated(int)),
+		this, SIGNAL(changed()));
 	connect(dviCB, SIGNAL(editTextChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(pdfCB, SIGNAL(editTextChanged(QString)),
@@ -402,6 +405,18 @@ void PrefOutput::apply(LyXRC & rc) const
 	rc.plaintext_linelen = plaintextLinelengthSB->value();
 	rc.forward_search_dvi = fromqstr(dviCB->currentText());
 	rc.forward_search_pdf = fromqstr(pdfCB->currentText());
+
+	switch (overwriteCO->currentIndex()) {
+	case 0:
+		rc.export_overwrite = NO_FILES;
+		break;
+	case 1:
+		rc.export_overwrite = MAIN_FILE;
+		break;
+	case 2:
+		rc.export_overwrite = ALL_FILES;
+		break;
+	}
 }
 
 
@@ -411,6 +426,18 @@ void PrefOutput::update(LyXRC const & rc)
 	plaintextLinelengthSB->setValue(rc.plaintext_linelen);
 	dviCB->setEditText(toqstr(rc.forward_search_dvi));
 	pdfCB->setEditText(toqstr(rc.forward_search_pdf));
+
+	switch (rc.export_overwrite) {
+	case NO_FILES:
+		overwriteCO->setCurrentIndex(0);
+		break;
+	case MAIN_FILE:
+		overwriteCO->setCurrentIndex(1);
+		break;
+	case ALL_FILES:
+		overwriteCO->setCurrentIndex(2);
+		break;
+	}
 }
 
 

@@ -23,6 +23,7 @@
 #include "FontEnums.h"
 #include "Format.h"
 #include "Lexer.h"
+#include "LyX.h"
 #include "Mover.h"
 #include "Session.h"
 #include "version.h"
@@ -92,6 +93,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\editor_alternatives", LyXRC::RC_EDITOR_ALTERNATIVES },
 	{ "\\escape_chars", LyXRC::RC_ESC_CHARS },
 	{ "\\example_path", LyXRC::RC_EXAMPLEPATH },
+	{ "\\export_overwrite", LyXRC::RC_EXPORT_OVERWRITE },
 	{ "\\font_encoding", LyXRC::RC_FONT_ENCODING },
 	{ "\\format", LyXRC::RC_FORMAT },
 	{ "\\forward_search_dvi", LyXRC::RC_FORWARD_SEARCH_DVI },
@@ -330,6 +332,7 @@ void LyXRC::setDefaults()
 	single_close_tab_button = false;
 	forward_search_dvi = string();
 	forward_search_pdf = string();
+	export_overwrite = NO_FILES;
 
 	// Fullscreen settings
 	full_screen_limit = false;
@@ -1167,6 +1170,21 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_FORWARD_SEARCH_PDF:
 			if (lexrc.next(true)) 
 				forward_search_pdf = lexrc.getString();
+			break;
+		case RC_EXPORT_OVERWRITE:
+			if (lexrc.next()) {
+				string const tmp = lexrc.getString();
+				if (tmp == "all" || tmp == "true")
+					export_overwrite = ALL_FILES;
+				else if (tmp == "main")
+					export_overwrite = MAIN_FILE;
+				else {
+					export_overwrite = NO_FILES;
+					if (tmp != "ask" && tmp != "false")
+						LYXERR0("Unrecognized export_overwrite status \""
+						       << tmp << '"');
+				}
+			}
 			break;
 
 		// Obsoteted in 1.4.0
@@ -2494,6 +2512,25 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_EXPORT_OVERWRITE:
+		if (ignore_system_lyxrc ||
+		    export_overwrite != system_lyxrc.export_overwrite) {
+			string status;
+			switch (export_overwrite) {
+			case NO_FILES:
+				status = "ask";
+				break;
+			case MAIN_FILE:
+				status = "main";
+				break;
+			case ALL_FILES:
+				status = "all";
+				break;
+			}
+			os << "\\export_overwrite " << status << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
 
 		os << "\n#\n"
 		   << "# FORMATS SECTION ##########################\n"
@@ -2831,6 +2868,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_VIEWER_ALTERNATIVES:
 	case LyXRC::RC_FORWARD_SEARCH_DVI:
 	case LyXRC::RC_FORWARD_SEARCH_PDF:
+	case LyXRC::RC_EXPORT_OVERWRITE:
 	case LyXRC::RC_LAST:
 		break;
 	}

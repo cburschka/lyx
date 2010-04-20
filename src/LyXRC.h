@@ -76,6 +76,7 @@ public:
 		RC_EDITOR_ALTERNATIVES,
 		RC_ESC_CHARS,
 		RC_EXAMPLEPATH,
+		RC_EXPORT_OVERWRITE,
 		RC_FONT_ENCODING,
 		RC_FORMAT,
 		RC_FORWARD_SEARCH_DVI,
@@ -496,6 +497,8 @@ public:
 	std::string forward_search_dvi;
 	///
 	std::string forward_search_pdf;
+	///
+	int export_overwrite;
 };
 
 
