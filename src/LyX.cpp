@@ -92,7 +92,7 @@ bool use_gui = true;
 // Tell what files can be silently overwritten during batch export.
 // Possible values are: NO_FILES, MAIN_FILE, ALL_FILES.
 
-overwrite_files force_overwrite = NO_FILES;
+OverwriteFiles force_overwrite = NO_FILES;
 
 
 namespace {

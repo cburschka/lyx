@@ -34,14 +34,14 @@ class ServerSocket;
 class Session;
 class SpellChecker;
 
-enum overwrite_files {
+enum OverwriteFiles {
 	NO_FILES,
 	MAIN_FILE,
 	ALL_FILES
 };
 
 extern bool use_gui;
-extern overwrite_files force_overwrite;
+extern OverwriteFiles force_overwrite;
 
 namespace frontend {
 class Application;
