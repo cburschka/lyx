@@ -74,6 +74,13 @@ Note that the order of -e and -x switches matters.
 \fB \-i [\-\-import]\fP \fIfmt file.xxx
 where fmt is the import format of choice and file.xxx is the file to be imported.
 .TP
+\fB \-f [\-\-force\-overwrite]\fP \fIwhat
+where what is is either "\fBall\fR" or "\fBmain\fR".
+Using "\fBall\fR", all files are overwritten during a batch export, otherwise
+only the main file will be. When this switch is followed by anything else other
+than "\fBall\fR" or "\fBmain\fR", the behavior is as if "\fBall\fR" was
+specified, but what follows is left on the command line for further processing.
+.TP
 .BI -batch
 causes LyX to run the given commands without opening a GUI window.
 Thus, something like:
