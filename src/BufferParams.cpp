@@ -383,8 +383,11 @@ BufferParams::BufferParams()
 	}
 	// default index
 	indiceslist().addDefault(B_("Index"));
-	html_be_strict = true;
+	html_be_strict = false;
 	html_math_output = MathML;
+	html_math_img_scale = 1.0;
+	html_latex_start = "<span class='latex'>";
+	html_latex_end = "</span>";
 }
 
 
@@ -807,6 +810,12 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		html_math_output = static_cast<MathOutput>(temp);
 	} else if (token == "\\html_be_strict") {
 		lex >> html_be_strict;
+	} else if (token == "\\html_math_img_scale") {
+		lex >> html_math_img_scale;
+	} else if (token == "\\html_latex_start") {
+		lex >> html_latex_start;
+	} else if (token == "\\html_latex_end") {
+		lex >> html_latex_end;
 	} else {
 		lyxerr << "BufferParams::readToken(): Unknown token: " << 
 			token << endl;
@@ -1024,10 +1033,13 @@ void BufferParams::writeFile(ostream & os) const
 		}
 	}
 
-	os << "\\tracking_changes " << convert<string>(trackChanges) << "\n"
-	   << "\\output_changes " << convert<string>(outputChanges) << "\n"
-	   << "\\html_math_output " << html_math_output << "\n"
-	   << "\\html_be_strict " << convert<string>(html_be_strict) << "\n";
+	os << "\\tracking_changes " << convert<string>(trackChanges) << '\n'
+		 << "\\output_changes " << convert<string>(outputChanges) << '\n'
+		 << "\\html_math_output " << html_math_output << '\n'
+		 << "\\html_be_strict " << convert<string>(html_be_strict) << '\n'
+		 << "\\html_math_img_scale " << convert<string>(html_math_img_scale) << '\n'
+		 << "\\html_latex_start \"" << html_latex_start << "\"\n"
+		 << "\\html_latex_end \"" << html_latex_end << "\"\n";
 
 	os << pimpl_->authorlist;
 }

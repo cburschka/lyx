@@ -1512,6 +1512,20 @@ def revert_lyx_version(document):
         i = i+1
 
 
+def revert_math_scale(document):
+  " Remove math scaling and LaTeX options "
+  i = find_token(document.header, '\\html_math_img_scale', 0)
+  if i != -1:
+    del document.header[i]
+  i = find_token(document.header, '\\html_latex_start', 0)
+  if i != -1:
+    del document.header[i]
+  i = find_token(document.header, '\\html_latex_end', 0)
+  if i != -1:
+    del document.header[i]
+
+
+
 ##
 # Conversion hub
 #
@@ -1557,10 +1571,12 @@ convert = [[346, []],
            [383, []],
            [384, []],
            [385, []],
-           [386, []]
-          ]
+           [386, []],
+           [387, []],
+					]
 
-revert =  [[385, [revert_lyx_version]],
+revert =  [[386, [revert_math_scale]],
+           [385, [revert_lyx_version]],
            [384, [revert_shadedboxcolor]],
            [383, [revert_fontcolor]],
            [382, [revert_turkmen]],

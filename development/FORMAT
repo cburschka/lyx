@@ -7,6 +7,11 @@ The good example would be 2010-01-10 entry.
 
 -----------------------
 
+2010-04-21 Richard heck <rgheck@comcast.net>
+	* Format incremented to 387: New options for XHTML math output.
+	  New BufferParams: html_math_img_scale, html_latex_start,
+	  html_latex_end.
+
 2010-04-17 Richard heck <rgheck@comcast.net>
 	* Format incremented to 386: LyX version for InsetInfo:
 	  new parameters: type  "lyxinfo", arg   "version".

@@ -393,6 +393,12 @@ public:
 	/// whether to attempt to be XHTML 1.1 compliant or instead be
 	/// a little more mellow
 	bool html_be_strict;
+	///
+	double html_math_img_scale;
+	///
+	std::string html_latex_start;
+	///
+	std::string html_latex_end;
 
 private:
 	///
