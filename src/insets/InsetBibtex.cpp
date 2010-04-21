@@ -267,9 +267,9 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 
 		if (!runparams.inComment && !runparams.dryrun && !runparams.nice &&
 		    not_from_texmf) {
-			// mangledFilename() needs the extension
+			// mangledFileName() needs the extension
 			DocFileName const in_file = DocFileName(try_in_file);
-			database = removeExtension(in_file.mangledFilename());
+			database = removeExtension(in_file.mangledFileName());
 			FileName const out_file = makeAbsPath(database + ".bib",
 					buffer().masterBuffer()->temppath());
 
@@ -330,7 +330,7 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 		    not_from_texmf) {
 			// use new style name
 			DocFileName const in_file = DocFileName(try_in_file);
-			base = removeExtension(in_file.mangledFilename());
+			base = removeExtension(in_file.mangledFileName());
 			FileName const out_file = makeAbsPath(base + ".bst",
 					buffer().masterBuffer()->temppath());
 			bool const success = in_file.copyTo(out_file);

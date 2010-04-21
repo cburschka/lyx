@@ -487,11 +487,11 @@ copyToDirIfNeeded(DocFileName const & file, string const & dir)
 	if (rtrim(onlyPath(file_in) , "/") == rtrim(dir, "/"))
 		return make_pair(IDENTICAL_PATHS, file_in);
 
-	string mangled = file.mangledFilename();
+	string mangled = file.mangledFileName();
 	if (file.isZipped()) {
 		// We need to change _eps.gz to .eps.gz. The mangled name is
-		// still unique because of the counter in mangledFilename().
-		// We can't just call mangledFilename() with the zip
+		// still unique because of the counter in mangledFileName().
+		// We can't just call mangledFileName() with the zip
 		// extension removed, because base.eps and base.eps.gz may
 		// have different content but would get the same mangled
 		// name in this case.

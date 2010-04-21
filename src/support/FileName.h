@@ -288,7 +288,7 @@ public:
 	 *  with @c dir.
 	 */
 	std::string
-	mangledFilename(std::string const & dir = empty_string()) const;
+	mangledFileName(std::string const & dir = empty_string()) const;
 
 	/// \return true if the file is compressed.
 	bool isZipped() const;

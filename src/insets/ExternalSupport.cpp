@@ -88,7 +88,7 @@ string const doSubstitution(InsetExternalParams const & params,
 		masterBuffer->temppath() :
 		buffer.filePath();
 	string const filename = external_in_tmpdir ?
-		params.filename.mangledFilename() :
+		params.filename.mangledFileName() :
 		params.filename.outputFilename(parentpath);
 	string const basename = changeExtension(
 			onlyFilename(filename), string());
@@ -246,7 +246,7 @@ void updateExternal(InsetExternalParams const & params,
 	// We copy the source file to the temp dir and do the conversion
 	// there if necessary
 	FileName const temp_file(
-		makeAbsPath(params.filename.mangledFilename(),
+		makeAbsPath(params.filename.mangledFileName(),
 				     masterBuffer->temppath()));
 	if (!params.filename.empty() && !params.filename.isDirectory()) {
 		unsigned long const from_checksum = params.filename.checksum();

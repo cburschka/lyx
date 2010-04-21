@@ -494,11 +494,11 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 	// bug 5681
 	if (type(params()) == LISTINGS) {
 		exportfile = incfile;
-		mangled = DocFileName(included_file).mangledFilename();
+		mangled = DocFileName(included_file).mangledFileName();
 	} else {
 		exportfile = changeExtension(incfile, ".tex");
 		mangled = DocFileName(changeExtension(included_file.absFileName(), ".tex")).
-			mangledFilename();
+			mangledFileName();
 	}
 
 	FileName const writefile(makeAbsPath(mangled, masterBuffer->temppath()));
@@ -750,7 +750,7 @@ int InsetInclude::docbook(odocstream & os, OutputParams const & runparams) const
 	if (loadIfNeeded()) {
 		Buffer * tmp = theBufferList().getBuffer(FileName(included_file));
 
-		string const mangled = writefile.mangledFilename();
+		string const mangled = writefile.mangledFileName();
 		writefile = makeAbsPath(mangled,
 					buffer().masterBuffer()->temppath());
 		if (!runparams.nice)
@@ -795,7 +795,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 		writefile = included_file;
 
 	if (!features.runparams().nice && !isVerbatim(params()) && !isListings(params())) {
-		incfile = DocFileName(writefile).mangledFilename();
+		incfile = DocFileName(writefile).mangledFileName();
 		writefile = makeAbsPath(incfile,
 					buffer().masterBuffer()->temppath()).absFileName();
 	}

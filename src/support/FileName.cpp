@@ -1085,7 +1085,7 @@ string DocFileName::outputFilename(string const & path) const
 }
 
 
-string DocFileName::mangledFilename(string const & dir) const
+string DocFileName::mangledFileName(string const & dir) const
 {
 	// We need to make sure that every DocFileName instance for a given
 	// filename returns the same mangled name.
