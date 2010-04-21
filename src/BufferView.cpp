@@ -867,7 +867,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool recenter)
 		LASSERT(!pm.rows().empty(), /**/);
 		// FIXME: smooth scrolling doesn't work in mathed.
 		CursorSlice const & cs = dit.innerTextSlice();
-		int offset = coordOffset(dit, dit.boundary()).y_;
+		int offset = coordOffset(dit).y_;
 		int ypos = pm.position() + offset;
 		Dimension const & row_dim =
 			pm.getRow(cs.pos(), dit.boundary()).dimension();
@@ -889,7 +889,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool recenter)
 
 	tm.redoParagraph(bot_pit);
 	ParagraphMetrics const & pm = tm.parMetrics(bot_pit);
-	int offset = coordOffset(dit, dit.boundary()).y_;
+	int offset = coordOffset(dit).y_;
 
 	d->anchor_pit_ = bot_pit;
 	CursorSlice const & cs = dit.innerTextSlice();
@@ -2428,7 +2428,7 @@ void BufferView::insertLyXFile(FileName const & fname)
 }
 
 
-Point BufferView::coordOffset(DocIterator const & dit, bool boundary) const
+Point BufferView::coordOffset(DocIterator const & dit) const
 {
 	int x = 0;
 	int y = 0;
@@ -2442,7 +2442,7 @@ Point BufferView::coordOffset(DocIterator const & dit, bool boundary) const
 		int yy = 0;
 		
 		// get relative position inside sl.inset()
-		sl.inset().cursorPos(*this, sl, boundary && (i + 1 == dit.depth()), xx, yy);
+		sl.inset().cursorPos(*this, sl, dit.boundary() && (i + 1 == dit.depth()), xx, yy);
 		
 		// Make relative position inside of the edited inset relative to sl.inset()
 		x += xx;
@@ -2451,7 +2451,7 @@ Point BufferView::coordOffset(DocIterator const & dit, bool boundary) const
 		// In case of an RTL inset, the edited inset will be positioned to the left
 		// of xx:yy
 		if (sl.text()) {
-			bool boundary_i = boundary && i + 1 == dit.depth();
+			bool boundary_i = dit.boundary() && i + 1 == dit.depth();
 			bool rtl = textMetrics(sl.text()).isRTL(sl, boundary_i);
 			if (rtl)
 				x -= lastw;
@@ -2488,9 +2488,9 @@ Point BufferView::coordOffset(DocIterator const & dit, bool boundary) const
 	size_t rend;
 	if (sl.pos() > 0 && dit.depth() == 1) {
 		int pos = sl.pos();
-		if (pos && boundary)
+		if (pos && dit.boundary())
 			--pos;
-//		lyxerr << "coordOffset: boundary:" << boundary << " depth:" << dit.depth() << " pos:" << pos << " sl.pos:" << sl.pos() << endl;
+//		lyxerr << "coordOffset: boundary:" << dit.boundary() << " depth:" << dit.depth() << " pos:" << pos << " sl.pos:" << sl.pos() << endl;
 		rend = pm.pos2row(pos);
 	} else
 		rend = pm.pos2row(sl.pos());
@@ -2504,12 +2504,12 @@ Point BufferView::coordOffset(DocIterator const & dit, bool boundary) const
 	TextMetrics const & bottom_tm = textMetrics(dit.bottom().text());
 	
 	// Make relative position from the nested inset now bufferview absolute.
-	int xx = bottom_tm.cursorX(dit.bottom(), boundary && dit.depth() == 1);
+	int xx = bottom_tm.cursorX(dit.bottom(), dit.boundary() && dit.depth() == 1);
 	x += xx;
 	
 	// In the RTL case place the nested inset at the left of the cursor in 
 	// the outer paragraph
-	bool boundary_1 = boundary && 1 == dit.depth();
+	bool boundary_1 = dit.boundary() && 1 == dit.depth();
 	bool rtl = bottom_tm.isRTL(dit.bottom(), boundary_1);
 	if (rtl)
 		x -= lastw;
@@ -2526,7 +2526,8 @@ Point BufferView::getPos(DocIterator const & dit) const
 	CursorSlice const & bot = dit.bottom();
 	TextMetrics const & tm = textMetrics(bot.text());
 
-	Point p = coordOffset(dit, dit.boundary()); // offset from outer paragraph
+	// offset from outer paragraph
+	Point p = coordOffset(dit); 
 	p.y_ += tm.parMetrics(bot.pit()).position();
 	return p;
 }

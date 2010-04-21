@@ -314,8 +314,8 @@ private:
 	BufferView(BufferView const &);
 	void operator=(BufferView const &);
 
-	// the position relative to (0, baseline) of outermost paragraph
-	Point coordOffset(DocIterator const & dit, bool boundary) const;
+	/// the position relative to (0, baseline) of outermost paragraph
+	Point coordOffset(DocIterator const & dit) const;
 	/// Update current paragraph metrics.
 	/// \return true if no further update is needed.
 	bool singleParUpdate();
