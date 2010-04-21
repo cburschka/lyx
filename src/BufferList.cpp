@@ -283,7 +283,7 @@ Buffer * BufferList::getBufferFromTmp(string const & s)
 			for (; cit < cend; ++cit) {
 				string const mangled_child_name = DocFileName(
 					changeExtension((*cit)->absFileName(),
-						".tex")).mangledFilename();
+						".tex")).mangledFileName();
 				if (suffixIs(s, mangled_child_name))
 					return *cit;
 			}

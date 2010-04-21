@@ -1311,7 +1311,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			string incfile = *it;
 			FileName inc = makeAbsPath(incfile, filepath.absFileName());
 			string mangled = DocFileName(changeExtension(inc.absFileName(), ".tex")).
-			mangledFilename();
+			mangledFileName();
 			if (!features.runparams().nice)
 				incfile = mangled;
 			// \includeonly doesn't want an extension 
