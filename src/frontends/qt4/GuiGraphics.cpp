@@ -495,9 +495,9 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	// set the right default unit
 	Length::UNIT const defaultUnit = Length::defaultUnit();
 
-	//lyxerr << bufferFilepath();
+	//lyxerr << bufferFilePath();
 	string const name =
-		igp.filename.outputFileName(fromqstr(bufferFilepath()));
+		igp.filename.outputFileName(fromqstr(bufferFilePath()));
 	filename->setText(toqstr(name));
 
 	// set the bounding box values
@@ -647,7 +647,7 @@ void GuiGraphics::applyView()
 {
 	InsetGraphicsParams & igp = params_;
 
-	igp.filename.set(fromqstr(filename->text()), fromqstr(bufferFilepath()));
+	igp.filename.set(fromqstr(filename->text()), fromqstr(bufferFilePath()));
 
 	// the bb section
 	igp.bb.erase();
@@ -794,7 +794,7 @@ QString GuiGraphics::browse(QString const & in_name) const
 	if (!clip.isDirectory())
 		clipdir = addName(package().system_support().absFileName(), "clipart");
 
-	return browseRelFile(in_name, bufferFilepath(),
+	return browseRelFile(in_name, bufferFilePath(),
 		title, fileFilters(QString()), false, 
 		qt_("Clipart|#C#c"), toqstr(clipdir),
 		qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
@@ -803,7 +803,7 @@ QString GuiGraphics::browse(QString const & in_name) const
 
 string GuiGraphics::readBoundingBox(string const & file)
 {
-	FileName const abs_file = support::makeAbsPath(file, fromqstr(bufferFilepath()));
+	FileName const abs_file = support::makeAbsPath(file, fromqstr(bufferFilePath()));
 
 	// try to get it from the file, if possible. Zipped files are
 	// unzipped in the readBB_from_PSFile-Function
@@ -832,7 +832,7 @@ string GuiGraphics::readBoundingBox(string const & file)
 bool GuiGraphics::isFileNameValid(string const & fname) const
 {
 	// It may be that the filename is relative.
-	return support::makeAbsPath(fname, fromqstr(bufferFilepath())).isReadableFile();
+	return support::makeAbsPath(fname, fromqstr(bufferFilePath())).isReadableFile();
 }
 
 

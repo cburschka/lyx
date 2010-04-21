@@ -159,7 +159,7 @@ QString GuiCompare::browse(QString const & in_name) const
 	
 	QString filename;
 	if (lyxview().documentBufferView()) {
-		QString path = bufferFilepath();
+		QString path = bufferFilePath();
 		filename = browseRelFile(in_name, path, title, filters, false, 
 			qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 	} else {
@@ -274,7 +274,7 @@ Buffer const * GuiCompare::bufferFromFileName(string const & file) const
 	if (FileName::isAbsolute(file))
 		fname.set(file);
 	else if (lyxview().documentBufferView())
-		fname = support::makeAbsPath(file, fromqstr(bufferFilepath()));
+		fname = support::makeAbsPath(file, fromqstr(bufferFilePath()));
 
 	if (fname.empty()
 			|| (!fname.exists() && !theBufferList().getBuffer(fname))) {

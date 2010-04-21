@@ -1639,7 +1639,7 @@ void GuiDocument::browseLayout()
 	QString const label1 = qt_("Layouts|#o#O");
 	QString const dir1 = toqstr(lyxrc.document_path);
 	QStringList const filter(qt_("LyX Layout (*.layout)"));
-	QString file = browseRelFile(QString(), bufferFilepath(),
+	QString file = browseRelFile(QString(), bufferFilePath(),
 		qt_("Local layout file"), filter, false,
 		label1, dir1);
 
@@ -1647,7 +1647,7 @@ void GuiDocument::browseLayout()
 		return;
 
 	FileName layoutFile = support::makeAbsPath(fromqstr(file),
-		fromqstr(bufferFilepath()));
+		fromqstr(bufferFilePath()));
 	
 	int const ret = Alert::prompt(_("Local layout file"),
 		_("The layout file you have selected is a local layout\n"

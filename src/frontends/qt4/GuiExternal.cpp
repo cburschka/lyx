@@ -296,7 +296,7 @@ void GuiExternal::getbbClicked()
 	if (filename.empty())
 		return;
 
-	FileName const abs_file(support::makeAbsPath(filename, fromqstr(bufferFilepath())));
+	FileName const abs_file(support::makeAbsPath(filename, fromqstr(bufferFilePath())));
 
 	// try to get it from the file, if possible
 	string bb = readBB_from_PSFile(abs_file);
@@ -460,7 +460,7 @@ static void getCrop(external::ClipData & data,
 void GuiExternal::updateContents()
 {
 	string const name =
-		params_.filename.outputFileName(fromqstr(bufferFilepath()));
+		params_.filename.outputFileName(fromqstr(bufferFilePath()));
 	fileED->setText(toqstr(name));
 
 	int index = 0;
@@ -570,7 +570,7 @@ void GuiExternal::updateTemplate()
 
 void GuiExternal::applyView()
 {
-	params_.filename.set(fromqstr(fileED->text()), fromqstr(bufferFilepath()));
+	params_.filename.set(fromqstr(fileED->text()), fromqstr(bufferFilePath()));
 	params_.settemplate(getTemplate(externalCO->currentIndex()).lyxName);
 
 	params_.draft = draftCB->isChecked();
@@ -633,7 +633,7 @@ QString GuiExternal::browse(QString const & input,
 				     QString const & template_name) const
 {
 	QString const title = qt_("Select external file");
-	QString const bufpath = bufferFilepath();
+	QString const bufpath = bufferFilePath();
 	QStringList const filter = templateFilters(template_name);
 
 	QString const label1 = qt_("Documents|#o#O");

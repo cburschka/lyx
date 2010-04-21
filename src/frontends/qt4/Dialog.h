@@ -235,7 +235,7 @@ public:
 	//@{
 	bool isBufferAvailable() const;
 	bool isBufferReadonly() const;
-	QString bufferFilepath() const;
+	QString bufferFilePath() const;
 	//@}
 
 	/// The type of the current buffer.

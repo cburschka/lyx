@@ -91,7 +91,7 @@ bool Dialog::isBufferReadonly() const
 }
 
 
-QString Dialog::bufferFilepath() const
+QString Dialog::bufferFilePath() const
 {
 	return toqstr(buffer().filePath());
 }
