@@ -263,7 +263,7 @@ public:
 	///
 	bool saveAbsPath() const { return save_abs_path_; }
 	/// \param buffer_path if empty, uses `pwd`
-	std::string relFilename(std::string const & buffer_path = empty_string()) const;
+	std::string relFileName(std::string const & buffer_path = empty_string()) const;
 	/// \param buf_path if empty, uses `pwd`
 	std::string outputFilename(std::string const & buf_path = empty_string()) const;
 	

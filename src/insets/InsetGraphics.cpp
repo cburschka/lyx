@@ -550,7 +550,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 
 	string const orig_file = params().filename.absFileName();
 	// this is for dryrun and display purposes, do not use latexFilename
-	string const rel_file = params().filename.relFilename(buffer().filePath());
+	string const rel_file = params().filename.relFileName(buffer().filePath());
 
 	// previewing source code, no file copying or file format conversion
 	if (runparams.dryrun)
@@ -980,7 +980,7 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 	if (features.runparams().nice) {
 		Buffer const * masterBuffer = features.buffer().masterBuffer();
 		string const rel_file = removeExtension(
-			params().filename.relFilename(masterBuffer->filePath()));
+			params().filename.relFileName(masterBuffer->filePath()));
 		if (contains(rel_file, "."))
 			features.require("lyxdot");
 	}

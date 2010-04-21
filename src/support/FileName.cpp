@@ -1072,7 +1072,7 @@ void DocFileName::erase()
 }
 
 
-string DocFileName::relFilename(string const & path) const
+string DocFileName::relFileName(string const & path) const
 {
 	// FIXME UNICODE
 	return to_utf8(relPath(path));
@@ -1081,7 +1081,7 @@ string DocFileName::relFilename(string const & path) const
 
 string DocFileName::outputFilename(string const & path) const
 {
-	return save_abs_path_ ? absFileName() : relFilename(path);
+	return save_abs_path_ ? absFileName() : relFileName(path);
 }
 
 
