@@ -133,17 +133,17 @@ FileName const masterFileName(Buffer const & buffer)
 void add_preview(RenderMonitoredPreview &, InsetInclude const &, Buffer const &);
 
 
-string const parentFilename(Buffer const & buffer)
+string const parentFileName(Buffer const & buffer)
 {
 	return buffer.absFileName();
 }
 
 
-FileName const includedFilename(Buffer const & buffer,
+FileName const includedFileName(Buffer const & buffer,
 			      InsetCommandParams const & params)
 {
 	return makeAbsPath(to_utf8(params["filename"]),
-			onlyPath(parentFilename(buffer)));
+			onlyPath(parentFileName(buffer)));
 }
 
 
@@ -411,7 +411,7 @@ Buffer * InsetInclude::loadIfNeeded() const
 	if (failedtoload_ || isVerbatim(params()) || isListings(params()))
 		return 0;
 
-	FileName const included_file = includedFilename(buffer(), params());
+	FileName const included_file = includedFileName(buffer(), params());
 	// Use cached Buffer if possible.
 	if (child_buffer_ != 0) {
 		if (theBufferList().isLoaded(child_buffer_)
@@ -463,7 +463,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 	if (incfile.empty())
 		return 0;
 
-	FileName const included_file = includedFilename(buffer(), params());
+	FileName const included_file = includedFileName(buffer(), params());
 
 	// Check we're not trying to include ourselves.
 	// FIXME RECURSIVE INCLUDE
@@ -669,7 +669,7 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const &rp) const
 		if (listing)
 			xs << html::StartTag("pre");
 		// FIXME: We don't know the encoding of the file, default to UTF-8.
-		xs << includedFilename(buffer(), params()).fileContents("UTF-8");
+		xs << includedFileName(buffer(), params()).fileContents("UTF-8");
 		if (listing)
 			xs << html::EndTag("pre");
 		return docstring();
@@ -678,7 +678,7 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const &rp) const
 	// We don't (yet) know how to Input or Include non-LyX files.
 	// (If we wanted to get really arcane, we could run some tex2html
 	// converter on the included file. But that's just masochistic.)
-	FileName const included_file = includedFilename(buffer(), params());
+	FileName const included_file = includedFileName(buffer(), params());
 	if (!isLyXFileName(included_file.absFileName())) {
 		frontend::Alert::warning(_("Unsupported Inclusion"),
 					 bformat(_("LyX does not know how to include non-LyX files when "
@@ -711,7 +711,7 @@ int InsetInclude::plaintext(odocstream & os, OutputParams const &) const
 	if (isVerbatim(params()) || isListings(params())) {
 		os << '[' << screenLabel() << '\n';
 		// FIXME: We don't know the encoding of the file, default to UTF-8.
-		os << includedFilename(buffer(), params()).fileContents("UTF-8");
+		os << includedFileName(buffer(), params()).fileContents("UTF-8");
 		os << "\n]";
 		return PLAINTEXT_NEWLINE + 1; // one char on a separate line
 	} else {
@@ -730,7 +730,7 @@ int InsetInclude::docbook(odocstream & os, OutputParams const & runparams) const
 	if (incfile.empty())
 		return 0;
 
-	string const included_file = includedFilename(buffer(), params()).absFileName();
+	string const included_file = includedFileName(buffer(), params()).absFileName();
 
 	// Check we're not trying to include ourselves.
 	// FIXME RECURSIVE INCLUDE
@@ -787,7 +787,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	LASSERT(&buffer() == &features.buffer(), /**/);
 
 	string const included_file =
-		includedFilename(buffer(), params()).absFileName();
+		includedFileName(buffer(), params()).absFileName();
 
 	if (isLyXFileName(included_file))
 		writefile = changeExtension(included_file, ".sgml");
@@ -833,7 +833,7 @@ void InsetInclude::fillWithBibKeys(BiblioInfo & keys,
 	InsetIterator const & /*di*/) const
 {
 	if (loadIfNeeded()) {
-		string const included_file = includedFilename(buffer(), params()).absFileName();
+		string const included_file = includedFileName(buffer(), params()).absFileName();
 		Buffer * tmp = theBufferList().getBuffer(FileName(included_file));
 		BiblioInfo const & newkeys = tmp->localBibInfo();
 		keys.mergeBiblioInfo(newkeys);
@@ -938,7 +938,7 @@ namespace {
 
 bool preview_wanted(InsetCommandParams const & params, Buffer const & buffer)
 {
-	FileName const included_file = includedFilename(buffer, params);
+	FileName const included_file = includedFileName(buffer, params);
 
 	return type(params) == INPUT && params.preview() &&
 		included_file.isReadableFile();
@@ -964,7 +964,7 @@ void add_preview(RenderMonitoredPreview & renderer, InsetInclude const & inset,
 	InsetCommandParams const & params = inset.params();
 	if (RenderPreview::status() != LyXRC::PREVIEW_OFF &&
 	    preview_wanted(params, buffer)) {
-		renderer.setAbsFile(includedFilename(buffer, params));
+		renderer.setAbsFile(includedFileName(buffer, params));
 		docstring const snippet = latexString(inset);
 		renderer.addPreview(snippet, buffer);
 	}
@@ -979,7 +979,7 @@ void InsetInclude::addPreview(DocIterator const & /*inset_pos*/,
 	Buffer const & buffer = ploader.buffer();
 	if (!preview_wanted(params(), buffer))
 		return;
-	preview_->setAbsFile(includedFilename(buffer, params()));
+	preview_->setAbsFile(includedFileName(buffer, params()));
 	docstring const snippet = latexString(*this);
 	preview_->addPreview(snippet, ploader);
 }

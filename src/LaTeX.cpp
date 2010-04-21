@@ -538,7 +538,7 @@ void LaTeX::updateBibtexDependencies(DepTable & dep,
 	// remove all ".bib" and ".bst" files.
 	dep.remove_files_with_extension(".bib");
 	dep.remove_files_with_extension(".bst");
-	//string aux = OnlyFilename(ChangeExtension(file, ".aux"));
+	//string aux = OnlyFileName(ChangeExtension(file, ".aux"));
 
 	for (vector<AuxInfo>::const_iterator it = bibtex_info.begin();
 	     it != bibtex_info.end(); ++it) {
