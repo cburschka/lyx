@@ -225,7 +225,7 @@ makeRelPath(docstring const & abspath, docstring const & basepath);
 std::string const onlyPath(std::string const & fname);
 
 /// Strips path from filename
-std::string const onlyFilename(std::string const & fname);
+std::string const onlyFileName(std::string const & fname);
 
 /** Check and Replace Environmentvariables ${NAME} in Path.
     Replaces all occurences of these, if they are found in the

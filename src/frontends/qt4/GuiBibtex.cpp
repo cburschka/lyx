@@ -459,7 +459,7 @@ QStringList GuiBibtex::bibStyles() const
 		data = texFileList("bstFiles.lst");
 	}
 	for (int i = 0; i != data.size(); ++i)
-		data[i] = onlyFilename(data[i]);
+		data[i] = onlyFileName(data[i]);
 	// sort on filename only (no path)
 	data.sort();
 	return data;
@@ -475,7 +475,7 @@ QStringList GuiBibtex::bibFiles() const
 		data = texFileList("bibFiles.lst");
 	}
 	for (int i = 0; i != data.size(); ++i)
-		data[i] = onlyFilename(data[i]);
+		data[i] = onlyFileName(data[i]);
 	// sort on filename only (no path)
 	data.sort();
 	return data;

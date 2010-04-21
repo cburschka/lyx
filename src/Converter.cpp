@@ -367,7 +367,7 @@ bool Converters::convert(Buffer const * buffer,
 			: addName(subst(conv.result_dir,
 					token_base, from_base),
 				  subst(conv.result_file,
-					token_base, onlyFilename(from_base))));
+					token_base, onlyFileName(from_base))));
 
 		// if input and output files are equal, we use a
 		// temporary file as intermediary (JMarc)
@@ -513,7 +513,7 @@ bool Converters::move(string const & fmt,
 
 	bool no_errors = true;
 	string const path = onlyPath(from.absFileName());
-	string const base = onlyFilename(removeExtension(from.absFileName()));
+	string const base = onlyFileName(removeExtension(from.absFileName()));
 	string const to_base = removeExtension(to.absFileName());
 	string const to_extension = getExtension(to.absFileName());
 
@@ -521,7 +521,7 @@ bool Converters::move(string const & fmt,
 	for (support::FileNameList::const_iterator it = files.begin();
 	     it != files.end(); ++it) {
 		string const from2 = it->absFileName();
-		string const file2 = onlyFilename(from2);
+		string const file2 = onlyFileName(from2);
 		if (prefixIs(file2, base)) {
 			string const to2 = changeExtension(
 				to_base + file2.substr(base.length()),

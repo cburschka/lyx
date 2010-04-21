@@ -260,8 +260,8 @@ int LaTeX::run(TeXErrors & terr)
 		// no checks for now
 		LYXERR(Debug::LATEX, "Running MakeIndex.");
 		message(_("Running Index Processor."));
-		// onlyFilename() is needed for cygwin
-		rerun |= runMakeIndex(onlyFilename(idxfile.absFileName()),
+		// onlyFileName() is needed for cygwin
+		rerun |= runMakeIndex(onlyFileName(idxfile.absFileName()),
 				runparams);
 	}
 	FileName const nlofile(changeExtension(file.absFileName(), ".nlo"));
@@ -349,8 +349,8 @@ int LaTeX::run(TeXErrors & terr)
 		// no checks for now
 		LYXERR(Debug::LATEX, "Running MakeIndex.");
 		message(_("Running Index Processor."));
-		// onlyFilename() is needed for cygwin
-		rerun = runMakeIndex(onlyFilename(changeExtension(
+		// onlyFileName() is needed for cygwin
+		rerun = runMakeIndex(onlyFileName(changeExtension(
 				file.absFileName(), ".idx")), runparams);
 	}
 
@@ -398,9 +398,9 @@ int LaTeX::run(TeXErrors & terr)
 
 int LaTeX::startscript()
 {
-	// onlyFilename() is needed for cygwin
+	// onlyFileName() is needed for cygwin
 	string tmp = cmd + ' '
-		     + quoteName(onlyFilename(file.toFilesystemEncoding()))
+		     + quoteName(onlyFileName(file.toFilesystemEncoding()))
 		     + " > " + os::nulldev();
 	Systemcall one;
 	return one.startscript(Systemcall::Wait, tmp);
@@ -441,10 +441,10 @@ bool LaTeX::runMakeIndexNomencl(FileName const & file,
 	LYXERR(Debug::LATEX, "Running MakeIndex for nomencl.");
 	message(_("Running MakeIndex for nomencl."));
 	string tmp = lyxrc.nomencl_command + ' ';
-	// onlyFilename() is needed for cygwin
-	tmp += quoteName(onlyFilename(changeExtension(file.absFileName(), nlo)));
+	// onlyFileName() is needed for cygwin
+	tmp += quoteName(onlyFileName(changeExtension(file.absFileName(), nlo)));
 	tmp += " -o "
-		+ onlyFilename(changeExtension(file.toFilesystemEncoding(), nls));
+		+ onlyFileName(changeExtension(file.toFilesystemEncoding(), nls));
 	Systemcall one;
 	one.startscript(Systemcall::Wait, tmp);
 	return true;
@@ -575,8 +575,8 @@ bool LaTeX::runBibTeX(vector<AuxInfo> const & bibtex_info,
 		if (!runparams.bibtex_command.empty())
 			tmp = runparams.bibtex_command;
 		tmp += " ";
-		// onlyFilename() is needed for cygwin
-		tmp += quoteName(onlyFilename(removeExtension(
+		// onlyFileName() is needed for cygwin
+		tmp += quoteName(onlyFileName(removeExtension(
 				it->aux_file.absFileName())));
 		Systemcall one;
 		one.startscript(Systemcall::Wait, tmp);
@@ -592,7 +592,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	int line_count = 1;
 	int retval = NO_ERRORS;
 	string tmp =
-		onlyFilename(changeExtension(file.absFileName(), ".log"));
+		onlyFileName(changeExtension(file.absFileName(), ".log"));
 	LYXERR(Debug::LATEX, "Log file: " << tmp);
 	FileName const fn = FileName(makeAbsPath(tmp));
 	ifstream ifs(fn.toFilesystemEncoding().c_str());
@@ -853,7 +853,7 @@ bool handleFoundFile(string const & ff, DepTable & head)
 		}
 	}
 
-	string onlyfile = onlyFilename(foundfile);
+	string onlyfile = onlyFileName(foundfile);
 	absname = makeAbsPath(onlyfile);
 
 	// check for spaces
@@ -873,7 +873,7 @@ bool handleFoundFile(string const & ff, DepTable & head)
 			string const stripoff =
 				rsplit(foundfile, strippedfile, ' ');
 			foundfile = strippedfile;
-			onlyfile = onlyFilename(strippedfile);
+			onlyfile = onlyFileName(strippedfile);
 			absname = makeAbsPath(onlyfile);
 		}
 	}
@@ -924,7 +924,7 @@ void LaTeX::deplog(DepTable & head)
 	// entered into the dependency file.
 
 	string const logfile =
-		onlyFilename(changeExtension(file.absFileName(), ".log"));
+		onlyFileName(changeExtension(file.absFileName(), ".log"));
 
 	static regex const reg1("File: (.+).*");
 	static regex const reg2("No file (.+)(.).*");
@@ -1046,7 +1046,7 @@ void LaTeX::deplog(DepTable & head)
 			found_file = checkLineBreak(sub.str(1), head);
 		// (7) "\tf@toc=\write<nr>" (for MikTeX)
 		else if (regex_match(token, sub, miktexTocReg))
-			found_file = handleFoundFile(onlyFilename(changeExtension(
+			found_file = handleFoundFile(onlyFileName(changeExtension(
 						file.absFileName(), ".toc")), head);
 		else
 			// not found, but we won't check further

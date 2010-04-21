@@ -91,7 +91,7 @@ string const doSubstitution(InsetExternalParams const & params,
 		params.filename.mangledFileName() :
 		params.filename.outputFileName(parentpath);
 	string const basename = changeExtension(
-			onlyFilename(filename), string());
+			onlyFileName(filename), string());
 	string const absname = makeAbsPath(filename, parentpath).absFileName();
 
 	string result = s;

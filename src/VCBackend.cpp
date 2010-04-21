@@ -179,7 +179,7 @@ void RCS::registrer(string const & msg)
 	string cmd = "ci -q -u -i -t-\"";
 	cmd += msg;
 	cmd += "\" ";
-	cmd += quoteName(onlyFilename(owner_->absFileName()));
+	cmd += quoteName(onlyFileName(owner_->absFileName()));
 	doVCCommand(cmd, FileName(owner_->filePath()));
 }
 
@@ -187,7 +187,7 @@ void RCS::registrer(string const & msg)
 string RCS::checkIn(string const & msg)
 {
 	int ret = doVCCommand("ci -q -u -m\"" + msg + "\" "
-		    + quoteName(onlyFilename(owner_->absFileName())),
+		    + quoteName(onlyFileName(owner_->absFileName())),
 		    FileName(owner_->filePath()));
 	return ret ? string() : "RCS: Proceeded";
 }
@@ -202,7 +202,7 @@ bool RCS::checkInEnabled()
 string RCS::checkOut()
 {
 	owner_->markClean();
-	int ret = doVCCommand("co -q -l " + quoteName(onlyFilename(owner_->absFileName())),
+	int ret = doVCCommand("co -q -l " + quoteName(onlyFileName(owner_->absFileName())),
 		    FileName(owner_->filePath()));
 	return ret ? string() : "RCS: Proceeded";
 }
@@ -243,7 +243,7 @@ bool RCS::lockingToggleEnabled()
 void RCS::revert()
 {
 	doVCCommand("co -f -u" + version_ + " "
-		    + quoteName(onlyFilename(owner_->absFileName())),
+		    + quoteName(onlyFileName(owner_->absFileName())),
 		    FileName(owner_->filePath()));
 	// We ignore changes and just reload!
 	owner_->markClean();
@@ -254,7 +254,7 @@ void RCS::undoLast()
 {
 	LYXERR(Debug::LYXVC, "LyXVC: undoLast");
 	doVCCommand("rcs -o" + version_ + " "
-		    + quoteName(onlyFilename(owner_->absFileName())),
+		    + quoteName(onlyFileName(owner_->absFileName())),
 		    FileName(owner_->filePath()));
 }
 
@@ -267,7 +267,7 @@ bool RCS::undoLastEnabled()
 
 void RCS::getLog(FileName const & tmpf)
 {
-	doVCCommand("rlog " + quoteName(onlyFilename(owner_->absFileName()))
+	doVCCommand("rlog " + quoteName(onlyFileName(owner_->absFileName()))
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 }
@@ -322,7 +322,7 @@ bool RCS::prepareFileRevision(string const &revis, string & f)
 	}
 
 	doVCCommand("co -p" + rev + " "
-	              + quoteName(onlyFilename(owner_->absFileName()))
+	              + quoteName(onlyFileName(owner_->absFileName()))
 		      + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		FileName(owner_->filePath()));
 	if (tmpf.isFileEmpty())
@@ -358,7 +358,7 @@ FileName const CVS::findFile(FileName const & file)
 	// First we look for the CVS/Entries in the same dir
 	// where we have file.
 	FileName const entries(onlyPath(file.absFileName()) + "/CVS/Entries");
-	string const tmpf = '/' + onlyFilename(file.absFileName()) + '/';
+	string const tmpf = '/' + onlyFileName(file.absFileName()) + '/';
 	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under cvs in `" << entries
 			     << "' for `" << tmpf << '\'');
 	if (entries.isReadableFile()) {
@@ -382,7 +382,7 @@ void CVS::scanMaster()
 	LYXERR(Debug::LYXVC, "LyXVC::CVS: scanMaster. \n     Checking: " << master_);
 	// Ok now we do the real scan...
 	ifstream ifs(master_.toFilesystemEncoding().c_str());
-	string tmpf = '/' + onlyFilename(file_.absFileName()) + '/';
+	string tmpf = '/' + onlyFileName(file_.absFileName()) + '/';
 	LYXERR(Debug::LYXVC, "\tlooking for `" << tmpf << '\'');
 	string line;
 	static regex const reg("/(.*)/(.*)/(.*)/(.*)/(.*)");
@@ -426,7 +426,7 @@ void CVS::scanMaster()
 void CVS::registrer(string const & msg)
 {
 	doVCCommand("cvs -q add -m \"" + msg + "\" "
-		    + quoteName(onlyFilename(owner_->absFileName())),
+		    + quoteName(onlyFileName(owner_->absFileName())),
 		    FileName(owner_->filePath()));
 }
 
@@ -434,7 +434,7 @@ void CVS::registrer(string const & msg)
 string CVS::checkIn(string const & msg)
 {
 	int ret = doVCCommand("cvs -q commit -m \"" + msg + "\" "
-		    + quoteName(onlyFilename(owner_->absFileName())),
+		    + quoteName(onlyFileName(owner_->absFileName())),
 		    FileName(owner_->filePath()));
 	return ret ? string() : "CVS: Proceeded";
 }
@@ -492,7 +492,7 @@ void CVS::revert()
 {
 	// Reverts to the version in CVS repository and
 	// gets the updated version from the repository.
-	string const fil = quoteName(onlyFilename(owner_->absFileName()));
+	string const fil = quoteName(onlyFileName(owner_->absFileName()));
 	// This is sensitive operation, so at lest some check about
 	// existence of cvs program and its file
 	if (doVCCommand("cvs log "+ fil, FileName(owner_->filePath())))
@@ -522,7 +522,7 @@ bool CVS::undoLastEnabled()
 
 void CVS::getLog(FileName const & tmpf)
 {
-	doVCCommand("cvs log " + quoteName(onlyFilename(owner_->absFileName()))
+	doVCCommand("cvs log " + quoteName(onlyFileName(owner_->absFileName()))
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 }
@@ -575,7 +575,7 @@ FileName const SVN::findFile(FileName const & file)
 	// First we look for the .svn/entries in the same dir
 	// where we have file.
 	FileName const entries(onlyPath(file.absFileName()) + "/.svn/entries");
-	string const tmpf = onlyFilename(file.absFileName());
+	string const tmpf = onlyFileName(file.absFileName());
 	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under svn in `" << entries
 			     << "' for `" << tmpf << '\'');
 	if (entries.isReadableFile()) {
@@ -652,7 +652,7 @@ bool SVN::isLocked() const
 
 void SVN::registrer(string const & /*msg*/)
 {
-	doVCCommand("svn add -q " + quoteName(onlyFilename(owner_->absFileName())),
+	doVCCommand("svn add -q " + quoteName(onlyFileName(owner_->absFileName())),
 		    FileName(owner_->filePath()));
 }
 
@@ -666,7 +666,7 @@ string SVN::checkIn(string const & msg)
 	}
 
 	doVCCommand("svn commit -m \"" + msg + "\" "
-		    + quoteName(onlyFilename(owner_->absFileName()))
+		    + quoteName(onlyFileName(owner_->absFileName()))
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 
@@ -728,7 +728,7 @@ void SVN::fileLock(bool lock, FileName const & tmpf, string &status)
 		return;
 
 	string const arg = lock ? "lock " : "unlock ";
-	doVCCommand("svn "+ arg + quoteName(onlyFilename(owner_->absFileName()))
+	doVCCommand("svn "+ arg + quoteName(onlyFileName(owner_->absFileName()))
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 
@@ -762,7 +762,7 @@ string SVN::checkOut()
 		return N_("Error: Could not generate logfile.");
 	}
 
-	doVCCommand("svn update --non-interactive " + quoteName(onlyFilename(owner_->absFileName()))
+	doVCCommand("svn update --non-interactive " + quoteName(onlyFileName(owner_->absFileName()))
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 
@@ -855,7 +855,7 @@ string SVN::lockingToggle()
 		return N_("Error: Could not generate logfile.");
 	}
 
-	int ret = doVCCommand("svn proplist " + quoteName(onlyFilename(owner_->absFileName()))
+	int ret = doVCCommand("svn proplist " + quoteName(onlyFileName(owner_->absFileName()))
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 	if (ret)
@@ -866,12 +866,12 @@ string SVN::lockingToggle()
 	bool locking = contains(res, "svn:needs-lock");
 	if (!locking)
 		ret = doVCCommand("svn propset svn:needs-lock ON "
-		    + quoteName(onlyFilename(owner_->absFileName()))
+		    + quoteName(onlyFileName(owner_->absFileName()))
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 	else
 		ret = doVCCommand("svn propdel svn:needs-lock "
-		    + quoteName(onlyFilename(owner_->absFileName()))
+		    + quoteName(onlyFileName(owner_->absFileName()))
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 	if (ret)
@@ -897,7 +897,7 @@ void SVN::revert()
 {
 	// Reverts to the version in CVS repository and
 	// gets the updated version from the repository.
-	string const fil = quoteName(onlyFilename(owner_->absFileName()));
+	string const fil = quoteName(onlyFileName(owner_->absFileName()));
 
 	doVCCommand("svn revert -q " + fil,
 		    FileName(owner_->filePath()));
@@ -964,7 +964,7 @@ bool SVN::getFileRevisionInfo()
 		return N_("Error: Could not generate logfile.");
 	}
 
-	doVCCommand("svn info --xml " + quoteName(onlyFilename(owner_->absFileName()))
+	doVCCommand("svn info --xml " + quoteName(onlyFileName(owner_->absFileName()))
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 
@@ -1037,7 +1037,7 @@ bool SVN::getTreeRevisionInfo()
 
 void SVN::getLog(FileName const & tmpf)
 {
-	doVCCommand("svn log " + quoteName(onlyFilename(owner_->absFileName()))
+	doVCCommand("svn log " + quoteName(onlyFileName(owner_->absFileName()))
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 }
@@ -1068,7 +1068,7 @@ bool SVN::prepareFileRevision(string const & revis, string & f)
 	}
 
 	doVCCommand("svn cat -r " + convert<string>(rev) + " "
-	              + quoteName(onlyFilename(owner_->absFileName()))
+	              + quoteName(onlyFileName(owner_->absFileName()))
 		      + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		FileName(owner_->filePath()));
 	if (tmpf.isFileEmpty())

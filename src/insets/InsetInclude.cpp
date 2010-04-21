@@ -385,7 +385,7 @@ docstring InsetInclude::screenLabel() const
 	if (params()["filename"].empty())
 		temp += "???";
 	else
-		temp += from_utf8(onlyFilename(to_utf8(params()["filename"])));
+		temp += from_utf8(onlyFileName(to_utf8(params()["filename"])));
 
 	return temp;
 }

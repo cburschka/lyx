@@ -115,9 +115,9 @@ QString browseFile(QString const & filename,
 	FileDialog::Result result;
 
 	if (save)
-		result = dlg.save(lastPath, filters, onlyFilename(filename));
+		result = dlg.save(lastPath, filters, onlyFileName(filename));
 	else
-		result = dlg.open(lastPath, filters, onlyFilename(filename));
+		result = dlg.open(lastPath, filters, onlyFileName(filename));
 
 	return result.second;
 }
@@ -155,7 +155,7 @@ QString browseLibFile(QString const & dir,
 		noextresult = result;
 
 	// remove the directory, if it is the default one
-	QString const file = onlyFilename(noextresult);
+	QString const file = onlyFileName(noextresult);
 	if (toqstr(libFileSearch(dir, file, ext).absFileName()) == result)
 		return file;
 	else
@@ -184,7 +184,7 @@ QString browseDir(QString const & pathname,
 	dlg.setButton2(label2, dir2);
 
 	FileDialog::Result const result =
-		dlg.opendir(lastPath, onlyFilename(pathname));
+		dlg.opendir(lastPath, onlyFileName(pathname));
 
 	return result.second;
 }

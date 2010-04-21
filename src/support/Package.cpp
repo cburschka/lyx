@@ -394,7 +394,7 @@ FileName const get_binary_path(string const & exe)
 
 	// 2. exe must be the name of the binary only and it
 	// can be found on the PATH.
-	string const exe_name = onlyFilename(exe_path);
+	string const exe_name = onlyFileName(exe_path);
 	if (exe_name != exe_path)
 		return FileName();
 

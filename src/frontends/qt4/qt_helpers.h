@@ -115,7 +115,7 @@ docstring const internalLineEnding(QString const & str);
 
 // wrapper around the docstring versions
 QString internalPath(QString const &);
-QString onlyFilename(QString const & str);
+QString onlyFileName(QString const & str);
 QString onlyPath(QString const & str);
 QStringList fileFilters(QString const & description);
 

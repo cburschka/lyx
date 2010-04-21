@@ -271,9 +271,9 @@ QString internalPath(const QString & str)
 }
 
 
-QString onlyFilename(const QString & str)
+QString onlyFileName(const QString & str)
 {
-	return toqstr(support::onlyFilename(fromqstr(str)));
+	return toqstr(support::onlyFileName(fromqstr(str)));
 }
 
 

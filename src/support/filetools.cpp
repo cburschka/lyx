@@ -464,7 +464,7 @@ FileName const makeAbsPath(string const & relPath, string const & basePath)
 // Chops any path of filename.
 string const addName(string const & path, string const & fname)
 {
-	string const basename = onlyFilename(fname);
+	string const basename = onlyFileName(fname);
 	string buf;
 
 	if (path != "." && path != "./" && !path.empty()) {
@@ -478,7 +478,7 @@ string const addName(string const & path, string const & fname)
 
 
 // Strips path from filename
-string const onlyFilename(string const & fname)
+string const onlyFileName(string const & fname)
 {
 	if (fname.empty())
 		return fname;
@@ -675,7 +675,7 @@ string const unzippedFileName(string const & zipped_file)
 	string const ext = getExtension(zipped_file);
 	if (ext == "gz" || ext == "z" || ext == "Z")
 		return changeExtension(zipped_file, string());
-	return onlyPath(zipped_file) + "unzipped_" + onlyFilename(zipped_file);
+	return onlyPath(zipped_file) + "unzipped_" + onlyFileName(zipped_file);
 }
 
 
@@ -723,7 +723,7 @@ docstring const makeDisplayPath(string const & path, unsigned int threshold)
 	if (str.empty()) {
 		// Yes, filename itself is too long.
 		// Pick the start and the end of the filename.
-		str = onlyFilename(path);
+		str = onlyFileName(path);
 		string const head = str.substr(0, threshold / 2 - 3);
 
 		string::size_type len = str.length();

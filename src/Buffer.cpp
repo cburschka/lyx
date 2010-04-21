@@ -579,12 +579,12 @@ string Buffer::logName(LogType * type) const
 	string const path = temppath();
 
 	FileName const fname(addName(temppath(),
-				     onlyFilename(changeExtension(filename,
+				     onlyFileName(changeExtension(filename,
 								  ".log"))));
 
 	// FIXME: how do we know this is the name of the build log?
 	FileName const bname(
-		addName(path, onlyFilename(
+		addName(path, onlyFileName(
 			changeExtension(filename,
 					formats.extension(bufferFormat()) + ".out"))));
 
@@ -1071,7 +1071,7 @@ docstring Buffer::emergencyWrite()
 	if (isClean())
 		return docstring();
 
-	string const doc = isUnnamed() ? onlyFilename(absFileName()) : absFileName();
+	string const doc = isUnnamed() ? onlyFileName(absFileName()) : absFileName();
 
 	docstring user_message = bformat(
 		_("LyX: Attempting to save document %1$s\n"), from_utf8(doc));
@@ -1629,7 +1629,7 @@ int Buffer::runChktex()
 	makeLaTeXFile(FileName(name), org_path, runparams);
 
 	TeXErrors terr;
-	Chktex chktex(lyxrc.chktex_command, onlyFilename(name), filePath());
+	Chktex chktex(lyxrc.chktex_command, onlyFileName(name), filePath());
 	int const res = chktex.run(terr); // run chktex
 
 	if (res == -1) {
@@ -3538,7 +3538,7 @@ bool Buffer::readFileHelper(FileName const & s)
 	}
 
 	// Now check if autosave file is newer.
-	FileName const a(onlyPath(s.absFileName()) + '#' + onlyFilename(s.absFileName()) + '#');
+	FileName const a(onlyPath(s.absFileName()) + '#' + onlyFileName(s.absFileName()) + '#');
 
 	if (a.exists() && s.exists() && a.lastModified() > s.lastModified()) {
 		docstring const file = makeDisplayPath(s.absFileName(), 20);

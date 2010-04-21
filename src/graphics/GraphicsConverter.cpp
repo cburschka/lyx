@@ -162,7 +162,7 @@ Converter::Impl::Impl(FileName const & from_file, string const & to_file_base,
 	// Note: 'python ' is absolutely essential, or execvp will fail.
 	script_command_ = os::python() + ' ' +
 		quoteName(script_file_.toFilesystemEncoding()) + ' ' +
-		quoteName(onlyFilename(from_file.toFilesystemEncoding())) + ' ' +
+		quoteName(onlyFileName(from_file.toFilesystemEncoding())) + ' ' +
 		quoteName(to_format);
 	// All is ready to go
 	valid_process_ = true;

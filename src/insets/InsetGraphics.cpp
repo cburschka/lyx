@@ -587,7 +587,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 	// run through the LaTeX compiler.
 	string output_file = runparams.nice ?
 		params().filename.outputFileName(masterBuffer->filePath()) :
-		onlyFilename(temp_file.absFileName());
+		onlyFileName(temp_file.absFileName());
 
 	if (runparams.nice && !isValidLaTeXFilename(output_file)) {
 		frontend::Alert::warning(_("Invalid filename"),
@@ -894,7 +894,7 @@ string InsetGraphics::prepareHTMLFile(OutputParams const & runparams) const
 	if (status == FAILURE)
 		return string();
 
-	string output_file = onlyFilename(temp_file.absFileName());
+	string output_file = onlyFileName(temp_file.absFileName());
 
 	string const from = formats.getFormatFromFile(temp_file);
 	if (from.empty())

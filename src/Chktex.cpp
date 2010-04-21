@@ -38,7 +38,7 @@ Chktex::Chktex(string const & chktex, string const & f, string const & p)
 int Chktex::run(TeXErrors &terr)
 {
 	// run bibtex
-	string log = onlyFilename(changeExtension(file, ".log"));
+	string log = onlyFileName(changeExtension(file, ".log"));
 	string tmp = cmd + " -q -v0 -b0 -x " + file + " -o " + log;
 	Systemcall one;
 	int result = one.startscript(Systemcall::Wait, tmp);
@@ -55,9 +55,9 @@ int Chktex::scanLogFile(TeXErrors & terr)
 {
 	int retval = 0;
 
-	// FIXME: Find out whether onlyFilename() is really needed,
-	// or whether makeAbsPath(onlyFilename()) is a noop here
-	FileName const tmp(makeAbsPath(onlyFilename(changeExtension(file, ".log"))));
+	// FIXME: Find out whether onlyFileName() is really needed,
+	// or whether makeAbsPath(onlyFileName()) is a noop here
+	FileName const tmp(makeAbsPath(onlyFileName(changeExtension(file, ".log"))));
 
 #if USE_BOOST_FORMAT
 	boost::basic_format<char_type> msg(_("ChkTeX warning id # %1$d"));
