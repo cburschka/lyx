@@ -71,7 +71,7 @@ TempName::TempName()
 {
 	FileName const tempname = FileName::tempName("lyxext");
 	// must have an extension for the converter code to work correctly.
-	tempname_ = FileName(tempname.absFilename() + ".tmp");
+	tempname_ = FileName(tempname.absFileName() + ".tmp");
 }
 
 

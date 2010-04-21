@@ -105,7 +105,7 @@ void Messages::init()
 	int e = errno;
 	if (e) {
 		LYXERR(Debug::LOCALE, "Error code: " << errno << '\n'
-			<< "Directory : " << package().locale_dir().absFilename() << '\n'
+			<< "Directory : " << package().locale_dir().absFileName() << '\n'
 			<< "Rtn value : " << c);
 	}
 

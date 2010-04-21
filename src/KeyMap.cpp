@@ -262,11 +262,11 @@ bool KeyMap::read(FileName const & bind_file, KeyMap * unbind_map)
 
 	lexrc.setFile(bind_file);
 	if (!lexrc.isOK()) {
-		LYXERR0("KeyMap::read: cannot open bind file:" << bind_file.absFilename());
+		LYXERR0("KeyMap::read: cannot open bind file:" << bind_file.absFileName());
 		return false;
 	}
 
-	LYXERR(Debug::KBMAP, "Reading bind file:" << bind_file.absFilename());
+	LYXERR(Debug::KBMAP, "Reading bind file:" << bind_file.absFileName());
 
 	bool error = false;
 	while (lexrc.isOK()) {
@@ -349,7 +349,7 @@ bool KeyMap::read(FileName const & bind_file, KeyMap * unbind_map)
 	}
 
 	if (error)
-		LYXERR0("KeyMap::read: error while reading bind file:" << bind_file.absFilename());
+		LYXERR0("KeyMap::read: error while reading bind file:" << bind_file.absFileName());
 	return !error;
 }
 

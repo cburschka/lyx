@@ -170,7 +170,7 @@ FileDialog::Result FileDialog::opendir(QString const & path,
 
 #ifdef USE_NATIVE_FILEDIALOG
 	QString const startsWith = toqstr(makeAbsPath(fromqstr(suggested),
-		fromqstr(path)).absFilename());
+		fromqstr(path)).absFileName());
 	QString const dir = QFileDialog::getExistingDirectory(qApp->focusWidget(),
 		title_, startsWith);
 	if (dir.isNull())

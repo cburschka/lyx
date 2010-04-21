@@ -134,7 +134,7 @@ string Formats::getFormatFromFile(FileName const & filename) const
 		return format;
 
 	// try to find a format from the file extension.
-	string const ext = getExtension(filename.absFilename());
+	string const ext = getExtension(filename.absFileName());
 	if (!ext.empty()) {
 		// this is ambigous if two formats have the same extension,
 		// but better than nothing
@@ -263,7 +263,7 @@ bool Formats::view(Buffer const & buffer, FileName const & filename,
 	if (filename.empty() || !filename.exists()) {
 		Alert::error(_("Cannot view file"),
 			bformat(_("File does not exist: %1$s"),
-				from_utf8(filename.absFilename())));
+				from_utf8(filename.absFileName())));
 		return false;
 	}
 
@@ -281,12 +281,12 @@ bool Formats::view(Buffer const & buffer, FileName const & filename,
 	}
 	// viewer is 'auto'
 	if (format->viewer() == "auto") {
-		if (os::autoOpenFile(filename.absFilename(), os::VIEW))
+		if (os::autoOpenFile(filename.absFileName(), os::VIEW))
 			return true;
 		else {
 			Alert::error(_("Cannot view file"),
 				bformat(_("Auto-view file %1$s failed"),
-					from_utf8(filename.absFilename())));
+					from_utf8(filename.absFileName())));
 			return false;
 		}
 	}
@@ -334,15 +334,15 @@ bool Formats::edit(Buffer const & buffer, FileName const & filename,
 	if (filename.empty() || !filename.exists()) {
 		Alert::error(_("Cannot edit file"),
 			bformat(_("File does not exist: %1$s"),
-				from_utf8(filename.absFilename())));
+				from_utf8(filename.absFileName())));
 		return false;
 	}
 
 	// LinkBack files look like PDF, but have the .linkback extension
-	string const ext = getExtension(filename.absFilename());
+	string const ext = getExtension(filename.absFileName());
 	if (format_name == "pdf" && ext == "linkback") {
 #ifdef USE_MACOSX_PACKAGING
-		return editLinkBackFile(filename.absFilename().c_str());
+		return editLinkBackFile(filename.absFileName().c_str());
 #else
 		Alert::error(_("Cannot edit file"),
 			     _("LinkBack files can only be edited on Apple Mac OSX."));
@@ -365,12 +365,12 @@ bool Formats::edit(Buffer const & buffer, FileName const & filename,
 	
 	// editor is 'auto'
 	if (format->editor() == "auto") {
-		if (os::autoOpenFile(filename.absFilename(), os::EDIT))
+		if (os::autoOpenFile(filename.absFileName(), os::EDIT))
 			return true;
 		else {
 			Alert::error(_("Cannot edit file"),
 				bformat(_("Auto-edit file %1$s failed"),
-					from_utf8(filename.absFilename())));
+					from_utf8(filename.absFileName())));
 			return false;
 		}
 	}

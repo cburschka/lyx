@@ -1251,7 +1251,7 @@ bool GuiWorkArea::isFullScreen()
 EmbeddedWorkArea::EmbeddedWorkArea(QWidget * w): GuiWorkArea(w)
 {
 	buffer_ = theBufferList().newBuffer(
-		support::FileName::tempName().absFilename() + "_embedded.internal");
+		support::FileName::tempName().absFileName() + "_embedded.internal");
 	buffer_->setUnnamed(true);
 	buffer_->setFullyLoaded(true);
 	setBuffer(*buffer_);

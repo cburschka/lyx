@@ -297,9 +297,9 @@ static void build_script(FileName const & from_file,
 	// problematic characters like ' or ". We can work around that problem
 	// in python, but the converters might be shell scripts and have more
 	// troubles with it.
-	string outfile = addExtension(to_base.absFilename(), getExtension(from_file.absFilename()));
+	string outfile = addExtension(to_base.absFileName(), getExtension(from_file.absFileName()));
 	script << "infile = toUnicode("
-			<< quoteName(from_file.absFilename(), quote_python)
+			<< quoteName(from_file.absFileName(), quote_python)
 			<< ")\n"
 		  "outfile = toUnicode("
 			<< quoteName(outfile, quote_python) << ")\n"
@@ -357,7 +357,7 @@ static void build_script(FileName const & from_file,
 		// Build the conversion command
 		string const infile      = outfile;
 		string const infile_base = changeExtension(infile, string());
-		outfile = addExtension(to_base.absFilename(), conv.To->extension());
+		outfile = addExtension(to_base.absFileName(), conv.To->extension());
 
 		// Store these names in the python script
 		script << "infile = toUnicode("

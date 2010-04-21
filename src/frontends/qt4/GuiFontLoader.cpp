@@ -199,7 +199,7 @@ QFont symbolFont(QString const & family, bool * ok)
 FontLoader::FontLoader()
 {
 	QString const fonts_dir =
-		toqstr(addPath(package().system_support().absFilename(), "fonts"));
+		toqstr(addPath(package().system_support().absFileName(), "fonts"));
 
 	for (int i = 0 ; i < num_math_fonts; ++i) {
 		QString const font_file = fonts_dir + '/' + math_fonts[i] + ".ttf";

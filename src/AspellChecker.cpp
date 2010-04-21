@@ -97,25 +97,25 @@ AspellConfig * getConfig()
 
 	if ( strlen(framework) && getPrivateFrameworkPathName(buf, sizeof(buf), framework) ) {
 		lyx::support::FileName const base(buf);
-		lyx::support::FileName const data(base.absFilename() + "/Resources/data");
-		lyx::support::FileName const dict(base.absFilename() + "/Resources/dict");
+		lyx::support::FileName const data(base.absFileName() + "/Resources/data");
+		lyx::support::FileName const dict(base.absFileName() + "/Resources/dict");
 		LYXERR(Debug::FILES, "aspell bundle path: " << buf);
 		have_dict = dict.isDirectory() && data.isDirectory();
 		if (have_dict) {
-			aspell_config_replace(config, "dict-dir", dict.absFilename().c_str());
-			aspell_config_replace(config, "data-dir", data.absFilename().c_str());
+			aspell_config_replace(config, "dict-dir", dict.absFileName().c_str());
+			aspell_config_replace(config, "data-dir", data.absFileName().c_str());
 			LYXERR(Debug::FILES, "aspell dict: " << dict);
 		}
 	}
 #endif
 	if ( !have_dict ) {
 		lyx::support::FileName const base("/opt/local"); // check for mac-ports data
-		lyx::support::FileName const data(base.absFilename() + "/lib/aspell-0.60");
-		lyx::support::FileName const dict(base.absFilename() + "/share/aspell");
+		lyx::support::FileName const data(base.absFileName() + "/lib/aspell-0.60");
+		lyx::support::FileName const dict(base.absFileName() + "/share/aspell");
 		have_dict = dict.isDirectory() && data.isDirectory();
 		if (have_dict) {
-			aspell_config_replace(config, "dict-dir", dict.absFilename().c_str());
-			aspell_config_replace(config, "data-dir", data.absFilename().c_str());
+			aspell_config_replace(config, "dict-dir", dict.absFileName().c_str());
+			aspell_config_replace(config, "data-dir", data.absFileName().c_str());
 			LYXERR(Debug::FILES, "aspell dict: " << dict);
 		}
 	}

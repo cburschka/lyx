@@ -80,7 +80,7 @@ bool LyXVC::file_not_found_hook(FileName const & fn)
 	// Seems there is no reasonable scenario for adding implementation
 	// of retrieve for cvs or svn.
 	if (!RCS::findFile(fn).empty()) {	
-		docstring const file = makeDisplayPath(fn.absFilename(), 20);
+		docstring const file = makeDisplayPath(fn.absFileName(), 20);
 		docstring const text =
 			bformat(_("Do you want to retrieve the document"
 						   " %1$s from version control?"), file);
@@ -120,8 +120,8 @@ bool LyXVC::registrer()
 	// it is very likely here that the vcs is not created yet...
 	if (!vcs) {
 		//check in the root directory of the document
-		FileName const cvs_entries(onlyPath(filename.absFilename()) + "/CVS/Entries");
-		FileName const svn_entries(onlyPath(filename.absFilename()) + "/.svn/entries");
+		FileName const cvs_entries(onlyPath(filename.absFileName()) + "/CVS/Entries");
+		FileName const svn_entries(onlyPath(filename.absFileName()) + "/.svn/entries");
 
 		if (svn_entries.isReadableFile()) {
 			LYXERR(Debug::LYXVC, "LyXVC: registering "
@@ -278,7 +278,7 @@ string const LyXVC::getLogFile() const
 	}
 	LYXERR(Debug::LYXVC, "Generating logfile " << tmpf);
 	vcs->getLog(tmpf);
-	return tmpf.absFilename();
+	return tmpf.absFileName();
 }
 
 

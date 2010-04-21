@@ -28,7 +28,7 @@ namespace lyx {
 
 bool Mover::copy(FileName const & from, FileName const & to) const
 {
-	return do_copy(from, to, to.absFilename());
+	return do_copy(from, to, to.absFileName());
 }
 
 
@@ -42,7 +42,7 @@ bool Mover::do_copy(FileName const & from, FileName const & to,
 bool Mover::rename(FileName const & from,
 		   FileName const & to) const
 {
-	return do_rename(from, to, to.absFilename());
+	return do_rename(from, to, to.absFileName());
 }
 
 

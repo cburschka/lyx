@@ -138,7 +138,7 @@ Hunspell * HunspellChecker::Private::addSpeller(string const & lang)
 
 	FileName const affix(hunspell_path + ".aff");
 	FileName const dict(hunspell_path + ".dic");
-	Hunspell * h = new Hunspell(affix.absFilename().c_str(), dict.absFilename().c_str());
+	Hunspell * h = new Hunspell(affix.absFileName().c_str(), dict.absFileName().c_str());
 	spellers_[lang] = h;
 	return h;
 }

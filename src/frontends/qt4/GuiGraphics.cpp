@@ -502,7 +502,7 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 
 	// set the bounding box values
 	if (igp.bb.empty()) {
-		string const bb = readBoundingBox(igp.filename.absFilename());
+		string const bb = readBoundingBox(igp.filename.absFileName());
 		// the values from the file always have the bigpoint-unit bp
 		doubleToWidget(lbX, token(bb, ' ', 0));
 		doubleToWidget(lbY, token(bb, ' ', 1));
@@ -787,12 +787,12 @@ QString GuiGraphics::browse(QString const & in_name) const
 	QString const title = qt_("Select graphics file");
 
 	// Does user clipart directory exist?
-	string clipdir = addName(package().user_support().absFilename(), "clipart");
+	string clipdir = addName(package().user_support().absFileName(), "clipart");
 	FileName clip(clipdir);
 
 	// bail out to system clipart directory
 	if (!clip.isDirectory())
-		clipdir = addName(package().system_support().absFilename(), "clipart");
+		clipdir = addName(package().system_support().absFileName(), "clipart");
 
 	return browseRelFile(in_name, bufferFilepath(),
 		title, fileFilters(QString()), false, 

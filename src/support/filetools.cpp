@@ -107,7 +107,7 @@ string const latex_path(string const & original_path,
 FileName const makeLatexName(FileName const & file)
 {
 	string name = file.onlyFileName();
-	string const path = file.onlyPath().absFilename() + "/";
+	string const path = file.onlyPath().absFileName() + "/";
 
 	// ok so we scan through the string twice, but who cares.
 	// FIXME: in Unicode time this will break for sure! There is
@@ -179,9 +179,9 @@ FileName const fileOpenSearch(string const & path, string const & name,
 		if (!suffixIs(path_element, '/'))
 			path_element += '/';
 		path_element = subst(path_element, "$$LyX",
-				     package().system_support().absFilename());
+				     package().system_support().absFileName());
 		path_element = subst(path_element, "$$User",
-				     package().user_support().absFilename());
+				     package().user_support().absFileName());
 
 		real_file = fileSearch(path_element, name, ext);
 
@@ -215,8 +215,8 @@ FileName const fileSearch(string const & path, string const & name,
 		return mode == may_not_exist ? fullname : FileName();
 	// Only add the extension if it is not already the extension of
 	// fullname.
-	if (getExtension(fullname.absFilename()) != ext)
-		fullname = FileName(addExtension(fullname.absFilename(), ext));
+	if (getExtension(fullname.absFileName()) != ext)
+		fullname = FileName(addExtension(fullname.absFileName(), ext));
 	if (fullname.isReadableFile() || mode == may_not_exist)
 		return fullname;
 	return FileName();
@@ -230,18 +230,18 @@ FileName const fileSearch(string const & path, string const & name,
 FileName const libFileSearch(string const & dir, string const & name,
 			   string const & ext)
 {
-	FileName fullname = fileSearch(addPath(package().user_support().absFilename(), dir),
+	FileName fullname = fileSearch(addPath(package().user_support().absFileName(), dir),
 				     name, ext);
 	if (!fullname.empty())
 		return fullname;
 
 	if (!package().build_support().empty())
-		fullname = fileSearch(addPath(package().build_support().absFilename(), dir),
+		fullname = fileSearch(addPath(package().build_support().absFileName(), dir),
 				      name, ext);
 	if (!fullname.empty())
 		return fullname;
 
-	return fileSearch(addPath(package().system_support().absFilename(), dir), name, ext);
+	return fileSearch(addPath(package().system_support().absFileName(), dir), name, ext);
 }
 
 
@@ -313,7 +313,7 @@ string const libScriptSearch(string const & command_in, quote_style style)
 
 	// Does this script file exist?
 	string const script =
-		libFileSearch(".", command.substr(start_script, size_script)).absFilename();
+		libFileSearch(".", command.substr(start_script, size_script)).absFileName();
 
 	if (script.empty()) {
 		// Replace "$$s/" with ""
@@ -401,7 +401,7 @@ FileName const makeAbsPath(string const & relPath, string const & basePath)
 	if (FileName::isAbsolute(basePath))
 		tempBase = basePath;
 	else
-		tempBase = addPath(FileName::getcwd().absFilename(), basePath);
+		tempBase = addPath(FileName::getcwd().absFileName(), basePath);
 
 	// Handle /./ at the end of the path
 	while (suffixIs(tempBase, "/./"))
@@ -415,7 +415,7 @@ FileName const makeAbsPath(string const & relPath, string const & basePath)
 	// Split by first /
 	rTemp = split(rTemp, temp, '/');
 	if (temp == "~") {
-		tempBase = package().home_dir().absFilename();
+		tempBase = package().home_dir().absFileName();
 		tempRel = rTemp;
 	}
 
@@ -508,13 +508,13 @@ string const expandPath(string const & path)
 	rTemp = split(rTemp, temp, '/');
 
 	if (temp == ".")
-		return FileName::getcwd().absFilename() + '/' + rTemp;
+		return FileName::getcwd().absFileName() + '/' + rTemp;
 
 	if (temp == "~")
-		return package().home_dir().absFilename() + '/' + rTemp;
+		return package().home_dir().absFileName() + '/' + rTemp;
 
 	if (temp == "..")
-		return makeAbsPath(copy).absFilename();
+		return makeAbsPath(copy).absFileName();
 
 	// Don't know how to handle this
 	return copy;
@@ -701,12 +701,12 @@ docstring const makeDisplayPath(string const & path, unsigned int threshold)
 	string str = path;
 
 	// If file is from LyXDir, display it as if it were relative.
-	string const system = package().system_support().absFilename();
+	string const system = package().system_support().absFileName();
 	if (prefixIs(str, system) && str != system)
 		return from_utf8("[" + str.erase(0, system.length()) + "]");
 
 	// replace /home/blah with ~/
-	string const home = package().home_dir().absFilename();
+	string const home = package().home_dir().absFileName();
 	if (!home.empty() && prefixIs(str, home))
 		str = subst(str, home, "~");
 
@@ -746,7 +746,7 @@ bool readLink(FileName const & file, FileName & link)
 	if (nRead <= 0)
 		return false;
 	linkbuffer[nRead] = '\0'; // terminator
-	link = makeAbsPath(linkbuffer, onlyPath(file.absFilename()));
+	link = makeAbsPath(linkbuffer, onlyPath(file.absFileName()));
 	return true;
 #else
 	return false;

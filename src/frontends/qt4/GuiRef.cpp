@@ -255,7 +255,7 @@ void GuiRef::updateContents()
 	FileNameList const & buffers = theBufferList().fileNames();
 	for (FileNameList::const_iterator it = buffers.begin();
 	     it != buffers.end(); ++it) {
-		bufferCO->addItem(toqstr(makeDisplayPath(it->absFilename())));
+		bufferCO->addItem(toqstr(makeDisplayPath(it->absFileName())));
 	}
 
 	int const thebuffer = theBufferList().bufferNum(buffer().fileName());

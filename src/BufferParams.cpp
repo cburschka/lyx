@@ -518,7 +518,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		string tcp;
 		LayoutFileList & bcl = LayoutFileList::get();
 		if (tcp.empty() && !filepath.empty())
-			tcp = bcl.addLocalLayout(classname, filepath.absFilename());
+			tcp = bcl.addLocalLayout(classname, filepath.absFileName());
 		if (!tcp.empty())
 			setBaseClass(tcp);
 		else
@@ -1309,8 +1309,8 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		bool first = true;
 		for (; it != includedChildren_.end() ; ++it) {
 			string incfile = *it;
-			FileName inc = makeAbsPath(incfile, filepath.absFilename());
-			string mangled = DocFileName(changeExtension(inc.absFilename(), ".tex")).
+			FileName inc = makeAbsPath(incfile, filepath.absFileName());
+			string mangled = DocFileName(changeExtension(inc.absFileName(), ".tex")).
 			mangledFilename();
 			if (!features.runparams().nice)
 				incfile = mangled;

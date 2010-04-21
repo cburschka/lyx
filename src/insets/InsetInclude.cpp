@@ -423,7 +423,7 @@ Buffer * InsetInclude::loadIfNeeded() const
 		child_buffer_ = 0;
 	}
 
-	if (!isLyXFilename(included_file.absFilename()))
+	if (!isLyXFilename(included_file.absFileName()))
 		return 0;
 
 	Buffer * child = theBufferList().getBuffer(included_file);
@@ -432,7 +432,7 @@ Buffer * InsetInclude::loadIfNeeded() const
 		if (!included_file.exists())
 			return 0;
 
-		child = theBufferList().newBuffer(included_file.absFilename());
+		child = theBufferList().newBuffer(included_file.absFileName());
 		if (!child)
 			// Buffer creation is not possible.
 			return 0;
@@ -470,7 +470,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 	// This isn't sufficient, as the inclusion could be downstream.
 	// But it'll have to do for now.
 	if (isInputOrInclude(params()) &&
-		buffer().absFileName() == included_file.absFilename())
+		buffer().absFileName() == included_file.absFileName())
 	{
 		Alert::error(_("Recursive input"),
 			       bformat(_("Attempted to include file %1$s in itself! "
@@ -484,7 +484,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 	// buffer directory.
 	if (!FileName::isAbsolute(incfile)) {
 		// FIXME UNICODE
-		incfile = to_utf8(makeRelPath(from_utf8(included_file.absFilename()),
+		incfile = to_utf8(makeRelPath(from_utf8(included_file.absFileName()),
 					      from_utf8(masterBuffer->filePath())));
 	}
 
@@ -497,7 +497,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		mangled = DocFileName(included_file).mangledFilename();
 	} else {
 		exportfile = changeExtension(incfile, ".tex");
-		mangled = DocFileName(changeExtension(included_file.absFilename(), ".tex")).
+		mangled = DocFileName(changeExtension(included_file.absFileName(), ".tex")).
 			mangledFilename();
 	}
 
@@ -519,7 +519,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		//Don't try to load or copy the file if we're
 		//in a comment or doing a dryrun
 	} else if (isInputOrInclude(params()) &&
-		 isLyXFilename(included_file.absFilename())) {
+		 isLyXFilename(included_file.absFileName())) {
 		//if it's a LyX file and we're inputting or including,
 		//try to load it so we can write the associated latex
 		if (!loadIfNeeded())
@@ -572,7 +572,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		runparams.encoding = &tmp->params().encoding();
 		runparams.master_language = buffer().params().language;
 		tmp->makeLaTeXFile(writefile,
-				   masterFileName(buffer()).onlyPath().absFilename(),
+				   masterFileName(buffer()).onlyPath().absFileName(),
 				   runparams, false);
 		runparams.encoding = oldEnc;
 		runparams.master_language = oldLang;
@@ -590,7 +590,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 				LYXERR(Debug::LATEX,
 					to_utf8(bformat(_("Could not copy the file\n%1$s\n"
 								  "into the temporary directory."),
-						   from_utf8(included_file.absFilename()))));
+						   from_utf8(included_file.absFileName()))));
 				return 0;
 			}
 		}
@@ -612,7 +612,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 						      exportfile);
 
 		// \input wants file with extension (default is .tex)
-		if (!isLyXFilename(included_file.absFilename())) {
+		if (!isLyXFilename(included_file.absFileName())) {
 			incfile = latex_path(incfile);
 			// FIXME UNICODE
 			os << '\\' << from_ascii(params().getCmdName())
@@ -679,7 +679,7 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const &rp) const
 	// (If we wanted to get really arcane, we could run some tex2html
 	// converter on the included file. But that's just masochistic.)
 	FileName const included_file = includedFilename(buffer(), params());
-	if (!isLyXFilename(included_file.absFilename())) {
+	if (!isLyXFilename(included_file.absFileName())) {
 		frontend::Alert::warning(_("Unsupported Inclusion"),
 					 bformat(_("LyX does not know how to include non-LyX files when "
 					           "generating HTML output. Offending file:\n%1$s"),
@@ -691,7 +691,7 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const &rp) const
 
 	// Check we're not trying to include ourselves.
 	// FIXME RECURSIVE INCLUDE
-	if (buffer().absFileName() == included_file.absFilename()) {
+	if (buffer().absFileName() == included_file.absFileName()) {
 		Alert::error(_("Recursive input"),
 			       bformat(_("Attempted to include file %1$s in itself! "
 			       "Ignoring inclusion."), params()["filename"]));
@@ -730,7 +730,7 @@ int InsetInclude::docbook(odocstream & os, OutputParams const & runparams) const
 	if (incfile.empty())
 		return 0;
 
-	string const included_file = includedFilename(buffer(), params()).absFilename();
+	string const included_file = includedFilename(buffer(), params()).absFileName();
 
 	// Check we're not trying to include ourselves.
 	// FIXME RECURSIVE INCLUDE
@@ -787,7 +787,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	LASSERT(&buffer() == &features.buffer(), /**/);
 
 	string const included_file =
-		includedFilename(buffer(), params()).absFilename();
+		includedFilename(buffer(), params()).absFileName();
 
 	if (isLyXFilename(included_file))
 		writefile = changeExtension(included_file, ".sgml");
@@ -797,7 +797,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	if (!features.runparams().nice && !isVerbatim(params()) && !isListings(params())) {
 		incfile = DocFileName(writefile).mangledFilename();
 		writefile = makeAbsPath(incfile,
-					buffer().masterBuffer()->temppath()).absFilename();
+					buffer().masterBuffer()->temppath()).absFileName();
 	}
 
 	features.includeFile(include_label, writefile);
@@ -833,7 +833,7 @@ void InsetInclude::fillWithBibKeys(BiblioInfo & keys,
 	InsetIterator const & /*di*/) const
 {
 	if (loadIfNeeded()) {
-		string const included_file = includedFilename(buffer(), params()).absFilename();
+		string const included_file = includedFilename(buffer(), params()).absFileName();
 		Buffer * tmp = theBufferList().getBuffer(FileName(included_file));
 		BiblioInfo const & newkeys = tmp->localBibInfo();
 		keys.mergeBiblioInfo(newkeys);

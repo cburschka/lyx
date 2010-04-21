@@ -60,9 +60,9 @@ public:
 		: timestamp(t), checksum(c)
 	{
 		ostringstream os;
-		os << setw(10) << setfill('0') << do_crc(orig_from.absFilename())
+		os << setw(10) << setfill('0') << do_crc(orig_from.absFileName())
 		   << '-' << to_format;
-		cache_name = FileName(addName(cache_dir.absFilename(), os.str()));
+		cache_name = FileName(addName(cache_dir.absFileName(), os.str()));
 		LYXERR(Debug::FILES, "Add file cache item " << orig_from
 				     << ' ' << to_format << ' ' << cache_name
 				     << ' ' << long(timestamp) << ' ' << checksum << '.');
@@ -105,7 +105,7 @@ public:
 void ConverterCache::Impl::readIndex()
 {
 	time_t const now = current_time();
-	FileName const index(addName(cache_dir.absFilename(), "index"));
+	FileName const index(addName(cache_dir.absFileName(), "index"));
 	ifstream is(index.toFilesystemEncoding().c_str());
 	Lexer lex;
 	lex.setStream(is);
@@ -165,7 +165,7 @@ void ConverterCache::Impl::readIndex()
 
 void ConverterCache::Impl::writeIndex()
 {
-	FileName const index(addName(cache_dir.absFilename(), "index"));
+	FileName const index(addName(cache_dir.absFileName(), "index"));
 	ofstream os(index.toFilesystemEncoding().c_str());
 	os.close();
 	if (!index.changePermission(0600))
@@ -178,7 +178,7 @@ void ConverterCache::Impl::writeIndex()
 		FormatCacheType::const_iterator it2 = format_cache.begin();
 		FormatCacheType::const_iterator const end2 = format_cache.end();
 		for (; it2 != end2; ++it2)
-			os << Lexer::quoteString(it1->first.absFilename())
+			os << Lexer::quoteString(it1->first.absFileName())
 			   << ' ' << it2->first << ' '
 			   << it2->second.timestamp << ' '
 			   << it2->second.checksum << '\n';
@@ -234,7 +234,7 @@ void ConverterCache::init()
 		return;
 	// We do this here and not in the constructor because package() gets
 	// initialized after all static variables.
-	cache_dir = FileName(addName(package().user_support().absFilename(), "cache"));
+	cache_dir = FileName(addName(package().user_support().absFileName(), "cache"));
 	if (!cache_dir.exists())
 		if (!cache_dir.createDirectory(0700)) {
 			lyxerr << "Could not create cache directory `"
@@ -265,10 +265,10 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 
 	// FIXME: Should not hardcode this (see bug 3819 for details)
 	if (to_format == "pstex") {
-		FileName const converted_eps(changeExtension(converted_file.absFilename(), "eps"));
+		FileName const converted_eps(changeExtension(converted_file.absFileName(), "eps"));
 		add(orig_from, "eps", converted_eps);
 	} else if (to_format == "pdftex") {
-		FileName const converted_pdf(changeExtension(converted_file.absFilename(), "pdf"));
+		FileName const converted_pdf(changeExtension(converted_file.absFileName(), "pdf"));
 		add(orig_from, "pdf", converted_pdf);
 	}
 
@@ -294,7 +294,7 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 		}
 		item->checksum = checksum;
 		if (!mover.copy(converted_file, item->cache_name,
-		              onlyFilename(item->cache_name.absFilename()))) {
+		              onlyFilename(item->cache_name.absFileName()))) {
 			LYXERR(Debug::FILES, "Could not copy file " << orig_from << " to "
 				<< item->cache_name);
 		} else if (!item->cache_name.changePermission(0600)) {
@@ -305,7 +305,7 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 		CacheItem new_item(orig_from, to_format, timestamp,
 				orig_from.checksum());
 		if (mover.copy(converted_file, new_item.cache_name,
-		              onlyFilename(new_item.cache_name.absFilename()))) {
+		              onlyFilename(new_item.cache_name.absFileName()))) {
 			if (!new_item.cache_name.changePermission(0600)) {
 				LYXERR(Debug::FILES, "Could not change file mode"
 					<< new_item.cache_name);
@@ -429,11 +429,11 @@ bool ConverterCache::copy(FileName const & orig_from, string const & to_format,
 
 	// FIXME: Should not hardcode this (see bug 3819 for details)
 	if (to_format == "pstex") {
-		FileName const dest_eps(changeExtension(dest.absFilename(), "eps"));
+		FileName const dest_eps(changeExtension(dest.absFileName(), "eps"));
 		if (!copy(orig_from, "eps", dest_eps))
 			return false;
 	} else if (to_format == "pdftex") {
-		FileName const dest_pdf(changeExtension(dest.absFilename(), "pdf"));
+		FileName const dest_pdf(changeExtension(dest.absFileName(), "pdf"));
 		if (!copy(orig_from, "pdf", dest_pdf))
 			return false;
 	}
@@ -442,7 +442,7 @@ bool ConverterCache::copy(FileName const & orig_from, string const & to_format,
 	LASSERT(item, /**/);
 	Mover const & mover = getMover(to_format);
 	return mover.copy(item->cache_name, dest,
-	                  onlyFilename(dest.absFilename()));
+	                  onlyFilename(dest.absFileName()));
 }
 
 } // namespace lyx

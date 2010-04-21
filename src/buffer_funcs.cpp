@@ -68,7 +68,7 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 		// yet been saved to disk.
 		if (checkBuffer->isClean() || acceptDirty || !filename.exists())
 			return checkBuffer;
-		docstring const file = makeDisplayPath(filename.absFilename(), 20);
+		docstring const file = makeDisplayPath(filename.absFileName(), 20);
 		docstring const text = bformat(_(
 				"The document %1$s is already loaded and has unsaved changes.\n"
 				"Do you want to abandon your changes and reload the version on disk?"), file);
@@ -85,11 +85,11 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 		if (!filename.isReadableFile()) {
 			docstring text = bformat(_("The file %1$s exists but is not "
 				"readable by the current user."),
-				from_utf8(filename.absFilename()));
+				from_utf8(filename.absFileName()));
 			Alert::error(_("File not readable!"), text);
 			return 0;
 		}
-		Buffer * b = theBufferList().newBuffer(filename.absFilename());
+		Buffer * b = theBufferList().newBuffer(filename.absFileName());
 		if (!b) {
 			// Buffer creation is not possible.
 			return 0;
@@ -105,10 +105,10 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 
 	docstring text = bformat(_("The document %1$s does not yet "
 		"exist.\n\nDo you want to create a new document?"),
-		from_utf8(filename.absFilename()));
+		from_utf8(filename.absFileName()));
 	if (!Alert::prompt(_("Create new document?"),
 			text, 0, 1, _("&Create"), _("Cancel")))
-		return newFile(filename.absFilename(), string(), true);
+		return newFile(filename.absFileName(), string(), true);
 
 	return 0;
 }
@@ -133,7 +133,7 @@ Buffer * newFile(string const & filename, string const & templatename,
 
 	if (!tname.empty()) {
 		if (!b->readFile(tname)) {
-			docstring const file = makeDisplayPath(tname.absFilename(), 50);
+			docstring const file = makeDisplayPath(tname.absFileName(), 50);
 			docstring const text  = bformat(
 				_("The specified document template\n%1$s\ncould not be read."),
 				file);
@@ -171,7 +171,7 @@ Buffer * newUnnamedFile(FileName const & path, string const & prefix,
 	}
 	while (theBufferList().exists(filename) || filename.isReadableFile());
 		
-	return newFile(filename.absFilename(), templatename, false);
+	return newFile(filename.absFileName(), templatename, false);
 }
 
 
@@ -263,7 +263,7 @@ Buffer * loadIfNeeded(FileName const & fname)
 		if (!fname.exists())
 			return 0;
 
-		buffer = theBufferList().newBuffer(fname.absFilename());
+		buffer = theBufferList().newBuffer(fname.absFileName());
 		if (!buffer)
 			// Buffer creation is not possible.
 			return 0;

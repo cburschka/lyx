@@ -1041,7 +1041,7 @@ void fix_relative_filename(string & name)
 	if (FileName::isAbsolute(name))
 		return;
 
-	name = to_utf8(makeRelPath(from_utf8(makeAbsPath(name, getMasterFilePath()).absFilename()),
+	name = to_utf8(makeRelPath(from_utf8(makeAbsPath(name, getMasterFilePath()).absFileName()),
 				   from_utf8(getParentFilePath())));
 }
 
@@ -2407,7 +2407,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 			if (makeAbsPath(filename, path).exists()) {
 				string const abstexname =
-					makeAbsPath(filename, path).absFilename();
+					makeAbsPath(filename, path).absFileName();
 				string const abslyxname =
 					changeExtension(abstexname, ".lyx");
 				fix_relative_filename(filename);

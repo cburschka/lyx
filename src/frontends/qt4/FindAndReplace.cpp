@@ -154,7 +154,7 @@ static vector<string> const & allManualsFiles() {
 		FileName fname;
 		for (size_t i = 0; i < sizeof(files) / sizeof(files[0]); ++i) {
 			fname = i18nLibFileSearch("doc", files[i], "lyx");
-			v.push_back(fname.absFilename());
+			v.push_back(fname.absFileName());
 		}
 	}
 	return v;

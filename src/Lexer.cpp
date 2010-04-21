@@ -250,7 +250,7 @@ bool Lexer::Pimpl::setFile(FileName const & filename)
 				"file or stream already set.");
 		gz_.open(filename.toFilesystemEncoding().c_str(), ios::in);
 		is.rdbuf(&gz_);
-		name = filename.absFilename();
+		name = filename.absFileName();
 		lineno = 0;
 		if (!gz_.is_open() || !is.good())
 			return false;
@@ -266,7 +266,7 @@ bool Lexer::Pimpl::setFile(FileName const & filename)
 		}
 		fb_.open(filename.toSafeFilesystemEncoding().c_str(), ios::in);
 		is.rdbuf(&fb_);
-		name = filename.absFilename();
+		name = filename.absFileName();
 		lineno = 0;
 		if (!fb_.is_open() || !is.good())
 			return false;

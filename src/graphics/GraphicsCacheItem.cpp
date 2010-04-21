@@ -372,7 +372,7 @@ bool CacheItem::Impl::tryDisplayFormat(FileName & filename, string & from)
 		filename = filename_;
 	}
 
-	docstring const displayed_filename = makeDisplayPath(filename_.absFilename());
+	docstring const displayed_filename = makeDisplayPath(filename_.absFileName());
 	LYXERR(Debug::GRAPHICS, "[CacheItem::Impl::convertToDisplayFormat]\n"
 		<< "\tAttempting to convert image file: " << filename
 		<< "\n\twith displayed filename: " << to_utf8(displayed_filename));
@@ -427,7 +427,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 	// Connect a signal to this->imageConverted and pass this signal to
 	// the graphics converter so that we can load the modified file
 	// on completion of the conversion process.
-	converter_.reset(new Converter(filename, to_file_base.absFilename(), from, to_));
+	converter_.reset(new Converter(filename, to_file_base.absFileName(), from, to_));
 	converter_->connect(boost::bind(&Impl::imageConverted, this, _1));
 	converter_->startConversion();
 }

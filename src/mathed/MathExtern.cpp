@@ -1499,7 +1499,7 @@ MathData pipeThroughExtern(string const & lang, docstring const & extra,
 	}
 
 	// run external sript
-	string out = captureOutput(file.absFilename(), data);
+	string out = captureOutput(file.absFileName(), data);
 	MathData res;
 	mathed_parse_cell(res, from_utf8(out));
 	return res;

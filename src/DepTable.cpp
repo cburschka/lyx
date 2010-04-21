@@ -130,7 +130,7 @@ bool DepTable::extchanged(string const & ext) const
 	DepList::const_iterator cit = deplist.begin();
 	DepList::const_iterator end = deplist.end();
 	for (; cit != end; ++cit) {
-		if (suffixIs(cit->first.absFilename(), ext)) {
+		if (suffixIs(cit->first.absFileName(), ext)) {
 			if (cit->second.changed())
 				return true;
 		}
@@ -144,7 +144,7 @@ bool DepTable::ext_exist(string const & ext) const
 	DepList::const_iterator cit = deplist.begin();
 	DepList::const_iterator end = deplist.end();
 	for (; cit != end; ++cit) {
-		if (suffixIs(cit->first.absFilename(), ext)) {
+		if (suffixIs(cit->first.absFileName(), ext)) {
 			return true;
 		}
 	}
@@ -163,7 +163,7 @@ void DepTable::remove_files_with_extension(string const & suf)
 	DepList::iterator cit = deplist.begin();
 	DepList::iterator end = deplist.end();
 	while (cit != end) {
-		if (suffixIs(cit->first.absFilename(), suf)) {
+		if (suffixIs(cit->first.absFileName(), suf)) {
 			// Can't erase the current iterator, but we
 			// can increment and then erase.
 			// Deplist is a map so only the erased

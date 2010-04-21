@@ -213,7 +213,7 @@ void rescanTexStyles()
 		return;
 	// FIXME UNICODE
 	frontend::Alert::error(_("Could not update TeX information"),
-		bformat(_("The script `%1$s' failed."), from_utf8(command.absFilename())));
+		bformat(_("The script `%1$s' failed."), from_utf8(command.absFileName())));
 }
 
 
@@ -318,7 +318,7 @@ QString getExtension(QString const & name)
 QString makeAbsPath(QString const & relpath, QString const & base)
 {
 	return toqstr(support::makeAbsPath(fromqstr(relpath),
-		fromqstr(base)).absFilename());
+		fromqstr(base)).absFileName());
 }
 
 

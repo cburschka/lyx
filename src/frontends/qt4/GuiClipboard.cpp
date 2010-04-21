@@ -138,7 +138,7 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 	typeNames[Clipboard::JpegGraphicsType] = _("JPEG");
 	
 	// find unused filename with primary extension
-	string document_path = cur.buffer()->fileName().onlyPath().absFilename();
+	string document_path = cur.buffer()->fileName().onlyPath().absFileName();
 	unsigned newfile_number = 0;
 	FileName filename;
 	do {
@@ -165,7 +165,7 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 		// show save dialog for the graphic
 		FileDialog dlg(qt_("Choose a filename to save the pasted graphic as"));
 		FileDialog::Result result =
-		dlg.save(toqstr(filename.onlyPath().absFilename()), filter,
+		dlg.save(toqstr(filename.onlyPath().absFileName()), filter,
 			 toqstr(filename.onlyFileName()));
 		
 		if (result.first == FileDialog::Later)
@@ -179,12 +179,12 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 		filename.set(newFilename);
 		
 		// check the extension (the user could have changed it)
-		if (!suffixIs(ascii_lowercase(filename.absFilename()),
+		if (!suffixIs(ascii_lowercase(filename.absFileName()),
 			      "." + extensions[type])) {
 			// the user changed the extension. Check if the type is available
 			size_t i;
 			for (i = 1; i != types.size(); ++i) {
-				if (suffixIs(ascii_lowercase(filename.absFilename()),
+				if (suffixIs(ascii_lowercase(filename.absFileName()),
 					     "." + extensions[types[i]])) {
 					type = types[i];
 					break;
@@ -205,7 +205,7 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 		int ret = frontend::Alert::prompt(
 			_("Overwrite external file?"),
 			bformat(_("File %1$s already exists, do you want to overwrite it?"),
-			from_utf8(filename.absFilename())), 1, 1, _("&Overwrite"), _("&Cancel"));
+			from_utf8(filename.absFileName())), 1, 1, _("&Overwrite"), _("&Cancel"));
 		if (ret == 0)
 			// overwrite, hence break the dialog loop
 			break;
@@ -238,9 +238,9 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 		QBuffer buffer(&ar);
 		buffer.open(QIODevice::WriteOnly);
 		if (type == PngGraphicsType)
-			image.save(toqstr(filename.absFilename()), "PNG");
+			image.save(toqstr(filename.absFileName()), "PNG");
 		else if (type == JpegGraphicsType)
-			image.save(toqstr(filename.absFilename()), "JPEG");
+			image.save(toqstr(filename.absFileName()), "JPEG");
 		else
 			LASSERT(false, /**/);
 		
@@ -273,10 +273,10 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 	LYXERR(Debug::ACTION, "Getting from clipboard: mime = " << mime.data()
 	       << "length = " << ar.count());
 	
-	QFile f(toqstr(filename.absFilename()));
+	QFile f(toqstr(filename.absFileName()));
 	if (!f.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
 		LYXERR(Debug::ACTION, "Error opening file "
-		       << filename.absFilename() << " for writing");
+		       << filename.absFileName() << " for writing");
 		return FileName();
 	}
 	

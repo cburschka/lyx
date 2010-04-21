@@ -115,7 +115,7 @@ public:
 			LYXERR(Debug::DEBUG, "Messages::get()" << '\n'
 				<< "Error code: " << errno << '\n'
 				<< "Lang, mess: " << lang_ << " " << m << '\n'
-				<< "Directory : " << package().locale_dir().absFilename() << '\n'
+				<< "Directory : " << package().locale_dir().absFileName() << '\n'
 				<< "Rtn value : " << c);
 		}
 

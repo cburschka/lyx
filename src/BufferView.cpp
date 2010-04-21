@@ -2401,9 +2401,9 @@ void BufferView::insertLyXFile(FileName const & fname)
 
 	// Get absolute path of file and add ".lyx"
 	// to the filename if necessary
-	FileName filename = fileSearch(string(), fname.absFilename(), "lyx");
+	FileName filename = fileSearch(string(), fname.absFileName(), "lyx");
 
-	docstring const disp_fn = makeDisplayPath(filename.absFilename());
+	docstring const disp_fn = makeDisplayPath(filename.absFileName());
 	// emit message signal.
 	message(bformat(_("Inserting document %1$s..."), disp_fn));
 
@@ -2681,7 +2681,7 @@ docstring BufferView::contentsOfPlaintextFile(FileName const & fname)
 {
 	if (!fname.isReadableFile()) {
 		docstring const error = from_ascii(strerror(errno));
-		docstring const file = makeDisplayPath(fname.absFilename(), 50);
+		docstring const file = makeDisplayPath(fname.absFileName(), 50);
 		docstring const text =
 		  bformat(_("Could not read the specified document\n"
 			    "%1$s\ndue to the error: %2$s"), file, error);
@@ -2690,7 +2690,7 @@ docstring BufferView::contentsOfPlaintextFile(FileName const & fname)
 	}
 
 	if (!fname.isReadableFile()) {
-		docstring const file = makeDisplayPath(fname.absFilename(), 50);
+		docstring const file = makeDisplayPath(fname.absFileName(), 50);
 		docstring const text =
 		  bformat(_("%1$s\n is not readable."), file);
 		Alert::error(_("Could not open file"), text);

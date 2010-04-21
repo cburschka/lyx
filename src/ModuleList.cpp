@@ -120,7 +120,7 @@ bool ModuleList::read()
 
 	if (real_file.empty()) {
 		LYXERR0("unable to find modules file  `"
-			<< to_utf8(makeDisplayPath(real_file.absFilename(), 1000))
+			<< to_utf8(makeDisplayPath(real_file.absFileName(), 1000))
 			<< "'.\nNo modules will be available.");
 		return false;
 	}
@@ -134,7 +134,7 @@ bool ModuleList::read()
 
 	if (!lex.isOK()) {
 		LYXERR0("unable to open modules file  `"
-			<< to_utf8(makeDisplayPath(real_file.absFilename(), 1000))
+			<< to_utf8(makeDisplayPath(real_file.absFileName(), 1000))
 			<< "'\nNo modules will be available.");
 		return false;
 	}

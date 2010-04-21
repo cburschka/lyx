@@ -98,13 +98,13 @@ LaTeX::LaTeX(string const & latex, OutputParams const & rp,
 {
 	num_errors = 0;
 	if (prefixIs(cmd, "pdf")) { // Do we use pdflatex ?
-		depfile = FileName(file.absFilename() + ".dep-pdf");
+		depfile = FileName(file.absFileName() + ".dep-pdf");
 		output_file =
-			FileName(changeExtension(file.absFilename(), ".pdf"));
+			FileName(changeExtension(file.absFileName(), ".pdf"));
 	} else {
-		depfile = FileName(file.absFilename() + ".dep");
+		depfile = FileName(file.absFileName() + ".dep");
 		output_file =
-			FileName(changeExtension(file.absFilename(), ".dvi"));
+			FileName(changeExtension(file.absFileName(), ".dvi"));
 	}
 }
 
@@ -121,23 +121,23 @@ void LaTeX::deleteFilesOnError() const
 	// but the reason for the error might be in a generated file...
 
 	// bibtex file
-	FileName const bbl(changeExtension(file.absFilename(), ".bbl"));
+	FileName const bbl(changeExtension(file.absFileName(), ".bbl"));
 	bbl.removeFile();
 
 	// makeindex file
-	FileName const ind(changeExtension(file.absFilename(), ".ind"));
+	FileName const ind(changeExtension(file.absFileName(), ".ind"));
 	ind.removeFile();
 
 	// nomencl file
-	FileName const nls(changeExtension(file.absFilename(), ".nls"));
+	FileName const nls(changeExtension(file.absFileName(), ".nls"));
 	nls.removeFile();
 
 	// nomencl file (old version of the package)
-	FileName const gls(changeExtension(file.absFilename(), ".gls"));
+	FileName const gls(changeExtension(file.absFileName(), ".gls"));
 	gls.removeFile();
 
 	// Also remove the aux file
-	FileName const aux(changeExtension(file.absFilename(), ".aux"));
+	FileName const aux(changeExtension(file.absFileName(), ".aux"));
 	aux.removeFile();
 }
 
@@ -157,7 +157,7 @@ int LaTeX::run(TeXErrors & terr)
 	bool rerun = false; // rerun requested
 
 	// The class LaTeX does not know the temp path.
-	theBufferList().updateIncludedTeXfiles(FileName::getcwd().absFilename(),
+	theBufferList().updateIncludedTeXfiles(FileName::getcwd().absFileName(),
 		runparams);
 
 	// Never write the depfile if an error was encountered.
@@ -180,7 +180,7 @@ int LaTeX::run(TeXErrors & terr)
 
 	bool had_depfile = depfile.exists();
 	bool run_bibtex = false;
-	FileName const aux_file(changeExtension(file.absFilename(), "aux"));
+	FileName const aux_file(changeExtension(file.absFileName(), "aux"));
 
 	if (had_depfile) {
 		LYXERR(Debug::DEPEND, "Dependency file exists");
@@ -252,7 +252,7 @@ int LaTeX::run(TeXErrors & terr)
 
 	// memoir (at least) writes an empty *idx file in the first place.
 	// A second latex run is needed.
-	FileName const idxfile(changeExtension(file.absFilename(), ".idx"));
+	FileName const idxfile(changeExtension(file.absFileName(), ".idx"));
 	rerun = idxfile.exists() && idxfile.isFileEmpty();
 
 	// run makeindex
@@ -261,13 +261,13 @@ int LaTeX::run(TeXErrors & terr)
 		LYXERR(Debug::LATEX, "Running MakeIndex.");
 		message(_("Running Index Processor."));
 		// onlyFilename() is needed for cygwin
-		rerun |= runMakeIndex(onlyFilename(idxfile.absFilename()),
+		rerun |= runMakeIndex(onlyFilename(idxfile.absFileName()),
 				runparams);
 	}
-	FileName const nlofile(changeExtension(file.absFilename(), ".nlo"));
+	FileName const nlofile(changeExtension(file.absFileName(), ".nlo"));
 	if (head.haschanged(nlofile))
 		rerun |= runMakeIndexNomencl(file, ".nlo", ".nls");
-	FileName const glofile(changeExtension(file.absFilename(), ".glo"));
+	FileName const glofile(changeExtension(file.absFileName(), ".glo"));
 	if (head.haschanged(glofile))
 		rerun |= runMakeIndexNomencl(file, ".glo", ".gls");
 
@@ -351,7 +351,7 @@ int LaTeX::run(TeXErrors & terr)
 		message(_("Running Index Processor."));
 		// onlyFilename() is needed for cygwin
 		rerun = runMakeIndex(onlyFilename(changeExtension(
-				file.absFilename(), ".idx")), runparams);
+				file.absFileName(), ".idx")), runparams);
 	}
 
 	// I am not pretty sure if need this twice.
@@ -442,7 +442,7 @@ bool LaTeX::runMakeIndexNomencl(FileName const & file,
 	message(_("Running MakeIndex for nomencl."));
 	string tmp = lyxrc.nomencl_command + ' ';
 	// onlyFilename() is needed for cygwin
-	tmp += quoteName(onlyFilename(changeExtension(file.absFilename(), nlo)));
+	tmp += quoteName(onlyFilename(changeExtension(file.absFileName(), nlo)));
 	tmp += " -o "
 		+ onlyFilename(changeExtension(file.toFilesystemEncoding(), nls));
 	Systemcall one;
@@ -458,7 +458,7 @@ LaTeX::scanAuxFiles(FileName const & file)
 
 	result.push_back(scanAuxFile(file));
 
-	string const basename = removeExtension(file.absFilename());
+	string const basename = removeExtension(file.absFileName());
 	for (int i = 1; i < 1000; ++i) {
 		FileName const file2(basename
 			+ '.' + convert<string>(i)
@@ -577,7 +577,7 @@ bool LaTeX::runBibTeX(vector<AuxInfo> const & bibtex_info,
 		tmp += " ";
 		// onlyFilename() is needed for cygwin
 		tmp += quoteName(onlyFilename(removeExtension(
-				it->aux_file.absFilename())));
+				it->aux_file.absFileName())));
 		Systemcall one;
 		one.startscript(Systemcall::Wait, tmp);
 	}
@@ -592,7 +592,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	int line_count = 1;
 	int retval = NO_ERRORS;
 	string tmp =
-		onlyFilename(changeExtension(file.absFilename(), ".log"));
+		onlyFilename(changeExtension(file.absFileName(), ".log"));
 	LYXERR(Debug::LATEX, "Log file: " << tmp);
 	FileName const fn = FileName(makeAbsPath(tmp));
 	ifstream ifs(fn.toFilesystemEncoding().c_str());
@@ -924,7 +924,7 @@ void LaTeX::deplog(DepTable & head)
 	// entered into the dependency file.
 
 	string const logfile =
-		onlyFilename(changeExtension(file.absFilename(), ".log"));
+		onlyFilename(changeExtension(file.absFileName(), ".log"));
 
 	static regex const reg1("File: (.+).*");
 	static regex const reg2("No file (.+)(.).*");
@@ -1047,7 +1047,7 @@ void LaTeX::deplog(DepTable & head)
 		// (7) "\tf@toc=\write<nr>" (for MikTeX)
 		else if (regex_match(token, sub, miktexTocReg))
 			found_file = handleFoundFile(onlyFilename(changeExtension(
-						file.absFilename(), ".toc")), head);
+						file.absFileName(), ".toc")), head);
 		else
 			// not found, but we won't check further
 			// pretend we've been succesfully searching

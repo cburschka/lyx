@@ -44,7 +44,7 @@ static QDate release_date()
 static QString credits()
 {
 	QString res;
-	QFile file(toqstr(package().system_support().absFilename()) + "/CREDITS");
+	QFile file(toqstr(package().system_support().absFileName()) + "/CREDITS");
 	QTextStream out(&res);
 
 	if (file.isReadable()) {
@@ -120,10 +120,10 @@ static QString version()
 	QTextStream out(&res);
 	out << toqstr(version_date);
 	out << qt_("Library directory: ");
-	out << toqstr(makeDisplayPath(package().system_support().absFilename()));
+	out << toqstr(makeDisplayPath(package().system_support().absFileName()));
 	out << "\n";
 	out << qt_("User directory: ");
-	out << toqstr(makeDisplayPath(package().user_support().absFilename()));
+	out << toqstr(makeDisplayPath(package().user_support().absFileName()));
 #ifdef DEVEL_VERSION
 	out << "\n";
 	out << "Qt Version (run-time): " << toqstr(qVersion()) << "\n";

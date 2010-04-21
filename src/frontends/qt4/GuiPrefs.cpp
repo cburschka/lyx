@@ -137,14 +137,14 @@ QString browseLibFile(QString const & dir,
 	// FIXME UNICODE
 	QString const label1 = qt_("System files|#S#s");
 	QString const dir1 =
-		toqstr(addName(package().system_support().absFilename(), fromqstr(dir)));
+		toqstr(addName(package().system_support().absFileName(), fromqstr(dir)));
 
 	QString const label2 = qt_("User files|#U#u");
 	QString const dir2 =
-		toqstr(addName(package().user_support().absFilename(), fromqstr(dir)));
+		toqstr(addName(package().user_support().absFileName(), fromqstr(dir)));
 
 	QString const result = browseFile(toqstr(
-		libFileSearch(dir, name, ext).absFilename()),
+		libFileSearch(dir, name, ext).absFileName()),
 		title, filters, false, dir1, dir2, QString(), QString(), dir1);
 
 	// remove the extension if it is the default one
@@ -156,7 +156,7 @@ QString browseLibFile(QString const & dir,
 
 	// remove the directory, if it is the default one
 	QString const file = onlyFilename(noextresult);
-	if (toqstr(libFileSearch(dir, file, ext).absFilename()) == result)
+	if (toqstr(libFileSearch(dir, file, ext).absFileName()) == result)
 		return file;
 	else
 		return noextresult;
@@ -2468,7 +2468,7 @@ void PrefShortcuts::apply(LyXRC & rc) const
 {
 	rc.bind_file = internal_path(fromqstr(bindFileED->text()));
 	// write user_bind and user_unbind to .lyx/bind/user.bind
-	FileName bind_dir(addPath(package().user_support().absFilename(), "bind"));
+	FileName bind_dir(addPath(package().user_support().absFileName(), "bind"));
 	if (!bind_dir.exists() && !bind_dir.createDirectory(0777)) {
 		lyxerr << "LyX could not create the user bind directory '"
 		       << bind_dir << "'. All user-defined key bindings will be lost." << endl;
@@ -2479,7 +2479,7 @@ void PrefShortcuts::apply(LyXRC & rc) const
 		       << bind_dir << "'. All user-defined key bindings will be lost." << endl;
 		return;
 	}
-	FileName user_bind_file(bind_dir.absFilename() + "/user.bind");
+	FileName user_bind_file(bind_dir.absFileName() + "/user.bind");
 	user_unbind_.write(user_bind_file.toFilesystemEncoding(), false, true);
 	user_bind_.write(user_bind_file.toFilesystemEncoding(), true, false);
 	// immediately apply the keybindings. Why this is not done before?

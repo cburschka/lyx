@@ -302,13 +302,13 @@ static FileName createBufferTmpDir()
 	// We are in our own directory.  Why bother to mangle name?
 	// In fact I wrote this code to circumvent a problematic behaviour
 	// (bug?) of EMX mkstemp().
-	FileName tmpfl(package().temp_dir().absFilename() + "/lyx_tmpbuf" +
+	FileName tmpfl(package().temp_dir().absFileName() + "/lyx_tmpbuf" +
 		convert<string>(count++));
 
 	if (!tmpfl.createDirectory(0777)) {
 		throw ExceptionMessage(WarningException, _("Disk Error: "), bformat(
 			_("LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"),
-			from_utf8(tmpfl.absFilename())));
+			from_utf8(tmpfl.absFileName())));
 	}
 	return tmpfl;
 }
@@ -399,7 +399,7 @@ Buffer::~Buffer()
 	if (!d->cloned_buffer_ && !d->temppath.destroyDirectory()) {
 		Alert::warning(_("Could not remove temporary directory"),
 			bformat(_("Could not remove the temporary directory %1$s"),
-			from_utf8(d->temppath.absFilename())));
+			from_utf8(d->temppath.absFileName())));
 	}
 
 	// Remove any previewed LaTeX snippets associated with this buffer.
@@ -411,7 +411,7 @@ Buffer::~Buffer()
 
 Buffer * Buffer::clone() const
 {
-	Buffer * buffer_clone = new Buffer(fileName().absFilename(), false, this);
+	Buffer * buffer_clone = new Buffer(fileName().absFileName(), false, this);
 	buffer_clone->d->macro_lock = true;
 	buffer_clone->d->children_positions.clear();
 	// FIXME (Abdel 09/01/2010): this is too complicated. The whole children_positions and
@@ -507,7 +507,7 @@ LyXVC const & Buffer::lyxvc() const
 
 string const Buffer::temppath() const
 {
-	return d->temppath.absFilename();
+	return d->temppath.absFileName();
 }
 
 
@@ -546,7 +546,7 @@ string Buffer::latexName(bool const no_path) const
 	FileName latex_name =
 		makeLatexName(d->exportFileName());
 	return no_path ? latex_name.onlyFileName()
-		: latex_name.absFilename();
+		: latex_name.absFileName();
 }
 
 
@@ -559,7 +559,7 @@ FileName Buffer::Impl::exportFileName() const
 
 	string const name = filename.onlyFileNameWithoutExt()
 		+ to_utf8(branch_suffix);
-	FileName res(filename.onlyPath().absFilename() + "/" + name);
+	FileName res(filename.onlyPath().absFileName() + "/" + name);
 	res.changeExtension(filename.extension());
 
 	return res;
@@ -604,7 +604,7 @@ string Buffer::logName(LogType * type) const
 		LYXERR(Debug::FILES, "Log name calculated as: " << bname);
 		if (type)
 			*type = buildlog;
-		return bname.absFilename();
+		return bname.absFileName();
 	// If we have a newer master file log or only a master log, show this
 	} else if (fname != masterfname
 		   && (!fname.exists() && (masterfname.exists()
@@ -612,12 +612,12 @@ string Buffer::logName(LogType * type) const
 		LYXERR(Debug::FILES, "Log name calculated as: " << masterfname);
 		if (type)
 			*type = mtype;
-		return masterfname.absFilename();
+		return masterfname.absFileName();
 	}
 	LYXERR(Debug::FILES, "Log name calculated as: " << fname);
 	if (type)
 			*type = latexlog;
-	return fname.absFilename();
+	return fname.absFileName();
 }
 
 
@@ -771,7 +771,7 @@ bool Buffer::readDocument(Lexer & lex)
 	if (!params().master.empty()) {
 		FileName const master_file = makeAbsPath(params().master,
 			   onlyPath(absFileName()));
-		if (isLyXFilename(master_file.absFilename())) {
+		if (isLyXFilename(master_file.absFileName())) {
 			Buffer * master = 
 				checkAndLoadLyXFile(master_file, true);
 			if (master) {
@@ -877,7 +877,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 	if (!lex.checkFor("\\lyxformat")) {
 		Alert::error(_("Document format failure"),
 			     bformat(_("%1$s is not a readable LyX document."),
-				       from_utf8(filename.absFilename())));
+				       from_utf8(filename.absFileName())));
 		return failure;
 	}
 
@@ -899,7 +899,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 		// Save the timestamp and checksum of disk file. If filename is an
 		// emergency file, save the timestamp and checksum of the original lyx file
 		// because isExternallyModified will check for this file. (BUG4193)
-		string diskfile = filename.absFilename();
+		string diskfile = filename.absFileName();
 		if (suffixIs(diskfile, ".emergency"))
 			diskfile = diskfile.substr(0, diskfile.size() - 10);
 		saveCheckSum(FileName(diskfile));
@@ -918,7 +918,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 					      " version of LyX, but a temporary"
 					      " file for converting it could"
 					      " not be created."),
-					      from_utf8(filename.absFilename())));
+					      from_utf8(filename.absFileName())));
 			return failure;
 		}
 		FileName const lyx2lyx = libFileSearch("lyx2lyx", "lyx2lyx");
@@ -928,7 +928,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 					       " version of LyX, but the"
 					       " conversion script lyx2lyx"
 					       " could not be found."),
-					       from_utf8(filename.absFilename())));
+					       from_utf8(filename.absFileName())));
 			return failure;
 		}
 		ostringstream command;
@@ -948,13 +948,13 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 				     bformat(_("%1$s is from an older version"
 					      " of LyX, but the lyx2lyx script"
 					      " failed to convert it."),
-					      from_utf8(filename.absFilename())));
+					      from_utf8(filename.absFileName())));
 			else
 				Alert::error(_("Conversion script failed"),
 				     bformat(_("%1$s is from a newer version"
 					      " of LyX and cannot be converted by the"
 								" lyx2lyx script."),
-					      from_utf8(filename.absFilename())));
+					      from_utf8(filename.absFileName())));
 			return failure;
 		} else {
 			bool const ret = readFile(tmpfile);
@@ -968,7 +968,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 		Alert::error(_("Document format failure"),
 			     bformat(_("%1$s ended unexpectedly, which means"
 						    " that it is probably corrupted."),
-				       from_utf8(filename.absFilename())));
+				       from_utf8(filename.absFileName())));
 		return failure;
 	}
 
@@ -1002,7 +1002,7 @@ bool Buffer::save() const
 		backupName = FileName(absFileName() + '~');
 		if (!lyxrc.backupdir_path.empty()) {
 			string const mangledName =
-				subst(subst(backupName.absFilename(), '/', '!'), ':', '!');
+				subst(subst(backupName.absFileName(), '/', '!'), ':', '!');
 			backupName = FileName(addName(lyxrc.backupdir_path,
 						      mangledName));
 		}
@@ -1012,7 +1012,7 @@ bool Buffer::save() const
 			Alert::error(_("Backup failure"),
 				     bformat(_("Cannot create backup file %1$s.\n"
 					       "Please check whether the directory exists and is writeable."),
-					     from_utf8(backupName.absFilename())));
+					     from_utf8(backupName.absFileName())));
 			//LYXERR(Debug::DEBUG, "Fs error: " << fe.what());
 		}
 	}
@@ -1037,7 +1037,7 @@ bool Buffer::writeFile(FileName const & fname) const
 	bool retval = false;
 
 	docstring const str = bformat(_("Saving document %1$s..."),
-		makeDisplayPath(fname.absFilename()));
+		makeDisplayPath(fname.absFileName()));
 	message(str);
 
 	string const encoded_fname = fname.toSafeFilesystemEncoding(os::CREATE);
@@ -1092,7 +1092,7 @@ docstring Buffer::emergencyWrite()
 	}
 
 	// 2) In HOME directory.
-	string s = addName(package().home_dir().absFilename(), absFileName());
+	string s = addName(package().home_dir().absFileName(), absFileName());
 	s += ".emergency";
 	lyxerr << ' ' << s << endl;
 	if (writeFile(FileName(s))) {
@@ -1106,7 +1106,7 @@ docstring Buffer::emergencyWrite()
 	// 3) In "/tmp" directory.
 	// MakeAbsPath to prepend the current
 	// drive letter on OS/2
-	s = addName(package().temp_dir().absFilename(), absFileName());
+	s = addName(package().temp_dir().absFileName(), absFileName());
 	s += ".emergency";
 	lyxerr << ' ' << s << endl;
 	if (writeFile(FileName(s))) {
@@ -1456,7 +1456,7 @@ void Buffer::makeDocBookFile(FileName const & fname,
 	if (!openFileWrite(ofs, fname))
 		return;
 
-	writeDocBookSource(ofs, fname.absFilename(), runparams, body_only);
+	writeDocBookSource(ofs, fname.absFileName(), runparams, body_only);
 
 	ofs.close();
 	if (ofs.fail())
@@ -1615,7 +1615,7 @@ int Buffer::runChktex()
 
 	// get LaTeX-Filename
 	FileName const path(temppath());
-	string const name = addName(path.absFilename(), latexName());
+	string const name = addName(path.absFileName(), latexName());
 	string const org_path = filePath();
 
 	PathChanger p(path); // path to LaTeX file
@@ -2155,7 +2155,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 				docstring text = bformat(
 					_("The file %1$s already exists.\n\n"
 					  "Do you want to overwrite that file?"),
-					makeDisplayPath(filename.absFilename()));
+					makeDisplayPath(filename.absFileName()));
 				if (Alert::prompt(_("Overwrite file?"),
 						  text, 0, 1, _("&Overwrite"), _("&Cancel")) != 0)
 					break;
@@ -2391,13 +2391,13 @@ FileName Buffer::fileName() const
 
 string Buffer::absFileName() const
 {
-	return d->filename.absFilename();
+	return d->filename.absFileName();
 }
 
 
 string Buffer::filePath() const
 {
-	return d->filename.onlyPath().absFilename() + "/";
+	return d->filename.onlyPath().absFileName() + "/";
 }
 
 
@@ -3075,7 +3075,7 @@ public:
 	int start()
 	{
 		command_ = to_utf8(bformat(_("Auto-saving %1$s"),
-						 from_utf8(fname_.absFilename())));
+						 from_utf8(fname_.absFileName())));
 		return run(DontWait);
 	}
 private:
@@ -3367,11 +3367,11 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		return false;
 
 	if (put_in_tempdir) {
-		result_file = tmp_result_file.absFilename();
+		result_file = tmp_result_file.absFileName();
 		return true;
 	}
 
-	result_file = changeExtension(d->exportFileName().absFilename(), ext);
+	result_file = changeExtension(d->exportFileName().absFileName(), ext);
 	// We need to copy referenced files (e. g. included graphics
 	// if format == "dvi") to the result dir.
 	vector<ExportedFile> const files =
@@ -3484,7 +3484,7 @@ bool Buffer::readFileHelper(FileName const & s)
 {
 	// File information about normal file
 	if (!s.exists()) {
-		docstring const file = makeDisplayPath(s.absFilename(), 50);
+		docstring const file = makeDisplayPath(s.absFileName(), 50);
 		docstring text = bformat(_("The specified document\n%1$s"
 						     "\ncould not be read."), file);
 		Alert::error(_("Could not read document"), text);
@@ -3492,10 +3492,10 @@ bool Buffer::readFileHelper(FileName const & s)
 	}
 
 	// Check if emergency save file exists and is newer.
-	FileName const e(s.absFilename() + ".emergency");
+	FileName const e(s.absFileName() + ".emergency");
 
 	if (e.exists() && s.exists() && e.lastModified() > s.lastModified()) {
-		docstring const file = makeDisplayPath(s.absFilename(), 20);
+		docstring const file = makeDisplayPath(s.absFileName(), 20);
 		docstring const text =
 			bformat(_("An emergency save of the document "
 				  "%1$s exists.\n\n"
@@ -3515,7 +3515,7 @@ bool Buffer::readFileHelper(FileName const & s)
 			else
 				str = _("Document was NOT successfully recovered.");
 			str += "\n\n" + bformat(_("Remove emergency file now?\n(%1$s)"),
-						makeDisplayPath(e.absFilename()));
+						makeDisplayPath(e.absFileName()));
 
 			if (!Alert::prompt(_("Delete emergency file?"), str, 1, 1,
 					_("&Remove"), _("&Keep it"))) {
@@ -3538,10 +3538,10 @@ bool Buffer::readFileHelper(FileName const & s)
 	}
 
 	// Now check if autosave file is newer.
-	FileName const a(onlyPath(s.absFilename()) + '#' + onlyFilename(s.absFilename()) + '#');
+	FileName const a(onlyPath(s.absFileName()) + '#' + onlyFilename(s.absFileName()) + '#');
 
 	if (a.exists() && s.exists() && a.lastModified() > s.lastModified()) {
-		docstring const file = makeDisplayPath(s.absFilename(), 20);
+		docstring const file = makeDisplayPath(s.absFileName(), 20);
 		docstring const text =
 			bformat(_("The backup of the document "
 				  "%1$s is newer.\n\nLoad the "
@@ -3955,7 +3955,7 @@ bool Buffer::reload()
 	removeAutosaveFile();
 	// e.g., read-only status could have changed due to version control
 	d->filename.refresh();
-	docstring const disp_fn = makeDisplayPath(d->filename.absFilename());
+	docstring const disp_fn = makeDisplayPath(d->filename.absFileName());
 
 	bool const success = loadLyXFile(d->filename);
 	if (success) {
@@ -3995,7 +3995,7 @@ void Buffer::checkChildBuffers()
 		docstring const & incfile = inset_inc->getParam("filename");
 		string oldloc = cbuf->absFileName();
 		string newloc = makeAbsPath(to_utf8(incfile),
-				onlyPath(absFileName())).absFilename();
+				onlyPath(absFileName())).absFileName();
 		if (oldloc == newloc)
 			continue;
 		// the location of the child file is incorrect.

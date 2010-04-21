@@ -1664,7 +1664,7 @@ void GuiDocument::browseLayout()
 	// this will update an existing layout if that layout has been loaded before.
 	LayoutFileIndex name = bcl.addLocalLayout(
 		classname.substr(0, classname.size() - 7),
-		layoutFile.onlyPath().absFilename());
+		layoutFile.onlyPath().absFileName());
 
 	if (name.empty()) {
 		Alert::error(_("Error"),
@@ -2907,7 +2907,7 @@ void GuiDocument::updateIncludeonlys()
 		item = new QTreeWidgetItem(masterChildModule->childrenTW);
 		// FIXME Unicode
 		string const name =
-			to_utf8(makeRelPath(from_utf8((*it)->fileName().absFilename()),
+			to_utf8(makeRelPath(from_utf8((*it)->fileName().absFileName()),
 							from_utf8(buffer().filePath())));
 		item->setText(0, toqstr(name));
 		item->setText(1, isChildIncluded(name) ? yes : no);
@@ -3093,7 +3093,7 @@ void GuiDocument::dispatchParams()
 	if (!params().master.empty()) {
 		FileName const master_file = support::makeAbsPath(params().master,
 			   support::onlyPath(buffer().absFileName()));
-		if (isLyXFilename(master_file.absFilename())) {
+		if (isLyXFilename(master_file.absFileName())) {
 			Buffer * master = checkAndLoadLyXFile(master_file);
 			if (master) {
 				if (master->isChild(const_cast<Buffer *>(&buffer())))

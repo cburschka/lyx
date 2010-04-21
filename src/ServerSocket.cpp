@@ -60,7 +60,7 @@ ServerSocket::ServerSocket(FileName const & addr)
 	// Needed by xdvi
 	setEnv("XEDITOR", "lyxclient -g %f %l");
 	// Needed by lyxclient
-	setEnv("LYXSOCKET", address_.absFilename());
+	setEnv("LYXSOCKET", address_.absFileName());
 
 	theApp()->registerSocketCallback(
 		fd_,
@@ -68,7 +68,7 @@ ServerSocket::ServerSocket(FileName const & addr)
 		);
 
 	LYXERR(Debug::LYXSERVER, "lyx: New server socket "
-				 << fd_ << ' ' << address_.absFilename());
+				 << fd_ << ' ' << address_.absFileName());
 }
 
 
@@ -90,7 +90,7 @@ ServerSocket::~ServerSocket()
 
 string const ServerSocket::address() const
 {
-	return address_.absFilename();
+	return address_.absFileName();
 }
 
 
@@ -189,7 +189,7 @@ void ServerSocket::writeln(string const & line)
 // void ServerSocket::dump() const
 // {
 //	lyxerr << "ServerSocket debug dump.\n"
-//	     << "fd = " << fd_ << ", address = " << address_.absFilename() << ".\n"
+//	     << "fd = " << fd_ << ", address = " << address_.absFileName() << ".\n"
 //	     << "Clients: " << clients.size() << ".\n";
 //	map<int, shared_ptr<LyXDataSocket> >::const_iterator client = clients.begin();
 //	map<int, shared_ptr<LyXDataSocket> >::const_iterator end = clients.end();

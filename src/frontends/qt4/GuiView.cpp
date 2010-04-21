@@ -1733,7 +1733,7 @@ void GuiView::openDocument(string const & fname)
 		FileDialog dlg(qt_("Select document to open"), LFUN_FILE_OPEN);
 		dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 		dlg.setButton2(qt_("Examples|#E#e"),
-				toqstr(addPath(package().system_support().absFilename(), "examples")));
+				toqstr(addPath(package().system_support().absFileName(), "examples")));
 
 		QStringList filter(qt_("LyX Documents (*.lyx)"));
 		filter << qt_("LyX-1.3.x Documents (*.lyx13)")
@@ -1761,12 +1761,12 @@ void GuiView::openDocument(string const & fname)
 	FileName const fullname = 
 			fileSearch(string(), filename, "lyx", support::may_not_exist);
 	if (!fullname.empty())
-		filename = fullname.absFilename();
+		filename = fullname.absFileName();
 
 	if (!fullname.onlyPath().isDirectory()) {
 		Alert::warning(_("Invalid filename"),
 				bformat(_("The directory in the given path\n%1$s\ndoes not exist."),
-				from_utf8(fullname.absFilename())));
+				from_utf8(fullname.absFileName())));
 		return;
 	}
 
@@ -1803,7 +1803,7 @@ void GuiView::openDocument(string const & fname)
 static bool import(GuiView * lv, FileName const & filename,
 	string const & format, ErrorList & errorList)
 {
-	FileName const lyxfile(support::changeExtension(filename.absFilename(), ".lyx"));
+	FileName const lyxfile(support::changeExtension(filename.absFileName(), ".lyx"));
 
 	string loader_format;
 	vector<string> loaders = theConverters().loaders();
@@ -1814,7 +1814,7 @@ static bool import(GuiView * lv, FileName const & filename,
 				continue;
 
 			string const tofile =
-				support::changeExtension(filename.absFilename(),
+				support::changeExtension(filename.absFileName(),
 				formats.extension(*it));
 			if (!theConverters().convert(0, filename, FileName(tofile),
 				filename, format, *it, errorList))
@@ -1839,13 +1839,13 @@ static bool import(GuiView * lv, FileName const & filename,
 		lv->setBuffer(buf);
 		buf->errors("Parse");
 	} else {
-		Buffer * const b = newFile(lyxfile.absFilename(), string(), true);
+		Buffer * const b = newFile(lyxfile.absFileName(), string(), true);
 		if (!b)
 			return false;
 		lv->setBuffer(b);
 		bool as_paragraphs = loader_format == "textparagraph";
-		string filename2 = (loader_format == format) ? filename.absFilename()
-			: support::changeExtension(filename.absFilename(),
+		string filename2 = (loader_format == format) ? filename.absFileName()
+			: support::changeExtension(filename.absFileName(),
 					  formats.extension(loader_format));
 		lv->currentBufferView()->insertPlaintextFile(FileName(filename2),
 			as_paragraphs);
@@ -1880,7 +1880,7 @@ void GuiView::importDocument(string const & argument)
 		FileDialog dlg(toqstr(text), LFUN_BUFFER_IMPORT);
 		dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 		dlg.setButton2(qt_("Examples|#E#e"),
-			toqstr(addPath(package().system_support().absFilename(), "examples")));
+			toqstr(addPath(package().system_support().absFileName(), "examples")));
 
 		docstring filter = formats.prettyName(format);
 		filter += " (*.";
@@ -1907,7 +1907,7 @@ void GuiView::importDocument(string const & argument)
 	// get absolute path of file
 	FileName const fullname(support::makeAbsPath(filename));
 
-	FileName const lyxfile(support::changeExtension(fullname.absFilename(), ".lyx"));
+	FileName const lyxfile(support::changeExtension(fullname.absFileName(), ".lyx"));
 
 	// Check if the document already is open
 	Buffer * buf = theBufferList().getBuffer(lyxfile);
@@ -1919,7 +1919,7 @@ void GuiView::importDocument(string const & argument)
 		}
 	}
 
-	docstring const displaypath = makeDisplayPath(lyxfile.absFilename(), 30);
+	docstring const displaypath = makeDisplayPath(lyxfile.absFileName(), 30);
 
 	// if the file exists already, and we didn't do
 	// -i lyx thefile.lyx, warn
@@ -1959,7 +1959,7 @@ void GuiView::newDocument(string const & filename, bool from_template)
 
 	string templatefile;
 	if (from_template) {
-		templatefile = selectTemplateFile().absFilename();
+		templatefile = selectTemplateFile().absFileName();
 		if (templatefile.empty())
 			return;
 	}
@@ -2007,7 +2007,7 @@ void GuiView::insertLyXFile(docstring const & fname)
 	FileDialog dlg(qt_("Select LyX document to insert"), LFUN_FILE_INSERT);
 	dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 	dlg.setButton2(qt_("Examples|#E#e"),
-		toqstr(addPath(package().system_support().absFilename(),
+		toqstr(addPath(package().system_support().absFileName(),
 		"examples")));
 
 	FileDialog::Result result = dlg.open(toqstr(initpath),
@@ -2080,7 +2080,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 
 	if (!newname.empty()) {
 		// FIXME UNICODE
-		fname = support::makeAbsPath(to_utf8(newname), oldname.onlyPath().absFilename());
+		fname = support::makeAbsPath(to_utf8(newname), oldname.onlyPath().absFileName());
 	} else {
 		// Switch to this Buffer.
 		setBuffer(&b);
@@ -2092,11 +2092,11 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 		dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 		dlg.setButton2(qt_("Templates|#T#t"), toqstr(lyxrc.template_path));
 
-		if (!isLyXFilename(fname.absFilename()))
+		if (!isLyXFilename(fname.absFileName()))
 			fname.changeExtension(".lyx");
 
 		FileDialog::Result result =
-			dlg.save(toqstr(fname.onlyPath().absFilename()),
+			dlg.save(toqstr(fname.onlyPath().absFileName()),
 				   QStringList(qt_("LyX Documents (*.lyx)")),
 					 toqstr(fname.onlyFileName()));
 
@@ -2108,13 +2108,13 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 		if (fname.empty())
 			return false;
 
-		if (!isLyXFilename(fname.absFilename()))
+		if (!isLyXFilename(fname.absFileName()))
 			fname.changeExtension(".lyx");
 	}
 
 	// fname is now the new Buffer location.
 	if (FileName(fname).exists()) {
-		docstring const file = makeDisplayPath(fname.absFilename(), 30);
+		docstring const file = makeDisplayPath(fname.absFileName(), 30);
 		docstring text = bformat(_("The document %1$s already "
 					   "exists.\n\nDo you want to "
 					   "overwrite that document?"), 
@@ -2131,7 +2131,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 	FileName oldauto = b.getAutosaveFilename();
 
 	// Ok, change the name of the buffer
-	b.setFileName(fname.absFilename());
+	b.setFileName(fname.absFileName());
 	b.markDirty();
 	bool unnamed = b.isUnnamed();
 	b.setUnnamed(false);
@@ -2142,7 +2142,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 	
 	if (!saveBuffer(b)) {
 		oldauto = b.getAutosaveFilename();
-		b.setFileName(oldname.absFilename());
+		b.setFileName(oldname.absFileName());
 		b.setUnnamed(unnamed);
 		b.saveCheckSum(oldname);
 		b.moveAutosaveFile(oldauto);
@@ -2700,7 +2700,7 @@ void GuiView::openChildDocument(string const & fname)
 		child = theBufferList().getBuffer(filename);
 	} else {
 		message(bformat(_("Opening child document %1$s..."),
-		makeDisplayPath(filename.absFilename())));
+		makeDisplayPath(filename.absFileName())));
 		child = loadDocument(filename, false);
 		parsed = true;
 	}
@@ -2735,7 +2735,7 @@ bool GuiView::goToFileRow(string const & argument)
 		return false;
 	}
 	Buffer * buf = 0;
-	string const abstmp = package().temp_dir().absFilename();
+	string const abstmp = package().temp_dir().absFileName();
 	string const realtmp = package().temp_dir().realPath();
 	// We have to use os::path_prefix_is() here, instead of
 	// simply prefixIs(), because the file name comes from
@@ -3225,9 +3225,9 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		case LFUN_FORWARD_SEARCH: {
 			FileName const path(doc_buffer->temppath());
 			string const texname = doc_buffer->latexName();
-			FileName const dviname(addName(path.absFilename(),
+			FileName const dviname(addName(path.absFileName(),
 				    support::changeExtension(texname, "dvi")));
-			FileName const pdfname(addName(path.absFilename(),
+			FileName const pdfname(addName(path.absFileName(),
 				    support::changeExtension(texname, "pdf")));
 			if (!dviname.exists() && !pdfname.exists()) {
 				dr.setMessage(_("Please, preview the document first."));

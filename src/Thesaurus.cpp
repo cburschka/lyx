@@ -94,7 +94,7 @@ pair<string, string> Thesaurus::Private::getThesaurus(docstring const & lang)
 	     it != idx_files.end(); ++it) {
 		LYXERR(Debug::FILES, "found thesaurus idx file: " << it->onlyFileName());
 		if (contains(it->onlyFileName(), to_ascii(lang))) {
-			idx = it->absFilename();
+			idx = it->absFileName();
 			LYXERR(Debug::FILES, "selected thesaurus idx file: " << idx);
 			break;
 			}
@@ -104,7 +104,7 @@ pair<string, string> Thesaurus::Private::getThesaurus(docstring const & lang)
 	     it != data_files.end(); ++it) {
 		LYXERR(Debug::FILES, "found thesaurus data file: " << it->onlyFileName());
 		if (contains(it->onlyFileName(), to_ascii(lang))) {
-			data = it->absFilename();
+			data = it->absFileName();
 			LYXERR(Debug::FILES, "selected thesaurus data file: " << data);
 			break;
 			}

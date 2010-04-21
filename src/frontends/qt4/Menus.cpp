@@ -847,7 +847,7 @@ void MenuDefinition::expandLastfiles()
 	unsigned int ii = 1;
 
 	for (; lfit != lf.end() && ii <= lyxrc.num_lastfiles; ++lfit, ++ii) {
-		string const file = lfit->absFilename();
+		string const file = lfit->absFileName();
 		QString label;
 		if (ii < 10)
 			label = QString("%1. %2|%3").arg(ii)
@@ -906,7 +906,7 @@ void MenuDefinition::expandBookmarks()
 	bool empty = true;
 	for (size_t i = 1; i <= bm.size(); ++i) {
 		if (bm.isValid(i)) {
-			string const file = bm.bookmark(i).filename.absFilename();
+			string const file = bm.bookmark(i).filename.absFileName();
 			QString const label = QString("%1. %2|%3").arg(i)
 				.arg(toqstr(makeDisplayPath(file, 20))).arg(i);
 			add(MenuItem(MenuItem::Command, label,

@@ -464,7 +464,7 @@ void putClipboard(ParagraphList const & paragraphs,
 	// some kind of garbage collection there, or a shared_ptr, then this
 	// would not be needed.
 	static Buffer * buffer = theBufferList().newBuffer(
-		FileName::tempName().absFilename() + "_clipboard.internal");
+		FileName::tempName().absFileName() + "_clipboard.internal");
 	buffer->setUnnamed(true);
 	buffer->paragraphs() = paragraphs;
 	buffer->inset().setBuffer(*buffer);
@@ -1027,7 +1027,7 @@ void pasteClipboardGraphics(Cursor & cur, ErrorList & /* errorList */,
 	// create inset for graphic
 	InsetGraphics * inset = new InsetGraphics(cur.buffer());
 	InsetGraphicsParams params;
-	params.filename = support::DocFileName(filename.absFilename());
+	params.filename = support::DocFileName(filename.absFileName());
 	inset->setParams(params);
 	cur.recordUndo();
 	cur.insert(inset);

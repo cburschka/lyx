@@ -92,7 +92,7 @@ string const doSubstitution(InsetExternalParams const & params,
 		params.filename.outputFilename(parentpath);
 	string const basename = changeExtension(
 			onlyFilename(filename), string());
-	string const absname = makeAbsPath(filename, parentpath).absFilename();
+	string const absname = makeAbsPath(filename, parentpath).absFileName();
 
 	string result = s;
 	if (what != ALL_BUT_PATHS) {
@@ -160,9 +160,9 @@ string const doSubstitution(InsetExternalParams const & params,
 			    PROTECT_EXTENSION, ESCAPE_DOTS);
 	result = subst_path(result, "$$Extension",
 			'.' + getExtension(filename), use_latex_path);
-	result = subst_path(result, "$$Tempname", params.tempname().absFilename(), use_latex_path);
+	result = subst_path(result, "$$Tempname", params.tempname().absFileName(), use_latex_path);
 	result = subst_path(result, "$$Sysdir",
-				package().system_support().absFilename(), use_latex_path);
+				package().system_support().absFileName(), use_latex_path);
 
 	// Handle the $$Contents(filename) syntax
 	if (contains(result, "$$Contents(\"")) {
@@ -297,7 +297,7 @@ void updateExternal(InsetExternalParams const & params,
 				// if file is a relative name, it is interpreted
 				// relative to the master document.
 				if (makeAbsPath(file, masterBuffer->filePath()) !=
-					params.filename.absFilename())
+					params.filename.absFileName())
 						exportdata.addExternalFile(rit->first, source, file);
 			}
 		}
@@ -361,7 +361,7 @@ int writeExternal(InsetExternalParams const & params,
 				    use_latex_path, external_in_tmpdir);
 
 	string const absname = makeAbsPath(
-		params.filename.outputFilename(buffer.filePath()), buffer.filePath()).absFilename();
+		params.filename.outputFilename(buffer.filePath()), buffer.filePath()).absFileName();
 
 	if (!external_in_tmpdir && !isValidLaTeXFilename(absname)) {
 		lyx::frontend::Alert::warning(_("Invalid filename"),

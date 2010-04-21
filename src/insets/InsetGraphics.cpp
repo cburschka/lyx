@@ -471,7 +471,7 @@ copyFileIfNeeded(FileName const & file_in, FileName const & file_out)
 		LYXERR(Debug::GRAPHICS,
 			to_utf8(bformat(_("Could not copy the file\n%1$s\n"
 							   "into the temporary directory."),
-						from_utf8(file_in.absFilename()))));
+						from_utf8(file_in.absFileName()))));
 	}
 
 	GraphicsCopyStatus status = success ? SUCCESS : FAILURE;
@@ -482,7 +482,7 @@ copyFileIfNeeded(FileName const & file_in, FileName const & file_out)
 pair<GraphicsCopyStatus, FileName> const
 copyToDirIfNeeded(DocFileName const & file, string const & dir)
 {
-	string const file_in = file.absFilename();
+	string const file_in = file.absFileName();
 	string const only_path = onlyPath(file_in);
 	if (rtrim(onlyPath(file_in) , "/") == rtrim(dir, "/"))
 		return make_pair(IDENTICAL_PATHS, file_in);
@@ -548,7 +548,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 	if (params().filename.empty())
 		return string();
 
-	string const orig_file = params().filename.absFilename();
+	string const orig_file = params().filename.absFileName();
 	// this is for dryrun and display purposes, do not use latexFilename
 	string const rel_file = params().filename.relFilename(buffer().filePath());
 
@@ -587,7 +587,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 	// run through the LaTeX compiler.
 	string output_file = runparams.nice ?
 		params().filename.outputFilename(masterBuffer->filePath()) :
-		onlyFilename(temp_file.absFilename());
+		onlyFilename(temp_file.absFileName());
 
 	if (runparams.nice && !isValidLaTeXFilename(output_file)) {
 		frontend::Alert::warning(_("Invalid filename"),
@@ -621,7 +621,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 				// LaTeX needs the bounding box file in the
 				// tmp dir
 				FileName bb_file =
-					FileName(changeExtension(temp_file.absFilename(), "bb"));
+					FileName(changeExtension(temp_file.absFileName(), "bb"));
 				boost::tie(status, bb_file) =
 					copyFileIfNeeded(bb_orig_file, bb_file);
 				if (status == FAILURE)
@@ -639,9 +639,9 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 		}
 
 		FileName const unzipped_temp_file =
-			FileName(unzippedFileName(temp_file.absFilename()));
+			FileName(unzippedFileName(temp_file.absFileName()));
 		output_file = unzippedFileName(output_file);
-		source_file = FileName(unzippedFileName(source_file.absFilename()));
+		source_file = FileName(unzippedFileName(source_file.absFileName()));
 		if (compare_timestamps(unzipped_temp_file, temp_file) > 0) {
 			// temp_file has been unzipped already and
 			// orig_file has not changed in the meantime.
@@ -675,12 +675,12 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 			// the file format from the extension, so we must
 			// change it.
 			FileName const new_file = 
-				FileName(changeExtension(temp_file.absFilename(), ext));
+				FileName(changeExtension(temp_file.absFileName(), ext));
 			if (temp_file.moveTo(new_file)) {
 				temp_file = new_file;
 				output_file = changeExtension(output_file, ext);
 				source_file = 
-					FileName(changeExtension(source_file.absFilename(), ext));
+					FileName(changeExtension(source_file.absFileName(), ext));
 			} else {
 				LYXERR(Debug::GRAPHICS, "Could not rename file `"
 					<< temp_file << "' to `" << new_file << "'.");
@@ -695,7 +695,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 	}
 
 	// so the source and destination formats are different
-	FileName const to_file = FileName(changeExtension(temp_file.absFilename(), ext));
+	FileName const to_file = FileName(changeExtension(temp_file.absFileName(), ext));
 	string const output_to_file = changeExtension(output_file, ext);
 
 	// Do we need to perform the conversion?
@@ -738,7 +738,7 @@ int InsetGraphics::latex(odocstream & os,
 	// If there is no file specified or not existing,
 	// just output a message about it in the latex output.
 	LYXERR(Debug::GRAPHICS, "insetgraphics::latex: Filename = "
-		<< params().filename.absFilename());
+		<< params().filename.absFileName());
 
 	bool const file_exists = !params().filename.empty()
 			&& params().filename.isReadableFile();
@@ -798,7 +798,7 @@ int InsetGraphics::plaintext(odocstream & os, OutputParams const &) const
 	// FIXME: We have no idea what the encoding of the filename is
 
 	docstring const str = bformat(buffer().B_("Graphics file: %1$s"),
-				      from_utf8(params().filename.absFilename()));
+				      from_utf8(params().filename.absFileName()));
 	os << '<' << str << '>';
 
 	return 2 + str.size();
@@ -870,7 +870,7 @@ string InsetGraphics::prepareHTMLFile(OutputParams const & runparams) const
 	if (params().filename.empty())
 		return string();
 
-	string const orig_file = params().filename.absFilename();
+	string const orig_file = params().filename.absFileName();
 
 	// The master buffer. This is useful when there are multiple levels
 	// of include files
@@ -894,7 +894,7 @@ string InsetGraphics::prepareHTMLFile(OutputParams const & runparams) const
 	if (status == FAILURE)
 		return string();
 
-	string output_file = onlyFilename(temp_file.absFilename());
+	string output_file = onlyFilename(temp_file.absFileName());
 
 	string const from = formats.getFormatFromFile(temp_file);
 	if (from.empty())
@@ -912,7 +912,7 @@ string InsetGraphics::prepareHTMLFile(OutputParams const & runparams) const
 	}
 
 	// so the source and destination formats are different
-	FileName const to_file = FileName(changeExtension(temp_file.absFilename(), ext));
+	FileName const to_file = FileName(changeExtension(temp_file.absFileName(), ext));
 	string const output_to_file = changeExtension(output_file, ext);
 
 	// Do we need to perform the conversion?
@@ -949,7 +949,7 @@ docstring InsetGraphics::xhtml(XHTMLStream & xs, OutputParams const & op) const
 	if (output_file.empty()) {
 		LYXERR0("InsetGraphics::xhtml: Unable to prepare file `" 
 		        << params().filename << "' for output. File missing?");
-		string const attr = "src='" + params().filename.absFilename() 
+		string const attr = "src='" + params().filename.absFileName() 
 		                    + "' alt='image: " + output_file + "'";
 		xs << html::CompTag("img", attr);
 		return docstring();
@@ -973,7 +973,7 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 		return;
 
 	features.includeFile(graphic_label,
-			     removeExtension(params().filename.absFilename()));
+			     removeExtension(params().filename.absFileName()));
 
 	features.require("graphicx");
 

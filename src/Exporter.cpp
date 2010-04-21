@@ -44,7 +44,7 @@ static int checkOverwrite(FileName const & filename)
 
 	docstring text = bformat(_("The file %1$s already exists.\n\n"
 				   "Do you want to overwrite that file?"),
-				   makeDisplayPath(filename.absFilename()));
+				   makeDisplayPath(filename.absFileName()));
 	return Alert::prompt(_("Overwrite file?"),
 				text, 0, 3,
 				_("&Overwrite"), _("Overwrite &all"),
@@ -72,7 +72,7 @@ CopyStatus copyFile(string const & format,
 	// other directories than the document directory is desired.
 	// Also don't overwrite files that already exist and are identical
 	// to the source files.
-	if (!prefixIs(onlyPath(sourceFile.absFilename()), package().temp_dir().absFilename())
+	if (!prefixIs(onlyPath(sourceFile.absFileName()), package().temp_dir().absFileName())
 	    || sourceFile.checksum() == destFile.checksum())
 		return ret;
 
@@ -95,8 +95,8 @@ CopyStatus copyFile(string const & format,
 	if (!mover.copy(sourceFile, destFile, latexFile))
 		Alert::error(_("Couldn't copy file"),
 			     bformat(_("Copying %1$s to %2$s failed."),
-				     makeDisplayPath(sourceFile.absFilename()),
-				     makeDisplayPath(destFile.absFilename())));
+				     makeDisplayPath(sourceFile.absFileName()),
+				     makeDisplayPath(destFile.absFileName())));
 
 	return ret;
 }
@@ -131,7 +131,7 @@ void ExportData::addExternalFile(string const & format,
 void ExportData::addExternalFile(string const & format,
 				 FileName const & sourceName)
 {
-	addExternalFile(format, sourceName, onlyFilename(sourceName.absFilename()));
+	addExternalFile(format, sourceName, onlyFilename(sourceName.absFileName()));
 }
 
 

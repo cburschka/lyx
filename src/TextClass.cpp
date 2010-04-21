@@ -265,7 +265,7 @@ TextClass::ReturnValues TextClass::readWithoutConv(FileName const & filename, Re
 	}
 
 	LYXERR(Debug::TCLASS, "Reading " + translateRT(rt) + ": " +
-		to_utf8(makeDisplayPath(filename.absFilename())));
+		to_utf8(makeDisplayPath(filename.absFileName())));
 
 	// Define the plain layout used in table cells, ert, etc. Note that 
 	// we do this before loading any layout file, so that classes can 
@@ -278,7 +278,7 @@ TextClass::ReturnValues TextClass::readWithoutConv(FileName const & filename, Re
 	ReturnValues retval = read(lexrc, rt);
 	
 	LYXERR(Debug::TCLASS, "Finished reading " + translateRT(rt) + ": " +
-			to_utf8(makeDisplayPath(filename.absFilename())));
+			to_utf8(makeDisplayPath(filename.absFileName())));
 
 	return retval;
 }
@@ -406,7 +406,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 					lexrc.printError("Could not find input file: " + inc);
 					error = true;
 				} else if (!read(tmp, MERGE)) {
-					lexrc.printError("Error reading input file: " + tmp.absFilename());
+					lexrc.printError("Error reading input file: " + tmp.absFileName());
 					error = true;
 				}
 			}
@@ -1147,7 +1147,7 @@ bool TextClass::load(string const & path) const
 
 	if (!loaded_) {
 		lyxerr << "Error reading `"
-		       << to_utf8(makeDisplayPath(layout_file.absFilename()))
+		       << to_utf8(makeDisplayPath(layout_file.absFileName()))
 		       << "'\n(Check `" << name_
 		       << "')\nCheck your installation and "
 		          "try Options/Reconfigure..." 

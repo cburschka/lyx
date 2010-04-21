@@ -106,7 +106,7 @@ bool LayoutFileList::read()
 
 	if (real_file.empty()) {
 		LYXERR0("LayoutFileList::Read: unable to find textclass file  `"
-		    << makeDisplayPath(real_file.absFilename(), 1000)
+		    << makeDisplayPath(real_file.absFileName(), 1000)
 		    << "'.");
 		success = false;
 	} else if (!lex.setFile(real_file)) {
@@ -114,7 +114,7 @@ bool LayoutFileList::read()
 		       << real_file << '.');
 	} else if (!lex.isOK()) {
 		LYXERR0("LayoutFileList::Read: unable to open textclass file  `"
-		       << makeDisplayPath(real_file.absFilename(), 1000)
+		       << makeDisplayPath(real_file.absFileName(), 1000)
 		       << "'\nCheck your installation.");
 	} else {
 		// we have a file we can read.
@@ -233,7 +233,7 @@ LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 	LayoutFile * tc = new LayoutFile(textclass, textclass, 
 			"Unknown text class " + textclass, textclass + ".cls", true);
 
-	if (!tc->load(tempLayout.absFilename())) {
+	if (!tc->load(tempLayout.absFileName())) {
 		// The only way this happens is because the hardcoded layout file 
 		// aboveis wrong or stdclass.inc cannot be found. So try again 
 		// without stdclass.inc.
@@ -244,7 +244,7 @@ LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 		        "Input stdclass.inc\n\n"
 		     << layoutpost;
 		ofs2.close();
-		if (!tc->load(tempLayout.absFilename())) {
+		if (!tc->load(tempLayout.absFileName())) {
 			// This can only happen if the hardcoded file above is wrong.
 			LASSERT(false, /* */);
 		}

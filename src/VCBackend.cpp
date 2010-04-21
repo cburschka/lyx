@@ -84,7 +84,7 @@ RCS::RCS(FileName const & m)
 FileName const RCS::findFile(FileName const & file)
 {
 	// Check if *,v exists.
-	FileName tmp(file.absFilename() + ",v");
+	FileName tmp(file.absFileName() + ",v");
 	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under rcs: " << tmp);
 	if (tmp.isReadableFile()) {
 		LYXERR(Debug::LYXVC, "Yes, " << file << " is under rcs.");
@@ -92,7 +92,7 @@ FileName const RCS::findFile(FileName const & file)
 	}
 
 	// Check if RCS/*,v exists.
-	tmp = FileName(addName(addPath(onlyPath(file.absFilename()), "RCS"), file.absFilename()) + ",v");
+	tmp = FileName(addName(addPath(onlyPath(file.absFileName()), "RCS"), file.absFileName()) + ",v");
 	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under rcs: " << tmp);
 	if (tmp.isReadableFile()) {
 		LYXERR(Debug::LYXVC, "Yes, " << file << " is under rcs.");
@@ -328,7 +328,7 @@ bool RCS::prepareFileRevision(string const &revis, string & f)
 	if (tmpf.isFileEmpty())
 		return false;
 
-	f = tmpf.absFilename();
+	f = tmpf.absFileName();
 	return true;
 }
 
@@ -357,8 +357,8 @@ FileName const CVS::findFile(FileName const & file)
 {
 	// First we look for the CVS/Entries in the same dir
 	// where we have file.
-	FileName const entries(onlyPath(file.absFilename()) + "/CVS/Entries");
-	string const tmpf = '/' + onlyFilename(file.absFilename()) + '/';
+	FileName const entries(onlyPath(file.absFileName()) + "/CVS/Entries");
+	string const tmpf = '/' + onlyFilename(file.absFileName()) + '/';
 	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under cvs in `" << entries
 			     << "' for `" << tmpf << '\'');
 	if (entries.isReadableFile()) {
@@ -382,7 +382,7 @@ void CVS::scanMaster()
 	LYXERR(Debug::LYXVC, "LyXVC::CVS: scanMaster. \n     Checking: " << master_);
 	// Ok now we do the real scan...
 	ifstream ifs(master_.toFilesystemEncoding().c_str());
-	string tmpf = '/' + onlyFilename(file_.absFilename()) + '/';
+	string tmpf = '/' + onlyFilename(file_.absFileName()) + '/';
 	LYXERR(Debug::LYXVC, "\tlooking for `" << tmpf << '\'');
 	string line;
 	static regex const reg("/(.*)/(.*)/(.*)/(.*)/(.*)");
@@ -574,8 +574,8 @@ FileName const SVN::findFile(FileName const & file)
 {
 	// First we look for the .svn/entries in the same dir
 	// where we have file.
-	FileName const entries(onlyPath(file.absFilename()) + "/.svn/entries");
-	string const tmpf = onlyFilename(file.absFilename());
+	FileName const entries(onlyPath(file.absFileName()) + "/.svn/entries");
+	string const tmpf = onlyFilename(file.absFileName());
 	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under svn in `" << entries
 			     << "' for `" << tmpf << '\'');
 	if (entries.isReadableFile()) {
@@ -814,7 +814,7 @@ string SVN::repoUpdate()
 		int ret = frontend::Alert::prompt(_("Changes detected"),
 				text, 0, 1, _("&Yes"), _("&No"), _("View &Log ..."));
 		if (ret == 2 ) {
-			dispatch(FuncRequest(LFUN_DIALOG_SHOW, "file " + tmpf.absFilename()));
+			dispatch(FuncRequest(LFUN_DIALOG_SHOW, "file " + tmpf.absFileName()));
 			ret = frontend::Alert::prompt(_("Changes detected"),
 				text, 0, 1, _("&Yes"), _("&No"));
 			hideDialogs("file", 0);
@@ -1074,7 +1074,7 @@ bool SVN::prepareFileRevision(string const & revis, string & f)
 	if (tmpf.isFileEmpty())
 		return false;
 
-	f = tmpf.absFilename();
+	f = tmpf.absFileName();
 	return true;
 }
 

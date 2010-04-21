@@ -618,7 +618,7 @@ string real_path(string const & path)
 	CloseHandle(hmap);
 	CloseHandle(hpath);
 	string const retpath = subst(string(realpath), '\\', '/');
-	return FileName::fromFilesystemEncoding(retpath).absFilename();
+	return FileName::fromFilesystemEncoding(retpath).absFileName();
 }
 
 } // namespace os

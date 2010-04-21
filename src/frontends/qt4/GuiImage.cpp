@@ -79,7 +79,7 @@ bool GuiImage::load(FileName const & filename)
 		LYXERR(Debug::GRAPHICS, "Image is loaded already!");
 		return false;
 	}
-	fname_ = toqstr(filename.absFilename());
+	fname_ = toqstr(filename.absFileName());
 	return load();
 }
 

@@ -365,11 +365,11 @@ QString iconName(FuncRequest const & f, bool unknown)
 
 	FileName fname = libFileSearch("images/" + path, name1, "png");
 	if (fname.exists())
-		return toqstr(fname.absFilename());
+		return toqstr(fname.absFileName());
 
 	fname = libFileSearch("images/" + path, name2, "png");
 	if (fname.exists())
-		return toqstr(fname.absFilename());
+		return toqstr(fname.absFileName());
 
 	path = ":/images/" + path;
 	QDir res(path);
@@ -396,7 +396,7 @@ QString iconName(FuncRequest const & f, bool unknown)
 	if (unknown) {
 		fname = libFileSearch(QString("images/"), "unknown", "png");
 		if (fname.exists())
-			return toqstr(fname.absFilename());
+			return toqstr(fname.absFileName());
 		return QString(":/images/unknown.png");
 	}
 
@@ -407,7 +407,7 @@ QPixmap getPixmap(QString const & path, QString const & name, QString const & ex
 {
 	QPixmap pixmap;
 	FileName fname = libFileSearch(path, name, ext);
-	QString path1 = toqstr(fname.absFilename());
+	QString path1 = toqstr(fname.absFileName());
 	QString path2 = ":/" + path + name + "." + ext;
 
 	if (pixmap.load(path1)) {
@@ -1122,7 +1122,7 @@ void GuiApplication::gotoBookmark(unsigned int idx, bool openFile, bool switchTo
 		return;
 	BookmarksSection::Bookmark const & bm = theSession().bookmarks().bookmark(idx);
 	LASSERT(!bm.filename.empty(), /**/);
-	string const file = bm.filename.absFilename();
+	string const file = bm.filename.absFileName();
 	// if the file is not opened, open it.
 	if (!theBufferList().exists(bm.filename)) {
 		if (openFile)
@@ -1336,7 +1336,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 		}
 		current_view_->message(bformat(_("Opening help file %1$s..."),
-					       makeDisplayPath(fname.absFilename())));
+					       makeDisplayPath(fname.absFileName())));
 		Buffer * buf = current_view_->loadDocument(fname, false);
 		if (buf) {
 			current_view_->setBuffer(buf);
@@ -1524,11 +1524,11 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_PREFERENCES_SAVE:
 		lyxrc.write(support::makeAbsPath("preferences",
-			package().user_support().absFilename()), false);
+			package().user_support().absFileName()), false);
 		break;
 
 	case LFUN_BUFFER_SAVE_AS_DEFAULT: {
-		string const fname = addName(addPath(package().user_support().absFilename(),
+		string const fname = addName(addPath(package().user_support().absFileName(),
 			"templates/"), "defaults.lyx");
 		Buffer defaults(fname);
 
@@ -2045,7 +2045,7 @@ void GuiApplication::restoreGuiSession()
 		if (d->views_.empty() || (!lyxrc.open_buffers_in_tabs
 			  && current_view_->documentBufferView() != 0)) {
 			boost::crc_32_type crc;
-			string const & fname = file_name.absFilename();
+			string const & fname = file_name.absFileName();
 			crc = for_each(fname.begin(), fname.end(), crc);
 			createView(crc.checksum());
 		}
@@ -2336,7 +2336,7 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 
 	// Ensure that a file is read only once (prevents include loops)
 	static QStringList uifiles;
-	QString const uifile = toqstr(ui_path.absFilename());
+	QString const uifile = toqstr(ui_path.absFileName());
 	if (uifiles.contains(uifile)) {
 		if (!include) {
 			// We are reading again the top uifile so reset the safeguard:

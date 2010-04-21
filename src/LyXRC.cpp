@@ -433,7 +433,7 @@ int LyXRC::read(Lexer & lexrc)
 						      lexrc.getString());
 				if (read(tmp)) {
 					lexrc.printError("Error reading "
-							 "included file: " + tmp.absFilename());
+							 "included file: " + tmp.absFileName());
 				}
 			}
 			break;

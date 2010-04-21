@@ -484,7 +484,7 @@ bool tex2lyx(FileName const & infilename, ostream & os, string const & encoding)
 		return false;
 	}
 	string const oldParentFilePath = parentFilePath;
-	parentFilePath = onlyPath(infilename.absFilename());
+	parentFilePath = onlyPath(infilename.absFileName());
 	tex2lyx(is, os, encoding);
 	parentFilePath = oldParentFilePath;
 	return true;
@@ -553,13 +553,13 @@ int main(int argc, char * argv[])
 	// Now every known option is parsed. Look for input and output
 	// file name (the latter is optional).
 	string infilename = internal_path(os::utf8_argv(1));
-	infilename = makeAbsPath(infilename).absFilename();
+	infilename = makeAbsPath(infilename).absFileName();
 
 	string outfilename;
 	if (argc > 2) {
 		outfilename = internal_path(os::utf8_argv(2));
 		if (outfilename != "-")
-			outfilename = makeAbsPath(outfilename).absFilename();
+			outfilename = makeAbsPath(outfilename).absFileName();
 	} else
 		outfilename = changeExtension(infilename, ".lyx");
 

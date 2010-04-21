@@ -81,7 +81,7 @@ int listen(FileName const & name, int queue)
 	string::size_type len = localname.size();
 	// the field sun_path in sockaddr_un is a char[108]
 	if (len > 107) {
-		LYXERR0("lyx: Socket address '" << name.absFilename() << "' too long.");
+		LYXERR0("lyx: Socket address '" << name.absFileName() << "' too long.");
 		return -1;
 	}
 	// Synonims for AF_UNIX are AF_LOCAL and AF_FILE
@@ -111,7 +111,7 @@ int listen(FileName const & name, int queue)
 	// the socket special file in the filesystem. bind() returns -1
 	// in case of error
 	if ((::bind (fd, reinterpret_cast<sockaddr *>(&addr), SUN_LEN(&addr))) == -1) {
-		LYXERR0("lyx: Could not bind address '" << name.absFilename()
+		LYXERR0("lyx: Could not bind address '" << name.absFileName()
 		       << "' to socket descriptor: " << strerror(errno));
 		::close(fd);
 		name.removeFile();

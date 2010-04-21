@@ -305,7 +305,7 @@ string real_path(string const & path)
 {
 	char rpath[PATH_MAX + 1];
 	char * result = realpath(path.c_str(), rpath);
-	return FileName::fromFilesystemEncoding(result ? rpath : path).absFilename();
+	return FileName::fromFilesystemEncoding(result ? rpath : path).absFileName();
 }
 
 } // namespace os

@@ -64,7 +64,7 @@ public:
 	static bool isAbsolute(std::string const & name);
 
 	/// get the absolute file name in UTF-8 encoding
-	std::string absFilename() const;
+	std::string absFileName() const;
 
 	/** returns an absolute pathname (whose resolution does not involve
 	  * '.', '..', or symbolic links) in UTF-8 encoding

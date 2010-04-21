@@ -361,7 +361,7 @@ int LyX::exec(int & argc, char * argv[])
 	// such that package().temp_dir() is properly initialized.
 	pimpl_->lyx_server_.reset(new Server(lyxrc.lyxpipes));
 	pimpl_->lyx_socket_.reset(new ServerSocket(
-			FileName(package().temp_dir().absFilename() + "/lyxsocket")));
+			FileName(package().temp_dir().absFileName() + "/lyxsocket")));
 
 	// Start the real execution loop.
 	exit_status = pimpl_->application_->exec();
@@ -395,19 +395,19 @@ void LyX::prepareExit()
 
 	// do any other cleanup procedures now
 	if (package().temp_dir() != package().system_temp_dir()) {
-		string const abs_tmpdir = package().temp_dir().absFilename();
-		if (!contains(package().temp_dir().absFilename(), "lyx_tmpdir")) {
+		string const abs_tmpdir = package().temp_dir().absFileName();
+		if (!contains(package().temp_dir().absFileName(), "lyx_tmpdir")) {
 			docstring const msg =
 				bformat(_("%1$s does not appear like a LyX created temporary directory."),
 				from_utf8(abs_tmpdir));
 			Alert::warning(_("Cannot remove temporary directory"), msg);
 		} else {
 			LYXERR(Debug::INFO, "Deleting tmp dir "
-				<< package().temp_dir().absFilename());
+				<< package().temp_dir().absFileName());
 			if (!package().temp_dir().destroyDirectory()) {
 				docstring const msg =
 					bformat(_("Unable to remove the temporary directory %1$s"),
-					from_utf8(package().temp_dir().absFilename()));
+					from_utf8(package().temp_dir().absFileName()));
 				Alert::warning(_("Unable to remove temporary directory"), msg);
 			}
 		}
@@ -456,7 +456,7 @@ int LyX::init(int & argc, char * argv[])
 
 	if (first_start) {
 		pimpl_->files_to_load_.push_back(
-			i18nLibFileSearch("examples", "splash.lyx").absFilename());
+			i18nLibFileSearch("examples", "splash.lyx").absFileName());
 	}
 
 	return EXIT_SUCCESS;
@@ -479,7 +479,7 @@ bool LyX::loadFiles()
 		if (fname.empty())
 			continue;
 
-		Buffer * buf = pimpl_->buffer_list_.newBuffer(fname.absFilename(), false);
+		Buffer * buf = pimpl_->buffer_list_.newBuffer(fname.absFileName(), false);
 		if (buf->loadLyXFile(fname)) {
 			ErrorList const & el = buf->errorList("Parse");
 			if (!el.empty())
@@ -695,15 +695,15 @@ bool LyX::init()
 	signal(SIGTERM, error_handler);
 	// SIGPIPE can be safely ignored.
 
-	lyxrc.tempdir_path = package().temp_dir().absFilename();
-	lyxrc.document_path = package().document_dir().absFilename();
+	lyxrc.tempdir_path = package().temp_dir().absFileName();
+	lyxrc.document_path = package().document_dir().absFileName();
 
 	if (lyxrc.example_path.empty()) {
-		lyxrc.example_path = addPath(package().system_support().absFilename(),
+		lyxrc.example_path = addPath(package().system_support().absFileName(),
 					      "examples");
 	}
 	if (lyxrc.template_path.empty()) {
-		lyxrc.template_path = addPath(package().system_support().absFilename(),
+		lyxrc.template_path = addPath(package().system_support().absFileName(),
 					      "templates");
 	}
 
@@ -723,7 +723,7 @@ bool LyX::init()
 	// Add the directory containing the LyX executable to the path
 	// so that LyX can find things like tex2lyx.
 	if (package().build_support().empty())
-		prependEnvPath("PATH", package().binary_dir().absFilename());
+		prependEnvPath("PATH", package().binary_dir().absFileName());
 #endif
 	if (!lyxrc.path_prefix.empty())
 		prependEnvPath("PATH", lyxrc.path_prefix);
@@ -814,7 +814,7 @@ bool LyX::init()
 	}
 
 	LYXERR(Debug::INIT, "LyX tmp dir: `"
-			    << package().temp_dir().absFilename() << '\'');
+			    << package().temp_dir().absFileName() << '\'');
 
 	LYXERR(Debug::INIT, "Reading session information '.lyx/session'...");
 	pimpl_->session_.reset(new Session(lyxrc.num_lastfiles));
@@ -853,13 +853,13 @@ static bool needsUpdate(string const & file)
 	static bool firstrun = true;
 	if (firstrun) {
 		configure_script =
-			FileName(addName(package().system_support().absFilename(),
+			FileName(addName(package().system_support().absFileName(),
 				"configure.py"));
 		firstrun = false;
 	}
 
 	FileName absfile = 
-		FileName(addName(package().user_support().absFilename(), file));
+		FileName(addName(package().user_support().absFileName(), file));
 	return !absfile.exists()
 		|| configure_script.lastModified() > absfile.lastModified();
 }
@@ -888,7 +888,7 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 		    bformat(_("You have specified a non-existent user "
 					   "LyX directory, %1$s.\n"
 					   "It is needed to keep your own configuration."),
-			    from_utf8(package().user_support().absFilename())),
+			    from_utf8(package().user_support().absFileName())),
 		    1, 0,
 		    _("&Create directory"),
 		    _("&Exit LyX"))) {
@@ -897,7 +897,7 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 	}
 
 	lyxerr << to_utf8(bformat(_("LyX: Creating directory %1$s"),
-			  from_utf8(sup.absFilename()))) << endl;
+			  from_utf8(sup.absFileName()))) << endl;
 
 	if (!sup.createDirectory(0755)) {
 		// Failed, so let's exit.

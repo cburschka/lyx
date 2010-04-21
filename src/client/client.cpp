@@ -101,7 +101,7 @@ FileNameList lyxSockets(string const & dir, string const & pid)
 	for (; it != end; ++it) {
 		if (!it->isDirectory())
 			continue;
-		string const tmpdir = it->absFilename();
+		string const tmpdir = it->absFileName();
 		if (!contains(tmpdir, "lyx_tmpdir" + pid))
 			continue;
 
@@ -144,7 +144,7 @@ int connect(FileName const & name)
 	if (::connect(fd,
 		      reinterpret_cast<struct sockaddr *>(&addr),
 		      sizeof(addr)) == -1) {
-		cerr << "lyxclient: Could not connect to socket " << name.absFilename()
+		cerr << "lyxclient: Could not connect to socket " << name.absFileName()
 		     << ": " << strerror(errno) << endl;
 		::close(fd);
 		return -1;
@@ -573,14 +573,14 @@ int main(int argc, char * argv[])
 			if (server->connected())
 				break;
 			lyxerr << "lyxclient: " << "Could not connect to "
-			     << addr->absFilename() << endl;
+			     << addr->absFileName() << endl;
 		}
 		if (addr == end) {
 			lyxerr << "lyxclient: No suitable server found."
 			       << endl;
 			return EXIT_FAILURE;
 		}
-		cerr << "lyxclient: " << "Connected to " << addr->absFilename() << endl;
+		cerr << "lyxclient: " << "Connected to " << addr->absFileName() << endl;
 	}
 
 	int const serverfd = server->fd();

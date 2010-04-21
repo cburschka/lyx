@@ -217,7 +217,7 @@ docstring InsetBibtex::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/) 
 static string normalizeName(Buffer const & buffer,
 	OutputParams const & runparams, string const & name, string const & ext)
 {
-	string const fname = makeAbsPath(name, buffer.filePath()).absFilename();
+	string const fname = makeAbsPath(name, buffer.filePath()).absFileName();
 	if (FileName::isAbsolute(name) || !FileName(fname + ext).isReadableFile())
 		return name;
 	if (!runparams.nice)
