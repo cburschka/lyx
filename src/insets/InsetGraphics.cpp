@@ -495,7 +495,7 @@ copyToDirIfNeeded(DocFileName const & file, string const & dir)
 		// extension removed, because base.eps and base.eps.gz may
 		// have different content but would get the same mangled
 		// name in this case.
-		string const base = removeExtension(file.unzippedFilename());
+		string const base = removeExtension(file.unzippedFileName());
 		string::size_type const ext_len = file_in.length() - base.length();
 		mangled[mangled.length() - ext_len] = '.';
 	}

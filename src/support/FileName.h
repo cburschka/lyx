@@ -293,7 +293,7 @@ public:
 	/// \return true if the file is compressed.
 	bool isZipped() const;
 	/// \return the absolute file name without its .gz, .z, .Z extension
-	std::string unzippedFilename() const;
+	std::string unzippedFileName() const;
 
 private:
 	/// Records whether we should save (or export) the filename as a relative

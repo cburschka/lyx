@@ -1157,9 +1157,9 @@ bool DocFileName::isZipped() const
 }
 
 
-string DocFileName::unzippedFilename() const
+string DocFileName::unzippedFileName() const
 {
-	return unzippedFileName(absFileName());
+	return support::unzippedFileName(absFileName());
 }
 
 
