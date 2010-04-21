@@ -1079,7 +1079,7 @@ string DocFileName::relFileName(string const & path) const
 }
 
 
-string DocFileName::outputFilename(string const & path) const
+string DocFileName::outputFileName(string const & path) const
 {
 	return save_abs_path_ ? absFileName() : relFileName(path);
 }

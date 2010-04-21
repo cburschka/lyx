@@ -265,7 +265,7 @@ public:
 	/// \param buffer_path if empty, uses `pwd`
 	std::string relFileName(std::string const & buffer_path = empty_string()) const;
 	/// \param buf_path if empty, uses `pwd`
-	std::string outputFilename(std::string const & buf_path = empty_string()) const;
+	std::string outputFileName(std::string const & buf_path = empty_string()) const;
 	
 	/** @returns a mangled representation of the absolute file name
 	 *  suitable for use in the temp dir when, for example, converting

@@ -161,7 +161,7 @@ void InsetExternalParams::write(Buffer const & buf, ostream & os) const
 	   << "\ttemplate " << templatename() << '\n';
 
 	if (!filename.empty())
-		os << "\tfilename " << filename.outputFilename(buf.filePath()) << '\n';
+		os << "\tfilename " << filename.outputFileName(buf.filePath()) << '\n';
 
 	if (!display)
 		os << "\tdisplay false\n";
@@ -623,7 +623,7 @@ int InsetExternal::latex(odocstream & os, OutputParams const & runparams) const
 	if (params_.draft) {
 		// FIXME UNICODE
 		os << "\\fbox{\\ttfamily{}"
-		   << from_utf8(params_.filename.outputFilename(buffer().filePath()))
+		   << from_utf8(params_.filename.outputFileName(buffer().filePath()))
 		   << "}\n";
 		return 1;
 	}

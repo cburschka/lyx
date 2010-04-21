@@ -460,7 +460,7 @@ static void getCrop(external::ClipData & data,
 void GuiExternal::updateContents()
 {
 	string const name =
-		params_.filename.outputFilename(fromqstr(bufferFilepath()));
+		params_.filename.outputFileName(fromqstr(bufferFilepath()));
 	fileED->setText(toqstr(name));
 
 	int index = 0;

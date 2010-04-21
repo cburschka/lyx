@@ -141,7 +141,7 @@ void InsetGraphicsParams::Write(ostream & os, Buffer const & buffer) const
 {
 	// Do not write the default values
 	if (!filename.empty())
-		os << "\tfilename " << filename.outputFilename(buffer.filePath()) << '\n';
+		os << "\tfilename " << filename.outputFileName(buffer.filePath()) << '\n';
 	if (lyxscale != 100)
 		os << "\tlyxscale " << lyxscale << '\n';
 	if (!display)

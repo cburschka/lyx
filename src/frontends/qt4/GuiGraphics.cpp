@@ -497,7 +497,7 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 
 	//lyxerr << bufferFilepath();
 	string const name =
-		igp.filename.outputFilename(fromqstr(bufferFilepath()));
+		igp.filename.outputFileName(fromqstr(bufferFilepath()));
 	filename->setText(toqstr(name));
 
 	// set the bounding box values

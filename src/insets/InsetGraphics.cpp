@@ -565,7 +565,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 	// We are not going to change the extension or using the name of the
 	// temporary file, the code is already complicated enough.
 	if (runparams.inComment || !params().filename.isReadableFile())
-		return params().filename.outputFilename(masterBuffer->filePath());
+		return params().filename.outputFileName(masterBuffer->filePath());
 
 	// We place all temporary files in the master buffer's temp dir.
 	// This is possible because we use mangled file names.
@@ -586,7 +586,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 	// "nice" means that the buffer is exported to LaTeX format but not
 	// run through the LaTeX compiler.
 	string output_file = runparams.nice ?
-		params().filename.outputFilename(masterBuffer->filePath()) :
+		params().filename.outputFileName(masterBuffer->filePath()) :
 		onlyFilename(temp_file.absFileName());
 
 	if (runparams.nice && !isValidLaTeXFilename(output_file)) {

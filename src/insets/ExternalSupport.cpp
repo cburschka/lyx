@@ -89,7 +89,7 @@ string const doSubstitution(InsetExternalParams const & params,
 		buffer.filePath();
 	string const filename = external_in_tmpdir ?
 		params.filename.mangledFileName() :
-		params.filename.outputFilename(parentpath);
+		params.filename.outputFileName(parentpath);
 	string const basename = changeExtension(
 			onlyFilename(filename), string());
 	string const absname = makeAbsPath(filename, parentpath).absFileName();
@@ -361,7 +361,7 @@ int writeExternal(InsetExternalParams const & params,
 				    use_latex_path, external_in_tmpdir);
 
 	string const absname = makeAbsPath(
-		params.filename.outputFilename(buffer.filePath()), buffer.filePath()).absFileName();
+		params.filename.outputFileName(buffer.filePath()), buffer.filePath()).absFileName();
 
 	if (!external_in_tmpdir && !isValidLaTeXFilename(absname)) {
 		lyx::frontend::Alert::warning(_("Invalid filename"),
