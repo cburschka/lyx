@@ -589,7 +589,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 		params().filename.outputFileName(masterBuffer->filePath()) :
 		onlyFileName(temp_file.absFileName());
 
-	if (runparams.nice && !isValidLaTeXFilename(output_file)) {
+	if (runparams.nice && !isValidLaTeXFileName(output_file)) {
 		frontend::Alert::warning(_("Invalid filename"),
 				         _("The following filename is likely to cause trouble "
 					   "when running the exported file through LaTeX: ") +

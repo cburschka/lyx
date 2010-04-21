@@ -423,7 +423,7 @@ Buffer * InsetInclude::loadIfNeeded() const
 		child_buffer_ = 0;
 	}
 
-	if (!isLyXFilename(included_file.absFileName()))
+	if (!isLyXFileName(included_file.absFileName()))
 		return 0;
 
 	Buffer * child = theBufferList().getBuffer(included_file);
@@ -505,7 +505,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 
 	if (!runparams.nice)
 		incfile = mangled;
-	else if (!isValidLaTeXFilename(incfile)) {
+	else if (!isValidLaTeXFileName(incfile)) {
 		frontend::Alert::warning(_("Invalid filename"),
 					 _("The following filename is likely to cause trouble "
 					   "when running the exported file through LaTeX: ") +
@@ -519,7 +519,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		//Don't try to load or copy the file if we're
 		//in a comment or doing a dryrun
 	} else if (isInputOrInclude(params()) &&
-		 isLyXFilename(included_file.absFileName())) {
+		 isLyXFileName(included_file.absFileName())) {
 		//if it's a LyX file and we're inputting or including,
 		//try to load it so we can write the associated latex
 		if (!loadIfNeeded())
@@ -612,7 +612,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 						      exportfile);
 
 		// \input wants file with extension (default is .tex)
-		if (!isLyXFilename(included_file.absFileName())) {
+		if (!isLyXFileName(included_file.absFileName())) {
 			incfile = latex_path(incfile);
 			// FIXME UNICODE
 			os << '\\' << from_ascii(params().getCmdName())
@@ -679,7 +679,7 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const &rp) const
 	// (If we wanted to get really arcane, we could run some tex2html
 	// converter on the included file. But that's just masochistic.)
 	FileName const included_file = includedFilename(buffer(), params());
-	if (!isLyXFilename(included_file.absFileName())) {
+	if (!isLyXFileName(included_file.absFileName())) {
 		frontend::Alert::warning(_("Unsupported Inclusion"),
 					 bformat(_("LyX does not know how to include non-LyX files when "
 					           "generating HTML output. Offending file:\n%1$s"),
@@ -789,7 +789,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	string const included_file =
 		includedFilename(buffer(), params()).absFileName();
 
-	if (isLyXFilename(included_file))
+	if (isLyXFileName(included_file))
 		writefile = changeExtension(included_file, ".sgml");
 	else
 		writefile = included_file;

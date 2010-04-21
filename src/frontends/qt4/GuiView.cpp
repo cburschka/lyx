@@ -2092,7 +2092,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 		dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 		dlg.setButton2(qt_("Templates|#T#t"), toqstr(lyxrc.template_path));
 
-		if (!isLyXFilename(fname.absFileName()))
+		if (!isLyXFileName(fname.absFileName()))
 			fname.changeExtension(".lyx");
 
 		FileDialog::Result result =
@@ -2108,7 +2108,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 		if (fname.empty())
 			return false;
 
-		if (!isLyXFilename(fname.absFileName()))
+		if (!isLyXFileName(fname.absFileName()))
 			fname.changeExtension(".lyx");
 	}
 

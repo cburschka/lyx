@@ -771,7 +771,7 @@ bool Buffer::readDocument(Lexer & lex)
 	if (!params().master.empty()) {
 		FileName const master_file = makeAbsPath(params().master,
 			   onlyPath(absFileName()));
-		if (isLyXFilename(master_file.absFileName())) {
+		if (isLyXFileName(master_file.absFileName())) {
 			Buffer * master = 
 				checkAndLoadLyXFile(master_file, true);
 			if (master) {

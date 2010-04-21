@@ -55,19 +55,19 @@ using namespace std;
 namespace lyx {
 namespace support {
 
-bool isLyXFilename(string const & filename)
+bool isLyXFileName(string const & filename)
 {
 	return suffixIs(ascii_lowercase(filename), ".lyx");
 }
 
 
-bool isSGMLFilename(string const & filename)
+bool isSGMLFileName(string const & filename)
 {
 	return suffixIs(ascii_lowercase(filename), ".sgml");
 }
 
 
-bool isValidLaTeXFilename(string const & filename)
+bool isValidLaTeXFileName(string const & filename)
 {
 	string const invalid_chars("#$%{}()[]\"^");
 	return filename.find_first_of(invalid_chars) == string::npos;

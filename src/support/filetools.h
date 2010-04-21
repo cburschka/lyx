@@ -64,13 +64,13 @@ FileName const fileSearch(std::string const & path,
 			     search_mode mode = must_exist);
 
 ///
-bool isLyXFilename(std::string const & filename);
+bool isLyXFileName(std::string const & filename);
 
 ///
-bool isSGMLFilename(std::string const & filename);
+bool isSGMLFileName(std::string const & filename);
 
 ///
-bool isValidLaTeXFilename(std::string const & filename);
+bool isValidLaTeXFileName(std::string const & filename);
 
 /** Returns the path of a library data file.
     Search the file name.ext in the subdirectory dir of

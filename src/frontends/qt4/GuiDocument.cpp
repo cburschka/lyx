@@ -3093,7 +3093,7 @@ void GuiDocument::dispatchParams()
 	if (!params().master.empty()) {
 		FileName const master_file = support::makeAbsPath(params().master,
 			   support::onlyPath(buffer().absFileName()));
-		if (isLyXFilename(master_file.absFileName())) {
+		if (isLyXFileName(master_file.absFileName())) {
 			Buffer * master = checkAndLoadLyXFile(master_file);
 			if (master) {
 				if (master->isChild(const_cast<Buffer *>(&buffer())))

@@ -1112,7 +1112,7 @@ docstring const LaTeXFeatures::getIncludedFiles(string const & fname) const
 	     fi != end; ++fi)
 		// FIXME UNICODE
 		sgmlpreamble << "\n<!ENTITY " << fi->first
-			     << (isSGMLFilename(fi->second) ? " SYSTEM \"" : " \"")
+			     << (isSGMLFileName(fi->second) ? " SYSTEM \"" : " \"")
 			     << makeRelPath(from_utf8(fi->second), basename) << "\">";
 
 	return sgmlpreamble.str();

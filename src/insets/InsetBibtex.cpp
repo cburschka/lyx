@@ -280,7 +280,7 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 				       << endl;
 			}
 		} else if (!runparams.inComment && runparams.nice && not_from_texmf &&
-			   !isValidLaTeXFilename(database)) {
+			   !isValidLaTeXFileName(database)) {
 				frontend::Alert::warning(_("Invalid filename"),
 						         _("The following filename is likely to cause trouble "
 							   "when running the exported file through LaTeX: ") +
