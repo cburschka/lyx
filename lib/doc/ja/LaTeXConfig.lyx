@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -118,7 +118,7 @@ LyXに欲しい機能であり、LaTeX装備にも追加したいと思うよう
 とを教えなくてはなりません。インストールし終えたら、メニュー項目
 \family sans
 ツール\SpecialChar \menuseparator
-システム再検出
+再初期設定
 \family default
 
 \begin_inset Foot
@@ -2815,11 +2815,11 @@ reference "svglobal"
 \end_layout
 
 \begin_layout Subsection
-Springer社発行モノグラフ
+Springer社刊モノグラフ
 \end_layout
 
 \begin_layout Description
-検出：
+検出： 
 \begin_inset Info
 type  "textclass"
 arg   "svmono"
@@ -2829,7 +2829,7 @@ arg   "svmono"
 \end_layout
 
 \begin_layout Description
-CTAN: 
+CTAN： 
 \family typewriter
 ftp://ftp.springer.de/pub/tex/latex/svmonogl/
 \end_layout
@@ -2854,15 +2854,15 @@ http://www.springeronline.com
 \family sans
 svmono
 \family default
-はSpringer Verlag発行のモノグラフのためのものです。モノグラフの構成についてはひな形をご覧ください。
+は、Springer Verlag社発行のモノグラフ用です。モノグラフの章立てについては、添付ひな型をご覧ください。
 \end_layout
 
 \begin_layout Subsection
-Springer社発行共著書籍
+Springer社刊編著書籍
 \end_layout
 
 \begin_layout Description
-検出：
+検出： 
 \begin_inset Info
 type  "textclass"
 arg   "svmult"
@@ -2872,7 +2872,7 @@ arg   "svmult"
 \end_layout
 
 \begin_layout Description
-CTAN: 
+CTAN： 
 \family typewriter
 ftp://ftp.springer.de/pub/tex/latex/svmultgl/
 \end_layout
@@ -2897,7 +2897,7 @@ http://www.springeronline.com
 \family sans
 svmult
 \family default
-はSpringer Verlag発行の共著書籍のためのものです。書籍の構成についてはひな形をご覧ください。
+は、Springer Verlag社発行の編著書用です。書籍の章立てについては、添付ひな型をご覧ください。
 \end_layout
 
 \begin_layout Subsection
@@ -3302,39 +3302,6 @@ hyperref
 \end_layout
 
 \begin_layout Subsection
-japanese
-\end_layout
-
-\begin_layout Description
-検出： 
-\begin_inset Info
-type  "package"
-arg   "japanese"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN： 
-\family typewriter
-language/japanese/japanese/
-\end_layout
-
-\begin_layout Description
-備考： 
-\family sans
-babel japanese
-\family default
-オプションは、文書言語が日本語のときに、節見出し等を日本語で出力するために必要です。本オプションを使用するためには、日本語TeXシステムpTeX（CTAN:
- 
-\family typewriter
-language/japanese/ptex/
-\family default
-）が必要です。
-\end_layout
-
-\begin_layout Subsection
 longtable
 \end_layout
 
@@ -3360,6 +3327,10 @@ macros/latex/required/tools/
 longtable
 \family default
 パッケージは、 LyXが複数ページにわたる表を正しく出力することができるようになるために必要です。
+\end_layout
+
+\begin_layout Description
+
 \end_layout
 
 \begin_layout Subsection
@@ -3676,7 +3647,7 @@ macros/latex/contrib/bezos/
 \family sans
 accents
 \family default
-パッケージは、数式中でアクセントをつけたユニコード記号を、LyXがただしく組版するのに必要です。
+パッケージは、LyXが下にアクセントのついたunicode記号を正しく組版するのに必要です。
 \end_layout
 
 \begin_layout Subsection
@@ -3731,9 +3702,14 @@ macros/latex/contrib/bibtopic/
 \begin_layout Description
 備考： 
 \family sans
-bibtopic
+CJKutf8
 \family default
-パッケージは、BibTeXが生成する参考文献を節ごとに分割するのに使われます。
+パッケージ（
+\family sans
+CJK
+\family default
+バンドルの一部）は、LaTeX本体とCJKのUTF-8サポートとを統合します。これは、CJKとUTF-8エンコーディングおよびhyperrefとを同時に使ったと
+きに正しい出力を得るために必要です。
 \end_layout
 
 \begin_layout Subsection
@@ -3751,7 +3727,7 @@ arg   "CJKutf8"
 \end_layout
 
 \begin_layout Description
-CTAN: 
+URL: 
 \family typewriter
 language/chinese/CJK/
 \end_layout
@@ -3759,14 +3735,9 @@ language/chinese/CJK/
 \begin_layout Description
 備考： 
 \family sans
-CJKutf8
+dvipost
 \family default
-パッケージ（
-\family sans
-CJK
-\family default
-の一部）は、LaTeX本体とCJKのUTF-8サポートを統合します。これは、CJKとutf-8エンコーディングとhyperrefを同時に使う場合に、正しい出力を
-得るために必要です。
+はLaTeXやTeXが生成したDVIファイルの後処理器です。LyXが、変更追尾記号のDVI出力あるいはPo
 \end_layout
 
 \begin_layout Subsection
@@ -3944,7 +3915,7 @@ japanese
 \end_layout
 
 \begin_layout Description
-検出: 
+検出： 
 \begin_inset Info
 type  "package"
 arg   "japanese"
@@ -3954,20 +3925,20 @@ arg   "japanese"
 \end_layout
 
 \begin_layout Description
-CTAN: 
+CTAN： 
 \family typewriter
-language/japanese/japanese/
+language/japanese/japanese
 \end_layout
 
 \begin_layout Description
-備考: 
+備考： 
 \family sans
 babel japanese
 \family default
-オプションは、文書言語が「日本語」の時に、LyXが節見出しと日付を日本語出力できるようにするために必要です。このオプションを使用するには、日本語TeXシステムp
-TeX（CTAN: 
+オプションは、文書言語が「日本語」の時に、LyXが節見出しと日付を日本語で出力するために必要です。このオプションを使用するためには、日本語TeXシステムのpTe
+X（CTAN
 \family typewriter
-language/japanese/ptex/
+：language/japanese/ptex
 \family default
 ）が必要です。
 \end_layout
@@ -4066,7 +4037,7 @@ arg   "mhchem"
 \end_layout
 
 \begin_layout Description
-CTAN: 
+CTAN： 
 \family typewriter
 macros/latex/contrib/mhchem/
 \end_layout
@@ -4076,7 +4047,7 @@ macros/latex/contrib/mhchem/
 \family sans
 mhchem
 \family default
-パッケージは、LyXが数式中で化学式及び反応式を生成するのに必要です。
+パッケージは、LyXが、化学式と反応式を数式中で生成するのに必要です。
 \end_layout
 
 \begin_layout Subsection
@@ -4354,7 +4325,7 @@ macros/latex/contrib/carlisle/
 \family sans
 slashed
 \family default
-パッケージは、数式中でLyXが斜線付きのユニコード記号をただしく組版するために必要です。
+パッケージは、LyXがスラッシュのついた記号を数式中で正しく組版するのに必要です。
 \end_layout
 
 \begin_layout Subsection
@@ -4365,7 +4336,7 @@ subfig
 検出： 
 \begin_inset Info
 type  "package"
-arg   "subfigure"
+arg   "subfig"
 \end_inset
 
 
@@ -4439,8 +4410,8 @@ macros/latex/contrib/misc/
 \family sans
 ulem
 \family default
-パッケージは、単語間を結び複数行に渡ることが可能な、多様な下線と取消線および強調を提供します。本パッケージは、LyXが、変更追尾中の文書で取消線をPDFに出力す
-るのに必要です。
+パッケージは、複数の単語や行を越えることも可能な、様々な型の下線引きや取消線および強調を提供します。本パッケージは、LyXが、変更追跡が有効になっている文書で、
+取消線を引いた文章をPDFに出力するのに必要です。
 \end_layout
 
 \begin_layout Subsection

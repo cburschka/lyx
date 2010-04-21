@@ -1,0 +1,388 @@
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass scrartcl
+\begin_preamble
+\usepackage{ifpdf}
+
+\ifpdf
+
+\usepackage[colorlinks=true,
+ pdftitle=Formelnummerierung, pdfpagemode=none,
+ pdfpagelayout=OneColumn, pdfstartview=XYZ,
+ pdfauthor={Uwe Stohr},
+ pdfsubject={LaTeX/LyX numbering example},
+ pdfkeywords={LaTeX, numbering, LyX}]{hyperref}
+
+\else % if DVI
+
+\usepackage[colorlinks=true, hypertex]{hyperref}
+
+\fi
+
+% define Roman counter
+\newcounter{rom}
+\renewcommand{\therom}{\roman{rom}}
+
+% remember the original counter
+\newcommand{\c@org@eq}{}
+\let\c@org@eq\c@equation
+\newcommand{\org@theeq}{}
+\let\org@theeq\theequation
+
+% \setrom activates the Roman counter
+\newcommand{\setrom}{
+  \let\c@equation\c@rom
+  \let\theequation\therom}
+
+% \setarab activates the original Arabic counter
+\newcommand{\setarab}{
+  \let\c@equation\c@org@eq
+  \let\theequation\org@theeq}
+\end_preamble
+\options fleqn
+\use_default_options false
+\language japanese
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 2
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 4
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+この文書は、二つの数式カテゴリの使い方を示すものです。一つのカテゴリにはアラビア数字、もう一つはローマ数字で番号が振られています。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+A=B\label{eq:B}\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=C\label{eq:C}\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setrom
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=D\label{eq:D}\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=E\label{eq:E}\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setarab
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=F\label{eq:F}\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=G\label{eq:G}\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setrom
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=H\label{eq:H}\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=I\label{eq:I}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+相互参照：
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:B"
+
+\end_inset
+
+ , 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:C"
+
+\end_inset
+
+ , 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:F"
+
+\end_inset
+
+ , 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:G"
+
+\end_inset
+
+ , 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:D"
+
+\end_inset
+
+ , 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:E"
+
+\end_inset
+
+ , 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:H"
+
+\end_inset
+
+ , 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:I"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\begin_inset VSpace medskip
+\end_inset
+
+この例を作成するには、ローマ数字の数式のカウンタをまず定義しなくてはなりません。そのためには、LaTeXプリアンブルに以下のように入力します。
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcounter{rom}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+renewcommand{
+\backslash
+therom}{
+\backslash
+roman{rom}}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+アラビア数字カウンタ
+\series bold
+equation
+\series default
+の値を保存するには、プリアンブルに以下のように入力します。
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+c@org@eq}{}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+let
+\backslash
+c@org@eq
+\backslash
+c@equation
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+newcommand{
+\backslash
+org@theeq}{}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+let
+\backslash
+org@theeq
+\backslash
+theequation
+\end_layout
+
+\begin_layout Standard
+文書中で二つの連番スキームの間を切り替えるには、ローマ数字用に
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+setrom}{
+\backslash
+let
+\backslash
+c@equation
+\backslash
+c@rom
+\backslash
+let
+\backslash
+theequation
+\backslash
+therom}
+\end_layout
+
+\begin_layout Standard
+というコマンドをプリアンブルで定義し、アラビア数字用には
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+setarab}{
+\backslash
+let
+\backslash
+c@equation
+\backslash
+c@org@eq
+\backslash
+let
+\backslash
+theequation
+\backslash
+org@theeq}
+\end_layout
+
+\begin_layout Standard
+と定義します。
+\end_layout
+
+\begin_layout Standard
+各数式は、既定ではアラビア数字で連番が振られます。ローマ数字に切り替えるにはTeXコードで
+\series bold
+
+\backslash
+setrom
+\series default
+コマンドを挿入します。
+\series bold
+
+\backslash
+setarab
+\series default
+コマンドで連番はアラビア数字に切り替わります。
+\end_layout
+
+\end_body
+\end_document

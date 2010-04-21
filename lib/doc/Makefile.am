@@ -4,12 +4,12 @@ EXTRA_DIST = README.Documentation
 
 docdir = $(pkgdatadir)/doc
 dist_doc_DATA = \
+	Additional.lyx \
 	Customization.lyx \
 	DummyTextDocument.txt \
 	DummyDocument1.lyx \
 	DummyDocument2.lyx \
 	EmbeddedObjects.lyx \
-	Additional.lyx \
 	Formula-numbering.lyx \
 	Intro.lyx \
 	LaTeXConfig.lyx \
@@ -70,12 +70,12 @@ dist_dadoc_DATA = \
 
 dedocdir = $(docdir)/de
 dist_dedoc_DATA = \
+	de/Additional.lyx \
 	de/Customization.lyx \
 	de/DummyDocument1.lyx \
 	de/DummyDocument2.lyx \
 	de/DummyTextDocument.txt \
 	de/EmbeddedObjects.lyx \
-	de/Additional.lyx \
 	de/Formelnummerierung.lyx \
 	de/Intro.lyx \
 	de/Math.lyx \
@@ -99,12 +99,12 @@ dist_declipartdoc_DATA = \
 
 esdocdir = $(docdir)/es
 dist_esdoc_DATA = \
+	es/Additional.lyx \
 	es/Customization.lyx \
 	es/DocumentoPostizo1.lyx \
 	es/DocumentoPostizo2.lyx \
 	es/DocumentoTextoPostizo.txt \
 	es/EmbeddedObjects.lyx \
-	es/Additional.lyx \
 	es/Formula-numbering.lyx \
 	es/Intro.lyx \
 	es/Math.lyx \
@@ -138,12 +138,12 @@ dist_eudoc_DATA = \
 
 frdocdir = $(docdir)/fr
 dist_frdoc_DATA = \
+	fr/Additional.lyx \
 	fr/Customization.lyx \
 	fr/DocumentBidon1.lyx \
 	fr/DocumentBidon2.lyx \
 	fr/DocumentTexteBidon.txt \
 	fr/EmbeddedObjects.lyx \
-	fr/Additional.lyx \
 	fr/Formula-numbering.lyx \
 	fr/Intro.lyx \
 	fr/Math.lyx \
@@ -203,6 +203,11 @@ dist_itclipartdoc_DATA = \
 jadocdir = $(docdir)/ja
 dist_jadoc_DATA = \
 	ja/Additional.lyx \
+	ja/Customization.lyx \
+	ja/DummyDocument1.lyx \
+	ja/DummyDocument2.lyx \
+	ja/EmbeddedObjects.lyx \
+	ja/Formula-numbering.lyx \
 	ja/Intro.lyx \
 	ja/LaTeXConfig.lyx \
 	ja/Math.lyx \
@@ -212,7 +217,9 @@ dist_jadoc_DATA = \
 
 jaclipartdocdir = $(jadocdir)/clipart
 dist_jaclipartdoc_DATA = \
+	ja/clipart/ChildDocumentQt4.png \
 	ja/clipart/ERT.png \
+	ja/clipart/ExternalMaterialQt4.png \
 	ja/clipart/floatQt4.png \
 	ja/clipart/footnoteQt4.png \
 	ja/clipart/referenceQt4.png \
