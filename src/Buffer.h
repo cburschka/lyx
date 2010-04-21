@@ -504,7 +504,7 @@ public:
 	///
 	void moveAutosaveFile(support::FileName const & old) const;
 	///
-	support::FileName getAutosaveFilename() const;
+	support::FileName getAutosaveFileName() const;
 
 	/// return the format of the buffer on a string
 	std::string bufferFormat() const;

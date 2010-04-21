@@ -1365,7 +1365,7 @@ void GuiView::autoSave()
 #if (QT_VERSION >= 0x040400)
 	GuiViewPrivate::busyBuffers.insert(buffer);
 	QFuture<docstring> f = QtConcurrent::run(GuiViewPrivate::saveAndDestroy, buffer, buffer->clone(),
-		buffer->getAutosaveFilename());
+		buffer->getAutosaveFileName());
 	d.autosave_watcher_.setFuture(f);
 #else
 	buffer->autoSave();
@@ -2128,7 +2128,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 		}
 	}
 
-	FileName oldauto = b.getAutosaveFilename();
+	FileName oldauto = b.getAutosaveFileName();
 
 	// Ok, change the name of the buffer
 	b.setFileName(fname.absFileName());
@@ -2141,7 +2141,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 	b.moveAutosaveFile(oldauto);
 	
 	if (!saveBuffer(b)) {
-		oldauto = b.getAutosaveFilename();
+		oldauto = b.getAutosaveFileName();
 		b.setFileName(oldname.absFileName());
 		b.setUnnamed(unnamed);
 		b.saveCheckSum(oldname);

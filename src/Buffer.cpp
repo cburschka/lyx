@@ -3141,7 +3141,7 @@ int AutoSaveBuffer::generateChild()
 } // namespace anon
 
 
-FileName Buffer::getAutosaveFilename() const
+FileName Buffer::getAutosaveFileName() const
 {
 	// if the document is unnamed try to save in the backup dir, else
 	// in the default document path, and as a last try in the filePath, 
@@ -3160,7 +3160,7 @@ FileName Buffer::getAutosaveFilename() const
 
 void Buffer::removeAutosaveFile() const
 {
-	FileName const f = getAutosaveFilename();
+	FileName const f = getAutosaveFileName();
 	if (f.exists())
 		f.removeFile();
 }
@@ -3168,7 +3168,7 @@ void Buffer::removeAutosaveFile() const
 
 void Buffer::moveAutosaveFile(support::FileName const & oldauto) const
 {
-	FileName const newauto = getAutosaveFilename();
+	FileName const newauto = getAutosaveFileName();
 	oldauto.refresh();
 	if (newauto != oldauto && oldauto.exists())
 		if (!oldauto.moveTo(newauto))
@@ -3187,7 +3187,7 @@ void Buffer::autoSave() const
 
 	// emit message signal.
 	message(_("Autosaving current document..."));
-	AutoSaveBuffer autosave(*this, getAutosaveFilename());
+	AutoSaveBuffer autosave(*this, getAutosaveFileName());
 	autosave.start();
 
 	d->bak_clean = true;
