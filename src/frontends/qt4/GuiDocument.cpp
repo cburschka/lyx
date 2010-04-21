@@ -655,6 +655,12 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(xetexChanged(bool)));
 	connect(outputModule->defaultFormatCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
+	connect(outputModule->mathimgSB, SIGNAL(valueChanged(double)),
+		this, SLOT(change_adaptor()));
+	connect(outputModule->strictCB, SIGNAL(stateChanged(int)),
+		this, SLOT(change_adaptor()));
+	connect(outputModule->mathoutCB, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(change_adaptor()));
 
 
 	// fonts
@@ -2255,6 +2261,15 @@ void GuiDocument::applyView()
 	bool const xetex = outputModule->xetexCB->isChecked();
 	bp_.useXetex = xetex;
 
+	int mathfmt = outputModule->mathoutCB->currentIndex();
+	if (mathfmt == -1)
+		mathfmt = 0;
+	BufferParams::MathOutput const mo =
+		static_cast<BufferParams::MathOutput>(mathfmt);
+	bp_.html_math_output = mo;
+	bp_.html_be_strict = outputModule->strictCB->isChecked();
+	bp_.html_math_img_scale = outputModule->mathimgSB->value();
+
 	// fonts
 	if (xetex) {
 		if (fontModule->fontsRomanCO->currentIndex() == 0)
@@ -2680,6 +2695,10 @@ void GuiDocument::paramsToDialog()
 	outputModule->xetexCB->setEnabled(bp_.baseClass()->outputType() == lyx::LATEX);
 	outputModule->xetexCB->setChecked(
 		bp_.baseClass()->outputType() == lyx::LATEX && bp_.useXetex);
+
+	outputModule->mathimgSB->setValue(bp_.html_math_img_scale);
+	outputModule->mathoutCB->setCurrentIndex(bp_.html_math_output);
+	outputModule->strictCB->setChecked(bp_.html_be_strict);
 
 	// Fonts
 	updateFontsize(documentClass().opt_fontsize(),

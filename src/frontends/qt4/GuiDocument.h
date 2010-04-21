@@ -167,6 +167,7 @@ private:
 	void useClassDefaults();
 	///
 	void setLayoutComboByIDString(std::string const & idString);
+
 	/// available classes
 	GuiIdListModel classes_model_;
 	/// available modules
