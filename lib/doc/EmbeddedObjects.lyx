@@ -475,7 +475,7 @@ Maintain aspect ratio
 \end_inset
 
 Images can be opened in a program of your choice by right-clicking on it
- choosing the entry 
+ and choosing the entry 
 \family sans
 Edit
 \begin_inset space ~
@@ -483,7 +483,7 @@ Edit
 
 externally
 \family default
- in the appearing context menu.
+ in the context menu.
  The program can be set for every image format in the file format settings
  in LyX's preferences.
 \end_layout
@@ -843,7 +843,7 @@ reference "fig:escher"
 \end_inset
 
 .
- More about the caption placement is described in section
+ More about caption placement is described in section
 \begin_inset space ~
 \end_inset
 
@@ -1013,7 +1013,7 @@ the figure above
 \begin_inset Quotes erd
 \end_inset
 
-, because as LaTeX will reposition the floats in the final document, it
+, because LaTeX will reposition the floats in the final document and it
  might not be 
 \begin_inset Quotes eld
 \end_inset
@@ -1259,7 +1259,7 @@ reference "cha:Output-File-Formats"
 
 \end_inset
 
-, every output document format allows only a few image formats.
+, each output document format allows only a few image formats.
  LyX uses therefore the program 
 \family typewriter
 ImageMagick
@@ -1674,7 +1674,7 @@ can be
 
 , because you can convert any bitmap image to a PDF or EPS-image and the
  result will still be a bitmap image.
- In this cases only a header with the image properties is added to the original
+ In such cases only a header with the image properties is added to the original
  image
 \begin_inset Foot
 status collapsed
@@ -1749,7 +1749,7 @@ Insert\SpecialChar \menuseparator
 Table
 \family default
 .
- The toolbar button offers you a graphical selection: Move the mouse to
+ The toolbar button offers you a graphical selection: move the mouse to
  set the column/row number of the table that should be created and then
  press a mouse button.
  When you use the menu to create a table, a dialog will appear, asking you
@@ -2025,8 +2025,8 @@ reference "sub:Multiple-Lines-in"
 \end_inset
 
 .
- If you set no width, the column is as wide as their widest cell content
- is.
+ If you set no width, the column is as wide as the content of the widest
+ cell.
 \begin_inset Newline newline
 \end_inset
 
@@ -2046,7 +2046,7 @@ reference "sub:Multicolumns"
 \begin_inset Newline newline
 \end_inset
 
-The rotate check boxes rotates the current cell, a selection, or the whole
+The rotate check boxes rotate the current cell, a selection, or the whole
  table counter-clockwise by 90°.
  The rotation is not shown within LyX, only in the output.
 \begin_inset Newline newline
@@ -2152,7 +2152,7 @@ longtable
 \end_inset
 
  that can run over several pages.
- Section
+ Sections
 \begin_inset space ~
 \end_inset
 
@@ -2303,7 +2303,7 @@ The toolbar has the following icons:
 \end_inset
 
  adds lines around the current or selected cells - if the current cell no
- multicolumn this also affects the current row and column
+ multicolumn cell this also affects the current row and column
 \end_layout
 
 \begin_layout Labeling
@@ -2315,7 +2315,7 @@ The toolbar has the following icons:
 \end_inset
 
  deletes all lines of the current or selected cells - if the current cell
- no multicolumn this also affects the current row and column
+ no multicolumn cell this also affects the current row and column
 \end_layout
 
 \begin_layout Labeling
@@ -2763,7 +2763,7 @@ Table
 \end_inset
 
  (# is the actual table number).
- You can insert tables to the float above or below the caption.
+ You can insert tables in the float above or below the caption.
 \end_layout
 
 \begin_layout Standard
@@ -2784,7 +2784,7 @@ reference "tab:a table float"
 \begin_layout Standard
 Having the caption above the table is the common rule that is unfortunately
  not supported in LaTeX's standard classes.
- That means if you are using the document classes 
+ This means that, if you are using the document classes 
 \family sans
 article
 \family default
@@ -2800,7 +2800,7 @@ letter
 \family sans
 report
 \family default
- there will be no space between the caption and the table.
+, there will be no space between the caption and the table.
  To insert the needed space, add the following option to the load command
  of the LaTeX-package 
 \series bold
@@ -2988,7 +2988,7 @@ First
 header
 \family default
  is defined.
- This therefore called the main header.
+ This is therefore called the main header.
 \end_layout
 
 \begin_layout Description
@@ -3018,7 +3018,7 @@ Last
 \begin_inset space ~
 \end_inset
 
-footer: The current row is defined to be a footer row that appear on the
+footer: The current row is defined to be a footer row that appears on the
  last page of the longtable.
 \end_layout
 
@@ -5285,7 +5285,7 @@ Longtables ! Alignment
 
 \begin_layout Standard
 Longtables are by default centered.
- In contrary to the alignment of the table columns and row, the table alignment
+ Unlike the alignment of the table columns and rows, the table alignment
  can currently not be changed in the table dialog.
  To change the alignment of longtables you have to change the value of the
  lengths 
@@ -5314,7 +5314,7 @@ LTleft}{value}
 \end_layout
 
 \begin_layout Standard
-Where the value can have any of the units listed in Table
+where the value can have any of the units listed in Table
 \begin_inset space ~
 \end_inset
 
