@@ -104,7 +104,7 @@ void GuiBranches::updateView()
 			coloritem.fill(itemcolor);
 			newItem->setIcon(2, QIcon(coloritem));
 		}
-		newItem->setText(3, it->hasFilenameSuffix() ? qt_("Yes") : qt_("No"));
+		newItem->setText(3, it->hasFileNameSuffix() ? qt_("Yes") : qt_("No"));
 		// restore selected branch
 		if (bname == sel_branch) {
 			branchesTW->setCurrentItem(newItem);
@@ -287,7 +287,7 @@ void GuiBranches::toggleSuffix(QTreeWidgetItem * item)
 
 	Branch * branch = branchlist_.find(qstring_to_ucs4(sel_branch));
 	if (branch) {
-		branch->setFilenameSuffix(!branch->hasFilenameSuffix());
+		branch->setFileNameSuffix(!branch->hasFileNameSuffix());
 		newBranchLE->clear();
 		updateView();
 	}

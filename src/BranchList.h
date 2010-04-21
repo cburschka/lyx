@@ -56,9 +56,9 @@ public:
 	/** If true, the branch name will be appended
 	 *  to the output file name.
 	 */
-	bool hasFilenameSuffix() const;
+	bool hasFileNameSuffix() const;
 	/// Select/deselect filename suffix property.
-	void setFilenameSuffix(bool);
+	void setFileNameSuffix(bool);
 	///
 	RGBColor const & color() const;
 	///
@@ -120,7 +120,7 @@ public:
 	 */
 	bool rename(docstring const &, docstring const &, bool const merge = false);
 	/// get the complete filename suffix
-	docstring getFilenameSuffix() const;
+	docstring getFileNameSuffix() const;
 
 private:
 	///

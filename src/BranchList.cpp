@@ -78,13 +78,13 @@ bool Branch::setSelected(bool b)
 }
 
 
-bool Branch::hasFilenameSuffix() const
+bool Branch::hasFileNameSuffix() const
 {
 	return filenameSuffix_;
 }
 
 
-void Branch::setFilenameSuffix(bool b)
+void Branch::setFileNameSuffix(bool b)
 {
 	filenameSuffix_ = b;
 }
@@ -148,7 +148,7 @@ bool BranchList::add(docstring const & s)
 			Branch br;
 			br.setBranch(name);
 			br.setSelected(false);
-			br.setFilenameSuffix(false);
+			br.setFileNameSuffix(false);
 			list.push_back(br);
 		}
 		if (j == docstring::npos)
@@ -188,12 +188,12 @@ bool BranchList::rename(docstring const & oldname,
 }
 
 
-docstring BranchList::getFilenameSuffix() const
+docstring BranchList::getFileNameSuffix() const
 {
 	docstring result;
 	List::const_iterator it = list.begin();
 	for (; it != list.end(); ++it) {
-		if (it->isSelected() && it->hasFilenameSuffix())
+		if (it->isSelected() && it->hasFileNameSuffix())
 			result += "-" + it->branch();
 	}
 	return support::subst(result, from_ascii("/"), from_ascii("_"));

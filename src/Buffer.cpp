@@ -553,7 +553,7 @@ string Buffer::latexName(bool const no_path) const
 FileName Buffer::Impl::exportFileName() const
 {
 	docstring const branch_suffix =
-		params.branchlist().getFilenameSuffix();
+		params.branchlist().getFileNameSuffix();
 	if (branch_suffix.empty())
 		return filename;
 
