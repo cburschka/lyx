@@ -259,7 +259,7 @@ public:
 	CoordCache const & coordCache() const;
 
 	///
-	Point getPos(DocIterator const & dit, bool boundary) const;
+	Point getPos(DocIterator const & dit) const;
 	/// is the paragraph of the cursor visible ?
 	bool paragraphVisible(DocIterator const & dit) const;
 	/// is the cursor currently visible in the view

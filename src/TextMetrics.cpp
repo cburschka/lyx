@@ -2218,7 +2218,7 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 	cur.boundary(begin_boundary);
 	int x1 = cursorX(beg.top(), begin_boundary);
 	int x2 = cursorX(end.top(), end_boundary);
-	int const y1 = bv_->getPos(cur, cur.boundary()).y_ - row.ascent();
+	int const y1 = bv_->getPos(cur).y_ - row.ascent();
 	int const y2 = y1 + row.height();
 
 	int const rm = text_->isMainText() ? bv_->rightMargin() : 0;
@@ -2307,8 +2307,10 @@ void TextMetrics::completionPosAndDim(Cursor const & cur, int & x, int & y,
 	wordStart.pos() -= word.length();
 
 	// get position on screen of the word start and end
-	Point lxy = cur.bv().getPos(wordStart, false);
-	Point rxy = cur.bv().getPos(bvcur, bvcur.boundary());
+	//FIXME: Is it necessary to explicitly set this to false?
+	wordStart.boundary(false);
+	Point lxy = cur.bv().getPos(wordStart);
+	Point rxy = cur.bv().getPos(bvcur);
 
 	// calculate dimensions of the word
 	dim = rowHeight(bvcur.pit(), wordStart.pos(), bvcur.pos(), false);

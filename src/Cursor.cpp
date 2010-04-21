@@ -215,7 +215,9 @@ bool bruteFind3(Cursor & cur, int x, int y, bool up)
 		// avoid invalid nesting when selecting
 		if (bv.cursorStatus(it) == CUR_INSIDE
 				&& (!cur.selection() || positionable(it, cur.realAnchor()))) {
-			Point p = bv.getPos(it, false);
+			// If this function is ever used again, check whether this
+			// is the same as "bv.getPos(it, false)" with boundary = false.
+			Point p = bv.getPos(it);
 			int xo = p.x_;
 			int yo = p.y_;
 			if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
@@ -467,7 +469,7 @@ int Cursor::currentMode()
 
 void Cursor::getPos(int & x, int & y) const
 {
-	Point p = bv().getPos(*this, boundary());
+	Point p = bv().getPos(*this);
 	x = p.x_;
 	y = p.y_;
 }
@@ -1886,7 +1888,7 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 
 	// with and without selection are handled differently
 	if (!selection()) {
-		int yo = bv().getPos(*this, boundary()).y_;
+		int yo = bv().getPos(*this).y_;
 		Cursor old = *this;
 		// To next/previous row
 		if (up)

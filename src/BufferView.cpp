@@ -393,7 +393,7 @@ bool BufferView::fitCursor()
 			theFontMetrics(d->cursor_.getFont().fontInfo());
 		int const asc = fm.maxAscent();
 		int const des = fm.maxDescent();
-		Point const p = getPos(d->cursor_, d->cursor_.boundary());
+		Point const p = getPos(d->cursor_);
 		if (p.y_ - asc >= 0 && p.y_ + des < height_)
 			return false;
 	}
@@ -646,7 +646,7 @@ void BufferView::setCursorFromScrollbar()
 		newy = last;
 		break;
 	case CUR_INSIDE:
-		int const y = getPos(oldcur, oldcur.boundary()).y_;
+		int const y = getPos(oldcur).y_;
 		newy = min(last, max(y, first));
 		if (y == newy) 
 			return;
@@ -681,7 +681,7 @@ Change const BufferView::getCurrentChange() const
 // FIXME: This does not work within mathed!
 CursorStatus BufferView::cursorStatus(DocIterator const & dit) const
 {
-	Point const p = getPos(dit, dit.boundary());
+	Point const p = getPos(dit);
 	if (p.y_ < 0)
 		return CUR_ABOVE;
 	if (p.y_ > workHeight())
@@ -1580,13 +1580,13 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_SCREEN_UP:
 	case LFUN_SCREEN_DOWN: {
-		Point p = getPos(cur, cur.boundary());
+		Point p = getPos(cur);
 		// This code has been commented out to enable to scroll down a
 		// document, even if there are large insets in it (see bug #5465).
 		/*if (p.y_ < 0 || p.y_ > height_) {
 			// The cursor is off-screen so recenter before proceeding.
 			showCursor();
-			p = getPos(cur, cur.boundary());
+			p = getPos(cur);
 		}*/
 		int const scrolled = scroll(act == LFUN_SCREEN_UP
 			? -height_ : height_);
@@ -1621,10 +1621,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			cur.finishUndo();
 			break;
 		}
-		int y = getPos(cur, cur.boundary()).y_;
+		int y = getPos(cur).y_;
 		int const ymin = y - height_ + defaultRowHeight();
 		while (y > ymin && cur.up())
-			y = getPos(cur, cur.boundary()).y_;
+			y = getPos(cur).y_;
 
 		cur.finishUndo();
 		dr.update(Update::SinglePar | Update::FitCursor);
@@ -1638,10 +1638,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			cur.finishUndo();
 			break;
 		}
-		int y = getPos(cur, cur.boundary()).y_;
+		int y = getPos(cur).y_;
 		int const ymax = y + height_ - defaultRowHeight();
 		while (y < ymax && cur.down())
-			y = getPos(cur, cur.boundary()).y_;
+			y = getPos(cur).y_;
 
 		cur.finishUndo();
 		dr.update(Update::SinglePar | Update::FitCursor);
@@ -2518,7 +2518,7 @@ Point BufferView::coordOffset(DocIterator const & dit, bool boundary) const
 }
 
 
-Point BufferView::getPos(DocIterator const & dit, bool boundary) const
+Point BufferView::getPos(DocIterator const & dit) const
 {
 	if (!paragraphVisible(dit))
 		return Point(-1, -1);
@@ -2526,7 +2526,7 @@ Point BufferView::getPos(DocIterator const & dit, bool boundary) const
 	CursorSlice const & bot = dit.bottom();
 	TextMetrics const & tm = textMetrics(bot.text());
 
-	Point p = coordOffset(dit, boundary); // offset from outer paragraph
+	Point p = coordOffset(dit, dit.boundary()); // offset from outer paragraph
 	p.y_ += tm.parMetrics(bot.pit()).position();
 	return p;
 }
@@ -2549,7 +2549,7 @@ void BufferView::cursorPosAndHeight(Point & p, int & h) const
 	int const asc = fm.maxAscent();
 	int const des = fm.maxDescent();
 	h = asc + des;
-	p = getPos(cur, cur.boundary());
+	p = getPos(cur);
 	p.y_ -= asc;
 }
 
