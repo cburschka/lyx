@@ -191,7 +191,7 @@ private:
 /// Toolbar store providing access to individual toolbars by name.
 typedef map<string, GuiToolbar *> ToolbarMap;
 
-typedef boost::shared_ptr<Dialog> DialogPtr;
+typedef shared_ptr<Dialog> DialogPtr;
 
 } // namespace anon
 

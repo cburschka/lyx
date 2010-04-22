@@ -222,7 +222,7 @@ private:
 	/** cache_ allows easy retrieval of already-generated images
 	 *  using the LaTeX snippet as the identifier.
 	 */
-	typedef boost::shared_ptr<PreviewImage> PreviewImagePtr;
+	typedef shared_ptr<PreviewImage> PreviewImagePtr;
 	///
 	typedef map<string, PreviewImagePtr> Cache;
 	///

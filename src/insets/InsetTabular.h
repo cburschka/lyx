@@ -28,7 +28,7 @@
 #include "Layout.h"
 #include "Length.h"
 
-#include <boost/shared_ptr.hpp>
+#include "support/shared_ptr.h"
 
 #include <iosfwd>
 #include <vector>
@@ -451,13 +451,13 @@ public:
 	///
 	// end longtable support
 	///
-	boost::shared_ptr<InsetTableCell> cellInset(idx_type cell) const;
+	shared_ptr<InsetTableCell> cellInset(idx_type cell) const;
 	///
-	boost::shared_ptr<InsetTableCell> cellInset(row_type row,
+	shared_ptr<InsetTableCell> cellInset(row_type row,
 						  col_type column) const;
 	///
 	void setCellInset(row_type row, col_type column,
-			  boost::shared_ptr<InsetTableCell>) const;
+			  shared_ptr<InsetTableCell>) const;
 	/// Search for \param inset in the tabular, with the
 	///
 	void validate(LaTeXFeatures &) const;
@@ -509,7 +509,7 @@ public:
 		///
 		Length p_width; // this is only set for multicolumn!!!
 		///
-		boost::shared_ptr<InsetTableCell> inset;
+		shared_ptr<InsetTableCell> inset;
 	};
 	CellData & cellInfo(idx_type cell) const;
 	///
@@ -807,9 +807,9 @@ public:
 	/// number of cells
 	size_t nargs() const { return tabular.numberofcells; }
 	///
-	boost::shared_ptr<InsetTableCell const> cell(idx_type) const;
+	shared_ptr<InsetTableCell const> cell(idx_type) const;
 	///
-	boost::shared_ptr<InsetTableCell> cell(idx_type);
+	shared_ptr<InsetTableCell> cell(idx_type);
 	///
 	Text * getText(int) const;
 

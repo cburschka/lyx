@@ -159,7 +159,7 @@ void LoaderQueue::touch(Cache::ItemPtr const & item)
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef boost::shared_ptr<Image> ImagePtr;
+typedef shared_ptr<Image> ImagePtr;
 
 class Loader::Impl : public boost::signals::trackable {
 public:

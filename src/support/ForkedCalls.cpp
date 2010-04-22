@@ -520,7 +520,7 @@ string const getChildErrorMessage()
 
 namespace ForkedCallsController {
 
-typedef boost::shared_ptr<ForkedProcess> ForkedProcessPtr;
+typedef shared_ptr<ForkedProcess> ForkedProcessPtr;
 typedef list<ForkedProcessPtr> ListType;
 typedef ListType::iterator iterator;
 

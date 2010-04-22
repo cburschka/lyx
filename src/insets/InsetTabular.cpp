@@ -70,7 +70,6 @@
 using namespace std;
 using namespace lyx::support;
 
-using boost::shared_ptr;
 
 
 namespace lyx {

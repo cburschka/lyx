@@ -20,7 +20,7 @@
 #ifndef GRAPHICSCACHE_H
 #define GRAPHICSCACHE_H
 
-#include <boost/shared_ptr.hpp>
+#include "support/shared_ptr.h"
 
 #include <vector>
 #include <string>
@@ -59,13 +59,13 @@ public:
 	 *  Returns an empty container if there is no such item.
 	 *
 	 *  IMPORTANT: whatever uses an image must make a local copy of this
-	 *  ItemPtr. The boost::shared_ptr<>::use_count() function is
+	 *  ItemPtr. The shared_ptr<>::use_count() function is
 	 *  used to ascertain whether or not to remove the item from the cache
 	 *  when remove(file) is called.
 	 *
 	 *  You have been warned!
 	 */
-	typedef boost::shared_ptr<CacheItem> ItemPtr;
+	typedef shared_ptr<CacheItem> ItemPtr;
 	///
 	ItemPtr const item(support::FileName const & file) const;
 

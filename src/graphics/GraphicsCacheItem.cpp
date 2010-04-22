@@ -107,7 +107,7 @@ public:
 	bool remove_loaded_file_;
 
 	/// The image and its loading status.
-	boost::shared_ptr<Image> image_;
+	shared_ptr<Image> image_;
 	///
 	ImageStatus status_;
 

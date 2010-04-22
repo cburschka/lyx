@@ -14,7 +14,7 @@
 #ifndef FORKEDCALLS_H
 #define FORKEDCALLS_H
 
-#include <boost/shared_ptr.hpp>
+#include "support/shared_ptr.h"
 #include <boost/signal.hpp>
 
 #ifdef HAVE_SYS_TYPES_H
@@ -41,7 +41,7 @@ public:
 	///
 	virtual ~ForkedProcess() {}
 	///
-	virtual boost::shared_ptr<ForkedProcess> clone() const = 0;
+	virtual shared_ptr<ForkedProcess> clone() const = 0;
 
 	/** A SignalType signal can be emitted once the forked process
 	 *  has finished. It passes:
@@ -62,7 +62,7 @@ public:
 	 *
 	 *  It doesn't matter if the slot disappears, SigC takes care of that.
 	 */
-	typedef boost::shared_ptr<SignalType> SignalTypePtr;
+	typedef shared_ptr<SignalType> SignalTypePtr;
 
 	/** Invoking the following methods makes sense only if the command
 	 *  is running asynchronously!
@@ -151,8 +151,8 @@ private:
 class ForkedCall : public ForkedProcess {
 public:
 	///
-	virtual boost::shared_ptr<ForkedProcess> clone() const {
-		return boost::shared_ptr<ForkedProcess>(new ForkedCall(*this));
+	virtual shared_ptr<ForkedProcess> clone() const {
+		return shared_ptr<ForkedProcess>(new ForkedCall(*this));
 	}
 
 	/** Start the child process.

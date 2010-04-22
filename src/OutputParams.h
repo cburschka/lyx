@@ -13,7 +13,7 @@
 #define OUTPUTPARAMS_H
 
 
-#include <boost/shared_ptr.hpp>
+#include "support/shared_ptr.h"
 #include "Changes.h"
 
 
@@ -165,7 +165,7 @@ public:
 	    This is a hack: Make it possible to add stuff to constant
 	    OutputParams instances.
 	*/
-	boost::shared_ptr<ExportData> exportdata;
+	shared_ptr<ExportData> exportdata;
 
 	/** Whether we are inside a comment inset. Insets that are including
 	 *  external files like InsetGraphics, InsetInclude and InsetExternal

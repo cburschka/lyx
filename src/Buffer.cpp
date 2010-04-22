@@ -103,7 +103,7 @@
 #include "support/types.h"
 
 #include "support/bind.h"
-#include <boost/shared_ptr.hpp>
+#include "support/shared_ptr.h"
 
 #include <algorithm>
 #include <fstream>
@@ -3067,9 +3067,9 @@ public:
 	AutoSaveBuffer(Buffer const & buffer, FileName const & fname)
 		: buffer_(buffer), fname_(fname) {}
 	///
-	virtual boost::shared_ptr<ForkedProcess> clone() const
+	virtual shared_ptr<ForkedProcess> clone() const
 	{
-		return boost::shared_ptr<ForkedProcess>(new AutoSaveBuffer(*this));
+		return shared_ptr<ForkedProcess>(new AutoSaveBuffer(*this));
 	}
 	///
 	int start()

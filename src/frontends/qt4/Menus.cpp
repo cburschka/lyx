@@ -69,7 +69,7 @@
 #include <QMenuBar>
 #include <QString>
 
-#include <boost/shared_ptr.hpp>
+#include "support/shared_ptr.h"
 
 #include <algorithm>
 #include <vector>
@@ -190,7 +190,7 @@ public:
 		func_.setOrigin(origin);
 	}
 
-	// boost::shared_ptr<MenuDefinition> needs this apprently...
+	// shared_ptr<MenuDefinition> needs this apprently...
 	~MenuItem() {}
 
 	/// The label of a given menuitem
