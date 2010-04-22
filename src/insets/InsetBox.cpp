@@ -9,10 +9,8 @@
  *
  * Full author contact details are available in file CREDITS.
  */
-#if 1
+
 #include <config.h>
-
-
 
 #include "InsetBox.h"
 
@@ -38,7 +36,6 @@
 #include "frontends/Application.h"
 
 #include <sstream>
-
 
 using namespace std;
 using namespace lyx::support;
@@ -275,7 +272,6 @@ int InsetBox::latex(odocstream & os, OutputParams const & runparams) const
 	if (stdwidth)
 		os << "\\noindent";
 
-
 	switch (btype) {
 	case Frameless:
 		break;
@@ -290,14 +286,14 @@ int InsetBox::latex(odocstream & os, OutputParams const & runparams) const
 			// Special widths, see usrguide §3.5
 			// FIXME UNICODE
 			if (params_.special != "none") {
-				os << "["/* << params_.width.value()*/ << (double) 1
+				os << "[" << params_.width.value()
 				   << '\\' << from_utf8(params_.special)
 				   << ']';
-			} /*else
+			} else
 				os << '[' << from_ascii(width_string)
 				   << ']';
 			if (params_.hor_pos != 'c')
-				os << "[" << params_.hor_pos << "]";*/
+				os << "[" << params_.hor_pos << "]";
 		}
 
 		os << "{";
@@ -318,7 +314,7 @@ int InsetBox::latex(odocstream & os, OutputParams const & runparams) const
 		os << "\\doublebox{";
 		break;
 	}
-	#if 0
+
 	if (params_.inner_box) {
 		if (params_.use_parbox)
 			os << "\\parbox";
@@ -396,11 +392,9 @@ int InsetBox::latex(odocstream & os, OutputParams const & runparams) const
 	i += 2;
 
 	return i;
-#endif
-	return 1;
 }
 
-#else
+
 int InsetBox::plaintext(odocstream & os, OutputParams const & runparams) const
 {
 	BoxType const btype = boxtranslator().find(params_.type);
@@ -616,6 +610,5 @@ void InsetBoxParams::read(Lexer & lex)
 	lex >> "height_special" >> height_special;
 }
 
-#endif
-} // namespace lyx
 
+} // namespace lyx
