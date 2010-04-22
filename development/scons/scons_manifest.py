@@ -281,6 +281,7 @@ src_client_extra_files = Split('''
 
 
 src_support_header_files = Split('''
+    bind.h
     convert.h
     copied_ptr.h
     debug.h
@@ -303,6 +304,7 @@ src_support_header_files = Split('''
     lyxlib.h
     lyxtime.h
     Messages.h
+    numpunct_lyx_char_type.h
     os.h
     os_win32.h
     Package.h
@@ -310,6 +312,7 @@ src_support_header_files = Split('''
     ProgressInterface.h
     qstring_helpers.h
     RandomAccessList.h
+    shared_ptr.h
     socktools.h
     Systemcall.h
     SystemcallPrivate.h
