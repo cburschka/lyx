@@ -68,8 +68,9 @@ public:
 };
 
 
+#if defined(_MSC_VER) && (_MSC_VER >= 1600)
 extern template class std::numpunct<lyx::char_type>;
-extern template class std::basic_ofstream<char_type>;
+#endif
 
 /// UCS4 input stringstream
 typedef std::basic_istringstream<char_type> idocstringstream;
