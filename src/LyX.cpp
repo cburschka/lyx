@@ -62,7 +62,7 @@
 #include "support/Path.h"
 #include "support/Systemcall.h"
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 #include <boost/scoped_ptr.hpp>
 
 #include <algorithm>
@@ -484,7 +484,7 @@ bool LyX::loadFiles()
 			ErrorList const & el = buf->errorList("Parse");
 			if (!el.empty())
 				for_each(el.begin(), el.end(),
-				boost::bind(&LyX::printError, this, _1));
+				bind(&LyX::printError, this, _1));
 		}
 		else {
 			pimpl_->buffer_list_.release(buf);

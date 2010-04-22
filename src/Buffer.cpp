@@ -102,7 +102,7 @@
 #include "support/textutils.h"
 #include "support/types.h"
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 #include <boost/shared_ptr.hpp>
 
 #include <algorithm>
@@ -1656,7 +1656,7 @@ void Buffer::validate(LaTeXFeatures & features) const
 	updateMacros();
 
 	for_each(paragraphs().begin(), paragraphs().end(),
-		 boost::bind(&Paragraph::validate, _1, boost::ref(features)));
+		 bind(&Paragraph::validate, _1, boost::ref(features)));
 
 	if (lyxerr.debugging(Debug::LATEX)) {
 		features.showStruct();

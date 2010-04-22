@@ -27,7 +27,7 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 
 using namespace std;
 
@@ -36,14 +36,14 @@ namespace lyx {
 
 RenderGraphic::RenderGraphic(Inset const * inset)
 {
-	loader_.connect(boost::bind(&Inset::updateFrontend, inset));
+	loader_.connect(bind(&Inset::updateFrontend, inset));
 }
 
 
 RenderGraphic::RenderGraphic(RenderGraphic const & other, Inset const * inset)
 	: RenderBase(other), loader_(other.loader_), params_(other.params_)
 {
-	loader_.connect(boost::bind(&Inset::updateFrontend, inset));
+	loader_.connect(bind(&Inset::updateFrontend, inset));
 }
 
 

@@ -28,7 +28,7 @@
 #include "support/FileName.h"
 #include "support/socktools.h"
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 
 #include <cerrno>
 #include <ostream>
@@ -64,7 +64,7 @@ ServerSocket::ServerSocket(FileName const & addr)
 
 	theApp()->registerSocketCallback(
 		fd_,
-		boost::bind(&ServerSocket::serverCallback, this)
+		bind(&ServerSocket::serverCallback, this)
 		);
 
 	LYXERR(Debug::LYXSERVER, "lyx: New server socket "
@@ -115,7 +115,7 @@ void ServerSocket::serverCallback()
 		shared_ptr<LyXDataSocket>(new LyXDataSocket(client_fd));
 	theApp()->registerSocketCallback(
 		client_fd,
-		boost::bind(&ServerSocket::dataCallback,
+		bind(&ServerSocket::dataCallback,
 			    this, client_fd)
 		);
 }

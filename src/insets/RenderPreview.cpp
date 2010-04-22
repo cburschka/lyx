@@ -31,7 +31,7 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -216,7 +216,7 @@ void RenderPreview::addPreview(docstring const & latex_snippet,
 	// is ready for loading.
 	if (!ploader_connection_.connected()) {
 		ploader_connection_ = ploader.connect(
-			boost::bind(&RenderPreview::imageReady, this, _1));
+			bind(&RenderPreview::imageReady, this, _1));
 	}
 
 	ploader.add(snippet_);

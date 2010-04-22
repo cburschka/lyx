@@ -49,7 +49,7 @@
 #include "mathed/MathData.h"
 #include "mathed/MathMacro.h"
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 
 #include <sstream>
 #include <limits>
@@ -1281,7 +1281,7 @@ void Cursor::plainInsert(MathAtom const & t)
 void Cursor::insert(docstring const & str)
 {
 	for_each(str.begin(), str.end(),
-		 boost::bind(static_cast<void(Cursor::*)(char_type)>
+		 bind(static_cast<void(Cursor::*)(char_type)>
 			     (&Cursor::insert), this, _1));
 }
 

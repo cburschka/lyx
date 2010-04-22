@@ -45,7 +45,7 @@
 #include "support/lyxlib.h"
 #include "support/Translator.h"
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 
 #include <sstream>
 
@@ -571,7 +571,7 @@ void InsetExternal::setParams(InsetExternalParams const & p)
 		RenderMonitoredPreview * preview_ptr = renderer_->asMonitoredPreview();
 		renderer_.reset(new RenderMonitoredPreview(this));
 		preview_ptr = renderer_->asMonitoredPreview();
-		preview_ptr->fileChanged(boost::bind(&InsetExternal::fileChanged, this));
+		preview_ptr->fileChanged(bind(&InsetExternal::fileChanged, this));
 		if (preview_ptr->monitoring())
 			preview_ptr->stopMonitoring();
 		add_preview_and_start_loading(*preview_ptr, *this, buffer());

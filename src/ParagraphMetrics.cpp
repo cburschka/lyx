@@ -47,7 +47,7 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 #include <boost/crc.hpp>
 
 #include <algorithm>

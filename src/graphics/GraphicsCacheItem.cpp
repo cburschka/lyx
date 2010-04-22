@@ -26,7 +26,7 @@
 #include "support/filetools.h"
 #include "support/FileMonitor.h"
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -208,7 +208,7 @@ CacheItem::Impl::Impl(FileName const & file)
 	  remove_loaded_file_(false),
 	  status_(WaitingToLoad)
 {
-	monitor_.connect(boost::bind(&Impl::startLoading, this));
+	monitor_.connect(bind(&Impl::startLoading, this));
 }
 
 
@@ -428,7 +428,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 	// the graphics converter so that we can load the modified file
 	// on completion of the conversion process.
 	converter_.reset(new Converter(filename, to_file_base.absFileName(), from, to_));
-	converter_->connect(boost::bind(&Impl::imageConverted, this, _1));
+	converter_->connect(bind(&Impl::imageConverted, this, _1));
 	converter_->startConversion();
 }
 

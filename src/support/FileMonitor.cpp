@@ -15,7 +15,7 @@
 #include "support/FileName.h"
 #include "support/Timeout.h"
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 #include <boost/signals/trackable.hpp>
 
 using namespace std;
@@ -145,7 +145,7 @@ FileMonitor::Impl::Impl(FileName const & file_with_path, int interval)
 	  timestamp_(0),
 	  checksum_(0)
 {
-	timer_.timeout.connect(boost::bind(&Impl::monitorFile, this));
+	timer_.timeout.connect(bind(&Impl::monitorFile, this));
 }
 
 

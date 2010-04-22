@@ -37,7 +37,7 @@
 #include "support/ForkedCalls.h"
 #include "support/lstrings.h"
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 
 #include <sstream>
 #include <fstream>
@@ -46,7 +46,7 @@
 using namespace std;
 using namespace lyx::support;
 
-using boost::bind;
+
 
 namespace {
 

@@ -124,7 +124,7 @@
 #include <objidl.h>
 #endif // Q_WS_WIN
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 #include <boost/crc.hpp>
 
 #include <exception>

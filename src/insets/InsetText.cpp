@@ -58,14 +58,12 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 #include "support/lassert.h"
 
 using namespace std;
 using namespace lyx::support;
 
-using boost::bind;
-using boost::ref;
 
 namespace lyx {
 

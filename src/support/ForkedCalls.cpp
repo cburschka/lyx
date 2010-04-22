@@ -21,7 +21,7 @@
 #include "support/os.h"
 #include "support/Timeout.h"
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 
 #include <cerrno>
 #include <queue>
@@ -46,7 +46,7 @@
 
 using namespace std;
 
-using boost::bind;
+
 
 namespace lyx {
 namespace support {
@@ -84,7 +84,7 @@ private:
 	Murder(int secs, pid_t pid)
 		: timeout_(1000*secs, Timeout::ONETIME), pid_(pid)
 	{
-		timeout_.timeout.connect(boost::bind(&Murder::kill, this));
+		timeout_.timeout.connect(bind(&Murder::kill, this));
 		timeout_.start();
 	}
 
@@ -442,7 +442,7 @@ void callNext()
 	Process pro = callQueue_.front();
 	callQueue_.pop();
 	// Bind our chain caller
-	pro.second->connect(boost::bind(&ForkedCallQueue::callback, _1, _2));
+	pro.second->connect(bind(&ForkedCallQueue::callback, _1, _2));
 	ForkedCall call;
 	//If we fail to fork the process, then emit the signal
 	//to tell the outside world that it failed.

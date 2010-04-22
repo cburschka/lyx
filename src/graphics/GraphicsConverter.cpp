@@ -24,7 +24,7 @@
 #include "support/lstrings.h"
 #include "support/os.h"
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 
 #include <sstream>
 #include <fstream>
@@ -178,7 +178,7 @@ void Converter::Impl::startConversion()
 
 	ForkedCall::SignalTypePtr ptr =
 		ForkedCallQueue::add(script_command_);
-	ptr->connect(boost::bind(&Impl::converted, this, _1, _2));
+	ptr->connect(bind(&Impl::converted, this, _1, _2));
 }
 
 

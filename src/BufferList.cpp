@@ -32,12 +32,12 @@
 #include "support/Package.h"
 
 #include "support/lassert.h"
-#include <boost/bind.hpp>
+#include "support/bind.h"
 
 #include <algorithm>
 #include <functional>
 
-using boost::bind;
+
 
 using namespace std;
 using namespace lyx::support;
@@ -142,7 +142,7 @@ FileNameList const & BufferList::fileNames() const
 	nvec.clear();
 	transform(bstore.begin(), bstore.end(),
 		  back_inserter(nvec),
-		  boost::bind(&Buffer::fileName, _1));
+		  bind(&Buffer::fileName, _1));
 	return nvec;
 }
 

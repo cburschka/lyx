@@ -27,7 +27,7 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 #include <boost/regex.hpp>
 
 #include <fstream>
@@ -37,7 +37,7 @@ using namespace lyx::support;
 
 namespace lyx {
 
-using boost::bind;
+
 using boost::regex;
 using boost::smatch;
 

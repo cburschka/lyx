@@ -42,6 +42,7 @@ using namespace std;
 using namespace lyx::support;
 
 
+
 namespace lyx {
 
 static docstring verboseHLine(int n)

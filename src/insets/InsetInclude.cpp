@@ -57,7 +57,7 @@
 #include "support/lstrings.h" // contains
 #include "support/lyxalgo.h"
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -164,7 +164,7 @@ InsetInclude::InsetInclude(Buffer * buf, InsetCommandParams const & p)
 	  preview_(new RenderMonitoredPreview(this)), failedtoload_(false),
 	  set_label_(false), label_(0), child_buffer_(0)
 {
-	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
+	preview_->fileChanged(bind(&InsetInclude::fileChanged, this));
 
 	if (isListings(params())) {
 		InsetListingsParams listing_params(to_utf8(p["lstparams"]));
@@ -178,7 +178,7 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 	  preview_(new RenderMonitoredPreview(this)), failedtoload_(false),
 	  set_label_(false), label_(0), child_buffer_(0)
 {
-	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
+	preview_->fileChanged(bind(&InsetInclude::fileChanged, this));
 
 	if (other.label_)
 		label_ = new InsetLabel(*other.label_);

@@ -54,6 +54,7 @@ public:
 
 /// File stream for writing files in 8bit encoding \p encoding with automatic
 /// conversion from UCS4.
+
 class ofdocstream : public std::basic_ofstream<char_type> {
 	typedef std::basic_ofstream<char_type> base;
 public:
@@ -65,6 +66,10 @@ public:
 	///
 	void reset(std::string const & encoding);
 };
+
+
+extern template class std::numpunct<lyx::char_type>;
+extern template class std::basic_ofstream<char_type>;
 
 /// UCS4 input stringstream
 typedef std::basic_istringstream<char_type> idocstringstream;

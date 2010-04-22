@@ -118,7 +118,7 @@
 #include <QtConcurrentRun>
 #endif
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 
 #include <sstream>
 
@@ -393,7 +393,7 @@ GuiView::GuiView(int id)
 
 	// Start autosave timer
 	if (lyxrc.autosave) {
-		d.autosave_timeout_.timeout.connect(boost::bind(&GuiView::autoSave, this));
+		d.autosave_timeout_.timeout.connect(bind(&GuiView::autoSave, this));
 		d.autosave_timeout_.setTimeout(lyxrc.autosave * 1000);
 		d.autosave_timeout_.start();
 	}

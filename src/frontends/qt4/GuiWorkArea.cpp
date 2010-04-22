@@ -68,7 +68,7 @@
 #include <QToolTip>
 #include <QMenuBar>
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 
 #include <cmath>
 
@@ -296,7 +296,7 @@ void GuiWorkArea::init()
 	viewport()->setCursor(Qt::IBeamCursor);
 
 	synthetic_mouse_event_.timeout.timeout.connect(
-		boost::bind(&GuiWorkArea::generateSyntheticMouseEvent,
+		bind(&GuiWorkArea::generateSyntheticMouseEvent,
 					this));
 
 	// Initialize the vertical Scroll Bar

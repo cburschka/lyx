@@ -55,7 +55,7 @@
 #include "support/lstrings.h"
 #include "support/os.h"
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 
 #ifdef _WIN32
 #include <QCoreApplication>
@@ -840,7 +840,7 @@ int LyXComm::startPipe(string const & file, bool write)
 
 	if (!write) {
 		theApp()->registerSocketCallback(fd,
-			boost::bind(&LyXComm::read_ready, this));
+			bind(&LyXComm::read_ready, this));
 	}
 
 	return fd;

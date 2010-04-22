@@ -23,7 +23,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
-#include <boost/bind.hpp>
+#include "support/bind.h"
 
 #include <algorithm>
 
