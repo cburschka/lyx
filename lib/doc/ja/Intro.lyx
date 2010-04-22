@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -38,7 +38,7 @@
 \end_preamble
 \use_default_options false
 \language japanese
-\inputencoding auto
+\inputencoding EUC-JP-pLaTeX
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -65,7 +65,7 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\pdf_quoted_options "unicode=false, linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize a4paper
 \use_geometry false
 \use_amsmath 1
@@ -99,15 +99,8 @@ LyXプロジェクトチーム
 status collapsed
 
 \begin_layout Plain Layout
-コメントや間違いの修正がある場合には、LyX文書化メーリングリスト（
-\begin_inset CommandInset href
-LatexCommand href
-target "lyx-docs@lists.lyx.org"
-type "mailto:"
-
-\end_inset
-
-）までお知らせ下さい。この文書の翻訳は、当初人見光太郎氏が行った貢献に基づいています。
+コメントや間違いの修正がある場合には、LyX文書化メーリングリスト（lyx-docs@lists.lyx.org）までお知らせ下さい。この文書の翻訳は、当初人見光太
+郎氏が行った貢献に基づいています。
 \end_layout
 
 \end_inset
@@ -157,10 +150,10 @@ LyX
 \noun off
 \color none
 を使う上での最初の戸惑いは、おもにユーザーとして必要とされる思考法を変えなくてはならないことから来ます。かつて、文書を作成するのに使うことのできるものはタイプラ
-イターだけでしたから、われわれはみな、タイプライターの制約を乗り越えるための、様々な小技を身につけたものでした。下線を引くのは—これは単に「＿」を文字の上に打ち
-直すことに他ならなかったわけですが—文章を強調する方法として定着しました。表をつくるには、前もって各列の幅とタブストップをどうすべきかを計算してから、設定するこ
-とを強いられました。同じようなことが、書簡や、その他右揃えを必要とする文章を書く際には要求されました。行末でのハイフネーションには、よく見て慎重に先を予測するこ
-とが要求されたものでした。
+イターだけでしたから、われわれはみな、タイプライターの制約を乗り越えるための、様々な小技を身につけたものでした。下線を引くのは---これは単に「＿」を文字の上に
+打ち直すことに他ならなかったわけですが---文章を強調する方法として定着しました。表をつくるには、前もって各列の幅とタブストップをどうすべきかを計算してから、設
+定することを強いられました。同じようなことが、書簡や、その他右揃えを必要とする文章を書く際には要求されました。行末でのハイフネーションには、よく見て慎重に先を予
+測することが要求されたものでした。
 \end_layout
 
 \begin_layout Standard
@@ -405,8 +398,8 @@ status collapsed
 \bar no
 \noun off
 \color none
-そう。それだけなのです。もし、節の切り貼りを行ったとしても、節番号は自動的に—すべての箇所で—振り直されます。さらに、この節に対する参照が正しく（内部参照タグを
-挿入することによって）入れられていれば
+そう。それだけなのです。もし、節の切り貼りを行ったとしても、節番号は自動的に---すべての箇所で---振り直されます。さらに、この節に対する参照が正しく（内部参
+照タグを挿入することによって）入れられていれば
 \family default
 \series default
 \shape default
@@ -587,20 +580,11 @@ Mean
 \noun off
 \color none
 からです。これは、LyXがなにか洗練された機能を備えていないということを意味するものではありません。これは単に、LyXはそのような仕事を行うのにはふさわしいツー
-ルではないというだけです。—— 釘を打つのにネジ回しは使わないではありませんか。
+ルではないというだけです。------ 釘を打つのにネジ回しは使わないではありませんか。
 \end_layout
 
 \begin_layout Subsection
-LyX
-\family roman
-\series bold
-\shape up
-\size large
-\emph off
-\bar no
-\noun off
-\color none
-と他のワープロとの違い
+LyXと他のワープロとの違い
 \end_layout
 
 \begin_layout Standard
@@ -1056,16 +1040,7 @@ LaTeX
 \end_layout
 
 \begin_layout Subsection
-LaTeX
-\family roman
-\series bold
-\shape up
-\size large
-\emph off
-\bar no
-\noun off
-\color none
-とは何か
+LaTeXとは何か
 \end_layout
 
 \begin_layout Standard
@@ -2004,8 +1979,8 @@ reference "sec:貢献"
 \bar no
 \noun off
 \color none
-それともうひとつお願いがあります —— もしこの取扱説明書の中で、混乱を招く箇所や、よくわからないあるいは間違っている箇所があったら、躊躇することなく私たちにお
-知らせ下さい。
+それともうひとつお願いがあります ------ もしこの取扱説明書の中で、混乱を招く箇所や、よくわからないあるいは間違っている箇所があったら、躊躇することなく私
+たちにお知らせ下さい。
 \family default
 \series default
 \shape default
@@ -2016,12 +1991,28 @@ reference "sec:貢献"
 \color inherit
 現在の文書管理者には、
 \family typewriter
-lyx-docs@lists.lyx.org
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
 \family default
 宛てにメールを送ることで連絡をとることができます。また、もし取扱説明書にははっきりと答えられていない疑問があり、すぐに助けが必要な場合には、活発なユーザー向けメ
 ーリングリスト
 \family typewriter
-lyx-users@lists.lyx.org
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-users@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
 \family default
 があります。
 \end_layout
@@ -2183,57 +2174,13 @@ LyXはじめの一歩
 \bar no
 \noun off
 \color none
-メニュー・ショートカットキーとキー割付けに関しては
-\family default
-\series default
-\shape default
-\size default
-\emph on
-\bar default
-\noun default
-\color inherit
-、
-\emph default
-『
-\emph on
-取扱説明書拡張機能篇
-\emph default
-』（
-\family typewriter
-Extended.lyx
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-ファイル）の
-\family default
-\series default
-\shape default
-\size default
-\emph on
-\bar default
-\noun default
-\color inherit
-Key Bindings
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-の節に詳しい説明があります。キーを参照する場合には次のように短縮して表示します。
+キーを参照する場合には次のように短縮して表示します。
 \end_layout
 
 \begin_layout Itemize
 「
 \family sans
-C-
+Ctrl-
 \family roman
 \series medium
 \shape up
@@ -2259,7 +2206,7 @@ C-
 \begin_layout Itemize
 「
 \family sans
-S-
+Shift-
 \family roman
 \series medium
 \shape up
@@ -2285,7 +2232,7 @@ S-
 \begin_layout Itemize
 「
 \family sans
-M-
+Alt-
 \family roman
 \series medium
 \shape up
@@ -2303,22 +2250,13 @@ M-
 \bar default
 \noun default
 \color inherit
-Meta-
+Alt
 \family default
-キーを表します。これはいくつかのキーボードでは
+ (
 \family sans
-Alt-
+Meta
 \family default
-キーです
-\family sans
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-。
+)キーを表します。
 \end_layout
 
 \begin_layout Itemize
@@ -2778,8 +2716,8 @@ Next
 \bar no
 \noun off
 \color none
-また、時折
-\family default
+現在設定されている短絡キーの一覧は、
+\family sans
 \series default
 \shape default
 \size default
@@ -2787,9 +2725,7 @@ Next
 \bar default
 \noun default
 \color inherit
-「（
-\emph on
-拡張機能篇
+ヘルプ
 \family roman
 \series medium
 \shape up
@@ -2798,8 +2734,8 @@ Next
 \bar no
 \noun off
 \color none
-を参照）」のような表示に出会うと思いますが、
-\family default
+メニューの中の
+\family sans
 \series default
 \shape default
 \size default
@@ -2807,9 +2743,7 @@ Next
 \bar default
 \noun default
 \color inherit
-『
-\emph on
-取扱説明書拡張機能篇
+短絡キー
 \family roman
 \series medium
 \shape up
@@ -2818,19 +2752,7 @@ Next
 \bar no
 \noun off
 \color none
-』内に関数の既定のキー割付けを列挙しておきましたので、こちらもご参照ください。
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-LyXコミュニティでよく使われているキー割当てには、2つのものがあります。ひとつは「CUA」スタイルで、これは既定のキー割当てになっていて、PCの世界から来た人
-にとって使いやすいものです。もうひとつは「emacs」スタイルで、これはUnixシステムで「育ち」、Emacsエディタを使っている人たちの間で人気があります。特
-に断らない限り、取扱説明書の中でのキー割当ては、既定のCUAマップを用いることにします。Emacsが好きな人であれば、自分で文書を読んでキー割当てを見つけること
-くらいはお茶の子さいさいでしょう。
+にあります。
 \end_layout
 
 \begin_layout Subsection
@@ -3373,7 +3295,25 @@ em)
 \bar no
 \noun off
 \color none
-以下は、取扱説明書の各ファイルの内容の一覧です。
+以下の一覧は、
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+ヘルプ
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+メニューの中にある基本的な取扱説明書の内容を説明したものです。。
 \end_layout
 
 \begin_layout Description
@@ -3474,11 +3414,20 @@ em)
 \emph on
 ユーザーの手引き
 \emph default
-の拡張です。表・図・フロート・ 注釈・ボックスなどの使い方を詳細に述べています。これには、LaTeX熟練者向けのテクニックもたくさん含まれています。
+の拡張です。表・図・フロート・ 注釈・プログラムリスト・ボックスなどの使い方を詳細に述べています。これには、LaTeX熟練者向けのテクニックもたくさん含まれてい
+ます。
 \end_layout
 
 \begin_layout Description
-拡張機能篇 
+数式篇 
+\emph on
+ユーザーの手引き
+\emph default
+の拡張です。あらゆる数式の組版の仕方を詳述しています。
+\end_layout
+
+\begin_layout Description
+その他の機能篇 
 \emph on
 ユーザーの手引き
 \family roman
@@ -3489,7 +3438,7 @@ em)
 \bar no
 \noun off
 \color none
-の拡張です。生のLaTeXコマンド・追加的なレイアウト・特殊な編集機能などの使い方を述べています。
+の拡張です。生のLaTeXコマンド・その他のレイアウト・特殊な編集機能などの使い方を述べています。
 \end_layout
 
 \begin_layout Description
@@ -3502,7 +3451,12 @@ em)
 \bar no
 \noun off
 \color none
-LyX全体の挙動のカスタマイズの仕方など、高度なLyXの機能を説明しています。これには、キー割付け・国際化・設定ファイルの説明などを含みます。
+LyX全体の挙動のカスタマイズの仕方など、高度なLyXの機能を説明しています。これには、キー設定・国際化・設定ファイルの説明などを含みます。これには、LyXがL
+aTeXクラスやパッケージをサポートするのに必要な、レイアウトファイルの情報も含まれています。
+\end_layout
+
+\begin_layout Description
+短絡キー 現在定義されているLyXの短絡キーを表にしています。
 \end_layout
 
 \begin_layout Description
@@ -3691,8 +3645,7 @@ yX
 \bar no
 \noun off
 \color none
-さもないと、あなたは不必要な苛立ちを抱え込むことになるでしょう。LyXは、ワードプロセッサとして必要なことは全てできますが、他のワードプロセッサとは違ったアプロ
-ーチを採用しているからです。
+さもないと、あなたは不必要な苛立ちを抱え込むことになるでしょう。
 \end_layout
 
 \begin_layout Section
@@ -3739,7 +3692,15 @@ http://www.lyx.org/trac/wiki/BugTrackerHome
 でアクセスすることができます。バグを報告する前にはつねに、このバグ追跡システムを利用して、報告済みのバグでないかどうかを確かめてください。報告済みのバグにコメン
 トを加えたり、新しいバグを報告するには、バグ追跡システムを使うか、あるいは開発者用のメーリングリスト
 \family typewriter
-lyx-devel@lists.lyx.org
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-devel@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
 \family default
 にメールを送ってください。このメーリングリストのアーカイブには、LyXのメインウェブサイト
 \family typewriter
@@ -3795,7 +3756,15 @@ LyXの取扱説明書は広範にわたっています。しかし、LyXはつ�
 \begin_layout Standard
 取扱説明書に問題を見つけたら、メーリングリスト
 \family typewriter
-lyx-docs@lists.lyx.org
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
 \family default
 にメールを送ってください。文書化チームが必要な修正を施すでしょう。
 \end_layout
@@ -3854,6 +3823,19 @@ http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc
 \end_inset
 
 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Newline newline
+\end_inset
+
+から入手して下さい。
 \end_layout
 
 \begin_layout Enumerate
@@ -3953,7 +3935,15 @@ http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc
 \begin_inset Newline newline
 \end_inset
 
-lyx-docs@lists.lyx.org
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 

@@ -202,7 +202,12 @@ dist_itclipartdoc_DATA = \
 
 jadocdir = $(docdir)/ja
 dist_jadoc_DATA = \
+	ja/Customization.lyx \
+	ja/DummyDocument1.lyx \
+	ja/DummyDocument2.lyx \
+	ja/EmbeddedObjects.lyx \
 	ja/Extended.lyx \
+	ja/Formula-numbering.lyx \
 	ja/Intro.lyx \
 	ja/LaTeXConfig.lyx \
 	ja/Math.lyx \
@@ -212,7 +217,9 @@ dist_jadoc_DATA = \
 
 jaclipartdocdir = $(jadocdir)/clipart
 dist_jaclipartdoc_DATA = \
+	ja/clipart/ChildDocumentQt4.png \
 	ja/clipart/ERT.png \
+	ja/clipart/ExternalMaterialQt4.png \
 	ja/clipart/floatQt4.png \
 	ja/clipart/footnoteQt4.png \
 	ja/clipart/referenceQt4.png \

@@ -62,11 +62,15 @@
 \usepackage{subfig}
 \DeclareCaptionOption{large}[]{\def\captionfont{\large}}
 \DeclareCaptionOption{Large}[]{\def\captionfont{\Large}}
+
+%\ifnum 42146=\euc"A4A2 \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}\else
+%\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}\fi
+%\AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove
 \use_default_options false
 \language japanese
-\inputencoding auto
+\inputencoding EUC-JP-pLaTeX
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -80,8 +84,8 @@
 \paperfontsize default
 \spacing single
 \use_hyperref true
-\pdf_title "LyXユーザーの手引き"
-\pdf_author "LyXプロジェクトチーム"
+\pdf_title "LyX Users Manual"
+\pdf_author "LyX Team"
 \pdf_subject "LyX"
 \pdf_keywords "LyX"
 \pdf_bookmarks true
@@ -93,7 +97,7 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels,pdftex"
+\pdf_quoted_options "unicode=false,linkcolor=black,citecolor=black,urlcolor=blue,filecolor=blue,pdfpagelayout=OneColumn,pdfnewwindow=true,pdfstartview=XYZ,plainpages=false,pdfpagelabels"
 \papersize a4paper
 \use_geometry false
 \use_amsmath 1
@@ -110,7 +114,7 @@
 \color #aa55ff
 \end_branch
 \secnumdepth 3
-\tocdepth 2
+\tocdepth 3
 \paragraph_separation indent
 \defskip medskip
 \quotes_language english
@@ -3323,7 +3327,7 @@ Kluwer
 \begin_layout Description
 
 \family sans
-koma-script
+KOMA-Script
 \family default
  標準クラスの代替クラスであり、キャプション書式や印刷余白の自動計算など、多くの便利な機能を持っています。
 \end_layout
@@ -3500,8 +3504,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-モジュールは、選択した文書クラスでは既定では利用できない機能を文書に追加します。例えば、点字を文書中で使用したいものとしましょう。点字はもちろんどの文書クラスで
-も利用可能ではありませんので、
+モジュールは、選択した文書クラスでは既定では利用できない機能を文書に追加します。例えば、点字を文書中で書きたいものとしましょう。点字はもちろんどの文書クラスでも
+利用可能ではありませんので、
 \family sans
 文書\SpecialChar \menuseparator
 設定
@@ -3550,7 +3554,8 @@ status open
 \series bold
 （追註）
 \series default
-モジュールの中には他のモジュールを必要とするものがあります。さらに、組み合わせによっては、お互いに衝突を起こす可能性もありますので、注意してください。
+モジュールの中には他のモジュールを必要とするものがあります。さらに、組み合わせによっては、お互いに衝突を起こす可能性もあります。LyXはこれらの情報を通知します
+。
 \end_layout
 
 \end_inset
@@ -4744,7 +4749,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-koma-script文書クラスをお使いの時は、既定値で使って構いません。koma-scriptは、用紙書式とフォント寸法を考慮に入れて、印刷余白を自動的に計算
+KOMA-Script文書クラスをお使いの時は、既定値で使って構いません。KOMA-Scriptは、用紙書式とフォント寸法を考慮に入れて、印刷余白を自動的に計算
 するからです。
 \end_layout
 
@@ -4780,27 +4785,10 @@ koma-script文書クラスをお使いの時は、既定値で使って構いま
 \bar no
 \noun off
 \color none
-を新しいクラス用に変換する必要があります。変換が必要なものには、段落環境も含まれます。段落環境の一部は標準に設定されているでしょう。この環境はすべての文書クラス
-が持っています。しかし文書クラスによっては、特殊な段落環境を持っている場合があります。このような場合に、文書クラスが変更されると、LyXは存在しない段落環境を
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-標準
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-に設定して、その段落の先頭にエラーボックスを表示します。そのエラーボックスをクリックすると、変換の情報となぜ変換に失敗したのかを説明するメッセージダイアログがで
-てきます。
+を新しいクラス用に変換する必要があります。変換が必要なものには、段落環境も含まれます。段落環境のいくつかは標準的なもので、すべての文書クラスに備わっていますが、
+文書クラスによっては、特殊な段落環境を持っている場合があります。このような場合に、文書クラスが変更されると、LyXはもはや未知のものとなった段落を「解釈不能」と
+マークします。旧文書クラスに戻りたいと思ったときのために、段落様式名は維持されます。しかしこれらの段落は、特別な整形をされることなしに出力されてしまうので、新し
+い段落様式を自分で作り出すか、新しい文書クラスに既存の段落様式に手動で変更する必要があります。
 \end_layout
 
 \begin_layout Section
@@ -7985,8 +7973,7 @@ reference "sec:入れ子"
 \bar no
 \noun off
 \color none
-違うレベルでは違うシンボルがラベルとして使われると言いましたが、それを見てみましょう。次の例では4つのすべてのシンボルを使っています。ただし、あなたがこの取扱説
-明書をオンラインで見ている場合は同じシンボル(*)になっているのに注意して下さい。
+違うレベルでは違うシンボルがラベルとして使われると言いましたが、それを見てみましょう。次の例では4つのすべてのシンボルを使っています。
 \end_layout
 
 \begin_layout Itemize
@@ -17253,8 +17240,8 @@ usepackage[ec]{aeguill}
 \family typewriter
 AE
 \family default
-フォントを用いた文書では、アクセント付き文字を含む単語を検索することはできません。例えば、仮にPDFで「rève」という仏単語を検索したとしても、PDFビューア
-は「è」というグリフを検索するのであって、「 e +
+フォントを用いた文書では、アクセント付き文字を含む単語を検索することはできません。例えば、仮にPDFで「brève」という仏単語を検索したとしても、PDFビュー
+アは「è」というグリフを検索するのであって、「 e +
 \begin_inset space ~
 \end_inset
 
@@ -23753,7 +23740,7 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-ヘッダ： 
+ヘッダ： カーソル位置の
 \family roman
 \series medium
 \shape up
@@ -23762,7 +23749,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-現在行とその上の全ての行で、特別なオプションが定義されていないものは、長尺表の全てのページのヘッダ行として定義されるようになります。ただし、
+行とその上の全ての行で、特別なオプションが定義されていないものは、長尺表の全てのページのヘッダ行として定義されるようになります。ただし、
 \family sans
 \series default
 \shape default
@@ -23784,7 +23771,7 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-冒頭ヘッダ： 
+冒頭ヘッダ： カーソル位置の
 \family roman
 \series medium
 \shape up
@@ -23793,11 +23780,11 @@ status collapsed
 \bar no
 \noun off
 \color none
-現在行とその上の全ての行で、特別なオプションが定義されていないものは、長尺表の冒頭ページのヘッダ行として定義されるようになります。
+行とその上の全ての行で、特別なオプションが定義されていないものは、長尺表の冒頭ページのヘッダ行として定義されるようになります。
 \end_layout
 
 \begin_layout Description
-フッタ： 
+フッタ： カーソル位置の
 \family roman
 \series medium
 \shape up
@@ -23806,7 +23793,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-現在行とその下の全ての行で、特別なオプションが定義されていないものは、長尺表の全てのページのフッタ行として定義されるようになります。ただし、
+行とその下の全ての行で、特別なオプションが定義されていないものは、長尺表の全てのページのフッタ行として定義されるようになります。ただし、
 \family sans
 \series default
 \shape default
@@ -23815,7 +23802,7 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-末尾ヘッダ
+末尾フッタ
 \family roman
 \series medium
 \shape up
@@ -23828,7 +23815,7 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-末尾フッタ： 
+末尾フッタ： カーソル位置の
 \family roman
 \series medium
 \shape up
@@ -23837,7 +23824,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-現在行とその下の全ての行で、特別なオプションが定義されていないものは、長尺表の末尾ページのフッタ行として定義されるようになります。
+行とその下の全ての行で、特別なオプションが定義されていないものは、長尺表の末尾ページのフッタ行として定義されるようになります。
 \end_layout
 
 \begin_layout Description
@@ -27728,7 +27715,7 @@ LaTeXの規則を無視する
 \end_layout
 
 \begin_layout Standard
-本文折返しフロートは、つねにどれかの段落の本文で囲まれますので、配置オプションはありません。
+折返しフロートは、つねにどれかの段落の本文で囲まれますので、配置オプションはありません。
 \end_layout
 
 \begin_layout Standard
@@ -33082,7 +33069,7 @@ reference "cha:謝辞"
 、付録
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:エクスポート"
+reference "sub:書き出し"
 
 \end_inset
 
@@ -35758,7 +35745,7 @@ key "caption"
 \begin_layout Standard
 この例のようなよく知られた問題については、文書クラスによっては、組込の解決策が用意されていることがあることに注意してください。例えば、
 \family sans
-koma-script
+KOMA-Script
 \family default
 クラスを使用すると、
 \series bold
@@ -35848,6 +35835,16 @@ DVI
 \series bold
 preview-latex
 \series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ ! preview-latex
+\end_layout
+
+\end_inset
+
 というLaTeXパッケージを導入し、
 \family sans
 ツール\SpecialChar \menuseparator
@@ -35856,13 +35853,17 @@ preview-latex
 ダイアログの
 \family sans
 操作性\SpecialChar \menuseparator
-図
+表示
 \family default
 の下にある
 \family sans
 自動プレビュー
 \family default
 を有効にします。
+\family sans
+プレビューの大きさ
+\family default
+は、大きさの倍率因子です。
 \end_layout
 
 \begin_layout Standard
@@ -35951,35 +35952,39 @@ status collapsed
 
 \begin_layout Standard
 LyX自身は、組込のスペルチェッカーを持っていません。その代わりに、
-\family sans
+\family typewriter
 aspell
 \family default
 ・
-\family sans
+\family typewriter
 ispell
 \family default
 ・
-\family sans
+\family typewriter
 hspell
 \family default
 ・
-\family sans
+\family typewriter
 pspell
 \family default
 などの外部プログラムをバックエンドとして用います。この節では、これらのプログラムのうちのひとつが、すでに導入されて設定済みであることを想定します。
-\family sans
+\family typewriter
 aspell
 \family default
 は、
-\family sans
+\family typewriter
 ispell
 \family default
-の後継とみなされているので、
-\family sans
+の後継とみなされており、
+\family typewriter
+ispell
+\family default
+と違って同時に複数の言語をサポートしているので、
+\family typewriter
 aspell
 \family default
 をお使いになることをお勧めします。
-\family sans
+\family typewriter
 hspell
 \family default
 はヘブライ語用スペルチェッカーです。使用するスペルチェッカーとその設定は、LyX設定メニューの
@@ -35991,7 +35996,7 @@ hspell
 
 \begin_layout Standard
 Windows版LyXでは、
-\family sans
+\family typewriter
 aspell
 \family default
 のみが使用可能であるため、スペルチェックプログラムの選択ボックスは変更できないようになっています。
@@ -36276,29 +36281,37 @@ name "sec:変更追跡機能"
 \end_layout
 
 \begin_layout Standard
-すると文書に加えられた変更点は、カラーで強調されるようになり、追加部分は
+すると文書に加えられた変更点は、下線とカラーで強調されるようになり、追加部分は
+\bar under
 \color blue
-青文字
+下線付き文章
+\bar default
 \color inherit
 、削除部分は
-\color red
-赤文字
+\color blue
+取り消し文章
 \color inherit
-で表示されるようになります。色は、LyX設定ダイアログの
+のように表示されるようになります。色は、変更した執筆者によって異なります。色は、LyX設定ダイアログの
 \family sans
-操作画面・色
+操作性・色
 \family default
-部で変更できます
+面で変更できます
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-いろ@色 ! Lyxがめん@LyX画面
+いろ@色 ! へんこうついせき@変更追跡
 \end_layout
 
 \end_inset
 
-。
+。執筆者と変更の日時は、カーソルを変更箇所にあわせると、LyXのステータスバーに表示されます。ツールバーボタン
+\begin_inset Graphics
+	filename ../../images/changes-merge.png
+
+\end_inset
+
+を押したときも同じ情報が表示されます。
 \end_layout
 
 \begin_layout Standard
@@ -39970,6 +39983,14 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
+全て閉じる
+\end_layout
+
+\begin_layout Standard
+すべての開かれた文書を閉じます。
+\end_layout
+
+\begin_layout Subsection
 保存
 \end_layout
 
@@ -39983,6 +40004,14 @@ status collapsed
 
 \begin_layout Standard
 現在の文書に新しい名前をつけて別のファイルとして保存します。
+\end_layout
+
+\begin_layout Subsection
+全て保存
+\end_layout
+
+\begin_layout Standard
+すべての開かれた文書を保存します。
 \end_layout
 
 \begin_layout Subsection
@@ -40010,31 +40039,31 @@ LyXにおけるバージョン管理
 \end_layout
 
 \begin_layout Subsection
-インポート
+読み込み
 \end_layout
 
 \begin_layout Standard
-古いバージョンのLyXファイル・LaTeXファイル・NoWebファイル・平文ファイル・コンマ区切りの表形式平文ファイル（CSV）をインポートすることができます。
-これらのファイルは、新規のLyX文書としてインポートされます。
+古いバージョンのLyXファイル・HTMLファイル・LaTeXファイル・NoWebファイル・平文ファイル・コンマ区切りの表形式平文ファイル（CSV）を新規LyX文
+書として読み込むことができます。これらのファイルは、新規のLyX文書として読み込まれます。
 \end_layout
 
 \begin_layout Standard
-
-\family sans
-平文（行を連結して）
-\family default
-メニューを使用すると、全ての行が、ひとつの大きな段落に連続してインポートされます。ファイル中に空白行があると、そこから別の段落になります。
+メニュー項目の
 \family sans
 平文
 \family default
-メニューを使用すると、すべての改行が新しい段落の始まりと判断され、中の文は段落としてインポートされます。
+を使うと、テキスト中の改行は新しい段落となります。メニュー項目の
+\family sans
+平文（行を連結して）
+\family default
+を使用すると、一続きの全ての行が、ひとつの大きな段落として読み込まれます。ファイル中に空白行があると、そこから別の段落になります。
 \end_layout
 
 \begin_layout Subsection
-エクスポート
+書き出し
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:エクスポート"
+name "sub:書き出し"
 
 \end_inset
 
@@ -40042,12 +40071,12 @@ name "sub:エクスポート"
 \end_layout
 
 \begin_layout Standard
-文書は、さまざまなファイル形式にエクスポートすることができます。エクスポートしたファイルは、元のLyXファイルのあるディレクトリに置かれます。メニュー項目は、導
-入状態によって異なります。これは、LyXがシステム走査をしたときにどんなプログラムが見つかったかに依存します。
+文書は、さまざまなファイル形式に書き出すことができます。書き出したファイルは、元のLyXファイルのあるディレクトリに置かれます。メニュー項目は、導入状態によって
+異なります。これは、LyXがシステム走査をしたときにどんなプログラムが見つかったかに依存します。
 \end_layout
 
 \begin_layout Standard
-以下は、利用可能な項目のすべてです。これらに関しては、第
+以下は、利用可能な項目のすべてです。これらのいくつかに関しては、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:出力ファイル形式"
@@ -40164,14 +40193,6 @@ Abiword
 \end_layout
 
 \begin_layout Description
-PDF 
-\family typewriter
-ps2pdf
-\family default
-プログラムを使用して変換するPDF形式
-\end_layout
-
-\begin_layout Description
 PDF
 \begin_inset space ~
 \end_inset
@@ -40191,6 +40212,18 @@ PDF
 (pdflatex) 
 \family typewriter
 pdflatex
+\family default
+プログラムを使用して変換するPDF形式
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(ps2pdf) 
+\family typewriter
+ps2pdf
 \family default
 プログラムを使用して変換するPDF形式
 \end_layout
@@ -40291,15 +40324,54 @@ reference "sub:ファイルを印刷"
 \end_layout
 
 \begin_layout Subsection
+FAX
+\end_layout
+
+\begin_layout Standard
+このメニュー項目は、ファックスプログラムが導入されているときのみ表示されます（Windowsでは、さらにこのプログラムをLyXのPATH前置詞に登録しなくてはな
+りません。第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:パス"
+
+\end_inset
+
+節をご参照ください）。このメニュー項目を使用すると、
+\family typewriter
+hylaptex
+\family default
+や
+\family typewriter
+kdeprintfax
+\family default
+のようなファックスプログラムへ使用中の文書を転送することができます。転送されるファイルの既定書式は
+\family sans
+PostScript
+\family default
+です。第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:変換子"
+
+\end_inset
+
+節に説明されているように、書式はLyX設定で変更することができます。
+\end_layout
+
+\begin_layout Subsection
 新規ウィンドウ・ウィンドウを閉じる
 \end_layout
 
 \begin_layout Standard
-現在開いているすべての文書とともに、LyXの新しい実体を開きます。
-\family sans
-ウィンドウを閉じる
-\family default
-メニューを使ってあとから閉じることができます。
+LyXの新規インスタンスを開いたり閉じたりします。
+\end_layout
+
+\begin_layout Subsection
+終了
+\end_layout
+
+\begin_layout Standard
+保存していないすべての文書を保存するように促してから、終了します。
 \end_layout
 
 \begin_layout Section
@@ -40407,7 +40479,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-この段落ダイアログでの設定は、現在カーソルがある段落にのみ効果があります。ここでは段落の配置や行間の設定ができます。
+段落の配置や行間、ラベル幅の設定ができます。これらの設定は、カーソルのある段落に対してのみ有効です。
 \end_layout
 
 \begin_layout Standard
@@ -40420,11 +40492,11 @@ status collapsed
 \family sans
 本文レイアウト
 \family default
-部で、段落区切りに字下げを選択したときにのみ有効です。
+面で、段落区切りに字下げを選択したときにのみ有効です。
 \end_layout
 
 \begin_layout Subsection
-表と数式
+表の設定と数式
 \end_layout
 
 \begin_layout Standard
@@ -40491,7 +40563,7 @@ status collapsed
 しかたによって異なります。これは、LyXがシステム走査をしたときに見つかったLaTeXプログラムに依存するのです。潜在的に出力しうる全形式は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:エクスポート"
+reference "sub:書き出し"
 
 \end_inset
 
@@ -40602,13 +40674,13 @@ reference "sec:文書の断片プレビュー"
 これは、LyXの画面を垂直または水平に分割します。これによって、異なる文書を比較するために同時に表示したり、同じ文書の違う場所を表示したりすることができます。三
 つ以上の文書を同時に表示するのに、複数回分割することもできます。分割表示をやめるには、
 \family sans
-タブ群を閉じる
+現在の表示を閉じる
 \family default
 メニューを使用してください。
 \end_layout
 
 \begin_layout Subsection
-タブ群を閉じる
+現在の表示を閉じる
 \end_layout
 
 \begin_layout Standard
@@ -40621,7 +40693,7 @@ reference "sec:文書の断片プレビュー"
 
 \begin_layout Standard
 このメニューを使用するかF11キーを押すと、メニューバーとすべてのツールバーが消え、本文だけが表示されます。さらに、LyXメインウィンドウが全画面表示されます。
-全画面表示から通常の表示に戻るには、F11を押すか、右クリックして出てくるコンテクスト・メニューから全画面表示を解除してください。
+全画面表示から通常の表示に戻るには、F11を押すか、右クリックしてコンテクスト・メニューから全画面表示を解除してください。
 \end_layout
 
 \begin_layout Subsection
@@ -41164,6 +41236,23 @@ reference "sec:派生枝"
 \end_layout
 
 \begin_layout Subsection
+任意設定差込枠
+\end_layout
+
+\begin_layout Standard
+文書クラスに依存した差込枠を挿入します。これらの差込枠は、ある文書クラスのレイアウトファイルに定義されているときのみ存在します。一つの例は、三つの任意設定差込枠
+を持つ文書クラス「article (elsevier)」です。取扱説明書
+\emph on
+カスタマイズ篇
+\emph default
+の
+\emph on
+Flex insets and InsetLayout
+\emph default
+の節に、任意設定差込枠の定義の仕方が述べられています。
+\end_layout
+
+\begin_layout Subsection
 ファイル
 \begin_inset Index
 status collapsed
@@ -41178,7 +41267,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-ここでは、文書にファイルをインクルードしたり、その中身を挿入したりすることができます。その詳しいやりかたについては、取扱説明書
+ここでは、文書に他のLyXファイルの内容をインクルードしたり挿入したりすることができます。その詳しいやりかたについては、取扱説明書
 \emph on
 埋込オブジェクト篇
 \emph default
@@ -41204,7 +41293,14 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-第節に説明されているミニページ・ボックスを挿入します。LyXでサポートされているボックスの全型は、取扱説明書
+第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ミニページ"
+
+\end_inset
+
+節に説明されているミニページ・ボックスを挿入します。LyXでサポートされているボックスの全型は、取扱説明書
 \emph on
 埋込オブジェクト篇
 \emph default
@@ -41484,7 +41580,7 @@ Program Code Listing
 \end_layout
 
 \begin_layout Standard
-現在の日付を挿入します。表示形式は、LyXのメニューで使用されている言語の日付形式に依存します。LyXには他にも日付を挿入する方法があり、取扱説明書
+現在の日付を挿入します。表示形式は、LyXのメニューで使用されている言語の日付形式に依存します。LyXにはさまざまな日付の挿入方法があり、取扱説明書
 \emph on
 埋込オブジェクト篇
 \emph default
@@ -41492,7 +41588,7 @@ Program Code Listing
 \emph on
 External Material
 \emph default
-の節に述べられています。そこでそれぞれの方法が比較されています。
+の節に説明と比較があります。
 \end_layout
 
 \begin_layout Section
@@ -41855,7 +41951,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-このメニューはLyXを再設定します。すなわちLyXが、LaTeXパッケージと必要なプログラムを検索します。第
+このメニュー項目はLyXを再設定します。すなわちLyXが、LaTeXパッケージと必要なプログラムを検索します。第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:LyXの基本設定"
@@ -44417,7 +44513,7 @@ reference "sub:番号の付け方-深度"
 
 \end_inset
 
-節に述べられているように、ここでは連番をつける節見出しの階層を調整することができます。
+節に述べられているように、ここでは連番をつける節見出しの階層と、目次内に表示される節の階層を調整することができます。
 \end_layout
 
 \begin_layout Section
@@ -44633,7 +44729,7 @@ status collapsed
 ツール\SpecialChar \menuseparator
 設定
 \family default
-メニューで呼び出すことができます。このダイアログには、以下に説明する下位メニューが含まれています。
+メニューで呼び出すことができます。このダイアログには、以下の従属メニューが含まれています。
 \end_layout
 
 \begin_layout Section
@@ -45097,12 +45193,12 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-図
+表示
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-せってい@設定 ! ず@図
+せってい@設定 ! ひょうじ@表示
 \end_layout
 
 \end_inset
@@ -45127,6 +45223,14 @@ reference "sec:文書の断片プレビュー"
 \end_inset
 
 節に説明があります。
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+段落の終わりに印
+\family default
+オプションは、各段落の終わりに段落標（¶）を表示します。
 \end_layout
 
 \begin_layout Section
@@ -45163,6 +45267,18 @@ reference "sec:文書の断片プレビュー"
 環境をカテゴリ毎にまとめる
 \family default
 オプションは、段落環境のプルダウンボックスの項目をグループ化します。
+\end_layout
+
+\begin_layout Standard
+数式マクロ編集オプションは編集様式を決定します。取扱説明書
+\emph on
+数式篇
+\emph default
+の
+\emph on
+数式マクロ
+\emph default
+の節をご覧ください。
 \end_layout
 
 \begin_layout Subsubsection
@@ -45490,6 +45606,13 @@ reference "sec:入力補完"
 
 \begin_layout Section
 パス
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:パス"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
@@ -45677,6 +45800,18 @@ status collapsed
 
 \begin_layout Subsection
 言語
+\end_layout
+
+\begin_layout Description
+操作画面用言語 ここではLyXのメニューで使用される言語を選択することができます。残念ながら、これはMacとWindowsでは機能しません。これは、LyXのメニ
+ューやダイアログが翻訳済みの言語に対して、Linux上でのみ機能します。現在の翻訳状況については、
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org/l18n"
+
+\end_inset
+
+でご覧になれます。
 \end_layout
 
 \begin_layout Description
@@ -46201,6 +46336,13 @@ status collapsed
 
 \begin_layout Subsection
 変換子
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:変換子"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 

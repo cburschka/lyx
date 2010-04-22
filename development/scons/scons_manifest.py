@@ -2273,7 +2273,12 @@ lib_doc_it_clipart_files = Split('''
 
 
 lib_doc_ja_files = Split('''
+    Customization.lyx
+    DummyDocument1.lyx
+    DummyDocument2.lyx
+    EmbeddedObjects.lyx
     Extended.lyx
+    Formula-numbering.lyx
     Intro.lyx
     LaTeXConfig.lyx
     Math.lyx
@@ -2284,10 +2289,12 @@ lib_doc_ja_files = Split('''
 
 
 lib_doc_ja_clipart_files = Split('''
+    ChildDocumentQt4.png
+    ERT.png
+    ExternalMaterialQt4.png
     floatQt4.png
     footnoteQt4.png
     referenceQt4.png
-    ERT.png
     ToolbarEnvBox.png
 ''')
 

@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -12,6 +12,9 @@
 % have problems LaTeXing this file, please contact 
 % the documentation team
 % email: lyx-docs@lists.lyx.org
+
+\ifnum 42146=\euc"A4A2 \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}\else
+\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}\fi
 
 % if pdflatex is used
 \usepackage{ifpdf}
@@ -96,7 +99,7 @@ End
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\pdf_quoted_options "unicode=false,linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -3165,7 +3168,7 @@ Undefined control sequence
 \bar no
 \noun off
 \color none
-文書のもっともはじめの部分にエラーボックスが多数積み上がった場合には—特に
+文書のもっともはじめの部分にエラーボックスが多数積み上がった場合には---特に
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -3186,7 +3189,7 @@ begin{document}
 
 \end_inset
 
-が表示されているならば—、プリアンブルにエラーがあることを意味します。プリアンブルのデバックを行ってください。
+が表示されているならば---、プリアンブルにエラーがあることを意味します。プリアンブルのデバックを行ってください。
 \end_layout
 
 \begin_layout Enumerate
@@ -5146,7 +5149,27 @@ UserDir
 
 \end_inset
 
-の下に作られ、「
+の下に作られ（Windowsを除く。Windowsでは、名前を付けた
+\emph on
+ローカルの
+\emph default
+パイプは
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\backslash
+.
+\backslash
+pipe
+\end_layout
+
+\end_inset
+
+に特別なオブジェクトとして置かれます）、「
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -5207,6 +5230,24 @@ status collapsed
 
 \end_inset
 
+」あるいはWindowsでは「
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\backslash
+.
+\backslash
+pipe
+\backslash
+lyxpipe
+\end_layout
+
+\end_inset
+
 」などに設定することができます。サーバーを開始するためには、これを
 \emph on
 手動で設定しなくてはなりません
@@ -5235,9 +5276,10 @@ status collapsed
 
 \end_inset
 
-」を付け加えます。パイプがすでに存在していれば、LyXは他のLyXプロセスがすでに実行中であると判断して、サーバーを開始しません。いいかえれば、LyXがクラッシ
-ュしたり、あるいはなんらかの理由で、LyXが終了する際に「古い」パイプが削除されずに残ったりすると、LyXはサーバーを開始しようとしません（これはバグ641号で
-す）。この場合には、手動でパイプを削除したのちに、LyXを再起動する必要があります。
+」を付け加えます。パイプがすでに存在していれば、LyXは他のLyXプロセスがすでに実行中であると判断して、サーバーを開始しません。POSIX（Unix型）システ
+ムでは、なんらかの理由で、LyXが終了する際に使用されていない「古い」パイプが削除されずに残ったりすると、LyXはこれを削除しようとします。何らかの理由でこれが
+失敗した場合、手動でパイプを削除したのちに、LyXを再起動する必要があります。Windowsでは、プログラムが終了したりクラッシュしたりすると、OSがパイプを削
+除するので、「古い」パイプが残ることはありません。
 \end_layout
 
 \begin_layout Standard
@@ -5269,34 +5311,7 @@ lyx -dbg lyxserver
 \end_layout
 
 \begin_layout Standard
-このほかに、いくつか留意すべき点があります。
-\end_layout
-
-\begin_layout Itemize
-サーバーとクライアントは、いずれもUNIXかOS/2マシーン上で実行する必要があります。UNIX上のLyXと、OS/2上のクライアントのあいだの通信や、その逆は
-、現在のところ実行できません。
-\end_layout
-
-\begin_layout Itemize
-OS/2上では、同時に一つのクライアントだけがLyXサーバーに接続することができます。
-\end_layout
-
-\begin_layout Itemize
-OS/2上では、クライアントは入力パイプを
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-O_WRONLY
-\end_layout
-
-\end_inset
-
-モードで開かなくてはなりません。
-\end_layout
-
-\begin_layout Standard
-C言語で書かれた完全なサンプルクライアントが、ソース頒布版の
+Ｃ言語で書かれた完全なサンプルクライアントが、ソース頒布版の
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -5307,6 +5322,20 @@ development/lyxserver/server_monitor.c
 \end_inset
 
 にあります。
+\end_layout
+
+\begin_layout Standard
+もう一つの便利なツールとして、
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+src/client/lyxclient
+\end_layout
+
+\end_inset
+
+にあるコマンドラインベースのクライアントがあります。
 \end_layout
 
 \begin_layout Section
@@ -5411,9 +5440,9 @@ ERROR:
 
 \begin_layout LyX-Code
 echo "LYXCMD:test:beginning-of-buffer:" >~/.lyxpipe.in
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout LyX-Code
 echo "LYXCMD:test:get-xy:" >~/.lyxpipe.in
 \begin_inset Newline newline
 \end_inset
@@ -5489,6 +5518,1034 @@ LYXSRV:
 が終了することをクライアントに伝えるのには、LyXが「bye」を送信します。
 \end_layout
 
+\begin_layout Section
+DVIとPDFの遡及検索
+\end_layout
+
+\begin_layout Standard
+DVI/PDFビューア
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+PDFの遡及検索機能を提供しているビューアには、KDE/Linux上のOkularとMac OS X上のSkim、Windows上のSumatraPDFがありま
+す。
+\end_layout
+
+\end_inset
+
+には、遡及検索（reverse searchないしinverse searchと呼ばれます）機能を提供しているものがあります。これを使えば、DVI/PDF出力の
+特定の場所をクリックすることによって、LyXの文書中で対応する行にカーソルを移動させることができます。これを実現するためには、ビューアはLyXと情報交換を行う必
+要があります。これは、命名パイプ（lyxpipe）を使用するか、LyXが作業ディレクトリに生成するUNIXドメインソケット（lyxsocket）を使用する（これ
+は
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxclient
+\end_layout
+
+\end_inset
+
+プログラムがLyXと通信するのに使用している方法です）ことで、LyXサーバを経由して実現することができます。場合によっては、ビューアとLyXを橋渡しする補助スク
+リプトを必要とすることがあるかもしれませんが、それ以外は、ビューアはLyXと直接通信することができます。これは、選んだビューアと基本ソフトに依存します。また、必
+要とされるビューアの設定法と遡及検索が実際に行われる方法とにも依存します。したがって、下記では個々のビューア毎の遡及検索の設定の仕方を説明することとします。その
+前に、DVI/PDF出力で遡及検索を有効にするためには、一般に何が必要とされるかを説明します。
+\end_layout
+
+\begin_layout Subsection
+遡及検索を有効にするには
+\end_layout
+
+\begin_layout Standard
+LaTeXは、遡及検索のために複数の方法を提供しています。ある方法は
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+latex/pdflatex
+\end_layout
+
+\end_inset
+
+プログラムに組み込まれており、他の方法は外部パッケージとして提供されています。どちらを選択するかは、お使いのLaTeX頒布版が既に特定の方法を提供しているか（組
+み込みによる方法は比較的新しいものです）と、お使いのビューアがそれに対応しているかに依存します。使用可能な方法を以下に述べます。
+\end_layout
+
+\begin_layout Subsubsection*
+src-special経由のDVI組み込み検索（DVIのみ）
+\end_layout
+
+\begin_layout Standard
+この方法は、DVIファイルに遡及検索に必要な情報を追加するものです。これは、かなり前のLaTeXから利用可能となっており（比較的最近のLaTeX頒布版はすべて対
+応しています）、安定して動作します。これを有効にするには、
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+設定\SpecialChar \menuseparator
+ファイル処理\SpecialChar \menuseparator
+変換子
+\end_layout
+
+\end_inset
+
+の
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX (plain)->DVI
+\end_layout
+
+\end_inset
+
+ないし
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX (plain)->DraftDVI
+\end_layout
+
+\end_inset
+
+変換子を
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+latex -src-specials $$i
+\end_layout
+
+\end_inset
+
+に変更します。もしこれが動作しないときは、お使いのLaTeXエンジンが違うオプションを必要としていないか確認してください（頒布版によっては文法の異なることがあり
+ます）。
+\end_layout
+
+\begin_layout Subsubsection*
+外部パッケージ（PDFSyncおよびsrcltx）
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+pdfsync
+\emph default
+および
+\emph on
+srcltx
+\emph default
+パッケージは、PDF出力（pdflatex経由）およびDVI出力での遡及検索を提供します。これを有効にするには、LyXプリアンブルで以下のようにパッケージを読み
+込んでください。
+\end_layout
+
+\begin_layout Itemize
+PDFの遡及検索には
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+usepackage{pdfsync}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+DVIの遡及検索には
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+usepackage[active]{srcltx}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+と書きます。DVIとPDFの両方の遡及検索を実行できるようにするためには、プリアンブルに以下の行を挿入する方法があります。
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+usepackage{ifpdf}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+ifpdf
+\begin_inset Newline newline
+\end_inset
+
+  
+\backslash
+usepackage{pdfsync}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+else
+\begin_inset Newline newline
+\end_inset
+
+  
+\backslash
+usepackage[active]{srcltx}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+fi
+\end_layout
+
+\begin_layout Standard
+このようにすれば、DVIでもPDF（pdflatex）でも正しいパッケージを使いながら、ファイルを閲覧することができます。
+\end_layout
+
+\begin_layout Standard
+なお、PDFSyncは、文書の出力レイアウトに干渉する可能性があるので注意してください。したがって、仕上がり文書ではPDFSyncを無効にすることをお勧めします
+。
+\end_layout
+
+\begin_layout Subsubsection*
+SyncTeXを使った組み込み遡及検索（DVIおよびPDF）
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+(pdf)latex
+\end_layout
+
+\end_inset
+
+の最近のバージョンは、PDFおよびDVI両方の遡及検索を組み込みでサポートしています。このいわゆる
+\emph on
+SyncTeX
+\emph default
+機能は、主に、PDFSyncパッケージをpdftexプログラムへ統合したことと、それをsrc-specialsアプローチへ取り込んだことの成果です。これを使用す
+るためには、少なくともTeXLive 2008か最近のMikTeX頒布版が必要です。また、既にSyncTeXサポートを提供しているPDFビューアは少ししかありま
+せん（Mac上のSkimとWindows上のSumatraPDF）。
+\end_layout
+
+\begin_layout Standard
+DVI出力でSyncTeXを有効にするには、
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+設定\SpecialChar \menuseparator
+ファイル処理\SpecialChar \menuseparator
+変換子
+\end_layout
+
+\end_inset
+
+の
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX (plain)->DVI
+\end_layout
+
+\end_inset
+
+ないし
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX (plain)->DraftDVI
+\end_layout
+
+\end_inset
+
+変換子を
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+latex -synctex=1 $$i
+\end_layout
+
+\end_inset
+
+に変更します。PDF出力用には、
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX (pdflatex)->PDF (pdflatex)
+\end_layout
+
+\end_inset
+
+変換子を
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+pdflatex -synctex=1 $$i
+\end_layout
+
+\end_inset
+
+に変更してください。また、ビューアをSyncTeXで使うのに設定を行う必要があるかどうか、お使いのビューアの取扱説明書をご確認ください
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+-synctex=1
+\end_layout
+
+\end_inset
+
+オプションは、gzip圧縮を有効にします。お使いのビューアがgzip圧縮をサポートしていない場合には、代わりに
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+-synctex=-1
+\end_layout
+
+\end_inset
+
+を使用してください。
+\end_layout
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Subsection
+特定のビューアを設定して使うには
+\end_layout
+
+\begin_layout Subsubsection*
+Xdvi（全プラットフォーム）
+\end_layout
+
+\begin_layout Standard
+LyXは、
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxclient
+\end_layout
+
+\end_inset
+
+プログラムを自動的に使うのに必要なフックを、既に提供しているので、
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+xdvi
+\end_layout
+
+\end_inset
+
+を使用する場合には、DVI遡及検索を実行するのに他にするべきことはありません。使用中の文書を上記で述べたように設定するだけです（遡及検索は、Ctrl-クリックか
+、Mac OS X上ではAlt-クリックで始動します）。
+\end_layout
+
+\begin_layout Standard
+しかし、何らかの理由で、LyXと通信するのにソケットではなく命名パイプを使用したい場合には、
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+設定\SpecialChar \menuseparator
+ファイル処理\SpecialChar \menuseparator
+ファイル書式
+\end_layout
+
+\end_inset
+
+のDVIビューアを
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+xdvi -editor 'lyxeditor.sh %f %l'
+\end_layout
+
+\end_inset
+
+（
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor.sh
+\end_layout
+
+\end_inset
+
+は適切なスクリプト名）に変更してください。たとえば、最低限のシェルスクリプトは
+\end_layout
+
+\begin_layout LyX-Code
+#!/bin/sh
+\begin_inset Newline newline
+\end_inset
+
+LYXPIPE="/path/to/lyxpipe"
+\begin_inset Newline newline
+\end_inset
+
+COMMAND="LYXCMD:revdvi:server-goto-file-row:$1 $2"
+\begin_inset Newline newline
+\end_inset
+
+echo "$COMMAND" > "${LYXPIPE}".in || exit
+\begin_inset Newline newline
+\end_inset
+
+read < "${LYXPIPE}".out || exit
+\end_layout
+
+\begin_layout Standard
+のようになります。ここで
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+/path/to/lyxpipe
+\end_layout
+
+\end_inset
+
+は、
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+設定\SpecialChar \menuseparator
+パス
+\end_layout
+
+\end_inset
+
+で指定したLy
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+XServerパイプのパスを指定してください
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+ソース頒布版の
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+development/tools
+\end_layout
+
+\end_inset
+
+フォルダには、ユーザが設定した
+\emph on
+lyxpipe
+\emph default
+を探し出す
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor
+\end_layout
+
+\end_inset
+
+スクリプトがあります。
+\end_layout
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Subsubsection*
+MacDviX（Mac OS X）
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+/Applications/MacDviX_Folder/calleditor.script
+\end_layout
+
+\end_inset
+
+の終わりに
+\end_layout
+
+\begin_layout LyX-Code
+/Applications/Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X.app/Contents/MacOS/lyxeditor "$2" $1
+\begin_inset Newline newline
+\end_inset
+
+exit 1
+\end_layout
+
+\begin_layout Standard
+という行を付け加えてください。Applicationsフォルダ以外の場所にLyXを導入した場合には、それに従って上記の行を修正してください。
+\end_layout
+
+\begin_layout Standard
+遡及検索は、Alt-クリック（OPTION-クリック）で始動します。
+\end_layout
+
+\begin_layout Subsubsection*
+Skim（Mac OS X）
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+設定\SpecialChar \menuseparator
+ファイル処理\SpecialChar \menuseparator
+ファイル書式\SpecialChar \menuseparator
+PDF (pdflatex)
+\end_layout
+
+\end_inset
+
+のビューア設定に
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+open -a Skim.app $$i
+\end_layout
+
+\end_inset
+
+と入力し、
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Skim\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+Sync
+\end_layout
+
+\end_inset
+
+でLy
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+Xを選択してください。
+\end_layout
+
+\begin_layout Standard
+遡及検索は、COMMAND-SHIFT-クリックで始動します。
+\end_layout
+
+\begin_layout Subsubsection*
+Okular (KDE)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+設定\SpecialChar \menuseparator
+Okularを設定\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+編集
+\end_layout
+
+\end_inset
+
+で「カスタムテキストエディタ」を選択し、コマンドに
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxclient -g %f %l
+\end_layout
+
+\end_inset
+
+を加えてください。
+\end_layout
+
+\begin_layout Standard
+遡及検索は、SHIFT-クリックで始動します。
+\end_layout
+
+\begin_layout Subsubsection*
+YAP（Windows）
+\end_layout
+
+\begin_layout Standard
+yapを起動し、
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+View\SpecialChar \menuseparator
+Options
+\end_layout
+
+\end_inset
+
+メニューを選択し、「Inverse DVI Search」タブを選択します。「New\SpecialChar \ldots{}
+」ボタンをクリックして開くウィンドウの「Name:」フィールドに「LyX
+ Editor」（または自分の好きな名称）と入力してください。「\SpecialChar \ldots{}
+」というラベルのボタンをクリックしてファイルダイアログを開き、バッチファイル
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor.bat
+\end_layout
+
+\end_inset
+
+（以下参照）のあるディレクトリを見つけます。
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor.bat
+\end_layout
+
+\end_inset
+
+を選択してプログラムの引数を
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+%f %l
+\end_layout
+
+\end_inset
+
+と指定してください。
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor.bat
+\end_layout
+
+\end_inset
+
+は、
+\emph on
+lyxpipe
+\emph default
+を通じてLyXと通信するためのラッパとして使用され、以下のようになっています。
+\end_layout
+
+\begin_layout LyX-Code
+@echo off
+\begin_inset Newline newline
+\end_inset
+
+echo LYXCMD:revdvi:server-goto-file-row:%1 %2> 
+\backslash
+
+\backslash
+.
+\backslash
+pipe
+\backslash
+lyxpipe.in
+\begin_inset Newline newline
+\end_inset
+
+type 
+\backslash
+
+\backslash
+.
+\backslash
+pipe
+\backslash
+lyxpipe.out
+\end_layout
+
+\begin_layout Standard
+LyXで指定したLyXServerパイプパスが、
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\backslash
+.
+\backslash
+pipe
+\backslash
+lyxpipe
+\end_layout
+
+\end_inset
+
+となっていることを確認するか、
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor.bat
+\end_layout
+
+\end_inset
+
+ラッパの方を適切に修正してください。
+\end_layout
+
+\begin_layout Standard
+yapでは、遡及検索はダブルクリックで始動します。
+\end_layout
+
+\begin_layout Subsubsection*
+SumatraPDF（Windows）
+\end_layout
+
+\begin_layout Standard
+SumatraPDFを遡及検索で使用するためには、
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+設定\SpecialChar \menuseparator
+ファイル処理\SpecialChar \menuseparator
+ファイル書式\SpecialChar \menuseparator
+PDF (pdflatex)
+\end_layout
+
+\end_inset
+
+のビューア設定で
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+SumatraPDF -inverse-search 
+\begin_inset Quotes eld
+\end_inset
+
+lyxeditor.bat %f %l
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+（
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor.bat
+\end_layout
+
+\end_inset
+
+は上記のラッパ）と入力してください。SumatraPDF.exeがコマンドPATHにない場合、フルファイル名を使用してください。
+\end_layout
+
+\begin_layout Standard
+遡及検索はダブルクリックで始動します。
+\end_layout
+
+\begin_layout Subsubsection*
+YAP（Cygwin）
+\end_layout
+
+\begin_layout Standard
+まずはじめに、yapがWindows環境での既定のDVIビューアになっていることを確認してから、yapを起動し、
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+View\SpecialChar \menuseparator
+Options
+\end_layout
+
+\end_inset
+
+メニューを選択し、「Inverse DVI Search」タブを選択します。「New\SpecialChar \ldots{}
+」ボタンをクリックして開くウィンドウの「Name:」フィールドに「LyX
+ Editor」（または自分の好きな名称）と入力してください。「\SpecialChar \ldots{}
+」というラベルのボタンをクリックしてファイルダイアログを開き、バッチファイル
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor.exe
+\end_layout
+
+\end_inset
+
+プログラム（これは、Cygwinでは既定でLyX実行ファイルとともに導入されます）のあるディレクトリを見つけます。
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor.exe
+\end_layout
+
+\end_inset
+
+を選択してプログラムの引数を
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+-g %f %l
+\end_layout
+
+\end_inset
+
+と指定してください。これによって、LyXとの通信に
+\emph on
+lyxsocket
+\emph default
+が使用されるようになります。何らかの理由で
+\emph on
+lyxpipe
+\emph default
+を使用したい場合には、
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+-g
+\end_layout
+
+\end_inset
+
+オプションを削除して、LyX設定でLyXServerパイプパスを指定することを忘れないでください。
+\end_layout
+
+\begin_layout Standard
+yapでは、遡及検索はダブルクリックで始動します。
+\end_layout
+
+\begin_layout Subsubsection*
+SumatraPDF（Cygwin）
+\end_layout
+
+\begin_layout Standard
+SumatraPDFを遡及検索で使用するためには、
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+設定\SpecialChar \menuseparator
+ファイル処理\SpecialChar \menuseparator
+ファイル書式\SpecialChar \menuseparator
+PDF (pdflatex)
+\end_layout
+
+\end_inset
+
+のビューア設定で
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+SumatraPDF.sh
+\end_layout
+
+\end_inset
+
+と入力してください。ここで
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+SumatraPDF.sh
+\end_layout
+
+\end_inset
+
+は以下のようなスクリプトです（お使いのコマンドパスに置きます。
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+/usr/local/bin
+\end_layout
+
+\end_inset
+
+がもっとも良い選択肢でしょう）。
+\end_layout
+
+\begin_layout LyX-Code
+#!/bin/bash
+\begin_inset Newline newline
+\end_inset
+
+cd $(dirname $1)
+\begin_inset Newline newline
+\end_inset
+
+SumatraPDF -inverse-search "lyxeditor -g %f %l" $(basename $1)
+\end_layout
+
+\begin_layout Standard
+SumatraPDFは、Windowsネイティブのアプリケーションであり、LyXのCygwin版が使用するPOSIXパスを理解しないので、このラッパスクリプトが
+必要となります。SumatraPDF.exeがお使いのコマンドパスにない場合は、上記のスクリプトでPOSIXのフルパスを使用してください。
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+-g
+\end_layout
+
+\end_inset
+
+は
+\emph on
+lyxsocket
+\emph default
+経由の通信を有効にします。ここでも、
+\emph on
+lyxpipe
+\emph default
+を使用したい場合には、
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+-g
+\end_layout
+
+\end_inset
+
+オプションを削除して、LyX設定でLyXServerパイプパスを指定することを忘れないでください。
+\end_layout
+
+\begin_layout Standard
+遡及検索はダブルクリックで始動します。
+\end_layout
+
 \begin_layout Chapter
 特別な文書クラス
 \end_layout
@@ -5498,16 +6555,9 @@ A&A Paper
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex CharStyle:Noun
-status collapsed
 
-\begin_layout Plain Layout
-Peter Sütterlin
-\end_layout
-
-\end_inset
-
-文
+\noun on
+Peter Sütterlin文
 \end_layout
 
 \begin_layout Subsection
@@ -5534,7 +6584,7 @@ http://www.edpsciences.fr/aa/
 
 \end_inset
 
-)に投稿する論文を書く方法を説明します。。このパッケージは次の ftpサイトから手にいれることができます。
+)に投稿する論文を書く方法を説明します。このパッケージは次の ftpサイトから手にいれることができます。
 \end_layout
 
 \begin_layout Standard
@@ -5934,8 +6984,15 @@ figure、figure*、table、table*
 をサポートしています。そのため、ここでは詳しい説明はしません。ユーザーの手引きを見てください。ただし、表は左揃にしなければならないのを忘れないで下さい。そのため
 には 
 \family sans
-Layout\SpecialChar \menuseparator
-Paragraph
+\bar under
+L
+\bar default
+ayout\SpecialChar \menuseparator
+
+\bar under
+P
+\bar default
+aragraph
 \family default
 を選択して、alignmentを変えてください。
 \end_layout
@@ -5947,13 +7004,23 @@ Paragraph
 \begin_layout Enumerate
 
 \family sans
-Insert\SpecialChar \menuseparator
-Floats\SpecialChar \menuseparator
+\bar under
+I
+\bar default
+nsert\SpecialChar \menuseparator
+Fl
+\bar under
+o
+\bar default
+ats\SpecialChar \menuseparator
 Figure
 \family default
  を使って wide figureフロートをつくります。そして図を右クリックして 
 \family sans
-Span columns
+\bar under
+S
+\bar default
+pan columns
 \family default
  を選びます。
 \end_layout
@@ -5982,15 +7049,26 @@ H
 \bar default
 Fill
 \family default
-を挿入 – 
+を挿入 -- 
 \family sans
-Insert\SpecialChar \menuseparator
-Special
+\bar under
+I
+\bar default
+nsert\SpecialChar \menuseparator
+
+\bar under
+S
+\bar default
+pecial
 \begin_inset space ~
 \end_inset
 
-Character\SpecialChar \menuseparator
-HFill。
+Character
+\bar under
+\SpecialChar \menuseparator
+H
+\bar default
+Fill。
 \end_layout
 
 \begin_layout Enumerate
@@ -6157,9 +7235,20 @@ altaffiltext
 \begin_layout Enumerate
 論文を LaTeXファイルとして出力します。(
 \family sans
-File\SpecialChar \menuseparator
-Export\SpecialChar \menuseparator
-LateX
+\bar under
+F
+\bar default
+ile\SpecialChar \menuseparator
+
+\bar under
+E
+\bar default
+xport\SpecialChar \menuseparator
+
+\bar under
+L
+\bar default
+ateX
 \family default
 )
 \end_layout
@@ -6644,7 +7733,7 @@ appendix
 \backslash
 figcaption
 \family default
- (2.13.2) – 最終的な LaTeXファイルで追加的な引数を手で編集しなければなりません。
+ (2.13.2) -- 最終的な LaTeXファイルで追加的な引数を手で編集しなければなりません。
 \end_layout
 
 \begin_layout Subsubsection
@@ -7509,7 +8598,7 @@ Journal of Geophysical Research
 \family typewriter
 jgrga.layout
 \family default
- — Martin Vermeer
+ --- Martin Vermeer
 \end_layout
 
 \begin_layout Standard
@@ -9593,29 +10682,29 @@ M-z r
 \end_layout
 
 \begin_layout Itemize
-(O.S) — off screen
+(O.S) --- off screen
 \end_layout
 
 \begin_layout Itemize
-(V.0) — voice over
+(V.0) --- voice over
 \end_layout
 
 \begin_layout Itemize
 b.g.
- — background
+ --- background
 \end_layout
 
 \begin_layout Itemize
 C.U.
- — close-up
+ --- close-up
 \end_layout
 
 \begin_layout Itemize
-PAN — camera movement
+PAN --- camera movement
 \end_layout
 
 \begin_layout Itemize
-INSERT — cut to close-up of
+INSERT --- cut to close-up of
 \end_layout
 
 \begin_layout Section
@@ -12323,7 +13412,7 @@ outer ページ番号がページの外側に付きます
 
 \begin_deeper
 \begin_layout Description
-rmheadings serif のタイトル — 既定
+rmheadings serif のタイトル --- 既定
 \end_layout
 
 \begin_layout Description
@@ -12331,7 +13420,7 @@ sfheadings sans serif のタイトル
 \end_layout
 
 \begin_layout Description
-authortitle タイトルページにまず著者名、その次にタイトルが配置される — 既定
+authortitle タイトルページにまず著者名、その次にタイトルが配置される --- 既定
 \end_layout
 
 \begin_layout Description
@@ -12733,7 +13822,7 @@ svjog
 \end_layout
 
 \begin_layout Standard
-多くの定理型の環境 — 
+多くの定理型の環境 --- 
 \family sans
 Claim、Conjecture、
 \family default
@@ -12767,7 +13856,7 @@ Journal of Geodesy
 \family typewriter
 svjog.layout
 \family default
- — Martin Vermeer
+ --- Martin Vermeer
 \end_layout
 
 \begin_layout Itemize
@@ -12779,7 +13868,7 @@ Probability Theory and Related Fields
 \family typewriter
 svprobth.layout
 \family default
- — Jean-Marc Lasgouttes
+ --- Jean-Marc Lasgouttes
 \end_layout
 
 \begin_layout Standard
@@ -13329,7 +14418,7 @@ Note
 \family sans
 InvisibleText、VisibleText
 \family default
-の5つの環境に共通の機能は長いラベルです。このラベルに続くテキスト — 通常の段落環境なら段落の内容にあたります —は、
+の5つの環境に共通の機能は長いラベルです。このラベルに続くテキスト --- 通常の段落環境なら段落の内容にあたります ---は、
 \family sans
 Slide
 \family default
@@ -15324,7 +16413,7 @@ LyXの実装にあたってはGNU RCSパッケージの最新のバージョン�
 \end_layout
 
 \begin_layout Subsection
-LyXでのRCSコマンド
+LyXにおけるRCSコマンド
 \end_layout
 
 \begin_layout Standard
@@ -15339,7 +16428,7 @@ status collapsed
 
 \end_inset
 
-の下位メニューにあります。
+の下位メニューにあります。LyXは、RCS 5.7に対して試験されています。
 \end_layout
 
 \begin_layout Subsubsection
@@ -15403,7 +16492,7 @@ man ci
 \end_layout
 
 \begin_layout Standard
-RCS command: 
+RCSコマンド：
 \family typewriter
 ci -q -u -m"<description>" <file-name>
 \end_layout
@@ -15420,7 +16509,7 @@ ci -q -u -m"<description>" <file-name>
 \end_layout
 
 \begin_layout Standard
-RCS command: 
+RCSコマンド：
 \family typewriter
 co -q -l <file-name>
 \end_layout
@@ -15436,7 +16525,7 @@ co -q -l <file-name>
 \end_layout
 
 \begin_layout Standard
-RCS command: 
+RCSコマンド：
 \family typewriter
 co -f -u<version> <file-name>
 \end_layout
@@ -15453,7 +16542,7 @@ co -f -u<version> <file-name>
 \end_layout
 
 \begin_layout Standard
-RCS command: 
+RCSコマンド：
 \family typewriter
 rcs -o<version> <file-name>
 \end_layout
@@ -15465,7 +16554,7 @@ rcs -o<version> <file-name>
 \end_layout
 
 \begin_layout Standard
-RCSドキュメントの完全なヒストリーが表示されます。これは 
+RCSドキュメントの完全なヒストリーが表示されます。これは
 \family typewriter
 rlog <file-name>
 \family default
@@ -15476,8 +16565,1343 @@ rlog
 の manページを見てください。
 \end_layout
 
+\begin_layout Subsection
+LyXにおけるCVSコマンド
+\end_layout
+
+\begin_layout Standard
+LyXは、現在CVSを一部サポートしています。そのコマンドは、
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+ファイル\SpecialChar \menuseparator
+バージョン管理
+\end_layout
+
+\end_inset
+
+下位メニューにあります。
+\end_layout
+
+\begin_layout Subsubsection
+登録
+\end_layout
+
+\begin_layout Standard
+お使いの文書が改訂管理下に置かれていなければ、メニューにはこの項目だけが表示されます。もし改訂管理が有効ならば、
+\family sans
+登録
+\family default
+項目は表示されません。
+\end_layout
+
+\begin_layout Standard
+本コマンドは、既に文書のあるディレクトリをCVS管理下に置いている場合に
+\emph on
+のみ
+\emph default
+（すなわち
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+CVS/Entries
+\end_layout
+
+\end_inset
+
+ファイルが存在する場合にのみ）、お使いの文書をCVSに登録します。つまり、アーカイブはご自分でチェックアウトしなくてはなりません。
+\end_layout
+
+\begin_layout Standard
+すると、文書の最初の説明文を入力するように促されます。登録したファイルは、まだコミットされたわけではないことに注意してください。
+\end_layout
+
+\begin_layout Standard
+実行されるCVSコマンドは、
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+cvs -q add -m
+\begin_inset Quotes erd
+\end_inset
+
+<入力した説明文>
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+<ファイル名>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+です。
+\end_layout
+
+\begin_layout Standard
+スイッチの説明は
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+man cvs
+\end_layout
+
+\end_inset
+
+をお読みください。
+\end_layout
+
+\begin_layout Subsubsection
+変更をチェックイン
+\end_layout
+
+\begin_layout Standard
+ファイルの編集を終えたら、変更をコミットします。このとき、変更の説明文を入れるよう促されます。その後、変更がコミットされます。
+\end_layout
+
+\begin_layout Standard
+CVSコマンド：
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+cvs -q commit -m
+\begin_inset Quotes erd
+\end_inset
+
+<入力した説明文>
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+<ファイル名>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+保存されたバージョンに戻す
+\end_layout
+
+\begin_layout Standard
+これは、最後のチェックイン以降、文書に加えられた変更をすべて廃棄します。変更が廃棄される前に警告が表示されます。最初にファイルが削除され、次にCVSアップデート
+コマンドが実行されます。
+\end_layout
+
+\begin_layout Standard
+CVSコマンド：
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+cvs update 
+\begin_inset Quotes eld
+\end_inset
+
+<ファイル名>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+履歴を表示
+\end_layout
+
+\begin_layout Standard
+これは、CVS文書の全履歴を表示します。
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+cvs log 
+\begin_inset Quotes eld
+\end_inset
+
+<ファイル名>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+の出力がブラウザに表示されます。
+\end_layout
+
+\begin_layout Subsection
+LyXにおけるSVNコマンド
+\end_layout
+
+\begin_layout Standard
+LyXは、現在SVNを一部サポートしています。そのコマンドは、
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+ファイル\SpecialChar \menuseparator
+バージョン管理
+\end_layout
+
+\end_inset
+
+下位メニューにあります。レポジトリへのアクセスに、ssh経由のパスワード保護アクセスを使用している場合には、端末ウィンドウでの入力を促されます。LyXは、SVN
+ 1.5および1.6に対して試験されています
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+ほとんどのコマンドは、1.4でも動作します。第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:レポジトリからSVN同期"
+
+\end_inset
+
+節をご覧ください。
+\end_layout
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Subsubsection
+登録
+\end_layout
+
+\begin_layout Standard
+お使いの文書が改訂管理下に置かれていなければ、メニューにはこの項目だけが表示されます。もし改訂管理が有効ならば、
+\family sans
+登録
+\family default
+項目は表示されません。
+\end_layout
+
+\begin_layout Standard
+本コマンドは、既に文書のあるディレクトリをSVN管理下に置いている場合に
+\emph on
+のみ
+\emph default
+（すなわち
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+.svn/entries
+\end_layout
+
+\end_inset
+
+ファイルが存在する場合にのみ）、お使いの文書をSVNに登録します。つまり、アーカイブはご自分でチェックアウトしなくてはなりません。
+\end_layout
+
+\begin_layout Standard
+すると、文書の最初の説明文を入力するように促されます。登録したファイルは、まだコミットされたわけではないことに注意してください。
+\end_layout
+
+\begin_layout Standard
+実行されるSVNコマンドは、
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn add -q 
+\begin_inset Quotes eld
+\end_inset
+
+<ファイル名>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+です。
+\end_layout
+
+\begin_layout Standard
+スイッチの説明は
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+man svn
+\end_layout
+
+\end_inset
+
+をお読みください。
+\end_layout
+
+\begin_layout Subsubsection
+変更をチェックイン
+\end_layout
+
+\begin_layout Standard
+ファイルの編集を終えたら、変更をコミットします。このとき、変更の説明文を入れるよう促されます。その後、変更がコミットされます。
+\end_layout
+
+\begin_layout Standard
+SVNコマンド
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+ロックが有効になっていない場合です。第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SVNファイルロック"
+
+\end_inset
+
+節をご覧ください。
+\end_layout
+
+\end_inset
+
+：
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn commit -q -m
+\begin_inset Quotes erd
+\end_inset
+
+<入力した説明文>
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+<ファイル名>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+チェックアウトして編集
+\end_layout
+
+\begin_layout Standard
+このファイルの変更点をレポジトリから取得して更新します。すべての干渉点は、手動で解決しなくてはならないので、この機能を使う前にSVNのマージ法と干渉解決法を理解
+しておくようにしてください。
+\end_layout
+
+\begin_layout Standard
+SVNコマンド
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+同上。
+\end_layout
+
+\end_inset
+
+：
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn update --non-interactive 
+\begin_inset Quotes eld
+\end_inset
+
+<ファイル名>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+保存されたバージョンに戻す
+\end_layout
+
+\begin_layout Standard
+これは、最後のチェックイン以降、文書に加えられた変更をすべて廃棄します。変更が廃棄される前に警告が表示されます。
+\end_layout
+
+\begin_layout Standard
+SVNコマンド：
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn revert -q 
+\begin_inset Quotes eld
+\end_inset
+
+<ファイル名>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:レポジトリからSVN同期"
+
+\end_inset
+
+レポジトリを使ったローカルディレクトリの同期
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+このコマンドは、subversion 
+\begin_inset Formula $\geqq1.5$
+\end_inset
+
+でのみ動作することに注意してください。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+上記の各コマンドはすべて、共通の短所を持っています。すなわち、これらのコマンドは現在の文書しか取り扱わないのです。もし、作業中の文書に図を含めたり、外部
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+.tex
+\end_layout
+
+\end_inset
+
+ファイルを取り込んだりすれば、管理はずっと複雑になります。そこでLyXは、文書のおいてあるツリー全体の更新をサポートします
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+すべての外部ファイルが、文書と同じディレクトリかそれ以下のサブディレクトリに来るようにファイル構造を構成する必要があります。
+\end_layout
+
+\end_inset
+
+。これは、subversion管理を知らなかったりレポジトリに新しい素材をコミットする勇気のない人たちと共同作業をする羽目になったときに、ひじょうに役に立ちます
+。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+ローカル辞書をレポジトリを使って更新
+\end_layout
+
+\end_inset
+
+コマンドは、ディレクトリ全体を更新し、マージに衝突が発生した場合には、ローカル版は保存されるので、意図しないデータロスが発生しません。ローカルな変更が発見された
+場合には、更新が開始される前にユーザに警告が与えられます。
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+SVNコマンド： 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn diff $path（変更が発見された場合には通知します）
+\begin_inset Newline newline
+\end_inset
+
+svn update --accept mine-full $path
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ここで
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+$path
+\end_layout
+
+\end_inset
+
+は文書のパスを示します。
+\end_layout
+
+\begin_layout Subsubsection
+履歴を表示
+\end_layout
+
+\begin_layout Standard
+これは、SVN文書の全履歴を表示します。
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn log 
+\begin_inset Quotes eld
+\end_inset
+
+<ファイル名>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+の出力がブラウザに表示されます。
+\end_layout
+
+\begin_layout Subsubsection
+ファイルロック
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SVNファイルロック"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+別々の改訂管理システム間でファイルを交換しようとすると、二人のユーザが同じ文書（の一部）を編集している場合、マージが衝突する問題を引き起こします。そのような衝突
+が発生した場合、手動で解決しなくてはならなくなりますが、その合理的な解決法としては、与えられた時間に一人のユーザだけがファイルを編集することが許されるように保証
+するための、何らかのロック機構を導入することが考えられます。
+\end_layout
+
+\begin_layout Standard
+SVNには、このように相互に排他的なファイルアクセスを提供する機構が二つあります。ロックと、
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn:needs-lock
+\end_layout
+
+\end_inset
+
+svnファイル特性に依拠した書き込み権限の自動設定（第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:自動ロック特性"
+
+\end_inset
+
+節を参照）です
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html
+\end_layout
+
+\end_inset
+
+。ある文書について、この特性が検出されたときには、LyXは自動的に文書編集にSVNロックを使用するようになり、チェックイン・チェックアウト機構はRCSと同じ枠組
+みに切り替わります。これは特に、LyXでのファイルの使われ方に以下の二つのモードがあることを意味します。
+\end_layout
+
+\begin_layout Itemize
+非ロック状態。読み込まれたファイルは、読み込み専用モードになります。編集するためには、チェックアウトする必要があります。
+\emph on
+チェックアウト
+\emph default
+を行うと、レポジトリからの更新と、書き込みロックの獲得が行われます。ロックの獲得ができないと、非ロック状態から出ることができません。
+\end_layout
+
+\begin_layout Itemize
+ロック状態。読み込まれたファイルは、「通常の」編集モードになります。他のユーザには、このファイルを編集する許可が与えられません。
+\emph on
+チェックイン
+\emph default
+を行うと、変更のコミットと書き込みロックの解放が行われます。文書に変更が加えられなかった場合には、コミットは実行されず
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+コミットは実行されないのに、コミットメッセージを入力するよう促されますが、驚かないでください。
+\end_layout
+
+\end_inset
+
+、書き込みロックの解放のみが行われます。
+\end_layout
+
+\begin_layout Standard
+SVNコマンド：
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+チェックイン： 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn commit -q -m
+\begin_inset Quotes erd
+\end_inset
+
+<説明>
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+<ファイル名>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn unlock 
+\begin_inset Quotes eld
+\end_inset
+
+<ファイル名>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+チェックアウト： 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn update 
+\begin_inset Quotes eld
+\end_inset
+
+<ファイル名>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn unlock 
+\begin_inset Quotes eld
+\end_inset
+
+<ファイル名>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+自動ロック特性
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:自動ロック特性"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+上述したような
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+.lyx
+\end_layout
+
+\end_inset
+
+ファイルに対する書き込み権限の自動設定は、
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+ファイル\SpecialChar \menuseparator
+バージョン管理\SpecialChar \menuseparator
+ロック特性を使用
+\end_layout
+
+\end_inset
+
+で行うことができます。このコマンドは、SVNサーバでファイルがロックされていないときのみ使用可能状態になります（つまり、使用するにはチェックアウトが必要です）。
+\end_layout
+
+\begin_layout Standard
+SVNコマンド：
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+チェックイン： 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn propset svn:needs-lock ON 
+\begin_inset Quotes eld
+\end_inset
+
+<ファイル名>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+チェックアウト： 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn propdel svn:needs-lock 
+\begin_inset Quotes eld
+\end_inset
+
+<ファイル名>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+文書の改訂情報
+\end_layout
+
+\begin_layout Standard
+現在のところ、LyXから直接、文書改訂に関する情報を得る方法はありません。SVNの機能を使って実現する方法はありますが、それらの方法はどれも、それぞれの短所があ
+ります。
+\end_layout
+
+\begin_layout Standard
+一つの方法は、SVNキーワードを使用する方法です
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+http://svnbook.red-bean.com/en/1.4/svn.advanced.props.special.keywords.html
+\end_layout
+
+\end_inset
+
+。簡単に言えば、ファイルキーワード特性を設定して、文書中にキーワードERT
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+これは、LyXがキーワードタグの途中で改行してしまわないことを確実にするための、簡単な方法です。
+\end_layout
+
+\end_inset
+
+タグ（例：
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Rev$
+\end_layout
+
+\end_inset
+
+）を貼り付けるのです。このようにして、SVNクライアントは、各更新やコミットの後に自動的に改訂番号を代入することができるのです（例
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Rev: 59 $
+\end_layout
+
+\end_inset
+
+）。このアプローチにはいくつか問題があります。第一に、TeXの世界では「$」文字は数式を表すのに使われるので、LyX中の
+\begin_inset Formula $Rev$
+\end_inset
+
+という数式表現が、すべて
+\begin_inset Formula $Rev:59$
+\end_inset
+
+になってしまいます。その他のId・Date・Authorなどといったキーワードも同様です。第二に、SVN出力は使用中のロケールに依存するので、Dateが用いられ
+ると、SVNは、問題を引き起こすような文字列を容易に生成してしまいます。第三に、文書中には、番号だけでなく「Rev:59」という文字列全体が表示されてしまいます
+。Subversionがユーザ定義のキーワードを実装するまでは、このアプローチを信頼性を持って使用したり、LyXがこれを直接サポートすることは、難しそうです。
+\end_layout
+
+\begin_layout Standard
+もう一つの方法は、自製の外部素材ひな型を書いて、文書の組版時に、
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+subversion
+\end_layout
+
+\end_inset
+
+ユーティリティを呼び出させるか、
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn info file.lyx
+\end_layout
+
+\end_inset
+
+コマンドの出力を解析させ、その結果を返させることです。
+\end_layout
+
+\begin_layout Subsection
+SVNとWindows環境
+\end_layout
+
+\begin_layout Quote
+ユーザが、かなり早いうちに自分自身でコマンドライン操作を理解できないのであれば、TortoiseSVNを使った方が賢明でしょう。---P.
+ A.
+ ルービン
+\end_layout
+
+\begin_layout Subsubsection
+準備
+\end_layout
+
+\begin_layout Standard
+LyXを導入して、Subversionレポジトリへのアクセス権を持っている他に、ユーザはSubversionクライアントプログラムを導入する必要があります。クラ
+イアントプログラムのWindows用インストーラは
+\begin_inset CommandInset href
+LatexCommand href
+name "CollabNet"
+target "http://www.collab.net/nonav/downloads/subversion/"
+
+\end_inset
+
+にあります。ユーザは
+\begin_inset CommandInset href
+LatexCommand href
+name "TortoiseSVN"
+target "http://tortoisesvn.tigris.org/"
+
+\end_inset
+
+も導入することを考えるでしょう。これはSubversionの操作をWindows Explorerのコンテクスト（右クリック）メニューに統合します。LyX外部で
+行う操作は、一般的にExplorerコンテクストメニューを使った方が便利です。TortoiseSVNは、LyX自身が使用するクライアントプログラムの代わりとは成
+りませんので、注意してください。
+\end_layout
+
+\begin_layout Subsubsection
+文書をSubversion管理下に置くには
+\end_layout
+
+\begin_layout Standard
+LyX文書をSubversionのバージョン管理下に置く前に、その親ディレクトリをバージョン管理下に置かなくてはなりません。文書を、既にレポジトリに存在するプロ
+ジェクトに追加する際には、新規文書が置かれることになるディレクトリへ、プロジェクトをチェックアウトすることによって実現します。プロジェクト自体がバージョン管理下
+にない場合（たとえばこの文書が新規プロジェクトの最初のファイルである場合）には、このディレクトリをレポジトリにインポートしなくてはなりません。これは、LyXの外
+部で行います。インポートもチェックアウトも共に、TortoiseSVNを使えば、Explorerのコンテクストメニューから簡単に終えることができます。あるいは、
+DOSプロンプトでコマンドライン・クライアントを使って成し遂げることもできます。TortoiseSVNを使ったプロジェクトのインポート手続きを下記で説明します。
+レポジトリは既に存在し、新規プロジェクトを
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+C:
+\backslash
+new project
+\end_layout
+
+\end_inset
+
+で開始するものとします。Subversionクライアントプログラムを使うための情報を得るには、DOSシェルで
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn --help
+\end_layout
+
+\end_inset
+
+を実行してください。
+\end_layout
+
+\begin_layout Enumerate
+Windows Explorerで
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+C:
+\backslash
+new project
+\end_layout
+
+\end_inset
+
+を見つけ出して右クリックし、
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+TortoiseSVN\SpecialChar \menuseparator
+Repo-browser
+\end_layout
+
+\end_inset
+
+を選択してください。必要であれば、レポジトリのURLを調整し、OKをクリックしてください。
+\end_layout
+
+\begin_layout Enumerate
+新規プロジェクトフォルダを置くレポジトリレベル（多くの場合最上位レベル）を右クリックし、
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Create folder\SpecialChar \ldots{}
+
+\end_layout
+
+\end_inset
+
+をクリックしてください。プロジェクトフォルダの名称を入力してOKをクリックしてください。必要であればログファイル用のメッセージを入力し、再びOKをクリックしてく
+ださい。新規プロジェクトフォルダがレポジトリに現れるはずです。最後にOKを再度クリックして、レポジトリブラウザを終了してください。
+\end_layout
+
+\begin_layout Enumerate
+再度
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+C:
+\backslash
+new project
+\end_layout
+
+\end_inset
+
+を右クリックし、今度は
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+SVN Checkout\SpecialChar \ldots{}
+
+\end_layout
+
+\end_inset
+
+を選択してください。レポジトリにたった今作成した、プロジェクトフォルダのURLを選択し、チェックアウトディレクトリを
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+C:
+\backslash
+new project
+\end_layout
+
+\end_inset
+
+に設定してから、OKをクリックしてください。フォルダが空でないことを警告されますが、OKをクリックして進んでください。すると、
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+C:
+\backslash
+new project
+\end_layout
+
+\end_inset
+
+の下に
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+.svn
+\end_layout
+
+\end_inset
+
+ディレクトリが作成されます。
+\end_layout
+
+\begin_layout Enumerate
+LyXで文書を新規作成するか開くかして、
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+ファイル\SpecialChar \menuseparator
+バージョン管理\SpecialChar \menuseparator
+登録
+\end_layout
+
+\end_inset
+
+をクリックします。ログメッセージを入力してOKをクリックし、文書をバージョン管理にコミットしてください。
+\end_layout
+
+\begin_layout Standard
+爾後、
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+ファイル\SpecialChar \menuseparator
+バージョン管理
+\end_layout
+
+\end_inset
+
+メニューのすべての機能が使用できるようになります。Windows ExplorerのTortoiseSVNコンテクストメニューか、コマンドプロンプトでのSubv
+ersionクライアントプログラムを使用して、文書をチェックイン・チェックアウトしたり、履歴を見たりといったことができるようになります。
+\end_layout
+
+\begin_layout Subsubsection
+Windows下でSVNと共にSSHトンネルを使うには
+\end_layout
+
+\begin_layout Standard
+Linuxに較べて、WindowsでSVNクライアントをSSH経由で通信するようにさせるのは、かなり厄介な仕事です。どのようにクライアント側を設定すればよいか、
+少なくとも幾分かのヒントをお示しするつもりですが、sshとWindowsコマンドラインの知識が前もって必要であり、それと共にかなりの量のフラストレーションが溜ま
+ることを覚悟しておいてください。
+\end_layout
+
+\begin_layout Enumerate
+前節で述べたように、Windows用のSVNクライアントを入手してください。これが新規の導入である場合には、何らかのSVNコマンド（たとえば
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn --version
+\end_layout
+
+\end_inset
+
+）を実行して、configファイル群を生成させてください。これらは後で変更を加える必要があります。
+\end_layout
+
+\begin_layout Enumerate
+Windows用のsshクライアントを選んでください。選択肢はたくさんありますが、ここではPutty tools
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+のものを使用することとしましょう。クライアントが接続の度にパスワードを訊いてこないように、接続を自動化する必要があります。簡単にするために、追加的なパスワード保
+護などを加えないキーのみを使用することとします。
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+puttygen
+\end_layout
+
+\end_inset
+
+を使ってキーを生成します。.ppkプライベートキーファイルを保存し、パブリックキーファイルはサーバ側に置きます。SVNサーバがLinuxで走っている場合、このパブ
+リックキーの書式はLinuxのopensshと互換性がないために、「Public key for pasting into OpenSSH authorized
+_keys file:」編集フィールドから、直接サーバの
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+~/.ssh/authorized_keys
+\end_layout
+
+\end_inset
+
+または
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+authorized_keys2
+\end_layout
+
+\end_inset
+
+ファイルにコピー＆ペーストを行わなくてはならないことに注意してください。
+\end_layout
+
+\begin_layout Enumerate
+Puttyのplinkを入手してください。SVNのconfigファイル
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+正確なパスはWindowsのバージョンに依りますが、通常は
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+c:
+\backslash
+Documents and Settings
+\backslash
+user
+\backslash
+Application Data
+\backslash
+Subversion
+\backslash
+config
+\end_layout
+
+\end_inset
+
+や
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+AppData
+\backslash
+Roaming
+\backslash
+Subversion
+\end_layout
+
+\end_inset
+
+辺りにあります。
+\end_layout
+
+\end_inset
+
+中の
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+[tunnels]
+\end_layout
+
+\end_inset
+
+セクションにsshコマンドを設定してください。例：
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+ssh=c:/path/plink.exe -i c:/path/private_key.ppk
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+通常、正確なコマンドを機能させるには長い時間がかかり、それは多くの物事に依存します。たとえば、リモートサーバがPuttyなどの既定セッションとして保存されないよ
+うにしてください。うまく行かない場合には、まずSVNなしでplink経由の接続を試してください。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+SVNアーカイブをチェックアウトしてください。例：
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn co svn+ssh://user@server/repository_path
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+さらなる調整
+\end_layout
+
+\begin_layout Standard
+vcコマンド機構が最近になって付け加えられたおかげで、LyXのパワーユーザは、改訂管理のための自製コマンドを作ることができるようになりました。
+\end_layout
+
+\begin_layout Standard
+たとえば、以下のようにして、二つのTortoiseSVNコマンドを直接統合することができます。
+\end_layout
+
+\begin_layout Description
+コミット： 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+vc-command DR "." "TortoiseProc /command:commit /path:$$p"
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+元に戻す： 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+vc-command DR "." "TortoiseProc /command:revert /path:$$p"
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
-文芸的プログラミング（Literate Programming）
+文芸的プログラミング
 \end_layout
 
 \begin_layout Standard
@@ -16803,7 +19227,7 @@ begin{multicols}{2}
 \begin_layout Standard
 
 \size footnotesize
-The youth moved in the best society–had, so far as was known, no enemies
+The youth moved in the best society--had, so far as was known, no enemies
  and no particular vices.
  He had been engaged to Miss Edith Woodley, of Carstairs, but the engagement
  had been broken off by mutual consent some months before, and there was
@@ -16834,8 +19258,8 @@ end{multicols}
 \begin_layout Standard
 
 \size footnotesize
-Ronald Adair was fond of cards–playing continually, but never for such stakes
- as would hurt him.
+Ronald Adair was fond of cards--playing continually, but never for such
+ stakes as would hurt him.
  He was a member of the Baldwin, the Cavendish, and the Bagatelle card clubs.
  It was shown that, after dinner on the day of his death, he had played
  a rubber of whist at the latter club.
@@ -16844,8 +19268,8 @@ Ronald Adair was fond of cards–playing continually, but never for such stakes
 \size default
  
 \size footnotesize
-The evidence of those who had played with him– Mr.
- Murray, Sir John Hardy, and Colonel Moran–showed that the game was whist,
+The evidence of those who had played with him-- Mr.
+ Murray, Sir John Hardy, and Colonel Moran--showed that the game was whist,
  and that there was a fairly equal fall of the cards.
  Adair might have lost five pounds, but not more.
  His fortune was a considerable one, and such a loss could not in any way
@@ -17250,7 +19674,7 @@ dropped capitals
 \begin_inset Quotes erd
 \end_inset
 
-—those large capital letters which begin each new chapter or section.
+---those large capital letters which begin each new chapter or section.
  
 \end_layout
 

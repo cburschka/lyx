@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -12,6 +12,9 @@
 % have problems LaTeXing this file, please contact 
 % the documentation team
 % email: lyx-docs@lists.lyx.org
+
+\ifnum 42146=\euc"A4A2 \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}\else
+\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}\fi
 
 \usepackage{ifpdf} % part of the hyperref bundle
 \ifpdf % if pdflatex is used
@@ -522,8 +525,7 @@ DVI
 
 \begin_deeper
 \begin_layout Standard
-今は復旧は100ステップに制限されてます。さらに、復旧は、すべての変更に対して行えるわけではなく、例えば文章のレイアウトの変更に対しては使えません。これはLyX
-のバグと言っていいでしょう。
+今は復旧は100ステップに制限されてます。
 \end_layout
 
 \end_deeper
@@ -624,7 +626,7 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-文字様式 
+文字書式 
 \family sans
 編集\SpecialChar \menuseparator
 文字様式\SpecialChar \menuseparator
@@ -649,7 +651,7 @@ status collapsed
 \noun on
 名詞体
 \noun default
-（普通はスモールキャップ体で表わされ、人名などに使います）にしたりすることができます。
+（普通はスモールキャップ体で表わされ、人名などに使います）にしたり、自製の書式を使用したりすることができます。
 \end_layout
 
 \begin_layout Description
@@ -1019,11 +1021,11 @@ LyXは、箇条書きを組版するための環境をいくつか持ってい�
 \family sans
 箇条書き（一覧）
 \family default
-環境は — これはLaTeXにはないのですが —、
+環境は、
 \family sans
 箇条書き（記述）
 \family default
-環境の少し書式が異なるものです。
+環境から派生したものです。
 \end_layout
 
 \begin_layout Standard
@@ -1755,12 +1757,7 @@ status collapsed
 
 \end_inset
 
-を押してください。ダイアログボックスが、入力候補を表示してラベル名の入力を求めます。OKボタンを押すと、そのラベル名が節見出しの後にボックス表示されます。
-\end_layout
-
-\begin_layout Standard
-ところで、ラベルも節内のどこにでも置くことができるようになっています。節への参照は、見出しがラベルの前に来る、最後の節または小節が参照されます。しかしながら、ラ
-ベルを節見出しの行内（あるいは場合によっては節の本文の最初の行）に置くようにすれば、ページ参照が節の始まりのページを確実に参照するようにすることができます。
+を押してください。ダイアログボックスが、入力候補を表示してラベル名の入力を求めます。OKボタンを押すと、そのラベル名が節見出しの横にボックス表示されます。
 \end_layout
 
 \begin_layout Standard
@@ -1785,7 +1782,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-ここで — カーソルを「第」という漢字の後ろに合わせて
+ここで — カーソルを「第」という漢字の後ろに置いて
 \family sans
  — 挿入\SpecialChar \menuseparator
 相互参照
@@ -1801,16 +1798,10 @@ status collapsed
 \family sans
 相互参照
 \family default
-ダイアログボックスが現れて、参照することができるラベルの一覧が表示されます。いまのところ、ただ一つ「sec:この文書について」だけが表示されているはずです。それ
-を選択して（既定として選択されているかもしれません）、
-\family sans
-適用
-\family default
-をクリックしてください。次に、カーソルを「ページ」という単語の前に合わせて、参照形式をページ番号を使用するように変更して、
-\family sans
-適用
-\family default
-をクリックしてください（欧文の場合に、「Section
+ダイアログボックスが現れて、参照することができるラベルの一覧が表示されます。いまのところ、ただ一つ「sec:この文書について」だけが表示されているはずです。まず
+書式と書かれているドロップダウンメニューを選び、「＜参照＞」を選択します。それから「sec:この文書について」を選択すると（既定として選択されているかもしれませ
+ん）、「参照：sec:この文書について」と書かれた参照マーカーが現れます。次に、カーソルを「ページ」という単語の前に合わせて、書式を「＜参照ページ＞」にして「s
+ec:この文書について」を選択します（欧文の場合に、「Section
 \begin_inset space ~
 \end_inset
 
@@ -1818,11 +1809,7 @@ status collapsed
 \family sans
 保護された空白
 \family default
-を入れなければなりません。ページ参照の場合も同様です）。
-\end_layout
-
-\begin_layout Standard
-この方法の代わりに、ラベルを右クリックして、現れるコンテクスト・メニューにある
+を入れなければなりません）。この方法の代わりに、ラベルを右クリックして、現れるコンテクスト・メニューにある
 \family sans
 参照としてコピー
 \family default
@@ -1837,16 +1824,8 @@ type  "shortcut"
 arg   "paste"
 \end_inset
 
-）を使って、現在のカーソル位置にコピーすることができます。
-\end_layout
-
-\begin_layout Standard
-LyXは、ちょうどカーソルがある場所に参照ボックスを挿入します。印刷した文書では、この参照マーカーは（
-\family sans
-相互参照
-\family default
-ダイアログボックスでどちらを選んだかによって）ページ番号か節番号に置き換えられます。文書をDVIとして表示してみると、最後の頁で「第2節」と「1ページ」（あるい
-は第2節の見出しがある頁）を参照していることが分かるでしょう。
+）を使って、現在のカーソル位置にコピーすることができます。印刷した文書では、この参照マーカーはページ番号や節番号に置き換えられます。文書をDVIとして表示してみ
+ると、最後の頁で「第2節」と「1ページ」（あるいは第2節の見出しがある頁）を参照していることが分かるでしょう。
 \end_layout
 
 \begin_layout Standard
@@ -1961,14 +1940,8 @@ LyXは組版ワードプロセッサです。
 \end_layout
 
 \begin_layout Standard
-footと書いてあるボタンをクリックしてみてください。脚注ボックスが閉じて、印刷したときに脚注のマークが入るところにfootというボタンだけが画面に残ります。こ
-れを脚注を折り畳むといっています。このfootというボタンをクリックすればまた脚注ボックスが現れ、脚注を見たり、編集したりできます。
-\end_layout
-
-\begin_layout Standard
-なぜ脚注のマークが番号でなくて言葉なんだろうと不思議に思うかもしれません。これは、LyXが脚注番号を印刷する際に自動的につけるからです。別の脚注をつけると、自動
-的に脚注番号がつけ直されます。DVIファイルを見るか、印刷して確かめてください。このようにLyX（実際にはLaTeX）が脚注番号をつけていくので、LyXファイル
-の中に脚注番号を入れておく必要がないのです。
+「脚注」と書いてあるボタンをクリックしてみてください。脚注ボックスが閉じて、印刷したときに脚注のマークが入るところにfootというボタンだけが画面に残ります。こ
+れを脚注を折り畳むといっています。この「脚注」ボタンをクリックすればまた脚注ボックスが現れ、脚注を見たり、編集したりできます。
 \end_layout
 
 \begin_layout Standard
@@ -2182,7 +2155,7 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-お使いのファイルの見通しをよくするために、目次は画面上の文書には表示されないようになっていますが、目次ボタンをクリックするか、
+目次は画面上の文書には表示されないようになっていますが、目次ボタンをクリックするか、
 \family sans
 文書\SpecialChar \menuseparator
 文書構造
@@ -2278,16 +2251,16 @@ Esc
 \end_layout
 
 \begin_layout Standard
-LaTeXを実行して出力を見てください。今度は数式がきれいに組版されて、等号の両側には空白が入り、「2」は上付き文字になっているはずです。数式の中の文字は変数だ
-と仮定され、イタリック体になります。数字はそのままです。
+出力を見てみると、今度は数式がきれいに組版されて、等号の両側には空白が入り、「2」は上付き文字になっているはずです。数式の中の文字は変数だと仮定され、イタリック
+体になります。数字はそのままです。
 \end_layout
 
 \begin_layout Standard
 この数式エディタも、WYSIWYM哲学の一例です。LaTeXでは、数式をテキストや
 \backslash
-sqrt等のコマンドを使って書きます。この方法はLaTeXを実行しないと数式がどのように見えるかわからない上に、入れ忘れの括弧を探したりするのに時間をとられるの
-で、苛つきかねません。LyXは、数式を完璧に（WYSIWYG）表示するわけではありませんが、数式がどのような感じに見えるかはきわめて良好に再現します。その後の本
-格的な組版は、LaTeXが担当してくれます。
+sqrt等のコマンドを使って書きます。この方法はファイルをLaTeXにかけないと数式がどのように見えるかわからない上に、入れ忘れの括弧を探したりするのに時間をと
+られるので、苛つきかねません。LyXは、数式を完璧に（WYSIWYG）表示するわけではありませんが、数式がどのような感じに見えるかはきわめて良好に再現します。そ
+の後の本格的な組版は、LaTeXが担当してくれます。
 \end_layout
 
 \begin_layout Section
@@ -2421,7 +2394,11 @@ example_raw.lyx
 \family sans
 数式ツールバー
 \family default
-の使い方の説明にとどめることにしましょう。キーボード・ショートカットは、他の説明書で調べることができます。
+の使い方の説明にとどめることにしましょう。短絡キーとコマンドは、説明書の
+\emph on
+数式篇
+\emph default
+で調べることができます。
 \end_layout
 
 \begin_layout Standard
@@ -2455,16 +2432,8 @@ example_raw.lyx
 \family sans
 数式ツールバー
 \family default
-を使うと、様々な記号を数式内で使うことができます。いろいろな矢印、関係記号、演算記号それに和と積分の記号です。和記号や積分記号の上限と下限は上付き文字と下付き文
-字で入れることができます。
-\end_layout
-
-\begin_layout Standard
-例えばこんな風に使えます。「
-\begin_inset Formula $\heartsuit$
-\end_inset
-
-こそがすべて。」
+を使うと、様々な記号を数式内で使うことができます。たとえば、演算子や矢印、関係子、区切り記号、特殊文字、和や積分の記号などです。和記号や積分記号の上限と下限は上
+付き文字と下付き文字で入れることができます。
 \end_layout
 
 \begin_layout Subsection
@@ -2585,7 +2554,7 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Subsection
-TeXモード：極限・log・sin・その他
+関数：極限・log・sin・その他
 \end_layout
 
 \begin_layout Standard
@@ -2750,11 +2719,11 @@ OK
 \end_layout
 
 \begin_layout Standard
-
+数式の中で、
 \family sans
 数式ツールバー
 \family default
-の、中央の青い四角の前後に本文が数行描かれている
+の
 \family sans
 別行建て
 \family default
@@ -2765,7 +2734,8 @@ OK
 
 \end_inset
 
-を押して下さい。LyXは数式を挿入しますが、挿入ポイントは新しい行の真中に現れます。何か数式を入力して、どのように表示されるかLaTeXを実行してみて下さい。
+を押して下さい。こうすると、数式が中央揃えになり、上下に空白行が加えられます。何か数式を入力してファイルをコンパイルし、どのように表示されるかご覧になって下さい
+。
 \family sans
 別行建て
 \family default
@@ -2801,8 +2771,8 @@ OK
 
 \begin_layout Standard
 最後に一つ、別行建て数式の組版に関して注意があります。数式を新段落にしたいのか否かに気をつけてください。数式を文や段落の途中に入れたいのならば、Returnキー
-を押さないで下さい。Returnキーを押すと、数式に続く本文が新段落のはじまりであると解釈されてしまいます。これは使用中の文書の段落設定によっては、字下げされる
-ことになるので、望ましくありません。
+を押さないで下さい。Returnキーを押すと、数式に続く本文が新段落のはじまりであると解釈されてしまいます。すると使用中の文書の段落設定によって、字下げされたり
+空白があいたりすることになるので、望ましいものとはならないでしょう。
 \end_layout
 
 \begin_layout Standard
@@ -2871,7 +2841,7 @@ LyXの数式エディタは、もっとたくさんのことができます。�
 \end_layout
 
 \begin_layout Itemize
-複数行にわたる数式
+複数行にわたる数式を作る
 \end_layout
 
 \begin_layout Itemize
@@ -3253,19 +3223,8 @@ LaTeXプリアンブル
 \family sans
 設定
 \family default
-ダイアログは、
-\family typewriter
-
-\backslash
-documentclass
-\family default
-コマンドにつけるオプションの多くを扱っています。クラス・既定のフォント寸法・用紙寸法はここで変えてください。
-\family typewriter
-
-\backslash
-documentclass
-\family default
-コマンドにつける他のオプションは、
+ダイアログは、文書全体にわたるオプションを扱っています。文書クラス・既定のフォント寸法・用紙寸法はここで変更してください。文書クラスオプションならびにLaTeX
+パッケージのオプションは、
 \family sans
 追加オプション
 \family default
@@ -3358,7 +3317,7 @@ BibTeX
 \end_layout
 
 \begin_layout Standard
-文書をLaTeXにかけたときに、LyXやLaTeXが命令を理解できずに、エラーになることがあります。これが起こると、LyXは
+文書を閲覧しようとしたときに、LyXやLaTeXが命令を理解できずに、エラーになることがあります。これが起こると、LyXは
 \family sans
 LaTeXエラー
 \family default

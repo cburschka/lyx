@@ -1,4 +1,4 @@
-#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -12,6 +12,9 @@
 % have problems LaTeXing this file, please contact 
 % the documentation team
 % email: lyx-docs@lists.lyx.org
+
+\ifnum 42146=\euc"A4A2 \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}\else
+\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}\fi
 
 % if pdflatex is used
 \usepackage{ifpdf}
@@ -268,9 +271,13 @@ LatexCommand tableofcontents
 status collapsed
 
 \begin_layout Plain Layout
-この文書をPDFやPS、DVIにエクスポートするには、LaTeXパッケージの
+この文書をPDFやPS、DVIに書き出すには、LaTeXパッケージの
 \series bold
 eurosym
+\series default
+・
+\series bold
+mhchem
 \series default
 ・
 \series bold
@@ -282,9 +289,9 @@ wasが導入されている必要があります。
 \series default
 これらが導入されていなくても文書はエクスポートできますが、パッケージを必要とする節は出力には現れません。また、
 \series bold
-xargs
+mhchem
 \series default
-パッケージは必須です。
+が導入されていないと、本ファイルを書き出すことができません。
 \end_layout
 
 \begin_layout Plain Layout
@@ -298,6 +305,8 @@ http://wiki.lyx.org/LyX/DocumentationDevelopment#Math
 \begin_inset Newline newline
 \end_inset
 
+
+\series default
 にあります。
 \end_layout
 
@@ -456,7 +465,7 @@ arg   "math-mode"
 
 のうちのいずれか、あるいはツールバーボタン
 \begin_inset Graphics
-	filename /usr/local/share/lyx-svn/images/math-mode.png
+	filename ../../images/math-mode.png
 	scale 85
 
 \end_inset
@@ -563,7 +572,7 @@ T@TeXモード
 
 は、ツールバーボタン
 \begin_inset Graphics
-	filename /usr/local/share/lyx-svn/images/ert-insert.png
+	filename ../../images/ert-insert.png
 	scale 85
 
 \end_inset
@@ -1323,14 +1332,14 @@ status collapsed
 \begin_layout Standard
 添字は、アンダースコア「_」を打鍵するか、数式ツールバーボタン
 \begin_inset Graphics
-	filename /usr/local/share/lyx-svn/images/math-subscript.png
+	filename ../../images/math-subscript.png
 	scale 85
 
 \end_inset
 
 を使って入力することができ、指数は、キャレット「^」を打鍵するか、数式ツールバーボタン
 \begin_inset Graphics
-	filename /usr/local/share/lyx-svn/images/math-superscript.png
+	filename ../../images/math-superscript.png
 	scale 85
 
 \end_inset
@@ -3357,7 +3366,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-化学記号に関する詳細は、第
+同位体と化学記号の組版に関しては、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:化学記号と化学式"
@@ -18056,7 +18065,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset href
 LatexCommand href
-name "LyX-bug #4091"
+name "LyX-bug #4629"
 target "http://www.lyx.org/trac/ticket/4629"
 
 \end_inset
@@ -18468,8 +18477,186 @@ normalsize
 \end_layout
 
 \begin_layout Standard
-数式内部からは、数式テキスト内の記号と文字の寸法だけしか変更することができません。これを実行するには、書体寸法コマンドを数式テキスト内に挿入します。数式テキスト
-の終わりか、別の書体寸法コマンドが現れるまでの文字すべてが、選択した寸法になります。以下に二つの例を挙げます。
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+数式内では、以下の寸法コマンドを使用して、寸法を変更することができます。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+コマンド
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+出力
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+raisebox
+\series default
+ はスペーサーとして使用されているだけです。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+displaystyle
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+こまんど@コマンド ! D ! 
+\backslash
+displaystyle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{6.5mm}{}{\displaystyle E_{\mathrm{pot_{1}}}=\frac{K}{l+\frac{m}{n_{2}}}}\raisebox{-5.5mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+textstyle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}{\textstyle E_{\mathrm{pot_{1}}}=\frac{K}{l+\frac{m}{n_{2}}}}\raisebox{-4mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+scriptstyle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}{\scriptstyle E_{\mathrm{pot_{1}}}=\frac{K}{l+\frac{m}{n_{2}}}}\raisebox{-3.5mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+scriptscriptstyle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}{\scriptscriptstyle E_{\mathrm{pot_{1}}}=\frac{K}{l+\frac{m}{n_{2}}}}\raisebox{-3.5mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+これらのコマンドを入力すると、青いボックスが現れるので、そこに数式のパーツを入れることができます。
+\end_layout
+
+\begin_layout Standard
+フォント寸法を変更するにはもう一つの方法がありますが、これは記号と数式内テキストのみに使うことができます。これを使うには、書体寸法コマンドを数式テキスト内に挿入
+します。数式テキストの終わりか、別の書体寸法コマンドが現れるまでの文字すべてが、選択した寸法になります。以下に二つの例を挙げます。
 \begin_inset VSpace -2mm
 \end_inset
 
@@ -18670,6 +18857,10 @@ A
 
 \begin_layout Standard
 ある記号を別の寸法で表示することができないときには、その記号はつねに既定寸法で表示されます。
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -20183,7 +20374,7 @@ status collapsed
 各LaTeXパッケージに含まれる全記号をほとんど網羅した一覧が、
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Symbole"
+key "Symbols"
 
 \end_inset
 
@@ -30317,7 +30508,7 @@ roman{equation}}
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-A=\textrm{小文字ローマ数字}\label{eq:rom}\end{equation}
+A=\textrm{小文字ローマ数字}\end{equation}
 
 \end_inset
 
@@ -30363,7 +30554,7 @@ alph{equation}}
 
 
 \begin_inset Formula \begin{equation}
-C=\textrm{小文字ラテン文字}\label{eq:lat}\end{equation}
+C=\textrm{小文字ラテン文字}\end{equation}
 
 \end_inset
 
@@ -30440,7 +30631,7 @@ arabic{equation}}
 
 
 \begin_inset Formula \begin{equation}
-E=\textrm{アラビア数字}\label{eq:arab}\end{equation}
+E=\textrm{アラビア数字}\end{equation}
 
 \end_inset
 
@@ -30455,11 +30646,1266 @@ E=\textrm{アラビア数字}\label{eq:arab}\end{equation}
 てはなりません。この点に関する説明は、ファイル
 \begin_inset CommandInset href
 LatexCommand href
-target "Formula-numbering.lyx"
+name "Formula-numbering.lyx"
+target "run:Formula-numbering.lyx"
 
 \end_inset
 
 にあります。
+\end_layout
+
+\begin_layout Section
+化学記号と化学式
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:化学記号と化学式"
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+かがくきごう@化学記号 ! きごう@記号
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+かがくしき@化学式
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+きごう@記号 ! かがく@化学
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+以下は、化学関係の文章の例です。
+\end_layout
+
+\begin_layout Quote
+\begin_inset Formula $\mathrm{SO_{4}^{2-}}$
+\end_inset
+
+イオンは、2つの
+\begin_inset Formula $\mathrm{Na^{+}}$
+\end_inset
+
+イオンと反応して、硫酸化塩
+\begin_inset Formula $\left(\mathrm{Na_{2}SO_{4}}\right)$
+\end_inset
+
+を形成します。この化学式は以下のようになります。
+\begin_inset Formula \begin{equation}
+\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:chem-reaction}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+この化学式は、直接数式として作成することができます。記号がイタリック体として表示されることを防ぐには、全体を選択してから短絡キー
+\begin_inset Info
+type  "shortcut"
+arg   "font-roman"
+\end_inset
+
+を押せば、アップライトフォント様式に変更することができます
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+フォント様式に関しては、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:書体様式"
+
+\end_inset
+
+節を参照のこと。
+\end_layout
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+化学式を組版するのにもう少し便利な方法は、LaTeXパッケージ
+\series bold
+mhchem
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+ぱっけーじ@パッケージ ! mhchem
+\end_layout
+
+\end_inset
+
+が導入されているときに使用することができる
+\series bold
+
+\backslash
+ce
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+こまんど@コマンド ! C ! 
+\backslash
+ce
+\end_layout
+
+\end_inset
+
+コマンドを使用することです。
+\series bold
+
+\backslash
+ce
+\series default
+を数式に入力すると、新しい青いボックスが現れ、直感的に化学式を入力することができます。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+コマンド
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+出力
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+raisebox
+\series default
+はスペーサーとしてのみ使用されています。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+H2CO3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}\ce{H2CO3}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+SO4^2-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{5mm}{}\ce{SO4^{2-}}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+(NH4)2S
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}\ce{(NH4)2S}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+KCr(SO4)2.12H2O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}\ce{KCr(SO4)2.12H2O}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+A-B
+\backslash
+dbond
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+C
+\backslash
+tbond
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}\ce{A-B\dbond C\tbond D}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+^227
+\begin_inset Formula $\downarrow$
+\end_inset
+
+_90
+\begin_inset Formula $\to$
+\end_inset
+
+Th+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{5mm}{}\ce{_{90}^{227}Th+}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+CO2
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
++
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+C
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+<=>
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+2CO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}\ce{CO2 + C <=> 2CO}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+CO2
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
++
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+C
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+->[
+\backslash
+alpha][
+\backslash
+beta]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+2CO}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{5mm}{}\ce{CO2 + C ->[\alpha][\beta] 2CO}\raisebox{-4mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+【註】
+\backslash
+ce
+\series default
+ボックスに数式を入れようとすると、LaTeXエラーが発生します。このような場合には、
+\series bold
+
+\backslash
+ce{$
+\backslash
+mu
+\backslash
+hyphen$Cl}
+\series default
+（
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ce{$
+\backslash
+mu
+\backslash
+hyphen$Cl}
+\end_layout
+
+\end_inset
+
+）のようにTeXコードを使わなくてはなりません。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+ce
+\series default
+を使うと
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:chem-reaction"
+
+\end_inset
+
+式のコマンドは
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+ 
+\backslash
+ce
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+2Na+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
++
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+SO4^2-
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+->
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+Na2SO4
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+のようになります。
+\end_layout
+
+\begin_layout Standard
+複数行の化学式を作るには、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:多行数式"
+
+\end_inset
+
+節に述べられている方法で、多行数式をまず作ります。その後、数式の小さな青いボックスそれぞれに
+\series bold
+
+\backslash
+ce
+\series default
+コマンドを使用します。
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:TEOS反応1"
+
+\end_inset
+
+式と
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:TEOS反応2"
+
+\end_inset
+
+式は、多段化学反応式の例で、一つの式毎に番号が振られています。
+\begin_inset Formula \begin{eqnarray}
+\ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS反応1}\\
+\ce{Si(OH)4} & \ce{->} & \ce{SiO2 + 2H2O}\label{eq:TEOS反応2}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+mhchem
+\series default
+パッケージは、
+\series bold
+
+\backslash
+ce
+\series default
+の他に、特殊ケースに使用する
+\series bold
+
+\backslash
+cf
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+こまんど@コマンド ! C ! 
+\backslash
+cf
+\end_layout
+
+\end_inset
+
+コマンドを提供しています。
+\series bold
+
+\backslash
+cf
+\series default
+の詳しい情報と例示については、
+\series bold
+mhchem
+\series default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mhchem"
+
+\end_inset
+
+の取扱説明書をご覧ください。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+図解
+\end_layout
+
+\begin_layout Standard
+LyXは、二つの型の可換図
+\series bold
+amscd
+\series default
+および
+\series bold
+xymatrix
+\series default
+をサポートしており、以下でこれらの説明をします。
+\end_layout
+
+\begin_layout Subsection
+amscd図解
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+ずかい@図解 ! amscd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+この型の図解は、以下のように、関係を縦横の線や矢印で図示します。
+\begin_inset Formula \[
+\begin{CD}A@>>>B@>>>C\\
+@AAA@.@VVV\\
+F@<<<E@<<<D\end{CD}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+これを作るには、数式に
+\series bold
+
+\backslash
+CD
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+こまんど@コマンド ! C ! 
+\backslash
+CD
+\end_layout
+
+\end_inset
+
+
+\series default
+コマンドを挿入します。二つの点線に囲まれた青枠が現れるので、ここにコマンドを入れていきます。
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
+を押すと、新しい行が作られます。水平方向の関係は奇数行に入れ、垂直方向の関係は偶数行に入れます。
+\end_layout
+
+\begin_layout Standard
+関係を作るには、以下のコマンドがあります。
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boldsymbol{@<<<}$
+\end_inset
+
+は左矢印、
+\begin_inset Formula $\boldsymbol{@>>>}$
+\end_inset
+
+は右矢印、
+\series bold
+@=
+\series default
+は長い等号を生成します。
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+@AAA
+\series default
+は上矢印、
+\series bold
+@VVV
+\series default
+は下矢印、
+\begin_inset Formula $\boldsymbol{@|}$
+\end_inset
+
+は縦向きの等号を生成します。
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+@.
+\series default
+は関係が存在しない部分に置きます。
+\end_layout
+
+\begin_layout Standard
+矢印はすべて、以下のようにラベル付けをすることができます。
+\end_layout
+
+\begin_layout Itemize
+文章を、第1と第2の「
+\begin_inset Formula $<$
+\end_inset
+
+」ないし「
+\begin_inset Formula $>$
+\end_inset
+
+」のあいだに入れると、この文章は矢印の上に表示されます。第2・第3の「
+\begin_inset Formula $<$
+\end_inset
+
+」ないし「
+\begin_inset Formula $>$
+\end_inset
+
+」のあいだに入れると、矢印の下に表示されます。
+\end_layout
+
+\begin_layout Itemize
+縦矢印に付ける文章を、第1・第2の「A」ないし「V」のあいだに入れると、この文章は矢印の左に表示されます。第2・第3のもののあいだに入れると、矢印の右に表示され
+ます。文章中に「A」や「V」の文字があるときには、これらはTeX括弧の中に入れなくてはなりません。
+\end_layout
+
+\begin_layout Standard
+以下は、上記のすべての関係を使った例です。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\begin{CD}A@>j>>B@>>k>C@=F\\
+@AmAA@.@VV{V}V@|\\
+D@<<j<E@>k>>F@=C\end{CD}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+これを作るコマンドは、以下のとおりです。
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+CD
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+A
+\begin_inset Formula $\boldsymbol{@>}$
+\end_inset
+
+j
+\begin_inset Formula $\boldsymbol{>>}$
+\end_inset
+
+B
+\begin_inset Formula $\boldsymbol{@>>}$
+\end_inset
+
+k
+\begin_inset Formula $\boldsymbol{>}$
+\end_inset
+
+C@=F Ctrl+Return
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{
+\end_layout
+
+\end_inset
+
+
+\backslash
+CD
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+@AmAA@.@VV
+\backslash
+{V
+\series default
+
+\begin_inset Formula $\to$
+\end_inset
+
+
+\series bold
+V
+\begin_inset Formula $\boldsymbol{@|}$
+\end_inset
+
+ Ctrl+Return
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{
+\end_layout
+
+\end_inset
+
+
+\backslash
+CD
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+D
+\begin_inset Formula $\boldsymbol{@<<}$
+\end_inset
+
+j
+\begin_inset Formula $\boldsymbol{<}$
+\end_inset
+
+E
+\begin_inset Formula $\boldsymbol{@>}$
+\end_inset
+
+k
+\begin_inset Formula $\boldsymbol{>>}$
+\end_inset
+
+F@=C
+\end_layout
+
+\begin_layout Subsection
+xymatrix図解
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+ずかい@図解 ! xymatrix
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+xymatricesを使うには、LaTeXパッケージの
+\series bold
+xypic
+\series default
+が導入済みである必要があります。xymatrixは、数式中に
+\series bold
+
+\backslash
+xymatrix
+\series default
+コマンドを入れることで作ることができます。すると、通常の行列と同じようにして、列や行を付け加えることができます。第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:行列"
+
+\end_inset
+
+節をご参照下さい。
+\end_layout
+
+\begin_layout Standard
+amscd図解とは異なり、xymatricesは、対角矢印や曲がった矢印など多様なサポートをしています。作ることのできる可換図と装飾は、
+\family sans
+ヘルプ\SpecialChar \menuseparator
+用途別説明書\SpecialChar \menuseparator
+XY-pic説明書
+\family default
+メニューにある
+\emph on
+XY-pic説明書
+\emph default
+で詳しく網羅しています。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -31430,6 +32876,18 @@ qG
 \end_layout
 
 \begin_layout Standard
+LyXは、
+\family sans
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+編集\SpecialChar \menuseparator
+制御
+\family default
+メニューで、マクロを編集するのに複数の様式を用意しています。あなたに最も合った様式を見つけるには、様式を選択してから、違いを見るために数式マクロにカーソルを合わ
+せてみてください。
+\end_layout
+
+\begin_layout Standard
 数式マクロは、文書書き出し時に、内部的に
 \series bold
 
@@ -32012,438 +33470,7 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-図解
-\end_layout
-
-\begin_layout Standard
-LyXは、二つの型の可換図
-\series bold
-amscd
-\series default
-および
-\series bold
-xymatrix
-\series default
-をサポートしており、以下でこれらの説明をします。
-\end_layout
-
-\begin_layout Subsection
-amscd図解
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-ずかい@図解 ! amscd
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-この型の図解は、以下のように、関係を縦横の線や矢印で図示します。
-\begin_inset Formula \[
-\begin{CD}A@>>>B@>>>C\\
-@AAA@.@VVV\\
-F@<<<E@<<<D\end{CD}\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-これを作るには、数式に
-\series bold
-
-\backslash
-CD
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-こまんど@コマンド ! C ! 
-\backslash
-CD
-\end_layout
-
-\end_inset
-
-
-\series default
-コマンドを挿入します。二つの点線に囲まれた青枠が現れるので、ここにコマンドを入れていきます。
-\begin_inset Info
-type  "shortcut"
-arg   "newline-insert newline"
-\end_inset
-
-を押すと、新しい行が作られます。水平方向の関係は奇数行に入れ、垂直方向の関係は偶数行に入れます。
-\end_layout
-
-\begin_layout Standard
-関係を作るには、以下のコマンドがあります。
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\boldsymbol{@<<<}$
-\end_inset
-
-は左矢印、
-\begin_inset Formula $\boldsymbol{@>>>}$
-\end_inset
-
-は右矢印、
-\series bold
-@=
-\series default
-は長い等号を生成します。
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-@AAAは上矢印、@VVV
-\series default
-は下矢印、
-\begin_inset Formula $\boldsymbol{@|}$
-\end_inset
-
-は縦向きの等号を生成します。
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-@.
-\series default
-は関係が存在しない部分に置きます。
-\end_layout
-
-\begin_layout Standard
-矢印はすべて、以下のようにラベル付けをすることができます。
-\end_layout
-
-\begin_layout Itemize
-文章を、第1と第2の「
-\begin_inset Formula $<$
-\end_inset
-
-」ないし「
-\begin_inset Formula $>$
-\end_inset
-
-」のあいだに入れると、この文章は矢印の上に表示されます。第2・第3の「
-\begin_inset Formula $<$
-\end_inset
-
-」ないし「
-\begin_inset Formula $>$
-\end_inset
-
-」のあいだに入れると、矢印の下に表示されます。
-\end_layout
-
-\begin_layout Itemize
-縦矢印に付ける文章を、第1・第2の「A」ないし「V」のあいだに入れると、この文章は矢印の左に表示されます。第2・第3のもののあいだに入れると、矢印の右に表示され
-ます。文章中に「A」や「V」の文字があるときには、これらはTeX括弧の中に入れなくてはなりません。
-\end_layout
-
-\begin_layout Standard
-以下は、上記のすべての関係を使った例です。
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula \[
-\begin{CD}A@>j>>B@>>k>C@=F\\
-@AmAA@.@VV{V}V@|\\
-D@<<j<E@>k>>F@=C\end{CD}\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-これを作るコマンドは、以下のとおりです。
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-
-\backslash
-CD
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-A
-\begin_inset Formula $\boldsymbol{@>}$
-\end_inset
-
-j
-\begin_inset Formula $\boldsymbol{>>}$
-\end_inset
-
-B
-\begin_inset Formula $\boldsymbol{@>>}$
-\end_inset
-
-k
-\begin_inset Formula $\boldsymbol{>}$
-\end_inset
-
-C@=F Ctrl+Return
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hphantom{
-\end_layout
-
-\end_inset
-
-
-\backslash
-CD
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-@AmAA@.@VV
-\backslash
-{V
-\series default
-
-\begin_inset Formula $\to$
-\end_inset
-
-
-\series bold
-V
-\begin_inset Formula $\boldsymbol{@|}$
-\end_inset
-
- Ctrl+Return
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hphantom{
-\end_layout
-
-\end_inset
-
-
-\backslash
-CD
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-D
-\begin_inset Formula $\boldsymbol{@<<}$
-\end_inset
-
-j
-\begin_inset Formula $\boldsymbol{<}$
-\end_inset
-
-E
-\begin_inset Formula $\boldsymbol{@>}$
-\end_inset
-
-k
-\begin_inset Formula $\boldsymbol{>>}$
-\end_inset
-
-F@=C
-\end_layout
-
-\begin_layout Subsection
-xymatrix図解
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-ずかい@図解 ! xymatrix
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-xymatricesを使うには、LaTeXパッケージの
-\series bold
-xypic
-\series default
-が導入済みである必要があります。xymatrixは、数式中に
-\series bold
-
-\backslash
-xymatrix
-\series default
-コマンドを入れることで作ることができます。すると、通常の行列と同じようにして、列や行を付け加えることができます。第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:行列"
-
-\end_inset
-
-節をご参照下さい。
-\end_layout
-
-\begin_layout Standard
-amscd図解とは異なり、xymatricesは、対角矢印や曲がった矢印など多様なサポートをしています。作ることのできる可換図と装飾は、
-\family sans
-ヘルプ\SpecialChar \menuseparator
-用途別説明書\SpecialChar \menuseparator
-XY-pic説明書
-\family default
-メニューにある
-\emph on
-XY-pic説明書
-\emph default
-で詳しく網羅しています。
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
 さまざまな秘訣
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Voss"
-
-\end_inset
-
-には、他にも便利な数学関係のヒントがあります。
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-texorpdfstringは、脚注がPDFのしおりに現れるのを抑制するために使われています。
-\end_layout
-
-\begin_layout Plain Layout
-
-\backslash
-texorpdfstringについての詳細は、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:節見出し中の数式"
-
-\end_inset
-
-節にあります。
-\end_layout
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -32454,131 +33481,6 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-いおん@イオン | see
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-化学記号
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-化学記号と化学式
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:化学記号と化学式"
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-かがくきごう@化学記号 ! きごう@記号
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-かがくしき@化学式
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-きごう@記号 ! かがく@化学
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-以下は、化学関係の文章の例です。
-\end_layout
-
-\begin_layout Quote
-\begin_inset Formula $\mathrm{SO_{4}^{2-}}$
-\end_inset
-
-イオンは、2つの
-\begin_inset Formula $\mathrm{Na^{+}}$
-\end_inset
-
-イオンと反応して、硫酸化塩
-\begin_inset Formula $\left(\mathrm{Na_{2}SO_{4}}\right)$
-\end_inset
-
-を形成します。この化学式は以下のようになります。
-\begin_inset Formula \[
-\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-この化学式は、直接数式として作成することができます。記号がイタリック体として表示されることを防ぐには、全体を選択してから短絡キー
-\begin_inset Info
-type  "shortcut"
-arg   "font-roman"
-\end_inset
-
-を押せば、アップライトフォント様式に変更することができます
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-フォント様式に関しては、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:書体様式"
-
-\end_inset
-
-節を参照のこと。
-\end_layout
-
-\end_inset
-
-。
 \end_layout
 
 \begin_layout Subsection
@@ -34143,21 +35045,21 @@ begin{multicols}{2}
 
 \lang ngerman
 Das Spektrum wird fouriertransformiert.
- the Fouriertransformation wird verwendet, um the überlagerten Signale (Netzwerk
+ Die Fouriertransformation wird verwendet, um die überlagerten Signale (Netzwerk
 , Lösungsmittel) zu trennen.
- Nachdem wir the Phasenverschiebung bestimmen konnten, interessiert uns
+ Nachdem wir die Phasenverschiebung bestimmen konnten, interessiert uns
  nun das Aussehen des Ausgangssignals.
- Im Experiment haben wir es with sehr vielen Teilchen zu tun, so that man
+ Im Experiment haben wir es mit sehr vielen Teilchen zu tun, so das man
  über alle Phasen integrieren muss.
  Sei nun 
 \begin_inset Formula $S$
 \end_inset
 
- unser normiertes Ausgangssignal and 
+ unser normiertes Ausgangssignal und 
 \begin_inset Formula $P$
 \end_inset
 
- the Phasenverteilungsfunktion, so ergibt sich the Beziehung
+ die Phasenverteilungsfunktion, so ergibt sich die Beziehung
 \lang japanese
 
 \begin_inset ERT
@@ -34201,13 +35103,13 @@ wobei
 \begin_inset Formula $S_{0}$
 \end_inset
 
- das Signal ohne Gradient ist and the Normierungsbedingung 
+ das Signal ohne Gradient ist und die Normierungsbedingung 
 \begin_inset Formula $\int_{-\infty}^{\infty}P(\phi,t)\,\mathrm{d}\phi=1$
 \end_inset
 
  gilt.
- Nun dürfen wir aber nicht the Relaxationsprozess außer Acht lassen.
- Direkt nach the 
+ Nun dürfen wir aber nicht den Relaxationsprozess außer Acht lassen.
+ Direkt nach dem 
 \begin_inset Formula $\nicefrac{\pi}{2}$
 \end_inset
 
@@ -34215,9 +35117,9 @@ wobei
 \begin_inset space \thinspace{}
 \end_inset
 
--rf-Puls beginnt sich the Magnetisierung zu entfokussieren, wodurch sich
+-rf-Puls beginnt sich die Magnetisierung zu entfokussieren, wodurch sich
  das Signal zusätzlich abschwächt.
- Diese Abschwächung verläuft exponentiell in Abhängigkeit the so genannten
+ Diese Abschwächung verläuft exponentiell in Abhängigkeit der so genannten
  
 \begin_inset Formula $T_{2}$
 \end_inset
@@ -34800,7 +35702,7 @@ key "Duden"
 \end_layout
 
 \begin_layout Itemize
-物理単位は、つねにアップライト体にします
+物理単位は、つねに（イタリック文中にあるときも）アップライト体にします
 \begin_inset Foot
 status collapsed
 
@@ -34904,12 +35806,18 @@ unit[値]{単位}
 \end_inset
 
 cmのような寸法には、積記号「×」を用います。これは、
+\series bold
+
+\backslash
+times
+\series default
+コマンドか、
 \family sans
 挿入\SpecialChar \menuseparator
 特殊文字\SpecialChar \menuseparator
 記号
 \family default
-メニューから入れることができます。キーボード定義によっては、直接入力することもできます。
+メニューから入れることができます。
 \end_layout
 
 \begin_layout Itemize
@@ -34941,6 +35849,88 @@ reference "sub:定義済み函数"
 
 \begin_layout Itemize
 微分作用素・積分作用素「d」、オイラー数「e」、虚数単位「i」は、他の変数と間違えることを避けるために、アップライト体にします。
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+フーリエ
+\noun default
+変換を表す文字は、
+\series bold
+
+\backslash
+mathscr
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\backslash
+{F
+\series default
+コマンド
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+こまんど@コマンド! M ! 
+\backslash
+mathscr
+\end_layout
+
+\end_inset
+
+か
+\family sans
+挿入\SpecialChar \menuseparator
+特殊文字\SpecialChar \menuseparator
+記号\SpecialChar \menuseparator
+文字様記号
+\family default
+メニューの
+\begin_inset Formula $\mathscr{F}$
+\end_inset
+
+で入れることができます。
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+mathscr
+\series default
+コマンドを使うためには、LaTeXパッケージの
+\series bold
+mathrsfs
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+ぱっけーじ@パッケージ! mathrsfs
+\end_layout
+
+\end_inset
+
+を、LaTeXプリアンブルで
+\series bold
+
+\backslash
+usepackage{mathrsfs}
+\series default
+として読み込む必要があります。
 \end_layout
 
 \begin_layout Standard
@@ -35706,7 +36696,7 @@ target "ftp://ftp.ams.org/pub/tex/doc/amsmath/amsldoc.pdf"
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "Symbole"
+key "Symbols"
 
 \end_inset
 
