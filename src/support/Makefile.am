@@ -34,6 +34,7 @@ liblyxsupport_a_SOURCES = \
 	FileMonitor.h \
 	FileMonitor.cpp \
 	RandomAccessList.h \
+	bind.h \
 	convert.cpp \
 	convert.h \
 	copied_ptr.h \
@@ -86,6 +87,7 @@ liblyxsupport_a_SOURCES = \
 	Systemcall.cpp \
 	Systemcall.h \
 	SystemcallPrivate.h \
+	shared_ptr.h \
 	textutils.h \
 	Translator.h \
 	Timeout.cpp \
