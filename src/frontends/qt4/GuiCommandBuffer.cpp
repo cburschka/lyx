@@ -313,7 +313,7 @@ GuiCommandBuffer::completions(string const & prefix, string & new_prefix)
 {
 	vector<string> comp;
 
-	copy_if(commands_.begin(), commands_.end(),
+	lyx::copy_if(commands_.begin(), commands_.end(),
 		back_inserter(comp), prefix_p(prefix));
 
 	if (comp.empty()) {
@@ -333,7 +333,7 @@ GuiCommandBuffer::completions(string const & prefix, string & new_prefix)
 		test += tmp[test.length()];
 	while (test.length() < tmp.length()) {
 		vector<string> vtmp;
-		copy_if(comp.begin(), comp.end(),
+		lyx::copy_if(comp.begin(), comp.end(),
 			back_inserter(vtmp), prefix_p(test));
 		if (vtmp.size() != comp.size()) {
 			test.erase(test.length() - 1);

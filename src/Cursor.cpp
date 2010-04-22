@@ -54,6 +54,7 @@
 #include <sstream>
 #include <limits>
 #include <map>
+#include <algorithm>
 
 using namespace std;
 

@@ -61,6 +61,7 @@
 #include "support/bind.h"
 #include "support/lassert.h"
 
+#include <algorithm>
 
 
 using namespace std;

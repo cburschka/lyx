@@ -25,6 +25,8 @@
 #include "support/os.h"
 #include "support/Systemcall.h"
 
+#include <algorithm>
+
 // FIXME: Q_WS_MACX is not available, it's in Qt
 #ifdef USE_MACOSX_PACKAGING
 #include "support/linkback/LinkBackProxy.h"
