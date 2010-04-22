@@ -18,6 +18,7 @@
 #include "LyXRC.h"
 
 #include "insets/Inset.h"
+#include "support/shared_ptr.h"
 
 using namespace std;
 

@@ -22,10 +22,8 @@ using std::tr1::ref;
 
 #else
 
-#include "support/bind.h"
+#include "boost/bind.hpp"
 using boost::bind;
-using boost::_1;
-using boost::_2;
 using boost::ref;
 
 #endif
