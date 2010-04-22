@@ -1,0 +1,1201 @@
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+%% Uncomment the following for Tableaux captions on top:
+%\floatstyle{plaintop}
+%\restylefloat{tableau}
+\end_preamble
+\use_default_options false
+\begin_modules
+linguistics
+\end_modules
+\language japanese
+\inputencoding auto
+\font_roman lmodern
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+LyXで言語学の論文を書く
+\end_layout
+
+\begin_layout Author
+Jürgen Spitzmüller
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+target "spitz@lyx.org"
+type "mailto:"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+平成20年9月14日
+\end_layout
+
+\begin_layout Abstract
+この小論は、LyXが言語学者に提供している機能のいくつかを説明します。ここでは、付番用例や語句注解、OT表、セマンティックマークアップ、発音記号（IPA）を生成
+するために用意されているネイティブサポートを利用する方法を説明します。
+\end_layout
+
+\begin_layout Section
+目的と必要な準備
+\end_layout
+
+\begin_layout Standard
+基本的に、この小論は、第1.6.0版現在においてLyXに同梱されている「言語学」モジュールの機能を説明するものです。（LyX 1.6.0で導入された）「モジュール」は、
+どの文書からでも簡単に選択できるようにしたサポートファイルです。言語学モジュールを使用するためには、
+\family sans
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+モジュール
+\family default
+を開き、選択可能モジュール一覧から「言語学」を選択し、（この文書で既にそうなっているように）使用中の文書に加えるために
+\family sans
+追加
+\family default
+ボタンを押してください。
+\end_layout
+
+\begin_layout Standard
+このモジュールは、どの文書クラスでも使えるようになったはずです（もしそうなっていなければ、私に知らせてください）。しかし、すべての機能を使用するには、以下の各L
+aTeXパッケージが導入されている必要があります。
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+covington.sty
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covington"
+
+\end_inset
+
+：これは付番用例と語句注解に使用される基本パッケージです。
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+enumitem.sty
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "enumitem"
+
+\end_inset
+
+：このパッケージは、Subexamplesスタイルに使用されます。これは一般的に、箇条書き（
+\emph on
+連番
+\emph default
+・
+\emph on
+記号
+\emph default
+・
+\emph on
+記述
+\emph default
+など）の外観を変えるのに役立ちます。
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+csquotes.sty
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "csquotes"
+
+\end_inset
+
+：
+\emph on
+意味
+\emph default
+文字様式に必要です。このパッケージは、使用中の言語に依存して、文脈依存の引用符を提供するようにします。
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+float.sty
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "float"
+
+\end_inset
+
+：OT表とフロート一覧に必要とsれます。このパッケージは、すべてのLaTeX頒布版に同梱されているはずです。
+\end_layout
+
+\begin_layout Section
+付番用例
+\end_layout
+
+\begin_layout Standard
+付番用例は、ツールバーのレイアウトドロップダウンボックスを使って挿入することができます。これには、以下の三つの派生型があります。
+\end_layout
+
+\begin_layout Numbered Example (multiline)
+これは複数行の例です。[
+\emph on
+付番用例（複数行）
+\emph default
+スタイル]
+\end_layout
+
+\begin_layout Numbered Example (multiline)
+これには複数の段落を入れることができます。
+\end_layout
+
+\begin_layout Numbered Examples (consecutive)
+これは単独の用例です。
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:single-example"
+
+\end_inset
+
+ [
+\emph on
+付番用例（連続）
+\emph default
+スタイル]
+\end_layout
+
+\begin_layout Numbered Examples (consecutive)
+連続した単独用例は、それぞれ番号が振られます。
+\end_layout
+
+\begin_layout Subexample
+これは小例です。
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:subexample"
+
+\end_inset
+
+ [
+\emph on
+小例
+\emph default
+スタイル]
+\end_layout
+
+\begin_layout Subexample
+もう一つの小例です。
+\end_layout
+
+\begin_layout Standard
+例への参照は通常通り作成することができます。例にラベルを挿入し、
+\family sans
+挿入\SpecialChar \menuseparator
+相互参照
+\family default
+で相互参照を入れてください。これを例示するために、ここでは
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:single-example"
+
+\end_inset
+
+と
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:subexample"
+
+\end_inset
+
+への参照をしておきましょう。
+\end_layout
+
+\begin_layout Section
+語句注解
+\end_layout
+
+\begin_layout Standard
+言語学モジュールは、2つの語句注解を提供しており、
+\family sans
+挿入\SpecialChar \menuseparator
+任意設定差込枠
+\family default
+で挿入することができます。標準の
+\emph on
+任意設定:語句注解
+\emph default
+は、2行と翻訳から成る語句注解を提供し、
+\emph on
+任意設定:三行語句注解
+\emph default
+差込枠は、三行と翻訳から成ります。各翻訳行は、複数行に展開されるかもしれません。つまり、本文幅を超えた段落は、自動的に改行されます。翻訳行は必須であり、その先頭
+には
+\family typewriter
+
+\backslash
+glt
+\family default
+コマンドを、語句注解差込枠中にそのまま入れなくてはなりません（TeXモードは必要でなく、実のところTeXモードにすることはできません）。
+\end_layout
+
+\begin_layout Standard
+以下は簡単な例です。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom:Glosse
+status open
+
+\begin_layout Plain Layout
+
+C'est un exemple simple
+\end_layout
+
+\begin_layout Plain Layout
+
+{This is} an example simple
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+glt 
+\begin_inset Quotes els
+\end_inset
+
+This is a simple example
+\begin_inset Quotes ers
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+波括弧が複数単語の表現をくくるのに使われていることに注意してください。
+\end_layout
+
+\begin_layout Standard
+同じようにして、以下のように三行語句注解を作ることができます。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom:Tri-Glosse
+status open
+
+\begin_layout Plain Layout
+
+C'est un exemple simple
+\end_layout
+
+\begin_layout Plain Layout
+
+{Das ist} ein Beispiel einfach
+\end_layout
+
+\begin_layout Plain Layout
+
+{This is} an example simple
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+glt 
+\begin_inset Quotes els
+\end_inset
+
+This is a simple example
+\begin_inset Quotes ers
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+連番の付いた語句注解が欲しい場合には、以下のように、語句注解差込枠を付番用例段落に入れるだけです。
+\end_layout
+
+\begin_layout Numbered Examples (consecutive)
+\begin_inset Flex Custom:Tri-Glosse
+status open
+
+\begin_layout Plain Layout
+
+Mein Luftkissenfahrzeug ist voller Aale
+\end_layout
+
+\begin_layout Plain Layout
+
+My skeertuig is vol palings
+\end_layout
+
+\begin_layout Plain Layout
+
+My hovercraft is {full of} eels
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+glt 
+\begin_inset Quotes els
+\end_inset
+
+Do you have matches?
+\begin_inset Quotes ers
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+語句注解中では、フォントの変更はできないことに注意してください。したがって
+\family sans
+文字様式
+\family default
+ダイアログは無効になっています。語句注解はハイフネートしないので、LaTeX出力中で明示的に言語を設定することは必要とされません（むしろ、covingtonがサ
+ポートしないため、出力が崩れてしまいます）。それでも、正しいスペルチェックをするために、言語を設定したいと思うかもしれません。現在のところ、これは以下のようにし
+なくてはなりません。文章を選択して、
+\begin_inset Info
+type  "shortcut"
+arg   "command-execute"
+\end_inset
+
+ 
+\family sans
+language <言語>
+\family default
+と打ってください。ここで
+\family sans
+<言語>
+\family default
+は、
+\family sans
+english
+\family default
+・
+\family sans
+french
+\family default
+・
+\family sans
+ngerman
+\family default
+などの各言語に置き換えてください。LaTeX出力中では、この設定は出力されません。
+\end_layout
+
+\begin_layout Section
+最適理論表
+\end_layout
+
+\begin_layout Standard
+OT表自体は、もちろん単純に、通常の表として入れることができます（点線や影付きセルなどの特定の機能については、
+\emph on
+埋め込みオブジェクト
+\emph default
+説明書を参照）。しかし、これらの表には、文書を通して連番を振り、
+\emph on
+表一覧
+\emph default
+のように
+\emph on
+OT表一覧
+\emph default
+を置きたいところです。
+\end_layout
+
+\begin_layout Standard
+言語学モジュールは、この2つをサポートしています。
+\family sans
+挿入\SpecialChar \menuseparator
+フロート
+\family default
+の中には、以下のようなOT表フロートがあります。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float tableau
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features>
+<column alignment="right" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0" special="|c">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+/atikap/
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+Onset
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+NoCoda
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+Dep
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+Max
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mbox{☞}$
+\end_inset
+
+ 
+\begin_inset Formula $\mbox{\textipa{P}}$
+\end_inset
+
+a.ti.ka
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a.ti.ka
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*!
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mbox{\textipa{P}}$
+\end_inset
+
+a.ti.kap
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*!
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a.ti.kap
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*!
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*!
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+OT表の例
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+出力中のキャプションは、LyXウィンドウ内での置き方にかかわらず、既定ではつねに、OT表の下に置かれることに注意してください。OT表のキャプションを上に置くには
+、
+\family sans
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+LaTeX プリアンブル
+\family default
+に以下のコードを書いてください。
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+floatstyle{plaintop}
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+restylefloat{tableau}
+\end_layout
+
+\begin_layout Standard
+KOMAクラスを使用している場合には、代わりに以下のようにした方がきれいな余白取りがされます。
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+floatstyle{komaabove}
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+restylefloat{tableau}
+\end_layout
+
+\begin_layout Standard
+OT表一覧差込枠の一覧は、
+\family sans
+挿入\SpecialChar \menuseparator
+一覧/目次
+\family default
+にあります。OT表一覧は、通常、文書の始まりか終わりに置かれますが、ここでは例示のためにこの場所に置くことにします。
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList tableau
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+セマンティック・マークアップ（文字様式）
+\end_layout
+
+\begin_layout Standard
+言語学モジュールは、以下のような言語学でよく使われる文字様式を同梱しています。
+\end_layout
+
+\begin_layout Enumerate
+概念（スモールキャップ体）：
+\begin_inset Flex CharStyle:Concepts
+status collapsed
+
+\begin_layout Plain Layout
+concept
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+表現（強調）：
+\begin_inset Flex CharStyle:Expression
+status collapsed
+
+\begin_layout Plain Layout
+expression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+意味（一重引用符）：
+\begin_inset Flex CharStyle:Meaning
+status collapsed
+
+\begin_layout Plain Layout
+meaning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+これらの文字様式は、
+\family sans
+編集\SpecialChar \menuseparator
+文字様式
+\family default
+サブメニューで入れることができます。これらの様式の外観を後で変更する必要があれば、プリアンブル中で再定義することができます。たとえば、ボールド体の表現にするため
+には、以下のように入れてください。
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+renewcommand
+\backslash
+lingexpr[1]{
+\backslash
+textbf{#1}}
+\end_layout
+
+\begin_layout Standard
+同様にして、概念（
+\family typewriter
+
+\backslash
+lingconcept
+\family default
+）と意味（
+\family typewriter
+
+\backslash
+lingmeaning
+\family default
+）も修正することができます。
+\end_layout
+
+\begin_layout Section
+発音記号（IPA）
+\end_layout
+
+\begin_layout Standard
+発音記号を挿入するには、言語学モジュールは必要でなく、LyXの基本機能となっています。しかしながら、発音記号は言語学者が頻繁に用いるので、本稿でも（手短に）説明
+します。
+\end_layout
+
+\begin_layout Standard
+LyXのIPAサポートを利用するには、LaTeXパッケージ
+\emph on
+tipa
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tipa"
+
+\end_inset
+
+が必要です。加えて自動プレビューを必要とするなら、
+\emph on
+preview-latex
+\emph default
+パッケージ
+\begin_inset CommandInset citation
+LatexCommand cite
+key "preview"
+
+\end_inset
+
+を導入しておかなくてはなりません。
+\end_layout
+
+\begin_layout Standard
+発音記号は、
+\family sans
+挿入\SpecialChar \menuseparator
+特殊文字\SpecialChar \menuseparator
+発音記号
+\family default
+で入れることができます。すると小さな枠が現れるので、そこに
+\emph on
+tipa
+\emph default
+説明書に説明されている短絡表記で記号を挿入します。例：
+\begin_inset Formula $\text{\textipa{[Ekspl@"neIS@n]}}$
+\end_inset
+
+（
+\emph on
+tipa
+\emph default
+短絡表記：
+\family typewriter
+[Ekspl@"neIS@n
+\family default
+]）。
+\emph on
+preview-latex
+\emph default
+が導入されていて、自動プレビューを（
+\family sans
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+表示
+\family default
+で）有効にしてあれば、カーソルを枠から出すとすぐに、きれいなプレビューを見ることができます。
+\end_layout
+
+\begin_layout Standard
+さらに、ほとんどのIPAグリフを（
+\family sans
+挿入\SpecialChar \menuseparator
+特殊文字\SpecialChar \menuseparator
+記号\SpecialChar \ldots{}
+
+\family default
+で）挿入したり、[ɛkspləˈneɪʃən]のように直接LyXに貼り付けたりすることもできます。出力中では、これらは正しい
+\emph on
+tipa
+\emph default
+マクロに自動的に変換されます（そうならなければ私に知らせてください）。しかしながら、以下の二つの理由から、前者の方法の方が良質の出力を生成することに注意してくだ
+さい。
+\end_layout
+
+\begin_layout Enumerate
+直接入力すると、フォントがばらばらになる可能性があります（上例では、ラテン文字は基本フォントから採られ、IPAグリフはIPAフォントから採られていますが、
+\family sans
+挿入\SpecialChar \menuseparator
+特殊文字\SpecialChar \menuseparator
+発音記号
+\family default
+で入れると、すべての文字にIPAフォントが使われます）。
+\end_layout
+
+\begin_layout Enumerate
+文字のカーニングは保持されません。
+\end_layout
+
+\begin_layout Standard
+したがって、単一のIPA文字を入れるだけでいいのでなければ、前者の方法が推奨されます。それに、（かなり直感的な）IPA短絡表記は学んでおくに値します。
+\end_layout
+
+\begin_layout Section
+さらなる情報
+\end_layout
+
+\begin_layout Standard
+言語学者に特有の利用法について詳しくは、LyX wiki
+\begin_inset CommandInset citation
+LatexCommand cite
+key "linguistlyx"
+
+\end_inset
+
+のLinguistLyXページをご参照ください（ご自身のコツもご自由に書き加えてください）。
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "covington"
+
+\end_inset
+
+covingtonパッケージ：
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/tex-archive/macros/latex/contrib/covington/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "csquotes"
+
+\end_inset
+
+csquotesパッケージ：
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/tex-archive/macros/latex/contrib/csquotes/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "enumitem"
+
+\end_inset
+
+enumitemパッケージ：
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/tex-archive/macros/latex/contrib/enumitem/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "float"
+
+\end_inset
+
+floatパッケージ：
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/tex-archive/macros/latex/contrib/float/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "linguistlyx"
+
+\end_inset
+
+Maria Gouskova, Stacia Hartleben and Jürgen Spitzmüller: Using LyX for Linguisti
+c Papers.
+ 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/LyX/LinguistLyX
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "preview"
+
+\end_inset
+
+preview-latexパッケージ：
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/tex-archive/macros/latex/contrib/preview/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "tipa"
+
+\end_inset
+
+tipaパッケージおよびフォント：
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/tex-archive/fonts/tipa/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
