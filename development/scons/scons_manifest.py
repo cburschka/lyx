@@ -2539,7 +2539,11 @@ lib_examples_it_files = Split('''
 
 lib_examples_ja_files = Split('''
     Braille.lyx
+    linguistics.lyx
+    multicol.lyx
     splash.lyx
+    xyfigure.png
+    xypic.lyx
 ''')
 
 
