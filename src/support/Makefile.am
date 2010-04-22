@@ -72,6 +72,7 @@ liblyxsupport_a_SOURCES = \
 	lyxtime.h \
 	Messages.cpp \
 	Messages.h \
+	numpunct_lyx_char_type.h \
 	os.cpp \
 	os.h \
 	Path.cpp \
