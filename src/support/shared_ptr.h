@@ -15,12 +15,20 @@
 #if defined(_MSC_VER) && (_MSC_VER >= 1600)
 
 #include <memory>
-using std::tr1::shared_ptr;
+
+namespace lyx
+{
+	using std::tr1::shared_ptr;
+}
 
 #else
 
 #include <boost/shared_ptr.hpp>
-using boost::shared_ptr;
+
+namespace lyx
+{
+	using boost::shared_ptr;
+}
 
 #endif
 

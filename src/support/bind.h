@@ -15,16 +15,24 @@
 #if defined(_MSC_VER) && (_MSC_VER >= 1600)
 
 #include <functional>
-using std::tr1::bind;
-using std::tr1::placeholders::_1;
-using std::tr1::placeholders::_2;
-using std::tr1::ref;
+
+namespace lyx
+{
+	using std::tr1::bind;
+	using std::tr1::placeholders::_1;
+	using std::tr1::placeholders::_2;
+	using std::tr1::ref;
+}
 
 #else
 
 #include "boost/bind.hpp"
-using boost::bind;
-using boost::ref;
+
+namespace lyx
+{
+	using boost::bind;
+	using boost::ref;
+}
 
 #endif
 
