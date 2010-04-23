@@ -21,12 +21,12 @@
 #include <QLineEdit>
 #include <QPushButton>
 
-#ifdef LYX_MERGED_BUILD
+#if defined(LYX_MERGED_BUILD) && !defined(Q_CC_MSVC)
 // GCC couldn't find operator==
 namespace lyx {
-	bool operator==(lyx::docstring & d, char const * c);
+	bool operator==(lyx::docstring const & d, char const * c);
 	namespace frontend {
-		bool operator==(lyx::docstring & d, char const * c) 
+		bool operator==(lyx::docstring const & d, char const * c) 
 		  { return lyx::operator ==(d, c); }
 	}
 }
