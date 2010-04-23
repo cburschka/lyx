@@ -9620,13 +9620,33 @@ Tableaux longs ! Flottants
 \begin_layout Standard
 Il peut y avoir des problèmes quand un flottant apparaît sur la page où
  commence un tableau long.
- Pour éviter une telle situation, ajoutez la commande 
-\series bold
+ Pour éviter une telle situation, 
+\lang english
+insert a 
+\begin_inset Quotes eld
+\end_inset
 
-\backslash
-clearpage
-\series default
- en tant que code TeX juste avant votre tableau long.
+clear page
+\begin_inset Quotes erd
+\end_inset
+
+ (menu
+\lang french
+ 
+\family sans
+Insérer\SpecialChar \menuseparator
+Typographie
+\begin_inset space ~
+\end_inset
+
+spéciale\SpecialChar \menuseparator
+Saut de page (vide le tampon)
+\family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+) juste avant votre tableau long.
 \end_layout
 
 \begin_layout Subsection
@@ -11622,12 +11642,13 @@ Tableau\SpecialChar \menuseparator
 Multi-colonnes
 \family default
 , ou encore faites un clic droit sur les cellules sélectionnées et choisissez
- multicolonne dans la fenêtre de dialogue de tableau qui apparaît dans l'onglet
  
 \family sans
-Tableau
+Multi-colonnes
 \family default
-.
+ 
+\lang english
+in the appearing context menu.
 \end_layout
 
 \begin_layout Standard

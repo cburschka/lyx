@@ -9254,13 +9254,29 @@ Tablas largas ! Flotantes
 \begin_layout Standard
 Podría haber problemas si un flotante aparece en la misma página donde comienza
  una tabla larga.
- Para evitarlo, añade el comando 
-\series bold
+ Para evitarlo, añade 
+\lang english
+a 
+\begin_inset Quotes eld
+\end_inset
 
-\backslash
-clearpage
-\series default
- en código TeX antes de la tabla.
+clear page
+\begin_inset Quotes erd
+\end_inset
+
+
+\lang spanish
+ (menu 
+\family sans
+Insertar\SpecialChar \menuseparator
+Formato\SpecialChar \menuseparator
+Limpiar
+\begin_inset space ~
+\end_inset
+
+página
+\family default
+) antes de la tabla.
 \end_layout
 
 \begin_layout Subsection
@@ -11211,12 +11227,17 @@ Editar\SpecialChar \menuseparator
 Tabla\SpecialChar \menuseparator
 Multicolumna
 \family default
-, o clic derecho sobre las celdas marcadas y se selecciona en el diálogo,
- bajo la solapa 
+, o clic derecho sobre las celdas marcadas y 
+\lang english
+choose
+\lang spanish
+ 
 \family sans
-Configuración
+Multicolumna
 \family default
-, la casilla Multicolumna.
+ 
+\lang english
+in the appearing context menu.
 \end_layout
 
 \begin_layout Standard
