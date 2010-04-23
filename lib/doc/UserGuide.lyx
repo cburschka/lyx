@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 379
+\lyxformat 387
 \begin_document
 \begin_header
 \textclass scrbook
@@ -127,6 +127,9 @@
 \output_changes false
 \html_math_output 0
 \html_be_strict true
+\html_math_img_scale 1
+\html_latex_start "<span class='latex'>"
+\html_latex_end "</span>"
 \author 1 "Richard Heck" 
 \end_header
 
@@ -24735,8 +24738,8 @@ LaTeX-packages ! prettyref
 \end_layout
 
 \begin_layout Standard
-Note that the style <page> won't print the page number if the label is on
- the previous, the same, or the next page.
+Note that the style <page> will not print the page number if the label is
+ on the previous, the same, or the next page.
  You will e.
 \begin_inset space \thinspace{}
 \end_inset

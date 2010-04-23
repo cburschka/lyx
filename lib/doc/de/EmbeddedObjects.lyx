@@ -20904,6 +20904,18 @@ Bemerkung:
 \series bold
 prettyref
 \series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete
+\lang english
+! prettyref
+\end_layout
+
+\end_inset
+
  installiert ist.
 \end_layout
 
@@ -20952,6 +20964,73 @@ Format
 \family default
  des Querverweis-Fensters eingestellt werden, das erscheint, wenn Sie auf
  einen Querverweis klicken.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Bemerkung:
+\series default
+ Das LaTeX-Paket 
+\series bold
+prettyref
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete! prettyref
+\end_layout
+
+\end_inset
+
+ kennt nicht alle möglichen Marken-Kürzel
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+ 
+\begin_inset Quotes gld
+\end_inset
+
+abb:
+\begin_inset Quotes grd
+\end_inset
+
+ ist z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ LyXs Kürzel für Marken in Bildbeschriftungen.
+\end_layout
+
+\end_inset
+
+ von LyX und ist auch nicht internationalisiert.
+ Wie man weitere Marken-Kürzel und Übersetzungen hinzufüg, ist in der Dokumentat
+ion von 
+\series bold
+prettyref
+\series default
+ beschrieben 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "prettyref"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -35160,6 +35239,38 @@ status collapsed
 
 \begin_layout Plain Layout
 LaTeX-Pakete ! sidecap
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "prettyref"
+
+\end_inset
+
+Dokumentation des LaTeX-Pakets 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "prettyref"
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! prettyref
 \end_layout
 
 \end_inset

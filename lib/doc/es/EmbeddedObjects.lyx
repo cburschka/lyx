@@ -20286,7 +20286,10 @@ con
 \end_inset
 
 formato: imprime un formato personalizado.
- 
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Note Greyedout
 status open
 
@@ -20301,6 +20304,16 @@ Nota:
 prettyref
 \series default
 .
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-paquetes ! prettyref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -20338,6 +20351,78 @@ El número y página actual de la parte del documento referida es automáticamen
 Formato
 \family default
  de la ventana de referencia cruzada, que aparece al pinchar sobre el cuadro.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Nota:
+\series default
+ 
+\lang english
+The LaTeX-package
+\lang spanish
+ 
+\series bold
+prettyref
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-paquetes ! prettyref
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+does not know all of LyX's possible label shortcuts
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+fig:
+\begin_inset Quotes erd
+\end_inset
+
+ is for example LyX's shortcut for labels in figure captions.
+\end_layout
+
+\end_inset
+
+ and is not internationalized.
+ How to tell 
+\series bold
+prettyref
+\series default
+ new shortcuts and translations, have a look at its documentation
+\lang spanish
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "prettyref"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -34310,6 +34395,38 @@ status collapsed
 
 \begin_layout Plain Layout
 LaTeX-paquetes ! sidecap
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "prettyref"
+
+\end_inset
+
+Documentación del paquete LaTeX 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "prettyref"
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-paquetes ! prettyref
 \end_layout
 
 \end_inset

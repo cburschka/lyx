@@ -20971,7 +20971,19 @@ Note:
  Ce type de référence croisée n'est disponible que si vous avez installé
  le paquetage LaTeX 
 \series bold
-prettyref.
+prettyref
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! prettyref
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -21001,6 +21013,118 @@ Le numéro affecté à une étiquette et le numéro de la page sur laquelle elle
  boîte de la référence croisée.
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ 
+\lang english
+The LaTeX-package
+\lang french
+ 
+\series bold
+prettyref
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! prettyref
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+does not know all of LyX's possible label shortcuts
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+fig:
+\begin_inset Quotes erd
+\end_inset
+
+ is for example LyX's shortcut for labels in figure captions.
+\end_layout
+
+\end_inset
+
+ and is not internationalized.
+ How to tell 
+\series bold
+prettyref
+\series default
+ new shortcuts and translations, have a look at its documentation
+\lang french
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "prettyref"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ 
+\lang english
+Due to a bug in the LaTeX-package 
+\series bold
+varioref
+\series default
+ version 1.4w, some cross-reference formats will cause LaTeX errors if the
+ document langauge is French.
+ For a workaround, see
+\lang french
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+target "http://wiki.lyx.org/LaTeX/LatexBugs#toc5"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Nommage automatique des références croisées
 \begin_inset Index
@@ -21019,6 +21143,8 @@ References@Références ! Nommage automatique
 Le paquetage LaTeX 
 \series bold
 hyperref
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -21028,6 +21154,8 @@ Paquetages LaTeX ! hyperref
 
 \end_inset
 
+
+\series bold
 , 
 \series default
 qui est activé dans la rubrique 
@@ -35616,6 +35744,38 @@ status collapsed
 
 \begin_layout Plain Layout
 Paquetages LaTeX ! sidecap
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "prettyref"
+
+\end_inset
+
+Documentation du paquetage LaTeX
+\series bold
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "prettyref"
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! prettyref
 \end_layout
 
 \end_inset
