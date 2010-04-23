@@ -24,11 +24,9 @@
 #ifdef LYX_MERGED_BUILD
 // GCC couldn't find operator==
 namespace lyx {
-	bool operator==(lyx::docstring & d, char const * c) 
-		{ return lyx::operator ==(d, c); }
+	bool operator==(lyx::docstring & d, char const * c);
 	namespace frontend {
-		bool operator==(lyx::docstring & d, char const * c) 
-		  { return lyx::operator ==(d, c); }
+		bool operator==(lyx::docstring & d, char const * c);
 	}
 }
 #endif
