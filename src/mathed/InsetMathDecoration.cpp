@@ -173,9 +173,9 @@ namespace {
 		string tag;
 	};
 
-	typedef map<string, Attributes> Translator;
+	typedef map<string, Attributes> TranslationMap;
 
-	void buildTranslator(Translator & t) {
+	void buildTranslationMap(TranslationMap & t) {
 		// the decorations we need to support are listed in lib/symbols
 		t["acute"] = Attributes(true, "&acute;");
 		t["bar"]   = Attributes(true, "&OverBar;");
@@ -206,18 +206,18 @@ namespace {
 		t["widetilde"] = Attributes(true, "&Tilde;");
 	}
 
-	Translator const & translator() {
-		static Translator t;
+	TranslationMap const & translationMap() {
+		static TranslationMap t;
 		if (t.empty())
-			buildTranslator(t);
+			buildTranslationMap(t);
 		return t;
 	}
 }
 
 void InsetMathDecoration::mathmlize(MathStream & os) const
 {
-	Translator const & t = translator();
-	Translator::const_iterator cur = t.find(to_utf8(key_->name));
+	TranslationMap const & t = translationMap();
+	TranslationMap::const_iterator cur = t.find(to_utf8(key_->name));
 	LASSERT(cur != t.end(), return);
 	char const * const outag = cur->second.over ? "mover" : "munder";
 	os << MTag(outag)
@@ -240,8 +240,8 @@ void InsetMathDecoration::htmlize(HtmlStream & os) const
 		return;
 	}
 
-	Translator const & t = translator();
-	Translator::const_iterator cur = t.find(name);
+	TranslationMap const & t = translationMap();
+	TranslationMap::const_iterator cur = t.find(name);
 	LASSERT(cur != t.end(), return);
 	
 	bool symontop = cur->second.over;

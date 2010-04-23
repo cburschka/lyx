@@ -78,7 +78,7 @@ bool has_math_fonts;
 
 namespace {
 
-MathWordList theWordList;
+MathWordList theMathWordList;
 
 
 bool isMathFontAvailable(docstring & name)
@@ -208,11 +208,11 @@ void initSymbols()
 					      << " used for " << to_utf8(tmp.name));
 		}
 
-		if (theWordList.find(tmp.name) != theWordList.end())
+		if (theMathWordList.find(tmp.name) != theMathWordList.end())
 			LYXERR(Debug::MATHED, "readSymbols: inset " << to_utf8(tmp.name)
 				<< " already exists.");
 		else
-			theWordList[tmp.name] = tmp;
+			theMathWordList[tmp.name] = tmp;
 
 		LYXERR(Debug::MATHED, "read symbol '" << to_utf8(tmp.name)
 			<< "  inset: " << to_utf8(tmp.inset)
@@ -242,7 +242,7 @@ bool isSpecialChar(docstring const & name)
 
 MathWordList const & mathedWordList()
 {
-	return theWordList;
+	return theMathWordList;
 }
 
 
@@ -301,8 +301,8 @@ int ensureMode(WriteStream & os, InsetMath::mode_type mode,
 
 latexkeys const * in_word_set(docstring const & str)
 {
-	MathWordList::iterator it = theWordList.find(str);
-	return it != theWordList.end() ? &(it->second) : 0;
+	MathWordList::iterator it = theMathWordList.find(str);
+	return it != theMathWordList.end() ? &(it->second) : 0;
 }
 
 
