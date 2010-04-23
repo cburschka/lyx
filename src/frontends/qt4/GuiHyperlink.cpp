@@ -26,7 +26,8 @@
 namespace lyx {
 	bool operator==(lyx::docstring & d, char const * c);
 	namespace frontend {
-		bool operator==(lyx::docstring & d, char const * c);
+		bool operator==(lyx::docstring & d, char const * c) 
+		  { return lyx::operator ==(d, c); }
 	}
 }
 #endif
