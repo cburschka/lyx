@@ -29054,48 +29054,67 @@ Einfügen
 \end_layout
 
 \begin_layout Standard
-Es gibt folgende Querverweistypen:
+Es gibt folgende Querverweisstile:
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Description
+<Querverweis>: druckt die Nummer der Gleitumgebung, dies ist die Voreinstellung:
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "Werkzeugleisten"
+reference "Tab:Gleitende-Tabelle"
 
 \end_inset
 
- (die Abschnittsnummer),
+
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Description
+(<Querverweis>): druckt die Nummer der Gleitumgebung umgeben von zwei runden
+ Klammern, dies ist der Stil, wie er normalerweise für Verweise auf Formeln
+ verwendet wird, speziell wenn der Name 
+\begin_inset Quotes gld
+\end_inset
+
+Gleichung
+\begin_inset Quotes grd
+\end_inset
+
+ weggelassen wird: 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:fifth-eqn"
+reference "Tab:Gleitende-Tabelle"
 
 \end_inset
 
- (setzt den Querverweis in runde Klammern und ist deshalb für das Zitieren
- von Gleichungen geeignet),
+
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Description
+<Seite>: druckt die Seitennummer: Seite
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand pageref
-reference "Werkzeugleisten"
+reference "Tab:Gleitende-Tabelle"
 
 \end_inset
 
- (die Seitennummer der Marke),
+
 \end_layout
 
-\begin_layout Enumerate
-\begin_inset CommandInset ref
-LatexCommand vpageref
-reference "Werkzeugleisten"
-
+\begin_layout Description
+auf
+\begin_inset space ~
 \end_inset
 
- (
+Seite
+\begin_inset space ~
+\end_inset
+
+<Seite>: druckt den Text 
 \begin_inset Quotes gld
 \end_inset
 
@@ -29103,140 +29122,226 @@ auf Seite
 \begin_inset Quotes grd
 \end_inset
 
- + die Seitennummer der Marke),
-\end_layout
-
-\begin_layout Enumerate
+ und die Seitennummer: 
 \begin_inset CommandInset ref
-LatexCommand vref
-reference "Werkzeugleisten"
+LatexCommand vpageref
+reference "Tab:Gleitende-Tabelle"
 
 \end_inset
 
- (Typ 1 + Typ 4).
- Wenn Sie bei Verwendung dieses Typs Probleme mit LaTeX bekommen sollten,
- verwenden Sie bitte einen anderen oder formulieren Sie den Text mit dem
- Querverweis etwas anders.
- Am ehesten kommt es vor, dass der Querverweis über das Zeilenende hinaus
- gedruckt wird.
-\end_layout
-
-\begin_layout Enumerate
-Formatierter Querverweis sieht aus wie 1.
-\end_layout
-
-\begin_layout Standard
-Wenn Sie Text aus einem anderen Dokument kopieren, der einen Verweis enthält,
- oder wenn Sie eine Marke aus Ihrem Dokument, auf die verwiesen wird, löschen,
- werden in der Druckausgabe zwei Fragezeichen an der Stelle des Verweises
- stehen.
-\end_layout
-
-\begin_layout Standard
-Wenn Sie aus Versehen dieselbe Marke noch einmal vergeben wollen, meldet
- LyX das und macht einen Vorschlag, wie die Marke heißen soll.
- Wenn Sie ein bereits vorhandenes Dokument mit Mehrfachmarken öffnen, schreibt
- LyX vor die zweite und folgende Marken DUPLIKAT:.
- Wenn Sie aus Versehen eine Marke löschen, erscheint auf einem Querverweis
- auf diese Marke der Text NICHT VORHANDEN: \SpecialChar \ldots{}
 
 \end_layout
 
-\begin_layout Standard
-Es gibt noch einige Anmerkungen zu 
-\family sans
-Marken
-\family default
-.
- Sie enthalten immer die Abschnittsnummer der vorangehenden Überschrift.
- Wenn Sie also auf ein 
-\family sans
-Kapitel
-\family default
- verweisen wollen, aber eine 
-\family sans
-Abschnitt
-\family default
--Überschrift unmittelbar folgt, müssen Sie die Marke 
-\emph on
-in
-\emph default
- die 
-\family sans
-Kapitel
-\family default
--Umgebung setzen.
- Es ist egal, wo, und es sieht auf dem Bildschirm seltsam aus.
- Aber Sie müssen es tun, wenn Sie 
-\family sans
-Kapitel
-\family default
- anders als 
-\family sans
-Abschnitt
-\family default
- markieren wollen.
- Dasselbe gilt für alle Abschnittsüberschriften.
- Nur wenn nach der Überschrift Text folgt, dürfen Sie die Marke ohne Nachdenken
- in den Text setzen.
+\begin_layout Description
+<Querverweis>
+\begin_inset space ~
+\end_inset
+
+auf
+\begin_inset space ~
+\end_inset
+
+Seite
+\begin_inset space ~
+\end_inset
+
+<Seite>: druckt die Nummer der Gleitumgebung, den Text 
+\begin_inset Quotes gld
+\end_inset
+
+auf Seite
+\begin_inset Quotes grd
+\end_inset
+
+, und die Seitennummer: 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Tab:Gleitende-Tabelle"
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Standard
-Außerdem macht eine Marke 
-\emph on
-nur
-\emph default
- für 
-\emph on
-nummerierte
-\emph default
- Abschnitte und Gleitobjekte (Tabellen und Abbildungen) Sinn.
- Normale Abbildungen und Tabellen sind nicht nummeriert, also kann man für
- sie ebenso wie für nichtnummerierte Abschnitte eigentlich keine Marken
- benutzen.
-\begin_inset Foot
+\begin_layout Description
+Formatierter
+\begin_inset space ~
+\end_inset
+
+Querverweis: druckt ein selbst definiertes Querverweisformat
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Bemerkung:
+\series default
+ Dies ist nur möglich, wenn das LaTeX-Paket 
+\series bold
+prettyref
+\series default
+
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Nun, man 
-\emph on
-kann,
-\emph default
- aber nur, wenn man als 
-\family sans
-Format
-\family default
- <Seite> oder auf Seite <Seite> benutzt.
- Der normale Verweis auf eine Abschnitts-, Tabellen- oder Abbildungsnummer
- geht nicht, weil es keine Nummer gibt! Ein Verweis mit <Querverweis> würde
- auf die letzte nummerierte Überschrift zeigen.
+LaTeX-Pakete! prettyref
 \end_layout
 
 \end_inset
 
- In den Abschnitten 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Beschriftung-von-Abbildungen"
+ installiert ist.
+\end_layout
 
 \end_inset
 
-, 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Tabellen-in-Gleitobjekt-Umgebungen"
 
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+<Seite>
+\family default
+ druckt nicht die Seitennummer, wenn sich die referenzierte Marke auf der
+ vorherigen, der selben oder der nächsten Seite befindet.
+ Stattdessen wird z.
+\begin_inset space \thinspace{}
 \end_inset
 
- und 
+B.
+ der Text 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family sans
+auf dieser Seite
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+ gedruckt.
+ Der Stil 
+\family sans
+<Querverweis>
+\begin_inset space ~
+\end_inset
+
+auf
+\begin_inset space ~
+\end_inset
+
+Seite
+\begin_inset space ~
+\end_inset
+
+<Seite>
+\family default
+ druckt nichts über die Seite, wenn die referenzierte Marke auf der gleichen
+ Seite ist.
+\end_layout
+
+\begin_layout Standard
+Die Nummer und die aktuelle Seite des referenzierten Dokumentteils wird
+ automatisch von LaTeX berechnet.
+ Die Stile können im Feld 
+\family sans
+Format
+\family default
+ des Querverweis-Fensters eingestellt werden, das erscheint, wenn Sie auf
+ einen Querverweis klicken.
+\end_layout
+
+\begin_layout Standard
+Der Stil 
+\family sans
+<Querverweis>
+\family default
+ kann nur zur Referenzierung nummerierter Teile des Dokuments verwendet
+ werden, während der Stil 
+\family sans
+<Seite>
+\family default
+ immer möglich ist.
+\end_layout
+
+\begin_layout Standard
+Um einen Abschnitt zu referenzieren, setzen Sie die Marke in die Abschnittsübers
+chrift; bei Gleitobjekten setzen Sie die Marke in die Beschriftung; bei
+ Fußnoten wird die Marke in die Fußnote gesetzt.
+ Die Referenzierung von Formeln ist in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "Gleichungen-numerieren-markieren"
 
 \end_inset
 
- finden Sie weitere Einzelheiten über das Markieren von Abbildungen, Tabellen
- und Gleichungen.
+ beschrieben.
+\end_layout
+
+\begin_layout Standard
+Recht-klicken auf einen Querverweis öffnet ein Kontextmenü.
+ Der Eintrag 
+\family sans
+Gehe
+\begin_inset space ~
+\end_inset
+
+zur
+\begin_inset space ~
+\end_inset
+
+Marke
+\family default
+ setzt den Cursor vor die referenzierte Marke.
+ Dieser Eintrag wird im Kontextmenü der Marke in 
+\family sans
+Gehe
+\begin_inset space ~
+\end_inset
+
+zurück
+\family default
+ umbenannt, so dass man ihn benutze kann, um zum Querverweis zurückzukehren.
+ Man kann auch mit dem Werkzeugleistenknopf 
+\begin_inset Graphics
+	filename ../../images/bookmark-goto_0.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+ zurückkehren.
+\end_layout
+
+\begin_layout Standard
+Marken können jederzeit geändert werden.
+ Verweise auf die geänderte Marke werden automatisch aktualisiert, so dass
+ Sie sich nicht darum kümmern müssen.
+\end_layout
+
+\begin_layout Standard
+Wenn ein Querverweis eine nicht existierende Marke referenziert, erscheinen
+ in der Ausgabe zwei Fragezeichen statt der Referenz.
+\end_layout
+
+\begin_layout Standard
+Querverweise sind detailliert im 
+\emph on
+Eingebettete Objekte
+\emph default
+ Handbuch beschrieben.
 \end_layout
 
 \begin_layout Section

@@ -20909,9 +20909,7 @@ prettyref
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-Pakete
-\lang english
-! prettyref
+LaTeX-Pakete! prettyref
 \end_layout
 
 \end_inset
@@ -20925,34 +20923,48 @@ LaTeX-Pakete
 \end_layout
 
 \begin_layout Standard
-Beachten Sie, dass der Stil <Seite> nicht die Seitennummer druckt, wenn
- sich die referenzierte Marke auf der vorherigen, derselben oder der nächsten
- Seite befindet.
- Stattdessen wird der Text 
+
+\family sans
+<Seite>
+\family default
+ druckt nicht die Seitennummer, wenn sich die referenzierte Marke auf der
+ vorherigen, der selben oder der nächsten Seite befindet.
+ Stattdessen wird z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ der Text 
 \begin_inset Quotes gld
 \end_inset
 
-auf der vorigen Seite
-\begin_inset Quotes grd
-\end_inset
 
-, 
-\begin_inset Quotes gld
-\end_inset
-
+\family sans
 auf dieser Seite
-\begin_inset Quotes grd
-\end_inset
+\family default
 
- oder 
-\begin_inset Quotes gld
-\end_inset
-
-auf der nächsten Seite
 \begin_inset Quotes grd
 \end_inset
 
  gedruckt.
+ Der Stil 
+\family sans
+<Querverweis>
+\begin_inset space ~
+\end_inset
+
+auf
+\begin_inset space ~
+\end_inset
+
+Seite
+\begin_inset space ~
+\end_inset
+
+<Seite>
+\family default
+ druckt nichts über die Seite, wenn die referenzierte Marke auf der gleichen
+ Seite ist.
 \end_layout
 
 \begin_layout Standard

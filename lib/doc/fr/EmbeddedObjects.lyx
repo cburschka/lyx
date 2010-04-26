@@ -20992,17 +20992,40 @@ Paquetages LaTeX ! prettyref
 \end_layout
 
 \begin_layout Standard
-Notez que le style <page> n'imprimera pas le numéro de la page si l'étiquette
- se trouve sur la page précédente, la même page ou la page suivante.
+
+\family sans
+<page>
+\family default
+ n'imprimera pas le numéro de la page si l'étiquette se trouve sur la page
+ précédente, la même page ou la page suivante.
  Vous verrez par exemple un texte du genre 
 \begin_inset Quotes eld
 \end_inset
 
+
+\family sans
 sur cette page
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
  à la place.
+ Le style 
+\family sans
+<référence>
+\begin_inset space ~
+\end_inset
+
+page
+\begin_inset space ~
+\end_inset
+
+<page>
+\family default
+ 
+\lang english
+will not print anything about the page if the label is on the same page.
 \end_layout
 
 \begin_layout Standard
@@ -21014,8 +21037,6 @@ Le numéro affecté à une étiquette et le numéro de la page sur laquelle elle
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
@@ -21024,11 +21045,7 @@ status open
 \series bold
 Note:
 \series default
- 
-\lang english
-The LaTeX-package
-\lang french
- 
+ Le paquetage LaTeX 
 \series bold
 prettyref
 \series default
@@ -21042,15 +21059,11 @@ Paquetages LaTeX ! prettyref
 
 \end_inset
 
- 
-\lang english
-does not know all of LyX's possible label shortcuts
+ ne connaît pas tous les raccourcis possibles pour les étiquettes
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Quotes eld
 \end_inset
 
@@ -21058,19 +21071,19 @@ fig:
 \begin_inset Quotes erd
 \end_inset
 
- is for example LyX's shortcut for labels in figure captions.
+ est par exempel le raccourci LyX pour les étiquettes dans les légendes
+ de figures,.
 \end_layout
 
 \end_inset
 
- and is not internationalized.
- How to tell 
+ et n'est pas internationalisé.
+ Pour savoir comment introduire de nouveaux raccourcis ou de nouvelles traductio
+ns dans 
 \series bold
 prettyref
 \series default
- new shortcuts and translations, have a look at its documentation
-\lang french
- 
+, voir la documentation du paquetage
 \begin_inset CommandInset citation
 LatexCommand cite
 key "prettyref"
@@ -21086,8 +21099,6 @@ key "prettyref"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
@@ -21096,17 +21107,13 @@ status open
 \series bold
 Note:
 \series default
- 
-\lang english
-Due to a bug in the LaTeX-package 
+ Du fait d'un bogue dans la paquetage LaTeX 
 \series bold
 varioref
 \series default
- version 1.4w, some cross-reference formats will cause LaTeX errors if the
- document langauge is French.
- For a workaround, see
-\lang french
-
+ (version 1.4w), certaines références croisées produiront des erreurs LaTeX
+ si la langue du document est le français.
+ Pour contourner ce bogue, voir
 \begin_inset Newline newline
 \end_inset
 

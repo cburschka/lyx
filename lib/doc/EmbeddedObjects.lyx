@@ -20466,8 +20466,12 @@ LaTeX-packages ! prettyref
 \end_layout
 
 \begin_layout Standard
-Note that the style <page> won't print the page number if the label is on
- the previous, the same, or the next page.
+
+\family sans
+<page>
+\family default
+ will not print the page number if the label is on the previous, the same,
+ or the next page.
  You will e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -20489,6 +20493,11 @@ on this page
 \end_inset
 
  instead.
+ The style 
+\family sans
+<reference> on page <page>
+\family default
+ will not print anything about the page if the label is on the same page.
 \end_layout
 
 \begin_layout Standard

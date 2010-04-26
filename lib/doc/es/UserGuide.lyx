@@ -24989,22 +24989,52 @@ LaTeX, paquetes ! prettyref
 \end_layout
 
 \begin_layout Standard
-El estilo 
+
 \family sans
 <página>
 \family default
- no imprime el número de página si la etiqueta está en la página anterior,
- en la misma o en la siguiente.
- En estos casos aparecerá en su lugar un texto como, p.
+
 \begin_inset space \thinspace{}
 \end_inset
 
-e., «
+ no imprime el número si la etiqueta está en la misma página, en la anterior
+ o en la siguiente.
+ En su lugar verás p.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+el texto «
 \family sans
 en esta página
 \family default
 ».
  
+\lang english
+The style
+\lang spanish
+ 
+\family sans
+<referencia>
+\begin_inset space ~
+\end_inset
+
+en
+\begin_inset space ~
+\end_inset
+
+página
+\begin_inset space ~
+\end_inset
+
+<página>
+\family default
+ 
+\lang english
+will not print anything about the page if the label is on the same page.
 \end_layout
 
 \begin_layout Standard
@@ -25051,7 +25081,12 @@ reference "sec:Numeración-y-referencia"
 \end_layout
 
 \begin_layout Standard
-El botón 
+
+\lang english
+Right-clicking on a cross-reference opens a context menu.
+ The entry
+\lang spanish
+ 
 \family sans
 Ir
 \begin_inset space ~
@@ -25067,14 +25102,21 @@ la
 
 etiqueta
 \family default
- de la ventana de referencias lleva el cursor justo al comienzo de la etiqueta
- referida, y el texto del botón cambia a 
+ 
+\lang english
+sets the the cursor before the referenced label.
+ This entry will be renamed in the context menu of the label to
+\lang spanish
+ 
 \family sans
-Volver,
+Volver
 \family default
- que sirve para retornar el cursor al cuadro de la referencia.
- Clic derecho sobre el cuadro de una referencia también lleva el cursor
- a la etiqueta y puedes volver con el botón 
+ 
+\lang english
+so that you can use it to set the cursor back to the cross-reference.
+
+\lang spanish
+ Puedes también volver con el botón 
 \begin_inset Graphics
 	filename ../../images/bookmark-goto_0.png
 

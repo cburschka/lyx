@@ -25765,17 +25765,40 @@ Paquetages LaTeX ! prettyref
 \end_layout
 
 \begin_layout Standard
-Notez que le style <page> n'imprimera pas le numéro de la page si l'étiquette
- se trouve sur la page précédente, la même page ou la page suivante.
+
+\family sans
+<page>
+\family default
+ n'imprimera pas le numéro de la page si l'étiquette se trouve sur la page
+ précédente, la même page ou la page suivante.
  Vous verrez par exemple un texte du genre 
 \begin_inset Quotes eld
 \end_inset
 
+
+\family sans
 sur cette page
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
  à la place.
+ Le style 
+\family sans
+<référence>
+\begin_inset space ~
+\end_inset
+
+page
+\begin_inset space ~
+\end_inset
+
+<page>
+\family default
+ 
+\lang english
+will not print anything about the page if the label is on the same page.
 \end_layout
 
 \begin_layout Standard
@@ -25820,8 +25843,12 @@ reference "sec:Numérotation-et-étiquetage"
 \end_layout
 
 \begin_layout Standard
-Le bouton 
+
+\lang english
+Right-clicking on a cross-reference opens a context menu.
+ The entry 
 \family sans
+\lang french
 Aller
 \begin_inset space ~
 \end_inset
@@ -25832,16 +25859,21 @@ Aller
 
 l'étiquette
 \family default
- de la fenêtre positionne le curseur juste avant l'étiquette à laquelle
- on fait référence.
- Le texte du bouton se change en 
+ 
+\lang english
+sets the the cursor before the referenced label.
+ This entry will be renamed in the context menu of the label to
+\lang french
+ 
 \family sans
 Revenir
 \family default
- et permet de replacer le curseur juste devant la référence croisée.
- Si on clique avec le bouton de droite sur une référence croisée, le curseur
- se déplace pour se placer devant l'étiquette et vous pouvez revenir au
- point de départ avec le bouton 
+ 
+\lang english
+so that you can use it to set the cursor back to the cross-reference.
+
+\lang french
+ Vous pouvez aussi revenir au point de départ avec le bouton 
 \begin_inset Graphics
 	filename ../../images/bookmark-goto_0.png
 	BoundingBox 0bp 5bp 20bp 25bp
