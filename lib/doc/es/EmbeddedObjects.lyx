@@ -20322,7 +20322,11 @@ LaTeX-paquetes ! prettyref
 \end_layout
 
 \begin_layout Standard
-Ten en cuenta que el estilo <página>
+
+\family sans
+<página>
+\family default
+
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -20341,6 +20345,29 @@ el texto «
 en esta página
 \family default
 ».
+ 
+\lang english
+The style
+\lang spanish
+ 
+\family sans
+<referencia>
+\begin_inset space ~
+\end_inset
+
+en
+\begin_inset space ~
+\end_inset
+
+página
+\begin_inset space ~
+\end_inset
+
+<página>
+\family default
+ 
+\lang english
+will not print anything about the page if the label is on the same page.
 \end_layout
 
 \begin_layout Standard

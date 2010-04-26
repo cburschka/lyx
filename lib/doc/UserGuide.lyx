@@ -24445,8 +24445,12 @@ LaTeX-packages ! prettyref
 \end_layout
 
 \begin_layout Standard
-Note that the style <page> will not print the page number if the label is
- on the previous, the same, or the next page.
+
+\family sans
+<page>
+\family default
+ will not print the page number if the label is on the previous, the same,
+ or the next page.
  You will e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -24468,6 +24472,11 @@ on this page
 \end_inset
 
  instead.
+ The style 
+\family sans
+<reference> on page <page>
+\family default
+ will not print anything about the page if the label is on the same page.
 \end_layout
 
 \begin_layout Standard
@@ -24478,7 +24487,7 @@ The number and current page of the referenced document part in the output,
 Format
 \family default
  of the cross-reference window, that appear when you click on the cross-referenc
-e box.
+e.
 \end_layout
 
 \begin_layout Standard
@@ -24494,9 +24503,9 @@ You can only use the style
 \end_layout
 
 \begin_layout Standard
-If you want to reference a section, put the label in the section heading,
- to reference a float, put the label in the caption.
- For footnotes you can put the label somewhere in it.
+If you want to reference a section, put the label in the section heading;
+ for floats put the label in the caption; for footnotes put the label in
+ it.
  Referencing formulas is explained in section
 \begin_inset space ~
 \end_inset
@@ -24512,7 +24521,8 @@ reference "sec:Formula-Numbering-and"
 \end_layout
 
 \begin_layout Standard
-The button 
+Right-clicking on a cross-reference opens a context menu.
+ The entry 
 \family sans
 Go
 \begin_inset space ~
@@ -24524,9 +24534,8 @@ to
 
 Label
 \family default
- in the cross-reference window sets the the cursor before the referenced
- label.
- The button text changes then to 
+ sets the the cursor before the referenced label.
+ This entry will be renamed in the context menu of the label to 
 \family sans
 Go
 \begin_inset space ~
@@ -24534,9 +24543,8 @@ Go
 
 Back
 \family default
- and you can use it to set the cursor back to the cross-reference.
- Right-clicking on a cross-reference box also sets the cursor before the
- referred label and you can go back with the toolbar button 
+ so that you can use it to set the cursor back to the cross-reference.
+ You can also go back with the toolbar button 
 \begin_inset Graphics
 	filename ../images/bookmark-goto_0.png
 	BoundingBox 0bp 5bp 20bp 25bp
@@ -24548,13 +24556,13 @@ Back
 \end_layout
 
 \begin_layout Standard
-You can change labels at any time by clicking on the label box.
- References to the changed label will automatically change its link to the
- new label text, so that you don't need to take care about this.
+You can change labels at any time.
+ References to the changed label will automatically be updated so that you
+ do not need to take care about this.
 \end_layout
 
 \begin_layout Standard
-If a cross-reference refers to a non-existent label, you'll see two question
+If a cross-reference refers to a non-existent label, you will see two question
  marks in the output instead of the reference.
 \end_layout
 
