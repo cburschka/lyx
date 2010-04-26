@@ -246,7 +246,7 @@ TocModels::TocModels()
 	: bv_(0)
 {
 	names_ = new TocTypeModel(this);
-	names_sorted_ = new QSortFilterProxyModel(this);
+	names_sorted_ = new TocModelSortProxyModel(this);
 	names_sorted_->setSourceModel(names_);
 #if QT_VERSION >= 0x040300
 	names_sorted_->setSortLocaleAware(true);

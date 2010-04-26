@@ -15,9 +15,8 @@
 #include "qt_helpers.h"
 
 #include <QHash>
+#include <QSortFilterProxyModel>
 #include <QStandardItemModel>
-
-class QSortFilterProxyModel;
 
 namespace lyx {
 
@@ -80,6 +79,30 @@ private:
 };
 
 
+/// A filter to sort the models alphabetically but with
+/// the table of contents on top.
+class TocModelSortProxyModel : public QSortFilterProxyModel
+{
+public:
+	TocModelSortProxyModel(QObject * w) 
+		: QSortFilterProxyModel(w)
+	{}
+
+	bool lessThan (const QModelIndex & left, const QModelIndex & right) const
+	{
+		if (left.model()->data(left, Qt::UserRole).toString()
+			  == QString("tableofcontents"))
+			return true;
+		else if (right.model()->data(right, Qt::UserRole).toString()
+			  == QString("tableofcontents"))
+			return false;
+		else
+			return QSortFilterProxyModel::lessThan(left, right);
+	}
+};
+
+
+
 /// A container for the different TocModels.
 class TocModels : public QObject
 {
@@ -129,7 +152,7 @@ private:
 	///
 	TocTypeModel * names_;
 	///
-	QSortFilterProxyModel * names_sorted_;
+	TocModelSortProxyModel * names_sorted_;
 };
 
 } // namespace frontend
