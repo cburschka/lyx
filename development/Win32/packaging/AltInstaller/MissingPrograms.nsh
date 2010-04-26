@@ -136,10 +136,7 @@ Function MissingPrograms
 
   # test if the BibTeX-editor JabRef is installed
   StrCpy $BibTeXEditorPath ""
-  ReadRegStr $BibTeXEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef 2.2" "UninstallString"
-  ${if} $BibTeXEditorPath == ""
-   ReadRegStr $BibTeXEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef 2.3" "UninstallString"
-  ${endif}
+  ReadRegStr $BibTeXEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef 2.3" "UninstallString"
   ${if} $BibTeXEditorPath == ""
    ReadRegStr $BibTeXEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef 2.3.1" "UninstallString"
   ${endif}
@@ -154,6 +151,9 @@ Function MissingPrograms
   ${endif}
   ${if} $BibTeXEditorPath == ""
    ReadRegStr $BibTeXEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef 2.5" "UninstallString"
+  ${endif}
+  ${if} $BibTeXEditorPath == ""
+   ReadRegStr $BibTeXEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef 2.6" "UninstallString"
   ${endif}
   
   # test if Inkscape is installed
