@@ -55,6 +55,7 @@ private:
 	void clearParams() {}
 	void dispatchParams() {}
 	bool isBufferDependent() const { return true; }
+	bool needBufferOpen() const { return true; }
 	///}
 
 	/// check text until next misspelled/unknown word

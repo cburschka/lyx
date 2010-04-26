@@ -55,6 +55,7 @@ public:
 	//@{
 	void applyView() {}
 	bool isClosing() const { return false; }
+	bool needBufferOpen() const { return false; }
 	//@}
 };
 

@@ -94,6 +94,9 @@ public:
 	 *  to close or not (no point refreshing the display for example).
 	 */
 	bool isClosing() const { return is_closing_; }
+	
+	///
+	bool needBufferOpen() const { return isBufferDependent(); }
 
 	/// Update the display of the dialog whilst it is still visible.
 	virtual void updateView();

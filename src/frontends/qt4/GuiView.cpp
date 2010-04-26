@@ -3557,7 +3557,7 @@ void GuiView::updateDialogs()
 	for(; it != end; ++it) {
 		Dialog * dialog = it->second.get();
 		if (dialog) {
-			if (dialog->isBufferDependent() && !documentBufferView())
+			if (dialog->needBufferOpen() && !documentBufferView())
 				hideDialog(fromqstr(dialog->name()), 0);
 			else if (dialog->isVisibleView())
 				dialog->checkStatus();

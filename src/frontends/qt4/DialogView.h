@@ -41,6 +41,7 @@ protected:
 	void applyView() {}
 	bool initialiseParams(std::string const & /*data*/) { return true; }
 	void clearParams() {}
+	bool needBufferOpen() const { return isBufferDependent(); }
 	//@}
 	/// Any dialog that overrides this method should make sure to call it.
 	void closeEvent(QCloseEvent * ev)

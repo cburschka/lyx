@@ -159,10 +159,15 @@ public:
 	/// Enable the Controller to dispatch its data back to the LyX kernel.
 	virtual void dispatchParams() = 0;
 
+	/** \return true if the dialog should be updated when the
+	 *  buffer has changed.
+	 */
+	virtual bool isBufferDependent() const = 0;
+
 	/** \return true if the dialog should be shown only when
 	 *  a buffer is open.
 	 */
-	virtual bool isBufferDependent() const = 0;
+	virtual bool needBufferOpen() const = 0;
 
 	/** \return true if the dialog can apply data also
 	 *  for ReadOnly buffers.
