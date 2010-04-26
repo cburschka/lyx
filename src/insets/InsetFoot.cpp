@@ -67,7 +67,7 @@ void InsetFoot::addToToc(DocIterator const & cpit)
 	Toc & toc = buffer().tocBackend().toc("footnote");
 	docstring str;
 	str = custom_label_ + ": " + text().getPar(0).asString();
-	toc.push_back(TocItem(pit, 0, str));
+	toc.push_back(TocItem(pit, 0, str, toolTipText()));
 	// Proceed with the rest of the inset.
 	InsetFootlike::addToToc(cpit);
 }

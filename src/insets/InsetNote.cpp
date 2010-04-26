@@ -224,7 +224,7 @@ void InsetNote::addToToc(DocIterator const & cpit)
 	docstring str;
 	str = notetranslator_loc().find(params_.type) + from_ascii(": ")
 		+ text().getPar(0).asString();
-	toc.push_back(TocItem(pit, 0, str));
+	toc.push_back(TocItem(pit, 0, str, toolTipText()));
 	// Proceed with the rest of the inset.
 	InsetCollapsable::addToToc(cpit);
 }

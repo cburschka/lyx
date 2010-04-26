@@ -721,7 +721,8 @@ void InsetText::addToToc(DocIterator const & cdit)
 			// insert this into the table of contents
 			if (tocstring.empty())
 				tocstring = par.asString(AS_STR_LABEL | AS_STR_INSETS);
-			toc.push_back(TocItem(dit, toclevel - min_toclevel, tocstring));
+			toc.push_back(TocItem(dit, toclevel - min_toclevel,
+				tocstring, tocstring));
 		}
 		
 		// And now the list of changes.
@@ -815,6 +816,18 @@ void InsetText::completionPosAndDim(Cursor const & cur, int & x, int & y,
 docstring InsetText::contextMenu(BufferView const &, int, int) const
 {
 	return from_ascii("context-edit");
+}
+
+
+docstring InsetText::toolTipText() const
+{
+	OutputParams rp(&buffer().params().encoding());
+	odocstringstream ods;
+	// do not remove InsetText::, otherwise there
+	// will be no tooltip text for InsetNotes
+	InsetText::plaintext(ods, rp);
+	docstring const content_tip = ods.str();
+	return support::wrapParas(content_tip, 4);
 }
 
 

@@ -148,6 +148,7 @@ void TocModel::updateItem(DocIterator const & dit)
 	QModelIndex index = modelIndex(dit);
 	TocItem const & toc_item = tocItem(index);
 	model_->setData(index, toqstr(toc_item.str()), Qt::DisplayRole);
+	model_->setData(index, toqstr(toc_item.tooltip()), Qt::ToolTipRole);
 }
 
 
@@ -177,6 +178,7 @@ void TocModel::reset(Toc const & toc)
 		QModelIndex top_level_item = model_->index(current_row, 0);
 		model_->setData(top_level_item, toqstr(item.str()), Qt::DisplayRole);
 		model_->setData(top_level_item, index, Qt::UserRole);
+		model_->setData(top_level_item, toqstr(item.tooltip()), Qt::ToolTipRole);
 
 		LYXERR(Debug::GUI, "Toc: at depth " << item.depth()
 			<< ", added item " << item.str());
@@ -218,6 +220,7 @@ void TocModel::populate(unsigned int & index, QModelIndex const & parent)
 		child_item = model_->index(current_row, 0, parent);
 		model_->setData(child_item, toqstr(item.str()), Qt::DisplayRole);
 		model_->setData(child_item, index, Qt::UserRole);
+		model_->setData(child_item, toqstr(item.tooltip()), Qt::ToolTipRole);
 		populate(index, child_item);
 		if (index >= end)
 			break;

@@ -59,7 +59,7 @@ void InsetMarginal::addToToc(DocIterator const & cpit)
 	Toc & toc = buffer().tocBackend().toc("marginalnote");
 	docstring str;
 	str = text().getPar(0).asString();
-	toc.push_back(TocItem(pit, 0, str));
+	toc.push_back(TocItem(pit, 0, str, toolTipText()));
 	// Proceed with the rest of the inset.
 	InsetFootlike::addToToc(cpit);
 }
