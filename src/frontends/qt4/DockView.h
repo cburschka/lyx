@@ -16,6 +16,7 @@
 #include "GuiView.h"
 
 #include <QDockWidget>
+#include <QKeyEvent>
 
 namespace lyx {
 namespace frontend {
@@ -51,6 +52,19 @@ public:
 	/// We don't want to restore geometry session for dock widgets.
 	void restoreSession() {}
 
+	void keyPressEvent(QKeyEvent * ev)
+	{
+		if (ev->key() == Qt::Key_Escape) {
+			QMainWindow * mw = static_cast<QMainWindow *>(parent());
+			if (!mw) {
+				ev->ignore();
+				return;
+			}
+			mw->activateWindow();
+			mw->setFocus();
+			ev->accept();
+		}
+	}
 	/// Dialog inherited methods
 	//@{
 	void applyView() {}

@@ -68,6 +68,7 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 
 	// Only one item selected at a time.
 	tocTV->setSelectionMode(QAbstractItemView::SingleSelection);
+	setFocusProxy(tocTV);
 
 	// The toc types combo won't change its model.
 	typeCO->setModel(gui_view_.tocModels().nameModel());
@@ -402,6 +403,7 @@ void TocWidget::updateView()
 	sortCB->setEnabled(is_sortable);
 	depthSL->setEnabled(true);
 	typeCO->setEnabled(true);
+	bool focus_ = tocTV->hasFocus();
 	tocTV->setEnabled(false);
 	tocTV->setUpdatesEnabled(false);
 
@@ -437,6 +439,8 @@ void TocWidget::updateView()
 	filterContents();
 	tocTV->setEnabled(true);
 	tocTV->setUpdatesEnabled(true);
+	if (focus_)
+		tocTV->setFocus();
 }
 
 

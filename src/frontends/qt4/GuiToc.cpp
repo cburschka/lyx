@@ -37,6 +37,7 @@ GuiToc::GuiToc(GuiView & parent, Qt::DockWidgetArea area, Qt::WindowFlags flags)
 {
 	widget_ = new TocWidget(parent, this);
 	setWidget(widget_);
+	setFocusProxy(widget_);
 }
 
 

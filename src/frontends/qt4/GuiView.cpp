@@ -3490,9 +3490,17 @@ void GuiView::doShowDialog(QString const & qname, QString const & qdata,
 	try {
 		Dialog * dialog = findOrBuild(name, false);
 		if (dialog) {
+			bool const visible = dialog->isVisibleView();
 			dialog->showData(data);
 			if (inset && currentBufferView())
 				currentBufferView()->editInset(name, inset);
+			// We only set the focus to the new dialog if it was not yet
+			// visible in order not to change the existing previous behaviour
+			if (visible) {	
+				// activateWindow is needed for floating dockviews
+				dialog->asQWidget()->activateWindow();
+				dialog->asQWidget()->setFocus();
+			}
 		}
 	}
 	catch (ExceptionMessage const & ex) {
