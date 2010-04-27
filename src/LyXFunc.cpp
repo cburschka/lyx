@@ -1924,8 +1924,11 @@ void LyXFunc::checkExternallyModifiedBuffers()
 					from_utf8((*bit)->absFileName()));
 			int const ret = Alert::prompt(_("Reload externally changed document?"),
 						text, 0, 1, _("&Reload"), _("&Cancel"));
-			if (!ret)
+			if (!ret) {
 				reloadBuffer(*bit);
+				checkExternallyModifiedBuffers();
+				return;
+			}
 		}
 	}
 }
