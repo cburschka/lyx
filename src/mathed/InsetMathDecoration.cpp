@@ -22,6 +22,7 @@
 #include "LaTeXFeatures.h"
 
 #include "support/debug.h"
+#include "support/docstring.h"
 #include "support/lassert.h"
 
 #include <ostream>
@@ -105,7 +106,7 @@ InsetMath::mode_type InsetMathDecoration::currentMode() const
 void InsetMathDecoration::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	bool const upshape = currentMode() == TEXT_MODE
-				&& mi.base.font.color() == Color_math;
+				&& isMathFont(from_ascii(mi.base.fontname));
 	ShapeChanger dummy(mi.base.font, upshape ?
 				UP_SHAPE : mi.base.font.shape());
 
@@ -129,7 +130,7 @@ void InsetMathDecoration::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathDecoration::draw(PainterInfo & pi, int x, int y) const
 {
 	bool const upshape = currentMode() == TEXT_MODE
-				&& pi.base.font.color() == Color_math;
+				&& isMathFont(from_ascii(pi.base.fontname));
 	ShapeChanger dummy(pi.base.font, upshape ?
 				UP_SHAPE : pi.base.font.shape());
 

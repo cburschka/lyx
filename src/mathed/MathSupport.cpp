@@ -646,6 +646,13 @@ bool isFontName(docstring const & name)
 }
 
 
+bool isMathFont(docstring const & name)
+{
+	fontinfo * f = lookupFont(name);
+	return f && f->color_ == Color_math;
+}
+
+
 FontInfo getFont(docstring const & name)
 {
 	FontInfo font;
