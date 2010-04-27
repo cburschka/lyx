@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 386
+\lyxformat 387
 \begin_document
 \begin_header
 \textclass article
@@ -51,6 +51,9 @@
 \output_changes false
 \html_math_output 0
 \html_be_strict true
+\html_math_img_scale 1
+\html_latex_start "<span class='latex'>"
+\html_latex_end "</span>"
 \end_header
 
 \begin_body
@@ -3972,6 +3975,168 @@ enumitem
 \end_layout
 
 \begin_layout Section
+Language packages
+\end_layout
+
+\begin_layout Subsection
+arabi
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "arabi"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+language/arabic/arabi/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+arabi
+\family default
+ is needed by LyX to be able to output documents with the document languages
+ Arabic or Farsi.
+\end_layout
+
+\begin_layout Subsection
+japanese
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "japanese"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+language/japanese/japanese/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+japanese
+\family default
+ is needed by LyX to be able to output section headings and dates in Japanese
+ when the document language is 
+\begin_inset Quotes eld
+\end_inset
+
+Japanese
+\begin_inset Quotes erd
+\end_inset
+
+.
+ To use this option, the Japanese TeX system pTeX (CTAN: 
+\family typewriter
+language/japanese/ptex/
+\family default
+) is required.
+\end_layout
+
+\begin_layout Subsection
+lithuanian
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "lithuanian"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+language/lithuanian/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+lithuanian
+\family default
+ is needed by LyX to be able to output documents with the document language
+ Lithuanian.
+\end_layout
+
+\begin_layout Subsection
+mongolian-babel
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "mongolian"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+language/mongolian/babel/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+mongolian-babel
+\family default
+ is needed by LyX to be able to output documents with the document language
+ Mongolian.
+\end_layout
+
+\begin_layout Subsection
+turkmen
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "turkmen"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+language/turkmen/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+turkmen
+\family default
+ is needed by LyX to be able to output documents with the document language
+ Turkmen.
+\end_layout
+
+\begin_layout Section
 
 \series bold
 \size large
@@ -4051,35 +4216,6 @@ index of algorithms
 \end_inset
 
  too.
-\end_layout
-
-\begin_layout Subsection
-arabi
-\end_layout
-
-\begin_layout Description
-Found: 
-\begin_inset Info
-type  "package"
-arg   "arabi"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family typewriter
-language/arabic/arabi/
-\end_layout
-
-\begin_layout Description
-Notes: The package 
-\family sans
-arabi
-\family default
- is needed by LyX to be able to output documents with the document language
- Arabic.
 \end_layout
 
 \begin_layout Subsection
@@ -4363,48 +4499,6 @@ if
 \color none
 ) for LaTeX documents.
  This functionality is needed by some classes and modules.
-\end_layout
-
-\begin_layout Subsection
-japanese
-\end_layout
-
-\begin_layout Description
-Found: 
-\begin_inset Info
-type  "package"
-arg   "japanese"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family typewriter
-language/japanese/japanese/
-\end_layout
-
-\begin_layout Description
-Notes: The 
-\family sans
-babel japanese
-\family default
- option is needed by LyX to be able to output section headings and dates
- in Japanese when the document language is 
-\begin_inset Quotes eld
-\end_inset
-
-Japanese
-\begin_inset Quotes erd
-\end_inset
-
-.
- To use this option, the Japanese TeX system pTeX (CTAN: 
-\family typewriter
-language/japanese/ptex/
-\family default
-) is required.
 \end_layout
 
 \begin_layout Subsection
