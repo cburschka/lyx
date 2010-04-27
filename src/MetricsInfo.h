@@ -153,10 +153,15 @@ public:
 class FontSetChanger : public Changer<MetricsBase> {
 public:
 	///
-	FontSetChanger(MetricsBase & mb, docstring const & font);
-	FontSetChanger(MetricsBase & mb, char const * const font);
+	FontSetChanger(MetricsBase & mb, docstring const & font,
+			bool really_change_font = true);
+	FontSetChanger(MetricsBase & mb, char const * const font,
+			bool really_change_font = true);
 	///
 	~FontSetChanger();
+private:
+	///
+	bool change_;
 };
 
 
