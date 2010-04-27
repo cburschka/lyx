@@ -10377,7 +10377,7 @@ msgstr "Mezislovní mezera|M"
 #: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:193 lib/ui/stdcontext.inc:216
 #: lib/ui/stdmenus.inc:380
 msgid "Thin Space|T"
-msgstr "Tenká mezera|T"
+msgstr "Úzká mezera|z"
 
 #: lib/ui/classic.ui:250 lib/ui/stdmenus.inc:381
 msgid "Horizontal Space...|o"
@@ -10982,23 +10982,23 @@ msgstr "Chránìná mezera|h"
 
 #: lib/ui/stdcontext.inc:194 lib/ui/stdcontext.inc:219
 msgid "Negative Thin Space|N"
-msgstr "Záporná tenká mezera|z"
+msgstr "Záporná úzká mezera|k"
 
 #: lib/ui/stdcontext.inc:195 lib/ui/stdcontext.inc:222
 msgid "Half Quad Space (Enskip)|k"
-msgstr "Polovina em mezery (Enskip)|e"
+msgstr "Polovina ètverèíku (Enskip)|e"
 
 #: lib/ui/stdcontext.inc:196
 msgid "Protected Half Quad Space (Enspace)|E"
-msgstr "Chránìná Polovina em mezery (Enspace)"
+msgstr "Chránìná polovina ètverèíku (Enspace)"
 
 #: lib/ui/stdcontext.inc:197 lib/ui/stdcontext.inc:223
 msgid "Quad Space|Q"
-msgstr "Em mezera|r"
+msgstr "Ètverèík (1 em)|t"
 
 #: lib/ui/stdcontext.inc:198 lib/ui/stdcontext.inc:224
 msgid "Double Quad Space|u"
-msgstr "Dvojitá em mezera|l"
+msgstr "Dva ètverèíky (2 em)|D"
 
 #: lib/ui/stdcontext.inc:199
 msgid "Horizontal Fill|F"
@@ -11042,7 +11042,7 @@ msgstr "Støední mezera|S"
 
 #: lib/ui/stdcontext.inc:218
 msgid "Thick Space|h"
-msgstr "Tlustá mezera|T"
+msgstr "©iroká mezera|T"
 
 #: lib/ui/stdcontext.inc:220
 msgid "Negative Medium Space|u"
@@ -11050,7 +11050,7 @@ msgstr "Záporná støední mezera|e"
 
 #: lib/ui/stdcontext.inc:221
 msgid "Negative Thick Space|i"
-msgstr "Záporná tlustá mezera|l"
+msgstr "Záporná ¹iroká mezera|i"
 
 #: lib/ui/stdcontext.inc:234
 msgid "DefSkip|D"
@@ -11120,7 +11120,7 @@ msgstr "Uzavøít stránku (\\clearpage)|U"
 
 #: lib/ui/stdcontext.inc:266 lib/ui/stdmenus.inc:393
 msgid "Clear Double Page|D"
-msgstr "Uzavøít stránku v oboustraném dok. (\\cleardoublepage)|z"
+msgstr "Uzavøít stránku v oboustraném dok. (\\cleardoublepage)|s"
 
 #: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:387
 msgid "Ragged Line Break|R"
@@ -12429,7 +12429,7 @@ msgstr "Mezery"
 
 #: lib/ui/stdtoolbars.inc:296
 msgid "Thin space\t\\,"
-msgstr "Tenká\t\\,"
+msgstr "Úzká\t\\,"
 
 #: lib/ui/stdtoolbars.inc:297
 msgid "Medium space\t\\:"
@@ -12437,15 +12437,15 @@ msgstr "Støední\t\\:"
 
 #: lib/ui/stdtoolbars.inc:298
 msgid "Thick space\t\\;"
-msgstr "Tlustá\t\\;"
+msgstr "©iroká\t\\;"
 
 #: lib/ui/stdtoolbars.inc:299
 msgid "Quadratin space\t\\quad"
-msgstr "Kvadratická\t\\quad"
+msgstr "Ètverèík\t\\quad"
 
 #: lib/ui/stdtoolbars.inc:300
 msgid "Double quadratin space\t\\qquad"
-msgstr "Dvojitá kvadratická\t\\qquad"
+msgstr "Dva ètverèíky\t\\qquad"
 
 #: lib/ui/stdtoolbars.inc:301
 msgid "Negative space\t\\!"
@@ -18736,12 +18736,12 @@ msgid ""
 "a vertical space if used at the beginning of a paragraph!"
 msgstr ""
 "Vlo¾it mezeru i za konec øádky.\n"
-"Pozn. - chránìná polovièní em mezera se zmìní na\n"
+"Pozn. - chránìná polovina ètverèíku se zmìní na\n"
 " vertikální mezeru, pokud bude pou¾ita na zaèátku odstavce!"
 
 #: src/frontends/qt4/GuiHSpace.cpp:141 src/frontends/qt4/GuiHSpace.cpp:155
 msgid "Thin space"
-msgstr "Tenká mezera"
+msgstr "Úzká mezera"
 
 #: src/frontends/qt4/GuiHSpace.cpp:142
 msgid "Medium space"
@@ -18749,11 +18749,11 @@ msgstr "Støední mezera"
 
 #: src/frontends/qt4/GuiHSpace.cpp:143
 msgid "Thick space"
-msgstr "Tlustá mezera"
+msgstr "©iroká mezera"
 
 #: src/frontends/qt4/GuiHSpace.cpp:144 src/frontends/qt4/GuiHSpace.cpp:156
 msgid "Negative thin space"
-msgstr "Záporná tenká mezera"
+msgstr "Záporná úzká mezera"
 
 #: src/frontends/qt4/GuiHSpace.cpp:145
 msgid "Negative medium space"
@@ -18761,19 +18761,19 @@ msgstr "Záporná støední mezera"
 
 #: src/frontends/qt4/GuiHSpace.cpp:146
 msgid "Negative thick space"
-msgstr "Záporná tlustá mezera"
+msgstr "Záporná ¹iroká mezera"
 
 #: src/frontends/qt4/GuiHSpace.cpp:147 src/frontends/qt4/GuiHSpace.cpp:157
 msgid "Half Quad (0.5 em)"
-msgstr "0.5 em"
+msgstr "Pùl ètverèíku (0.5 em)"
 
 #: src/frontends/qt4/GuiHSpace.cpp:148 src/frontends/qt4/GuiHSpace.cpp:158
 msgid "Quad (1 em)"
-msgstr "1 em"
+msgstr "Ètverèík (1 em)"
 
 #: src/frontends/qt4/GuiHSpace.cpp:149 src/frontends/qt4/GuiHSpace.cpp:159
 msgid "Double Quad (2 em)"
-msgstr "2 em"
+msgstr "Dva ètverèíky (2 em)"
 
 #: src/frontends/qt4/GuiHSpace.cpp:154
 msgid "Inter-word space"
@@ -20780,7 +20780,7 @@ msgstr "Chránìná mezera"
 
 #: src/insets/InsetSpace.cpp:79
 msgid "Thin Space"
-msgstr "Tenká mezera"
+msgstr "Úzká mezera"
 
 #: src/insets/InsetSpace.cpp:82
 msgid "Medium Space"
@@ -20788,15 +20788,15 @@ msgstr "Støední mezera"
 
 #: src/insets/InsetSpace.cpp:85
 msgid "Thick Space"
-msgstr "Tlustá mezera"
+msgstr "©iroká mezera"
 
 #: src/insets/InsetSpace.cpp:88
 msgid "Quad Space"
-msgstr "Quad mezera"
+msgstr "Ètverèík"
 
 #: src/insets/InsetSpace.cpp:91
 msgid "QQuad Space"
-msgstr "QQuad mezera"
+msgstr "Dva ètverèíky"
 
 #: src/insets/InsetSpace.cpp:94
 msgid "Enspace"
@@ -20808,7 +20808,7 @@ msgstr "En-mezera (Enskip)"
 
 #: src/insets/InsetSpace.cpp:100
 msgid "Negative Thin Space"
-msgstr "Záporná tenká mezera"
+msgstr "Záporná úzká mezera"
 
 #: src/insets/InsetSpace.cpp:103
 msgid "Negative Medium Space"
@@ -20816,7 +20816,7 @@ msgstr "Záporná støední mezera"
 
 #: src/insets/InsetSpace.cpp:106
 msgid "Negative Thick Space"
-msgstr "Záporná tlustá mezera"
+msgstr "Záporná ¹iroká mezera"
 
 #: src/insets/InsetSpace.cpp:112
 msgid "Protected Horizontal Fill"
