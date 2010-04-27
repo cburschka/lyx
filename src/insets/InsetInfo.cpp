@@ -321,9 +321,14 @@ void InsetInfo::updateInfo()
 		// check in packages.lst
 		setText(LaTeXFeatures::isAvailable(name_) ? _("yes") : _("no"));
 		break;
+
 	case TEXTCLASS_INFO: {
 		// name_ is the class name
-		setText(LayoutFileList::get().haveClass(name_) ? _("yes") : _("no"));
+		LayoutFileList const & list = LayoutFileList::get();
+		bool available = false;
+		if (list.haveClass(name_))
+			available = list[name_].isTeXClassAvailable();
+		setText(available ? _("yes") : _("no"));
 		break;
 	}
 	case MENU_INFO: {
