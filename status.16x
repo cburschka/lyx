@@ -217,6 +217,8 @@ What's new
   crashed LyX (bug 6459).
   
 - Fix a stdlib assertion when deleting from TeX-code in math (bug 6489).
+
+- Fix the use of lyxrc properties in InsetInfos (bug 6664).
   
 - Resolve duplicate labels in mathed on pasting (bug 6218).
 
