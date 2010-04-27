@@ -213,8 +213,11 @@ What's new
 - Fix a crash when a pending completion pop-up in math is scrolled out
   of view (bug 6552).
 
-- While in TeX-code, disable non-functional sub- and superscript functions that
-  crashed LyX (bug 6459).
+- While in TeX-code, disable non-functional sub- and superscript functions
+  that crashed LyX (bug 6459).
+  
+- Fix crashes of LyX when interacting with buffer dependent dialogs
+  while no buffers where open (anymore) (bug 6451).
   
 - Fix a stdlib assertion when deleting from TeX-code in math (bug 6489).
 

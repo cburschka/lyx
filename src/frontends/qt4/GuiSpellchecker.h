@@ -69,6 +69,8 @@ private:
 	void dispatchParams() {}
 	///
 	bool isBufferDependent() const { return true; }
+	///}
+	bool needBufferOpen() const { return true; }
 	///
 	bool exitEarly() const { return exitEarly_; }
 

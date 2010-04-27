@@ -2557,8 +2557,12 @@ void GuiView::updateDialogs()
 
 	for(; it != end; ++it) {
 		Dialog * dialog = it->second.get();
-		if (dialog && dialog->isVisibleView())
-			dialog->checkStatus();
+		if (dialog) {
+			if (dialog->needBufferOpen() && !d.current_work_area_)
+				hideDialog(fromqstr(dialog->name()), 0);
+			else if (dialog->isVisibleView())
+				dialog->checkStatus();
+		}
 	}
 	updateToolbars();
 	updateLayoutList();
