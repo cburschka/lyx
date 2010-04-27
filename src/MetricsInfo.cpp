@@ -232,10 +232,12 @@ FontSetChanger::FontSetChanger(MetricsBase & mb, char const * name)
 {
 	save_ = mb;
 	FontSize oldsize = save_.font.size();
+	ColorCode oldcolor = save_.font.color();
 	mb.fontname = name;
 	mb.font = sane_font;
 	augmentFont(mb.font, from_ascii(name));
 	mb.font.setSize(oldsize);
+	mb.font.setColor(oldcolor);
 }
 
 
@@ -244,10 +246,12 @@ FontSetChanger::FontSetChanger(MetricsBase & mb, docstring const & name)
 {
 	save_ = mb;
 	FontSize oldsize = save_.font.size();
+	ColorCode oldcolor = save_.font.color();
 	mb.fontname = to_utf8(name);
 	mb.font = sane_font;
 	augmentFont(mb.font, name);
 	mb.font.setSize(oldsize);
+	mb.font.setColor(oldcolor);
 }
 
 
