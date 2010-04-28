@@ -27,9 +27,11 @@
 
 % Ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
 \let\myTOC\tableofcontents
-\renewcommand{\tableofcontents}{%
- \pdfbookmark[1]{\contentsname}{}
- \myTOC }
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
 
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
@@ -39,19 +41,13 @@
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX}}
 
-% redefine the \lyxarrow macro for PDF bookmarks
-\renewcommand{\lyxarrow}{%
- \texorpdfstring{%
-  \leavevmode\,$\triangleright$\,\allowbreak}
-  {->}}
-
 % workaround for a makeindex bug, 
 % see sec. "Index Entry Order"
 % only uncomment this when you are using makindex
 %\let\OrgIndex\index 
 %\renewcommand*{\index}[1]{\OrgIndex{#1}}
 \end_preamble
-\options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove,liststotoc
+\options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove
 \use_default_options false
 \language ngerman
 \inputencoding auto
@@ -100,7 +96,7 @@
 \secnumdepth 3
 \tocdepth 2
 \paragraph_separation indent
-\defskip smallskip
+\defskip medskip
 \quotes_language german
 \papercolumns 1
 \papersides 2
@@ -25316,41 +25312,6 @@ iint
 \family default
 ).
  Unglücklicherweise sehen sie nicht immer konsistent aus.
- Zum Beispiel sieht das Zeichen 
-\begin_inset Formula $\iint$
-\end_inset
-
- 
-\family typewriter
-(
-\backslash
-iint)
-\family default
- des 
-\family typewriter
-wasysym
-\family default
--Paketes wie 
-\begin_inset Formula $\varint$
-\end_inset
-
- 
-\family typewriter
-(
-\backslash
-varint
-\family default
-) aus, nicht wie 
-\begin_inset Formula $\int$
-\end_inset
-
- 
-\family typewriter
-(
-\backslash
-int
-\family default
-).
 \end_layout
 
 \begin_layout Standard
@@ -25380,17 +25341,6 @@ verwenden
 Mathe-Werkzeugleiste
 \family default
 .
- Dieses Dokument benutzt das 
-\family typewriter
-wasysym
-\family default
--Paket anstatt des 
-\family typewriter
-esint
-\family default
--Paket, damit Sie die unterschiedlichen Integralzeichen in der DVI-Vorschau
- sehen können, weil das letztere nicht in allen LaTeX-Distributionen vorhanden
- ist.
 \end_layout
 
 \begin_layout Subsection
