@@ -592,6 +592,7 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 {
+	ColorChanger dummy0(pi.base.font, from_ascii("math"));
 	FontSetChanger dummy1(pi.base, from_ascii("mathnormal"));
 	StyleChanger dummy2(pi.base, LM_ST_TEXT);
 
