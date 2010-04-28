@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 385
+\lyxformat 387
 \begin_document
 \begin_header
 \textclass scrbook
@@ -127,6 +127,9 @@ End
 \output_changes false
 \html_math_output 0
 \html_be_strict true
+\html_math_img_scale 1
+\html_latex_start "<span class='latex'>"
+\html_latex_end "</span>"
 \author 1 "ab" 
 \end_header
 
@@ -8410,7 +8413,7 @@ Theorems (Order by Chapter)
 \emph on
 only
 \emph default
- unnumbered results, the the module 
+ unnumbered results, the module 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
