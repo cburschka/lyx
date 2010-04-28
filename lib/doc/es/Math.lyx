@@ -136,6 +136,13 @@
   \setboolean{braket}{true}}
  {\setboolean{braket}{false}}
 
+% check for package cancel
+\newboolean{cancel}
+\IfFileExists{cancel.sty}
+ {\usepackage{cancel}
+  \setboolean{cancel}{true}}
+ {\setboolean{cancel}{false}}
+
 % check for package upgreek
 \newboolean{upgreek}
 \IfFileExists{upgreek.sty}
@@ -268,7 +275,7 @@ status open
 Para exportar este documento a PDF, PS o DVI deben estar instalados los
  paquetes LaTeX 
 \series bold
-eurosym
+braket, cancel, eurosym
 \series default
 , 
 \series bold
@@ -284,24 +291,23 @@ was
 \series default
 .
  Si 
+\lang english
+they
 \series bold
-eurosym
+\lang spanish
+ 
 \series default
-, 
-\series bold
-multirow
-\series default
- o 
-\series bold
-was
-\series default
- no están instalados también puedes exportar el documento pero las secciones
+no están instalados también puedes exportar el documento pero las secciones
  en que se requieren dichos paquetes no aparecerán en la salida.
- Si  
+ 
+\lang english
+An exeption is 
 \series bold
 mhchem
 \series default
- no está instalado, este archivo no se puede exportar.
+; if it is not installed
+\lang spanish
+, este archivo no se puede exportar.
 \end_layout
 
 \begin_layout Plain Layout
@@ -35017,20 +35023,6 @@ El paquete LaTeX
 braket
 \series default
 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-braket
-\series default
- se incluye en las instalaciones estándar de LaTeX.
-\end_layout
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -35623,20 +35615,6 @@ Para cancelar ecuaciones o partes de ellas hay que cargar el paquete LaTeX
 cancel
 \series default
 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-cancel
-\series default
- forma parte de las distribuciones estándar de LaTeX.
-\end_layout
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -35655,6 +35633,36 @@ Paquetes ! cancel
 
 \backslash
 usepackage[samesize]{cancel}
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifcancel 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+La tabla siguiente sólo se mostrará en la salida si el paquete LaTeX 
+\series bold
+cancel
+\series default
+ está instalado.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -35892,6 +35900,60 @@ cancelto
  en una ecuación:
 \begin_inset Formula \[
 \frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Lo que sigue se verá en la salida si el paquete LaTeX 
+\series bold
+cancel
+\series default
+ no está instalado:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Debes instalar el paquete LaTeX 
+\series bold
+cancel
+\series default
+ para ver en la salida el resto de esta subsección.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi
+\end_layout
 
 \end_inset
 

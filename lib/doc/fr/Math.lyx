@@ -137,6 +137,13 @@
   \setboolean{braket}{true}}
  {\setboolean{braket}{false}}
 
+% check for package cancel
+\newboolean{cancel}
+\IfFileExists{cancel.sty}
+ {\usepackage{cancel}
+  \setboolean{cancel}{true}}
+ {\setboolean{cancel}{false}}
+
 % check for package upgreek
 \newboolean{upgreek}
 \IfFileExists{upgreek.sty}
@@ -275,7 +282,7 @@ status open
 Pour pouvoir exporter ce document en PDF, PS, ou DVI les paquetages LaTeX
  
 \series bold
-eurosym,
+braket, cancel, eurosym,
 \series default
  
 \series bold
@@ -286,25 +293,17 @@ mhchem, multirow
 was
 \series default
  doivent être installés.
- Si 
-\series bold
-eurosym,
-\series default
- 
-\series bold
-multirow
-\series default
- ou 
-\series bold
-was
-\series default
- ne sont pas installés, vous pouvez quand même exporter votre document,
+ Si les ne sont pas installés, vous pouvez quand même exporter votre document,
  mais les sections où ces paquetages sont nécessaires ne seront pas visibles
  sur la sortie finale.
- Si 
+ 
+\lang english
+An exeption is 
 \series bold
 mhchem
 \series default
+; if it
+\lang french
  n'est pas installé, on ne peut pas exporter ce fichier.
 \end_layout
 
@@ -34589,20 +34588,6 @@ Des vecteurs prédéfinis sont proposés par le paquetage LaTeX
  braket
 \series default
 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-braket
-\series default
- fait partie de toutes les installations LaTeX standard.
-\end_layout
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -35202,20 +35187,6 @@ Pour barrer une formule ou une portion de formule, on doit charger le paquetage
 cancel
 \series default
 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-cancel
-\series default
- fait partie de toutes les distributions LaTeX standard.
-\end_layout
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -35234,6 +35205,36 @@ Paquetages ! cancel
 
 \backslash
 usepackage[samesize]{cancel}
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifcancel 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ce qui suit ne sera affiché que si le paquetage LaTeX 
+\series bold
+cancel
+\series default
+ est installé:
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -35467,6 +35468,60 @@ cancelto
  dans les formules:
 \begin_inset Formula \[
 \frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ce qui suit sera affiché si la paquetage LaTeX 
+\series bold
+cancel
+\series default
+ n'est pas installé:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vous avez besoin du paquetage LaTeX 
+\series bold
+cancel
+\series default
+ pour voir le reste de cette sous section dans la sortie finale.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi 
+\end_layout
 
 \end_inset
 

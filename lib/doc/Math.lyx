@@ -136,6 +136,13 @@
   \setboolean{braket}{true}}
  {\setboolean{braket}{false}}
 
+% check for package cancel
+\newboolean{cancel}
+\IfFileExists{cancel.sty}
+ {\usepackage{cancel}
+  \setboolean{cancel}{true}}
+ {\setboolean{cancel}{false}}
+
 % check for package upgreek
 \newboolean{upgreek}
 \IfFileExists{upgreek.sty}
@@ -267,7 +274,7 @@ status open
 \begin_layout Plain Layout
 To export this document to PDF, PS or DVI the LaTeX-packages 
 \series bold
-eurosym,
+braket, cancel, eurosym,
 \series default
  
 \series bold
@@ -277,26 +284,14 @@ mhchem, multirow
 \series bold
 was
 \series default
- must be installed.
- If 
-\series bold
-eurosym,
-\series default
- 
-\series bold
-multirow
-\series default
- or 
-\series bold
-was
-\series default
- are not installed you can export the document anyway but the sections where
- the packages are required won't appear in the output.
- If 
+ should be installed.
+ If they are not installed the document can be export anyway but the sections
+ where the packages are required will not appear in the output.
+ An exeption is 
 \series bold
 mhchem
 \series default
- is not installed, this file cannot be exported.
+; if it is not installed, this file cannot be exported.
 \end_layout
 
 \begin_layout Plain Layout
@@ -34412,20 +34407,6 @@ Predefined vectors are offered by the LaTeX-package
 braket
 \series default
 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-braket
-\series default
- should be part of every LaTeX standard installation.
-\end_layout
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -34473,6 +34454,10 @@ braket
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 The following commands are defined:
 \end_layout
 
@@ -35023,20 +35008,6 @@ To cancel formulas or formula parts, the LaTeX-package
 cancel
 \series default
 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-cancel
-\series default
- is part of every LaTeX standard installation.
-\end_layout
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -35055,6 +35026,36 @@ Packages ! cancel
 
 \backslash
 usepackage[samesize]{cancel}
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifcancel 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following table will only be displayed when the LaTeX-package 
+\series bold
+cancel
+\series default
+ is installed.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -35287,6 +35288,60 @@ cancelto
  is especially suitable to visualize the reduction of fractions within formulas:
 \begin_inset Formula \[
 \frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following will be displayed when the LaTeX-package 
+\series bold
+cancel
+\series default
+ is not installed:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You need to install the LaTeX-package 
+\series bold
+cancel
+\series default
+ to see the rest of this subsection in the output.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi 
+\end_layout
 
 \end_inset
 
