@@ -9461,7 +9461,7 @@ By default tables are only broken between rows.
 \begin_inset Newline newline
 \end_inset
 
-After the the 
+After the 
 \series bold
 
 \backslash
@@ -11767,7 +11767,7 @@ name "tab:Table-without-half"
 
 \end_inset
 
-Table where the spanned table columns have not exactly half the width of
+Table where the spanned table columns are not exactly half the width of
  the multicolumn cell
 \begin_inset OptArg
 status collapsed
@@ -11894,9 +11894,9 @@ i
 \end_layout
 
 \begin_layout Standard
-You can see that the first column has not half the width of the multicolumn
+You can see that the first column is not half the width of the multicolumn
  cell, it is a bit bigger.
- The reason is that the given width of a cell 
+ The reason is that the specified width of a cell 
 \begin_inset Formula $W_{g}$
 \end_inset
 
@@ -11904,7 +11904,7 @@ You can see that the first column has not half the width of the multicolumn
 \begin_inset Formula $W_{\mathrm{tot}}$
 \end_inset
 
- because a cell is always a bit larger than its given width.
+ because a cell is always a bit larger than specified.
  Appendix
 \begin_inset space ~
 \end_inset
@@ -11920,11 +11920,11 @@ reference "cha:Explanation-of-Equation"
 \end_layout
 
 \begin_layout Standard
-The given width 
+The width 
 \begin_inset Formula $W_{g\, n}$
 \end_inset
 
- needed when 
+ which the user needs to set when 
 \emph on
 n
 \emph default
@@ -17840,7 +17840,7 @@ K{red}
 \end_layout
 
 \begin_layout Standard
-for the the last column, and
+for the last column, and
 \end_layout
 
 \begin_layout Standard
@@ -19214,7 +19214,7 @@ reference "tab:Table-with-dashed"
 \backslash
 hdashline
 \series default
- was inserted to the first cell of the third row and the the TeX-Code command
+ was inserted to the first cell of the third row and the TeX-Code command
 \begin_inset Newline newline
 \end_inset
 
@@ -24230,9 +24230,9 @@ Floats ! Float Lists
 \end_layout
 
 \begin_layout Standard
-Similar to the the table of contents where the sections of the document
- are listed, there are listings for all float types, like the figures of
- the documents.
+Similar to the table of contents where the sections of the document are
+ listed, there are listings for all float types, like the figures of the
+ documents.
  You can insert them via the 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -25540,7 +25540,7 @@ ftnright
 \end_inset
 
 In some scientific literature it is usual to collect the footnotes and print
- them in a separate paragraph at the the end of a section, like in Figure
+ them in a separate paragraph at the end of a section, like in Figure
 \begin_inset space ~
 \end_inset
 
@@ -25602,7 +25602,7 @@ theendnotes
 \end_layout
 
 \begin_layout Standard
-in TeX-Code at the the end of a section or chapter.
+in TeX-Code at the end of a section or chapter.
 \end_layout
 
 \begin_layout Standard
@@ -30577,7 +30577,7 @@ Rotated and Scaled Boxes
 \end_layout
 
 \begin_layout Standard
-To use the the commands described in this section, the LaTeX-package 
+To use the commands described in this section, the LaTeX-package 
 \series bold
 graphicx
 \series default
