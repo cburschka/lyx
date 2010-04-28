@@ -3961,6 +3961,7 @@ bool Buffer::reload()
 	if (success) {
 		updateBuffer();
 		changed(true);
+		updateTitles();
 		markClean();
 		message(bformat(_("Document %1$s reloaded."), disp_fn));
 	} else {
