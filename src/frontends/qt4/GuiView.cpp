@@ -463,6 +463,7 @@ void GuiView::threadFinished()
 	QFutureWatcher<docstring> const * watcher =
 		static_cast<QFutureWatcher<docstring> const *>(sender());
 	message(watcher->result());
+	updateToolbars();
 	errors(d.last_export_format);
 #endif
 }
