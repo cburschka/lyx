@@ -1532,7 +1532,8 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 				&& lyxrc.print_command != "none";
 		else if (name == "character" || name == "symbols") {
 			if (!buf || buf->isReadonly()
-				|| !currentBufferView()->cursor().inTexted())
+				|| (!currentBufferView()->cursor().inTexted()
+				    && name == "symbols"))
 				enable = false;
 			else {
 				// FIXME we should consider passthru
