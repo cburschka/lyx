@@ -83,7 +83,7 @@ docstring InsetSpace::toolTip(BufferView const &, int, int) const
 		message = _("Quad Space");
 		break;
 	case InsetSpaceParams::QQUAD:
-		message = _(" Double Quad Space");
+		message = _("Double Quad Space");
 		break;
 	case InsetSpaceParams::ENSPACE:
 		message = _("Enspace");
