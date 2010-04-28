@@ -24959,7 +24959,7 @@ formato: imprime un formato personalizado.
 
 
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -25012,11 +25012,7 @@ el texto «
 en esta página
 \family default
 ».
- 
-\lang english
-The style
-\lang spanish
- 
+ El estilo 
 \family sans
 <referencia>
 \begin_inset space ~
@@ -25032,9 +25028,7 @@ página
 
 <página>
 \family default
- 
-\lang english
-will not print anything about the page if the label is on the same page.
+ no imprimirá nada sobre la página si la etiqueta está en la misma página.
 \end_layout
 
 \begin_layout Standard
@@ -25081,12 +25075,8 @@ reference "sec:Numeración-y-referencia"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Right-clicking on a cross-reference opens a context menu.
- The entry
-\lang spanish
- 
+Clic derecho sobre una referencia cruzada abre un menú contextual.
+ La entrada 
 \family sans
 Ir
 \begin_inset space ~
@@ -25102,20 +25092,13 @@ la
 
 etiqueta
 \family default
- 
-\lang english
-sets the the cursor before the referenced label.
- This entry will be renamed in the context menu of the label to
-\lang spanish
- 
+ lleva al cursor delante de la etiqueta correspondiente.
+ Esta entrada se cambiará por 
 \family sans
 Volver
 \family default
- 
-\lang english
-so that you can use it to set the cursor back to the cross-reference.
-
-\lang spanish
+ en el menú contextual de la etiqueta, de modo que permite retornar el cursor
+ a la referencia.
  Puedes también volver con el botón 
 \begin_inset Graphics
 	filename ../../images/bookmark-goto_0.png

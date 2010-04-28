@@ -210,7 +210,7 @@
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -9254,19 +9254,15 @@ Tablas largas ! Flotantes
 \begin_layout Standard
 Podría haber problemas si un flotante aparece en la misma página donde comienza
  una tabla larga.
- Para evitarlo, añade 
-\lang english
-a 
-\begin_inset Quotes eld
+ Para evitarlo, añade un 
+\begin_inset Quotes fld
 \end_inset
 
-clear page
-\begin_inset Quotes erd
+salto de página limpia
+\begin_inset Quotes frd
 \end_inset
 
-
-\lang spanish
- (menu 
+ (menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Formato\SpecialChar \menuseparator
@@ -11227,17 +11223,11 @@ Editar\SpecialChar \menuseparator
 Tabla\SpecialChar \menuseparator
 Multicolumna
 \family default
-, o clic derecho sobre las celdas marcadas y 
-\lang english
-choose
-\lang spanish
- 
+, o clic derecho sobre las celdas marcadas y elige 
 \family sans
-Multicolumna
+Multicolumna 
 \family default
- 
-\lang english
-in the appearing context menu.
+en el menú contextual emergente.
 \end_layout
 
 \begin_layout Standard
@@ -20345,11 +20335,7 @@ el texto «
 en esta página
 \family default
 ».
- 
-\lang english
-The style
-\lang spanish
- 
+ El estilo 
 \family sans
 <referencia>
 \begin_inset space ~
@@ -20363,11 +20349,9 @@ página
 \begin_inset space ~
 \end_inset
 
-<página>
+<página> 
 \family default
- 
-\lang english
-will not print anything about the page if the label is on the same page.
+no imprimirá nada sobre la página si la etiqueta está en la misma página.
 \end_layout
 
 \begin_layout Standard
@@ -20381,8 +20365,6 @@ Formato
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
@@ -20391,11 +20373,7 @@ status open
 \series bold
 Nota:
 \series default
- 
-\lang english
-The LaTeX-package
-\lang spanish
- 
+ El paquete LaTeX 
 \series bold
 prettyref
 \series default
@@ -20409,34 +20387,30 @@ LaTeX-paquetes ! prettyref
 
 \end_inset
 
- 
-\lang english
-does not know all of LyX's possible label shortcuts
+ no reconoce todas las abreviaturas de etiquetas
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 fig:
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- is for example LyX's shortcut for labels in figure captions.
+, por ejemplo, es la abreviatura en LyX para las etiquetas de leyendas de
+ figuras.
 \end_layout
 
 \end_inset
 
- and is not internationalized.
- How to tell 
+ posibles en LyX y no está internacionalizado.
+ Para saber cómo indicar a 
 \series bold
 prettyref
 \series default
- new shortcuts and translations, have a look at its documentation
-\lang spanish
+ nuevas abreviaturas y traducciones, echa un vistazo a su documentación,
  
 \begin_inset CommandInset citation
 LatexCommand cite
