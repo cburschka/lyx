@@ -54,7 +54,7 @@ GuiHSpace::GuiHSpace(bool math_mode, QWidget * parent)
 		spacingCO->addItem(qt_("Double Quad (2 em)"));
 		spacingCO->addItem(qt_("Custom"));
 	} else {
-		spacingCO->addItem(qt_("Inter-word space"));
+		spacingCO->addItem(qt_("Interword space"));
 		spacingCO->addItem(qt_("Thin space"));
 		spacingCO->addItem(qt_("Negative thin space"));
 		spacingCO->addItem(qt_("Half Quad (0.5 em)"));
