@@ -222,12 +222,16 @@ public:
 
 
 // temporarily change the used color
-class ColorChanger : public Changer<FontInfo, std::string> {
+class ColorChanger : public Changer<FontInfo, ColorCode> {
 public:
 	///
-	ColorChanger(FontInfo & font, std::string const & color);
+	ColorChanger(FontInfo & font, docstring const & color,
+		     bool really_change_color = true);
 	///
 	~ColorChanger();
+private:
+	///
+	bool change_;
 };
 
 } // namespace lyx

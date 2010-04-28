@@ -328,6 +328,23 @@ docstring InsetMathHull::standardFont() const
 }
 
 
+docstring InsetMathHull::standardColor() const
+{
+	docstring color;
+	switch (type_) {
+	case hullRegexp:
+		color = from_ascii("foreground");
+		break;
+	case hullNone:
+		color = from_ascii("foreground");
+		break;
+	default:
+		color = from_ascii("math");
+	}
+	return color;
+}
+
+
 bool InsetMathHull::previewState(BufferView * bv) const
 {
 	if (!editing(bv) && RenderPreview::status() == LyXRC::PREVIEW_ON) {
@@ -417,8 +434,11 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 		return;
 	}
 
+	bool const really_change_color = pi.base.font.color() == Color_none;
+	ColorChanger dummy0(pi.base.font, standardColor(), really_change_color);
 	FontSetChanger dummy1(pi.base, standardFont());
 	StyleChanger dummy2(pi.base, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
+
 	InsetMathGrid::draw(pi, x + 1, y);
 
 	if (numberedType()) {
