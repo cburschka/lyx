@@ -43,20 +43,20 @@ GuiHSpace::GuiHSpace(bool math_mode, QWidget * parent)
 
 	spacingCO->clear();
 	if (math_mode_) {
-		spacingCO->addItem(qt_("Thin space"));
-		spacingCO->addItem(qt_("Medium space"));
-		spacingCO->addItem(qt_("Thick space"));
-		spacingCO->addItem(qt_("Negative thin space"));
-		spacingCO->addItem(qt_("Negative medium space"));
-		spacingCO->addItem(qt_("Negative thick space"));
+		spacingCO->addItem(qt_("Thin Space"));
+		spacingCO->addItem(qt_("Medium Space"));
+		spacingCO->addItem(qt_("Thick Space"));
+		spacingCO->addItem(qt_("Negative Thin Space"));
+		spacingCO->addItem(qt_("Negative Medium Space"));
+		spacingCO->addItem(qt_("Negative Thick Space"));
 		spacingCO->addItem(qt_("Half Quad (0.5 em)"));
 		spacingCO->addItem(qt_("Quad (1 em)"));
 		spacingCO->addItem(qt_("Double Quad (2 em)"));
 		spacingCO->addItem(qt_("Custom"));
 	} else {
-		spacingCO->addItem(qt_("Interword space"));
-		spacingCO->addItem(qt_("Thin space"));
-		spacingCO->addItem(qt_("Negative thin space"));
+		spacingCO->addItem(qt_("Interword Space"));
+		spacingCO->addItem(qt_("Thin Space"));
+		spacingCO->addItem(qt_("Negative Thin Space"));
 		spacingCO->addItem(qt_("Half Quad (0.5 em)"));
 		spacingCO->addItem(qt_("Quad (1 em)"));
 		spacingCO->addItem(qt_("Double Quad (2 em)"));
