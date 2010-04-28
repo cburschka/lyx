@@ -141,6 +141,13 @@
   \setboolean{braket}{true}}
  {\setboolean{braket}{false}}
 
+% testen ob Paket cancel installiert ist
+\newboolean{cancel}
+\IfFileExists{cancel.sty}
+ {\usepackage{cancel}
+  \setboolean{cancel}{true}}
+ {\setboolean{cancel}{false}}
+
 % testen ob Paket upgreek installiert ist
 \newboolean{upgreek}
 \IfFileExists{upgreek.sty}
@@ -273,10 +280,10 @@ LatexCommand tableofcontents
 status open
 
 \begin_layout Plain Layout
-Um diese Datei als PDF, PS oder DVI zu exportieren, müssen die LaTeX-Pakete
+Um diese Datei als PDF, PS oder DVI zu exportieren, sollten die LaTeX-Pakete
  
 \series bold
-eurosym,
+braket, cancel, eurosym,
 \series default
  
 \series bold
@@ -287,26 +294,14 @@ mhchem, multirow
 was
 \series default
  installiert sein.
- Wenn 
-\series bold
-eurosym,
-\series default
- 
-\series bold
-multirow
-\series default
- oder 
-\series bold
-was
-\series default
- nicht installiert sind, kann das Dokument trotzdem exportiert werden, die
- Abschnitte in denen die Pakete benötigt werden, erscheinen dann aber nicht
- im Ausdruck.
- Wenn 
+ Wenn diese nicht installiert sind, kann das Dokument zwar exportiert werden,
+ die Abschnitte in denen die Pakete benötigt werden, erscheinen dann aber
+ nicht im Ausdruck.
+ Eine Ausnahme ist 
 \series bold
 mhchem
 \series default
- nicht installiert ist, kann das Dokument nicht exportiert werden.
+; wenn es nicht installiert ist, kann dieses Dokument nicht exportiert werden.
 \end_layout
 
 \begin_layout Plain Layout
@@ -34446,20 +34441,6 @@ Vordefinierte Vektoren bietet das LaTeX-Paket
 braket
 \series default
 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-braket
-\series default
- sollte Teil jeder LaTeX-Standardinstallation sein.
-\end_layout
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -35071,20 +35052,6 @@ Um Formeln oder Formelteile durchzustreichen, muss das LaTeX-Paket
 cancel
 \series default
 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-cancel
-\series default
- ist Teil jeder LaTeX-Standardinstallation.
-\end_layout
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -35107,6 +35074,36 @@ usepackage[samesize]{cancel}
 
 \begin_layout Standard
 geladen werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifcancel 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Die folgende Tabelle erscheint nur im Ausdruck wenn das LaTeX-Paket 
+\series bold
+cancel
+\series default
+ installiert ist:
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -35340,6 +35337,60 @@ cancelto
  will:
 \begin_inset Formula \[
 \frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Folgendes erscheint im Ausdruck wenn das LaTeX-Paket 
+\series bold
+cancel
+\series default
+ nicht installiert ist:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das LaTeX-Paket 
+\series bold
+cancel 
+\series default
+muss installiert sein, um den Rest dieses Abschnitts im Ausdruck zu sehen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi 
+\end_layout
 
 \end_inset
 
