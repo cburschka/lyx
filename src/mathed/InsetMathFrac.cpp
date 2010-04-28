@@ -254,13 +254,13 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.line(xx + dim0.wid,
 				y + dim.des - 2,
 				xx + dim0.wid + 5,
-				y - dim.asc + 2, Color_math);
+				y - dim.asc + 2, pi.base.font.color());
 	}
 	if (kind_ == FRAC || kind_ == CFRAC || kind_ == CFRACLEFT
 		|| kind_ == CFRACRIGHT || kind_ == DFRAC
 		|| kind_ == TFRAC || kind_ == OVER)
 		pi.pain.line(x + 1, y - 5,
-				x + dim.wid - 2, y - 5, Color_math);
+				x + dim.wid - 2, y - 5, pi.base.font.color());
 	drawMarkers(pi, x, y);
 }
 

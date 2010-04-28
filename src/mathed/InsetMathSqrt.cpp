@@ -51,11 +51,11 @@ void InsetMathSqrt::draw(PainterInfo & pi, int x, int y) const
 	int xp[3];
 	int yp[3];
 	pi.pain.line(x + dim.width(), y - a + 1,
-		x + 8, y - a + 1, Color_math);
+		x + 8, y - a + 1, pi.base.font.color());
 	xp[0] = x + 8;            yp[0] = y - a + 1;
 	xp[1] = x + 5;            yp[1] = y + d - 1;
 	xp[2] = x;                yp[2] = y + (d - a)/2;
-	pi.pain.lines(xp, yp, 3, Color_math);
+	pi.pain.lines(xp, yp, 3, pi.base.font.color());
 	drawMarkers(pi, x, y);
 }
 
