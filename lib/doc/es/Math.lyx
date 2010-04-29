@@ -272,11 +272,8 @@ LatexCommand tableofcontents
 status open
 
 \begin_layout Plain Layout
-Para exportar este documento a PDF, PS o DVI 
-\lang english
-should
-\lang spanish
- estar instalados los paquetes LaTeX 
+Para exportar este documento a PDF, PS o DVI deberían estar instalados los
+ paquetes LaTeX 
 \series bold
 braket, cancel, eurosym
 \series default
@@ -293,24 +290,17 @@ mhchem
 was
 \series default
 .
- Si 
-\lang english
-they
+ Si
 \series bold
-\lang spanish
  
 \series default
 no están instalados también puedes exportar el documento pero las secciones
  en que se requieren dichos paquetes no aparecerán en la salida.
  
-\lang english
-An exeption is 
 \series bold
 mhchem
 \series default
-; if it is not installed
-\lang spanish
-, este archivo no se puede exportar.
+ es una excepción: si no está instalado no se puede exportar este archivo.
 \end_layout
 
 \begin_layout Plain Layout
@@ -700,7 +690,7 @@ Para cambiar el preámbulo LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX preámbulo
+LaTeX, preámbulo
 \end_layout
 
 \end_inset
@@ -24645,7 +24635,7 @@ cursiva
 .
  Por eso hay funciones predefinidas, que además se separan un poco del factor
  precedente.
- Se insertan como comandos con una barra inversa  delante de su nombre.
+ Se insertan como comandos con una barra inversa delante de su nombre.
 \end_layout
 
 \begin_layout Standard
@@ -24754,7 +24744,7 @@ Las funciones siguientes están predefinidas:
 status collapsed
 
 \begin_layout Plain Layout
-Se han añadido los comandos equivalentes suministrados por el estilo 
+Se han añadido los comandos equivalentes proporcionados por el estilo 
 \series bold
 spanish
 \series default
@@ -24762,7 +24752,8 @@ spanish
 \series bold
 babel
 \series default
-, adaptados a las convenciones hispanohablantes.
+.
+ (Estos no están disponibles en el panel de funciones).
  Además, en su caso, las funciones serán acentuadas automáticamente en la
  salida, p.
 \begin_inset space \thinspace{}
