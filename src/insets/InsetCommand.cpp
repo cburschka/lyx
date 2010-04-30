@@ -55,7 +55,7 @@ InsetCommand::InsetCommand(Buffer * buf, InsetCommandParams const & p,
 			   string const & mailer_name)
 	: Inset(buf), p_(p),
 	  mailer_name_(mailer_name),
-	  mouse_hover_(false)
+	  mouse_hover_()
 {}
 
 
