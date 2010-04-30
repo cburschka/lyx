@@ -1902,13 +1902,13 @@ void BufferView::updateHoveredInset() const
 	bool need_redraw = false;
 	if (d->last_inset_)
 		// Remove the hint on the last hovered inset (if any).
-		need_redraw |= d->last_inset_->setMouseHover(false);
+		need_redraw |= d->last_inset_->setMouseHover(this, false);
 	
 	// const_cast because of setMouseHover().
 	Inset * inset = const_cast<Inset *>(covering_inset);
 	if (inset)
 		// Highlight the newly hovered inset (if any).
-		need_redraw |= inset->setMouseHover(true);
+		need_redraw |= inset->setMouseHover(this, true);
 
 	d->last_inset_ = inset;
 	

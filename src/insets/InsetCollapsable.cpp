@@ -42,8 +42,7 @@ using namespace std;
 namespace lyx {
 
 InsetCollapsable::InsetCollapsable(Buffer * buf, InsetText::UsePlain ltype)
-	: InsetText(buf, ltype), status_(Open),
-	  openinlined_(false), mouse_hover_(false)
+	: InsetText(buf, ltype), status_(Open), openinlined_(false)
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);
@@ -59,7 +58,7 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 	  openinlined_(rhs.openinlined_),
 	  auto_open_(rhs.auto_open_),
 	  // the sole purpose of this copy constructor
-	  mouse_hover_(false)
+	  mouse_hover_()
 {
 }
 
@@ -230,9 +229,9 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-bool InsetCollapsable::setMouseHover(bool mouse_hover)
+bool InsetCollapsable::setMouseHover(BufferView const * bv, bool mouse_hover)
 {
-	mouse_hover_ = mouse_hover;
+	mouse_hover_[bv] = mouse_hover;
 	return true;
 }
 
@@ -261,7 +260,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		FontInfo labelfont = getLayout().labelfont();
 		labelfont.setColor(labelColor());
 		pi.pain.buttonText(x, y, buttonLabel(bv), labelfont,
-			mouse_hover_);
+			mouse_hover_[&bv]);
 	} else {
 		button_dim.x1 = 0;
 		button_dim.y1 = 0;
@@ -586,7 +585,7 @@ void InsetCollapsable::setStatus(Cursor & cur, CollapseStatus status)
 	setButtonLabel();
 	if (status_ == Collapsed) {
 		cur.leaveInset(*this);
-		mouse_hover_ = false;
+		mouse_hover_.clear();
 	}
 }
 

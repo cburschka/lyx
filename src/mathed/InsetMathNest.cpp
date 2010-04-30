@@ -80,15 +80,14 @@ using cap::selClearOrDel;
 
 
 InsetMathNest::InsetMathNest(Buffer * buf, idx_type nargs)
-	: InsetMath(buf), cells_(nargs), lock_(false), mouse_hover_(false)
+	: InsetMath(buf), cells_(nargs), lock_(false)
 {
 	setBuffer(*buf);
 }
 
 
 InsetMathNest::InsetMathNest(InsetMathNest const & inset)
-	: InsetMath(inset), cells_(inset.cells_), lock_(inset.lock_),
-	  mouse_hover_(false)
+	: InsetMath(inset), cells_(inset.cells_), lock_(inset.lock_)
 {}
 
 
@@ -96,7 +95,7 @@ InsetMathNest & InsetMathNest::operator=(InsetMathNest const & inset)
 {
 	cells_ = inset.cells_;
 	lock_ = inset.lock_;
-	mouse_hover_ = false;
+	mouse_hover_.clear();
 	InsetMath::operator=(inset);
 	return *this;
 }
@@ -395,9 +394,9 @@ int InsetMathNest::latex(odocstream & os, OutputParams const & runparams) const
 }
 
 
-bool InsetMathNest::setMouseHover(bool mouse_hover)
+bool InsetMathNest::setMouseHover(BufferView const * bv, bool mouse_hover)
 {
-	mouse_hover_ = mouse_hover;
+	mouse_hover_[bv] = mouse_hover;
 	return true;
 }
 

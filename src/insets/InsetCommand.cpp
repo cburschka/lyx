@@ -73,16 +73,16 @@ void InsetCommand::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-bool InsetCommand::setMouseHover(bool mouse_hover)
+bool InsetCommand::setMouseHover(BufferView const * bv, bool mouse_hover)
 {
-	mouse_hover_ = mouse_hover;
+	mouse_hover_[bv] = mouse_hover;
 	return true;
 }
 
 
 void InsetCommand::draw(PainterInfo & pi, int x, int y) const
 {
-	button_.setRenderState(mouse_hover_);
+	button_.setRenderState(mouse_hover_[pi.base.bv]);
 	button_.draw(pi, x, y);
 }
 

@@ -17,6 +17,8 @@
 // FIXME: remove
 #include "support/docstring.h"
 
+#include <map>
+
 namespace lyx {
 
 /** Abstract base class for all math objects that contain nested items.
@@ -111,9 +113,10 @@ public:
 	///
 	int latex(odocstream & os, OutputParams const & runparams) const;
 	///
-	bool setMouseHover(bool mouse_hover);
+	bool setMouseHover(BufferView const * bv, bool mouse_hover);
 	///
-	bool mouseHovered() const { return mouse_hover_; }
+	bool mouseHovered(BufferView const * bv) const 
+		{ return mouse_hover_[bv]; }
 
 	///
 	bool completionSupported(Cursor const &) const;
@@ -194,8 +197,8 @@ protected:
 	/// if the inset is locked, it can't be entered with the cursor
 	bool lock_;
 	///
-	bool mouse_hover_;
-};
+	mutable std::map<BufferView const *, bool> mouse_hover_;
+};	
 
 
 

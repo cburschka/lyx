@@ -495,7 +495,7 @@ void Inset::metricsMarkers2(Dimension & dim, int framesize) const
 
 void Inset::drawMarkers(PainterInfo & pi, int x, int y) const
 {
-	ColorCode pen_color = mouseHovered() || editing(pi.base.bv)?
+	ColorCode pen_color = mouseHovered(pi.base.bv) || editing(pi.base.bv)?
 		Color_mathframe : Color_mathcorners;
 
 	Dimension const dim = dimension(*pi.base.bv);
@@ -512,7 +512,7 @@ void Inset::drawMarkers(PainterInfo & pi, int x, int y) const
 
 void Inset::drawMarkers2(PainterInfo & pi, int x, int y) const
 {
-	ColorCode pen_color = mouseHovered() || editing(pi.base.bv)?
+	ColorCode pen_color = mouseHovered(pi.base.bv) || editing(pi.base.bv)?
 		Color_mathframe : Color_mathcorners;
 
 	drawMarkers(pi, x, y);

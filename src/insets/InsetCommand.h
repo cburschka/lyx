@@ -99,7 +99,7 @@ private:
 	///
 	RenderButton & button() const { return button_; }
 	///
-	bool setMouseHover(bool mouse_hover);
+	bool setMouseHover(BufferView const * bv, bool mouse_hover);
 	/// Return parameter information for command cmdName.
 	/// Not implemented here. Must be implemented in derived class.
 	static ParamInfo const & findInfo(std::string const & cmdName);
@@ -120,7 +120,7 @@ private:
 	///
 	std::string mailer_name_;
 	/// changes color when mouse enters/leaves this inset
-	bool mouse_hover_;
+	mutable std::map<BufferView const *, bool> mouse_hover_;
 	///
 	mutable RenderButton button_;
 };

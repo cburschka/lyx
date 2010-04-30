@@ -125,7 +125,7 @@ public:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
-	bool setMouseHover(bool mouse_hover);
+	bool setMouseHover(BufferView const * bv, bool mouse_hover);
 	///
 	ColorCode backgroundColor(PainterInfo const &) const
 		{ return getLayout().bgcolor(); }
@@ -163,7 +163,7 @@ private:
 	/// dependent on the bufferview, compare with MathMacro::editing_.
 	mutable std::map<BufferView const *, bool> auto_open_;
 	/// changes color when mouse enters/leaves this inset
-	bool mouse_hover_;
+	mutable std::map<BufferView const *, bool> mouse_hover_;
 };
 
 } // namespace lyx
