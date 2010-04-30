@@ -308,6 +308,8 @@ public:
 	Inset * editedInset(std::string const & name) const;
 	/// Associate an inset associated with given dialog name.
 	void editInset(std::string const & name, Inset * inset);
+	///
+	void clearLastInset(Inset * inset) const;
 
 private:
 	/// noncopyable

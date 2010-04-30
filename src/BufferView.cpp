@@ -403,11 +403,6 @@ bool BufferView::fitCursor()
 
 void BufferView::processUpdateFlags(Update::flags flags)
 {
-	// last_inset_ points to the last visited inset. This pointer may become  
-	// invalid because of keyboard editing. Since all such operations  
-	// causes screen update(), I reset last_inset_ to avoid such a problem.  
-	d->last_inset_ = 0;  
-
 	// This is close to a hot-path.
 	LYXERR(Debug::DEBUG, "BufferView::processUpdateFlags()"
 		<< "[fitcursor = " << (flags & Update::FitCursor)
@@ -1923,6 +1918,16 @@ void BufferView::updateHoveredInset() const
 		// This should be changed if it is further utilized.
 		buffer_.changed(false);
 	}
+}
+
+
+void BufferView::clearLastInset(Inset * inset) const
+{
+	if (d->last_inset_ != inset) {
+		LYXERR0("Wrong last_inset!");
+		LASSERT(false, /**/);
+	}
+	d->last_inset_ = 0;
 }
 
 

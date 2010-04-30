@@ -31,7 +31,7 @@ public:
 	/// nestinsets have a fixed size to start with
 	InsetMathNest(Buffer * buf, idx_type ncells);
 	///
-	virtual ~InsetMathNest() {}
+	virtual ~InsetMathNest();
 	///
 	void setBuffer(Buffer &);
 

@@ -37,6 +37,8 @@ public:
 	///
 	InsetCollapsable(InsetCollapsable const & rhs);
 	///
+	~InsetCollapsable();
+	///
 	InsetCollapsable * asInsetCollapsable() { return this; }
 	///
 	InsetCollapsable const * asInsetCollapsable() const { return this; }

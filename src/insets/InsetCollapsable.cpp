@@ -63,6 +63,16 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 }
 
 
+InsetCollapsable::~InsetCollapsable()
+{
+	map<BufferView const *, bool>::iterator it = mouse_hover_.begin();
+	map<BufferView const *, bool>::iterator end = mouse_hover_.end();
+	for (; it != end; ++it)
+		if (it->second)
+			it->first->clearLastInset(this);
+}
+
+
 InsetCollapsable::CollapseStatus InsetCollapsable::status(BufferView const & bv) const
 {
 	if (decoration() == InsetLayout::CONGLOMERATE)

@@ -91,6 +91,16 @@ InsetMathNest::InsetMathNest(InsetMathNest const & inset)
 {}
 
 
+InsetMathNest::~InsetMathNest()
+{
+	map<BufferView const *, bool>::iterator it = mouse_hover_.begin();
+	map<BufferView const *, bool>::iterator end = mouse_hover_.end();
+	for (; it != end; ++it)
+		if (it->second)
+			it->first->clearLastInset(this);
+}
+
+
 InsetMathNest & InsetMathNest::operator=(InsetMathNest const & inset)
 {
 	cells_ = inset.cells_;

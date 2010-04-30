@@ -63,6 +63,11 @@ InsetCommand::~InsetCommand()
 {
 	if (!mailer_name_.empty())
 		hideDialogs(mailer_name_, this);
+	map<BufferView const *, bool>::iterator it = mouse_hover_.begin();
+	map<BufferView const *, bool>::iterator end = mouse_hover_.end();
+	for (; it != end; ++it)
+		if (it->second)
+			it->first->clearLastInset(this);
 }
 
 
