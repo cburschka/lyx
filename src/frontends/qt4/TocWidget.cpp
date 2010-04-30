@@ -388,21 +388,15 @@ void TocWidget::enableControls(bool enable)
 void TocWidget::updateView()
 {
 	if (!gui_view_.documentBufferView()) {
-		enableControls(false);
-		typeCO->setEnabled(false);
 		tocTV->setModel(0);
-		tocTV->setEnabled(false);
 		depthSL->setMaximum(0);
 		depthSL->setValue(0);
-		persistentCB->setEnabled(false);
-		sortCB->setEnabled(false);
-		depthSL->setEnabled(false);
+		setEnabled(false);
 		return;
 	}
+	setEnabled(true);
 	bool const is_sortable = isSortable();
 	sortCB->setEnabled(is_sortable);
-	depthSL->setEnabled(true);
-	typeCO->setEnabled(true);
 	bool focus_ = tocTV->hasFocus();
 	tocTV->setEnabled(false);
 	tocTV->setUpdatesEnabled(false);
