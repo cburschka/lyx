@@ -1193,7 +1193,23 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 				cur.niceInsert(cmd.argument());
 		}
 		break;
+	}
+
+	case LFUN_UNICODE_INSERT: {
+		if (cmd.argument().empty())
+			break;
+		docstring hexstring = cmd.argument();
+		if (isHex(hexstring)) {
+			char_type c = hexToInt(hexstring);
+			if (c >= 32 && c < 0x10ffff) {
+				docstring s = docstring(1, c);
+				FuncCode code = currentMode() == MATH_MODE ?
+					LFUN_MATH_INSERT : LFUN_SELF_INSERT;
+				lyx::dispatch(FuncRequest(code, s));
+			}
 		}
+		break;
+	}
 
 	case LFUN_DIALOG_SHOW_NEW_INSET: {
 		docstring const & name = cmd.argument();
