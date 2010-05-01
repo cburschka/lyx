@@ -286,13 +286,13 @@ public:
 		{ return false; }
 	/// is called when the mouse enters or leaves this inset
 	/// return true if this inset needs a repaint
-	virtual bool setMouseHover(BufferView const * bv, bool) { return false; }
+	virtual bool setMouseHover(BufferView const *, bool) { return false; }
 	/// return true if this inset is hovered (under mouse)
 	/// This is by now only used by mathed to draw corners 
 	/// (Inset::drawMarkers() and Inset::drawMarkers2()).
 	/// Other insets do not have to redefine this function to 
 	/// return the correct status of mouseHovered.
-	virtual bool mouseHovered(BufferView const * bv) const { return false; }
+	virtual bool mouseHovered(BufferView const *) const { return false; }
 
 	/// request "external features"
 	virtual void validate(LaTeXFeatures &) const {}
