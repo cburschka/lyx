@@ -38,6 +38,8 @@ public:
 	InsetCommand(Buffer *, InsetCommandParams const &,
 		std::string const & mailer_name);
 	///
+	InsetCommand(InsetCommand const & rhs);
+	///
 	~InsetCommand();
 
 	/// returns true if params are successfully read

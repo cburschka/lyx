@@ -50,17 +50,15 @@ InsetCollapsable::InsetCollapsable(Buffer * buf, InsetText::UsePlain ltype)
 }
 
 
+// The sole purpose of this copy constructor is to make sure
+// that the mouse_hover_ map is not copied and remains empty.
 InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 	: InsetText(rhs),
 	  status_(rhs.status_),
 	  labelstring_(rhs.labelstring_),
 	  button_dim(rhs.button_dim),
-	  openinlined_(rhs.openinlined_),
-	  auto_open_(rhs.auto_open_),
-	  // the sole purpose of this copy constructor
-	  mouse_hover_()
-{
-}
+	  openinlined_(rhs.openinlined_)
+{}
 
 
 InsetCollapsable::~InsetCollapsable()
@@ -182,7 +180,7 @@ Dimension InsetCollapsable::dimensionCollapsed(BufferView const & bv) const
 
 void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	auto_open_[mi.base.bv] =  mi.base.bv->cursor().isInside(this);
+	auto_open_[mi.base.bv] = mi.base.bv->cursor().isInside(this);
 
 	FontInfo tmpfont = mi.base.font;
 	mi.base.font = getLayout().font();
@@ -250,7 +248,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 {
 	BufferView const & bv = *pi.base.bv;
 
-	auto_open_[&bv] =  bv.cursor().isInside(this);
+	auto_open_[&bv] = bv.cursor().isInside(this);
 
 	FontInfo tmpfont = pi.base.font;
 	pi.base.font = getLayout().font();

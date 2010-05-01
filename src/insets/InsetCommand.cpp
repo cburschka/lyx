@@ -59,6 +59,13 @@ InsetCommand::InsetCommand(Buffer * buf, InsetCommandParams const & p,
 {}
 
 
+// The sole purpose of this copy constructor is to make sure
+// that the mouse_hover_ map is not copied and remains empty.
+InsetCommand::InsetCommand(InsetCommand const & rhs)
+	: Inset(rhs), p_(rhs.p_), mailer_name_(rhs.mailer_name_)
+{}
+
+
 InsetCommand::~InsetCommand()
 {
 	if (!mailer_name_.empty())
