@@ -1895,18 +1895,22 @@ void BufferView::updateHoveredInset() const
 		return;
 
 	bool need_redraw = false;
-	if (d->last_inset_)
+	if (d->last_inset_) {
 		// Remove the hint on the last hovered inset (if any).
 		need_redraw |= d->last_inset_->setMouseHover(this, false);
+		d->last_inset_ = 0;
+	}
 	
 	// const_cast because of setMouseHover().
 	Inset * inset = const_cast<Inset *>(covering_inset);
-	if (inset)
-		// Highlight the newly hovered inset (if any).
-		need_redraw |= inset->setMouseHover(this, true);
+	if (inset && inset->setMouseHover(this, true)) {
+		need_redraw = true;
+		// Only the insets that accept the hover state, do 
+		// clear the last_inset_, so only set the last_inset_
+		// member if the hovered setting is accepted.
+		d->last_inset_ = inset;
+	}
 
-	d->last_inset_ = inset;
-	
 	if (need_redraw) {
 		LYXERR(Debug::PAINTING, "Mouse hover detected at: ("
 				<< d->mouse_position_cache_.x_ << ", " 
