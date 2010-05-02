@@ -983,11 +983,11 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 
 
 /// Find the most backward consecutive match within same paragraph while searching backwards.
-void findMostBackwards(DocIterator & cur, MatchStringAdv const & match, int & len)
+int findMostBackwards(DocIterator & cur, MatchStringAdv const & match)
 {
 	DocIterator cur_begin = doc_iterator_begin(cur.buffer());
 	DocIterator tmp_cur = cur;
-	len = findAdvFinalize(tmp_cur, match);
+	int len = findAdvFinalize(tmp_cur, match);
 	Inset & inset = cur.inset();
 	for (; cur != cur_begin; cur.backwardPos()) {
 		LYXERR(Debug::FIND, "findMostBackwards(): cur=" << cur);
@@ -1001,6 +1001,7 @@ void findMostBackwards(DocIterator & cur, MatchStringAdv const & match, int & le
 		len = new_len;
 	}
 	LYXERR(Debug::FIND, "findMostBackwards(): exiting with cur=" << cur);
+	return len;
 }
 
 
@@ -1032,11 +1033,9 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match) {
 				found_match = match(cur);
 				LYXERR(Debug::FIND, "findBackAdv3: found_match=" 
 				       << found_match << ", cur: " << cur);
-				if (found_match) {
-					int len;
-					findMostBackwards(cur, match, len);
-					return len;
-				}
+				if (found_match)
+					return findMostBackwards(cur, match);
+
 				// Stop if begin of document reached
 				if (cur == cur_begin)
 					break;
