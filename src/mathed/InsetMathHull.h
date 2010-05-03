@@ -34,7 +34,7 @@ public:
 	///
 	InsetMathHull(Buffer * buf, HullType type);
 	///
-	~InsetMathHull();
+	virtual ~InsetMathHull();
 	///
 	void setBuffer(Buffer &);
 	///
