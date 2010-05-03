@@ -251,7 +251,7 @@ bool InsetCommandParams::isCompatibleCommand(InsetCode code, string const & s)
 
 void InsetCommandParams::setCmdName(string const & name)
 {
-	if (!isCompatibleCommand(insetCode_, cmdName_)) {
+	if (!isCompatibleCommand(insetCode_, name)) {
 		LYXERR0("InsetCommand: Incompatible command name " << 
 				name << ".");
 		throw ExceptionMessage(WarningException, _("InsetCommand Error: "),
