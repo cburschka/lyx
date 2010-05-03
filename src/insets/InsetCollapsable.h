@@ -37,7 +37,7 @@ public:
 	///
 	InsetCollapsable(InsetCollapsable const & rhs);
 	///
-	~InsetCollapsable();
+	virtual ~InsetCollapsable();
 	///
 	InsetCollapsable * asInsetCollapsable() { return this; }
 	///

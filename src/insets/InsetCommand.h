@@ -40,7 +40,7 @@ public:
 	///
 	InsetCommand(InsetCommand const & rhs);
 	///
-	~InsetCommand();
+	virtual ~InsetCommand();
 
 	/// returns true if params are successfully read
 	static bool string2params(std::string const &, std::string const & name,

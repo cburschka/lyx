@@ -34,7 +34,7 @@ public:
 	///
 	InsetBibitem(Buffer *, InsetCommandParams const &);
 	///
-	virtual ~InsetBibitem();
+	~InsetBibitem();
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
