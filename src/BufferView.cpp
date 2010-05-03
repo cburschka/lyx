@@ -315,6 +315,9 @@ BufferView::~BufferView()
 	fp.pit = d->cursor_.bottom().pit();
 	fp.pos = d->cursor_.bottom().pos();
 	theSession().lastFilePos().save(buffer_.fileName(), fp);
+	
+	if (d->last_inset_)
+		d->last_inset_->setMouseHover(this, false);	
 
 	delete d;
 }
