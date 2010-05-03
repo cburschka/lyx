@@ -3,29 +3,11 @@
  * \file BranchList.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
+ *
  * \author Martin Vermeer
  *
  * Full author contact details are available in file CREDITS.
- *
- *
- * \class Branch
- *
- * A class describing a 'branch', i.e., a named alternative for
- * selectively outputting some parts of a document while suppressing
- * other parts.
- *
- * A branch has a name, can either be selected or not, and uses a
- * user-specifyable background colour. All these can be set and
- * queried.
- *
- * \class BranchList
- *
- * A class containing a vector of all defined branches within a
- * document. Has methods for selecting or deselecting branches by
- * name, for outputting a '|'-separated string of all elements or only
- * the selected ones, and for adding and removing elements.
  */
-
 
 #ifndef BRANCHLIST_H
 #define BRANCHLIST_H
@@ -38,6 +20,25 @@
 
 
 namespace lyx {
+
+/**
+ * \class Branch
+ *
+ * A class describing a 'branch', i.e., a named alternative for
+ * selectively outputting some parts of a document while suppressing
+ * other parts.
+ *
+ * A branch has a name, can either be selected or not, and uses a
+ * user-specifiable background colour. All these can be set and
+ * queried.
+ *
+ * \class BranchList
+ *
+ * A class containing a vector of all defined branches within a
+ * document. It has methods for selecting or deselecting branches by
+ * name, for outputting a '|'-separated string of all elements or only
+ * the selected ones, and for adding and removing elements.
+ */
 
 class Branch {
 public:

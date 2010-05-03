@@ -3,27 +3,11 @@
  * \file IndicesList.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
+ *
  * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
- *
- *
- * \class Index
- *
- * A class describing an Index type, such as "Index of Names".
- * Different Index types are used in splitted Indices
- *
- * An Index has a name and a shortcut notation. It uses a
- * user-specifyable GUI colour. All these can be set and
- * queried.
- *
- * \class IndicesList
- *
- * A class containing a vector of all defined indices within a
- * document. Has methods for outputting a '|'-separated string 
- * of all elements, and for adding, removing and renaming elements.
  */
-
 
 #ifndef INDICESLIST_H
 #define INDICESLIST_H
@@ -36,6 +20,23 @@
 
 
 namespace lyx {
+
+/**
+ * \class Index
+ *
+ * A class describing an Index type, such as "Index of Names".
+ * Different Index types are used in splitted Indices
+ *
+ * An Index has a name and a shortcut notation. It uses a
+ * user-specifiable GUI colour. All these can be set and
+ * queried.
+ *
+ * \class IndicesList
+ *
+ * A class containing a vector of all defined indices within a
+ * document. It has methods for outputting a '|'-separated string 
+ * of all elements, and for adding, removing and renaming elements.
+ */
 
 class Index {
 public:
