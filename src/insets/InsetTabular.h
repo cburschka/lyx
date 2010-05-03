@@ -867,9 +867,9 @@ public:
 	virtual bool usePlainLayout() const { return true; }
 
 	///
-	virtual InsetTabular * asInsetTabular() { return this; }
+	InsetTabular * asInsetTabular() { return this; }
 	///
-	virtual InsetTabular const * asInsetTabular() const { return this; }
+	InsetTabular const * asInsetTabular() const { return this; }
 	///
 	bool isRightToLeft(Cursor & cur) const;
 	/// writes the cells between stidx and enidx as a string, optionally

@@ -61,9 +61,9 @@ public:
 	/// update label and references.
 	virtual void updateCommand(docstring const &, bool) {}
 	/// 
-	virtual InsetCommand * asInsetCommand() { return this; }
+	InsetCommand * asInsetCommand() { return this; }
 	/// 
-	virtual InsetCommand const * asInsetCommand() const { return this; }
+	InsetCommand const * asInsetCommand() const { return this; }
 	/// whether to include this inset in the strings generated for the TOC
 	virtual bool isInToc() const { return false; }
 
