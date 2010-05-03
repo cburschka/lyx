@@ -19,6 +19,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\bind\mac.bind"
  SetOutPath "$INSTDIR\Resources\doc"
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc\ja"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\Customization.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Intro.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Extended.lyx"

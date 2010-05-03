@@ -1,4 +1,4 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -7253,8 +7253,6 @@ OutputType
 status collapsed
 
 \begin_layout Plain Layout
-
-\series medium
 PageStyle
 \end_layout
 
@@ -8519,8 +8517,16 @@ status collapsed
 
 \emph on
 0
-\emph default
-,1
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+1
 \end_layout
 
 \end_inset
@@ -8556,8 +8562,16 @@ status collapsed
 
 \emph on
 0
-\emph default
-,1
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+1
 \end_layout
 
 \end_inset
@@ -8750,17 +8764,29 @@ InTitle
 
 \end_inset
 
- 
+ [
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-[1, 0]
+
+\emph on
+0
 \end_layout
 
 \end_inset
 
- If 1, marks the layout as being part of a title block (see also the 
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] If 1, marks the layout as being part of a title block (see also the 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -9660,16 +9686,8 @@ LabelWidthString
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-L
-\bar default
-ayout\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-aragraph
+Layout\SpecialChar \menuseparator
+Paragraph
 \end_layout
 
 \end_inset
@@ -10435,12 +10453,12 @@ EndPreamble
 status collapsed
 
 \begin_layout Plain Layout
-Requires 
+Requires
 \end_layout
 
 \end_inset
 
-[
+ [
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -10645,14 +10663,24 @@ reference "sub:Font-description"
 status collapsed
 
 \begin_layout Plain Layout
-
-\series medium
-TocLevel [int]
+TocLevel
 \end_layout
 
 \end_inset
 
- The level of the style in the table of contents.
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\series medium
+int
+\end_layout
+
+\end_inset
+
+] The level of the style in the table of contents.
  This is used for automatic numbering of section headings.
 \end_layout
 
