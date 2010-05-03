@@ -28,7 +28,7 @@ public:
 	///
 	InsetBibtex(Buffer *, InsetCommandParams const &);
 	///
-	virtual ~InsetBibtex();
+	~InsetBibtex();
 	///
 	docstring screenLabel() const;
 	///
