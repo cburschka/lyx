@@ -296,7 +296,8 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 	// fill in the real data to be saved
 	if (cell.inMathed()) {
 		// simply use the whole cell
-		undo.array = new MathData(cell.cell());
+		MathData & ar = cell.cell();
+		undo.array = new MathData(ar.buffer(), ar.begin(), ar.end());
 	} else {
 		// some more effort needed here as 'the whole cell' of the
 		// main Text _is_ the whole document.
