@@ -2012,14 +2012,15 @@ int TextMetrics::leftMargin(int max_width,
 		    && par.getInset(pos)->display())
 			&& (!(tclass.isDefaultLayout(par.layout())
 	         || tclass.isPlainLayout(par.layout()))
-	        || buffer.params().paragraph_separation == BufferParams::ParagraphIndentSeparation)
+	        || buffer.params().paragraph_separation 
+				== BufferParams::ParagraphIndentSeparation)
 	    )
 		{
-			// use the parindent of the layout when the default indentation is used
-			// otherwise use the indentation set in the document settings
+			// use the parindent of the layout when the default indentation is
+			// used otherwise use the indentation set in the document settings
 			if (buffer.params().getIndentation().asLyXCommand() == "default")
-				l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(
-				parindent);
+				l_margin += theFontMetrics(
+					buffer.params().getFont()).signedWidth(parindent);
 			else
 				l_margin += buffer.params().getIndentation().inPixels(*bv_);
 		}
