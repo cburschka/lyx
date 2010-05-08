@@ -128,10 +128,37 @@ Style Author
 End
 
 
-Style Special_Paper_Notice
-	CopyStyle		Title
-	LatexName		IEEEspecialpapernotice
+Style Page_headings
+	LaTeXType		Command
+	LaTeXName		markboth
+	Category		FrontMatter
 	InTitle			1
+	Align			Center
+	Font
+	  Size			Small
+	EndFont
+	Preamble
+	% protect \markboth against an old bug reintroduced in babel >= 3.8g
+	\let\oldforeign@language\foreign@language
+	\DeclareRobustCommand{\foreign@language}[1]{%
+	  \lowercase{\oldforeign@language{#1}}}
+	EndPreamble
+End
+
+
+Style Publisher_ID
+	CopyStyle		Title
+	LatexName		IEEEpubid
+	InTitle			1
+	Font
+	  Size			Small
+	EndFont
+End
+
+
+Style Special_Paper_Notice
+	CopyStyle		Publisher_ID
+	LatexName		IEEEspecialpapernotice
 	Font
 	  Size			Large
 	EndFont
@@ -144,21 +171,6 @@ Style After_Title_Text
 	Font
 	  Size			Normal
 	EndFont
-End
-
-
-Style MarkBoth
-	LaTeXType		Command
-	LaTeXName		markboth
-	Category		FrontMatter
-	InTitle			1
-	Align			Center
-	Preamble
-	% protect \markboth against an old bug reintroduced in babel >= 3.8g
-	\let\oldforeign@language\foreign@language
-	\DeclareRobustCommand{\foreign@language}[1]{%
-	  \lowercase{\oldforeign@language{#1}}}
-	EndPreamble
 End
 
 
