@@ -108,25 +108,6 @@ InsetLayout Lowercase
 End
 
 
-Style IEEE_special_paper_notice
-	CopyStyle		Title
-	LatexName		IEEEspecialpapernotice
-	InTitle			1
-	Font
-	  Size			Large
-	EndFont
-End
-
-
-Style IEEE_after_title_text
-	CopyStyle		IEEE_special_paper_notice
-	LatexName		IEEEaftertitletext
-	Font
-	  Size			Normal
-	EndFont
-End
-
-
 Style Author
 	Margin			Static
 	LatexType		Command
@@ -143,6 +124,25 @@ Style Author
 	LabelType		No_Label
 	Font
 	  Size			Large
+	EndFont
+End
+
+
+Style Special_Paper_Notice
+	CopyStyle		Title
+	LatexName		IEEEspecialpapernotice
+	InTitle			1
+	Font
+	  Size			Large
+	EndFont
+End
+
+
+Style After_Title_Text
+	CopyStyle		Special_Paper_Notice
+	LatexName		IEEEaftertitletext
+	Font
+	  Size			Normal
 	EndFont
 End
 
