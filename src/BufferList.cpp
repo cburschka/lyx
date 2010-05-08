@@ -272,8 +272,7 @@ Buffer * BufferList::getBufferFromTmp(string const & s)
 	for (; it < end; ++it) {
 		if (prefixIs(s, (*it)->temppath())) {
 			// check whether the filename matches the master
-			string const master_name = changeExtension(onlyFileName(
-						(*it)->absFileName()), ".tex");
+			string const master_name = (*it)->latexName();
 			if (suffixIs(s, master_name))
 				return *it;
 			// if not, try with the children
