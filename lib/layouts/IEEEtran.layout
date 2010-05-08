@@ -10,7 +10,6 @@
 
 Format 26
 
-Columns			2
 Sides			1
 SecNumDepth		3
 TocDepth		3
@@ -85,6 +84,7 @@ InsetLayout IEEE_membership
 	LatexName		IEEEmembership
 	LabelString		"IEEE membership"
 	Font
+	  Shape			Italic
 	  Size			Large
 	  Misc			No_Emph
 	  Misc			No_Noun
@@ -163,23 +163,23 @@ End
 
 
 Style Abstract
-	Margin			Dynamic
+	Margin			First_Dynamic
 	LatexType		Environment
 	LatexName		abstract
 	Category		FrontMatter
 	TopSep			0.7
 	BottomSep		0.7
 	ParSkip			0.4
-	Align			Center
-	LabelSep		xx
 	LabelType		Static
-	LabelString		"Abstract -"
+	LabelString		"Abstract---"
 	Font
 	  Series		Bold
+	  Size			small
 	EndFont
 	LabelFont
+	  Shape			Italic
 	  Series		Bold
-	  Color			Green
+	  Size			Small
 	EndFont
 End
 
@@ -187,7 +187,7 @@ End
 Style Keywords
 	CopyStyle		Abstract
 	LatexName		IEEEkeywords
-	LabelString		"Keywords -"
+	LabelString		"Index Terms---"
 End
 
 
