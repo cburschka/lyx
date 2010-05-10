@@ -50,7 +50,7 @@ static TransformIDTranslator const & transformIDTranslator()
 
 // We have to have dummy default commands for security reasons!
 Template::Template()
-	: inputFormat("*"), preview_mode(PREVIEW_OFF), automaticProduction(false)
+	: inputFormat("*"), automaticProduction(false), preview_mode(PREVIEW_OFF)
 {}
 
 
