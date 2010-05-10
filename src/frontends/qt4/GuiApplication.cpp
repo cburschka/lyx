@@ -1557,7 +1557,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_BOOKMARK_GOTO:
 		// go to bookmark, open unopened file and switch to buffer if necessary
 		gotoBookmark(convert<unsigned int>(to_utf8(cmd.argument())), true, true);
-		dr.update(Update::FitCursor);
+		dr.update(Update::Force | Update::FitCursor);
 		break;
 
 	case LFUN_BOOKMARK_CLEAR:
