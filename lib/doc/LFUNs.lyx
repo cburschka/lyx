@@ -57,7 +57,7 @@
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 2010-02-28
+LFUNs documentation automatically generated 2010-05-11
 \end_layout
 
 \begin_layout Standard
@@ -452,6 +452,19 @@ Origin Herbert, 10 Nov 2001; bpeng, 2 May 2007
 \end_layout
 
 \begin_layout Subsection*
+LFUN_PREVIEW_INSERT
+\end_layout
+\begin_layout Description
+Action Inserts a new preview inset.
+\end_layout
+\begin_layout Description
+Syntax preview-insert
+\end_layout
+\begin_layout Description
+Origin vfr, 28 Mar 2010
+\end_layout
+
+\begin_layout Subsection*
 LFUN_TAB_INSERT
 \end_layout
 \begin_layout Description
@@ -520,7 +533,7 @@ Notion Apart from lfun arguments you can use the following method:
 Syntax info-insert <TYPE> <ARG>
 \end_layout
 \begin_layout Description
-Params <TYPE>: shortcut[s]|lyxrc|package|textclass|menu|buffer
+Params <TYPE>: shortcut[s]|lyxrc|lyxinfo|package|textclass|menu|buffer
 \begin_inset Newline newline
 \end_inset
 
@@ -535,6 +548,10 @@ alpha)
 \end_inset
 
 		      lyxrc: name of rc_entry (e.g. bind_file)
+\begin_inset Newline newline
+\end_inset
+
+		      lyxinfo: "version" - used version of LyX
 \begin_inset Newline newline
 \end_inset
 
@@ -845,7 +862,7 @@ Origin JSpitzm, 25 Mar 2008
 LFUN_ESCAPE
 \end_layout
 \begin_layout Description
-Action Clears the selection. If no text is selected call LFUN_FINISHED_FORWARD.
+Action Clears the selection. If no text is selected call LFUN_FINISHED_FORWARD. Inside math mode jumps out of the math inset.
 \end_layout
 \begin_layout Description
 Syntax escape
@@ -3596,36 +3613,13 @@ Origin lasgouttes, 19 Jul 2001
 \end_layout
 
 \begin_layout Subsection*
-LFUN_ALL_INSETS_TOGGLE
-\end_layout
-\begin_layout Description
-Action Toggles (open/closes) all collapsable insets (of a given type) in the document.
-\end_layout
-\begin_layout Description
-Notion Used for box, branch, ert, float, listings, note, tabular, wrap insets.
-\end_layout
-\begin_layout Description
-Syntax all-insets-toggle [<STATE>] [<INSET>]
-\end_layout
-\begin_layout Description
-Params <STATE>: <toggle|open|close|assign> default: toggle
-\begin_inset Newline newline
-\end_inset
-
-<INSET>: <box|branch|ert|float|listings|note|tabular|wrap> default: all insets
-\end_layout
-\begin_layout Description
-Origin leeming, 30 Mar 2004
-\end_layout
-
-\begin_layout Subsection*
 LFUN_INSET_FORALL
 \end_layout
 \begin_layout Description
 Action Apply the given commands on insets of a given name.
 \end_layout
 \begin_layout Description
-Notion WARNING: use at your own risks; this function gives you too many ways of shooting yourself in the foot. A typical example is inset-forall Note note-insert which starts an infinite loop. This is mitigated by the fact that the number of actions is arbitrarily limited to 10000.
+Notion WARNING: use at your own risks; this function gives you too many ways of shooting yourself in the foot. A typical example is inset-forall Note note-insert which starts an infinite loop. This is mitigated by the fact that the number of actions is arbitrarily limited to 10000. Note also that inset-forall does not update metrics between iterations, which can lead to bugs. This has to be eventually fixed.
 \end_layout
 \begin_layout Description
 Syntax inset-forall <NAME> <LFUN-COMMAND>
@@ -4313,6 +4307,34 @@ If the file is located inside LyX temporary directory it will be mapped back int
 \end_layout
 \begin_layout Description
 Origin Edmar, 23 Dec 1998
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FORWARD_SEARCH
+\end_layout
+\begin_layout Description
+Action Sets the cursor position in the previewed (e.g. dvi) file based on the row number in LyX window.
+\end_layout
+\begin_layout Description
+Notion The external program used for forward search call can be specified in 
+\backslash
+\forward_search_dvi and 
+\backslash
+\forward_search_pdf RC settings. 	       By default, the value for pdf is empty, while for dvi it is
+\begin_inset Newline newline
+\end_inset
+
+	       "xdvi -sourceposition $$n:$$t $$o"
+\begin_inset Newline newline
+\end_inset
+
+	       The values replaced in the call: $$n for row number, $$t for 	       exported temporary .tex file, $$o exported output file, either 	       dvi or pdf, depending on which one exists in the temp dir 	       (preferred is dvi).
+\end_layout
+\begin_layout Description
+Syntax forward-search
+\end_layout
+\begin_layout Description
+Origin sanda, 14 Apr 2010
 \end_layout
 
 \begin_layout Subsection*
@@ -5321,6 +5343,25 @@ Params <ZOOM>: The zoom in %, the default is 20.
 \end_layout
 \begin_layout Description
 Origin vfr, 30 Mar 2009
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INSET_COPY_AS
+\end_layout
+\begin_layout Description
+Action Copies the inset to the clipboard as a certain type
+\end_layout
+\begin_layout Description
+Syntax inset-copy-as [<TYPE>]
+\end_layout
+\begin_layout Description
+Params <TYPE>: The type as which the inset is copied. This can vary from inset to inset.
+\end_layout
+\begin_layout Description
+Sample InsetInfo is copied as text
+\end_layout
+\begin_layout Description
+Origin vfr, 18 Apr 2010
 \end_layout
 
 \end_body
