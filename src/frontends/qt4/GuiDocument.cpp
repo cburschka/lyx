@@ -2163,10 +2163,14 @@ void GuiDocument::applyView()
 	case 2:
 		bp_.spacing().set(Spacing::Double);
 		break;
-	case 3:
-		bp_.spacing().set(Spacing::Other,
-			widgetToDoubleStr(textLayoutModule->lspacingLE));
+	case 3: {
+		string s = widgetToDoubleStr(textLayoutModule->lspacingLE);
+		if (s.empty())
+			bp_.spacing().set(Spacing::Single);
+		else
+			bp_.spacing().set(Spacing::Other, s);
 		break;
+		}
 	}
 
 	if (textLayoutModule->twoColumnCB->isChecked())
