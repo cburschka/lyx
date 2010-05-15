@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-05-15 05:01+0200\n"
-"PO-Revision-Date: 2010-05-15 18:04+0100\n"
+"PO-Revision-Date: 2010-05-15 21:14+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.10.2\n"
-"X-Poedit-Basepath: C:/cygwin/usr/local/src/lyx/lyx-devel\n"
+"X-Poedit-Basepath: /usr/local/src/lyx/lyx-devel\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
@@ -2007,7 +2007,7 @@ msgstr "Opzioni di programma del processore selezionato."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
-msgstr "Verificare se si vogliono indici multipli (ad es. un Indice dei nomi)"
+msgstr "Selezionare se si vogliono indici multipli (ad es. un Indice dei nomi)"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:92
 msgid "&Use multiple indexes"
@@ -2632,12 +2632,12 @@ msgstr "Formato di output"
 #: src/frontends/qt4/ui/OutputUi.ui:48
 #: src/frontends/qt4/ui/OutputUi.ui:61
 msgid "Specify the default output format (for view/update)"
-msgstr "Specifica il formato predefinito dell'output (per mostra/aggiorna)"
+msgstr "Specifica il formato di default dell'output (per mostra/aggiorna)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:51
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:177
 msgid "De&fault Output Format:"
-msgstr "Formato di output prede&finito:"
+msgstr "Formato di output di de&fault:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:70
 msgid "Use the XeTeX processing engine"
@@ -3249,11 +3249,11 @@ msgstr "&Trascrittore:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:165
 msgid "Specify the default output format when using (PDF)LaTeX"
-msgstr "Specifica il formato di output predefinito per (PDF)LaTeX"
+msgstr "Specifica il formato di default dell'output per (PDF)LaTeX"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:168
 msgid "Default Format"
-msgstr "Formato predefinito"
+msgstr "Formato di default"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -9535,7 +9535,7 @@ msgstr "Enfatizzato"
 #: lib/layouts/agu_stdclass.inc:110
 #: src/frontends/qt4/GuiCharacter.cpp:77
 msgid "Emph"
-msgstr "Enfatizza"
+msgstr "Enfatizzazione"
 
 #: lib/layouts/agu_stdclass.inc:124
 msgid "Element:Abbrev"
@@ -10633,7 +10633,7 @@ msgstr "endnote"
 
 #: lib/layouts/eqs-within-sections.module:2
 msgid "Number Equations by Section"
-msgstr "Numerazione equazioni per sezione"
+msgstr "Numera equazioni per sezione"
 
 #: lib/layouts/eqs-within-sections.module:6
 msgid "Resets the equation number at section start and prepends the section number to the equation number, as in '(2.1)'."
@@ -10641,7 +10641,7 @@ msgstr "Le equazioni vengono numerate per sezione, azzerando il contatore all'in
 
 #: lib/layouts/figs-within-sections.module:2
 msgid "Number Figures by Section"
-msgstr "Numerazione figure per sezione"
+msgstr "Numera figure per sezione"
 
 #: lib/layouts/figs-within-sections.module:6
 msgid "Resets the figure number at section start and prepends the section number to the figure number, as in 'fig. 2.1'."
@@ -10863,7 +10863,7 @@ msgstr "Sweave Input File"
 
 #: lib/layouts/tabs-within-sections.module:2
 msgid "Number Tables by Section"
-msgstr "Numerazione tabelle per sezione"
+msgstr "Numera tabelle per sezione"
 
 #: lib/layouts/tabs-within-sections.module:6
 msgid "Resets the table number at section start and prepends the section number to the table number, as in 'Table 2.1'."
@@ -17782,15 +17782,15 @@ msgid ""
 msgstr ""
 "Il backup del documento %1$s è più recente.\n"
 "\n"
-"Apro il backup invece?"
+"Apro la copia di backup?"
 
 #: src/Buffer.cpp:3549
 msgid "Load backup?"
-msgstr "Apro la copia di backup?"
+msgstr "Apro backup?"
 
 #: src/Buffer.cpp:3550
 msgid "&Load backup"
-msgstr "&Apri copia di backup"
+msgstr "&Apri backup"
 
 #: src/Buffer.cpp:3550
 msgid "Load &original"
@@ -20450,7 +20450,7 @@ msgstr "Reimposta"
 
 #: src/frontends/qt4/GuiCharacter.cpp:78
 msgid "Underbar"
-msgstr "Sottolineato"
+msgstr "Sottolineatura"
 
 #: src/frontends/qt4/GuiCharacter.cpp:79
 msgid "Double underbar"
@@ -20466,7 +20466,7 @@ msgstr "Depennazione"
 
 #: src/frontends/qt4/GuiCharacter.cpp:82
 msgid "Noun"
-msgstr "Sostantivo"
+msgstr "Sostantivazione"
 
 #: src/frontends/qt4/GuiCharacter.cpp:92
 msgid "No color"
