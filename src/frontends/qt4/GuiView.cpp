@@ -671,7 +671,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	LYXERR(Debug::DEBUG, "GuiView::closeEvent()");
 
 	if (!GuiViewPrivate::busyBuffers.isEmpty()) {
-		Alert::warning(_("Exit LyX"), _("Could not exit LyX, because documents are processed by LyX."));
+		Alert::warning(_("Exit LyX"), _("LyX could not be closed because documents are processed by LyX."));
 		close_event->setAccepted(false);
 		return;
 	}
@@ -2286,7 +2286,7 @@ bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer)
 	Buffer & buf = wa->bufferView().buffer();
 
 	if (close_buffer && GuiViewPrivate::busyBuffers.contains(&buf)) {
-		Alert::warning(_("Close document "), _("Could not close document, because it is processed by LyX."));
+		Alert::warning(_("Close document "), _("Document could not be closed because it is processed by LyX."));
 		return false;
 	}
 
