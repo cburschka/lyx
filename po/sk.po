@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-05-15 05:01+0200\n"
-"PO-Revision-Date: 2010-05-11 12:42+0200\n"
+"PO-Revision-Date: 2010-05-15 09:38+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenčina <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -16692,7 +16692,7 @@ msgstr ""
 "stal nedostupným. Bude potrebné aktualizovať meno zahrnutého súboru."
 
 #: src/BufferParams.cpp:535
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The used document class\n"
 "\t%1$s\n"
@@ -16704,7 +16704,7 @@ msgid ""
 "See section 3.1.2.2 of the User's Guide for\n"
 "more information."
 msgstr ""
-"Želaná trieda dokumentu\n"
+"Použitá trieda dokumentu\n"
 "\t%1$s\n"
 "požaduje nedostupné externé súbory.\n"
 "Dokumentná trieda sa stále dá používať, ale LyX\n"
@@ -21188,9 +21188,8 @@ msgid "Exit LyX"
 msgstr "Skončiť LyX"
 
 #: src/frontends/qt4/GuiView.cpp:674
-#, fuzzy
 msgid "LyX could not be closed because documents are processed by LyX."
-msgstr "Nemohol som ukončiť LyX, lebo LyX ešte spracováva dokumenty."
+msgstr "Nemohol som zavrieť LyX, lebo LyX ešte spracováva dokumenty."
 
 #: src/frontends/qt4/GuiView.cpp:923
 msgid "Welcome to LyX!"
@@ -21380,9 +21379,8 @@ msgid "Close document "
 msgstr "Zavrieť dokument"
 
 #: src/frontends/qt4/GuiView.cpp:2289
-#, fuzzy
 msgid "Document could not be closed because it is processed by LyX."
-msgstr "Nemohol som zavrieť dokument, lebo ho LyX ešte spracováva."
+msgstr "Dokument sa nedal zavrieť, lebo ho LyX ešte spracováva."
 
 #: src/frontends/qt4/GuiView.cpp:2384 src/frontends/qt4/GuiView.cpp:2491
 #, c-format
