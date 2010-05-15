@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-02-19 15:33+0100\n"
-"PO-Revision-Date: 2010-03-19 23:44+0100\n"
+"PO-Revision-Date: 2010-05-15 20:46+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -8797,7 +8797,7 @@ msgstr "Enfatizzato"
 #: lib/layouts/agu_stdclass.inc:110
 #: src/frontends/qt4/GuiCharacter.cpp:77
 msgid "Emph"
-msgstr "Enfatizza"
+msgstr "Enfatizzazione"
 
 #: lib/layouts/agu_stdclass.inc:124
 msgid "Element:Abbrev"
@@ -9806,7 +9806,7 @@ msgstr "endnote"
 
 #: lib/layouts/eqs-within-sections.module:2
 msgid "Number Equations by Section"
-msgstr "Numerazione equazioni per sezione"
+msgstr "Numera equazioni per sezione"
 
 #: lib/layouts/eqs-within-sections.module:6
 msgid "Resets the equation number at section start and prepends the section number to the equation number, as in '(2.1)'."
@@ -9814,7 +9814,7 @@ msgstr "Le equazioni vengono numerate per sezione, azzerando il contatore all'in
 
 #: lib/layouts/figs-within-sections.module:2
 msgid "Number Figures by Section"
-msgstr "Numerazione figure per sezione"
+msgstr "Numera figure per sezione"
 
 #: lib/layouts/figs-within-sections.module:6
 msgid "Resets the figure number at section start and prepends the section number to the figure number, as in 'fig. 2.1'."
@@ -9967,7 +9967,7 @@ msgstr "Ridefinisce diversi inserti (Indice, Ramo, URL) in stile minimalistico."
 
 #: lib/layouts/tabs-within-sections.module:2
 msgid "Number Tables by Section"
-msgstr "Numerazione tabelle per sezione"
+msgstr "Numera tabelle per sezione"
 
 #: lib/layouts/tabs-within-sections.module:6
 msgid "Resets the table number at section start and prepends the section number to the table number, as in 'Table 2.1'."
@@ -16425,15 +16425,15 @@ msgid ""
 msgstr ""
 "Il backup del documento %1$s è più recente.\n"
 "\n"
-"Apro il backup invece?"
+"Apro la copia backup?"
 
 #: src/Buffer.cpp:2791
 msgid "Load backup?"
-msgstr "Apro la copia di backup?"
+msgstr "Apro backup?"
 
 #: src/Buffer.cpp:2792
 msgid "&Load backup"
-msgstr "&Apri copia di backup"
+msgstr "&Apri backup"
 
 #: src/Buffer.cpp:2792
 msgid "Load &original"
@@ -18997,11 +18997,11 @@ msgstr "Reimposta"
 
 #: src/frontends/qt4/GuiCharacter.cpp:78
 msgid "Underbar"
-msgstr "Sottolineato"
+msgstr "Sottolineatura"
 
 #: src/frontends/qt4/GuiCharacter.cpp:79
 msgid "Noun"
-msgstr "Sostantivo"
+msgstr "Sostantivazione"
 
 #: src/frontends/qt4/GuiCharacter.cpp:89
 msgid "No color"
