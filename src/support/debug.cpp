@@ -191,7 +191,7 @@ void LyXErr::endl()
 	if (enabled_) {
 		stream() << std::endl;
 		if (second_used_)
-			second() << "\n";
+			second() << std::endl;
 	}
 }
 
