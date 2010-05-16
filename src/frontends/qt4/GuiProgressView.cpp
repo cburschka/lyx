@@ -51,6 +51,7 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	Qt::WindowFlags flags)
 	: DockView(parent, "progress", qt_("Progress/Debug Messages"), area, flags)
 {
+	eolnLast = true;
 	widget_ = new ProgressViewWidget();
 	widget_->setMinimumHeight(150);
 	widget_->debugMessagesTW->setSizePolicy(QSizePolicy::Ignored,
@@ -164,8 +165,10 @@ void GuiProgressView::debugSelectionChanged()
 
 void GuiProgressView::clearText()
 {
-	if (widget_->autoClearCB->isChecked())
+	if (widget_->autoClearCB->isChecked()){
 		widget_->outTE->clear();
+		eolnLast = true;
+	}
 }
 
 
@@ -174,15 +177,17 @@ void GuiProgressView::appendLyXErrText(QString const & text)
 	widget_->outTE->moveCursor(QTextCursor::End);
 	widget_->outTE->insertPlainText(text);
 	widget_->outTE->ensureCursorVisible();
-
+	eolnLast = false;
 	// Give the user a chance to disable debug messages because
 	// showing Debug::ANY messages completely blocks the GUI.
 	// Text is not always send as the whole line, so we must be
 	// careful about eolns.
 	// WARNING: processing events could cause crashes!
 	// TODO: find a better solution
-	if (text.endsWith("\n"))
+	if (text.endsWith("\n")) {
+		eolnLast = true;
 		QApplication::processEvents();
+	}
 }
 
 
@@ -192,8 +197,9 @@ void GuiProgressView::appendText(QString const & text)
 		return;
 	QString str = GuiProgress::currentTime();
 	str += ": " + text;
-	if (!text.endsWith("\n"))
-		str += "\n";
+	if (!eolnLast)
+		str = "\n" + str;
+	eolnLast = text.endsWith("\n");
 
 	widget_->outTE->moveCursor(QTextCursor::End);
 	widget_->outTE->insertPlainText(str);
