@@ -245,7 +245,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-03-16 09:24+0100\n"
-"PO-Revision-Date: 2010-04-26 09:04+0100\n"
+"PO-Revision-Date: 2010-05-17 14:10+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -528,7 +528,7 @@ msgstr "Déplacer la base de données sélectionnée vers le bas de la liste"
 #: src/frontends/qt4/ui/BibtexUi.ui:228
 #: src/frontends/qt4/ui/ModulesUi.ui:129
 msgid "Do&wn"
-msgstr "&Bas"
+msgstr "Vers le &bas"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:235
 msgid "Move the selected database upwards in the list"
@@ -538,7 +538,7 @@ msgstr "Déplacer la base de données sélectionnée vers le haut de la liste"
 #: src/frontends/qt4/ui/CitationUi.ui:597
 #: src/frontends/qt4/ui/ModulesUi.ui:122
 msgid "&Up"
-msgstr "&Haut"
+msgstr "Vers le &haut"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:253
 msgid "BibTeX database to use"
@@ -11106,7 +11106,7 @@ msgstr "Tableau|T"
 #: lib/ui/stdmenus.inc:117
 #: lib/ui/stdmenus.inc:535
 msgid "Math|M"
-msgstr "Math|M"
+msgstr "Maths|M"
 
 #: lib/ui/classic.ui:104
 #: lib/ui/stdmenus.inc:513
@@ -11381,7 +11381,7 @@ msgstr "Environnement multline"
 #: lib/ui/classic.ui:214
 #: lib/ui/stdmenus.inc:332
 msgid "Math|h"
-msgstr "Math|h"
+msgstr "Maths|h"
 
 #: lib/ui/classic.ui:216
 msgid "Special Character|S"
@@ -12829,7 +12829,7 @@ msgstr "Caractère spécial|p"
 
 #: lib/ui/stdmenus.inc:334
 msgid "Formatting|o"
-msgstr "Typographie spéciale|y"
+msgstr "Typographie spéciale|é"
 
 #: lib/ui/stdmenus.inc:335
 msgid "List / TOC|i"
@@ -12881,7 +12881,7 @@ msgstr "URL|U"
 
 #: lib/ui/stdmenus.inc:353
 msgid "Hyperlink...|k"
-msgstr "Hyperlien..."
+msgstr "Hyperlien...|y"
 
 #: lib/ui/stdmenus.inc:356
 msgid "Short Title|S"
@@ -17108,7 +17108,7 @@ msgstr "caractère spécial"
 
 #: src/Color.cpp:176
 msgid "math"
-msgstr "formules mathématiques"
+msgstr "maths"
 
 #: src/Color.cpp:177
 msgid "math background"
@@ -21440,7 +21440,7 @@ msgstr "Branche : "
 
 #: src/insets/InsetBranch.cpp:100
 msgid "Branch (child only): "
-msgstr "Branche (sous-document seulement) :"
+msgstr "Branche (sous-document seulement) : "
 
 #: src/insets/InsetBranch.cpp:105
 msgid "Undef: "
