@@ -76,7 +76,7 @@ private Q_SLOTS:
 private:
 	ProgressViewWidget * widget_;
 	/// did the last message contained eoln? (lyxerr X statusbar conflicts)
-	bool eolnLast;
+	bool eol_last_;
 
 	void levelChanged();
 	void showEvent(QShowEvent*);
