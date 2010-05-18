@@ -721,7 +721,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)),
 		this, SLOT(papersizeChanged(int)));
 	connect(pageLayoutModule->portraitRB, SIGNAL(clicked()),
-		this, SLOT(portraitChanged()));
+		this, SLOT(change_adaptor()));
 	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(pageLayoutModule->paperheightLE, SIGNAL(textChanged(const QString &)),
@@ -1297,13 +1297,7 @@ void GuiDocument::enableSkip(bool skip)
 }
 
 
-void GuiDocument::portraitChanged()
-{
-	setMargins(pageLayoutModule->papersizeCO->currentIndex());
-}
-
-
-void GuiDocument::setMargins(bool custom)
+void GuiDocument::setMargins()
 {
 	bool const extern_geometry =
 		documentClass().provides("geometry");
@@ -1313,8 +1307,12 @@ void GuiDocument::setMargins(bool custom)
 		setCustomMargins(true);
 		return;
 	}
-	marginsModule->marginCB->setChecked(custom);
-	setCustomMargins(custom);
+	bool custom = false;
+	// only check marginCB when there are no custom margins set
+	if (bp_.use_geometry)
+		custom = true;
+	marginsModule->marginCB->setChecked(!custom);
+	setCustomMargins(!custom);
 }
 
 
@@ -2353,12 +2351,6 @@ void GuiDocument::applyView()
 	bp_.papersize = PAPER_SIZE(
 		pageLayoutModule->papersizeCO->currentIndex());
 
-	// only custom, A4, B4, B5 and the US sizes don't need the LaTeX-
-	// package gegeometry
-	int psize = pageLayoutModule->papersizeCO->currentIndex();
-	bool geom_papersize = (psize != 1 && psize != 2 && psize != 3
-		&& psize != 4 && psize != 9 && psize != 10 && psize != 17);
-
 	bp_.paperwidth = widgetsToLength(pageLayoutModule->paperwidthLE,
 		pageLayoutModule->paperwidthUnitCO);
 
@@ -2376,8 +2368,7 @@ void GuiDocument::applyView()
 		bp_.orientation = ORIENTATION_PORTRAIT;
 
 	// margins
-	bp_.use_geometry = !marginsModule->marginCB->isChecked()
-		|| geom_papersize;
+	bp_.use_geometry = !marginsModule->marginCB->isChecked();
 
 	Ui::MarginsUi const * m = marginsModule;
 
@@ -2822,7 +2813,7 @@ void GuiDocument::paramsToDialog()
 	// margins
 	Ui::MarginsUi * m = marginsModule;
 
-	setMargins(!bp_.use_geometry);
+	setMargins();
 
 	lengthToWidgets(m->topLE, m->topUnit,
 		bp_.topmargin, defaultUnit);

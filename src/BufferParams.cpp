@@ -1397,7 +1397,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		texrow.newline();
 	}
 	if (!tclass.provides("geometry")
-	    && (use_geometry || nonstandard_papersize)) {
+		&& (use_geometry || nonstandard_papersize)) {
 		odocstringstream ods;
 		if (!getGraphicsDriver("geometry").empty())
 			ods << getGraphicsDriver("geometry");
@@ -1536,25 +1536,28 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			os << '[' << g_options << ']';
 		os << "{geometry}\n";
 		texrow.newline();
-		os << "\\geometry{verbose";
-		if (!topmargin.empty())
-			os << ",tmargin=" << from_ascii(Length(topmargin).asLatexString());
-		if (!bottommargin.empty())
-			os << ",bmargin=" << from_ascii(Length(bottommargin).asLatexString());
-		if (!leftmargin.empty())
-			os << ",lmargin=" << from_ascii(Length(leftmargin).asLatexString());
-		if (!rightmargin.empty())
-			os << ",rmargin=" << from_ascii(Length(rightmargin).asLatexString());
-		if (!headheight.empty())
-			os << ",headheight=" << from_ascii(Length(headheight).asLatexString());
-		if (!headsep.empty())
-			os << ",headsep=" << from_ascii(Length(headsep).asLatexString());
-		if (!footskip.empty())
-			os << ",footskip=" << from_ascii(Length(footskip).asLatexString());
-		if (!columnsep.empty())
-			os << ",columnsep=" << from_ascii(Length(columnsep).asLatexString());
-		os << "}\n";
-		texrow.newline();
+		// output this if only use_geometry is true
+		if (use_geometry) {
+			os << "\\geometry{verbose";
+			if (!topmargin.empty())
+				os << ",tmargin=" << from_ascii(Length(topmargin).asLatexString());
+			if (!bottommargin.empty())
+				os << ",bmargin=" << from_ascii(Length(bottommargin).asLatexString());
+			if (!leftmargin.empty())
+				os << ",lmargin=" << from_ascii(Length(leftmargin).asLatexString());
+			if (!rightmargin.empty())
+				os << ",rmargin=" << from_ascii(Length(rightmargin).asLatexString());
+			if (!headheight.empty())
+				os << ",headheight=" << from_ascii(Length(headheight).asLatexString());
+			if (!headsep.empty())
+				os << ",headsep=" << from_ascii(Length(headsep).asLatexString());
+			if (!footskip.empty())
+				os << ",footskip=" << from_ascii(Length(footskip).asLatexString());
+			if (!columnsep.empty())
+				os << ",columnsep=" << from_ascii(Length(columnsep).asLatexString());
+			os << "}\n";
+			texrow.newline();
+		}
 	} else if (orientation == ORIENTATION_LANDSCAPE) {
 		features.require("papersize");
 	}

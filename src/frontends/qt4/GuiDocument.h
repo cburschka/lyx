@@ -88,7 +88,7 @@ private Q_SLOTS:
 	void saveDefaultClicked();
 	void useDefaultsClicked();
 	void setLSpacing(int);
-	void setMargins(bool);
+	void setMargins();
 	void papersizeChanged(int);
 	void setColSep();
 	void setCustomMargins(bool);
@@ -100,7 +100,6 @@ private Q_SLOTS:
 	void enableIndent(bool);
 	void setSkip(int);
 	void enableSkip(bool);
-	void portraitChanged();
 	void browseLayout();
 	void browseMaster();
 	void classChanged();
