@@ -757,12 +757,27 @@ GuiDocument::GuiDocument(GuiView & lv)
 	cb->addItem(qt_("US letter"));
 	cb->addItem(qt_("US legal"));
 	cb->addItem(qt_("US executive"));
+	cb->addItem(qt_("A0"));
+	cb->addItem(qt_("A1"));
+	cb->addItem(qt_("A2"));
 	cb->addItem(qt_("A3"));
 	cb->addItem(qt_("A4"));
 	cb->addItem(qt_("A5"));
+	cb->addItem(qt_("A6"));
+	cb->addItem(qt_("B0"));
+	cb->addItem(qt_("B1"));
+	cb->addItem(qt_("B2"));
 	cb->addItem(qt_("B3"));
 	cb->addItem(qt_("B4"));
 	cb->addItem(qt_("B5"));
+	cb->addItem(qt_("B6"));
+	cb->addItem(qt_("JIS B0"));
+	cb->addItem(qt_("JIS B1"));
+	cb->addItem(qt_("JIS B2"));
+	cb->addItem(qt_("JIS B3"));
+	cb->addItem(qt_("JIS B4"));
+	cb->addItem(qt_("JIS B5"));
+	cb->addItem(qt_("JIS B6"));
 	// remove the %-items from the unit choice
 	pageLayoutModule->paperwidthUnitCO->noPercents();
 	pageLayoutModule->paperheightUnitCO->noPercents();
@@ -2338,9 +2353,11 @@ void GuiDocument::applyView()
 	bp_.papersize = PAPER_SIZE(
 		pageLayoutModule->papersizeCO->currentIndex());
 
-	// custom, A3, B3 and B4 paper sizes need geometry
+	// only custom, A4, B4, B5 and the US sizes don't need the LaTeX-
+	// package gegeometry
 	int psize = pageLayoutModule->papersizeCO->currentIndex();
-	bool geom_papersize = (psize == 1 || psize == 5 || psize == 8 || psize == 9);
+	bool geom_papersize = (psize != 1 && psize != 2 && psize != 3
+		&& psize != 4 && psize != 9 && psize != 10 && psize != 17);
 
 	bp_.paperwidth = widgetsToLength(pageLayoutModule->paperwidthLE,
 		pageLayoutModule->paperwidthUnitCO);

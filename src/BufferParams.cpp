@@ -72,7 +72,10 @@ static char const * const string_quotes_language[] = {
 
 static char const * const string_papersize[] = {
 	"default", "custom", "letterpaper", "legalpaper", "executivepaper",
-	"a3paper", "a4paper", "a5paper", "b3paper", "b4paper", "b5paper", ""
+	"a0paper", "a1paper", "a2paper", "a3paper",	"a4paper", "a5paper",
+	"a6paper", "b0paper", "b1paper", "b2paper","b3paper", "b4paper",
+	"b5paper", "b6paper", "b0j", "b1j", "b2j", "b3j", "b4j", "b5j",
+	"b6j", ""
 };
 
 
@@ -156,12 +159,27 @@ static PaperSizeTranslator initPaperSizeTranslator()
 	translator.addPair(string_papersize[2], PAPER_USLETTER);
 	translator.addPair(string_papersize[3], PAPER_USLEGAL);
 	translator.addPair(string_papersize[4], PAPER_USEXECUTIVE);
-	translator.addPair(string_papersize[5], PAPER_A3);
-	translator.addPair(string_papersize[6], PAPER_A4);
-	translator.addPair(string_papersize[7], PAPER_A5);
-	translator.addPair(string_papersize[8], PAPER_B3);
-	translator.addPair(string_papersize[9], PAPER_B4);
-	translator.addPair(string_papersize[10], PAPER_B5);
+	translator.addPair(string_papersize[5], PAPER_A0);
+	translator.addPair(string_papersize[6], PAPER_A1);
+	translator.addPair(string_papersize[7], PAPER_A2);
+	translator.addPair(string_papersize[8], PAPER_A3);
+	translator.addPair(string_papersize[9], PAPER_A4);
+	translator.addPair(string_papersize[10], PAPER_A5);
+	translator.addPair(string_papersize[11], PAPER_A6);
+	translator.addPair(string_papersize[12], PAPER_B0);
+	translator.addPair(string_papersize[13], PAPER_B1);
+	translator.addPair(string_papersize[14], PAPER_B2);
+	translator.addPair(string_papersize[15], PAPER_B3);
+	translator.addPair(string_papersize[16], PAPER_B4);
+	translator.addPair(string_papersize[17], PAPER_B5);
+	translator.addPair(string_papersize[18], PAPER_B6);
+	translator.addPair(string_papersize[19], PAPER_JISB0);
+	translator.addPair(string_papersize[20], PAPER_JISB1);
+	translator.addPair(string_papersize[21], PAPER_JISB2);
+	translator.addPair(string_papersize[22], PAPER_JISB3);
+	translator.addPair(string_papersize[23], PAPER_JISB4);
+	translator.addPair(string_papersize[24], PAPER_JISB5);
+	translator.addPair(string_papersize[25], PAPER_JISB6);
 	return translator;
 }
 
@@ -1157,11 +1175,14 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		clsoptions << fontsize << "pt,";
 	}
 
-	// custom, A3, B3 and B4 paper sizes need geometry
-	bool nonstandard_papersize = papersize == PAPER_B3
-		|| papersize == PAPER_B4
-		|| papersize == PAPER_A3
-		|| papersize == PAPER_CUSTOM;
+	// all paper sizes except of A4, A5, B5 and the US sizes need the
+	// geometry package
+	bool nonstandard_papersize = papersize != PAPER_USLETTER
+		&& papersize != PAPER_USLEGAL
+		&& papersize != PAPER_USEXECUTIVE
+		&& papersize != PAPER_A4
+		&& papersize != PAPER_A5
+		&& papersize != PAPER_B5;
 
 	if (!use_geometry) {
 		switch (papersize) {
@@ -1184,9 +1205,24 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			clsoptions << "legalpaper,";
 			break;
 		case PAPER_DEFAULT:
+		case PAPER_A0:
+		case PAPER_A1:
+		case PAPER_A2:
 		case PAPER_A3:
+		case PAPER_A6:
+		case PAPER_B0:
+		case PAPER_B1:
+		case PAPER_B2:
 		case PAPER_B3:
 		case PAPER_B4:
+		case PAPER_B6:
+		case PAPER_JISB0:
+		case PAPER_JISB1:
+		case PAPER_JISB2:
+		case PAPER_JISB3:
+		case PAPER_JISB4:
+		case PAPER_JISB5:
+		case PAPER_JISB6:
 		case PAPER_CUSTOM:
 			break;
 		}
@@ -1385,6 +1421,15 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		case PAPER_USEXECUTIVE:
 			ods << ",executivepaper";
 			break;
+		case PAPER_A0:
+			ods << ",a0paper";
+			break;
+		case PAPER_A1:
+			ods << ",a1paper";
+			break;
+		case PAPER_A2:
+			ods << ",a2paper";
+			break;
 		case PAPER_A3:
 			ods << ",a3paper";
 			break;
@@ -1394,6 +1439,18 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		case PAPER_A5:
 			ods << ",a5paper";
 			break;
+		case PAPER_A6:
+			ods << ",a6paper";
+			break;
+		case PAPER_B0:
+			ods << ",b0paper";
+			break;
+		case PAPER_B1:
+			ods << ",b1paper";
+			break;
+		case PAPER_B2:
+			ods << ",b2paper";
+			break;
 		case PAPER_B3:
 			ods << ",b3paper";
 			break;
@@ -1402,6 +1459,30 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			break;
 		case PAPER_B5:
 			ods << ",b5paper";
+			break;
+		case PAPER_B6:
+			ods << ",b6paper";
+			break;
+		case PAPER_JISB0:
+			ods << ",b0j";
+			break;
+		case PAPER_JISB1:
+			ods << ",b1j";
+			break;
+		case PAPER_JISB2:
+			ods << ",b2j";
+			break;
+		case PAPER_JISB3:
+			ods << ",b3j";
+			break;
+		case PAPER_JISB4:
+			ods << ",b4j";
+			break;
+		case PAPER_JISB5:
+			ods << ",b5j";
+			break;
+		case PAPER_JISB6:
+			ods << ",b6j";
 			break;
 		default:
 			// default papersize ie PAPER_DEFAULT
@@ -1416,6 +1497,15 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			case PAPER_USEXECUTIVE:
 				ods << ",executivepaper";
 				break;
+			case PAPER_A0:
+				ods << ",a0paper";
+				break;
+			case PAPER_A1:
+				ods << ",a1paper";
+				break;
+			case PAPER_A2:
+				ods << ",a2paper";
+				break;
 			case PAPER_A3:
 				ods << ",a3paper";
 				break;
@@ -1425,11 +1515,51 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			case PAPER_A5:
 				ods << ",a5paper";
 				break;
+			case PAPER_A6:
+				ods << ",a6paper";
+				break;
+			case PAPER_B0:
+				ods << ",b0paper";
+				break;
+			case PAPER_B1:
+				ods << ",b1paper";
+				break;
+			case PAPER_B2:
+				ods << ",b2paper";
+				break;
+			case PAPER_B3:
+				ods << ",b3paper";
+				break;
+			case PAPER_B4:
+				ods << ",b4paper";
+				break;
 			case PAPER_B5:
 				ods << ",b5paper";
 				break;
-			case PAPER_B3:
-			case PAPER_B4:
+			case PAPER_B6:
+				ods << ",b6paper";
+				break;
+			case PAPER_JISB0:
+				ods << ",b0j";
+				break;
+			case PAPER_JISB1:
+				ods << ",b1j";
+				break;
+			case PAPER_JISB2:
+				ods << ",b2j";
+				break;
+			case PAPER_JISB3:
+				ods << ",b3j";
+				break;
+			case PAPER_JISB4:
+				ods << ",b4j";
+				break;
+			case PAPER_JISB5:
+				ods << ",b5j";
+				break;
+			case PAPER_JISB6:
+				ods << ",b6j";
+				break;
 			case PAPER_CUSTOM:
 				break;
 			}
@@ -2057,14 +2187,42 @@ string BufferParams::paperSizeName(PapersizePurpose purpose) const
 		}
 		return string();
 	}
+	case PAPER_A0:
+		// dvips and dvipdfm do not know this
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "a0";
+	case PAPER_A1:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "a1";
+	case PAPER_A2:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "a2";
 	case PAPER_A3:
 		return "a3";
 	case PAPER_A4:
 		return "a4";
 	case PAPER_A5:
 		return "a5";
+	case PAPER_A6:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "a6";
+	case PAPER_B0:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "b0";
+	case PAPER_B1:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "b1";
+	case PAPER_B2:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "b2";
 	case PAPER_B3:
-		// dvips and dvipdfm do not know this
 		if (purpose == DVIPS || purpose == DVIPDFM)
 			return string();
 		return "b3";
@@ -2074,10 +2232,41 @@ string BufferParams::paperSizeName(PapersizePurpose purpose) const
 			return string();
 		return "b4";
 	case PAPER_B5:
-		// dvipdfm does not know this
 		if (purpose == DVIPDFM)
 			return string();
 		return "b5";
+	case PAPER_B6:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "b6";
+	case PAPER_JISB0:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "jisb0";
+	case PAPER_JISB1:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "jisb1";
+	case PAPER_JISB2:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "jisb2";
+	case PAPER_JISB3:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "jisb3";
+	case PAPER_JISB4:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "jisb4";
+	case PAPER_JISB5:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "jisb5";
+	case PAPER_JISB6:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "jisb6";
 	case PAPER_USEXECUTIVE:
 		// dvipdfm does not know this
 		if (purpose == DVIPDFM)

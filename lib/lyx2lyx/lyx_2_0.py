@@ -1525,6 +1525,19 @@ def revert_math_scale(document):
     del document.header[i]
 
 
+def revert_pagesizes(document):
+  i = 0
+  " Revert page sizes to default "
+  i = find_token(document.header, '\\papersize', 0)
+  if i != -1:
+    size = document.header[i][11:]
+    document.warning("size: " + size)
+    if size == "a0paper" or "a1paper" or "a2paper" or "a6paper" \
+    or "b0paper" or "b1paper" or "b2paper" or "b6paper" \
+    or "b0j" or "b1j" or "b2j" or "b3j" or "b4j" or "b5j" or "b6j":
+      # no specified page size results in default
+      del document.header[i]
+
 
 ##
 # Conversion hub
@@ -1573,9 +1586,11 @@ convert = [[346, []],
            [385, []],
            [386, []],
            [387, []],
+           [388, []],
 					]
 
-revert =  [[386, [revert_math_scale]],
+revert =  [[387, [revert_pagesizes]],
+           [386, [revert_math_scale]],
            [385, [revert_lyx_version]],
            [384, [revert_shadedboxcolor]],
            [383, [revert_fontcolor]],
