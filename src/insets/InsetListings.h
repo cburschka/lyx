@@ -77,6 +77,8 @@ private:
 	docstring const buttonLabel(BufferView const & bv) const;
 	///
 	docstring getCaption(OutputParams const &) const;
+	///
+	bool insetAllowed(InsetCode c) const { return c == CAPTION_CODE; } 
 
 	///
 	InsetListingsParams params_;
