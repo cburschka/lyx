@@ -1397,7 +1397,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		texrow.newline();
 	}
 	if (!tclass.provides("geometry")
-		&& (use_geometry || nonstandard_papersize)) {
+	    && (use_geometry || nonstandard_papersize)) {
 		odocstringstream ods;
 		if (!getGraphicsDriver("geometry").empty())
 			ods << getGraphicsDriver("geometry");
@@ -1558,7 +1558,8 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			os << "}\n";
 			texrow.newline();
 		}
-	} else if (orientation == ORIENTATION_LANDSCAPE) {
+	} else if (orientation == ORIENTATION_LANDSCAPE
+		   || papersize != PAPER_DEFAULT) {
 		features.require("papersize");
 	}
 
