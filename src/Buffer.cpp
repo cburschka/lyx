@@ -1006,6 +1006,7 @@ bool Buffer::save() const
 			backupName = FileName(addName(lyxrc.backupdir_path,
 						      mangledName));
 		}
+		// do not copy because of #6587
 		if (fileName().moveTo(backupName)) {
 			madeBackup = true;
 		} else {
