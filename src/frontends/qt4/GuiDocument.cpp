@@ -1308,7 +1308,6 @@ void GuiDocument::setMargins()
 		return;
 	}
 	bool custom = false;
-	// only check marginCB when there are no custom margins set
 	if (bp_.use_geometry)
 		custom = true;
 	marginsModule->marginCB->setChecked(!custom);
