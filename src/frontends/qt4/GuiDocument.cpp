@@ -1305,13 +1305,10 @@ void GuiDocument::setMargins()
 	if (extern_geometry) {
 		marginsModule->marginCB->setChecked(false);
 		setCustomMargins(true);
-		return;
+	} else {
+		marginsModule->marginCB->setChecked(!bp_.use_geometry);
+		setCustomMargins(!bp_.use_geometry);
 	}
-	bool custom = false;
-	if (bp_.use_geometry)
-		custom = true;
-	marginsModule->marginCB->setChecked(!custom);
-	setCustomMargins(!custom);
 }
 
 
