@@ -13,8 +13,7 @@
  * expand to contain many paper-related horrors access.
  *
  * The supported paper sizes are those that are supported by the
- * LaTeX-package geometry. However, the Japanese JIS B-series paper
- * sizes are not yet supported by LyX.
+ * LaTeX-package geometry.
  */
 
 #ifndef PAPER_H

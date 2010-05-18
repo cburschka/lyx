@@ -1497,15 +1497,6 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			case PAPER_USEXECUTIVE:
 				ods << ",executivepaper";
 				break;
-			case PAPER_A0:
-				ods << ",a0paper";
-				break;
-			case PAPER_A1:
-				ods << ",a1paper";
-				break;
-			case PAPER_A2:
-				ods << ",a2paper";
-				break;
 			case PAPER_A3:
 				ods << ",a3paper";
 				break;
@@ -1515,51 +1506,26 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			case PAPER_A5:
 				ods << ",a5paper";
 				break;
-			case PAPER_A6:
-				ods << ",a6paper";
-				break;
-			case PAPER_B0:
-				ods << ",b0paper";
-				break;
-			case PAPER_B1:
-				ods << ",b1paper";
-				break;
-			case PAPER_B2:
-				ods << ",b2paper";
-				break;
-			case PAPER_B3:
-				ods << ",b3paper";
-				break;
-			case PAPER_B4:
-				ods << ",b4paper";
-				break;
 			case PAPER_B5:
 				ods << ",b5paper";
 				break;
+			case PAPER_A0:
+			case PAPER_A1:
+			case PAPER_A2:
+			case PAPER_A6:
+			case PAPER_B0:
+			case PAPER_B1:
+			case PAPER_B2:
+			case PAPER_B3:
+			case PAPER_B4:
 			case PAPER_B6:
-				ods << ",b6paper";
-				break;
 			case PAPER_JISB0:
-				ods << ",b0j";
-				break;
 			case PAPER_JISB1:
-				ods << ",b1j";
-				break;
 			case PAPER_JISB2:
-				ods << ",b2j";
-				break;
 			case PAPER_JISB3:
-				ods << ",b3j";
-				break;
 			case PAPER_JISB4:
-				ods << ",b4j";
-				break;
 			case PAPER_JISB5:
-				ods << ",b5j";
-				break;
 			case PAPER_JISB6:
-				ods << ",b6j";
-				break;
 			case PAPER_CUSTOM:
 				break;
 			}
