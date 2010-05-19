@@ -9,9 +9,9 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-05-17 19:22+0200\n"
-"PO-Revision-Date: 2010-02-20 08:08+0100\n"
+"PO-Revision-Date: 2010-05-19 12:37+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
-"Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
+"Language-Team: Slovenčina <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1902,7 +1902,7 @@ msgid ""
 "The AMS LaTeX packages are only used if symbols from the AMS math toolbars "
 "are inserted into formulas"
 msgstr ""
-"Balíky pre AMS a Latex sú použité len v prípade, že vo formulách sú vložené "
+"Balíky pre AMS a Latex sú použité len v prípade, že vo vzorcoch sú vložené "
 "aj symboly z mat. lišty nástrojov AMS"
 
 #: src/frontends/qt4/ui/MathsUi.ui:28
@@ -1922,7 +1922,7 @@ msgid ""
 "The LaTeX package esint is only used if special integral symbols are "
 "inserted into formulas"
 msgstr ""
-"LaTeX balík esint použiť len v prípade, keď sa vo formulách nájdu aj "
+"LaTeX balík esint použiť len v prípade, keď sa vo vzorcoch nájdu aj "
 "špeciálne integrálne symboly"
 
 #: src/frontends/qt4/ui/MathsUi.ui:51
@@ -15796,7 +15796,7 @@ msgstr "pozadie matematiky"
 
 #: src/Color.cpp:178
 msgid "graphics background"
-msgstr "pozadí obrázku"
+msgstr "pozadie obrázku"
 
 #: src/Color.cpp:179 src/Color.cpp:183
 msgid "math macro background"
