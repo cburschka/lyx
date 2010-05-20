@@ -1517,7 +1517,7 @@ bool BufferParams::removeBadModules()
 		for (; !excluded && pit != pen; ++pit) {
 			if (!LyXModule::areCompatible(modname, *pit)) {
 				LYXERR0("Module " << modname << 
-						" dropped becuase it conflicts with provided module `" << *pit << "'.");
+						" dropped because it conflicts with provided module `" << *pit << "'.");
 				consistent = false;
 				excluded = true;
 			}
