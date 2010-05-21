@@ -1418,8 +1418,23 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			case PAPER_B5:
 				os << "b5"; break;
 			case PAPER_CUSTOM:
+			case PAPER_A0:
+			case PAPER_A1:
+			case PAPER_A2:
+			case PAPER_A6:
+			case PAPER_B0:
+			case PAPER_B1:
+			case PAPER_B2:
 			case PAPER_B3:
-			case PAPER_B4: break;
+			case PAPER_B4:
+			case PAPER_B6:
+			case PAPER_JISB0:
+			case PAPER_JISB1:
+			case PAPER_JISB2:
+			case PAPER_JISB3:
+			case PAPER_JISB4:
+			case PAPER_JISB5:
+			case PAPER_JISB6: break;
 			}
 			os << "\"\n";
 		}
