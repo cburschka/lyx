@@ -1177,7 +1177,8 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	// all paper sizes except of A4, A5, B5 and the US sizes need the
 	// geometry package
-	bool nonstandard_papersize = papersize != PAPER_USLETTER
+	bool nonstandard_papersize = papersize != PAPER_DEFAULT
+		&& papersize != PAPER_USLETTER
 		&& papersize != PAPER_USLEGAL
 		&& papersize != PAPER_USEXECUTIVE
 		&& papersize != PAPER_A4
