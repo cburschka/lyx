@@ -50,6 +50,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix reverse search when the document name contains a character which is
+  forbidden in latex filenames (such as spaces).
 
 
 * USER INTERFACE
