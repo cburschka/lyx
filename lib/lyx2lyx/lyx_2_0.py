@@ -1532,11 +1532,11 @@ def revert_pagesizes(document):
   i = find_token(document.header, '\\papersize', 0)
   if i != -1:
     size = document.header[i][11:]
-    document.warning("size: " + size)
-    if size == "a0paper" or "a1paper" or "a2paper" or "a6paper" \
-    or "b0paper" or "b1paper" or "b2paper" or "b6paper" \
-    or "b0j" or "b1j" or "b2j" or "b3j" or "b4j" or "b5j" or "b6j":
-      # no specified page size results in default
+    if size == "a0paper" or size == "a1paper" or size == "a2paper" \
+    or size == "a6paper" or size == "b0paper" or size == "b1paper" \
+    or size == "b2paper" or size == "b6paper" or size == "b0j" \
+    or size == "b1j" or size == "b2j" or size == "b3j" or size == "b4j" \
+    or size == "b5j" or size == "b6j":
       del document.header[i]
 
 
