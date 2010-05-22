@@ -1335,9 +1335,12 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// LFE encoding
 	// XeTeX works without fontenc
 	if (font_encoding() != "default" && language->lang() != "japanese"
-	    && !useXetex) {
+		&& !useXetex) {
+		size_t fars = language_options.str().find("farsi");
+		size_t arab = language_options.str().find("arabic");
 		if (language->lang() == "arabic_arabi"
-		    || language->lang() == "farsi") {
+			|| language->lang() == "farsi" || fars != string::npos
+			|| arab != string::npos) {
 			os << "\\usepackage[" << from_ascii(font_encoding())
 			   << ",LFE,LAE]{fontenc}\n";
 			texrow.newline();
