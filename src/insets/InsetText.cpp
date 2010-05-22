@@ -405,6 +405,7 @@ int InsetText::latex(odocstream & os, OutputParams const & runparams) const
 	TexRow texrow;
 	latexParagraphs(buffer(), text_, os, texrow, rp);
 	rows += texrow.rows();
+	runparams.encoding = rp.encoding;
 
 	if (!il.latexname().empty()) {
 		if (il.latextype() == InsetLayout::COMMAND) {
