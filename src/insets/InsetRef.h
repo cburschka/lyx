@@ -81,6 +81,8 @@ private:
 	Inset * clone() const { return new InsetRef(*this); }
 	///
 	bool isLatex;
+	/// Force inset into LTR environment if surroundings are RTL
+	bool forceLTR() const { return true; }
 	///
 	mutable docstring screen_label_;
 	///
