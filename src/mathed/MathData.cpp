@@ -391,7 +391,9 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc)
 		if (!macroInset || macroInset->name_.empty()
 				|| macroInset->name_[0] == '^'
 				|| macroInset->name_[0] == '_'
-				|| macroInset->name() == edited_name)
+				|| (macroInset->name() == edited_name
+				    && macroInset->displayMode() ==
+						MathMacro::DISPLAY_UNFOLDED))
 			continue;
 
 		// get macro
