@@ -137,15 +137,19 @@ int InsetIndex::latex(odocstream & os,
 				subst(spart2, from_ascii("\\"), docstring());
 			os << ppart;
 			os << '@';
+			i += count_char(ppart, '\n');
 		}
 		docstring const tpart = *it;
 		os << tpart;
+		i += count_char(tpart, '\n');
 		if (it2 < levels_plain.end())
 			++it2;
 	}
 	// write the bit that followed "|"
-	if (!cmd.empty())
+	if (!cmd.empty()) {
 		os << "|" << cmd;
+		i += count_char(cmd, '\n');
+	}
 	os << '}';
 	return i;
 }
