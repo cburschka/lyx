@@ -1081,6 +1081,7 @@ def revert_mhchem(document):
     i = 0
     j = 0
     k = 0
+    mhchem = "off"
     i = find_token(document.header, "\\use_mhchem 1", 0)
     if i != -1:
         mhchem = "auto"
