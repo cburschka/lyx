@@ -148,7 +148,7 @@ public:
 	///
 	static int displayMargin() { return 12; }
 	
-	/// Force inset into LTR environment if surroundings are RTL?
+	/// Force inset into LTR environment if surroundings are RTL
 	virtual bool forceLTR() const { return true; }
 
 	///
