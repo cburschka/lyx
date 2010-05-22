@@ -53,10 +53,12 @@ What's new
 - Fix reverse search when the document name contains a character which is
   forbidden in latex filenames (such as spaces).
 
+- Improve reverse search for documents with index insets (bug 6649).
+
+- Safer creation of backup files on ext4 (part of bug 6587).
+
 
 * USER INTERFACE
-
-- Improve reverse search for documents with index insets (bug 6649).
 
 
 

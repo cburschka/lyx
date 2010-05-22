@@ -853,6 +853,17 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 // Should probably be moved to somewhere else: BufferView? LyXView?
 bool Buffer::save() const
 {
+	// ask if the disk file has been externally modified (use checksum method)
+	if (fileName().exists() && isExternallyModified(checksum_method)) {
+		docstring const file = makeDisplayPath(absFileName(), 20);
+		docstring text = bformat(_("Document %1$s has been externally modified. Are you sure "
+							     "you want to overwrite this file?"), file);
+		int const ret = Alert::prompt(_("Overwrite modified file?"),
+			text, 1, 1, _("&Overwrite"), _("&Cancel"));
+		if (ret == 1)
+			return false;
+	}
+
 	// We don't need autosaves in the immediate future. (Asger)
 	resetAutosaveTimers();
 
@@ -868,7 +879,7 @@ bool Buffer::save() const
 			backupName = FileName(addName(lyxrc.backupdir_path,
 						      mangledName));
 		}
-		if (fileName().copyTo(backupName)) {
+		if (fileName().moveTo(backupName)) {
 			madeBackup = true;
 		} else {
 			Alert::error(_("Backup failure"),
@@ -877,17 +888,6 @@ bool Buffer::save() const
 					     from_utf8(backupName.absFilename())));
 			//LYXERR(Debug::DEBUG, "Fs error: " << fe.what());
 		}
-	}
-
-	// ask if the disk file has been externally modified (use checksum method)
-	if (fileName().exists() && isExternallyModified(checksum_method)) {
-		docstring const file = makeDisplayPath(absFileName(), 20);
-		docstring text = bformat(_("Document %1$s has been externally modified. Are you sure "
-							     "you want to overwrite this file?"), file);
-		int const ret = Alert::prompt(_("Overwrite modified file?"),
-			text, 1, 1, _("&Overwrite"), _("&Cancel"));
-		if (ret == 1)
-			return false;
 	}
 
 	if (writeFile(d->filename)) {
