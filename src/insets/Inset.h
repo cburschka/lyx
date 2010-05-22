@@ -225,7 +225,7 @@ public:
 	virtual bool isFreeSpacing() const;
 	/// Don't eliminate empty paragraphs
 	virtual bool allowEmpty() const;
-	/// Force inset into LTR environment if surroundings are RTL?
+	/// Force inset into LTR environment if surroundings are RTL
 	virtual bool forceLTR() const;
 
 	/// Where should we go when we press the up or down cursor key?

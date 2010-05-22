@@ -51,7 +51,7 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "href"; }
-	/// Force inset into LTR environment if surroundings are RTL?
+	/// Force inset into LTR environment if surroundings are RTL
 	bool forceLTR() const { return true; }
 	///
 	virtual bool isInToc() const { return true; }
