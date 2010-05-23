@@ -1,4 +1,4 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -3330,20 +3330,10 @@ babel
  allows you to customize your document for your favorite language (see the
  
 \family sans
-\size normal
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
 Language
 \family default
-\size default
  popup).
  In particular, it handles hyphenation and automatic translation of all
  labels like 
@@ -3802,6 +3792,38 @@ is needed by several modules to place footnotes at the end of sections,
 \end_layout
 
 \begin_layout Subsection
+Braille module
+\end_layout
+
+\begin_layout Subsubsection
+braille
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "braille"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/braille/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+braille 
+\family default
+makes it possible to typeset Braille, a character system for blind people.
+\end_layout
+
+\begin_layout Subsection
 Linguistics module
 \end_layout
 
@@ -3895,19 +3917,19 @@ enumitem
  subexamples.
 \end_layout
 
-\begin_layout Subsection
-Braille module
+\begin_layout Section
+Language packages
 \end_layout
 
-\begin_layout Subsubsection
-braille
+\begin_layout Subsection
+arabi
 \end_layout
 
 \begin_layout Description
 Found: 
 \begin_inset Info
 type  "package"
-arg   "braille"
+arg   "arabi"
 \end_inset
 
 
@@ -3916,15 +3938,145 @@ arg   "braille"
 \begin_layout Description
 CTAN: 
 \family typewriter
-macros/latex/contrib/braille/
+language/arabic/arabi/
 \end_layout
 
 \begin_layout Description
 Notes: The package 
 \family sans
-braille 
+arabi
 \family default
-makes it possible to typeset Braille, a character system for blind people.
+ is needed by LyX to be able to output documents with the document languages
+ Arabic or Farsi.
+\end_layout
+
+\begin_layout Subsection
+japanese
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "japanese"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+language/japanese/japanese/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+japanese
+\family default
+ is needed by LyX to be able to output section headings and dates in Japanese
+ when the document language is 
+\begin_inset Quotes eld
+\end_inset
+
+Japanese
+\begin_inset Quotes erd
+\end_inset
+
+.
+ To use this option, the Japanese TeX system pTeX (CTAN: 
+\family typewriter
+language/japanese/ptex/
+\family default
+) is required.
+\end_layout
+
+\begin_layout Subsection
+lithuanian
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "lithuanian"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+language/lithuanian/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+lithuanian
+\family default
+ is needed by LyX to be able to output documents with the document language
+ Lithuanian.
+\end_layout
+
+\begin_layout Subsection
+mongolian-babel
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "mongolian"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+language/mongolian/babel/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+mongolian-babel
+\family default
+ is needed by LyX to be able to output documents with the document language
+ Mongolian.
+\end_layout
+
+\begin_layout Subsection
+turkmen
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "turkmen"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+language/turkmen/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+turkmen
+\family default
+ is needed by LyX to be able to output documents with the document language
+ Turkmen.
 \end_layout
 
 \begin_layout Section
@@ -4220,6 +4372,35 @@ fancy
 \end_layout
 
 \begin_layout Subsection
+hyphenat
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "hyphenat"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/hyphenat/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+hyphenat
+\family default
+ is needed by some document classes and document languages to disable hyphenatio
+n.
+\end_layout
+
+\begin_layout Subsection
 ifthen
 \end_layout
 
@@ -4261,48 +4442,6 @@ if
 \color none
 ) for LaTeX documents.
  This functionality is needed by some classes and modules.
-\end_layout
-
-\begin_layout Subsection
-japanese
-\end_layout
-
-\begin_layout Description
-Found: 
-\begin_inset Info
-type  "package"
-arg   "japanese"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family typewriter
-language/japanese/japanese/
-\end_layout
-
-\begin_layout Description
-Notes: The 
-\family sans
-babel japanese
-\family default
- option is needed by LyX to be able to output section headings and dates
- in Japanese when the document language is 
-\begin_inset Quotes eld
-\end_inset
-
-Japanese
-\begin_inset Quotes erd
-\end_inset
-
-.
- To use this option, the Japanese TeX system pTeX (CTAN: 
-\family typewriter
-language/japanese/ptex/
-\family default
-) is required.
 \end_layout
 
 \begin_layout Subsection
