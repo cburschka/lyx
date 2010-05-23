@@ -114,11 +114,21 @@ GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 void GuiBox::on_innerBoxCO_activated(QString const & str)
 {
 	bool const ibox = (str != qt_("None"));
+	int outer = typeCO->currentIndex();
 	valignCO->setEnabled(ibox);
 	ialignCO->setEnabled(ibox);
 	halignCO->setEnabled(!ibox);
 	heightCB->setEnabled(ibox);
-	pagebreakCB->setEnabled(!ibox && typeCO->currentIndex() == 1);
+	// if an outer box from the fancybox LaTeX-package has no inner box,
+	// the width cannot be specified
+	if (!ibox && outer != 0 && outer != 1) {
+		widthED->setEnabled(false);
+		widthUnitsLC->setEnabled(false);
+	} else {
+		widthED->setEnabled(true);
+		widthUnitsLC->setEnabled(true);
+	}
+	pagebreakCB->setEnabled(!ibox && outer == 1);
 	setSpecial(ibox);
 	changed();
 }
@@ -140,8 +150,16 @@ void GuiBox::on_typeCO_activated(int index)
 	if (innerBoxCO->count() == 2)
 		++itype;
 	pagebreakCB->setEnabled(index == 1 && itype == 0);
-	widthED->setEnabled(index != 5);
-	widthUnitsLC->setEnabled(index != 5);
+	// if an outer box from the fancybox LaTeX-package has no inner box,
+	// the width cannot be specified
+	if (itype == 0
+	    && (index == 2 || index == 3 || index == 4 || index == 6)) {
+		widthED->setEnabled(false);
+		widthUnitsLC->setEnabled(false);
+	} else {
+		widthED->setEnabled(index != 5);
+		widthUnitsLC->setEnabled(index != 5);
+	}
 	setInnerType(frameless, itype);
 	changed();
 }
