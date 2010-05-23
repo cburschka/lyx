@@ -36,18 +36,19 @@ namespace lyx {
 
 namespace Alert = frontend::Alert;
 
-/// ask the user what to do if a file already exists
+/// Ask the user what to do if a file already exists
 static int checkOverwrite(FileName const & filename)
 {
 	if (!filename.exists())
 		return 0;
+
 	docstring text = bformat(_("The file %1$s already exists.\n\n"
-							 "Do you want to overwrite that file?"),
-						makeDisplayPath(filename.absFilename()));
+				   "Do you want to overwrite that file?"),
+				   makeDisplayPath(filename.absFilename()));
 	return Alert::prompt(_("Overwrite file?"),
-					 text, 0, 2,
-					 _("&Overwrite"), _("Overwrite &all"),
-					 _("&Cancel export"));
+				text, 0, 2,
+				_("&Overwrite"), _("Overwrite &all"),
+				_("&Cancel export"));
 }
 
 
@@ -69,7 +70,10 @@ CopyStatus copyFile(string const & format,
 	// overwrite themselves. This check could be changed to
 	// boost::filesystem::equivalent(sourceFile, destFile) if export to
 	// other directories than the document directory is desired.
-	if (!prefixIs(onlyPath(sourceFile.absFilename()), package().temp_dir().absFilename()))
+	// Also don't overwrite files that already exist and are identical
+	// to the source files.
+	if (!prefixIs(onlyPath(sourceFile.absFilename()), package().temp_dir().absFilename())
+	    || sourceFile.checksum() == destFile.checksum())
 		return ret;
 
 	if (!force) {
