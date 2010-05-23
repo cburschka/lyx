@@ -56,9 +56,12 @@ What's new
 
 - Improve reverse search for documents with index insets (bug 6649).
 
-- Safer creation of backup files on ext4 (part of bug 6587).
-
 - Honour physical paper size settings on output (bug 5247).
+
+- Fix bug that references section numbers were output in the wrong order
+  in docments with the languages Arabic, Fari and Hewbrew (bug 6711).
+
+- Safer creation of backup files on ext4 (part of bug 6587).
 
 - Simplify definition of \greektext (bug 6456 and 6458).
 
