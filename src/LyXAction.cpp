@@ -2830,13 +2830,13 @@ void LyXAction::init()
  * \li Action: Sets the cursor position in the previewed (e.g. dvi) file based on the row
                number in LyX window.
  * \li Notion: The external program used for forward search call can be specified in
-               \\forward_search_dvi and \\forward_search_pdf RC settings.
-	       By default, the value for pdf is empty, while for dvi it is\n
-	       "xdvi -sourceposition $$n:$$t $$o"\n
-	       The values replaced in the call: $$n for row number, $$t for
-	       exported temporary .tex file, $$o exported output file, either
-	       dvi or pdf, depending on which one exists in the temp dir
-	       (preferred is dvi).
+               \forward_search_dvi and \forward_search_pdf RC settings.
+               By default, the value for pdf is empty, while for dvi it is\n
+               "xdvi -sourceposition $$n:$$t $$o"\n
+               The values replaced in the call: $$n for row number, $$t for
+               exported temporary .tex file, $$o exported output file, either
+               dvi or pdf, depending on which one exists in the temp dir
+               (preferred is dvi).
  * \li Syntax: forward-search
  * \li Origin: sanda, 14 Apr 2010
  * \endvar
