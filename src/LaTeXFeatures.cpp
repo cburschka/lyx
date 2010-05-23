@@ -193,7 +193,7 @@ static string const textgreek_def =
 	"  \\fontencoding{LGR}\\selectfont\\def\\encodingdefault{LGR}}\n"
 	"\\DeclareRobustCommand{\\textgreek}[1]{\\leavevmode{\\greektext #1}}\n"
 	"\\DeclareFontEncoding{LGR}{}{}\n"
-	"\\DeclareTextSymbol{\\~}{LGR}{126}");
+	"\\DeclareTextSymbol{\\~}{LGR}{126}";
 
 static string const textcyr_def =
 	"\\DeclareRobustCommand{\\cyrtext}{%\n"
