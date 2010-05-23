@@ -62,10 +62,12 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 	// File already open?
 	Buffer * checkBuffer = theBufferList().getBuffer(filename);
 	if (checkBuffer) {
-		// sometimes (when setting the master buffer from a child)
+		// Sometimes (when setting the master buffer from a child)
 		// we accept a dirty buffer right away (otherwise we'd get
-		// an infinite loop (bug 5514)
-		if (checkBuffer->isClean() || acceptDirty)
+		// an infinite loop (bug 5514).
+		// We also accept a dirty buffer when the document has not
+		// yet been saved to disk.
+		if (checkBuffer->isClean() || acceptDirty || !filename.exists())
 			return checkBuffer;
 		docstring const file = makeDisplayPath(filename.absFilename(), 20);
 		docstring text = bformat(_(

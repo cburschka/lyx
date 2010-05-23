@@ -1462,8 +1462,9 @@ void GuiView::openDocument(string const & fname)
 				from_utf8(fullname.absFilename())));
 		return;
 	}
-	// if the file doesn't exist, let the user create one
-	if (!fullname.exists()) {
+	// if the file doesn't exist and isn't already open (bug 6645),
+	// let the user create one
+	if (!fullname.exists() && !theBufferList().exists(fullname)) {
 		// the user specifically chose this name. Believe him.
 		Buffer * const b = newFile(filename, string(), true);
 		if (b)
