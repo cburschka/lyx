@@ -58,6 +58,9 @@ What's new
 
 - Honour physical paper size settings on output (bug 5247).
 
+- Fix bug that documents containing text parts in Arabic and Farsi could
+  not be compiled (bug 6714).
+
 - Fix bug that references section numbers were output in the wrong order
   in docments with the languages Arabic, Fari and Hewbrew (bug 6711).
 

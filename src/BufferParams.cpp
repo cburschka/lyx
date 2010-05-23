@@ -1092,9 +1092,12 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// this one is not per buffer
 	// for arabic_arabi and farsi we also need to load the LAE and
 	// LFE encoding
+	size_t fars = language_options.str().find("farsi");
+	size_t arab = language_options.str().find("arabic");
 	if (lyxrc.fontenc != "default" && language->lang() != "japanese") {
 		if (language->lang() == "arabic_arabi"
-		    || language->lang() == "farsi") {
+			|| language->lang() == "farsi" || fars != string::npos
+			|| arab != string::npos) {
 			os << "\\usepackage[" << from_ascii(lyxrc.fontenc)
 			   << ",LFE,LAE]{fontenc}\n";
 			texrow.newline();
