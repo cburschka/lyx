@@ -831,9 +831,11 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\html_math_img_scale") {
 		lex >> html_math_img_scale;
 	} else if (token == "\\html_latex_start") {
-		lex >> html_latex_start;
+		lex.eatLine();
+		html_latex_start = lex.getString();
 	} else if (token == "\\html_latex_end") {
-		lex >> html_latex_end;
+		lex.eatLine();
+		html_latex_end = lex.getString();
 	} else {
 		lyxerr << "BufferParams::readToken(): Unknown token: " << 
 			token << endl;
@@ -1056,8 +1058,8 @@ void BufferParams::writeFile(ostream & os) const
 		 << "\\html_math_output " << html_math_output << '\n'
 		 << "\\html_be_strict " << convert<string>(html_be_strict) << '\n'
 		 << "\\html_math_img_scale " << convert<string>(html_math_img_scale) << '\n'
-		 << "\\html_latex_start \"" << html_latex_start << "\"\n"
-		 << "\\html_latex_end \"" << html_latex_end << "\"\n";
+		 << "\\html_latex_start " << html_latex_start << "\n"
+		 << "\\html_latex_end " << html_latex_end << "\n";
 
 	os << pimpl_->authorlist;
 }

@@ -1540,6 +1540,43 @@ def revert_pagesizes(document):
       del document.header[i]
 
 
+def convert_html_quotes(document):
+  " Remove quotes around html_latex_start and html_latex_end "
+
+  i = find_token(document.header, '\\html_latex_start', 0)
+  if i != -1:
+    line = document.header[i]
+    l = re.compile(r'\\html_latex_start\s+"(.*)"')
+    m = l.match(line)
+    if m != None:
+      document.header[i] = "\\html_latex_start " + m.group(1)
+      
+  i = find_token(document.header, '\\html_latex_end', 0)
+  if i != -1:
+    line = document.header[i]
+    l = re.compile(r'\\html_latex_end\s+"(.*)"')
+    m = l.match(line)
+    if m != None:
+      document.header[i] = "\\html_latex_end " + m.group(1)
+      
+
+def revert_html_quotes(document):
+  " Remove quotes around html_latex_start and html_latex_end "
+  
+  i = find_token(document.header, '\\html_latex_start', 0)
+  if i != -1:
+    line = document.header[i]
+    l = re.compile(r'\\html_latex_start\s+(.*)')
+    m = l.match(line)
+    document.header[i] = "\\html_latex_start \"" + m.group(1) + "\""
+      
+  i = find_token(document.header, '\\html_latex_end', 0)
+  if i != -1:
+    line = document.header[i]
+    l = re.compile(r'\\html_latex_end\s+(.*)')
+    m = l.match(line)
+    document.header[i] = "\\html_latex_end \"" + m.group(1) + "\""
+
 ##
 # Conversion hub
 #
@@ -1588,9 +1625,11 @@ convert = [[346, []],
            [386, []],
            [387, []],
            [388, []],
-					]
+           [389, [convert_html_quotes]]
+          ]
 
-revert =  [[387, [revert_pagesizes]],
+revert =  [[388, [revert_html_quotes]],
+           [387, [revert_pagesizes]],
            [386, [revert_math_scale]],
            [385, [revert_lyx_version]],
            [384, [revert_shadedboxcolor]],

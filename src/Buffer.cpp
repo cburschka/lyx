@@ -126,7 +126,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 388; // uwestoehr: support for more page sizes
+int const LYX_FORMAT = 389; // rgh: change how html_latex_* is stored
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
