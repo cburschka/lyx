@@ -20089,7 +20089,7 @@ svn --version
 Choose ssh client for Windows.
  There are more possibilities, we will use the one from Putty tools
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Flex URL
@@ -20255,6 +20255,92 @@ svn co svn+ssh://user@server/repository_path
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 1 1274738367
+End-of-Line Conversions
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1 1274738433
+When the collsraborators are mixing Linux and Windows environments, LyX
+ will use different line endings inside the .lyx files.
+ This is not problem as far as LyX functionality is concerned, but the commit
+ diffs will be huge and merge-conflicts prone.
+ Fortunately SVN itself knows
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1 1274738731
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1 1274738731
+
+http://svnbook.red-bean.com/en/1.4/svn.advanced.props.file-portability.html
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ how to deal with CR/LF problems when switching .lyx files to the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1 1274738399
+native
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ mode.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1 1274738457
+For the lazy guys: 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1 1274738457
+svn propset svn:eol-style native FILE_NAME
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
