@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 387
+\lyxformat 389
 \begin_document
 \begin_header
 \textclass scrbook
@@ -127,9 +127,6 @@
 \output_changes false
 \html_math_output 0
 \html_be_strict true
-\html_math_img_scale 1
-\html_latex_start "<span class='latex'>"
-\html_latex_end "</span>"
 \author 1 "Richard Heck" 
 \end_header
 
@@ -2785,7 +2782,7 @@ Document ! Settings
 
 \begin_layout Standard
 
-\change_inserted 1 1269456922
+\change_inserted 1 1274730016
 Some modules require LaTeX packages that are not always installed by default.
  LyX will warn you if you do not have the needed package.
  You can still use the module while editing your file, but you will not
