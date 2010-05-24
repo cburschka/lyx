@@ -35,7 +35,9 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Updated LaTeX configuration overview
+- Updated German and Slovak user interace localizations.
+
+- Updated LaTeX configuration overview.
 
 
 * WINDOWS INSTALLER
@@ -52,17 +54,17 @@ What's new
 * DOCUMENT INPUT/OUTPUT
 
 - Fix reverse search when the document name contains a character which is
-  forbidden in latex filenames (such as spaces).
+  forbidden in LaTeX filenames (such as spaces).
 
-- Improve reverse search for documents with index insets (bug 6649).
+- Improve reverse search for documents containing index insets (bug 6649).
 
 - Honour physical paper size settings on output (bug 5247).
 
-- Fix bug that documents containing text parts in Arabic and Farsi could
-  not be compiled (bug 6714).
+- Fix compilation error in documents containing text parts in Arabic and
+  Farsi (bug 6714).
 
-- Fix bug that references section numbers were output in the wrong order
-  in docments with the languages Arabic, Farsi and Hewbrew (bug 6711).
+- Output references to section numbers in the correct direction in
+  documents with right-to-left-languages (bug 6711).
 
 - Safer creation of backup files on ext4 (part of bug 6587).
 
@@ -77,7 +79,7 @@ What's new
 
 - Correctly restore a dissolved macro inset on undo (bug 6678).
 
-- Correctly handle empty cutom line spacing in settings (bug 6649).
+- Correctly handle empty custom line spacing in settings (bug 6649).
 
 
 * DOCUMENTATION AND LOCALIZATION
