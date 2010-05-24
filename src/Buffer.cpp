@@ -1657,7 +1657,7 @@ void Buffer::validate(LaTeXFeatures & features) const
 	updateMacros();
 
 	for_each(paragraphs().begin(), paragraphs().end(),
-		 bind(&Paragraph::validate, _1, boost::ref(features)));
+		 bind(&Paragraph::validate, _1, ref(features)));
 
 	if (lyxerr.debugging(Debug::LATEX)) {
 		features.showStruct();
