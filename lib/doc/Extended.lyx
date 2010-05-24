@@ -1,4 +1,4 @@
-#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.7svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -19373,6 +19373,58 @@ svn co svn+ssh://user@server/repository_path
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsubsection
+End-of-Line Conversions
+\end_layout
+
+\begin_layout Standard
+When the collaborators are mixing Linux and Windows environments, LyX will
+ use different line endings inside the .lyx files.
+ This is not problem as far as LyX functionality is concerned, but the commit
+ diffs will be huge and merge-conflicts prone.
+ Fortunately SVN itself knows
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+http://svnbook.red-bean.com/en/1.4/svn.advanced.props.file-portability.html
+\end_layout
+
+\end_inset
+
+ how to deal with CR/LF problems when switching .lyx files to the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+native
+\end_layout
+
+\end_inset
+
+ mode.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+For the lazy guys: 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn propset svn:eol-style native FILE_NAME
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
