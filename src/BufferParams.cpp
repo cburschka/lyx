@@ -404,8 +404,6 @@ BufferParams::BufferParams()
 	html_be_strict = false;
 	html_math_output = MathML;
 	html_math_img_scale = 1.0;
-	html_latex_start = "<span class='latex'>";
-	html_latex_end = "</span>";
 }
 
 
@@ -1056,10 +1054,14 @@ void BufferParams::writeFile(ostream & os) const
 	os << "\\tracking_changes " << convert<string>(trackChanges) << '\n'
 		 << "\\output_changes " << convert<string>(outputChanges) << '\n'
 		 << "\\html_math_output " << html_math_output << '\n'
-		 << "\\html_be_strict " << convert<string>(html_be_strict) << '\n'
-		 << "\\html_math_img_scale " << convert<string>(html_math_img_scale) << '\n'
-		 << "\\html_latex_start " << html_latex_start << "\n"
-		 << "\\html_latex_end " << html_latex_end << "\n";
+		 << "\\html_be_strict " << convert<string>(html_be_strict) << '\n';
+	
+	if (html_math_img_scale != 1.0)
+		os << "\\html_math_img_scale " << convert<string>(html_math_img_scale) << '\n';
+	if (!html_latex_start.empty())
+		os << "\\html_latex_start " << html_latex_start << '\n';
+	if (!html_latex_end.empty())
+		 os << "\\html_latex_end " << html_latex_end << '\n';
 
 	os << pimpl_->authorlist;
 }
