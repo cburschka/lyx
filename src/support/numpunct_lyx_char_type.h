@@ -20,41 +20,36 @@ namespace std
 {
 
 	template<>
-	class numpunct<lyx::char_type> : public locale::facet
+	class numpunct<lyx::char_type> : public numpunct<char>
 	{
 	public:
 
 		typedef lyx::char_type char_type;
 		typedef basic_string<lyx::char_type> string_type;
 
+		static locale::id id;
 
-		static locale::id			id;
-
-		explicit numpunct(size_t __refs = 0) : chared(__refs)
+		explicit numpunct(size_t __refs = 0) : numpunct<char>(__refs)
 		{}
 
 		char_type decimal_point() const
-		{ return chared.decimal_point(); }
+		{ return numpunct<char>::decimal_point(); }
 
 		char_type thousands_sep() const
-		{ return chared.thousands_sep(); }
+		{ return numpunct<char>::thousands_sep(); }
 
 		string grouping() const
-		{ return chared.grouping(); }
+		{ return numpunct<char>::grouping(); }
 
 		string_type truename() const
-		{ return lyx::from_ascii(chared.truename()); }
+		{ return lyx::from_ascii(numpunct<char>::truename()); }
 
 		string_type falsename() const
-		{ return lyx::from_ascii(chared.falsename()); }
+		{ return lyx::from_ascii(numpunct<char>::falsename()); }
 
 
 	protected:
 		virtual ~numpunct();
-
-
-	private:
-		numpunct<char> chared;
 
 	};
 
