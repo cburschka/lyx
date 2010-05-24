@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-05-17 19:22+0200\n"
+"POT-Creation-Date: 2010-05-24 10:59+0200\n"
 "PO-Revision-Date: 2010-02-26 02:01+0100\n"
 "Last-Translator: Οδυσσέας Δαγκλής <o2d@freemail.gr>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -83,16 +83,16 @@ msgstr ""
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:888
+#: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:862
 #: src/Buffer.cpp:2750 src/Buffer.cpp:2796 src/Buffer.cpp:2831
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
 #: src/LyXFunc.cpp:1926 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1266
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1624
-#: src/frontends/qt4/GuiView.cpp:1816 src/frontends/qt4/GuiView.cpp:1868
-#: src/frontends/qt4/GuiView.cpp:1929 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1625
+#: src/frontends/qt4/GuiView.cpp:1817 src/frontends/qt4/GuiView.cpp:1869
+#: src/frontends/qt4/GuiView.cpp:1930 src/insets/InsetBibtex.cpp:143
 msgid "&Cancel"
 msgstr "&Ακύρωση"
 
@@ -190,7 +190,7 @@ msgstr "&Προσθήκη"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/LabelUi.ui:92 src/frontends/qt4/ui/NomenclUi.ui:105
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
-#: src/LyXFunc.cpp:830 src/buffer_funcs.cpp:110
+#: src/LyXFunc.cpp:830 src/buffer_funcs.cpp:112
 #: src/frontends/qt4/ButtonController.cpp:231
 msgid "Cancel"
 msgstr "Ακύρωση"
@@ -375,7 +375,7 @@ msgstr "Επα&ναφορά"
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/VSpaceUi.ui:49
 #: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1342
-#: src/frontends/qt4/GuiDocument.cpp:2240
+#: src/frontends/qt4/GuiDocument.cpp:2244
 msgid "&Apply"
 msgstr "Ε&φαρμογή"
 
@@ -499,7 +499,7 @@ msgstr "Μέγε&θος:"
 #: src/frontends/qt4/GuiDocument.cpp:668 src/frontends/qt4/GuiDocument.cpp:680
 #: src/frontends/qt4/GuiDocument.cpp:1176
 #: src/frontends/qt4/GuiDocument.cpp:1221
-#: src/frontends/qt4/GuiDocument.cpp:2281 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiDocument.cpp:2285 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiListings.cpp:152
 #: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1805
 msgid "Default"
@@ -3240,7 +3240,7 @@ msgid "&User interface file:"
 msgstr "Αρχείο &διεπαφής χρήστη:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:721
-#: src/frontends/qt4/GuiView.cpp:1929
+#: src/frontends/qt4/GuiView.cpp:1930
 msgid "&Save"
 msgstr "Α&ποθήκευση"
 
@@ -4029,7 +4029,7 @@ msgstr "Επιλογή αυτού για ευέλικτη τοποθέτηση"
 msgid "Allow &floating"
 msgstr "Να επιτρέπεται αιώρησ&η"
 
-#: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:27
+#: lib/layouts/IEEEtran.layout:34 lib/layouts/aa.layout:27
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:52
 #: lib/layouts/achemso.layout:30 lib/layouts/acmsiggraph.layout:34
 #: lib/layouts/amsart.layout:27 lib/layouts/amsbook.layout:28
@@ -4055,377 +4055,113 @@ msgstr "Να επιτρέπεται αιώρησ&η"
 msgid "Standard"
 msgstr "Απλό Κείμενο"
 
-#: lib/layouts/IEEEtran.layout:49
-msgid "TheoremTemplate"
-msgstr "Πρότυπο Θεωρήματος"
+#: lib/layouts/IEEEtran.layout:61 lib/layouts/aa.layout:64
+#: lib/layouts/aa.layout:254 lib/layouts/aapaper.layout:73
+#: lib/layouts/aapaper.layout:160 lib/layouts/aastex.layout:91
+#: lib/layouts/aastex.layout:207 lib/layouts/apa.layout:39
+#: lib/layouts/beamer.layout:738 lib/layouts/broadway.layout:185
+#: lib/layouts/cl2emult.layout:40 lib/layouts/docbook-book.layout:11
+#: lib/layouts/docbook-chapter.layout:9 lib/layouts/docbook-section.layout:9
+#: lib/layouts/egs.layout:246 lib/layouts/elsart.layout:91
+#: lib/layouts/elsarticle.layout:53 lib/layouts/entcs.layout:39
+#: lib/layouts/foils.layout:125 lib/layouts/hollywood.layout:331
+#: lib/layouts/ijmpc.layout:33 lib/layouts/ijmpd.layout:36
+#: lib/layouts/iopart.layout:55 lib/layouts/isprs.layout:92
+#: lib/layouts/kluwer.layout:104 lib/layouts/latex8.layout:33
+#: lib/layouts/llncs.layout:100 lib/layouts/ltugboat.layout:131
+#: lib/layouts/paper.layout:104 lib/layouts/powerdot.layout:41
+#: lib/layouts/revtex.layout:90 lib/layouts/revtex4.layout:121
+#: lib/layouts/scrlettr.layout:188 lib/layouts/scrlttr2.layout:269
+#: lib/layouts/siamltex.layout:183 lib/layouts/sigplanconf.layout:101
+#: lib/layouts/simplecv.layout:119 lib/layouts/svprobth.layout:35
+#: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:30
+#: lib/layouts/db_stdtitle.inc:13 lib/layouts/scrclass.inc:147
+#: lib/layouts/stdtitle.inc:12 lib/layouts/svjour.inc:123
+msgid "Title"
+msgstr "Τίτλος"
 
-#: lib/layouts/IEEEtran.layout:65 lib/layouts/beamer.layout:1051
-#: lib/layouts/elsart.layout:285 lib/layouts/foils.layout:278
-#: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:211
-#: lib/layouts/ijmpd.layout:211 lib/layouts/llncs.layout:371
-#: lib/layouts/siamltex.layout:150 lib/layouts/svjour.inc:394
-#: lib/layouts/theorems-order.inc:76 lib/layouts/theorems-proof.inc:13
-#: lib/layouts/theorems-bytype.module:46 lib/layouts/theorems-std.module:20
-msgid "Proof"
-msgstr "Απόδειξη"
+#: lib/layouts/IEEEtran.layout:65 lib/layouts/IEEEtran.layout:114
+#: lib/layouts/IEEEtran.layout:155 lib/layouts/IEEEtran.layout:184
+#: lib/layouts/aa.layout:117 lib/layouts/aa.layout:140
+#: lib/layouts/aa.layout:155 lib/layouts/aa.layout:179
+#: lib/layouts/aa.layout:316 lib/layouts/aastex.layout:266
+#: lib/layouts/aastex.layout:283 lib/layouts/aastex.layout:323
+#: lib/layouts/aastex.layout:349 lib/layouts/aastex.layout:388
+#: lib/layouts/achemso.layout:119 lib/layouts/acmsiggraph.layout:65
+#: lib/layouts/acmsiggraph.layout:111 lib/layouts/acmsiggraph.layout:138
+#: lib/layouts/elsarticle.layout:57 lib/layouts/elsarticle.layout:99
+#: lib/layouts/elsarticle.layout:118 lib/layouts/elsarticle.layout:196
+#: lib/layouts/elsarticle.layout:224 lib/layouts/elsarticle.layout:253
+#: lib/layouts/entcs.layout:73 lib/layouts/iopart.layout:59
+#: lib/layouts/iopart.layout:128 lib/layouts/iopart.layout:147
+#: lib/layouts/iopart.layout:172 lib/layouts/iopart.layout:201
+#: lib/layouts/siamltex.layout:274 lib/layouts/siamltex.layout:294
+#: lib/layouts/sigplanconf.layout:68 lib/layouts/sigplanconf.layout:121
+#: lib/layouts/sigplanconf.layout:154 lib/layouts/svglobal3.layout:77
+#: lib/layouts/tufte-handout.layout:48 lib/layouts/amsdefs.inc:31
+#: lib/layouts/amsdefs.inc:53 lib/layouts/amsdefs.inc:73
+#: lib/layouts/amsdefs.inc:97 lib/layouts/amsdefs.inc:124
+#: lib/layouts/lyxmacros.inc:45 lib/layouts/lyxmacros.inc:66
+#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:15
+#: lib/layouts/stdtitle.inc:34 lib/layouts/stdtitle.inc:53
+msgid "FrontMatter"
+msgstr "Εμπρόσθιο Τμήμα"
 
-#: lib/layouts/IEEEtran.layout:68 lib/layouts/heb-article.layout:110
-msgid "Proof:"
-msgstr "Απόδειξη:"
+#: lib/layouts/IEEEtran.layout:81 lib/layouts/IEEEtran.layout:85
+msgid "IEEE membership"
+msgstr ""
 
-#: lib/layouts/IEEEtran.layout:73 lib/layouts/beamer.layout:1057
-#: lib/layouts/elsart.layout:256 lib/layouts/foils.layout:218
-#: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:190
-#: lib/layouts/ijmpd.layout:193 lib/layouts/llncs.layout:412
-#: lib/layouts/siamltex.layout:62 lib/layouts/siamltex.layout:112
-#: lib/layouts/svjour.inc:436 lib/layouts/theorems-ams-bytype.inc:51
-#: lib/layouts/theorems-ams-bytype.inc:52
-#: lib/layouts/theorems-ams-bytype.inc:239 lib/layouts/theorems-ams.inc:24
-#: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:208
-#: lib/layouts/theorems-bytype.inc:26 lib/layouts/theorems-bytype.inc:27
-#: lib/layouts/theorems-bytype.inc:214 lib/layouts/theorems-order.inc:7
-#: lib/layouts/theorems-proof.inc:14
-#: lib/layouts/theorems-starred-equivalents.inc:6
-#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:24
-#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:208
-#: lib/layouts/theorems-chap-bytype.module:54
-#: lib/layouts/theorems-chap.module:19
-#: lib/layouts/theorems-sec-bytype.module:54
-#: lib/layouts/theorems-sec.module:18
-msgid "Theorem"
-msgstr "Θεώρημα"
+#: lib/layouts/IEEEtran.layout:100
+#, fuzzy
+msgid "Lowercase"
+msgstr "Μικρά Γράμματα|μ"
 
-#: lib/layouts/IEEEtran.layout:76
-msgid "Theorem #:"
-msgstr "Θεώρημα #:"
+#: lib/layouts/IEEEtran.layout:104
+#, fuzzy
+msgid "lowercase"
+msgstr "Μικρά Γράμματα|μ"
 
-#: lib/layouts/IEEEtran.layout:83 lib/layouts/elsart.layout:312
-#: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
-#: lib/layouts/ijmpc.layout:238 lib/layouts/ijmpd.layout:243
-#: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:82
-#: lib/layouts/svjour.inc:373 lib/layouts/theorems-ams-bytype.inc:98
-#: lib/layouts/theorems-ams.inc:71 lib/layouts/theorems-bytype.inc:73
-#: lib/layouts/theorems-order.inc:19
-#: lib/layouts/theorems-starred-equivalents.inc:20 lib/layouts/theorems.inc:71
-#: lib/layouts/theorems-chap-bytype.module:78
-#: lib/layouts/theorems-sec-bytype.module:70
-msgid "Lemma"
-msgstr "Λήμμα"
+#: lib/layouts/IEEEtran.layout:111 lib/layouts/aa.layout:70
+#: lib/layouts/aa.layout:266 lib/layouts/aapaper.layout:79
+#: lib/layouts/aapaper.layout:171 lib/layouts/aastex.layout:94
+#: lib/layouts/aastex.layout:219 lib/layouts/apa.layout:113
+#: lib/layouts/beamer.layout:795 lib/layouts/broadway.layout:198
+#: lib/layouts/cl2emult.layout:57 lib/layouts/egs.layout:288
+#: lib/layouts/elsart.layout:111 lib/layouts/elsarticle.layout:115
+#: lib/layouts/entcs.layout:49 lib/layouts/foils.layout:133
+#: lib/layouts/hollywood.layout:318 lib/layouts/ijmpc.layout:40
+#: lib/layouts/ijmpd.layout:43 lib/layouts/iopart.layout:124
+#: lib/layouts/isprs.layout:75 lib/layouts/kluwer.layout:157
+#: lib/layouts/llncs.layout:175 lib/layouts/ltugboat.layout:150
+#: lib/layouts/paper.layout:114 lib/layouts/powerdot.layout:64
+#: lib/layouts/revtex.layout:98 lib/layouts/revtex4.layout:129
+#: lib/layouts/siamltex.layout:204 lib/layouts/sigplanconf.layout:117
+#: lib/layouts/svprobth.layout:52 lib/layouts/agu_stdtitle.inc:167
+#: lib/layouts/amsdefs.inc:52 lib/layouts/db_stdtitle.inc:21
+#: lib/layouts/scrclass.inc:155 lib/layouts/stdtitle.inc:31
+#: lib/layouts/svjour.inc:155
+msgid "Author"
+msgstr "Συγγραφέας"
 
-#: lib/layouts/IEEEtran.layout:86
-msgid "Lemma #:"
-msgstr "Λήμμα #:"
+#: lib/layouts/IEEEtran.layout:131
+#, fuzzy
+msgid "Special Paper Notice"
+msgstr "Ειδικοί Χαρακτήρες|Ε"
 
-#: lib/layouts/IEEEtran.layout:93 lib/layouts/beamer.layout:987
-#: lib/layouts/elsart.layout:319 lib/layouts/foils.layout:250
-#: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:229
-#: lib/layouts/ijmpd.layout:230 lib/layouts/llncs.layout:316
-#: lib/layouts/siamltex.layout:72 lib/layouts/svjour.inc:334
-#: lib/layouts/theorems-ams-bytype.inc:86 lib/layouts/theorems-ams.inc:59
-#: lib/layouts/theorems-bytype.inc:61 lib/layouts/theorems-order.inc:13
-#: lib/layouts/theorems-starred-equivalents.inc:13 lib/layouts/theorems.inc:59
-#: lib/layouts/theorems-chap-bytype.module:66
-#: lib/layouts/theorems-sec-bytype.module:62
-msgid "Corollary"
-msgstr "Πόρισμα"
+#: lib/layouts/IEEEtran.layout:142
+msgid "After Title Text"
+msgstr ""
 
-#: lib/layouts/IEEEtran.layout:96
-msgid "Corollary #:"
-msgstr "Πόρισμα #:"
+#: lib/layouts/IEEEtran.layout:152
+msgid "MarkBoth"
+msgstr ""
 
-#: lib/layouts/IEEEtran.layout:103 lib/layouts/elsart.layout:326
-#: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:247
-#: lib/layouts/ijmpd.layout:253 lib/layouts/llncs.layout:385
-#: lib/layouts/siamltex.layout:92 lib/layouts/svjour.inc:408
-#: lib/layouts/theorems-ams-bytype.inc:110 lib/layouts/theorems-ams.inc:83
-#: lib/layouts/theorems-bytype.inc:85 lib/layouts/theorems-order.inc:25
-#: lib/layouts/theorems-starred-equivalents.inc:27 lib/layouts/theorems.inc:83
-#: lib/layouts/theorems-chap-bytype.module:90
-#: lib/layouts/theorems-sec-bytype.module:78
-msgid "Proposition"
-msgstr "Πρόταση"
+#: lib/layouts/IEEEtran.layout:170
+#, fuzzy
+msgid "Publisher ID"
+msgstr "Εκδότες"
 
-#: lib/layouts/IEEEtran.layout:106
-msgid "Proposition #:"
-msgstr "Πρόταση #:"
-
-#: lib/layouts/IEEEtran.layout:113 lib/layouts/elsart.layout:361
-#: lib/layouts/ijmpc.layout:283 lib/layouts/ijmpd.layout:293
-#: lib/layouts/llncs.layout:309 lib/layouts/siamltex.layout:102
-#: lib/layouts/svjour.inc:327 lib/layouts/theorems-ams-bytype.inc:122
-#: lib/layouts/theorems-ams.inc:95 lib/layouts/theorems-bytype.inc:97
-#: lib/layouts/theorems-order.inc:31
-#: lib/layouts/theorems-starred-equivalents.inc:34 lib/layouts/theorems.inc:95
-#: lib/layouts/theorems-chap-bytype.module:102
-#: lib/layouts/theorems-sec-bytype.module:86
-msgid "Conjecture"
-msgstr "Εικασία"
-
-#: lib/layouts/IEEEtran.layout:116
-msgid "Conjecture #:"
-msgstr "Εικασία #:"
-
-#: lib/layouts/IEEEtran.layout:123 lib/layouts/elsart.layout:333
-#: lib/layouts/theorems-ams-extended-bytype.module:60
-#: lib/layouts/theorems-ams-extended.module:33
-msgid "Criterion"
-msgstr "Κριτήριο"
-
-#: lib/layouts/IEEEtran.layout:126
-msgid "Criterion #:"
-msgstr "Κριτήριο #:"
-
-#: lib/layouts/IEEEtran.layout:133 lib/layouts/beamer.layout:1045
-#: lib/layouts/theorems-ams-bytype.inc:134 lib/layouts/theorems-ams.inc:107
-#: lib/layouts/theorems-bytype.inc:109 lib/layouts/theorems.inc:107
-#: lib/layouts/theorems-chap-bytype.module:114
-#: lib/layouts/theorems-sec-bytype.module:94
-msgid "Fact"
-msgstr "Δεδομένο"
-
-#: lib/layouts/IEEEtran.layout:136
-msgid "Fact #:"
-msgstr "Δεδομένο #:"
-
-#: lib/layouts/IEEEtran.layout:143
-#: lib/layouts/theorems-ams-extended-bytype.module:105
-#: lib/layouts/theorems-ams-extended.module:78
-msgid "Axiom"
-msgstr "Αξίωμα"
-
-#: lib/layouts/IEEEtran.layout:146
-msgid "Axiom #:"
-msgstr "Αξίωμα #:"
-
-#: lib/layouts/IEEEtran.layout:153 lib/layouts/beamer.layout:1015
-#: lib/layouts/elsart.layout:347 lib/layouts/foils.layout:264
-#: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:131
-#: lib/layouts/ijmpd.layout:128 lib/layouts/llncs.layout:330
-#: lib/layouts/siamltex.layout:121 lib/layouts/svjour.inc:348
-#: lib/layouts/theorems-ams-bytype.inc:146 lib/layouts/theorems-ams.inc:119
-#: lib/layouts/theorems-bytype.inc:121 lib/layouts/theorems-order.inc:37
-#: lib/layouts/theorems-starred-equivalents.inc:41
-#: lib/layouts/theorems.inc:119 lib/layouts/theorems-chap-bytype.module:126
-#: lib/layouts/theorems-sec-bytype.module:102
-msgid "Definition"
-msgstr "Ορισμός"
-
-#: lib/layouts/IEEEtran.layout:156
-msgid "Definition #:"
-msgstr "Ορισμός #:"
-
-#: lib/layouts/IEEEtran.layout:163 lib/layouts/beamer.layout:1027
-#: lib/layouts/elsart.layout:368 lib/layouts/ijmpc.layout:163
-#: lib/layouts/ijmpd.layout:160 lib/layouts/llncs.layout:337
-#: lib/layouts/svjour.inc:355 lib/layouts/theorems-ams-bytype.inc:165
-#: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-bytype.inc:140
-#: lib/layouts/theorems-order.inc:43
-#: lib/layouts/theorems-starred-equivalents.inc:48
-#: lib/layouts/theorems.inc:138 lib/layouts/theorems-chap-bytype.module:138
-#: lib/layouts/theorems-sec-bytype.module:110
-#: src/frontends/qt4/GuiDocument.cpp:820
-msgid "Example"
-msgstr "Παράδειγμα"
-
-#: lib/layouts/IEEEtran.layout:166
-msgid "Example #:"
-msgstr "Παράδειγμα #:"
-
-#: lib/layouts/IEEEtran.layout:173
-#: lib/layouts/theorems-ams-extended-bytype.module:128
-#: lib/layouts/theorems-ams-extended.module:101
-msgid "Condition"
-msgstr "Συνθήκη"
-
-#: lib/layouts/IEEEtran.layout:176
-msgid "Condition #:"
-msgstr "Συνθήκη #:"
-
-#: lib/layouts/IEEEtran.layout:183 lib/layouts/elsart.layout:375
-#: lib/layouts/llncs.layout:364 lib/layouts/svmono.layout:161
-#: lib/layouts/svjour.inc:387 lib/layouts/theorems-ams-bytype.inc:178
-#: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-bytype.inc:153
-#: lib/layouts/theorems-order.inc:49
-#: lib/layouts/theorems-starred-equivalents.inc:55
-#: lib/layouts/theorems.inc:150 lib/layouts/theorems-chap-bytype.module:150
-#: lib/layouts/theorems-sec-bytype.module:118
-msgid "Problem"
-msgstr "Πρόβλημα"
-
-#: lib/layouts/IEEEtran.layout:186
-msgid "Problem #:"
-msgstr "Πρόβλημα #:"
-
-#: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
-#: lib/layouts/svjour.inc:362 lib/layouts/theorems-ams-bytype.inc:191
-#: lib/layouts/theorems-ams.inc:162 lib/layouts/theorems-bytype.inc:166
-#: lib/layouts/theorems-order.inc:55
-#: lib/layouts/theorems-starred-equivalents.inc:62
-#: lib/layouts/theorems.inc:162 lib/layouts/theorems-chap-bytype.module:162
-#: lib/layouts/theorems-sec-bytype.module:126
-msgid "Exercise"
-msgstr "Άσκηση"
-
-#: lib/layouts/IEEEtran.layout:196
-msgid "Exercise #:"
-msgstr "Άσκηση #:"
-
-#: lib/layouts/IEEEtran.layout:203 lib/layouts/elsart.layout:382
-#: lib/layouts/ijmpc.layout:172 lib/layouts/ijmpd.layout:170
-#: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:422
-#: lib/layouts/theorems-ams-bytype.inc:204 lib/layouts/theorems-ams.inc:174
-#: lib/layouts/theorems-bytype.inc:179 lib/layouts/theorems-order.inc:61
-#: lib/layouts/theorems-starred-equivalents.inc:69
-#: lib/layouts/theorems.inc:174 lib/layouts/theorems-chap-bytype.module:174
-#: lib/layouts/theorems-sec-bytype.module:134
-msgid "Remark"
-msgstr "Παρατήρηση"
-
-#: lib/layouts/IEEEtran.layout:206
-msgid "Remark #:"
-msgstr "Παρατήρηση #:"
-
-#: lib/layouts/IEEEtran.layout:213 lib/layouts/elsart.layout:396
-#: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:274
-#: lib/layouts/ijmpd.layout:283 lib/layouts/llncs.layout:302
-#: lib/layouts/svjour.inc:305 lib/layouts/theorems-ams-bytype.inc:224
-#: lib/layouts/theorems-ams.inc:194 lib/layouts/theorems-bytype.inc:199
-#: lib/layouts/theorems-order.inc:67
-#: lib/layouts/theorems-starred-equivalents.inc:76
-#: lib/layouts/theorems.inc:194 lib/layouts/theorems-chap-bytype.module:186
-#: lib/layouts/theorems-sec-bytype.module:142
-msgid "Claim"
-msgstr "Ισχυρισμός"
-
-#: lib/layouts/IEEEtran.layout:216
-msgid "Claim #:"
-msgstr "Ισχυρισμός #:"
-
-#: lib/layouts/IEEEtran.layout:223 lib/layouts/apa.layout:212
-#: lib/layouts/elsart.layout:389 lib/layouts/iopart.layout:93
-#: lib/layouts/llncs.layout:357 lib/layouts/powerdot.layout:199
-#: lib/layouts/slides.layout:167 lib/layouts/svjour.inc:380
-#: lib/layouts/theorems-ams-extended-bytype.module:151
-#: lib/layouts/theorems-ams-extended.module:123
-msgid "Note"
-msgstr "Σημείωση"
-
-#: lib/layouts/IEEEtran.layout:226
-msgid "Note #:"
-msgstr "Σημείωση #:"
-
-#: lib/layouts/IEEEtran.layout:233 lib/layouts/ijmpc.layout:181
-#: lib/layouts/ijmpd.layout:180
-#: lib/layouts/theorems-ams-extended-bytype.module:174
-#: lib/layouts/theorems-ams-extended.module:145
-msgid "Notation"
-msgstr "Σημειογραφία"
-
-#: lib/layouts/IEEEtran.layout:236
-msgid "Notation #:"
-msgstr "Σημειογραφία #:"
-
-#: lib/layouts/IEEEtran.layout:243 lib/layouts/elsart.layout:411
-#: lib/layouts/llncs.layout:281 lib/layouts/svmono.layout:155
-#: lib/layouts/svmult.layout:93 lib/layouts/theorems-ams-bytype.inc:238
-#: lib/layouts/theorems-ams.inc:207 lib/layouts/theorems-bytype.inc:213
-#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems.inc:207
-msgid "Case"
-msgstr "Περίπτωση"
-
-#: lib/layouts/IEEEtran.layout:246
-msgid "Case #:"
-msgstr "Περίπτωση #:"
-
-#: lib/layouts/IEEEtran.layout:272 lib/layouts/aa.layout:42
-#: lib/layouts/aa.layout:222 lib/layouts/aapaper.layout:64
-#: lib/layouts/aapaper.layout:130 lib/layouts/aastex.layout:67
-#: lib/layouts/aastex.layout:170 lib/layouts/amsart.layout:60
-#: lib/layouts/amsbook.layout:51 lib/layouts/apa.layout:307
-#: lib/layouts/beamer.layout:110 lib/layouts/beamer.layout:139
-#: lib/layouts/beamer.layout:140 lib/layouts/beamer.layout:182
-#: lib/layouts/egs.layout:30 lib/layouts/europecv.layout:29
-#: lib/layouts/ijmpc.layout:95 lib/layouts/ijmpd.layout:91
-#: lib/layouts/isprs.layout:155 lib/layouts/kluwer.layout:58
-#: lib/layouts/latex8.layout:41 lib/layouts/llncs.layout:45
-#: lib/layouts/ltugboat.layout:45 lib/layouts/memoir.layout:60
-#: lib/layouts/moderncv.layout:33 lib/layouts/paper.layout:52
-#: lib/layouts/powerdot.layout:225 lib/layouts/revtex.layout:38
-#: lib/layouts/revtex4.layout:59 lib/layouts/siamltex.layout:349
-#: lib/layouts/simplecv.layout:28 lib/layouts/spie.layout:19
-#: lib/layouts/svmono.layout:69 lib/layouts/svmono.layout:103
-#: lib/layouts/tufte-book.layout:44 lib/layouts/tufte-book.layout:64
-#: lib/layouts/tufte-book.layout:65 lib/layouts/tufte-handout.layout:22
-#: lib/layouts/agu_stdsections.inc:30 lib/layouts/aguplus.inc:27
-#: lib/layouts/db_stdsections.inc:28 lib/layouts/numrevtex.inc:6
-#: lib/layouts/scrclass.inc:62 lib/layouts/stdsections.inc:12
-#: lib/layouts/stdsections.inc:38 lib/layouts/stdsections.inc:61
-#: lib/layouts/stdsections.inc:62 lib/layouts/svjour.inc:56
-#: src/frontends/qt4/GuiDocument.cpp:146
-msgid "Section"
-msgstr "Τμήμα"
-
-#: lib/layouts/IEEEtran.layout:282 lib/layouts/aa.layout:45
-#: lib/layouts/aa.layout:232 lib/layouts/aapaper.layout:67
-#: lib/layouts/aapaper.layout:139 lib/layouts/aastex.layout:70
-#: lib/layouts/aastex.layout:182 lib/layouts/amsart.layout:100
-#: lib/layouts/amsbook.layout:60 lib/layouts/apa.layout:317
-#: lib/layouts/beamer.layout:181 lib/layouts/egs.layout:51
-#: lib/layouts/ijmpc.layout:109 lib/layouts/ijmpd.layout:105
-#: lib/layouts/isprs.layout:166 lib/layouts/kluwer.layout:66
-#: lib/layouts/latex8.layout:49 lib/layouts/llncs.layout:53
-#: lib/layouts/ltugboat.layout:64 lib/layouts/memoir.layout:65
-#: lib/layouts/moderncv.layout:52 lib/layouts/paper.layout:61
-#: lib/layouts/revtex.layout:49 lib/layouts/revtex4.layout:70
-#: lib/layouts/siamltex.layout:359 lib/layouts/simplecv.layout:48
-#: lib/layouts/tufte-book.layout:87 lib/layouts/agu_stdsections.inc:40
-#: lib/layouts/aguplus.inc:41 lib/layouts/db_stdsections.inc:36
-#: lib/layouts/numrevtex.inc:15 lib/layouts/scrclass.inc:69
-#: lib/layouts/stdsections.inc:85 lib/layouts/svjour.inc:65
-msgid "Subsection"
-msgstr "Υποτμήμα"
-
-#: lib/layouts/IEEEtran.layout:290 lib/layouts/aa.layout:48
-#: lib/layouts/aa.layout:244 lib/layouts/aapaper.layout:70
-#: lib/layouts/aapaper.layout:150 lib/layouts/aastex.layout:73
-#: lib/layouts/aastex.layout:194 lib/layouts/amsart.layout:122
-#: lib/layouts/amsbook.layout:68 lib/layouts/apa.layout:326
-#: lib/layouts/ijmpc.layout:117 lib/layouts/ijmpd.layout:113
-#: lib/layouts/isprs.layout:175 lib/layouts/kluwer.layout:75
-#: lib/layouts/llncs.layout:61 lib/layouts/ltugboat.layout:83
-#: lib/layouts/memoir.layout:70 lib/layouts/paper.layout:70
-#: lib/layouts/recipebook.layout:96 lib/layouts/revtex.layout:57
-#: lib/layouts/revtex4.layout:78 lib/layouts/siamltex.layout:367
-#: lib/layouts/agu_stdsections.inc:50 lib/layouts/db_stdsections.inc:44
-#: lib/layouts/numrevtex.inc:24 lib/layouts/scrclass.inc:76
-#: lib/layouts/stdsections.inc:100 lib/layouts/svjour.inc:74
-msgid "Subsubsection"
-msgstr "Υπο-υποτμήμα"
-
-#: lib/layouts/IEEEtran.layout:298 lib/layouts/amsart.layout:70
-#: lib/layouts/amsbook.layout:79 lib/layouts/beamer.layout:171
-#: lib/layouts/egs.layout:576 lib/layouts/ijmpc.layout:102
-#: lib/layouts/ijmpd.layout:98 lib/layouts/isprs.layout:184
-#: lib/layouts/spie.layout:29 lib/layouts/aguplus.inc:34
-#: lib/layouts/db_stdstarsections.inc:36 lib/layouts/stdstarsections.inc:34
-msgid "Section*"
-msgstr "Τμήμα*"
-
-#: lib/layouts/IEEEtran.layout:308 lib/layouts/amsart.layout:111
-#: lib/layouts/amsbook.layout:88 lib/layouts/beamer.layout:214
-#: lib/layouts/egs.layout:596 lib/layouts/isprs.layout:195
-#: lib/layouts/aguplus.inc:48 lib/layouts/db_stdstarsections.inc:48
-#: lib/layouts/stdstarsections.inc:45
-msgid "Subsection*"
-msgstr "Υποτμήμα*"
-
-#: lib/layouts/IEEEtran.layout:316 lib/layouts/amsart.layout:131
-#: lib/layouts/amsbook.layout:96 lib/layouts/isprs.layout:204
-#: lib/layouts/db_stdstarsections.inc:60 lib/layouts/stdstarsections.inc:56
-msgid "Subsubsection*"
-msgstr "Υπο-υποτμήμα*"
-
-#: lib/layouts/IEEEtran.layout:331 lib/layouts/aa.layout:85
+#: lib/layouts/IEEEtran.layout:180 lib/layouts/aa.layout:85
 #: lib/layouts/aa.layout:312 lib/layouts/aa.layout:328
 #: lib/layouts/aapaper.layout:97 lib/layouts/aapaper.layout:193
 #: lib/layouts/aastex.layout:109 lib/layouts/aastex.layout:242
@@ -4455,11 +4191,11 @@ msgstr "Υπο-υποτμήμα*"
 msgid "Abstract"
 msgstr "Περίληψη"
 
-#: lib/layouts/IEEEtran.layout:337
+#: lib/layouts/IEEEtran.layout:189
 msgid "Abstract---"
 msgstr "Περίληψη--"
 
-#: lib/layouts/IEEEtran.layout:351 lib/layouts/aa.layout:342
+#: lib/layouts/IEEEtran.layout:202 lib/layouts/aa.layout:342
 #: lib/layouts/aastex.layout:112 lib/layouts/aastex.layout:317
 #: lib/layouts/elsart.layout:62 lib/layouts/elsarticle.layout:249
 #: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpd.layout:76
@@ -4473,11 +4209,35 @@ msgstr "Περίληψη--"
 msgid "Keywords"
 msgstr "Λέξεις κλειδιά"
 
-#: lib/layouts/IEEEtran.layout:362
+#: lib/layouts/IEEEtran.layout:205
 msgid "Index Terms---"
 msgstr "Όροι Ευρετηρίου---"
 
-#: lib/layouts/IEEEtran.layout:374 lib/layouts/aa.layout:91
+#: lib/layouts/IEEEtran.layout:209 lib/layouts/IEEEtran.layout:219
+msgid "Appendices"
+msgstr "Παραρτήματα"
+
+#: lib/layouts/IEEEtran.layout:213 lib/layouts/IEEEtran.layout:238
+#: lib/layouts/IEEEtran.layout:261 lib/layouts/aa.layout:202
+#: lib/layouts/aastex.layout:447 lib/layouts/aastex.layout:479
+#: lib/layouts/acmsiggraph.layout:152 lib/layouts/beamer.layout:884
+#: lib/layouts/elsarticle.layout:274 lib/layouts/iopart.layout:241
+#: lib/layouts/iopart.layout:263 lib/layouts/iopart.layout:286
+#: lib/layouts/siamltex.layout:313 lib/layouts/sigplanconf.layout:181
+#: lib/layouts/svglobal3.layout:86 lib/layouts/stdstruct.inc:43
+#: lib/layouts/svjour.inc:286
+msgid "BackMatter"
+msgstr "Οπίσθιο Τμήμα"
+
+#: lib/layouts/IEEEtran.layout:226 lib/layouts/IEEEtran.layout:229
+#: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:443
+#: lib/layouts/ijmpc.layout:309 lib/layouts/ijmpd.layout:320
+#: lib/layouts/kluwer.layout:313 lib/layouts/kluwer.layout:326
+#: src/rowpainter.cpp:472
+msgid "Appendix"
+msgstr "Παράρτημα"
+
+#: lib/layouts/IEEEtran.layout:234 lib/layouts/aa.layout:91
 #: lib/layouts/aa.layout:371 lib/layouts/aapaper.layout:103
 #: lib/layouts/aapaper.layout:210 lib/layouts/achemso.layout:167
 #: lib/layouts/beamer.layout:883 lib/layouts/book.layout:21
@@ -4502,33 +4262,131 @@ msgstr "Όροι Ευρετηρίου---"
 msgid "Bibliography"
 msgstr "Βιβλιογραφία"
 
-#: lib/layouts/IEEEtran.layout:383 lib/layouts/IEEEtran.layout:394
-#: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:443
-#: lib/layouts/ijmpc.layout:309 lib/layouts/ijmpd.layout:320
-#: lib/layouts/kluwer.layout:313 lib/layouts/kluwer.layout:326
-#: src/rowpainter.cpp:472
-msgid "Appendix"
-msgstr "Παράρτημα"
+#: lib/layouts/IEEEtran.layout:249 lib/layouts/aastex.layout:121
+#: lib/layouts/aastex.layout:475 lib/layouts/aastex.layout:488
+#: lib/layouts/achemso.layout:181 lib/layouts/beamer.layout:897
+#: lib/layouts/cl2emult.layout:116 lib/layouts/egs.layout:566
+#: lib/layouts/elsarticle.layout:285 lib/layouts/iopart.layout:274
+#: lib/layouts/iopart.layout:289 lib/layouts/kluwer.layout:334
+#: lib/layouts/kluwer.layout:346 lib/layouts/llncs.layout:272
+#: lib/layouts/moderncv.layout:162 lib/layouts/siamltex.layout:327
+#: lib/layouts/amsdefs.inc:215 lib/layouts/stdstruct.inc:54
+#: lib/layouts/svjour.inc:297 src/output_plaintext.cpp:145
+msgid "References"
+msgstr "Αναφορές"
 
-#: lib/layouts/IEEEtran.layout:406 lib/layouts/IEEEtran.layout:409
-msgid "Appendices"
-msgstr "Παραρτήματα"
-
-#: lib/layouts/IEEEtran.layout:413
+#: lib/layouts/IEEEtran.layout:258
 msgid "Biography"
 msgstr "Βιογραφία"
 
-#: lib/layouts/IEEEtran.layout:423
-msgid "BiographyNoPhoto"
+#: lib/layouts/IEEEtran.layout:270
+#, fuzzy
+msgid "Biography without photo"
 msgstr "ΒιογραφίαΔίχωςΦωτο"
 
-#: lib/layouts/IEEEtran.layout:442 lib/layouts/IEEEtran.layout:453
-msgid "Footernote"
-msgstr ""
+#: lib/layouts/IEEEtran.layout:277 lib/layouts/beamer.layout:1051
+#: lib/layouts/elsart.layout:285 lib/layouts/foils.layout:278
+#: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:211
+#: lib/layouts/ijmpd.layout:211 lib/layouts/llncs.layout:371
+#: lib/layouts/siamltex.layout:150 lib/layouts/svjour.inc:394
+#: lib/layouts/theorems-order.inc:76 lib/layouts/theorems-proof.inc:13
+#: lib/layouts/theorems-bytype.module:46 lib/layouts/theorems-std.module:20
+msgid "Proof"
+msgstr "Απόδειξη"
 
-#: lib/layouts/IEEEtran.layout:465
-msgid "MarkBoth"
-msgstr ""
+#: lib/layouts/IEEEtran.layout:278 lib/layouts/beamer.layout:1057
+#: lib/layouts/elsart.layout:256 lib/layouts/foils.layout:218
+#: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:190
+#: lib/layouts/ijmpd.layout:193 lib/layouts/llncs.layout:412
+#: lib/layouts/siamltex.layout:62 lib/layouts/siamltex.layout:112
+#: lib/layouts/svjour.inc:436 lib/layouts/theorems-ams-bytype.inc:51
+#: lib/layouts/theorems-ams-bytype.inc:52
+#: lib/layouts/theorems-ams-bytype.inc:239 lib/layouts/theorems-ams.inc:24
+#: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:208
+#: lib/layouts/theorems-bytype.inc:26 lib/layouts/theorems-bytype.inc:27
+#: lib/layouts/theorems-bytype.inc:214 lib/layouts/theorems-order.inc:7
+#: lib/layouts/theorems-proof.inc:14
+#: lib/layouts/theorems-starred-equivalents.inc:6
+#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:24
+#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:208
+#: lib/layouts/theorems-chap-bytype.module:54
+#: lib/layouts/theorems-chap.module:19
+#: lib/layouts/theorems-sec-bytype.module:54
+#: lib/layouts/theorems-sec.module:18
+msgid "Theorem"
+msgstr "Θεώρημα"
+
+#: lib/layouts/IEEEtran.layout:294 lib/layouts/beamer.layout:1054
+#: lib/layouts/foils.layout:281 lib/layouts/ijmpc.layout:219
+#: lib/layouts/ijmpd.layout:219 lib/layouts/llncs.layout:374
+#: lib/layouts/siamltex.layout:166 lib/layouts/svjour.inc:397
+#: lib/layouts/theorems-proof.inc:30
+msgid "Proof."
+msgstr "Απόδειξη."
+
+#: lib/layouts/aa.layout:42 lib/layouts/aa.layout:222
+#: lib/layouts/aapaper.layout:64 lib/layouts/aapaper.layout:130
+#: lib/layouts/aastex.layout:67 lib/layouts/aastex.layout:170
+#: lib/layouts/amsart.layout:60 lib/layouts/amsbook.layout:51
+#: lib/layouts/apa.layout:307 lib/layouts/beamer.layout:110
+#: lib/layouts/beamer.layout:139 lib/layouts/beamer.layout:140
+#: lib/layouts/beamer.layout:182 lib/layouts/egs.layout:30
+#: lib/layouts/europecv.layout:29 lib/layouts/ijmpc.layout:95
+#: lib/layouts/ijmpd.layout:91 lib/layouts/isprs.layout:155
+#: lib/layouts/kluwer.layout:58 lib/layouts/latex8.layout:41
+#: lib/layouts/llncs.layout:45 lib/layouts/ltugboat.layout:45
+#: lib/layouts/memoir.layout:60 lib/layouts/moderncv.layout:33
+#: lib/layouts/paper.layout:52 lib/layouts/powerdot.layout:225
+#: lib/layouts/revtex.layout:38 lib/layouts/revtex4.layout:59
+#: lib/layouts/siamltex.layout:349 lib/layouts/simplecv.layout:28
+#: lib/layouts/spie.layout:19 lib/layouts/svmono.layout:69
+#: lib/layouts/svmono.layout:103 lib/layouts/tufte-book.layout:44
+#: lib/layouts/tufte-book.layout:64 lib/layouts/tufte-book.layout:65
+#: lib/layouts/tufte-handout.layout:22 lib/layouts/agu_stdsections.inc:30
+#: lib/layouts/aguplus.inc:27 lib/layouts/db_stdsections.inc:28
+#: lib/layouts/numrevtex.inc:6 lib/layouts/scrclass.inc:62
+#: lib/layouts/stdsections.inc:12 lib/layouts/stdsections.inc:38
+#: lib/layouts/stdsections.inc:61 lib/layouts/stdsections.inc:62
+#: lib/layouts/svjour.inc:56 src/frontends/qt4/GuiDocument.cpp:146
+msgid "Section"
+msgstr "Τμήμα"
+
+#: lib/layouts/aa.layout:45 lib/layouts/aa.layout:232
+#: lib/layouts/aapaper.layout:67 lib/layouts/aapaper.layout:139
+#: lib/layouts/aastex.layout:70 lib/layouts/aastex.layout:182
+#: lib/layouts/amsart.layout:100 lib/layouts/amsbook.layout:60
+#: lib/layouts/apa.layout:317 lib/layouts/beamer.layout:181
+#: lib/layouts/egs.layout:51 lib/layouts/ijmpc.layout:109
+#: lib/layouts/ijmpd.layout:105 lib/layouts/isprs.layout:166
+#: lib/layouts/kluwer.layout:66 lib/layouts/latex8.layout:49
+#: lib/layouts/llncs.layout:53 lib/layouts/ltugboat.layout:64
+#: lib/layouts/memoir.layout:65 lib/layouts/moderncv.layout:52
+#: lib/layouts/paper.layout:61 lib/layouts/revtex.layout:49
+#: lib/layouts/revtex4.layout:70 lib/layouts/siamltex.layout:359
+#: lib/layouts/simplecv.layout:48 lib/layouts/tufte-book.layout:87
+#: lib/layouts/agu_stdsections.inc:40 lib/layouts/aguplus.inc:41
+#: lib/layouts/db_stdsections.inc:36 lib/layouts/numrevtex.inc:15
+#: lib/layouts/scrclass.inc:69 lib/layouts/stdsections.inc:85
+#: lib/layouts/svjour.inc:65
+msgid "Subsection"
+msgstr "Υποτμήμα"
+
+#: lib/layouts/aa.layout:48 lib/layouts/aa.layout:244
+#: lib/layouts/aapaper.layout:70 lib/layouts/aapaper.layout:150
+#: lib/layouts/aastex.layout:73 lib/layouts/aastex.layout:194
+#: lib/layouts/amsart.layout:122 lib/layouts/amsbook.layout:68
+#: lib/layouts/apa.layout:326 lib/layouts/ijmpc.layout:117
+#: lib/layouts/ijmpd.layout:113 lib/layouts/isprs.layout:175
+#: lib/layouts/kluwer.layout:75 lib/layouts/llncs.layout:61
+#: lib/layouts/ltugboat.layout:83 lib/layouts/memoir.layout:70
+#: lib/layouts/paper.layout:70 lib/layouts/recipebook.layout:96
+#: lib/layouts/revtex.layout:57 lib/layouts/revtex4.layout:78
+#: lib/layouts/siamltex.layout:367 lib/layouts/agu_stdsections.inc:50
+#: lib/layouts/db_stdsections.inc:44 lib/layouts/numrevtex.inc:24
+#: lib/layouts/scrclass.inc:76 lib/layouts/stdsections.inc:100
+#: lib/layouts/svjour.inc:74
+msgid "Subsubsection"
+msgstr "Υπο-υποτμήμα"
 
 #: lib/layouts/aa.layout:51 lib/layouts/aapaper.layout:48
 #: lib/layouts/aastex.layout:79 lib/layouts/apa.layout:354
@@ -4568,31 +4426,6 @@ msgstr "Περιγραφή"
 msgid "List"
 msgstr "Λίστα"
 
-#: lib/layouts/aa.layout:64 lib/layouts/aa.layout:254
-#: lib/layouts/aapaper.layout:73 lib/layouts/aapaper.layout:160
-#: lib/layouts/aastex.layout:91 lib/layouts/aastex.layout:207
-#: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:738
-#: lib/layouts/broadway.layout:185 lib/layouts/cl2emult.layout:40
-#: lib/layouts/docbook-book.layout:11 lib/layouts/docbook-chapter.layout:9
-#: lib/layouts/docbook-section.layout:9 lib/layouts/egs.layout:246
-#: lib/layouts/elsart.layout:91 lib/layouts/elsarticle.layout:53
-#: lib/layouts/entcs.layout:39 lib/layouts/foils.layout:125
-#: lib/layouts/hollywood.layout:331 lib/layouts/ijmpc.layout:33
-#: lib/layouts/ijmpd.layout:36 lib/layouts/iopart.layout:55
-#: lib/layouts/isprs.layout:92 lib/layouts/kluwer.layout:104
-#: lib/layouts/latex8.layout:33 lib/layouts/llncs.layout:100
-#: lib/layouts/ltugboat.layout:131 lib/layouts/paper.layout:104
-#: lib/layouts/powerdot.layout:41 lib/layouts/revtex.layout:90
-#: lib/layouts/revtex4.layout:121 lib/layouts/scrlettr.layout:188
-#: lib/layouts/scrlttr2.layout:269 lib/layouts/siamltex.layout:183
-#: lib/layouts/sigplanconf.layout:101 lib/layouts/simplecv.layout:119
-#: lib/layouts/svprobth.layout:35 lib/layouts/agu_stdtitle.inc:246
-#: lib/layouts/amsdefs.inc:30 lib/layouts/db_stdtitle.inc:13
-#: lib/layouts/scrclass.inc:147 lib/layouts/stdtitle.inc:12
-#: lib/layouts/svjour.inc:123
-msgid "Title"
-msgstr "Τίτλος"
-
 #: lib/layouts/aa.layout:67 lib/layouts/aa.layout:112
 #: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:770
 #: lib/layouts/kluwer.layout:121 lib/layouts/llncs.layout:123
@@ -4600,27 +4433,6 @@ msgstr "Τίτλος"
 #: lib/layouts/aapaper.inc:9 lib/layouts/svjour.inc:135
 msgid "Subtitle"
 msgstr "Υπότιτλος"
-
-#: lib/layouts/aa.layout:70 lib/layouts/aa.layout:266
-#: lib/layouts/aapaper.layout:79 lib/layouts/aapaper.layout:171
-#: lib/layouts/aastex.layout:94 lib/layouts/aastex.layout:219
-#: lib/layouts/apa.layout:113 lib/layouts/beamer.layout:795
-#: lib/layouts/broadway.layout:198 lib/layouts/cl2emult.layout:57
-#: lib/layouts/egs.layout:288 lib/layouts/elsart.layout:111
-#: lib/layouts/elsarticle.layout:115 lib/layouts/entcs.layout:49
-#: lib/layouts/foils.layout:133 lib/layouts/hollywood.layout:318
-#: lib/layouts/ijmpc.layout:40 lib/layouts/ijmpd.layout:43
-#: lib/layouts/iopart.layout:124 lib/layouts/isprs.layout:75
-#: lib/layouts/kluwer.layout:157 lib/layouts/llncs.layout:175
-#: lib/layouts/ltugboat.layout:150 lib/layouts/paper.layout:114
-#: lib/layouts/powerdot.layout:64 lib/layouts/revtex.layout:98
-#: lib/layouts/revtex4.layout:129 lib/layouts/siamltex.layout:204
-#: lib/layouts/sigplanconf.layout:117 lib/layouts/svprobth.layout:52
-#: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:52
-#: lib/layouts/db_stdtitle.inc:21 lib/layouts/scrclass.inc:155
-#: lib/layouts/stdtitle.inc:31 lib/layouts/svjour.inc:155
-msgid "Author"
-msgstr "Συγγραφέας"
 
 #: lib/layouts/aa.layout:73 lib/layouts/aa.layout:134
 #: lib/layouts/aapaper.layout:82 lib/layouts/dinbrief.layout:250
@@ -4673,31 +4485,6 @@ msgstr "Ημερομηνία"
 msgid "Acknowledgement"
 msgstr "Μνεία"
 
-#: lib/layouts/aa.layout:117 lib/layouts/aa.layout:140
-#: lib/layouts/aa.layout:155 lib/layouts/aa.layout:179
-#: lib/layouts/aa.layout:316 lib/layouts/aastex.layout:266
-#: lib/layouts/aastex.layout:283 lib/layouts/aastex.layout:323
-#: lib/layouts/aastex.layout:349 lib/layouts/aastex.layout:388
-#: lib/layouts/achemso.layout:119 lib/layouts/acmsiggraph.layout:65
-#: lib/layouts/acmsiggraph.layout:111 lib/layouts/acmsiggraph.layout:138
-#: lib/layouts/elsarticle.layout:57 lib/layouts/elsarticle.layout:99
-#: lib/layouts/elsarticle.layout:118 lib/layouts/elsarticle.layout:196
-#: lib/layouts/elsarticle.layout:224 lib/layouts/elsarticle.layout:253
-#: lib/layouts/entcs.layout:73 lib/layouts/iopart.layout:59
-#: lib/layouts/iopart.layout:128 lib/layouts/iopart.layout:147
-#: lib/layouts/iopart.layout:172 lib/layouts/iopart.layout:201
-#: lib/layouts/siamltex.layout:274 lib/layouts/siamltex.layout:294
-#: lib/layouts/sigplanconf.layout:68 lib/layouts/sigplanconf.layout:121
-#: lib/layouts/sigplanconf.layout:154 lib/layouts/svglobal3.layout:77
-#: lib/layouts/tufte-handout.layout:48 lib/layouts/amsdefs.inc:31
-#: lib/layouts/amsdefs.inc:53 lib/layouts/amsdefs.inc:73
-#: lib/layouts/amsdefs.inc:97 lib/layouts/amsdefs.inc:124
-#: lib/layouts/lyxmacros.inc:45 lib/layouts/lyxmacros.inc:66
-#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:15
-#: lib/layouts/stdtitle.inc:34 lib/layouts/stdtitle.inc:53
-msgid "FrontMatter"
-msgstr "Εμπρόσθιο Τμήμα"
-
 #: lib/layouts/aa.layout:161 lib/layouts/aapaper.inc:71
 msgid "Offprint Requests to:"
 msgstr ""
@@ -4705,16 +4492,6 @@ msgstr ""
 #: lib/layouts/aa.layout:184
 msgid "Correspondence to:"
 msgstr "Ανταπόκριση σε:"
-
-#: lib/layouts/aa.layout:202 lib/layouts/aastex.layout:447
-#: lib/layouts/aastex.layout:479 lib/layouts/acmsiggraph.layout:152
-#: lib/layouts/beamer.layout:884 lib/layouts/elsarticle.layout:274
-#: lib/layouts/iopart.layout:241 lib/layouts/iopart.layout:263
-#: lib/layouts/iopart.layout:286 lib/layouts/siamltex.layout:313
-#: lib/layouts/sigplanconf.layout:181 lib/layouts/svglobal3.layout:86
-#: lib/layouts/stdstruct.inc:43 lib/layouts/svjour.inc:286
-msgid "BackMatter"
-msgstr "Οπίσθιο Τμήμα"
 
 #: lib/layouts/aa.layout:210 lib/layouts/egs.layout:516
 #: lib/layouts/svjour.inc:264
@@ -4796,19 +4573,6 @@ msgstr "Και"
 #: lib/layouts/aapaper.inc:91 lib/layouts/svjour.inc:250
 msgid "Acknowledgements"
 msgstr "Μνεία"
-
-#: lib/layouts/aastex.layout:121 lib/layouts/aastex.layout:475
-#: lib/layouts/aastex.layout:488 lib/layouts/achemso.layout:181
-#: lib/layouts/beamer.layout:897 lib/layouts/cl2emult.layout:116
-#: lib/layouts/egs.layout:566 lib/layouts/elsarticle.layout:285
-#: lib/layouts/iopart.layout:274 lib/layouts/iopart.layout:289
-#: lib/layouts/kluwer.layout:334 lib/layouts/kluwer.layout:346
-#: lib/layouts/llncs.layout:272 lib/layouts/moderncv.layout:162
-#: lib/layouts/siamltex.layout:327 lib/layouts/amsdefs.inc:215
-#: lib/layouts/stdstruct.inc:54 lib/layouts/svjour.inc:297
-#: src/output_plaintext.cpp:145
-msgid "References"
-msgstr "Αναφορές"
 
 #: lib/layouts/aastex.layout:124 lib/layouts/aastex.layout:403
 msgid "PlaceFigure"
@@ -5034,6 +4798,15 @@ msgstr "Ευχαριστίες"
 msgid "MainText"
 msgstr "Κυρίως Κείμενο"
 
+#: lib/layouts/amsart.layout:70 lib/layouts/amsbook.layout:79
+#: lib/layouts/beamer.layout:171 lib/layouts/egs.layout:576
+#: lib/layouts/ijmpc.layout:102 lib/layouts/ijmpd.layout:98
+#: lib/layouts/isprs.layout:184 lib/layouts/spie.layout:29
+#: lib/layouts/aguplus.inc:34 lib/layouts/db_stdstarsections.inc:36
+#: lib/layouts/stdstarsections.inc:34
+msgid "Section*"
+msgstr "Τμήμα*"
+
 #: lib/layouts/amsart.layout:80
 msgid "SpecialSection"
 msgstr ""
@@ -5051,6 +4824,19 @@ msgstr ""
 #: lib/layouts/stdstarsections.inc:80
 msgid "Unnumbered"
 msgstr "Μη Αριθμημένο"
+
+#: lib/layouts/amsart.layout:111 lib/layouts/amsbook.layout:88
+#: lib/layouts/beamer.layout:214 lib/layouts/egs.layout:596
+#: lib/layouts/isprs.layout:195 lib/layouts/aguplus.inc:48
+#: lib/layouts/db_stdstarsections.inc:48 lib/layouts/stdstarsections.inc:45
+msgid "Subsection*"
+msgstr "Υποτμήμα*"
+
+#: lib/layouts/amsart.layout:131 lib/layouts/amsbook.layout:96
+#: lib/layouts/isprs.layout:204 lib/layouts/db_stdstarsections.inc:60
+#: lib/layouts/stdstarsections.inc:56
+msgid "Subsubsection*"
+msgstr "Υπο-υποτμήμα*"
 
 #: lib/layouts/amsbook.layout:131
 msgid "Chapter Exercises"
@@ -5113,6 +4899,15 @@ msgstr "Περιοδικό"
 msgid "CopNum"
 msgstr ""
 
+#: lib/layouts/apa.layout:212 lib/layouts/elsart.layout:389
+#: lib/layouts/iopart.layout:93 lib/layouts/llncs.layout:357
+#: lib/layouts/powerdot.layout:199 lib/layouts/slides.layout:167
+#: lib/layouts/svjour.inc:380
+#: lib/layouts/theorems-ams-extended-bytype.module:151
+#: lib/layouts/theorems-ams-extended.module:123
+msgid "Note"
+msgstr "Σημείωση"
+
 #: lib/layouts/apa.layout:233
 msgid "Acknowledgements:"
 msgstr "Μνεία:"
@@ -5157,7 +4952,7 @@ msgid "Seriate"
 msgstr ""
 
 #: lib/layouts/apa.layout:406 lib/layouts/apa.layout:407
-#: src/buffer_funcs.cpp:423
+#: src/buffer_funcs.cpp:425
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
@@ -5404,6 +5199,19 @@ msgstr "Εδάφιο"
 msgid "TitleGraphic"
 msgstr ""
 
+#: lib/layouts/beamer.layout:987 lib/layouts/elsart.layout:319
+#: lib/layouts/foils.layout:250 lib/layouts/heb-article.layout:55
+#: lib/layouts/ijmpc.layout:229 lib/layouts/ijmpd.layout:230
+#: lib/layouts/llncs.layout:316 lib/layouts/siamltex.layout:72
+#: lib/layouts/svjour.inc:334 lib/layouts/theorems-ams-bytype.inc:86
+#: lib/layouts/theorems-ams.inc:59 lib/layouts/theorems-bytype.inc:61
+#: lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems-starred-equivalents.inc:13 lib/layouts/theorems.inc:59
+#: lib/layouts/theorems-chap-bytype.module:66
+#: lib/layouts/theorems-sec-bytype.module:62
+msgid "Corollary"
+msgstr "Πόρισμα"
+
 #: lib/layouts/beamer.layout:988 lib/layouts/theorems-std.module:2
 msgid "Theorems"
 msgstr "Θεωρήματα"
@@ -5412,6 +5220,19 @@ msgstr "Θεωρήματα"
 #: lib/layouts/theorems-starred.inc:60
 msgid "Corollary."
 msgstr "Πόρισμα."
+
+#: lib/layouts/beamer.layout:1015 lib/layouts/elsart.layout:347
+#: lib/layouts/foils.layout:264 lib/layouts/heb-article.layout:75
+#: lib/layouts/ijmpc.layout:131 lib/layouts/ijmpd.layout:128
+#: lib/layouts/llncs.layout:330 lib/layouts/siamltex.layout:121
+#: lib/layouts/svjour.inc:348 lib/layouts/theorems-ams-bytype.inc:146
+#: lib/layouts/theorems-ams.inc:119 lib/layouts/theorems-bytype.inc:121
+#: lib/layouts/theorems-order.inc:37
+#: lib/layouts/theorems-starred-equivalents.inc:41
+#: lib/layouts/theorems.inc:119 lib/layouts/theorems-chap-bytype.module:126
+#: lib/layouts/theorems-sec-bytype.module:102
+msgid "Definition"
+msgstr "Ορισμός"
 
 #: lib/layouts/beamer.layout:1018 lib/layouts/foils.layout:323
 #: lib/layouts/theorems-starred.inc:121
@@ -5426,6 +5247,18 @@ msgstr "Ορισμοί"
 msgid "Definitions."
 msgstr "Ορισμοί."
 
+#: lib/layouts/beamer.layout:1027 lib/layouts/elsart.layout:368
+#: lib/layouts/ijmpc.layout:163 lib/layouts/ijmpd.layout:160
+#: lib/layouts/llncs.layout:337 lib/layouts/svjour.inc:355
+#: lib/layouts/theorems-ams-bytype.inc:165 lib/layouts/theorems-ams.inc:138
+#: lib/layouts/theorems-bytype.inc:140 lib/layouts/theorems-order.inc:43
+#: lib/layouts/theorems-starred-equivalents.inc:48
+#: lib/layouts/theorems.inc:138 lib/layouts/theorems-chap-bytype.module:138
+#: lib/layouts/theorems-sec-bytype.module:110
+#: src/frontends/qt4/GuiDocument.cpp:820
+msgid "Example"
+msgstr "Παράδειγμα"
+
 #: lib/layouts/beamer.layout:1030 lib/layouts/theorems-starred.inc:140
 msgid "Example."
 msgstr "Παράδειγμα."
@@ -5438,16 +5271,16 @@ msgstr "Παραδείγματα"
 msgid "Examples."
 msgstr "Παραδείγματα."
 
+#: lib/layouts/beamer.layout:1045 lib/layouts/theorems-ams-bytype.inc:134
+#: lib/layouts/theorems-ams.inc:107 lib/layouts/theorems-bytype.inc:109
+#: lib/layouts/theorems.inc:107 lib/layouts/theorems-chap-bytype.module:114
+#: lib/layouts/theorems-sec-bytype.module:94
+msgid "Fact"
+msgstr "Δεδομένο"
+
 #: lib/layouts/beamer.layout:1048 lib/layouts/theorems-starred.inc:108
 msgid "Fact."
 msgstr "Δεδομένο."
-
-#: lib/layouts/beamer.layout:1054 lib/layouts/foils.layout:281
-#: lib/layouts/ijmpc.layout:219 lib/layouts/ijmpd.layout:219
-#: lib/layouts/llncs.layout:374 lib/layouts/siamltex.layout:166
-#: lib/layouts/svjour.inc:397 lib/layouts/theorems-proof.inc:30
-msgid "Proof."
-msgstr "Απόδειξη."
 
 #: lib/layouts/beamer.layout:1060 lib/layouts/foils.layout:295
 #: lib/layouts/theorems-starred.inc:29
@@ -6130,6 +5963,18 @@ msgstr "Θεώρημα \\arabic{theorem}"
 msgid "PROOF."
 msgstr "ΑΠΟΔΕΙΞΗ."
 
+#: lib/layouts/elsart.layout:312 lib/layouts/foils.layout:243
+#: lib/layouts/heb-article.layout:45 lib/layouts/ijmpc.layout:238
+#: lib/layouts/ijmpd.layout:243 lib/layouts/llncs.layout:351
+#: lib/layouts/siamltex.layout:82 lib/layouts/svjour.inc:373
+#: lib/layouts/theorems-ams-bytype.inc:98 lib/layouts/theorems-ams.inc:71
+#: lib/layouts/theorems-bytype.inc:73 lib/layouts/theorems-order.inc:19
+#: lib/layouts/theorems-starred-equivalents.inc:20 lib/layouts/theorems.inc:71
+#: lib/layouts/theorems-chap-bytype.module:78
+#: lib/layouts/theorems-sec-bytype.module:70
+msgid "Lemma"
+msgstr "Λήμμα"
+
 #: lib/layouts/elsart.layout:315
 msgid "Lemma \\arabic{theorem}"
 msgstr "Λήμμα \\arabic{theorem}"
@@ -6138,9 +5983,27 @@ msgstr "Λήμμα \\arabic{theorem}"
 msgid "Corollary \\arabic{theorem}"
 msgstr "Πόρισμα \\arabic{theorem}"
 
+#: lib/layouts/elsart.layout:326 lib/layouts/foils.layout:257
+#: lib/layouts/ijmpc.layout:247 lib/layouts/ijmpd.layout:253
+#: lib/layouts/llncs.layout:385 lib/layouts/siamltex.layout:92
+#: lib/layouts/svjour.inc:408 lib/layouts/theorems-ams-bytype.inc:110
+#: lib/layouts/theorems-ams.inc:83 lib/layouts/theorems-bytype.inc:85
+#: lib/layouts/theorems-order.inc:25
+#: lib/layouts/theorems-starred-equivalents.inc:27 lib/layouts/theorems.inc:83
+#: lib/layouts/theorems-chap-bytype.module:90
+#: lib/layouts/theorems-sec-bytype.module:78
+msgid "Proposition"
+msgstr "Πρόταση"
+
 #: lib/layouts/elsart.layout:329
 msgid "Proposition \\arabic{theorem}"
 msgstr "Πρόταση \\arabic{theorem}"
+
+#: lib/layouts/elsart.layout:333
+#: lib/layouts/theorems-ams-extended-bytype.module:60
+#: lib/layouts/theorems-ams-extended.module:33
+msgid "Criterion"
+msgstr "Κριτήριο"
 
 #: lib/layouts/elsart.layout:336
 msgid "Criterion \\arabic{theorem}"
@@ -6161,6 +6024,17 @@ msgstr "Αλγόριθμος \\arabic{theorem}"
 msgid "Definition \\arabic{theorem}"
 msgstr "Ορισμός \\arabic{theorem}"
 
+#: lib/layouts/elsart.layout:361 lib/layouts/ijmpc.layout:283
+#: lib/layouts/ijmpd.layout:293 lib/layouts/llncs.layout:309
+#: lib/layouts/siamltex.layout:102 lib/layouts/svjour.inc:327
+#: lib/layouts/theorems-ams-bytype.inc:122 lib/layouts/theorems-ams.inc:95
+#: lib/layouts/theorems-bytype.inc:97 lib/layouts/theorems-order.inc:31
+#: lib/layouts/theorems-starred-equivalents.inc:34 lib/layouts/theorems.inc:95
+#: lib/layouts/theorems-chap-bytype.module:102
+#: lib/layouts/theorems-sec-bytype.module:86
+msgid "Conjecture"
+msgstr "Εικασία"
+
 #: lib/layouts/elsart.layout:364
 msgid "Conjecture \\arabic{theorem}"
 msgstr "Εικασία \\arabic{theorem}"
@@ -6169,9 +6043,30 @@ msgstr "Εικασία \\arabic{theorem}"
 msgid "Example \\arabic{theorem}"
 msgstr "Παράδειγμα \\arabic{theorem}"
 
+#: lib/layouts/elsart.layout:375 lib/layouts/llncs.layout:364
+#: lib/layouts/svmono.layout:161 lib/layouts/svjour.inc:387
+#: lib/layouts/theorems-ams-bytype.inc:178 lib/layouts/theorems-ams.inc:150
+#: lib/layouts/theorems-bytype.inc:153 lib/layouts/theorems-order.inc:49
+#: lib/layouts/theorems-starred-equivalents.inc:55
+#: lib/layouts/theorems.inc:150 lib/layouts/theorems-chap-bytype.module:150
+#: lib/layouts/theorems-sec-bytype.module:118
+msgid "Problem"
+msgstr "Πρόβλημα"
+
 #: lib/layouts/elsart.layout:378
 msgid "Problem \\arabic{theorem}"
 msgstr "Πρόβλημα \\arabic{theorem}"
+
+#: lib/layouts/elsart.layout:382 lib/layouts/ijmpc.layout:172
+#: lib/layouts/ijmpd.layout:170 lib/layouts/llncs.layout:398
+#: lib/layouts/svjour.inc:422 lib/layouts/theorems-ams-bytype.inc:204
+#: lib/layouts/theorems-ams.inc:174 lib/layouts/theorems-bytype.inc:179
+#: lib/layouts/theorems-order.inc:61
+#: lib/layouts/theorems-starred-equivalents.inc:69
+#: lib/layouts/theorems.inc:174 lib/layouts/theorems-chap-bytype.module:174
+#: lib/layouts/theorems-sec-bytype.module:134
+msgid "Remark"
+msgstr "Παρατήρηση"
 
 #: lib/layouts/elsart.layout:385
 msgid "Remark \\arabic{theorem}"
@@ -6180,6 +6075,17 @@ msgstr "Παρατήρηση \\arabic{theorem}"
 #: lib/layouts/elsart.layout:392
 msgid "Note \\arabic{theorem}"
 msgstr "Σημείωση \\arabic{theorem}"
+
+#: lib/layouts/elsart.layout:396 lib/layouts/heb-article.layout:65
+#: lib/layouts/ijmpc.layout:274 lib/layouts/ijmpd.layout:283
+#: lib/layouts/llncs.layout:302 lib/layouts/svjour.inc:305
+#: lib/layouts/theorems-ams-bytype.inc:224 lib/layouts/theorems-ams.inc:194
+#: lib/layouts/theorems-bytype.inc:199 lib/layouts/theorems-order.inc:67
+#: lib/layouts/theorems-starred-equivalents.inc:76
+#: lib/layouts/theorems.inc:194 lib/layouts/theorems-chap-bytype.module:186
+#: lib/layouts/theorems-sec-bytype.module:142
+msgid "Claim"
+msgstr "Ισχυρισμός"
 
 #: lib/layouts/elsart.layout:399
 msgid "Claim \\arabic{theorem}"
@@ -6194,6 +6100,14 @@ msgstr "Σύνοψη"
 #: lib/layouts/elsart.layout:407
 msgid "Summary \\arabic{summ}"
 msgstr "Σύνοψη \\arabic{summ}"
+
+#: lib/layouts/elsart.layout:411 lib/layouts/llncs.layout:281
+#: lib/layouts/svmono.layout:155 lib/layouts/svmult.layout:93
+#: lib/layouts/theorems-ams-bytype.inc:238 lib/layouts/theorems-ams.inc:207
+#: lib/layouts/theorems-bytype.inc:213 lib/layouts/theorems-order.inc:73
+#: lib/layouts/theorems.inc:207
+msgid "Case"
+msgstr "Περίπτωση"
 
 #: lib/layouts/elsart.layout:415
 msgid "Case \\arabic{case}"
@@ -6908,6 +6822,10 @@ msgstr "Παρατηρήσεις"
 msgid "Remarks #."
 msgstr "Παρατηρήσεις #."
 
+#: lib/layouts/heb-article.layout:110
+msgid "Proof:"
+msgstr "Απόδειξη:"
+
 #: lib/layouts/hollywood.layout:55
 msgid "More"
 msgstr "Περισσότερα"
@@ -6986,6 +6904,12 @@ msgstr "Παράδειγμα \\theexample."
 #: lib/layouts/theorems-ams-bytype.inc:207 lib/layouts/theorems-bytype.inc:182
 msgid "Remark \\theremark."
 msgstr "Παρατήρηση \\the remark."
+
+#: lib/layouts/ijmpc.layout:181 lib/layouts/ijmpd.layout:180
+#: lib/layouts/theorems-ams-extended-bytype.module:174
+#: lib/layouts/theorems-ams-extended.module:145
+msgid "Notation"
+msgstr "Σημειογραφία"
 
 #: lib/layouts/ijmpc.layout:185 lib/layouts/ijmpd.layout:184
 #: lib/layouts/theorems-ams-extended-bytype.module:177
@@ -7210,6 +7134,15 @@ msgstr "Εικασία #."
 #: lib/layouts/llncs.layout:340 lib/layouts/svjour.inc:358
 msgid "Example #."
 msgstr "Παράδειγμα #."
+
+#: lib/layouts/llncs.layout:344 lib/layouts/svjour.inc:362
+#: lib/layouts/theorems-ams-bytype.inc:191 lib/layouts/theorems-ams.inc:162
+#: lib/layouts/theorems-bytype.inc:166 lib/layouts/theorems-order.inc:55
+#: lib/layouts/theorems-starred-equivalents.inc:62
+#: lib/layouts/theorems.inc:162 lib/layouts/theorems-chap-bytype.module:162
+#: lib/layouts/theorems-sec-bytype.module:126
+msgid "Exercise"
+msgstr "Άσκηση"
 
 #: lib/layouts/llncs.layout:347 lib/layouts/svjour.inc:365
 msgid "Exercise #."
@@ -8643,7 +8576,7 @@ msgid "Branch"
 msgstr "Κλάδος"
 
 #: lib/layouts/stdinsets.inc:175 lib/layouts/minimalistic.module:8
-#: src/insets/InsetIndex.cpp:203
+#: src/insets/InsetIndex.cpp:207
 msgid "Index"
 msgstr "Ευρετήριο"
 
@@ -9148,6 +9081,11 @@ msgstr "Αλγόριθμος \\thealgorithm."
 msgid "Algorithm."
 msgstr "Αλγόριθμος."
 
+#: lib/layouts/theorems-ams-extended-bytype.module:105
+#: lib/layouts/theorems-ams-extended.module:78
+msgid "Axiom"
+msgstr "Αξίωμα"
+
 #: lib/layouts/theorems-ams-extended-bytype.module:108
 msgid "Axiom \\theaxiom."
 msgstr "Αξίωμα \\theaxiom."
@@ -9161,6 +9099,11 @@ msgstr "Αξίωμα*"
 #: lib/layouts/theorems-ams-extended.module:93
 msgid "Axiom."
 msgstr "Αξίωμα."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:128
+#: lib/layouts/theorems-ams-extended.module:101
+msgid "Condition"
+msgstr "Συνθήκη"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:131
 msgid "Condition \\thecondition."
@@ -15040,20 +14983,7 @@ msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 "Το %1$s τελείωσε απρόσμενα, που σημαίνει ότι είναι πιθανόν κατεστραμμένο."
 
-#: src/Buffer.cpp:874
-msgid "Backup failure"
-msgstr "Αποτυχία αντιγράφου ασφαλείας"
-
-#: src/Buffer.cpp:875
-#, c-format
-msgid ""
-"Cannot create backup file %1$s.\n"
-"Please check whether the directory exists and is writeable."
-msgstr ""
-"Αποτυχία δημιουργίας αντιγράφου ασφαλείας για το %1$s.\n"
-"Ελέγξτε εάν ο φάκελος υπάρχει και είναι εγγράψιμος."
-
-#: src/Buffer.cpp:885
+#: src/Buffer.cpp:859
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
@@ -15062,15 +14992,28 @@ msgstr ""
 "Το έγγραφο %1$s έχει τροποποιηθεί εξωτερικά. Είστε σίγουροι ότι θέλετε να το "
 "αντικαταστήσετε;"
 
-#: src/Buffer.cpp:887
+#: src/Buffer.cpp:861
 msgid "Overwrite modified file?"
 msgstr "Αντικατάσταση τροποποιημένου αρχείου;"
 
-#: src/Buffer.cpp:888 src/Exporter.cpp:49 src/LyXFunc.cpp:1042
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1624
-#: src/frontends/qt4/GuiView.cpp:1816
+#: src/Buffer.cpp:862 src/Exporter.cpp:50 src/LyXFunc.cpp:1042
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1625
+#: src/frontends/qt4/GuiView.cpp:1817
 msgid "&Overwrite"
 msgstr "&Αντικατάσταση"
+
+#: src/Buffer.cpp:885
+msgid "Backup failure"
+msgstr "Αποτυχία αντιγράφου ασφαλείας"
+
+#: src/Buffer.cpp:886
+#, c-format
+msgid ""
+"Cannot create backup file %1$s.\n"
+"Please check whether the directory exists and is writeable."
+msgstr ""
+"Αποτυχία δημιουργίας αντιγράφου ασφαλείας για το %1$s.\n"
+"Ελέγξτε εάν ο φάκελος υπάρχει και είναι εγγράψιμος."
 
 #: src/Buffer.cpp:912
 #, c-format
@@ -15366,7 +15309,7 @@ msgstr "Η κλάση εγγράφου δεν είναι διαθέσιμη"
 msgid "LyX will not be able to produce output."
 msgstr "Το LyX δεν θα μπορέσει να παράγει έξοδο."
 
-#: src/BufferParams.cpp:1653
+#: src/BufferParams.cpp:1657
 #, c-format
 msgid ""
 "The document class %1$s could not be found. A default textclass with default "
@@ -15378,20 +15321,20 @@ msgstr ""
 "παράγει έξοδο εκτός αν επιλεγεί μια σωστή textclass από τον διάλογο "
 "ρυθμίσεων εγγράφου."
 
-#: src/BufferParams.cpp:1658
+#: src/BufferParams.cpp:1662
 msgid "Document class not found"
 msgstr "Η κλάση εγγράφων δεν βρέθηκε"
 
-#: src/BufferParams.cpp:1665 src/LyXFunc.cpp:752
+#: src/BufferParams.cpp:1669 src/LyXFunc.cpp:752
 #, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "Δεν ήταν δυνατή η φόρτωση της κλάσης εγγράφων %1$s."
 
-#: src/BufferParams.cpp:1667 src/LyXFunc.cpp:754
+#: src/BufferParams.cpp:1671 src/LyXFunc.cpp:754
 msgid "Could not load class"
 msgstr "Δεν ήταν δυνατή η φόρτωση της κλάσης"
 
-#: src/BufferParams.cpp:1729
+#: src/BufferParams.cpp:1733
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -15404,15 +15347,15 @@ msgstr ""
 "διαθέσιμων μονάδων. Εάν την εγκαταστήσατε\n"
 "πρόσφατα, επαναρυθμίστε το LyX.\n"
 
-#: src/BufferParams.cpp:1733
+#: src/BufferParams.cpp:1737
 msgid "Module not available"
 msgstr "Η μονάδα δεν είναι διαθέσιμη"
 
-#: src/BufferParams.cpp:1734
+#: src/BufferParams.cpp:1738
 msgid "Some layouts may not be available."
 msgstr "Κάποιες διατάξεις πιθανόν να μην είναι διαθέσιμες."
 
-#: src/BufferParams.cpp:1741
+#: src/BufferParams.cpp:1745
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -15423,20 +15366,20 @@ msgstr ""
 "είναι διαθέσιμο στην εγκατάσταση του LyX.\n"
 "H έξοδος LaTeX ίσως να μην είναι εφικτή.\n"
 
-#: src/BufferParams.cpp:1744
+#: src/BufferParams.cpp:1748
 msgid "Package not available"
 msgstr "Πακέτο μη διαθέσιμο"
 
-#: src/BufferParams.cpp:1749
+#: src/BufferParams.cpp:1753
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "Σφάλμα ανάγνωσης μονάδας %1$s\n"
 
-#: src/BufferParams.cpp:1750 src/BufferParams.cpp:1756
+#: src/BufferParams.cpp:1754 src/BufferParams.cpp:1760
 msgid "Read Error"
 msgstr "Σφάλμα Ανάγνωσης"
 
-#: src/BufferParams.cpp:1755
+#: src/BufferParams.cpp:1759
 msgid "Error reading internal layout information"
 msgstr "Σφάλμα ανάγνωσης εσωτερικής πληροφορίας διάταξης"
 
@@ -16027,7 +15970,7 @@ msgstr ""
 msgid "Undefined flex inset"
 msgstr "Μη ορισμένο ένθεμα flex"
 
-#: src/Exporter.cpp:44 src/LyXFunc.cpp:1038
+#: src/Exporter.cpp:45 src/LyXFunc.cpp:1038
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -16038,41 +15981,41 @@ msgstr ""
 "\n"
 "Θέλετε να το αντικαταστήσετε;"
 
-#: src/Exporter.cpp:47 src/LyXFunc.cpp:1041
+#: src/Exporter.cpp:48 src/LyXFunc.cpp:1041
 msgid "Overwrite file?"
 msgstr "Αντικατάσταση αρχείου;"
 
-#: src/Exporter.cpp:49
+#: src/Exporter.cpp:50
 msgid "Overwrite &all"
 msgstr "Αντικατάσταση ό&λων"
 
-#: src/Exporter.cpp:50
+#: src/Exporter.cpp:51
 msgid "&Cancel export"
 msgstr "Α&κύρωση εξαγωγής"
 
-#: src/Exporter.cpp:90
+#: src/Exporter.cpp:94
 msgid "Couldn't copy file"
 msgstr "Δεν ήταν δυνατή η αντιγραφή του αρχείου"
 
-#: src/Exporter.cpp:91
+#: src/Exporter.cpp:95
 #, c-format
 msgid "Copying %1$s to %2$s failed."
 msgstr "Η αντιγραφή του %1$s στο %2$s απέτυχε."
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:118
-#: src/frontends/qt4/GuiDocument.cpp:2281
+#: src/frontends/qt4/GuiDocument.cpp:2285
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr ""
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:119
-#: src/frontends/qt4/GuiDocument.cpp:2281
+#: src/frontends/qt4/GuiDocument.cpp:2285
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr ""
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:120
-#: src/frontends/qt4/GuiDocument.cpp:2281
+#: src/frontends/qt4/GuiDocument.cpp:2285
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr ""
@@ -16552,7 +16495,7 @@ msgstr ""
 "\n"
 "Θέλετε να αποθηκεύσετε το έγγραφο;"
 
-#: src/LyXFunc.cpp:713 src/frontends/qt4/GuiView.cpp:1928
+#: src/LyXFunc.cpp:713 src/frontends/qt4/GuiView.cpp:1929
 msgid "Save changed document?"
 msgstr "Αποθήκευση τροποποιημένου εγγράφου;"
 
@@ -16666,7 +16609,7 @@ msgstr ""
 msgid "Reload externally changed document?"
 msgstr "Επαναφόρτωση εξωτερικά τροποποιημένου εγγράφου;"
 
-#: src/LyXFunc.cpp:1926 src/buffer_funcs.cpp:75
+#: src/LyXFunc.cpp:1926 src/buffer_funcs.cpp:77
 msgid "&Reload"
 msgstr "&Επαναφόρτωση"
 
@@ -17626,7 +17569,7 @@ msgstr "Κατακόρυφο γέμισμα"
 msgid "protected"
 msgstr "προστατευμένο"
 
-#: src/buffer_funcs.cpp:72
+#: src/buffer_funcs.cpp:74
 #, c-format
 msgid ""
 "The document %1$s is already loaded and has unsaved changes.\n"
@@ -17636,25 +17579,25 @@ msgstr ""
 "Θέλετε να εγκαταλείψετε τις αλλαγές και να φορτώσετε ξανά την έκδοση στον "
 "δίσκο;"
 
-#: src/buffer_funcs.cpp:74
+#: src/buffer_funcs.cpp:76
 msgid "Reload saved document?"
 msgstr "Επαναφόρτωση αποθηκευμένου εγγράφου;"
 
-#: src/buffer_funcs.cpp:75
+#: src/buffer_funcs.cpp:77
 msgid "&Keep Changes"
 msgstr "&Διατήρηση Αλλαγών"
 
-#: src/buffer_funcs.cpp:87
+#: src/buffer_funcs.cpp:89
 #, c-format
 msgid "The file %1$s exists but is not readable by the current user."
 msgstr ""
 "Το αρχείο %1$s υπάρχει αλλά δεν είναι αναγνώσιμο από τον τρέχοντα χρήστη."
 
-#: src/buffer_funcs.cpp:90
+#: src/buffer_funcs.cpp:92
 msgid "File not readable!"
 msgstr "Το αρχείο δεν είναι αναγνώσιμο!"
 
-#: src/buffer_funcs.cpp:106
+#: src/buffer_funcs.cpp:108
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -17665,15 +17608,15 @@ msgstr ""
 "\n"
 "Θέλετε να δημιουργήσετε ένα νέο έγγραφο;"
 
-#: src/buffer_funcs.cpp:109
+#: src/buffer_funcs.cpp:111
 msgid "Create new document?"
 msgstr "Δημιουργία νέου εγγράφου;"
 
-#: src/buffer_funcs.cpp:110
+#: src/buffer_funcs.cpp:112
 msgid "&Create"
 msgstr "&Δημιουργία"
 
-#: src/buffer_funcs.cpp:138
+#: src/buffer_funcs.cpp:140
 #, c-format
 msgid ""
 "The specified document template\n"
@@ -17684,23 +17627,23 @@ msgstr ""
 "%1$s\n"
 "δεν ήταν δυνατό να διαβαστεί."
 
-#: src/buffer_funcs.cpp:140
+#: src/buffer_funcs.cpp:142
 msgid "Could not read template"
 msgstr "Δεν ήταν δυνατή η ανάγνωση του προτύπου"
 
-#: src/buffer_funcs.cpp:420
+#: src/buffer_funcs.cpp:422
 msgid "\\arabic{enumi}."
 msgstr "\\arabic{enumi}."
 
-#: src/buffer_funcs.cpp:426
+#: src/buffer_funcs.cpp:428
 msgid "\\roman{enumiii}."
 msgstr "\\roman{enumiii}."
 
-#: src/buffer_funcs.cpp:429
+#: src/buffer_funcs.cpp:431
 msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
-#: src/buffer_funcs.cpp:446 src/insets/InsetCaption.cpp:292
+#: src/buffer_funcs.cpp:448 src/insets/InsetCaption.cpp:292
 msgid "Senseless!!! "
 msgstr "Επιπόλαιο!!!"
 
@@ -17928,8 +17871,8 @@ msgstr "Βιβλιογραφία BibTeX"
 #: src/frontends/qt4/GuiDocument.cpp:1308
 #: src/frontends/qt4/GuiExternal.cpp:672 src/frontends/qt4/GuiGraphics.cpp:849
 #: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1369
-#: src/frontends/qt4/GuiView.cpp:1427 src/frontends/qt4/GuiView.cpp:1574
-#: src/frontends/qt4/GuiView.cpp:1702 src/frontends/qt4/GuiView.cpp:1786
+#: src/frontends/qt4/GuiView.cpp:1427 src/frontends/qt4/GuiView.cpp:1575
+#: src/frontends/qt4/GuiView.cpp:1703 src/frontends/qt4/GuiView.cpp:1787
 msgid "Documents|#o#O"
 msgstr "Έγγραφα|#o#O"
 
@@ -18136,9 +18079,9 @@ msgid "Choose a filename to save the pasted graphic as"
 msgstr "Επιλέξτε ένα όνομα αρχείου για να αποθηκεύσετε το επικολλημένο γραφικό"
 
 #: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1446
-#: src/frontends/qt4/GuiView.cpp:1594 src/frontends/qt4/GuiView.cpp:1610
-#: src/frontends/qt4/GuiView.cpp:1627 src/frontends/qt4/GuiView.cpp:1719
-#: src/frontends/qt4/GuiView.cpp:1762
+#: src/frontends/qt4/GuiView.cpp:1595 src/frontends/qt4/GuiView.cpp:1611
+#: src/frontends/qt4/GuiView.cpp:1628 src/frontends/qt4/GuiView.cpp:1720
+#: src/frontends/qt4/GuiView.cpp:1763
 msgid "Canceled."
 msgstr "Ακυρώθηκε."
 
@@ -18474,7 +18417,7 @@ msgstr "&Ορισμός Διάταξης"
 
 #: src/frontends/qt4/GuiDocument.cpp:1279
 #: src/frontends/qt4/GuiDocument.cpp:1354
-#: src/frontends/qt4/GuiDocument.cpp:2248
+#: src/frontends/qt4/GuiDocument.cpp:2252
 msgid "Error"
 msgstr "Σφάλμα"
 
@@ -18491,12 +18434,12 @@ msgid "LyX Files (*.lyx)"
 msgstr "Αρχεία LyX (*.lyx)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1339
-#: src/frontends/qt4/GuiDocument.cpp:2237
+#: src/frontends/qt4/GuiDocument.cpp:2241
 msgid "Unapplied changes"
 msgstr "Μη εφαρμοσμένες αλλαγές"
 
 #: src/frontends/qt4/GuiDocument.cpp:1340
-#: src/frontends/qt4/GuiDocument.cpp:2238
+#: src/frontends/qt4/GuiDocument.cpp:2242
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -18505,12 +18448,12 @@ msgstr ""
 "Εάν δεν τις εφαρμόσετε τώρα, θα χαθούν μετά από αυτή την πράξη."
 
 #: src/frontends/qt4/GuiDocument.cpp:1342
-#: src/frontends/qt4/GuiDocument.cpp:2240
+#: src/frontends/qt4/GuiDocument.cpp:2244
 msgid "&Dismiss"
 msgstr "Α&πόρριψη"
 
 #: src/frontends/qt4/GuiDocument.cpp:1354
-#: src/frontends/qt4/GuiDocument.cpp:2248
+#: src/frontends/qt4/GuiDocument.cpp:2252
 msgid "Unable to set document class."
 msgstr "Αδύνατος ο ορισμός της κλάσης εγγράφου."
 
@@ -18551,28 +18494,28 @@ msgstr "Μονάδες που αποκλείονται: %1$s."
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "ΠΡΟΕΙΔΟΠΟΙΗΣΗ: Κάποια απαιτούμενα πακέτα δεν είναι διαθέσιμα!"
 
-#: src/frontends/qt4/GuiDocument.cpp:2047
+#: src/frontends/qt4/GuiDocument.cpp:2051
 msgid "[No options predefined]"
 msgstr "[Καμιά προκαθορισμένη επιλογή]"
 
-#: src/frontends/qt4/GuiDocument.cpp:2260
+#: src/frontends/qt4/GuiDocument.cpp:2264
 msgid "Can't set layout!"
 msgstr "Αδύνατος ο ορισμός διάταξης!"
 
-#: src/frontends/qt4/GuiDocument.cpp:2261
+#: src/frontends/qt4/GuiDocument.cpp:2265
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Αδύνατος ο ορισμός διάταξης για ID: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2338
+#: src/frontends/qt4/GuiDocument.cpp:2342
 msgid "Not Found"
 msgstr "Δεν βρέθηκε"
 
-#: src/frontends/qt4/GuiDocument.cpp:2392
+#: src/frontends/qt4/GuiDocument.cpp:2396
 msgid "Assigned master does not include this file"
 msgstr "Το ορισμένο ως κύριο δεν περιλαμβάνει αυτό το αρχείο"
 
-#: src/frontends/qt4/GuiDocument.cpp:2393
+#: src/frontends/qt4/GuiDocument.cpp:2397
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -18583,11 +18526,11 @@ msgstr ""
 "'%1$s' ώστε να χρησιμοποιήσετε τη δυνατότητα κυρίου\n"
 "εγγράφου."
 
-#: src/frontends/qt4/GuiDocument.cpp:2397
+#: src/frontends/qt4/GuiDocument.cpp:2401
 msgid "Could not load master"
 msgstr "Δεν ήταν δυνατή η φόρτωση του κύριου"
 
-#: src/frontends/qt4/GuiDocument.cpp:2398
+#: src/frontends/qt4/GuiDocument.cpp:2402
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -19711,12 +19654,12 @@ msgstr "Άγνωστη γραμμή εργαλείων \"%1$s\""
 msgid "Select template file"
 msgstr "Επιλογή αρχείου προτύπου"
 
-#: src/frontends/qt4/GuiView.cpp:1370 src/frontends/qt4/GuiView.cpp:1787
+#: src/frontends/qt4/GuiView.cpp:1370 src/frontends/qt4/GuiView.cpp:1788
 msgid "Templates|#T#t"
 msgstr "Πρότυπα|#T#t"
 
 #: src/frontends/qt4/GuiView.cpp:1373 src/frontends/qt4/GuiView.cpp:1431
-#: src/frontends/qt4/GuiView.cpp:1708 src/frontends/qt4/GuiView.cpp:1794
+#: src/frontends/qt4/GuiView.cpp:1709 src/frontends/qt4/GuiView.cpp:1795
 msgid "LyX Documents (*.lyx)"
 msgstr "Έγγραφα LyX (*.lyx)"
 
@@ -19728,8 +19671,8 @@ msgstr "Το έγγραφο δεν φορτώθηκε."
 msgid "Select document to open"
 msgstr "Επιλογή εγγράφου για άνοιγμα"
 
-#: src/frontends/qt4/GuiView.cpp:1428 src/frontends/qt4/GuiView.cpp:1575
-#: src/frontends/qt4/GuiView.cpp:1703
+#: src/frontends/qt4/GuiView.cpp:1428 src/frontends/qt4/GuiView.cpp:1576
+#: src/frontends/qt4/GuiView.cpp:1704
 msgid "Examples|#E#e"
 msgstr "Παραδείγματα|#E#e"
 
@@ -19766,40 +19709,40 @@ msgstr ""
 "%1$s\n"
 "δεν υπάρχει."
 
-#: src/frontends/qt4/GuiView.cpp:1475
+#: src/frontends/qt4/GuiView.cpp:1476
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Άνοιγμα εγγράφου %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1484
+#: src/frontends/qt4/GuiView.cpp:1485
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Το έγγραφο %1$s έχει ανοιχτεί."
 
-#: src/frontends/qt4/GuiView.cpp:1487
+#: src/frontends/qt4/GuiView.cpp:1488
 msgid "Version control detected."
 msgstr "Εντοπίστηκε έλεγχος έκδοσης."
 
-#: src/frontends/qt4/GuiView.cpp:1489
+#: src/frontends/qt4/GuiView.cpp:1490
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Δεν ήταν δυνατό το άνοιγμα του εγγράφου %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1518
+#: src/frontends/qt4/GuiView.cpp:1519
 msgid "Couldn't import file"
 msgstr "Δεν ήταν δυνατή η εισαγωγή του αρχείου"
 
-#: src/frontends/qt4/GuiView.cpp:1519
+#: src/frontends/qt4/GuiView.cpp:1520
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Καμιά πληροφορία για την εισαγωγή του τύπου %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:1570
+#: src/frontends/qt4/GuiView.cpp:1571
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Επιλογή %1$s αρχείου για εισαγωγή"
 
-#: src/frontends/qt4/GuiView.cpp:1621 src/frontends/qt4/GuiView.cpp:1811
+#: src/frontends/qt4/GuiView.cpp:1622 src/frontends/qt4/GuiView.cpp:1812
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -19810,48 +19753,48 @@ msgstr ""
 "\n"
 "Θέλετε να το αντικαταστήσετε;"
 
-#: src/frontends/qt4/GuiView.cpp:1623 src/frontends/qt4/GuiView.cpp:1815
+#: src/frontends/qt4/GuiView.cpp:1624 src/frontends/qt4/GuiView.cpp:1816
 msgid "Overwrite document?"
 msgstr "Αντικατάσταση εγγράφου;"
 
-#: src/frontends/qt4/GuiView.cpp:1632
+#: src/frontends/qt4/GuiView.cpp:1633
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Εισαγωγή του %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1635
+#: src/frontends/qt4/GuiView.cpp:1636
 msgid "imported."
 msgstr "εισήχθη."
 
-#: src/frontends/qt4/GuiView.cpp:1637
+#: src/frontends/qt4/GuiView.cpp:1638
 msgid "file not imported!"
 msgstr "το αρχείο δεν εισήχθη!"
 
-#: src/frontends/qt4/GuiView.cpp:1701
+#: src/frontends/qt4/GuiView.cpp:1702
 msgid "Select LyX document to insert"
 msgstr "Επιλέξτε έγγραφο LyX προς εισαγωγή"
 
-#: src/frontends/qt4/GuiView.cpp:1735
+#: src/frontends/qt4/GuiView.cpp:1736
 msgid "Absolute filename expected."
 msgstr "Αναμένεται απόλυτο όνομα αρχείου."
 
-#: src/frontends/qt4/GuiView.cpp:1747
+#: src/frontends/qt4/GuiView.cpp:1748
 msgid "Select file to insert"
 msgstr "Επιλέξτε αρχείο προς εισαγωγή"
 
-#: src/frontends/qt4/GuiView.cpp:1751
+#: src/frontends/qt4/GuiView.cpp:1752
 msgid "All Files (*)"
 msgstr "Όλα τα Αρχεία (*)"
 
-#: src/frontends/qt4/GuiView.cpp:1784
+#: src/frontends/qt4/GuiView.cpp:1785
 msgid "Choose a filename to save document as"
 msgstr "Επιλέξτε ένα όνομα αρχείου για αποθήκευση του εγγράφου"
 
-#: src/frontends/qt4/GuiView.cpp:1816 src/frontends/qt4/GuiView.cpp:1868
+#: src/frontends/qt4/GuiView.cpp:1817 src/frontends/qt4/GuiView.cpp:1869
 msgid "&Rename"
 msgstr "&Μετονομασία"
 
-#: src/frontends/qt4/GuiView.cpp:1864
+#: src/frontends/qt4/GuiView.cpp:1865
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -19862,15 +19805,15 @@ msgstr ""
 "\n"
 "Θέλετε να μετονομάσετε το έγγραφο και να προσπαθήσετε ξανά;"
 
-#: src/frontends/qt4/GuiView.cpp:1867
+#: src/frontends/qt4/GuiView.cpp:1868
 msgid "Rename and save?"
 msgstr "Μετονομασία και αποθήκευση;"
 
-#: src/frontends/qt4/GuiView.cpp:1868
+#: src/frontends/qt4/GuiView.cpp:1869
 msgid "&Retry"
 msgstr "Δοκιμή &Ξανά"
 
-#: src/frontends/qt4/GuiView.cpp:1926
+#: src/frontends/qt4/GuiView.cpp:1927
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -19881,23 +19824,23 @@ msgstr ""
 "\n"
 "Θέλετε να αποθηκεύσετε το έγγραφο ή να απορρίψετε τις αλλαγές;"
 
-#: src/frontends/qt4/GuiView.cpp:1929
+#: src/frontends/qt4/GuiView.cpp:1930
 msgid "&Discard"
 msgstr "&Απόρριψη"
 
-#: src/frontends/qt4/GuiView.cpp:2004
+#: src/frontends/qt4/GuiView.cpp:2005
 msgid "Document not loaded"
 msgstr "Το έγγραφο δεν φορτώθηκε"
 
-#: src/frontends/qt4/GuiView.cpp:2062
+#: src/frontends/qt4/GuiView.cpp:2063
 msgid "Saving all documents..."
 msgstr "Αποθήκευση όλων των εγγράφων..."
 
-#: src/frontends/qt4/GuiView.cpp:2072
+#: src/frontends/qt4/GuiView.cpp:2073
 msgid "All documents saved."
 msgstr "Όλα τα έγγραφα αποθηκεύτηκαν."
 
-#: src/frontends/qt4/GuiView.cpp:2319
+#: src/frontends/qt4/GuiView.cpp:2320
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s άγνωστη εντολή!"
@@ -21275,6 +21218,63 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Άγνωστος χρήστης"
+
+#~ msgid "TheoremTemplate"
+#~ msgstr "Πρότυπο Θεωρήματος"
+
+#~ msgid "Theorem #:"
+#~ msgstr "Θεώρημα #:"
+
+#~ msgid "Lemma #:"
+#~ msgstr "Λήμμα #:"
+
+#~ msgid "Corollary #:"
+#~ msgstr "Πόρισμα #:"
+
+#~ msgid "Proposition #:"
+#~ msgstr "Πρόταση #:"
+
+#~ msgid "Conjecture #:"
+#~ msgstr "Εικασία #:"
+
+#~ msgid "Criterion #:"
+#~ msgstr "Κριτήριο #:"
+
+#~ msgid "Fact #:"
+#~ msgstr "Δεδομένο #:"
+
+#~ msgid "Axiom #:"
+#~ msgstr "Αξίωμα #:"
+
+#~ msgid "Definition #:"
+#~ msgstr "Ορισμός #:"
+
+#~ msgid "Example #:"
+#~ msgstr "Παράδειγμα #:"
+
+#~ msgid "Condition #:"
+#~ msgstr "Συνθήκη #:"
+
+#~ msgid "Problem #:"
+#~ msgstr "Πρόβλημα #:"
+
+#~ msgid "Exercise #:"
+#~ msgstr "Άσκηση #:"
+
+#~ msgid "Remark #:"
+#~ msgstr "Παρατήρηση #:"
+
+#~ msgid "Claim #:"
+#~ msgstr "Ισχυρισμός #:"
+
+#~ msgid "Note #:"
+#~ msgstr "Σημείωση #:"
+
+#~ msgid "Notation #:"
+#~ msgstr "Σημειογραφία #:"
+
+#~ msgid "Case #:"
+#~ msgstr "Περίπτωση #:"
 
 #~ msgid ""
 #~ "Shortcut `%1$s' is already bound to:\n"
