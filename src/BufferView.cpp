@@ -1078,7 +1078,12 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		flag.setOnOff(buffer_.params().compressed);
 		break;
 	}
-	
+
+	case LFUN_BUFFER_TOGGLE_OUTPUT_SYNC: {
+		flag.setOnOff(buffer_.params().output_sync);
+		break;
+	}
+
 	case LFUN_SCREEN_UP:
 	case LFUN_SCREEN_DOWN:
 	case LFUN_SCROLL:
@@ -1586,6 +1591,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_BUFFER_TOGGLE_COMPRESSION:
 		// turn compression on/off
 		buffer_.params().compressed = !buffer_.params().compressed;
+		break;
+
+	case LFUN_BUFFER_TOGGLE_OUTPUT_SYNC:
+		buffer_.params().output_sync = !buffer_.params().output_sync;
 		break;
 
 	case LFUN_SCREEN_UP:

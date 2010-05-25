@@ -2843,7 +2843,6 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_FORWARD_SEARCH, "forward-search", ReadOnly, System },
-
 /*!
  * \var lyx::FuncCode lyx::LFUN_SERVER_NOTIFY
  * \li Action: Sends notify message about the last key-sequence to client.
@@ -2920,6 +2919,16 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_BUFFER_TOGGLE_COMPRESSION, "buffer-toggle-compression", Noop, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_TOGGLE_OUTPUT_SYNC
+ * \li Action: Toggles including of resources for forward/reverse search of the given document.
+ * \li Notion: When toggled on, SyncTeX is invoked for PDF, while srcltx package
+               is used for DVI. Custom LaTeX macro can be defined in preferences.
+ * \li Syntax: buffer-toggle-output-sync
+ * \li Origin: sanda, 25 May 2010
+ * \endvar
+ */
+		{ LFUN_BUFFER_TOGGLE_OUTPUT_SYNC, "buffer-toggle-output-sync", Noop, System },
 /*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_CLOSE
  * \li Action: Closes the current buffer.

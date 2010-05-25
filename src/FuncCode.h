@@ -447,6 +447,7 @@ enum FuncCode
 	LFUN_PREVIEW_INSERT,            // vfr, 20100328
 	LFUN_FORWARD_SEARCH,
 	LFUN_INSET_COPY_AS,             // vfr, 20100419
+	LFUN_BUFFER_TOGGLE_OUTPUT_SYNC,
 
 	LFUN_LASTACTION                 // end of the table
 };
