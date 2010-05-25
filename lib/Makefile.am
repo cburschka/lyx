@@ -309,6 +309,7 @@ dist_images_DATA = \
 	images/buffer-export_text.png \
 	images/buffer-new.png \
 	images/buffer-reload.png \
+	images/buffer-toggle-output-sync.png \
 	images/buffer-update.png \
 	images/buffer-update_dvi.png \
 	images/buffer-update_pdf.png \

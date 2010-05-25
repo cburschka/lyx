@@ -1416,6 +1416,7 @@ lib_images_files = Split('''
     buffer-export_text.png
     buffer-new.png
     buffer-reload.png
+    buffer-toggle-output-sync.png
     buffer-update.png
     buffer-update_dvi.png
     buffer-update_pdf.png
