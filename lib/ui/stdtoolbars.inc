@@ -100,7 +100,7 @@ ToolbarSet
 		Item "Update" "buffer-update"
 		Item "View master document" "master-buffer-view"
 		Item "Update master document" "master-buffer-update"
-		Item "Include Resources for Forward/Reverse Search" "buffer-toggle-output-sync"
+		Item "Enable Forward/Reverse Search" "buffer-toggle-output-sync"
 		Separator
 		StickyPopupMenu "view-others" "View other formats"
 		StickyPopupMenu "update-others" "Update other formats"
