@@ -126,7 +126,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 389; // rgh: change how html_latex_* is stored
+int const LYX_FORMAT = 390; // ps: forward view
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
@@ -673,6 +673,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().isfontcolor = false;
 	params().notefontcolor = lyx::rgbFromHexName("#cccccc");
 	params().boxbgcolor = lyx::rgbFromHexName("#ff0000");
+	params().output_sync_macro.erase();
 
 	for (int i = 0; i < 4; ++i) {
 		params().user_defined_bullet(i) = ITEMIZE_DEFAULTS[i];

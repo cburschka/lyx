@@ -404,6 +404,8 @@ BufferParams::BufferParams()
 	html_be_strict = false;
 	html_math_output = MathML;
 	html_math_img_scale = 1.0;
+
+	output_sync = false;
 }
 
 
@@ -834,6 +836,10 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\html_latex_end") {
 		lex.eatLine();
 		html_latex_end = lex.getString();
+	} else if (token == "\\output_sync") {
+		lex >> output_sync;
+	} else if (token == "\\output_sync_macro") {
+		lex >> output_sync_macro;
 	} else {
 		lyxerr << "BufferParams::readToken(): Unknown token: " << 
 			token << endl;
@@ -936,6 +942,9 @@ void BufferParams::writeFile(ostream & os) const
 	}
 	os << "\n\\graphics " << graphicsDriver << '\n';
 	os << "\\default_output_format " << defaultOutputFormat << '\n';
+	os << "\\output_sync " << output_sync << '\n';
+	if (!output_sync_macro.empty())
+		os << "\\output_sync_macro \"" << output_sync_macro << "\"\n";
 	os << "\\bibtex_command " << bibtex_command << '\n';
 	os << "\\index_command " << index_command << '\n';
 
@@ -1652,6 +1661,15 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	// Now insert the LyX specific LaTeX commands...
 	docstring lyxpreamble;
+
+	if (output_sync) {
+		if (!output_sync_macro.empty())
+			lyxpreamble += from_utf8(output_sync_macro) +"\n";
+		else if (features.runparams().flavor == OutputParams::LATEX)
+			lyxpreamble += "\\usepackage[active]{srcltx}\n";
+		else if (features.runparams().flavor == OutputParams::PDFLATEX)
+			lyxpreamble += "\\synctex=-1\n";
+	}
 
 	// due to interferences with babel and hyperref, the color package has to
 	// be loaded (when it is not already loaded) before babel when hyperref

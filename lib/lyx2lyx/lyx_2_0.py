@@ -1577,6 +1577,17 @@ def revert_html_quotes(document):
     m = l.match(line)
     document.header[i] = "\\html_latex_end \"" + m.group(1) + "\""
 
+
+def revert_output_sync(document):
+  " Remove forward search options "
+  i = find_token(document.header, '\\forward_search', 0)
+  if i != -1:
+    del document.header[i]
+  i = find_token(document.header, '\\forward_macro', 0)
+  if i != -1:
+    del document.header[i]
+
+
 ##
 # Conversion hub
 #
@@ -1625,10 +1636,12 @@ convert = [[346, []],
            [386, []],
            [387, []],
            [388, []],
-           [389, [convert_html_quotes]]
-          ]
+           [389, [convert_html_quotes]],
+           [390, []]
+					]
 
-revert =  [[388, [revert_html_quotes]],
+revert =  [[389, [revert_output_sync]],
+           [388, [revert_html_quotes]],
            [387, [revert_pagesizes]],
            [386, [revert_math_scale]],
            [385, [revert_lyx_version]],

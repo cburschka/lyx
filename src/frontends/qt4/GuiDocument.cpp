@@ -653,6 +653,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(outputModule->xetexCB, SIGNAL(toggled(bool)),
 		this, SLOT(xetexChanged(bool)));
+	connect(outputModule->outputsyncCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(outputModule->synccustomCB, SIGNAL(editTextChanged(QString)),
+		this, SLOT(change_adaptor()));
 	connect(outputModule->defaultFormatCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(outputModule->mathimgSB, SIGNAL(valueChanged(double)),
@@ -2274,6 +2278,9 @@ void GuiDocument::applyView()
 	bool const xetex = outputModule->xetexCB->isChecked();
 	bp_.useXetex = xetex;
 
+	bp_.output_sync = outputModule->outputsyncCB->isChecked();
+	bp_.output_sync_macro = fromqstr(outputModule->synccustomCB->currentText());
+
 	int mathfmt = outputModule->mathoutCB->currentIndex();
 	if (mathfmt == -1)
 		mathfmt = 0;
@@ -2703,6 +2710,9 @@ void GuiDocument::paramsToDialog()
 	outputModule->xetexCB->setEnabled(bp_.baseClass()->outputType() == lyx::LATEX);
 	outputModule->xetexCB->setChecked(
 		bp_.baseClass()->outputType() == lyx::LATEX && bp_.useXetex);
+
+	outputModule->outputsyncCB->setChecked(bp_.output_sync);
+	outputModule->synccustomCB->setEditText(toqstr(bp_.output_sync_macro));
 
 	outputModule->mathimgSB->setValue(bp_.html_math_img_scale);
 	outputModule->mathoutCB->setCurrentIndex(bp_.html_math_output);

@@ -399,6 +399,10 @@ public:
 	std::string html_latex_start;
 	///
 	std::string html_latex_end;
+	/// generate output usable for reverse/forward search
+	bool output_sync;
+	/// custom LaTeX macro from user instead our own
+	std::string output_sync_macro;
 
 private:
 	///
