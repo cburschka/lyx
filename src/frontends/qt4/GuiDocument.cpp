@@ -653,10 +653,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(outputModule->xetexCB, SIGNAL(toggled(bool)),
 		this, SLOT(xetexChanged(bool)));
-	connect(outputModule->outputsyncCB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
-	connect(outputModule->synccustomCB, SIGNAL(editTextChanged(QString)),
-		this, SLOT(change_adaptor()));
 	connect(outputModule->defaultFormatCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(outputModule->mathimgSB, SIGNAL(valueChanged(double)),
@@ -666,6 +662,14 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(outputModule->mathoutCB, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(change_adaptor()));
 
+	connect(outputModule->outputsyncCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(outputModule->synccustomCB, SIGNAL(editTextChanged(QString)),
+		this, SLOT(change_adaptor()));
+	outputModule->synccustomCB->addItem("");
+	outputModule->synccustomCB->addItem("\\synctex=1");
+	outputModule->synccustomCB->addItem("\\synctex=-1");
+	outputModule->synccustomCB->addItem("\\usepackage[active]{srcltx}");
 
 	// fonts
 	fontModule = new UiWidget<Ui::FontUi>;
