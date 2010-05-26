@@ -79,36 +79,6 @@ Style Title
 End
 
 
-InsetLayout IEEE_membership
-	LyxType			custom
-	LatexType		command
-	LatexName		IEEEmembership
-	LabelString		"IEEE membership"
-	Font
-	  Shape			Italic
-	  Size			Large
-	  Misc			No_Emph
-	  Misc			No_Noun
-	  Misc			No_Bar
-	EndFont
-	LabelFont
-	  Color			green
-	  Size			Small
-	EndFont
-End
-
-
-InsetLayout Lowercase
-	CopyStyle		IEEE_membership
-	LatexType		command
-	LatexName		MakeLowercase
-	LabelString		"lowercase"
-	Font
-	  Size			Normal
-	EndFont
-End
-
-
 Style Author
 	Margin			Static
 	LatexType		Command
@@ -129,27 +99,6 @@ Style Author
 End
 
 
-Style Special_Paper_Notice
-	CopyStyle		Title
-	LatexName		IEEEspecialpapernotice
-	InTitle			1
-	Font
-	  Shape			Italic
-	  Size			Large
-	EndFont
-End
-
-
-Style After_Title_Text
-	CopyStyle		Special_Paper_Notice
-	LatexName		IEEEaftertitletext
-	Font
-	  Shape			Up
-	  Size			Normal
-	EndFont
-End
-
-
 Style MarkBoth
 	LaTeXType		Command
 	LaTeXName		markboth
@@ -165,16 +114,6 @@ Style MarkBoth
 	\DeclareRobustCommand{\foreign@language}[1]{%
 	  \lowercase{\oldforeign@language{#1}}}
 	EndPreamble
-End
-
-
-Style Publication_ID
-	CopyStyle		Special_Paper_Notice
-	LatexName		IEEEpubid
-	Font
-	  Shape			Up
-	  Size			Small
-	EndFont
 End
 
 
@@ -268,7 +207,7 @@ Style Biography
 End
 
 
-Style Biography_without_photo
+Style BiographyNoPhoto
 	CopyStyle		Biography
 	LaTeXName		IEEEbiographynophoto
 	OptionalArgs		0
