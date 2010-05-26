@@ -2,8 +2,9 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
-#
+# Copyright (c) 2006-2010 Peter Kümmel, <syntheticpp@gmx.net>
+# Copyright (c) 2008-2010 Kornel Benko, <Kornel.Benko@berlin.de>
+
 
 cmake_minimum_required(VERSION 2.4)
 
@@ -96,6 +97,12 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
       ${CMAKE_INSTALL_PREFIX}/${LYX_INSTALL_SUFFIX} CACHE PATH "LyX install prefix" FORCE)
   endif()
 endif(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+
+if (WIN32)
+  set(DATA_SUBDIR "Resources/" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
+else()
+  set(DATA_SUBDIR "" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
+endif()
 
 set(LYX_ABS_INSTALLED_DATADIR "${CMAKE_INSTALL_PREFIX}")
 set(LYX_LOCALEDIR "locale")
