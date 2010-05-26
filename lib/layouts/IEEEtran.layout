@@ -150,7 +150,7 @@ Style After_Title_Text
 End
 
 
-Style MarkBoth
+Style Page_headings
 	LaTeXType		Command
 	LaTeXName		markboth
 	Category		FrontMatter
@@ -165,6 +165,11 @@ Style MarkBoth
 	\DeclareRobustCommand{\foreign@language}[1]{%
 	  \lowercase{\oldforeign@language{#1}}}
 	EndPreamble
+End
+
+
+Style MarkBoth
+	ObsoletedBy		Page_headings
 End
 
 
@@ -268,10 +273,14 @@ Style Biography
 End
 
 
-Style BiographyNoPhoto
+Style Biography_without_photo
 	CopyStyle		Biography
 	LaTeXName		IEEEbiographynophoto
 	OptionalArgs		0
+End
+
+Style BiographyNoPhoto
+	ObsoletedBy		Biography_without_photo
 End
 
 
