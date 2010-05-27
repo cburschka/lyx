@@ -18960,9 +18960,49 @@ $Rev: 59 $
  Secondly svn output is dependent on your locales, so its very easy that
  svn would produce some problematic strings once Date is used.
  Thirdly you get the whole 'Rev: 59' string in your document instead of
- the plain number.
+ the plain number -- this can be overcome by using 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+http://tug.ctan.org/tex-archive/macros/latex/contrib/svn/
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svninfo
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+http://tug.ctan.org/tex-archive/macros/latex/contrib/svninfo/
+\end_layout
+
+\end_inset
+
+ LaTeX packages.
  Until subversion implements user's custom keywords it will be hard to use
- this approach reliably or let LyX to support it directly .
+ this approach reliably or let LyX to support it directly.
 \end_layout
 
 \begin_layout Standard
