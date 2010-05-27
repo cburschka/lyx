@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk-163\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-05-24 13:53+0200\n"
+"POT-Creation-Date: 2010-05-27 08:07+0200\n"
 "PO-Revision-Date: 2010-04-17 14:19+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -4033,7 +4033,7 @@ msgstr "Дозволити &пересування"
 msgid "Standard"
 msgstr "Стандартний"
 
-#: lib/layouts/IEEEtran.layout:61 lib/layouts/aa.layout:64
+#: lib/layouts/IEEEtran.layout:62 lib/layouts/aa.layout:64
 #: lib/layouts/aa.layout:254 lib/layouts/aapaper.layout:73
 #: lib/layouts/aapaper.layout:160 lib/layouts/aastex.layout:91
 #: lib/layouts/aastex.layout:207 lib/layouts/apa.layout:39
@@ -4058,8 +4058,8 @@ msgstr "Стандартний"
 msgid "Title"
 msgstr "Заголовок"
 
-#: lib/layouts/IEEEtran.layout:65 lib/layouts/IEEEtran.layout:114
-#: lib/layouts/IEEEtran.layout:155 lib/layouts/IEEEtran.layout:184
+#: lib/layouts/IEEEtran.layout:66 lib/layouts/IEEEtran.layout:85
+#: lib/layouts/IEEEtran.layout:105 lib/layouts/IEEEtran.layout:124
 #: lib/layouts/aa.layout:117 lib/layouts/aa.layout:140
 #: lib/layouts/aa.layout:155 lib/layouts/aa.layout:179
 #: lib/layouts/aa.layout:316 lib/layouts/aastex.layout:266
@@ -4085,21 +4085,7 @@ msgstr "Заголовок"
 msgid "FrontMatter"
 msgstr "Вступ"
 
-#: lib/layouts/IEEEtran.layout:81 lib/layouts/IEEEtran.layout:85
-msgid "IEEE membership"
-msgstr ""
-
-#: lib/layouts/IEEEtran.layout:100
-#, fuzzy
-msgid "Lowercase"
-msgstr "Нижній регістр|Н"
-
-#: lib/layouts/IEEEtran.layout:104
-#, fuzzy
-msgid "lowercase"
-msgstr "Нижній регістр|Н"
-
-#: lib/layouts/IEEEtran.layout:111 lib/layouts/aa.layout:70
+#: lib/layouts/IEEEtran.layout:82 lib/layouts/aa.layout:70
 #: lib/layouts/aa.layout:266 lib/layouts/aapaper.layout:79
 #: lib/layouts/aapaper.layout:171 lib/layouts/aastex.layout:94
 #: lib/layouts/aastex.layout:219 lib/layouts/apa.layout:113
@@ -4121,25 +4107,11 @@ msgstr "Нижній регістр|Н"
 msgid "Author"
 msgstr "Автор"
 
-#: lib/layouts/IEEEtran.layout:131
-#, fuzzy
-msgid "Special Paper Notice"
-msgstr "Спеціальний символ|ц"
-
-#: lib/layouts/IEEEtran.layout:142
-msgid "After Title Text"
-msgstr ""
-
-#: lib/layouts/IEEEtran.layout:152
+#: lib/layouts/IEEEtran.layout:102
 msgid "MarkBoth"
 msgstr "MarkBoth"
 
-#: lib/layouts/IEEEtran.layout:170
-#, fuzzy
-msgid "Publication ID"
-msgstr "Видавці"
-
-#: lib/layouts/IEEEtran.layout:180 lib/layouts/aa.layout:85
+#: lib/layouts/IEEEtran.layout:120 lib/layouts/aa.layout:85
 #: lib/layouts/aa.layout:312 lib/layouts/aa.layout:328
 #: lib/layouts/aapaper.layout:97 lib/layouts/aapaper.layout:193
 #: lib/layouts/aastex.layout:109 lib/layouts/aastex.layout:242
@@ -4169,11 +4141,11 @@ msgstr "Видавці"
 msgid "Abstract"
 msgstr "Резюме"
 
-#: lib/layouts/IEEEtran.layout:189
+#: lib/layouts/IEEEtran.layout:129
 msgid "Abstract---"
 msgstr "Анотація---"
 
-#: lib/layouts/IEEEtran.layout:202 lib/layouts/aa.layout:342
+#: lib/layouts/IEEEtran.layout:142 lib/layouts/aa.layout:342
 #: lib/layouts/aastex.layout:112 lib/layouts/aastex.layout:317
 #: lib/layouts/elsart.layout:62 lib/layouts/elsarticle.layout:249
 #: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpd.layout:76
@@ -4187,16 +4159,16 @@ msgstr "Анотація---"
 msgid "Keywords"
 msgstr "Ключові слова"
 
-#: lib/layouts/IEEEtran.layout:205
+#: lib/layouts/IEEEtran.layout:145
 msgid "Index Terms---"
 msgstr "Записи в покажчику---"
 
-#: lib/layouts/IEEEtran.layout:209 lib/layouts/IEEEtran.layout:219
+#: lib/layouts/IEEEtran.layout:149 lib/layouts/IEEEtran.layout:159
 msgid "Appendices"
 msgstr "Додатки"
 
-#: lib/layouts/IEEEtran.layout:213 lib/layouts/IEEEtran.layout:238
-#: lib/layouts/IEEEtran.layout:261 lib/layouts/aa.layout:202
+#: lib/layouts/IEEEtran.layout:153 lib/layouts/IEEEtran.layout:178
+#: lib/layouts/IEEEtran.layout:201 lib/layouts/aa.layout:202
 #: lib/layouts/aastex.layout:447 lib/layouts/aastex.layout:479
 #: lib/layouts/acmsiggraph.layout:152 lib/layouts/beamer.layout:884
 #: lib/layouts/elsarticle.layout:274 lib/layouts/iopart.layout:241
@@ -4207,7 +4179,7 @@ msgstr "Додатки"
 msgid "BackMatter"
 msgstr "BackMatter"
 
-#: lib/layouts/IEEEtran.layout:226 lib/layouts/IEEEtran.layout:229
+#: lib/layouts/IEEEtran.layout:166 lib/layouts/IEEEtran.layout:169
 #: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:443
 #: lib/layouts/ijmpc.layout:309 lib/layouts/ijmpd.layout:320
 #: lib/layouts/kluwer.layout:313 lib/layouts/kluwer.layout:326
@@ -4215,7 +4187,7 @@ msgstr "BackMatter"
 msgid "Appendix"
 msgstr "Додаток"
 
-#: lib/layouts/IEEEtran.layout:234 lib/layouts/aa.layout:91
+#: lib/layouts/IEEEtran.layout:174 lib/layouts/aa.layout:91
 #: lib/layouts/aa.layout:371 lib/layouts/aapaper.layout:103
 #: lib/layouts/aapaper.layout:210 lib/layouts/achemso.layout:167
 #: lib/layouts/beamer.layout:883 lib/layouts/book.layout:21
@@ -4240,7 +4212,7 @@ msgstr "Додаток"
 msgid "Bibliography"
 msgstr "Список літератури"
 
-#: lib/layouts/IEEEtran.layout:249 lib/layouts/aastex.layout:121
+#: lib/layouts/IEEEtran.layout:189 lib/layouts/aastex.layout:121
 #: lib/layouts/aastex.layout:475 lib/layouts/aastex.layout:488
 #: lib/layouts/achemso.layout:181 lib/layouts/beamer.layout:897
 #: lib/layouts/cl2emult.layout:116 lib/layouts/egs.layout:566
@@ -4253,16 +4225,16 @@ msgstr "Список літератури"
 msgid "References"
 msgstr "Посилання"
 
-#: lib/layouts/IEEEtran.layout:258
+#: lib/layouts/IEEEtran.layout:198
 msgid "Biography"
 msgstr "Біографія"
 
-#: lib/layouts/IEEEtran.layout:270
+#: lib/layouts/IEEEtran.layout:210
 #, fuzzy
-msgid "Biography without photo"
-msgstr "БіографіяБезФото"
+msgid "BiographyNoPhoto"
+msgstr "Біографія"
 
-#: lib/layouts/IEEEtran.layout:277 lib/layouts/beamer.layout:1051
+#: lib/layouts/IEEEtran.layout:217 lib/layouts/beamer.layout:1051
 #: lib/layouts/elsart.layout:285 lib/layouts/foils.layout:278
 #: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:211
 #: lib/layouts/ijmpd.layout:211 lib/layouts/llncs.layout:371
@@ -4272,7 +4244,7 @@ msgstr "БіографіяБезФото"
 msgid "Proof"
 msgstr "На коректуру"
 
-#: lib/layouts/IEEEtran.layout:278 lib/layouts/beamer.layout:1057
+#: lib/layouts/IEEEtran.layout:218 lib/layouts/beamer.layout:1057
 #: lib/layouts/elsart.layout:256 lib/layouts/foils.layout:218
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:190
 #: lib/layouts/ijmpd.layout:193 lib/layouts/llncs.layout:412
@@ -4294,7 +4266,7 @@ msgstr "На коректуру"
 msgid "Theorem"
 msgstr "Теорема"
 
-#: lib/layouts/IEEEtran.layout:294 lib/layouts/beamer.layout:1054
+#: lib/layouts/IEEEtran.layout:234 lib/layouts/beamer.layout:1054
 #: lib/layouts/foils.layout:281 lib/layouts/ijmpc.layout:219
 #: lib/layouts/ijmpd.layout:219 lib/layouts/llncs.layout:374
 #: lib/layouts/siamltex.layout:166 lib/layouts/svjour.inc:397
@@ -21295,6 +21267,26 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Невідомий користувач"
+
+#, fuzzy
+#~ msgid "Lowercase"
+#~ msgstr "Нижній регістр|Н"
+
+#, fuzzy
+#~ msgid "lowercase"
+#~ msgstr "Нижній регістр|Н"
+
+#, fuzzy
+#~ msgid "Special Paper Notice"
+#~ msgstr "Спеціальний символ|ц"
+
+#, fuzzy
+#~ msgid "Publication ID"
+#~ msgstr "Видавці"
+
+#, fuzzy
+#~ msgid "Biography without photo"
+#~ msgstr "БіографіяБезФото"
 
 #~ msgid "TheoremTemplate"
 #~ msgstr "ШаблонТеореми"

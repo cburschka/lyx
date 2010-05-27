@@ -69,7 +69,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-05-24 13:53+0200\n"
+"POT-Creation-Date: 2010-05-27 08:07+0200\n"
 "PO-Revision-Date: 2007-07-14 16:48+0100\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -4197,7 +4197,7 @@ msgstr ""
 msgid "Standard"
 msgstr "Perusteksti"
 
-#: lib/layouts/IEEEtran.layout:61 lib/layouts/aa.layout:64
+#: lib/layouts/IEEEtran.layout:62 lib/layouts/aa.layout:64
 #: lib/layouts/aa.layout:254 lib/layouts/aapaper.layout:73
 #: lib/layouts/aapaper.layout:160 lib/layouts/aastex.layout:91
 #: lib/layouts/aastex.layout:207 lib/layouts/apa.layout:39
@@ -4222,8 +4222,8 @@ msgstr "Perusteksti"
 msgid "Title"
 msgstr "Teoksen nimi"
 
-#: lib/layouts/IEEEtran.layout:65 lib/layouts/IEEEtran.layout:114
-#: lib/layouts/IEEEtran.layout:155 lib/layouts/IEEEtran.layout:184
+#: lib/layouts/IEEEtran.layout:66 lib/layouts/IEEEtran.layout:85
+#: lib/layouts/IEEEtran.layout:105 lib/layouts/IEEEtran.layout:124
 #: lib/layouts/aa.layout:117 lib/layouts/aa.layout:140
 #: lib/layouts/aa.layout:155 lib/layouts/aa.layout:179
 #: lib/layouts/aa.layout:316 lib/layouts/aastex.layout:266
@@ -4249,21 +4249,7 @@ msgstr "Teoksen nimi"
 msgid "FrontMatter"
 msgstr "Etuteksti"
 
-#: lib/layouts/IEEEtran.layout:81 lib/layouts/IEEEtran.layout:85
-msgid "IEEE membership"
-msgstr ""
-
-#: lib/layouts/IEEEtran.layout:100
-#, fuzzy
-msgid "Lowercase"
-msgstr "Pienet"
-
-#: lib/layouts/IEEEtran.layout:104
-#, fuzzy
-msgid "lowercase"
-msgstr "Pienet"
-
-#: lib/layouts/IEEEtran.layout:111 lib/layouts/aa.layout:70
+#: lib/layouts/IEEEtran.layout:82 lib/layouts/aa.layout:70
 #: lib/layouts/aa.layout:266 lib/layouts/aapaper.layout:79
 #: lib/layouts/aapaper.layout:171 lib/layouts/aastex.layout:94
 #: lib/layouts/aastex.layout:219 lib/layouts/apa.layout:113
@@ -4285,25 +4271,11 @@ msgstr "Pienet"
 msgid "Author"
 msgstr "Tekijä"
 
-#: lib/layouts/IEEEtran.layout:131
-#, fuzzy
-msgid "Special Paper Notice"
-msgstr "Erikoismerkki|E"
-
-#: lib/layouts/IEEEtran.layout:142
-msgid "After Title Text"
-msgstr ""
-
-#: lib/layouts/IEEEtran.layout:152
+#: lib/layouts/IEEEtran.layout:102
 msgid "MarkBoth"
 msgstr "MerkitseMolemmat"
 
-#: lib/layouts/IEEEtran.layout:170
-#, fuzzy
-msgid "Publication ID"
-msgstr "Julkaisijat"
-
-#: lib/layouts/IEEEtran.layout:180 lib/layouts/aa.layout:85
+#: lib/layouts/IEEEtran.layout:120 lib/layouts/aa.layout:85
 #: lib/layouts/aa.layout:312 lib/layouts/aa.layout:328
 #: lib/layouts/aapaper.layout:97 lib/layouts/aapaper.layout:193
 #: lib/layouts/aastex.layout:109 lib/layouts/aastex.layout:242
@@ -4333,11 +4305,11 @@ msgstr "Julkaisijat"
 msgid "Abstract"
 msgstr "Tiivistelmä"
 
-#: lib/layouts/IEEEtran.layout:189
+#: lib/layouts/IEEEtran.layout:129
 msgid "Abstract---"
 msgstr "Tiivistelmä---"
 
-#: lib/layouts/IEEEtran.layout:202 lib/layouts/aa.layout:342
+#: lib/layouts/IEEEtran.layout:142 lib/layouts/aa.layout:342
 #: lib/layouts/aastex.layout:112 lib/layouts/aastex.layout:317
 #: lib/layouts/elsart.layout:62 lib/layouts/elsarticle.layout:249
 #: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpd.layout:76
@@ -4351,16 +4323,16 @@ msgstr "Tiivistelmä---"
 msgid "Keywords"
 msgstr "Avainsanat"
 
-#: lib/layouts/IEEEtran.layout:205
+#: lib/layouts/IEEEtran.layout:145
 msgid "Index Terms---"
 msgstr "Hakemistoviitteet---"
 
-#: lib/layouts/IEEEtran.layout:209 lib/layouts/IEEEtran.layout:219
+#: lib/layouts/IEEEtran.layout:149 lib/layouts/IEEEtran.layout:159
 msgid "Appendices"
 msgstr "Liitteet"
 
-#: lib/layouts/IEEEtran.layout:213 lib/layouts/IEEEtran.layout:238
-#: lib/layouts/IEEEtran.layout:261 lib/layouts/aa.layout:202
+#: lib/layouts/IEEEtran.layout:153 lib/layouts/IEEEtran.layout:178
+#: lib/layouts/IEEEtran.layout:201 lib/layouts/aa.layout:202
 #: lib/layouts/aastex.layout:447 lib/layouts/aastex.layout:479
 #: lib/layouts/acmsiggraph.layout:152 lib/layouts/beamer.layout:884
 #: lib/layouts/elsarticle.layout:274 lib/layouts/iopart.layout:241
@@ -4371,7 +4343,7 @@ msgstr "Liitteet"
 msgid "BackMatter"
 msgstr ""
 
-#: lib/layouts/IEEEtran.layout:226 lib/layouts/IEEEtran.layout:229
+#: lib/layouts/IEEEtran.layout:166 lib/layouts/IEEEtran.layout:169
 #: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:443
 #: lib/layouts/ijmpc.layout:309 lib/layouts/ijmpd.layout:320
 #: lib/layouts/kluwer.layout:313 lib/layouts/kluwer.layout:326
@@ -4379,7 +4351,7 @@ msgstr ""
 msgid "Appendix"
 msgstr "Liite"
 
-#: lib/layouts/IEEEtran.layout:234 lib/layouts/aa.layout:91
+#: lib/layouts/IEEEtran.layout:174 lib/layouts/aa.layout:91
 #: lib/layouts/aa.layout:371 lib/layouts/aapaper.layout:103
 #: lib/layouts/aapaper.layout:210 lib/layouts/achemso.layout:167
 #: lib/layouts/beamer.layout:883 lib/layouts/book.layout:21
@@ -4404,7 +4376,7 @@ msgstr "Liite"
 msgid "Bibliography"
 msgstr "Viitteet"
 
-#: lib/layouts/IEEEtran.layout:249 lib/layouts/aastex.layout:121
+#: lib/layouts/IEEEtran.layout:189 lib/layouts/aastex.layout:121
 #: lib/layouts/aastex.layout:475 lib/layouts/aastex.layout:488
 #: lib/layouts/achemso.layout:181 lib/layouts/beamer.layout:897
 #: lib/layouts/cl2emult.layout:116 lib/layouts/egs.layout:566
@@ -4417,16 +4389,16 @@ msgstr "Viitteet"
 msgid "References"
 msgstr "Viitteet"
 
-#: lib/layouts/IEEEtran.layout:258
+#: lib/layouts/IEEEtran.layout:198
 msgid "Biography"
 msgstr "Elämäkerta"
 
-#: lib/layouts/IEEEtran.layout:270
+#: lib/layouts/IEEEtran.layout:210
 #, fuzzy
-msgid "Biography without photo"
-msgstr "ElämäkertaIlmanKuvaa"
+msgid "BiographyNoPhoto"
+msgstr "Elämäkerta"
 
-#: lib/layouts/IEEEtran.layout:277 lib/layouts/beamer.layout:1051
+#: lib/layouts/IEEEtran.layout:217 lib/layouts/beamer.layout:1051
 #: lib/layouts/elsart.layout:285 lib/layouts/foils.layout:278
 #: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:211
 #: lib/layouts/ijmpd.layout:211 lib/layouts/llncs.layout:371
@@ -4436,7 +4408,7 @@ msgstr "ElämäkertaIlmanKuvaa"
 msgid "Proof"
 msgstr "Todistus"
 
-#: lib/layouts/IEEEtran.layout:278 lib/layouts/beamer.layout:1057
+#: lib/layouts/IEEEtran.layout:218 lib/layouts/beamer.layout:1057
 #: lib/layouts/elsart.layout:256 lib/layouts/foils.layout:218
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:190
 #: lib/layouts/ijmpd.layout:193 lib/layouts/llncs.layout:412
@@ -4458,7 +4430,7 @@ msgstr "Todistus"
 msgid "Theorem"
 msgstr "Lause"
 
-#: lib/layouts/IEEEtran.layout:294 lib/layouts/beamer.layout:1054
+#: lib/layouts/IEEEtran.layout:234 lib/layouts/beamer.layout:1054
 #: lib/layouts/foils.layout:281 lib/layouts/ijmpc.layout:219
 #: lib/layouts/ijmpd.layout:219 lib/layouts/llncs.layout:374
 #: lib/layouts/siamltex.layout:166 lib/layouts/svjour.inc:397
@@ -21997,6 +21969,26 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Tuntematon käyttäjä"
+
+#, fuzzy
+#~ msgid "Lowercase"
+#~ msgstr "Pienet"
+
+#, fuzzy
+#~ msgid "lowercase"
+#~ msgstr "Pienet"
+
+#, fuzzy
+#~ msgid "Special Paper Notice"
+#~ msgstr "Erikoismerkki|E"
+
+#, fuzzy
+#~ msgid "Publication ID"
+#~ msgstr "Julkaisijat"
+
+#, fuzzy
+#~ msgid "Biography without photo"
+#~ msgstr "ElämäkertaIlmanKuvaa"
 
 #~ msgid "TheoremTemplate"
 #~ msgstr "Lausemalli"
