@@ -673,6 +673,9 @@ int Buffer::readHeader(Lexer & lex)
 	params().isfontcolor = false;
 	params().notefontcolor = lyx::rgbFromHexName("#cccccc");
 	params().boxbgcolor = lyx::rgbFromHexName("#ff0000");
+	params().html_latex_start.clear();
+	params().html_latex_end.clear();
+	params().html_math_img_scale = 1.0;
 	params().output_sync_macro.erase();
 
 	for (int i = 0; i < 4; ++i) {
