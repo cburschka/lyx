@@ -1139,26 +1139,29 @@ def processModuleFile(file, bool_docbook):
       if res != None:
         catgy = res.group(1)
         continue
-    if modname != "":
-        if pkgs != "":
-            # this module has some latex dependencies:
-            # append the dependencies to chkmodules.tex,
-            # which is \input'ed by chkconfig.ltx
-            testpackages = list()
-            for pkg in pkgs.split(","):
-                if "->" in pkg:
-                    # this is a converter dependency: skip
-                    continue
-                if pkg.endswith(".sty"):
-                    pkg = pkg[:-4]
-                testpackages.append("\\TestPackage{%s}" % (pkg,))
-            cm = open('chkmodules.tex', 'a')
-            for line in testpackages:
-                cm.write(line + '\n')
-            cm.close()
-        return '"%s" "%s" "%s" "%s" "%s" "%s" "%s"\n' % (modname, filename, desc, pkgs, req, excl, catgy)
-    logger.warning("Module file without \DeclareLyXModule line. ")
-    return ""
+
+    if modname == "":
+      logger.warning("Module file without \DeclareLyXModule line. ")
+      return ""
+
+    if pkgs != "":
+        # this module has some latex dependencies:
+        # append the dependencies to chkmodules.tex,
+        # which is \input'ed by chkconfig.ltx
+        testpackages = list()
+        for pkg in pkgs.split(","):
+            if "->" in pkg:
+                # this is a converter dependency: skip
+                continue
+            if pkg.endswith(".sty"):
+                pkg = pkg[:-4]
+            testpackages.append("\\TestPackage{%s}" % (pkg,))
+        cm = open('chkmodules.tex', 'a')
+        for line in testpackages:
+            cm.write(line + '\n')
+        cm.close()
+    return '"%s" "%s" "%s" "%s" "%s" "%s" "%s"\n' % (modname, filename, desc, pkgs, req, excl, catgy)
+    
 
 
 def checkTeXAllowSpaces():
