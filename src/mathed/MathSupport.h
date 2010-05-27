@@ -49,6 +49,10 @@ void augmentFont(FontInfo & f, docstring const & cmd);
 
 bool isFontName(docstring const & name);
 
+bool isMathFont(docstring const & name);
+
+bool isTextFont(docstring const & name);
+
 // converts single cell to string
 docstring asString(MathData const & ar);
 // converts single inset to string

@@ -191,6 +191,8 @@ private:
 	void changeCols(col_type);
 	///
 	docstring standardFont() const;
+	///
+	docstring standardColor() const;
 	/// consistency check
 	void check() const;
 	/// can this change its number of rows?
