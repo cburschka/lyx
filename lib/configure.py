@@ -1088,12 +1088,12 @@ def processModuleFile(file, bool_docbook):
         We expect output:
           "ModuleName" "filename" "Description" "Packages" "Requires" "Excludes" "Category"
     '''
-    p = re.compile(r'\DeclareLyXModule\s*(?:\[([^]]*?)\])?{(.*)}')
-    r = re.compile(r'#+\s*Requires: (.*)')
-    x = re.compile(r'#+\s*Excludes: (.*)')
-    c = re.compile(r'#+\s*Category: (.*)')
-    b = re.compile(r'#+\s*DescriptionBegin\s*$')
-    e = re.compile(r'#+\s*DescriptionEnd\s*$')
+    remods = re.compile(r'\DeclareLyXModule\s*(?:\[([^]]*?)\])?{(.*)}')
+    rereqs = re.compile(r'#+\s*Requires: (.*)')
+    reexcs = re.compile(r'#+\s*Excludes: (.*)')
+    recaty = re.compile(r'#+\s*Category: (.*)')
+    redbeg = re.compile(r'#+\s*DescriptionBegin\s*$')
+    redend = re.compile(r'#+\s*DescriptionEnd\s*$')
 
     modname = desc = pkgs = req = excl = catgy = ""
     readingDescription = False
@@ -1103,18 +1103,18 @@ def processModuleFile(file, bool_docbook):
 
     for line in open(file).readlines():
       if readingDescription:
-        res = e.search(line)
+        res = redend.search(line)
         if res != None:
           readingDescription = False
           desc = " ".join(descLines)
           continue
         descLines.append(line[1:].strip())
         continue
-      res = b.search(line)
+      res = redbeg.search(line)
       if res != None:
         readingDescription = True
         continue
-      res = p.search(line)
+      res = remods.search(line)
       if res != None:
           (pkgs, modname) = res.groups()
           if pkgs == None:
@@ -1123,19 +1123,19 @@ def processModuleFile(file, bool_docbook):
             tmp = [s.strip() for s in pkgs.split(",")]
             pkgs = ",".join(tmp)
           continue
-      res = r.search(line)
+      res = rereqs.search(line)
       if res != None:
         req = res.group(1)
         tmp = [s.strip() for s in req.split("|")]
         req = "|".join(tmp)
         continue
-      res = x.search(line)
+      res = reexcs.search(line)
       if res != None:
         excl = res.group(1)
         tmp = [s.strip() for s in excl.split("|")]
         excl = "|".join(tmp)
         continue
-      res = c.search(line)
+      res = recaty.search(line)
       if res != None:
         catgy = res.group(1)
         continue
@@ -1160,6 +1160,7 @@ def processModuleFile(file, bool_docbook):
         for line in testpackages:
             cm.write(line + '\n')
         cm.close()
+
     return '"%s" "%s" "%s" "%s" "%s" "%s" "%s"\n' % (modname, filename, desc, pkgs, req, excl, catgy)
     
 
