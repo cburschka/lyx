@@ -1107,6 +1107,8 @@ def processModuleFile(file, bool_docbook):
         if res != None:
           readingDescription = False
           desc = " ".join(descLines)
+          # Escape quotes.
+          desc = desc.replace('"', '\\"')
           continue
         descLines.append(line[1:].strip())
         continue
