@@ -119,16 +119,13 @@ void GuiBox::on_innerBoxCO_activated(QString const & str)
 	ialignCO->setEnabled(ibox);
 	halignCO->setEnabled(!ibox);
 	heightCB->setEnabled(ibox);
-	// if an outer box from the fancybox LaTeX-package has no inner box,
-	// the width cannot be specified
-	if (!ibox && outer != 0 && outer != 1) {
-		widthED->setEnabled(false);
-		widthUnitsLC->setEnabled(false);
-	} else {
-		widthED->setEnabled(true);
-		widthUnitsLC->setEnabled(true);
-	}
-	pagebreakCB->setEnabled(!ibox && outer == 1);
+	// except for fremeless and boxed, the width cannot be specified if
+	// there is no inner box
+	bool const width_disabled = (!ibox && ids_[outer] != "Frameless" &&
+		ids_[outer] != "Boxed");
+	widthED->setEnabled(!width_disabled);
+	widthUnitsLC->setEnabled(!width_disabled);
+	pagebreakCB->setEnabled(!ibox && ids_[outer] == "Boxed");
 	setSpecial(ibox);
 	changed();
 }
@@ -149,17 +146,13 @@ void GuiBox::on_typeCO_activated(int index)
 	int itype = innerBoxCO->currentIndex();
 	if (innerBoxCO->count() == 2)
 		++itype;
-	pagebreakCB->setEnabled(index == 1 && itype == 0);
-	// if an outer box from the fancybox LaTeX-package has no inner box,
-	// the width cannot be specified
-	if (itype == 0
-	    && (index == 2 || index == 3 || index == 4 || index == 6)) {
-		widthED->setEnabled(false);
-		widthUnitsLC->setEnabled(false);
-	} else {
-		widthED->setEnabled(index != 5);
-		widthUnitsLC->setEnabled(index != 5);
-	}
+	pagebreakCB->setEnabled(ids_[index] == "Boxed" && itype == 0);
+	// except for fremeless and boxed, the width cannot be specified if
+	// there is no inner box
+	bool const width_disabled = (itype == 0 && ids_[index] != "Frameless"
+		&& ids_[index] != "Boxed");
+	widthED->setEnabled(!width_disabled);
+	widthUnitsLC->setEnabled(!width_disabled);
 	setInnerType(frameless, itype);
 	changed();
 }
