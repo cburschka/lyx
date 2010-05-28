@@ -20,7 +20,6 @@
 #include "BufferView.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
-#include "FuncRequest.h"
 #include "Language.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
@@ -465,21 +464,16 @@ void GuiSpellchecker::replace(docstring const & replacement)
 {
 	LYXERR(Debug::GUI, "GuiSpellchecker::replace("
 			   << to_utf8(replacement) << ")");
-	/*
-	  Slight hack ahead: we want to use the dispatch machinery
-	  (see bug #6217), but self-insert honors the ``auto region
-	  delete'' setting, which is not wanted here. Creating a new
-	  ad-hoc LFUN seems overkill, but it could be an option (JMarc).
-	*/
-	bool const ard = lyxrc.auto_region_delete;
-	lyxrc.auto_region_delete = true;
-	dispatch(FuncRequest(LFUN_SELF_INSERT, replacement));
-	lyxrc.auto_region_delete = ard;
+	BufferView * bv = const_cast<BufferView *>(bufferview());
+	if (!bv->cursor().inTexted())
+		return;
+	cap::replaceSelectionWithString(bv->cursor(), replacement, true);
+	bv->buffer().markDirty();
+	// If we used an LFUN, we would not need that
+	bv->processUpdateFlags(Update::Force | Update::FitCursor);
 	// fix up the count
 	--count_;
-	// Do nothing if the spellchecker has been terminated already
-	if (speller_)
-		check();
+	check();
 }
 
 
