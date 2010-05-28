@@ -24,6 +24,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Introduced new -f [--force-overwrite] command line flag. Without any
+  argument (or 'all' as argument) all files are silently overwritten on
+  export. Using 'main' as argument, only the main file will be overwritten.
 
 
 
@@ -73,6 +76,9 @@ What's new
 - Don't overwrite child .tex documents on latex export (bug 2434).
 
 - Don't allow creating multiple buffers with same name (bug 6645).
+
+- Don't automatically overwrite files on export, unless the newly introduced
+  -f flag is used (bug 2762).
 
 
 * USER INTERFACE

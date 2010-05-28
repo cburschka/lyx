@@ -2639,7 +2639,8 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	vector<ExportedFile> const files =
 		runparams.exportdata->externalFiles(format);
 	string const dest = onlyPath(result_file);
-	CopyStatus status = SUCCESS;
+	CopyStatus status = !use_gui && force_overwrite == ALL_FILES ? FORCE
+								     : SUCCESS;
 	for (vector<ExportedFile>::const_iterator it = files.begin();
 		it != files.end() && status != CANCEL; ++it) {
 		string const fmt = formats.getFormatFromFile(it->sourceName);
@@ -2651,6 +2652,8 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		message(_("Document export cancelled."));
 	} else if (tmp_result_file.exists()) {
 		// Finally copy the main file
+		if (!use_gui && force_overwrite != NO_FILES)
+			status = FORCE;
 		status = copyFile(format, tmp_result_file,
 			FileName(result_file), result_file,
 			status == FORCE);

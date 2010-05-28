@@ -33,7 +33,14 @@ class Server;
 class ServerSocket;
 class Session;
 
+enum OverwriteFiles {
+	NO_FILES,
+	MAIN_FILE,
+	ALL_FILES
+};
+
 extern bool use_gui;
+extern OverwriteFiles force_overwrite;
 
 namespace frontend {
 class Application;
