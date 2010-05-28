@@ -96,8 +96,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-05-27 08:07+0200\n"
-"PO-Revision-Date: 2010-05-27 08:09+0200\n"
+"POT-Creation-Date: 2010-05-28 17:15+0200\n"
+"PO-Revision-Date: 2010-05-28 17:33+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -177,7 +177,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:862
-#: src/Buffer.cpp:2750 src/Buffer.cpp:2796 src/Buffer.cpp:2831
+#: src/Buffer.cpp:2753 src/Buffer.cpp:2799 src/Buffer.cpp:2834
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
 #: src/LyXFunc.cpp:1926 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
@@ -552,8 +552,8 @@ msgstr "&Neu:"
 msgid "Remove the selected branch"
 msgstr "Den ausgewählten Zweig entfernen"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2766
-#: src/Buffer.cpp:2777
+#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2769
+#: src/Buffer.cpp:2780
 msgid "&Remove"
 msgstr "&Entfernen"
 
@@ -15302,21 +15302,21 @@ msgstr "Fehler im Dateinamen"
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Der Verzeichnispfad zum Dokument darf keine Leerzeichen enthalten."
 
-#: src/Buffer.cpp:2651
+#: src/Buffer.cpp:2652
 msgid "Document export cancelled."
 msgstr "Der Export des Dokuments wurde abgebrochen."
 
-#: src/Buffer.cpp:2657
+#: src/Buffer.cpp:2660
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument als %1$s in die Datei `%2$s' exportiert"
 
-#: src/Buffer.cpp:2663
+#: src/Buffer.cpp:2666
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument als %1$s exportiert"
 
-#: src/Buffer.cpp:2733
+#: src/Buffer.cpp:2736
 #, c-format
 msgid ""
 "The specified document\n"
@@ -15327,11 +15327,11 @@ msgstr ""
 "%1$s\n"
 "konnte nicht gelesen werden."
 
-#: src/Buffer.cpp:2735
+#: src/Buffer.cpp:2738
 msgid "Could not read document"
 msgstr "Das Dokument konnte nicht gelesen werden"
 
-#: src/Buffer.cpp:2745
+#: src/Buffer.cpp:2748
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15342,27 +15342,27 @@ msgstr ""
 "\n"
 "Soll die Notspeicherung wiederhergestellt werden?"
 
-#: src/Buffer.cpp:2748
+#: src/Buffer.cpp:2751
 msgid "Load emergency save?"
 msgstr "Notspeicherung laden?"
 
-#: src/Buffer.cpp:2749
+#: src/Buffer.cpp:2752
 msgid "&Recover"
 msgstr "&Wiederherstellen"
 
-#: src/Buffer.cpp:2749
+#: src/Buffer.cpp:2752
 msgid "&Load Original"
 msgstr "&Original laden"
 
-#: src/Buffer.cpp:2759
+#: src/Buffer.cpp:2762
 msgid "Document was successfully recovered."
 msgstr "Dokument wurde erfolgreich wiederhergestellt."
 
-#: src/Buffer.cpp:2761
+#: src/Buffer.cpp:2764
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument wurde NICHT erfolgreich wiederhergestellt."
 
-#: src/Buffer.cpp:2762
+#: src/Buffer.cpp:2765
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -15372,27 +15372,27 @@ msgstr ""
 "%1$s\n"
 "jetzt löschen?"
 
-#: src/Buffer.cpp:2765 src/Buffer.cpp:2775
+#: src/Buffer.cpp:2768 src/Buffer.cpp:2778
 msgid "Delete emergency file?"
 msgstr "Notspeicherung löschen?"
 
-#: src/Buffer.cpp:2766 src/Buffer.cpp:2777
+#: src/Buffer.cpp:2769 src/Buffer.cpp:2780
 msgid "&Keep it"
 msgstr "&Nicht löschen"
 
-#: src/Buffer.cpp:2769
+#: src/Buffer.cpp:2772
 msgid "Emergency file deleted"
 msgstr "Notspeicherung gelöscht"
 
-#: src/Buffer.cpp:2770
+#: src/Buffer.cpp:2773
 msgid "Do not forget to save your file now!"
 msgstr "Vergessen Sie nicht, ihre Datei jetzt zu speichern!"
 
-#: src/Buffer.cpp:2776
+#: src/Buffer.cpp:2779
 msgid "Remove emergency file now?"
 msgstr "Notspeicherungsdatei jetzt löschen?"
 
-#: src/Buffer.cpp:2791
+#: src/Buffer.cpp:2794
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15403,28 +15403,28 @@ msgstr ""
 "\n"
 "Stattdessen die Sicherung laden?"
 
-#: src/Buffer.cpp:2794
+#: src/Buffer.cpp:2797
 msgid "Load backup?"
 msgstr "Sicherung laden?"
 
-#: src/Buffer.cpp:2795
+#: src/Buffer.cpp:2798
 msgid "&Load backup"
 msgstr "&Sicherung laden"
 
-#: src/Buffer.cpp:2795
+#: src/Buffer.cpp:2798
 msgid "Load &original"
 msgstr "&Original laden"
 
-#: src/Buffer.cpp:2828
+#: src/Buffer.cpp:2831
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Möchten Sie das Dokument %1$s aus der Versionskontrolle abrufen?"
 
-#: src/Buffer.cpp:2830
+#: src/Buffer.cpp:2833
 msgid "Retrieve from version control?"
 msgstr "Von der Versionskontrolle abrufen?"
 
-#: src/Buffer.cpp:2831
+#: src/Buffer.cpp:2834
 msgid "&Retrieve"
 msgstr "&Abrufen"
 
@@ -16141,18 +16141,22 @@ msgid "Overwrite file?"
 msgstr "Datei überschreiben?"
 
 #: src/Exporter.cpp:50
+msgid "&Keep file"
+msgstr "&Nicht überschreiben"
+
+#: src/Exporter.cpp:51
 msgid "Overwrite &all"
 msgstr "&Alle überschreiben"
 
 #: src/Exporter.cpp:51
 msgid "&Cancel export"
-msgstr "Export &abbrechen"
+msgstr "&Export abbrechen"
 
-#: src/Exporter.cpp:94
+#: src/Exporter.cpp:96
 msgid "Couldn't copy file"
 msgstr "Die Datei konnte nicht kopiert werden"
 
-#: src/Exporter.cpp:95
+#: src/Exporter.cpp:97
 #, c-format
 msgid "Copying %1$s to %2$s failed."
 msgstr "Das Kopieren von %1$s nach %2$s ist fehlgeschlagen."
@@ -16360,11 +16364,11 @@ msgstr "BibTeX wird ausgeführt."
 msgid "Running MakeIndex for nomencl."
 msgstr "MakeIndex wird für nomencl ausgeführt."
 
-#: src/LyX.cpp:101
+#: src/LyX.cpp:108
 msgid "Could not read configuration file"
 msgstr "Die Konfigurationsdatei konnte nicht gelesen werden"
 
-#: src/LyX.cpp:102
+#: src/LyX.cpp:109
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16375,42 +16379,42 @@ msgstr ""
 "%1$s.\n"
 "Bitte prüfen Sie Ihre Installation."
 
-#: src/LyX.cpp:111
+#: src/LyX.cpp:118
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Konfiguriere das Benutzerverzeichnis neu"
 
-#: src/LyX.cpp:115
+#: src/LyX.cpp:122
 msgid "Done!"
 msgstr "Fertig!"
 
-#: src/LyX.cpp:377
+#: src/LyX.cpp:384
 #, c-format
 msgid "%1$s does not appear like a LyX created temporary directory."
 msgstr "%1$s ist vermutlich kein von LyX erstelltes temporäres Verzeichnis."
 
-#: src/LyX.cpp:379
+#: src/LyX.cpp:386
 msgid "Cannot remove temporary directory"
 msgstr "Das temporäre Verzeichnis konnte nicht entfernt werden"
 
-#: src/LyX.cpp:385
+#: src/LyX.cpp:392
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Das temporäre Verzeichnis %1$s konnte nicht entfernt werden"
 
-#: src/LyX.cpp:387
+#: src/LyX.cpp:394
 msgid "Unable to remove temporary directory"
 msgstr "Das temporäre Verzeichnis konnte nicht entfernt werden"
 
-#: src/LyX.cpp:416
+#: src/LyX.cpp:423
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Falsche Befehlszeilenoption `%1$s'. Das Programm wird beendet."
 
-#: src/LyX.cpp:490
+#: src/LyX.cpp:497
 msgid "No textclass is found"
 msgstr "Keine Textklasse gefunden"
 
-#: src/LyX.cpp:491
+#: src/LyX.cpp:498
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
@@ -16419,27 +16423,27 @@ msgstr ""
 "LyX entweder normal rekonfigurieren, unter Verwendung der "
 "Standardtextklassen rekonfigurieren oder beenden."
 
-#: src/LyX.cpp:495
+#: src/LyX.cpp:502
 msgid "&Reconfigure"
 msgstr "Neu &konfigurieren"
 
-#: src/LyX.cpp:496
+#: src/LyX.cpp:503
 msgid "&Use Default"
 msgstr "Standard &verwenden"
 
-#: src/LyX.cpp:497 src/LyX.cpp:859
+#: src/LyX.cpp:504 src/LyX.cpp:866
 msgid "&Exit LyX"
 msgstr "LyX &beenden"
 
-#: src/LyX.cpp:643 src/frontends/qt4/GuiView.cpp:749
+#: src/LyX.cpp:650 src/frontends/qt4/GuiView.cpp:749
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:768
+#: src/LyX.cpp:775
 msgid "Could not create temporary directory"
 msgstr "Das temporäre Verzeichnis konnte nicht erstellt werden"
 
-#: src/LyX.cpp:769
+#: src/LyX.cpp:776
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -16451,11 +16455,11 @@ msgstr ""
 "erstellt werden. Stellen Sie sicher, dass dieser Pfad\n"
 "existiert und beschreibbar ist, und versuchen Sie es noch einmal."
 
-#: src/LyX.cpp:852
+#: src/LyX.cpp:859
 msgid "Missing user LyX directory"
 msgstr "Kein LyX-Benutzerverzeichnis"
 
-#: src/LyX.cpp:853
+#: src/LyX.cpp:860
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -16464,33 +16468,33 @@ msgstr ""
 "Sie haben ein nicht vorhandenes LyX-Benutzerverzeichnis angegeben, %1$s.\n"
 "Es wird benötigt, um Ihre persönliche Konfiguration abzulegen."
 
-#: src/LyX.cpp:858
+#: src/LyX.cpp:865
 msgid "&Create directory"
 msgstr "Verzeichnis &erstellen"
 
-#: src/LyX.cpp:860
+#: src/LyX.cpp:867
 msgid "No user LyX directory. Exiting."
 msgstr "Kein LyX-Benutzerverzeichnis. LyX wird beendet."
 
-#: src/LyX.cpp:864
+#: src/LyX.cpp:871
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Erstellen des Verzeichnisses %1$s"
 
-#: src/LyX.cpp:869
+#: src/LyX.cpp:876
 msgid "Failed to create directory. Exiting."
 msgstr "Das Erstellen des Verzeichnisses ist fehlgeschlagen. LyX wird beendet."
 
-#: src/LyX.cpp:941
+#: src/LyX.cpp:948
 msgid "List of supported debug flags:"
 msgstr "Liste der unterstützten Testoptionen:"
 
-#: src/LyX.cpp:945
+#: src/LyX.cpp:952
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Festlegen des Test-Levels auf %1$s"
 
-#: src/LyX.cpp:956
+#: src/LyX.cpp:963
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -16510,6 +16514,12 @@ msgid ""
 "\t-i [--import] fmt file.xxx\n"
 "                  where fmt is the import format of choice\n"
 "                  and file.xxx is the file to be imported.\n"
+"\t-f [--force-overwrite] what\n"
+"                  where what is either `all' or `main'.\n"
+"                  Using `all', all files are overwritten during\n"
+"                  a batch export, otherwise only the main file will be.\n"
+"                  Anything else is equivalent to `all', but is not "
+"consumed.\n"
 "\t-version        summarize version and build info\n"
 "Check the LyX man page for more details."
 msgstr ""
@@ -16522,7 +16532,7 @@ msgstr ""
 "\t-dbg Feature[,Feature]...\n"
 "                     Wählt die Themenbereiche aus, für die eine\n"
 "                     ausführliche Testmeldung aktiviert wird.\n"
-"                     Mit `lyx -dbg' erhalten Sie eine Liste der\n"
+"                     Mit 'lyx -dbg' erhalten Sie eine Liste der\n"
 "                     vorhandenen Bereiche.\n"
 "\t-x [--execute] command\n"
 "                     command ist ein LyX-Befehl.\n"
@@ -16531,44 +16541,49 @@ msgstr ""
 "\t-i [--import] fmt file.xxx\n"
 "                     fmt ist das gewünschte Import-Format, \n"
 "                     file.xxx ist die zu importierende Datei.\n"
+"\t-f [--force-overwrite] was\n"
+"                  'was' kann entweder 'all' oder 'main' sein.\n"
+"                  Bei 'all' werden beim Export alle Dateien\n"
+"                  überschrieben, bei 'main' nur die Hauptdatei.\n"
+"                 Unbekannte Argumente werden als 'all' interpretiert.\n"
 "\t-version           Fasst Version und Erstellungsdatum zusammen.\n"
-"Weitere Optionen sind in der LyX man Datei aufgeführt."
+"Weitere Optionen sind in der LyX-Manpage aufgeführt."
 
-#: src/LyX.cpp:996
+#: src/LyX.cpp:1008
 msgid "No system directory"
 msgstr "Kein Systemverzeichnis"
 
-#: src/LyX.cpp:997
+#: src/LyX.cpp:1009
 msgid "Missing directory for -sysdir switch"
 msgstr "Die Option -sysdir verlangt die Angabe eines Verzeichnisses"
 
-#: src/LyX.cpp:1008
+#: src/LyX.cpp:1020
 msgid "No user directory"
 msgstr "Kein Benutzerverzeichnis"
 
-#: src/LyX.cpp:1009
+#: src/LyX.cpp:1021
 msgid "Missing directory for -userdir switch"
 msgstr "Die Option -userdir verlangt die Angabe eines Verzeichnisses"
 
-#: src/LyX.cpp:1020
+#: src/LyX.cpp:1032
 msgid "Incomplete command"
 msgstr "Unvollständiger Befehl"
 
-#: src/LyX.cpp:1021
+#: src/LyX.cpp:1033
 msgid "Missing command string after --execute switch"
 msgstr "Die Option --execute verlangt die Angabe eines Befehls"
 
-#: src/LyX.cpp:1032
+#: src/LyX.cpp:1044
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Die Option --export verlangt die Angabe eines Dateityps [z. B. latex, ps...]"
 
-#: src/LyX.cpp:1045
+#: src/LyX.cpp:1057
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "Die Option --import verlangt die Angabe eines Dateityps [z. B. latex, ps...]"
 
-#: src/LyX.cpp:1050
+#: src/LyX.cpp:1062
 msgid "Missing filename for --import"
 msgstr "Die Option --import verlangt die Angabe eines Dateinamens"
 
@@ -17561,7 +17576,7 @@ msgstr "Nichts zu indizieren!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Es kann nicht mehr als ein Absatz indiziert werden!"
 
-#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1561
+#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1570
 msgid "Math editor mode"
 msgstr "Mathe-Editor-Modus"
 
@@ -17942,9 +17957,9 @@ msgstr "Systemverzeichnis: "
 msgid "User directory: "
 msgstr "Benutzerverzeichnis: "
 
-#: src/frontends/qt4/GuiAlert.cpp:162 src/frontends/qt4/GuiAlert.cpp:197
-#: src/frontends/qt4/GuiAlert.cpp:232 src/frontends/qt4/GuiAlert.cpp:264
-#: src/frontends/qt4/GuiAlert.cpp:291
+#: src/frontends/qt4/GuiAlert.cpp:165 src/frontends/qt4/GuiAlert.cpp:208
+#: src/frontends/qt4/GuiAlert.cpp:243 src/frontends/qt4/GuiAlert.cpp:275
+#: src/frontends/qt4/GuiAlert.cpp:302
 #, c-format
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
@@ -21189,7 +21204,7 @@ msgstr " Zeichenketten wurden ersetzt."
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1469
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1478
 #: src/mathed/InsetMathSplit.cpp:75 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -21228,25 +21243,25 @@ msgstr "Keine vertikale Linie zu löschen"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Unbekanntes Tabellenmerkmal '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1237 src/mathed/InsetMathHull.cpp:1245
+#: src/mathed/InsetMathHull.cpp:1246 src/mathed/InsetMathHull.cpp:1254
 msgid "No number"
 msgstr "Keine Nummer"
 
-#: src/mathed/InsetMathHull.cpp:1237 src/mathed/InsetMathHull.cpp:1245
+#: src/mathed/InsetMathHull.cpp:1246 src/mathed/InsetMathHull.cpp:1254
 msgid "Number"
 msgstr "Nummer"
 
-#: src/mathed/InsetMathHull.cpp:1442
+#: src/mathed/InsetMathHull.cpp:1451
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Die Anzahl der Zeilen in '%1$s' kann nicht geändert werden"
 
-#: src/mathed/InsetMathHull.cpp:1452
+#: src/mathed/InsetMathHull.cpp:1461
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Die Anzahl der Spalten in '%1$s' kann nicht geändert werden"
 
-#: src/mathed/InsetMathHull.cpp:1462
+#: src/mathed/InsetMathHull.cpp:1471
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Es können keine horizontalen Gitterlinien in '%1$s' hinzugefügt werden"
@@ -21271,7 +21286,7 @@ msgstr "optional"
 msgid "TeX"
 msgstr "TeX"
 
-#: src/mathed/MathMacroTemplate.cpp:1235
+#: src/mathed/MathMacroTemplate.cpp:1236
 msgid "math macro"
 msgstr "Mathe-Makro"
 

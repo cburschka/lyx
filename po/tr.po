@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-05-27 08:07+0200\n"
+"POT-Creation-Date: 2010-05-28 17:15+0200\n"
 "PO-Revision-Date: 2009-05-25 16:49+0100\n"
 "Last-Translator: H. İbrahim Güngör <h.ibrahim.gungor@gmail.com>\n"
 "Language-Team: Turkish <kde-i18n-doc@kde.org>\n"
@@ -88,7 +88,7 @@ msgstr "&Tamam"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:862
-#: src/Buffer.cpp:2750 src/Buffer.cpp:2796 src/Buffer.cpp:2831
+#: src/Buffer.cpp:2753 src/Buffer.cpp:2799 src/Buffer.cpp:2834
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
 #: src/LyXFunc.cpp:1926 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
@@ -461,8 +461,8 @@ msgstr "&Yeni:"
 msgid "Remove the selected branch"
 msgstr "Seçili dalı sil"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2766
-#: src/Buffer.cpp:2777
+#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2769
+#: src/Buffer.cpp:2780
 msgid "&Remove"
 msgstr "&Sil"
 
@@ -15167,21 +15167,21 @@ msgstr "Dosya adı hatası"
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Belge dosya yolu boşluk içeremez."
 
-#: src/Buffer.cpp:2651
+#: src/Buffer.cpp:2652
 msgid "Document export cancelled."
 msgstr "Belge dışarı aktarımı iptal edildi."
 
-#: src/Buffer.cpp:2657
+#: src/Buffer.cpp:2660
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "%1$s belgesi '%2$s' olarak dışarı aktarıldı"
 
-#: src/Buffer.cpp:2663
+#: src/Buffer.cpp:2666
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Belge %1$s olarak dışarı aktarıldı"
 
-#: src/Buffer.cpp:2733
+#: src/Buffer.cpp:2736
 #, c-format
 msgid ""
 "The specified document\n"
@@ -15192,11 +15192,11 @@ msgstr ""
 "belirtilen dosya\n"
 "okunamadı."
 
-#: src/Buffer.cpp:2735
+#: src/Buffer.cpp:2738
 msgid "Could not read document"
 msgstr "Belge okunamıyor"
 
-#: src/Buffer.cpp:2745
+#: src/Buffer.cpp:2748
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15207,57 +15207,57 @@ msgstr ""
 "\n"
 "Acil durum kaydından kurtarılsın mı?"
 
-#: src/Buffer.cpp:2748
+#: src/Buffer.cpp:2751
 msgid "Load emergency save?"
 msgstr "Acil durum kaydı yüklensin mi?"
 
-#: src/Buffer.cpp:2749
+#: src/Buffer.cpp:2752
 msgid "&Recover"
 msgstr "&Kurtar"
 
-#: src/Buffer.cpp:2749
+#: src/Buffer.cpp:2752
 msgid "&Load Original"
 msgstr "&Aslını Yükle"
 
-#: src/Buffer.cpp:2759
+#: src/Buffer.cpp:2762
 msgid "Document was successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:2761
+#: src/Buffer.cpp:2764
 msgid "Document was NOT successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:2762
+#: src/Buffer.cpp:2765
 #, fuzzy, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr "Acil durum kaydı yüklensin mi?"
 
-#: src/Buffer.cpp:2765 src/Buffer.cpp:2775
+#: src/Buffer.cpp:2768 src/Buffer.cpp:2778
 #, fuzzy
 msgid "Delete emergency file?"
 msgstr "Harici dosya seçin"
 
-#: src/Buffer.cpp:2766 src/Buffer.cpp:2777
+#: src/Buffer.cpp:2769 src/Buffer.cpp:2780
 #, fuzzy
 msgid "&Keep it"
 msgstr "&Uyumlu tut"
 
-#: src/Buffer.cpp:2769
+#: src/Buffer.cpp:2772
 msgid "Emergency file deleted"
 msgstr ""
 
-#: src/Buffer.cpp:2770
+#: src/Buffer.cpp:2773
 msgid "Do not forget to save your file now!"
 msgstr ""
 
-#: src/Buffer.cpp:2776
+#: src/Buffer.cpp:2779
 #, fuzzy
 msgid "Remove emergency file now?"
 msgstr "Acil durum kaydı yüklensin mi?"
 
-#: src/Buffer.cpp:2791
+#: src/Buffer.cpp:2794
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15268,28 +15268,28 @@ msgstr ""
 "\n"
 "Belge yerine yedek açılsın mı?"
 
-#: src/Buffer.cpp:2794
+#: src/Buffer.cpp:2797
 msgid "Load backup?"
 msgstr "Yedeği yükle?"
 
-#: src/Buffer.cpp:2795
+#: src/Buffer.cpp:2798
 msgid "&Load backup"
 msgstr "&Yedeği yükle"
 
-#: src/Buffer.cpp:2795
+#: src/Buffer.cpp:2798
 msgid "Load &original"
 msgstr "&Aslını yükle"
 
-#: src/Buffer.cpp:2828
+#: src/Buffer.cpp:2831
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "%1$s belgesini sürüm yönetiminden almak ister misiniz?"
 
-#: src/Buffer.cpp:2830
+#: src/Buffer.cpp:2833
 msgid "Retrieve from version control?"
 msgstr "Dosyayı sürüm yönetiminden geri almak ister misiniz?"
 
-#: src/Buffer.cpp:2831
+#: src/Buffer.cpp:2834
 msgid "&Retrieve"
 msgstr "&Geri al"
 
@@ -15990,6 +15990,11 @@ msgid "Overwrite file?"
 msgstr "Dosyanın üzerine yaz?"
 
 #: src/Exporter.cpp:50
+#, fuzzy
+msgid "&Keep file"
+msgstr "&Uyumlu tut"
+
+#: src/Exporter.cpp:51
 msgid "Overwrite &all"
 msgstr "&Hepsinin üzerine yaz"
 
@@ -15997,11 +16002,11 @@ msgstr "&Hepsinin üzerine yaz"
 msgid "&Cancel export"
 msgstr "Aktarımı &iptal et"
 
-#: src/Exporter.cpp:94
+#: src/Exporter.cpp:96
 msgid "Couldn't copy file"
 msgstr "Dosya kopyalanamıyor"
 
-#: src/Exporter.cpp:95
+#: src/Exporter.cpp:97
 #, c-format
 msgid "Copying %1$s to %2$s failed."
 msgstr "%1$s i %2$s e kopyalarken hata."
@@ -16203,11 +16208,11 @@ msgstr "BibTeX çalıştırılıyor."
 msgid "Running MakeIndex for nomencl."
 msgstr "MakeIndex çalıştırılıyor."
 
-#: src/LyX.cpp:101
+#: src/LyX.cpp:108
 msgid "Could not read configuration file"
 msgstr "Ayar dosyası okunamıyor"
 
-#: src/LyX.cpp:102
+#: src/LyX.cpp:109
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16218,42 +16223,42 @@ msgstr ""
 "okunurken hata oluştur.\n"
 "Lütfen kurulumunuzu kontrol edin."
 
-#: src/LyX.cpp:111
+#: src/LyX.cpp:118
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: kullanıcı dizini yeniden yapılandırılıyor"
 
-#: src/LyX.cpp:115
+#: src/LyX.cpp:122
 msgid "Done!"
 msgstr "Bitti!"
 
-#: src/LyX.cpp:377
+#: src/LyX.cpp:384
 #, c-format
 msgid "%1$s does not appear like a LyX created temporary directory."
 msgstr "%1$ss LyX'in ürettiği bir geçici dizine benzemiyor."
 
-#: src/LyX.cpp:379
+#: src/LyX.cpp:386
 msgid "Cannot remove temporary directory"
 msgstr "Geçici dizin silinemedi."
 
-#: src/LyX.cpp:385
+#: src/LyX.cpp:392
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Geçici dizin %1$s silinemiyor"
 
-#: src/LyX.cpp:387
+#: src/LyX.cpp:394
 msgid "Unable to remove temporary directory"
 msgstr "Geçici dizin silinemiyor"
 
-#: src/LyX.cpp:416
+#: src/LyX.cpp:423
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Hatalı komut satırı seçeneği `%1$s'. Çıkılıyor."
 
-#: src/LyX.cpp:490
+#: src/LyX.cpp:497
 msgid "No textclass is found"
 msgstr "Metinsınıfı bulunamadı"
 
-#: src/LyX.cpp:491
+#: src/LyX.cpp:498
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
@@ -16262,27 +16267,27 @@ msgstr ""
 "yeniden yapılandırabilir, öntanımlı metin sınıfını yeniden yapılandırabilir, "
 "ya da Lyx'den çıkabilirsiniz."
 
-#: src/LyX.cpp:495
+#: src/LyX.cpp:502
 msgid "&Reconfigure"
 msgstr "&Yeniden yapılandır"
 
-#: src/LyX.cpp:496
+#: src/LyX.cpp:503
 msgid "&Use Default"
 msgstr "&Öntanımlıyı Kullan"
 
-#: src/LyX.cpp:497 src/LyX.cpp:859
+#: src/LyX.cpp:504 src/LyX.cpp:866
 msgid "&Exit LyX"
 msgstr "&LyX'ten Çık"
 
-#: src/LyX.cpp:643 src/frontends/qt4/GuiView.cpp:749
+#: src/LyX.cpp:650 src/frontends/qt4/GuiView.cpp:749
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:768
+#: src/LyX.cpp:775
 msgid "Could not create temporary directory"
 msgstr "Geçici dizin yaratılamadı"
 
-#: src/LyX.cpp:769
+#: src/LyX.cpp:776
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -16293,11 +16298,11 @@ msgstr ""
 "geçici dizin oluşturulamadı\n"
 "Dizinin mevcut ya da yazılabilir olduğundan emin olun ve tekrar deneyin."
 
-#: src/LyX.cpp:852
+#: src/LyX.cpp:859
 msgid "Missing user LyX directory"
 msgstr "LyX kullanıcı dizini yok"
 
-#: src/LyX.cpp:853
+#: src/LyX.cpp:860
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -16306,33 +16311,34 @@ msgstr ""
 "Varolmayan bir LyX kullanıcı dizini seçtiniz, %1$s.\n"
 "Kendi yapılandırma dosyanızı saklamanız gerekir."
 
-#: src/LyX.cpp:858
+#: src/LyX.cpp:865
 msgid "&Create directory"
 msgstr "&Dizin yarat"
 
-#: src/LyX.cpp:860
+#: src/LyX.cpp:867
 msgid "No user LyX directory. Exiting."
 msgstr "LyX kullanıcı dizini yok. Çıkılıyor."
 
-#: src/LyX.cpp:864
+#: src/LyX.cpp:871
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Dizin %1$s yaratılıyor"
 
-#: src/LyX.cpp:869
+#: src/LyX.cpp:876
 msgid "Failed to create directory. Exiting."
 msgstr "Dizin oluşturulamadı. Çıkılıyor."
 
-#: src/LyX.cpp:941
+#: src/LyX.cpp:948
 msgid "List of supported debug flags:"
 msgstr "Desteklenen hata düzeltme seçenekleri:"
 
-#: src/LyX.cpp:945
+#: src/LyX.cpp:952
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Hata düzeltme seviyesi %1$s olarak ayarlandı"
 
-#: src/LyX.cpp:956
+#: src/LyX.cpp:963
+#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -16352,6 +16358,12 @@ msgid ""
 "\t-i [--import] fmt file.xxx\n"
 "                  where fmt is the import format of choice\n"
 "                  and file.xxx is the file to be imported.\n"
+"\t-f [--force-overwrite] what\n"
+"                  where what is either `all' or `main'.\n"
+"                  Using `all', all files are overwritten during\n"
+"                  a batch export, otherwise only the main file will be.\n"
+"                  Anything else is equivalent to `all', but is not "
+"consumed.\n"
 "\t-version        summarize version and build info\n"
 "Check the LyX man page for more details."
 msgstr ""
@@ -16376,39 +16388,39 @@ msgstr ""
 "\t-version        sürüm ve inşa bilgilerini verir\n"
 "Daha fazla bilgi için LyX man sayfasına bakınız."
 
-#: src/LyX.cpp:996
+#: src/LyX.cpp:1008
 msgid "No system directory"
 msgstr "Sistem dizini yok"
 
-#: src/LyX.cpp:997
+#: src/LyX.cpp:1009
 msgid "Missing directory for -sysdir switch"
 msgstr "-sysdir seçeneği için dizin eksik"
 
-#: src/LyX.cpp:1008
+#: src/LyX.cpp:1020
 msgid "No user directory"
 msgstr "Kullanıcı dizini yok"
 
-#: src/LyX.cpp:1009
+#: src/LyX.cpp:1021
 msgid "Missing directory for -userdir switch"
 msgstr "-userdir seçeneği için dizin eksik"
 
-#: src/LyX.cpp:1020
+#: src/LyX.cpp:1032
 msgid "Incomplete command"
 msgstr "Eksik komut"
 
-#: src/LyX.cpp:1021
+#: src/LyX.cpp:1033
 msgid "Missing command string after --execute switch"
 msgstr "--execute seçeneği için komut eksik"
 
-#: src/LyX.cpp:1032
+#: src/LyX.cpp:1044
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "--export seçeneği için biçim [latex, ps, ...] eksik"
 
-#: src/LyX.cpp:1045
+#: src/LyX.cpp:1057
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "--import seçeneği için biçim [latex, ps, ...] eksik"
 
-#: src/LyX.cpp:1050
+#: src/LyX.cpp:1062
 msgid "Missing filename for --import"
 msgstr "--import seçeneği için dosya adı eksik"
 
@@ -17298,7 +17310,7 @@ msgstr "İndeksleyecek bir şey yok!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Birden fazla paragraf indekslenemez!"
 
-#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1561
+#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1570
 msgid "Math editor mode"
 msgstr "Matematik düzenleyici modu"
 
@@ -17656,9 +17668,9 @@ msgstr "Kitaplık dizini: "
 msgid "User directory: "
 msgstr "Kullanıcı dizini: "
 
-#: src/frontends/qt4/GuiAlert.cpp:162 src/frontends/qt4/GuiAlert.cpp:197
-#: src/frontends/qt4/GuiAlert.cpp:232 src/frontends/qt4/GuiAlert.cpp:264
-#: src/frontends/qt4/GuiAlert.cpp:291
+#: src/frontends/qt4/GuiAlert.cpp:165 src/frontends/qt4/GuiAlert.cpp:208
+#: src/frontends/qt4/GuiAlert.cpp:243 src/frontends/qt4/GuiAlert.cpp:275
+#: src/frontends/qt4/GuiAlert.cpp:302
 #, c-format
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
@@ -20851,7 +20863,7 @@ msgstr " dizge değiştirildi."
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1469
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1478
 #: src/mathed/InsetMathSplit.cpp:75 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -20888,25 +20900,25 @@ msgstr "Silinecek dikey çizgi yok"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Bilinmeyen tablo özelliği '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1237 src/mathed/InsetMathHull.cpp:1245
+#: src/mathed/InsetMathHull.cpp:1246 src/mathed/InsetMathHull.cpp:1254
 msgid "No number"
 msgstr "Numara yok"
 
-#: src/mathed/InsetMathHull.cpp:1237 src/mathed/InsetMathHull.cpp:1245
+#: src/mathed/InsetMathHull.cpp:1246 src/mathed/InsetMathHull.cpp:1254
 msgid "Number"
 msgstr "Numara"
 
-#: src/mathed/InsetMathHull.cpp:1442
+#: src/mathed/InsetMathHull.cpp:1451
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "'%1$s' da satır sayıları değiştirilemiyor"
 
-#: src/mathed/InsetMathHull.cpp:1452
+#: src/mathed/InsetMathHull.cpp:1461
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "'%1$s' da sütun sayıları değiştirilemiyor"
 
-#: src/mathed/InsetMathHull.cpp:1462
+#: src/mathed/InsetMathHull.cpp:1471
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "'%1$s' e yatay ızgara çizgileri eklenemiyor"
@@ -20931,7 +20943,7 @@ msgstr "seçimlik"
 msgid "TeX"
 msgstr "TeX"
 
-#: src/mathed/MathMacroTemplate.cpp:1235
+#: src/mathed/MathMacroTemplate.cpp:1236
 msgid "math macro"
 msgstr "matematik makrosu"
 

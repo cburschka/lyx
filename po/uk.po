@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk-163\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-05-27 08:07+0200\n"
+"POT-Creation-Date: 2010-05-28 17:15+0200\n"
 "PO-Revision-Date: 2010-04-17 14:19+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -88,7 +88,7 @@ msgstr "&Гаразд"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:862
-#: src/Buffer.cpp:2750 src/Buffer.cpp:2796 src/Buffer.cpp:2831
+#: src/Buffer.cpp:2753 src/Buffer.cpp:2799 src/Buffer.cpp:2834
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
 #: src/LyXFunc.cpp:1926 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
@@ -461,8 +461,8 @@ msgstr "&Нові:"
 msgid "Remove the selected branch"
 msgstr "Вилучити обрану базу даних"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2766
-#: src/Buffer.cpp:2777
+#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2769
+#: src/Buffer.cpp:2780
 msgid "&Remove"
 msgstr "Ви&лучити"
 
@@ -15184,21 +15184,21 @@ msgstr "Помилкова назва файла"
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Шлях до файлу LyX не повинен містити пробілів."
 
-#: src/Buffer.cpp:2651
+#: src/Buffer.cpp:2652
 msgid "Document export cancelled."
 msgstr "Експорт документа скасовано."
 
-#: src/Buffer.cpp:2657
+#: src/Buffer.cpp:2660
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Документ експортовано як %1$s у файл `%2$s'"
 
-#: src/Buffer.cpp:2663
+#: src/Buffer.cpp:2666
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Документ експортовано як %1$s"
 
-#: src/Buffer.cpp:2733
+#: src/Buffer.cpp:2736
 #, c-format
 msgid ""
 "The specified document\n"
@@ -15209,11 +15209,11 @@ msgstr ""
 "%1$s\n"
 "не може бути прочитаним."
 
-#: src/Buffer.cpp:2735
+#: src/Buffer.cpp:2738
 msgid "Could not read document"
 msgstr "Неможливо прочитати документ"
 
-#: src/Buffer.cpp:2745
+#: src/Buffer.cpp:2748
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15224,27 +15224,27 @@ msgstr ""
 "\n"
 "Відновити?"
 
-#: src/Buffer.cpp:2748
+#: src/Buffer.cpp:2751
 msgid "Load emergency save?"
 msgstr "Завантажити аварійну копію?"
 
-#: src/Buffer.cpp:2749
+#: src/Buffer.cpp:2752
 msgid "&Recover"
 msgstr "&Відновити"
 
-#: src/Buffer.cpp:2749
+#: src/Buffer.cpp:2752
 msgid "&Load Original"
 msgstr "&Завантажити оригінал"
 
-#: src/Buffer.cpp:2759
+#: src/Buffer.cpp:2762
 msgid "Document was successfully recovered."
 msgstr "Документ було успішно відновлено."
 
-#: src/Buffer.cpp:2761
+#: src/Buffer.cpp:2764
 msgid "Document was NOT successfully recovered."
 msgstr "Не вдалося відновити документ."
 
-#: src/Buffer.cpp:2762
+#: src/Buffer.cpp:2765
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -15253,27 +15253,27 @@ msgstr ""
 "Вилучити аварійну копію?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:2765 src/Buffer.cpp:2775
+#: src/Buffer.cpp:2768 src/Buffer.cpp:2778
 msgid "Delete emergency file?"
 msgstr "Вилучити файл аварійної копії?"
 
-#: src/Buffer.cpp:2766 src/Buffer.cpp:2777
+#: src/Buffer.cpp:2769 src/Buffer.cpp:2780
 msgid "&Keep it"
 msgstr "&Не вилучати"
 
-#: src/Buffer.cpp:2769
+#: src/Buffer.cpp:2772
 msgid "Emergency file deleted"
 msgstr "Аварійну копію вилучено"
 
-#: src/Buffer.cpp:2770
+#: src/Buffer.cpp:2773
 msgid "Do not forget to save your file now!"
 msgstr "Не забудьте зберегти ваш файл!"
 
-#: src/Buffer.cpp:2776
+#: src/Buffer.cpp:2779
 msgid "Remove emergency file now?"
 msgstr "Вилучити аварійну копію?"
 
-#: src/Buffer.cpp:2791
+#: src/Buffer.cpp:2794
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15284,28 +15284,28 @@ msgstr ""
 "\n"
 "Завантажити її?"
 
-#: src/Buffer.cpp:2794
+#: src/Buffer.cpp:2797
 msgid "Load backup?"
 msgstr "Повернутися до резервної?"
 
-#: src/Buffer.cpp:2795
+#: src/Buffer.cpp:2798
 msgid "&Load backup"
 msgstr "&Завантажити резервну"
 
-#: src/Buffer.cpp:2795
+#: src/Buffer.cpp:2798
 msgid "Load &original"
 msgstr "Завантажити &оригінал"
 
-#: src/Buffer.cpp:2828
+#: src/Buffer.cpp:2831
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Бажаєте відкрити документ %1$s в режимі керування версіями?"
 
-#: src/Buffer.cpp:2830
+#: src/Buffer.cpp:2833
 msgid "Retrieve from version control?"
 msgstr "Бажаєте відкрити документ в режимі керування версіями?"
 
-#: src/Buffer.cpp:2831
+#: src/Buffer.cpp:2834
 msgid "&Retrieve"
 msgstr "&Отримати"
 
@@ -16014,6 +16014,11 @@ msgid "Overwrite file?"
 msgstr "Перезаписати файл?"
 
 #: src/Exporter.cpp:50
+#, fuzzy
+msgid "&Keep file"
+msgstr "&Не вилучати"
+
+#: src/Exporter.cpp:51
 msgid "Overwrite &all"
 msgstr "Перезаписати &все"
 
@@ -16021,11 +16026,11 @@ msgstr "Перезаписати &все"
 msgid "&Cancel export"
 msgstr "&Скасувати експорт"
 
-#: src/Exporter.cpp:94
+#: src/Exporter.cpp:96
 msgid "Couldn't copy file"
 msgstr "Неможливо скопіювати файл"
 
-#: src/Exporter.cpp:95
+#: src/Exporter.cpp:97
 #, c-format
 msgid "Copying %1$s to %2$s failed."
 msgstr "Копіювання %1$s до %2$s не вдалося."
@@ -16233,11 +16238,11 @@ msgstr "Виконую BibTeX."
 msgid "Running MakeIndex for nomencl."
 msgstr "Запуск MakeIndex для nomencl."
 
-#: src/LyX.cpp:101
+#: src/LyX.cpp:108
 msgid "Could not read configuration file"
 msgstr "Помилка запуску конфігураційного файла"
 
-#: src/LyX.cpp:102
+#: src/LyX.cpp:109
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16248,42 +16253,42 @@ msgstr ""
 "%1$s.\n"
 "Будь ласка перевірте встановлене."
 
-#: src/LyX.cpp:111
+#: src/LyX.cpp:118
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: конфігурація користувача створюється заново"
 
-#: src/LyX.cpp:115
+#: src/LyX.cpp:122
 msgid "Done!"
 msgstr "Готово!"
 
-#: src/LyX.cpp:377
+#: src/LyX.cpp:384
 #, c-format
 msgid "%1$s does not appear like a LyX created temporary directory."
 msgstr "Здається, %1$s не є створеним LyX тимчасовим каталогом."
 
-#: src/LyX.cpp:379
+#: src/LyX.cpp:386
 msgid "Cannot remove temporary directory"
 msgstr "Не вдалося вилучити тимчасовий каталог"
 
-#: src/LyX.cpp:385
+#: src/LyX.cpp:392
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Неможливо вилучити тимчасову теку %1$s"
 
-#: src/LyX.cpp:387
+#: src/LyX.cpp:394
 msgid "Unable to remove temporary directory"
 msgstr "Не можу вилучити тимчасову теку"
 
-#: src/LyX.cpp:416
+#: src/LyX.cpp:423
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Помилковий параметр командного рядка `%1$s'. Виходжу."
 
-#: src/LyX.cpp:490
+#: src/LyX.cpp:497
 msgid "No textclass is found"
 msgstr "Не знайдено класу тексту"
 
-#: src/LyX.cpp:491
+#: src/LyX.cpp:498
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
@@ -16292,27 +16297,27 @@ msgstr ""
 "можете або провести звичайну переконфігурацію, або провести переконфігурацію "
 "з використанням типових класів тексту, або завершити роботу LyX."
 
-#: src/LyX.cpp:495
+#: src/LyX.cpp:502
 msgid "&Reconfigure"
 msgstr "Пере&конфігурувати"
 
-#: src/LyX.cpp:496
+#: src/LyX.cpp:503
 msgid "&Use Default"
 msgstr "&Використовувати типові"
 
-#: src/LyX.cpp:497 src/LyX.cpp:859
+#: src/LyX.cpp:504 src/LyX.cpp:866
 msgid "&Exit LyX"
 msgstr "Ви&йти з LyX"
 
-#: src/LyX.cpp:643 src/frontends/qt4/GuiView.cpp:749
+#: src/LyX.cpp:650 src/frontends/qt4/GuiView.cpp:749
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:768
+#: src/LyX.cpp:775
 msgid "Could not create temporary directory"
 msgstr "Неможливо створити тимчасову теку"
 
-#: src/LyX.cpp:769
+#: src/LyX.cpp:776
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -16323,11 +16328,11 @@ msgstr ""
 "«%1$s».\n"
 "Перевірте, чи цей шлях існує, доступний для запису, і спробуйте ще раз."
 
-#: src/LyX.cpp:852
+#: src/LyX.cpp:859
 msgid "Missing user LyX directory"
 msgstr "Немає теки користувача LyX"
 
-#: src/LyX.cpp:853
+#: src/LyX.cpp:860
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -16336,33 +16341,34 @@ msgstr ""
 "ви задали неіснуючу теку LyX, %1$s.\n"
 "Потрібно дотримуватися власної конфігурації."
 
-#: src/LyX.cpp:858
+#: src/LyX.cpp:865
 msgid "&Create directory"
 msgstr "&Створити теку"
 
-#: src/LyX.cpp:860
+#: src/LyX.cpp:867
 msgid "No user LyX directory. Exiting."
 msgstr "Немає теки користувача LyX. Завершення роботи."
 
-#: src/LyX.cpp:864
+#: src/LyX.cpp:871
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Створюється тека  %1$s"
 
-#: src/LyX.cpp:869
+#: src/LyX.cpp:876
 msgid "Failed to create directory. Exiting."
 msgstr "Помилка при створенні теки. Завершення роботи."
 
-#: src/LyX.cpp:941
+#: src/LyX.cpp:948
 msgid "List of supported debug flags:"
 msgstr "Список підтримуваних прапорців зневаджування:"
 
-#: src/LyX.cpp:945
+#: src/LyX.cpp:952
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Встановити рівень у %1$s"
 
-#: src/LyX.cpp:956
+#: src/LyX.cpp:963
+#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -16382,6 +16388,12 @@ msgid ""
 "\t-i [--import] fmt file.xxx\n"
 "                  where fmt is the import format of choice\n"
 "                  and file.xxx is the file to be imported.\n"
+"\t-f [--force-overwrite] what\n"
+"                  where what is either `all' or `main'.\n"
+"                  Using `all', all files are overwritten during\n"
+"                  a batch export, otherwise only the main file will be.\n"
+"                  Anything else is equivalent to `all', but is not "
+"consumed.\n"
 "\t-version        summarize version and build info\n"
 "Check the LyX man page for more details."
 msgstr ""
@@ -16406,39 +16418,39 @@ msgstr ""
 "\t-version        резюме відомостей про версію і збірку\n"
 "Докладніший опис командного рядка можна знайти в документації (man)."
 
-#: src/LyX.cpp:996
+#: src/LyX.cpp:1008
 msgid "No system directory"
 msgstr "Відсутня системна тека"
 
-#: src/LyX.cpp:997
+#: src/LyX.cpp:1009
 msgid "Missing directory for -sysdir switch"
 msgstr "Відсутня тека для ключа -sysdir"
 
-#: src/LyX.cpp:1008
+#: src/LyX.cpp:1020
 msgid "No user directory"
 msgstr "Відсутня тека користувача"
 
-#: src/LyX.cpp:1009
+#: src/LyX.cpp:1021
 msgid "Missing directory for -userdir switch"
 msgstr "Відсутня тека для ключа -userdir"
 
-#: src/LyX.cpp:1020
+#: src/LyX.cpp:1032
 msgid "Incomplete command"
 msgstr "Неповна команда"
 
-#: src/LyX.cpp:1021
+#: src/LyX.cpp:1033
 msgid "Missing command string after --execute switch"
 msgstr "Відсутня команда після ключа --execute"
 
-#: src/LyX.cpp:1032
+#: src/LyX.cpp:1044
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Відсутній тип файла [наприклад, latex, ps...] після ключа --export"
 
-#: src/LyX.cpp:1045
+#: src/LyX.cpp:1057
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Відсутній тип файла [наприклад, latex, ps...] після ключа --import"
 
-#: src/LyX.cpp:1050
+#: src/LyX.cpp:1062
 msgid "Missing filename for --import"
 msgstr "Не вказано назву файла для --import"
 
@@ -17389,7 +17401,7 @@ msgstr "Нема чого індексувати!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Не можна індексувати більше ніж один абзац!"
 
-#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1561
+#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1570
 msgid "Math editor mode"
 msgstr "Математичний режим"
 
@@ -17765,9 +17777,9 @@ msgstr "Тека бібліотек: "
 msgid "User directory: "
 msgstr "Тека користувача: "
 
-#: src/frontends/qt4/GuiAlert.cpp:162 src/frontends/qt4/GuiAlert.cpp:197
-#: src/frontends/qt4/GuiAlert.cpp:232 src/frontends/qt4/GuiAlert.cpp:264
-#: src/frontends/qt4/GuiAlert.cpp:291
+#: src/frontends/qt4/GuiAlert.cpp:165 src/frontends/qt4/GuiAlert.cpp:208
+#: src/frontends/qt4/GuiAlert.cpp:243 src/frontends/qt4/GuiAlert.cpp:275
+#: src/frontends/qt4/GuiAlert.cpp:302
 #, c-format
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
@@ -20998,7 +21010,7 @@ msgstr " рядків було замінено."
 msgid " Macro: %1$s: "
 msgstr "Макрос: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1469
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1478
 #: src/mathed/InsetMathSplit.cpp:75 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -21035,25 +21047,25 @@ msgstr "Нічого вилучати"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Невідома властивість таблиці '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1237 src/mathed/InsetMathHull.cpp:1245
+#: src/mathed/InsetMathHull.cpp:1246 src/mathed/InsetMathHull.cpp:1254
 msgid "No number"
 msgstr "Без номеру"
 
-#: src/mathed/InsetMathHull.cpp:1237 src/mathed/InsetMathHull.cpp:1245
+#: src/mathed/InsetMathHull.cpp:1246 src/mathed/InsetMathHull.cpp:1254
 msgid "Number"
 msgstr "Номер"
 
-#: src/mathed/InsetMathHull.cpp:1442
+#: src/mathed/InsetMathHull.cpp:1451
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Не можу змінити число рядків в '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1452
+#: src/mathed/InsetMathHull.cpp:1461
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Не можу змінити кількість колонок до '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1462
+#: src/mathed/InsetMathHull.cpp:1471
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Не можу додати горизонтальні лінії ґратки '%1$s'"
@@ -21078,7 +21090,7 @@ msgstr "необов'язковий"
 msgid "TeX"
 msgstr "TeX"
 
-#: src/mathed/MathMacroTemplate.cpp:1235
+#: src/mathed/MathMacroTemplate.cpp:1236
 msgid "math macro"
 msgstr "математичний макрос"
 
