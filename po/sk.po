@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-05-28 17:15+0200\n"
-"PO-Revision-Date: 2010-05-27 10:28+0200\n"
+"PO-Revision-Date: 2010-05-28 21:49+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenčina <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -15972,9 +15972,8 @@ msgid "Overwrite file?"
 msgstr "Prepísať súbor?"
 
 #: src/Exporter.cpp:50
-#, fuzzy
 msgid "&Keep file"
-msgstr "Nezmazať"
+msgstr "Súbor držať"
 
 #: src/Exporter.cpp:51
 msgid "Overwrite &all"
@@ -16324,7 +16323,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Nastavenie úrovne ladenia na %1$s"
 
 #: src/LyX.cpp:963
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -16372,6 +16370,12 @@ msgstr ""
 "\t-i [--import] fmt file.xxx\n"
 "                  kde fmt je vybraný formát k importu\n"
 "                  a file.xxx je meno súboru určeného pre import.\n"
+"\t-f [--force-overwrite] čo\n"
+"                  kde `čo' je `all' alebo `main'.\n"
+"                  Použitím `all' sa prepíše každý súbor počas\n"
+"                  exportu, v inom prípade bude len hlavný súbor prepísaný.\n"
+"                  Všetko iné je ekvivalentné k `all', len že nebude "
+"skonzumované.\n"
 "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu"
 
