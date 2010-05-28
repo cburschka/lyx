@@ -20,7 +20,7 @@ Function UpdateModifiedFiles
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Customization.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Intro.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\Extended.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\Extended.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Math.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Tutorial.lyx"
@@ -38,8 +38,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\IEEEtran.layout"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
- #SetOutPath "$INSTDIR\Resources\templates"
- #File "${PRODUCT_SOURCEDIR}\Resources\templates\dinbrief.lyx"
+ SetOutPath "$INSTDIR\Resources\templates"
+ File "${PRODUCT_SOURCEDIR}\Resources\templates\IEEEtran.lyx"
  #SetOutPath "$INSTDIR\Resources\ui"
  #File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
  #File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
