@@ -20,6 +20,7 @@
 #include "support/debug.h"
 #include "support/docstring_list.h"
 #include "support/filetools.h"
+#include "support/Package.h"
 #include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
@@ -45,6 +46,10 @@ typedef vector<WordLangTuple> IgnoreList;
 
 } // anon namespace
 
+#ifndef HUNSPELL_DICT
+# define HUNSPELL_DICT "dict"
+#endif
+
 struct HunspellChecker::Private
 {
 	Private() {}
@@ -52,6 +57,8 @@ struct HunspellChecker::Private
 	~Private();
 
 	bool haveDictionary(string const & lang, string & hpath);
+	bool haveDictionary(string const & lang);
+	Hunspell * addSpeller(string const & lang, string & hpath);
 	Hunspell * addSpeller(string const & lang);
 	Hunspell * speller(string const & lang);
 	/// ignored words
@@ -70,7 +77,7 @@ HunspellChecker::Private::~Private()
 	Spellers::iterator end = spellers_.end();
 
 	for (; it != end; ++it) {
-		delete it->second;
+		if ( 0 != it->second) delete it->second;
 	}
 }
 
@@ -80,67 +87,59 @@ bool haveLanguageFiles(string const & hpath)
 {
 	FileName const affix(hpath + ".aff");
 	FileName const dict(hpath + ".dic");
-	if (!affix.isReadableFile()) {
-		// FIXME: We should indicate somehow that this language is not
-		// supported.
-		LYXERR(Debug::FILES, "Hunspell affix file " << affix << " does not exist");
-		return false;
-	}
-	if (!dict.isReadableFile()) {
-		LYXERR(Debug::FILES, "Hunspell dictionary file " << dict << " does not exist");
-		return false;
-	}
-	return true;
-}
+	return affix.isReadableFile() && dict.isReadableFile();
 }
 
 
-bool HunspellChecker::Private::haveDictionary(string const & lang, string & hunspell_path)
+#define MAX_SELECTOR 3
+string dictPath(int selector)
 {
-	LYXERR(Debug::FILES, "hunspell path: " << external_path(hunspell_path));
-	if (hunspell_path.empty()) {
-		// FIXME We'd like to issue a better error message here, but there seems
-		// to be a problem about thread safety, or something of the sort. If
-		// we issue the message using frontend::Alert, then the code comes
-		// back through here while the box is waiting, and causes some kind
-		// of crash. 
-		static bool warned = false;
-		if (!warned) {
-			warned = true;
-			LYXERR0("Hunspell path not set.");
-			//frontend::Alert::error(_("Hunspell Path Not Found"), 
-			//		_("You must set the Hunspell dictionary path in Tools>Preferences>Paths."));
-		}
+	switch (selector) {
+	case 2:
+		return addName(lyx::support::package().system_support().absFileName(),HUNSPELL_DICT);
+		break;
+	case 1:
+		return addName(lyx::support::package().user_support().absFileName(),HUNSPELL_DICT);
+		break;
+	default:
+		return lyxrc.hunspelldir_path;
+	}
+}
+
+}
+
+
+bool HunspellChecker::Private::haveDictionary(string const & lang, string & hpath)
+{
+	if (hpath.empty()) {
 		return false;
 	}
 
-	hunspell_path = external_path(addName(hunspell_path, lang));
-	if (!haveLanguageFiles(hunspell_path)) {
+	LYXERR(Debug::FILES, "check hunspell path: " << hpath << " for language " << lang);
+	string h_path = addName(hpath, lang);
+	if (!haveLanguageFiles(h_path)) {
 		// try with '_' replaced by '-'
-		hunspell_path = subst(hunspell_path, '_', '-');
-		if (!haveLanguageFiles(hunspell_path)) {
+		h_path = addName(hpath, subst(lang, '_', '-'));
+		if (!haveLanguageFiles(h_path)) {
 			// FIXME: We should indicate somehow that this language is not
 			// supported, probably by popping a warning. But we'll need to
 			// remember which warnings we've issued.
 			return false;
 		}
 	}
+	hpath = h_path;
 	return true;
 }
 
 
-Hunspell * HunspellChecker::Private::addSpeller(string const & lang)
+bool HunspellChecker::Private::haveDictionary(string const & lang)
 {
-	string hunspell_path = lyxrc.hunspelldir_path;
-
-	if (!haveDictionary(lang, hunspell_path))
-		return 0;
-
-	FileName const affix(hunspell_path + ".aff");
-	FileName const dict(hunspell_path + ".dic");
-	Hunspell * h = new Hunspell(affix.absFileName().c_str(), dict.absFileName().c_str());
-	spellers_[lang] = h;
-	return h;
+	bool result = false;
+	for ( int p = 0; !result && p < MAX_SELECTOR; p++ ) {
+		string lpath = dictPath(p);
+		result = haveDictionary(lang, lpath);
+	}
+	return result;
 }
 
 
@@ -151,6 +150,33 @@ Hunspell * HunspellChecker::Private::speller(string const & lang)
 		return it->second;
 	
 	return addSpeller(lang);
+}
+
+
+Hunspell * HunspellChecker::Private::addSpeller(string const & lang,string & path)
+{
+	if (!haveDictionary(lang, path)) {
+		spellers_[lang] = 0;
+		return 0;
+	}
+
+	FileName const affix(path + ".aff");
+	FileName const dict(path + ".dic");
+	Hunspell * h = new Hunspell(affix.absFileName().c_str(), dict.absFileName().c_str());
+	LYXERR(Debug::FILES, "Hunspell speller for langage " << lang << " at " << dict << " found");
+	spellers_[lang] = h;
+	return h;
+}
+
+
+Hunspell * HunspellChecker::Private::addSpeller(string const & lang)
+{
+	Hunspell * h = 0;
+	for ( int p = 0; p < MAX_SELECTOR && 0 == h; p++ ) {
+		string lpath = dictPath(p);
+		h = addSpeller(lang, lpath);
+	}
+	return h;
 }
 
 
@@ -246,8 +272,7 @@ bool HunspellChecker::hasDictionary(Language const * lang) const
 {
 	if (!lang)
 		return false;
-	string hunspell_path = lyxrc.hunspelldir_path;
-	return (d->haveDictionary(lang->code(), hunspell_path));
+	return (d->haveDictionary(lang->code()));
 }
 
 

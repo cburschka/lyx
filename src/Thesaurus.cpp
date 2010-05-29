@@ -16,6 +16,7 @@
 #include "LyXRC.h"
 
 #include "support/FileNameList.h"
+#include "support/Package.h"
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
@@ -41,6 +42,9 @@ typedef std::map<docstring, MyThes *> Thesauri;
 
 } // namespace anon
 
+#ifndef THESAURUS_LOCATION
+# define THESAURUS_LOCATION "thes"
+#endif
 
 struct Thesaurus::Private
 {
@@ -66,6 +70,7 @@ struct Thesaurus::Private
 	///
 	typedef std::pair<std::string, std::string> ThesFiles;
 	///
+	ThesFiles getThesaurus(string const & path, docstring const & lang);
 	ThesFiles getThesaurus(docstring const & lang);
 	/// add a thesaurus to the list
 	bool addThesaurus(docstring const & lang);
@@ -75,42 +80,59 @@ struct Thesaurus::Private
 };
 
 
-pair<string, string> Thesaurus::Private::getThesaurus(docstring const & lang)
+pair<string,string> Thesaurus::Private::getThesaurus(string const & path, docstring const & lang)
 {
-	string const thes_path = external_path(lyxrc.thesaurusdir_path);
-	LYXERR(Debug::FILES, "thesaurus path: " << thes_path);
-	if (thes_path.empty())
+	FileName base(path);
+	if (!base.isDirectory()) {
 		return make_pair(string(), string());
-
-	if (thesaurusAvailable(lang))
-		return make_pair(string(), string());
-
-	FileNameList const idx_files = FileName(thes_path).dirList("idx");
-	FileNameList const data_files = FileName(thes_path).dirList("dat");
+	}
+	FileNameList const idx_files = base.dirList("idx");
+	FileNameList const data_files = base.dirList("dat");
 	string idx;
 	string data;
 
-	for (FileNameList::const_iterator it = idx_files.begin();
-	     it != idx_files.end(); ++it) {
-		LYXERR(Debug::FILES, "found thesaurus idx file: " << it->onlyFileName());
+	LYXERR(Debug::FILES, "thesaurus path: " << path);
+	for (FileNameList::const_iterator it = idx_files.begin(); it != idx_files.end(); ++it) {
 		if (contains(it->onlyFileName(), to_ascii(lang))) {
 			idx = it->absFileName();
 			LYXERR(Debug::FILES, "selected thesaurus idx file: " << idx);
 			break;
-			}
 		}
-
-	for (support::FileNameList::const_iterator it = data_files.begin();
-	     it != data_files.end(); ++it) {
-		LYXERR(Debug::FILES, "found thesaurus data file: " << it->onlyFileName());
+	}
+	if (idx.empty()) {
+		return make_pair(string(), string());
+	}
+	for (support::FileNameList::const_iterator it = data_files.begin(); it != data_files.end(); ++it) {
 		if (contains(it->onlyFileName(), to_ascii(lang))) {
 			data = it->absFileName();
 			LYXERR(Debug::FILES, "selected thesaurus data file: " << data);
 			break;
-			}
 		}
-
+	}
 	return make_pair(idx, data);
+}
+
+
+pair<string,string> Thesaurus::Private::getThesaurus(docstring const & lang)
+{
+	string const thes_path = external_path(lyxrc.thesaurusdir_path);
+	pair<string,string> result ;
+
+	if (thesaurusAvailable(lang))
+		return make_pair(string(), string());
+
+	if (!thes_path.empty()) {
+		result = getThesaurus(thes_path, lang);
+	}
+	if (result.first.empty() || result.second.empty()) {
+		string const sys_path = external_path(addName(lyx::support::package().system_support().absFileName(),THESAURUS_LOCATION)) ;
+		result = getThesaurus(sys_path, lang);
+	}
+	if (result.first.empty() || result.second.empty()) {
+		string const user_path = external_path(addName(lyx::support::package().user_support().absFileName(),THESAURUS_LOCATION)) ;
+		result = getThesaurus(user_path, lang);
+	}
+	return result;
 }
 
 
