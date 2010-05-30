@@ -27,7 +27,7 @@
 #include "ui_PrefsUi.h"
 
 #include "ui_PrefPlaintextUi.h"
-#include "ui_PrefDateUi.h"
+#include "ui_PrefOutputUi.h"
 #include "ui_PrefInputUi.h"
 #include "ui_PrefLatexUi.h"
 #include "ui_PrefScreenFontsUi.h"
@@ -169,11 +169,11 @@ public:
 };
 
 
-class PrefDate : public PrefModule, public Ui::PrefDateUi
+class PrefOutput : public PrefModule, public Ui::PrefOutputUi
 {
 	Q_OBJECT
 public:
-	PrefDate(GuiPreferences * form);
+	PrefOutput(GuiPreferences * form);
 
 	virtual void apply(LyXRC & rc) const;
 	virtual void update(LyXRC const & rc);

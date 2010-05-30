@@ -75,6 +75,7 @@ public:
 		RC_DOCUMENTPATH,
 		RC_ESC_CHARS,
 		RC_EXAMPLEPATH,
+		RC_EXPORT_OVERWRITE,
 		RC_FONT_ENCODING,
 		RC_FORMAT,
 		RC_FULL_SCREEN_LIMIT,
@@ -462,6 +463,8 @@ public:
 	bool open_buffers_in_tabs;
 	///
 	bool single_close_tab_button;
+	///
+	int export_overwrite;
 };
 
 

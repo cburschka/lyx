@@ -31,6 +31,7 @@
 #include "KeySequence.h"
 #include "Language.h"
 #include "LyXAction.h"
+#include "LyX.h"
 #include "PanelStack.h"
 #include "paper.h"
 #include "Session.h"
@@ -386,21 +387,23 @@ QValidator::State StrftimeValidator::validate(QString & input, int & /*pos*/) co
 
 /////////////////////////////////////////////////////////////////////
 //
-// PrefDate
+// PrefOutput
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefDate::PrefDate(GuiPreferences * form)
-	: PrefModule(qt_(catOutput), qt_("Date format"), form)
+PrefOutput::PrefOutput(GuiPreferences * form)
+	: PrefModule(qt_(catOutput), qt_("General"), form)
 {
 	setupUi(this);
 	DateED->setValidator(new StrftimeValidator(DateED));
 	connect(DateED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+	connect(overwriteCO, SIGNAL(activated(int)),
+		this, SIGNAL(changed()));
 }
 
 
-void PrefDate::on_DateED_textChanged(const QString &)
+void PrefOutput::on_DateED_textChanged(const QString &)
 {
 	QString t = DateED->text();
 	int p = 0;
@@ -410,15 +413,39 @@ void PrefDate::on_DateED_textChanged(const QString &)
 }
 
 
-void PrefDate::apply(LyXRC & rc) const
+void PrefOutput::apply(LyXRC & rc) const
 {
 	rc.date_insert_format = fromqstr(DateED->text());
+
+	switch (overwriteCO->currentIndex()) {
+	case 0:
+		rc.export_overwrite = NO_FILES;
+		break;
+	case 1:
+		rc.export_overwrite = MAIN_FILE;
+		break;
+	case 2:
+		rc.export_overwrite = ALL_FILES;
+		break;
+	}
 }
 
 
-void PrefDate::update(LyXRC const & rc)
+void PrefOutput::update(LyXRC const & rc)
 {
 	DateED->setText(toqstr(rc.date_insert_format));
+
+	switch (rc.export_overwrite) {
+	case NO_FILES:
+		overwriteCO->setCurrentIndex(0);
+		break;
+	case MAIN_FILE:
+		overwriteCO->setCurrentIndex(1);
+		break;
+	case ALL_FILES:
+		overwriteCO->setCurrentIndex(2);
+		break;
+	}
 }
 
 
@@ -2668,8 +2695,8 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	addModule(new PrefSpellchecker(this));
 
 	addModule(new PrefPrinter(this));
-	PrefDate * dateFormat = new PrefDate(this);
-	addModule(dateFormat);
+	PrefOutput * general = new PrefOutput(this);
+	addModule(general);
 	addModule(new PrefPlaintext(this));
 	addModule(new PrefLatex(this));
 
@@ -2694,7 +2721,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	bc().setRestore(restorePB);
 
 	// initialize the strftime validator
-	bc().addCheckedLineEdit(dateFormat->DateED);
+	bc().addCheckedLineEdit(general->DateED);
 }
 
 

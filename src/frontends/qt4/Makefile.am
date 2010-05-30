@@ -271,7 +271,6 @@ UIFILES = \
 	PrefColorsUi.ui \
 	PrefCompletionUi.ui \
 	PrefConvertersUi.ui \
-	PrefDateUi.ui \
 	PrefDisplayUi.ui \
 	PrefEditUi.ui \
 	PrefFileformatsUi.ui \
@@ -279,6 +278,7 @@ UIFILES = \
 	PrefInputUi.ui \
 	PrefLanguageUi.ui \
 	PrefLatexUi.ui \
+	PrefOutputUi.ui \
 	PrefPathsUi.ui \
 	PrefPlaintextUi.ui \
 	PrefPrinterUi.ui \

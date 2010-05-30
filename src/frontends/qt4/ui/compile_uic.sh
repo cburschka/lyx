@@ -35,12 +35,12 @@ uic PDFSupportUi.ui -o PDFSupportUi.h
 uic PreambleUi.ui -o PreambleUi.h
 uic PrefColorsUi.ui -o PrefColorsUi.h
 uic PrefConvertersUi.ui -o PrefConvertersUi.h
-uic PrefDateUi.ui -o PrefDateUi.h
 uic PrefDisplayUi.ui -o PrefDisplayUi.h
 uic PrefFileformatsUi.ui -o PrefFileformatsUi.h
 uic PrefIdentityUi.ui -o PrefIdentityUi.h
 uic PrefLanguageUi.ui -o PrefLanguageUi.h
 uic PrefLatexUi.ui -o PrefLatexUi.h
+uic PrefOutputUi.ui -o PrefOutputUi.h
 uic PrefPathsUi.ui -o PrefPathsUi.h
 uic PrefPlaintextUi.ui -o PrefPlaintextUi.h
 uic PrefPrinterUi.ui -o PrefPrinterUi.h

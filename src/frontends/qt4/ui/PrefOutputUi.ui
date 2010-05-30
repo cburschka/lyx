@@ -1,0 +1,112 @@
+<ui version="4.0">
+ <class>PrefOutputUi</class>
+ <widget class="QWidget" name="PrefOutputUi">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>279</width>
+    <height>91</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string/>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>12</x>
+     <y>12</y>
+     <width>244</width>
+     <height>78</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="DateLA">
+        <property name="text">
+         <string>&amp;Date format:</string>
+        </property>
+        <property name="buddy">
+         <cstring>DateED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="DateED">
+        <property name="toolTip">
+         <string>Date format for strftime output</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Overwrite on export:</string>
+        </property>
+        <property name="buddy">
+         <cstring>overwriteCO</cstring>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="overwriteCO">
+        <property name="toolTip">
+         <string>What to do when existing files are going to be overwritten on export.</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Ask permission</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Main file only</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>All files</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <spacer>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Expanding</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <includes>
+  <include location="local">qt_i18n.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>

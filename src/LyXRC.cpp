@@ -23,6 +23,7 @@
 #include "Format.h"
 #include "Session.h"
 #include "Lexer.h"
+#include "LyX.h"
 #include "FontEnums.h"
 #include "Mover.h"
 
@@ -87,6 +88,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\document_path", LyXRC::RC_DOCUMENTPATH },
 	{ "\\escape_chars", LyXRC::RC_ESC_CHARS },
 	{ "\\example_path", LyXRC::RC_EXAMPLEPATH },
+	{ "\\export_overwrite", LyXRC::RC_EXPORT_OVERWRITE },
 	{ "\\font_encoding", LyXRC::RC_FONT_ENCODING },
 	{ "\\format", LyXRC::RC_FORMAT },
 	{ "\\fullscreen_limit", LyXRC::RC_FULL_SCREEN_LIMIT },
@@ -308,6 +310,7 @@ void LyXRC::setDefaults()
 	user_email = to_utf8(support::user_email());
 	open_buffers_in_tabs = true;
 	single_close_tab_button = false;
+	export_overwrite = NO_FILES;
 
 	// Fullscreen settings
 	full_screen_limit = false;
@@ -1106,6 +1109,21 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 		case RC_SINGLE_CLOSE_TAB_BUTTON:
 			lexrc >> single_close_tab_button;
+			break;
+		case RC_EXPORT_OVERWRITE:
+			if (lexrc.next()) {
+				string const tmp = lexrc.getString();
+				if (tmp == "all" || tmp == "true")
+					export_overwrite = ALL_FILES;
+				else if (tmp == "main")
+					export_overwrite = MAIN_FILE;
+				else {
+					export_overwrite = NO_FILES;
+					if (tmp != "ask" && tmp != "false")
+						LYXERR0("Unrecognized export_overwrite status \""
+						       << tmp << '"');
+				}
+			}
 			break;
 
 		case RC_LAST:
@@ -2354,6 +2372,25 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (ignore_system_lyxrc ||
 		    gui_language != system_lyxrc.gui_language) {
 			os << "\\gui_language " << gui_language << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_EXPORT_OVERWRITE:
+		if (ignore_system_lyxrc ||
+		    export_overwrite != system_lyxrc.export_overwrite) {
+			string status;
+			switch (export_overwrite) {
+			case NO_FILES:
+				status = "ask";
+				break;
+			case MAIN_FILE:
+				status = "main";
+				break;
+			case ALL_FILES:
+				status = "all";
+				break;
+			}
+			os << "\\export_overwrite " << status << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
