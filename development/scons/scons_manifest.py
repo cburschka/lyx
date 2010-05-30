@@ -922,7 +922,6 @@ src_frontends_qt4_ui_files = Split('''
     PrefColorsUi.ui
     PrefCompletionUi.ui
     PrefConvertersUi.ui
-    PrefDateUi.ui
     PrefDisplayUi.ui
     PrefEditUi.ui
     PrefFileformatsUi.ui
@@ -930,6 +929,7 @@ src_frontends_qt4_ui_files = Split('''
     PrefInputUi.ui
     PrefLanguageUi.ui
     PrefLatexUi.ui
+    PrefOutputUi.ui
     PrefPathsUi.ui
     PrefPlaintextUi.ui
     PrefPrinterUi.ui
