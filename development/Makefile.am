@@ -181,6 +181,9 @@ cmake/Install.cmake \
 cmake/config.cpp.cmake \
 cmake/config.h.cmake \
 cmake/CMakeLists.txt \
+cmake/LyX_description.txt \
+cmake/LyX_license.txt \
+cmake/LyX_summary.txt \
 cmake/build.bat \
 cmake/build-debug.bat \
 cmake/configCompiler.h.msvc \
