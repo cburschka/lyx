@@ -38,6 +38,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\IEEEtran.layout"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
+ SetOutPath "$INSTDIR\Resources\man\man1"
+ File "${PRODUCT_SOURCEDIR}\Resources\man\man1\lyx.1"
  SetOutPath "$INSTDIR\Resources\templates"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\IEEEtran.lyx"
  #SetOutPath "$INSTDIR\Resources\ui"
