@@ -35,8 +35,8 @@ What's new
 
 * USER INTERFACE
 
-- Layout and template file for document class article(IEEEtran) has been updated for
-  IEEEtran 1.7a.
+- Layout and template file for document class article(IEEEtran) has been
+  updated for IEEEtran 1.7a.
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -59,15 +59,16 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix reverse search when the document name contains a character which is
-  forbidden in LaTeX filenames (such as spaces).
+- Fix reverse search when the document name contains a character
+  which is forbidden in LaTeX filenames (such as spaces).
 
-- Improve reverse search for documents containing index insets (bug 6649).
+- Improve reverse search for documents containing index insets
+  (bug 6649).
 
 - Honour physical paper size settings on output (bug 5247).
 
-- Fix compilation error in documents containing text parts in Arabic and
-  Farsi (bug 6714).
+- Fix compilation error in documents containing text parts in Arabic
+  and Farsi (bug 6714).
 
 - Output references to section numbers in the correct direction in
   documents with right-to-left-languages (bug 6711).
@@ -80,11 +81,14 @@ What's new
 
 - Don't allow creating multiple buffers with same name (bug 6645).
 
-- Don't automatically overwrite files on export from command line, unless
-  the newly introduced -f flag is used (bug 2762).
+- Don't automatically overwrite files on export from command line,
+  unless the newly introduced -f flag is used (bug 2762).
 
-- Allow to overwrite files without dialog popup on export from GUI (bug 2844).
+- Allow to overwrite files without dialog popup on export from GUI
+  (bug 2844).
 
+- Make sure that the '|'-character in headings does not confuse the
+  TOC list in navigate menu (bug 2009).
 
 * USER INTERFACE
 
