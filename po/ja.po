@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-05-28 17:15+0200\n"
+"POT-Creation-Date: 2010-05-31 11:31+0200\n"
 "PO-Revision-Date: 2010-05-04 13:01+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <>\n"
@@ -87,7 +87,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:862
-#: src/Buffer.cpp:2753 src/Buffer.cpp:2799 src/Buffer.cpp:2834
+#: src/Buffer.cpp:2756 src/Buffer.cpp:2802 src/Buffer.cpp:2837
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
 #: src/LyXFunc.cpp:1926 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
@@ -460,8 +460,8 @@ msgstr "新規(&N):"
 msgid "Remove the selected branch"
 msgstr "選択した派生枝を削除"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2769
-#: src/Buffer.cpp:2780
+#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2772
+#: src/Buffer.cpp:2783
 msgid "&Remove"
 msgstr "削除(&R)"
 
@@ -503,7 +503,7 @@ msgstr "大きさ(&Z):"
 #: src/frontends/qt4/GuiDocument.cpp:1221
 #: src/frontends/qt4/GuiDocument.cpp:2285 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiListings.cpp:152
-#: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1805
+#: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1832
 msgid "Default"
 msgstr "既定値"
 
@@ -629,7 +629,7 @@ msgstr "フォントの太さ"
 #: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/europecv.layout:118
 #: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:987
-#: src/frontends/qt4/GuiPrefs.cpp:1763
+#: src/frontends/qt4/GuiPrefs.cpp:1790
 msgid "Language"
 msgstr "言語"
 
@@ -871,7 +871,7 @@ msgstr "設定をLyXの既定文書設定として保存する"
 msgid "Save as Document Defaults"
 msgstr "文書の既定値として保存"
 
-#: src/frontends/qt4/ui/ERTUi.ui:31 src/frontends/qt4/GuiPrefs.cpp:940
+#: src/frontends/qt4/ui/ERTUi.ui:31 src/frontends/qt4/GuiPrefs.cpp:967
 msgid "Display"
 msgstr "表示"
 
@@ -2276,7 +2276,7 @@ msgid "Cursor i&ndicator"
 msgstr "カーソル表示器(&N)"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:111
-#: lib/layouts/hollywood.layout:280
+#: lib/layouts/hollywood.layout:280 src/frontends/qt4/GuiPrefs.cpp:395
 msgid "General"
 msgstr "一般"
 
@@ -2345,7 +2345,7 @@ msgstr "修正(&M)"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2377 src/frontends/qt4/GuiPrefs.cpp:2441
+#: src/frontends/qt4/GuiPrefs.cpp:2404 src/frontends/qt4/GuiPrefs.cpp:2468
 msgid "Remo&ve"
 msgstr "削除(&V)"
 
@@ -2364,14 +2364,6 @@ msgstr "有効(&E)"
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
 msgid "Maximum A&ge (in days):"
 msgstr "最大日数(&G):"
-
-#: src/frontends/qt4/ui/PrefDateUi.ui:33
-msgid "&Date format:"
-msgstr "日付書式(&D):"
-
-#: src/frontends/qt4/ui/PrefDateUi.ui:43
-msgid "Date format for strftime output"
-msgstr "strftime出力の日付書式"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:25
 msgid "Display &Graphics"
@@ -2410,7 +2402,7 @@ msgstr "段落の終わりに画面上で段落標を付ける。"
 msgid "&Mark end of paragraphs"
 msgstr "段落の終わりに印(&M)"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:33 src/frontends/qt4/GuiPrefs.cpp:225
+#: src/frontends/qt4/ui/PrefEditUi.ui:33 src/frontends/qt4/GuiPrefs.cpp:226
 msgid "Editing"
 msgstr "編集"
 
@@ -2648,7 +2640,7 @@ msgstr "外国語をマークする(&F)"
 msgid "Right-to-left language support"
 msgstr "右から左書きの言語をサポート"
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:203 src/LyXRC.cpp:2819
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:203 src/LyXRC.cpp:2856
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
@@ -2792,6 +2784,36 @@ msgstr "特定のDVIビューアが使う用紙寸法フラグを設定(-paper)"
 msgid "&DVI viewer paper size options:"
 msgstr "&DVIビューア用紙寸法設定:"
 
+#: src/frontends/qt4/ui/PrefOutputUi.ui:50
+msgid "&Date format:"
+msgstr "日付書式(&D):"
+
+#: src/frontends/qt4/ui/PrefOutputUi.ui:60
+msgid "Date format for strftime output"
+msgstr "strftime出力の日付書式"
+
+#: src/frontends/qt4/ui/PrefOutputUi.ui:77
+#, fuzzy
+msgid "&Overwrite on export:"
+msgstr "文書を上書きしますか？"
+
+#: src/frontends/qt4/ui/PrefOutputUi.ui:87
+msgid "What to do when existing files are going to be overwritten on export."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefOutputUi.ui:91
+msgid "Ask permission"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefOutputUi.ui:96
+msgid "Main file only"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefOutputUi.ui:101
+#, fuzzy
+msgid "All files"
+msgstr "全てのファイル"
+
 #: src/frontends/qt4/ui/PrefPathsUi.ui:25
 msgid "&Working directory:"
 msgstr "作業ディレクトリ(&W):"
@@ -2829,7 +2851,7 @@ msgstr "一時ディレクトリ(&T):"
 msgid "&PATH prefix:"
 msgstr "&PATH前置詞:"
 
-#: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2493
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2530
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -4445,7 +4467,7 @@ msgid "email"
 msgstr "電子メール"
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612 lib/languages:4
-#: src/frontends/qt4/GuiErrorList.cpp:47 src/frontends/qt4/GuiPrefs.cpp:589
+#: src/frontends/qt4/GuiErrorList.cpp:47 src/frontends/qt4/GuiPrefs.cpp:616
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -14600,7 +14622,7 @@ msgstr "LaTeX (plain)|L"
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
-#: lib/configure.py:310 src/frontends/qt4/GuiPrefs.cpp:334
+#: lib/configure.py:310 src/frontends/qt4/GuiPrefs.cpp:335
 msgid "Plain text"
 msgstr "平文"
 
@@ -15130,21 +15152,21 @@ msgstr "ファイル名エラー"
 msgid "The directory path to the document cannot contain spaces."
 msgstr "文書のパスには空白が含まれていてはなりません。"
 
-#: src/Buffer.cpp:2652
+#: src/Buffer.cpp:2653
 msgid "Document export cancelled."
 msgstr "文書の書き出しは取り消されました。"
 
-#: src/Buffer.cpp:2660
+#: src/Buffer.cpp:2663
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "文書は%1$sとしてファイル「%2$s」に書き出されました。"
 
-#: src/Buffer.cpp:2666
+#: src/Buffer.cpp:2669
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "文書は%1$sとして書き出されました。"
 
-#: src/Buffer.cpp:2736
+#: src/Buffer.cpp:2739
 #, c-format
 msgid ""
 "The specified document\n"
@@ -15155,11 +15177,11 @@ msgstr ""
 "%1$s\n"
 "は，読むことができませんでした。"
 
-#: src/Buffer.cpp:2738
+#: src/Buffer.cpp:2741
 msgid "Could not read document"
 msgstr "文書を読むことができませんでした"
 
-#: src/Buffer.cpp:2748
+#: src/Buffer.cpp:2751
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15170,27 +15192,27 @@ msgstr ""
 "\n"
 "緊急保存ファイルから復旧しますか？"
 
-#: src/Buffer.cpp:2751
+#: src/Buffer.cpp:2754
 msgid "Load emergency save?"
 msgstr "緊急保存ファイルを読みこみますか？"
 
-#: src/Buffer.cpp:2752
+#: src/Buffer.cpp:2755
 msgid "&Recover"
 msgstr "復旧(&R)"
 
-#: src/Buffer.cpp:2752
+#: src/Buffer.cpp:2755
 msgid "&Load Original"
 msgstr "オリジナルを読み込む(&L):"
 
-#: src/Buffer.cpp:2762
+#: src/Buffer.cpp:2765
 msgid "Document was successfully recovered."
 msgstr "文書を無事に復旧しました。"
 
-#: src/Buffer.cpp:2764
+#: src/Buffer.cpp:2767
 msgid "Document was NOT successfully recovered."
 msgstr "文書を無事に復旧することができませんでした。"
 
-#: src/Buffer.cpp:2765
+#: src/Buffer.cpp:2768
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -15199,27 +15221,27 @@ msgstr ""
 "緊急保存ファイルを直ちに削除しますか？\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:2768 src/Buffer.cpp:2778
+#: src/Buffer.cpp:2771 src/Buffer.cpp:2781
 msgid "Delete emergency file?"
 msgstr "緊急保存ファイルを削除しますか？"
 
-#: src/Buffer.cpp:2769 src/Buffer.cpp:2780
+#: src/Buffer.cpp:2772 src/Buffer.cpp:2783
 msgid "&Keep it"
 msgstr "削除しない(&K)"
 
-#: src/Buffer.cpp:2772
+#: src/Buffer.cpp:2775
 msgid "Emergency file deleted"
 msgstr "緊急保存ファイルを削除しました"
 
-#: src/Buffer.cpp:2773
+#: src/Buffer.cpp:2776
 msgid "Do not forget to save your file now!"
 msgstr "すぐにファイルを保存するようにしてください！"
 
-#: src/Buffer.cpp:2779
+#: src/Buffer.cpp:2782
 msgid "Remove emergency file now?"
 msgstr "緊急保存ファイルを読みこみますか？"
 
-#: src/Buffer.cpp:2794
+#: src/Buffer.cpp:2797
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15230,28 +15252,28 @@ msgstr ""
 "\n"
 "代わりにバックアップファイルを読み込みますか？"
 
-#: src/Buffer.cpp:2797
+#: src/Buffer.cpp:2800
 msgid "Load backup?"
 msgstr "バックアップを読み込みますか？"
 
-#: src/Buffer.cpp:2798
+#: src/Buffer.cpp:2801
 msgid "&Load backup"
 msgstr "バックアップを読み込む(&L)"
 
-#: src/Buffer.cpp:2798
+#: src/Buffer.cpp:2801
 msgid "Load &original"
 msgstr "オリジナルを読み込む(&O)"
 
-#: src/Buffer.cpp:2831
+#: src/Buffer.cpp:2834
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "バージョン管理から文書%1$sを復元しますか？"
 
-#: src/Buffer.cpp:2833
+#: src/Buffer.cpp:2836
 msgid "Retrieve from version control?"
 msgstr "バージョン管理から復元しますか？"
 
-#: src/Buffer.cpp:2834
+#: src/Buffer.cpp:2837
 msgid "&Retrieve"
 msgstr "復元(&R)"
 
@@ -16599,7 +16621,7 @@ msgstr "LyXへようこそ！"
 msgid "Converting document to new document class..."
 msgstr "文書を新しい文書クラスに変換しています..."
 
-#: src/LyXRC.cpp:2480
+#: src/LyXRC.cpp:2517
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -16607,13 +16629,13 @@ msgstr ""
 "\"disk drive\" を \"diskdrive\" のようにひとまとめにした単語を正しい単語と見"
 "なしますか？"
 
-#: src/LyXRC.cpp:2485
+#: src/LyXRC.cpp:2522
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr "代理の言語を指定してください。既定値では，文書の言語を使います。"
 
-#: src/LyXRC.cpp:2489
+#: src/LyXRC.cpp:2526
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
@@ -16623,7 +16645,7 @@ msgstr ""
 "ば，$$FName は入力ファイルを表すので，\"groff -t -Tlatin1 $$FName\" のように"
 "します。\"\" が指定されたときには，内部ルーチンが用いられます。"
 
-#: src/LyXRC.cpp:2497
+#: src/LyXRC.cpp:2534
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -16631,7 +16653,7 @@ msgstr ""
 "現在選択されている文字が，入力した文字で自動的に置換されるのを防ぎたいときに"
 "はチェックを外してください。"
 
-#: src/LyXRC.cpp:2501
+#: src/LyXRC.cpp:2538
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -16639,12 +16661,12 @@ msgstr ""
 "クラスを変更した後にクラスオプションが既定値にリセットされるのを防ぎたいとき"
 "は，チェックを外してください。"
 
-#: src/LyXRC.cpp:2505
+#: src/LyXRC.cpp:2542
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr "自動保存の間の間隔（秒単位)。0 は自動保存しないことを示します。"
 
-#: src/LyXRC.cpp:2512
+#: src/LyXRC.cpp:2549
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -16652,7 +16674,7 @@ msgstr ""
 "バックアップファイルを保管するパス。空の文字列のときは，LyX はバックアップ"
 "ファイルを，オリジナルファイルと同じディレクトリに保管します。"
 
-#: src/LyXRC.cpp:2516
+#: src/LyXRC.cpp:2553
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -16660,12 +16682,12 @@ msgstr ""
 "bibtex のオプションを指定するか（man bibtex 参照），別のコンパイラ（例えば "
 "mibibtex や bibulus など）を選択してください。"
 
-#: src/LyXRC.cpp:2520
+#: src/LyXRC.cpp:2557
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 "pLaTeX(日本語LaTeX)用のbibtexプログラムのオプションを定義してください。"
 
-#: src/LyXRC.cpp:2524
+#: src/LyXRC.cpp:2561
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -16673,12 +16695,12 @@ msgstr ""
 "キーバインドファイル。絶対パスを指定することもできますし，そうでなければ LyX "
 "はグローバルとローカルの bind/ ディレクトリを見に行きます。"
 
-#: src/LyXRC.cpp:2528
+#: src/LyXRC.cpp:2565
 msgid "Select to check whether the lastfiles still exist."
 msgstr ""
 "最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
 
-#: src/LyXRC.cpp:2532
+#: src/LyXRC.cpp:2569
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -16686,7 +16708,7 @@ msgstr ""
 "chktex をどうやって実行するかを指定します。例えば，\"chktex -n11 -n1 -n3 -n6 "
 "-n9 -22 -n25 -n30 -n38\" など。ChkTeX のドキュメントを参照してください。"
 
-#: src/LyXRC.cpp:2542
+#: src/LyXRC.cpp:2579
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -16694,18 +16716,18 @@ msgstr ""
 "スクロールバーを動かしたとき，通常 LyX はカーソルの場所を更新しません。カーソ"
 "ルが常に画面上に残るようにしたいときには，選択してください。"
 
-#: src/LyXRC.cpp:2546
+#: src/LyXRC.cpp:2583
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
 msgstr "単語間のカーソル移動にMac OS X式の方法を使う。"
 
-#: src/LyXRC.cpp:2550
+#: src/LyXRC.cpp:2587
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
 msgstr ""
 "カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
 
-#: src/LyXRC.cpp:2561
+#: src/LyXRC.cpp:2598
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -16714,7 +16736,7 @@ msgstr ""
 "これは，通常のstrftimeフォーマットを受け付けます。詳しくはman strftimeを参照"
 "してください。例：\"%A, %e. %B %Y\""
 
-#: src/LyXRC.cpp:2565
+#: src/LyXRC.cpp:2602
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
@@ -16722,15 +16744,15 @@ msgstr ""
 "コマンド定義ファイル。絶対パスを指定することもできますし，そうでなければ LyX "
 "はグローバルとローカルの commands/ ディレクトリを見に行きます。"
 
-#: src/LyXRC.cpp:2569
+#: src/LyXRC.cpp:2606
 msgid "New documents will be assigned this language."
 msgstr "新しい文書は、この言語に割り当てられます。"
 
-#: src/LyXRC.cpp:2573
+#: src/LyXRC.cpp:2610
 msgid "Specify the default paper size."
 msgstr "既定の用紙寸法を指定してください。"
 
-#: src/LyXRC.cpp:2577
+#: src/LyXRC.cpp:2614
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -16738,22 +16760,22 @@ msgstr ""
 "メインウィンドウがアイコン化されたときにダイアログもアイコン化する。（ここで"
 "変更が加えられた後に現れるダイアログから有効になります。）"
 
-#: src/LyXRC.cpp:2581
+#: src/LyXRC.cpp:2618
 msgid "Select how LyX will display any graphics."
 msgstr "LyX が画像をどのように表示するかを選びます。"
 
-#: src/LyXRC.cpp:2585
+#: src/LyXRC.cpp:2622
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
 msgstr ""
 "文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
 
-#: src/LyXRC.cpp:2590
+#: src/LyXRC.cpp:2627
 msgid "Specify additional chars that can be part of a word."
 msgstr "単語の一部になりうる文字を追加で指定します。"
 
-#: src/LyXRC.cpp:2594
+#: src/LyXRC.cpp:2631
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
@@ -16761,7 +16783,7 @@ msgstr ""
 "LyX が用例を選ぶように促すときに表示するパス。空白にしておくと，LyX を起動し"
 "たディレクトリが選ばれます。"
 
-#: src/LyXRC.cpp:2598
+#: src/LyXRC.cpp:2635
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -16769,7 +16791,7 @@ msgstr ""
 "LaTeX2eのfontencパッケージに使用するフォント文字コード。英語以外の言語ではT1"
 "を強く推奨します。"
 
-#: src/LyXRC.cpp:2605
+#: src/LyXRC.cpp:2642
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -16779,11 +16801,11 @@ msgstr ""
 "びます。例えば，xindy/make-rules を使うときには，コマンド文字列は "
 "\"makeindex.sh -m $$lang\" のようになります。"
 
-#: src/LyXRC.cpp:2609
+#: src/LyXRC.cpp:2646
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr "pLaTeX(日本語LaTeX)用の索引プログラムのオプションを定義してください。"
 
-#: src/LyXRC.cpp:2613
+#: src/LyXRC.cpp:2650
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
@@ -16791,7 +16813,7 @@ msgstr ""
 "用語集生成に使うmakeindex (cf. man makeindex)のオプションを定義します。これは"
 "索引処理の時のオプションとは違うことがあります。"
 
-#: src/LyXRC.cpp:2622
+#: src/LyXRC.cpp:2659
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -16800,22 +16822,22 @@ msgstr ""
 "ば，アメリカ式キーボードでドイツ語文書を入力したいときには，これが必要になる"
 "でしょう。"
 
-#: src/LyXRC.cpp:2626
+#: src/LyXRC.cpp:2663
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr "新しいラベルを初期化するときに使う文字列の最大単語数"
 
-#: src/LyXRC.cpp:2630
+#: src/LyXRC.cpp:2667
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr "文書の最初に言語切換コマンドが必要なときに選んでください。"
 
-#: src/LyXRC.cpp:2634
+#: src/LyXRC.cpp:2671
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "文書の最後に言語切換コマンドが必要なときに選んでください。"
 
-#: src/LyXRC.cpp:2638
+#: src/LyXRC.cpp:2675
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -16824,15 +16846,15 @@ msgstr ""
 "文書の言語から別の言語に切換えるときの LaTeX コマンド。例：\\selectlanguage{$"
 "$lang}。ここで $$lang には2番目の言語の名前が代入されます。"
 
-#: src/LyXRC.cpp:2642
+#: src/LyXRC.cpp:2679
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "文書の言語に戻るときの LaTeX コマンド。"
 
-#: src/LyXRC.cpp:2646
+#: src/LyXRC.cpp:2683
 msgid "The LaTeX command for local changing of the language."
 msgstr "言語をローカルで切換えるときの LaTeX コマンド。"
 
-#: src/LyXRC.cpp:2650
+#: src/LyXRC.cpp:2687
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -16840,7 +16862,7 @@ msgstr ""
 "指定した言語が\\documentclassの引数に使われないようにするときには，チェックを"
 "外してください。"
 
-#: src/LyXRC.cpp:2654
+#: src/LyXRC.cpp:2691
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -16848,7 +16870,7 @@ msgstr ""
 "言語パッケージを読み込むときの LaTeX コマンド。例：\"\\usepackage{babel}\", "
 "\"\\usepackage{omega}\"。"
 
-#: src/LyXRC.cpp:2658
+#: src/LyXRC.cpp:2695
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -16856,24 +16878,24 @@ msgstr ""
 "文書の言語が既定言語であるときに babel を使用したくないときは，チェックを外し"
 "てください。"
 
-#: src/LyXRC.cpp:2662
+#: src/LyXRC.cpp:2699
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 "LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
 
-#: src/LyXRC.cpp:2666
+#: src/LyXRC.cpp:2703
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 "最後のlyxセッションで開いていたファイルを読み込まないようにしたいときは，非選"
 "択にしてください。"
 
-#: src/LyXRC.cpp:2670
+#: src/LyXRC.cpp:2707
 msgid "De-select if you don't want LyX to create backup files."
 msgstr ""
 "LyXがバックアップファイルを生成しないようにしたいときは，非選択にしてくださ"
 "い。"
 
-#: src/LyXRC.cpp:2674
+#: src/LyXRC.cpp:2711
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -16881,57 +16903,57 @@ msgstr ""
 "文書が用いている言語ではない単語を，ハイライトするのを制御するときに選択して"
 "ください。"
 
-#: src/LyXRC.cpp:2678
+#: src/LyXRC.cpp:2715
 msgid "The scrolling speed of the mouse wheel."
 msgstr "マウスホイールのスクロール速度です。"
 
-#: src/LyXRC.cpp:2683
+#: src/LyXRC.cpp:2720
 msgid "The completion popup delay."
 msgstr "補完ポップアップが出るまでの遅延。"
 
-#: src/LyXRC.cpp:2687
+#: src/LyXRC.cpp:2724
 msgid "Select to display the completion popup in math mode."
 msgstr "選択すると、数式モードで補完ポップアップを表示します。"
 
-#: src/LyXRC.cpp:2691
+#: src/LyXRC.cpp:2728
 msgid "Select to display the completion popup in text mode."
 msgstr "選択すると、テキストモードで補完ポップアップを表示します。"
 
-#: src/LyXRC.cpp:2695
+#: src/LyXRC.cpp:2732
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr "複数の補完候補がある際、遅延なしに補完ポップアップを表示する。"
 
-#: src/LyXRC.cpp:2699
+#: src/LyXRC.cpp:2736
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
 msgstr ""
 "補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
 
-#: src/LyXRC.cpp:2703
+#: src/LyXRC.cpp:2740
 msgid "The inline completion delay."
 msgstr "行内補完の遅延。"
 
-#: src/LyXRC.cpp:2707
+#: src/LyXRC.cpp:2744
 msgid "Select to display the inline completion in math mode."
 msgstr "選択すると、数式モードで行内補完を表示します。"
 
-#: src/LyXRC.cpp:2711
+#: src/LyXRC.cpp:2748
 msgid "Select to display the inline completion in text mode."
 msgstr "選択すると、テキストモードで行内補完を表示します。"
 
-#: src/LyXRC.cpp:2715
+#: src/LyXRC.cpp:2752
 msgid "Use \"...\" to shorten long completions."
 msgstr "長い補完を短縮するのに\"...\"を使用する。"
 
-#: src/LyXRC.cpp:2719
+#: src/LyXRC.cpp:2756
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 "最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
 
-#: src/LyXRC.cpp:2724
+#: src/LyXRC.cpp:2761
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
@@ -16939,34 +16961,34 @@ msgstr ""
 "PATH 環境変数に前置するディレクトリを指定してください。OS ネイティブのフォー"
 "マットを使ってください。"
 
-#: src/LyXRC.cpp:2731
+#: src/LyXRC.cpp:2768
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "代替の個人用辞書を指定してください。例：\".ispell_english\"。"
 
-#: src/LyXRC.cpp:2735
+#: src/LyXRC.cpp:2772
 msgid "Shows a typeset preview of things such as math"
 msgstr "数式などの組版プレビューを表示します"
 
-#: src/LyXRC.cpp:2739
+#: src/LyXRC.cpp:2776
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 "数式のプレビューにおいて、数式番号が、番号ではなくて\"(#)\"ラベルで表示される"
 "ようにします。"
 
-#: src/LyXRC.cpp:2743
+#: src/LyXRC.cpp:2780
 msgid "Scale the preview size to suit."
 msgstr "プレビューの大きさを適合するように合わせます。"
 
-#: src/LyXRC.cpp:2747
+#: src/LyXRC.cpp:2784
 msgid "The option for specifying whether the copies should be collated."
 msgstr "印刷結果を丁合にするか否かを指定するオプション"
 
-#: src/LyXRC.cpp:2751
+#: src/LyXRC.cpp:2788
 msgid "The option for specifying the number of copies to print."
 msgstr "印刷する部数を指定するオプションです。"
 
-#: src/LyXRC.cpp:2755
+#: src/LyXRC.cpp:2792
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -16974,11 +16996,11 @@ msgstr ""
 "既定の印刷先のプリンタ。指定がないときには、LyX は PRINTER 環境変数を使用しま"
 "す。"
 
-#: src/LyXRC.cpp:2759
+#: src/LyXRC.cpp:2796
 msgid "The option to print only even pages."
 msgstr "偶数ページのみを印刷するオプションです。"
 
-#: src/LyXRC.cpp:2763
+#: src/LyXRC.cpp:2800
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -16986,35 +17008,35 @@ msgstr ""
 "印刷プログラムに渡す追加オプションで，印刷する DVI ファイル名の前に来て、かつ"
 "その他の全てのオプションの後に来るもの。"
 
-#: src/LyXRC.cpp:2767
+#: src/LyXRC.cpp:2804
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "印刷プログラムが出力するファイルの拡張子。通常は\".ps\"。"
 
-#: src/LyXRC.cpp:2771
+#: src/LyXRC.cpp:2808
 msgid "The option to print out in landscape."
 msgstr "横向きに印刷するオプション。"
 
-#: src/LyXRC.cpp:2775
+#: src/LyXRC.cpp:2812
 msgid "The option to print only odd pages."
 msgstr "奇数ページのみを印刷するオプションです。"
 
-#: src/LyXRC.cpp:2779
+#: src/LyXRC.cpp:2816
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "印刷するページをコンマで区切ったリストで指定するオプションです。"
 
-#: src/LyXRC.cpp:2783
+#: src/LyXRC.cpp:2820
 msgid "Option to specify the dimensions of the print paper."
 msgstr "印刷用紙の寸法を指定するオプション。"
 
-#: src/LyXRC.cpp:2787
+#: src/LyXRC.cpp:2824
 msgid "The option to specify paper type."
 msgstr "紙タイプを指定するオプション。"
 
-#: src/LyXRC.cpp:2791
+#: src/LyXRC.cpp:2828
 msgid "The option to reverse the order of the pages printed."
 msgstr "ページの印刷順序を逆にするオプションです。"
 
-#: src/LyXRC.cpp:2795
+#: src/LyXRC.cpp:2832
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -17024,7 +17046,7 @@ msgstr ""
 "ファイルへ向けて，別の印刷スプールプログラムを，指定した名前と引数を付けて実"
 "行します。"
 
-#: src/LyXRC.cpp:2799
+#: src/LyXRC.cpp:2836
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -17032,15 +17054,15 @@ msgstr ""
 "印刷ダイアログでプリンタ名を指定すると，スプールコマンドの後に，次の引数が，"
 "プリンタ名とともに前置されます。"
 
-#: src/LyXRC.cpp:2803
+#: src/LyXRC.cpp:2840
 msgid "Option to pass to the print program to print to a file."
 msgstr "ファイルに印刷を書き出すときに，印刷プログラムに渡すオプション。"
 
-#: src/LyXRC.cpp:2807
+#: src/LyXRC.cpp:2844
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr "特定のプリンタに印刷するときに，印刷プログラムに渡すオプション。"
 
-#: src/LyXRC.cpp:2811
+#: src/LyXRC.cpp:2848
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
@@ -17048,18 +17070,18 @@ msgstr ""
 "LyXが印刷コマンドに，印刷先プリンタ名を渡すようにしたいときに選択してくださ"
 "い。"
 
-#: src/LyXRC.cpp:2815
+#: src/LyXRC.cpp:2852
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "お好みの印刷プログラム。例：\"dvips\", \"dvilj4\"。"
 
-#: src/LyXRC.cpp:2823
+#: src/LyXRC.cpp:2860
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 "選択すると、視覚的な上下カーソル動作をします。選択を外すと、論理的な動作にな"
 "ります。"
 
-#: src/LyXRC.cpp:2827
+#: src/LyXRC.cpp:2864
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -17067,11 +17089,11 @@ msgstr ""
 "モニターのDPI(ドット/インチ）は、LyXによって自動的に判別されます。もし判別が"
 "間違っていれば、設定をここで上書きしてください。"
 
-#: src/LyXRC.cpp:2833
+#: src/LyXRC.cpp:2870
 msgid "The screen fonts used to display the text while editing."
 msgstr "編集中に本文を表示するのに使われる画面フォント。"
 
-#: src/LyXRC.cpp:2842
+#: src/LyXRC.cpp:2879
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -17082,11 +17104,11 @@ msgstr ""
 "かもしれません。このオプションを外すと，LyXは，ズームする代わりに，利用できる"
 "ビットマップフォント寸法でもっとも近いものを使うようになります。"
 
-#: src/LyXRC.cpp:2846
+#: src/LyXRC.cpp:2883
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr "画面フォントのズームを計算するのに使われるフォント寸法。"
 
-#: src/LyXRC.cpp:2851
+#: src/LyXRC.cpp:2888
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -17095,13 +17117,13 @@ msgstr ""
 "画面フォントの拡大パーセント。100％にすると，フォントは紙に現れるのとほぼ同じ"
 "大きさになります。"
 
-#: src/LyXRC.cpp:2855
+#: src/LyXRC.cpp:2892
 msgid "Allow session manager to save and restore windows geometry."
 msgstr ""
 "セッションマネージャーがウィンドウ座標を保存したり復元したりするのを許可す"
 "る。"
 
-#: src/LyXRC.cpp:2859
+#: src/LyXRC.cpp:2896
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -17109,15 +17131,15 @@ msgstr ""
 "これはlyxserverを起動します。パイプは，拡張子「.in」あるいは「.out」を追加し"
 "ます。熟練ユーザー用です。"
 
-#: src/LyXRC.cpp:2866
+#: src/LyXRC.cpp:2903
 msgid "De-select if you don't want the startup banner."
 msgstr "起動時のバナーを見たくないときは、選択をはずしてください。"
 
-#: src/LyXRC.cpp:2870
+#: src/LyXRC.cpp:2907
 msgid "What command runs the spellchecker?"
 msgstr "スペルチェッカーはどのコマンドを使用しますか？"
 
-#: src/LyXRC.cpp:2874
+#: src/LyXRC.cpp:2911
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -17125,7 +17147,7 @@ msgstr ""
 "LyX はこのパスを作業ディレクトリとして使います。作業ディレクトリは，LyX を終"
 "了するときに削除されます。"
 
-#: src/LyXRC.cpp:2878
+#: src/LyXRC.cpp:2915
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -17133,7 +17155,7 @@ msgstr ""
 "LyX がひな型を選ぶように促すときに表示するパス。空白にしておくと，LyX を起動"
 "したディレクトリが選ばれます。"
 
-#: src/LyXRC.cpp:2888
+#: src/LyXRC.cpp:2925
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -17141,7 +17163,7 @@ msgstr ""
 "UI（操作画面）設定ファイル。絶対パスを指定することもできますし，そうでなけれ"
 "ば LyX はグローバルとローカルの ui/ ディレクトリを探します。"
 
-#: src/LyXRC.cpp:2901
+#: src/LyXRC.cpp:2938
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you cannot check the spelling of words containing accented letters. This "
@@ -17151,18 +17173,18 @@ msgstr ""
 "ント文字を含む単語の綴りをチェックできないときに，有効にしてください。全ての"
 "辞書で動くとは限りません。"
 
-#: src/LyXRC.cpp:2905
+#: src/LyXRC.cpp:2942
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr "作業領域でのツールチップスの自動表示を有効にする。"
 
-#: src/LyXRC.cpp:2909
+#: src/LyXRC.cpp:2946
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "pixmapのキャッシュを有効にします。MacやWindowsでのパフォーマンスが向上する可"
 "能性があります。"
 
-#: src/LyXRC.cpp:2916
+#: src/LyXRC.cpp:2953
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "DVI ビューアヘの用紙指定コマンドを指定してください (空のままにするか \"-paper"
@@ -17722,7 +17744,7 @@ msgid "About %1"
 msgstr "%1について"
 
 #: src/frontends/qt4/GuiApplication.cpp:441
-#: src/frontends/qt4/GuiPrefs.cpp:2643
+#: src/frontends/qt4/GuiPrefs.cpp:2670
 msgid "Preferences"
 msgstr "設定"
 
@@ -18856,197 +18878,193 @@ msgstr ""
 "何もしなければ，全てのアイテムの中でもっとも幅の広いラベルの幅が使われるの"
 "で，通常この設定をする必要はないでしょう。"
 
-#: src/frontends/qt4/GuiPrefs.cpp:136
+#: src/frontends/qt4/GuiPrefs.cpp:137
 msgid "System files|#S#s"
 msgstr "システムファイル(S)|#S#s"
 
-#: src/frontends/qt4/GuiPrefs.cpp:140
+#: src/frontends/qt4/GuiPrefs.cpp:141
 msgid "User files|#U#u"
 msgstr "ユーザーファイル(U)|#U#u"
 
-#: src/frontends/qt4/GuiPrefs.cpp:224
+#: src/frontends/qt4/GuiPrefs.cpp:225
 msgid "Look & Feel"
 msgstr "操作性"
 
-#: src/frontends/qt4/GuiPrefs.cpp:226
+#: src/frontends/qt4/GuiPrefs.cpp:227
 msgid "Language Settings"
 msgstr "言語設定"
 
-#: src/frontends/qt4/GuiPrefs.cpp:227
+#: src/frontends/qt4/GuiPrefs.cpp:228
 msgid "Output"
 msgstr "出力"
 
-#: src/frontends/qt4/GuiPrefs.cpp:228
+#: src/frontends/qt4/GuiPrefs.cpp:229
 msgid "File Handling"
 msgstr "ファイル処理"
 
-#: src/frontends/qt4/GuiPrefs.cpp:394
-msgid "Date format"
-msgstr "日付書式"
-
-#: src/frontends/qt4/GuiPrefs.cpp:432
+#: src/frontends/qt4/GuiPrefs.cpp:459
 msgid "Keyboard/Mouse"
 msgstr "キーボード/マウス"
 
-#: src/frontends/qt4/GuiPrefs.cpp:507
+#: src/frontends/qt4/GuiPrefs.cpp:534
 msgid "Input Completion"
 msgstr "入力補完"
 
-#: src/frontends/qt4/GuiPrefs.cpp:666
+#: src/frontends/qt4/GuiPrefs.cpp:693
 msgid "Screen fonts"
 msgstr "画面フォント"
 
-#: src/frontends/qt4/GuiPrefs.cpp:841
+#: src/frontends/qt4/GuiPrefs.cpp:868
 msgid "Colors"
 msgstr "色"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1013
+#: src/frontends/qt4/GuiPrefs.cpp:1040
 msgid "Paths"
 msgstr "パス"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1068
+#: src/frontends/qt4/GuiPrefs.cpp:1095
 msgid "Select directory for example files"
 msgstr "用例ファイルのディレクトリを選択して下さい"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1077
+#: src/frontends/qt4/GuiPrefs.cpp:1104
 msgid "Select a document templates directory"
 msgstr "ひな型文書のディレクトリを選択して下さい"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1086
+#: src/frontends/qt4/GuiPrefs.cpp:1113
 msgid "Select a temporary directory"
 msgstr "一時作業用ディレクトリを選択して下さい"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1095
+#: src/frontends/qt4/GuiPrefs.cpp:1122
 msgid "Select a backups directory"
 msgstr "バックアップ用ディレクトリを選択して下さい"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1104
+#: src/frontends/qt4/GuiPrefs.cpp:1131
 msgid "Select a document directory"
 msgstr "文書ディレクトリを選択して下さい"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1113
+#: src/frontends/qt4/GuiPrefs.cpp:1140
 msgid "Give a filename for the LyX server pipe"
 msgstr "LyXサーバーパイプ用のファイル名を指定して下さい"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1126
-#: src/frontends/qt4/GuiSpellchecker.cpp:61
+#: src/frontends/qt4/GuiPrefs.cpp:1153
+#: src/frontends/qt4/GuiSpellchecker.cpp:60
 msgid "Spellchecker"
 msgstr "スペルチェッカー"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1148
+#: src/frontends/qt4/GuiPrefs.cpp:1175
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1149
+#: src/frontends/qt4/GuiPrefs.cpp:1176
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1150
+#: src/frontends/qt4/GuiPrefs.cpp:1177
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1152
+#: src/frontends/qt4/GuiPrefs.cpp:1179
 msgid "enchant"
 msgstr "enchant"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1155
+#: src/frontends/qt4/GuiPrefs.cpp:1182
 msgid "pspell (library)"
 msgstr "pspell (library)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1158
+#: src/frontends/qt4/GuiPrefs.cpp:1185
 msgid "aspell (library)"
 msgstr "aspell (library)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1239
+#: src/frontends/qt4/GuiPrefs.cpp:1266
 msgid "Converters"
 msgstr "変換子"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1544
+#: src/frontends/qt4/GuiPrefs.cpp:1571
 msgid "File formats"
 msgstr "ファイル書式"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1742
+#: src/frontends/qt4/GuiPrefs.cpp:1769
 msgid "Format in use"
 msgstr "使われる書式"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1743
+#: src/frontends/qt4/GuiPrefs.cpp:1770
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "変換子が使用しているフォーマットを削除することができませんでした。変換プログ"
 "ラムを先に削除してください。"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1817
+#: src/frontends/qt4/GuiPrefs.cpp:1844
 msgid "LyX needs to be restarted!"
 msgstr "LyXの再起動が必要です！"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1818
+#: src/frontends/qt4/GuiPrefs.cpp:1845
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
 msgstr "操作画面言語の変更は、再起動のあと完全に有効となります。"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1876
+#: src/frontends/qt4/GuiPrefs.cpp:1903
 msgid "Printer"
 msgstr "プリンタ"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1974 src/frontends/qt4/GuiPrefs.cpp:2683
+#: src/frontends/qt4/GuiPrefs.cpp:2001 src/frontends/qt4/GuiPrefs.cpp:2710
 msgid "User interface"
 msgstr "操作画面"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2075
+#: src/frontends/qt4/GuiPrefs.cpp:2102
 msgid "Control"
 msgstr "制御"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2147
+#: src/frontends/qt4/GuiPrefs.cpp:2174
 msgid "Shortcuts"
 msgstr "短絡キー"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2152
+#: src/frontends/qt4/GuiPrefs.cpp:2179
 msgid "Function"
 msgstr "関数"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2153
+#: src/frontends/qt4/GuiPrefs.cpp:2180
 msgid "Shortcut"
 msgstr "短絡キー"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2232
+#: src/frontends/qt4/GuiPrefs.cpp:2259
 msgid "Cursor, Mouse and Editing functions"
 msgstr "カーソル関数・マウス関数・編集関数"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2236
+#: src/frontends/qt4/GuiPrefs.cpp:2263
 msgid "Mathematical Symbols"
 msgstr "数式用記号"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2240
+#: src/frontends/qt4/GuiPrefs.cpp:2267
 msgid "Document and Window"
 msgstr "文書及びウィンドウ"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2244
+#: src/frontends/qt4/GuiPrefs.cpp:2271
 msgid "Font, Layouts and Textclasses"
 msgstr "フォント・レイアウト・テキストクラス"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2248
+#: src/frontends/qt4/GuiPrefs.cpp:2275
 msgid "System and Miscellaneous"
 msgstr "システムその他"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2375 src/frontends/qt4/GuiPrefs.cpp:2421
+#: src/frontends/qt4/GuiPrefs.cpp:2402 src/frontends/qt4/GuiPrefs.cpp:2448
 msgid "Res&tore"
 msgstr "復元(&T)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2532 src/frontends/qt4/GuiPrefs.cpp:2539
-#: src/frontends/qt4/GuiPrefs.cpp:2559 src/frontends/qt4/GuiPrefs.cpp:2578
+#: src/frontends/qt4/GuiPrefs.cpp:2559 src/frontends/qt4/GuiPrefs.cpp:2566
+#: src/frontends/qt4/GuiPrefs.cpp:2586 src/frontends/qt4/GuiPrefs.cpp:2605
 msgid "Failed to create shortcut"
 msgstr "短絡キーの生成に失敗しました"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2533
+#: src/frontends/qt4/GuiPrefs.cpp:2560
 msgid "Unknown or invalid LyX function"
 msgstr "未知あるいは無効なLyX関数です。"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2540
+#: src/frontends/qt4/GuiPrefs.cpp:2567
 msgid "Invalid or empty key sequence"
 msgstr "無効あるいは空のキー列です"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2560
+#: src/frontends/qt4/GuiPrefs.cpp:2587
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -19057,47 +19075,47 @@ msgstr ""
 "%2$s\n"
 "新規のキー割り当てを作成する前に、このキー割り当てを削除する必要があります。"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2579
+#: src/frontends/qt4/GuiPrefs.cpp:2606
 msgid "Can not insert shortcut to the list"
 msgstr "短絡キーを一覧に加えることができません"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2610
+#: src/frontends/qt4/GuiPrefs.cpp:2637
 msgid "Identity"
 msgstr "利用者情報"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2807
+#: src/frontends/qt4/GuiPrefs.cpp:2834
 msgid "Choose bind file"
 msgstr "バインドファイルを選んで下さい"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2808
+#: src/frontends/qt4/GuiPrefs.cpp:2835
 msgid "LyX bind files (*.bind)"
 msgstr "LyXバインドファイル(*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2814
+#: src/frontends/qt4/GuiPrefs.cpp:2841
 msgid "Choose UI file"
 msgstr "UIファイルを選んで下さい"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2815
+#: src/frontends/qt4/GuiPrefs.cpp:2842
 msgid "LyX UI files (*.ui)"
 msgstr "LyX UIファイル(*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2821
+#: src/frontends/qt4/GuiPrefs.cpp:2848
 msgid "Choose keyboard map"
 msgstr "キーボード配列表を選んで下さい"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2822
+#: src/frontends/qt4/GuiPrefs.cpp:2849
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyXキーボード配列表(*.kmap)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2828
+#: src/frontends/qt4/GuiPrefs.cpp:2855
 msgid "Choose personal dictionary"
 msgstr "個人用辞書を選んで下さい"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2829
+#: src/frontends/qt4/GuiPrefs.cpp:2856
 msgid "*.pws"
 msgstr "*.pws"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2829
+#: src/frontends/qt4/GuiPrefs.cpp:2856
 msgid "*.ispell"
 msgstr "*.ispell"
 
@@ -19145,15 +19163,15 @@ msgstr "ファイルを表示"
 msgid "Error -> Cannot load file!"
 msgstr "エラー→ファイルを読み込むことができません！"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:275
+#: src/frontends/qt4/GuiSpellchecker.cpp:274
 msgid "Spellchecker error"
 msgstr "スペルチェッカーのエラー"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:276
+#: src/frontends/qt4/GuiSpellchecker.cpp:275
 msgid "The spellchecker could not be started\n"
 msgstr "スペルチェッカーを起動することができませんでした。\n"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:434
+#: src/frontends/qt4/GuiSpellchecker.cpp:433
 msgid ""
 "The spellchecker has died for some reason.\n"
 "Maybe it has been killed."
@@ -19161,24 +19179,24 @@ msgstr ""
 "スペルチェッカーが何らかの理由でお亡くなりになりました。\n"
 "手動でkillされたのかも知れません。"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:437
+#: src/frontends/qt4/GuiSpellchecker.cpp:436
 msgid "The spellchecker has failed.\n"
 msgstr "スペルチェッカーでエラーが起きました。\n"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:441
+#: src/frontends/qt4/GuiSpellchecker.cpp:440
 msgid "The spellchecker has failed"
 msgstr "スペルチェッカーでエラーが起きました"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:455
+#: src/frontends/qt4/GuiSpellchecker.cpp:454
 #, c-format
 msgid "%1$d words checked."
 msgstr "%1$d個の単語がチェックされました。"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:457
+#: src/frontends/qt4/GuiSpellchecker.cpp:456
 msgid "One word checked."
 msgstr "一つの単語がチェックされました。"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:460
+#: src/frontends/qt4/GuiSpellchecker.cpp:459
 msgid "Spelling check completed"
 msgstr "スペルチェックが完了しました。"
 
@@ -21213,6 +21231,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "未知の"
+
+#~ msgid "Date format"
+#~ msgstr "日付書式"
 
 #, fuzzy
 #~ msgid "Lowercase"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-05-28 17:15+0200\n"
+"POT-Creation-Date: 2010-05-31 11:31+0200\n"
 "PO-Revision-Date: 2010-04-27 16:58+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -89,7 +89,7 @@ msgstr "&Ados"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:862
-#: src/Buffer.cpp:2753 src/Buffer.cpp:2799 src/Buffer.cpp:2834
+#: src/Buffer.cpp:2756 src/Buffer.cpp:2802 src/Buffer.cpp:2837
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
 #: src/LyXFunc.cpp:1926 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
@@ -462,8 +462,8 @@ msgstr "&Berria:"
 msgid "Remove the selected branch"
 msgstr "Kendu hautatutako adarra"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2769
-#: src/Buffer.cpp:2780
+#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2772
+#: src/Buffer.cpp:2783
 msgid "&Remove"
 msgstr "&Kendu"
 
@@ -505,7 +505,7 @@ msgstr "&Tamaina:"
 #: src/frontends/qt4/GuiDocument.cpp:1221
 #: src/frontends/qt4/GuiDocument.cpp:2285 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiListings.cpp:152
-#: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1805
+#: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1832
 msgid "Default"
 msgstr "Lehenetsia"
 
@@ -631,7 +631,7 @@ msgstr "Letra-multzoak"
 #: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/europecv.layout:118
 #: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:987
-#: src/frontends/qt4/GuiPrefs.cpp:1763
+#: src/frontends/qt4/GuiPrefs.cpp:1790
 msgid "Language"
 msgstr "Hizkuntza"
 
@@ -873,7 +873,7 @@ msgstr "Gorde ezarpenak LyX-eko dokumentu-ezarpen lehenetsi gisa"
 msgid "Save as Document Defaults"
 msgstr "Gorde dokumentu lehenetsi gisa"
 
-#: src/frontends/qt4/ui/ERTUi.ui:31 src/frontends/qt4/GuiPrefs.cpp:940
+#: src/frontends/qt4/ui/ERTUi.ui:31 src/frontends/qt4/GuiPrefs.cpp:967
 msgid "Display"
 msgstr "Bistaratu"
 
@@ -2290,7 +2290,7 @@ msgid "Cursor i&ndicator"
 msgstr "Kurtsorearen &adierazlea"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:111
-#: lib/layouts/hollywood.layout:280
+#: lib/layouts/hollywood.layout:280 src/frontends/qt4/GuiPrefs.cpp:395
 msgid "General"
 msgstr "Orokorra"
 
@@ -2361,7 +2361,7 @@ msgstr "&Aldatu"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2377 src/frontends/qt4/GuiPrefs.cpp:2441
+#: src/frontends/qt4/GuiPrefs.cpp:2404 src/frontends/qt4/GuiPrefs.cpp:2468
 msgid "Remo&ve"
 msgstr "&Kendu"
 
@@ -2380,14 +2380,6 @@ msgstr "&Gaituta"
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
 msgid "Maximum A&ge (in days):"
 msgstr "&Gehienezko adina (egunak):"
-
-#: src/frontends/qt4/ui/PrefDateUi.ui:33
-msgid "&Date format:"
-msgstr "&Data-formatua:"
-
-#: src/frontends/qt4/ui/PrefDateUi.ui:43
-msgid "Date format for strftime output"
-msgstr "strftime irteerarako data-formatua"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:25
 msgid "Display &Graphics"
@@ -2426,7 +2418,7 @@ msgstr "Markatu paragrafoen amaiera pantailan 'euli-zangoa' karakterearekin."
 msgid "&Mark end of paragraphs"
 msgstr "&Markatu paragrafoen amaiera"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:33 src/frontends/qt4/GuiPrefs.cpp:225
+#: src/frontends/qt4/ui/PrefEditUi.ui:33 src/frontends/qt4/GuiPrefs.cpp:226
 msgid "Editing"
 msgstr "Editatzea"
 
@@ -2667,7 +2659,7 @@ msgstr "Markatu &kanpoko hizkuntzak"
 msgid "Right-to-left language support"
 msgstr "'Eskuin->ezker' hizkuntzen euskarria"
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:203 src/LyXRC.cpp:2819
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:203 src/LyXRC.cpp:2856
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
@@ -2812,6 +2804,36 @@ msgstr ""
 msgid "&DVI viewer paper size options:"
 msgstr "&DVI ikustailearen paper-tamainaren aukerak:"
 
+#: src/frontends/qt4/ui/PrefOutputUi.ui:50
+msgid "&Date format:"
+msgstr "&Data-formatua:"
+
+#: src/frontends/qt4/ui/PrefOutputUi.ui:60
+msgid "Date format for strftime output"
+msgstr "strftime irteerarako data-formatua"
+
+#: src/frontends/qt4/ui/PrefOutputUi.ui:77
+#, fuzzy
+msgid "&Overwrite on export:"
+msgstr "Gainidatzi dokumentua?"
+
+#: src/frontends/qt4/ui/PrefOutputUi.ui:87
+msgid "What to do when existing files are going to be overwritten on export."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefOutputUi.ui:91
+msgid "Ask permission"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefOutputUi.ui:96
+msgid "Main file only"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefOutputUi.ui:101
+#, fuzzy
+msgid "All files"
+msgstr "Fitxategi denak "
+
 #: src/frontends/qt4/ui/PrefPathsUi.ui:25
 msgid "&Working directory:"
 msgstr "&Laneko direktorioa:"
@@ -2849,7 +2871,7 @@ msgstr "&Aldi baterako direktorioa:"
 msgid "&PATH prefix:"
 msgstr "&PATH aurrizkia:"
 
-#: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2493
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2530
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -4475,7 +4497,7 @@ msgid "email"
 msgstr "helb. el."
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612 lib/languages:4
-#: src/frontends/qt4/GuiErrorList.cpp:47 src/frontends/qt4/GuiPrefs.cpp:589
+#: src/frontends/qt4/GuiErrorList.cpp:47 src/frontends/qt4/GuiPrefs.cpp:616
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -14648,7 +14670,7 @@ msgstr "LaTeX (soila)|L"
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
-#: lib/configure.py:310 src/frontends/qt4/GuiPrefs.cpp:334
+#: lib/configure.py:310 src/frontends/qt4/GuiPrefs.cpp:335
 msgid "Plain text"
 msgstr "Testu soila"
 
@@ -15176,21 +15198,21 @@ msgstr "Fitxategi-izenean errorea"
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Dokumentuaren bide-izenak ezin du zuriunerik izan."
 
-#: src/Buffer.cpp:2652
+#: src/Buffer.cpp:2653
 msgid "Document export cancelled."
 msgstr "Dokumentua esportatzea bertan behera utzi da."
 
-#: src/Buffer.cpp:2660
+#: src/Buffer.cpp:2663
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokumentua %1$s gisa esportatuta '%2$s' fitxategira"
 
-#: src/Buffer.cpp:2666
+#: src/Buffer.cpp:2669
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokumentua %1$s gisa esportatuta"
 
-#: src/Buffer.cpp:2736
+#: src/Buffer.cpp:2739
 #, c-format
 msgid ""
 "The specified document\n"
@@ -15201,11 +15223,11 @@ msgstr ""
 "%1$s\n"
 "ezin izan da irakurri."
 
-#: src/Buffer.cpp:2738
+#: src/Buffer.cpp:2741
 msgid "Could not read document"
 msgstr "Ezin izan da dokumentua irakurri"
 
-#: src/Buffer.cpp:2748
+#: src/Buffer.cpp:2751
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15216,27 +15238,27 @@ msgstr ""
 "\n"
 "Larrialdian gordetakoa berreskuratu?"
 
-#: src/Buffer.cpp:2751
+#: src/Buffer.cpp:2754
 msgid "Load emergency save?"
 msgstr "Kargatu larrialdian gordetakoa?"
 
-#: src/Buffer.cpp:2752
+#: src/Buffer.cpp:2755
 msgid "&Recover"
 msgstr "&Berreskuratu"
 
-#: src/Buffer.cpp:2752
+#: src/Buffer.cpp:2755
 msgid "&Load Original"
 msgstr "&Kargatu jatorrizkoa"
 
-#: src/Buffer.cpp:2762
+#: src/Buffer.cpp:2765
 msgid "Document was successfully recovered."
 msgstr "Dokumentua ongi berreskuratu da."
 
-#: src/Buffer.cpp:2764
+#: src/Buffer.cpp:2767
 msgid "Document was NOT successfully recovered."
 msgstr "Dokumentua EZ da ongi berreskuratu."
 
-#: src/Buffer.cpp:2765
+#: src/Buffer.cpp:2768
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -15245,27 +15267,27 @@ msgstr ""
 "Kendu larrialdiko fitxategia orain?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:2768 src/Buffer.cpp:2778
+#: src/Buffer.cpp:2771 src/Buffer.cpp:2781
 msgid "Delete emergency file?"
 msgstr "Ezabatu larrialdiko fitxategia?"
 
-#: src/Buffer.cpp:2769 src/Buffer.cpp:2780
+#: src/Buffer.cpp:2772 src/Buffer.cpp:2783
 msgid "&Keep it"
 msgstr "&Mantendu"
 
-#: src/Buffer.cpp:2772
+#: src/Buffer.cpp:2775
 msgid "Emergency file deleted"
 msgstr "Larrialdiko fitxategia ezabatuta"
 
-#: src/Buffer.cpp:2773
+#: src/Buffer.cpp:2776
 msgid "Do not forget to save your file now!"
 msgstr "Ez zaitez ahaztu zure fitxategia orain gordetzeaz."
 
-#: src/Buffer.cpp:2779
+#: src/Buffer.cpp:2782
 msgid "Remove emergency file now?"
 msgstr "Kendu larrialdiko fitxategia orain?"
 
-#: src/Buffer.cpp:2794
+#: src/Buffer.cpp:2797
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15276,28 +15298,28 @@ msgstr ""
 "\n"
 "Kargatu babeskopia horren ordez?"
 
-#: src/Buffer.cpp:2797
+#: src/Buffer.cpp:2800
 msgid "Load backup?"
 msgstr "Kargatu babeskopia?"
 
-#: src/Buffer.cpp:2798
+#: src/Buffer.cpp:2801
 msgid "&Load backup"
 msgstr "&Kargatu babeskopia"
 
-#: src/Buffer.cpp:2798
+#: src/Buffer.cpp:2801
 msgid "Load &original"
 msgstr "Kargatu &jatorrizkoa"
 
-#: src/Buffer.cpp:2831
+#: src/Buffer.cpp:2834
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "%1$s dokumentua bertsio-kontroletik berreskuratzea nahi duzu?"
 
-#: src/Buffer.cpp:2833
+#: src/Buffer.cpp:2836
 msgid "Retrieve from version control?"
 msgstr "Berreskuratu bertsio-kontroletik?"
 
-#: src/Buffer.cpp:2834
+#: src/Buffer.cpp:2837
 msgid "&Retrieve"
 msgstr "&Berreskuratu"
 
@@ -16651,7 +16673,7 @@ msgstr "Ongi etorri LyX-era!"
 msgid "Converting document to new document class..."
 msgstr "Dokumentua klase berrira bihurtzen..."
 
-#: src/LyXRC.cpp:2480
+#: src/LyXRC.cpp:2517
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -16659,7 +16681,7 @@ msgstr ""
 "Batera doazen hitzak ontzat hartuko dira? Adibidez, \"diskdrive\", \"disk "
 "drive\" hitzen ordez."
 
-#: src/LyXRC.cpp:2485
+#: src/LyXRC.cpp:2522
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
@@ -16667,7 +16689,7 @@ msgstr ""
 "Hautatu aukerako hizkuntza. Dokumentu beraren hizkuntza erabiliko da "
 "lehenetsi gisa."
 
-#: src/LyXRC.cpp:2489
+#: src/LyXRC.cpp:2526
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
@@ -16678,7 +16700,7 @@ msgstr ""
 "sarrerako fitxategia den. \"\" zehazten bada, barne-errutina bat erabiliko "
 "da."
 
-#: src/LyXRC.cpp:2497
+#: src/LyXRC.cpp:2534
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -16686,7 +16708,7 @@ msgstr ""
 "Desautatu uneko hautapena idatzitakoarekin automatikoki ordezterik ez baduzu "
 "nahi."
 
-#: src/LyXRC.cpp:2501
+#: src/LyXRC.cpp:2538
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -16694,14 +16716,14 @@ msgstr ""
 "Desautatu klase aldaketa egin ondoren klasearen aukerak lehenetsitako "
 "balioetara aldatzerik nahi ez baduzu."
 
-#: src/LyXRC.cpp:2505
+#: src/LyXRC.cpp:2542
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Automatikoki gordetzeko bitartea (segundotan). 0 ipiniz gero ez da "
 "automatikoki gordeko."
 
-#: src/LyXRC.cpp:2512
+#: src/LyXRC.cpp:2549
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -16709,7 +16731,7 @@ msgstr ""
 "Babes-kopiak gordetzeko direktorioaren bide-izena. Hutsik utziz gero LyX-ek "
 "jatorrizko fitxategiaren direktorio berean gordeko du babes-kopia."
 
-#: src/LyXRC.cpp:2516
+#: src/LyXRC.cpp:2553
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -16717,12 +16739,12 @@ msgstr ""
 "Definitu bibtex-en aukerak (man bibtex) edo hautatu bestelako konpilatzailea "
 "(adib. mlbibtex edo bibulus)."
 
-#: src/LyXRC.cpp:2520
+#: src/LyXRC.cpp:2557
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 "Definitu bibtex programaren aukerak PLaTeX-entzako (Japonieraren LaTeX-a)."
 
-#: src/LyXRC.cpp:2524
+#: src/LyXRC.cpp:2561
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -16730,11 +16752,11 @@ msgstr ""
 "Laster-teklen fitxategia. Bide-izen absolutua zehaztu edo LyX-ek bind/ "
 "direktorio orokor eta lokaletan begiratuko du."
 
-#: src/LyXRC.cpp:2528
+#: src/LyXRC.cpp:2565
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Hautatu azken fitxategiak existitzen diren egiaztatzeko."
 
-#: src/LyXRC.cpp:2532
+#: src/LyXRC.cpp:2569
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -16742,7 +16764,7 @@ msgstr ""
 "Definitu  chktex nola exekutatuko den. Adibidez, \"chktex -n11 -n1 -n3 -n6 -"
 "n9 -22 -n25 -n30 -n38\". Ikus ChkTeX dokumentazioa."
 
-#: src/LyXRC.cpp:2542
+#: src/LyXRC.cpp:2579
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -16750,13 +16772,13 @@ msgstr ""
 "LyX-ek normalean ez du baimentzen kurtsorea mugitzen korritze-barra mugitzen "
 "duzunean. Aktibatu kurtsorea beti pantailan ikustea nahi baduzu."
 
-#: src/LyXRC.cpp:2546
+#: src/LyXRC.cpp:2583
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
 msgstr ""
 "Erabili MacOS X sistemako konbentzioak kurtsorearen hitzen mailako "
 "mugimendurako"
 
-#: src/LyXRC.cpp:2550
+#: src/LyXRC.cpp:2587
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
@@ -16764,7 +16786,7 @@ msgstr ""
 "Erakutsi kutxa txiki bat Mat. makroen inguruan makroaren izenarekin "
 "kurtsorea barruan dagoenean."
 
-#: src/LyXRC.cpp:2561
+#: src/LyXRC.cpp:2598
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -16773,7 +16795,7 @@ msgstr ""
 "Honek strftime formatu normalak onartzen ditu; xehetasun gehiagorako man "
 "strftime landu. Adib. \"%A, %e. %B %Y\"."
 
-#: src/LyXRC.cpp:2565
+#: src/LyXRC.cpp:2602
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
@@ -16781,15 +16803,15 @@ msgstr ""
 "Komandoen definizioen fitxategia. Bide-izen absolutua zehaztu edo LyX-ek "
 "commands/ direktorio orokor eta lokaletan begiratuko du."
 
-#: src/LyXRC.cpp:2569
+#: src/LyXRC.cpp:2606
 msgid "New documents will be assigned this language."
 msgstr "Dokumentu berriek hizkuntza hau edukiko dute."
 
-#: src/LyXRC.cpp:2573
+#: src/LyXRC.cpp:2610
 msgid "Specify the default paper size."
 msgstr "Zehaztu paper-tamaina lehenetsia."
 
-#: src/LyXRC.cpp:2577
+#: src/LyXRC.cpp:2614
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -16797,11 +16819,11 @@ msgstr ""
 "Lehio nagusiarekin batera, elkarrizketa-koadro guztiak ikonotu. (Aukera hau "
 "aldatzean azaltzen diren elkarrizketa-koadroei soilik eragingo die)."
 
-#: src/LyXRC.cpp:2581
+#: src/LyXRC.cpp:2618
 msgid "Select how LyX will display any graphics."
 msgstr "Hautatu LyX-ek nola erakutsiko dituen grafikoak."
 
-#: src/LyXRC.cpp:2585
+#: src/LyXRC.cpp:2622
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -16809,11 +16831,11 @@ msgstr ""
 "Dokumentuen bide-izen lehenetsia. Balio hutsak LyX abiatu den direktorioa "
 "erabiliko du."
 
-#: src/LyXRC.cpp:2590
+#: src/LyXRC.cpp:2627
 msgid "Specify additional chars that can be part of a word."
 msgstr "Zehaztu karaktere gehigarriak (hitz baten osagai izan daitekeenak)."
 
-#: src/LyXRC.cpp:2594
+#: src/LyXRC.cpp:2631
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
@@ -16821,7 +16843,7 @@ msgstr ""
 "Txantiloien direktorio lehenetsia. Balio hutsak LyX abiatu den direktorioa "
 "erabiliko du."
 
-#: src/LyXRC.cpp:2598
+#: src/LyXRC.cpp:2635
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -16829,7 +16851,7 @@ msgstr ""
 "LaTeX2e fontenc paketean erabilitako letra-kodeketa. T1 aholkatzen da "
 "ingelesa ez diren hizkuntzetan."
 
-#: src/LyXRC.cpp:2605
+#: src/LyXRC.cpp:2642
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -16839,13 +16861,13 @@ msgstr ""
 "konpilatzailea. Adib. xindy/make-rules erabiliz komandoa honakoa izango "
 "litzateke: \"makeindex.sh -m $$lang\"."
 
-#: src/LyXRC.cpp:2609
+#: src/LyXRC.cpp:2646
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 "Definitu programa indexaztzailearen aukerak PLaTeX-entzako (Japonierako "
 "LaTeX)."
 
-#: src/LyXRC.cpp:2613
+#: src/LyXRC.cpp:2650
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
@@ -16853,7 +16875,7 @@ msgstr ""
 "Definitu makeindex-en aukerak (ikus man makeindex) nomenklaturetan "
 "erabiltzeko. Indexatze-prozesuaren aukeretatik desberdina izan daiteke."
 
-#: src/LyXRC.cpp:2622
+#: src/LyXRC.cpp:2659
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -16861,24 +16883,24 @@ msgstr ""
 "Hau erabili teklatuaren konfigurazio egokia zehazteko. Adibidez, teklatu "
 "amerikar batekin alemaneko dokumentuak idazteko beharko duzu."
 
-#: src/LyXRC.cpp:2626
+#: src/LyXRC.cpp:2663
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr "Gehienezko hitz kopurua etiketa berri baten katearen hasieraketan"
 
-#: src/LyXRC.cpp:2630
+#: src/LyXRC.cpp:2667
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr ""
 "Hautatu hizkuntza aldatzeko komandoa dokumentuaren hasieran beharrezkoa bada."
 
-#: src/LyXRC.cpp:2634
+#: src/LyXRC.cpp:2671
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Hautatu hizkuntza aldatzeko komandoa dokumentuaren amaieran beharrezkoa bada."
 
-#: src/LyXRC.cpp:2638
+#: src/LyXRC.cpp:2675
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -16888,15 +16910,15 @@ msgstr ""
 "aldatzeko. Adib.  \\selectlanguage{$$lang} non $$lang bigarrengo "
 "hizkuntzaren izenagatik ordezten den."
 
-#: src/LyXRC.cpp:2642
+#: src/LyXRC.cpp:2679
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "LaTeX komandoa, dokumentuaren hizkuntzara itzultzeko."
 
-#: src/LyXRC.cpp:2646
+#: src/LyXRC.cpp:2683
 msgid "The LaTeX command for local changing of the language."
 msgstr "LaTeX komandoa, hizkuntzaren aldaketa lokalerako."
 
-#: src/LyXRC.cpp:2650
+#: src/LyXRC.cpp:2687
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -16904,7 +16926,7 @@ msgstr ""
 "Desautatu hizkuntza(k) \\documentclass-entzako argumentu baten gisa "
 "erabiltzerik ez baduzu nahi."
 
-#: src/LyXRC.cpp:2654
+#: src/LyXRC.cpp:2691
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -16912,7 +16934,7 @@ msgstr ""
 "LaTeX komandoa hizkuntzaren paketea kargatzeko. Adib.  \"\\usepackage{babel}"
 "\", \"\\usepackage{omega}\"."
 
-#: src/LyXRC.cpp:2658
+#: src/LyXRC.cpp:2695
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -16920,19 +16942,19 @@ msgstr ""
 "Desautatu dokumentuko hizkuntza lehenetsia denean babel erabiltzerik ez "
 "baduzu nahi."
 
-#: src/LyXRC.cpp:2662
+#: src/LyXRC.cpp:2699
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr "Desautatu gordetako posiziora LyX-ek korritzea nahi ez baduzu."
 
-#: src/LyXRC.cpp:2666
+#: src/LyXRC.cpp:2703
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr "Desautatu azken LyX saioan irekitako fitxategiak kargatzea saihesteko."
 
-#: src/LyXRC.cpp:2670
+#: src/LyXRC.cpp:2707
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "Desautatu LyX-ek babeskopiak egiterik nahi ez baduzu."
 
-#: src/LyXRC.cpp:2674
+#: src/LyXRC.cpp:2711
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -16940,30 +16962,30 @@ msgstr ""
 "Hautatu dokumentuan atzerriko hizkuntza batean idatzitako hitzak "
 "nabarmentzea kontrolatzeko."
 
-#: src/LyXRC.cpp:2678
+#: src/LyXRC.cpp:2715
 msgid "The scrolling speed of the mouse wheel."
 msgstr "Saguko gurpilaren korritze-abiadura."
 
-#: src/LyXRC.cpp:2683
+#: src/LyXRC.cpp:2720
 msgid "The completion popup delay."
 msgstr "Osaketako laster-menuaren atzerapena."
 
-#: src/LyXRC.cpp:2687
+#: src/LyXRC.cpp:2724
 msgid "Select to display the completion popup in math mode."
 msgstr "Hautatu osaketako laster-menua matematika moduan bistaratzeko."
 
-#: src/LyXRC.cpp:2691
+#: src/LyXRC.cpp:2728
 msgid "Select to display the completion popup in text mode."
 msgstr "Hautatu osaketako laster-menua testu moduan bistaratzeko."
 
-#: src/LyXRC.cpp:2695
+#: src/LyXRC.cpp:2732
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 "Erakutsi osaketako laster-menua atzerapenik gabe, osaketa bakarra ez den "
 "saioaren ostean."
 
-#: src/LyXRC.cpp:2699
+#: src/LyXRC.cpp:2736
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
@@ -16971,30 +16993,30 @@ msgstr ""
 "Erakutsi triangelu txiki bat kurtsorearen gainean osaketa bat erabilgarri "
 "dagoela adierazteko."
 
-#: src/LyXRC.cpp:2703
+#: src/LyXRC.cpp:2740
 msgid "The inline completion delay."
 msgstr "Lerroko osaketaren atzerapena."
 
-#: src/LyXRC.cpp:2707
+#: src/LyXRC.cpp:2744
 msgid "Select to display the inline completion in math mode."
 msgstr "Hautatu lerroko osaketa matematika moduan bistaratzeko."
 
-#: src/LyXRC.cpp:2711
+#: src/LyXRC.cpp:2748
 msgid "Select to display the inline completion in text mode."
 msgstr "Hautatu lerroko osaketa testu moduan bistaratzeko."
 
-#: src/LyXRC.cpp:2715
+#: src/LyXRC.cpp:2752
 msgid "Use \"...\" to shorten long completions."
 msgstr "Erabili \"...\" osaketa luzeak laburtzeko."
 
-#: src/LyXRC.cpp:2719
+#: src/LyXRC.cpp:2756
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 "Azken fitxategi-kopurua (erakutsiko direnak). Fitxategia menuan gehienez %1"
 "$d erakuts daiteke."
 
-#: src/LyXRC.cpp:2724
+#: src/LyXRC.cpp:2761
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
@@ -17003,36 +17025,36 @@ msgstr ""
 "inguruneko PATH aldagaian. Erabili jatorrizko Sist. Eragileak erabiltzen "
 "duen formatua."
 
-#: src/LyXRC.cpp:2731
+#: src/LyXRC.cpp:2768
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Zehaztu bestelako hiztegi pertsonalaren fitxategia. Adib. \".ispell_english"
 "\"."
 
-#: src/LyXRC.cpp:2735
+#: src/LyXRC.cpp:2772
 msgid "Shows a typeset preview of things such as math"
 msgstr ""
 "Gauzen konposaketaren aurrebista erakusten du, matematikarena bezalakoa."
 
-#: src/LyXRC.cpp:2739
+#: src/LyXRC.cpp:2776
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 "Aurrebistako ekuazioek \"(#)\" motako etiketak dituzte, zenbakien ordez."
 
-#: src/LyXRC.cpp:2743
+#: src/LyXRC.cpp:2780
 msgid "Scale the preview size to suit."
 msgstr "Eskalatu aurrebista, bere tamaina egokitzeko."
 
-#: src/LyXRC.cpp:2747
+#: src/LyXRC.cpp:2784
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Kopiak tartekatu-eran zehazteko aukera."
 
-#: src/LyXRC.cpp:2751
+#: src/LyXRC.cpp:2788
 msgid "The option for specifying the number of copies to print."
 msgstr "Inprimatzeko kopia kopurua zehazteko aukera."
 
-#: src/LyXRC.cpp:2755
+#: src/LyXRC.cpp:2792
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -17040,11 +17062,11 @@ msgstr ""
 "Inprimagailu lehenetsia hor inprimatzeko. Ez bada zehazten, LyX-ek "
 "inguruneko PRINTER aldagaia erabiliko du.."
 
-#: src/LyXRC.cpp:2759
+#: src/LyXRC.cpp:2796
 msgid "The option to print only even pages."
 msgstr "Orri bikoitiak soilik inprimatzeko aukera."
 
-#: src/LyXRC.cpp:2763
+#: src/LyXRC.cpp:2800
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -17052,36 +17074,36 @@ msgstr ""
 "Inprimatze-programari aukera osagarriak pasatzeko (gauza guztiak zehaztu "
 "ondoren baina DVI fitxategi-izena baino lehen)."
 
-#: src/LyXRC.cpp:2767
+#: src/LyXRC.cpp:2804
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr ""
 "Inprimatze-programak sortutako fitxategiaren luzapena, normalean \".ps\"."
 
-#: src/LyXRC.cpp:2771
+#: src/LyXRC.cpp:2808
 msgid "The option to print out in landscape."
 msgstr "Horizontalean inprimatzeko aukera."
 
-#: src/LyXRC.cpp:2775
+#: src/LyXRC.cpp:2812
 msgid "The option to print only odd pages."
 msgstr "Orri bakoitiak soilik inprimatzeko aukera."
 
-#: src/LyXRC.cpp:2779
+#: src/LyXRC.cpp:2816
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "Inprimatzeko orriak, komaz bereizita, zehazteko aukera."
 
-#: src/LyXRC.cpp:2783
+#: src/LyXRC.cpp:2820
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Inprimatze-paperaren dimentsioak zehazteko aukera."
 
-#: src/LyXRC.cpp:2787
+#: src/LyXRC.cpp:2824
 msgid "The option to specify paper type."
 msgstr "Paper-mota zehazteko aukera."
 
-#: src/LyXRC.cpp:2791
+#: src/LyXRC.cpp:2828
 msgid "The option to reverse the order of the pages printed."
 msgstr "Orrien inprimatze-ordena alderantzikatzeko aukera."
 
-#: src/LyXRC.cpp:2795
+#: src/LyXRC.cpp:2832
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -17090,7 +17112,7 @@ msgstr ""
 "Ezartzean, fitxategi batean inprimatzen da eta ondoren beste programa "
 "independente bati deituko dio zehaztutako izen eta parametroekin."
 
-#: src/LyXRC.cpp:2799
+#: src/LyXRC.cpp:2836
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -17098,37 +17120,37 @@ msgstr ""
 "Inprimagailu baten izena zehazten baduzu, inprimatzeko agindua ematerakoan "
 "ondorengo argumentuak erabiliko dira inprimagailuaren izenarekin batera."
 
-#: src/LyXRC.cpp:2803
+#: src/LyXRC.cpp:2840
 msgid "Option to pass to the print program to print to a file."
 msgstr ""
 "Inprimatze-programari (fitxategi batean inprimatzeko) parametroa pasatzeko "
 "aukera."
 
-#: src/LyXRC.cpp:2807
+#: src/LyXRC.cpp:2844
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 "Inprimatze-programari (inprimagailu jakin batean inprimatzeko) parametroa "
 "pasatzeko aukera."
 
-#: src/LyXRC.cpp:2811
+#: src/LyXRC.cpp:2848
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr "Hautatu helburuko inprimagailu-izena, inprimatze-programari pasatzeko."
 
-#: src/LyXRC.cpp:2815
+#: src/LyXRC.cpp:2852
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr ""
 "Inprimatzeko zure programarik gustukoena, adibidez, \"dvips\", \"dvilj4\"."
 
-#: src/LyXRC.cpp:2823
+#: src/LyXRC.cpp:2860
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 "Hautatu kurtsore bidirekzionalaren mugimendu bisuala edukitzeko. Desautatu "
 "mugimendu logikoa edukitzeko."
 
-#: src/LyXRC.cpp:2827
+#: src/LyXRC.cpp:2864
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -17136,11 +17158,11 @@ msgstr ""
 "Pantailaren DPI (puntuak hazbeteko) LyX-ek automatikoki detektatuko du. "
 "Gaizki gertatuz gero, zuzendu ezarpenak hemen."
 
-#: src/LyXRC.cpp:2833
+#: src/LyXRC.cpp:2870
 msgid "The screen fonts used to display the text while editing."
 msgstr "Pantailako letrak, testua editatzean erakusteko erabiliak."
 
-#: src/LyXRC.cpp:2842
+#: src/LyXRC.cpp:2879
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -17151,11 +17173,11 @@ msgstr ""
 "aldatua ikustea. Desautatuz LyX-ek tamainarik antzekoena duen bitmap letra "
 "hartuko du, tamaina aldatu beharrean."
 
-#: src/LyXRC.cpp:2846
+#: src/LyXRC.cpp:2883
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr "Letra-tamainak, pantailako letra-tipoen eskala kalkulatzeko erabiliak."
 
-#: src/LyXRC.cpp:2851
+#: src/LyXRC.cpp:2888
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -17164,11 +17186,11 @@ msgstr ""
 "Zoomaren ehunekoa pantailako letra-tipoentzako. %100 ezarriz gero, gutxi "
 "gorabehera papereko tamaina berdina ematen du."
 
-#: src/LyXRC.cpp:2855
+#: src/LyXRC.cpp:2892
 msgid "Allow session manager to save and restore windows geometry."
 msgstr "Baimendu saio-kudeatzaileak leihoen geometria gorde eta leheneratzea."
 
-#: src/LyXRC.cpp:2859
+#: src/LyXRC.cpp:2896
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -17176,15 +17198,15 @@ msgstr ""
 "Honek lyxserver-a abiarazten du. Kanalizazioek luzapen gehigarri bat "
 "daukate: \".in\" eta \".out\". Erabiltzaile adituentzat soilik."
 
-#: src/LyXRC.cpp:2866
+#: src/LyXRC.cpp:2903
 msgid "De-select if you don't want the startup banner."
 msgstr "Desautatu abioko ongietorriko iragarkia nahi ez baduzu."
 
-#: src/LyXRC.cpp:2870
+#: src/LyXRC.cpp:2907
 msgid "What command runs the spellchecker?"
 msgstr "Zer komandok exekutatzen du zuzentzailea?"
 
-#: src/LyXRC.cpp:2874
+#: src/LyXRC.cpp:2911
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -17192,7 +17214,7 @@ msgstr ""
 "LyX-ek aldi baterako direktorioak bide-izen honetan kokatuko ditu. LyX-etik "
 "irtetzean ezabatuko dira."
 
-#: src/LyXRC.cpp:2878
+#: src/LyXRC.cpp:2915
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -17200,7 +17222,7 @@ msgstr ""
 "Txantiloien direktorio lehenetsia. Balio hutsak LyX abiatu den direktorioa "
 "erabiliko du."
 
-#: src/LyXRC.cpp:2888
+#: src/LyXRC.cpp:2925
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -17208,7 +17230,7 @@ msgstr ""
 "UI (erabiltzaile-interfazea) fitxategia. Bide-izen absolutua zehaztu edo LyX-"
 "ek ui/ direktorio orokor eta lokaletan begiratuko du."
 
-#: src/LyXRC.cpp:2901
+#: src/LyXRC.cpp:2938
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you cannot check the spelling of words containing accented letters. This "
@@ -17218,18 +17240,18 @@ msgstr ""
 "Gaitu hau azentuak dituzten hitzak ezin badituzu egiaztatu. Honek ez du "
 "hiztegi guztiekin funtzionatzen."
 
-#: src/LyXRC.cpp:2905
+#: src/LyXRC.cpp:2942
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr "Gaitu argibideen itxura automatikoa laneko arean."
 
-#: src/LyXRC.cpp:2909
+#: src/LyXRC.cpp:2946
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "Gaitu pixmap-aren cachea MacOS eta Windows sistemetan errendimendua "
 "hobetzeko."
 
-#: src/LyXRC.cpp:2916
+#: src/LyXRC.cpp:2953
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Zehaztu DVI ikustailearentzako paper-komandoa (hutsik utzi edo \"-paper\" "
@@ -17793,7 +17815,7 @@ msgid "About %1"
 msgstr "%1(r)i buruz"
 
 #: src/frontends/qt4/GuiApplication.cpp:441
-#: src/frontends/qt4/GuiPrefs.cpp:2643
+#: src/frontends/qt4/GuiPrefs.cpp:2670
 msgid "Preferences"
 msgstr "Hobespenak"
 
@@ -18927,130 +18949,126 @@ msgstr ""
 "Normalean, ez daukazu hau zer ezarri beharrik, elementu guztien artetik "
 "etiketa luzeenaren zabalera erabiltzen delako. "
 
-#: src/frontends/qt4/GuiPrefs.cpp:136
+#: src/frontends/qt4/GuiPrefs.cpp:137
 msgid "System files|#S#s"
 msgstr "Fitxategi-sistema|#S#s"
 
-#: src/frontends/qt4/GuiPrefs.cpp:140
+#: src/frontends/qt4/GuiPrefs.cpp:141
 msgid "User files|#U#u"
 msgstr "Erabiltzaile-fitxategiak|#E#e"
 
-#: src/frontends/qt4/GuiPrefs.cpp:224
+#: src/frontends/qt4/GuiPrefs.cpp:225
 msgid "Look & Feel"
 msgstr "Itxura eta izaera"
 
-#: src/frontends/qt4/GuiPrefs.cpp:226
+#: src/frontends/qt4/GuiPrefs.cpp:227
 msgid "Language Settings"
 msgstr "Hizkuntzaren ezarpenak"
 
-#: src/frontends/qt4/GuiPrefs.cpp:227
+#: src/frontends/qt4/GuiPrefs.cpp:228
 msgid "Output"
 msgstr "Irteera"
 
-#: src/frontends/qt4/GuiPrefs.cpp:228
+#: src/frontends/qt4/GuiPrefs.cpp:229
 msgid "File Handling"
 msgstr "Fitxategien kudeaketa"
 
-#: src/frontends/qt4/GuiPrefs.cpp:394
-msgid "Date format"
-msgstr "Data-formatua"
-
-#: src/frontends/qt4/GuiPrefs.cpp:432
+#: src/frontends/qt4/GuiPrefs.cpp:459
 msgid "Keyboard/Mouse"
 msgstr "Teklatua/Sagua"
 
-#: src/frontends/qt4/GuiPrefs.cpp:507
+#: src/frontends/qt4/GuiPrefs.cpp:534
 msgid "Input Completion"
 msgstr "Sarrerako osaketa"
 
-#: src/frontends/qt4/GuiPrefs.cpp:666
+#: src/frontends/qt4/GuiPrefs.cpp:693
 msgid "Screen fonts"
 msgstr "Pantailako letra-tipoak"
 
-#: src/frontends/qt4/GuiPrefs.cpp:841
+#: src/frontends/qt4/GuiPrefs.cpp:868
 msgid "Colors"
 msgstr "Koloreak"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1013
+#: src/frontends/qt4/GuiPrefs.cpp:1040
 msgid "Paths"
 msgstr "Bide-izenak"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1068
+#: src/frontends/qt4/GuiPrefs.cpp:1095
 msgid "Select directory for example files"
 msgstr "Hautatu adibideen direktorioa"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1077
+#: src/frontends/qt4/GuiPrefs.cpp:1104
 msgid "Select a document templates directory"
 msgstr "Hautatu dokumentu-txantiloien direktorioa"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1086
+#: src/frontends/qt4/GuiPrefs.cpp:1113
 msgid "Select a temporary directory"
 msgstr "Hautatu aldi baterako direktorioa"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1095
+#: src/frontends/qt4/GuiPrefs.cpp:1122
 msgid "Select a backups directory"
 msgstr "Hautatu babeskopien direktorioa"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1104
+#: src/frontends/qt4/GuiPrefs.cpp:1131
 msgid "Select a document directory"
 msgstr "Hautatu dokumentu-direktorioa"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1113
+#: src/frontends/qt4/GuiPrefs.cpp:1140
 msgid "Give a filename for the LyX server pipe"
 msgstr "Eman fitxategi-izena LyX zerbitzariaren kanalizazioari"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1126
-#: src/frontends/qt4/GuiSpellchecker.cpp:61
+#: src/frontends/qt4/GuiPrefs.cpp:1153
+#: src/frontends/qt4/GuiSpellchecker.cpp:60
 msgid "Spellchecker"
 msgstr "Zuzentzaile ortografikoa"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1148
+#: src/frontends/qt4/GuiPrefs.cpp:1175
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1149
+#: src/frontends/qt4/GuiPrefs.cpp:1176
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1150
+#: src/frontends/qt4/GuiPrefs.cpp:1177
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1152
+#: src/frontends/qt4/GuiPrefs.cpp:1179
 msgid "enchant"
 msgstr "enchant"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1155
+#: src/frontends/qt4/GuiPrefs.cpp:1182
 msgid "pspell (library)"
 msgstr "pspell (liburutegia)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1158
+#: src/frontends/qt4/GuiPrefs.cpp:1185
 msgid "aspell (library)"
 msgstr "aspell (liburutegia)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1239
+#: src/frontends/qt4/GuiPrefs.cpp:1266
 msgid "Converters"
 msgstr "Bihurtzaileak"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1544
+#: src/frontends/qt4/GuiPrefs.cpp:1571
 msgid "File formats"
 msgstr "Fitxategi-formatuak"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1742
+#: src/frontends/qt4/GuiPrefs.cpp:1769
 msgid "Format in use"
 msgstr "Darabilen formatua"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1743
+#: src/frontends/qt4/GuiPrefs.cpp:1770
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Ezin da bihurtzaile batek erabiltzen duen formaturik kendu. Kendu "
 "bihurtzailea lehendabizi."
 
-#: src/frontends/qt4/GuiPrefs.cpp:1817
+#: src/frontends/qt4/GuiPrefs.cpp:1844
 msgid "LyX needs to be restarted!"
 msgstr "LyX berrabiarazi egin behar da!"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1818
+#: src/frontends/qt4/GuiPrefs.cpp:1845
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
@@ -19058,68 +19076,68 @@ msgstr ""
 "Interfazearen hizkuntzaren aldaketa erabat eraginkorra izango da "
 "berrabiarazi ostean."
 
-#: src/frontends/qt4/GuiPrefs.cpp:1876
+#: src/frontends/qt4/GuiPrefs.cpp:1903
 msgid "Printer"
 msgstr "Inprimagailua"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1974 src/frontends/qt4/GuiPrefs.cpp:2683
+#: src/frontends/qt4/GuiPrefs.cpp:2001 src/frontends/qt4/GuiPrefs.cpp:2710
 msgid "User interface"
 msgstr "Erabiltzaile-interfazea"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2075
+#: src/frontends/qt4/GuiPrefs.cpp:2102
 msgid "Control"
 msgstr "Kontrola"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2147
+#: src/frontends/qt4/GuiPrefs.cpp:2174
 msgid "Shortcuts"
 msgstr "Lasterbideak"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2152
+#: src/frontends/qt4/GuiPrefs.cpp:2179
 msgid "Function"
 msgstr "Funtzioa"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2153
+#: src/frontends/qt4/GuiPrefs.cpp:2180
 msgid "Shortcut"
 msgstr "Lasterbidea"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2232
+#: src/frontends/qt4/GuiPrefs.cpp:2259
 msgid "Cursor, Mouse and Editing functions"
 msgstr "Kurtsorea, sagua eta edizioko funtzioak"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2236
+#: src/frontends/qt4/GuiPrefs.cpp:2263
 msgid "Mathematical Symbols"
 msgstr "Matematikako ikurrak"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2240
+#: src/frontends/qt4/GuiPrefs.cpp:2267
 msgid "Document and Window"
 msgstr "Dokumentua eta leihoa"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2244
+#: src/frontends/qt4/GuiPrefs.cpp:2271
 msgid "Font, Layouts and Textclasses"
 msgstr "Letra-tipoa, diseinuak eta testu-klaseak"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2248
+#: src/frontends/qt4/GuiPrefs.cpp:2275
 msgid "System and Miscellaneous"
 msgstr "Sistema eta bestelakoak"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2375 src/frontends/qt4/GuiPrefs.cpp:2421
+#: src/frontends/qt4/GuiPrefs.cpp:2402 src/frontends/qt4/GuiPrefs.cpp:2448
 msgid "Res&tore"
 msgstr "&Leheneratu"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2532 src/frontends/qt4/GuiPrefs.cpp:2539
-#: src/frontends/qt4/GuiPrefs.cpp:2559 src/frontends/qt4/GuiPrefs.cpp:2578
+#: src/frontends/qt4/GuiPrefs.cpp:2559 src/frontends/qt4/GuiPrefs.cpp:2566
+#: src/frontends/qt4/GuiPrefs.cpp:2586 src/frontends/qt4/GuiPrefs.cpp:2605
 msgid "Failed to create shortcut"
 msgstr "Huts egin du lasterbidea sortzean"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2533
+#: src/frontends/qt4/GuiPrefs.cpp:2560
 msgid "Unknown or invalid LyX function"
 msgstr "LyX-eko funtzio ezezaguna edo baliogabea"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2540
+#: src/frontends/qt4/GuiPrefs.cpp:2567
 msgid "Invalid or empty key sequence"
 msgstr "Teklen sekuentzi baliogabea edo hutsa"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2560
+#: src/frontends/qt4/GuiPrefs.cpp:2587
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -19130,47 +19148,47 @@ msgstr ""
 "%2$s\n"
 "Lotura hori kendu behar duzu berri bat sortu aurretik."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2579
+#: src/frontends/qt4/GuiPrefs.cpp:2606
 msgid "Can not insert shortcut to the list"
 msgstr "Ezin da lasterbidea zerrendari gehitu"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2610
+#: src/frontends/qt4/GuiPrefs.cpp:2637
 msgid "Identity"
 msgstr "Identitatea"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2807
+#: src/frontends/qt4/GuiPrefs.cpp:2834
 msgid "Choose bind file"
 msgstr "Aukeratu lasterbideen fitxategia"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2808
+#: src/frontends/qt4/GuiPrefs.cpp:2835
 msgid "LyX bind files (*.bind)"
 msgstr "LyX lasterbideen fitxategiak (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2814
+#: src/frontends/qt4/GuiPrefs.cpp:2841
 msgid "Choose UI file"
 msgstr "Aukeratu UI fitxategia"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2815
+#: src/frontends/qt4/GuiPrefs.cpp:2842
 msgid "LyX UI files (*.ui)"
 msgstr "LyX UI fitxategiak (*ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2821
+#: src/frontends/qt4/GuiPrefs.cpp:2848
 msgid "Choose keyboard map"
 msgstr "Aukeratu teklatu-mapa"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2822
+#: src/frontends/qt4/GuiPrefs.cpp:2849
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX teklatu mapak (*.kmap)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2828
+#: src/frontends/qt4/GuiPrefs.cpp:2855
 msgid "Choose personal dictionary"
 msgstr "Aukeratu hiztegi pertsonala"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2829
+#: src/frontends/qt4/GuiPrefs.cpp:2856
 msgid "*.pws"
 msgstr "*.pws"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2829
+#: src/frontends/qt4/GuiPrefs.cpp:2856
 msgid "*.ispell"
 msgstr "*.ispell"
 
@@ -19218,15 +19236,15 @@ msgstr "Erakutsi fitxategia"
 msgid "Error -> Cannot load file!"
 msgstr "Errorea: ezin da fitxategia kargatu."
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:275
+#: src/frontends/qt4/GuiSpellchecker.cpp:274
 msgid "Spellchecker error"
 msgstr "Zuzentzailearen errorea"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:276
+#: src/frontends/qt4/GuiSpellchecker.cpp:275
 msgid "The spellchecker could not be started\n"
 msgstr "Ezin izan da zuzentzaile ortografikoa abiarazi\n"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:434
+#: src/frontends/qt4/GuiSpellchecker.cpp:433
 msgid ""
 "The spellchecker has died for some reason.\n"
 "Maybe it has been killed."
@@ -19234,24 +19252,24 @@ msgstr ""
 "Zuzentzaile ortografikoa hil egin da.\n"
 "Agian norbaitek hil du."
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:437
+#: src/frontends/qt4/GuiSpellchecker.cpp:436
 msgid "The spellchecker has failed.\n"
 msgstr "Zuzentzaile ortografikoak huts egin du.\n"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:441
+#: src/frontends/qt4/GuiSpellchecker.cpp:440
 msgid "The spellchecker has failed"
 msgstr "Zuzentzaile ortografikoak huts egin du"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:455
+#: src/frontends/qt4/GuiSpellchecker.cpp:454
 #, c-format
 msgid "%1$d words checked."
 msgstr "%1$d hitz aztertuta."
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:457
+#: src/frontends/qt4/GuiSpellchecker.cpp:456
 msgid "One word checked."
 msgstr "Hitz bat aztertuta."
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:460
+#: src/frontends/qt4/GuiSpellchecker.cpp:459
 msgid "Spelling check completed"
 msgstr "Zuzenketa amaituta."
 
@@ -21282,6 +21300,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Erabiltzaile ezezaguna"
+
+#~ msgid "Date format"
+#~ msgstr "Data-formatua"
 
 #, fuzzy
 #~ msgid "Lowercase"
