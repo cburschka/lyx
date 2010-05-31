@@ -42,7 +42,8 @@ public:
 	///
 	TocItem(DocIterator const & dit,
 		int depth,
-		docstring const & s
+		docstring const & s,
+		docstring const & t = docstring()
 		);
 	///
 	~TocItem() {}
@@ -52,6 +53,8 @@ public:
 	int depth() const;
 	///
 	docstring const & str() const;
+	///
+	docstring const & tooltip() const;
 	///
 	docstring const asString() const;
 
@@ -67,6 +70,9 @@ protected:
 
 	/// Full item string
 	docstring str_;
+
+	/// The tooltip string
+	docstring tooltip_;
 };
 
 

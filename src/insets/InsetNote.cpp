@@ -230,8 +230,8 @@ void InsetNote::addToToc(DocIterator const & cpit)
 	Toc & toc = buffer().tocBackend().toc("note");
 	docstring str;
 	str = notetranslator_loc().find(params_.type) + from_ascii(": ")
-		+ getNewLabel(str);
-	toc.push_back(TocItem(pit, 0, str));
+		+ text().getPar(0).asString();
+	toc.push_back(TocItem(pit, 0, str, toolTipText()));
 	// Proceed with the rest of the inset.
 	InsetCollapsable::addToToc(cpit);
 }

@@ -44,8 +44,8 @@ namespace lyx {
 //
 ///////////////////////////////////////////////////////////////////////////
 
-TocItem::TocItem(DocIterator const & dit, int d, docstring const & s)
-	: dit_(dit), depth_(d), str_(s)
+TocItem::TocItem(DocIterator const & dit, int d, docstring const & s,
+	docstring const & t) : dit_(dit), depth_(d), str_(s), tooltip_(t)
 {
 }
 
@@ -65,6 +65,12 @@ int TocItem::depth() const
 docstring const & TocItem::str() const
 {
 	return str_;
+}
+
+
+docstring const & TocItem::tooltip() const
+{
+	return tooltip_;
 }
 
 

@@ -136,11 +136,7 @@ docstring InsetCollapsable::toolTip(BufferView const & bv, int x, int y) const
 	if (x > xo(bv) + dim.wid || y > yo(bv) + dim.des || isOpen(bv))
 		return docstring();
 
-	OutputParams rp(&buffer().params().encoding());
-	odocstringstream ods;
-	InsetText::plaintext(ods, rp);
-	docstring const content_tip = ods.str();
-	return support::wrapParas(content_tip, 4);
+	return toolTipText();
 }
 
 
