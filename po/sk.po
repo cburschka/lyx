@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-05-31 11:31+0200\n"
-"PO-Revision-Date: 2010-05-28 21:49+0200\n"
+"PO-Revision-Date: 2010-05-31 15:21+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenčina <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -2806,26 +2806,25 @@ msgid "Date format for strftime output"
 msgstr "Formát dátumu pre výstup fce strftime"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:77
-#, fuzzy
 msgid "&Overwrite on export:"
-msgstr "Prepísať dokument?"
+msgstr "Prepísať počas exportovania:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:87
 msgid "What to do when existing files are going to be overwritten on export."
 msgstr ""
+"Čo robiť pri pokuse o prepísanie existujúcich súborov počas exportovania."
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:91
 msgid "Ask permission"
-msgstr ""
+msgstr "Pýtať o súhlas"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:96
 msgid "Main file only"
-msgstr ""
+msgstr "Len hlavný súbor"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:101
-#, fuzzy
 msgid "All files"
-msgstr "Všetky súbory "
+msgstr "Všetky súbory"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:25
 msgid "&Working directory:"
