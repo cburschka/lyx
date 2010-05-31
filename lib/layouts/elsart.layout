@@ -128,7 +128,7 @@ End
 
 
 Style Author_Address
-	Margin                Static
+	Margin                Dynamic
 	LatexType             Command
 	InTitle               1
 	LatexName             address
@@ -144,7 +144,7 @@ End
 
 
 Style Author_Email
-	Margin                Static
+	Margin                Dynamic
 	LatexType             Command
 	InTitle               1
 	PassThru              1
@@ -164,7 +164,7 @@ End
 
 
 Style Author_URL
-	Margin                Static
+	Margin                Dynamic
 	LatexType             Command
 	InTitle               1
 	PassThru              1

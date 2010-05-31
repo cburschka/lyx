@@ -90,6 +90,11 @@ What's new
 - Make sure that the '|'-character in headings does not confuse the
   TOC list in navigate menu (bug 2009).
 
+- Fix the display of the "Address" environment in LyX when using the
+  elsart.layout (bug 3930). (Note: elsart.layout is obsolete, please
+  use elsarticle.layout instead).
+
+
 * USER INTERFACE
 
 - Correctly restore a dissolved macro inset on undo (bug 6678).
