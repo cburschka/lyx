@@ -1580,10 +1580,7 @@ def revert_html_quotes(document):
 
 def revert_output_sync(document):
   " Remove forward search options "
-  i = find_token(document.header, '\\forward_search', 0)
-  if i != -1:
-    del document.header[i]
-  i = find_token(document.header, '\\forward_macro', 0)
+  i = find_token(document.header, '\\output_sync_macro', 0)
   if i != -1:
     del document.header[i]
   i = find_token(document.header, '\\output_sync', 0)
