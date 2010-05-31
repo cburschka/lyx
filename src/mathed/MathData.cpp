@@ -624,7 +624,7 @@ void MathData::attachMacroParameters(Cursor * cur,
 	size_t p = macroPos + 1;
 	vector<MathData> detachedArgs;
 	MathAtom scriptToPutAround;
-	
+
 	// find cursor slice again of this MathData
 	int thisSlice = -1;
 	if (cur)
@@ -632,7 +632,7 @@ void MathData::attachMacroParameters(Cursor * cur,
 	int thisPos = -1;
 	if (thisSlice != -1)
 		thisPos = (*cur)[thisSlice].pos();
-	
+
 	// find arguments behind the macro
 	if (!interactiveInit) {
 		collectOptionalParameters(cur, macroOptionals, detachedArgs, p,
@@ -640,10 +640,10 @@ void MathData::attachMacroParameters(Cursor * cur,
 	}
 	collectParameters(cur, macroNumArgs, detachedArgs, p,
 		scriptToPutAround, macroPos, thisPos, thisSlice, appetite);
-		
+
 	// attach arguments back to macro inset
 	macroInset->attachArguments(detachedArgs, macroNumArgs, macroOptionals);
-	
+
 	// found tail script? E.g. \foo{a}b^x
 	if (scriptToPutAround.nucleus()) {
 		// put macro into a script inset
@@ -660,7 +660,7 @@ void MathData::attachMacroParameters(Cursor * cur,
 		= operator[](macroPos).nucleus()->asScriptInset();
 		macroInset = scriptInset->nuc()[0].nucleus()->asMacro();	
 	}
-	
+
 	// remove them from the MathData
 	erase(begin() + macroPos + 1, begin() + p);
 
