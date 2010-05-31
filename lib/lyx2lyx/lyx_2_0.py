@@ -1586,6 +1586,9 @@ def revert_output_sync(document):
   i = find_token(document.header, '\\forward_macro', 0)
   if i != -1:
     del document.header[i]
+  i = find_token(document.header, '\\output_sync', 0)
+  if i != -1:
+    del document.header[i]
 
 
 ##
