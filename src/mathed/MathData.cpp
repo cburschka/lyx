@@ -646,9 +646,17 @@ void MathData::attachMacroParameters(Cursor * cur,
 
 	// found tail script? E.g. \foo{a}b^x
 	if (scriptToPutAround.nucleus()) {
+		InsetMathScript * scriptInset =
+			scriptToPutAround.nucleus()->asScriptInset();
+		// In the math parser we remove empty braces in the base
+		// of a script inset, but we have to restore them here.
+		if (scriptInset->nuc().empty()) {
+			MathData ar;
+			scriptInset->nuc().push_back(
+					MathAtom(new InsetMathBrace(ar)));
+		}
 		// put macro into a script inset
-		scriptToPutAround.nucleus()->asScriptInset()->nuc()[0] 
-		= operator[](macroPos);
+		scriptInset->nuc()[0] = operator[](macroPos);
 		operator[](macroPos) = scriptToPutAround;
 
 		// go into the script inset nucleus
@@ -656,8 +664,7 @@ void MathData::attachMacroParameters(Cursor * cur,
 			cur->append(0, 0);
 
 		// get pointer to "deep" copied macro inset
-		InsetMathScript * scriptInset 
-		= operator[](macroPos).nucleus()->asScriptInset();
+		scriptInset = operator[](macroPos).nucleus()->asScriptInset();
 		macroInset = scriptInset->nuc()[0].nucleus()->asMacro();	
 	}
 
