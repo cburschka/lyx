@@ -45,12 +45,12 @@ bool Graph::bfs_init(int s, bool clear_visited)
 }
 
 
-void Graph::clearMarks()
+void Graph::clearPaths()
 {
-	Arrows::iterator it = arrows_.begin();
-	Arrows::iterator const en = arrows_.end();
+	vector<Vertex>::iterator it = vertices_.begin();
+	vector<Vertex>::iterator en = vertices_.end();
 	for (; it != en; ++it)
-		it->marked = false;
+		it->path.clear();
 }
 
 
@@ -159,21 +159,14 @@ bool Graph::isReachable(int from, int to)
 
 Graph::EdgePath const Graph::getPath(int from, int to)
 {
-	EdgePath path;
+	static const EdgePath path;
 	if (from == to)
 		return path;
 
 	if (to < 0 || !bfs_init(from))
 		return path;
 
-	// In effect, the way this works is that we construct a sub-graph
-	// by starting at "from" and following the arrows outward. Instead
-	// of actually constructing a sub-graph, though, we "mark" the
-	// arrows we traverse as we go. Once we hit "to", we abort the 
-	// marking process and then call getMarkedPath() to reconstruct
-	// the marked path.
-	bool found = false;
-	clearMarks();
+	clearPaths();
 	while (!Q_.empty()) {
 		int const current = Q_.front();
 		Q_.pop();
@@ -187,53 +180,23 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 			if (!vertices_[cv].visited) {
 				vertices_[cv].visited = true;
 				Q_.push(cv);
-				(*cit)->marked = true;
+				// NOTE If we wanted to collect all the paths, then
+				// we just need to collect them here and not worry
+				// about "visited".
+				EdgePath lastpath = vertices_[(*cit)->from].path;
+				lastpath.push_back((*cit)->id);
+				vertices_[cv].path = lastpath;
 			}
 			if (cv == to) {
-				found = true;
-				break;
+				return vertices_[cv].path;
 			}
 		}
 	}
-	if (!found)
-		return path;
-
-	getMarkedPath(from, to, path);
+	// failure
 	return path;
 }
 
 
-// We assume we have marked the graph, as in getPath(). We also
-// assume that we have done so in such a way as to guarantee a
-// marked path from "from" to "to".
-// We then start at "to" and find the arrow leading to it that
-// has been marked. We add that to the path we are constructing,
-// step back on that arrow, and continue the process (i.e., recurse).
-void Graph::getMarkedPath(int from, int to, EdgePath & path) {
-	if (from == to) {
-		reverse(path.begin(), path.end());
-		return;
-	}
-	// find marked in_arrow
-	vector<Arrow *>::const_iterator it = vertices_[to].in_arrows.begin();
-	vector<Arrow *>::const_iterator const en = vertices_[to].in_arrows.end();
-	for (; it != en; ++it)
-		if ((*it)->marked) 
-			break;
-	if (it == en) {
-		// debug code to try to figure out what's up.
-		LYXERR0("Failed to find marked arrow.\n"
-						"From: " << from << ", To: " << to);
-		dumpGraph();
-		LASSERT(false, /* */);
-		path.clear();
-		return;
-	}
-	path.push_back((*it)->id);
-	getMarkedPath(from, (*it)->from, path);
-}
-
-	
 void Graph::init(int size)
 {
 	vertices_ = vector<Vertex>(size);
@@ -252,6 +215,9 @@ void Graph::addEdge(int from, int to)
 }
 
 
+// At present, we do not need this debugging code, but
+// I am going to leave it here in case we need it again.
+#if 0
 void Graph::dumpGraph() const
 {
 	vector<Vertex>::const_iterator it = vertices_.begin();
@@ -262,16 +228,15 @@ void Graph::dumpGraph() const
 		std::vector<Arrow *>::const_iterator iit = it->in_arrows.begin();
 		std::vector<Arrow *>::const_iterator ien = it->in_arrows.end();
 		for (; iit != ien; ++iit)
-			LYXERR0("From " << (*iit)->from << " to " << (*iit)->to
-					<< ". Marked: " << (*iit)->marked);
+			LYXERR0("From " << (*iit)->from << " to " << (*iit)->to);
 		LYXERR0("Out arrows...");
 		iit = it->out_arrows.begin();
 		ien = it->out_arrows.end();
 		for (; iit != ien; ++iit)
-			LYXERR0("From " << (*iit)->from << " to " << (*iit)->to
-						<< ". Marked: " << (*iit)->marked);
+			LYXERR0("From " << (*iit)->from << " to " << (*iit)->to);
 	}
 }
+#endif
 
 
 } // namespace lyx

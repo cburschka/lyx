@@ -46,20 +46,18 @@ public:
 private:
 	///
 	bool bfs_init(int, bool clear_visited = true);
-	/// clears the "marks" on the arrows. should be called
-	/// before any new marking begins.
-	void clearMarks();
+	/// clears the paths from a previous search. should be
+	/// called before each new one.
+	void clearPaths();
 	/// used to recover a marked path 
 	void getMarkedPath(int from, int to, EdgePath & path);
-	///
-	void dumpGraph() const;
 	/// these represent the arrows connecting the nodes of the graph.
 	/// this is the basic representation of the graph: as a bunch of 
 	/// arrows.
 	struct Arrow {
 		///
 		Arrow(int f, int t, int i): 
-			from(f), to(t), id(i), marked(false) {}
+			from(f), to(t), id(i) {}
 		/// the vertex at the tail of the arrow
 		int from;
 		/// the vertex at the head
@@ -67,9 +65,6 @@ private:
 		/// an id for this arrow, e.g., for use in describing paths 
 		/// through the graph
 		int id;
-		/// used for "marking" paths, i.e., constructing sub-graphs
-		/// without really doing so.
-		bool marked;
 	};
 	/// a container for the arrows
 	/// we use a list because we want pointers to the arrows,
@@ -86,6 +81,8 @@ private:
 		std::vector<Arrow *> out_arrows;
 		/// used in the search routines
 		bool visited;
+		///
+		EdgePath path;
 	};
 	/// a container for the vertices
 	/// the index into the vector functions as the identifier by which
