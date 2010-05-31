@@ -654,7 +654,7 @@ void MathData::attachMacroParameters(Cursor * cur,
 		// go into the script inset nucleus
 		if (cur && thisPos == int(macroPos))
 			cur->append(0, 0);
-		
+
 		// get pointer to "deep" copied macro inset
 		InsetMathScript * scriptInset 
 		= operator[](macroPos).nucleus()->asScriptInset();
@@ -671,7 +671,7 @@ void MathData::attachMacroParameters(Cursor * cur,
 	// fix cursor if right of p
 	if (thisPos >= int(p))
 		(*cur)[thisSlice].pos() -= p - (macroPos + 1);
-	
+
 	// was the macro inset just inserted interactively and was now folded
 	// and the cursor is just behind?
 	if ((*cur)[thisSlice].pos() == int(macroPos + 1)
