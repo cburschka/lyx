@@ -226,6 +226,7 @@ void Graph::getMarkedPath(int from, int to, EdgePath & path) {
 						"From: " << from << ", To: " << to);
 		dumpGraph();
 		LASSERT(false, /* */);
+		path.clear();
 		return;
 	}
 	path.push_back((*it)->id);
