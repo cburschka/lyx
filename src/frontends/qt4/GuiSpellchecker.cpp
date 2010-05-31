@@ -268,6 +268,7 @@ bool GuiSpellchecker::initialiseParams(string const &)
 	oldval_ = 0;
 	newvalue_ = 0;
 	count_ = 0;
+	exitEarly_ = false;
 
 	bool const success = speller_->error().empty();
 

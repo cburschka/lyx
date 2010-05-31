@@ -90,6 +90,8 @@ What's new
 - Make sure that the '|'-character in headings does not confuse the
   TOC list in navigate menu (bug 2009).
 
+- Do not report the word count by the spellchecker twice (bug 6254).
+
 - Fix the display of the "Address" environment in LyX when using the
   elsart.layout (bug 3930). (Note: elsart.layout is obsolete, please
   use elsarticle.layout instead).
