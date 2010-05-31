@@ -56,7 +56,10 @@ if (ENCHANT_FOUND)
   list(APPEND lyx_headers ${TOP_SRC_DIR}/src/EnchantChecker.h)
 endif()
 
-lyx_automoc(${TOP_SRC_DIR}/src/Compare.cpp ${TOP_SRC_DIR}/src/Server.cpp)
+lyx_automoc(${TOP_SRC_DIR}/src/Compare.cpp)
+if (WIN32)
+  lyx_automoc(${TOP_SRC_DIR}/src/Server.cpp)
+endif()
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR}
 	${ZLIB_INCLUDE_DIR} ${QT_INCLUDES})
