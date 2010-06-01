@@ -13,7 +13,6 @@ add_subdirectory(qt4)
 file(GLOB frontends_sources ${TOP_SRC_DIR}/src/frontends/${LYX_CPP_FILES})
 file(GLOB frontends_headers ${TOP_SRC_DIR}/src/frontends/${LYX_HPP_FILES})
 
-lyx_add_msvc_pch(frontends)
 
 if(NOT MERGE_FILES)
 	add_library(frontends ${library_type} ${frontends_sources} ${frontends_headers})
