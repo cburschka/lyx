@@ -227,45 +227,52 @@ StyleChanger::~StyleChanger()
 //
 /////////////////////////////////////////////////////////////////////////
 
-FontSetChanger::FontSetChanger(MetricsBase & mb, char const * name)
-	: Changer<MetricsBase>(mb)
+FontSetChanger::FontSetChanger(MetricsBase & mb, char const * name,
+				bool really_change_font)
+	: Changer<MetricsBase>(mb), change_(really_change_font)
 {
-	save_ = mb;
-	FontSize oldsize = save_.font.size();
-	ColorCode oldcolor = save_.font.color();
-	docstring const oldname = from_ascii(save_.fontname);
-	mb.fontname = name;
-	mb.font = sane_font;
-	augmentFont(mb.font, from_ascii(name));
-	mb.font.setSize(oldsize);
-	if (string(name) != "lyxtex"
-	    && ((isTextFont(oldname) && oldcolor != Color_foreground)
-		|| (isMathFont(oldname) && oldcolor != Color_math)))
-		mb.font.setColor(oldcolor);
+	if (change_) {
+		save_ = mb;
+		FontSize oldsize = save_.font.size();
+		ColorCode oldcolor = save_.font.color();
+		docstring const oldname = from_ascii(save_.fontname);
+		mb.fontname = name;
+		mb.font = sane_font;
+		augmentFont(mb.font, from_ascii(name));
+		mb.font.setSize(oldsize);
+		if (string(name) != "lyxtex"
+		    && ((isTextFont(oldname) && oldcolor != Color_foreground)
+			|| (isMathFont(oldname) && oldcolor != Color_math)))
+			mb.font.setColor(oldcolor);
+	}
 }
 
 
-FontSetChanger::FontSetChanger(MetricsBase & mb, docstring const & name)
-	: Changer<MetricsBase>(mb)
+FontSetChanger::FontSetChanger(MetricsBase & mb, docstring const & name,
+				bool really_change_font)
+	: Changer<MetricsBase>(mb), change_(really_change_font)
 {
-	save_ = mb;
-	FontSize oldsize = save_.font.size();
-	ColorCode oldcolor = save_.font.color();
-	docstring const oldname = from_ascii(save_.fontname);
-	mb.fontname = to_utf8(name);
-	mb.font = sane_font;
-	augmentFont(mb.font, name);
-	mb.font.setSize(oldsize);
-	if (name != "lyxtex"
-	    && ((isTextFont(oldname) && oldcolor != Color_foreground)
-		|| (isMathFont(oldname) && oldcolor != Color_math)))
-		mb.font.setColor(oldcolor);
+	if (change_) {
+		save_ = mb;
+		FontSize oldsize = save_.font.size();
+		ColorCode oldcolor = save_.font.color();
+		docstring const oldname = from_ascii(save_.fontname);
+		mb.fontname = to_utf8(name);
+		mb.font = sane_font;
+		augmentFont(mb.font, name);
+		mb.font.setSize(oldsize);
+		if (name != "lyxtex"
+		    && ((isTextFont(oldname) && oldcolor != Color_foreground)
+			|| (isMathFont(oldname) && oldcolor != Color_math)))
+			mb.font.setColor(oldcolor);
+	}
 }
 
 
 FontSetChanger::~FontSetChanger()
 {
-	orig_ = save_;
+	if (change_)
+		orig_ = save_;
 }
 
 

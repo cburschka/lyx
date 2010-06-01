@@ -112,10 +112,9 @@ InsetMath::mode_type InsetMathDecoration::currentMode() const
 
 void InsetMathDecoration::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	bool const upshape = currentMode() == TEXT_MODE
-				&& mi.base.font.color() == Color_math;
-	ShapeChanger dummy(mi.base.font, upshape ?
-				UP_SHAPE : mi.base.font.shape());
+	bool really_change_font = currentMode() == TEXT_MODE
+				&& isMathFont(from_ascii(mi.base.fontname));
+	FontSetChanger dummy(mi.base, "textnormal", really_change_font);
 
 	cell(0).metrics(mi, dim);
 
@@ -136,10 +135,9 @@ void InsetMathDecoration::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathDecoration::draw(PainterInfo & pi, int x, int y) const
 {
-	bool const upshape = currentMode() == TEXT_MODE
-				&& pi.base.font.color() == Color_math;
-	ShapeChanger dummy(pi.base.font, upshape ?
-				UP_SHAPE : pi.base.font.shape());
+	bool really_change_font = currentMode() == TEXT_MODE
+				&& isMathFont(from_ascii(pi.base.fontname));
+	FontSetChanger dummy(pi.base, "textnormal", really_change_font);
 
 	cell(0).draw(pi, x + 1, y);
 	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
