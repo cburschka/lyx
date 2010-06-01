@@ -15,7 +15,6 @@ file(GLOB frontends_headers ${TOP_SRC_DIR}/src/frontends/${LYX_HPP_FILES})
 
 lyx_add_msvc_pch(frontends)
 
-
 if(NOT MERGE_FILES)
 	add_library(frontends ${library_type} ${frontends_sources} ${frontends_headers})
 else()
@@ -23,7 +22,7 @@ else()
 	add_library(frontends ${library_type} ${_allinone_files})
 endif()
 
-target_link_libraries(frontends boost_regex)
+target_link_libraries(frontends ${Lyx_Boost_Libraries})
 
 project_source_group("${GROUP_CODE}" frontends_sources frontends_headers)
 

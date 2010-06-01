@@ -20,19 +20,19 @@ add_executable(${_lyxclient} ${_lyxclient_sources} ${_lyxclient_headers})
 
 target_link_libraries(${_lyxclient}
 	support
-	boost_regex
+	${Lyx_Boost_Libraries}
 	${LIBINTL_LIBRARIES}
-        ${ICONV_LIBRARY}
+	${ICONV_LIBRARY}
 	${QT_QTCORE_LIBRARY}
 	${QT_QTGUI_LIBRARY}
 	)
 
 if (ASPELL_FOUND)
-        target_link_libraries(${_lyxclient} ${ASPELL_LIBRARY})
+  target_link_libraries(${_lyxclient} ${ASPELL_LIBRARY})
 endif()
 
 if (APPLE)
-	target_link_libraries(${_lyxclient} "-framework Carbon")
+  target_link_libraries(${_lyxclient} "-framework Carbon")
 endif()
 
 install(TARGETS ${_lyxclient} DESTINATION bin)

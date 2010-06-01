@@ -179,6 +179,9 @@
 #define HAVE_MODE_T
 #endif
 
+#cmakedefine _GLIBCXX_DEBUG 1
+#cmakedefine _GLIBCXX_DEBUG_PEDANTIC 1
+
 
 
 #endif

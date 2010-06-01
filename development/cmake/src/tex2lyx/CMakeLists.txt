@@ -40,7 +40,7 @@ endif()
 
 target_link_libraries(${_tex2lyx}
 	support
-	boost_regex
+	${Lyx_Boost_Libraries}
 	${QT_QTCORE_LIBRARY}
 	${LIBINTL_LIBRARIES}
 	${ICONV_LIBRARY})

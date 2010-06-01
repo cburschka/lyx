@@ -67,7 +67,7 @@ else()
 		${support_mythes_sources} ${support_linkback_sources} ${support_headers} ${dont_merge})
 endif()
 
-target_link_libraries(support boost_signals ${QT_QTCORE_LIBRARY} ${ZLIB_LIBRARY})
+target_link_libraries(support ${Lyx_Boost_Libraries} ${QT_QTCORE_LIBRARY} ${ZLIB_LIBRARY})
 
 lyx_add_gcc_pch(support)
 
