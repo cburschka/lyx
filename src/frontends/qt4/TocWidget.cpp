@@ -314,6 +314,8 @@ void TocWidget::setTreeDepth(int depth)
 
 void TocWidget::on_typeCO_currentIndexChanged(int index)
 {
+	if (index == -1)
+		return;
 	current_type_ = typeCO->itemData(index).toString();
 	updateView();
 	if (typeCO->hasFocus())
