@@ -614,7 +614,7 @@ void MathData::attachMacroParameters(Cursor * cur,
 	size_t p = macroPos + 1;
 	vector<MathData> detachedArgs;
 	MathAtom scriptToPutAround;
-	
+
 	// find cursor slice again of this MathData
 	int thisSlice = -1;
 	if (cur)
@@ -622,7 +622,7 @@ void MathData::attachMacroParameters(Cursor * cur,
 	int thisPos = -1;
 	if (thisSlice != -1)
 		thisPos = (*cur)[thisSlice].pos();
-	
+
 	// find arguments behind the macro
 	if (!interactiveInit) {
 		collectOptionalParameters(cur, macroOptionals, detachedArgs, p,
@@ -630,27 +630,34 @@ void MathData::attachMacroParameters(Cursor * cur,
 	}
 	collectParameters(cur, macroNumArgs, detachedArgs, p,
 		scriptToPutAround, macroPos, thisPos, thisSlice, appetite);
-		
+
 	// attach arguments back to macro inset
 	macroInset->attachArguments(detachedArgs, macroNumArgs, macroOptionals);
-	
+
 	// found tail script? E.g. \foo{a}b^x
 	if (scriptToPutAround.nucleus()) {
+		InsetMathScript * scriptInset =
+			scriptToPutAround.nucleus()->asScriptInset();
+		// In the math parser we remove empty braces in the base
+		// of a script inset, but we have to restore them here.
+		if (scriptInset->nuc().empty()) {
+			MathData ar;
+			scriptInset->nuc().push_back(
+					MathAtom(new InsetMathBrace(ar)));
+		}
 		// put macro into a script inset
-		scriptToPutAround.nucleus()->asScriptInset()->nuc()[0] 
-		= operator[](macroPos);
+		scriptInset->nuc()[0] = operator[](macroPos);
 		operator[](macroPos) = scriptToPutAround;
 
 		// go into the script inset nucleus
 		if (cur && thisPos == int(macroPos))
 			cur->append(0, 0);
-		
+
 		// get pointer to "deep" copied macro inset
-		InsetMathScript * scriptInset 
-		= operator[](macroPos).nucleus()->asScriptInset();
+		scriptInset = operator[](macroPos).nucleus()->asScriptInset();
 		macroInset = scriptInset->nuc()[0].nucleus()->asMacro();	
 	}
-	
+
 	// remove them from the MathData
 	erase(begin() + macroPos + 1, begin() + p);
 
@@ -661,7 +668,7 @@ void MathData::attachMacroParameters(Cursor * cur,
 	// fix cursor if right of p
 	if (thisPos >= int(p))
 		(*cur)[thisSlice].pos() -= p - (macroPos + 1);
-	
+
 	// was the macro inset just inserted interactively and was now folded
 	// and the cursor is just behind?
 	if ((*cur)[thisSlice].pos() == int(macroPos + 1)

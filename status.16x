@@ -92,6 +92,9 @@ What's new
 - Allow to overwrite files without dialog popup on export from GUI
   (bug 2844).
 
+- Fix assertion when using an empty user macro taking an argument as
+  the base of script inset (bug 6739).
+
 
 * USER INTERFACE
 
