@@ -1,7 +1,7 @@
-<ui version="4.0" >
+<ui version="4.0">
  <class>PrefOutputUi</class>
- <widget class="QWidget" name="PrefOutputUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="PrefOutputUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,19 +9,19 @@
     <height>91</height>
    </rect>
   </property>
-  <property name="sizePolicy" >
+  <property name="sizePolicy">
    <sizepolicy>
-    <hsizetype>0</hsizetype>
+    <hsizetype>7</hsizetype>
     <vsizetype>0</vsizetype>
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <widget class="QWidget" name="layoutWidget" >
-   <property name="geometry" >
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
     <rect>
      <x>12</x>
      <y>12</y>
@@ -29,34 +29,45 @@
      <height>78</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" >
-    <property name="margin" >
-     <number>0</number>
-    </property>
-    <property name="spacing" >
+   <layout class="QVBoxLayout">
+    <property name="spacing">
      <number>6</number>
     </property>
+    <property name="sizeConstraint">
+     <enum>QLayout::SetMinimumSize</enum>
+    </property>
+    <property name="margin">
+     <number>0</number>
+    </property>
     <item>
-     <layout class="QHBoxLayout" >
-      <property name="margin" >
-       <number>0</number>
-      </property>
-      <property name="spacing" >
+     <layout class="QHBoxLayout">
+      <property name="spacing">
        <number>6</number>
       </property>
+      <property name="margin">
+       <number>0</number>
+      </property>
       <item>
-       <widget class="QLabel" name="DateLA" >
-        <property name="text" >
+       <widget class="QLabel" name="DateLA">
+        <property name="sizePolicy">
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
          <string>&amp;Date format:</string>
         </property>
-        <property name="buddy" >
+        <property name="buddy">
          <cstring>DateED</cstring>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="DateED" >
-        <property name="toolTip" >
+       <widget class="QLineEdit" name="DateED">
+        <property name="toolTip">
          <string>Date format for strftime output</string>
         </property>
        </widget>
@@ -64,40 +75,56 @@
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" >
-      <property name="margin" >
-       <number>0</number>
-      </property>
-      <property name="spacing" >
+     <layout class="QHBoxLayout">
+      <property name="spacing">
        <number>6</number>
       </property>
+      <property name="margin">
+       <number>0</number>
+      </property>
       <item>
-       <widget class="QLabel" name="label" >
-        <property name="text" >
+       <widget class="QLabel" name="label">
+        <property name="sizePolicy">
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
          <string>&amp;Overwrite on export:</string>
         </property>
-        <property name="buddy" >
+        <property name="buddy">
          <cstring>overwriteCO</cstring>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="overwriteCO" >
-        <property name="toolTip" >
+       <widget class="QComboBox" name="overwriteCO">
+        <property name="sizePolicy">
+         <sizepolicy>
+          <hsizetype>7</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
          <string>What to do when existing files are going to be overwritten on export.</string>
         </property>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>Ask permission</string>
          </property>
         </item>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>Main file only</string>
          </property>
         </item>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>All files</string>
          </property>
         </item>
@@ -107,13 +134,13 @@
     </item>
     <item>
      <spacer>
-      <property name="orientation" >
+      <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
-      <property name="sizeType" >
+      <property name="sizeType">
        <enum>QSizePolicy::Expanding</enum>
       </property>
-      <property name="sizeHint" >
+      <property name="sizeHint" stdset="0">
        <size>
         <width>20</width>
         <height>20</height>
@@ -125,7 +152,7 @@
   </widget>
  </widget>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>
