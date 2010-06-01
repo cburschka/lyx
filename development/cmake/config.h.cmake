@@ -25,6 +25,7 @@
 
 #cmakedefine PACKAGE "${PACKAGE}"
 #cmakedefine PACKAGE_VERSION "${PACKAGE_VERSION}"
+#define PACKAGE_STRING "LyX ${PACKAGE_VERSION}"
 #cmakedefine PACKAGE_BUGREPORT "${PACKAGE_BUGREPORT}"
 #cmakedefine LYX_DATE "${LYX_DATE}"
 #cmakedefine VERSION_INFO "${VERSION_INFO}"
@@ -41,7 +42,44 @@
 #cmakedefine USE_MACOSX_PACKAGING 1
 #cmakedefine PATH_MAX ${PATH_MAX}
 
-#cmakedefine HAVE_LIBAIKSAURUS 1
-#cmakedefine AIKSAURUS_H_LOCATION <${AIKSAURUS_H}>
-
 #endif
+
+
+// cleanup global namespace
+#ifdef ColorMode
+#undef ColorMode
+#endif
+
+#ifdef FocusOut
+#undef FocusOut
+#endif
+
+#ifdef FocusIn
+#undef FocusIn
+#endif
+
+#ifdef KeyRelease
+#undef KeyRelease
+#endif
+
+#ifdef CursorShape
+#undef CursorShape
+#endif
+
+#ifdef IGNORE
+#undef IGNORE
+#endif
+
+#ifdef GrayScale
+#undef GrayScale
+#endif
+
+#ifdef Status
+#undef Status
+#endif
+
+#ifdef IN
+#undef IN
+#endif
+
+

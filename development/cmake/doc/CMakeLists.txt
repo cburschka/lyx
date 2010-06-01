@@ -1,8 +1,8 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# Copyright (c) 2008, 2009 Peter Kümmel, <syntheticpp@gmx.net>
-# Copyright (c) 2008, 2009 Kornel Benko, <Kornel.Benko@berlin.de>
+# Copyright (c) 2008-2010 Peter Kümmel, <syntheticpp@gmx.net>
+# Copyright (c) 2008-2010 Kornel Benko, <Kornel.Benko@berlin.de>
 #
 
 project(doc)
@@ -32,7 +32,7 @@ foreach(_rel_doc ${_rel_lyx_docs})
     COMMAND perl "${CMAKE_SOURCE_DIR}/doc/ReplaceValues.pl" "LYX_USERDIR_VER=${LYX_USERDIR_VER}" "LYX_DIR_VER=${LYX_DIR_VER}" "${TOP_SRC_DIR}/lib/doc/${_rel_doc}" > "${_created_doc}"
     DEPENDS "${TOP_SRC_DIR}/lib/doc/${_rel_doc}"
     )
-  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${_rel_doc}" DESTINATION "doc/${_rel_dir_part}")
+  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${_rel_doc}" DESTINATION "${DATA_SUBDIR}doc/${_rel_dir_part}")
   LIST(APPEND _docs "${_created_doc}")
 endforeach(_rel_doc)
 

@@ -76,5 +76,5 @@
 
 #if defined(LYX_PCH_QT4) && defined(LYX_BUILD_QT4_FRONTEND)
 #include <QtCore>
-#include <QtGUI>
+#include <QtGui>
 #endif

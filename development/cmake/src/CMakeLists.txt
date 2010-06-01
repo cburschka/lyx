@@ -1,7 +1,7 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
+# Copyright (c) 2006, Peter KÃ¼mmel, <syntheticpp@gmx.net>
 #
 
 set(_lyx ${PACKAGE_BASE}${PROGRAM_SUFFIX})
@@ -69,6 +69,8 @@ add_executable(${_lyx}
 	${lyx_headers}
 	${vld_files}
 )
+
+lyx_add_gcc_pch(${_lyx})
 
 target_link_libraries(${_lyx}
 	mathed

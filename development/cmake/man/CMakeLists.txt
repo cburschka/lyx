@@ -1,14 +1,16 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# Copyright (c) 2008, 2009 Peter Kümmel, <syntheticpp@gmx.net>
-# Copyright (c) 2008, 2009 Kornel Benko, <Kornel.Benko@berlin.de>
+# Copyright (c) 2008-2010 Peter Kümmel, <syntheticpp@gmx.net>
+# Copyright (c) 2008-2010 Kornel Benko, <Kornel.Benko@berlin.de>
 #
 
 project(man)
 
 SET(_manuals)
 set(program_suffix ${PROGRAM_SUFFIX})
+set(version_suffix ${PROGRAM_SUFFIX})
+set(VERSION "${LYX_MAJOR_VERSION}.${LYX_MINOR_VERSION}")
 macro(add_manual _mansrc)
   get_filename_component(_mandest ${_mansrc} NAME_WE)
   SET(_created_manual "${CMAKE_CURRENT_BINARY_DIR}/${_mandest}${PROGRAM_SUFFIX}.1")
@@ -24,7 +26,7 @@ endforeach(_mn)
 
 ADD_CUSTOM_TARGET(man ALL DEPENDS ${_manuals})
 
-install(FILES ${_manuals} DESTINATION man/man1)
+install(FILES ${_manuals} DESTINATION ${DATA_SUBDIR}man/man1)
 
 # ADD_MANUALS("lyx")
 

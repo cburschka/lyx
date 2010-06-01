@@ -1,7 +1,7 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
+# Copyright (c) 2006, Peter KÃ¼mmel, <syntheticpp@gmx.net>
 #
 
 project(support)
@@ -54,17 +54,22 @@ if(NOT MERGE_FILES)
 	set(support_headers ${support_headers} ${support_minizip_headers} ${support_linkback_headers})
 	add_library(support ${library_type} ${support_sources} ${support_headers} ${dont_merge})
 else()
+	# GCC bug: gcc resolves ::bind as boost::bind
+	set(support_separate ${TOP_SRC_DIR}/src/support/socktools.cpp ${TOP_SRC_DIR}/src/support/Messages.cpp)
+	list(REMOVE_ITEM support_sources ${support_separate})
 	lyx_const_touched_files(_allinone  support_sources)
-		set(depends_moc ${support_headers})
+	set(depends_moc ${support_headers})
 	set_source_files_properties(_allinone_const.C
 		PROPERTIES OBJECT_DEPENDS "${depends_moc}")
 	set_source_files_properties(_allinone_touched.C
-		PROPERTIES OBJECT_DEPENDS "${depends_moc}")	
-	add_library(support ${library_type} ${_allinone_files}
-		${support_minizip_sources} ${support_minizip_cpp_sources} ${support_linkback_sources} ${support_headers} ${dont_merge})
+		PROPERTIES OBJECT_DEPENDS "${depends_moc}")
+	add_library(support ${library_type} ${_allinone_files} ${support_separate}
+		${support_mythes_sources} ${support_linkback_sources} ${support_headers} ${dont_merge})
 endif()
 
 target_link_libraries(support boost_signals ${QT_QTCORE_LIBRARY} ${ZLIB_LIBRARY})
+
+lyx_add_gcc_pch(support)
 
 if(APPLE)
 	target_link_libraries(support "objc" "-framework Appkit" "-framework CoreFoundation")

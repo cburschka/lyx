@@ -1,8 +1,10 @@
+
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
-#
+# Copyright (c) 2006-2010 Peter Kümmel, <syntheticpp@gmx.net>
+# Copyright (c) 2008-2010 Kornel Benko, <Kornel.Benko@berlin.de>
+
 
 cmake_minimum_required(VERSION 2.4)
 
@@ -11,15 +13,21 @@ if(COMMAND cmake_policy)
 	cmake_policy(SET CMP0005 OLD)
 endif(COMMAND cmake_policy)
 
-set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
+project(lyx)
 
-# Only to distinguish fron trunk, so we can install both simultaneously
-project(branchlyx)
+set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/
 # is checked
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
 set(EXECUTABLE_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/bin)
+set(LIBRARY_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/lib)
+
+
+option(lyxinstall "Build install projects/rules" ON)
+
+
+
 
 # Supress regeneration
 set(CMAKE_SUPPRESS_REGENERATION TRUE)
@@ -90,6 +98,12 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
   endif()
 endif(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 
+if (WIN32)
+  set(DATA_SUBDIR "Resources/" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
+else()
+  set(DATA_SUBDIR "" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
+endif()
+
 set(LYX_ABS_INSTALLED_DATADIR "${CMAKE_INSTALL_PREFIX}")
 set(LYX_LOCALEDIR "locale")
 set(LYX_ABS_INSTALLED_LOCALEDIR "${LYX_ABS_INSTALLED_DATADIR}/${LYX_LOCALEDIR}")
@@ -105,6 +119,7 @@ endif()
 set(LYX_CPP_FILES *.cpp)
 set(LYX_HPP_FILES *.h)
 
+
 include(LyXMacros)
 include(ProjectSourceGroup)
 
@@ -114,6 +129,7 @@ if(merge OR merge_rebuild)
 	message(STATUS "")
 	message(STATUS "All *.cpp files of a project are merged into two files, disable with -Dmerge=0")
 	message(STATUS "")
+	add_definitions(-DLYX_MERGED_BUILD)
 else()
 	set(merge 0 CACHE TYPE STRING FORCE)
 	set(MERGE_FILES 0 CACHE TYPE STRING FORCE)
@@ -164,8 +180,8 @@ if(NOT MSVC)
 	if(concept-checks)
 		set(LYX_CXX_FLAGS "${LYX_CXX_FLAGS} -D_GLIBCPP_CONCEPT_CHECKS")
 	endif()
-	set(CMAKE_CXX_FLAGS          "${LYX_CXX_FLAGS}" CACHE TYPE STRING FORCE)
-	set(CMAKE_CXX_FLAGS_DEBUG    "${LYX_CXX_FLAGS} -O -g -D_DEBUG" CACHE TYPE STRING FORCE)
+	set(CMAKE_CXX_FLAGS          "${LYX_CXX_FLAGS} -fno-strict-aliasing " CACHE TYPE STRING FORCE)
+	set(CMAKE_CXX_FLAGS_DEBUG    "${LYX_CXX_FLAGS} -fno-strict-aliasing -O -g -D_DEBUG" CACHE TYPE STRING FORCE)
 	if(MINGW)
 		set(CMAKE_CXX_FLAGS_RELEASE  "${LYX_CXX_FLAGS} -O2 -DNDEBUG" CACHE TYPE STRING FORCE)
 	else()
@@ -188,12 +204,20 @@ else()
 endif()
 set(aspell)
 
+set(use_external_libintl TRUE)
+
+if(use_external_libintl)
+	find_package(Libintl REQUIRED)
+	add_definitions(-DHAVE_GETTEXT)
+endif()
+
+
 if(WIN32)
   find_library(ENCHANT_LIBRARY "libenchant")
   find_path(ENCHANT_INCLUDE_DIR "enchant++.h")
 else()
-  find_library(ENCHANT_LIBRARY "enchant"  "/usr/local/lib" "/usr/lib")
-  find_path(ENCHANT_INCLUDE_DIR "enchant++.h" PATHS /usr/local/include /usr/local/include/enchant /usr/include /usr/include/enchant)
+  find_library(ENCHANT_LIBRARY "enchant"  "/usr/local/lib" "/usr/lib" "/usr/local/lib" "/opt/local/lib")
+  find_path(ENCHANT_INCLUDE_DIR "enchant++.h" PATHS /usr/local/include /usr/local/include/enchant /usr/include /usr/include/enchant /opt/local/include/enchant)
 endif()
 if (ENCHANT_LIBRARY AND ENCHANT_INCLUDE_DIR)
   set(ENCHANT_FOUND TRUE)
@@ -201,14 +225,6 @@ if (ENCHANT_LIBRARY AND ENCHANT_INCLUDE_DIR)
   message(STATUS "----- Building with USE_ENCHANT")
 else()
   message(STATUS "----- Enchant not found, building without enchant support")
-endif()
-
-
-set(use_external_libintl TRUE)
-
-if(use_external_libintl)
-	find_package(Libintl REQUIRED)
-	add_definitions(-DHAVE_GETTEXT)
 endif()
 
 message(STATUS "")
@@ -260,31 +276,46 @@ endforeach(_v)
 message(STATUS "")
 
 
-add_definitions(-DBOOST_USER_CONFIG="<config.h>")
+# PCHs not supported by cmake: http://www.cmake.org/Bug/view.php?id=1260
+# Not sure if it works for all non-msvc compilers
+include(PCHSupport_26)
+if (MSVC)
+	option(disable-pch "Disable precompiled headers" ON)
+else()
+	option(disable-pch "Disable precompiled headers" ON)
+endif()
 
-if(MSVC AND NOT disable-pch AND NOT MERGE_FILES)
+if(NOT disable-pch)
+
 	message(STATUS "-----")
 	message(STATUS "----- using precompiled headers, disable with -Ddisable-pch=1")
 	message(STATUS "-----")
-	configure_file(${CMAKE_SOURCE_DIR}/pcheaders.h
-		${CMAKE_BINARY_DIR}/pcheaders.h)
-	configure_file(${CMAKE_SOURCE_DIR}/config.cpp.cmake
-		${CMAKE_BINARY_DIR}/config_pch.cpp)
-	macro(lyx_add_msvc_pch name_)
-		set_source_files_properties(${${name_}_sources} PROPERTIES
-			COMPILE_FLAGS "/Yuconfig.h /Fp\$(IntDir)/config.pch")
-		set_source_files_properties(${CMAKE_BINARY_DIR}/config_pch.cpp PROPERTIES
-			COMPILE_FLAGS "/Ycconfig.h /Fp\$(IntDir)/config.pch")
-		set(${name_}_sources ${${name_}_sources} ${CMAKE_BINARY_DIR}/config_pch.cpp
-			${CMAKE_BINARY_DIR}/pcheaders.h)
-		add_definitions(/DLYX_ENABLE_PCH)
-	endmacro(lyx_add_msvc_pch)
-	set(CMAKE_CXX_FLAGS_DEBUG
-		"${CMAKE_CXX_FLAGS_DEBUG} /DLYX_PCH_STL /DLYX_PCH_BOOST /DLYX_PCH_QT4")
-	set(CMAKE_CXX_FLAGS_RELEASE
-		"${CMAKE_CXX_FLAGS_RELEASE} /DLYX_PCH_STL /DLYX_PCH_BOOST /DLYX_PCH_QT4")
-	set(CMAKE_CXX_FLAGS_MINSIZEREL
-		"${CMAKE_CXX_FLAGS_MINSIZEREL} /DLYX_PCH_STL /DLYX_PCH_BOOST")
+	configure_file(${CMAKE_SOURCE_DIR}/pcheaders.h ${CMAKE_BINARY_DIR}/pcheaders.h)
+	configure_file(${CMAKE_SOURCE_DIR}/config.cpp.cmake ${CMAKE_BINARY_DIR}/config_pch.cpp)
+	add_definitions(-DLYX_ENABLE_PCH)
+
+	if(MSVC AND NOT MERGE_FILES)
+		macro(lyx_add_msvc_pch name_)
+			set_source_files_properties(${${name_}_sources} PROPERTIES
+				COMPILE_FLAGS "/Yuconfig.h /Fp\$(IntDir)/config.pch")
+			set_source_files_properties(${CMAKE_BINARY_DIR}/config_pch.cpp PROPERTIES
+				COMPILE_FLAGS "/Ycconfig.h /Fp\$(IntDir)/config.pch")
+			set(${name_}_sources ${${name_}_sources} ${CMAKE_BINARY_DIR}/config_pch.cpp
+				${CMAKE_BINARY_DIR}/pcheaders.h)
+			set(CMAKE_CXX_FLAGS_DEBUG	"${CMAKE_CXX_FLAGS_DEBUG} /DLYX_PCH_STL /DLYX_PCH_BOOST /DLYX_PCH_QT4")
+			set(CMAKE_CXX_FLAGS_RELEASE	"${CMAKE_CXX_FLAGS_RELEASE} /DLYX_PCH_STL /DLYX_PCH_BOOST /DLYX_PCH_QT4")
+			set(CMAKE_CXX_FLAGS_MINSIZEREL	"${CMAKE_CXX_FLAGS_MINSIZEREL} /DLYX_PCH_STL /DLYX_PCH_BOOST")			
+		endmacro(lyx_add_msvc_pch)
+		macro(lyx_add_gcc_pch name_)
+		endmacro()
+	else()
+		macro(lyx_add_msvc_pch name_)
+		endmacro()
+		macro(lyx_add_gcc_pch name_)
+			add_definitions(-DLYX_PCH_STL -DLYX_PCH_BOOST -DLYX_PCH_QT4)
+			ADD_PRECOMPILED_HEADER(${name_} ${CMAKE_BINARY_DIR}/config_pch.cpp ${CMAKE_BINARY_DIR}/config.h.gch)
+		endmacro()
+	endif()
 else()
 	if(MSVC)
 		message(STATUS "-----")
@@ -294,6 +325,8 @@ else()
 	set(disable-pch TRUE CACHE TYPE STRING)
 	macro(lyx_add_msvc_pch)
 	endmacro(lyx_add_msvc_pch)
+	macro(lyx_add_gcc_pch name_)
+	endmacro()
 endif()
 
 if(MSVC)
@@ -336,7 +369,7 @@ if(MSVC)
 		# add here warnings which should produce an error /weXXXX
 		set(MSVC_W_ERROR   "/we4101 /we4189")
 		# add here warnings which should be disabled /wdXXXX
-		set(MSVC_W_DISABLE "/wd4288 /wd4355 /wd4800 /wd4996 /wd4311 /wd4312 /wd4505 /wd4267 /wd4512 /wd4245 /wd4127 /wd4180")
+		set(MSVC_W_DISABLE "/wd4288 /wd4355 /wd4800 /wd4996 /wd4311 /wd4312 /wd4505 /wd4267 /wd4512 /wd4245 /wd4127 /wd4180 /wd4231")
 
 		set(CMAKE_CXX_FLAGS_DEBUG
 			"${CMAKE_CXX_FLAGS_DEBUG} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
@@ -354,7 +387,7 @@ if(MSVC)
 		# add here warnings which should produce an error /weXXXX
 		set(MSVC_W_ERROR   "/we4101 /we4189")
 		# add here warnings which should be disabled /wdXXXX
-		set(MSVC_W_DISABLE "/wd4288 /wd4355 /wd4800 /wd4996 /wd4267 /wd4180")
+		set(MSVC_W_DISABLE "/wd4288 /wd4355 /wd4800 /wd4996 /wd4267 /wd4180 /wd4231")
 
 		set(CMAKE_CXX_FLAGS_DEBUG
 			"${CMAKE_CXX_FLAGS_DEBUG} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
@@ -388,6 +421,17 @@ if(NOT ${_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
     endif()
 endif()
 
+option(debug_glibc "Enable libstdc++ debug mode" OFF)
+option(debug_glibc_pedantic "Enable libstdc++pedantic debug mode" OFF)
+
+if(debug_glibc)
+  set(_GLIBCXX_DEBUG 1)
+endif()
+
+if(debug_glibc_pedantic)
+  set(_GLIBCXX_DEBUG_PEDANTIC 1)
+endif()
+
 # compiler tests, config.h generation
 if(MSVC AND NOT CONFIGURECHECKS)
 	configure_file(configCompiler.h.msvc ${CMAKE_BINARY_DIR}/configCompiler.h)
@@ -395,36 +439,61 @@ else()
 	include(ConfigureChecks.cmake)
 	configure_file(configCompiler.h.cmake ${CMAKE_BINARY_DIR}/configCompiler.h)
 endif()
+
 find_package(AiksaurusLIB)
 if(AIKSAURUSLIB_FOUND)
   # Variables in config.h will be set correctly with configure_file()
   set(HAVE_LIBAIKSAURUS 1)
   set(AIKSAURUS_H_LOCATION 1)
 endif()
+
 configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
 
 find_package(ICONV REQUIRED)
 add_definitions(-DHAVE_ICONV=1)
 
-include_directories(
-	${CMAKE_BINARY_DIR}
-	${TOP_SRC_DIR}/src
-	${TOP_SRC_DIR}/boost)
 
-add_subdirectory(boost)
+include_directories(
+  ${CMAKE_BINARY_DIR}
+  ${TOP_SRC_DIR}/src)
+
+option(UseExternalBoost "Use external boost" OFF)
+if(UseExternalBoost)
+  message(STATUS "Searching for boost")
+  find_package(Boost COMPONENTS signals regex)
+  if(Boost_FOUND)
+    message(STATUS "Boost found")
+    message(STATUS "Boost-libs = ${Boost_LIBRARIES}")
+    set(Lyx_Boost_Libraries ${Boost_LIBRARIES})
+  else()
+    message(FATAL_ERROR "Boost not found" ${Boost_ERROR_REASON})
+  endif()
+else()
+  message(STATUS "----- Using internal boost. To build with installed version use -DUseExternalBoost:BOOL=ON")
+  set(Lyx_Boost_Libraries boost_signals boost_regex)
+  add_definitions(-DBOOST_USER_CONFIG="<config.h>")
+  include_directories(${TOP_SRC_DIR}/boost)
+  add_subdirectory(boost)
+endif()
+
+
 if(NOT use_external_libintl)
-	add_subdirectory(intl)
+  add_subdirectory(intl)
 endif()
 add_subdirectory(src)
 
-add_subdirectory(man)
-if(NOT ${_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
-    add_subdirectory(doc)
+if(lyxinstall)
+	add_subdirectory(man)
+	if(NOT ${_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
+		add_subdirectory(doc)
+	endif()
 endif()
 add_subdirectory(lyx2lyx)
 add_subdirectory(scripts)
 
-include(../Install)
+if(lyxinstall)
+	include(../Install)
+endif()
 
 SET(CPACK_PACKAGE_VERSION_MAJOR "${LYX_MAJOR_VERSION}")
 SET(CPACK_PACKAGE_VERSION_MINOR "${LYX_MINOR_VERSION}")
@@ -441,6 +510,12 @@ SET(CPACK_RPM_PACKAGE_VENDOR "The LyX team")
 # the next ones are needed by deb
 SET(CPACK_PACKAGE_CONTACT "${PACKAGE_BUGREPORT}")
 SET(CPACK_SOURCE_PACKAGE_FILE_NAME "${project}-${LYX_INSTALL_SUFFIX}")
+
+# This is experimental, valid on _my_ system (Kornel)
+SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libqtgui4 (>= 4.4.3-0)")
+IF(ASPELL_FOUND)
+  SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libaspell15 (>= 0.60.6-1),${CPACK_DEBIAN_PACKAGE_DEPENDS}")
+ENDIF()
 #
 # for the next ones, cpack insists on data with values in some file
 SET(CPACK_PACKAGE_DESCRIPTION_FILE "${TOP_SRC_DIR}/development/cmake/LyX_description.txt")
@@ -463,7 +538,10 @@ endif()
 # so we do not provide infofiles for
 # CPACK_RESOURCE_FILE_README and CPACK_RESOURCE_FILE_WELCOME
 
-include(CPack)
+if(lyxinstall)
+	include(CPack)
+endif()
+
 #Now it is possible to create some packages
 # cd <BuildDir>
 # make package
