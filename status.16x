@@ -92,6 +92,15 @@ What's new
 - Allow to overwrite files without dialog popup on export from GUI
   (bug 2844).
 
+
+* USER INTERFACE
+
+- Correctly restore a dissolved macro inset on undo (bug 6678).
+
+- Correctly handle empty custom line spacing in settings (bug 6649).
+
+- Correctly display color changes in math formulas (bug 4071).
+
 - Make sure that the '|'-character in headings does not confuse the
   TOC list in navigate menu (bug 2009).
 
@@ -105,15 +114,6 @@ What's new
 
 - Correctly paint the button for external material when the "Preview"
   attribute is not defined (bug 6677).
-
-
-* USER INTERFACE
-
-- Correctly restore a dissolved macro inset on undo (bug 6678).
-
-- Correctly handle empty custom line spacing in settings (bug 6649).
-
-- Correctly display color changes in math formulas (bug 4071).
 
 
 * DOCUMENTATION AND LOCALIZATION
