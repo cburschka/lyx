@@ -395,6 +395,9 @@ void mergeParagraph(BufferParams const & bparams,
 /// accept the changes within the complete ParagraphList
 void acceptChanges(ParagraphList & pars, BufferParams const & bparams);
 
+/// reject the changes within the complete ParagraphList
+void rejectChanges(ParagraphList & pars, BufferParams const & bparams);
+
 } // namespace lyx
 
 #endif // TEXT_H

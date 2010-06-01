@@ -539,6 +539,8 @@ void copySelectionHelper(Buffer const & buf, Text const & text,
 	// deleted, unless the whole selection was deleted
 	if (!isFullyDeleted(copy_pars))
 		acceptChanges(copy_pars, buf.params());
+	else
+		rejectChanges(copy_pars, buf.params());
 
 
 	// do some final cleanup now, to make sure that the paragraphs
