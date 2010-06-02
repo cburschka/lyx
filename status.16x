@@ -118,7 +118,8 @@ What's new
 - Correctly paint the button for external material when the "Preview"
   attribute is not defined (bug 6677).
 
-- Use right font for rendering the \underbar macro in math (bug 6729).
+- Use right fonts for rendering the \underbar and \ensuremath macros in
+  math when they are nested in certain environments (bug 6729 and 6745).
 
 
 * DOCUMENTATION AND LOCALIZATION
