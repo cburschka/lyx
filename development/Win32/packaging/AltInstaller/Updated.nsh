@@ -35,6 +35,7 @@ Function UpdateModifiedFiles
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\EmbeddedObjects.lyx"
  #SetOutPath "$INSTDIR\Resources\examples"
  SetOutPath "$INSTDIR\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\elsart.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\IEEEtran.layout"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
