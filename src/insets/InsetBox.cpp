@@ -304,7 +304,7 @@ int InsetBox::latex(odocstream & os, OutputParams const & runparams) const
 	case Boxed:
 		os << "\\framebox";
 		if (!params_.inner_box) {
-			// Special widths, see usrguide ยง3.5
+			// Special widths, see usrguide ง3.5
 			// FIXME UNICODE
 			if (params_.special != "none") {
 				os << "[" << params_.width.value()
