@@ -105,7 +105,7 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 		connect(progress, SIGNAL(appendMessage(QString const &)),
 			this, SLOT(appendText(QString const &)));
 		connect(progress, SIGNAL(appendLyXErrMessage(QString const &)),
-			this, SLOT(appendLyXErrText(QString const &)));
+			this, SLOT(appendLyXErrText(QString const &)), Qt::QueuedConnection);
 		connect(progress, SIGNAL(appendError(QString const &)),
 			this, SLOT(appendText(QString const &)));
 		connect(progress, SIGNAL(clearMessages()), this, SLOT(clearText()));
