@@ -1011,8 +1011,15 @@ bool GuiView::focusNextPrevChild(bool /*next*/)
 }
 
 
+bool GuiView::busy()
+{
+	return busy_;
+}
+
+
 void GuiView::setBusy(bool busy)
 {
+	busy_ = busy;
 	if (d.current_work_area_) {
 		d.current_work_area_->setUpdatesEnabled(!busy);
 		if (busy)

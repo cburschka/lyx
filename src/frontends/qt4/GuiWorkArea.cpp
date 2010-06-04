@@ -391,6 +391,10 @@ void GuiWorkArea::stopBlinkingCursor()
 
 void GuiWorkArea::startBlinkingCursor()
 {
+	// do not show the cursor if the view is busy
+	if (view().busy())
+		return;
+
 	Point p;
 	int h = 0;
 	buffer_view_->cursorPosAndHeight(p, h);
