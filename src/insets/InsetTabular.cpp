@@ -4296,7 +4296,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_MUTATE:
 	case LFUN_MATH_DISPLAY:
 	case LFUN_NOTE_INSERT:
-	case LFUN_OPTIONAL_INSERT:
+	case LFUN_ARGUMENT_INSERT:
 	case LFUN_BOX_INSERT:
 	case LFUN_BRANCH_INSERT:
 	case LFUN_PHANTOM_INSERT:

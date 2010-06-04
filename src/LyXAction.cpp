@@ -317,13 +317,13 @@ void LyXAction::init()
  */
 		{ LFUN_WRAP_INSERT, "wrap-insert", Noop, Edit },
 /*!
- * \var lyx::FuncCode lyx::LFUN_OPTIONAL_INSERT
- * \li Action: Inserts an optional-argument (short title) inset.
- * \li Syntax: optional-insert
+ * \var lyx::FuncCode lyx::LFUN_ARGUMENT_INSERT
+ * \li Action: Inserts an argument (short title) inset.
+ * \li Syntax: argument-insert
  * \li Origin: vermeer, 12 Aug 2002
  * \endvar
  */
-		{ LFUN_OPTIONAL_INSERT, "optional-insert", Noop, Edit },
+		{ LFUN_ARGUMENT_INSERT, "argument-insert", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_LINE_INSERT
  * \li Action: Inserts a horizontal line.

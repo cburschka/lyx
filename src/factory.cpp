@@ -144,7 +144,7 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 		case LFUN_MARGINALNOTE_INSERT:
 			return new InsetMarginal(buf);
 
-		case LFUN_OPTIONAL_INSERT:
+		case LFUN_ARGUMENT_INSERT:
 			return new InsetArgument(buf);
 
 		case LFUN_FLOAT_INSERT:

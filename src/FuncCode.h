@@ -274,7 +274,7 @@ enum FuncCode
 	LFUN_CHARS_TRANSPOSE,           // Lgb 20010425
 	LFUN_ESCAPE,                    // Lgb 20010517
 	LFUN_THESAURUS_ENTRY,           // Levon 20010720
-	LFUN_OPTIONAL_INSERT,           // Martin 12 Aug 2002
+	LFUN_ARGUMENT_INSERT,           // Martin 12 Aug 2002
 	// 205
 	LFUN_MOUSE_PRESS,               // André 9 Aug 2002
 	LFUN_MOUSE_MOTION,              // André 9 Aug 2002

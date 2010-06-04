@@ -126,6 +126,9 @@ The following LyX functions have been changed:
   arguments have been inverted in order to allow the replacement of the word
   at current cursor position, even if it is not selected.
 
+- LFUN_OPTIONAL_INSERT ("optional-insert") has been renamed LFUN_ARGUMENT_INSERT
+  ("argument-insert").
+
 
 New external programs and libaries:
 -----------------------------------

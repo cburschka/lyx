@@ -1570,7 +1570,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_ERT_INSERT:
 	case LFUN_LISTING_INSERT:
 	case LFUN_MARGINALNOTE_INSERT:
-	case LFUN_OPTIONAL_INSERT:
+	case LFUN_ARGUMENT_INSERT:
 	case LFUN_INDEX_INSERT:
 	case LFUN_PREVIEW_INSERT:
 		// Open the inset, and move the current selection
@@ -2341,7 +2341,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INFO_INSERT:
 		code = INFO_CODE;
 		break;
-	case LFUN_OPTIONAL_INSERT: {
+	case LFUN_ARGUMENT_INSERT: {
 		code = ARG_CODE;
 		Layout const & lay = cur.paragraph().layout();
 		int const numargs = lay.reqargs + lay.optargs;

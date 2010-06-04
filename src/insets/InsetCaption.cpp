@@ -198,7 +198,7 @@ bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 		status.setEnabled(false);
 		return true;
 
-	case LFUN_OPTIONAL_INSERT:
+	case LFUN_ARGUMENT_INSERT:
 		status.setEnabled(cur.paragraph().insetList().find(ARG_CODE) == -1);
 		return true;
 
