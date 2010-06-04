@@ -4,7 +4,7 @@
 #
 # Detailled format description is available in the customization manual
 
-Format 26
+Format 27
 
 Provides stdinsets 1
 

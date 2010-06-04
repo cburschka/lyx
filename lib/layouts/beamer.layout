@@ -5,7 +5,7 @@
 # $Header: /cvsroot/latex-beamer/latex-beamer/lyx/layouts/beamer.layout,v 1.16 2004/10/07 20:53:07 tantau Exp $
 
 # Includes
-Format 26
+Format 27
 Input stdcounters.inc
 Input stdinsets.inc
 
@@ -664,7 +664,7 @@ Style Block
 
   LatexName        block
   LabelString      "Block ( ERT[{title}] body ):"
-
+  
   ParSkip          0.5
   TopSep           1
   BottomSep        1

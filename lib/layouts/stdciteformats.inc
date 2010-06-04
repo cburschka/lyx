@@ -2,7 +2,7 @@
 #
 # Author: Richard Heck <rgheck@comcast.net>
 
-Format 26
+Format 27
 
 CiteFormat
 	# translatable bits

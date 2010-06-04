@@ -1,7 +1,7 @@
 # Author : André Pönitz
 # This include file contains label definitions for a report-like numbering.
 
-Format 26
+Format 27
 
 Style Part
 	TocLevel              -1

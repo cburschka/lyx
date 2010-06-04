@@ -18,7 +18,7 @@
 # see www.springer.de/author/tex/help-journals.html for class files
 
 
-Format 26
+Format 27
 Columns                 2
 Sides                   1
 PageStyle               Plain
