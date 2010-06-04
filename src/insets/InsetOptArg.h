@@ -29,8 +29,9 @@ public:
 	///
 	InsetOptArg(Buffer *);
 
-	/// Outputting the optional parameter of a LaTeX command
-	int latexOptional(odocstream &, OutputParams const &) const;
+	/// Outputting the parameter of a LaTeX command
+	int latexArgument(odocstream &, OutputParams const &,
+			bool optional) const;
 	///
 	bool hasSettings() const { return false; }
 

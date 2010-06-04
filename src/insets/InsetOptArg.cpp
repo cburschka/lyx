@@ -56,15 +56,16 @@ docstring InsetOptArg::xhtml(XHTMLStream &, OutputParams const &) const
 	return docstring();
 }
 
-int InsetOptArg::latexOptional(odocstream & os,
-			       OutputParams const & runparams) const
+int InsetOptArg::latexArgument(odocstream & os,
+		OutputParams const & runparams, bool optional) const
 {
 	odocstringstream ss;
 	int ret = InsetText::latex(ss, runparams);
 	docstring str = ss.str();
-	if (str.find(']') != docstring::npos)
+	if (optional && str.find(']') != docstring::npos)
 		str = '{' + str + '}';
-	os << '[' << str << ']';
+	os << (optional ? '[' : '{') << str
+	   << (optional ? ']' : '}');
 	return ret;
 }
 

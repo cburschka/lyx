@@ -454,7 +454,8 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 	}
 	context.check_deeper(os);
 	context.check_layout(os);
-	if (context.layout->optionalargs > 0) {
+	unsigned int optargs = 0;
+	while (optargs < context.layout->optargs) {
 		eat_whitespace(p, os, context, false);
 		if (p.next_token().character() == '[') {
 			p.get_token(); // eat '['
@@ -463,6 +464,20 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 			parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
 			end_inset(os);
 			eat_whitespace(p, os, context, false);
+			optargs++;
+		}
+	}
+	unsigned int reqargs = 0;
+	while (reqargs < context.layout->reqargs) {
+		eat_whitespace(p, os, context, false);
+		if (p.next_token().character() == '{') {
+			p.get_token(); // eat '['
+			begin_inset(os, "OptArg\n");
+			os << "status collapsed\n\n";
+			parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
+			end_inset(os);
+			eat_whitespace(p, os, context, false);
+			reqargs++;
 		}
 	}
 	parse_text(p, os, FLAG_ITEM, outer, context);
@@ -1149,6 +1164,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		if (t.character() == ']' && (flags & FLAG_BRACK_LAST))
+			return;
+		if (t.character() == '}' && (flags & FLAG_BRACE_LAST))
 			return;
 
 		//

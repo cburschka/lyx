@@ -106,6 +106,7 @@ enum LayoutTags {
 	LT_HTMLTITLE,
 	LT_SPELLCHECK,
 	LT_REFPREFIX,
+	LT_REQARGS,
 	LT_INTITLE // keep this last!
 };
 
@@ -118,7 +119,6 @@ Layout::Layout()
 	latextype = LATEX_PARAGRAPH;
 	intitle = false;
 	inpreamble = false;
-	optionalargs = 0;
 	needprotect = false;
 	keepempty = false;
 	font = inherit_font;
@@ -214,6 +214,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "passthru",       LT_PASS_THRU },
 		{ "preamble",       LT_PREAMBLE },
 		{ "refprefix",      LT_REFPREFIX },
+		{ "requiredargs",   LT_REQARGS },
 		{ "requires",       LT_REQUIRES },
 		{ "rightmargin",    LT_RIGHTMARGIN },
 		{ "spacing",        LT_SPACING },
@@ -320,7 +321,11 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			break;
 
 		case LT_OPTARGS:
-			lex >> optionalargs ;
+			lex >> optargs;
+			break;
+
+		case LT_REQARGS:
+			lex >> reqargs;
 			break;
 
 		case LT_NEED_PROTECT:

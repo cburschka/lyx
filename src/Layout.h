@@ -241,8 +241,15 @@ public:
 	bool intitle;
 	/// Is the content to go in the preamble rather than the body?
 	bool inpreamble;
-	/// Does this layout allow for an optional parameter?
-	int optionalargs;
+	/// Number of requried arguments for this command or environment
+	unsigned int reqargs;
+	/// Number of optional arguments for this command or environment
+	/// These MUST come at the beginning, so:
+	///  \cmd[opt1][opt2]{req1}{here is the text from LyX}
+	/// is fine. But:
+	///  \cmd[opt1]{req1}[opt2]{here is the text from LyX}
+	/// is not.
+	unsigned int optargs;
 	/// Which counter to step
 	docstring counter;
 	/// Prefix to use when creating labels

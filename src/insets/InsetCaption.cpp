@@ -229,7 +229,7 @@ int InsetCaption::latex(odocstream & os,
 	// optional argument.
 	runparams.moving_arg = true;
 	os << "\\caption";
-	int l = latexOptArgInsets(paragraphs()[0], os, runparams, 1);
+	int l = latexArgInsets(paragraphs()[0], os, runparams, 0, 1);
 	os << '{';
 	l += InsetText::latex(os, runparams);
 	os << "}\n";
@@ -285,7 +285,7 @@ int InsetCaption::getArgument(odocstream & os,
 int InsetCaption::getOptArg(odocstream & os,
 			OutputParams const & runparams) const
 {
-	return latexOptArgInsets(paragraphs()[0], os, runparams, 1);
+	return latexArgInsets(paragraphs()[0], os, runparams, 0, 1);
 }
 
 

@@ -25,15 +25,19 @@ namespace lyx {
 class Buffer;
 class BufferParams;
 class Encoding;
+class Layout;
 class Paragraph;
 class OutputParams;
 class TexRow;
 class Text;
 
-/// Export up to \p number optarg insets
-int latexOptArgInsets(Paragraph const & par,
-		      odocstream & os, OutputParams const & runparams,
-		      int number);
+/// Export up to \p reqargs required arguments and
+/// \p optargs optional ones. If not enough required
+/// ones are given, we'll output: {}. The optional ones
+/// must all come first.
+int latexArgInsets(Paragraph const & par,
+		odocstream & os, OutputParams const & runparams,
+		unsigned int reqargs, unsigned int optargs);
 
 /** Export \p paragraphs of buffer \p buf to LaTeX.
     Don't use a temporary stringstream for \p os if the final output is

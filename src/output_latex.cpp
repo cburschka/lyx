@@ -34,6 +34,7 @@
 #include "support/lstrings.h"
 
 #include <boost/next_prior.hpp>
+#include <list>
 
 using namespace std;
 using namespace lyx::support;
@@ -167,9 +168,8 @@ TeXEnvironment(Buffer const & buf,
 
 	if (style.isEnvironment()) {
 		os << "\\begin{" << from_ascii(style.latexname()) << '}';
-		if (style.optionalargs > 0) {
-			int ret = latexOptArgInsets(*pit, os, runparams,
-						    style.optionalargs);
+		if (style.optargs != 0 || style.reqargs != 0) {
+			int ret = latexArgInsets(*pit, os, runparams, style.reqargs, style.optargs);
 			while (ret > 0) {
 				texrow.newline();
 				--ret;
@@ -279,23 +279,60 @@ TeXEnvironment(Buffer const & buf,
 } // namespace anon
 
 
-int latexOptArgInsets(Paragraph const & par, odocstream & os,
-	OutputParams const & runparams, int number)
+int latexArgInsets(Paragraph const & par, odocstream & os,
+	OutputParams const & runparams, unsigned int reqargs,
+	unsigned int optargs)
 {
-	int lines = 0;
+	unsigned int totalargs = reqargs + optargs;
+	list<InsetOptArg const *> ilist;
 
 	InsetList::const_iterator it = par.insetList().begin();
 	InsetList::const_iterator end = par.insetList().end();
-	for (; it != end && number > 0 ; ++it) {
+	for (; it != end; ++it) {
 		if (it->inset->lyxCode() == OPTARG_CODE) {
-			InsetOptArg * ins =
-				static_cast<InsetOptArg *>(it->inset);
-			lines += ins->latexOptional(os, runparams);
-			--number;
+			if (ilist.size() >= totalargs) {
+				LYXERR0("WARNING: Found extra argument inset.");
+				continue;
+			}
+			InsetOptArg const * ins =
+				static_cast<InsetOptArg const *>(it->inset);
+			ilist.push_back(ins);
+		}
+	}
+
+	if (!reqargs && ilist.size() == 0)
+		return 0;
+
+	int lines = 0;
+	bool const have_optional_args = ilist.size() > reqargs;
+	if (have_optional_args) {
+		unsigned int todo = ilist.size() - reqargs;
+		for (unsigned int i = 0; i < todo; ++i) {
+			InsetOptArg const * ins = ilist.front();
+			ilist.pop_front();
+			lines += ins->latexArgument(os, runparams, true);
+		}
+	}
+
+	// we should now have no more insets than there are required
+	// arguments.
+	LASSERT(ilist.size() <= reqargs, /* */);
+	if (!reqargs)
+		return lines;
+
+	for (unsigned int i = 0; i < reqargs; ++i) {
+		if (ilist.empty())
+			// a required argument wasn't given, so we output {}
+			os << "{}";
+		else {
+			InsetOptArg const * ins = ilist.front();
+			ilist.pop_front();
+			lines += ins->latexArgument(os, runparams, false);
 		}
 	}
 	return lines;
 }
+
 
 // FIXME: this should be anonymous
 ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
@@ -543,9 +580,8 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 		os << '\\' << from_ascii(style.latexname());
 
 		// Separate handling of optional argument inset.
-		if (style.optionalargs > 0) {
-			int ret = latexOptArgInsets(*pit, os, runparams,
-						    style.optionalargs);
+		if (style.optargs != 0 || style.reqargs != 0) {
+			int ret = latexArgInsets(*pit, os, runparams, style.reqargs, style.optargs);
 			while (ret > 0) {
 				texrow.newline();
 				--ret;
