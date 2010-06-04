@@ -72,11 +72,6 @@
 
 #include <cmath>
 
-#ifdef Q_WS_X11
-#include <QX11Info>
-extern "C" int XEventsQueued(Display *display, int mode);
-#endif
-
 #ifdef Q_WS_WIN
 int const CursorWidth = 2;
 #else
@@ -845,11 +840,10 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 
 	// do nothing if there are other events
 	// (the auto repeated events come too fast)
-	// \todo FIXME: remove hard coded Qt keys, process the key binding
+	// it looks like this is only needed on X11
 #ifdef Q_WS_X11
-	if (XEventsQueued(QX11Info::display(), 0) > 1 && ev->isAutoRepeat()
-			&& (Qt::Key_PageDown || Qt::Key_PageUp)) {
-		LYXERR(Debug::KEY, "system is busy: scroll key event ignored");
+	if (qApp->hasPendingEvents() && ev->isAutoRepeat()) {
+		LYXERR(Debug::KEY, "system is busy: keyPress event ignored");
 		ev->ignore();
 		return;
 	}
