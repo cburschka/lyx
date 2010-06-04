@@ -152,6 +152,7 @@ SOURCES += \
 ../../src/insets/ExternalSupport.cpp \
 ../../src/insets/ExternalTemplate.cpp \
 ../../src/insets/ExternalTransforms.cpp \
+../../src/insets/InsetArgument.cpp \
 ../../src/insets/InsetBibitem.cpp \
 ../../src/insets/InsetBibtex.cpp \
 ../../src/insets/InsetBox.cpp \
@@ -185,7 +186,6 @@ SOURCES += \
 ../../src/insets/InsetNewpage.cpp \
 ../../src/insets/InsetNomencl.cpp \
 ../../src/insets/InsetNote.cpp \
-../../src/insets/InsetOptArg.cpp \
 ../../src/insets/InsetPhantom.cpp \
 ../../src/insets/InsetQuotes.cpp \
 ../../src/insets/InsetRef.cpp \
@@ -494,6 +494,7 @@ HEADERS += \
 ../../src/insets/ExternalTemplate.h \
 ../../src/insets/ExternalTransforms.h \
 ../../src/insets/Inset.h \
+../../src/insets/InsetArgument.h \
 ../../src/insets/InsetBibitem.h \
 ../../src/insets/InsetBibtex.h \
 ../../src/insets/InsetBox.h \
@@ -527,7 +528,6 @@ HEADERS += \
 ../../src/insets/InsetNewpage.h \
 ../../src/insets/InsetNomencl.h \
 ../../src/insets/InsetNote.h \
-../../src/insets/InsetOptArg.h \
 ../../src/insets/InsetQuotes.h \
 ../../src/insets/InsetPhantom.h \
 ../../src/insets/InsetRef.h \

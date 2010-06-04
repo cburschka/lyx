@@ -102,7 +102,7 @@ static void build_translator()
 	insetnames[FLOAT_LIST_CODE] = InsetName("floatlist");
 	insetnames[INDEX_PRINT_CODE] = InsetName("index_print");
 	insetnames[NOMENCL_PRINT_CODE] = InsetName("nomencl_print");
-	insetnames[OPTARG_CODE] = InsetName("optarg");
+	insetnames[ARG_CODE] = InsetName("optarg");
 	insetnames[NEWLINE_CODE] = InsetName("newline");
 	insetnames[LINE_CODE] = InsetName("line");
 	insetnames[BRANCH_CODE] = InsetName("branch", _("Branch"));

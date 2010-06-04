@@ -45,7 +45,7 @@
 #include "insets/InsetNewpage.h"
 #include "insets/InsetNomencl.h"
 #include "insets/InsetNote.h"
-#include "insets/InsetOptArg.h"
+#include "insets/InsetArgument.h"
 #include "insets/InsetPhantom.h"
 #include "insets/InsetPreview.h"
 #include "insets/InsetRef.h"
@@ -145,7 +145,7 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			return new InsetMarginal(buf);
 
 		case LFUN_OPTIONAL_INSERT:
-			return new InsetOptArg(buf);
+			return new InsetArgument(buf);
 
 		case LFUN_FLOAT_INSERT:
 			return new InsetFloat(buf, to_utf8(cmd.argument()));
@@ -563,7 +563,7 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 		} else if (tmptok == "Newline") {
 			inset.reset(new InsetNewline);
 		} else if (tmptok == "OptArg") {
-			inset.reset(new InsetOptArg(buf));
+			inset.reset(new InsetArgument(buf));
 		} else if (tmptok == "Float") {
 			inset.reset(new InsetFloat(buf, string()));
 		} else if (tmptok == "Wrap") {

@@ -56,7 +56,7 @@
 #include "insets/InsetLine.h"
 #include "insets/InsetNewline.h"
 #include "insets/InsetNewpage.h"
-#include "insets/InsetOptArg.h"
+#include "insets/InsetArgument.h"
 #include "insets/InsetSpace.h"
 #include "insets/InsetSpecialChar.h"
 #include "insets/InsetTabular.h"

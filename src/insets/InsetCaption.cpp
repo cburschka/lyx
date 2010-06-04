@@ -199,7 +199,7 @@ bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_OPTIONAL_INSERT:
-		status.setEnabled(cur.paragraph().insetList().find(OPTARG_CODE) == -1);
+		status.setEnabled(cur.paragraph().insetList().find(ARG_CODE) == -1);
 		return true;
 
 	case LFUN_INSET_TOGGLE:

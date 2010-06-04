@@ -2342,10 +2342,10 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		code = INFO_CODE;
 		break;
 	case LFUN_OPTIONAL_INSERT: {
-		code = OPTARG_CODE;
+		code = ARG_CODE;
 		Layout const & lay = cur.paragraph().layout();
 		int const numargs = lay.reqargs + lay.optargs;
-		enable = cur.paragraph().insetList().count(OPTARG_CODE) < numargs;
+		enable = cur.paragraph().insetList().count(ARG_CODE) < numargs;
 		break;
 	}
 	case LFUN_INDEX_INSERT:

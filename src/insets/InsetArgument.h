@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file InsetOptArg.h
+ * \file InsetArgument.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -20,14 +20,14 @@ namespace lyx {
 
 
 /**
- * InsetOptArg. Used to insert a short version of sectioning header etc.
+ * InsetArgument. Used to insert a short version of sectioning header etc.
  * automatically, or other optional LaTeX arguments
  */
-class InsetOptArg : public InsetCollapsable
+class InsetArgument : public InsetCollapsable
 {
 public:
 	///
-	InsetOptArg(Buffer *);
+	InsetArgument(Buffer *);
 
 	/// Outputting the parameter of a LaTeX command
 	int latexArgument(odocstream &, OutputParams const &,
@@ -37,7 +37,7 @@ public:
 
 private:
 	/// code of the inset
-	InsetCode lyxCode() const { return OPTARG_CODE; }
+	InsetCode lyxCode() const { return ARG_CODE; }
 	///
 	docstring name() const { return from_ascii("OptArg"); }
 	/// Standard LaTeX output -- short-circuited
@@ -53,7 +53,7 @@ private:
 	/// should paragraph indendation be ommitted in any case?
 	bool neverIndent() const { return true; }
 	///
-	Inset * clone() const { return new InsetOptArg(*this); }
+	Inset * clone() const { return new InsetArgument(*this); }
 };
 
 

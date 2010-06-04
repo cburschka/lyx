@@ -1003,6 +1003,7 @@ src_insets_header_files = Split('''
     ExternalTemplate.h
     ExternalTransforms.h
     Inset.h
+    InsetArgument.h
     InsetBibitem.h
     InsetBibtex.h
     InsetBox.h
@@ -1036,7 +1037,6 @@ src_insets_header_files = Split('''
     InsetNewpage.h
     InsetNomencl.h
     InsetNote.h
-    InsetOptArg.h
     InsetPhantom.h
     InsetPreview.h
     InsetQuotes.h
@@ -1060,6 +1060,7 @@ src_insets_files = Split('''
     ExternalTemplate.cpp
     ExternalTransforms.cpp
     Inset.cpp
+    InsetArgument.cpp
     InsetBibitem.cpp
     InsetBibtex.cpp
     InsetBox.cpp
@@ -1092,7 +1093,6 @@ src_insets_files = Split('''
     InsetNewpage.cpp
     InsetNomencl.cpp
     InsetNote.cpp
-    InsetOptArg.cpp
     InsetPhantom.cpp
     InsetPreview.cpp
     InsetQuotes.cpp

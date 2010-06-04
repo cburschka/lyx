@@ -27,7 +27,7 @@
 #include "VSpace.h"
 
 #include "insets/InsetBibitem.h"
-#include "insets/InsetOptArg.h"
+#include "insets/InsetArgument.h"
 
 #include "support/lassert.h"
 #include "support/debug.h"
@@ -284,18 +284,18 @@ int latexArgInsets(Paragraph const & par, odocstream & os,
 	unsigned int optargs)
 {
 	unsigned int totalargs = reqargs + optargs;
-	list<InsetOptArg const *> ilist;
+	list<InsetArgument const *> ilist;
 
 	InsetList::const_iterator it = par.insetList().begin();
 	InsetList::const_iterator end = par.insetList().end();
 	for (; it != end; ++it) {
-		if (it->inset->lyxCode() == OPTARG_CODE) {
+		if (it->inset->lyxCode() == ARG_CODE) {
 			if (ilist.size() >= totalargs) {
 				LYXERR0("WARNING: Found extra argument inset.");
 				continue;
 			}
-			InsetOptArg const * ins =
-				static_cast<InsetOptArg const *>(it->inset);
+			InsetArgument const * ins =
+				static_cast<InsetArgument const *>(it->inset);
 			ilist.push_back(ins);
 		}
 	}
@@ -308,7 +308,7 @@ int latexArgInsets(Paragraph const & par, odocstream & os,
 	if (have_optional_args) {
 		unsigned int todo = ilist.size() - reqargs;
 		for (unsigned int i = 0; i < todo; ++i) {
-			InsetOptArg const * ins = ilist.front();
+			InsetArgument const * ins = ilist.front();
 			ilist.pop_front();
 			lines += ins->latexArgument(os, runparams, true);
 		}
@@ -325,7 +325,7 @@ int latexArgInsets(Paragraph const & par, odocstream & os,
 			// a required argument wasn't given, so we output {}
 			os << "{}";
 		else {
-			InsetOptArg const * ins = ilist.front();
+			InsetArgument const * ins = ilist.front();
 			ilist.pop_front();
 			lines += ins->latexArgument(os, runparams, false);
 		}

@@ -514,6 +514,7 @@ SOURCEFILESINSETS = \
 	insets/RenderGraphic.cpp \
 	insets/RenderPreview.cpp \
 	insets/Inset.cpp \
+	insets/InsetArgument.cpp \
 	insets/InsetBibitem.cpp \
 	insets/InsetBibtex.cpp \
 	insets/InsetBox.cpp \
@@ -546,7 +547,6 @@ SOURCEFILESINSETS = \
 	insets/InsetNewpage.cpp \
 	insets/InsetNomencl.cpp \
 	insets/InsetNote.cpp \
-	insets/InsetOptArg.cpp \
 	insets/InsetPhantom.cpp \
 	insets/InsetPreview.cpp \
 	insets/InsetQuotes.cpp \
@@ -568,6 +568,7 @@ HEADERFILESINSETS = \
 	insets/RenderGraphic.h \
 	insets/RenderPreview.h \
 	insets/Inset.h \
+	insets/InsetArgument.h \
 	insets/InsetBibitem.h \
 	insets/InsetBibtex.h \
 	insets/InsetBox.h \
@@ -602,7 +603,6 @@ HEADERFILESINSETS = \
 	insets/InsetNewpage.h \
 	insets/InsetNomencl.h \
 	insets/InsetNote.h \
-	insets/InsetOptArg.h \
 	insets/InsetPhantom.h \
 	insets/InsetQuotes.h \
 	insets/InsetRef.h \

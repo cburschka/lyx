@@ -39,7 +39,7 @@
 #include "frontends/FontMetrics.h"
 
 #include "insets/InsetBibitem.h"
-#include "insets/InsetOptArg.h"
+#include "insets/InsetArgument.h"
 
 #include "support/lassert.h"
 #include "support/debug.h"

@@ -25,7 +25,7 @@
 #include "ParIterator.h"
 #include "TextClass.h"
 
-#include "insets/InsetOptArg.h"
+#include "insets/InsetArgument.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -142,11 +142,11 @@ bool TocBackend::updateItem(DocIterator const & dit)
 	InsetList::const_iterator end = par.insetList().end();
 	for (; it != end; ++it) {
 		Inset & inset = *it->inset;
-		if (inset.lyxCode() == OPTARG_CODE) {
+		if (inset.lyxCode() == ARG_CODE) {
 			if (!tocstring.empty())
 				break;
 			Paragraph const & inset_par =
-				*static_cast<InsetOptArg&>(inset).paragraphs().begin();
+				*static_cast<InsetArgument&>(inset).paragraphs().begin();
 			if (!par.labelString().empty())
 				tocstring = par.labelString() + ' ';
 			tocstring += inset_par.asString(AS_STR_INSETS);

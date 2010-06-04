@@ -83,7 +83,7 @@ enum InsetCode {
 	///
 	INDEX_PRINT_CODE,
 	///
-	OPTARG_CODE,
+	ARG_CODE,
 	///
 	CELL_CODE,
 	///

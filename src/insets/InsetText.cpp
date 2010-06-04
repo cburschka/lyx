@@ -12,7 +12,7 @@
 
 #include "InsetText.h"
 
-#include "insets/InsetOptArg.h"
+#include "insets/InsetArgument.h"
 
 #include "buffer_funcs.h"
 #include "Buffer.h"
@@ -700,12 +700,12 @@ void InsetText::addToToc(DocIterator const & cdit)
 			//lyxerr << (void*)&inset << " code: " << inset.lyxCode() << std::endl;
 			inset.addToToc(dit);
 			switch (inset.lyxCode()) {
-			case OPTARG_CODE: {
+			case ARG_CODE: {
 				if (!tocstring.empty())
 					break;
 				dit.pos() = 0;
 				Paragraph const & insetpar =
-					*static_cast<InsetOptArg&>(inset).paragraphs().begin();
+					*static_cast<InsetArgument&>(inset).paragraphs().begin();
 				if (!par.labelString().empty())
 					tocstring = par.labelString() + ' ';
 				tocstring += insetpar.asString(AS_STR_INSETS);
