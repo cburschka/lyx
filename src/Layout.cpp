@@ -149,6 +149,8 @@ Layout::Layout()
 	htmlforcecss_ = false;
 	htmltitle_ = false;
 	spellcheck = true;
+	optargs = 0;
+	reqargs = 0;
 }
 
 
