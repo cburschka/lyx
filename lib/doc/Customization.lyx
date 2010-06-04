@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 389
+\lyxformat 390
 \begin_document
 \begin_header
 \textclass scrbook
@@ -76,6 +76,7 @@ End
 
 \graphics default
 \default_output_format default
+\output_sync 0
 \bibtex_command default
 \index_command default
 \paperfontsize 12
@@ -11883,8 +11884,34 @@ int=0
 ] The number of optional arguments that can be used with this layout.
  This is useful for things like section headings, and only makes sense with
  LaTeX.
+ Note that, on output, the optional arguments will all precede any required
+ arguments (see below).
+ So one can have constructs like:
 \end_layout
 
+\begin_deeper
+\begin_layout LyX-Code
+
+\backslash
+mycmd[opt1]{req1}{contents of paragraph}
+\end_layout
+
+\begin_layout Standard
+but one cannot have things like: 
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+mycmd[opt1]{req1}[opt2]{contents of paragraph}
+\end_layout
+
+\begin_layout Standard
+at least, not without ERT (with which you can have anything).
+ 
+\end_layout
+
+\end_deeper
 \begin_layout Description
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -12164,6 +12191,49 @@ string
 ] The prefix to use when creating labels referring to paragraphs of this
  type.
  This allows the use of formatted references.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+RequiredArgs
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+int=0
+\end_layout
+
+\end_inset
+
+] The number of required arguments that the LaTeX command or environment
+ corresponding to this layout expects.
+ In the case of a command, these are required arguments 
+\emph on
+other than
+\emph default
+ that associated with the content of the paragraph itself.
+ These do not actually have to be provided: LyX will output empty arguments
+ if necessary.
+ Note that optional arguments will be output before required arguments.
+ See the discussion of the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+OptionalArgs
+\end_layout
+
+\end_inset
+
+ tag above for more information.
 \end_layout
 
 \begin_layout Description
