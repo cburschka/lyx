@@ -1848,6 +1848,7 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_BLOCK:
 	case LYX_ALIGN_LAYOUT:
 	case LYX_ALIGN_SPECIAL:
+	case LYX_ALIGN_DECIMAL:
 		break;
 	case LYX_ALIGN_LEFT:
 	case LYX_ALIGN_RIGHT:
@@ -1868,6 +1869,7 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_BLOCK:
 	case LYX_ALIGN_LAYOUT:
 	case LYX_ALIGN_SPECIAL:
+	case LYX_ALIGN_DECIMAL:
 		break;
 	case LYX_ALIGN_LEFT: {
 		string output;
@@ -1916,6 +1918,7 @@ int Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_BLOCK:
 	case LYX_ALIGN_LAYOUT:
 	case LYX_ALIGN_SPECIAL:
+	case LYX_ALIGN_DECIMAL:
 		break;
 	case LYX_ALIGN_LEFT:
 	case LYX_ALIGN_RIGHT:
@@ -1936,6 +1939,7 @@ int Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_BLOCK:
 	case LYX_ALIGN_LAYOUT:
 	case LYX_ALIGN_SPECIAL:
+	case LYX_ALIGN_DECIMAL:
 		break;
 	case LYX_ALIGN_LEFT: {
 		string output;

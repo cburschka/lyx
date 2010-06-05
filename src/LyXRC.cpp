@@ -2897,6 +2897,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_FORWARD_SEARCH_DVI:
 	case LyXRC::RC_FORWARD_SEARCH_PDF:
 	case LyXRC::RC_EXPORT_OVERWRITE:
+	case LyXRC::RC_DEFAULT_DECIMAL_POINT:
 	case LyXRC::RC_LAST:
 		break;
 	}
