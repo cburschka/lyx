@@ -154,6 +154,7 @@ ToolbarSet
 		Item "Align left" "command-alternatives inset-modify tabular m-align-left;inset-modify tabular align-left"
 		Item "Align center" "command-alternatives inset-modify tabular m-align-center;inset-modify tabular align-center"
 		Item "Align right" "command-alternatives inset-modify tabular m-align-right;inset-modify tabular align-right"
+		Item "Align on decimal" "inset-modify tabular align-decimal"
 		Separator
 		Item "Align top" "command-alternatives inset-modify tabular m-valign-top;inset-modify tabular valign-top"
 		Item "Align middle" "command-alternatives inset-modify tabular m-valign-middle;inset-modify tabular valign-middle"

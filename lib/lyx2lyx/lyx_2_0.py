@@ -28,6 +28,13 @@ from parser_tools import find_token, find_end_of, find_tokens, get_value, get_va
 ####################################################################
 # Private helper functions
 
+def remove_option(document, m, option):
+    l = document.body[m].find(option)
+    if l != -1:
+        val = document.body[m][l:].split('"')[1]
+        document.body[m] = document.body[m][:l-1] + document.body[m][l+len(option + '="' + val + '"'):]
+    return l
+
 def find_end_of_inset(lines, i):
     " Find end of inset, where lines[i] is included."
     return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
@@ -1588,6 +1595,16 @@ def revert_output_sync(document):
     del document.header[i]
 
 
+def revert_align_decimal(document):
+  l = 0
+  while True:
+    l = document.body[l].find('alignment=decimal')
+    if l == -1:
+        break
+    remove_option(document, l, 'decimal_point')
+    document.body[l].replace('decimal', 'center')
+
+
 ##
 # Conversion hub
 #
@@ -1637,10 +1654,12 @@ convert = [[346, []],
            [387, []],
            [388, []],
            [389, [convert_html_quotes]],
-           [390, []]
+           [390, []],
+           [391, []]
 					]
 
-revert =  [[389, [revert_output_sync]],
+revert =  [[390, [revert_align_decimal]],
+           [389, [revert_output_sync]],
            [388, [revert_html_quotes]],
            [387, [revert_pagesizes]],
            [386, [revert_math_scale]],

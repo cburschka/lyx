@@ -59,7 +59,9 @@ enum LyXAlignment {
 	///
 	LYX_ALIGN_LAYOUT = 16,
 	///
-	LYX_ALIGN_SPECIAL = 32
+	LYX_ALIGN_SPECIAL = 32,
+	///
+	LYX_ALIGN_DECIMAL = 64
 };
 
 ///

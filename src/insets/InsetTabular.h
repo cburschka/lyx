@@ -96,6 +96,8 @@ public:
 		///
 		ALIGN_BLOCK,
 		///
+		ALIGN_DECIMAL,
+		///
 		VALIGN_TOP,
 		///
 		VALIGN_BOTTOM,
@@ -189,6 +191,8 @@ public:
 		LONGTABULAR_ALIGN_CENTER,
 		///
 		LONGTABULAR_ALIGN_RIGHT,
+		///
+		SET_DECIMAL_POINT,
 		///
 		LAST_ACTION
 	};
@@ -490,6 +494,10 @@ public:
 		LyXAlignment alignment;
 		///
 		VAlignment valignment;
+		/// width of the part before the decimal
+		int decimal_hoffset;
+		/// width of the decimal part
+		int decimal_width;
 		///
 		int voffset;
 		///
@@ -570,6 +578,8 @@ public:
 		Length p_width;
 		///
 		docstring align_special;
+		///
+		docstring decimal_point;
 	};
 	///
 	typedef std::vector<ColumnData> column_vector;
@@ -614,8 +624,6 @@ public:
 	void updateIndexes();
 	///
 	bool setFixedWidth(row_type r, col_type c);
-	///
-	void updateContentAlignment(row_type r, col_type c);
 	/// return true of update is needed
 	bool updateColumnWidths();
 	///
@@ -943,6 +951,9 @@ private:
 };
 
 std::string const featureAsString(Tabular::Feature feature);
+
+/// Split cell on decimal symbol
+InsetTableCell splitCell(InsetTableCell & head, docstring const decimal_sym, bool & hassep);
 
 } // namespace lyx
 

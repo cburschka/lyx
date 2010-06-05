@@ -125,6 +125,7 @@ TabularFeature tabularFeature[] =
 	{ Tabular::ALIGN_RIGHT, "align-right", false },
 	{ Tabular::ALIGN_CENTER, "align-center", false },
 	{ Tabular::ALIGN_BLOCK, "align-block", false },
+	{ Tabular::ALIGN_DECIMAL, "align-decimal", false },
 	{ Tabular::VALIGN_TOP, "valign-top", false },
 	{ Tabular::VALIGN_BOTTOM, "valign-bottom", false },
 	{ Tabular::VALIGN_MIDDLE, "valign-middle", false },
@@ -174,6 +175,7 @@ TabularFeature tabularFeature[] =
 	{ Tabular::LONGTABULAR_ALIGN_LEFT, "longtabular-align-left", false },
 	{ Tabular::LONGTABULAR_ALIGN_CENTER, "longtabular-align-center", false },
 	{ Tabular::LONGTABULAR_ALIGN_RIGHT, "longtabular-align-right", false },
+	{ Tabular::SET_DECIMAL_POINT, "set-decimal-point", true },
 	{ Tabular::LAST_ACTION, "", false }
 };
 
@@ -251,6 +253,8 @@ string const tostr(LyXAlignment const & num)
 		return "layout";
 	case LYX_ALIGN_SPECIAL:
 		return "special";
+	case LYX_ALIGN_DECIMAL:
+		return "decimal";
 	}
 	return string();
 }
@@ -311,6 +315,8 @@ bool string2type(string const str, LyXAlignment & num)
 		num = LYX_ALIGN_CENTER;
 	else if (str == "right")
 		num = LYX_ALIGN_RIGHT;
+	else if (str == "decimal")
+		num = LYX_ALIGN_DECIMAL;
 	else
 		return false;
 	return true;
@@ -502,6 +508,30 @@ string const featureAsString(Tabular::Feature action)
 }
 
 
+InsetTableCell splitCell(InsetTableCell & head, docstring const align_d, bool & hassep)
+{
+	InsetTableCell tail = InsetTableCell(head);
+	tail.getText(0)->setMacrocontextPosition(
+		head.getText(0)->macrocontextPosition());
+	tail.setBuffer(head.buffer());
+
+	DocIterator dit = doc_iterator_begin(&head.buffer(), &head);
+	for (; dit; dit.forwardChar())
+		if (dit.inTexted() && dit.depth()==1
+			&& dit.paragraph().find(align_d, false, false, dit.pos()))
+			break;
+
+	pit_type const psize = head.paragraphs().front().size();
+	hassep = dit;
+	if (hassep)
+		head.paragraphs().front().eraseChars(dit.pos(), psize, false);
+
+	tail.paragraphs().front().eraseChars(0, 
+		dit.pos() < psize ? dit.pos() + 1 : psize, false);
+
+	return tail;
+}
+
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -517,6 +547,8 @@ Tabular::CellData::CellData(Buffer * buf)
 	  multirow(Tabular::CELL_NORMAL),
 	  alignment(LYX_ALIGN_CENTER),
 	  valignment(LYX_VALIGN_TOP),
+	  decimal_hoffset(0),
+	  decimal_width(0),
 	  voffset(0),
 	  top_line(false),
 	  bottom_line(false),
@@ -537,6 +569,8 @@ Tabular::CellData::CellData(CellData const & cs)
 	  multirow(cs.multirow),
 	  alignment(cs.alignment),
 	  valignment(cs.valignment),
+	  decimal_hoffset(cs.decimal_hoffset),
+	  decimal_width(cs.decimal_width),
 	  voffset(cs.voffset),
 	  top_line(cs.top_line),
 	  bottom_line(cs.bottom_line),
@@ -564,6 +598,8 @@ void Tabular::CellData::swap(CellData & rhs)
 	std::swap(multirow, rhs.multirow);
 	std::swap(alignment, rhs.alignment);
 	std::swap(valignment, rhs.valignment);
+	std::swap(decimal_hoffset, rhs.decimal_hoffset);
+	std::swap(decimal_width, rhs.decimal_width);
 	std::swap(voffset, rhs.voffset);
 	std::swap(top_line, rhs.top_line);
 	std::swap(bottom_line, rhs.bottom_line);
@@ -814,7 +850,8 @@ void Tabular::updateIndexes()
 			rowofcell[i] = row;
 			columnofcell[i] = column;
 			setFixedWidth(row, column);
-			updateContentAlignment(row, column);
+			cell_info[row][column].inset->setContentAlignment(
+				getAlignment(cellIndex(row, column)));
 			++i;
 		}
 }
@@ -910,6 +947,14 @@ int Tabular::cellHeight(idx_type cell) const
 
 bool Tabular::updateColumnWidths()
 {
+	vector<int> max_dwidth(ncols(), 0);
+	for(col_type c = 0; c < ncols(); ++c)
+		for(row_type r = 0; r < nrows(); ++r) {
+			idx_type const i = cellIndex(r, c);
+			if (getAlignment(i) == LYX_ALIGN_DECIMAL)
+				max_dwidth[c] = max(max_dwidth[c], cell_info[r][c].decimal_width);
+		}
+
 	bool update = false;
 	// for each col get max of single col cells
 	for(col_type c = 0; c < ncols(); ++c) {
@@ -917,7 +962,11 @@ bool Tabular::updateColumnWidths()
 		for(row_type r = 0; r < nrows(); ++r) {
 			idx_type const i = cellIndex(r, c);
 			if (columnSpan(i) == 1)
-				new_width = max(new_width, cellInfo(i).width);
+				if (getAlignment(i) == LYX_ALIGN_DECIMAL)
+					new_width = max(new_width, cellInfo(i).width 
+				                + max_dwidth[c] - cellInfo(i).decimal_width);
+				else
+					new_width = max(new_width, cellInfo(i).width);
 		}
 
 		if (column_info[c].width != new_width) {
@@ -966,11 +1015,16 @@ void Tabular::setCellWidth(idx_type cell, int new_width)
 void Tabular::setAlignment(idx_type cell, LyXAlignment align,
 			      bool onlycolumn)
 {
-	if (!isMultiColumn(cell) || onlycolumn)
-		column_info[cellColumn(cell)].alignment = align;
-	if (!onlycolumn)
+	col_type const col = cellColumn(cell);
+	if (onlycolumn || !isMultiColumn(cell)) {
+		column_info[col].alignment = align;
+		docstring & dpoint = column_info[col].decimal_point;
+		if (align == LYX_ALIGN_DECIMAL && dpoint.empty())
+			dpoint = from_utf8(lyxrc.default_decimal_point);
+	} else {
 		cellInfo(cell).alignment = align;
-	cellInset(cell).get()->setContentAlignment(align);
+		cellInset(cell).get()->setContentAlignment(align);
+	}
 }
 
 
@@ -1047,13 +1101,6 @@ bool Tabular::setFixedWidth(row_type r, col_type c)
 	      || (multicol && !cell_info[r][c].p_width.zero());
 	cell_info[r][c].inset->toggleFixedWidth(fixed_width);
 	return fixed_width;
-}
-
-
-void Tabular::updateContentAlignment(row_type r, col_type c)
-{
-	cell_info[r][c].inset->setContentAlignment(
-		getAlignment(cellIndex(r, c)));
 }
 
 
@@ -1170,8 +1217,9 @@ bool Tabular::columnRightLine(col_type c) const
 
 LyXAlignment Tabular::getAlignment(idx_type cell, bool onlycolumn) const
 {
-	if (!onlycolumn && isMultiColumn(cell))
+	if (!onlycolumn && (isMultiColumn(cell) || isMultiRow(cell)))
 		return cellInfo(cell).alignment;
+	
 	return column_info[cellColumn(cell)].alignment;
 }
 
@@ -1212,6 +1260,21 @@ int Tabular::textHOffset(idx_type cell) const
 		x += columnWidth(cell) - cellWidth(cell);
 		// + interColumnSpace(cell);
 		break;
+	case LYX_ALIGN_DECIMAL: {
+		// we center when no decimal point
+		if (cellInfo(cell).decimal_width == 0) {
+			x += (columnWidth(cell) - cellWidth(cell)) / 2;
+			break;
+		}
+		col_type const c = cellColumn(cell);
+		int max_dhoffset = 0;
+		for(row_type r = 0; r < row_info.size() ; ++r) {
+			idx_type const i = cellIndex(r, c);
+			if (getAlignment(i) == LYX_ALIGN_DECIMAL)
+				max_dhoffset = max(max_dhoffset, cellInfo(i).decimal_hoffset);
+		}
+		x += max_dhoffset - cellInfo(cell).decimal_hoffset;
+	}
 	default:
 		// LYX_ALIGN_LEFT: nothing :-)
 		break;
@@ -1303,8 +1366,10 @@ void Tabular::write(ostream & os) const
 	os << ">\n";
 	for (col_type c = 0; c < ncols(); ++c) {
 		os << "<column"
-		   << write_attribute("alignment", column_info[c].alignment)
-		   << write_attribute("valignment", column_info[c].valignment)
+		   << write_attribute("alignment", column_info[c].alignment);
+		if (column_info[c].alignment == LYX_ALIGN_DECIMAL)
+		   os << write_attribute("decimal_point", column_info[c].decimal_point);
+		os << write_attribute("valignment", column_info[c].valignment)
 		   << write_attribute("width", column_info[c].p_width.asString())
 		   << write_attribute("special", column_info[c].align_special)
 		   << ">\n";
@@ -1410,6 +1475,7 @@ void Tabular::read(Lexer & lex)
 			return;
 		}
 		getTokenValue(line, "alignment", column_info[c].alignment);
+		getTokenValue(line, "decimal_point", column_info[c].decimal_point);
 		getTokenValue(line, "valignment", column_info[c].valignment);
 		getTokenValue(line, "width", column_info[c].p_width);
 		getTokenValue(line, "special", column_info[c].align_special);
@@ -1504,7 +1570,8 @@ Tabular::idx_type Tabular::setMultiColumn(idx_type cell, idx_type number)
 	cell = cellIndex(row, col);
 	CellData & cs = cellInfo(cell);
 	cs.multicolumn = CELL_BEGIN_OF_MULTICOLUMN;
-	cs.alignment = column_info[col].alignment;
+	if (column_info[col].alignment != LYX_ALIGN_DECIMAL)
+		cs.alignment = column_info[col].alignment;
 	if (col > 0)
 		setRightLine(cell, rightLine(cellIndex(row, col - 1)));
 
@@ -1544,7 +1611,7 @@ Tabular::idx_type Tabular::setMultiRow(idx_type cell, idx_type number)
 	// change (assigning this to uwestoehr)
 	// until LyX supports this, use the deault alignment of multirow
 	// cells: left
-	cs.alignment = LYX_ALIGN_LEFT; 
+	cs.alignment = LYX_ALIGN_CENTER; 
 
 	// set the bottom row of the last selected cell
 	setBottomLine(cell, bottomLine(cell + (number - 1)*ncols()));
@@ -1563,11 +1630,12 @@ Tabular::idx_type Tabular::setMultiRow(idx_type cell, idx_type number)
 Tabular::idx_type Tabular::columnSpan(idx_type cell) const
 {
 	row_type const row = cellRow(cell);
-	col_type column = cellColumn(cell) + 1;
-	while (column < ncols() && isPartOfMultiColumn(row, column))
-		++column;
+	col_type const col = cellColumn(cell);
+	int span = 1;
+	while (col + span < ncols() && isPartOfMultiColumn(row, col + span))
+		++span;
 
-	return column - cellColumn(cell);
+	return span;
 }
 
 
@@ -1936,20 +2004,29 @@ int Tabular::TeXTopHLine(odocstream & os, row_type row, string const lang) const
 		}
 	} else if (row == 0) {
 		for (col_type c = 0; c < ncols(); ++c) {
-			if (topline[c]) {
-				//babel makes the "-" character an active one, so we have to suppress this here
-				//see http://groups.google.com/group/comp.text.tex/browse_thread/thread/af769424a4a0f289#
-				if (lang == "slovak" || lang == "czech")
-					os << (use_booktabs ? "\\expandafter\\cmidrule\\expandafter{\\expandafter" :
-					                      "\\expandafter\\cline\\expandafter{\\expandafter")
-										  << c + 1 << "\\string-";
-				else
-					os << (use_booktabs ? "\\cmidrule{" : "\\cline{") << c + 1 << '-';
-				// get to last column of line span
-				while (c < ncols() && topline[c])
-					++c;
-				os << c << "} ";
-			}
+			for ( ; c < ncols() && !topline[c]; ++c) {}
+
+			col_type offset = 0;
+			for (col_type j = 0 ; j < c; ++j)
+				if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
+					++offset;
+
+			//babel makes the "-" character an active one, so we have to suppress this here
+			//see http://groups.google.com/group/comp.text.tex/browse_thread/thread/af769424a4a0f289#
+			if (lang == "slovak" || lang == "czech")
+				os << "\\expandafter" << (use_booktabs ? "\\cmidrule" : "\\cline") 
+				   << "\\expandafter{\\expandafter" << c + 1 + offset << "\\string-";
+			else
+				os << (use_booktabs ? "\\cmidrule{" : "\\cline{") << c + 1 + offset << '-';
+
+			col_type cstart = c;
+			for ( ; c < ncols() && topline[c]; ++c) {}
+
+			for (col_type j = cstart ; j < c ; ++j)
+				if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
+					++offset;
+
+			os << c + offset << "} ";
 		}
 	}
 	os << "\n";
@@ -2000,20 +2077,29 @@ int Tabular::TeXBottomHLine(odocstream & os, row_type row, string const lang) co
 			os << "\\hline ";
 	} else {
 		for (col_type c = 0; c < ncols(); ++c) {
-			if (bottomline[c]) {
-				//babel makes the "-" character an active one, so we have to suppress this here
-				//see http://groups.google.com/group/comp.text.tex/browse_thread/thread/af769424a4a0f289#
-				if (lang == "slovak" || lang == "czech")
-					os << (use_booktabs ? "\\expandafter\\cmidrule\\expandafter{\\expandafter" :
-					                      "\\expandafter\\cline\\expandafter{\\expandafter")
-										  << c + 1 << "\\string-";
-				else
-					os << (use_booktabs ? "\\cmidrule{" : "\\cline{") << c + 1 << '-';
-				// get to last column of line span
-				while (c < ncols() && bottomline[c])
-					++c;
-				os << c << "} ";
-			}
+			for ( ; c < ncols() && !bottomline[c]; ++c) {}
+
+			col_type offset = 0;
+			for (col_type j = 0 ; j < c; ++j)
+				if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
+					++offset;
+
+			//babel makes the "-" character an active one, so we have to suppress this here
+			//see http://groups.google.com/group/comp.text.tex/browse_thread/thread/af769424a4a0f289#
+			if (lang == "slovak" || lang == "czech")
+				os << "\\expandafter" << (use_booktabs ? "\\cmidrule" : "\\cline") 
+				   << "\\expandafter{\\expandafter" << c + 1 + offset << "\\string-";
+			else
+				os << (use_booktabs ? "\\cmidrule{" : "\\cline{") << c + 1 + offset << '-';
+
+			col_type cstart = c;
+			for ( ; c < ncols() && bottomline[c]; ++c) {}
+
+			for (col_type j = cstart ; j < c ; ++j)
+				if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
+					++offset;
+
+			os << c + offset << "} ";
 		}
 	}
 	os << "\n";
@@ -2048,8 +2134,19 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell,
 		|| ((colright || nextcolleft) && !rightLine(cell) && !nextcellleft)
 		|| (!colright && !nextcolleft && (rightLine(cell) || nextcellleft))
 		|| (coldouble != celldouble);
+
+	// we center in multicol when no decimal point
+	ismulticol |= ((column_info[c].alignment == LYX_ALIGN_DECIMAL)
+		&& (cellInfo(cell).decimal_width == 0) || isMultiRow(cell));
+
+	// up counter by 1 for each decimally aligned col since they use 2 latex cols
+	int latexcolspan = columnSpan(cell);
+	for(col_type col = c; col < c + columnSpan(cell); ++col)
+		if (column_info[col].alignment == LYX_ALIGN_DECIMAL)
+			++latexcolspan;
+
 	if (ismulticol) {
-		os << "\\multicolumn{" << columnSpan(cell) << "}{";
+		os << "\\multicolumn{" << latexcolspan << "}{";
 		if (c ==0 && leftLine(cell))
 			os << '|';
 		if (!cellInfo(cell).align_special.empty()) {
@@ -2103,7 +2200,7 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell,
 			// add extra vertical line if we want a double one
 			os << '|';
 		os << "}{";
-		} // end if ismulticol
+	} // end if ismulticol
 
 	// we only need code for the first multirow cell
 	ismultirow = isMultiRow(cell);
@@ -2116,7 +2213,7 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell,
 			// needs to be discussed
 			os << "*";
 		os << "}{";
-		} // end if ismultirow
+	} // end if ismultirow
 
 	if (getRotateCell(cell)) {
 		os << "\\begin{sideways}\n";
@@ -2177,9 +2274,11 @@ int Tabular::TeXCellPostamble(odocstream & os, idx_type cell,
 		os << "%\n\\end{sideways}";
 		++ret;
 	}
-	if (ismulticol || ismultirow) {
+	if (ismultirow)
 		os << '}';
-	}
+	if (ismulticol)
+		os << '}';
+
 	return ret;
 }
 
@@ -2328,10 +2427,15 @@ int Tabular::TeXRow(odocstream & os, row_type row,
 	bool ismulticol = false;
 	bool ismultirow = false;
 	for (col_type c = 0; c < ncols(); ++c) {
-		if (isPartOfMultiRow(row, c))
-			os << " & "; // we need to add a further column
-		if (isPartOfMultiColumn(row, c) || isPartOfMultiRow(row, c))
+		if (isPartOfMultiColumn(row, c))
 			continue;
+			
+		if (isPartOfMultiRow(row, c) && 
+			column_info[c].alignment != LYX_ALIGN_DECIMAL) {
+			os << " & "; 
+			continue;
+		}
+
 		cell = cellIndex(row, c);
 		ret += TeXCellPreamble(os, cell, ismulticol, ismultirow);
 		shared_ptr<InsetTableCell> inset = cellInset(cell);
@@ -2360,7 +2464,22 @@ int Tabular::TeXRow(odocstream & os, row_type row,
 		newrp.inTableCell = (getAlignment(cell) == LYX_ALIGN_BLOCK)
 				    ? OutputParams::PLAIN
 				    : OutputParams::ALIGNED;
-		ret += inset->latex(os, newrp);
+
+		if (getAlignment(cell) == LYX_ALIGN_DECIMAL
+			&& cellInfo(cell).decimal_width != 0 && !isMultiRow(cell)) {
+			// copy cell and split in 2
+			InsetTableCell head = InsetTableCell(*cellInset(cell).get());
+			head.getText(0)->setMacrocontextPosition(
+				cellInset(cell)->getText(0)->macrocontextPosition());
+			head.setBuffer(buffer());
+			bool hassep = false;
+			InsetTableCell tail = splitCell(head, column_info[c].decimal_point, hassep);
+			head.latex(os, newrp);
+			os << '&';
+			ret += tail.latex(os, newrp);
+		} else if (!isPartOfMultiRow(row, c))
+			ret += inset->latex(os, newrp);
+
 		runparams.encoding = newrp.encoding;
 		if (rtl)
 			os << '}';
@@ -2477,6 +2596,7 @@ int Tabular::latex(odocstream & os, OutputParams const & runparams) const
 				case LYX_ALIGN_BLOCK:
 				case LYX_ALIGN_LAYOUT:
 				case LYX_ALIGN_SPECIAL:
+				case LYX_ALIGN_DECIMAL:
 					break;
 				}
 
@@ -2501,6 +2621,9 @@ int Tabular::latex(odocstream & os, OutputParams const & runparams) const
 					break;
 				case LYX_ALIGN_RIGHT:
 					os << 'r';
+					break;
+				case LYX_ALIGN_DECIMAL:
+					os << "r@{\\extracolsep{0pt}" << column_info[c].decimal_point << "}l";
 					break;
 				default:
 					os << 'c';
@@ -3235,6 +3358,33 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			// FIXME(?): do we need a second metrics call?
 			TextMetrics const & tm = 
 				mi.base.bv->textMetrics(tabular.cellInset(cell)->getText(0));
+
+			// determine horiz offset because of decimal align (if necessary)
+			int decimal_hoffset = 0;
+			int decimal_width = 0;
+			if ((tabular.column_info[c].alignment == LYX_ALIGN_DECIMAL)
+				&& !tabular.isMultiColumn(cell)
+				&& !tabular.isMultiRow(cell)) {
+				// make a copy which we will split in 2
+				InsetTableCell head = InsetTableCell(*tabular.cellInset(cell).get());
+				head.getText(0)->setMacrocontextPosition(
+					tabular.cellInset(cell)->getText(0)->macrocontextPosition());
+				head.setBuffer(tabular.buffer());
+				// split in 2 and calculate width of each part
+				bool hassep = false;
+				InsetTableCell tail = 
+					splitCell(head, tabular.column_info[c].decimal_point, hassep);
+				Dimension dim1;
+				head.metrics(m, dim1);
+				decimal_hoffset = dim1.width();
+				if (hassep) {
+					tail.metrics(m, dim1);
+					decimal_width = dim1.width();
+				}
+			}
+			tabular.cell_info[r][c].decimal_hoffset = decimal_hoffset;
+			tabular.cell_info[r][c].decimal_width = decimal_width;
+
 			// with LYX_VALIGN_BOTTOM the descent is relative to the last par
 			// = descent of text in last par + TEXT_TO_INSET_OFFSET:
 			int const lastpardes = tm.last().second->descent()
@@ -4040,6 +4190,11 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.clear();
 			return true;
 
+		case Tabular::SET_DECIMAL_POINT:
+			status.setEnabled(
+				tabular.getAlignment(cur.idx()) == LYX_ALIGN_DECIMAL);
+			break;
+
 		case Tabular::MULTICOLUMN:
 			// If a row is set as longtable caption, it must not be allowed
 			// to unset that this row is a multicolumn.
@@ -4114,6 +4269,12 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setEnabled(!tabular.getPWidth(cur.idx()).zero()
 				&& !tabular.isMultiRow(cur.idx()));
 			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_BLOCK);
+			break;
+
+		case Tabular::ALIGN_DECIMAL:
+			status.setEnabled(!tabular.isMultiRow(cur.idx()) 
+				&& !tabular.isMultiColumn(cur.idx()));
+			status.setOnOff(tabular.getAlignment(cur.idx(), true) == LYX_ALIGN_DECIMAL);
 			break;
 
 		case Tabular::M_VALIGN_TOP:
@@ -4810,6 +4971,10 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		setAlign = LYX_ALIGN_BLOCK;
 		break;
 
+	case Tabular::ALIGN_DECIMAL:
+		setAlign = LYX_ALIGN_DECIMAL;
+		break;
+
 	case Tabular::M_VALIGN_TOP:
 	case Tabular::VALIGN_TOP:
 		setVAlign = Tabular::LYX_VALIGN_TOP;
@@ -4954,6 +5119,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::ALIGN_RIGHT:
 	case Tabular::ALIGN_CENTER:
 	case Tabular::ALIGN_BLOCK:
+	case Tabular::ALIGN_DECIMAL:
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
 			for (col_type c = sel_col_start; c <= sel_col_end; ++c)
 				tabular.setAlignment(tabular.cellIndex(r, c), setAlign, flag);
@@ -5244,6 +5410,11 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			}
 		break;
 	}
+
+	case Tabular::SET_DECIMAL_POINT:
+		for (col_type c = sel_col_start; c <= sel_col_end; ++c)
+			tabular.column_info[c].decimal_point = from_utf8(value);
+		break;
 
 	// dummy stuff just to avoid warnings
 	case Tabular::LAST_ACTION:

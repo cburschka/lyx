@@ -66,6 +66,7 @@ public:
 		RC_COPIER,
 		RC_CURSOR_FOLLOWS_SCROLLBAR,
 		RC_DATE_INSERT_FORMAT,
+		RC_DEFAULT_DECIMAL_POINT,
 		RC_DEFAULT_LANGUAGE,
 		RC_DEFAULT_VIEW_FORMAT,
 		RC_DEFAULT_PAPERSIZE,
@@ -499,6 +500,8 @@ public:
 	std::string forward_search_pdf;
 	///
 	int export_overwrite;
+	/// Default decimal point when aligning table columns on decimal
+	std::string default_decimal_point;
 };
 
 

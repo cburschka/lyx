@@ -27,6 +27,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LyX.h"
+#include "LyXRC.h"
 
 #include "insets/InsetTabular.h"
 
@@ -159,6 +160,10 @@ GuiTabular::GuiTabular(QWidget * parent)
 void GuiTabular::checkEnabled()
 {
 	hAlignCB->setEnabled(true);
+	bool dalign = hAlignCB->currentText() == QString("Decimal");
+	decimalPointLE->setEnabled(dalign);
+	decimalL->setEnabled(dalign);
+
 	vAlignCB->setEnabled(!multirowCB->isChecked() 
 		&& !widgetsToLength(widthED, widthUnitCB).empty());
 
@@ -271,38 +276,24 @@ static void setParam(string & param_str, Tabular::Feature f, string const & arg 
 
 void GuiTabular::setHAlign(string & param_str) const
 {
-	int const align = hAlignCB->currentIndex();
-
-	enum HALIGN { LEFT, RIGHT, CENTER, BLOCK };
-	HALIGN h = LEFT;
-
-	switch (align) {
-		case 0: h = LEFT; break;
-		case 1: h = CENTER; break;
-		case 2: h = RIGHT; break;
-		case 3: h = BLOCK; break;
-	}
-
 	Tabular::Feature num = Tabular::ALIGN_LEFT;
 	Tabular::Feature multi_num = Tabular::M_ALIGN_LEFT;
-
-	switch (h) {
-		case LEFT:
-			num = Tabular::ALIGN_LEFT;
-			multi_num = Tabular::M_ALIGN_LEFT;
-			break;
-		case CENTER:
-			num = Tabular::ALIGN_CENTER;
-			multi_num = Tabular::M_ALIGN_CENTER;
-			break;
-		case RIGHT:
-			num = Tabular::ALIGN_RIGHT;
-			multi_num = Tabular::M_ALIGN_RIGHT;
-			break;
-		case BLOCK:
-			num = Tabular::ALIGN_BLOCK;
-			//multi_num: no equivalent
-			break;
+	QString const align = hAlignCB->currentText();
+	if (align == qt_("Left")) {
+		num = Tabular::ALIGN_LEFT;
+		multi_num = Tabular::M_ALIGN_LEFT;
+	} else if (align == qt_("Center")) {
+		num = Tabular::ALIGN_CENTER;
+		multi_num = Tabular::M_ALIGN_CENTER;
+	} else if (align == qt_("Right")) {
+		num = Tabular::ALIGN_RIGHT;
+		multi_num = Tabular::M_ALIGN_RIGHT;
+	} else if (align == qt_("Justified")) {
+		num = Tabular::ALIGN_BLOCK;
+		//multi_num: no equivalent
+	} else if (align == qt_("Decimal")) {
+		num = Tabular::ALIGN_DECIMAL;
+		//multi_num: no equivalent
 	}
 
 	if (multicolumnCB->isChecked())
@@ -367,6 +358,13 @@ docstring GuiTabular::dialogToParams() const
 	// FIXME: We should use Tabular directly.
 	string param_str = "tabular";
 	setHAlign(param_str);
+
+	// SET_DECIMAL_POINT must come after setHAlign() (ALIGN_DECIMAL)
+	string decimal_point = fromqstr(decimalPointLE->text());
+	if (decimal_point.empty())
+		decimal_point = lyxrc.default_decimal_point;
+	setParam(param_str, Tabular::SET_DECIMAL_POINT, decimal_point);
+
 	setVAlign(param_str);
 	setTableAlignment(param_str);
 	//
@@ -693,29 +691,43 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	hAlignCB->addItem(qt_("Right"));
 	if (!multicol && !pwidth.zero())
 		hAlignCB->addItem(qt_("Justified"));
+	if (!multicol)
+		hAlignCB->addItem(qt_("Decimal"));
 
-	int align = 0;
+	QString align;
 	switch (tabular.getAlignment(cell)) {
-	case LYX_ALIGN_LEFT:
-		align = 0;
-		break;
-	case LYX_ALIGN_CENTER:
-		align = 1;
-		break;
-	case LYX_ALIGN_RIGHT:
-		align = 2;
-		break;
-	case LYX_ALIGN_BLOCK:
-	{
-		if (!multicol && !pwidth.zero())
-			align = 3;
-		break;
+		case LYX_ALIGN_LEFT:
+			align = qt_("Left");
+			break;
+		case LYX_ALIGN_CENTER:
+			align = qt_("Center");
+			break;
+		case LYX_ALIGN_RIGHT:
+			align = qt_("Right");
+			break;
+		case LYX_ALIGN_BLOCK:
+		{
+			if (!multicol && !pwidth.zero())
+				align = qt_("Justified");
+			break;
+		}
+		case LYX_ALIGN_DECIMAL:
+		{
+			if (!multicol)
+				align = qt_("Decimal");
+			break;
+		}
+		default:
+			// we should never end up here
+			break;
 	}
-	default:
-		align = 0;
-		break;
-	}
-	hAlignCB->setCurrentIndex(align);
+	hAlignCB->setCurrentIndex(hAlignCB->findText(align));
+
+	//
+	QString decimal_point = toqstr(tabular.column_info[col].decimal_point);
+	if (decimal_point.isEmpty())
+		decimal_point = toqstr(from_utf8(lyxrc.default_decimal_point));
+	decimalPointLE->setText(decimal_point);
 
 	int valign = 0;
 	switch (tabular.getVAlignment(cell)) {
@@ -772,6 +784,7 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 		captionStatusCB->blockSignals(true);
 		captionStatusCB->setChecked(false);
 		captionStatusCB->blockSignals(false);
+		checkEnabled();
 		return;
 	} else {
 		// longtables cannot have a vertical alignment

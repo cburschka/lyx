@@ -5,17 +5,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>374</width>
-    <height>389</height>
+    <width>358</width>
+    <height>376</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string/>
   </property>
   <property name="sizeGripEnabled" stdset="0">
-   <bool>true</bool>
+   <bool>false</bool>
   </property>
-  <layout class="QGridLayout" name="_2">
+  <layout class="QGridLayout" name="gridLayout_9">
+   <property name="margin">
+    <number>0</number>
+   </property>
    <item row="0" column="0">
     <widget class="QTabWidget" name="TabWidget">
      <property name="toolTip">
@@ -73,23 +76,76 @@
               <string>Right</string>
              </property>
             </item>
+            <item>
+             <property name="text">
+              <string>Decimal</string>
+             </property>
+            </item>
            </widget>
           </item>
           <item row="0" column="2" colspan="2">
-           <spacer>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Expanding</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <spacer>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="decimalL">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>Decimal point:</string>
+              </property>
+              <property name="buddy">
+               <cstring>decimalPointLE</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="decimalPointLE">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>20</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="inputMask">
+               <string>X; </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="maxLength">
+               <number>1</number>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="fixedWidthColLA">
@@ -149,7 +205,7 @@
             </item>
            </widget>
           </item>
-          <item row="2" column="2" colspan="2">
+          <item row="2" column="2">
            <spacer name="spacer">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -308,19 +364,6 @@
           <string>Custom column format (LaTeX)</string>
          </property>
         </widget>
-       </item>
-       <item row="4" column="1">
-        <spacer name="verticalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>4</height>
-          </size>
-         </property>
-        </spacer>
        </item>
       </layout>
      </widget>
@@ -1420,43 +1463,49 @@
  <tabstops>
   <tabstop>TabWidget</tabstop>
   <tabstop>hAlignCB</tabstop>
+  <tabstop>decimalPointLE</tabstop>
   <tabstop>widthED</tabstop>
   <tabstop>widthUnitCB</tabstop>
   <tabstop>vAlignCB</tabstop>
   <tabstop>multicolumnCB</tabstop>
-  <tabstop>rotateTabularCB</tabstop>
   <tabstop>multirowCB</tabstop>
   <tabstop>rotateCellCB</tabstop>
+  <tabstop>TableAlignCB</tabstop>
+  <tabstop>rotateTabularCB</tabstop>
   <tabstop>specialAlignmentED</tabstop>
-  <tabstop>borderSetPB</tabstop>
-  <tabstop>borderUnsetPB</tabstop>
   <tabstop>borderDefaultRB</tabstop>
   <tabstop>booktabsRB</tabstop>
   <tabstop>topspaceCO</tabstop>
-  <tabstop>bottomspaceCO</tabstop>
-  <tabstop>interlinespaceCO</tabstop>
+  <tabstop>bottomspaceUnit</tabstop>
   <tabstop>topspaceED</tabstop>
+  <tabstop>topspaceUnit</tabstop>
+  <tabstop>bottomspaceCO</tabstop>
   <tabstop>bottomspaceED</tabstop>
   <tabstop>interlinespaceED</tabstop>
-  <tabstop>topspaceUnit</tabstop>
-  <tabstop>bottomspaceUnit</tabstop>
-  <tabstop>interlinespaceUnit</tabstop>
+  <tabstop>interlinespaceCO</tabstop>
   <tabstop>longTabularCB</tabstop>
+  <tabstop>interlinespaceUnit</tabstop>
   <tabstop>headerStatusCB</tabstop>
+  <tabstop>firstheaderNoContentsCB</tabstop>
   <tabstop>headerBorderAboveCB</tabstop>
   <tabstop>headerBorderBelowCB</tabstop>
   <tabstop>firstheaderStatusCB</tabstop>
   <tabstop>firstheaderBorderAboveCB</tabstop>
   <tabstop>firstheaderBorderBelowCB</tabstop>
-  <tabstop>firstheaderNoContentsCB</tabstop>
-  <tabstop>footerStatusCB</tabstop>
   <tabstop>footerBorderAboveCB</tabstop>
+  <tabstop>footerStatusCB</tabstop>
+  <tabstop>newpageCB</tabstop>
   <tabstop>footerBorderBelowCB</tabstop>
   <tabstop>lastfooterStatusCB</tabstop>
   <tabstop>lastfooterBorderAboveCB</tabstop>
   <tabstop>lastfooterBorderBelowCB</tabstop>
   <tabstop>lastfooterNoContentsCB</tabstop>
-  <tabstop>newpageCB</tabstop>
+  <tabstop>captionStatusCB</tabstop>
+  <tabstop>leftRB</tabstop>
+  <tabstop>borderSetPB</tabstop>
+  <tabstop>centerRB</tabstop>
+  <tabstop>rightRB</tabstop>
+  <tabstop>borderUnsetPB</tabstop>
  </tabstops>
  <includes>
   <include location="local">qt_i18n.h</include>

@@ -43,14 +43,31 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="2" rowspan="2">
+   <item row="1" column="2">
     <widget class="QLineEdit" name="languagePackageED">
      <property name="toolTip">
       <string>Enter the command to load the language package (default: babel)</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="3" rowspan="2">
+   <item row="2" column="0" colspan="2">
+    <widget class="QLabel" name="startCommandLA">
+     <property name="text">
+      <string>Command s&amp;tart:</string>
+     </property>
+     <property name="buddy">
+      <cstring>startCommandED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QLineEdit" name="startCommandED">
+     <property name="toolTip">
+      <string>The LaTeX command that starts a switch to a foreign language</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3">
     <spacer name="horizontalSpacer">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -64,23 +81,6 @@
     </spacer>
    </item>
    <item row="3" column="0" colspan="2">
-    <widget class="QLabel" name="startCommandLA">
-     <property name="text">
-      <string>Command s&amp;tart:</string>
-     </property>
-     <property name="buddy">
-      <cstring>startCommandED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="2">
-    <widget class="QLineEdit" name="startCommandED">
-     <property name="toolTip">
-      <string>The LaTeX command that starts a switch to a foreign language</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="2">
     <widget class="QLabel" name="endCommandLA">
      <property name="text">
       <string>Command e&amp;nd:</string>
@@ -90,10 +90,36 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="2">
+   <item row="3" column="2">
     <widget class="QLineEdit" name="endCommandED">
      <property name="toolTip">
       <string>The LaTeX command that ends a switch to a foreign language</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QLabel" name="decimalPointL">
+     <property name="text">
+      <string>Default Decimal &amp;Point:</string>
+     </property>
+     <property name="buddy">
+      <cstring>defaultDecimalPointLE</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2">
+    <widget class="QLineEdit" name="defaultDecimalPointLE">
+     <property name="maximumSize">
+      <size>
+       <width>20</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="inputMask">
+      <string>X; </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
@@ -244,14 +270,19 @@
   </layout>
  </widget>
  <tabstops>
+  <tabstop>uiLanguageCO</tabstop>
   <tabstop>languagePackageED</tabstop>
   <tabstop>startCommandED</tabstop>
   <tabstop>endCommandED</tabstop>
+  <tabstop>defaultDecimalPointLE</tabstop>
   <tabstop>useBabelCB</tabstop>
   <tabstop>globalCB</tabstop>
   <tabstop>autoBeginCB</tabstop>
   <tabstop>autoEndCB</tabstop>
   <tabstop>markForeignCB</tabstop>
+  <tabstop>rtlGB</tabstop>
+  <tabstop>logicalCursorRB</tabstop>
+  <tabstop>visualCursorRB</tabstop>
  </tabstops>
  <includes>
   <include location="local">qt_i18n.h</include>

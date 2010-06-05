@@ -84,6 +84,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\cursor_follows_scrollbar", LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR },
 	{ "\\date_insert_format", LyXRC::RC_DATE_INSERT_FORMAT },
 	{ "\\def_file", LyXRC::RC_DEFFILE },
+	{ "\\default_decimal_point", LyXRC::RC_DEFAULT_DECIMAL_POINT },
 	{ "\\default_language", LyXRC::RC_DEFAULT_LANGUAGE },
 	{ "\\default_papersize", LyXRC::RC_DEFAULT_PAPERSIZE },
 	{ "\\default_view_format", LyXRC::RC_DEFAULT_VIEW_FORMAT },
@@ -352,6 +353,7 @@ void LyXRC::setDefaults()
 	completion_inline_text = false;
 	completion_inline_dots = -1;
 	completion_inline_delay = 0.2;
+	default_decimal_point = ".";
 }
 
 
@@ -938,6 +940,9 @@ int LyXRC::read(Lexer & lexrc)
 				backupdir_path = os::internal_path(lexrc.getString());
 				backupdir_path = expandPath(backupdir_path);
 			}
+			break;
+		case RC_DEFAULT_DECIMAL_POINT:
+			lexrc >> default_decimal_point;
 			break;
 		case RC_DATE_INSERT_FORMAT:
 			lexrc >> date_insert_format;
@@ -2377,6 +2382,14 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		os << "\n#\n"
 		   << "# LANGUAGE SUPPORT SECTION ##########################\n"
 		   << "#\n\n";
+		if (tag != RC_LAST)
+			break;
+
+	case RC_DEFAULT_DECIMAL_POINT:
+		if (ignore_system_lyxrc ||
+		    default_decimal_point != system_lyxrc.default_decimal_point) {
+			os << "\\default_decimal_point " << default_decimal_point << '\n';
+		}
 		if (tag != RC_LAST)
 			break;
 

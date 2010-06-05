@@ -2070,6 +2070,8 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(uiLanguageCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
+	connect(defaultDecimalPointLE, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
 
 	uiLanguageCO->clear();
 
@@ -2113,6 +2115,7 @@ void PrefLanguage::apply(LyXRC & rc) const
 	rc.language_command_end = fromqstr(endCommandED->text());
 	rc.gui_language = fromqstr(
 		uiLanguageCO->itemData(uiLanguageCO->currentIndex()).toString());
+	rc.default_decimal_point = fromqstr(defaultDecimalPointLE->text());
 }
 
 
@@ -2132,6 +2135,7 @@ void PrefLanguage::update(LyXRC const & rc)
 	languagePackageED->setText(toqstr(rc.language_package));
 	startCommandED->setText(toqstr(rc.language_command_begin));
 	endCommandED->setText(toqstr(rc.language_command_end));
+	defaultDecimalPointLE->setText(toqstr(rc.default_decimal_point));
 
 	int pos = uiLanguageCO->findData(toqstr(rc.gui_language));
 	uiLanguageCO->blockSignals(true);
