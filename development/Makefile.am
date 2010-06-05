@@ -149,10 +149,6 @@ scons/qt4.py \
 scons/scons_manifest.py \
 scons/SConstruct \
 scons/scons_utils.py \
-cmake/boost/CMakeLists.txt \
-cmake/boost/libs/CMakeLists.txt \
-cmake/boost/libs/regex/CMakeLists.txt \
-cmake/boost/libs/signals/CMakeLists.txt \
 cmake/build.bat \
 cmake/build-debug.bat \
 cmake/CMakeLists.txt \
@@ -161,15 +157,21 @@ cmake/configCompiler.h.msvc \
 cmake/config.cpp.cmake \
 cmake/config.h.cmake \
 cmake/ConfigureChecks.cmake \
-cmake/doc/CMakeLists.txt \
-cmake/doc/ReplaceValues.pl \
 cmake/Install.cmake \
-cmake/intl/CMakeLists.txt \
-cmake/intl/libgnuintl.h \
-cmake/lyx2lyx/CMakeLists.txt \
 cmake/LyX_description.txt \
 cmake/LyX_license.txt \
 cmake/LyX_summary.txt \
+cmake/pcheaders.h \
+cmake/PyCompile.cmake \
+cmake/boost/CMakeLists.txt \
+cmake/boost/libs/CMakeLists.txt \
+cmake/boost/libs/regex/CMakeLists.txt \
+cmake/boost/libs/signals/CMakeLists.txt \
+cmake/doc/CMakeLists.txt \
+cmake/doc/ReplaceValues.pl \
+cmake/intl/CMakeLists.txt \
+cmake/intl/libgnuintl.h \
+cmake/lyx2lyx/CMakeLists.txt \
 cmake/man/CMakeLists.txt \
 cmake/modules/FindAiksaurusLIB.cmake \
 cmake/modules/FindASPELL.cmake \
@@ -186,13 +188,11 @@ cmake/modules/LyXuic.cmake \
 cmake/modules/MacroBoolTo01.cmake \
 cmake/modules/PCHSupport_26.cmake \
 cmake/modules/ProjectSourceGroup.cmake \
-cmake/pcheaders.h \
 cmake/po/CMakeLists.txt \
-cmake/PyCompile.cmake \
 cmake/scripts/CMakeLists.txt \
-cmake/src/client/CMakeLists.txt \
 cmake/src/CMakeLists.txt \
 cmake/src/dummy.cpp \
+cmake/src/client/CMakeLists.txt \
 cmake/src/frontends/CMakeLists.txt \
 cmake/src/frontends/qt4/CMakeLists.txt \
 cmake/src/graphics/CMakeLists.txt \
@@ -200,3 +200,6 @@ cmake/src/insets/CMakeLists.txt \
 cmake/src/mathed/CMakeLists.txt \
 cmake/src/support/CMakeLists.txt \
 cmake/src/tex2lyx/CMakeLists.txt
+
+# cmake file list generated and sorted by 'ls -Ra'
+
