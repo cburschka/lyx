@@ -12,9 +12,16 @@
 #ifndef LYX_BIND_H
 #define LYX_BIND_H
 
-#if defined(_MSC_VER) && (_MSC_VER >= 1600)
+#include "checktr1.h"
+
+
+#ifdef LYX_USE_TR1
 
 #include <functional>
+
+#ifdef __GNUC__
+#include <tr1/functional>
+#endif
 
 namespace lyx
 {

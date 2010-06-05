@@ -12,9 +12,16 @@
 #ifndef LYX_SHARED_PTR_H
 #define LYX_SHARED_PTR_H
 
-#if defined(_MSC_VER) && (_MSC_VER >= 1600)
+#include "checktr1.h"
+
+
+#ifdef LYX_USE_TR1
 
 #include <memory>
+
+#ifdef __GNUC__
+#include <tr1/memory>
+#endif
 
 namespace lyx
 {
