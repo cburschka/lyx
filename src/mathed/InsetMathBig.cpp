@@ -47,9 +47,11 @@ InsetMathBig::size_type InsetMathBig::size() const
 {
 	// order: big Big bigg Bigg biggg Biggg
 	//        0   1   2    3    4     5
+	char_type const c = name_[name_.size() - 1];
+	int const base_size = (c == 'l' || c == 'm' || c == 'r') ? 4 : 3;
 	return name_[0] == 'B' ?
-		2 * (name_.size() - 4) + 1:
-		2 * (name_.size() - 4);
+		2 * (name_.size() - base_size) + 1:
+		2 * (name_.size() - base_size);
 }
 
 
