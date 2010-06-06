@@ -19,6 +19,7 @@
 #include "support/debug.h"
 #include "support/docstring_list.h"
 
+#include "support/filetools.h"
 #include "support/Package.h"
 #include "support/FileName.h"
 #include "support/Path.h"
@@ -28,30 +29,6 @@
 #include <map>
 #include <string>
 
-#ifdef __APPLE__
-
-# ifndef ASPELL_FRAMEWORK
-# define ASPELL_FRAMEWORK "Aspell.framework"
-# endif
-# ifndef ASPELL_FRAMEWORK_DATA
-# define ASPELL_FRAMEWORK_DATA "/Resources/data"
-# endif
-# ifndef ASPELL_FRAMEWORK_DICT
-# define ASPELL_FRAMEWORK_DICT "/Resources/dict"
-# endif
-
-# ifndef ASPELL_MACPORTS
-# define ASPELL_MACPORTS "/opt/local"
-# endif
-# ifndef ASPELL_MACPORTS_DATA
-# define ASPELL_MACPORTS_DATA "/lib/aspell-0.60"
-# endif
-# ifndef ASPELL_MACPORTS_DICT
-# define ASPELL_MACPORTS_DICT "/share/aspell"
-# endif
-
-#endif /* __APPLE__ */
-
 using namespace std;
 using namespace lyx::support;
 
@@ -60,7 +37,6 @@ namespace lyx {
 namespace {
 
 struct Speller {
-	///AspellSpeller * speller;
 	AspellConfig * config;
 	AspellCanHaveError * e_speller;
 };
@@ -87,8 +63,39 @@ struct AspellChecker::Private
 	string const spellerID(string const & lang,
 			       string const & variety);
 
+	bool isValidDictionary(AspellConfig * config,
+			string const & lang, string const & variety);
+	bool checkAspellData(AspellConfig * config,
+		string const & basepath, string const & datapath, string const & dictpath,
+		string const & lang, string const & variety);
+	AspellConfig * getConfig(string const & lang, string const & variety);
+
 	/// the spellers
 	Spellers spellers_;
+
+	/// the location below system/user directory
+	/// there the rws files lookup will happen
+	const string dictDirectory(void) { return "dict"; }
+	/// there the dat+cmap files lookup will happen
+	const string dataDirectory(void) { return "data"; }
+	/// os package directory constants
+	/// macports on Mac OS X or
+	/// aspell rpms on Linux
+	const string osPackageBase(void) {
+#ifdef USE_MACOSX_PACKAGING
+		return "/opt/local";
+#else
+		return "/usr";
+#endif
+	}
+	const string osPackageDictDirectory(void) {
+#ifdef USE_MACOSX_PACKAGING
+		return "/share/aspell";
+#else
+		return "/lib/aspell-0.60";
+#endif
+	}
+	const string osPackageDataDirectory(void) { return "/lib/aspell-0.60"; }
 
 };
 
@@ -109,7 +116,7 @@ AspellChecker::Private::~Private()
 }
 
 
-bool isValidDictionary(AspellConfig * config,
+bool AspellChecker::Private::isValidDictionary(AspellConfig * config,
 		string const & lang, string const & variety)
 {
 	bool have = false;
@@ -135,48 +142,46 @@ bool isValidDictionary(AspellConfig * config,
 }
 
 
-bool checkAspellData(AspellConfig * config,
-	char const * basepath, char const * datapath, char const * dictpath,
+bool AspellChecker::Private::checkAspellData(AspellConfig * config,
+	string const & basepath, string const & datapath, string const & dictpath,
 	string const & lang, string const & variety)
 {
-	bool have_dict = false;
 	FileName base(basepath);
-	FileName data(base.absFileName() + datapath);
-	FileName dict(base.absFileName() + dictpath);
-	have_dict = dict.isDirectory() && data.isDirectory();
+	bool have_dict = base.isDirectory() ;
+
 	if (have_dict) {
-		aspell_config_replace(config, "dict-dir", dict.absFileName().c_str());
-		aspell_config_replace(config, "data-dir", data.absFileName().c_str());
-		LYXERR(Debug::FILES, "aspell dict: " << dict);
-		have_dict = isValidDictionary(config, lang, variety);
+		FileName data(addPath(base.absFileName(), datapath));
+		FileName dict(addPath(base.absFileName(), dictpath));
+		have_dict = dict.isDirectory() && data.isDirectory();
+		if (have_dict) {
+			LYXERR(Debug::FILES, "aspell dict-dir: " << dict);
+			LYXERR(Debug::FILES, "aspell data-dir: " << data);
+			aspell_config_replace(config, "dict-dir", dict.absFileName().c_str());
+			aspell_config_replace(config, "data-dir", data.absFileName().c_str());
+			have_dict = isValidDictionary(config, lang, variety);
+		}
 	}
 	return have_dict ;
 }
 
 
-AspellConfig * getConfig(string const & lang,
-						   string const & variety)
+AspellConfig * AspellChecker::Private::getConfig(string const & lang, string const & variety)
 {
 	AspellConfig * config = new_aspell_config();
-#ifdef __APPLE__
-	char buf[2048] ;
 	bool have_dict = false;
-	char const * sysdir = lyx::support::package().system_support().absFileName().c_str() ;
-	char const * userdir = lyx::support::package().user_support().absFileName().c_str() ;
-	char const * framework = ASPELL_FRAMEWORK ;
+	string const sysdir = lyx::support::package().system_support().absFileName() ;
+	string const userdir = lyx::support::package().user_support().absFileName() ;
 
-	LYXERR(Debug::FILES, "aspell sysdir dir: " << sysdir);
 	LYXERR(Debug::FILES, "aspell user dir: " << userdir);
-	have_dict = checkAspellData(config, userdir, ASPELL_FRAMEWORK_DATA, ASPELL_FRAMEWORK_DICT, lang, variety);
-	if (!have_dict && strlen(framework) && getPrivateFrameworkPathName(buf, sizeof(buf), framework)) {
-		LYXERR(Debug::FILES, "aspell bundle path: " << buf);
-		have_dict = checkAspellData(config, buf, ASPELL_FRAMEWORK_DATA, ASPELL_FRAMEWORK_DICT, lang, variety);
+	have_dict = checkAspellData(config, userdir, dataDirectory(), dictDirectory(), lang, variety);
+	if (!have_dict) {
+		LYXERR(Debug::FILES, "aspell sysdir dir: " << sysdir);
+		have_dict = checkAspellData(config, sysdir, dataDirectory(), dictDirectory(), lang, variety);
 	}
 	if (!have_dict) {
-		// check for macports data
-		have_dict = checkAspellData(config, ASPELL_MACPORTS, ASPELL_MACPORTS_DATA, ASPELL_MACPORTS_DICT, lang, variety);
+		// check for package data of OS installation
+		have_dict = checkAspellData(config, osPackageBase(), osPackageDataDirectory(), osPackageDictDirectory(), lang, variety);
 	}
-#endif
 	return config ;
 }
 
@@ -263,7 +268,8 @@ SpellChecker::Result AspellChecker::check(WordLangTuple const & word)
 		// MSVC compiled Aspell doesn't like it.
 		return OK;
 
-	int const word_ok = aspell_speller_check(m, to_utf8(word.word()).c_str(), -1);
+	const char * word_str = to_utf8(word.word()).c_str();
+	int const word_ok = aspell_speller_check(m, word_str, -1);
 	LASSERT(word_ok != -1, /**/);
 
 	return (word_ok) ? OK : UNKNOWN_WORD;
@@ -328,11 +334,11 @@ bool AspellChecker::hasDictionary(Language const * lang) const
 
 	if (lang) {
 		for (; it != end && !have; ++it) {
-			have = isValidDictionary(it->second.config, lang->code(), lang->variety());
+			have = d->isValidDictionary(it->second.config, lang->code(), lang->variety());
 		}
 		if (!have) {
-			AspellConfig * config = getConfig(lang->code(), lang->variety());
-			have = isValidDictionary(config, lang->code(), lang->variety());
+			AspellConfig * config = d->getConfig(lang->code(), lang->variety());
+			have = d->isValidDictionary(config, lang->code(), lang->variety());
 			delete_aspell_config(config);
 		}
 	}

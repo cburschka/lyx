@@ -46,9 +46,6 @@ typedef vector<WordLangTuple> IgnoreList;
 
 } // anon namespace
 
-#ifndef HUNSPELL_DICT
-# define HUNSPELL_DICT "dict"
-#endif
 
 struct HunspellChecker::Private
 {
@@ -56,6 +53,8 @@ struct HunspellChecker::Private
 
 	~Private();
 
+	const string dictPath(int selector);
+	bool haveLanguageFiles(string const & hpath);
 	bool haveDictionary(string const & lang, string & hpath);
 	bool haveDictionary(string const & lang);
 	Hunspell * addSpeller(string const & lang, string & hpath);
@@ -68,6 +67,11 @@ struct HunspellChecker::Private
 	Spellers spellers_;
 	///
 	IgnoreList ignored_;
+
+	/// the location below system/user directory
+	/// there the aff+dic files lookup will happen
+	const string dictDirectory(void) { return "dict"; }
+	const int maxLookupSelector(void) { return 3; }
 };
 
 
@@ -82,8 +86,7 @@ HunspellChecker::Private::~Private()
 }
 
 
-namespace {
-bool haveLanguageFiles(string const & hpath)
+bool HunspellChecker::Private::haveLanguageFiles(string const & hpath)
 {
 	FileName const affix(hpath + ".aff");
 	FileName const dict(hpath + ".dic");
@@ -91,21 +94,18 @@ bool haveLanguageFiles(string const & hpath)
 }
 
 
-#define MAX_SELECTOR 3
-string dictPath(int selector)
+const string HunspellChecker::Private::dictPath(int selector)
 {
 	switch (selector) {
 	case 2:
-		return addName(lyx::support::package().system_support().absFileName(),HUNSPELL_DICT);
+		return addName(lyx::support::package().system_support().absFileName(),dictDirectory());
 		break;
 	case 1:
-		return addName(lyx::support::package().user_support().absFileName(),HUNSPELL_DICT);
+		return addName(lyx::support::package().user_support().absFileName(),dictDirectory());
 		break;
 	default:
 		return lyxrc.hunspelldir_path;
 	}
-}
-
 }
 
 
@@ -135,7 +135,7 @@ bool HunspellChecker::Private::haveDictionary(string const & lang, string & hpat
 bool HunspellChecker::Private::haveDictionary(string const & lang)
 {
 	bool result = false;
-	for ( int p = 0; !result && p < MAX_SELECTOR; p++ ) {
+	for ( int p = 0; !result && p < maxLookupSelector(); p++ ) {
 		string lpath = dictPath(p);
 		result = haveDictionary(lang, lpath);
 	}
@@ -172,7 +172,7 @@ Hunspell * HunspellChecker::Private::addSpeller(string const & lang,string & pat
 Hunspell * HunspellChecker::Private::addSpeller(string const & lang)
 {
 	Hunspell * h = 0;
-	for ( int p = 0; p < MAX_SELECTOR && 0 == h; p++ ) {
+	for ( int p = 0; p < maxLookupSelector() && 0 == h; p++ ) {
 		string lpath = dictPath(p);
 		h = addSpeller(lang, lpath);
 	}

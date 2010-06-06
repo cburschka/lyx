@@ -42,10 +42,6 @@ typedef std::map<docstring, MyThes *> Thesauri;
 
 } // namespace anon
 
-#ifndef THESAURUS_LOCATION
-# define THESAURUS_LOCATION "thes"
-#endif
-
 struct Thesaurus::Private
 {
 	~Private()
@@ -77,6 +73,11 @@ struct Thesaurus::Private
 
 	/// the thesauri
 	Thesauri thes_;
+
+	/// the location below system/user directory
+	/// there the data+idx files lookup will happen
+	const string dataDirectory(void) { return "thes"; }
+
 };
 
 
@@ -125,11 +126,11 @@ pair<string,string> Thesaurus::Private::getThesaurus(docstring const & lang)
 		result = getThesaurus(thes_path, lang);
 	}
 	if (result.first.empty() || result.second.empty()) {
-		string const sys_path = external_path(addName(lyx::support::package().system_support().absFileName(),THESAURUS_LOCATION)) ;
+		string const sys_path = external_path(addName(lyx::support::package().system_support().absFileName(),dataDirectory())) ;
 		result = getThesaurus(sys_path, lang);
 	}
 	if (result.first.empty() || result.second.empty()) {
-		string const user_path = external_path(addName(lyx::support::package().user_support().absFileName(),THESAURUS_LOCATION)) ;
+		string const user_path = external_path(addName(lyx::support::package().user_support().absFileName(),dataDirectory())) ;
 		result = getThesaurus(user_path, lang);
 	}
 	return result;
