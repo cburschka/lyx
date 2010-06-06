@@ -5,7 +5,10 @@
 # This script automates creating universal binaries of LyX on Mac.
 # Author: Bennett Helm (and extended by Konrad Hofbauer)
 # modified by Stephan Witt
-# Last modified: 17 April 2010
+# Last modified: 6 June 2010
+
+#Qt4SourceVersion="qt-everywhere-opensource-src-4.7.0-beta1"
+#Qt4Build="qt4.7-beta"
 
 # Prerequisite:
 # * a decent checkout of LyX sources (probably you have it already)
@@ -20,8 +23,8 @@
 #   - hunspell: the dictionary files in the sibling directory Dictionaries/dict
 #   - mythes:   the data and idx files in the sibling directory Dictionaries/thes
 
-LyXConfigureOptions="--enable-warnings --enable-optimization=-Os --with-included-gettext"
-AspellConfigureOptions="--enable-warnings --disable-nls --enable-compile-in-filters --disable-pspell-compatibility"
+LyXConfigureOptions="--enable-warnings --enable-optimization=-Os --with-included-gettext --x-includes=/usr/X11/include --x-libraries=/usr/X11/lib"
+AspellConfigureOptions="--enable-warnings --enable-optimization=-O0 --enable-debug --disable-nls --enable-compile-in-filters --disable-pspell-compatibility"
 HunspellConfigureOptions="--with-warnings --disable-nls --with-included-gettext --disable-static"
 Qt4ConfigureOptions="-opensource -silent -shared -release -fast -no-exceptions"
 Qt4ConfigureOptions="${Qt4ConfigureOptions} -no-webkit -no-qt3support -no-javascript-jit -no-dbus"
@@ -123,11 +126,12 @@ QtInstallDir=${QTDIR:-"/opt/qt4"}
 QtFrameworkVersion="4"
 ASpellSourceVersion="aspell-0.60.6"
 HunSpellSourceVersion="hunspell-1.2.9"
-Qt4SourceVersion="qt-everywhere-opensource-src-4.6.2"
+Qt4SourceVersion=${Qt4SourceVersion:-"qt-everywhere-opensource-src-4.6.2"}
 
 ARCH_LIST=${ARCH_LIST:-"ppc i386"}
 
 strip="-strip"
+aspellstrip=
 
 # detection of script home
 LyxSourceDir=${1:-`dirname "$0"`}
@@ -158,7 +162,7 @@ ASpellInstallDir=${ASpellInstallDir:-"${LyxBuildDir}"/SpellChecker.lib}
 HunSpellSourceDir=${HUNSPELLDIR:-`dirname "${LyxSourceDir}"`/${HunSpellSourceVersion}}
 HunSpellInstallDir=${HunSpellInstallDir:-"${LyxBuildDir}"/SpellChecker.lib}
 Qt4SourceDir=${QT4SOURCEDIR:-`dirname "${LyxSourceDir}"`/${Qt4SourceVersion}}
-Qt4BuildDir="${LyxBuildDir}/qt4-build"
+Qt4BuildDir=${Qt4BuildDir:-"${LyxBuildDir}"/${Qt4Build:-"qt4-build"}}
 DictionarySourceDir=${DICTIONARYDIR:-`dirname "${LyxSourceDir}"`/Dictionaries}
 
 ASpellInstallHdr="${ASpellInstallDir}/include/aspell.h"
@@ -195,7 +199,7 @@ HostSystem_ppc="powerpc-apple-darwin8"
 QtLibraries="QtSvg QtXml QtGui QtNetwork QtCore"
 
 DMGNAME="${LyxBase}"
-DMGSIZE="550m"
+DMGSIZE="350m"
 BACKGROUND="${LyxAppDir}.app/Contents/Resources/images/banner.png"
 
 # Check for existing SDKs
@@ -343,11 +347,11 @@ if [ -d "${ASpellSourceDir}" -a ! -f "${ASpellInstallHdr}" -a "yes" = "${aspell_
 		CPPFLAGS=" -arch ${arch} ${MYCFLAGS}"; export CPPFLAGS
 		LDFLAGS=" -arch ${arch}"; export LDFLAGS
 		HOSTSYSTEM=`eval "echo \\$HostSystem_$arch"`
-		"${ASpellSourceDir}/configure"\
+		CXXFLAGS=-g "${ASpellSourceDir}/configure"\
 			--prefix="${ASpellInstallDir}"\
 			${AspellConfigureOptions}
 			#--host="${HOSTSYSTEM}" ${BuildSystem:+"--build=${BuildSystem}"}
-		make && make install${strip}
+		make && make install${aspellstrip}
 		for file in ${FILE_LIST} ; do
 			if [ -f "${ASpellInstallDir}"/lib/${file} ]; then
 				mv "${ASpellInstallDir}"/lib/${file}\
@@ -433,7 +437,7 @@ build_lyx() {
 			--prefix="${LyxAppPrefix}" --with-version-suffix="-${LyXVersion}"\
 			${QtInstallDir:+"--with-qt4-dir=${QtInstallDir}"} \
 			${LyXConfigureOptions}\
-			--host="${HOSTSYSTEM}" --build="${BuildSystem}" --enable-build-type=rel
+			--host="${HOSTSYSTEM}" --build="${BuildSystem}" --enable-build-type=rel && \
 		make && make install${strip}
 		for file in ${FILE_LIST} ; do
 			if [ -f "${LYX_BUNDLE_PATH}/${file}" ]; then
