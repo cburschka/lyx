@@ -218,7 +218,7 @@ bool InsetMathBig::isBigInsetDelim(docstring const & delim)
 	static char const * const delimiters[] = {
 		"(", ")", "\\{", "\\}", "\\lbrace", "\\rbrace", "[", "]",
 		"|", "/", "\\slash", "\\|", "\\vert", "\\Vert", "'",
-		"\\\\", "\\backslash",
+		"<", ">", "\\\\", "\\backslash",
 		"\\langle", "\\lceil", "\\lfloor",
 		"\\rangle", "\\rceil", "\\rfloor",
 		"\\downarrow", "\\Downarrow",
