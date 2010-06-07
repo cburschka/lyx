@@ -71,6 +71,10 @@ public:
 
 	~GuiView();
 
+	/// closes the view such that the view knows that is closed
+	/// programmatically and not by the user clicking the x.
+	bool closeScheduled();
+
 	int id() const { return id_; }
 
 	///

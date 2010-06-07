@@ -1250,7 +1250,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// clear the last opened list, because
 		// maybe this will end the session
 		theSession().lastOpened().clear();
-		current_view_->close();
+		current_view_->closeScheduled();
 		break;
 
 	case LFUN_LYX_QUIT:
@@ -2254,7 +2254,7 @@ bool GuiApplication::closeAllViews()
 
 	QList<GuiView *> views = d->views_.values();
 	foreach (GuiView * view, views) {
-		if (!view->close())
+		if (!view->closeScheduled())
 			return false;
 	}
 

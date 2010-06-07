@@ -663,6 +663,13 @@ void GuiView::showEvent(QShowEvent * e)
 }
 
 
+bool GuiView::closeScheduled()
+{
+	closing_ = true;
+	return close();
+}
+
+
 /** Destroy only all tabbed WorkAreas. Destruction of other WorkAreas
  ** is responsibility of the container (e.g., dialog)
  **/
@@ -676,6 +683,10 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 		return;
 	}
 
+	// If the user pressed the x (so we didn't call closeView
+	// programmatically), we want to clear all existing entries.
+	if (!closing_)
+		theSession().lastOpened().clear();
 	closing_ = true;
 
 	writeSession();
