@@ -663,7 +663,8 @@ Style Block
   LabelSep         xx
 
   LatexName        block
-  LabelString      "Block ( ERT[{title}] body ):"
+  LabelString      "Block:"
+  RequiredArgs     1
   
   ParSkip          0.5
   TopSep           1
@@ -689,8 +690,9 @@ Style ExampleBlock
   LabelSep         xx
 
   LatexName        exampleblock
-  LabelString      "Block ( ERT[{title}] example text ):"
-
+  LabelString      "Example Block:"
+  RequiredArgs     1
+  
   ParSkip          0.5
   TopSep           1
   BottomSep        1
@@ -719,8 +721,9 @@ Style AlertBlock
   LabelSep         xx
 
   LatexName        alertblock
-  LabelString      "Block ( ERT[{title}] alert text ):"
-
+  LabelString      "Alert Block:"
+  RequiredArgs     1
+  
   ParSkip          0.5
   TopSep           1
   BottomSep        1
