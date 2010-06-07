@@ -202,7 +202,7 @@ LyXErr & toStream(LyXErr & l, T t)
 {
 	if (l.enabled()){
 		l.stream() << t;
-		if (l.second_used()){
+                if (l.second_used()) {
 			l.second() << t;
 			ProgressInterface::instance()->lyxerrFlush();
 		}

@@ -17,7 +17,7 @@
 
 #include "DockView.h"
 
-#include <QTextEdit>
+
 #include <QSplashScreen>
 #include <QTimer>
 
@@ -41,8 +41,8 @@ public:
 	void lyxerrConnect();
 	void lyxerrDisconnect();
 	void lyxerrFlush();
-        
-        static QString currentTime();
+
+	static QString currentTime();
 
 Q_SIGNALS:
 
@@ -76,10 +76,13 @@ private Q_SLOTS:
 	void doError(QString const &, QString const &);
 	void doInformation(QString const &, QString const &);
 
+        void updateWithLyXErr();
+
 
 private:
 	void appendText(QString const &);
-	std::ostringstream lyxerr_stream_;      
+	std::ostringstream lyxerr_stream_;
+	QTimer flushDelay_;
 };
 
 

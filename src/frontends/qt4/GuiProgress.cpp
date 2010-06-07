@@ -58,6 +58,10 @@ GuiProgress::GuiProgress()
 		SLOT(doError(QString const &, QString const &)));
 	connect(this, SIGNAL(information(QString const &, QString const &)),
 		SLOT(doInformation(QString const &, QString const &)));
+
+	flushDelay_.setInterval(200);
+	flushDelay_.setSingleShot(true);
+	connect(&flushDelay_, SIGNAL(timeout()), this, SLOT(updateWithLyXErr()));
 }
 
 
@@ -98,6 +102,12 @@ void GuiProgress::doClearMessages()
 
 
 void GuiProgress::lyxerrFlush()
+{
+	flushDelay_.start();
+}
+
+
+void GuiProgress::updateWithLyXErr()
 {
 	appendLyXErrMessage(toqstr(lyxerr_stream_.str()));
 	lyxerr_stream_.str("");
