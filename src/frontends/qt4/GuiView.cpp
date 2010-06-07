@@ -1022,7 +1022,7 @@ bool GuiView::focusNextPrevChild(bool /*next*/)
 }
 
 
-bool GuiView::busy()
+bool GuiView::busy() const
 {
 	return busy_;
 }

@@ -80,7 +80,7 @@ public:
 	///
 	void setBusy(bool);
 	/// are we busy ?
-	bool busy();
+	bool busy() const;
 
 	/// \name Generic accessor functions
 	//@{
