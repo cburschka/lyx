@@ -2938,18 +2938,40 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 #endif
 			break;
 		}
-		case LFUN_BUFFER_SWITCH:
-			if (FileName::isAbsolute(to_utf8(cmd.argument()))) {
-				Buffer * buffer = 
-					theBufferList().getBuffer(FileName(to_utf8(cmd.argument())));
-				if (buffer)
+		case LFUN_BUFFER_SWITCH: {
+			if (!FileName::isAbsolute(to_utf8(cmd.argument())))
+				break;
+			Buffer * buffer = 
+				theBufferList().getBuffer(FileName(to_utf8(cmd.argument())));
+			if (!buffer) {
+				dr.setError(true);
+				dr.setMessage(_("Document not loaded"));
+				break;
+			}
+			if (workArea(*buffer)) {
+				setBuffer(buffer);
+				break;
+			}
+			QList<int> const ids = guiApp->viewIds();
+			int i = 0;
+			for (; i != ids.size(); ++i) {
+				GuiView & gv = guiApp->view(ids[i]);
+				if (gv.workArea(*buffer)) {
+					gv.activateWindow();
+					gv.setBuffer(buffer);
+					break;
+				}
+			}
+			if (i == ids.size()) {
+				if (!lyxrc.open_buffers_in_tabs && documentBufferView() != 0) {
+					lyx::dispatch(FuncRequest(LFUN_WINDOW_NEW));
+					lyx::dispatch(cmd);
+				} else {
 					setBuffer(buffer);
-				else {
-					dr.setError(true);
-					dr.setMessage(_("Document not loaded"));
 				}
 			}
 			break;
+		}
 
 		case LFUN_BUFFER_NEXT:
 			gotoNextOrPreviousBuffer(NEXTBUFFER);
