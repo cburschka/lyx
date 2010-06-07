@@ -285,7 +285,7 @@ InsetLayout URL
 	HTMLIsBlock           false
 End
 
-InsetLayout OptArg
+InsetLayout Argument
 	LabelString           opt
 	LabelFont
 	  Color               collapsable

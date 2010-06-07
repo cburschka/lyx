@@ -1481,8 +1481,8 @@ def revert_lyx_version(document):
         import lyx2lyx_version
         version = lyx2lyx_version.version
     except:
-   	    pass
-	
+        pass
+
     i = 0
     while 1:
         i = find_token(document.body, '\\begin_inset Info', i)
@@ -1697,6 +1697,27 @@ def revert_align_decimal(document):
     document.body[l].replace('decimal', 'center')
 
 
+def convert_optarg(document):
+  " Convert \\begin_inset OptArg to \\begin_inset Argument "
+  i = 0
+  while 1:
+    i = find_token(document.body, '\\begin_inset OptArg', i)
+    if i == -1:
+      return
+    document.body[i] = "\\begin_inset Argument"
+    i += 1
+
+
+def revert_argument(document):
+  " Convert \\begin_inset Argument to \\begin_inset OptArg "
+  i = 0
+  while 1:
+    i = find_token(document.body, '\\begin_inset Argument', i)
+    if i == -1:
+      return
+      document.body[i] = "\\begin_inset OptArg"
+      i += 1
+      
 ##
 # Conversion hub
 #
@@ -1748,10 +1769,12 @@ convert = [[346, []],
            [389, [convert_html_quotes]],
            [390, []],
            [391, []],
-           [392, [convert_beamer_args]]
+           [392, [convert_beamer_args]],
+           [393, [convert_optarg]]
           ]
 
-revert =  [[391, [revert_beamer_args]],
+revert =  [[392, [revert_argument]],
+           [391, [revert_beamer_args]],
            [390, [revert_align_decimal]],
            [389, [revert_output_sync]],
            [388, [revert_html_quotes]],

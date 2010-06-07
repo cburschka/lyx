@@ -562,7 +562,7 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 			inset.reset(new InsetNewpage);
 		} else if (tmptok == "Newline") {
 			inset.reset(new InsetNewline);
-		} else if (tmptok == "OptArg") {
+		} else if (tmptok == "Argument") {
 			inset.reset(new InsetArgument(buf));
 		} else if (tmptok == "Float") {
 			inset.reset(new InsetFloat(buf, string()));

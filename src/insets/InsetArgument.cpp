@@ -28,7 +28,7 @@ InsetArgument::InsetArgument(Buffer * buf)
 
 void InsetArgument::write(ostream & os) const
 {
-	os << "OptArg" << "\n";
+	os << "Argument" << "\n";
 	InsetCollapsable::write(os);
 }
 
