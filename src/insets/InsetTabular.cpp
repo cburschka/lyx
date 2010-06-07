@@ -2137,7 +2137,7 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell,
 
 	// we center in multicol when no decimal point
 	ismulticol |= ((column_info[c].alignment == LYX_ALIGN_DECIMAL)
-		&& (cellInfo(cell).decimal_width == 0) || isMultiRow(cell));
+		&& (cellInfo(cell).decimal_width == 0));
 
 	// up counter by 1 for each decimally aligned col since they use 2 latex cols
 	int latexcolspan = columnSpan(cell);
@@ -2466,7 +2466,7 @@ int Tabular::TeXRow(odocstream & os, row_type row,
 				    : OutputParams::ALIGNED;
 
 		if (getAlignment(cell) == LYX_ALIGN_DECIMAL
-			&& cellInfo(cell).decimal_width != 0 && !isMultiRow(cell)) {
+			&& cellInfo(cell).decimal_width != 0) {
 			// copy cell and split in 2
 			InsetTableCell head = InsetTableCell(*cellInset(cell).get());
 			head.getText(0)->setMacrocontextPosition(
@@ -3362,9 +3362,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			// determine horiz offset because of decimal align (if necessary)
 			int decimal_hoffset = 0;
 			int decimal_width = 0;
-			if ((tabular.column_info[c].alignment == LYX_ALIGN_DECIMAL)
-				&& !tabular.isMultiColumn(cell)
-				&& !tabular.isMultiRow(cell)) {
+			if (tabular.getAlignment(cell) == LYX_ALIGN_DECIMAL) {
 				// make a copy which we will split in 2
 				InsetTableCell head = InsetTableCell(*tabular.cellInset(cell).get());
 				head.getText(0)->setMacrocontextPosition(
