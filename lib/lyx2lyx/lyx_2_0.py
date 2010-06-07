@@ -129,7 +129,7 @@ def old_put_cmd_in_ert(string):
 #   i += len(ert)
 # That puts us right after the ERT we just inserted.
 def put_cmd_in_ert(strlist):
-    ret = ["\\begin_inset ERT", "status collapsed", "\\begin_layout Plain Layout\n"]
+    ret = ["\\begin_inset ERT", "status collapsed", "\\begin_layout Plain Layout", ""]
     # Despite the warnings just given, it will be faster for us to work
     # with a single string internally. That way, we only go through the
     # unicode_reps loop once.
@@ -1595,6 +1595,98 @@ def revert_output_sync(document):
     del document.header[i]
 
 
+def convert_beamer_args(document):
+  " Convert ERT arguments in Beamer to InsetArguments "
+
+  if document.textclass != "beamer" and document.textclass != "article-beamer":
+    return
+  
+  layouts = ("Block", "ExampleBlock", "AlertBlock")
+  for layout in layouts:
+    blay = 0
+    while True:
+      blay = find_token(document.body, '\\begin_layout ' + layout, blay)
+      if blay == -1:
+        break
+      elay = find_end_of(document.body, blay, '\\begin_layout', '\\end_layout')
+      if elay == -1:
+        document.warning("Malformed LyX document: Can't find end of " + layout + " layout.")
+        blay += 1
+        continue
+      bert = find_token(document.body, '\\begin_inset ERT', blay)
+      if bert == -1:
+        document.warning("Malformed Beamer LyX document: Can't find argument of " + layout + " layout.")
+        blay = elay + 1
+        continue
+      eert = find_end_of_inset(document.body, bert)
+      if eert == -1:
+        document.warning("Malformed LyX document: Can't find end of ERT.")
+        blay = elay + 1
+        continue
+      
+      # So the ERT inset begins at line k and goes to line l. We now wrap it in 
+      # an argument inset.
+      # Do the end first, so as not to mess up the variables.
+      document.body[eert + 1:eert + 1] = ['', '\\end_layout', '', '\\end_inset', '']
+      document.body[bert:bert] = ['\\begin_inset OptArg', 'status open', '', 
+          '\\begin_layout Plain Layout']
+      blay = elay + 9
+
+
+def revert_beamer_args(document):
+  " Revert Beamer arguments to ERT "
+  
+  if document.textclass != "beamer" and document.textclass != "article-beamer":
+    return
+    
+  layouts = ("Block", "ExampleBlock", "AlertBlock")
+  for layout in layouts:
+    blay = 0
+    while True:
+      blay = find_token(document.body, '\\begin_layout ' + layout, blay)
+      if blay == -1:
+        break
+      elay = find_end_of(document.body, blay, '\\begin_layout', '\\end_layout')
+      if elay == -1:
+        document.warning("Malformed LyX document: Can't find end of " + layout + " layout.")
+        blay += 1
+        continue
+      bopt = find_token(document.body, '\\begin_inset OptArg', blay)
+      if bopt == -1:
+        # it is legal not to have one of these
+        blay = elay + 1
+        continue
+      eopt = find_end_of_inset(document.body, bopt)
+      if eopt == -1:
+        document.warning("Malformed LyX document: Can't find end of argument.")
+        blay = elay + 1
+        continue
+      bplay = find_token(document.body, '\\begin_layout Plain Layout', blay)
+      if bplay == -1:
+        document.warning("Malformed LyX document: Can't find plain layout.")
+        blay = elay + 1
+        continue
+      eplay = find_end_of(document.body, bplay, '\\begin_layout', '\\end_layout')
+      if eplay == -1:
+        document.warning("Malformed LyX document: Can't find end of plain layout.")
+        blay = elay + 1
+        continue
+      # So the content of the argument inset goes from bplay + 1 to eplay - 1
+      bcont = bplay + 1
+      if bcont >= eplay:
+        # Hmm.
+        document.warning(str(bcont) + " " + str(eplay))
+        blay = blay + 1
+        continue
+      # we convert the content of the argument into pure LaTeX...
+      content = lyx2latex(document, document.body[bcont:eplay])
+      strlist = put_cmd_in_ert(["{" + content + "}"])
+      
+      # now replace the optional argument with the ERT
+      document.body[bopt:eopt + 1] = strlist
+      blay = blay + 1
+
+
 def revert_align_decimal(document):
   l = 0
   while True:
@@ -1655,10 +1747,12 @@ convert = [[346, []],
            [388, []],
            [389, [convert_html_quotes]],
            [390, []],
-           [391, []]
-					]
+           [391, []],
+           [392, [convert_beamer_args]]
+          ]
 
-revert =  [[390, [revert_align_decimal]],
+revert =  [[391, [revert_beamer_args]],
+           [390, [revert_align_decimal]],
            [389, [revert_output_sync]],
            [388, [revert_html_quotes]],
            [387, [revert_pagesizes]],
