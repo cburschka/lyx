@@ -1,14 +1,14 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.7svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\textclass scrbook
+\textclass article
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!! 
 %
 %This preamble is designed to ensure that the document prints
 % out as advertised. If you mess with this preamble,
-% parts of the document may not print out as expected. If you
+% parts of the document may not print out as expected.  If you
 % have problems LaTeXing this file, please contact 
 % the documentation team
 % email: lyx-docs@lists.lyx.org
@@ -16,8 +16,8 @@
 \usepackage{ifpdf} % part of the hyperref bundle
 \ifpdf % if pdflatex is used
 
-% set fonts for nicer pdf view
-\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
 
 \fi % end if pdflatex is used
 
@@ -26,22 +26,22 @@
 \pagenumbering{roman}
 \let\myTOC\tableofcontents
 \renewcommand\tableofcontents{%
-\pdfbookmark[1]{\contentsname}{}
-\myTOC
-\cleardoublepage
-\pagenumbering{arabic} }
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \cleardoublepage
+  \pagenumbering{arabic} }
 
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
-L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-{LyX}}
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
 \end_preamble
 \use_default_options false
 \language basque
-\inputencoding latin1
-\font_roman times
-\font_sans helvet
-\font_typewriter courier
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
 \font_default_family default
 \font_sc false
 \font_osf false
@@ -49,7 +49,7 @@ L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
 \font_tt_scale 100
 
 \graphics default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
 \use_hyperref true
 \pdf_title "LyX Sarrera"
@@ -66,20 +66,20 @@ L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
-\papersize default
+\papersize a4paper
 \use_geometry false
-\use_amsmath 0
+\use_amsmath 1
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
-\tocdepth 3
+\tocdepth 2
 \paragraph_separation indent
 \defskip medskip
 \quotes_language english
 \papercolumns 1
-\papersides 2
+\papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
@@ -99,17 +99,24 @@ egilea: LyX taldea.
 status collapsed
 
 \begin_layout Plain Layout
-Fitxategi honen arduradun nagusia 
-\noun on
-John Weiss
-\noun default
- da.
- Bidali iradokizunak edo erroreei buruzko zuzenketak LyX dokumentazioko
- posta-zerrenda honetara: <lyx-docs@lists.lyx.org> 
+Bidali iradokizunak edo erroreei buruzko zuzenketak LyX dokumentazioko posta-zer
+renda honetara: 
+\lang english
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
+\lang basque
+
 \begin_inset Newline newline
 \end_inset
 
-Itzulpena: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004.
+Itzulpena: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004, 2010.
 \begin_inset Newline newline
 \end_inset
 
@@ -134,22 +141,6 @@ LatexCommand tableofcontents
 LyX-en filosofia
 \end_layout
 
-\begin_layout Quote
-"Osaba Cosmo, zergatik deitzen diote honi testu-prozesadorea?"
-\end_layout
-
-\begin_layout Quote
-"Erraza da, Skyler.
- Ikusi duzu jaki prozesagailu batek jakiei zer egiten dien, bai?"
-\end_layout
-
-\begin_layout Quote
-\begin_inset space \hfill{}
-\end_inset
-
-— Jeff MacNelly, "Shoe" 
-\end_layout
-
 \begin_layout Section
 Zer da LyX?
 \end_layout
@@ -161,9 +152,9 @@ LyX dokumentuak prestatzeko sistema bat da.
  dizu.
  Edozein luzeratako dokumentuak idazteko gaitasuna duen tresna paregabea
  da: dokumentua hainbat ataletan edo orrialdetan automatikoki zatitzeko,
- zuzentzaile ortografikoak lantzeko eta bestelako ezaugarriak ditu.
+ zuzentzaile ortografikoak lantzeko eta bestelako eginbideak ditu.
  Amatxori eskutitz bat idazteko ere erabil dezakezu, nahiz eta ziurrenik
- hori egiteko programa sinpleagorik eskuragarri egon.
+ hori egiteko programa sinpleagoren bat erabilgarri egon.
  Ez da iragarki, posterrak edo marrazkiak sortzeko tresna (gero azalduko
  da zergatia), nahiz eta gogorki saiatuta hori ere lor daitekeen.
  Beraren erabileraren gaineko zenbait adibide: memoriak, eskutitzak, desadostasu
@@ -172,8 +163,7 @@ ko laburpenak, softwareari buruzko dokumentazioa, liburuak (PostgreSQL,
  telepatia, kriptologia, fikziozko edota maitasunezko nobelak, olerkiak,
  bertsoak, umeentzako ipuinak e.a.), ekitaldi zientifikoetarako artikuluak,
  musika eta filmentzako script-ak, proiektuetarako txostenak \SpecialChar \ldots{}
-ideia hartu
- duzu, ez?
+
 \end_layout
 
 \begin_layout Standard
@@ -203,7 +193,7 @@ maketazioko
 
 \begin_layout Standard
 LyX erabiltzeko lehen aurrerapausoa zuk, erabiltzaile zaren horrek, daukazun
- pentsakera aldatzean datza.
+ pentsaera aldatzean datza.
  Garai batean (sua asmatu eta mende gutxitara) dokumentuak sortzeko tresnak
  idazmakinak ziren, eta bere mugak gainditzeko hainbat trikimailu beharko
  ikasi.
@@ -216,11 +206,10 @@ _
 \end_inset
 
  karakterearekin berridazten genuen, esaldiari garrantzi handiagoa emanez.
- Taula bat sortzeko, berriz, zutabe bakoitzaren zabalera zehaztu, eta kontuz-kon
-tuz tabulazioz betetzen genuen.
+ Taula bat sortzeko, berriz, zutabe bakoitzaren zabalera zehaztu, eta kontuz
+ kontu tabulazioz betetzen genuen.
  Gutunak eta bestelakoak sortzerakoan, eskuinera 'koskatu', e.a.
- Gainera, lerro-amaierako hitz banaketekin kontuz ibili beharra...
- Ene! (arnasotsa) Zelako garaiak haiek!
+ Gainera, lerro-amaierako hitz banaketekin kontuz ibili beharra.
 \end_layout
 
 \begin_layout Standard
@@ -235,11 +224,14 @@ zer hizki zein lekutan kokatu
  lan egiteko era horiekin arduratzeko.
  Ondorioz, ia testu-prozesadoreen gehiengo batek oraindik bizimodu horrekin
  darrai.
- Oraindik, orri batean gauza bakoitzak eduki behar duen kokapenarekin arduratu
- behar izaten dugu.
  Tabuladorea leku batean zuriuneak ezartzeko erabiltzen da.
+ Oraindik, orrialde batean gauza bakoitzak eduki behar duen kokapenarekin
+ arduratu behar izaten dugu.
  Dokumentu zati baten letra-tipoa aldatzea, idazmakina baten idazgurpila
  aldatzea bezalako zerbait da.
+ WYSIWYG motako testu-prozesadoreen filosofia da hori: "Ikusten duzuna lortzen
+ duzu" (WYSIWYG, What You See Is What You Get).
+ Zoritxarrez, paradigma honen emaitza "Ikusten duzuna da lortzen duzun guztia".
 \end_layout
 
 \begin_layout Standard
@@ -261,7 +253,7 @@ Mean
 \end_layout
 
 \begin_layout Standard
-LyX arlo honetan bereizten da, beste testu-prozesadore normal batekin konparatuz
+LyX arlo honetan bereizten da, beste testu-prozesadore arrunt batekin konparatuz
  .
  Hizki bat leku zehatz batean egoteaz arduratu beharrik ez daukazu.
  Esan LyX-i 
@@ -289,7 +281,7 @@ n antzekoa erabiltzen duten orri-estiloak dituzte.
 \end_layout
 
 \begin_layout Standard
-Demagun dokumentu bat idazten ari zarela.
+Demagun txosten bat idazten ari zarela.
  
 \begin_inset Quotes eld
 \end_inset
@@ -298,9 +290,10 @@ Sarrera
 \begin_inset Quotes erd
 \end_inset
 
- izeneko atal bat eduki nahi duzu.
- Ireki zure testu-prozesadoreko menua, hautatu neurria eta letra-tipoa.
- Ondoren, utzi esaldia letra lodiarekin.
+ izeneko atal bat eduki nahi duzu txostenaren hasieran.
+ Ireki zure testu-prozesadoreko letra-tipoen menua, letra-tamaina berria
+ aukeratzeko.
+ Ondoren, aktibatu letra lodiarekin.
  Jarraian idatzi 
 \begin_inset Quotes eld
 \end_inset
@@ -321,8 +314,8 @@ Sarrera
 \end_layout
 
 \begin_layout Standard
-LyX-en, berriz, kokatu goialdean dauden botoitxo guztien ezkerretara dagoen
- zerrendan, hautatu 
+LyX-en berriz, kokatu goialdean dauden botoitxo guztien ezkerretara dagoen
+ goitibeherako zerrendan, hautatu 
 \family sans
 Atala
 \family default
@@ -333,14 +326,15 @@ Atala
 Hori da dena.
  Ebaki atal hori eta beste edonon itsatsiz gero, dena bere kasa berriz zenbatua
  izango da.
- Gainera, LyX-ek dokumentuaren barruan egon daiteken atal honi buruzko erreferen
-tzia guztiak egunera ditzake, ez daukazu atalen numerazioa gehiago idatzi
+ Gainera, atal horri buruz errenferentziak sartzen badituzu (erreferentzia
+ gurutzatuen etiketak txertatuz), LyX-ek dokumentuaren barruko buruzko erreferen
+tzia guztiak eguneratuko ditu, ez daukazu atalen zenbaketa gehiago idatzi
  beharrik.
 \end_layout
 
 \begin_layout Standard
 Ohiko testu-prozesadore orokorrekin kontsistentzia-arazoak gertatzen dira.
- Bost egun igaro ondoren, 4.
+ Bost egun igaro ondoren, txostena berriro ireki eta 4.
 \begin_inset space ~
 \end_inset
 
@@ -361,7 +355,7 @@ ataleko izenburuko letra-tipoa eta 1.
 \begin_inset space ~
 \end_inset
 
-atalean erabilitakoa ezberdin erabili dituzu.
+atalean erabilitakoak desberdinak dira.
  LyX-en ez dago arazo hori, zure ordez letra-tipoa eta tamainak egoki edukitzeaz
  ordenagailua arduratuko baita.
  Azken finean, horretarako sortu ziren ordenagailuak, guri bizitza errazteko.
@@ -374,14 +368,14 @@ Beste adibide bat.
 ) batzuen ondorioa besterik ez da izaten, zerrendako elementu bakoitzaren
  etiketa non jarri, zer den, zenbateko tartea eta antzekoetan pentsatu behar
  duzu.
- LyX-ekin, ordea, bi ardura hartu beharko dituzu, bata zelako zerrenda-mota
+ LyX-ekin, ordea, bi ardura hartu beharko dituzu, bata zelako zerrenda mota
  den, eta bestea, bertan zer idatzi behar duzun.
  Eta kitto!
 \end_layout
 
 \begin_layout Standard
-Beraz, LyX inguruan dagoen ideia hau da: zer egin nahi duzun zehaztea, ez
- nola egin nahi duzun.
+Beraz, LyX-en atzean dagoen ideia hau da: zer egin nahi duzun zehaztea,
+ ez nola egin nahi duzun.
  "What You See Is What You Get" modeloaren ordez LyX-ek "What You See Is
  What You 
 \emph on
@@ -390,12 +384,9 @@ Mean"
  edo "WYSIWYM" erabiltzen du.
  Ahalmen handiko burutazio honek dokumentuak idazteko zeregina oso sinplifikatze
 n du.
-\end_layout
-
-\begin_layout Standard
-Horregatik irudi edo iragarkiak sortzeko LyX ez da erabilgarria – kasu horietan,
- gauza bakoitza zein lekutan kokatu behar den zehaztu behar duzu, hemen
- ez baitago paragrafo, atal eta bestelako unitate funtzionalik.
+ Horregatik irudi edo iragarkiak sortzeko LyX ez da erabilgarria.
+ Kasu horietan, gauza bakoitza zein lekutan kokatu behar den zehaztu behar
+ duzu, hemen ez baitago paragrafo, atal eta bestelako unitate funtzionalik.
  Ez du esan nahi LyX-i zenbait funtzio falta zaizkiola.
  Esan nahi du lan horretarako ez dela tresna egokia – marrazkiak ukitzeko
  tresna egokiak dauden bezala, dokumentuak idazteko tresnen artean LyX daukagu.
@@ -416,7 +407,7 @@ LyX eta beste testu-prozesadoreak
 \end_layout
 
 \begin_layout Standard
-Hona LyX-en aurkituko ez dituzun ezaugarrien zerrenda:
+Hona LyX-en aurkituko ez dituzun eginbideen zerrenda:
 \end_layout
 
 \begin_layout Itemize
@@ -428,16 +419,16 @@ Tabuladoreak
 \end_layout
 
 \begin_layout Itemize
-Zuriune osagarriak (adbz.
+Tarte osagarriak (adib.
  
 \family sans
-lerro
-\begin_inset space ~
-\end_inset
-
-itzulera (Intro)
+Sartu
 \family default
- edo zuriune tekla bi edo gehiagotan sakatzea)
+ edo 
+\family sans
+Zuriune
+\family default
+ tekla bi edo gehiagotan sakatzea)
 \end_layout
 
 \begin_layout Standard
@@ -452,7 +443,7 @@ Tabuladoreek zehazten dute erregela batean zehar orrialde bakoitzeko elementuak
 \end_layout
 
 \begin_layout Standard
-LyX-ek aurkezten dizkizun ezaugarri batzuk, baina irudikatu dezakezun bezala
+LyX-ek aurkezten dizkizun eginbide batzuk, baina irudikatu dezakezun bezala
  erabiltzen ez direnak: 
 \end_layout
 
@@ -470,7 +461,7 @@ Lerro-tartea (adb.
 \end_layout
 
 \begin_layout Itemize
-Zuriunea, horizontal eta bertikala.
+Tarte horizontal eta bertikala.
 \end_layout
 
 \begin_layout Itemize
@@ -478,7 +469,7 @@ Letra-tipo eta tamainak.
 \end_layout
 
 \begin_layout Itemize
-Letra-itxura (lodia, etzana, azpimarratua, e.a.).
+Letra-familia (lodia, etzana, azpimarratua, e.a.).
 \end_layout
 
 \begin_layout Standard
@@ -487,8 +478,8 @@ Nahiz eta LyX-en agertu, oro har ez dira erabiltzen.
 in bat egiten du.
  Dokumentuko zati bakoitzari letra-tipo eta tamaina zehatzak automatikoki
  ezartzen dizkio.
- Paragrafoen koskak kontestuaren menpe daude; paragrafo mota bakoitza era
- ezberdinean 'koskatzen' da.
+ Paragrafoen koskak testuinguruaren menpe daude; paragrafo mota bakoitza
+ era ezberdinean 'koskatzen' da.
  Orri-jauziak modu automatiko batean lantzen dira.
  Oro har, lerro, hitz eta paragrafo-tarteak aldakorrak dira, LyX-ek ezartzen
  ditu.
@@ -496,7 +487,7 @@ in bat egiten du.
 status collapsed
 
 \begin_layout Plain Layout
-Ezaugarri hauek denak zehatz ditzakezu (gutxi batzuk zehazteko LaTeX-eko
+Eginbide hauek denak zehatz ditzakezu (gutxi batzuk zehazteko LaTeX-eko
  ezaguerak behar dira) bai dokumentu osorako bai eta zati baterako ere.
  Xehetasun gehiagotarako, ikusi 
 \emph on
@@ -504,7 +495,7 @@ Erabiltzailearen gida
 \emph default
  edota 
 \emph on
-Ezaugarri hedatuak
+Eginbide gehigarriak
 \emph default
 .
 \end_layout
@@ -524,7 +515,7 @@ Lerro-amaierako hitz-banaketa (Hipenazioa).
 \end_layout
 
 \begin_layout Itemize
-Edozein motatako zerrendak.
+Edozein motako zerrendak.
 \end_layout
 
 \begin_layout Itemize
@@ -543,9 +534,9 @@ Erreferentzia gurutzatuak.
 Egungo prozesadore askok matematikako ikurrak, taulak, lerro amaierako hitz
  bereizleak eta estilo-definizioa erabiltzen dituzte, eta WYSIWYM pentsamoldera
  hurbiltzen hasiak dira.
- Ezaugarri horiek ezartzen hasi berri dira; LyX, ordea, LaTeX dokumentu-prestatz
-e sisteman oinarritua dago.
- LaTeX duela 15 urte baino gehiago sortu zen, eta 
+ Eginbide horiek ezartzen hasi berri dira; LyX, ordea, LaTeX dokumentu-prestatze
+ sisteman oinarritua dago.
+ LaTeX duela 20 urte baino gehiago sortu zen, eta 
 \emph on
 funtzionatzen du
 \emph default
@@ -567,7 +558,7 @@ Atal honetako informazioaren jatorria, Helmut Kopka eta Patrick Daly-k idatzitak
 o "A Guide to LaTeX2e"-a.
  
 \emph on
-Erabiltzailaren Gida
+Erabiltzailearen Gida
 \emph default
 k bibliografia atalean honi buruzko sarrera bat dauka.
 \end_layout
@@ -600,24 +591,20 @@ dvi
 \family typewriter
 dvi
 \family default
- fitxategia bistaratzeko programak edo beste formatu batera (PostScript®
- edo PDF) bihurtzen dutenak erabil ditzakezu.
+ fitxategia bistaratzeko programak edo PostScript bezalako beste formatu
+ batera bihurtzen dutenak erabil ditzakezu.
 \end_layout
 
 \begin_layout Standard
-Ezaugarri hau besterik ez balu, konposaketaren bihotza besterik ez zen izango.
- TeX-ek, ordea, makro-ak ezarri eta zehazteko aukera eskaintzen digu.
- Hemen hasten da akelarrea!
-\end_layout
-
-\begin_layout Standard
-TeX erabiltzen duten gehienek erabiltzen dute Knuth-ek sortutako Konposaketa-mun
-duko ñabardurak ezkutatzeko makro-multzoa.
+Eginbide hau besterik ez balu, konposaketaren bihotza besterik ez zen izango.
+ TeX-ek, ordea, makroak ezarri eta zehazteko aukera eskaintzen digu.
+ TeX erabiltzen duten gehienek erabiltzen dute Knuth-ek sortutako Konposaketa-mu
+nduko ñabardurak ezkutatzeko makromultzoa.
  Erabiltzaile normalak TeX (konposaketa komandoez bakarrik osatutako bizkarrezur
 ra) garbi batekin lanik ez du egiten.
- Era gordinean makro-ak sortzen dituztenek bakarrik erabiltzen dute.
- Eta une hau da Leslie Lamport antzeztokira sartzen zaiguna.
- Berak makro-ak (komando multzo bat), taulak edo matematika formulak sortzeko
+ Era gordinean makroak sortzen dituztenek bakarrik erabiltzen dute.
+ Eta une hori da Leslie Lamport antzeztokira sartzen zaiguna.
+ Berak makroak (komando multzo bat), taulak edo matematika formulak sortzeko
  bide sendo eta uniforme batean egon nahi zuen: erabiltzaileari begira gehiago
  zuzendua eta konposaketa arlora berriz gutxiago, horrenbesteko buru hausterik
  gabe.
@@ -633,10 +620,10 @@ Orain, LaTeX-en hedapen eta garapenekin bateratuz, beste gizaki batzuk TeX-erako
  Nahaspila hau konpontzeko asmoz, laurogeigarren hamarkadaren amaieran,
  LaTeX-eko adituak (Lamport barne, noski) LaTeX2e-en lanean hasi ziren,
  gaur egungo bertsioa.
- Bertsio berri hori makro-ak sortzeko erraztasun handiagoak eskaintzen dizkizute
-n komandoekin dator, letra-tipo berriak erabiltzeko laguntza eta hobekuntza
+ Bertsio berri hori makroak sortzeko erraztasun handiagoak eskaintzen dizkizuten
+ komandoekin dator, letra-tipo berriak erabiltzeko laguntza eta hobekuntza
  gehiago.
- Beraren eskubide osoz, LaTeX bere izakeran hizkuntza zabal bat da.
+ Beraren eskubide osoz, LaTeX bere izaeran hizkuntza zabal bat da.
  Estandarraz gain, mundu osoko erabiltzaileek LaTeX-entzat gehigarriak sortzen
  darraite.
 \end_layout
@@ -649,7 +636,7 @@ Klase
 \emph default
  bat da dokumentu-mota berri bat (liburu bat, edo artikulu bat) zehazten
  duen LaTeX-eko (eta TeX-ekoa ere) makro talde bat.
- Diapositibentzako klaseak daude, fisika eta matematikako argitarapenetan...
+ Diapositibentzako klaseak daude, fisika eta matematikako argitalpenetan...
  zenbait unibertsitatek tesiak zehazten dituen formatuak dituzte.
  
 \emph on
@@ -674,28 +661,23 @@ egi erabiliz kontrolatzen ditu.
 Laburpen bat:
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-TeX: Konposaketa-hizkuntza, makroak sortu eta erabiltzeko ahalmenarekin.
+\begin_layout Description
+TeX: konposaketarako lengoaia, makroak sortu eta erabiltzeko ahalmenarekin.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-LaTeX: Tex-en gainean eraikitako makroen paketea.
+\begin_layout Description
+LaTeX: TeX-en gainean eraikitako makroen paketea.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Description
 klaseak: dokumentu baten deskribapena, LaTeX erabiliz.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-estiloak: nolabait LaTeX-en izakera moldatzeko.
+\begin_layout Description
+estiloak: nolabait LaTeX-en izaera moldatzeko.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Description
 LyX: WYSIWYM testu-prozesadore bisuala, LaTeX-en indar eta ahalmen guztiak
  erabiliz.
 \end_layout
@@ -712,37 +694,13 @@ zergatik
  Haren itxuraz ordenagailua arduratuko da.
 \end_layout
 
-\begin_layout Standard
-Epaaa! Gauza bat gehiago.
- LaTeX TeX bezala ahoskatzen da.
- "Hey blech"-ekin errimatzen du.
- Lamport-ek bere liburuan, ordea, dio "lay-tecks" ere izan daitekeela.
- Bestalde, "LyX" "licks" "lucks" edo "looks" ahoska daiteke, herri bakoitzeko
- ahoskeren arabera.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-Itzultzailearen oharra
-\emph default
-: euskaraz "liks" esan dezakegu, hots, "lix".
- :-)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Chapter
 Dokumentazioan nabigatzea
 \end_layout
 
 \begin_layout Standard
-Zure galderei errazago erantzuteagatik, eta LyX-en ezaugarriak era egoki
- baten azaltzeko, dokumentazioa hainbat fitxategitan bereiztua izan da.
+Zure galderei errazago erantzuteko, eta LyX-en eginbideak era egoki baten
+ azaltzeko, dokumentazioa hainbat fitxategitan zatitu da.
  Zati bakoitzak bere helburua du, aurrerago azalduko den bezala.
  Fitxategi hauetariko batekin aurrez aurre aurkitu baino lehenago, begi
  bistan daukazun hau irakurtzea aholkatzen dizugu, denbora aurreztu dezazun
@@ -750,13 +708,12 @@ Zure galderei errazago erantzuteagatik, eta LyX-en ezaugarriak era egoki
 \end_layout
 
 \begin_layout Standard
-Nahiz eta LyX-ek "1.0 bertsioa" ongi igarota eduki, laguntza dokumentuaren
+Zorionez, LyX-en garapena ez denez inoiz geldituko, laguntzako dokumentuaren
  zati bat amaitu gabe edo zaharkitua egon daiteke.
  LyX-eko beste guztia bezala, eskuliburuak boluntario-lanaren emaitzak dira,
  eta hauek "benetako lana" daukate; etxekoak, iloba zaindu, edalontziak
- garbitu, mozkorkerian gaupasa egin, e.a.\SpecialChar \ldots{}
- Eskuliburuak egoera onean (eguneratuak)
- egon daitezen ahalegintzen gara.
+ garbitu, mozkorkerian gaupasa egin, e.a.
+ Eskuliburuak egoera onean (eguneratuak) egon daitezen ahalegintzen gara.
  Laguntzeko prest bazaude, ziurta zaitez dokumentuko beste ezer baino lehen
  
 \begin_inset CommandInset ref
@@ -781,12 +738,8 @@ type "mailto:"
 \end_inset
 
  helbidera.
- 
-\end_layout
-
-\begin_layout Standard
-Dokumentazioarekin zerikusirik ez duten eta erantzun azkarra eskatzen duten
- galderentzat, erabil posta-zerrenda hau: 
+ Dokumentazioan erantzuten ez den zerbaiti buruzko laguntza behar baduzu,
+ erabili posta-zerrenda hau: 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-users@lists.lyx.org"
@@ -803,11 +756,11 @@ Eskuliburuen egitura
 
 \begin_layout Standard
 Agian, eskulibururen bat edo beste inprimatuta edukiko duzu, edo bestela
- LyX erabiliz "monitorean" irakurtzen zaude.
+ LyX erabiliz "pantailan" irakurtzen zaude.
  LyX-eko fitxategia eta inprimatutakoaren artean ezberdintasun batzuk daude.
  Aurrenekoa, izenburua eskuliburuaren hasieran dago, ez da bereizitako orrialdea
 n agertzen, inprimatutako bertsioan lehenbiziko orrialdean agertzen da.
- Bai oin-oharra, bai edukien aurkibidea ez daude bistaratuak.
+ Bai oin-oharra, bai edukien aurkibidea ez daude beraien osotasunean bistaratuak.
  Edukien aurkibidea ikusteko menuko aukera bat badaukazu: 
 \family sans
 Arakatu
@@ -818,7 +771,7 @@ Arakatu
 status collapsed
 
 \begin_layout Plain Layout
-Kaixo! Oin-ohar hau ixteko, ezkerraldeko laukitxo gris horretan klikatu\SpecialChar \ldots{}
+Kaixo! Oin-ohar hau ixteko, ezkerraldeko laukitxo gris horretan klik egin\SpecialChar \ldots{}
 Bai,
  "oina" hitza bertan idatzita agertzen da.
 \end_layout
@@ -846,37 +799,32 @@ reference "atal:auzolana"
 
 alegia (inprimatutako eskuliburuetan zenbakiak agertzen dira laukiluze hauen
  ordez).
- Laukiluzea saguaren ezker botoiarekin klikatuz dokumentuko erreferentzia
+ Laukiluzea saguaren ezker botoiarekin klik eginez dokumentuko erreferentzia
  gurutzatuen zerrenda daukan elkarrizketa-koadroa bistaratuko zaizu.
  Sarrera honek "atal:auzolana" izeneko bakar bat dauka.
- Erreferentziatu den atalera joateko, erabili elkarrizketa koadroan "Joan"
- botoia.
+ Erreferentziatu den atalera joateko, erabili elkarrizketa koadroan "Joan
+ etiketara" botoia.
  
-\family sans
-C-<
-\family default
- zapalduz berriz, aurreko kokapenera itzuliko zara.
- (
-\family sans
-
 \begin_inset Quotes eld
 \end_inset
 
-C-<
-\family default
-"-ren esanahia beheraxeago argitzen da).
+Joan atzerantz
+\begin_inset Quotes erd
+\end_inset
+
+ botoian klik eginez aurreko kokapenera itzuliko zara.
 \end_layout
 
 \begin_layout Standard
 Fitxategi honen pantailazko eta inprimatutako bertsioaren arteko ezberdintasun
  batzuk ikusi ondoren, eskuliburu honen formatuaz mintzatzen has gaitezke.
- Noizean behin hizki mota ezberdindun elementuak aurkituko dituzu:
+ Noizean behin letra-tipo desberdineko elementuak aurkituko dituzu:
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-Bereizketa-mota
+Enfasia estiloa
 \emph default
  orokorrean enfasietan erabiltzen da, arrazonamendu orokorretan, liburuen
  tituluetan, beste eskuliburuetako ataletan, eta idazleen (egile) oharretan.
@@ -885,9 +833,9 @@ Bereizketa-mota
 \begin_layout Itemize
 
 \family typewriter
-Idazmakina mota
+Idazmakina 
 \family default
- programa eta fitxategien izenetan, LaTeX kodea eta LyX kode eta funtzioetan
+programa eta fitxategien izenetan, LaTeX kodea eta LyX kode eta funtzioetan
  erabiltzen da.
 \end_layout
 
@@ -896,36 +844,36 @@ Idazmakina mota
 \family sans
 Sans Serif
 \family default
- mota menu, botoi, elkarrizketa-koadroetan eta teklatuko teklen izenetan
- erabiltzen da.
+ menu, botoi, elkarrizketa-koadroetan eta teklatuko teklen izenetan erabiltzen
+ da.
 \end_layout
 
 \begin_layout Itemize
 
 \noun on
-Izen
+Izena
 \noun default
- mota pertsonen izena idazteko erabiltzen da.
+ pertsonen izena idazteko erabiltzen da.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\series bold
+Lodia
+\family default
+\series default
+ LaTeX kodean erabiltzen da.
 \end_layout
 
 \begin_layout Standard
-Menuen laster-teklak eta beste tekla-loturei buruz gehiago jakiteko, irakurri
- 
-\emph on
-Ezaugarri Hedatuak
-\emph default
- (
-\family typewriter
-Extended.lyx
-\family default
- fitxategia).
- Tekla-loturei erreferentzia egiterakoan erabilpen hauek jarraituko dira:
+Teklei erreferentzia egiterakoan erabilpen hauek jarraituko dira:
 \end_layout
 
 \begin_layout Itemize
 "
 \family sans
-C-
+Ktrl-
 \family default
 " 
 \family sans
@@ -941,7 +889,7 @@ Ctrl
 \begin_layout Itemize
 "
 \family sans
-S-
+Maius-
 \family default
 " 
 \family sans
@@ -953,17 +901,13 @@ Shift
 \begin_layout Itemize
 "
 \family sans
-M-
+Alt-
 \family default
 " 
 \family sans
-Meta
+Alt (Meta)
 \family default
- tekla, ia teklatu gehienetan 
-\family sans
-Alt
-\family default
- izango da.
+ tekla adierazten du.
 \end_layout
 
 \begin_layout Itemize
@@ -998,11 +942,11 @@ F12
 \begin_layout Itemize
 
 \family sans
-"Ezkerra"
+"Ezkerrera"
 \family default
 , 
 \family sans
-"Eskuina"
+"Eskuinera"
 \family default
 , 
 \family sans
@@ -1027,7 +971,7 @@ Gora"
 \family default
  
 \family sans
-"Etxea",
+"Hasiera",
 \family default
  
 \family sans
@@ -1056,65 +1000,527 @@ Next
 \begin_layout Itemize
 
 \family sans
-Lerro
-\begin_inset space ~
+\begin_inset Quotes eld
 \end_inset
 
-itzulera
+Sartu
+\begin_inset Quotes erd
+\end_inset
+
+
 \family default
- (
-\family sans
-Intro
-\family default
-).
- Teklatu batzuek 
+ teklatu batzuk 
 \family sans
 Return
 \family default
- edo 
+ daukate, beste batzuk 
 \family sans
-Enter
+Enter,
 \family default
- bezala daukate.
- Beste batzuek birritan daukate.
+ beste batzuk berriz birritan daukate.
  LyX-ek tekla denak berdin erabiliko ditu, beraz 
 \family sans
-lerro
-\begin_inset space ~
-\end_inset
-
-itzulera
-\family default
- edo 
-\family sans
-intro
+Sartu
 \family default
  erabiliko dugu.
 \end_layout
 
+\begin_layout Itemize
+Uneko lasterbideen zerrenda Laguntza menuko Lasterbideak dokumentuan aurkitzen
+ dira zehaztuta.
+\end_layout
+
+\begin_layout Section
+Eskuliburuetan erabilitako unitateak
+\end_layout
+
 \begin_layout Standard
-Noizean behin "
-\family sans
-(ikus
-\family default
- 
-\family sans
-\emph on
-"Hedatuak"
-\emph default
-)
-\family default
-" bezalakoekin aurkituko zara.
- "Ezaugarri Hedatuak" eskuliburuan jatorrizko tekla-loturak zerrendatu ditugu,
- beraz bertan begiradatxo bat bota dezakezu.
- Ohartu zaitez LyX erabiltzaileen artean bi tekla-lotura mapa ezberdin erabiltze
-n direla: "CUA" tankeraduna, non hau PC arlotik datorrenarentzat ezaguna
- eta jatorrizkoa izaten den, eta "emacs" tankerakoa, hau berriz Unix sistemekin
- "hazi" eta "Emacs" editorea erabiltzen dutenentzako ohikoa izaten da.
- Bestelakorik ez bada zehazten, dokumentuetan erabiltzen den tekla-loturak
- CUA motako mapan oinarritutakoak izaten dira.
- Emacs atsegingarria egiten bazaizu, eskuliburuak irakurtzeko eta loturak
- zure kasa egiteko gai izango zarelakoan gaude.
+Dokumentazio honetan azaldutako unitateak ulertzeko, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Unitateak"
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+taulak LyX-eko unitate erabilgarri guztiak zerrendatzen ditu.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Unitateak"
+
+\end_inset
+
+Unitateak
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="20" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unitatea
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Izena / deskripzioa
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+milimetroa
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+zentimetroa
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+in
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hazbete
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+puntu ( 72,27 = 1 hazbete)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pica (1 pc = 12 pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+puntu eskalatua (65536 sp = 1 pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+puntu handia (72 bp = 1 hazbete)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+didot (72 dd 
+\lang english
+
+\begin_inset Formula $\approx$
+\end_inset
+
+
+\lang basque
+37,6 mm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cicero (1 cc = 12 dd)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eskala %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Jatorrizko irudiaren zabaleraren %
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Testua %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Testuaren zabaleraren %
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Zut %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Zutabearen zabaleraren %
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Orria %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Paperaren zabaleraren %
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lerroa %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lerroaren zabaleraren %
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TAltuera %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Testuaren altueraren %
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PAltuera %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Paperaren altueraren %
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ex
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Uneko letra-tipoaren x hizkiaren altuera
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Uneko letra-tipoaren M hizkiaren zabalera
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mu
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+matematikako unitatea (1 mu = 1 / 18 em)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\lang english
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1126,65 +1532,35 @@ Dokumentazioa osatzen duten zatiak zerrendatzen dira ondoren:
 \end_layout
 
 \begin_layout Description
-Sarrera
+Sarrera Fitxategi hau.
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-Fitxategi hau.
-\end_layout
-
-\end_deeper
 \begin_layout Description
-Tutoretza
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-LyX erabiltzen hasiberria bazara, eta orain arte LaTeX inoiz ez baduzu entzun
- ez eta erabili ere, orduan hemendik hasi beharko duzu.
+Tutoretza LyX erabiltzen hasiberria bazara, eta orain arte LaTeX inoiz ez
+ baduzu entzun ez eta erabili ere, orduan hemendik hasi beharko duzu.
  
 \emph on
 Tutoretza
 \emph default
  irakurri ostean, LaTeX oraindik zabalegia delakoan ustearekin jarraitu
  dezakezu, baina LyX nola erabili behar den jakingo duzu.
-\end_layout
-
-\begin_layout Standard
-LaTeX erabili baduzu, 
+ LaTeX erabili baduzu, 
 \emph on
 Tutoretza
 \emph default
--ko "LyX LaTeX erabiltzaileentzat" atala irakurri beharko zenuke (eta eskuliburu
-ko beste atalek kalterik ez dizute egingo).
+ko "LyX LaTeX erabiltzaileentzat" atala irakurri beharko zenuke (eta eskuliburuk
+o beste atalek kalterik ez dizute egingo).
 \end_layout
 
-\begin_layout Standard
-Edozein unetan LyX-ekiko iparra (edo norabidea) galdu egin duzulakoan bazaude,
- beste edozein eskulibururen bat irakurri eta ulertu aurretik, 
-\emph on
-Tutoretza
-\emph default
- irakurtzeak on egingo dizu.
- Abiatzeko gune ona baita.
-\end_layout
-
-\end_deeper
 \begin_layout Description
 Erabiltzailearen
 \begin_inset space ~
 \end_inset
 
-gida
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Eskuliburu nagusia.
- Hemen LyX programaren oinarrizko ezaugarri eta aukeren gehiengo bat argitzen
+gida Eskuliburu nagusia.
+ Hemen LyX programaren oinarrizko eginbide eta aukeren gehiengo bat argitzen
  saiatuko gara.
- Eskuliburu nagusiak LaTeX-eko ezagutza batzuk badauzkazulakoan dago, edo
+ Eskuliburu nagusiak LaTeX-eko ezagutza batzuk dauzkazulakoan dago, edo
  
 \emph on
 Tutoretza
@@ -1192,55 +1568,61 @@ Tutoretza
  irakurri duzula behintzat.
 \end_layout
 
-\end_deeper
 \begin_layout Description
-Ezaugarri
+Kapsulatutako
 \begin_inset space ~
 \end_inset
 
-hedatuak
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
+objektuak 
 \emph on
-Erabiltzailearen Gida
+Erabiltzailearen gida
 \emph default
--ren hedapena.
- LaTeX-eko komandoak, diseinu gehigarriak, edizioko ezaugarri bereziak eta
- LaTeX-eko adituen trikimailu batzuk azaltzen ditu dokumentu honek.
+ren hedapena da.
+ Dokumentu honetan taulak, grafikoak, mugikorrak, oharrak, programen zerrendak
+ eta koadroak nola erabiltzen diren erakusten du xehetasunez.
 \end_layout
 
-\end_deeper
 \begin_layout Description
-Pertsonalizazioa
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-LyX-en ezaugarri garatuen azalpena, programaren jarrera (izakera) orokorra
- pertsonalizatzea; tekla-lotura, nazioartekotza eta konfigurazio-fitxategi
- bezalakoak.
- 
+Matematika 
 \emph on
-Tutoretza
+Erabiltzailearen gida
 \emph default
- irakurri gabe hau irakurtzea ezta bururatu ere.
+ren hedapena da.
+ Edozein formula mota nola maketatzen den buruzko azalpen xehatuak ditu.
 \end_layout
 
-\end_deeper
+\begin_layout Description
+Eginbide
+\begin_inset space ~
+\end_inset
+
+gehigarriak 
+\emph on
+Erabiltzailearen gida
+\emph default
+ren hedapena.
+ LaTeX-eko komandoak, diseinu gehigarriak, edizioko eginbide bereziak azaltzen
+ ditu dokumentu honek.
+\end_layout
+
+\begin_layout Description
+Pertsonalizazioa LyX-en eginbide garatuen azalpena, programaren jarrera
+ (izaera) orokorra pertsonalizatzea; tekla-lotura, nazioartekotza eta konfiguraz
+ioko fitxategi bezalakoak.
+ Diseinuko fitxategiei buruzko informazioa ere dauka, LyX-ek LaTeX-eko klase
+ edo paketeen euskarria edukitzeko beharrezkoa izanik.
+\end_layout
+
+\begin_layout Description
+Lasterbideak Unean definitutako LyX-en lasterbideak dituen taulak dira.
+\end_layout
+
 \begin_layout Description
 LaTeX
 \begin_inset space ~
 \end_inset
 
-konfigurazioa
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-LyX-ek, instalatzerakoan, zure sistema aztertzen du.
+konfigurazioa LyX-ek, instalatzean, zure sistema aztertzen du.
  Fitxategi honek LyX-ek zure instalazioari buruz ikasitakoaren informazioa
  dauka.
 \begin_inset Foot
@@ -1256,15 +1638,14 @@ Itzultzailearen oharra
 
 \end_inset
 
- Eduki beharreko zerbait falta bada, hemen egiazta beharko duzu.
+ Eduki beharreko zerbait falta bada, hemen begiratu beharko duzu.
 \end_layout
 
-\end_deeper
 \begin_layout Standard
 Fitxategiok elkar erreferentziatzen dute, beharrezkoa denean.
  Adibidez, 
 \emph on
-Erabiltzailearen Gida
+Erabiltzailearen gida
 \emph default
 -k instalatze eta pertsonalizatze buruzko zerbait dio, baina irakurlea 
 \emph on
@@ -1324,7 +1705,7 @@ Lagundu LyX-i
 
 \begin_layout Standard
 LyX ia bere osotasunean C++ programaketa hizkuntzan idatzia dago (LaTeX
- inportatzeko tresna Perl-en idatzia izan da).
+ inportatzeko tresna Python-en idatzia izan da).
  Proiektu handi bat da, eta gerta daiteke errore bat edo beste edukitzea,
  edo iturburua hobetu beharra izatea.
 \end_layout
@@ -1334,18 +1715,18 @@ Bidali errorea
 \end_layout
 
 \begin_layout Standard
-LyX erabiltzerakoan jokaeraren bat errore bezala dela pentsa dezakezu.
+LyX erabiltzean portaeraren bat errorea dela pentsa dezakezu.
  Nahiz eta gutxitan gertatu, programa hondatu daiteke.
  LyX-eko garatzaile-taldearen iritziz errore gehientsuenak erabiltzaile-interfaz
-etik sor daiteke: LyX interfazeko zein zati korapilotsua, zaila ulertzeko,
+etik sor daiteke: LyX interfazeko zein zati korapilatsua, zaila ulertzeko,
  azaltzen dituzten iradokizunak oso lagungarriak izaten dira.
 \end_layout
 
 \begin_layout Standard
 LyX-ek erroreen txostenak bidaltzeko eta kudeatzeko sistema bat erabiltzen
- du, 
+ du,
 \family typewriter
-LyX bug tracker 
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -1360,7 +1741,7 @@ http://www.lyx.org/trac/wiki/BugTrackerHome
 \family default
  gunean aurki dezakezuna.
  Edozein errore buruzko txostena bidali aurretik erroreak kudeatzeko sistema
- hori egiaztatzea eskatuko genizuke, aurrez beste norbaitek errore berdinari
+ horretan begiratzea eskatuko genizuke, aurrez beste norbaitek errore berdinari
  buruzko txosten bat bidalita eduki baitezake.
  Hau da, errore txosten berri bat bidali aurretik, egiaztatu errore berdinari
  buruzko beste txostenik ez dagoela erroreak kudeatzeko LyX-ek darabilen
@@ -1376,12 +1757,12 @@ type "mailto:"
 \end_inset
 
  posta-zerrendara.
- Posta-zerrenda honen artxiboei zuzenduriko estekak LyX gune nagusian jarri
- dira, 
+ Posta-zerrenda honen artxiboei zuzendutako estekak LyX-en webgune nagusian
+ jarri dira:
 \family typewriter
-LyX website 
+ 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1402,81 +1783,15 @@ Errore-txosten on (erabilgarria) batek gutxienik arazoak dituen LyX bertsioaren
  ari zaren.
  Zure sisteman instalatuta daukazun liburutegien bertsioak eta, interesgarria
  baderitzozu, LyX-ek erabiltzen duen kanpoko programen bertsioak.
- Konpilatze- edo konfigurazio-arazo bat izanez gero, egokiena da config.log
+ Konpilatze- edo konfigurazio-arazo bat izanez gero, egokiena da 
+\family typewriter
+config.log
+\family default
  fitxategia eranstea eta zein konpilatzaile erabiltzen ari zaren azaltzea.
 \end_layout
 
-\begin_layout Standard
-Izan zehatza, nahiago dira xehetasunez azaldutako deskribapenak - garatzaileek
- zenbat eta denbora gehiago 
-\end_layout
-
-\begin_layout Standard
-igaro errorea non dagoen aurkitzen, orduan eta denbora gutxiago eskainiko
- diote programaren bestelako hobekuntzei.
-\end_layout
-
-\begin_layout Standard
-LyX hondatzeko gai bazara, eskertuko genizuke "backtrace
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-Itzultzailearen oharra
-\emph default
-: "backtrace" hitza nolabait azaldu arren, programa bat erabiltzerakoan
- honek sortzen dituen mezuak izaten dira.
- Mezuok terminal batean agertzen dira.
- Mezuen ibilbidea jarraituz garatzaileek errorea non kokatzen den errazago
- aurkitu ahal izaten dute.
-\end_layout
-
-\end_inset
-
-"-a sortzeko denbora hartuko bazenu lyx exekutagarri ez-garbi bat erabiliz.
- Zure iturburuen direktorioan eraikitakoari deitzen diogu exekutagarri ez-garbia
-, sisteman instalatua daukazun kode bitarrari berriz garbia deitzen diogularik.
- Beraz, gdb tresna erabiliz LyX exekutatu, adibidez idatzi "
-\family typewriter
-\size small
-gdb /users/estitxu/lyx-1.6.x/src/lyx
-\family default
-\size default
-" eta ondoren "
-\family typewriter
-run
-\family default
-".
- Ondoren, itzuli LyX hondatzea egin eta gdb tresnara.
- Erabili "bt" "backtrace"-a sortzeko eta txertatu ezazu errore-txostenean.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-perfektua izatea nahi baduzu, erabili "
-\family typewriter
-info locals
-\family default
-" eta 
-\family typewriter
-"up"
-\family default
- komandoak pila batzuen mailetako aldagai lokalen balioak plazaratzeko
-\end_layout
-
-\end_inset
-
- Posiblea bazaizu, azaldu zein urrats landu dituzun LyX hondatzeko, zeren
- eta "backtrace" bera baino garrantzitsuagoa baita, horrela guri gure "backtrace
-" propioa sortzeko aukera eskainiko baitiguzu.
- Errorea berriro sortzea ez den kasuan "backtrace" bat edukitzea ezinbestekoa
- da, hori bakarrik edukiko genukeelako.
-\end_layout
-
 \begin_layout Subsection
-Lagundu finkatzen eta ezaugarri berrietan
+Lagundu finkatzen eta eginbide berrietan
 \end_layout
 
 \begin_layout Standard
@@ -1490,11 +1805,7 @@ diff
 \family typewriter
 changelog
 \family default
- fitxategia eta zure txaplatak (
-\family typewriter
-patch
-\family default
-) egiten duenari buruzko azalpena ere.
+ fitxategia eta zure txaplatak egiten duenari buruzko azalpena ere.
 \end_layout
 
 \begin_layout Section
@@ -1504,7 +1815,7 @@ Lagundu dokumentazioan
 \begin_layout Standard
 LyX-en dokumentazioa zabala da.
  Nola nahi ere, LyX beti garatzen ari da, eta kaleratze berri bakoitzak
- ezaugarri berriekin agertzen da.
+ eginbide berriekin agertzen da.
  Dokumentazio batzuk eguneratu beharrean daudela aurki ditzakezu.
  Atal honek azaltzen du zer egin behar duzun errore bat edo hobekuntzaren
  bat aholkatu nahi badiguzu.
@@ -1538,24 +1849,22 @@ LyX dokumentazio-proiektuak (The LyX Documentation Project), LyX proiektuko
 \end_layout
 
 \begin_layout Enumerate
-Eskuratu LyX-en azken iturburuak.
- Deskonprimatu.
-\begin_inset Foot
+Eskuratu LyX-en azken iturburuak hemendik:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
-Abenturazaleek dokumentazioa LyX-eko CVS eduki-sistematik anonimoki eskura
- daiteke.
- Edukien sistema honek 
-\family typewriter
-lyxdoc
-\family default
- modulua dauka.
+
+http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc
 \end_layout
 
 \end_inset
 
- Bertan lib/doc/ izeneko direktorioa aurkituko duzu.
+
 \end_layout
 
 \begin_layout Enumerate
@@ -1568,10 +1877,9 @@ Erabiltzailearen gida
 Tutoretza
 \emph default
 .
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_deeper
-\begin_layout Standard
 Ariketa honen helburua zuri ideiak ematea dauka helburutzat.
  
 \emph on
@@ -1590,13 +1898,12 @@ gida
  ohartuko zara.
 \end_layout
 
-\end_deeper
 \begin_layout Enumerate
 Jarri taldearekin harremanetan: 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_deeper
-\begin_layout Standard
+
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -1605,13 +1912,12 @@ type "mailto:"
 \end_inset
 
 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 nahi dituzun aldaketei buruz eztabaidatzeko, eta beraien ikuspuntuak jakiteko.
 \end_layout
 
-\end_deeper
 \begin_layout Standard
 Egiten dituzun aldaketek testu aldetik garbiak izan behar dute, ulerterrazak
  alegia, dokumentazioaren berregituraketa sakonagoa egin ahal izateko.
