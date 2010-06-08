@@ -70,8 +70,8 @@ struct HunspellChecker::Private
 
 	/// the location below system/user directory
 	/// there the aff+dic files lookup will happen
-	const string dictDirectory(void) { return "dict"; }
-	const int maxLookupSelector(void) { return 3; }
+	const string dictDirectory(void) const { return "dict"; }
+	int maxLookupSelector(void) const { return 3; }
 };
 
 

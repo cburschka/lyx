@@ -961,12 +961,13 @@ bool Tabular::updateColumnWidths()
 		int new_width = 0;
 		for(row_type r = 0; r < nrows(); ++r) {
 			idx_type const i = cellIndex(r, c);
-			if (columnSpan(i) == 1)
+			if (columnSpan(i) == 1) {
 				if (getAlignment(i) == LYX_ALIGN_DECIMAL)
 					new_width = max(new_width, cellInfo(i).width 
 				                + max_dwidth[c] - cellInfo(i).decimal_width);
 				else
 					new_width = max(new_width, cellInfo(i).width);
+			}
 		}
 
 		if (column_info[c].width != new_width) {
