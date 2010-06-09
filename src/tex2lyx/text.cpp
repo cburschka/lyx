@@ -457,29 +457,34 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 	unsigned int optargs = 0;
 	while (optargs < context.layout->optargs) {
 		eat_whitespace(p, os, context, false);
-		if (p.next_token().character() == '[') {
-			p.get_token(); // eat '['
-			begin_inset(os, "OptArg\n");
-			os << "status collapsed\n\n";
-			parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
-			end_inset(os);
-			eat_whitespace(p, os, context, false);
-			optargs++;
-		}
+		if (p.next_token().character() != '[') 
+			break;
+		p.get_token(); // eat '['
+		begin_inset(os, "OptArg\n");
+		os << "status collapsed\n\n";
+		parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
+		end_inset(os);
+		eat_whitespace(p, os, context, false);
+		optargs++;
 	}
+#if 0
+	// This is the code needed to parse required arguments, but 
+	// required arguments come into being only much later than the
+	// file format tex2lyx is presently outputting.
 	unsigned int reqargs = 0;
 	while (reqargs < context.layout->reqargs) {
 		eat_whitespace(p, os, context, false);
-		if (p.next_token().character() == '{') {
-			p.get_token(); // eat '['
-			begin_inset(os, "OptArg\n");
-			os << "status collapsed\n\n";
-			parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
-			end_inset(os);
-			eat_whitespace(p, os, context, false);
-			reqargs++;
-		}
+		if (p.next_token().character() != '{') 
+			break;
+		p.get_token(); // eat '{'
+		begin_inset(os, "OptArg\n");
+		os << "status collapsed\n\n";
+		parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
+		end_inset(os);
+		eat_whitespace(p, os, context, false);
+		reqargs++;
 	}
+#endif
 	parse_text(p, os, FLAG_ITEM, outer, context);
 	context.check_end_layout(os);
 	if (parent_context.deeper_paragraph) {
