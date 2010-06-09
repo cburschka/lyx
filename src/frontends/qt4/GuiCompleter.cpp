@@ -111,8 +111,7 @@ public:
 	{
 		if (list_ == 0)
 			return 0;
-		else
-			return list_->size();
+		return list_->size();
 	}
 
 	///
@@ -130,24 +129,23 @@ public:
 		if (index.column() == 0)
 			return toqstr(list_->data(index.row()));
 
-		if (index.column() == 1) {
-			// get icon from cache
-			QPixmap scaled;
-			QString const name = ":" + toqstr(list_->icon(index.row()));
-			if (!QPixmapCache::find("completion" + name, scaled)) {
-				// load icon from disk
-				QPixmap p = QPixmap(name);
-				if (!p.isNull()) {
-					// scale it to 16x16 or smaller
-					scaled = p.scaled(min(16, p.width()), min(16, p.height()), 
-						Qt::KeepAspectRatio, Qt::SmoothTransformation);
-				}
-
-				QPixmapCache::insert("completion" + name, scaled);
+		if (index.column() != 1)
+			return QVariant();
+	
+		// get icon from cache
+		QPixmap scaled;
+		QString const name = ":" + toqstr(list_->icon(index.row()));
+		if (!QPixmapCache::find("completion" + name, scaled)) {
+			// load icon from disk
+			QPixmap p = QPixmap(name);
+			if (!p.isNull()) {
+				// scale it to 16x16 or smaller
+				scaled = p.scaled(min(16, p.width()), min(16, p.height()), 
+					Qt::KeepAspectRatio, Qt::SmoothTransformation);
 			}
-			return scaled;
+			QPixmapCache::insert("completion" + name, scaled);
 		}
-		return QVariant();
+		return scaled;
 	}
 
 private:
@@ -170,10 +168,10 @@ GuiCompleter::GuiCompleter(GuiWorkArea * gui, QObject * parent)
 	
 	// create the popup
 	QTreeView *listView = new QTreeView;
-        listView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-        listView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        listView->setSelectionBehavior(QAbstractItemView::SelectRows);
-        listView->setSelectionMode(QAbstractItemView::SingleSelection);
+	listView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	listView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	listView->setSelectionBehavior(QAbstractItemView::SelectRows);
+	listView->setSelectionMode(QAbstractItemView::SingleSelection);
 	listView->header()->hide();
 	listView->setIndentation(0);
 	listView->setUniformRowHeights(true);
