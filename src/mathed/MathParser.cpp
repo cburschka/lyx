@@ -614,6 +614,8 @@ void Parser::tokenize(docstring const & buffer)
 				if (!is) {
 					error("unexpected end of input");
 				} else {
+					if (c == '\n')
+						c = ' ';
 					docstring s(1, c);
 					if (catcode(c) == catLetter) {
 						// collect letters
