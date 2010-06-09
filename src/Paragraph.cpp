@@ -208,8 +208,9 @@ public:
 	TextContainer text_;
 	
 	typedef set<docstring> Words;
+	typedef map<Language, Words> LangWordsMap;
 	///
-	map<Language, Words> words_;
+	LangWordsMap words_;
 	///
 	Layout const * layout_;
 };
@@ -3072,8 +3073,8 @@ bool Paragraph::isSeparator(pos_type pos) const
 
 void Paragraph::deregisterWords()
 {
-	map<Language, Private::Words>::const_iterator itl = d->words_.begin();
-	map<Language, Private::Words>::const_iterator ite = d->words_.end();
+	Private::LangWordsMap::const_iterator itl = d->words_.begin();
+	Private::LangWordsMap::const_iterator ite = d->words_.end();
 	for (; itl != ite; ++itl) {
 		WordList * wl = theWordList(itl->first);
 		Private::Words::const_iterator it = (itl->second).begin();
@@ -3144,11 +3145,13 @@ void Paragraph::collectWords()
 
 void Paragraph::registerWords()
 {
-	map<Language, Private::Words>::const_iterator itl;
-	Private::Words::const_iterator it;
-	for (itl = d->words_.begin(); itl != d->words_.end(); ++itl) {
+	Private::LangWordsMap::const_iterator itl = d->words_.begin();
+	Private::LangWordsMap::const_iterator ite = d->words_.end();
+	for (; itl != ite; ++itl) {
 		WordList * wl = theWordList(itl->first);
-		for (it = (itl->second).begin(); it != (itl->second).end(); ++it)
+		Private::Words::const_iterator it = (itl->second).begin();
+		Private::Words::const_iterator et = (itl->second).end();
+		for (; it != et; ++it)
 			wl->insert(*it);
 	}
 }
