@@ -80,13 +80,13 @@ void InsetMathComment::maple(MapleStream & os) const
 
 void InsetMathComment::mathmlize(MathStream & os) const
 {
-	os << MTag("comment") << cell(0) << cell(1) << ETag("comment");
+	os << MTag("comment") << cell(0) << ETag("comment");
 }
 
 
 void InsetMathComment::htmlize(HtmlStream & os) const
 {
-	os << "<!-- " << cell(0) << cell(1) << " -->";
+	os << "<!-- " << cell(0) << " -->";
 }
 
 
