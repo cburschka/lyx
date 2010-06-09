@@ -142,4 +142,6 @@ What's new
 
 - CMake: Installs all but the binaries into the 'Resource' folder
 
+- When compiling using automake >= 1.11, use the nicer `silent rules' output
+  format.
 
