@@ -973,8 +973,8 @@ vector<docstring> wrapToVec(docstring const & str, int ind,
 	vector<docstring> retval;
 	while (s.size() > width) {
 		// find the last space within the first 'width' chars
-		int i = s.find_last_of(' ', width - 1);
-		if (i == docstring::npos || i <= ind) {
+		size_t const i = s.find_last_of(' ', width - 1);
+		if (i == docstring::npos || i <= size_t(ind)) {
 			// no space found
 			s = s.substr(0, width - 3) + "...";
 			break;
@@ -1015,10 +1015,10 @@ docstring wrapParas(docstring const & str, int const indent,
 	vector<docstring>::iterator en = pars.end();
 	for (; it != en; ++it) {
 		vector<docstring> tmp = wrapToVec(*it, indent, width);
-		int const nlines = tmp.size();
+		size_t const nlines = tmp.size();
 		if (nlines == 0)
 			continue;
-		int const curlines = retval.size();
+		size_t const curlines = retval.size();
 		if (maxlines > 0 && curlines + nlines >= maxlines) {
 			tmp.resize(maxlines - curlines - 1);
 			tmp.push_back(from_ascii("..."));
