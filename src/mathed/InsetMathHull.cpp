@@ -1469,7 +1469,7 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_NUMBER_TOGGLE:
 		// FIXME: what is the right test, this or the one of
 		// LABEL_INSERT?
-		status.setEnabled(display());
+		status.setEnabled(display() != Inline);
 		status.setOnOff(numberedType());
 		return true;
 
