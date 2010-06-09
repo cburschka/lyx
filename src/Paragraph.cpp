@@ -3072,11 +3072,13 @@ bool Paragraph::isSeparator(pos_type pos) const
 
 void Paragraph::deregisterWords()
 {
-	map<Language, Private::Words>::const_iterator itl;
-	Private::Words::const_iterator it;
-	for (itl = d->words_.begin(); itl != d->words_.end(); ++itl) {
+	map<Language, Private::Words>::const_iterator itl = d->words_.begin();
+	map<Language, Private::Words>::const_iterator ite = d->words_.end();
+	for (; itl != ite; ++itl) {
 		WordList * wl = theWordList(itl->first);
-		for (it = (itl->second).begin(); it != (itl->second).end(); ++it)
+		Private::Words::const_iterator it = (itl->second).begin();
+		Private::Words::const_iterator et = (itl->second).end();
+		for (; it != et; ++it)
 			wl->remove(*it);
 	}
 	d->words_.clear();
