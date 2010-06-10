@@ -103,6 +103,9 @@ What's new
 
 - Correct the LaTeX output of framed boxes (bug 4776).
 
+- Correctly parse math formulas having a backslash as last character
+  on a line (bug 6756).
+
 
 * USER INTERFACE
 
