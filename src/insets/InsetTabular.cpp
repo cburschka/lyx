@@ -962,7 +962,8 @@ bool Tabular::updateColumnWidths()
 		for(row_type r = 0; r < nrows(); ++r) {
 			idx_type const i = cellIndex(r, c);
 			if (columnSpan(i) == 1) {
-				if (getAlignment(i) == LYX_ALIGN_DECIMAL)
+				if (getAlignment(i) == LYX_ALIGN_DECIMAL
+					&& cell_info[r][c].decimal_width!=0)
 					new_width = max(new_width, cellInfo(i).width 
 				                + max_dwidth[c] - cellInfo(i).decimal_width);
 				else
@@ -1271,7 +1272,8 @@ int Tabular::textHOffset(idx_type cell) const
 		int max_dhoffset = 0;
 		for(row_type r = 0; r < row_info.size() ; ++r) {
 			idx_type const i = cellIndex(r, c);
-			if (getAlignment(i) == LYX_ALIGN_DECIMAL)
+			if (getAlignment(i) == LYX_ALIGN_DECIMAL
+				&& cellInfo(i).decimal_width != 0)
 				max_dhoffset = max(max_dhoffset, cellInfo(i).decimal_hoffset);
 		}
 		x += max_dhoffset - cellInfo(cell).decimal_hoffset;
