@@ -2335,11 +2335,11 @@ void LyXAction::init()
                <FEATURE>: append-row|append-column|delete-row|delete-column|copy-row|copy-column|
                        toggle-line-top|toggle-line-bottom|toggle-line-left|toggle-line-right|
                        align-left|align-right|align-center|align-block|align-decimal|set-decimal-point|
-					   valign-top|valign-bottom|valign-middle|longtabular-align-left|
-					   longtabular-align-center|longtabular-align-right|m-align-left|m-align-right|
-					   m-align-center|m-valign-top|m-valign-bottom|m-valign-middle|multicolumn|
-					   set-all-lines|unset-all-lines|set-longtabular|unset-longtabular|set-pwidth|
-					   set-mpwidth|set-rotate-tabular|unset-rotate-tabular|toggle-rotate-tabular|
+                       valign-top|valign-bottom|valign-middle|longtabular-align-left|
+                       longtabular-align-center|longtabular-align-right|m-align-left|m-align-right|
+                       m-align-center|m-valign-top|m-valign-bottom|m-valign-middle|multicolumn|
+                       set-all-lines|unset-all-lines|set-longtabular|unset-longtabular|set-pwidth|
+                       set-mpwidth|set-rotate-tabular|unset-rotate-tabular|toggle-rotate-tabular|
                        set-rotate-cell|unset-rotate-cell|toggle-rotate-cell|set-usebox|set-lthead|
                        unset-lthead|set-ltfirsthead|unset-ltfirsthead|set-ltfoot|unset-ltfoot|
                        set-ltlastfoot|unset-ltlastfoot|set-ltnewpage|toggle-ltcaption|
