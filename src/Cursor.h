@@ -36,9 +36,6 @@ class Encoding;
 
 
 /// The cursor class describes the position of a cursor within a document.
-
-// The public inheritance should go in favour of a suitable data member
-// (or maybe private inheritance) at some point of time.
 class Cursor : public DocIterator
 {
 public:
