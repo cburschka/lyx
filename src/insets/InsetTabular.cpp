@@ -4711,7 +4711,7 @@ int InsetTabular::cellXPos(idx_type const cell) const
 	col_type col = tabular.cellColumn(cell);
 	int lx = 0;
 	for (col_type c = 0; c < col; ++c)
-		lx += tabular.columnWidth(c);
+		lx += tabular.column_info[c].width;
 
 	return lx;
 }
