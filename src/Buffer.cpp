@@ -1983,28 +1983,37 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		break;
 
 	case LFUN_BRANCH_ADD: {
-		docstring const branch_name = func.argument();
+		docstring branch_name = func.argument();
 		if (branch_name.empty()) {
 			dispatched = false;
 			break;
 		}
 		BranchList & branch_list = params().branchlist();
-		Branch * branch = branch_list.find(branch_name);
-		if (branch) {
-			LYXERR0("Branch " << branch_name << " already exists.");
-			dr.setError(true);
-			docstring const msg = 
-				bformat(_("Branch \"%1$s\" already exists."), branch_name);
-			dr.setMessage(msg);
-		} else {
-			branch_list.add(branch_name);
-			branch = branch_list.find(branch_name);
-			string const x11hexname = X11hexname(branch->color());
-			docstring const str = branch_name + ' ' + from_ascii(x11hexname);
-			lyx::dispatch(FuncRequest(LFUN_SET_COLOR, str));
-			dr.setError(false);
-			dr.update(Update::Force);
+		vector<docstring> const branches =
+			getVectorFromString(branch_name, branch_list.separator());
+		docstring msg;
+		for (vector<docstring>::const_iterator it = branches.begin();
+		     it != branches.end(); ++it) {
+			branch_name = *it;
+			Branch * branch = branch_list.find(branch_name);
+			if (branch) {
+				LYXERR0("Branch " << branch_name << " already exists.");
+				dr.setError(true);
+				if (!msg.empty())
+					msg += ("\n");
+				msg += bformat(_("Branch \"%1$s\" already exists."), branch_name);
+			} else {
+				branch_list.add(branch_name);
+				branch = branch_list.find(branch_name);
+				string const x11hexname = X11hexname(branch->color());
+				docstring const str = branch_name + ' ' + from_ascii(x11hexname);
+				lyx::dispatch(FuncRequest(LFUN_SET_COLOR, str));
+				dr.setError(false);
+				dr.update(Update::Force);
+			}
 		}
+		if (!msg.empty())
+			dr.setMessage(msg);
 		break;
 	}
 

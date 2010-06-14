@@ -94,6 +94,9 @@ public:
 	BranchList() : separator_(from_ascii("|")) {}
 
 	///
+	docstring separator() const { return separator_; }
+
+	///
 	bool empty() const { return list.empty(); }
 	///
 	void clear() { list.clear(); }

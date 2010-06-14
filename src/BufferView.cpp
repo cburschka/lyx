@@ -1730,7 +1730,14 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			Alert::warning(_("Branch already exists"), drtmp.message());
 			break;
 		}
-		lyx::dispatch(FuncRequest(LFUN_BRANCH_INSERT, branch_name));
+		BranchList & branch_list = buffer_.params().branchlist();
+		vector<docstring> const branches =
+			getVectorFromString(branch_name, branch_list.separator());
+		for (vector<docstring>::const_iterator it = branches.begin();
+		     it != branches.end(); ++it) {
+			branch_name = *it;
+			lyx::dispatch(FuncRequest(LFUN_BRANCH_INSERT, branch_name));
+		}
 		break;
 	}
 
