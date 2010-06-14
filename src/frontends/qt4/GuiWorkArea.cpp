@@ -618,7 +618,7 @@ void GuiWorkArea::updateScrollbar()
 void GuiWorkArea::scrollTo(int value)
 {
 	stopBlinkingCursor();
-	buffer_view_->scrollDocView(value);
+	buffer_view_->scrollDocView(value, true);
 
 	if (lyxrc.cursor_follows_scrollbar) {
 		buffer_view_->setCursorFromScrollbar();

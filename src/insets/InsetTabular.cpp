@@ -3931,7 +3931,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 //		col_type const col = tabular.cellColumn(cur.idx());
 //		int const t =	cur.bv().top_y() + cur.bv().height();
 //		if (t < yo() + tabular.getHeightOfTabular()) {
-//			cur.bv().scrollDocView(t);
+//			cur.bv().scrollDocView(t, true);
 //			cur.idx() = tabular.cellBelow(first_visible_cell) + col;
 //		} else {
 //			cur.idx() = tabular.getFirstCellInRow(tabular.rows() - 1) + col;
@@ -3947,7 +3947,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 //		col_type const col = tabular.cellColumn(cur.idx());
 //		int const t =	cur.bv().top_y() + cur.bv().height();
 //		if (yo() < 0) {
-//			cur.bv().scrollDocView(t);
+//			cur.bv().scrollDocView(t, true);
 //			if (yo() > 0)
 //				cur.idx() = col;
 //			else

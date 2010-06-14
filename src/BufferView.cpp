@@ -568,7 +568,7 @@ docstring BufferView::contextMenu(int x, int y) const
 }
 
 
-void BufferView::scrollDocView(int value)
+void BufferView::scrollDocView(int value, bool update)
 {
 	int const offset = value - d->scrollbarParameters_.position;
 
@@ -587,7 +587,7 @@ void BufferView::scrollDocView(int value)
 	// cut off at the top
 	if (value <= d->scrollbarParameters_.min) {
 		DocIterator dit = doc_iterator_begin(&buffer_);
-		showCursor(dit, false);
+		showCursor(dit, false, update);
 		LYXERR(Debug::SCROLLING, "scroll to top");
 		return;
 	}
@@ -596,7 +596,7 @@ void BufferView::scrollDocView(int value)
 	if (value >= d->scrollbarParameters_.max) {
 		DocIterator dit = doc_iterator_end(&buffer_);
 		dit.backwardPos();
-		showCursor(dit, false);
+		showCursor(dit, false, update);
 		LYXERR(Debug::SCROLLING, "scroll to bottom");
 		return;
 	}
@@ -614,14 +614,14 @@ void BufferView::scrollDocView(int value)
 		// It seems we didn't find the correct pit so stay on the safe side and
 		// scroll to bottom.
 		LYXERR0("scrolling position not found!");
-		scrollDocView(d->scrollbarParameters_.max);
+		scrollDocView(d->scrollbarParameters_.max, update);
 		return;
 	}
 
 	DocIterator dit = doc_iterator_begin(&buffer_);
 	dit.pit() = i;
 	LYXERR(Debug::SCROLLING, "value = " << value << " -> scroll to pit " << i);
-	showCursor(dit, false);
+	showCursor(dit, false, update);
 }
 
 
@@ -806,19 +806,20 @@ int BufferView::workWidth() const
 
 void BufferView::recenter()
 {
-	showCursor(d->cursor_, true);
+	showCursor(d->cursor_, true, true);
 }
 
 
 void BufferView::showCursor()
 {
-	showCursor(d->cursor_, false);
+	showCursor(d->cursor_, false, true);
 }
 
 
-void BufferView::showCursor(DocIterator const & dit, bool recenter)
+void BufferView::showCursor(DocIterator const & dit,
+	bool recenter, bool update)
 {
-	if (scrollToCursor(dit, recenter)) {
+	if (scrollToCursor(dit, recenter) && update) {
 		buffer_.changed(true);
 		updateHoveredInset();
 	}
