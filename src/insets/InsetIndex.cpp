@@ -370,6 +370,7 @@ void InsetIndex::validate(LaTeXFeatures & features) const
 	    && !params_.index.empty()
 	    && params_.index != "idx")
 		features.require("splitidx");
+	InsetCollapsable::validate(features);
 }
 
 
