@@ -2001,7 +2001,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 			branch = branch_list.find(branch_name);
 			string const x11hexname = X11hexname(branch->color());
 			docstring const str = branch_name + ' ' + from_ascii(x11hexname);
-			lyx::dispatch(FuncRequest(LFUN_SET_COLOR, str));	
+			lyx::dispatch(FuncRequest(LFUN_SET_COLOR, str));
 			dr.setError(false);
 			dr.update(Update::Force);
 		}
