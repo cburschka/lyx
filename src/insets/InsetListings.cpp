@@ -73,7 +73,8 @@ Inset::DisplayType InsetListings::display() const
 
 void InsetListings::updateBuffer(ParIterator const & it, UpdateType utype)
 {
-	Counters & cnts = buffer().masterBuffer()->params().documentClass().counters();
+	Counters & cnts =
+		buffer().masterBuffer()->params().documentClass().counters();
 	string const saveflt = cnts.current_float();
 
 	// Tell to captions what the current float is
@@ -141,9 +142,11 @@ int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 	bool encoding_switched = false;
 	Encoding const * const save_enc = runparams.encoding;
 
-	if (!runparams.encoding->hasFixedWidth()) {
-		// We need to switch to a singlebyte encoding, since the listings
-		// package cannot deal with multiple-byte-encoded glyphs
+	if (runparams.flavor != OutputParams::XETEX
+	    && !runparams.encoding->hasFixedWidth()) {
+		// We need to switch to a singlebyte encoding, since the
+		// listings package cannot deal with multi-byte-encoded
+		// glyphs (not needed with XeTeX).
 		Language const * const outer_language =
 			(runparams.local_font != 0) ?
 				runparams.local_font->language()
