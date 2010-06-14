@@ -587,7 +587,7 @@ void BufferView::scrollDocView(int value)
 	// cut off at the top
 	if (value <= d->scrollbarParameters_.min) {
 		DocIterator dit = doc_iterator_begin(&buffer_);
-		showCursor(dit);
+		showCursor(dit, false);
 		LYXERR(Debug::SCROLLING, "scroll to top");
 		return;
 	}
@@ -596,7 +596,7 @@ void BufferView::scrollDocView(int value)
 	if (value >= d->scrollbarParameters_.max) {
 		DocIterator dit = doc_iterator_end(&buffer_);
 		dit.backwardPos();
-		showCursor(dit);
+		showCursor(dit, false);
 		LYXERR(Debug::SCROLLING, "scroll to bottom");
 		return;
 	}
@@ -621,7 +621,7 @@ void BufferView::scrollDocView(int value)
 	DocIterator dit = doc_iterator_begin(&buffer_);
 	dit.pit() = i;
 	LYXERR(Debug::SCROLLING, "value = " << value << " -> scroll to pit " << i);
-	showCursor(dit);
+	showCursor(dit, false);
 }
 
 

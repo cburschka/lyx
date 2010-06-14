@@ -159,7 +159,7 @@ public:
 	/// This method will automatically scroll and update the BufferView
 	/// if needed.
 	/// \param recenter Whether the cursor should be centered on screen
-	void showCursor(DocIterator const & dit, bool recenter = false);
+	void showCursor(DocIterator const & dit, bool recenter);
 	/// Scroll to the cursor.
 	void scrollToCursor();
 	/// Scroll to the cursor.
