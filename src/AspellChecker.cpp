@@ -217,10 +217,14 @@ AspellSpeller * AspellChecker::Private::addSpeller(string const & lang,
 	if (aspell_error_number(m.e_speller) != 0) {
 		// FIXME: We should indicate somehow that this language is not supported.
 		LYXERR(Debug::FILES, "aspell error: " << aspell_error_message(m.e_speller));
+		delete_aspell_can_have_error(m.e_speller);
+		delete_aspell_config(m.config);
+		m.config = 0;
+		m.e_speller = 0;
 	}
 
 	spellers_[spellerID(lang, variety)] = m;
-	return to_aspell_speller(m.e_speller);
+	return 0 == m.config ? 0 : to_aspell_speller(m.e_speller);
 }
 
 
