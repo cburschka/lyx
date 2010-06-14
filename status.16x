@@ -70,6 +70,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix assertion when using an empty user macro taking an argument as
+  the base of script inset (bug 6739).
+
 - Fix reverse search when the document name contains a character
   which is forbidden in LaTeX filenames (such as spaces).
 
@@ -98,9 +101,6 @@ What's new
 - Allow to overwrite files without dialog popup on export from GUI
   (bug 2844).
 
-- Fix assertion when using an empty user macro taking an argument as
-  the base of script inset (bug 6739).
-
 - Correct the LaTeX output of framed boxes (bug 4776).
 
 - Correctly parse math formulas having a backslash as last character
@@ -108,6 +108,9 @@ What's new
 
 
 * USER INTERFACE
+
+- Fix an assertion when copying Insets from a deleted range of
+  text deleted by a different author (bug 6744).  
 
 - Correctly restore a dissolved macro inset on undo (bug 6678).
 
