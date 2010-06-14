@@ -319,36 +319,57 @@ bool isFullyDeleted(ParagraphList const & pars)
 }
 
 
-void acceptChanges(ParagraphList & pars, BufferParams const & bparams)
+static void acceptOrRejectChanges(ParagraphList & pars,
+	BufferParams const & bparams, Text::ChangeOp op)
 {
 	pit_type pars_size = static_cast<pit_type>(pars.size());
 
-	// first, accept changes within each individual paragraph
-	// (do not consider end-of-par)
+	// first, accept or reject changes within each individual
+	// paragraph (do not consider end-of-par)
 	for (pit_type pit = 0; pit < pars_size; ++pit) {
-		if (!pars[pit].empty())   // prevent assertion failure
-			pars[pit].acceptChanges(bparams, 0, pars[pit].size());
+		// prevent assertion failure
+		if (!pars[pit].empty()) {
+			if (op == Text::ACCEPT)
+				pars[pit].acceptChanges(bparams, 0, pars[pit].size());
+			else
+				pars[pit].rejectChanges(bparams, 0, pars[pit].size());
+		}
 	}
 
-	// next, accept imaginary end-of-par characters
+	// next, accept or reject imaginary end-of-par characters
 	for (pit_type pit = 0; pit < pars_size; ++pit) {
 		pos_type pos = pars[pit].size();
 
-		if (pars[pit].isInserted(pos)) {
-			pars[pit].setChange(pos, Change(Change::UNCHANGED));
-		} else if (pars[pit].isDeleted(pos)) {
-			if (pit == pars_size - 1) {
-				// we cannot remove a par break at the end of the last
-				// paragraph; instead, we mark it unchanged
+		if (!pars[pit].isUnchanged(pos)) {
+			// keep the end-of-par char if it is inserted and accepted
+			// or when it is deleted and rejected.
+			if (pars[pit].isInserted(pos) == (op == Text::ACCEPT)) { 
 				pars[pit].setChange(pos, Change(Change::UNCHANGED));
 			} else {
-				mergeParagraph(bparams, pars, pit);
-				--pit;
-				--pars_size;
+				if (pit == pars_size - 1) {
+					// we cannot remove a par break at the end of the last
+					// paragraph; instead, we mark it unchanged
+					pars[pit].setChange(pos, Change(Change::UNCHANGED));
+				} else {
+					mergeParagraph(bparams, pars, pit);
+					--pit;
+					--pars_size;
+				}
 			}
 		}
 	}
 }
 
+
+void acceptChanges(ParagraphList & pars, BufferParams const & bparams)
+{
+	acceptOrRejectChanges(pars, bparams, Text::ACCEPT);
+}
+
+
+void rejectChanges(ParagraphList & pars, BufferParams const & bparams)
+{
+	acceptOrRejectChanges(pars, bparams, Text::REJECT);
+}
 
 } // namespace lyx

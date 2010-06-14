@@ -478,6 +478,8 @@ void copySelectionHelper(Buffer const & buf, ParagraphList const & pars,
 	// unless the whole selection was deleted
 	if (!isFullyDeleted(copy_pars))
 		acceptChanges(copy_pars, buf.params());
+	else
+		rejectChanges(copy_pars, buf.params());
 
 	DocumentClass * d = const_cast<DocumentClass *>(dc);
 	cutstack.push(make_pair(copy_pars, d));
