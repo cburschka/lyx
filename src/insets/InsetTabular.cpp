@@ -919,7 +919,7 @@ int Tabular::interColumnSpace(idx_type cell) const
 }
 
 
-int Tabular::columnWidth(idx_type cell) const
+int Tabular::cellWidth(idx_type cell) const
 {
 	int w = 0;
 	col_type const span = columnSpan(cell);
@@ -1004,13 +1004,6 @@ int Tabular::width() const
 	for (col_type c = 0; c < ncols(); ++c)
 		width += column_info[c].width;
 	return width;
-}
-
-
-void Tabular::setCellWidth(idx_type cell, int new_width)
-{
-	cellInfo(cell).width = new_width + 2 * WIDTH_OF_LINE 
-		+ interColumnSpace(cell);
 }
 
 
@@ -1243,29 +1236,24 @@ Length const Tabular::getPWidth(idx_type cell) const
 }
 
 
-int Tabular::cellWidth(idx_type cell) const
-{
-	return cellInfo(cell).width;
-}
-
-
 int Tabular::textHOffset(idx_type cell) const
 {
 	// the LaTeX Way :-(
 	int x = WIDTH_OF_LINE;
 
+	int const w = cellWidth(cell) - cellInfo(cell).width;
+
 	switch (getAlignment(cell)) {
 	case LYX_ALIGN_CENTER:
-		x += (columnWidth(cell) - cellWidth(cell)) / 2;
+		x += w / 2;
 		break;
 	case LYX_ALIGN_RIGHT:
-		x += columnWidth(cell) - cellWidth(cell);
-		// + interColumnSpace(cell);
+		x += w;
 		break;
 	case LYX_ALIGN_DECIMAL: {
 		// we center when no decimal point
 		if (cellInfo(cell).decimal_width == 0) {
-			x += (columnWidth(cell) - cellWidth(cell)) / 2;
+			x += w / 2;
 			break;
 		}
 		col_type const c = cellColumn(cell);
@@ -3325,7 +3313,7 @@ int InsetTabular::columnFromX(Cursor & cur, int x) const
 	int w = xo(cur.bv()) + ADD_TO_TABULAR_WIDTH;
 	col_type c = 0;
 	for (; c < tabular.ncols() && x > w; ++c)
-		w += tabular.columnWidth(c);
+		w += tabular.cellWidth(c);
 	return c - 1;
 }
 
@@ -3356,7 +3344,8 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			tabular.cellInset(cell)->metrics(m, dim);
 			if (!p_width.zero())
 				dim.wid = m.base.textwidth;
-			tabular.setCellWidth(cell, dim.wid);
+			tabular.cellInfo(cell).width = dim.wid + 2 * WIDTH_OF_LINE 
+				+ tabular.interColumnSpace(cell);
 
 			// FIXME(?): do we need a second metrics call?
 			TextMetrics const & tm = 
@@ -3477,7 +3466,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 			idx = tabular.cellIndex(r, c);
 			
 			if (tabular.isPartOfMultiRow(r, c)) {
-				nx += tabular.columnWidth(idx);
+				nx += tabular.cellWidth(idx);
 				continue;
 			}
 
@@ -3491,7 +3480,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 			bv->coordCache().insets().add(cell(idx).get(), cx, cy);
 			cell(idx)->draw(pi, cx, cy);
 			drawCellLines(pi.pain, nx, y, r, idx, pi.change_);
-			nx += tabular.columnWidth(idx);
+			nx += tabular.cellWidth(idx);
 			pi.selected = original_selection_state;
 		}
 
@@ -3538,10 +3527,10 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 				idx_type const cell = tabular.cellIndex(r, c);
 
 				if (tabular.isPartOfMultiRow(r, c)) {
-					xx += tabular.columnWidth(cell);
+					xx += tabular.cellWidth(cell);
 					continue;
 				}
-				int const w = tabular.columnWidth(cell);
+				int const w = tabular.cellWidth(cell);
 				int const h = tabular.cellHeight(cell);
 				int const yy = y - tabular.rowAscent(r);
 				if (isCellSelected(cur, r, c))
@@ -3565,7 +3554,7 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 								 row_type row, idx_type cell, Change const & change) const
 {
 	y -= tabular.rowAscent(row);
-	int const w = tabular.columnWidth(cell);
+	int const w = tabular.cellWidth(cell);
 	int const h = tabular.cellHeight(cell);
 	Color linecolor = change.changed() ? change.color() : Color_tabularline;
 	Color gridcolor = change.changed() ? change.color() : Color_tabularonoffline;
@@ -4647,7 +4636,7 @@ int InsetTabular::dist(BufferView & bv, idx_type const cell, int x, int y) const
 	Inset const & inset = *tabular.cellInset(cell);
 	Point o = bv.coordCache().getInsets().xy(&inset);
 	int const xbeg = o.x_ - tabular.textHOffset(cell);
-	int const xend = xbeg + tabular.columnWidth(cell);
+	int const xend = xbeg + tabular.cellWidth(cell);
 	row_type const row = tabular.cellRow(cell);
 	int const ybeg = o.y_ - tabular.rowAscent(row)
 		- tabular.interRowSpace(row);
@@ -4731,7 +4720,7 @@ void InsetTabular::resetPos(Cursor & cur) const
 		int const X2 = maxwidth;
 		int const offset = ADD_TO_TABULAR_WIDTH + 2;
 		int const x1 = xo(cur.bv()) + cellXPos(cur[i].idx()) + offset;
-		int const x2 = x1 + tabular.columnWidth(cur[i].idx());
+		int const x2 = x1 + tabular.cellWidth(cur[i].idx());
 
 		if (x1 < X1)
 			scx_ = X1 + 20 - x1;

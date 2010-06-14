@@ -284,7 +284,7 @@ public:
 
 	/* returns the maximum over all rows */
 	///
-	int columnWidth(idx_type cell) const;
+	int cellWidth(idx_type cell) const;
 	///
 	int cellHeight(idx_type cell) const;
 	///
@@ -303,8 +303,6 @@ public:
 	void setRowAscent(row_type row, int height);
 	///
 	void setRowDescent(row_type row, int height);
-	///
-	void setCellWidth(idx_type cell, int new_width);
 	///
 	void setTopLine(idx_type cell, bool line);
 	///
@@ -342,8 +340,6 @@ public:
 				 bool onlycolumn = false) const;
 	///
 	Length const getPWidth(idx_type cell) const;
-	///
-	int cellWidth(idx_type cell) const;
 	///
 	int textHOffset(idx_type cell) const;
 	///
