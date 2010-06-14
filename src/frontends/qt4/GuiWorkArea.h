@@ -85,10 +85,6 @@ public:
 	FuncRequest cmd;
 	Timeout timeout;
 	bool restart_timeout;
-	int x_old;
-	int y_old;
-	int min_scrollbar_old;
-	int max_scrollbar_old;
 };
 
 

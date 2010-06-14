@@ -37,6 +37,7 @@
 #include "LyXVC.h"
 #include "qt_helpers.h"
 #include "Text.h"
+#include "TextMetrics.h"
 #include "version.h"
 
 #include "graphics/GraphicsImage.h"
@@ -224,8 +225,7 @@ private:
 // This is a 'heartbeat' generating synthetic mouse move events when the
 // cursor is at the top or bottom edge of the viewport. One scroll per 0.2 s
 SyntheticMouseEvent::SyntheticMouseEvent()
-	: timeout(200), restart_timeout(true),
-	  x_old(-1), y_old(-1), min_scrollbar_old(-1), max_scrollbar_old(-1)
+	: timeout(200), restart_timeout(true)
 {}
 
 
@@ -770,18 +770,19 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 	e->accept();
 
 	// If we're above or below the work area...
-	if (e->y() <= 20 || e->y() >= viewport()->height() - 20) {
+	if ((e->y() <= 20 || e->y() >= viewport()->height() - 20)
+			&& e->buttons() == mouse_button::button1) {
 		// Make sure only a synthetic event can cause a page scroll,
 		// so they come at a steady rate:
 		if (e->y() <= 20)
 			// _Force_ a scroll up:
-			cmd.set_y(-40);
+			cmd.set_y(e->y() - 21);
 		else
-			cmd.set_y(viewport()->height());
+			cmd.set_y(e->y() + 21);
 		// Store the event, to be handled when the timeout expires.
 		synthetic_mouse_event_.cmd = cmd;
 
-		if (synthetic_mouse_event_.timeout.running())
+		if (synthetic_mouse_event_.timeout.running()) {
 			// Discard the event. Note that it _may_ be handled
 			// when the timeout expires if
 			// synthetic_mouse_event_.cmd has not been overwritten.
@@ -790,7 +791,8 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 			// occurred after the one used to start the timeout
 			// in the first place.
 			return;
-
+		}
+		
 		synthetic_mouse_event_.restart_timeout = true;
 		synthetic_mouse_event_.timeout.start();
 		// Fall through to handle this event...
@@ -806,24 +808,6 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 		synthetic_mouse_event_.restart_timeout = false;
 		return;
 	}
-
-	// Has anything changed on-screen since the last QMouseEvent
-	// was received?
-	if (e->x() == synthetic_mouse_event_.x_old
-		&& e->y() == synthetic_mouse_event_.y_old
-		&& synthetic_mouse_event_.min_scrollbar_old == verticalScrollBar()->minimum()
-		&& synthetic_mouse_event_.max_scrollbar_old == verticalScrollBar()->maximum()) {
-		// Nothing changed on-screen since the last QMouseEvent.
-		return;
-	}
-
-	// Yes something has changed. Store the params used to check this.
-	synthetic_mouse_event_.x_old = e->x();
-	synthetic_mouse_event_.y_old = e->y();
-	synthetic_mouse_event_.min_scrollbar_old = verticalScrollBar()->minimum();
-	synthetic_mouse_event_.max_scrollbar_old = verticalScrollBar()->maximum();
-
-	// ... and dispatch the event to the LyX core.
 	dispatch(cmd);
 }
 
@@ -863,23 +847,81 @@ void GuiWorkArea::wheelEvent(QWheelEvent * ev)
 
 void GuiWorkArea::generateSyntheticMouseEvent()
 {
-	// Set things off to generate the _next_ 'pseudo' event.
-	if (synthetic_mouse_event_.restart_timeout)
-		synthetic_mouse_event_.timeout.start();
+	int const e_y = synthetic_mouse_event_.cmd.y();
+	int const wh = buffer_view_->workHeight();
+	bool const up = e_y < 0;
+	bool const down = e_y > wh;
 
-	// Has anything changed on-screen since the last timeout signal
-	// was received?
-	int const min_scrollbar = verticalScrollBar()->minimum();
-	int const max_scrollbar = verticalScrollBar()->maximum();
-	if (min_scrollbar == synthetic_mouse_event_.min_scrollbar_old
-		&& max_scrollbar == synthetic_mouse_event_.max_scrollbar_old) {
+	// Set things off to generate the _next_ 'pseudo' event.
+	int step = 50;
+	if (synthetic_mouse_event_.restart_timeout) {
+		// This is some magic formulae to determine the speed
+		// of scrolling related to the position of the mouse.
+		int time = 200;
+		if (up || down) {
+			int dist = up ? -e_y : e_y - wh;
+			time = max(min(200, 250000 / (dist * dist)), 1) ;
+			
+			if (time < 40) {
+				step = 80000 / (time * time);
+				time = 40;
+			}
+		}
+		synthetic_mouse_event_.timeout.setTimeout(time);
+		synthetic_mouse_event_.timeout.start();
+	}
+
+	// Can we scroll further ?
+	int const value = verticalScrollBar()->value();
+	if (value == verticalScrollBar()->maximum()
+		  || value == verticalScrollBar()->minimum()) {
+		synthetic_mouse_event_.timeout.stop();
 		return;
 	}
-	// Yes it has. Store the params used to check this.
-	synthetic_mouse_event_.min_scrollbar_old = min_scrollbar;
-	synthetic_mouse_event_.max_scrollbar_old = max_scrollbar;
-	// ... and dispatch the event to the LyX core.
-	dispatch(synthetic_mouse_event_.cmd);
+
+	// Scroll
+	if (step <= 2 * wh) {
+		buffer_view_->scroll(up ? -step : step);
+		buffer_view_->updateMetrics();
+	} else {
+		buffer_view_->scrollDocView(value + up ? -step : step, false);
+	}
+
+	// In which paragraph do we have to set the cursor ?
+	Cursor & cur = buffer_view_->cursor();
+	TextMetrics const & tm = buffer_view_->textMetrics(cur.text());
+
+	pair<pit_type, const ParagraphMetrics *> p = up ? tm.first() : tm.last();
+	ParagraphMetrics const & pm = *p.second;
+	pit_type const pit = p.first;
+
+	if (pm.rows().empty())
+		return;
+
+	// Find the row at which we set the cursor.
+	RowList::const_iterator rit = pm.rows().begin();
+	RowList::const_iterator rlast = pm.rows().end();
+	int yy = pm.position() - pm.ascent();
+	for (--rlast; rit != rlast; ++rit) {
+		int h = rit->height();
+		if ((up && yy + h > 0)
+			  || (!up && yy + h > wh - defaultRowHeight()))
+			break;
+		yy += h;
+	}
+	
+	// Find the position of the cursor
+	bool bound;
+	int x = synthetic_mouse_event_.cmd.x();
+	pos_type const pos = rit->pos() + tm.getColumnNearX(pit, *rit, x, bound);
+
+	// Set the cursor
+	cur.pit() = pit;
+	cur.pos() = pos;
+	cur.boundary(bound);
+
+	buffer_view_->buffer().changed(false);
+	return;
 }
 
 
