@@ -560,6 +560,12 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		}
 	}
 	lex.popTable();
+	// make sure we only have inpreamble = true for commands
+	if (inpreamble && latextype != LATEX_COMMAND) {
+		LYXERR0("InPreamble not permitted except with Command-type layouts.");
+		LYXERR0("Layout name: " << name());
+		inpreamble = false;
+	}
 
 	return !error;
 }

@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 390
+\lyxformat 393
 \begin_document
 \begin_header
 \textclass scrbook
@@ -5242,7 +5242,7 @@ name "cha:Installing-New-Document"
 \end_inset
 
 
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -10084,6 +10084,27 @@ status collapsed
  than in the document body.
  This is useful for document classes that want such information as the title
  and author to appear in the preamble.
+ Note that this works only for layouts for which the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+LatexType
+\end_layout
+
+\end_inset
+
+ is 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Command
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description

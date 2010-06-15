@@ -345,13 +345,21 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 {
 	LYXERR(Debug::LATEX, "TeXOnePar...     " << &*pit << " '"
 		<< everypar << "'");
-	BufferParams const & bparams = buf.params();
-	ParagraphList const & paragraphs = text.paragraphs();
 
+	BufferParams const & bparams = buf.params();
+	// FIXME This check should not really be needed.
+	// Perhaps we should issue an error if it is.
+	Layout const style = text.inset().forcePlainLayout() ?
+		bparams.documentClass().plainLayout() : pit->layout();
+
+	ParagraphList const & paragraphs = text.paragraphs();
 	ParagraphList::const_iterator const priorpit = 
 		pit == paragraphs.begin() ? pit : boost::prior(pit);
 	ParagraphList::const_iterator const nextpit = 
 		pit == paragraphs.end() ? pit : boost::next(pit);
+
+	if (style.inpreamble)
+		return nextpit;
 
 	OutputParams runparams = runparams_in;
 	runparams.isLastPar = nextpit == paragraphs.end();
@@ -379,11 +387,6 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 			os, texrow, runparams, start_pos, end_pos);
 		return nextpit;
 	}
-
-	// FIXME This check should not really be needed.
-	// Perhaps we should issue an error if it is.
-	Layout const style = text.inset().forcePlainLayout() ?
-		bparams.documentClass().plainLayout() : pit->layout();
 
 	// This paragraph's language
 	Language const * const par_language = pit->getParLanguage(bparams);

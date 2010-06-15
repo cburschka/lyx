@@ -1079,10 +1079,16 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 		Font f;
 		TexRow tr;
 		odocstringstream ods;
-		owner_->latex(bp, f, ods, tr, features.runparams());
-		docstring d = ods.str();
-		if (!d.empty())
-			features.addPreambleSnippet(to_utf8(d));
+		// we have to provide all the optional arguments here, even though
+		// the last one is the only one we care about.
+		owner_->latex(bp, f, ods, tr, features.runparams(), 0, -1, true);
+		docstring const d = ods.str();
+		if (!d.empty()) {
+			// this will have "{" at the beginning, but not at the end
+			string const content = to_utf8(d);
+			string const cmd = layout_->latexname();
+			features.addPreambleSnippet("\\" + cmd + content + "}");
+		}
 	}
 	
 	if (features.runparams().flavor == OutputParams::HTML 
@@ -1978,21 +1984,21 @@ bool Paragraph::latex(BufferParams const & bparams,
 	Font const & outerfont,
 	odocstream & os, TexRow & texrow,
 	OutputParams const & runparams,
-	int start_pos, int end_pos) const
+	int start_pos, int end_pos, bool force) const
 {
 	LYXERR(Debug::LATEX, "Paragraph::latex...     " << this);
-
-	if (layout().inpreamble)
-		return true;
-
-	bool return_value = false;
-
-	bool const allowcust = allowParagraphCustomization();
 
 	// FIXME This check should not be needed. Perhaps issue an
 	// error if it triggers.
 	Layout const & style = inInset().forcePlainLayout() ?
 		bparams.documentClass().plainLayout() : *d->layout_;
+
+	if (!force && style.inpreamble)
+		return false;
+
+	bool return_value = false;
+
+	bool const allowcust = allowParagraphCustomization();
 
 	// Current base font for all inherited font changes, without any
 	// change caused by an individual character, except for the language:
@@ -2228,9 +2234,8 @@ bool Paragraph::latex(BufferParams const & bparams,
 	if (open_font) {
 #ifdef FIXED_LANGUAGE_END_DETECTION
 		if (next_) {
-			running_font
-				.latexWriteEndChanges(os, bparams, runparams,
-					basefont,
+			running_font.latexWriteEndChanges(os, bparams,
+					runparams, basefont,
 					next_->getFont(bparams, 0, outerfont));
 		} else {
 			running_font.latexWriteEndChanges(os, bparams,
