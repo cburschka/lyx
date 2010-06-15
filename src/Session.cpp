@@ -278,7 +278,7 @@ void BookmarksSection::read(istream & is)
 void BookmarksSection::write(ostream & os) const
 {
 	os << '\n' << sec_bookmarks << '\n';
-	for (size_t i = 1; i <= max_bookmarks; ++i) {
+	for (size_t i = 0; i <= max_bookmarks; ++i) {
 		if (isValid(i))
 			os << i << ", "
 			   << bookmarks[i].bottom_pit << ", "
