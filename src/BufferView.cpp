@@ -221,7 +221,7 @@ struct BufferView::Private
 		anchor_pit_(0), anchor_ypos_(0),
 		inlineCompletionUniqueChars_(0),
 		last_inset_(0), mouse_position_cache_(),
-		bookmark_edit_position_(0), gui_(0)
+		bookmark_edit_position_(-1), gui_(0)
 	{}
 
 	///
