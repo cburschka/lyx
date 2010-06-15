@@ -42,7 +42,7 @@ NoStyle Subparagraph*
 Style Chapter
 	Margin		Static
 	Category	Section
-	LabelType	None
+	LabelType	No_Label
 	LabelCounter	chapter
 	TocLevel	0
 	LatexType	Command
@@ -64,7 +64,7 @@ End
 Style Section
 	Category	Section
 	Margin		Dynamic
-	LabelType	None
+	LabelType	No_Label
 	LabelCounter	section
 	TocLevel	1
 	LatexType	Command
