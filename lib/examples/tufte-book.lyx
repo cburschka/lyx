@@ -1,8 +1,14 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.7svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
 \textclass tufte-book
+\begin_preamble
+\title{An Example of the Usage of the Tufte-Book Class}
+\author{Tufte-LaTe{}X Developers and The Ly{}X Team}
+% If the Date is left out, the current date will be used.
+% \date{Some Date}
+\end_preamble
 \use_default_options true
 \language english
 \inputencoding auto
@@ -42,17 +48,47 @@
 
 \begin_body
 
-\begin_layout Title
-Tufte Examples
-\end_layout
-
-\begin_layout Author
-Fake Author
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 author of this example file: Jason Waskiewicz
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Title and author information is given in 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Preamble
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
 \end_layout
 
 \end_inset

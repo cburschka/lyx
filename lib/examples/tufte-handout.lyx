@@ -1,8 +1,14 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.7svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
 \textclass tufte-handout
+\begin_preamble
+\title{An Example of the Usage of the Tufte-Handout Style}
+\author{Tufte-LaTe{}X Developers and The Ly{}X Team}
+% If the Date is left out, the current date will be used.
+% \date{Some Date}
+\end_preamble
 \use_default_options true
 \language english
 \inputencoding auto
@@ -47,11 +53,13 @@
 status open
 
 \begin_layout Plain Layout
-If the 
-\emph on
-Date
-\emph default
- is left out, the current date will be used.
+Title and author information is given in 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Preamble
+\family default
+.
 \end_layout
 
 \end_inset
@@ -59,34 +67,20 @@ Date
 
 \end_layout
 
-\begin_layout Title
-An Example of the Usage of the Tufte-Handout Style
-\end_layout
-
-\begin_layout Author
-Tufte-LaTe
+\begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
-{}
+
+\backslash
+maketitle
 \end_layout
 
 \end_inset
 
-X Developers and The Ly
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X Team
 \end_layout
 
 \begin_layout Abstract

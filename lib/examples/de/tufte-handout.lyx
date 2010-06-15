@@ -1,8 +1,14 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.7svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
 \textclass tufte-handout
+\begin_preamble
+\title{Ein Beispiel zur Verwendung der Tufte-Handout-Klasse}
+\author{Die Tufte-LaTe{}X-Entwickler und das Ly{}X-Team}
+%Wenn Sie kein Datum angeben, wird das aktuelle Datum automatisch eingefügt.
+%\date{Irgendwann}
+\end_preamble
 \use_default_options false
 \language ngerman
 \inputencoding auto
@@ -47,11 +53,14 @@
 status open
 
 \begin_layout Plain Layout
-Wenn Sie kein 
-\emph on
-Datum
-\emph default
- angeben, wird das aktuelle Datum automatisch eingefügt.
+Angaben zum Titel und zu den Autoren werden in 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+LaTeX-Vorspann
+\family default
+ eingegeben.
 \end_layout
 
 \end_inset
@@ -59,34 +68,20 @@ Datum
 
 \end_layout
 
-\begin_layout Title
-Ein Beispiel zur Verwendung der Tufte-Handout-Klasse
-\end_layout
-
-\begin_layout Author
-Die Tufte-LaTe
+\begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
-{}
+
+\backslash
+maketitle
 \end_layout
 
 \end_inset
 
-X-Entwickler und das Ly
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Team
 \end_layout
 
 \begin_layout Abstract
