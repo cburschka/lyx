@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-06-15 00:26+0200\n"
-"PO-Revision-Date: 2010-05-19 12:36+0200\n"
+"PO-Revision-Date: 2010-06-15 16:42+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenčina <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -2547,21 +2547,19 @@ msgstr "Použi XeTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:77
 msgid "SyncTeX  for PDF, srcltx for DVI"
-msgstr ""
+msgstr "SyncTeX  pre PDF, srcltx pre DVI"
 
 #: src/frontends/qt4/ui/OutputUi.ui:80
 msgid "Output Sync (Resources for Forward/Backward Search)"
-msgstr ""
+msgstr "Výstupná Synchronizácia (Prostriedky na Hľadanie Dopredu/Dozadu)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:97
-#, fuzzy
 msgid "Custom Macro:"
-msgstr "Zákazník č.:"
+msgstr "Vlastné Makro:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:104
-#, fuzzy
 msgid "Custom LaTeX preamble macro"
-msgstr "Preambula LaTeXu"
+msgstr "Vlastné makro preambuly LaTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:125
 msgid "XHTML Output Options"
@@ -3242,14 +3240,13 @@ msgid "The LaTeX command that ends a switch to a foreign language"
 msgstr "LaTeXovský príkaz na zakončenie zmeny jazyka."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:103
-#, fuzzy
 msgid "Default Decimal &Point:"
-msgstr "Štandardná tlačiareň:"
+msgstr "Štandardná Desatinná Bodka:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:119
 #: src/frontends/qt4/ui/TabularUi.ui:135
 msgid "X; "
-msgstr ""
+msgstr "X; "
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:129
 msgid "Use the babel package for multilingual support"
@@ -4326,14 +4323,12 @@ msgstr "Do bloku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:81 src/frontends/qt4/GuiTabular.cpp:294
 #: src/frontends/qt4/GuiTabular.cpp:695 src/frontends/qt4/GuiTabular.cpp:717
-#, fuzzy
 msgid "Decimal"
-msgstr "email"
+msgstr "Desatinná"
 
 #: src/frontends/qt4/ui/TabularUi.ui:110
-#, fuzzy
 msgid "Decimal point:"
-msgstr "Štandardná tlačiareň:"
+msgstr "Desatinná bodka:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:166
 msgid "Fixed width of the column"
@@ -4997,18 +4992,16 @@ msgid "After Title Text"
 msgstr "Za Textom Titulku"
 
 #: lib/layouts/IEEEtran.layout:153
-#, fuzzy
 msgid "Page headings"
-msgstr "s nadpismi (headings)"
+msgstr "Nadpisy strany"
 
 #: lib/layouts/IEEEtran.layout:171
 msgid "MarkBoth"
 msgstr "Označenie_oboch"
 
 #: lib/layouts/IEEEtran.layout:176
-#, fuzzy
 msgid "Publication ID"
-msgstr "Podvariácia"
+msgstr "Publikačná ID"
 
 #: lib/layouts/IEEEtran.layout:186 lib/layouts/aa.layout:88
 #: lib/layouts/aa.layout:318 lib/layouts/aa.layout:334
@@ -5133,9 +5126,8 @@ msgid "Biography without photo"
 msgstr "Životopis bez fotky"
 
 #: lib/layouts/IEEEtran.layout:282
-#, fuzzy
 msgid "BiographyNoPhoto"
-msgstr "Životopis"
+msgstr "ŽivotopisBezFotky"
 
 #: lib/layouts/IEEEtran.layout:287 lib/layouts/beamer.layout:1059
 #: lib/layouts/elsart.layout:286 lib/layouts/foils.layout:278
@@ -5998,27 +5990,24 @@ msgid "Blocks"
 msgstr "Bloky"
 
 #: lib/layouts/beamer.layout:666
-#, fuzzy
 msgid "Block:"
-msgstr "Do bloku"
+msgstr "Blok:"
 
 #: lib/layouts/beamer.layout:682
 msgid "ExampleBlock"
 msgstr "ExampleBlock"
 
 #: lib/layouts/beamer.layout:693
-#, fuzzy
 msgid "Example Block:"
-msgstr "ExampleBlock"
+msgstr "Príkladný Blok:"
 
 #: lib/layouts/beamer.layout:713
 msgid "AlertBlock"
 msgstr "AlertBlock"
 
 #: lib/layouts/beamer.layout:724
-#, fuzzy
 msgid "Alert Block:"
-msgstr "AlertBlock"
+msgstr "Výstražný Blok:"
 
 #: lib/layouts/beamer.layout:747 lib/layouts/beamer.layout:779
 #: lib/layouts/beamer.layout:804 lib/layouts/beamer.layout:826
@@ -9494,9 +9483,8 @@ msgid "Wrap"
 msgstr "Obtekanie"
 
 #: lib/layouts/stdinsets.inc:288
-#, fuzzy
 msgid "Argument"
-msgstr "Zarovnanie"
+msgstr "Argument"
 
 #: lib/layouts/stdinsets.inc:289
 msgid "opt"
@@ -13108,9 +13096,8 @@ msgid "Update master document"
 msgstr "Aktualizovať hlavný dokument"
 
 #: lib/ui/stdtoolbars.inc:103
-#, fuzzy
 msgid "Enable Forward/Reverse Search"
-msgstr "Dopredu hľadať"
+msgstr "Umožniť Dopredu/Zvratne Hľadať"
 
 #: lib/ui/stdtoolbars.inc:105
 msgid "View other formats"
@@ -13266,7 +13253,7 @@ msgstr "Zarovnať vpravo"
 
 #: lib/ui/stdtoolbars.inc:157
 msgid "Align on decimal"
-msgstr ""
+msgstr "Vyrovnať na decimálke"
 
 #: lib/ui/stdtoolbars.inc:159
 msgid "Align top"
@@ -19855,33 +19842,31 @@ msgstr "pestrý(fancy)"
 
 #: src/frontends/qt4/GuiDocument.cpp:768
 msgid "A0"
-msgstr ""
+msgstr "A0"
 
 #: src/frontends/qt4/GuiDocument.cpp:769
-#, fuzzy
 msgid "A1"
-msgstr "1"
+msgstr "A1"
 
 #: src/frontends/qt4/GuiDocument.cpp:770
 msgid "A2"
-msgstr ""
+msgstr "A2"
 
 #: src/frontends/qt4/GuiDocument.cpp:774
 msgid "A6"
-msgstr ""
+msgstr "A6"
 
 #: src/frontends/qt4/GuiDocument.cpp:775
 msgid "B0"
-msgstr ""
+msgstr "B0"
 
 #: src/frontends/qt4/GuiDocument.cpp:776
-#, fuzzy
 msgid "B1"
-msgstr "1"
+msgstr "B1"
 
 #: src/frontends/qt4/GuiDocument.cpp:777
 msgid "B2"
-msgstr ""
+msgstr "B2"
 
 #: src/frontends/qt4/GuiDocument.cpp:778
 msgid "B3"
@@ -19893,35 +19878,35 @@ msgstr "B4"
 
 #: src/frontends/qt4/GuiDocument.cpp:781
 msgid "B6"
-msgstr ""
+msgstr "B6"
 
 #: src/frontends/qt4/GuiDocument.cpp:782
 msgid "JIS B0"
-msgstr ""
+msgstr "JIS B0"
 
 #: src/frontends/qt4/GuiDocument.cpp:783
 msgid "JIS B1"
-msgstr ""
+msgstr "JIS B1"
 
 #: src/frontends/qt4/GuiDocument.cpp:784
 msgid "JIS B2"
-msgstr ""
+msgstr "JIS B2"
 
 #: src/frontends/qt4/GuiDocument.cpp:785
 msgid "JIS B3"
-msgstr ""
+msgstr "JIS B3"
 
 #: src/frontends/qt4/GuiDocument.cpp:786
 msgid "JIS B4"
-msgstr ""
+msgstr "JIS B4"
 
 #: src/frontends/qt4/GuiDocument.cpp:787
 msgid "JIS B5"
-msgstr ""
+msgstr "JIS B5"
 
 #: src/frontends/qt4/GuiDocument.cpp:788
 msgid "JIS B6"
-msgstr ""
+msgstr "JIS B6"
 
 #: src/frontends/qt4/GuiDocument.cpp:891
 msgid "Language Default (no inputenc)"
