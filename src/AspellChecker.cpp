@@ -224,7 +224,7 @@ AspellSpeller * AspellChecker::Private::addSpeller(string const & lang,
 	}
 
 	spellers_[spellerID(lang, variety)] = m;
-	return 0 == m.config ? 0 : to_aspell_speller(m.e_speller);
+	return m.e_speller ? to_aspell_speller(m.e_speller) : 0;
 }
 
 
@@ -338,7 +338,7 @@ bool AspellChecker::hasDictionary(Language const * lang) const
 
 	if (lang) {
 		for (; it != end && !have; ++it) {
-			have = d->isValidDictionary(it->second.config, lang->code(), lang->variety());
+			have = it->second.config && d->isValidDictionary(it->second.config, lang->code(), lang->variety());
 		}
 		if (!have) {
 			AspellConfig * config = d->getConfig(lang->code(), lang->variety());
