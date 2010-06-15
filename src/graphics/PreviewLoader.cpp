@@ -676,9 +676,7 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 void PreviewLoader::Impl::dumpPreamble(odocstream & os) const
 {
 	// Dump the preamble only.
-	// We don't need an encoding for runparams since it is not used by
-	// the preamble.
-	OutputParams runparams(0);
+	OutputParams runparams(&buffer_.params().encoding());
 	runparams.flavor = OutputParams::LATEX;
 	runparams.nice = true;
 	runparams.moving_arg = true;
