@@ -383,8 +383,8 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 			texrow.newline();
 		}
 
-		/*bool need_par = */ pit->latex(bparams, outerfont,
-			os, texrow, runparams, start_pos, end_pos);
+		pit->latex(bparams, outerfont, os, texrow,
+							 runparams, start_pos, end_pos);
 		return nextpit;
 	}
 
@@ -608,8 +608,8 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 
 	// FIXME UNICODE
 	os << from_utf8(everypar);
-	bool need_par = pit->latex(bparams, outerfont,
-					     os, texrow, runparams, start_pos, end_pos);
+	pit->latex(bparams, outerfont, os, texrow,
+						 runparams, start_pos, end_pos);
 
 	// Make sure that \\par is done with the font of the last
 	// character if this has another size as the default.
@@ -630,11 +630,8 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 	if (style.resfont.size() != font.fontInfo().size()
 	    && nextpit != paragraphs.end()
 	    && !is_command) {
-		if (!need_par)
-			os << '{';
+		os << '{';
 		os << "\\" << from_ascii(font.latexSize()) << " \\par}";
-	} else if (need_par) {
-		os << "\\par}";
 	} else if (is_command) {
 		os << '}';
 		if (runparams.encoding != prev_encoding) {

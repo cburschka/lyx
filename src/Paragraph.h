@@ -144,7 +144,7 @@ public:
 	void validate(LaTeXFeatures &) const;
 
 	/// \param force means: output even if layout.inpreamble is true.
-	bool latex(BufferParams const &, Font const & outerfont, odocstream &,
+	void latex(BufferParams const &, Font const & outerfont, odocstream &,
 		   TexRow & texrow, OutputParams const &,
 			 int start_pos = 0, int end_pos = -1, bool force = false) const;
 

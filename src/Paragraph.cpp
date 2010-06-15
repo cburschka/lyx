@@ -1980,7 +1980,7 @@ int Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 
 
 // This one spits out the text of the paragraph
-bool Paragraph::latex(BufferParams const & bparams,
+void Paragraph::latex(BufferParams const & bparams,
 	Font const & outerfont,
 	odocstream & os, TexRow & texrow,
 	OutputParams const & runparams,
@@ -1994,9 +1994,7 @@ bool Paragraph::latex(BufferParams const & bparams,
 		bparams.documentClass().plainLayout() : *d->layout_;
 
 	if (!force && style.inpreamble)
-		return false;
-
-	bool return_value = false;
+		return;
 
 	bool const allowcust = allowParagraphCustomization();
 
@@ -2256,7 +2254,6 @@ bool Paragraph::latex(BufferParams const & bparams,
 	// Needed if there is an optional argument but no contents.
 	if (body_pos > 0 && body_pos == size()) {
 		os << "}]~";
-		return_value = false;
 	}
 
 	if (allowcust && d->endTeXParParams(bparams, os, texrow, runparams)
@@ -2267,7 +2264,6 @@ bool Paragraph::latex(BufferParams const & bparams,
 	}
 
 	LYXERR(Debug::LATEX, "Paragraph::latex... done " << this);
-	return return_value;
 }
 
 
