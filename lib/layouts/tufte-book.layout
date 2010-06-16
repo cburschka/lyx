@@ -31,6 +31,18 @@ End
 Input stdlayouts.inc
 Input stdclass.inc
 
+Style Title
+	InPreamble	1
+End
+
+Style Author
+	InPreamble	1
+End
+
+Style Date
+	InPreamble	1
+End
+
 NoStyle Abstract
 NoStyle Chapter
 NoStyle Section
