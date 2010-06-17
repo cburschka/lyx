@@ -74,7 +74,7 @@ int main (int argc, char **argv, char **environ)
 
 	/* fprintf(stderr , "Command is: |%s|\n", cmd); */
 	/* ensure bash reads our global env changes */
-	putenv("BASH_ENV=/etc/lyxprofile") ;
+	putenv("BASH_ENV=" LYX_ABS_INSTALLED_DATADIR "/lyxprofile") ;
 	/* exec sub command */
 	spawnv(_P_NOWAIT, "/bin/bash", nargs);
 	/* exit with no error */
