@@ -9,7 +9,9 @@ include $(top_srcdir)/config/common.am
 
 bin_PROGRAMS = lyxeditor lyxwin
 bin_SCRIPTS = lyxeditor.sh
-dist_noinst_DATA = lyxprofile
+
+lyxdistdir = $(pkgdatadir)
+dist_lyxdist_DATA = lyxprofile lyxrc.dist
 
 lyxeditor_SOURCES = lyxeditor.c
 lyxwin_SOURCES = lyxwin.c lyxwinres.rc
