@@ -2950,19 +2950,28 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 		}
 		case LFUN_BUFFER_SWITCH: {
-			if (!FileName::isAbsolute(to_utf8(cmd.argument())))
+			string const file_name = to_utf8(cmd.argument());
+			if (!FileName::isAbsolute(file_name)) {
+				dr.setError(true);
+				dr.setMessage(_("Absolute filename expected."));
 				break;
-			Buffer * buffer = 
-				theBufferList().getBuffer(FileName(to_utf8(cmd.argument())));
+			}
+
+			Buffer * buffer = theBufferList().getBuffer(FileName(file_name));
 			if (!buffer) {
 				dr.setError(true);
 				dr.setMessage(_("Document not loaded"));
 				break;
-			}
-			if (workArea(*buffer)) {
+			} 
+
+			// Do we open or switch to the buffer in this view ?
+			if (workArea(*buffer) 
+				  || lyxrc.open_buffers_in_tabs || !documentBufferView()) {
 				setBuffer(buffer);
 				break;
-			}
+			} 
+			
+			// Look for the buffer in other views
 			QList<int> const ids = guiApp->viewIds();
 			int i = 0;
 			for (; i != ids.size(); ++i) {
@@ -2973,13 +2982,11 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 					break;
 				}
 			}
+
+			// If necessary, open a new window as a last resort
 			if (i == ids.size()) {
-				if (!lyxrc.open_buffers_in_tabs && documentBufferView() != 0) {
-					lyx::dispatch(FuncRequest(LFUN_WINDOW_NEW));
-					lyx::dispatch(cmd);
-				} else {
-					setBuffer(buffer);
-				}
+				lyx::dispatch(FuncRequest(LFUN_WINDOW_NEW));
+				lyx::dispatch(cmd);
 			}
 			break;
 		}
