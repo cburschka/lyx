@@ -38,10 +38,16 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\eu\UserGuide.lyx"
  #SetOutPath "$INSTDIR\Resources\doc\fr"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\EmbeddedObjects.lyx"
- #SetOutPath "$INSTDIR\Resources\examples"
+ SetOutPath "$INSTDIR\Resources\examples"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\tufte-book.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\tufte-handout.lyx"
+ SetOutPath "$INSTDIR\Resources\examples\de"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\de\tufte-handout.lyx"
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\elsart.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\IEEEtran.layout"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\tufte-book.layout"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\tufte-handout.layout"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  SetOutPath "$INSTDIR\Resources\man\man1"
