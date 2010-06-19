@@ -512,7 +512,7 @@ void LyX::execCommands()
 	if (LayoutFileList::get().empty()) {
 		switch (Alert::prompt(
 			_("No textclass is found"),
-			_("LyX will have minimal functionality because no textclasses "
+			_("LyX will only have minimal functionality because no textclasses "
 				"have been found. You can either try to reconfigure LyX normally, "
 				"try to reconfigure using only the defaults, or continue."),
 			0, 2,
