@@ -375,6 +375,8 @@ void InsetMathFrac::validate(LaTeXFeatures & features) const
 {
 	if (kind_ == NICEFRAC || kind_ == UNITFRAC || kind_ == UNIT)
 		features.require("units");
+	if (kind_ == CFRAC || kind_ == CFRACLEFT || kind_ == CFRACRIGHT)
+		features.require("amsmath");
 	InsetMathNest::validate(features);
 }
 
