@@ -122,6 +122,8 @@ What's new
 
 - Correctly restore a dissolved macro inset on undo (bug 6678).
 
+- Fix cursor positioning in ERT insets with leading blanks (bug 6746).
+
 - Correctly handle empty custom line spacing in settings (bug 6649).
 
 - Correctly display color changes in math formulas (bug 4071).
