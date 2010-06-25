@@ -1219,10 +1219,18 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		return 0;
 	}
 
-	// if the first character is a separator, we are in RTL
-	// text. This character will not be painted on screen
+	// This (rtl_support test) is not needed, but gives
+	// some speedup if rtl_support == false
+	bool const lastrow = lyxrc.rtl_support && row.endpos() == par.size();
+
+	// If lastrow is false, we don't need to compute
+	// the value of rtl.
+	bool const rtl = lastrow ? text_->isRTL(par) : false;
+
+	// if the first character is a separator, and we are in RTL
+	// text, this character will not be painted on screen
 	// and thus we should not count it and skip to the next.
-	if (par.isSeparator(bidi.vis2log(vc)))
+	if (rtl && par.isSeparator(bidi.vis2log(vc)))
 		++vc;
 
 	while (vc < end && tmpx <= x) {
@@ -1250,13 +1258,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	LASSERT(vc <= end, /**/);  // This shouldn't happen.
 
 	boundary = false;
-	// This (rtl_support test) is not needed, but gives
-	// some speedup if rtl_support == false
-	bool const lastrow = lyxrc.rtl_support && row.endpos() == par.size();
 
-	// If lastrow is false, we don't need to compute
-	// the value of rtl.
-	bool const rtl = lastrow ? text_->isRTL(par) : false;
 	if (lastrow &&
 	    ((rtl  &&  left_side && vc == row.pos() && x < tmpx - 5) ||
 	     (!rtl && !left_side && vc == end  && x > tmpx + 5))) {
