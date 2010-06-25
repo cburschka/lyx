@@ -4641,7 +4641,7 @@ macros/latex/contrib/pdfpages
 
 \begin_layout Description
 Notes: The package 
-\family typewriter
+\family sans
 pdfpages
 \family default
  is used by LyX to include multi-page PDF files via 
@@ -4675,7 +4675,7 @@ macros/latex/contrib/prettyref
 
 \begin_layout Description
 Notes: The package 
-\family typewriter
+\family sans
 prettyref
 \family default
  provides a command to identify reference labels by a prefix.
@@ -4688,7 +4688,7 @@ sec:mysection
 \end_inset
 
  and 
-\family typewriter
+\family sans
 prettyref
 \family default
  interprets the "sec:" part.
@@ -4716,7 +4716,7 @@ macros/latex/contrib/preview
 
 \begin_layout Description
 Notes: The package 
-\family typewriter
+\family sans
 preview
 \family default
  is needed by LyX to preview LaTeX constructs; especially for math formulas
@@ -4956,7 +4956,36 @@ Notes: The package
 \family sans
 url
 \family default
- is needed by LyX to be able to output url's corrently.
+ is needed by LyX to be able to output urls correctly.
+\end_layout
+
+\begin_layout Subsection
+wasysym
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "wasysym"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/wasysym/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+wasysym
+\family default
+ is needed by LyX to be able to output additional characters that come from
+ the wasy fonts.
 \end_layout
 
 \begin_layout Subsection
@@ -4981,7 +5010,7 @@ macros/latex/contrib/wrapfig/
 
 \begin_layout Description
 Notes: The package 
-\family typewriter
+\family sans
 wrapfig
 \family default
  is used by LyX if you insert text wrap floats (menu 
@@ -5016,7 +5045,7 @@ macros/latex/contrib/xargs/
 
 \begin_layout Description
 Notes: The package 
-\family typewriter
+\family sans
 xargs
 \family default
  is used by LyX if you insert math macros with optional arguments.
