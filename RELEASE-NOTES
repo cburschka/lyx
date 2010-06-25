@@ -7,14 +7,6 @@ Note that fixes are available for some of these, but they have not yet
 been applied because of incomplete testing.
 
 
-Known issues in LyX 1.6.6
---------------------------
-
-* LyX might crash when using undo with the outliner opened. This bug only
-manifests itself when LyX is compiled against Qt 4.6, so if you compile LyX
-against Qt 4.5, you can circumvent this problem.
-
-
 Interface changes as of LyX 1.6.0
 ---------------------------------
 

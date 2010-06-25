@@ -1,25 +1,17 @@
-Public release of LyX version 1.6.6
+Public release of LyX version 1.6.7
 ===================================
 
-We are pleased to announce the release of LyX 1.6.6. This is the sixth
+We are pleased to announce the release of LyX 1.6.7. This is the eighth
 maintenance release in the 1.6.x series.
 
-The release features a long list of fixes and improvements. Yet a number
-of crashes, reported by our users or our automatic stability testing
-program, were fixed. Moreover, LyX was improved in many details. It also
-introduces new features, such as support for the enchant spell checking
-backend and for aspell language varieties (such as old and new German
-spelling in parallel).
+From the list of fixes and improvements, we'd like to highlight
+particularly that this release irons out all known stability problems with
+Qt 4.6. LyX 1.6.7 is our first release that is supposed to run smoothly
+with Qt 4.6, so we urge all distributors who use that version to upgrade
+LyX as well.
 
 A detailed list of changes is appended below, remaining known problems
 are listed in the file RELEASE-NOTES.
-
-Please note particularly that there's an unresolved bug (#6680) that might
-crash LyX when using undo with the outliner opened. This bug only manifests
-itself when LyX is compiled against Qt 4.6, so we encourage you to compile
-LyX against Qt 4.5, if possible. Also note that LyX 1.6.6 behaves way better
-with Qt 4.6 than its predecessors. So despite the aforementioned problem, we
-urge all distributors who use Qt 4.6 to upgrade to this version.
 
 All users are encouraged to upgrade to this version.
 
@@ -47,36 +39,36 @@ http://www.lyx.org/ has to say on the subject:
    internationalized application running natively on Unix/Linux, the
    Macintosh and modern Windows platforms.
 
-You can download LyX 1.6.6 here (the .bz2 are compressed with bzip2,
+You can download LyX 1.6.7 here (the .bz2 are compressed with bzip2,
 which yields smaller files):
 
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.6.tar.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.6.tar.bz2
-	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.6.6.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.6.6.tar.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.7.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.7.tar.bz2
+	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.6.7.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.6.7.tar.bz2
 
 and it should propagate shortly to the following mirrors (which will
 also host the .bz2 versions):
 
-	ftp://ftp.lip6.fr/pub/lyx/stable/1.6.x/lyx-1.6.6.tar.gz
-	http://lyx.cybermirror.org/stable/1.6.x/lyx-1.6.6.tar.gz
-	ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/1.6.x/lyx-1.6.6.tar.gz
-	ftp://ftp.ntua.gr/pub/X11/LyX/stable/1.6.x/lyx-1.6.6.tar.gz
-	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/1.6.x/lyx-1.6.6.tar.gz
-	http://lyx.mirror.fr/stable/1.6.x/lyx-1.6.6.tar.gz
+	ftp://ftp.lip6.fr/pub/lyx/stable/1.6.x/lyx-1.6.7.tar.gz
+	http://lyx.cybermirror.org/stable/1.6.x/lyx-1.6.7.tar.gz
+	ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/1.6.x/lyx-1.6.7.tar.gz
+	ftp://ftp.ntua.gr/pub/X11/LyX/stable/1.6.x/lyx-1.6.7.tar.gz
+	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/1.6.x/lyx-1.6.7.tar.gz
+	http://lyx.mirror.fr/stable/1.6.x/lyx-1.6.7.tar.gz
 
 Prebuilt binaries (rpms for Linux distributions, Mac OS X and Windows
 installers) should soon be available at:
 
-	ftp://ftp.lyx.org/pub/lyx/bin/1.6.6/
+	ftp://ftp.lyx.org/pub/lyx/bin/1.6.7/
 
-If you already have the sources of the previous release (1.6.4.2), you may
+If you already have the sources of the previous release (1.6.6.1), you may
 want to apply one of the following patches instead:
 
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.6.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.6.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.7.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.7.bz2
 
-If you find what you think is a bug in LyX 1.6.6, you may either
+If you find what you think is a bug in LyX 1.6.7, you may either
 e-mail the LyX developers' mailing list (lyx-devel <at> lists.lyx.org),
 or open a bug report at http://www.lyx.org/trac/
 
@@ -89,318 +81,6 @@ Enjoy!
 The LyX team.
 
 
-What's new in version 1.6.6?
+What's new in version 1.6.7?
 ----------------------------
 
-** Updates:
-***********
-
-* DOCUMENT INPUT/OUTPUT
-
-- LyX now supports SVG images when either the librsvg library or
-  Inkscape (version 0.47 recommended) is installed (bug 3349).
-
-- LaTeX import (tex2lyx) now recognizes the types of quotes dependent
-  on the document language. (When importing e.g. a Spanish document,
-  LyX will use comillas latinas as quotes.)
-
-- Add support for Aspell language varieties. This enables proper support
-  of German old and new spelling in parallel when "aspell (library)" is
-  used (bug 4657).
-
-- Add support for the enchant spellchecker (bug 6226). LyX needs to be
-  compiled --with-enchant in order to use this feature.
-
-
-* USER INTERFACE
-
-- Checking all opened files for external change after updating from SVN
-  repository (part of bug 5211).
-
-- Add a Close All menu item to the menu (bug 740).
-
-- Toolbar entry for the AMS math symbol \Diamond added.
-
-- All importable file types can now be dragged and dropped onto
-  LyX to open them (bug 2948).
-
-- Use a standard (rather than a wait) mouse cursor when displaying alerts.
-
-- <Enter> in empty enumerations and other environments decreases depth if
-  possible and otherwise resets the layout to standard.
-
-- Don't show the empty base of a script inset as an empty brace inset
-  on screen (bug 6581).
-
-
-* DOCUMENTATION AND LOCALIZATION
-
-- New Greek user interface localization.
-
-- New Spanish translations of the beamer and tufte example files and the
-  beamer template file.
-
-- New Japanese translation of the Customization and the EmbeddedObjects
-  manual.
-
-- New Japanese translation of the Braille, linguistics, multicol and xypic
-  example files.
-
-- The dinbrief and g-brief-de layouts were translated to English.
-
-- The dinbrief template was revised.
-
-- Updated User's Guide and EmbeddedObjects manual.
-
-- Updated Math manual: description how to change font size within
-  formulas in sec. 11.4.
-
-- Updated Arabic, Basque, Czech, French, German, Hungarian, Indonesian,
-  Italian, Japanese, Russian, Slovak, Spanish and Ukrainian user
-  interface localizations.
-
-- The rpm README file was updated.
-
-
-* BUILD/INSTALLATION
-
-- Add support for Cygwin 1.7.
-
-- Update Cygwin configuration files.
-
-- LyX supports autoconf 2.65 (bug 6524).
-
-
-** Bug fixes:
-*************
-
-* DOCUMENT INPUT/OUTPUT
-
-- Fix a crash when opening an emergency file which is not a
-  valid LyX file (bug 6491).
-
-- Fix a crash when viewing files that contain math macros as PDF
-  (bug 6388).
-
-- Fix a crash when a document includes itself (bug 6503).
-
-- Fix the parsing of spaces in the preamble of tex files (bug 6474).
-
-- Export the image when generating a preview, after an image
-  reload (bug 6356).
-
-- Fix the import of tex files with multi-byte characters in
-  the preamble (bug 6365).
-  
-- Fix encoding problem in bibliography items that broke the compilation
-  of documents (bug 6534).
-
-- Fix encoding problem in PDF (i.e. hyperref) settings that broke the
-  compilation of documents.
-
-- Issue a warning if a path contains uncodable characters (bug 6301).
-
-- Allow using single quotes in filenames (bug 4063).
-
-- Do not insert \foreignlanguage in TeX-code (bug 6426).
-
-- Allow using Greek symbols also when the package grtimes is installed but
-  actual fonts are not and "Times Roman" glyphs are requested (bug 6469).
-
-- Fix premature closing of the CJK environment after TeX-code or URL insets
-  nested in other insets (bug 6510).
-
-- Allow using labels with non-ASCII characters in mathed (bug 3325).
-
-- Reset the language at the end of the document to the correct
-  language (bug 6387).
-
-- Make reverse dvi/pdf search work even when the temporary dir contains
-  spaces (common to all platforms, but particularly important on Windows).
-
-- LaTeX import (tex2lyx) now also recognizes the document language Kazakh.
-
-- Fixed detection of "Author (Year)" references when not using BibTeX.
-
-- Quit LyX when shutting down Windows in order to not interrupt the
-  shutdown sequence (bug 5525).
-
-- Fix the elsarticle template file. It is now possible to use custom
-  document class options.
-  
-- Fix positioning of error dialog in child documents with parent macros
-  (bug 6502).
-
-- On Windows, allow loading and saving files whose path and/or name contains
-  characters not encodable in the current code page (bug 5238).
-
-- On Windows, allow using unicode characters in the command line arguments
-  for lyx and tex2lyx.
-
-- Do not try to move the autosave file if it does not yet exist (bug 6525).
-
-- Detect more warnings from LaTeX run (bug 6593).
-
-- Reset the language at the beginning of a paragraph when importing a tex
-  file (bug 6377).
-
-- Correctly switch latex encoding before fragile environments (bug 6618).
-
-- Prevent the creation of empty cache index files at various locations.
-
-- Remove autosave only on file close (part of bug 6587).
-
-- Fix the LaTeX import of documents with multiline parameters of citep
-  insets (bug 6219).
-
-- Translate \textquotedbl to the inch sign when importing tex (bug 6631).
-
-- Fix usage of the \underbar macro in math mode (bug 4565).
-
-- Fix the import of \limits and \nolimits when it is not followed by a
-  sub or superscript (bug 6633).
-
-- Correctly set the parent of a child document after reloading.
-
-
-* USER INTERFACE
-
-- Fix a crash when performing word-replace while the cursor has a selection
-  in mathed (bug 6437).
-
-- Fix a crash when closing a document with a pending autocompletion popup
-  (bug 6431).
- 
-- Fix a crash when trying to select a whole empty math inset. This causes
-  the empty inset to disappear and the anchor to be invalid (bug 6448).
-
-- Fix a crash when invoking buffer-switch with no open files (bug 6438).
-
-- Fix a crash when clicking on an error in the error dialog, while either
-  the active document is changed or the document is closed (bug 6462).
-
-- Fix a crash when a pending completion pop-up in math is scrolled out
-  of view (bug 6552).
-
-- While in TeX-code, disable non-functional sub- and superscript functions
-  that crashed LyX (bug 6459).
-  
-- Fix crashes of LyX when interacting with buffer dependent dialogs
-  while no buffers where open (anymore) (bug 6451).
-  
-- Fix a stdlib assertion when deleting from TeX-code in math (bug 6489).
-
-- Fix the use of lyxrc properties in InsetInfos (bug 6664).
-
-- Fix the availability info for textclasses in InsetInfos (bug 5543).
-  
-- Resolve duplicate labels in mathed on pasting (bug 6218).
-
-- Allow labels containing an underscore or caret to be referenced in
-  math insets instead of only outside math (bug 2872).
-
-- Detect user-specified package dependencies for modules (bug 6361).
-
-- Fix bug that LyX allowed to specify the vertical alignment of table
-  columns without a fixed width.
-
-- Prevent the error dialog from jumping to the first item when
-  clicking outside the dialog (bug 2179).
-  
-- Render user-defined macros in instant previews (bug 4360).
-
-- Do not warn or save an emergency file when reverting a document.
-
-- Fix the painting of text with custom font properties in insets
-  that have a default font (bug 6113).
-
-- Fix layout of the Paragraph dialog (particularly within CJK
-  localization).
-
-- Fix cursor placement in math when inserting 'active' insets (bug 6382).
-
-- Fix on-screen display of author names containing a thin space
-  (such as W.\,H. Auden).
-
-- Take into account the current zoom factor, dip, or preview scale
-  factor when an instant preview is generated.
-
-- When moving to another cell in a table, the current font is adjusted
-  to the font of that cell.
-  
-- Display notes and friends in tables in the outliner (bug 6372).
-
-- Allow the selection to be extended using shift and mouse (bug 6400).
-
-- After selecting a word by double-clicking it, extending the selection
-  by a single mouse-click now also selects only whole words (bug 6400).
-
-- Update the status bar after starting LyX and closing the last document.
-
-- Do not paint the cursor after resizing if it is invisible (bug 6332).
-
-- Refresh the contents of some dialogs when the document is read-only.
-
-- Do not clear the default master setting in preferences dialog when
-  cancelling the browse dialog.
-
-- Fix the mac bind files for inserting an end-of-sentence character
-  (bug 6416).
-
-- Better detection and response on svn conflicts.
-
-- Enable full keyboard navigation in the spellchecker dialog (bug 6460).
-
-- Fix keyboard accelerator for the "Content" combo box in the BibTeX
-  bibliography dialog.
-
-- Fix title of the error dialog (bug 6397).
-
-- Update correctly the toolbar after the spellchecker has made a 
-  replacement (bug 6217).
-
-- Abbreviate long cross-references (bug 6559).
-
-- Do not cause a shortcut conflict when only modifying the command
-  of a keyboard shortcut binding (bug 5735).
-
-- Fix the numbering of subsections for the memoir layout (bug 6527).
-
-- Fix TOC-related crashes on Qt 4.6.x (bug 6522).
-
-- Fix strange scrolling bug that could cause the document to jump
-  after mouse clicks (bug 6454).
-
-- Fix the painting of the background of previewed displayed math.
-
-- Make the auto-completion case-insensitive.
-
-- When merging changes, consider similar changes as one.
-
-- Allow to apply the preferences after removing a shortcut.
-
-- Fix the font specification of a special section in amsart.layout.
-
-- Hide the error when pressing ok without changing a shortcut.
-
-- Allow to change a shortcut back to a previous value.
-
-- Fix the painting of large insets at the top of the document
-  (bug 6141).
-
-
-* DOCUMENTATION AND LOCALIZATION
-
-- Fix compilation of the Math manual.
-
-- Fix the character encoding of the Slovak splash.lyx example file.
-
-- Fix some LaTeX-warnings in the EmbeddedObjects manual which prevented
-  the PDF export on Mac OS.
-
-
-* BUILD/INSTALLATION
-
-- Fix compiler warnings about comparisons with string literals.
-
-- Fix code in some places such that to avoid possible runtime problems.
