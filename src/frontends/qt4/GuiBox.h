@@ -46,7 +46,7 @@ private:
 	/// add and remove special lengths
 	void setSpecial(bool ibox);
 	/// only show valid inner box items
-	void setInnerType(bool frameless, int i);
+	void setInnerType(bool frameless, QString const & type);
 
 	QStringList ids_;
 	///
