@@ -2806,24 +2806,22 @@ msgid "Date format for strftime output"
 msgstr "Formát data pro výstup fce strftime"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:77
-#, fuzzy
 msgid "&Overwrite on export:"
-msgstr "Pøepsat dokument ?"
+msgstr "&Pøepsat pøi exportu:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:87
 msgid "What to do when existing files are going to be overwritten on export."
-msgstr ""
+msgstr "Jak reagovat v pøípadì, ¾e existující soubory mají být pøepsány pøi exportu."
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:91
 msgid "Ask permission"
-msgstr ""
+msgstr "Dotázat se na povolení"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:96
 msgid "Main file only"
-msgstr ""
+msgstr "Pouze hlavní soubor"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:101
-#, fuzzy
 msgid "All files"
 msgstr "V¹echny soubory "
 
@@ -4227,9 +4225,8 @@ msgid "Biography"
 msgstr "Biography"
 
 #: lib/layouts/IEEEtran.layout:210
-#, fuzzy
 msgid "BiographyNoPhoto"
-msgstr "Biography"
+msgstr "BiographyNoPhoto"
 
 #: lib/layouts/IEEEtran.layout:217 lib/layouts/beamer.layout:1051
 #: lib/layouts/elsart.layout:285 lib/layouts/foils.layout:278
@@ -16003,9 +16000,8 @@ msgid "Overwrite file?"
 msgstr "Pøepsat soubor?"
 
 #: src/Exporter.cpp:50
-#, fuzzy
 msgid "&Keep file"
-msgstr "&Ponechat"
+msgstr "&Ponechat soubor"
 
 #: src/Exporter.cpp:51
 msgid "Overwrite &all"
@@ -16353,7 +16349,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Ladící úroveò nastavena na %1$s"
 
 #: src/LyX.cpp:963
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -16396,10 +16391,14 @@ msgstr ""
 "\t-e [--export] fmt\n"
 "                  kde fmt je vybraný exportní formát.\n"
 "                  Pro seznam formátù se podívejte do sekce\n"
-"                  Nástroje->Nastavení->Formáty souborù.\t-i [--import] fmt "
-"soubor.xxx\n"
+"                  Nástroje->Nastavení->Formáty souborù.\n"
+"\t-i [--import] fmt soubor.xxx\n"
 "                  kde fmt vybraný formát k importu\n"
 "                  a soubor.xxx je soubor urèený k importu.\n"
+"\t-f [--force-overwrite] what\n"
+"                  kde 'what' je buï 'all'(=v¹e) nebo 'main'(=hlavní)\n"
+"                  Pomocí 'all' jsou pøepsány v¹echny soubory pøi exportu\n"
+"                  na pøíkazovém øádku. Jinak bude pøepsán pouze hlavní soubor.\n"
 "\t-version        shrnout verzi a informace o sestavení\n"
 "Prohlédnìte manuálovou stránku LyX-u pro detailnìj¹í informace."
 
