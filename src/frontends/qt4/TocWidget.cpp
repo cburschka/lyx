@@ -170,6 +170,8 @@ void TocWidget::setTreeDepth(int depth)
 
 void TocWidget::on_typeCO_currentIndexChanged(int index)
 {
+	if (index == -1)
+		return;
 	current_type_ = typeCO->itemData(index).toString();
 	updateView();
 	gui_view_.setFocus();
@@ -346,7 +348,7 @@ void TocWidget::init(QString const & str)
 		new_index = typeCO->findData(decodeType(str));
 
 	// If everything else fails, settle on the table of contents which is
-	// guaranted to exist.
+	// guaranteed to exist.
 	if (new_index == -1) {
 		current_type_ = "tableofcontents";
 		new_index = typeCO->findData(current_type_);
