@@ -146,6 +146,9 @@ What's new
 - Use display-formatted file name when asking about removing an emergency
   file.
 
+- Do not open buffers in tabs when calling buffer-switch while the 
+  option to open buffers in tabs is turned off (bug 5942).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
