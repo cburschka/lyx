@@ -1525,7 +1525,10 @@ void GuiDocument::xetexChanged(bool xetex)
 	
 	fontModule->fontencLA->setEnabled(!xetex);
 	fontModule->fontencCO->setEnabled(!xetex);
-	fontModule->fontencLE->setEnabled(!xetex);
+	if (xetex)
+		fontModule->fontencLE->setEnabled(false);
+	else
+		fontencChanged(fontModule->fontencCO->currentIndex());
 }
 
 
@@ -2788,11 +2791,13 @@ void GuiDocument::paramsToDialog()
 	if (nn >= 0)
 		fontModule->fontsDefaultCO->setCurrentIndex(nn);
 
-	if (bp_.fontenc == "global")
+	if (bp_.fontenc == "global") {
 		fontModule->fontencCO->setCurrentIndex(0);
-	else if (bp_.fontenc == "default")
+		fontModule->fontencLE->setEnabled(false);
+	} else if (bp_.fontenc == "default") {
 		fontModule->fontencCO->setCurrentIndex(2);
-	else {
+		fontModule->fontencLE->setEnabled(false);
+	} else {
 		fontModule->fontencCO->setCurrentIndex(1);
 		fontModule->fontencLE->setText(toqstr(bp_.fontenc));
 	}
