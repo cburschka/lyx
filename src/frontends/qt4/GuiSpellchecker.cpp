@@ -171,7 +171,7 @@ void GuiSpellchecker::on_languageCO_activated(int index)
 
 void GuiSpellchecker::on_ignoreAllPB_clicked()
 {
-	/// replace all occurences of word
+	/// replace all occurrences of word
 	if (d->word_.lang() && !d->word_.word().empty())
 		theSpellChecker()->accept(d->word_);
 	check();
