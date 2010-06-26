@@ -119,7 +119,6 @@ void GuiBox::on_innerBoxCO_activated(int index)
 		typeCO->itemData(typeCO->currentIndex()).toString();
 	valignCO->setEnabled(ibox);
 	ialignCO->setEnabled(ibox);
-	halignCO->setEnabled(!ibox);
 	heightCB->setEnabled(ibox);
 	// except for frameless and boxed, the width cannot be specified if
 	// there is no inner box
@@ -127,6 +126,8 @@ void GuiBox::on_innerBoxCO_activated(int index)
 		outer != "Boxed");
 	widthED->setEnabled(!width_disabled);
 	widthUnitsLC->setEnabled(!width_disabled);
+	// halign and pagebreak are only allowed for Boxed without inner box
+	halignCO->setEnabled(!ibox && outer == "Boxed");
 	pagebreakCB->setEnabled(!ibox && outer == "Boxed");
 	setSpecial(ibox);
 	changed();
@@ -141,7 +142,6 @@ void GuiBox::on_typeCO_activated(int index)
 	if (frameless) {
 		valignCO->setEnabled(true);
 		ialignCO->setEnabled(true);
-		halignCO->setEnabled(false);
 		heightCB->setEnabled(true);
 		setSpecial(true);
 	}
@@ -149,13 +149,15 @@ void GuiBox::on_typeCO_activated(int index)
 		pagebreakCB->setChecked(false);
 	QString itype =
 		innerBoxCO->itemData(innerBoxCO->currentIndex()).toString();
-	pagebreakCB->setEnabled(type == "Boxed" && itype == "none");
 	// except for frameless and boxed, the width cannot be specified if
 	// there is no inner box
 	bool const width_disabled = (itype == "none" && !frameless
 		&& type != "Boxed");
 	widthED->setEnabled(!width_disabled);
 	widthUnitsLC->setEnabled(!width_disabled);
+	// halign and pagebreak are only allowed for Boxed without inner box
+	halignCO->setEnabled(type == "Boxed" && itype == "none");
+	pagebreakCB->setEnabled(type == "Boxed" && itype == "none");
 	setInnerType(frameless, itype);
 	changed();
 }
@@ -166,7 +168,6 @@ void GuiBox::initDialog()
 	setInnerType(true, toqstr("minipage"));
 	widthED->setText("100");
 	widthUnitsLC->setCurrentItem(Length::PCW);
-	heightCB->setCheckState(Qt::Checked);
 	heightED->setText("1");
 	heightUnitsLC->setCurrentItem("totalheight");
 }
@@ -215,8 +216,6 @@ void GuiBox::paramsToDialog(Inset const * inset)
 		pagebreakCB->setChecked(false);
 	}
 
-	pagebreakCB->setEnabled(type == "Boxed" && !params.inner_box);
-
 	typeCO->setCurrentIndex(typeCO->findData(type));
 
 	// default: minipage
@@ -238,8 +237,18 @@ void GuiBox::paramsToDialog(Inset const * inset)
 	bool ibox = params.inner_box;
 	valignCO->setEnabled(ibox);
 	ialignCO->setEnabled(ibox);
-	halignCO->setEnabled(!ibox);
 	setSpecial(ibox);
+
+	// halign and pagebreak are only allowed for Boxed without inner box
+	halignCO->setEnabled(!ibox && type == "Boxed");
+	pagebreakCB->setEnabled(!ibox && type == "Boxed");
+
+	// except for frameless and boxed, the width cannot be specified if
+	// there is no inner box
+	bool const width_disabled = (!ibox && !frameless
+		&& type != "Boxed");
+	widthED->setEnabled(!width_disabled);
+	widthUnitsLC->setEnabled(!width_disabled);
 
 	Length::UNIT const default_unit = Length::defaultUnit();
 
