@@ -24,18 +24,18 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Introduced new -f [--force-overwrite] command line flag. Without any
-  argument (or 'all' as argument) all files are silently overwritten on
-  export from command line. Using 'main' as argument, only the main file
-  will be overwritten.
+- New -f [--force-overwrite] command line flag. Without any argument (or
+  with 'all' as argument) all files are silently overwritten on export
+  from the command line. Using 'main' as argument, only the main file will
+  be overwritten.
 
-- Introduced new preference setting for selecting what to do when existing
-  files are going to be overwritten on export from the GUI.
+- New preference setting for selecting what to do when existing files are
+  going to be overwritten on export from the GUI.
 
 
 * USER INTERFACE
 
-- Layout and template file for document class article(IEEEtran) has been
+- Layout and template file for document class "article (IEEEtran)" were
   updated for IEEEtran 1.7a.
 
 - Do not unnecessarily truncate the text of notes, footnotes and marginals
@@ -52,7 +52,7 @@ What's new
 - Updated Basque, Czech, German, Italian and Slovak user interace
   localizations.
 
-- Major update of Basque User's guide, Tutorial and Intro.
+- Major update of the Basque User's guide, Tutorial and Intro.
 
 - Updated LaTeX configuration overview.
 
@@ -63,8 +63,8 @@ What's new
 
 * BUILD/INSTALLATION
 
-- On cygwin, install by default lyxprofile and lyxrc.dist in order to
-  avoid to do it in post-install scripts.
+- On cygwin, install lyxprofile and lyxrc.dist by default. This avoids the
+  use of post-install scripts for this task.
 
 
 ** Bug fixes:
@@ -72,22 +72,21 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix assertion when using an empty user macro taking an argument as
+- Fix an assertion when using an empty user macro taking an argument as
   the base of script inset (bug 6739).
 
-- Fix reverse search when the document name contains a character
-  which is forbidden in LaTeX filenames (such as spaces).
+- Fix reverse search when the document name contains a character that is
+  forbidden in LaTeX filenames (such as spaces).
 
-- Improve reverse search for documents containing index insets
-  (bug 6649).
+- Improve reverse search for documents containing index insets (bug 6649).
 
 - Honour physical paper size settings on output (bug 5247).
 
-- Fix compilation error in documents containing text parts in Arabic
-  and Farsi (bug 6714).
+- Fix compilation error in documents containing passages in Arabic and
+  Farsi (bug 6714).
 
-- Output references to section numbers in the correct direction in
-  documents with right-to-left-languages (bug 6711).
+- Fix direction of references to section numbers in documents with
+  right-to-left-languages (bug 6711).
 
 - Safer creation of backup files on ext4 (part of bug 6587).
 
@@ -95,7 +94,7 @@ What's new
 
 - Don't overwrite child .tex documents on latex export (bug 2434).
 
-- Don't allow creating multiple buffers with same name (bug 6645).
+- Don't allow the creation multiple buffers with same name (bug 6645).
 
 - Don't automatically overwrite files on export from command line,
   unless the newly introduced -f flag is used (bug 2762).
@@ -108,8 +107,8 @@ What's new
 - Correctly parse math formulas having a backslash as last character
   on a line (bug 6756).
 
-- Only use the page margins if the option "Default margins" is not
-  checked (bug 6699).
+- Only use the page margins if the option "Default margins" is not checked
+  (bug 6699).
 
 - Include the package "amsmath" when using cfrac (bug 6787).
 
@@ -118,10 +117,11 @@ What's new
 
 * USER INTERFACE
 
-- Fix a warning and an incidental crash for the outliner (bug 6680).
+- Fix a warning and an incidental crash when using the outliner (bug
+  6680).
 
-- Fix an assertion when copying Insets from a deleted range of
-  text deleted by a different author (bug 6744).  
+- Fix an assertion when copying insets from a deleted range of text
+  deleted by a different author (bug 6744).  
 
 - Correctly restore a dissolved macro inset on undo (bug 6678).
 
@@ -131,28 +131,28 @@ What's new
 
 - Correctly display color changes in math formulas (bug 4071).
 
-- Make sure that the '|'-character in headings does not confuse the
-  TOC list in navigate menu (bug 2009).
+- Make sure that the '|'-character in headings does not confuse the TOC
+  list in navigate menu (bug 2009).
 
 - Do not report the word count by the spellchecker twice (bug 6254).
 
-- Fix the display of the "Address" environment in LyX when using the
-  elsart.layout (bug 3930). (Note: elsart.layout is obsolete, please
-  use elsarticle.layout instead).
+- Fix the display of the "Address" environment in LyX when using the 
+  elsart layout (bug 3930). (Note: elsart.layout is obsolete, please use
+  elsarticle.layout instead).
 
 - Clear an existing selection when using "Navigate Back" (bug 6686).
 
 - Correctly paint the button for external material when the "Preview"
   attribute is not defined (bug 6677).
 
-- Use right fonts for rendering the \underbar and \ensuremath macros in
+- Use correct fonts for rendering the \underbar and \ensuremath macros in
   math when they are nested in certain environments (bug 6729 and 6745).
 
 - Use display-formatted file name when asking about removing an emergency
   file.
 
-- Do not open buffers in tabs when calling buffer-switch while the 
-  option to open buffers in tabs is turned off (bug 5942).
+- Do not open buffers in tabs when calling buffer-switch while the option
+  to open buffers in tabs is turned off (bug 5942).
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -162,16 +162,17 @@ What's new
 
 - Correct typos and font styles in the LateXConfig.lyx document.
 
-- Add wasysym to LateXConfig.lyx (bug 6752).
+- Add wasysym to LaTeXConfig.lyx (bug 6752).
 
 
 * BUILD/INSTALLATION
 
-- Fix building with Fedora 13 and potentially other new linux distribution.
+- Fix building with Fedora 13 and potentially other recent linux
+  distributions.
 
-- CMake: Installs all but the binaries into the 'Resource' folder
+- CMake: Install all but the binaries into the 'Resource' folder.
 
-- When compiling using automake >= 1.11, use the nicer `silent rules' output
-  format.
+- When compiling using automake >= 1.11, use the nicer `silent rules'
+  output format.
 
 - Check whether the wasysym package is installed (bug 6752).
