@@ -1553,7 +1553,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			os << '[' << g_options << ']';
 		os << "{geometry}\n";
 		texrow.newline();
-		// output this if only use_geometry is true
+		// output this only if use_geometry is true
 		if (use_geometry) {
 			os << "\\geometry{verbose";
 			if (!topmargin.empty())
