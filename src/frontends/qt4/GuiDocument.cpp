@@ -645,7 +645,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)),
 		this, SLOT(papersizeChanged(int)));
 	connect(pageLayoutModule->portraitRB, SIGNAL(clicked()),
-		this, SLOT(portraitChanged()));
+		this, SLOT(change_adaptor()));
 	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(pageLayoutModule->paperheightLE, SIGNAL(textChanged(const QString &)),
@@ -1088,12 +1088,8 @@ void GuiDocument::enableSkip(bool skip)
 		setSkip(textLayoutModule->skipCO->currentIndex());
 }
 
-void GuiDocument::portraitChanged()
-{
-	setMargins(pageLayoutModule->papersizeCO->currentIndex());
-}
 
-void GuiDocument::setMargins(bool custom)
+void GuiDocument::setMargins()
 {
 	bool const extern_geometry =
 		documentClass().provides("geometry");
@@ -1101,10 +1097,10 @@ void GuiDocument::setMargins(bool custom)
 	if (extern_geometry) {
 		marginsModule->marginCB->setChecked(false);
 		setCustomMargins(true);
-		return;
+	} else {
+		marginsModule->marginCB->setChecked(!bp_.use_geometry);
+		setCustomMargins(!bp_.use_geometry);
 	}
-	marginsModule->marginCB->setChecked(custom);
-	setCustomMargins(custom);
 }
 
 
@@ -1781,10 +1777,6 @@ void GuiDocument::applyView()
 	bp_.papersize = PAPER_SIZE(
 		pageLayoutModule->papersizeCO->currentIndex());
 
-	// custom, A3, B3 and B4 paper sizes need geometry
-	int psize = pageLayoutModule->papersizeCO->currentIndex();
-	bool geom_papersize = (psize == 1 || psize == 5 || psize == 8 || psize == 9);
-
 	bp_.paperwidth = widgetsToLength(pageLayoutModule->paperwidthLE,
 		pageLayoutModule->paperwidthUnitCO);
 
@@ -1802,8 +1794,7 @@ void GuiDocument::applyView()
 		bp_.orientation = ORIENTATION_PORTRAIT;
 
 	// margins
-	bp_.use_geometry = !marginsModule->marginCB->isChecked()
-		|| geom_papersize;
+	bp_.use_geometry = !marginsModule->marginCB->isChecked();
 
 	Ui::MarginsUi const * m = marginsModule;
 
@@ -1816,6 +1807,7 @@ void GuiDocument::applyView()
 	bp_.footskip = widgetsToLength(m->footskipLE, m->footskipUnit);
 	bp_.columnsep = widgetsToLength(m->columnsepLE, m->columnsepUnit);
 
+	// branches
 	branchesModule->apply(bp_);
 
 	// PDF support
@@ -2123,17 +2115,15 @@ void GuiDocument::paramsToDialog()
 	pageLayoutModule->facingPagesCB->setChecked(
 		bp_.sides == TwoSides);
 
-
 	lengthToWidgets(pageLayoutModule->paperwidthLE,
 		pageLayoutModule->paperwidthUnitCO, bp_.paperwidth, defaultUnit);
-
 	lengthToWidgets(pageLayoutModule->paperheightLE,
 		pageLayoutModule->paperheightUnitCO, bp_.paperheight, defaultUnit);
 
 	// margins
 	Ui::MarginsUi * m = marginsModule;
 
-	setMargins(!bp_.use_geometry);
+	setMargins();
 
 	lengthToWidgets(m->topLE, m->topUnit,
 		bp_.topmargin, defaultUnit);
