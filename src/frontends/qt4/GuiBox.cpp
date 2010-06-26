@@ -111,9 +111,10 @@ GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 }
 
 
-void GuiBox::on_innerBoxCO_activated(QString const & str)
+void GuiBox::on_innerBoxCO_activated(int index)
 {
-	bool const ibox = (str != qt_("None"));
+	bool const ibox =
+		(innerBoxCO->itemData(index).toString() != "none");
 	QString const outer =
 		typeCO->itemData(typeCO->currentIndex()).toString();
 	valignCO->setEnabled(ibox);

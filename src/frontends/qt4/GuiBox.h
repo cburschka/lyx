@@ -28,7 +28,7 @@ public:
 	GuiBox(QWidget * parent = 0);
 
 private Q_SLOTS:
-	void on_innerBoxCO_activated(QString const &);
+	void on_innerBoxCO_activated(int);
 	void on_typeCO_activated(int);
 	void initDialog();
 	void on_heightCB_stateChanged(int state);
