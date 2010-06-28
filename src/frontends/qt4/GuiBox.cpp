@@ -160,9 +160,7 @@ void GuiBox::innerBoxChanged(QString const & str)
 	int outer = typeCO->currentIndex(); 
 	valignCO->setEnabled(ibox);
 	ialignCO->setEnabled(ibox);
-	halignCO->setEnabled(!ibox);
 	heightCB->setEnabled(ibox);
-	pagebreakCB->setEnabled(!ibox && typeCO->currentIndex() == 1);
 	heightED->setEnabled(heightCB->checkState() == Qt::Checked && ibox);
 	heightUnitsLC->setEnabled(heightCB->checkState() == Qt::Checked && ibox);
 	// except for frameless and boxed, the width cannot be specified if
@@ -171,6 +169,9 @@ void GuiBox::innerBoxChanged(QString const & str)
 		outer != 1);
 	widthED->setEnabled(!width_disabled);
 	widthUnitsLC->setEnabled(!width_disabled);
+	// halign and pagebreak are only allowed for Boxed without inner box
+	halignCO->setEnabled(!ibox && outer == 1);
+	pagebreakCB->setEnabled(!ibox && outer == 1);
 	setSpecial(ibox);
 }
 
@@ -181,7 +182,6 @@ void GuiBox::typeChanged(int index)
 	if (frameless) {
 		valignCO->setEnabled(true);
 		ialignCO->setEnabled(true);
-		halignCO->setEnabled(false);
 		heightCB->setEnabled(true);
 		heightED->setEnabled(heightCB->checkState() == Qt::Checked);
 		heightUnitsLC->setEnabled(heightCB->checkState() == Qt::Checked);
@@ -192,6 +192,8 @@ void GuiBox::typeChanged(int index)
 	int itype = innerBoxCO->currentIndex();
 	if (innerBoxCO->count() == 2)
 		++itype;
+	// halign and pagebreak are only allowed for Boxed without inner box
+	halignCO->setEnabled(index == 1 && itype == 0);
 	pagebreakCB->setEnabled(index == 1 && itype == 0);
 	// except for frameless and boxed, the width cannot be specified if
 	// there is no inner box
@@ -248,8 +250,6 @@ void GuiBox::updateContents()
 		pagebreakCB->setChecked(false);
 	}
 
-	pagebreakCB->setEnabled(type == "Boxed" && !params_.inner_box);
-
 	for (int i = 0; i != gui_names_.size(); ++i) {
 		if (type == ids_[i])
 			typeCO->setCurrentIndex(i);
@@ -276,8 +276,11 @@ void GuiBox::updateContents()
 	bool ibox = params_.inner_box;
 	valignCO->setEnabled(ibox);
 	ialignCO->setEnabled(ibox);
-	halignCO->setEnabled(!ibox);
 	setSpecial(ibox);
+
+	// halign and pagebreak are only allowed for Boxed without inner box
+	halignCO->setEnabled(!ibox && type == "Boxed");
+	pagebreakCB->setEnabled(!ibox && type == "Boxed");
 
 	// except for frameless and boxed, the width cannot be specified if
 	// there is no inner box

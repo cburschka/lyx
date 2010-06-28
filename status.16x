@@ -148,6 +148,9 @@ What's new
 - Correctly paint the button for external material when the "Preview"
   attribute is not defined (bug 6677).
 
+- Box dialog: horizontal box alignment is only possible with a simple
+  frame and without an inner box
+
 - Box dialog: without an inner box the specification of the width is only
   possible with a simple frame (bug 6721).
 
