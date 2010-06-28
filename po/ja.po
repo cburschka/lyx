@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-05-31 11:31+0200\n"
+"POT-Creation-Date: 2010-06-28 08:40+0200\n"
 "PO-Revision-Date: 2010-05-04 13:01+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <>\n"
@@ -91,7 +91,7 @@ msgstr "&OK"
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
 #: src/LyXFunc.cpp:1926 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
-#: src/frontends/qt4/GuiDocument.cpp:1266
+#: src/frontends/qt4/GuiDocument.cpp:1262
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1625
 #: src/frontends/qt4/GuiView.cpp:1817 src/frontends/qt4/GuiView.cpp:1869
@@ -376,8 +376,8 @@ msgstr "復元(&R)"
 #: src/frontends/qt4/ui/ParagraphUi.ui:250 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/VSpaceUi.ui:49
-#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1342
-#: src/frontends/qt4/GuiDocument.cpp:2244
+#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1338
+#: src/frontends/qt4/GuiDocument.cpp:2234
 msgid "&Apply"
 msgstr "適用(&A)"
 
@@ -415,20 +415,20 @@ msgstr "ボックス内部 － 固定幅と改行のために必要"
 #: src/frontends/qt4/ui/BoxUi.ui:361 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98 src/frontends/qt4/ui/TabularUi.ui:903
 #: src/frontends/qt4/ui/TabularUi.ui:922 src/frontends/qt4/ui/TabularUi.ui:970
-#: src/frontends/qt4/GuiBox.cpp:159 src/frontends/qt4/GuiBox.cpp:324
-#: src/frontends/qt4/GuiBox.cpp:449 src/frontends/qt4/GuiDocument.cpp:89
+#: src/frontends/qt4/GuiBox.cpp:159 src/frontends/qt4/GuiBox.cpp:345
+#: src/frontends/qt4/GuiBox.cpp:470 src/frontends/qt4/GuiDocument.cpp:89
 #: src/frontends/qt4/GuiGraphics.cpp:633
 msgid "None"
 msgstr "なし"
 
-#: src/frontends/qt4/ui/BoxUi.ui:366 src/frontends/qt4/GuiBox.cpp:325
-#: src/frontends/qt4/GuiBox.cpp:441 src/frontends/qt4/GuiBox.cpp:450
+#: src/frontends/qt4/ui/BoxUi.ui:366 src/frontends/qt4/GuiBox.cpp:346
+#: src/frontends/qt4/GuiBox.cpp:462 src/frontends/qt4/GuiBox.cpp:471
 #: src/insets/InsetBox.cpp:148
 msgid "Parbox"
 msgstr "parboxコマンド"
 
-#: src/frontends/qt4/ui/BoxUi.ui:371 src/frontends/qt4/GuiBox.cpp:442
-#: src/frontends/qt4/GuiBox.cpp:451 src/insets/InsetBox.cpp:150
+#: src/frontends/qt4/ui/BoxUi.ui:371 src/frontends/qt4/GuiBox.cpp:463
+#: src/frontends/qt4/GuiBox.cpp:472 src/insets/InsetBox.cpp:150
 msgid "Minipage"
 msgstr "minipage環境"
 
@@ -499,9 +499,9 @@ msgstr "大きさ(&Z):"
 #: src/frontends/qt4/GuiDocument.cpp:103 src/frontends/qt4/GuiDocument.cpp:119
 #: src/frontends/qt4/GuiDocument.cpp:132 src/frontends/qt4/GuiDocument.cpp:631
 #: src/frontends/qt4/GuiDocument.cpp:668 src/frontends/qt4/GuiDocument.cpp:680
-#: src/frontends/qt4/GuiDocument.cpp:1176
-#: src/frontends/qt4/GuiDocument.cpp:1221
-#: src/frontends/qt4/GuiDocument.cpp:2285 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiDocument.cpp:1172
+#: src/frontends/qt4/GuiDocument.cpp:1217
+#: src/frontends/qt4/GuiDocument.cpp:2275 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiListings.cpp:152
 #: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1832
 msgid "Default"
@@ -2784,32 +2784,32 @@ msgstr "特定のDVIビューアが使う用紙寸法フラグを設定(-paper)"
 msgid "&DVI viewer paper size options:"
 msgstr "&DVIビューア用紙寸法設定:"
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:50
+#: src/frontends/qt4/ui/PrefOutputUi.ui:61
 msgid "&Date format:"
 msgstr "日付書式(&D):"
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:60
+#: src/frontends/qt4/ui/PrefOutputUi.ui:71
 msgid "Date format for strftime output"
 msgstr "strftime出力の日付書式"
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:77
+#: src/frontends/qt4/ui/PrefOutputUi.ui:96
 #, fuzzy
 msgid "&Overwrite on export:"
 msgstr "文書を上書きしますか？"
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:87
+#: src/frontends/qt4/ui/PrefOutputUi.ui:114
 msgid "What to do when existing files are going to be overwritten on export."
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:91
+#: src/frontends/qt4/ui/PrefOutputUi.ui:118
 msgid "Ask permission"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:96
+#: src/frontends/qt4/ui/PrefOutputUi.ui:123
 msgid "Main file only"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:101
+#: src/frontends/qt4/ui/PrefOutputUi.ui:128
 #, fuzzy
 msgid "All files"
 msgstr "全てのファイル"
@@ -4568,10 +4568,10 @@ msgstr "サブジェクト・ヘッディング:"
 msgid "[Acknowledgements]"
 msgstr "[謝辞]"
 
-#: lib/layouts/aastex.layout:394 src/frontends/qt4/GuiDocument.cpp:1383
-#: src/frontends/qt4/GuiDocument.cpp:1394
-#: src/frontends/qt4/GuiDocument.cpp:1481
-#: src/frontends/qt4/GuiDocument.cpp:1500
+#: lib/layouts/aastex.layout:394 src/frontends/qt4/GuiDocument.cpp:1379
+#: src/frontends/qt4/GuiDocument.cpp:1390
+#: src/frontends/qt4/GuiDocument.cpp:1477
+#: src/frontends/qt4/GuiDocument.cpp:1496
 msgid "and"
 msgstr "および"
 
@@ -8434,7 +8434,7 @@ msgid "CharStyle"
 msgstr "文字様式"
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
-#: src/insets/InsetCollapsable.cpp:160
+#: src/insets/InsetCollapsable.cpp:156
 msgid "UNDEFINED"
 msgstr "無定義"
 
@@ -14799,7 +14799,11 @@ msgstr "MS Word|W"
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: src/BiblioInfo.cpp:243 src/frontends/qt4/GuiDocument.cpp:1382
+#: lib/configure.py:433
+msgid "LyXBlogger"
+msgstr ""
+
+#: src/BiblioInfo.cpp:243 src/frontends/qt4/GuiDocument.cpp:1378
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$sおよび%2$s"
@@ -15301,7 +15305,7 @@ msgstr "文書クラスが利用不能です"
 msgid "LyX will not be able to produce output."
 msgstr "LyXは出力を生成することができません。"
 
-#: src/BufferParams.cpp:1657
+#: src/BufferParams.cpp:1660
 #, c-format
 msgid ""
 "The document class %1$s could not be found. A default textclass with default "
@@ -15312,20 +15316,20 @@ msgstr ""
 "用します。文書設定ダイアログから正しいテキストクラスが選択されないかぎりは、"
 "出力することができないかもしれません。"
 
-#: src/BufferParams.cpp:1662
+#: src/BufferParams.cpp:1665
 msgid "Document class not found"
 msgstr "文書クラスが見つかりません"
 
-#: src/BufferParams.cpp:1669 src/LyXFunc.cpp:752
+#: src/BufferParams.cpp:1672 src/LyXFunc.cpp:752
 #, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "指定された文書クラス「%1$s」を読み込むことができませんでした。"
 
-#: src/BufferParams.cpp:1671 src/LyXFunc.cpp:754
+#: src/BufferParams.cpp:1674 src/LyXFunc.cpp:754
 msgid "Could not load class"
 msgstr "クラスを読み込むことができませんでした"
 
-#: src/BufferParams.cpp:1733
+#: src/BufferParams.cpp:1736
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -15338,15 +15342,15 @@ msgstr ""
 "もしモジュールを最近インストールしたのであれば、\n"
 "おそらくLyXに再初期設定をさせる必要があります。\n"
 
-#: src/BufferParams.cpp:1737
+#: src/BufferParams.cpp:1740
 msgid "Module not available"
 msgstr "モジュールが利用不能です"
 
-#: src/BufferParams.cpp:1738
+#: src/BufferParams.cpp:1741
 msgid "Some layouts may not be available."
 msgstr "レイアウトの一部が利用不能です"
 
-#: src/BufferParams.cpp:1745
+#: src/BufferParams.cpp:1748
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -15357,20 +15361,20 @@ msgstr ""
 "装備にはないパッケージを必要としています。\n"
 "LaTeXの出力はできない可能性があります。\n"
 
-#: src/BufferParams.cpp:1748
+#: src/BufferParams.cpp:1751
 msgid "Package not available"
 msgstr "パッケージが利用不能です"
 
-#: src/BufferParams.cpp:1753
+#: src/BufferParams.cpp:1756
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "モジュール「%1$s」を読むのに失敗しました\n"
 
-#: src/BufferParams.cpp:1754 src/BufferParams.cpp:1760
+#: src/BufferParams.cpp:1757 src/BufferParams.cpp:1763
 msgid "Read Error"
 msgstr "読み込みエラー"
 
-#: src/BufferParams.cpp:1759
+#: src/BufferParams.cpp:1762
 msgid "Error reading internal layout information"
 msgstr "内部レイアウト情報の読み込みエラーです"
 
@@ -15951,7 +15955,7 @@ msgstr "出力が空です"
 msgid "An empty output file was generated."
 msgstr "空の出力ファイルが生成されました。"
 
-#: src/CutAndPaste.cpp:599
+#: src/CutAndPaste.cpp:601
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -15960,7 +15964,7 @@ msgstr ""
 "クラスを%2$sから%3$sに変えたため\n"
 "自由差込枠%1$sは未定義になりました"
 
-#: src/CutAndPaste.cpp:606
+#: src/CutAndPaste.cpp:608
 msgid "Undefined flex inset"
 msgstr "未定義の自由差込枠"
 
@@ -16002,19 +16006,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "%1$s を %2$s にコピーするのに失敗しました。"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:118
-#: src/frontends/qt4/GuiDocument.cpp:2285
+#: src/frontends/qt4/GuiDocument.cpp:2275
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr "ローマン体"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:119
-#: src/frontends/qt4/GuiDocument.cpp:2285
+#: src/frontends/qt4/GuiDocument.cpp:2275
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr "サンセリフ体"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:120
-#: src/frontends/qt4/GuiDocument.cpp:2285
+#: src/frontends/qt4/GuiDocument.cpp:2275
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr "タイプライタ体"
@@ -17852,7 +17856,7 @@ msgid "BibTeX Bibliography"
 msgstr "BibTeX 参考文献"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
-#: src/frontends/qt4/GuiDocument.cpp:1308
+#: src/frontends/qt4/GuiDocument.cpp:1304
 #: src/frontends/qt4/GuiExternal.cpp:672 src/frontends/qt4/GuiGraphics.cpp:849
 #: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1369
 #: src/frontends/qt4/GuiView.cpp:1427 src/frontends/qt4/GuiView.cpp:1575
@@ -17904,24 +17908,24 @@ msgstr "影の背景"
 msgid "Double rectangular frame"
 msgstr "二重線の長方形の枠"
 
-#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:335
-#: src/frontends/qt4/GuiBox.cpp:370
+#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:356
+#: src/frontends/qt4/GuiBox.cpp:391
 msgid "Height"
 msgstr "高さ"
 
-#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:338
-#: src/frontends/qt4/GuiBox.cpp:373
+#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:359
+#: src/frontends/qt4/GuiBox.cpp:394
 msgid "Depth"
 msgstr "階層"
 
-#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:203
-#: src/frontends/qt4/GuiBox.cpp:341 src/frontends/qt4/GuiBox.cpp:376
-#: src/frontends/qt4/GuiBox.cpp:419
+#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:216
+#: src/frontends/qt4/GuiBox.cpp:362 src/frontends/qt4/GuiBox.cpp:397
+#: src/frontends/qt4/GuiBox.cpp:440
 msgid "Total Height"
 msgstr "全高"
 
-#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:344
-#: src/frontends/qt4/GuiBox.cpp:379
+#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:365
+#: src/frontends/qt4/GuiBox.cpp:400
 msgid "Width"
 msgstr "幅"
 
@@ -17942,11 +17946,11 @@ msgid "Color"
 msgstr "色彩"
 
 #: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiBranches.cpp:146
-#: src/frontends/qt4/GuiDocument.cpp:1526
+#: src/frontends/qt4/GuiDocument.cpp:1522
 msgid "Yes"
 msgstr "はい"
 
-#: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiDocument.cpp:1525
+#: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiDocument.cpp:1521
 msgid "No"
 msgstr "いいえ"
 
@@ -18369,20 +18373,20 @@ msgstr "派生枝"
 msgid "LaTeX Preamble"
 msgstr "LaTeXプリアンブル"
 
-#: src/frontends/qt4/GuiDocument.cpp:1248
+#: src/frontends/qt4/GuiDocument.cpp:1244
 msgid "Layouts|#o#O"
 msgstr "レイアウト(O)|#o#O"
 
-#: src/frontends/qt4/GuiDocument.cpp:1250
+#: src/frontends/qt4/GuiDocument.cpp:1246
 msgid "LyX Layout (*.layout)"
 msgstr "LyXレイアウト(*.layout)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1252
-#: src/frontends/qt4/GuiDocument.cpp:1261
+#: src/frontends/qt4/GuiDocument.cpp:1248
+#: src/frontends/qt4/GuiDocument.cpp:1257
 msgid "Local layout file"
 msgstr "ローカルのレイアウトファイル"
 
-#: src/frontends/qt4/GuiDocument.cpp:1262
+#: src/frontends/qt4/GuiDocument.cpp:1258
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory. Your\n"
@@ -18394,35 +18398,35 @@ msgstr ""
 "このレイアウトファイルはずっと同じディレクトリに置いておかないと、\n"
 "お使いの文書でこのレイアウトがうまく動かなくなる可能性があります。"
 
-#: src/frontends/qt4/GuiDocument.cpp:1266
+#: src/frontends/qt4/GuiDocument.cpp:1262
 msgid "&Set Layout"
 msgstr "レイアウトを設定(&S)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1279
-#: src/frontends/qt4/GuiDocument.cpp:1354
-#: src/frontends/qt4/GuiDocument.cpp:2252
+#: src/frontends/qt4/GuiDocument.cpp:1275
+#: src/frontends/qt4/GuiDocument.cpp:1350
+#: src/frontends/qt4/GuiDocument.cpp:2242
 msgid "Error"
 msgstr "エラー"
 
-#: src/frontends/qt4/GuiDocument.cpp:1280
+#: src/frontends/qt4/GuiDocument.cpp:1276
 msgid "Unable to read local layout file."
 msgstr "ローカルのレイアウトファイルを読むことができませんでした。"
 
-#: src/frontends/qt4/GuiDocument.cpp:1302
+#: src/frontends/qt4/GuiDocument.cpp:1298
 msgid "Select master document"
 msgstr "マスター文書を選んでください"
 
-#: src/frontends/qt4/GuiDocument.cpp:1306
+#: src/frontends/qt4/GuiDocument.cpp:1302
 msgid "LyX Files (*.lyx)"
 msgstr "LyX文書 (*.lyx)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1339
-#: src/frontends/qt4/GuiDocument.cpp:2241
+#: src/frontends/qt4/GuiDocument.cpp:1335
+#: src/frontends/qt4/GuiDocument.cpp:2231
 msgid "Unapplied changes"
 msgstr "適用されていない変更"
 
-#: src/frontends/qt4/GuiDocument.cpp:1340
-#: src/frontends/qt4/GuiDocument.cpp:2242
+#: src/frontends/qt4/GuiDocument.cpp:1336
+#: src/frontends/qt4/GuiDocument.cpp:2232
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -18430,75 +18434,75 @@ msgstr ""
 "このダイアログで加えられた変更は、まだ適用されていません。\n"
 "いま適用しなければ、この動作以降、変更が失われます。"
 
-#: src/frontends/qt4/GuiDocument.cpp:1342
-#: src/frontends/qt4/GuiDocument.cpp:2244
+#: src/frontends/qt4/GuiDocument.cpp:1338
+#: src/frontends/qt4/GuiDocument.cpp:2234
 msgid "&Dismiss"
 msgstr "解除(&D)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1354
-#: src/frontends/qt4/GuiDocument.cpp:2252
+#: src/frontends/qt4/GuiDocument.cpp:1350
+#: src/frontends/qt4/GuiDocument.cpp:2242
 msgid "Unable to set document class."
 msgstr "文書クラスを設定することができません。"
 
-#: src/frontends/qt4/GuiDocument.cpp:1388
+#: src/frontends/qt4/GuiDocument.cpp:1384
 #, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s、%2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1393
+#: src/frontends/qt4/GuiDocument.cpp:1389
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s、%2$sおよび%3$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1477
+#: src/frontends/qt4/GuiDocument.cpp:1473
 msgid "Module provided by document class."
 msgstr "文書クラスの提供するモジュールです。"
 
-#: src/frontends/qt4/GuiDocument.cpp:1485
+#: src/frontends/qt4/GuiDocument.cpp:1481
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr "必要なパッケージ: %1$s。"
 
-#: src/frontends/qt4/GuiDocument.cpp:1491
+#: src/frontends/qt4/GuiDocument.cpp:1487
 msgid "or"
 msgstr "あるいは"
 
-#: src/frontends/qt4/GuiDocument.cpp:1494
+#: src/frontends/qt4/GuiDocument.cpp:1490
 #, c-format
 msgid "Module required: %1$s."
 msgstr "必要なモジュール: %1$s。"
 
-#: src/frontends/qt4/GuiDocument.cpp:1503
+#: src/frontends/qt4/GuiDocument.cpp:1499
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr "排除されるモジュール: %1$s。"
 
-#: src/frontends/qt4/GuiDocument.cpp:1509
+#: src/frontends/qt4/GuiDocument.cpp:1505
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "警告: 必須であるにもかかわらず利用可能でないパッケージがあります！"
 
-#: src/frontends/qt4/GuiDocument.cpp:2051
+#: src/frontends/qt4/GuiDocument.cpp:2043
 msgid "[No options predefined]"
 msgstr "[事前定義されたオプションがありません]"
 
-#: src/frontends/qt4/GuiDocument.cpp:2264
+#: src/frontends/qt4/GuiDocument.cpp:2254
 msgid "Can't set layout!"
 msgstr "レイアウトを設定することができません！"
 
-#: src/frontends/qt4/GuiDocument.cpp:2265
+#: src/frontends/qt4/GuiDocument.cpp:2255
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "以下のIDのレイアウトを設定することができません: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2342
+#: src/frontends/qt4/GuiDocument.cpp:2332
 msgid "Not Found"
 msgstr "見つかりません"
 
-#: src/frontends/qt4/GuiDocument.cpp:2396
+#: src/frontends/qt4/GuiDocument.cpp:2386
 msgid "Assigned master does not include this file"
 msgstr "割り当てられたマスターはこのファイルを取り込んでいません"
 
-#: src/frontends/qt4/GuiDocument.cpp:2397
+#: src/frontends/qt4/GuiDocument.cpp:2387
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -18509,11 +18513,11 @@ msgstr ""
 "このファイルを「%1$s」文書に\n"
 "取り込まなくてはなりません。"
 
-#: src/frontends/qt4/GuiDocument.cpp:2401
+#: src/frontends/qt4/GuiDocument.cpp:2391
 msgid "Could not load master"
 msgstr "マスターを読み込むことができませんでした"
 
-#: src/frontends/qt4/GuiDocument.cpp:2402
+#: src/frontends/qt4/GuiDocument.cpp:2392
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -18727,7 +18731,7 @@ msgstr "水平フィル"
 msgid "Hyperlink"
 msgstr "ハイパーリンク"
 
-#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1088
+#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1098
 msgid "Child Document"
 msgstr "子文書"
 
@@ -19163,15 +19167,15 @@ msgstr "ファイルを表示"
 msgid "Error -> Cannot load file!"
 msgstr "エラー→ファイルを読み込むことができません！"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:274
+#: src/frontends/qt4/GuiSpellchecker.cpp:275
 msgid "Spellchecker error"
 msgstr "スペルチェッカーのエラー"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:275
+#: src/frontends/qt4/GuiSpellchecker.cpp:276
 msgid "The spellchecker could not be started\n"
 msgstr "スペルチェッカーを起動することができませんでした。\n"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:433
+#: src/frontends/qt4/GuiSpellchecker.cpp:434
 msgid ""
 "The spellchecker has died for some reason.\n"
 "Maybe it has been killed."
@@ -19179,24 +19183,24 @@ msgstr ""
 "スペルチェッカーが何らかの理由でお亡くなりになりました。\n"
 "手動でkillされたのかも知れません。"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:436
+#: src/frontends/qt4/GuiSpellchecker.cpp:437
 msgid "The spellchecker has failed.\n"
 msgstr "スペルチェッカーでエラーが起きました。\n"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:440
+#: src/frontends/qt4/GuiSpellchecker.cpp:441
 msgid "The spellchecker has failed"
 msgstr "スペルチェッカーでエラーが起きました"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:454
+#: src/frontends/qt4/GuiSpellchecker.cpp:455
 #, c-format
 msgid "%1$d words checked."
 msgstr "%1$d個の単語がチェックされました。"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:456
+#: src/frontends/qt4/GuiSpellchecker.cpp:457
 msgid "One word checked."
 msgstr "一つの単語がチェックされました。"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:459
+#: src/frontends/qt4/GuiSpellchecker.cpp:460
 msgid "Spelling check completed"
 msgstr "スペルチェックが完了しました。"
 
@@ -19819,19 +19823,19 @@ msgstr ""
 msgid "&Discard"
 msgstr "廃棄(&D)"
 
-#: src/frontends/qt4/GuiView.cpp:2005
+#: src/frontends/qt4/GuiView.cpp:2004
 msgid "Document not loaded"
 msgstr "文書は読み込まれていません"
 
-#: src/frontends/qt4/GuiView.cpp:2063
+#: src/frontends/qt4/GuiView.cpp:2089
 msgid "Saving all documents..."
 msgstr "全ての文書を保存中です..."
 
-#: src/frontends/qt4/GuiView.cpp:2073
+#: src/frontends/qt4/GuiView.cpp:2099
 msgid "All documents saved."
 msgstr "全ての文書は保存されました。"
 
-#: src/frontends/qt4/GuiView.cpp:2320
+#: src/frontends/qt4/GuiView.cpp:2346
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$sは未知のコマンドです！"
@@ -19849,31 +19853,31 @@ msgstr "DocBookソース"
 msgid "Literate Source"
 msgstr "Literateソース"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1137
+#: src/frontends/qt4/GuiWorkArea.cpp:1131
 msgid " (version control)"
 msgstr " (バージョン管理)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1139
+#: src/frontends/qt4/GuiWorkArea.cpp:1133
 msgid " (version control, locking)"
 msgstr " (バージョン管理・ロック中)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1142
+#: src/frontends/qt4/GuiWorkArea.cpp:1136
 msgid " (changed)"
 msgstr " (変更されました)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1146
+#: src/frontends/qt4/GuiWorkArea.cpp:1140
 msgid " (read only)"
 msgstr " (読み込み専用)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1236
+#: src/frontends/qt4/GuiWorkArea.cpp:1230
 msgid "Close File"
 msgstr "ファイルを閉じる"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1644
+#: src/frontends/qt4/GuiWorkArea.cpp:1638
 msgid "Hide tab"
 msgstr "タブを隠す"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1646
+#: src/frontends/qt4/GuiWorkArea.cpp:1640
 msgid "Close tab"
 msgstr "タブを閉じる"
 
@@ -19885,54 +19889,54 @@ msgstr "折返しフロートの設定"
 msgid "Click to detach"
 msgstr "切り離すにはクリックしてください"
 
-#: src/frontends/qt4/Menus.cpp:648
+#: src/frontends/qt4/Menus.cpp:653
 msgid "No Group"
 msgstr "グループがありません"
 
-#: src/frontends/qt4/Menus.cpp:698
+#: src/frontends/qt4/Menus.cpp:703
 msgid "No Documents Open!"
 msgstr "文書が一つも開かれていません！"
 
-#: src/frontends/qt4/Menus.cpp:724 src/frontends/qt4/Menus.cpp:803
-#: src/frontends/qt4/Menus.cpp:823 src/frontends/qt4/Menus.cpp:845
-#: src/frontends/qt4/Menus.cpp:933 src/frontends/qt4/Menus.cpp:1039
-#: src/frontends/qt4/Menus.cpp:1099
+#: src/frontends/qt4/Menus.cpp:729 src/frontends/qt4/Menus.cpp:808
+#: src/frontends/qt4/Menus.cpp:828 src/frontends/qt4/Menus.cpp:850
+#: src/frontends/qt4/Menus.cpp:942 src/frontends/qt4/Menus.cpp:1048
+#: src/frontends/qt4/Menus.cpp:1109
 msgid "No Document Open!"
 msgstr "文書が開かれていませんよ！"
 
-#: src/frontends/qt4/Menus.cpp:864
+#: src/frontends/qt4/Menus.cpp:869
 msgid "No custom insets defined!"
 msgstr "任意設定差込枠が定義されていません！"
 
-#: src/frontends/qt4/Menus.cpp:944
+#: src/frontends/qt4/Menus.cpp:953
 msgid "Master Document"
 msgstr "マスター文書"
 
-#: src/frontends/qt4/Menus.cpp:961
+#: src/frontends/qt4/Menus.cpp:970
 msgid "Open Navigator..."
 msgstr "ナビゲーターを開く..."
 
-#: src/frontends/qt4/Menus.cpp:982
+#: src/frontends/qt4/Menus.cpp:991
 msgid "Other Lists"
 msgstr "その他の一覧"
 
-#: src/frontends/qt4/Menus.cpp:991
+#: src/frontends/qt4/Menus.cpp:1000
 msgid "No Table of contents"
 msgstr "目次がありません"
 
-#: src/frontends/qt4/Menus.cpp:1028
+#: src/frontends/qt4/Menus.cpp:1037
 msgid "Other Toolbars"
 msgstr "他のツールバー"
 
-#: src/frontends/qt4/Menus.cpp:1048
+#: src/frontends/qt4/Menus.cpp:1057
 msgid "No Branch in Document!"
 msgstr "文書にまだ派生枝が定義されていません！"
 
-#: src/frontends/qt4/Menus.cpp:1107
+#: src/frontends/qt4/Menus.cpp:1117
 msgid "No Citation in Scope!"
 msgstr "範囲内に引用がありません！"
 
-#: src/frontends/qt4/Menus.cpp:1649
+#: src/frontends/qt4/Menus.cpp:1659
 msgid "No action defined!"
 msgstr "動作が定義されていません！"
 
