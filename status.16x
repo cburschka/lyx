@@ -148,6 +148,9 @@ What's new
 - Correctly paint the button for external material when the "Preview"
   attribute is not defined (bug 6677).
 
+- Box dialog: without an inner box the specification of the width is only
+  possible with a simple frame (bug 6721).
+
 - Use correct fonts for rendering the \underbar and \ensuremath macros in
   math when they are nested in certain environments (bug 6729 and 6745).
 

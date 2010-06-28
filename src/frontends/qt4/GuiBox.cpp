@@ -157,6 +157,7 @@ void GuiBox::change_adaptor()
 void GuiBox::innerBoxChanged(QString const & str)
 {
 	bool const ibox = (str != qt_("None"));
+	int outer = typeCO->currentIndex(); 
 	valignCO->setEnabled(ibox);
 	ialignCO->setEnabled(ibox);
 	halignCO->setEnabled(!ibox);
@@ -164,6 +165,12 @@ void GuiBox::innerBoxChanged(QString const & str)
 	pagebreakCB->setEnabled(!ibox && typeCO->currentIndex() == 1);
 	heightED->setEnabled(heightCB->checkState() == Qt::Checked && ibox);
 	heightUnitsLC->setEnabled(heightCB->checkState() == Qt::Checked && ibox);
+	// except for frameless and boxed, the width cannot be specified if
+	// there is no inner box
+	bool const width_disabled = (!ibox && outer != 0 &&
+		outer != 1);
+	widthED->setEnabled(!width_disabled);
+	widthUnitsLC->setEnabled(!width_disabled);
 	setSpecial(ibox);
 }
 
@@ -186,8 +193,12 @@ void GuiBox::typeChanged(int index)
 	if (innerBoxCO->count() == 2)
 		++itype;
 	pagebreakCB->setEnabled(index == 1 && itype == 0);
-	widthED->setEnabled(index != 5);
-	widthUnitsLC->setEnabled(index != 5);
+	// except for frameless and boxed, the width cannot be specified if
+	// there is no inner box
+	bool const width_disabled = (itype == 0 && !frameless
+		&& index != 1);
+	widthED->setEnabled(!width_disabled);
+	widthUnitsLC->setEnabled(!width_disabled);
 	setInnerType(frameless, itype);
 }
 
@@ -252,9 +263,9 @@ void GuiBox::updateContents()
 	if (params_.use_parbox)
 		// parbox
 		inner_type = 1;
-	bool frameless = (params_.type == "Frameless");
+	bool const frameless = (params_.type == "Frameless");
 	setInnerType(frameless, inner_type);
-
+	
 	char c = params_.pos;
 	valignCO->setCurrentIndex(string("tcb").find(c, 0));
 	c = params_.inner_pos;
@@ -267,6 +278,13 @@ void GuiBox::updateContents()
 	ialignCO->setEnabled(ibox);
 	halignCO->setEnabled(!ibox);
 	setSpecial(ibox);
+
+	// except for frameless and boxed, the width cannot be specified if
+	// there is no inner box
+	bool const width_disabled = (!ibox && !frameless
+		&& type != "Boxed");
+	widthED->setEnabled(!width_disabled);
+	widthUnitsLC->setEnabled(!width_disabled);
 
 	Length::UNIT default_unit =
 		(lyxrc.default_papersize > 3) ? Length::CM : Length::IN;
