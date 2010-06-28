@@ -1348,7 +1348,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// LFE encoding
 	// XeTeX works without fontenc
 	if (font_encoding() != "default" && language->lang() != "japanese"
-	    && !useXetex) {
+	    && !useXetex && !tclass.provides("fontenc")) {
 		size_t fars = language_options.str().find("farsi");
 		size_t arab = language_options.str().find("arabic");
 		if (language->lang() == "arabic_arabi"
