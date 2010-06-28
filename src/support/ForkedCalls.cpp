@@ -300,6 +300,9 @@ int ForkedCall::generateChild()
 	if (line.empty())
 		return 1;
 
+#if !defined (_WIN32)
+	// POSIX
+
 	// Split the input command up into an array of words stored
 	// in a contiguous block of memory. The array contains pointers
 	// to each word.
@@ -326,23 +329,11 @@ int ForkedCall::generateChild()
 			if (c == ' ')
 				*it = '\0';
 			else if (c == '\'' || c == '"') {
-#if defined (_WIN32)
-				// How perverse!
-				// spawnvp *requires* the quotes or it will
-				// split the arg at the internal whitespace!
-				// Make shure the quote is a DOS-style one.
-				*it = '"';
-#else
 				*it = '\0';
-#endif
 				inside_quote = c;
 			}
 		} else if (c == inside_quote) {
-#if defined (_WIN32)
-			*it = '"';
-#else
 			*it = '\0';
-#endif
 			inside_quote = 0;
 		}
 	}
@@ -370,9 +361,6 @@ int ForkedCall::generateChild()
 		lyxerr << "</command>" << endl;
 	}
 
-#ifdef _WIN32
-	pid_t const cpid = spawnvp(_P_NOWAIT, argv[0], &*argv.begin());
-#else // POSIX
 	pid_t const cpid = ::fork();
 	if (cpid == 0) {
 		// Child
@@ -382,6 +370,24 @@ int ForkedCall::generateChild()
 		lyxerr << "execvp of \"" << command_ << "\" failed: "
 		       << strerror(errno) << endl;
 		_exit(1);
+	}
+#else
+	// Windows
+
+	pid_t cpid = -1;
+
+	STARTUPINFO startup; 
+	PROCESS_INFORMATION process; 
+
+	memset(&startup, 0, sizeof(STARTUPINFO));
+	memset(&process, 0, sizeof(PROCESS_INFORMATION));
+    
+	startup.cb = sizeof(STARTUPINFO);
+
+	if (CreateProcess(0, (LPSTR)line.c_str(), 0, 0, FALSE,
+		CREATE_NO_WINDOW, 0, 0, &startup, &process)) {
+		CloseHandle(process.hThread);
+		cpid = (pid_t)process.hProcess;
 	}
 #endif
 
@@ -571,6 +577,7 @@ void handleCompletedProcesses()
 			} else {
 				actCall->setRetValue(exit_code);
 			}
+			CloseHandle(hProcess);
 			remove_it = true;
 			break;
 		}
@@ -578,6 +585,7 @@ void handleCompletedProcesses()
 			lyxerr << "WaitForSingleObject failed waiting for child\n"
 			       << getChildErrorMessage() << endl;
 			actCall->setRetValue(1);
+			CloseHandle(hProcess);
 			remove_it = true;
 			break;
 		}

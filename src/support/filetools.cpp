@@ -39,6 +39,7 @@
 #include <boost/regex.hpp>
 
 #include <fcntl.h>
+#include <io.h>
 
 #include <cerrno>
 #include <cstdlib>
@@ -47,6 +48,10 @@
 #include <utility>
 #include <fstream>
 #include <sstream>
+
+#if defined (_WIN32)
+#include <windows.h>
+#endif
 
 using namespace std;
 
@@ -766,7 +771,39 @@ cmd_ret const runCommand(string const & cmd)
 	// pstream (process stream), with the
 	// variants ipstream, opstream
 
-#if defined (HAVE_POPEN)
+#if defined (_WIN32)
+	int fno; 
+	STARTUPINFO startup; 
+	PROCESS_INFORMATION process; 
+	SECURITY_ATTRIBUTES security; 
+	HANDLE in, out;
+	FILE * inf = 0;
+    
+	security.nLength = sizeof(SECURITY_ATTRIBUTES); 
+	security.bInheritHandle = TRUE; 
+	security.lpSecurityDescriptor = NULL; 
+
+	if (CreatePipe(&in, &out, &security, 0)) { 
+		memset(&startup, 0, sizeof(STARTUPINFO));
+		memset(&process, 0, sizeof(PROCESS_INFORMATION));
+    
+		startup.cb = sizeof(STARTUPINFO);
+		startup.dwFlags = STARTF_USESTDHANDLES;
+  
+		startup.hStdError = GetStdHandle(STD_ERROR_HANDLE);
+		startup.hStdInput = GetStdHandle(STD_INPUT_HANDLE);
+		startup.hStdOutput = out;
+
+		if (CreateProcess(0, (LPTSTR)cmd.c_str(), &security, &security,
+			TRUE, CREATE_NO_WINDOW, 0, 0, &startup, &process)) {
+
+			CloseHandle(process.hThread);
+			fno = _open_osfhandle((long)in, _O_RDONLY);
+			CloseHandle(out);
+			inf = _fdopen(fno, "r");
+		}
+	}
+#elif defined (HAVE_POPEN)
 	FILE * inf = ::popen(cmd.c_str(), os::popen_read_mode());
 #elif defined (HAVE__POPEN)
 	FILE * inf = ::_popen(cmd.c_str(), os::popen_read_mode());
@@ -787,7 +824,11 @@ cmd_ret const runCommand(string const & cmd)
 		c = fgetc(inf);
 	}
 
-#if defined (HAVE_PCLOSE)
+#if defined (_WIN32)
+	WaitForSingleObject(process.hProcess, INFINITE);
+	CloseHandle(process.hProcess);
+	int const pret = fclose(inf);
+#elif defined (HAVE_PCLOSE)
 	int const pret = pclose(inf);
 #elif defined (HAVE__PCLOSE)
 	int const pret = _pclose(inf);
