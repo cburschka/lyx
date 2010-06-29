@@ -23,7 +23,7 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 
-#include <boost/regex.hpp>
+#include "support/regex.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -873,11 +873,11 @@ docstring const i18npreamble(Language const * lang, docstring const & templ)
 	LASSERT(false, /**/);
 #else
 	// FIXME UNICODE
-	// boost::regex is not unicode-safe.
+	// lyx::regex is not unicode-safe.
 	// Should use QRegExp or (boost::u32regex, but that requires ICU)
-	static boost::regex const reg("_\\(([^\\)]+)\\)");
-	boost::smatch sub;
-	while (boost::regex_search(preamble, sub, reg)) {
+	static regex const reg("_\\(([^\\)]+)\\)");
+	smatch sub;
+	while (regex_search(preamble, sub, reg)) {
 		string const key = sub.str(1);
 		string translated;
 		if (isAscii(key))

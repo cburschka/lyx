@@ -36,7 +36,7 @@
 #include <QDir>
 
 #include "support/lassert.h"
-#include <boost/regex.hpp>
+#include "support/regex.h"
 
 #include <fcntl.h>
 
@@ -537,9 +537,9 @@ string const replaceEnvironmentPath(string const & path)
 	// $\{[A-Za-z_][A-Za-z_0-9]*\}
 	static string const envvar = "[$]([A-Za-z_][A-Za-z_0-9]*)";
 
-	static boost::regex envvar_br_re("(.*)" + envvar_br + "(.*)");
-	static boost::regex envvar_re("(.*)" + envvar + "(.*)");
-	boost::smatch what;
+        static regex envvar_br_re("(.*)" + envvar_br + "(.*)");
+        static regex envvar_re("(.*)" + envvar + "(.*)");
+        smatch what;
 	string result;
 	string remaining = path;
 	while (1) {
@@ -921,13 +921,13 @@ string const readBB_from_PSFile(FileName const & file)
 		return string();
 	}
 
-	static boost::regex bbox_re(
+	static lyx::regex bbox_re(
 		"^%%BoundingBox:\\s*([[:digit:]]+)\\s+([[:digit:]]+)\\s+([[:digit:]]+)\\s+([[:digit:]]+)");
 	ifstream is(file_.toFilesystemEncoding().c_str());
 	while (is) {
 		string s;
 		getline(is,s);
-		boost::smatch what;
+		lyx::smatch what;
 		if (regex_match(s, what, bbox_re)) {
 			// Our callers expect the tokens in the string
 			// separated by single spaces.

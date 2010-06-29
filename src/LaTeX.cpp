@@ -29,12 +29,10 @@
 #include "support/Systemcall.h"
 #include "support/os.h"
 
-#include <boost/regex.hpp>
+#include "support/regex.h"
 
 #include <fstream>
 
-using boost::regex;
-using boost::smatch;
 
 using namespace std;
 using namespace lyx::support;
@@ -952,7 +950,7 @@ void LaTeX::deplog(DepTable & head)
 	string lastline;
 	while (ifs) {
 		// Ok, the scanning of files here is not sufficient.
-		// Sometimes files are named by "File:Â xxx" only
+		// Sometimes files are named by "File:Â xxx" only
 		// So I think we should use some regexps to find files instead.
 		// Note: all file names and paths might contains spaces.
 		bool found_file = false;

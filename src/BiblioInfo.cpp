@@ -36,7 +36,7 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
-#include "boost/regex.hpp"
+#include "support/regex.h"
 
 #include <set>
 
@@ -175,8 +175,8 @@ docstring convertLaTeXCommands(docstring const & str)
 		// unicodesymbols has things in the form: \"{u},
 		// whereas we may see things like: \"u. So we'll
 		// look for that and change it, if necessary.
-		static boost::regex const reg("^\\\\\\W\\w");
-		if (boost::regex_search(to_utf8(val), reg)) {
+		static lyx::regex const reg("^\\\\\\W\\w");
+		if (lyx::regex_search(to_utf8(val), reg)) {
 			val.insert(3, from_ascii("}"));
 			val.insert(2, from_ascii("{"));
 		}

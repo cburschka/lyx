@@ -47,7 +47,7 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 
-#include <boost/regex.hpp>
+#include "support/regex.h"
 #include <boost/next_prior.hpp>
 
 using namespace std;
@@ -559,14 +559,14 @@ string escape_for_regex(string s)
 	return s;
 }
 
-/// Wrapper for boost::regex_replace with simpler interface
+/// Wrapper for lyx::regex_replace with simpler interface
 bool regex_replace(string const & s, string & t, string const & searchstr,
 	string const & replacestr)
 {
-	boost::regex e(searchstr);
+	lyx::regex e(searchstr);
 	ostringstream oss;
 	ostream_iterator<char, char> it(oss);
-	boost::regex_replace(it, s.begin(), s.end(), e, replacestr);
+	lyx::regex_replace(it, s.begin(), s.end(), e, replacestr);
 	// tolerate t and s be references to the same variable
 	bool rv = (s != oss.str());
 	t = oss.str();
@@ -661,9 +661,9 @@ private:
 	// normalized string to search
 	string par_as_string;
 	// regular expression to use for searching
-	boost::regex regexp;
+	lyx::regex regexp;
 	// same as regexp, but prefixed with a ".*"
-	boost::regex regexp2;
+	lyx::regex regexp2;
 	// unmatched open braces in the search string/regexp
 	int open_braces;
 	// number of (.*?) subexpressions added at end of search regexp for closing
@@ -722,9 +722,9 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 		LYXERR(Debug::FIND, "Close .*?  : " << close_wildcards);
 		LYXERR(Debug::FIND, "Replaced text (to be used as regex): " << par_as_string);
 		// If entered regexp must match at begin of searched string buffer
-		regexp = boost::regex(string("\\`") + par_as_string);
+		regexp = lyx::regex(string("\\`") + par_as_string);
 		// If entered regexp may match wherever in searched string buffer
-		regexp2 = boost::regex(string("\\`.*") + par_as_string);
+		regexp2 = lyx::regex(string("\\`.*") + par_as_string);
 	}
 }
 
@@ -747,11 +747,11 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 	} else {
 		// Try all possible regexp matches, 
 		//until one that verifies the braces match test is found
-		boost::regex const *p_regexp = at_begin ? &regexp : &regexp2;
-		boost::sregex_iterator re_it(str.begin(), str.end(), *p_regexp);
-		boost::sregex_iterator re_it_end;
+		regex const *p_regexp = at_begin ? &regexp : &regexp2;
+		sregex_iterator re_it(str.begin(), str.end(), *p_regexp);
+		sregex_iterator re_it_end;
 		for (; re_it != re_it_end; ++re_it) {
-			boost::match_results<string::const_iterator> const & m = *re_it;
+			match_results<string::const_iterator> const & m = *re_it;
 			// Check braces on the segment that matched the entire regexp expression,
 			// plus the last subexpression, if a (.*?) was inserted in the constructor.
 			if (! braces_match(m[0].first, m[0].second, open_braces))
@@ -1222,7 +1222,7 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 		else
 				match_len = findBackwardsAdv(cur, matchAdv);
 	} catch (...) {
-		// This may only be raised by boost::regex()
+		// This may only be raised by lyx::regex()
 		bv->message(_("Invalid regular expression!"));
 		return false;
 	}

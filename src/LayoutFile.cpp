@@ -28,7 +28,7 @@
 #include "support/lstrings.h"
 
 #include "support/bind.h"
-#include <boost/regex.hpp>
+#include "support/regex.h"
 
 #include <fstream>
 
@@ -38,8 +38,6 @@ using namespace lyx::support;
 namespace lyx {
 
 
-using boost::regex;
-using boost::smatch;
 
 LayoutFile::LayoutFile(string const & fn, string const & cln,
 			   string const & desc, string const & prereq,

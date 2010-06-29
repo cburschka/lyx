@@ -6,6 +6,11 @@
 
 project(boost)
 
-add_subdirectory(regex) 
+if(MSVC10)
+	message(STATUS "Using TR1 regex")
+else()
+	add_subdirectory(regex) 
+endif()
+
 add_subdirectory(signals) 
 

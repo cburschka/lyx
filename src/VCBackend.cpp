@@ -26,17 +26,14 @@
 #include "support/lstrings.h"
 #include "support/Path.h"
 #include "support/Systemcall.h"
-
-#include <boost/regex.hpp>
+#include "support/regex.h"
 
 #include <fstream>
 
 using namespace std;
 using namespace lyx::support;
 
-using boost::regex;
-using boost::regex_match;
-using boost::smatch;
+
 
 namespace lyx {
 

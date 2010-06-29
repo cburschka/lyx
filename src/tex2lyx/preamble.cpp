@@ -25,7 +25,7 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
-#include <boost/regex.hpp>
+#include "support/regex.h"
 
 #include <algorithm>
 #include <iostream>
@@ -36,8 +36,7 @@
 
 using namespace std;
 using namespace lyx::support;
-using boost::regex;
-using boost::smatch;
+
 
 namespace lyx {
 

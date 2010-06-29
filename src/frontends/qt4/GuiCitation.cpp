@@ -41,7 +41,7 @@
 
 #undef KeyPress
 
-#include <boost/regex.hpp>
+#include "support/regex.h"
 
 #include <algorithm>
 #include <string>
@@ -673,9 +673,9 @@ static docstring escape_special_chars(docstring const & expr)
 {
 	// Search for all chars '.|*?+(){}[^$]\'
 	// Note that '[' and '\' must be escaped.
-	// This is a limitation of boost::regex, but all other chars in BREs
+	// This is a limitation of lyx::regex, but all other chars in BREs
 	// are assumed literal.
-	static const boost::regex reg("[].|*?+(){}^$\\[\\\\]");
+	static const lyx::regex reg("[].|*?+(){}^$\\[\\\\]");
 
 	// $& is a perl-like expression that expands to all
 	// of the current match
@@ -683,7 +683,7 @@ static docstring escape_special_chars(docstring const & expr)
 	// boost to treat it as a literal.
 	// Thus, to prefix a matched expression with '\', we use:
 	// FIXME: UNICODE
-	return from_utf8(boost::regex_replace(to_utf8(expr), reg, "\\\\$&"));
+	return from_utf8(lyx::regex_replace(to_utf8(expr), reg, string("\\\\$&")));
 }
 
 
@@ -700,15 +700,15 @@ vector<docstring> GuiCitation::searchKeys(BiblioInfo const & bi,
 
 	if (!regex)
 		// We must escape special chars in the search_expr so that
-		// it is treated as a simple string by boost::regex.
+		// it is treated as a simple string by lyx::regex.
 		expr = escape_special_chars(expr);
 
-	boost::regex reg_exp;
+	lyx::regex reg_exp;
 	try {
 		reg_exp.assign(to_utf8(expr), case_sensitive ?
-			boost::regex_constants::normal : boost::regex_constants::icase);
-	} catch (boost::regex_error & e) {
-		// boost::regex throws an exception if the regular expression is not
+			lyx::regex_constants::ECMAScript : lyx::regex_constants::icase);
+	} catch (lyx::regex_error & e) {
+		// lyx::regex throws an exception if the regular expression is not
 		// valid.
 		LYXERR(Debug::GUI, e.what());
 		return vector<docstring>();
@@ -734,10 +734,10 @@ vector<docstring> GuiCitation::searchKeys(BiblioInfo const & bi,
 			continue;
 
 		try {
-			if (boost::regex_search(data, reg_exp))
+			if (lyx::regex_search(data, reg_exp))
 				foundKeys.push_back(*it);
 		}
-		catch (boost::regex_error & e) {
+		catch (lyx::regex_error & e) {
 			LYXERR(Debug::GUI, e.what());
 			return vector<docstring>();
 		}

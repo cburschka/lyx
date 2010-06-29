@@ -38,7 +38,7 @@
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 
-#include <boost/regex.hpp>
+#include "support/regex.h"
 
 #include <sstream>
 
@@ -47,7 +47,6 @@ using namespace lyx::support;
 
 namespace lyx {
 
-using boost::regex;
 
 char const lstinline_delimiters[] =
 	"!*()-=+|;:'\"`,<.>/?QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";

@@ -50,7 +50,7 @@
 
 // for FileFilter.
 // FIXME: Remove
-#include <boost/regex.hpp>
+#include "support/regex.h"
 #include <boost/tokenizer.hpp>
 
 
@@ -338,17 +338,17 @@ static string const convert_brace_glob(string const & glob)
 {
 	// Matches " *.{abc,def,ghi}", storing "*." as group 1 and
 	// "abc,def,ghi" as group 2.
-	static boost::regex const glob_re(" *([^ {]*)\\{([^ }]+)\\}");
+	static lyx::regex const glob_re(" *([^ {]*)\\{([^ }]+)\\}");
 	// Matches "abc" and "abc,", storing "abc" as group 1.
-	static boost::regex const block_re("([^,}]+),?");
+	static lyx::regex const block_re("([^,}]+),?");
 
 	string pattern;
 
 	string::const_iterator it = glob.begin();
 	string::const_iterator const end = glob.end();
 	while (true) {
-		boost::match_results<string::const_iterator> what;
-		if (!boost::regex_search(it, end, what, glob_re)) {
+		match_results<string::const_iterator> what;
+		if (!regex_search(it, end, what, glob_re)) {
 			// Ensure that no information is lost.
 			pattern += string(it, end);
 			break;
@@ -365,7 +365,7 @@ static string const convert_brace_glob(string const & glob)
 		// Split the ','-separated chunks of tail so that
 		// $head{$chunk1,$chunk2} becomes "$head$chunk1 $head$chunk2".
 		string const fmt = " " + head + "$1";
-		pattern += boost::regex_merge(tail, block_re, fmt);
+		pattern += regex_replace(tail, block_re, fmt);
 
 		// Increment the iterator to the end of the match.
 		it += distance(it, what[0].second);
@@ -474,14 +474,14 @@ FileFilterList::FileFilterList(docstring const & qt_style_filter)
 
 	// Split data such as "TeX documents (*.tex);;LyX Documents (*.lyx)"
 	// into individual filters.
-	static boost::regex const separator_re(";;");
+	static lyx::regex const separator_re(";;");
 
 	string::const_iterator it = filter.begin();
 	string::const_iterator const end = filter.end();
 	while (true) {
-		boost::match_results<string::const_iterator> what;
+		match_results<string::const_iterator> what;
 
-		if (!boost::regex_search(it, end, what, separator_re)) {
+		if (!lyx::regex_search(it, end, what, separator_re)) {
 			parse_filter(string(it, end));
 			break;
 		}
@@ -500,10 +500,10 @@ void FileFilterList::parse_filter(string const & filter)
 {
 	// Matches "TeX documents (*.tex)",
 	// storing "TeX documents " as group 1 and "*.tex" as group 2.
-	static boost::regex const filter_re("([^(]*)\\(([^)]+)\\) *$");
+	static lyx::regex const filter_re("([^(]*)\\(([^)]+)\\) *$");
 
-	boost::match_results<string::const_iterator> what;
-	if (!boost::regex_search(filter, what, filter_re)) {
+	match_results<string::const_iterator> what;
+	if (!lyx::regex_search(filter, what, filter_re)) {
 		// Just a glob, no description.
 		filters_.push_back(Filter(docstring(), trim(filter)));
 	} else {

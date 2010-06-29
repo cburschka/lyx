@@ -18,7 +18,7 @@
 #include "support/lyxlib.h" // float_equal
 #include "support/Translator.h"
 
-#include <boost/regex.hpp>
+#include "support/regex.h"
 
 #include <cmath> // abs
 #include <sstream>
@@ -279,10 +279,10 @@ string const sanitizeLatexOption(string const & input)
 	// Strip any leading commas
 	// "[,,,,foo..." -> "foo..." ("foo..." may be empty)
 	string output;
-	boost::smatch what;
-	static boost::regex const front("^( *[[],*)(.*)$");
+	lyx::smatch what;
+	static lyx::regex const front("^( *[[],*)(.*)$");
 
-	regex_match(it, end, what, front, boost::match_partial);
+	regex_match(it, end, what, front, regex_constants::match_partial);
 	if (!what[0].matched) {
 		lyxerr << "Unable to sanitize LaTeX \"Option\": "
 		       << input << '\n';
@@ -293,9 +293,9 @@ string const sanitizeLatexOption(string const & input)
 	// Replace any consecutive commas with a single one
 	// "foo,,,,bar" -> "foo,bar"
 	// with iterator now pointing to 'b'
-	static boost::regex const commas("([^,]*)(,,*)(.*)$");
+	static lyx::regex const commas("([^,]*)(,,*)(.*)$");
 	for (; it != end;) {
-		regex_match(it, end, what, commas, boost::match_partial);
+		regex_match(it, end, what, commas, regex_constants::match_partial);
 		if (!what[0].matched) {
 			output += string(it, end);
 			break;
@@ -306,7 +306,7 @@ string const sanitizeLatexOption(string const & input)
 
 	// Strip any trailing commas
 	// "...foo,,,]" -> "...foo" ("...foo,,," may be empty)
-	static boost::regex const back("^(.*[^,])?,*[]] *$");
+	static lyx::regex const back("^(.*[^,])?,*[]] *$");
 	regex_match(output, what, back);
 	if (!what[0].matched) {
 		lyxerr << "Unable to sanitize LaTeX \"Option\": "
