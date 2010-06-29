@@ -39,7 +39,6 @@
 #include <boost/regex.hpp>
 
 #include <fcntl.h>
-#include <io.h>
 
 #include <cerrno>
 #include <cstdlib>
@@ -50,6 +49,7 @@
 #include <sstream>
 
 #if defined (_WIN32)
+#include <io.h>
 #include <windows.h>
 #endif
 
