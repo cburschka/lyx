@@ -53,6 +53,11 @@
 #define ASSOCF_INIT_IGNOREUNKNOWN 0
 #endif
 
+#if defined(__MINGW32__)
+#include <stdio.h>
+#endif
+
+
 extern "C" {
 extern void __wgetmainargs(int * argc, wchar_t *** argv, wchar_t *** envp,
 			   int expand_wildcards, int * new_mode);
