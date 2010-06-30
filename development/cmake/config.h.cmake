@@ -42,6 +42,10 @@
 #cmakedefine USE_MACOSX_PACKAGING 1
 #cmakedefine PATH_MAX ${PATH_MAX}
 
+#cmakedefine LYX_USE_TR1 1
+#cmakedefine LYX_USE_TR1_REGEX 1
+
+
 #endif
 
 

@@ -12,7 +12,7 @@
 #ifndef LYX_SHARED_PTR_H
 #define LYX_SHARED_PTR_H
 
-#include "checktr1.h"
+#include "config.h"
 
 
 #ifdef LYX_USE_TR1

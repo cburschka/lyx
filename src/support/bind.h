@@ -12,7 +12,7 @@
 #ifndef LYX_BIND_H
 #define LYX_BIND_H
 
-#include "checktr1.h"
+#include "config.h"
 
 
 #ifdef LYX_USE_TR1

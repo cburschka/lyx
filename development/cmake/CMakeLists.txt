@@ -28,18 +28,17 @@ option(lyxinstall "Build install projects/rules" ON)
 
 
 if(UNIX)
-    # GCC does not support regex: there are linker errors
-    # http://gcc.gnu.org/onlinedocs/libstdc++/manual/status.html#status.iso.tr1
     execute_process(COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
     if(GCC_VERSION VERSION_GREATER 4.4)
-        set(LYX_USE_TR1_REGEX 0)
-        add_definitions(-DLYX_USE_TR1)
+        set(LYX_USE_TR1 1)
+        # GCC <= 4.5 does not support regex: there are linker errors
+        # http://gcc.gnu.org/onlinedocs/libstdc++/manual/status.html#status.iso.tr1
+        set(LYX_USE_TR1_REGEX 0)        
     endif()
 else()
     if(MSVC10)
+        set(LYX_USE_TR1 1)
         set(LYX_USE_TR1_REGEX 1)
-        add_definitions(-DLYX_USE_TR1)
-        add_definitions(-DLYX_USE_TR1_REGEX)
     endif()
 endif()
 
