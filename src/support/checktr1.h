@@ -12,12 +12,16 @@
 #ifndef LYX_CHECKTR1_H
 #define LYX_CHECKTR1_H
 
+#ifndef LYX_USE_TR1 // When not set by the build system
+
 #if defined(_MSC_VER) && (_MSC_VER >= 1600)
 #define LYX_USE_TR1
 #endif
 
 #if __GNUC__ == 4 && __GNUC_MINOR__ >= 4
 #define LYX_USE_TR1
+#endif
+
 #endif
 
 

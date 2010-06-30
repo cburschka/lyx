@@ -33,14 +33,15 @@
 
 
 
-// TODO: only tested with msvc10
-#if defined(LYX_USE_TR1) && defined(_MSC_VER)
+#if defined(LYX_USE_TR1) && defined(LYX_USE_TR1_REGEX)
 
 #ifdef _MSC_VER
 #include <regex>
-#define match_partial _Match_partial // why is match_partial not public?
+#define match_partial _Match_partial
 #else
-#include <tr1/regexp>
+#include <tr1/regex>
+// TODO no match_partial in gcc, how to replace?
+#define match_partial match_default
 #endif
 
 namespace lyx

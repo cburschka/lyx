@@ -27,6 +27,24 @@ set(LIBRARY_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/lib)
 option(lyxinstall "Build install projects/rules" ON)
 
 
+if(UNIX)
+    # GCC does not support regex: there are linker errors
+    # http://gcc.gnu.org/onlinedocs/libstdc++/manual/status.html#status.iso.tr1
+    execute_process(COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
+    if(GCC_VERSION VERSION_GREATER 4.4)
+        set(LYX_USE_TR1_REGEX 0)
+        add_definitions(-DLYX_USE_TR1)
+    endif()
+else()
+    if(MSVC10)
+        set(LYX_USE_TR1_REGEX 1)
+        add_definitions(-DLYX_USE_TR1)
+        add_definitions(-DLYX_USE_TR1_REGEX)
+    endif()
+endif()
+
+
+
 
 
 # Supress regeneration
@@ -328,7 +346,7 @@ if(NOT disable-pch)
 		macro(lyx_add_msvc_pch name_)
 		endmacro()
 		macro(lyx_add_gcc_pch name_)
-			add_definitions(-DLYX_PCH_STL -DLYX_PCH_BOOST -DLYX_PCH_QT4)
+                        add_definitions(-DLYX_PCH_STL -DLYX_PCH_BOOST -DLYX_PCH_QT4)
 			ADD_PRECOMPILED_HEADER(${name_} ${CMAKE_BINARY_DIR}/config_pch.cpp ${CMAKE_BINARY_DIR}/config.h.gch)
 		endmacro()
 	endif()
@@ -479,7 +497,11 @@ if(UseExternalBoost)
   endif()
 else()
   message(STATUS "----- Using internal boost. To build with installed version use -DUseExternalBoost:BOOL=ON")
-  set(Lyx_Boost_Libraries boost_signals ${BOOST_REGEX_LIB})
+  if(LYX_USE_TR1_REGEX)
+    set(Lyx_Boost_Libraries boost_signals)
+  else()
+    set(Lyx_Boost_Libraries boost_signals boost_regex)
+  endif()
   add_definitions(-DBOOST_USER_CONFIG="<config.h>")
   include_directories(${TOP_SRC_DIR}/boost)
   add_subdirectory(boost)
