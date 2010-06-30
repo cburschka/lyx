@@ -289,6 +289,15 @@ char * strerror(int n);
 #define BOOST_NO_WREGEX 1
 #define BOOST_NO_WSTRING 1
 
+#ifndef LYX_USE_TR1
+#  if defined(_MSC_VER) && (_MSC_VER >= 1600)
+#    define LYX_USE_TR1
+#  endif
+#  if __GNUC__ == 4 && __GNUC_MINOR__ >= 4
+#    define LYX_USE_TR1
+#  endif
+#endif
+
 #ifdef __CYGWIN__
 #  define NOMINMAX
 #  define BOOST_POSIX 1

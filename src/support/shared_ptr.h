@@ -12,9 +12,6 @@
 #ifndef LYX_SHARED_PTR_H
 #define LYX_SHARED_PTR_H
 
-#include "config.h"
-
-
 #ifdef LYX_USE_TR1
 
 #include <memory>

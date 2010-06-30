@@ -35,7 +35,6 @@ liblyxsupport_a_SOURCES = \
 	FileMonitor.cpp \
 	RandomAccessList.h \
 	bind.h \
-	checktr1.h \
 	convert.cpp \
 	convert.h \
 	copied_ptr.h \

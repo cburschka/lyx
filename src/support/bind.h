@@ -12,9 +12,6 @@
 #ifndef LYX_BIND_H
 #define LYX_BIND_H
 
-#include "config.h"
-
-
 #ifdef LYX_USE_TR1
 
 #include <functional>
@@ -33,7 +30,7 @@ namespace lyx
 
 #else
 
-#include "boost/bind.hpp"
+#include <boost/bind.hpp>
 
 namespace lyx
 {
