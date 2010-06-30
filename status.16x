@@ -107,13 +107,13 @@ What's new
 
 - Correct the LaTeX output of framed boxes (bug 4776).
 
-- Correctly parse math formulas having a backslash as last character
-  on a line (bug 6756).
+- Correctly parse math formulas having a backslash as last character on a
+  line (bug 6756).
 
 - Only use the page margins if the option "Default margins" is not checked
   (bug 6699).
 
-- Include the package "amsmath" when using cfrac (bug 6787).
+- Load the package "amsmath" when using cfrac (bug 6787).
 
 - Fix chapter and section label declaration in the Tufte book class.
 
@@ -169,7 +169,7 @@ What's new
 - Adapt the tufte example documents to the requirements of recent releases
   of the tufte-handout and tufte-book classes.
 
-- Correct typos and font styles in the LateXConfig.lyx document.
+- Correct typos and font styles in the LaTeXConfig.lyx document.
 
 - Add wasysym to LaTeXConfig.lyx (bug 6752).
 
@@ -185,3 +185,4 @@ What's new
   output format.
 
 - Check whether the wasysym package is installed (bug 6752).
+
