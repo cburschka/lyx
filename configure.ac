@@ -289,9 +289,11 @@ char * strerror(int n);
 #define BOOST_NO_WREGEX 1
 #define BOOST_NO_WSTRING 1
 
+// TR1 regex not supported in GCC <= 4.5
 #ifndef LYX_USE_TR1
 #  if defined(_MSC_VER) && (_MSC_VER >= 1600)
 #    define LYX_USE_TR1
+#    define LYX_USE_TR1_REGEX
 #  endif
 #  if __GNUC__ == 4 && __GNUC_MINOR__ >= 4
 #    define LYX_USE_TR1
