@@ -78,11 +78,17 @@ if (LYX_LEAK_DETECTION)
 	set(vld_files ${CMAKE_CURRENT_BINARY_DIR}/vld.ini ${CMAKE_CURRENT_BINARY_DIR}/memory_leak_report.txt)
 endif()
 
+if(WIN32)
+	set(FILE_RC ${CMAKE_SOURCE_DIR}/lyx.rc)
+	message(STATUS "Using icon defined in resource file: ${FILE_RC}")
+endif()
+
 add_executable(${_lyx}
 	${WIN32_CONSOLE}
 	${lyx_sources}
 	${lyx_headers}
 	${vld_files}
+	${FILE_RC}
 )
 
 lyx_add_gcc_pch(${_lyx})
