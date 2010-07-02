@@ -34,7 +34,7 @@ struct Speller {
 	enchant::Dict * speller;
 };
 
-typedef std::map<std::string, Speller> Spellers;
+typedef map<string, Speller> Spellers;
   
 } // anon namespace
 
@@ -115,7 +115,7 @@ SpellChecker::Result EnchantChecker::check(WordLangTuple const & word)
 	if (!m)
 		return OK;
 
-	std::string utf8word(to_utf8(word.word()));
+	string utf8word = to_utf8(word.word());
 
 	if (m->check(utf8word))
 		return OK;
