@@ -272,8 +272,8 @@ SpellChecker::Result AspellChecker::check(WordLangTuple const & word)
 		// MSVC compiled Aspell doesn't like it.
 		return OK;
 
-	const char * word_str = to_utf8(word.word()).c_str();
-	int const word_ok = aspell_speller_check(m, word_str, -1);
+	string const word_str = to_utf8(word.word());
+	int const word_ok = aspell_speller_check(m, word_str.c_str(), -1);
 	LASSERT(word_ok != -1, /**/);
 
 	return (word_ok) ? OK : UNKNOWN_WORD;
