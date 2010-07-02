@@ -174,6 +174,9 @@ int MyThes::Lookup(const char * pText, int len, mentry** pme)
     // handle the case of missing file or file related errors
     if (! pdfile) return 0;
 
+    // handle the case if empty word list
+    if (nw <= 0) return 0;
+
     long offset = 0;
 
     /* copy search word and make sure null terminated */
@@ -337,6 +340,7 @@ int MyThes::readLine(FILE * pf, char * buf, int nc)
 int MyThes::binsearch(char * sw, char* list[], int nlst) 
 {
     int lp, up, mp, j, indx;
+    if (0==nlst) return -1;
     lp = 0;
     up = nlst-1;
     indx = -1;
