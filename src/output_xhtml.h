@@ -32,7 +32,7 @@ namespace html {
 /// be escaped before being passed to the constructor.
 struct StartTag {
 	///
-	explicit StartTag(std::string const & tag) : tag_(tag) {}
+	explicit StartTag(std::string const & tag) : tag_(tag), keepempty_(false) {}
 	///
 	explicit StartTag(std::string const & tag, std::string const & attr, 
 		bool keepempty = false) 
