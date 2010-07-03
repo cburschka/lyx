@@ -136,6 +136,8 @@ void InsetBox::setButtonLabel()
 	if (params_.inner_box) {
 		if (params_.use_parbox)
 			inner = _("Parbox");
+		else if (params_.use_makebox)
+			inner = _("Makebox");
 		else
 			inner = _("Minipage");
 	}
@@ -294,7 +296,6 @@ int InsetBox::latex(odocstream & os, OutputParams const & runparams) const
 			if (params_.hor_pos != 'c')
 				os << "[" << params_.hor_pos << "]";
 		}
-
 		os << "{";
 		break;
 	case ovalbox:
@@ -317,38 +318,56 @@ int InsetBox::latex(odocstream & os, OutputParams const & runparams) const
 	if (params_.inner_box) {
 		if (params_.use_parbox)
 			os << "\\parbox";
+		else if (params_.use_makebox) {
+			os << "\\makebox";
+			// FIXME UNICODE
+			// output the width and horizontal position
+			if (params_.special != "none") {
+				os << "[" << params_.width.value()
+				   << '\\' << from_utf8(params_.special)
+				   << ']';
+			} else
+				os << '[' << from_ascii(width_string)
+				   << ']';
+			if (params_.hor_pos != 'c')
+				os << "[" << params_.hor_pos << "]";
+			os << "{";
+		}
 		else
 			os << "\\begin{minipage}";
 
-		os << "[" << params_.pos << "]";
-		if (params_.height_special == "none") {
-			// FIXME UNICODE
-			os << "[" << from_ascii(params_.height.asLatexString()) << "]";
-		} else {
-			// Special heights
-			// set no optional argument when the value is the default "1\height"
-			// (special units like \height are handled as "in")
-			// but when the user has chosen a non-default inner_pos, the height
-			// must be given: \minipage[pos][height][inner-pos]{width}
-			if ((params_.height != Length("1in") ||
-				 params_.height_special != "totalheight") ||
-				params_.inner_pos != params_.pos) {
+		// output parameters for parbox and minipage
+		if (!params_.use_makebox) {
+			os << "[" << params_.pos << "]";
+			if (params_.height_special == "none") {
 				// FIXME UNICODE
-				os << "[" << params_.height.value()
-					<< "\\" << from_utf8(params_.height_special) << "]";
+				os << "[" << from_ascii(params_.height.asLatexString()) << "]";
+			} else {
+				// Special heights
+				// set no optional argument when the value is the default "1\height"
+				// (special units like \height are handled as "in")
+				// but when the user has chosen a non-default inner_pos, the height
+				// must be given: \minipage[pos][height][inner-pos]{width}
+				if ((params_.height != Length("1in") ||
+					params_.height_special != "totalheight") ||
+					params_.inner_pos != params_.pos) {
+						// FIXME UNICODE
+						os << "[" << params_.height.value()
+							<< "\\" << from_utf8(params_.height_special) << "]";
+				}
 			}
+			if (params_.inner_pos != params_.pos)
+				os << "[" << params_.inner_pos << "]";
+			// FIXME UNICODE
+			os << '{' << from_ascii(width_string) << '}';
+			if (params_.use_parbox)
+				os << "{";
 		}
-		if (params_.inner_pos != params_.pos)
-			os << "[" << params_.inner_pos << "]";
 
-		// FIXME UNICODE
-		os << '{' << from_ascii(width_string) << '}';
-
-		if (params_.use_parbox)
-			os << "{";
 		os << "%\n";
 		++i;
-	}
+	} // end if inner_box
+
 	if (btype == Shaded) {
 		os << "\\begin{shaded}%\n";
 		++i;
@@ -360,7 +379,7 @@ int InsetBox::latex(odocstream & os, OutputParams const & runparams) const
 		os << "\\end{shaded}";
 
 	if (params_.inner_box) {
-		if (params_.use_parbox)
+		if (params_.use_parbox || params_.use_makebox)
 			os << "%\n}";
 		else
 			os << "%\n\\end{minipage}";
@@ -564,6 +583,7 @@ void InsetBox::string2params(string const & in, InsetBoxParams & params)
 InsetBoxParams::InsetBoxParams(string const & label)
 	: type(label),
 	  use_parbox(false),
+	  use_makebox(false),
 	  inner_box(true),
 	  width(Length("100col%")),
 	  special("none"),
@@ -583,6 +603,7 @@ void InsetBoxParams::write(ostream & os) const
 	os << "has_inner_box " << inner_box << "\n";
 	os << "inner_pos \"" << inner_pos << "\"\n";
 	os << "use_parbox " << use_parbox << "\n";
+	os << "use_makebox " << use_makebox << "\n";
 	os << "width \"" << width.asString() << "\"\n";
 	os << "special \"" << special << "\"\n";
 	os << "height \"" << height.asString() << "\"\n";
@@ -601,6 +622,7 @@ void InsetBoxParams::read(Lexer & lex)
 		inner_box = false;
 	lex >> "inner_pos" >> inner_pos;
 	lex >> "use_parbox" >> use_parbox;
+	lex >> "use_makebox" >> use_makebox;
 	lex >> "width" >> width;
 	lex >> "special" >> special;
 	lex >> "height" >> height;

@@ -31,8 +31,10 @@ public:
 
 	///
 	std::string type;
-	/// Use a parbox (true) or minipage (false)
+	/// Is there a parbox?
 	bool use_parbox;
+	/// Is there a makebox?
+	bool use_makebox;
 	/// Do we have an inner parbox or minipage to format paragraphs to
 	/// columnwidth?
 	bool inner_box;

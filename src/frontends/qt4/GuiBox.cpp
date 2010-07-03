@@ -113,12 +113,18 @@ GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 
 void GuiBox::on_innerBoxCO_activated(int index)
 {
+	QString itype =
+		innerBoxCO->itemData(innerBoxCO->currentIndex()).toString();
+	// handle parbox and minipage the same way
 	bool const ibox =
-		(innerBoxCO->itemData(index).toString() != "none");
+		(itype != "none"
+		 && itype != "makebox");
 	QString const outer =
 		typeCO->itemData(typeCO->currentIndex()).toString();
 	valignCO->setEnabled(ibox);
 	ialignCO->setEnabled(ibox);
+	if (heightCB->isChecked() && !ibox)
+		heightCB->setChecked(false);
 	heightCB->setEnabled(ibox);
 	// except for frameless and boxed, the width cannot be specified if
 	// there is no inner box
@@ -126,8 +132,10 @@ void GuiBox::on_innerBoxCO_activated(int index)
 		outer != "Boxed");
 	widthED->setEnabled(!width_disabled);
 	widthUnitsLC->setEnabled(!width_disabled);
-	// halign and pagebreak are only allowed for Boxed without inner box
-	halignCO->setEnabled(!ibox && outer == "Boxed");
+	// halign is only allowed for Boxed without inner box or for makebox
+	halignCO->setEnabled((!ibox && outer == "Boxed")
+		|| (itype == "makebox"));
+	// pagebreak is only allowed for Boxed without inner box
 	pagebreakCB->setEnabled(!ibox && outer == "Boxed");
 	setSpecial(ibox);
 	changed();
@@ -139,26 +147,34 @@ void GuiBox::on_typeCO_activated(int index)
  	QString const type =
 		typeCO->itemData(index).toString();
 	bool const frameless = (type == "Frameless");
-	if (frameless) {
-		valignCO->setEnabled(true);
-		ialignCO->setEnabled(true);
-		heightCB->setEnabled(true);
-		setSpecial(true);
-	}
-	if (type != "Boxed")
-		pagebreakCB->setChecked(false);
 	QString itype =
 		innerBoxCO->itemData(innerBoxCO->currentIndex()).toString();
+	setInnerType(frameless, itype);
+	// refresh itype because it might have been changed in setInnerType
+	itype =
+		innerBoxCO->itemData(innerBoxCO->currentIndex()).toString();
+	// handle parbox and minipage the same way
+	bool const ibox =
+		(itype != "none"
+		 && itype != "makebox");
+	if (frameless && itype != "makebox") {
+		valignCO->setEnabled(ibox);
+		ialignCO->setEnabled(ibox);
+		if (heightCB->isChecked() && !ibox)
+			heightCB->setChecked(false);
+		heightCB->setEnabled(ibox);
+		setSpecial(ibox);
+	}
 	// except for frameless and boxed, the width cannot be specified if
 	// there is no inner box
 	bool const width_disabled = (itype == "none" && !frameless
 		&& type != "Boxed");
 	widthED->setEnabled(!width_disabled);
 	widthUnitsLC->setEnabled(!width_disabled);
-	// halign and pagebreak are only allowed for Boxed without inner box
-	halignCO->setEnabled(type == "Boxed" && itype == "none");
+	// halign is only allowed for Boxed without inner box or for makebox
+	halignCO->setEnabled((type == "Boxed" && itype == "none") || (itype == "makebox"));
+	// pagebreak is only allowed for Boxed without inner box
 	pagebreakCB->setEnabled(type == "Boxed" && itype == "none");
-	setInnerType(frameless, itype);
 	changed();
 }
 
@@ -224,6 +240,8 @@ void GuiBox::paramsToDialog(Inset const * inset)
 		inner_type = "none";
 	if (params.use_parbox)
 		inner_type = "parbox";
+	if (params.use_makebox)
+		inner_type = "makebox";
 	bool const frameless = (params.type == "Frameless");
 	setInnerType(frameless, inner_type);
 
@@ -234,13 +252,14 @@ void GuiBox::paramsToDialog(Inset const * inset)
 	c = params.hor_pos;
 	halignCO->setCurrentIndex(string("lcrs").find(c, 0));
 
-	bool ibox = params.inner_box;
+	bool ibox = (params.inner_box && !params.use_makebox);
 	valignCO->setEnabled(ibox);
 	ialignCO->setEnabled(ibox);
 	setSpecial(ibox);
 
 	// halign and pagebreak are only allowed for Boxed without inner box
-	halignCO->setEnabled(!ibox && type == "Boxed");
+	halignCO->setEnabled((!ibox && type == "Boxed") || (params.use_makebox));
+	// pagebreak is only allowed for Boxed without inner box
 	pagebreakCB->setEnabled(!ibox && type == "Boxed");
 
 	// except for frameless and boxed, the width cannot be specified if
@@ -294,6 +313,8 @@ docstring GuiBox::dialogToParams() const
 		(!pagebreak && innerBoxCO->currentText() != qt_("None"));
 	params.use_parbox =
 		(!pagebreak && innerBoxCO->currentText() == qt_("Parbox"));
+	params.use_makebox =
+		(!pagebreak && innerBoxCO->currentText() == qt_("Makebox"));
 
 	params.pos = "tcb"[valignCO->currentIndex()];
 	params.inner_pos = "tcbs"[ialignCO->currentIndex()];
@@ -367,6 +388,8 @@ void GuiBox::setInnerType(bool frameless, QString const & type)
 	innerBoxCO->clear();
 	if (!frameless)
 		innerBoxCO->addItem(qt_("None"), toqstr("none"));
+	else
+		innerBoxCO->addItem(qt_("Makebox"), toqstr("makebox"));
 	innerBoxCO->addItem(qt_("Parbox"), toqstr("parbox"));
 	innerBoxCO->addItem(qt_("Minipage"), toqstr("minipage"));
 	int i = (innerBoxCO->findData(type) != -1)
