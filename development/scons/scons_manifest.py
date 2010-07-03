@@ -282,7 +282,6 @@ src_client_extra_files = Split('''
 
 src_support_header_files = Split('''
     bind.h
-    checktr1.h
     convert.h
     copied_ptr.h
     debug.h
@@ -313,6 +312,7 @@ src_support_header_files = Split('''
     ProgressInterface.h
     qstring_helpers.h
     RandomAccessList.h
+    regex.h
     shared_ptr.h
     socktools.h
     Systemcall.h
