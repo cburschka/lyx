@@ -29,6 +29,7 @@
 
 #include <algorithm>
 #include <cstring>
+#include <fstream>
 
 using namespace std;
 using namespace lyx::support;
@@ -91,10 +92,21 @@ pair<string,string> Thesaurus::Private::getThesaurus(string const & path, docstr
 	FileNameList const data_files = base.dirList("dat");
 	string idx;
 	string data;
+	string basename;
 
 	LYXERR(Debug::FILES, "thesaurus path: " << path);
 	for (FileNameList::const_iterator it = idx_files.begin(); it != idx_files.end(); ++it) {
-		if (contains(it->onlyFileName(), to_ascii(lang))) {
+		basename = it->onlyFileNameWithoutExt();
+		if (contains(basename, to_ascii(lang))) {
+			ifstream ifs(it->absFileName().c_str());
+			if (ifs) {
+				string s;
+				getline(ifs,s);
+				if (s.find_first_of(',') != string::npos) {
+					LYXERR(Debug::FILES, "ignore version1 thesaurus idx file: " << it->absFileName());
+					continue;
+				}
+			}
 			idx = it->absFileName();
 			LYXERR(Debug::FILES, "selected thesaurus idx file: " << idx);
 			break;
@@ -104,7 +116,7 @@ pair<string,string> Thesaurus::Private::getThesaurus(string const & path, docstr
 		return make_pair(string(), string());
 	}
 	for (support::FileNameList::const_iterator it = data_files.begin(); it != data_files.end(); ++it) {
-		if (contains(it->onlyFileName(), to_ascii(lang))) {
+		if (contains(it->onlyFileName(), basename)) {
 			data = it->absFileName();
 			LYXERR(Debug::FILES, "selected thesaurus data file: " << data);
 			break;
@@ -164,6 +176,8 @@ bool Thesaurus::thesaurusAvailable(docstring const & lang) const
 
 bool Thesaurus::thesaurusInstalled(docstring const & lang) const
 {
+	if (thesaurusAvailable(lang))
+		return true;
 	pair<string, string> files = d->getThesaurus(lang);
 	return (!files.first.empty() && !files.second.empty());
 }
