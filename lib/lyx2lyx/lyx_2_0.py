@@ -231,8 +231,8 @@ def latex_length(string):
 
     # Convert relative lengths to LaTeX units
     units = {"text%":"\\textwidth", "col%":"\\columnwidth",
-             "page%":"\\pagewidth", "line%":"\\linewidth",
-             "theight%":"\\textheight", "pheight%":"\\pageheight"}
+             "page%":"\\paperwidth", "line%":"\\linewidth",
+             "theight%":"\\textheight", "pheight%":"\\paperheight"}
     for unit in units.keys():
         i = string.find(unit)
         if i != -1:
