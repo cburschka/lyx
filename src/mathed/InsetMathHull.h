@@ -165,7 +165,7 @@ protected:
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const;
 	///
-	docstring eolString(row_type row, bool fragile) const;
+	docstring eolString(row_type row, bool fragile, bool last_eoln) const;
 
 private:
 	virtual Inset * clone() const;

@@ -644,7 +644,7 @@ void InsetMathGrid::updateBuffer(ParIterator const & it, UpdateType utype)
 }
 
 
-docstring InsetMathGrid::eolString(row_type row, bool fragile) const
+docstring InsetMathGrid::eolString(row_type row, bool fragile, bool last_eoln) const
 {
 	docstring eol;
 
@@ -662,7 +662,7 @@ docstring InsetMathGrid::eolString(row_type row, bool fragile) const
 	}
 
 	// only add \\ if necessary
-	if (eol.empty() && row + 1 == nrows())
+	if (eol.empty() && row + 1 == nrows() && (nrows() == 1 || !last_eoln))
 		return docstring();
 
 	return (fragile ? "\\protect\\\\" : "\\\\") + eol;
@@ -1045,19 +1045,23 @@ void InsetMathGrid::write(WriteStream & os,
 		// unless there are vertical lines
 		col_type lastcol = 0;
 		bool emptyline = true;
-		for (col_type col = beg_col; col < end_col; ++col)
-			if (!cell(index(row, col)).empty()
-				  || colinfo_[col + 1].lines_) {
+		bool last_eoln = true;
+		for (col_type col = beg_col; col < end_col; ++col) {
+			bool const empty_cell = cell(index(row, col)).empty();
+			if (!empty_cell)
+				last_eoln = false;
+			if (!empty_cell || colinfo_[col + 1].lines_) {
 				lastcol = col + 1;
 				emptyline = false;
 			}
+		}
 		for (col_type col = beg_col; col < lastcol; ++col) {
 			os << cell(index(row, col));
 			if (os.pendingBrace())
 				ModeSpecifier specifier(os, TEXT_MODE);
 			os << eocString(col, lastcol);
 		}
-		eol = eolString(row, os.fragile());
+		eol = eolString(row, os.fragile(), last_eoln);
 		os << eol;
 		// append newline only if line wasn't completely empty
 		// and the formula is not written on a single line

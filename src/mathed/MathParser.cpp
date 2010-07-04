@@ -1244,7 +1244,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					// probably need to refine this test.
 					// Right now we only have to test for
 					// single line hull insets.
-					if (grid.nrows() > 1)
+					if (grid.nrows() > 1 && name == "array")
 						delEmptyLastRow(grid);
 					return success_;
 				}

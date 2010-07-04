@@ -1122,7 +1122,7 @@ void InsetMathHull::mutate(HullType newtype)
 }
 
 
-docstring InsetMathHull::eolString(row_type row, bool fragile) const
+docstring InsetMathHull::eolString(row_type row, bool fragile, bool last_eoln) const
 {
 	docstring res;
 	if (numberedType()) {
@@ -1132,7 +1132,9 @@ docstring InsetMathHull::eolString(row_type row, bool fragile) const
 		if (nonum_[row] && (type_ != hullMultline))
 			res += "\\nonumber ";
 	}
-	return res + InsetMathGrid::eolString(row, fragile);
+	// Never add \\ on the last empty line of eqnarray and friends
+	last_eoln = false;
+	return res + InsetMathGrid::eolString(row, fragile, last_eoln);
 }
 
 
