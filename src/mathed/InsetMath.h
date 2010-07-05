@@ -68,8 +68,11 @@ class InsetMathScript;
 class InsetMathString;
 class InsetMathSpace;
 class InsetMathSpecialChar;
+class InsetMathSubstack;
 class InsetMathSymbol;
+class InsetMathTabular;
 class InsetMathUnknown;
+class InsetMathXYMatrix;
 
 class InsetMathRef;
 
@@ -148,9 +151,15 @@ public:
 	virtual InsetMathSpace const    * asSpaceInset() const    { return 0; }
 	virtual InsetMathString         * asStringInset()         { return 0; }
 	virtual InsetMathString const   * asStringInset() const   { return 0; }
+	virtual InsetMathSubstack       * asSubstackInset()       { return 0; }
+	virtual InsetMathSubstack const * asSubstackInset() const { return 0; }
 	virtual InsetMathSymbol const   * asSymbolInset() const   { return 0; }
+	virtual InsetMathTabular        * asTabularInset()        { return 0; }
+	virtual InsetMathTabular const  * asTabularInset() const  { return 0; }
 	virtual InsetMathUnknown        * asUnknownInset()        { return 0; }
 	virtual InsetMathUnknown const  * asUnknownInset() const  { return 0; }
+	virtual InsetMathXYMatrix       * asXYMatrixInset()       { return 0; }
+	virtual InsetMathXYMatrix const * asXYMatrixInset() const { return 0; }
 	virtual InsetMathRef            * asRefInset()            { return 0; }
 	virtual InsetMathSpecialChar const * asSpecialCharInset() const { return 0; }
 
