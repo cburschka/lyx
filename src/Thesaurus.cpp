@@ -100,9 +100,16 @@ pair<string,string> Thesaurus::Private::getThesaurus(string const & path, docstr
 		if (contains(basename, to_ascii(lang))) {
 			ifstream ifs(it->absFileName().c_str());
 			if (ifs) {
-				string s;
-				getline(ifs,s);
-				if (s.find_first_of(',') != string::npos) {
+				// check for appropriate version of index file
+				string encoding; // first line is encoding
+				int items = 0;   // second line is no. of items
+				getline(ifs,encoding);
+				ifs >> items;
+				if (ifs.fail()) {
+					LYXERR(Debug::FILES, "ignore irregular thesaurus idx file: " << it->absFileName());
+					continue;
+				}
+				if (encoding.length() == 0 || encoding.find_first_of(',') != string::npos) {
 					LYXERR(Debug::FILES, "ignore version1 thesaurus idx file: " << it->absFileName());
 					continue;
 				}
