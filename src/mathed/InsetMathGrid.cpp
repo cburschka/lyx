@@ -646,10 +646,6 @@ void InsetMathGrid::updateBuffer(ParIterator const & it, UpdateType utype)
 
 docstring InsetMathGrid::eolString(row_type row, bool fragile, bool last_eoln) const
 {
-	// Never add \\ on the last empty line of substack, tabular and xymatrix
-	if (asSubstackInset() || asTabularInset() || asXYMatrixInset())
-		last_eoln = false;
-
 	docstring eol;
 
 	if (!rowinfo_[row].crskip_.zero())
