@@ -1,14 +1,14 @@
 # translation of ja.po to Japanese
-# Koji Yokota <yokota@res.otaru-uc.ac.jp>, 2007, 2008, 2009.
 # Japanese translation for LyX
 # Copyright (C) 2007 LyX Developers
 # This file is distributed under the same license as the LyX package.
+# Koji Yokota <yokota@res.otaru-uc.ac.jp>, 2007, 2008, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-06-28 08:40+0200\n"
-"PO-Revision-Date: 2010-05-04 13:01+0900\n"
+"PO-Revision-Date: 2010-07-04 23:34+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <>\n"
 "MIME-Version: 1.0\n"
@@ -1714,11 +1714,11 @@ msgstr "タビュレータの大きさ(&U): "
 
 #: src/frontends/qt4/ui/ListingsUi.ui:323
 msgid "Use extended character table"
-msgstr "拡張文字コード表を使う"
+msgstr "拡張した文字コード表を使う"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:326
 msgid "&Extended character table"
-msgstr "拡張文字コード表を使う(&E)"
+msgstr "拡張した文字コード表を使う(&E)"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:345
 msgid "Lan&guage:"
@@ -2609,8 +2609,8 @@ msgid ""
 "If checked, the document language is not explicitly set by a language switch "
 "command"
 msgstr ""
-"チェックすると、文書言語については、言語切替コマンドで明示的に設定することを"
-"しません。"
+"有効にすると、文書言語については、言語切替コマンドで明示的に設定することをし"
+"ません。"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:139
 msgid "Auto &begin"
@@ -2793,24 +2793,23 @@ msgid "Date format for strftime output"
 msgstr "strftime出力の日付書式"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:96
-#, fuzzy
 msgid "&Overwrite on export:"
-msgstr "文書を上書きしますか？"
+msgstr "書き出し時の上書き(&O):"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:114
 msgid "What to do when existing files are going to be overwritten on export."
 msgstr ""
+"書き出し時に、既存のファイルが上書きされようとしているときにどうするか。"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:118
 msgid "Ask permission"
-msgstr ""
+msgstr "許可を求める"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:123
 msgid "Main file only"
-msgstr ""
+msgstr "主幹ファイルのみ"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:128
-#, fuzzy
 msgid "All files"
 msgstr "全てのファイル"
 
@@ -4214,9 +4213,8 @@ msgid "Biography"
 msgstr "経歴"
 
 #: lib/layouts/IEEEtran.layout:210
-#, fuzzy
 msgid "BiographyNoPhoto"
-msgstr "経歴"
+msgstr "写真なし経歴"
 
 #: lib/layouts/IEEEtran.layout:217 lib/layouts/beamer.layout:1051
 #: lib/layouts/elsart.layout:285 lib/layouts/foils.layout:278
@@ -4562,7 +4560,7 @@ msgstr "第二所属マーク:"
 
 #: lib/layouts/aastex.layout:330
 msgid "Subject headings:"
-msgstr "サブジェクト・ヘッディング:"
+msgstr "主題ヘッダ:"
 
 #: lib/layouts/aastex.layout:373
 msgid "[Acknowledgements]"
@@ -5491,7 +5489,7 @@ msgstr "返信先"
 #: lib/layouts/dinbrief.layout:73 lib/layouts/scrlettr.layout:170
 #: lib/layouts/scrlttr2.layout:249
 msgid "Backaddress:"
-msgstr "返送先住所(Backaddress):"
+msgstr "返送先住所:"
 
 #: lib/layouts/dinbrief.layout:81
 msgid "Postal comment"
@@ -5564,7 +5562,7 @@ msgstr "Area code"
 
 #: lib/layouts/dinbrief.layout:131
 msgid "Area Code:"
-msgstr "Area Code:"
+msgstr "Area code:"
 
 #: lib/layouts/dinbrief.layout:135 lib/layouts/scrlettr.layout:146
 #: lib/layouts/scrlttr2.layout:181 lib/layouts/stdletter.inc:126
@@ -5597,36 +5595,36 @@ msgstr "日付:"
 #: lib/layouts/dinbrief.layout:159 lib/layouts/scrlettr.layout:195
 #: lib/layouts/scrlttr2.layout:277 lib/layouts/scrclass.inc:169
 msgid "Subject"
-msgstr "件名(subject)"
+msgstr "主題"
 
 #: lib/layouts/dinbrief.layout:161 lib/layouts/scrlettr.layout:198
 #: lib/layouts/scrlttr2.layout:281
 msgid "Subject:"
-msgstr "件名:"
+msgstr "主題:"
 
 #: lib/layouts/dinbrief.layout:175 lib/layouts/g-brief-en.layout:205
 #: lib/layouts/g-brief2.layout:844 lib/layouts/scrlettr.layout:60
 #: lib/layouts/scrlttr2.layout:92 lib/layouts/stdletter.inc:49
 msgid "Opening"
-msgstr "オープニング"
+msgstr "頭語"
 
 #: lib/layouts/dinbrief.layout:179 lib/layouts/g-brief-de.layout:210
 #: lib/layouts/g-brief-en.layout:210 lib/layouts/g-brief2.layout:856
 #: lib/layouts/scrlttr2.layout:103 lib/layouts/stdletter.inc:62
 msgid "Opening:"
-msgstr "オープニング:"
+msgstr "頭語:"
 
 #: lib/layouts/dinbrief.layout:191 lib/layouts/g-brief-en.layout:231
 #: lib/layouts/g-brief2.layout:866 lib/layouts/scrlettr.layout:70
 #: lib/layouts/scrlttr2.layout:112 lib/layouts/stdletter.inc:92
 msgid "Closing"
-msgstr "結辞"
+msgstr "結語"
 
 #: lib/layouts/dinbrief.layout:193 lib/layouts/g-brief-de.layout:236
 #: lib/layouts/g-brief-en.layout:236 lib/layouts/g-brief2.layout:877
 #: lib/layouts/scrlttr2.layout:116 lib/layouts/stdletter.inc:95
 msgid "Closing:"
-msgstr "結辞:"
+msgstr "結語:"
 
 #: lib/layouts/dinbrief.layout:199 lib/layouts/stdletter.inc:111
 msgid "encl"
@@ -5665,7 +5663,7 @@ msgstr "送り主住所"
 #: lib/layouts/dinbrief.layout:240 lib/layouts/scrlettr.layout:167
 #: lib/layouts/scrlttr2.layout:245
 msgid "Backaddress"
-msgstr "返送先住所(Backaddress)"
+msgstr "返送先住所"
 
 #: lib/layouts/dinbrief.layout:245 lib/layouts/g-brief-de.layout:89
 msgid "RetourAdresse"
@@ -5967,7 +5965,7 @@ msgstr "定義 \\arabic{theorem}"
 #: lib/layouts/theorems-chap-bytype.module:102
 #: lib/layouts/theorems-sec-bytype.module:86
 msgid "Conjecture"
-msgstr "予想"
+msgstr "推論"
 
 #: lib/layouts/elsart.layout:364
 msgid "Conjecture \\arabic{theorem}"
@@ -6000,11 +5998,11 @@ msgstr "問題 \\arabic{theorem}"
 #: lib/layouts/theorems.inc:174 lib/layouts/theorems-chap-bytype.module:174
 #: lib/layouts/theorems-sec-bytype.module:134
 msgid "Remark"
-msgstr "注記"
+msgstr "所見"
 
 #: lib/layouts/elsart.layout:385
 msgid "Remark \\arabic{theorem}"
-msgstr "注記 \\arabic{theorem}"
+msgstr "所見 \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:392
 msgid "Note \\arabic{theorem}"
@@ -6741,11 +6739,11 @@ msgstr "主張 #."
 
 #: lib/layouts/heb-article.layout:85
 msgid "Remarks"
-msgstr "注記"
+msgstr "所見"
 
 #: lib/layouts/heb-article.layout:88
 msgid "Remarks #."
-msgstr "注記 #."
+msgstr "所見 #."
 
 #: lib/layouts/heb-article.layout:110
 msgid "Proof:"
@@ -6828,7 +6826,7 @@ msgstr "例 \\theexample."
 #: lib/layouts/ijmpc.layout:176 lib/layouts/ijmpd.layout:174
 #: lib/layouts/theorems-ams-bytype.inc:207 lib/layouts/theorems-bytype.inc:182
 msgid "Remark \\theremark."
-msgstr "注記 \\theremark."
+msgstr "所見 \\theremark."
 
 #: lib/layouts/ijmpc.layout:181 lib/layouts/ijmpd.layout:180
 #: lib/layouts/theorems-ams-extended-bytype.module:174
@@ -6864,11 +6862,11 @@ msgstr "命題 \\theproposition."
 
 #: lib/layouts/ijmpc.layout:256 lib/layouts/ijmpd.layout:263
 msgid "Prop"
-msgstr "命題"
+msgstr "命題(Prop)"
 
 #: lib/layouts/ijmpc.layout:260 lib/layouts/ijmpd.layout:267
 msgid "Prop \\theprop."
-msgstr "命題\\theprop."
+msgstr "命題(Prop)\\theprop."
 
 #: lib/layouts/ijmpc.layout:265 lib/layouts/ijmpd.layout:273
 #: lib/layouts/llncs.layout:391 lib/layouts/svjour.inc:415
@@ -6887,11 +6885,11 @@ msgstr "主張 \\theclaim."
 #: lib/layouts/ijmpc.layout:287 lib/layouts/ijmpd.layout:297
 #: lib/layouts/theorems-ams-bytype.inc:125 lib/layouts/theorems-bytype.inc:100
 msgid "Conjecture \\theconjecture."
-msgstr "予想 \\theconjecture."
+msgstr "推論 \\theconjecture."
 
 #: lib/layouts/ijmpc.layout:290 lib/layouts/ijmpd.layout:300
 msgid "Appendices Section"
-msgstr "付録節"
+msgstr "付録領域"
 
 #: lib/layouts/ijmpc.layout:299 lib/layouts/ijmpd.layout:309
 msgid "--- Appendices ---"
@@ -7054,7 +7052,7 @@ msgstr "主張."
 
 #: lib/layouts/llncs.layout:312 lib/layouts/svjour.inc:330
 msgid "Conjecture #."
-msgstr "予想 #."
+msgstr "推論 #."
 
 #: lib/layouts/llncs.layout:340 lib/layouts/svjour.inc:358
 msgid "Example #."
@@ -7096,7 +7094,7 @@ msgstr "問 #."
 
 #: lib/layouts/llncs.layout:401 lib/layouts/svjour.inc:425
 msgid "Remark #."
-msgstr "注記 #."
+msgstr "所見 #."
 
 #: lib/layouts/llncs.layout:405 lib/layouts/svmono.layout:167
 #: lib/layouts/svjour.inc:429
@@ -7306,11 +7304,11 @@ msgstr "場所(Place):"
 
 #: lib/layouts/scrlettr.layout:174 lib/layouts/scrlttr2.layout:253
 msgid "Specialmail"
-msgstr "配送手段(Specialmail)"
+msgstr "特別便"
 
 #: lib/layouts/scrlettr.layout:177 lib/layouts/scrlttr2.layout:257
 msgid "Specialmail:"
-msgstr "配送手段(Specialmail):"
+msgstr "特別便:"
 
 #: lib/layouts/scrlettr.layout:191 lib/layouts/scrlttr2.layout:273
 msgid "Title:"
@@ -7426,11 +7424,11 @@ msgstr "スライドの終わり"
 
 #: lib/layouts/seminar.layout:57
 msgid "SlideHeading"
-msgstr "スライドヘディング"
+msgstr "スライドヘッダ"
 
 #: lib/layouts/seminar.layout:64
 msgid "SlideSubHeading"
-msgstr "スライド副ヘディング"
+msgstr "スライド副ヘッダ"
 
 #: lib/layouts/seminar.layout:70
 msgid "ListOfSlides"
@@ -8319,7 +8317,7 @@ msgstr "改訂"
 
 #: lib/layouts/db_stdtitle.inc:78
 msgid "RevisionRemark"
-msgstr "改訂注記"
+msgstr "改訂注釈"
 
 #: lib/layouts/db_stdtitle.inc:94
 msgid "FirstName"
@@ -8403,19 +8401,19 @@ msgstr "献呈"
 
 #: lib/layouts/scrclass.inc:187
 msgid "Titlehead"
-msgstr "扉頭書き(titlehead)"
+msgstr "タイトル頭書き"
 
 #: lib/layouts/scrclass.inc:197
 msgid "Uppertitleback"
-msgstr "扉裏上書き(uppertitleback)"
+msgstr "扉裏上部"
 
 #: lib/layouts/scrclass.inc:203
 msgid "Lowertitleback"
-msgstr "扉裏下書き(lowertitleback)"
+msgstr "扉裏下部"
 
 #: lib/layouts/scrclass.inc:209
 msgid "Extratitle"
-msgstr "ハーフタイトル(extratitle)"
+msgstr "追加タイトル"
 
 #: lib/layouts/scrclass.inc:231
 msgid "Captionabove"
@@ -8427,7 +8425,7 @@ msgstr "下部キャプション"
 
 #: lib/layouts/scrclass.inc:269
 msgid "Dictum"
-msgstr "格言(dictum)"
+msgstr "格言"
 
 #: lib/layouts/stdcharstyles.inc:8
 msgid "CharStyle"
@@ -8623,7 +8621,7 @@ msgstr "演習 \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:178 lib/layouts/theorems.inc:178
 msgid "Remark \\thetheorem."
-msgstr "注記 \\thetheorem."
+msgstr "所見 \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:197 lib/layouts/theorems.inc:197
 msgid "Claim \\thetheorem."
@@ -8643,7 +8641,7 @@ msgstr "演習*"
 
 #: lib/layouts/theorems-order.inc:64 lib/layouts/theorems-starred.inc:173
 msgid "Remark*"
-msgstr "注記*"
+msgstr "所見*"
 
 #: lib/layouts/theorems-order.inc:70 lib/layouts/theorems-starred.inc:193
 msgid "Claim*"
@@ -8651,7 +8649,7 @@ msgstr "主張*"
 
 #: lib/layouts/theorems-starred.inc:96
 msgid "Conjecture."
-msgstr "予想."
+msgstr "推論."
 
 #: lib/layouts/theorems-starred.inc:105
 msgid "Fact*"
@@ -8667,7 +8665,7 @@ msgstr "演習."
 
 #: lib/layouts/theorems-starred.inc:176
 msgid "Remark."
-msgstr "注記."
+msgstr "所見."
 
 #: lib/layouts/braille.module:2
 msgid "Braille"
@@ -8813,7 +8811,7 @@ msgid ""
 "examples."
 msgstr ""
 "言語学に便利な特別な環境をいくつか（付番用例や語句注解、セマンティック・マー"
-"クアップ、OT表フロート）定義します。exampleディレクトリのlinguistics.lyxファ"
+"クアップ、絵画フロート）定義します。exampleディレクトリのlinguistics.lyxファ"
 "イルをご参照ください。"
 
 #: lib/layouts/linguistics.module:13
@@ -8882,11 +8880,11 @@ msgstr "意味"
 
 #: lib/layouts/linguistics.module:161
 msgid "Tableau"
-msgstr "OT表"
+msgstr "絵画"
 
 #: lib/layouts/linguistics.module:166
 msgid "List of Tableaux"
-msgstr "OT表一覧"
+msgstr "絵画一覧"
 
 #: lib/layouts/logicalmkup.module:2
 msgid "Logical Markup"
@@ -9152,7 +9150,7 @@ msgid ""
 "numbered and non-numbered forms."
 msgstr ""
 "AMS定理パッケージを使う定理環境をいくつか追加定義します。中には、基準・アルゴ"
-"リズム・公理・条件・注釈・記法・要約・謝辞・結論・事実・仮定・場合が、連番あ"
+"リズム・公理・条件・所見・記法・要約・謝辞・結論・事実・仮定・場合が、連番あ"
 "りと連番なしの両方の形で含まれています。"
 
 #: lib/layouts/theorems-ams-extended.module:37
@@ -9251,7 +9249,7 @@ msgstr ""
 
 #: lib/layouts/theorems-chap.module:2
 msgid "Theorems (Numbered by Chapter)"
-msgstr "定理(章毎連番)"
+msgstr "定理(章毎に連番)"
 
 #: lib/layouts/theorems-chap.module:7
 msgid ""
@@ -9259,7 +9257,7 @@ msgid ""
 "chapter start). Use this module only with document classes that provide a "
 "chapter environment."
 msgstr ""
-"定理などを章ごとに付番します（つまり章が始まるときにカウンタがリセットされま"
+"定理などを章毎に付番します（つまり章が始まるときにカウンタがリセットされま"
 "す）。このモジュールは、章環境を提供するレイアウトとのみ使用してください。"
 
 #: lib/layouts/theorems-sec-bytype.module:2
@@ -9281,7 +9279,7 @@ msgstr ""
 
 #: lib/layouts/theorems-sec.module:2
 msgid "Theorems (Numbered by Section)"
-msgstr "定理(節毎連番)"
+msgstr "定理(節毎に連番)"
 
 #: lib/layouts/theorems-sec.module:6
 msgid ""
@@ -10715,11 +10713,11 @@ msgstr "挿入(N)|N"
 
 #: lib/ui/stdcontext.inc:63
 msgid "Add Line Above|o"
-msgstr "上に行を追加(O)|O"
+msgstr "上に罫線を追加(O)|O"
 
 #: lib/ui/stdcontext.inc:64 lib/ui/stdmenus.inc:217
 msgid "Add Line Below|B"
-msgstr "下に行を追加(B)|B"
+msgstr "下に罫線を追加(B)|B"
 
 #: lib/ui/stdcontext.inc:65 lib/ui/stdmenus.inc:218
 msgid "Delete Line Above|D"
@@ -11006,7 +11004,7 @@ msgstr "Verbatim|V"
 
 #: lib/ui/stdcontext.inc:251
 msgid "Verbatim (marked blanks)|b"
-msgstr "Verbatim（空白に印）|b"
+msgstr "Verbatim (marked blanks)|b"
 
 #: lib/ui/stdcontext.inc:252
 msgid "Listing|L"
@@ -11014,7 +11012,7 @@ msgstr "リスト(L)|L"
 
 #: lib/ui/stdcontext.inc:256
 msgid "Edit Included File...|E"
-msgstr "取り込んだファイルを編集(E)...|E"
+msgstr "インクルードしたファイルを編集(E)...|E"
 
 #: lib/ui/stdcontext.inc:263 lib/ui/stdmenus.inc:390
 msgid "New Page|N"
@@ -11196,7 +11194,7 @@ msgstr "直近のファイルを開く(T)|T"
 
 #: lib/ui/stdmenus.inc:49
 msgid "Close All"
-msgstr "すべて閉じる"
+msgstr "全て閉じる"
 
 #: lib/ui/stdmenus.inc:52
 msgid "Save All|l"
@@ -14801,7 +14799,7 @@ msgstr "HTML (MS Word)"
 
 #: lib/configure.py:433
 msgid "LyXBlogger"
-msgstr ""
+msgstr "LyXBlogger"
 
 #: src/BiblioInfo.cpp:243 src/frontends/qt4/GuiDocument.cpp:1378
 #, c-format
@@ -15091,11 +15089,11 @@ msgid ""
 "Chose an appropriate document encoding (such as utf8)\n"
 "or change the path name."
 msgstr ""
-"お使いの文書で使用されているパス名\n"
-"（%1$s）\n"
-"には、現在の文書エンコーディング（%2$s）では\n"
-"表すことのできないグリフが含まれています。\n"
-"これでは、おそらく出力が不完全なものに終わります。\n"
+"使用中の文書のパス\n"
+"「%1$s」には、\n"
+"現在の文書エンコーディング（すなわち%2$s）で\n"
+"表すことのできないグリフが含まれています。このため、\n"
+"出力は不完全となる可能性が大きいです。\n"
 "\n"
 "（utf8など）適切な文書エンコーディングを選択するか、\n"
 "パス名を変更してください。"
@@ -15291,11 +15289,12 @@ msgid ""
 "available. See the Customization documentation\n"
 "for more information.\n"
 msgstr ""
-"この文書が要求しているレイアウトファイル%1$s.layoutが\n"
-"利用可能になっていません。おそらくは，この文書が要求\n"
-"しているLaTeXクラスあるいはスタイルファイルが利用でき\n"
-"ないためと思われます。詳細な情報については，「カスタ\n"
-"マイズ」ヘルプファイルを見てください。\n"
+"この文書が要求しているレイアウトファイル\n"
+"%1$s.layout\n"
+"が利用可能になっていません。この文書が要求\n"
+"しているLaTeXクラスかスタイルファイルが利\n"
+"用できないためと思われます。詳細は「カスタ\n"
+"マイズ」ヘルプファイルをご覧ください。\n"
 
 #: src/BufferParams.cpp:486
 msgid "Document class not available"
@@ -15357,9 +15356,9 @@ msgid ""
 "not available in your LaTeX installation. LaTeX output\n"
 "may not be possible.\n"
 msgstr ""
-"モジュール「%1$s」は、お使いのLaTeX\n"
-"装備にはないパッケージを必要としています。\n"
-"LaTeXの出力はできない可能性があります。\n"
+"モジュール「%1$s」は、お使いのLaTeX装備には\n"
+"ないパッケージを必要としています。LaTeXの出力は\n"
+"できない可能性があります。\n"
 
 #: src/BufferParams.cpp:1751
 msgid "Package not available"
@@ -15658,7 +15657,7 @@ msgstr "淡色表示差込枠の背景"
 
 #: src/Color.cpp:162
 msgid "shaded box"
-msgstr "影付きボックス"
+msgstr "影付き箱型"
 
 #: src/Color.cpp:163
 msgid "listings background"
@@ -15984,9 +15983,8 @@ msgid "Overwrite file?"
 msgstr "ファイルを上書きしますか？"
 
 #: src/Exporter.cpp:50
-#, fuzzy
 msgid "&Keep file"
-msgstr "削除しない(&K)"
+msgstr "ファイルを維持(&K)"
 
 #: src/Exporter.cpp:51
 msgid "Overwrite &all"
@@ -16337,7 +16335,6 @@ msgid "Setting debug level to %1$s"
 msgstr "デバッグレベルを%1$sに設定します"
 
 #: src/LyX.cpp:963
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -16384,6 +16381,12 @@ msgstr ""
 "\t-i [--import] fmt file.xxx\n"
 "                  fmtは読み込みの型、file.xxxは\n"
 "                  読み込むファイルと指定します。\n"
+"\t-f [--force-overwrite] what\n"
+"                  whatは「all」か「main」の値を取り得ます。\n"
+"                  「all」を使用すると、書き出しバッチのあいだ、全てのファイル"
+"を\n"
+"                  上書きし、「main」ならば主幹ファイルのみを上書きします。\n"
+"                  その他の値は全て「all」に等しいですが、推奨されません。\n"
 "\t-version        バージョンとビルド情報を表示\n"
 "詳細は LyX man ページを見て下さい。"
 
@@ -16604,18 +16607,18 @@ msgid ""
 "%1$s\n"
 " has been externally modified. Reload now? Any local changes will be lost."
 msgstr ""
-"文書 \n"
+"文書\n"
 "%1$s\n"
-"は外部から修正されています。直ちに読み込み直しますか？ただしローカルに加えた"
-"変更はすべて失われます。"
+"は外部から修正されています。読み込み直しますか？ローカルに加えた変更は全て失"
+"われます。"
 
 #: src/LyXFunc.cpp:1925
 msgid "Reload externally changed document?"
-msgstr "外部から変更された文書を読み込み直しますか？"
+msgstr "読み込み直して、外部から変更を加えられた文書に切り替えますか？"
 
 #: src/LyXFunc.cpp:1926 src/buffer_funcs.cpp:77
 msgid "&Reload"
-msgstr "復帰(&R)"
+msgstr "再読み込み(&R)"
 
 #: src/LyXFunc.cpp:1969
 msgid "Welcome to LyX!"
@@ -17520,7 +17523,7 @@ msgstr "いいえ(&N)"
 
 #: src/VCBackend.cpp:732
 msgid "View &Log ..."
-msgstr "ログを閲覧(&L)..."
+msgstr "ログを表示(&L)..."
 
 #: src/VCBackend.cpp:798
 msgid "VCN File Locking"
@@ -17886,15 +17889,15 @@ msgstr "枠なし"
 
 #: src/frontends/qt4/GuiBox.cpp:56
 msgid "Simple rectangular frame"
-msgstr "簡素な長方形の枠"
+msgstr "簡素な長方形の箱型"
 
 #: src/frontends/qt4/GuiBox.cpp:57
 msgid "Oval frame, thin"
-msgstr "楕円形の枠（細線）"
+msgstr "楕円形の箱型（細線）"
 
 #: src/frontends/qt4/GuiBox.cpp:57
 msgid "Oval frame, thick"
-msgstr "楕円形の枠（太線）"
+msgstr "楕円形の箱型（太線）"
 
 #: src/frontends/qt4/GuiBox.cpp:58
 msgid "Drop shadow"
@@ -17906,7 +17909,7 @@ msgstr "影の背景"
 
 #: src/frontends/qt4/GuiBox.cpp:59
 msgid "Double rectangular frame"
-msgstr "二重線の長方形の枠"
+msgstr "二重線の長方形の箱型"
 
 #: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:356
 #: src/frontends/qt4/GuiBox.cpp:391
@@ -18500,7 +18503,7 @@ msgstr "見つかりません"
 
 #: src/frontends/qt4/GuiDocument.cpp:2386
 msgid "Assigned master does not include this file"
-msgstr "割り当てられたマスターはこのファイルを取り込んでいません"
+msgstr "割り当てられたマスターはこのファイルをインクルードしていません"
 
 #: src/frontends/qt4/GuiDocument.cpp:2387
 #, c-format
@@ -18511,7 +18514,7 @@ msgid ""
 msgstr ""
 "マスター文書機能を使用するためには、\n"
 "このファイルを「%1$s」文書に\n"
-"取り込まなくてはなりません。"
+"インクルードしなくてはなりません。"
 
 #: src/frontends/qt4/GuiDocument.cpp:2391
 msgid "Could not load master"
@@ -20250,7 +20253,7 @@ msgstr "展開されたERT差込枠です"
 #: src/insets/InsetExternal.cpp:492
 #, c-format
 msgid "External template %1$s is not installed"
-msgstr "外用ひな型%1$sはインストールされていません"
+msgstr "外部ひな型%1$sはインストールされていません"
 
 #: src/insets/InsetFlex.cpp:52
 msgid "Opened Flex Inset"
@@ -21165,7 +21168,7 @@ msgstr "変更追跡機能"
 
 #: src/support/debug.cpp:62
 msgid "External template/inset messages"
-msgstr "外用ひな型・差込枠メッセージ"
+msgstr "外部ひな型・差込枠メッセージ"
 
 #: src/support/debug.cpp:63
 msgid "RowPainter profiling"
@@ -21236,29 +21239,6 @@ msgstr ""
 msgid "Unknown user"
 msgstr "未知の"
 
-#~ msgid "Date format"
-#~ msgstr "日付書式"
-
-#, fuzzy
-#~ msgid "Lowercase"
-#~ msgstr "小文字(L)|L"
-
-#, fuzzy
-#~ msgid "lowercase"
-#~ msgstr "小文字(L)|L"
-
-#, fuzzy
-#~ msgid "Special Paper Notice"
-#~ msgstr "特別な文字(S)|S"
-
-#, fuzzy
-#~ msgid "Publication ID"
-#~ msgstr "出版社"
-
-#, fuzzy
-#~ msgid "Biography without photo"
-#~ msgstr "写真なし経歴"
-
 #~ msgid "TheoremTemplate"
 #~ msgstr "定理ひな型"
 
@@ -21275,7 +21255,7 @@ msgstr "未知の"
 #~ msgstr "命題 #:"
 
 #~ msgid "Conjecture #:"
-#~ msgstr "予想 #:"
+#~ msgstr "推論 #:"
 
 #~ msgid "Criterion #:"
 #~ msgstr "基準 #:"
@@ -21302,7 +21282,7 @@ msgstr "未知の"
 #~ msgstr "演習 #:"
 
 #~ msgid "Remark #:"
-#~ msgstr "注記 #:"
+#~ msgstr "注釈 #:"
 
 #~ msgid "Claim #:"
 #~ msgstr "主張 #:"
@@ -21318,13 +21298,6 @@ msgstr "未知の"
 
 #~ msgid "Footernote"
 #~ msgstr "脚注"
-
-#~ msgid ""
-#~ "Shortcut `%1$s' is already bound to:\n"
-#~ "%2$s"
-#~ msgstr ""
-#~ "短絡キー「%1$s」はすでに以下に割り当てられています:\n"
-#~ "%2$s"
 
 #~ msgid "Anschrift:"
 #~ msgstr "Anschrift:"
@@ -21416,6 +21389,31 @@ msgstr "未知の"
 #~ msgid "Anlagen:"
 #~ msgstr "Anlagen:"
 
+#, fuzzy
+#~ msgid "Theorems (By Chapter)"
+#~ msgstr "定理(章毎連番)"
+
+#, fuzzy
+#~ msgid "Theorems (By Section)"
+#~ msgstr "定理(節毎連番)"
+
+#~ msgid "Numbers theorems and the like by section."
+#~ msgstr "定理やその類似物を節ごとに付番します。"
+
+#, fuzzy
+#~ msgid "Theorems (Starred)"
+#~ msgstr "定理(AMS)"
+
+#~ msgid "Date format"
+#~ msgstr "日付書式"
+
+#~ msgid ""
+#~ "Shortcut `%1$s' is already bound to:\n"
+#~ "%2$s"
+#~ msgstr ""
+#~ "短絡キー「%1$s」はすでに以下に割り当てられています:\n"
+#~ "%2$s"
+
 #~ msgid "You cannot paste into a multicell selection."
 #~ msgstr "複数セルを選択しているところに貼り付けることはできません。"
 
@@ -21430,9 +21428,6 @@ msgstr "未知の"
 #, fuzzy
 #~ msgid "Directory not found"
 #~ msgstr "文字列が見つかりません！"
-
-#~ msgid "Numbers theorems and the like by section."
-#~ msgstr "定理やその類似物を節ごとに付番します。"
 
 #~ msgid "Latex"
 #~ msgstr "Latex"
