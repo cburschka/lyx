@@ -248,9 +248,11 @@ void delEmptyLastRow(InsetMathGrid & grid)
  */
 bool innerHull(docstring const & name)
 {
+	// For [bB]matrix, [vV]matrix, and pmatrix we can check the suffix only
 	return name == "array" || name == "cases" || name == "aligned"
 		|| name == "alignedat" || name == "gathered" || name == "split"
-		|| name == "tabular";
+		|| name == "subarray" || name == "tabular" || name == "matrix"
+		|| name.substr(1) == "matrix";
 }
 
 
