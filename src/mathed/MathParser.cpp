@@ -213,7 +213,7 @@ bool addCol(InsetMathGrid & grid, InsetMathGrid::col_type & cellcol)
 
 
 /*!
- * Check wether the last row is empty and remove it if yes.
+ * Check whether the last row is empty and remove it if yes.
  * Otherwise the following code
  * \verbatim
 \begin{array}{|c|c|}
@@ -224,6 +224,8 @@ bool addCol(InsetMathGrid & grid, InsetMathGrid::col_type & cellcol)
  * \endverbatim
  * will result in a grid with 3 rows (+ the dummy row that is always present),
  * because the last '\\' opens a new row.
+ * Note that this is only needed for inner-hull grid types, such as array
+ * or aligned, but not for outer-hull grid types, such as eqnarray or align.
  */
 void delEmptyLastRow(InsetMathGrid & grid)
 {
@@ -237,6 +239,19 @@ void delEmptyLastRow(InsetMathGrid & grid)
 	// empty row.
 	grid.rowinfo(row + 1) = grid.rowinfo(row);
 	grid.delRow(row);
+}
+
+
+/*!
+ * Tell whether the environment name corresponds to an inner-hull grid type.
+ */
+bool innerHull(docstring const & name)
+{
+	// For [bB]matrix, [vV]matrix, and pmatrix we can check the suffix only
+	return name == "array" || name == "cases" || name == "aligned"
+		|| name == "alignedat" || name == "gathered" || name == "split"
+		|| name == "subarray" || name == "tabular" || name == "matrix"
+		|| name.substr(1) == "matrix";
 }
 
 
@@ -1243,7 +1258,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					// probably need to refine this test.
 					// Right now we only have to test for
 					// single line hull insets.
-					if (grid.nrows() > 1)
+					if (grid.nrows() > 1 && innerHull(name))
 						delEmptyLastRow(grid);
 					return success_;
 				}
@@ -1681,6 +1696,11 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		else if (t.cs() == "substack") {
 			cell->push_back(createInsetMath(t.cs(), buf));
 			parse2(cell->back(), FLAG_ITEM, mode, false);
+			// Delete empty last row if present
+			InsetMathGrid & subgrid =
+				*(cell->back().nucleus()->asGridInset());
+			if (subgrid.nrows() > 1)
+				delEmptyLastRow(subgrid);
 		}
 
 		else if (t.cs() == "xymatrix") {
@@ -1689,6 +1709,11 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				os << getToken().asInput();
 			cell->push_back(createInsetMath(t.cs() + os.str(), buf));
 			parse2(cell->back(), FLAG_ITEM, mode, false);
+			// Delete empty last row if present
+			InsetMathGrid & subgrid =
+				*(cell->back().nucleus()->asGridInset());
+			if (subgrid.nrows() > 1)
+				delEmptyLastRow(subgrid);
 		}
 
 		else if (t.cs() == "framebox" || t.cs() == "makebox") {

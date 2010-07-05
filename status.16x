@@ -121,6 +121,9 @@ What's new
 
 - Fix chapter and section label declaration in the Tufte book class.
 
+- Do not swallow an empty last line in matrix or eqnarray types of
+  environments (bug 6595).
+
 
 * USER INTERFACE
 
