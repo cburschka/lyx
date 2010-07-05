@@ -249,7 +249,8 @@ void delEmptyLastRow(InsetMathGrid & grid)
 bool innerHull(docstring const & name)
 {
 	return name == "array" || name == "cases" || name == "aligned"
-		|| name == "alignedat" || name == "gathered" || name == "split";
+		|| name == "alignedat" || name == "gathered" || name == "split"
+		|| name == "tabular";
 }
 
 
@@ -1694,6 +1695,11 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		else if (t.cs() == "substack") {
 			cell->push_back(createInsetMath(t.cs(), buf));
 			parse2(cell->back(), FLAG_ITEM, mode, false);
+			// Delete empty last row if present
+			InsetMathGrid & subgrid =
+				*(cell->back().nucleus()->asGridInset());
+			if (subgrid.nrows() > 1)
+				delEmptyLastRow(subgrid);
 		}
 
 		else if (t.cs() == "xymatrix") {
@@ -1702,6 +1708,11 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				os << getToken().asInput();
 			cell->push_back(createInsetMath(t.cs() + os.str(), buf));
 			parse2(cell->back(), FLAG_ITEM, mode, false);
+			// Delete empty last row if present
+			InsetMathGrid & subgrid =
+				*(cell->back().nucleus()->asGridInset());
+			if (subgrid.nrows() > 1)
+				delEmptyLastRow(subgrid);
 		}
 
 		else if (t.cs() == "framebox" || t.cs() == "makebox") {
