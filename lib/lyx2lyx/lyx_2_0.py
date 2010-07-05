@@ -324,6 +324,28 @@ def revert_flex_inset(document, name, LaTeXname, position):
     i += 1
 
 
+def revert_charstyles(document, name, LaTeXname, changed):
+  " Reverts character styles to TeX code "
+  i = 0
+  while True:
+    i = find_token(document.body, name + ' on', i)
+    if i == -1:
+      return changed
+    else:
+      j = find_token(document.body, name + ' default', i)
+      k = find_token(document.body, name + ' on', i + 1)
+      # if there is no default set, the style ends with the layout
+      # assure hereby that we found the correct layout end
+      if j != -1 and (j < k or k ==-1):
+      	document.body[j:j+1] = put_cmd_in_ert("}")
+      else:
+        j = find_token(document.body, '\\end_layout', i)
+        document.body[j:j] = put_cmd_in_ert("}")
+      document.body[i:i+1] = put_cmd_in_ert(LaTeXname + "{")
+      changed = True
+    i += 1
+
+
 ####################################################################
 
 
@@ -774,26 +796,16 @@ def revert_printindexall(document):
 
 
 def revert_strikeout(document):
-    " Reverts \\strikeout character style "
-    while True:
-        i = find_token(document.body, '\\strikeout', 0)
-        if i == -1:
-            return
-        del document.body[i]
-
-
-def revert_uulinewave(document):
-    " Reverts \\uuline, and \\uwave character styles "
-    while True:
-        i = find_token(document.body, '\\uuline', 0)
-        if i == -1:
-            break
-        del document.body[i]
-    while True:
-        i = find_token(document.body, '\\uwave', 0)
-        if i == -1:
-            return
-        del document.body[i]
+  " Reverts \\strikeout character style "
+  changed = False
+  changed = revert_charstyles(document, "\\uuline", "\\uuline", changed)
+  changed = revert_charstyles(document, "\\uwave", "\\uwave", changed)
+  changed = revert_charstyles(document, "\\strikeout", "\\sout", changed)
+  if changed == True:
+    insert_to_preamble(0, document,
+        '% Commands inserted by lyx2lyx for proper underlining\n'
+        + '\\PassOptionsToPackage{normalem}{ulem}\n'
+        + '\\usepackage{ulem}\n')
 
 
 def revert_ulinelatex(document):
@@ -1809,7 +1821,7 @@ def revert_makebox(document):
 
 
 def revert_IEEEtran(document):
-  " Convert IEEEtran layouts and styles to TeX codeT "
+  " Convert IEEEtran layouts and styles to TeX code "
   revert_flex_inset(document, "IEEE membership", "\\IEEEmembership", 0)
   revert_flex_inset(document, "Lowercase", "\\MakeLowercase", 0)
 
@@ -1908,7 +1920,7 @@ revert =  [[393, [revert_makebox]],
            [358, [revert_nomencl_width]],
            [357, [revert_custom_processors]],
            [356, [revert_ulinelatex]],
-           [355, [revert_uulinewave]],
+           [355, []],
            [354, [revert_strikeout]],
            [353, [revert_printindexall]],
            [352, [revert_subindex]],
