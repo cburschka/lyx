@@ -1780,8 +1780,8 @@ def revert_argument(document):
     i = find_token(document.body, '\\begin_inset Argument', i)
     if i == -1:
       return
-      document.body[i] = "\\begin_inset OptArg"
-      i += 1
+    document.body[i] = "\\begin_inset OptArg"
+    i += 1
 
 
 def revert_makebox(document):
