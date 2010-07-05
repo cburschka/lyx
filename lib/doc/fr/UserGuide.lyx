@@ -1,4 +1,4 @@
-#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.7svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -3616,14 +3616,21 @@ tout
  Ceci inclut les environnements de paragraphe.
  Quelques-uns sont standard, et toutes les classes de document les possèdent.
  Cependant, certaines classes ont des environnements de paragraphe spéciaux.
- Si tel est le cas, et que vous changez de classe de document, 
-\lang english
-LyX will mark the paragraphs whose styles it no longer understands as “unknown”.
- The name of the style is retained, in case you should want to go back to
- the old class.
- But these paragraphs will be output with no special formatting, so you
- will either need to create a new style yourself or else to convert these
- paragraphs manually to a style present in your new document class.
+ Si tel est le cas, et que vous changez de classe de document, LyX identifiera
+ comme 
+\begin_inset Quotes fld
+\end_inset
+
+inconnus
+\begin_inset Quotes frd
+\end_inset
+
+ les environnements des paragraphes dont le style n'est plus reconnu.
+ Le nom du style est cependant préservé au cas où vous souhaiteriez revenir
+ à la classe originale, mais ces paragraphes apparaîtront sans formattage
+ particulier dans la version imprimable, et vous devrez donc soit créer
+ une nouveau style vous-même, soit convertir manuellement ces paragraphes
+ dans un style disponible dans la nouvelle classe de document.
 \end_layout
 
 \begin_layout Section
@@ -25796,9 +25803,7 @@ page
 
 <page>
 \family default
- 
-\lang english
-will not print anything about the page if the label is on the same page.
+ n'imprimera rien concernant la page si l'étiquette est sur la même page.
 \end_layout
 
 \begin_layout Standard
@@ -25843,13 +25848,10 @@ reference "sec:Numérotation-et-étiquetage"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Right-clicking on a cross-reference opens a context menu.
- The entry 
+Un clic droit sur une référence croisée ouvre un menu contextuel.
+ Le choix
 \family sans
-\lang french
-Aller
+ Aller
 \begin_inset space ~
 \end_inset
 
@@ -25859,20 +25861,13 @@ Aller
 
 l'étiquette
 \family default
- 
-\lang english
-sets the the cursor before the referenced label.
- This entry will be renamed in the context menu of the label to
-\lang french
- 
+ positionne le curseur avant l'étiquette référencée.
+ Ce choix sera renommé 
 \family sans
 Revenir
 \family default
- 
-\lang english
-so that you can use it to set the cursor back to the cross-reference.
-
-\lang french
+ dans le menu contextuel de l'étiquette pour que vous puissiez repositionner
+ le curseur sur la référence croisée.
  Vous pouvez aussi revenir au point de départ avec le bouton 
 \begin_inset Graphics
 	filename ../../images/bookmark-goto_0.png
