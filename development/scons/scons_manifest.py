@@ -2233,6 +2233,11 @@ lib_doc_da_files = Split('''
 ''')
 
 
+lib_doc_el_files = Split('''
+    Intro.lyx
+''')
+
+
 lib_doc_es_files = Split('''
     Customization.lyx
     DocumentoPostizo1.lyx
@@ -2538,6 +2543,25 @@ lib_examples_de_files = Split('''
 ''')
 
 
+lib_examples_el_files = Split('''
+    splash.lyx
+''')
+
+
+lib_examples_es_files = Split('''
+    beamer-conference-ornate20min.lyx
+    Braille.lyx
+    ejemplo_con_lyx.lyx
+    ejemplo_sin_lyx.lyx
+    ItemizeBullets.lyx
+    linguistics.lyx
+    multicol.lyx
+    splash.lyx
+    tufte-book.lyx
+    tufte-handout.lyx
+''')
+
+
 lib_examples_fa_files = Split('''
     splash.lyx
 ''')
@@ -2558,20 +2582,6 @@ lib_examples_fr_files = Split('''
     splash.lyx
     xyfigure.png
     xypic.lyx
-''')
-
-
-lib_examples_es_files = Split('''
-    beamer-conference-ornate20min.lyx
-    Braille.lyx
-    ejemplo_con_lyx.lyx
-    ejemplo_sin_lyx.lyx
-    ItemizeBullets.lyx
-    linguistics.lyx
-    multicol.lyx
-    splash.lyx
-    tufte-book.lyx
-    tufte-handout.lyx
 ''')
 
 

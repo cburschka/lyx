@@ -97,6 +97,10 @@ dist_declipartdoc_DATA = \
 	de/clipart/StandardBoxQt4.png \
 	de/clipart/UnterdokumentQt4.png
 
+eldocdir = $(docdir)/el
+dist_eldoc_DATA = \
+	el/Intro.lyx
+
 esdocdir = $(docdir)/es
 dist_esdoc_DATA = \
 	es/Additional.lyx \
