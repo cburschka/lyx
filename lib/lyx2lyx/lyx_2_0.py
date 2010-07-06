@@ -1830,9 +1830,13 @@ def revert_makebox(document):
       return
     j = find_token(document.body, 'use_makebox 1', i)
     # assure we found the makebox of the current box
-    if j > i + 7 or j == -1:
+    if j > z or j == -1:
       return
-    # remove the \end_inset
+    y = find_token(document.body, "\\begin_layout", i)
+    if y > z or y == -1:
+      document.warning("Malformed LyX document: Can't find layout in box.")
+      return
+    # remove the \end_layout \end_inset pair
     document.body[z - 2:z + 1] = put_cmd_in_ert("}")
     # determine the alignment
     k = find_token(document.body, 'hor_pos', j - 4)
@@ -1846,7 +1850,7 @@ def revert_makebox(document):
     length = latex_length(length).split(",")[1]
     subst = "\\makebox[" + length + "][" \
       + align + "]{"
-    document.body[i:i + 14] = put_cmd_in_ert(subst)
+    document.body[i:y+1] = put_cmd_in_ert(subst)
     i += 1
 
 
