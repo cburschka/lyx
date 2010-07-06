@@ -1,0 +1,2893 @@
+#LyX 1.6.7svn created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \cleardoublepage
+  \pagenumbering{arabic} }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+\end_preamble
+\use_default_options false
+\language greek
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Introduction to LyX"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Intro"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Εισαγωγή στο 
+\lang english
+LyX
+\end_layout
+
+\begin_layout Author
+από την Ομάδα του 
+\lang english
+LyX
+\lang greek
+ 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+Εάν έχετε σχόλια ή διορθώσεις λαθών, παρακαλούμε στείλτε τα στη λίστα Τεκμηρίωση
+ς 
+\lang english
+LyX
+\lang greek
+: 
+\lang english
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Η Φιλοσοφία του LyX
+\end_layout
+
+\begin_layout Subsection
+Τι είναι το LyX?
+\end_layout
+
+\begin_layout Standard
+Το 
+\lang english
+LyX
+\lang greek
+ είναι ένα σύστημα προετοιμασίας εγγράφων.
+ Ξεχωρίζει με τη δυνατότητα δημιουργίας πολύπλοκων τεχνικών και επιστημονικών
+ άρθρων με μαθηματικούς τύπους, ενδοαναφορές, βιβλιογραφίες, ευρετήρια,
+ κλπ.
+ Είναι πολύ καλό σε έγγραφα απεριόριστου μεγέθους όπου απαιτούνται οι συνήθεις
+ επεξεργαστικές δυνατότητες: αυτόματη τμηματοποίηση και σελιδοποίηση, ορθογραφικ
+ός έλεγχος, κοκ.
+ Μπορεί να χρησιμοποιηθεί επίσης για να γράψετε ένα γράμμα στη μητέρα σας,
+ αν και σίγουρα υπάρχουν απλούστερα προγράμματα διαθέσιμα για αυτό.
+ Αναμφισβήτητα, δεν είναι το καλύτερο εργαλείο για τη δημιουργία αφισών,
+ εντύπων διανομής ή διαφημιστικών (θα εξηγήσουμε παρακάτω γιατί), αν και
+ με λίγη προσπάθεια όλα αυτά μπορούν να γίνουν επίσης.
+ Μερικά παραδείγματα της χρήσης του: μνημόνια, επιστολές, πραγματείες και
+ διατριβές, σημειώσεις παραδόσεων, εγχειρίδια σεμιναρίων, πρακτικά συνεδρίων,
+ τεκμηριώσεις λογισμικού βιβλία, άρθρα επιστημονικών περιοδικών, σενάρια
+ θεάτρου και κινηματογράφου, επιχειρηματικές προτάσεις, παρουσιάσεις \SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Standard
+Το 
+\lang english
+LyX
+\lang greek
+ είναι ένα πρόγραμμα που παρέχει μια νέα προσέγγιση στη συγγραφή εγγράφων
+ με Η/Υ χρησιμοποιώντας μια μέθοδο περιγραφικής γλώσσας, μια προσέγγιση
+ που συγκρούεται με την απαρχαιωμένη παράδοση της 
+\begin_inset Quotes eld
+\end_inset
+
+γραφομηχανής
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Είναι σχεδιασμένο για συγγραφείς που επιθυμούν επαγγελματικά αποτελέσματα,
+ γρήγορα, με ελάχιστη προσπάθεια και χωρίς να γίνονται ειδήμονες της τυπογραφίας.
+ Η τυπογραφική δουλειά γίνεται ως επί το πλείστον από τον υπολογιστή, όχι
+ τον συγγραφέα; με το 
+\lang english
+LyX
+\lang greek
+, ο συγγραφέας μπορεί να συγκεντρωθεί στα περιεχόμενα του έργου του.
+\end_layout
+
+\begin_layout Standard
+Μέρος της αρχικής πρόκλησης της χρήσης του 
+\lang english
+LyX
+\lang greek
+ προέρχεται από την αλλαγή στη σκέψη του τι, εσείς ο χρήστης, πρέπει να
+ κάνετε.
+ Κάποτε, το μόνο που είχαμε για τη δημιουργία εγγράφων ήταν οι γραφομηχανές,
+ οπότε όλοι μάθαμε κάποια τρικ για να ξεπερνούμε τους περιορισμούς των.
+ Η υπογράμμιση, που είναι κάτι περισσότερο από την επιπληκτρολόγηση του
+ χαρακτήρα 
+\begin_inset Quotes eld
+\end_inset
+
+_
+\begin_inset Quotes erd
+\end_inset
+
+, έγινε ένας τρόπος απόδοσης έμφασης στο κείμενο.
+ Ήσαστε αναγκασμένοι να υπολογίσετε μεγέθη στηλών και σημεία στηλοθετών,
+ και να τα ορίσετε πριν την κατασκευή ενός πίνακα.
+ Τα ίδια ίσχυαν για τις επιστολές και άλλα δεξιά στοιχισμένα κείμενα.
+ Ο συλλαβισμός στο τέλος μιας γραμμής απαιτούσε προσεκτικό μάτι και πολλή
+ πρόβλεψη.
+\end_layout
+
+\begin_layout Standard
+Με άλλα λόγια, είχαμε όλοι εκπαιδευτεί να ανησυχούμε για τις μικρολεπτομέρειες
+ της τοποθέτησης κάθε χαρακτήρα.
+ Συνεπώς, όλοι σχεδόν οι επεξεργαστές κειμένου έχουν αυτή τη λογική.
+ Ακόμα χρησιμοποιούν στηλοθέτες για να προσθέτουν κενό διάστημα.
+ Εξακολουθείτε να ανησυχείτε για την ακριβή θέση εμφάνισης οποιουδήποτε
+ πράγματος.
+ Απόδοση έμφασης σε κείμενο σημαίνει αλλαγή γραμματοσειράς, όμοια με την
+ αλλαγή τυπογραφικής ρόδας.
+ Αυτή είναι η υποβόσκουσα φιλοσοφία ενός 
+\lang english
+WYSIWYG
+\lang greek
+ επεξεργαστή κειμένου: 
+\begin_inset Quotes eld
+\end_inset
+
+
+\lang english
+What You See Is What You Get
+\lang greek
+ (Λαμβάνεις αυτό που βλέπεις)
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Δυστυχώς, αυτό το μοντέλο συχνά οδηγεί στο 
+\begin_inset Quotes eld
+\end_inset
+
+
+\lang english
+What You See Is All You Get
+\lang greek
+ (Αυτό που βλέπεις είναι ό,τι λαμβάνεις)
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Εδώ είναι που το 
+\lang english
+LyX
+\lang greek
+ διαφέρει από έναν συνηθισμένο επεξεργαστή κειμένου.
+ Δεν ασχολείστε με τη θέση του κάθε χαρακτήρα.
+ Λέτε στο 
+\lang english
+LyX
+\lang greek
+ 
+\emph on
+τι κάνετε
+\emph default
+ και το 
+\lang english
+LyX
+\lang greek
+ αναλαμβάνει τα υπόλοιπα, ακολουθώντας ένα σύνολο κανόνων που ονομάζονται
+ 
+\emph on
+στυλ.
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Για να είμαστε δίκαιοι, οι περισσότερες σύγχρονες εκδοχές των δημοφιλέστερων
+ πακέτων αυτοματισμού γραφείου διαθέτουν ένα είδος φύλλων στυλ που ακολουθούν
+ μια παρόμοια περιγραφική μέθοδο.
+ Ωστόσο, κατά την εμπειρία μας, χρησιμοποιούνται ακόμα σπάνια στην πράξη.
+\end_layout
+
+\end_inset
+
+ Ας δούμε ένα μικρό παράδειγμα:
+\end_layout
+
+\begin_layout Standard
+Υποθέστε ότι γράφετε μια αναφορά.
+ Για να ξεκινήσετε, χρειάζεστε ένα τμήμα με όνομα 
+\begin_inset Quotes eld
+\end_inset
+
+Εισαγωγή
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Έτσι, πηγαίνετε στο μενού εκείνο του επεξεργαστή κειμένου που αλλάζει το
+ μέγεθος γραμματοσειράς και επιλέγετε ένα νέο μέγεθος.
+ Έπειτα κάνετε τα γράμματα έντονα.
+ Μετά πληκτρολογείτε, 
+\begin_inset Quotes eld
+\end_inset
+
+1.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+Εισαγωγή
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Φυσικά, εάν αργότερα αποφασίσετε ότι αυτό το τμήμα ανήκει κάπου αλλού στο
+ έγγραφο, ή αν εισάγετε ένα νέο τμήμα πριν από αυτό, πρέπει να αλλάξετε
+ την αρίθμηση για αυτό και όλα τα ακόλουθα τμήματα, όπως επίσης και τις
+ καταχωρήσεις στον πίνακα περιεχομένων.
+\end_layout
+
+\begin_layout Standard
+Στο 
+\lang english
+LyX
+\lang greek
+, πηγαίνετε στο πλαίσιο πολλαπλής επιλογής στην αριστερή άκρη της μπάρας
+ κουμπιών και επιλέγετε 
+\family sans
+Τμήμα
+\family default
+, και πληκτρολογείτε 
+\begin_inset Quotes eld
+\end_inset
+
+Εισαγωγή
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Ναι, αυτό είναι όλο.
+ Εάν αποκόψετε και επικολλήσετε το τμήμα, θα αριθμηθεί εκ νέου αυτόματα
+ — παντού.
+ Και αν εισαγάγετε αναφορές προς αυτό το τμήμα σωστά (εισάγοντας λεζάντες
+ ενδοαναφοράς), το 
+\lang english
+LyX
+\lang greek
+ θα τις ανανεώσει όλες αυτόματα σε όλη την έκταση του αρχείου, έτσι ώστε
+ ποτέ να μη γράψετε ξανά αριθμούς τμημάτων.
+\end_layout
+
+\begin_layout Standard
+Ας δούμε τώρα το ζήτημα της συνέπειας.
+ Πέντε μέρες αργότερα, ανοίγετε πάλι την αναφορά και ξεκινάτε το Τμήμα
+\begin_inset space ~
+\end_inset
+
+4.
+ Ωστόσο, ξεχνάτε ότι χρησιμοποιούσατε έντονους χαρακτήρες μεγέθους 18
+\lang english
+pt
+\lang greek
+ αντί για 16
+\lang english
+pt
+\lang greek
+, οπότε πληκτρολογείτε τον τίτλο για το Τμήμα
+\begin_inset space ~
+\end_inset
+
+4 με διαφορετικό μέγεθος γραμματοσειράς από το Τμήμα
+\begin_inset space ~
+\end_inset
+
+1.
+ Αυτό το πρόβλημα ούτε καν υφίσταται στο 
+\lang english
+LyX
+\lang greek
+.
+ Ο υπολογιστής φροντίζει για όλα τα δευτερεύοντα ζητήματα σχετικά με το
+ μέγεθος κάθε πράγματος, όχι εσείς.
+ Άλλωστε, σε αυτό ξεχωρίζουν οι υπολογιστές.
+\end_layout
+
+\begin_layout Standard
+Ακόμα ένα παράδειγμα.
+ Υποθέστε ότι φτιάχνετε μια λίστα.
+ Σε άλλους επεξεργαστές κειμένου, μια λίστα είναι απλά ένα συνονθύλευμα
+ από στηλοθέτες και νέες γραμμές.
+ Εσείς πρέπει να βρείτε πού θα τοποθετήσετε την ετικέτα κάθε αντικειμένου
+ της λίστας, με τι θα μοιάζει, πόσες κενές γραμμές να υπάρχουν μεταξύ των
+ αντικειμένων, κοκ.
+ Στο 
+\lang english
+LyX
+\lang greek
+ έχετε μόνο δύο πράγματα στο μυαλό σας, τι είδους λίστα είναι και τι θα
+ βάλετε μέσα.
+ Αυτό είναι όλο.
+\end_layout
+
+\begin_layout Standard
+Επομένως, η βασική ιδέα πίσω από το 
+\lang english
+LyX
+\lang greek
+ είναι: ορίστε 
+\emph on
+τι
+\emph default
+ κάνετε, όχι 
+\emph on
+πώς
+\emph default
+ να το κάνετε.
+ Αντί για 
+\begin_inset Quotes eld
+\end_inset
+
+
+\lang english
+What You See Is What You Get
+\lang greek
+ (Λαμβάνεις αυτό που βλέπεις)
+\begin_inset Quotes erd
+\end_inset
+
+, το μοντέλο του 
+\lang english
+LyX
+\lang greek
+ είναι 
+\begin_inset Quotes eld
+\end_inset
+
+
+\lang english
+What You See Is What You 
+\emph on
+Mean
+\emph default
+\lang greek
+ (Λαμβάνεις αυτό που 
+\emph on
+εννοείς
+\emph default
+)
+\begin_inset Quotes erd
+\end_inset
+
+ ή 
+\begin_inset Quotes eld
+\end_inset
+
+
+\lang english
+WYSIWYM
+\lang greek
+.
+\begin_inset Quotes erd
+\end_inset
+
+ Είναι μια ισχυρή ιδέα που απλοποιεί δραματικά το μηχανισμό συγγραφής εγγράφων.
+ Γι' αυτό και το 
+\lang english
+LyX
+\lang greek
+ δεν είναι τόσο καλό για τη δημιουργία αφισών και εντύπων διανομής.
+ Σε αυτές τις περιπτώσεις, θέλετε όντως να ορίσετε ακριβώς πού θα πάει το
+ κάθε τι, γιατί δεν υπάρχουν οργανωτικές δομές όπως παράγραφο, τμήματα,
+ κλπ.
+ Αυτό δε σημαίνει ότι το 
+\lang english
+LyX
+\lang greek
+ υπολείπεται κάποιας βασικής λειτουργίας.
+ Σημαίνει απλά ότι δεν είναι το καταλληλότερο εργαλείο για αυτή τη δουλειά
+ — δεν καρφώνετε καρφιά με κατσαβίδι.
+\end_layout
+
+\begin_layout Subsection
+Διαφορές μεταξύ 
+\lang english
+LyX
+\lang greek
+ και Άλλων Επεξεργαστών Κειμένου
+\begin_inset OptArg
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+
+\lang english
+LyX
+\lang greek
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{LyX}
+\end_layout
+
+\end_inset
+
+ και Άλλοι Επεξεργαστές Κειμένου
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Αυτή είναι μια λίστα πραγμάτων που δεν θα βρείτε στο 
+\lang english
+LyX
+\lang greek
+:
+\end_layout
+
+\begin_layout Itemize
+Χάρακα εγγράφου
+\end_layout
+
+\begin_layout Itemize
+Στηλοθέτες
+\end_layout
+
+\begin_layout Itemize
+Επιπλέον κενά διαστήματα (π.
+\begin_inset space \thinspace{}
+\end_inset
+
+χ.
+\begin_inset space \space{}
+\end_inset
+
+πατώντας 
+\family sans
+\lang english
+Enter
+\family default
+\lang greek
+ ή 
+\family sans
+\lang english
+Space
+\family default
+\lang greek
+ δύο ή περισσότερες φορές)
+\end_layout
+
+\begin_layout Standard
+Οι στηλοθέτες, μαζί με τον χάρακα που δείχνει τη θέση των αντικειμένων στη
+ σελίδα, είναι άχρηστα στο 
+\lang english
+LyX
+\lang greek
+.
+ Το πρόγραμμα ασχολείται με τη χωροταξία της σελίδας, όχι εσείς.
+ Το ίδιο ισχύει και για τα κενά διαστήματα; Το 
+\lang english
+LyX
+\lang greek
+ τα προσθέτει όπου χρειάζονται, ανάλογα με το περιεχόμενο.
+ Η αδυναμία πληκτρολόγησης δύο συνεχόμενων κενών γραμμών θα είναι ενοχλητική
+ στην αρχή, αλλά βγάζει περισσότερο νόημα με όρους 
+\lang english
+WYSIWYM
+\lang greek
+.
+\end_layout
+
+\begin_layout Standard
+Αυτά είναι μερικά πράγματα που υπάρχουν στο 
+\lang english
+LyX
+\lang greek
+, αλλά δεν χρησιμοποιούνται με τον τρόπο που νομίζετε:
+\end_layout
+
+\begin_layout Itemize
+Έλεγχος εσοχών
+\end_layout
+
+\begin_layout Itemize
+Αλλαγές σελίδας
+\end_layout
+
+\begin_layout Itemize
+Απόσταση γραμμών (π.
+\begin_inset space \thinspace{}
+\end_inset
+
+χ.
+\begin_inset space \space{}
+\end_inset
+
+απλή, διπλή, κλπ.)
+\end_layout
+
+\begin_layout Itemize
+Κενό διάστημα, οριζόντιο και κατακόρυφο
+\end_layout
+
+\begin_layout Itemize
+Γραμματοσειρές και μεγέθη τους
+\end_layout
+
+\begin_layout Itemize
+Μορφοποιήσεις χαρακτήρων (έντονα, πλάγια, με υπογράμμιση, κλπ.)
+\end_layout
+
+\begin_layout Standard
+Αν και υπάρχουν στο 
+\lang english
+LyX
+\lang greek
+, γενικά δεν τα χρειάζεστε.
+ Το 
+\lang english
+LyX
+\lang greek
+ αναλαμβάνει όλα αυτά για εσάς, ανάλογα με το τι κάνετε.
+ Τα διαφορετικά τμήματα του εγγράφου τίθενται αυτόματα σε διαφορετική μορφή
+ και μέγεθος.
+ Η εσοχές των παραγράφων είναι εξαρτώμενες από το περιεχόμενο; διαφορετικοί
+ τύποι παραγράφων έχουν διαφορετικές εσοχές.
+ Οι αλλαγές γραμμών ρυθμίζονται επίσης αυτόματα.
+ Γενικά, οι αποστάσεις μεταξύ γραμμών, λέξεων και παραγράφων είναι μεταβλητές
+ και ελεγχόμενες από το 
+\lang english
+LyX
+\lang greek
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Υπάρχουν τρόποι για να τα ρυθμίσετε όλα αυτά (μόνο μερικά απαιτούν γνώσεις
+ 
+\lang english
+LaTeX
+\lang greek
+), είτε για το σύνολο ενός έγγραφου, είτε για μια συγκεκριμένη περιοχή του.
+ Δείτε τον 
+\emph on
+Οδηγό Χρήστη
+\emph default
+ και/ή τα 
+\emph on
+Πρόσθετα Χαρακτηριστικά
+\emph default
+ για λεπτομέρειες.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Τέλος, υπάρχουν μερικές περιοχές όπου πιστεύουμε ότι το 
+\lang english
+LyX
+\lang greek
+ (και το 
+\lang english
+LaTeX
+\lang greek
+) ξεπερνούν πολλούς επεξεργαστές κειμένου:
+\end_layout
+
+\begin_layout Itemize
+Συλλαβισμός
+\end_layout
+
+\begin_layout Itemize
+Λίστες παντός τύπου
+\end_layout
+
+\begin_layout Itemize
+Μαθηματικοί τύποι
+\end_layout
+
+\begin_layout Itemize
+Πίνακες
+\end_layout
+
+\begin_layout Itemize
+Ενδοαναφορές
+\end_layout
+
+\begin_layout Standard
+Σίγουρα, πολλοί σύγχρονοι επεξεργαστές κειμένου μπορούν να χειριστούν μαθηματικά
+ σύμβολα, πίνακες και συλλαβισμό, και πολλοί έχουν στραφεί προς τα στυλ
+ γραφής κατά το πρότυπο 
+\lang english
+WYSIWYM
+\lang greek
+.
+ Ωστόσο, μόλις πρόσφατα κατάφεραν να το υλοποιήσουν, ενώ το 
+\lang english
+LyX
+\lang greek
+ είναι βασισμένο στο σύστημα προετοιμασίας εγγράφων 
+\lang english
+LaTeX
+\lang greek
+ που υπάρχει ήδη για περισσότερα από 20 χρόνια, και 
+\emph on
+δουλεύει
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+Τι είναι το LaTeX?
+\end_layout
+
+\begin_layout Standard
+Το 
+\lang english
+LaTeX
+\lang greek
+ είναι ένα σύστημα προετοιμασίας εγγράφων σχεδιασμένο από τον 
+\lang english
+Leslie Lamport
+\lang greek
+ το 1985.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Η πηγή για τις πληροφορίες αυτού του τμήματος είναι το 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+\lang english
+A Guide to LaTeX2e
+\emph default
+\lang greek
+,
+\begin_inset Quotes erd
+\end_inset
+
+ από τον 
+\lang english
+Helmut Kopka
+\lang greek
+ και τον 
+\lang english
+Patrick Daly
+\lang greek
+, για το οποίο υπάρχει καταχώρηση στη βιβλιογραφία αυτού του 
+\emph on
+Οδηγού Χρήστη
+\emph default
+\SpecialChar \@.
+
+\end_layout
+
+\end_inset
+
+ Χτίστηκε με τη τυπογραφική γλώσσα 
+\lang english
+TeX
+\lang greek
+, που δημιουργήθηκε από τον 
+\lang english
+Donald Knuth
+\lang greek
+ το 1984.
+ Το 
+\lang english
+TeX
+\lang greek
+ παίρνει μια ακολουθία από τυπογραφικές εντολές, γραμμένες σε ένα σενάριο
+ σε ένα αρχείο 
+\lang english
+ASCII
+\lang greek
+, και τις εκτελεί.
+ Πολλά από τα 
+\begin_inset Quotes eld
+\end_inset
+
+κόλπα
+\begin_inset Quotes erd
+\end_inset
+
+ της εκτυπωτικής τέχνης μοντελοποιήθηκαν από τον 
+\lang english
+Knuth
+\lang greek
+ σαν αλγόριθμοι και ενσωματώθηκαν στο 
+\emph on
+\lang english
+TeX
+\emph default
+\lang greek
+, εξ' ου και η άριστη εμφάνιση των εκτυπώσεων.
+ Αυτό που προέρχεται άμεσα από το 
+\lang english
+TeX
+\lang greek
+ είναι η μορφή εγγράφων 
+\emph on
+\lang english
+pdf
+\emph default
+\lang greek
+ ή η αποκαλούμενη 
+\begin_inset Quotes eld
+\end_inset
+
+ανεξάρτητη από τη συσκευή
+\begin_inset Quotes erd
+\end_inset
+
+ μορφή αρχείων 
+\emph on
+\lang english
+dvi
+\emph default
+\lang greek
+.
+ Η μορφή 
+\lang english
+dvi
+\lang greek
+ χρησιμοποιείται συχνά για προεπισκοπήσεις, και μπορεί μετά να μετατραπεί
+ σε άλλες μορφές όπως 
+\lang english
+PostScript
+\lang greek
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Το 
+\lang english
+TeX
+\lang greek
+ δεν είναι μόνο μια τυπογραφική μηχανή; επιτρέπει επιπλέον τον ορισμό μακροεντολ
+ών.
+ Οι περισσότεροι χρήστες του 
+\lang english
+TeX
+\lang greek
+ χρησιμοποιούν στην πραγματικότητα ένα πακέτο μακροεντολών που δημιούργησε
+ ο 
+\lang english
+Knuth
+\lang greek
+ για να κρύψει πολλές από τις τυπογραφικές λεπτομέρειες.
+ Εδώ είναι που εμφανίζεται ο 
+\lang english
+Leslie
+\lang greek
+ 
+\lang english
+Lamport
+\lang greek
+.
+ Αυτός ήθελε ένα πακέτο μακροεντολών προσανατολισμένο περισσότερο προς τον
+ χρήστη και λιγότερο προς τον τυπογράφο, με ένα σύνολο εντολών που θα στοιχειοθε
+τούσαν με συνέπεια αντικείμενα όπως τμήματα, πίνακες ή μαθηματικούς τύπους
+ με έναν ομοιόμορφο, συνεπή τρόπο.
+ Έτσι γεννήθηκε το 
+\lang english
+LaTeX
+\lang greek
+.
+\end_layout
+
+\begin_layout Standard
+Τώρα, παράλληλα με την ανάπτυξη του 
+\lang english
+LaTeX
+\lang greek
+, κάποιοι άλλοι δημιουργούσαν τα δικά τους πακέτα μακροεντολών για το 
+\lang english
+TeX
+\lang greek
+, για τη δημιουργία διαφανειών ή άρθρων για μαθηματικά περιοδικά κ.ο.κ.
+ Κάποιοι χρησιμοποίησαν απευθείας τις δυνατότητες του 
+\lang english
+TeX
+\lang greek
+ για να το κάνουν, άλλοι ξεκίνησαν να τροποποιούν το 
+\lang english
+LaTeX
+\lang greek
+.
+ Σε μια προσπάθεια να ενοποιηθεί το χάος, μια ομάδα 
+\lang english
+LaTeX
+\lang greek
+-ιανών άρχισε να δουλεύει πάνω στο 
+\lang english
+LaTeX2e
+\lang greek
+, την τρέχουσα έκδοση του 
+\lang english
+LaTeX
+\lang greek
+, στα τέλη της δεκαετίας του 1980.
+ Αυτή η νέα έκδοση του 
+\lang english
+LaTeX
+\lang greek
+ έχει εντολές που παρέχουν ένα ευκολότερο στη χρήση περιβάλλον κατασκευής
+ μακροεντολών 
+\lang english
+TeX
+\lang greek
+, βοήθεια στη χρήση νέων γραμματοσειρών, κ.ο.κ.
+ Στην πραγματικότητα, το 
+\lang english
+LaTeX
+\lang greek
+ είναι μια αρκετά εκτεταμένη γλώσσα από μόνο του! Χρήστες απ' όλον τον κόσμο
+ δημιουργούν τα δικά τους πρόσθετα για το 
+\lang english
+LaTeX
+\lang greek
+ πέρα από το τυποποιημένα.
+\end_layout
+
+\begin_layout Standard
+Υπάρχουν δύο τρόποι για να επεκταθεί το 
+\lang english
+LaTeX
+\lang greek
+: κλάσεις και στυλ.
+ Μια 
+\emph on
+κλάση
+\emph default
+ είναι ένα σύνολο μακροεντολών 
+\lang english
+LaTeX
+\lang greek
+ που περιγράφουν έναν νέο τύπο εγγράφου, όπως ένα βιβλίο ή ένα άρθρο.
+ Υπάρχουν κλάσεις για διαφάνειες, για περιοδικά φυσικής και μαθηματικών\SpecialChar \ldots{}
+
+ πολλά πανεπιστήμια έχουν μάλιστα ειδική κλάση για τη μορφή των διατριβών
+ τους! Ένα 
+\emph on
+στυλ
+\emph default
+ διαφέρει από μια κλάση στο ότι δεν ορίζει ένα νέο τύπο εγγράφου, αλλά έναν
+ διαφορετικό τύπο 
+\emph on
+συμπεριφοράς
+\emph default
+ που κάθε έγγραφο μπορεί να χρησιμοποιεί.
+ Για παράδειγμα, το 
+\lang english
+LyX
+\lang greek
+ ελέγχει τα περιθώρια σελίδων και τα διαστήματα γραμμών μέσω δύο διαφορετικών
+ αρχείων στυλ 
+\lang english
+LaTeX
+\lang greek
+ σχεδιασμένων για αυτόν τον σκοπό.
+ Υπάρχουν αρχεία στυλ για ένα σωρό πράγματα: εκτύπωση ετικετών ή φακέλων,
+ αλλαγή συμπεριφοράς εσοχών, προσθήκη νέων γραμματοσειρών, χειρισμό γραφικών,
+ σχεδιασμό εντυπωσιακών επικεφαλίδων, προσαρμογή βιβλιογραφιών, μεταβολή
+ της θέσης και εμφάνισης υποσημειώσεων, πινάκων και σχημάτων, προσαρμογή
+ λιστών, κλπ.
+\end_layout
+
+\begin_layout Standard
+Ιδού μια περίληψη:
+\end_layout
+
+\begin_layout Description
+
+\lang english
+TeX
+\lang greek
+: Τυπογραφική γλώσσα με δυνατότητες μακροεντολών.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+LaTeX
+\lang greek
+: Πακέτο μακροεντολών βασισμένο στο 
+\lang english
+TeX
+\lang greek
+\SpecialChar \@.
+
+\end_layout
+
+\begin_layout Description
+κλάσεις: Περιγραφές τύπων εγγράφων, με χρήση 
+\lang english
+LaTeX
+\lang greek
+\SpecialChar \@.
+
+\end_layout
+
+\begin_layout Description
+στυλ: Τροποποιούν την προεπιλεγμένη συμπεριφορά του 
+\lang english
+LaTeX
+\lang greek
+ κατά κάποιον τρόπο.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+LyX
+\lang greek
+: Οπτικός, 
+\lang english
+WYSIWYM
+\lang greek
+ επεξεργαστής κειμένου που χρησιμοποιεί 
+\lang english
+LaTeX
+\lang greek
+ για τη στοιχειοθεσία.
+\end_layout
+
+\begin_layout Standard
+Αυτή η ενότητα επιχειρεί να καταδείξει τις διαφορές μεταξύ 
+\lang english
+LyX
+\lang greek
+ και άλλων επεξεργαστών κειμένου.
+ Με απλά λόγια, το 
+\lang english
+LaTeX
+\lang greek
+ είναι η διαφορά.
+ Χρησιμοποιώντας το 
+\lang english
+LaTeX
+\lang greek
+ ως θεμέλιο, το 
+\lang english
+LyX
+\lang greek
+ σας βοηθά να σκέφτεστε περισσότερο
+\emph on
+ τί 
+\emph default
+γράφετε.
+ Κατόπιν, ο υπολογιστής αναλαμβάνει το 
+\emph on
+πώς
+\emph default
+ θα φαίνονται.
+\end_layout
+
+\begin_layout Section
+Πλοήγηση στην Τεκμηρίωση
+\end_layout
+
+\begin_layout Standard
+Για να διευκολύνουμε την απάντηση των ερωτήσεών σας και την περιγραφή όλων
+ των χαρακτηριστικών του 
+\lang english
+LyX
+\lang greek
+, χωρίσαμε την τεκμηρίωση σε πολλά διαφορετικά αρχεία.
+ Καθένα έχει το δικό του σκοπό, όπως περιγράφεται παρακάτω.
+ Πριν εντρυφήσετε, όμως, σε οποιοδήποτε από αυτά τα αρχεία, πρέπει να διαβάσετε
+ πρώτα ολόκληρο αυτό το κεφάλαιο, καθώς περιέχει πολλές χρήσιμες πληροφορίες
+ και σχόλια που μπορεί να σας σώσουν κάποτε.
+\end_layout
+
+\begin_layout Standard
+Η ανάπτυξη του 
+\lang english
+LyX
+\lang greek
+, ελπίζουμε, δε θα σταματήσει ποτέ, γι' αυτό κάποια μέρη της τεκμηρίωσης
+ ίσως να είναι ανολοκλήρωτα ή λίγο ξεπερασμένα, αν και προσπαθούμε να τα
+ ενημερώνουμε.
+ Όπως και το υπόλοιπο 
+\lang english
+LyX
+\lang greek
+, τα εγχειρίδια χρήσης είναι προϊόν εργασίας μιας ομάδας εθελοντών που έχουν
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Πραγματικές Δουλειές
+\begin_inset Quotes erd
+\end_inset
+
+, οικογένειες, πιάτα για πλύσιμο, περιττώματα κατοικίδιων να καθαρίσουν,
+ κλπ.
+ Εάν θέλετε να συνεισφέρετε, διαβάστε την Ενότητα
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Contrib"
+
+\end_inset
+
+ μαζί με το υπόλοιπο αυτού του εγγράφου.
+\end_layout
+
+\begin_layout Standard
+Επίσης, κάντε μας μια χάρη – εάν οτιδήποτε σε αυτά τα εγχειρίδια σας μπερδεύει,
+ δεν είναι ξεκάθαρο, ή είναι εσφαλμένο, μη διστάσετε να μας ενημερώσετε!
+ Μπορείτε να επικοινωνήσετε με τους τρέχοντες συντηρητές των εγγράφων στέλνοντας
+ 
+\lang english
+e-mail
+\lang greek
+ στο 
+\lang english
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
+\lang greek
+.
+ Εάν έχετε ερωτήσεις που δεν απαντιούνται ευθαρσώς στην τεκμηρίωση, και
+ χρειάζεστε άμεση βοήθεια, υπάρχει μια λίστα ενεργών χρηστών στη διεύθυνση
+ 
+\lang english
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-users@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Η Μορφή των Εγχειριδίων
+\end_layout
+
+\begin_layout Standard
+Κάποιοι ίσως να έχουν εκτυπώσει τα εγχειρίδια.
+ Άλλοι ίσως να τα διαβάζουν μέσα από το 
+\lang english
+LyX
+\lang greek
+.
+ Υπάρχουν μερικές διαφορές μεταξύ ενός αρχείου 
+\lang english
+LyX
+\lang greek
+ και της εκτυπωμένης εκδοχής του.
+ Καταρχάς, ο τίτλος βρίσκεται απλά στην κορυφή του εγγράφου, όχι μορφοποιημένος
+ σε ξεχωριστή σελίδα όπως σε μερικές έντυπες εκδοχές.
+ Ούτε οι υποσημειώσεις ή ο Πίνακας Περιεχομένων είναι πλήρως ορατά.
+ Για να ανοίξετε μια υποσημείωση, που δείχνει κάπως έτσι: 
+\begin_inset Graphics
+	filename ../clipart/footnoteQt4.png
+	scale 75
+
+\end_inset
+
+, κάντε αριστερό κλικ πάνω της.
+ Για τον Πίνακα Περιεχομένων, κάντε κλικ είτε πάνω στο γκρι κουτί είτε στο
+ μενού 
+\family sans
+Πλοήγηση
+\family default
+, όπου τα περιεχόμενα εμφανίζονται αυτόματα\SpecialChar \@.
+
+\end_layout
+
+\begin_layout Standard
+Στα εκτυπωμένα εγχειρίδια, όλες οι ενδοαναφορές εμφανίζονται ως οι πραγματικοί
+ αριθμοί των κεφαλαίων, τμημάτων, υποτμημάτων, κοκ.
+ Ηλεκτρονικά, ωστόσο, όλες οι ενδοαναφορές εμφανίζονται σαν ανοιχτόχρωμα
+ γκρι κουτιά όπως το ακόλουθο: 
+\begin_inset Graphics
+	filename ../clipart/referenceQt4.png
+	scale 75
+
+\end_inset
+
+.
+ Εάν κάνετε κλικ πάνω σε αυτό το κουτί με το αριστερό κουμπί κουμπί του
+ ποντικιού, θα εμφανιστεί ένας διάλογος με μια λίστα όλων των ενδοαναφορών
+ του εγγράφου.
+ Μπορείτε να μεταβείτε στο καταληκτικό τμήμα κάνοντας δεξί κλικ στο κουτί
+ ή πάνω στο κουμπί 
+\family sans
+Μετάβαση
+\begin_inset space ~
+\end_inset
+
+στην
+\begin_inset space ~
+\end_inset
+
+Ετικέτα
+\family default
+ στον ανοιχτό διάλογο.
+ Η επιστροφή στο σημείο εκκίνησης είναι το ίδιο εύκολη.
+ Με ένα απλό πάτημα του κουμπιού 
+\family sans
+Επιστροφή
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Τώρα που ξεκαθαρίσαμε μερικές από τις διαφορές μεταξύ των έντυπων και των
+ ηλεκτρονικών εκδόσεων αυτού του αρχείου, μπορούμε να ρίξουμε μια ματιά
+ στη μορφή αυτού του εγγράφου.
+ Κάπου κάπου θα παρατηρείτε σημεία με διαφορετική γραμματοσειρά:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Στυλ Έμφασης
+\emph default
+ χρησιμοποιείται γενικά για έμφαση, για βασικές προτάσεις, τίτλους βιβλίων,
+ ονόματα τμημάτων άλλων διδακτικών εγχειριδίων, και σημειώσεις των συγγραφέων.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\lang english
+Typewriter
+\family default
+\lang greek
+ χρησιμοποιείται για ονόματα αρχείων και προγραμμάτων, κώδικα 
+\lang english
+LyX
+\lang greek
+ και συναρτήσεις.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\lang english
+Sans Serif
+\family default
+\lang greek
+ χρησιμοποιείται για ονόματα μενού, κουμπιών, ή διαλόγων, και για τα ονόματα
+ των πλήκτρων του πληκτρολογίου.
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+Στυλ ουσιαστικου
+\noun default
+ χρησιμοποιείται για ονόματα ανθρώπων.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Έντονη Γραφή
+\series default
+ χρησιμοποιείται για κώδικα 
+\lang english
+LaTeX
+\lang greek
+.
+\end_layout
+
+\begin_layout Standard
+Όταν απαιτείται η αναφορά σε πλήκτρα του πληκτρολογίου, θα χρησιμοποιείται
+ η ακόλουθη σύμβαση προθεμάτων:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+Ctrl
+\lang greek
+-
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ δεικτοδοτεί το πλήκτρο 
+\family sans
+\lang english
+Control
+\family default
+\lang greek
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+Shift
+\lang greek
+-
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ δεικτοδοτεί το πλήκτρο 
+\family sans
+\lang english
+Shift
+\family default
+\lang greek
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+Alt
+\lang greek
+-
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ δεικτοδοτεί το πλήκτρο
+\family sans
+ 
+\lang english
+Alt
+\family default
+ (
+\family sans
+Meta
+\family default
+)
+\lang greek
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+F1
+\family default
+\lang greek
+
+\begin_inset Quotes erd
+\end_inset
+
+ \SpecialChar \ldots{}
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+F12
+\family default
+\lang greek
+
+\begin_inset Quotes erd
+\end_inset
+
+ είναι τα κουμπιά των ειδικών λειτουργιών.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+Esc
+\family default
+\lang greek
+
+\begin_inset Quotes erd
+\end_inset
+
+ είναι το κουμπί διαφυγής.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+Left
+\family default
+\lang greek
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+Right
+\family default
+\lang greek
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+Up
+\family default
+\lang greek
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+Down
+\family default
+\lang greek
+
+\begin_inset Quotes erd
+\end_inset
+
+: αυτοερμηνευόμενα.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\begin_inset Quotes eld
+\end_inset
+
+
+\lang english
+Insert
+\family default
+\lang greek
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+Delete
+\family default
+\lang greek
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+Home
+\family default
+\lang greek
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+End
+\family default
+\lang greek
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+PageUp
+\family default
+\lang greek
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+PageDown
+\family default
+\lang greek
+
+\begin_inset Quotes erd
+\end_inset
+
+: αυτά είναι τα 6 κουμπιά που εμφανίζονται πάνω από τα βελάκια σε πολλά
+ πληκτρολόγια.
+ Τα 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+PageUp
+\family default
+\lang greek
+
+\begin_inset Quotes erd
+\end_inset
+
+ και 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+PageDown
+\family default
+\lang greek
+
+\begin_inset Quotes erd
+\end_inset
+
+ ονομάζονται επίσης 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+Prior
+\family default
+\lang greek
+
+\begin_inset Quotes erd
+\end_inset
+
+ και 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\lang english
+Next
+\family default
+\lang greek
+
+\begin_inset Quotes erd
+\end_inset
+
+ αντίστοιχα σε μερικά πληκτρολόγια.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\lang english
+Return
+\family default
+\lang greek
+ και 
+\family sans
+\lang english
+Enter
+\family default
+\lang greek
+ αμφότερα αναφέρονται στο ίδιο πλήκτρο.
+ Κάποια πληκτρολόγια τιτλοφορούν το πλήκτρο 
+\family sans
+\lang english
+Return
+\family default
+\lang greek
+ ως 
+\begin_inset Quotes eld
+\end_inset
+
+
+\lang english
+Return
+\lang greek
+,
+\begin_inset Quotes erd
+\end_inset
+
+ άλλα ως 
+\begin_inset Quotes eld
+\end_inset
+
+
+\lang english
+Enter
+\lang greek
+,
+\begin_inset Quotes erd
+\end_inset
+
+ και κάποια έχουν δύο διαφορετικά πλήκτρα.
+ Το 
+\lang english
+LyX
+\lang greek
+ τα αντιμετωπίζει σαν ένα, γι' αυτό θα χρησιμοποιούμε τα 
+\family sans
+\lang english
+Return
+\family default
+\lang greek
+ και 
+\family sans
+\lang english
+Enter
+\family default
+\lang greek
+ εναλλακτικά.
+\end_layout
+
+\begin_layout Standard
+Η λίστα με τις τρέχουσες συντομεύσεις υπάρχει στο μενού 
+\family sans
+Βοήθεια
+\family default
+ υπό το όνομα 
+\family sans
+Συντομεύσεις
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Μονάδες που χρησιμοποιούνται στα Εγχειρίδια Χρήσης
+\end_layout
+
+\begin_layout Standard
+Για να καταλάβετε τις μονάδες μέτρησης που περιγράφονται σε αυτήν την τεκμηρίωση
+, ο Πίνακας
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cap:Units-for-image"
+
+\end_inset
+
+ επεξηγεί όλες τις διαθέσιμες μονάδες στο 
+\lang english
+LyX
+\lang greek
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement t
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "cap:Units-for-image"
+
+\end_inset
+
+Μονάδες μέτρησης
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="20" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+μονάδα
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+όνομα/περιγραφή
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+mm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+χιλιοστό
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+cm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+εκατοστό
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+in
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ίντσα
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+pt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+point (72.27
+\begin_inset space \thinspace{}
+\end_inset
+
+pt = 1
+\begin_inset space \thinspace{}
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+pc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+pica (1
+\begin_inset space \thinspace{}
+\end_inset
+
+pc = 12
+\begin_inset space \thinspace{}
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+sp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+scaled point (65536
+\begin_inset space \thinspace{}
+\end_inset
+
+sp = 1
+\begin_inset space \thinspace{}
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+bp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+big point (72
+\begin_inset space \thinspace{}
+\end_inset
+
+bp = 1
+\begin_inset space \thinspace{}
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+dd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+didot (72
+\begin_inset space \thinspace{}
+\end_inset
+
+dd 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 37.6
+\begin_inset space \thinspace{}
+\end_inset
+
+mm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+cc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+cicero (1
+\begin_inset space \thinspace{}
+\end_inset
+
+cc = 12
+\begin_inset space \thinspace{}
+\end_inset
+
+dd)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+Scale%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% του αρχικού πλάτους εικόνας
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% του πλάτους κειμένου
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+col%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% του πλάτους στήλης
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+page%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% του πλάτους χαρτιού
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+line%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% του πλάτους γραμμής
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+theight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% του ύψους κειμένου
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+pheight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% του ύψους χαρτιού
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+ex
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ύψος του γράμματος 
+\emph on
+\lang english
+x
+\emph default
+\lang greek
+ στην τρέχουσα γραμματοσειρά
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+πλάτος του γράμματος 
+\emph on
+M
+\emph default
+ στην τρέχουσα γραμματοσειρά
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+mu
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+μαθηματική μονάδα 
+\lang english
+(1
+\begin_inset space \thinspace{}
+\end_inset
+
+mu = 1/18
+\begin_inset space \thinspace{}
+\end_inset
+
+em)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Τα Εγχειρίδια Χρήσης
+\end_layout
+
+\begin_layout Standard
+Η ακόλουθη λίστα περιγράφει τα περιεχόμενα των βασικών αρχείων τεκμηρίωσης
+ που θα βρείτε στο μενού 
+\family sans
+Βοήθεια
+\family default
+:
+\end_layout
+
+\begin_layout Description
+Εισαγωγή Αυτό το αρχείο.
+\end_layout
+
+\begin_layout Description
+Διδακτικό
+\begin_inset space ~
+\end_inset
+
+Εγχειρίδιο Εάν είστε νέος στο 
+\lang english
+LyX
+\lang greek
+, και δεν έχετε χρησιμοποιήσει 
+\lang english
+LaTeX
+\lang greek
+ προηγουμένως, θα πρέπει να ξεκινήσετε από εδώ.
+ Εάν έχετε χρησιμοποιήσει 
+\lang english
+LaTeX
+\lang greek
+ στο παρελθόν, θα πρέπει πάραυτα να διαβάσετε το 
+\emph on
+Διδακτικό Εγχειρίδιο
+\emph default
+, ξεκινώντας με το τμήμα 
+\begin_inset Quotes eld
+\end_inset
+
+
+\lang english
+LyX
+\lang greek
+ για χρήστες 
+\lang english
+LaTeX
+\lang greek
+.
+\begin_inset Quotes erd
+\end_inset
+
+ (Μια φυλλομέτρηση του υπόλοιπου εγγράφου δεν θα έβλαπτε βέβαια.)
+\end_layout
+
+\begin_layout Description
+Οδηγός
+\begin_inset space ~
+\end_inset
+
+Χρήστη Η πρωταρχική τεκμηρίωση.
+ Εδώ θα γίνει επισκόπηση των 
+\emph on
+περισσότερων
+\emph default
+ από τις βασικές λειτουργίες και τα διαθέσιμα χαρακτηριστικά του 
+\lang english
+LyX
+\lang greek
+.
+ Το κύριο εγχειρίδιο χρήσης προϋποθέτει την ανάγνωση του 
+\emph on
+Διδακτικού Εγχειριδίου
+\emph default
+.
+\end_layout
+
+\begin_layout Description
+Ενσωματωμένα
+\begin_inset space ~
+\end_inset
+
+Αντικείμενα Επέκταση του 
+\emph on
+Οδηγού Χρήστη
+\emph default
+.
+ Τεκμηριώνει λεπτομερώς τον τρόπο χρήσης πινάκων, γραφικών, αιωρούμενων,
+ σημειώσεων, λιστών προγραμμάτων, και κουτιών.
+ Περιλαμβάνει επιπλέον πολλά κόλπα των μαστόρων του 
+\lang english
+LaTeX
+\lang greek
+.
+\end_layout
+
+\begin_layout Description
+Μαθηματικά Επέκταση του 
+\emph on
+Οδηγού Χρήστη
+\emph default
+.
+ Τεκμηριώνει λεπτομερώς τον τρόπο σύνταξης οποιουδήποτε μαθηματικού τύπου.
+\end_layout
+
+\begin_layout Description
+Πρόσθετα
+\begin_inset space ~
+\end_inset
+
+Χαρακτηριστικά Επέκταση του 
+\emph on
+Οδηγού Χρήστη
+\emph default
+.
+ Τεκμηριώνει τον τρόπο χρήσης άμεσων εντολών 
+\lang english
+LaTeX
+\lang greek
+, πρόσθετων περιγραμμάτων και χαρακτηριστικών επεξεργασίας ειδικού σκοπού.
+\end_layout
+
+\begin_layout Description
+Προσαρμογή Μια περιγραφή των προχωρημένων χαρακτηριστικών του 
+\lang english
+LyX
+\lang greek
+, συμπεριλαμβανομένης της προσαρμογής της γενικής συμπεριφοράς του 
+\lang english
+LyX
+\lang greek
+\SpecialChar \@.
+ Αυτή περιέχει θέματα όπως σύνδεση πλήκτρων, διεθνοποίηση και αρχεία διαμόρφωσης.
+ Επιπλέον, πληροφορίες για τα αρχεία διάταξης που απαιτούνται ώστε το 
+\lang english
+LyX
+\lang greek
+ να υποστηρίζει κλάσεις ή πακέτα του 
+\lang english
+LaTeX
+\lang greek
+.
+\end_layout
+
+\begin_layout Description
+Συντομεύσεις Πίνακες με τις τρέχουσες ορισμένες συντομεύσεις του 
+\lang english
+LyX
+\lang greek
+.
+\end_layout
+
+\begin_layout Description
+Διαμόρφωση
+\begin_inset space ~
+\end_inset
+
+
+\lang english
+LaTeX
+\lang greek
+ Το 
+\lang english
+LyX
+\lang greek
+ ερευνά το σύστημά σας κατά την εγκατάσταση Αυτό το αρχείο περιέχει πληροφορίες
+ για το τί έμαθε το 
+\lang english
+LyX
+\lang greek
+ για την εγκατάσταση σας.
+ Ελέγξτε το για να δείτε εάν σας λείπει κάτι που θα θέλατε.
+\end_layout
+
+\begin_layout Standard
+Αυτά τα αρχεία ετεροαναφέρονται κατά το δοκούν.
+ Για παράδειγμα, ο 
+\emph on
+Οδηγός Χρήστη 
+\emph default
+περιέχει 
+\emph on
+κάποιες
+\emph default
+ πληροφορίες για την εγκατάσταση και την προσαρμογή, αλλά παραπέμπει τον
+ αναγνώστη στο 
+\emph on
+Εγχειρίδιο Χρήσης Προσαρμογής
+\emph default
+ για περισσότερες πληροφορίες.
+\end_layout
+
+\begin_layout Standard
+Θα υπενθυμίσουμε ξανά ένα σημαντικό σημείο:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+Εάν είστε καινούργιος στο 
+\lang english
+LyX
+\lang greek
+, διαβάστε το 
+\emph on
+Διδακτικό Εγχειρίδιο
+\emph default
+.
+ Τώρα\SpecialChar \@.
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Διαφορετικά, ίσως ταλαιπωρηθείτε άσκοπα.
+\end_layout
+
+\begin_layout Section
+Συνεισφορά στο LyX Project
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Contrib"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Συνεισφορά στο LyX
+\end_layout
+
+\begin_layout Standard
+Το 
+\lang english
+LyX
+\lang greek
+ είναι στο μεγαλύτερο μέρος του γραμμένο σε 
+\lang english
+C++
+\lang greek
+ (ο εισαγωγέας 
+\lang english
+LaTeX
+\lang greek
+ είναι γραμμένος σε 
+\lang english
+Python
+\lang greek
+).
+ Είναι ένα μεγάλο project, και συνεπώς δεν είναι απαλλαγμένο από σφάλματα,
+ ή από την ανάγκη για βελτιώσεις στον κώδικα.
+\end_layout
+
+\begin_layout Subsubsection
+Αναφορά σφάλματος
+\end_layout
+
+\begin_layout Standard
+Χρησιμοποιώντας το 
+\lang english
+LyX
+\lang greek
+, ίσως συναντήσετε κάποια συμπεριφορά που να τη θεωρήσετε εσφαλμένη.
+ Καταστροφικά σφάλματα, αν και σπάνια, μπορούν να συμβούν.
+ Τα προβλήματα στη διεπαφή χρήστη θεωρούνται μέγιστα σφάλματα από την ομάδα
+ του 
+\lang english
+LyX
+\lang greek
+: ιδιαίτερα βοηθητικές είναι οι επισημάνσεις για τμήματα της διεπαφής του
+ 
+\lang english
+LyX
+\lang greek
+ που είτε σας μπερδεύουν, είτε δεν είναι ξεκάθαρα.
+\end_layout
+
+\begin_layout Standard
+Το 
+\lang english
+LyX
+\lang greek
+ έχει ένα σύστημα παρακολούθησης σφαλμάτων, που μπορείτε να βρείτε στο 
+\family typewriter
+\lang english
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/trac/wiki/BugTrackerHome
+\end_layout
+
+\end_inset
+
+
+\family default
+\lang greek
+.
+ Θα πρέπει να ελέγχετε το σύστημα πριν υποβάλετε κάποιο σφάλμα, γιατί μπορεί
+ να έχει ήδη αναφερθεί.
+ Εάν έχετε κάποιο σχόλιο για υπάρχον σφάλμα, ή επιθυμείτε να αναφέρετε ένα
+ νέο, μπορείτε είτε να χρησιμοποιήσετε το σύστημα καταγραφής, είτε να στείλετε
+ ένα 
+\lang english
+e-mail
+\lang greek
+ στη λίστα ανάπτυξης, 
+\lang english
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-devel@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
+\lang greek
+.
+ Αρχεία αυτής της λίστας είναι προσπελάσιμα από την κύρια ιστοσελίδα του
+ 
+\lang english
+LyX
+\lang greek
+, 
+\family typewriter
+\lang english
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
+
+\end_inset
+
+
+\family default
+\lang greek
+.
+\end_layout
+
+\begin_layout Standard
+Μια αξιοποιήσιμη αναφορά σφάλματος περιλαμβάνει την έκδοση του 
+\lang english
+LyX
+\lang greek
+ με την οποία αντιμετωπίζετε πρόβλημα.
+ Ακριβείς, λεπτομερείς περιγραφές προτιμώνται - όσο περισσότερο χρόνο ξοδεύουν
+ οι προγραμματιστές για να εντοπίσουν ένα σφάλμα, τόσο λιγότερος μένει για
+ άλλες βελτιώσεις.
+ Να αναφέρετε τα χαρακτηριστικά του συστήματος που χρησιμοποιείτε.
+ Δώστε τις εκδόσεις των βιβλιοθηκών που έχετε εγκατεστημένες στο σύστημά
+ σας, και, εάν σχετίζονται, τις εκδόσεις εξωτερικών προγραμμάτων που χρησιμοποιε
+ί το 
+\lang english
+LyX
+\lang greek
+.
+ Εάν είναι πρόβλημα μεταγλώττισης ή ρύθμισης, συμπεριλάβετε και το αρχείο
+ 
+\family typewriter
+\lang english
+config.log
+\family default
+\lang greek
+, και αναφέρετε τον μεταγλωττιστή που χρησιμοποιείτε.
+\end_layout
+
+\begin_layout Subsubsection
+Συνεισφορά διορθώσεων και νέων χαρακτηριστικών
+\end_layout
+
+\begin_layout Standard
+Εάν έχετε κάνει αλλαγές στον κώδικα του 
+\lang english
+LyX
+\lang greek
+ που θεωρείτε ότι θα έπρεπε να γίνουν τμήμα του 
+\lang english
+LyX
+\lang greek
+, στείλτε τις ως αρχείο 
+\lang english
+diff
+\lang greek
+ (σε ενοποιημένη μορφή) στη λίστα ανάπτυξης που αναφέρθηκε παραπάνω, μαζί
+ με ένα ημερολόγιο αλλαγών και μια περιγραφή της λειτουργίας του νέου κώδικα.
+\end_layout
+
+\begin_layout Subsection
+Συνεισφορά στην Τεκμηρίωση
+\end_layout
+
+\begin_layout Standard
+Η τεκμηρίωση του 
+\lang english
+LyX
+\lang greek
+ είναι εκτενής; ωστόσο το 
+\lang english
+LyX
+\lang greek
+ αναπτύσσετε συνεχώς, και κάθε νέα έκδοση προσθέτει καινούργια χαρακτηριστικά.
+ Ίσως θεωρήσετε ότι κάποια τεκμηρίωση επιδέχεται βελτίωση.
+ Αυτή η ενότητα περιγράφει τί να κάνετε εάν εντοπίσετε κάποιο σφάλμα ή αν
+ έχετε κάποιες προτάσεις βελτίωσης της τεκμηρίωσης.
+\end_layout
+
+\begin_layout Subsubsection
+Αναφορά Σφαλμάτων στα Εγχειρίδια Χρήσης
+\end_layout
+
+\begin_layout Standard
+Εάν βρείτε κάποιο πρόβλημα στην τεκμηρίωση, στείλτε μήνυμα στη λίστα 
+\lang english
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
+\lang greek
+.
+ Η ομάδα ανάπτυξης θα κάνει τις απαραίτητες διορθώσεις.
+\end_layout
+
+\begin_layout Subsubsection
+Συμμετοχή στην Ομάδα Τεκμηρίωσης
+\end_layout
+
+\begin_layout Standard
+Το έργο της Τεκμηρίωσης του 
+\lang english
+LyX
+\lang greek
+, όπως οτιδήποτε στο 
+\lang english
+LyX project
+\lang greek
+, καλοδέχεται οποιαδήποτε βοήθεια! Εάν ενδιαφέρεστε να συνεισφέρετε στο
+ έργο της Τεκμηρίωσης, πρέπει να κάνετε τα ακόλουθα:
+\end_layout
+
+\begin_layout Enumerate
+Κατεβάστε την πιο πρόσφατη έκδοση της Τεκμηρίωσης του 
+\lang english
+LyX
+\lang greek
+ από 
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc
+\end_layout
+
+\end_inset
+
+
+\lang greek
+ 
+\end_layout
+
+\begin_layout Enumerate
+Μετά, διαβάστε τον 
+\emph on
+Οδηγό Χρήστη
+\emph default
+ και το 
+\emph on
+Διδακτικό Εγχειρίδιο
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+Ο σκοπός αυτής της άσκησης είναι να σας δώσει ιδέες.
+ Το 
+\emph on
+Διδακτικό Εγχειρίδιο
+\emph default
+ και ο 
+\emph on
+Οδηγός Χρήστη
+\emph default
+ είναι κατά πάσα πιθανότητα τα πιο ενημερωμένα τμήματα ολόκληρης της τεκμηρίωσης.
+ Θα πρέπει να μπορείτε να διακρίνετε πώς επιθυμούμε να γράφονται και να
+ φαίνονται τα εγχειρίδια.
+\end_layout
+
+\begin_layout Enumerate
+Επικοινωνήστε με την ομάδα στο:
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
+\lang greek
+
+\begin_inset Newline newline
+\end_inset
+
+για να συζητήσετε τις επικείμενες αλλαγές και να πάρετε γνώμες για αυτές.
+\end_layout
+
+\begin_layout Standard
+Οι αλλαγές που επιθυμείτε να κάνετε μπορούν να εκτείνονται από τη βελτίωση
+ της κατανοησιμότητας του κειμένου, έως τη σημαντικη αναδομησή του.
+ Όλες οι βελτιώσεις είναι καλοδεχούμενες.
+\end_layout
+
+\end_body
+\end_document

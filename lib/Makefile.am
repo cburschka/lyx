@@ -99,6 +99,10 @@ dist_deexamples_DATA = \
 	examples/de/splash.lyx \
 	examples/de/tufte-handout.lyx
 
+elexamplesdir = $(pkgdatadir)/examples/el
+dist_elexamples_DATA = \
+	examples/el/splash.lyx
+
 esexamplesdir = $(pkgdatadir)/examples/es
 dist_esexamples_DATA = \
 	examples/es/beamer-conference-ornate20min.lyx \
