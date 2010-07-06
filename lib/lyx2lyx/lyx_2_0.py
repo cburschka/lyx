@@ -1846,7 +1846,7 @@ def revert_makebox(document):
     length = latex_length(length).split(",")[1]
     subst = "\\makebox[" + length + "][" \
       + align + "]{"
-    document.body[i:i + 13] = put_cmd_in_ert(subst)
+    document.body[i:i + 14] = put_cmd_in_ert(subst)
     i += 1
 
 
