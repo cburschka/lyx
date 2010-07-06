@@ -329,18 +329,17 @@ def revert_charstyles(document, name, LaTeXname, changed):
     i = find_token(document.body, name + ' on', i)
     if i == -1:
       return changed
+    j = find_token(document.body, name + ' default', i)
+    k = find_token(document.body, name + ' on', i + 1)
+    # if there is no default set, the style ends with the layout
+    # assure hereby that we found the correct layout end
+    if j != -1 and (j < k or k ==-1):
+      document.body[j:j+1] = put_cmd_in_ert("}")
     else:
-      j = find_token(document.body, name + ' default', i)
-      k = find_token(document.body, name + ' on', i + 1)
-      # if there is no default set, the style ends with the layout
-      # assure hereby that we found the correct layout end
-      if j != -1 and (j < k or k ==-1):
-      	document.body[j:j+1] = put_cmd_in_ert("}")
-      else:
-        j = find_token(document.body, '\\end_layout', i)
-        document.body[j:j] = put_cmd_in_ert("}")
-      document.body[i:i + 1] = put_cmd_in_ert(LaTeXname + "{")
-      changed = True
+      j = find_token(document.body, '\\end_layout', i)
+      document.body[j:j] = put_cmd_in_ert("}")
+    document.body[i:i + 1] = put_cmd_in_ert(LaTeXname + "{")
+    changed = True
     i += 1
 
 
