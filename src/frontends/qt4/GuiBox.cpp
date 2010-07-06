@@ -128,10 +128,10 @@ void GuiBox::on_innerBoxCO_activated(int index)
 	heightCB->setEnabled(ibox);
 	// except for frameless and boxed, the width cannot be specified if
 	// there is no inner box
-	bool const width_disabled = (!ibox && outer != "Frameless" &&
-		outer != "Boxed");
-	widthED->setEnabled(!width_disabled);
-	widthUnitsLC->setEnabled(!width_disabled);
+	bool const width_enabled =
+		ibox || outer == "Frameless" || outer == "Boxed";
+	widthED->setEnabled(width_enabled);
+	widthUnitsLC->setEnabled(width_enabled);
 	// halign is only allowed for Boxed without inner box or for makebox
 	halignCO->setEnabled((!ibox && outer == "Boxed")
 		|| (itype == "makebox"));
@@ -167,10 +167,10 @@ void GuiBox::on_typeCO_activated(int index)
 	}
 	// except for frameless and boxed, the width cannot be specified if
 	// there is no inner box
-	bool const width_disabled = (itype == "none" && !frameless
-		&& type != "Boxed");
-	widthED->setEnabled(!width_disabled);
-	widthUnitsLC->setEnabled(!width_disabled);
+	bool const width_enabled = 
+		itype != "none" || frameless || type == "Boxed";
+	widthED->setEnabled(width_enabled);
+	widthUnitsLC->setEnabled(width_enabled);
 	// halign is only allowed for Boxed without inner box or for makebox
 	halignCO->setEnabled((type == "Boxed" && itype == "none") || (itype == "makebox"));
 	// pagebreak is only allowed for Boxed without inner box
@@ -264,10 +264,9 @@ void GuiBox::paramsToDialog(Inset const * inset)
 
 	// except for frameless and boxed, the width cannot be specified if
 	// there is no inner box
-	bool const width_disabled = (!ibox && !frameless
-		&& type != "Boxed");
-	widthED->setEnabled(!width_disabled);
-	widthUnitsLC->setEnabled(!width_disabled);
+	bool const width_enabled = (ibox || frameless || type == "Boxed");
+	widthED->setEnabled(width_enabled);
+	widthUnitsLC->setEnabled(width_enabled);
 
 	Length::UNIT const default_unit = Length::defaultUnit();
 
