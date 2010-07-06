@@ -32,7 +32,7 @@ def remove_option(document, m, option):
     l = document.body[m].find(option)
     if l != -1:
         val = document.body[m][l:].split('"')[1]
-        document.body[m] = document.body[m][:l-1] + document.body[m][l+len(option + '="' + val + '"'):]
+        document.body[m] = document.body[m][:l - 1] + document.body[m][l+len(option + '="' + val + '"'):]
     return l
 
 def find_end_of_inset(lines, i):
@@ -124,7 +124,7 @@ def old_put_cmd_in_ert(string):
 #   j = find_end_of_inset(document.body, i)
 #   content = ...extract content from insets
 #   # that could be as simple as: 
-#   # content = lyx2latex(document[i:j+1])
+#   # content = lyx2latex(document[i:j + 1])
 #   ert = put_cmd_in_ert(content)
 #   document.body[i:j] = ert
 # Now, before we continue, we need to reset i appropriately. Normally,
@@ -262,15 +262,15 @@ def latex_length(string):
                 end = string[i + len(unit):]
                 string = value + latex_unit + end
             if plus > minus:
-                value = string[plus+1:i]
+                value = string[plus + 1:i]
                 value = str(float(value)/100)
-                begin = string[:plus+1]
+                begin = string[:plus + 1]
                 end = string[i+len(unit):]
                 string = begin + value + latex_unit + end
             if plus < minus:
-                value = string[minus+1:i]
+                value = string[minus + 1:i]
                 value = str(float(value)/100)
-                begin = string[:minus+1]
+                begin = string[:minus + 1]
                 string = begin + value + latex_unit
 
     # replace + and -, but only if the - is not the first character
@@ -313,27 +313,27 @@ def revert_flex_inset(document, name, LaTeXname, position):
     s = find_token(document.body, '\\uwave on', i)
     t = find_token(document.body, '\\strikeout on', i)
     if j != -1 and j < z:
-      document.body.insert(z-2, "\\emph default")
+      document.body.insert(z - 2, "\\emph default")
     if k != -1 and k < z:
-      document.body.insert(z-2, "\\noun default")
+      document.body.insert(z - 2, "\\noun default")
     if l != -1 and l < z:
-      document.body.insert(z-2, "\\series default")
+      document.body.insert(z - 2, "\\series default")
     if m != -1 and m < z:
-      document.body.insert(z-2, "\\family default")
+      document.body.insert(z - 2, "\\family default")
     if n != -1 and n < z:
-      document.body.insert(z-2, "\\shape default")
+      document.body.insert(z - 2, "\\shape default")
     if o != -1 and o < z:
-      document.body.insert(z-2, "\\color inherit")
+      document.body.insert(z - 2, "\\color inherit")
     if p != -1 and p < z:
-      document.body.insert(z-2, "\\size default")
+      document.body.insert(z - 2, "\\size default")
     if q != -1 and q < z:
-      document.body.insert(z-2, "\\bar default")
+      document.body.insert(z - 2, "\\bar default")
     if r != -1 and r < z:
-      document.body.insert(z-2, "\\uuline default")
+      document.body.insert(z - 2, "\\uuline default")
     if s != -1 and s < z:
-      document.body.insert(z-2, "\\uwave default")
+      document.body.insert(z - 2, "\\uwave default")
     if t != -1 and t < z:
-      document.body.insert(z-2, "\\strikeout default")
+      document.body.insert(z - 2, "\\strikeout default")
     document.body[i:i + 4] = put_cmd_in_ert(LaTeXname + "{")
     i += 1
 
@@ -350,7 +350,7 @@ def revert_charstyles(document, name, LaTeXname, changed):
     # if there is no default set, the style ends with the layout
     # assure hereby that we found the correct layout end
     if j != -1 and (j < k or k == -1):
-      document.body[j:j+1] = put_cmd_in_ert("}")
+      document.body[j:j + 1] = put_cmd_in_ert("}")
     else:
       j = find_token(document.body, '\\end_layout', i)
       document.body[j:j] = put_cmd_in_ert("}")
@@ -421,29 +421,29 @@ def revert_tabularvalign(document):
            continue
        # don't set a box for longtables, only delete tabularvalignment
        # the alignment is 2 lines below \\begin_inset Tabular
-       p = document.body[i+2].find("islongtable")
+       p = document.body[i + 2].find("islongtable")
        if p > -1:
-           q = document.body[i+2].find("tabularvalignment")
+           q = document.body[i + 2].find("tabularvalignment")
            if q > -1:
-               document.body[i+2] = document.body[i+2][:q-1]
-               document.body[i+2] = document.body[i+2] + '>'
+               document.body[i + 2] = document.body[i + 2][:q - 1]
+               document.body[i + 2] = document.body[i + 2] + '>'
            i = i + 1
 
        # when no longtable
        if p == -1:
          tabularvalignment = 'c'
          # which valignment is specified?
-         m = document.body[i+2].find('tabularvalignment="top"')
+         m = document.body[i + 2].find('tabularvalignment="top"')
          if m > -1:
              tabularvalignment = 't'
-         m = document.body[i+2].find('tabularvalignment="bottom"')
+         m = document.body[ i+ 2].find('tabularvalignment="bottom"')
          if m > -1:
              tabularvalignment = 'b'
          # delete tabularvalignment
-         q = document.body[i+2].find("tabularvalignment")
+         q = document.body[i + 2].find("tabularvalignment")
          if q > -1:
-             document.body[i+2] = document.body[i+2][:q-1]
-             document.body[i+2] = document.body[i+2] + '>'
+             document.body[i + 2] = document.body[i + 2][:q - 1]
+             document.body[i + 2] = document.body[i + 2] + '>'
 
          # don't add a box when centered
          if tabularvalignment == 'c':
@@ -482,7 +482,7 @@ def revert_phantom(document):
                 '\\begin_layout Plain Layout\n\n\n\\backslash\n' \
                 'phantom{\n\\end_layout\n\n\\end_inset\n')
       substi = substi.split('\n')
-      document.body[i : i+4] = substi
+      document.body[i:i + 4] = substi
       i += len(substi)
       j = find_token(document.body, "\\end_layout", i)
       if j == -1:
@@ -493,7 +493,7 @@ def revert_phantom(document):
                 '\\begin_layout Plain Layout\n\n' \
                 '}\n\\end_layout\n\n\\end_inset\n')
       substj = substj.split('\n')
-      document.body[j : j+4] = substj
+      document.body[j:j + 4] = substj
       i += len(substj)
 
 
@@ -510,7 +510,7 @@ def revert_hphantom(document):
                 '\\begin_layout Plain Layout\n\n\n\\backslash\n' \
                 'hphantom{\n\\end_layout\n\n\\end_inset\n')
       substi = substi.split('\n')
-      document.body[i : i+4] = substi
+      document.body[i:i + 4] = substi
       i += len(substi)
       j = find_token(document.body, "\\end_layout", i)
       if j == -1:
@@ -521,7 +521,7 @@ def revert_hphantom(document):
                 '\\begin_layout Plain Layout\n\n' \
                 '}\n\\end_layout\n\n\\end_inset\n')
       substj = substj.split('\n')
-      document.body[j : j+4] = substj
+      document.body[j:j + 4] = substj
       i += len(substj)
 
 
@@ -538,7 +538,7 @@ def revert_vphantom(document):
                 '\\begin_layout Plain Layout\n\n\n\\backslash\n' \
                 'vphantom{\n\\end_layout\n\n\\end_inset\n')
       substi = substi.split('\n')
-      document.body[i : i+4] = substi
+      document.body[i:i + 4] = substi
       i += len(substi)
       j = find_token(document.body, "\\end_layout", i)
       if j == -1:
@@ -549,7 +549,7 @@ def revert_vphantom(document):
                 '\\begin_layout Plain Layout\n\n' \
                 '}\n\\end_layout\n\n\\end_inset\n')
       substj = substj.split('\n')
-      document.body[j : j+4] = substj
+      document.body[j:j + 4] = substj
       i += len(substj)
 
 
@@ -718,7 +718,7 @@ def revert_splitindex(document):
         ishortcut = get_value(document.header, '\\shortcut', i, k)
         if ishortcut != "" and indices == "true":
             preamble += "\\newindex[" + iname + "]{" + ishortcut + "}\n"
-        del document.header[i:k+1]
+        del document.header[i:k + 1]
         i = 0
     if preamble != "":
         insert_to_preamble(0, document, preamble)
@@ -741,7 +741,7 @@ def revert_splitindex(document):
             # escape quotes
             content = content.replace('"', r'\"')
             subst = [old_put_cmd_in_ert("\\sindex[" + itype + "]{" + content + "}")]
-            document.body[i:k+1] = subst
+            document.body[i:k + 1] = subst
         i = i + 1
     i = 0
     while True:
@@ -754,10 +754,10 @@ def revert_splitindex(document):
             j = find_token(document.body, "type", i, k)
             del document.body[j]
         elif indices == "false":
-            del document.body[i:k+1]
+            del document.body[i:k + 1]
         else:
             subst = [old_put_cmd_in_ert("\\printindex[" + ptype + "]{}")]
-            document.body[i:k+1] = subst
+            document.body[i:k + 1] = subst
         i = i + 1
 
 
@@ -804,10 +804,10 @@ def revert_subindex(document):
             continue
         ptype = get_value(document.body, 'type', i, k).strip('"')
         if indices == "false":
-            del document.body[i:k+1]
+            del document.body[i:k + 1]
         else:
             subst = [old_put_cmd_in_ert("\\printsubindex[" + ptype + "]{}")]
-            document.body[i:k+1] = subst
+            document.body[i:k + 1] = subst
         i = i + 1
 
 
@@ -829,10 +829,10 @@ def revert_printindexall(document):
             i = i + 1
             continue
         if indices == "false":
-            del document.body[i:k+1]
+            del document.body[i:k + 1]
         else:
             subst = [old_put_cmd_in_ert("\\" + ctype + "{}")]
-            document.body[i:k+1] = subst
+            document.body[i:k + 1] = subst
         i = i + 1
 
 
@@ -945,11 +945,11 @@ def revert_longtable_align(document):
       if i == -1:
           break
       # the alignment is 2 lines below \\begin_inset Tabular
-      j = document.body[i+2].find("longtabularalignment")
+      j = document.body[i + 2].find("longtabularalignment")
       if j == -1:
           break
-      document.body[i+2] = document.body[i+2][:j-1]
-      document.body[i+2] = document.body[i+2] + '>'
+      document.body[i + 2] = document.body[i + 2][:j - 1]
+      document.body[i + 2] = document.body[i + 2] + '>'
       i = i + 1
 
 
@@ -1039,7 +1039,7 @@ def revert_percent_vspace_lengths(document):
                   subst = [old_put_cmd_in_ert("\\vspace*{" + length + "}")]
               else:
                   subst = [old_put_cmd_in_ert("\\vspace{" + length + "}")]
-              document.body[i:i+2] = subst
+              document.body[i:i + 2] = subst
       i = i + 1
 
 
@@ -1053,7 +1053,7 @@ def revert_percent_hspace_lengths(document):
       protected = (document.body[i].find("\\hspace*{}") != -1)
       # only revert if a custom length was set and if
       # it used a percent length
-      length = get_value(document.body, '\\length', i+1)
+      length = get_value(document.body, '\\length', i + 1)
       if length == '':
           document.warning("Malformed lyx document: Missing '\\length' in Space inset.")
           return
@@ -1068,7 +1068,7 @@ def revert_percent_hspace_lengths(document):
               subst = [old_put_cmd_in_ert("\\hspace*{" + length + "}")]
           else:
               subst = [old_put_cmd_in_ert("\\hspace{" + length + "}")]
-          document.body[i:i+3] = subst
+          document.body[i:i + 3] = subst
       i = i + 2
 
 
@@ -1080,7 +1080,7 @@ def revert_hspace_glue_lengths(document):
       if i == -1:
           break
       protected = (document.body[i].find("\\hspace*{}") != -1)
-      length = get_value(document.body, '\\length', i+1)
+      length = get_value(document.body, '\\length', i + 1)
       if length == '':
           document.warning("Malformed lyx document: Missing '\\length' in Space inset.")
           return
@@ -1095,7 +1095,7 @@ def revert_hspace_glue_lengths(document):
               subst = [old_put_cmd_in_ert("\\hspace*{" + length + "}")]
           else:
               subst = [old_put_cmd_in_ert("\\hspace{" + length + "}")]
-          document.body[i:i+3] = subst
+          document.body[i:i + 3] = subst
       i = i + 2
 
 def convert_author_id(document):
@@ -1404,13 +1404,13 @@ def revert_inset_preview(document):
       #If the layout is Standard we need to remove it, otherwise there
       #will be paragraph breaks that shouldn't be there.
       k = find_token(document.body, "\\begin_layout Standard", i)
-      if k == i+2:
-          del document.body[i : i+3]
-          del document.body[j-5 : j-2]
+      if k == i + 2:
+          del document.body[i:i + 3]
+          del document.body[j - 5:j - 2]
           i -= 6
       else:
           del document.body[i]
-          del document.body[j-1]
+          del document.body[j - 1]
           i -= 2
                 
 
@@ -1438,9 +1438,9 @@ def revert_equalspacing_xymatrix(document):
       if found != -1:
           has_equal_spacing = True
           content = [document.body[i][21:]]
-          content += document.body[i+1:j]
+          content += document.body[i + 1:j]
           subst = put_cmd_in_ert(content)
-          document.body[i:j+1] = subst
+          document.body[i:j + 1] = subst
           i += len(subst)
       else:
           for curline in range(i,j):
@@ -1611,7 +1611,7 @@ def revert_lyx_version(document):
             if document.body[k].startswith("type"):
                 typ = document.body[k][4:].strip().strip('"')
         if arg != "version" or typ != "lyxinfo":
-            i = j+1
+            i = j + 1
             continue
 
         # We do not actually know the version of LyX used to produce the document.
@@ -1619,11 +1619,11 @@ def revert_lyx_version(document):
         s = [version]
         # Now we want to check if the line after "\end_inset" is empty. It normally
         # is, so we want to remove it, too.
-        lastline = j+1
-        if document.body[j+1].strip() == "":
-            lastline = j+2
+        lastline = j + 1
+        if document.body[j + 1].strip() == "":
+            lastline = j + 2
         document.body[i: lastline] = s
-        i = i+1
+        i = i + 1
 
 
 def revert_math_scale(document):
@@ -1859,7 +1859,7 @@ def revert_makebox(document):
     length = latex_length(length).split(",")[1]
     subst = "\\makebox[" + length + "][" \
       + align + "]{"
-    document.body[i:y+1] = put_cmd_in_ert(subst)
+    document.body[i:y + 1] = put_cmd_in_ert(subst)
     i += 1
 
 
@@ -1896,9 +1896,9 @@ def revert_IEEEtran(document):
           document.body[i] = "\\begin_layout " + obsoletedby[layout]
           i = j
         else:
-          content = lyx2latex(document, document.body[i:j+1])
+          content = lyx2latex(document, document.body[i:j + 1])
           add_to_preamble(document, [latexcmd[layout] + "{" + content + "}"])
-          del document.body[i:j+1]
+          del document.body[i:j + 1]
 
 
 ##
