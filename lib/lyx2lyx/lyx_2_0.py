@@ -345,6 +345,35 @@ def revert_charstyles(document, name, LaTeXname, changed):
     i += 1
 
 
+def revert_layout_command(document, name, LaTeXname, position):
+  " Reverts a command from a layout to TeX code "
+  i = position
+  while True:
+    i = find_token(document.body, '\\begin_layout ' + name, i)
+    if i == -1:
+      return
+    else:
+      k = -1
+      # find the next layout
+      j = i + 1
+      while k == -1:
+        j = find_token(document.body, '\\begin_layout', j)
+        l = len(document.body)
+        # if nothing was found it was the last layout of the document
+        if j == -1:
+          document.body[l - 4:l - 4] = put_cmd_in_ert("}")
+          k = 0
+        # exclude plain layout because this can be TeX code or another inset
+        elif document.body[j] != '\\begin_layout Plain Layout':
+          document.body[j - 2:j - 2] = put_cmd_in_ert("}")
+          k = 0
+        else:
+          j += 1
+      document.body[i] = '\\begin_layout Standard'
+      document.body[i + 1:i + 1] = put_cmd_in_ert(LaTeXname + "{")
+    i += 1
+
+
 ####################################################################
 
 
@@ -1823,6 +1852,54 @@ def revert_IEEEtran(document):
   " Convert IEEEtran layouts and styles to TeX code "
   revert_flex_inset(document, "IEEE membership", "\\IEEEmembership", 0)
   revert_flex_inset(document, "Lowercase", "\\MakeLowercase", 0)
+  revert_layout_command(document, "Special Paper Notice", "\\IEEEspecialpapernotice", 0)
+  revert_layout_command(document, "After Title Text", "\\IEEEaftertitletext", 0)
+  revert_layout_command(document, "Page headings", "\\markboth", 0)
+  revert_layout_command(document, "Publication ID", "\\IEEEpubid", 0)
+  note = '\\begin_layout Standard\n' \
+         + '\\begin_inset Note Note\n' \
+         + 'status open\n\n' \
+         + '\\begin_layout Plain Layout\n\n' \
+         + '\series bold\n' \
+         + 'IMPORTANT NOTICE!!!:\n' \
+         + '\\series default\n' \
+         + ' \n' \
+         + '\\color red\n' \
+         + 'This document was created from a newer LyX version.\n' \
+         + ' To be able to view/export it with LyX 1.6.x or earlier, the title and author\n' \
+         + ' must be specified by using TeX code.\n' \
+         + ' Do not use then the standard title and author environment!\n' \
+         + '\\end_layout\n\n' \
+         + '\\end_inset\n\n\n' \
+         + '\\end_layout\n\n'
+  if document.textclass == "IEEEtran":
+    # insert a note that title and author must be given in TeX code
+    document.body.insert(0, note)
+    # we need to revert title and author to TeX code to set \maketitle correctly
+    revert_layout_command(document, "Title", "\\title", 0)
+    revert_layout_command(document, "Author", "\\author", 0)
+    # write \markboth code to the preamble
+    insert_to_preamble(0, document,
+                          '% Commands inserted by lyx2lyx\n'
+                          + '% protect \\markboth against an old bug reintroduced in babel >= 3.8g\n'
+                          + '\\let\\oldforeign@language\\foreign@language\n'
+                          + '\\DeclareRobustCommand{\\foreign@language}[1]{%\n'
+                          + '  \\lowercase{\\oldforeign@language{#1}}}\n')
+    # set maketitle
+    y = find_token(document.body, '\\begin_layout Abstract', 0)
+    if y == -1:
+      document.warning("Malformed LyX document: Can't find abstract of IEEEtran paper.")
+    else:
+      maketitle = ['\\begin_layout Standard\n', \
+                  '\\begin_inset ERT\n', \
+                  'status collapsed\n', \
+                  '\\begin_layout Plain Layout\n', \
+                  '\\backslash\n', \
+                  'maketitle \n', \
+                  '\\end_layout\n', \
+                  '\\end_inset\n', \
+                  '\\end_layout\n']
+      document.body[y:y] = maketitle
 
 
 ##
