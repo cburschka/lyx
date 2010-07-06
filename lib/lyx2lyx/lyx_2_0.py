@@ -333,7 +333,7 @@ def revert_charstyles(document, name, LaTeXname, changed):
     k = find_token(document.body, name + ' on', i + 1)
     # if there is no default set, the style ends with the layout
     # assure hereby that we found the correct layout end
-    if j != -1 and (j < k or k ==-1):
+    if j != -1 and (j < k or k == -1):
       document.body[j:j+1] = put_cmd_in_ert("}")
     else:
       j = find_token(document.body, '\\end_layout', i)
