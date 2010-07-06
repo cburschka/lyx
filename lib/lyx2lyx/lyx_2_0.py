@@ -273,53 +273,53 @@ def latex_length(string):
 
 def revert_flex_inset(document, name, LaTeXname, position):
   " Convert flex insets to TeX code "
-  i = 0
-  z = 0
+  i = position
   while True:
-    i = find_token(document.body, '\\begin_inset Flex ' + name, position)
+    i = find_token(document.body, '\\begin_inset Flex ' + name, i)
     if i == -1:
       return
-    z = find_end_of_inset(document.body, i)
-    if z == -1:
-      document.warning("Malformed LyX document: Can't find end of Flex " + name + " inset.")
-      return
-    # remove the \end_inset
-    document.body[z - 2:z + 1] = put_cmd_in_ert("}")
-    # we need to reset character layouts if necessary
-    j = find_token(document.body, '\\emph on', i)
-    k = find_token(document.body, '\\noun on', i)
-    l = find_token(document.body, '\\series', i)
-    m = find_token(document.body, '\\family', i)
-    n = find_token(document.body, '\\shape', i)
-    o = find_token(document.body, '\\color', i)
-    p = find_token(document.body, '\\size', i)
-    q = find_token(document.body, '\\bar under', i)
-    r = find_token(document.body, '\\uuline on', i)
-    s = find_token(document.body, '\\uwave on', i)
-    t = find_token(document.body, '\\strikeout on', i)
-    if j != -1 and j < z:
-      document.body.insert(z-2, "\\emph default")
-    if k != -1 and k < z:
-      document.body.insert(z-2, "\\noun default")
-    if l != -1 and l < z:
-      document.body.insert(z-2, "\\series default")
-    if m != -1 and m < z:
-      document.body.insert(z-2, "\\family default")
-    if n != -1 and n < z:
-      document.body.insert(z-2, "\\shape default")
-    if o != -1 and o < z:
-      document.body.insert(z-2, "\\color inherit")
-    if p != -1 and p < z:
-      document.body.insert(z-2, "\\size default")
-    if q != -1 and q < z:
-      document.body.insert(z-2, "\\bar default")
-    if r != -1 and r < z:
-      document.body.insert(z-2, "\\uuline default")
-    if s != -1 and s < z:
-      document.body.insert(z-2, "\\uwave default")
-    if t != -1 and t < z:
-      document.body.insert(z-2, "\\strikeout default")
-    document.body[i:i+4] = put_cmd_in_ert(LaTeXname + "{")
+    else:
+      z = find_end_of_inset(document.body, i)
+      if z == -1:
+        document.warning("Malformed LyX document: Can't find end of Flex " + name + " inset.")
+        return
+      # remove the \end_inset
+      document.body[z - 2:z + 1] = put_cmd_in_ert("}")
+      # we need to reset character layouts if necessary
+      j = find_token(document.body, '\\emph on', i)
+      k = find_token(document.body, '\\noun on', i)
+      l = find_token(document.body, '\\series', i)
+      m = find_token(document.body, '\\family', i)
+      n = find_token(document.body, '\\shape', i)
+      o = find_token(document.body, '\\color', i)
+      p = find_token(document.body, '\\size', i)
+      q = find_token(document.body, '\\bar under', i)
+      r = find_token(document.body, '\\uuline on', i)
+      s = find_token(document.body, '\\uwave on', i)
+      t = find_token(document.body, '\\strikeout on', i)
+      if j != -1 and j < z:
+        document.body.insert(z-2, "\\emph default")
+      if k != -1 and k < z:
+        document.body.insert(z-2, "\\noun default")
+      if l != -1 and l < z:
+        document.body.insert(z-2, "\\series default")
+      if m != -1 and m < z:
+        document.body.insert(z-2, "\\family default")
+      if n != -1 and n < z:
+        document.body.insert(z-2, "\\shape default")
+      if o != -1 and o < z:
+        document.body.insert(z-2, "\\color inherit")
+      if p != -1 and p < z:
+        document.body.insert(z-2, "\\size default")
+      if q != -1 and q < z:
+        document.body.insert(z-2, "\\bar default")
+      if r != -1 and r < z:
+        document.body.insert(z-2, "\\uuline default")
+      if s != -1 and s < z:
+        document.body.insert(z-2, "\\uwave default")
+      if t != -1 and t < z:
+        document.body.insert(z-2, "\\strikeout default")
+      document.body[i:i + 4] = put_cmd_in_ert(LaTeXname + "{")
     i += 1
 
 
@@ -340,7 +340,7 @@ def revert_charstyles(document, name, LaTeXname, changed):
       else:
         j = find_token(document.body, '\\end_layout', i)
         document.body[j:j] = put_cmd_in_ert("}")
-      document.body[i:i+1] = put_cmd_in_ert(LaTeXname + "{")
+      document.body[i:i + 1] = put_cmd_in_ert(LaTeXname + "{")
       changed = True
     i += 1
 
@@ -1815,7 +1815,7 @@ def revert_makebox(document):
         length = latex_length(length).split(",")[1]
         subst = "\\makebox[" + length + "][" \
          + align + "]{"
-        document.body[i:i+13] = put_cmd_in_ert(subst)
+        document.body[i:i + 13] = put_cmd_in_ert(subst)
     i += 1
 
 
