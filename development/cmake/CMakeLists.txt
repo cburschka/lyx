@@ -24,7 +24,7 @@ set(EXECUTABLE_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/lib)
 
 
-option(lyxinstall "Build install projects/rules" ON)
+option(LYX_INSTALL "Build install projects/rules" ON)
 
 
 if(UNIX OR MINGW)
@@ -315,15 +315,15 @@ message(STATUS "")
 # Not sure if it works for all non-msvc compilers
 include(PCHSupport_26)
 if (MSVC)
-	option(disable-pch "Disable precompiled headers" ON)
+	option(LYX_DISABLE_PCH "Disable precompiled headers" ON)
 else()
-	option(disable-pch "Disable precompiled headers" ON)
+	option(LYX_DISABLE_PCH "Disable precompiled headers" ON)
 endif()
 
-if(NOT disable-pch)
+if(NOT LYX_DISABLE_PCH)
 
 	message(STATUS "-----")
-	message(STATUS "----- using precompiled headers, disable with -Ddisable-pch=1")
+	message(STATUS "----- using precompiled headers, disable with -DLYX_DISABLE_PCH=1")
 	message(STATUS "-----")
 	configure_file(${CMAKE_SOURCE_DIR}/pcheaders.h ${CMAKE_BINARY_DIR}/pcheaders.h)
 	configure_file(${CMAKE_SOURCE_DIR}/config.cpp.cmake ${CMAKE_BINARY_DIR}/config_pch.cpp)
@@ -354,10 +354,10 @@ if(NOT disable-pch)
 else()
 	if(MSVC)
 		message(STATUS "-----")
-		message(STATUS "----- precompiled headers disabled, enable with -Ddisable-pch=0")
+		message(STATUS "----- precompiled headers disabled, enable with -DLYX_DISABLE_PCH=0")
 		message(STATUS "-----")
 	endif()
-	set(disable-pch TRUE CACHE TYPE STRING)
+	set(LYX_DISABLE_PCH TRUE CACHE TYPE STRING)
 	macro(lyx_add_msvc_pch)
 	endmacro(lyx_add_msvc_pch)
 	macro(lyx_add_gcc_pch name_)
@@ -456,14 +456,14 @@ if(NOT ${_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
     endif()
 endif()
 
-option(debug_glibc "Enable libstdc++ debug mode" OFF)
-option(debug_glibc_pedantic "Enable libstdc++pedantic debug mode" OFF)
+option(LYX_DEBUG_GLIBC "Enable libstdc++ debug mode" OFF)
+option(LYX_DEBUG_GLIBC_PEDANTIC "Enable libstdc++pedantic debug mode" OFF)
 
-if(debug_glibc)
+if(LYX_DEBUG_GLIBC)
   set(_GLIBCXX_DEBUG 1)
 endif()
 
-if(debug_glibc_pedantic)
+if(LYX_DEBUG_GLIBC_PEDANTIC)
   set(_GLIBCXX_DEBUG_PEDANTIC 1)
 endif()
 
@@ -485,8 +485,8 @@ include_directories(
   ${CMAKE_BINARY_DIR}
   ${TOP_SRC_DIR}/src)
 
-option(UseExternalBoost "Use external boost" OFF)
-if(UseExternalBoost)
+option(LYX_USE_EXTERNAL_BOOST "Use external boost" OFF)
+if(LYX_USE_EXTERNAL_BOOST)
   message(STATUS "Searching for boost")
   find_package(Boost COMPONENTS signals regex)
   if(Boost_FOUND)
@@ -497,7 +497,7 @@ if(UseExternalBoost)
     message(FATAL_ERROR "Boost not found" ${Boost_ERROR_REASON})
   endif()
 else()
-  message(STATUS "----- Using internal boost. To build with installed version use -DUseExternalBoost:BOOL=ON")
+  message(STATUS "----- Using internal boost. To build with installed version use -DLYX_USE_EXTERNAL_BOOST:BOOL=ON")
   if(LYX_USE_TR1_REGEX)
     set(Lyx_Boost_Libraries boost_signals)
   else()
@@ -514,7 +514,7 @@ if(NOT use_external_libintl)
 endif()
 add_subdirectory(src)
 
-if(lyxinstall)
+if(LYX_INSTALL)
 	add_subdirectory(man)
 	if(NOT ${_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
 		add_subdirectory(doc)
@@ -523,7 +523,7 @@ endif()
 add_subdirectory(lyx2lyx)
 add_subdirectory(scripts)
 
-if(lyxinstall)
+if(LYX_INSTALL)
 	include(../Install)
 endif()
 
@@ -570,7 +570,7 @@ endif()
 # so we do not provide infofiles for
 # CPACK_RESOURCE_FILE_README and CPACK_RESOURCE_FILE_WELCOME
 
-if(lyxinstall)
+if(LYX_INSTALL)
 	include(CPack)
 endif()
 
