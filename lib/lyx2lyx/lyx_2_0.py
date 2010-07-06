@@ -1817,31 +1817,29 @@ def revert_makebox(document):
     i = find_token(document.body, '\\begin_inset Box Frameless', i)
     if i == -1:
       return
-    else:
-      z = find_end_of_inset(document.body, i)
-      if z == -1:
-        document.warning("Malformed LyX document: Can't find end of box inset.")
-        return
-      j = find_token(document.body, 'use_makebox 1', i)
-      # assure we found the makebox of the current box
-      if j > i + 7 or j == -1:
-      	return
-      else:
-        # remove the \end_inset
-        document.body[z - 2:z + 1] = put_cmd_in_ert("}")
-        # determine the alignment
-        k = find_token(document.body, 'hor_pos', j - 4)
-        align = document.body[k][9]
-        # determine the width
-        l = find_token(document.body, 'width "', j + 1)
-        length = document.body[l][7:]
-        # remove trailing '"'
-        length = length[:-1]
-        # latex_length returns "bool,length"
-        length = latex_length(length).split(",")[1]
-        subst = "\\makebox[" + length + "][" \
-         + align + "]{"
-        document.body[i:i + 13] = put_cmd_in_ert(subst)
+    z = find_end_of_inset(document.body, i)
+    if z == -1:
+      document.warning("Malformed LyX document: Can't find end of box inset.")
+      return
+    j = find_token(document.body, 'use_makebox 1', i)
+    # assure we found the makebox of the current box
+    if j > i + 7 or j == -1:
+      return
+    # remove the \end_inset
+    document.body[z - 2:z + 1] = put_cmd_in_ert("}")
+    # determine the alignment
+    k = find_token(document.body, 'hor_pos', j - 4)
+    align = document.body[k][9]
+    # determine the width
+    l = find_token(document.body, 'width "', j + 1)
+    length = document.body[l][7:]
+    # remove trailing '"'
+    length = length[:-1]
+    # latex_length returns "bool,length"
+    length = latex_length(length).split(",")[1]
+    subst = "\\makebox[" + length + "][" \
+      + align + "]{"
+    document.body[i:i + 13] = put_cmd_in_ert(subst)
     i += 1
 
 
