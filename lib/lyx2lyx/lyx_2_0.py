@@ -108,34 +108,41 @@ def old_put_cmd_in_ert(string):
     return string
 
 
-# This routine wraps some content in an ERT inset. It returns a 
-# LIST of strings. This is how lyx2lyx works: with a list of strings, 
-# each representing a line of a LyX file. Embedded newlines confuse
+# This routine wraps some content in an ERT inset. 
+#
+# NOTE: The function accepts either a single string or a LIST of strings as
+# argument. But it returns a LIST of strings, split on \n, so that it does 
+# not have embedded newlines.
+# 
+# This is how lyx2lyx represents a LyX document: as a list of strings, 
+# each representing a line of a LyX file. Embedded newlines confuse 
 # lyx2lyx very much.
-# For this same reason, we expect as input a LIST of strings, not
-# something with embedded newlines. That said, if any of your strings
-# do have embedded newlines, the string will eventually get split on
-# them and you'll get a list back.
 #
 # A call to this routine will often go something like this:
 #   i = find_token('\\begin_inset FunkyInset', ...)
 #   ...
 #   j = find_end_of_inset(document.body, i)
 #   content = ...extract content from insets
+#   # that could be as simple as: 
+#   # content = lyx2latex(document[i:j+1])
 #   ert = put_cmd_in_ert(content)
 #   document.body[i:j] = ert
 # Now, before we continue, we need to reset i appropriately. Normally,
 # this would be: 
 #   i += len(ert)
 # That puts us right after the ERT we just inserted.
-def put_cmd_in_ert(strlist):
+#
+def put_cmd_in_ert(arg):
     ret = ["\\begin_inset ERT", "status collapsed", "\\begin_layout Plain Layout", ""]
     # Despite the warnings just given, it will be faster for us to work
     # with a single string internally. That way, we only go through the
     # unicode_reps loop once.
-    s = "\n".join(strlist)
+    if type(arg) is list:
+      s = "\n".join(arg)
+    else:
+      s = arg
     for rep in unicode_reps:
-        s = s.replace(rep[1], rep[0].replace('\\\\', '\\'))
+      s = s.replace(rep[1], rep[0].replace('\\\\', '\\'))
     s = s.replace('\\', "\\backslash\n")
     ret += s.splitlines()
     ret += ["\\end_layout", "\\end_inset"]
