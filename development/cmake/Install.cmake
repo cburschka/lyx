@@ -2,7 +2,7 @@
 # TODO: set correct path in call to cmake
 # e.g. cmake /usr/src/lyx/lyx-devel/development/cmake -DCMAKE_INSTALL_PREFIX=/usr/local/share/lyx2.0 -Dnls=1
 
-message(STATUS "installing to ${CMAKE_INSTALL_PREFIX}, defined by CMAKE_INSTALL_PREFIX")
+message(STATUS "Installing to ${CMAKE_INSTALL_PREFIX}, defined by CMAKE_INSTALL_PREFIX")
 
 # the macro scans the directories "_parent_src_dir/_dir/_current_dir" for *._file_type files
 # and installs the files in CMAKE_INSTALL_PREFIX/_current_dir

@@ -16,7 +16,7 @@ set(boost_signals_sources
 
 lyx_add_path(boost_signals_sources ${TOP_SRC_DIR}/boost/libs/signals/src)
 
-if(NOT MERGE_FILES)
+if(NOT LYX_MERGE_FILES)
 	add_library(boost_signals STATIC ${boost_signals_sources})
 else()
 	lyx_const_touched_files(_allinone  boost_signals_sources)

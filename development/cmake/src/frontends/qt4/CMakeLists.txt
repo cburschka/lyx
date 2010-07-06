@@ -36,7 +36,7 @@ include_directories(
 	${QT_INCLUDES}
 	${CMAKE_CURRENT_BINARY_DIR})
 
-if(MERGE_FILES)
+if(LYX_MERGE_FILES)
 	lyx_const_touched_files(_allinone frontends_qt4_sources)
 	set(depends_moc_uic ${frontends_qt4_headers} ${ui_files})
 	set_source_files_properties(_allinone_const.C

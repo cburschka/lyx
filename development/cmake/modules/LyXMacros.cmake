@@ -226,3 +226,14 @@ macro(lyx_qt_resources_file _qrc_name _to_dir _list)
    endif()
 endmacro(lyx_qt_resources_file)
 
+
+macro(LYX_OPTION _name _description _default)
+	option(LYX_${_name} ${_description} ${_default})
+	set(_msg ON)
+	if(_msg)
+		string(SUBSTRING "LYX_${_name}                            " 0 25 _var)
+		string(SUBSTRING "${LYX_${_name}}     " 0 4 _val)
+		message(STATUS "${_var}: ${_val}   (${_description})")
+	endif()
+endmacro()
+
