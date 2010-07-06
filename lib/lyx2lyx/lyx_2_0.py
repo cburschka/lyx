@@ -154,6 +154,7 @@ def lyx2latex(document, lines):
     # clean up multiline stuff
     content = ""
     ert_end = 0
+    note_end = 0
 
     for curline in range(len(lines)):
       line = lines[curline]
@@ -181,6 +182,10 @@ def lyx2latex(document, lines):
                   line = "''"
               else:
                   line = "'"
+      elif line.startswith("\\begin_inset Note Note"):
+          # We want to skip LyX notes, so remember where the inset ends
+          note_end = find_end_of_inset(lines, curline + 1)
+          continue
       elif line.isspace() or \
             line.startswith("\\begin_layout") or \
             line.startswith("\\end_layout") or \
@@ -190,6 +195,10 @@ def lyx2latex(document, lines):
             line.strip() == "status collapsed" or \
             line.strip() == "status open":
           #skip all that stuff
+          continue
+
+      # Skip LyX notes
+      if note_end >= curline:
           continue
 
       # this needs to be added to the preamble because of cases like
@@ -1861,53 +1870,35 @@ def revert_IEEEtran(document):
 
   revert_flex_inset(document, "IEEE membership", "\\IEEEmembership", 0)
   revert_flex_inset(document, "Lowercase", "\\MakeLowercase", 0)
-  revert_layout_command(document, "Special Paper Notice", "\\IEEEspecialpapernotice", 0)
-  revert_layout_command(document, "After Title Text", "\\IEEEaftertitletext", 0)
-  revert_layout_command(document, "Page headings", "\\markboth", 0)
-  revert_layout_command(document, "Publication ID", "\\IEEEpubid", 0)
-  note = '\\begin_layout Standard\n' \
-         + '\\begin_inset Note Note\n' \
-         + 'status open\n\n' \
-         + '\\begin_layout Plain Layout\n\n' \
-         + '\series bold\n' \
-         + 'IMPORTANT NOTICE!!!:\n' \
-         + '\\series default\n' \
-         + ' \n' \
-         + '\\color red\n' \
-         + 'This document was created from a newer LyX version.\n' \
-         + ' To be able to view/export it with LyX 1.6.x or earlier, the title and author\n' \
-         + ' must be specified by using TeX code.\n' \
-         + ' Do not use then the standard title and author environment!\n' \
-         + '\\end_layout\n\n' \
-         + '\\end_inset\n\n\n' \
-         + '\\end_layout\n\n'
-  # insert a note that title and author must be given in TeX code
-  document.body.insert(0, note)
-  # we need to revert title and author to TeX code to set \maketitle correctly
-  revert_layout_command(document, "Title", "\\title", 0)
-  revert_layout_command(document, "Author", "\\author", 0)
-  # write \markboth code to the preamble
-  insert_to_preamble(0, document,
-                        '% Commands inserted by lyx2lyx\n'
-                        + '% protect \\markboth against an old bug reintroduced in babel >= 3.8g\n'
-                        + '\\let\\oldforeign@language\\foreign@language\n'
-                        + '\\DeclareRobustCommand{\\foreign@language}[1]{%\n'
-                        + '  \\lowercase{\\oldforeign@language{#1}}}\n')
-  # set maketitle
-  y = find_token(document.body, '\\begin_layout Abstract', 0)
-  if y == -1:
-    document.warning("Malformed LyX document: Can't find abstract of IEEEtran paper.")
-    return
-  maketitle = ['\\begin_layout Standard\n', \
-              '\\begin_inset ERT\n', \
-              'status collapsed\n', \
-              '\\begin_layout Plain Layout\n', \
-              '\\backslash\n', \
-              'maketitle \n', \
-              '\\end_layout\n', \
-              '\\end_inset\n', \
-              '\\end_layout\n']
-  document.body[y:y] = maketitle
+
+  layouts = ("Special Paper Notice", "After Title Text", "Publication ID",
+             "Page headings", "Biography without photo")
+
+  latexcmd = {"Special Paper Notice": "\\IEEEspecialpapernotice",
+              "After Title Text":     "\\IEEEaftertitletext",
+              "Publication ID":       "\\IEEEpubid"}
+
+  obsoletedby = {"Page headings":            "MarkBoth",
+                 "Biography without photo":  "BiographyNoPhoto"}
+
+  for layout in layouts:
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_layout ' + layout, i)
+        if i == -1:
+          break
+        j = find_end_of(document.body, i, '\\begin_layout', '\\end_layout')
+        if j == -1:
+          document.warning("Malformed LyX document: Can't find end of " + layout + " layout.")
+          i += 1
+          continue
+        if layout in obsoletedby:
+          document.body[i] = "\\begin_layout " + obsoletedby[layout]
+          i = j
+        else:
+          content = lyx2latex(document, document.body[i:j+1])
+          add_to_preamble(document, [latexcmd[layout] + "{" + content + "}"])
+          del document.body[i:j+1]
 
 
 ##
