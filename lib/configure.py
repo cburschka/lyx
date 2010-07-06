@@ -857,7 +857,7 @@ def checkOtherEntries():
     checkProgAlternatives('BibTeX or alternative programs', ['bibtex', 'bibtex8', 'biber'],
         rc_entry = [ r'\bibtex_command "%%"' ],
         alt_rc_entry = [ r'\bibtex_alternatives "%%"' ])
-    checkProg('JBibTeX, the Japanese BibTeX', ['jbibtex', 'bibtex'],
+    checkProg('JBibTeX, the Japanese BibTeX', ['pbibtex', 'jbibtex', 'bibtex'],
         rc_entry = [ r'\jbibtex_command "%%"' ])
     checkProgAlternatives('available index processors', ['texindy', 'makeindex -c -q'],
         rc_entry = [ r'\index_command "%%"' ],
