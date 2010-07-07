@@ -1,0 +1,278 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{article (American Economic Association)}
+# Author : Koji Yokota <yokota@res.otaru-uc.ac.jp>
+
+Format 11
+Input stdclass.inc
+Input theorems-bytype.module
+Input theorems-ams-extended-bytype.module
+
+Provides amsthm 1
+
+Preamble
+	\usepackage{harvard}
+EndPreamble
+
+NoStyle		Part
+NoStyle		Chapter
+NoStyle		Paragraph
+NoStyle		Subparagraph
+NoStyle		SpecialSection
+NoStyle		Part*
+NoStyle		Chapter*
+NoStyle		Section*
+NoStyle		Subsection*
+NoStyle		Subsubsection*
+NoStyle		Paragraph*
+NoStyle		Subparagraph*
+NoStyle		SpecialSection*
+NoStyle		List
+NoStyle		LyX-Code
+NoStyle		Verse
+NoStyle		Address
+NoStyle		Right_Address
+NoStyle		Acknowledgement*
+NoStyle		Algorithm*
+NoStyle		Assumption*
+NoStyle		Axiom*
+NoStyle		Conclusion*
+NoStyle		Condition*
+NoStyle		Criterion*
+NoStyle		Fact
+NoStyle		Notation*
+NoStyle		Note
+NoStyle		Note*
+NoStyle		Remark*
+NoStyle		Summary*
+
+ClassOptions
+	Other	draftmode
+End
+
+Style ShortTitle
+	Category	FrontMatter
+	LatexType	Command
+	LatexName	shortTitle
+	InTitle		1
+	Align		Center
+End
+
+Style Publication_Month
+	CopyStyle	ShortTitle
+	LatexName	pubMonth
+	Align		Left
+	Margin          Dynamic
+	LabelType       Static
+	LabelString     "Publication Month:"
+	LabelSep        M
+	LabelFont
+	  Color		Red
+	EndFont
+End
+
+Style Publication_Year
+	CopyStyle	Publication_Month
+	LatexName	pubYear
+	LabelString     "Publication Year:"
+End
+
+Style Publication_Volume
+	CopyStyle	Publication_Month
+	LatexName	pubVolume
+	LabelString     "Publication Volume:"
+End
+
+Style Publication_Issue
+	CopyStyle	Publication_Month
+	LatexName	pubIssue
+	LabelString     "Publication Issue:"
+End
+
+Style Abstract
+	InTitle		1
+End
+
+Style Acknowledgement
+	Category	FrontMatter
+	LabelString	"Acknowledgement."
+	Preamble
+	EndPreamble
+End
+
+Style Theorem
+	LatexName	theorem
+	Preamble
+		\newtheorem{theorem}{Theorem}
+	EndPreamble
+End
+
+Style Algorithm
+	LatexName	algorithm
+	Preamble
+		\newtheorem{algorithm}{Algorithm}
+	EndPreamble
+End
+
+Style Axiom
+	LatexName	axiom
+	Preamble
+		\newtheorem{axiom}{Axiom}
+	EndPreamble
+End
+
+Style Case
+	CopyStyle	Remark
+	LatexName	case
+	LabelCounter	case
+	LabelString	"Case \thecase."
+	Preamble
+		\newtheorem{case}{Case}
+	EndPreamble
+End
+
+Style Claim
+	LatexName	claim
+	Preamble
+		\newtheorem{claim}{Claim}
+	EndPreamble
+End
+
+Style Conclusion
+	LatexName	conclusion
+	LabelCounter	conclusion
+	Preamble
+		\newtheorem{conclusion}{Conclusion}
+	EndPreamble
+End
+
+Style Condition
+	LatexName	condition
+	LabelCounter	condition
+	Preamble
+		\newtheorem{condition}{Condition}
+	EndPreamble
+End
+
+Style Conjecture
+	LatexName	conjecture
+	Preamble
+		\newtheorem{conjecture}{Conjecture}
+	EndPreamble
+End
+
+Style Corollary
+	LatexName	corollary
+	Preamble
+		\newtheorem{corollary}{Corollary}
+	EndPreamble
+End
+
+Style Criterion
+	LatexName	criterion
+	LabelCounter	criterion
+	Preamble
+		\newtheorem{criterion}{Criterion}
+	EndPreamble
+End
+
+Style Definition
+	LatexName	definition
+	Preamble
+		\newtheorem{definition}{Definition}
+	EndPreamble
+End
+
+Style Example
+	LatexName	example
+	Preamble
+		\newtheorem{example}{Example}
+	EndPreamble
+End
+
+Style Exercise
+	LatexName	exercise
+	Preamble
+		\newtheorem{exercise}{Exercise}
+	EndPreamble
+End
+
+Style Lemma
+	LatexName	lemma
+	Preamble
+		\newtheorem{lemma}{Lemma}
+	EndPreamble
+End
+
+Style Notation
+	LatexName	notation
+	LabelCounter	notation
+	Preamble
+		\newtheorem{notation}{Notation}
+	EndPreamble
+End
+
+Style Problem
+	LatexName	problem
+	LabelCounter	problem
+	Preamble
+		\newtheorem{problem}{Problem}
+	EndPreamble
+End
+
+Style Proposition
+	LatexName	proposition
+	Preamble
+		\newtheorem{proposition}{Proposition}
+	EndPreamble
+End
+
+Style Remark
+	LatexName	remark
+	LabelString	"Remark \theremark."
+	Preamble
+		\newtheorem{remark}{Remark}
+	EndPreamble
+End
+
+Style Solution
+	CopyStyle	Remark
+	LatexName	solution
+	LabelCounter	solution
+	LabelString	"Solution \thesolution."
+	Preamble
+		\newtheorem{solution}{Solution}
+	EndPreamble
+End
+
+Style Summary
+	LatexName	summary
+	LabelCounter	summary
+	Preamble
+		\newtheorem{summary}{Summary}
+	EndPreamble
+End
+
+Style Caption
+	CopyStyle	Remark
+	Category	MainText
+	LatexType	Command
+	LatexName	QTR{caption}
+	LabelCounter	caption
+	LabelString	"Caption: "
+	LeftMargin	"Caption: "
+	Align		Center
+End
+
+Style Proof
+	Preamble
+	EndPreamble
+End
+
+Counter case
+End
+Counter remark
+End
+Counter summary
+End
+Counter solution
+End
