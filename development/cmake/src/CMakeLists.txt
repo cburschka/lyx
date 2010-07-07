@@ -32,6 +32,13 @@ list(REMOVE_ITEM lyx_sources
 	${TOP_SRC_DIR}/src/Section.cpp
 	${TOP_SRC_DIR}/src/lyxcore.cpp)
 
+if(NOT APPLE)
+  list(REMOVE_ITEM lyx_sources
+    ${TOP_SRC_DIR}/src/AppleSpellChecker.cpp)
+   list(REMOVE_ITEM lyx_headers
+    ${TOP_SRC_DIR}/src/AppleSpellChecker.h)
+endif()
+
 list(REMOVE_ITEM lyx_headers
 	${TOP_SRC_DIR}/src/EnchantChecker.h
 	${TOP_SRC_DIR}/src/AspellChecker.h
