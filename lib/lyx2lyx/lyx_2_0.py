@@ -155,10 +155,18 @@ def lyx2latex(document, lines):
     content = ""
     ert_end = 0
     note_end = 0
+    hspace = ""
 
     for curline in range(len(lines)):
       line = lines[curline]
-      if line.startswith("\\begin_inset ERT"):
+      if line.startswith("\\begin_inset Note Note"):
+          # We want to skip LyX notes, so remember where the inset ends
+          note_end = find_end_of_inset(lines, curline + 1)
+          continue
+      elif note_end >= curline:
+          # Skip LyX notes
+          continue
+      elif line.startswith("\\begin_inset ERT"):
           # We don't want to replace things inside ERT, so figure out
           # where the end of the inset is.
           ert_end = find_end_of_inset(lines, curline + 1)
@@ -182,10 +190,22 @@ def lyx2latex(document, lines):
                   line = "''"
               else:
                   line = "'"
-      elif line.startswith("\\begin_inset Note Note"):
-          # We want to skip LyX notes, so remember where the inset ends
-          note_end = find_end_of_inset(lines, curline + 1)
-          continue
+      elif line.startswith("\\begin_inset space"):
+          line = line[18:].strip()
+          if line.startswith("\\hspace"):
+              # Account for both \hspace and \hspace*
+              hspace = line[:-2]
+              continue
+          elif line == "\\space{}":
+              line = "\\ "
+          elif line == "\\thinspace{}":
+              line = "\\,"
+      elif hspace != "":
+          # The LyX length is in line[8:], after the \length keyword
+          # latex_length returns "bool,length"
+          length = latex_length(line[8:]).split(",")[1]
+          line = hspace + "{" + length + "}"
+          hspace = ""
       elif line.isspace() or \
             line.startswith("\\begin_layout") or \
             line.startswith("\\end_layout") or \
@@ -197,10 +217,6 @@ def lyx2latex(document, lines):
           #skip all that stuff
           continue
 
-      # Skip LyX notes
-      if note_end >= curline:
-          continue
-
       # this needs to be added to the preamble because of cases like
       # \textmu, \textbackslash, etc.
       add_to_preamble(document, ['% added by lyx2lyx for converted index entries',
@@ -209,14 +225,15 @@ def lyx2latex(document, lines):
       # a lossless reversion is not possible
       # try at least to handle some common insets and settings
       if ert_end >= curline:
-          line = line.replace(r'\backslash', r'\\')
+          line = line.replace(r'\backslash', '\\')
       else:
-          line = line.replace('&', '\\&{}')
-          line = line.replace('#', '\\#{}')
-          line = line.replace('^', '\\^{}')
-          line = line.replace('%', '\\%{}')
-          line = line.replace('_', '\\_{}')
-          line = line.replace('$', '\\${}')
+          # No need to add "{}" after single-nonletter macros
+          line = line.replace('&', '\\&')
+          line = line.replace('#', '\\#')
+          line = line.replace('^', '\\textasciicircum{}')
+          line = line.replace('%', '\\%')
+          line = line.replace('_', '\\_')
+          line = line.replace('$', '\\$')
 
           # Do the LyX text --> LaTeX conversion
           for rep in unicode_reps:
