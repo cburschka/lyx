@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-06-19 16:28+0200\n"
+"POT-Creation-Date: 2010-07-07 02:39+0200\n"
 "PO-Revision-Date: 2009-05-25 16:49+0100\n"
 "Last-Translator: H. İbrahim Güngör <h.ibrahim.gungor@gmail.com>\n"
 "Language-Team: Turkish <kde-i18n-doc@kde.org>\n"
@@ -417,22 +417,20 @@ msgstr "İç kutu -- sabit genişlik ve satır kesmeleri için gerekir"
 #: src/frontends/qt4/ui/MathMatrixUi.ui:247
 #: src/frontends/qt4/ui/TabularUi.ui:987
 #: src/frontends/qt4/ui/TabularUi.ui:1006
-#: src/frontends/qt4/ui/TabularUi.ui:1054 src/frontends/qt4/GuiBox.cpp:116
-#: src/frontends/qt4/GuiBox.cpp:174 src/frontends/qt4/GuiBox.cpp:286
-#: src/frontends/qt4/GuiBox.cpp:368 src/frontends/qt4/GuiDocument.cpp:112
-#: src/frontends/qt4/GuiGraphics.cpp:580 src/frontends/qt4/GuiPrefs.cpp:1942
-#: src/frontends/qt4/GuiPrefs.cpp:1965
+#: src/frontends/qt4/ui/TabularUi.ui:1054 src/frontends/qt4/GuiBox.cpp:194
+#: src/frontends/qt4/GuiBox.cpp:312 src/frontends/qt4/GuiBox.cpp:389
+#: src/frontends/qt4/GuiDocument.cpp:112 src/frontends/qt4/GuiGraphics.cpp:580
+#: src/frontends/qt4/GuiPrefs.cpp:1942 src/frontends/qt4/GuiPrefs.cpp:1965
 msgid "None"
 msgstr "Yok"
 
-#: src/frontends/qt4/ui/BoxUi.ui:278 src/frontends/qt4/GuiBox.cpp:288
-#: src/frontends/qt4/GuiBox.cpp:360 src/frontends/qt4/GuiBox.cpp:369
-#: src/insets/InsetBox.cpp:138
+#: src/frontends/qt4/ui/BoxUi.ui:278 src/frontends/qt4/GuiBox.cpp:314
+#: src/frontends/qt4/GuiBox.cpp:392 src/insets/InsetBox.cpp:138
 msgid "Parbox"
 msgstr "Kısım"
 
-#: src/frontends/qt4/ui/BoxUi.ui:283 src/frontends/qt4/GuiBox.cpp:361
-#: src/frontends/qt4/GuiBox.cpp:370 src/insets/InsetBox.cpp:140
+#: src/frontends/qt4/ui/BoxUi.ui:283 src/frontends/qt4/GuiBox.cpp:393
+#: src/insets/InsetBox.cpp:142
 msgid "Minipage"
 msgstr "Ufak sayfa"
 
@@ -544,7 +542,7 @@ msgstr ""
 #: src/Buffer.cpp:2174 src/Buffer.cpp:3519 src/Buffer.cpp:3565
 #: src/LyXVC.cpp:88 src/LyXVC.cpp:216 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:208
-#: src/frontends/qt4/GuiDocument.cpp:1680
+#: src/frontends/qt4/GuiDocument.cpp:1683
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1949
 #: src/frontends/qt4/GuiView.cpp:2141 src/frontends/qt4/GuiView.cpp:2201
@@ -585,13 +583,13 @@ msgstr "&Boyut:"
 #: src/frontends/qt4/GuiDocument.cpp:711 src/frontends/qt4/GuiDocument.cpp:716
 #: src/frontends/qt4/GuiDocument.cpp:752 src/frontends/qt4/GuiDocument.cpp:763
 #: src/frontends/qt4/GuiDocument.cpp:970
-#: src/frontends/qt4/GuiDocument.cpp:1535
-#: src/frontends/qt4/GuiDocument.cpp:1558
-#: src/frontends/qt4/GuiDocument.cpp:1559
-#: src/frontends/qt4/GuiDocument.cpp:1560
-#: src/frontends/qt4/GuiDocument.cpp:1635
-#: src/frontends/qt4/GuiDocument.cpp:1985
-#: src/frontends/qt4/GuiDocument.cpp:3032 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiDocument.cpp:1538
+#: src/frontends/qt4/GuiDocument.cpp:1561
+#: src/frontends/qt4/GuiDocument.cpp:1562
+#: src/frontends/qt4/GuiDocument.cpp:1563
+#: src/frontends/qt4/GuiDocument.cpp:1638
+#: src/frontends/qt4/GuiDocument.cpp:1988
+#: src/frontends/qt4/GuiDocument.cpp:3037 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiIndices.cpp:56
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
 #: src/frontends/qt4/GuiPrefs.cpp:2085
@@ -795,8 +793,8 @@ msgstr "Değişiklikleri hemen uygula"
 #: src/frontends/qt4/ui/ParagraphUi.ui:250 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:93 src/frontends/qt4/ui/RefUi.ui:126
 #: src/frontends/qt4/ui/SendtoUi.ui:85 src/frontends/qt4/ui/SymbolsUi.ui:59
-#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1756
-#: src/frontends/qt4/GuiDocument.cpp:2987
+#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1759
+#: src/frontends/qt4/GuiDocument.cpp:2992
 msgid "&Apply"
 msgstr "&Uygula"
 
@@ -958,11 +956,6 @@ msgstr "Tüm Girdi Tipleri"
 #, fuzzy
 msgid "Search as you &type"
 msgstr "&Yazarken Arama Yap"
-
-#: src/frontends/qt4/ui/ColorUi.ui:16
-#, fuzzy
-msgid "ColorUi"
-msgstr "Renkli"
 
 #: src/frontends/qt4/ui/ColorUi.ui:25
 #, fuzzy
@@ -2081,7 +2074,7 @@ msgid "&Quote Style:"
 msgstr "&Tırnak biçimi:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:330
-#: src/insets/InsetListings.cpp:357 src/insets/InsetListings.cpp:359
+#: src/insets/InsetListings.cpp:356 src/insets/InsetListings.cpp:358
 msgid "Listing"
 msgstr "Liste"
 
@@ -2614,55 +2607,55 @@ msgstr "Müşteri no.:"
 msgid "Custom LaTeX preamble macro"
 msgstr "LaTeX Önsözü"
 
-#: src/frontends/qt4/ui/OutputUi.ui:125
+#: src/frontends/qt4/ui/OutputUi.ui:119
 #, fuzzy
 msgid "XHTML Output Options"
 msgstr "Matematik Seçenekleri"
 
-#: src/frontends/qt4/ui/OutputUi.ui:140
+#: src/frontends/qt4/ui/OutputUi.ui:134
 msgid "Whether to comply strictly with XHTML 1.1."
 msgstr ""
 
-#: src/frontends/qt4/ui/OutputUi.ui:143
+#: src/frontends/qt4/ui/OutputUi.ui:137
 msgid "Strict XHTML 1.1"
 msgstr ""
 
-#: src/frontends/qt4/ui/OutputUi.ui:156
+#: src/frontends/qt4/ui/OutputUi.ui:150
 #, fuzzy
 msgid "Math Output"
 msgstr "Çıktı"
 
-#: src/frontends/qt4/ui/OutputUi.ui:169
+#: src/frontends/qt4/ui/OutputUi.ui:163
 msgid "Format to use for math output."
 msgstr ""
 
-#: src/frontends/qt4/ui/OutputUi.ui:173
+#: src/frontends/qt4/ui/OutputUi.ui:167
 #, fuzzy
 msgid "MathML"
 msgstr "Matematik|M"
 
-#: src/frontends/qt4/ui/OutputUi.ui:178 lib/configure.py:550
+#: src/frontends/qt4/ui/OutputUi.ui:172 lib/configure.py:550
 msgid "HTML"
 msgstr "HTML"
 
-#: src/frontends/qt4/ui/OutputUi.ui:183
+#: src/frontends/qt4/ui/OutputUi.ui:177
 #, fuzzy
 msgid "Images"
 msgstr "Sayfalar"
 
-#: src/frontends/qt4/ui/OutputUi.ui:188 lib/layouts/aapaper.layout:61
+#: src/frontends/qt4/ui/OutputUi.ui:182 lib/layouts/aapaper.layout:61
 #: lib/layouts/egs.layout:618 lib/languages:4
 #: src/frontends/qt4/GuiErrorList.cpp:48 src/frontends/qt4/GuiLog.cpp:226
 #: src/frontends/qt4/GuiPrefs.cpp:612
 msgid "LaTeX"
 msgstr "LaTeX"
 
-#: src/frontends/qt4/ui/OutputUi.ui:202
+#: src/frontends/qt4/ui/OutputUi.ui:196
 #, fuzzy
 msgid "Math Image Scaling"
 msgstr "Matematik Boşlukları"
 
-#: src/frontends/qt4/ui/OutputUi.ui:215
+#: src/frontends/qt4/ui/OutputUi.ui:209
 msgid "Scaling factor for images used for math output."
 msgstr ""
 
@@ -5494,10 +5487,10 @@ msgstr "Konu başlıkları:"
 msgid "[Acknowledgements]"
 msgstr "[Teşekkürler]"
 
-#: lib/layouts/aastex.layout:401 src/frontends/qt4/GuiDocument.cpp:1804
-#: src/frontends/qt4/GuiDocument.cpp:1815
-#: src/frontends/qt4/GuiDocument.cpp:1905
-#: src/frontends/qt4/GuiDocument.cpp:1924
+#: lib/layouts/aastex.layout:401 src/frontends/qt4/GuiDocument.cpp:1807
+#: src/frontends/qt4/GuiDocument.cpp:1818
+#: src/frontends/qt4/GuiDocument.cpp:1908
+#: src/frontends/qt4/GuiDocument.cpp:1927
 msgid "and"
 msgstr "ve"
 
@@ -12346,7 +12339,7 @@ msgstr "Kopyala"
 
 #: lib/ui/stdcontext.inc:298 lib/ui/stdcontext.inc:363 lib/ui/stdmenus.inc:102
 #: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1126
-#: src/mathed/InsetMathGrid.cpp:1322 src/mathed/InsetMathNest.cpp:564
+#: src/mathed/InsetMathGrid.cpp:1326 src/mathed/InsetMathNest.cpp:564
 msgid "Paste"
 msgstr "Yapıştır"
 
@@ -16449,7 +16442,7 @@ msgstr "HTML (MS Word)"
 msgid "LyxBlogger"
 msgstr ""
 
-#: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1803
+#: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1806
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s ve %2$s"
@@ -17043,7 +17036,7 @@ msgstr ""
 "sınıfı kullanılacak. Lyx, belge ayar diyaloğunda düzgün bir metin sınıfı "
 "seçilmediği taktirde çıktı üretemeyebilir."
 
-#: src/BufferParams.cpp:1928 src/LayoutFile.cpp:325
+#: src/BufferParams.cpp:1928 src/LayoutFile.cpp:323
 msgid "Could not load class"
 msgstr "Sınıf yüklenemedi."
 
@@ -17225,15 +17218,15 @@ msgstr ""
 
 #: src/Changes.cpp:363 src/Paragraph.cpp:2212
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:248
-#: src/insets/InsetCommandParams.cpp:375 src/insets/InsetListings.cpp:182
-#: src/insets/InsetListings.cpp:190 src/insets/InsetListings.cpp:214
+#: src/insets/InsetCommandParams.cpp:375 src/insets/InsetListings.cpp:181
+#: src/insets/InsetListings.cpp:189 src/insets/InsetListings.cpp:213
 #: src/insets/InsetNomencl.cpp:281 src/mathed/InsetMathString.cpp:161
 msgid "LyX Warning: "
 msgstr "LyX Uyarısı: "
 
 #: src/Changes.cpp:364 src/Paragraph.cpp:2213 src/insets/InsetBibitem.cpp:249
-#: src/insets/InsetCommandParams.cpp:376 src/insets/InsetListings.cpp:183
-#: src/insets/InsetListings.cpp:191 src/insets/InsetNomencl.cpp:282
+#: src/insets/InsetCommandParams.cpp:376 src/insets/InsetListings.cpp:182
+#: src/insets/InsetListings.cpp:190 src/insets/InsetNomencl.cpp:282
 #: src/mathed/InsetMathString.cpp:162
 msgid "uncodable character"
 msgstr "kodlanamayan karakter"
@@ -17735,19 +17728,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "%1$s i %2$s e kopyalarken hata."
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:121
-#: src/frontends/qt4/GuiDocument.cpp:3032
+#: src/frontends/qt4/GuiDocument.cpp:3037
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr "Roman"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:122
-#: src/frontends/qt4/GuiDocument.cpp:3032
+#: src/frontends/qt4/GuiDocument.cpp:3037
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:123
-#: src/frontends/qt4/GuiDocument.cpp:3032
+#: src/frontends/qt4/GuiDocument.cpp:3037
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr "Daktilo"
@@ -17918,24 +17911,24 @@ msgstr ""
 msgid "   options: "
 msgstr "   seçenekler: "
 
-#: src/LaTeX.cpp:59
+#: src/LaTeX.cpp:57
 #, c-format
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "LaTeX çalışma numarası %1$d bekleniyor"
 
-#: src/LaTeX.cpp:262 src/LaTeX.cpp:351
+#: src/LaTeX.cpp:260 src/LaTeX.cpp:349
 msgid "Running Index Processor."
 msgstr "İndeks İşlemci Çalıştırılıyor."
 
-#: src/LaTeX.cpp:282 src/LaTeX.cpp:334
+#: src/LaTeX.cpp:280 src/LaTeX.cpp:332
 msgid "Running BibTeX."
 msgstr "BibTeX çalıştırılıyor."
 
-#: src/LaTeX.cpp:442
+#: src/LaTeX.cpp:440
 msgid "Running MakeIndex for nomencl."
 msgstr "MakeIndex çalıştırılıyor."
 
-#: src/LayoutFile.cpp:323
+#: src/LayoutFile.cpp:321
 #, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "%1$s belge sınıfı yüklenemedi."
@@ -18993,26 +18986,26 @@ msgid ""
 "%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}."
 msgstr ""
 
-#: src/VCBackend.cpp:63 src/VCBackend.cpp:676 src/VCBackend.cpp:745
-#: src/VCBackend.cpp:751 src/VCBackend.cpp:772
+#: src/VCBackend.cpp:60 src/VCBackend.cpp:673 src/VCBackend.cpp:742
+#: src/VCBackend.cpp:748 src/VCBackend.cpp:769
 #: src/frontends/qt4/GuiView.cpp:2593
 msgid "Revision control error."
 msgstr "Sürüm yönetim hatası."
 
-#: src/VCBackend.cpp:64
+#: src/VCBackend.cpp:61
 #, c-format
 msgid ""
 "Some problem occured while running the command:\n"
 "'%1$s'."
 msgstr "'%1$s' komutu çalıştırılırken bir hata oluştu."
 
-#: src/VCBackend.cpp:321 src/VCBackend.cpp:619 src/VCBackend.cpp:665
-#: src/VCBackend.cpp:762 src/VCBackend.cpp:799 src/VCBackend.cpp:855
-#: src/VCBackend.cpp:964 src/VCBackend.cpp:1017 src/VCBackend.cpp:1067
+#: src/VCBackend.cpp:318 src/VCBackend.cpp:616 src/VCBackend.cpp:662
+#: src/VCBackend.cpp:759 src/VCBackend.cpp:796 src/VCBackend.cpp:852
+#: src/VCBackend.cpp:961 src/VCBackend.cpp:1014 src/VCBackend.cpp:1064
 msgid "Error: Could not generate logfile."
 msgstr "Hata: Hata dosyası oluşturulamıyor."
 
-#: src/VCBackend.cpp:677
+#: src/VCBackend.cpp:674
 #, fuzzy
 msgid ""
 "Error when committing to repository.\n"
@@ -19023,7 +19016,7 @@ msgstr ""
 "Sorunu elle çözmeniz gerekiyor.\n"
 "Tamam düğmesine bastıktan sonra, LyX belgeyi yeniden açacak."
 
-#: src/VCBackend.cpp:746
+#: src/VCBackend.cpp:743
 msgid ""
 "Error while acquiring write lock.\n"
 "Another user is most probably editing\n"
@@ -19031,13 +19024,13 @@ msgid ""
 "Also check the access to the repository."
 msgstr ""
 
-#: src/VCBackend.cpp:752
+#: src/VCBackend.cpp:749
 msgid ""
 "Error while releasing write lock.\n"
 "Check the access to the repository."
 msgstr ""
 
-#: src/VCBackend.cpp:773
+#: src/VCBackend.cpp:770
 #, fuzzy, c-format
 msgid ""
 "Error when updating from repository.\n"
@@ -19052,7 +19045,7 @@ msgstr ""
 "\n"
 "Tamama bastıktan sonra, LyX kararlı belgeleri yeniden açacak."
 
-#: src/VCBackend.cpp:809
+#: src/VCBackend.cpp:806
 #, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
@@ -19064,37 +19057,37 @@ msgid ""
 "Continue?"
 msgstr ""
 
-#: src/VCBackend.cpp:814 src/VCBackend.cpp:818
+#: src/VCBackend.cpp:811 src/VCBackend.cpp:815
 msgid "Changes detected"
 msgstr ""
 
-#: src/VCBackend.cpp:815 src/VCBackend.cpp:819
+#: src/VCBackend.cpp:812 src/VCBackend.cpp:816
 #: src/frontends/qt4/FindAndReplace.cpp:378
 msgid "&Yes"
 msgstr "&Evet"
 
-#: src/VCBackend.cpp:815 src/VCBackend.cpp:819
+#: src/VCBackend.cpp:812 src/VCBackend.cpp:816
 #: src/frontends/qt4/FindAndReplace.cpp:378
 msgid "&No"
 msgstr "&Hayır"
 
-#: src/VCBackend.cpp:815
+#: src/VCBackend.cpp:812
 msgid "View &Log ..."
 msgstr ""
 
-#: src/VCBackend.cpp:881
+#: src/VCBackend.cpp:878
 msgid "VCN File Locking"
 msgstr ""
 
-#: src/VCBackend.cpp:882
+#: src/VCBackend.cpp:879
 msgid "Locking property unset."
 msgstr ""
 
-#: src/VCBackend.cpp:882 src/VCBackend.cpp:886
+#: src/VCBackend.cpp:879 src/VCBackend.cpp:883
 msgid "Locking property set."
 msgstr ""
 
-#: src/VCBackend.cpp:883
+#: src/VCBackend.cpp:880
 msgid "Do not forget to commit the locking property into the repository."
 msgstr ""
 
@@ -19521,7 +19514,7 @@ msgstr "BibTeX Kaynakça"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiCompare.cpp:164 src/frontends/qt4/GuiCompare.cpp:168
-#: src/frontends/qt4/GuiDocument.cpp:1722
+#: src/frontends/qt4/GuiDocument.cpp:1725
 #: src/frontends/qt4/GuiExternal.cpp:639 src/frontends/qt4/GuiGraphics.cpp:800
 #: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1694
 #: src/frontends/qt4/GuiView.cpp:1752 src/frontends/qt4/GuiView.cpp:1899
@@ -19589,6 +19582,12 @@ msgstr "Toplam Yükseklik"
 msgid "Width"
 msgstr "Genişlik"
 
+#: src/frontends/qt4/GuiBox.cpp:316 src/frontends/qt4/GuiBox.cpp:391
+#: src/insets/InsetBox.cpp:140
+#, fuzzy
+msgid "Makebox"
+msgstr "Kısım"
+
 #: src/frontends/qt4/GuiBranches.cpp:50
 msgid "Activated"
 msgstr "Etkinleştirildi"
@@ -19603,8 +19602,8 @@ msgid "Filename Suffix"
 msgstr "Dosya adı"
 
 #: src/frontends/qt4/GuiBranches.cpp:99 src/frontends/qt4/GuiBranches.cpp:107
-#: src/frontends/qt4/GuiDocument.cpp:1950
-#: src/frontends/qt4/GuiDocument.cpp:2930
+#: src/frontends/qt4/GuiDocument.cpp:1953
+#: src/frontends/qt4/GuiDocument.cpp:2935
 #: src/frontends/qt4/GuiProgressView.cpp:123
 #: src/frontends/qt4/GuiProgressView.cpp:137
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -19612,8 +19611,8 @@ msgid "Yes"
 msgstr "Evet"
 
 #: src/frontends/qt4/GuiBranches.cpp:99 src/frontends/qt4/GuiBranches.cpp:107
-#: src/frontends/qt4/GuiDocument.cpp:1949
-#: src/frontends/qt4/GuiDocument.cpp:2929
+#: src/frontends/qt4/GuiDocument.cpp:1952
+#: src/frontends/qt4/GuiDocument.cpp:2934
 #: src/frontends/qt4/GuiProgressView.cpp:89
 #: src/frontends/qt4/GuiProgressView.cpp:122
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -19816,9 +19815,9 @@ msgstr "Ana belgeyi seç"
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX Belgeleri (*.lyx)"
 
-#: src/frontends/qt4/GuiCompare.cpp:200 src/frontends/qt4/GuiDocument.cpp:1693
-#: src/frontends/qt4/GuiDocument.cpp:1768
-#: src/frontends/qt4/GuiDocument.cpp:2995
+#: src/frontends/qt4/GuiCompare.cpp:200 src/frontends/qt4/GuiDocument.cpp:1696
+#: src/frontends/qt4/GuiDocument.cpp:1771
+#: src/frontends/qt4/GuiDocument.cpp:3000
 msgid "Error"
 msgstr "Hata"
 
@@ -20153,14 +20152,14 @@ msgstr "Liste parametrelerini buraya girin. Parametre listesi için ? kullanın.
 
 #: src/frontends/qt4/GuiDocument.cpp:1152
 #: src/frontends/qt4/GuiDocument.cpp:1172
-#: src/frontends/qt4/GuiDocument.cpp:2686
+#: src/frontends/qt4/GuiDocument.cpp:2689
 msgid "Document Class"
 msgstr "Belge Sınıfı"
 
 #: src/frontends/qt4/GuiDocument.cpp:1153
-#: src/frontends/qt4/GuiDocument.cpp:2684
-#: src/frontends/qt4/GuiDocument.cpp:2685
-#: src/frontends/qt4/GuiDocument.cpp:2688 src/frontends/qt4/qt_helpers.cpp:543
+#: src/frontends/qt4/GuiDocument.cpp:2687
+#: src/frontends/qt4/GuiDocument.cpp:2688
+#: src/frontends/qt4/GuiDocument.cpp:2691 src/frontends/qt4/qt_helpers.cpp:543
 msgid "Child Documents"
 msgstr "Alt Belgeler"
 
@@ -20214,26 +20213,26 @@ msgstr "Dallar"
 msgid "LaTeX Preamble"
 msgstr "LaTeX Önsözü"
 
-#: src/frontends/qt4/GuiDocument.cpp:1575
-#: src/frontends/qt4/GuiDocument.cpp:1581
-#: src/frontends/qt4/GuiDocument.cpp:1587
+#: src/frontends/qt4/GuiDocument.cpp:1578
+#: src/frontends/qt4/GuiDocument.cpp:1584
+#: src/frontends/qt4/GuiDocument.cpp:1590
 msgid " (not installed)"
 msgstr " (yüklü değil)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1662
+#: src/frontends/qt4/GuiDocument.cpp:1665
 msgid "Layouts|#o#O"
 msgstr "Yerleşimler|#i#İ"
 
-#: src/frontends/qt4/GuiDocument.cpp:1664
+#: src/frontends/qt4/GuiDocument.cpp:1667
 msgid "LyX Layout (*.layout)"
 msgstr "LyX Yerleşimi (*.layout)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1666
-#: src/frontends/qt4/GuiDocument.cpp:1675
+#: src/frontends/qt4/GuiDocument.cpp:1669
+#: src/frontends/qt4/GuiDocument.cpp:1678
 msgid "Local layout file"
 msgstr "Yerel yerleşim dosyası"
 
-#: src/frontends/qt4/GuiDocument.cpp:1676
+#: src/frontends/qt4/GuiDocument.cpp:1679
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory. Your\n"
@@ -20245,29 +20244,29 @@ msgstr ""
 "Eğer yerleşim dosyasını belgenin bulunduğu dizine\n"
 "koymazsanız düzgün çalışmayabilir."
 
-#: src/frontends/qt4/GuiDocument.cpp:1680
+#: src/frontends/qt4/GuiDocument.cpp:1683
 msgid "&Set Layout"
 msgstr "&Yerleşimi Seç"
 
-#: src/frontends/qt4/GuiDocument.cpp:1694
+#: src/frontends/qt4/GuiDocument.cpp:1697
 msgid "Unable to read local layout file."
 msgstr "Yerel yerleşim dosyası okunamıyor."
 
-#: src/frontends/qt4/GuiDocument.cpp:1716
+#: src/frontends/qt4/GuiDocument.cpp:1719
 msgid "Select master document"
 msgstr "Ana belgeyi seç"
 
-#: src/frontends/qt4/GuiDocument.cpp:1720
+#: src/frontends/qt4/GuiDocument.cpp:1723
 msgid "LyX Files (*.lyx)"
 msgstr "LyX Dosyaları (*.lyx)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1753
-#: src/frontends/qt4/GuiDocument.cpp:2984
+#: src/frontends/qt4/GuiDocument.cpp:1756
+#: src/frontends/qt4/GuiDocument.cpp:2989
 msgid "Unapplied changes"
 msgstr "Uygulanmamış değişiklikler"
 
-#: src/frontends/qt4/GuiDocument.cpp:1754
-#: src/frontends/qt4/GuiDocument.cpp:2985
+#: src/frontends/qt4/GuiDocument.cpp:1757
+#: src/frontends/qt4/GuiDocument.cpp:2990
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -20275,75 +20274,75 @@ msgstr ""
 "Bu diyalogdaki değişikliklerin bazıları henüz uygulanmadı.\n"
 "Şimdi uygularsanız, bu eylemden sonra kaybolabilirler."
 
-#: src/frontends/qt4/GuiDocument.cpp:1756
-#: src/frontends/qt4/GuiDocument.cpp:2987
+#: src/frontends/qt4/GuiDocument.cpp:1759
+#: src/frontends/qt4/GuiDocument.cpp:2992
 msgid "&Dismiss"
 msgstr "&Kaybol"
 
-#: src/frontends/qt4/GuiDocument.cpp:1768
-#: src/frontends/qt4/GuiDocument.cpp:2995
+#: src/frontends/qt4/GuiDocument.cpp:1771
+#: src/frontends/qt4/GuiDocument.cpp:3000
 msgid "Unable to set document class."
 msgstr "Belge sınıfı seçilemedi"
 
-#: src/frontends/qt4/GuiDocument.cpp:1809
+#: src/frontends/qt4/GuiDocument.cpp:1812
 #, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1814
+#: src/frontends/qt4/GuiDocument.cpp:1817
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s, %2$s, ve %3$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1901
+#: src/frontends/qt4/GuiDocument.cpp:1904
 msgid "Module provided by document class."
 msgstr "Belge sınıfından sağlanan modül"
 
-#: src/frontends/qt4/GuiDocument.cpp:1909
+#: src/frontends/qt4/GuiDocument.cpp:1912
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr "Gerekli paket(ler): %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:1915
+#: src/frontends/qt4/GuiDocument.cpp:1918
 msgid "or"
 msgstr "veya"
 
-#: src/frontends/qt4/GuiDocument.cpp:1918
+#: src/frontends/qt4/GuiDocument.cpp:1921
 #, c-format
 msgid "Module required: %1$s."
 msgstr "Gerekli modül: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:1927
+#: src/frontends/qt4/GuiDocument.cpp:1930
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr "Kabul edilmeyen modüller: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:1933
+#: src/frontends/qt4/GuiDocument.cpp:1936
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "UYARI: Gerekli bazı paketler mevcut değil!"
 
-#: src/frontends/qt4/GuiDocument.cpp:2658
+#: src/frontends/qt4/GuiDocument.cpp:2661
 msgid "[No options predefined]"
 msgstr "[Tanımlanmış seçenek yok]"
 
-#: src/frontends/qt4/GuiDocument.cpp:3007
+#: src/frontends/qt4/GuiDocument.cpp:3012
 msgid "Can't set layout!"
 msgstr "Yerleşim ayarlanamadı!"
 
-#: src/frontends/qt4/GuiDocument.cpp:3008
+#: src/frontends/qt4/GuiDocument.cpp:3013
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Şu ID için yerleşim ayarlanamadı: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:3089
+#: src/frontends/qt4/GuiDocument.cpp:3094
 msgid "Not Found"
 msgstr "Bulunamadı"
 
-#: src/frontends/qt4/GuiDocument.cpp:3143
+#: src/frontends/qt4/GuiDocument.cpp:3148
 msgid "Assigned master does not include this file"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:3144
+#: src/frontends/qt4/GuiDocument.cpp:3149
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -20351,11 +20350,11 @@ msgid ""
 "feature."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:3148
+#: src/frontends/qt4/GuiDocument.cpp:3153
 msgid "Could not load master"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:3149
+#: src/frontends/qt4/GuiDocument.cpp:3154
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -21847,31 +21846,31 @@ msgstr "DocBook Kaynağı"
 msgid "Literate Source"
 msgstr "Yazın Kaynağı"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1244
+#: src/frontends/qt4/GuiWorkArea.cpp:1241
 msgid " (version control, locking)"
 msgstr " (sürüm yönetimi, kilitleme)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1246
+#: src/frontends/qt4/GuiWorkArea.cpp:1243
 msgid " (version control)"
 msgstr " (sürüm yönetimi)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1249
+#: src/frontends/qt4/GuiWorkArea.cpp:1246
 msgid " (changed)"
 msgstr " (değişti)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1253
+#: src/frontends/qt4/GuiWorkArea.cpp:1250
 msgid " (read only)"
 msgstr " (yalnızca okunabilir)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1408
+#: src/frontends/qt4/GuiWorkArea.cpp:1405
 msgid "Close File"
 msgstr "Dosyayı Kapat"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1843
+#: src/frontends/qt4/GuiWorkArea.cpp:1840
 msgid "Hide tab"
 msgstr "Sekmeyi gizle"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1845
+#: src/frontends/qt4/GuiWorkArea.cpp:1842
 msgid "Close tab"
 msgstr "Sekmeyi kapat"
 
@@ -22239,12 +22238,12 @@ msgstr "gölgelenmiş arkaplan"
 msgid "double frame"
 msgstr "çift çerçeve"
 
-#: src/insets/InsetBox.cpp:151 src/insets/InsetBox.cpp:154
+#: src/insets/InsetBox.cpp:153 src/insets/InsetBox.cpp:156
 #, c-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: src/insets/InsetBox.cpp:157
+#: src/insets/InsetBox.cpp:159
 #, c-format
 msgid "%1$s (%2$s, %3$s)"
 msgstr "%1$s (%2$s, %3$s)"
@@ -22559,15 +22558,15 @@ msgstr ""
 msgid "DUPLICATE: "
 msgstr "ÇOĞALT: "
 
-#: src/insets/InsetListings.cpp:215
+#: src/insets/InsetListings.cpp:214
 msgid "no more lstline delimiters available"
 msgstr ""
 
-#: src/insets/InsetListings.cpp:220
+#: src/insets/InsetListings.cpp:219
 msgid "Running out of delimiters"
 msgstr "Ayraçlar tükeniyor"
 
-#: src/insets/InsetListings.cpp:221
+#: src/insets/InsetListings.cpp:220
 msgid ""
 "For inline program listings, one character must be reserved\n"
 "as a delimiter. One of the listings, however, uses all available\n"
@@ -22576,11 +22575,11 @@ msgid ""
 "must investigate!"
 msgstr ""
 
-#: src/insets/InsetListings.cpp:264
+#: src/insets/InsetListings.cpp:263
 msgid "Uncodable characters in listings inset"
 msgstr "Listeleme eklemesinde kodlanamayan karakterler"
 
-#: src/insets/InsetListings.cpp:265
+#: src/insets/InsetListings.cpp:264
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"
@@ -23069,7 +23068,7 @@ msgstr "Dizge bulunamadı!"
 msgid "Match found!"
 msgstr "Modül bulunamadı!"
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1561
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1563
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23085,51 +23084,51 @@ msgstr "'cases' da dikey ızgara çizgileri yok: özellik %1$s"
 msgid "Changing number of columns not allowed in 'cases': feature %1$s"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.cpp:1449
+#: src/mathed/InsetMathGrid.cpp:1453
 #, fuzzy
 msgid "Cursor not in table"
 msgstr " (yüklü değil)"
 
-#: src/mathed/InsetMathGrid.cpp:1455
+#: src/mathed/InsetMathGrid.cpp:1459
 msgid "Only one row"
 msgstr "Yalnız bir satır"
 
-#: src/mathed/InsetMathGrid.cpp:1461
+#: src/mathed/InsetMathGrid.cpp:1465
 msgid "Only one column"
 msgstr "Yalnız bir sütun"
 
-#: src/mathed/InsetMathGrid.cpp:1469
+#: src/mathed/InsetMathGrid.cpp:1473
 msgid "No hline to delete"
 msgstr "Silinecek yatay çizgi yok"
 
-#: src/mathed/InsetMathGrid.cpp:1478
+#: src/mathed/InsetMathGrid.cpp:1482
 msgid "No vline to delete"
 msgstr "Silinecek dikey çizgi yok"
 
-#: src/mathed/InsetMathGrid.cpp:1507
+#: src/mathed/InsetMathGrid.cpp:1511
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Bilinmeyen tablo özelliği '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1292 src/mathed/InsetMathHull.cpp:1300
+#: src/mathed/InsetMathHull.cpp:1294 src/mathed/InsetMathHull.cpp:1302
 msgid "No number"
 msgstr "Numara yok"
 
-#: src/mathed/InsetMathHull.cpp:1292 src/mathed/InsetMathHull.cpp:1300
+#: src/mathed/InsetMathHull.cpp:1294 src/mathed/InsetMathHull.cpp:1302
 msgid "Number"
 msgstr "Numara"
 
-#: src/mathed/InsetMathHull.cpp:1534
+#: src/mathed/InsetMathHull.cpp:1536
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "'%1$s' da satır sayıları değiştirilemiyor"
 
-#: src/mathed/InsetMathHull.cpp:1544
+#: src/mathed/InsetMathHull.cpp:1546
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "'%1$s' da sütun sayıları değiştirilemiyor"
 
-#: src/mathed/InsetMathHull.cpp:1554
+#: src/mathed/InsetMathHull.cpp:1556
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "'%1$s' e yatay ızgara çizgileri eklenemiyor"
@@ -23384,15 +23383,15 @@ msgstr "Tüm hata bulma iletileri"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "`%1$s' (%2$s) hatası ayıklanıyor"
 
-#: src/support/filetools.cpp:259
+#: src/support/filetools.cpp:264
 msgid "[[Replace with the code of your language]]"
 msgstr "tr"
 
-#: src/support/os_win32.cpp:459
+#: src/support/os_win32.cpp:464
 msgid "System file not found"
 msgstr "Sistem dosyası bulunamadı!"
 
-#: src/support/os_win32.cpp:460
+#: src/support/os_win32.cpp:465
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
@@ -23400,11 +23399,11 @@ msgstr ""
 "shfolder.dll yüklenemedi\n"
 "Lütfen yükleyin."
 
-#: src/support/os_win32.cpp:465
+#: src/support/os_win32.cpp:470
 msgid "System function not found"
 msgstr "Sistem fonksiyonu bulunamadı!"
 
-#: src/support/os_win32.cpp:466
+#: src/support/os_win32.cpp:471
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."
@@ -23415,6 +23414,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Bilinmeyen kullanıcı"
+
+#, fuzzy
+#~ msgid "ColorUi"
+#~ msgstr "Renkli"
 
 #~ msgid " Macro: %1$s: "
 #~ msgstr " Makro: %1$s: "
