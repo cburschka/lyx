@@ -103,8 +103,16 @@ liblyxsupport_a_SOURCES = \
 	mythes/mythes.hxx \
 	mythes/license.readme
 
+#if INSTALL_MACOSX
+#liblyxsupport_a_SOURCES += \
+#	AppleSpellChecker.h \
+#	AppleSpellChecker.mm
+#endif
+
 if INSTALL_MACOSX
 liblyxsupport_a_SOURCES += \
+	AppleSpeller.h \
+	AppleSpeller.m \
 	linkback/LinkBack.h \
 	linkback/LinkBack.m \
 	linkback/LinkBackProxy.h \

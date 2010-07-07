@@ -285,7 +285,10 @@ void LyXRC::setDefaults()
 	backupdir_path.erase();
 	display_graphics = true;
 	// Spellchecker settings:
-#if defined(USE_ASPELL)
+// FIXME: this check should test the target platform (darwin)
+#ifdef USE_MACOSX_PACKAGING || defined(LYX_PLATFORM_DARWIN10)
+	spellchecker = "native";
+#elif defined(USE_ASPELL)
 	spellchecker = "aspell";
 #elif defined(USE_HUNSPELL)
 	spellchecker = "hunspell";

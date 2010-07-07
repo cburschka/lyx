@@ -17,6 +17,7 @@
 
 #include "LyX.h"
 
+#include "AppleSpellChecker.h"
 #include "AspellChecker.h"
 #include "Buffer.h"
 #include "BufferList.h"
@@ -130,7 +131,7 @@ void reconfigureUserLyXDir()
 /// The main application class private implementation.
 struct LyX::Impl
 {
-	Impl() : spell_checker_(0), aspell_checker_(0), enchant_checker_(0), hunspell_checker_(0)
+	Impl() : spell_checker_(0), apple_spell_checker_(0), aspell_checker_(0), enchant_checker_(0), hunspell_checker_(0)
 	{
 		// Set the default User Interface language as soon as possible.
 		// The language used will be derived from the environment
@@ -140,6 +141,7 @@ struct LyX::Impl
 
 	~Impl()
 	{
+		delete apple_spell_checker_;
 		delete aspell_checker_;
 		delete enchant_checker_;
 		delete hunspell_checker_;
@@ -186,6 +188,8 @@ struct LyX::Impl
 	graphics::Previews preview_;
 	///
 	SpellChecker * spell_checker_;
+	///
+	SpellChecker * apple_spell_checker_;
 	///
 	SpellChecker * aspell_checker_;
 	///
@@ -1324,6 +1328,14 @@ SpellChecker * theSpellChecker()
 
 void setSpellChecker()
 {
+#ifdef USE_MACOSX_PACKAGING || defined(LYX_PLATFORM_DARWIN10)
+	if (lyxrc.spellchecker == "native") {
+		if (!singleton_->pimpl_->apple_spell_checker_)
+			singleton_->pimpl_->apple_spell_checker_ = new AppleSpellChecker();
+		singleton_->pimpl_->spell_checker_ = singleton_->pimpl_->apple_spell_checker_;
+		return;
+	}
+#endif
 #if defined(USE_ASPELL)
 	if (lyxrc.spellchecker == "aspell") {
 		if (!singleton_->pimpl_->aspell_checker_)
