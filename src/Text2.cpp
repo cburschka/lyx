@@ -618,7 +618,7 @@ bool Text::checkAndActivateInsetVisual(Cursor & cur, bool movingForward, bool mo
 bool Text::cursorBackward(Cursor & cur)
 {
 	// Tell BufferView to test for FitCursor in any case!
-	cur.updateFlags(Update::FitCursor);
+	cur.screenUpdateFlags(Update::FitCursor);
 
 	// not at paragraph start?
 	if (cur.pos() > 0) {
@@ -686,7 +686,7 @@ bool Text::cursorVisRight(Cursor & cur, bool skip_inset)
 bool Text::cursorForward(Cursor & cur)
 {
 	// Tell BufferView to test for FitCursor in any case!
-	cur.updateFlags(Update::FitCursor);
+	cur.screenUpdateFlags(Update::FitCursor);
 
 	// not at paragraph end?
 	if (cur.pos() != cur.lastpos()) {

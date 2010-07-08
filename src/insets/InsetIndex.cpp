@@ -493,7 +493,7 @@ void InsetPrintIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetCommand::string2params("index_print",
 			to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty()) {
-			cur.noUpdate();
+			cur.noScreenUpdate();
 			break;
 		}
 		setParams(p);

@@ -464,7 +464,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	// FIXME: We use the update flag to indicates wether a singlePar or a
 	// full screen update is needed. We reset it here but shall we restore it
 	// at the end?
-	cur.noUpdate();
+	cur.noScreenUpdate();
 
 	LASSERT(cur.text() == this, /**/);
 	CursorSlice oldTopSlice = cur.top();
@@ -558,7 +558,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			needsUpdate |= cursorTop(cur);
 		else
 			cur.undispatched();
-		cur.updateFlags(Update::FitCursor);
+		cur.screenUpdateFlags(Update::FitCursor);
 		break;
 
 	case LFUN_BUFFER_END:
@@ -568,7 +568,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			needsUpdate |= cursorBottom(cur);
 		else
 			cur.undispatched();
-		cur.updateFlags(Update::FitCursor);
+		cur.screenUpdateFlags(Update::FitCursor);
 		break;
 
 	case LFUN_INSET_BEGIN:
@@ -578,7 +578,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			needsUpdate |= cursorTop(cur);
 		else
 			cur.undispatched();
-		cur.updateFlags(Update::FitCursor);
+		cur.screenUpdateFlags(Update::FitCursor);
 		break;
 
 	case LFUN_INSET_END:
@@ -588,7 +588,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			needsUpdate |= cursorBottom(cur);
 		else
 			cur.undispatched();
-		cur.updateFlags(Update::FitCursor);
+		cur.screenUpdateFlags(Update::FitCursor);
 		break;
 
 	case LFUN_INSET_SELECT_ALL:
@@ -600,7 +600,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			needsUpdate |= cursorBottom(cur);
 		} else 
 			cur.undispatched();
-		cur.updateFlags(Update::FitCursor);
+		cur.screenUpdateFlags(Update::FitCursor);
 		break;
 
 	case LFUN_CHAR_FORWARD:
@@ -1363,7 +1363,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		case mouse_button::button1:
 			// Set the cursor
 			if (!bv->mouseSetCursor(cur, cmd.argument() == "region-select"))
-				cur.updateFlags(Update::SinglePar | Update::FitCursor);
+				cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
 			if (bvcur.wordSelection())
 				selectWord(bvcur, WHOLE_WORD);
 			break;
@@ -1374,7 +1374,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			lyx::dispatch(
 				FuncRequest(LFUN_COMMAND_ALTERNATIVES,
 					    "selection-paste ; primary-selection-paste paragraph"));
-			cur.noUpdate();
+			cur.noScreenUpdate();
 			break;
 
 		case mouse_button::button3: {
@@ -1382,11 +1382,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			// selection, a context menu will popup.
 			if (bvcur.selection() && cur >= bvcur.selectionBegin()
 			    && cur < bvcur.selectionEnd()) {
-				cur.noUpdate();
+				cur.noScreenUpdate();
 				return;
 			}
 			if (!bv->mouseSetCursor(cur, false))
-				cur.updateFlags(Update::SinglePar | Update::FitCursor);
+				cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
 			break;
 		}
 
@@ -1398,7 +1398,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_MOTION: {
 		// Mouse motion with right or middle mouse do nothing for now.
 		if (cmd.button() != mouse_button::button1) {
-			cur.noUpdate();
+			cur.noScreenUpdate();
 			return;
 		}
 		// ignore motions deeper nested than the real anchor
@@ -1431,8 +1431,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		bvcur.setSelection(true);
 		if (cur.top() == old) {
 			// We didn't move one iota, so no need to update the screen.
-			cur.updateFlags(Update::SinglePar | Update::FitCursor);
-			//cur.noUpdate();
+			cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
+			//cur.noScreenUpdate();
 			return;
 		}
 		break;
@@ -1453,23 +1453,23 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				cur.bv().cursor().setSelection();
 				// We might have removed an empty but drawn selection
 				// (probably a margin)
-				cur.updateFlags(Update::SinglePar | Update::FitCursor);
+				cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
 			} else
-				cur.noUpdate();
+				cur.noScreenUpdate();
 			// FIXME: We could try to handle drag and drop of selection here.
 			return;
 
 		case mouse_button::button2:
 			// Middle mouse pasting is handled at mouse press time,
 			// see LFUN_MOUSE_PRESS.
-			cur.noUpdate();
+			cur.noScreenUpdate();
 			return;
 
 		case mouse_button::button3:
 			// Cursor was set at LFUN_MOUSE_PRESS time.
 			// FIXME: If there is a selection we could try to handle a special
 			// drag & drop context menu.
-			cur.noUpdate();
+			cur.noScreenUpdate();
 			return;
 
 		case mouse_button::none:
@@ -1634,7 +1634,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		FuncRequest cmd_caption(LFUN_CAPTION_INSERT);
 		doInsertInset(cur, cur.text(), cmd_caption, true, false);
 		bv->buffer().updateBuffer();
-		cur.updateFlags(Update::Force);
+		cur.screenUpdateFlags(Update::Force);
 		// FIXME: When leaving the Float (or Wrap) inset we should
 		// delete any empty paragraph left above or below the
 		// caption.
@@ -2121,7 +2121,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// Inserting characters does not change par height in general. So, try
 		// to update _only_ this paragraph. BufferView will detect if a full
 		// metrics update is needed anyway.
-		cur.updateFlags(Update::SinglePar | Update::FitCursor);
+		cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
 		return;
 	}
 
@@ -2133,15 +2133,15 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// FIXME: it would be better if we could just do this
 		//
 		//if (cur.result().update() != Update::FitCursor)
-		//	cur.noUpdate();
+		//	cur.noScreenUpdate();
 		//
 		// But some LFUNs do not set Update::FitCursor when needed, so we
 		// do it for all. This is not very harmfull as FitCursor will provoke
 		// a full redraw only if needed but still, a proper review of all LFUN
 		// should be done and this needsUpdate boolean can then be removed.
-		cur.updateFlags(Update::FitCursor);
+		cur.screenUpdateFlags(Update::FitCursor);
 	else
-		cur.updateFlags(Update::Force | Update::FitCursor);
+		cur.screenUpdateFlags(Update::Force | Update::FitCursor);
 }
 
 

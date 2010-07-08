@@ -444,7 +444,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 
 	// edit mode changed?
 	if (editing_[pi.base.bv] != editMode(pi.base.bv))
-		pi.base.bv->cursor().updateFlags(Update::SinglePar);
+		pi.base.bv->cursor().screenUpdateFlags(Update::SinglePar);
 }
 
 
@@ -533,7 +533,7 @@ void MathMacro::validate(LaTeXFeatures & features) const
 
 void MathMacro::edit(Cursor & cur, bool front, EntryDirection entry_from)
 {
-	cur.updateFlags(Update::SinglePar);
+	cur.screenUpdateFlags(Update::SinglePar);
 	InsetMathNest::edit(cur, front, entry_from);
 }
 
@@ -542,7 +542,7 @@ Inset * MathMacro::editXY(Cursor & cur, int x, int y)
 {
 	// We may have 0 arguments, but InsetMathNest requires at least one.
 	if (nargs() > 0) {
-		cur.updateFlags(Update::SinglePar);
+		cur.screenUpdateFlags(Update::SinglePar);
 		return InsetMathNest::editXY(cur, x, y);		
 	} else
 		return this;
@@ -614,14 +614,14 @@ void MathMacro::attachArguments(vector<MathData> const & args, size_t arity, int
 
 bool MathMacro::idxFirst(Cursor & cur) const 
 {
-	cur.updateFlags(Update::SinglePar);
+	cur.screenUpdateFlags(Update::SinglePar);
 	return InsetMathNest::idxFirst(cur);
 }
 
 
 bool MathMacro::idxLast(Cursor & cur) const 
 {
-	cur.updateFlags(Update::SinglePar);
+	cur.screenUpdateFlags(Update::SinglePar);
 	return InsetMathNest::idxLast(cur);
 }
 
@@ -641,11 +641,11 @@ bool MathMacro::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 			inset_cursor.cell().erase(inset_cursor.pos());
 			inset_cursor.cell().insert(inset_cursor.pos(),
 				createInsetMath(unfolded_name, cur.buffer()));
-			cur.updateFlags(cur.result().update() | Update::SinglePar);
+			cur.screenUpdateFlags(cur.result().update() | Update::SinglePar);
 			return true;
 		}
 	}
-	cur.updateFlags(Update::Force);
+	cur.screenUpdateFlags(Update::Force);
 	return InsetMathNest::notifyCursorLeaves(old, cur);
 }
 
@@ -654,7 +654,7 @@ void MathMacro::fold(Cursor & cur)
 {
 	if (!nextFoldMode_) {
 		nextFoldMode_ = true;
-		cur.updateFlags(Update::SinglePar);
+		cur.screenUpdateFlags(Update::SinglePar);
 	}
 }
 
@@ -663,7 +663,7 @@ void MathMacro::unfold(Cursor & cur)
 {
 	if (nextFoldMode_) {
 		nextFoldMode_ = false;
-		cur.updateFlags(Update::SinglePar);
+		cur.screenUpdateFlags(Update::SinglePar);
 	}
 }
 
@@ -845,13 +845,13 @@ bool MathMacro::insertCompletion(Cursor & cur, docstring const & s,
 	docstring newName = name() + s;
 	asArray(newName, cell(0));
 	cur.bv().cursor().pos() = name().size();
-	cur.updateFlags(Update::SinglePar);
+	cur.screenUpdateFlags(Update::SinglePar);
 	
 	// finish macro
 	if (finished) {
 		cur.bv().cursor().pop();
 		++cur.bv().cursor().pos();
-		cur.updateFlags(Update::SinglePar);
+		cur.screenUpdateFlags(Update::SinglePar);
 	}
 	
 	return true;

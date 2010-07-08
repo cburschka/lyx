@@ -1510,7 +1510,7 @@ bool Cursor::macroModeClose()
 
 	// trigger updates of macros, at least, if no full
 	// updates take place anyway
-	updateFlags(Update::Force);
+	screenUpdateFlags(Update::Force);
 
 	docstring const name = s.substr(1);
 	InsetMathNest * const in = inset().asInsetMath()->asNestInset();
@@ -2113,13 +2113,13 @@ void Cursor::dispatched()
 }
 
 
-void Cursor::updateFlags(Update::flags f)
+void Cursor::screenUpdateFlags(Update::flags f)
 {
 	disp_.update(f);
 }
 
 
-void Cursor::noUpdate()
+void Cursor::noScreenUpdate()
 {
 	disp_.update(Update::None);
 }

@@ -3737,7 +3737,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// only update if selection changes
 			if (bvcur.idx() == cur.idx() &&
 				!(bvcur.realAnchor().idx() == cur.idx() && bvcur.pos() != cur.pos()))
-				cur.noUpdate();
+				cur.noScreenUpdate();
 			setCursorFromCoordinates(cur, cmd.x(), cmd.y());
 			bvcur.setCursor(cur);
 			bvcur.setSelection(true);
@@ -4732,7 +4732,7 @@ void InsetTabular::resetPos(Cursor & cur) const
 
 	// only update if offset changed
 	if (scx_ != scx_old)
-		cur.updateFlags(Update::Force | Update::FitCursor);
+		cur.screenUpdateFlags(Update::Force | Update::FitCursor);
 }
 
 

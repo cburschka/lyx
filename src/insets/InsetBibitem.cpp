@@ -119,7 +119,7 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetCommandParams p(BIBITEM_CODE);
 		InsetCommand::string2params("bibitem", to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty()) {
-			cur.noUpdate();
+			cur.noScreenUpdate();
 			break;
 		}
 		docstring const & old_key = params()["key"];

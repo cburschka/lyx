@@ -205,7 +205,7 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetGraphicsParams p;
 		string2params(to_utf8(cmd.argument()), buffer(), p);
 		if (p.filename.empty()) {
-			cur.noUpdate();
+			cur.noScreenUpdate();
 			break;
 		}
 

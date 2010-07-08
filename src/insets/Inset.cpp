@@ -296,7 +296,7 @@ void Inset::dispatch(Cursor & cur, FuncRequest & cmd)
 		       << insetName(lyxCode()) << std::endl;
 	} else if (cur.buffer() != buffer_)
 		lyxerr << "cur.buffer() != buffer_ in Inset::dispatch()" << std::endl;
-	cur.updateFlags(Update::Force | Update::FitCursor);
+	cur.screenUpdateFlags(Update::Force | Update::FitCursor);
 	cur.dispatched();
 	doDispatch(cur, cmd);
 }
@@ -347,7 +347,7 @@ void Inset::doDispatch(Cursor & cur, FuncRequest &cmd)
 		break;
 
 	default:
-		cur.noUpdate();
+		cur.noScreenUpdate();
 		cur.undispatched();
 		break;
 	}

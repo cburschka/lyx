@@ -156,7 +156,7 @@ void InsetPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 bool InsetPreview::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
 	reloadPreview(old);
-	cur.updateFlags(Update::Force);
+	cur.screenUpdateFlags(Update::Force);
 	return InsetText::notifyCursorLeaves(old, cur);
 }
 

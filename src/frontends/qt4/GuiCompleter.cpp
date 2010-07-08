@@ -315,7 +315,7 @@ void GuiCompleter::updateVisibility(Cursor & cur, bool start, bool keep, bool cu
 	else {
 		// no inline completion, hence a metrics update is needed
 		if (!(cur.result().update() & Update::Force))
-			cur.updateFlags(cur.result().update() | Update::SinglePar);
+			cur.screenUpdateFlags(cur.result().update() | Update::SinglePar);
 	}
 
 	// update prefix if any completion is possible
@@ -332,7 +332,7 @@ void GuiCompleter::updateVisibility(Cursor & cur, bool start, bool keep, bool cu
 void GuiCompleter::updateVisibility(bool start, bool keep)
 {
 	Cursor cur = gui_->bufferView().cursor();
-	cur.updateFlags(Update::None);
+	cur.screenUpdateFlags(Update::None);
 	
 	updateVisibility(cur, start, keep);
 	
@@ -596,7 +596,7 @@ void GuiCompleter::asyncHideInline()
 void GuiCompleter::showPopup()
 {
 	Cursor cur = gui_->bufferView().cursor();
-	cur.updateFlags(Update::None);
+	cur.screenUpdateFlags(Update::None);
 	
 	showPopup(cur);
 
@@ -609,7 +609,7 @@ void GuiCompleter::showPopup()
 void GuiCompleter::showInline()
 {
 	Cursor cur = gui_->bufferView().cursor();
-	cur.updateFlags(Update::None);
+	cur.screenUpdateFlags(Update::None);
 	
 	showInline(cur);
 
@@ -622,7 +622,7 @@ void GuiCompleter::showInline()
 void GuiCompleter::hidePopup()
 {
 	Cursor cur = gui_->bufferView().cursor();
-	cur.updateFlags(Update::None);
+	cur.screenUpdateFlags(Update::None);
 	
 	hidePopup(cur);
 	
@@ -635,7 +635,7 @@ void GuiCompleter::hidePopup()
 void GuiCompleter::hideInline()
 {
 	Cursor cur = gui_->bufferView().cursor();
-	cur.updateFlags(Update::None);
+	cur.screenUpdateFlags(Update::None);
 	
 	hideInline(cur);
 	
@@ -658,7 +658,7 @@ void GuiCompleter::tab()
 {
 	BufferView * bv = &gui_->bufferView();
 	Cursor cur = bv->cursor();
-	cur.updateFlags(Update::None);
+	cur.screenUpdateFlags(Update::None);
 	
 	// check that inline completion is active
 	if (!inlineVisible() && !uniqueCompletionAvailable()) {
@@ -875,7 +875,7 @@ docstring GuiCompleter::longestUniqueCompletion() const
 void GuiCompleter::popupActivated(const QString & completion)
 {
 	Cursor cur = gui_->bufferView().cursor();
-	cur.updateFlags(Update::None);
+	cur.screenUpdateFlags(Update::None);
 	
 	cur.recordUndo();
 
@@ -896,7 +896,7 @@ void GuiCompleter::popupHighlighted(const QString & completion)
 		return;
 
 	Cursor cur = gui_->bufferView().cursor();
-	cur.updateFlags(Update::None);
+	cur.screenUpdateFlags(Update::None);
 	
 	if (inlineVisible())
 		updateInline(cur, completion);

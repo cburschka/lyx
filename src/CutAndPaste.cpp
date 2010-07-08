@@ -756,7 +756,7 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 		}
 
 		if (begpit != endpit)
-			cur.updateFlags(Update::Force | Update::FitCursor);
+			cur.screenUpdateFlags(Update::Force | Update::FitCursor);
 
 		boost::tie(endpit, endpos) =
 			eraseSelectionHelper(bp,

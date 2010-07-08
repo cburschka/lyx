@@ -543,7 +543,7 @@ protected:
 	 *  Gets normally called from Cursor::dispatch(). Cursor::dispatch()
 	 *  assumes the common case of 'LFUN handled, need update'.
 	 *  This has to be overriden by calling Cursor::undispatched() or
-	 *  Cursor::noUpdate() if appropriate.
+	 *  Cursor::noScreenUpdate() if appropriate.
 	 *  If you need to call the dispatch method of some inset directly
 	 *  you may have to explicitly request an update at that place. Don't
 	 *  do it in doDispatch(), since that causes nested updates when

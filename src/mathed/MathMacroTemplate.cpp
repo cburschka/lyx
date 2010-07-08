@@ -617,7 +617,7 @@ void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 void MathMacroTemplate::edit(Cursor & cur, bool front, EntryDirection entry_from)
 {
 	updateLook();
-	cur.updateFlags(Update::SinglePar);
+	cur.screenUpdateFlags(Update::SinglePar);
 	InsetMathNest::edit(cur, front, entry_from);
 }
 
@@ -626,7 +626,7 @@ bool MathMacroTemplate::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
 	commitEditChanges(cur, old);
 	updateLook();
-	cur.updateFlags(Update::Force);
+	cur.screenUpdateFlags(Update::Force);
 	return InsetMathNest::notifyCursorLeaves(old, cur);
 }
 
@@ -803,7 +803,7 @@ void fixMacroInstances(Cursor & cur, DocIterator const & inset_pos,
 					hull.nextInset()->asInsetMath()->asHullInset();
 				LASSERT(inset_hull, /**/);
 				inset_hull->reloadPreview(hull);
-				cur.updateFlags(Update::Force);
+				cur.screenUpdateFlags(Update::Force);
 				preview_reload_needed = false;
 			}
 			hull.clear();

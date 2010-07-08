@@ -623,7 +623,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_LEFT:
 	case LFUN_CHAR_BACKWARD:
 	case LFUN_CHAR_FORWARD:
-		cur.updateFlags(Update::Decoration | Update::FitCursor);
+		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
 	case LFUN_CHAR_RIGHT_SELECT:
 	case LFUN_CHAR_LEFT_SELECT:
 	case LFUN_CHAR_BACKWARD_SELECT:
@@ -683,7 +683,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_DOWN:
 	case LFUN_UP:
-		cur.updateFlags(Update::Decoration | Update::FitCursor);
+		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
 	case LFUN_DOWN_SELECT:
 	case LFUN_UP_SELECT: {
 		// close active macro
@@ -726,7 +726,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_PARAGRAPH_UP:
 	case LFUN_PARAGRAPH_DOWN:
-		cur.updateFlags(Update::Decoration | Update::FitCursor);
+		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
 	case LFUN_PARAGRAPH_UP_SELECT:
 	case LFUN_PARAGRAPH_DOWN_SELECT:
 		break;
@@ -734,7 +734,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_LINE_BEGIN:
 	case LFUN_WORD_BACKWARD:
 	case LFUN_WORD_LEFT:
-		cur.updateFlags(Update::Decoration | Update::FitCursor);
+		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
 	case LFUN_LINE_BEGIN_SELECT:
 	case LFUN_WORD_BACKWARD_SELECT:
 	case LFUN_WORD_LEFT_SELECT:
@@ -759,7 +759,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_FORWARD:
 	case LFUN_WORD_RIGHT:
 	case LFUN_LINE_END:
-		cur.updateFlags(Update::Decoration | Update::FitCursor);
+		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
 	case LFUN_WORD_FORWARD_SELECT:
 	case LFUN_WORD_RIGHT_SELECT:
 	case LFUN_LINE_END_SELECT:
@@ -783,12 +783,12 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_CELL_FORWARD:
-		cur.updateFlags(Update::Decoration | Update::FitCursor);
+		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
 		cur.inset().idxNext(cur);
 		break;
 
 	case LFUN_CELL_BACKWARD:
-		cur.updateFlags(Update::Decoration | Update::FitCursor);
+		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
 		cur.inset().idxPrev(cur);
 		break;
 
@@ -1457,7 +1457,7 @@ void InsetMathNest::lfunMousePress(Cursor & cur, FuncRequest & cmd)
 		// Update::FitCursor: adjust the screen to the cursor
 		//                    position if needed
 		// cur.result().update(): don't overwrite previously set flags.
-		cur.updateFlags(Update::Decoration | Update::FitCursor
+		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor
 				| cur.result().update());
 	} else if (cmd.button() == mouse_button::button2) {
 		if (cap::selection()) {
@@ -1496,7 +1496,7 @@ void InsetMathNest::lfunMouseRelease(Cursor & cur, FuncRequest & cmd)
 
 	if (cmd.button() == mouse_button::button1) {
 		if (!cur.selection())
-			cur.noUpdate();
+			cur.noScreenUpdate();
 		else {
 			Cursor & bvcur = cur.bv().cursor();
 			bvcur.setSelection(true);
@@ -1663,7 +1663,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 				// visual box corners that define the inset. If we know for
 				// sure that we stay within the same cell we can optimize for
 				// that using:
-				//cur.updateFlags(Update::SinglePar | Update::FitCursor);
+				//cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
 			}
 			return true;
 		}
@@ -1673,7 +1673,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 			// visual box corners that define the inset. If we know for
 			// sure that we stay within the same cell we can optimize for
 			// that using:
-			//cur.updateFlags(Update::SinglePar | Update::FitCursor);
+			//cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
 			return true;
 		}
 
@@ -1682,7 +1682,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 			// visual box corners that define the inset. If we know for
 			// sure that we stay within the same cell we can optimize for
 			// that using:
-			//cur.updateFlags(Update::FitCursor);
+			//cur.screenUpdateFlags(Update::FitCursor);
 			return true;
 		}
 

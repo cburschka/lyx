@@ -200,7 +200,7 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// FIXME UNICODE
 		InsetCommand::string2params("label", to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty()) {
-			cur.noUpdate();
+			cur.noScreenUpdate();
 			break;
 		}
 		if (p["name"] != params()["name"])

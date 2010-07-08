@@ -473,7 +473,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 			case mouse_button::button4:
 			case mouse_button::button5:
 				// Nothing to do.
-				cur.noUpdate();
+				cur.noScreenUpdate();
 				break;
 			}
 		} else if (geometry(cur.bv()) != ButtonOnly)
@@ -486,7 +486,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_DOUBLE:
 	case LFUN_MOUSE_TRIPLE:
 		if (hitButton(cmd)) 
-			cur.noUpdate();
+			cur.noScreenUpdate();
 		else if (geometry(cur.bv()) != ButtonOnly)
 			InsetText::doDispatch(cur, cmd);
 		else
@@ -504,7 +504,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		if (cmd.button() != mouse_button::button1) {
 			// Nothing to do.
-			cur.noUpdate();
+			cur.noScreenUpdate();
 			break;
 		}
 		// if we are selecting, we do not want to
@@ -514,7 +514,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// Left button is clicked, the user asks to
 		// toggle the inset visual state.
 		cur.dispatched();
-		cur.updateFlags(Update::Force | Update::FitCursor);
+		cur.screenUpdateFlags(Update::Force | Update::FitCursor);
 		if (geometry(cur.bv()) == ButtonOnly) {
 			setStatus(cur, Open);
 			edit(cur, true);

@@ -88,13 +88,13 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 		try {
 			if (!InsetCommand::string2params("bibtex", 
 					to_utf8(cmd.argument()), p)) {
-				cur.noUpdate();
+				cur.noScreenUpdate();
 				break;
 			}
 		} catch (ExceptionMessage const & message) {
 			if (message.type_ == WarningException) {
 				Alert::warning(message.title_, message.details_);
-				cur.noUpdate();
+				cur.noScreenUpdate();
 			} else 
 				throw message;
 			break;

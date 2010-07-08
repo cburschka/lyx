@@ -550,7 +550,7 @@ bool InsetMathHull::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
 		reloadPreview(old);
-		cur.updateFlags(Update::Force);
+		cur.screenUpdateFlags(Update::Force);
 	}
 	return false;
 }
@@ -1646,7 +1646,7 @@ void InsetMathHull::edit(Cursor & cur, bool front, EntryDirection entry_from)
 	// The inset formula dimension is not necessarily the same as the
 	// one of the instant preview image, so we have to indicate to the
 	// BufferView that a metrics update is needed.
-	cur.updateFlags(Update::Force);
+	cur.screenUpdateFlags(Update::Force);
 }
 
 

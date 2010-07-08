@@ -229,7 +229,7 @@ public:
 	/// the event was already dispatched
 	void dispatched();
 	/// Set which update should be done
-	void updateFlags(Update::flags f);
+	void screenUpdateFlags(Update::flags f);
 	/**
 	 * don't call update() when done
 	 *
@@ -238,9 +238,9 @@ public:
 	 * not need to be re-drawn and all entries in the coord cache stay
 	 * valid (and there are no other things to put in the coord cache).
 	 * This is a fairly rare event as well and only some optimization.
-	 * Not using noUpdate() should never be wrong.
+	 * Not using noScreenUpdate() should never be wrong.
 	 */
-	void noUpdate();
+	void noScreenUpdate();
 	/// fix cursor in circumstances that should never happen.
 	/// \retval true if a fix occured.
 	bool fixIfBroken();

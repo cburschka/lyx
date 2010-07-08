@@ -153,7 +153,7 @@ void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetCommandParams p(p_.code());
 		InsetCommand::string2params(mailer_name_, to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty())
-			cur.noUpdate();
+			cur.noScreenUpdate();
 		else
 			setParams(p);
 		break;

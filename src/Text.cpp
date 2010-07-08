@@ -742,7 +742,7 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 	cur.buffer()->updateBuffer();
 
 	// A singlePar update is not enough in this case.
-	cur.updateFlags(Update::Force);
+	cur.screenUpdateFlags(Update::Force);
 
 	// This check is necessary. Otherwise the new empty paragraph will
 	// be deleted automatically. And it is more friendly for the user!
@@ -965,7 +965,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 		cur.buffer()->params().trackChanges);
 	cur.checkBufferStructure();
 
-//		cur.updateFlags(Update::Force);
+//		cur.screenUpdateFlags(Update::Force);
 	bool boundary = cur.boundary()
 		|| tm.isRTLBoundary(cur.pit(), cur.pos() + 1);
 	setCursor(cur, cur.pit(), cur.pos() + 1, false, boundary);
@@ -1315,7 +1315,7 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 	cur.finishUndo();
 	cur.clearSelection();
 	setCursorIntern(cur, begPit, begPos);
-	cur.updateFlags(Update::Force);
+	cur.screenUpdateFlags(Update::Force);
 	cur.buffer()->updateBuffer();
 }
 
@@ -1469,7 +1469,7 @@ bool Text::handleBibitems(Cursor & cur)
 							prevcur.pit());
 		cur.buffer()->updateBuffer();
 		setCursorIntern(cur, prevcur.pit(), prevcur.pos());
-		cur.updateFlags(Update::Force);
+		cur.screenUpdateFlags(Update::Force);
 		return true;
 	} 
 
@@ -1622,7 +1622,7 @@ bool Text::backspace(Cursor & cur)
 	needsUpdate |= handleBibitems(cur);
 
 	// A singlePar update is not enough in this case.
-//		cur.updateFlags(Update::Force);
+//		cur.screenUpdateFlags(Update::Force);
 	setCursor(cur.top(), cur.pit(), cur.pos());
 
 	return needsUpdate;
@@ -2043,7 +2043,7 @@ bool Text::insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/
 	cur.insert(s);
 	cur.bv().cursor() = cur;
 	if (!(cur.result().update() & Update::Force))
-		cur.updateFlags(cur.result().update() | Update::SinglePar);
+		cur.screenUpdateFlags(cur.result().update() | Update::SinglePar);
 	return true;
 }
 	
