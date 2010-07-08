@@ -286,7 +286,7 @@ void LyXRC::setDefaults()
 	display_graphics = true;
 	// Spellchecker settings:
 // FIXME: this check should test the target platform (darwin)
-#ifdef USE_MACOSX_PACKAGING || defined(LYX_PLATFORM_DARWIN10)
+#if defined(USE_MACOSX_PACKAGING) || defined(LYX_PLATFORM_DARWIN10)
 	spellchecker = "native";
 #elif defined(USE_ASPELL)
 	spellchecker = "aspell";
