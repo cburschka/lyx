@@ -143,8 +143,6 @@ src_header_files = Split('''
 
 
 src_pre_files = Split('''
-    AppleSpellChecker.cpp
-    AspellChecker.cpp
     Author.cpp
     Bidi.cpp
     BranchList.cpp
@@ -250,6 +248,7 @@ src_post_files = Split('''
 
 
 src_extra_src_files = Split('''
+    AppleSpellChecker.cpp
     AspellChecker.cpp
     EnchantChecker.cpp
     HunspellChecker.cpp
@@ -284,8 +283,6 @@ src_client_extra_files = Split('''
 
 
 src_support_header_files = Split('''
-    AppleSpeller.h
-    AppleSpeller.m
     bind.h
     convert.h
     copied_ptr.h
@@ -363,7 +360,8 @@ src_support_files = Split('''
 
 
 src_support_extra_header_files = Split('''
-    
+    AppleSpeller.h
+    AppleSpeller.m
 ''')
 
 
