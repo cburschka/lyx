@@ -43,6 +43,10 @@ endif
 
 BUILT_SOURCES = $(PCH_FILE)
 
+if INSTALL_MACOSX
+ASPELL = AppleSpellChecker.cpp AppleSpellChecker.h
+endif
+
 if USE_ASPELL
 ASPELL = AspellChecker.cpp AspellChecker.h
 endif
