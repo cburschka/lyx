@@ -44,7 +44,7 @@ endif
 BUILT_SOURCES = $(PCH_FILE)
 
 if INSTALL_MACOSX
-ASPELL = AppleSpellChecker.cpp AppleSpellChecker.h
+APPLESPELL = AppleSpellChecker.cpp AppleSpellChecker.h
 endif
 
 if USE_ASPELL
@@ -65,6 +65,7 @@ endif
 # and in fact libtools seems not able to do that.
 lyx_SOURCES = \
 	main.cpp \
+	$(APPLESPELL) \
 	$(ASPELL) \
 	BiblioInfo.h \
 	BiblioInfo.cpp \
