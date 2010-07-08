@@ -28,6 +28,7 @@ TOP_extra_files = Split('''
 
 
 src_header_files = Split('''
+    AppleSpellChecker.h
     AspellChecker.h
     Author.h
     BiblioInfo.h
@@ -142,6 +143,8 @@ src_header_files = Split('''
 
 
 src_pre_files = Split('''
+    AppleSpellChecker.cpp
+    AspellChecker.cpp
     Author.cpp
     Bidi.cpp
     BranchList.cpp
@@ -281,6 +284,8 @@ src_client_extra_files = Split('''
 
 
 src_support_header_files = Split('''
+    AppleSpeller.h
+    AppleSpeller.m
     bind.h
     convert.h
     copied_ptr.h
