@@ -1335,6 +1335,13 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 {
 	setupUi(this);
 
+// FIXME: this check should test the target platform (darwin)
+#ifdef USE_MACOSX_PACKAGING
+	spellcheckerCB->addItem(qt_("native"), QString("native"));
+#define CONNECT_APPLESPELL
+#else
+#undef CONNECT_APPLESPELL
+#endif
 #if defined(USE_ASPELL)
 	spellcheckerCB->addItem(qt_("aspell"), QString("aspell"));
 #endif
@@ -1345,7 +1352,7 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 	spellcheckerCB->addItem(qt_("hunspell"), QString("hunspell"));
 #endif
 
-	#if defined(USE_ASPELL) || defined(USE_ENCHANT) || defined(USE_HUNSPELL)
+	#if defined(CONNECT_APPLESPELL) || defined(USE_ASPELL) || defined(USE_ENCHANT) || defined(USE_HUNSPELL)
 		connect(spellcheckerCB, SIGNAL(currentIndexChanged(int)),
 			this, SIGNAL(changed()));
 		connect(altLanguageED, SIGNAL(textChanged(QString)),

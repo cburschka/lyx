@@ -782,6 +782,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	// FIXME: Do we need a lyxrc setting for this on Mac? This behaviour
 	// seems to be the default case for applications like LyX.
 	setQuitOnLastWindowClosed(false);
+	// setAttribute(Qt::AA_MacDontSwapCtrlAndMeta);
 
 	// This allows to translate the strings that appear in the LyX menu.
 	/// A translator suitable for the entries in the LyX menu.
