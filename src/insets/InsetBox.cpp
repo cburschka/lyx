@@ -223,7 +223,7 @@ bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_BREAK_PARAGRAPH:
-		if (params_.inner_box || params_.type == "Framed")
+		if ((params_.inner_box && !params_.use_makebox) || params_.type == "Shaded")
 			return InsetCollapsable::getStatus(cur, cmd, flag);
 		flag.setEnabled(false);
 		return true;
