@@ -111,7 +111,7 @@ GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 }
 
 
-void GuiBox::on_innerBoxCO_activated(int index)
+void GuiBox::on_innerBoxCO_activated(int /* index */)
 {
 	QString itype =
 		innerBoxCO->itemData(innerBoxCO->currentIndex()).toString();
