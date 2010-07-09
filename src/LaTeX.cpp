@@ -639,6 +639,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 			} else if (contains(token, "run BibTeX")) {
 				retval |= UNDEF_CIT;
 			} else if (contains(token, "Rerun LaTeX") ||
+				   contains(token, "Please rerun LaTeX") ||
 				   contains(token, "Rerun to get")) {
 				// at least longtable.sty and bibtopic.sty
 				// might use this.

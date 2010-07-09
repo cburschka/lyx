@@ -125,8 +125,10 @@ What's new
 
 - Do not swallow an empty last line in matrix or eqnarray types of
   environments (bug 6595).
+  
+- Rerun Latex if Biblatex requests for it.
 
-
+  
 * USER INTERFACE
 
 - Fix a warning and an incidental crash when using the outliner (bug
