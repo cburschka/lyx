@@ -38,7 +38,7 @@ macro(add_gettext_python  _par _dir)
   ADD_CUSTOM_COMMAND(
     OUTPUT "${_dst}"
     PRE_BUILD
-    COMMAND python
+    COMMAND ${_PYTHON_EXECUTABLE}
     ARGS "${TOP_SRC_DIR}/po/lyx_pot.py" -b "${TOP_SRC_DIR}" -o "${_dst}" -t ${_par1} "--src_file=${_src_files}"
     DEPENDS ${_sources} ${_src_files}
     )

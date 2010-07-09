@@ -427,17 +427,15 @@ if(MSVC)
 
 endif()
 
-
 FIND_PROGRAM(_PERL_EXECUTABLE perl)
-if(NOT ${_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
+FIND_PROGRAM(_PYTHON_EXECUTABLE python)
+if((NOT ${_PERL_EXECUTABLE} MATCHES "-NOTFOUND") AND ( NOT ${_PYTHON_EXECUTABLE} MATCHES "-NOTFOUND"))
     if(LYX_NLS)
       find_package(LyXGettext REQUIRED)
       include_directories(${TOP_SRC_DIR}/po)
       add_subdirectory(po)
     endif()
 endif()
-
-
 
 if(LYX_DEBUG_GLIBC)
   set(_GLIBCXX_DEBUG 1)
