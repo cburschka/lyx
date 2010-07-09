@@ -301,6 +301,7 @@ BufferView::~BufferView()
 	fp.pos = d->cursor_.bottom().pos();
 	theSession().lastFilePos().save(buffer_.fileName(), fp);
 
+	buffer_.setGuiDelegate(0);
 	delete d;
 }
 

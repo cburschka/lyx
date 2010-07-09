@@ -81,6 +81,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix a crash when reopening a hidden buffer in another window (bug 6791).
+
 - Fix an assertion when using an empty user macro taking an argument as
   the base of script inset (bug 6739).
 
