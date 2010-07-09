@@ -15,6 +15,7 @@ macro(add_gettext_python  _par _dir)
   set(_sources)
   foreach(_arg ${ARGN})
     file(GLOB _s1 ${TOP_SRC_DIR}/${_dir}/${_arg})
+    list(SORT _s1)
     list(APPEND _sources ${_s1})
   endforeach(_arg)
   SET(_dst "${CMAKE_CURRENT_BINARY_DIR}/${_par}_l10n.pot")
@@ -84,14 +85,17 @@ ADD_CUSTOM_COMMAND(
 SET(_potfiles_dep)
 
 file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in "")
-foreach(_dir src/frontends/qt4 src/insets src/mathed src/support src/tex2lyx src)
-    file(GLOB _tmp_potfiles RELATIVE ${TOP_SRC_DIR} ${TOP_SRC_DIR}/${_dir}/*.cpp)
-    list(SORT _tmp_potfiles)
-    foreach(_f ${_tmp_potfiles})
-	LIST(APPEND _potfiles_dep "${TOP_SRC_DIR}/${_f}")
-	file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in "${_f}\n")
-    endforeach(_f)
-endforeach(_dir)
+file(GLOB_RECURSE _tmp_potfiles RELATIVE ${TOP_SRC_DIR}/ ${TOP_SRC_DIR}/src/*.h  ${TOP_SRC_DIR}/src/*.cpp  ${TOP_SRC_DIR}/src/*.cpp.in)
+list(SORT _tmp_potfiles)
+list(REMOVE_ITEM _tmp_potfiles src/support/Package.cpp)
+
+foreach(_f ${_tmp_potfiles})
+  # we don't need to select only relevant files because the outcome of xgettext
+  # will stay the same.
+  # Relevant files are files containing the string '_(".*")'
+  LIST(APPEND _potfiles_dep "${TOP_SRC_DIR}/${_f}")
+  file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in "${_f}\n")
+endforeach(_f)
 
 ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
