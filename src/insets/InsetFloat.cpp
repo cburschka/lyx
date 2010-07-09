@@ -152,8 +152,11 @@ void InsetFloat::doDispatch(Cursor & cur, FuncRequest & cmd)
 		setNewLabel();
 		if (params_.type != params.type) {
 			params_.type = params.type;
-			buffer().updateBuffer();
+			cur.forceBufferUpdate();
 		}
+		// what we really want here is a TOC update, but that means
+		// a full buffer update
+		cur.forceBufferUpdate();
 		break;
 	}
 

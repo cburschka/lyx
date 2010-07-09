@@ -228,8 +228,14 @@ public:
 	void undispatched();
 	/// the event was already dispatched
 	void dispatched();
-	/// Set which update should be done
+	/// Set which screen update should be done
 	void screenUpdateFlags(Update::flags f);
+	/// Forces an updateBuffer() call
+	void forceBufferUpdate();
+	/// Removes any pending updateBuffer() call
+	void clearBufferUpdate();
+	/// Do we need to call updateBuffer()?
+	bool needBufferUpdate() const;
 	/**
 	 * don't call update() when done
 	 *

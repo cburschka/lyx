@@ -1098,6 +1098,10 @@ void GuiApplication::dispatch(FuncRequest const & cmd)
 
 	BufferView * bv = current_view_->currentBufferView();
 	if (bv) {
+		if (dr.needBufferUpdate()) {
+			bv->cursor().clearBufferUpdate();
+			bv->buffer().updateBuffer();
+		}
 		// BufferView::update() updates the ViewMetricsInfo and
 		// also initializes the position cache for all insets in
 		// (at least partially) visible top-level paragraphs.
@@ -1232,6 +1236,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		dr.setError(true);
 		dr.dispatched(false);
 		dr.update(Update::None);
+		dr.clearBufferUpdate();
 		return;
 	};
 
@@ -1344,7 +1349,6 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 #ifndef DEVEL_VERSION
 			buf->setReadonly(true);
 #endif
-			buf->updateBuffer();
 			buf->errors("Parse");
 		}
 		break;
@@ -1576,9 +1580,10 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	
 		// Let the current GuiView dispatch its own actions.
 		current_view_->dispatch(cmd, dr);
+
 		if (dr.dispatched())
 			break;
-	
+
 		BufferView * bv = current_view_->currentBufferView();
 		LASSERT(bv, /**/);
 	

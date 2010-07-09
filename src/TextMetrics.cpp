@@ -134,8 +134,6 @@ TextMetrics::TextMetrics(BufferView * bv, Text * text)
 	dim_.wid = max_width_;
 	dim_.asc = 10;
 	dim_.des = 10;
-
-	//text_->updateBuffer(bv->buffer());
 }
 
 
@@ -401,6 +399,9 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		LYXERR(Debug::INFO, "MacroContext not initialised!"
 			<< " Going through the buffer again and hope"
 			<< " the context is better then.");
+		// FIXME audit updateBuffer calls
+		// This should not be here, but it is not clear yet where else it
+		// should be.
 		bv_->buffer().updateBuffer();
 		parPos = text_->macrocontextPosition();
 		LASSERT(!parPos.empty(), /**/);

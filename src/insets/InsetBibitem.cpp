@@ -93,8 +93,6 @@ void InsetBibitem::updateCommand(docstring const & new_key, bool)
 			"it will be changed to %2$s."), new_key, key));
 	}
 	setParam("key", key);
-
-	buffer().updateBuffer();
 }
 
 
@@ -128,8 +126,9 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 			updateCommand(p["key"]);
 			cur.bv().buffer().changeRefsIfUnique(old_key,
 				params()["key"], CITE_CODE);
+			cur.forceBufferUpdate();
+			buffer_->invalidateBibinfoCache();
 		}
-		buffer_->invalidateBibinfoCache();
 		break;
 	}
 

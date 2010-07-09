@@ -124,7 +124,7 @@ public:
 	  *
 	  * \sa isLabeled()
 	  **/
-	virtual void initView();
+	virtual void initView() {};
 	/// \return true if this inset is labeled.
 	virtual bool isLabeled() const { return false; }
 

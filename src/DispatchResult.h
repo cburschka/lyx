@@ -24,7 +24,7 @@ class DispatchResult {
 public:
 	///
 	DispatchResult() : dispatched_(false), error_(false), 
-			   update_(Update::None) {}
+			   update_(Update::None), need_buf_update_(false) {}
 	///
 	DispatchResult(bool disp, Update::flags f) 
 		: dispatched_(disp), error_(false), update_(f) {}
@@ -44,6 +44,12 @@ public:
 	Update::flags update() const { return update_; }
 	///
 	void update(Update::flags f) { update_ = f; }
+	/// Does the buffer need updating?
+	bool needBufferUpdate() const { return need_buf_update_; }
+	/// Force the buffer to be updated
+	void forceBufferUpdate() { need_buf_update_ = true; }
+	/// Clear the flag indicating we need an update
+	void clearBufferUpdate() { need_buf_update_ = false; }
 private:
 	/// was the event fully dispatched?
 	bool dispatched_;
@@ -53,6 +59,8 @@ private:
 	Update::flags update_;
 	///
 	docstring message_;
+	/// 
+	bool need_buf_update_;
 };
 
 

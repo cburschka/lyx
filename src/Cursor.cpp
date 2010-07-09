@@ -1276,6 +1276,7 @@ void Cursor::plainInsert(MathAtom const & t)
 	++pos();
 	inset().setBuffer(bv_->buffer());
 	inset().initView();
+	forceBufferUpdate();
 }
 
 
@@ -1318,6 +1319,8 @@ void Cursor::insert(Inset * inset0)
 		text()->insertInset(*this, inset0);
 		inset0->setBuffer(bv_->buffer());
 		inset0->initView();
+		if (inset0->isLabeled())
+			forceBufferUpdate();
 	}
 }
 
@@ -1359,7 +1362,7 @@ void Cursor::insert(MathData const & ar)
 		cap::eraseSelection(*this);
 	cell().insert(pos(), ar);
 	pos() += ar.size();
-	// FIXME audit setBuffer/updateBuffer calls
+	// FIXME audit setBuffer calls
 	inset().setBuffer(bv_->buffer());
 }
 
@@ -1883,6 +1886,8 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 
 			updateNeeded |= bv().checkDepm(dummy, *this);
 			updateTextTargetOffset();
+			if (updateNeeded)
+				forceBufferUpdate();
 		}
 		return false;
 	}
@@ -1907,7 +1912,7 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 			++dummy.pos();
 		if (bv().checkDepm(dummy, old)) {
 			updateNeeded = true;
-			// Make sure that cur gets back whatever happened to dummy(Lgb) 
+			// Make sure that cur gets back whatever happened to dummy (Lgb) 
 			operator=(dummy);
 		}
 	} else {
@@ -1952,6 +1957,8 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		updateNeeded |= bv().checkDepm(*this, old);
 	}
 
+	if (updateNeeded)
+		forceBufferUpdate();
 	updateTextTargetOffset();
 	return true;
 }	
@@ -2116,6 +2123,24 @@ void Cursor::dispatched()
 void Cursor::screenUpdateFlags(Update::flags f)
 {
 	disp_.update(f);
+}
+
+
+void Cursor::forceBufferUpdate()
+{
+	disp_.forceBufferUpdate();
+}
+
+
+void Cursor::clearBufferUpdate()
+{
+	disp_.clearBufferUpdate();
+}
+
+
+bool Cursor::needBufferUpdate() const
+{
+	return disp_.needBufferUpdate();
 }
 
 

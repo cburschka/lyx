@@ -238,12 +238,6 @@ bool Inset::forceLTR() const
 	return getLayout().forceLTR();
 }
 
-void Inset::initView()
-{
-	if (isLabeled())
-		buffer().updateBuffer();
-}
-
 
 docstring Inset::toolTip(BufferView const &, int, int) const
 {

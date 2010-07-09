@@ -1371,10 +1371,9 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 					cell(i).append(grid.cell(grid.index(r, c)));
 		}
 		cur.clearSelection(); // bug 393
-		// FIXME audit setBuffer/updateBuffer calls
+		// FIXME audit setBuffer calls
 		cur.inset().setBuffer(*buffer_);
-		// FIXME audit setBuffer/updateBuffer calls
-		cur.buffer()->updateBuffer();
+		cur.forceBufferUpdate();
 		cur.finishUndo();
 		break;
 	}

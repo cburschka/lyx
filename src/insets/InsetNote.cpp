@@ -176,6 +176,9 @@ void InsetNote::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY:
 		string2params(to_utf8(cmd.argument()), params_);
 		setButtonLabel();
+		// what we really want here is a TOC update, but that means
+		// a full buffer update
+		cur.forceBufferUpdate();
 		break;
 
 	case LFUN_INSET_DIALOG_UPDATE:

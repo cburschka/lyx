@@ -413,6 +413,8 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		<< ", singlepar = " << (flags & Update::SinglePar)
 		<< "]  buffer: " << &buffer_);
 
+	// FIXME Does this really need doing here? It's done in updateBuffer, and
+	// if the Buffer doesn't need updating, then do the macros?
 	buffer_.updateMacros();
 
 	// Now do the first drawing step if needed. This consists on updating
@@ -935,7 +937,6 @@ void BufferView::updateDocumentClass(DocumentClass const * const olddc)
 	setCursor(backcur.asDocIterator(&buffer_));
 
 	buffer_.errors("Class Switch");
-	buffer_.updateBuffer();
 }
 
 /** Return the change status at cursor position, taking in account the
@@ -1203,6 +1204,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// It is then better to make sure that all dialogs are in sync with
 		// current document settings.
 		dr.update(Update::Force | Update::FitCursor);
+		dr.forceBufferUpdate();
 		break;
 	}
 		
@@ -1214,6 +1216,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		buffer_.params().makeDocumentClass();
 		updateDocumentClass(oldClass);
 		dr.update(Update::Force | Update::FitCursor);
+		dr.forceBufferUpdate();
 		break;
 	}
 
@@ -1231,6 +1234,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		buffer_.params().makeDocumentClass();
 		updateDocumentClass(oldClass);
 		dr.update(Update::Force | Update::FitCursor);
+		dr.forceBufferUpdate();
 		break;
 	}
 
@@ -1254,6 +1258,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		buffer_.params().makeDocumentClass();
 		updateDocumentClass(oldDocClass);
 		dr.update(Update::Force | Update::FitCursor);
+		dr.forceBufferUpdate();
 		break;
 	}
 
@@ -1270,6 +1275,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		buffer_.params().makeDocumentClass();
 		updateDocumentClass(oldClass);
 		dr.update(Update::Force | Update::FitCursor);
+		dr.forceBufferUpdate();
 		break;
 	}
 
@@ -1280,6 +1286,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			dr.setMessage(_("No further undo information"));
 		else
 			dr.update(Update::Force | Update::FitCursor);
+		dr.forceBufferUpdate();
 		break;
 
 	case LFUN_REDO:
@@ -1289,6 +1296,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			dr.setMessage(_("No further redo information"));
 		else
 			dr.update(Update::Force | Update::FitCursor);
+		dr.forceBufferUpdate();
 		break;
 
 	case LFUN_FONT_STATE:
@@ -1402,6 +1410,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_CHANGES_MERGE:
 		if (findNextChange(this) || findPreviousChange(this)) {
 			dr.update(Update::Force | Update::FitCursor);
+			dr.forceBufferUpdate();
 			showDialog("changes");
 		}
 		break;
@@ -1415,6 +1424,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		buffer_.text().acceptOrRejectChanges(cur, Text::ACCEPT);
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
 		dr.update(Update::Force | Update::FitCursor);
+		dr.forceBufferUpdate();
 		break;
 
 	case LFUN_ALL_CHANGES_REJECT:
@@ -1427,6 +1437,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		buffer_.text().acceptOrRejectChanges(cur, Text::REJECT);
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
 		dr.update(Update::Force | Update::FitCursor);
+		dr.forceBufferUpdate();
 		break;
 
 	case LFUN_WORD_FIND_FORWARD:
@@ -1481,6 +1492,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			}
 		}
 		replace(this, cmd, has_deleted);
+		dr.forceBufferUpdate();
 		break;
 	}
 
@@ -1625,13 +1637,16 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		//FIXME: what to do with cur.x_target()?
 		bool update = in_texted && cur.bv().checkDepm(cur, old);
 		cur.finishUndo();
-		if (update)
+		if (update) {
 			dr.update(Update::Force | Update::FitCursor);
+			dr.forceBufferUpdate();
+		}
 		break;
 	}
 
 	case LFUN_SCROLL:
 		lfunScroll(cmd);
+		dr.forceBufferUpdate();
 		break;
 
 	case LFUN_SCREEN_UP_SELECT: {
@@ -1708,6 +1723,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		cur = savecur;
 		cur.fixIfBroken();
 		dr.update(Update::Force);
+		dr.forceBufferUpdate();
 
 		if (iterations >= max_iter) {
 			dr.setError(true);
@@ -1810,6 +1826,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
 		inset->dispatch(cur, fr);
 		dr.update(Update::SinglePar | Update::FitCursor);
+		dr.forceBufferUpdate();
 		break;
 	}
 
@@ -2227,7 +2244,7 @@ bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 
 	d->cursor_ = cur;
 
-	buffer_.updateBuffer();
+	cur.forceBufferUpdate();
 	buffer_.changed(true);
 	return true;
 }
@@ -2271,6 +2288,8 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 
 	d->cursor_.finishUndo();
 	d->cursor_.setCurrentFont();
+	if (update)
+		cur.forceBufferUpdate();
 	return update;
 }
 

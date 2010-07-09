@@ -242,6 +242,8 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 				InsetLabel * lab = labels[i];
 				docstring const oldname = lab->getParam("name");
 				lab->updateCommand(oldname, false);
+				// We need to update the buffer reference cache.
+				cur.forceBufferUpdate();
 				docstring const newname = lab->getParam("name");
 				if (oldname == newname)
 					continue;
@@ -258,7 +260,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 							static_cast<InsetMathHull &>(*itt);
 						// this is necessary to prevent an uninitialized
 						// buffer when the RefInset is in a MathBox.
-						// FIXME audit setBuffer/updateBuffer calls
+						// FIXME audit setBuffer calls
 						mi.setBuffer(const_cast<Buffer &>(buffer));
 						if (mi.asRefInset()->getTarget() == oldname)
 							mi.asRefInset()->changeTarget(newname);
@@ -273,6 +275,8 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 			InsetCommand & lab = static_cast<InsetCommand &>(*it);
 			docstring const oldname = lab.getParam("name");
 			lab.updateCommand(oldname, false);
+			// We need to update the buffer reference cache.
+			cur.forceBufferUpdate();
 			docstring const newname = lab.getParam("name");
 			if (oldname == newname)
 				break;
@@ -287,7 +291,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 						static_cast<InsetMathHull &>(*itt);
 					// this is necessary to prevent an uninitialized
 					// buffer when the RefInset is in a MathBox.
-					// FIXME audit setBuffer/updateBuffer calls
+					// FIXME audit setBuffer calls
 					mi.setBuffer(const_cast<Buffer &>(buffer));
 					if (mi.asRefInset()->getTarget() == oldname)
 						mi.asRefInset()->changeTarget(newname);
@@ -299,6 +303,8 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 		case INCLUDE_CODE: {
 			InsetInclude & inc = static_cast<InsetInclude &>(*it);
 			inc.updateCommand();
+			// We need to update the list of included files.
+			cur.forceBufferUpdate();
 			break;
 		}
 
@@ -307,6 +313,8 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 			InsetCommand & bib = static_cast<InsetCommand &>(*it);
 			docstring const oldkey = bib.getParam("key");
 			bib.updateCommand(oldkey, false);
+			// We need to update the buffer reference cache.
+			cur.forceBufferUpdate();
 			docstring const newkey = bib.getParam("key");
 			if (oldkey == newkey)
 				break;
@@ -345,6 +353,8 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 					  text, 0, 1, _("&Add"), _("&Don't Add")) != 0)
 				break;
 			lyx::dispatch(FuncRequest(LFUN_BRANCH_ADD, name));
+			// We need to update the list of branches.
+			cur.forceBufferUpdate();
 			break;
 		}
 
@@ -777,7 +787,7 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 
 		// need a valid cursor. (Lgb)
 		cur.clearSelection();
-		cur.buffer()->updateBuffer();
+		cur.forceBufferUpdate();
 
 		// tell tabular that a recent copy happened
 		dirtyTabularStack(false);
@@ -955,7 +965,7 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 
 		boost::tie(ppp, endpit) =
 			pasteSelectionHelper(cur, parlist, docclass, errorList);
-		cur.buffer()->updateBuffer();
+		cur.forceBufferUpdate();
 		cur.clearSelection();
 		text->setCursor(cur, ppp.first, ppp.second);
 	}

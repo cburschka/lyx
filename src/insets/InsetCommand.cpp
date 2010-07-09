@@ -156,6 +156,10 @@ void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.noScreenUpdate();
 		else
 			setParams(p);
+		// FIXME We might also want to check here if this one is in the TOC.
+		// But I think most of those are labeled.
+		if (isLabeled())
+			cur.forceBufferUpdate();
 		break;
 	}
 

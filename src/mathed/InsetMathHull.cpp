@@ -572,10 +572,6 @@ void InsetMathHull::label(row_type row, docstring const & label)
 		if (label.empty()) {
 			delete label_[row];
 			label_[row] = dummy_pointer;
-			// We need an update of the Buffer reference cache.
-			// This is achieved by updateBuffer().
-			if (buffer_)
-				buffer().updateBuffer();
 		} else {
 			if (buffer_)
 				label_[row]->updateCommand(label);
@@ -598,14 +594,6 @@ void InsetMathHull::numbered(row_type row, bool num)
 	if (nonum_[row] && label_[row]) {
 		delete label_[row];
 		label_[row] = 0;
-		if (!buffer_) {
-			// The buffer is set at the end of readInset.
-			// When parsing the inset, buffer_ is 0.
-			return;
-		}
-		// We need an update of the Buffer reference cache.
-		// This is achieved by updateBuffer().
-		buffer().updateBuffer();
 	}
 }
 
@@ -1275,6 +1263,8 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 			bool const align =
 				cur.bv().buffer().params().use_amsmath == BufferParams::package_on;
 			mutate(align ? hullAlign : hullEqnArray);
+			// mutate() may change labels and such.
+			cur.forceBufferUpdate();
 			cur.idx() = nrows() * ncols() - 1;
 			cur.pos() = cur.lastpos();
 		}
@@ -1292,6 +1282,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 				numbered(row, !old);
 
 		cur.message(old ? _("No number") : _("Number"));
+		cur.forceBufferUpdate();
 		break;
 	}
 
@@ -1301,6 +1292,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		bool old = numbered(r);
 		cur.message(old ? _("No number") : _("Number"));
 		numbered(r, !old);
+		cur.forceBufferUpdate();
 		break;
 	}
 
@@ -1363,6 +1355,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 			} else if (numbered(row(cur.idx()))) {
 				cur.recordUndoInset();
 				numbered(row(cur.idx()), false);
+				cur.forceBufferUpdate();
 			} else {
 				InsetMathGrid::doDispatch(cur, cmd);
 				return;
@@ -1397,6 +1390,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 					label_[r]->initView();
 				}
 			}
+			cur.forceBufferUpdate();
 			break;
 		}
 		InsetMathGrid::doDispatch(cur, cmd);
@@ -1421,6 +1415,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (cur.pos() > cur.lastpos())
 			cur.pos() = cur.lastpos();
 
+		cur.forceBufferUpdate();
 		// FIXME: find some more clever handling of the selection,
 		// i.e. preserve it.
 		cur.clearSelection();

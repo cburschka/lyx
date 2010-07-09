@@ -2037,6 +2037,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 			branch->setSelected(func.action() == LFUN_BRANCH_ACTIVATE);
 			dr.setError(false);
 			dr.update(Update::Force);
+			dr.forceBufferUpdate();
 		}
 		break;
 	}
@@ -2071,8 +2072,10 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 			}
 		}
 
-		if (success)
+		if (success) {
 			dr.update(Update::Force);
+			dr.forceBufferUpdate();
+		}
 		break;
 	}
 
@@ -2198,8 +2201,10 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		Language const * newL = languages.getLanguage(argument);
 		if (!newL || oldL == newL)
 			break;
-		if (oldL->rightToLeft() == newL->rightToLeft() && !isMultiLingual())
+		if (oldL->rightToLeft() == newL->rightToLeft() && !isMultiLingual()) {
 			changeLanguage(oldL, newL);
+			dr.forceBufferUpdate();
+		}
 		break;
 	}
 

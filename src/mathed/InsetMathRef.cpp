@@ -214,7 +214,7 @@ void InsetMathRef::changeTarget(docstring const & target)
 	if (createInsetMath_fromDialogStr(
 	    from_utf8(InsetCommand::params2string("ref", icp)), ar)) {
 		*this = *ar[0].nucleus()->asRefInset();
-		// FIXME audit setBuffer/updateBuffer calls
+		// FIXME audit setBuffer calls
 		setBuffer(buf);
 	}
 }

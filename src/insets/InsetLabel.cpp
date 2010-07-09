@@ -97,10 +97,6 @@ void InsetLabel::updateCommand(docstring const & new_label, bool updaterefs)
 		}
 	}
 	buffer().undo().endUndoGroup();
-
-	// We need an update of the Buffer reference cache. This is achieved by
-	// updateBuffer().
-	buffer().updateBuffer();
 }
 
 
@@ -205,6 +201,7 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		if (p["name"] != params()["name"])
 			updateCommand(p["name"]);
+		cur.forceBufferUpdate();
 		break;
 	}
 

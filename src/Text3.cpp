@@ -486,8 +486,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		recUndo(cur, pit, pit + 1);
 		cur.finishUndo();
 		pars_.swap(pit, pit + 1);
-		cur.buffer()->updateBuffer();
 		needsUpdate = true;
+		cur.forceBufferUpdate();
 		++cur.pit();
 		break;
 	}
@@ -497,9 +497,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		recUndo(cur, pit - 1, pit);
 		cur.finishUndo();
 		pars_.swap(pit, pit - 1);
-		cur.buffer()->updateBuffer();
 		--cur.pit();
 		needsUpdate = true;
+		cur.forceBufferUpdate();
 		break;
 	}
 
@@ -523,7 +523,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		par.params().startOfAppendix(start);
 
 		// we can set the refreshing parameters now
-		cur.buffer()->updateBuffer();
+		cur.forceBufferUpdate();
 		break;
 	}
 
@@ -624,7 +624,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				// provide it with two different cursors.
 				Cursor dummy = cur;
 				dummy.pos() = dummy.pit() = 0;
-				cur.bv().checkDepm(dummy, cur);
+				if (cur.bv().checkDepm(dummy, cur))
+					cur.forceBufferUpdate();;
 			}
 		}
 		break;
@@ -650,7 +651,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				Cursor dummy = cur;
 				dummy.pos() = cur.lastpos();
 				dummy.pit() = cur.lastpit();
-				cur.bv().checkDepm(dummy, cur);
+				if (cur.bv().checkDepm(dummy, cur))
+					cur.forceBufferUpdate();
 			}
 		}
 		break;
@@ -971,6 +973,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			singleParUpdate = false;
 		}
 		moveCursor(cur, false);
+		cur.forceBufferUpdate();
 		break;
 
 	case LFUN_CHAR_DELETE_BACKWARD:
@@ -988,6 +991,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cutSelection(cur, true, false);
 			singleParUpdate = false;
 		}
+		cur.forceBufferUpdate();
 		break;
 
 	case LFUN_BREAK_PARAGRAPH:
@@ -1046,8 +1050,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INSET_DISSOLVE: {
-		if (dissolveInset(cur))
+		if (dissolveInset(cur)) {
 			needsUpdate = true;
+			cur.forceBufferUpdate();
+		}
 		break;
 	}
 
@@ -1579,7 +1585,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cur.posForward();
 		// Some insets are numbered, others are shown in the outline pane so
 		// let's update the labels and the toc backend.
-		bv->buffer().updateBuffer();
+		cur.forceBufferUpdate();
 		break;
 
 	case LFUN_TABULAR_INSERT:
@@ -1633,7 +1639,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// date metrics.
 		FuncRequest cmd_caption(LFUN_CAPTION_INSERT);
 		doInsertInset(cur, cur.text(), cmd_caption, true, false);
-		bv->buffer().updateBuffer();
+		cur.forceBufferUpdate();
 		cur.screenUpdateFlags(Update::Force);
 		// FIXME: When leaving the Float (or Wrap) inset we should
 		// delete any empty paragraph left above or below the
@@ -2074,26 +2080,26 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_OUTLINE_UP:
 		outline(OutlineUp, cur);
 		setCursor(cur, cur.pit(), 0);
-		cur.buffer()->updateBuffer();
+		cur.forceBufferUpdate();
 		needsUpdate = true;
 		break;
 
 	case LFUN_OUTLINE_DOWN:
 		outline(OutlineDown, cur);
 		setCursor(cur, cur.pit(), 0);
-		cur.buffer()->updateBuffer();
+		cur.forceBufferUpdate();
 		needsUpdate = true;
 		break;
 
 	case LFUN_OUTLINE_IN:
 		outline(OutlineIn, cur);
-		cur.buffer()->updateBuffer();
+		cur.forceBufferUpdate();
 		needsUpdate = true;
 		break;
 
 	case LFUN_OUTLINE_OUT:
 		outline(OutlineOut, cur);
-		cur.buffer()->updateBuffer();
+		cur.forceBufferUpdate();
 		needsUpdate = true;
 		break;
 

@@ -574,8 +574,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		cur.niceInsert(topaste, parseflg, false);
 		cur.clearSelection(); // bug 393
-		// FIXME audit setBuffer/updateBuffer calls
-		cur.buffer()->updateBuffer();
+		cur.forceBufferUpdate();
 		cur.finishUndo();
 		break;
 	}
@@ -587,8 +586,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// Prevent stale position >= size crash
 		// Probably not necessary anymore, see eraseSelection (gb 2005-10-09)
 		cur.normalize();
-		// FIXME audit setBuffer/updateBuffer calls
-		cur.buffer()->updateBuffer();
+		cur.forceBufferUpdate();
 		break;
 
 	case LFUN_COPY:
@@ -998,8 +996,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.posBackward();
 		cur.pushBackward(*cur.nextInset());
 		cur.niceInsert(save_selection);
-		// FIXME audit setBuffer/updateBuffer calls
-		cur.buffer()->updateBuffer();
+		cur.forceBufferUpdate();
 #else
 		if (currentMode() == Inset::TEXT_MODE) {
 			cur.recordUndoSelection();
@@ -1229,8 +1226,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (createInsetMath_fromDialogStr(cmd.argument(), ar)) {
 			cur.recordUndoSelection();
 			cur.insert(ar);
-			// FIXME audit setBuffer/updateBuffer calls
-			cur.buffer()->updateBuffer();
+			cur.forceBufferUpdate();			
 		} else
 			cur.undispatched();
 		break;

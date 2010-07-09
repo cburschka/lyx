@@ -274,6 +274,7 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 				}
 			}
 			setParams(p);
+			cur.forceBufferUpdate();
 		} else
 			cur.noScreenUpdate();
 		break;

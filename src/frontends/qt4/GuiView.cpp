@@ -1804,7 +1804,8 @@ void GuiView::openDocument(string const & fname)
 	docstring str2;
 	Buffer * buf = loadDocument(fullname);
 	if (buf) {
-		buf->updateBuffer();
+		// I don't think this is needed, since it will be done in setBuffer().
+		// buf->updateBuffer();
 		setBuffer(buf);
 		buf->errors("Parse");
 		str2 = bformat(_("Document %1$s opened."), disp_fn);
@@ -1853,7 +1854,8 @@ static bool import(GuiView * lv, FileName const & filename,
 		Buffer * buf = lv->loadDocument(lyxfile);
 		if (!buf)
 			return false;
-		buf->updateBuffer();
+		// I don't think this is needed, since it will be done in setBuffer().
+		// buf->updateBuffer();
 		lv->setBuffer(buf);
 		buf->errors("Parse");
 	} else {
@@ -2729,7 +2731,10 @@ void GuiView::openChildDocument(string const & fname)
 	// This makes insertion of citations and references in the child work,
 	// when the target is in the parent or another child document.
 	child->setParent(&buffer);
-	child->masterBuffer()->updateBuffer();
+
+	// I don't think this is needed, since it will be called in 
+	// setBuffer().
+	//	child->masterBuffer()->updateBuffer();
 	setBuffer(child);
 	if (parsed)
 		child->errors("Parse");
@@ -2777,7 +2782,11 @@ bool GuiView::goToFileRow(string const & argument)
 			buf = theBufferList().getBuffer(s);
 		else if (s.exists()) {
 			buf = loadDocument(s);
-			buf->updateBuffer();
+			if (!buf)
+				return false;
+			// I don't think this is needed. loadDocument() calls
+			// setBuffer(), which calls updateBuffer().
+			// buf->updateBuffer();
 			buf->errors("Parse");
 		} else {
 			message(bformat(
@@ -3041,6 +3050,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			if (ret == 0) {
 				doc_buffer->markClean();
 				reloadBuffer();
+				dr.forceBufferUpdate();
 			}
 			break;
 		}
