@@ -13,7 +13,8 @@ if(COMMAND cmake_policy)
 	cmake_policy(SET CMP0005 OLD)
 endif(COMMAND cmake_policy)
 
-project(lyx)
+#needed to distinguish fron trunk, so we can install both simultaneously
+project(lyx16)
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
