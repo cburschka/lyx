@@ -39,7 +39,7 @@ macro(add_gettext_python  _par _dir)
     OUTPUT "${_dst}"
     PRE_BUILD
     COMMAND ${_PYTHON_EXECUTABLE}
-    ARGS "${TOP_SRC_DIR}/po/lyx_pot.py" -b "${TOP_SRC_DIR}" -o "${_dst}" -t ${_par1} "--src_file=${_src_files}"
+    ARGS "${TOP_SRC_DIR}/po/lyx_pot.py" -b "${TOP_SRC_DIR}" -o "${_dst}" -t ${_par1} ${_sources}
     DEPENDS ${_sources} ${_src_files}
     )
   SET_SOURCE_FILES_PROPERTIES("${_dst}" GENERATED)
