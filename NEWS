@@ -1,3 +1,22 @@
+What's new in version 1.6.7?
+-----------------------------
+
+From the list of fixes and improvements, we'd like to highlight
+particularly that this release irons out all known stability problems with
+Qt 4.6. LyX 1.6.7 is our first release that is supposed to run smoothly
+with Qt 4.6, so we urge all distributors who use that version to upgrade
+LyX as well.
+
+
+What's new in version 1.6.6.1?
+------------------------------
+
+The sole purpose of this release is to fix one glitch that was introduced
+by LyX 1.6.6: The spellchecker missed further misspellings after applying
+a correction. This was due to the fix to different bug that had to be
+reverted. In any other respect, this release is identical to Lyx 1.6.6.
+
+
 What's new in version 1.6.6?
 -----------------------------
 
