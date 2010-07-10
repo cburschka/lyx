@@ -15,6 +15,7 @@ macro(add_gettext_python  _par _dir)
   set(_sources)
   foreach(_arg ${ARGN})
     file(GLOB _s1 ${TOP_SRC_DIR}/${_dir}/${_arg})
+    list(SORT _s1)
     list(APPEND _sources ${_s1})
   endforeach(_arg)
   SET(_dst "${CMAKE_CURRENT_BINARY_DIR}/${_par}_l10n.pot")
@@ -37,8 +38,8 @@ macro(add_gettext_python  _par _dir)
   ADD_CUSTOM_COMMAND(
     OUTPUT "${_dst}"
     PRE_BUILD
-    COMMAND python
-    ARGS "${TOP_SRC_DIR}/po/lyx_pot.py" -b "${TOP_SRC_DIR}" -o "${_dst}" -t ${_par1} ${_sources}
+    COMMAND ${_PYTHON_EXECUTABLE}
+    ARGS "${TOP_SRC_DIR}/po/lyx_pot.py" -b "${TOP_SRC_DIR}" -o "${_dst}" -t ${_par1} "--src_file=${_src_files}"
     DEPENDS ${_sources} ${_src_files}
     )
   SET_SOURCE_FILES_PROPERTIES("${_dst}" GENERATED)
@@ -61,16 +62,10 @@ add_gettext_python(formats lib configure.py)
 FIND_PROGRAM(GETTEXT_XGETTEXT_EXECUTABLE xgettext)
 FIND_PROGRAM(GETTEXT_MSGUNIQ_EXECUTABLE msguniq)
 
-# TODO:
-#         We need here perl, because I don't know how
-#	  to write the alternative for "cat" in python
-#	  e.g. perl -e "\"while(<>){print;}\""
-# But maybe Jose knows?
-
 ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
-    COMMAND ${_PERL_EXECUTABLE}
-    ARGS -e "\"while(<>){print;}\"" ${_py_sources} > "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
+    COMMAND ${_PYTHON_EXECUTABLE}
+    ARGS   "${CMAKE_SOURCE_DIR}/po/cat.py" ${_py_sources} > "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     DEPENDS ${_py_sources}
     )
 
@@ -84,13 +79,17 @@ ADD_CUSTOM_COMMAND(
 SET(_potfiles_dep)
 
 file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in "")
-foreach(_dir src/frontends/qt4 src/insets src/mathed src/support src/tex2lyx src)
-    file(GLOB _tmp_potfiles RELATIVE ${TOP_SRC_DIR} ${TOP_SRC_DIR}/${_dir}/*.cpp)
-    foreach(_f ${_tmp_potfiles})
-	LIST(APPEND _potfiles_dep "${TOP_SRC_DIR}/${_f}")
-	file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in "${_f}\n")
-    endforeach(_f)
-endforeach(_dir)
+file(GLOB_RECURSE _tmp_potfiles RELATIVE ${TOP_SRC_DIR}/ ${TOP_SRC_DIR}/src/*.h  ${TOP_SRC_DIR}/src/*.cpp  ${TOP_SRC_DIR}/src/*.cpp.in)
+list(SORT _tmp_potfiles)
+list(REMOVE_ITEM _tmp_potfiles src/support/Package.cpp)
+
+foreach(_f ${_tmp_potfiles})
+  # we don't need to select only relevant files because the outcome of xgettext
+  # will stay the same.
+  # Relevant files are files containing the string '_(".*")'
+  LIST(APPEND _potfiles_dep "${TOP_SRC_DIR}/${_f}")
+  file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in "${_f}\n")
+endforeach(_f)
 
 ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
