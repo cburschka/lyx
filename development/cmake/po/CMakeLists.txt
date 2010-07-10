@@ -62,12 +62,6 @@ add_gettext_python(formats lib configure.py)
 FIND_PROGRAM(GETTEXT_XGETTEXT_EXECUTABLE xgettext)
 FIND_PROGRAM(GETTEXT_MSGUNIQ_EXECUTABLE msguniq)
 
-# TODO:
-#         We need here perl, because I don't know how
-#	  to write the alternative for "cat" in python
-#	  e.g. perl -e "\"while(<>){print;}\""
-# But maybe Jose knows?
-
 ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     COMMAND ${_PYTHON_EXECUTABLE}
