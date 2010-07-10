@@ -10,10 +10,11 @@ cmake_minimum_required(VERSION 2.6.4)
 
 if(COMMAND cmake_policy)
 	cmake_policy(SET CMP0003 OLD)
-	cmake_policy(SET CMP0005 OLD)
-endif(COMMAND cmake_policy)
+        cmake_policy(SET CMP0005 OLD)
+endif()
 
-project(lyx)
+set(LYX_PROJECT lyx)
+project(${LYX_PROJECT})
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
@@ -142,8 +143,11 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
   if (UNIX)
     # don't use the default "/usr/local"
     # but respect the user-choice on the command-line
-    SET(CMAKE_INSTALL_PREFIX
-      "/usr/local/${project}${LYX_INSTALL_SUFFIX}" CACHE PATH "LyX install prefix" FORCE)
+    if(LYX_INSTALL_SUFFIX)
+        SET(CMAKE_INSTALL_PREFIX "/usr/local/lyx${LYX_INSTALL_SUFFIX}" CACHE PATH "LyX install prefix" FORCE)
+    else()
+        SET(CMAKE_INSTALL_PREFIX "/usr/local/${LYX_PROJECT}" CACHE PATH "LyX install prefix" FORCE)
+    endif()
   endif()
   if(WIN32)
     SET(CMAKE_INSTALL_PREFIX
@@ -518,7 +522,7 @@ SET(CPACK_RPM_PACKAGE_VENDOR "The LyX team")
 #
 # the next ones are needed by deb
 SET(CPACK_PACKAGE_CONTACT "${PACKAGE_BUGREPORT}")
-SET(CPACK_SOURCE_PACKAGE_FILE_NAME "${project}-${LYX_INSTALL_SUFFIX}")
+SET(CPACK_SOURCE_PACKAGE_FILE_NAME "${LYX_PROJECT}-${LYX_INSTALL_SUFFIX}")
 
 # This is experimental, valid on _my_ system (Kornel)
 SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libqtgui4 (>= 4.4.3-0)")
