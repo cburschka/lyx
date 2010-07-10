@@ -14,7 +14,8 @@ if(COMMAND cmake_policy)
 endif(COMMAND cmake_policy)
 
 #needed to distinguish fron trunk, so we can install both simultaneously
-project(lyx16)
+set(LYX_PROJECT lyx16)
+project(${LYX_PROJECT})
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
@@ -143,8 +144,11 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
   if (UNIX)
     # don't use the default "/usr/local"
     # but respect the user-choice on the command-line
-    SET(CMAKE_INSTALL_PREFIX
-      "/usr/local/${project}${LYX_INSTALL_SUFFIX}" CACHE PATH "LyX install prefix" FORCE)
+    if(LYX_INSTALL_SUFFIX)
+        SET(CMAKE_INSTALL_PREFIX "/usr/local/lyx${LYX_INSTALL_SUFFIX}" CACHE PATH "LyX install prefix" FORCE)
+    else()
+        SET(CMAKE_INSTALL_PREFIX "/usr/local/${LYX_PROJECT}" CACHE PATH "LyX install prefix" FORCE)
+    endif()
   endif()
   if(WIN32)
     SET(CMAKE_INSTALL_PREFIX
