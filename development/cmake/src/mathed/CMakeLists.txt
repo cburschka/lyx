@@ -17,7 +17,7 @@ lyx_add_msvc_pch(mathed)
 
 include_directories(${TOP_SRC_DIR}/src/mathed)
 
-if(NOT MERGE_FILES)
+if(NOT LYX_MERGE_FILES)
 	add_library(mathed ${library_type} ${mathed_sources} ${mathed_headers})
 else()
 	lyx_const_touched_files(_allinone  mathed_sources)

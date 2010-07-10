@@ -14,7 +14,7 @@ file(GLOB frontends_sources ${TOP_SRC_DIR}/src/frontends/${LYX_CPP_FILES})
 file(GLOB frontends_headers ${TOP_SRC_DIR}/src/frontends/${LYX_HPP_FILES})
 
 
-if(NOT MERGE_FILES)
+if(NOT LYX_MERGE_FILES)
 	add_library(frontends ${library_type} ${frontends_sources} ${frontends_headers})
 else()
 	lyx_const_touched_files(_allinone  frontends_sources)

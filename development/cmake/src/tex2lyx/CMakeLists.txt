@@ -28,7 +28,7 @@ include_directories(BEFORE ${TOP_SRC_DIR}/src/tex2lyx
 
 add_definitions(-DTEX2LYX)
 
-if(NOT MERGE_FILES)
+if(NOT LYX_MERGE_FILES)
 	add_executable(${_tex2lyx} ${tex2lyx_sources} ${LINKED_sources}
 		${tex2lyx_headers} ${LINKED_headers})
 else()

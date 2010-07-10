@@ -50,14 +50,14 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}
 lyx_add_msvc_pch(lyx)
 
 
-if (NOT MERGE_FILES)
+if (NOT LYX_MERGE_FILES)
 	set(lyx_sources ${lyx_sources})
 else()
 	lyx_const_touched_files(_allinone  lyx_sources)
 	set(lyx_sources ${_allinone_files})
 endif()
 
-if (LYX_LEAK_DETECTION)
+if (LYX_VLD)
 	configure_file(${vld_path}/vld.ini ${CMAKE_CURRENT_BINARY_DIR}/vld.ini COPYONLY)
 	configure_file(${vld_path}/vld.ini ${CMAKE_CURRENT_BINARY_DIR}/memory_leak_report.txt COPYONLY)
 	set(vld_files ${CMAKE_CURRENT_BINARY_DIR}/vld.ini ${CMAKE_CURRENT_BINARY_DIR}/memory_leak_report.txt)

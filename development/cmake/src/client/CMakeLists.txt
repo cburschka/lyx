@@ -17,7 +17,6 @@ include_directories(BEFORE "${TOP_SRC_DIR}/src/client"
 
 add_executable(${_lyxclient} ${_lyxclient_sources} ${_lyxclient_headers})
 
-
 target_link_libraries(${_lyxclient}
 	support
 	${Lyx_Boost_Libraries}
