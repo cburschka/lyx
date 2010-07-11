@@ -8,14 +8,16 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#include <Carbon/Carbon.h>
-#include <Cocoa/Cocoa.h>
+#import <Carbon/Carbon.h>
+#import <Cocoa/Cocoa.h>
+
+#import <AvailabilityMacros.h>
 
 #include "support/AppleSpeller.h"
 
 typedef struct AppleSpellerRec {
 	NSSpellChecker * checker;
-#if defined(LYX_PLATFORM_DARWIN10) && (LYX_PLATFORM_DARWIN10 >= 5)
+#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1050)
 	NSInteger doctag;
 #else
 	int doctag;
@@ -72,7 +74,7 @@ int checkAppleSpeller(AppleSpeller speller, const char * word, const char * lang
 		return 0;
 
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-#if defined(LYX_PLATFORM_DARWIN10) && (LYX_PLATFORM_DARWIN10 >= 5)
+#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1050)
 	NSInteger wordcount;
 #else
 	int wordcount;
@@ -117,14 +119,21 @@ size_t makeSuggestionAppleSpeller(AppleSpeller speller, const char * word, const
 	NSString * word_ = toString(speller, word);
 	NSString * lang_ = toString(speller, lang);
 
-#if defined(LYX_PLATFORM_DARWIN10) && (LYX_PLATFORM_DARWIN10 >= 6)
+#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1060)
 	// Mac OS X 10.6 only
 	NSInteger slen = [word_ length];
 	NSRange range = { 0, slen };
-	NSArray * result = [speller->checker guessesForWordRange:range
-	 	inString:word_
-	 	language:lang_
-	 	inSpellDocumentWithTag:speller->doctag];
+	NSArray * result ;
+	
+	if ([NSSpellChecker instancesRespondToSelector:@selector(guessesForWordRange:)]) {
+		result = [speller->checker guessesForWordRange:range
+			inString:word_
+			language:lang_
+			inSpellDocumentWithTag:speller->doctag];
+	} else {
+		[speller->checker setLanguage:lang_];
+		NSArray * result = [speller->checker guessesForWord:word_];
+	}
 #else
 	[speller->checker setLanguage:lang_];
 	NSArray * result = [speller->checker guessesForWord:word_];
@@ -164,11 +173,12 @@ const char * getSuggestionAppleSpeller(AppleSpeller speller, size_t pos)
 
 void learnAppleSpeller(AppleSpeller speller, const char * word, const char * lang)
 {
-#if defined(LYX_PLATFORM_DARWIN10) && (LYX_PLATFORM_DARWIN10 >= 5)
+#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1050)
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 	NSString * word_ = toString(speller, word);
 
-	[speller->checker learnWord:word_];
+	if ([NSSpellChecker instancesRespondToSelector:@selector(learnWord)])
+		[speller->checker learnWord:word_];
 	
 	[word_ release];
 	[pool release];
@@ -179,14 +189,16 @@ void learnAppleSpeller(AppleSpeller speller, const char * word, const char * lan
 int hasLanguageAppleSpeller(AppleSpeller speller, const char * lang)
 {
 	BOOL result = NO;
-#if defined(LYX_PLATFORM_DARWIN10) && (LYX_PLATFORM_DARWIN10 >= 5)
+#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1050)
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 	NSString * lang_ = toString(speller, lang);
-	NSArray * languages = [speller->checker availableLanguages];
+	if ([NSSpellChecker instancesRespondToSelector:@selector(availableLanguages)]) {
+		NSArray * languages = [speller->checker availableLanguages];
 
-	for (NSString *element in languages) {
-	    result = [element isEqualToString:lang_] || [lang_ hasPrefix:element];
-		if (result) break;
+		for (NSString *element in languages) {
+			result = [element isEqualToString:lang_] || [lang_ hasPrefix:element];
+			if (result) break;
+		}
 	}
 
 	[lang_ release];

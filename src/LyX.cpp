@@ -1328,7 +1328,7 @@ SpellChecker * theSpellChecker()
 
 void setSpellChecker()
 {
-#if defined(USE_MACOSX_PACKAGING) || defined(LYX_PLATFORM_DARWIN10)
+#if defined(USE_MACOSX_PACKAGING)
 	if (lyxrc.spellchecker == "native") {
 		if (!singleton_->pimpl_->apple_spell_checker_)
 			singleton_->pimpl_->apple_spell_checker_ = new AppleSpellChecker();

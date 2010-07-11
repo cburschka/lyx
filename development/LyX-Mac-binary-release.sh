@@ -5,7 +5,7 @@
 # This script automates creating universal binaries of LyX on Mac.
 # Author: Bennett Helm (and extended by Konrad Hofbauer)
 # modified by Stephan Witt
-# Last modified: 6 June 2010
+# Last modified: 9 July 2010
 
 #Qt4SourceVersion="qt-everywhere-opensource-src-4.7.0-beta1"
 #Qt4Build="qt4.7-beta"
@@ -18,7 +18,7 @@
 #   the aspell sources placed in a sibling directory (variable ASpellSourceVersion)
 # * for hunspell support:
 #   the hunspell sources placed in a sibling directory (variable HunSpellSourceVersion)
-# * for dictionary deployment:
+# * for dictionary deployment (per default thesauri only):
 #   - aspell:   the dictionary files of macports (in /opt/local/share/aspell and /opt/local/lib/aspell-0.60)
 #   - hunspell: the dictionary files in the sibling directory Dictionaries/dict
 #   - mythes:   the data and idx files in the sibling directory Dictionaries/thes
@@ -30,10 +30,15 @@ Qt4ConfigureOptions="-opensource -silent -shared -release -fast -no-exceptions"
 Qt4ConfigureOptions="${Qt4ConfigureOptions} -no-webkit -no-qt3support -no-javascript-jit -no-dbus"
 Qt4ConfigureOptions="${Qt4ConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
 
+aspell_dictionaries="no"
+hunspell_dictionaries="no"
+
 aspell_deployment="yes"
 hunspell_deployment="yes"
 thesaurus_deployment="yes"
+
 qt4_deployment="yes"
+
 MACOSX_DEPLOYMENT_TARGET="10.4" # Tiger support is default
 
 usage() {
@@ -208,38 +213,21 @@ case "$SDKs" in
 *10.6*)
 	MACOSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET:-"10.5"}; export MACOSX_DEPLOYMENT_TARGET
 	case "${MACOSX_DEPLOYMENT_TARGET}" in
-	10.5)
+	10.5|10.4)
 		SDKROOT="/Developer/SDKs/MacOSX10.5.sdk"; export SDKROOT
-		;;
-	10.4)
-		SDKROOT="/Developer/SDKs/MacOSX10.4u.sdk"; export SDKROOT
-		CC=gcc-4.0 ; export CC
-		CXX=g++-4.0 ; export CXX
-		OBJC=gcc-4.0 ; export OBJC
 		;;
 	esac
 	;;
 *10.5*)
-	MACOSX_DEPLOYMENT_TARGET="10.4"; export MACOSX_DEPLOYMENT_TARGET
-	SDKROOT="/Developer/SDKs/MacOSX10.4u.sdk"; export SDKROOT
+	MACOSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET:-"10.4"}; export MACOSX_DEPLOYMENT_TARGET
+	SDKROOT="/Developer/SDKs/MacOSX10.5.sdk"; export SDKROOT
 	;;
 *)
 	echo Unknown or missing SDK for Mac OS X.
 	exit 1
 	;;
 esac
-case "${MACOSX_DEPLOYMENT_TARGET}" in
-10.4)
-	MYCFLAGS="-DLYX_PLATFORM_DARWIN10=4"
-	;;
-10.5)
-	MYCFLAGS="-DLYX_PLATFORM_DARWIN10=5"
-	;;
-10.6)
-	MYCFLAGS="-DLYX_PLATFORM_DARWIN10=6"
-	;;
-esac
-MYCFLAGS="$MYCFLAGS -mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}"
+MYCFLAGS="-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}"
 
 updateDictionaries() {
 	TMP_DIR="/tmp/lyx-build-$$"
@@ -363,8 +351,8 @@ if [ -d "${HunSpellSourceDir}" -a ! -f "${HunSpellInstallHdr}" ]; then
 
 	for arch in ${ARCH_LIST} ; do
 		make distclean
-		CPPFLAGS=" -arch ${arch} ${MYCFLAGS}"; export CPPFLAGS
-		LDFLAGS=" -arch ${arch}"; export LDFLAGS
+		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export CPPFLAGS
+		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch}"; export LDFLAGS
 		HOSTSYSTEM=`eval "echo \\$HostSystem_$arch"`
 		"${HunSpellSourceDir}/configure"\
 			--prefix="${HunSpellInstallDir}"\
@@ -428,8 +416,8 @@ if [ -d "${ASpellSourceDir}" -a ! -f "${ASpellInstallHdr}" -a "yes" = "${aspell_
 
 	for arch in ${ARCH_LIST} ; do
 		make distclean
-		CPPFLAGS=" -arch ${arch} ${MYCFLAGS}"; export CPPFLAGS
-		LDFLAGS=" -arch ${arch}"; export LDFLAGS
+		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export CPPFLAGS
+		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch}"; export LDFLAGS
 		HOSTSYSTEM=`eval "echo \\$HostSystem_$arch"`
 		CXXFLAGS=-g "${ASpellSourceDir}/configure"\
 			--prefix="${ASpellInstallDir}"\
@@ -651,7 +639,7 @@ convert_universal() {
 }
 
 copy_dictionaries() {
-	if [ -d "${ASpellInstallDir}" -a "yes" = "${aspell_deployment}" ]; then
+	if [ -d "${ASpellInstallDir}" -a "yes" = "${aspell_dictionaries}" ]; then
 		ASpellResources="${LyxAppPrefix}/Contents/Resources"
 		# try to reuse macports dictionaries for now
 		if [ -d /opt/local/lib/aspell-0.60 ]; then ASpellInstallDir=/opt/local ; fi
@@ -661,7 +649,7 @@ copy_dictionaries() {
 		cp -p -r "${ASpellInstallDir}/lib/aspell-0.60"/* "${ASpellResources}"/data
 		cp -p -r "${ASpellInstallDir}/share/aspell"/* "${ASpellResources}"/dict
 	fi
-	if [ -d "${HunSpellInstallDir}" -a "yes" = "${hunspell_deployment}" ]; then
+	if [ -d "${HunSpellInstallDir}" -a "yes" = "${hunspell_dictionaries}" ]; then
 		HunSpellResources="${LyxAppPrefix}/Contents/Resources"
 		if [ -d "${DictionarySourceDir}" ]; then
 			updateDictionaries "${DictionarySourceDir}"

@@ -1336,7 +1336,7 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 	setupUi(this);
 
 // FIXME: this check should test the target platform (darwin)
-#if defined(USE_MACOSX_PACKAGING) || defined(LYX_PLATFORM_DARWIN10)
+#if defined(USE_MACOSX_PACKAGING)
 	spellcheckerCB->addItem(qt_("native"), QString("native"));
 #define CONNECT_APPLESPELL
 #else
