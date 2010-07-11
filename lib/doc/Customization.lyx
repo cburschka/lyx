@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 393
+\lyxformat 394
 \begin_document
 \begin_header
 \textclass scrbook
@@ -13075,6 +13075,25 @@ string
 
 ] The prefix to use when creating labels referring to floats of this type.
  This allows the use of formatted references.
+ Note that you can remove any 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+RefPrefix
+\end_layout
+
+\end_inset
+
+ set by a copied style by using the special value 
+\begin_inset Quotes eld
+\end_inset
+
+OFF
+\begin_inset Quotes erd
+\end_inset
+
+, which must be all caps.
 \end_layout
 
 \begin_layout Description
@@ -17777,6 +17796,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"

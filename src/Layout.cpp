@@ -507,9 +507,15 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		}
 			
-		case LT_REFPREFIX:
-			lex >> refprefix;
+		case LT_REFPREFIX: {
+			docstring arg;
+			lex >> arg;
+			if (arg == "OFF")
+				refprefix.clear();
+			else
+				refprefix = arg;
 			break;
+		}
 
 		case LT_HTMLTAG:
 			lex >> htmltag_;
