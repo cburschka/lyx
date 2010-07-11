@@ -36,6 +36,8 @@
 
 #include <algorithm>
 #include <functional>
+#include <iterator>
+#include <memory>
 
 using boost::bind;
 
