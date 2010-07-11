@@ -390,6 +390,7 @@ Style Enumerate
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Enumerate
+	RefPrefix             enu
 End
 
 
@@ -411,5 +412,6 @@ Style Seriate
 	LabelCounter          enumii
 	LabelString           "(\alph{enumii})"
 	LabelStringAppendix   "(\alph{enumii})"
+	RefPrefix             ser
 End
 

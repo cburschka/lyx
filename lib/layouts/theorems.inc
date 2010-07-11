@@ -302,6 +302,7 @@ Style Case
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\casename}{_(Case)}}
 	EndBabelPreamble
+	RefPrefix OFF
 End
 
 Input theorems-refprefix.inc

@@ -270,8 +270,8 @@ Style Enumerate
   Margin        Static
   LatexType     Item_Environment
   LatexName     enumerate
-  NextNoIndent      1
-  LeftMargin        MMN
+  NextNoIndent  1
+  LeftMargin    MMN
   LabelSep      xx
   ParSkip       0.0
   ItemSep       0.2
@@ -279,8 +279,9 @@ Style Enumerate
   BottomSep     0.7
   ParSep        0.3
   Align         Block
-  AlignPossible     Block, Left
+  AlignPossible Block, Left
   LabelType     Enumerate
+  RefPrefix     enu
 End
 
 Style EnumerateType1

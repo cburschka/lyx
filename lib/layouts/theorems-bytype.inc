@@ -234,6 +234,7 @@ Style Case
 	   \usecounter{casectr}}
 	  {\end{list}}
 	EndPreamble
+	RefPrefix OFF
 End
 
 Input theorems-refprefix.inc

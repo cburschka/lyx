@@ -51,6 +51,7 @@ Style Enumerate
 	HTMLTag               ol
 	HTMLItem              li
 	HTMLLabel             NONE
+	RefPrefix             enu
 End
 
 Style Description
