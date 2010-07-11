@@ -1232,7 +1232,7 @@ End
 # head-/footline, we define our own maketitle command
 TitleLaTeXName makebeamertitle
 
-Preamble
+AddToPreamble
   % this default might be overridden by plain title style
   \newcommand\makebeamertitle{\frame{\maketitle}}%
   \AtBeginDocument{
