@@ -118,12 +118,12 @@ size_t makeSuggestionAppleSpeller(AppleSpeller speller, const char * word, const
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 	NSString * word_ = toString(speller, word);
 	NSString * lang_ = toString(speller, lang);
+	NSArray * result ;
 
 #if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1060)
 	// Mac OS X 10.6 only
 	NSInteger slen = [word_ length];
 	NSRange range = { 0, slen };
-	NSArray * result ;
 	
 	if ([NSSpellChecker instancesRespondToSelector:@selector(guessesForWordRange:)]) {
 		result = [speller->checker guessesForWordRange:range
@@ -132,11 +132,11 @@ size_t makeSuggestionAppleSpeller(AppleSpeller speller, const char * word, const
 			inSpellDocumentWithTag:speller->doctag];
 	} else {
 		[speller->checker setLanguage:lang_];
-		NSArray * result = [speller->checker guessesForWord:word_];
+		result = [speller->checker guessesForWord:word_];
 	}
 #else
 	[speller->checker setLanguage:lang_];
-	NSArray * result = [speller->checker guessesForWord:word_];
+	result = [speller->checker guessesForWord:word_];
 #endif
 
 	[word_ release];
