@@ -2866,6 +2866,7 @@ lib_layouts_inc_files = Split('''
     theorems-order.inc
     theorems-proof.inc
     theorems-proof-std.inc
+    theorems-refprefix.inc
     theorems-starred.inc
     theorems-starred-equivalents.inc
 ''')
