@@ -235,3 +235,5 @@ Style Case
 	  {\end{list}}
 	EndPreamble
 End
+
+Input theorems-refprefix.inc

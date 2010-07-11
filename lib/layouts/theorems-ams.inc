@@ -313,3 +313,5 @@ Style Case
 	  \addto\captions$$lang{\renewcommand{\casename}{_(Case)}}
 	EndBabelPreamble
 End
+
+Input theorems-refprefix.inc

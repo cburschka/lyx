@@ -20,10 +20,4 @@ Style Theorem
 		\theoremstyle{plain}
 		\newtheorem{thm}{\protect\theoremname}[section]
 	EndPreamble
-	LangPreamble
-		\providecommand{\theoremname}{_(Theorem)}
-	EndLangPreamble
-	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
-	EndBabelPreamble
 End

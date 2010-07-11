@@ -25,10 +25,4 @@ Style Theorem
 			\newtheorem{thm}{\protect\theoremname}[chapter]
 		\fi
 	EndPreamble
-	LangPreamble
-		\providecommand{\theoremname}{_(Theorem)}
-	EndLangPreamble
-	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
-	EndBabelPreamble
 End

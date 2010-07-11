@@ -442,3 +442,5 @@ Style Theorem
 	LatexName             theorem
 	LabelString           "Theorem #."
 End
+
+Input theorems-refprefix.inc
