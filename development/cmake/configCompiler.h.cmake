@@ -172,9 +172,6 @@
 #ifdef _MSC_VER
 #ifdef HAVE_CHMOD
 #undef HAVE_CHMOD
-#ifdef _HAS_CPP0X
-#undef _HAS_CPP0X
-#endif
 #endif
 #endif
 
