@@ -63,10 +63,11 @@ set(LIBRARY_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/lib)
 if(UNIX OR MINGW)
     execute_process(COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
     message(STATUS "Using GCC version ${GCC_VERSION}")
-    if(MSVC)
-        # Disable TR1, no TR1 support in branch code
-        add_definitions(-D_HAS_CPP0X=0)
-    endif()
+endif()
+
+if(MSVC)
+    # Disable TR1, no TR1 support in branch code
+    add_definitions(-D_HAS_CPP0X=0)
 endif()
 
 
