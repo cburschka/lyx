@@ -23,6 +23,10 @@ using namespace std;
 
 using lyx::ucs4_codeset;
 
+#if defined(_MSC_VER) && (_MSC_VER >= 1600)
+std::locale::id numpunct<lyx::char_type>::id;
+#endif
+
 namespace {
 
 // We use C IO throughout this file, because the facets might be used with

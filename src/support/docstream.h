@@ -17,6 +17,14 @@
 #include <fstream>
 #include <sstream>
 
+#if defined(_MSC_VER) && (_MSC_VER >= 1600) 
+// Ugly workaround for MSVC10 STL bug
+// http://connect.microsoft.com/VisualStudio/feedback/details/572376/msvc10-c-std-numpunct-has-a-hardcoded-dllimport-in-definition
+// std::numpunct has a hardcoded dllimport in definition, but we wanna it with 32 bit 
+// so we can't import it and must define it but then the compiler complains.
+#include "support/numpunct_lyx_char_type.h"
+#endif
+
 namespace lyx {
 
 class iconv_codecvt_facet_exception : public std::exception {

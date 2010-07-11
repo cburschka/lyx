@@ -17,6 +17,7 @@
 
 #include "support/textutils.h"
 #include "support/docstring.h"
+#include "support/docstream.h"
 
 #include <algorithm>
 #include <cstring>
