@@ -58,8 +58,8 @@ else()
 endif()
 
 if (LYX_VLD)
-	configure_file(${vld_path}/vld.ini ${CMAKE_CURRENT_BINARY_DIR}/vld.ini COPYONLY)
-	configure_file(${vld_path}/vld.ini ${CMAKE_CURRENT_BINARY_DIR}/memory_leak_report.txt COPYONLY)
+	configure_file(${LYX_VLD_PATH}/vld.ini ${CMAKE_CURRENT_BINARY_DIR}/vld.ini COPYONLY)
+	configure_file(${LYX_VLD_PATH}/vld.ini ${CMAKE_CURRENT_BINARY_DIR}/memory_leak_report.txt COPYONLY)
 	set(vld_files ${CMAKE_CURRENT_BINARY_DIR}/vld.ini ${CMAKE_CURRENT_BINARY_DIR}/memory_leak_report.txt)
 endif()
 

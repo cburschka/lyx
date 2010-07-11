@@ -24,14 +24,14 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
 include(LyXMacros)
 
-message(STATUS)
-message(STATUS "Switch LYX_* variables by -DLYX_*=1 or 0:")
-
-# Usage LYX_OPTION
+# Usage of LYX_OPTION
 # 1. parameter: option name without prefix 'LYX_'
 # 2. parameter: description
 # 3. parameter: default value, ON or OFF
 # 4. parameter: system on which option is used: ALL, GCC, MSVC, ...
+message(STATUS)
+message(STATUS "Switch LYX_* variables by -DLYX_*=1 or 0:")
+message(STATUS)
 LYX_OPTION(NLS "Use nls" OFF ALL)
 LYX_OPTION(ASPELL "Require aspell" OFF ALL)
 LYX_OPTION(DEBUG "Build debug version" OFF ALL)
@@ -44,6 +44,7 @@ LYX_OPTION(PACKAGE_SUFFIX "Use version suffix for packaging" OFF ALL)
 LYX_OPTION(PROGRAM_SUFFIX "Append version suffix to binaries" ON GCC)
 LYX_OPTION(NO_CONSOLE "Suppress console on Windows" OFF MSVC)
 LYX_OPTION(VLD "Use VLD with MSVC" OFF MSVC)
+LYX_OPTION(WALL "Enable all warnings" OFF MSVC)
 LYX_OPTION(DISABLE_PCH "Disable precompiled headers" ON ALL)
 LYX_OPTION(MERGE_FILES "Merge source files into one compilation unit" OFF ALL)
 LYX_OPTION(DEBUG_GLIBC "Enable libstdc++ debug mode" OFF GCC)
@@ -151,14 +152,14 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 endif(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 
 if (WIN32)
-  set(DATA_SUBDIR "Resources/" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
+  set(LYX_DATA_SUBDIR "Resources/" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
 else()
-  set(DATA_SUBDIR "" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
+  set(LYX_DATA_SUBDIR "" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
 endif()
 
 set(LYX_ABS_INSTALLED_DATADIR "${CMAKE_INSTALL_PREFIX}")
 set(LYX_LOCALEDIR "locale")
-set(LYX_ABS_INSTALLED_LOCALEDIR "${LYX_ABS_INSTALLED_DATADIR}/${DATA_SUBDIR}${LYX_LOCALEDIR}")
+set(LYX_ABS_INSTALLED_LOCALEDIR "${LYX_ABS_INSTALLED_DATADIR}/${LYX_DATA_SUBDIR}${LYX_LOCALEDIR}")
 set(LYX_ABS_TOP_SRCDIR "${TOP_SRC_DIR}")
 
 
@@ -337,20 +338,16 @@ else()
 endif()
 
 if(MSVC)
-       if(LYX_VLD)
-               set(LYX_LEAK_DETECTION 1 CACHE TYPE STRING FORCE)
-               set(LIBRARY_OUTPUT_PATH  ${EXECUTABLE_OUTPUT_PATH})
-               set(vld_path ${CMAKE_CURRENT_SOURCE_DIR}/../Win32/vld)
-               include(${vld_path}/tools/cmake/vld.cmake)
-       endif()
+	if(LYX_VLD)
+	   set(LYX_LEAK_DETECTION 1 CACHE TYPE STRING FORCE)
+	   set(LIBRARY_OUTPUT_PATH  ${EXECUTABLE_OUTPUT_PATH})
+	   set(LYX_VLD_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../Win32/vld)
+	   include(${LYX_VLD_PATH}/tools/cmake/vld.cmake)
+	endif()
 
-        # TODO options
-	if(WALL)
-		set(WALL 1 CACHE TYPE STRING FORCE)
-
+	if(LYX_WALL)
 		# Use the highest warning level
 		set(CMAKE_CXX_WARNING_LEVEL 4 CACHE TYPE STRING FORCE)
-		set(WARNING_LEVEL_MESSAGE "(switch to warning level 3 with -DWALL=0)")
 
 		if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
 			string(REGEX REPLACE "/W[0-4]" "/W4" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
@@ -375,13 +372,10 @@ if(MSVC)
 			"${CMAKE_CXX_FLAGS_RELEASE} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 		set(CMAKE_CXX_FLAGS_MINSIZEREL
 			"${CMAKE_CXX_FLAGS_MINSIZEREL} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
-
+			
 	else()
-		set(WALL 0 CACHE TYPE STRING FORCE)
-
 		set(CMAKE_CXX_WARNING_LEVEL 3 CACHE TYPE STRING FORCE)
-		set(WARNING_LEVEL_MESSAGE "(switch to warning level 4 with -DWALL=1)")
-
+		
 		# add here warnings which should produce an error /weXXXX
 		set(MSVC_W_ERROR   "/we4101 /we4189")
 		# add here warnings which should be disabled /wdXXXX
@@ -409,9 +403,9 @@ if(MSVC)
 
 endif()
 
-FIND_PROGRAM(_PERL_EXECUTABLE perl)
-FIND_PROGRAM(_PYTHON_EXECUTABLE python)
-if( NOT ${_PYTHON_EXECUTABLE} MATCHES "-NOTFOUND")
+
+FIND_PROGRAM(LYX_PYTHON_EXECUTABLE python)
+if( NOT ${LYX_PYTHON_EXECUTABLE} MATCHES "-NOTFOUND")
     if(LYX_NLS)
       find_package(LyXGettext REQUIRED)
       include_directories(${TOP_SRC_DIR}/po)
@@ -478,7 +472,8 @@ add_subdirectory(src)
 
 if(LYX_INSTALL)
 	add_subdirectory(man)
-	if(NOT ${_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
+	FIND_PROGRAM(LYX_PERL_EXECUTABLE perl)
+	if(NOT ${LYX_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
 		add_subdirectory(doc)
 	endif()
 endif()

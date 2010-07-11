@@ -38,7 +38,7 @@ macro(add_gettext_python  _par _dir)
   ADD_CUSTOM_COMMAND(
     OUTPUT "${_dst}"
     PRE_BUILD
-    COMMAND ${_PYTHON_EXECUTABLE}
+    COMMAND ${LYX_PYTHON_EXECUTABLE}
     ARGS "${TOP_SRC_DIR}/po/lyx_pot.py" -b "${TOP_SRC_DIR}" -o "${_dst}" -t ${_par1} ${_sources}
     DEPENDS ${_sources} ${_src_files}
     )
@@ -64,7 +64,7 @@ FIND_PROGRAM(GETTEXT_MSGUNIQ_EXECUTABLE msguniq)
 
 ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
-    COMMAND ${_PYTHON_EXECUTABLE}
+    COMMAND ${LYX_PYTHON_EXECUTABLE}
     ARGS   "${CMAKE_SOURCE_DIR}/po/cat.py" ${_py_sources} > "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     DEPENDS ${_py_sources}
     )
