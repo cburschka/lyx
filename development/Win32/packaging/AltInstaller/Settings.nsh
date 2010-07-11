@@ -1,11 +1,11 @@
 # installer settings
 # You should need to change only these macros for new releases.
 
-!define INSTALLER_SUBVERSION "23"
+!define INSTALLER_SUBVERSION "25"
 !define PRODUCT_DIR "D:\LyXPackage1.6"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.6.6"
-!define PRODUCT_VERSION_SHORT "166"
+!define PRODUCT_VERSION "1.6.7"
+!define PRODUCT_VERSION_SHORT "167"
 !define PRODUCT_SUBFOLDER "lyx16"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
 !define PRODUCT_SOURCEDIR "${PRODUCT_DIR}\LyX"
@@ -40,12 +40,12 @@ BrandingText "LyXWinInstaller v4.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
 
 # definitions for the Update installer
 !if ${INSTALLER_VERSION} == "Update"
- !define PRODUCT_VERSION_SHORT_OLD "165"
+ !define PRODUCT_VERSION_SHORT_OLD "1661"
  !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX${PRODUCT_VERSION_SHORT_OLD}"
- !define PRODUCT_VERSION_OLD "LyX 1.6.5"
- !define JabRefVersion "2.5" # could be an older version
- !define ImageMagickVersion_Old "6.5.8" # could be an older version
- !define GhostscriptVersion_Old "8.64" # could be an older version
+ !define PRODUCT_VERSION_OLD "LyX 1.6.6.1"
+ !define JabRefVersion "2.6" # could be an older version
+ !define ImageMagickVersion_Old "6.6.1" # could be an older version
+ !define GhostscriptVersion_Old "8.71" # could be an older version
  !define MiKTeXDeliveredVersion "2.8" # could be an older version
 !endif
 
@@ -66,7 +66,7 @@ BrandingText "LyXWinInstaller v4.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
 
 !define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
 
-!define ImageMagickVersion "6.6.1"
+!define ImageMagickVersion "6.6.3"
 # for some odd reason the ImageMagick folder may not be a subfolder of $INSTDIR\bin!
 !define ImageMagickDir "$INSTDIR\etc\ImageMagick"
 !define GhostscriptDir "$INSTDIR\etc\Ghostscript"

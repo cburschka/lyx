@@ -6,38 +6,24 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\elyxer.py" # always here
  File "${PRODUCT_SOURCEDIR}\bin\lyx.css" # always here
+ File "${PRODUCT_SOURCEDIR}\bin\QtCore4.dll"
+ File "${PRODUCT_SOURCEDIR}\bin\QtGui4.dll"
  File "${PRODUCT_SOURCEDIR}\bin\setup.py" # always here
- #File "${PRODUCT_SOURCEDIR}\bin\toc.css"
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
- #File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
- #File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\chkconfig.ltx"
  File "${PRODUCT_SOURCEDIR}\Resources\languages"
  File "${PRODUCT_SOURCEDIR}\Resources\symbols"
- #SetOutPath "$INSTDIR\Resources\bind"
- #File "${PRODUCT_SOURCEDIR}\Resources\bind\aqua.bind"
  SetOutPath "$INSTDIR\Resources\doc"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\Customization.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\Intro.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Extended.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\Math.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\Tutorial.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\UserGuide.lyx"
- #SetOutPath "$INSTDIR\Resources\doc\clipart"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\clipart\Abstract.pdf"
- #SetOutPath "$INSTDIR\Resources\doc\de"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\de\EmbeddedObjects.lyx"
  SetOutPath "$INSTDIR\Resources\doc\el"
- File "${PRODUCT_SOURCEDIR}\Resources\el\Intro.lyx"
- #SetOutPath "$INSTDIR\Resources\doc\es"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\es\Customization.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\el\Intro.lyx"
  SetOutPath "$INSTDIR\Resources\doc\eu"
- File "${PRODUCT_SOURCEDIR}\Resources\eu\Intro.lyx"
- File "${PRODUCT_SOURCEDIR}\Resources\eu\Tutorial.lyx"
- File "${PRODUCT_SOURCEDIR}\Resources\eu\UserGuide.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\eu\Intro.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\eu\Tutorial.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\eu\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\fr"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Customization.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\EmbeddedObjects.lyx"
@@ -64,9 +50,6 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\man\man1\lyx.1"
  SetOutPath "$INSTDIR\Resources\templates"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\IEEEtran.lyx"
- #SetOutPath "$INSTDIR\Resources\ui"
- #File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
- #File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
 
 FunctionEnd
 
