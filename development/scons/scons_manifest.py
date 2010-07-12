@@ -302,6 +302,7 @@ src_support_header_files = Split('''
     lyxalgo.h
     lyxlib.h
     lyxtime.h
+    numpunct_lyx_char_type.h
     Messages.h
     os.h
     os_win32.h
