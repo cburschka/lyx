@@ -1827,13 +1827,13 @@ namespace {
 		for (; it != end; ++it) {
 			LyXModule const * const mod = theModuleList[*it];
 			if (!mod)
-				retval.push_back(*it + " (Unavailable)");
+				retval.push_back(to_utf8(bformat(_("%1$s (unavailable)"), from_utf8(*it))));
 			else
 				retval.push_back(mod->getName());
 		}
 		return retval;
 	}
-}
+} // end anonymous namespace
 
 
 void GuiDocument::modulesToParams(BufferParams & bp)
