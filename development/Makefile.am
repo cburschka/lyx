@@ -187,7 +187,6 @@ cmake/modules/MacroBoolTo01.cmake \
 cmake/modules/PCHSupport_26.cmake \
 cmake/modules/ProjectSourceGroup.cmake \
 cmake/po/CMakeLists.txt \
-cmake/po/CMakeLists.txt.rej \
 cmake/po/cat.py \
 cmake/scripts/CMakeLists.txt \
 cmake/src/CMakeLists.txt \
