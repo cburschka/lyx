@@ -12,12 +12,13 @@
 #ifndef GUIBRANCHES_H
 #define GUIBRANCHES_H
 
-#include "Buffer.h"
-#include "GuiDocument.h"
+#include "BranchList.h"
+#include "ButtonController.h"
+
 #include "ui_BranchesUnknownUi.h"
 #include "ui_BranchesUi.h"
-#include "BranchList.h"
 
+#include <QDialog>
 #include <QWidget>
 
 class QTreeWidgetItem;

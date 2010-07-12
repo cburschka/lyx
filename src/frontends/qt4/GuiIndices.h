@@ -13,9 +13,9 @@
 #ifndef GUIINDICES_H
 #define GUIINDICES_H
 
-#include "GuiDocument.h"
-#include "ui_IndicesUi.h"
 #include "IndicesList.h"
+
+#include "ui_IndicesUi.h"
 
 #include <QWidget>
 
