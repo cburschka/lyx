@@ -550,7 +550,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 			docstring desc = 
 				translateIfPossible(from_utf8(baseClass()->description()));
 			docstring const msg =
-				bformat(_("The used document class\n"
+				bformat(_("The selected document class\n"
 						 "\t%1$s\n"
 						 "requires external files that are not available.\n"
 						 "The document class can still be used, but LyX\n"
