@@ -6,17 +6,19 @@
 
 project(frontend_qt4)
 
-file(GLOB frontends_qt4_sources
-	${TOP_SRC_DIR}/src/frontends/qt4/${LYX_CPP_FILES})
+file(GLOB frontends_qt4_sources ${TOP_SRC_DIR}/src/frontends/qt4/${LYX_CPP_FILES})
 file(GLOB moc_files ${TOP_SRC_DIR}/src/frontends/qt4/${LYX_MOC_FILES})
+
 list(REMOVE_ITEM frontends_qt4_sources ${moc_files} .)
 list(REMOVE_ITEM frontends_qt4_sources ${TOP_SRC_DIR}/src/frontends/qt4/liblyxqt4.cpp)
+list(REMOVE_ITEM frontends_qt4_sources ${TOP_SRC_DIR}/src//src/frontends/qt4/Resources.cpp)
 
+	
 file(GLOB frontends_qt4_headers
 	${TOP_SRC_DIR}/src/frontends/qt4/${LYX_HPP_FILES})
 file(GLOB frontend_qt4_UI
 	${TOP_SRC_DIR}/src/frontends/qt4/ui/*.ui)
-
+	
 lyx_add_msvc_pch(frontends_qt4)
 
 lyx_automoc(${frontends_qt4_sources})

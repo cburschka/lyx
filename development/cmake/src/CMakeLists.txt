@@ -26,7 +26,10 @@ list(REMOVE_ITEM lyx_sources
 	${TOP_SRC_DIR}/src/PSpell.cpp
 	${TOP_SRC_DIR}/src/ISpell.cpp
 	${TOP_SRC_DIR}/src/Variables.cpp
-	${TOP_SRC_DIR}/src/Section.cpp)
+	${TOP_SRC_DIR}/src/Section.cpp
+	${TOP_SRC_DIR}/src/lyxcore.cpp
+	${TOP_SRC_DIR}/src/lyxinsets.cpp
+	${TOP_SRC_DIR}/src/lyxmathed.cpp)
 
 if (ASPELL_FOUND)
   include_directories(${ASPELL_INCLUDE_DIR})
