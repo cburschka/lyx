@@ -1670,6 +1670,18 @@ def revert_pagesizes(document):
       del document.header[i]
 
 
+def revert_DIN_C_pagesizes(document):
+  i = 0
+  " Revert DIN C page sizes to default "
+  i = find_token(document.header, '\\papersize', 0)
+  if i != -1:
+    size = document.header[i][11:]
+    if size == "c0paper" or size == "c1paper" or size == "c2paper" \
+    or size == "c3paper" or size == "c4paper" or size == "c5paper" \
+    or size == "c6paper":
+      del document.header[i]
+
+
 def convert_html_quotes(document):
   " Remove quotes around html_latex_start and html_latex_end "
 
@@ -1984,10 +1996,12 @@ convert = [[346, []],
            [391, []],
            [392, [convert_beamer_args]],
            [393, [convert_optarg]],
-           [394, []]
+           [394, []],
+           [395, []]
           ]
 
-revert =  [[393, [revert_makebox]],
+revert =  [[394, [revert_DIN_C_pagesizes]],
+           [393, [revert_makebox]],
            [392, [revert_argument]],
            [391, [revert_beamer_args]],
            [390, [revert_align_decimal, revert_IEEEtran]],

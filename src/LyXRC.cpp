@@ -1437,6 +1437,13 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			case PAPER_B3:
 			case PAPER_B4:
 			case PAPER_B6:
+			case PAPER_C0:
+			case PAPER_C1:
+			case PAPER_C2:
+			case PAPER_C3:
+			case PAPER_C4:
+			case PAPER_C5:
+			case PAPER_C6:
 			case PAPER_JISB0:
 			case PAPER_JISB1:
 			case PAPER_JISB2:

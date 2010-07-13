@@ -779,6 +779,13 @@ GuiDocument::GuiDocument(GuiView & lv)
 	cb->addItem(qt_("B4"));
 	cb->addItem(qt_("B5"));
 	cb->addItem(qt_("B6"));
+	cb->addItem(qt_("C0"));
+	cb->addItem(qt_("C1"));
+	cb->addItem(qt_("C2"));
+	cb->addItem(qt_("C3"));
+	cb->addItem(qt_("C4"));
+	cb->addItem(qt_("C5"));
+	cb->addItem(qt_("C6"));
 	cb->addItem(qt_("JIS B0"));
 	cb->addItem(qt_("JIS B1"));
 	cb->addItem(qt_("JIS B2"));

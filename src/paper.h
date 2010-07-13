@@ -62,6 +62,20 @@ enum PAPER_SIZE {
 	///
 	PAPER_B6,
 	///
+	PAPER_C0,
+	///
+	PAPER_C1,
+	///
+	PAPER_C2,
+	///
+	PAPER_C3,
+	///
+	PAPER_C4,
+	///
+	PAPER_C5,
+	///
+	PAPER_C6,
+	///
 	PAPER_JISB0,
 	///
 	PAPER_JISB1,

@@ -74,7 +74,8 @@ static char const * const string_papersize[] = {
 	"default", "custom", "letterpaper", "legalpaper", "executivepaper",
 	"a0paper", "a1paper", "a2paper", "a3paper",	"a4paper", "a5paper",
 	"a6paper", "b0paper", "b1paper", "b2paper","b3paper", "b4paper",
-	"b5paper", "b6paper", "b0j", "b1j", "b2j", "b3j", "b4j", "b5j",
+	"b5paper", "b6paper", "c0paper", "c1paper", "c2paper", "c3paper",
+	"c4paper", "c5paper", "c6paper", "b0j", "b1j", "b2j", "b3j", "b4j", "b5j",
 	"b6j", ""
 };
 
@@ -173,13 +174,20 @@ static PaperSizeTranslator initPaperSizeTranslator()
 	translator.addPair(string_papersize[16], PAPER_B4);
 	translator.addPair(string_papersize[17], PAPER_B5);
 	translator.addPair(string_papersize[18], PAPER_B6);
-	translator.addPair(string_papersize[19], PAPER_JISB0);
-	translator.addPair(string_papersize[20], PAPER_JISB1);
-	translator.addPair(string_papersize[21], PAPER_JISB2);
-	translator.addPair(string_papersize[22], PAPER_JISB3);
-	translator.addPair(string_papersize[23], PAPER_JISB4);
-	translator.addPair(string_papersize[24], PAPER_JISB5);
-	translator.addPair(string_papersize[25], PAPER_JISB6);
+	translator.addPair(string_papersize[19], PAPER_C0);
+	translator.addPair(string_papersize[20], PAPER_C1);
+	translator.addPair(string_papersize[21], PAPER_C2);
+	translator.addPair(string_papersize[22], PAPER_C3);
+	translator.addPair(string_papersize[23], PAPER_C4);
+	translator.addPair(string_papersize[24], PAPER_C5);
+	translator.addPair(string_papersize[25], PAPER_C6);
+	translator.addPair(string_papersize[26], PAPER_JISB0);
+	translator.addPair(string_papersize[27], PAPER_JISB1);
+	translator.addPair(string_papersize[28], PAPER_JISB2);
+	translator.addPair(string_papersize[29], PAPER_JISB3);
+	translator.addPair(string_papersize[30], PAPER_JISB4);
+	translator.addPair(string_papersize[31], PAPER_JISB5);
+	translator.addPair(string_papersize[32], PAPER_JISB6);
 	return translator;
 }
 
@@ -1230,6 +1238,13 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		case PAPER_B3:
 		case PAPER_B4:
 		case PAPER_B6:
+		case PAPER_C0:
+		case PAPER_C1:
+		case PAPER_C2:
+		case PAPER_C3:
+		case PAPER_C4:
+		case PAPER_C5:
+		case PAPER_C6:
 		case PAPER_JISB0:
 		case PAPER_JISB1:
 		case PAPER_JISB2:
@@ -1480,6 +1495,27 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		case PAPER_B6:
 			ods << ",b6paper";
 			break;
+		case PAPER_C0:
+			ods << ",c0paper";
+			break;
+		case PAPER_C1:
+			ods << ",c1paper";
+			break;
+		case PAPER_C2:
+			ods << ",c2paper";
+			break;
+		case PAPER_C3:
+			ods << ",c3paper";
+			break;
+		case PAPER_C4:
+			ods << ",c4paper";
+			break;
+		case PAPER_C5:
+			ods << ",c5paper";
+			break;
+		case PAPER_C6:
+			ods << ",c6paper";
+			break;
 		case PAPER_JISB0:
 			ods << ",b0j";
 			break;
@@ -1536,6 +1572,13 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			case PAPER_B3:
 			case PAPER_B4:
 			case PAPER_B6:
+			case PAPER_C0:
+			case PAPER_C1:
+			case PAPER_C2:
+			case PAPER_C3:
+			case PAPER_C4:
+			case PAPER_C5:
+			case PAPER_C6:
 			case PAPER_JISB0:
 			case PAPER_JISB1:
 			case PAPER_JISB2:
@@ -2235,6 +2278,34 @@ string BufferParams::paperSizeName(PapersizePurpose purpose) const
 		if (purpose == DVIPS || purpose == DVIPDFM)
 			return string();
 		return "b6";
+	case PAPER_C0:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "c0";
+	case PAPER_C1:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "c1";
+	case PAPER_C2:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "c2";
+	case PAPER_C3:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "c3";
+	case PAPER_C4:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "c4";
+	case PAPER_C5:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "c5";
+	case PAPER_C6:
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "c6";
 	case PAPER_JISB0:
 		if (purpose == DVIPS || purpose == DVIPDFM)
 			return string();
