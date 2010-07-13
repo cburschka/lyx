@@ -44,6 +44,9 @@ def add_to_preamble(document, text):
     """ Add text to the preamble if it is not already there.
     Only the first line is checked!"""
 
+    if not type(text) is list:
+      text = [text]
+
     if find_token(document.preamble, text[0], 0) != -1:
         return
 
@@ -1945,38 +1948,55 @@ def revert_IEEEtran(document):
 
 def revert_nameref(document):
   " Convert namerefs to regular references "
-  # We cannot really revert these properly, so we will
-  # revert them to commands we understand.
-  cmds = [["Nameref", "vref"], ["nameref", "ref"]]
+  cmds = ["Nameref", "nameref"]
+  foundone = False
+  rx = re.compile(r'reference "(.*)"')
   for cmd in cmds:
     i = 0
-    oldcmd = "LatexCommand " + cmd[0]
-    newcmd = "LatexCommand " + cmd[1]
+    oldcmd = "LatexCommand " + cmd
     while 1:
+      # It seems better to look for this, as most of the reference
+      # insets won't be ones we care about.
       i = find_token(document.body, oldcmd, i)
       if i == -1:
         break
+      cmdloc = i
+      i += 1
+      
       # Make sure it is actually in an inset!
       # We could just check document.lines[i-1], but that relies
       # upon something that might easily change.
       # We'll look back a few lines.
-      j = i - 10
-      if j < 0:
-        j = 0
-      j = find_token(document.body, "\\begin_inset CommandInset ref", j)
-      if j == -1 or j > i:
-        i += 1
+      stins = cmdloc - 10
+      if stins < 0:
+        stins = 0
+      stins = find_token(document.body, "\\begin_inset CommandInset ref", stins)
+      if stins == -1 or stins > cmdloc:
         continue
-      k = find_end_of_inset(document.body, i)
-      if k == -1:
-        document.warning("Can't find end of inset at line " + j + "!!")
-        i += 1
+      endins = find_end_of_inset(document.body, stins)
+      if endins == -1:
+        document.warning("Can't find end of inset at line " + stins + "!!")
         continue
-      if k < i:
-        i += 1
+      if endins < cmdloc:
         continue
-      document.body[i] = newcmd
-      i += 1
+      refline = find_token(document.body, "reference", stins)
+      if refline == -1 or refline > endins:
+        document.warning("Can't find reference for inset at line " + stinst + "!!")
+        continue
+      m = rx.match(document.body[refline])
+      if not m:
+        document.warning("Can't match reference line: " + document.body[ref])
+        continue
+      foundone = True
+      ref = m.group(1)
+      newcontent = ['\\begin_inset ERT', 'status collapsed', '', \
+        '\\begin_layout Plain Layout', '', '\\backslash', \
+        cmd + '{' + ref + '}', '\\end_layout', '', '\\end_inset']
+      document.body[stins:endins + 1] = newcontent
+  if foundone:
+    add_to_preamble(document, "\usepackage{nameref}")
+
+
 
 
 ##
@@ -2033,7 +2053,7 @@ convert = [[346, []],
            [392, [convert_beamer_args]],
            [393, [convert_optarg]],
            [394, []],
-           [395, []]
+           [395, []],
            [396, []]
           ]
 
