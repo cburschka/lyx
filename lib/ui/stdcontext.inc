@@ -91,6 +91,8 @@ Menuset
 		Item "On Page <Page>|O" "inset-modify changetype vpageref"
 		Item "<Reference> on Page <Page>|f" "inset-modify changetype vref"
 		Item "Formatted Reference|t" "inset-modify changetype prettyref"
+		Item "Textual Reference|x" "inset-modify changetype nameref"
+		Item "Textual Reference plus <page>|l" "inset-modify changetype Nameref"
 		Separator
 		Item "Settings...|S" "inset-settings"
 	End

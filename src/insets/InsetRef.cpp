@@ -52,7 +52,9 @@ bool InsetRef::isCompatibleCommand(string const & s) {
 		|| s == "vref" 
 		|| s == "vpageref"
 		|| s == "prettyref"
-		|| s == "eqref";
+		|| s == "eqref"
+		|| s == "nameref"
+		|| s == "Nameref";
 }
 
 
@@ -132,9 +134,11 @@ docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const &) const
 			display_string = _("elsewhere");
 		else if (cmd == "eqref")
 			display_string = bformat(from_ascii("equation (%1$s)"), value);
-		else { // "prettyref"
+		else if (cmd == "prettyref" 
+		         // we don't really have the ability to handle these 
+		         // properly in XHTML output
+		         || cmd == "nameref" || cmd == "Nameref")
 			display_string = il->prettyCounter();
-		}
 	} else 
 			display_string = ref;
 
@@ -206,12 +210,15 @@ void InsetRef::addToToc(DocIterator const & cpit)
 
 void InsetRef::validate(LaTeXFeatures & features) const
 {
-	if (getCmdName() == "vref" || getCmdName() == "vpageref")
+	string const cmd = getCmdName();
+	if (cmd == "vref" || cmd == "vpageref")
 		features.require("varioref");
-	else if (getCmdName() == "prettyref")
+	else if (cmd == "prettyref")
 		features.require("prettyref");
-	else if (getCmdName() == "eqref")
+	else if (cmd == "eqref")
 		features.require("amsmath");
+	else if (cmd == "nameref" || cmd == "Nameref")
+		features.require("nameref");
 }
 
 
@@ -222,6 +229,8 @@ InsetRef::type_info InsetRef::types[] = {
 	{ "vpageref",  N_("Textual Page Number"),   N_("TextPage: ")},
 	{ "vref",      N_("Standard+Textual Page"), N_("Ref+Text: ")},
 	{ "prettyref", N_("PrettyRef"),             N_("FrmtRef: ")},
+	{ "nameref",   N_("Reference to Name"),     N_("NameRef:")},
+	{ "Nameref",   N_("Name+Textual Page"),     N_("NamePgRef:")},
 	{ "", "", "" }
 };
 

@@ -1775,7 +1775,9 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		texrow.newlines(lines);
 		// set back for the rest
 		lyxpreamble.clear();
-	}
+	} else if (features.isRequired("nameref"))
+		// hyperref loads this automatically
+		lyxpreamble += "\\usepackage{nameref}\n";
 
 	// Will be surrounded by \makeatletter and \makeatother when not empty
 	docstring atlyxpreamble;
