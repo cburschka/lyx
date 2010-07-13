@@ -40,12 +40,16 @@ def find_end_of_inset(lines, i):
     return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
 
 
+# Note that text can be either a list of lines or a single line.
 def add_to_preamble(document, text):
     """ Add text to the preamble if it is not already there.
     Only the first line is checked!"""
 
     if not type(text) is list:
-      text = [text]
+      # split on \n just in case
+      # it'll give us the one element list we want
+      # if there's no \n, too
+      text = text.split('\n')
 
     if find_token(document.preamble, text[0], 0) != -1:
         return
