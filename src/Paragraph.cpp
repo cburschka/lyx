@@ -3126,13 +3126,16 @@ void Paragraph::locateWord(pos_type & from, pos_type & to,
 
 void Paragraph::collectWords()
 {
+	// This is the value that needs to be exposed in the preferences
+	// to resolve bug #6760.
+	static int minlength = 6;
 	pos_type n = size();
 	for (pos_type pos = 0; pos < n; ++pos) {
 		if (isWordSeparator(pos))
 			continue;
 		pos_type from = pos;
 		locateWord(from, pos, WHOLE_WORD);
-		if (pos - from >= lyxrc.spellcheck_minlength) {
+		if (pos - from >= minlength) {
 			docstring word = asString(from, pos, AS_STR_NONE);
 			FontList::const_iterator cit = d->fontlist_.fontIterator(pos);
 			if (cit == d->fontlist_.end())

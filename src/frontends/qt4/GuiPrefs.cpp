@@ -1365,7 +1365,6 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 			this, SIGNAL(changed()));
 		connect(spellcheckNotesCB, SIGNAL(clicked()),
 			this, SIGNAL(changed()));
-		connect(minlengthSB, SIGNAL(changed()), this, SIGNAL(changed()));
 	#else
 		spellcheckerCB->setEnabled(false);
 		altLanguageED->setEnabled(false);
@@ -1373,7 +1372,6 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 		compoundWordCB->setEnabled(false);
 		spellcheckContinuouslyCB->setEnabled(false);
 		spellcheckNotesCB->setEnabled(false);
-		minlengthSB->setEnabled(false);
 	#endif
 }
 
@@ -1386,7 +1384,6 @@ void PrefSpellchecker::apply(LyXRC & rc) const
 	rc.spellchecker_esc_chars = fromqstr(escapeCharactersED->text());
 	rc.spellchecker_accept_compound = compoundWordCB->isChecked();
 	rc.spellcheck_continuously = spellcheckContinuouslyCB->isChecked();
-	rc.spellcheck_minlength = minlengthSB->value();
 	rc.spellcheck_notes = spellcheckNotesCB->isChecked();
 }
 
@@ -1398,10 +1395,7 @@ void PrefSpellchecker::update(LyXRC const & rc)
 	altLanguageED->setText(toqstr(rc.spellchecker_alt_lang));
 	escapeCharactersED->setText(toqstr(rc.spellchecker_esc_chars));
 	compoundWordCB->setChecked(rc.spellchecker_accept_compound);
-	bool const continuous = rc.spellcheck_continuously;
-	spellcheckContinuouslyCB->setChecked(continuous);
-	minlengthSB->setValue(rc.spellcheck_minlength);
-	minlengthSB->setEnabled(continuous);
+	spellcheckContinuouslyCB->setChecked(rc.spellcheck_continuously);
 	spellcheckNotesCB->setChecked(rc.spellcheck_notes);
 }
 
