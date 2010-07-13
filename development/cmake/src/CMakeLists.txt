@@ -30,7 +30,9 @@ list(REMOVE_ITEM lyx_sources
 	${TOP_SRC_DIR}/src/HunspellChecker.cpp
 	${TOP_SRC_DIR}/src/Variables.cpp
 	${TOP_SRC_DIR}/src/Section.cpp
-	${TOP_SRC_DIR}/src/lyxcore.cpp)
+	${TOP_SRC_DIR}/src/lyxcore.cpp
+	${TOP_SRC_DIR}/src/lyxinsets.cpp
+	${TOP_SRC_DIR}/src/lyxmathed.cpp)
 
 if(NOT APPLE)
   list(REMOVE_ITEM lyx_sources
