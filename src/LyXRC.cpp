@@ -180,6 +180,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\sort_layouts", LyXRC::RC_SORT_LAYOUTS },
 	{ "\\spell_command", LyXRC::RC_SPELL_COMMAND },
 	{ "\\spellcheck_continuously", LyXRC::RC_SPELLCHECK_CONTINUOUSLY },
+	{ "\\spellcheck_minlength", LyXRC::RC_SPELL_MINLENGTH },
 	{ "\\spellcheck_notes", LyXRC::RC_SPELLCHECK_NOTES },
 	{ "\\spellchecker", LyXRC::RC_SPELLCHECKER },
 	{ "\\splitindex_command", LyXRC::RC_SPLITINDEX_COMMAND },
@@ -297,6 +298,7 @@ void LyXRC::setDefaults()
 #endif
 	spellchecker_accept_compound = false;
 	spellcheck_continuously = false;
+	spellcheck_minlength = 6;
 	spellcheck_notes = true;
 	use_kbmap = false;
 	rtl_support = true;
@@ -921,6 +923,19 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_SPELLCHECKER:
 			lexrc >> spellchecker;
 			break;
+		case RC_SPELL_MINLENGTH: {
+			int len;
+			lexrc >> len;
+			// make sure we have a sensible value
+			// these should be kept in sync with the min and max 
+			// values for the spinbox in PrefSpellcheckerUi.ui
+			if (len < 5)
+				len = 5;
+			else if (len > 15)
+				len = 15;
+			spellcheck_minlength = len;
+			break;
+		}
 		case RC_ALT_LANG:
 			lexrc >> spellchecker_alt_lang;
 			break;
@@ -2421,6 +2436,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 
+	case RC_SPELL_MINLENGTH:
+		if (ignore_system_lyxrc ||
+		    spellcheck_minlength != system_lyxrc.spellcheck_minlength) {
+			os << "\\spellcheck_minlength " << convert<string>(spellcheck_minlength)
+			   << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+
 	case RC_SPELLCHECK_NOTES:
 		if (ignore_system_lyxrc ||
 		    spellcheck_notes != system_lyxrc.spellcheck_notes) {
@@ -2872,6 +2896,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_SPELLCHECKER:
 	case LyXRC::RC_SPELLCHECK_CONTINUOUSLY:
 	case LyXRC::RC_SPELLCHECK_NOTES:
+	case LyXRC::RC_SPELL_MINLENGTH:
 	case LyXRC::RC_SPLITINDEX_COMMAND:
 	case LyXRC::RC_TEMPDIRPATH:
 	case LyXRC::RC_TEMPLATEPATH:

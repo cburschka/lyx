@@ -165,6 +165,7 @@ public:
 		RC_SPELLCHECK_CONTINUOUSLY,
 		RC_SPELLCHECK_NOTES,
 		RC_SPELLCHECKER,
+		RC_SPELL_MINLENGTH,
 		RC_SPLITINDEX_COMMAND,
 		RC_TEMPDIRPATH,
 		RC_TEMPLATEPATH,
@@ -362,6 +363,8 @@ public:
 	bool spellcheck_continuously;
 	/// spellcheck notes and comments?
 	bool spellcheck_notes;
+	/// minimum length of words to complete
+	unsigned int spellcheck_minlength;
 	///
 	bool use_kbmap;
 	///
