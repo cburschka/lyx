@@ -1943,6 +1943,42 @@ def revert_IEEEtran(document):
           del document.body[i:j + 1]
 
 
+def revert_nameref(document):
+  " Convert namerefs to regular references "
+  # We cannot really revert these properly, so we will
+  # revert them to commands we understand.
+  cmds = [["Nameref", "vref"], ["nameref", "ref"]]
+  for cmd in cmds:
+    i = 0
+    oldcmd = "LatexCommand " + cmd[0]
+    newcmd = "LatexCommand " + cmd[1]
+    while 1:
+      i = find_token(document.body, oldcmd, i)
+      if i == -1:
+        break
+      # Make sure it is actually in an inset!
+      # We could just check document.lines[i-1], but that relies
+      # upon something that might easily change.
+      # We'll look back a few lines.
+      j = i - 10
+      if j < 0:
+        j = 0
+      j = find_token(document.body, "\\begin_inset CommandInset ref", j)
+      if j == -1 or j > i:
+        i += 1
+        continue
+      k = find_end_of_inset(document.body, i)
+      if k == -1:
+        document.warning("Can't find end of inset at line " + j + "!!")
+        i += 1
+        continue
+      if k < i:
+        i += 1
+        continue
+      document.body[i] = newcmd
+      i += 1
+
+
 ##
 # Conversion hub
 #
@@ -1998,9 +2034,11 @@ convert = [[346, []],
            [393, [convert_optarg]],
            [394, []],
            [395, []]
+           [396, []]
           ]
 
-revert =  [[394, [revert_DIN_C_pagesizes]],
+revert =  [[395, [revert_nameref]],
+           [394, [revert_DIN_C_pagesizes]],
            [393, [revert_makebox]],
            [392, [revert_argument]],
            [391, [revert_beamer_args]],
