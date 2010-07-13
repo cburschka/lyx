@@ -256,7 +256,10 @@ What's new in version 1.6.7?
 
 - CMake: Install all but the binaries into the 'Resource' folder.
 
+- Several fixes to the cmake build procedure.
+
 - When compiling using automake >= 1.11, use the nicer `silent rules'
   output format.
 
 - Check whether the wasysym package is installed (bug 6752).
+
