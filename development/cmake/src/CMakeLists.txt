@@ -56,8 +56,11 @@ lyx_add_msvc_pch(lyx)
 if (NOT LYX_MERGE_FILES)
 	set(lyx_sources ${lyx_sources})
 else()
+	# somewhere PACKAGE is undefined
+	set(dont_merge ${TOP_SRC_DIR}/src/version.cpp)
+	list(REMOVE_ITEM lyx_sources ${dont_merge})
 	lyx_const_touched_files(_allinone  lyx_sources)
-	set(lyx_sources ${_allinone_files})
+	set(lyx_sources ${_allinone_files} ${dont_merge})
 endif()
 
 if (LYX_VLD)
