@@ -38,8 +38,8 @@ LYX_OPTION(RELEASE "Build release version" ON ALL)
 LYX_OPTION(PROFILE "Build profile version" OFF GCC)
 LYX_OPTION(USE_EXTERNAL_BOOST "Use external boost" OFF GCC)
 LYX_OPTION(USE_EXTERNAL_LIBINTL "Use external libintl" ON ALL)
-LYX_OPTION(INSTALL "Build install projects/rules" ON ALL)
-LYX_OPTION(PACKAGE_SUFFIX "Use version suffix for packaging" OFF ALL)
+LYX_OPTION(INSTALL "Build install projects/rules" OFF ALL)
+LYX_OPTION(PACKAGE_SUFFIX "Use version suffix for packaging" ON ALL)
 LYX_OPTION(PROGRAM_SUFFIX "Append version suffix to binaries" ON GCC)
 LYX_OPTION(NO_CONSOLE "Suppress console on Windows" OFF MSVC)
 LYX_OPTION(VLD "Use VLD with MSVC" OFF MSVC)
@@ -76,7 +76,15 @@ else()
 endif()
 
 
-
+if(LYX_INSTALL)
+	set(LYX_ASPELL ON CACHE BOOL "Aspell option" FORCE)
+	set(LYX_NLS ON CACHE BOOL "Nls option" FORCE)
+	SET(LYX_NO_CONSOLE ON CACHE BOOL "No console option" FORCE)
+	SET(PACKAGE_SUFFIX ON CACHE BOOL "Package suffix option" FORCE)
+	SET(LYX_RELEASE ON CACHE BOOL "Release option" FORCE)
+	SET(LYX_DEBUG OFF CACHE BOOL "Debug option" FORCE)
+	SET(LYX_PROFILE OFF CACHE BOOL "Profile option" FORCE)
+endif()
 
 
 # Supress regeneration
