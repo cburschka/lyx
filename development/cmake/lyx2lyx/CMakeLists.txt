@@ -7,11 +7,11 @@
 
 configure_file(${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx_version.py.in 
                ${CMAKE_CURRENT_BINARY_DIR}/lyx2lyx_version.py)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/lyx2lyx_version.py DESTINATION ${DATA_SUBDIR}lyx2lyx)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/lyx2lyx_version.py DESTINATION ${LYX_DATA_SUBDIR}lyx2lyx)
 
 if (UNIX)
   set(_project "lyx2lyx")
   include(../PyCompile)
 endif()
 
-install(PROGRAMS ${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx DESTINATION ${DATA_SUBDIR}lyx2lyx)
+install(PROGRAMS ${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx DESTINATION ${LYX_DATA_SUBDIR}lyx2lyx)

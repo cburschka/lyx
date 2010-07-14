@@ -9,14 +9,14 @@
 #		#include(../PyCompile)
 project(${_project})
 
-include(FindPythonInterp)
+FIND_PROGRAM(LYX_PYTHON_EXECUTABLE python)
 
 file(GLOB _py_files ${TOP_SRC_DIR}/lib/${_project}/*.py)
 
 set(py_compile ${TOP_SRC_DIR}/config/py-compile)
 
 set(_generated)
-set(ENV{PYTHON} ${PYTHON_EXECUTABLE})
+set(ENV{PYTHON} ${LYX_PYTHON_EXECUTABLE})
 
 foreach(_orig_py ${_py_files})
   get_filename_component(_base_we_py ${_orig_py} NAME_WE)
