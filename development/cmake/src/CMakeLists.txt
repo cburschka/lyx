@@ -51,18 +51,21 @@ list(REMOVE_ITEM lyx_headers
 if (HUNSPELL_FOUND)
 	list(APPEND lyx_sources ${TOP_SRC_DIR}/src/HunspellChecker.cpp)
 	list(APPEND lyx_headers ${TOP_SRC_DIR}/src/HunspellChecker.h)
+	set(dont_merge ${dont_merge} ${TOP_SRC_DIR}/src/HunspellChecker.cpp)
 endif()
 
 if (ASPELL_FOUND)
 	include_directories(${ASPELL_INCLUDE_DIR})
 	list(APPEND lyx_sources ${TOP_SRC_DIR}/src/AspellChecker.cpp)
 	list(APPEND lyx_headers ${TOP_SRC_DIR}/src/AspellChecker.h)
+	set(dont_merge ${dont_merge} ${TOP_SRC_DIR}/src/AspellChecker.cpp)
 endif()
 
 if (ENCHANT_FOUND)
   include_directories("${ENCHANT_INCLUDE_DIR}")
   list(APPEND lyx_sources ${TOP_SRC_DIR}/src/EnchantChecker.cpp)
   list(APPEND lyx_headers ${TOP_SRC_DIR}/src/EnchantChecker.h)
+  set(dont_merge ${dont_merge} ${TOP_SRC_DIR}/src/EnchantChecker.cpp)
 endif()
 
 lyx_automoc(${TOP_SRC_DIR}/src/Compare.cpp)
@@ -77,8 +80,9 @@ lyx_add_msvc_pch(lyx)
 
 
 if (LYX_MERGE_FILES)
-	lyx_const_touched_files(_allinone  lyx_sources)
-	set(lyx_sources ${_allinone_files})
+	list(REMOVE_ITEM lyx_sources ${dont_merge})
+	lyx_const_touched_files(_allinone lyx_sources)
+	set(lyx_sources ${_allinone_files} ${dont_merge})
 endif()
 
 if (LYX_VLD)
