@@ -637,7 +637,7 @@ def checkOtherEntries():
         rc_entry = [ r'\chktex_command "%%"' ])
     checkProg('BibTeX', ['bibtex'],
         rc_entry = [ r'\bibtex_command "%%"' ])
-    checkProg('JBibTeX, the Japanese BibTeX', ['jbibtex', 'bibtex'],
+    checkProg('a specific Japanese BibTeX variant', ['pbibtex', 'jbibtex', 'bibtex'],
         rc_entry = [ r'\jbibtex_command "%%"' ])
     checkProg('an index processor', ['texindy', 'makeindex -c -q'],
         rc_entry = [ r'\index_command "%%"' ])
