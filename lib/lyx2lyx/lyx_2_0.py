@@ -2001,6 +2001,35 @@ def revert_nameref(document):
     add_to_preamble(document, "\usepackage{nameref}")
 
 
+def remove_Nameref(document):
+  " Convert Nameref commands to nameref commands "
+  i = 0
+  while 1:
+    # It seems better to look for this, as most of the reference
+    # insets won't be ones we care about.
+    i = find_token(document.body, "LatexCommand Nameref" , i)
+    if i == -1:
+      break
+    cmdloc = i
+    i += 1
+    
+    # Make sure it is actually in an inset!
+    # We could just check document.lines[i-1], but that relies
+    # upon something that might easily change.
+    # We'll look back a few lines.
+    stins = cmdloc - 10
+    if stins < 0:
+      stins = 0
+    stins = find_token(document.body, "\\begin_inset CommandInset ref", stins)
+    if stins == -1 or stins > cmdloc:
+      continue
+    endins = find_end_of_inset(document.body, stins)
+    if endins == -1:
+      document.warning("Can't find end of inset at line " + stins + "!!")
+      continue
+    if endins < cmdloc:
+      continue
+    document.body[cmdloc] = "LatexCommand nameref"
 
 
 ##
@@ -2058,10 +2087,12 @@ convert = [[346, []],
            [393, [convert_optarg]],
            [394, []],
            [395, []],
-           [396, []]
+           [396, []],
+           [397, [remove_Nameref]]
           ]
 
-revert =  [[395, [revert_nameref]],
+revert =  [[396, []],
+           [395, [revert_nameref]],
            [394, [revert_DIN_C_pagesizes]],
            [393, [revert_makebox]],
            [392, [revert_argument]],

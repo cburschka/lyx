@@ -53,8 +53,7 @@ bool InsetRef::isCompatibleCommand(string const & s) {
 		|| s == "vpageref"
 		|| s == "prettyref"
 		|| s == "eqref"
-		|| s == "nameref"
-		|| s == "Nameref";
+		|| s == "nameref";
 }
 
 
@@ -137,7 +136,7 @@ docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const &) const
 		else if (cmd == "prettyref" 
 		         // we don't really have the ability to handle these 
 		         // properly in XHTML output
-		         || cmd == "nameref" || cmd == "Nameref")
+		         || cmd == "nameref")
 			display_string = il->prettyCounter();
 	} else 
 			display_string = ref;
@@ -217,7 +216,7 @@ void InsetRef::validate(LaTeXFeatures & features) const
 		features.require("prettyref");
 	else if (cmd == "eqref")
 		features.require("amsmath");
-	else if (cmd == "nameref" || cmd == "Nameref")
+	else if (cmd == "nameref")
 		features.require("nameref");
 }
 
@@ -230,7 +229,6 @@ InsetRef::type_info InsetRef::types[] = {
 	{ "vref",      N_("Standard+Textual Page"), N_("Ref+Text: ")},
 	{ "prettyref", N_("PrettyRef"),             N_("FrmtRef: ")},
 	{ "nameref",   N_("Reference to Name"),     N_("NameRef:")},
-	{ "Nameref",   N_("Name+Textual Page"),     N_("NamePgRef:")},
 	{ "", "", "" }
 };
 
