@@ -241,18 +241,18 @@ int Systemcall::startscript(Starttype how, string const & what, bool process_eve
 }
 
 
-SystemcallPrivate::SystemcallPrivate(const std::string& of) : 
+SystemcallPrivate::SystemcallPrivate(const std::string& of) :
                                 proc_(new QProcess), outindex_(0), errindex_(0),
-                                outfile(of), showout_(false), showerr_(false), process_events(false)
+                                outfile(of), 
+                                terminalOutExists_(os::is_terminal(os::STDOUT)),
+                                terminalErrExists_(os::is_terminal(os::STDERR)),
+                                process_events(false)
 {
 	if (!outfile.empty()) {
 		// Check whether we have to simply throw away the output.
 		if (outfile != os::nulldev())
 			proc_->setStandardOutputFile(toqstr(outfile));
-	} else if (os::is_terminal(os::STDOUT))
-		setShowOut(true);
-	if (os::is_terminal(os::STDERR))
-		setShowErr(true);
+	}
 
 	connect(proc_, SIGNAL(readyReadStandardOutput()), SLOT(stdOut()));
 	connect(proc_, SIGNAL(readyReadStandardError()), SLOT(stdErr()));
@@ -330,14 +330,14 @@ SystemcallPrivate::~SystemcallPrivate()
 	if (outindex_) {
 		outdata_[outindex_] = '\0';
 		outindex_ = 0;
-		if (showout_)
+		if (terminalOutExists_)
 			cout << outdata_;
 	}
 	cout.flush();
 	if (errindex_) {
 		errdata_[errindex_] = '\0';
 		errindex_ = 0;
-		if (showerr_)
+		if (terminalErrExists_)
 			cerr << errdata_;
 	}
 	cerr.flush();
@@ -354,17 +354,14 @@ void SystemcallPrivate::flush()
 		// to some log file, for example ~/.xsession-errors on *nix.
 		
 		QString data = QString::fromLocal8Bit(proc_->readAllStandardOutput().data());
-		if (showout_) 
-			ProgressInterface::instance()->appendMessage(data);
-		if (!os::is_terminal(os::STDOUT) && outfile.empty()) 
+		ProgressInterface::instance()->appendMessage(data);
+		if (!terminalOutExists_ && outfile.empty())
 			cout << fromqstr(data);
 		
 		data = QString::fromLocal8Bit(proc_->readAllStandardError().data());
-		if (showerr_) 
-			ProgressInterface::instance()->appendError(data);
-		if (!os::is_terminal(os::STDERR)) 
-			cerr << fromqstr(data);			
-		
+		ProgressInterface::instance()->appendError(data);
+		if (!terminalErrExists_)
+			cerr << fromqstr(data);
 	}
 }
 
@@ -379,10 +376,9 @@ void SystemcallPrivate::stdOut()
 			if (c == '\n' || outindex_ + 1 == bufsize_) {
 				outdata_[outindex_] = '\0';
 				outindex_ = 0;
-				if (showout_) {
+				ProgressInterface::instance()->appendMessage(QString::fromLocal8Bit(outdata_));
+				if (terminalOutExists_)
 					cout << outdata_;
-					ProgressInterface::instance()->appendMessage(QString::fromLocal8Bit(outdata_));		
-				}
 			}
 		}
 	}
@@ -399,10 +395,9 @@ void SystemcallPrivate::stdErr()
 			if (c == '\n' || errindex_ + 1 == bufsize_) {
 				errdata_[errindex_] = '\0';
 				errindex_ = 0;
-				if (showerr_) {
+				ProgressInterface::instance()->appendError(QString::fromLocal8Bit(errdata_));
+				if (terminalErrExists_)
 					cerr << errdata_;
-					ProgressInterface::instance()->appendError(QString::fromLocal8Bit(errdata_));
-				}
 			}
 		}
 	}

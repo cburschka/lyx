@@ -34,12 +34,6 @@ public:
 	SystemcallPrivate(std::string const & outfile);
 	~SystemcallPrivate();
 
-	/// Should the standard output be displayed?
-	void setShowOut(bool val) { showout_ = val; }
-
-	/// Should the standard error be displayed?
-	void setShowErr(bool val) { showerr_ = val; }
-
 	enum State {
 		Starting,
 		Running,
@@ -78,9 +72,9 @@ private:
 	/// Standard error buffer.
 	char errdata_[bufsize_];
 	/// 
-	bool showout_;
+	bool terminalErrExists_;
 	/// 
-	bool showerr_;
+	bool terminalOutExists_;
 	bool process_events;
 	QString cmd_;
 
