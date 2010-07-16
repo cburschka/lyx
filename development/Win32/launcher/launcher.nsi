@@ -3,12 +3,9 @@
 LyX for Windows Launcher
 Author: Joost Verburg
 
-This will be installed as lyx.exe.
+This will be installed as LyXLauncher.exe.
 
-The application will setup the environment variables based on registry
-settings and obtain the command line output of lyxc.exe, which can be shown
-while debugging or in case of a crash. Version information and an icon are
-also included.
+The launcher application hides the lyx.exe console window.
 
 */
 
@@ -39,16 +36,12 @@ RequestExecutionLevel user
 
 Var Parameters
 Var Debug
-Var LyXLanguage
 Var ReturnValue
 
 Var ResultText
 Var ResultSubText
 
 Var LyXFolder
-
-Var LyXSetting
-Var LyXSettingValue
 
 Var EnvironmentVariable
 Var EnvironmentVariableValue
@@ -127,34 +120,10 @@ Section -Prepare
   SetDetailsPrint textonly
   DetailPrint "Debug log:"
   SetDetailsPrint listonly
-  
-  # LyX Language
-  !insertmacro GetLyXSetting "Language" $LyXLanguage
-  
-  # Set language for gettext
-  ${if} $LyXLanguage != ""
-    Push LC_ALL
-    Push $LyXLanguage
-    Call SetEnvironmentVariable
-  ${endif}
-  
-  # Apparently the output charset needs to be set to some value,
-  # otherwise no non-ASCII characters will be displayed
-  Push OUTPUT_CHARSET
-  Push -
-  Call SetEnvironmentVariable
-  
+
   # Location of Aiksaurus data
   Push AIK_DATA_DIR
   Push "$LyXFolder\aiksaurus"
-  Call SetEnvironmentVariable
-
-  # Location of Ghostscript (for ImageMagick)
-  Push LYX_GHOSTSCRIPT_EXE
-  Push "$LyXFolder\ghostscript\gswin32c.exe"
-  Call SetEnvironmentVariable
-  Push LYX_GHOSTSCRIPT_DLL
-  Push "$LyXFolder\ghostscript\gsdll32.dll"
   Call SetEnvironmentVariable
  
 SectionEnd
@@ -252,23 +221,6 @@ Function InitInterface
     CallInstDLL "$EXEDIR\System.dll" Call
   
   ${EndIf}
-
-FunctionEnd
-
-Function GetLyXSetting
-
-  Pop $LyxSetting
-
-  # Get a LyX setting from the registry
-  # First try a current user setting, then a system setting
-
-  ReadRegStr $LyXSettingValue HKCU ${APP_REGKEY_SETTINGS} $LyXSetting
-  
-  ${If} $LyXSettingValue == ""
-    ReadRegStr $LyXSettingValue HKLM ${APP_REGKEY_SETTINGS} $LyXSetting
-  ${EndIf}
-  
-  Push $LyXSettingValue
 
 FunctionEnd
 

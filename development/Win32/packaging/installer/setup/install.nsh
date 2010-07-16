@@ -29,6 +29,7 @@ Section -ProgramFiles SecProgramFiles
   RMDir /r "$INSTDIR\ghostscript\lib"
   RMDir /r "$INSTDIR\ghostscript\fonts"
   RMDir /r "$INSTDIR\imagemagick"
+  Delete "$INSTDIR\bin\zlib1.dll"
   
   # Binaries
   SetOutPath "$INSTDIR\bin"
@@ -36,8 +37,8 @@ Section -ProgramFiles SecProgramFiles
   !insertmacro FileListLyXLauncher File "${FILES_LAUNCHER}\"  
   !insertmacro FileListQtBin File "${FILES_QT}\bin\"
   !insertmacro FileListDll File "${FILES_DEPS}\bin\"
-  !insertmacro FileListMSVCBin File "${FILES_MSVC}\"
-  !insertmacro FileListMSVCManifest File "..\"
+  !insertmacro FileListMSVC File "${FILES_MSVC}\"
+  !insertmacro FileListMSVC2008 File "${FILES_MSVC}\"
   !insertmacro FileListNetpbmBin File "${FILES_NETPBM}\"
   !insertmacro FileListDTLBin File "${FILES_DTL}\"
   !insertmacro FileListDvipostBin File "${FILES_DVIPOST}\"
@@ -55,8 +56,7 @@ Section -ProgramFiles SecProgramFiles
   # Components of Python
   SetOutPath "$INSTDIR\python"
   !insertmacro FileListPythonBin File "${FILES_PYTHON}\"
-  !insertmacro FileListMSVCBin File "${FILES_MSVC}\"
-  !insertmacro FileListMSVCManifest File "..\"  
+  !insertmacro FileListMSVC File "${FILES_MSVC}\"
   SetOutPath "$INSTDIR\python\Lib"
   !insertmacro FileListPythonLib File "${FILES_PYTHON}\Lib\"
   SetOutPath "$INSTDIR\python\Lib\encodings"
@@ -74,22 +74,15 @@ Section -ProgramFiles SecProgramFiles
   Pop $PythonCompileReturn # Return value
   Delete "$INSTDIR\compilepy.py"
   
-  !ifdef BUNDLE_IMAGEMAGICK
   # Components of ImageMagick
   SetOutPath "$INSTDIR\imagemagick"
   !insertmacro FileListImageMagick File "${FILES_IMAGEMAGICK}\"
-  !insertmacro FileListMSVCBin File "${FILES_MSVC}\"
-  !insertmacro FileListMSVCManifest File "..\"
-  !endif  
+  !insertmacro FileListMSVC File "${FILES_MSVC}\"
   
-  !ifdef BUNDLE_GHOSTSCRIPT
   # Components of Ghostscript
   SetOutPath "$INSTDIR\ghostscript"
   !insertmacro FileListGhostscript File "${FILES_GHOSTSCRIPT}\"
-  !insertmacro FileListMSVCBin File "${FILES_MSVC}\"
-  !insertmacro FileListMSVCManifest File "..\"
-  
-  !endif  
+  !insertmacro FileListMSVC File "${FILES_MSVC}\"
   
   # Aspell
 
@@ -302,22 +295,6 @@ Var PathCurrentUser
 Section -LaTeX ExternalLaTeX
   !insertmacro EXTERNAL LaTeX
 SectionEnd
-
-!ifndef BUNDLE_IMAGEMAGICK
-
-Section -ImageMagick ExternalImageMagick
-  !insertmacro EXTERNAL ImageMagick
-SectionEnd
-
-!endif
-
-!ifndef BUNDLE_GHOSTSCRIPT
-
-Section -Ghostscript ExternalGhostscript
-  !insertmacro EXTERNAL Ghostscript
-SectionEnd
-
-!endif
 
 Function InitExternal
 

@@ -28,16 +28,19 @@ Lists of files to include in the installer
 
 !macroend
 
-!macro FileListMSVCBin COMMAND DIRECTORY
+!macro FileListMSVC2008 COMMAND DIRECTORY
 
+  ${FILE}Microsoft.VC90.CRT.manifest"
   ${FILE}msvcr90.dll"
   ${FILE}msvcp90.dll"
   
 !macroend
 
-!macro FileListMSVCManifest COMMAND DIRECTORY
+!macro FileListMSVC COMMAND DIRECTORY
 
-  ${FILE}\Microsoft.VC90.CRT.manifest"
+  # Manifest not needed for 2010
+  ${FILE}msvcr100.dll"
+  ${FILE}msvcp100.dll"
   
 !macroend
 
@@ -47,7 +50,7 @@ Lists of files to include in the installer
   ${FILE}intl.dll"
   ${FILE}aspell.dll"
   ${FILE}Aiksaurus.dll"
-  ${FILE}zlib1.dll"
+  ${FILE}zlibwapi.dll"
 
 !macroend
 

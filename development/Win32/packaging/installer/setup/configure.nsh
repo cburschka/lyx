@@ -121,9 +121,6 @@ Section -Configure
 
   FileClose $DistFile
 
-  # Set language
-  WriteRegStr SHELL_CONTEXT ${APP_REGKEY_SETTINGS} "Language" $LangISOCode
-
 SectionEnd
 
 #--------------------------------

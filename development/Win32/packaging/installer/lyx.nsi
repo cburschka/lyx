@@ -46,7 +46,6 @@ Licence details for all installer scripts can be found in the file COPYING
 # User interface (wizard pages)
 
 !include gui\external.nsh
-!include gui\langselect.nsh
 !include gui\reinstall.nsh
 
 #--------------------------------

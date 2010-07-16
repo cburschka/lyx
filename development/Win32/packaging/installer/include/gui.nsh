@@ -44,7 +44,6 @@ Page custom PageExternalImageMagick PageExternalImageMagickValidate
 !ifndef BUNDLE_GHOSTSCRIPT
 Page custom PageExternalGhostscript PageExternalGhostscriptValidate
 !endif
-Page custom PageLanguage PageLanguageValidate
 
 !define MUI_PAGE_HEADER_TEXT $(TEXT_DICT_TITLE)
 !define MUI_PAGE_HEADER_SUBTEXT $(TEXT_DICT_SUBTITLE)
