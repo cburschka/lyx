@@ -135,15 +135,6 @@ Win32/packaging/build_msvs_debug.bat \
 Win32/packaging/build_msvc.bat \
 Win32/packaging/Microsoft.VC90.CRT.manifest \
 Win32/pdfview/pdfview.nsi \
-Win32/patches/mingw/aspell-0.60.4.patch \
-Win32/patches/mingw/gettext-0.14.5.patch \
-Win32/patches/msvc/libiconv-1.11.patch \
-Win32/patches/msvc/gettext-0.15.patch \
-Win32/patches/msvc/dirent.h \
-Win32/patches/msvc/aspell-setter-sep06.patch \
-Win32/patches/dtl.patch \
-Win32/patches/dvipost-1.1.patch \
-Win32/patches/aiksaurus-june06.patch \
 scons/qt4.py \
 scons/scons_manifest.py \
 scons/SConstruct \
