@@ -27,12 +27,6 @@ enum shell_type {
 	CMD_EXE
 };
 
-enum io_channel {
-	STDIN = 0,
-	STDOUT,
-	STDERR
-};
-
 enum path_case {
 	CASE_UNCHANGED,
 	CASE_ADJUSTED
