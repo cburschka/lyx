@@ -284,7 +284,12 @@ Formatting
   - Class names are usually capitalized, and function names lowercased.
     Enums are named like Classes, values are usually in lower-case.
 
-  - Long variables are named like thisLongVariableName.
+  - Public API is camel-case ('void setAFlagToAValue(bool)')
+
+  - Members variables are underscored ('enable_this_feature_flag_') with a final '_'
+  
+  - private/protected functions are also camel-case
+
 
   New types are capitalized, so this goes for typedefs, classes, structs
   and enums.
