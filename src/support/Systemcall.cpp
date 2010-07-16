@@ -246,15 +246,23 @@ SystemcallPrivate::SystemcallPrivate(const std::string& of) :
                                 out_index_(0),
                                 err_index_(0),
                                 out_file_(of), 
-                                terminal_out_exists_(os::is_terminal(os::STDOUT)),
-                                terminal_err_exists_(os::is_terminal(os::STDERR)),
+                                use_stdout_(false),
+                                use_stderr_(false),
                                 process_events_(false)
 {
 	if (!out_file_.empty()) {
+		// Don't output to terminal if stdout is redirected
+		use_stdout_ = false;
 		// Check whether we have to simply throw away the output.
 		if (out_file_ != os::nulldev())
 			process_->setStandardOutputFile(toqstr(out_file_));
+	} else {
+		// Output to terminal if stdout exists and is not redirected
+		use_stdout_ = os::is_terminal(os::STDOUT);
 	}
+
+	// When there is a stderr use it
+	use_stderr_ = os::is_terminal(os::STDERR);
 
 	connect(process_, SIGNAL(readyReadStandardOutput()), SLOT(stdOut()));
 	connect(process_, SIGNAL(readyReadStandardError()), SLOT(stdErr()));
@@ -332,14 +340,14 @@ SystemcallPrivate::~SystemcallPrivate()
 	if (out_index_) {
 		out_data_[out_index_] = '\0';
 		out_index_ = 0;
-		if (terminal_out_exists_)
+		if (use_stdout_)
 			cout << out_data_;
 	}
 	cout.flush();
 	if (err_index_) {
 		err_data_[err_index_] = '\0';
 		err_index_ = 0;
-		if (terminal_err_exists_)
+		if (use_stderr_)
 			cerr << err_data_;
 	}
 	cerr.flush();
@@ -357,12 +365,12 @@ void SystemcallPrivate::flush()
 		
 		QString data = QString::fromLocal8Bit(process_->readAllStandardOutput().data());
 		ProgressInterface::instance()->appendMessage(data);
-		if (!terminal_out_exists_ && out_file_.empty())
+		if (!use_stdout_ && out_file_.empty())
 			cout << fromqstr(data);
 		
 		data = QString::fromLocal8Bit(process_->readAllStandardError().data());
 		ProgressInterface::instance()->appendError(data);
-		if (!terminal_err_exists_)
+		if (!use_stderr_)
 			cerr << fromqstr(data);
 	}
 }
@@ -379,7 +387,7 @@ void SystemcallPrivate::stdOut()
 				out_data_[out_index_] = '\0';
 				out_index_ = 0;
 				ProgressInterface::instance()->appendMessage(QString::fromLocal8Bit(out_data_));
-				if (terminal_out_exists_)
+				if (use_stdout_)
 					cout << out_data_;
 			}
 		}
@@ -398,7 +406,7 @@ void SystemcallPrivate::stdErr()
 				err_data_[err_index_] = '\0';
 				err_index_ = 0;
 				ProgressInterface::instance()->appendError(QString::fromLocal8Bit(err_data_));
-				if (terminal_err_exists_)
+				if (use_stderr_)
 					cerr << err_data_;
 			}
 		}

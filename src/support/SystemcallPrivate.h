@@ -84,8 +84,8 @@ private:
 	/// Standard error buffer.
 	char err_data_[max_buffer_size_];
 
-	bool terminal_err_exists_;
-	bool terminal_out_exists_;
+	bool use_stderr_;
+	bool use_stdout_;
 
 	QString cmd_;
 	bool process_events_;
