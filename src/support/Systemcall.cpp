@@ -295,11 +295,11 @@ bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int time
 	if (!process_)
 		return false;
 
-	process_events = process_events;
+	process_events_ = process_events;
 
 	// Block GUI while waiting,
 	// relay on QProcess' wait functions
-	if (!process_events) {
+	if (!process_events_) {
 		if (waitwhile == Starting)
 			return process_->waitForStarted(timeout);
 		if (waitwhile == Running)
