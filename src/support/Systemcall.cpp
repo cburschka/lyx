@@ -246,23 +246,13 @@ SystemcallPrivate::SystemcallPrivate(const std::string& of) :
                                 out_index_(0),
                                 err_index_(0),
                                 out_file_(of), 
-                                use_stdout_(false),
-                                use_stderr_(false),
                                 process_events_(false)
 {
 	if (!out_file_.empty()) {
-		// Don't output to terminal if stdout is redirected
-		use_stdout_ = false;
 		// Check whether we have to simply throw away the output.
 		if (out_file_ != os::nulldev())
 			process_->setStandardOutputFile(toqstr(out_file_));
-	} else {
-		// Output to terminal if stdout exists and is not redirected
-		use_stdout_ = os::is_terminal(os::STDOUT);
 	}
-
-	// When there is a stderr use it
-	use_stderr_ = os::is_terminal(os::STDERR);
 
 	connect(process_, SIGNAL(readyReadStandardOutput()), SLOT(stdOut()));
 	connect(process_, SIGNAL(readyReadStandardError()), SLOT(stdErr()));
@@ -335,44 +325,20 @@ bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int time
 
 SystemcallPrivate::~SystemcallPrivate()
 {
-	flush();
-
 	if (out_index_) {
 		out_data_[out_index_] = '\0';
 		out_index_ = 0;
-		if (use_stdout_)
-			cout << out_data_;
+		cout << out_data_;
 	}
 	cout.flush();
 	if (err_index_) {
 		err_data_[err_index_] = '\0';
 		err_index_ = 0;
-		if (use_stderr_)
-			cerr << err_data_;
+		cerr << err_data_;
 	}
 	cerr.flush();
 
 	killProcess();
-}
-
-
-void SystemcallPrivate::flush()
-{
-	if (process_) {
-		// If the output has been redirected, we write it all at once.
-		// Even if we are not running in a terminal, the output could go
-		// to some log file, for example ~/.xsession-errors on *nix.
-		
-		QString data = QString::fromLocal8Bit(process_->readAllStandardOutput().data());
-		ProgressInterface::instance()->appendMessage(data);
-		if (!use_stdout_ && out_file_.empty())
-			cout << fromqstr(data);
-		
-		data = QString::fromLocal8Bit(process_->readAllStandardError().data());
-		ProgressInterface::instance()->appendError(data);
-		if (!use_stderr_)
-			cerr << fromqstr(data);
-	}
 }
 
 
@@ -383,12 +349,11 @@ void SystemcallPrivate::stdOut()
 		process_->setReadChannel(QProcess::StandardOutput);
 		while (process_->getChar(&c)) {
 			out_data_[out_index_++] = c;
-			if (c == '\n' || out_index_ + 1 == max_buffer_size_) {
+			if (c == '\n' || out_index_ + 1 == buffer_size_) {
 				out_data_[out_index_] = '\0';
 				out_index_ = 0;
 				ProgressInterface::instance()->appendMessage(QString::fromLocal8Bit(out_data_));
-				if (use_stdout_)
-					cout << out_data_;
+				cout << out_data_;
 			}
 		}
 	}
@@ -402,12 +367,11 @@ void SystemcallPrivate::stdErr()
 		process_->setReadChannel(QProcess::StandardError);
 		while (process_->getChar(&c)) {
 			err_data_[err_index_++] = c;
-			if (c == '\n' || err_index_ + 1 == max_buffer_size_) {
+			if (c == '\n' || err_index_ + 1 == buffer_size_) {
 				err_data_[err_index_] = '\0';
 				err_index_ = 0;
 				ProgressInterface::instance()->appendError(QString::fromLocal8Bit(err_data_));
-				if (use_stderr_)
-					cerr << err_data_;
+				cerr << err_data_;
 			}
 		}
 	}

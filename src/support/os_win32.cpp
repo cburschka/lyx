@@ -417,26 +417,6 @@ string const & nulldev()
 }
 
 
-bool is_terminal(io_channel channel)
-{
-	switch (channel) {
-	case STDIN:
-		if (GetStdHandle(STD_INPUT_HANDLE) == NULL)
-			return false;
-		break;
-	case STDOUT:
-		if (GetStdHandle(STD_OUTPUT_HANDLE) == NULL)
-			return false;
-		break;
-	case STDERR:
-		if (GetStdHandle(STD_ERROR_HANDLE) == NULL)
-			return false;
-		break;
-	}
-	return true;
-}
-
-
 shell_type shell()
 {
 	return CMD_EXE;

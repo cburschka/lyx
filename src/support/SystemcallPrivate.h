@@ -51,8 +51,6 @@ public:
 	QString errorMessage() const;
 	QString exitStatusMessage() const;
 
-	void flush();
-
 	QProcess* releaseProcess();
 	
 	static void killProcess(QProcess * p);
@@ -78,14 +76,11 @@ private:
 	std::string out_file_;
 
 	/// Size of buffers.
-	static size_t const max_buffer_size_ = 200;
+	static size_t const buffer_size_ = 200;
 	/// Standard output buffer.
-	char out_data_[max_buffer_size_];
+	char out_data_[buffer_size_];
 	/// Standard error buffer.
-	char err_data_[max_buffer_size_];
-
-	bool use_stderr_;
-	bool use_stdout_;
+	char err_data_[buffer_size_];
 
 	QString cmd_;
 	bool process_events_;

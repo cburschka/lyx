@@ -206,12 +206,6 @@ string const & nulldev()
 }
 
 
-bool is_terminal(io_channel channel)
-{
-	return isatty(channel);
-}
-
-
 shell_type shell()
 {
 	return UNIX;

@@ -55,9 +55,6 @@ void remove_internal_args(int i, int num);
 /// Returns the name of the NULL device (/dev/null, null).
 std::string const & nulldev();
 
-/// Tells whether \p channel is connected to a terminal or not. 
-bool is_terminal(io_channel channel);
-
 /// Returns "/" on *nix, "C:/", etc on Windows.
 std::string current_root();
 
