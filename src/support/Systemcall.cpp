@@ -243,17 +243,17 @@ int Systemcall::startscript(Starttype how, string const & what, bool process_eve
 
 SystemcallPrivate::SystemcallPrivate(const std::string& of) :
                                 process_(new QProcess), 
-                                outIndex_(0),
-                                errIndex_(0),
-                                outFile_(of), 
-                                terminalOutExists_(os::is_terminal(os::STDOUT)),
-                                terminalErrExists_(os::is_terminal(os::STDERR)),
-                                processEvents_(false)
+                                out_index_(0),
+                                err_index_(0),
+                                out_file_(of), 
+                                terminal_out_exists_(os::is_terminal(os::STDOUT)),
+                                terminal_err_exists_(os::is_terminal(os::STDERR)),
+                                process_events_(false)
 {
-	if (!outFile_.empty()) {
+	if (!out_file_.empty()) {
 		// Check whether we have to simply throw away the output.
-		if (outFile_ != os::nulldev())
-			process_->setStandardOutputFile(toqstr(outFile_));
+		if (out_file_ != os::nulldev())
+			process_->setStandardOutputFile(toqstr(out_file_));
 	}
 
 	connect(process_, SIGNAL(readyReadStandardOutput()), SLOT(stdOut()));
@@ -277,7 +277,7 @@ void SystemcallPrivate::startProcess(const QString& cmd)
 
 void SystemcallPrivate::processEvents()
 {
-	if(processEvents_) {
+	if(process_events_) {
 		QCoreApplication::processEvents(/*QEventLoop::ExcludeUserInputEvents*/);
 	}
 }
@@ -329,18 +329,18 @@ SystemcallPrivate::~SystemcallPrivate()
 {
 	flush();
 
-	if (outIndex_) {
-		outData_[outIndex_] = '\0';
-		outIndex_ = 0;
-		if (terminalOutExists_)
-			cout << outData_;
+	if (out_index_) {
+		out_data_[out_index_] = '\0';
+		out_index_ = 0;
+		if (terminal_out_exists_)
+			cout << out_data_;
 	}
 	cout.flush();
-	if (errIndex_) {
-		errData_[errIndex_] = '\0';
-		errIndex_ = 0;
-		if (terminalErrExists_)
-			cerr << errData_;
+	if (err_index_) {
+		err_data_[err_index_] = '\0';
+		err_index_ = 0;
+		if (terminal_err_exists_)
+			cerr << err_data_;
 	}
 	cerr.flush();
 
@@ -357,12 +357,12 @@ void SystemcallPrivate::flush()
 		
 		QString data = QString::fromLocal8Bit(process_->readAllStandardOutput().data());
 		ProgressInterface::instance()->appendMessage(data);
-		if (!terminalOutExists_ && outFile_.empty())
+		if (!terminal_out_exists_ && out_file_.empty())
 			cout << fromqstr(data);
 		
 		data = QString::fromLocal8Bit(process_->readAllStandardError().data());
 		ProgressInterface::instance()->appendError(data);
-		if (!terminalErrExists_)
+		if (!terminal_err_exists_)
 			cerr << fromqstr(data);
 	}
 }
@@ -374,13 +374,13 @@ void SystemcallPrivate::stdOut()
 		char c;
 		process_->setReadChannel(QProcess::StandardOutput);
 		while (process_->getChar(&c)) {
-			outData_[outIndex_++] = c;
-			if (c == '\n' || outIndex_ + 1 == bufferSize_) {
-				outData_[outIndex_] = '\0';
-				outIndex_ = 0;
-				ProgressInterface::instance()->appendMessage(QString::fromLocal8Bit(outData_));
-				if (terminalOutExists_)
-					cout << outData_;
+			out_data_[out_index_++] = c;
+			if (c == '\n' || out_index_ + 1 == max_buffer_size_) {
+				out_data_[out_index_] = '\0';
+				out_index_ = 0;
+				ProgressInterface::instance()->appendMessage(QString::fromLocal8Bit(out_data_));
+				if (terminal_out_exists_)
+					cout << out_data_;
 			}
 		}
 	}
@@ -393,13 +393,13 @@ void SystemcallPrivate::stdErr()
 		char c;
 		process_->setReadChannel(QProcess::StandardError);
 		while (process_->getChar(&c)) {
-			errData_[errIndex_++] = c;
-			if (c == '\n' || errIndex_ + 1 == bufferSize_) {
-				errData_[errIndex_] = '\0';
-				errIndex_ = 0;
-				ProgressInterface::instance()->appendError(QString::fromLocal8Bit(errData_));
-				if (terminalErrExists_)
-					cerr << errData_;
+			err_data_[err_index_++] = c;
+			if (c == '\n' || err_index_ + 1 == max_buffer_size_) {
+				err_data_[err_index_] = '\0';
+				err_index_ = 0;
+				ProgressInterface::instance()->appendError(QString::fromLocal8Bit(err_data_));
+				if (terminal_err_exists_)
+					cerr << err_data_;
 			}
 		}
 	}

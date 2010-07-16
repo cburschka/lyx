@@ -71,27 +71,28 @@ private:
 	QProcess * process_;
 
 	/// Index to the standard output buffer.
-	size_t outIndex_;
+	size_t out_index_;
 	/// Index to the standard error buffer.
-	size_t errIndex_;
+	size_t err_index_;
 	///
-	std::string outFile_;
+	std::string out_file_;
 
 	/// Size of buffers.
-	static size_t const bufferSize_ = 200;
+	static size_t const max_buffer_size_ = 200;
 	/// Standard output buffer.
-	char outData_[bufferSize_];
+	char out_data_[max_buffer_size_];
 	/// Standard error buffer.
-	char errData_[bufferSize_];
+	char err_data_[max_buffer_size_];
 
-	bool terminalErrExists_;
-	bool terminalOutExists_;
+	bool terminal_err_exists_;
+	bool terminal_out_exists_;
 
-	bool processEvents_;
+	QString cmd_;
+	bool process_events_;
+
 	void waitAndProcessEvents();
 	void processEvents();
-	void killProcess();
-	QString cmd_;
+	void killProcess();	
 
 };
 
