@@ -242,23 +242,25 @@ int Systemcall::startscript(Starttype how, string const & what, bool process_eve
 
 
 SystemcallPrivate::SystemcallPrivate(const std::string& of) :
-                                proc_(new QProcess), outindex_(0), errindex_(0),
-                                outfile(of), 
+                                process_(new QProcess), 
+                                outIndex_(0),
+                                errIndex_(0),
+                                outFile_(of), 
                                 terminalOutExists_(os::is_terminal(os::STDOUT)),
                                 terminalErrExists_(os::is_terminal(os::STDERR)),
-                                process_events(false)
+                                processEvents_(false)
 {
-	if (!outfile.empty()) {
+	if (!outFile_.empty()) {
 		// Check whether we have to simply throw away the output.
-		if (outfile != os::nulldev())
-			proc_->setStandardOutputFile(toqstr(outfile));
+		if (outFile_ != os::nulldev())
+			process_->setStandardOutputFile(toqstr(outFile_));
 	}
 
-	connect(proc_, SIGNAL(readyReadStandardOutput()), SLOT(stdOut()));
-	connect(proc_, SIGNAL(readyReadStandardError()), SLOT(stdErr()));
-	connect(proc_, SIGNAL(error(QProcess::ProcessError)), SLOT(processError(QProcess::ProcessError)));
-	connect(proc_, SIGNAL(started()), this, SLOT(processStarted()));
-	connect(proc_, SIGNAL(finished(int, QProcess::ExitStatus)), SLOT(processFinished(int, QProcess::ExitStatus)));
+	connect(process_, SIGNAL(readyReadStandardOutput()), SLOT(stdOut()));
+	connect(process_, SIGNAL(readyReadStandardError()), SLOT(stdErr()));
+	connect(process_, SIGNAL(error(QProcess::ProcessError)), SLOT(processError(QProcess::ProcessError)));
+	connect(process_, SIGNAL(started()), this, SLOT(processStarted()));
+	connect(process_, SIGNAL(finished(int, QProcess::ExitStatus)), SLOT(processFinished(int, QProcess::ExitStatus)));
 }
 
 
@@ -266,16 +268,16 @@ SystemcallPrivate::SystemcallPrivate(const std::string& of) :
 void SystemcallPrivate::startProcess(const QString& cmd)
 {
 	cmd_ = cmd;
-	if (proc_) {
+	if (process_) {
 		state = SystemcallPrivate::Starting;
-		proc_->start(cmd_);
+		process_->start(cmd_);
 	}
 }
 
 
 void SystemcallPrivate::processEvents()
 {
-	if(process_events) {
+	if(processEvents_) {
 		QCoreApplication::processEvents(/*QEventLoop::ExcludeUserInputEvents*/);
 	}
 }
@@ -288,20 +290,20 @@ void SystemcallPrivate::waitAndProcessEvents()
 }
 
 
-bool SystemcallPrivate::waitWhile(State waitwhile, bool proc_events, int timeout)
+bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int timeout)
 {
-	if (!proc_)
+	if (!process_)
 		return false;
 
-	process_events = proc_events;
+	process_events = process_events;
 
 	// Block GUI while waiting,
 	// relay on QProcess' wait functions
 	if (!process_events) {
 		if (waitwhile == Starting)
-			return proc_->waitForStarted(timeout);
+			return process_->waitForStarted(timeout);
 		if (waitwhile == Running)
-			return proc_->waitForFinished(timeout);
+			return process_->waitForFinished(timeout);
 		return false;
 	}
 
@@ -327,18 +329,18 @@ SystemcallPrivate::~SystemcallPrivate()
 {
 	flush();
 
-	if (outindex_) {
-		outdata_[outindex_] = '\0';
-		outindex_ = 0;
+	if (outIndex_) {
+		outData_[outIndex_] = '\0';
+		outIndex_ = 0;
 		if (terminalOutExists_)
-			cout << outdata_;
+			cout << outData_;
 	}
 	cout.flush();
-	if (errindex_) {
-		errdata_[errindex_] = '\0';
-		errindex_ = 0;
+	if (errIndex_) {
+		errData_[errIndex_] = '\0';
+		errIndex_ = 0;
 		if (terminalErrExists_)
-			cerr << errdata_;
+			cerr << errData_;
 	}
 	cerr.flush();
 
@@ -348,17 +350,17 @@ SystemcallPrivate::~SystemcallPrivate()
 
 void SystemcallPrivate::flush()
 {
-	if (proc_) {
+	if (process_) {
 		// If the output has been redirected, we write it all at once.
 		// Even if we are not running in a terminal, the output could go
 		// to some log file, for example ~/.xsession-errors on *nix.
 		
-		QString data = QString::fromLocal8Bit(proc_->readAllStandardOutput().data());
+		QString data = QString::fromLocal8Bit(process_->readAllStandardOutput().data());
 		ProgressInterface::instance()->appendMessage(data);
-		if (!terminalOutExists_ && outfile.empty())
+		if (!terminalOutExists_ && outFile_.empty())
 			cout << fromqstr(data);
 		
-		data = QString::fromLocal8Bit(proc_->readAllStandardError().data());
+		data = QString::fromLocal8Bit(process_->readAllStandardError().data());
 		ProgressInterface::instance()->appendError(data);
 		if (!terminalErrExists_)
 			cerr << fromqstr(data);
@@ -368,17 +370,17 @@ void SystemcallPrivate::flush()
 
 void SystemcallPrivate::stdOut()
 {
-	if (proc_) {
+	if (process_) {
 		char c;
-		proc_->setReadChannel(QProcess::StandardOutput);
-		while (proc_->getChar(&c)) {
-			outdata_[outindex_++] = c;
-			if (c == '\n' || outindex_ + 1 == bufsize_) {
-				outdata_[outindex_] = '\0';
-				outindex_ = 0;
-				ProgressInterface::instance()->appendMessage(QString::fromLocal8Bit(outdata_));
+		process_->setReadChannel(QProcess::StandardOutput);
+		while (process_->getChar(&c)) {
+			outData_[outIndex_++] = c;
+			if (c == '\n' || outIndex_ + 1 == bufferSize_) {
+				outData_[outIndex_] = '\0';
+				outIndex_ = 0;
+				ProgressInterface::instance()->appendMessage(QString::fromLocal8Bit(outData_));
 				if (terminalOutExists_)
-					cout << outdata_;
+					cout << outData_;
 			}
 		}
 	}
@@ -387,17 +389,17 @@ void SystemcallPrivate::stdOut()
 
 void SystemcallPrivate::stdErr()
 {
-	if (proc_) {
+	if (process_) {
 		char c;
-		proc_->setReadChannel(QProcess::StandardError);
-		while (proc_->getChar(&c)) {
-			errdata_[errindex_++] = c;
-			if (c == '\n' || errindex_ + 1 == bufsize_) {
-				errdata_[errindex_] = '\0';
-				errindex_ = 0;
-				ProgressInterface::instance()->appendError(QString::fromLocal8Bit(errdata_));
+		process_->setReadChannel(QProcess::StandardError);
+		while (process_->getChar(&c)) {
+			errData_[errIndex_++] = c;
+			if (c == '\n' || errIndex_ + 1 == bufferSize_) {
+				errData_[errIndex_] = '\0';
+				errIndex_ = 0;
+				ProgressInterface::instance()->appendError(QString::fromLocal8Bit(errData_));
 				if (terminalErrExists_)
-					cerr << errdata_;
+					cerr << errData_;
 			}
 		}
 	}
@@ -431,11 +433,11 @@ void SystemcallPrivate::processError(QProcess::ProcessError)
 
 QString SystemcallPrivate::errorMessage() const 
 {
-	if (!proc_)
+	if (!process_)
 		return "No QProcess available";
 
 	QString message;
-	switch (proc_->error()) {
+	switch (process_->error()) {
 		case QProcess::FailedToStart:
 			message = "The process failed to start. Either the invoked program is missing, "
 				      "or you may have insufficient permissions to invoke the program.";
@@ -465,11 +467,11 @@ QString SystemcallPrivate::errorMessage() const
 
 QString SystemcallPrivate::exitStatusMessage() const
 {
-	if (!proc_)
+	if (!process_)
 		return "No QProcess available";
 
 	QString message;
-	switch (proc_->exitStatus()) {
+	switch (process_->exitStatus()) {
 		case QProcess::NormalExit:
 			message = "The process exited normally.";
 			break;
@@ -486,24 +488,24 @@ QString SystemcallPrivate::exitStatusMessage() const
 
 int SystemcallPrivate::exitCode()
 {
-	if (!proc_)
+	if (!process_)
 		return -1;
 
-	return proc_->exitCode();
+	return process_->exitCode();
 }
 
 
 QProcess* SystemcallPrivate::releaseProcess()
 {
-	QProcess* released = proc_;
-	proc_ = 0;
+	QProcess* released = process_;
+	process_ = 0;
 	return released;
 }
 
 
 void SystemcallPrivate::killProcess()
 {
-	killProcess(proc_);
+	killProcess(process_);
 }
 
 

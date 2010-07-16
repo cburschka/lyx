@@ -30,6 +30,7 @@ class Systemcall;
 class SystemcallPrivate : public QObject
 {
 	Q_OBJECT
+
 public:
 	SystemcallPrivate(std::string const & outfile);
 	~SystemcallPrivate();
@@ -56,32 +57,6 @@ public:
 	
 	static void killProcess(QProcess * p);
 
-private:
-	/// Pointer to the process to monitor.
-	QProcess * proc_;
-	/// Index to the standard output buffer.
-	size_t outindex_;
-	/// Index to the standard error buffer.
-	size_t errindex_;
-	///
-	std::string outfile;
-	/// Size of buffers.
-	static size_t const bufsize_ = 200;
-	/// Standard output buffer.
-	char outdata_[bufsize_];
-	/// Standard error buffer.
-	char errdata_[bufsize_];
-	/// 
-	bool terminalErrExists_;
-	/// 
-	bool terminalOutExists_;
-	bool process_events;
-	QString cmd_;
-
-	void waitAndProcessEvents();
-	void processEvents();
-
-	void killProcess();
 
 public Q_SLOTS:
 	void stdOut();
@@ -90,7 +65,33 @@ public Q_SLOTS:
 	void processStarted();
 	void processFinished(int, QProcess::ExitStatus status);
 
-Q_SIGNALS:
+
+private:
+	/// Pointer to the process to monitor.
+	QProcess * process_;
+
+	/// Index to the standard output buffer.
+	size_t outIndex_;
+	/// Index to the standard error buffer.
+	size_t errIndex_;
+	///
+	std::string outFile_;
+
+	/// Size of buffers.
+	static size_t const bufferSize_ = 200;
+	/// Standard output buffer.
+	char outData_[bufferSize_];
+	/// Standard error buffer.
+	char errData_[bufferSize_];
+
+	bool terminalErrExists_;
+	bool terminalOutExists_;
+
+	bool processEvents_;
+	void waitAndProcessEvents();
+	void processEvents();
+	void killProcess();
+	QString cmd_;
 
 };
 
