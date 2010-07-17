@@ -81,7 +81,7 @@ SET(_potfiles_dep)
 file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in "")
 file(GLOB_RECURSE _tmp_potfiles RELATIVE ${TOP_SRC_DIR}/ ${TOP_SRC_DIR}/src/*.h  ${TOP_SRC_DIR}/src/*.cpp  ${TOP_SRC_DIR}/src/*.cpp.in)
 list(SORT _tmp_potfiles)
-#list(REMOVE_ITEM _tmp_potfiles src/support/Package.cpp)
+list(REMOVE_ITEM _tmp_potfiles src/support/Package.cpp)
 
 foreach(_f ${_tmp_potfiles})
   # we don't need to select only relevant files because the outcome of xgettext
@@ -107,7 +107,6 @@ file(GLOB LYX_BASE_PO_FILES RELATIVE ${TOP_SRC_DIR}/po ${TOP_SRC_DIR}/po/*.po)
 set(LYX_PO_FILES)
 SET(LYX_UPDATED_PO_FILES)
 SET(LYX_DEST_PO ${TOP_SRC_DIR}/po)
-#SET(LYX_DEST_PO /tmp)
 
 foreach(_pofile ${LYX_BASE_PO_FILES})
   add_custom_command(
@@ -118,11 +117,11 @@ foreach(_pofile ${LYX_BASE_PO_FILES})
   list(APPEND LYX_PO_FILES ${CMAKE_CURRENT_BINARY_DIR}/${_pofile})
 endforeach(_pofile)
 
-foreach(_pofile ${LYX_BASE_PO_FILES} ${_lyxname}.pot)
+foreach(_pofile ${LYX_BASE_PO_FILES})
   add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}.copied
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_BINARY_DIR}/${_pofile} ${LYX_DEST_PO}/${_pofile}
-    COMMAND  ${CMAKE_COMMAND} -E touch ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}.copied
+    COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} ${_pofile} ${_lyxname}.pot -o ${_pofile}.copied
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}.copied ${LYX_DEST_PO}/${_pofile}
     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}
     )
   list(APPEND LYX_UPDATED_PO_FILES ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}.copied)
@@ -132,6 +131,7 @@ GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot ALL ${LY
 
 # ALL omitted here, to prevent from automatic creation
 ADD_CUSTOM_TARGET(update_po_files DEPENDS ${LYX_UPDATED_PO_FILES})
+add_dependencies(update_po_files translations)
 
 # ADD_POFILES("lyx")
 
