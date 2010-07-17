@@ -286,7 +286,6 @@ src_support_header_files = Split('''
     bind.h
     convert.h
     copied_ptr.h
-    CryptographicEncryption.h
     debug.h
     docstream.h
     docstring.h
@@ -332,7 +331,6 @@ src_support_header_files = Split('''
 
 src_support_files = Split('''
     convert.cpp
-    CryptographicEncryption.cpp
     debug.cpp
     docstream.cpp
     docstring.cpp
@@ -727,7 +725,6 @@ src_frontends_qt4_header_files = Split('''
     GuiDelimiter.h
     GuiDialog.h
     GuiDocument.h
-    GuiEncryptionDialog.h
     GuiErrorList.h
     GuiERT.h
     GuiExternal.h
@@ -829,7 +826,6 @@ src_frontends_qt4_files = Split('''
     GuiDelimiter.cpp
     GuiDialog.cpp
     GuiDocument.cpp
-    GuiEncryptionDialog.cpp
     GuiErrorList.cpp
     GuiERT.cpp
     GuiExternal.cpp
