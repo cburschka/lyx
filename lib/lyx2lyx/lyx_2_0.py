@@ -1916,20 +1916,15 @@ def revert_IEEEtran(document):
   " Convert IEEEtran layouts and styles to TeX code "
   if document.textclass != "IEEEtran":
     return
-
   revert_flex_inset(document, "IEEE membership", "\\IEEEmembership", 0)
   revert_flex_inset(document, "Lowercase", "\\MakeLowercase", 0)
-
   layouts = ("Special Paper Notice", "After Title Text", "Publication ID",
              "Page headings", "Biography without photo")
-
   latexcmd = {"Special Paper Notice": "\\IEEEspecialpapernotice",
               "After Title Text":     "\\IEEEaftertitletext",
               "Publication ID":       "\\IEEEpubid"}
-
   obsoletedby = {"Page headings":            "MarkBoth",
                  "Biography without photo":  "BiographyNoPhoto"}
-
   for layout in layouts:
     i = 0
     while True:
@@ -1966,7 +1961,6 @@ def revert_nameref(document):
         break
       cmdloc = i
       i += 1
-      
       # Make sure it is actually in an inset!
       # We could just check document.lines[i-1], but that relies
       # upon something that might easily change.
