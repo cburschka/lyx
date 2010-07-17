@@ -2026,6 +2026,21 @@ def remove_Nameref(document):
     document.body[cmdloc] = "LatexCommand nameref"
 
 
+def revert_mathrsfs(document):
+    " Load mathrsfs if \mathrsfs us use in the document "
+    i = 0
+    end = len(document.body) - 1
+    while True:
+      j = document.body[i].find("\\mathscr{")
+      if j != -1:
+        add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
+        add_to_preamble(document, ["\\usepackage{mathrsfs}"])
+        break
+      if i == end:
+        break
+      i += 1
+
+
 ##
 # Conversion hub
 #
@@ -2082,10 +2097,12 @@ convert = [[346, []],
            [394, []],
            [395, []],
            [396, []],
-           [397, [remove_Nameref]]
+           [397, [remove_Nameref]],
+           [398, []]
           ]
 
-revert =  [[396, []],
+revert =  [[397, [revert_mathrsfs]],
+           [396, []],
            [395, [revert_nameref]],
            [394, [revert_DIN_C_pagesizes]],
            [393, [revert_makebox]],

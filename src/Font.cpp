@@ -57,7 +57,7 @@ namespace {
 
 char const * GUIFamilyNames[NUM_FAMILIES + 2 /* default & error */] =
 { N_("Roman"), N_("Sans Serif"), N_("Typewriter"), N_("Symbol"),
-  "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "eufrak", "wasy", "esint",
+  "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "eufrak", "rsfs", "wasy", "esint",
   N_("Inherit"), N_("Ignore") };
 
 char const * GUISeriesNames[4] =

@@ -100,6 +100,8 @@ void InsetMathFont::validate(LaTeXFeatures & features) const
 		if (key_->name == "text" || key_->name == "textnormal"
 				|| (key_->name.length() == 6 && key_->name.substr(0, 4) == "text"))
 			features.require("amstext");
+		if (key_->name == "mathscr")
+			features.require("mathrsfs"); 
 		if (key_->name == "textipa")
 			features.require("tipa");
 		if (key_->name == "ce" || key_->name == "cf")

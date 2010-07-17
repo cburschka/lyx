@@ -47,6 +47,8 @@ enum FontFamily {
 	///
 	EUFRAK_FAMILY,
 	///
+	RSFS_FAMILY,
+	///
 	WASY_FAMILY,
 	///
 	ESINT_FAMILY,

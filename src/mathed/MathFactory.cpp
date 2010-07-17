@@ -179,6 +179,8 @@ void initSymbols()
 					tmp.requires = from_ascii("amssymb");
 				else if (tmp.inset == "wasy")
 					tmp.requires = from_ascii("wasysym");
+				else if (tmp.inset == "mathscr")
+					tmp.requires = from_ascii("mathrsfs");
 			}
 
 			// symbol font is not available sometimes

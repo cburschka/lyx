@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 397
+\lyxformat 398
 \begin_document
 \begin_header
 \textclass article
@@ -4670,6 +4670,42 @@ listings
  is used by LyX to display program listings (source code snippets).
  It supports many program languages, syntax highlighting, line numbers,
  etc.
+\end_layout
+
+\begin_layout Subsection
+mathrsfs
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "mathrsfs"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/jknappen/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+mathrsfs
+\family default
+ is used by LyX to output the math font style 
+\begin_inset Quotes eld
+\end_inset
+
+formal script
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection

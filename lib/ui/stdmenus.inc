@@ -259,6 +259,7 @@ Menuset
 		Item "Math Normal Font|N" "math-font-style mathnormal"
 		Separator
 		Item "Math Calligraphic Family|C" "math-font-style mathcal"
+		Item "Math Formal Script Family|o" "math-font-style mathscr"
 		Item "Math Fraktur Family|F" "math-font-style mathfrak"
 		Item "Math Roman Family|R" "math-font-style mathrm"
 		Item "Math Sans Serif Family|S" "math-font-style mathsf"
