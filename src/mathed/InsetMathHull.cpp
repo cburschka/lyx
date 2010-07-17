@@ -1755,6 +1755,7 @@ bool InsetMathHull::readQuiet(Lexer & lex)
 
 int InsetMathHull::plaintext(odocstream & os, OutputParams const &) const
 {
+	// disables ASCII-art for export of equations. See #2275.
 	if (0 && display()) {
 		Dimension dim;
 		TextMetricsInfo mi;
