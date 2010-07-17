@@ -56,6 +56,18 @@ LYX_OPTION(SHARED_LIBRARIES "Build shared libraries" OFF ALL)
 
 message(STATUS)
 
+
+if(LYX_INSTALL)
+	set(LYX_ASPELL ON CACHE BOOL "Aspell option" FORCE)
+	set(LYX_NLS ON CACHE BOOL "Nls option" FORCE)
+	set(LYX_NO_CONSOLE ON CACHE BOOL "No console option" FORCE)
+	set(LYX_PACKAGE_SUFFIX ON CACHE BOOL "Package suffix option" FORCE)
+	set(LYX_RELEASE ON CACHE BOOL "Release option" FORCE)
+	set(LYX_DEBUG OFF CACHE BOOL "Debug option" FORCE)
+	set(LYX_PROFILE OFF CACHE BOOL "Profile option" FORCE)
+endif()
+
+
 set(EXECUTABLE_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/lib)
 
