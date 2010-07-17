@@ -183,6 +183,7 @@ private Q_SLOTS:
 	void on_firstKeymapPB_clicked(bool);
 	void on_secondKeymapPB_clicked(bool);
 	void on_keymapCB_toggled(bool);
+	void on_scrollzoomEnableCB_toggled(bool);
 
 private:
 	QString testKeymap(QString const & keymap);

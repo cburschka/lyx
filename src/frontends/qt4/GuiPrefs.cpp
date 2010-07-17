@@ -460,6 +460,10 @@ PrefInput::PrefInput(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(mouseWheelSpeedSB, SIGNAL(valueChanged(double)),
 		this, SIGNAL(changed()));
+	connect(scrollzoomEnableCB, SIGNAL(clicked()),
+			this, SIGNAL(changed()));
+	connect(scrollzoomValueCO, SIGNAL(activated(int)),
+			this, SIGNAL(changed()));
 }
 
 
@@ -470,6 +474,21 @@ void PrefInput::apply(LyXRC & rc) const
 	rc.primary_kbmap = internal_path(fromqstr(firstKeymapED->text()));
 	rc.secondary_kbmap = internal_path(fromqstr(secondKeymapED->text()));
 	rc.mouse_wheel_speed = mouseWheelSpeedSB->value();
+	if (scrollzoomEnableCB->isChecked()) {
+		switch (scrollzoomValueCO->currentIndex()) {
+		case 0:
+			rc.scroll_whell_zoom = LyXRC::SCROLL_WHEEL_ZOOM_CTRL;
+			break;
+		case 1:
+			rc.scroll_whell_zoom = LyXRC::SCROLL_WHEEL_ZOOM_SHIFT;
+			break;
+		case 2:
+			rc.scroll_whell_zoom = LyXRC::SCROLL_WHEEL_ZOOM_OPTION;
+			break;
+		}
+	} else {
+		rc.scroll_whell_zoom = LyXRC::SCROLL_WHEEL_ZOOM_OFF;
+	}
 }
 
 
@@ -480,6 +499,23 @@ void PrefInput::update(LyXRC const & rc)
 	firstKeymapED->setText(toqstr(external_path(rc.primary_kbmap)));
 	secondKeymapED->setText(toqstr(external_path(rc.secondary_kbmap)));
 	mouseWheelSpeedSB->setValue(rc.mouse_wheel_speed);
+	switch (rc.scroll_whell_zoom) {
+	case LyXRC::SCROLL_WHEEL_ZOOM_OFF:
+		scrollzoomEnableCB->setChecked(false);
+		break;
+	case LyXRC::SCROLL_WHEEL_ZOOM_CTRL:
+		scrollzoomEnableCB->setChecked(true);
+		scrollzoomValueCO->setCurrentIndex(0);
+		break;
+	case LyXRC::SCROLL_WHEEL_ZOOM_SHIFT:
+		scrollzoomEnableCB->setChecked(true);
+		scrollzoomValueCO->setCurrentIndex(1);
+		break;
+	case LyXRC::SCROLL_WHEEL_ZOOM_OPTION:
+		scrollzoomEnableCB->setChecked(true);
+		scrollzoomValueCO->setCurrentIndex(2);
+		break;
+	}
 }
 
 
@@ -516,6 +552,12 @@ void PrefInput::on_keymapCB_toggled(bool keymap)
 }
 
 
+void PrefInput::on_scrollzoomEnableCB_toggled(bool enabled)
+{
+	scrollzoomValueCO->setEnabled(enabled);
+}
+	
+	
 /////////////////////////////////////////////////////////////////////
 //
 // PrefCompletion

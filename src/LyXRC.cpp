@@ -173,6 +173,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\screen_font_typewriter_foundry", LyXRC::RC_SCREEN_FONT_TYPEWRITER_FOUNDRY },
 	{ "\\screen_zoom", LyXRC::RC_SCREEN_ZOOM },
 	{ "\\scroll_below_document", LyXRC::RC_SCROLL_BELOW_DOCUMENT },
+	{ "\\scroll_whell_zoom", LyXRC::RC_SCROLL_WHEEL_ZOOM },
 	{ "\\serverpipe", LyXRC::RC_SERVERPIPE },
 	{ "\\set_color", LyXRC::RC_SET_COLOR },
 	{ "\\show_banner", LyXRC::RC_SHOW_BANNER },
@@ -320,6 +321,7 @@ void LyXRC::setDefaults()
 	date_insert_format = "%x";
 	cursor_follows_scrollbar = false;
 	scroll_below_document = false;
+	scroll_whell_zoom = SCROLL_WHEEL_ZOOM_CTRL;
 	paragraph_markers = false;
 	mac_like_word_movement = false;
 	macro_edit_style = MACRO_EDIT_INLINE_BOX;
@@ -1191,6 +1193,23 @@ int LyXRC::read(Lexer & lexrc)
 					export_overwrite = NO_FILES;
 					if (tmp != "ask" && tmp != "false")
 						LYXERR0("Unrecognized export_overwrite status \""
+						       << tmp << '"');
+				}
+			}
+			break;
+		case RC_SCROLL_WHEEL_ZOOM:
+			if (lexrc.next()) {
+				string const tmp = lexrc.getString();
+				if (tmp == "ctrl")
+					scroll_whell_zoom = SCROLL_WHEEL_ZOOM_CTRL;
+				else if (tmp == "shift")
+					scroll_whell_zoom = SCROLL_WHEEL_ZOOM_SHIFT;
+				else if (tmp == "option")
+					scroll_whell_zoom = SCROLL_WHEEL_ZOOM_OPTION;
+				else {
+					scroll_whell_zoom = SCROLL_WHEEL_ZOOM_OFF;
+					if (tmp != "off" && tmp != "false")
+						LYXERR0("Unrecognized scroll_whell_zoom status \""
 						       << tmp << '"');
 				}
 			}
@@ -2571,6 +2590,29 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 
+	case RC_SCROLL_WHEEL_ZOOM:
+		if (ignore_system_lyxrc ||
+		    scroll_whell_zoom != system_lyxrc.scroll_whell_zoom) {
+			string status;
+			switch (scroll_whell_zoom) {
+			case SCROLL_WHEEL_ZOOM_OFF:
+				status = "off";
+				break;
+			case SCROLL_WHEEL_ZOOM_CTRL:
+				status = "ctrl";
+				break;
+			case SCROLL_WHEEL_ZOOM_SHIFT:
+				status = "shift";
+				break;
+			case SCROLL_WHEEL_ZOOM_OPTION:
+				status = "option";
+				break;
+			}
+			os << "\\scroll_whell_zoom " << status << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+
 		os << "\n#\n"
 		   << "# FORMATS SECTION ##########################\n"
 		   << "#\n\n";
@@ -2909,6 +2951,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_FORWARD_SEARCH_PDF:
 	case LyXRC::RC_EXPORT_OVERWRITE:
 	case LyXRC::RC_DEFAULT_DECIMAL_POINT:
+	case LyXRC::RC_SCROLL_WHEEL_ZOOM:
 	case LyXRC::RC_LAST:
 		break;
 	}

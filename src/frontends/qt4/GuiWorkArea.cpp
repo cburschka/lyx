@@ -817,7 +817,24 @@ void GuiWorkArea::wheelEvent(QWheelEvent * ev)
 	// Wheel rotation by one notch results in a delta() of 120 (see
 	// documentation of QWheelEvent)
 	double const delta = ev->delta() / 120.0;
-	if (ev->modifiers() & Qt::ControlModifier) {
+	bool zoom = false;
+	switch (lyxrc.scroll_whell_zoom) {
+	case LyXRC::SCROLL_WHEEL_ZOOM_CTRL:
+		zoom = ev->modifiers() & Qt::ControlModifier;
+		zoom &= !(ev->modifiers() & (Qt::ShiftModifier || Qt::AltModifier));
+		break;
+	case LyXRC::SCROLL_WHEEL_ZOOM_SHIFT:
+		zoom = ev->modifiers() & Qt::ShiftModifier;
+		zoom &= !(ev->modifiers() & (Qt::ControlModifier || Qt::AltModifier));
+		break;
+	case LyXRC::SCROLL_WHEEL_ZOOM_OPTION:
+		zoom = ev->modifiers() & Qt::AltModifier;
+		zoom &= !(ev->modifiers() & (Qt::ShiftModifier || Qt::ControlModifier));
+		break;
+	case LyXRC::SCROLL_WHEEL_ZOOM_OFF:
+		break;
+	}
+	if (zoom) {
 		docstring arg = convert<docstring>(int(5 * delta));
 		lyx::dispatch(FuncRequest(LFUN_BUFFER_ZOOM_IN, arg));
 		return;

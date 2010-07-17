@@ -156,6 +156,7 @@ public:
 		RC_SCREEN_FONT_TYPEWRITER_FOUNDRY,
 		RC_SCREEN_ZOOM,
 		RC_SCROLL_BELOW_DOCUMENT,
+		RC_SCROLL_WHEEL_ZOOM,
 		RC_SERVERPIPE,
 		RC_SET_COLOR,
 		RC_SHOW_BANNER,
@@ -502,6 +503,15 @@ public:
 	int export_overwrite;
 	/// Default decimal point when aligning table columns on decimal
 	std::string default_decimal_point;
+	///
+	enum ScrollWheelZoom {
+		SCROLL_WHEEL_ZOOM_OFF,
+		SCROLL_WHEEL_ZOOM_CTRL,
+		SCROLL_WHEEL_ZOOM_SHIFT,
+		SCROLL_WHEEL_ZOOM_OPTION
+	};
+	///
+	ScrollWheelZoom scroll_whell_zoom;
 };
 
 
