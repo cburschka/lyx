@@ -94,8 +94,6 @@ Function SearchLaTeX
 
 FunctionEnd
 
-!endif
-
 #--------------------------------
 # JabRef
 

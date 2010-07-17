@@ -45,9 +45,6 @@ Section -InstallData
   WriteRegStr SHELL_CONTEXT ${APP_REGKEY} "Version" "${APP_VERSION_NUMBER}"
 
   WriteRegStr SHELL_CONTEXT ${APP_REGKEY_SETUP} "LaTeX Path" $PathLaTeX
-  WriteRegStr SHELL_CONTEXT ${APP_REGKEY_SETUP} "ImageMagick Path" $PathImageMagick
-  WriteRegStr SHELL_CONTEXT ${APP_REGKEY_SETUP} "Ghostscript Path" $PathGhostscript
-  WriteRegStr SHELL_CONTEXT ${APP_REGKEY_SETUP} "LyX Language" $LangName
 
   # Start Menu shortcut
   # There is only one shortcut to the application, so it should be in the main group
@@ -85,23 +82,10 @@ Section -Configure
 
   # Path prefix
 
-  StrCpy $PathPrefix "$INSTDIR\bin;$INSTDIR\python"
-  
-  !ifdef BUNDLE_IMAGEMAGICK
-    StrCpy $PathImageMagick "$INSTDIR\imagemagick"
-  !endif
-  !ifdef BUNDLE_GHOSTSCRIPT
-    StrCpy $PathGhostscript "$INSTDIR\ghostscript"
-  !endif  
+  StrCpy $PathPrefix "$INSTDIR\bin;$INSTDIR\python;$INSTDIR\imagemagick;$INSTDIR\ghostscript"
   
   ${If} $PathLaTeX != ""
     StrCpy $PathPrefix "$PathPrefix;$PathLaTeX"
-  ${EndIf}
-  ${If} $PathGhostscript != ""
-    StrCpy $PathPrefix "$PathPrefix;$PathGhostscript"
-  ${EndIf}
-  ${If} $PathImageMagick != ""
-    StrCpy $PathPrefix "$PathPrefix;$PathImageMagick"
   ${EndIf}
   ${If} $PathBibTeXEditor != ""
     StrCpy $PathPrefix "$PathPrefix;$PathBibTeXEditor"

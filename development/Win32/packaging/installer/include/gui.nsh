@@ -38,12 +38,6 @@ BrandingText " "
 
 Page custom PageReinstall PageReinstallValidate
 Page custom PageExternalLaTeX PageExternalLaTeXValidate
-!ifndef BUNDLE_IMAGEMAGICK
-Page custom PageExternalImageMagick PageExternalImageMagickValidate
-!endif
-!ifndef BUNDLE_GHOSTSCRIPT
-Page custom PageExternalGhostscript PageExternalGhostscriptValidate
-!endif
 
 !define MUI_PAGE_HEADER_TEXT $(TEXT_DICT_TITLE)
 !define MUI_PAGE_HEADER_SUBTEXT $(TEXT_DICT_SUBTITLE)

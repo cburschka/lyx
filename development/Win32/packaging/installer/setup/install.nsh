@@ -301,23 +301,11 @@ Function InitExternal
   # Get sizes of external component installers
   
   SectionGetSize ${ExternalLaTeX} $SizeLaTeX
-  !ifndef BUNDLE_IMAGEMAGICK
-    SectionGetSize ${ExternalImageMagick} $SizeImageMagick
-  !endif
-  !ifndef BUNDLE_GHOSTSCRIPT
-    SectionGetSize ${ExternalGhostscript} $SizeGhostscript
-  !endif
   
   # Add download size
   
   !ifndef BUNDLESETUP_MIKTEX
     IntOp $SizeLaTeX $SizeLaTeX + ${SIZE_DOWNLOAD_LATEX}
-  !endif
-  !ifndef BUNDLE_IMAGEMAGICK & BUNDLESETUP_IMAGEMAGICK
-    IntOp $SizeImagemagick $SizeImagemagick + ${SIZE_DOWNLOAD_IMAGEMAGICK}
-  !endif
-  !ifndef BUNDLE_GHOSTSCRIPT & BUNDLESETUP_GHOSTSCRIPT
-    IntOp $SizeGhostscript $SizeGhostscript + ${SIZE_DOWNLOAD_GHOSTSCRIPT}
   !endif
 
 FunctionEnd

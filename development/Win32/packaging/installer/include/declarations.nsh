@@ -14,7 +14,7 @@ SetCompressor /SOLID lzma
 !ifdef FilesLyX
   !define FILES_LYX "${FilesLyX}"
 !else
-  !define FILES_LYX "..\..\..\..\..\lyx-1.6.8-install"
+  !define FILES_LYX "..\..\..\..\..\lyx-1.6.7-install"
 !endif
 
 !ifdef FilesDeps
