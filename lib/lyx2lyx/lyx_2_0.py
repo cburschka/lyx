@@ -1913,7 +1913,7 @@ def revert_use_makebox(document):
 
 
 def convert_use_makebox(document):
-  " Deletes use_makebox option of boxes "
+  " Adds use_makebox option for boxes "
   i = 0
   while 1:
     # remove the option use_makebox
