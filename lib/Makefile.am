@@ -288,6 +288,7 @@ dist_fonts_DATA = \
 	fonts/msam10.ttf \
 	fonts/msbm10.ttf \
 	fonts/ReadmeBaKoMa4LyX.txt \
+	fonts/rsfs10.ttf \
 	fonts/wasy10.ttf
 
 imagesdir = $(pkgdatadir)/images

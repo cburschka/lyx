@@ -1399,6 +1399,7 @@ lib_fonts_files = Split('''
     msam10.ttf
     msbm10.ttf
     ReadmeBaKoMa4LyX.txt
+    rsfs10.ttf
     wasy10.ttf
 ''')
 
