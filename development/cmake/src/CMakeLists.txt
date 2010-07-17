@@ -74,7 +74,9 @@ lyx_add_msvc_pch(lyx)
 
 
 if (LYX_MERGE_FILES)
-	list(REMOVE_ITEM lyx_sources ${dont_merge})
+	if(dont_merge)
+		list(REMOVE_ITEM lyx_sources ${dont_merge})
+	endif()
 	lyx_const_touched_files(_allinone lyx_sources)
 	set(lyx_sources ${_allinone_files} ${dont_merge})
 endif()
