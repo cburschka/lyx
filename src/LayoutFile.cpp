@@ -103,10 +103,8 @@ bool LayoutFileList::read()
 	LYXERR(Debug::TCLASS, "Reading textclasses from `" << real_file << "'.");
 
 	if (real_file.empty()) {
-		LYXERR0("LayoutFileList::Read: unable to find textclass file  `"
-		    << makeDisplayPath(real_file.absFileName(), 1000)
-		    << "'.");
-		success = false;
+		LYXERR0("LayoutFileList::Read: unable to find textclass file  "
+		    << "`textclass.lst'.";
 	} else if (!lex.setFile(real_file)) {
 		LYXERR0("LayoutFileList::Read: lyxlex was not able to set file: "
 		       << real_file << '.');
