@@ -45,10 +45,10 @@ MACRO(GETTEXT_CREATE_TRANSLATIONS _potFile _firstPoFile)
       SET(_gmoFile ${CMAKE_CURRENT_BINARY_DIR}/${_lang}.gmo)
 
       ADD_CUSTOM_COMMAND( 
-         OUTPUT ${_gmoFile} ${_absFile}.new
-         COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --quiet -o ${_absFile}.new -s ${_absFile} ${_absPotFile}
-         COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${_gmoFile} ${_absFile}.new
-         DEPENDS ${_absPotFile} ${_absFile}
+         OUTPUT ${_gmoFile} 
+         COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --quiet --update --backup=none ${_absFile} ${_absPotFile}
+         COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${_gmoFile} ${_absFile}
+         DEPENDS ${_absPotFile} ${_absFile} 
       )
 
       INSTALL(FILES ${_gmoFile} DESTINATION ${LYX_ABS_INSTALLED_LOCALEDIR}/${_lang}/LC_MESSAGES RENAME ${_potBasename}.mo) 

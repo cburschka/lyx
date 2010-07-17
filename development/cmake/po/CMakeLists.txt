@@ -120,8 +120,8 @@ endforeach(_pofile)
 foreach(_pofile ${LYX_BASE_PO_FILES})
   add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}.copied
-    COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} ${_pofile} ${_lyxname}.pot -o ${_pofile}.copied
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}.copied ${LYX_DEST_PO}/${_pofile}
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_BINARY_DIR}/${_pofile} ${LYX_DEST_PO}/${_pofile}
+    COMMAND ${CMAKE_COMMAND} -E touch ${_pofile}.copied
     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}
     )
   list(APPEND LYX_UPDATED_PO_FILES ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}.copied)
