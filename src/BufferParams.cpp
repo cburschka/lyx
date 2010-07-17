@@ -1288,7 +1288,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		features.useLanguage(default_language);
 
 	ostringstream language_options;
-	bool const use_babel = features.useBabel();
+	bool const use_babel = features.useBabel() && !tclass.provides("babel");
 	if (use_babel) {
 		language_options << features.getLanguages();
 		if (!language->babel().empty()) {

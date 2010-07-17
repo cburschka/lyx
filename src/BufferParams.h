@@ -79,7 +79,7 @@ public:
 	void validate(LaTeXFeatures &) const;
 
 	/** \returns true if the babel package is used (interogates
-	 *  the BufferParams and a LyXRC variable).
+	 *  the BufferParams, a LyXRC variable, and the document class).
 	 *  This returned value can then be passed to the insets...
 	 */
 	bool writeLaTeX(odocstream &, LaTeXFeatures &, TexRow &,
