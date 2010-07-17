@@ -178,6 +178,16 @@ public:
 	/// check for zipped file
 	bool isZippedFile() const;
 
+	/// check for zipped file
+	bool isEncryptedFile() const;
+	/// string which encypted LyX files starts
+	static std::string encryptionGuessString();
+	static std::string encryptionPrefix(int version, int keytype);
+	/// get version from guessbytes
+	int encryptionVersion() const;
+	/// get method how the key is generated
+	int encryptionKeytype() const;
+
 	static FileName fromFilesystemEncoding(std::string const & name);
 	/// (securely) create a temporary file with the given mask.
 	/// \p mask must be in filesystem encoding, if it contains a

@@ -49,7 +49,8 @@ include_directories(${TOP_SRC_DIR}/src/support
 	${TOP_SRC_DIR}/src/support/mythes
 	${QT_INCLUDES}
 	${ICONV_INCLUDE_DIR}
-	${ZLIB_INCLUDE_DIR})
+	${ZLIB_INCLUDE_DIR}
+	${OPENSSL_INCLUDE_DIR})
 
 
 if(NOT LYX_MERGE_FILES)
@@ -70,7 +71,7 @@ else()
 		${support_mythes_sources} ${support_linkback_sources} ${support_headers} ${dont_merge})
 endif()
 
-target_link_libraries(support ${Lyx_Boost_Libraries} ${QT_QTCORE_LIBRARY} ${ZLIB_LIBRARY})
+target_link_libraries(support ${Lyx_Boost_Libraries} ${QT_QTCORE_LIBRARY} ${ZLIB_LIBRARY} ${OPENSSL_LIBRARIES})
 
 lyx_add_gcc_pch(support)
 

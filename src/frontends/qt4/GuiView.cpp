@@ -29,7 +29,7 @@
 #include "LayoutBox.h"
 #include "Menus.h"
 #include "TocModel.h"
-
+#include "GuiProgress.h"
 #include "qt_helpers.h"
 
 #include "frontends/alert.h"
@@ -62,6 +62,7 @@
 #include "Text.h"
 #include "Toolbars.h"
 #include "version.h"
+#include "GuiEncryptionDialog.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -79,7 +80,8 @@
 #include "support/Systemcall.h"
 #include "support/Timeout.h"
 #include "support/ProgressInterface.h"
-#include "GuiProgress.h"
+#include "support/CryptographicEncryption.h"
+
 
 #include <QAction>
 #include <QApplication>
@@ -106,8 +108,10 @@
 #include <QToolBar>
 #include <QUrl>
 #include <QScrollBar>
-
-
+#include <QLineEdit>
+#include <QHBoxLayout>
+#include <QDialog>
+#include <QFile>
 
 #define EXPORT_in_THREAD 1
 
@@ -1480,6 +1484,10 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 	}
 
+	case LFUN_BUFFER_WRITE_ENCRYPTED:
+		enable = doc_buffer;
+		break;
+
 	case LFUN_BUFFER_WRITE_AS:
 		enable = doc_buffer;
 		break;
@@ -1704,10 +1712,70 @@ static FileName selectTemplateFile()
 	return FileName(fromqstr(result.second));
 }
 
+/// checks if the file is encrypted and creates a decrypted tmp file
+#define LYX_ENC_VERSION 1
+static FileName decryptedFileName(FileName const & filename)
+{
+	if (!filename.isEncryptedFile()) {
+		return filename;
+	}
 
-Buffer * GuiView::loadDocument(FileName const & filename, bool tolastfiles)
+	int encVersion = filename.encryptionVersion();
+	if (encVersion < 0 || encVersion > LYX_ENC_VERSION) {
+		Alert::error(_("Encryption"), _("This LyX program is to old to read encrypted file."));
+		return filename;
+	}
+
+	QByteArray encrypted;
+	QFile file(toqstr(filename.absFileName()));
+	if (file.open(QIODevice::ReadOnly)) {
+		encrypted = file.readAll();
+	} else {
+		return filename;
+	}
+
+	QByteArray key;
+	CryptographicEncryption enc;
+
+	int keytype = filename.encryptionKeytype();
+	if (keytype == CryptographicEncryption::Password) {
+		GuiEncryptionDialog dlg;
+		dlg.setWindowTitle(qt_("Enter Password"));
+		dlg.exec();
+		QString pwd = dlg.password();				
+		key = enc.stringToKey(pwd);
+	} else {
+		Alert::error(_("Encryption"), _("Don't know how to generate decryption key."));
+		return filename;
+	}
+
+	// remove the encryption prefix
+	encrypted.remove(0, FileName::encryptionPrefix(LYX_ENC_VERSION, 1).size());
+
+	QByteArray decrypted;
+	if (!enc.decyrpt(encrypted, &decrypted, key)) {
+		Alert::error(_("Encryption"), _("Error when decryting file."));
+		return filename;
+	}
+
+	// TODO decrypt in memory
+	// TODO find a better solution than showing the
+	// generated filename
+	FileName tempDecrypted = FileName::tempName();
+	QFile defile(toqstr(tempDecrypted.absFileName()));
+	if (defile.open(QIODevice::WriteOnly)) {
+		defile.write(decrypted);
+	}
+
+	return tempDecrypted;
+}
+
+
+Buffer * GuiView::loadDocument(FileName const & filenameIn, bool tolastfiles)
 {
 	setBusy(true);
+
+	FileName filename = decryptedFileName(filenameIn);
 
 	Buffer * newBuffer = checkAndLoadLyXFile(filename);
 
@@ -2178,7 +2246,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 }
 
 
-bool GuiView::saveBuffer(Buffer & b)
+bool GuiView::saveBuffer(Buffer & b, ostream* stream)
 {
 	if (workArea(b) && workArea(b)->inDialogMode())
 		return true;
@@ -2186,7 +2254,7 @@ bool GuiView::saveBuffer(Buffer & b)
 	if (b.isUnnamed())
 		return renameBuffer(b, docstring());
 
-	if (b.save()) {
+	if ( (stream ? b.write(*stream) : b.save()) ) {
 		theSession().lastFiles().add(b.fileName());
 		return true;
 	}
@@ -2212,9 +2280,125 @@ bool GuiView::saveBuffer(Buffer & b)
 		return false;
 	}
 
-	return saveBuffer(b);
+	return saveBuffer(b, stream);
 }
 
+
+bool GuiView::saveBufferEncrypted(Buffer & b)
+{
+	FileName fname = b.fileName();
+
+	// Switch to this Buffer.
+	setBuffer(&b);
+
+	// No argument? Ask user through dialog.
+	// FIXME UNICODE
+	FileDialog dlg(qt_("Choose a filename to export document"),
+				LFUN_BUFFER_WRITE_AS);
+	dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
+	dlg.setButton2(qt_("Templates|#T#t"), toqstr(lyxrc.template_path));
+
+	if (!isLyXFileName(fname.absFileName()))
+		fname.changeExtension(".lyx");
+
+	FileDialog::Result result =
+		dlg.save(toqstr(fname.onlyPath().absFileName()),
+				QStringList(qt_("LyX Documents (*.lyx)")),
+					toqstr(fname.onlyFileName()));
+
+	if (result.first == FileDialog::Later)
+		return false;
+
+	fname.set(fromqstr(result.second));
+
+	if (fname.empty())
+		return false;
+
+	if (!isLyXFileName(fname.absFileName()))
+		fname.changeExtension(".lyx");
+
+
+	// fname is now the new Buffer location.
+	if (FileName(fname).exists()) {
+		docstring const file = makeDisplayPath(fname.absFileName(), 30);
+		docstring text = bformat(_("The document %1$s already "
+					   "exists.\n\nDo you want to "
+					   "overwrite that document?"), 
+					 file);
+		int const ret = Alert::prompt(_("Overwrite document?"),
+			text, 0, 2, _("&Overwrite"), _("&Rename"), _("&Cancel"));
+		switch (ret) {
+		case 0: break;
+		case 1: break;
+		case 2: return false;
+		}
+	}
+
+	FileName oldauto = b.getAutosaveFileName();
+
+	// bring the autosave file with us, just in case.
+	b.moveAutosaveFile(oldauto);
+	
+	stringbuf stringBuffer(ios::out|ios::trunc);
+	ostream stream(&stringBuffer);
+	if (!saveBuffer(b, &stream)) {
+		return false;
+	}
+
+	// the file has now been saved to the new location.
+	// we need to check that the locations of child buffers
+	// are still valid.
+	b.checkChildBuffers();
+
+	// get password
+	GuiEncryptionDialog pwddlg;
+	pwddlg.setWindowTitle(qt_("Enter Password"));
+	pwddlg.exec();
+	if (pwddlg.result() != QDialog::Accepted)
+		return false;
+	QString pwd = pwddlg.password();
+
+	pwddlg.setWindowTitle(qt_("Enter Password again"));
+	pwddlg.clearPassword();
+	pwddlg.exec();
+	if (pwddlg.result() != QDialog::Accepted)
+		return false;
+	QString pwd2 = pwddlg.password();
+	
+	if (pwd != pwd2) {
+		Alert::error(_("Password"), _("Passwords do not match"));
+		return false;
+	}
+
+	string fileString = stringBuffer.str();
+	QByteArray data(fileString.c_str(), fileString.size());
+
+	CryptographicEncryption enc;
+	QByteArray key = enc.stringToKey(pwd);
+
+	QByteArray encrypted;
+	if (!enc.encyrpt(data, &encrypted, key)) {
+		Alert::error(_("Encryption"), _("Error when encrypting file"));
+		return false;
+	}
+	
+	// check
+	QByteArray decrypted;
+	if (!enc.decyrpt(encrypted, &decrypted, key) || data != decrypted) {
+		Alert::error(_("Encryption"), _("Error when verifying encrypted file"));
+		return false;
+	}
+
+	QString guessStr = toqstr(FileName::encryptionPrefix(LYX_ENC_VERSION, CryptographicEncryption::Password));
+	QByteArray bytestoSave = guessStr.toAscii() + encrypted;
+
+	QFile file(toqstr(fname.absFileName()));
+	if (file.open(QIODevice::WriteOnly)) {
+		file.write(bytestoSave);
+	}
+
+	return true;
+}
 
 bool GuiView::hideWorkArea(GuiWorkArea * wa)
 {
@@ -3058,6 +3242,11 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		case LFUN_BUFFER_WRITE:
 			LASSERT(doc_buffer, break);
 			saveBuffer(*doc_buffer);
+			break;
+
+		case LFUN_BUFFER_WRITE_ENCRYPTED:
+			LASSERT(doc_buffer, break);
+			saveBufferEncrypted(*doc_buffer);
 			break;
 
 		case LFUN_BUFFER_WRITE_AS:

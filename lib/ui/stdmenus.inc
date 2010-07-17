@@ -49,6 +49,7 @@ Menuset
 		Item "Close All" "buffer-close-all"
 		Item "Save|S" "buffer-write"
 		Item "Save As...|A" "buffer-write-as"
+#		Item "Save Encrypted" "buffer-write-encrypted"
 		Item "Save All|l" "buffer-write-all"
 		Item "Revert to Saved|R" "buffer-reload"
 		Submenu "Version Control|V" "file_vc"

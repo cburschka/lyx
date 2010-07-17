@@ -38,6 +38,8 @@ liblyxsupport_a_SOURCES = \
 	convert.cpp \
 	convert.h \
 	copied_ptr.h \
+	CryptographicEncryption.h \
+	CryptographicEncryption.cpp \
 	debug.cpp \
 	debug.h \
 	docstream.cpp \

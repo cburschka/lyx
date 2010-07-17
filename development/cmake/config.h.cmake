@@ -20,8 +20,7 @@
 
 #cmakedefine WORDS_BIGENDIAN 1
 
-#cmakedefine HAVE_ASPELL_ASPELL_H 1
-#cmakedefine HAVE_ASPELL_H 1
+
 
 #cmakedefine PACKAGE "${PACKAGE}"
 #cmakedefine PACKAGE_VERSION "${PACKAGE_VERSION}"
@@ -44,6 +43,9 @@
 
 #cmakedefine LYX_USE_TR1 1
 #cmakedefine LYX_USE_TR1_REGEX 1
+
+
+
 
 
 #endif
