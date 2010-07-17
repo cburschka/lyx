@@ -9,7 +9,7 @@ project(po)
 
 include_directories(${TOP_SRC_DIR}/po)
 
-SET(_lyxname ${PACKAGE})
+SET(_lyxname ${LYX_PROJECT})
 SET(_py_sources)
 macro(add_gettext_python  _par _dir)
   set(_sources)
@@ -81,7 +81,7 @@ SET(_potfiles_dep)
 file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in "")
 file(GLOB_RECURSE _tmp_potfiles RELATIVE ${TOP_SRC_DIR}/ ${TOP_SRC_DIR}/src/*.h  ${TOP_SRC_DIR}/src/*.cpp  ${TOP_SRC_DIR}/src/*.cpp.in)
 list(SORT _tmp_potfiles)
-list(REMOVE_ITEM _tmp_potfiles src/support/Package.cpp)
+#list(REMOVE_ITEM _tmp_potfiles src/support/Package.cpp)
 
 foreach(_f ${_tmp_potfiles})
   # we don't need to select only relevant files because the outcome of xgettext
@@ -105,6 +105,10 @@ ADD_CUSTOM_COMMAND(
 # This makes the "svn up" on po-files work again
 file(GLOB LYX_BASE_PO_FILES RELATIVE ${TOP_SRC_DIR}/po ${TOP_SRC_DIR}/po/*.po)
 set(LYX_PO_FILES)
+SET(LYX_UPDATED_PO_FILES)
+SET(LYX_DEST_PO ${TOP_SRC_DIR}/po)
+#SET(LYX_DEST_PO /tmp)
+
 foreach(_pofile ${LYX_BASE_PO_FILES})
   add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}
@@ -114,7 +118,20 @@ foreach(_pofile ${LYX_BASE_PO_FILES})
   list(APPEND LYX_PO_FILES ${CMAKE_CURRENT_BINARY_DIR}/${_pofile})
 endforeach(_pofile)
 
+foreach(_pofile ${LYX_BASE_PO_FILES} ${_lyxname}.pot)
+  add_custom_command(
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}.copied
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_BINARY_DIR}/${_pofile} ${LYX_DEST_PO}/${_pofile}
+    COMMAND  ${CMAKE_COMMAND} -E touch ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}.copied
+    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}
+    )
+  list(APPEND LYX_UPDATED_PO_FILES ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}.copied)
+endforeach(_pofile)
+
 GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot ALL ${LYX_PO_FILES})
+
+# ALL omitted here, to prevent from automatic creation
+ADD_CUSTOM_TARGET(update_po_files DEPENDS ${LYX_UPDATED_PO_FILES})
 
 # ADD_POFILES("lyx")
 
