@@ -85,8 +85,6 @@ endif()
 
 
 
-
-
 # Supress regeneration
 set(CMAKE_SUPPRESS_REGENERATION TRUE)
 
@@ -193,17 +191,10 @@ set(LYX_HPP_FILES *.h)
 
 include(ProjectSourceGroup)
 
-if(LYX_MERGE_FILES)
-	add_definitions(-DLYX_MERGED_BUILD)
-endif()
-
-
-set(CMAKE_BUILD_TYPE Release)
 
 if(LYX_PROFILE)
 	set(CMAKE_BUILD_TYPE Profile CACHE TYPE STRING FORCE)
-	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg"
-            CACHE TYPE STRING FORCE)
+	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg" CACHE TYPE STRING FORCE)
 endif()
 
 if(LYX_RELEASE)
@@ -251,8 +242,6 @@ find_package(ZLIB REQUIRED)
 
 if(LYX_ASPELL)
 	find_package(ASPELL REQUIRED)
-else()
-	find_package(ASPELL)
 endif()
 
 
@@ -282,9 +271,7 @@ if(LYX_NLS)
         add_definitions(-DENABLE_NLS=1)
 endif()
 
-if(ASPELL_FOUND)
-	add_definitions(-DUSE_ASPELL=1)
-endif()
+
 
 if(WIN32)
         if(LYX_NO_CONSOLE)

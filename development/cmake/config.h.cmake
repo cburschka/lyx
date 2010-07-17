@@ -18,10 +18,6 @@
 #include "pcheaders.h"
 #endif
 
-#cmakedefine WORDS_BIGENDIAN 1
-
-#cmakedefine HAVE_ASPELL_ASPELL_H 1
-#cmakedefine HAVE_ASPELL_H 1
 
 #cmakedefine PACKAGE "${PACKAGE}"
 #cmakedefine PACKAGE_VERSION "${PACKAGE_VERSION}"
@@ -42,7 +38,19 @@
 #cmakedefine USE_MACOSX_PACKAGING 1
 #cmakedefine PATH_MAX ${PATH_MAX}
 
+#cmakedefine WORDS_BIGENDIAN 1
+
+#cmakedefine LYX_MERGE_FILES 1
+
+#cmakedefine ASPELL_FOUND 1
+#ifdef ASPELL_FOUND
+#define USE_ASPELL 1
 #endif
+
+
+#endif
+
+
 
 
 // cleanup global namespace
