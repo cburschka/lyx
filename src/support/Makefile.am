@@ -84,6 +84,7 @@ liblyxsupport_a_SOURCES = \
 	ProgressInterface.h \
 	qstring_helpers.cpp \
 	qstring_helpers.h \
+	regex.h \
 	socktools.cpp \
 	socktools.h \
 	strfwd.h \
