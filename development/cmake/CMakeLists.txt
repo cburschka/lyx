@@ -34,12 +34,13 @@ message(STATUS "Switch LYX_* variables by -DLYX_*=1 or 0:")
 message(STATUS)
 LYX_OPTION(NLS "Use nls" OFF ALL)
 LYX_OPTION(ASPELL "Require aspell" OFF ALL)
+LYX_OPTION(AIKSAURUS "Require Aiksaurus" OFF ALL)
 LYX_OPTION(DEBUG "Build debug version" OFF ALL)
 LYX_OPTION(RELEASE "Build release version" ON ALL)
 LYX_OPTION(PROFILE "Build profile version" OFF GCC)
 LYX_OPTION(USE_EXTERNAL_BOOST "Use external boost" OFF GCC)
 LYX_OPTION(USE_EXTERNAL_LIBINTL "Use external libintl" ON ALL)
-LYX_OPTION(INSTALL "Build install projects/rules" ON ALL)
+LYX_OPTION(INSTALL "Build install projects/rules" OFF ALL)
 LYX_OPTION(PACKAGE_SUFFIX "Use version suffix for packaging" OFF ALL)
 LYX_OPTION(PROGRAM_SUFFIX "Append version suffix to binaries" ON GCC)
 LYX_OPTION(NO_CONSOLE "Suppress console on Windows" OFF MSVC)
@@ -58,13 +59,15 @@ message(STATUS)
 
 
 if(LYX_INSTALL)
-	set(LYX_ASPELL ON CACHE BOOL "Aspell option" FORCE)
 	set(LYX_NLS ON CACHE BOOL "Nls option" FORCE)
+	set(LYX_ASPELL ON CACHE BOOL "Aspell option" FORCE)
+	set(LYX_AIKSAURUS ON CACHE BOOL "Aiksaurus option" FORCE)
 	set(LYX_NO_CONSOLE ON CACHE BOOL "No console option" FORCE)
 	set(LYX_PACKAGE_SUFFIX ON CACHE BOOL "Package suffix option" FORCE)
 	set(LYX_RELEASE ON CACHE BOOL "Release option" FORCE)
 	set(LYX_DEBUG OFF CACHE BOOL "Debug option" FORCE)
 	set(LYX_PROFILE OFF CACHE BOOL "Profile option" FORCE)
+	set(LYX_MERGE_FILES ON CACHE BOOL "Merge option" FORCE)
 endif()
 
 
@@ -242,7 +245,15 @@ find_package(ZLIB REQUIRED)
 
 if(LYX_ASPELL)
 	find_package(ASPELL REQUIRED)
+	include_directories(${ASPELL_INCLUDE_DIR})
 endif()
+
+if (LYX_AIKSAURUS)
+	find_package(AiksaurusLIB REQUIRED)
+	include_directories(${AIKSAURUSLIB_INCLUDE_DIR})
+endif()
+
+
 
 
 if(LYX_USE_EXTERNAL_LIBINTL)
@@ -251,6 +262,7 @@ if(LYX_USE_EXTERNAL_LIBINTL)
 endif()
 
 
+# TODO make Find*.cmake
 if(WIN32)
   find_library(ENCHANT_LIBRARY "libenchant")
   find_path(ENCHANT_INCLUDE_DIR "enchant++.h")
@@ -264,6 +276,9 @@ if (ENCHANT_LIBRARY AND ENCHANT_INCLUDE_DIR)
   message(STATUS "Building with USE_ENCHANT")
 else()
   message(STATUS "Enchant not found, building without enchant support")
+endif()
+if (ENCHANT_FOUND)
+  include_directories("${ENCHANT_INCLUDE_DIR}")
 endif()
 
 
@@ -433,12 +448,7 @@ else()
 	configure_file(configCompiler.h.cmake ${CMAKE_BINARY_DIR}/configCompiler.h)
 endif()
 
-find_package(AiksaurusLIB)
-if(AIKSAURUSLIB_FOUND)
-  # Variables in config.h will be set correctly with configure_file()
-  set(HAVE_LIBAIKSAURUS 1)
-  set(AIKSAURUS_H_LOCATION 1)
-endif()
+
 
 configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
 

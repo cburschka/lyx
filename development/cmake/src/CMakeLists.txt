@@ -31,16 +31,12 @@ list(REMOVE_ITEM lyx_sources
 	${TOP_SRC_DIR}/src/lyxinsets.cpp
 	${TOP_SRC_DIR}/src/lyxmathed.cpp)
 
-if (ASPELL_FOUND)
-  include_directories(${ASPELL_INCLUDE_DIR})
-else()
+if (NOT ASPELL_FOUND)
   list(REMOVE_ITEM lyx_sources ${TOP_SRC_DIR}/src/ASpell.cpp)
   list(REMOVE_ITEM lyx_headers ${TOP_SRC_DIR}/src/ASpell_local.h)
 endif()
 
-if (ENCHANT_FOUND)
-  include_directories("${ENCHANT_INCLUDE_DIR}")
-else()
+if (NOT ENCHANT_FOUND)
   list(REMOVE_ITEM lyx_sources ${TOP_SRC_DIR}/src/Enchant.cpp)
   list(REMOVE_ITEM lyx_headers ${TOP_SRC_DIR}/src/Enchant.h)
 endif()
@@ -105,6 +101,10 @@ if (ENCHANT_FOUND)
         target_link_libraries(${_lyx} ${ENCHANT_LIBRARY})
 endif()
 
+if (AIKSAURUSLIB_FOUND)
+	target_link_libraries(${_lyx} ${AIKSAURUSLIB_LIBRARY})
+endif()
+
 if (APPLE)
   target_link_libraries(${_lyx} "-bind_at_load")
   target_link_libraries(${_lyx} "-framework Carbon")
@@ -114,9 +114,6 @@ if (MINGW)
   target_link_libraries(${_lyx} ole32)
 endif()
 
-if (AIKSAURUSLIB_FOUND)
-  target_link_libraries(${_lyx} ${AIKSAURUSLIB_LIBRARY})
-endif()
 project_source_group("${GROUP_CODE}" lyx_sources lyx_headers)
 
 install(TARGETS ${_lyx} DESTINATION bin)

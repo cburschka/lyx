@@ -48,6 +48,12 @@
 #endif
 
 
+#cmakedefine AIKSAURUSLIB_FOUND 1
+#ifdef AIKSAURUSLIB_FOUND
+#define HAVE_LIBAIKSAURUS 1
+#define AIKSAURUS_H_LOCATION "${AIKSAURUSLIB_H}"
+#endif
+
 #endif
 
 
