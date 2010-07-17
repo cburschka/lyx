@@ -84,7 +84,7 @@ private:
 	Murder(int secs, pid_t pid)
 		: timeout_(1000*secs, Timeout::ONETIME), pid_(pid)
 	{
-		timeout_.timeout.connect(bind(&Murder::kill, this));
+		timeout_.timeout.connect(lyx::bind(&Murder::kill, this));
 		timeout_.start();
 	}
 
@@ -448,7 +448,7 @@ void callNext()
 	Process pro = callQueue_.front();
 	callQueue_.pop();
 	// Bind our chain caller
-	pro.second->connect(bind(&ForkedCallQueue::callback, _1, _2));
+	pro.second->connect(lyx::bind(&ForkedCallQueue::callback, _1, _2));
 	ForkedCall call;
 	//If we fail to fork the process, then emit the signal
 	//to tell the outside world that it failed.
@@ -537,8 +537,8 @@ static ListType forkedCalls;
 iterator find_pid(pid_t pid)
 {
 	return find_if(forkedCalls.begin(), forkedCalls.end(),
-		       bind(equal_to<pid_t>(),
-			    bind(&ForkedCall::pid, _1),
+			    lyx::bind(equal_to<pid_t>(),
+			    lyx::bind(&ForkedCall::pid, _1),
 			    pid));
 }
 
