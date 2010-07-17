@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 387
+\lyxformat 397
 \begin_document
 \begin_header
 \textclass article
@@ -20,6 +20,7 @@
 
 \graphics default
 \default_output_format default
+\output_sync 0
 \bibtex_command default
 \index_command default
 \paperfontsize default
@@ -51,9 +52,8 @@
 \output_changes false
 \html_math_output 0
 \html_be_strict true
-\html_math_img_scale 1
-\html_latex_start "<span class='latex'>"
-\html_latex_end "</span>"
+\html_latex_start <span class='latex'>
+\html_latex_end </span>
 \end_header
 
 \begin_body
@@ -3387,6 +3387,35 @@ required
 \end_layout
 
 \begin_layout Subsection
+amstext
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "amstext"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/required/amslatex/math/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+amstext
+\family default
+ is needed by LyX to correctly size unicode symbols used as super or subscripts
+ in math.
+\end_layout
+
+\begin_layout Subsection
 array
 \end_layout
 
@@ -3725,39 +3754,6 @@ Notes: The package
 longtable
 \family default
  is needed by LyX to be able to output correctly multipage tables.
-\end_layout
-
-\begin_layout Subsection
-amstext
-\end_layout
-
-\begin_layout Description
-Found: 
-\begin_inset Info
-type  "package"
-arg   "amstext"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family typewriter
-macros/latex/required/amslatex/math/
-\end_layout
-
-\begin_layout Description
-Notes: The package 
-\family sans
-amstext
-\family default
- is needed by LyX to correctly size unicode symbols used as super or subscripts
- in math.
-\end_layout
-
-\begin_layout Description
-
 \end_layout
 
 \begin_layout Subsection
