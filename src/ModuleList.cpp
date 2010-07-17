@@ -119,9 +119,8 @@ bool ModuleList::read()
 	LYXERR(Debug::TCLASS, "Reading modules from `" << real_file << '\'');
 
 	if (real_file.empty()) {
-		LYXERR0("unable to find modules file  `"
-			<< to_utf8(makeDisplayPath(real_file.absFileName(), 1000))
-			<< "'.\nNo modules will be available.");
+		LYXERR0("unable to find modules file `lyxmodules.lst'.\n"
+			<< "No modules will be available.");
 		return false;
 	}
 
