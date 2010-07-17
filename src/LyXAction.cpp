@@ -3091,14 +3091,6 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_WRITE, "buffer-write", ReadOnly, Buffer },
 /*!
- * \var lyx::FuncCode lyx::LFUN_BUFFER_WRITE_ENCRYPTED
- * \li Action: Saves the current buffer encyrpted.
- * \li Notion: Saves the current buffer encyrpted to disk, asks for a new filename
- * \li Syntax: buffer-write-encyrypted
- * \endvar
- */
-		{ LFUN_BUFFER_WRITE_ENCRYPTED, "buffer-write-encrypted", ReadOnly, Buffer },
-/*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_WRITE_AS
  * \li Action: Rename and save current buffer.
  * \li Syntax: buffer-write-as <FILENAME>

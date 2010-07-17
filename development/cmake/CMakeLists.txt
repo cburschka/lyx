@@ -52,7 +52,6 @@ LYX_OPTION(STDLIB_DEBUG "Use debug stdlib" OFF GCC)
 LYX_OPTION(CONCEPT_CHECKS "Enable concept-checks" OFF GCC)
 LYX_OPTION(QUIET "Don't generate verbose makefiles" OFF ALL)
 LYX_OPTION(SHARED_LIBRARIES "Build shared libraries" OFF ALL)
-LYX_OPTION(ENCRYPTION "Build with encryption functionality" OFF ALL)
 
 message(STATUS)
 
@@ -87,9 +86,6 @@ if(LYX_INSTALL)
 	SET(LYX_DEBUG OFF CACHE BOOL "Debug option" FORCE)
 	SET(LYX_PROFILE OFF CACHE BOOL "Profile option" FORCE)
 endif()
-
-
-
 
 
 # Supress regeneration
@@ -495,12 +491,6 @@ else()
   add_definitions(-DBOOST_USER_CONFIG="<config.h>")
   include_directories(${TOP_SRC_DIR}/boost)
   add_subdirectory(boost)
-endif()
-
-if(LYX_ENCRYPTION)
-	#Ubuntu: libssl-dev
-	find_package(OpenSSL REQUIRED)
-	add_definitions(-DLYX_ENCRYPTION)
 endif()
 
 

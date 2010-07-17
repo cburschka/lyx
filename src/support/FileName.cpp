@@ -922,12 +922,6 @@ string FileName::guessFormatFromContents() const
 
 		else if (contains(str, "BITPIX"))
 			format = "fits";
-
-		else if (contains(str, encryptionGuessString())) {
-			string ver = token(str, '-', 1);
-			string key = token(str, '-', 2);
-			format = encryptionGuessString() + "-" + ver + "-" + key;
-		}
 	}
 
 	// Dia knows also compressed form
@@ -950,57 +944,6 @@ bool FileName::isZippedFile() const
 	string const type = guessFormatFromContents();
 	return contains("gzip zip compress", type) && !type.empty();
 }
-
-
-bool FileName::isEncryptedFile() const
-{
-	string const type = guessFormatFromContents();
-	string const guess = encryptionGuessString();
-	return toqstr(type).contains(toqstr(guess));
-}
-
-std::string FileName::encryptionGuessString()
-{
-	return "LyXEncrypted";
-}
-
-std::string FileName::encryptionPrefix(int version, int keytype)
-{
-	// A encrypted file starts with the bytes "LyXEncrypted-001-001-"
-	// the first number describes the encryption version which could
-	// change with the time. the second number describes how the key 
-	// is generated, ATM only passwords are supported.
-	QString guess = toqstr(encryptionGuessString());
-	QString vstr = QString::number(version);
-	QString kstr = QString::number(keytype);
-	vstr = vstr.rightJustified(3, '0');
-	kstr = kstr.rightJustified(3, '0');
-	return fromqstr(guess + "-" + vstr + "-" + kstr + "-");
-}
-
-
-int FileName::encryptionVersion() const
-{
-	string const type = guessFormatFromContents();
-	string ver = token(type, '-', 1);
-	bool ok = false;
-	int version = toqstr(ver).toInt(&ok);
-	if (!ok)
-		return -1;
-	return version;
-}
-
-int FileName::encryptionKeytype() const
-{
-	string const type = guessFormatFromContents();
-	string ver = token(type, '-', 2);
-	bool ok = false;
-	int keytype = toqstr(ver).toInt(&ok);
-	if (!ok)
-		return -1;
-	return keytype;
-}
-
 
 
 docstring const FileName::relPath(string const & path) const

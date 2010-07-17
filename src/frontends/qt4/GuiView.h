@@ -363,9 +363,7 @@ private:
 	*/
 	bool renameBuffer(Buffer & b, docstring const & newname);
 	///
-	bool saveBuffer(Buffer & b, std::ostream* stream = 0);
-	/// Gets a new filename and saves the buffer encrypted
-	bool saveBufferEncrypted(Buffer & b);	
+	bool saveBuffer(Buffer & b);
 	/// closes a workarea, if close_buffer is true the buffer will
 	/// also be released, otherwise the buffer will be hidden.
 	bool closeWorkArea(GuiWorkArea * wa, bool close_buffer);

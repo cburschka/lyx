@@ -116,8 +116,7 @@ target_link_libraries(${_lyx}
 	${LIBINTL_LIBRARIES}
 	${ICONV_LIBRARY}
 	${QT_QTMAIN_LIBRARY}
-	${vld_dll}
-	${OPENSSL_LIBRARIES})
+	${vld_dll})
 
 if (HUNSPELL_FOUND)
         target_link_libraries(${_lyx} ${HUNSPELL_LIBRARY})

@@ -43,8 +43,7 @@ target_link_libraries(${_tex2lyx}
 	${Lyx_Boost_Libraries}
 	${QT_QTCORE_LIBRARY}
 	${LIBINTL_LIBRARIES}
-	${ICONV_LIBRARY}
-	${OPENSSL_LIBRARIES})
+	${ICONV_LIBRARY})
 
 if(WIN32)
 	target_link_libraries(${_tex2lyx} shlwapi ole32 psapi)
