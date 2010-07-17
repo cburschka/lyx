@@ -35,6 +35,7 @@ message(STATUS)
 LYX_OPTION(NLS "Use nls" OFF ALL)
 LYX_OPTION(ASPELL "Require aspell" OFF ALL)
 LYX_OPTION(AIKSAURUS "Require Aiksaurus" OFF ALL)
+LYX_OPTION(ENCHANT "Require Enchant" OFF ALL)
 LYX_OPTION(DEBUG "Build debug version" OFF ALL)
 LYX_OPTION(RELEASE "Build release version" ON ALL)
 LYX_OPTION(PROFILE "Build profile version" OFF GCC)
@@ -248,9 +249,14 @@ if(LYX_ASPELL)
 	include_directories(${ASPELL_INCLUDE_DIR})
 endif()
 
-if (LYX_AIKSAURUS)
+if(LYX_AIKSAURUS)
 	find_package(AiksaurusLIB REQUIRED)
 	include_directories(${AIKSAURUSLIB_INCLUDE_DIR})
+endif()
+
+if(LYX_ENCHANT)
+	find_package(Enchant REQUIRED)
+	include_directories(${ENCHANT_INCLUDE_DIR})
 endif()
 
 
@@ -263,29 +269,12 @@ endif()
 
 
 # TODO make Find*.cmake
-if(WIN32)
-  find_library(ENCHANT_LIBRARY "libenchant")
-  find_path(ENCHANT_INCLUDE_DIR "enchant++.h")
-else()
-  find_library(ENCHANT_LIBRARY "enchant"  "/usr/local/lib" "/usr/lib" "/usr/local/lib" "/opt/local/lib")
-  find_path(ENCHANT_INCLUDE_DIR "enchant++.h" PATHS /usr/local/include /usr/local/include/enchant /usr/include /usr/include/enchant /opt/local/include/enchant)
-endif()
-if (ENCHANT_LIBRARY AND ENCHANT_INCLUDE_DIR)
-  set(ENCHANT_FOUND TRUE)
-  add_definitions(-DUSE_ENCHANT=1)
-  message(STATUS "Building with USE_ENCHANT")
-else()
-  message(STATUS "Enchant not found, building without enchant support")
-endif()
-if (ENCHANT_FOUND)
-  include_directories("${ENCHANT_INCLUDE_DIR}")
-endif()
+
 
 
 if(LYX_NLS)
         add_definitions(-DENABLE_NLS=1)
 endif()
-
 
 
 if(WIN32)

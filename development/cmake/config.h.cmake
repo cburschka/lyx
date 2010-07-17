@@ -47,19 +47,26 @@
 #define USE_ASPELL 1
 #endif
 
-
 #cmakedefine AIKSAURUSLIB_FOUND 1
 #ifdef AIKSAURUSLIB_FOUND
 #define HAVE_LIBAIKSAURUS 1
 #define AIKSAURUS_H_LOCATION "${AIKSAURUSLIB_H}"
 #endif
 
+#cmakedefine ENCHANT_FOUND 1
+#ifdef ENCHANT_FOUND
+#define USE_ENCHANT 1
 #endif
 
 
 
 
-// cleanup global namespace
+#endif // config.h guard
+
+
+
+// Ungruaded cleanup of global namespace:
+
 #ifdef ColorMode
 #undef ColorMode
 #endif

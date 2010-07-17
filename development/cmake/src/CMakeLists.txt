@@ -98,7 +98,7 @@ if (ASPELL_FOUND)
 endif()
 
 if (ENCHANT_FOUND)
-        target_link_libraries(${_lyx} ${ENCHANT_LIBRARY})
+	target_link_libraries(${_lyx} ${ENCHANT_LIBRARY})
 endif()
 
 if (AIKSAURUSLIB_FOUND)
