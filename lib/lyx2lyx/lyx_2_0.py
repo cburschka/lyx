@@ -1912,6 +1912,22 @@ def revert_use_makebox(document):
     h += 1
 
 
+def convert_use_makebox(document):
+  " Deletes use_makebox option of boxes "
+  i = 0
+  while 1:
+    # remove the option use_makebox
+    i = find_token(document.body, '\\begin_inset Box', i)
+    if i == -1:
+      return
+    k = find_token(document.body, 'use_parbox', i)
+    if k == -1:
+      document.warning("Malformed LyX document: Can't find use_parbox statement in box.")
+      return
+    document.body.insert(k + 1, "use_makebox 0")
+    i = k + 1
+
+
 def revert_IEEEtran(document):
   " Convert IEEEtran layouts and styles to TeX code "
   if document.textclass != "IEEEtran":
@@ -2094,7 +2110,7 @@ convert = [[346, []],
            [391, []],
            [392, [convert_beamer_args]],
            [393, [convert_optarg]],
-           [394, []],
+           [394, [convert_use_makebox]],
            [395, []],
            [396, []],
            [397, [remove_Nameref]],
