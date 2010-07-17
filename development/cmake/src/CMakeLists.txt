@@ -25,48 +25,42 @@ list(REMOVE_ITEM  lyx_sources ${moc_files} .)
 file(GLOB lyx_headers ${TOP_SRC_DIR}/src/${LYX_HPP_FILES})
 
 list(REMOVE_ITEM lyx_sources
-	${TOP_SRC_DIR}/src/EnchantChecker.cpp
-	${TOP_SRC_DIR}/src/AspellChecker.cpp
-	${TOP_SRC_DIR}/src/HunspellChecker.cpp
 	${TOP_SRC_DIR}/src/Variables.cpp
 	${TOP_SRC_DIR}/src/Section.cpp
 	${TOP_SRC_DIR}/src/lyxcore.cpp
 	${TOP_SRC_DIR}/src/lyxinsets.cpp
 	${TOP_SRC_DIR}/src/lyxmathed.cpp)
 
-if(NOT APPLE)
-  list(REMOVE_ITEM lyx_sources
-    ${TOP_SRC_DIR}/src/AppleSpellChecker.cpp)
-   list(REMOVE_ITEM lyx_headers
-    ${TOP_SRC_DIR}/src/AppleSpellChecker.h)
-endif()
-
 list(REMOVE_ITEM lyx_headers
-	${TOP_SRC_DIR}/src/EnchantChecker.h
-	${TOP_SRC_DIR}/src/AspellChecker.h
-	${TOP_SRC_DIR}/src/HunspellChecker.h
 	${TOP_SRC_DIR}/src/Variables.h
 	${TOP_SRC_DIR}/src/Section.h)
 
-if (HUNSPELL_FOUND)
-	list(APPEND lyx_sources ${TOP_SRC_DIR}/src/HunspellChecker.cpp)
-	list(APPEND lyx_headers ${TOP_SRC_DIR}/src/HunspellChecker.h)
-	set(dont_merge ${dont_merge} ${TOP_SRC_DIR}/src/HunspellChecker.cpp)
+if(NOT APPLE)
+	list(REMOVE_ITEM lyx_sources ${TOP_SRC_DIR}/src/AppleSpellChecker.cpp)
+	list(REMOVE_ITEM lyx_headers ${TOP_SRC_DIR}/src/AppleSpellChecker.h)
 endif()
 
-if (ASPELL_FOUND)
-	include_directories(${ASPELL_INCLUDE_DIR})
-	list(APPEND lyx_sources ${TOP_SRC_DIR}/src/AspellChecker.cpp)
-	list(APPEND lyx_headers ${TOP_SRC_DIR}/src/AspellChecker.h)
+if(NOT ASPELL_FOUND)
+	list(REMOVE_ITEM lyx_sources ${TOP_SRC_DIR}/src/ASpellChecker.cpp)
+	list(REMOVE_ITEM lyx_headers ${TOP_SRC_DIR}/src/ASpellchecker.h)
+else()
 	set(dont_merge ${dont_merge} ${TOP_SRC_DIR}/src/AspellChecker.cpp)
 endif()
 
-if (ENCHANT_FOUND)
-  include_directories("${ENCHANT_INCLUDE_DIR}")
-  list(APPEND lyx_sources ${TOP_SRC_DIR}/src/EnchantChecker.cpp)
-  list(APPEND lyx_headers ${TOP_SRC_DIR}/src/EnchantChecker.h)
-  set(dont_merge ${dont_merge} ${TOP_SRC_DIR}/src/EnchantChecker.cpp)
+if(NOT ENCHANT_FOUND)
+	list(REMOVE_ITEM lyx_sources ${TOP_SRC_DIR}/src/EnchantChecker.cpp)
+	list(REMOVE_ITEM lyx_headers ${TOP_SRC_DIR}/src/EnchantChecker.h)
+else()
+	set(dont_merge ${dont_merge} ${TOP_SRC_DIR}/src/EnchantChecker.cpp)
 endif()
+
+if(NOT HUNSPELL_FOUND)
+	list(REMOVE_ITEM lyx_sources ${TOP_SRC_DIR}/src/HunspellChecker.cpp)
+	list(REMOVE_ITEM lyx_headers ${TOP_SRC_DIR}/src/HunspellChecker.h)
+else()
+	set(dont_merge ${dont_merge} ${TOP_SRC_DIR}/src/HunspellChecker.cpp)
+endif()
+
 
 lyx_automoc(${TOP_SRC_DIR}/src/Compare.cpp)
 if (WIN32)

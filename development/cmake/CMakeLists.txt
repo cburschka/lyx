@@ -31,8 +31,13 @@ message(STATUS "Switch LYX_* variables by -DLYX_*=1 or 0:")
 # 2. parameter: description
 # 3. parameter: default value, ON or OFF
 # 4. parameter: system on which option is used: ALL, GCC, MSVC, ...
+message(STATUS)
+message(STATUS "Switch LYX_* variables by -DLYX_*=1 or 0:")
+message(STATUS)
 LYX_OPTION(NLS "Use nls" OFF ALL)
 LYX_OPTION(ASPELL "Require aspell" OFF ALL)
+LYX_OPTION(AIKSAURUS "Require Aiksaurus" OFF ALL)
+LYX_OPTION(ENCHANT "Require Enchant" OFF ALL)
 LYX_OPTION(DEBUG "Build debug version" OFF ALL)
 LYX_OPTION(RELEASE "Build release version" ON ALL)
 LYX_OPTION(PROFILE "Build profile version" OFF GCC)
@@ -55,6 +60,19 @@ LYX_OPTION(SHARED_LIBRARIES "Build shared libraries" OFF ALL)
 
 message(STATUS)
 
+if(LYX_INSTALL)
+	set(LYX_NLS ON CACHE BOOL "Nls option" FORCE)
+	set(LYX_ASPELL ON CACHE BOOL "Aspell option" FORCE)
+	set(LYX_AIKSAURUS ON CACHE BOOL "Aiksaurus option" FORCE)
+	set(LYX_NO_CONSOLE ON CACHE BOOL "No console option" FORCE)
+	set(LYX_PACKAGE_SUFFIX ON CACHE BOOL "Package suffix option" FORCE)
+	set(LYX_RELEASE ON CACHE BOOL "Release option" FORCE)
+	set(LYX_DEBUG OFF CACHE BOOL "Debug option" FORCE)
+	set(LYX_PROFILE OFF CACHE BOOL "Profile option" FORCE)
+	set(LYX_MERGE_FILES ON CACHE BOOL "Merge option" FORCE)
+endif()
+
+
 set(EXECUTABLE_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/lib)
 
@@ -76,16 +94,6 @@ else()
     endif()
 endif()
 
-
-if(LYX_INSTALL)
-	set(LYX_ASPELL ON CACHE BOOL "Aspell option" FORCE)
-	set(LYX_NLS ON CACHE BOOL "Nls option" FORCE)
-	SET(LYX_NO_CONSOLE ON CACHE BOOL "No console option" FORCE)
-	SET(LYX_PACKAGE_SUFFIX ON CACHE BOOL "Package suffix option" FORCE)
-	SET(LYX_RELEASE ON CACHE BOOL "Release option" FORCE)
-	SET(LYX_DEBUG OFF CACHE BOOL "Debug option" FORCE)
-	SET(LYX_PROFILE OFF CACHE BOOL "Profile option" FORCE)
-endif()
 
 
 # Supress regeneration
@@ -189,17 +197,10 @@ set(LYX_MOC_FILES moc_*.cpp)
 
 include(ProjectSourceGroup)
 
-if(LYX_MERGE_FILES)
-	add_definitions(-DLYX_MERGED_BUILD)
-endif()
-
-
-set(CMAKE_BUILD_TYPE Release)
 
 if(LYX_PROFILE)
 	set(CMAKE_BUILD_TYPE Profile CACHE TYPE STRING FORCE)
-	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg"
-            CACHE TYPE STRING FORCE)
+	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg" CACHE TYPE STRING FORCE)
 endif()
 
 if(LYX_RELEASE)
@@ -246,9 +247,18 @@ add_definitions(-DQT_NO_STL -DQT_NO_KEYWORDS)
 find_package(ZLIB REQUIRED)
 
 if(LYX_ASPELL)
-	find_package(ASPELL REQUIRED)
-else()
 	find_package(ASPELL)
+	include_directories(${ASPELL_INCLUDE_DIR})
+endif()
+
+if(LYX_AIKSAURUS)
+	find_package(AiksaurusLIB REQUIRED)
+	include_directories(${AIKSAURUSLIB_INCLUDE_DIR})
+endif()
+ 
+if(LYX_ENCHANT)
+	find_package(Enchant REQUIRED)
+	include_directories(${ENCHANT_INCLUDE_DIR})
 endif()
 
 
@@ -258,6 +268,7 @@ if(LYX_USE_EXTERNAL_LIBINTL)
 endif()
 
 
+#TODO move to FindHunstall.cmake
 if(WIN32)
   find_library(HUNSPELL_LIBRARY "libhunspell")
 else()
@@ -267,7 +278,6 @@ endif()
 if (HUNSPELL_LIBRARY)
   find_file(HUNSPELL_FOUND "hunspell/hunspell.hxx")
 endif()
-
 if (HUNSPELL_FOUND)
   add_definitions(-DUSE_HUNSPELL=1)
   message(STATUS "Building with USE_HUNSPELL")
@@ -275,32 +285,15 @@ else()
   message(STATUS "Hunspell not found, building without hunspell support")
 endif()
 
-if(WIN32)
-  find_library(ENCHANT_LIBRARY "libenchant")
-  find_path(ENCHANT_INCLUDE_DIR "enchant++.h")
-else()
-  find_library(ENCHANT_LIBRARY "enchant"  "/usr/local/lib" "/usr/lib" "/usr/local/lib" "/opt/local/lib")
-  find_path(ENCHANT_INCLUDE_DIR "enchant++.h" PATHS /usr/local/include /usr/local/include/enchant /usr/include /usr/include/enchant /opt/local/include/enchant)
-endif()
-if (ENCHANT_LIBRARY AND ENCHANT_INCLUDE_DIR)
-  set(ENCHANT_FOUND TRUE)
-  add_definitions(-DUSE_ENCHANT=1)
-  message(STATUS "Building with USE_ENCHANT")
-else()
-  message(STATUS "Enchant not found, building without enchant support")
-endif()
 
 
 if(LYX_NLS)
-        add_definitions(-DENABLE_NLS=1)
+	add_definitions(-DENABLE_NLS=1)
 endif()
 
-if(ASPELL_FOUND)
-	add_definitions(-DUSE_ASPELL=1)
-endif()
 
 if(WIN32)
-        if(LYX_NO_CONSOLE)
+	if(LYX_NO_CONSOLE)
 		set(WIN32_CONSOLE WIN32)
 		set(LYX_QTMAIN_LIBRARY ${QT_QTMAIN_LIBRARY})
 	endif()
@@ -368,18 +361,17 @@ else()
 endif()
 
 if(MSVC)
-       if(LYX_VLD)
-               set(LYX_LEAK_DETECTION 1 CACHE TYPE STRING FORCE)
-               set(LIBRARY_OUTPUT_PATH  ${EXECUTABLE_OUTPUT_PATH})
-               set(vld_path ${CMAKE_CURRENT_SOURCE_DIR}/../Win32/vld)
-               include(${vld_path}/tools/cmake/vld.cmake)
-       endif()
+	if(LYX_VLD)
+	   set(LYX_LEAK_DETECTION 1 CACHE TYPE STRING FORCE)
+	   set(LIBRARY_OUTPUT_PATH  ${EXECUTABLE_OUTPUT_PATH})
+	   set(LYX_VLD_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../Win32/vld)
+	   include(${LYX_VLD_PATH}/tools/cmake/vld.cmake)
+	endif()
 
         # TODO options
 	if(LYX_WALL)
 		# Use the highest warning level
 		set(CMAKE_CXX_WARNING_LEVEL 4 CACHE TYPE STRING FORCE)
-		set(WARNING_LEVEL_MESSAGE "(switch to warning level 3 with -DWALL=0)")
 
 		if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
 			string(REGEX REPLACE "/W[0-4]" "/W4" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
@@ -407,7 +399,6 @@ if(MSVC)
 
 	else()
 		set(CMAKE_CXX_WARNING_LEVEL 3 CACHE TYPE STRING FORCE)
-		set(WARNING_LEVEL_MESSAGE "(switch to warning level 4 with -DWALL=1)")
 
 		# add here warnings which should produce an error /weXXXX
 		set(MSVC_W_ERROR   "/we4101 /we4189")
@@ -501,7 +492,7 @@ add_subdirectory(src)
 
 if(LYX_INSTALL)
 	add_subdirectory(man)
-	FIND_PROGRAM(LYX_PERL_EXECUTABLE python)
+	FIND_PROGRAM(LYX_PERL_EXECUTABLE perl)
 	if(NOT ${LYX_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
 		add_subdirectory(doc)
 	endif()

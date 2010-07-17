@@ -18,9 +18,6 @@
 #include "pcheaders.h"
 #endif
 
-#cmakedefine WORDS_BIGENDIAN 1
-
-
 
 #cmakedefine PACKAGE "${PACKAGE}"
 #cmakedefine PACKAGE_VERSION "${PACKAGE_VERSION}"
@@ -41,17 +38,38 @@
 #cmakedefine USE_MACOSX_PACKAGING 1
 #cmakedefine PATH_MAX ${PATH_MAX}
 
+#cmakedefine WORDS_BIGENDIAN 1
+
+#cmakedefine LYX_MERGE_FILES 1
+
 #cmakedefine LYX_USE_TR1 1
 #cmakedefine LYX_USE_TR1_REGEX 1
 
+#cmakedefine ASPELL_FOUND 1
+#ifdef ASPELL_FOUND
+#define USE_ASPELL 1
+#endif
 
+#cmakedefine AIKSAURUSLIB_FOUND 1
+#ifdef AIKSAURUSLIB_FOUND
+#define HAVE_LIBAIKSAURUS 1
+#define AIKSAURUS_H_LOCATION "${AIKSAURUSLIB_H}"
+#endif
 
-
-
+#cmakedefine ENCHANT_FOUND 1
+#ifdef ENCHANT_FOUND
+#define USE_ENCHANT 1
 #endif
 
 
-// cleanup global namespace
+
+
+#endif // config.h guard
+
+
+
+// Unguarded cleanup of global namespace:
+
 #ifdef ColorMode
 #undef ColorMode
 #endif
@@ -91,6 +109,4 @@
 #ifdef KeyPress
 #undef KeyPress
 #endif
-
-
 

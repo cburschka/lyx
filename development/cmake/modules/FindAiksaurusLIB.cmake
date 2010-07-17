@@ -14,9 +14,9 @@ find_path(AIKSAURUSLIB_INCLUDE_DIR NAMES Aiksaurus.h
   PATH_SUFFIXES "" "Aiksaurus")
 if(AIKSAURUSLIB_INCLUDE_DIR)
   if(AIKSAURUSLIB_INCLUDE_DIR MATCHES "Aiksaurus")
-    set(AIKSAURUS_H Aiksaurus/Aiksaurus.h)
+    set(AIKSAURUSLIB_H Aiksaurus/Aiksaurus.h)
   else()
-    set(AIKSAURUS_H Aiksaurus.h)
+    set(AIKSAURUSLIB_H Aiksaurus.h)
   endif()
 endif()
 
@@ -31,4 +31,6 @@ find_library(AIKSAURUSLIB_LIBRARY NAMES ${POTENTIAL_AIKSAURUS_LIBS}
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(AIKSAURUSLIB DEFAULT_MSG AIKSAURUSLIB_LIBRARY AIKSAURUSLIB_INCLUDE_DIR)
 
-mark_as_advanced(AIKSAURUSLIB_LIBRARY AIKSAURUSLIB_INCLUDE_DIR)
+set(AIKSAURUSLIB_H ${AIKSAURUSLIB_H} CACHE STRING "Aiksaurus header" FORCE)
+
+mark_as_advanced(AIKSAURUSLIB_LIBRARY AIKSAURUSLIB_INCLUDE_DIR AIKSAURUSLIB_H)
