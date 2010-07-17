@@ -75,11 +75,13 @@ Note that the order of -e and -x switches matters.
 where fmt is the import format of choice and file.xxx is the file to be imported.
 .TP
 \fB \-f [\-\-force\-overwrite]\fP \fIwhat
-where what is is either "\fBall\fR" or "\fBmain\fR".
-Using "\fBall\fR", all files are overwritten during a batch export, otherwise
-only the main file will be. When this switch is followed by anything else other
-than "\fBall\fR" or "\fBmain\fR", the behavior is as if "\fBall\fR" was
-specified, but what follows is left on the command line for further processing.
+where what is is either "\fBall\fR", "\fBmain\fR" or "\fBnone\fR".
+Specify "\fBall\fR" to allow overwriting all files during a batch export,
+"\fBmain\fR" to allow overwriting the main file only, or "\fBnone\fR"
+to disallow overwriting any file. When this switch is followed by anything
+else other than "\fBall\fR", "\fBmain\fR" or "\fBnone\fR", the behavior is as
+if "\fBall\fR" was specified, but what follows is left on the command line for
+further processing.
 .TP
 .BI -batch
 causes LyX to run the given commands without opening a GUI window.
@@ -124,6 +126,17 @@ The user directory is, in order of precedence:
 .B LYX_LOCALEDIR
 can be used to tell LyX where to look for the translations of its GUI
 strings in other languages.
+
+.TP
+.B LYX_FORCE_OVERWRITE
+can be used to change the default behavior when exporting from command
+line.
+.PP
+By default, LyX overwrites the main file when exporting from command
+line but not the ancillary files. This behavior can be changed by setting
+this environment variable, which relieves the need of using the \-f switch.
+Allowed values are either "\fBall\fR", "\fBmain\fR" or "\fBnone\fR", with
+same meaning as for the \-f switch.
 .SH FILES
 .nf
 .ta \w'\fILIBDIR\fR/lyxrc.in  'u
