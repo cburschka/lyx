@@ -246,11 +246,11 @@ endif()
 
 
 find_package(Qt4 REQUIRED)
-add_definitions(-DQT_NO_STL -DQT_NO_KEYWORDS)
-
+find_package(ICONV REQUIRED)
 find_package(ZLIB REQUIRED)
 
-
+include_directories(${CMAKE_BINARY_DIR} ${TOP_SRC_DIR}/src)
+  
 if(LYX_ASPELL)
 	find_package(ASPELL)
 	include_directories(${ASPELL_INCLUDE_DIR})
@@ -278,12 +278,35 @@ if(LYX_NLS)
 	endif()
 	find_package(LyXGettext REQUIRED)
 	include_directories(${TOP_SRC_DIR}/po)
+	add_subdirectory(po)
 endif()
-
 
 if(LYX_USE_EXTERNAL_LIBINTL)
 	find_package(Libintl REQUIRED)
-	add_definitions(-DHAVE_GETTEXT)
+	add_definitions(-DHAVE_GETTEXT) #TODO move to config.h
+else()
+	add_subdirectory(intl)
+endif()
+
+if(LYX_USE_EXTERNAL_BOOST)
+	message(STATUS "Searching for boost")
+	find_package(Boost COMPONENTS signals regex) #TODO could REQUIRED be used
+	if(Boost_FOUND)
+		message(STATUS "Boost found")
+		message(STATUS "Boost-libs = ${Boost_LIBRARIES}")
+		set(Lyx_Boost_Libraries ${Boost_LIBRARIES})
+	else()
+		message(FATAL_ERROR "Boost not found" ${Boost_ERROR_REASON})
+	endif()
+else()
+	if(LYX_USE_TR1_REGEX)
+		set(Lyx_Boost_Libraries boost_signals)
+	else()
+		set(Lyx_Boost_Libraries boost_signals boost_regex)
+	endif()
+	add_definitions(-DBOOST_USER_CONFIG="<config.h>")
+	include_directories(${TOP_SRC_DIR}/boost)
+	add_subdirectory(boost)
 endif()
 
 
@@ -443,58 +466,22 @@ endif()
 
 configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
 
-find_package(ICONV REQUIRED)
-add_definitions(-DHAVE_ICONV=1)
 
-
-include_directories(
-  ${CMAKE_BINARY_DIR}
-  ${TOP_SRC_DIR}/src)
-
-
-if(LYX_USE_EXTERNAL_BOOST)
-  message(STATUS "Searching for boost")
-  find_package(Boost COMPONENTS signals regex)
-  if(Boost_FOUND)
-    message(STATUS "Boost found")
-    message(STATUS "Boost-libs = ${Boost_LIBRARIES}")
-    set(Lyx_Boost_Libraries ${Boost_LIBRARIES})
-  else()
-    message(FATAL_ERROR "Boost not found" ${Boost_ERROR_REASON})
-  endif()
-else()
-  if(LYX_USE_TR1_REGEX)
-    set(Lyx_Boost_Libraries boost_signals)
-  else()
-    set(Lyx_Boost_Libraries boost_signals boost_regex)
-  endif()
-  add_definitions(-DBOOST_USER_CONFIG="<config.h>")
-  include_directories(${TOP_SRC_DIR}/boost)
-  add_subdirectory(boost)
-endif()
-
-
-if(NOT LYX_USE_EXTERNAL_LIBINTL)
-  add_subdirectory(intl)
-endif()
 add_subdirectory(src)
-
-if(LYX_INSTALL)
-	add_subdirectory(man)
-	FIND_PROGRAM(LYX_PERL_EXECUTABLE perl)
-	if(NOT ${LYX_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
-		add_subdirectory(doc)
-	endif()
-endif()
 add_subdirectory(lyx2lyx)
 add_subdirectory(scripts)
-if(LYX_NLS)
-	add_subdirectory(po)
-endif()
+
 
 if(LYX_INSTALL)
+	FIND_PROGRAM(LYX_PERL_EXECUTABLE perl)
+	if(${LYX_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
+		message(FATAL_ERROR "Perl required!")
+	endif()
+	add_subdirectory(man)
+	add_subdirectory(doc)
 	include(../Install)
 endif()
+
 
 SET(CPACK_PACKAGE_VERSION_MAJOR "${LYX_MAJOR_VERSION}")
 SET(CPACK_PACKAGE_VERSION_MINOR "${LYX_MINOR_VERSION}")

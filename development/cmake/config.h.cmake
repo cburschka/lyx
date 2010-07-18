@@ -12,6 +12,11 @@
 #ifndef _CONFIG_H
 #define _CONFIG_H
 
+// obligatory flags
+#define QT_NO_STL
+#define QT_NO_KEYWORDS
+#define HAVE_ICONV
+
 #include "configCompiler.h"
 
 #ifdef LYX_ENABLE_PCH
