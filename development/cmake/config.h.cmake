@@ -61,6 +61,10 @@
 #define USE_ENCHANT 1
 #endif
 
+#cmakedefine HUNSPELL_FOUND 1
+#ifdef HUNSPELL_FOUND
+#define USE_HUNSPELL 1
+#endif
 
 
 
