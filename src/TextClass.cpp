@@ -55,7 +55,10 @@ namespace lyx {
 // your changes do not invalidate the hardcoded layout file in 
 // LayoutFile.cpp. Additions will never do so, but syntax changes
 // could. See LayoutFileList::addEmptyClass() and, especially, the
-// definition of the layoutpost string.
+// definition of the layoutpost string. 
+// You should also run (or ask someone who has bash to run) the
+// development/updatelayouts.sh script, to update the format of 
+// all of our layout files.
 //
 int const LAYOUT_FORMAT = 27;
 	
