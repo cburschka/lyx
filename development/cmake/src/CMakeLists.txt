@@ -42,7 +42,7 @@ endif()
 
 if(NOT ASPELL_FOUND)
 	list(REMOVE_ITEM lyx_sources ${TOP_SRC_DIR}/src/AspellChecker.cpp)
-	list(REMOVE_ITEM lyx_headers ${TOP_SRC_DIR}/src/Aspellchecker.h)
+	list(REMOVE_ITEM lyx_headers ${TOP_SRC_DIR}/src/AspellChecker.h)
 else()
 	set(dont_merge ${dont_merge} ${TOP_SRC_DIR}/src/AspellChecker.cpp)
 endif()
