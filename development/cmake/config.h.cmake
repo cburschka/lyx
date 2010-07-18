@@ -66,6 +66,10 @@
 #define USE_HUNSPELL 1
 #endif
 
+#cmakedefine LYX_NLS 1
+#ifdef LYX_NLS
+#define ENABLE_NLS
+#endif
 
 
 #endif // config.h guard

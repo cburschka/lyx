@@ -59,9 +59,6 @@ add_gettext_python(ui lib/ui *.ui *.inc)
 add_gettext_python(external lib external_templates)
 add_gettext_python(formats lib configure.py)
 
-FIND_PROGRAM(GETTEXT_XGETTEXT_EXECUTABLE xgettext)
-FIND_PROGRAM(GETTEXT_MSGUNIQ_EXECUTABLE msguniq)
-
 ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     COMMAND ${LYX_PYTHON_EXECUTABLE}

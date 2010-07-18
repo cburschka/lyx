@@ -250,6 +250,7 @@ add_definitions(-DQT_NO_STL -DQT_NO_KEYWORDS)
 
 find_package(ZLIB REQUIRED)
 
+
 if(LYX_ASPELL)
 	find_package(ASPELL)
 	include_directories(${ASPELL_INCLUDE_DIR})
@@ -270,17 +271,22 @@ if(LYX_HUNSPELL)
 	include_directories(${HUNSPELL_INCLUDE_DIR})
 endif()
 
+if(LYX_NLS)
+	FIND_PROGRAM(LYX_PYTHON_EXECUTABLE python)
+	if(${LYX_PYTHON_EXECUTABLE} MATCHES "-NOTFOUND")
+		message(FATAL_ERROR "Python 2.6 needed!")
+	endif()
+	find_package(LyXGettext REQUIRED)
+	include_directories(${TOP_SRC_DIR}/po)
+endif()
+
+
 if(LYX_USE_EXTERNAL_LIBINTL)
 	find_package(Libintl REQUIRED)
 	add_definitions(-DHAVE_GETTEXT)
 endif()
 
 
-
-
-if(LYX_NLS)
-	add_definitions(-DENABLE_NLS=1)
-endif()
 
 
 if(WIN32)
@@ -418,14 +424,6 @@ if(MSVC)
 
 endif()
 
-FIND_PROGRAM(LYX_PYTHON_EXECUTABLE python)
-if( NOT ${LYX_PYTHON_EXECUTABLE} MATCHES "-NOTFOUND")
-    if(LYX_NLS)
-      find_package(LyXGettext REQUIRED)
-      include_directories(${TOP_SRC_DIR}/po)
-      add_subdirectory(po)
-    endif()
-endif()
 
 if(LYX_DEBUG_GLIBC)
   set(_GLIBCXX_DEBUG 1)
@@ -490,6 +488,9 @@ if(LYX_INSTALL)
 endif()
 add_subdirectory(lyx2lyx)
 add_subdirectory(scripts)
+if(LYX_NLS)
+	add_subdirectory(po)
+endif()
 
 if(LYX_INSTALL)
 	include(../Install)

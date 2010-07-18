@@ -96,4 +96,4 @@ else()
    endif()
 endif()
 
-mark_as_advanced(ICONV_LIBRARY ICONV_INCLUDE_DIR)
+mark_as_advanced(ICONV_LIBRARY ICONV_INCLUDE_DIR ICONV_DLL ICONV_DLL_HELP)
