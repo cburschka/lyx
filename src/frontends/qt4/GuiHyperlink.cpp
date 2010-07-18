@@ -21,7 +21,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 
-#if defined(LYX_MERGED_BUILD) && !defined(Q_CC_MSVC)
+#if defined(LYX_MERGE_FILES) && !defined(Q_CC_MSVC)
 // GCC couldn't find operator==
 namespace lyx {
 	bool operator==(lyx::docstring const & d, char const * c);
