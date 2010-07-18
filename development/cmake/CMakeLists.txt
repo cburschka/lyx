@@ -10,7 +10,7 @@ cmake_minimum_required(VERSION 2.6.4)
 
 if(COMMAND cmake_policy)
 	cmake_policy(SET CMP0003 OLD)
-	cmake_policy(SET CMP0005 OLD)
+        cmake_policy(SET CMP0005 OLD)
 endif()
 
 #needed to distinguish fron trunk, so we can install both simultaneously
@@ -24,7 +24,10 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
 include(LyXMacros)
 
-# Usage of LYX_OPTION
+message(STATUS)
+message(STATUS "Switch LYX_* variables by -DLYX_*=1 or 0:")
+
+# Usage LYX_OPTION
 # 1. parameter: option name without prefix 'LYX_'
 # 2. parameter: description
 # 3. parameter: default value, ON or OFF
@@ -32,6 +35,7 @@ include(LyXMacros)
 message(STATUS)
 message(STATUS "Switch LYX_* variables by -DLYX_*=1 or 0:")
 message(STATUS)
+LYX_OPTION(CPACK "Use the CPack management (Implies LYX_INSTALL option)" ON ALL)
 LYX_OPTION(NLS "Use nls" OFF ALL)
 LYX_OPTION(ASPELL "Require aspell" OFF ALL)
 LYX_OPTION(AIKSAURUS "Require Aiksaurus" OFF ALL)
@@ -63,12 +67,14 @@ if(LYX_INSTALL)
 	set(LYX_NLS ON CACHE BOOL "Nls option" FORCE)
 	set(LYX_ASPELL ON CACHE BOOL "Aspell option" FORCE)
 	set(LYX_AIKSAURUS ON CACHE BOOL "Aiksaurus option" FORCE)
+	if (WIN32)
+		set(LYX_HUNSPELL ON CACHE BOOL "Hunspell option" FORCE)
+	endif()
 	set(LYX_NO_CONSOLE ON CACHE BOOL "No console option" FORCE)
 	set(LYX_PACKAGE_SUFFIX ON CACHE BOOL "Package suffix option" FORCE)
 	set(LYX_RELEASE ON CACHE BOOL "Release option" FORCE)
 	set(LYX_DEBUG OFF CACHE BOOL "Debug option" FORCE)
 	set(LYX_PROFILE OFF CACHE BOOL "Profile option" FORCE)
-	set(LYX_MERGE_FILES ON CACHE BOOL "Merge option" FORCE)
 endif()
 
 
@@ -140,7 +146,7 @@ if(LYX_PACKAGE_SUFFIX)
   if(WIN32)
     set(PACKAGE ${PACKAGE_BASE}${LYX_INSTALL_SUFFIX_DOTLESS})
   else()
-    set(PACKAGE ${PACKAGE_BASE}${LYX_INSTALL_SUFFIX})
+  set(PACKAGE ${PACKAGE_BASE}${LYX_INSTALL_SUFFIX})
   endif()
 else()  
   set(PACKAGE ${PACKAGE_BASE})
@@ -243,7 +249,7 @@ find_package(Qt4 REQUIRED)
 add_definitions(-DQT_NO_STL -DQT_NO_KEYWORDS)
 
 find_package(ZLIB REQUIRED)
-
+  
 if(LYX_ASPELL)
 	find_package(ASPELL REQUIRED)
 	include_directories(${ASPELL_INCLUDE_DIR})
@@ -253,7 +259,7 @@ if(LYX_AIKSAURUS)
 	find_package(AiksaurusLIB REQUIRED)
 	include_directories(${AIKSAURUSLIB_INCLUDE_DIR})
 endif()
-
+ 
 if(LYX_ENCHANT)
 	find_package(Enchant REQUIRED)
 	include_directories(${ENCHANT_INCLUDE_DIR})
@@ -278,7 +284,7 @@ endif()
 
 
 if(WIN32)
-        if(LYX_NO_CONSOLE)
+	if(LYX_NO_CONSOLE)
 		set(WIN32_CONSOLE WIN32)
 		set(LYX_QTMAIN_LIBRARY ${QT_QTMAIN_LIBRARY})
 	endif()
@@ -353,6 +359,7 @@ if(MSVC)
 	   include(${LYX_VLD_PATH}/tools/cmake/vld.cmake)
 	endif()
 
+        # TODO options
 	if(LYX_WALL)
 		# Use the highest warning level
 		set(CMAKE_CXX_WARNING_LEVEL 4 CACHE TYPE STRING FORCE)
@@ -380,10 +387,10 @@ if(MSVC)
 			"${CMAKE_CXX_FLAGS_RELEASE} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 		set(CMAKE_CXX_FLAGS_MINSIZEREL
 			"${CMAKE_CXX_FLAGS_MINSIZEREL} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
-			
+
 	else()
 		set(CMAKE_CXX_WARNING_LEVEL 3 CACHE TYPE STRING FORCE)
-		
+
 		# add here warnings which should produce an error /weXXXX
 		set(MSVC_W_ERROR   "/we4101 /we4189")
 		# add here warnings which should be disabled /wdXXXX
@@ -437,8 +444,6 @@ else()
 	configure_file(configCompiler.h.cmake ${CMAKE_BINARY_DIR}/configCompiler.h)
 endif()
 
-
-
 configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
 
 find_package(ICONV REQUIRED)
@@ -459,7 +464,7 @@ if(LYX_USE_EXTERNAL_BOOST)
     set(Lyx_Boost_Libraries ${Boost_LIBRARIES})
   else()
     message(FATAL_ERROR "Boost not found" ${Boost_ERROR_REASON})
-  endif()
+	endif()
 else()
     set(Lyx_Boost_Libraries boost_signals boost_regex)
   add_definitions(-DBOOST_USER_CONFIG="<config.h>")
@@ -477,7 +482,7 @@ if(LYX_INSTALL)
 	add_subdirectory(man)
 	FIND_PROGRAM(LYX_PERL_EXECUTABLE perl)
 	if(NOT ${LYX_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
-		add_subdirectory(doc)
+	add_subdirectory(doc)
 	endif()
 endif()
 add_subdirectory(lyx2lyx)
