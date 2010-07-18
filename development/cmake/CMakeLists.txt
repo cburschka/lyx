@@ -34,7 +34,7 @@ message(STATUS "Switch LYX_* variables by -DLYX_*=1 or 0:")
 message(STATUS)
 message(STATUS "Switch LYX_* variables by -DLYX_*=1 or 0:")
 message(STATUS)
-LYX_OPTION(CPACK "Use the CPack management (Implies LYX_INSTALL option)" ON ALL)
+LYX_OPTION(CPACK "Use the CPack management (Implies LYX_INSTALL option)" OFF ALL)
 LYX_OPTION(NLS "Use nls" OFF ALL)
 LYX_OPTION(ASPELL "Require aspell" OFF ALL)
 LYX_OPTION(AIKSAURUS "Require Aiksaurus" OFF ALL)
@@ -248,8 +248,6 @@ if(NOT MSVC)
 endif()
 
 
-# We need in FindICONV.cmake this one
-include(CheckFunctionExists)
 find_package(Qt4 REQUIRED)
 find_package(ICONV REQUIRED)
 find_package(ZLIB REQUIRED)
