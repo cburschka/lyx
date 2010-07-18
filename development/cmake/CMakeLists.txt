@@ -530,9 +530,7 @@ endif()
 # so we do not provide infofiles for
 # CPACK_RESOURCE_FILE_README and CPACK_RESOURCE_FILE_WELCOME
 
-if(LYX_INSTALL)
-	include(CPack)
-endif()
+include(CPack)
 
 #Now it is possible to create some packages
 # cd <BuildDir>
