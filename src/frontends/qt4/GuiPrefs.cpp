@@ -483,7 +483,7 @@ void PrefInput::apply(LyXRC & rc) const
 			rc.scroll_whell_zoom = LyXRC::SCROLL_WHEEL_ZOOM_SHIFT;
 			break;
 		case 2:
-			rc.scroll_whell_zoom = LyXRC::SCROLL_WHEEL_ZOOM_OPTION;
+			rc.scroll_whell_zoom = LyXRC::SCROLL_WHEEL_ZOOM_ALT;
 			break;
 		}
 	} else {
@@ -511,7 +511,7 @@ void PrefInput::update(LyXRC const & rc)
 		scrollzoomEnableCB->setChecked(true);
 		scrollzoomValueCO->setCurrentIndex(1);
 		break;
-	case LyXRC::SCROLL_WHEEL_ZOOM_OPTION:
+	case LyXRC::SCROLL_WHEEL_ZOOM_ALT:
 		scrollzoomEnableCB->setChecked(true);
 		scrollzoomValueCO->setCurrentIndex(2);
 		break;

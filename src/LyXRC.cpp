@@ -1204,8 +1204,8 @@ int LyXRC::read(Lexer & lexrc)
 					scroll_whell_zoom = SCROLL_WHEEL_ZOOM_CTRL;
 				else if (tmp == "shift")
 					scroll_whell_zoom = SCROLL_WHEEL_ZOOM_SHIFT;
-				else if (tmp == "option")
-					scroll_whell_zoom = SCROLL_WHEEL_ZOOM_OPTION;
+				else if (tmp == "alt")
+					scroll_whell_zoom = SCROLL_WHEEL_ZOOM_ALT;
 				else {
 					scroll_whell_zoom = SCROLL_WHEEL_ZOOM_OFF;
 					if (tmp != "off" && tmp != "false")
@@ -2604,8 +2604,8 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			case SCROLL_WHEEL_ZOOM_SHIFT:
 				status = "shift";
 				break;
-			case SCROLL_WHEEL_ZOOM_OPTION:
-				status = "option";
+			case SCROLL_WHEEL_ZOOM_ALT:
+				status = "alt";
 				break;
 			}
 			os << "\\scroll_whell_zoom " << status << '\n';

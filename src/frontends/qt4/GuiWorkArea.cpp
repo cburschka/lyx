@@ -827,7 +827,7 @@ void GuiWorkArea::wheelEvent(QWheelEvent * ev)
 		zoom = ev->modifiers() & Qt::ShiftModifier;
 		zoom &= !(ev->modifiers() & (Qt::ControlModifier || Qt::AltModifier));
 		break;
-	case LyXRC::SCROLL_WHEEL_ZOOM_OPTION:
+	case LyXRC::SCROLL_WHEEL_ZOOM_ALT:
 		zoom = ev->modifiers() & Qt::AltModifier;
 		zoom &= !(ev->modifiers() & (Qt::ShiftModifier || Qt::ControlModifier));
 		break;
