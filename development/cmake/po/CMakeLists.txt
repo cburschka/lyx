@@ -127,7 +127,7 @@ foreach(_pofile ${LYX_BASE_PO_FILES})
   list(APPEND LYX_UPDATED_PO_FILES ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}.copied)
 endforeach(_pofile)
 
-GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot ALL ${LYX_PO_FILES})
+GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot ${LYX_PO_FILES})
 
 # ALL omitted here, to prevent from automatic creation
 ADD_CUSTOM_TARGET(update_po_files DEPENDS ${LYX_UPDATED_PO_FILES})
