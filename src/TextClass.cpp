@@ -49,6 +49,16 @@ using namespace lyx::support;
 
 namespace lyx {
 
+// Keep the changes documented in the Customization manual. 
+//
+// If you change this format, then you MUST also make sure that
+// your changes do not invalidate the hardcoded layout file in 
+// LayoutFile.cpp. Additions will never do so, but syntax changes
+// could. See LayoutFileList::addEmptyClass() and, especially, the
+// definition of the layoutpost string.
+//
+int const LAYOUT_FORMAT = 27;
+	
 namespace {
 
 class LayoutNamesEqual : public unary_function<Layout, bool> {
@@ -63,9 +73,6 @@ public:
 private:
 	docstring name_;
 };
-
-// Keep the changes documented in the Customization manual. 
-int const LAYOUT_FORMAT = 27;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)

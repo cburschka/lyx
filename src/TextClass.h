@@ -480,6 +480,9 @@ private:
 /// convert page sides option to text 1 or 2
 std::ostream & operator<<(std::ostream & os, PageSides p);
 
+/// current format of layout files
+extern int const LAYOUT_FORMAT;
+
 
 } // namespace lyx
 

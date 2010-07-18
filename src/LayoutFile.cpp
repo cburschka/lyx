@@ -218,7 +218,7 @@ LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 	// stdclass.inc. That would give us something moderately usable.
 	ofs << "# This layout is automatically generated\n"
 	       "# \\DeclareLaTeXClass{" << textclass << "}\n\n"
-	       "Format 26\n"
+	       "Format " << LAYOUT_FORMAT << "\n"
 	       "Input stdclass.inc\n\n"
 	    << layoutpost;
 	ofs.close();
@@ -236,7 +236,7 @@ LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 		ofstream ofs2(tempLayout.toFilesystemEncoding().c_str());
 		ofs2 << "# This layout is automatically generated\n"
 		        "# \\DeclareLaTeXClass{" << textclass << "}\n\n"
-		        "Format 26\n\n"
+		        "Format " << LAYOUT_FORMAT << "\n"
 		     << layoutpost;
 		ofs2.close();
 		if (!tc->load(tempLayout.absFileName())) {
