@@ -65,7 +65,7 @@ private:
 };
 
 // Keep the changes documented in the Customization manual. 
-int const FORMAT = 27;
+int const LAYOUT_FORMAT = 27;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)
@@ -246,7 +246,7 @@ namespace {
 
 bool TextClass::convertLayoutFormat(support::FileName const & filename, ReadType rt)
 {
-	LYXERR(Debug::TCLASS, "Converting layout file to " << FORMAT);
+	LYXERR(Debug::TCLASS, "Converting layout file to " << LAYOUT_FORMAT);
 	FileName const tempfile = FileName::tempName("convert_layout");
 	bool success = layout2layout(filename, tempfile);
 	if (success)
@@ -293,7 +293,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 	bool const worx = convertLayoutFormat(filename, rt);
 	if (!worx) {
 		LYXERR0 ("Unable to convert " << filename << 
-			" to format " << FORMAT);
+			" to format " << LAYOUT_FORMAT);
 		return false;
 	}
 	return true;
@@ -331,7 +331,7 @@ bool TextClass::read(std::string const & str, ReadType rt)
 	bool const worx = convertLayoutFormat(tempfile, rt);
 	if (!worx) {
 		LYXERR0("Unable to convert internal layout information to format " 
-			<< FORMAT);
+			<< LAYOUT_FORMAT);
 	}
 	tempfile.removeFile();
 	return worx;
@@ -685,7 +685,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 
 		// Note that this is triggered the first time through the loop unless
 		// we hit a format tag.
-		if (format != FORMAT)
+		if (format != LAYOUT_FORMAT)
 			return FORMAT_MISMATCH;
 	}
 

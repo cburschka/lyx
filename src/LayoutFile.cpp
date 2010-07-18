@@ -231,13 +231,12 @@ LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 
 	if (!tc->load(tempLayout.absFileName())) {
 		// The only way this happens is because the hardcoded layout file 
-		// aboveis wrong or stdclass.inc cannot be found. So try again 
+		// above is wrong or stdclass.inc cannot be found. So try again 
 		// without stdclass.inc.
 		ofstream ofs2(tempLayout.toFilesystemEncoding().c_str());
 		ofs2 << "# This layout is automatically generated\n"
 		        "# \\DeclareLaTeXClass{" << textclass << "}\n\n"
-		        "Format 26\n"
-		        "Input stdclass.inc\n\n"
+		        "Format 26\n\n"
 		     << layoutpost;
 		ofs2.close();
 		if (!tc->load(tempLayout.absFileName())) {
