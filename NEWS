@@ -5,6 +5,36 @@ The new features in LyX 2.0 are detailed in
 http://wiki.lyx.org/LyX/NewInLyX20
 
 
+What's new in version 1.6.7?
+-----------------------------
+
+From the list of fixes and improvements, we'd like to highlight
+particularly that this release irons out all known stability problems with
+Qt 4.6. LyX 1.6.7 is our first release that is supposed to run smoothly
+with Qt 4.6, so we urge all distributors who use that version to upgrade
+LyX as well.
+
+
+What's new in version 1.6.6.1?
+------------------------------
+
+The sole purpose of this release is to fix one glitch that was introduced
+by LyX 1.6.6: The spellchecker missed further misspellings after applying
+a correction. This was due to the fix to different bug that had to be
+reverted. In any other respect, this release is identical to Lyx 1.6.6.
+
+
+What's new in version 1.6.6?
+-----------------------------
+
+The release features a long list of fixes and improvements. Yet a number
+of crashes, reported by our users or our automatic stability testing
+program, were fixed. Moreover, LyX was improved in many details. It also
+introduces new features, such as support for the enchant spell checking
+backend and for aspell language varieties (such as old and new German
+spelling in parallel).
+
+
 What's new in version 1.6.5?
 -----------------------------
 
