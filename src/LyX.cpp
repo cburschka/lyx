@@ -87,9 +87,11 @@ bool use_gui = true;
 
 
 // Tell what files can be silently overwritten during batch export.
-// Possible values are: NO_FILES, MAIN_FILE, ALL_FILES.
+// Possible values are: NO_FILES, MAIN_FILE, ALL_FILES, UNSPECIFIED.
+// Unless specified on command line (through the -f switch) or through the
+// environment variable LYX_FORCE_OVERWRITE, the default will be MAIN_FILE.
 
-OverwriteFiles force_overwrite = NO_FILES;
+OverwriteFiles force_overwrite = UNSPECIFIED;
 
 
 namespace {
@@ -701,9 +703,20 @@ bool LyX::init()
 	if (queryUserLyXDir(package().explicit_user_support()))
 		reconfigureUserLyXDir();
 
-	// no need for a splash when there is no GUI
 	if (!use_gui) {
+		// No need for a splash when there is no GUI
 		first_start = false;
+		// Default is to overwrite the main file during export, unless
+		// the -f switch was specified or LYX_FORCE_OVERWRITE was set
+		if (force_overwrite == UNSPECIFIED) {
+			string const what = getEnv("LYX_FORCE_OVERWRITE");
+			if (what == "all")
+				force_overwrite = ALL_FILES;
+			else if (what == "none")
+				force_overwrite = NO_FILES;
+			else
+				force_overwrite = MAIN_FILE;
+		}
 	}
 
 	// This one is generated in user_support directory by lib/configure.py.
@@ -979,9 +992,9 @@ int parse_help(string const &, string const &, string &)
 		  "                  where fmt is the import format of choice\n"
 		  "                  and file.xxx is the file to be imported.\n"
 		  "\t-f [--force-overwrite] what\n"
-		  "                  where what is either `all' or `main'.\n"
-		  "                  Using `all', all files are overwritten during\n"
-		  "                  a batch export, otherwise only the main file will be.\n"
+		  "                  where what is either `all', `main' or `none',\n"
+		  "                  specifying whether all files, main file only, or no files,\n"
+		  "                  respectively, are to be overwritten during a batch export.\n"
 		  "                  Anything else is equivalent to `all', but is not consumed.\n"
 		  "\t-version        summarize version and build info\n"
 			       "Check the LyX man page for more details.")) << endl;
@@ -1084,6 +1097,9 @@ int parse_force(string const & arg, string const &, string &)
 		return 1;
 	} else if (arg == "main") {
 		force_overwrite = MAIN_FILE;
+		return 1;
+	} else if (arg == "none") {
+		force_overwrite = NO_FILES;
 		return 1;
 	}
 	force_overwrite = ALL_FILES;

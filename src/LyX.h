@@ -36,7 +36,8 @@ class Session;
 enum OverwriteFiles {
 	NO_FILES,
 	MAIN_FILE,
-	ALL_FILES
+	ALL_FILES,
+	UNSPECIFIED
 };
 
 extern bool use_gui;
