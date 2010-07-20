@@ -29,7 +29,7 @@ What's new
 
 - New environment variable LYX_FORCE_OVERWRITE allows changing default
   behavior when exporting from command line. Now LyX overwrites the main
-  main file by default, but not the ancillary files. Set this variable to
+  file by default, but not the ancillary files. Set this variable to
   "all" for letting LyX behave as in 1.6.6 and previous versions; set it
   to "none" for mimicking the 1.6.7 behavior of not overwriting any file.
 
