@@ -517,25 +517,25 @@ void InsetMathHull::addPreview(DocIterator const & inset_pos,
 
 void InsetMathHull::preparePreview(DocIterator const & pos) const  
 {
-	Buffer const * buffer = pos.buffer();  
+	Buffer const * buffer = pos.buffer();
 
-	// collect macros at this position  
-	MacroNameSet macros;  
-	buffer->listMacroNames(macros);  
-	MacroNameSet::iterator it = macros.begin();  
-	MacroNameSet::iterator end = macros.end();  
-	odocstringstream macro_preamble;  
-	for (; it != end; ++it) {  
-		MacroData const * data = buffer->getMacro(*it, pos, true);  
-		if (data) {  
-			data->write(macro_preamble, true);  
-			macro_preamble << endl;  
+	// collect macros at this position
+	MacroNameSet macros;
+	buffer->listMacroNames(macros);
+	MacroNameSet::iterator it = macros.begin();
+	MacroNameSet::iterator end = macros.end();
+	odocstringstream macro_preamble;
+	for (; it != end; ++it) {
+		MacroData const * data = buffer->getMacro(*it, pos, true);
+		if (data) {
+			data->write(macro_preamble, true);
+			macro_preamble << endl;
 		}
-	}  
+	}
 
-	docstring const snippet = macro_preamble.str() + latexString(*this);  
-	LYXERR(Debug::MACROS, "Preview snippet: " << snippet);  
-	preview_->addPreview(snippet, *buffer);  
+	docstring const snippet = macro_preamble.str() + latexString(*this);
+	LYXERR(Debug::MACROS, "Preview snippet: " << snippet);
+	preview_->addPreview(snippet, *buffer);
 }
 
 
