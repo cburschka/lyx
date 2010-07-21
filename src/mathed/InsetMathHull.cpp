@@ -1841,6 +1841,7 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 {
 	BufferParams::MathOutput mathtype = buffer().params().html_math_output;
+	
 	// FIXME Eventually we would like to do this inset by inset.
 	switch (mathtype) {
 	case BufferParams::MathML: {
@@ -1866,26 +1867,26 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 	case BufferParams::Images: {
 		reloadPreview(docit_, true);
 		graphics::PreviewImage const * pimage = preview_->getPreviewImage(buffer());
-		string const tag = (getType() == hullSimple) ? "span" : "div";
-		if (!pimage) {
-			LYXERR0("Unable to generate image. LaTeX follows.");
-			LYXERR0(latexString(*this));
-			xs << html::StartTag(tag) << "MATH" << html::EndTag(tag);
+		if (pimage) {
+			// FIXME Do we always have png?
+			string const tag = (getType() == hullSimple) ? "span" : "div";
+			FileName const & mathimg = pimage->filename();
+			xs << html::StartTag(tag);
+			xs << html::CompTag("img", "src=\"" + mathimg.onlyFileName() + "\"");
+			xs << html::EndTag(tag);
 			xs.cr();
+			// add the file to the list of files to be exported
+			op.exportdata->addExternalFile("xhtml", mathimg);
 			break;
 		}
-		// need to do a conversion to png, possibly.
-		FileName const & mathimg = pimage->filename();
-		xs << html::StartTag(tag);
-		xs << html::CompTag("img", "src=\"" + mathimg.onlyFileName() + "\"");
-		xs << html::EndTag(tag);
-		xs.cr();
-		op.exportdata->addExternalFile("xhtml", mathimg);
-		break;
+		LYXERR0("Unable to generate image. Falling through to LaTeX output.");
 	} 
 	case BufferParams::LaTeX: {
-		// FIXME Obviously, the only real question is how to wrap this.
-		LYXERR0("LaTeX output for math presently unsupported.");
+		string const tag = (getType() == hullSimple) ? "span" : "div";
+		// FIXME Need to allow customization of wrapping tags here....
+		docstring const latex = latexString(*this);
+		xs << html::StartTag(tag) << latex << html::EndTag(tag);
+		xs.cr();
 	}
 	} // end switch
 	return docstring();
