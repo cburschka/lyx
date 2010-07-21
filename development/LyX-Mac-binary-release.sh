@@ -40,6 +40,7 @@ thesaurus_deployment="yes"
 qt4_deployment="yes"
 
 MACOSX_DEPLOYMENT_TARGET="10.4" # Tiger support is default
+SDKROOT="/Developer/SDKs/MacOSX10.5.sdk" # Leopard build is default
 
 usage() {
 	echo Build script for LyX on Mac OS X
@@ -48,6 +49,7 @@ usage() {
 	echo " --aspell-deployment=yes|no ." default yes
 	echo " --qt4-deployment=yes|no ...." default yes
 	echo " --with-macosx-target=TARGET " default 10.4 "(Tiger)"
+	echo " --with-sdkroot=SDKROOT ....." default 10.5 "(Leopard)"
 	echo " --with-arch=ARCH ..........." default ppc,i386
 	echo " --with-build-path=PATH ....." default \${lyx-src-dir}/../lyx-build
 	echo " --with-dmg-location=PATH ..." default \${build-path}
@@ -66,6 +68,21 @@ while [ $# -gt 0 ]; do
 		;;
 	--with-macosx-target=*)
 		MACOSX_DEPLOYMENT_TARGET=`echo ${1}|cut -d= -f2`
+		shift
+		;;
+	--with-sdkroot=*)
+		SDKROOT=`echo ${1}|cut -d= -f2`
+		case "${SDKROOT}" in
+		10.4)
+			SDKROOT="/Developer/SDKs/MacOSX10.4u.sdk"
+			;;
+		10.5|10.6)
+			SDKROOT="/Developer/SDKs/MacOSX${SDKROOT}.sdk"
+			;;
+		*)
+			usage
+			;;
+		esac
 		shift
 		;;
 	--aspell-deployment=*)
@@ -131,7 +148,7 @@ QtInstallDir=${QTDIR:-"/opt/qt4"}
 QtFrameworkVersion="4"
 ASpellSourceVersion="aspell-0.60.6"
 HunSpellSourceVersion="hunspell-1.2.9"
-Qt4SourceVersion=${Qt4SourceVersion:-"qt-everywhere-opensource-src-4.6.2"}
+Qt4SourceVersion=${Qt4SourceVersion:-"qt-everywhere-opensource-src-4.6.3"}
 
 ARCH_LIST=${ARCH_LIST:-"ppc i386"}
 
@@ -192,14 +209,6 @@ BuildSystem=`"${LyxSourceDir}/config/config.guess"`
 # DON'T MODIFY ANYTHING BELOW HERE!
 # ---------------------------------
 
-# These variables define the identifiers of the
-# system (both Intel and PowerPC) to compile for.
-# (Note: darwin8 is 10.4; darwin9 is 10.5.)
-# Only change these if necessary
-
-HostSystem_i386="i686-apple-darwin8"
-HostSystem_ppc="powerpc-apple-darwin8"
-
 # don't change order here...
 QtLibraries="QtSvg QtXml QtGui QtNetwork QtCore"
 
@@ -210,17 +219,19 @@ BACKGROUND="${LyxAppDir}.app/Contents/Resources/images/banner.png"
 # Check for existing SDKs
 SDKs=`echo /Developer/SDKs/MacOSX10*sdk`
 case "$SDKs" in
+${SDKROOT})
+	;;
 *10.6*)
 	MACOSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET:-"10.5"}; export MACOSX_DEPLOYMENT_TARGET
 	case "${MACOSX_DEPLOYMENT_TARGET}" in
 	10.5|10.4)
-		SDKROOT="/Developer/SDKs/MacOSX10.5.sdk"; export SDKROOT
+		SDKROOT=${SDKROOT:-"/Developer/SDKs/MacOSX10.5.sdk"}; export SDKROOT
 		;;
 	esac
 	;;
 *10.5*)
 	MACOSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET:-"10.4"}; export MACOSX_DEPLOYMENT_TARGET
-	SDKROOT="/Developer/SDKs/MacOSX10.5.sdk"; export SDKROOT
+	SDKROOT=${SDKROOT:-"/Developer/SDKs/MacOSX10.5.sdk"}; export SDKROOT
 	;;
 *)
 	echo Unknown or missing SDK for Mac OS X.
@@ -228,6 +239,14 @@ case "$SDKs" in
 	;;
 esac
 MYCFLAGS="-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}"
+
+# These variables define the identifiers of the
+# system (both Intel and PowerPC) to compile for.
+# (Note: darwin8 is 10.4; darwin9 is 10.5.)
+# Only change these if necessary
+
+HostSystem_i386="i686-apple-darwin8"
+HostSystem_ppc="powerpc-apple-darwin8"
 
 updateDictionaries() {
 	TMP_DIR="/tmp/lyx-build-$$"
@@ -352,7 +371,7 @@ if [ -d "${HunSpellSourceDir}" -a ! -f "${HunSpellInstallHdr}" ]; then
 	for arch in ${ARCH_LIST} ; do
 		make distclean
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export CPPFLAGS
-		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch}"; export LDFLAGS
+		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export LDFLAGS
 		HOSTSYSTEM=`eval "echo \\$HostSystem_$arch"`
 		"${HunSpellSourceDir}/configure"\
 			--prefix="${HunSpellInstallDir}"\
@@ -417,7 +436,7 @@ if [ -d "${ASpellSourceDir}" -a ! -f "${ASpellInstallHdr}" -a "yes" = "${aspell_
 	for arch in ${ARCH_LIST} ; do
 		make distclean
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export CPPFLAGS
-		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch}"; export LDFLAGS
+		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export LDFLAGS
 		HOSTSYSTEM=`eval "echo \\$HostSystem_$arch"`
 		CXXFLAGS=-g "${ASpellSourceDir}/configure"\
 			--prefix="${ASpellInstallDir}"\
@@ -502,7 +521,7 @@ build_lyx() {
 		mkdir "${LyxBuildDir}" && cd "${LyxBuildDir}"
 
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export CPPFLAGS
-		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch}"; export LDFLAGS
+		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export LDFLAGS
 		HOSTSYSTEM=`eval "echo \\$HostSystem_$arch"`
 
 		echo LDFLAGS="${LDFLAGS}"
@@ -750,10 +769,10 @@ test -n "${DMGLocation}" && (
 	if [ -d "${QtInstallDir}/lib/QtCore.framework/Versions/${QtFrameworkVersion}" -a "yes" = "${qt4_deployment}" ]; then
 		rm -f "${DMGLocation}/${DMGNAME}+qt4.dmg"
 		mv "${DMGLocation}/${DMGNAME}.dmg" "${DMGLocation}/${DMGNAME}+qt4.dmg"
-		for libnm in ${QtLibraries} ; do
-			fwdir=`framework_name "$libnm"`
-			rm -rf "${LyxAppDir}.app/Contents/${fwdir}"
-		done
-		make_dmg "${DMGLocation}"
+		#for libnm in ${QtLibraries} ; do
+		#	fwdir=`framework_name "$libnm"`
+		#	rm -rf "${LyxAppDir}.app/Contents/${fwdir}"
+		#done
+		#make_dmg "${DMGLocation}"
 	fi
 )
