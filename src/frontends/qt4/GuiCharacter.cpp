@@ -344,7 +344,7 @@ void GuiCharacter::applyView()
 	setBar(fi, bar[miscCO->currentIndex()].second);
 	fi.setColor(color[colorCO->currentIndex()].second);
 
-	font_.setLanguage(languages.getLanguage(
+        font_.setLanguage(lyx::languages.getLanguage(
 		fromqstr(language[langCO->currentIndex()].second)));
 
 	toggleall_ = toggleallCB->isChecked();
