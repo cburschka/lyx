@@ -164,8 +164,7 @@ public:
 
 	/// Update macro table starting with position of it \param it in some
 	/// text inset.
-	void updateMacros(DocIterator & it, DocIterator & scope,
-			bool record_docits = false);
+	void updateMacros(DocIterator & it, DocIterator & scope);
 	///
 	void setLabel(ParIterator & it, UpdateType utype) const;
 	///
@@ -1576,7 +1575,7 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 	updateBuffer(UpdateMaster, OutputUpdate);
 	checkBibInfoCache();
 	d->bibinfo_.makeCitationLabels(*this);
-	updateMacros(true);
+	updateMacros();
 	updateMacroInstances();
 
 	if (!only_body) {
@@ -2668,8 +2667,7 @@ MacroData const * Buffer::getMacro(docstring const & name,
 }
 
 
-void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope,
-		bool record_docits)
+void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 {
 	pit_type const lastpit = it.lastpit();
 
@@ -2723,7 +2721,7 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope,
 				continue;
 			}
 
-			if (record_docits && iit->inset->asInsetMath()) {
+			if (doing_export && iit->inset->asInsetMath()) {
 				InsetMath * im = static_cast<InsetMath *>(iit->inset);
 				if (im->asHullInset()) {
 					InsetMathHull * hull = static_cast<InsetMathHull *>(im);
@@ -2762,7 +2760,7 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope,
 }
 
 
-void Buffer::updateMacros(bool record_docit) const
+void Buffer::updateMacros() const
 {
 	if (d->macro_lock)
 		return;
@@ -2781,7 +2779,7 @@ void Buffer::updateMacros(bool record_docit) const
 	DocIterator it = par_iterator_begin();
 	DocIterator outerScope = it;
 	outerScope.pit() = outerScope.lastpit() + 2;
-	d->updateMacros(it, outerScope, record_docit);
+	d->updateMacros(it, outerScope);
 }
 
 
