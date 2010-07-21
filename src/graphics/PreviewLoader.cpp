@@ -203,7 +203,8 @@ public:
 	void add(string const & latex_snippet);
 	///
 	void remove(string const & latex_snippet);
-	///
+	/// \p wait whether to wait for the process to complete or, instead,
+	/// to do it in the background.
 	void startLoading(bool wait = false);
 
 	/// Emit this signal when an image is ready for display.
