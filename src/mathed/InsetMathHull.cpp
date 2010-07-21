@@ -483,7 +483,8 @@ void InsetMathHull::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-static docstring latexString(InsetMathHull const & inset)
+static docstring latexString(InsetMathHull const & inset, 
+		bool do_header = true)
 {
 	odocstringstream ls;
 	// This has to be static, because a preview snippet or a math
@@ -495,7 +496,7 @@ static docstring latexString(InsetMathHull const & inset)
 	if (inset.isBufferValid())
 		encoding = &(inset.buffer().params().encoding());
 	WriteStream wi(ls, false, true, WriteStream::wsPreview, encoding);
-	inset.write(wi);
+	inset.write(wi, do_header);
 	return ls.str();
 }
 
@@ -1127,12 +1128,14 @@ docstring InsetMathHull::eolString(row_type row, bool fragile, bool last_eoln) c
 }
 
 
-void InsetMathHull::write(WriteStream & os) const
+void InsetMathHull::write(WriteStream & os, bool do_header) const
 {
 	ModeSpecifier specifier(os, MATH_MODE);
-	header_write(os);
+	if (do_header)	
+		header_write(os);
 	InsetMathGrid::write(os);
-	footer_write(os);
+	if (do_header)
+		footer_write(os);
 }
 
 
@@ -1883,9 +1886,12 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 	} 
 	case BufferParams::LaTeX: {
 		string const tag = (getType() == hullSimple) ? "span" : "div";
-		// FIXME Need to allow customization of wrapping tags here....
-		docstring const latex = latexString(*this);
-		xs << html::StartTag(tag) << latex << html::EndTag(tag);
+		docstring const latex = latexString(*this, false);
+		// class='math' allows for use of jsMath
+		// http://www.math.union.edu/~dpvc/jsMath/
+		// FIXME XHTML
+		// probably should allow for some kind of customization here
+		xs << html::StartTag(tag, "class='math'") << latex << html::EndTag(tag);
 		xs.cr();
 	}
 	} // end switch
