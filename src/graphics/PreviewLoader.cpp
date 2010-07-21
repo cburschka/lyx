@@ -588,7 +588,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 
 	// For XHTML image export, we need to control the background 
 	// color here.
-	ColorCode bg = buffer_.isClone() 
+	ColorCode bg = buffer_.isExporting() 
 	               ? Color_white : PreviewLoader::backgroundColor();
 	// The conversion command.
 	ostringstream cs;

@@ -525,6 +525,10 @@ public:
 	std::vector<Format const *> exportableFormats(bool only_viewable) const;
 	///
 	bool isExportableFormat(std::string const & format) const;
+	/// mark the buffer as busy exporting something, or not
+	void setExportStatus(bool e) const;
+	///
+	bool isExporting() const;
 
 	///
 	typedef std::vector<std::pair<Inset *, ParIterator> > References;

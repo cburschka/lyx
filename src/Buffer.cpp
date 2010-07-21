@@ -157,7 +157,7 @@ public:
 		}
 		delete inset;
 	}
-
+	
 	/// search for macro in local (buffer) table or in children
 	MacroData const * getBufferMacro(docstring const & name,
 		DocIterator const & pos) const;
@@ -289,7 +289,9 @@ public:
 	/// If non zero, this buffer is a clone of existing buffer \p cloned_buffer_
 	/// This one is useful for preview detached in a thread.
 	Buffer const * cloned_buffer_;
-
+	/// are we in the process of exporting this buffer?
+	mutable bool doing_export;
+	
 private:
 	/// So we can force access via the accessors.
 	mutable Buffer const * parent_buffer;
@@ -322,7 +324,7 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
 	  toc_backend(owner), macro_lock(false), timestamp_(0),
 	  checksum_(0), wa_(0), gui_(0), undo_(*owner), bibinfo_cache_valid_(false),
-	  cloned_buffer_(cloned_buffer), parent_buffer(0)
+	  cloned_buffer_(cloned_buffer), doing_export(false), parent_buffer(0)
 {
 	if (!cloned_buffer_) {
 		temppath = createBufferTmpDir();
@@ -3260,10 +3262,41 @@ string Buffer::getDefaultOutputFormat() const
 }
 
 
+namespace {
+	// helper class, to guarantee this gets reset properly
+	class MarkAsExporting	{
+	public:
+		MarkAsExporting(Buffer const * buf) : buf_(buf) 
+		{
+			LASSERT(buf_, /* */);
+			buf_->setExportStatus(true);
+		}
+		~MarkAsExporting() 
+		{
+			buf_->setExportStatus(false);
+		}
+	private:
+		Buffer const * const buf_;
+	};
+}
+
+
+void Buffer::setExportStatus(bool e) const
+{
+	d->doing_export = e;	
+}
+
+
+bool Buffer::isExporting() const
+{
+	return d->doing_export;
+}
+
 
 bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	bool includeall, string & result_file) const
 {
+	MarkAsExporting exporting(this);
 	string backend_format;
 	OutputParams runparams(&params().encoding());
 	runparams.flavor = OutputParams::LATEX;
@@ -3460,6 +3493,7 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 
 bool Buffer::preview(string const & format, bool includeall) const
 {
+	MarkAsExporting exporting(this);
 	string result_file;
 	// (1) export with all included children (omit \includeonly)
 	if (includeall && !doExport(format, true, true))
