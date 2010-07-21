@@ -1848,23 +1848,29 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 	// FIXME Eventually we would like to do this inset by inset.
 	switch (mathtype) {
 	case BufferParams::MathML: {
+		odocstringstream os;
+		MathStream ms(os);
+		InsetMathGrid::mathmlize(ms);
 		if (getType() == hullSimple)
 			xs << html::StartTag("math", 
 			      "xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
 		else 
 			xs << html::StartTag("math", 
 			      "display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
-		MathStream ms(xs.os());
-		InsetMathGrid::mathmlize(ms);
-		xs << html::EndTag("math");
+		xs << XHTMLStream::NextRaw() 
+		   << os.str()
+		   << html::EndTag("math");
 		break;
 	} 
 	case BufferParams::HTML: {
-		string const tag = (getType() == hullSimple) ? "span" : "div";
-		xs << html::StartTag(tag, "class='formula'", true);
-		HtmlStream ms(xs.os());
+		odocstringstream os;
+		HtmlStream ms(os);
 		InsetMathGrid::htmlize(ms);
-		xs << html::EndTag(tag);
+		string const tag = (getType() == hullSimple) ? "span" : "div";
+		xs << html::StartTag(tag, "class='formula'", true)
+		   << XHTMLStream::NextRaw()
+		   << os.str()
+		   << html::EndTag(tag);
 		break;
 	} 
 	case BufferParams::Images: {
@@ -1874,9 +1880,9 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 			// FIXME Do we always have png?
 			string const tag = (getType() == hullSimple) ? "span" : "div";
 			FileName const & mathimg = pimage->filename();
-			xs << html::StartTag(tag);
-			xs << html::CompTag("img", "src=\"" + mathimg.onlyFileName() + "\"");
-			xs << html::EndTag(tag);
+			xs << html::StartTag(tag)
+			   << html::CompTag("img", "src=\"" + mathimg.onlyFileName() + "\"")
+			   << html::EndTag(tag);
 			xs.cr();
 			// add the file to the list of files to be exported
 			op.exportdata->addExternalFile("xhtml", mathimg);
@@ -1891,7 +1897,9 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		// http://www.math.union.edu/~dpvc/jsMath/
 		// FIXME XHTML
 		// probably should allow for some kind of customization here
-		xs << html::StartTag(tag, "class='math'") << latex << html::EndTag(tag);
+		xs << html::StartTag(tag, "class='math'") 
+		   << latex 
+		   << html::EndTag(tag);
 		xs.cr();
 	}
 	} // end switch
