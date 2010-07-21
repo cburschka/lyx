@@ -204,7 +204,7 @@ public:
 	///
 	void remove(string const & latex_snippet);
 	///
-	void startLoading();
+	void startLoading(bool wait = false);
 
 	/// Emit this signal when an image is ready for display.
 	boost::signal<void(PreviewImage const &)> imageReady;
@@ -291,9 +291,9 @@ void PreviewLoader::remove(string const & latex_snippet) const
 }
 
 
-void PreviewLoader::startLoading() const
+void PreviewLoader::startLoading(bool wait) const
 {
-	pimpl_->startLoading();
+	pimpl_->startLoading(wait);
 }
 
 
@@ -520,7 +520,7 @@ void PreviewLoader::Impl::remove(string const & latex_snippet)
 }
 
 
-void PreviewLoader::Impl::startLoading()
+void PreviewLoader::Impl::startLoading(bool wait)
 {
 	if (pending_.empty() || !pconverter_)
 		return;
@@ -585,17 +585,33 @@ void PreviewLoader::Impl::startLoading()
 	double font_scaling_factor = 0.01 * lyxrc.dpi * lyxrc.zoom
 		* lyxrc.preview_scale_factor;
 
+	// For XHTML image export, we need to control the background 
+	// color here.
+	ColorCode bg = buffer_.isClone() 
+	               ? Color_white : PreviewLoader::backgroundColor();
 	// The conversion command.
 	ostringstream cs;
 	cs << pconverter_->command << ' ' << pconverter_->to << ' '
 	   << quoteName(latexfile.toFilesystemEncoding()) << ' '
 	   << int(font_scaling_factor) << ' '
 	   << theApp()->hexName(PreviewLoader::foregroundColor()) << ' '
-	   << theApp()->hexName(PreviewLoader::backgroundColor());
+	   << theApp()->hexName(bg);
 	if (buffer_.params().useXetex)
 		cs << " xelatex";
 
 	string const command = libScriptSearch(cs.str());
+
+	if (wait) {
+		ForkedCall call;
+		int ret = call.startScript(ForkedProcess::Wait, command);
+		static int fake = (2^20) + 1;
+		int pid = fake++;
+		inprogress.pid = pid;
+		inprogress.command = command;
+		in_progress_[pid] = inprogress;
+		finishedGenerating(pid, ret);
+		return;
+	}
 
 	// Initiate the conversion from LaTeX to bitmap images files.
 	ForkedCall::SignalTypePtr

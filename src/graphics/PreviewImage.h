@@ -46,6 +46,8 @@ public:
 	 *  triggers that.
 	 */
 	Image const * image() const;
+	///
+	support::FileName const & filename() const;
 
 private:
 	/// Use the Pimpl idiom to hide the internals.

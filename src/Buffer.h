@@ -427,7 +427,7 @@ public:
 	// Macro handling
 	//
 	/// Collect macro definitions in paragraphs
-	void updateMacros() const;
+	void updateMacros(bool record_docit = false) const;
 	/// Iterate through the whole buffer and try to resolve macros
 	void updateMacroInstances() const;
 

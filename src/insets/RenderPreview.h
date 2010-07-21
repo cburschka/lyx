@@ -69,7 +69,7 @@ public:
 			graphics::PreviewLoader & ploader);
 
 	/// Begin the loading process.
-	void startLoading(Buffer const & buffer) const;
+	void startLoading(Buffer const & buffer, bool wait = false) const;
 
 	/** Remove a snippet from the cache of previews.
 	 *  Useful if previewing the contents of a file that has changed.

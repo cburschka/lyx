@@ -68,7 +68,7 @@ public:
 	/** We have accumulated several latex snippets with status "InQueue".
 	 *  Initiate their transformation into bitmap images.
 	 */
-	void startLoading() const;
+	void startLoading(bool wait = false) const;
 
 	/** Connect and you'll be informed when the bitmap image file
 	 *  has been created and is ready for loading through

@@ -14,6 +14,7 @@
 
 #include "InsetMathGrid.h"
 
+#include "DocIterator.h"
 #include "OutputEnums.h"
 
 #include <boost/scoped_ptr.hpp>
@@ -141,7 +142,7 @@ public:
 	/// Prepare the preview if preview is enabled.
 	void preparePreview(DocIterator const & pos) const;
 	/// Recreates the preview if preview is enabled.
-	void reloadPreview(DocIterator const & pos) const;
+	void reloadPreview(DocIterator const & pos, bool wait = false) const;
 	///
 	void initUnicodeMath() const;
 
@@ -150,6 +151,8 @@ public:
 	
 	/// Force inset into LTR environment if surroundings are RTL
 	virtual bool forceLTR() const { return true; }
+	///
+	void recordLocation(DocIterator const & di);
 
 	///
 	virtual docstring contextMenu(BufferView const &, int, int) const;
@@ -216,6 +219,8 @@ private:
 	boost::scoped_ptr<RenderPreview> preview_;
 	///
 	mutable bool use_preview_;
+	///
+	DocIterator docit_;
 //
 // Incorporate me
 //

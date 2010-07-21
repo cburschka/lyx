@@ -25,6 +25,7 @@
 #include "ColorSet.h"
 #include "CutAndPaste.h"
 #include "Encoding.h"
+#include "Exporter.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
@@ -539,10 +540,10 @@ void InsetMathHull::preparePreview(DocIterator const & pos) const
 }
 
 
-void InsetMathHull::reloadPreview(DocIterator const & pos) const
+void InsetMathHull::reloadPreview(DocIterator const & pos, bool wait) const
 {
 	preparePreview(pos);
-	preview_->startLoading(*pos.buffer());
+	preview_->startLoading(*pos.buffer(), wait);
 }
 
 
@@ -1837,7 +1838,7 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 }
 
 
-docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const &) const
+docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 {
 	BufferParams::MathOutput mathtype = buffer().params().html_math_output;
 	// FIXME Eventually we would like to do this inset by inset.
@@ -1855,7 +1856,7 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const &) const
 		break;
 	} 
 	case BufferParams::HTML: {
-		string tag = (getType() == hullSimple) ? "span" : "div";
+		string const tag = (getType() == hullSimple) ? "span" : "div";
 		xs << html::StartTag(tag, "class='formula'", true);
 		HtmlStream ms(xs.os());
 		InsetMathGrid::htmlize(ms);
@@ -1863,7 +1864,23 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const &) const
 		break;
 	} 
 	case BufferParams::Images: {
-		LYXERR0("Image output for math presently unsupported.");
+		reloadPreview(docit_, true);
+		graphics::PreviewImage const * pimage = preview_->getPreviewImage(buffer());
+		string const tag = (getType() == hullSimple) ? "span" : "div";
+		if (!pimage) {
+			LYXERR0("Unable to generate image. LaTeX follows.");
+			LYXERR0(latexString(*this));
+			xs << html::StartTag(tag) << "MATH" << html::EndTag(tag);
+			xs.cr();
+			break;
+		}
+		// need to do a conversion to png, possibly.
+		FileName const & mathimg = pimage->filename();
+		xs << html::StartTag(tag);
+		xs << html::CompTag("img", "src=\"" + mathimg.onlyFileName() + "\"");
+		xs << html::EndTag(tag);
+		xs.cr();
+		op.exportdata->addExternalFile("xhtml", mathimg);
 		break;
 	} 
 	case BufferParams::LaTeX: {
@@ -1886,5 +1903,10 @@ docstring InsetMathHull::contextMenu(BufferView const &, int, int) const
 	return from_ascii("context-math");
 }
 
+
+void InsetMathHull::recordLocation(DocIterator const & di)
+{
+	docit_ = di;
+}
 
 } // namespace lyx

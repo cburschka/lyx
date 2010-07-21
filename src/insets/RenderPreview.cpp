@@ -175,13 +175,13 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void RenderPreview::startLoading(Buffer const & buffer) const
+void RenderPreview::startLoading(Buffer const & buffer, bool wait) const
 {
 	if (status() == LyXRC::PREVIEW_OFF || snippet_.empty())
 		return;
 
 	graphics::PreviewLoader const & loader = getPreviewLoader(buffer);
-	loader.startLoading();
+	loader.startLoading(wait);
 }
 
 

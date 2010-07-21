@@ -72,6 +72,7 @@
 #include "insets/InsetInclude.h"
 #include "insets/InsetText.h"
 
+#include "mathed/InsetMathHull.h"
 #include "mathed/MacroTable.h"
 #include "mathed/MathMacroTemplate.h"
 #include "mathed/MathSupport.h"
@@ -163,7 +164,8 @@ public:
 
 	/// Update macro table starting with position of it \param it in some
 	/// text inset.
-	void updateMacros(DocIterator & it, DocIterator & scope);
+	void updateMacros(DocIterator & it, DocIterator & scope,
+			bool record_docits = false);
 	///
 	void setLabel(ParIterator & it, UpdateType utype) const;
 	///
@@ -403,7 +405,8 @@ Buffer::~Buffer()
 	}
 
 	// Remove any previewed LaTeX snippets associated with this buffer.
-	thePreviews().removeLoader(*this);
+	if (!isClone())
+		thePreviews().removeLoader(*this);
 
 	delete d;
 }
@@ -1571,7 +1574,7 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 	updateBuffer(UpdateMaster, OutputUpdate);
 	checkBibInfoCache();
 	d->bibinfo_.makeCitationLabels(*this);
-	updateMacros();
+	updateMacros(true);
 	updateMacroInstances();
 
 	if (!only_body) {
@@ -2663,7 +2666,8 @@ MacroData const * Buffer::getMacro(docstring const & name,
 }
 
 
-void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
+void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope,
+		bool record_docits)
 {
 	pit_type const lastpit = it.lastpit();
 
@@ -2717,6 +2721,14 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 				continue;
 			}
 
+			if (record_docits && iit->inset->asInsetMath()) {
+				InsetMath * im = static_cast<InsetMath *>(iit->inset);
+				if (im->asHullInset()) {
+					InsetMathHull * hull = static_cast<InsetMathHull *>(im);
+					hull->recordLocation(it);
+				}
+			}
+
 			if (iit->inset->lyxCode() != MATHMACRO_CODE)
 				continue;
 
@@ -2748,7 +2760,7 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 }
 
 
-void Buffer::updateMacros() const
+void Buffer::updateMacros(bool record_docit) const
 {
 	if (d->macro_lock)
 		return;
@@ -2767,7 +2779,7 @@ void Buffer::updateMacros() const
 	DocIterator it = par_iterator_begin();
 	DocIterator outerScope = it;
 	outerScope.pit() = outerScope.lastpit() + 2;
-	d->updateMacros(it, outerScope);
+	d->updateMacros(it, outerScope, record_docit);
 }
 
 

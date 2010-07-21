@@ -70,6 +70,12 @@ string const & PreviewImage::snippet() const
 }
 
 
+support::FileName const & PreviewImage::filename() const
+{
+	return pimpl_->iloader_.filename();
+}
+
+
 Dimension PreviewImage::dim() const
 {
 	Dimension dim;
