@@ -37,11 +37,11 @@ q
 
 USER_SUPPORT="${HOME}/Library/Application Support"
 test -d "${USER_SUPPORT}" || {
-	echo "Something horrible is going on. No user support directory $ {USER_SUPPORT}" >&2 
+	echo "Something horrible is going on. No user support directory ${USER_SUPPORT}" >&2 
 	exit 1
 }
 
-for LYXDIR in LyX-1.6 LyX-1.5 LyX-1.4 LyX
+for LYXDIR in LyX-2.0 LyX-1.6 LyX-1.5 LyX-1.4 LyX
 do
 	ABS_USER_LYXDIR="${USER_SUPPORT}/${LYXDIR}"
 	test -d "${ABS_USER_LYXDIR}" || {
