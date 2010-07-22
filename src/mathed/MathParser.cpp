@@ -1217,12 +1217,8 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "(") {
-			if (mode == InsetMath::MATH_MODE) {
-				error("bad math environment");
-				break;
-			}
-			cell->push_back(MathAtom(new InsetMathHull(buf, hullSimple)));
-			parse2(cell->back(), FLAG_SIMPLE2, InsetMath::MATH_MODE, false);
+			cell->push_back(MathAtom(new InsetMathEnsureMath(buf)));
+			parse(cell->back().nucleus()->cell(0), FLAG_SIMPLE2, InsetMath::MATH_MODE);
 		}
 
 		else if (t.cs() == "[") {
@@ -1494,12 +1490,8 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 
 			else if (name == "math") {
-				if (mode == InsetMath::MATH_MODE) {
-					error("bad math environment");
-					break;
-				}
-				cell->push_back(MathAtom(new InsetMathHull(buf, hullSimple)));
-				parse2(cell->back(), FLAG_END, InsetMath::MATH_MODE, true);
+				cell->push_back(MathAtom(new InsetMathEnsureMath(buf)));
+				parse(cell->back().nucleus()->cell(0), FLAG_END, InsetMath::MATH_MODE);
 			}
 
 			else if (name == "equation" || name == "equation*"
