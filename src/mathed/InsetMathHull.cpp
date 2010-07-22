@@ -1889,7 +1889,14 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 	} 
 	case BufferParams::LaTeX: {
 		string const tag = (getType() == hullSimple) ? "span" : "div";
-		docstring const latex = latexString(*this);
+		// Unfortunately, we cannot use latexString() because we do not want
+		// $...$ or whatever.
+		odocstringstream ls;
+		WriteStream wi(ls, false, true, WriteStream::wsPreview);
+		ModeSpecifier specifier(wi, MATH_MODE);
+		InsetMathGrid::write(wi);
+		docstring const latex = ls.str();
+		
 		// class='math' allows for use of jsMath
 		// http://www.math.union.edu/~dpvc/jsMath/
 		// FIXME XHTML
