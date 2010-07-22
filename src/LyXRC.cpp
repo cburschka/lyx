@@ -173,7 +173,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\screen_font_typewriter_foundry", LyXRC::RC_SCREEN_FONT_TYPEWRITER_FOUNDRY },
 	{ "\\screen_zoom", LyXRC::RC_SCREEN_ZOOM },
 	{ "\\scroll_below_document", LyXRC::RC_SCROLL_BELOW_DOCUMENT },
-	{ "\\scroll_whell_zoom", LyXRC::RC_SCROLL_WHEEL_ZOOM },
+	{ "\\scroll_wheel_zoom", LyXRC::RC_SCROLL_WHEEL_ZOOM },
 	{ "\\serverpipe", LyXRC::RC_SERVERPIPE },
 	{ "\\set_color", LyXRC::RC_SET_COLOR },
 	{ "\\show_banner", LyXRC::RC_SHOW_BANNER },
@@ -321,7 +321,7 @@ void LyXRC::setDefaults()
 	date_insert_format = "%x";
 	cursor_follows_scrollbar = false;
 	scroll_below_document = false;
-	scroll_whell_zoom = SCROLL_WHEEL_ZOOM_CTRL;
+	scroll_wheel_zoom = SCROLL_WHEEL_ZOOM_CTRL;
 	paragraph_markers = false;
 	mac_like_word_movement = false;
 	macro_edit_style = MACRO_EDIT_INLINE_BOX;
@@ -1201,15 +1201,15 @@ int LyXRC::read(Lexer & lexrc)
 			if (lexrc.next()) {
 				string const tmp = lexrc.getString();
 				if (tmp == "ctrl")
-					scroll_whell_zoom = SCROLL_WHEEL_ZOOM_CTRL;
+					scroll_wheel_zoom = SCROLL_WHEEL_ZOOM_CTRL;
 				else if (tmp == "shift")
-					scroll_whell_zoom = SCROLL_WHEEL_ZOOM_SHIFT;
+					scroll_wheel_zoom = SCROLL_WHEEL_ZOOM_SHIFT;
 				else if (tmp == "alt")
-					scroll_whell_zoom = SCROLL_WHEEL_ZOOM_ALT;
+					scroll_wheel_zoom = SCROLL_WHEEL_ZOOM_ALT;
 				else {
-					scroll_whell_zoom = SCROLL_WHEEL_ZOOM_OFF;
+					scroll_wheel_zoom = SCROLL_WHEEL_ZOOM_OFF;
 					if (tmp != "off" && tmp != "false")
-						LYXERR0("Unrecognized scroll_whell_zoom status \""
+						LYXERR0("Unrecognized scroll_wheel_zoom status \""
 						       << tmp << '"');
 				}
 			}
@@ -2592,9 +2592,9 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 
 	case RC_SCROLL_WHEEL_ZOOM:
 		if (ignore_system_lyxrc ||
-		    scroll_whell_zoom != system_lyxrc.scroll_whell_zoom) {
+			scroll_wheel_zoom != system_lyxrc.scroll_wheel_zoom) {
 			string status;
-			switch (scroll_whell_zoom) {
+			switch (scroll_wheel_zoom) {
 			case SCROLL_WHEEL_ZOOM_OFF:
 				status = "off";
 				break;
@@ -2608,7 +2608,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 				status = "alt";
 				break;
 			}
-			os << "\\scroll_whell_zoom " << status << '\n';
+			os << "\\scroll_wheel_zoom " << status << '\n';
 		}
 		if (tag != RC_LAST)
 			break;

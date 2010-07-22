@@ -477,17 +477,17 @@ void PrefInput::apply(LyXRC & rc) const
 	if (scrollzoomEnableCB->isChecked()) {
 		switch (scrollzoomValueCO->currentIndex()) {
 		case 0:
-			rc.scroll_whell_zoom = LyXRC::SCROLL_WHEEL_ZOOM_CTRL;
+			rc.scroll_wheel_zoom = LyXRC::SCROLL_WHEEL_ZOOM_CTRL;
 			break;
 		case 1:
-			rc.scroll_whell_zoom = LyXRC::SCROLL_WHEEL_ZOOM_SHIFT;
+			rc.scroll_wheel_zoom = LyXRC::SCROLL_WHEEL_ZOOM_SHIFT;
 			break;
 		case 2:
-			rc.scroll_whell_zoom = LyXRC::SCROLL_WHEEL_ZOOM_ALT;
+			rc.scroll_wheel_zoom = LyXRC::SCROLL_WHEEL_ZOOM_ALT;
 			break;
 		}
 	} else {
-		rc.scroll_whell_zoom = LyXRC::SCROLL_WHEEL_ZOOM_OFF;
+		rc.scroll_wheel_zoom = LyXRC::SCROLL_WHEEL_ZOOM_OFF;
 	}
 }
 
@@ -499,7 +499,7 @@ void PrefInput::update(LyXRC const & rc)
 	firstKeymapED->setText(toqstr(external_path(rc.primary_kbmap)));
 	secondKeymapED->setText(toqstr(external_path(rc.secondary_kbmap)));
 	mouseWheelSpeedSB->setValue(rc.mouse_wheel_speed);
-	switch (rc.scroll_whell_zoom) {
+	switch (rc.scroll_wheel_zoom) {
 	case LyXRC::SCROLL_WHEEL_ZOOM_OFF:
 		scrollzoomEnableCB->setChecked(false);
 		break;

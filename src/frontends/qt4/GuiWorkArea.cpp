@@ -818,7 +818,7 @@ void GuiWorkArea::wheelEvent(QWheelEvent * ev)
 	// documentation of QWheelEvent)
 	double const delta = ev->delta() / 120.0;
 	bool zoom = false;
-	switch (lyxrc.scroll_whell_zoom) {
+	switch (lyxrc.scroll_wheel_zoom) {
 	case LyXRC::SCROLL_WHEEL_ZOOM_CTRL:
 		zoom = ev->modifiers() & Qt::ControlModifier;
 		zoom &= !(ev->modifiers() & (Qt::ShiftModifier | Qt::AltModifier));

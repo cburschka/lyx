@@ -511,7 +511,7 @@ public:
 		SCROLL_WHEEL_ZOOM_ALT
 	};
 	///
-	ScrollWheelZoom scroll_whell_zoom;
+	ScrollWheelZoom scroll_wheel_zoom;
 };
 
 
