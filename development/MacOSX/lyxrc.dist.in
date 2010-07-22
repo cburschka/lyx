@@ -30,6 +30,8 @@
 \open_buffers_in_tabs false
 \mac_like_word_movement true
 
+\scroll_wheel_zoom "off"
+
 #
 # COLOR SECTION ###################################
 #
@@ -65,7 +67,7 @@
 # SPELLCHECKER SECTION ##############################
 #
 
-\spell_command "aspell"
+\spell_command "native"
 
 #
 # LANGUAGE SUPPORT SECTION ##########################

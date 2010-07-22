@@ -79,7 +79,7 @@
 \bind "C-S-E"			"changes-track"  # it's what MS Word uses
 \bind "~S-M-quotedbl"	"quote-insert single"
 \bind "~S-C-quotedbl"	"self-insert \""
-\bind "C-minus"			"command-alternatives math-macro-fold;specialchar-insert hyphenation"
+\bind "C-S-underscore"			"command-alternatives math-macro-fold;specialchar-insert hyphenation"
 \bind "C-M-minus"		"specialchar-insert nobreakdash"
 \bind "M-C-Right"		"depth-increment"
 \bind "M-C-Left"		"depth-decrement"
@@ -103,9 +103,8 @@
 \bind "M-x"				"command-execute"
 \bind "M-o"				"dialog-show toc"
 
-\bind "M-equal"			"buffer-zoom-in"
-\bind "M-plus"			"buffer-zoom-in"
-\bind "M-minus"			"buffer-zoom-out"
+\bind "C-plus"			"buffer-zoom-in"
+\bind "C-minus"		"buffer-zoom-out"
 
 #
 # Motion group
