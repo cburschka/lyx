@@ -105,7 +105,7 @@ public:
 	bool idxLast(Cursor &) const;
 
 	///
-	void write(WriteStream & os, bool do_header = true) const;
+	void write(WriteStream & os) const;
 	///
 	void mathmlize(MathStream &) const;
 	///

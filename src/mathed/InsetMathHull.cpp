@@ -483,8 +483,7 @@ void InsetMathHull::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-static docstring latexString(InsetMathHull const & inset, 
-		bool do_header = true)
+static docstring latexString(InsetMathHull const & inset)
 {
 	odocstringstream ls;
 	// This has to be static, because a preview snippet or a math
@@ -496,7 +495,7 @@ static docstring latexString(InsetMathHull const & inset,
 	if (inset.isBufferValid())
 		encoding = &(inset.buffer().params().encoding());
 	WriteStream wi(ls, false, true, WriteStream::wsPreview, encoding);
-	inset.write(wi, do_header);
+	inset.write(wi);
 	return ls.str();
 }
 
@@ -1128,14 +1127,12 @@ docstring InsetMathHull::eolString(row_type row, bool fragile, bool last_eoln) c
 }
 
 
-void InsetMathHull::write(WriteStream & os, bool do_header) const
+void InsetMathHull::write(WriteStream & os) const
 {
 	ModeSpecifier specifier(os, MATH_MODE);
-	if (do_header)	
-		header_write(os);
+	header_write(os);
 	InsetMathGrid::write(os);
-	if (do_header)
-		footer_write(os);
+	footer_write(os);
 }
 
 
@@ -1892,7 +1889,7 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 	} 
 	case BufferParams::LaTeX: {
 		string const tag = (getType() == hullSimple) ? "span" : "div";
-		docstring const latex = latexString(*this, false);
+		docstring const latex = latexString(*this);
 		// class='math' allows for use of jsMath
 		// http://www.math.union.edu/~dpvc/jsMath/
 		// FIXME XHTML
