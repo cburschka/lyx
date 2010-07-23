@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-07-19 01:45+0200\n"
-"PO-Revision-Date: 2010-07-12 07:16+0200\n"
+"PO-Revision-Date: 2010-07-23 12:30+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenčina <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -3203,27 +3203,23 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:189
 msgid "Scroll wheel zoom"
-msgstr ""
+msgstr "Veľkosť písma pomocou skrolovacieho tlačítka"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:222
-#, fuzzy
 msgid "Enable"
-msgstr "Zapnutý"
+msgstr "Zapnúť"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:236
-#, fuzzy
 msgid "Ctrl"
 msgstr "Ctrl"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:241
-#, fuzzy
 msgid "Shift"
-msgstr "Shift-"
+msgstr "Shift"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:246
-#, fuzzy
 msgid "Alt"
-msgstr "Alert"
+msgstr "Alt"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:19
 msgid "User &interface language:"
@@ -4138,7 +4134,6 @@ msgid "Cas&e-sensitive"
 msgstr "Rozlišovať veľkosť písmen"
 
 #: src/frontends/qt4/ui/RefUi.ui:188
-#, fuzzy
 msgid "Group labels by prefix (e.g. &quot;sec:&quot;)"
 msgstr "Zoskupiť značky podľa prefixu (napr. \"sec:\")"
 
@@ -4183,14 +4178,12 @@ msgid "Formatted reference"
 msgstr "Formátovaná referencia"
 
 #: src/frontends/qt4/ui/RefUi.ui:324
-#, fuzzy
 msgid "Textual reference"
-msgstr "všetky referencie"
+msgstr "Textové referencie"
 
 #: src/frontends/qt4/ui/RefUi.ui:329
-#, fuzzy
 msgid "Textual reference plus <page>"
-msgstr "<referencia> na strane <strana>"
+msgstr "Textová referencia a <strana>"
 
 #: src/frontends/qt4/ui/SearchUi.ui:108
 msgid "Match w&hole words only"
@@ -4933,44 +4926,36 @@ msgid "FrontMatter"
 msgstr "FrontMatter"
 
 #: lib/layouts/AEA.layout:60
-#, fuzzy
 msgid "Publication Month"
-msgstr "Publikačná ID"
+msgstr "Publikačný Mesiac"
 
 #: lib/layouts/AEA.layout:66
-#, fuzzy
 msgid "Publication Month:"
-msgstr "Publikačná ID"
+msgstr "Publikačný Mesiac:"
 
 #: lib/layouts/AEA.layout:73
-#, fuzzy
 msgid "Publication Year"
-msgstr "Publikačná ID"
+msgstr "Publikačný Rok"
 
 #: lib/layouts/AEA.layout:76
-#, fuzzy
 msgid "Publication Year:"
-msgstr "Publikačná ID"
+msgstr "Publikačný Rok:"
 
 #: lib/layouts/AEA.layout:79
-#, fuzzy
 msgid "Publication Volume"
-msgstr "Publikačná ID"
+msgstr "Publikačný Zväzok (knihy)"
 
 #: lib/layouts/AEA.layout:82
-#, fuzzy
 msgid "Publication Volume:"
-msgstr "Publikačná ID"
+msgstr "Publikačný Zväzok (knihy):"
 
 #: lib/layouts/AEA.layout:85
-#, fuzzy
 msgid "Publication Issue"
-msgstr "Publikačná ID"
+msgstr "Publikačný Výdaj"
 
 #: lib/layouts/AEA.layout:88
-#, fuzzy
 msgid "Publication Issue:"
-msgstr "Publikačná ID"
+msgstr "Publikačný Výdaj:"
 
 #: lib/layouts/AEA.layout:91 lib/layouts/IEEEtran.layout:186
 #: lib/layouts/aa.layout:88 lib/layouts/aa.layout:318
@@ -5081,9 +5066,8 @@ msgid "Case"
 msgstr "Prípad"
 
 #: lib/layouts/AEA.layout:127
-#, fuzzy
 msgid "Case \\thecase."
-msgstr "Nárok \\theclaim."
+msgstr "Prípad \\thecase."
 
 #: lib/layouts/AEA.layout:133 lib/layouts/elsart.layout:397
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:278
@@ -5288,9 +5272,8 @@ msgid "Solution"
 msgstr "Riešenie"
 
 #: lib/layouts/AEA.layout:241
-#, fuzzy
 msgid "Solution \\thesolution."
-msgstr "Záver \\theconclusion."
+msgstr "Riešenie \\thesolution."
 
 #: lib/layouts/AEA.layout:247 lib/layouts/elsart.layout:404
 #: lib/layouts/theorems-ams-extended-bytype.module:197
@@ -5322,9 +5305,8 @@ msgid "MainText"
 msgstr "Hlavný text"
 
 #: lib/layouts/AEA.layout:261
-#, fuzzy
 msgid "Caption: "
-msgstr "Popisok:"
+msgstr "Popisok: "
 
 #: lib/layouts/AEA.layout:266 lib/layouts/IEEEtran.layout:287
 #: lib/layouts/beamer.layout:1060 lib/layouts/elsart.layout:286
@@ -11995,9 +11977,8 @@ msgid "Formatted Reference|t"
 msgstr "Formátovaná Referencia|t"
 
 #: lib/ui/stdcontext.inc:94
-#, fuzzy
 msgid "Textual Reference|x"
-msgstr "Ďalšia krížová referencia|r"
+msgstr "Textová Referencia"
 
 #: lib/ui/stdcontext.inc:96 lib/ui/stdcontext.inc:108
 #: lib/ui/stdcontext.inc:118 lib/ui/stdcontext.inc:126
@@ -12778,9 +12759,8 @@ msgid "Math Calligraphic Family|C"
 msgstr "Mat. kaligrafická rodina písma|k"
 
 #: lib/ui/stdmenus.inc:261
-#, fuzzy
 msgid "Math Formal Script Family|o"
-msgstr "Mat. rodina písma Fraktur|F"
+msgstr "Mat. rodina písma Formal"
 
 #: lib/ui/stdmenus.inc:262
 msgid "Math Fraktur Family|F"
@@ -13966,7 +13946,7 @@ msgstr "Kaligrafické\t\\mathcal"
 
 #: lib/ui/stdtoolbars.inc:378
 msgid "Formal Script\t\\mathscr"
-msgstr ""
+msgstr "Formálne Písmo\t\\mathscr"
 
 #: lib/ui/stdtoolbars.inc:379
 msgid "Normal text mode\t\\textrm"
@@ -16864,7 +16844,7 @@ msgstr ""
 "stal nedostupným. Bude potrebné aktualizovať meno zahrnutého súboru."
 
 #: src/BufferParams.cpp:561
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The selected document class\n"
 "\t%1$s\n"
@@ -17987,7 +17967,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Nastavenie úrovne ladenia na %1$s"
 
 #: src/LyX.cpp:1008
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -18042,11 +18021,14 @@ msgstr ""
 "                  kde fmt je vybraný formát k importu\n"
 "                  a file.xxx je meno súboru určeného pre import.\n"
 "\t-f [--force-overwrite] čo\n"
-"                  kde \"čo\" je alebo `all' alebo `main'.\n"
+"                  kde \"čo\" je alebo `all' alebo `main' alebo `none'.\n"
 "                  Keď `all', tak bude prepísaný každý súbor počas\n"
-"                  dávkového exportu. Ináč bude prepísaný len hlavný súbor.\n"
+"                    dávkového exportu.\n"
+"                  Keď `main' bude prepísaný len hlavný súbor.\n"
+"                  Keď `none' nebude nič prepísané."
 "                  Všetko iné je rovnocenné k `all', len že nie je "
-"skonzumované.\t--batch    spusti príkazy bez GUI a skonč.\n"
+"skonzumované.\n"
+"\t--batch    spusti príkazy bez GUI a skonč.\n"
 "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu."
 
@@ -20005,32 +19987,31 @@ msgstr "B6"
 
 #: src/frontends/qt4/GuiDocument.cpp:782
 msgid "C0"
-msgstr ""
+msgstr "C0"
 
 #: src/frontends/qt4/GuiDocument.cpp:783
-#, fuzzy
 msgid "C1"
-msgstr "1"
+msgstr "C1"
 
 #: src/frontends/qt4/GuiDocument.cpp:784
 msgid "C2"
-msgstr ""
+msgstr "C2"
 
 #: src/frontends/qt4/GuiDocument.cpp:785
 msgid "C3"
-msgstr ""
+msgstr "C3"
 
 #: src/frontends/qt4/GuiDocument.cpp:786
 msgid "C4"
-msgstr ""
+msgstr "C4"
 
 #: src/frontends/qt4/GuiDocument.cpp:787
 msgid "C5"
-msgstr ""
+msgstr "C5"
 
 #: src/frontends/qt4/GuiDocument.cpp:788
 msgid "C6"
-msgstr ""
+msgstr "C6"
 
 #: src/frontends/qt4/GuiDocument.cpp:789
 msgid "JIS B0"
@@ -20261,7 +20242,7 @@ msgstr "%1$s, %2$s a %3$s"
 #: src/frontends/qt4/GuiDocument.cpp:1837
 #, c-format
 msgid "%1$s (unavailable)"
-msgstr ""
+msgstr "%1$s (nedostupný)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1911
 msgid "Module provided by document class."
@@ -20808,9 +20789,8 @@ msgid "Spellchecker"
 msgstr "Kontrola pravopisu"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1382
-#, fuzzy
 msgid "native"
-msgstr "aktívna"
+msgstr "apple-spell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1388
 msgid "aspell"
@@ -22799,14 +22779,12 @@ msgid "FrmtRef: "
 msgstr "FrmtRef: "
 
 #: src/insets/InsetRef.cpp:231
-#, fuzzy
 msgid "Reference to Name"
-msgstr "Referencia"
+msgstr "Referencia na Meno"
 
 #: src/insets/InsetRef.cpp:231
-#, fuzzy
 msgid "NameRef:"
-msgstr "Meno:"
+msgstr "NameRef:"
 
 #: src/insets/InsetSpace.cpp:71
 msgid "Protected Space"
