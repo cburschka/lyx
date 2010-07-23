@@ -130,6 +130,15 @@ The following LyX functions have been changed:
   ("argument-insert").
 
 
+The following LyX key bindings have been changed:
+
+- LFUN_MATH_MACRO_FOLD ("math-macro-fold")
+  The binding to "C-minus" has changed to "C-S-underscore".
+
+- LFUN_MATH_MACRO_UNFOLD ("math-macro-unfold")
+  The binding to "C-plus" has changed to "C-S-asterisk".
+
+
 New external programs and libaries:
 -----------------------------------
 
@@ -149,6 +158,8 @@ particularly applies to spell checking and the thesaurus.
   checker used by OpenOffice and Firefox) and enchant, a wrapper that
   provides automatic access to many spell checking libraries (ispell,
   aspell, hspell, hunspell, etc.).
+
+* On Mac Apples Spell Server is preconfigured as "native" spell checker.
 
 LyX 2.0 is configured for any and multiple of these three possibilities,
 given that they are installed on the machine where LyX is configured on.
