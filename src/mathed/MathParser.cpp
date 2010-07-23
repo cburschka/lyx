@@ -849,9 +849,16 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				Token const & n = getToken();
 				if (n.cat() == catMath) {
 					// TeX's $$...$$ syntax for displayed math
-					cell->push_back(MathAtom(new InsetMathHull(buf, hullEquation)));
-					parse2(cell->back(), FLAG_SIMPLE, InsetMath::MATH_MODE, false);
-					getToken(); // skip the second '$' token
+					if (mode == InsetMath::UNDECIDED_MODE) {
+						cell->push_back(MathAtom(new InsetMathHull(buf, hullEquation)));
+						parse2(cell->back(), FLAG_SIMPLE, InsetMath::MATH_MODE, false);
+						getToken(); // skip the second '$' token
+					} else {
+						// This is not an outer hull and display math is
+						// not allowed inside text mode environments.
+						error("bad math environment");
+						break;
+					}
 				} else {
 					// simple $...$  stuff
 					putback();
@@ -872,8 +879,19 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 
 			else {
-				error("something strange in the parser");
-				break;
+				Token const & n = getToken();
+				if (n.cat() == catMath) {
+					error("something strange in the parser");
+					break;
+				} else {
+					// This is inline math ($...$), but the parser thinks we are
+					// already in math mode and latex would issue an error, unless we
+					// are inside a text mode user macro. We have no way to tell, so
+					// let's play safe by using \ensuremath, as it will work in any case.
+					putback();
+					cell->push_back(MathAtom(new InsetMathEnsureMath(buf)));
+					parse(cell->back().nucleus()->cell(0), FLAG_SIMPLE, InsetMath::MATH_MODE);
+				}
 			}
 		}
 
