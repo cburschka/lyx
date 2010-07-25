@@ -1,4 +1,4 @@
-#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -12884,9 +12884,9 @@ reference "sub:Row-Spacing"
 \end_layout
 
 \begin_layout Standard
-In contrary to normal tables, formal tables have no vertical table lines.
- The horizontal table lines can be set like for normal tables but they appear
- with different width in the output:
+Unlike normal tables, formal tables have no vertical table lines.
+ The horizontal table lines can be set as for normal tables but they appear
+ with different widths in the output:
 \begin_inset Newline newline
 \end_inset
 
@@ -12966,8 +12966,8 @@ reference "cha:Units-available-in"
 \end_layout
 
 \begin_layout Standard
-Lines that don't span over all table columns can be created by setting a
- table line for multicolumn cells.
+Lines that do not span all table columns can be created by setting a table
+ line for multicolumn cells.
  LyX will then internally use the command 
 \series bold
 
@@ -12993,15 +12993,15 @@ The options of
 \backslash
 cmidrule
 \series default
- are are currently not supported by LyX so you have to use TeX-Code to be
- able to use them.
+ are currently not supported by LyX so you have to use TeX-Code to be able
+ to use them.
  
 \series bold
 
 \backslash
 cmidrule
 \series default
-s can manually be created by inserting the command as TeX-Code as first
+s can manually be created by inserting the command as TeX-Code as the first
  cell entry of the first cell of a row.
  The line is then drawn in the output above the current row.
 \end_layout
@@ -13071,7 +13071,7 @@ cmidrule(l){3-4}
 \end_layout
 
 \begin_layout Standard
-at the beginning of the in the second row and
+at the beginning of the second row and
 \end_layout
 
 \begin_layout Standard
@@ -13100,7 +13100,7 @@ You might want to have overlapping
 \backslash
 cmidrule
 \series default
-s like in Table
+s as in in Table
 \begin_inset space ~
 \end_inset
 
@@ -13191,8 +13191,8 @@ specialrule{width}{space above}{space below}
 \end_layout
 
 \begin_layout Standard
-For more information about these specialties, we refer to the manual of
- the LaTeX-package 
+For more information about these features, refer to the manual of the LaTeX-pack
+age 
 \series bold
 booktabs
 \series default
@@ -14358,8 +14358,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-As you can see, the content of the first and last table row is not correctly
- aligned with the text line where the table is in.
+As you will see, the content of the first and last table row is not correctly
+ aligned.
  To get this alignment, the minipage box must be set into a raisebox
 \begin_inset Foot
 status collapsed
@@ -14398,7 +14398,7 @@ baselineskip}{
 
 \begin_layout Standard
 before the box.
- Behind the box the closing brace 
+ After the box the closing brace 
 \series bold
 }
 \series default
@@ -14431,7 +14431,7 @@ Note:
 \series default
  The alignment of the table row content to the surrounding text line is
  not exact.
- The needed factor of the 
+ The required value for the 
 \series bold
 
 \backslash
@@ -14765,7 +14765,7 @@ inside the command
 \series bold
 >{}
 \series default
- is described in section
+ is contained in section
 \begin_inset space ~
 \end_inset
 
@@ -15544,7 +15544,7 @@ sd
 \begin_inset VSpace bigskip
 \end_inset
 
-To color horizontal lines for example with red, like in Table
+To color horizontal lines for example with red, as in Table
 \begin_inset space ~
 \end_inset
 
@@ -15772,7 +15772,7 @@ sd
 
 \begin_layout Standard
 To return to the default line color black, insert this command in TeX-Code
- behind the table or table float:
+ after the table or table float:
 \end_layout
 
 \begin_layout Standard
@@ -16143,7 +16143,7 @@ C
 \begin_inset Newline newline
 \end_inset
 
-So inserting space to the top of row for normal tables is only useful when
+So inserting space in the top of row for normal tables is only useful when
  you don't have vertical lines.
 \end_layout
 
@@ -16333,7 +16333,7 @@ But this has the disadvantage that the cell texts are no longer exactly
 array
 \series default
  will be loaded automatically by LyX when you use self defined table formats.
- To avoid that it is loaded twice the command 
+ To avoid that it being loaded twice the command 
 \series bold
 
 \backslash
@@ -16343,8 +16343,8 @@ array
 \end_layout
 
 \begin_layout Standard
-In case you are using font sizes larger than the normal size, the table
- borders are often too close to the letters.
+If you are using font sizes larger than the normal size, the table borders
+ are often too close to the letters.
  This can be corrected by inserting the command 
 \series bold
 
@@ -16363,7 +16363,7 @@ reference "tab:Vertical-alignment-of"
 
 \end_inset
 
- visualizes the effect.
+ illustrates the effect.
 \end_layout
 
 \begin_layout Standard
@@ -17561,7 +17561,7 @@ Table Customization ! Cell/Column Format
 \end_layout
 
 \begin_layout Standard
-Calculating the needed width for spanned columns like in section
+Calculating the required width for spanned columns as in section
 \begin_inset space ~
 \end_inset
 
@@ -17737,7 +17737,8 @@ reference "eq:Wgn"
 
 \end_inset
 
- to calculate the needed width so that each spanned cell has the same width.
+ to calculate the required width so that each spanned cell has the same
+ width.
 \end_layout
 
 \begin_layout Standard
@@ -18047,7 +18048,7 @@ arrayrulewidth
 \begin_inset space \thinspace{}
 \end_inset
 
-pt, like in Table
+pt, as in Table
 \begin_inset space ~
 \end_inset
 
@@ -18073,7 +18074,7 @@ arrayrulewidth}{1.5pt}
 
 \begin_layout Standard
 in TeX-Code before the table or table float.
- The changed thickness is valid for all following tables.
+ The changed thickness is valid for all subsequent tables.
  To use the default value again, set 
 \series bold
 
@@ -18084,7 +18085,7 @@ arrayrulewidth
 \begin_inset space \thinspace{}
 \end_inset
 
-pt in TeX-Code behind the table or table float.
+pt in TeX-Code after the table or table float.
 \end_layout
 
 \begin_layout Standard
@@ -18260,7 +18261,7 @@ To set the line thickness to 1.5
 \begin_inset space \thinspace{}
 \end_inset
 
-pt only for horizontal lines, like in Table
+pt only for horizontal lines, as in Table
 \begin_inset space ~
 \end_inset
 
@@ -18318,7 +18319,7 @@ arrayrulewidth 0.4pt}}
 
 \begin_layout Standard
 To return to the default line thickness, insert this command in TeX-Code
- behind the table or table float:
+ after the table or table float:
 \end_layout
 
 \begin_layout Standard
@@ -19469,7 +19470,7 @@ Float Types
 \end_layout
 
 \begin_layout Standard
-Besides figure and table floats that are described in section
+Besides figure and table floats that are described in sections
 \begin_inset space ~
 \end_inset
 
@@ -19487,7 +19488,7 @@ reference "sec:Table-Floats"
 
 \end_inset
 
-, respectively, LyX offers the float types 
+ respectively, LyX offers the float types 
 \series bold
 Algorithm
 \series default
@@ -19715,7 +19716,7 @@ chapter.algorithm
 \begin_inset Quotes erd
 \end_inset
 
- like it is the case for table and figure floats in many document-classes.
+ as is the case for table and figure floats in many document-classes.
  To number algorithm floats in the same scheme, add this command to your
  document preamble:
 \end_layout
@@ -20275,8 +20276,8 @@ Cross-reference
 \end_layout
 
 \begin_layout Standard
-It is recommended to use a protected space between the cross-reference name
- and its number to avoid line breaks between them.
+It is recommended that you use a protected space between the cross-reference
+ name and its number to avoid line breaks between them.
  If a cross-reference refers to a non-existing label, you will see two question
  marks in the output instead of the reference.
 \end_layout
@@ -20307,7 +20308,7 @@ Label
 
 Back and you can use it to set the cursor back to the cross-reference.
  Right-clicking on a cross-reference box also sets the cursor before the
- referenced label but without a possibility to go back.
+ referenced label but without the possibility of going back.
 \end_layout
 
 \begin_layout Subsection
@@ -21589,8 +21590,8 @@ sideways
 \end_layout
 
 \begin_layout Standard
-Rotated floats are always placed on its own page (or column, in case you
- have a multi-column document).
+Rotated floats are always placed on a page of their own (or column of their
+ own; in case you have a multi-column document).
  You can let them span several columns using the float settings option 
 \family sans
 Span
@@ -21614,7 +21615,7 @@ figuresright
 \end_layout
 
 \begin_layout Standard
-Referencing rotated floats is the same like for normal floats, the caption
+Referencing rotated floats is the same as for normal floats, the caption
  format is also the same: Table
 \begin_inset space ~
 \end_inset
@@ -21755,9 +21756,9 @@ Floats ! Subfloats
 
 \begin_layout Standard
 Subfloats are for example used when a figure consists of several images.
- They are created by inserting a float to an existing float.
- The placement of the subfloats can be controlled like for paragraphs as
- shown in table
+ They are created by inserting a float into an existing float.
+ The placement of the subfloats can be controlled in the same way as for
+ paragraphs as shown in table
 \begin_inset space ~
 \end_inset
 
@@ -22052,7 +22053,7 @@ name "tab:Two-subtables-upon"
 
 \end_inset
 
-Two subtables placed one upon the other.
+Two subtables placed one above the other.
  (a) table with 4 cells, (b) table with 5 cells.
 \end_layout
 
@@ -22247,7 +22248,7 @@ Floats ! Side by side
 \end_layout
 
 \begin_layout Standard
-To place floats side by side, like for Figure
+To place floats side by side, as in Figures
 \begin_inset space ~
 \end_inset
 
@@ -22540,7 +22541,7 @@ usepackage[format definition]{caption}
 
 \begin_layout Standard
 To have for example the label and the number in sans-serif bold font and
- the table captions always above the table like in this document, use the
+ the table captions always above the table as in this document, use the
  following command:
 \end_layout
 
@@ -23097,7 +23098,7 @@ letter
 report
 \family default
  there will be no space between the caption and the table.
- To insert the needed space, add the following option to the load command
+ To insert the necessary space, add the following option to the load command
  of the LaTeX-package 
 \series bold
 caption
@@ -23564,7 +23565,7 @@ FigBesBeg
 
 \begin_layout Standard
 in TeX-Code before the float.
- Behind the float insert the command
+ After the float insert the command
 \end_layout
 
 \begin_layout Standard
@@ -24573,8 +24574,7 @@ egroup}
 \end_layout
 
 \begin_layout Standard
-The available colors and the method to define own colors is explained in
- section
+The available colors and the method to define colors is explained in section
 \begin_inset space ~
 \end_inset
 
@@ -24797,19 +24797,124 @@ reference "foot:This-is-an"
 \begin_inset VSpace defskip
 \end_inset
 
-To use footnotes within tables, you have to use minipages, see section
-\begin_inset space ~
+Footnotes in tables are not printed by LaTeX due to technical reasons.
+ However there exists another method to print them: Instead of the footnote
+ the command 
+\series bold
+
+\backslash
+footnotemark{}
+\series default
+ is inserted as TeX-code.
+ The text of the footnote is entered as argument of the TeX-code command
+ 
+\series bold
+
+\backslash
+footnotetext
+\series default
+ after the table.
+\begin_inset Newline newline
+\end_inset
+
+This was done for the following table with the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+footnotetext{
+\series default
+Printed table footnote.
+\series bold
+}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features>
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+This an example text.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+This footnote will not be printed!
+\end_layout
+
 \end_inset
 
 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Minipages"
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+This an example text.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark{}
+\end_layout
 
 \end_inset
 
-.
- Footnotes within longtables are described in section
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext{
+\end_layout
+
+\end_inset
+
+Printed table footnote.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Footnotes in longtables are described in section
 \begin_inset space ~
 \end_inset
 
@@ -24824,25 +24929,134 @@ reference "sub:Footnotes-in-Longtables"
 \end_layout
 
 \begin_layout Standard
+Footnotes in minipage boxes are printed, but inside the box and with a different
+ numbering because a minipage box is like a page inside a page.
+ (For more about minipages, see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Minipages"
+
+\end_inset
+
+.) To get a footnote in the minipage that is output at the bottom of the
+ page like normal footnotes, also use the method of 
+\series bold
+
+\backslash
+footnotemark{}
+\series default
+ and 
+\series bold
+
+\backslash
+footnotetext
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+This an example text in a minipage.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Footnote in the minipage.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This an example text in a minipage.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext{
+\end_layout
+
+\end_inset
+
+Footnote outside the minipage.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset VSpace defskip
 \end_inset
 
-To create only a mark for a footnote, use the command 
+
+\end_layout
+
+\begin_layout Standard
+To refer to the same footnote several times without printing the footnote
+ text every time, use the command 
 \series bold
 
 \backslash
 footnotemark[number]
 \series default
- in TeX-Code.
- This is used when you have the same annotation several times in a text
- but doesn't want to print the footnote text every time.
+ in TeX-code.
 \begin_inset Newline newline
 \end_inset
 
-As you don't know the number of the repeating footnote while you are writing
+As you do not know the number of the repeating footnote while you are writing
  the text, you have to store its number.
  For the following footnote mark example, these commands were inserted in
- TeX-Code behind Footnote
+ TeX-code after Footnote
 \begin_inset space ~
 \end_inset
 
@@ -24887,7 +25101,7 @@ theMyRepeatFoot]
 \end_layout
 
 \begin_layout Standard
-Here is an example footnote mark:
+Here is a repeated footnote:
 \family roman
 \series medium
 \bar no
@@ -24902,6 +25116,44 @@ status collapsed
 footnotemark[
 \backslash
 theMyRepeatFoot]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If you want to repeat the previous footnote, you can omit the storage of
+ the footnote number and just use this command instead:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+footnotemark[
+\backslash
+thefootnote]
+\end_layout
+
+\begin_layout Standard
+Here is another repeated footnote:
+\family roman
+\series medium
+\bar no
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark[
+\backslash
+thefootnote]
 \end_layout
 
 \end_inset
@@ -25308,7 +25560,7 @@ Footnotes ! Placement
 \begin_layout Standard
 If you have several footnotes in one page, they appear without vertical
  space between them at the bottom of the page.
- To make them better readable you can e.
+ To make them more readable you can e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -25540,7 +25792,7 @@ ftnright
 \end_inset
 
 In some scientific literature it is usual to collect the footnotes and print
- them in a separate paragraph at the end of a section, like in Figure
+ them in a separate paragraph at the end of a section, as in Figure
 \begin_inset space ~
 \end_inset
 
@@ -25552,7 +25804,7 @@ reference "fig:Endnotes"
 \end_inset
 
 .
- They are then so called 
+ They are then called 
 \begin_inset Quotes eld
 \end_inset
 
@@ -25676,7 +25928,7 @@ Endnotes – footnotes are printed in a separate paragraph at the end of section
 
 The paragraph heading for the endnotes isn't automatically translated into
  the document language, this must be done manually.
- The following preamble command translate the default English name 
+ The following preamble command translates the default English 
 \begin_inset Quotes eld
 \end_inset
 
@@ -25684,7 +25936,7 @@ Notes
 \begin_inset Quotes erd
 \end_inset
 
- to the German translation 
+ into the German 
 \begin_inset Quotes eld
 \end_inset
 
@@ -25763,7 +26015,7 @@ endnote
 \end_layout
 
 \begin_layout Standard
-To create only a mark for an endnote, use the command 
+For endnotes there is the command 
 \series bold
 
 \backslash
@@ -25775,7 +26027,7 @@ endnotemark[number]
 \backslash
 footnotemark
 \series default
-, described in section
+, that is described in section
 \begin_inset space ~
 \end_inset
 
@@ -25929,7 +26181,7 @@ reversemarginpar
 
 \begin_layout Standard
 in TeX-Code before a margin note.
- The new placement is valid for all following margin notes.
+ The new placement is valid for all subsequent margin notes.
  
 \begin_inset ERT
 status collapsed
@@ -26198,7 +26450,7 @@ marginnote
  has another useful feature: You can set a vertical offset for the note.
  This is often needed when too many margin notes are too close together
  or for a better page layout.
- The offset is set in LyX as TeX-Code directly behind the margin note in
+ The offset is set in LyX as TeX-Code directly after the margin note in
  the scheme
 \end_layout
 
@@ -26424,7 +26676,7 @@ For the other features of
 \series bold
 marginnote
 \series default
- we refer to its documentation 
+ refer to its documentation 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "marginnote"
@@ -28846,318 +29098,6 @@ This is an English footnote.
 
  This is an English Text.
  
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-Another application for minipages are footnotes within tables.
- Due to a LaTeX restriction footnotes within tables doesn't appear at the
- bottom of the current page.
- But when you put the table with the footnote to a minipage, the footnote
- will appear at its bottom, numbered with Latin letters.
- The footnote number is reset to 1 in every minipage but not outside the
- minipages.
-\end_layout
-
-\begin_layout Standard
-The footnote of this table doesn't appear: 
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="4">
-<features>
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-3
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-This is a footnote within a table.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-a
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-b
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-c
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-d
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-e
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-f
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-g
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-h
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-width "30col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="4">
-<features>
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-3
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-This is a footnote within a table.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-a
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-b
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-c
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-d
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-e
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-f
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-g
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-h
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
 \end_layout
 
 \end_inset

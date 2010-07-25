@@ -1,4 +1,4 @@
-#LyX 1.6.7svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -25387,24 +25387,146 @@ reference "fn:Note-en-bas"
 \begin_inset VSpace defskip
 \end_inset
 
-Pour utiliser des notes de bas de page dans les tableaux, vous devez utiliser
- des minipages, voyez la section
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Footnotes in tables are not printed by LaTeX due to technical reasons.
+ However there exists another method to print them: Instead of the footnote
+ the command 
+\series bold
+
+\backslash
+footnotemark{}
+\series default
+ is inserted as TeX-code.
+ The text of the footnote is entered as argument of the TeX-code command
+ 
+\series bold
+
+\backslash
+footnotetext
+\series default
+ after the table.
+\begin_inset Newline newline
+\end_inset
+
+This was done for the following table with the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+footnotetext{
+\series default
+Printed table footnote.
+\series bold
+}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features>
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+This an example text.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+This footnote will not be printed!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+This an example text.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext{
+\end_layout
+
+\end_inset
+
+Printed table footnote.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Footnotes in longtables are described in section
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Minipages"
-
-\end_inset
-
-.
- Les notes de bas de page dans des tableaux longs sont traitées dans la
- section
-\begin_inset space ~
-\end_inset
-
+\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -25416,30 +25538,157 @@ reference "sub:Notes-dans-tableau-long"
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
 
-Pour créer seulement la marque de note, utilisez la commande 
-\series bold
-
-\backslash
-footnotemark[nombre]
-\series default
- en code TeX.
- On utilise cette possibilité quand on a plusieurs fois la même annotation
- dans le texte, mais que l'on ne veut pas répéter le texte de la note de
- bas de page à chaque fois.
-\begin_inset Newline newline
-\end_inset
-
-Comme vous ne connaissez pas le numéro de la note que vous voulez répéter
- au moment où vous tapez votre texte, vous devez enregistrer ce nombre quelque
- part.
- Pour la marque de note qui suit, ces commandes ont été insérées en code
- TeX après la note
+\lang english
+Footnotes in minipage boxes are printed, but inside the box and with a different
+ numbering because a minipage box is like a page inside a page.
+ (For more about minipages, see section
 \begin_inset space ~
 \end_inset
 
+
+\lang french
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Minipages"
+
+\end_inset
+
+
+\lang english
+.) To get a footnote in the minipage that is output at the bottom of the
+ page like normal footnotes, also use the method of 
+\series bold
+
+\backslash
+footnotemark{}
+\series default
+ and 
+\series bold
+
+\backslash
+footnotetext
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+This an example text in a minipage.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Footnote in the minipage.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+This an example text in a minipage.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext{
+\end_layout
+
+\end_inset
+
+Footnote outside the minipage.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To refer to the same footnote several times without printing the footnote
+ text every time, use the command 
+\series bold
+
+\backslash
+footnotemark[number]
+\series default
+ in TeX-code.
+\begin_inset Newline newline
+\end_inset
+
+As you do not know the number of the repeating footnote while you are writing
+ the text, you have to store its number.
+ For the following footnote mark example, these commands were inserted in
+ TeX-code after Footnote
+\begin_inset space ~
+\end_inset
+
+
+\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -25447,7 +25696,11 @@ reference "fn:Note-en-bas"
 
 \end_inset
 
- pour enregistrer le numéro de note de bas de page :
+
+\lang english
+ to store the footnote number
+\lang french
+:
 \end_layout
 
 \begin_layout Standard
@@ -25467,7 +25720,11 @@ thefootnote}
 \end_layout
 
 \begin_layout Standard
-La marque de note a été créée avec la commande suivante :
+
+\lang english
+The footnote mark was then created with this command
+\lang french
+:
 \end_layout
 
 \begin_layout Standard
@@ -25481,7 +25738,11 @@ theMyRepeatFoot]
 \end_layout
 
 \begin_layout Standard
-Voici un exemple de marque de note de bas de page : 
+
+\lang english
+Here is a repeated footnote
+\lang french
+:
 \begin_inset ERT
 status collapsed
 
@@ -25492,6 +25753,48 @@ status collapsed
 footnotemark[
 \backslash
 theMyRepeatFoot]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you want to repeat the previous footnote, you can omit the storage of
+ the footnote number and just use this command instead
+\lang french
+:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+footnotemark[
+\backslash
+thefootnote]
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Here is another repeated footnote
+\lang french
+:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark[
+\backslash
+thefootnote]
 \end_layout
 
 \end_inset
@@ -26365,7 +26668,11 @@ endnote
 \end_layout
 
 \begin_layout Standard
-Pour seulement créer une marque de note de fin, utilisez la commande 
+
+\lang english
+For endnotes there is
+\lang french
+ la commande 
 \series bold
 
 \backslash
@@ -29505,319 +29812,6 @@ This is an English footnote.
 
  This is an English Text.
  
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-Une autre application des minipages est l'ajout de notes de bas de page
- à l'intérieur d'un tableau.
- À cause d'une restriction due à LaTeX, les notes de bas de pages insérées
- dans un tableau n'apparaissent pas en bas de la page courante.
- Mais si vous mettez votre tableau dans une minipage, la note de bas de
- page apparaîtra en bas de celle-ci, numérotée avec des lettres latines.
- Le numéro de note est remis à 1 à chaque nouvelle minipage, mais pas en
- dehors des minipages.
-\end_layout
-
-\begin_layout Standard
-Les notes de bas de page de ce tableau n'apparaissent pas : 
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="4">
-<features>
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-3
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Ceci est une note de bas de page à l'intérieur d'un tableau.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-a
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-b
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-c
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-d
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-e
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-f
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-g
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-h
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-width "30col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="4">
-<features>
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-3
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Ceci est une note de bas de page à l'intérieur d'un tableau.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-a
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-b
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-c
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-d
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-e
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-f
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-g
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-h
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
