@@ -96,11 +96,11 @@ string const Length::asLatexString() const
 	case PLW:
 		os << val_ / 100.0 << "\\linewidth";
 		break;
-	case PPH:
-		os << val_ / 100.0 << "\\paperheight";
-		break;
 	case PTH:
 		os << val_ / 100.0 << "\\textheight";
+		break;
+	case PPH:
+		os << val_ / 100.0 << "\\paperheight";
 		break;
 	default:
 		os << val_ << unit_name[unit_];
