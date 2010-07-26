@@ -16797,8 +16797,12 @@ Esta es una tabla 4×2.
  y los dígitos anteriores.
  La segunda columna está alineada a la izquierda y contiene los dígitos
  posteriores al punto decimal.
- Para omitir el espacio que hay normalmente entre dos columnas usa el siguiente
- argumento LaTeX para la segunda columna:
+ Para omitir el espacio que hay normalmente entre dos columnas el siguiente
+ argumento LaTeX 
+\lang english
+was used
+\lang spanish
+ para la segunda columna:
 \end_layout
 
 \begin_layout Standard

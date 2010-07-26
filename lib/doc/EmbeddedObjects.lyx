@@ -16869,8 +16869,8 @@ This table was created with a 4×2 table.
  point and the decimal point.
  The second column is left aligned and contains the digits after the decimal
  point.
- To omit the space that is normally between two table columns, use the following
- LaTeX-argument for the second column:
+ To omit the space that is normally between two table columns, the following
+ LaTeX-argument was used for the second column:
 \end_layout
 
 \begin_layout Standard
@@ -17264,7 +17264,7 @@ reference "tab:Alignments-when"
 
 \end_inset
 
- and only with some tricks like the expected.
+ and only with some tricks as you would want.
  The alignment of the second and third column of Table
 \begin_inset space ~
 \end_inset
@@ -19090,8 +19090,8 @@ x
 \end_layout
 
 \begin_layout Standard
-LyX doesn't natively support dashed lines, so you have to use TeX-Code.
- As prerequisite the LaTeX-package 
+LyX does not natively support dashed lines, so you have to use TeX-Code.
+ As a prerequisite the LaTeX-package 
 \series bold
 arydshln
 \series default
@@ -19160,9 +19160,9 @@ cdashline{line number
 \end_layout
 
 \begin_layout Standard
-in TeX-Code as first element of the first cell in the table row.
- If you have for example a multicolumn spanning over columns 2 to 4 and
- you want to have a dashed line above, add the command
+in TeX-Code as the first element of the first cell in the table row.
+ If you have for example a multicolumn spanning columns 2 to 4 and you want
+ to have a dashed line above, add the command
 \end_layout
 
 \begin_layout Standard
@@ -19174,7 +19174,7 @@ cdashline{2-4}
 \end_layout
 
 \begin_layout Standard
-as first element of the first cell in the row of the multicolumn.
+as the first element of the first cell in the row of the multicolumn.
 \end_layout
 
 \begin_layout Standard
@@ -19215,7 +19215,7 @@ reference "tab:Table-with-dashed"
 \backslash
 hdashline
 \series default
- was inserted to the first cell of the third row and the TeX-Code command
+ was inserted in the first cell of the third row and the TeX-Code command
 \begin_inset Newline newline
 \end_inset
 
@@ -19225,7 +19225,7 @@ hdashline
 \backslash
 cdashline{4-5}
 \series default
- was inserted to the first cell of the fourth row.
+ was inserted in the first cell of the fourth row.
 \end_layout
 
 \begin_layout Standard
@@ -19237,7 +19237,7 @@ status open
 \series bold
 Note:
 \series default
- The used LaTeX-package 
+ The LaTeX-package 
 \series bold
 arydshln
 \series default
@@ -19389,12 +19389,12 @@ Margin
 Notes
 \family default
  are also floats, because they can float to the next page when there are
- too many notes at the page.
+ too many notes on the page.
 \end_layout
 
 \begin_layout Standard
 Floats allow a high quality layout.
- Images and tables can evenly be spread to the pages to avoid white space
+ Images and tables can be spread evenly to the pages to avoid white space
  and pages without text.
  As the floating often destroys the context between the text and the image/table
 , every float can be referenced in the text.
@@ -19427,10 +19427,10 @@ Caption
  inset, a box with a label.
  The label will automatically be translated to the document language in
  the output.
- Behind the label you can insert the caption text.
+ After the label you can insert the caption text.
  The image or table is inserted above or below the caption in a separate
  paragraph within the float.
- More about the caption placement is described in section
+ More about the caption placement is contained in section
 \begin_inset space ~
 \end_inset
 
@@ -19456,13 +19456,14 @@ reference "sec:Caption-Placement"
 \end_layout
 
 \begin_layout Standard
-It is recommended to insert floats as a separate paragraph to avoid possible
- LaTeX-errors that can occur when the surrounding text is specially formatted.
+It is recommended that you insert floats as a separate standard paragraph
+ to avoid possible LaTeX-errors that can occur when the surrounding text
+ is specially formatted.
 \end_layout
 
 \begin_layout Standard
-Existing figures or tables can be put into a float by marking them and then
- pressing the corresponding toolbar button for a new float.
+Existing figures or tables can be put into a float by highlighting them
+ and then pressing the corresponding toolbar button for a new float.
 \end_layout
 
 \begin_layout Section
@@ -19922,8 +19923,8 @@ Line
 span
 \family default
  that specifies how many text lines the float will approximately need.
- The line span is often hard to be approximated, so better only use it when
- you encounter float placement problems.
+ The line span is often hard to approximate; so it is better only to use
+ it when you encounter float placement problems.
  You can furthermore decide if LaTeX is allowed to let the float float within
  the paragraph or to surrounding paragraphs.
  Figure
@@ -19991,7 +19992,7 @@ g.
 \end_inset
 
 having a figure too close to the bottom of the page can mess things up in
- the way that the float doesn't appear in the output or that it is placed
+ such a way that the float does not appear in the output or that it is placed
  over some other text.
 \end_layout
 
@@ -20006,18 +20007,18 @@ In general:
 
 \begin_layout Itemize
 Wrap floats should not be placed in paragraphs that run over a page break.
- That means that wrap floats should better be inserted to the exact place
- when the document is nearly finished and you are able to estimate where
- page breaks will appear.
+ That means that wrap floats are better inserted in their exact place when
+ the document is almost finished and you are able to estimate where page
+ breaks will appear.
 \end_layout
 
 \begin_layout Itemize
-Wrap floats should either be placed in an own paragraph before the paragraph
+Wrap floats should either be placed in their own paragraph before the paragraph
  where they should wrap into or within a paragraph.
 \end_layout
 
 \begin_layout Itemize
-Wrap floats in consecutive paragraphs may cause troubles, so assure that
+Wrap floats in consecutive paragraphs may cause troubles, so ensure that
  there is a text paragraph between them as separator.
 \end_layout
 
@@ -20040,7 +20041,7 @@ Floats ! Numbering
 \end_layout
 
 \begin_layout Standard
-Floats are usually numbered either independent from the sections the floats
+Floats are usually numbered either independently from the sections the floats
  are in, or in the scheme 
 \begin_inset Quotes eld
 \end_inset
@@ -20058,12 +20059,12 @@ section.number
 \end_inset
 
 .
- This depends on the used document class.
+ This depends on the document class used.
 \end_layout
 
 \begin_layout Standard
-To change the section independent numbering, you can use this command in
- the document preamble:
+To change section-independent numbering, you can use this command in the
+ document preamble:
 \end_layout
 
 \begin_layout Standard
@@ -20093,13 +20094,13 @@ thetable
 thefigure
 \series default
 .
- The command 
+ 
 \series bold
 
 \backslash
 roman
 \series default
- prints in the command above the table number as small roman number.
+ in the command above prints the table number as small roman number.
 \end_layout
 
 \begin_layout Standard
@@ -20502,13 +20503,13 @@ on this page
 \end_layout
 
 \begin_layout Standard
-The number and current page of the referred document part in the output,
- is automatically calculated by LaTeX.
+The number and current page of the part of the document referred to in the
+ output is automatically calculated by LaTeX.
  The varieties are adjusted in the field 
 \family sans
 Format
 \family default
- of the cross-reference window, that appear when you click on the cross-referenc
+ of the cross-reference window that appears when you click on the cross-referenc
 e box.
 \end_layout
 
@@ -20553,7 +20554,7 @@ fig:
 \end_inset
 
  and is not internationalized.
- How to tell 
+ To find out how to tell 
 \series bold
 prettyref
 \series default
@@ -20649,7 +20650,7 @@ Document Settings
 section
 \emph default
 ).
- So you will save to write e.
+ So you will save having to write e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -20711,7 +20712,7 @@ sec.
 \begin_inset Quotes eld
 \end_inset
 
-, you can redefine the name by inserting this to the preamble:
+, you can redefine the name by inserting this in the preamble:
 \end_layout
 
 \begin_layout Standard
@@ -20764,7 +20765,7 @@ extrasenglish
 \backslash
 extras***
 \series default
-, where *** is the name of the used language.
+, where *** is the name of the language used.
 \end_layout
 
 \begin_layout Standard
@@ -21012,7 +21013,7 @@ Note:
 \series bold
 hypcap
 \series default
- has no effect for references to subfigures.
+ has no effect on references to subfigures.
 \end_layout
 
 \end_inset
@@ -21056,8 +21057,7 @@ Span
 columns
 \family default
  is only useful for two-column documents: If you select it, the float will
- span across both columns on the page instead of being confined to just
- one.
+ span both columns on the page instead of being confined to just one.
 \begin_inset Newline newline
 \end_inset
 
@@ -21105,7 +21105,7 @@ if
 \begin_inset space ~
 \end_inset
 
-possible try to place the float on the position where it is inserted
+possible try to place the float on the position where it has been inserted
 \end_layout
 
 \begin_layout Description
@@ -21117,7 +21117,7 @@ of
 \begin_inset space ~
 \end_inset
 
-page try to place the float on the top of the current page
+page try to place the float at the top of the current page
 \end_layout
 
 \begin_layout Description
@@ -21129,7 +21129,7 @@ of
 \begin_inset space ~
 \end_inset
 
-page try to place the float on the bottom of the current page
+page try to place the float at the bottom of the current page
 \end_layout
 
 \begin_layout Description
@@ -21141,7 +21141,7 @@ of
 \begin_inset space ~
 \end_inset
 
-floats try to place the float on an own page 
+floats try to place the float on its own page 
 \end_layout
 
 \begin_layout Standard
@@ -21176,10 +21176,14 @@ of
 page
 \family default
 , and then the others.
- If you don't use the default, LaTeX will try only the checked options but
- in the same order.
- If none of the 4 placements are possible the procedure is internally repeated
- but it is tried to put the float on the following page.
+ If you do not use the default, LaTeX will try only the checked options
+ but in the same order.
+ If none of the 4
+\begin_inset space ~
+\end_inset
+
+placements are possible the procedure is internally repeated but it is tried
+ to put the float on the following page.
 \end_layout
 
 \begin_layout Standard
@@ -21289,7 +21293,7 @@ rules
 \end_inset
 
 You can also redefine the rules with LaTeX-commands that are given in parenthese
-s behind the rules description above.
+s after the rules description above.
  To increase for example the often too small default of the bottom-rule
  to 50
 \begin_inset space \thinspace{}
@@ -21320,9 +21324,8 @@ Here
 definitely
 \family default
 .
- Use this option very rarely and only if the document is nearly ready to
- be printed.
- Because the float is then no longer able to 
+ Use this option very rarely and only if the document is almost ready to
+ be printed, because the float is then no longer able to 
 \begin_inset Quotes eld
 \end_inset
 
@@ -21354,8 +21357,7 @@ suppressfloats
 \series default
  can be used.
  It suppresses a given float placement for the page where it is inserted
- and can therefore be used to avoid that floats could be set before a section
- starts.
+ and can therefore be used to avoid floats being set before a section starts.
  To get this, add these commands to your document preamble:
 \end_layout
 
@@ -21386,7 +21388,7 @@ mySection}
 \begin_layout Standard
 You can define the same for all section headings, like chapters and subsections.
  This definition is not recommended to be used for small text parts like
- subsubsections because LaTeX may then have problems to find a suitable
+ subsubsections because LaTeX may then have problems finding a suitable
  placement.
 \end_layout
 
@@ -21411,8 +21413,8 @@ LaTeX-packages ! endfloat
 \end_inset
 
  was developed.
- It puts all figure and table floats at the end of the document into own
- sections.
+ It puts all figure and table floats at the end of the document into their
+ own sections.
  At the original float position a text hint like 
 \begin_inset Quotes eld
 \end_inset
