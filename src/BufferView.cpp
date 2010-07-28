@@ -1239,9 +1239,15 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_TEXTCLASS_APPLY: {
-		if (!LayoutFileList::get().load(argument, buffer_.temppath()) &&
-			!LayoutFileList::get().load(argument, buffer_.filePath()))
+		bool success = LayoutFileList::get().load(argument, buffer_.temppath());
+		if (!success)
+			success = LayoutFileList::get().load(argument, buffer_.filePath());
+		if (!success) {
+			docstring s = bformat(_("The document class `%1$s' "
+						 "could not be loaded."), from_utf8(argument));
+			frontend::Alert::error(_("Could not load class"), s);
 			break;
+		}
 
 		LayoutFile const * old_layout = buffer_.params().baseClass();
 		LayoutFile const * new_layout = &(LayoutFileList::get()[argument]);
@@ -1250,7 +1256,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			// nothing to do
 			break;
 
-		//Save the old, possibly modular, layout for use in conversion.
+		// Save the old, possibly modular, layout for use in conversion.
 		DocumentClass const * const oldDocClass =
 			buffer_.params().documentClassPtr();
 		cur.recordUndoFullDocument();
@@ -1262,10 +1268,17 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 	}
 
-	case LFUN_TEXTCLASS_LOAD:
-		LayoutFileList::get().load(argument, buffer_.temppath()) ||
-		LayoutFileList::get().load(argument, buffer_.filePath());
+	case LFUN_TEXTCLASS_LOAD: {
+		bool success = LayoutFileList::get().load(argument, buffer_.temppath());
+		if (!success) 
+			success = LayoutFileList::get().load(argument, buffer_.filePath());
+		if (!success) {			
+			docstring s = bformat(_("The document class `%1$s' "
+						 "could not be loaded."), from_utf8(argument));
+			frontend::Alert::error(_("Could not load class"), s);
+		}
 		break;
+	}
 
 	case LFUN_LAYOUT_RELOAD: {
 		DocumentClass const * const oldClass = buffer_.params().documentClassPtr();

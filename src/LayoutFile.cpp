@@ -314,13 +314,7 @@ bool LayoutFileList::load(string const & name, string const & buf_path)
 	}
 
 	LayoutFile * tc = classmap_[name];
-	if (!tc->load(buf_path)) {
-		docstring s = bformat(_("The document class %1$s "
-				   "could not be loaded."), from_utf8(name));
-		frontend::Alert::error(_("Could not load class"), s);
-		return false;
-	}
-	return true;
+	return tc->load(buf_path);
 }
 
 
