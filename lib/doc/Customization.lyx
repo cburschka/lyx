@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 394
+\lyxformat 398
 \begin_document
 \begin_header
 \textclass scrbook
@@ -15685,7 +15685,17 @@ stdciteformats.inc
 \begin_layout Standard
 The definitions use a simple language that allows BibTeX keys to be replaced
  with their values.
- Keys should be enclosed in % signs, e.g.: 
+ Keys should be enclosed in 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+%
+\end_layout
+
+\end_inset
+
+ signs, e.g.: 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -15708,7 +15718,7 @@ misc %author%,
 \begin_inset Quotes erd
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -15791,13 +15801,32 @@ ed.
 \begin_inset Quotes erd
 \end_inset
 
- Note that the key is again enclosed in % signs; the entire conditional
- is enclosed in braces; and the if and else clauses are enclosed in double
- brackets, 
+ Note that the key is again enclosed in 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+%
+\end_layout
+
+\end_inset
+
+ signs; the entire conditional is enclosed in braces; and the if and else
+ clauses are enclosed in double brackets, 
 \begin_inset Quotes eld
 \end_inset
 
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 [[
+\end_layout
+
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -15805,7 +15834,17 @@ ed.
 \begin_inset Quotes eld
 \end_inset
 
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 ]]
+\end_layout
+
+\end_inset
+
+
 \begin_inset Quotes erd
 \end_inset
 
