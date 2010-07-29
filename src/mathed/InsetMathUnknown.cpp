@@ -86,9 +86,15 @@ void InsetMathUnknown::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathUnknown::mathmlize(MathStream & os) const
+void InsetMathUnknown::mathmlize(MathStream &) const
 {
-	os << MTag("mi") << name_ << ETag("mi");
+	throw MathExportException();
+}
+
+
+void InsetMathUnknown::htmlize(HtmlStream &) const
+{
+	throw MathExportException();
 }
 
 
