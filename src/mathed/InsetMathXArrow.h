@@ -34,6 +34,8 @@ public:
 	///
 	void mathmlize(MathStream &) const;
 	///
+	void htmlize(HtmlStream &) const;
+	///
 	void validate(LaTeXFeatures & features) const;
 	///
 	InsetCode lyxCode() const { return MATH_XARROW_CODE; }

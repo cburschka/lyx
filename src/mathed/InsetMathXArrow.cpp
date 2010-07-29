@@ -86,9 +86,27 @@ void InsetMathXArrow::mathmlize(MathStream & ms) const
 }
 
 
+void InsetMathXArrow::htmlize(HtmlStream & os) const
+{
+	char const * const arrow = name_ == "xleftarrow" 
+			? "&larr;" : "&rarr;";
+	os << MTag("span", "class='xarrow'")
+		 << MTag("span", "class='xatop'") << cell(0) << ETag("span")
+		 << MTag("span", "class='xabottom'") << arrow << ETag("span")
+		 << ETag("span");
+}
+
+
 void InsetMathXArrow::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
+	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
+		// CSS adapted from eLyXer
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"span.xarrow{display: inline-block; vertical-align: middle; text-align:center;}\n"
+			"span.xatop{display: block;}\n"
+			"span.xabottom{display: block;}\n"
+			"</style>");
 	InsetMathNest::validate(features);
 }
 
