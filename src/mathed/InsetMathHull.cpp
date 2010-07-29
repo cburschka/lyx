@@ -1854,37 +1854,49 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 
 docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 {
-	BufferParams::MathOutput mathtype = buffer().params().html_math_output;
+	BufferParams::MathOutput const mathtype = 
+		buffer().params().html_math_output;
 	
+	bool success = false;
 	// FIXME Eventually we would like to do this inset by inset.
-	switch (mathtype) {
-	case BufferParams::MathML: {
+	if (mathtype == BufferParams::MathML) {
 		odocstringstream os;
 		MathStream ms(os);
-		InsetMathGrid::mathmlize(ms);
-		if (getType() == hullSimple)
-			xs << html::StartTag("math", 
-			      "xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
-		else 
-			xs << html::StartTag("math", 
-			      "display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
-		xs << XHTMLStream::NextRaw() 
-		   << os.str()
-		   << html::EndTag("math");
-		break;
-	} 
-	case BufferParams::HTML: {
+		try {
+			InsetMathGrid::mathmlize(ms);
+			success = true;
+		} catch (MathExportException const &) {}
+		if (success) {
+			if (getType() == hullSimple)
+				xs << html::StartTag("math", 
+							"xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
+			else 
+				xs << html::StartTag("math", 
+							"display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
+			xs << XHTMLStream::NextRaw() 
+				 << os.str()
+				 << html::EndTag("math");
+		}
+	} else if (mathtype == BufferParams::HTML) {
 		odocstringstream os;
 		HtmlStream ms(os);
-		InsetMathGrid::htmlize(ms);
-		string const tag = (getType() == hullSimple) ? "span" : "div";
-		xs << html::StartTag(tag, "class='formula'", true)
-		   << XHTMLStream::NextRaw()
-		   << os.str()
-		   << html::EndTag(tag);
-		break;
-	} 
-	case BufferParams::Images: {
+		try {
+			InsetMathGrid::htmlize(ms);
+			success = true;
+		} catch (MathExportException const &) {}
+		if (success) {
+			string const tag = (getType() == hullSimple) ? "span" : "div";
+			xs << html::StartTag(tag, "class='formula'", true)
+				 << XHTMLStream::NextRaw()
+				 << os.str()
+				 << html::EndTag(tag);
+		}
+	}
+	
+	// the logic here is ugly, but it's meant to mean: if we've failed with
+	// one of the earlier attempts OR the mathtype IS Image, then try to 
+	// export an image.
+	if (!success && mathtype != BufferParams::LaTeX) {
 		loadPreview(docit_);
 		graphics::PreviewImage const * pimage = preview_->getPreviewImage(buffer());
 		if (pimage) {
@@ -1897,11 +1909,14 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 			xs.cr();
 			// add the file to the list of files to be exported
 			op.exportdata->addExternalFile("xhtml", mathimg);
-			break;
+			success = true;
 		}
-		LYXERR0("Unable to generate image. Falling through to LaTeX output.");
-	} 
-	case BufferParams::LaTeX: {
+	}
+	
+	// so we'll pass this test if we've failed everything else, or
+	// if mathtype was LaTeX, since we won't have entered any of the
+	// earlier branches
+	if (!success) {
 		string const tag = (getType() == hullSimple) ? "span" : "div";
 		// Unfortunately, we cannot use latexString() because we do not want
 		// $...$ or whatever.
@@ -1920,7 +1935,6 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		   << html::EndTag(tag);
 		xs.cr();
 	}
-	} // end switch
 	return docstring();
 }
 

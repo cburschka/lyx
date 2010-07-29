@@ -262,6 +262,13 @@ public:
 };
 
 
+/// Throw MathExportException to signal that the attempt to export
+/// some math in the current format did not succeed. E.g., we can't
+/// export xymatrix as MathML, so that will throw, and we'll fall back
+/// to images.
+class MathExportException : public std::exception {};
+
+
 class MathStream {
 public:
 	///
