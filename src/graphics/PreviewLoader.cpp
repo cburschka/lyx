@@ -583,19 +583,22 @@ void PreviewLoader::Impl::startLoading(bool wait)
 		return;
 	}
 
-	double font_scaling_factor = 0.01 * lyxrc.dpi * lyxrc.zoom
-		* lyxrc.preview_scale_factor;
+	double const font_scaling_factor = 
+		buffer_.isExporting() ? 75.0 * buffer_.params().html_math_img_scale 
+			: 0.01 * lyxrc.dpi * lyxrc.zoom * lyxrc.preview_scale_factor;
 
-	// For XHTML image export, we need to control the background 
-	// color here.
-	ColorCode bg = buffer_.isExporting() 
+	// FIXME XHTML 
+	// The colors should be customizable.
+	ColorCode const bg = buffer_.isExporting() 
 	               ? Color_white : PreviewLoader::backgroundColor();
+	ColorCode const fg = buffer_.isExporting() 
+	               ? Color_black : PreviewLoader::foregroundColor();
 	// The conversion command.
 	ostringstream cs;
 	cs << pconverter_->command << ' ' << pconverter_->to << ' '
 	   << quoteName(latexfile.toFilesystemEncoding()) << ' '
 	   << int(font_scaling_factor) << ' '
-	   << theApp()->hexName(PreviewLoader::foregroundColor()) << ' '
+	   << theApp()->hexName(fg) << ' '
 	   << theApp()->hexName(bg);
 	if (buffer_.params().useXetex)
 		cs << " xelatex";
