@@ -1239,9 +1239,11 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_TEXTCLASS_APPLY: {
-		bool success = LayoutFileList::get().load(argument, buffer_.temppath());
-		if (!success)
-			success = LayoutFileList::get().load(argument, buffer_.filePath());
+		// since this shortcircuits, the second call is made only if 
+		// the first fails
+		bool const success = 
+			LayoutFileList::get().load(argument, buffer_.temppath()) ||
+			LayoutFileList::get().load(argument, buffer_.filePath());
 		if (!success) {
 			docstring s = bformat(_("The document class `%1$s' "
 						 "could not be loaded."), from_utf8(argument));
@@ -1269,9 +1271,11 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_TEXTCLASS_LOAD: {
-		bool success = LayoutFileList::get().load(argument, buffer_.temppath());
-		if (!success) 
-			success = LayoutFileList::get().load(argument, buffer_.filePath());
+		// since this shortcircuits, the second call is made only if 
+		// the first fails
+		bool const success = 
+			LayoutFileList::get().load(argument, buffer_.temppath()) ||
+			LayoutFileList::get().load(argument, buffer_.filePath());
 		if (!success) {			
 			docstring s = bformat(_("The document class `%1$s' "
 						 "could not be loaded."), from_utf8(argument));
