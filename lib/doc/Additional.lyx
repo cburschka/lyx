@@ -4445,10 +4445,7 @@ Math Output in XHTML
 
 \begin_layout Standard
 LyX offers four choices for how math is rendered.
- These have various advantages and disadvantages, so the user can select
- a preferred format under Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Output:
+ These have various advantages and disadvantages:
 \end_layout
 
 \begin_layout Itemize
@@ -4573,6 +4570,41 @@ have to be on for images to be output, however.
 \begin_inset Newline newline
 \end_inset
 
+The size of the images can be controlled by setting the 
+\begin_inset Quotes eld
+\end_inset
+
+Math Images Scaling
+\begin_inset Quotes erd
+\end_inset
+
+ parameter under 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+For those who want to know, this controls the resolution of the image in
+ dots per inch and is based upon a default of 75 dpi.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
 If LyX for some reason fails to create an image for a formula (e.g., if a
  required LaTeX package is not installed), then it will fall back to outputing
  the raw LaTeX.
@@ -4628,9 +4660,19 @@ class='math'
 \end_layout
 
 \begin_layout Standard
-Again, one of these output methods must be selected under Document\SpecialChar \menuseparator
+ne of these output methods must be selected under 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Document\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
-Output.
+Output
+\end_layout
+
+\end_inset
+
+.
  By default, LyX outputs MathML.
  This is a document-wide setting, therefore.
 \end_layout
@@ -4639,7 +4681,6 @@ Output.
 Eventually, LyX will offer the user the option to select an alternate output
  method for a particular inset, say, one that isn't being rendered very
  well by MathML.
- But this is not yet supported.
 \begin_inset Foot
 status collapsed
 
