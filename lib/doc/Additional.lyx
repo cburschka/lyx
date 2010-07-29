@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 390
+\lyxformat 398
 \begin_document
 \begin_header
 \textclass scrbook
@@ -124,7 +124,7 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_be_strict true
@@ -2975,6 +2975,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -3021,6 +3022,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -4130,14 +4132,13 @@ LyX and the World Wide Web
 \begin_layout Standard
 LyX has long supported the export of documents to various web-friendly formats,
  such as HTML.
- Before verson 1.7, however, HTML export was always accomplished by the use
+ Before verson 2.0, however, HTML export was always accomplished by the use
  of external converters.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 For details on the use of external converters with LyX, see the 
-\size normal
 \emph on
 Converters
 \emph default
@@ -4198,7 +4199,7 @@ The LaTeX-based converters have the advantage that, in principle, they know
  everything about the exported document that LaTeX does.
  Such converters do not care, for example, if a certain block of code was
  produced by LyX or was Evil Red Text.
- They know about 
+ These converters know about 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -4268,7 +4269,7 @@ htlatex
 
 \end_inset
 
-'s, at least in simpler cases, since it renders math using a neat combination
+'s, at least in simpler cases, since it renders math using a combination
  of HTML and CSS rather than converting the formulae to images.
  But more complex formula tend to be rendered less well than with 
 \begin_inset Flex CharStyle:Code
@@ -4292,7 +4293,8 @@ eLyXer
 \end_inset
 
  has no support for math macros, for user-defined paragraph or character
- styles, or for tables of contents and figures.
+ styles, or for tables of contents and figures, and its treatment of cross-refer
+ences is minimal.
  These limitations make 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -4305,9 +4307,9 @@ eLyXer
 
  unsuitable for many of the documents more advanced LyX users would produce.
  In principle, of course, all of these problems could be solved, but the
- LyX developers have decided to follow a different path and made LyX itself
- capable of writing XHTML, just as it is capable of writing LaTeX, DocBook,
- and plaintext.
+ LyX developers have decided to follow a different path and have made LyX
+ itself capable of writing XHTML, just as it is capable of writing LaTeX,
+ DocBook, and plaintext.
 \end_layout
 
 \begin_layout Standard
@@ -4397,8 +4399,8 @@ Kapitel
 
 \begin_layout Standard
 Quite generally, the output routines know everything LyX knows about document
- layout, that is, about the document is to be rendered on screen.
- We can use this information when we output the document as XHTML.
+ layout, that is, about how the document is to be rendered on screen.
+ We use this information when we output the document as XHTML.
  In particular, LyX 
 \emph on
 automatically
@@ -4409,12 +4411,12 @@ automatically
  sans-serif and bold when viewed in a web browser, too.
  And this is true not just for pre-defined styles, like Section, but for
  any style, including user-defined styles.
-  Indeed, the XHTML output routines make no distinction between user-defined
+ Indeed, the XHTML output routines make no distinction between user-defined
  paragraph and character styles and LyX's own pre-defined styles: in each
  case, everything LyX knows about the styles is contained in the layout
  files.
  And much the same is true as regards pre-defined textual insets, such as
- footnotes, and custom versions.
+ footnotes, and various custom insets.
  
 \end_layout
 
@@ -4433,40 +4435,218 @@ manual for the details.
 \end_layout
 
 \begin_layout Standard
-As for math, LyX renders math using MathML.
- This has advantages and disadvantages.
- The advantage is that MathML is a dialect of XML designed specifically
- for mathematics on the web, and it typically renders very well in browsers
- that support it.
- The first disadvantage is that not all browsers support MathML, and support
- is not complete even in the Gecko-based browsers, such as Firefox.
- A second disadvantage, as compared to rendering math by images, is that
- LyX can only output MathML for LaTeX constructs that it knows about, which
- means that the use of ERT in math---e.g., the command 
+As for math, LyX offers four choices for how math is rendered.
+ These have various advantages and disadvantages, so the user can select
+ a preferred format under Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output:
+\end_layout
+
+\begin_layout Itemize
+MathML
+\begin_inset Newline newline
+\end_inset
+
+MathML is a dialect of XML designed specifically for mathematics on the
+ web, and it typically renders very well in browsers that support it.
+ The disadvantage is that not all browsers support MathML, and support is
+ not complete even in the Gecko-based browsers, such as Firefox.
+\begin_inset Newline newline
+\end_inset
+
+If Lyx is unable to render a formula as MathML---for example, if the formula
+ uses the 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\backslash
-BGassert
+xymatrix
 \end_layout
 
 \end_inset
 
- from the 
+ package or ERT---then it will instead output the formula as an image.
+ 
+\end_layout
+
+\begin_layout Itemize
+HTML
+\begin_inset Newline newline
+\end_inset
+
+As mentioned above, 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-begriff.sty
+elyxer
 \end_layout
 
 \end_inset
 
- package---will produce nothing helpful.
- Eventually, therefore, LyX will offer the user the option to use MathML
- or images, and it will offer this choice on a case by case basis.
+ outputs math as HTML, styled by CSS.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+LyX has borrowed some of the CSS for its HTML output from 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+elyxer
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ For simple formulae, this can work quite well, though with more complicated
+ formulae it tends to break down.
+ Still, this method has the advantage that it is very widely supported and
+ so it may be appropriate for documents that contain only a little, fairly
+ simple math.
+\begin_inset Newline newline
+\end_inset
+
+If Lyx is unable to render a formula as MathML---for example, if the formula
+ uses the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+xymatrix
+\end_layout
+
+\end_inset
+
+ package or ERT---then it will instead output the formula as an image.
+ 
+\end_layout
+
+\begin_layout Itemize
+Images
+\begin_inset Newline newline
+\end_inset
+
+Like 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+htlatex
+\end_layout
+
+\end_inset
+
+, LyX will output formulae as images, the very same images, in fact, that
+ are used for instant preview.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Instant preview does 
+\emph on
+not 
+\emph default
+have to be on for images to be output, however.
+\end_layout
+
+\end_inset
+
+ The advantage to this method is that the images are simply generated by
+ LaTeX, so they are very accurate.
+ The disadvantage, as mentioned earlier, is that these are bitmapped images,
+ so they do not scale terribly well, and one cannot copy them, etc.
+\begin_inset Newline newline
+\end_inset
+
+If LyX for some reason fails to create an image for a formula (e.g., if a
+ required LaTeX package is not installed), then it will fall back to outputing
+ the raw LaTeX.
+\end_layout
+
+\begin_layout Itemize
+LaTeX
+\begin_inset Newline newline
+\end_inset
+
+Finally, LyX will happily output math as LaTeX.
+ As well as being the output of last resort, this method can be used with
+ such tools as 
+\begin_inset CommandInset href
+LatexCommand href
+name "jsMath"
+target "http://www.math.union.edu/~dpvc/jsMath/"
+
+\end_inset
+
+, which uses JavaScript to render LaTeX embedded in HTML documents.
+ LyX wraps the LaTeX in either a 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+span
+\end_layout
+
+\end_inset
+
+ (for inline formulas) or 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+div
+\end_layout
+
+\end_inset
+
+ (for displayed formulas) with 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+class='math'
+\end_layout
+
+\end_inset
+
+, as is required for jsMath.
+\end_layout
+
+\begin_layout Standard
+Again, one of these output methods must be selected under Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output.
+ By default, LyX outputs MathML.
+ This is a document-wide setting, therefore.
+\end_layout
+
+\begin_layout Standard
+Eventually, LyX will offer the user the option to select an alternate output
+ method for a particular inset, say, one that isn't being rendered very
+ well by MathML.
+ But this is not yet supported.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+That said, since LyX falls back to images if the inset contains ERT, then
+ one can force output as an image by putting some harmless ERT into the
+ math, for example: 
+\begin_inset Formula $a=b\relax$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -14728,7 +14908,7 @@ Poemtitle*: Same as poemtitle, but it adds no entry to the table of contents.
 
 \begin_layout Section
 Article (mwart), book (mwbk) and report (mwrep)
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -22243,7 +22423,7 @@ Numbering in the
 Enumerate
 \family default
  Paragraph Environment
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
