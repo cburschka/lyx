@@ -47,6 +47,10 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	InsetCode lyxCode() const { return MATH_XYMATRIX_CODE; }
+	///
+	void mathmlize(MathStream &) const;
+	///
+	void htmlize(HtmlStream &) const;
 
 private:
 	///

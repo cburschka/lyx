@@ -140,4 +140,16 @@ void InsetMathXYMatrix::validate(LaTeXFeatures & features) const
 }
 
 
+void InsetMathXYMatrix::mathmlize(MathStream &) const
+{
+	throw MathExportException();
+}
+
+
+void InsetMathXYMatrix::htmlize(HtmlStream &) const 
+{
+	throw MathExportException(); 
+}
+
+
 } // namespace lyx
