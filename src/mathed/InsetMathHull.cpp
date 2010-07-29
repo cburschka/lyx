@@ -1893,9 +1893,15 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		}
 	}
 	
-	// the logic here is ugly, but it's meant to mean: if we've failed with
-	// one of the earlier attempts OR the mathtype IS Image, then try to 
-	// export an image.
+	// what we actually want is this:
+	// if (
+	//     ((mathtype == BufferParams::MathML || mathtype == BufferParams::HTML) 
+	//       && !success)
+	//     || mathtype == BufferParams::Images
+	//    )
+	// but what follows is equivalent, since we'll enter only if either (a) we 
+	// tried and failed with MathML or HTML or (b) didn't try yet at all but
+	// aren't doing LaTeX, in which case we are doing Images.
 	if (!success && mathtype != BufferParams::LaTeX) {
 		loadPreview(docit_);
 		graphics::PreviewImage const * pimage = preview_->getPreviewImage(buffer());
@@ -1916,7 +1922,7 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 	// so we'll pass this test if we've failed everything else, or
 	// if mathtype was LaTeX, since we won't have entered any of the
 	// earlier branches
-	if (!success) {
+	if (!success /* || mathtype != BufferParams::LaTeX */) {
 		string const tag = (getType() == hullSimple) ? "span" : "div";
 		// Unfortunately, we cannot use latexString() because we do not want
 		// $...$ or whatever.
