@@ -4369,7 +4369,7 @@ Another advantege is that, since these routines are internal to LyX, they
 
 \end_inset
 
- So they know about the table of contents (as displayed in the Outline),
+ So they know about the table of contents (as displayed in the outline),
  about the counters associated with different paragraph styles, and about
  user-defined styles.
  The XHTML output routines know what LyX knows about internationalization,
@@ -4435,7 +4435,16 @@ manual for the details.
 \end_layout
 
 \begin_layout Standard
-As for math, LyX offers four choices for how math is rendered.
+The remainder of this chapter contains more detailed information on XHTML
+ output, its limitations, and ways to work around those limitations.
+\end_layout
+
+\begin_layout Section
+Math Output in XHTML
+\end_layout
+
+\begin_layout Standard
+LyX offers four choices for how math is rendered.
  These have various advantages and disadvantages, so the user can select
  a preferred format under Document\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
@@ -4632,7 +4641,7 @@ Eventually, LyX will offer the user the option to select an alternate output
  well by MathML.
  But this is not yet supported.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 That said, since LyX falls back to images if the inset contains ERT, then
@@ -4642,24 +4651,6 @@ That said, since LyX falls back to images if the inset contains ERT, then
 \end_inset
 
 .
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The remainder of this chapter contains more detailed information on XHTML
- output, its limitations, and ways around those limitations.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-This is very incomplete at this point!
 \end_layout
 
 \end_inset
