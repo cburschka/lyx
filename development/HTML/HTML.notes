@@ -51,16 +51,13 @@ Math
 		as a table, but set the font.
 
 Other math notes:
+	- AMSArray: Some of these should be handled via images. I need to investigate which.
 	- Hull:
 		-	Need to handle the equation hull type by outputting a counter. But that will 
 			have to wait for the counter patch. The counter probably goes with mlabeledtr, 
 			which may mean we always need to output <mtable>.
 		- Similar issues about eqnarray.
 		- It's not clear if we need to do much about the other hull types.
-	- XYMatrix: So far as I can tell, using this in LyX effectively involves using a
-		lot of ERT, within the matrix, to get the arrow effects. At present, it just prints
-		as an InsetMathGrid, from which it inherits, and so as a simple table. I don't know
-		how much more we can do.
 
 
 These insets do not work and are not yet scheduled to work:
