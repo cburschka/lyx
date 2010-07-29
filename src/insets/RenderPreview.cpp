@@ -175,31 +175,33 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void RenderPreview::startLoading(Buffer const & buffer, bool wait) const
+void RenderPreview::startLoading(Buffer const & buffer, bool forexport) const
 {
-	if (status() == LyXRC::PREVIEW_OFF || snippet_.empty())
+	if (!forexport && (status() == LyXRC::PREVIEW_OFF || snippet_.empty()))
 		return;
 
 	graphics::PreviewLoader const & loader = getPreviewLoader(buffer);
-	loader.startLoading(wait);
+	loader.startLoading(forexport);
 }
 
 
 void RenderPreview::addPreview(docstring const & latex_snippet,
-			       Buffer const & buffer)
+                               Buffer const & buffer, 
+                               bool ignore_lyxrc)
 {
-	if (status() == LyXRC::PREVIEW_OFF)
+	if (status() == LyXRC::PREVIEW_OFF && !ignore_lyxrc)
 		return;
 
 	graphics::PreviewLoader & loader = getPreviewLoader(buffer);
-	addPreview(latex_snippet, loader);
+	addPreview(latex_snippet, loader, ignore_lyxrc);
 }
 
 
 void RenderPreview::addPreview(docstring const & latex_snippet,
-			       graphics::PreviewLoader & ploader)
+                               graphics::PreviewLoader & ploader, 
+                               bool ignore_lyxrc)
 {
-	if (status() == LyXRC::PREVIEW_OFF)
+	if (status() == LyXRC::PREVIEW_OFF && !ignore_lyxrc)
 		return;
 
 	// FIXME UNICODE

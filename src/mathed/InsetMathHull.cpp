@@ -516,8 +516,14 @@ void InsetMathHull::addPreview(DocIterator const & inset_pos,
 }
 
 
-void InsetMathHull::preparePreview(DocIterator const & pos) const  
+void InsetMathHull::preparePreview(DocIterator const & pos,
+                                   bool forexport) const  
 {
+	// there is no need to do all the macro stuff if we're not
+	// actually going to generate the preview.
+	if (RenderPreview::status() != LyXRC::PREVIEW_ON && !forexport)
+		return;
+	
 	Buffer const * buffer = pos.buffer();
 
 	// collect macros at this position
@@ -536,14 +542,22 @@ void InsetMathHull::preparePreview(DocIterator const & pos) const
 
 	docstring const snippet = macro_preamble.str() + latexString(*this);
 	LYXERR(Debug::MACROS, "Preview snippet: " << snippet);
-	preview_->addPreview(snippet, *buffer);
+	preview_->addPreview(snippet, *buffer, forexport);
 }
 
 
-void InsetMathHull::reloadPreview(DocIterator const & pos, bool wait) const
+void InsetMathHull::reloadPreview(DocIterator const & pos) const
 {
 	preparePreview(pos);
-	preview_->startLoading(*pos.buffer(), wait);
+	preview_->startLoading(*pos.buffer());
+}
+
+
+void InsetMathHull::loadPreview(DocIterator const & pos) const
+{
+	bool const forexport = true;
+	preparePreview(pos, forexport);
+	preview_->startLoading(*pos.buffer(), forexport);
 }
 
 
@@ -1871,7 +1885,7 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		break;
 	} 
 	case BufferParams::Images: {
-		reloadPreview(docit_, true);
+		loadPreview(docit_);
 		graphics::PreviewImage const * pimage = preview_->getPreviewImage(buffer());
 		if (pimage) {
 			// FIXME Do we always have png?

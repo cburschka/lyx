@@ -59,17 +59,23 @@ public:
 
 	/** Find the PreviewLoader and add a LaTeX snippet to it.
 	 *  Do not start the loading process.
+	 *  \param ignore_lyxrc: generate the preview no matter what LyXRC says
 	 */
-	void addPreview(docstring const & latex_snippet, Buffer const &);
+	void addPreview(docstring const & latex_snippet, Buffer const &,
+			bool ignore_lyxrc = false);
 
 	/** Add a LaTeX snippet to the PreviewLoader.
 	 *  Do not start the loading process.
+	 *  \param ignore_lyxrc: generate the preview no matter what LyXRC says
 	 */
 	void addPreview(docstring const & latex_snippet,
-			graphics::PreviewLoader & ploader);
+			graphics::PreviewLoader & ploader,
+			bool ignore_lyxrc = false);
 
 	/// Begin the loading process.
-	void startLoading(Buffer const & buffer, bool wait = false) const;
+	/// \param forexport : whether this is intended for export. if so,
+	/// then we ignore LyXRC and wait for the image to be generated.
+	void startLoading(Buffer const & buffer, bool forexport = false) const;
 
 	/** Remove a snippet from the cache of previews.
 	 *  Useful if previewing the contents of a file that has changed.

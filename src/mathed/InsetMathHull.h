@@ -139,10 +139,8 @@ public:
 	///
 	void addPreview(DocIterator const & inset_pos,
 		graphics::PreviewLoader &) const;
-	/// Prepare the preview if preview is enabled.
-	void preparePreview(DocIterator const & pos) const;
 	/// Recreates the preview if preview is enabled.
-	void reloadPreview(DocIterator const & pos, bool wait = false) const;
+	void reloadPreview(DocIterator const & pos) const;
 	///
 	void initUnicodeMath() const;
 
@@ -172,6 +170,14 @@ protected:
 
 private:
 	virtual Inset * clone() const;
+	/// Prepare the preview if preview is enabled.
+	/// \param forexport: whether this is intended for export
+	/// If so, we ignore LyXRC and wait for the image to be generated.
+	void preparePreview(DocIterator const & pos,
+	                    bool forexport = false) const;
+	/// like reloadPreview, but forces load 
+	/// used by image export
+	void loadPreview(DocIterator const & pos) const;
 	///
 	void setType(HullType type);
 	///
