@@ -158,4 +158,15 @@ void InsetMathXYArrow::normalize(NormalStream & os) const
 }
 
 
+void InsetMathXYArrow::mathmlize(MathStream &) const
+{
+	throw MathExportException();
+}
+
+
+void InsetMathXYArrow::htmlize(HtmlStream &) const 
+{
+	throw MathExportException(); 
+}
+
 } // namespace lyx

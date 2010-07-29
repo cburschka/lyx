@@ -50,6 +50,10 @@ public:
 	MathData const & sourceCell() const;
 	///
 	InsetCode lyxCode() const { return MATH_XYARROW_CODE; }
+	///
+	void mathmlize(MathStream &) const;
+	///
+	void htmlize(HtmlStream &) const;
 
 	///
 	bool up_;
