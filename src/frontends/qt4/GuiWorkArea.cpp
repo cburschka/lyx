@@ -785,9 +785,9 @@ void GuiWorkArea::wheelEvent(QWheelEvent * ev)
 {
 	// Wheel rotation by one notch results in a delta() of 120 (see
 	// documentation of QWheelEvent)
-	int const delta = ev->delta() / 120;
+	double const delta = ev->delta() / 120.0;
 	if (ev->modifiers() & Qt::ControlModifier) {
-		docstring arg = convert<docstring>(5 * delta);
+		docstring arg = convert<docstring>(int(5 * delta));
 		lyx::dispatch(FuncRequest(LFUN_BUFFER_ZOOM_IN, arg));
 		return;
 	}
@@ -799,11 +799,8 @@ void GuiWorkArea::wheelEvent(QWheelEvent * ev)
 	int scroll_value = lines > page_step
 		? page_step : lines * verticalScrollBar()->singleStep();
 
-	// Take into account the rotation.
-	scroll_value *= delta;
-
-	// Take into account user preference.
-	scroll_value *= lyxrc.mouse_wheel_speed;
+ 	// Take into account the rotation and the user preferences.
+ 	scroll_value = int(scroll_value * delta * lyxrc.mouse_wheel_speed);
 	LYXERR(Debug::SCROLLING, "wheelScrollLines = " << lines
 			<< " delta = " << delta << " scroll_value = " << scroll_value
 			<< " page_step = " << page_step);
