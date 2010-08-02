@@ -601,11 +601,13 @@ namespace {
 							break;
 						case '}':
 							--nestLevel;
-							if (nestLevel < 0) return false;
+							if (nestLevel < 0) 
+								return false;
 							break;
 					}
 
-					ifs.get(ch);
+					if (ifs)
+						ifs.get(ch);
 				}
 
 				if (!ifs)
