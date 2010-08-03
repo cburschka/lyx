@@ -39,7 +39,7 @@ namespace frontend {
 // Information
 QRegExp exprInfo("^(Document Class:|LaTeX Font Info:|File:|Package:|Language:|Underfull|Overfull|\\(|\\\\).*$");
 // Warnings
-QRegExp exprWarning("^(LaTeX Warning|Package \\w+ Warning).*$");
+QRegExp exprWarning("^(LaTeX Warning|LaTeX Font Warning|Package [\\w\\.]+ Warning|Class \\w+ Warning).*$");
 // Errors
 QRegExp exprError("^!.*$");
 
