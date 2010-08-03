@@ -74,11 +74,6 @@ int checkAppleSpeller(AppleSpeller speller, const char * word, const char * lang
 		return 0;
 
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1050)
-	NSInteger wordcount;
-#else
-	int wordcount;
-#endif
 	NSString * word_ = toString(speller, word);
 	NSString * lang_ = toString(speller, lang);
 
@@ -86,9 +81,9 @@ int checkAppleSpeller(AppleSpeller speller, const char * word, const char * lang
 		checkSpellingOfString:word_
 		startingAt:0
 		language:lang_
-		wrap:(BOOL)NO
+		wrap:NO
 		inSpellDocumentWithTag:speller->doctag
-		wordCount:&wordcount];
+		wordCount:NULL];
 
 	[word_ release];
 	[lang_ release];
