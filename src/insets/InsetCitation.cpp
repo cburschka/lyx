@@ -465,8 +465,9 @@ void InsetCitation::updateLabels(ParIterator const &)
 
 void InsetCitation::addToToc(DocIterator const & cpit)
 {
+	docstring const tocitem = getParam("key");
 	Toc & toc = buffer().tocBackend().toc("citation");
-	toc.push_back(TocItem(cpit, 0, cache.screen_label));
+	toc.push_back(TocItem(cpit, 0, tocitem));
 }
 
 
