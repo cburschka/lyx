@@ -1,4 +1,4 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -156,6 +156,18 @@ key "covington"
 : This is the base package used for numbered examples and glosses.
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Installed on your system: 
+\begin_inset Info
+type  "package"
+arg   "covington"
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 
 \emph on
@@ -184,6 +196,18 @@ description
 ).
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Installed on your system: 
+\begin_inset Info
+type  "package"
+arg   "enumitem"
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 
 \emph on
@@ -205,6 +229,18 @@ Meaning
  language in use.
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Installed on your system: 
+\begin_inset Info
+type  "package"
+arg   "csquotes"
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 
 \emph on
@@ -221,6 +257,18 @@ key "float"
  This package should be part of any LaTeX distribution.
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Installed on your system: 
+\begin_inset Info
+type  "package"
+arg   "float"
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Numbered examples
 \end_layout
