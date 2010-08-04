@@ -3664,6 +3664,44 @@ graphics
 \end_layout
 
 \begin_layout Subsection
+float
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "float"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/float/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+float
+\family default
+ is needed by LyX to create non-standard floating objects.
+ Also, it provides the 
+\begin_inset Quotes eld
+\end_inset
+
+here, definitely!
+\begin_inset Quotes erd
+\end_inset
+
+ float placement setting.
+ 
+\end_layout
+
+\begin_layout Subsection
 graphicx
 \end_layout
 
@@ -3692,10 +3730,9 @@ graphicx
  You will also need 
 \family typewriter
 \size normal
-ghost
-\size default
-script
+ghostscript
 \family default
+\size default
  to see them on screen.
 \end_layout
 
