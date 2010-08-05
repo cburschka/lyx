@@ -555,19 +555,19 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		// We assume that a tex class exists for local or unknown layouts so this warning
 		// will only be given for system layouts.
 		if (!baseClass()->isTeXClassAvailable()) {
-			docstring desc = 
+			docstring const desc = 
 				translateIfPossible(from_utf8(baseClass()->description()));
+			docstring const prereqs = from_utf8(baseClass()->prerequisites());
 			docstring const msg =
 				bformat(_("The selected document class\n"
 						 "\t%1$s\n"
 						 "requires external files that are not available.\n"
-						 "The document class can still be used, but LyX\n"
-						 "will not be able to produce output until the\n"
-						 "following prerequisites are installed:\n"
+						 "The document class can still be used, but the\n"
+						 "document cannot be compiled until the following\n"
+						 "prerequisites are installed:\n"
 						 "\t%2$s\n"
 						 "See section 3.1.2.2 of the User's Guide for\n"
-						 "more information."), 
-						 desc, from_utf8(baseClass()->prerequisites()));
+						 "more information."), desc, prereqs);
 			frontend::Alert::warning(_("Document class not available"),
 				       msg);
 		}
