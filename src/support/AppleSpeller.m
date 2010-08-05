@@ -62,7 +62,7 @@ void freeAppleSpeller(AppleSpeller speller)
 }
 
 
-static NSString * toString(AppleSpeller speller, const char * word)
+static NSString * toString(const char * word)
 {
 	return [[NSString alloc] initWithBytes:word length:strlen(word) encoding:NSUTF8StringEncoding];
 }
@@ -74,8 +74,8 @@ int checkAppleSpeller(AppleSpeller speller, const char * word, const char * lang
 		return 0;
 
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-	NSString * word_ = toString(speller, word);
-	NSString * lang_ = toString(speller, lang);
+	NSString * word_ = toString(word);
+	NSString * lang_ = toString(lang);
 
 	NSRange result = [speller->checker
 		checkSpellingOfString:word_
@@ -93,10 +93,10 @@ int checkAppleSpeller(AppleSpeller speller, const char * word, const char * lang
 }
 
 
-void ignoreAppleSpeller(AppleSpeller speller, const char * word, const char * lang)
+void ignoreAppleSpeller(AppleSpeller speller, const char * word)
 {
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-	NSString * word_ = toString(speller, word);
+	NSString * word_ = toString(word);
 
 	[speller->checker ignoreWord:word_ inSpellDocumentWithTag:(speller->doctag)];
 
@@ -111,8 +111,8 @@ size_t makeSuggestionAppleSpeller(AppleSpeller speller, const char * word, const
 		return 0;
 
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-	NSString * word_ = toString(speller, word);
-	NSString * lang_ = toString(speller, lang);
+	NSString * word_ = toString(word);
+	NSString * lang_ = toString(lang);
 	NSArray * result ;
 
 #if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1060)
@@ -166,11 +166,11 @@ const char * getSuggestionAppleSpeller(AppleSpeller speller, size_t pos)
 }
 
 
-void learnAppleSpeller(AppleSpeller speller, const char * word, const char * lang)
+void learnAppleSpeller(AppleSpeller speller, const char * word)
 {
 #if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1050)
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-	NSString * word_ = toString(speller, word);
+	NSString * word_ = toString(word);
 
 	if ([NSSpellChecker instancesRespondToSelector:@selector(learnWord)])
 		[speller->checker learnWord:word_];
@@ -186,7 +186,7 @@ int hasLanguageAppleSpeller(AppleSpeller speller, const char * lang)
 	BOOL result = NO;
 #if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1050)
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-	NSString * lang_ = toString(speller, lang);
+	NSString * lang_ = toString(lang);
 	if ([NSSpellChecker instancesRespondToSelector:@selector(availableLanguages)]) {
 		NSArray * languages = [speller->checker availableLanguages];
 

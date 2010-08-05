@@ -70,7 +70,7 @@ SpellChecker::Result AppleSpellChecker::check(WordLangTuple const & word)
 void AppleSpellChecker::insert(WordLangTuple const & word)
 {
 	string const word_str = to_utf8(word.word());
-	learnAppleSpeller(d->speller, word_str.c_str(), word.lang()->code().c_str());
+	learnAppleSpeller(d->speller, word_str.c_str());
 }
 
 
@@ -78,7 +78,7 @@ void AppleSpellChecker::insert(WordLangTuple const & word)
 void AppleSpellChecker::accept(WordLangTuple const & word)
 {
 	string const word_str = to_utf8(word.word());
-	ignoreAppleSpeller(d->speller, word_str.c_str(), word.lang()->code().c_str());
+	ignoreAppleSpeller(d->speller, word_str.c_str());
 }
 
 
