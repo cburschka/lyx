@@ -573,7 +573,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		inpreamble = false;
 	}
 
-	return !error;
+	return finished && !error;
 }
 
 
