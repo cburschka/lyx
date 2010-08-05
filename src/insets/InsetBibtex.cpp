@@ -473,7 +473,7 @@ namespace {
 	/// @return true if a string of length > 0 could be read.
 	///
 	bool readTypeOrKey(docstring & val, ifdocstream & ifs,
-		docstring const & delimChars, docstring const &illegalChars, 
+		docstring const & delimChars, docstring const & illegalChars, 
 		charCase chCase) {
 
 		char_type ch;
@@ -613,6 +613,7 @@ namespace {
 				if (!ifs)
 					return false;
 
+				// FIXME Why is this here?
 				ifs.get(ch);
 
 				if (!ifs)
@@ -798,10 +799,8 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
  				// all items must be separated by a comma. If
  				// it is missing the scanning of this entry is
  				// stopped and the next is searched.
-				docstring fields;
 				docstring name;
 				docstring value;
-				docstring commaNewline;
 				docstring data;
 				BibTeXInfo keyvalmap(key, entryType);
 				
@@ -815,6 +814,7 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 						break;
 
 					// next char must be an equal sign
+					// FIXME Whitespace??
 					ifs.get(ch);
 					if (!ifs) {
 						lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
