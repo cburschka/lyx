@@ -207,18 +207,18 @@ HunspellChecker::~HunspellChecker()
 SpellChecker::Result HunspellChecker::check(WordLangTuple const & wl)
 {
 	if (d->isIgnored(wl))
-		return OK;
+		return WORD_OK;
 
 	Hunspell * h = d->speller(wl.lang()->code());
 	if (!h)
-		return OK;
+		return WORD_OK;
 	int info;
 
 	string const encoding = h->get_dic_encoding();
 	string const word_to_check = to_iconv_encoding(wl.word(), encoding);
 	
 	if (h->spell(word_to_check.c_str(), &info))
-		return OK;
+		return WORD_OK;
 
 	if (info & SPELL_COMPOUND) {
 		// FIXME: What to do with that?

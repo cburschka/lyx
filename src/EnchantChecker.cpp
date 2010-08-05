@@ -113,12 +113,12 @@ SpellChecker::Result EnchantChecker::check(WordLangTuple const & word)
 	enchant::Dict * m = d->speller(word.lang()->code());
 
 	if (!m)
-		return OK;
+		return WORD_OK;
 
 	string utf8word = to_utf8(word.word());
 
 	if (m->check(utf8word))
-		return OK;
+		return WORD_OK;
 
 	return UNKNOWN_WORD;
 }

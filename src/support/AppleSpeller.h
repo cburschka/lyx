@@ -16,16 +16,24 @@
 extern "C" {
 #endif
 
+typedef enum SpellCheckResult {
+	SPELL_CHECK_FAILED,
+	SPELL_CHECK_OK,
+	SPELL_CHECK_IGNORED,
+	SPELL_CHECK_LEARNED
+} SpellCheckResult ;
+
 typedef struct AppleSpellerRec * AppleSpeller ;
 
 AppleSpeller newAppleSpeller(void);
 void freeAppleSpeller(AppleSpeller speller);
 
-int checkAppleSpeller(AppleSpeller speller, const char * word, const char * lang);
+SpellCheckResult checkAppleSpeller(AppleSpeller speller, const char * word, const char * lang);
 void ignoreAppleSpeller(AppleSpeller speller, const char * word);
 size_t makeSuggestionAppleSpeller(AppleSpeller speller, const char * word, const char * lang);
 const char * getSuggestionAppleSpeller(AppleSpeller speller, size_t pos);
 void learnAppleSpeller(AppleSpeller speller, const char * word);
+void unlearnAppleSpeller(AppleSpeller speller, const char * word);
 int hasLanguageAppleSpeller(AppleSpeller speller, const char * lang);
 
 #ifdef __cplusplus

@@ -2044,6 +2044,25 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_SPELLING_REMOVE: {
+		docstring word = from_utf8(cmd.getArg(0));
+		Language * lang;
+		if (word.empty()) {
+			word = cur.selectionAsString(false);
+			// FIXME
+			if (word.size() > 100 || word.empty()) {
+				// Get word or selection
+				selectWordWhenUnderCursor(cur, WHOLE_WORD);
+				word = cur.selectionAsString(false);
+			}
+			lang = const_cast<Language *>(cur.getFont().language());
+		} else
+			lang = const_cast<Language *>(languages.getLanguage(cmd.getArg(1)));
+		WordLangTuple wl(word, lang);
+		theSpellChecker()->remove(wl);
+		break;
+	}
+
 	case LFUN_PARAGRAPH_PARAMS_APPLY: {
 		// Given data, an encoding of the ParagraphParameters
 		// generated in the Paragraph dialog, this function sets
@@ -2591,6 +2610,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	
 	case LFUN_SPELLING_ADD:
 	case LFUN_SPELLING_IGNORE:
+	case LFUN_SPELLING_REMOVE:
 		enable = theSpellChecker();
 		break;
 

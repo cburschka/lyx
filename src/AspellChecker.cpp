@@ -266,17 +266,17 @@ SpellChecker::Result AspellChecker::check(WordLangTuple const & word)
 		d->speller(word.lang()->code(), word.lang()->variety());
 
 	if (!m)
-		return OK;
+		return WORD_OK;
 
 	if (word.word().empty())
 		// MSVC compiled Aspell doesn't like it.
-		return OK;
+		return WORD_OK;
 
 	string const word_str = to_utf8(word.word());
 	int const word_ok = aspell_speller_check(m, word_str.c_str(), -1);
 	LASSERT(word_ok != -1, /**/);
 
-	return (word_ok) ? OK : UNKNOWN_WORD;
+	return (word_ok) ? WORD_OK : UNKNOWN_WORD;
 }
 
 

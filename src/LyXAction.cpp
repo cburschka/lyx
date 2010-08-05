@@ -1016,6 +1016,17 @@ void LyXAction::init()
  */
 		{ LFUN_SPELLING_IGNORE, "spelling-ignore", ReadOnly, Edit },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_SPELLING_REMOVE
+ * \li Action: Remove the word under the cursor from the respective
+ *             spell checker dictionary.
+ * \li Syntax: spelling-remove [<STRING>] [<LANG>]
+ * \li Params: <WORD>: word to remove
+               <LANG>: language name (see file languages)
+ * \li Origin: SWitt, 28 July 2010
+ * \endvar
+ */
+		{ LFUN_SPELLING_REMOVE, "spelling-remove", ReadOnly, Edit },
+/*!
  * \var lyx::FuncCode lyx::LFUN_THESAURUS_ENTRY
  * \li Action: Look up thesaurus entries with respect to the word under the cursor.
  * \li Syntax: thesaurus-entry [<STRING>] [lang=<LANG>]

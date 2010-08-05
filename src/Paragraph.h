@@ -17,6 +17,7 @@
 #define PARAGRAPH_H
 
 #include "FontEnums.h"
+#include "SpellChecker.h"
 
 #include "insets/InsetCode.h"
 
@@ -422,8 +423,8 @@ public:
 
 	/// Spellcheck word at position \p from and fill in found misspelled word
 	/// and \p suggestions if \p do_suggestion is true.
-	/// \return true if pointed word is misspelled.
-	bool spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
+	/// \return result from spell checker, SpellChecker::UNKNOWN_WORD when misspelled.
+	SpellChecker::Result spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
 		docstring_list & suggestions, bool do_suggestion =  true) const;
 
 	/// Spellcheck word at position \p pos.

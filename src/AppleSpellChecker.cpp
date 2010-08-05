@@ -29,6 +29,9 @@ struct AppleSpellChecker::Private
 
 	~Private();
 
+	SpellChecker::Result toResult(SpellCheckResult status);
+	string toString(SpellCheckResult status);
+
 	/// the speller
 	AppleSpeller speller;
 };
@@ -58,11 +61,26 @@ AppleSpellChecker::~AppleSpellChecker()
 }
 
 
+SpellChecker::Result AppleSpellChecker::Private::toResult(SpellCheckResult status)
+{
+	return status == SPELL_CHECK_FAILED ? UNKNOWN_WORD :
+		status == SPELL_CHECK_LEARNED ? LEARNED_WORD : WORD_OK ;
+}
+
+
+string AppleSpellChecker::Private::toString(SpellCheckResult status)
+{
+	return status == SPELL_CHECK_FAILED ? "FAILED" :
+		 status == SPELL_CHECK_LEARNED ? "LEARNED" : "OK";
+}
+
+
 SpellChecker::Result AppleSpellChecker::check(WordLangTuple const & word)
 {
 	string const word_str = to_utf8(word.word());
-	int const word_ok = checkAppleSpeller(d->speller, word_str.c_str(), word.lang()->code().c_str());
-	return (word_ok) ? OK : UNKNOWN_WORD;
+	SpellCheckResult result = checkAppleSpeller(d->speller, word_str.c_str(), word.lang()->code().c_str());
+	LYXERR(Debug::GUI, "spellCheck: \"" << word.word() << "\" = " << d->toString(result)) ;
+	return d->toResult(result);
 }
 
 
@@ -71,6 +89,16 @@ void AppleSpellChecker::insert(WordLangTuple const & word)
 {
 	string const word_str = to_utf8(word.word());
 	learnAppleSpeller(d->speller, word_str.c_str());
+	LYXERR(Debug::GUI, "learn word: \"" << word.word() << "\"") ;
+}
+
+
+// remove from personal dictionary
+void AppleSpellChecker::remove(WordLangTuple const & word)
+{
+	string const word_str = to_utf8(word.word());
+	unlearnAppleSpeller(d->speller, word_str.c_str());
+	LYXERR(Debug::GUI, "unlearn word: \"" << word.word() << "\"") ;
 }
 
 

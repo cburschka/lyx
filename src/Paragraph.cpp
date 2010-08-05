@@ -3169,19 +3169,19 @@ void Paragraph::updateWords()
 }
 
 
-bool Paragraph::spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
+SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
 	docstring_list & suggestions, bool do_suggestion) const
 {
 	SpellChecker * speller = theSpellChecker();
 	if (!speller)
-		return false;
+		return SpellChecker::WORD_OK;
 
 	if (!d->layout_->spellcheck || !inInset().allowSpellCheck())
-		return false;
+		return SpellChecker::WORD_OK;
 
 	locateWord(from, to, WHOLE_WORD);
 	if (from == to || from >= pos_type(d->text_.size()))
-		return false;
+		return SpellChecker::WORD_OK;
 
 	docstring word = asString(from, to, AS_STR_INSETS);
 	// Ignore words with digits
@@ -3200,29 +3200,19 @@ bool Paragraph::spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
 	}
 	wl = WordLangTuple(word, lang);
 	SpellChecker::Result res = ignored ?
-		SpellChecker::OK : speller->check(wl);
-#if 0
-// FIXME: the code below makes aspell abort if a word in an unknown
-//	  language is checked.
-	// Just ignore any error that the spellchecker reports.
-	// FIXME: we should through out an exception and catch it in the GUI to
-	// display the error.
-	if (!speller->error().empty())
-		return false;
-#endif
+		SpellChecker::WORD_OK : speller->check(wl);
 
-	bool const misspelled = res != SpellChecker::OK
-		&& res != SpellChecker::IGNORED_WORD;
+	bool const misspelled_ = SpellChecker::misspelled(res) ;
 
 	if (lyxrc.spellcheck_continuously)
-		d->fontlist_.setMisspelled(from, to, misspelled);
+		d->fontlist_.setMisspelled(from, to, misspelled_);
 
-	if (misspelled && do_suggestion)
+	if (misspelled_ && do_suggestion)
 		speller->suggest(wl, suggestions);
 	else
 		suggestions.clear();
 
-	return misspelled;
+	return res;
 }
 
 
@@ -3232,7 +3222,8 @@ bool Paragraph::isMisspelled(pos_type pos) const
 	pos_type to = pos;
 	WordLangTuple wl;
 	docstring_list suggestions;
-	return spellCheck(from, to, wl, suggestions, false);
+	SpellChecker::Result res = spellCheck(from, to, wl, suggestions, false);
+	return SpellChecker::misspelled(res) ;
 }
 
 

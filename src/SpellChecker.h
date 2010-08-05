@@ -32,18 +32,26 @@ public:
 	/// the result from checking a single word
 	enum Result  {
 		/// word is correct
-		OK = 1,
+		WORD_OK = 1,
 		/// root of given word was found
-		ROOT,
+		ROOT_FOUND,
 		/// word found through compound formation
 		COMPOUND_WORD,
 		/// word not found
 		UNKNOWN_WORD,
 		/// number of other ignored "word"
-		IGNORED_WORD
+		IGNORED_WORD,
+		/// number of personal dictionary "word"
+		LEARNED_WORD
 	};
 
 	virtual ~SpellChecker() {}
+
+	/// does the spell check failed
+	static bool misspelled(Result res) {
+		return res != SpellChecker::WORD_OK
+			&& res != SpellChecker::IGNORED_WORD
+			&& res != SpellChecker::LEARNED_WORD; }
 
 	/// check the given word of the given lang code and return the result
 	virtual enum Result check(WordLangTuple const &) = 0;
@@ -53,6 +61,9 @@ public:
 
 	/// insert the given word into the personal dictionary
 	virtual void insert(WordLangTuple const &) = 0;
+
+	/// remove the given word from the personal dictionary
+	virtual void remove(WordLangTuple const &) = 0;
 
 	/// accept the given word temporarily
 	virtual void accept(WordLangTuple const &) = 0;
