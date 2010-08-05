@@ -27,6 +27,7 @@
 #include "ui_LanguageUi.h"
 #include "ui_LaTeXUi.h"
 #include "ui_ListingsSettingsUi.h"
+#include "ui_LocalLayoutUi.h"
 #include "ui_MarginsUi.h"
 #include "ui_MasterChildUi.h"
 #include "ui_MathsUi.h"
@@ -51,6 +52,7 @@ class GuiBranches;
 class GuiIndices;
 class ModuleSelectionManager;
 class PreambleModule;
+class LocalLayout;
 
 ///
 typedef void const * BufferId;
@@ -76,7 +78,6 @@ public:
 	void updatePagestyle(std::string const &, std::string const &);
 	bool isChildIncluded(std::string const &);
 
-	void showPreamble();
 	///
 	BufferParams const & params() const { return bp_; }
 
@@ -136,6 +137,7 @@ private:
 	UiWidget<Ui::OutputUi> *outputModule;
 	UiWidget<Ui::ListingsSettingsUi> *listingsModule;
 	PreambleModule * preambleModule;
+	LocalLayout * localLayout;
 	
 	GuiBranches * branchesModule;
 	GuiIndices * indicesModule;
@@ -268,6 +270,31 @@ private:
 	typedef std::map<BufferId, std::pair<int,int> > Coords;
 	Coords preamble_coords_;
 	BufferId current_id_;
+};
+
+
+class LocalLayout : public UiWidget<Ui::LocalLayoutUi>
+{
+	Q_OBJECT
+public:
+	LocalLayout();
+	void update(BufferParams const & params, BufferId id);
+	void apply(BufferParams & params);
+	bool isValid() const { return is_valid_; }
+
+Q_SIGNALS:
+	/// signal that something's changed in the Widget.
+	void changed();
+
+private:
+	void validate();
+private Q_SLOTS:
+	void textChanged();
+	void validatePressed();
+
+private:
+	BufferId current_id_;
+	bool is_valid_;
 };
 
 

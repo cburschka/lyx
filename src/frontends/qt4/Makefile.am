@@ -282,6 +282,7 @@ UIFILES = \
 	LaTeXUi.ui \
 	ListingsUi.ui \
 	ListingsSettingsUi.ui \
+	LocalLayoutUi.ui \
 	LogUi.ui \
 	MarginsUi.ui \
 	MasterChildUi.ui \

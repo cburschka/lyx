@@ -46,6 +46,7 @@
 #include "PDFOptions.h"
 #include "qt_helpers.h"
 #include "Spacing.h"
+#include "TextClass.h"
 
 #include "insets/InsetListingsParams.h"
 
@@ -522,6 +523,79 @@ void PreambleModule::closeEvent(QCloseEvent * e)
 	preamble_coords_[current_id_] =
 		make_pair(cur.position(), preambleTE->verticalScrollBar()->value());
 	e->accept();
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// LocalLayout
+//
+/////////////////////////////////////////////////////////////////////
+
+
+LocalLayout::LocalLayout() : current_id_(0), is_valid_(false)
+{
+	connect(locallayoutTE, SIGNAL(textChanged()), this, SLOT(textChanged()));
+	connect(validatePB, SIGNAL(clicked()), this, SLOT(validatePressed()));
+}
+
+
+void LocalLayout::update(BufferParams const & params, BufferId id)
+{
+	QString layout = toqstr(params.local_layout);
+	// Nothing to do if the params and preamble are unchanged.
+	if (id == current_id_
+		&& layout == locallayoutTE->document()->toPlainText())
+		return;
+
+	// Save the params address for further use.
+	current_id_ = id;
+	locallayoutTE->document()->setPlainText(layout);
+	validate();
+}
+
+
+void LocalLayout::apply(BufferParams & params)
+{
+	string const layout = fromqstr(locallayoutTE->document()->toPlainText());
+	params.local_layout = layout;
+}
+
+
+void LocalLayout::textChanged()
+{
+	static const QString unknown = qt_("Press button to check validity...");
+
+	is_valid_ = false;
+	infoLB->setText(unknown);
+	validatePB->setEnabled(true);
+	changed();
+}
+
+
+void LocalLayout::validate() {
+	static const QString valid = qt_("Layout is valid!");
+	static const QString vtext =
+		toqstr("<p style=\"font-weight: bold; \">") 
+		  + valid + toqstr("</p>");
+	static const QString invalid = qt_("Layout is invalid!");
+	static const QString ivtext =
+		toqstr("<p style=\"color: #c00000; font-weight: bold; \">") 
+		  + invalid + toqstr("</p>");
+
+	string const layout = fromqstr(locallayoutTE->document()->toPlainText());
+	if (layout.empty())
+		is_valid_ = true;
+	else
+		is_valid_ = TextClass::validate(layout);
+	infoLB->setText(is_valid_ ? vtext : ivtext);
+	validatePB->setEnabled(false);
+}
+
+
+void LocalLayout::validatePressed() {
+	validate();
+	changed();
 }
 
 
@@ -1071,6 +1145,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 	preambleModule = new PreambleModule;
 	connect(preambleModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
+	
+	localLayout = new LocalLayout;
+	connect(localLayout, SIGNAL(changed()),
+		this, SLOT(change_adaptor()));
 
 
 	// bullets
@@ -1176,18 +1254,13 @@ GuiDocument::GuiDocument(GuiView & lv)
 	docPS->addPanel(branchesModule, qt_("Branches"));
 	docPS->addPanel(outputModule, qt_("Output"));
 	docPS->addPanel(preambleModule, qt_("LaTeX Preamble"));
+	docPS->addPanel(localLayout, qt_("Local Layout"));
 	docPS->setCurrentPanel(qt_("Document Class"));
 // FIXME: hack to work around resizing bug in Qt >= 4.2
 // bug verified with Qt 4.2.{0-3} (JSpitzm)
 #if QT_VERSION >= 0x040200
 	docPS->updateGeometry();
 #endif
-}
-
-
-void GuiDocument::showPreamble()
-{
-	docPS->setCurrentPanel(qt_("LaTeX Preamble"));
 }
 
 
@@ -2020,6 +2093,7 @@ void GuiDocument::applyView()
 {
 	// preamble
 	preambleModule->apply(bp_);
+	localLayout->apply(bp_);
 
 	// date
 	bp_.suppress_date = latexModule->suppressDateCB->isChecked();
@@ -2436,6 +2510,7 @@ void GuiDocument::paramsToDialog()
 
 	// preamble
 	preambleModule->update(bp_, id());
+	localLayout->update(bp_, id());
 
 	// date
 	latexModule->suppressDateCB->setChecked(bp_.suppress_date);
@@ -3025,13 +3100,25 @@ void GuiDocument::setLayoutComboByIDString(string const & idString)
 
 bool GuiDocument::isValid()
 {
-	return validateListingsParameters().isEmpty()
-		&& (textLayoutModule->skipCO->currentIndex() != 3
-			|| !textLayoutModule->skipLE->text().isEmpty()
-			|| textLayoutModule->indentRB->isChecked())
-		&& (textLayoutModule->indentCO->currentIndex() != 1
-			|| !textLayoutModule->indentLE->text().isEmpty()
-			|| textLayoutModule->skipRB->isChecked());
+	return 
+		validateListingsParameters().isEmpty() &&
+		localLayout->isValid() &&
+		(
+			// if we're asking for skips between paragraphs
+			!textLayoutModule->skipRB->isChecked() ||
+			// then either we haven't chosen custom
+			textLayoutModule->skipCO->currentIndex() != 3 || 
+			// or else a length has been given
+			!textLayoutModule->skipLE->text().isEmpty()
+		) && 
+		(
+			// if we're asking for indentation
+			!textLayoutModule->indentRB->isChecked() || 
+			// then either we haven't chosen custom
+			textLayoutModule->indentCO->currentIndex() != 1 || 
+			// or else a length has been given
+			!textLayoutModule->indentLE->text().isEmpty()
+		);
 }
 
 
