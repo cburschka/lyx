@@ -104,7 +104,7 @@ bool layout2layout(FileName const & filename, FileName const & tempfile)
 }
 
 
-string translateRT(TextClass::ReadType rt) 
+string translateReadType(TextClass::ReadType rt) 
 {
 	switch (rt) {
 	case TextClass::BASECLASS:
@@ -274,7 +274,7 @@ TextClass::ReturnValues TextClass::readWithoutConv(FileName const & filename, Re
 		return ERROR;
 	}
 
-	LYXERR(Debug::TCLASS, "Reading " + translateRT(rt) + ": " +
+	LYXERR(Debug::TCLASS, "Reading " + translateReadType(rt) + ": " +
 		to_utf8(makeDisplayPath(filename.absFileName())));
 
 	// Define the plain layout used in table cells, ert, etc. Note that 
@@ -287,7 +287,7 @@ TextClass::ReturnValues TextClass::readWithoutConv(FileName const & filename, Re
 	lexrc.setFile(filename);
 	ReturnValues retval = read(lexrc, rt);
 	
-	LYXERR(Debug::TCLASS, "Finished reading " + translateRT(rt) + ": " +
+	LYXERR(Debug::TCLASS, "Finished reading " + translateReadType(rt) + ": " +
 			to_utf8(makeDisplayPath(filename.absFileName())));
 
 	return retval;
