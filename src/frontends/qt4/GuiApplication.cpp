@@ -759,6 +759,13 @@ GuiApplication::~GuiApplication()
 }
 
 
+namespace {
+void setColor(ColorCode code, QPalette const & pal, QPalette::ColorRole cr)
+{
+	lcolor.setColor(code, fromqstr(pal.brush(QPalette::Active, cr).color().name()));
+}
+}
+
 GuiApplication::GuiApplication(int & argc, char ** argv)
 	: QApplication(argc, argv), current_view_(0),
 	  d(new GuiApplication::Private)
@@ -819,6 +826,12 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 
 	if (lyxrc.typewriter_font_name.empty())
 		lyxrc.typewriter_font_name = fromqstr(typewriterFontName());
+
+	// initialize colors
+	setColor(Color_background, palette(), QPalette::Window);
+	setColor(Color_foreground, palette(), QPalette::WindowText);
+	setColor(Color_selection, palette(), QPalette::Highlight);
+	setColor(Color_selectiontext, palette(), QPalette::HighlightedText);
 
 	d->general_timer_.setInterval(500);
 	connect(&d->general_timer_, SIGNAL(timeout()),
