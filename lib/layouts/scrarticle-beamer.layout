@@ -1,5 +1,5 @@
 #% Do not delete the line below; configure depends on this
-#  \DeclareLaTeXClass[scrartcl]{article (koma + beamer)}
+#  \DeclareLaTeXClass[scrartcl,beamerarticle.sty,keyval.sty,pgf.sty,scrbase.sty,typearea.sty]{article (koma + beamer)}
 # Author : Jürgen Spitzmüller <j.spitzmueller@gmx.de>
 
 Format 27
