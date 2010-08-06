@@ -1222,14 +1222,14 @@ void LyXAction::init()
  * \li Syntax: undo
  * \endvar
  */
-		{ LFUN_UNDO, "undo", Noop, Edit },
+		{ LFUN_UNDO, "undo", ReadOnly, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_REDO
  * \li Action: Redoes the last thing undone.
  * \li Syntax: redo
  * \endvar
  */
-		{ LFUN_REDO, "redo", Noop, Edit },
+		{ LFUN_REDO, "redo", ReadOnly, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_REPEAT
  * \li Action: Repeat the given command.

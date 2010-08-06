@@ -67,6 +67,9 @@ public:
 	///
 	bool hasRedoStack() const;
 
+	/// Mark all the elements of the undo and redo stacks as dirty
+	void markDirty();
+
 	/// open a new group of undo operations.
 	/**
 	 *  Groups can be nested. Such a nested group e.g. { {} {} } is undone in

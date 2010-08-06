@@ -2364,6 +2364,7 @@ void Buffer::markClean() const
 	// if the .lyx file has been saved, we don't need an
 	// autosave
 	d->bak_clean = true;
+	d->undo_.markDirty();
 }
 
 

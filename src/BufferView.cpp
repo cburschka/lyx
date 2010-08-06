@@ -993,8 +993,8 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	// FIXME: This is a bit problematic because we don't check if this is
 	// a document BufferView or not for these LFUNs. We probably have to
 	// dispatch both to currentBufferView() and, if that fails,
-	// to documentBufferView(); same as we do know for current Buffer and
-	// document Buffer. Ideally those LFUN should go to Buffer as they*
+	// to documentBufferView(); same as we do now for current Buffer and
+	// document Buffer. Ideally those LFUN should go to Buffer as they
 	// operate on the full Buffer and the cursor is only needed either for
 	// an Undo record or to restore a cursor position. But we don't know
 	// how to do that inside Buffer of course.
@@ -1008,10 +1008,14 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_UNDO:
-		flag.setEnabled(buffer_.undo().hasUndoStack());
+		// We do not use the LyXAction flag for readonly because Undo sets the
+		// buffer clean/dirty status by itself.
+		flag.setEnabled(!buffer_.isReadonly() && buffer_.undo().hasUndoStack());
 		break;
 	case LFUN_REDO:
-		flag.setEnabled(buffer_.undo().hasRedoStack());
+		// We do not use the LyXAction flag for readonly because Redo sets the
+		// buffer clean/dirty status by itself.
+		flag.setEnabled(!buffer_.isReadonly() && buffer_.undo().hasRedoStack());
 		break;
 	case LFUN_FILE_INSERT:
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
