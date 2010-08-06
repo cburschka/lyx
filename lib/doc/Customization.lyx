@@ -9416,8 +9416,6 @@ BabelPreamble
 
 \end_inset
 
- Language dependent information to be included in the LaTeX preamble when
- this style is used.
  Note that this will completely override any prior 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -9428,7 +9426,7 @@ BabelPreamble
 
 \end_inset
 
- declarations.
+ declaration for this style.
  Must end with 
 \begin_inset Quotes eld
 \end_inset
@@ -9448,54 +9446,16 @@ EndBabelPreamble
 \end_inset
 
 .
- The contents of this tag will occur once in the LaTeX preamble for each
- language used by the document.
- Each time, the following substitutions are made:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-$$lang
-\end_layout
+ See section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:I18n"
 
 \end_inset
 
- is replaced by the language name (as used by the babel package).
+ for details on its use.
 \end_layout
 
-\begin_layout Itemize
-The 
-\begin_inset Quotes eld
-\end_inset
-
-Function
-\begin_inset Quotes erd
-\end_inset
-
- 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-_()
-\end_layout
-
-\end_inset
-
- replaces its argument by the translation of the argument to the current
- language.
-\end_layout
-
-\begin_layout Standard
-This preamble snippet will only be used if the document contains more than
- one language and the babel package is used.
-\end_layout
-
-\end_deeper
 \begin_layout Description
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -10967,18 +10927,17 @@ LangPreamble
 
 \end_inset
 
- Like 
+ Note that this will completely override any prior 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-BabelPreamble
+LangPreamble
 \end_layout
 
 \end_inset
 
-, but this preamble snippet occurs independently from the babel package,
- and only for the document language.
+ declaration for this style.
  Must end with 
 \begin_inset Quotes eld
 \end_inset
@@ -10998,151 +10957,16 @@ EndLangPreamble
 \end_inset
 
 .
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-If the style defines text that appears in the typeset document, it may use
- 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-LangPreamble
-\end_layout
+ See section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:I18n"
 
 \end_inset
 
- and 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-BabelPreamble
+ for details on its use.
 \end_layout
 
-\end_inset
-
- to support non-english and even multilanguage documents correctly.
- The following excerpt (from the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-theorems-ams.inc
-\end_layout
-
-\end_inset
-
- file) shows how this works:
-\end_layout
-
-\begin_layout LyX-Code
-Preamble
-\end_layout
-
-\begin_layout LyX-Code
-  
-\backslash
-theoremstyle{remark}
-\end_layout
-
-\begin_layout LyX-Code
-  
-\backslash
-newtheorem{claim}[thm]{
-\backslash
-protect
-\backslash
-claimname}
-\end_layout
-
-\begin_layout LyX-Code
-EndPreamble
-\end_layout
-
-\begin_layout LyX-Code
-LangPreamble
-\end_layout
-
-\begin_layout LyX-Code
-  
-\backslash
-providecommand{
-\backslash
-claimname}{_(Claim)}
-\end_layout
-
-\begin_layout LyX-Code
-
-\end_layout
-
-\begin_layout LyX-Code
-EndLangPreamble
-\end_layout
-
-\begin_layout LyX-Code
-BabelPreamble
-\end_layout
-
-\begin_layout LyX-Code
-    
-\backslash
-addto
-\backslash
-captions$$lang{
-\backslash
-renewcommand{
-\backslash
-claimname}{_(Claim)}}
-\end_layout
-
-\begin_layout LyX-Code
-EndBabelPreamble
-\end_layout
-
-\begin_layout Standard
-The key to correct translation of the user visible text is the definition
- of the command 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-claimname
-\end_layout
-
-\end_inset
-
- in the language preamble.
- This command holds the name of the theorem that will appear in the output.
- The 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-BabelPreamble
-\end_layout
-
-\end_inset
-
- then uses the commands offered by the babel package to redefine 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-claimname
-\end_layout
-
-\end_inset
-
- for each used language in multilanguage documents.
-\end_layout
-
-\end_deeper
 \begin_layout Description
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -12557,6 +12381,357 @@ float=0
  with this layout is separated from the previous paragraph.
  If the previous paragraph has another layout, the separations are not simply
  added, but the maximum is taken.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:I18n"
+
+\end_inset
+
+Internationalization of Paragraph Styles
+\end_layout
+
+\begin_layout Standard
+LyX has long supported internationalization of layout information, but,
+ until version 2.0, this applied only to the user interface and not to, say,
+ PDF output.
+ Thus, French authors were forced to resort to ugly hacks if they wanted
+ `
+\lang french
+Théorème
+\lang english
+ 1' instead of `Theorem 1'.
+ Thanks to Georg Baum, that is no longer the case.
+\end_layout
+
+\begin_layout Standard
+If a 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Style
+\end_layout
+
+\end_inset
+
+ defines text that is to appear in the typeset document, it may use 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+LangPreamble
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+BabelPreamble
+\end_layout
+
+\end_inset
+
+ to support non-English and even multi-language documents correctly.
+ The following excerpt (from the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+theorems-ams.inc
+\end_layout
+
+\end_inset
+
+ file) shows how this works:
+\end_layout
+
+\begin_layout LyX-Code
+Preamble
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+  
+\backslash
+theoremstyle{remark}
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+newtheorem{claim}[thm]{
+\backslash
+protect
+\backslash
+claimname}
+\end_layout
+
+\begin_layout LyX-Code
+EndPreamble
+\end_layout
+
+\begin_layout LyX-Code
+LangPreamble
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+providecommand{
+\backslash
+claimname}{_(Claim)}
+\end_layout
+
+\begin_layout LyX-Code
+EndLangPreamble
+\end_layout
+
+\begin_layout LyX-Code
+BabelPreamble
+\end_layout
+
+\begin_layout LyX-Code
+    
+\backslash
+addto
+\backslash
+captions$$lang{
+\backslash
+renewcommand{
+\backslash
+claimname}{_(Claim)}}
+\end_layout
+
+\begin_layout LyX-Code
+EndBabelPreamble
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+In principle, any legal LaTeX may appear in the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+LangPreamble
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+BabelPreamble
+\end_layout
+
+\end_inset
+
+ tags, but in practice they will typically look as they do here.
+ The key to correct translation of the typeset text is the definition of
+ the LaTeX command 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+claimname
+\end_layout
+
+\end_inset
+
+ and its use in 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+newtheorem
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+LangPreamble
+\end_layout
+
+\end_inset
+
+ tag provides for internationalization based upon the overall language of
+ the document.
+ The contents of the tag will be included in the preamble, just as with
+ the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Preamble
+\end_layout
+
+\end_inset
+
+ tag.
+ What makes it special is the use of the 
+\begin_inset Quotes eld
+\end_inset
+
+function
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+_()
+\end_layout
+
+\end_inset
+
+, which will be replaced, when LyX produces LaTeX output, with the translation
+ of its argument into the document language.
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+BabelPreamble
+\end_layout
+
+\end_inset
+
+ tag is more complex, since it is meant to provide support for multi-language
+ documents and so offers an interface to the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+babel
+\end_layout
+
+\end_inset
+
+ package.
+ Its contents will be added to the preamble once for each language that
+ appears in the document.
+ In this case, the argument to 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+_()
+\end_layout
+
+\end_inset
+
+ will be replaced with its translation into the language in question; the
+ expression 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+$$lang
+\end_layout
+
+\end_inset
+
+ is replaced by the language name (as used by the babel package).
+\end_layout
+
+\begin_layout Standard
+A German document that also included a French section would thus have the
+ following in the preamble:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+addto
+\backslash
+captionsfrench{
+\backslash
+renewcommand{
+\backslash
+claimname}{Affirmation}}   
+\backslash
+addto
+\backslash
+captionsngerman{
+\backslash
+renewcommand{
+\backslash
+claimname}{Behauptung}}   
+\backslash
+providecommand{
+\backslash
+claimname}{Behauptung}
+\end_layout
+
+\begin_layout Standard
+LaTeX and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+babel
+\end_layout
+
+\end_inset
+
+ will then conspire to produce the correct text in the output.
+\end_layout
+
+\begin_layout Standard
+One important point to note here is that the translations are provided by
+ LyX itself, through the same mechanism it uses for internationalization
+ of the user interface.
+ This means, in effect, that 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+LangPreamble
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+BabelPreamble
+\end_layout
+
+\end_inset
+
+ are really only of use in layout files that are provided with LyX, since
+ text entered in user-created layout files will not be seen by LyX's internation
+alization routines.
+ That said, however, any layout created with the intention that it will
+ be included with LyX should use these tags where appropriate.
 \end_layout
 
 \begin_layout Subsection
