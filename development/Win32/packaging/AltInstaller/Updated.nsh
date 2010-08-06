@@ -12,12 +12,12 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
- #File "${PRODUCT_SOURCEDIR}\Resources\chkconfig.ltx"
+ File "${PRODUCT_SOURCEDIR}\Resources\chkconfig.ltx"
  #File "${PRODUCT_SOURCEDIR}\Resources\languages"
  File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx"
  SetOutPath "$INSTDIR\Resources\doc\de"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\EmbeddedObjects.lyx"
  #SetOutPath "$INSTDIR\Resources\doc\el"
@@ -36,9 +36,10 @@ Function UpdateModifiedFiles
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\UserGuide.lyx"
  #SetOutPath "$INSTDIR\Resources\doc\ja"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\ja\Extended.lyx"
- #SetOutPath "$INSTDIR\Resources\examples"
- #File "${PRODUCT_SOURCEDIR}\Resources\examples\tufte-book.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\examples\tufte-handout.lyx"
+ SetOutPath "$INSTDIR\Resources\examples"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\linguistics.lyx"
+ SetOutPath "$INSTDIR\Resources\examples\de"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\de\linguistics.lyx"
  #SetOutPath "$INSTDIR\Resources\layouts"
  #File "${PRODUCT_SOURCEDIR}\Resources\layouts\elsart.layout"
  #SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
