@@ -52,8 +52,9 @@ Input stdsections.inc
 Input stdstarsections.inc
 Input stdlayouts.inc
 Input lyxmacros.inc
-Input theorems.inc
 
+ProvidesModule theorems-std
+Input theorems.inc
 
 NoStyle Chapter
 NoStyle Chapter*
