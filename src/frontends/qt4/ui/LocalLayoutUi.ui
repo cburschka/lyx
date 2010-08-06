@@ -1,0 +1,62 @@
+<ui version="4.0">
+ <class>LocalLayoutUi</class>
+ <widget class="QWidget" name="LocalLayoutUi">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>377</width>
+    <height>371</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string/>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="4">
+    <widget class="QTextEdit" name="locallayoutTE">
+     <property name="toolTip">
+      <string>Document-specific layout information</string>
+     </property>
+     <property name="statusTip">
+      <string/>
+     </property>
+     <property name="acceptRichText">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="3">
+    <widget class="QLabel" name="infoLB">
+     <property name="contextMenuPolicy">
+      <enum>Qt::NoContextMenu</enum>
+     </property>
+     <property name="toolTip">
+      <string>Errors reported in terminal.</string>
+     </property>
+     <property name="text">
+      <string>Press button to check validity...</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QPushButton" name="validatePB">
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="text">
+      <string>Validate</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <includes>
+  <include location="local">qt_i18n.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>
