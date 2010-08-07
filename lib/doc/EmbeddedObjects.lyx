@@ -24759,9 +24759,9 @@ thefootnote}
 The footnote will appear in the output as a superscript number at the text
  position where the footnote box is placed.
  The footnote text is placed at the bottom of the current page.
- The footnote number is calculated by LaTeX, the numbers are consecutive.
- It depends on your document-class, if the footnote number is reset for
- every chapter.
+ The footnote number is calculated by LaTeX; the numbers are consecutive.
+ It depends on your document-class, whether the footnote number is reset
+ for every chapter.
 \end_layout
 
 \begin_layout Standard
@@ -24808,7 +24808,7 @@ Footnotes in tables are not printed by LaTeX due to technical reasons.
 footnotemark{}
 \series default
  is inserted as TeX-code.
- The text of the footnote is entered as argument of the TeX-code command
+ The text of the footnote is entered as an argument of the TeX-code command
  
 \series bold
 
@@ -25338,8 +25338,8 @@ Note:
 \end_layout
 
 \begin_layout Standard
-To return to the default numbering style when you changed to another one,
- use 
+To return to the default numbering style after you have changed to another
+ one, use 
 \series bold
 
 \backslash
