@@ -18,6 +18,7 @@
 #include "support/ExceptionMessage.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 
@@ -56,10 +57,6 @@ void init_package(string const & command_line_arg0,
 		  string const & command_line_user_support_dir,
 		  exe_build_dir_to_top_build_dir top_build_dir_location)
 {
-	// Can do so only once.
-	if (initialised_)
-		return;
-
 	package_ = Package(command_line_arg0,
 			   command_line_system_support_dir,
 			   command_line_user_support_dir,
@@ -70,10 +67,7 @@ void init_package(string const & command_line_arg0,
 
 Package const & package()
 {
-	// Commented out because package().locale_dir() can be called
-	// from the message translation code in Messages.cpp before
-	// init_package() is called. Lars is on the case...
-	// LASSERT(initialised_, /**/);
+	LASSERT(initialised_, /**/);
 	return package_;
 }
 
