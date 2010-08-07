@@ -78,6 +78,8 @@ What's new
 - Fix parsing of in-line math environments nested in (unknown to LyX)
   text-mode user macros (bug 1337).
 
+- When undo returns to a state where the file was saved, make sure to
+  reset the (changed) status (bug 3733).
 
 * DOCUMENTATION AND LOCALIZATION
 

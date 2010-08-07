@@ -903,10 +903,14 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	switch (cmd.action) {
 
 	case LFUN_UNDO:
-		flag.setEnabled(buffer_.undo().hasUndoStack());
+		// We do not use the LyXAction flag for readonly because Undo sets the
+		// buffer clean/dirty status by itself.
+		flag.setEnabled(!buffer_.isReadonly() && buffer_.undo().hasUndoStack());
 		break;
 	case LFUN_REDO:
-		flag.setEnabled(buffer_.undo().hasRedoStack());
+		// We do not use the LyXAction flag for readonly because Redo sets the
+		// buffer clean/dirty status by itself.
+		flag.setEnabled(!buffer_.isReadonly() && buffer_.undo().hasRedoStack());
 		break;
 	case LFUN_FILE_INSERT:
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:

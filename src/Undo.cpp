@@ -71,9 +71,9 @@ struct UndoElement
 	            StableDocIterator const & cel,
 	            pit_type fro, pit_type en, ParagraphList * pl, 
 	            MathData * ar, BufferParams const & bp, 
-	            bool ifb, size_t gid) :
+	            bool ifb, bool lc, size_t gid) :
 	        kind(kin), cursor(cur), cell(cel), from(fro), end(en),
-	        pars(pl), array(ar), bparams(0), isFullBuffer(ifb), group_id(gid)
+	        pars(pl), array(ar), bparams(0), isFullBuffer(ifb), lyx_clean(lc), group_id(gid)
 	{
 		if (isFullBuffer)
 			bparams = new BufferParams(bp);
@@ -91,6 +91,7 @@ struct UndoElement
 		bparams = ue.isFullBuffer
 			? new BufferParams(*ue.bparams) : ue.bparams;
 		isFullBuffer = ue.isFullBuffer;
+		lyx_clean = ue.lyx_clean;
 		group_id = ue.group_id;
 	}
 	///
@@ -117,6 +118,8 @@ struct UndoElement
 	BufferParams const * bparams;
 	/// Only used in case of full backups
 	bool isFullBuffer;
+	/// Was the buffer clean at this point?
+	bool lyx_clean;
 	/// the element's group id
 	size_t group_id;
 private:
@@ -162,6 +165,12 @@ public:
 				c_.pop_back();
 		}
 	}
+
+	/// Mark all the elements of the stack as dirty
+	void markDirty() {
+		for (size_t i = 0; i != c_.size(); ++i)
+			c_[i].lyx_clean = false;
+	}		
 
 private:
 	/// Internal contents.
@@ -242,11 +251,11 @@ bool Undo::hasRedoStack() const
 }
 
 
-static bool samePar(StableDocIterator const & i1, StableDocIterator const & i2)
+void Undo::markDirty()
 {
-	StableDocIterator tmpi2 = i2;
-	tmpi2.pos() = i1.pos();
-	return i1 == tmpi2;
+	d->undo_finished_ = true;
+	d->undostack_.markDirty();
+	d->redostack_.markDirty();	
 }
 
 
@@ -255,6 +264,14 @@ static bool samePar(StableDocIterator const & i1, StableDocIterator const & i2)
 // Undo::Private
 //
 ///////////////////////////////////////////////////////////////////////
+
+static bool samePar(StableDocIterator const & i1, StableDocIterator const & i2)
+{
+	StableDocIterator tmpi2 = i2;
+	tmpi2.pos() = i1.pos();
+	return i1 == tmpi2;
+}
+
 
 void Undo::Private::doRecordUndo(UndoKind kind,
 	DocIterator const & cell,
@@ -291,7 +308,7 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 		LYXERR(Debug::UNDO, "Create undo element of group " << group_id);
 	// create the position information of the Undo entry
 	UndoElement undo(kind, cur, cell, from, end, 0, 0, 
-	                 buffer_.params(), isFullBuffer, group_id);
+	                 buffer_.params(), isFullBuffer, buffer_.isClean(), group_id);
 
 	// fill in the real data to be saved
 	if (cell.inMathed()) {
@@ -406,6 +423,10 @@ void Undo::Private::doTextUndoOrRedo(DocIterator & cur, UndoElementStack & stack
 	LASSERT(undo.array == 0, /**/);
 
 	cur = undo.cursor.asDocIterator(&buffer_.inset());
+	if (undo.lyx_clean)
+		buffer_.markClean();
+	else
+		buffer_.markDirty();
 	// Now that we're done with undo, we pop it off the stack.
 	stack.pop();
 }
