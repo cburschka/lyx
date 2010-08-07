@@ -828,8 +828,8 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 		lyxrc.typewriter_font_name = fromqstr(typewriterFontName());
 
 	// initialize colors
-	setColor(Color_background, palette(), QPalette::Window);
-	setColor(Color_foreground, palette(), QPalette::WindowText);
+	setColor(Color_background, palette(), QPalette::Base);
+	setColor(Color_foreground, palette(), QPalette::Text);
 	setColor(Color_selection, palette(), QPalette::Highlight);
 	setColor(Color_selectiontext, palette(), QPalette::HighlightedText);
 
