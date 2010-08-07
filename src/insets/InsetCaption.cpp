@@ -174,12 +174,14 @@ Inset * InsetCaption::editXY(Cursor & cur, int x, int y)
 bool InsetCaption::insetAllowed(InsetCode code) const
 {
 	switch (code) {
+	case CAPTION_CODE:
 	case FLOAT_CODE:
+	case FOOT_CODE:
+	case NEWPAGE_CODE:
+	case MARGIN_CODE:
+	case MATHMACRO_CODE:
 	case TABULAR_CODE:
 	case WRAP_CODE:
-	case CAPTION_CODE:
-	case NEWPAGE_CODE:
-	case MATHMACRO_CODE:
 		return false;
 	default:
 		return InsetText::insetAllowed(code);

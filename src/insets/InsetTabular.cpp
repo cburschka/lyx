@@ -2909,11 +2909,20 @@ void InsetTabular::setBuffer(Buffer & buf)
 
 bool InsetTabular::insetAllowed(InsetCode code) const
 {
-	if (code == MATHMACRO_CODE
-		|| (code == CAPTION_CODE && !tabular.is_long_tabular))
+	switch (code) {
+	case FLOAT_CODE:
+	case MARGIN_CODE:
+	case MATHMACRO_CODE:
+	case WRAP_CODE:
 		return false;
 
-	return true;
+	case CAPTION_CODE:
+		if (!tabular.is_long_tabular)
+			return false;
+
+	default:
+		return true;
+	}
 }
 
 

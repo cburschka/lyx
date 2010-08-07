@@ -86,6 +86,12 @@ What's new
 - When undo returns to a state where the file was saved, make sure to
   reset the (changed) status (bug 3733).
 
+- Don't allow to insert margin notes and floats into tables because this
+  would lead to LaTeX errors (bug 6844).
+
+- Don't allow to insert margin notes and footnotes into captions because
+  this would lead to LaTeX errors.
+
 
 * DOCUMENTATION AND LOCALIZATION
 
