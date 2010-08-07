@@ -70,6 +70,9 @@ What's new
 
 * USER INTERFACE
 
+- Do not allow to rename a format's short name if the format is used by a
+  converter. This prevents a crash (bug 6815).
+
 - Box dialog: only shaded boxes can have multiple paragraphs when there
   is no inner box.
 
@@ -80,6 +83,7 @@ What's new
 
 - When undo returns to a state where the file was saved, make sure to
   reset the (changed) status (bug 3733).
+
 
 * DOCUMENTATION AND LOCALIZATION
 

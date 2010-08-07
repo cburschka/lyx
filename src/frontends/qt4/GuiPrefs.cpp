@@ -1704,8 +1704,17 @@ void PrefFileformats::on_shortcutED_textEdited(const QString & s)
 void PrefFileformats::on_formatED_editingFinished()
 {
 	string const newname = fromqstr(formatED->displayText());
-	if (newname == currentFormat().name())
+	string const oldname = currentFormat().name();
+	if (newname == oldname)
 		return;
+	if (form_->converters().formatIsUsed(oldname)) {
+		Alert::error(_("Format in use"),
+			     _("You cannot change a format's short name "
+			       "if the format is used by a converter. "
+			       "Please remove the converter first."));
+		updateView();
+		return;
+	}
 
 	currentFormat().setName(newname);
 	changed();
