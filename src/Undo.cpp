@@ -253,6 +253,7 @@ bool Undo::hasRedoStack() const
 
 void Undo::markDirty()
 {
+	d->undo_finished_ = true;
 	d->undostack_.markDirty();
 	d->redostack_.markDirty();	
 }
