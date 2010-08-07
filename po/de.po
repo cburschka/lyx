@@ -96,8 +96,8 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-08-07 16:15+0200\n"
-"PO-Revision-Date: 2010-07-23 00:07+0100\n"
-"Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
+"PO-Revision-Date: 2010-08-07 16:41+0200\n"
+"Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3638,11 +3638,11 @@ msgstr "Datumsformat für die 'strftime'-Ausgabe"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:104
 msgid "&Overwrite on export:"
-msgstr ""
+msgstr "Beim &Export überschreiben:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:115
 msgid "Ask permission"
-msgstr ""
+msgstr "Nachfragen"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:120
 msgid "Main file only"
@@ -3654,7 +3654,7 @@ msgstr "Alle Dateien"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:129
 msgid "What to do when existing files are going to be overwritten on export."
-msgstr ""
+msgstr "Welche Dateien sollen beim Export überschrieben werden?"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:151
 msgid "Forward search"
@@ -4301,7 +4301,6 @@ msgstr ""
 "beachten"
 
 #: src/frontends/qt4/ui/RefUi.ui:188
-#, fuzzy
 msgid "Group labels by prefix (e.g. &quot;sec:&quot;)"
 msgstr "Marken nach Präfix (bspw. \"sec:\") gruppieren"
 
@@ -17132,7 +17131,7 @@ msgid "This portion of the document is deleted."
 msgstr "Dieser Teil des Dokuments wird gelöscht."
 
 #: src/BufferView.cpp:1252 src/BufferView.cpp:1284
-#, fuzzy, c-format
+#, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "Die Dokumentklasse %1$s konnte nicht geladen werden."
 
@@ -18172,7 +18171,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Festlegen des Test-Levels auf %1$s"
 
 #: src/LyX.cpp:1015
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -18228,14 +18226,12 @@ msgstr ""
 "                     nicht beliebig ist!\n"
 "\t-i [--import] fmt file.xxx\n"
 "                     Importiert die Datei file.xxx aus dem Format fmt\n"
-"\t-f [--force-overwrite] what\n"
-"                  wobei what entweder `all' oder `main' ist.\n"
-"                  Mit `all' werden alle Dateien während eines Mehrfach-"
-"Exports\n"
-"                  überschrieben werden, ansonsten betrifft dies nur die "
-"Hauptdatei.\n"
-"                  Alles Andere ist äquivalent zu `all', aber wird nicht "
-"verwertet.\n"
+"\t-f [--force-overwrite] was\n"
+"                  'was' kann entweder 'all', 'main' oder 'none' sein.\n"
+"                  Bei 'all' werden beim Export alle Dateien\n"
+"                  überschrieben, bei 'main' nur die Hauptdatei,\n"
+"                  bei 'none' gar keine Dateien.\n"
+"                  Unbekannte Argumente werden als 'all' interpretiert.\n"
 "\t--batch         Führt Befehle aus und beendet sich anschließend\n"
 "\t-version           Fasst Informationen zur Version und zur Kompilation "
 "zusammen.\n"
@@ -21122,13 +21118,12 @@ msgid "Format in use"
 msgstr "Format wird verwendet"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1931
-#, fuzzy
 msgid ""
 "You cannot change a format's short name if the format is used by a "
 "converter. Please remove the converter first."
 msgstr ""
-"Ein Format, das von einem Konverter verwendet wird, kann nicht entfernt "
-"werden. Bitte entfernen Sie zunächst den Konverter."
+"Der Kurztitel eines Formats, das von einem Konverter verwendet wird, kann "
+"nicht umbenannt werden. Bitte entfernen Sie zunächst den Konverter."
 
 #: src/frontends/qt4/GuiPrefs.cpp:2083
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
@@ -22366,7 +22361,6 @@ msgid "List of Changes"
 msgstr "Liste der Änderungen"
 
 #: src/frontends/qt4/ui_RefUi.h:307
-#, fuzzy
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr "Marken nach Präfix (bspw. \"sec:\") gruppieren"
 
