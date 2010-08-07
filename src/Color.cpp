@@ -154,6 +154,7 @@ ColorSet::ColorSet()
 	char const * grey80 = "#cccccc";
 	//char const * grey90 = "#e5e5e5";
 	//  ColorCode, gui, latex, x11, lyx
+	// Warning: several of these entries are overridden in GuiApplication constructor
 	static ColorEntry const items[] = {
 	{ Color_none, N_("none"), "none", "black", "none" },
 	{ Color_black, N_("black"), "black", "black", "black" },

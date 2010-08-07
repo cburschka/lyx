@@ -829,7 +829,19 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 
 	// initialize colors
 	setColor(Color_background, palette(), QPalette::Base);
+	setColor(Color_commentbg, palette(), QPalette::Base);
+	setColor(Color_greyedoutbg, palette(), QPalette::Base);
+	setColor(Color_mathbg, palette(), QPalette::Base);
+	setColor(Color_graphicsbg, palette(), QPalette::Base);
+	setColor(Color_mathmacrobg, palette(), QPalette::Base);
+	setColor(Color_mathcorners, palette(), QPalette::Base);
+
 	setColor(Color_foreground, palette(), QPalette::Text);
+	setColor(Color_cursor, palette(), QPalette::Text);
+	setColor(Color_preview, palette(), QPalette::Text);
+	setColor(Color_tabularline, palette(), QPalette::Text);
+	setColor(Color_previewframe, palette(), QPalette::Text);
+
 	setColor(Color_selection, palette(), QPalette::Highlight);
 	setColor(Color_selectiontext, palette(), QPalette::HighlightedText);
 
