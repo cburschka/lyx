@@ -11767,11 +11767,11 @@ reference "cap:Explicación-de-la-Ecuación"
 \end_layout
 
 \begin_layout Standard
-La anchura dada necesaria, 
+La anchura dada 
 \begin_inset Formula $W_{g\, n}$
 \end_inset
 
- para combinar 
+ necesaria para combinar 
 \emph on
 n
 \emph default
@@ -12750,7 +12750,7 @@ reference "sub:Espacio-adicional"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -15934,7 +15934,7 @@ Personalización de tablas ! Espacio adicional en filas
 Es posible añadir espacio vertical a las filas de una tabla en la solapa
  
 \family sans
-Bordes,
+Bordes
 \family default
  del diálogo de configuración de tablas.
  En el marco 
@@ -16723,7 +16723,7 @@ leyenda
 \begin_inset Text
 
 \begin_layout Plain Layout
-12.
+12,
 \end_layout
 
 \end_inset
@@ -16743,7 +16743,7 @@ leyenda
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.
+0,
 \end_layout
 
 \end_inset
@@ -16763,7 +16763,7 @@ leyenda
 \begin_inset Text
 
 \begin_layout Plain Layout
--123.
+-123,
 \end_layout
 
 \end_inset
@@ -16797,12 +16797,8 @@ Esta es una tabla 4×2.
  y los dígitos anteriores.
  La segunda columna está alineada a la izquierda y contiene los dígitos
  posteriores al punto decimal.
- Para omitir el espacio que hay normalmente entre dos columnas el siguiente
- argumento LaTeX 
-\lang english
-was used
-\lang spanish
- para la segunda columna:
+ Para omitir el espacio que hay normalmente entre dos columnas se ha usado
+ el siguiente argumento LaTeX para la segunda columna:
 \end_layout
 
 \begin_layout Standard
@@ -20132,7 +20128,7 @@ Se recomienda poner un espacio protegido entre el nombre de la referencia
 \begin_layout Standard
 En cualquier momento puedes cambiar etiquetas pulsando sobre el cuadro.
  Las referencias a las etiquetas cambiadas cambian automáticamente su enlace
- al texto de la etiqueta nueva, no te ocupes por eso.
+ al texto de la etiqueta nueva, no te preocupes por eso.
 \end_layout
 
 \begin_layout Standard
@@ -24605,47 +24601,41 @@ reference "pie:Esto-es-una"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Footnotes in tables are not printed by LaTeX due to technical reasons.
- However there exists another method to print them: Instead of the footnote
- the command 
+Debido a razones técnicas, LaTeX no imprime las notas al pie en tablas.
+ No obstante, hay otro método para imprimirlas: en lugar de la nota al pie
+ se inserta el comando 
 \series bold
 
 \backslash
 footnotemark{}
 \series default
- is inserted as TeX-code.
- The text of the footnote is entered as argument of the TeX-code command
- 
+ en código TeX.
+ El texto de la nota se introduce como argumento del comando
 \series bold
-
+ 
 \backslash
 footnotetext
 \series default
- after the table.
+ después de la tabla.
 \begin_inset Newline newline
 \end_inset
 
-This was done for the following table with the command
+Esto es lo que se ha hecho para la siguiente tabla con el comando
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 footnotetext{
 \series default
-Printed table footnote.
+Texto de la nota de la tabla.
 \series bold
 }
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="1">
 <features>
@@ -24655,16 +24645,12 @@ Printed table footnote.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-This an example text.
+Texto de ejemplo.
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-This footnote will not be printed!
+¡Esta nota no se imprimirá!
 \end_layout
 
 \end_inset
@@ -24680,9 +24666,7 @@ This footnote will not be printed!
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-This an example text.
+Texto de ejemplo.
 \begin_inset ERT
 status collapsed
 
@@ -24718,7 +24702,7 @@ footnotetext{
 
 \end_inset
 
-Printed table footnote.
+Texto de la nota de la tabla.
 \begin_inset ERT
 status collapsed
 
@@ -24733,14 +24717,10 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Footnotes in longtables are described in section
+Las notas al pie en tablas largas se describen en la sección
 \begin_inset space ~
 \end_inset
 
-
-\lang spanish
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -24748,22 +24728,17 @@ reference "sub:Notas-al-pie-en-Tablas-Largas"
 
 \end_inset
 
-
-\lang english
 .
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Footnotes in minipage boxes are printed, but inside the box and with a different
- numbering because a minipage box is like a page inside a page.
- (For more about minipages, see section
+Las notas al pie en cuadros de minipágina se imprimen, pero dentro del cuadro
+ y con numeración diferente debido a que una minipágina es como una página
+ dentro de otra.
+ (Más información sobre minipáginas en la sección
 \begin_inset space ~
 \end_inset
 
-
-\lang spanish
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -24771,16 +24746,15 @@ reference "sec:Minipáginas"
 
 \end_inset
 
-
-\lang english
-.) To get a footnote in the minipage that is output at the bottom of the
- page like normal footnotes, also use the method of 
+).
+ Para poner notas en una minipágina que se impriman a pie de página como
+ las notas al pie normales, se puede usar también el método de 
 \series bold
 
 \backslash
 footnotemark{}
 \series default
- and 
+ y 
 \series bold
 
 \backslash
@@ -24790,8 +24764,6 @@ footnotetext
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -24805,16 +24777,12 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-This an example text in a minipage.
+Muestra de texto en una minipágina.
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-Footnote in the minipage.
+Nota en la minipágina.
 \end_layout
 
 \end_inset
@@ -24823,9 +24791,7 @@ Footnote in the minipage.
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
-This an example text in a minipage.
+Muestra de texto en una minipágina.
 \begin_inset ERT
 status collapsed
 
@@ -24847,8 +24813,6 @@ footnotemark{}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -24861,7 +24825,7 @@ footnotetext{
 
 \end_inset
 
-Footnote outside the minipage.
+Nota fuera de la minipágina.
 \begin_inset ERT
 status collapsed
 
@@ -24883,28 +24847,24 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To refer to the same footnote several times without printing the footnote
- text every time, use the command 
+Para hacer referencia a la misma nota varias veces sin imprimir su texto
+ cada vez, usa el comando  
 \series bold
 
 \backslash
 footnotemark[number]
 \series default
- in TeX-code.
+ en código TeX.
 \begin_inset Newline newline
 \end_inset
 
-As you do not know the number of the repeating footnote while you are writing
- the text, you have to store its number.
- For the following footnote mark example, these commands were inserted in
- TeX-code after Footnote
+Como el número de la nota repetida no se conoce mientras se escribe el texto,
+ hay que guardarlo.
+ En el siguiente ejemplo de marca de una nota, se han insertado los siguientes
+ comandos en código TeX después de la nota al pie
 \begin_inset space ~
 \end_inset
 
-
-\lang spanish
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -24912,9 +24872,7 @@ reference "pie:Esto-es-una"
 
 \end_inset
 
-
-\lang english
- to store the footnote number:
+ para guardar el número de la nota: 
 \end_layout
 
 \begin_layout Standard
@@ -24934,11 +24892,7 @@ thefootnote}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The footnote mark was then created with this command
-\lang spanish
-:
+La marca de la nota se ha creado después con el comando:
 \end_layout
 
 \begin_layout Standard
@@ -24952,13 +24906,7 @@ theMyRepeatFoot]
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is a repeated footnote:
-\family roman
-\series medium
-\bar no
-
+Aquí hay una nota repetida:
 \begin_inset ERT
 status collapsed
 
@@ -24977,12 +24925,8 @@ theMyRepeatFoot]
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you want to repeat the previous footnote, you can omit the storage of
- the footnote number and just use this command instead
-\lang spanish
-:
+Para repetir la nota al pie previa, se puede omitir el guardado del número
+ de la nota y usar en su lugar el comando:
 \end_layout
 
 \begin_layout Standard
@@ -24996,11 +24940,7 @@ thefootnote]
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is another repeated footnote
-\lang spanish
-:
+Aquí hay otra nota repetida:
 \begin_inset ERT
 status collapsed
 
@@ -25832,11 +25772,7 @@ endnote
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For endnotes there is
-\lang spanish
- el comando 
+Para notas al final hay el comando  el comando 
 \series bold
 
 \backslash
@@ -26131,7 +26067,12 @@ pt antes de la palabra
 \family roman
 \series medium
 .
- 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
 \begin_inset Marginal
 status open
 
