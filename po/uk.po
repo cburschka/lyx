@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-07-19 01:45+0200\n"
+"POT-Creation-Date: 2010-08-07 16:15+0200\n"
 "PO-Revision-Date: 2010-04-17 14:19+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -49,7 +49,7 @@ msgstr "Авторські права"
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:208
 #: src/frontends/qt4/ui/SymbolsUi.ui:66 src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161
+#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:297
 msgid "&Close"
 msgstr "&Закрити"
 
@@ -62,7 +62,7 @@ msgid "The label as it appears in the document"
 msgstr "Мітка, як вона буде показана в документі"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:39
-#: src/frontends/qt4/ui/RefUi.ui:337
+#: src/frontends/qt4/ui/RefUi.ui:332 src/frontends/qt4/ui_RefUi.h:327
 msgid "&Label:"
 msgstr "&Мітка:"
 
@@ -127,16 +127,18 @@ msgstr "Створення списку літератури"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
+#: src/frontends/qt4/ui_IndicesUi.h:193
 msgid "&Processor:"
 msgstr "П&роцесор:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
+#: src/frontends/qt4/ui_IndicesUi.h:195
 msgid "Select a processor"
 msgstr "Оберіть інструмент обробки (процесор)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:719
-#: src/frontends/qt4/GuiPrefs.cpp:814
+#: src/frontends/qt4/GuiPrefs.cpp:814 src/frontends/qt4/ui_IndicesUi.h:197
 msgid "&Options:"
 msgstr "П&араметри:"
 
@@ -173,7 +175,7 @@ msgstr "Використовувана база даних BiBTeX"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:110
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:353
+#: src/CutAndPaste.cpp:353 src/frontends/qt4/ui_IndicesUi.h:212
 msgid "&Add"
 msgstr "&Додати"
 
@@ -182,7 +184,7 @@ msgstr "&Додати"
 #: src/frontends/qt4/ui/LabelUi.ui:92 src/frontends/qt4/ui/NomenclUi.ui:105
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:110 src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1423
+#: src/frontends/qt4/GuiApplication.cpp:1448
 #: src/frontends/qt4/GuiCompare.cpp:194
 msgid "Cancel"
 msgstr "Скасувати"
@@ -248,7 +250,7 @@ msgstr "Додавати бібліографію у &зміст"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:295
 msgid "&OK"
 msgstr "&Гаразд"
 
@@ -418,8 +420,8 @@ msgstr "Розпірка потрібна для фіксації ширини"
 #: src/frontends/qt4/ui/TabularUi.ui:1006
 #: src/frontends/qt4/ui/TabularUi.ui:1054 src/frontends/qt4/GuiBox.cpp:194
 #: src/frontends/qt4/GuiBox.cpp:312 src/frontends/qt4/GuiBox.cpp:389
-#: src/frontends/qt4/GuiDocument.cpp:112 src/frontends/qt4/GuiGraphics.cpp:580
-#: src/frontends/qt4/GuiPrefs.cpp:1991 src/frontends/qt4/GuiPrefs.cpp:2014
+#: src/frontends/qt4/GuiDocument.cpp:113 src/frontends/qt4/GuiGraphics.cpp:580
+#: src/frontends/qt4/GuiPrefs.cpp:2000 src/frontends/qt4/GuiPrefs.cpp:2023
 msgid "None"
 msgstr "Немає"
 
@@ -446,6 +448,7 @@ msgid "Select your branch"
 msgstr "Обрати версію"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25 src/frontends/qt4/ui/IndicesUi.ui:114
+#: src/frontends/qt4/ui_IndicesUi.h:205
 msgid "&New:"
 msgstr "&Нові:"
 
@@ -490,7 +493,7 @@ msgid "Define or change background color"
 msgstr "Визначте або змініть колір тла"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
-#: src/frontends/qt4/ui/IndicesUi.ui:185
+#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:227
 msgid "Alter Co&lor..."
 msgstr "&Інші кольори..."
 
@@ -499,8 +502,8 @@ msgid "Remove the selected branch"
 msgstr "Вилучити обрану базу даних"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3540
-#: src/Buffer.cpp:3551
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3585
+#: src/Buffer.cpp:3596 src/frontends/qt4/ui_IndicesUi.h:219
 msgid "&Remove"
 msgstr "Ви&лучити"
 
@@ -532,11 +535,11 @@ msgstr "Дод&ати всі"
 #: src/frontends/qt4/ui/CitationUi.ui:220
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
-#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:993
-#: src/Buffer.cpp:2177 src/Buffer.cpp:3524 src/Buffer.cpp:3570
+#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:997
+#: src/Buffer.cpp:2181 src/Buffer.cpp:3569 src/Buffer.cpp:3615
 #: src/LyXVC.cpp:88 src/LyXVC.cpp:216 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:208
-#: src/frontends/qt4/GuiDocument.cpp:1690
+#: src/frontends/qt4/GuiDocument.cpp:1763
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1951
 #: src/frontends/qt4/GuiView.cpp:2143 src/frontends/qt4/GuiView.cpp:2203
@@ -570,22 +573,22 @@ msgstr "Ро&змір:"
 #: src/frontends/qt4/ui/TabularUi.ui:992
 #: src/frontends/qt4/ui/TabularUi.ui:1011
 #: src/frontends/qt4/ui/TabularUi.ui:1059 lib/ui/stdtoolbars.inc:110
-#: src/Font.cpp:178 src/HSpace.cpp:117 src/frontends/qt4/GuiDocument.cpp:108
-#: src/frontends/qt4/GuiDocument.cpp:126 src/frontends/qt4/GuiDocument.cpp:142
-#: src/frontends/qt4/GuiDocument.cpp:155 src/frontends/qt4/GuiDocument.cpp:608
-#: src/frontends/qt4/GuiDocument.cpp:711 src/frontends/qt4/GuiDocument.cpp:716
-#: src/frontends/qt4/GuiDocument.cpp:752 src/frontends/qt4/GuiDocument.cpp:763
-#: src/frontends/qt4/GuiDocument.cpp:977
-#: src/frontends/qt4/GuiDocument.cpp:1545
-#: src/frontends/qt4/GuiDocument.cpp:1568
-#: src/frontends/qt4/GuiDocument.cpp:1569
-#: src/frontends/qt4/GuiDocument.cpp:1570
-#: src/frontends/qt4/GuiDocument.cpp:1645
-#: src/frontends/qt4/GuiDocument.cpp:1995
-#: src/frontends/qt4/GuiDocument.cpp:3044 src/frontends/qt4/GuiExternal.cpp:75
+#: src/Font.cpp:178 src/HSpace.cpp:117 src/frontends/qt4/GuiDocument.cpp:109
+#: src/frontends/qt4/GuiDocument.cpp:127 src/frontends/qt4/GuiDocument.cpp:143
+#: src/frontends/qt4/GuiDocument.cpp:156 src/frontends/qt4/GuiDocument.cpp:682
+#: src/frontends/qt4/GuiDocument.cpp:785 src/frontends/qt4/GuiDocument.cpp:790
+#: src/frontends/qt4/GuiDocument.cpp:826 src/frontends/qt4/GuiDocument.cpp:837
+#: src/frontends/qt4/GuiDocument.cpp:1051
+#: src/frontends/qt4/GuiDocument.cpp:1618
+#: src/frontends/qt4/GuiDocument.cpp:1641
+#: src/frontends/qt4/GuiDocument.cpp:1642
+#: src/frontends/qt4/GuiDocument.cpp:1643
+#: src/frontends/qt4/GuiDocument.cpp:1718
+#: src/frontends/qt4/GuiDocument.cpp:2068
+#: src/frontends/qt4/GuiDocument.cpp:3131 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiIndices.cpp:56
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
-#: src/frontends/qt4/GuiPrefs.cpp:2134
+#: src/frontends/qt4/GuiPrefs.cpp:2143
 #: src/frontends/qt4/GuiPrintNomencl.cpp:68
 msgid "Default"
 msgstr "Типовий"
@@ -711,8 +714,8 @@ msgstr "Серія шрифтів"
 #: src/frontends/qt4/ui/CharacterUi.ui:108
 #: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339
-#: src/frontends/qt4/GuiDocument.cpp:1166 src/frontends/qt4/GuiPrefs.cpp:2094
-#: src/frontends/qt4/Menus.cpp:795
+#: src/frontends/qt4/GuiDocument.cpp:1244 src/frontends/qt4/GuiPrefs.cpp:2103
+#: src/frontends/qt4/Menus.cpp:812
 msgid "Language"
 msgstr "Мова"
 
@@ -783,8 +786,8 @@ msgstr "Застосовувати кожну зміну &негайно"
 #: src/frontends/qt4/ui/ParagraphUi.ui:250 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:93 src/frontends/qt4/ui/RefUi.ui:124
 #: src/frontends/qt4/ui/SendtoUi.ui:85 src/frontends/qt4/ui/SymbolsUi.ui:59
-#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1766
-#: src/frontends/qt4/GuiDocument.cpp:2999
+#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1839
+#: src/frontends/qt4/GuiDocument.cpp:3074 src/frontends/qt4/ui_RefUi.h:296
 msgid "&Apply"
 msgstr "&Застосувати"
 
@@ -1760,6 +1763,7 @@ msgstr "Назва, пов'язана з URL"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:45
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:251
+#: src/frontends/qt4/ui_RefUi.h:312
 msgid "&Name:"
 msgstr "&Назва:"
 
@@ -1880,7 +1884,7 @@ msgstr "До&ступні покажчики:"
 msgid "Select the index this entry should be listed in."
 msgstr "Оберіть покажчик для цього запису."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19
+#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
@@ -1889,56 +1893,58 @@ msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
+#: src/frontends/qt4/ui_IndicesUi.h:192
 msgid "Index generation"
 msgstr "Створення покажчика"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64
+#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
 msgid "Define program options of the selected processor."
 msgstr "Вказати параметри програми позначеного інструменту обробки."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89
+#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr ""
 "Позначте, якщо у вашому документі декілька покажчиків (наприклад, є «Покажчик "
 "назв»)"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92
+#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
 msgid "&Use multiple indexes"
 msgstr "&Декілька покажчиків"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124
+#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 "Введіть назву бажаного покажчика (наприклад, «Покажчик назв») і натисніть "
 "кнопку «Додати»"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131
+#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
 msgid "Add a new index to the list"
 msgstr "Додати новий пункт до списку"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:143
+#: src/frontends/qt4/ui/IndicesUi.ui:143 src/frontends/qt4/ui_IndicesUi.h:213
 msgid "A&vailable Indexes:"
 msgstr "До&ступні покажчики:"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
+#: src/frontends/qt4/ui_IndicesUi.h:215
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162
+#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:217
 msgid "Remove the selected index"
 msgstr "Вилучити обраний покажчик"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172
+#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:221
 msgid "Rename the selected index"
 msgstr "Змінити назву обраного покажчика"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175
+#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:223
 msgid "R&ename..."
 msgstr "Пере&йменувати..."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182
+#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:225
 msgid "Define or change button color"
 msgstr "Визначте або змініть колір кнопок"
 
@@ -2049,7 +2055,7 @@ msgstr "Вкажіть тут параметри програмного коду
 msgid "Feedback window"
 msgstr "Вікно зворотної реакції"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:330
+#: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:332
 #: src/insets/InsetListings.cpp:356 src/insets/InsetListings.cpp:358
 msgid "Listing"
 msgstr "Текст програми"
@@ -2216,6 +2222,26 @@ msgid "Input listing parameters here. Enter ? for a list of parameters."
 msgstr ""
 "Тут слід ввести параметри тексту програм. Введіть «?», щоб переглянути список."
 
+#: src/frontends/qt4/ui/LocalLayoutUi.ui:19
+#, fuzzy
+msgid "Document-specific layout information"
+msgstr "Помилка під час читання внутрішньої інформації формату"
+
+#: src/frontends/qt4/ui/LocalLayoutUi.ui:35
+#, fuzzy
+msgid "Errors reported in terminal."
+msgstr "Помилка під час спроби експортування до формату %1$s."
+
+#: src/frontends/qt4/ui/LocalLayoutUi.ui:38
+#: src/frontends/qt4/GuiDocument.cpp:567
+msgid "Press button to check validity..."
+msgstr ""
+
+#: src/frontends/qt4/ui/LocalLayoutUi.ui:51
+#, fuzzy
+msgid "Validate"
+msgstr "Переглянути або оновити"
+
 #: src/frontends/qt4/ui/LogUi.ui:38
 msgid "Hit Enter to search, or click Go!"
 msgstr "Натисніть клавішу Enter або кнопку «Пуск!», щоб розпочати пошук"
@@ -2229,7 +2255,7 @@ msgid "Update the display"
 msgstr "Оновити екран"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:88
-#: src/frontends/qt4/ui/ViewSourceUi.ui:56
+#: src/frontends/qt4/ui/ViewSourceUi.ui:56 src/frontends/qt4/ui_RefUi.h:294
 msgid "&Update"
 msgstr "&Оновити"
 
@@ -2731,7 +2757,7 @@ msgstr "Формат паперу"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
-#: src/frontends/qt4/ui/RefUi.ui:271
+#: src/frontends/qt4/ui/RefUi.ui:271 src/frontends/qt4/ui_RefUi.h:313
 msgid "&Format:"
 msgstr "&Формат:"
 
@@ -2754,7 +2780,7 @@ msgid "&Landscape"
 msgstr "&Альбомна"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:161
-#: src/frontends/qt4/GuiDocument.cpp:1164
+#: src/frontends/qt4/GuiDocument.cpp:1242
 msgid "Page Layout"
 msgstr "Формат сторінки"
 
@@ -2792,7 +2818,7 @@ msgid "Line &spacing"
 msgstr "Міжрядковий &проміжок"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1811
-#: src/frontends/qt4/GuiDocument.cpp:615
+#: src/frontends/qt4/GuiDocument.cpp:689
 msgid "Single"
 msgstr "Одинарний"
 
@@ -2801,7 +2827,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1817
-#: src/frontends/qt4/GuiDocument.cpp:619
+#: src/frontends/qt4/GuiDocument.cpp:693
 msgid "Double"
 msgstr "Подвійна"
 
@@ -2809,12 +2835,12 @@ msgstr "Подвійна"
 #: src/frontends/qt4/ui/TabularUi.ui:997
 #: src/frontends/qt4/ui/TabularUi.ui:1016
 #: src/frontends/qt4/ui/TabularUi.ui:1064 src/frontends/qt4/ui/VSpaceUi.ui:107
-#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:609
-#: src/frontends/qt4/GuiDocument.cpp:613 src/frontends/qt4/GuiDocument.cpp:621
-#: src/frontends/qt4/GuiDocument.cpp:717 src/frontends/qt4/GuiDocument.cpp:764
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:683
+#: src/frontends/qt4/GuiDocument.cpp:687 src/frontends/qt4/GuiDocument.cpp:695
+#: src/frontends/qt4/GuiDocument.cpp:791 src/frontends/qt4/GuiDocument.cpp:838
 #: src/frontends/qt4/GuiHSpace.cpp:55 src/frontends/qt4/GuiHSpace.cpp:64
 #: src/frontends/qt4/GuiPrefs.cpp:796 src/frontends/qt4/GuiPrefs.cpp:823
-#: src/frontends/qt4/GuiPrefs.cpp:1993 src/frontends/qt4/GuiPrefs.cpp:2016
+#: src/frontends/qt4/GuiPrefs.cpp:2002 src/frontends/qt4/GuiPrefs.cpp:2025
 #: src/frontends/qt4/GuiPrintNomencl.cpp:72
 msgid "Custom"
 msgstr "Нетиповий"
@@ -3013,7 +3039,7 @@ msgstr "&Змінити"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2716 src/frontends/qt4/GuiPrefs.cpp:2780
+#: src/frontends/qt4/GuiPrefs.cpp:2725 src/frontends/qt4/GuiPrefs.cpp:2789
 msgid "Remo&ve"
 msgstr "Ви&лучити"
 
@@ -3042,7 +3068,7 @@ msgid "Instant &Preview:"
 msgstr "Попередній &перегляд:"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:56 src/Font.cpp:76
-#: src/frontends/qt4/GuiDocument.cpp:169
+#: src/frontends/qt4/GuiDocument.cpp:170
 msgid "Off"
 msgstr "Вимкнено"
 
@@ -3391,37 +3417,37 @@ msgid "Default paper si&ze:"
 msgstr "&Звичайний розмір паперу:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:57
-#: src/frontends/qt4/GuiDocument.cpp:765
+#: src/frontends/qt4/GuiDocument.cpp:839
 msgid "US letter"
 msgstr "US letter"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:62
-#: src/frontends/qt4/GuiDocument.cpp:766
+#: src/frontends/qt4/GuiDocument.cpp:840
 msgid "US legal"
 msgstr "US legal"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:67
-#: src/frontends/qt4/GuiDocument.cpp:767
+#: src/frontends/qt4/GuiDocument.cpp:841
 msgid "US executive"
 msgstr "US executive"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:72
-#: src/frontends/qt4/GuiDocument.cpp:771
+#: src/frontends/qt4/GuiDocument.cpp:845
 msgid "A3"
 msgstr "A3"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:77
-#: src/frontends/qt4/GuiDocument.cpp:772
+#: src/frontends/qt4/GuiDocument.cpp:846
 msgid "A4"
 msgstr "A4"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:82
-#: src/frontends/qt4/GuiDocument.cpp:773
+#: src/frontends/qt4/GuiDocument.cpp:847
 msgid "A5"
 msgstr "A5"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:87
-#: src/frontends/qt4/GuiDocument.cpp:780
+#: src/frontends/qt4/GuiDocument.cpp:854
 msgid "B5"
 msgstr "B5"
 
@@ -4093,7 +4119,7 @@ msgid "Select the index that shall be printed at this place of the document."
 msgstr "Оберіть покажчик, який має бути надруковано у цьому місці документа."
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
-#: src/frontends/qt4/GuiDocument.cpp:1177 src/frontends/qt4/GuiPrefs.cpp:229
+#: src/frontends/qt4/GuiDocument.cpp:1255 src/frontends/qt4/GuiPrefs.cpp:229
 msgid "Output"
 msgstr "Вивід"
 
@@ -4145,27 +4171,27 @@ msgstr "Показувати повідомлення у смужці стану
 msgid "&Statusbar messages"
 msgstr "Повідомлення у с&мужці стану"
 
-#: src/frontends/qt4/ui/RefUi.ui:36
+#: src/frontends/qt4/ui/RefUi.ui:36 src/frontends/qt4/ui_RefUi.h:282
 msgid "Fil&ter:"
 msgstr "Фі&льтр:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49
+#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:284
 msgid "Enter string to filter the label list"
 msgstr "Введіть рядок для фільтрування списку міток"
 
-#: src/frontends/qt4/ui/RefUi.ui:59
+#: src/frontends/qt4/ui/RefUi.ui:59 src/frontends/qt4/ui_RefUi.h:288
 msgid "Filter case-sensitively"
 msgstr "Фільтрувати з врахуванням регістру"
 
-#: src/frontends/qt4/ui/RefUi.ui:62
+#: src/frontends/qt4/ui/RefUi.ui:62 src/frontends/qt4/ui_RefUi.h:290
 msgid "Case-sensiti&ve"
 msgstr "З &урахуванням регістру"
 
-#: src/frontends/qt4/ui/RefUi.ui:85
+#: src/frontends/qt4/ui/RefUi.ui:85 src/frontends/qt4/ui_RefUi.h:292
 msgid "Update the label list"
 msgstr "Оновити список міток"
 
-#: src/frontends/qt4/ui/RefUi.ui:165
+#: src/frontends/qt4/ui/RefUi.ui:165 src/frontends/qt4/ui_RefUi.h:299
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
@@ -4173,15 +4199,15 @@ msgstr ""
 "Впорядкувати мітки за абеткою (без врахування регістру, якщо не позначено "
 "пункт «З врахуванням регістру»)"
 
-#: src/frontends/qt4/ui/RefUi.ui:168
+#: src/frontends/qt4/ui/RefUi.ui:168 src/frontends/qt4/ui_RefUi.h:301
 msgid "&Sort"
 msgstr "&Впорядкувати"
 
-#: src/frontends/qt4/ui/RefUi.ui:178
+#: src/frontends/qt4/ui/RefUi.ui:178 src/frontends/qt4/ui_RefUi.h:303
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "Впорядкувати мітки за абетвою з врахуванням регістру"
 
-#: src/frontends/qt4/ui/RefUi.ui:181
+#: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/ui_RefUi.h:305
 msgid "Cas&e-sensitive"
 msgstr "З в&рахуванням регістру"
 
@@ -4190,55 +4216,51 @@ msgstr "З в&рахуванням регістру"
 msgid "Group labels by prefix (e.g. &quot;sec:&quot;)"
 msgstr "Групувати мітки за префіксом (наприклад, \"sec:\")"
 
-#: src/frontends/qt4/ui/RefUi.ui:191
+#: src/frontends/qt4/ui/RefUi.ui:191 src/frontends/qt4/ui_RefUi.h:309
 msgid "Grou&p"
 msgstr "Гр&упувати"
 
 #: src/frontends/qt4/ui/RefUi.ui:219 src/frontends/qt4/GuiRef.cpp:314
+#: src/frontends/qt4/ui_RefUi.h:310
 msgid "&Go to Label"
 msgstr "&Перейти до мітки"
 
-#: src/frontends/qt4/ui/RefUi.ui:228
+#: src/frontends/qt4/ui/RefUi.ui:228 src/frontends/qt4/ui_RefUi.h:311
 msgid "La&bels in:"
 msgstr "Міт&ки в:"
 
-#: src/frontends/qt4/ui/RefUi.ui:290
+#: src/frontends/qt4/ui/RefUi.ui:290 src/frontends/qt4/ui_RefUi.h:325
 msgid "Cross-reference as it appears in output"
 msgstr "Перехресне посилання, як воно буде показане у виводі"
 
-#: src/frontends/qt4/ui/RefUi.ui:294
+#: src/frontends/qt4/ui/RefUi.ui:294 src/frontends/qt4/ui_RefUi.h:316
 msgid "<reference>"
 msgstr "<посилання>"
 
-#: src/frontends/qt4/ui/RefUi.ui:299
+#: src/frontends/qt4/ui/RefUi.ui:299 src/frontends/qt4/ui_RefUi.h:317
 msgid "(<reference>)"
 msgstr "<посилання>"
 
-#: src/frontends/qt4/ui/RefUi.ui:304
+#: src/frontends/qt4/ui/RefUi.ui:304 src/frontends/qt4/ui_RefUi.h:318
 msgid "<page>"
 msgstr "<сторінка>"
 
-#: src/frontends/qt4/ui/RefUi.ui:309
+#: src/frontends/qt4/ui/RefUi.ui:309 src/frontends/qt4/ui_RefUi.h:319
 msgid "on page <page>"
 msgstr "на сторінці <номер>"
 
-#: src/frontends/qt4/ui/RefUi.ui:314
+#: src/frontends/qt4/ui/RefUi.ui:314 src/frontends/qt4/ui_RefUi.h:320
 msgid "<reference> on page <page>"
 msgstr "<посилання> на сторінці <номер>"
 
-#: src/frontends/qt4/ui/RefUi.ui:319
+#: src/frontends/qt4/ui/RefUi.ui:319 src/frontends/qt4/ui_RefUi.h:321
 msgid "Formatted reference"
 msgstr "форматоване посилання"
 
-#: src/frontends/qt4/ui/RefUi.ui:324
+#: src/frontends/qt4/ui/RefUi.ui:324 src/frontends/qt4/ui_RefUi.h:322
 #, fuzzy
 msgid "Textual reference"
 msgstr "всі посилання"
-
-#: src/frontends/qt4/ui/RefUi.ui:329
-#, fuzzy
-msgid "Textual reference plus <page>"
-msgstr "<посилання> на сторінці <номер>"
 
 #: src/frontends/qt4/ui/SearchUi.ui:108
 msgid "Match w&hole words only"
@@ -4885,15 +4907,15 @@ msgstr "Вставити розрив лігатури"
 msgid "DefSkip"
 msgstr "Типовий"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:87 src/frontends/qt4/GuiDocument.cpp:610
+#: src/frontends/qt4/ui/VSpaceUi.ui:87 src/frontends/qt4/GuiDocument.cpp:684
 msgid "SmallSkip"
 msgstr "Маленький"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:92 src/frontends/qt4/GuiDocument.cpp:611
+#: src/frontends/qt4/ui/VSpaceUi.ui:92 src/frontends/qt4/GuiDocument.cpp:685
 msgid "MedSkip"
 msgstr "Середній"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:97 src/frontends/qt4/GuiDocument.cpp:612
+#: src/frontends/qt4/ui/VSpaceUi.ui:97 src/frontends/qt4/GuiDocument.cpp:686
 msgid "BigSkip"
 msgstr "Великий"
 
@@ -4962,8 +4984,8 @@ msgid "ShortTitle"
 msgstr "Короткий заголовок"
 
 #: lib/layouts/AEA.layout:53 lib/layouts/AEA.layout:96
-#: lib/layouts/IEEEtran.layout:66 lib/layouts/IEEEtran.layout:115
-#: lib/layouts/IEEEtran.layout:156 lib/layouts/IEEEtran.layout:190
+#: lib/layouts/IEEEtran.layout:67 lib/layouts/IEEEtran.layout:116
+#: lib/layouts/IEEEtran.layout:157 lib/layouts/IEEEtran.layout:191
 #: lib/layouts/aa.layout:120 lib/layouts/aa.layout:143
 #: lib/layouts/aa.layout:158 lib/layouts/aa.layout:182
 #: lib/layouts/aa.layout:322 lib/layouts/aastex.layout:273
@@ -5029,7 +5051,7 @@ msgstr "Підваріант"
 msgid "Publication Issue:"
 msgstr "Підваріант"
 
-#: lib/layouts/AEA.layout:91 lib/layouts/IEEEtran.layout:186
+#: lib/layouts/AEA.layout:91 lib/layouts/IEEEtran.layout:187
 #: lib/layouts/aa.layout:88 lib/layouts/aa.layout:318
 #: lib/layouts/aa.layout:334 lib/layouts/aapaper.layout:100
 #: lib/layouts/aapaper.layout:199 lib/layouts/aastex.layout:113
@@ -5079,7 +5101,7 @@ msgstr "Подяка"
 msgid "Acknowledgement."
 msgstr "Подяка."
 
-#: lib/layouts/AEA.layout:102 lib/layouts/IEEEtran.layout:288
+#: lib/layouts/AEA.layout:102 lib/layouts/IEEEtran.layout:289
 #: lib/layouts/beamer.layout:1066 lib/layouts/elsart.layout:257
 #: lib/layouts/foils.layout:218 lib/layouts/heb-article.layout:18
 #: lib/layouts/ijmpc.layout:194 lib/layouts/ijmpd.layout:197
@@ -5246,7 +5268,7 @@ msgstr "Визначення"
 #: lib/layouts/theorems.inc:180 lib/layouts/theorems.inc:189
 #: lib/layouts/theorems.inc:192 lib/layouts/theorems-chap-bytype.module:138
 #: lib/layouts/theorems-sec-bytype.module:110
-#: src/frontends/qt4/GuiDocument.cpp:946
+#: src/frontends/qt4/GuiDocument.cpp:1020
 msgid "Example"
 msgstr "Приклад"
 
@@ -5383,7 +5405,7 @@ msgstr "ЗвичайнийТекст"
 msgid "Caption: "
 msgstr "Підпис:"
 
-#: lib/layouts/AEA.layout:266 lib/layouts/IEEEtran.layout:287
+#: lib/layouts/AEA.layout:266 lib/layouts/IEEEtran.layout:288
 #: lib/layouts/beamer.layout:1060 lib/layouts/elsart.layout:286
 #: lib/layouts/foils.layout:278 lib/layouts/heb-article.layout:95
 #: lib/layouts/ijmpc.layout:215 lib/layouts/ijmpd.layout:215
@@ -5421,7 +5443,7 @@ msgstr "На коректуру"
 msgid "Standard"
 msgstr "Стандартний"
 
-#: lib/layouts/IEEEtran.layout:62 lib/layouts/aa.layout:67
+#: lib/layouts/IEEEtran.layout:63 lib/layouts/aa.layout:67
 #: lib/layouts/aa.layout:260 lib/layouts/aapaper.layout:76
 #: lib/layouts/aapaper.layout:166 lib/layouts/aastex.layout:95
 #: lib/layouts/aastex.layout:214 lib/layouts/apa.layout:39
@@ -5447,21 +5469,21 @@ msgstr "Стандартний"
 msgid "Title"
 msgstr "Заголовок"
 
-#: lib/layouts/IEEEtran.layout:82 lib/layouts/IEEEtran.layout:86
+#: lib/layouts/IEEEtran.layout:83 lib/layouts/IEEEtran.layout:87
 msgid "IEEE membership"
 msgstr ""
 
-#: lib/layouts/IEEEtran.layout:101
+#: lib/layouts/IEEEtran.layout:102
 #, fuzzy
 msgid "Lowercase"
 msgstr "Нижній регістр|Н"
 
-#: lib/layouts/IEEEtran.layout:105
+#: lib/layouts/IEEEtran.layout:106
 #, fuzzy
 msgid "lowercase"
 msgstr "Нижній регістр|Н"
 
-#: lib/layouts/IEEEtran.layout:112 lib/layouts/aa.layout:73
+#: lib/layouts/IEEEtran.layout:113 lib/layouts/aa.layout:73
 #: lib/layouts/aa.layout:272 lib/layouts/aapaper.layout:82
 #: lib/layouts/aapaper.layout:177 lib/layouts/aastex.layout:98
 #: lib/layouts/aastex.layout:226 lib/layouts/apa.layout:114
@@ -5483,34 +5505,34 @@ msgstr "Нижній регістр|Н"
 msgid "Author"
 msgstr "Автор"
 
-#: lib/layouts/IEEEtran.layout:132
+#: lib/layouts/IEEEtran.layout:133
 #, fuzzy
 msgid "Special Paper Notice"
 msgstr "Спеціальний символ|ц"
 
-#: lib/layouts/IEEEtran.layout:143
+#: lib/layouts/IEEEtran.layout:144
 msgid "After Title Text"
 msgstr ""
 
-#: lib/layouts/IEEEtran.layout:153
+#: lib/layouts/IEEEtran.layout:154
 #, fuzzy
 msgid "Page headings"
 msgstr "з заголовками"
 
-#: lib/layouts/IEEEtran.layout:171
+#: lib/layouts/IEEEtran.layout:172
 msgid "MarkBoth"
 msgstr "MarkBoth"
 
-#: lib/layouts/IEEEtran.layout:176
+#: lib/layouts/IEEEtran.layout:177
 #, fuzzy
 msgid "Publication ID"
 msgstr "Підваріант"
 
-#: lib/layouts/IEEEtran.layout:195
+#: lib/layouts/IEEEtran.layout:196
 msgid "Abstract---"
 msgstr "Анотація---"
 
-#: lib/layouts/IEEEtran.layout:208 lib/layouts/aa.layout:348
+#: lib/layouts/IEEEtran.layout:209 lib/layouts/aa.layout:348
 #: lib/layouts/aastex.layout:116 lib/layouts/aastex.layout:324
 #: lib/layouts/elsart.layout:62 lib/layouts/elsarticle.layout:250
 #: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpd.layout:76
@@ -5524,16 +5546,16 @@ msgstr "Анотація---"
 msgid "Keywords"
 msgstr "Ключові слова"
 
-#: lib/layouts/IEEEtran.layout:211
+#: lib/layouts/IEEEtran.layout:212
 msgid "Index Terms---"
 msgstr "Записи в покажчику---"
 
-#: lib/layouts/IEEEtran.layout:215 lib/layouts/IEEEtran.layout:225
+#: lib/layouts/IEEEtran.layout:216 lib/layouts/IEEEtran.layout:226
 msgid "Appendices"
 msgstr "Додатки"
 
-#: lib/layouts/IEEEtran.layout:219 lib/layouts/IEEEtran.layout:244
-#: lib/layouts/IEEEtran.layout:267 lib/layouts/aa.layout:205
+#: lib/layouts/IEEEtran.layout:220 lib/layouts/IEEEtran.layout:245
+#: lib/layouts/IEEEtran.layout:268 lib/layouts/aa.layout:205
 #: lib/layouts/aastex.layout:454 lib/layouts/aastex.layout:486
 #: lib/layouts/acmsiggraph.layout:152 lib/layouts/beamer.layout:893
 #: lib/layouts/elsarticle.layout:275 lib/layouts/iopart.layout:242
@@ -5544,7 +5566,7 @@ msgstr "Додатки"
 msgid "BackMatter"
 msgstr "BackMatter"
 
-#: lib/layouts/IEEEtran.layout:232 lib/layouts/IEEEtran.layout:235
+#: lib/layouts/IEEEtran.layout:233 lib/layouts/IEEEtran.layout:236
 #: lib/layouts/aastex.layout:122 lib/layouts/aastex.layout:450
 #: lib/layouts/ijmpc.layout:313 lib/layouts/ijmpd.layout:324
 #: lib/layouts/kluwer.layout:319 lib/layouts/kluwer.layout:332
@@ -5552,7 +5574,7 @@ msgstr "BackMatter"
 msgid "Appendix"
 msgstr "Додаток"
 
-#: lib/layouts/IEEEtran.layout:240 lib/layouts/aa.layout:94
+#: lib/layouts/IEEEtran.layout:241 lib/layouts/aa.layout:94
 #: lib/layouts/aa.layout:377 lib/layouts/aapaper.layout:106
 #: lib/layouts/aapaper.layout:216 lib/layouts/achemso.layout:167
 #: lib/layouts/beamer.layout:892 lib/layouts/book.layout:21
@@ -5573,11 +5595,11 @@ msgstr "Додаток"
 #: lib/layouts/aguplus.inc:170 lib/layouts/aguplus.inc:172
 #: lib/layouts/amsdefs.inc:202 lib/layouts/scrclass.inc:237
 #: lib/layouts/stdstruct.inc:39 lib/layouts/svjour.inc:286
-#: src/frontends/qt4/GuiDocument.cpp:1169
+#: src/frontends/qt4/GuiDocument.cpp:1247
 msgid "Bibliography"
 msgstr "Список літератури"
 
-#: lib/layouts/IEEEtran.layout:255 lib/layouts/aastex.layout:125
+#: lib/layouts/IEEEtran.layout:256 lib/layouts/aastex.layout:125
 #: lib/layouts/aastex.layout:482 lib/layouts/aastex.layout:495
 #: lib/layouts/achemso.layout:181 lib/layouts/beamer.layout:906
 #: lib/layouts/cl2emult.layout:117 lib/layouts/egs.layout:573
@@ -5586,25 +5608,25 @@ msgstr "Список літератури"
 #: lib/layouts/kluwer.layout:352 lib/layouts/llncs.layout:279
 #: lib/layouts/siamltex.layout:328 lib/layouts/amsdefs.inc:216
 #: lib/layouts/stdstruct.inc:54 lib/layouts/svjour.inc:301
-#: src/insets/InsetBibtex.cpp:923 src/output_plaintext.cpp:145
+#: src/insets/InsetBibtex.cpp:925 src/output_plaintext.cpp:145
 msgid "References"
 msgstr "Посилання"
 
-#: lib/layouts/IEEEtran.layout:264
+#: lib/layouts/IEEEtran.layout:265
 msgid "Biography"
 msgstr "Біографія"
 
-#: lib/layouts/IEEEtran.layout:276
+#: lib/layouts/IEEEtran.layout:277
 #, fuzzy
 msgid "Biography without photo"
 msgstr "БіографіяБезФото"
 
-#: lib/layouts/IEEEtran.layout:282
+#: lib/layouts/IEEEtran.layout:283
 #, fuzzy
 msgid "BiographyNoPhoto"
 msgstr "Біографія"
 
-#: lib/layouts/IEEEtran.layout:304 lib/layouts/beamer.layout:1063
+#: lib/layouts/IEEEtran.layout:305 lib/layouts/beamer.layout:1063
 #: lib/layouts/foils.layout:281 lib/layouts/ijmpc.layout:223
 #: lib/layouts/ijmpd.layout:223 lib/layouts/llncs.layout:381
 #: lib/layouts/siamltex.layout:166 lib/layouts/svjour.inc:401
@@ -5635,7 +5657,7 @@ msgstr "Доведення."
 #: lib/layouts/numrevtex.inc:6 lib/layouts/scrclass.inc:71
 #: lib/layouts/stdsections.inc:13 lib/layouts/stdsections.inc:40
 #: lib/layouts/stdsections.inc:64 lib/layouts/stdsections.inc:65
-#: lib/layouts/svjour.inc:56 src/frontends/qt4/GuiDocument.cpp:169
+#: lib/layouts/svjour.inc:56 src/frontends/qt4/GuiDocument.cpp:170
 msgid "Section"
 msgstr "Розділ"
 
@@ -5908,10 +5930,10 @@ msgstr "Предметні заголовки:"
 msgid "[Acknowledgements]"
 msgstr "[Подяки]"
 
-#: lib/layouts/aastex.layout:401 src/frontends/qt4/GuiDocument.cpp:1814
-#: src/frontends/qt4/GuiDocument.cpp:1825
-#: src/frontends/qt4/GuiDocument.cpp:1915
-#: src/frontends/qt4/GuiDocument.cpp:1934
+#: lib/layouts/aastex.layout:401 src/frontends/qt4/GuiDocument.cpp:1887
+#: src/frontends/qt4/GuiDocument.cpp:1898
+#: src/frontends/qt4/GuiDocument.cpp:1988
+#: src/frontends/qt4/GuiDocument.cpp:2007
 msgid "and"
 msgstr "і"
 
@@ -8287,7 +8309,7 @@ msgid "Institution"
 msgstr "Інститут"
 
 #: lib/layouts/powerdot.layout:122 lib/layouts/seminar.layout:36
-#: lib/layouts/slides.layout:89 src/frontends/qt4/GuiDocument.cpp:169
+#: lib/layouts/slides.layout:89 src/frontends/qt4/GuiDocument.cpp:170
 msgid "Slide"
 msgstr "Слайд"
 
@@ -9644,7 +9666,7 @@ msgid "Phantom"
 msgstr "Фантом"
 
 #: lib/layouts/stdinsets.inc:163 lib/layouts/stdinsets.inc:164
-#: src/frontends/qt4/GuiDocument.cpp:1174
+#: src/frontends/qt4/GuiDocument.cpp:1252
 msgid "Listings"
 msgstr "Тексти програм"
 
@@ -9654,7 +9676,7 @@ msgid "Branch"
 msgstr "Гілка"
 
 #: lib/layouts/stdinsets.inc:195 lib/layouts/minimalistic.module:8
-#: src/Buffer.cpp:806 src/BufferParams.cpp:411
+#: src/Buffer.cpp:810 src/BufferParams.cpp:411
 #: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:450
 #: src/insets/InsetIndex.cpp:715
 msgid "Index"
@@ -11735,7 +11757,7 @@ msgstr "Вбудоване зображення"
 msgid "Table of Contents|C"
 msgstr "Зміст|З"
 
-#: lib/ui/classic.ui:316 src/frontends/qt4/Menus.cpp:1323
+#: lib/ui/classic.ui:316 src/frontends/qt4/Menus.cpp:1340
 msgid "Index List|I"
 msgstr "Предметний покажчик|п"
 
@@ -13205,11 +13227,11 @@ msgstr "Друкувати документ"
 msgid "Check spelling"
 msgstr "Перевірити правопис"
 
-#: lib/ui/stdtoolbars.inc:76 src/BufferView.cpp:1283
+#: lib/ui/stdtoolbars.inc:76 src/BufferView.cpp:1304
 msgid "Undo"
 msgstr "Вернути"
 
-#: lib/ui/stdtoolbars.inc:77 src/BufferView.cpp:1293
+#: lib/ui/stdtoolbars.inc:77 src/BufferView.cpp:1314
 msgid "Redo"
 msgstr "Повторити"
 
@@ -13691,7 +13713,7 @@ msgid "Fractions"
 msgstr "Дроби"
 
 #: lib/ui/stdtoolbars.inc:274 lib/ui/stdtoolbars.inc:368
-#: src/frontends/qt4/GuiDocument.cpp:1162
+#: src/frontends/qt4/GuiDocument.cpp:1240
 msgid "Fonts"
 msgstr "Шрифти"
 
@@ -16383,7 +16405,7 @@ msgstr "HTML (MS Word)"
 msgid "LyxBlogger"
 msgstr "LyX-блогер"
 
-#: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1813
+#: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1886
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s і %2$s"
@@ -16410,7 +16432,7 @@ msgstr "Додати лише до бібліографії."
 msgid "before"
 msgstr "перед"
 
-#: src/Buffer.cpp:136
+#: src/Buffer.cpp:137
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -16419,15 +16441,15 @@ msgstr ""
 "Не вдалося надрукувати документ %1$s.\n"
 "Перевірте, чи правильно налаштовано принтер."
 
-#: src/Buffer.cpp:139
+#: src/Buffer.cpp:140
 msgid "Print document failed"
 msgstr "Друк невдалий"
 
-#: src/Buffer.cpp:309
+#: src/Buffer.cpp:312
 msgid "Disk Error: "
 msgstr "Дискова помилка: "
 
-#: src/Buffer.cpp:310
+#: src/Buffer.cpp:313
 #, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
@@ -16435,55 +16457,55 @@ msgstr ""
 "LyX не вдалося створити тимчасовий каталог `%1$s' (Можливо, немає місця на "
 "диску?)"
 
-#: src/Buffer.cpp:390
+#: src/Buffer.cpp:393
 msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr "LyX намагається закрити документ, у який внесено незбережені зміни!\n"
 
-#: src/Buffer.cpp:392
+#: src/Buffer.cpp:395
 msgid "Attempting to close changed document!"
 msgstr "Спроба закрити документ зі змінами!"
 
-#: src/Buffer.cpp:400
+#: src/Buffer.cpp:403
 msgid "Could not remove temporary directory"
 msgstr "Неможливо створити тимчасову теку"
 
-#: src/Buffer.cpp:401
+#: src/Buffer.cpp:404
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Неможливо створити тимчасову теку %1$s"
 
-#: src/Buffer.cpp:710
+#: src/Buffer.cpp:714
 msgid "Unknown document class"
 msgstr "Невідомий клас документа"
 
-#: src/Buffer.cpp:711
+#: src/Buffer.cpp:715
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Використовую типовий клас документа, оскільки клас %1$s не знайдено."
 
-#: src/Buffer.cpp:715 src/Text.cpp:483
+#: src/Buffer.cpp:719 src/Text.cpp:483
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Невідома позначка: %1$s %2$s\n"
 
-#: src/Buffer.cpp:719 src/Buffer.cpp:726 src/Buffer.cpp:746
+#: src/Buffer.cpp:723 src/Buffer.cpp:730 src/Buffer.cpp:750
 msgid "Document header error"
 msgstr "Помилка у головній частині"
 
-#: src/Buffer.cpp:725
+#: src/Buffer.cpp:729
 msgid "\\begin_header is missing"
 msgstr "відсутнє \\begin_header"
 
-#: src/Buffer.cpp:745
+#: src/Buffer.cpp:749
 msgid "\\begin_document is missing"
 msgstr "відсутнє \\begin_document"
 
-#: src/Buffer.cpp:761 src/Buffer.cpp:767 src/BufferView.cpp:1383
-#: src/BufferView.cpp:1389
+#: src/Buffer.cpp:765 src/Buffer.cpp:771 src/BufferView.cpp:1404
+#: src/BufferView.cpp:1410
 msgid "Changes not shown in LaTeX output"
 msgstr "У виведенні LaTeX зміни не показано"
 
-#: src/Buffer.cpp:762 src/BufferView.cpp:1384
+#: src/Buffer.cpp:766 src/BufferView.cpp:1405
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -16495,7 +16517,7 @@ msgstr ""
 "Будь ласка встановіть ці пакунки або перевизначте \\lyxadded та \\lyxdeleted "
 "у преамбулі LaTeX."
 
-#: src/Buffer.cpp:768 src/BufferView.cpp:1390
+#: src/Buffer.cpp:772 src/BufferView.cpp:1411
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -16507,20 +16529,20 @@ msgstr ""
 "Будь ласка встановіть обидва пакунки або перевизначте \\lyxadded та "
 "\\lyxdeleted у преамбулі LaTeX."
 
-#: src/Buffer.cpp:882 src/Buffer.cpp:972
+#: src/Buffer.cpp:886 src/Buffer.cpp:976
 msgid "Document format failure"
 msgstr "Стиль документа помилковий"
 
-#: src/Buffer.cpp:883
+#: src/Buffer.cpp:887
 #, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s не є придатним для читання документом LyX."
 
-#: src/Buffer.cpp:920
+#: src/Buffer.cpp:924
 msgid "Conversion failed"
 msgstr "Перетворення не вдалося"
 
-#: src/Buffer.cpp:921
+#: src/Buffer.cpp:925
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -16529,11 +16551,11 @@ msgstr ""
 "%1$s походить з іншої версії LyX, але тимчасовий файл для перетворення не "
 "може бути створений."
 
-#: src/Buffer.cpp:930
+#: src/Buffer.cpp:934
 msgid "Conversion script not found"
 msgstr "Журнал керування версіями не знайдено."
 
-#: src/Buffer.cpp:931
+#: src/Buffer.cpp:935
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -16542,11 +16564,11 @@ msgstr ""
 "%1$s походить з іншої версії LyX, але скрипт перетворення lyx2lyx не "
 "знайдено."
 
-#: src/Buffer.cpp:951 src/Buffer.cpp:957
+#: src/Buffer.cpp:955 src/Buffer.cpp:961
 msgid "Conversion script failed"
 msgstr "Неможливо знайти сценарій перетворення."
 
-#: src/Buffer.cpp:952
+#: src/Buffer.cpp:956
 #, c-format
 msgid ""
 "%1$s is from an older version of LyX, but the lyx2lyx script failed to "
@@ -16555,7 +16577,7 @@ msgstr ""
 "%1$s походить зі старішої версії LyX, але скрипт lyx2lyx не зміг його "
 "перетворити."
 
-#: src/Buffer.cpp:958
+#: src/Buffer.cpp:962
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and cannot be converted by the lyx2lyx "
@@ -16564,12 +16586,12 @@ msgstr ""
 "%1$s походить з новішої версії LyX, отже його не можна перетворити за "
 "допомогою lyx2lyx."
 
-#: src/Buffer.cpp:973
+#: src/Buffer.cpp:977
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s несподівано обривається і отже мабуть пошкоджений."
 
-#: src/Buffer.cpp:990
+#: src/Buffer.cpp:994
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
@@ -16578,21 +16600,21 @@ msgstr ""
 "Документ %1$s було змінено зовнішньою програмою. ви справді бажаєте "
 "перезаписати цей файл?"
 
-#: src/Buffer.cpp:992
+#: src/Buffer.cpp:996
 msgid "Overwrite modified file?"
 msgstr "Перезаписати змінений файл?"
 
-#: src/Buffer.cpp:993 src/Buffer.cpp:2177 src/Exporter.cpp:50
+#: src/Buffer.cpp:997 src/Buffer.cpp:2181 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1951
 #: src/frontends/qt4/GuiView.cpp:2143
 msgid "&Overwrite"
 msgstr "&Перезаписати"
 
-#: src/Buffer.cpp:1017
+#: src/Buffer.cpp:1021
 msgid "Backup failure"
 msgstr "Помилка резервного копіювання"
 
-#: src/Buffer.cpp:1018
+#: src/Buffer.cpp:1022
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -16601,46 +16623,46 @@ msgstr ""
 "Не вдалося створити файл резервної копії %1$s.\n"
 "Будь ласка перевірте чи існує відповідна тека і чи доступна вона для запису."
 
-#: src/Buffer.cpp:1044
+#: src/Buffer.cpp:1048
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Зберігається документ %1$s..."
 
-#: src/Buffer.cpp:1059
+#: src/Buffer.cpp:1063
 msgid " could not write file!"
 msgstr " не вдалося записати до файла!"
 
-#: src/Buffer.cpp:1067
+#: src/Buffer.cpp:1071
 msgid " done."
 msgstr " виконано."
 
-#: src/Buffer.cpp:1082
+#: src/Buffer.cpp:1086
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Спроба зберегти документ  %1$s\n"
 
-#: src/Buffer.cpp:1092 src/Buffer.cpp:1105 src/Buffer.cpp:1119
+#: src/Buffer.cpp:1096 src/Buffer.cpp:1109 src/Buffer.cpp:1123
 #, c-format
 msgid "  Saved to %1$s. Phew.\n"
 msgstr "  Здається, вдалося зберегти до %1$s. Уфф...\n"
 
-#: src/Buffer.cpp:1095
+#: src/Buffer.cpp:1099
 msgid "  Save failed! Trying again...\n"
 msgstr "  Помилка збереження файла! Повторна спроба...\n"
 
-#: src/Buffer.cpp:1109
+#: src/Buffer.cpp:1113
 msgid "  Save failed! Trying yet again...\n"
 msgstr "  Помилка збереження файла! Ще одна спроба...\n"
 
-#: src/Buffer.cpp:1123
+#: src/Buffer.cpp:1127
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Зберегти не вдалося! Тримайтеся, документ втрачено."
 
-#: src/Buffer.cpp:1207
+#: src/Buffer.cpp:1211
 msgid "Iconv software exception Detected"
 msgstr "Виявлено виключення під час роботи Iconv"
 
-#: src/Buffer.cpp:1207
+#: src/Buffer.cpp:1211
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
@@ -16649,12 +16671,12 @@ msgstr ""
 "Будь ласка, перевірте, чи належним чином встановлено програмне забезпечення "
 "для вашого кодування (%1$s)"
 
-#: src/Buffer.cpp:1229
+#: src/Buffer.cpp:1233
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr "Не вдалося знайти команди LaTeX для символу «%1$s» (кодова точка %2$s)"
 
-#: src/Buffer.cpp:1232
+#: src/Buffer.cpp:1236
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -16664,19 +16686,19 @@ msgstr ""
 "кодуванні.\n"
 "Допомогти може зміна кодування документа на utf8."
 
-#: src/Buffer.cpp:1239
+#: src/Buffer.cpp:1243
 msgid "iconv conversion failed"
 msgstr "Спроба перетворення iconv зазнала невдачі"
 
-#: src/Buffer.cpp:1244
+#: src/Buffer.cpp:1248
 msgid "conversion failed"
 msgstr "невдале перетворення"
 
-#: src/Buffer.cpp:1341
+#: src/Buffer.cpp:1345
 msgid "Uncodable character in file path"
 msgstr "Непридатні для кодування символи у шляху до файла"
 
-#: src/Buffer.cpp:1342
+#: src/Buffer.cpp:1346
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -16697,53 +16719,53 @@ msgstr ""
 "Виберіть належне кодування документа (наприклад, utf8)\n"
 "або змініть шлях до файла."
 
-#: src/Buffer.cpp:1627
+#: src/Buffer.cpp:1631
 msgid "Running chktex..."
 msgstr "Запуск chktex..."
 
-#: src/Buffer.cpp:1641
+#: src/Buffer.cpp:1645
 msgid "chktex failure"
 msgstr "chktex помилка"
 
-#: src/Buffer.cpp:1642
+#: src/Buffer.cpp:1646
 msgid "Could not run chktex successfully."
 msgstr "Chktex закінчив роботу успішно."
 
-#: src/Buffer.cpp:1850
+#: src/Buffer.cpp:1854
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Немає інформації для експортування у формат %1$s"
 
-#: src/Buffer.cpp:1922 src/frontends/qt4/GuiView.cpp:2874
+#: src/Buffer.cpp:1926 src/frontends/qt4/GuiView.cpp:2874
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Помилка під час спроби експортування до формату %1$s."
 
-#: src/Buffer.cpp:2004
+#: src/Buffer.cpp:2008
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Гілка з назвою «%1$s» вже існує."
 
-#: src/Buffer.cpp:2034
+#: src/Buffer.cpp:2038
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "Гілки з назвою «%1$s» не існує."
 
-#: src/Buffer.cpp:2094
+#: src/Buffer.cpp:2098
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Не вдалося обробити «%1$s»"
 
-#: src/Buffer.cpp:2101
+#: src/Buffer.cpp:2105
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Невідоме призначення «%1$s»"
 
-#: src/Buffer.cpp:2111
+#: src/Buffer.cpp:2115
 msgid "Error exporting to DVI."
 msgstr "Помилка під час спроби експортування до DVI."
 
-#: src/Buffer.cpp:2173 src/Exporter.cpp:45
+#: src/Buffer.cpp:2177 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -16754,73 +16776,73 @@ msgstr ""
 "\n"
 "ви бажаєте перезаписати цей файл?"
 
-#: src/Buffer.cpp:2176 src/Exporter.cpp:48
+#: src/Buffer.cpp:2180 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Перезаписати файл?"
 
-#: src/Buffer.cpp:2193
+#: src/Buffer.cpp:2197
 msgid "Error running external commands."
 msgstr "Помилка під час спроби виконання зовнішніх команд."
 
-#: src/Buffer.cpp:2970
+#: src/Buffer.cpp:2983
 msgid "Preview source code"
 msgstr "Попередній перегляд джерела"
 
-#: src/Buffer.cpp:2984
+#: src/Buffer.cpp:2997
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Перегляд коду джерела для абзацу %1$d"
 
-#: src/Buffer.cpp:2988
+#: src/Buffer.cpp:3001
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Попередній перегляд коду джерела з параграфа %1$s до %2$s"
 
-#: src/Buffer.cpp:3096
+#: src/Buffer.cpp:3109
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Автоматичне збереження %1$s"
 
-#: src/Buffer.cpp:3150
+#: src/Buffer.cpp:3163
 msgid "Autosave failed!"
 msgstr "Автозбереження не вдалося!"
 
-#: src/Buffer.cpp:3208
+#: src/Buffer.cpp:3221
 msgid "Autosaving current document..."
 msgstr "Автозбереження поточного документа..."
 
-#: src/Buffer.cpp:3276
+#: src/Buffer.cpp:3320
 msgid "Couldn't export file"
 msgstr "Неможливо експортувати файл"
 
-#: src/Buffer.cpp:3277
+#: src/Buffer.cpp:3321
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Немає інформації для імпортування з %1$s"
 
-#: src/Buffer.cpp:3337
+#: src/Buffer.cpp:3381
 msgid "File name error"
 msgstr "Помилкова назва файла"
 
-#: src/Buffer.cpp:3338
+#: src/Buffer.cpp:3382
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Шлях до файлу LyX не повинен містити пробілів."
 
-#: src/Buffer.cpp:3413
+#: src/Buffer.cpp:3457
 msgid "Document export cancelled."
 msgstr "Експорт документа скасовано."
 
-#: src/Buffer.cpp:3423
+#: src/Buffer.cpp:3467
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Документ експортовано як %1$s у файл `%2$s'"
 
-#: src/Buffer.cpp:3429
+#: src/Buffer.cpp:3473
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Документ експортовано як %1$s"
 
-#: src/Buffer.cpp:3507
+#: src/Buffer.cpp:3552
 #, c-format
 msgid ""
 "The specified document\n"
@@ -16831,11 +16853,11 @@ msgstr ""
 "%1$s\n"
 "не може бути прочитаним."
 
-#: src/Buffer.cpp:3509
+#: src/Buffer.cpp:3554
 msgid "Could not read document"
 msgstr "Неможливо прочитати документ"
 
-#: src/Buffer.cpp:3519
+#: src/Buffer.cpp:3564
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -16846,27 +16868,27 @@ msgstr ""
 "\n"
 "Відновити?"
 
-#: src/Buffer.cpp:3522
+#: src/Buffer.cpp:3567
 msgid "Load emergency save?"
 msgstr "Завантажити аварійну копію?"
 
-#: src/Buffer.cpp:3523
+#: src/Buffer.cpp:3568
 msgid "&Recover"
 msgstr "&Відновити"
 
-#: src/Buffer.cpp:3523
+#: src/Buffer.cpp:3568
 msgid "&Load Original"
 msgstr "&Завантажити оригінал"
 
-#: src/Buffer.cpp:3533
+#: src/Buffer.cpp:3578
 msgid "Document was successfully recovered."
 msgstr "Документ було успішно відновлено."
 
-#: src/Buffer.cpp:3535
+#: src/Buffer.cpp:3580
 msgid "Document was NOT successfully recovered."
 msgstr "Не вдалося відновити документ."
 
-#: src/Buffer.cpp:3536
+#: src/Buffer.cpp:3581
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -16875,27 +16897,27 @@ msgstr ""
 "Вилучити аварійну копію?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3539 src/Buffer.cpp:3549
+#: src/Buffer.cpp:3584 src/Buffer.cpp:3594
 msgid "Delete emergency file?"
 msgstr "Вилучити файл аварійної копії?"
 
-#: src/Buffer.cpp:3540 src/Buffer.cpp:3551
+#: src/Buffer.cpp:3585 src/Buffer.cpp:3596
 msgid "&Keep it"
 msgstr "&Не вилучати"
 
-#: src/Buffer.cpp:3543
+#: src/Buffer.cpp:3588
 msgid "Emergency file deleted"
 msgstr "Аварійну копію вилучено"
 
-#: src/Buffer.cpp:3544
+#: src/Buffer.cpp:3589
 msgid "Do not forget to save your file now!"
 msgstr "Не забудьте зберегти ваш файл!"
 
-#: src/Buffer.cpp:3550
+#: src/Buffer.cpp:3595
 msgid "Remove emergency file now?"
 msgstr "Вилучити аварійну копію?"
 
-#: src/Buffer.cpp:3565
+#: src/Buffer.cpp:3610
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -16906,37 +16928,37 @@ msgstr ""
 "\n"
 "Завантажити її?"
 
-#: src/Buffer.cpp:3568
+#: src/Buffer.cpp:3613
 msgid "Load backup?"
 msgstr "Повернутися до резервної?"
 
-#: src/Buffer.cpp:3569
+#: src/Buffer.cpp:3614
 msgid "&Load backup"
 msgstr "&Завантажити резервну"
 
-#: src/Buffer.cpp:3569
+#: src/Buffer.cpp:3614
 msgid "Load &original"
 msgstr "Завантажити &оригінал"
 
-#: src/Buffer.cpp:3864 src/insets/InsetCaption.cpp:324
+#: src/Buffer.cpp:3909 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Немає сенсу!!! "
 
-#: src/Buffer.cpp:3985
+#: src/Buffer.cpp:4031
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Документ %1$s перевантажено."
 
-#: src/Buffer.cpp:3987
+#: src/Buffer.cpp:4033
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Не вдалося перезавантажити документ %1$s."
 
-#: src/Buffer.cpp:4022
+#: src/Buffer.cpp:4068
 msgid "Included File Invalid"
 msgstr "Некоректний включений файл"
 
-#: src/Buffer.cpp:4023
+#: src/Buffer.cpp:4069
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -16947,15 +16969,15 @@ msgstr ""
 "  %1$s\n"
 "недоступним. Вам доведеться оновити назву включеного файла."
 
-#: src/BufferParams.cpp:561
+#: src/BufferParams.cpp:562
 #, fuzzy, c-format
 msgid ""
 "The selected document class\n"
 "\t%1$s\n"
 "requires external files that are not available.\n"
-"The document class can still be used, but LyX\n"
-"will not be able to produce output until the\n"
-"following prerequisites are installed:\n"
+"The document class can still be used, but the\n"
+"document cannot be compiled until the following\n"
+"prerequisites are installed:\n"
 "\t%2$s\n"
 "See section 3.1.2.2 of the User's Guide for\n"
 "more information."
@@ -17005,7 +17027,7 @@ msgstr ""
 "Буде використано типовий клас тексту з типовими компонуваннями.\n"
 "LyX не вдасться створити бажаний документ на виході."
 
-#: src/BufferParams.cpp:1973 src/LayoutFile.cpp:320
+#: src/BufferParams.cpp:1973 src/BufferView.cpp:1254 src/BufferView.cpp:1286
 msgid "Could not load class"
 msgstr "Не вдалося завантажити клас"
 
@@ -17037,108 +17059,113 @@ msgstr "Документ доступний тільки для читання"
 msgid "This portion of the document is deleted."
 msgstr "Цю частину документа вилучено"
 
-#: src/BufferView.cpp:1286
+#: src/BufferView.cpp:1252 src/BufferView.cpp:1284
+#, fuzzy, c-format
+msgid "The document class `%1$s' could not be loaded."
+msgstr "Не вдалося завантажити клас документів %1$s."
+
+#: src/BufferView.cpp:1307
 msgid "No further undo information"
 msgstr "Більше немає інформації для відміни"
 
-#: src/BufferView.cpp:1296
+#: src/BufferView.cpp:1317
 msgid "No further redo information"
 msgstr "Немає подальшої інформації для повтору скасованої дії"
 
-#: src/BufferView.cpp:1476 src/lyxfind.cpp:333 src/lyxfind.cpp:351
+#: src/BufferView.cpp:1497 src/lyxfind.cpp:333 src/lyxfind.cpp:351
 msgid "String not found!"
 msgstr "Рядок не знайдено!"
 
-#: src/BufferView.cpp:1512
+#: src/BufferView.cpp:1533
 msgid "Mark off"
 msgstr "Позначку вимкнено"
 
-#: src/BufferView.cpp:1518
+#: src/BufferView.cpp:1539
 msgid "Mark on"
 msgstr "Позначку увімкнено"
 
-#: src/BufferView.cpp:1525
+#: src/BufferView.cpp:1546
 msgid "Mark removed"
 msgstr "Позначку вилучено"
 
-#: src/BufferView.cpp:1528
+#: src/BufferView.cpp:1549
 msgid "Mark set"
 msgstr "Позначку встановлено"
 
-#: src/BufferView.cpp:1579
+#: src/BufferView.cpp:1600
 msgid "Statistics for the selection:"
 msgstr "Статистичні дані обраного фрагмента:"
 
-#: src/BufferView.cpp:1581
+#: src/BufferView.cpp:1602
 msgid "Statistics for the document:"
 msgstr "Статистичні дані документа:"
 
-#: src/BufferView.cpp:1584
+#: src/BufferView.cpp:1605
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d слів"
 
-#: src/BufferView.cpp:1586
+#: src/BufferView.cpp:1607
 msgid "One word"
 msgstr "Одне слово"
 
-#: src/BufferView.cpp:1589
+#: src/BufferView.cpp:1610
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d символів (разом з пробілами)"
 
-#: src/BufferView.cpp:1592
+#: src/BufferView.cpp:1613
 msgid "One character (including blanks)"
 msgstr "Один символ (разом з пробілами)"
 
-#: src/BufferView.cpp:1595
+#: src/BufferView.cpp:1616
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d символів (без пробілів)"
 
-#: src/BufferView.cpp:1598
+#: src/BufferView.cpp:1619
 msgid "One character (excluding blanks)"
 msgstr "Один символ (без пробілів)"
 
-#: src/BufferView.cpp:1600
+#: src/BufferView.cpp:1621
 msgid "Statistics"
 msgstr "Статистика"
 
-#: src/BufferView.cpp:1730
+#: src/BufferView.cpp:1751
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr "Роботу «inset-forall» перервано, оскільки кількість дій перевищила %1$d"
 
-#: src/BufferView.cpp:1732
+#: src/BufferView.cpp:1753
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Застосовано «%1$s» до %2$d вкладок"
 
-#: src/BufferView.cpp:1740
+#: src/BufferView.cpp:1761
 msgid "Branch name"
 msgstr "Назва гілки"
 
-#: src/BufferView.cpp:1747 src/frontends/qt4/GuiBranches.cpp:176
+#: src/BufferView.cpp:1768 src/frontends/qt4/GuiBranches.cpp:176
 msgid "Branch already exists"
 msgstr "Гілка вже існує"
 
-#: src/BufferView.cpp:2468
+#: src/BufferView.cpp:2489
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Вставляється документ %1$s..."
 
-#: src/BufferView.cpp:2479
+#: src/BufferView.cpp:2500
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Документ %1$s вставлено."
 
-#: src/BufferView.cpp:2481
+#: src/BufferView.cpp:2502
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Неможливо вставити документ %1$s"
 
-#: src/BufferView.cpp:2747
+#: src/BufferView.cpp:2768
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17149,11 +17176,11 @@ msgstr ""
 "%1$s\n"
 "через помилку: %2$s"
 
-#: src/BufferView.cpp:2749
+#: src/BufferView.cpp:2770
 msgid "Could not read file"
 msgstr "Помилка читання файла"
 
-#: src/BufferView.cpp:2756
+#: src/BufferView.cpp:2777
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17162,15 +17189,15 @@ msgstr ""
 "%1$s\n"
 " непридатний для читання."
 
-#: src/BufferView.cpp:2757 src/output.cpp:39
+#: src/BufferView.cpp:2778 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Неможливо відкрити файл"
 
-#: src/BufferView.cpp:2764
+#: src/BufferView.cpp:2785
 msgid "Reading not UTF-8 encoded file"
 msgstr "Читання файла не закодованого у UTF-8"
 
-#: src/BufferView.cpp:2765
+#: src/BufferView.cpp:2786
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -17231,344 +17258,344 @@ msgstr "Попередження ChkTeX id # %1$d"
 msgid "ChkTeX warning id # "
 msgstr "Попередження ChkTeX id # "
 
-#: src/Color.cpp:158 src/insets/InsetBibtex.cpp:172
+#: src/Color.cpp:159 src/insets/InsetBibtex.cpp:172
 #: src/insets/InsetBibtex.cpp:197
 msgid "none"
 msgstr "немає"
 
-#: src/Color.cpp:159
+#: src/Color.cpp:160
 msgid "black"
 msgstr "чорний"
 
-#: src/Color.cpp:160
+#: src/Color.cpp:161
 msgid "white"
 msgstr "білий"
 
-#: src/Color.cpp:161
+#: src/Color.cpp:162
 msgid "red"
 msgstr "червоний"
 
-#: src/Color.cpp:162
+#: src/Color.cpp:163
 msgid "green"
 msgstr "зелений"
 
-#: src/Color.cpp:163
+#: src/Color.cpp:164
 msgid "blue"
 msgstr "синій"
 
-#: src/Color.cpp:164
+#: src/Color.cpp:165
 msgid "cyan"
 msgstr "блакитний"
 
-#: src/Color.cpp:165
+#: src/Color.cpp:166
 msgid "magenta"
 msgstr "бузковий"
 
-#: src/Color.cpp:166
+#: src/Color.cpp:167
 msgid "yellow"
 msgstr "жовтий"
 
-#: src/Color.cpp:167
+#: src/Color.cpp:168
 msgid "cursor"
 msgstr "курсор"
 
-#: src/Color.cpp:168
+#: src/Color.cpp:169
 msgid "background"
 msgstr "тло"
 
-#: src/Color.cpp:169
+#: src/Color.cpp:170
 msgid "text"
 msgstr "текст"
 
-#: src/Color.cpp:170
+#: src/Color.cpp:171
 msgid "selection"
 msgstr "обране"
 
-#: src/Color.cpp:171
+#: src/Color.cpp:172
 msgid "selected text"
 msgstr "позначений текст"
 
-#: src/Color.cpp:173
+#: src/Color.cpp:174
 msgid "LaTeX text"
 msgstr "текст LaTeX"
 
-#: src/Color.cpp:174
+#: src/Color.cpp:175
 msgid "inline completion"
 msgstr "доповнення у рядку"
 
-#: src/Color.cpp:176
+#: src/Color.cpp:177
 msgid "non-unique inline completion"
 msgstr "неоднозначне доповнення у рядку"
 
-#: src/Color.cpp:178
+#: src/Color.cpp:179
 msgid "previewed snippet"
 msgstr "уривок у перегляді"
 
-#: src/Color.cpp:179
+#: src/Color.cpp:180
 msgid "note label"
 msgstr "мітка нотатки"
 
-#: src/Color.cpp:180
+#: src/Color.cpp:181
 msgid "note background"
 msgstr "тло примітки"
 
-#: src/Color.cpp:181
+#: src/Color.cpp:182
 msgid "comment label"
 msgstr "мітка коментаря"
 
-#: src/Color.cpp:182
+#: src/Color.cpp:183
 msgid "comment background"
 msgstr "тло коментарів"
 
-#: src/Color.cpp:183
+#: src/Color.cpp:184
 msgid "greyedout inset label"
 msgstr "висірена мітка вкладки"
 
-#: src/Color.cpp:184
+#: src/Color.cpp:185
 msgid "greyedout inset text"
 msgstr "висірений текст вкладки"
 
-#: src/Color.cpp:185
+#: src/Color.cpp:186
 msgid "greyedout inset background"
 msgstr "висірене тло вкладки"
 
-#: src/Color.cpp:186
+#: src/Color.cpp:187
 msgid "phantom inset text"
 msgstr "фантомний текст вкладки"
 
-#: src/Color.cpp:187
+#: src/Color.cpp:188
 msgid "shaded box"
 msgstr "затінена панель"
 
-#: src/Color.cpp:188
+#: src/Color.cpp:189
 msgid "listings background"
 msgstr "Тло текстів програм"
 
-#: src/Color.cpp:189
+#: src/Color.cpp:190
 msgid "branch label"
 msgstr "мітка версії"
 
-#: src/Color.cpp:190
+#: src/Color.cpp:191
 msgid "footnote label"
 msgstr "мітка зноски"
 
-#: src/Color.cpp:191
+#: src/Color.cpp:192
 msgid "index label"
 msgstr "мітка покажчика"
 
-#: src/Color.cpp:192
+#: src/Color.cpp:193
 msgid "margin note label"
 msgstr "мітка нотатки на полях"
 
-#: src/Color.cpp:193
+#: src/Color.cpp:194
 msgid "URL label"
 msgstr "Мітка URL"
 
-#: src/Color.cpp:194
+#: src/Color.cpp:195
 msgid "URL text"
 msgstr "текст URL"
 
-#: src/Color.cpp:195
+#: src/Color.cpp:196
 msgid "depth bar"
 msgstr "панель глибини"
 
-#: src/Color.cpp:196
+#: src/Color.cpp:197
 msgid "language"
 msgstr "мова"
 
-#: src/Color.cpp:197
+#: src/Color.cpp:198
 msgid "command inset"
 msgstr "вкладка команд"
 
-#: src/Color.cpp:198
+#: src/Color.cpp:199
 msgid "command inset background"
 msgstr "тло вкладки команд"
 
-#: src/Color.cpp:199
+#: src/Color.cpp:200
 msgid "command inset frame"
 msgstr "рамка вкладки команд"
 
-#: src/Color.cpp:200
+#: src/Color.cpp:201
 msgid "special character"
 msgstr "Спеціальний символ"
 
-#: src/Color.cpp:201
+#: src/Color.cpp:202
 msgid "math"
 msgstr "математика"
 
-#: src/Color.cpp:202
+#: src/Color.cpp:203
 msgid "math background"
 msgstr "Тло матем. формули"
 
-#: src/Color.cpp:203
+#: src/Color.cpp:204
 msgid "graphics background"
 msgstr "Тло зображення"
 
-#: src/Color.cpp:204 src/Color.cpp:208
+#: src/Color.cpp:205 src/Color.cpp:209
 msgid "math macro background"
 msgstr "тло матем. макросів"
 
-#: src/Color.cpp:205
+#: src/Color.cpp:206
 msgid "math frame"
 msgstr "Рамка матем. режиму"
 
-#: src/Color.cpp:206
+#: src/Color.cpp:207
 msgid "math corners"
 msgstr "кутики математичних об’єктів"
 
-#: src/Color.cpp:207
+#: src/Color.cpp:208
 msgid "math line"
 msgstr "математичний рядок"
 
-#: src/Color.cpp:209
+#: src/Color.cpp:210
 msgid "math macro hovered background"
 msgstr "тло матем. макросів під час наведення"
 
-#: src/Color.cpp:210
+#: src/Color.cpp:211
 msgid "math macro label"
 msgstr "мітка математичний макросу"
 
-#: src/Color.cpp:211
+#: src/Color.cpp:212
 msgid "math macro frame"
 msgstr "рамка матем. макросу"
 
-#: src/Color.cpp:212
+#: src/Color.cpp:213
 msgid "math macro blended out"
 msgstr "змішування матем. макросів"
 
-#: src/Color.cpp:213
+#: src/Color.cpp:214
 msgid "math macro old parameter"
 msgstr "старий параметр матем. макросу"
 
-#: src/Color.cpp:214
+#: src/Color.cpp:215
 msgid "math macro new parameter"
 msgstr "новий параметр матем. макросу"
 
-#: src/Color.cpp:215
+#: src/Color.cpp:216
 msgid "caption frame"
 msgstr "рамка підпису"
 
-#: src/Color.cpp:216
+#: src/Color.cpp:217
 msgid "collapsable inset text"
 msgstr "текст вкладки, що згортається"
 
-#: src/Color.cpp:217
+#: src/Color.cpp:218
 msgid "collapsable inset frame"
 msgstr "рамка вкладки, що згортається"
 
-#: src/Color.cpp:218
+#: src/Color.cpp:219
 msgid "inset background"
 msgstr "тло вкладки"
 
-#: src/Color.cpp:219
+#: src/Color.cpp:220
 msgid "inset frame"
 msgstr "рамка вкладки"
 
-#: src/Color.cpp:220
+#: src/Color.cpp:221
 msgid "LaTeX error"
 msgstr "помилка LaTeX"
 
-#: src/Color.cpp:221
+#: src/Color.cpp:222
 msgid "end-of-line marker"
 msgstr "маркер кінця рядки"
 
-#: src/Color.cpp:222
+#: src/Color.cpp:223
 msgid "appendix marker"
 msgstr "лінія, що відокремлює додаток"
 
-#: src/Color.cpp:223
+#: src/Color.cpp:224
 msgid "change bar"
 msgstr "панель змін"
 
-#: src/Color.cpp:224
+#: src/Color.cpp:225
 msgid "deleted text"
 msgstr "вилучено текст"
 
-#: src/Color.cpp:225
+#: src/Color.cpp:226
 msgid "added text"
 msgstr "додано текст"
 
-#: src/Color.cpp:226
+#: src/Color.cpp:227
 msgid "changed text 1st author"
 msgstr "змінено текст першого автора"
 
-#: src/Color.cpp:227
+#: src/Color.cpp:228
 msgid "changed text 2nd author"
 msgstr "змінено текст другого автора"
 
-#: src/Color.cpp:228
+#: src/Color.cpp:229
 msgid "changed text 3rd author"
 msgstr "змінено текст третього автора"
 
-#: src/Color.cpp:229
+#: src/Color.cpp:230
 msgid "changed text 4th author"
 msgstr "змінено текст четвертого автора"
 
-#: src/Color.cpp:230
+#: src/Color.cpp:231
 msgid "changed text 5th author"
 msgstr "змінено текст п’ятого автора"
 
-#: src/Color.cpp:231
+#: src/Color.cpp:232
 msgid "deleted text modifier"
 msgstr "вилучений модифікатор тексту"
 
-#: src/Color.cpp:232
+#: src/Color.cpp:233
 msgid "added space markers"
 msgstr "додано маркери пробілів"
 
-#: src/Color.cpp:233
+#: src/Color.cpp:234
 msgid "top/bottom line"
 msgstr "верхня/нижня лінія"
 
-#: src/Color.cpp:234
+#: src/Color.cpp:235
 msgid "table line"
 msgstr "лінія таблиці"
 
-#: src/Color.cpp:235
+#: src/Color.cpp:236
 msgid "table on/off line"
 msgstr "рядок увімкн/вимкн таблиці"
 
-#: src/Color.cpp:237
+#: src/Color.cpp:238
 msgid "bottom area"
 msgstr "нижня область"
 
-#: src/Color.cpp:238
+#: src/Color.cpp:239
 msgid "new page"
 msgstr "нова сторінка"
 
-#: src/Color.cpp:239
+#: src/Color.cpp:240
 msgid "page break / line break"
 msgstr "розрив сторінки/рядка"
 
-#: src/Color.cpp:240
+#: src/Color.cpp:241
 msgid "frame of button"
 msgstr "рамка кнопки"
 
-#: src/Color.cpp:241
+#: src/Color.cpp:242
 msgid "button background"
 msgstr "тло кнопок"
 
-#: src/Color.cpp:242
+#: src/Color.cpp:243
 msgid "button background under focus"
 msgstr "тло кнопок у фокусі"
 
-#: src/Color.cpp:243
+#: src/Color.cpp:244
 msgid "paragraph marker"
 msgstr "позначка абзацу"
 
-#: src/Color.cpp:244
+#: src/Color.cpp:245
 msgid "preview frame"
 msgstr "блок перегляду"
 
-#: src/Color.cpp:245
+#: src/Color.cpp:246
 msgid "inherit"
 msgstr "успадкувати"
 
-#: src/Color.cpp:246
+#: src/Color.cpp:247
 msgid "regexp frame"
 msgstr "рамка формального виразу"
 
-#: src/Color.cpp:247
+#: src/Color.cpp:248
 msgid "ignore"
 msgstr "ігнорувати"
 
@@ -17695,19 +17722,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "Копіювання %1$s до %2$s не вдалося."
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:121
-#: src/frontends/qt4/GuiDocument.cpp:3044
+#: src/frontends/qt4/GuiDocument.cpp:3131
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr "Прямий"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:122
-#: src/frontends/qt4/GuiDocument.cpp:3044
+#: src/frontends/qt4/GuiDocument.cpp:3131
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr "Без засічок"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:123
-#: src/frontends/qt4/GuiDocument.cpp:3044
+#: src/frontends/qt4/GuiDocument.cpp:3131
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr "Друкарська машинка"
@@ -17894,11 +17921,6 @@ msgstr "Виконую BibTeX."
 msgid "Running MakeIndex for nomencl."
 msgstr "Запуск MakeIndex для nomencl."
 
-#: src/LayoutFile.cpp:318
-#, c-format
-msgid "The document class %1$s could not be loaded."
-msgstr "Не вдалося завантажити клас документів %1$s."
-
 #: src/LyX.cpp:114
 msgid "Could not read configuration file"
 msgstr "Помилка запуску конфігураційного файла"
@@ -17922,34 +17944,34 @@ msgstr "LyX: конфігурація користувача створюєть�
 msgid "Done!"
 msgstr "Готово!"
 
-#: src/LyX.cpp:407
+#: src/LyX.cpp:414
 #, c-format
 msgid "%1$s does not appear like a LyX created temporary directory."
 msgstr "Здається, %1$s не є створеним LyX тимчасовим каталогом."
 
-#: src/LyX.cpp:409
+#: src/LyX.cpp:416
 msgid "Cannot remove temporary directory"
 msgstr "Не вдалося вилучити тимчасовий каталог"
 
-#: src/LyX.cpp:415
+#: src/LyX.cpp:422
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Неможливо вилучити тимчасову теку %1$s"
 
-#: src/LyX.cpp:417
+#: src/LyX.cpp:424
 msgid "Unable to remove temporary directory"
 msgstr "Не можу вилучити тимчасову теку"
 
-#: src/LyX.cpp:446
+#: src/LyX.cpp:453
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Помилковий параметр командного рядка `%1$s'. Виходжу."
 
-#: src/LyX.cpp:520
+#: src/LyX.cpp:527
 msgid "No textclass is found"
 msgstr "Не знайдено класу тексту"
 
-#: src/LyX.cpp:521
+#: src/LyX.cpp:528
 #, fuzzy
 msgid ""
 "LyX will only have minimal functionality because no textclasses have been "
@@ -17961,19 +17983,19 @@ msgstr ""
 "з використанням типових класів тексту, або продовжити роботу без будь-яких "
 "дій."
 
-#: src/LyX.cpp:525
+#: src/LyX.cpp:532
 msgid "&Reconfigure"
 msgstr "Пере&конфігурувати"
 
-#: src/LyX.cpp:526
+#: src/LyX.cpp:533
 msgid "&Use Defaults"
 msgstr "&Типові значення"
 
-#: src/LyX.cpp:527
+#: src/LyX.cpp:534
 msgid "&Continue"
 msgstr "&Продовжити"
 
-#: src/LyX.cpp:630
+#: src/LyX.cpp:637
 msgid ""
 "SIGHUP signal caught!\n"
 "Bye."
@@ -17981,7 +18003,7 @@ msgstr ""
 "Отримано сигнал SIGHUP!\n"
 "До побачення."
 
-#: src/LyX.cpp:634
+#: src/LyX.cpp:641
 msgid ""
 "SIGFPE signal caught!\n"
 "Bye."
@@ -17989,7 +18011,7 @@ msgstr ""
 "Отримано сигнал SIGFPE!\n"
 "До побачення."
 
-#: src/LyX.cpp:637
+#: src/LyX.cpp:644
 msgid ""
 "SIGSEGV signal caught!\n"
 "Sorry, you have found a bug in LyX, hope you have not lost any data.\n"
@@ -18004,19 +18026,19 @@ msgstr ""
 ">«Вступ») і надішліть звіт про ваду. Дякуємо!\n"
 "До побачення."
 
-#: src/LyX.cpp:653
+#: src/LyX.cpp:660
 msgid "LyX crashed!"
 msgstr "LyX аварійно завершив роботу!"
 
-#: src/LyX.cpp:687 src/frontends/qt4/GuiView.cpp:853
+#: src/LyX.cpp:694 src/frontends/qt4/GuiView.cpp:853
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:820
+#: src/LyX.cpp:827
 msgid "Could not create temporary directory"
 msgstr "Неможливо створити тимчасову теку"
 
-#: src/LyX.cpp:821
+#: src/LyX.cpp:828
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -18027,11 +18049,11 @@ msgstr ""
 "«%1$s».\n"
 "Перевірте, чи цей шлях існує, доступний для запису, і спробуйте ще раз."
 
-#: src/LyX.cpp:904
+#: src/LyX.cpp:911
 msgid "Missing user LyX directory"
 msgstr "Немає теки користувача LyX"
 
-#: src/LyX.cpp:905
+#: src/LyX.cpp:912
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -18040,37 +18062,37 @@ msgstr ""
 "ви задали неіснуючу теку LyX, %1$s.\n"
 "Потрібно дотримуватися власної конфігурації."
 
-#: src/LyX.cpp:910
+#: src/LyX.cpp:917
 msgid "&Create directory"
 msgstr "&Створити теку"
 
-#: src/LyX.cpp:911
+#: src/LyX.cpp:918
 msgid "&Exit LyX"
 msgstr "Ви&йти з LyX"
 
-#: src/LyX.cpp:912
+#: src/LyX.cpp:919
 msgid "No user LyX directory. Exiting."
 msgstr "Немає теки користувача LyX. Завершення роботи."
 
-#: src/LyX.cpp:916
+#: src/LyX.cpp:923
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Створюється тека  %1$s"
 
-#: src/LyX.cpp:921
+#: src/LyX.cpp:928
 msgid "Failed to create directory. Exiting."
 msgstr "Помилка при створенні теки. Завершення роботи."
 
-#: src/LyX.cpp:993
+#: src/LyX.cpp:1000
 msgid "List of supported debug flags:"
 msgstr "Список підтримуваних прапорців зневаджування:"
 
-#: src/LyX.cpp:997
+#: src/LyX.cpp:1004
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Встановити рівень у %1$s"
 
-#: src/LyX.cpp:1008
+#: src/LyX.cpp:1015
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -18128,39 +18150,39 @@ msgstr ""
 "\t-version        резюме відомостей про версію і збірку\n"
 "Докладніший опис командного рядка можна знайти в документації LyX (man)."
 
-#: src/LyX.cpp:1055
+#: src/LyX.cpp:1062
 msgid "No system directory"
 msgstr "Відсутня системна тека"
 
-#: src/LyX.cpp:1056
+#: src/LyX.cpp:1063
 msgid "Missing directory for -sysdir switch"
 msgstr "Відсутня тека для ключа -sysdir"
 
-#: src/LyX.cpp:1067
+#: src/LyX.cpp:1074
 msgid "No user directory"
 msgstr "Відсутня тека користувача"
 
-#: src/LyX.cpp:1068
+#: src/LyX.cpp:1075
 msgid "Missing directory for -userdir switch"
 msgstr "Відсутня тека для ключа -userdir"
 
-#: src/LyX.cpp:1079
+#: src/LyX.cpp:1086
 msgid "Incomplete command"
 msgstr "Неповна команда"
 
-#: src/LyX.cpp:1080
+#: src/LyX.cpp:1087
 msgid "Missing command string after --execute switch"
 msgstr "Відсутня команда після ключа --execute"
 
-#: src/LyX.cpp:1091
+#: src/LyX.cpp:1098
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Відсутній тип файла [наприклад, latex, ps...] після ключа --export"
 
-#: src/LyX.cpp:1104
+#: src/LyX.cpp:1111
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Відсутній тип файла [наприклад, latex, ps...] після ключа --import"
 
-#: src/LyX.cpp:1109
+#: src/LyX.cpp:1116
 msgid "Missing filename for --import"
 msgstr "Не вказано назву файла для --import"
 
@@ -18874,7 +18896,7 @@ msgstr ", Глибина: %1$d"
 msgid ", Spacing: "
 msgstr ", Проміжки: "
 
-#: src/Text.cpp:1814 src/frontends/qt4/GuiDocument.cpp:617
+#: src/Text.cpp:1814 src/frontends/qt4/GuiDocument.cpp:691
 msgid "OneHalf"
 msgstr "Півтора"
 
@@ -18942,7 +18964,7 @@ msgstr "Формат "
 msgid " not known"
 msgstr " невідомий"
 
-#: src/Text3.cpp:1708 src/frontends/qt4/GuiApplication.cpp:1332
+#: src/Text3.cpp:1708 src/frontends/qt4/GuiApplication.cpp:1357
 msgid "Missing argument"
 msgstr "Відсутній аргумент"
 
@@ -18950,7 +18972,7 @@ msgstr "Відсутній аргумент"
 msgid "Character set"
 msgstr "Кодування символів"
 
-#: src/Text3.cpp:2054 src/Text3.cpp:2065
+#: src/Text3.cpp:2073 src/Text3.cpp:2084
 msgid "Paragraph layout set"
 msgstr "Встановлено розміщення абзацу"
 
@@ -19393,7 +19415,7 @@ msgid "About %1"
 msgstr "Про %1"
 
 #: src/frontends/qt4/GuiApplication.cpp:482
-#: src/frontends/qt4/GuiPrefs.cpp:2982
+#: src/frontends/qt4/GuiPrefs.cpp:2991
 msgid "Preferences"
 msgstr "Параметри"
 
@@ -19405,35 +19427,35 @@ msgstr "Переналаштувати"
 msgid "Quit %1"
 msgstr "Завершити роботу %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:864
+#: src/frontends/qt4/GuiApplication.cpp:889
 msgid "Nothing to do"
 msgstr "Нічого виконувати"
 
-#: src/frontends/qt4/GuiApplication.cpp:870
+#: src/frontends/qt4/GuiApplication.cpp:895
 msgid "Unknown action"
 msgstr "Невідома команда"
 
-#: src/frontends/qt4/GuiApplication.cpp:914
+#: src/frontends/qt4/GuiApplication.cpp:939
 msgid "Command not handled"
 msgstr "Команду не оброблено"
 
-#: src/frontends/qt4/GuiApplication.cpp:920
+#: src/frontends/qt4/GuiApplication.cpp:945
 msgid "Command disabled"
 msgstr "Команду вимкнено"
 
-#: src/frontends/qt4/GuiApplication.cpp:1187
+#: src/frontends/qt4/GuiApplication.cpp:1212
 msgid "Running configure..."
 msgstr "Виконую конфігурування..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1198
+#: src/frontends/qt4/GuiApplication.cpp:1223
 msgid "Reloading configuration..."
 msgstr "Перезавантажую конфігурацію..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1204
+#: src/frontends/qt4/GuiApplication.cpp:1229
 msgid "System reconfiguration failed"
 msgstr "Спроба повторної конфігурації системи зазнала невдачі"
 
-#: src/frontends/qt4/GuiApplication.cpp:1205
+#: src/frontends/qt4/GuiApplication.cpp:1230
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may not be able to work properly.\n"
@@ -19444,11 +19466,11 @@ msgstr ""
 "належним чином.\n"
 "Будь ласка, повторіть конфігурацію системи ще раз, якщо це потрібно."
 
-#: src/frontends/qt4/GuiApplication.cpp:1210
+#: src/frontends/qt4/GuiApplication.cpp:1235
 msgid "System reconfigured"
 msgstr "Система була переконфігурована."
 
-#: src/frontends/qt4/GuiApplication.cpp:1211
+#: src/frontends/qt4/GuiApplication.cpp:1236
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -19458,44 +19480,44 @@ msgstr ""
 "Потрібно перезапустити LyX, щоб використовувати\n"
 "оновлені специфікації класів."
 
-#: src/frontends/qt4/GuiApplication.cpp:1266
+#: src/frontends/qt4/GuiApplication.cpp:1291
 msgid "Exiting."
 msgstr "Вихід."
 
-#: src/frontends/qt4/GuiApplication.cpp:1344
+#: src/frontends/qt4/GuiApplication.cpp:1369
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Відкриваємо файл допомоги %1$s..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1362
+#: src/frontends/qt4/GuiApplication.cpp:1387
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Синтаксис: set-color <lyx_name> <x11_name>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1378
+#: src/frontends/qt4/GuiApplication.cpp:1403
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Встановлення кольору не вдалося \"%1$s\" - колір не визначено або не може "
 "бути перевизначено"
 
-#: src/frontends/qt4/GuiApplication.cpp:1553
+#: src/frontends/qt4/GuiApplication.cpp:1578
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Типові параметри документа збережено до %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:1557
+#: src/frontends/qt4/GuiApplication.cpp:1582
 msgid "Unable to save document defaults"
 msgstr "Зберегти як параметри документа типовий"
 
-#: src/frontends/qt4/GuiApplication.cpp:1762
+#: src/frontends/qt4/GuiApplication.cpp:1787
 msgid "Unknown function."
 msgstr "Невідома функція."
 
-#: src/frontends/qt4/GuiApplication.cpp:2159
+#: src/frontends/qt4/GuiApplication.cpp:2184
 msgid "The current document was closed."
 msgstr "Поточний документ було закрито."
 
-#: src/frontends/qt4/GuiApplication.cpp:2169
+#: src/frontends/qt4/GuiApplication.cpp:2194
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -19507,12 +19529,12 @@ msgstr ""
 "\n"
 "Виключення: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2173
-#: src/frontends/qt4/GuiApplication.cpp:2179
+#: src/frontends/qt4/GuiApplication.cpp:2198
+#: src/frontends/qt4/GuiApplication.cpp:2204
 msgid "Software exception Detected"
 msgstr "Виявлено виключення у програмі"
 
-#: src/frontends/qt4/GuiApplication.cpp:2177
+#: src/frontends/qt4/GuiApplication.cpp:2202
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -19520,12 +19542,12 @@ msgstr ""
 "У LyX сталося якесь дуже дивне виключення, зараз програма спробує зберегти "
 "всі незбережені документи і завершити роботу."
 
-#: src/frontends/qt4/GuiApplication.cpp:2323
-#: src/frontends/qt4/GuiApplication.cpp:2335
+#: src/frontends/qt4/GuiApplication.cpp:2348
+#: src/frontends/qt4/GuiApplication.cpp:2360
 msgid "Could not find UI definition file"
 msgstr "Не вдалося знайти файл налаштувань інтерфейсу"
 
-#: src/frontends/qt4/GuiApplication.cpp:2324
+#: src/frontends/qt4/GuiApplication.cpp:2349
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -19536,11 +19558,11 @@ msgstr ""
 "%1$s\n"
 "Будь ласка перевірте встановлене."
 
-#: src/frontends/qt4/GuiApplication.cpp:2330
+#: src/frontends/qt4/GuiApplication.cpp:2355
 msgid "Could not find default UI file"
 msgstr "Не вдалося знайти типовий файл налаштувань інтерфейсу"
 
-#: src/frontends/qt4/GuiApplication.cpp:2331
+#: src/frontends/qt4/GuiApplication.cpp:2356
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -19548,7 +19570,7 @@ msgstr ""
 "LyX не вдалося знайти типовий файл інтерфейсу користувача!\n"
 "Будь ласка, перевірте, чи належним чином встановлено програму."
 
-#: src/frontends/qt4/GuiApplication.cpp:2336
+#: src/frontends/qt4/GuiApplication.cpp:2361
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -19570,7 +19592,7 @@ msgstr "Бібліографія BibTeX"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiCompare.cpp:164 src/frontends/qt4/GuiCompare.cpp:168
-#: src/frontends/qt4/GuiDocument.cpp:1732
+#: src/frontends/qt4/GuiDocument.cpp:1805
 #: src/frontends/qt4/GuiExternal.cpp:639 src/frontends/qt4/GuiGraphics.cpp:800
 #: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1694
 #: src/frontends/qt4/GuiView.cpp:1752 src/frontends/qt4/GuiView.cpp:1901
@@ -19657,8 +19679,8 @@ msgid "Filename Suffix"
 msgstr "Суфікс назви файла"
 
 #: src/frontends/qt4/GuiBranches.cpp:99 src/frontends/qt4/GuiBranches.cpp:107
-#: src/frontends/qt4/GuiDocument.cpp:1960
-#: src/frontends/qt4/GuiDocument.cpp:2942
+#: src/frontends/qt4/GuiDocument.cpp:2033
+#: src/frontends/qt4/GuiDocument.cpp:3017
 #: src/frontends/qt4/GuiProgressView.cpp:123
 #: src/frontends/qt4/GuiProgressView.cpp:137
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -19666,8 +19688,8 @@ msgid "Yes"
 msgstr "Так"
 
 #: src/frontends/qt4/GuiBranches.cpp:99 src/frontends/qt4/GuiBranches.cpp:107
-#: src/frontends/qt4/GuiDocument.cpp:1959
-#: src/frontends/qt4/GuiDocument.cpp:2941
+#: src/frontends/qt4/GuiDocument.cpp:2032
+#: src/frontends/qt4/GuiDocument.cpp:3016
 #: src/frontends/qt4/GuiProgressView.cpp:89
 #: src/frontends/qt4/GuiProgressView.cpp:122
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -19861,9 +19883,9 @@ msgstr "Оберіть документ"
 msgid "LyX Documents (*.lyx)"
 msgstr "Документи LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiCompare.cpp:200 src/frontends/qt4/GuiDocument.cpp:1703
-#: src/frontends/qt4/GuiDocument.cpp:1778
-#: src/frontends/qt4/GuiDocument.cpp:3007
+#: src/frontends/qt4/GuiCompare.cpp:200 src/frontends/qt4/GuiDocument.cpp:1776
+#: src/frontends/qt4/GuiDocument.cpp:1851
+#: src/frontends/qt4/GuiDocument.cpp:3082
 msgid "Error"
 msgstr "Помилка"
 
@@ -19916,392 +19938,405 @@ msgstr "(Немає)"
 msgid "Variable"
 msgstr "Змінна"
 
-#: src/frontends/qt4/GuiDocument.cpp:126
+#: src/frontends/qt4/GuiDocument.cpp:127
 msgid "Computer Modern Roman"
 msgstr "Computer Modern Roman"
 
-#: src/frontends/qt4/GuiDocument.cpp:126
+#: src/frontends/qt4/GuiDocument.cpp:127
 msgid "Latin Modern Roman"
 msgstr "Latin Modern Roman"
 
-#: src/frontends/qt4/GuiDocument.cpp:127
+#: src/frontends/qt4/GuiDocument.cpp:128
 msgid "AE (Almost European)"
 msgstr "AE (Спільноєвропейський)"
 
-#: src/frontends/qt4/GuiDocument.cpp:127
+#: src/frontends/qt4/GuiDocument.cpp:128
 msgid "Times Roman"
 msgstr "Times Roman"
 
-#: src/frontends/qt4/GuiDocument.cpp:127
+#: src/frontends/qt4/GuiDocument.cpp:128
 msgid "Palatino"
 msgstr "Palatino"
 
-#: src/frontends/qt4/GuiDocument.cpp:128
+#: src/frontends/qt4/GuiDocument.cpp:129
 msgid "Bitstream Charter"
 msgstr "Bitstream Charter"
 
-#: src/frontends/qt4/GuiDocument.cpp:128
+#: src/frontends/qt4/GuiDocument.cpp:129
 msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
 
-#: src/frontends/qt4/GuiDocument.cpp:128
+#: src/frontends/qt4/GuiDocument.cpp:129
 msgid "Bookman"
 msgstr "Bookman"
 
-#: src/frontends/qt4/GuiDocument.cpp:129
+#: src/frontends/qt4/GuiDocument.cpp:130
 msgid "Utopia"
 msgstr "Utopia"
 
-#: src/frontends/qt4/GuiDocument.cpp:129
+#: src/frontends/qt4/GuiDocument.cpp:130
 msgid "Bera Serif"
 msgstr "Bera Serif"
 
-#: src/frontends/qt4/GuiDocument.cpp:129
+#: src/frontends/qt4/GuiDocument.cpp:130
 msgid "Concrete Roman"
 msgstr "Concrete Roman"
 
-#: src/frontends/qt4/GuiDocument.cpp:129
+#: src/frontends/qt4/GuiDocument.cpp:130
 msgid "Zapf Chancery"
 msgstr "Zapf Chancery"
 
-#: src/frontends/qt4/GuiDocument.cpp:142
+#: src/frontends/qt4/GuiDocument.cpp:143
 msgid "Computer Modern Sans"
 msgstr "Computer Modern Sans"
 
-#: src/frontends/qt4/GuiDocument.cpp:142
+#: src/frontends/qt4/GuiDocument.cpp:143
 msgid "Latin Modern Sans"
 msgstr "Latin Modern Sans"
 
-#: src/frontends/qt4/GuiDocument.cpp:143
+#: src/frontends/qt4/GuiDocument.cpp:144
 msgid "Helvetica"
 msgstr "Helvetica"
 
-#: src/frontends/qt4/GuiDocument.cpp:143
+#: src/frontends/qt4/GuiDocument.cpp:144
 msgid "Avant Garde"
 msgstr "Avant Garde"
 
-#: src/frontends/qt4/GuiDocument.cpp:143
+#: src/frontends/qt4/GuiDocument.cpp:144
 msgid "Bera Sans"
 msgstr "Bera Sans"
 
-#: src/frontends/qt4/GuiDocument.cpp:143
+#: src/frontends/qt4/GuiDocument.cpp:144
 msgid "CM Bright"
 msgstr "CM Bright"
 
-#: src/frontends/qt4/GuiDocument.cpp:155
+#: src/frontends/qt4/GuiDocument.cpp:156
 msgid "Computer Modern Typewriter"
 msgstr "Computer Modern Typewriter"
 
-#: src/frontends/qt4/GuiDocument.cpp:156
+#: src/frontends/qt4/GuiDocument.cpp:157
 msgid "Latin Modern Typewriter"
 msgstr "Latin Modern Typewriter"
 
-#: src/frontends/qt4/GuiDocument.cpp:156
+#: src/frontends/qt4/GuiDocument.cpp:157
 msgid "Courier"
 msgstr "Courier"
 
-#: src/frontends/qt4/GuiDocument.cpp:156
+#: src/frontends/qt4/GuiDocument.cpp:157
 msgid "Bera Mono"
 msgstr "Bera Mono"
 
-#: src/frontends/qt4/GuiDocument.cpp:157
+#: src/frontends/qt4/GuiDocument.cpp:158
 msgid "LuxiMono"
 msgstr "LuxiMono"
 
-#: src/frontends/qt4/GuiDocument.cpp:157
+#: src/frontends/qt4/GuiDocument.cpp:158
 msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
-#: src/frontends/qt4/GuiDocument.cpp:169
+#: src/frontends/qt4/GuiDocument.cpp:170
 msgid "Page"
 msgstr "Сторінка"
 
-#: src/frontends/qt4/GuiDocument.cpp:235
+#: src/frontends/qt4/GuiDocument.cpp:236
 msgid "Module not found!"
 msgstr "Модуль не знайдено!"
 
-#: src/frontends/qt4/GuiDocument.cpp:536
+#: src/frontends/qt4/GuiDocument.cpp:577
+#, fuzzy
+msgid "Layout is valid!"
+msgstr "Формат "
+
+#: src/frontends/qt4/GuiDocument.cpp:581
+msgid "Layout is invalid!"
+msgstr ""
+
+#: src/frontends/qt4/GuiDocument.cpp:610
 msgid "Document Settings"
 msgstr "Параметри документа"
 
-#: src/frontends/qt4/GuiDocument.cpp:643 src/frontends/qt4/GuiInclude.cpp:48
-#: src/frontends/qt4/Menus.cpp:1307
+#: src/frontends/qt4/GuiDocument.cpp:717 src/frontends/qt4/GuiInclude.cpp:48
+#: src/frontends/qt4/Menus.cpp:1324
 msgid "Child Document"
 msgstr "Дочірній документ"
 
-#: src/frontends/qt4/GuiDocument.cpp:644
+#: src/frontends/qt4/GuiDocument.cpp:718
 msgid "Include to Output"
 msgstr "Включити у вивід"
 
-#: src/frontends/qt4/GuiDocument.cpp:712
+#: src/frontends/qt4/GuiDocument.cpp:786
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt4/GuiDocument.cpp:713
+#: src/frontends/qt4/GuiDocument.cpp:787
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt4/GuiDocument.cpp:714
+#: src/frontends/qt4/GuiDocument.cpp:788
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/GuiDocument.cpp:718
+#: src/frontends/qt4/GuiDocument.cpp:792
 msgid "None (no fontenc)"
 msgstr "Немає (без fontenc)"
 
-#: src/frontends/qt4/GuiDocument.cpp:753
+#: src/frontends/qt4/GuiDocument.cpp:827
 msgid "empty"
 msgstr "порожній"
 
-#: src/frontends/qt4/GuiDocument.cpp:754
+#: src/frontends/qt4/GuiDocument.cpp:828
 msgid "plain"
 msgstr "простий"
 
-#: src/frontends/qt4/GuiDocument.cpp:755
+#: src/frontends/qt4/GuiDocument.cpp:829
 msgid "headings"
 msgstr "з заголовками"
 
-#: src/frontends/qt4/GuiDocument.cpp:756
+#: src/frontends/qt4/GuiDocument.cpp:830
 msgid "fancy"
 msgstr "красивий"
 
-#: src/frontends/qt4/GuiDocument.cpp:768
+#: src/frontends/qt4/GuiDocument.cpp:842
 msgid "A0"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:769
+#: src/frontends/qt4/GuiDocument.cpp:843
 #, fuzzy
 msgid "A1"
 msgstr "1"
 
-#: src/frontends/qt4/GuiDocument.cpp:770
+#: src/frontends/qt4/GuiDocument.cpp:844
 msgid "A2"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:774
+#: src/frontends/qt4/GuiDocument.cpp:848
 msgid "A6"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:775
+#: src/frontends/qt4/GuiDocument.cpp:849
 msgid "B0"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:776
+#: src/frontends/qt4/GuiDocument.cpp:850
 #, fuzzy
 msgid "B1"
 msgstr "1"
 
-#: src/frontends/qt4/GuiDocument.cpp:777
+#: src/frontends/qt4/GuiDocument.cpp:851
 msgid "B2"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:778
+#: src/frontends/qt4/GuiDocument.cpp:852
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt4/GuiDocument.cpp:779
+#: src/frontends/qt4/GuiDocument.cpp:853
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/GuiDocument.cpp:781
+#: src/frontends/qt4/GuiDocument.cpp:855
 msgid "B6"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:782
+#: src/frontends/qt4/GuiDocument.cpp:856
 msgid "C0"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:783
+#: src/frontends/qt4/GuiDocument.cpp:857
 #, fuzzy
 msgid "C1"
 msgstr "1"
 
-#: src/frontends/qt4/GuiDocument.cpp:784
+#: src/frontends/qt4/GuiDocument.cpp:858
 msgid "C2"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:785
+#: src/frontends/qt4/GuiDocument.cpp:859
 msgid "C3"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:786
+#: src/frontends/qt4/GuiDocument.cpp:860
 msgid "C4"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:787
+#: src/frontends/qt4/GuiDocument.cpp:861
 msgid "C5"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:788
+#: src/frontends/qt4/GuiDocument.cpp:862
 msgid "C6"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:789
+#: src/frontends/qt4/GuiDocument.cpp:863
 msgid "JIS B0"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:790
+#: src/frontends/qt4/GuiDocument.cpp:864
 msgid "JIS B1"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:791
+#: src/frontends/qt4/GuiDocument.cpp:865
 msgid "JIS B2"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:792
+#: src/frontends/qt4/GuiDocument.cpp:866
 msgid "JIS B3"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:793
+#: src/frontends/qt4/GuiDocument.cpp:867
 msgid "JIS B4"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:794
+#: src/frontends/qt4/GuiDocument.cpp:868
 msgid "JIS B5"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:795
+#: src/frontends/qt4/GuiDocument.cpp:869
 msgid "JIS B6"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:898
+#: src/frontends/qt4/GuiDocument.cpp:972
 msgid "Language Default (no inputenc)"
 msgstr "Типова мова (без inputenc)"
 
-#: src/frontends/qt4/GuiDocument.cpp:907
+#: src/frontends/qt4/GuiDocument.cpp:981
 msgid "``text''"
 msgstr "“текст”"
 
-#: src/frontends/qt4/GuiDocument.cpp:908
+#: src/frontends/qt4/GuiDocument.cpp:982
 msgid "''text''"
 msgstr "”текст”"
 
-#: src/frontends/qt4/GuiDocument.cpp:909
+#: src/frontends/qt4/GuiDocument.cpp:983
 msgid ",,text``"
 msgstr "„текст“"
 
-#: src/frontends/qt4/GuiDocument.cpp:910
+#: src/frontends/qt4/GuiDocument.cpp:984
 msgid ",,text''"
 msgstr "„текст”"
 
-#: src/frontends/qt4/GuiDocument.cpp:911
+#: src/frontends/qt4/GuiDocument.cpp:985
 msgid "<<text>>"
 msgstr "«текст»"
 
-#: src/frontends/qt4/GuiDocument.cpp:912
+#: src/frontends/qt4/GuiDocument.cpp:986
 msgid ">>text<<"
 msgstr "»текст«"
 
-#: src/frontends/qt4/GuiDocument.cpp:947
+#: src/frontends/qt4/GuiDocument.cpp:1021
 msgid "Numbered"
 msgstr "Нумерація"
 
-#: src/frontends/qt4/GuiDocument.cpp:948
+#: src/frontends/qt4/GuiDocument.cpp:1022
 msgid "Appears in TOC"
 msgstr "З'явиться у Змісті"
 
-#: src/frontends/qt4/GuiDocument.cpp:972
+#: src/frontends/qt4/GuiDocument.cpp:1046
 msgid "Author-year"
 msgstr "Автор-рік"
 
-#: src/frontends/qt4/GuiDocument.cpp:973
+#: src/frontends/qt4/GuiDocument.cpp:1047
 msgid "Numerical"
 msgstr "Вислові"
 
-#: src/frontends/qt4/GuiDocument.cpp:1056
+#: src/frontends/qt4/GuiDocument.cpp:1130
 #, c-format
 msgid "Unavailable: %1$s"
 msgstr "Недоступне: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1155
-#: src/frontends/qt4/GuiDocument.cpp:1261
+#: src/frontends/qt4/GuiDocument.cpp:1233
+#: src/frontends/qt4/GuiDocument.cpp:1334
 msgid "Input listings parameters below. Enter ? for a list of parameters."
 msgstr ""
 "Нижче можна ввести параметри тексту програм. Введіть «?», щоб переглянути "
 "список параметрів."
 
-#: src/frontends/qt4/GuiDocument.cpp:1159
-#: src/frontends/qt4/GuiDocument.cpp:1179
-#: src/frontends/qt4/GuiDocument.cpp:2696
+#: src/frontends/qt4/GuiDocument.cpp:1237
+#: src/frontends/qt4/GuiDocument.cpp:1258
+#: src/frontends/qt4/GuiDocument.cpp:2771
 msgid "Document Class"
 msgstr "Клас документа"
 
-#: src/frontends/qt4/GuiDocument.cpp:1160
-#: src/frontends/qt4/GuiDocument.cpp:2694
-#: src/frontends/qt4/GuiDocument.cpp:2695
-#: src/frontends/qt4/GuiDocument.cpp:2698 src/frontends/qt4/qt_helpers.cpp:543
+#: src/frontends/qt4/GuiDocument.cpp:1238
+#: src/frontends/qt4/GuiDocument.cpp:2769
+#: src/frontends/qt4/GuiDocument.cpp:2770
+#: src/frontends/qt4/GuiDocument.cpp:2773 src/frontends/qt4/qt_helpers.cpp:543
 msgid "Child Documents"
 msgstr "Дочірні документи"
 
-#: src/frontends/qt4/GuiDocument.cpp:1161
+#: src/frontends/qt4/GuiDocument.cpp:1239
 msgid "Modules"
 msgstr "Модулі"
 
-#: src/frontends/qt4/GuiDocument.cpp:1163
+#: src/frontends/qt4/GuiDocument.cpp:1241
 msgid "Text Layout"
 msgstr "Формат"
 
-#: src/frontends/qt4/GuiDocument.cpp:1165
+#: src/frontends/qt4/GuiDocument.cpp:1243
 msgid "Page Margins"
 msgstr "Поля"
 
-#: src/frontends/qt4/GuiDocument.cpp:1167 src/frontends/qt4/GuiPrefs.cpp:1052
+#: src/frontends/qt4/GuiDocument.cpp:1245 src/frontends/qt4/GuiPrefs.cpp:1052
 msgid "Colors"
 msgstr "Кольори"
 
-#: src/frontends/qt4/GuiDocument.cpp:1168
+#: src/frontends/qt4/GuiDocument.cpp:1246
 msgid "Numbering & TOC"
 msgstr "Нумерація і зміст"
 
-#: src/frontends/qt4/GuiDocument.cpp:1170
+#: src/frontends/qt4/GuiDocument.cpp:1248
 msgid "Indexes"
 msgstr "Покажчики"
 
-#: src/frontends/qt4/GuiDocument.cpp:1171
+#: src/frontends/qt4/GuiDocument.cpp:1249
 msgid "PDF Properties"
 msgstr "Властивості PDF"
 
-#: src/frontends/qt4/GuiDocument.cpp:1172
+#: src/frontends/qt4/GuiDocument.cpp:1250
 msgid "Math Options"
 msgstr "Параметри математики"
 
-#: src/frontends/qt4/GuiDocument.cpp:1173
+#: src/frontends/qt4/GuiDocument.cpp:1251
 msgid "Float Placement"
 msgstr "Розташування плаваючих об'єктів"
 
-#: src/frontends/qt4/GuiDocument.cpp:1175
+#: src/frontends/qt4/GuiDocument.cpp:1253
 msgid "Bullets"
 msgstr "Маркери"
 
-#: src/frontends/qt4/GuiDocument.cpp:1176
+#: src/frontends/qt4/GuiDocument.cpp:1254
 msgid "Branches"
 msgstr "Версії"
 
-#: src/frontends/qt4/GuiDocument.cpp:1178
-#: src/frontends/qt4/GuiDocument.cpp:1190
+#: src/frontends/qt4/GuiDocument.cpp:1256
 msgid "LaTeX Preamble"
 msgstr "Преамбула LaTeX"
 
-#: src/frontends/qt4/GuiDocument.cpp:1585
-#: src/frontends/qt4/GuiDocument.cpp:1591
-#: src/frontends/qt4/GuiDocument.cpp:1597
+#: src/frontends/qt4/GuiDocument.cpp:1257
+#, fuzzy
+msgid "Local Layout"
+msgstr "&Локальний формат..."
+
+#: src/frontends/qt4/GuiDocument.cpp:1658
+#: src/frontends/qt4/GuiDocument.cpp:1664
+#: src/frontends/qt4/GuiDocument.cpp:1670
 msgid " (not installed)"
 msgstr " (не встановлено)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1672
+#: src/frontends/qt4/GuiDocument.cpp:1745
 msgid "Layouts|#o#O"
 msgstr "Формати|#ф#Ф"
 
-#: src/frontends/qt4/GuiDocument.cpp:1674
+#: src/frontends/qt4/GuiDocument.cpp:1747
 msgid "LyX Layout (*.layout)"
 msgstr "Формат LyX (*.layout)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1676
-#: src/frontends/qt4/GuiDocument.cpp:1685
+#: src/frontends/qt4/GuiDocument.cpp:1749
+#: src/frontends/qt4/GuiDocument.cpp:1758
 msgid "Local layout file"
 msgstr "Локальний файл формату"
 
-#: src/frontends/qt4/GuiDocument.cpp:1686
+#: src/frontends/qt4/GuiDocument.cpp:1759
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory. Your\n"
@@ -20313,29 +20348,29 @@ msgstr ""
 "Ймовірно, ваш документ не можна буде переглянути,\n"
 "якщо ви не розташуєте файл формату у каталозі документа."
 
-#: src/frontends/qt4/GuiDocument.cpp:1690
+#: src/frontends/qt4/GuiDocument.cpp:1763
 msgid "&Set Layout"
 msgstr "&Встановити формат"
 
-#: src/frontends/qt4/GuiDocument.cpp:1704
+#: src/frontends/qt4/GuiDocument.cpp:1777
 msgid "Unable to read local layout file."
 msgstr "Неможливо прочитати локальний файл формату."
 
-#: src/frontends/qt4/GuiDocument.cpp:1726
+#: src/frontends/qt4/GuiDocument.cpp:1799
 msgid "Select master document"
 msgstr "Оберіть головний документ"
 
-#: src/frontends/qt4/GuiDocument.cpp:1730
+#: src/frontends/qt4/GuiDocument.cpp:1803
 msgid "LyX Files (*.lyx)"
 msgstr "Файли LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1763
-#: src/frontends/qt4/GuiDocument.cpp:2996
+#: src/frontends/qt4/GuiDocument.cpp:1836
+#: src/frontends/qt4/GuiDocument.cpp:3071
 msgid "Unapplied changes"
 msgstr "Незастосовані зміни"
 
-#: src/frontends/qt4/GuiDocument.cpp:1764
-#: src/frontends/qt4/GuiDocument.cpp:2997
+#: src/frontends/qt4/GuiDocument.cpp:1837
+#: src/frontends/qt4/GuiDocument.cpp:3072
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -20344,80 +20379,80 @@ msgstr ""
 "Якщо ви не застосуєте їх зараз, ці зміни буде втрачено під час виконання "
 "вказаної дії."
 
-#: src/frontends/qt4/GuiDocument.cpp:1766
-#: src/frontends/qt4/GuiDocument.cpp:2999
+#: src/frontends/qt4/GuiDocument.cpp:1839
+#: src/frontends/qt4/GuiDocument.cpp:3074
 msgid "&Dismiss"
 msgstr "Від&кинути"
 
-#: src/frontends/qt4/GuiDocument.cpp:1778
-#: src/frontends/qt4/GuiDocument.cpp:3007
+#: src/frontends/qt4/GuiDocument.cpp:1851
+#: src/frontends/qt4/GuiDocument.cpp:3082
 msgid "Unable to set document class."
 msgstr "Неможливо встановити клас документів"
 
-#: src/frontends/qt4/GuiDocument.cpp:1819
+#: src/frontends/qt4/GuiDocument.cpp:1892
 #, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1824
+#: src/frontends/qt4/GuiDocument.cpp:1897
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s, %2$s і %3$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1837
+#: src/frontends/qt4/GuiDocument.cpp:1910
 #, c-format
 msgid "%1$s (unavailable)"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1911
+#: src/frontends/qt4/GuiDocument.cpp:1984
 msgid "Module provided by document class."
 msgstr "Модуль, який містить клас документа."
 
-#: src/frontends/qt4/GuiDocument.cpp:1919
+#: src/frontends/qt4/GuiDocument.cpp:1992
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr "Потрібні пакунки: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:1925
+#: src/frontends/qt4/GuiDocument.cpp:1998
 msgid "or"
 msgstr "або"
 
-#: src/frontends/qt4/GuiDocument.cpp:1928
+#: src/frontends/qt4/GuiDocument.cpp:2001
 #, c-format
 msgid "Module required: %1$s."
 msgstr "Потрібні модулі: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:1937
+#: src/frontends/qt4/GuiDocument.cpp:2010
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr "Виключено модулі: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:1943
+#: src/frontends/qt4/GuiDocument.cpp:2016
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "УВАГА: Деякі з потрібних пакунків недоступні!"
 
-#: src/frontends/qt4/GuiDocument.cpp:2668
+#: src/frontends/qt4/GuiDocument.cpp:2743
 msgid "[No options predefined]"
 msgstr "[Немає попередньо визначених параметрів]"
 
-#: src/frontends/qt4/GuiDocument.cpp:3019
+#: src/frontends/qt4/GuiDocument.cpp:3094
 msgid "Can't set layout!"
 msgstr "Не вдалося встановити формат!"
 
-#: src/frontends/qt4/GuiDocument.cpp:3020
+#: src/frontends/qt4/GuiDocument.cpp:3095
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Неможливо встановити формат для ID: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:3101
+#: src/frontends/qt4/GuiDocument.cpp:3188
 msgid "Not Found"
 msgstr "Не знайдено"
 
-#: src/frontends/qt4/GuiDocument.cpp:3155
+#: src/frontends/qt4/GuiDocument.cpp:3242
 msgid "Assigned master does not include this file"
 msgstr "До призначеного головного документа цей файл не включено"
 
-#: src/frontends/qt4/GuiDocument.cpp:3156
+#: src/frontends/qt4/GuiDocument.cpp:3243
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -20428,11 +20463,11 @@ msgstr ""
 "'%1$s' для того, щоб мати змогу користуватися\n"
 "можливостями головного документа."
 
-#: src/frontends/qt4/GuiDocument.cpp:3160
+#: src/frontends/qt4/GuiDocument.cpp:3247
 msgid "Could not load master"
 msgstr "Не вдалося завантажити головний документ"
 
-#: src/frontends/qt4/GuiDocument.cpp:3161
+#: src/frontends/qt4/GuiDocument.cpp:3248
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -20942,89 +20977,98 @@ msgstr "Перетворювачі"
 msgid "File formats"
 msgstr "Формати файлів"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2073
+#: src/frontends/qt4/GuiPrefs.cpp:1930 src/frontends/qt4/GuiPrefs.cpp:2082
 msgid "Format in use"
 msgstr "Формати"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2074
+#: src/frontends/qt4/GuiPrefs.cpp:1931
+#, fuzzy
+msgid ""
+"You cannot change a format's short name if the format is used by a "
+"converter. Please remove the converter first."
+msgstr ""
+"Неможливо вилучити формат, що використовується перетворювачем. Вилучіть "
+"спочатку перетворювач."
+
+#: src/frontends/qt4/GuiPrefs.cpp:2083
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Неможливо вилучити формат, що використовується перетворювачем. Вилучіть "
 "спочатку перетворювач."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2146
+#: src/frontends/qt4/GuiPrefs.cpp:2155
 msgid "LyX needs to be restarted!"
 msgstr "LyX слід перезапустити!"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2147
+#: src/frontends/qt4/GuiPrefs.cpp:2156
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
 msgstr ""
 "Зміна інтерфейсу користувача повністю набуде чинності лише після перезапуску."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2203
+#: src/frontends/qt4/GuiPrefs.cpp:2212
 msgid "Printer"
 msgstr "Принтер"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2301 src/frontends/qt4/GuiPrefs.cpp:3022
+#: src/frontends/qt4/GuiPrefs.cpp:2310 src/frontends/qt4/GuiPrefs.cpp:3031
 msgid "User interface"
 msgstr "Інтерфейс користувача"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2406
+#: src/frontends/qt4/GuiPrefs.cpp:2415
 msgid "Control"
 msgstr "Керування"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2486
+#: src/frontends/qt4/GuiPrefs.cpp:2495
 msgid "Shortcuts"
 msgstr "Клавіатурні скорочення"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2491
+#: src/frontends/qt4/GuiPrefs.cpp:2500
 msgid "Function"
 msgstr "Функція"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2492
+#: src/frontends/qt4/GuiPrefs.cpp:2501
 msgid "Shortcut"
 msgstr "Скорочення"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2571
+#: src/frontends/qt4/GuiPrefs.cpp:2580
 msgid "Cursor, Mouse and Editing functions"
 msgstr "Функції курсора, миші та редагування"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2575
+#: src/frontends/qt4/GuiPrefs.cpp:2584
 msgid "Mathematical Symbols"
 msgstr "Математичні символи"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2579
+#: src/frontends/qt4/GuiPrefs.cpp:2588
 msgid "Document and Window"
 msgstr "Документ і вікно"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2583
+#: src/frontends/qt4/GuiPrefs.cpp:2592
 msgid "Font, Layouts and Textclasses"
 msgstr "Шрифт, формат і класи тексту"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2587
+#: src/frontends/qt4/GuiPrefs.cpp:2596
 msgid "System and Miscellaneous"
 msgstr "Система та Інше"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2714 src/frontends/qt4/GuiPrefs.cpp:2760
+#: src/frontends/qt4/GuiPrefs.cpp:2723 src/frontends/qt4/GuiPrefs.cpp:2769
 msgid "Res&tore"
 msgstr "В&ідновити"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2871 src/frontends/qt4/GuiPrefs.cpp:2878
-#: src/frontends/qt4/GuiPrefs.cpp:2898 src/frontends/qt4/GuiPrefs.cpp:2917
+#: src/frontends/qt4/GuiPrefs.cpp:2880 src/frontends/qt4/GuiPrefs.cpp:2887
+#: src/frontends/qt4/GuiPrefs.cpp:2907 src/frontends/qt4/GuiPrefs.cpp:2926
 msgid "Failed to create shortcut"
 msgstr "Спроба створення клавіатурного скрочення була невдалою"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2872
+#: src/frontends/qt4/GuiPrefs.cpp:2881
 msgid "Unknown or invalid LyX function"
 msgstr "Невідома або неправильна функція LyX"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2879
+#: src/frontends/qt4/GuiPrefs.cpp:2888
 msgid "Invalid or empty key sequence"
 msgstr "Некоректна або порожня послідовність клавіш"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2899
+#: src/frontends/qt4/GuiPrefs.cpp:2908
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -21035,35 +21079,35 @@ msgstr ""
 "%2$s\n"
 "Вам слід вилучити цю прив’язку до створення нової."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2918
+#: src/frontends/qt4/GuiPrefs.cpp:2927
 msgid "Can not insert shortcut to the list"
 msgstr "Не вдалося додати скорочення до списку"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2949
+#: src/frontends/qt4/GuiPrefs.cpp:2958
 msgid "Identity"
 msgstr "Профіль"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3146
+#: src/frontends/qt4/GuiPrefs.cpp:3155
 msgid "Choose bind file"
 msgstr "Оберіть файл зв'язки"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3147
+#: src/frontends/qt4/GuiPrefs.cpp:3156
 msgid "LyX bind files (*.bind)"
 msgstr "Бази даних BiBTeX (*.bib)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3153
+#: src/frontends/qt4/GuiPrefs.cpp:3162
 msgid "Choose UI file"
 msgstr "Оберіть файл інтерфейсу (UI)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3154
+#: src/frontends/qt4/GuiPrefs.cpp:3163
 msgid "LyX UI files (*.ui)"
 msgstr "Файли інтерфейсу LyX (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3160
+#: src/frontends/qt4/GuiPrefs.cpp:3169
 msgid "Choose keyboard map"
 msgstr "Оберіть розкладку клавіатури"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3161
+#: src/frontends/qt4/GuiPrefs.cpp:3170
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "Розкладки клавіатури LyX (*.kmap)"
 
@@ -21978,106 +22022,111 @@ msgstr "Введіть символи для фільтрування списк
 msgid " (unknown)"
 msgstr " (невідомий)"
 
-#: src/frontends/qt4/Menus.cpp:722
+#: src/frontends/qt4/Menus.cpp:723
 msgid "No Group"
 msgstr "Без групування"
 
-#: src/frontends/qt4/Menus.cpp:744 src/frontends/qt4/Menus.cpp:745
+#: src/frontends/qt4/Menus.cpp:747 src/frontends/qt4/Menus.cpp:748
 msgid "More Spelling Suggestions"
 msgstr "Інші пропозиції правопису"
 
-#: src/frontends/qt4/Menus.cpp:761
+#: src/frontends/qt4/Menus.cpp:764
 msgid "Add to personal dictionary|c"
 msgstr "Додати до особистого словника|о"
 
-#: src/frontends/qt4/Menus.cpp:763
+#: src/frontends/qt4/Menus.cpp:766
 msgid "Ignore all|I"
 msgstr "Ігнорувати всі|г"
 
-#: src/frontends/qt4/Menus.cpp:794
+#: src/frontends/qt4/Menus.cpp:773
+#, fuzzy
+msgid "Remove from personal dictionary|r"
+msgstr "Додати до особистого словника|о"
+
+#: src/frontends/qt4/Menus.cpp:811
 msgid "Language|L"
 msgstr "Мова|М"
 
-#: src/frontends/qt4/Menus.cpp:796
+#: src/frontends/qt4/Menus.cpp:813
 msgid "More Languages ...|M"
 msgstr "Інші мови...|ш"
 
-#: src/frontends/qt4/Menus.cpp:865 src/frontends/qt4/Menus.cpp:866
+#: src/frontends/qt4/Menus.cpp:882 src/frontends/qt4/Menus.cpp:883
 msgid "Invisible"
 msgstr "Невидимий"
 
-#: src/frontends/qt4/Menus.cpp:898
+#: src/frontends/qt4/Menus.cpp:915
 msgid "<No Documents Open>"
 msgstr "<Не відкрито жодного документа>"
 
-#: src/frontends/qt4/Menus.cpp:918
+#: src/frontends/qt4/Menus.cpp:935
 msgid "<No Bookmarks Saved Yet>"
 msgstr "<Ще не збережено жодної закладки>"
 
-#: src/frontends/qt4/Menus.cpp:956
+#: src/frontends/qt4/Menus.cpp:973
 msgid "View (Other Formats)|F"
 msgstr "Переглянути (інші формати)|л"
 
-#: src/frontends/qt4/Menus.cpp:957
+#: src/frontends/qt4/Menus.cpp:974
 msgid "Update (Other Formats)|p"
 msgstr "Оновити (інші формати)|ш"
 
-#: src/frontends/qt4/Menus.cpp:990
+#: src/frontends/qt4/Menus.cpp:1007
 #, c-format
 msgid "View [%1$s]|V"
 msgstr "Переглянути [%1$s]|л"
 
-#: src/frontends/qt4/Menus.cpp:991
+#: src/frontends/qt4/Menus.cpp:1008
 #, c-format
 msgid "Update [%1$s]|U"
 msgstr "Оновити [%1$s]|т"
 
-#: src/frontends/qt4/Menus.cpp:1084
+#: src/frontends/qt4/Menus.cpp:1101
 msgid "No Custom Insets Defined!"
 msgstr "Нетипових вкладок не визначено!"
 
-#: src/frontends/qt4/Menus.cpp:1156
+#: src/frontends/qt4/Menus.cpp:1173
 msgid "<No Document Open>"
 msgstr "<Не відкрито жодного документа>"
 
-#: src/frontends/qt4/Menus.cpp:1166
+#: src/frontends/qt4/Menus.cpp:1183
 msgid "Master Document"
 msgstr "Головний документ"
 
-#: src/frontends/qt4/Menus.cpp:1183
+#: src/frontends/qt4/Menus.cpp:1200
 msgid "Open Navigator..."
 msgstr "Відкрити навігатор..."
 
-#: src/frontends/qt4/Menus.cpp:1204
+#: src/frontends/qt4/Menus.cpp:1221
 msgid "Other Lists"
 msgstr "Інші списки"
 
-#: src/frontends/qt4/Menus.cpp:1217
+#: src/frontends/qt4/Menus.cpp:1234
 msgid "<Empty Table of Contents>"
 msgstr "<Порожній Зміст>"
 
-#: src/frontends/qt4/Menus.cpp:1252
+#: src/frontends/qt4/Menus.cpp:1269
 msgid "Other Toolbars"
 msgstr "Інші панелі інструментів"
 
-#: src/frontends/qt4/Menus.cpp:1267
+#: src/frontends/qt4/Menus.cpp:1284
 msgid "No Branches Set for Document!"
 msgstr "У документа немає гілок!"
 
-#: src/frontends/qt4/Menus.cpp:1328
+#: src/frontends/qt4/Menus.cpp:1345
 msgid "Index Entry|d"
 msgstr "Запис у предметному покажчику|п"
 
-#: src/frontends/qt4/Menus.cpp:1346 src/frontends/qt4/Menus.cpp:1376
+#: src/frontends/qt4/Menus.cpp:1363 src/frontends/qt4/Menus.cpp:1393
 #: src/insets/InsetIndex.cpp:276
 msgid "Index Entry"
 msgstr "Запис покажчика"
 
-#: src/frontends/qt4/Menus.cpp:1394
+#: src/frontends/qt4/Menus.cpp:1411
 msgid "No Citation in Scope!"
 msgstr "У області видимості немає цитат!"
 
-#: src/frontends/qt4/Menus.cpp:1959
+#: src/frontends/qt4/Menus.cpp:1976
 msgid "No Action Defined!"
 msgstr "Дію не визначено!"
 
@@ -22174,6 +22223,11 @@ msgstr "Список версій"
 #: src/frontends/qt4/qt_helpers.cpp:565
 msgid "List of Changes"
 msgstr "Список змін"
+
+#: src/frontends/qt4/ui_RefUi.h:307
+#, fuzzy
+msgid "Group labels by prefix (e.g. \"sec:\")"
+msgstr "Групувати мітки за префіксом (наприклад, \"sec:\")"
 
 #: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:285
 #: src/insets/InsetGraphics.cpp:594 src/insets/InsetInclude.cpp:511
@@ -22349,7 +22403,7 @@ msgstr "Undef: "
 msgid "branch"
 msgstr "branch"
 
-#: src/insets/InsetCaption.cpp:336
+#: src/insets/InsetCaption.cpp:338
 #, c-format
 msgid "Sub-%1$s"
 msgstr "Під-%1$s"
@@ -22988,7 +23042,7 @@ msgstr "Нерозривний горизонтальний проміжок (%1
 msgid "Unknown TOC type"
 msgstr "Невідомий тип Змісту"
 
-#: src/insets/InsetTabular.cpp:4489
+#: src/insets/InsetTabular.cpp:4490
 msgid "Selection size should match clipboard content."
 msgstr "Розмір вибраного має відповідати розміру вмісту буфера обміну даними."
 
@@ -23149,7 +23203,7 @@ msgstr "Знайдено відповідний варіант!"
 msgid " Macro: %1$s: "
 msgstr " Макрос: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1558
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1573
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23190,25 +23244,25 @@ msgstr "Нічого вилучати"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Невідома властивість таблиці '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1284 src/mathed/InsetMathHull.cpp:1293
+#: src/mathed/InsetMathHull.cpp:1299 src/mathed/InsetMathHull.cpp:1308
 msgid "No number"
 msgstr "Без номеру"
 
-#: src/mathed/InsetMathHull.cpp:1284 src/mathed/InsetMathHull.cpp:1293
+#: src/mathed/InsetMathHull.cpp:1299 src/mathed/InsetMathHull.cpp:1308
 msgid "Number"
 msgstr "Номер"
 
-#: src/mathed/InsetMathHull.cpp:1531
+#: src/mathed/InsetMathHull.cpp:1546
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Не можу змінити число рядків в '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1541
+#: src/mathed/InsetMathHull.cpp:1556
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Не можу змінити кількість колонок до '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1551
+#: src/mathed/InsetMathHull.cpp:1566
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Не можу додати горизонтальні лінії ґратки '%1$s'"
@@ -23442,6 +23496,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Невідомий користувач"
+
+#, fuzzy
+#~ msgid "Textual reference plus <page>"
+#~ msgstr "<посилання> на сторінці <номер>"
 
 #~ msgid "LyX binary not found"
 #~ msgstr "Не знайдено виконуваного файла LyX"
