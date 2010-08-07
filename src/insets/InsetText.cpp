@@ -397,7 +397,7 @@ int InsetText::latex(odocstream & os, OutputParams const & runparams) const
 	}
 	OutputParams rp = runparams;
 	if (il.isPassThru())
-		rp.verbatim = true;
+		rp.pass_thru = true;
 	if (il.isNeedProtect())
 		rp.moving_arg = true;
 

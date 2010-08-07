@@ -584,7 +584,7 @@ bool Paragraph::Private::simpleTeXBlanks(OutputParams const & runparams,
 				       Font const & font,
 				       Layout const & style)
 {
-	if (style.pass_thru || runparams.verbatim)
+	if (style.pass_thru || runparams.pass_thru)
 		return false;
 
 	if (i + 1 < int(text_.size())) {
@@ -716,19 +716,18 @@ bool Paragraph::Private::isTextAt(string const & str, pos_type pos) const
 }
 
 
-void Paragraph::Private::latexInset(
-					     BufferParams const & bparams,
-					     odocstream & os,
-					     TexRow & texrow,
-					     OutputParams & runparams,
-					     Font & running_font,
-					     Font & basefont,
-					     Font const & outerfont,
-					     bool & open_font,
-					     Change & running_change,
-					     Layout const & style,
-					     pos_type & i,
-					     unsigned int & column)
+void Paragraph::Private::latexInset(BufferParams const & bparams,
+				    odocstream & os,
+				    TexRow & texrow,
+				    OutputParams & runparams,
+				    Font & running_font,
+				    Font & basefont,
+				    Font const & outerfont,
+				    bool & open_font,
+				    Change & running_change,
+				    Layout const & style,
+				    pos_type & i,
+				    unsigned int & column)
 {
 	Inset * inset = owner_->getInset(i);
 	LASSERT(inset, /**/);
@@ -870,18 +869,11 @@ void Paragraph::Private::latexSpecialChar(
 {
 	char_type const c = text_[i];
 
-	if (style.pass_thru) {
+	if (style.pass_thru || runparams.pass_thru) {
 		if (c != '\0')
 			// FIXME UNICODE: This can fail if c cannot
 			// be encoded in the current encoding.
 			os.put(c);
-		return;
-	}
-
-	if (runparams.verbatim) {
-		// FIXME UNICODE: This can fail if c cannot
-		// be encoded in the current encoding.
-		os.put(c);
 		return;
 	}
 
@@ -2127,7 +2119,7 @@ void Paragraph::latex(BufferParams const & bparams,
 		}
 
 		// Switch file encoding if necessary (and allowed)
-		if (!runparams.verbatim && 
+		if (!runparams.pass_thru && !style.pass_thru &&
 		    runparams.encoding->package() != Encoding::none &&
 		    font.language()->encoding()->package() != Encoding::none) {
 			pair<bool, int> const enc_switch = switchEncoding(os, bparams,

@@ -373,7 +373,7 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 		open_encoding_ = none;
 	}
 
-	if (runparams.verbatim) {
+	if (runparams.pass_thru) {
 		int const dist = distance(paragraphs.begin(), pit);
 		Font const outerfont = text.outerFont(dist);
 

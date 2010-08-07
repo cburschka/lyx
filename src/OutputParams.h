@@ -221,7 +221,7 @@ public:
 	bool dryrun;
 	
 	/// Should we output verbatim or escape LaTeX's special chars?
-	bool verbatim;
+	bool pass_thru;
 	
 	/// Should we output captions?
 	bool html_disable_captions;
