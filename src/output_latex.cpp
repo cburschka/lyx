@@ -384,7 +384,7 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 		}
 
 		pit->latex(bparams, outerfont, os, texrow,
-							 runparams, start_pos, end_pos);
+		           runparams, start_pos, end_pos);
 		return nextpit;
 	}
 
