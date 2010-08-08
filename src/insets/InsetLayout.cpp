@@ -234,10 +234,10 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_FORCEPLAIN:
 			lex >> forceplain_;
+			readCustomOrPlain = true;
 			break;
 		case IL_PASSTHRU:
 			lex >> passthru_;
-			readCustomOrPlain = true;
 			break;
 		case IL_KEEPEMPTY:
 			lex >> keepempty_;
