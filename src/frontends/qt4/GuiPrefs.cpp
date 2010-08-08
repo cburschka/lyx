@@ -900,8 +900,6 @@ PrefScreenFonts::PrefScreenFonts(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(screenZoomSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
-	connect(screenDpiSB, SIGNAL(valueChanged(int)),
-		this, SIGNAL(changed()));
 	connect(screenTinyED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(screenSmallestED, SIGNAL(textChanged(QString)),
@@ -950,7 +948,6 @@ void PrefScreenFonts::apply(LyXRC & rc) const
 		rc.typewriter_font_name, rc.typewriter_font_foundry);
 
 	rc.zoom = screenZoomSB->value();
-	rc.dpi = screenDpiSB->value();
 	rc.font_sizes[FONT_SIZE_TINY] = widgetToDoubleStr(screenTinyED);
 	rc.font_sizes[FONT_SIZE_SCRIPT] = widgetToDoubleStr(screenSmallestED);
 	rc.font_sizes[FONT_SIZE_FOOTNOTE] = widgetToDoubleStr(screenSmallerED);
@@ -967,7 +964,7 @@ void PrefScreenFonts::apply(LyXRC & rc) const
 		|| rc.roman_font_name != oldrc.roman_font_name
 		|| rc.sans_font_name != oldrc.sans_font_name
 		|| rc.typewriter_font_name != oldrc.typewriter_font_name
-		|| rc.zoom != oldrc.zoom || rc.dpi != oldrc.dpi) {
+		|| rc.zoom != oldrc.zoom) {
 		// The global QPixmapCache is used in GuiPainter to cache text
 		// painting so we must reset it in case any of the above
 		// parameter is changed.
@@ -992,7 +989,6 @@ void PrefScreenFonts::update(LyXRC const & rc)
 	selectTypewriter(screenTypewriterCO->currentText());
 
 	screenZoomSB->setValue(rc.zoom);
-	screenDpiSB->setValue(rc.dpi);
 	doubleToWidget(screenTinyED, rc.font_sizes[FONT_SIZE_TINY]);
 	doubleToWidget(screenSmallestED, rc.font_sizes[FONT_SIZE_SCRIPT]);
 	doubleToWidget(screenSmallerED, rc.font_sizes[FONT_SIZE_FOOTNOTE]);
