@@ -330,7 +330,7 @@ void RowPainter::paintForeignMark(double orig_x, Language const * lang,
 void RowPainter::paintMisspelledMark(double orig_x, int desc)
 {
 	int const y = yo_ + desc;
-	pi_.pain.wavyHorizontalLine(int(orig_x), y, int(x_) - int(orig_x), Color_red);
+	pi_.pain.line(int(orig_x), y, int(x_), y, Color_red, Painter::line_onoffdash, Painter::line_thin);
 }
 
 
@@ -363,7 +363,7 @@ void RowPainter::paintFromPos(pos_type & vpos)
 	paintForeignMark(orig_x, orig_font.language());
 
 	if (lyxrc.spellcheck_continuously && orig_font.isMisspelled())
-		paintMisspelledMark(orig_x, 3);
+		paintMisspelledMark(orig_x, 2);
 }
 
 
