@@ -1088,18 +1088,26 @@ PrefColors::PrefColors(GuiPreferences * form)
 		this, SLOT(changeLyxObjectsSelection()));
 	connect(lyxObjectsLW, SIGNAL(itemActivated(QListWidgetItem*)),
 		this, SLOT(changeColor()));
+	connect(syscolorsCB, SIGNAL(toggled(bool)),
+		this, SIGNAL(changed()));
 }
 
 
-void PrefColors::apply(LyXRC & /*rc*/) const
+void PrefColors::apply(LyXRC & rc) const
 {
+	LyXRC oldrc = rc;
+
 	for (unsigned int i = 0; i < lcolors_.size(); ++i)
 		if (curcolors_[i] != newcolors_[i])
 			form_->setColor(lcolors_[i], newcolors_[i]);
+	rc.use_system_colors = syscolorsCB->isChecked();
+
+	if (oldrc.use_system_colors != rc.use_system_colors)
+		guiApp->colorCache().clear();
 }
 
 
-void PrefColors::update(LyXRC const & /*rc*/)
+void PrefColors::update(LyXRC const & rc)
 {
 	for (unsigned int i = 0; i < lcolors_.size(); ++i) {
 		QColor color = QColor(guiApp->colorCache().get(lcolors_[i]));
@@ -1108,6 +1116,7 @@ void PrefColors::update(LyXRC const & /*rc*/)
 		lyxObjectsLW->item(i)->setIcon(QIcon(coloritem));
 		newcolors_[i] = curcolors_[i] = color.name();
 	}
+	syscolorsCB->setChecked(rc.use_system_colors);
 	changeLyxObjectsSelection();
 }
 
@@ -3080,6 +3089,7 @@ void GuiPreferences::applyView()
 {
 	apply(rc());
 }
+
 
 bool GuiPreferences::initialiseParams(string const &)
 {

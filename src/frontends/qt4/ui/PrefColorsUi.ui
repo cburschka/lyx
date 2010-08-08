@@ -5,26 +5,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>199</width>
-    <height>226</height>
+    <width>231</width>
+    <height>254</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string/>
   </property>
   <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
    <item rowspan="2" row="0" column="0" >
     <widget class="QListWidget" name="lyxObjectsLW" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>5</hsizetype>
-       <vsizetype>7</vsizetype>
+      <sizepolicy vsizetype="Expanding" hsizetype="Preferred" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -63,6 +55,13 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="2" column="0" colspan="2" >
+    <widget class="QCheckBox" name="syscolorsCB" >
+     <property name="text" >
+      <string>Use system colors</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

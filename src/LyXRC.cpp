@@ -199,6 +199,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\use_pixmap_cache", LyXRC::RC_USE_PIXMAP_CACHE },
 	// compatibility with versions older than 1.4.0 only
 	{ "\\use_pspell", LyXRC::RC_USE_SPELL_LIB },
+	{ "\\use_system_colors", LyXRC::RC_USE_SYSTEM_COLORS },
 	// compatibility with versions older than 1.4.0 only
 	{ "\\use_tempdir", LyXRC::RC_USETEMPDIR },
 	{ "\\use_tooltip", LyXRC::RC_USE_TOOLTIP },
@@ -330,6 +331,7 @@ void LyXRC::setDefaults()
 	preview_hashed_labels  = false;
 	preview_scale_factor = 1.0;
 	use_converter_cache = true;
+	use_system_colors = true;
 	use_tooltip = true;
 	use_pixmap_cache = false;
 	converter_cache_maxage = 6 * 30 * 24 * 3600; // 6 months
@@ -913,6 +915,9 @@ int LyXRC::read(Lexer & lexrc)
 			// Spellchecker settings:
 		case RC_ACCEPT_COMPOUND:
 			lexrc >> spellchecker_accept_compound;
+			break;
+		case RC_USE_SYSTEM_COLORS:
+			lexrc >> use_system_colors;
 			break;
 		case RC_USE_TOOLTIP:
 			lexrc >> use_tooltip;
@@ -2382,6 +2387,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		// obsoleted in 2.0
 		if (tag != RC_LAST)
 			break;
+	case RC_USE_SYSTEM_COLORS:
+		if (ignore_system_lyxrc ||
+		    use_system_colors != system_lyxrc.use_system_colors) {
+			os << "\\use_system_colors "
+			   << convert<string>(use_system_colors)
+			   << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
 	case RC_USE_TOOLTIP:
 		if (ignore_system_lyxrc ||
 		    use_tooltip != system_lyxrc.use_tooltip) {
@@ -2932,6 +2946,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_USE_ESC_CHARS:
 	case LyXRC::RC_USE_INP_ENC:
 	case LyXRC::RC_USE_PERS_DICT:
+	case LyXRC::RC_USE_SYSTEM_COLORS:
 	case LyXRC::RC_USE_TOOLTIP:
 	case LyXRC::RC_USE_PIXMAP_CACHE:
 	case LyXRC::RC_USE_SPELL_LIB:
@@ -3380,6 +3395,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_USETEMPDIR:
+		break;
+
+	case RC_USE_TOOLTIP:
+		str = _("Enable use the system colors for some things like main window background and selection.");
 		break;
 
 	case RC_USE_TOOLTIP:

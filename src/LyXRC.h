@@ -182,6 +182,7 @@ public:
 		RC_USE_ESC_CHARS,
 		RC_USE_INP_ENC,
 		RC_USE_PERS_DICT,
+		RC_USE_SYSTEM_COLORS,
 		RC_USE_TOOLTIP,
 		RC_USE_PIXMAP_CACHE,
 		RC_USE_SPELL_LIB,
@@ -351,6 +352,8 @@ public:
 	bool paragraph_markers;
 	/// Use tooltips?
 	bool use_tooltip;
+	/// Use the colors from current system theme?
+	bool use_system_colors;
 	/// Use pixmap cache?
 	bool use_pixmap_cache;
 	/// Spellchecker engine: aspell, hunspell, etc

@@ -10,15 +10,56 @@
 
 #include <config.h>
 
+#include "LyXRC.h"
+
 #include "ColorCache.h"
 #include "ColorSet.h"
 
 namespace lyx {
 
+void ColorCache::setColor(int col, QPalette::ColorRole cr)
+{
+	lcolors_[col] = pal_.brush(QPalette::Active, cr).color();
+}
+
+
 void ColorCache::init()
 {
-	for (int col = 0; col <= Color_ignore; ++col)
-		lcolors_[col] = QColor(lcolor.getX11Name(ColorCode(col)).c_str());
+	if (lyxrc.use_system_colors) {
+		for (int col = 0; col <= Color_ignore; ++col) {
+			switch (ColorCode(col)) {
+			case Color_background:
+			case Color_commentbg:
+			case Color_greyedoutbg:
+			case Color_mathbg:
+			case Color_graphicsbg:
+			case Color_mathmacrobg:
+			case Color_mathcorners:
+				setColor(col, QPalette::Base);
+				break;
+				
+			case Color_foreground:
+			case Color_cursor:
+			case Color_preview:
+			case Color_tabularline:
+			case Color_previewframe:
+				setColor(col, QPalette::Text);
+				break;
+				
+			case Color_selection:
+				setColor(col, QPalette::Highlight);
+				break;
+			case Color_selectiontext:
+				setColor(col, QPalette::HighlightedText);
+				break;
+			default:
+				lcolors_[col] = QColor(lcolor.getX11Name(ColorCode(col)).c_str());
+			}
+		}
+	} else {
+		for (int col = 0; col <= Color_ignore; ++col) 
+			lcolors_[col] = QColor(lcolor.getX11Name(ColorCode(col)).c_str());
+	}
 	initialized_ = true;
 }
 
