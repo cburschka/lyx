@@ -342,9 +342,6 @@ public:
 	*/
 	void validate(LaTeXFeatures &) const;
 
-	/// Update the list of all bibfiles in use (including bibfiles
-	/// of loaded child documents).
-	void updateBibfilesCache(UpdateScope scope = UpdateMaster) const;
 	/// Return the list with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
 	support::FileNameList const & 
@@ -354,6 +351,8 @@ public:
 	/// Calling this method invalidates the cache and so requires a
 	/// re-read.
 	void invalidateBibinfoCache();
+	/// This invalidates the cache of files we need to check.
+	void invalidateBibfileCache();
 	/// Updates the cached bibliography information.
 	/// Note that you MUST call this method to update the cache. It will
 	/// not happen otherwise. (Currently, it is called at the start of
@@ -579,6 +578,9 @@ private:
 			    bool fromString = false);
 	///
 	void getLanguages(std::set<Language const *> &) const;
+	/// Update the list of all bibfiles in use (including bibfiles
+	/// of loaded child documents).
+	void updateBibfilesCache(UpdateScope scope = UpdateMaster) const;
 
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;

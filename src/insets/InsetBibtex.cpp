@@ -101,7 +101,8 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		//
 		setParams(p);
-		buffer().updateBibfilesCache();
+		buffer().invalidateBibfileCache();
+		cur.forceBufferUpdate();
 		break;
 	}
 

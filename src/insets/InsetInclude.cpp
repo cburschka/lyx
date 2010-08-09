@@ -235,7 +235,7 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INSET_MODIFY: {
-		// It should be OK just to invalidate the cache is setParams()
+		// It should be OK just to invalidate the cache in setParams()
 		// If not....
 		// child_buffer_ = 0;
 		InsetCommandParams p(INCLUDE_CODE);
@@ -338,7 +338,7 @@ void InsetInclude::setParams(InsetCommandParams const & p)
 	if (type(params()) == INPUT)
 		add_preview(*preview_, *this, buffer());
 
-	buffer().updateBibfilesCache();
+	buffer().invalidateBibfileCache();
 }
 
 
@@ -839,26 +839,6 @@ void InsetInclude::fillWithBibKeys(BiblioInfo & keys,
 		BiblioInfo const & newkeys = tmp->localBibInfo();
 		keys.mergeBiblioInfo(newkeys);
 	}
-}
-
-
-void InsetInclude::updateBibfilesCache()
-{
-	Buffer const * const child = getChildBuffer();
-	if (child)
-		child->updateBibfilesCache(Buffer::UpdateChildOnly);
-}
-
-
-support::FileNameList const &
-	InsetInclude::getBibfilesCache() const
-{
-	Buffer const * const child = getChildBuffer();
-	if (child)
-		return child->getBibfilesCache(Buffer::UpdateChildOnly);
-
-	static support::FileNameList const empty;
-	return empty;
 }
 
 

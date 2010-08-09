@@ -61,20 +61,6 @@ public:
 	 */
 	void fillWithBibKeys(BiblioInfo & keys, InsetIterator const & it) const;
 	
-	/** Update the cache with all bibfiles in use of the child buffer
-	 *  (including bibfiles of grandchild documents).
-	 *  Does nothing if the child document is not loaded to prevent
-	 *  automatic loading of all child documents upon loading the master.
-	 *  \param buffer the Buffer containing this inset.
-	 */
-	void updateBibfilesCache();
-	/** Return the cache with all bibfiles in use of the child buffer
-	 *  (including bibfiles of grandchild documents).
-	 *  Return an empty vector if the child doc is not loaded.
-	 *  \param buffer the Buffer containing this inset.
-	 */
-	support::FileNameList const &
-		getBibfilesCache() const;
 	///
 	bool hasSettings() const { return true; }
 	///

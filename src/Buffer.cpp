@@ -256,6 +256,8 @@ public:
 	mutable BiblioInfo bibinfo_;
 	/// whether the bibinfo cache is valid
 	bool bibinfo_cache_valid_;
+	/// whether the bibfile cache is valid
+	bool bibfile_cache_valid_;
 	/// Cache of timestamps of .bib files
 	map<FileName, time_t> bibfile_status_;
 
@@ -323,7 +325,8 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
 	  toc_backend(owner), macro_lock(false), timestamp_(0),
 	  checksum_(0), wa_(0), gui_(0), undo_(*owner), bibinfo_cache_valid_(false),
-	  cloned_buffer_(cloned_buffer), doing_export(false), parent_buffer(0)
+		bibfile_cache_valid_(false), cloned_buffer_(cloned_buffer), 
+		doing_export(false), parent_buffer(0)
 {
 	if (!cloned_buffer_) {
 		temppath = createBufferTmpDir();
@@ -338,6 +341,7 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	bibfiles_cache_ = cloned_buffer_->d->bibfiles_cache_;
 	bibinfo_ = cloned_buffer_->d->bibinfo_;
 	bibinfo_cache_valid_ = cloned_buffer_->d->bibinfo_cache_valid_;
+	bibfile_cache_valid_ = cloned_buffer_->d->bibfile_cache_valid_;
 	bibfile_status_ = cloned_buffer_->d->bibfile_status_;
 }
 
@@ -1716,18 +1720,22 @@ void Buffer::updateBibfilesCache(UpdateScope scope) const
 		} else if (it->lyxCode() == INCLUDE_CODE) {
 			InsetInclude & inset =
 				static_cast<InsetInclude &>(*it);
-			inset.updateBibfilesCache();
+			Buffer const * const incbuf = inset.getChildBuffer();
+			if (!incbuf)
+				continue;
+			incbuf->updateBibfilesCache(UpdateChildOnly);
 			support::FileNameList const & bibfiles =
-					inset.getBibfilesCache();
+					incbuf->getBibfilesCache(UpdateChildOnly);
 			if (!bibfiles.empty()) {
 				d->bibfiles_cache_.insert(d->bibfiles_cache_.end(),
 					bibfiles.begin(),
 					bibfiles.end());
 				// the bibinfo cache is now invalid
 				d->bibinfo_cache_valid_ = false;
-			}	
+			}
 		}
 	}
+	d->bibfile_cache_valid_ = true;
 }
 
 
@@ -1737,6 +1745,11 @@ void Buffer::invalidateBibinfoCache()
 }
 
 
+void Buffer::invalidateBibfileCache()
+{
+	d->bibfile_cache_valid_ = false;
+}
+
 support::FileNameList const & Buffer::getBibfilesCache(UpdateScope scope) const
 {
 	// If this is a child document, use the parent's cache instead.
@@ -1744,9 +1757,8 @@ support::FileNameList const & Buffer::getBibfilesCache(UpdateScope scope) const
 	if (pbuf && scope != UpdateChildOnly)
 		return pbuf->getBibfilesCache();
 
-	// We update the cache when first used instead of at loading time.
-	if (d->bibfiles_cache_.empty())
-		const_cast<Buffer *>(this)->updateBibfilesCache(scope);
+	if (!d->bibfile_cache_valid_)
+		this->updateBibfilesCache(scope);
 
 	return d->bibfiles_cache_;
 }
@@ -1785,6 +1797,8 @@ void Buffer::checkBibInfoCache() const
 		}
 	}
 
+	// FIXME Don't do this here, but instead gather them as we go through
+	// updateBuffer().
 	if (!d->bibinfo_cache_valid_) {
 		d->bibinfo_.clear();
 		for (InsetIterator it = inset_iterator_begin(inset()); it; ++it)
