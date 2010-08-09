@@ -3397,7 +3397,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_USETEMPDIR:
 		break;
 
-	case RC_USE_TOOLTIP:
+	case RC_USE_USE_SYSTEM_COLORS:
 		str = _("Enable use the system colors for some things like main window background and selection.");
 		break;
 
