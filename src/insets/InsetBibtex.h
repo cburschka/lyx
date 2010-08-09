@@ -42,7 +42,7 @@ public:
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
-	void fillWithBibKeys(BiblioInfo &) const;
+	void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
 	///
 	support::FileNameList getBibFiles() const;
 	///

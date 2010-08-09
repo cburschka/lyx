@@ -258,17 +258,11 @@ docstring bibitemWidest(Buffer const & buffer, OutputParams const & runparams)
 }
 
 
-void InsetBibitem::fillWithBibKeys(BiblioInfo & keys) const
+void InsetBibitem::fillWithBibKeys(BiblioInfo & keys, InsetIterator const & it) const
 {
 	docstring const key = getParam("key");
-	// false means it's not BibTeX
 	BibTeXInfo keyvalmap(false);
 	keyvalmap.label(bibLabel());
-	// The indirection here is a little annoying, but
-	//	DocIterator(Buffer *, Inset *) 
-	// is private.
-	InsetBibitem & me = const_cast<InsetBibitem &>(*this);
-	InsetIterator it(me);
 	DocIterator doc_it(it); 
 	doc_it.forwardPos();
 	keyvalmap[from_ascii("ref")] = doc_it.paragraph().asString();

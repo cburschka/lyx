@@ -59,7 +59,7 @@ public:
 	 *  \param keys the list of bibkeys in the child buffer.
 	 *  \param it not used here
 	 */
-	void fillWithBibKeys(BiblioInfo & keys) const;
+	void fillWithBibKeys(BiblioInfo & keys, InsetIterator const & it) const;
 	
 	///
 	bool hasSettings() const { return true; }

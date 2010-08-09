@@ -662,7 +662,8 @@ namespace {
 
 
 // This method returns a comma separated list of Bibtex entries
-void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist) const
+void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
+	InsetIterator const & /*di*/) const
 {
 	// This bibtex parser is a first step to parse bibtex files
 	// more precisely.

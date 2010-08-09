@@ -63,7 +63,7 @@ private:
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
-	virtual void fillWithBibKeys(BiblioInfo &) const;
+	virtual void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
 	/// Update the counter of this inset
 	void updateBuffer(ParIterator const &, UpdateType);
 	///
