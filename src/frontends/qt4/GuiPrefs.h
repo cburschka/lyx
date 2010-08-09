@@ -254,6 +254,7 @@ public:
 
 private Q_SLOTS:
 	void changeColor();
+	void changeSysColor();
 	void changeLyxObjectsSelection();
 
 private:

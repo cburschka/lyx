@@ -17,65 +17,79 @@
 
 namespace lyx {
 
-void ColorCache::setColor(int col, QPalette::ColorRole cr)
+namespace{
+// FIXME (later): Qt >= 4.4 has a proper QPalette::NoRole value.
+QPalette::ColorRole const NoRole = static_cast<QPalette::ColorRole>(-1);
+
+QPalette::ColorRole role(ColorCode col)
 {
-	lcolors_[col] = pal_.brush(QPalette::Active, cr).color();
+	switch (ColorCode(col)) {
+	case Color_background:
+	case Color_commentbg:
+	case Color_greyedoutbg:
+	case Color_mathbg:
+	case Color_graphicsbg:
+	case Color_mathmacrobg:
+	case Color_mathcorners:
+		return QPalette::Base;
+		break;
+				
+	case Color_foreground:
+	case Color_cursor:
+	case Color_preview:
+	case Color_tabularline:
+	case Color_previewframe:
+		return QPalette::Text;
+		break;
+				
+	case Color_selection:
+		return QPalette::Highlight;
+		break;
+	case Color_selectiontext:
+		return QPalette::HighlightedText;
+		break;
+	default:
+		return NoRole;
+	}
+}
+
 }
 
 
 void ColorCache::init()
 {
-	if (lyxrc.use_system_colors) {
-		for (int col = 0; col <= Color_ignore; ++col) {
-			switch (ColorCode(col)) {
-			case Color_background:
-			case Color_commentbg:
-			case Color_greyedoutbg:
-			case Color_mathbg:
-			case Color_graphicsbg:
-			case Color_mathmacrobg:
-			case Color_mathcorners:
-				setColor(col, QPalette::Base);
-				break;
-				
-			case Color_foreground:
-			case Color_cursor:
-			case Color_preview:
-			case Color_tabularline:
-			case Color_previewframe:
-				setColor(col, QPalette::Text);
-				break;
-				
-			case Color_selection:
-				setColor(col, QPalette::Highlight);
-				break;
-			case Color_selectiontext:
-				setColor(col, QPalette::HighlightedText);
-				break;
-			default:
-				lcolors_[col] = QColor(lcolor.getX11Name(ColorCode(col)).c_str());
-			}
-		}
-	} else {
-		for (int col = 0; col <= Color_ignore; ++col) 
-			lcolors_[col] = QColor(lcolor.getX11Name(ColorCode(col)).c_str());
+	for (int col = 0; col <= Color_ignore; ++col) {
+		lcolors_[col] = QColor(lcolor.getX11Name(ColorCode(col)).c_str());
 	}
+
 	initialized_ = true;
 }
 
 
 /// get the given color
-QColor ColorCache::get(Color color) const
+QColor ColorCache::get(Color const & color) const
+{
+	return get(color, lyxrc.use_system_colors);
+}
+
+
+/// get the given color
+QColor ColorCache::get(Color const & color, bool syscolors) const
 {
 	if (!initialized_)
 		const_cast<ColorCache *>(this)->init();
-	if (color <= Color_ignore && color.mergeColor == Color_ignore)
-		return lcolors_[color.baseColor];
+	if (color <= Color_ignore && color.mergeColor == Color_ignore) {
+		QPalette::ColorRole cr = role(color.baseColor);
+		if (syscolors && cr != NoRole) 
+			return pal_.brush(QPalette::Active, cr).color();
+		else
+			return lcolors_[color.baseColor];
+	}
 	if (color.mergeColor != Color_ignore) {
 		// FIXME: This would ideally be done in the Color class, but
 		// that means that we'd have to use the Qt code in the core.
-		QColor base_color = get(color.baseColor).toRgb();
-		QColor merge_color = get(color.mergeColor).toRgb();
+		QColor base_color = get(color.baseColor, syscolors).toRgb();
+		QColor merge_color = get(color.mergeColor, syscolors).toRgb();
 		return QColor(
 			(base_color.red() + merge_color.red()) / 2,
 			(base_color.green() + merge_color.green()) / 2,
@@ -83,6 +97,12 @@ QColor ColorCache::get(Color color) const
 	}
 	// used by branches
 	return QColor(lcolor.getX11Name(color.baseColor).c_str()); 
+}
+
+
+bool ColorCache::isSystem(ColorCode const color) const
+{
+	return role(color) != NoRole;
 }
 
 

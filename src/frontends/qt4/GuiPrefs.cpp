@@ -1090,6 +1090,8 @@ PrefColors::PrefColors(GuiPreferences * form)
 		this, SLOT(changeColor()));
 	connect(syscolorsCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
+	connect(syscolorsCB, SIGNAL(toggled(bool)),
+		this, SLOT(changeSysColor()));
 }
 
 
@@ -1110,7 +1112,7 @@ void PrefColors::apply(LyXRC & rc) const
 void PrefColors::update(LyXRC const & rc)
 {
 	for (unsigned int i = 0; i < lcolors_.size(); ++i) {
-		QColor color = QColor(guiApp->colorCache().get(lcolors_[i]));
+		QColor color = QColor(guiApp->colorCache().get(lcolors_[i], false));
 		QPixmap coloritem(32, 32);
 		coloritem.fill(color);
 		lyxObjectsLW->item(i)->setIcon(QIcon(coloritem));
@@ -1140,6 +1142,18 @@ void PrefColors::changeColor()
 		// emit signal
 		changed();
 	}
+}
+
+void PrefColors::changeSysColor()
+{
+	for (int row = 0 ; row < lyxObjectsLW->count() ; ++row) {
+		// skip colors that are taken from system palette
+		bool const hide = syscolorsCB->isChecked()
+			&& guiApp->colorCache().isSystem(lcolors_[row]);
+
+		lyxObjectsLW->item(row)->setHidden(hide);
+	}
+
 }
 
 void PrefColors::changeLyxObjectsSelection()

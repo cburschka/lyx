@@ -30,11 +30,17 @@ public:
 	///
 	ColorCache() : initialized_(false) {}
 
+	/// get the given color (depends on LyXRC::use_system_color)
+	QColor get(Color const & color) const;
+
 	/// get the given color
-	QColor get(Color color) const;
+	QColor get(Color const & color, bool use_system_colors) const;
+
+	/// is this color replaced when LyXRC::use_system_color is true?
+	bool isSystem(ColorCode color) const;
 
 	/// change the undelying palette
-	void setPalette(QPalette const pal) { pal_ = pal; initialized_ = false; }
+	void setPalette(QPalette const pal) { pal_ = pal; clear(); }
 
 	/// clear all colors
 	void clear() { initialized_ = false; }
@@ -42,8 +48,6 @@ public:
 private:
 	///
 	void init();
-	///
-	void setColor(int col, QPalette::ColorRole cr);
 	///
 	QColor lcolors_[Color_ignore + 1];
 	///
