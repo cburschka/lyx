@@ -225,6 +225,8 @@ public:
 	bool free_spacing;
 	///
 	bool pass_thru;
+	///
+	bool parbreak_is_newline;
 	/// show this in toc
 	int toclevel;
 	/// special value of toclevel for non-section layouts

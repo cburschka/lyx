@@ -129,6 +129,8 @@ public:
 	///
 	bool isPassThru() const { return passthru_; }
 	///
+	bool parbreakIsNewline() const { return parbreakisnewline_; }
+	///
 	bool isNeedProtect() const { return needprotect_; }
 	///
 	bool isFreeSpacing() const { return freespacing_; }
@@ -213,13 +215,15 @@ private:
 	///
 	bool passthru_;
 	///
-	bool needprotect_;
+	bool parbreakisnewline_;
 	///
 	bool freespacing_;
 	///
 	bool keepempty_;
 	///
 	bool forceltr_;
+	///
+	bool needprotect_;
 	/// should the contents be written to TOC strings?
 	bool intoc_;
 	/// check spelling of this inset?

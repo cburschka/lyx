@@ -146,6 +146,7 @@ InsetLayout ERT
 	CustomPars            false
 	ForcePlain            true
 	PassThru              true
+	ParbreakIsNewline     true
 	KeepEmpty             true
 	FreeSpacing           true
 	ForceLTR              true
@@ -175,6 +176,7 @@ InsetLayout Listings
 	BgColor               listingsbg
 	MultiPar              true
 	PassThru              true
+	ParbreakIsNewline     true
 	KeepEmpty             true
 	FreeSpacing           true
 	ForceLTR              true

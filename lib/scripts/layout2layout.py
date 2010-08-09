@@ -97,6 +97,9 @@ import os, re, string, sys
 # Incremented to format 27, 4 June 2010 by rgh
 # Added RequiredArgs tag.
 
+# Incremented to format 28, 6 August 2010 by lasgouttes
+# Added ParbreakIsNewline tag for Layout and InsetLayout.
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -104,7 +107,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 27
+currentFormat = 28
 
 
 def usage(prog_name):
@@ -277,7 +280,7 @@ def convert(lines):
             continue
         
         # Only new features
-        if format >= 24 and format <= 26:
+        if format >= 24 and format <= 27:
             i += 1
             continue
 

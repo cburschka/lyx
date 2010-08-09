@@ -36,8 +36,9 @@ InsetLayout::InsetLayout() :
 	labelfont_(sane_font), bgcolor_(Color_error), 
 	htmlforcecss_ (false), htmlisblock_(true),
 	multipar_(true), custompars_(true), forceplain_(false), 
-	passthru_(false), needprotect_(false), freespacing_(false), 
-	keepempty_(false), forceltr_(false), intoc_(false), spellcheck_(true)
+	passthru_(false), parbreakisnewline_(false), freespacing_(false), 
+	keepempty_(false), forceltr_(false), 
+	needprotect_(false), intoc_(false), spellcheck_(true)
 { 
 	labelfont_.setColor(Color_error);
 }
@@ -103,6 +104,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_MULTIPAR,
 		IL_NEEDPROTECT,
 		IL_PASSTHRU,
+		IL_PARBREAKISNEWLINE,
 		IL_PREAMBLE,
 		IL_REQUIRES,
 		IL_SPELLCHECK,
@@ -142,6 +144,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "lyxtype", IL_LYXTYPE },
 		{ "multipar", IL_MULTIPAR },
 		{ "needprotect", IL_NEEDPROTECT },
+		{ "parbreakisnewline", IL_PARBREAKISNEWLINE },
 		{ "passthru", IL_PASSTHRU },
 		{ "preamble", IL_PREAMBLE },
 		{ "refprefix", IL_REFPREFIX },
@@ -238,6 +241,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_PASSTHRU:
 			lex >> passthru_;
+			break;
+		case IL_PARBREAKISNEWLINE:
+			lex >> parbreakisnewline_;
 			break;
 		case IL_KEEPEMPTY:
 			lex >> keepempty_;

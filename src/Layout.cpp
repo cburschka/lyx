@@ -55,6 +55,7 @@ enum LayoutTags {
 	LT_FONT,
 	LT_FREE_SPACING,
 	LT_PASS_THRU,
+	LT_PARBREAK_IS_NEWLINE,
 	//LT_HEADINGS,
 	LT_ITEMSEP,
 	LT_KEEPEMPTY,
@@ -143,6 +144,7 @@ Layout::Layout()
 	newline_allowed = true;
 	free_spacing = false;
 	pass_thru = false;
+	parbreak_is_newline = false;
 	toclevel = NOT_IN_TOC;
 	commanddepth = 0;
 	htmllabelfirst_ = false;
@@ -210,6 +212,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "nextnoindent",   LT_NEXTNOINDENT },
 		{ "obsoletedby",    LT_OBSOLETEDBY },
 		{ "optionalargs",   LT_OPTARGS },
+		{ "parbreakisnewline", LT_PARBREAK_IS_NEWLINE },
 		{ "parindent",      LT_PARINDENT },
 		{ "parsep",         LT_PARSEP },
 		{ "parskip",        LT_PARSKIP },
@@ -493,6 +496,10 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 
 		case LT_PASS_THRU:	// Allow for pass thru.
 			lex >> pass_thru;
+			break;
+
+		case LT_PARBREAK_IS_NEWLINE:
+			lex >> parbreak_is_newline;
 			break;
 
 		case LT_SPACING: // setspace.sty

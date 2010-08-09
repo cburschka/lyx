@@ -60,7 +60,7 @@ namespace lyx {
 // development/updatelayouts.sh script, to update the format of 
 // all of our layout files.
 //
-int const LAYOUT_FORMAT = 27;
+int const LAYOUT_FORMAT = 28;
 	
 namespace {
 
