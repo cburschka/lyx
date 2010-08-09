@@ -1801,7 +1801,7 @@ void Buffer::checkBibInfoCache() const
 	if (!d->bibinfo_cache_valid_) {
 		d->bibinfo_.clear();
 		for (InsetIterator it = inset_iterator_begin(inset()); it; ++it)
-			it->fillWithBibKeys(d->bibinfo_, it);
+			it->fillWithBibKeys(d->bibinfo_);
 		d->bibinfo_cache_valid_ = true;
 	}	
 }

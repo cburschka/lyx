@@ -830,12 +830,13 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetInclude::fillWithBibKeys(BiblioInfo & keys,
-	InsetIterator const & /*di*/) const
+void InsetInclude::fillWithBibKeys(BiblioInfo & keys) const
 {
 	if (loadIfNeeded()) {
-		string const included_file = includedFileName(buffer(), params()).absFileName();
-		Buffer * tmp = theBufferList().getBuffer(FileName(included_file));
+		string const included_file = 
+			includedFileName(buffer(), params()).absFileName();
+		Buffer * tmp = 
+			theBufferList().getBuffer(FileName(included_file));
 		BiblioInfo const & newkeys = tmp->localBibInfo();
 		keys.mergeBiblioInfo(newkeys);
 	}
