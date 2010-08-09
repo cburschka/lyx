@@ -1747,6 +1747,7 @@ void Buffer::invalidateBibinfoCache()
 void Buffer::invalidateBibfileCache()
 {
 	d->bibfile_cache_valid_ = false;
+	invalidateBibinfoCache();
 }
 
 support::FileNameList const & Buffer::getBibfilesCache(UpdateScope scope) const

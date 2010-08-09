@@ -59,7 +59,7 @@ InsetBibtex::InsetBibtex(Buffer * buf, InsetCommandParams const & p)
 InsetBibtex::~InsetBibtex()
 {
 	if (isBufferLoaded())
-		buffer_->invalidateBibinfoCache();
+		buffer_->invalidateBibfileCache();
 }
 
 
