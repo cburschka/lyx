@@ -1711,19 +1711,23 @@ void Buffer::updateBibfilesCache(UpdateScope scope) const
 			d->bibfiles_cache_.insert(d->bibfiles_cache_.end(),
 				bibfiles.begin(),
 				bibfiles.end());
+			// the bibinfo cache is now invalid
+			d->bibinfo_cache_valid_ = false;
 		} else if (it->lyxCode() == INCLUDE_CODE) {
 			InsetInclude & inset =
 				static_cast<InsetInclude &>(*it);
 			inset.updateBibfilesCache();
 			support::FileNameList const & bibfiles =
 					inset.getBibfilesCache();
-			d->bibfiles_cache_.insert(d->bibfiles_cache_.end(),
-				bibfiles.begin(),
-				bibfiles.end());
+			if (!bibfiles.empty()) {
+				d->bibfiles_cache_.insert(d->bibfiles_cache_.end(),
+					bibfiles.begin(),
+					bibfiles.end());
+				// the bibinfo cache is now invalid
+				d->bibinfo_cache_valid_ = false;
+			}	
 		}
 	}
-	// the bibinfo cache is now invalid
-	d->bibinfo_cache_valid_ = false;
 }
 
 
