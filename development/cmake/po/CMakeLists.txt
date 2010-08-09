@@ -9,7 +9,7 @@ project(po)
 
 include_directories(${TOP_SRC_DIR}/po)
 
-SET(_lyxname ${LYX_PROJECT})
+SET(_lyxname ${PACKAGE})
 SET(_py_sources)
 macro(add_gettext_python  _par _dir)
   set(_sources)
@@ -124,7 +124,7 @@ foreach(_pofile ${LYX_BASE_PO_FILES})
   list(APPEND LYX_UPDATED_PO_FILES ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}.copied)
 endforeach(_pofile)
 
-if(LYX_CPACK)
+if(LYX_CPACK OR LYX_INSTALL)
   set(_addALLOption ALL)
 endif()
 GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot ${_addALLOption} ${LYX_PO_FILES})
