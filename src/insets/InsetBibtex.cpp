@@ -705,12 +705,12 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 			docstring entryType;
 
 			if (!readTypeOrKey(entryType, ifs, from_ascii("{("), docstring(), makeLowerCase)) {
-				lyxerr << "InsetBibtex::fillWithBibKeys: Error reading entry type." << std::endl;
+				lyxerr << "BibTeX Parser: Error reading entry type." << std::endl;
 				continue;
 			}
 
 			if (!ifs) {
-				lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
+				lyxerr << "BibTeX Parser: Unexpected end of file." << std::endl;
 				continue;
 			}
 
@@ -721,12 +721,12 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 
 			ifs.get(ch);
 			if (!ifs) {
-				lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
+				lyxerr << "BibTeX Parser: Unexpected end of file." << std::endl;
 				break;
 			}
 
 			if ((ch != '(') && (ch != '{')) {
-				lyxerr << "InsetBibtex::fillWithBibKeys: Invalid entry delimiter." << std::endl;
+				lyxerr << "BibTeX Parser: Invalid entry delimiter." << std::endl;
 				ifs.putback(ch);
 				continue;
 			}
@@ -740,25 +740,25 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 				docstring value;
 
 				if (!readTypeOrKey(name, ifs, from_ascii("="), from_ascii("#{}(),"), makeLowerCase)) {
-					lyxerr << "InsetBibtex::fillWithBibKeys: Error reading string name." << std::endl;
+					lyxerr << "BibTeX Parser: Error reading string name." << std::endl;
 					continue;
 				}
 
 				if (!ifs) {
-					lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
+					lyxerr << "BibTeX Parser: Unexpected end of file." << std::endl;
 					continue;
 				}
 
 				// next char must be an equal sign
 				ifs.get(ch);
 				if (!ifs || ch != '=') {
-					lyxerr << "InsetBibtex::fillWithBibKeys: No `=' after string name: " << 
+					lyxerr << "BibTeX Parser: No `=' after string name: " << 
 							name << "." << std::endl;
 					continue;
 				}
 
 				if (!readValue(value, ifs, strings)) {
-					lyxerr << "InsetBibtex::fillWithBibKeys: Unable to read value for string: " << 
+					lyxerr << "BibTeX Parser: Unable to read value for string: " << 
 							name << "." << std::endl;
 					continue;
 				}
@@ -772,7 +772,7 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 				docstring value;
 
 				if (!readValue(value, ifs, strings)) {
-					lyxerr << "InsetBibtex::fillWithBibKeys: Unable to read preamble value." << std::endl;
+					lyxerr << "BibTeX Parser: Unable to read preamble value." << std::endl;
 					continue;
 				}
 
@@ -782,13 +782,13 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 				docstring key;
 
 				if (!readTypeOrKey(key, ifs, from_ascii(","), from_ascii("}"), keepCase)) {
-					lyxerr << "InsetBibtex::fillWithBibKeys: Unable to read key for entry type:" << 
+					lyxerr << "BibTeX Parser: Unable to read key for entry type:" << 
 							entryType << "." << std::endl;
 					continue;
 				}
 
 				if (!ifs) {
-					lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
+					lyxerr << "BibTeX Parser: Unexpected end of file." << std::endl;
 					continue;
 				}
 
@@ -818,11 +818,11 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 					// FIXME Whitespace??
 					ifs.get(ch);
 					if (!ifs) {
-						lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
+						lyxerr << "BibTeX Parser: Unexpected end of file." << std::endl;
 						break;
 					}
 					if (ch != '=') {
-						lyxerr << "InsetBibtex::fillWithBibKeys: Missing `=' after field name: " <<
+						lyxerr << "BibTeX Parser: Missing `=' after field name: " <<
 								name << ", for key: " << key << "." << std::endl;
 						ifs.putback(ch);
 						break;
@@ -830,7 +830,7 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 
 					// read field value
 					if (!readValue(value, ifs, strings)) {
-						lyxerr << "InsetBibtex::fillWithBibKeys: Unable to read value for field: " <<
+						lyxerr << "BibTeX Parser: Unable to read value for field: " <<
 								name << ", for key: " << key << "." << std::endl;
 						break;
 					}
