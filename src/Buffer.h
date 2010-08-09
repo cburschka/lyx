@@ -342,10 +342,6 @@ public:
 	*/
 	void validate(LaTeXFeatures &) const;
 
-	/// Return the list with all bibfiles in use (including bibfiles
-	/// of loaded child documents).
-	support::FileNameList const & 
-		getBibfilesCache(UpdateScope scope = UpdateMaster) const;
 	/// Information from BibTeX databases is cached in the Buffer, so
 	/// we do not have to read the file over and over. 
 	/// Calling this method invalidates the cache and so requires a
@@ -581,6 +577,10 @@ private:
 	/// Update the list of all bibfiles in use (including bibfiles
 	/// of loaded child documents).
 	void updateBibfilesCache(UpdateScope scope = UpdateMaster) const;
+	/// Return the list with all bibfiles in use (including bibfiles
+	/// of loaded child documents).
+	support::FileNameList const & 
+		getBibfilesCache(UpdateScope scope = UpdateMaster) const;
 
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;

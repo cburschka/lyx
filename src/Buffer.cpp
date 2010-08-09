@@ -1577,7 +1577,6 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
 	updateBuffer(UpdateMaster, OutputUpdate);
-	checkBibInfoCache();
 	d->bibinfo_.makeCitationLabels(*this);
 	updateMacros();
 	updateMacroInstances();
