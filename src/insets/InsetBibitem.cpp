@@ -54,7 +54,7 @@ docstring const key_prefix = from_ascii("key-");
 InsetBibitem::InsetBibitem(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p, "bibitem")
 {
-	buffer_->invalidateBibinfoCache();
+	buffer().invalidateBibinfoCache();
 	if (getParam("key").empty())
 		setParam("key", key_prefix + convert<docstring>(++key_counter));
 }
@@ -63,7 +63,7 @@ InsetBibitem::InsetBibitem(Buffer * buf, InsetCommandParams const & p)
 InsetBibitem::~InsetBibitem()
 {
 	if (isBufferLoaded())
-		buffer_->invalidateBibinfoCache();
+		buffer().invalidateBibinfoCache();
 }
 
 
@@ -93,6 +93,7 @@ void InsetBibitem::updateCommand(docstring const & new_key, bool)
 			"it will be changed to %2$s."), new_key, key));
 	}
 	setParam("key", key);
+	buffer().invalidateBibinfoCache();
 }
 
 
@@ -127,7 +128,7 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.bv().buffer().changeRefsIfUnique(old_key,
 				params()["key"], CITE_CODE);
 			cur.forceBufferUpdate();
-			buffer_->invalidateBibinfoCache();
+			buffer().invalidateBibinfoCache();
 		}
 		break;
 	}
