@@ -188,7 +188,7 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 InsetInclude::~InsetInclude()
 {
 	if (isBufferLoaded())
-		buffer_->invalidateBibfileCache();
+		buffer().invalidateBibfileCache();
 	delete label_;
 }
 

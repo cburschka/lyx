@@ -52,14 +52,14 @@ namespace os = support::os;
 InsetBibtex::InsetBibtex(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p, "bibtex")
 {
-	buffer_->invalidateBibinfoCache();
+	buffer().invalidateBibinfoCache();
 }
 
 
 InsetBibtex::~InsetBibtex()
 {
 	if (isBufferLoaded())
-		buffer_->invalidateBibfileCache();
+		buffer().invalidateBibfileCache();
 }
 
 
