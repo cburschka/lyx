@@ -342,8 +342,20 @@ public:
 	*/
 	void validate(LaTeXFeatures &) const;
 
-	/// Information from BibTeX databases is cached in the Buffer, so
-	/// we do not have to read the file over and over. 
+	/// Reference information is cached in the Buffer, so we do not
+	/// have to check or read things over and over. 
+	///
+	/// There are two caches.
+	///
+	/// One is a cache of the BibTeX files from which reference info is
+	/// being gathered. This cache is PER BUFFER, and the cache for the
+	/// master essentially includes the cache for its children. This gets
+	/// invalidated when an InsetBibtex is created, deleted, or modified.
+	/// 
+	/// The other is a cache of the reference information itself. This
+	/// exists only in the master buffer, and when it needs to be updated,
+	/// the children add their information to the master's cache.
+	
 	/// Calling this method invalidates the cache and so requires a
 	/// re-read.
 	void invalidateBibinfoCache() const;
