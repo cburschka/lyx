@@ -255,9 +255,9 @@ public:
 	/// A cache for bibliography info
 	mutable BiblioInfo bibinfo_;
 	/// whether the bibinfo cache is valid
-	bool bibinfo_cache_valid_;
+	mutable bool bibinfo_cache_valid_;
 	/// whether the bibfile cache is valid
-	bool bibfile_cache_valid_;
+	mutable bool bibfile_cache_valid_;
 	/// Cache of timestamps of .bib files
 	map<FileName, time_t> bibfile_status_;
 
@@ -1698,6 +1698,7 @@ void Buffer::getLabelList(vector<docstring> & list) const
 
 void Buffer::updateBibfilesCache(UpdateScope scope) const
 {
+	// FIXME This is probably unnecssary, given where we call this.
 	// If this is a child document, use the parent's cache instead.
 	Buffer const * const pbuf = d->parent();
 	if (pbuf && scope != UpdateChildOnly) {
@@ -1714,47 +1715,53 @@ void Buffer::updateBibfilesCache(UpdateScope scope) const
 			d->bibfiles_cache_.insert(d->bibfiles_cache_.end(),
 				bibfiles.begin(),
 				bibfiles.end());
-			// the bibinfo cache is now invalid
-			d->bibinfo_cache_valid_ = false;
 		} else if (it->lyxCode() == INCLUDE_CODE) {
 			InsetInclude & inset =
 				static_cast<InsetInclude &>(*it);
 			Buffer const * const incbuf = inset.getChildBuffer();
 			if (!incbuf)
 				continue;
-			incbuf->updateBibfilesCache(UpdateChildOnly);
 			support::FileNameList const & bibfiles =
 					incbuf->getBibfilesCache(UpdateChildOnly);
 			if (!bibfiles.empty()) {
 				d->bibfiles_cache_.insert(d->bibfiles_cache_.end(),
 					bibfiles.begin(),
 					bibfiles.end());
-				// the bibinfo cache is now invalid
-				d->bibinfo_cache_valid_ = false;
 			}
 		}
 	}
 	d->bibfile_cache_valid_ = true;
-}
-
-
-void Buffer::invalidateBibinfoCache()
-{
 	d->bibinfo_cache_valid_ = false;
 }
 
 
-void Buffer::invalidateBibfileCache()
+void Buffer::invalidateBibinfoCache() const
+{
+	d->bibinfo_cache_valid_ = false;
+	// also invalidate the cache for the parent buffer
+	Buffer const * const pbuf = d->parent();
+	if (pbuf)
+		pbuf->invalidateBibinfoCache();
+}
+
+
+void Buffer::invalidateBibfileCache() const
 {
 	d->bibfile_cache_valid_ = false;
-	invalidateBibinfoCache();
+	d->bibinfo_cache_valid_ = false;
+	// also invalidate the cache for the parent buffer
+	Buffer const * const pbuf = d->parent();
+	if (pbuf)
+		pbuf->invalidateBibfileCache();
 }
+
 
 support::FileNameList const & Buffer::getBibfilesCache(UpdateScope scope) const
 {
-	// If this is a child document, use the parent's cache instead.
-	Buffer const * const pbuf = d->parent();
-	if (pbuf && scope != UpdateChildOnly)
+	// FIXME This is probably unnecessary, given where we call this.
+	// If this is a child document, use the master's cache instead.
+	Buffer const * const pbuf = masterBuffer();
+	if (pbuf != this && scope != UpdateChildOnly)
 		return pbuf->getBibfilesCache();
 
 	if (!d->bibfile_cache_valid_)
@@ -1766,28 +1773,28 @@ support::FileNameList const & Buffer::getBibfilesCache(UpdateScope scope) const
 
 BiblioInfo const & Buffer::masterBibInfo() const
 {
-	// if this is a child document and the parent is already loaded
-	// use the parent's list instead  [ale990412]
 	Buffer const * const tmp = masterBuffer();
-	LASSERT(tmp, /**/);
 	if (tmp != this)
 		return tmp->masterBibInfo();
-	return localBibInfo();
-}
-
-
-BiblioInfo const & Buffer::localBibInfo() const
-{
 	return d->bibinfo_;
 }
 
 
 void Buffer::checkBibInfoCache() const 
 {
-	support::FileNameList const & bibfilesCache = getBibfilesCache();
+	// use the master's cache
+	Buffer const * const tmp = masterBuffer();
+	if (tmp != this) {
+		tmp->checkBibInfoCache();
+		return;
+	}
+
+	// this will also reload the cache if it is invalid 
+	support::FileNameList const & bibfiles_cache = getBibfilesCache();
+	
 	// compare the cached timestamps with the actual ones.
-	support::FileNameList::const_iterator ei = bibfilesCache.begin();
-	support::FileNameList::const_iterator en = bibfilesCache.end();
+	support::FileNameList::const_iterator ei = bibfiles_cache.begin();
+	support::FileNameList::const_iterator en = bibfiles_cache.end();
 	for (; ei != en; ++ ei) {
 		time_t lastw = ei->lastModified();
 		time_t prevw = d->bibfile_status_[*ei];
@@ -1796,15 +1803,20 @@ void Buffer::checkBibInfoCache() const
 			d->bibfile_status_[*ei] = lastw;
 		}
 	}
-
-	// FIXME Don't do this here, but instead gather them as we go through
-	// updateBuffer().
+	
+	// if not valid, then reload the info
 	if (!d->bibinfo_cache_valid_) {
 		d->bibinfo_.clear();
-		for (InsetIterator it = inset_iterator_begin(inset()); it; ++it)
-			it->fillWithBibKeys(d->bibinfo_, it);
+		fillWithBibKeys(d->bibinfo_);
 		d->bibinfo_cache_valid_ = true;
-	}	
+	}
+}
+
+
+void Buffer::fillWithBibKeys(BiblioInfo & keys) const
+{
+	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it)
+		it->fillWithBibKeys(keys, it);
 }
 
 
@@ -3705,7 +3717,7 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 	DocumentClass const & textclass = master->params().documentClass();
 	
 	// do this only if we are the top-level Buffer
-	if (scope != UpdateMaster || master == this)
+	if (master == this)
 		checkBibInfoCache();
 
 	// keep the buffers to be children in this set. If the call from the

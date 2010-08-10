@@ -346,19 +346,20 @@ public:
 	/// we do not have to read the file over and over. 
 	/// Calling this method invalidates the cache and so requires a
 	/// re-read.
-	void invalidateBibinfoCache();
+	void invalidateBibinfoCache() const;
 	/// This invalidates the cache of files we need to check.
-	void invalidateBibfileCache();
+	void invalidateBibfileCache() const;
 	/// Updates the cached bibliography information.
 	/// Note that you MUST call this method to update the cache. It will
 	/// not happen otherwise. (Currently, it is called at the start of
 	/// updateBuffer() and from GuiCitation.)
+	/// Note that this operates on the master document.
 	void checkBibInfoCache() const;
 	/// \return the bibliography information for this buffer's master,
 	/// or just for it, if it isn't a child.
 	BiblioInfo const & masterBibInfo() const;
-	/// \return the bibliography information for this buffer ONLY.
-	BiblioInfo const & localBibInfo() const;
+	///
+	void fillWithBibKeys(BiblioInfo & keys) const;
 	///
 	void getLabelList(std::vector<docstring> &) const;
 
