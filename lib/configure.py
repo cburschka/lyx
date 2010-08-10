@@ -992,7 +992,8 @@ def checkLatexConfig(check_config, bool_docbook):
     # Construct the list of classes to test for.
     # build the list of available layout files and convert it to commands
     # for chkconfig.ltx
-    p1 = re.compile(r'\Declare(LaTeX|DocBook)Class')
+    declare = re.compile(r'\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}')
+    empty = re.compile(r'^\s*$')
     testclasses = list()
     for file in glob.glob( os.path.join('layouts', '*.layout') ) + \
         glob.glob( os.path.join(srcdir, 'layouts', '*.layout' ) ) :
@@ -1000,11 +1001,11 @@ def checkLatexConfig(check_config, bool_docbook):
             continue
         classname = file.split(os.sep)[-1].split('.')[0]
         for line in open(file).readlines():
-            if p1.search(line) == None:
-                continue
-            if line[0] != '#':
-                logger.error("Wrong input layout file with line '" + line)
+            if not empty.match(line) and line[0] != '#':
+                logger.error("Failed to find \Declare line for layout file `" + file + "'")
                 sys.exit(3)
+            if declare.search(line) == None:
+                continue
             testclasses.append("\\TestDocClass{%s}{%s}" % (classname, line[1:].strip()))
             break
     testclasses.sort()
