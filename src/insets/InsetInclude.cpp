@@ -523,12 +523,12 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		//in a comment or doing a dryrun
 	} else if (isInputOrInclude(params()) &&
 		 isLyXFileName(included_file.absFileName())) {
-		//if it's a LyX file and we're inputting or including,
-		//try to load it so we can write the associated latex
-		if (!loadIfNeeded())
+		// if it's a LyX file and we're inputting or including,
+		// try to load it so we can write the associated latex
+		
+		Buffer * tmp = loadIfNeeded();
+		if (!tmp)
 			return false;
-
-		Buffer * tmp = theBufferList().getBuffer(included_file);
 
 		if (tmp->params().baseClass() != masterBuffer->params().baseClass()) {
 			// FIXME UNICODE
@@ -750,9 +750,8 @@ int InsetInclude::docbook(odocstream & os, OutputParams const & runparams) const
 	string const exportfile = changeExtension(incfile, ".sgml");
 	DocFileName writefile(changeExtension(included_file, ".sgml"));
 
-	if (loadIfNeeded()) {
-		Buffer * tmp = theBufferList().getBuffer(FileName(included_file));
-
+	Buffer * tmp = loadIfNeeded();
+	if (tmp) {
 		string const mangled = writefile.mangledFileName();
 		writefile = makeAbsPath(mangled,
 					buffer().masterBuffer()->temppath());
@@ -813,9 +812,9 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	// Here we must do the fun stuff...
 	// Load the file in the include if it needs
 	// to be loaded:
-	if (loadIfNeeded()) {
-		// a file got loaded
-		Buffer * const tmp = theBufferList().getBuffer(FileName(included_file));
+	Buffer * const tmp = loadIfNeeded();
+	if (tmp) {
+		// the file is loaded
 		// make sure the buffer isn't us
 		// FIXME RECURSIVE INCLUDES
 		// This is not sufficient, as recursive includes could be
