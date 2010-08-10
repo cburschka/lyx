@@ -279,12 +279,19 @@ public:
 			parent_buffer = 0;
 		return parent_buffer; 
 	}
+	
 	///
 	void setParent(Buffer const * pb) {
-		if (!cloned_buffer_ 
-		    && parent_buffer && pb && parent_buffer != pb)
+		if (parent_buffer == pb)
+			// nothing to do
+			return;
+		if (!cloned_buffer_ && parent_buffer && pb)
 			LYXERR0("Warning: a buffer should not have two parents!");
 		parent_buffer = pb;
+		if (!cloned_buffer_ && parent_buffer) {
+			parent_buffer->invalidateBibfileCache();
+			parent_buffer->invalidateBibinfoCache();
+		}
 	}
 
 	/// If non zero, this buffer is a clone of existing buffer \p cloned_buffer_
