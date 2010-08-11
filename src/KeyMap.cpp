@@ -246,12 +246,12 @@ void KeyMap::write(string const & bind_file, bool append, bool unbind) const
 		FuncCode action = it->request.action;
 		string arg = to_utf8(it->request.argument());
 
+		string const cmd = lyxaction.getActionName(action)
+			+ (arg.empty() ? string() : " " + arg) ;
 		os << tag << " \""
-				<< to_utf8(it->sequence.print(KeySequence::BindFile))
-				<< "\" \""
-				<< lyxaction.getActionName(action)
-				<< (arg.empty() ? "" : " ") << arg
-				<< "\"\n";
+		   << to_utf8(it->sequence.print(KeySequence::BindFile))
+		   << "\" " << Lexer::quoteString(cmd)
+		   << "\n";
 	}
 	os << "\n";
 	os.close();

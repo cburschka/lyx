@@ -93,6 +93,9 @@ What's new
 - Don't allow to insert margin notes and footnotes into captions because
   this would lead to LaTeX errors.
 
+- Fix handling of commands containing a double quote (") in shortcut
+  editor (bug 6786).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
