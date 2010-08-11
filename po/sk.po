@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-08-07 16:15+0200\n"
-"PO-Revision-Date: 2010-08-07 15:39+0200\n"
+"PO-Revision-Date: 2010-08-11 19:12+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenčina <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1967,7 +1967,7 @@ msgstr "Klikni na výber súboru pre lokálne definície dokumentovej triedy"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:47
 msgid "&Local Layout..."
-msgstr "&Lokálny formát..."
+msgstr "&Lokálne schéma..."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:57
 msgid "Class options"
@@ -1975,7 +1975,7 @@ msgstr "Voľby triedy"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:63
 msgid "Enable to use the options that are predefined in the layout file"
-msgstr "Umožni voľby preddefinované vo formátovom súbore."
+msgstr "Umožni voľby preddefinované v súbore pre schéma."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:66
 msgid "P&redefined:"
@@ -1986,7 +1986,7 @@ msgid ""
 "The options that are predefined in the layout file. Click to the left to "
 "select/deselect."
 msgstr ""
-"Voľby, ktoré sú preddefinované vo formátovom súbore. Kliknite vľavo pre "
+"Voľby, ktoré sú preddefinované v súbore pre schéma. Kliknite vľavo pre "
 "aktiváciu/deaktiváciu."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:83
@@ -2210,24 +2210,21 @@ msgstr ""
 "Tu vkladajte ďalšie parametri výpisu. Pre prehľad parametrov vložte znak '?'"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:19
-#, fuzzy
 msgid "Document-specific layout information"
-msgstr "Chyba pri čítaní vnútorných formátnych informácií"
+msgstr "Informácie pre schéma tohto dokumentu"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:35
-#, fuzzy
 msgid "Errors reported in terminal."
-msgstr "Chyba pri exporte na formát: %1$s."
+msgstr "Chyby napísané na konzole."
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:38
 #: src/frontends/qt4/GuiDocument.cpp:567
 msgid "Press button to check validity..."
-msgstr ""
+msgstr "Kliknite tlačidlo na kontrolu validity..."
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:51
-#, fuzzy
 msgid "Validate"
-msgstr "Prehliadnuť/Obnoviť"
+msgstr "Validovať"
 
 #: src/frontends/qt4/ui/LogUi.ui:38
 msgid "Hit Enter to search, or click Go!"
@@ -11013,7 +11010,7 @@ msgstr "Vložiť|V"
 
 #: lib/ui/classic.ui:35
 msgid "Layout|L"
-msgstr "Formát"
+msgstr "Schéma"
 
 #: lib/ui/classic.ui:36 lib/ui/stdmenus.inc:30
 msgid "View|V"
@@ -16867,7 +16864,7 @@ msgstr ""
 "stal nedostupným. Bude potrebné aktualizovať meno zahrnutého súboru."
 
 #: src/BufferParams.cpp:562
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The selected document class\n"
 "\t%1$s\n"
@@ -16879,7 +16876,7 @@ msgid ""
 "See section 3.1.2.2 of the User's Guide for\n"
 "more information."
 msgstr ""
-"Použitá trieda dokumentu\n"
+"Vybraná trieda dokumentu\n"
 "\t%1$s\n"
 "požaduje nedostupné externé súbory.\n"
 "Dokumentná trieda sa stále dá používať, ale LyX\n"
@@ -16902,10 +16899,10 @@ msgid ""
 "layouts will be used. LyX will not be able to produce\n"
 "correct output."
 msgstr ""
-"Súbor formátov:\n"
+"Súbor pre schéma:\n"
 "%1$s\n"
 "sa nedá nájsť. Bude použitá štandardná\n"
-"trieda a formát. LyX nebude schopný zrobiť\n"
+"trieda a schéma. LyX nebude schopný zrobiť\n"
 "správny výstup."
 
 #: src/BufferParams.cpp:1960
@@ -16921,10 +16918,10 @@ msgid ""
 "layouts will be used. LyX will not be able to produce\n"
 "correct output."
 msgstr ""
-"Kvôli chybe v ňom, súbor formátov:\n"
+"Kvôli chybe v ňom, súbor pre schéma:\n"
 "%1$s\n"
 "sa nedá nahrať. Bude použitá štandardná\n"
-"trieda a formát. LyX nebude schopný zrobiť\n"
+"trieda a schéma. LyX nebude schopný zrobiť\n"
 "správny výstup."
 
 #: src/BufferParams.cpp:1973 src/BufferView.cpp:1254 src/BufferView.cpp:1286
@@ -16933,7 +16930,7 @@ msgstr "Nepodarilo sa nahrať triedu"
 
 #: src/BufferParams.cpp:2007
 msgid "Error reading internal layout information"
-msgstr "Chyba pri čítaní vnútorných formátnych informácií"
+msgstr "Chyba pri čítaní vnútorných schéma-informácií"
 
 #: src/BufferParams.cpp:2008 src/TextClass.cpp:1311
 msgid "Read Error"
@@ -16960,9 +16957,9 @@ msgid "This portion of the document is deleted."
 msgstr "Táto časť dokumentu je vymazaná."
 
 #: src/BufferView.cpp:1252 src/BufferView.cpp:1284
-#, fuzzy, c-format
+#, c-format
 msgid "The document class `%1$s' could not be loaded."
-msgstr "Nepodarilo sa nahrať triedu dokument %1$s."
+msgstr "Nepodarilo sa nahrať triedu dokumentu `%1$s'."
 
 #: src/BufferView.cpp:1307
 msgid "No further undo information"
@@ -18704,7 +18701,7 @@ msgstr "Vrátiť"
 
 #: src/Paragraph.cpp:1654
 msgid "Senseless with this layout!"
-msgstr "S týmto formátom to nemá zmysel!"
+msgstr "S týmto schéma to nemá zmysel!"
 
 #: src/Paragraph.cpp:1716
 msgid "Alignment not permitted"
@@ -18715,7 +18712,7 @@ msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
-"Nový formát nepovoľuje používané zarovnanie.\n"
+"Nové schéma nepovoľuje používané zarovnanie.\n"
 "Prepnuté na štandardné."
 
 #: src/Paragraph.cpp:2745
@@ -18844,7 +18841,7 @@ msgstr "Režim editoru pre regulárny výraz"
 
 #: src/Text3.cpp:1244
 msgid "Layout "
-msgstr "Formát "
+msgstr "Schéma "
 
 #: src/Text3.cpp:1245
 msgid " not known"
@@ -19923,13 +19920,12 @@ msgid "Module not found!"
 msgstr "Modul nenájdený!"
 
 #: src/frontends/qt4/GuiDocument.cpp:577
-#, fuzzy
 msgid "Layout is valid!"
-msgstr "Formát "
+msgstr "Schéma je platná!"
 
 #: src/frontends/qt4/GuiDocument.cpp:581
 msgid "Layout is invalid!"
-msgstr ""
+msgstr "Schéma je neplatná!"
 
 #: src/frontends/qt4/GuiDocument.cpp:610
 msgid "Document Settings"
@@ -20189,9 +20185,8 @@ msgid "LaTeX Preamble"
 msgstr "Preambula LaTeXu"
 
 #: src/frontends/qt4/GuiDocument.cpp:1257
-#, fuzzy
 msgid "Local Layout"
-msgstr "&Lokálny formát..."
+msgstr "Lokálny Formát"
 
 #: src/frontends/qt4/GuiDocument.cpp:1658
 #: src/frontends/qt4/GuiDocument.cpp:1664
@@ -20205,12 +20200,12 @@ msgstr "Formáty"
 
 #: src/frontends/qt4/GuiDocument.cpp:1747
 msgid "LyX Layout (*.layout)"
-msgstr "Formáty dokumentov LyX-u (*.layout)"
+msgstr "Schémy dokumentov LyX-u (*.layout)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1749
 #: src/frontends/qt4/GuiDocument.cpp:1758
 msgid "Local layout file"
-msgstr "Lokálny súbor formátov"
+msgstr "Lokálny súbor schém"
 
 #: src/frontends/qt4/GuiDocument.cpp:1759
 msgid ""
@@ -20219,9 +20214,9 @@ msgid ""
 "document may not work with this layout if you do not\n"
 "keep the layout file in the document directory."
 msgstr ""
-"Súbor formátov, ktorý ste zvolili je lokálnym\n"
+"Súbor schémy, ktorý ste zvolili je lokálnym\n"
 "súborom, a nie je ani v systémovom ani v užívateľskom adresáre.\n"
-"Váš dokument môže mať problémy kým súbor formátov\n"
+"Váš dokument môže mať problémy kým súbor schémy\n"
 "nedržíte v adresáre dokumentu."
 
 #: src/frontends/qt4/GuiDocument.cpp:1763
@@ -20230,7 +20225,7 @@ msgstr "Nastaviť formát"
 
 #: src/frontends/qt4/GuiDocument.cpp:1777
 msgid "Unable to read local layout file."
-msgstr "Nepodarilo sa čítať lokálny súbor formátov."
+msgstr "Nepodarilo sa čítať lokálny súbor schémy."
 
 #: src/frontends/qt4/GuiDocument.cpp:1799
 msgid "Select master document"
@@ -20312,12 +20307,12 @@ msgstr "[Niet preddefinovaných volieb]"
 
 #: src/frontends/qt4/GuiDocument.cpp:3094
 msgid "Can't set layout!"
-msgstr "Formát sa nedá sa nastaviť!"
+msgstr "Schéma sa nedá sa nastaviť!"
 
 #: src/frontends/qt4/GuiDocument.cpp:3095
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
-msgstr "Nedá sa nastaviť formát pre ID: %1$s"
+msgstr "Nedá sa nastaviť schému pre ID: %1$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:3188
 msgid "Not Found"
@@ -20852,12 +20847,12 @@ msgid "Format in use"
 msgstr "Formát v použití"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1931
-#, fuzzy
 msgid ""
 "You cannot change a format's short name if the format is used by a "
 "converter. Please remove the converter first."
 msgstr ""
-"Nemôžem odstrániť Formát používaný Konvertorom. Odstráňte najprv konvertor."
+"Nemôžte zmeniť krátke meno formátu používané konvertorom. Odstráňte najprv "
+"konvertor."
 
 #: src/frontends/qt4/GuiPrefs.cpp:2083
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
@@ -20913,7 +20908,7 @@ msgstr "Dokument a Okno"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2592
 msgid "Font, Layouts and Textclasses"
-msgstr "Font, Formáty a Triedy textu"
+msgstr "Font, Schémy a textové Triedy"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2596
 msgid "System and Miscellaneous"
@@ -21874,12 +21869,11 @@ msgstr "Kliknite pre odpojenie"
 #: src/frontends/qt4/LayoutBox.cpp:389
 #, c-format
 msgid "Filtering layouts with \"%1$s\". Press ESC to remove filter."
-msgstr ""
-"Filtrovanie formátov pomocou \"%1$s\". Použite ESC na odstránenie filtru."
+msgstr "Filtrovanie schém pomocou \"%1$s\". Použite ESC na odstránenie filtru."
 
 #: src/frontends/qt4/LayoutBox.cpp:393 src/frontends/qt4/LayoutBox.cpp:443
 msgid "Enter characters to filter the layout list."
-msgstr "Zadajte znaky na výber z listiny formátov."
+msgstr "Zadajte znaky na výber z listiny schém."
 
 #: src/frontends/qt4/LayoutBox.cpp:565
 msgid " (unknown)"
@@ -21902,9 +21896,8 @@ msgid "Ignore all|I"
 msgstr "Ignorovať všetko"
 
 #: src/frontends/qt4/Menus.cpp:773
-#, fuzzy
 msgid "Remove from personal dictionary|r"
-msgstr "Pridať do osobného slovníka"
+msgstr "Vybrať z osobného slovníka"
 
 #: src/frontends/qt4/Menus.cpp:811
 msgid "Language|L"
@@ -22088,7 +22081,6 @@ msgid "List of Changes"
 msgstr "Zoznam zmien"
 
 #: src/frontends/qt4/ui_RefUi.h:307
-#, fuzzy
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr "Zoskupiť značky podľa prefixu (napr. \"sec:\")"
 
