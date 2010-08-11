@@ -48,6 +48,11 @@ Input stdstarsections.inc
 Input numreport.inc
 
 
+Style Part
+	OptionalArgs         1
+End
+
+
 Style Chapter
 	OptionalArgs         2
 End
@@ -101,8 +106,9 @@ Style Chapterprecis
 	EndFont
 End
 
-
+#FIXME: this takes two parameters!!!
 Style Epigraph
+	Category              Maintext
 	Margin                Right_Address_Box
 	LatexType             Command
 	LatexName             epigraph
@@ -112,8 +118,10 @@ Style Epigraph
 	Align                 Left
 End
 
-
+#FIXME: what is actually documented is \PoemTitle
+#but \poemtitle is defined nevertheless. Weird.
 Style Poemtitle
+	Category              Section
 	LatexType             Command
 	LatexName             poemtitle
 	NeedProtect           1
@@ -132,6 +140,7 @@ End
 
 Style Poemtitle*
 	CopyStyle             Poemtitle
+	Category              Unnumbered
 	LatexName             poemtitle*
 	OptionalArgs          0
 End
@@ -155,6 +164,7 @@ Input lyxmacros.inc
 Input stdlayouts.inc
 
 Style Legend
+	Category            Maintext
 	LatexType           Command
 	LatexName           legend
 	NeedProtect         1
