@@ -35,7 +35,6 @@
 #include "FuncStatus.h"
 #include "Lexer.h"
 #include "LyXRC.h" 
-#include "Undo.h"
 
 #include "frontends/Painter.h"
 

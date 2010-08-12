@@ -35,7 +35,6 @@
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
-#include "Undo.h"
 
 #include "insets/InsetBranch.h"
 #include "insets/InsetCommand.h"

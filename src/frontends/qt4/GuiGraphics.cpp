@@ -24,7 +24,6 @@
 #include "LengthCombo.h"
 #include "Length.h"
 #include "LyXRC.h"
-#include "Undo.h"
 
 #include "graphics/GraphicsCache.h"
 #include "graphics/GraphicsCacheItem.h"
