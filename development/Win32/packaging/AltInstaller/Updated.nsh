@@ -40,10 +40,10 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\linguistics.lyx"
  SetOutPath "$INSTDIR\Resources\examples\de"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\linguistics.lyx"
- #SetOutPath "$INSTDIR\Resources\layouts"
- #File "${PRODUCT_SOURCEDIR}\Resources\layouts\elsart.layout"
- #SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
- #File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
+ SetOutPath "$INSTDIR\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\memoir.layout"
+ SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
+ File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  #SetOutPath "$INSTDIR\Resources\templates"
  #File "${PRODUCT_SOURCEDIR}\Resources\templates\IEEEtran.lyx"
 
