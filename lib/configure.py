@@ -198,7 +198,7 @@ def checkDTLtools():
 
 def checkLatex(dtl_tools):
     ''' Check latex, return lyx_check_config '''
-    path, LATEX = checkProg('a Latex2e program', ['latex $$i', 'platex $$i', 'latex2e $$i'])
+    path, LATEX = checkProg('a Latex2e program', ['latex $$i', 'latex2e $$i'])
     path, PPLATEX = checkProg('a DVI postprocessing program', ['pplatex $$i'])
     #-----------------------------------------------------------------
     path, PLATEX = checkProg('pLaTeX, the Japanese LaTeX', ['platex $$i'])
@@ -212,7 +212,6 @@ def checkLatex(dtl_tools):
         if cmdOutput(PLATEX + ' chklatex.ltx').find('pLaTeX2e') != -1:
             # We have the Japanese pLaTeX2e
             addToRC(r'\converter platex   dvi       "%s"   "latex"' % PLATEX)
-            LATEX = PLATEX
         else:
             PLATEX = ''
             removeFiles(['chklatex.ltx', 'chklatex.log'])

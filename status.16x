@@ -67,9 +67,13 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Assure that Japanese LaTeX (pLaTeX) is in fact only used for Japanese
+  documents. This fixes major configuration problems with TeXLive 2010.
+
 - Fix the output of glyph 0x02e0 (MODIFIER LETTER SMALL GAMMA) (bug 6817).
 
-- Samll tweaks for the memoir text class.
+- Small tweaks for the memoir text class.
+
 
 * USER INTERFACE
 
