@@ -165,6 +165,14 @@ Style Title
 	EndFont
 End
 
+Style Subtitle
+	CopyStyle             Title
+	LatexName             subtitle
+	Font
+	  Size                Large
+	EndFont
+End
+
 
 Style Author
 	Font
