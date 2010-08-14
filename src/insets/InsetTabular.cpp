@@ -523,11 +523,11 @@ InsetTableCell splitCell(InsetTableCell & head, docstring const align_d, bool & 
 
 	pit_type const psize = head.paragraphs().front().size();
 	hassep = dit;
-	if (hassep)
+	if (hassep) {
 		head.paragraphs().front().eraseChars(dit.pos(), psize, false);
-
-	tail.paragraphs().front().eraseChars(0, 
-		dit.pos() < psize ? dit.pos() + 1 : psize, false);
+		tail.paragraphs().front().eraseChars(0, 
+			dit.pos() < psize ? dit.pos() + 1 : psize, false);
+	}
 
 	return tail;
 }
