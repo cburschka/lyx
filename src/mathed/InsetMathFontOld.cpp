@@ -37,7 +37,7 @@ Inset * InsetMathFontOld::clone() const
 
 void InsetMathFontOld::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	FontSetChanger dummy(mi.base, key_->name.c_str());
+	FontSetChanger dummy(mi.base, key_->extra);
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
 }
@@ -45,7 +45,7 @@ void InsetMathFontOld::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathFontOld::draw(PainterInfo & pi, int x, int y) const
 {
-	FontSetChanger dummy(pi.base, key_->name.c_str());
+	FontSetChanger dummy(pi.base, key_->extra);
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 }

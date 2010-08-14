@@ -111,11 +111,12 @@ ce                font        forcetext
 cf                font        forcetext
 
 # old-style font commands
-bf                oldfont     none
-cal               oldfont     none
-it                oldfont     none
-rm                oldfont     none
-tt                oldfont     none
+# name           "oldfont"    alias
+bf                oldfont     textbf
+cal               oldfont     mathcal
+it                oldfont     textit
+rm                oldfont     textrm
+tt                oldfont     texttt
 
 # matrix environments
 Bmatrix           matrix      none
