@@ -160,7 +160,8 @@ GuiTabular::GuiTabular(QWidget * parent)
 void GuiTabular::checkEnabled()
 {
 	hAlignCB->setEnabled(true);
-	bool dalign = hAlignCB->currentText() == QString("Decimal");
+	bool dalign =
+		hAlignCB->itemData(hAlignCB->currentIndex()).toString() == QString("decimal");
 	decimalPointLE->setEnabled(dalign);
 	decimalL->setEnabled(dalign);
 
@@ -278,20 +279,21 @@ void GuiTabular::setHAlign(string & param_str) const
 {
 	Tabular::Feature num = Tabular::ALIGN_LEFT;
 	Tabular::Feature multi_num = Tabular::M_ALIGN_LEFT;
-	QString const align = hAlignCB->currentText();
-	if (align == qt_("Left")) {
+	string const align = 
+		fromqstr(hAlignCB->itemData(hAlignCB->currentIndex()).toString());
+	if (align == "left") {
 		num = Tabular::ALIGN_LEFT;
 		multi_num = Tabular::M_ALIGN_LEFT;
-	} else if (align == qt_("Center")) {
+	} else if (align == "center") {
 		num = Tabular::ALIGN_CENTER;
 		multi_num = Tabular::M_ALIGN_CENTER;
-	} else if (align == qt_("Right")) {
+	} else if (align == "right") {
 		num = Tabular::ALIGN_RIGHT;
 		multi_num = Tabular::M_ALIGN_RIGHT;
-	} else if (align == qt_("Justified")) {
+	} else if (align == "justified") {
 		num = Tabular::ALIGN_BLOCK;
 		//multi_num: no equivalent
-	} else if (align == qt_("Decimal")) {
+	} else if (align == "decimal") {
 		num = Tabular::ALIGN_DECIMAL;
 		//multi_num: no equivalent
 	}
@@ -686,42 +688,42 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	}
 
 	hAlignCB->clear();
-	hAlignCB->addItem(qt_("Left"));
-	hAlignCB->addItem(qt_("Center"));
-	hAlignCB->addItem(qt_("Right"));
+	hAlignCB->addItem(qt_("Left"), toqstr("left"));
+	hAlignCB->addItem(qt_("Center"), toqstr("center"));
+	hAlignCB->addItem(qt_("Right"), toqstr("right"));
 	if (!multicol && !pwidth.zero())
-		hAlignCB->addItem(qt_("Justified"));
+		hAlignCB->addItem(qt_("Justified"), toqstr("justified"));
 	if (!multicol)
-		hAlignCB->addItem(qt_("Decimal"));
+		hAlignCB->addItem(qt_("At Decimal Separator"), toqstr("decimal"));
 
-	QString align;
+	string align;
 	switch (tabular.getAlignment(cell)) {
 		case LYX_ALIGN_LEFT:
-			align = qt_("Left");
+			align = "left";
 			break;
 		case LYX_ALIGN_CENTER:
-			align = qt_("Center");
+			align = "center";
 			break;
 		case LYX_ALIGN_RIGHT:
-			align = qt_("Right");
+			align = "right";
 			break;
 		case LYX_ALIGN_BLOCK:
 		{
 			if (!multicol && !pwidth.zero())
-				align = qt_("Justified");
+				align = "justified";
 			break;
 		}
 		case LYX_ALIGN_DECIMAL:
 		{
 			if (!multicol)
-				align = qt_("Decimal");
+				align = "decimal";
 			break;
 		}
 		default:
 			// we should never end up here
 			break;
 	}
-	hAlignCB->setCurrentIndex(hAlignCB->findText(align));
+	hAlignCB->setCurrentIndex(hAlignCB->findData(toqstr(align)));
 
 	//
 	QString decimal_point = toqstr(tabular.column_info[col].decimal_point);
