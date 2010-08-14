@@ -5444,7 +5444,7 @@ is
  be controlled separately.
  See 
 \begin_inset CommandInset ref
-LatexCommand prettyref
+LatexCommand ref
 reference "sec:Tags-for-XHTML"
 
 \end_inset
@@ -7134,9 +7134,9 @@ DeclareLaTeXClass[class,package.sty]{layout description}
 
 \begin_layout Standard
 The class need only be specified if the name of the LaTeX class file and
- the name of the layout file are different; if the name of the class file
- is not specified, then LyX will simply assume that it is the same as the
- name of the layout file.
+ the name of the layout file are different or if there are packages to load.
+ If the name of the class file is not specified, then LyX will simply assume
+ that it is the same as the name of the layout file.
 \end_layout
 
 \begin_layout Standard
@@ -9999,7 +9999,7 @@ HTML*
  These tags are used with XHTML output.
  See 
 \begin_inset CommandInset ref
-LatexCommand prettyref
+LatexCommand ref
 reference "sub:Paragraph-Style-XHTML"
 
 \end_inset
@@ -16396,7 +16396,7 @@ AddToHTMLPreamble
  that may appear outside style and inset declarations.
  See 
 \begin_inset CommandInset ref
-LatexCommand prettyref
+LatexCommand ref
 reference "sub:General-text-class"
 
 \end_inset
