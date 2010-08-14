@@ -74,10 +74,10 @@
    <item>
     <widget class="QGroupBox" name="outputsyncCB" >
      <property name="toolTip" >
-      <string>SyncTeX  for PDF, srcltx for DVI</string>
+      <string>Enable forward/reverse search (e.g., SyncTeX)</string>
      </property>
      <property name="title" >
-      <string>Output Sync (Resources for Forward/Backward Search)</string>
+      <string>Synchronize with Output</string>
      </property>
      <property name="flat" >
       <bool>true</bool>
