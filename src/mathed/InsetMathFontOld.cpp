@@ -13,8 +13,9 @@
 #include "InsetMathFontOld.h"
 
 #include "MathData.h"
-#include "MathStream.h"
 #include "MathParser.h"
+#include "MathStream.h"
+#include "MathSupport.h"
 #include "MetricsInfo.h"
 
 #include <ostream>
@@ -23,7 +24,7 @@
 namespace lyx {
 
 InsetMathFontOld::InsetMathFontOld(Buffer * buf, latexkeys const * key)
-	: InsetMathNest(buf, 1), key_(key)
+	: InsetMathNest(buf, 1), key_(key), current_mode_(TEXT_MODE)
 {
 	//lock(true);
 }
@@ -37,7 +38,16 @@ Inset * InsetMathFontOld::clone() const
 
 void InsetMathFontOld::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	FontSetChanger dummy(mi.base, key_->name.c_str());
+	current_mode_ = isTextFont(from_ascii(mi.base.fontname))
+				? TEXT_MODE : MATH_MODE;
+
+	docstring const font = current_mode_ == MATH_MODE
+				? "math" + key_->name : "text" + key_->name;
+
+	// When \cal is used in text mode, the font is not changed
+	bool really_change_font = font != "textcal";
+
+	FontSetChanger dummy(mi.base, font, really_change_font);
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
 }
@@ -45,7 +55,16 @@ void InsetMathFontOld::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathFontOld::draw(PainterInfo & pi, int x, int y) const
 {
-	FontSetChanger dummy(pi.base, key_->name.c_str());
+	current_mode_ = isTextFont(from_ascii(pi.base.fontname))
+				? TEXT_MODE : MATH_MODE;
+
+	docstring const font = current_mode_ == MATH_MODE
+				? "math" + key_->name : "text" + key_->name;
+
+	// When \cal is used in text mode, the font is not changed
+	bool really_change_font = font != "textcal";
+
+	FontSetChanger dummy(pi.base, font, really_change_font);
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 }

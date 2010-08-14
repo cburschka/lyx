@@ -25,8 +25,8 @@ class InsetMathFontOld : public InsetMathNest {
 public:
 	///
 	explicit InsetMathFontOld(Buffer * buf, latexkeys const * key);
-	/// we are in text mode.
-	mode_type currentMode() const { return TEXT_MODE; }
+	/// we inherit the mode
+	mode_type currentMode() const { return current_mode_; }
 	/// we write extra braces in any case...
 	bool extraBraces() const { return true; }
 	///
@@ -50,6 +50,8 @@ private:
 	virtual Inset * clone() const;
 	/// the font to be used on screen
 	latexkeys const * key_;
+	/// the inherited mode
+	mutable mode_type current_mode_;
 };
 
 

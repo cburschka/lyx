@@ -102,6 +102,9 @@ What's new
 - Fix handling of commands containing a double quote (") in shortcut
   editor (bug 6786).
 
+- Use correct mode and screen fonts for old-style font changing macros
+  (\bf, \cal, \it, \rm, and \tt) in math (bug 6851).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
