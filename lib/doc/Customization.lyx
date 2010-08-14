@@ -1,4 +1,4 @@
-#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -6589,9 +6589,9 @@ DeclareLaTeXClass[class,package.sty]{layout description}
 
 \begin_layout Standard
 The class need only be specified if the name of the LaTeX class file and
- the name of the layout file are different; if the name of the class file
- is not specified, then LyX will simply assume that it is the same as the
- name of the layout file.
+ the name of the layout file are different or if there are packages to load.
+ If the name of the class file is not specified, then LyX will simply assume
+ that it is the same as the name of the layout file.
 \end_layout
 
 \begin_layout Standard
