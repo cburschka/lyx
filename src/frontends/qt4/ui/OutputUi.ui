@@ -77,7 +77,7 @@
       <string>Enable forward/reverse search (e.g., SyncTeX)</string>
      </property>
      <property name="title" >
-      <string>Synchronize with Output</string>
+      <string>S&amp;ynchronize with Output</string>
      </property>
      <property name="flat" >
       <bool>true</bool>
@@ -94,7 +94,10 @@
         <item>
          <widget class="QLabel" name="label" >
           <property name="text" >
-           <string>Custom Macro:</string>
+           <string>C&amp;ustom Macro:</string>
+          </property>
+          <property name="buddy" >
+           <cstring>synccustomCB</cstring>
           </property>
          </widget>
         </item>
@@ -124,17 +127,11 @@
      <layout class="QGridLayout" name="outGridLayout" >
       <item row="0" column="0" colspan="2" >
        <widget class="QCheckBox" name="strictCB" >
-        <property name="font" >
-         <font>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
         <property name="toolTip" >
          <string>Whether to comply strictly with XHTML 1.1.</string>
         </property>
         <property name="text" >
-         <string>Strict XHTML 1.1</string>
+         <string>&amp;Strict XHTML 1.1</string>
         </property>
        </widget>
       </item>
@@ -147,7 +144,10 @@
          </font>
         </property>
         <property name="text" >
-         <string>Math Output</string>
+         <string>&amp;Math Output:</string>
+        </property>
+        <property name="buddy" >
+           <cstring>mathoutCB</cstring>
         </property>
        </widget>
       </item>
@@ -193,8 +193,11 @@
          </font>
         </property>
         <property name="text" >
-         <string>Math Image Scaling</string>
+         <string>Math &amp;Image Scaling:</string>
         </property>
+        <property name="buddy" >
+           <cstring>mathimgSB</cstring>
+          </property>
        </widget>
       </item>
       <item row="2" column="1" >
