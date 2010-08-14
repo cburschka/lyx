@@ -874,7 +874,7 @@ void PrefLatex::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefScreenFonts::PrefScreenFonts(GuiPreferences * form)
-	: PrefModule(qt_(catLookAndFeel), qt_("Screen fonts"), form)
+	: PrefModule(qt_(catLookAndFeel), qt_("Screen Fonts"), form)
 {
 	setupUi(this);
 
@@ -1398,19 +1398,19 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 
 // FIXME: this check should test the target platform (darwin)
 #if defined(USE_MACOSX_PACKAGING)
-	spellcheckerCB->addItem(qt_("native"), QString("native"));
+	spellcheckerCB->addItem(qt_("Native"), QString("native"));
 #define CONNECT_APPLESPELL
 #else
 #undef CONNECT_APPLESPELL
 #endif
 #if defined(USE_ASPELL)
-	spellcheckerCB->addItem(qt_("aspell"), QString("aspell"));
+	spellcheckerCB->addItem(qt_("Aspell"), QString("aspell"));
 #endif
 #if defined(USE_ENCHANT)
-	spellcheckerCB->addItem(qt_("enchant"), QString("enchant"));
+	spellcheckerCB->addItem(qt_("Enchant"), QString("enchant"));
 #endif
 #if defined(USE_HUNSPELL)
-	spellcheckerCB->addItem(qt_("hunspell"), QString("hunspell"));
+	spellcheckerCB->addItem(qt_("Hunspell"), QString("hunspell"));
 #endif
 
 	#if defined(CONNECT_APPLESPELL) || defined(USE_ASPELL) || defined(USE_ENCHANT) || defined(USE_HUNSPELL)
@@ -1776,7 +1776,7 @@ private:
 /////////////////////////////////////////////////////////////////////
 
 PrefFileformats::PrefFileformats(GuiPreferences * form)
-	: PrefModule(qt_(catFiles), qt_("File formats"), form)
+	: PrefModule(qt_(catFiles), qt_("File Formats"), form)
 {
 	setupUi(this);
 	formatED->setValidator(new FormatNameValidator(formatsCB, form_->formats()));
@@ -2326,7 +2326,7 @@ void PrefPrinter::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefUserInterface::PrefUserInterface(GuiPreferences * form)
-	: PrefModule(qt_(catLookAndFeel), qt_("User interface"), form)
+	: PrefModule(qt_(catLookAndFeel), qt_("User Interface"), form)
 {
 	setupUi(this);
 
@@ -2596,7 +2596,7 @@ void PrefShortcuts::updateShortcutsTW()
 	shortcutsTW->clear();
 
 	editItem_ = new QTreeWidgetItem(shortcutsTW);
-	editItem_->setText(0, qt_("Cursor, Mouse and Editing functions"));
+	editItem_->setText(0, qt_("Cursor, Mouse and Editing Functions"));
 	editItem_->setFlags(editItem_->flags() & ~Qt::ItemIsSelectable);
 
 	mathItem_ = new QTreeWidgetItem(shortcutsTW);
@@ -3047,7 +3047,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	addModule(converters);
 	addModule(formats);
 
-	prefsPS->setCurrentPanel(qt_("User interface"));
+	prefsPS->setCurrentPanel(qt_("User Interface"));
 // FIXME: hack to work around resizing bug in Qt >= 4.2
 // bug verified with Qt 4.2.{0-3} (JSpitzm)
 #if QT_VERSION >= 0x040200
