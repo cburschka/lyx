@@ -33,10 +33,13 @@ What do I need to run LyX?
     A decent LaTeX2e installation (e.g. TeX Live for Linux, MikTeX for
     Windows).
 
-    Python 2.3 or later to convert old LyX files and for helper scripts
-    (note that you need at least Python 2.3.4 for exporting LyX files
+    Python 2.3 or later to convert old LyX files and for helper scripts.
+    Note 1: Python 2.3.4 or later is required for exporting LyX files
     to a pre-unicode format, as previous versions are affected by a bug
-    about the normalization of unicode strings)
+    about the normalization of unicode strings.
+    Note 2: Python 2.4.0 or later is required for the clean_dvi.py script,
+    which, however, is only used on Windows, where at least Python 2.6.0
+    is anyway recommended.
 
 How does the LyX version scheme work?
 
