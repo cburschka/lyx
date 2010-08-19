@@ -35,6 +35,8 @@ What's new
 
 - Add support for subtitles in the KOMA classes.
 
+- Add support for lists and quotes in the g-brief2 letter class (bug 6857).
+
 
 * USER INTERFACE
 
@@ -82,6 +84,9 @@ What's new
 - Do not allow to rename a format's short name if the format is used by a
   converter. This prevents a crash (bug 6815).
 
+- Fix crash when mutating eqnarray-like environments with labeled lines
+  to display equations (bug 6858).
+
 - Box dialog: only shaded boxes can have multiple paragraphs when there
   is no inner box.
 
@@ -104,9 +109,6 @@ What's new
 
 - Use correct mode and screen fonts for old-style font changing macros
   (\bf, \cal, \it, \rm, and \tt) in math (bug 6851).
-
-- Fix crash when mutating eqnarray-like environments with labeled lines
-  to display equations (bug 6858).
 
 
 * DOCUMENTATION AND LOCALIZATION
