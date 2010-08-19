@@ -16356,7 +16356,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Ladící úroveò nastavena na %1$s"
 
 #: src/LyX.cpp:976
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -16406,10 +16405,11 @@ msgstr ""
 "                  kde fmt vybraný formát k importu\n"
 "                  a soubor.xxx je soubor urèený k importu.\n"
 "\t-f [--force-overwrite] what\n"
-"                  kde 'what' je buï 'all'(=v¹e) nebo 'main'(=hlavní)\n"
+"                  kde 'what' je buï 'all'(=v¹e), 'main'(=hlavní) nebo 'none'(=¾ádný),\n"
 "                  Pomocí 'all' jsou pøepsány v¹echny soubory pøi exportu\n"
-"                  na pøíkazovém øádku. Jinak bude pøepsán pouze hlavní "
-"soubor.\n"
+"                  na pøíkazovém øádku. Pomocí 'main' bude pøepsán pouze hlavní\n"
+"                  soubor, v pøípadì 'none' ¾ádný. Ostatní øetìzce jsou interpretovány\n"
+"                 jako 'all'.\n"
 "\t-version        shrnout verzi a informace o sestavení\n"
 "Prohlédnìte manuálovou stránku LyX-u pro detailnìj¹í informace."
 
@@ -19007,11 +19007,10 @@ msgid "Format in use"
 msgstr "Pou¾ívaný formát"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1712
-#, fuzzy
 msgid ""
 "You cannot change a format's short name if the format is used by a "
 "converter. Please remove the converter first."
-msgstr "Nelze smazat Formát pou¾ívaný konvertorem. Nejprve sma¾te konvertor."
+msgstr "Nelze mìnit krátké jméno formátu pokud je formát pou¾ívaný konvertorem. Nejprve sma¾te konvertor."
 
 #: src/frontends/qt4/GuiPrefs.cpp:1779
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
