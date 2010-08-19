@@ -105,6 +105,9 @@ What's new
 - Use correct mode and screen fonts for old-style font changing macros
   (\bf, \cal, \it, \rm, and \tt) in math (bug 6851).
 
+- Fix crash when mutating eqnarray-like environments with labeled lines
+  to display equations (bug 6858).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
