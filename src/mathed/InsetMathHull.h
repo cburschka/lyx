@@ -187,7 +187,7 @@ private:
 	///
 	void doExtern(Cursor & cur, FuncRequest & func);
 	///
-	void glueall();
+	void glueall(HullType type);
 	/*!
 	 * split every row at the first relation operator.
 	 * The number of columns must be 1. One column is added.

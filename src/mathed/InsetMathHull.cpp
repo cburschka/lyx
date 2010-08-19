@@ -897,12 +897,20 @@ docstring InsetMathHull::nicelabel(row_type row) const
 }
 
 
-void InsetMathHull::glueall()
+void InsetMathHull::glueall(HullType type)
 {
 	MathData ar;
 	for (idx_type i = 0; i < nargs(); ++i)
 		ar.append(cell(i));
+	InsetLabel * label = 0;
+	if (type == hullEquation) {
+		// preserve the label
+		label = label_[0];
+		label_[0] = 0;
+	}
 	*this = InsetMathHull(buffer_, hullSimple);
+	if (label)
+		label_[0] = label;
 	cell(0) = ar;
 	setDefaults();
 }
@@ -1013,7 +1021,6 @@ void InsetMathHull::mutate(HullType newtype)
 			numbered(0, false);
 		} else {
 			setType(hullEquation);
-			numbered(0, false);
 			mutate(newtype);
 		}
 	}
@@ -1039,15 +1046,6 @@ void InsetMathHull::mutate(HullType newtype)
 
 	else if (type_ == hullEqnArray) {
 		if (newtype < type_) {
-			// set correct (no)numbering
-			nonum_[0] = true;
-			for (row_type row = 0; row < nrows(); ++row) {
-				if (!nonum_[row]) {
-					nonum_[0] = false;
-					break;
-				}
-			}
-
 			// set first non-empty label
 			for (row_type row = 0; row < nrows(); ++row) {
 				if (label_[row]) {
@@ -1058,8 +1056,7 @@ void InsetMathHull::mutate(HullType newtype)
 					break;
 				}
 			}
-
-			glueall();
+			glueall(newtype);
 			mutate(newtype);
 		} else { // align & Co.
 			changeCols(2);
