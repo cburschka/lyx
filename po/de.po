@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-08-15 00:59+0200\n"
-"PO-Revision-Date: 2010-08-14 18:33+0200\n"
+"PO-Revision-Date: 2010-08-19 10:12+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -2322,9 +2322,8 @@ msgstr ""
 "Drücken Sie diesen Knopf, um die Formatspezifikationen zu validieren..."
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:51
-#, fuzzy
 msgid "&Validate"
-msgstr "Validieren"
+msgstr "&Validieren"
 
 #: src/frontends/qt4/ui/LogUi.ui:38
 msgid "Hit Enter to search, or click Go!"
@@ -2667,12 +2666,10 @@ msgid "Enable forward/reverse search (e.g., SyncTeX)"
 msgstr "Forward/Reverse Search (bspw. über SyncTeX) aktivieren"
 
 #: src/frontends/qt4/ui/OutputUi.ui:80
-#, fuzzy
 msgid "S&ynchronize with Output"
-msgstr "Mit der Ausgabe synchronisieren"
+msgstr "Mit der Ausgabe s&ynchronisieren"
 
 #: src/frontends/qt4/ui/OutputUi.ui:97
-#, fuzzy
 msgid "C&ustom Macro:"
 msgstr "&Benutzerdefiniertes Makro:"
 
@@ -2689,14 +2686,12 @@ msgid "Whether to comply strictly with XHTML 1.1."
 msgstr "Striktes XHTML 1.1 verwenden?"
 
 #: src/frontends/qt4/ui/OutputUi.ui:134
-#, fuzzy
 msgid "&Strict XHTML 1.1"
-msgstr "Striktes XHTML 1.1"
+msgstr "&Striktes XHTML 1.1"
 
 #: src/frontends/qt4/ui/OutputUi.ui:147
-#, fuzzy
 msgid "&Math Output:"
-msgstr "Mathe-Ausgabe"
+msgstr "&Mathe-Ausgabe:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:163
 msgid "Format to use for math output."
@@ -2722,9 +2717,8 @@ msgid "LaTeX"
 msgstr "LaTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:196
-#, fuzzy
 msgid "Math &Image Scaling:"
-msgstr "Mathe-Bild-Skalierung"
+msgstr "Mathe-&Bild-Skalierung:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:212
 msgid "Scaling factor for images used for math output."
@@ -4509,9 +4503,8 @@ msgid "At Decimal Separator"
 msgstr "Am Dezimaltrenner"
 
 #: src/frontends/qt4/ui/TabularUi.ui:110
-#, fuzzy
 msgid "&Decimal separator:"
-msgstr "Am Dezimaltrenner"
+msgstr "De&zimaltrenner:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:166
 msgid "Fixed width of the column"
@@ -4559,7 +4552,7 @@ msgstr "Drehe diese Zelle um 90 Grad"
 
 #: src/frontends/qt4/ui/TabularUi.ui:268
 msgid "Rotate &cell 90 degrees"
-msgstr "&Zelle um 90 Grad drehen"
+msgstr "Zelle um 90 &Grad drehen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:281
 msgid "Table-wide settings"
@@ -4579,7 +4572,7 @@ msgstr "Drehe die Tabelle um 90 Grad"
 
 #: src/frontends/qt4/ui/TabularUi.ui:344
 msgid "&Rotate table 90 degrees"
-msgstr "Tabelle um 90 Grad &drehen"
+msgstr "T&abelle um 90 Grad drehen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:354
 msgid "LaTe&X argument:"
