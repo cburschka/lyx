@@ -1052,6 +1052,7 @@ void InsetMathHull::mutate(HullType newtype)
 			for (row_type row = 0; row < nrows(); ++row) {
 				if (label_[row]) {
 					label_[0] = label_[row];
+					label_[row] = 0;
 					break;
 				}
 			}
