@@ -904,9 +904,14 @@ void InsetMathHull::glueall(HullType type)
 		ar.append(cell(i));
 	InsetLabel * label = 0;
 	if (type == hullEquation) {
-		// preserve the label
-		label = label_[0];
-		label_[0] = 0;
+		// preserve first non-empty label
+		for (row_type row = 0; row < nrows(); ++row) {
+			if (label_[row]) {
+				label = label_[row];
+				label_[row] = 0;
+				break;
+			}
+		}
 	}
 	*this = InsetMathHull(buffer_, hullSimple);
 	if (label)
@@ -1046,16 +1051,6 @@ void InsetMathHull::mutate(HullType newtype)
 
 	else if (type_ == hullEqnArray) {
 		if (newtype < type_) {
-			// set first non-empty label
-			for (row_type row = 0; row < nrows(); ++row) {
-				if (label_[row]) {
-					if (row > 0) {
-						label_[0] = label_[row];
-						label_[row] = 0;
-					}
-					break;
-				}
-			}
 			glueall(newtype);
 			mutate(newtype);
 		} else { // align & Co.
