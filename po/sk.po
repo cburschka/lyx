@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-08-14 17:26+0200\n"
-"PO-Revision-Date: 2010-08-11 19:12+0200\n"
+"PO-Revision-Date: 2010-08-19 07:37+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenčina <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -2560,14 +2560,12 @@ msgid "Use &XeTeX"
 msgstr "Použi XeTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:77
-#, fuzzy
 msgid "Enable forward/reverse search (e.g., SyncTeX)"
-msgstr "Umožniť Dopredu/Zvratne Hľadať"
+msgstr "Umožniť dopredu/zvratne hľadať (napr., SyncTeX)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:80
-#, fuzzy
 msgid "Synchronize with Output"
-msgstr "Zahrnúť do Výstupu"
+msgstr "Synchronizovať s Výstupom"
 
 #: src/frontends/qt4/ui/OutputUi.ui:97
 msgid "Custom Macro:"
@@ -2878,9 +2876,8 @@ msgid "A&lter..."
 msgstr "Zmeniť..."
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:62
-#, fuzzy
 msgid "Use system colors"
-msgstr "Nemám systémový adresár"
+msgstr "Použiť farby systému"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:25
 msgid "In Math"
@@ -8171,9 +8168,8 @@ msgid "Epigraph"
 msgstr "Epigraph"
 
 #: lib/layouts/memoir.layout:120 lib/layouts/memoir.layout:176
-#, fuzzy
 msgid "Maintext"
-msgstr "Hlavný text:"
+msgstr "Hlavný text"
 
 #: lib/layouts/memoir.layout:132
 msgid "Poemtitle"
@@ -18634,6 +18630,8 @@ msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
 msgstr ""
+"Umožniť používane farieb systému pre niektoré predmety ako pozadie hlavného "
+"okna a výber."
 
 #: src/LyXRC.cpp:3405
 msgid "Enable the automatic appearance of tool tips in the work area."
@@ -20786,9 +20784,8 @@ msgid "Co&mmand:"
 msgstr "Príkaz:"
 
 #: src/frontends/qt4/GuiPrefs.cpp:877
-#, fuzzy
 msgid "Screen Fonts"
-msgstr "Písma obrazovky"
+msgstr "Písma Obrazovky"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1245
 msgid "Paths"
@@ -20832,33 +20829,28 @@ msgid "Spellchecker"
 msgstr "Kontrola pravopisu"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1401
-#, fuzzy
 msgid "Native"
-msgstr "apple-spell"
+msgstr "Apple-Spell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1407
-#, fuzzy
 msgid "Aspell"
-msgstr "aspell"
+msgstr "Aspell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1410
-#, fuzzy
 msgid "Enchant"
-msgstr "enchant"
+msgstr "Enchant"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1413
-#, fuzzy
 msgid "Hunspell"
-msgstr "hunspell"
+msgstr "Hunspell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1473
 msgid "Converters"
 msgstr "Konvertory"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1779
-#, fuzzy
 msgid "File Formats"
-msgstr "Formáty súborov"
+msgstr "Formáty Súborov"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1949 src/frontends/qt4/GuiPrefs.cpp:2101
 msgid "Format in use"
@@ -20893,9 +20885,8 @@ msgid "Printer"
 msgstr "Tlačiareň"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2329 src/frontends/qt4/GuiPrefs.cpp:3050
-#, fuzzy
 msgid "User Interface"
-msgstr "Užívateľské rozhranie"
+msgstr "Užívateľské Rozhranie"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2434
 msgid "Control"
@@ -20914,9 +20905,8 @@ msgid "Shortcut"
 msgstr "Skratka"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2599
-#, fuzzy
 msgid "Cursor, Mouse and Editing Functions"
-msgstr "Kurzor, myš, editačné funkcie"
+msgstr "Kurzor, Myš, a Editačné Funkcie"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2603
 msgid "Mathematical Symbols"
@@ -21452,9 +21442,8 @@ msgid "Symbols"
 msgstr "Symboly"
 
 #: src/frontends/qt4/GuiTabular.cpp:697
-#, fuzzy
 msgid "At Decimal Separator"
-msgstr "Oddeľovač"
+msgstr "Na Decimálnom Separátore"
 
 #: src/frontends/qt4/GuiTabularCreate.cpp:29
 msgid "Insert Table"
