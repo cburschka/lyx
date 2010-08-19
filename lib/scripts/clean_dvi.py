@@ -28,7 +28,7 @@ It requires dv2dt and dt2dv from the DTL dviware package
 http://www.ctan.org/tex-archive/dviware/dtl/
 '''
 
-import os, re, sys
+import os, re, subprocess, sys
 
 def usage(prog_name):
     return 'Usage: %s in.dvi out.dvi\n' \
@@ -79,9 +79,16 @@ def main(argv):
         error('Unable to read "%s"\n' % infile)
 
     # Convert the input .dvi file to .dtl format.
+    if os.name == 'nt':
+        unix = False
+    else:
+        unix = True
     dv2dt_call = 'dv2dt "%s"' % infile
-    dv2dt_stdin, dv2dt_stdout, dv2dt_stderr = \
-        os.popen3(dv2dt_call, 't')
+    dv2dt_pipe = subprocess.Popen(dv2dt_call, universal_newlines=True, \
+        stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, \
+        shell=unix, close_fds=unix)
+    (dv2dt_stdin, dv2dt_stdout, dv2dt_stderr) = \
+        (dv2dt_pipe.stdin, dv2dt_pipe.stdout, dv2dt_pipe.stderr)
 
     dv2dt_stdin.close()
     dv2dt_data   = dv2dt_stdout.read()
