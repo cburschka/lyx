@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-08-15 00:59+0200\n"
-"PO-Revision-Date: 2010-08-19 07:37+0200\n"
+"PO-Revision-Date: 2010-08-19 09:49+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenčina <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -2214,7 +2214,6 @@ msgid "Press button to check validity..."
 msgstr "Kliknite tlačidlo na kontrolu validity..."
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:51
-#, fuzzy
 msgid "&Validate"
 msgstr "Validovať"
 
@@ -2559,12 +2558,10 @@ msgid "Enable forward/reverse search (e.g., SyncTeX)"
 msgstr "Umožniť dopredu/zvratne hľadať (napr., SyncTeX)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:80
-#, fuzzy
 msgid "S&ynchronize with Output"
 msgstr "Synchronizovať s Výstupom"
 
 #: src/frontends/qt4/ui/OutputUi.ui:97
-#, fuzzy
 msgid "C&ustom Macro:"
 msgstr "Vlastné Makro:"
 
@@ -2581,14 +2578,12 @@ msgid "Whether to comply strictly with XHTML 1.1."
 msgstr "Či konať v striktnom zhode s XHTML 1.1."
 
 #: src/frontends/qt4/ui/OutputUi.ui:134
-#, fuzzy
 msgid "&Strict XHTML 1.1"
 msgstr "Striktné XHTML 1.1"
 
 #: src/frontends/qt4/ui/OutputUi.ui:147
-#, fuzzy
 msgid "&Math Output:"
-msgstr "Výstup pre matematiku"
+msgstr "Výstup pre Matematiku:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:163
 msgid "Format to use for math output."
@@ -2614,9 +2609,8 @@ msgid "LaTeX"
 msgstr "LaTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:196
-#, fuzzy
 msgid "Math &Image Scaling:"
-msgstr "Mat. Mierka Obrázku"
+msgstr "Mat. Mierka Obrázku:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:212
 msgid "Scaling factor for images used for math output."
@@ -4363,9 +4357,8 @@ msgid "At Decimal Separator"
 msgstr "Na Decimálnom Separátore"
 
 #: src/frontends/qt4/ui/TabularUi.ui:110
-#, fuzzy
 msgid "&Decimal separator:"
-msgstr "Na Decimálnom Separátore"
+msgstr "Decimálny separátor:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:166
 msgid "Fixed width of the column"
