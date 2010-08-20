@@ -110,6 +110,9 @@ What's new
 - Use correct mode and screen fonts for old-style font changing macros
   (\bf, \cal, \it, \rm, and \tt) in math (bug 6851).
 
+- Retain the first non-empty label when mutating eqnarray-like environments
+  to a display equation (bug 6793).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
