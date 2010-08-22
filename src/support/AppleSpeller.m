@@ -22,29 +22,18 @@ typedef struct AppleSpellerRec {
 #else
 	int doctag;
 #endif
-	char ** suggestions;
-	size_t numsug;
+	NSArray * suggestions;
+	NSArray * misspelled;
 } AppleSpellerRec ;
-
-
-static void freeSuggestionsAppleSpeller(AppleSpeller speller)
-{
-	if (speller->suggestions) {
-		while (speller->numsug--) {
-			free(speller->suggestions[speller->numsug]);
-		}
-		free(speller->suggestions);
-		speller->suggestions = 0;
-	}
-}
 
 
 AppleSpeller newAppleSpeller(void)
 {
 	AppleSpeller speller = calloc(1, sizeof(AppleSpellerRec));
 	speller->checker = [NSSpellChecker sharedSpellChecker];
-	speller->suggestions = 0;
 	speller->doctag = [NSSpellChecker uniqueSpellDocumentTag];
+	speller->suggestions = nil;
+	speller->misspelled = nil;
 	return speller;
 }
 
@@ -53,8 +42,10 @@ void freeAppleSpeller(AppleSpeller speller)
 {
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 
-	freeSuggestionsAppleSpeller(speller);
 	[speller->checker closeSpellDocumentWithTag:speller->doctag];
+
+	[speller->suggestions release];
+	[speller->misspelled release];
 
 	[pool release];
 
@@ -68,6 +59,31 @@ static NSString * toString(const char * word)
 }
 
 
+static NSString * toLanguage(AppleSpeller speller, const char * lang)
+{
+	NSString * result = nil;
+#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1050)
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+	NSString * lang_ = toString(lang);
+	if ([NSSpellChecker instancesRespondToSelector:@selector(availableLanguages)]) {
+		NSArray * languages = [speller->checker availableLanguages];
+		
+		for (NSString *element in languages) {
+			if ([element isEqualToString:lang_]) {
+				result = element;
+				break;
+			} else if ([lang_ hasPrefix:element]) {
+				result = element;
+			}
+		}
+	}
+	[lang_ release];
+	[pool release];
+#endif
+	return result;
+}
+
+
 SpellCheckResult checkAppleSpeller(AppleSpeller speller, const char * word, const char * lang)
 {
 	if (!speller->checker || !lang || !word)
@@ -76,26 +92,43 @@ SpellCheckResult checkAppleSpeller(AppleSpeller speller, const char * word, cons
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 	NSString * word_ = toString(word);
 	NSString * lang_ = toString(lang);
+	SpellCheckResult result = SPELL_CHECK_FAILED;
+	int start = 0;
 
-	NSRange match = [speller->checker
-		checkSpellingOfString:word_
-		startingAt:0
-		language:lang_
-		wrap:NO
-		inSpellDocumentWithTag:speller->doctag
-		wordCount:NULL];
+	[speller->misspelled release];
+	speller->misspelled = nil;
 
-	SpellCheckResult result = match.length == 0 ? SPELL_CHECK_OK : SPELL_CHECK_FAILED;
-	if (result == SPELL_CHECK_OK && [NSSpellChecker instancesRespondToSelector:@selector(hasLearnedWord:)]) {
-		if ([speller->checker hasLearnedWord:word_])
-			result = SPELL_CHECK_LEARNED;
+	while (result == SPELL_CHECK_FAILED) {
+		NSRange match = [speller->checker
+			checkSpellingOfString:word_
+			startingAt:start
+			language:lang_
+			wrap:NO
+			inSpellDocumentWithTag:speller->doctag
+			wordCount:NULL];
+
+		result = match.length == 0 ? SPELL_CHECK_OK : SPELL_CHECK_FAILED;
+		if (result == SPELL_CHECK_OK) {
+			if ([NSSpellChecker instancesRespondToSelector:@selector(hasLearnedWord:)]) {
+				if ([speller->checker hasLearnedWord:word_])
+					result = SPELL_CHECK_LEARNED;
+			}
+		} else {
+			int capacity = [speller->misspelled count] + 1;
+			NSMutableArray * misspelled = [NSMutableArray arrayWithCapacity:capacity];
+			[misspelled addObjectsFromArray:speller->misspelled];
+			[misspelled addObject:[NSValue valueWithRange:match]];
+			[speller->misspelled release];
+			speller->misspelled = [[NSArray arrayWithArray:misspelled] retain];
+			start = match.location + match.length + 1;
+		}
 	}
 
 	[word_ release];
 	[lang_ release];
 	[pool release];
 
-	return result;
+	return [speller->misspelled count] ? SPELL_CHECK_FAILED : result;
 }
 
 
@@ -143,30 +176,19 @@ size_t makeSuggestionAppleSpeller(AppleSpeller speller, const char * word, const
 	[word_ release];
 	[lang_ release];
 
-	freeSuggestionsAppleSpeller(speller);
+	[speller->suggestions release];
+	speller->suggestions = [[NSArray arrayWithArray:result] retain];
 
-	speller->numsug = [result count];
-	if (speller->numsug) {
-		speller->suggestions = calloc(speller->numsug + 1, sizeof(char *));
-		if (speller->suggestions) {
-			size_t i;
-			for (i = 0; i < speller->numsug; i++) {
-				NSString * str = [result objectAtIndex:i];
-				speller->suggestions[i] = strdup([str UTF8String]);
-			}
-			speller->suggestions[speller->numsug] = 0;
-		}
-	}
 	[pool release];
-	return speller->numsug;
+	return [speller->suggestions count];
 }
 
 
 const char * getSuggestionAppleSpeller(AppleSpeller speller, size_t pos)
 {
 	const char * result = 0;
-	if (pos < speller->numsug && speller->suggestions) {
-		result = speller->suggestions[pos] ;
+	if (pos < [speller->suggestions count]) {
+		result = [[speller->suggestions objectAtIndex:pos] UTF8String] ;
 	}
 	return result;
 }
@@ -187,7 +209,6 @@ void learnAppleSpeller(AppleSpeller speller, const char * word)
 }
 
 
-
 void unlearnAppleSpeller(AppleSpeller speller, const char * word)
 {
 #if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1050)
@@ -203,24 +224,21 @@ void unlearnAppleSpeller(AppleSpeller speller, const char * word)
 }
 
 
+int numMisspelledWordsAppleSpeller(AppleSpeller speller)
+{
+	return [speller->misspelled count];
+}
+
+
+void misspelledWordAppleSpeller(AppleSpeller speller, int const position, int * start, int * length)
+{
+	NSRange range = [[speller->misspelled objectAtIndex:position] rangeValue];
+	*start = range.location;
+	*length = range.length;
+}
+
+
 int hasLanguageAppleSpeller(AppleSpeller speller, const char * lang)
 {
-	BOOL result = NO;
-#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1050)
-	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-	NSString * lang_ = toString(lang);
-	if ([NSSpellChecker instancesRespondToSelector:@selector(availableLanguages:)]) {
-		NSArray * languages = [speller->checker availableLanguages];
-
-		for (NSString *element in languages) {
-			result = [element isEqualToString:lang_] || [lang_ hasPrefix:element];
-			if (result) break;
-		}
-	}
-
-	[lang_ release];
-	[pool release];
-#endif
-
-	return result ? 1 : 0;
+	return toLanguage(speller, lang) != nil;
 }

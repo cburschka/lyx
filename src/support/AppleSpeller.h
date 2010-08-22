@@ -35,6 +35,8 @@ const char * getSuggestionAppleSpeller(AppleSpeller speller, size_t pos);
 void learnAppleSpeller(AppleSpeller speller, const char * word);
 void unlearnAppleSpeller(AppleSpeller speller, const char * word);
 int hasLanguageAppleSpeller(AppleSpeller speller, const char * lang);
+int numMisspelledWordsAppleSpeller(AppleSpeller speller);
+void misspelledWordAppleSpeller(AppleSpeller speller, int const position, int * start, int * length);
 
 #ifdef __cplusplus
 } // extern "C"
