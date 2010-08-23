@@ -113,6 +113,9 @@ What's new
 - Retain the first non-empty label when mutating eqnarray-like environments
   to a display equation (bug 6793).
 
+- Load files in correct order when passed as arguments via the command
+  line (bug 6848).
+
 
 * DOCUMENTATION AND LOCALIZATION
 

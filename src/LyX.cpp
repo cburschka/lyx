@@ -436,7 +436,7 @@ int LyX::init(int & argc, char * argv[])
 		return EXIT_FAILURE;
 
 	// Remaining arguments are assumed to be files to load.
-	for (int argi = argc - 1; argi >= 1; --argi)
+	for (int argi = 1; argi < argc; ++argi)
 		pimpl_->files_to_load_.push_back(os::utf8_argv(argi));
 
 	if (first_start) {
