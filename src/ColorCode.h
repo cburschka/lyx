@@ -132,9 +132,6 @@ enum ColorCode
 	/// Math line color
 	Color_mathline,
 
-	/// Caption frame color
-	Color_captionframe,
-
 	/// Collapsable insets text
 	Color_collapsable,
 	/// Collapsable insets frame

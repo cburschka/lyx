@@ -53,7 +53,7 @@ InsetCaption::InsetCaption(Buffer * buf)
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);
-	setFrameColor(Color_captionframe);
+	setFrameColor(Color_collapsableframe);
 }
 
 

@@ -213,7 +213,6 @@ ColorSet::ColorSet()
 	{ Color_mathmacroblend, N_("math macro blended out"), "mathmacroblend", "black", "mathmacroblend" },
 	{ Color_mathmacrooldarg, N_("math macro old parameter"), "mathmacrooldarg", grey80, "mathmacrooldarg" },
 	{ Color_mathmacronewarg, N_("math macro new parameter"), "mathmacronewarg", "black", "mathmacronewarg" },
-	{ Color_captionframe, N_("caption frame"), "captionframe", "IndianRed", "captionframe" },
 	{ Color_collapsable, N_("collapsable inset text"), "collapsable", "DarkRed", "collapsable" },
 	{ Color_collapsableframe, N_("collapsable inset frame"), "collapsableframe", "IndianRed", "collapsableframe" },
 	{ Color_insetbg, N_("inset background"), "insetbg", grey80, "insetbg" },
