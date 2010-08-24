@@ -17,7 +17,6 @@
 #include "CompletionList.h"
 #include "Cursor.h"
 #include "Dimension.h"
-#include "FuncRequest.h"
 #include "GuiWorkArea.h"
 #include "GuiView.h"
 #include "LyX.h"

@@ -19,8 +19,6 @@
 
 #include "insets/InsetERT.h"
 
-#include "FuncRequest.h"
-
 #include "support/gettext.h"
 
 #include <QRadioButton>

@@ -14,7 +14,6 @@
 #include "MathData.h"
 #include "MathStream.h"
 #include "DispatchResult.h"
-#include "FuncRequest.h"
 
 #include <sstream>
 

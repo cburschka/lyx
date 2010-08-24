@@ -15,7 +15,6 @@
 #include "frontends/WorkArea.h"
 
 #include "DocIterator.h"
-#include "FuncRequest.h"
 #include "qt_helpers.h"
 #include "support/docstring.h"
 

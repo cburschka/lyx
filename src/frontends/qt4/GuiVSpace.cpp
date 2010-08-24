@@ -21,7 +21,6 @@
 #include "qt_helpers.h"
 #include "Validator.h"
 
-#include "FuncRequest.h"
 #include "Spacing.h"
 #include "VSpace.h"
 

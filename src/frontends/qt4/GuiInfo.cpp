@@ -19,7 +19,6 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Cursor.h"
-#include "FuncRequest.h"
 
 #include "insets/InsetInfo.h"
 

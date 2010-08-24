@@ -14,7 +14,6 @@
 #include "InsetHyperlink.h"
 
 #include "DispatchResult.h"
-#include "FuncRequest.h"
 #include "LaTeXFeatures.h"
 #include "OutputParams.h"
 #include "output_xhtml.h"

@@ -17,7 +17,6 @@
 #include "Validator.h"
 
 #include "Spacing.h"
-#include "FuncRequest.h"
 
 #include "insets/InsetSpace.h"
 

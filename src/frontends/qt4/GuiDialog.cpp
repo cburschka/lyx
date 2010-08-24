@@ -14,7 +14,6 @@
 
 #include "GuiView.h"
 #include "qt_helpers.h"
-#include "FuncRequest.h"
 
 #include "support/debug.h"
 

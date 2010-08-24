@@ -14,7 +14,6 @@
 
 #include "GuiBox.h"
 
-#include "FuncRequest.h"
 #include "LengthCombo.h"
 #include "Length.h"
 #include "qt_helpers.h"

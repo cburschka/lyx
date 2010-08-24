@@ -18,7 +18,6 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "DispatchResult.h"
-#include "FuncRequest.h"
 #include "LaTeXFeatures.h"
 #include "output_xhtml.h"
 #include "ParIterator.h"

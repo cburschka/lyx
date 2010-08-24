@@ -14,7 +14,6 @@
 #include "Buffer.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
-#include "FuncRequest.h"
 #include "InsetLabel.h"
 #include "LaTeXFeatures.h"
 #include "LyX.h"
