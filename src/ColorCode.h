@@ -171,8 +171,6 @@ enum ColorCode
 	Color_changedtextauthor5,
 	/// Deleted text modifying color
 	Color_deletedtextmodifier,
-	/// Top and bottom line color
-	Color_topline,
 	/// Table line color
 	Color_tabularline,
 	/// Table line color

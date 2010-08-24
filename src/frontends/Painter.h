@@ -58,6 +58,7 @@ public:
 	/// possible line widths
 	enum line_width {
 		line_thin, //< thin line
+		line_medium, //< medium line
 		line_thick //< thick line
 	};
 

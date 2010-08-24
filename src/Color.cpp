@@ -231,7 +231,6 @@ ColorSet::ColorSet()
 	{ Color_changedtextauthor5, N_("changed text 5th author"), "changedtextauthor5", "#55aa00", "changedtextauthor5" },
 	{ Color_deletedtextmodifier, N_("deleted text modifier"), "deletedtextmodifier", "white", "deletedtextmodifier" },
 	{ Color_added_space, N_("added space markers"), "added_space", "Brown", "added_space" },
-	{ Color_topline, N_("top/bottom line"), "topline", "Brown", "topline" },
 	{ Color_tabularline, N_("table line"), "tabularline", "black", "tabularline" },
 	{ Color_tabularonoffline, N_("table on/off line"), "tabularonoffline",
 	     "LightSteelBlue", "tabularonoffline" },

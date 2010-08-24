@@ -83,6 +83,7 @@ void GuiPainter::setQPainterPen(QColor const & col,
 
 	switch (lw) {
 		case line_thin: pen.setWidth(0); break;
+		case line_medium: pen.setWidth(1); break;
 		case line_thick: pen.setWidth(3); break;
 	}
 

@@ -59,8 +59,8 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetLine::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
-	pi.pain.line(x, y, x + dim.wid, y, Color_topline,
-		Painter::line_solid, Painter::line_thick);
+	pi.pain.line(x, y, x + dim.wid, y, Color_black,
+		Painter::line_solid, Painter::line_medium);
 }
 
 
