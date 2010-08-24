@@ -33,7 +33,6 @@
 #include "CutAndPaste.h"
 #include "DispatchResult.h"
 #include "ErrorList.h"
-//#include "FuncRequest.h"
 #include "Language.h"
 #include "Layout.h"
 #include "Lexer.h"
