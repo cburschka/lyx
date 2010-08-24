@@ -331,7 +331,7 @@ void LyXRC::setDefaults()
 	preview_hashed_labels  = false;
 	preview_scale_factor = 1.0;
 	use_converter_cache = true;
-	use_system_colors = true;
+	use_system_colors = false;
 	use_tooltip = true;
 	use_pixmap_cache = false;
 	converter_cache_maxage = 6 * 30 * 24 * 3600; // 6 months
