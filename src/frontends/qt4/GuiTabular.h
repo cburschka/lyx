@@ -17,6 +17,7 @@
 
 #include "InsetParamsWidget.h"
 #include "ui_TabularUi.h"
+#include "insets/InsetTabular.h"
 
 namespace lyx {
 namespace frontend {
@@ -50,6 +51,8 @@ private:
 	void setTableAlignment(std::string & param_str) const;
 	///
 	void setWidthAndAlignment();
+	///
+	bool funcEnabled(Tabular::Feature f) const;
 };
 
 } // namespace frontend

@@ -199,7 +199,7 @@ void GuiTabular::checkEnabled()
 	// check if setting a first header is allowed
 	// additionally check firstheaderNoContentsCB because when this is
 	// the case a first header makes no sense
-	firstheaderStatusCB->setEnabled(getStatus(FuncRequest(LFUN_INSET_MODIFY, "tabular set-ltfirsthead")).enabled()
+	firstheaderStatusCB->setEnabled(funcEnabled(Tabular::SET_LTFIRSTHEAD)
 		&& longtabular && !firstheaderNoContentsCB->isChecked());
 	firstheaderBorderAboveCB->setEnabled(longtabular
 		&& firstheaderStatusCB->isChecked());
@@ -219,17 +219,17 @@ void GuiTabular::checkEnabled()
 	// check if setting a last footer is allowed
 	// additionally check lastfooterNoContentsCB because when this is
 	// the case a last footer makes no sense
-	lastfooterStatusCB->setEnabled(getStatus(FuncRequest(LFUN_INSET_MODIFY, "tabular set-ltlastfoot")).enabled()
+	lastfooterStatusCB->setEnabled(funcEnabled(Tabular::SET_LTLASTFOOT)
 		&& longtabular && !lastfooterNoContentsCB->isChecked());
 	lastfooterBorderAboveCB->setEnabled(longtabular
 		&& lastfooterBorderAboveCB->isChecked());
 	lastfooterBorderBelowCB->setEnabled(longtabular
 		&& lastfooterBorderAboveCB->isChecked());
 
-	captionStatusCB->setEnabled(getStatus(FuncRequest(LFUN_INSET_MODIFY, "tabular toggle-ltcaption")).enabled());
+	captionStatusCB->setEnabled(funcEnabled(Tabular::TOGGLE_LTCAPTION));
 	
-	multicolumnCB->setEnabled(getStatus(FuncRequest(LFUN_INSET_MODIFY, "tabular multicolumn")).enabled());
-	multirowCB->setEnabled(getStatus(FuncRequest(LFUN_INSET_MODIFY, "tabular multirow")).enabled());
+	multicolumnCB->setEnabled(funcEnabled(Tabular::MULTICOLUMN));
+	multirowCB->setEnabled(funcEnabled(Tabular::MULTICOLUMN));
 
 	changed();
 }
@@ -849,6 +849,13 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 		lastfooterBorderBelowCB->setChecked(false);
 	}
 	newpageCB->setChecked(tabular.getLTNewPage(row));
+}
+
+
+bool GuiTabular::funcEnabled(Tabular::Feature f) const
+{
+	string cmd = "tabular " + featureAsString(f);
+	return getStatus(FuncRequest(LFUN_INSET_MODIFY, cmd)).enabled();
 }
 
 
