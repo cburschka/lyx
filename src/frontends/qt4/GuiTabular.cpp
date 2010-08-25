@@ -199,9 +199,8 @@ void GuiTabular::checkEnabled()
 	// check if setting a first header is allowed
 	// additionally check firstheaderNoContentsCB because when this is
 	// the case a first header makes no sense
-	// FIXME: verify that some previous row was not set.
-	firstheaderStatusCB->setEnabled(longtabular
-		&& !firstheaderNoContentsCB->isChecked());
+	firstheaderStatusCB->setEnabled(getStatus(FuncRequest(LFUN_INSET_MODIFY, "tabular set-ltfirsthead")).enabled()
+		&& longtabular && !firstheaderNoContentsCB->isChecked());
 	firstheaderBorderAboveCB->setEnabled(longtabular
 		&& firstheaderStatusCB->isChecked());
 	firstheaderBorderBelowCB->setEnabled(longtabular
@@ -220,8 +219,8 @@ void GuiTabular::checkEnabled()
 	// check if setting a last footer is allowed
 	// additionally check lastfooterNoContentsCB because when this is
 	// the case a last footer makes no sense
-	lastfooterStatusCB->setEnabled(longtabular
-		&& !lastfooterNoContentsCB->isChecked());
+	lastfooterStatusCB->setEnabled(getStatus(FuncRequest(LFUN_INSET_MODIFY, "tabular set-ltlastfoot")).enabled()
+		&& longtabular && !lastfooterNoContentsCB->isChecked());
 	lastfooterBorderAboveCB->setEnabled(longtabular
 		&& lastfooterBorderAboveCB->isChecked());
 	lastfooterBorderBelowCB->setEnabled(longtabular
