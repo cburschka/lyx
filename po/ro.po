@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-08-15 00:59+0200\n"
+"POT-Creation-Date: 2010-08-25 10:35+0200\n"
 "PO-Revision-Date: 2009-08-20 17:06+0100\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -49,7 +49,7 @@ msgstr "Drepturi de autor"
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:208
 #: src/frontends/qt4/ui/SymbolsUi.ui:66 src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161
+#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:297
 msgid "&Close"
 msgstr "În&chide"
 
@@ -62,7 +62,7 @@ msgid "The label as it appears in the document"
 msgstr "Eticheta, aşa cum apare în document"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:39
-#: src/frontends/qt4/ui/RefUi.ui:332
+#: src/frontends/qt4/ui/RefUi.ui:332 src/frontends/qt4/ui_RefUi.h:327
 msgid "&Label:"
 msgstr "&Etichetă"
 
@@ -126,18 +126,20 @@ msgstr "Antet bibliografie"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
+#: src/frontends/qt4/ui_IndicesUi.h:193
 #, fuzzy
 msgid "&Processor:"
 msgstr "&Păstrează:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
+#: src/frontends/qt4/ui_IndicesUi.h:195
 #, fuzzy
 msgid "Select a processor"
 msgstr "Selectaţi un fişier"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:719
-#: src/frontends/qt4/GuiPrefs.cpp:814
+#: src/frontends/qt4/GuiPrefs.cpp:814 src/frontends/qt4/ui_IndicesUi.h:197
 msgid "&Options:"
 msgstr "&Opţiuni:"
 
@@ -174,7 +176,7 @@ msgstr "Introdu numele noii baze de date BibTeX de utilizat"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:110
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:352
+#: src/CutAndPaste.cpp:352 src/frontends/qt4/ui_IndicesUi.h:212
 msgid "&Add"
 msgstr "&Adaugă"
 
@@ -249,7 +251,7 @@ msgstr "Adaugă bibliografia la &Cuprins"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:295
 msgid "&OK"
 msgstr "&OK"
 
@@ -314,21 +316,21 @@ msgstr "Aliniere orizontală a conţinutului în cadrul conturului"
 #: src/frontends/qt4/ui/BoxUi.ui:63 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:66 src/frontends/qt4/ui/TabularUi.ui:1337
 #: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiParagraph.cpp:109
-#: src/frontends/qt4/GuiTabular.cpp:691
+#: src/frontends/qt4/GuiTabular.cpp:682
 msgid "Left"
 msgstr "Stînga"
 
 #: src/frontends/qt4/ui/BoxUi.ui:68 src/frontends/qt4/ui/TabularUi.ui:71
 #: src/frontends/qt4/ui/TabularUi.ui:1344 src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:72 src/frontends/qt4/GuiParagraph.cpp:111
-#: src/frontends/qt4/GuiTabular.cpp:692
+#: src/frontends/qt4/GuiTabular.cpp:683
 msgid "Center"
 msgstr "Centrat"
 
 #: src/frontends/qt4/ui/BoxUi.ui:73 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:76 src/frontends/qt4/ui/TabularUi.ui:1354
 #: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiParagraph.cpp:110
-#: src/frontends/qt4/GuiTabular.cpp:693
+#: src/frontends/qt4/GuiTabular.cpp:684
 msgid "Right"
 msgstr "Dreapta"
 
@@ -415,19 +417,19 @@ msgstr ""
 #: src/frontends/qt4/ui/MathMatrixUi.ui:247
 #: src/frontends/qt4/ui/TabularUi.ui:987
 #: src/frontends/qt4/ui/TabularUi.ui:1006
-#: src/frontends/qt4/ui/TabularUi.ui:1054 src/frontends/qt4/GuiBox.cpp:194
-#: src/frontends/qt4/GuiBox.cpp:312 src/frontends/qt4/GuiBox.cpp:389
+#: src/frontends/qt4/ui/TabularUi.ui:1054 src/frontends/qt4/GuiBox.cpp:193
+#: src/frontends/qt4/GuiBox.cpp:311 src/frontends/qt4/GuiBox.cpp:388
 #: src/frontends/qt4/GuiDocument.cpp:113 src/frontends/qt4/GuiGraphics.cpp:579
 #: src/frontends/qt4/GuiPrefs.cpp:2019 src/frontends/qt4/GuiPrefs.cpp:2042
 msgid "None"
 msgstr "Nimic"
 
-#: src/frontends/qt4/ui/BoxUi.ui:278 src/frontends/qt4/GuiBox.cpp:314
-#: src/frontends/qt4/GuiBox.cpp:392 src/insets/InsetBox.cpp:138
+#: src/frontends/qt4/ui/BoxUi.ui:278 src/frontends/qt4/GuiBox.cpp:313
+#: src/frontends/qt4/GuiBox.cpp:391 src/insets/InsetBox.cpp:138
 msgid "Parbox"
 msgstr "Parbox"
 
-#: src/frontends/qt4/ui/BoxUi.ui:283 src/frontends/qt4/GuiBox.cpp:393
+#: src/frontends/qt4/ui/BoxUi.ui:283 src/frontends/qt4/GuiBox.cpp:392
 #: src/insets/InsetBox.cpp:142
 msgid "Minipage"
 msgstr "Minipagină|p"
@@ -445,6 +447,7 @@ msgid "Select your branch"
 msgstr "Selectează versiunea documentului"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25 src/frontends/qt4/ui/IndicesUi.ui:114
+#: src/frontends/qt4/ui_IndicesUi.h:205
 msgid "&New:"
 msgstr "&Nou"
 
@@ -489,7 +492,7 @@ msgid "Define or change background color"
 msgstr "Defineşte sau modifică culoarea de bază"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
-#: src/frontends/qt4/ui/IndicesUi.ui:185
+#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:227
 msgid "Alter Co&lor..."
 msgstr "&Modifică culoarea"
 
@@ -499,7 +502,7 @@ msgstr "Şterge versiunea de document selectată"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3622
-#: src/Buffer.cpp:3633
+#: src/Buffer.cpp:3633 src/frontends/qt4/ui_IndicesUi.h:219
 msgid "&Remove"
 msgstr "&Elimină"
 
@@ -792,7 +795,7 @@ msgstr "Aplică fiecare modificare imediat"
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:93 src/frontends/qt4/ui/RefUi.ui:124
 #: src/frontends/qt4/ui/SendtoUi.ui:85 src/frontends/qt4/ui/SymbolsUi.ui:59
 #: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1839
-#: src/frontends/qt4/GuiDocument.cpp:3074
+#: src/frontends/qt4/GuiDocument.cpp:3074 src/frontends/qt4/ui_RefUi.h:296
 msgid "&Apply"
 msgstr "&Aplică"
 
@@ -1780,8 +1783,8 @@ msgstr "Model de umplere:"
 msgid "&Protect:"
 msgstr "&Păstrează:"
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:133 src/frontends/qt4/GuiHSpace.cpp:208
-#: src/frontends/qt4/GuiHSpace.cpp:214
+#: src/frontends/qt4/ui/HSpaceUi.ui:133 src/frontends/qt4/GuiHSpace.cpp:207
+#: src/frontends/qt4/GuiHSpace.cpp:213
 msgid "Insert the spacing even after a line break"
 msgstr "Inserează spaţiu chiar şi după o rupere de linie"
 
@@ -1804,6 +1807,7 @@ msgstr "Nume asociat cu URL-ul"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:45
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:251
+#: src/frontends/qt4/ui_RefUi.h:312
 msgid "&Name:"
 msgstr "&Nume:"
 
@@ -1926,67 +1930,69 @@ msgstr "Versiuni ale documentului disponibile"
 msgid "Select the index this entry should be listed in."
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19
+#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
+#: src/frontends/qt4/ui_IndicesUi.h:192
 #, fuzzy
 msgid "Index generation"
 msgstr "&Indentare"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64
+#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
 msgid "Define program options of the selected processor."
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89
+#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92
+#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
 #, fuzzy
 msgid "&Use multiple indexes"
 msgstr "Resetează toate marginile"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124
+#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131
+#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
 #, fuzzy
 msgid "Add a new index to the list"
 msgstr "Adaugă o noua versiune a documentului la listă"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:143
+#: src/frontends/qt4/ui/IndicesUi.ui:143 src/frontends/qt4/ui_IndicesUi.h:213
 #, fuzzy
 msgid "A&vailable Indexes:"
 msgstr "Versiuni ale documentului disponibile"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
+#: src/frontends/qt4/ui_IndicesUi.h:215
 #, fuzzy
 msgid "1"
 msgstr "10"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162
+#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:217
 #, fuzzy
 msgid "Remove the selected index"
 msgstr "Şterge baza de date selectată"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172
+#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:221
 #, fuzzy
 msgid "Rename the selected index"
 msgstr "Şterge baza de date selectată"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175
+#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:223
 #, fuzzy
 msgid "R&ename..."
 msgstr "&Elimină"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182
+#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:225
 #, fuzzy
 msgid "Define or change button color"
 msgstr "Defineşte sau modifică culoarea de bază"
@@ -2305,7 +2311,7 @@ msgid "Update the display"
 msgstr "Actualizează ecranul"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:88
-#: src/frontends/qt4/ui/ViewSourceUi.ui:56
+#: src/frontends/qt4/ui/ViewSourceUi.ui:56 src/frontends/qt4/ui_RefUi.h:294
 msgid "&Update"
 msgstr "&Actualizează"
 
@@ -2811,7 +2817,7 @@ msgstr "Formatul hîrtiei"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
-#: src/frontends/qt4/ui/RefUi.ui:271
+#: src/frontends/qt4/ui/RefUi.ui:271 src/frontends/qt4/ui_RefUi.h:313
 msgid "&Format:"
 msgstr "&Format:"
 
@@ -2893,7 +2899,7 @@ msgstr "Dublu"
 #: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:683
 #: src/frontends/qt4/GuiDocument.cpp:687 src/frontends/qt4/GuiDocument.cpp:695
 #: src/frontends/qt4/GuiDocument.cpp:791 src/frontends/qt4/GuiDocument.cpp:838
-#: src/frontends/qt4/GuiHSpace.cpp:55 src/frontends/qt4/GuiHSpace.cpp:64
+#: src/frontends/qt4/GuiHSpace.cpp:54 src/frontends/qt4/GuiHSpace.cpp:63
 #: src/frontends/qt4/GuiPrefs.cpp:796 src/frontends/qt4/GuiPrefs.cpp:823
 #: src/frontends/qt4/GuiPrefs.cpp:2021 src/frontends/qt4/GuiPrefs.cpp:2044
 #: src/frontends/qt4/GuiPrintNomencl.cpp:72
@@ -4298,45 +4304,45 @@ msgstr ""
 msgid "&Statusbar messages"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:36
+#: src/frontends/qt4/ui/RefUi.ui:36 src/frontends/qt4/ui_RefUi.h:282
 #, fuzzy
 msgid "Fil&ter:"
 msgstr "&Fişier:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49
+#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:284
 msgid "Enter string to filter the label list"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:59
+#: src/frontends/qt4/ui/RefUi.ui:59 src/frontends/qt4/ui_RefUi.h:288
 #, fuzzy
 msgid "Filter case-sensitively"
 msgstr "Senzitiv la &majuscule"
 
-#: src/frontends/qt4/ui/RefUi.ui:62
+#: src/frontends/qt4/ui/RefUi.ui:62 src/frontends/qt4/ui_RefUi.h:290
 #, fuzzy
 msgid "Case-sensiti&ve"
 msgstr "Senzitiv la &majuscule"
 
-#: src/frontends/qt4/ui/RefUi.ui:85
+#: src/frontends/qt4/ui/RefUi.ui:85 src/frontends/qt4/ui_RefUi.h:292
 msgid "Update the label list"
 msgstr "Actualizează lista de etichete"
 
-#: src/frontends/qt4/ui/RefUi.ui:165
+#: src/frontends/qt4/ui/RefUi.ui:165 src/frontends/qt4/ui_RefUi.h:299
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:168
+#: src/frontends/qt4/ui/RefUi.ui:168 src/frontends/qt4/ui_RefUi.h:301
 msgid "&Sort"
 msgstr "Sortează"
 
-#: src/frontends/qt4/ui/RefUi.ui:178
+#: src/frontends/qt4/ui/RefUi.ui:178 src/frontends/qt4/ui_RefUi.h:303
 #, fuzzy
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "Sortează etichetele în ordine alfabetică "
 
-#: src/frontends/qt4/ui/RefUi.ui:181
+#: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/ui_RefUi.h:305
 #, fuzzy
 msgid "Cas&e-sensitive"
 msgstr "Senzitiv la &majuscule"
@@ -4345,48 +4351,49 @@ msgstr "Senzitiv la &majuscule"
 msgid "Group labels by prefix (e.g. &quot;sec:&quot;)"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:191
+#: src/frontends/qt4/ui/RefUi.ui:191 src/frontends/qt4/ui_RefUi.h:309
 #, fuzzy
 msgid "Grou&p"
 msgstr "&Nume:"
 
 #: src/frontends/qt4/ui/RefUi.ui:219 src/frontends/qt4/GuiRef.cpp:314
+#: src/frontends/qt4/ui_RefUi.h:310
 msgid "&Go to Label"
 msgstr "&Mergi la etichetă"
 
-#: src/frontends/qt4/ui/RefUi.ui:228
+#: src/frontends/qt4/ui/RefUi.ui:228 src/frontends/qt4/ui_RefUi.h:311
 msgid "La&bels in:"
 msgstr "Etichetare"
 
-#: src/frontends/qt4/ui/RefUi.ui:290
+#: src/frontends/qt4/ui/RefUi.ui:290 src/frontends/qt4/ui_RefUi.h:325
 msgid "Cross-reference as it appears in output"
 msgstr "Referinţa, aşa cum apare la tipărire"
 
-#: src/frontends/qt4/ui/RefUi.ui:294
+#: src/frontends/qt4/ui/RefUi.ui:294 src/frontends/qt4/ui_RefUi.h:316
 msgid "<reference>"
 msgstr "<referinţă>"
 
-#: src/frontends/qt4/ui/RefUi.ui:299
+#: src/frontends/qt4/ui/RefUi.ui:299 src/frontends/qt4/ui_RefUi.h:317
 msgid "(<reference>)"
 msgstr "(<referinţă>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:304
+#: src/frontends/qt4/ui/RefUi.ui:304 src/frontends/qt4/ui_RefUi.h:318
 msgid "<page>"
 msgstr "<pagină>"
 
-#: src/frontends/qt4/ui/RefUi.ui:309
+#: src/frontends/qt4/ui/RefUi.ui:309 src/frontends/qt4/ui_RefUi.h:319
 msgid "on page <page>"
 msgstr "la pagina <pagină>"
 
-#: src/frontends/qt4/ui/RefUi.ui:314
+#: src/frontends/qt4/ui/RefUi.ui:314 src/frontends/qt4/ui_RefUi.h:320
 msgid "<reference> on page <page>"
 msgstr "<referinţă> la pagina <pagină>"
 
-#: src/frontends/qt4/ui/RefUi.ui:319
+#: src/frontends/qt4/ui/RefUi.ui:319 src/frontends/qt4/ui_RefUi.h:321
 msgid "Formatted reference"
 msgstr "Referinţă formatată"
 
-#: src/frontends/qt4/ui/RefUi.ui:324
+#: src/frontends/qt4/ui/RefUi.ui:324 src/frontends/qt4/ui_RefUi.h:322
 #, fuzzy
 msgid "Textual reference"
 msgstr "Toate referinţele disponibile"
@@ -4552,11 +4559,11 @@ msgid "Horizontal alignment in column"
 msgstr "Aliniere orizontală în coloană"
 
 #: src/frontends/qt4/ui/TabularUi.ui:61 src/frontends/qt4/GuiParagraph.cpp:108
-#: src/frontends/qt4/GuiTabular.cpp:695
+#: src/frontends/qt4/GuiTabular.cpp:686
 msgid "Justified"
 msgstr "Bloc"
 
-#: src/frontends/qt4/ui/TabularUi.ui:81 src/frontends/qt4/GuiTabular.cpp:697
+#: src/frontends/qt4/ui/TabularUi.ui:81 src/frontends/qt4/GuiTabular.cpp:688
 #, fuzzy
 msgid "At Decimal Separator"
 msgstr "Separaţia"
@@ -5590,7 +5597,7 @@ msgstr "Demonstraţie"
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
-#: lib/ui/stdtoolbars.inc:67 src/insets/InsetRef.cpp:225
+#: lib/ui/stdtoolbars.inc:67 src/insets/InsetRef.cpp:224
 msgid "Standard"
 msgstr "Standard"
 
@@ -6762,7 +6769,7 @@ msgstr "Tabel"
 
 #: lib/layouts/beamer.layout:1213 lib/layouts/powerdot.layout:385
 #: lib/layouts/tufte-book.layout:217 lib/layouts/stdfloats.inc:16
-#: src/insets/InsetFloatList.cpp:175
+#: src/insets/InsetFloatList.cpp:174
 msgid "List of Tables"
 msgstr "Listă de tabele"
 
@@ -6773,7 +6780,7 @@ msgstr "Figură"
 
 #: lib/layouts/beamer.layout:1226 lib/layouts/powerdot.layout:396
 #: lib/layouts/tufte-book.layout:228 lib/layouts/stdfloats.inc:30
-#: src/insets/InsetFloatList.cpp:178
+#: src/insets/InsetFloatList.cpp:177
 msgid "List of Figures"
 msgstr "Listă de figuri"
 
@@ -11519,7 +11526,7 @@ msgstr "Selecţa ca linii|l"
 msgid "Selection as Paragraphs|P"
 msgstr "Selecţa ca paragrafe|p"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:402 lib/ui/stdmenus.inc:180
+#: lib/ui/classic.ui:120 lib/ui/stdmenus.inc:180
 msgid "Multicolumn|M"
 msgstr "Multicoloană|M"
 
@@ -11543,7 +11550,7 @@ msgstr "Linie dreapta|d"
 msgid "Alignment|i"
 msgstr "Aliniere|A"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:418 lib/ui/stdmenus.inc:201
+#: lib/ui/classic.ui:129 lib/ui/stdmenus.inc:201
 msgid "Add Row|A"
 msgstr "Adaugă o linie|A"
 
@@ -11559,7 +11566,7 @@ msgstr "Copiază linia"
 msgid "Swap Rows"
 msgstr "Schimbă liniile între ele"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:423 lib/ui/stdmenus.inc:206
+#: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:206
 msgid "Add Column|u"
 msgstr "Adaugă o coloană|o"
 
@@ -11591,7 +11598,7 @@ msgstr "Dreapta|#D"
 msgid "Top|T"
 msgstr "Sus|#S"
 
-#: lib/ui/classic.ui:146 lib/ui/stdmenus.inc:198
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:415 lib/ui/stdmenus.inc:198
 msgid "Middle|M"
 msgstr "Mijloc"
 
@@ -12884,19 +12891,24 @@ msgstr "În&locuieşte"
 msgid "Edit Externally...|x"
 msgstr "Editează extern fişierul"
 
-#: lib/ui/stdcontext.inc:403
+#: lib/ui/stdcontext.inc:402
 #, fuzzy
-msgid "Multirow|i"
+msgid "Multicolumn|u"
 msgstr "Multicoloană|M"
 
-#: lib/ui/stdcontext.inc:405 lib/ui/stdmenus.inc:182
+#: lib/ui/stdcontext.inc:403
 #, fuzzy
-msgid "Top Line|T"
+msgid "Multirow|w"
+msgstr "Multicoloană|M"
+
+#: lib/ui/stdcontext.inc:405
+#, fuzzy
+msgid "Top Line|n"
 msgstr "Sus|#S"
 
-#: lib/ui/stdcontext.inc:406 lib/ui/stdmenus.inc:183
+#: lib/ui/stdcontext.inc:406
 #, fuzzy
-msgid "Bottom Line|B"
+msgid "Bottom Line|i"
 msgstr "Jos|#J"
 
 #: lib/ui/stdcontext.inc:407 lib/ui/stdmenus.inc:184
@@ -12919,19 +12931,24 @@ msgstr "Stînga|#t"
 msgid "Right|h"
 msgstr "Dreapta|#D"
 
-#: lib/ui/stdcontext.inc:415
+#: lib/ui/stdcontext.inc:418
 #, fuzzy
-msgid "Middle|d"
-msgstr "Mijloc"
+msgid "Append Row|A"
+msgstr "Adaugă o linie|A"
 
 #: lib/ui/stdcontext.inc:420 lib/ui/stdmenus.inc:203
 #, fuzzy
 msgid "Copy Row|o"
 msgstr "Copiază linia"
 
-#: lib/ui/stdcontext.inc:425 lib/ui/stdmenus.inc:208
+#: lib/ui/stdcontext.inc:423
 #, fuzzy
-msgid "Copy Column|p"
+msgid "Append Column|p"
+msgstr "Adaugă o coloană|o"
+
+#: lib/ui/stdcontext.inc:425
+#, fuzzy
+msgid "Copy Column|y"
 msgstr "Copiază coloana"
 
 #: lib/ui/stdcontext.inc:428
@@ -13244,6 +13261,16 @@ msgstr "Majuscule|j"
 msgid "Lowercase|L"
 msgstr "Minuscule|s"
 
+#: lib/ui/stdmenus.inc:182
+#, fuzzy
+msgid "Top Line|T"
+msgstr "Sus|#S"
+
+#: lib/ui/stdmenus.inc:183
+#, fuzzy
+msgid "Bottom Line|B"
+msgstr "Jos|#J"
+
 #: lib/ui/stdmenus.inc:187
 #, fuzzy
 msgid "Top|p"
@@ -13258,6 +13285,11 @@ msgstr "Mijloc"
 #, fuzzy
 msgid "Bottom|o"
 msgstr "Jos|#J"
+
+#: lib/ui/stdmenus.inc:208
+#, fuzzy
+msgid "Copy Column|p"
+msgstr "Copiază coloana"
 
 #: lib/ui/stdmenus.inc:216
 msgid "Macro Definition"
@@ -13371,12 +13403,12 @@ msgid "Fold Math Macro|d"
 msgstr "fundal mod matematic"
 
 #: lib/ui/stdmenus.inc:316
-msgid "View Messages|g"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:317
 msgid "View Source|S"
 msgstr "Vizualizează Sursa|S"
+
+#: lib/ui/stdmenus.inc:317
+msgid "View Messages|g"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:320
 #, fuzzy
@@ -17922,141 +17954,133 @@ msgid "math macro new parameter"
 msgstr "cadru mod matematic"
 
 #: src/Color.cpp:216
-msgid "caption frame"
-msgstr "cadru titlu"
-
-#: src/Color.cpp:217
 msgid "collapsable inset text"
 msgstr ""
 
-#: src/Color.cpp:218
+#: src/Color.cpp:217
 #, fuzzy
 msgid "collapsable inset frame"
 msgstr "cadru comandă \"inset\""
 
-#: src/Color.cpp:219
+#: src/Color.cpp:218
 msgid "inset background"
 msgstr "fundal \"inset\""
 
-#: src/Color.cpp:220
+#: src/Color.cpp:219
 msgid "inset frame"
 msgstr "cadru \"inset\""
 
-#: src/Color.cpp:221
+#: src/Color.cpp:220
 msgid "LaTeX error"
 msgstr "eroare LaTeX"
 
-#: src/Color.cpp:222
+#: src/Color.cpp:221
 msgid "end-of-line marker"
 msgstr "marcaj sfîrşit de linie"
 
-#: src/Color.cpp:223
+#: src/Color.cpp:222
 #, fuzzy
 msgid "appendix marker"
 msgstr "marcaj apendix"
 
-#: src/Color.cpp:224
+#: src/Color.cpp:223
 #, fuzzy
 msgid "change bar"
 msgstr "Modificare font|f"
 
-#: src/Color.cpp:225
+#: src/Color.cpp:224
 #, fuzzy
 msgid "deleted text"
 msgstr "Text şters"
 
-#: src/Color.cpp:226
+#: src/Color.cpp:225
 #, fuzzy
 msgid "added text"
 msgstr "Text adăugat"
 
-#: src/Color.cpp:227
+#: src/Color.cpp:226
 msgid "changed text 1st author"
 msgstr ""
 
-#: src/Color.cpp:228
+#: src/Color.cpp:227
 msgid "changed text 2nd author"
 msgstr ""
 
-#: src/Color.cpp:229
+#: src/Color.cpp:228
 msgid "changed text 3rd author"
 msgstr ""
 
-#: src/Color.cpp:230
+#: src/Color.cpp:229
 msgid "changed text 4th author"
 msgstr ""
 
-#: src/Color.cpp:231
+#: src/Color.cpp:230
 msgid "changed text 5th author"
 msgstr ""
 
-#: src/Color.cpp:232
+#: src/Color.cpp:231
 #, fuzzy
 msgid "deleted text modifier"
 msgstr "Text şters"
 
-#: src/Color.cpp:233
+#: src/Color.cpp:232
 msgid "added space markers"
 msgstr "marcaje spaţiu adăugat"
 
-#: src/Color.cpp:234
-msgid "top/bottom line"
-msgstr "linie sus/jos"
-
-#: src/Color.cpp:235
+#: src/Color.cpp:233
 msgid "table line"
 msgstr "linie de tabel"
 
-#: src/Color.cpp:236
+#: src/Color.cpp:234
 msgid "table on/off line"
 msgstr "linie de tabel activată/dezactivată"
 
 # format
-#: src/Color.cpp:238
+#: src/Color.cpp:236
 msgid "bottom area"
 msgstr "zona de jos"
 
-#: src/Color.cpp:239
+#: src/Color.cpp:237
 msgid "new page"
 msgstr "pagină nouă"
 
-#: src/Color.cpp:240
+#: src/Color.cpp:238
 msgid "page break / line break"
 msgstr "rupere de pagină / linie"
 
-#: src/Color.cpp:241
+#: src/Color.cpp:239
 msgid "frame of button"
 msgstr "cadrul butonului"
 
-#: src/Color.cpp:242
+#: src/Color.cpp:240
 msgid "button background"
 msgstr "fundalul butonului"
 
-#: src/Color.cpp:243
+#: src/Color.cpp:241
 #, fuzzy
 msgid "button background under focus"
 msgstr "fundalul butonului ?focusat"
 
-#: src/Color.cpp:244
+#: src/Color.cpp:242
 #, fuzzy
 msgid "paragraph marker"
 msgstr "Subparagraf"
 
-#: src/Color.cpp:245
+#: src/Color.cpp:243
 #, fuzzy
 msgid "preview frame"
 msgstr "Interval de salvare automată:"
 
-#: src/Color.cpp:246
+#: src/Color.cpp:244
 msgid "inherit"
 msgstr "moştenire"
 
-#: src/Color.cpp:247
+#: src/Color.cpp:245
 #, fuzzy
 msgid "regexp frame"
 msgstr "cadru \"inset\""
 
-#: src/Color.cpp:248
+#: src/Color.cpp:246
 msgid "ignore"
 msgstr "ignorare"
 
@@ -19292,16 +19316,16 @@ msgstr ""
 msgid ", Boundary: "
 msgstr ""
 
-#: src/Text2.cpp:384
+#: src/Text2.cpp:383
 #, fuzzy
 msgid "No font change defined."
 msgstr "Salt la modificarea următoare"
 
-#: src/Text2.cpp:424
+#: src/Text2.cpp:423
 msgid "Nothing to index!"
 msgstr "Nimic de indexat"
 
-#: src/Text2.cpp:426
+#: src/Text2.cpp:425
 msgid "Cannot index more than one paragraph!"
 msgstr "Nu pot indexa mai mult de un paragraf!"
 
@@ -19960,55 +19984,55 @@ msgstr "Stiluri BibTeX"
 msgid "Select a BibTeX style"
 msgstr "Comută stilul TeX"
 
-#: src/frontends/qt4/GuiBox.cpp:55
+#: src/frontends/qt4/GuiBox.cpp:54
 #, fuzzy
 msgid "No frame"
 msgstr "Nume"
 
-#: src/frontends/qt4/GuiBox.cpp:55
+#: src/frontends/qt4/GuiBox.cpp:54
 msgid "Simple rectangular frame"
 msgstr ""
 
-#: src/frontends/qt4/GuiBox.cpp:56
+#: src/frontends/qt4/GuiBox.cpp:55
 msgid "Oval frame, thin"
 msgstr ""
 
-#: src/frontends/qt4/GuiBox.cpp:56
+#: src/frontends/qt4/GuiBox.cpp:55
 msgid "Oval frame, thick"
 msgstr ""
 
-#: src/frontends/qt4/GuiBox.cpp:57
+#: src/frontends/qt4/GuiBox.cpp:56
 msgid "Drop shadow"
 msgstr ""
 
-#: src/frontends/qt4/GuiBox.cpp:57
+#: src/frontends/qt4/GuiBox.cpp:56
 #, fuzzy
 msgid "Shaded background"
 msgstr "fundal notă"
 
-#: src/frontends/qt4/GuiBox.cpp:58
+#: src/frontends/qt4/GuiBox.cpp:57
 msgid "Double rectangular frame"
 msgstr ""
 
-#: src/frontends/qt4/GuiBox.cpp:71
+#: src/frontends/qt4/GuiBox.cpp:70
 msgid "Height"
 msgstr "Î&nălţime"
 
-#: src/frontends/qt4/GuiBox.cpp:71
+#: src/frontends/qt4/GuiBox.cpp:70
 #, fuzzy
 msgid "Depth"
 msgstr "Adîncime"
 
-#: src/frontends/qt4/GuiBox.cpp:72
+#: src/frontends/qt4/GuiBox.cpp:71
 #, fuzzy
 msgid "Total Height"
 msgstr "Copyright"
 
-#: src/frontends/qt4/GuiBox.cpp:72
+#: src/frontends/qt4/GuiBox.cpp:71
 msgid "Width"
 msgstr "Lăţime"
 
-#: src/frontends/qt4/GuiBox.cpp:316 src/frontends/qt4/GuiBox.cpp:391
+#: src/frontends/qt4/GuiBox.cpp:315 src/frontends/qt4/GuiBox.cpp:390
 #: src/insets/InsetBox.cpp:140
 #, fuzzy
 msgid "Makebox"
@@ -21046,61 +21070,61 @@ msgstr "Selectaţi fişierul de ieşire"
 msgid "Clipart|#C#c"
 msgstr ""
 
-#: src/frontends/qt4/GuiHSpace.cpp:46 src/frontends/qt4/GuiHSpace.cpp:58
+#: src/frontends/qt4/GuiHSpace.cpp:45 src/frontends/qt4/GuiHSpace.cpp:57
 #: src/insets/InsetSpace.cpp:74
 #, fuzzy
 msgid "Thin Space"
 msgstr "Spaţiu subţire|S"
 
-#: src/frontends/qt4/GuiHSpace.cpp:47 src/insets/InsetSpace.cpp:77
+#: src/frontends/qt4/GuiHSpace.cpp:46 src/insets/InsetSpace.cpp:77
 #, fuzzy
 msgid "Medium Space"
 msgstr "Mediu"
 
-#: src/frontends/qt4/GuiHSpace.cpp:48 src/insets/InsetSpace.cpp:80
+#: src/frontends/qt4/GuiHSpace.cpp:47 src/insets/InsetSpace.cpp:80
 #, fuzzy
 msgid "Thick Space"
 msgstr "Spaţiu subţire|S"
 
-#: src/frontends/qt4/GuiHSpace.cpp:49 src/frontends/qt4/GuiHSpace.cpp:59
+#: src/frontends/qt4/GuiHSpace.cpp:48 src/frontends/qt4/GuiHSpace.cpp:58
 #: src/insets/InsetSpace.cpp:95
 #, fuzzy
 msgid "Negative Thin Space"
 msgstr "Mediu"
 
-#: src/frontends/qt4/GuiHSpace.cpp:50 src/insets/InsetSpace.cpp:98
+#: src/frontends/qt4/GuiHSpace.cpp:49 src/insets/InsetSpace.cpp:98
 #, fuzzy
 msgid "Negative Medium Space"
 msgstr "Mediu"
 
-#: src/frontends/qt4/GuiHSpace.cpp:51 src/insets/InsetSpace.cpp:101
+#: src/frontends/qt4/GuiHSpace.cpp:50 src/insets/InsetSpace.cpp:101
 #, fuzzy
 msgid "Negative Thick Space"
 msgstr "Mediu"
 
-#: src/frontends/qt4/GuiHSpace.cpp:52 src/frontends/qt4/GuiHSpace.cpp:60
+#: src/frontends/qt4/GuiHSpace.cpp:51 src/frontends/qt4/GuiHSpace.cpp:59
 msgid "Half Quad (0.5 em)"
 msgstr ""
 
-#: src/frontends/qt4/GuiHSpace.cpp:53 src/frontends/qt4/GuiHSpace.cpp:61
+#: src/frontends/qt4/GuiHSpace.cpp:52 src/frontends/qt4/GuiHSpace.cpp:60
 msgid "Quad (1 em)"
 msgstr ""
 
-#: src/frontends/qt4/GuiHSpace.cpp:54 src/frontends/qt4/GuiHSpace.cpp:62
+#: src/frontends/qt4/GuiHSpace.cpp:53 src/frontends/qt4/GuiHSpace.cpp:61
 #, fuzzy
 msgid "Double Quad (2 em)"
 msgstr "Element Dublu:"
 
-#: src/frontends/qt4/GuiHSpace.cpp:57 src/insets/InsetSpace.cpp:68
+#: src/frontends/qt4/GuiHSpace.cpp:56 src/insets/InsetSpace.cpp:68
 #, fuzzy
 msgid "Interword Space"
 msgstr "Spaţiu între cuvinte|c"
 
-#: src/frontends/qt4/GuiHSpace.cpp:63 src/insets/InsetSpace.cpp:104
+#: src/frontends/qt4/GuiHSpace.cpp:62 src/insets/InsetSpace.cpp:104
 msgid "Horizontal Fill"
 msgstr "Umplere orizontală"
 
-#: src/frontends/qt4/GuiHSpace.cpp:210
+#: src/frontends/qt4/GuiHSpace.cpp:209
 msgid ""
 "Insert the spacing even after a line break.\n"
 "Note that a protected Half Quad will be turned into\n"
@@ -21160,51 +21184,51 @@ msgstr "Introdu numele noii baze de date BibTeX de utilizat"
 msgid "The index could not be renamed. Check if the new name already exists."
 msgstr ""
 
-#: src/frontends/qt4/GuiInfo.cpp:46
+#: src/frontends/qt4/GuiInfo.cpp:45
 #, fuzzy
 msgid "unknown"
 msgstr "necunoscut"
 
-#: src/frontends/qt4/GuiInfo.cpp:46
+#: src/frontends/qt4/GuiInfo.cpp:45
 #, fuzzy
 msgid "shortcut"
 msgstr "&Accelerator:"
 
-#: src/frontends/qt4/GuiInfo.cpp:46
+#: src/frontends/qt4/GuiInfo.cpp:45
 #, fuzzy
 msgid "shortcuts"
 msgstr "&Accelerator:"
 
-#: src/frontends/qt4/GuiInfo.cpp:46
+#: src/frontends/qt4/GuiInfo.cpp:45
 msgid "lyxrc"
 msgstr "lyxrc"
 
-#: src/frontends/qt4/GuiInfo.cpp:46
+#: src/frontends/qt4/GuiInfo.cpp:45
 #, fuzzy
 msgid "package"
 msgstr "Spaţiu"
 
-#: src/frontends/qt4/GuiInfo.cpp:46
+#: src/frontends/qt4/GuiInfo.cpp:45
 #, fuzzy
 msgid "textclass"
 msgstr "Clasificare în funcţtie de subiect"
 
-#: src/frontends/qt4/GuiInfo.cpp:47
+#: src/frontends/qt4/GuiInfo.cpp:46
 #, fuzzy
 msgid "menu"
 msgstr "minute"
 
-#: src/frontends/qt4/GuiInfo.cpp:47
+#: src/frontends/qt4/GuiInfo.cpp:46
 #, fuzzy
 msgid "icon"
 msgstr "pe"
 
-#: src/frontends/qt4/GuiInfo.cpp:47
+#: src/frontends/qt4/GuiInfo.cpp:46
 #, fuzzy
 msgid "buffer"
 msgstr "albastru"
 
-#: src/frontends/qt4/GuiInfo.cpp:47
+#: src/frontends/qt4/GuiInfo.cpp:46
 #, fuzzy
 msgid "lyxinfo"
 msgstr "liminf"
@@ -22748,8 +22772,8 @@ msgstr "Dicţionar"
 msgid "All Files "
 msgstr "Închide"
 
-#: src/frontends/qt4/qt_helpers.cpp:541 src/insets/InsetTOC.cpp:56
-#: src/insets/InsetTOC.cpp:97
+#: src/frontends/qt4/qt_helpers.cpp:541 src/insets/InsetTOC.cpp:55
+#: src/insets/InsetTOC.cpp:96
 #, fuzzy
 msgid "Table of Contents"
 msgstr "Cuprins|C"
@@ -22808,6 +22832,10 @@ msgstr "Listă de tabele"
 #, fuzzy
 msgid "List of Changes"
 msgstr "Listă de tabele"
+
+#: src/frontends/qt4/ui_RefUi.h:307
+msgid "Group labels by prefix (e.g. \"sec:\")"
+msgstr ""
 
 #: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:286
 #: src/insets/InsetGraphics.cpp:594 src/insets/InsetInclude.cpp:513
@@ -22998,17 +23026,17 @@ msgstr "Cale fişiere de rezervă:|#r"
 msgid "Sub-%1$s"
 msgstr ""
 
-#: src/insets/InsetCitation.cpp:111
+#: src/insets/InsetCitation.cpp:110
 #, fuzzy
 msgid "No bibliography defined!"
 msgstr "Cheia bibliografică"
 
-#: src/insets/InsetCitation.cpp:115
+#: src/insets/InsetCitation.cpp:114
 #, fuzzy
 msgid "No citations selected!"
 msgstr "Salt la modificarea următoare"
 
-#: src/insets/InsetCitation.cpp:285
+#: src/insets/InsetCitation.cpp:284
 #, fuzzy
 msgid "not cited"
 msgstr "Spaţiu protejat|S"
@@ -23090,16 +23118,16 @@ msgstr "notă subsol"
 msgid " (sideways)"
 msgstr "Roteşte lateral"
 
-#: src/insets/InsetFloatList.cpp:78
+#: src/insets/InsetFloatList.cpp:77
 msgid "ERROR: Nonexistent float type!"
 msgstr ""
 
-#: src/insets/InsetFloatList.cpp:131
+#: src/insets/InsetFloatList.cpp:130
 #, c-format
 msgid "LyX cannot generate a list of %1$s"
 msgstr ""
 
-#: src/insets/InsetFloatList.cpp:136
+#: src/insets/InsetFloatList.cpp:135
 #, fuzzy, c-format
 msgid "List of %1$s"
 msgstr "Listă de tabele"
@@ -23509,74 +23537,74 @@ msgstr "Esperanto"
 msgid "vphantom"
 msgstr "Esperanto"
 
-#: src/insets/InsetRef.cpp:133
+#: src/insets/InsetRef.cpp:132
 #, fuzzy
 msgid "elsewhere"
 msgstr "Resetează"
 
-#: src/insets/InsetRef.cpp:204
+#: src/insets/InsetRef.cpp:203
 msgid "BROKEN: "
 msgstr ""
 
-#: src/insets/InsetRef.cpp:225 src/mathed/InsetMathRef.cpp:224
+#: src/insets/InsetRef.cpp:224 src/mathed/InsetMathRef.cpp:224
 #, fuzzy
 msgid "Ref: "
 msgstr "MyRef"
 
-#: src/insets/InsetRef.cpp:226 src/mathed/InsetMathRef.cpp:225
+#: src/insets/InsetRef.cpp:225 src/mathed/InsetMathRef.cpp:225
 #, fuzzy
 msgid "Equation"
 msgstr "Citat"
 
-#: src/insets/InsetRef.cpp:226 src/mathed/InsetMathRef.cpp:225
+#: src/insets/InsetRef.cpp:225 src/mathed/InsetMathRef.cpp:225
 #, fuzzy
 msgid "EqRef: "
 msgstr "MyRef"
 
-#: src/insets/InsetRef.cpp:227 src/mathed/InsetMathRef.cpp:226
+#: src/insets/InsetRef.cpp:226 src/mathed/InsetMathRef.cpp:226
 #, fuzzy
 msgid "Page Number"
 msgstr "Comută sublinierea fontului"
 
-#: src/insets/InsetRef.cpp:227 src/mathed/InsetMathRef.cpp:226
+#: src/insets/InsetRef.cpp:226 src/mathed/InsetMathRef.cpp:226
 #, fuzzy
 msgid "Page: "
 msgstr "Pagini"
 
-#: src/insets/InsetRef.cpp:228 src/mathed/InsetMathRef.cpp:227
+#: src/insets/InsetRef.cpp:227 src/mathed/InsetMathRef.cpp:227
 #, fuzzy
 msgid "Textual Page Number"
 msgstr "Comută sublinierea fontului"
 
-#: src/insets/InsetRef.cpp:228 src/mathed/InsetMathRef.cpp:227
+#: src/insets/InsetRef.cpp:227 src/mathed/InsetMathRef.cpp:227
 #, fuzzy
 msgid "TextPage: "
 msgstr "Text după"
 
-#: src/insets/InsetRef.cpp:229 src/mathed/InsetMathRef.cpp:228
+#: src/insets/InsetRef.cpp:228 src/mathed/InsetMathRef.cpp:228
 msgid "Standard+Textual Page"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:229 src/mathed/InsetMathRef.cpp:228
+#: src/insets/InsetRef.cpp:228 src/mathed/InsetMathRef.cpp:228
 #, fuzzy
 msgid "Ref+Text: "
 msgstr "Text"
 
-#: src/insets/InsetRef.cpp:230 src/mathed/InsetMathRef.cpp:229
+#: src/insets/InsetRef.cpp:229 src/mathed/InsetMathRef.cpp:229
 msgid "PrettyRef"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:230
+#: src/insets/InsetRef.cpp:229
 #, fuzzy
 msgid "FrmtRef: "
 msgstr "F&ormat:"
 
-#: src/insets/InsetRef.cpp:231
+#: src/insets/InsetRef.cpp:230
 #, fuzzy
 msgid "Reference to Name"
 msgstr "Referinţă"
 
-#: src/insets/InsetRef.cpp:231
+#: src/insets/InsetRef.cpp:230
 #, fuzzy
 msgid "NameRef:"
 msgstr "Nume:"
@@ -23650,7 +23678,7 @@ msgstr "Aliniere pe &orizontală:"
 msgid "Protected Horizontal Space (%1$s)"
 msgstr "Spaţiu protejat|S"
 
-#: src/insets/InsetTOC.cpp:57
+#: src/insets/InsetTOC.cpp:56
 #, fuzzy
 msgid "Unknown TOC type"
 msgstr "necunoscut"
@@ -23842,7 +23870,7 @@ msgstr "Reconfigurează|R"
 msgid " Macro: %1$s: "
 msgstr " Macro: %s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1573
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1568
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23888,27 +23916,27 @@ msgstr "Nimic de indexat"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Caracteristici tabular"
 
-#: src/mathed/InsetMathHull.cpp:1299 src/mathed/InsetMathHull.cpp:1308
+#: src/mathed/InsetMathHull.cpp:1294 src/mathed/InsetMathHull.cpp:1303
 #, fuzzy
 msgid "No number"
 msgstr "msnumber"
 
-#: src/mathed/InsetMathHull.cpp:1299 src/mathed/InsetMathHull.cpp:1308
+#: src/mathed/InsetMathHull.cpp:1294 src/mathed/InsetMathHull.cpp:1303
 #, fuzzy
 msgid "Number"
 msgstr "&Numerotare"
 
-#: src/mathed/InsetMathHull.cpp:1546
+#: src/mathed/InsetMathHull.cpp:1541
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1556
+#: src/mathed/InsetMathHull.cpp:1551
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1566
+#: src/mathed/InsetMathHull.cpp:1561
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
@@ -24164,6 +24192,16 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Cuvînt necunoscut:"
+
+#, fuzzy
+#~ msgid "Middle|d"
+#~ msgstr "Mijloc"
+
+#~ msgid "caption frame"
+#~ msgstr "cadru titlu"
+
+#~ msgid "top/bottom line"
+#~ msgstr "linie sus/jos"
 
 #, fuzzy
 #~ msgid "Decimal"

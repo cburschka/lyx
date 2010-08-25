@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-08-15 00:59+0200\n"
+"POT-Creation-Date: 2010-08-25 10:35+0200\n"
 "PO-Revision-Date: 2007-06-26 17:10+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -47,7 +47,7 @@ msgstr "著作權"
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:208
 #: src/frontends/qt4/ui/SymbolsUi.ui:66 src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161
+#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:297
 msgid "&Close"
 msgstr "關閉(&C)"
 
@@ -60,7 +60,7 @@ msgid "The label as it appears in the document"
 msgstr "如同出現在文件中的標籤"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:39
-#: src/frontends/qt4/ui/RefUi.ui:332
+#: src/frontends/qt4/ui/RefUi.ui:332 src/frontends/qt4/ui_RefUi.h:327
 msgid "&Label:"
 msgstr "標籤(&L)："
 
@@ -124,18 +124,20 @@ msgstr "文獻目錄標頭"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
+#: src/frontends/qt4/ui_IndicesUi.h:193
 #, fuzzy
 msgid "&Processor:"
 msgstr "保護(&P)："
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
+#: src/frontends/qt4/ui_IndicesUi.h:195
 #, fuzzy
 msgid "Select a processor"
 msgstr "選取檔案"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:719
-#: src/frontends/qt4/GuiPrefs.cpp:814
+#: src/frontends/qt4/GuiPrefs.cpp:814 src/frontends/qt4/ui_IndicesUi.h:197
 msgid "&Options:"
 msgstr "選項(&O)："
 
@@ -172,7 +174,7 @@ msgstr "輸入 BibTeX 資料庫名稱"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:110
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:352
+#: src/CutAndPaste.cpp:352 src/frontends/qt4/ui_IndicesUi.h:212
 msgid "&Add"
 msgstr "加入(&A)"
 
@@ -247,7 +249,7 @@ msgstr "加入文獻目錄到內容表(&T)"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:295
 msgid "&OK"
 msgstr "確定(&O)"
 
@@ -316,21 +318,21 @@ msgstr "水平對齊方框內部的內容"
 #: src/frontends/qt4/ui/BoxUi.ui:63 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:66 src/frontends/qt4/ui/TabularUi.ui:1337
 #: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiParagraph.cpp:109
-#: src/frontends/qt4/GuiTabular.cpp:691
+#: src/frontends/qt4/GuiTabular.cpp:682
 msgid "Left"
 msgstr "左"
 
 #: src/frontends/qt4/ui/BoxUi.ui:68 src/frontends/qt4/ui/TabularUi.ui:71
 #: src/frontends/qt4/ui/TabularUi.ui:1344 src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:72 src/frontends/qt4/GuiParagraph.cpp:111
-#: src/frontends/qt4/GuiTabular.cpp:692
+#: src/frontends/qt4/GuiTabular.cpp:683
 msgid "Center"
 msgstr "中"
 
 #: src/frontends/qt4/ui/BoxUi.ui:73 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:76 src/frontends/qt4/ui/TabularUi.ui:1354
 #: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiParagraph.cpp:110
-#: src/frontends/qt4/GuiTabular.cpp:693
+#: src/frontends/qt4/GuiTabular.cpp:684
 msgid "Right"
 msgstr "右"
 
@@ -416,19 +418,19 @@ msgstr "內框 -- 固定寬度 & 分列符號所需"
 #: src/frontends/qt4/ui/MathMatrixUi.ui:247
 #: src/frontends/qt4/ui/TabularUi.ui:987
 #: src/frontends/qt4/ui/TabularUi.ui:1006
-#: src/frontends/qt4/ui/TabularUi.ui:1054 src/frontends/qt4/GuiBox.cpp:194
-#: src/frontends/qt4/GuiBox.cpp:312 src/frontends/qt4/GuiBox.cpp:389
+#: src/frontends/qt4/ui/TabularUi.ui:1054 src/frontends/qt4/GuiBox.cpp:193
+#: src/frontends/qt4/GuiBox.cpp:311 src/frontends/qt4/GuiBox.cpp:388
 #: src/frontends/qt4/GuiDocument.cpp:113 src/frontends/qt4/GuiGraphics.cpp:579
 #: src/frontends/qt4/GuiPrefs.cpp:2019 src/frontends/qt4/GuiPrefs.cpp:2042
 msgid "None"
 msgstr "無"
 
-#: src/frontends/qt4/ui/BoxUi.ui:278 src/frontends/qt4/GuiBox.cpp:314
-#: src/frontends/qt4/GuiBox.cpp:392 src/insets/InsetBox.cpp:138
+#: src/frontends/qt4/ui/BoxUi.ui:278 src/frontends/qt4/GuiBox.cpp:313
+#: src/frontends/qt4/GuiBox.cpp:391 src/insets/InsetBox.cpp:138
 msgid "Parbox"
 msgstr "段落框"
 
-#: src/frontends/qt4/ui/BoxUi.ui:283 src/frontends/qt4/GuiBox.cpp:393
+#: src/frontends/qt4/ui/BoxUi.ui:283 src/frontends/qt4/GuiBox.cpp:392
 #: src/insets/InsetBox.cpp:142
 msgid "Minipage"
 msgstr "迷你頁面"
@@ -446,6 +448,7 @@ msgid "Select your branch"
 msgstr "選取您的分支"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25 src/frontends/qt4/ui/IndicesUi.ui:114
+#: src/frontends/qt4/ui_IndicesUi.h:205
 msgid "&New:"
 msgstr "新增(&N)："
 
@@ -490,7 +493,7 @@ msgid "Define or change background color"
 msgstr "定義或變更背景顏色"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
-#: src/frontends/qt4/ui/IndicesUi.ui:185
+#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:227
 msgid "Alter Co&lor..."
 msgstr "改變顏色(&L)…"
 
@@ -500,7 +503,7 @@ msgstr "移除已選取的分支"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3622
-#: src/Buffer.cpp:3633
+#: src/Buffer.cpp:3633 src/frontends/qt4/ui_IndicesUi.h:219
 msgid "&Remove"
 msgstr "移除(&R)"
 
@@ -793,7 +796,7 @@ msgstr "即時地套用變更"
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:93 src/frontends/qt4/ui/RefUi.ui:124
 #: src/frontends/qt4/ui/SendtoUi.ui:85 src/frontends/qt4/ui/SymbolsUi.ui:59
 #: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1839
-#: src/frontends/qt4/GuiDocument.cpp:3074
+#: src/frontends/qt4/GuiDocument.cpp:3074 src/frontends/qt4/ui_RefUi.h:296
 msgid "&Apply"
 msgstr "套用(&A)"
 
@@ -1776,8 +1779,8 @@ msgstr "檔案(&F)："
 msgid "&Protect:"
 msgstr "保護(&P)："
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:133 src/frontends/qt4/GuiHSpace.cpp:208
-#: src/frontends/qt4/GuiHSpace.cpp:214
+#: src/frontends/qt4/ui/HSpaceUi.ui:133 src/frontends/qt4/GuiHSpace.cpp:207
+#: src/frontends/qt4/GuiHSpace.cpp:213
 #, fuzzy
 msgid "Insert the spacing even after a line break"
 msgstr "甚至於分頁之後插入間隔"
@@ -1802,6 +1805,7 @@ msgstr "與 URL 相關聯的名稱"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:45
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:251
+#: src/frontends/qt4/ui_RefUi.h:312
 msgid "&Name:"
 msgstr "名稱(&N)："
 
@@ -1928,67 +1932,69 @@ msgstr "可用分支(&V)："
 msgid "Select the index this entry should be listed in."
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19
+#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
+#: src/frontends/qt4/ui_IndicesUi.h:192
 #, fuzzy
 msgid "Index generation"
 msgstr "縮排(&I)"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64
+#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
 msgid "Define program options of the selected processor."
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89
+#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92
+#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
 #, fuzzy
 msgid "&Use multiple indexes"
 msgstr "取消設定所有列"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124
+#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131
+#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
 #, fuzzy
 msgid "Add a new index to the list"
 msgstr "加入新的分支到清單"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:143
+#: src/frontends/qt4/ui/IndicesUi.ui:143 src/frontends/qt4/ui_IndicesUi.h:213
 #, fuzzy
 msgid "A&vailable Indexes:"
 msgstr "可用分支(&V)："
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
+#: src/frontends/qt4/ui_IndicesUi.h:215
 #, fuzzy
 msgid "1"
 msgstr "10"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162
+#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:217
 #, fuzzy
 msgid "Remove the selected index"
 msgstr "移除已選取的資料庫"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172
+#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:221
 #, fuzzy
 msgid "Rename the selected index"
 msgstr "移除已選取的資料庫"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175
+#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:223
 #, fuzzy
 msgid "R&ename..."
 msgstr "重新命名(&R)"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182
+#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:225
 #, fuzzy
 msgid "Define or change button color"
 msgstr "定義或變更背景顏色"
@@ -2314,7 +2320,7 @@ msgid "Update the display"
 msgstr "更新顯示"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:88
-#: src/frontends/qt4/ui/ViewSourceUi.ui:56
+#: src/frontends/qt4/ui/ViewSourceUi.ui:56 src/frontends/qt4/ui_RefUi.h:294
 msgid "&Update"
 msgstr "更新(&U)"
 
@@ -2842,7 +2848,7 @@ msgstr "日期格式"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
-#: src/frontends/qt4/ui/RefUi.ui:271
+#: src/frontends/qt4/ui/RefUi.ui:271 src/frontends/qt4/ui_RefUi.h:313
 msgid "&Format:"
 msgstr "格式(&F)："
 
@@ -2926,7 +2932,7 @@ msgstr "雙倍"
 #: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:683
 #: src/frontends/qt4/GuiDocument.cpp:687 src/frontends/qt4/GuiDocument.cpp:695
 #: src/frontends/qt4/GuiDocument.cpp:791 src/frontends/qt4/GuiDocument.cpp:838
-#: src/frontends/qt4/GuiHSpace.cpp:55 src/frontends/qt4/GuiHSpace.cpp:64
+#: src/frontends/qt4/GuiHSpace.cpp:54 src/frontends/qt4/GuiHSpace.cpp:63
 #: src/frontends/qt4/GuiPrefs.cpp:796 src/frontends/qt4/GuiPrefs.cpp:823
 #: src/frontends/qt4/GuiPrefs.cpp:2021 src/frontends/qt4/GuiPrefs.cpp:2044
 #: src/frontends/qt4/GuiPrintNomencl.cpp:72
@@ -4311,45 +4317,45 @@ msgstr ""
 msgid "&Statusbar messages"
 msgstr "Insettext/tabular 訊息"
 
-#: src/frontends/qt4/ui/RefUi.ui:36
+#: src/frontends/qt4/ui/RefUi.ui:36 src/frontends/qt4/ui_RefUi.h:282
 #, fuzzy
 msgid "Fil&ter:"
 msgstr "檔案(&F)："
 
-#: src/frontends/qt4/ui/RefUi.ui:49
+#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:284
 msgid "Enter string to filter the label list"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:59
+#: src/frontends/qt4/ui/RefUi.ui:59 src/frontends/qt4/ui_RefUi.h:288
 #, fuzzy
 msgid "Filter case-sensitively"
 msgstr "大小寫相符(&S)"
 
-#: src/frontends/qt4/ui/RefUi.ui:62
+#: src/frontends/qt4/ui/RefUi.ui:62 src/frontends/qt4/ui_RefUi.h:290
 #, fuzzy
 msgid "Case-sensiti&ve"
 msgstr "大小寫相符(&S)"
 
-#: src/frontends/qt4/ui/RefUi.ui:85
+#: src/frontends/qt4/ui/RefUi.ui:85 src/frontends/qt4/ui_RefUi.h:292
 msgid "Update the label list"
 msgstr "更新標籤清單"
 
-#: src/frontends/qt4/ui/RefUi.ui:165
+#: src/frontends/qt4/ui/RefUi.ui:165 src/frontends/qt4/ui_RefUi.h:299
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:168
+#: src/frontends/qt4/ui/RefUi.ui:168 src/frontends/qt4/ui_RefUi.h:301
 msgid "&Sort"
 msgstr "排序(&S)"
 
-#: src/frontends/qt4/ui/RefUi.ui:178
+#: src/frontends/qt4/ui/RefUi.ui:178 src/frontends/qt4/ui_RefUi.h:303
 #, fuzzy
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "將標籤以字母排序"
 
-#: src/frontends/qt4/ui/RefUi.ui:181
+#: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/ui_RefUi.h:305
 #, fuzzy
 msgid "Cas&e-sensitive"
 msgstr "大小寫相符(&S)"
@@ -4358,48 +4364,49 @@ msgstr "大小寫相符(&S)"
 msgid "Group labels by prefix (e.g. &quot;sec:&quot;)"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:191
+#: src/frontends/qt4/ui/RefUi.ui:191 src/frontends/qt4/ui_RefUi.h:309
 #, fuzzy
 msgid "Grou&p"
 msgstr "名稱(&N)："
 
 #: src/frontends/qt4/ui/RefUi.ui:219 src/frontends/qt4/GuiRef.cpp:314
+#: src/frontends/qt4/ui_RefUi.h:310
 msgid "&Go to Label"
 msgstr "前往標籤(&G)"
 
-#: src/frontends/qt4/ui/RefUi.ui:228
+#: src/frontends/qt4/ui/RefUi.ui:228 src/frontends/qt4/ui_RefUi.h:311
 msgid "La&bels in:"
 msgstr "標籤位於(&B)："
 
-#: src/frontends/qt4/ui/RefUi.ui:290
+#: src/frontends/qt4/ui/RefUi.ui:290 src/frontends/qt4/ui_RefUi.h:325
 msgid "Cross-reference as it appears in output"
 msgstr "在輸出中出現交叉參照"
 
-#: src/frontends/qt4/ui/RefUi.ui:294
+#: src/frontends/qt4/ui/RefUi.ui:294 src/frontends/qt4/ui_RefUi.h:316
 msgid "<reference>"
 msgstr "<reference>"
 
-#: src/frontends/qt4/ui/RefUi.ui:299
+#: src/frontends/qt4/ui/RefUi.ui:299 src/frontends/qt4/ui_RefUi.h:317
 msgid "(<reference>)"
 msgstr "(<reference>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:304
+#: src/frontends/qt4/ui/RefUi.ui:304 src/frontends/qt4/ui_RefUi.h:318
 msgid "<page>"
 msgstr "<page>"
 
-#: src/frontends/qt4/ui/RefUi.ui:309
+#: src/frontends/qt4/ui/RefUi.ui:309 src/frontends/qt4/ui_RefUi.h:319
 msgid "on page <page>"
 msgstr "於頁面 <page>"
 
-#: src/frontends/qt4/ui/RefUi.ui:314
+#: src/frontends/qt4/ui/RefUi.ui:314 src/frontends/qt4/ui_RefUi.h:320
 msgid "<reference> on page <page>"
 msgstr "<reference> 於頁面 <page>"
 
-#: src/frontends/qt4/ui/RefUi.ui:319
+#: src/frontends/qt4/ui/RefUi.ui:319 src/frontends/qt4/ui_RefUi.h:321
 msgid "Formatted reference"
 msgstr "格式化的參考"
 
-#: src/frontends/qt4/ui/RefUi.ui:324
+#: src/frontends/qt4/ui/RefUi.ui:324 src/frontends/qt4/ui_RefUi.h:322
 #, fuzzy
 msgid "Textual reference"
 msgstr "所有參考資料"
@@ -4566,11 +4573,11 @@ msgid "Horizontal alignment in column"
 msgstr "在欄中水平對齊"
 
 #: src/frontends/qt4/ui/TabularUi.ui:61 src/frontends/qt4/GuiParagraph.cpp:108
-#: src/frontends/qt4/GuiTabular.cpp:695
+#: src/frontends/qt4/GuiTabular.cpp:686
 msgid "Justified"
 msgstr "左右對齊"
 
-#: src/frontends/qt4/ui/TabularUi.ui:81 src/frontends/qt4/GuiTabular.cpp:697
+#: src/frontends/qt4/ui/TabularUi.ui:81 src/frontends/qt4/GuiTabular.cpp:688
 #, fuzzy
 msgid "At Decimal Separator"
 msgstr "分隔符號"
@@ -5608,7 +5615,7 @@ msgstr "證明"
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
-#: lib/ui/stdtoolbars.inc:67 src/insets/InsetRef.cpp:225
+#: lib/ui/stdtoolbars.inc:67 src/insets/InsetRef.cpp:224
 msgid "Standard"
 msgstr "標準"
 
@@ -6815,7 +6822,7 @@ msgstr "表格"
 
 #: lib/layouts/beamer.layout:1213 lib/layouts/powerdot.layout:385
 #: lib/layouts/tufte-book.layout:217 lib/layouts/stdfloats.inc:16
-#: src/insets/InsetFloatList.cpp:175
+#: src/insets/InsetFloatList.cpp:174
 msgid "List of Tables"
 msgstr "表格列表"
 
@@ -6826,7 +6833,7 @@ msgstr "圖片"
 
 #: lib/layouts/beamer.layout:1226 lib/layouts/powerdot.layout:396
 #: lib/layouts/tufte-book.layout:228 lib/layouts/stdfloats.inc:30
-#: src/insets/InsetFloatList.cpp:178
+#: src/insets/InsetFloatList.cpp:177
 msgid "List of Figures"
 msgstr "圓圈清單"
 
@@ -11704,7 +11711,7 @@ msgstr "選擇多列|L"
 msgid "Selection as Paragraphs|P"
 msgstr "選擇段落|P"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:402 lib/ui/stdmenus.inc:180
+#: lib/ui/classic.ui:120 lib/ui/stdmenus.inc:180
 msgid "Multicolumn|M"
 msgstr "多欄|M"
 
@@ -11728,7 +11735,7 @@ msgstr "列右|R"
 msgid "Alignment|i"
 msgstr "對齊|i"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:418 lib/ui/stdmenus.inc:201
+#: lib/ui/classic.ui:129 lib/ui/stdmenus.inc:201
 msgid "Add Row|A"
 msgstr "加入列|A"
 
@@ -11744,7 +11751,7 @@ msgstr "複製列"
 msgid "Swap Rows"
 msgstr "交換列"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:423 lib/ui/stdmenus.inc:206
+#: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:206
 msgid "Add Column|u"
 msgstr "加入欄|u"
 
@@ -11776,7 +11783,7 @@ msgstr "右|R"
 msgid "Top|T"
 msgstr "頂|T"
 
-#: lib/ui/classic.ui:146 lib/ui/stdmenus.inc:198
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:415 lib/ui/stdmenus.inc:198
 msgid "Middle|M"
 msgstr "央|M"
 
@@ -13041,17 +13048,24 @@ msgstr "置換(&R)"
 msgid "Edit Externally...|x"
 msgstr "於外部編輯檔案"
 
-#: lib/ui/stdcontext.inc:403
+#: lib/ui/stdcontext.inc:402
 #, fuzzy
-msgid "Multirow|i"
+msgid "Multicolumn|u"
 msgstr "多欄|M"
 
-#: lib/ui/stdcontext.inc:405 lib/ui/stdmenus.inc:182
-msgid "Top Line|T"
+#: lib/ui/stdcontext.inc:403
+#, fuzzy
+msgid "Multirow|w"
+msgstr "多欄|M"
+
+#: lib/ui/stdcontext.inc:405
+#, fuzzy
+msgid "Top Line|n"
 msgstr "頂列|T"
 
-#: lib/ui/stdcontext.inc:406 lib/ui/stdmenus.inc:183
-msgid "Bottom Line|B"
+#: lib/ui/stdcontext.inc:406
+#, fuzzy
+msgid "Bottom Line|i"
 msgstr "底列|B"
 
 #: lib/ui/stdcontext.inc:407 lib/ui/stdmenus.inc:184
@@ -13072,17 +13086,23 @@ msgstr "左|L"
 msgid "Right|h"
 msgstr "右|R"
 
-#: lib/ui/stdcontext.inc:415
+#: lib/ui/stdcontext.inc:418
 #, fuzzy
-msgid "Middle|d"
-msgstr "央|M"
+msgid "Append Row|A"
+msgstr "加入列|A"
 
 #: lib/ui/stdcontext.inc:420 lib/ui/stdmenus.inc:203
 msgid "Copy Row|o"
 msgstr "複製列|o"
 
-#: lib/ui/stdcontext.inc:425 lib/ui/stdmenus.inc:208
-msgid "Copy Column|p"
+#: lib/ui/stdcontext.inc:423
+#, fuzzy
+msgid "Append Column|p"
+msgstr "加入欄|u"
+
+#: lib/ui/stdcontext.inc:425
+#, fuzzy
+msgid "Copy Column|y"
 msgstr "複製欄|p"
 
 #: lib/ui/stdcontext.inc:428
@@ -13393,6 +13413,14 @@ msgstr "大寫|U"
 msgid "Lowercase|L"
 msgstr "小寫|L"
 
+#: lib/ui/stdmenus.inc:182
+msgid "Top Line|T"
+msgstr "頂列|T"
+
+#: lib/ui/stdmenus.inc:183
+msgid "Bottom Line|B"
+msgstr "底列|B"
+
 #: lib/ui/stdmenus.inc:187
 #, fuzzy
 msgid "Top|p"
@@ -13407,6 +13435,10 @@ msgstr "央|M"
 #, fuzzy
 msgid "Bottom|o"
 msgstr "底|B"
+
+#: lib/ui/stdmenus.inc:208
+msgid "Copy Column|p"
+msgstr "複製欄|p"
 
 #: lib/ui/stdmenus.inc:216
 #, fuzzy
@@ -13521,12 +13553,12 @@ msgid "Fold Math Macro|d"
 msgstr "數學巨集"
 
 #: lib/ui/stdmenus.inc:316
-msgid "View Messages|g"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:317
 msgid "View Source|S"
 msgstr "檢視原始碼|S"
+
+#: lib/ui/stdmenus.inc:317
+msgid "View Messages|g"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:320
 #, fuzzy
@@ -18158,138 +18190,130 @@ msgid "math macro new parameter"
 msgstr "數學框架"
 
 #: src/Color.cpp:216
-msgid "caption frame"
-msgstr "題要框架"
-
-#: src/Color.cpp:217
 msgid "collapsable inset text"
 msgstr "可摺疊內欄文字"
 
-#: src/Color.cpp:218
+#: src/Color.cpp:217
 msgid "collapsable inset frame"
 msgstr "可摺疊內欄框架"
 
-#: src/Color.cpp:219
+#: src/Color.cpp:218
 msgid "inset background"
 msgstr "內欄背景"
 
-#: src/Color.cpp:220
+#: src/Color.cpp:219
 msgid "inset frame"
 msgstr "內欄框架"
 
-#: src/Color.cpp:221
+#: src/Color.cpp:220
 msgid "LaTeX error"
 msgstr "LaTeX 錯誤"
 
-#: src/Color.cpp:222
+#: src/Color.cpp:221
 msgid "end-of-line marker"
 msgstr "列尾標誌"
 
-#: src/Color.cpp:223
+#: src/Color.cpp:222
 msgid "appendix marker"
 msgstr "附錄標誌"
 
-#: src/Color.cpp:224
+#: src/Color.cpp:223
 msgid "change bar"
 msgstr "變更滑桿"
 
-#: src/Color.cpp:225
+#: src/Color.cpp:224
 #, fuzzy
 msgid "deleted text"
 msgstr "刪除的文字"
 
-#: src/Color.cpp:226
+#: src/Color.cpp:225
 #, fuzzy
 msgid "added text"
 msgstr "加入的文字"
 
-#: src/Color.cpp:227
+#: src/Color.cpp:226
 msgid "changed text 1st author"
 msgstr ""
 
-#: src/Color.cpp:228
+#: src/Color.cpp:227
 msgid "changed text 2nd author"
 msgstr ""
 
-#: src/Color.cpp:229
+#: src/Color.cpp:228
 msgid "changed text 3rd author"
 msgstr ""
 
-#: src/Color.cpp:230
+#: src/Color.cpp:229
 msgid "changed text 4th author"
 msgstr ""
 
-#: src/Color.cpp:231
+#: src/Color.cpp:230
 msgid "changed text 5th author"
 msgstr ""
 
-#: src/Color.cpp:232
+#: src/Color.cpp:231
 #, fuzzy
 msgid "deleted text modifier"
 msgstr "刪除的文字"
 
-#: src/Color.cpp:233
+#: src/Color.cpp:232
 msgid "added space markers"
 msgstr "加入的空格標誌"
 
-#: src/Color.cpp:234
-msgid "top/bottom line"
-msgstr "頂/底部列"
-
-#: src/Color.cpp:235
+#: src/Color.cpp:233
 msgid "table line"
 msgstr "表格線"
 
-#: src/Color.cpp:236
+#: src/Color.cpp:234
 msgid "table on/off line"
 msgstr "表格開/關線"
 
-#: src/Color.cpp:238
+#: src/Color.cpp:236
 msgid "bottom area"
 msgstr "底部區域"
 
-#: src/Color.cpp:239
+#: src/Color.cpp:237
 #, fuzzy
 msgid "new page"
 msgstr "於頁面 <page>"
 
-#: src/Color.cpp:240
+#: src/Color.cpp:238
 #, fuzzy
 msgid "page break / line break"
 msgstr "分頁符號"
 
-#: src/Color.cpp:241
+#: src/Color.cpp:239
 msgid "frame of button"
 msgstr "按鈕框架"
 
-#: src/Color.cpp:242
+#: src/Color.cpp:240
 msgid "button background"
 msgstr "按鈕背景"
 
-#: src/Color.cpp:243
+#: src/Color.cpp:241
 msgid "button background under focus"
 msgstr "焦點之下的按鈕背景"
 
-#: src/Color.cpp:244
+#: src/Color.cpp:242
 #, fuzzy
 msgid "paragraph marker"
 msgstr "Subparagraph"
 
-#: src/Color.cpp:245
+#: src/Color.cpp:243
 #, fuzzy
 msgid "preview frame"
 msgstr "預覽失敗"
 
-#: src/Color.cpp:246
+#: src/Color.cpp:244
 msgid "inherit"
 msgstr "繼承"
 
-#: src/Color.cpp:247
+#: src/Color.cpp:245
 #, fuzzy
 msgid "regexp frame"
 msgstr "內欄框架"
 
-#: src/Color.cpp:248
+#: src/Color.cpp:246
 msgid "ignore"
 msgstr "忽略"
 
@@ -19556,15 +19580,15 @@ msgstr "，字元：0x"
 msgid ", Boundary: "
 msgstr "，邊界："
 
-#: src/Text2.cpp:384
+#: src/Text2.cpp:383
 msgid "No font change defined."
 msgstr "沒有字型變更定義。"
 
-#: src/Text2.cpp:424
+#: src/Text2.cpp:423
 msgid "Nothing to index!"
 msgstr "沒有任何東西可索引！"
 
-#: src/Text2.cpp:426
+#: src/Text2.cpp:425
 msgid "Cannot index more than one paragraph!"
 msgstr "無法索引一個段落以上！"
 
@@ -20209,57 +20233,57 @@ msgstr "BibTeX 樣式 (*.bst)"
 msgid "Select a BibTeX style"
 msgstr "選取 BibTeX 樣式"
 
-#: src/frontends/qt4/GuiBox.cpp:55
+#: src/frontends/qt4/GuiBox.cpp:54
 #, fuzzy
 msgid "No frame"
 msgstr "沒畫框架"
 
-#: src/frontends/qt4/GuiBox.cpp:55
+#: src/frontends/qt4/GuiBox.cpp:54
 #, fuzzy
 msgid "Simple rectangular frame"
 msgstr "內欄框架"
 
-#: src/frontends/qt4/GuiBox.cpp:56
+#: src/frontends/qt4/GuiBox.cpp:55
 #, fuzzy
 msgid "Oval frame, thin"
 msgstr "橢圓框，細"
 
-#: src/frontends/qt4/GuiBox.cpp:56
+#: src/frontends/qt4/GuiBox.cpp:55
 #, fuzzy
 msgid "Oval frame, thick"
 msgstr "橢圓框，粗"
 
-#: src/frontends/qt4/GuiBox.cpp:57
+#: src/frontends/qt4/GuiBox.cpp:56
 msgid "Drop shadow"
 msgstr ""
 
-#: src/frontends/qt4/GuiBox.cpp:57
+#: src/frontends/qt4/GuiBox.cpp:56
 #, fuzzy
 msgid "Shaded background"
 msgstr "註記背景"
 
-#: src/frontends/qt4/GuiBox.cpp:58
+#: src/frontends/qt4/GuiBox.cpp:57
 #, fuzzy
 msgid "Double rectangular frame"
 msgstr "雙倍"
 
-#: src/frontends/qt4/GuiBox.cpp:71
+#: src/frontends/qt4/GuiBox.cpp:70
 msgid "Height"
 msgstr "高度"
 
-#: src/frontends/qt4/GuiBox.cpp:71
+#: src/frontends/qt4/GuiBox.cpp:70
 msgid "Depth"
 msgstr "深度"
 
-#: src/frontends/qt4/GuiBox.cpp:72
+#: src/frontends/qt4/GuiBox.cpp:71
 msgid "Total Height"
 msgstr "總計高度"
 
-#: src/frontends/qt4/GuiBox.cpp:72
+#: src/frontends/qt4/GuiBox.cpp:71
 msgid "Width"
 msgstr "寬度"
 
-#: src/frontends/qt4/GuiBox.cpp:316 src/frontends/qt4/GuiBox.cpp:391
+#: src/frontends/qt4/GuiBox.cpp:315 src/frontends/qt4/GuiBox.cpp:390
 #: src/insets/InsetBox.cpp:140
 #, fuzzy
 msgid "Makebox"
@@ -21260,61 +21284,61 @@ msgstr "選取圖形檔案"
 msgid "Clipart|#C#c"
 msgstr "美術圖形|#C#c"
 
-#: src/frontends/qt4/GuiHSpace.cpp:46 src/frontends/qt4/GuiHSpace.cpp:58
+#: src/frontends/qt4/GuiHSpace.cpp:45 src/frontends/qt4/GuiHSpace.cpp:57
 #: src/insets/InsetSpace.cpp:74
 #, fuzzy
 msgid "Thin Space"
 msgstr "窄空格|T"
 
-#: src/frontends/qt4/GuiHSpace.cpp:47 src/insets/InsetSpace.cpp:77
+#: src/frontends/qt4/GuiHSpace.cpp:46 src/insets/InsetSpace.cpp:77
 #, fuzzy
 msgid "Medium Space"
 msgstr "中等空格\t\\:"
 
-#: src/frontends/qt4/GuiHSpace.cpp:48 src/insets/InsetSpace.cpp:80
+#: src/frontends/qt4/GuiHSpace.cpp:47 src/insets/InsetSpace.cpp:80
 #, fuzzy
 msgid "Thick Space"
 msgstr "窄空格|T"
 
-#: src/frontends/qt4/GuiHSpace.cpp:49 src/frontends/qt4/GuiHSpace.cpp:59
+#: src/frontends/qt4/GuiHSpace.cpp:48 src/frontends/qt4/GuiHSpace.cpp:58
 #: src/insets/InsetSpace.cpp:95
 #, fuzzy
 msgid "Negative Thin Space"
 msgstr "負空格\t\\!"
 
-#: src/frontends/qt4/GuiHSpace.cpp:50 src/insets/InsetSpace.cpp:98
+#: src/frontends/qt4/GuiHSpace.cpp:49 src/insets/InsetSpace.cpp:98
 #, fuzzy
 msgid "Negative Medium Space"
 msgstr "負空格\t\\!"
 
-#: src/frontends/qt4/GuiHSpace.cpp:51 src/insets/InsetSpace.cpp:101
+#: src/frontends/qt4/GuiHSpace.cpp:50 src/insets/InsetSpace.cpp:101
 #, fuzzy
 msgid "Negative Thick Space"
 msgstr "負空格\t\\!"
 
-#: src/frontends/qt4/GuiHSpace.cpp:52 src/frontends/qt4/GuiHSpace.cpp:60
+#: src/frontends/qt4/GuiHSpace.cpp:51 src/frontends/qt4/GuiHSpace.cpp:59
 msgid "Half Quad (0.5 em)"
 msgstr ""
 
-#: src/frontends/qt4/GuiHSpace.cpp:53 src/frontends/qt4/GuiHSpace.cpp:61
+#: src/frontends/qt4/GuiHSpace.cpp:52 src/frontends/qt4/GuiHSpace.cpp:60
 msgid "Quad (1 em)"
 msgstr ""
 
-#: src/frontends/qt4/GuiHSpace.cpp:54 src/frontends/qt4/GuiHSpace.cpp:62
+#: src/frontends/qt4/GuiHSpace.cpp:53 src/frontends/qt4/GuiHSpace.cpp:61
 #, fuzzy
 msgid "Double Quad (2 em)"
 msgstr "雙倍項目："
 
-#: src/frontends/qt4/GuiHSpace.cpp:57 src/insets/InsetSpace.cpp:68
+#: src/frontends/qt4/GuiHSpace.cpp:56 src/insets/InsetSpace.cpp:68
 #, fuzzy
 msgid "Interword Space"
 msgstr "字詞間空格|w"
 
-#: src/frontends/qt4/GuiHSpace.cpp:63 src/insets/InsetSpace.cpp:104
+#: src/frontends/qt4/GuiHSpace.cpp:62 src/insets/InsetSpace.cpp:104
 msgid "Horizontal Fill"
 msgstr "水平填充"
 
-#: src/frontends/qt4/GuiHSpace.cpp:210
+#: src/frontends/qt4/GuiHSpace.cpp:209
 msgid ""
 "Insert the spacing even after a line break.\n"
 "Note that a protected Half Quad will be turned into\n"
@@ -21370,51 +21394,51 @@ msgstr "輸入 BibTeX 資料庫名稱"
 msgid "The index could not be renamed. Check if the new name already exists."
 msgstr ""
 
-#: src/frontends/qt4/GuiInfo.cpp:46
+#: src/frontends/qt4/GuiInfo.cpp:45
 #, fuzzy
 msgid "unknown"
 msgstr " 未知"
 
-#: src/frontends/qt4/GuiInfo.cpp:46
+#: src/frontends/qt4/GuiInfo.cpp:45
 #, fuzzy
 msgid "shortcut"
 msgstr "捷徑(&H)："
 
-#: src/frontends/qt4/GuiInfo.cpp:46
+#: src/frontends/qt4/GuiInfo.cpp:45
 #, fuzzy
 msgid "shortcuts"
 msgstr "捷徑(&H)："
 
-#: src/frontends/qt4/GuiInfo.cpp:46
+#: src/frontends/qt4/GuiInfo.cpp:45
 msgid "lyxrc"
 msgstr ""
 
-#: src/frontends/qt4/GuiInfo.cpp:46
+#: src/frontends/qt4/GuiInfo.cpp:45
 #, fuzzy
 msgid "package"
 msgstr "空格"
 
-#: src/frontends/qt4/GuiInfo.cpp:46
+#: src/frontends/qt4/GuiInfo.cpp:45
 #, fuzzy
 msgid "textclass"
 msgstr "主旨類別"
 
-#: src/frontends/qt4/GuiInfo.cpp:47
+#: src/frontends/qt4/GuiInfo.cpp:46
 #, fuzzy
 msgid "menu"
 msgstr "μ"
 
-#: src/frontends/qt4/GuiInfo.cpp:47
+#: src/frontends/qt4/GuiInfo.cpp:46
 #, fuzzy
 msgid "icon"
 msgstr "cong"
 
-#: src/frontends/qt4/GuiInfo.cpp:47
+#: src/frontends/qt4/GuiInfo.cpp:46
 #, fuzzy
 msgid "buffer"
 msgstr "藍色"
 
-#: src/frontends/qt4/GuiInfo.cpp:47
+#: src/frontends/qt4/GuiInfo.cpp:46
 #, fuzzy
 msgid "lyxinfo"
 msgstr "liminf"
@@ -22931,8 +22955,8 @@ msgstr "命令稿「%s」失敗。"
 msgid "All Files "
 msgstr "所有檔案 (*)"
 
-#: src/frontends/qt4/qt_helpers.cpp:541 src/insets/InsetTOC.cpp:56
-#: src/insets/InsetTOC.cpp:97
+#: src/frontends/qt4/qt_helpers.cpp:541 src/insets/InsetTOC.cpp:55
+#: src/insets/InsetTOC.cpp:96
 msgid "Table of Contents"
 msgstr "內容表"
 
@@ -22990,6 +23014,10 @@ msgstr "表格列表"
 #, fuzzy
 msgid "List of Changes"
 msgstr "表格列表"
+
+#: src/frontends/qt4/ui_RefUi.h:307
+msgid "Group labels by prefix (e.g. \"sec:\")"
+msgstr ""
 
 #: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:286
 #: src/insets/InsetGraphics.cpp:594 src/insets/InsetInclude.cpp:513
@@ -23181,17 +23209,17 @@ msgstr "分支"
 msgid "Sub-%1$s"
 msgstr ""
 
-#: src/insets/InsetCitation.cpp:111
+#: src/insets/InsetCitation.cpp:110
 #, fuzzy
 msgid "No bibliography defined!"
 msgstr "文獻目錄鍵"
 
-#: src/insets/InsetCitation.cpp:115
+#: src/insets/InsetCitation.cpp:114
 #, fuzzy
 msgid "No citations selected!"
 msgstr "沒有字型變更定義。"
 
-#: src/insets/InsetCitation.cpp:285
+#: src/insets/InsetCitation.cpp:284
 #, fuzzy
 msgid "not cited"
 msgstr "保護的"
@@ -23269,16 +23297,16 @@ msgstr "浮動："
 msgid " (sideways)"
 msgstr " (側向地)"
 
-#: src/insets/InsetFloatList.cpp:78
+#: src/insets/InsetFloatList.cpp:77
 msgid "ERROR: Nonexistent float type!"
 msgstr "錯誤：不存在的浮動型態！"
 
-#: src/insets/InsetFloatList.cpp:131
+#: src/insets/InsetFloatList.cpp:130
 #, c-format
 msgid "LyX cannot generate a list of %1$s"
 msgstr ""
 
-#: src/insets/InsetFloatList.cpp:136
+#: src/insets/InsetFloatList.cpp:135
 #, c-format
 msgid "List of %1$s"
 msgstr "%1$s 的清單"
@@ -23693,66 +23721,66 @@ msgstr "hphantom"
 msgid "vphantom"
 msgstr "vphantom"
 
-#: src/insets/InsetRef.cpp:133
+#: src/insets/InsetRef.cpp:132
 #, fuzzy
 msgid "elsewhere"
 msgstr "重置"
 
-#: src/insets/InsetRef.cpp:204
+#: src/insets/InsetRef.cpp:203
 msgid "BROKEN: "
 msgstr ""
 
-#: src/insets/InsetRef.cpp:225 src/mathed/InsetMathRef.cpp:224
+#: src/insets/InsetRef.cpp:224 src/mathed/InsetMathRef.cpp:224
 msgid "Ref: "
 msgstr "參照："
 
-#: src/insets/InsetRef.cpp:226 src/mathed/InsetMathRef.cpp:225
+#: src/insets/InsetRef.cpp:225 src/mathed/InsetMathRef.cpp:225
 msgid "Equation"
 msgstr "方程式"
 
-#: src/insets/InsetRef.cpp:226 src/mathed/InsetMathRef.cpp:225
+#: src/insets/InsetRef.cpp:225 src/mathed/InsetMathRef.cpp:225
 msgid "EqRef: "
 msgstr "方程式參照："
 
-#: src/insets/InsetRef.cpp:227 src/mathed/InsetMathRef.cpp:226
+#: src/insets/InsetRef.cpp:226 src/mathed/InsetMathRef.cpp:226
 msgid "Page Number"
 msgstr "頁碼"
 
-#: src/insets/InsetRef.cpp:227 src/mathed/InsetMathRef.cpp:226
+#: src/insets/InsetRef.cpp:226 src/mathed/InsetMathRef.cpp:226
 msgid "Page: "
 msgstr "頁面："
 
-#: src/insets/InsetRef.cpp:228 src/mathed/InsetMathRef.cpp:227
+#: src/insets/InsetRef.cpp:227 src/mathed/InsetMathRef.cpp:227
 msgid "Textual Page Number"
 msgstr "文字頁碼"
 
-#: src/insets/InsetRef.cpp:228 src/mathed/InsetMathRef.cpp:227
+#: src/insets/InsetRef.cpp:227 src/mathed/InsetMathRef.cpp:227
 msgid "TextPage: "
 msgstr "文字頁："
 
-#: src/insets/InsetRef.cpp:229 src/mathed/InsetMathRef.cpp:228
+#: src/insets/InsetRef.cpp:228 src/mathed/InsetMathRef.cpp:228
 msgid "Standard+Textual Page"
 msgstr "標準+文字頁面"
 
-#: src/insets/InsetRef.cpp:229 src/mathed/InsetMathRef.cpp:228
+#: src/insets/InsetRef.cpp:228 src/mathed/InsetMathRef.cpp:228
 msgid "Ref+Text: "
 msgstr "參照+文字："
 
-#: src/insets/InsetRef.cpp:230 src/mathed/InsetMathRef.cpp:229
+#: src/insets/InsetRef.cpp:229 src/mathed/InsetMathRef.cpp:229
 msgid "PrettyRef"
 msgstr "美化參照"
 
-#: src/insets/InsetRef.cpp:230
+#: src/insets/InsetRef.cpp:229
 #, fuzzy
 msgid "FrmtRef: "
 msgstr "格式化參照："
 
-#: src/insets/InsetRef.cpp:231
+#: src/insets/InsetRef.cpp:230
 #, fuzzy
 msgid "Reference to Name"
 msgstr "參考"
 
-#: src/insets/InsetRef.cpp:231
+#: src/insets/InsetRef.cpp:230
 #, fuzzy
 msgid "NameRef:"
 msgstr "名稱："
@@ -23827,7 +23855,7 @@ msgstr "水平線"
 msgid "Protected Horizontal Space (%1$s)"
 msgstr "保護的空格|r"
 
-#: src/insets/InsetTOC.cpp:57
+#: src/insets/InsetTOC.cpp:56
 msgid "Unknown TOC type"
 msgstr "不明的內容表型態"
 
@@ -23996,7 +24024,7 @@ msgstr "找不到檔案"
 msgid " Macro: %1$s: "
 msgstr " 巨集：%1$s："
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1573
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1568
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -24038,25 +24066,25 @@ msgstr "無 vline 可刪除"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "不明的表格特徵「%1$s」"
 
-#: src/mathed/InsetMathHull.cpp:1299 src/mathed/InsetMathHull.cpp:1308
+#: src/mathed/InsetMathHull.cpp:1294 src/mathed/InsetMathHull.cpp:1303
 msgid "No number"
 msgstr "沒有數字"
 
-#: src/mathed/InsetMathHull.cpp:1299 src/mathed/InsetMathHull.cpp:1308
+#: src/mathed/InsetMathHull.cpp:1294 src/mathed/InsetMathHull.cpp:1303
 msgid "Number"
 msgstr "數字"
 
-#: src/mathed/InsetMathHull.cpp:1546
+#: src/mathed/InsetMathHull.cpp:1541
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "無法在「%1$s」中變更列數"
 
-#: src/mathed/InsetMathHull.cpp:1556
+#: src/mathed/InsetMathHull.cpp:1551
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "無法在「%1$s」中變更欄數"
 
-#: src/mathed/InsetMathHull.cpp:1566
+#: src/mathed/InsetMathHull.cpp:1561
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "無法在「%1$s」中加入水平網格線"
@@ -24299,6 +24327,16 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "不明的使用者"
+
+#, fuzzy
+#~ msgid "Middle|d"
+#~ msgstr "央|M"
+
+#~ msgid "caption frame"
+#~ msgstr "題要框架"
+
+#~ msgid "top/bottom line"
+#~ msgstr "頂/底部列"
 
 #, fuzzy
 #~ msgid "Decimal"
