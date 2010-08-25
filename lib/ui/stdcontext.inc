@@ -399,11 +399,11 @@ Menuset
 #
 
 	Menu "context-tabular"
-		Item "Multicolumn|M" "inset-modify tabular multicolumn"
-		Item "Multirow|i" "inset-modify tabular multirow"
+		Item "Multicolumn|u" "inset-modify tabular multicolumn"
+		Item "Multirow|w" "inset-modify tabular multirow"
 		Separator
-		Item "Top Line|T" "inset-modify tabular toggle-line-top"
-		Item "Bottom Line|B" "inset-modify tabular toggle-line-bottom"
+		Item "Top Line|n" "inset-modify tabular toggle-line-top"
+		Item "Bottom Line|i" "inset-modify tabular toggle-line-bottom"
 		Item "Left Line|L" "inset-modify tabular toggle-line-left"
 		Item "Right Line|R" "inset-modify tabular toggle-line-right"
 		Separator
@@ -412,17 +412,17 @@ Menuset
 		Item "Right|h" "inset-modify tabular align-right"
 		Separator
 		Item "Top|T" "inset-modify tabular valign-top"
-		Item "Middle|d" "inset-modify tabular valign-middle"
+		Item "Middle|M" "inset-modify tabular valign-middle"
 		Item "Bottom|B" "inset-modify tabular valign-bottom"
 		Separator
-		Item "Add Row|A" "inset-modify tabular append-row"
+		Item "Append Row|A" "inset-modify tabular append-row"
 		Item "Delete Row|D" "inset-modify tabular delete-row"
 		Item "Copy Row|o" "inset-modify tabular copy-row"
 		# Item "Swap Rows|S" "inset-modify tabular swap-row" # currently broken
 		Separator
-		Item "Add Column|u" "inset-modify tabular append-column"
+		Item "Append Column|p" "inset-modify tabular append-column"
 		Item "Delete Column|e" "inset-modify tabular delete-column"
-		Item "Copy Column|p" "inset-modify tabular copy-column"
+		Item "Copy Column|y" "inset-modify tabular copy-column"
 		# Item "Swap Columns|w" "inset-modify tabular swap-column" # currently broken
 		Separator
 		Item "Settings...|g" "inset-settings tabular"
