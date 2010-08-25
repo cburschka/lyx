@@ -227,18 +227,10 @@ void GuiTabular::checkEnabled()
 	lastfooterBorderBelowCB->setEnabled(longtabular
 		&& lastfooterBorderAboveCB->isChecked());
 
-	// FIXME: verify if previous row doesn't have a caption already.
-	captionStatusCB->setEnabled(longtabular);
-
-	// When a row is set as longtable caption, it must not be allowed
-	// to unset that this row is a multicolumn.
-	// FIXME: old code also checked for:
-	//    funcEnabled(Tabular::MULTICOLUMN)
-	multicolumnCB->setEnabled(longtabular);
-
-	// FIXME: old code also checked for:
-	//    funcEnabled(Tabular::MULTICOLUMN)
-	multirowCB->setEnabled(longtabular);
+	captionStatusCB->setEnabled(getStatus(FuncRequest(LFUN_INSET_MODIFY, "tabular toggle-ltcaption")).enabled());
+	
+	multicolumnCB->setEnabled(getStatus(FuncRequest(LFUN_INSET_MODIFY, "tabular multicolumn")).enabled());
+	multirowCB->setEnabled(getStatus(FuncRequest(LFUN_INSET_MODIFY, "tabular multirow")).enabled());
 
 	changed();
 }
