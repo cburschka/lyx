@@ -229,7 +229,7 @@ void GuiTabular::checkEnabled()
 	captionStatusCB->setEnabled(funcEnabled(Tabular::TOGGLE_LTCAPTION));
 	
 	multicolumnCB->setEnabled(funcEnabled(Tabular::MULTICOLUMN));
-	multirowCB->setEnabled(funcEnabled(Tabular::MULTICOLUMN));
+	multirowCB->setEnabled(funcEnabled(Tabular::MULTIROW));
 
 	changed();
 }
