@@ -173,6 +173,17 @@ public:
 	/// match a string against a particular point in the paragraph
 	bool isTextAt(string const & str, pos_type pos) const;
 
+	void setMisspelled(pos_type from, pos_type to, bool misspelled)
+	{
+		pos_type textsize = owner_->size();
+		// check for sane arguments
+		if (to < from || from >= textsize) return;
+		// don't mark end of paragraph
+		if (to >= textsize)
+			to = textsize - 1;
+		fontlist_.setMisspelled(from, to, misspelled);
+	}
+	
 
 	InsetCode ownerCode() const
 	{
@@ -3197,7 +3208,7 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to, WordL
 	bool const misspelled_ = SpellChecker::misspelled(res) ;
 
 	if (lyxrc.spellcheck_continuously)
-		d->fontlist_.setMisspelled(from, to, misspelled_);
+		d->setMisspelled(from, to, misspelled_);
 
 	if (misspelled_ && do_suggestion)
 		speller->suggest(wl, suggestions);
