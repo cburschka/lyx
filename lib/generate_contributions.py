@@ -408,6 +408,14 @@ contributers = [
                  "3 January 2009",
                  u"small bugfixes, CMake build system, Slovak translation"),
 
+     contributer(u"Punyashloka Biswal",
+                 "punya.biswal () gmail.com",
+                 "GPL",
+                 "Re: Patch for ticket #6848",
+                 "m=128298296923913",
+                 "28 August 2010",
+                 u"Bug fixes"),
+
      contributer(u"Graham Biswell",
                  "graham () gbiswell ! com",
                  "GPL",
