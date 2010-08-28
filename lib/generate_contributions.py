@@ -1502,7 +1502,7 @@ contributers = [
                  "Re: The LyX licence",
                  "m=110911018202083",
                  "22 February 2005",
-                 u"encts document class lots of useful bug reports"),
+                 u"ENTCS document class lots of useful bug reports"),
 
      contributer(u"Dekel Tsur",
                  "dtsur () cs ! ucsd ! edu",
