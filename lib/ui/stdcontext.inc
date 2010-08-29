@@ -640,4 +640,11 @@ Menuset
 		OptItem "Settings...|S" "inset-settings"
 	End
 
+#
+# InsetHyperlink context menu
+#
+	Menu "context-hyperlink"
+		Item "Settings...|S" "inset-settings"
+	End
+
 End

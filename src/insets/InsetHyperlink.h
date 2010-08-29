@@ -55,6 +55,10 @@ public:
 	bool forceLTR() const { return true; }
 	///
 	virtual bool isInToc() const { return true; }
+	///
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
+	///
+	docstring toolTip(BufferView const & bv, int x, int y) const;
 private:
 	Inset * clone() const { return new InsetHyperlink(*this); }
 };

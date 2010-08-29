@@ -65,7 +65,7 @@ docstring InsetHyperlink::screenLabel() const
 
 
 int InsetHyperlink::latex(odocstream & os,
-						  OutputParams const & runparams) const
+			  OutputParams const & runparams) const
 {
 	docstring url = getParam("target");
 	docstring name = getParam("name");
@@ -97,7 +97,7 @@ int InsetHyperlink::latex(odocstream & os,
 		// field because otherwise LaTeX will fail when the hyperlink is
 		// within an argument of another command, e.g. in a \footnote. It
 		// is important that they are escaped as "\#" and not as "\#{}".
-		for (int k = 0;	k < 2; k++)
+		for (int k = 0; k < 2; k++)
 			for (size_t i = 0, pos;
 				(pos = url.find(chars_url[k], i)) != string::npos;
 				i = pos + 2)
@@ -128,7 +128,7 @@ int InsetHyperlink::latex(odocstream & os,
 		// The characters in chars_name[] need to be changed to a command
 		// when they are in the name field.
 		// Therefore the treatment of "\" must be the first thing
-		for (int k = 0;	k < 6; k++)
+		for (int k = 0; k < 6; k++)
 			for (size_t i = 0, pos;
 				(pos = name.find(chars_name[k], i)) != string::npos;
 				i = pos + 2)
@@ -198,9 +198,28 @@ void InsetHyperlink::tocString(odocstream & os) const
 }
 
 
+docstring InsetHyperlink::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/) const
+{
+	docstring url = getParam("target");
+	docstring type = getParam("type");
+	docstring guitype = _("www");
+	if (type == "mailto:")
+		guitype = _("email");
+	else if (type == "file:")
+		guitype = _("file");
+	return bformat(_("Hyperlink (%1$s) to %2$s"), guitype, url);
+}
+
+
 void InsetHyperlink::validate(LaTeXFeatures & features) const
 {
 	features.require("hyperref");
+}
+
+
+docstring InsetHyperlink::contextMenu(BufferView const &, int, int) const
+{
+	return from_ascii("context-hyperlink");
 }
 
 
