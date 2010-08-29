@@ -258,6 +258,28 @@ void Formats::setEditor(string const & name, string const & command)
 		it->setEditor(command);
 }
 
+bool Formats::viewURL(string const &url){
+	Format const * format = getFormat("html");
+	string command = libScriptSearch(format->viewer());
+
+	if (!contains(command, token_from_format))
+		command += ' ' + token_from_format;
+	command = subst(command, token_from_format, quoteName(url));
+
+	LYXERR(Debug::FILES, "Executing command: " << command);
+	//buffer.message(_("Executing command: ") + from_utf8(command));
+
+	Systemcall one;
+	int const res = one.startscript(Systemcall::DontWait, command);
+
+	if (res) {
+		Alert::error(_("Cannot view URL"),
+			     bformat(_("An error occurred whilst running %1$s"),
+			       makeDisplayPath(command, 50)));
+		return false;
+	}
+	return true;
+}
 
 bool Formats::view(Buffer const & buffer, FileName const & filename,
 		   string const & format_name) const

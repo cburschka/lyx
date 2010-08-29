@@ -89,7 +89,7 @@ bool InsetHyperlink::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action()) {
 	case LFUN_INSET_EDIT:
-		flag.setEnabled(getParam("type") == "file:");
+		flag.setEnabled(getParam("type").empty() || getParam("type") == "file:");
 		return true;
 
 	default:
@@ -100,12 +100,14 @@ bool InsetHyperlink::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetHyperlink::viewTarget() const
 {
-	// FIXME implement viewer for web url
-	if (getParam("type") != "file:")
-		return;
-	FileName url = makeAbsPath(to_utf8(getParam("target")), buffer().filePath());
-	string format = formats.getFormatFromFile(url);
-	formats.view(buffer(), url, format);
+	if (getParam("type").empty()) 
+		formats.viewURL(to_ascii(getParam("target")));
+
+	else if (getParam("type") == "file:") {
+		FileName url = makeAbsPath(to_utf8(getParam("target")), buffer().filePath());
+		string format = formats.getFormatFromFile(url);
+		formats.view(buffer(), url, format);
+	}
 }
 
 

@@ -144,6 +144,8 @@ public:
 	///
 	void setEditor(std::string const & name, std::string const & command);
 	///
+	bool viewURL(std::string const &url);
+	///
 	bool view(Buffer const & buffer, support::FileName const & filename,
 		  std::string const & format_name) const;
 	///
