@@ -60,6 +60,14 @@ public:
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 private:
+  	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	bool getStatus(Cursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const;
+	///
+	void viewTarget() const;
+	///
 	Inset * clone() const { return new InsetHyperlink(*this); }
 };
 

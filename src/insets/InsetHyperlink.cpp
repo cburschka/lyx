@@ -13,12 +13,18 @@
 
 #include "InsetHyperlink.h"
 
+#include "Buffer.h"
 #include "DispatchResult.h"
+#include "Format.h"
+#include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "OutputParams.h"
 #include "output_xhtml.h"
 
 #include "support/docstream.h"
+#include "support/FileName.h"
+#include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
@@ -61,6 +67,45 @@ docstring InsetHyperlink::screenLabel() const
 			+ url.substr(url.length() - 17, url.length());
 	}
 	return temp + url;
+}
+
+void InsetHyperlink::doDispatch(Cursor & cur, FuncRequest & cmd)
+{
+	switch (cmd.action()) {
+
+	case LFUN_INSET_EDIT:
+		viewTarget();
+		break;
+
+	default:
+		InsetCommand::doDispatch(cur, cmd);
+		break;
+	}
+}
+
+
+bool InsetHyperlink::getStatus(Cursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action()) {
+	case LFUN_INSET_EDIT:
+		flag.setEnabled(getParam("type") == "file:");
+		return true;
+
+	default:
+		return InsetCommand::getStatus(cur, cmd, flag);
+	}
+}
+
+
+void InsetHyperlink::viewTarget() const
+{
+	// FIXME implement viewer for web url
+	if (getParam("type") != "file:")
+		return;
+	FileName url = makeAbsPath(to_utf8(getParam("target")), buffer().filePath());
+	string format = formats.getFormatFromFile(url);
+	formats.view(buffer(), url, format);
 }
 
 
