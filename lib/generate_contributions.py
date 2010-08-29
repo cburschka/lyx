@@ -409,7 +409,7 @@ contributers = [
                  u"small bugfixes, CMake build system, Slovak translation"),
 
      contributer(u"Punyashloka Biswal",
-                 "punya.biswal () gmail.com",
+                 "punya.biswal () gmail ! com",
                  "GPL",
                  "Re: Patch for ticket #6848",
                  "m=128298296923913",
