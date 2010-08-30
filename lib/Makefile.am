@@ -543,6 +543,7 @@ dist_imagesmath_DATA = \
 	images/math/dashv.png \
 	images/math/ddagger.png \
 	images/math/ddot.png \
+	images/math/dddot.png \
 	images/math/ddots.png \
 	images/math/delta.png \
 	images/math/delta2.png \

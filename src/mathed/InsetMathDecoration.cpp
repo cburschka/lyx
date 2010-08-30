@@ -176,9 +176,8 @@ void InsetMathDecoration::infoize(odocstream & os) const
 
 void InsetMathDecoration::validate(LaTeXFeatures & features) const
 {
-	if (ams())
-		features.require("amsmath");
-	InsetMathNest::validate(features);
+	if (!key_->requires.empty())
+		features.require(to_utf8(key_->requires));
 }
 
 

@@ -77,6 +77,9 @@ What's new
 
 - Fix the output of glyph 0x02e0 (MODIFIER LETTER SMALL GAMMA) (bug 6817).
 
+- Load the amsmath LaTeX-package when the math command \dddot is used to
+  avoid LaTeX errors (bug 6872).
+
 - Small tweaks for the memoir text class.
 
 
