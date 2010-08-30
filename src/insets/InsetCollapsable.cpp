@@ -313,22 +313,22 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		const int xx2 = x + textdim.wid - TEXT_TO_INSET_OFFSET + 1;
 		pi.pain.line(xx1, y + desc - 4, 
 			     xx1, y + desc, 
-			labelColor());
+			Color_foreground);
 		if (status_ == Open)
 			pi.pain.line(xx1, y + desc, 
 				xx2, y + desc,
-				labelColor());
+				Color_foreground);
 		else {
 			// Make status_ value visible:
 			pi.pain.line(xx1, y + desc,
 				xx1 + 4, y + desc,
-				labelColor());
+				Color_foreground);
 			pi.pain.line(xx2 - 4, y + desc,
 				xx2, y + desc,
-				labelColor());
+				Color_foreground);
 		}
 		pi.pain.line(x + textdim.wid - 3, y + desc, x + textdim.wid - 3, 
-			y + desc - 4, labelColor());
+			y + desc - 4, Color_foreground);
 
 		// the label below the text. Can be toggled.
 		if (geometry(bv) == SubLabel) {
@@ -351,12 +351,10 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		if (cur.isInside(this)) {
 			y -= textdim.asc;
 			y += 3;
-			pi.pain.line(xx1, y + 4, xx1, y, labelColor());
-			pi.pain.line(xx1 + 4, y, xx1, y, labelColor());
-			pi.pain.line(xx2, y + 4, xx2, y,
-				labelColor());
-			pi.pain.line(xx2 - 4, y, xx2, y,
-				labelColor());
+			pi.pain.line(xx1, y + 4, xx1, y, Color_foreground);
+			pi.pain.line(xx1 + 4, y, xx1, y, Color_foreground);
+			pi.pain.line(xx2, y + 4, xx2, y, Color_foreground);
+			pi.pain.line(xx2 - 4, y, xx2, y, Color_foreground);
 		}
 		break;
 	}
