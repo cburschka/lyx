@@ -1592,6 +1592,7 @@ lib_images_math_files = Split('''
     ddagger.png
     ddot.png
     dddot.png
+    ddddot.png
     ddots.png
     delim.png
     delta.png

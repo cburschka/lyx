@@ -195,9 +195,18 @@ double const ddot[] = {
 
 
 double const dddot[] = {
-	1, 0.1, 0.5,  0.2, 0.5,
+	1, 0.1,  0.5, 0.2,  0.5,
 	1, 0.45, 0.5, 0.55, 0.5,
-	1, 0.8, 0.5,  0.9, 0.5,
+	1, 0.8,  0.5, 0.9,  0.5,
+	0
+};
+
+
+double const ddddot[] = {
+	1, 0.1,  0.5, 0.2,  0.5,
+	1, 0.45, 0.5, 0.55, 0.5,
+	1, 0.8,  0.5, 0.9,  0.5,
+	1, 1.15, 0.5, 1.25, 0.5,
 	0
 };
 
@@ -315,6 +324,7 @@ named_deco_struct deco_table[] = {
 	// Accents
 	{"ddot",           ddot,       0 },
 	{"dddot",          dddot,      0 },
+	{"ddddot",         ddddot,     0 },
 	{"hat",            angle,      3 },
 	{"grave",          slash,      1 },
 	{"acute",          slash,      0 },

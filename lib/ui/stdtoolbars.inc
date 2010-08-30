@@ -367,6 +367,7 @@ ToolbarSet
 		Item "acute" "math-insert \acute"
 		Item "ddot" "math-insert \ddot"
 		Item "dddot" "math-insert \dddot"
+		Item "ddddot" "math-insert \ddddot"
 		Item "breve" "math-insert \breve"
 		Item "overline" "math-insert \overline"
 		Item "overbrace" "math-insert \overbrace"
