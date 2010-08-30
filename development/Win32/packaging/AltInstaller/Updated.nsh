@@ -12,6 +12,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\chkconfig.ltx"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
+ File "${PRODUCT_SOURCEDIR}\Resources\symbols"
  File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Customization.lyx"
@@ -27,12 +28,17 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\linguistics.lyx"
  SetOutPath "$INSTDIR\Resources\examples\de"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\linguistics.lyx"
+ SetOutPath "$INSTDIR\Resources\images\math"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\math\dddot.png"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\math\ddddot.png"
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\g-brief2.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\memoir.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\scrclass.inc"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
+ SetOutPath "$INSTDIR\Resources\ui"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
 
 FunctionEnd
 
