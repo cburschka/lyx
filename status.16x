@@ -117,6 +117,9 @@ What's new
 - Load files in correct order when passed as arguments via the command
   line (bug 6848).
 
+- Fix parsing of commands sent through the lyxserver, such that they don't
+  need to be terminated by a newline character (bug 6868).
+
 
 * DOCUMENTATION AND LOCALIZATION
 

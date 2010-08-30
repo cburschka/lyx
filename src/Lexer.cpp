@@ -473,7 +473,7 @@ bool Lexer::Pimpl::eatLine()
 		is.get(cc);
 		c = cc;
 		//LYXERR(Debug::LYXLEX, "Lexer::EatLine read char: `" << c << '\'');
-		if (c != '\r')
+		if (c != '\r' && is)
 			buff.push_back(c);
 	}
 
