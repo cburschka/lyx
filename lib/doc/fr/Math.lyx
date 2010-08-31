@@ -1,4 +1,4 @@
-#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -9508,7 +9508,20 @@ A
 \begin_layout Plain Layout
 
 \backslash
-ddddot{A
+ddddot
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+A
 \end_layout
 
 \end_inset
@@ -18950,9 +18963,7 @@ normalsize
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Within a formula the size can be changed using the following size commands:
+Dans un formule, la taille peut être modifiée grâce aux commandes suivantes:
 \end_layout
 
 \begin_layout Standard
@@ -19119,23 +19130,18 @@ scriptscriptstyle
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-After entering these commands, a blue box appears in which the formula parts
- are inserted.
+Après la saisie de ces commandes, une boîte bleue apparaît, où doivent être
+ saisies les parties de formule concernées.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There is a further method to change the font size, that though only works
- for symbols or letters in mathematical text.
- To use it, one of the above text size commands is inserted in mathematical
- text.
-
-\lang french
- Tous les caractères qui suivent jusqu'à la fin du texte mathématique ou
- jusqu'à ce que la taille soit de nouveau modifiée, auront la taille choisie.
+Il existe une autre méthode pour changer la taille de la police, qui ne
+ s'applique que pour modifier la taille des symboles et des lettres dans
+ le texte mathématique.
+ Pour l'utiliser, une des commandes usuelles de modification de taille de
+ texte vues plus haut est insérée en mode mathématique: tous les caractères
+ qui suivent jusqu'à la fin du texte mathématique ou jusqu'à ce que la taille
+ soit de nouveau modifiée, auront la taille choisie.
  Deux exemples:
 \begin_inset VSpace -2mm
 \end_inset
@@ -36596,23 +36602,19 @@ Typographiques, conseils
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This section is a summary of the most important typographic rules, listed
- in ISO norms.
+Ce paragraphe est un résumé des usages typographiques les plus importants,
+ documentés dans les normes ISO
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-This collection was partly taken from the German semi-official dictionary
- called 
-\begin_inset Quotes eld
+Cette collection a été extraite partiellement du dictionnaire allmend semi-offic
+iel dénommé 
+\begin_inset Quotes fld
 \end_inset
 
 Duden
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  
@@ -36622,8 +36624,8 @@ key "Duden"
 
 \end_inset
 
- that lists some of the ISO rules.
- More rules are listed in 
+ qui indique quelques règles ISO.
+ D'autre règles sont décrites dans 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Checklist"
@@ -36635,7 +36637,7 @@ key "Checklist"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Itemize
@@ -36660,11 +36662,7 @@ reference "sub:Styles-de-polices"
 
 \end_inset
 
-, 
-\lang english
-no matter if they appear in italic text
-\lang french
-: 30
+, même dans un texte en italique: 30
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -36839,9 +36837,32 @@ Les composants de matrices sont en italiques:
 \end_layout
 
 \begin_layout Itemize
-L'opérateur 'd' de différentiation/intégration, la constante d'Euler 'e',
- et la base des nombre imaginaires 'i' devraient être écrits en caractères
- droits pour éviter de les mélanger avec les autres variables.
+L'opérateur 
+\begin_inset Quotes fld
+\end_inset
+
+d
+\begin_inset Quotes frd
+\end_inset
+
+ de différentiation/intégration, la constante d'Euler 
+\begin_inset Quotes fld
+\end_inset
+
+e
+\begin_inset Quotes frd
+\end_inset
+
+, et la base des nombre imaginaires 
+\begin_inset Quotes fld
+\end_inset
+
+i
+\begin_inset Quotes frd
+\end_inset
+
+ devraient être écrits en caractères droits pour éviter de les mélanger
+ avec les autres variables.
 \end_layout
 
 \begin_layout Itemize
@@ -37819,9 +37840,7 @@ target "http://physics.nist.gov/Document/checklist.pdf"
 
 \end_inset
 
- 
-\lang english
-for reviewing manuscripts
+ pour relire les manuscrits
 \end_layout
 
 \begin_layout Standard
