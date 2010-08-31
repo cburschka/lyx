@@ -513,6 +513,9 @@ SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libqtgui4 (>= 4.4.3-0)")
 IF(ASPELL_FOUND)
   SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libaspell15 (>= 0.60.6-1),${CPACK_DEBIAN_PACKAGE_DEPENDS}")
 ENDIF()
+IF(AIKSAURUSLIB_FOUND)
+  SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libaiksaurus-1.2-0c2a (>= 1.2.1),${CPACK_DEBIAN_PACKAGE_DEPENDS}")
+ENDIF()
 #
 # for the next ones, cpack insists on data with values in some file
 SET(CPACK_PACKAGE_DESCRIPTION_FILE "${TOP_SRC_DIR}/development/cmake/LyX_description.txt")
