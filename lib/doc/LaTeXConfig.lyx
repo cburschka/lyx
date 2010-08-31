@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 398
+\lyxformat 399
 \begin_document
 \begin_header
 \textclass article
@@ -31,6 +31,7 @@
 \use_amsmath 0
 \use_esint 0
 \use_mhchem 0
+\use_mathdots false
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
@@ -4743,6 +4744,52 @@ formal script
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+mathdots
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "mathdots"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/generic/mathdots/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+mathdots
+\family default
+ is used by LyX to parse the math commands 
+\family sans
+
+\backslash
+iddots
+\family default
+ and 
+\family sans
+
+\backslash
+adots
+\family default
+.
+ It can be loaded in the 
+\family sans
+Math
+\family default
+ section of the document settings and will additionally change the appearance
+ of all math dots commands in a document.
 \end_layout
 
 \begin_layout Subsection
