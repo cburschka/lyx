@@ -45,7 +45,7 @@
 #define HAVE__GETPID 1
 #define HAVE_MKDIR 1
 #define HAVE__MKDIR 1
-#define HAVE_SETENV 1
+/* #undef HAVE_SETENV 1 */
 #define HAVE_PUTENV 1
 #define HAVE_MKTEMP 1
 /* #undef HAVE_MKSTEMP 1 */
