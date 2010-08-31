@@ -2057,13 +2057,23 @@ def revert_mathrsfs(document):
       i += 1
 
 
+def convert_mathdots(document):
+    " Load mathdots if used in the document "
+    while True:
+      i = find_token(document.header, "\\use_esint" , 0)
+      if i != -1:
+        document.header.insert(i + 1, "\\use_mathdots 1")
+      break
+
+
 def revert_mathdots(document):
     " Load mathdots if used in the document "
     while True:
       i = find_token(document.header, "\\use_mathdots" , 0)
       if i != -1:
+        # use \@ifundefined to catch also the "auto" case
         add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
-        add_to_preamble(document, ["\\usepackage{mathdots}"])
+        add_to_preamble(document, ["\\@ifundefined{iddots}{\\usepackage{mathdots}}"])
         del document.header[i]
       break
 
@@ -2126,7 +2136,7 @@ convert = [[346, []],
            [396, []],
            [397, [remove_Nameref]],
            [398, []],
-           [399, []]
+           [399, [convert_mathdots]]
           ]
 
 revert =  [[398, [revert_mathdots]],
