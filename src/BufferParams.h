@@ -319,8 +319,8 @@ public:
 	Package use_esint;
 	/// Whether and how to load mhchem
 	Package use_mhchem;
-	/// Whether to load mathdots
-	bool use_mathdots;
+	/// Whether and how to load mathdots
+	Package use_mathdots;
 	/// Split bibliography?
 	bool use_bibtopic;
 	/// Split the index?

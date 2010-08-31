@@ -1070,6 +1070,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		mathsModule->esintCB, SLOT(setDisabled(bool)));
 	connect(mathsModule->mhchemautoCB, SIGNAL(toggled(bool)),
 		mathsModule->mhchemCB, SLOT(setDisabled(bool)));
+	connect(mathsModule->mathdotsautoCB, SIGNAL(toggled(bool)),
+		mathsModule->mathdotsCB, SLOT(setDisabled(bool)));
 	
 	connect(mathsModule->amsCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
@@ -1085,7 +1087,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(mathsModule->mathdotsCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
-
+	connect(mathsModule->mathdotsautoCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	
 
 	// latex class
 	latexModule = new UiWidget<Ui::LaTeXUi>;
@@ -2244,11 +2248,15 @@ void GuiDocument::applyView()
 		else
 			bp_.use_mhchem = BufferParams::package_off;
 	}
-	if (mathsModule->mathdotsCB->isChecked())
-		bp_.use_mathdots = true;
-	else
-		bp_.use_mathdots = false;
-
+	if (mathsModule->mathdotsautoCB->isChecked())
+		bp_.use_mathdots = BufferParams::package_auto;
+	else {
+		if (mathsModule->mathdotsCB->isChecked())
+			bp_.use_mathdots = BufferParams::package_on;
+		else
+			bp_.use_mathdots = BufferParams::package_off;
+	}
+	
 	// Page Layout
 	if (pageLayoutModule->pagestyleCO->currentIndex() == 0)
 		bp_.pagestyle = "default";
@@ -2659,7 +2667,10 @@ void GuiDocument::paramsToDialog()
 	mathsModule->mhchemautoCB->setChecked(
 		bp_.use_mhchem == BufferParams::package_auto);
 
-	mathsModule->mathdotsCB->setChecked(bp_.use_mathdots);
+	mathsModule->mathdotsCB->setChecked(
+		bp_.use_mathdots == BufferParams::package_on);
+	mathsModule->mathdotsautoCB->setChecked(
+		bp_.use_mathdots == BufferParams::package_auto);
 
 	switch (bp_.spacing().getSpace()) {
 		case Spacing::Other: nitem = 3; break;

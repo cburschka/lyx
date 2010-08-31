@@ -363,7 +363,7 @@ BufferParams::BufferParams()
 	use_amsmath = package_auto;
 	use_esint = package_auto;
 	use_mhchem = package_auto;
-	use_mathdots = false;
+	use_mathdots = package_auto;
 	cite_engine_ = ENGINE_BASIC;
 	use_bibtopic = false;
 	use_indices = false;
@@ -672,7 +672,9 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex >> usemhchem;
 		use_mhchem = packagetranslator().find(usemhchem);
 	} else if (token == "\\use_mathdots") {
-		lex >> use_mathdots;
+		int usemathdots;
+		lex >> usemathdots;
+		use_mathdots = packagetranslator().find(usemathdots);
 	} else if (token == "\\cite_engine") {
 		string engine;
 		lex >> engine;
@@ -972,7 +974,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\use_amsmath " << use_amsmath
 	   << "\n\\use_esint " << use_esint
 	   << "\n\\use_mhchem " << use_mhchem
-	   << "\n\\use_mathdots " << convert<string>(use_mathdots)
+	   << "\n\\use_mathdots " << use_mathdots
 	   << "\n\\cite_engine " << citeenginetranslator().find(cite_engine_)
 	   << "\n\\use_bibtopic " << convert<string>(use_bibtopic)
 	   << "\n\\use_indices " << convert<string>(use_indices)
@@ -1139,7 +1141,7 @@ void BufferParams::validate(LaTeXFeatures & features) const
 		features.require("esint");
 	if (use_mhchem == package_on)
 		features.require("mhchem");
-	if (use_mathdots)
+	if (use_mathdots == package_on)
 		features.require("mathdots");
 
 	// Document-level line spacing

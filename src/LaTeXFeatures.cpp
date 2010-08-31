@@ -674,7 +674,8 @@ string const LaTeXFeatures::getPackages() const
 		packages << "\\usepackage{accents}\n";
 
 	// mathdots must be loaded after amsmath
-	if (mustProvide("mathdots"))
+	if (mustProvide("mathdots") &&
+		params_.use_mathdots != BufferParams::package_off)
 		packages << "\\usepackage{mathdots}\n";
 
 	// yhmath must be loaded after amsmath
