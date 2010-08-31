@@ -31,7 +31,7 @@
 \use_amsmath 0
 \use_esint 0
 \use_mhchem 0
-\use_mathdots false
+\use_mathdots 0
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
@@ -4771,17 +4771,11 @@ Notes: The package
 \family sans
 mathdots
 \family default
- is used by LyX to parse the math commands 
+ is used by LyX to parse the math command 
 \family sans
 
 \backslash
 iddots
-\family default
- and 
-\family sans
-
-\backslash
-adots
 \family default
 .
  It can be loaded in the 
