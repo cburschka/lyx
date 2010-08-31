@@ -224,6 +224,9 @@ ${SDKROOT})
 *10.6*)
 	MACOSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET:-"10.5"}; export MACOSX_DEPLOYMENT_TARGET
 	case "${MACOSX_DEPLOYMENT_TARGET}" in
+	10.6)
+		SDKROOT="/Developer/SDKs/MacOSX10.6.sdk"; export SDKROOT
+		;;
 	10.5|10.4)
 		SDKROOT=${SDKROOT:-"/Developer/SDKs/MacOSX10.5.sdk"}; export SDKROOT
 		;;
@@ -532,7 +535,7 @@ build_lyx() {
 			${QtInstallDir:+"--with-qt4-dir=${QtInstallDir}"} \
 			${LyXConfigureOptions}\
 			--host="${HOSTSYSTEM}" --build="${BuildSystem}" --enable-build-type=rel && \
-		make && make install${strip}
+		make -j2 && make install${strip}
 		for file in ${FILE_LIST} ; do
 			if [ -f "${LYX_BUNDLE_PATH}/${file}" ]; then
 				mv "${LYX_BUNDLE_PATH}/${file}"\
@@ -591,6 +594,8 @@ EOF
 	fi
 	for libnm in ${QtLibraries} ; do
 		fwdir=`framework_name "$libnm"`
+		dirname=`dirname "${fwdir}"`
+		mkdir -p "${condir}/${dirname}"
 		dirname=`basename "${fwdir}"`
 		test -d "${condir}/${fwdir}" || (
 			echo Copy framework "${source}/lib/"`basename "${fwdir}"`
