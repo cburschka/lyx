@@ -226,7 +226,8 @@ void LinkBackRunAppNotFoundPanel(NSString* appName, NSURL* url)
 
 - (id)initWithName:(NSString*)aName delegate:(id<LinkBackServerDelegate>)aDel
 {
-    if (self = [super init]) {
+    self = [super init];
+    if (self) {
         name = [aName copy] ;
         delegate = aDel ;
         listener = nil ;
