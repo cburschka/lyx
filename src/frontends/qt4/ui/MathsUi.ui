@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>351</width>
-    <height>233</height>
+    <height>201</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -83,6 +83,16 @@
     </widget>
    </item>
    <item row="6" column="0">
+    <widget class="QCheckBox" name="mathdotsCB">
+     <property name="toolTip">
+      <string>The LaTeX package mathdots is used</string>
+     </property>
+     <property name="text">
+      <string>Use math&amp;dots package</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
     <spacer>
      <property name="orientation">
       <enum>Qt::Vertical</enum>

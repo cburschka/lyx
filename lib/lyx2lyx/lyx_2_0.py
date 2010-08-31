@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is part of lyx2lyx
 # -*- coding: utf-8 -*-
-# Copyright (C) 2008 José Matos  <jamatos@lyx.org>
+# Copyright (C) 2010 The LyX team
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -2057,6 +2057,17 @@ def revert_mathrsfs(document):
       i += 1
 
 
+def revert_mathdots(document):
+    " Load mathdots if used in the document "
+    while True:
+      i = find_token(document.header, "\\use_mathdots" , 0)
+      if i != -1:
+        add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
+        add_to_preamble(document, ["\\usepackage{mathdots}"])
+        del document.header[i]
+      break
+
+
 ##
 # Conversion hub
 #
@@ -2114,10 +2125,12 @@ convert = [[346, []],
            [395, []],
            [396, []],
            [397, [remove_Nameref]],
-           [398, []]
+           [398, []],
+           [399, []]
           ]
 
-revert =  [[397, [revert_mathrsfs]],
+revert =  [[398, [revert_mathdots]],
+           [397, [revert_mathrsfs]],
            [396, []],
            [395, [revert_nameref]],
            [394, [revert_DIN_C_pagesizes]],

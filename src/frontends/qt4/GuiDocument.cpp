@@ -1083,6 +1083,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(mathsModule->mhchemautoCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+	connect(mathsModule->mathdotsCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 
 
 	// latex class
@@ -2218,9 +2220,9 @@ void GuiDocument::applyView()
 	modulesToParams(bp_);
 
 	// Math
-	if (mathsModule->amsautoCB->isChecked()) {
+	if (mathsModule->amsautoCB->isChecked())
 		bp_.use_amsmath = BufferParams::package_auto;
-	} else {
+	else {
 		if (mathsModule->amsCB->isChecked())
 			bp_.use_amsmath = BufferParams::package_on;
 		else
@@ -2242,6 +2244,10 @@ void GuiDocument::applyView()
 		else
 			bp_.use_mhchem = BufferParams::package_off;
 	}
+	if (mathsModule->mathdotsCB->isChecked())
+		bp_.use_mathdots = true;
+	else
+		bp_.use_mathdots = false;
 
 	// Page Layout
 	if (pageLayoutModule->pagestyleCO->currentIndex() == 0)
@@ -2652,6 +2658,8 @@ void GuiDocument::paramsToDialog()
 		bp_.use_mhchem == BufferParams::package_on);
 	mathsModule->mhchemautoCB->setChecked(
 		bp_.use_mhchem == BufferParams::package_auto);
+
+	mathsModule->mathdotsCB->setChecked(bp_.use_mathdots);
 
 	switch (bp_.spacing().getSpace()) {
 		case Spacing::Other: nitem = 3; break;
