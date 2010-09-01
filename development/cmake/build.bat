@@ -3,17 +3,24 @@ echo off
 echo -------------------------------------------------------------------------------------
 echo Usage build.bat devel/install/deploy STUDIO(optional)
 echo     devel   - Builds Visual Studio project files for development on LyX
-echo     install - Builds Visual Studio project files with all enabled for installaion
+echo     install - Builds Visual Studio project files with all enabled for installation
 echo     deploy  - Builds Makefiles and installs LyX
 echo     STUDIO  - Used Visual Studio version, default is "Visual Studio 9 2008"
 echo               use "Visual Studio 10" for Visual Studio 10
 echo -------------------------------------------------------------------------------------
-echo Be sure you've set qmake in PATH and set the variabales:
+echo Be sure you've set qmake in PATH and set the variables:
 echo     GNUWIN32_DIR
-echo     LYX_OURCE
+echo     LYX_SOURCE
 echo     LXY_BUILD
 echo Or edit this file.
 echo -------------------------------------------------------------------------------------
+
+
+if [%1]==[] (
+	echo ERROR: no options.
+    echo Exiting now.
+	goto :eof
+)
 
 REM Add path to qmake here or set PATH correctly on your system.
 ::set PATH=D:\Qt\bin;%PATH%
@@ -55,12 +62,6 @@ if not exist %LYX_BUILD% (
 )
 cd "%LYX_BUILD%"
 
-
-if [%1]==[] (
-	echo ERROR: no options.
-    echo Exiting now.
-	goto :eof
-)
 
 REM Delete all files indirectory
 del /s/q *
