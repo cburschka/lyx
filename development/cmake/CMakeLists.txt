@@ -63,6 +63,7 @@ LYX_OPTION(USE_EXTERNAL_BOOST "Use external boost" OFF GCC)
 LYX_OPTION(USE_EXTERNAL_LIBINTL "Use external libintl" ON ALL)
 LYX_OPTION(PACKAGE_SUFFIX "Use version suffix for packaging" ON ALL)
 LYX_OPTION(PROGRAM_SUFFIX "Append version suffix to binaries" ON GCC)
+LYX_OPTION(INSTALL_PREFIX "Install path for LyX" OFF ALL)
 LYX_OPTION(NO_CONSOLE "Suppress console on Windows" OFF MSVC)
 LYX_OPTION(VLD "Use VLD with MSVC" OFF MSVC)
 LYX_OPTION(WALL "Enable all warnings" OFF MSVC)
@@ -76,9 +77,6 @@ LYX_OPTION(QUIET "Don't generate verbose makefiles" OFF ALL)
 LYX_OPTION(SHARED_LIBRARIES "Build shared libraries" OFF ALL)
 
 message(STATUS)
-
-
-
 
 set(EXECUTABLE_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/lib)
@@ -149,6 +147,11 @@ foreach(_c_l ${_config_lines} )
 endforeach(_c_l)
 
 
+if (LYX_INSTALL_PREFIX)
+	set(CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX} CACHE PATH "LyX user's choice install prefix" FORCE)
+	set(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+endif()
+
 if(LYX_PACKAGE_SUFFIX)
   set(PACKAGE ${PACKAGE_BASE}${LYX_INSTALL_SUFFIX})
 else()  
@@ -168,16 +171,15 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     # don't use the default "/usr/local"
     # but respect the user-choice on the command-line
     if(LYX_INSTALL_SUFFIX)
-        SET(CMAKE_INSTALL_PREFIX "/usr/local/lyx${LYX_INSTALL_SUFFIX}" CACHE PATH "LyX install prefix" FORCE)
+        SET(CMAKE_INSTALL_PREFIX "/usr/local/lyx${LYX_INSTALL_SUFFIX}" CACHE PATH "LyX default install prefix" FORCE)
     else()
-        SET(CMAKE_INSTALL_PREFIX "/usr/local/${LYX_PROJECT}" CACHE PATH "LyX install prefix" FORCE)
+        SET(CMAKE_INSTALL_PREFIX "/usr/local/${LYX_PROJECT}" CACHE PATH "LyX default install prefix" FORCE)
     endif()
   endif()
   if(WIN32)
-    SET(CMAKE_INSTALL_PREFIX
-      ${CMAKE_BINARY_DIR}/LYX_INSTALLED CACHE PATH "LyX install prefix" FORCE)
+    SET(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/LYX_INSTALLED CACHE PATH "LyX default install prefix" FORCE)
   endif()
-endif(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+endif()
 
 if (WIN32)
   set(LYX_DATA_SUBDIR "Resources/" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
