@@ -1,22 +1,101 @@
-:: set here the path to Qt's bin folder and to the LyX-MSVC depend bin folder
-:: (these are example paths)
-PATH=D:\Qt\bin;D:\LyXSVN\lyx-devel\lyx-windows-deps-msvc2008\bin;%PATH%
+echo off
 
-:: change directory to the folder where the compile result should be stored
-:: (this is an example path)
-cd D:\LyXSVN\lyx-devel\compile-result
-cmake ..\development\cmake -G"Visual Studio 9 2008" -Dnls=1 -DGNUWIN32_DIR=D:\LyXSVN\lyx-devel\lyx-windows-deps-msvc2008 -Dmerge=0
+echo -------------------------------------------------------------------------------------
+echo Usage build.bat devel/install/deploy STUDIO(optional)
+echo     devel   - Builds Visual Studio project files for development on LyX
+echo     install - Builds Visual Studio project files with all enabled for installaion
+echo     deploy  - Builds Makefiles and installs LyX
+echo     STUDIO  - Used Visual Studio version, default is "Visual Studio 9 2008"
+echo               use "Visual Studio 10" for Visual Studio 10
+echo -------------------------------------------------------------------------------------
+echo Be sure you've set qmake in PATH and set the variabales:
+echo     GNUWIN32_DIR
+echo     LYX_OURCE
+echo     LXY_BUILD
+echo Or edit this file.
+echo -------------------------------------------------------------------------------------
 
-:: clean
-start lyx.sln :: /clean Release
+REM Add path to qmake here or set PATH correctly on your system.
+::set PATH=D:\Qt\bin;%PATH%
 
-:: rebuild all generated files
-::cmake ..\cmake -Dmerge_rebuild=1
+REM Edit pathes here or set the environment variables on you system.
+::set GNUWIN32_DIR=D:\LyXSVN\lyx-devel\lyx-windows-deps-msvc2008
+::set LYX_SOURCE=D:\LyXSVN\lyx-devel.
+::set LXY_BUILD=D:\LyXSVN\compile-result
 
-:: build release version
-::start lyx.sln /build Release
+if [%LYX_BUILD%]==[] (
+	echo ERROR:  LYX_BUILD not set.
+	echo Exiting now.
+	goto :eof
+)
 
-:: return to the cmake folder where this script was started from
-:: (this is an example path)
-cd D:\LyXSVN\lyx-devel\development\cmake
+if [%LYX_SOURCE%]==[] (
+	echo ERROR:  LYX_SOURCE not set.
+	echo Exiting now.
+	goto :eof
+)
 
+if [%GNUWIN32_DIR%]==[] (
+	echo ERROR:  GNUWIN32_DIR not set.
+	echo Exiting now.
+	goto :eof
+)
+
+echo LyX source: "%LYX_SOURCE%"
+echo LyX build : "%LYX_BUILD%"
+echo LyX deps  : "%GNUWIN32_DIR%"
+
+set PATH=%GNUWIN32_DIR%\bin;%PATH%
+
+
+mkdir "%LYX_BUILD%"
+if not exist %LYX_BUILD% (
+	echo Exiting script.
+	goto :eof
+)
+cd "%LYX_BUILD%"
+
+
+if [%1]==[] (
+	echo ERROR: no options.
+    echo Exiting now.
+	goto :eof
+)
+
+REM Delete all files indirectory
+del /s/q *
+del CMakeCache.txt
+
+if [%2]==[] (
+	set USED_STUDIO="Visual Studio 9 2008"
+) else (
+	set USED_STUDIO=%2%
+)
+
+
+if "%1%" == "devel" (
+	REM Build solution to develop LyX
+	cmake %LYX_SOURCE%\development\cmake -G%USED_STUDIO% -DLYX_MERGE_FILES=0 -DLYX_NLS=1 -DLYX_DEBUG=1
+	REM needed when running lyx from the debugger
+	set LYX_DIR_20x="%LYX_SOURCE&"\lib
+	start lyx.sln /build Debug
+)
+
+if "%1%" == "install" (
+	REM Build solution to develop LyX
+	cmake %LYX_SOURCE%\development\cmake -G%USED_STUDIO% -DLYX_MERGE_FILES=1 -DLYX_INSTALL=1 -DLYX_RELEASE=1
+	REM needed when running lyx from the debugger
+	set LYX_DIR_20x="%LYX_SOURCE&"\lib
+	start lyx.sln /build Debug
+)
+
+if "%1%" == "deploy" (
+	REM Build complete installed LyX
+	cmake "%LYX_SOURCE%"\development\cmake -G"NMake Makefiles" -DLYX_MERGE_FILES=1 -DLYX_INSTALL=1 -DLYX_RELEASE=1
+	nmake
+	nmake install
+)
+
+
+
+:eof
