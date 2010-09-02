@@ -14,7 +14,7 @@
 #define METRICSINFO_H
 
 #include "Changes.h"
-#include "ColorCode.h"
+#include "Color.h"
 #include "FontInfo.h"
 
 #include "support/strfwd.h"
@@ -102,6 +102,11 @@ public:
 	/// and the inset's own background color.
 	/// \param sel whether to take the selection state into account
 	ColorCode backgroundColor(Inset const * inset, bool sel = true) const;
+
+	/// Determines the text color based on the intended color, the
+	/// change tracking state and the selectio state. 
+	/// \param color what the color should be by default
+	Color textColor(Color const & color) const;
 
 	///
 	MetricsBase base;

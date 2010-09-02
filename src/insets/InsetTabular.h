@@ -895,8 +895,8 @@ private:
 	Inset * clone() const { return new InsetTabular(*this); }
 
 	///
-	void drawCellLines(frontend::Painter &, int x, int y, row_type row,
-			   idx_type cell, Change const & change) const;
+	void drawCellLines(PainterInfo &, int x, int y, row_type row,
+			   idx_type cell) const;
 	///
 	void setCursorFromCoordinates(Cursor & cur, int x, int y) const;
 

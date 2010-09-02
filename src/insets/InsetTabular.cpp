@@ -3480,7 +3480,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 			// Cache the Inset position.
 			bv->coordCache().insets().add(cell(idx).get(), cx, cy);
 			cell(idx)->draw(pi, cx, cy);
-			drawCellLines(pi.pain, nx, y, r, idx, pi.change_);
+			drawCellLines(pi, nx, y, r, idx);
 			nx += tabular.cellWidth(idx);
 			pi.selected = original_selection_state;
 		}
@@ -3551,25 +3551,25 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetTabular::drawCellLines(Painter & pain, int x, int y,
-								 row_type row, idx_type cell, Change const & change) const
+void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
+				 row_type row, idx_type cell) const
 {
 	y -= tabular.rowAscent(row);
 	int const w = tabular.cellWidth(cell);
 	int const h = tabular.cellHeight(cell);
-	Color linecolor = change.changed() ? change.color() : Color_tabularline;
-	Color gridcolor = change.changed() ? change.color() : Color_tabularonoffline;
+	Color const linecolor = pi.textColor(Color_tabularline);
+	Color const gridcolor = pi.textColor(Color_tabularonoffline);
 
 	// Top
 	bool drawline = tabular.topLine(cell)
 		|| (row > 0 && tabular.bottomLine(tabular.cellAbove(cell)));
-	pain.line(x, y, x + w, y,
+	pi.pain.line(x, y, x + w, y,
 		drawline ? linecolor : gridcolor,
 		drawline ? Painter::line_solid : Painter::line_onoffdash);
 
 	// Bottom
 	drawline = tabular.bottomLine(cell);
-	pain.line(x, y + h, x + w, y + h,
+	pi.pain.line(x, y + h, x + w, y + h,
 		drawline ? linecolor : gridcolor,
 		drawline ? Painter::line_solid : Painter::line_onoffdash);
 
@@ -3577,7 +3577,7 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 	col_type const col = tabular.cellColumn(cell);
 	drawline = tabular.leftLine(cell)
 		|| (col > 0 && tabular.rightLine(tabular.cellIndex(row, col - 1)));
-	pain.line(x, y, x, y + h,
+	pi.pain.line(x, y, x, y + h,
 		drawline ? linecolor : gridcolor,
 		drawline ? Painter::line_solid : Painter::line_onoffdash);
 
@@ -3586,7 +3586,7 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 	drawline = tabular.rightLine(cell)
 		   || (col + 1 < tabular.ncols()
 		       && tabular.leftLine(tabular.cellIndex(row, col + 1)));
-	pain.line(x + w, y, x + w, y + h,
+	pi.pain.line(x + w, y, x + w, y + h,
 		drawline ? linecolor : gridcolor,
 		drawline ? Painter::line_solid : Painter::line_onoffdash);
 }
