@@ -224,7 +224,8 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	Change const & change_running = par_.lookupChange(pos);
 
 	// selected text?
-	bool const selection = pos >= row_.sel_beg && pos < row_.sel_end;
+	bool const selection = (pos >= row_.sel_beg && pos < row_.sel_end)
+		|| pi_.selected;
 
 	char_type prev_char = ' ';
 	// collect as much similar chars as we can
