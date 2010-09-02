@@ -479,7 +479,7 @@ FILE(STRINGS "${TOP_SRC_DIR}/development/cmake/LyX_summary.txt" CPACK_PACKAGE_DE
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${LYX_INSTALL_SUFFIX}")
 #
 # needed by rpm
-set(CPACK_set_DESTDIR "ON")
+set(CPACK_SET_DESTDIR "ON")
 FILE(READ "${TOP_SRC_DIR}/development/cmake/LyX_license.txt" CPACK_RPM_PACKAGE_LICENSE)
 set(CPACK_RPM_PACKAGE_GROUP "Applications/Publishing")
 set(CPACK_RPM_PACKAGE_VENDOR "The LyX team")
