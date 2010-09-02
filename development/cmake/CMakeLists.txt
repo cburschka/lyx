@@ -10,7 +10,7 @@ cmake_minimum_required(VERSION 2.6.4)
 
 if(COMMAND cmake_policy)
 	cmake_policy(SET CMP0003 OLD)
-        cmake_policy(SET CMP0005 OLD)
+	cmake_policy(SET CMP0005 OLD)
 endif()
 
 set(LYX_PROJECT lyx)
@@ -35,7 +35,7 @@ message(STATUS)
 
 LYX_OPTION(CPACK "Use the CPack management (Implies LYX_INSTALL option)" OFF ALL)
 if(LYX_CPACK)
-        set(LYX_INSTALL ON CACHE BOOL "INSTALL option" FORCE)
+	set(LYX_INSTALL ON CACHE BOOL "INSTALL option" FORCE)
 endif()
 
 LYX_OPTION(INSTALL "Build install projects/rules (implies a bunch of other options)" OFF ALL)
@@ -84,19 +84,19 @@ set(LIBRARY_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/lib)
 
 
 if(UNIX OR MINGW)
-    execute_process(COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
-    message(STATUS "Using GCC version ${GCC_VERSION}")
-    if(NOT GCC_VERSION VERSION_LESS 4.4)
-        set(LYX_USE_TR1 1)
-        # GCC <= 4.5 does not support regex: there are linker errors
-        # http://gcc.gnu.org/onlinedocs/libstdc++/manual/status.html#status.iso.tr1
-        set(LYX_USE_TR1_REGEX 0)        
-    endif()
+	execute_process(COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
+	message(STATUS "Using GCC version ${GCC_VERSION}")
+	if(NOT GCC_VERSION VERSION_LESS 4.4)
+		set(LYX_USE_TR1 1)
+		# GCC <= 4.5 does not support regex: there are linker errors
+		# http://gcc.gnu.org/onlinedocs/libstdc++/manual/status.html#status.iso.tr1
+		set(LYX_USE_TR1_REGEX 0)
+	endif()
 else()
-    if(MSVC10)
-        set(LYX_USE_TR1 1)
-        set(LYX_USE_TR1_REGEX 1)
-    endif()
+	if(MSVC10)
+		set(LYX_USE_TR1 1)
+		set(LYX_USE_TR1_REGEX 1)
+	endif()
 endif()
 
 
@@ -108,42 +108,42 @@ set(VERSION_INFO "CMake Build")
 
 # Try to get some informations from configure.ac
 
-include(LyXPaths)		#called here to define the needed TOP_SRC_DIR-variable
+include(LyXPaths)    #called here to define the needed TOP_SRC_DIR-variable
 file(STRINGS "${TOP_SRC_DIR}/configure.ac" _config_lines)
 
 if(WIN32)
-  set(USE_WINDOWS_PACKAGING 1)
+	set(USE_WINDOWS_PACKAGING 1)
 elseif(APPLE)
-  set(USE_MACOSX_PACKAGING 1)
+	set(USE_MACOSX_PACKAGING 1)
 else()
-  set(USE_POSIX_PACKAGING 1)
+	set(USE_POSIX_PACKAGING 1)
 endif()
 
 macro(setstripped _varname _value)
-  string(STRIP ${_value} _v)
-  if(USE_POSIX_PACKAGING)
-    string(TOLOWER ${_v} ${_varname})
-  else()
-    set(${_varname} ${_v})
-  endif()
+	string(STRIP ${_value} _v)
+	if(USE_POSIX_PACKAGING)
+		string(TOLOWER ${_v} ${_varname})
+	else()
+		set(${_varname} ${_v})
+	endif()
 endmacro(setstripped)
 
 foreach(_c_l ${_config_lines} )
-  if(_c_l MATCHES "^AC_INIT\\(\([^,]+\),\([^,]+\), *\\[\([^,]+\)\\] *,\(.*\)")
-    setstripped(PACKAGE_BASE ${CMAKE_MATCH_1})
-    setstripped(PACKAGE_VERSION ${CMAKE_MATCH_2})
-    setstripped(PACKAGE_BUGREPORT ${CMAKE_MATCH_3})
-    if(PACKAGE_VERSION MATCHES "^\([0-9]+\)\\.\([0-9]+\).*$")
-      set(LYX_MAJOR_VERSION ${CMAKE_MATCH_1})
-      set(LYX_MINOR_VERSION ${CMAKE_MATCH_2})
-      set(LYX_DIR_VER "LYX_DIR_${CMAKE_MATCH_1}${CMAKE_MATCH_2}x")
-      set(LYX_USERDIR_VER "LYX_USERDIR_${CMAKE_MATCH_1}${CMAKE_MATCH_2}x")
-      set(LYX_INSTALL_SUFFIX "${CMAKE_MATCH_1}.${CMAKE_MATCH_2}")
-    endif()
-  endif()
-  if(_c_l MATCHES "^AC_SUBST\\( *LYX_DATE *, *\\[\\\"(.*)\\\"\\].*")
-    set(LYX_DATE "${CMAKE_MATCH_1}")
-  endif()
+	if(_c_l MATCHES "^AC_INIT\\(\([^,]+\),\([^,]+\), *\\[\([^,]+\)\\] *,\(.*\)")
+		setstripped(PACKAGE_BASE ${CMAKE_MATCH_1})
+		setstripped(PACKAGE_VERSION ${CMAKE_MATCH_2})
+		setstripped(PACKAGE_BUGREPORT ${CMAKE_MATCH_3})
+		if(PACKAGE_VERSION MATCHES "^\([0-9]+\)\\.\([0-9]+\).*$")
+			set(LYX_MAJOR_VERSION ${CMAKE_MATCH_1})
+			set(LYX_MINOR_VERSION ${CMAKE_MATCH_2})
+			set(LYX_DIR_VER "LYX_DIR_${CMAKE_MATCH_1}${CMAKE_MATCH_2}x")
+			set(LYX_USERDIR_VER "LYX_USERDIR_${CMAKE_MATCH_1}${CMAKE_MATCH_2}x")
+			set(LYX_INSTALL_SUFFIX "${CMAKE_MATCH_1}.${CMAKE_MATCH_2}")
+		endif()
+	endif()
+	if(_c_l MATCHES "^AC_SUBST\\( *LYX_DATE *, *\\[\\\"(.*)\\\"\\].*")
+		set(LYX_DATE "${CMAKE_MATCH_1}")
+	endif()
 endforeach(_c_l)
 
 
@@ -153,38 +153,38 @@ if (LYX_INSTALL_PREFIX)
 endif()
 
 if(LYX_PACKAGE_SUFFIX)
-  set(PACKAGE ${PACKAGE_BASE}${LYX_INSTALL_SUFFIX})
+	set(PACKAGE ${PACKAGE_BASE}${LYX_INSTALL_SUFFIX})
 else()  
-  set(PACKAGE ${PACKAGE_BASE})
+	set(PACKAGE ${PACKAGE_BASE})
 endif()
 
 if(LYX_PROGRAM_SUFFIX)
-  set(PROGRAM_SUFFIX "${LYX_INSTALL_SUFFIX}")
+	set(PROGRAM_SUFFIX "${LYX_INSTALL_SUFFIX}")
 else()
-  set(PROGRAM_SUFFIX "")
+	set(PROGRAM_SUFFIX "")
 endif()
 
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-  # see http://www.cmake.org/pipermail/cmake/2006-October/011559.html
-  if (UNIX)
-    # don't use the default "/usr/local"
-    # but respect the user-choice on the command-line
-    if(LYX_INSTALL_SUFFIX)
-        SET(CMAKE_INSTALL_PREFIX "/usr/local/lyx${LYX_INSTALL_SUFFIX}" CACHE PATH "LyX default install prefix" FORCE)
-    else()
-        SET(CMAKE_INSTALL_PREFIX "/usr/local/${LYX_PROJECT}" CACHE PATH "LyX default install prefix" FORCE)
-    endif()
-  endif()
-  if(WIN32)
-    SET(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/LYX_INSTALLED CACHE PATH "LyX default install prefix" FORCE)
-  endif()
+	# see http://www.cmake.org/pipermail/cmake/2006-October/011559.html
+	if (UNIX)
+		# don't use the default "/usr/local"
+		# but respect the user-choice on the command-line
+		if(LYX_INSTALL_SUFFIX)
+			set(CMAKE_INSTALL_PREFIX "/usr/local/lyx${LYX_INSTALL_SUFFIX}" CACHE PATH "LyX default install prefix" FORCE)
+		else()
+			set(CMAKE_INSTALL_PREFIX "/usr/local/${LYX_PROJECT}" CACHE PATH "LyX default install prefix" FORCE)
+		endif()
+	endif()
+	if(WIN32)
+		set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/LYX_INSTALLED CACHE PATH "LyX default install prefix" FORCE)
+	endif()
 endif()
 
 if (WIN32)
-  set(LYX_DATA_SUBDIR "Resources/" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
+	set(LYX_DATA_SUBDIR "Resources/" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
 else()
-  set(LYX_DATA_SUBDIR "" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
+	set(LYX_DATA_SUBDIR "" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
 endif()
 
 set(LYX_ABS_INSTALLED_DATADIR "${CMAKE_INSTALL_PREFIX}")
@@ -229,24 +229,24 @@ else()
 endif()
 
 if(NOT MSVC)
-        if(NOT LYX_QUIET)
-                set(CMAKE_VERBOSE_MAKEFILE ON)
+	if(NOT LYX_QUIET)
+		set(CMAKE_VERBOSE_MAKEFILE ON)
 	endif()
 	set(LYX_CXX_FLAGS -Wall)
-        if(LYX_STDLIB_DEBUG)
+	if(LYX_STDLIB_DEBUG)
 		set(LYX_CXX_FLAGS "${LYX_CXX_FLAGS} -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC")
 	endif()
-        if(LYX_CONCEPT_CHECKS)
+	if(LYX_CONCEPT_CHECKS)
 		set(LYX_CXX_FLAGS "${LYX_CXX_FLAGS} -D_GLIBCPP_CONCEPT_CHECKS")
 	endif()
-	set(CMAKE_CXX_FLAGS          "${LYX_CXX_FLAGS} -fno-strict-aliasing " CACHE TYPE STRING FORCE)
-	set(CMAKE_CXX_FLAGS_DEBUG    "${LYX_CXX_FLAGS} -fno-strict-aliasing -O0 -g -D_DEBUG" CACHE TYPE STRING FORCE)
+	set(CMAKE_CXX_FLAGS       "${LYX_CXX_FLAGS} -fno-strict-aliasing " CACHE TYPE STRING FORCE)
+	set(CMAKE_CXX_FLAGS_DEBUG "${LYX_CXX_FLAGS} -fno-strict-aliasing -O0 -g -D_DEBUG" CACHE TYPE STRING FORCE)
 	if(MINGW)
-		set(CMAKE_CXX_FLAGS_RELEASE  "${LYX_CXX_FLAGS} -O2 -DNDEBUG" CACHE TYPE STRING FORCE)
+		set(CMAKE_CXX_FLAGS_RELEASE "${LYX_CXX_FLAGS} -O2 -DNDEBUG" CACHE TYPE STRING FORCE)
 	else()
-		set(CMAKE_CXX_FLAGS_RELEASE  "${LYX_CXX_FLAGS} -O3 -DNDEBUG" CACHE TYPE STRING FORCE)
+		set(CMAKE_CXX_FLAGS_RELEASE "${LYX_CXX_FLAGS} -O3 -DNDEBUG" CACHE TYPE STRING FORCE)
 	endif()
-	set(CMAKE_CXX_FLAGS_PROFILE  "${CMAKE_CXX_FLAGS_RELEASE} -pg" CACHE TYPE STRING FORCE)
+	set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_RELEASE} -pg" CACHE TYPE STRING FORCE)
 endif()
 
 
@@ -328,14 +328,14 @@ endif()
 
 message(STATUS "")
 foreach(_v PACKAGE PACKAGE_VERSION
-    PROGRAM_SUFFIX LYX_DATE LYX_DIR_VER LYX_USERDIR_VER
-    LYX_ABS_TOP_SRCDIR
-    LYX_ABS_INSTALLED_DATADIR LYX_ABS_INSTALLED_LOCALEDIR LYX_INSTALL_SUFFIX)
-  if(NOT DEFINED ${_v})
-    message(FATAL_ERROR "${_v} not defined")
-  endif()
-  string(SUBSTRING "${_v}                            " 0 28 _v1)
-  message(STATUS "----- ${_v1}: ${${_v}}")
+	PROGRAM_SUFFIX LYX_DATE LYX_DIR_VER LYX_USERDIR_VER
+	LYX_ABS_TOP_SRCDIR
+	LYX_ABS_INSTALLED_DATADIR LYX_ABS_INSTALLED_LOCALEDIR LYX_INSTALL_SUFFIX)
+	if(NOT DEFINED ${_v})
+		message(FATAL_ERROR "${_v} not defined")
+	endif()
+	string(SUBSTRING "${_v}                            " 0 28 _v1)
+	message(STATUS "----- ${_v1}: ${${_v}}")
 endforeach(_v)
 message(STATUS "")
 
@@ -345,7 +345,6 @@ message(STATUS "")
 include(PCHSupport_26)
 
 if(NOT LYX_DISABLE_PCH)
-
 	configure_file(${CMAKE_SOURCE_DIR}/pcheaders.h ${CMAKE_BINARY_DIR}/pcheaders.h)
 	configure_file(${CMAKE_SOURCE_DIR}/config.cpp.cmake ${CMAKE_BINARY_DIR}/config_pch.cpp)
 	add_definitions(-DLYX_ENABLE_PCH)
@@ -368,7 +367,7 @@ if(NOT LYX_DISABLE_PCH)
 		macro(lyx_add_msvc_pch name_)
 		endmacro()
 		macro(lyx_add_gcc_pch name_)
-                        add_definitions(-DLYX_PCH_STL -DLYX_PCH_BOOST -DLYX_PCH_QT4)
+			add_definitions(-DLYX_PCH_STL -DLYX_PCH_BOOST -DLYX_PCH_QT4)
 			ADD_PRECOMPILED_HEADER(${name_} ${CMAKE_BINARY_DIR}/config_pch.cpp ${CMAKE_BINARY_DIR}/config.h.gch)
 		endmacro()
 	endif()
@@ -382,13 +381,13 @@ endif()
 
 if(MSVC)
 	if(LYX_VLD)
-	   set(LYX_LEAK_DETECTION 1 CACHE TYPE STRING FORCE)
-	   set(LIBRARY_OUTPUT_PATH  ${EXECUTABLE_OUTPUT_PATH})
-	   set(LYX_VLD_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../Win32/vld)
-	   include(${LYX_VLD_PATH}/tools/cmake/vld.cmake)
+		set(LYX_LEAK_DETECTION 1 CACHE TYPE STRING FORCE)
+		set(LIBRARY_OUTPUT_PATH  ${EXECUTABLE_OUTPUT_PATH})
+		set(LYX_VLD_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../Win32/vld)
+		include(${LYX_VLD_PATH}/tools/cmake/vld.cmake)
 	endif()
 
-        # TODO options
+	# TODO options
 	if(LYX_WALL)
 		# Use the highest warning level
 		set(CMAKE_CXX_WARNING_LEVEL 4 CACHE TYPE STRING FORCE)
@@ -410,12 +409,9 @@ if(MSVC)
 		# add here warnings which should be disabled /wdXXXX
 		set(MSVC_W_DISABLE "/wd4288 /wd4355 /wd4800 /wd4996 /wd4311 /wd4312 /wd4505 /wd4267 /wd4512 /wd4245 /wd4127 /wd4180 /wd4231")
 
-		set(CMAKE_CXX_FLAGS_DEBUG
-			"${CMAKE_CXX_FLAGS_DEBUG} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
-		set(CMAKE_CXX_FLAGS_RELEASE
-			"${CMAKE_CXX_FLAGS_RELEASE} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
-		set(CMAKE_CXX_FLAGS_MINSIZEREL
-			"${CMAKE_CXX_FLAGS_MINSIZEREL} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
+		set(CMAKE_CXX_FLAGS_DEBUG      "${CMAKE_CXX_FLAGS_DEBUG} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
+		set(CMAKE_CXX_FLAGS_RELEASE    "${CMAKE_CXX_FLAGS_RELEASE} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
+		set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 
 	else()
 		set(CMAKE_CXX_WARNING_LEVEL 3 CACHE TYPE STRING FORCE)
@@ -425,35 +421,28 @@ if(MSVC)
 		# add here warnings which should be disabled /wdXXXX
 		set(MSVC_W_DISABLE "/wd4288 /wd4355 /wd4800 /wd4996 /wd4267 /wd4180 /wd4231")
 
-		set(CMAKE_CXX_FLAGS_DEBUG
-			"${CMAKE_CXX_FLAGS_DEBUG} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
-		set(CMAKE_CXX_FLAGS_RELEASE
-			"${CMAKE_CXX_FLAGS_RELEASE} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
-		set(CMAKE_CXX_FLAGS_MINSIZEREL
-			"${CMAKE_CXX_FLAGS_MINSIZEREL} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
+		set(CMAKE_CXX_FLAGS_DEBUG      "${CMAKE_CXX_FLAGS_DEBUG} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
+		set(CMAKE_CXX_FLAGS_RELEASE    "${CMAKE_CXX_FLAGS_RELEASE} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
+		set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 
 	endif()
-	set(CMAKE_CXX_FLAGS_DEBUG
-		"${CMAKE_CXX_FLAGS_DEBUG} /Zc:wchar_t-")
-	set(CMAKE_CXX_FLAGS_RELEASE
-		"${CMAKE_CXX_FLAGS_RELEASE} /Zc:wchar_t-")
-	set(CMAKE_CXX_FLAGS_MINSIZEREL
-		"${CMAKE_CXX_FLAGS_MINSIZEREL} /Zc:wchar_t-")
+	set(CMAKE_CXX_FLAGS_DEBUG      "${CMAKE_CXX_FLAGS_DEBUG} /Zc:wchar_t-")
+	set(CMAKE_CXX_FLAGS_RELEASE    "${CMAKE_CXX_FLAGS_RELEASE} /Zc:wchar_t-")
+	set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL} /Zc:wchar_t-")
 
 	message(STATUS "----- Warning level      : ${CMAKE_CXX_WARNING_LEVEL}  ${WARNING_LEVEL_MESSAGE}")
 	message(STATUS "----- Warnings as errors : ${MSVC_W_ERROR}")
 	message(STATUS "----- Warnings disabled  : ${MSVC_W_DISABLE}")
 	message(STATUS "")
-
 endif()
 
 
 if(LYX_DEBUG_GLIBC)
-  set(_GLIBCXX_DEBUG 1)
+	set(_GLIBCXX_DEBUG 1)
 endif()
 
 if(LYX_DEBUG_GLIBC_PEDANTIC)
-  set(_GLIBCXX_DEBUG_PEDANTIC 1)
+	set(_GLIBCXX_DEBUG_PEDANTIC 1)
 endif()
 
 # compiler tests, config.h generation
@@ -483,39 +472,39 @@ if(LYX_INSTALL)
 endif()
 
 
-SET(CPACK_PACKAGE_VERSION_MAJOR "${LYX_MAJOR_VERSION}")
-SET(CPACK_PACKAGE_VERSION_MINOR "${LYX_MINOR_VERSION}")
+set(CPACK_PACKAGE_VERSION_MAJOR "${LYX_MAJOR_VERSION}")
+set(CPACK_PACKAGE_VERSION_MINOR "${LYX_MINOR_VERSION}")
 FILE(STRINGS "${TOP_SRC_DIR}/development/cmake/LyX_summary.txt" CPACK_PACKAGE_DESCRIPTION_SUMMARY)
 
-SET(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${LYX_INSTALL_SUFFIX}")
+set(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${LYX_INSTALL_SUFFIX}")
 #
 # needed by rpm
-SET(CPACK_SET_DESTDIR "ON")
+set(CPACK_set_DESTDIR "ON")
 FILE(READ "${TOP_SRC_DIR}/development/cmake/LyX_license.txt" CPACK_RPM_PACKAGE_LICENSE)
-SET(CPACK_RPM_PACKAGE_GROUP "Applications/Publishing")
-SET(CPACK_RPM_PACKAGE_VENDOR "The LyX team")
+set(CPACK_RPM_PACKAGE_GROUP "Applications/Publishing")
+set(CPACK_RPM_PACKAGE_VENDOR "The LyX team")
 #
 # the next ones are needed by deb
-SET(CPACK_PACKAGE_CONTACT "${PACKAGE_BUGREPORT}")
-SET(CPACK_SOURCE_PACKAGE_FILE_NAME "${LYX_PROJECT}-${LYX_INSTALL_SUFFIX}")
+set(CPACK_PACKAGE_CONTACT "${PACKAGE_BUGREPORT}")
+set(CPACK_SOURCE_PACKAGE_FILE_NAME "${LYX_PROJECT}-${LYX_INSTALL_SUFFIX}")
 
 # This is experimental, valid on _my_ system (Kornel)
-SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libqtgui4 (>= 4.4.3-0)")
-IF(ASPELL_FOUND)
-  SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libaspell15 (>= 0.60.6-1),${CPACK_DEBIAN_PACKAGE_DEPENDS}")
-ENDIF()
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libqtgui4 (>= 4.4.3-0)")
+if(ASPELL_FOUND)
+	set(CPACK_DEBIAN_PACKAGE_DEPENDS "libaspell15 (>= 0.60.6-1),${CPACK_DEBIAN_PACKAGE_DEPENDS}")
+endif()
 if(ENCHANT_FOUND)
-  SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libenchant1c2a (>= 1.6.0-0),${CPACK_DEBIAN_PACKAGE_DEPENDS}")
-ENDIF()
-IF(LYX_USE_EXTERNAL_BOOST)
-  IF(Boost_FOUND)
-    SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libboost-regex1.38.0 (>= 1.38.0-6),libboost-signals1.38.0 (>= 1.38.0-6),${CPACK_DEBIAN_PACKAGE_DEPENDS}")
-  ENDIF()
-ENDIF()
+	set(CPACK_DEBIAN_PACKAGE_DEPENDS "libenchant1c2a (>= 1.6.0-0),${CPACK_DEBIAN_PACKAGE_DEPENDS}")
+endif()
+if(LYX_USE_EXTERNAL_BOOST)
+	if(Boost_FOUND)
+		set(CPACK_DEBIAN_PACKAGE_DEPENDS "libboost-regex1.38.0 (>= 1.38.0-6),libboost-signals1.38.0 (>= 1.38.0-6),${CPACK_DEBIAN_PACKAGE_DEPENDS}")
+	endif()
+endif()
 #
 # for the next ones, cpack insists on data with values in some file
-SET(CPACK_PACKAGE_DESCRIPTION_FILE "${TOP_SRC_DIR}/development/cmake/LyX_description.txt")
-SET(CPACK_RESOURCE_FILE_LICENSE "${TOP_SRC_DIR}/development/cmake/LyX_license.txt")
+set(CPACK_PACKAGE_DESCRIPTION_FILE "${TOP_SRC_DIR}/development/cmake/LyX_description.txt")
+set(CPACK_RESOURCE_FILE_LICENSE "${TOP_SRC_DIR}/development/cmake/LyX_license.txt")
 
 # Find the revision number and use it as the release in rpm-package-build.
 # This way we may omit the otherwise needed "--force" parameter when
@@ -523,11 +512,11 @@ SET(CPACK_RESOURCE_FILE_LICENSE "${TOP_SRC_DIR}/development/cmake/LyX_license.tx
 FIND_PROGRAM(LYX_SVNVERSION svnversion)
 #message(STATUS "svnversion = ${LYX_SVNVERSION}")
 if(NOT ${LYX_SVNVERSION} MATCHES "-NOTFOUND")
-  EXECUTE_PROCESS(COMMAND ${LYX_SVNVERSION} WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE CPACK_RPM_PACKAGE_RELEASE OUTPUT_STRIP_TRAILING_WHITESPACE)
-  # We use this value also to set the package-patch-value
-  if(CPACK_RPM_PACKAGE_RELEASE MATCHES "^\([0-9]+\)")
-    set(CPACK_PACKAGE_VERSION_PATCH ${CMAKE_MATCH_1})
-  endif()
+	EXECUTE_PROCESS(COMMAND ${LYX_SVNVERSION} WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE CPACK_RPM_PACKAGE_RELEASE OUTPUT_STRIP_TRAILING_WHITESPACE)
+	# We use this value also to set the package-patch-value
+	if(CPACK_RPM_PACKAGE_RELEASE MATCHES "^\([0-9]+\)")
+		set(CPACK_PACKAGE_VERSION_PATCH ${CMAKE_MATCH_1})
+	endif()
 endif()
 
 # we do not have a readme or welcome data,
