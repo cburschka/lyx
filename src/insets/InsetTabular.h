@@ -38,19 +38,84 @@ namespace lyx {
 class Buffer;
 class BufferView;
 class CompletionList;
+class Cursor;
 class CursorSlice;
-class InsetTableCell;
 class FuncStatus;
 class Lexer;
+class OutputParams;
 class Paragraph;
 class XHTMLStream;
 
-namespace frontend { class Painter; }
 
+///
+class InsetTableCell : public InsetText
+{
+public:
+	///
+	InsetTableCell(Buffer * buf);
+	///
+	InsetCode lyxCode() const { return CELL_CODE; }
+	///
+	Inset * clone() { return new InsetTableCell(*this); }
+	///
+	bool getStatus(Cursor & cur, FuncRequest const & cmd,
+		FuncStatus & status) const;
+	///
+	void toggleFixedWidth(bool fw) { isFixedWidth = fw; }
+	///
+	void setContentAlignment(LyXAlignment al) {contentAlign = al; }
+	/// writes the contents of the cell as a string, optionally
+	/// descending into insets
+	docstring asString(bool intoInsets = true);
+	///
+	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+private:
+	/// unimplemented
+	InsetTableCell();
+	/// unimplemented
+	void operator=(InsetTableCell const &);
+	// FIXME
+	// This boolean is supposed to track whether the cell has had its
+	// width explicitly set. We need to know this to determine whether
+	// layout changes and paragraph customization are allowed---that is,
+	// we need it in forcePlainLayout() and allowParagraphCustomization(). 
+	// Unfortunately, that information is not readily available in 
+	// InsetTableCell. In the case of multicolumn cells, it is present
+	// in CellData, and so would be available here if CellData were to
+	// become a member of InsetTableCell. But in the other case, it isn't
+	// even available there, but is held in Tabular::ColumnData.
+	// So, the present solution uses this boolean to track the information
+	// we need to track, and tries to keep it updated. This is not ideal,
+	// but the other solutions are no better. These are:
+	// (i)  Keep a pointer in InsetTableCell to the table;
+	// (ii) Find the table by iterating over the Buffer's insets.
+	// Solution (i) raises the problem of updating the pointer when an 
+	// InsetTableCell is copied, and we'd therefore need a copy constructor
+	// in InsetTabular and then in Tabular, which seems messy, given how 
+	// complicated those classes are. Solution (ii) involves a lot of 
+	// iterating, since this information is needed quite often, and so may
+	// be quite slow.
+	// So, well, if someone can do better, please do!
+	// --rgh
+	///
+	bool isFixedWidth;
+	// FIXME: Here the thoughts from the comment above also apply.
+	///
+	LyXAlignment contentAlign;
+	/// should paragraph indendation be omitted in any case?
+	bool neverIndent() const { return true; }
+	///
+	LyXAlignment contentAlignment() const { return contentAlign; }
+	///
+	virtual bool usePlainLayout() const { return true; }
+	/// 
+	virtual bool forcePlainLayout(idx_type = 0) const;
+	/// 
+	virtual bool allowParagraphCustomization(idx_type = 0) const;
+	/// Is the width forced to some value?
+	bool hasFixedWidth() const { return isFixedWidth; }
+};
 
-class InsetTabular;
-class Cursor;
-class OutputParams;
 
 //
 // A helper struct for tables
@@ -673,76 +738,6 @@ private:
 	Buffer * buffer_;
 
 }; // Tabular
-
-
-///
-class InsetTableCell : public InsetText
-{
-public:
-	///
-	InsetTableCell(Buffer * buf);
-	///
-	InsetCode lyxCode() const { return CELL_CODE; }
-	///
-	Inset * clone() { return new InsetTableCell(*this); }
-	///
-	bool getStatus(Cursor & cur, FuncRequest const & cmd,
-		FuncStatus & status) const;
-	///
-	void toggleFixedWidth(bool fw) { isFixedWidth = fw; }
-	///
-	void setContentAlignment(LyXAlignment al) {contentAlign = al; }
-	/// writes the contents of the cell as a string, optionally
-	/// descending into insets
-	docstring asString(bool intoInsets = true);
-	///
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
-private:
-	/// unimplemented
-	InsetTableCell();
-	/// unimplemented
-	void operator=(InsetTableCell const &);
-	// FIXME
-	// This boolean is supposed to track whether the cell has had its
-	// width explicitly set. We need to know this to determine whether
-	// layout changes and paragraph customization are allowed---that is,
-	// we need it in forcePlainLayout() and allowParagraphCustomization(). 
-	// Unfortunately, that information is not readily available in 
-	// InsetTableCell. In the case of multicolumn cells, it is present
-	// in CellData, and so would be available here if CellData were to
-	// become a member of InsetTableCell. But in the other case, it isn't
-	// even available there, but is held in Tabular::ColumnData.
-	// So, the present solution uses this boolean to track the information
-	// we need to track, and tries to keep it updated. This is not ideal,
-	// but the other solutions are no better. These are:
-	// (i)  Keep a pointer in InsetTableCell to the table;
-	// (ii) Find the table by iterating over the Buffer's insets.
-	// Solution (i) raises the problem of updating the pointer when an 
-	// InsetTableCell is copied, and we'd therefore need a copy constructor
-	// in InsetTabular and then in Tabular, which seems messy, given how 
-	// complicated those classes are. Solution (ii) involves a lot of 
-	// iterating, since this information is needed quite often, and so may
-	// be quite slow.
-	// So, well, if someone can do better, please do!
-	// --rgh
-	///
-	bool isFixedWidth;
-	// FIXME: Here the thoughts from the comment above also apply.
-	///
-	LyXAlignment contentAlign;
-	/// should paragraph indendation be omitted in any case?
-	bool neverIndent() const { return true; }
-	///
-	LyXAlignment contentAlignment() const { return contentAlign; }
-	///
-	virtual bool usePlainLayout() const { return true; }
-	/// 
-	virtual bool forcePlainLayout(idx_type = 0) const;
-	/// 
-	virtual bool allowParagraphCustomization(idx_type = 0) const;
-	/// Is the width forced to some value?
-	bool hasFixedWidth() const { return isFixedWidth; }
-};
 
 
 class InsetTabular : public Inset
