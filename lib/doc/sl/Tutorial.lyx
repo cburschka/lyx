@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -1184,15 +1184,8 @@ Tipkanje, pregledovanje in tiskanje
 \begin_layout Itemize
 Z ukazom 
 \family sans
-\bar under
-D
-\bar default
-atoteka\SpecialChar \menuseparator
-
-\bar under
-N
-\bar default
-ova
+Datoteka\SpecialChar \menuseparator
+Nova
 \family default
  odprite novo datoteko.
  
@@ -1221,38 +1214,24 @@ No, prav.
 \begin_layout Itemize
 Posnemite svoj spis z ukazom 
 \family sans
-\bar under
-D
-\bar default
-atoteka\SpecialChar \menuseparator
+Datoteka\SpecialChar \menuseparator
 Shrani
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-k
-\bar default
-ot\SpecialChar \@.
+kot\SpecialChar \@.
 
 \end_layout
 
 \begin_layout Itemize
 Z ukazom 
 \family sans
-\bar under
-D
-\bar default
-atoteka\SpecialChar \menuseparator
+Datoteka\SpecialChar \menuseparator
 Glej
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-d
-\bar default
-vi
+dvi
 \family default
  poženite LaTeX, da boste ustvarili datoteko 
 \family typewriter
@@ -1285,11 +1264,7 @@ xdvi
  Potem lahko uporabljate ukaz 
 \family sans
 Datoteka\SpecialChar \menuseparator
-Os
-\bar under
-v
-\bar default
-eži
+Osveži
 \begin_inset space ~
 \end_inset
 
@@ -1310,15 +1285,8 @@ xdvi
 \begin_layout Itemize
 Spis natisnite z ukazom 
 \family sans
-\bar under
-D
-\bar default
-atoteka
-\bar under
-\SpecialChar \menuseparator
-T
-\bar default
-iskaj
+Datoteka\SpecialChar \menuseparator
+Tiskaj
 \family default
  in izbiro 
 \family sans
@@ -1373,11 +1341,7 @@ Učbenik
  in videli boste, da ima večina preprostih ukazov (npr.
  
 \family sans
-Izhod, P
-\bar under
-r
-\bar default
-ilepi, Tiskaj)
+Izhod, Prilepi, Tiskaj)
 \family default
  pričakovano ime, da so v menuju, v katerem bi jih pričakovali, in da tudi
  delujejo tako, kot bi pričakovali.
@@ -1402,19 +1366,13 @@ neskončno razveljavitev
  urejevalne seje.
  To storite tako, da venomer izbirate 
 \family sans
-\bar under
-U
-\bar default
-redi\SpecialChar \menuseparator
+Uredi\SpecialChar \menuseparator
 Razveljavi
 \family default
 .
  Če razveljavite preveč, izberite 
 \family sans
-\bar under
-U
-\bar default
-redi\SpecialChar \menuseparator
+Uredi\SpecialChar \menuseparator
 Ponovi
 \family default
  in vzpostavili boste prejšnje stanje.
@@ -1432,38 +1390,18 @@ Ponovi
 \begin_layout Description
 Izreži/Prilepi/Prepiši Uporabite 
 \family sans
-Ur
-\bar under
-e
-\bar default
-di\SpecialChar \menuseparator
+Uredi\SpecialChar \menuseparator
 Izreži
 \family default
 , 
 \family sans
-Ur
-\bar under
-e
-\bar default
-di\SpecialChar \menuseparator
-P
-\bar under
-r
-\bar default
-ilepi
+Uredi\SpecialChar \menuseparator
+Prilepi
 \family default
 , in 
 \family sans
-Ur
-\bar under
-e
-\bar default
-di\SpecialChar \menuseparator
-K
-\bar under
-o
-\bar default
-piraj
+Uredi\SpecialChar \menuseparator
+Kopiraj
 \family default
  za izrezovanje, lepljenje in kopiranje.
  Ali pa samodejno prilepite izbrano besedilo s 
@@ -1476,11 +1414,7 @@ srednjim gumbom
 \begin_layout Description
 Poišči/Nadomesti Uporabite 
 \family sans
-Ur
-\bar under
-e
-\bar default
-di\SpecialChar \menuseparator
+Uredi\SpecialChar \menuseparator
 Poišči
 \begin_inset space ~
 \end_inset
@@ -1529,11 +1463,7 @@ Videz
  Malo je dvižnih oken, kot je 
 \family sans
 Datoteka\SpecialChar \menuseparator
-
-\bar under
-O
-\bar default
-dpri
+Odpri
 \family default
 , ki ne dovoljujejo vnašanja v glavno okno LyXa, dokler dvižnega okna zares
  ne zaprete.
@@ -2195,15 +2125,8 @@ examples/
 ,.
  Vanj pridete z izbiro 
 \family sans
-\bar under
-D
-\bar default
-atoteka
-\bar under
-\SpecialChar \menuseparator
-O
-\bar default
-dpri
+Datoteka\SpecialChar \menuseparator
+Odpri
 \family default
  in klikom gumba 
 \family sans
@@ -2212,19 +2135,12 @@ Primeri
 .
  Odprite spis in uporabite 
 \family sans
-\bar under
-D
-\bar default
-atoteka\SpecialChar \menuseparator
+Datoteka\SpecialChar \menuseparator
 Shrani
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-k
-\bar default
-ot
+kot
 \family default
  za izdelavo izvoda te datoteke v vašem lastnem imeniku; v njem jo boste
  lahko obdelovali.
@@ -2960,10 +2876,7 @@ Letter
 \SpecialChar \@.
  Eden od načinov za pisanje pisma je, da odprete 
 \family sans
-\bar under
-N
-\bar default
-ovo
+Novo
 \family default
  datoteko in z menuja 
 \family sans
@@ -2972,10 +2885,7 @@ Spis
 \family default
  izberete 
 \family sans
-\bar under
-R
-\bar default
-azred
+Razred
 \family default
  
 \family sans
@@ -2997,15 +2907,8 @@ vzorec
 \begin_layout Standard
 Odprite novo datoteko z izbiro 
 \family sans
-\bar under
-D
-\bar default
-atoteka\SpecialChar \menuseparator
-No
-\bar under
-v
-\bar default
-a
+Datoteka\SpecialChar \menuseparator
+Nova
 \begin_inset space ~
 \end_inset
 
@@ -3048,10 +2951,6 @@ Address
 \family default
 , ki jih v večini preostalih razredov spisov ni.
  Druga, kot 
-\family sans
-Quote
-\family default
- in 
 \family sans
 Description
 \family default
@@ -3099,7 +2998,7 @@ vaje
 \begin_inset Quotes grd
 \end_inset
 
-; le kakšno pismo napišite
+; le kakšno pismo napišite!
 \begin_inset Foot
 status collapsed
 
@@ -3126,7 +3025,7 @@ Okolje
 
 \end_inset
 
-!
+
 \end_layout
 
 \begin_layout Section
@@ -3228,10 +3127,7 @@ O tem spisu
 .
  Kliknite konec vrstice z naslovom razdelka in izberite 
 \family sans
-\bar under
-V
-\bar default
-stavi\SpecialChar \menuseparator
+Vstavi\SpecialChar \menuseparator
 Oznaka
 \family default
 .
@@ -3317,15 +3213,8 @@ razdelek
 
  – izberite 
 \family sans
-\bar under
-V
-\bar default
-stavi\SpecialChar \menuseparator
-Navzk
-\bar under
-r
-\bar default
-ižno
+Vstavi\SpecialChar \menuseparator
+Navzkrižno
 \begin_inset space ~
 \end_inset
 
@@ -3406,15 +3295,8 @@ referenco
  kot hiperpovezava; če ga kliknete, prestavite kazalec na oznako sklica.
  Uporabite 
 \family sans
-\bar under
-D
-\bar default
-atoteka\SpecialChar \menuseparator
-Os
-\bar under
-v
-\bar default
-eži
+Datoteka\SpecialChar \menuseparator
+Osveži
 \begin_inset space ~
 \end_inset
 
@@ -3491,11 +3373,8 @@ referenco
 \family sans
 Prepiši
 \family default
-) nekaj strani besedila iz 
-\emph on
-Uporabniškega vodnika
-\emph default
- na odložišče in ga prilepite (s 
+) nekaj strani besedila iz Uporabniškega vodnika na odložišče in ga prilepite
+ (s 
 \family sans
 Prilepi
 \family default
@@ -3703,10 +3582,7 @@ Izreži
 \family default
  in 
 \family sans
-\bar under
-P
-\bar default
-rilepi
+Prilepi
 \family default
 .
  Poleg tega lahko spremenite navadno besedilo v opombo v nogi tako, da ga
@@ -3787,10 +3663,7 @@ nogi
 
  ali 
 \family sans
-\bar under
-V
-\bar default
-stavi\SpecialChar \menuseparator
+Vstavi\SpecialChar \menuseparator
 Opomba
 \begin_inset space ~
 \end_inset
@@ -4048,11 +3921,7 @@ Ne parajte si živcev s klikanjem ali brisanjem pred številko razdelka.
 
 \end_inset
 
- in izberite 
-\bar under
-V
-\bar default
-stavi\SpecialChar \menuseparator
+ in izberite Vstavi\SpecialChar \menuseparator
 Seznami
 \begin_inset space ~
 \end_inset
@@ -4107,15 +3976,8 @@ Vsebinsko kazalo se ne prikaže v zaslonski različici spisa, saj ga tako
  Vendar lahko prikažete kazalo v posebnem oknu tako, da kliknete vstavek
  vsebinskega kazala ali z izbiro 
 \family sans
-\bar under
-U
-\bar default
-redi\SpecialChar \menuseparator
-K
-\bar under
-a
-\bar default
-zalo
+Uredi\SpecialChar \menuseparator
+Kazalo
 \begin_inset space ~
 \end_inset
 
@@ -4391,10 +4253,7 @@ Backspace
  Besedilo izberite bodisi s puščicami bodisi z miško.
  V matematičnem načinu deluje 
 \family sans
-\bar under
-U
-\bar default
-redi\SpecialChar \menuseparator
+Uredi\SpecialChar \menuseparator
 Razveljavi
 \family default
 , pa tudi izrezovanje in lepljenje.
@@ -4637,10 +4496,7 @@ Eksponenti in indeksi
 \begin_layout Standard
 Eksponent lahko vnesete na menuju 
 \family sans
-\bar under
-M
-\bar default
-atematika
+Matematika
 \family default
 , vendar je preprosteje pritisniti znak za streho 
 \begin_inset Quotes gld
@@ -4717,10 +4573,7 @@ plošča
  Marsikatero od teh funkcij lahko izvedete s tipkovnico ali prek menuja
  
 \family sans
-\bar under
-M
-\bar default
-atematika
+Matematika
 \family default
 .
  Vendar se bomo osredotočili na uporabo 
@@ -5687,15 +5540,8 @@ Referenčnem priročniku
 LyX ima podporo WYSIWYG za tabele.
  Uporabite 
 \family sans
-\bar under
-V
-\bar default
-stavi\SpecialChar \menuseparator
-Ta
-\bar under
-b
-\bar default
-ela
+Vstavi\SpecialChar \menuseparator
+Tabela
 \family default
  za tabelo.
  Kliknite tabelo z 
@@ -5717,10 +5563,7 @@ tabele
 LyX podpira tudi vstavljanje slik v postscriptu (ali surovem LaTeXu) v spise.
  (Uganili ste: 
 \family sans
-\bar under
-V
-\bar default
-stavi\SpecialChar \menuseparator
+Vstavi\SpecialChar \menuseparator
 Slika
 \family default
 .
@@ -5743,10 +5586,7 @@ LyX je zelo nastavljiv.
  izhoda.
  Več o tem najdete v 
 \family sans
-\bar under
-P
-\bar default
-omoč\SpecialChar \menuseparator
+Pomoč\SpecialChar \menuseparator
 Prilagoditev
 \family default
 .
@@ -5777,10 +5617,7 @@ reference "sub:Uvoz-spisov-v"
 \begin_layout Itemize
 Pravopisne napake v spisu preverite z 
 \family sans
-\bar under
-U
-\bar default
-redi\SpecialChar \menuseparator
+Uredi\SpecialChar \menuseparator
 Črkovalnik
 \family default
 \SpecialChar \@.
@@ -5978,20 +5815,9 @@ name "sub:Uvoz-spisov-v"
 \lang english
 You can import a LaTeX file into LyX by using the 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-mport\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTeX
+File\SpecialChar \menuseparator
+Import\SpecialChar \menuseparator
+LaTeX
 \family default
  command in LyX.
  This will call 
@@ -6051,15 +5877,8 @@ Morda boste želeli preoblikovati spis v LyXu v datoteko za LaTeX.
  Z LyXom je to zelo preprosto.
  Izberite 
 \family sans
-\bar under
-D
-\bar default
-atoteka\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-zvoz\SpecialChar \menuseparator
+Datoteka\SpecialChar \menuseparator
+Izvoz\SpecialChar \menuseparator
 kot
 \begin_inset space ~
 \end_inset
@@ -6240,10 +6059,7 @@ bibliographystyle{}
 Ko ste to storili, lahko uporabljate sklice na katerikoli zajeti vir z ukazom
  
 \family sans
-\bar under
-V
-\bar default
-stavi\SpecialChar \menuseparator
+Vstavi\SpecialChar \menuseparator
 Citiranje
 \family default
  (glej razdelek 
@@ -6305,10 +6121,7 @@ Učbeniku
  Vse o drugih posebnih znakih, skupaj s tropičjem, prisiljenim prelomom
  vrstice in mestom delitve besede, najdete v menuju 
 \family sans
-\bar under
-V
-\bar default
-stavi\SpecialChar \menuseparator
+Vstavi\SpecialChar \menuseparator
 Posebni
 \begin_inset space ~
 \end_inset
