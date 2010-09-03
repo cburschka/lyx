@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 398
+\lyxformat 399
 \begin_document
 \begin_header
 \textclass scrbook
@@ -107,6 +107,7 @@ End
 \use_amsmath 0
 \use_esint 0
 \use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
@@ -4660,7 +4661,7 @@ class='math'
 \end_layout
 
 \begin_layout Standard
-ne of these output methods must be selected under 
+One of these output methods must be selected under 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
