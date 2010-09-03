@@ -583,12 +583,15 @@ void LocalLayout::validate() {
 		toqstr("<p style=\"color: #c00000; font-weight: bold; \">") 
 		  + invalid + toqstr("</p>");
 
-	string const layout = fromqstr(locallayoutTE->document()->toPlainText());
-	if (layout.empty())
+	string const layout = 
+		fromqstr(locallayoutTE->document()->toPlainText().trimmed());
+	if (layout.empty()) {
 		is_valid_ = true;
-	else
+		infoLB->setText("");
+	} else {
 		is_valid_ = TextClass::validate(layout);
-	infoLB->setText(is_valid_ ? vtext : ivtext);
+		infoLB->setText(is_valid_ ? vtext : ivtext);
+	}
 	validatePB->setEnabled(false);
 }
 
