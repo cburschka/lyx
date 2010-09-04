@@ -490,9 +490,6 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 			case LABEL_CODE:
 				inset.reset(new InsetLabel(buf, inscmd));
 				break;
-			case LINE_CODE:
-				inset.reset(new InsetLine(buf, inscmd));
-				break;
 			case NOMENCL_CODE:
 				inset.reset(new InsetNomencl(buf, inscmd));
 				break;
