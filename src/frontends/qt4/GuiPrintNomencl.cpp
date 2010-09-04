@@ -17,7 +17,6 @@
 #include "qt_helpers.h"
 #include "Validator.h"
 
-#include "Spacing.h"
 #include "FuncRequest.h"
 
 #include "insets/InsetNomencl.h"
