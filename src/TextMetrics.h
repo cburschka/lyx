@@ -99,7 +99,7 @@ public:
 	int descent() const { return dim_.des; }
 	/// current text width.
 	int width() const { return dim_.wid; }
-	/// current text heigth.
+	/// current text height.
 	int height() const { return dim_.height(); }
 
 	///
