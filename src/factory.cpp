@@ -245,12 +245,6 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 				return new InsetERT(buf,
 					InsetERT::string2params(to_utf8(cmd.argument())));
 			}
-				
-			case LISTINGS_CODE: {
-				InsetListingsParams par;
-				InsetListings::string2params(to_utf8(cmd.argument()), par);
-				return new InsetListings(buf, par);
-			}
 			
 			case EXTERNAL_CODE: {
 				InsetExternalParams iep;
@@ -292,16 +286,22 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 				return new InsetPrintIndex(buf, icp);
 			}
 			
-			case NOMENCL_CODE: {
-				InsetCommandParams icp(code);
-				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
-				return new InsetNomencl(buf, icp);
-			}
-			
 			case LABEL_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
 				return new InsetLabel(buf, icp);
+			}
+			
+			case LISTINGS_CODE: {
+				InsetListingsParams par;
+				InsetListings::string2params(to_utf8(cmd.argument()), par);
+				return new InsetListings(buf, par);
+			}
+			
+			case NOMENCL_CODE: {
+				InsetCommandParams icp(code);
+				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
+				return new InsetNomencl(buf, icp);
 			}
 			
 			case REF_CODE: {
@@ -489,6 +489,9 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 				break;
 			case LABEL_CODE:
 				inset.reset(new InsetLabel(buf, inscmd));
+				break;
+			case LINE_CODE:
+				inset.reset(new InsetLine(buf, inscmd));
 				break;
 			case NOMENCL_CODE:
 				inset.reset(new InsetNomencl(buf, inscmd));
