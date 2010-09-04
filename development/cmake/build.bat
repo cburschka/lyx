@@ -55,10 +55,13 @@ echo LyX deps  : "%GNUWIN32_DIR%"
 set PATH=%GNUWIN32_DIR%\bin;%PATH%
 
 
-mkdir "%LYX_BUILD%"
 if not exist %LYX_BUILD% (
-	echo Exiting script.
-	goto :eof
+	echo creating "%LYX_BUILD%"
+	mkdir "%LYX_BUILD%"
+	if not exist %LYX_BUILD% (
+		echo Exiting script.
+		goto :eof
+	)
 )
 cd "%LYX_BUILD%"
 
