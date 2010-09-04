@@ -84,7 +84,7 @@ static NSString * toLanguage(AppleSpeller speller, const char * lang)
 }
 
 
-SpellCheckResult checkAppleSpeller(AppleSpeller speller, const char * word, const char * lang)
+SpellCheckResult AppleSpeller_check(AppleSpeller speller, const char * word, const char * lang)
 {
 	if (!speller->checker || !lang || !word)
 		return SPELL_CHECK_FAILED;
@@ -132,7 +132,7 @@ SpellCheckResult checkAppleSpeller(AppleSpeller speller, const char * word, cons
 }
 
 
-void ignoreAppleSpeller(AppleSpeller speller, const char * word)
+void AppleSpeller_ignore(AppleSpeller speller, const char * word)
 {
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 	NSString * word_ = toString(word);
@@ -144,7 +144,7 @@ void ignoreAppleSpeller(AppleSpeller speller, const char * word)
 }
 
 
-size_t makeSuggestionAppleSpeller(AppleSpeller speller, const char * word, const char * lang)
+size_t AppleSpeller_makeSuggestion(AppleSpeller speller, const char * word, const char * lang)
 {
 	if (!speller->checker || !word || !lang)
 		return 0;
@@ -184,7 +184,7 @@ size_t makeSuggestionAppleSpeller(AppleSpeller speller, const char * word, const
 }
 
 
-const char * getSuggestionAppleSpeller(AppleSpeller speller, size_t pos)
+const char * AppleSpeller_getSuggestion(AppleSpeller speller, size_t pos)
 {
 	const char * result = 0;
 	if (pos < [speller->suggestions count]) {
@@ -194,7 +194,7 @@ const char * getSuggestionAppleSpeller(AppleSpeller speller, size_t pos)
 }
 
 
-void learnAppleSpeller(AppleSpeller speller, const char * word)
+void AppleSpeller_learn(AppleSpeller speller, const char * word)
 {
 #if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1050)
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
@@ -209,7 +209,7 @@ void learnAppleSpeller(AppleSpeller speller, const char * word)
 }
 
 
-void unlearnAppleSpeller(AppleSpeller speller, const char * word)
+void AppleSpeller_unlearn(AppleSpeller speller, const char * word)
 {
 #if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1050)
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
@@ -224,21 +224,21 @@ void unlearnAppleSpeller(AppleSpeller speller, const char * word)
 }
 
 
-int numMisspelledWordsAppleSpeller(AppleSpeller speller)
+int AppleSpeller_numMisspelledWords(AppleSpeller speller)
 {
 	return [speller->misspelled count];
 }
 
 
-void misspelledWordAppleSpeller(AppleSpeller speller, int const position, int * start, int * length)
+void AppleSpeller_misspelledWord(AppleSpeller speller, int index, int * start, int * length)
 {
-	NSRange range = [[speller->misspelled objectAtIndex:position] rangeValue];
+	NSRange range = [[speller->misspelled objectAtIndex:index] rangeValue];
 	*start = range.location;
 	*length = range.length;
 }
 
 
-int hasLanguageAppleSpeller(AppleSpeller speller, const char * lang)
+int AppleSpeller_hasLanguage(AppleSpeller speller, const char * lang)
 {
 	return toLanguage(speller, lang) != nil;
 }

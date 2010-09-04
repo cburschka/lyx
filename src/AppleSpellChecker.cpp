@@ -78,8 +78,12 @@ string AppleSpellChecker::Private::toString(SpellCheckResult status)
 SpellChecker::Result AppleSpellChecker::check(WordLangTuple const & word)
 {
 	string const word_str = to_utf8(word.word());
-	SpellCheckResult result = checkAppleSpeller(d->speller, word_str.c_str(), word.lang()->code().c_str());
-	LYXERR(Debug::GUI, "spellCheck: \"" << word.word() << "\" = " << d->toString(result)) ;
+	SpellCheckResult result =
+		AppleSpeller_check(d->speller,
+			word_str.c_str(), word.lang()->code().c_str());
+	LYXERR(Debug::GUI, "spellCheck: \"" <<
+		   word.word() << "\" = " << d->toString(result) <<
+		   ", lang = " << word.lang()->code()) ;
 	return d->toResult(result);
 }
 
@@ -88,7 +92,7 @@ SpellChecker::Result AppleSpellChecker::check(WordLangTuple const & word)
 void AppleSpellChecker::insert(WordLangTuple const & word)
 {
 	string const word_str = to_utf8(word.word());
-	learnAppleSpeller(d->speller, word_str.c_str());
+	AppleSpeller_learn(d->speller, word_str.c_str());
 	LYXERR(Debug::GUI, "learn word: \"" << word.word() << "\"") ;
 }
 
@@ -97,7 +101,7 @@ void AppleSpellChecker::insert(WordLangTuple const & word)
 void AppleSpellChecker::remove(WordLangTuple const & word)
 {
 	string const word_str = to_utf8(word.word());
-	unlearnAppleSpeller(d->speller, word_str.c_str());
+	AppleSpeller_unlearn(d->speller, word_str.c_str());
 	LYXERR(Debug::GUI, "unlearn word: \"" << word.word() << "\"") ;
 }
 
@@ -106,7 +110,7 @@ void AppleSpellChecker::remove(WordLangTuple const & word)
 void AppleSpellChecker::accept(WordLangTuple const & word)
 {
 	string const word_str = to_utf8(word.word());
-	ignoreAppleSpeller(d->speller, word_str.c_str());
+	AppleSpeller_ignore(d->speller, word_str.c_str());
 }
 
 
@@ -115,9 +119,9 @@ void AppleSpellChecker::suggest(WordLangTuple const & wl,
 {
 	suggestions.clear();
 	string const word_str = to_utf8(wl.word());
-	size_t num = makeSuggestionAppleSpeller(d->speller, word_str.c_str(), wl.lang()->code().c_str());
+	size_t num = AppleSpeller_makeSuggestion(d->speller, word_str.c_str(), wl.lang()->code().c_str());
 	for (size_t i = 0; i < num; i++) {
-		char const * next = getSuggestionAppleSpeller(d->speller, i);
+		char const * next = AppleSpeller_getSuggestion(d->speller, i);
 		if (!next) break;
 		suggestions.push_back(from_utf8(next));
 	}
@@ -126,7 +130,19 @@ void AppleSpellChecker::suggest(WordLangTuple const & wl,
 
 bool AppleSpellChecker::hasDictionary(Language const * lang) const
 {
-	return hasLanguageAppleSpeller(d->speller,lang->code().c_str());
+	return AppleSpeller_hasLanguage(d->speller,lang->code().c_str());
+}
+
+
+int AppleSpellChecker::numMisspelledWords() const
+{
+	return AppleSpeller_numMisspelledWords(d->speller);
+}
+
+
+void AppleSpellChecker::misspelledWord(int index, int & start, int & length) const
+{
+	AppleSpeller_misspelledWord(d->speller, index, &start, &length);
 }
 
 

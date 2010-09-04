@@ -55,7 +55,7 @@ public:
 
 	/// check the given word of the given lang code and return the result
 	virtual enum Result check(WordLangTuple const &) = 0;
-	
+
 	/// Gives suggestions.
 	virtual void suggest(WordLangTuple const &, docstring_list & suggestions) = 0;
 
@@ -70,6 +70,22 @@ public:
 
 	/// check if dictionary exists
 	virtual bool hasDictionary(Language const *) const = 0;
+
+	/// if speller can spell check whole paragraph return true
+	virtual bool canCheckParagraph() const { return false; }
+
+	/// count of misspelled words
+	virtual int numMisspelledWords() const { return 0; }
+
+	/// start position and length of misspelled word at index
+	virtual void misspelledWord(
+		int /* index */,
+		int & start, int & length) const
+	{
+		/// index is used here to make the compiler happy
+		start = 0;
+		length = 0;
+	}
 
 	/// give an error message on messy exit
 	virtual docstring const error() = 0;

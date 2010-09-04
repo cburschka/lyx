@@ -30,6 +30,9 @@ public:
 	void remove(WordLangTuple const &);
 	void accept(WordLangTuple const &);
 	bool hasDictionary(Language const * lang) const;
+	bool canCheckParagraph() const { return true; }
+	int numMisspelledWords() const;
+	void misspelledWord(int index, int & start, int & length) const;
 	docstring const error();
 	//@}
 
