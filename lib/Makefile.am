@@ -1023,6 +1023,7 @@ dist_layouts_DATA =\
 	layouts/achemso.layout \
 	layouts/acmsiggraph.layout \
 	layouts/AEA.layout \
+	layouts/agutex.layout \
 	layouts/agu-dtd.layout \
 	layouts/agu_stdclass.inc \
 	layouts/agu_stdcounters.inc \
@@ -1218,6 +1219,7 @@ dist_templates_DATA = \
 	templates/ACM-siggraph.lyx \
 	templates/ACM-sigplan.lyx \
 	templates/AEA.lyx \
+	templates/agutex.lyx \
 	templates/agu_article.lyx \
 	templates/apa.lyx \
 	templates/beamer-conference-ornate-20min.lyx \
