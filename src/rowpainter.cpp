@@ -331,7 +331,7 @@ void RowPainter::paintForeignMark(double orig_x, Language const * lang,
 void RowPainter::paintMisspelledMark(double orig_x, int desc)
 {
 	int const y = yo_ + desc;
-	pi_.pain.line(int(orig_x), y, int(x_), y, Color_red, Painter::line_onoffdash, Painter::line_thin);
+	pi_.pain.line(int(orig_x), y, int(x_), y, Color_red, Painter::line_onoffdash, 0.5);
 }
 
 
@@ -641,14 +641,14 @@ void RowPainter::paintLast()
 		Color col = change.color();
 
 		pi_.pain.line(int(x_) + 1, yo_ + 2, int(x_) + 1, yo_ + 2 - length, col,
-			   Painter::line_solid, Painter::line_thick);
+			   Painter::line_solid, 3);
 
 		if (change.deleted()) {
 			pi_.pain.line(int(x_) + 1 - length, yo_ + 2, int(x_) + 1 + length,
-				yo_ + 2, col, Painter::line_solid, Painter::line_thick);
+				yo_ + 2, col, Painter::line_solid, 3);
 		} else {
 			pi_.pain.line(int(x_) + 1 - length, yo_ + 2, int(x_) + 1,
-				yo_ + 2, col, Painter::line_solid, Painter::line_thick);
+				yo_ + 2, col, Painter::line_solid, 3);
 		}
 	}
 
@@ -821,8 +821,7 @@ void RowPainter::paintText()
 			int const y_bar = change_running.deleted() ?
 				yo_ - fm.maxAscent() / 3 : yo_ + fm.maxAscent() / 6;
 			pi_.pain.line(change_last_x, y_bar, int(x_), y_bar,
-				change_running.color(), Painter::line_solid,
-				Painter::line_thin);
+				change_running.color(), Painter::line_solid, 0.5);
 
 			// Change might continue with a different author or type
 			if (change.changed() && !highly_editable_inset) {
@@ -882,7 +881,7 @@ void RowPainter::paintText()
 		int const y_bar = change_running.deleted() ?
 				yo_ - fm.maxAscent() / 3 : yo_ + fm.maxAscent() / 6;
 		pi_.pain.line(change_last_x, y_bar, int(x_), y_bar,
-			change_running.color(), Painter::line_solid, Painter::line_thin);
+			change_running.color(), Painter::line_solid, 0.5);
 		change_running.setUnchanged();
 	}
 }
