@@ -60,7 +60,7 @@ void InsetLine::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
 	pi.pain.line(x, y, x + dim.wid, y, Color_foreground,
-		Painter::line_solid, Painter::line_medium);
+		Painter::line_solid, 1);
 }
 
 
