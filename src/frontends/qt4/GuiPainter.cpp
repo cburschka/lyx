@@ -52,7 +52,7 @@ GuiPainter::GuiPainter(QPaintDevice * device)
 	// new QPainter has default QPen:
 	current_color_ = guiApp->colorCache().get(Color_black);
 	current_ls_ = line_solid;
-	current_lw_ = line_thin;
+	current_lw_ = 0.5;
 }
 
 
@@ -64,7 +64,7 @@ GuiPainter::~GuiPainter()
 
 
 void GuiPainter::setQPainterPen(QColor const & col,
-	Painter::line_style ls, Painter::line_width lw)
+	Painter::line_style ls, float lw)
 {
 	if (col == current_color_ && ls == current_ls_ && lw == current_lw_)
 		return;
@@ -81,11 +81,7 @@ void GuiPainter::setQPainterPen(QColor const & col,
 		case line_onoffdash: pen.setStyle(Qt::DotLine); break;
 	}
 
-	switch (lw) {
-		case line_thin: pen.setWidth(0); break;
-		case line_medium: pen.setWidth(1); break;
-		case line_thick: pen.setWidth(3); break;
-	}
+	pen.setWidth(lw);
 
 	setPen(pen);
 }
@@ -175,7 +171,7 @@ void GuiPainter::point(int x, int y, Color col)
 void GuiPainter::line(int x1, int y1, int x2, int y2,
 	Color col,
 	line_style ls,
-	line_width lw)
+	float lw)
 {
 	if (!isDrawingEnabled())
 		return;
@@ -192,7 +188,7 @@ void GuiPainter::line(int x1, int y1, int x2, int y2,
 void GuiPainter::lines(int const * xp, int const * yp, int np,
 	Color col,
 	line_style ls,
-	line_width lw)
+	float lw)
 {
 	if (!isDrawingEnabled())
 		return;
@@ -220,7 +216,7 @@ void GuiPainter::lines(int const * xp, int const * yp, int np,
 void GuiPainter::rectangle(int x, int y, int w, int h,
 	Color col,
 	line_style ls,
-	line_width lw)
+	float lw)
 {
 	if (!isDrawingEnabled())
 		return;
