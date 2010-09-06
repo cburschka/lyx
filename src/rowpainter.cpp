@@ -75,7 +75,11 @@ RowPainter::RowPainter(PainterInfo & pi,
 
 FontInfo RowPainter::labelFont() const
 {
-	return text_.labelFont(par_);
+	FontInfo f = text_.labelFont(par_);
+	// selected text?
+	if (row_.begin_margin_sel || pi_.selected)
+		f.setPaintColor(Color_selectiontext);
+	return f;
 }
 
 
