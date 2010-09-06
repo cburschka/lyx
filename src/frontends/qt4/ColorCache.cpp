@@ -79,10 +79,10 @@ QColor ColorCache::get(Color const & color, bool syscolors) const
 	if (!initialized_)
 		const_cast<ColorCache *>(this)->init();
 	if (color <= Color_ignore && color.mergeColor == Color_ignore) {
-		QPalette::ColorRole cr = role(color.baseColor);
+		QPalette::ColorRole const cr = role(color.baseColor);
 		if (syscolors && cr != NoRole) {
-			static QColor white = Qt::white;
-			QColor c = pal_.brush(QPalette::Active, cr).color();
+			static QColor const white = Qt::white;
+			QColor const c = pal_.brush(QPalette::Active, cr).color();
 			if (cr == QPalette::Base && c == white)
 				return lcolors_[color.baseColor];
 			else
@@ -107,7 +107,12 @@ QColor ColorCache::get(Color const & color, bool syscolors) const
 
 bool ColorCache::isSystem(ColorCode const color) const
 {
-	return role(color) != NoRole;
+	QPalette::ColorRole const cr = role(color);
+	if (cr == QPalette::Base) {
+		static QColor const white = Qt::white;
+		return pal_.brush(QPalette::Active, cr).color() != white;
+	} else
+		return cr != NoRole;
 }
 
 
