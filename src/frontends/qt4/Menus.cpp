@@ -761,7 +761,7 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 			if (i > 0)
 				add(MenuItem(MenuItem::Separator));
 			docstring const arg = wl.word() + " " + from_ascii(wl.lang()->lang());
-			add(MenuItem(MenuItem::Command, qt_("Add to personal dictionary|c"),
+			add(MenuItem(MenuItem::Command, qt_("Add to personal dictionary|n"),
 					FuncRequest(LFUN_SPELLING_ADD, arg)));
 			add(MenuItem(MenuItem::Command, qt_("Ignore all|I"),
 					FuncRequest(LFUN_SPELLING_IGNORE, arg)));
