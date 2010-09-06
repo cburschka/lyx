@@ -94,11 +94,12 @@ SpellCheckResult AppleSpeller_check(AppleSpeller speller, const char * word, con
 	NSString * lang_ = toString(lang);
 	SpellCheckResult result = SPELL_CHECK_FAILED;
 	int start = 0;
-
+	int length = [word_ length];
+	
 	[speller->misspelled release];
 	speller->misspelled = nil;
 
-	while (result == SPELL_CHECK_FAILED) {
+	while (result == SPELL_CHECK_FAILED && start < length) {
 		NSRange match = [speller->checker
 			checkSpellingOfString:word_
 			startingAt:start
