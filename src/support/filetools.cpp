@@ -741,9 +741,9 @@ docstring const makeDisplayPath(string const & path, unsigned int threshold)
 }
 
 
+#ifdef HAVE_READLINK
 bool readLink(FileName const & file, FileName & link)
 {
-#ifdef HAVE_READLINK
 	char linkbuffer[PATH_MAX + 1];
 	string const encoded = file.toFilesystemEncoding();
 	int const nRead = ::readlink(encoded.c_str(),
@@ -753,10 +753,13 @@ bool readLink(FileName const & file, FileName & link)
 	linkbuffer[nRead] = '\0'; // terminator
 	link = makeAbsPath(linkbuffer, onlyPath(file.absFileName()));
 	return true;
-#else
-	return false;
-#endif
 }
+#else
+bool readLink(FileName const &, FileName &)
+{
+	return false;
+}
+#endif
 
 
 cmd_ret const runCommand(string const & cmd)
