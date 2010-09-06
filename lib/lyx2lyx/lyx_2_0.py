@@ -2058,7 +2058,7 @@ def revert_mathrsfs(document):
 
 
 def convert_mathdots(document):
-    " Load mathdots if used in the document "
+    " Load mathdots automatically "
     while True:
       i = find_token(document.header, "\\use_esint" , 0)
       if i != -1:
@@ -2073,7 +2073,7 @@ def revert_mathdots(document):
       if i != -1:
         # use \@ifundefined to catch also the "auto" case
         add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
-        add_to_preamble(document, ["\\@ifundefined{iddots}{\\usepackage{mathdots}}"])
+        add_to_preamble(document, ["\\@ifundefined{iddots}{\\usepackage{mathdots}}\n"])
         del document.header[i]
       break
 
