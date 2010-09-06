@@ -476,29 +476,28 @@ int RowPainter::paintAppendixStart(int y)
 
 void RowPainter::paintFirst()
 {
-	ParagraphParameters const & parparams = par_.params();
+	ParagraphParameters const & pparams = par_.params();
+	Buffer const & buffer = pi_.base.bv->buffer();
+	BufferParams const & bparams = buffer.params();
+	Layout const & layout = par_.layout();
 
 	int y_top = 0;
 
 	// start of appendix?
-	if (parparams.startOfAppendix())
+	if (pparams.startOfAppendix())
 		y_top += paintAppendixStart(yo_ - row_.ascent() + 2 * defaultRowHeight());
 
-	Buffer const & buffer = pi_.base.bv->buffer();
-	Layout const & layout = par_.layout();
-
-	if (buffer.params().paragraph_separation == BufferParams::ParagraphSkipSeparation) {
-		if (pit_ != 0) {
-			if (layout.latextype == LATEX_PARAGRAPH
-				&& !par_.getDepth()) {
-				y_top += buffer.params().getDefSkip().inPixels(*pi_.base.bv);
-			} else {
-				Layout const & playout = pars_[pit_ - 1].layout();
-				if (playout.latextype == LATEX_PARAGRAPH
-					&& !pars_[pit_ - 1].getDepth()) {
-					// is it right to use defskip here, too? (AS)
-					y_top += buffer.params().getDefSkip().inPixels(*pi_.base.bv);
-				}
+	if (bparams.paragraph_separation == BufferParams::ParagraphSkipSeparation
+		&& pit_ != 0) {
+		if (layout.latextype == LATEX_PARAGRAPH
+		    && !par_.getDepth()) {
+			y_top += bparams.getDefSkip().inPixels(*pi_.base.bv);
+		} else {
+			Layout const & playout = pars_[pit_ - 1].layout();
+			if (playout.latextype == LATEX_PARAGRAPH
+			    && !pars_[pit_ - 1].getDepth()) {
+				// is it right to use defskip here, too? (AS)
+				y_top += bparams.getDefSkip().inPixels(*pi_.base.bv);
 			}
 		}
 	}
@@ -525,10 +524,10 @@ void RowPainter::paintFirst()
 			// the top.
 			if (layout.counter == "chapter") {
 				double spacing_val = 1.0;
-				if (!parparams.spacing().isDefault()) {
-					spacing_val = parparams.spacing().getValue();
+				if (!pparams.spacing().isDefault()) {
+					spacing_val = pparams.spacing().getValue();
 				} else {
-					spacing_val = buffer.params().spacing().getValue();
+					spacing_val = bparams.spacing().getValue();
 				}
 
 				int const labeladdon = int(fm.maxHeight() * layout.spacing.getValue() * spacing_val);
@@ -565,10 +564,10 @@ void RowPainter::paintFirst()
 		docstring const str = par_.labelString();
 		if (!str.empty()) {
 			double spacing_val = 1.0;
-			if (!parparams.spacing().isDefault())
-				spacing_val = parparams.spacing().getValue();
+			if (!pparams.spacing().isDefault())
+				spacing_val = pparams.spacing().getValue();
 			else
-				spacing_val = buffer.params().spacing().getValue();
+				spacing_val = bparams.spacing().getValue();
 
 			FontMetrics const & fm = theFontMetrics(font);
 
