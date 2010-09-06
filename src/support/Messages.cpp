@@ -205,7 +205,7 @@ docstring const Messages::get(string const & m) const
 
 namespace lyx {
 
-Messages::Messages(string const & l) {}
+Messages::Messages(string const & /* l */) {}
 
 void Messages::init()
 {
