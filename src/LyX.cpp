@@ -369,7 +369,7 @@ int LyX::exec(int & argc, char * argv[])
 		prepareExit();
 		return exit_status;
 	}
- 
+
 	// FIXME
 	/* Create a CoreApplication class that will provide the main event loop
 	* and the socket callback registering. With Qt4, only QtCore
@@ -553,7 +553,7 @@ void LyX::execCommands()
 			break;
 		}
 	}
-	
+
 	// create the first main window
 	lyx::dispatch(FuncRequest(LFUN_WINDOW_NEW, geometryArg));
 
@@ -681,7 +681,7 @@ static void error_handler(int err_sig)
 		(err_sig != SIGHUP && !getEnv("LYXDEBUG").empty())) {
 #else
 	if (err_sig == SIGSEGV || !getEnv("LYXDEBUG").empty()) {
-#endif 
+#endif
 #ifdef _MSC_VER
 		// with abort() it crashes again.
 		exit(err_sig);
@@ -853,7 +853,7 @@ bool LyX::init()
 	// This must happen after package initialization and after lyxrc is
 	// read, therefore it can't be done by a static object.
 	ConverterCache::init();
-		
+
 	return true;
 }
 
@@ -889,7 +889,7 @@ static bool needsUpdate(string const & file)
 		firstrun = false;
 	}
 
-	FileName absfile = 
+	FileName absfile =
 		FileName(addName(package().user_support().absFileName(), file));
 	return !absfile.exists()
 		|| configure_script.lastModified() > absfile.lastModified();
@@ -1138,14 +1138,14 @@ int parse_geometry(string const & arg1, string const &, string &)
 }
 
 
-int parse_batch(string const &, string const &, string &) 
+int parse_batch(string const &, string const &, string &)
 {
 	use_gui = false;
 	return 0;
 }
 
 
-int parse_force(string const & arg, string const &, string &) 
+int parse_force(string const & arg, string const &, string &)
 {
 	if (arg == "all") {
 		force_overwrite = ALL_FILES;
