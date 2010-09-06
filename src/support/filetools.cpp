@@ -355,7 +355,7 @@ FileName const createLyXTmpDir(FileName const & deflt)
 	if (deflt.empty() || deflt == package().system_temp_dir())
 		return createTmpDir(package().system_temp_dir(), "lyx_tmpdir");
 
-	if (deflt.createDirectory(0777)) 
+	if (deflt.createDirectory(0777))
 		return deflt;
 
 	if (deflt.isDirWritable()) {
@@ -537,9 +537,9 @@ string const replaceEnvironmentPath(string const & path)
 	// $\{[A-Za-z_][A-Za-z_0-9]*\}
 	static string const envvar = "[$]([A-Za-z_][A-Za-z_0-9]*)";
 
-        static regex envvar_br_re("(.*)" + envvar_br + "(.*)");
-        static regex envvar_re("(.*)" + envvar + "(.*)");
-        smatch what;
+	static regex envvar_br_re("(.*)" + envvar_br + "(.*)");
+	static regex envvar_re("(.*)" + envvar + "(.*)");
+	smatch what;
 	string result;
 	string remaining = path;
 	while (1) {
@@ -772,24 +772,24 @@ cmd_ret const runCommand(string const & cmd)
 	// variants ipstream, opstream
 
 #if defined (_WIN32)
-	int fno; 
-	STARTUPINFO startup; 
-	PROCESS_INFORMATION process; 
-	SECURITY_ATTRIBUTES security; 
+	int fno;
+	STARTUPINFO startup;
+	PROCESS_INFORMATION process;
+	SECURITY_ATTRIBUTES security;
 	HANDLE in, out;
 	FILE * inf = 0;
-    
-	security.nLength = sizeof(SECURITY_ATTRIBUTES); 
-	security.bInheritHandle = TRUE; 
-	security.lpSecurityDescriptor = NULL; 
 
-	if (CreatePipe(&in, &out, &security, 0)) { 
+	security.nLength = sizeof(SECURITY_ATTRIBUTES);
+	security.bInheritHandle = TRUE;
+	security.lpSecurityDescriptor = NULL;
+
+	if (CreatePipe(&in, &out, &security, 0)) {
 		memset(&startup, 0, sizeof(STARTUPINFO));
 		memset(&process, 0, sizeof(PROCESS_INFORMATION));
-    
+
 		startup.cb = sizeof(STARTUPINFO);
 		startup.dwFlags = STARTF_USESTDHANDLES;
-  
+
 		startup.hStdError = GetStdHandle(STD_ERROR_HANDLE);
 		startup.hStdInput = GetStdHandle(STD_INPUT_HANDLE);
 		startup.hStdOutput = out;
