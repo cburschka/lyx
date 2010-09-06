@@ -286,13 +286,9 @@ int LyX::exec(int & argc, char * argv[])
 		init_package(os::utf8_argv(0), string(), string(),
 			top_build_dir_is_one_level_up);
 	} catch (ExceptionMessage const & message) {
-		if (message.type_ == ErrorException) {
-			Alert::error(message.title_, message.details_);
-			lyx_exit(1);
-		} else if (message.type_ == WarningException) {
-			Alert::warning(message.title_, message.details_);
-		}
+		LYXERR(Debug::LOCALE, message.title_ + ", " + message.details_);
 	}
+	// FIXME: This breaks out of source build under Windows.
 	locale_init();
 
 	// Here we need to parse the command line. At least
