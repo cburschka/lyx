@@ -56,6 +56,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\images\math\dddot.png"
  File "${PRODUCT_SOURCEDIR}\Resources\images\math\ddddot.png"
  SetOutPath "$INSTDIR\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\agutex.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\g-brief2.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\memoir.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\scrclass.inc"
@@ -63,6 +64,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  SetOutPath "$INSTDIR\Resources\man\man1"
  File "${PRODUCT_SOURCEDIR}\Resources\man\man1\lyx.1"
+ SetOutPath "$INSTDIR\Resources\templates"
+ File "${PRODUCT_SOURCEDIR}\Resources\templates\agutex.lyx"
  SetOutPath "$INSTDIR\Resources\ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
 

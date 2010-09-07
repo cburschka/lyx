@@ -1,0 +1,711 @@
+#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass agutex
+\begin_preamble
+% OPTIONAL: To Create numbered lines uncomment these 2 lines:
+% \usepackage{lineno}
+% \linenumbers*[1]
+
+% Author names in capital letters:
+\authorrunninghead{BALES ET AL.}
+
+% Shorter version of title entered in capital letters:
+\titlerunninghead{SHORT TITLE}
+
+% Author mailing address: please repeat this command for
+% each author and alphabetize authors. Here are examples:
+
+\authoraddr{R. C. Bales,
+Department of Hydrology and Water Resources, University of
+Arizona, Harshbarger Building 11, Tucson, AZ 85721, USA.
+(roger@hwr.arizona.edu)}
+
+\authoraddr{J. R. McConnell, Division of Hydrologic
+Sciences, 123 Main Street, Desert Research Institute, Reno, NV
+89512, USA.}
+
+\authoraddr{E. Mosley-Thompson, Department of Geography,
+Ohio State University, 123 Orange Boulevard, Columbus, OH 43210,
+USA.}
+
+\authoraddr{R. Williams, Department of Space Sciences, University of
+Michigan, 123 Brown Avenue, Ann Arbor, MI 48109, USA.}
+% this command was inserted by lyx2lyx
+\@ifundefined{iddots}{\usepackage{mathdots}}
+\end_preamble
+\options jgrga
+\use_default_options false
+\begin_modules
+theorems-std
+\end_modules
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 0
+\use_esint 1
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+IMPORTANT Note
+\series default
+: To be able to compile AguTeX articles you have to turn off LyX's support
+ for the LaTeX-package 
+\emph on
+babel
+\emph default
+: Go to the menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Language
+\begin_inset space ~
+\end_inset
+
+Settings
+\family default
+ and turn off the option 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Use babel
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+For all other document classes it is highly recommended to use babel!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The Journal is specified as document class option in the document settings!
+ For the available document class options have a look at the elsarticle
+ documentation: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://texnology.com/agudocs.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The addresses of the authors are given in the document preamble.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Title of article
+\end_layout
+
+\begin_layout Authors
+R.
+ C.
+ Bales, 
+\begin_inset Flex Affiliation Mark
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+E.
+ Mosley-Thompson, 
+\begin_inset Flex Affiliation Mark
+status collapsed
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+R.
+ Williams, 
+\begin_inset Flex Affiliation Mark
+status collapsed
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+and J.
+ R.
+ McConnell
+\begin_inset Flex Affiliation Mark
+status collapsed
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author affiliation
+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Department of Hydrology and Water Resources, University of Arizona, Tucson,
+ Arizona, USA.
+\end_layout
+
+\begin_layout Author affiliation
+2
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Department of Geography, Ohio State University, Columbus, Ohio, USA.
+\end_layout
+
+\begin_layout Author affiliation
+3
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Department of Space Sciences, University of Michigan, Ann Arbor, Michigan,
+ USA.
+\end_layout
+
+\begin_layout Author affiliation
+4
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Division of Hydrologic Sciences, Desert Research Institute, Reno, Nevada,
+ USA.
+\end_layout
+
+\begin_layout Abstract
+(Type abstract here)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{article}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+starts the article
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+(Article text here)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+A & = & \prod_{i=1}^{\infty}B\nonumber \\
+ & = & C\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...as shown by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "jskilby,Arduengo1992"
+
+\end_inset
+
+.
+ ....has been shown 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "jskilbye"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Subsection
+\end_layout
+
+\begin_layout Enumerate
+test
+\end_layout
+
+\begin_layout Enumerate
+test
+\end_layout
+
+\begin_layout Subsubsection
+Subsubsection
+\end_layout
+
+\begin_layout Standard
+Bla, bla
+\end_layout
+
+\begin_layout Section*
+Appendix: Title
+\end_layout
+
+\begin_layout Standard
+Appendix, only when needed.
+\end_layout
+
+\begin_layout Section*
+Glossary
+\end_layout
+
+\begin_layout Standard
+Glossary is only allowed in Reviews of Geophysics!
+\end_layout
+
+\begin_layout Glossary term
+term
+\end_layout
+
+\begin_layout Standard
+Term Definition here
+\end_layout
+
+\begin_layout Notation
+Term 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+&
+\end_layout
+
+\end_inset
+
+ definition.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+A notation is of course optional
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Second Term 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+&
+\end_layout
+
+\end_inset
+
+ second definition.
+\end_layout
+
+\begin_layout Acknowledgments
+(Text here)
+\end_layout
+
+\begin_layout Section*
+-----------------
+\end_layout
+
+\begin_layout Standard
+You can use either BibTeX.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Remember though that your final submission is supposed to have all the bibliogra
+phy entries embedded in the LaTeX-file.
+ This means you eventually have to copy the .bbl file into the latex file
+ at this position.
+ Follow these steps:
+\end_layout
+
+\begin_layout Enumerate
+Run LaTeX on your LaTeX file.
+\end_layout
+
+\begin_layout Enumerate
+Run BiBTeX on your LaTeX file.
+\end_layout
+
+\begin_layout Enumerate
+Open the new .bbl file containing the reference list and copy all the contents
+ into your LaTeX file here.
+\end_layout
+
+\begin_layout Enumerate
+Comment out the old 
+\backslash
+bibliographystyle and 
+\backslash
+bibliography commands.
+\end_layout
+
+\begin_layout Enumerate
+Run LaTeX on your new file before submitting.
+ AGU does not want a .bib or a .bbl file, but asks that you copy in the contents
+ of your .bbl file here.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "../examples/biblioExample"
+options "agu"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+---------------------
+\end_layout
+
+\begin_layout Standard
+\noindent
+Or plain bibliography:
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "\\textit{Kilby}(2008)"
+key "jskilby"
+
+\end_inset
+
+Kilby, J.
+ S.
+ (2008), Invention of the integrated circuit, 
+\emph on
+IEEE Trans.
+ Electron Devices,
+\emph default
+ 
+\shape italic
+23
+\shape default
+, 648--650.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "\\textit{Kilby et al.}(2008)"
+key "jskilbye"
+
+\end_inset
+
+Kilby, J.
+ S., S.
+ Smith, and R.
+ Jones (2008), Invention of the integrated circuit, 
+\emph on
+IEEE Trans.
+ Electron Devices,
+\emph default
+ 
+\shape italic
+23
+\shape default
+, 648--650.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{article}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ends the article
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Enter Figures and Tables here:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\family sans
+A single column figure goes here
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Captions go 
+\emph on
+under
+\emph default
+ the figure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Table captions go 
+\emph on
+above
+\emph default
+ the table
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+delete
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+this
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+example
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+table
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

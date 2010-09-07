@@ -1002,6 +1002,7 @@ dist_layouts_DATA =\
 	layouts/agu_stdtitle.inc \
 	layouts/agums.layout \
 	layouts/aguplus.inc \
+	layouts/agutex.layout \
 	layouts/amsart.layout \
 	layouts/amsbook.layout \
 	layouts/amsdefs.inc \
@@ -1182,6 +1183,7 @@ dist_templates_DATA = \
 	templates/ACM-siggraph.lyx \
 	templates/ACM-sigplan.lyx \
 	templates/agu_article.lyx \
+	templates/agutex.layout \
 	templates/apa.lyx \
 	templates/beamer-conference-ornate-20min.lyx \
 	templates/de_beamer-conference-ornate-20min.lyx \

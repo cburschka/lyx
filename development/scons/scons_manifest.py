@@ -1291,6 +1291,7 @@ lib_templates_files = Split('''
     ACM-siggraph.lyx
     ACM-sigplan.lyx
     agu_article.lyx
+    agutex.lyx
     apa.lyx
     beamer-conference-ornate-20min.lyx
     de_beamer-conference-ornate-20min.lyx
@@ -2644,6 +2645,7 @@ lib_layouts_files = Split('''
     acmsiggraph.layout
     agu-dtd.layout
     agums.layout
+    agutex.layout
     amsart.layout
     amsbook.layout
     apa.layout
