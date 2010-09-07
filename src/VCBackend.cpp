@@ -312,7 +312,7 @@ bool RCS::prepareFileRevision(string const &revis, string & f)
 		}
 	}
 
-	FileName tmpf = FileName::tempName("lyxvcrev");
+	FileName tmpf = FileName::tempName("lyxvcrev_" + rev + "_");
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return N_("Error: Could not generate logfile.");
@@ -1058,13 +1058,14 @@ bool SVN::prepareFileRevision(string const & revis, string & f)
 			return false;
 	}
 
-	FileName tmpf = FileName::tempName("lyxvcrev");
+	string revname = convert<string>(rev);
+	FileName tmpf = FileName::tempName("lyxvcrev_" + revname + "_");
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return N_("Error: Could not generate logfile.");
 	}
 
-	doVCCommand("svn cat -r " + convert<string>(rev) + " "
+	doVCCommand("svn cat -r " + revname + " "
 	              + quoteName(onlyFileName(owner_->absFileName()))
 		      + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		FileName(owner_->filePath()));
