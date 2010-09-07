@@ -44,6 +44,8 @@ using namespace std;
 
 namespace lyx {
 namespace frontend {
+  
+const float Painter::thin_line = 0.5;
 
 GuiPainter::GuiPainter(QPaintDevice * device)
 	: QPainter(device), Painter(),
@@ -52,7 +54,7 @@ GuiPainter::GuiPainter(QPaintDevice * device)
 	// new QPainter has default QPen:
 	current_color_ = guiApp->colorCache().get(Color_black);
 	current_ls_ = line_solid;
-	current_lw_ = 0.5;
+	current_lw_ = thin_line;
 }
 
 

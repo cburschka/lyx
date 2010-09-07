@@ -57,6 +57,7 @@ public:
 	Painter() : drawing_enabled_(true) {}
 
 	float line_width;
+	static const float thin_line;
 
 	/// possible line styles
 	enum line_style {
@@ -76,7 +77,7 @@ public:
 
 	/// draw a line from point to point
 	virtual void line(int x1, int y1, int x2, int y2, Color,
-		line_style = line_solid, float line_width = 0.5) = 0;
+		line_style = line_solid, float line_width = thin_line) = 0;
 
 	/**
 	 * lines -  draw a set of lines
@@ -85,11 +86,11 @@ public:
 	 * @param np size of the points array
 	 */
 	virtual void lines(int const * xp, int const * yp, int np, Color,
-		line_style = line_solid, float line_width = 0.5) = 0;
+		line_style = line_solid, float line_width = thin_line) = 0;
 
 	/// draw a rectangle
 	virtual void rectangle(int x, int y, int w, int h, Color,
-		line_style = line_solid, float line_width = 0.5) = 0;
+		line_style = line_solid, float line_width = thin_line) = 0;
 
 	/// draw a filled rectangle
 	virtual void fillRectangle(int x, int y, int w, int h, Color) = 0;
