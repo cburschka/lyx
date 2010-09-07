@@ -75,7 +75,7 @@ Menuset
 		OptItem "Update Local Directory From Repository|d" "vc-repo-update"
 		OptItem "Revert to Repository Version|v" "vc-revert"
 		OptItem "Undo Last Check In|U" "vc-undo-last"
-		OptItem "Compare with Older Revision|C" "vc-compare"
+		OptItem "Compare with Older Revision...|C" "vc-compare"
 		OptItem "Show History...|H" "dialog-show vclog"
 		OptItem "Use Locking Property|L" "vc-locking-toggle"
 	End
