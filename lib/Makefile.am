@@ -1183,7 +1183,7 @@ dist_templates_DATA = \
 	templates/ACM-siggraph.lyx \
 	templates/ACM-sigplan.lyx \
 	templates/agu_article.lyx \
-	templates/agutex.layout \
+	templates/agutex.lyx \
 	templates/apa.lyx \
 	templates/beamer-conference-ornate-20min.lyx \
 	templates/de_beamer-conference-ornate-20min.lyx \
