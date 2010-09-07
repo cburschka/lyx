@@ -106,9 +106,9 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
-	
+
 	Length width = Length(to_ascii(getParam("width")));
-	int w = 
+	int w =
 		width.inPixels(mi.base.textwidth,
 		fm.width(char_type('M')));
 
@@ -119,7 +119,7 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	// set a minimal width
 	int const minw = (w < 0) ? 3 * 8 : 4;
-	dim.wid = max(minw, abs(w));
+	dim.wid = max(minw, max(w, -w));
 
 	// Cache the inset dimension
 	setDimCache(mi, dim);
@@ -134,15 +134,15 @@ void InsetLine::draw(PainterInfo & pi, int x, int y) const
 
 	// get the length of the parameters in pixels
 	Length offset = Length(to_ascii(getParam("offset")));
-	int o = 
+	int o =
 		offset.inPixels(pi.base.textwidth,
 		fm.width(char_type('M')));
 	Length width = Length(to_ascii(getParam("width")));
-	int w = 
+	int w =
 		width.inPixels(pi.base.textwidth,
 		fm.width(char_type('M')));
 	Length height = Length(to_ascii(getParam("height")));
-	int h = 
+	int h =
 		height.inPixels(pi.base.textwidth,
 		fm.width(char_type('M')));
 
