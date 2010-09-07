@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 399
+\lyxformat 400
 \begin_document
 \begin_header
 \textclass scrbook
@@ -20558,14 +20558,10 @@ svn co svn+ssh://user@server/repository_path
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted 1 1274738367
 End-of-Line Conversions
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1 1274738433
 When the collsraborators are mixing Linux and Windows environments, LyX
  will use different line endings inside the .lyx files.
  This is not problem as far as LyX functionality is concerned, but the commit
@@ -20575,24 +20571,16 @@ When the collsraborators are mixing Linux and Windows environments, LyX
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1274738731
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1274738731
-
 http://svnbook.red-bean.com/en/1.4/svn.advanced.props.file-portability.html
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -20603,11 +20591,7 @@ http://svnbook.red-bean.com/en/1.4/svn.advanced.props.file-portability.html
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1274738399
 native
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -20617,24 +20601,16 @@ native
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1274738457
 For the lazy guys: 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1274738457
 svn propset svn:eol-style native FILE_NAME
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -20683,6 +20659,73 @@ vc-command DR "." "TortoiseProc /command:revert /path:$$p"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Version control and Document comparison
+\end_layout
+
+\begin_layout Standard
+One of the typical uses of version control is to inspect the changes between
+ revisions, usually by creating 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+diff
+\end_layout
+
+\end_inset
+
+ dumps.
+ While this is useful for plain text files, it is much less useful in the
+ case of LyX files, which have more complicated structure.
+ Hence we provide binding to the Document comparison feature.
+ They are two ways of calling this feature - either by direct call of 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+VC_COMPARE
+\end_layout
+
+\end_inset
+
+ LyX function (for details see LyX functions manual) or by icon/menu item
+ 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Compare with older revision...
+\end_layout
+
+\end_inset
+
+.
+ One can either compare two chosen revisions of the document or he can simply
+ compare the current version of edited text with older revisions (where
+ '
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+' revisions back means comparison of the edited file with last commited
+ revision).
+ 
+\end_layout
+
+\begin_layout Standard
+This feature is supported for SVN and RCS though due to the more complicated
+ versioning scheme of RCS there is a constraint -- when addressing the revisions
+ in dialog, numbers always point to the last number in RCS revision number,
+ i.e.
+ '35' in '1.2.35'.
 \end_layout
 
 \begin_layout Section
