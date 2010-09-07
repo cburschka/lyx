@@ -28,7 +28,6 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
-#include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
