@@ -116,10 +116,10 @@ void GuiCompare::updateContents()
 		newFileCB->addItem(filename);
 		oldFileCB->addItem(filename);
 	}
-	if (lyxview().documentBufferView())
-		newFileCB->setEditText(toqstr(buffer().absFileName()));
-	else
+	if (!restore_filename1.isEmpty())
 		newFileCB->setEditText(restore_filename1);
+	else if (lyxview().documentBufferView())
+		newFileCB->setEditText(toqstr(buffer().absFileName()));
 
 	if (!restore_filename2.isEmpty())
 		oldFileCB->setEditText(restore_filename2);
@@ -318,6 +318,17 @@ int GuiCompare::run()
 	return 1;
 }
 
+bool GuiCompare::initialiseParams(std::string const &par)
+{
+	//just for the sake of parsing arguments
+	FuncRequest cmd(LFUN_UNKNOWN_ACTION, par);
+	if (cmd.getArg(0) == "run") {
+		oldFileCB->setEditText(toqstr(cmd.getArg(1)));
+		newFileCB->setEditText(toqstr(cmd.getArg(2)));
+		slotOK();
+	}
+	return true;
+}
 
 Dialog * createGuiCompare(GuiView & lv) { return new GuiCompare(lv); }
 

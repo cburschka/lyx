@@ -62,7 +62,7 @@ private:
 	///
 	bool isValid();
 	///
-	bool initialiseParams(std::string const &) { return true; }
+	bool initialiseParams(std::string const &);
 	///
 	bool isBufferDependent() const { return false; }
 	///
