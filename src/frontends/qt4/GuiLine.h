@@ -12,43 +12,28 @@
 #ifndef GUILINE_H
 #define GUILINE_H
 
-#include "GuiDialog.h"
+#include "InsetParamsWidget.h"
 #include "ui_LineUi.h"
-
-#include "insets/InsetCommandParams.h"
-
 
 namespace lyx {
 namespace frontend {
 
-class GuiLine : public GuiDialog, public Ui::LineUi
+class GuiLine : public InsetParamsWidget, public Ui::LineUi
 {
 	Q_OBJECT
 
 public:
-	GuiLine(GuiView & lv);
-
-private Q_SLOTS:
-	void change_adaptor();
+	GuiLine(QWidget * parent = 0);
 
 private:
-	/// Apply changes
-	void applyView();
-	/// Update dialog before showing it
-	bool initialiseParams(std::string const & data);
-	///
-	void paramsToDialog(InsetCommandParams const & icp);
-	///
-	void clearParams() { params_.clear(); }
-	///
-	void dispatchParams();
-	///
-	bool isBufferDependent() const { return true; }
-	///
-	bool isValid() const;
-
-	///
-	InsetCommandParams params_;
+	/// \name InsetParamsWidget inherited methods
+	//@{
+	InsetCode insetCode() const { return LINE_CODE; }
+	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
+	void paramsToDialog(Inset const *);
+	docstring dialogToParams() const;
+	bool checkWidgets() const;
+	//@}
 };
 
 } // namespace frontend

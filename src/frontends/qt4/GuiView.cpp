@@ -3647,7 +3647,6 @@ Dialog * createGuiGraphics(GuiView & lv);
 Dialog * createGuiInclude(GuiView & lv);
 Dialog * createGuiIndex(GuiView & lv);
 Dialog * createGuiLabel(GuiView & lv);
-Dialog * createGuiLine(GuiView & lv);
 Dialog * createGuiListings(GuiView & lv);
 Dialog * createGuiLog(GuiView & lv);
 Dialog * createGuiMathMatrix(GuiView & lv);
@@ -3721,8 +3720,6 @@ Dialog * GuiView::build(string const & name)
 		return createGuiIndex(*this);
 	if (name == "index_print")
 		return createGuiPrintindex(*this);
-	if (name == "line")
-		return createGuiLine(*this);
 	if (name == "label")
 		return createGuiLabel(*this);
 	if (name == "listings")
