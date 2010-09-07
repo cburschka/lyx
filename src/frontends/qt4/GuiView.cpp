@@ -2687,7 +2687,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 				break;
 		}
 
-		LYXERR(Debug::LYXVC, "Launching comparison for fetched revisions: " <<
+		LYXERR(Debug::LYXVC, "Launching comparison for fetched revisions:\n" <<
 					f1 << "\n"  << f2 << "\n" );
 		string par = "compare run " + f1 + " " + f2;
 		lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, par));

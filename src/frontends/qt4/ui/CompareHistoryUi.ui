@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>356</width>
-    <height>172</height>
+    <width>375</width>
+    <height>162</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -85,6 +85,19 @@
          </widget>
         </item>
         <item>
+         <widget class="QLabel" name="oldL" >
+          <property name="sizePolicy" >
+           <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text" >
+           <string>Old:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QSpinBox" name="rev1SB" >
           <property name="sizePolicy" >
            <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
@@ -103,6 +116,19 @@
           </property>
           <property name="maximum" >
            <number>1</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="newL" >
+          <property name="sizePolicy" >
+           <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text" >
+           <string>New:</string>
           </property>
          </widget>
         </item>

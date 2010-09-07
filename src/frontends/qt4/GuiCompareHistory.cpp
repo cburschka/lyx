@@ -95,7 +95,10 @@ void GuiCompareHistory::selectBetweenrev()
 void GuiCompareHistory::enableControls()
 {
 	bool rb = revbackRB->isChecked();
+	oldL->setEnabled(!rb);
+	newL->setEnabled(!rb);
 	rev1SB->setEnabled(!rb);
+	rev2SB->setEnabled(!rb);
 	rev2SB->setEnabled(!rb);
 	betweenrevRB->setChecked(!rb);
 	revbackSB->setEnabled(rb);
