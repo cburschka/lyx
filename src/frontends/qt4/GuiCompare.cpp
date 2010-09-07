@@ -63,9 +63,6 @@ GuiCompare::GuiCompare(GuiView & lv)
 
 	newSettingsRB->setChecked(true);
 
-	progressBar->setValue(0);
-	progressBar->setEnabled(false);
-
 	closePB->setCursor(Qt::ArrowCursor);
 
 	bc().setPolicy(ButtonPolicy::OkApplyCancelPolicy);
@@ -327,6 +324,11 @@ bool GuiCompare::initialiseParams(std::string const &par)
 		newFileCB->setEditText(toqstr(cmd.getArg(2)));
 		slotOK();
 	}
+
+	progressBar->setValue(0);
+	progressBar->setEnabled(false);
+	progressBar->setMaximum(100);
+
 	return true;
 }
 
