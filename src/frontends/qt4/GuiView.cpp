@@ -1667,8 +1667,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 	}
 	case LFUN_VC_COMPARE:
-		enable = doc_buffer && !cmd.argument().empty()
-			 && doc_buffer->lyxvc().prepareFileRevisionEnabled();
+		enable = doc_buffer && doc_buffer->lyxvc().prepareFileRevisionEnabled();
 		break;
 
 	case LFUN_SERVER_GOTO_FILE_ROW:
@@ -2665,6 +2664,11 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 
 	case LFUN_VC_COMPARE: {
 
+		if (cmd.argument().empty()) {
+			lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, "comparehistory"));
+			break;
+		}
+
 		string rev1 = cmd.getArg(0);
 		string f1, f2;
 
@@ -3456,15 +3460,15 @@ namespace {
 // docs in LyXAction.cpp.
 
 char const * const dialognames[] = {
+
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
-"citation", "compare", "document", "errorlist", "ert", "external",
-"file", "findreplace", "findreplaceadv", "float", "graphics", "href",
-"include", "index", "index_print", "info", "listings", "label", "line",
+"citation", "compare", "comparehistory", "document", "errorlist", "ert",
+"external", "file", "findreplace", "findreplaceadv", "float", "graphics",
+"href", "include", "index", "index_print", "info", "listings", "label", "line",
 "log", "mathdelimiter", "mathmatrix", "mathspace", "nomenclature",
 "nomencl_print", "note", "paragraph", "phantom", "prefs", "print", "ref",
 "sendto", "space", "spellchecker", "symbols", "tabular", "tabularcreate",
-"thesaurus", "texinfo", "toc", "view-source", "vspace", "wrap",
-"progress"};
+"thesaurus", "texinfo", "toc", "view-source", "vspace", "wrap", "progress"};
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -3643,6 +3647,7 @@ Dialog * createGuiChanges(GuiView & lv);
 Dialog * createGuiCharacter(GuiView & lv);
 Dialog * createGuiCitation(GuiView & lv);
 Dialog * createGuiCompare(GuiView & lv);
+Dialog * createGuiCompareHistory(GuiView & lv);
 Dialog * createGuiDelimiter(GuiView & lv);
 Dialog * createGuiDocument(GuiView & lv);
 Dialog * createGuiErrorList(GuiView & lv);
@@ -3701,6 +3706,8 @@ Dialog * GuiView::build(string const & name)
 		return createGuiCitation(*this);
 	if (name == "compare")
 		return createGuiCompare(*this);
+	if (name == "comparehistory")
+		return createGuiCompareHistory(*this);
 	if (name == "document")
 		return createGuiDocument(*this);
 	if (name == "errorlist")
