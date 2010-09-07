@@ -18876,15 +18876,35 @@ A friend of mine wanted to try LyX for a group project.
  it.
  This angered me a bit, so I thought that I should at least make support
  for RCS (with the possibility of CVS and/or SCCS as a future improvement.)
- This has now been done.
- LyX now supports some of the most basic RCS commands.
- If you need to something a bit more sophisticated you will have to do that
+ This has been done.
+ LyX now supports some of the most basic RCS/CVS/SVN commands.
+ If you need something a bit more sophisticated you will have to do that
  manually in a terminal.
 \end_layout
 
 \begin_layout Standard
 Before you begin to use the version control features in LyX, you should
- read 
+ be familiar with RCS/CVS/SVN usage before start using it under LyX.
+ Also note that CVS support was obsoloted by introducing subversion support
+ so we advice using SVN instead.
+ Good place to start with Subversion is SVN Book
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://svnbook.red-bean.com/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ In case of RCS you should read 
 \begin_inset Quotes eld
 \end_inset
 
@@ -18907,15 +18927,10 @@ man rcsintro
 \end_layout
 
 \begin_layout Standard
-Later basic CVS/SVN support was added.
- You should be familiar with CVS/SVN usage before start using it under LyX.
- Most of the log messages are not currently displayed after operations -
- you can check them in Messages pane if unsure.
-\end_layout
-
-\begin_layout Standard
 The implementation in LyX assumes a recent version of the GNU RCS or CVS/SVN
  package—no guarantees are made for older versions.
+ Most of the log messages are not currently displayed after operations -
+ you can check them in Messages pane if unsure.
 \end_layout
 
 \begin_layout Standard
@@ -19293,7 +19308,7 @@ Control
  ssh, you will be asked in terminal window.
  LyX was tested against SVN 1.5 and 1.6
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Most of the commands will work with 1.4 too, see 
