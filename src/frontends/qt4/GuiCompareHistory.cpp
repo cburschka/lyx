@@ -60,7 +60,7 @@ bool GuiCompareHistory::initialiseParams(std::string const &)
 	okPB->setEnabled(rev);
 	rev1SB->setMaximum(rev);
 	rev2SB->setMaximum(rev);
-	revbackSB->setMaximum(rev);
+	revbackSB->setMaximum(rev-1);
 	rev2SB->setValue(rev);
 	rev1SB->setValue(rev-1);
 
