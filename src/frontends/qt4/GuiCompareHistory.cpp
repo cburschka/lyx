@@ -9,6 +9,7 @@
  */
 
 #include <config.h>
+#include <support/debug.h>
 
 #include "GuiCompareHistory.h"
 
@@ -48,8 +49,11 @@ bool GuiCompareHistory::initialiseParams(std::string const &)
 {
 	string revstring = lyxview().currentBufferView()->buffer().lyxvc().revisionInfo(LyXVC::File);
 	int rev=0;
-	if (prefixIs(revstring, "r"))
-		revstring = ltrim(revstring,"r");
+
+	string tmp;
+	// RCS case
+	if (!isStrInt(revstring))
+		revstring = rsplit(revstring, tmp , '.' );
 	if (isStrInt(revstring))
 		rev = convert<int>(revstring);
 
