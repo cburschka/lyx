@@ -42,8 +42,11 @@ GuiCompareHistory::GuiCompareHistory(GuiView & lv)
 
 	connect(revbackRB, SIGNAL(clicked()), this, SLOT(selectRevback()));
 	connect(betweenrevRB, SIGNAL(clicked()), this, SLOT(selectBetweenrev()));
+}
 
-	string revstring = lv.currentBufferView()->buffer().lyxvc().revisionInfo(LyXVC::File);
+bool GuiCompareHistory::initialiseParams(std::string const &)
+{
+	string revstring = lyxview().currentBufferView()->buffer().lyxvc().revisionInfo(LyXVC::File);
 	int rev=0;
 	if (prefixIs(revstring, "r"))
 		revstring = ltrim(revstring,"r");
@@ -61,6 +64,7 @@ GuiCompareHistory::GuiCompareHistory(GuiView & lv)
 	//bc().setOK(okPB);
 	//bc().setCancel(cancelPB);
 	enableControls();
+	return true;
 }
 
 
