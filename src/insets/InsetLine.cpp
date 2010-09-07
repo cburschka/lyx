@@ -164,7 +164,7 @@ void InsetLine::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-int InsetLine::latex(odocstream & os, OutputParams const & runparams) const
+int InsetLine::latex(odocstream & os, OutputParams const &) const
 {
 	bool have_offset = true;
 	Length offset_len = Length(to_ascii(getParam("offset")));
