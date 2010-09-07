@@ -95,6 +95,7 @@ SOURCEFILES = \
 	GuiInfo.cpp \
 	GuiKeySymbol.cpp \
 	GuiLabel.cpp \
+	GuiLine.cpp \
 	GuiListings.cpp \
 	GuiLog.cpp \
 	GuiMathMatrix.cpp \
@@ -199,6 +200,7 @@ MOCHEADER = \
 	GuiIndices.h \
 	GuiInfo.h \
 	GuiLabel.h \
+	GuiLine.h \
 	GuiListings.h \
 	GuiLog.h \
 	GuiMathMatrix.h \
@@ -280,6 +282,7 @@ UIFILES = \
 	LabelUi.ui \
 	LanguageUi.ui \
 	LaTeXUi.ui \
+	LineUi.ui \
 	ListingsUi.ui \
 	ListingsSettingsUi.ui \
 	LocalLayoutUi.ui \

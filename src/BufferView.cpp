@@ -1027,6 +1027,7 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_FONT_STATE:
 	case LFUN_LABEL_INSERT:
+	case LFUN_LINE_INSERT:
 	case LFUN_INFO_INSERT:
 	case LFUN_PARAGRAPH_GOTO:
 	case LFUN_NOTE_NEXT:

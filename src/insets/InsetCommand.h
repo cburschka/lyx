@@ -55,6 +55,8 @@ public:
 	///
 	void setParam(std::string const & name, docstring const & value);
 	///
+	Dimension const dimension(BufferView const &) const { return button_.dimension(); }
+	///
 	docstring const & getParam(std::string const & name) const;
 	/// FIXME Remove
 	docstring const getFirstNonOptParam() const { return p_.getFirstNonOptParam(); }
@@ -86,8 +88,6 @@ protected:
 private:
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
-	///
-	Dimension const dimension(BufferView const &) const { return button_.dimension(); }
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

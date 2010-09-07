@@ -2078,6 +2078,90 @@ def revert_mathdots(document):
       break
 
 
+def convert_rule(document):
+    " Convert \\lyxline to CommandInset line "
+    i = 0
+    while True:
+      i = find_token(document.body, "\\lyxline" , i)
+      if i != -1:
+        j = find_token(document.body, "\\color" , i - 2)
+        if j == i - 2:
+          color = document.body[j] + '\n'
+        else:
+          color = ''
+        k = find_token(document.body, "\\begin_layout Standard" , i - 4)
+        # we need to handle the case that \lyxline is in a separate paragraph and that it is colored
+        # the result is then an extra empty paragraph which we get by adding an empty ERT inset
+        if k == i - 4 and j == i - 2 and document.body[i - 1] == '':
+          layout = '\\begin_inset ERT\nstatus collapsed\n\n\\begin_layout Plain Layout\n\n\n\\end_layout\n\n\\end_inset\n' \
+            + '\\end_layout\n\n' \
+            + '\\begin_layout Standard\n'
+        elif k == i - 2 and document.body[i - 1] == '':
+          layout = ''
+        else:
+          layout = '\\end_layout\n\n' \
+            + '\\begin_layout Standard\n'
+        l = find_token(document.body, "\\begin_layout Standard" , i + 4)
+        if l == i + 4 and document.body[i + 1] == '':
+          layout2 = ''
+        else:
+          layout2 = '\\end_layout\n' \
+            + '\n\\begin_layout Standard\n'
+        subst = layout \
+          + '\\noindent\n\n' \
+          + color \
+          + '\\begin_inset CommandInset line\n' \
+          + 'LatexCommand rule\n' \
+          + 'offset "0.5ex"\n' \
+          + 'width "100line%"\n' \
+          + 'height "1pt"\n' \
+          + '\n\\end_inset\n\n\n' \
+          + layout2
+        document.body[i] = subst
+        i += 1
+      else:
+        return
+
+
+def revert_rule(document):
+    " Revert line insets to Tex code "
+    i = 0
+    while 1:
+      i = find_token(document.body, "\\begin_inset CommandInset line" , i)
+      if i != -1:
+        # find end of inset
+        j = find_token(document.body, "\\end_inset" , i)
+        # assure we found the end_inset of the current inset
+        if j > i + 6 or j == -1:
+          document.warning("Malformed LyX document: Can't find end of line inset.")
+          return
+        # determine the optional offset
+        k = find_token(document.body, 'offset', i)
+        if k != -1 and k < j:
+          offset = document.body[k][8:]
+        else:
+          offset = '0"'
+        # determine the width
+        l = find_token(document.body, 'width', k + 1)
+        width = document.body[l][7:]
+        # determine the height
+        m = find_token(document.body, 'height', l + 1)
+        height = document.body[m][8:]
+        # remove trailing '"'
+        offset = offset[:-1]
+        width = width[:-1]
+        height = height[:-1]
+        # output the \rule command
+        if offset <> "0":
+          subst = "\\rule[" + offset + "]{" + width + "}{" + height + "}"
+        else:
+          subst = "\\rule{" + width + "}{" + height + "}"
+        document.body[i:j + 1] = put_cmd_in_ert(subst)
+        i += 1
+      else:
+        return
+
+
 ##
 # Conversion hub
 #
@@ -2136,10 +2220,12 @@ convert = [[346, []],
            [396, []],
            [397, [remove_Nameref]],
            [398, []],
-           [399, [convert_mathdots]]
+           [399, [convert_mathdots]],
+           [400, [convert_rule]]
           ]
 
-revert =  [[398, [revert_mathdots]],
+revert =  [[399, [revert_rule]],
+           [398, [revert_mathdots]],
            [397, [revert_mathrsfs]],
            [396, []],
            [395, [revert_nameref]],

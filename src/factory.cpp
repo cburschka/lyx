@@ -82,9 +82,6 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 
 		switch (cmd.action()) {
 
-		case LFUN_LINE_INSERT:
-			return new InsetLine;
-
 		case LFUN_NEWPAGE_INSERT: {
 			string const name = cmd.getArg(0);
 			InsetNewpageParams inp;
@@ -292,6 +289,12 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 				return new InsetLabel(buf, icp);
 			}
 			
+			case LINE_CODE: {
+				InsetCommandParams icp(code);
+				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
+				return new InsetLine(buf, icp);
+			}
+				
 			case LISTINGS_CODE: {
 				InsetListingsParams par;
 				InsetListings::string2params(to_utf8(cmd.argument()), par);
@@ -489,6 +492,9 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 				break;
 			case LABEL_CODE:
 				inset.reset(new InsetLabel(buf, inscmd));
+				break;
+			case LINE_CODE:
+				inset.reset(new InsetLine(buf, inscmd));
 				break;
 			case NOMENCL_CODE:
 				inset.reset(new InsetNomencl(buf, inscmd));

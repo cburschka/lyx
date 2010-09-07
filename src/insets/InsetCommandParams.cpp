@@ -23,6 +23,7 @@
 #include "InsetInclude.h"
 #include "InsetIndex.h"
 #include "InsetLabel.h"
+#include "InsetLine.h"
 #include "InsetNomencl.h"
 #include "InsetRef.h"
 #include "InsetTOC.h"
@@ -70,6 +71,8 @@ static ParamInfo const & findInfo(InsetCode code, string const & cmdName)
 		return InsetPrintIndex::findInfo(cmdName);
 	case LABEL_CODE:
 		return InsetLabel::findInfo(cmdName);
+	case LINE_CODE:
+		return InsetLine::findInfo(cmdName);
 	case NOMENCL_CODE:
 		return InsetNomencl::findInfo(cmdName);
 	case NOMENCL_PRINT_CODE:
@@ -200,6 +203,8 @@ string InsetCommandParams::getDefaultCmd(InsetCode code)
 			return InsetPrintIndex::defaultCommand();
 		case LABEL_CODE:
 			return InsetLabel::defaultCommand();
+		case LINE_CODE:
+			return InsetLine::defaultCommand();
 		case NOMENCL_CODE:
 			return InsetNomencl::defaultCommand();
 		case NOMENCL_PRINT_CODE:
@@ -234,6 +239,8 @@ bool InsetCommandParams::isCompatibleCommand(InsetCode code, string const & s)
 			return InsetPrintIndex::isCompatibleCommand(s);
 		case LABEL_CODE:
 			return InsetLabel::isCompatibleCommand(s);
+		case LINE_CODE:
+			return InsetLine::isCompatibleCommand(s);
 		case NOMENCL_CODE:
 			return InsetNomencl::isCompatibleCommand(s);
 		case NOMENCL_PRINT_CODE:

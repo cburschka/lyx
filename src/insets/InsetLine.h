@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author André Pönitz
+ * \author Uwe Stöhr
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -14,16 +15,36 @@
 
 
 #include "Inset.h"
+#include "InsetCommand.h"
 
 
 namespace lyx {
 
-class InsetLine : public Inset {
+class LaTeXFeatures;
+
+class InsetLine : public InsetCommand {
 public:
 	///
-	InsetLine() : Inset(0) {}
+	InsetLine(Buffer * buf, InsetCommandParams const &);
+	///
+	int docbook(odocstream &, OutputParams const &) const;
+	/// Does nothing at the moment.
+	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	InsetCode lyxCode() const { return LINE_CODE; }
+	///
+	bool hasSettings() const { return true; }
+	///
+	docstring screenLabel() const;
+	///
+	static ParamInfo const & findInfo(std::string const &);
+	///
+	static std::string defaultCommand() { return "rule"; };
+	///
+	static bool isCompatibleCommand(std::string const & s) 
+		{ return s == "rule"; }
+	
+private:
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -33,20 +54,10 @@ public:
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(odocstream &, OutputParams const &) const;
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	///
-	void read(Lexer & lex);
-	///
-	void write(std::ostream & os) const;
-	/// We don't need \begin_inset and \end_inset
-	bool directWrite() const { return true; }
-	///
-	DisplayType display() const { return AlignCenter; }
-	///
-	void validate(LaTeXFeatures & features) const;
-private:
 	Inset * clone() const { return new InsetLine(*this); }
 };
 

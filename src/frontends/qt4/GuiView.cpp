@@ -3457,13 +3457,14 @@ namespace {
 
 char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
-"citation", "compare", "document", "errorlist", "ert", "external", "file",
-"findreplace", "findreplaceadv", "float", "graphics", "href", "include",
-"index", "index_print", "info", "listings", "label", "log", "mathdelimiter",
-"mathmatrix", "mathspace", "nomenclature", "nomencl_print", "note",
-"paragraph", "phantom", "prefs", "print", "ref", "sendto", "space",
-"spellchecker", "symbols", "tabular", "tabularcreate", "thesaurus", "texinfo",
-"toc", "view-source", "vspace", "wrap", "progress"};
+"citation", "compare", "document", "errorlist", "ert", "external",
+"file", "findreplace", "findreplaceadv", "float", "graphics", "href",
+"include", "index", "index_print", "info", "listings", "label", "line",
+"log", "mathdelimiter", "mathmatrix", "mathspace", "nomenclature",
+"nomencl_print", "note", "paragraph", "phantom", "prefs", "print", "ref",
+"sendto", "space", "spellchecker", "symbols", "tabular", "tabularcreate",
+"thesaurus", "texinfo", "toc", "view-source", "vspace", "wrap",
+"progress"};
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -3650,6 +3651,7 @@ Dialog * createGuiGraphics(GuiView & lv);
 Dialog * createGuiInclude(GuiView & lv);
 Dialog * createGuiIndex(GuiView & lv);
 Dialog * createGuiLabel(GuiView & lv);
+Dialog * createGuiLine(GuiView & lv);
 Dialog * createGuiListings(GuiView & lv);
 Dialog * createGuiLog(GuiView & lv);
 Dialog * createGuiMathMatrix(GuiView & lv);
@@ -3723,6 +3725,8 @@ Dialog * GuiView::build(string const & name)
 		return createGuiPrintindex(*this);
 	if (name == "label")
 		return createGuiLabel(*this);
+	if (name == "line")
+		return createGuiLine(*this);
 	if (name == "listings")
 		return createGuiListings(*this);
 	if (name == "log")

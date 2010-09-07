@@ -60,11 +60,6 @@ namespace lyx {
 static docstring const lyx_def = from_ascii(
 	"\\providecommand{\\LyX}{L\\kern-.1667em\\lower.25em\\hbox{Y}\\kern-.125emX\\@}");
 
-static docstring const lyxline_def = from_ascii(
-	"\\newcommand{\\lyxline}[1][1pt]{%\n"
-	"  \\par\\noindent%\n"
-	"  \\rule[.5ex]{\\linewidth}{#1}\\par}");
-
 static docstring const noun_def = from_ascii(
 	"\\newcommand{\\noun}[1]{\\textsc{#1}}");
 
@@ -804,9 +799,6 @@ docstring const LaTeXFeatures::getMacros() const
 
 	if (mustProvide("LyX"))
 		macros << lyx_def << '\n';
-
-	if (mustProvide("lyxline"))
-		macros << lyxline_def << '\n';
 
 	if (mustProvide("noun"))
 		macros << noun_def << '\n';

@@ -29,6 +29,7 @@
 #include "insets/InsetFloat.h"
 #include "insets/InsetGraphics.h"
 #include "insets/InsetInclude.h"
+#include "insets/InsetLine.h"
 #include "insets/InsetListings.h"
 #include "insets/InsetNote.h"
 #include "insets/InsetPhantom.h"
@@ -260,6 +261,7 @@ bool decodeInsetParam(string const & name, string & data,
 	case BIBTEX_CODE:
 	case INDEX_CODE:
 	case LABEL_CODE:
+	case LINE_CODE:
 	case NOMENCL_CODE:
 	case NOMENCL_PRINT_CODE:
 	case REF_CODE:

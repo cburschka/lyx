@@ -53,7 +53,6 @@
 #include "insets/InsetText.h"
 #include "insets/InsetBibitem.h"
 #include "insets/InsetCaption.h"
-#include "insets/InsetLine.h"
 #include "insets/InsetNewline.h"
 #include "insets/InsetNewpage.h"
 #include "insets/InsetArgument.h"
@@ -451,11 +450,6 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 	} else if (token == "\\LyXTable") {
 		auto_ptr<Inset> inset(new InsetTabular(buf));
 		inset->read(lex);
-		par.insertInset(par.size(), inset.release(), font, change);
-	} else if (token == "\\lyxline") {
-		auto_ptr<Inset> inset;
-		inset.reset(new InsetLine);
-		inset->setBuffer(*buf);
 		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\change_unchanged") {
 		change = Change(Change::UNCHANGED);

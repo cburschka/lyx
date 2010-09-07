@@ -1548,6 +1548,22 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_LINE_INSERT: {
+		InsetCommandParams p(LINE_CODE);
+		p["offset"] = from_ascii(".5ex");
+		p["width"] = from_ascii("100col%");
+		p["height"] = from_ascii("1pt");
+		string const data = InsetCommand::params2string("line", p);
+
+		if (cmd.argument().empty()) {
+			bv->showDialog("line", data);
+		} else {
+			FuncRequest fr(LFUN_INSET_INSERT, data);
+			dispatch(cur, fr);
+		}
+		break;
+	}
+
 	case LFUN_INFO_INSERT: {
 		Inset * inset;
 		if (cmd.argument().empty() && cur.selection()) {
@@ -1672,7 +1688,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	
 	case LFUN_NOMENCL_PRINT:
 	case LFUN_TOC_INSERT:
-	case LFUN_LINE_INSERT:
 	case LFUN_NEWPAGE_INSERT:
 		// do nothing fancy
 		doInsertInset(cur, this, cmd, false, false);
@@ -2229,6 +2244,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			code = NOMENCL_PRINT_CODE;
 		else if (cmd.argument() == "label")
 			code = LABEL_CODE;
+		else if (cmd.argument() == "line")
+			code = LINE_CODE;
 		else if (cmd.argument() == "note")
 			code = NOTE_CODE;
 		else if (cmd.argument() == "phantom")
