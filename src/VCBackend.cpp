@@ -293,8 +293,12 @@ bool RCS::prepareFileRevision(string const &revis, string & f)
 
 	if (isStrInt(rev)) {
 		int back = convert<int>(rev);
-		if (back > 0)
-			return false;
+		// if positive use as the last number in the whole revision string
+		if (back > 0) {
+			string base;
+			rsplit(version_, base , '.' );
+			rev = base + "." + rev;
+		}
 		if (back == 0)
 			rev = version_;
 		// we care about the last number from revision string

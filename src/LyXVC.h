@@ -111,6 +111,9 @@ public:
 	 * which is interpreted as how many revision back from the current
 	 * one do we want. rev=0 is reserved for the last (committed) revision.
 	 * We need rev to be string, since in various VCS revision is not integer.
+	 * If RCS addressed by a single number, it is automatically used
+	 * as the last number in the whole revision specification (it applies
+	 * for retrieving normal revisions (rev>0) or backtracking (rev<0).
 	 */
 	bool prepareFileRevision(std::string const & rev, std::string & f);
 	/// Does the current VC supports this operation?
