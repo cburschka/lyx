@@ -62,6 +62,7 @@ GuiCompare::GuiCompare(GuiView & lv)
 		this, SLOT(changeAdaptor()));
 
 	newSettingsRB->setChecked(true);
+	trackingCB->setChecked(true);
 
 	closePB->setCursor(Qt::ArrowCursor);
 
@@ -220,6 +221,10 @@ void GuiCompare::finished(bool aborted)
 		if (dest_buffer_) {
 			dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
 				dest_buffer_->absFileName()));
+			if (trackingCB->isChecked()) {
+				dispatch(FuncRequest(LFUN_CHANGES_OUTPUT));
+				dispatch(FuncRequest(LFUN_CHANGES_TRACK));
+			}
 		}
 		statusBar->showMessage(qt_("Finished"), 5000);
 	}

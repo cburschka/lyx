@@ -1,106 +1,106 @@
-<ui version="4.0">
+<ui version="4.0" >
  <class>CompareUi</class>
- <widget class="QDialog" name="CompareUi">
-  <property name="geometry">
+ <widget class="QDialog" name="CompareUi" >
+  <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
     <width>450</width>
-    <height>246</height>
+    <height>294</height>
    </rect>
   </property>
-  <property name="windowTitle">
+  <property name="windowTitle" >
    <string/>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="newFileLA">
-     <property name="text">
+  <layout class="QGridLayout" name="gridLayout" >
+   <item row="0" column="0" >
+    <widget class="QLabel" name="newFileLA" >
+     <property name="text" >
       <string>&amp;New Document:</string>
      </property>
-     <property name="buddy">
+     <property name="buddy" >
       <cstring>newFileCB</cstring>
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QComboBox" name="newFileCB">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+   <item row="1" column="0" >
+    <widget class="QComboBox" name="newFileCB" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="editable">
+     <property name="editable" >
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QPushButton" name="newFilePB">
-     <property name="text">
+   <item row="1" column="1" >
+    <widget class="QPushButton" name="newFilePB" >
+     <property name="text" >
       <string>&amp;Browse...</string>
      </property>
-     <property name="autoDefault">
+     <property name="autoDefault" >
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="oldFileLA">
-     <property name="text">
+   <item row="2" column="0" >
+    <widget class="QLabel" name="oldFileLA" >
+     <property name="text" >
       <string>&amp;Old Document:</string>
      </property>
-     <property name="buddy">
+     <property name="buddy" >
       <cstring>oldFileCB</cstring>
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
-    <widget class="QComboBox" name="oldFileCB">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+   <item row="3" column="0" >
+    <widget class="QComboBox" name="oldFileCB" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="editable">
+     <property name="editable" >
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
-    <widget class="QPushButton" name="oldFilePB">
-     <property name="text">
+   <item row="3" column="1" >
+    <widget class="QPushButton" name="oldFilePB" >
+     <property name="text" >
       <string>Bro&amp;wse...</string>
      </property>
-     <property name="autoDefault">
+     <property name="autoDefault" >
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="4" column="0">
-    <widget class="QGroupBox" name="groupBox">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+   <item row="4" column="0" >
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="title">
+     <property name="title" >
       <string>Copy Document Settings from:</string>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout" >
       <item>
-       <widget class="QRadioButton" name="newSettingsRB">
-        <property name="text">
+       <widget class="QRadioButton" name="newSettingsRB" >
+        <property name="text" >
          <string>N&amp;ew Document</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="oldSettingsRB">
-        <property name="text">
+       <widget class="QRadioButton" name="oldSettingsRB" >
+        <property name="text" >
          <string>Ol&amp;d Document</string>
         </property>
        </widget>
@@ -108,27 +108,27 @@
      </layout>
     </widget>
    </item>
-   <item row="5" column="0" colspan="2">
-    <widget class="QProgressBar" name="progressBar">
-     <property name="value">
+   <item row="6" column="0" colspan="2" >
+    <widget class="QProgressBar" name="progressBar" >
+     <property name="value" >
       <number>24</number>
      </property>
-     <property name="orientation">
+     <property name="orientation" >
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
-   <item row="6" column="0" colspan="2">
-    <layout class="QHBoxLayout">
+   <item row="8" column="0" colspan="2" >
+    <layout class="QHBoxLayout" >
      <item>
       <spacer>
-       <property name="orientation">
+       <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeType">
+       <property name="sizeType" >
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" stdset="0">
+       <property name="sizeHint" stdset="0" >
         <size>
          <width>20</width>
          <height>20</height>
@@ -137,40 +137,53 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="okPB">
-       <property name="toolTip">
+      <widget class="QPushButton" name="okPB" >
+       <property name="toolTip" >
         <string/>
        </property>
-       <property name="text">
+       <property name="text" >
         <string>&amp;OK</string>
        </property>
-       <property name="default">
+       <property name="default" >
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="closePB">
-       <property name="text">
+      <widget class="QPushButton" name="closePB" >
+       <property name="text" >
         <string>&amp;Close</string>
        </property>
-       <property name="autoDefault">
+       <property name="autoDefault" >
         <bool>false</bool>
        </property>
-       <property name="default">
+       <property name="default" >
         <bool>false</bool>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="7" column="0" colspan="2">
-    <widget class="QStatusBar" name="statusBar"/>
+   <item row="9" column="0" colspan="2" >
+    <widget class="QStatusBar" name="statusBar" />
+   </item>
+   <item row="5" column="0" >
+    <widget class="QCheckBox" name="trackingCB" >
+     <property name="toolTip" >
+      <string>Turns on the change tracking and showing changes in LaTeX output for the resulting document</string>
+     </property>
+     <property name="text" >
+      <string>Enable &amp;change tracking features in the output</string>
+     </property>
+     <property name="checked" >
+      <bool>false</bool>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
  <includes>
-  <include location="local">qt_i18n.h</include>
+  <include location="local" >qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>
