@@ -332,7 +332,7 @@ bool GuiCompare::initialiseParams(std::string const &par)
 
 	progressBar->setValue(0);
 	progressBar->setEnabled(false);
-	progressBar->setMaximum(100);
+	progressBar->setMaximum(1);
 
 	return true;
 }
