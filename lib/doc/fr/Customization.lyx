@@ -1,4 +1,4 @@
-#LyX 1.6.7svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -40,6 +40,9 @@
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \use_default_options false
+\begin_modules
+logicalmkup
+\end_modules
 \language french
 \inputencoding auto
 \font_roman default
@@ -120,17 +123,29 @@ par l'Équipe LyX
 status collapsed
 
 \begin_layout Plain Layout
-Le principal responsable de la rédaction de ce fichier est 
-\noun on
-Mike Ressler
-\noun default
-.
- Merci d'envoyer vos commentaires et corrections à la liste de diffusion
+Merci d'envoyer vos commentaires et corrections à la liste de diffusion
  de la documentation de LyX, 
 \family typewriter
-<lyx-docs@lists.lyx.org>
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+
+\end_inset
+
+
 \family default
 .
+ Insérer 
+\begin_inset Quotes fld
+\end_inset
+
+[Customization]
+\begin_inset Quotes frd
+\end_inset
+
+ da&ns l'objet, et mettre en copie le responsable courant de ce fichier,
+ Richard Heck <rgheck@comcast.net>.
 \begin_inset Newline newline
 \end_inset
 
@@ -147,13 +162,17 @@ Adrien
 \noun on
 Rebollo
 \noun default
- 
-\family typewriter
-<adrien.rebollo@gmx.fr>
-\family default
+, Siegfried 
+\noun on
+Meunier-Guttin-Cluzel
+\noun default
+, Jean-Pierre 
+\noun on
+Chrétien
+\noun default
 .
- Merci d'envoyer vos commentaires et corrections sur la traduction à cette
- dernière adresse ou à la liste de diffusion de LyX en français 
+ Merci d'envoyer vos commentaires et corrections sur la traduction à la
+ liste de diffusion de LyX en français 
 \family typewriter
 <lyx-fr@lists.lyx.org>
 \family default
@@ -219,12 +238,36 @@ de
 
 LyX
 \family default
- pour connaître le répertoire de bibliothèques de LyX.
- C'est dans celui-ci que LyX place ses fichiers de configuration système.
- Il sera appelé 
+ pour connaître le répertoire de bibliothèques et le répertoire utilisateur
+ de LyX.
+ C'est dans celui-ci que LyX place ses fichiers de configuration système;
+ le répertoire utilisateur est celui dans leauel vous pouvez mettre vos
+ versions modifiées Le premier sera appelé 
+\family typewriter
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
 \family typewriter
 RépLyX
+\end_layout
+
+\end_inset
+
+
 \family default
+ et le second 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+MonRép
+\end_layout
+
+\end_inset
+
  dans la suite de ce document.
 \end_layout
 
@@ -324,6 +367,51 @@ layout/
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+lyxmodules.lst
+\end_layout
+
+\end_inset
+
+ donne la liste des modules figurant dans vos répertoires de format (
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+layout
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+*files.lst
+\end_layout
+
+\end_inset
+
+ donne la liste de différentes sortes de fichiers connexes à LaTeX figurant
+ dans votre système.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family typewriter
 doc/LaTeXConfig.lyx
@@ -338,6 +426,41 @@ LaTeXConfig.lyx.in
 
 \begin_layout Subsection
 Répertoires
+\end_layout
+
+\begin_layout Standard
+Ces répertoires figurent à la fois dans 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+RépLyx
+\end_layout
+
+\end_inset
+
+ et dans 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+MonRép
+\end_layout
+
+\end_inset
+
+.
+ Si un fichier existe dans les deux répertoires, c'est celui de 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+MonRép
+\end_layout
+
+\end_inset
+
+ qui sera utilisé.
 \end_layout
 
 \begin_layout Labeling
@@ -445,12 +568,11 @@ Ouvrir
 \family typewriter
 images/
 \family default
- contient les fichiers d'images utilisés dans la fenêtre 
+ contient les fichiers d'images utilisés dans l'interface 
 \family sans
-Format\SpecialChar \menuseparator
 Document
 \family default
- (pour les puces).
+.
  Il contient également les icônes utilisées dans la barre d'outils et les
  bannières affichées au démarrage de LyX.
 \end_layout
@@ -487,7 +609,7 @@ reference "sec:clavier"
 layouts/
 \family default
 \series default
- contient les classes de texte décrites au chapitre
+ contient les classes de texte et les fichiers de modules décrits au chapitre
 \begin_inset space ~
 \end_inset
 
@@ -499,6 +621,36 @@ reference "chap:classe-texte"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+lyx2lyx
+\end_layout
+
+\end_inset
+
+ contient les scripts Python 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+lyx2lyx
+\end_layout
+
+\end_inset
+
+ permettant d'effectruer les conversions entre versions de LyX.
+ Ils peuvent être exécutés depuis la ligne de commande, si vous désirez
+ par exemple faire un traitement par lots.
 \end_layout
 
 \begin_layout Labeling
@@ -537,19 +689,6 @@ reference "sec:modeles"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family typewriter
-tex/
-\family default
- contient quelques fichiers LaTeX 
-\family typewriter
-.cls
-\family default
- distribués avec LyX.
 \end_layout
 
 \begin_layout Labeling
@@ -669,7 +808,7 @@ Même si vous utilisez LyX sans être le super-utilisateur, vous pouvez avoir
  envie de modifier la configuration de LyX pour votre usage personnel.
  Le répertoire 
 \family typewriter
-RépUtilisateur
+MonRép
 \family default
  contient les fichiers personnels de configuration.
  C'est le répertoire qui est décrit comme 
@@ -704,7 +843,7 @@ RépLyX
 \family default
 , et chaque fichier qui se trouve dans 
 \family typewriter
-RépUtilisateur
+MonRép
 \family default
  remplace par conséquent le fichier correspondant de 
 \family typewriter
@@ -724,7 +863,7 @@ Pour éclaircir la situation, voici quelques exemples :
 \begin_layout Itemize
 Les réglages effectués dans la fenêtre 
 \family sans
-Éditer\SpecialChar \menuseparator
+Outils\SpecialChar \menuseparator
 Préférences
 \family default
  sont enregistrés dans un fichier 
@@ -733,7 +872,7 @@ preferences
 \family default
  dans 
 \family typewriter
-RépUtilisateur
+MonRép
 \family default
 .
 \end_layout
@@ -741,55 +880,29 @@ RépUtilisateur
 \begin_layout Itemize
 Quand vous re-configurez LyX avec 
 \family sans
-Éditer\SpecialChar \menuseparator
+Outils\SpecialChar \menuseparator
 
 \bar under
 R
 \bar default
 econfigurer
 \family default
-, LyX fait tourner 
+, LyX fait tourner le script 
 \family typewriter
-configure
+configure.py
 \family default
  et les fichiers résultants sont placés dans votre répertoire personnel
  de configuration.
  Ça signifie que les nouvelles classes de texte que vous avez pu ajouter
  dans 
 \family typewriter
-RépUtilisateur/layouts
+MonRép/layouts
 \family default
  seront ajoutées à la liste des classes de la fenêtre 
 \family sans
-Format\SpecialChar \menuseparator
 Document\SpecialChar \menuseparator
-Document
+Paramètres
 \family default
-.
- 
-\end_layout
-
-\begin_layout Itemize
-De la même façon, si vous avez installé des classes de document dans votre
- répertoire personnel, et que LaTeX peut les trouver avec la variable d'environn
-ement 
-\family typewriter
-TEXINPUTS
-\family default
-, elles seront affichés dans la liste des classes de texte
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-pour peu qu'un fichier 
-\family typewriter
-.layout
-\family default
- soit prévu pour, dans LyX lui-même ou écrit par vos soins.
-\end_layout
-
-\end_inset
-
 .
  
 \end_layout
@@ -799,7 +912,7 @@ Si vous récupérez sur le site ftp de LyX des fichiers de documentation mis
  à jour et que vous n'êtes pas administrateur sur votre système, vous pouvez
  placer ces fichiers dans 
 \family typewriter
-RépUtilisateur/doc/
+MonRép/doc/
 \family default
  et ils seront ouverts directement à partir du menu d'
 \family sans
@@ -845,26 +958,25 @@ Si vous lancez LyX avec l'option de ligne de commande
  et non dans le répertoire par défaut (en lançant LyX sans cette option
  vous pouvez déterminer le répertoire par défaut).
  Si ce répertoire n'existe pas, LyX vous propose de le créer, exactement
- comme il le fait avec le répertoire par défaut au premier lancement du
- programme.
+ comme il le fait avec le répertoire implicite au premier lancement du programme.
  Vous pouvez modifier les options de configuration dans ce 
 \family typewriter
-RépUtilisateur
+MonNouveauRép
 \family default
- supplémentaire exactement comme vous le feriez pour le répertoire par défaut.
+ supplémentaire exactement comme vous le feriez pour le répertoire implicite.
  Ces répertoires sont complètement indépendants (mais lisez la suite).
- Notez que la variable d'environnement 
+ Notez que positionner la variable d'environnement 
 \family typewriter
 LYX_USERDIR_16x
 \family default
- a exactement le même rôle.
+ a exactement le même effet.
 \end_layout
 
 \begin_layout Standard
-Quand vous avez plusieurs configurations, vous devez faire plus attention
- : si vous voulez ajouter un nouveau format dans 
+Quand vous avez plusieurs configurations, vous devez faire plus attention:
+ si vous voulez ajouter un nouveau format dans 
 \family typewriter
-RépUtilisateur/layouts
+MonNouveauRép/layouts
 \family default
 , pour qu'il soit disponible dans toutes vos configurations, vous devez
  l'ajouter dans chaque répertoire séparément.
@@ -881,7 +993,7 @@ doc/
 , car il contient un fichier écrit par le script de configuration (accessible
  avec 
 \family sans
-Éditer\SpecialChar \menuseparator
+Outils\SpecialChar \menuseparator
 Reconfigurer
 \family default
 ) qui est propre à chaque configuration.
@@ -898,18 +1010,16 @@ Tous les options de la fenêtre
 \family sans
 Préférences
 \family default
- sont expliquer en l'appendice 
+ sont expliquées dans l'appendice 
 \emph on
 La fenêtre Préférences
 \emph default
- en le 
+ du 
 \emph on
 Guide de l'utilisateur
 \emph default
 .
- 
-\lang english
-For some options you might find here more details.
+ Pour certaines options, vous trouverez ici plus de précisions.
 \end_layout
 
 \begin_layout Section
@@ -919,11 +1029,11 @@ Utiliser la fenêtre pour la première fois
 \begin_layout Standard
 Le nouveau fichier 
 \family typewriter
-RépUtilisateur/preferences
+MonRép/preferences
 \family default
- ne contient que les changements que vous avez apporté au comportement par
- défaut, dont une partie est directement déterminée par le code de LyX et
- une partie est déterminée par le fichier système 
+ ne contient que les changements que vous avez apporté au comportement implicite
+, dont une partie est directement déterminée par le code de LyX et une partie
+ est déterminée par le fichier système 
 \family typewriter
 RépLyX/lyxrc.defaults
 \family default
@@ -953,7 +1063,7 @@ Préférences
 \family default
  pour créer et modifier leur propre fichier 
 \family typewriter
-RépUtilisateur/preferences
+MonRép/preferences
 \family default
 .
 \end_layout
@@ -6252,7 +6362,7 @@ xedit
 \begin_layout Standard
 Mettez les fichiers modèles que vous avez créés et édités dans 
 \family typewriter
-RépUtilisateur/templates/
+MonRép/templates/
 \family default
 , copiez ceux que vous utilisez du répertoire global de modèles 
 \family typewriter

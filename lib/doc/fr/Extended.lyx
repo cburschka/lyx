@@ -1,4 +1,4 @@
-#LyX 1.6.7svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -7480,16 +7480,6 @@ David Johnson;
 mise à jour par 
 \noun on
 Richard Heck
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Traduction des mises à jour incomplète (JPC, juillet 2010)
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -7506,14 +7496,14 @@ Les formats LaTeX AMS ont été écrits pour se conformer au style suggéré
 American Mathematical Society
 \lang french
 .
- Les formats ne sont pas définis pour un journal particulier, mais peuvent
+ Les formats ne sont pas définis pour une revue particulière, mais peuvent
  facilement y être adaptés.
  Il faut vous référer à la documentation de l'AMS pour obtenir des instructions
- spécifiques à chaque journal (habituellement il suffira de changer une
- ligne dans la sortie TeX).
+ spécifiques à chaque revue (habituellement il suffira de changer une ligne
+ dans la sortie TeX).
  Cette documentation est disponible sur le réseau à 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -7524,7 +7514,7 @@ http://www.ams.org
 
  ou par ftp à 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -7591,12 +7581,109 @@ Théorèmes (extensions AMS)
 \end_layout
 
 \begin_layout Standard
-Tout fichier LyX AMS peut être converti dans l'un quelconque des schémas
- de numérotation en changeant simplement la classe de document dans la fenêtre
+Implicitement, les théorèmes et environnements similaires sont numérotés
+ consécutivement tout au long du document, mais ceci peut être modifié en
+ chargeant le module 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Théorèmes (numérotation par section)
+\end_layout
+
+\end_inset
+
+ ou bien, si vous utilisez la classe 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+book (AMS)
+\end_layout
+
+\end_inset
+
+, le module 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Théorèmes (numérotation par chapitre)
+\end_layout
+
+\end_inset
+
+.
+ Ceux-ci vont numéroter les environnements comme 
+\emph on
+n.m.
+\emph default
+, où le premier nombre réfère la section (ou le chapitre) et le second réfère
+ le numéro d'ordre courant dans la section (ou le chapitre).
+ De nombreux environnements peuvent aussi rester non numérotés, ceux-ci
+ sont marqués par un astérisque.
+ Si par hasard vous désirez que tous les environnements soient non numérotés,
+ utilisez le module 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Théorèmes (non numérotés)
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Notez que ces modules ne doivent pas être 
+\emph on
+nécessairement
+\emph default
+ utilisés avec les classes AMS.
+ Il est parfaitement possible d'utiliser les modules 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Théorèmes (AMS)
+\end_layout
+
+\end_inset
+
+ et les autres modules mentionnés ci-dessus avec d'autres classes, comme
  
-\family sans
-Document\SpecialChar \menuseparator
-Paramètres.
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+article
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+report
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+book (KOMA-script)
+\end_layout
+
+\end_inset
+
+, etc.
 \end_layout
 
 \begin_layout Subsection
@@ -7605,135 +7692,243 @@ Ce qu'offrent ces formats
 
 \begin_layout Standard
 La liste des environnements offerts par ces formats est longue.
- La plupart des articles ou des livres mathématiques utiliseront ces environneme
-nts pour leurs différents types d'assertion, avec LaTeX AMS il y a la possibilit
-é de définir une variété illimitée de telles déclarations.
+ Avec LaTeX AMS il y a la possibilité de définir une variété illimitée d'environ
+nements de type 
+\begin_inset Quotes fld
+\end_inset
+
+théorème
+\begin_inset Quotes frd
+\end_inset
+
+.
  Cependant, l'AMS recommande les environnements disponibles dans LyX.
- Voici la liste des environnements (non compris les environnements standard
+ Voici la liste des environnements ― ainsi que les environnements standard,
  comme 
 \family sans
+
+\begin_inset Flex CharStyle:Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\family sans
 section
+\end_layout
+
+\end_inset
+
+
 \family default
 , 
 \family sans
-bibliography
+
+\begin_inset Flex CharStyle:Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\family sans
+bibliograph
+\family default
+ie
+\end_layout
+
+\end_inset
+
+
 \family default
 , 
 \family sans
-title
+
+\begin_inset Flex CharStyle:Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\family sans
+titre
+\end_layout
+
+\end_inset
+
+
 \family default
 , 
 \family sans
-author
-\family default
-, 
+
+\begin_inset Flex CharStyle:Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\family sans
+auteur
+\end_layout
+
+\end_inset
+
+ et 
+\begin_inset Flex CharStyle:Noun
+status collapsed
+
+\begin_layout Plain Layout
+
 \family sans
 date
-\family default
-) :
 \end_layout
 
-\begin_layout Description
-Théorème (Theorem) Typiquement utilisé pour les résultats les plus importants.
- Le mot 
-\family sans
-
-\begin_inset Quotes fld
-\end_inset
-
-Theorem
-\begin_inset Quotes frd
 \end_inset
 
 
 \family default
- apparaît en caractères gras, ainsi qu'un numéro automatiquement déterminé
- (une version non numérotée est aussi disponible, 
-\family sans
-Théorème*
-\family default
-).
- Le texte est en italiques.
+ ― proposés par 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+article (AMS)
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+book (AMS)
+\end_layout
+
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Description
-Corollaire (Corollary) Utilisé pour des assertions qui découlent assez directeme
-nt d'assertions précédentes.
- Là encore, il peut s'agir de résultats importants.
- La version non numérotée 
-\family sans
-Corollaire*
-\family default
- existe.
+Adresse Ce devrait être l'adresse permanente de l'auteur.
 \end_layout
 
 \begin_layout Description
-Lemme (Lemma) Ce sont des résultats moins forts, nécessaires à la preuve
- d'autres assertions.
+Adresse_Actuelle Ce devrait être l'adresse temporaire de l'auteur au moment
+ de la soumission, si elle est différente de l'Adresse ci-dessus.
 \end_layout
 
 \begin_layout Description
-Proposition (Proposition) Ce sont des résultats moins importants qui apportent
- quelque chose à la théorie générale dont il est question.
+Email L'adresse e-mail de l'auteur.
 \end_layout
 
 \begin_layout Description
-Conjecture (Conjecture) Ce sont des assertions fournies sans justification,
- dont l'auteur ne connaît pas de preuve, mais qui semblent vraies (du moins
- aux yeux de l'auteur).
+URL L'adresse de la page personnelle de l'auteur, s'il le souhaite.
 \end_layout
 
 \begin_layout Description
-Critère (Criterion) Une condition requise.
+Mots-clés Mots-clés ou descripteurs, utilisés pour identifier les sujets
+ discutés dans l'article.
 \end_layout
 
 \begin_layout Description
-Algorithme (Algorithm) Une procédure générale à utiliser.
+Classe_Sujet Ceci fait référence à la Classification des Sujets de l'AMS,
+ publiée et décrite dans 
+\emph on
+Mathematical Reviews
+\emph default
+.
+ Elle est aussi disponible en ligne sur les sites de l'AMS cités plus haut.
 \end_layout
 
 \begin_layout Description
-Axiome (Axiom) C'est une propriété ou assertion considérée comme vraie dans
- la théorie dont il est question.
+Remerciements
 \end_layout
 
 \begin_layout Description
-Définition (Definition) Devinez à quoi ça sert.
+Dédicace
+\end_layout
+
+\begin_layout Description
+Traducteur
+\end_layout
+
+\begin_layout Standard
+Les environnments suivants sont fournis aussi bien par le module 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Théorèmes
+\end_layout
+
+\end_inset
+
+ que par le module 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Théorèmes (AMS)
+\end_layout
+
+\end_inset
+
+, en version numérotée ou non numérotée pour ce dernier.
+ Ces environnements sont fournis dans la seule version non numérotée par
+ le module 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Théorèmes (non numérotés)
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Theorem
+Typiquement utilisé pour les résultats les plus importants.
+\end_layout
+
+\begin_layout Corollary*
+Corollaire Utilisé pour des assertions qui découlent assez directement d'asserti
+ons précédentes.
+ Peuvent être également des résultats importants.
+\end_layout
+
+\begin_layout Lemma
+Ce sont des résultats moins forts, nécessaires à la preuve d'autres assertions.
+\end_layout
+
+\begin_layout Proposition
+e sont des résultats moins importants qui apportent quelque chose à la théorie
+ générale dont il est question.
+\end_layout
+
+\begin_layout Conjecture
+Ce sont des assertions fournies sans justification, dont l'auteur ne connaît
+ pas de preuve, mais qui semblent vraies (du moins aux yeux de l'auteur).
+\end_layout
+
+\begin_layout Definition*
+Devinez à quoi ça sert.
  La police, à la fois à l'écran et à l'impression, est différente dans cet
  environnement.
- L'en-tête (
-\family sans
-
-\begin_inset Quotes fld
-\end_inset
-
-Definition
-\begin_inset Quotes frd
-\end_inset
-
-
-\family default
-) est encore en caractères gras, ainsi que le numéro s'il y en a un, mais
- le reste est comme du texte simple.
 \end_layout
 
-\begin_layout Description
-Exemple (Example) Typographie similaire à 
-\family sans
-Définition
-\family default
-.
+\begin_layout Example*
+Utilisé pour illustrer des résultats prouvés.
 \end_layout
 
-\begin_layout Description
-Condition (Condition)
+\begin_layout Problem
+On ne sait pas à quoi sert celui-ci, vous devriez chercher.
 \end_layout
 
-\begin_layout Description
-Problème (Problem)
-\end_layout
-
-\begin_layout Description
-Exercice (Exercise)
+\begin_layout Exercise*
+Écrire une description de celui-ci.
 \end_layout
 
 \begin_layout Description
@@ -7753,109 +7948,91 @@ Remark
  apparaît en italique, et le reste comme du texte simple.
 \end_layout
 
-\begin_layout Description
-Note (Note) Typographie similaire à 
+\begin_layout Claim*
+Souvent utilisé dans le cours d'une preuve d'un résultat plus vaste.
+\end_layout
+
+\begin_layout Case
+En général, ils servent à diviser de longues preuves en examinant des cas
+ distincts.
+ 
+\end_layout
+
+\begin_layout Case
+Le schéma de numérotation des cas leur est spécifique : il n'appartient
+ pas à la même séquence que les autres assertions.
+\end_layout
+
+\begin_layout Proof
+À la fin de cet environnement est inséré un symbole CQFD (d'habitude un
+ carré, mais ça peut varier avec les différents styles).
+ Si vous désirez avoir d'autres environnements insérés dans celui-ci, et
+ avoir le symbole CQFD tout à la fin, il faut augmenter la profondeur de
+ ceux-ci (voir la section 
+\emph on
+Emboîter les environnements 
+\emph default
+dans le 
+\emph on
+Guide de l'utilisateur
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+Et ces environnements sont fournis par le module 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Théorèmes (extensions AMS)
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Criterion*
+Une condition requise.
+\end_layout
+
+\begin_layout Algorithm*
+Une procédure générale à utiliser.
+\end_layout
+
+\begin_layout Axiom*
+C'est une propriété ou assertion considérée comme vraie dans la théorie
+ dont il est question.
+\end_layout
+
+\begin_layout Condition*
+Utilisé parfois pour expliciter une condition admise dans le contexte de
+ la discussion.
+\end_layout
+
+\begin_layout Note*
+Note Typographie similaire à 
 \family sans
 Remarque
 \family default
 .
 \end_layout
 
-\begin_layout Description
-Notation (Notation)
+\begin_layout Notation*
+Comme son nom l'indique
 \end_layout
 
-\begin_layout Description
-Affirmation (Claim)
+\begin_layout Acknowledgement*
+Idem
 \end_layout
 
-\begin_layout Description
-Résumé (Summary)
+\begin_layout Conclusion*
+Utilisé parfois à la fin d'une argumentation
 \end_layout
 
-\begin_layout Description
-Remerciement (Acknowledgement)
-\end_layout
-
-\begin_layout Description
-Cas (Case) En général, ils servent à diviser de longues preuves en examinant
- des cas distincts.
- Le schéma de numérotation des cas leur est spécifique : il n'appartient
- pas à la même séquence que les autres assertions.
-\end_layout
-
-\begin_layout Description
-Conclusion (Conclusion)
-\end_layout
-
-\begin_layout Description
-Fait (Fact)
-\end_layout
-
-\begin_layout Description
-Preuve (Proof) Le mot 
-\family sans
-\emph on
-
-\begin_inset Quotes fld
-\end_inset
-
-Preuve
-\begin_inset Quotes frd
-\end_inset
-
-
-\family default
-\emph default
- est en italiques, mais le reste est droit.
- À la fin de cet environnement (dans lequel on peut bien sûr emboîter d'autres
- environnements) est inséré un symbole CQFD (d'habitude un carré, mais ça
- peut varier avec les différents styles).
-\end_layout
-
-\begin_layout Description
-Adresse (Address) Ça devrait être l'adresse permanente de l'auteur.
-\end_layout
-
-\begin_layout Description
-Adresse_Actuelle (Current_Address) Ça devrait être l'adresse temporaire
- de l'auteur au moment de la soumission, si elle est différente de l'Adresse
- ci-dessus.
-\end_layout
-
-\begin_layout Description
-Email L'adresse e-mail de l'auteur.
-\end_layout
-
-\begin_layout Description
-URL L'adresse de la page personnelle de l'auteur, s'il le souhaite.
-\end_layout
-
-\begin_layout Description
-Mots-clés.(Keywords) Mots-clés ou phrases-clés, utilisé pour identifier les
- sujets discutés dans l'article.
-\end_layout
-
-\begin_layout Description
-Classe_Sujet (Subjectclass) Ça fait référence à la Classification des Sujets
- de l'AMS, publiée et décrite dans 
-\emph on
-Mathematical Reviews
-\emph default
-.
- Elle est aussi disponible en ligne sur les sites de l'AMS cités plus haut.
-\end_layout
-
-\begin_layout Description
-Remerciements (Thanks)
-\end_layout
-
-\begin_layout Description
-Dédicace (Dedicatory)
-\end_layout
-
-\begin_layout Description
-Traducteur (Translator)
+\begin_layout Fact
+Utilsable comme Propositon, à une échelle peut-être réduite
 \end_layout
 
 \begin_layout Standard
@@ -19317,6 +19494,17 @@ man rlog
 
 \lang english
 CVS commands in LyX
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Section restant à traduire...
+ JPChrétien, sept 2010
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -20281,6 +20469,17 @@ svn info file.lyx
 
 \lang english
 SVN and Windows Environment
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Section restant à traduire...
+ JPChrétien, sept 2010
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Quote
