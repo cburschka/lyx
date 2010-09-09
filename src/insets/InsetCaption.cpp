@@ -152,6 +152,7 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 
 	FontInfo tmpfont = pi.base.font;
 	pi.base.font = pi.base.bv->buffer().params().getFont().fontInfo();
+	ColorChanger dummy(pi.base.font, pi.textColor(pi.base.font.color()).baseColor);
 	pi.pain.text(x, y, full_label_, pi.base.font);
 	InsetText::draw(pi, x + labelwidth_, y);
 	pi.base.font = tmpfont;
