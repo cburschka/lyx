@@ -48,6 +48,9 @@ QPalette::ColorRole role(ColorCode col)
 	case Color_selectiontext:
 		return QPalette::HighlightedText;
 		break;
+	case Color_urllabel:
+	case Color_urltext:
+		return QPalette::Link;
 	default:
 		return NoRole;
 	}
