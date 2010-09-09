@@ -292,23 +292,15 @@ mhchem, multirow
 \series bold
 was
 \series default
- 
-\lang english
-should
-\lang french
- être installés.
+ devraient être installés.
  Si les ne sont pas installés, vous pouvez quand même exporter votre document,
  mais les sections où ces paquetages sont nécessaires ne seront pas visibles
  sur la sortie finale.
  
-\lang english
-An exeption is 
 \series bold
 mhchem
 \series default
-; if it
-\lang french
- n'est pas installé, on ne peut pas exporter ce fichier.
+ fait exception: s'il n'est pas installé, on ne peut pas exporter ce fichier.
 \end_layout
 
 \begin_layout Plain Layout
