@@ -329,18 +329,16 @@ docstring InsetMathHull::standardFont() const
 }
 
 
-docstring InsetMathHull::standardColor() const
+ColorCode InsetMathHull::standardColor() const
 {
-	docstring color;
+	ColorCode color;
 	switch (type_) {
 	case hullRegexp:
-		color = from_ascii("foreground");
-		break;
 	case hullNone:
-		color = from_ascii("foreground");
+		color = Color_foreground;
 		break;
 	default:
-		color = from_ascii("math");
+		color = Color_math;
 	}
 	return color;
 }

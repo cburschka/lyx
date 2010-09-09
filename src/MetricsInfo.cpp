@@ -312,13 +312,13 @@ WidthChanger::~WidthChanger()
 //
 /////////////////////////////////////////////////////////////////////////
 
-ColorChanger::ColorChanger(FontInfo & font, docstring const & color,
+ColorChanger::ColorChanger(FontInfo & font, ColorCode color,
 			   bool really_change_color)
 	: Changer<FontInfo, ColorCode>(font), change_(really_change_color)
 {
 	if (change_) {
 		save_ = font.color();
-		font.setColor(lcolor.getFromLyXName(to_utf8(color)));
+		font.setColor(color);
 	}
 }
 

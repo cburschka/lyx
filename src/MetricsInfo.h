@@ -14,7 +14,7 @@
 #define METRICSINFO_H
 
 #include "Changes.h"
-#include "Color.h"
+#include "ColorCode.h"
 #include "FontInfo.h"
 
 #include "support/strfwd.h"
@@ -104,7 +104,7 @@ public:
 	ColorCode backgroundColor(Inset const * inset, bool sel = true) const;
 
 	/// Determines the text color based on the intended color, the
-	/// change tracking state and the selectio state. 
+	/// change tracking state and the selection state. 
 	/// \param color what the color should be by default
 	Color textColor(Color const & color) const;
 
@@ -230,7 +230,7 @@ public:
 class ColorChanger : public Changer<FontInfo, ColorCode> {
 public:
 	///
-	ColorChanger(FontInfo & font, docstring const & color,
+	ColorChanger(FontInfo & font, ColorCode color,
 		     bool really_change_color = true);
 	///
 	~ColorChanger();

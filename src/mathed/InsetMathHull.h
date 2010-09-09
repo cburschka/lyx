@@ -14,6 +14,7 @@
 
 #include "InsetMathGrid.h"
 
+#include "Color.h"
 #include "DocIterator.h"
 #include "OutputEnums.h"
 
@@ -207,7 +208,7 @@ private:
 	///
 	docstring standardFont() const;
 	///
-	docstring standardColor() const;
+	ColorCode standardColor() const;
 	/// consistency check
 	void check() const;
 	/// can this change its number of rows?
