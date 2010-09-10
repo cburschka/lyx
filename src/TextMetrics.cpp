@@ -1053,10 +1053,6 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 		maxdesc = max(maxdesc, maxfontmetrics.maxDescent());
 	}
 
-	// This is nicer with box insets:
-	++maxasc;
-	++maxdesc;
-
 	ParagraphList const & pars = text_->paragraphs();
 	Inset const & inset = text_->inset();
 
