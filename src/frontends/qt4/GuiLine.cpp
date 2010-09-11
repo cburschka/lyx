@@ -58,31 +58,20 @@ GuiLine::GuiLine(QWidget * parent) : InsetParamsWidget(parent)
 	OffsetLE->setValidator(unsignedGlueLengthValidator(OffsetLE));
 	WidthLE->setValidator(unsignedGlueLengthValidator(WidthLE));
 	HeightLE->setValidator(unsignedGlueLengthValidator(HeightLE));
+
+	OffsetLE->setText("0");
+	WidthLE->setText("100");
+	HeightLE->setText("0.5");
+	setFocusProxy(WidthLE);
 }
 
 
 docstring GuiLine::dialogToParams() const
 {
-	docstring offset = from_utf8(widgetsToLength(OffsetLE, OffsetUnitCO));
 	InsetCommandParams params(insetCode());
-	params["offset"] = offset;
-
-	// negative widths are senseless
-	string width_str = fromqstr(WidthLE->text());
-	if (width_str[0] == '-')
-		width_str.erase(0,1);
-	WidthLE->setText(toqstr(width_str));
-	docstring width = from_utf8(widgetsToLength(WidthLE, WidthUnitCO));
-	params["width"] = width;
-
-	// negative heights are senseless
-	string height_str = fromqstr(HeightLE->text());
-	if (height_str[0] == '-')
-		height_str.erase(0,1);
-	HeightLE->setText(toqstr(height_str));
-	docstring height = from_utf8(widgetsToLength(HeightLE, HeightUnitCO));
-	params["height"] = height;
-
+	params["offset"] = from_utf8(widgetsToLength(OffsetLE, OffsetUnitCO));;
+	params["width"] = from_utf8(widgetsToLength(WidthLE, WidthUnitCO));
+	params["height"] = from_utf8(widgetsToLength(HeightLE, HeightUnitCO));
 	params.setCmdName("rule");
 	return from_ascii(InsetLine::params2string("line", params));
 }
@@ -111,8 +100,13 @@ bool GuiLine::checkWidgets() const
 {
 	if (!InsetParamsWidget::checkWidgets())
 		return false;
+	// FIXME: this should be handled in unsignedGlueLengthValidator!
+	if (WidthLE->text().startsWith('-'))
+		return false;
+	// FIXME: this should be handled in unsignedGlueLengthValidator!
+	if (HeightLE->text().startsWith('-'))
+		return false;
 	// FIXME: Is there something else to check?
-	// Transfer some code from dialogToParams()?
 	return true;
 }
 
