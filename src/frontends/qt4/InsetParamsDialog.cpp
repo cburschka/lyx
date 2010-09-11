@@ -70,6 +70,7 @@ InsetParamsDialog::InsetParamsDialog(GuiView & lv, InsetParamsWidget * widget)
 	setInsetParamsWidget(widget);
 	synchronizedViewCB->setChecked(false);
 	on_synchronizedViewCB_stateChanged(false);
+	setFocusProxy(widget);
 }
 
 InsetParamsDialog::~InsetParamsDialog()
