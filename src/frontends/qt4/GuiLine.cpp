@@ -59,9 +59,12 @@ GuiLine::GuiLine(QWidget * parent) : InsetParamsWidget(parent)
 	WidthLE->setValidator(unsignedGlueLengthValidator(WidthLE));
 	HeightLE->setValidator(unsignedGlueLengthValidator(HeightLE));
 
-	OffsetLE->setText("0");
+	OffsetLE->setText("0.5");
+	OffsetUnitCO->setCurrentItem(Length::EX);
 	WidthLE->setText("100");
-	HeightLE->setText("0.5");
+	WidthUnitCO->setCurrentItem(Length::PCW);
+	HeightLE->setText("1");
+	HeightUnitCO->setCurrentItem(Length::PT);
 	setFocusProxy(WidthLE);
 }
 
@@ -106,7 +109,6 @@ bool GuiLine::checkWidgets() const
 	// FIXME: this should be handled in unsignedGlueLengthValidator!
 	if (HeightLE->text().startsWith('-'))
 		return false;
-	// FIXME: Is there something else to check?
 	return true;
 }
 
