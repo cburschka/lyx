@@ -57,7 +57,7 @@
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 2010-05-23
+LFUNs documentation automatically generated 2010-09-12
 \end_layout
 
 \begin_layout Standard
@@ -365,29 +365,16 @@ Origin Dekel, 7 Apr 2002
 \end_layout
 
 \begin_layout Subsection*
-LFUN_OPTIONAL_INSERT
+LFUN_ARGUMENT_INSERT
 \end_layout
 \begin_layout Description
-Action Inserts an optional-argument (short title) inset.
+Action Inserts an argument (short title) inset.
 \end_layout
 \begin_layout Description
-Syntax optional-insert
+Syntax argument-insert
 \end_layout
 \begin_layout Description
 Origin vermeer, 12 Aug 2002
-\end_layout
-
-\begin_layout Subsection*
-LFUN_LINE_INSERT
-\end_layout
-\begin_layout Description
-Action Inserts a horizontal line.
-\end_layout
-\begin_layout Description
-Syntax line-insert
-\end_layout
-\begin_layout Description
-Origin Andre, Oct 27 2003
 \end_layout
 
 \begin_layout Subsection*
@@ -711,19 +698,6 @@ Params <CHAR>: hyphenation, ligature-break, slash, nobreakdash, dots, end-of-sen
 \end_layout
 \begin_layout Description
 Origin JSpitzm, 6 Dec 2007
-\end_layout
-
-\begin_layout Subsection*
-LFUN_TOC_INSERT
-\end_layout
-\begin_layout Description
-Action Inserts table of contents.
-\end_layout
-\begin_layout Description
-Syntax toc-insert
-\end_layout
-\begin_layout Description
-Origin Lgb, 27 May 97
 \end_layout
 
 \begin_layout Subsection*
@@ -1418,6 +1392,22 @@ Params <WORD>: word to ignore <LANG>: language name (see file languages)
 \end_layout
 \begin_layout Description
 Origin JSpitzm, 18 Jan 2010
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SPELLING_REMOVE
+\end_layout
+\begin_layout Description
+Action Remove the word under the cursor from the respective spell checker dictionary.
+\end_layout
+\begin_layout Description
+Syntax spelling-remove [<STRING>] [<LANG>]
+\end_layout
+\begin_layout Description
+Params <WORD>: word to remove <LANG>: language name (see file languages)
+\end_layout
+\begin_layout Description
+Origin SWitt, 28 July 2010
 \end_layout
 
 \begin_layout Subsection*
@@ -3283,10 +3273,10 @@ Action Compares two revisions of the same file under version control.
 Notion This is currently implemented only for SVN and RCS.
 \end_layout
 \begin_layout Description
-Syntax vc-compare <REV1> [<REV2>]
+Syntax vc-compare [<REV1>] [<REV2>]
 \end_layout
 \begin_layout Description
-Params Revision number either points directly to commit in history or if negative number -x it points to last commit - x.
+Params Revision number either points directly to commit in history or if negative number -x it points to (last commit - x).
 \begin_inset Newline newline
 \end_inset
 
@@ -3299,6 +3289,10 @@ Params Revision number either points directly to commit in history or if negativ
 \end_inset
 
 	       <REV2>: Newer file. Used only if REV1 > 0.
+\begin_inset Newline newline
+\end_inset
+
+If no parameter is given, interactive dialog will be shown.
 \end_layout
 \begin_layout Description
 Sample Compare current document against last commit
@@ -3485,7 +3479,7 @@ Action Insert new inset (type given by the parameters).
 Syntax inset-insert <INSET> <ARGS>
 \end_layout
 \begin_layout Description
-Params <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics|tabular hyperlink|include|index|label|nomencl|vspace|ref|toc>
+Params <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics|tabular hyperlink|include|index|label|nomencl|line|vspace|ref|toc>
 \begin_inset Newline newline
 \end_inset
 
@@ -3546,7 +3540,7 @@ In case that <INSET> is "tabular" various math-environment features are handled 
 \begin_inset Newline newline
 \end_inset
 
-<FEATURE>: append-row|append-column|delete-row|delete-column|copy-row|copy-column| toggle-line-top|toggle-line-bottom|toggle-line-left|toggle-line-right| align-left|align-right|align-center|align-block|valign-top|valign-bottom| valign-middle|longtabular-align-left|longtabular-align-center| longtabular-align-right|m-align-left|m-align-right|m-align-center| m-valign-top|m-valign-bottom|m-valign-middle|multicolumn|set-all-lines| unset-all-lines|set-longtabular|unset-longtabular|set-pwidth|set-mpwidth| set-rotate-tabular|unset-rotate-tabular|toggle-rotate-tabular| set-rotate-cell|unset-rotate-cell|toggle-rotate-cell|set-usebox|set-lthead| unset-lthead|set-ltfirsthead|unset-ltfirsthead|set-ltfoot|unset-ltfoot| set-ltlastfoot|unset-ltlastfoot|set-ltnewpage|toggle-ltcaption| set-special-column|set-special-multicolumn|set-special-multirow| set-booktabs|unset-booktabs|set-top-space|set-bottom-space| set-interline-space|set-border-lines|tabular-valign-top| tabular-valign-middle|tabular-valign-bottom
+<FEATURE>: append-row|append-column|delete-row|delete-column|copy-row|copy-column| toggle-line-top|toggle-line-bottom|toggle-line-left|toggle-line-right| align-left|align-right|align-center|align-block|align-decimal|set-decimal-point| valign-top|valign-bottom|valign-middle|longtabular-align-left| longtabular-align-center|longtabular-align-right|m-align-left|m-align-right| m-align-center|m-valign-top|m-valign-bottom|m-valign-middle|multicolumn| set-all-lines|unset-all-lines|set-longtabular|unset-longtabular|set-pwidth| set-mpwidth|set-rotate-tabular|unset-rotate-tabular|toggle-rotate-tabular| set-rotate-cell|unset-rotate-cell|toggle-rotate-cell|set-usebox|set-lthead| unset-lthead|set-ltfirsthead|unset-ltfirsthead|set-ltfoot|unset-ltfoot| set-ltlastfoot|unset-ltlastfoot|set-ltnewpage|toggle-ltcaption| set-special-column|set-special-multicolumn|set-special-multirow| set-booktabs|unset-booktabs|set-top-space|set-bottom-space| set-interline-space|set-border-lines|tabular-valign-top| tabular-valign-middle|tabular-valign-bottom
 \begin_inset Newline newline
 \end_inset
 
@@ -3579,13 +3573,13 @@ LFUN_INSET_SETTINGS
 Action Open the inset's properties dialog.
 \end_layout
 \begin_layout Description
-Notion Used for bibitem, bibtex, box, branch, citation, ert, external, float, graphics, href, include, index, index_print, label, listings, note, phantom, ref, space, tabular, vspace, wrap insets.
+Notion Used for bibitem, bibtex, box, branch, citation, ert, external, float, graphics, href, include, index, index_print, label, line, listings, note, phantom, ref, space, tabular, vspace, wrap insets.
 \end_layout
 \begin_layout Description
 Syntax inset-settings <INSET>
 \end_layout
 \begin_layout Description
-Params <INSET>: <bibitem|bibtex|box|branch|citation|ert|external|float| graphics|href|include|index|index_print|label|listings| note|phantom|ref|space|tabular|vspace|wrap>.
+Params <INSET>: <bibitem|bibtex|box|branch|citation|ert|external|float| graphics|href|include|index|index_print|label|line| listings|note|phantom|ref|space|tabular|vspace|wrap>.
 \end_layout
 
 \begin_layout Subsection*
@@ -3895,7 +3889,7 @@ Notion Skipping "auto" when allowauto is false.
 Syntax toolbar-toggle <NAME> [allowauto]
 \end_layout
 \begin_layout Description
-Params <NAME>: standard|extra|table|math|mathmacrotemplate| minibuffer|review|view/update|math_panels|vcs
+Params <NAME>: standard|extra|table|math|mathmacrotemplate| minibuffer|review|view/update|math_panels|vcs| view-others|update-others
 \end_layout
 \begin_layout Description
 Origin Edwin, 21 May 2007
@@ -4035,7 +4029,7 @@ compare|document|errorlist|ert|external|file|findreplace|findreplaceadv|float|
 \begin_inset Newline newline
 \end_inset
 
-graphics|href|include|index|index_print|info|label|listings|log|mathdelimiter|
+graphics|href|include|index|index_print|info|label|line|listings|log|mathdelimiter|
 \begin_inset Newline newline
 \end_inset
 
@@ -4463,6 +4457,22 @@ Syntax buffer-toggle-compression
 \end_layout
 \begin_layout Description
 Origin bpeng, 27 Apr 2006
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_TOGGLE_OUTPUT_SYNC
+\end_layout
+\begin_layout Description
+Action Toggles including of resources for forward/reverse search of the given document.
+\end_layout
+\begin_layout Description
+Notion When toggled on, SyncTeX is invoked for PDF, while srcltx package is used for DVI. Custom LaTeX macro can be defined in preferences.
+\end_layout
+\begin_layout Description
+Syntax buffer-toggle-output-sync
+\end_layout
+\begin_layout Description
+Origin sanda, 25 May 2010
 \end_layout
 
 \begin_layout Subsection*
