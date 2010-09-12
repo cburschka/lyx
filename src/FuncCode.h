@@ -310,7 +310,7 @@ enum FuncCode
 	LFUN_INSET_EDIT,                // JSpitzm 20080427
 	LFUN_BRANCH_INSERT,
 	LFUN_BOX_INSERT,
-	LFUN_LINE_INSERT,
+	LFUN_BUFFER_TOGGLE_OUTPUT_SYNC,
 	// 235
 	LFUN_NEWPAGE_INSERT,            // uwestoehr, 20071124
 	LFUN_REPEAT,
@@ -448,7 +448,6 @@ enum FuncCode
 	LFUN_PREVIEW_INSERT,            // vfr, 20100328
 	LFUN_FORWARD_SEARCH,
 	LFUN_INSET_COPY_AS,             // vfr, 20100419
-	LFUN_BUFFER_TOGGLE_OUTPUT_SYNC,
 
 	LFUN_LASTACTION                 // end of the table
 };

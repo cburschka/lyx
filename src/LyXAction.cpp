@@ -325,14 +325,6 @@ void LyXAction::init()
  */
 		{ LFUN_ARGUMENT_INSERT, "argument-insert", Noop, Edit },
 /*!
- * \var lyx::FuncCode lyx::LFUN_LINE_INSERT
- * \li Action: Inserts a horizontal line.
- * \li Syntax: line-insert
- * \li Origin: Andre, Oct 27 2003
- * \endvar
- */
-		{ LFUN_LINE_INSERT, "line-insert", Noop, Edit },
-/*!
  * \var lyx::FuncCode lyx::LFUN_NEWPAGE_INSERT
  * \li Action: Inserts a new page.
  * \li Syntax: newpage-insert <ARG>
@@ -2317,7 +2309,7 @@ void LyXAction::init()
  * \li Action: Insert new inset (type given by the parameters).
  * \li Syntax: inset-insert <INSET> <ARGS>
  * \li Params: <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics|tabular
-                         hyperlink|include|index|label|nomencl|vspace|ref|toc>\n
+                         hyperlink|include|index|label|nomencl|line|vspace|ref|toc>\n
                <ARGS>: depends on the given inset. Use "lyx -dbg action" to explore.
  * \li Sample: inset-insert ref LatexCommand <Format> reference "<label name>"\end_inset \n
                where <label name> is the name of the referenced label and

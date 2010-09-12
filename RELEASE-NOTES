@@ -117,6 +117,8 @@ The following LyX functions have been removed:
 
 - LFUN_TABULAR_FEATURE ("tabular-feature"): use "inset-modify" instead.
 
+- LFUN_LINE_INSERT ("line-insert"): use "inset-insert line" instead.
+
 
 The following LyX functions have been changed:
 

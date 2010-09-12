@@ -1548,22 +1548,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_LINE_INSERT: {
-		InsetCommandParams p(LINE_CODE);
-		p["offset"] = from_ascii(".5ex");
-		p["width"] = from_ascii("100col%");
-		p["height"] = from_ascii("1pt");
-		string const data = InsetCommand::params2string("line", p);
-
-		if (cmd.argument().empty()) {
-			bv->showDialog("line", data);
-		} else {
-			FuncRequest fr(LFUN_INSET_INSERT, data);
-			dispatch(cur, fr);
-		}
-		break;
-	}
-
 	case LFUN_INFO_INSERT: {
 		Inset * inset;
 		if (cmd.argument().empty() && cur.selection()) {
@@ -2376,9 +2360,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_LABEL_INSERT:
 		code = LABEL_CODE;
-		break;
-	case LFUN_LINE_INSERT:
-		code = LINE_CODE;
 		break;
 	case LFUN_INFO_INSERT:
 		code = INFO_CODE;

@@ -390,7 +390,7 @@ Menuset
 		Item "Interword Space|w" "space-insert normal"
 		Item "Thin Space|T" "space-insert thin"
 		Item "Horizontal Space...|o" "dialog-show-new-inset space"
-		Item "Horizontal Line|L" "line-insert"
+		Item "Horizontal Line...|L" "dialog-show-new-inset line"
 		Item "Vertical Space...|V" "dialog-show-new-inset vspace"
 		Submenu "Phantom" "insert_phantom"
 		Separator
