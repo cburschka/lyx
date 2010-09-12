@@ -216,7 +216,7 @@ enum FuncCode
 	LFUN_CELL_SPLIT,
 	LFUN_BUFFER_CHILD_OPEN,         // Ale 970528
 	// 155
-	LFUN_TOC_INSERT,                // Lgb 97-05-27
+	LFUN_INSET_COPY_AS,             // vfr, 20100419
 	LFUN_FLOAT_LIST_INSERT,         // Lgb 20010503
 	LFUN_BUFFER_TOGGLE_READ_ONLY,   // Lgb 97-05-27
 	LFUN_VC_REGISTER,               // Lgb 97-07-01
@@ -447,7 +447,6 @@ enum FuncCode
 	LFUN_SPELLING_REMOVE,           // switt 20100728
 	LFUN_PREVIEW_INSERT,            // vfr, 20100328
 	LFUN_FORWARD_SEARCH,
-	LFUN_INSET_COPY_AS,             // vfr, 20100419
 
 	LFUN_LASTACTION                 // end of the table
 };

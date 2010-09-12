@@ -1671,7 +1671,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 	
 	case LFUN_NOMENCL_PRINT:
-	case LFUN_TOC_INSERT:
 	case LFUN_NEWPAGE_INSERT:
 		// do nothing fancy
 		doInsertInset(cur, this, cmd, false, false);
@@ -2391,11 +2390,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// not allowed in description items
 		enable = !inDescriptionItem(cur);
 		break;
-	case LFUN_TOC_INSERT:
-		code = TOC_CODE;
-		// not allowed in description items
-		enable = !inDescriptionItem(cur);
-		break;
 	case LFUN_HYPERLINK_INSERT:
 		if (cur.selIsMultiCell() || cur.selIsMultiLine()) {
 			enable = false;
@@ -2697,7 +2691,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_LINE_END:
 	case LFUN_CHAR_DELETE_FORWARD:
 	case LFUN_CHAR_DELETE_BACKWARD:
-	case LFUN_INSET_INSERT:
 	case LFUN_WORD_UPCASE:
 	case LFUN_WORD_LOWCASE:
 	case LFUN_WORD_CAPITALIZE:
@@ -2712,6 +2705,19 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// these are handled in our dispatch()
 		enable = true;
 		break;
+
+	case LFUN_INSET_INSERT: {
+		string const type = cmd.getArg(0);
+		if (type == "toc") {
+			code = TOC_CODE;
+			// not allowed in description items
+			//FIXME: couldn't this be merged in Inset::insetAllowed()?
+			enable = !inDescriptionItem(cur);
+		} else {
+			enable = true;
+		}
+		break;
+	}
 
 	default:
 		return false;

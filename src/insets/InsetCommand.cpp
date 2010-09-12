@@ -229,6 +229,11 @@ bool InsetCommand::string2params(string const & name, string const & in,
 	params.clear();
 	if (in.empty())
 		return false;
+	// This happens when inset-insert is called without argument except for the
+	// inset type; ex:
+	// "inset-insert toc"
+	if (in == name)
+		return true;
 	istringstream data(in);
 	Lexer lex;
 	lex.setStream(data);

@@ -507,14 +507,6 @@ void LyXAction::init()
  */
 		{ LFUN_SPECIALCHAR_INSERT, "specialchar-insert", Noop, Edit },
 /*!
- * \var lyx::FuncCode lyx::LFUN_TOC_INSERT
- * \li Action: Inserts table of contents.
- * \li Syntax: toc-insert
- * \li Origin: Lgb, 27 May 97
- * \endvar
- */
-		{ LFUN_TOC_INSERT, "toc-insert", Noop, Edit },
-/*!
  * \var lyx::FuncCode lyx::LFUN_APPENDIX
  * \li Action: Start (or remove) Appendix on the given cursor position.
  * \li Syntax: appendix

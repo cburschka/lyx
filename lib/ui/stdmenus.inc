@@ -436,7 +436,7 @@ Menuset
 	End
 
 	Menu "insert_toc"
-		Item "Table of Contents|C" "toc-insert"
+		Item "Table of Contents|C" "inset-insert toc"
 		FloatListInsert
 		IndicesLists
 		Item "Nomenclature|N" "nomencl-print"

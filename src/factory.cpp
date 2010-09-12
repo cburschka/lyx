@@ -200,9 +200,6 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			return new InsetPrintNomencl(buf, icp);
 		}
 
-		case LFUN_TOC_INSERT:
-			return new InsetTOC(buf, InsetCommandParams(TOC_CODE));
-
 		case LFUN_INFO_INSERT: {
 			InsetInfo * inset = new InsetInfo(buf, to_utf8(cmd.argument()));
 			inset->updateInfo();
