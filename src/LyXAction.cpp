@@ -2301,7 +2301,7 @@ void LyXAction::init()
  * \li Action: Insert new inset (type given by the parameters).
  * \li Syntax: inset-insert <INSET> <ARGS>
  * \li Params: <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics|tabular
-                         hyperlink|include|index|label|nomencl|line|vspace|ref|toc>\n
+                         hyperlink|include|index|label|line|nomencl|vspace|ref|toc>\n
                <ARGS>: depends on the given inset. Use "lyx -dbg action" to explore.
  * \li Sample: inset-insert ref LatexCommand <Format> reference "<label name>"\end_inset \n
                where <label name> is the name of the referenced label and
