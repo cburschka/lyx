@@ -128,6 +128,9 @@ What's new
 - Fix parsing of commands sent through the lyxserver, such that they don't
   need to be terminated by a newline character (bug 6868).
 
+- Don't try to blindly execute the latex command if no latex binary is
+  available (bug 6873).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
