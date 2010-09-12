@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 399
+\lyxformat 400
 \begin_document
 \begin_header
 \textclass agutex
@@ -402,8 +402,22 @@ Glossary
 Glossary is only allowed in Reviews of Geophysics!
 \end_layout
 
-\begin_layout Glossary term
+\begin_layout Paragraph
 term
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+use the 
+\family sans
+Paragraph
+\family default
+ environment for term
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
