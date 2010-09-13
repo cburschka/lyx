@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-09-13 01:07+0200\n"
+"POT-Creation-Date: 2010-09-13 02:19+0200\n"
 "PO-Revision-Date: 2010-02-28 16:27+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -6008,15 +6008,16 @@ msgstr "email"
 msgid "Thesaurus"
 msgstr "Tezaurus"
 
-#: lib/layouts/aastex.layout:79 lib/layouts/amsbook.layout:126
-#: lib/layouts/apa.layout:339 lib/layouts/egs.layout:71
-#: lib/layouts/kluwer.layout:87 lib/layouts/llncs.layout:73
-#: lib/layouts/ltugboat.layout:105 lib/layouts/memoir.layout:87
-#: lib/layouts/paper.layout:84 lib/layouts/revtex.layout:68
-#: lib/layouts/revtex4.layout:89 lib/layouts/agu_stdsections.inc:65
-#: lib/layouts/aguplus.inc:57 lib/layouts/db_stdsections.inc:57
-#: lib/layouts/numrevtex.inc:33 lib/layouts/scrclass.inc:95
-#: lib/layouts/stdsections.inc:120 lib/layouts/svjour.inc:86
+#: lib/layouts/aastex.layout:79 lib/layouts/agutex.layout:148
+#: lib/layouts/amsbook.layout:126 lib/layouts/apa.layout:339
+#: lib/layouts/egs.layout:71 lib/layouts/kluwer.layout:87
+#: lib/layouts/llncs.layout:73 lib/layouts/ltugboat.layout:105
+#: lib/layouts/memoir.layout:87 lib/layouts/paper.layout:84
+#: lib/layouts/revtex.layout:68 lib/layouts/revtex4.layout:89
+#: lib/layouts/agu_stdsections.inc:65 lib/layouts/aguplus.inc:57
+#: lib/layouts/db_stdsections.inc:57 lib/layouts/numrevtex.inc:33
+#: lib/layouts/scrclass.inc:95 lib/layouts/stdsections.inc:120
+#: lib/layouts/svjour.inc:86
 msgid "Paragraph"
 msgstr "Odstavec"
 
@@ -6278,11 +6279,6 @@ msgstr "Affiliation:"
 #: lib/layouts/svjour.inc:226
 msgid "Abstract."
 msgstr "Abstract."
-
-#: lib/layouts/agutex.layout:148
-#, fuzzy
-msgid "Glossary term"
-msgstr "Heslo slovníèku"
 
 #: lib/layouts/agutex.layout:187
 #, fuzzy
@@ -23880,6 +23876,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
+
+#, fuzzy
+#~ msgid "Glossary term"
+#~ msgstr "Heslo slovníèku"
 
 #, fuzzy
 #~ msgid "Middle|d"
