@@ -222,17 +222,17 @@ Thesaurus::Meanings Thesaurus::lookup(docstring const & t, docstring const & lan
 	// they are needed for the CleanUpAfterLookup routine
 	mentry * pm = pmean;
 	docstring meaning;
-	docstring ret;
 	for (int i = 0; i < count; i++) {
+		vector<docstring> ret;
 		meaning = from_iconv_encoding(string(pm->defn), encoding);
 		// remove silly item
 		if (support::prefixIs(meaning, '-'))
 			meaning = support::ltrim(meaning, "- ");
 		for (int j = 0; j < pm->count; j++) {
-			ret = from_iconv_encoding(string(pm->psyns[j]), encoding);
+			ret.push_back(from_iconv_encoding(string(pm->psyns[j]), encoding));
 		}
-	meanings[meaning].push_back(ret);
-	pm++;
+		meanings[meaning] = ret;
+		++pm;
 	}
 	// now clean up all allocated memory
 	mythes->CleanUpAfterLookup(&pmean, count);
