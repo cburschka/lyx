@@ -433,8 +433,10 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 		return;
 	}
 
+	ColorCode color = pi.selected && lyxrc.use_system_colors
+				? Color_selectiontext : standardColor();
 	bool const really_change_color = pi.base.font.color() == Color_none;
-	ColorChanger dummy0(pi.base.font, standardColor(), really_change_color);
+	ColorChanger dummy0(pi.base.font, color, really_change_color);
 	FontSetChanger dummy1(pi.base, standardFont());
 	StyleChanger dummy2(pi.base, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
 
