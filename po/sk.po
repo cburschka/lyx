@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-09-13 02:19+0200\n"
-"PO-Revision-Date: 2010-09-10 11:20+0200\n"
+"PO-Revision-Date: 2010-09-13 16:27+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenčina <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -980,33 +980,28 @@ msgid "Shaded boxes:"
 msgstr "Tieňované rámky:"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:22
-#, fuzzy
 msgid "Compare Revisions"
-msgstr "Porovnaj s poslednou revíziou"
+msgstr "Porovnaj revízie"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:30
-#, fuzzy
 msgid "&Revisions back"
-msgstr "Revízia"
+msgstr "Revízie naspäť"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:83
-#, fuzzy
 msgid "&Between revisions"
-msgstr "Medzi riadkami:"
+msgstr "Medzi revíziami"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:96
 msgid "Old:"
-msgstr ""
+msgstr "Stará:"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:131
-#, fuzzy
 msgid "New:"
-msgstr "&Nové:"
+msgstr "Nová:"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:183
-#, fuzzy
 msgid "&Ok"
-msgstr "&OK"
+msgstr "OK"
 
 #: src/frontends/qt4/ui/CompareUi.ui:19
 msgid "&New Document:"
@@ -1037,10 +1032,12 @@ msgid ""
 "Turns on the change tracking and showing changes in LaTeX output for the "
 "resulting document"
 msgstr ""
+"Zapne sledovanie zmien a ukazovanie zmien v LaTeXovom výstupe pre nasledovný "
+"dokument"
 
 #: src/frontends/qt4/ui/CompareUi.ui:176
 msgid "Enable &change tracking features in the output"
-msgstr ""
+msgstr "Umožni sledovanie zmien vo výstupe"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:143
 #: src/frontends/qt4/GuiDelimiter.cpp:275
@@ -2065,33 +2062,28 @@ msgid "&Quote Style:"
 msgstr "Typ úvodzoviek:"
 
 #: src/frontends/qt4/ui/LineUi.ui:23
-#, fuzzy
 msgid "Offset:"
-msgstr "Offsets"
+msgstr "Vyrovnanie:"
 
 #: src/frontends/qt4/ui/LineUi.ui:33
-#, fuzzy
 msgid "Value of the vertical line offset."
-msgstr "Veľkosť vertikálnej medzery"
+msgstr "Veľkosť vertikálneho vyrovnania riadku."
 
 #: src/frontends/qt4/ui/LineUi.ui:56
-#, fuzzy
 msgid "Width:"
-msgstr "Šír&ka:"
+msgstr "Šírka:"
 
 #: src/frontends/qt4/ui/LineUi.ui:69
-#, fuzzy
 msgid "Value of the line width."
-msgstr "Zalamovať riadky presahujúce štandardnú šírku riadkov"
+msgstr "Hodnota šírky riadku."
 
 #: src/frontends/qt4/ui/LineUi.ui:92
-#, fuzzy
 msgid "Height:"
-msgstr "&Výška:"
+msgstr "Výška:"
 
 #: src/frontends/qt4/ui/LineUi.ui:102
 msgid "Value of the line height."
-msgstr ""
+msgstr "Hodnota výšky riadku."
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:49
 msgid "Input here the listings parameters"
@@ -2516,28 +2508,24 @@ msgid "Use &esint package"
 msgstr "Použiť balík e&sint"
 
 #: src/frontends/qt4/ui/MathsUi.ui:65
-#, fuzzy
 msgid ""
 "The LaTeX package mathdots is only used if the command \\iddots is inserted "
 "into formulas"
 msgstr ""
-"LaTeX balík mhchem použiť len v prípade, keď sa vo formulách nájdu aj "
-"symboly \\ce alebo \\cf"
+"LaTeX balík mathdots sa použije len v prípade, keď sa vo formulách nájde aj "
+"symbol \\iddots"
 
 #: src/frontends/qt4/ui/MathsUi.ui:68
-#, fuzzy
 msgid "Use math&dots package automatically"
-msgstr "&Automaticky používať balík AMS math"
+msgstr "Automaticky používať mat. balík dots"
 
 #: src/frontends/qt4/ui/MathsUi.ui:75
-#, fuzzy
 msgid "The LaTeX package mathdots is used"
-msgstr "LaTeX balík mhchem použiť každopádne"
+msgstr "LaTeX balík mathdots je používaný"
 
 #: src/frontends/qt4/ui/MathsUi.ui:78
-#, fuzzy
 msgid "Use math&dots package"
-msgstr "Použiť balík AMS &matematiky"
+msgstr "Použiť mat. balík dots"
 
 #: src/frontends/qt4/ui/MathsUi.ui:85
 msgid ""
@@ -6090,24 +6078,20 @@ msgid "Acknowledgments"
 msgstr "Poďakovania"
 
 #: lib/layouts/agutex.layout:71
-#, fuzzy
 msgid "Authors"
-msgstr "Autor"
+msgstr "Autori"
 
 #: lib/layouts/agutex.layout:89 lib/layouts/agutex.layout:93
-#, fuzzy
 msgid "Affiliation Mark"
-msgstr "Pričlenenie"
+msgstr "Príslušná Značka"
 
 #: lib/layouts/agutex.layout:111
-#, fuzzy
 msgid "Author affiliation"
-msgstr "Alt. pričlenenie"
+msgstr "Príslušenstvo autora"
 
 #: lib/layouts/agutex.layout:121
-#, fuzzy
 msgid "Author affiliation:"
-msgstr "Pričlenenie:"
+msgstr "Príslušenstvo autora:"
 
 #: lib/layouts/agutex.layout:141 lib/layouts/egs.layout:502
 #: lib/layouts/kluwer.layout:269 lib/layouts/llncs.layout:258
@@ -6118,7 +6102,6 @@ msgid "Abstract."
 msgstr "Súhrn."
 
 #: lib/layouts/agutex.layout:187
-#, fuzzy
 msgid "Acknowledgments."
 msgstr "Poďakovania."
 
@@ -7200,7 +7183,7 @@ msgstr "Akceptované:"
 
 #: lib/layouts/egs.layout:451
 msgid "Offsets"
-msgstr "Offsets"
+msgstr "Vyrovnania"
 
 #: lib/layouts/egs.layout:464
 msgid "reprint_reqs_to:"
@@ -12675,9 +12658,8 @@ msgid "Wrap by Preview|P"
 msgstr "Obtekať pri náhľade"
 
 #: lib/ui/stdcontext.inc:649
-#, fuzzy
 msgid "Open Target...|O"
-msgstr "Otvoriť...|O"
+msgstr "Otvoriť Cieľ...|O"
 
 #: lib/ui/stdmenus.inc:33
 msgid "Document|D"
@@ -12720,9 +12702,8 @@ msgid "Update Local Directory From Repository|d"
 msgstr "Aktualizuj Lokálny Adresár Z Repositáru"
 
 #: lib/ui/stdmenus.inc:78
-#, fuzzy
 msgid "Compare with Older Revision...|C"
-msgstr "Porovnaj zo Staršou Revíziou"
+msgstr "Porovnaj zo Staršou Revíziou..."
 
 #: lib/ui/stdmenus.inc:80
 msgid "Use Locking Property|L"
@@ -13117,9 +13098,8 @@ msgid "Protected Space|P"
 msgstr "Chránená medzera"
 
 #: lib/ui/stdmenus.inc:393
-#, fuzzy
 msgid "Horizontal Line...|L"
-msgstr "Horizontálna čiara"
+msgstr "Horizontálna Čiara..."
 
 #: lib/ui/stdmenus.inc:394
 msgid "Vertical Space...|V"
@@ -17866,9 +17846,8 @@ msgid "  Number %1$s"
 msgstr "  Číslo %1$s"
 
 #: src/Format.cpp:276
-#, fuzzy
 msgid "Cannot view URL"
-msgstr "Nemôžem zobraziť súbor"
+msgstr "Nemôžem zobraziť URL"
 
 #: src/Format.cpp:288 src/Format.cpp:301 src/Format.cpp:311 src/Format.cpp:346
 msgid "Cannot view file"
@@ -19944,9 +19923,8 @@ msgid "differences"
 msgstr "rozdiely"
 
 #: src/frontends/qt4/GuiCompareHistory.cpp:35
-#, fuzzy
 msgid "Compare different revisions"
-msgstr "Porovnaj zo staršou revíziou"
+msgstr "Porovnaj rozličné revízie"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:57
 msgid "big[[delimiter size]]"
@@ -22050,7 +22028,6 @@ msgid "More Spelling Suggestions"
 msgstr "Viacej Pravopisných Návrhov"
 
 #: src/frontends/qt4/Menus.cpp:764
-#, fuzzy
 msgid "Add to personal dictionary|n"
 msgstr "Pridať do osobného slovníka"
 
@@ -22544,17 +22521,16 @@ msgstr "Grafický súbor: %1$s"
 
 #: src/insets/InsetHyperlink.cpp:252
 msgid "www"
-msgstr ""
+msgstr "www"
 
 #: src/insets/InsetHyperlink.cpp:256
-#, fuzzy
 msgid "file"
-msgstr "novýsúbor"
+msgstr "súbor"
 
 #: src/insets/InsetHyperlink.cpp:257
-#, fuzzy, c-format
+#, c-format
 msgid "Hyperlink (%1$s) to %2$s"
-msgstr "Vetva (%1$s): %2$s"
+msgstr "Hyperlinka (%1$s) na %2$s"
 
 #: src/insets/InsetInclude.cpp:368
 msgid "Verbatim Input"
@@ -22706,7 +22682,6 @@ msgid "DUPLICATE: "
 msgstr "DUPLIKÁT: "
 
 #: src/insets/InsetLine.cpp:62
-#, fuzzy
 msgid "Horizontal line"
 msgstr "Horizontálna čiara"
 
