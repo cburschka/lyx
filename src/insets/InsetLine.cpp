@@ -14,6 +14,8 @@
 #include "InsetLine.h"
 
 #include "Buffer.h"
+#include "BufferView.h"
+#include "CoordCache.h"
 #include "Dimension.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
@@ -127,19 +129,22 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetLine::draw(PainterInfo & pi, int x, int y) const
 {
-	Dimension const dim = dimension(*pi.base.bv);
+	// We cannot use InsetCommand::dimension() as this returns the dimension
+	// of the button, which is not used here!
+	Dimension const dim = pi.base.bv->coordCache().getInsets().dim(this);
+	int const max_width = dim.width();
 
 	frontend::FontMetrics const & fm = theFontMetrics(pi.base.font);
 
 	// get the length of the parameters in pixels
 	Length offset = Length(to_ascii(getParam("offset")));
-	int o = offset.inPixels(pi.base.textwidth,
+	int o = offset.inPixels(max_width,
 				fm.width(char_type('M')));
 	Length const width(to_ascii(getParam("width")));
-	int w = width.inPixels(pi.base.textwidth,
+	int w = width.inPixels(max_width,
 		fm.width(char_type('M')));
 	Length height = Length(to_ascii(getParam("height")));
-	int h = height.inPixels(pi.base.textwidth,
+	int h = height.inPixels(max_width,
 		fm.width(char_type('M')));
 
 	// get the surrounding text color
@@ -148,14 +153,14 @@ void InsetLine::draw(PainterInfo & pi, int x, int y) const
 
 	// assure that the drawn line is not outside of the window
 	// check that it doesn't exceed the outer boundary
-	if (x + w - h/2 - 2 > pi.base.textwidth)
-		w = pi.base.textwidth - x + h/2 + 2;
+	if (w > max_width)
+		w = max_width;
 	// check that it doesn't exceed the upper boundary
 	if (y - o - h/2 < 0)
 		o = y - h/2 - 2;
 
 	// the offset is a vertical one
-	pi.pain.line(x + h/2 + 1, y - o - h/2, x + w - h/2 - 2, y - o - h/2,
+	pi.pain.line(x, y - o - h/2, x + w, y - o - h/2,
 		Line_color, Painter::line_solid, float(h));
 }
 
