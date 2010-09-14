@@ -128,12 +128,12 @@ public:
 	SpellChecker::ChangeNumber currentChangeNumber() const {
 		return current_change_number_;
 	}
-	
+
 	void refreshRange(pos_type & first, pos_type & last) const {
 		first = refresh_.first;
 		last = refresh_.last;
 	}
-	
+
 	void needsRefresh(pos_type pos) {
 		if (needs_refresh_ && pos != -1) {
 			if (pos < refresh_.first)
@@ -153,7 +153,7 @@ public:
 		refresh_.last = -1;
 		current_change_number_ = change_number;
 	}
-	
+
 private:
 	/// store the ranges as map of FontSpan and spell result pairs
 	typedef map<FontSpan, SpellChecker::Result> Ranges;
@@ -163,7 +163,7 @@ private:
 	FontSpan refresh_;
 	bool needs_refresh_;
 	SpellChecker::ChangeNumber current_change_number_;
-	
+
 	void eraseCoveredRanges(FontSpan const fp)
 	{
 		Ranges result;
@@ -186,7 +186,7 @@ private:
 	}
 
 	void correctRangesAfterPos(pos_type pos, int offset)
-	{	
+	{
 		Ranges result;
 		RangesIterator et = ranges_.end();
 		RangesIterator it = ranges_.begin();
@@ -337,16 +337,16 @@ public:
 	void requestSpellCheck(pos_type pos) {
 		speller_state_.needsRefresh(pos);
 	}
-	
+
 	void readySpellCheck() {
 		speller_state_.needsRefresh(-1);
 	}
-	
+
 	bool needsSpellCheck() const
 	{
 		return speller_state_.needsRefresh();
 	}
-	
+
 	void rangeOfSpellCheck(pos_type & first, pos_type & last) const
 	{
 		speller_state_.refreshRange(first, last);
@@ -363,7 +363,8 @@ public:
 		last = endpos;
 	}
 
-	int countSoftbreaks(PositionsIterator & it, PositionsIterator const et, pos_type & start) const
+	int countSoftbreaks(PositionsIterator & it, PositionsIterator const et,
+			    pos_type & start) const
 	{
 		int numbreaks = 0;
 		while (it != et && *it < start) {
@@ -378,12 +379,12 @@ public:
 							 SpellChecker::Result result,
 							 docstring const & word,
 							 Positions const & softbreaks);
-	
+
 	InsetCode ownerCode() const
 	{
 		return inset_owner_ ? inset_owner_->lyxCode() : NO_CODE;
 	}
-	
+
 	/// Which Paragraph owns us?
 	Paragraph * owner_;
 
@@ -411,7 +412,7 @@ public:
 	typedef docstring TextContainer;
 	///
 	TextContainer text_;
-	
+
 	typedef set<docstring> Words;
 	typedef map<Language, Words> LangWordsMap;
 	///
@@ -458,7 +459,7 @@ Paragraph::Private::Private(Paragraph * owner, Layout const & layout)
 static int paragraph_id = -1;
 
 Paragraph::Private::Private(Private const & p, Paragraph * owner)
-	: owner_(owner), inset_owner_(p.inset_owner_), fontlist_(p.fontlist_), 
+	: owner_(owner), inset_owner_(p.inset_owner_), fontlist_(p.fontlist_),
 	  params_(p.params_), changes_(p.changes_), insetlist_(p.insetlist_),
 	  begin_of_body_(p.begin_of_body_), text_(p.text_), words_(p.words_),
 	  layout_(p.layout_), speller_state_(p.speller_state_)
@@ -674,7 +675,7 @@ void Paragraph::Private::insertChar(pos_type pos, char_type c,
 
 	// Update the insets
 	insetlist_.increasePosAfterPos(pos);
-	
+
 	// Update list of misspelled positions
 	speller_state_.increasePosAfterPos(pos);
 }
@@ -1005,7 +1006,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	    // ERT is an exception, it should be output with no
 	    // decorations at all
 	    && inset->lyxCode() != ERT_CODE) {
-	    	if (running_font.language()->lang() == "farsi")
+		if (running_font.language()->lang() == "farsi")
 			os << "\\beginL{}";
 		else
 			os << "\\L{";
@@ -1030,10 +1031,10 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 		unsigned int count = running_font.latexWriteEndChanges(os,
 			bparams, runparams, basefont, basefont, closeLanguage);
 		column += count;
-		// if any font properties were closed, update the running_font, 
+		// if any font properties were closed, update the running_font,
 		// making sure, however, to leave the language as it was
 		if (count > 0) {
-			// FIXME: probably a better way to keep track of the old 
+			// FIXME: probably a better way to keep track of the old
 			// language, than copying the entire font?
 			Font const copy_font(running_font);
 			basefont = owner_->getLayoutFont(bparams, outerfont);
@@ -1302,12 +1303,12 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 			features.addPreambleSnippet("\\" + cmd + content + "}");
 		}
 	}
-	
-	if (features.runparams().flavor == OutputParams::HTML 
+
+	if (features.runparams().flavor == OutputParams::HTML
 	    && layout_->htmltitle()) {
 		features.setHTMLTitle(owner_->asString(AS_STR_INSETS));
 	}
-	
+
 	// check the params.
 	if (!params_.spacing().isDefault())
 		features.require("setspace");
@@ -1357,7 +1358,7 @@ namespace {
 	Layout const emptyParagraphLayout;
 }
 
-Paragraph::Paragraph() 
+Paragraph::Paragraph()
 	: d(new Paragraph::Private(this, emptyParagraphLayout))
 {
 	itemdepth = 0;
@@ -1787,7 +1788,7 @@ void Paragraph::setFont(pos_type pos, Font const & font)
 	// First, reduce font against layout/label font
 	// Update: The setCharFont() routine in text2.cpp already
 	// reduces font, so we don't need to do that here. (Asger)
-	
+
 	d->fontlist_.set(pos, font);
 }
 
@@ -1872,14 +1873,14 @@ void Paragraph::setLabelWidthString(docstring const & s)
 }
 
 
-docstring Paragraph::expandLabel(Layout const & layout, 
+docstring Paragraph::expandLabel(Layout const & layout,
 		BufferParams const & bparams) const
-{ 
-	return expandParagraphLabel(layout, bparams, true); 
+{
+	return expandParagraphLabel(layout, bparams, true);
 }
 
 
-docstring Paragraph::expandDocBookLabel(Layout const & layout, 
+docstring Paragraph::expandDocBookLabel(Layout const & layout,
 		BufferParams const & bparams) const
 {
 	return expandParagraphLabel(layout, bparams, false);
@@ -1894,7 +1895,7 @@ docstring Paragraph::expandParagraphLabel(Layout const & layout,
 	bool const in_appendix = process_appendix && d->params_.appendix();
 	docstring fmt = translateIfPossible(layout.labelstring(in_appendix), lang);
 
-	if (fmt.empty() && layout.labeltype == LABEL_COUNTER 
+	if (fmt.empty() && layout.labeltype == LABEL_COUNTER
 	    && !layout.counter.empty())
 		return tclass.counters().theCounter(layout.counter, lang);
 
@@ -1909,7 +1910,7 @@ docstring Paragraph::expandParagraphLabel(Layout const & layout,
 			if (tclass.hasLayout(parent))
 				docstring label = expandParagraphLabel(tclass[parent], bparams,
 						      process_appendix);
-			fmt = docstring(fmt, 0, i) + label 
+			fmt = docstring(fmt, 0, i) + label
 				+ docstring(fmt, j + 1, docstring::npos);
 		}
 	}
@@ -1922,9 +1923,9 @@ void Paragraph::applyLayout(Layout const & new_layout)
 {
 	d->layout_ = &new_layout;
 	LyXAlignment const oldAlign = d->params_.align();
-	
+
 	if (!(oldAlign & d->layout_->alignpossible)) {
-		frontend::Alert::warning(_("Alignment not permitted"), 
+		frontend::Alert::warning(_("Alignment not permitted"),
 			_("The new layout does not permit the alignment previously used.\nSetting to default."));
 		d->params_.align(LYX_ALIGN_LAYOUT);
 	}
@@ -2055,7 +2056,7 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 		os << "\\noindent ";
 		column += 10;
 	}
-	
+
 	LyXAlignment const curAlign = params_.align();
 
 	if (curAlign == layout_->align)
@@ -2286,7 +2287,7 @@ void Paragraph::latex(BufferParams const & bparams,
 		}
 
 		Change const & change = runparams.inDeletedInset ? runparams.changeOfDeletedInset
-		                                                 : lookupChange(i);
+								 : lookupChange(i);
 
 		if (bparams.outputChanges && runningChange != change) {
 			if (open_font) {
@@ -2371,7 +2372,7 @@ void Paragraph::latex(BufferParams const & bparams,
 			// check if the fontchange ends with a trailing blank
 			// (like "\small " (see bug 3382)
 			else if (suffixIs(fontchange, ' ') && c == ' ')
-				os << fontchange.substr(0, fontchange.size() - 1) 
+				os << fontchange.substr(0, fontchange.size() - 1)
 				   << from_ascii("{}");
 			else
 				os << fontchange;
@@ -2656,7 +2657,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 		// let's not show deleted material in the output
 		if (isDeleted(i))
 			continue;
-	
+
 		Font font = getFont(buf.params(), i, outerfont);
 
 		// emphasis
@@ -2687,7 +2688,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 			InsetCommand const * ic = inset->asInsetCommand();
 			InsetLayout const & il = inset->getLayout();
 			InsetMath const * im = inset->asInsetMath();
-			if (!runparams.for_toc 
+			if (!runparams.for_toc
 			    || im || il.isInToc() || (ic && ic->isInToc())) {
 				OutputParams np = runparams;
 				if (!il.htmlisblock())
@@ -2856,7 +2857,7 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options) const
 {
 	odocstringstream os;
 
-	if (beg == 0 
+	if (beg == 0
 	    && options & AS_STR_LABEL
 	    && !d->params_.labelString().empty())
 		os << d->params_.labelString() << ' ';
@@ -2881,7 +2882,7 @@ docstring Paragraph::stringify(pos_type beg, pos_type end, int options, OutputPa
 {
 	odocstringstream os;
 
-	if (beg == 0 
+	if (beg == 0
 		&& options & AS_STR_LABEL
 		&& !d->params_.labelString().empty())
 		os << d->params_.labelString() << ' ';
@@ -2931,14 +2932,14 @@ void Paragraph::setLayout(Layout const & layout)
 
 
 void Paragraph::setDefaultLayout(DocumentClass const & tc)
-{ 
-	setLayout(tc.defaultLayout()); 
+{
+	setLayout(tc.defaultLayout());
 }
 
 
 void Paragraph::setPlainLayout(DocumentClass const & tc)
-{ 
-	setLayout(tc.plainLayout()); 
+{
+	setLayout(tc.plainLayout());
 }
 
 
@@ -3084,7 +3085,7 @@ int Paragraph::checkBiblio(Buffer const & buffer)
 
 	// There was no inset at the beginning, so we need to create one with
 	// the key and label of the one we erased.
-	InsetBibitem * inset = 
+	InsetBibitem * inset =
 		new InsetBibitem(const_cast<Buffer *>(&buffer), InsetCommandParams(BIBITEM_CODE));
 	// restore values of previously deleted item in this par.
 	if (!oldkey.empty())
@@ -3479,7 +3480,7 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 	Language * lang = d->getSpellLanguage(from);
 
 	wl = WordLangTuple(word, lang);
-	
+
 	if (!word.size())
 		return result;
 
@@ -3493,7 +3494,7 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 	} else {
 		result = d->speller_state_.getState(from);
 	}
-	
+
 	bool const misspelled_ = SpellChecker::misspelled(result) ;
 	if (misspelled_ && do_suggestion)
 		speller->suggest(wl, suggestions);
@@ -3591,7 +3592,7 @@ void Paragraph::spellCheck() const
 	d->readySpellCheck();
 }
 
-	
+
 bool Paragraph::isMisspelled(pos_type pos) const
 {
 	return SpellChecker::misspelled(d->speller_state_.getState(pos));
