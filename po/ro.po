@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-09-07 09:26+0200\n"
+"POT-Creation-Date: 2010-09-14 10:33+0200\n"
 "PO-Revision-Date: 2009-08-20 17:06+0100\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -4592,15 +4592,16 @@ msgstr "LaTeX"
 msgid "Thesaurus"
 msgstr "Dicţionar"
 
-#: lib/layouts/aastex.layout:76 lib/layouts/amsbook.layout:123
-#: lib/layouts/apa.layout:335 lib/layouts/egs.layout:69
-#: lib/layouts/kluwer.layout:84 lib/layouts/llncs.layout:69
-#: lib/layouts/ltugboat.layout:102 lib/layouts/memoir.layout:80
-#: lib/layouts/paper.layout:79 lib/layouts/revtex.layout:65
-#: lib/layouts/revtex4.layout:86 lib/layouts/agu_stdsections.inc:60
-#: lib/layouts/aguplus.inc:55 lib/layouts/db_stdsections.inc:52
-#: lib/layouts/numrevtex.inc:33 lib/layouts/scrclass.inc:83
-#: lib/layouts/stdsections.inc:114 lib/layouts/svjour.inc:83
+#: lib/layouts/aastex.layout:76 lib/layouts/agutex.layout:148
+#: lib/layouts/amsbook.layout:123 lib/layouts/apa.layout:335
+#: lib/layouts/egs.layout:69 lib/layouts/kluwer.layout:84
+#: lib/layouts/llncs.layout:69 lib/layouts/ltugboat.layout:102
+#: lib/layouts/memoir.layout:80 lib/layouts/paper.layout:79
+#: lib/layouts/revtex.layout:65 lib/layouts/revtex4.layout:86
+#: lib/layouts/agu_stdsections.inc:60 lib/layouts/aguplus.inc:55
+#: lib/layouts/db_stdsections.inc:52 lib/layouts/numrevtex.inc:33
+#: lib/layouts/scrclass.inc:83 lib/layouts/stdsections.inc:114
+#: lib/layouts/svjour.inc:83
 msgid "Paragraph"
 msgstr "Paragraf"
 
@@ -4867,11 +4868,6 @@ msgstr "Afiliere"
 #: lib/layouts/svjour.inc:222
 msgid "Abstract."
 msgstr "Abstract."
-
-#: lib/layouts/agutex.layout:148
-#, fuzzy
-msgid "Glossary term"
-msgstr "Glosar"
 
 #: lib/layouts/agutex.layout:155 lib/layouts/agutex.layout:167
 #: lib/layouts/ijmpc.layout:181 lib/layouts/ijmpd.layout:180
@@ -21918,6 +21914,10 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Cuvînt necunoscut:"
+
+#, fuzzy
+#~ msgid "Glossary term"
+#~ msgstr "Glosar"
 
 #, fuzzy
 #~ msgid "Date format"

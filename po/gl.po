@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-09-07 09:26+0200\n"
+"POT-Creation-Date: 2010-09-14 10:33+0200\n"
 "PO-Revision-Date: 2007-07-11 18:31+0100\n"
 "Last-Translator: Ramon Flores <fa2ramon@usc.es>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -4643,15 +4643,16 @@ msgstr "LaTeX"
 msgid "Thesaurus"
 msgstr "Tesouro"
 
-#: lib/layouts/aastex.layout:76 lib/layouts/amsbook.layout:123
-#: lib/layouts/apa.layout:335 lib/layouts/egs.layout:69
-#: lib/layouts/kluwer.layout:84 lib/layouts/llncs.layout:69
-#: lib/layouts/ltugboat.layout:102 lib/layouts/memoir.layout:80
-#: lib/layouts/paper.layout:79 lib/layouts/revtex.layout:65
-#: lib/layouts/revtex4.layout:86 lib/layouts/agu_stdsections.inc:60
-#: lib/layouts/aguplus.inc:55 lib/layouts/db_stdsections.inc:52
-#: lib/layouts/numrevtex.inc:33 lib/layouts/scrclass.inc:83
-#: lib/layouts/stdsections.inc:114 lib/layouts/svjour.inc:83
+#: lib/layouts/aastex.layout:76 lib/layouts/agutex.layout:148
+#: lib/layouts/amsbook.layout:123 lib/layouts/apa.layout:335
+#: lib/layouts/egs.layout:69 lib/layouts/kluwer.layout:84
+#: lib/layouts/llncs.layout:69 lib/layouts/ltugboat.layout:102
+#: lib/layouts/memoir.layout:80 lib/layouts/paper.layout:79
+#: lib/layouts/revtex.layout:65 lib/layouts/revtex4.layout:86
+#: lib/layouts/agu_stdsections.inc:60 lib/layouts/aguplus.inc:55
+#: lib/layouts/db_stdsections.inc:52 lib/layouts/numrevtex.inc:33
+#: lib/layouts/scrclass.inc:83 lib/layouts/stdsections.inc:114
+#: lib/layouts/svjour.inc:83
 msgid "Paragraph"
 msgstr "Parágrafo"
 
@@ -4935,11 +4936,6 @@ msgstr "Afiliación:"
 #: lib/layouts/svjour.inc:222
 msgid "Abstract."
 msgstr "Resumo."
-
-#: lib/layouts/agutex.layout:148
-#, fuzzy
-msgid "Glossary term"
-msgstr "Fechar"
 
 #: lib/layouts/agutex.layout:155 lib/layouts/agutex.layout:167
 #: lib/layouts/ijmpc.layout:181 lib/layouts/ijmpd.layout:180
@@ -22088,6 +22084,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Usuário descoñecido"
+
+#, fuzzy
+#~ msgid "Glossary term"
+#~ msgstr "Fechar"
 
 #~ msgid "Date format"
 #~ msgstr "Formato de data"
