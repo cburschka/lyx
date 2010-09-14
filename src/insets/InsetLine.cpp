@@ -131,16 +131,13 @@ void InsetLine::draw(PainterInfo & pi, int x, int y) const
 
 	// get the length of the parameters in pixels
 	Length offset = Length(to_ascii(getParam("offset")));
-	int o =
-		offset.inPixels(pi.base.textwidth,
+	int o =	offset.inPixels(pi.base.textwidth,
 		fm.width(char_type('M')));
 	Length width = Length(to_ascii(getParam("width")));
-	int w =
-		width.inPixels(pi.base.textwidth,
+	int w =	width.inPixels(pi.base.textwidth,
 		fm.width(char_type('M')));
 	Length height = Length(to_ascii(getParam("height")));
-	int h =
-		height.inPixels(pi.base.textwidth,
+	int h =	height.inPixels(pi.base.textwidth,
 		fm.width(char_type('M')));
 
 	// get the surrounding text color
