@@ -107,10 +107,9 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
 
-	Length width = Length(to_ascii(getParam("width")));
-	int w =
-		width.inPixels(mi.base.textwidth,
-		fm.width(char_type('M')));
+	Length const width(to_ascii(getParam("width")));
+	int w = width.inPixels(mi.base.textwidth,
+			       fm.width(char_type('M')));
 
 	// assure that the line inset is not outside of the window
 	// check that it doesn't exceed the outer boundary
@@ -118,7 +117,7 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 		w = mi.base.textwidth;
 
 	// set a minimal width
-	int const minw = (w < 0) ? 3 * 8 : 4;
+	int const minw = (w < 0) ? 24 : 4;
 	dim.wid = max(minw, max(w, -w));
 
 	// Cache the inset dimension
@@ -134,16 +133,13 @@ void InsetLine::draw(PainterInfo & pi, int x, int y) const
 
 	// get the length of the parameters in pixels
 	Length offset = Length(to_ascii(getParam("offset")));
-	int o =
-		offset.inPixels(pi.base.textwidth,
-		fm.width(char_type('M')));
-	Length width = Length(to_ascii(getParam("width")));
-	int w =
-		width.inPixels(pi.base.textwidth,
+	int o = offset.inPixels(pi.base.textwidth,
+				fm.width(char_type('M')));
+	Length const width(to_ascii(getParam("width")));
+	int w = width.inPixels(pi.base.textwidth,
 		fm.width(char_type('M')));
 	Length height = Length(to_ascii(getParam("height")));
-	int h =
-		height.inPixels(pi.base.textwidth,
+	int h = height.inPixels(pi.base.textwidth,
 		fm.width(char_type('M')));
 
 	// get the surrounding text color
