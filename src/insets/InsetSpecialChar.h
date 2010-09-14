@@ -76,7 +76,7 @@ public:
 	void validate(LaTeXFeatures &) const;
 
 	// should this inset be handled like a normal charater
-	bool isChar() const;
+	bool isChar() const { return true; }
 	/// is this equivalent to a letter?
 	bool isLetter() const;
 	// should we break lines after this inset?
