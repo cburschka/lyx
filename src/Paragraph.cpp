@@ -174,11 +174,9 @@ private:
 			// 1. first of new range inside current range or
 			// 2. last of new range inside current range or
 			// 3. first of current range inside new range or
-			// 4. last of current range inside new range or
-			if ((fc.first <= fp.first && fp.first <= fc.last) ||
-				(fc.first <= fp.last && fp.last <= fc.last) ||
-				(fp.first <= fc.first && fc.first <= fp.last) ||
-				(fp.first <= fc.last && fc.last <= fp.last))
+			// 4. last of current range inside new range
+			if (fc.inside(fp.first) || fc.inside(fp.last) ||
+				fp.inside(fc.first) || fp.inside(fc.last))
 			{
 				continue;
 			}
@@ -364,7 +362,18 @@ public:
 		}
 		last = endpos;
 	}
-	
+
+	int countSoftbreaks(PositionsIterator & it, PositionsIterator const et, pos_type & start) const
+	{
+		int numbreaks = 0;
+		while (it != et && *it < start) {
+			++start;
+			++numbreaks;
+			++it;
+		}
+		return numbreaks;
+	}
+
 	void markMisspelledWords(pos_type const & first, pos_type const & last,
 							 SpellChecker::Result result,
 							 docstring const & word,
@@ -3505,45 +3514,42 @@ void Paragraph::Private::markMisspelledWords(
 	docstring const & word,
 	Positions const & softbreaks)
 {
+	if (!SpellChecker::misspelled(result)) {
+		setMisspelled(first, last, SpellChecker::WORD_OK);
+		return;
+	}
 	pos_type snext = first;
-	if (SpellChecker::misspelled(result)) {
-		SpellChecker * speller = theSpellChecker();
-		// locate and enumerate the error positions
-		int nerrors = speller->numMisspelledWords();
-		int numbreaks = 0;
-		PositionsIterator it = softbreaks.begin();
-		PositionsIterator et = softbreaks.end();
-		for (int index = 0; index < nerrors; ++index) {
-			int wstart;
-			int wlen = 0;
-			speller->misspelledWord(index, wstart, wlen);
-			if (wlen) {
-				docstring const misspelled = word.substr(wstart, wlen);
-				wstart += first + numbreaks;
-				if (snext < wstart) {
-					while (it != et && *it < wstart) {
-						++wstart;
-						++numbreaks;
-						++it;
-					}
-					setMisspelled(snext,
-						wstart - 1, SpellChecker::WORD_OK);
-				}
-				snext = wstart + wlen;
-				while (it != et && *it < snext) {
-					++snext;
-					++numbreaks;
-					++it;
-				}
-				setMisspelled(wstart, snext, result);
-				LYXERR(Debug::GUI, "misspelled word: \"" <<
-					   misspelled << "\" [" <<
-					   wstart << ".." << (snext-1) << "]");
-				++snext;
-			}
+	SpellChecker * speller = theSpellChecker();
+	// locate and enumerate the error positions
+	int nerrors = speller->numMisspelledWords();
+	int numbreaks = 0;
+	PositionsIterator it = softbreaks.begin();
+	PositionsIterator et = softbreaks.end();
+	for (int index = 0; index < nerrors; ++index) {
+		int wstart;
+		int wlen = 0;
+		speller->misspelledWord(index, wstart, wlen);
+		/// should not happen if speller supports range checks
+		if (!wlen) continue;
+		docstring const misspelled = word.substr(wstart, wlen);
+		wstart += first + numbreaks;
+		if (snext < wstart) {
+			/// mark the range of correct spelling
+			numbreaks += countSoftbreaks(it, et, wstart);
+			setMisspelled(snext,
+				wstart - 1, SpellChecker::WORD_OK);
 		}
+		snext = wstart + wlen;
+		numbreaks += countSoftbreaks(it, et, snext);
+		/// mark the range of misspelling
+		setMisspelled(wstart, snext, result);
+		LYXERR(Debug::GUI, "misspelled word: \"" <<
+			   misspelled << "\" [" <<
+			   wstart << ".." << (snext-1) << "]");
+		++snext;
 	}
 	if (snext <= last) {
+		/// mark the range of correct spelling at end
 		setMisspelled(snext, last, SpellChecker::WORD_OK);
 	}
 }
@@ -3558,7 +3564,7 @@ void Paragraph::spellCheck() const
 	pos_type endpos;
 	d->rangeOfSpellCheck(start, endpos);
 	if (speller->canCheckParagraph()) {
-		// loop until we leave the range argument
+		// loop until we leave the range
 		for (pos_type first = start; first < endpos; ) {
 			pos_type last = endpos;
 			Private::Positions softbreaks;

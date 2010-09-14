@@ -77,7 +77,11 @@ public:
 		return first == s.first && last == s.last;
 	}
 	
-	
+	inline bool inside(pos_type p) const
+	{
+		return first <= p && p <= last;
+	}
+
 };
 
 ///
