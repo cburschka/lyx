@@ -105,12 +105,6 @@ public:
 	///
 	void decreasePosAfterPos(pos_type pos);
 
-	///
-	void setMisspelled(
-		pos_type startpos,
-		pos_type endpos,
-		bool misspelled);
-
 	/// Returns the height of the highest font in range
 	FontSize highestInRange(
 		pos_type startpos,

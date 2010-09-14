@@ -356,6 +356,9 @@ void Text::setFont(BufferView const & bv, CursorSlice const & begin,
 		Font f = tm.displayFont(pit, pos);
 		f.update(font, language, toggleall);
 		setCharFont(pit, pos, f, tm.font_);
+		// font change may change language... 
+		// spell checker has to know that
+		pars_[pit].requestSpellCheck(pos);
 	}
 }
 

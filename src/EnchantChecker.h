@@ -38,6 +38,7 @@ public:
 	void accept(WordLangTuple const &);
 	bool hasDictionary(Language const * lang) const;
 	docstring const error();
+	void advanceChangeNumber();
 	///@}
 
 private:

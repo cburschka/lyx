@@ -280,6 +280,12 @@ SpellChecker::Result AspellChecker::check(WordLangTuple const & word)
 }
 
 
+void AspellChecker::advanceChangeNumber()
+{
+	nextChangeNumber();
+}
+
+
 void AspellChecker::insert(WordLangTuple const & word)
 {
 	Spellers::iterator it = d->spellers_.find(
@@ -287,6 +293,7 @@ void AspellChecker::insert(WordLangTuple const & word)
 	if (it != d->spellers_.end()) {
 		AspellSpeller * speller = to_aspell_speller(it->second.e_speller);
 		aspell_speller_add_to_personal(speller, to_utf8(word.word()).c_str(), -1);
+		advanceChangeNumber();
 	}
 }
 
@@ -298,6 +305,7 @@ void AspellChecker::accept(WordLangTuple const & word)
 	if (it != d->spellers_.end()) {
 		AspellSpeller * speller = to_aspell_speller(it->second.e_speller);
 		aspell_speller_add_to_session(speller, to_utf8(word.word()).c_str(), -1);
+		advanceChangeNumber();
 	}
 }
 

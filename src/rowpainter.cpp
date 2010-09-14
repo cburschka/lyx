@@ -234,6 +234,10 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	bool const selection = (pos >= row_.sel_beg && pos < row_.sel_end)
 		|| pi_.selected;
 
+	// spelling correct?
+	bool const spell_state =
+		lyxrc.spellcheck_continuously && par_.isMisspelled(pos);
+
 	char_type prev_char = ' ';
 	// collect as much similar chars as we can
 	for (++vpos ; vpos < end ; ++vpos) {
@@ -244,6 +248,12 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 		bool const new_selection = pos >= row_.sel_beg && pos < row_.sel_end;
 		if (new_selection != selection)
 			// Selection ends or starts here.
+			break;
+
+		bool const new_spell_state =
+			lyxrc.spellcheck_continuously && par_.isMisspelled(pos);
+		if (new_spell_state != spell_state)
+			// Spell checker state changed here.
 			break;
 
 		Change const & change = par_.lookupChange(pos);
@@ -357,6 +367,10 @@ void RowPainter::paintFromPos(pos_type & vpos)
 	bool const arabic = lang == "arabic_arabtex" || lang == "arabic_arabi" || 
 						lang == "farsi";
 
+	// spelling correct?
+	bool const misspelled_ =
+		lyxrc.spellcheck_continuously && par_.isMisspelled(pos);
+	
 	// draw as many chars as we can
 	if ((!hebrew && !arabic)
 		|| (hebrew && !Encodings::isHebrewComposeChar(c))
@@ -370,8 +384,9 @@ void RowPainter::paintFromPos(pos_type & vpos)
 
 	paintForeignMark(orig_x, orig_font.language());
 
-	if (lyxrc.spellcheck_continuously && orig_font.isMisspelled())
+	if (lyxrc.spellcheck_continuously && misspelled_) {
 		paintMisspelledMark(orig_x, 2);
+	}
 }
 
 

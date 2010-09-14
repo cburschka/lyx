@@ -4033,6 +4033,7 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 		if (from == end)
 			break;
 		to = from;
+		from.paragraph().spellCheck();
 		SpellChecker::Result res = from.paragraph().spellCheck(from.pos(), to.pos(), wl, suggestions);
 		if (SpellChecker::misspelled(res)) {
 			word_lang = wl;

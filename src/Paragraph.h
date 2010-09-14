@@ -66,6 +66,18 @@ public:
 public:
 	/// Range including first and last.
 	pos_type first, last;
+
+	inline bool operator<(FontSpan const & s) const
+	{
+		return first < s.first;
+	}
+	
+	inline bool operator==(FontSpan const & s) const
+	{
+		return first == s.first && last == s.last;
+	}
+	
+	
 };
 
 ///
@@ -147,7 +159,7 @@ public:
 	/// \param force means: output even if layout.inpreamble is true.
 	void latex(BufferParams const &, Font const & outerfont, odocstream &,
 		   TexRow & texrow, OutputParams const &,
-			 int start_pos = 0, int end_pos = -1, bool force = false) const;
+		   int start_pos = 0, int end_pos = -1, bool force = false) const;
 
 	/// Can we drop the standard paragraph wrapper?
 	bool emptyTag() const;
@@ -425,11 +437,23 @@ public:
 	/// and \p suggestions if \p do_suggestion is true.
 	/// \return result from spell checker, SpellChecker::UNKNOWN_WORD when misspelled.
 	SpellChecker::Result spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
-		docstring_list & suggestions, bool do_suggestion =  true) const;
+		docstring_list & suggestions, bool do_suggestion =  true,
+		bool check_learned = false) const;
 
-	/// Spellcheck word at position \p pos.
-	/// \return true if pointed word is misspelled.
+	/// Spell checker status at position \p pos.
+	/// \return true if pointed position is misspelled.
 	bool isMisspelled(pos_type pos) const;
+
+	/// spell check of whole paragraph
+	/// remember results until call of requestSpellCheck()
+	void spellCheck() const;
+
+	/// query state of spell checker results
+	bool needsSpellCheck() const;
+	/// mark position of text manipulation to inform the spell checker
+	/// default value -1 marks the whole paragraph to be checked (again)
+	void requestSpellCheck(pos_type pos = -1);
+
 	/// an automatically generated identifying label for this paragraph.
 	/// presently used only in the XHTML output routines.
 	std::string magicLabel() const;

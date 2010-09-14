@@ -233,6 +233,12 @@ SpellChecker::Result HunspellChecker::check(WordLangTuple const & wl)
 }
 
 
+void HunspellChecker::advanceChangeNumber()
+{
+	nextChangeNumber();
+}
+
+
 void HunspellChecker::insert(WordLangTuple const & wl)
 {
 	string const word_to_check = to_utf8(wl.word());
@@ -240,12 +246,14 @@ void HunspellChecker::insert(WordLangTuple const & wl)
 	if (!h)
 		return;
 	h->add(word_to_check.c_str());
+	advanceChangeNumber();
 }
 
 
 void HunspellChecker::accept(WordLangTuple const & wl)
 {
 	d->ignored_.push_back(wl);
+	advanceChangeNumber();
 }
 
 

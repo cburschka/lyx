@@ -2132,15 +2132,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 
 		// Take this opportunity to spellcheck the row contents.
 		if (row_has_changed && lyxrc.spellcheck_continuously) {
-			WordLangTuple wl;
-			// dummy variable, not used.
-			static docstring_list suggestions;
-			pos_type from = row.pos();
-			pos_type to = row.endpos();
-			while (from < row.endpos()) {
-				text_->getPar(pit).spellCheck(from, to, wl, suggestions, false);
-				from = to + 1;
-			}
+			text_->getPar(pit).spellCheck();
 		}
 
 		// Don't paint the row if a full repaint has not been requested

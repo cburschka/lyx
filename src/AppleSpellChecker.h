@@ -34,6 +34,7 @@ public:
 	int numMisspelledWords() const;
 	void misspelledWord(int index, int & start, int & length) const;
 	docstring const error();
+	void advanceChangeNumber();
 	//@}
 
 private:

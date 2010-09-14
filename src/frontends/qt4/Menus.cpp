@@ -738,7 +738,7 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 	pos_type from = bv->cursor().pos();
 	pos_type to = from;
 	Paragraph const & par = bv->cursor().paragraph();
-	SpellChecker::Result res = par.spellCheck(from, to, wl, suggestions);
+	SpellChecker::Result res = par.spellCheck(from, to, wl, suggestions, true, true);
 	switch (res) {
 	case SpellChecker::UNKNOWN_WORD:
 		if (lyxrc.spellcheck_continuously) {

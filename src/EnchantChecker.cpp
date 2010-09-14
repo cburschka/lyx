@@ -124,19 +124,29 @@ SpellChecker::Result EnchantChecker::check(WordLangTuple const & word)
 }
 
 
+void EnchantChecker::advanceChangeNumber()
+{
+	nextChangeNumber();
+}
+
+
 void EnchantChecker::insert(WordLangTuple const & word)
 {
 	Spellers::iterator it = d->spellers_.find(word.lang()->code());
-	if (it != d->spellers_.end())
+	if (it != d->spellers_.end()) {
 		it->second.speller->add(to_utf8(word.word()));
+		advanceChangeNumber();
+	}
 }
 
 
 void EnchantChecker::accept(WordLangTuple const & word)
 {
 	Spellers::iterator it = d->spellers_.find(word.lang()->code());
-	if (it != d->spellers_.end())
+	if (it != d->spellers_.end()) {
 		it->second.speller->add_to_session(to_utf8(word.word()));
+		advanceChangeNumber();
+	}
 }
 
 

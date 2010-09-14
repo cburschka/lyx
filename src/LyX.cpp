@@ -1354,39 +1354,48 @@ SpellChecker * theSpellChecker()
 
 void setSpellChecker()
 {
-#if defined(USE_MACOSX_PACKAGING)
+	SpellChecker::ChangeNumber speller_change_number =singleton_->pimpl_->spell_checker_ ?
+		singleton_->pimpl_->spell_checker_->changeNumber() : 0;
+
 	if (lyxrc.spellchecker == "native") {
+#if defined(USE_MACOSX_PACKAGING)
 		if (!singleton_->pimpl_->apple_spell_checker_)
 			singleton_->pimpl_->apple_spell_checker_ = new AppleSpellChecker();
 		singleton_->pimpl_->spell_checker_ = singleton_->pimpl_->apple_spell_checker_;
-		return;
-	}
+#else
+		singleton_->pimpl_->spell_checker_ = 0;
 #endif
+	} else if (lyxrc.spellchecker == "aspell") {
 #if defined(USE_ASPELL)
-	if (lyxrc.spellchecker == "aspell") {
 		if (!singleton_->pimpl_->aspell_checker_)
 			singleton_->pimpl_->aspell_checker_ = new AspellChecker();
 		singleton_->pimpl_->spell_checker_ = singleton_->pimpl_->aspell_checker_;
-		return;
-	}
+#else
+		singleton_->pimpl_->spell_checker_ = 0;
 #endif
+	} else if (lyxrc.spellchecker == "enchant") {
 #if defined(USE_ENCHANT)
-	if (lyxrc.spellchecker == "enchant") {
 		if (!singleton_->pimpl_->enchant_checker_)
 			singleton_->pimpl_->enchant_checker_ = new EnchantChecker();
 		singleton_->pimpl_->spell_checker_ = singleton_->pimpl_->enchant_checker_;
-		return;
-	}
+#else
+		singleton_->pimpl_->spell_checker_ = 0;
 #endif
+	} else if (lyxrc.spellchecker == "hunspell") {
 #if defined(USE_HUNSPELL)
-	if (lyxrc.spellchecker == "hunspell") {
 		if (!singleton_->pimpl_->hunspell_checker_)
 			singleton_->pimpl_->hunspell_checker_ = new HunspellChecker();
 		singleton_->pimpl_->spell_checker_ = singleton_->pimpl_->hunspell_checker_;
-		return;
-	}
+#else
+		singleton_->pimpl_->spell_checker_ = 0;
 #endif
-	singleton_->pimpl_->spell_checker_ = 0;
+	} else {
+		singleton_->pimpl_->spell_checker_ = 0;
+	}
+	if (singleton_->pimpl_->spell_checker_) {
+		singleton_->pimpl_->spell_checker_->changeNumber(speller_change_number);
+		singleton_->pimpl_->spell_checker_->advanceChangeNumber();
+	}
 }
 
 } // namespace lyx

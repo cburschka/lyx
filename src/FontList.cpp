@@ -181,20 +181,6 @@ void FontList::set(pos_type pos, Font const & font)
 }
 
 
-void FontList::setMisspelled(pos_type startpos, pos_type endpos,
-	bool misspelled)
-{
-	// FIXME: move misspelled state out of font!?
-	for (pos_type p = startpos; p <= endpos; ++p) {
-		Font f = fontIterator(p)->font();
-		if (f.isMisspelled() != misspelled) {
-			f.setMisspelled(misspelled);
-			set(p, f);
-		}
-	}
-}
-
-
 FontSize FontList::highestInRange(pos_type startpos, pos_type endpos,
 	FontSize def_size) const
 {

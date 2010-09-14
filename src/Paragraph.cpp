@@ -73,6 +73,140 @@ namespace {
 char_type const META_INSET = 0x200001;
 };
 
+
+/////////////////////////////////////////////////////////////////////
+//
+// SpellCheckerState
+//
+/////////////////////////////////////////////////////////////////////
+
+class SpellCheckerState {
+public:
+	SpellCheckerState() {
+		needs_refresh_ = true;
+		current_change_number_ = 0;
+	}
+
+	void setRange(FontSpan const fp, SpellChecker::Result state)
+	{
+		eraseCoveredRanges(fp);
+		if (state != SpellChecker::WORD_OK)
+			ranges_[fp] = state;
+	}
+
+	void increasePosAfterPos(pos_type pos)
+	{
+		correctRangesAfterPos(pos, 1);
+		needsRefresh(pos);
+	}
+
+	void decreasePosAfterPos(pos_type pos)
+	{
+		correctRangesAfterPos(pos, -1);
+		needsRefresh(pos);
+	}
+
+	SpellChecker::Result getState(pos_type pos) const
+	{
+		SpellChecker::Result result = SpellChecker::WORD_OK;
+		RangesIterator et = ranges_.end();
+		RangesIterator it = ranges_.begin();
+		for (; it != et; ++it) {
+			FontSpan fc = it->first;
+			if(fc.first <= pos && pos <= fc.last) {
+				result = it->second;
+				break;
+			}
+		}
+		return result;
+	}
+
+	bool needsRefresh() const {
+		return needs_refresh_;
+	}
+
+	SpellChecker::ChangeNumber currentChangeNumber() const {
+		return current_change_number_;
+	}
+	
+	void refreshRange(pos_type & first, pos_type & last) const {
+		first = refresh_.first;
+		last = refresh_.last;
+	}
+	
+	void needsRefresh(pos_type pos) {
+		if (needs_refresh_ && pos != -1) {
+			if (pos < refresh_.first)
+				refresh_.first = pos;
+			if (pos > refresh_.last)
+				refresh_.last = pos;
+		} else if (pos != -1) {
+			refresh_.first = pos;
+			refresh_.last = pos;
+		}
+		needs_refresh_ = pos != -1;
+	}
+
+	void needsCompleteRefresh(SpellChecker::ChangeNumber change_number) {
+		needs_refresh_ = true;
+		refresh_.first = 0;
+		refresh_.last = -1;
+		current_change_number_ = change_number;
+	}
+	
+private:
+	/// store the ranges as map of FontSpan and spell result pairs
+	typedef map<FontSpan, SpellChecker::Result> Ranges;
+	typedef Ranges::const_iterator RangesIterator;
+	Ranges ranges_;
+	///
+	FontSpan refresh_;
+	bool needs_refresh_;
+	SpellChecker::ChangeNumber current_change_number_;
+	
+	void eraseCoveredRanges(FontSpan const fp)
+	{
+		Ranges result;
+		RangesIterator et = ranges_.end();
+		RangesIterator it = ranges_.begin();
+		for (; it != et; ++it) {
+			FontSpan fc = it->first;
+			// 1. first of new range inside current range or
+			// 2. last of new range inside current range or
+			// 3. first of current range inside new range or
+			// 4. last of current range inside new range or
+			if ((fc.first <= fp.first && fp.first <= fc.last) ||
+				(fc.first <= fp.last && fp.last <= fc.last) ||
+				(fp.first <= fc.first && fc.first <= fp.last) ||
+				(fp.first <= fc.last && fc.last <= fp.last))
+			{
+				continue;
+			}
+			result[fc] = it->second;
+		}
+		ranges_ = result;
+	}
+
+	void correctRangesAfterPos(pos_type pos, int offset)
+	{	
+		Ranges result;
+		RangesIterator et = ranges_.end();
+		RangesIterator it = ranges_.begin();
+		for (; it != et; ++it) {
+			FontSpan m = it->first;
+			if (m.first > pos) {
+				m.first += offset;
+				m.last += offset;
+			} else if (m.last > pos) {
+				m.last += offset;
+			}
+			result[m] = it->second;
+		}
+		ranges_ = result;
+	}
+
+};
+
 /////////////////////////////////////////////////////////////////////
 //
 // Paragraph::Private
@@ -173,18 +307,69 @@ public:
 	/// match a string against a particular point in the paragraph
 	bool isTextAt(string const & str, pos_type pos) const;
 
-	void setMisspelled(pos_type from, pos_type to, bool misspelled)
+	/// a vector of inset positions
+	typedef vector<pos_type> Positions;
+	typedef Positions::const_iterator PositionsIterator;
+
+	Language * getSpellLanguage(pos_type const from) const;
+
+	Language * locateSpellRange(pos_type & from, pos_type & to,
+								Positions & softbreaks) const;
+
+	bool hasSpellerChange() const {
+		SpellChecker::ChangeNumber speller_change_number = 0;
+		if (theSpellChecker())
+			speller_change_number = theSpellChecker()->changeNumber();
+		return speller_change_number > speller_state_.currentChangeNumber();
+	}
+
+	void setMisspelled(pos_type from, pos_type to, SpellChecker::Result state)
 	{
 		pos_type textsize = owner_->size();
 		// check for sane arguments
-		if (to < from || from >= textsize) return;
+		if (to < from || from >= textsize)
+			return;
+		FontSpan fp = FontSpan(from, to);
 		// don't mark end of paragraph
-		if (to >= textsize)
-			to = textsize - 1;
-		fontlist_.setMisspelled(from, to, misspelled);
+		if (fp.last >= textsize)
+			fp.last = textsize - 1;
+		speller_state_.setRange(fp, state);
+	}
+
+	void requestSpellCheck(pos_type pos) {
+		speller_state_.needsRefresh(pos);
 	}
 	
-
+	void readySpellCheck() {
+		speller_state_.needsRefresh(-1);
+	}
+	
+	bool needsSpellCheck() const
+	{
+		return speller_state_.needsRefresh();
+	}
+	
+	void rangeOfSpellCheck(pos_type & first, pos_type & last) const
+	{
+		speller_state_.refreshRange(first, last);
+		if (last == -1) {
+			last = owner_->size();
+			return;
+		}
+		pos_type endpos = last;
+		owner_->locateWord(first, endpos, WHOLE_WORD);
+		if (endpos < last) {
+			endpos = last;
+			owner_->locateWord(last, endpos, WHOLE_WORD);
+		}
+		last = endpos;
+	}
+	
+	void markMisspelledWords(pos_type const & first, pos_type const & last,
+							 SpellChecker::Result result,
+							 docstring const & word,
+							 Positions const & softbreaks);
+	
 	InsetCode ownerCode() const
 	{
 		return inset_owner_ ? inset_owner_->lyxCode() : NO_CODE;
@@ -224,6 +409,8 @@ public:
 	LangWordsMap words_;
 	///
 	Layout const * layout_;
+	///
+	SpellCheckerState speller_state_;
 };
 
 
@@ -265,9 +452,10 @@ Paragraph::Private::Private(Private const & p, Paragraph * owner)
 	: owner_(owner), inset_owner_(p.inset_owner_), fontlist_(p.fontlist_), 
 	  params_(p.params_), changes_(p.changes_), insetlist_(p.insetlist_),
 	  begin_of_body_(p.begin_of_body_), text_(p.text_), words_(p.words_),
-	  layout_(p.layout_)
+	  layout_(p.layout_), speller_state_(p.speller_state_)
 {
 	id_ = ++paragraph_id;
+	requestSpellCheck(p.text_.size());
 }
 
 
@@ -277,7 +465,7 @@ Paragraph::Private::Private(Private const & p, Paragraph * owner,
 	  params_(p.params_), changes_(p.changes_),
 	  insetlist_(p.insetlist_, beg, end),
 	  begin_of_body_(p.begin_of_body_), words_(p.words_),
-	  layout_(p.layout_)
+	  layout_(p.layout_), speller_state_(p.speller_state_)
 {
 	id_ = ++paragraph_id;
 	if (beg >= pos_type(p.text_.size()))
@@ -297,6 +485,7 @@ Paragraph::Private::Private(Private const & p, Paragraph * owner,
 		// Add a new entry in the fontlist_.
 		fontlist_.set(fcit->pos() - beg, fcit->font());
 	}
+	requestSpellCheck(p.text_.size());
 }
 
 
@@ -464,6 +653,8 @@ void Paragraph::Private::insertChar(pos_type pos, char_type c,
 	if (pos == pos_type(text_.size())) {
 		// when appending characters, no need to update tables
 		text_.push_back(c);
+		// but we want spell checking
+		requestSpellCheck(pos);
 		return;
 	}
 
@@ -474,6 +665,9 @@ void Paragraph::Private::insertChar(pos_type pos, char_type c,
 
 	// Update the insets
 	insetlist_.increasePosAfterPos(pos);
+	
+	// Update list of misspelled positions
+	speller_state_.increasePosAfterPos(pos);
 }
 
 
@@ -493,6 +687,9 @@ bool Paragraph::insertInset(pos_type pos, Inset * inset,
 
 	// Add a new entry in the insetlist_.
 	d->insetlist_.insert(inset, pos);
+
+	// Some insets require run of spell checker
+	requestSpellCheck(pos);
 	return true;
 }
 
@@ -541,6 +738,9 @@ bool Paragraph::eraseChar(pos_type pos, bool trackChanges)
 
 	// Update the insetlist_
 	d->insetlist_.decreasePosAfterPos(pos);
+
+	// Update list of misspelled positions
+	d->speller_state_.decreasePosAfterPos(pos);
 
 	return true;
 }
@@ -1249,9 +1449,8 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 		if (i == size())
 			break;
 
-		// Write font changes (ignore spelling markers)
+		// Write font changes
 		Font font2 = getFontSettings(bparams, i);
-		font2.setMisspelled(false);
 		if (font2 != font1) {
 			flushString(os, write_buffer);
 			font2.lyxWriteChanges(font1, os);
@@ -2605,6 +2804,7 @@ void Paragraph::changeLanguage(BufferParams const & bparams,
 			setFont(i, font);
 		}
 	}
+	d->requestSpellCheck(size());
 }
 
 
@@ -3172,61 +3372,223 @@ void Paragraph::updateWords()
 }
 
 
-SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
-	docstring_list & suggestions, bool do_suggestion) const
+Language * Paragraph::Private::locateSpellRange(
+	pos_type & from, pos_type & to,
+	Positions & softbreaks) const
 {
-	SpellChecker * speller = theSpellChecker();
-	if (!speller)
-		return SpellChecker::WORD_OK;
+	// skip leading white space
+	while (from < to && owner_->isWordSeparator(from))
+		++from;
+	// don't check empty range
+	if (from >= to)
+		return 0;
+	// get current language
+	Language * lang = getSpellLanguage(from);
+	pos_type last = from;
+	bool samelang = true;
+	bool sameinset = true;
+	while (last < to && samelang && sameinset) {
+		// hop to end of word
+		while (last < to && !owner_->isWordSeparator(last)) {
+			if (owner_->getInset(last)) {
+				softbreaks.insert(softbreaks.end(), last);
+			}
+			++last;
+		}
+		// hop to next word while checking for insets
+		while (sameinset && last < to && owner_->isWordSeparator(last)) {
+			if (Inset const * inset = owner_->getInset(last))
+				sameinset = inset->isChar() && inset->isLetter();
+			if (sameinset)
+				last++;
+		}
+		if (sameinset && last < to) {
+			// now check for language change
+			samelang = lang == getSpellLanguage(last);
+		}
+	}
+	// if language change detected backstep is needed
+	if (!samelang)
+		--last;
+	to = last;
+	return lang;
+}
 
-	if (!d->layout_->spellcheck || !inInset().allowSpellCheck())
-		return SpellChecker::WORD_OK;
 
-	locateWord(from, to, WHOLE_WORD);
-	if (from == to || from >= pos_type(d->text_.size()))
-		return SpellChecker::WORD_OK;
-
-	docstring word = asString(from, to, AS_STR_INSETS);
-	// Ignore words with digits
-	// FIXME: make this customizable
-	// (note that hunspell ignores words with digits by default)
-	bool const ignored = hasDigit(word);
-	Language * lang = const_cast<Language *>(getFontSettings(
-		    d->inset_owner_->buffer().params(), from).language());
-	if (lang == d->inset_owner_->buffer().params().language
-	    && !lyxrc.spellchecker_alt_lang.empty()) {
+Language * Paragraph::Private::getSpellLanguage(pos_type const from) const
+{
+	Language * lang =
+		const_cast<Language *>(owner_->getFontSettings(
+			inset_owner_->buffer().params(), from).language());
+	if (lang == inset_owner_->buffer().params().language
+		&& !lyxrc.spellchecker_alt_lang.empty()) {
 		string lang_code;
 		string const lang_variety =
 			split(lyxrc.spellchecker_alt_lang, lang_code, '-');
 		lang->setCode(lang_code);
 		lang->setVariety(lang_variety);
 	}
-	wl = WordLangTuple(word, lang);
-	SpellChecker::Result res = ignored ?
-		SpellChecker::WORD_OK : speller->check(wl);
-
-	bool const misspelled_ = SpellChecker::misspelled(res) ;
-
-	if (lyxrc.spellcheck_continuously)
-		d->setMisspelled(from, to, misspelled_);
-
-	if (misspelled_ && do_suggestion)
-		speller->suggest(wl, suggestions);
-	else
-		suggestions.clear();
-
-	return res;
+	return lang;
 }
 
 
+void Paragraph::requestSpellCheck(pos_type pos)
+{
+	d->requestSpellCheck(pos == -1 ? size() : pos);
+}
+
+
+bool Paragraph::needsSpellCheck() const
+{
+	SpellChecker::ChangeNumber speller_change_number = 0;
+	if (theSpellChecker())
+		speller_change_number = theSpellChecker()->changeNumber();
+	if (speller_change_number > d->speller_state_.currentChangeNumber()) {
+		d->speller_state_.needsCompleteRefresh(speller_change_number);
+	}
+	return d->needsSpellCheck();
+}
+
+
+SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
+	WordLangTuple & wl, docstring_list & suggestions,
+	bool do_suggestion, bool check_learned) const
+{
+	SpellChecker::Result result = SpellChecker::WORD_OK;
+	SpellChecker * speller = theSpellChecker();
+	if (!speller)
+		return result;
+
+	if (!d->layout_->spellcheck || !inInset().allowSpellCheck())
+		return result;
+
+	locateWord(from, to, WHOLE_WORD);
+	if (from == to || from >= pos_type(d->text_.size()))
+		return result;
+
+	docstring word = asString(from, to, AS_STR_INSETS);
+	Language * lang = d->getSpellLanguage(from);
+
+	wl = WordLangTuple(word, lang);
+	
+	if (!word.size())
+		return result;
+
+	if (needsSpellCheck() || check_learned) {
+		// Ignore words with digits
+		// FIXME: make this customizable
+		// (note that some checkers ignore words with digits by default)
+		if (!hasDigit(word))
+			result = speller->check(wl);
+		d->setMisspelled(from, to, result);
+	} else {
+		result = d->speller_state_.getState(from);
+	}
+	
+	bool const misspelled_ = SpellChecker::misspelled(result) ;
+	if (misspelled_ && do_suggestion)
+		speller->suggest(wl, suggestions);
+	else if (misspelled_)
+		LYXERR(Debug::GUI, "misspelled word: \"" <<
+			   word << "\" [" <<
+			   from << ".." << to << "]");
+	else
+		suggestions.clear();
+
+	return result;
+}
+
+
+void Paragraph::Private::markMisspelledWords(
+	pos_type const & first, pos_type const & last,
+	SpellChecker::Result result,
+	docstring const & word,
+	Positions const & softbreaks)
+{
+	pos_type snext = first;
+	if (SpellChecker::misspelled(result)) {
+		SpellChecker * speller = theSpellChecker();
+		// locate and enumerate the error positions
+		int nerrors = speller->numMisspelledWords();
+		int numbreaks = 0;
+		PositionsIterator it = softbreaks.begin();
+		PositionsIterator et = softbreaks.end();
+		for (int index = 0; index < nerrors; ++index) {
+			int wstart;
+			int wlen = 0;
+			speller->misspelledWord(index, wstart, wlen);
+			if (wlen) {
+				docstring const misspelled = word.substr(wstart, wlen);
+				wstart += first + numbreaks;
+				if (snext < wstart) {
+					while (it != et && *it < wstart) {
+						++wstart;
+						++numbreaks;
+						++it;
+					}
+					setMisspelled(snext,
+						wstart - 1, SpellChecker::WORD_OK);
+				}
+				snext = wstart + wlen;
+				while (it != et && *it < snext) {
+					++snext;
+					++numbreaks;
+					++it;
+				}
+				setMisspelled(wstart, snext, result);
+				LYXERR(Debug::GUI, "misspelled word: \"" <<
+					   misspelled << "\" [" <<
+					   wstart << ".." << (snext-1) << "]");
+				++snext;
+			}
+		}
+	}
+	if (snext <= last) {
+		setMisspelled(snext, last, SpellChecker::WORD_OK);
+	}
+}
+
+
+void Paragraph::spellCheck() const
+{
+	SpellChecker * speller = theSpellChecker();
+	if (!speller || !size() ||!needsSpellCheck())
+		return;
+	pos_type start;
+	pos_type endpos;
+	d->rangeOfSpellCheck(start, endpos);
+	if (speller->canCheckParagraph()) {
+		// loop until we leave the range argument
+		for (pos_type first = start; first < endpos; ) {
+			pos_type last = endpos;
+			Private::Positions softbreaks;
+			Language * lang = d->locateSpellRange(first, last, softbreaks);
+			if (first >= endpos)
+				break;
+			// start the spell checker on the unit of meaning
+			docstring word = asString(first, last, AS_STR_INSETS);
+			WordLangTuple wl = WordLangTuple(word, lang);
+			SpellChecker::Result result = word.size() ?
+				speller->check(wl) : SpellChecker::WORD_OK;
+			d->markMisspelledWords(first, last, result, word, softbreaks);
+			first = ++last;
+		}
+	} else {
+		static docstring_list suggestions;
+		pos_type to = endpos;
+		while (start < endpos) {
+			WordLangTuple wl;
+			spellCheck(start, to, wl, suggestions, false);
+			start = to + 1;
+		}
+	}
+	d->readySpellCheck();
+}
+
+	
 bool Paragraph::isMisspelled(pos_type pos) const
 {
-	pos_type from = pos;
-	pos_type to = pos;
-	WordLangTuple wl;
-	docstring_list suggestions;
-	SpellChecker::Result res = spellCheck(from, to, wl, suggestions, false);
-	return SpellChecker::misspelled(res) ;
+	return SpellChecker::misspelled(d->speller_state_.getState(pos));
 }
 
 

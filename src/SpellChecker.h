@@ -14,6 +14,7 @@
 #define SPELL_BASE_H
 
 #include "support/strfwd.h"
+#include "support/lyxtime.h"
 
 
 namespace lyx {
@@ -89,6 +90,16 @@ public:
 
 	/// give an error message on messy exit
 	virtual docstring const error() = 0;
+	
+	/// spell checker state versioning support
+	typedef unsigned long int ChangeNumber ;
+	ChangeNumber changeNumber() const { return change_number_; }
+	void changeNumber(ChangeNumber value) { change_number_ = value; }
+	void nextChangeNumber() { ++change_number_; }
+	virtual void advanceChangeNumber() = 0;
+	
+private:
+	ChangeNumber change_number_;
 };
 
 /// Access to the singleton SpellChecker.

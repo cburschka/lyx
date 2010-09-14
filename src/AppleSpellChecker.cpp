@@ -88,12 +88,19 @@ SpellChecker::Result AppleSpellChecker::check(WordLangTuple const & word)
 }
 
 
+void AppleSpellChecker::advanceChangeNumber()
+{
+	nextChangeNumber();
+}
+
+
 // add to personal dictionary
 void AppleSpellChecker::insert(WordLangTuple const & word)
 {
 	string const word_str = to_utf8(word.word());
 	AppleSpeller_learn(d->speller, word_str.c_str());
 	LYXERR(Debug::GUI, "learn word: \"" << word.word() << "\"") ;
+	advanceChangeNumber();
 }
 
 
@@ -103,6 +110,7 @@ void AppleSpellChecker::remove(WordLangTuple const & word)
 	string const word_str = to_utf8(word.word());
 	AppleSpeller_unlearn(d->speller, word_str.c_str());
 	LYXERR(Debug::GUI, "unlearn word: \"" << word.word() << "\"") ;
+	advanceChangeNumber();
 }
 
 
@@ -111,6 +119,7 @@ void AppleSpellChecker::accept(WordLangTuple const & word)
 {
 	string const word_str = to_utf8(word.word());
 	AppleSpeller_ignore(d->speller, word_str.c_str());
+	advanceChangeNumber();
 }
 
 

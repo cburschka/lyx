@@ -519,6 +519,9 @@ void Text::readParagraph(Paragraph & par, Lexer & lex,
 
 	// Initialize begin_of_body_ on load; redoParagraph maintains
 	par.setBeginOfBody();
+	
+	// mark paragraph for spell checking on load
+	// par.requestSpellCheck();
 }
 
 
