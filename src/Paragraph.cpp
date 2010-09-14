@@ -364,7 +364,7 @@ public:
 	}
 
 	int countSoftbreaks(PositionsIterator & it, PositionsIterator const et,
-			    pos_type & start) const
+			    int & start) const
 	{
 		int numbreaks = 0;
 		while (it != et && *it < start) {
@@ -3519,7 +3519,7 @@ void Paragraph::Private::markMisspelledWords(
 		setMisspelled(first, last, SpellChecker::WORD_OK);
 		return;
 	}
-	pos_type snext = first;
+	int snext = first;
 	SpellChecker * speller = theSpellChecker();
 	// locate and enumerate the error positions
 	int nerrors = speller->numMisspelledWords();
