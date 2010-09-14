@@ -1,18 +1,20 @@
-Building LyX/Mac-1.5
+Building LyX/Mac-2.0
 Ronald Florence <ron@18james.com>
-Modified by Bennett Helm <bennett.helm@fandm.edu>, Anders
-Ekberg <anek@mac.com> and Jean-Marc Lasgouttes <lasgouttes@lyx.org>.
+Modified by Bennett Helm <bennett.helm@fandm.edu>,
+Anders Ekberg <anek@mac.com>,
+Jean-Marc Lasgouttes <lasgouttes@lyx.org> and
+Stephan Witt <st.witt@gmx.de>.
 
 LyX/Mac is built from the LyX source, the GPL-licensed Trolltech
 Qt/Mac library, and a custom application bundle.
 
 You will need the MacOSX development tools. The procedure described
-here builds LyX linked with a static Qt library. Also note that
-building LyX/Mac requires gcc version 4.0 or higher. (You can check
-your version  by entering "gcc -v" in the Terminal; you can change
-your gcc version to version 4.0, for example, by entering
-"sudo gcc_select 4.0".)
+here builds LyX linked with a shared Qt library. Also note that
+building LyX/Mac requires gcc version 4.0 or higher.
 
+You may build LyX with different SDK versions resulting in different
+minimum required MacOSX versions. The first supported version is
+10.4 (Tiger) for which the build has to use gcc4.0.
 
 PREREQUISITES
 
@@ -24,29 +26,38 @@ well.
 1. Qt/Mac Opensource Edition, version 4.
 This library is GPL-licensed and can be downloaded from
 <http://trolltech.com/developer/downloads/qt/mac/>. To compile it,
-create a directory where you want to install QT4. In the following, 
-the full path to this directory is called /path/to/QT4
+create a directory where you want to install Qt4. In the following, 
+the full path to this directory is called /path/to/Qt4
 Decompress Qt/Mac in a convenient directory, cd to the top of the
 Qt source hierarcy, and enter:
 
-     ./configure -static -no-exceptions -nomake examples -nomake tools -nomake demos -prefix /path/to/QT4
-     make
-     make install
-     rm /path/to/QT4/lib/*.la
-
-	with Qt4.6.2 and snow leopard it becomes:
-
-     CC=gcc-4.0 OBJC=gcc-4.0 CXX=g++-4.0\
-       ./configure -opensource -silent -static -release -universal -fast\
-       -sdk /Developer/SDKs/MacOSX10.4u.sdk\
-       -no-framework -no-exceptions -no-webkit -no-qt3support -no-javascript-jit -no-dbus\
-       -nomake examples -nomake demos -nomake docs\
-       -nomake tools\
-       -prefix /path/to/QT4
+     ./configure -opensource -silent -shared -release -universal -fast \
+       -no-exceptions -no-webkit -no-qt3support -no-javascript-jit -no-dbus \
+       -nomake examples -nomake demos -nomake docs \
+       -nomake tools -no-framework \
+       -prefix /path/to/Qt4
      make
      make install
 
-2. [Needed only for developmental builds:] automake, version 1.10
+This will result in an Qt library set for i386 and ppc applications.
+
+To build Qt with Tiger support run configure with:
+
+     CC=gcc-4.0 OBJC=gcc-4.0 CXX=g++-4.0 \
+       ./configure -opensource -silent -shared -release -universal -fast \
+       -sdk /Developer/SDKs/MacOSX10.4u.sdk \
+       -no-exceptions -no-webkit -no-qt3support -no-javascript-jit -no-dbus \
+       -nomake examples -nomake demos -nomake docs \
+       -nomake tools -no-framework \
+       -prefix /path/to/Qt4
+
+To build the libraries with 64bit architecture you have to replace the
+"-universal" option with "-arch x86_64". Note: you cannot build Qt with
+32bit and 64bit mixed architecture mode. (At least not with Qt4.6)
+And the build with 64bit has known problems - so it's not recommended.
+
+
+2. [Needed only for developmental builds:] automake, version 1.10.1
 or higher (check with automake --version). Probably the easiest
 way to get this is to use MacPorts (from http://www.macports.org/)
 and install automake using
@@ -61,8 +72,7 @@ using:
 
      sudo port install gettext
 
-4. [Useful to simplify detection of Qt:] pkg-config >= 0.9.0. Again,
-the simplest way is through MacPorts:
+4. pkg-config >= 0.9.0. Again, the simplest way is through MacPorts:
 
      sudo port install pkgconfig
 
@@ -79,17 +89,70 @@ BUILD INSTRUCTIONS
 In what follows, /path/to/LyX.app is the location where you want LyX
 to create the LyX binary. You should substitute something appropriate,
 like: ~/Desktop/LyX.app. Also, substitute the appropriate path to
-where you installed Qt for /path/to/QT4 (as above).
+where you installed Qt for /path/to/Qt4 (as above).
 
-(a) Official Releases
+Dependent on the Qt-libraries you have and the build system you're using
+you have to tell configure the compiler and compiler options to use.
+If your Qt-libraries don't match your compiler defaults you may
+adjust some environment variables to do so.
 
-If you did not install pkg-config, first set the LDFLAGS variable:
+1. Environment
 
-     export LDFLAGS="-framework Carbon -framework OpenGL -framework AGL -framework QuickTime -framework Cocoa"
+(a) Qt-4.6 libraries from Nokia or self compiled universal libs
 
-Then, cd to the top of the LyX source hierarchy, and enter:
+	Since MacOSX 10.6 the default is to compile 64bit applications.
+	We have to change that with if on that build system.
 
-     ./configure --prefix=/path/to/LyX.app --with-version-suffix=-2.0 --with-qt4-dir=/path/to/QT4 --with-included-gettext --enable-optimization=-O2
+	export CPPFLAGS="-arch i386"
+	export LDFLAGS="-arch i386" 
+
+(b) Qt-4.6 libraries 64bit
+
+	You're at least on MacOSX 10.6 and don't have to change anything.
+	Note: Your LyX binary will run only on 10.6 64bit Intel machines.
+	Additionally you'll have to provide your Qt libraries somehow...
+	FIXME: actually this is a dream, 64bit LyX crashes on startup!
+
+(c) Qt-4.6 libraries self compiled with Tiger support
+
+	You have to choose the gcc4.0 compiler suite and the correct SDK:
+
+	export CC=gcc-4.0
+	export OBJC=gcc-4.0
+	export CXX=g++-4.0
+	export CPPFLAGS="-arch i386 -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mmacosx-version-min=10.4"
+	export LDFLAGS="-arch i386 -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mmacosx-version-min=10.4"
+
+(d) When working without pkgconfig or pkgconfig fails to detect frameworks
+
+   Current pkgconfig from macports is able to detect the frameworks Qt4 is using.
+	The build of LyX succeeds because the frameworks are added automatically to the linker options.
+	If you need to add them yourself because of link errors, e. g.
+		lyx Undefined symbols: "_FSPathMakeRef"...
+	you have to verify the required frameworks with otool and add them to the LDFLAGS.
+
+	Check the output of
+		otool -L /path/to/QT4/lib/libQtGui.dylib
+	and look for lines with Frameworks.
+
+	Currently there are two different Qt4 builds available for download:
+	* with Tiger support it's with Carbon. You have to add
+	export LDFLAGS="$LDFLAGS -framework ApplicationServices -framework Carbon -framework AppKit" 
+	* with Cocoa framework without Tiger support you have to add
+	export LDFLAGS="$LDFLAGS -framework ApplicationServices -framework Cocoa -framework AppKit" 
+
+	Note: The latter is untested.
+
+2. Configure and build
+
+(a) Official Releases (compile from tar-ball)
+
+	cd to the top of the LyX source hierarchy, and enter:
+
+     ./configure \
+	      --with-version-suffix=-2.0 \
+			--prefix=/path/to/LyX.app \
+			--with-qt4-dir=/path/to/Qt4
      make
      make install-strip
 
@@ -102,20 +165,41 @@ user's directory being located at ~/Library/Application Support/LyX-2.0)
 Building LyX from developmental sources requires a few more steps.
 Instead of the instructions above, do the following:
 
-If you did not install pkg-config, first set the LDFLAGS variable:
-
-     export LDFLAGS="-framework Carbon -framework OpenGL -framework AGL -framework QuickTime -framework Cocoa"
-
-Then, cd to the top of the LyX source hierarchy, and enter:
+	cd to the top of the LyX source hierarchy, and enter:
 
      ./autogen.sh
-     ./configure --prefix=/path/to/LyX.app --with-version-suffix=-2.0 --with-qt4-dir=/path/to/QT4 --with-included-gettext --enable-optimization=-O2  --disable-stdlib-debug
+     ./configure \
+	      --with-version-suffix=-2.0 \
+	      --disable-stdlib-debug \
+			--prefix=/path/to/LyX.app \
+			--with-qt4-dir=/path/to/Qt4
      make
      make install-strip
 
 Note that by default svn versions use some extra debugging code that
 somewhat slows LyX down. If it is a real problem, you can pass the
 option --enable-build-type=release to configure.
+
+
+(c) Distribution build
+
+The distribution package build of LyX is supported by the shell script
+"LyX-Mac-binary-release.sh" in the development sub-directory of the
+LyX source hierarchy.
+
+Please read the script if you're about to make a distributable disk image.
+
+To use it, cd to the top of the LyX source hierarchy, and enter:
+
+	sh development/LyX-Mac-binary-release.sh --with-qt4-dir=/path/to/Qt4
+
+This script automates all steps of the build process.
+It detects the sources for Qt4, Aspell and Hunspell when placed in a
+sibling directory and builds them ready to use for LyX packaging.
+These libraries are then bundled with the LyX application as private
+frameworks. Therefore the Qt4 libraries are build as frameworks.
+Per default the resulting LyX application is build for ppc and i386
+to be usable on all systems from Tiger upwards.
 
 The information on this page is believed to be accurate, has been used
 successfully on many systems and sites, and has benefited from the
