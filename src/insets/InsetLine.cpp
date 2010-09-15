@@ -14,6 +14,8 @@
 #include "InsetLine.h"
 
 #include "Buffer.h"
+#include "BufferView.h"
+#include "CoordCache.h"
 #include "Dimension.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
@@ -106,19 +108,19 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
+	int const max_width = mi.base.textwidth;
 
 	Length const width(to_ascii(getParam("width")));
-	int w = width.inPixels(mi.base.textwidth,
-			       fm.width(char_type('M')));
+	dim.wid = width.inPixels(max_width, fm.width(char_type('M')));
 
 	// assure that the line inset is not outside of the window
 	// check that it doesn't exceed the outer boundary
-	if (w > mi.base.textwidth)
-		w = mi.base.textwidth;
+	if (dim.wid > max_width)
+		dim.wid = max_width;
 
 	// set a minimal width
-	int const minw = (w < 0) ? 24 : 4;
-	dim.wid = max(minw, max(w, -w));
+	int const minw = (dim.wid < 0) ? 24 : 4;
+	dim.wid = max(minw, max(dim.wid, -dim.wid));
 
 	// Cache the inset dimension
 	setDimCache(mi, dim);
@@ -127,33 +129,30 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetLine::draw(PainterInfo & pi, int x, int y) const
 {
-	frontend::FontMetrics const & fm = theFontMetrics(pi.base.font);
+	// FIXME: We cannot use InsetCommand::dimension() as this returns the dimension
+	// of the button, which is not used here!
+	Dimension const dim = pi.base.bv->coordCache().getInsets().dim(this);
+	int const max_width = dim.width();
 
-	// get the length of the parameters in pixels
-	Length offset = Length(to_ascii(getParam("offset")));
-	int o =	offset.inPixels(pi.base.textwidth,
-		fm.width(char_type('M')));
-	Length width = Length(to_ascii(getParam("width")));
-	int w =	width.inPixels(pi.base.textwidth,
-		fm.width(char_type('M')));
-	Length height = Length(to_ascii(getParam("height")));
-	int h =	height.inPixels(pi.base.textwidth,
-		fm.width(char_type('M')));
+	frontend::FontMetrics const & fm = theFontMetrics(pi.base.font);
 
 	// get the surrounding text color
 	FontInfo f = pi.base.font;
 	Color Line_color = f.realColor();
 
-	// assure that the drawn line is not outside of the window
-	// check that it doesn't exceed the outer boundary
-	if (x + w - h/2 - 2 > pi.base.textwidth)
-		w = pi.base.textwidth - x + h/2 + 2;
+	Length height = Length(to_ascii(getParam("height")));
+	int const h = height.inPixels(dim.height(), fm.width(char_type('M')));
+
+	// get the length of the parameters in pixels
+	Length offset = Length(to_ascii(getParam("offset")));
+	int o = offset.inPixels(max_width, fm.width(char_type('M')));
+
 	// check that it doesn't exceed the upper boundary
 	if (y - o - h/2 < 0)
 		o = y - h/2 - 2;
 
 	// the offset is a vertical one
-	pi.pain.line(x + h/2 + 1, y - o - h/2, x + w - h/2 - 2, y - o - h/2,
+	pi.pain.line(x + 1, y - o - h/2, x + dim.wid - 2, y - o - h/2,
 		Line_color, Painter::line_solid, float(h));
 }
 
