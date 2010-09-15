@@ -14,8 +14,6 @@
 #include "InsetLine.h"
 
 #include "Buffer.h"
-#include "BufferView.h"
-#include "CoordCache.h"
 #include "Dimension.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
@@ -127,18 +125,20 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
+Dimension const InsetLine::dimension(BufferView const & bv) const
+{
+	// We cannot use InsetCommand::dimension() as this returns the dimension
+	// of the button, which is not used here.
+	return Inset::dimension(bv);
+}
+
+
 void InsetLine::draw(PainterInfo & pi, int x, int y) const
 {
-	// FIXME: We cannot use InsetCommand::dimension() as this returns the dimension
-	// of the button, which is not used here!
-	Dimension const dim = pi.base.bv->coordCache().getInsets().dim(this);
+	Dimension const dim = dimension(*pi.base.bv);
 	int const max_width = dim.width();
 
 	frontend::FontMetrics const & fm = theFontMetrics(pi.base.font);
-
-	// get the surrounding text color
-	FontInfo f = pi.base.font;
-	Color Line_color = f.realColor();
 
 	Length height = Length(to_ascii(getParam("height")));
 	int const h = height.inPixels(dim.height(), fm.width(char_type('M')));
@@ -150,6 +150,9 @@ void InsetLine::draw(PainterInfo & pi, int x, int y) const
 	// check that it doesn't exceed the upper boundary
 	if (y - o - h/2 < 0)
 		o = y - h/2 - 2;
+
+	// get the surrounding text color
+	Color Line_color = pi.base.font.realColor();
 
 	// the offset is a vertical one
 	pi.pain.line(x + 1, y - o - h/2, x + dim.wid - 2, y - o - h/2,

@@ -14,7 +14,6 @@
 #define INSET_LINE_H
 
 
-#include "Inset.h"
 #include "InsetCommand.h"
 
 
@@ -41,9 +40,11 @@ public:
 	///
 	static std::string defaultCommand() { return "rule"; };
 	///
-	static bool isCompatibleCommand(std::string const & s) 
+	static bool isCompatibleCommand(std::string const & s)
 		{ return s == "rule"; }
-	
+	///
+	Dimension const dimension(BufferView const &) const;
+
 private:
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
