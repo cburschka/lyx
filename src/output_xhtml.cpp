@@ -835,7 +835,7 @@ void makeCommand(Buffer const & buf,
 	if (!style.counter.empty())
 		buf.params().documentClass().counters().step(style.counter, OutputUpdate);
 
-	openTag(xs, style);
+	openTag(xs, style, pbegin->params());
 
 	// Label around sectioning number:
 	// FIXME Probably need to account for LABEL_MANUAL
