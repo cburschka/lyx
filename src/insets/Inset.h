@@ -182,7 +182,6 @@ public:
 	virtual Inset * editXY(Cursor & cur, int x, int y);
 
 	/// compute the size of the object returned in dim
-	/// \retval true if metrics changed.
 	virtual void metrics(MetricsInfo & mi, Dimension & dim) const = 0;
 	/// draw inset and update (xo, yo)-cache
 	virtual void draw(PainterInfo & pi, int x, int y) const = 0;
