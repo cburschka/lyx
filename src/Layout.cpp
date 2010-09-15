@@ -1010,9 +1010,9 @@ string Layout::defaultCSSClass() const
 
 
 namespace {
-	string makeMarginValue(double d) {
+	string makeMarginValue(char const * side, double d) {
 		ostringstream os;
-		os << d << "ex";
+		os << "margin-" << side << ": " << d << "ex;\n";
 		return os.str();
 	}
 }
@@ -1027,12 +1027,23 @@ void Layout::makeDefaultCSS() const {
 	// main font
 	htmldefaultstyle_ = font.asCSS();
 	
-	// top and bottom margins
+	// bottom margins
 	string tmp;
 	if (topsep > 0)
-		tmp += "margin-top: " + makeMarginValue(topsep) + ";\n";
+		tmp += makeMarginValue("top", topsep);
 	if (bottomsep > 0)
-		tmp += "margin-bottom: " + makeMarginValue(bottomsep) + ";\n";
+		tmp += makeMarginValue("bottom", bottomsep);
+	if (!leftmargin.empty()) {
+		// we can't really do what LyX does with the margin, so 
+		// we'll just figure out how many characters it is
+		int const len = leftmargin.length();
+		tmp += makeMarginValue("left", len);
+	}
+	if (!rightmargin.empty()) {
+		int const len = rightmargin.length();
+		tmp += makeMarginValue("right", len);
+	}
+		
 	if (!tmp.empty()) {
 		if (!htmldefaultstyle_.empty())
 			htmldefaultstyle_ += from_ascii("\n");
