@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-09-13 02:19+0200\n"
+"POT-Creation-Date: 2010-09-15 23:10+0200\n"
 "PO-Revision-Date: 2009-05-25 16:49+0100\n"
 "Last-Translator: H. İbrahim Güngör <h.ibrahim.gungor@gmail.com>\n"
 "Language-Team: Turkish <kde-i18n-doc@kde.org>\n"
@@ -208,16 +208,16 @@ msgstr "Bu kaynakça bölümünün içeriği..."
 msgid "&Content:"
 msgstr "İçin&dekiler:"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:207
+#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:208
 msgid "all cited references"
 msgstr "tüm alıntılanmış referanslar"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:153 src/frontends/qt4/GuiBibtex.cpp:328
-#: src/insets/InsetBibtex.cpp:205
+#: src/insets/InsetBibtex.cpp:206
 msgid "all uncited references"
 msgstr "tüm alıntılanmamış referanslar"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:203
+#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:204
 msgid "all references"
 msgstr "tüm referanslar"
 
@@ -546,7 +546,7 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2142 src/frontends/qt4/GuiView.cpp:2202
 #: src/frontends/qt4/GuiView.cpp:2407 src/frontends/qt4/GuiView.cpp:2414
 #: src/frontends/qt4/GuiView.cpp:2515 src/frontends/qt4/GuiView.cpp:2542
-#: src/frontends/qt4/GuiView.cpp:3043 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiView.cpp:3043 src/insets/InsetBibtex.cpp:144
 msgid "&Cancel"
 msgstr "&Vazgeç"
 
@@ -2934,7 +2934,7 @@ msgstr "&En uzun etiket"
 msgid "Line &spacing"
 msgstr "Satır &aralığı"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1805
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1808
 #: src/frontends/qt4/GuiDocument.cpp:692
 msgid "Single"
 msgstr "Tek"
@@ -2943,7 +2943,7 @@ msgstr "Tek"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1811
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1814
 #: src/frontends/qt4/GuiDocument.cpp:696
 msgid "Double"
 msgstr "Çift"
@@ -5676,7 +5676,7 @@ msgstr "Özet---"
 #: lib/layouts/elsart.layout:62 lib/layouts/elsarticle.layout:250
 #: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpd.layout:76
 #: lib/layouts/iopart.layout:198 lib/layouts/isprs.layout:51
-#: lib/layouts/kluwer.layout:280 lib/layouts/paper.layout:170
+#: lib/layouts/kluwer.layout:280 lib/layouts/paper.layout:171
 #: lib/layouts/revtex4.layout:259 lib/layouts/siamltex.layout:299
 #: lib/layouts/sigplanconf.layout:143 lib/layouts/spie.layout:40
 #: lib/layouts/svglobal3.layout:55 lib/layouts/svglobal3.layout:58
@@ -5702,7 +5702,7 @@ msgstr "Ekler"
 #: lib/layouts/elsarticle.layout:275 lib/layouts/iopart.layout:242
 #: lib/layouts/iopart.layout:264 lib/layouts/iopart.layout:287
 #: lib/layouts/siamltex.layout:314 lib/layouts/sigplanconf.layout:181
-#: lib/layouts/svglobal3.layout:86 lib/layouts/stdstruct.inc:43
+#: lib/layouts/svglobal3.layout:86 lib/layouts/stdstruct.inc:57
 #: lib/layouts/svjour.inc:290
 msgid "BackMatter"
 msgstr "Artçı"
@@ -5711,7 +5711,7 @@ msgstr "Artçı"
 #: lib/layouts/aastex.layout:122 lib/layouts/aastex.layout:450
 #: lib/layouts/ijmpc.layout:313 lib/layouts/ijmpd.layout:324
 #: lib/layouts/kluwer.layout:319 lib/layouts/kluwer.layout:332
-#: src/rowpainter.cpp:469
+#: src/rowpainter.cpp:484
 msgid "Appendix"
 msgstr "Ek"
 
@@ -5735,7 +5735,7 @@ msgstr "Ek"
 #: lib/layouts/simplecv.layout:142 lib/layouts/tufte-book.layout:232
 #: lib/layouts/tufte-book.layout:234 lib/layouts/aguplus.inc:170
 #: lib/layouts/aguplus.inc:172 lib/layouts/amsdefs.inc:202
-#: lib/layouts/scrclass.inc:245 lib/layouts/stdstruct.inc:39
+#: lib/layouts/scrclass.inc:245 lib/layouts/stdstruct.inc:53
 #: lib/layouts/svjour.inc:286 src/frontends/qt4/GuiDocument.cpp:1256
 msgid "Bibliography"
 msgstr "Kaynakça"
@@ -5748,9 +5748,8 @@ msgstr "Kaynakça"
 #: lib/layouts/iopart.layout:275 lib/layouts/iopart.layout:290
 #: lib/layouts/kluwer.layout:340 lib/layouts/kluwer.layout:352
 #: lib/layouts/llncs.layout:279 lib/layouts/siamltex.layout:328
-#: lib/layouts/amsdefs.inc:216 lib/layouts/stdstruct.inc:54
-#: lib/layouts/svjour.inc:301 src/insets/InsetBibtex.cpp:926
-#: src/output_plaintext.cpp:145
+#: lib/layouts/amsdefs.inc:216 lib/layouts/stdstruct.inc:68
+#: lib/layouts/svjour.inc:301 src/output_plaintext.cpp:145
 msgid "References"
 msgstr "Referanslar"
 
@@ -7493,7 +7492,7 @@ msgstr ""
 
 #: lib/layouts/elsarticle.layout:263 lib/layouts/ijmpc.layout:79
 #: lib/layouts/ijmpd.layout:82 lib/layouts/iopart.layout:209
-#: lib/layouts/kluwer.layout:287 lib/layouts/paper.layout:173
+#: lib/layouts/kluwer.layout:287 lib/layouts/paper.layout:174
 #: lib/layouts/revtex4.layout:264 lib/layouts/sigplanconf.layout:146
 #: lib/layouts/spie.layout:47 lib/layouts/agu_stdtitle.inc:123
 msgid "Keywords:"
@@ -16748,19 +16747,19 @@ msgid "%1$s et al."
 msgstr "%1$s et al."
 
 #: src/BiblioInfo.cpp:416 src/BiblioInfo.cpp:453 src/BiblioInfo.cpp:464
-#: src/BiblioInfo.cpp:502 src/BiblioInfo.cpp:506
+#: src/BiblioInfo.cpp:514 src/BiblioInfo.cpp:518
 msgid "ERROR!"
 msgstr ""
 
-#: src/BiblioInfo.cpp:645 src/BiblioInfo.cpp:648
+#: src/BiblioInfo.cpp:657 src/BiblioInfo.cpp:660
 msgid "No year"
 msgstr "Yıl yok"
 
-#: src/BiblioInfo.cpp:721 src/BiblioInfo.cpp:781
+#: src/BiblioInfo.cpp:733 src/BiblioInfo.cpp:793
 msgid "Add to bibliography only."
 msgstr "Sadece kaynakçaya ekle."
 
-#: src/BiblioInfo.cpp:777
+#: src/BiblioInfo.cpp:789
 msgid "before"
 msgstr "önce"
 
@@ -17260,22 +17259,22 @@ msgstr "&Aslını yükle"
 msgid "Senseless!!! "
 msgstr "Saçma!!! "
 
-#: src/Buffer.cpp:4068
+#: src/Buffer.cpp:4069
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Belge %1$s açıldı."
 
-#: src/Buffer.cpp:4070
+#: src/Buffer.cpp:4071
 #, fuzzy, c-format
 msgid "Could not reload document %1$s."
 msgstr "%1$s belgesi okunamadı"
 
-#: src/Buffer.cpp:4105
+#: src/Buffer.cpp:4106
 #, fuzzy
 msgid "Included File Invalid"
 msgstr "Dosya Dahil Et...|y"
 
-#: src/Buffer.cpp:4106
+#: src/Buffer.cpp:4107
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17516,7 +17515,7 @@ msgstr ""
 "kodlamanızı LyX'den başka bir \n"
 "programla UTF-8 olarak değiştirin.\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2215
+#: src/Changes.cpp:363 src/Paragraph.cpp:2424
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:248
 #: src/insets/InsetCommandParams.cpp:382 src/insets/InsetListings.cpp:181
 #: src/insets/InsetListings.cpp:189 src/insets/InsetListings.cpp:213
@@ -17524,7 +17523,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr "LyX Uyarısı: "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2216 src/insets/InsetBibitem.cpp:249
+#: src/Changes.cpp:364 src/Paragraph.cpp:2425 src/insets/InsetBibitem.cpp:249
 #: src/insets/InsetCommandParams.cpp:383 src/insets/InsetListings.cpp:182
 #: src/insets/InsetListings.cpp:190 src/insets/InsetNomencl.cpp:282
 #: src/mathed/InsetMathString.cpp:162
@@ -17557,8 +17556,8 @@ msgstr "ChkTeX uyarı id # %1$d"
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX uyarı id # "
 
-#: src/Color.cpp:159 src/insets/InsetBibtex.cpp:173
-#: src/insets/InsetBibtex.cpp:198
+#: src/Color.cpp:159 src/insets/InsetBibtex.cpp:174
+#: src/insets/InsetBibtex.cpp:199
 msgid "none"
 msgstr "yok"
 
@@ -19065,15 +19064,15 @@ msgstr "Belgeyi kayıtlı sürüme geri al?"
 msgid "&Revert"
 msgstr "&Geri Al"
 
-#: src/Paragraph.cpp:1657
+#: src/Paragraph.cpp:1866
 msgid "Senseless with this layout!"
 msgstr "Bu yerleşimle anlamsız!"
 
-#: src/Paragraph.cpp:1719
+#: src/Paragraph.cpp:1928
 msgid "Alignment not permitted"
 msgstr "Hizalamaya izin verilmiyor"
 
-#: src/Paragraph.cpp:1720
+#: src/Paragraph.cpp:1929
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -19081,11 +19080,11 @@ msgstr ""
 "Yeni yerleşim daha önce kullanılan yerleşime izin vermiyor.\n"
 "Öntanımlıya geçiliyor."
 
-#: src/Paragraph.cpp:2748
+#: src/Paragraph.cpp:2958
 msgid "Memory problem"
 msgstr "Bellek problemi"
 
-#: src/Paragraph.cpp:2748
+#: src/Paragraph.cpp:2958
 msgid "Paragraph not properly initialized"
 msgstr "Paragraf düzgün başlatılamadı"
 
@@ -19106,83 +19105,83 @@ msgstr "Ekleme için bilinmeyen yazar indeksi: %1$d\n"
 msgid "Unknown token"
 msgstr "Bilinmeyen sembol"
 
-#: src/Text.cpp:938
+#: src/Text.cpp:941
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr "Paragraf başına boşluk koyamazsınız. Lütfen Yardım/Eğitim'i okuyun."
 
-#: src/Text.cpp:949
+#: src/Text.cpp:952
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Böyle iki boşluk koyamazsınız. Lütfen Yardım/Eğitim'i okuyun."
 
-#: src/Text.cpp:1771
+#: src/Text.cpp:1774
 msgid "[Change Tracking] "
 msgstr "[İzlemeyi Değiştir] "
 
-#: src/Text.cpp:1777
+#: src/Text.cpp:1780
 msgid "Change: "
 msgstr "Değişim: "
 
-#: src/Text.cpp:1781
+#: src/Text.cpp:1784
 msgid " at "
 msgstr ""
 
-#: src/Text.cpp:1791
+#: src/Text.cpp:1794
 #, c-format
 msgid "Font: %1$s"
 msgstr "Font: %1$s"
 
-#: src/Text.cpp:1796
+#: src/Text.cpp:1799
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Derinlik: %1$d"
 
-#: src/Text.cpp:1802
+#: src/Text.cpp:1805
 msgid ", Spacing: "
 msgstr ", Aralık: "
 
-#: src/Text.cpp:1808 src/frontends/qt4/GuiDocument.cpp:694
+#: src/Text.cpp:1811 src/frontends/qt4/GuiDocument.cpp:694
 msgid "OneHalf"
 msgstr "BirBuçuk"
 
-#: src/Text.cpp:1814
+#: src/Text.cpp:1817
 msgid "Other ("
 msgstr "Diğer ("
 
-#: src/Text.cpp:1823
+#: src/Text.cpp:1826
 msgid ", Inset: "
 msgstr ", Ekleme: "
 
-#: src/Text.cpp:1824
+#: src/Text.cpp:1827
 msgid ", Paragraph: "
 msgstr ", Paragraf: "
 
-#: src/Text.cpp:1825
+#: src/Text.cpp:1828
 msgid ", Id: "
 msgstr ", Ad: "
 
-#: src/Text.cpp:1826
+#: src/Text.cpp:1829
 msgid ", Position: "
 msgstr ", Konum: "
 
-#: src/Text.cpp:1832
+#: src/Text.cpp:1835
 msgid ", Char: 0x"
 msgstr ", Karakter: 0x"
 
-#: src/Text.cpp:1834
+#: src/Text.cpp:1837
 msgid ", Boundary: "
 msgstr ", Sınır: "
 
-#: src/Text2.cpp:383
+#: src/Text2.cpp:386
 msgid "No font change defined."
 msgstr "Tanımlı font değişimi yok."
 
-#: src/Text2.cpp:423
+#: src/Text2.cpp:426
 msgid "Nothing to index!"
 msgstr "İndeksleyecek bir şey yok!"
 
-#: src/Text2.cpp:425
+#: src/Text2.cpp:428
 msgid "Cannot index more than one paragraph!"
 msgstr "Birden fazla paragraf indekslenemez!"
 
@@ -21929,7 +21928,7 @@ msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "LyX-1.6.x Belgeleri (*.lyx16)"
 
 #: src/frontends/qt4/GuiView.cpp:1784 src/frontends/qt4/Validator.cpp:188
-#: src/insets/ExternalSupport.cpp:367 src/insets/InsetBibtex.cpp:285
+#: src/insets/ExternalSupport.cpp:367 src/insets/InsetBibtex.cpp:286
 #: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:512
 msgid "Invalid filename"
 msgstr "Geçersiz dosya adı"
@@ -22481,7 +22480,7 @@ msgstr "Dal Listesi"
 msgid "List of Changes"
 msgstr "Değişiklikler Listesi"
 
-#: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:286
+#: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:287
 #: src/insets/InsetGraphics.cpp:594 src/insets/InsetInclude.cpp:513
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
@@ -22525,7 +22524,7 @@ msgstr ""
 "%1$s anahtarı zaten var.\n"
 "%2$s olarak değiştirilecek."
 
-#: src/insets/InsetBibtex.cpp:139
+#: src/insets/InsetBibtex.cpp:140
 #, c-format
 msgid ""
 "The BibTeX inset includes %1$s databases.\n"
@@ -22534,39 +22533,39 @@ msgstr ""
 "BibTex eklemesi %1$s veritabanlarını içeriyor.\n"
 "İlerlerseniz, hepsi açılacak."
 
-#: src/insets/InsetBibtex.cpp:142
+#: src/insets/InsetBibtex.cpp:143
 msgid "Open Databases?"
 msgstr "Açık Veritabanları?"
 
-#: src/insets/InsetBibtex.cpp:143
+#: src/insets/InsetBibtex.cpp:144
 msgid "&Proceed"
 msgstr "&İlerle"
 
-#: src/insets/InsetBibtex.cpp:161
+#: src/insets/InsetBibtex.cpp:162
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX'in Oluşturduğu Kaynakça"
 
-#: src/insets/InsetBibtex.cpp:168
+#: src/insets/InsetBibtex.cpp:169
 msgid "Databases:"
 msgstr "Veritabanları:"
 
-#: src/insets/InsetBibtex.cpp:193
+#: src/insets/InsetBibtex.cpp:194
 msgid "Style File:"
 msgstr "Stil Dosyası:"
 
-#: src/insets/InsetBibtex.cpp:200
+#: src/insets/InsetBibtex.cpp:201
 msgid "Lists:"
 msgstr "Listeler:"
 
-#: src/insets/InsetBibtex.cpp:211
+#: src/insets/InsetBibtex.cpp:212
 msgid "included in TOC"
 msgstr "İçindekilere dahil edildi"
 
-#: src/insets/InsetBibtex.cpp:305 src/insets/InsetBibtex.cpp:355
+#: src/insets/InsetBibtex.cpp:306 src/insets/InsetBibtex.cpp:356
 msgid "Export Warning!"
 msgstr "Dışarı Aktarım Uyarısı!"
 
-#: src/insets/InsetBibtex.cpp:306
+#: src/insets/InsetBibtex.cpp:307
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -22574,7 +22573,7 @@ msgstr ""
 "BibTeX veritabanınızı gösteren yollarda boşluk bulunuyor.\n"
 "BibTeX bunları bulamayacak."
 
-#: src/insets/InsetBibtex.cpp:356
+#: src/insets/InsetBibtex.cpp:357
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -23478,7 +23477,7 @@ msgstr "Modül bulunamadı!"
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1566
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1568
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23520,25 +23519,25 @@ msgstr "Silinecek dikey çizgi yok"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Bilinmeyen tablo özelliği '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1292 src/mathed/InsetMathHull.cpp:1301
+#: src/mathed/InsetMathHull.cpp:1294 src/mathed/InsetMathHull.cpp:1303
 msgid "No number"
 msgstr "Numara yok"
 
-#: src/mathed/InsetMathHull.cpp:1292 src/mathed/InsetMathHull.cpp:1301
+#: src/mathed/InsetMathHull.cpp:1294 src/mathed/InsetMathHull.cpp:1303
 msgid "Number"
 msgstr "Numara"
 
-#: src/mathed/InsetMathHull.cpp:1539
+#: src/mathed/InsetMathHull.cpp:1541
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "'%1$s' da satır sayıları değiştirilemiyor"
 
-#: src/mathed/InsetMathHull.cpp:1549
+#: src/mathed/InsetMathHull.cpp:1551
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "'%1$s' da sütun sayıları değiştirilemiyor"
 
-#: src/mathed/InsetMathHull.cpp:1559
+#: src/mathed/InsetMathHull.cpp:1561
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "'%1$s' e yatay ızgara çizgileri eklenemiyor"

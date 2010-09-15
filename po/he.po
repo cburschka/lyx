@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-09-13 02:19+0200\n"
+"POT-Creation-Date: 2010-09-15 23:10+0200\n"
 "PO-Revision-Date: 2009-01-12 17:51+0100\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -212,16 +212,16 @@ msgstr "קטע הביבליוגרפיה הזה מכיל..."
 msgid "&Content:"
 msgstr "&תוכן:"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:207
+#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:208
 msgid "all cited references"
 msgstr "כל ההפניות המובאות בטקטט"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:153 src/frontends/qt4/GuiBibtex.cpp:328
-#: src/insets/InsetBibtex.cpp:205
+#: src/insets/InsetBibtex.cpp:206
 msgid "all uncited references"
 msgstr "כל ההפניות אשר אינן מובאות בטקסט"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:203
+#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:204
 msgid "all references"
 msgstr "כל ההפניות"
 
@@ -551,7 +551,7 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2142 src/frontends/qt4/GuiView.cpp:2202
 #: src/frontends/qt4/GuiView.cpp:2407 src/frontends/qt4/GuiView.cpp:2414
 #: src/frontends/qt4/GuiView.cpp:2515 src/frontends/qt4/GuiView.cpp:2542
-#: src/frontends/qt4/GuiView.cpp:3043 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiView.cpp:3043 src/insets/InsetBibtex.cpp:144
 msgid "&Cancel"
 msgstr "ביטול"
 
@@ -2995,7 +2995,7 @@ msgstr "ה&תווית הארוכה ביותר"
 msgid "Line &spacing"
 msgstr "מרווח &בין שורות:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1805
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1808
 #: src/frontends/qt4/GuiDocument.cpp:692
 msgid "Single"
 msgstr "יחיד"
@@ -3004,7 +3004,7 @@ msgstr "יחיד"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1811
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1814
 #: src/frontends/qt4/GuiDocument.cpp:696
 msgid "Double"
 msgstr "כפול"
@@ -5786,7 +5786,7 @@ msgstr "תקציר--"
 #: lib/layouts/elsart.layout:62 lib/layouts/elsarticle.layout:250
 #: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpd.layout:76
 #: lib/layouts/iopart.layout:198 lib/layouts/isprs.layout:51
-#: lib/layouts/kluwer.layout:280 lib/layouts/paper.layout:170
+#: lib/layouts/kluwer.layout:280 lib/layouts/paper.layout:171
 #: lib/layouts/revtex4.layout:259 lib/layouts/siamltex.layout:299
 #: lib/layouts/sigplanconf.layout:143 lib/layouts/spie.layout:40
 #: lib/layouts/svglobal3.layout:55 lib/layouts/svglobal3.layout:58
@@ -5812,7 +5812,7 @@ msgstr "נספחים"
 #: lib/layouts/elsarticle.layout:275 lib/layouts/iopart.layout:242
 #: lib/layouts/iopart.layout:264 lib/layouts/iopart.layout:287
 #: lib/layouts/siamltex.layout:314 lib/layouts/sigplanconf.layout:181
-#: lib/layouts/svglobal3.layout:86 lib/layouts/stdstruct.inc:43
+#: lib/layouts/svglobal3.layout:86 lib/layouts/stdstruct.inc:57
 #: lib/layouts/svjour.inc:290
 msgid "BackMatter"
 msgstr ""
@@ -5821,7 +5821,7 @@ msgstr ""
 #: lib/layouts/aastex.layout:122 lib/layouts/aastex.layout:450
 #: lib/layouts/ijmpc.layout:313 lib/layouts/ijmpd.layout:324
 #: lib/layouts/kluwer.layout:319 lib/layouts/kluwer.layout:332
-#: src/rowpainter.cpp:469
+#: src/rowpainter.cpp:484
 msgid "Appendix"
 msgstr "נספח"
 
@@ -5845,7 +5845,7 @@ msgstr "נספח"
 #: lib/layouts/simplecv.layout:142 lib/layouts/tufte-book.layout:232
 #: lib/layouts/tufte-book.layout:234 lib/layouts/aguplus.inc:170
 #: lib/layouts/aguplus.inc:172 lib/layouts/amsdefs.inc:202
-#: lib/layouts/scrclass.inc:245 lib/layouts/stdstruct.inc:39
+#: lib/layouts/scrclass.inc:245 lib/layouts/stdstruct.inc:53
 #: lib/layouts/svjour.inc:286 src/frontends/qt4/GuiDocument.cpp:1256
 msgid "Bibliography"
 msgstr "ביבליוגרפיה"
@@ -5858,9 +5858,8 @@ msgstr "ביבליוגרפיה"
 #: lib/layouts/iopart.layout:275 lib/layouts/iopart.layout:290
 #: lib/layouts/kluwer.layout:340 lib/layouts/kluwer.layout:352
 #: lib/layouts/llncs.layout:279 lib/layouts/siamltex.layout:328
-#: lib/layouts/amsdefs.inc:216 lib/layouts/stdstruct.inc:54
-#: lib/layouts/svjour.inc:301 src/insets/InsetBibtex.cpp:926
-#: src/output_plaintext.cpp:145
+#: lib/layouts/amsdefs.inc:216 lib/layouts/stdstruct.inc:68
+#: lib/layouts/svjour.inc:301 src/output_plaintext.cpp:145
 msgid "References"
 msgstr "הפניות"
 
@@ -7654,7 +7653,7 @@ msgstr "התכתבויות אל:"
 
 #: lib/layouts/elsarticle.layout:263 lib/layouts/ijmpc.layout:79
 #: lib/layouts/ijmpd.layout:82 lib/layouts/iopart.layout:209
-#: lib/layouts/kluwer.layout:287 lib/layouts/paper.layout:173
+#: lib/layouts/kluwer.layout:287 lib/layouts/paper.layout:174
 #: lib/layouts/revtex4.layout:264 lib/layouts/sigplanconf.layout:146
 #: lib/layouts/spie.layout:47 lib/layouts/agu_stdtitle.inc:123
 msgid "Keywords:"
@@ -17132,20 +17131,20 @@ msgid "%1$s et al."
 msgstr ""
 
 #: src/BiblioInfo.cpp:416 src/BiblioInfo.cpp:453 src/BiblioInfo.cpp:464
-#: src/BiblioInfo.cpp:502 src/BiblioInfo.cpp:506
+#: src/BiblioInfo.cpp:514 src/BiblioInfo.cpp:518
 msgid "ERROR!"
 msgstr ""
 
-#: src/BiblioInfo.cpp:645 src/BiblioInfo.cpp:648
+#: src/BiblioInfo.cpp:657 src/BiblioInfo.cpp:660
 msgid "No year"
 msgstr "אין שנה"
 
-#: src/BiblioInfo.cpp:721 src/BiblioInfo.cpp:781
+#: src/BiblioInfo.cpp:733 src/BiblioInfo.cpp:793
 #, fuzzy
 msgid "Add to bibliography only."
 msgstr "הוסף את הביבליוגרפיה לתוכן העניינים"
 
-#: src/BiblioInfo.cpp:777
+#: src/BiblioInfo.cpp:789
 msgid "before"
 msgstr "לפני"
 
@@ -17646,22 +17645,22 @@ msgstr "טען &מקור"
 msgid "Senseless!!! "
 msgstr "חסר משמעות!!! "
 
-#: src/Buffer.cpp:4068
+#: src/Buffer.cpp:4069
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "המסמך %1$s פתוח."
 
-#: src/Buffer.cpp:4070
+#: src/Buffer.cpp:4071
 #, fuzzy, c-format
 msgid "Could not reload document %1$s."
 msgstr "לא יכול לקרוא את המסמך"
 
-#: src/Buffer.cpp:4105
+#: src/Buffer.cpp:4106
 #, fuzzy
 msgid "Included File Invalid"
 msgstr "כלול קובץ..."
 
-#: src/Buffer.cpp:4106
+#: src/Buffer.cpp:4107
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17901,7 +17900,7 @@ msgstr ""
 "אז אנא שנה את הקידוד את ההקובץ\n"
 "ל- UTF-8 עם תוכנה אחרת.\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2215
+#: src/Changes.cpp:363 src/Paragraph.cpp:2424
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:248
 #: src/insets/InsetCommandParams.cpp:382 src/insets/InsetListings.cpp:181
 #: src/insets/InsetListings.cpp:189 src/insets/InsetListings.cpp:213
@@ -17909,7 +17908,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr "אזהרת LyX:"
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2216 src/insets/InsetBibitem.cpp:249
+#: src/Changes.cpp:364 src/Paragraph.cpp:2425 src/insets/InsetBibitem.cpp:249
 #: src/insets/InsetCommandParams.cpp:383 src/insets/InsetListings.cpp:182
 #: src/insets/InsetListings.cpp:190 src/insets/InsetNomencl.cpp:282
 #: src/mathed/InsetMathString.cpp:162
@@ -17942,8 +17941,8 @@ msgstr "אזהרת ChkTeX מספר %1$d"
 msgid "ChkTeX warning id # "
 msgstr "אזהרת ChkTeX מספר "
 
-#: src/Color.cpp:159 src/insets/InsetBibtex.cpp:173
-#: src/insets/InsetBibtex.cpp:198
+#: src/Color.cpp:159 src/insets/InsetBibtex.cpp:174
+#: src/insets/InsetBibtex.cpp:199
 msgid "none"
 msgstr ""
 
@@ -19413,15 +19412,15 @@ msgstr "לחזור לגרסה השמורה של המסמך?"
 msgid "&Revert"
 msgstr "חזור"
 
-#: src/Paragraph.cpp:1657
+#: src/Paragraph.cpp:1866
 msgid "Senseless with this layout!"
 msgstr "חסר משמעות עם התצורה הזו!"
 
-#: src/Paragraph.cpp:1719
+#: src/Paragraph.cpp:1928
 msgid "Alignment not permitted"
 msgstr "יישור לא אפשרי"
 
-#: src/Paragraph.cpp:1720
+#: src/Paragraph.cpp:1929
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -19429,11 +19428,11 @@ msgstr ""
 "תצורת המסמך החדשה לא מאפשרת את היישור בו השתמשת.\n"
 "קובע יישור לברירת מחדל."
 
-#: src/Paragraph.cpp:2748
+#: src/Paragraph.cpp:2958
 msgid "Memory problem"
 msgstr ""
 
-#: src/Paragraph.cpp:2748
+#: src/Paragraph.cpp:2958
 msgid "Paragraph not properly initialized"
 msgstr ""
 
@@ -19454,83 +19453,83 @@ msgstr ""
 msgid "Unknown token"
 msgstr ""
 
-#: src/Text.cpp:938
+#: src/Text.cpp:941
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr "אינך יכול לכתוב רווח בתחילת פסקה. אנא קרא את \"השיעור המודרך\"."
 
-#: src/Text.cpp:949
+#: src/Text.cpp:952
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "אינך יכול להקליד שני רווחים רצופים. אנא קרא את \"השיעור המודרך\"."
 
-#: src/Text.cpp:1771
+#: src/Text.cpp:1774
 msgid "[Change Tracking] "
 msgstr "[מעקב אחר שינויים]"
 
-#: src/Text.cpp:1777
+#: src/Text.cpp:1780
 msgid "Change: "
 msgstr "שינוי: "
 
-#: src/Text.cpp:1781
+#: src/Text.cpp:1784
 msgid " at "
 msgstr "בתוך "
 
-#: src/Text.cpp:1791
+#: src/Text.cpp:1794
 #, c-format
 msgid "Font: %1$s"
 msgstr "גופן: %1$s"
 
-#: src/Text.cpp:1796
+#: src/Text.cpp:1799
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", עומק: %1$d"
 
-#: src/Text.cpp:1802
+#: src/Text.cpp:1805
 msgid ", Spacing: "
 msgstr ", ריווח: "
 
-#: src/Text.cpp:1808 src/frontends/qt4/GuiDocument.cpp:694
+#: src/Text.cpp:1811 src/frontends/qt4/GuiDocument.cpp:694
 msgid "OneHalf"
 msgstr "אחד וחצי"
 
-#: src/Text.cpp:1814
+#: src/Text.cpp:1817
 msgid "Other ("
 msgstr "אחר ("
 
-#: src/Text.cpp:1823
+#: src/Text.cpp:1826
 msgid ", Inset: "
 msgstr ", תוסף טקסט: "
 
-#: src/Text.cpp:1824
+#: src/Text.cpp:1827
 msgid ", Paragraph: "
 msgstr ", פסקה: "
 
-#: src/Text.cpp:1825
+#: src/Text.cpp:1828
 msgid ", Id: "
 msgstr ""
 
-#: src/Text.cpp:1826
+#: src/Text.cpp:1829
 msgid ", Position: "
 msgstr ", מיקום:"
 
-#: src/Text.cpp:1832
+#: src/Text.cpp:1835
 msgid ", Char: 0x"
 msgstr ", תו: 0x"
 
-#: src/Text.cpp:1834
+#: src/Text.cpp:1837
 msgid ", Boundary: "
 msgstr ", גבול:"
 
-#: src/Text2.cpp:383
+#: src/Text2.cpp:386
 msgid "No font change defined."
 msgstr "לא הוגדר שינוי גופן"
 
-#: src/Text2.cpp:423
+#: src/Text2.cpp:426
 msgid "Nothing to index!"
 msgstr "אין מה לשים באינדקס!"
 
-#: src/Text2.cpp:425
+#: src/Text2.cpp:428
 msgid "Cannot index more than one paragraph!"
 msgstr "לא יכול לשים באינדקס יותר מפסקה אחת!"
 
@@ -22361,7 +22360,7 @@ msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "מסמכי LyX (*.lyx)"
 
 #: src/frontends/qt4/GuiView.cpp:1784 src/frontends/qt4/Validator.cpp:188
-#: src/insets/ExternalSupport.cpp:367 src/insets/InsetBibtex.cpp:285
+#: src/insets/ExternalSupport.cpp:367 src/insets/InsetBibtex.cpp:286
 #: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:512
 msgid "Invalid filename"
 msgstr "שם קובץ לא תקין"
@@ -22936,7 +22935,7 @@ msgstr "רשימת טבלאות"
 msgid "List of Changes"
 msgstr "רשימת טבלאות"
 
-#: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:286
+#: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:287
 #: src/insets/InsetGraphics.cpp:594 src/insets/InsetInclude.cpp:513
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
@@ -22979,57 +22978,57 @@ msgid ""
 "it will be changed to %2$s."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:139
+#: src/insets/InsetBibtex.cpp:140
 #, c-format
 msgid ""
 "The BibTeX inset includes %1$s databases.\n"
 "If you proceed, all of them will be opened."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:142
+#: src/insets/InsetBibtex.cpp:143
 #, fuzzy
 msgid "Open Databases?"
 msgstr "מסדי-נתונים"
 
-#: src/insets/InsetBibtex.cpp:143
+#: src/insets/InsetBibtex.cpp:144
 msgid "&Proceed"
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:161
+#: src/insets/InsetBibtex.cpp:162
 msgid "BibTeX Generated Bibliography"
 msgstr "בביליוגרפיה שנוצרה ע\"י BibTeX"
 
-#: src/insets/InsetBibtex.cpp:168
+#: src/insets/InsetBibtex.cpp:169
 #, fuzzy
 msgid "Databases:"
 msgstr "מסדי-נתונים"
 
-#: src/insets/InsetBibtex.cpp:193
+#: src/insets/InsetBibtex.cpp:194
 #, fuzzy
 msgid "Style File:"
 msgstr "סגנון"
 
-#: src/insets/InsetBibtex.cpp:200
+#: src/insets/InsetBibtex.cpp:201
 #, fuzzy
 msgid "Lists:"
 msgstr "רשימה"
 
-#: src/insets/InsetBibtex.cpp:211
+#: src/insets/InsetBibtex.cpp:212
 msgid "included in TOC"
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:305 src/insets/InsetBibtex.cpp:355
+#: src/insets/InsetBibtex.cpp:306 src/insets/InsetBibtex.cpp:356
 msgid "Export Warning!"
 msgstr "אזהרת יצוא!"
 
-#: src/insets/InsetBibtex.cpp:306
+#: src/insets/InsetBibtex.cpp:307
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
 "ישנם רווחים בכתובת של מסדי הנתונים של BibTex.<br>Bibtex לא יוכל לאתר אותם."
 
-#: src/insets/InsetBibtex.cpp:356
+#: src/insets/InsetBibtex.cpp:357
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -23958,7 +23957,7 @@ msgstr "קובץ לא נמצא"
 msgid " Macro: %1$s: "
 msgstr "מאקרו: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1566
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1568
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -24000,25 +23999,25 @@ msgstr "אין קו אנכי למחיקה"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "תכונת טבלה לא ידועה '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1292 src/mathed/InsetMathHull.cpp:1301
+#: src/mathed/InsetMathHull.cpp:1294 src/mathed/InsetMathHull.cpp:1303
 msgid "No number"
 msgstr "אין מספר"
 
-#: src/mathed/InsetMathHull.cpp:1292 src/mathed/InsetMathHull.cpp:1301
+#: src/mathed/InsetMathHull.cpp:1294 src/mathed/InsetMathHull.cpp:1303
 msgid "Number"
 msgstr "מספר"
 
-#: src/mathed/InsetMathHull.cpp:1539
+#: src/mathed/InsetMathHull.cpp:1541
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "לא יכול לשנות את מספר הטורים ב- '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1549
+#: src/mathed/InsetMathHull.cpp:1551
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "לא יכול לשנות את מספר  השורות ב- '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1559
+#: src/mathed/InsetMathHull.cpp:1561
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "לא יכול להוסיף קווי רשת אופקיים בתוך '%1$s'"

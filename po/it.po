@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-09-13 02:19+0200\n"
+"POT-Creation-Date: 2010-09-15 23:10+0200\n"
 "PO-Revision-Date: 2010-09-13 02:11+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
@@ -207,16 +207,16 @@ msgstr "Questa sezione bibliografica contiene..."
 msgid "&Content:"
 msgstr "C&ontenuto:"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:207
+#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:208
 msgid "all cited references"
 msgstr "tutti i riferimenti citati"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:153 src/frontends/qt4/GuiBibtex.cpp:328
-#: src/insets/InsetBibtex.cpp:205
+#: src/insets/InsetBibtex.cpp:206
 msgid "all uncited references"
 msgstr "tutti i riferimenti non citati"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:203
+#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:204
 msgid "all references"
 msgstr "tutti i riferimenti"
 
@@ -541,7 +541,7 @@ msgstr "Aggiungi &tutti"
 #: src/frontends/qt4/GuiView.cpp:2142 src/frontends/qt4/GuiView.cpp:2202
 #: src/frontends/qt4/GuiView.cpp:2407 src/frontends/qt4/GuiView.cpp:2414
 #: src/frontends/qt4/GuiView.cpp:2515 src/frontends/qt4/GuiView.cpp:2542
-#: src/frontends/qt4/GuiView.cpp:3043 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiView.cpp:3043 src/insets/InsetBibtex.cpp:144
 msgid "&Cancel"
 msgstr "&Cancella"
 
@@ -2872,7 +2872,7 @@ msgstr "Etichetta più &lunga"
 msgid "Line &spacing"
 msgstr "I&nterlinea"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1805
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1808
 #: src/frontends/qt4/GuiDocument.cpp:692
 msgid "Single"
 msgstr "Singola"
@@ -2881,7 +2881,7 @@ msgstr "Singola"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1811
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1814
 #: src/frontends/qt4/GuiDocument.cpp:696
 msgid "Double"
 msgstr "Doppia"
@@ -5572,7 +5572,7 @@ msgstr "Sommario---"
 #: lib/layouts/elsart.layout:62 lib/layouts/elsarticle.layout:250
 #: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpd.layout:76
 #: lib/layouts/iopart.layout:198 lib/layouts/isprs.layout:51
-#: lib/layouts/kluwer.layout:280 lib/layouts/paper.layout:170
+#: lib/layouts/kluwer.layout:280 lib/layouts/paper.layout:171
 #: lib/layouts/revtex4.layout:259 lib/layouts/siamltex.layout:299
 #: lib/layouts/sigplanconf.layout:143 lib/layouts/spie.layout:40
 #: lib/layouts/svglobal3.layout:55 lib/layouts/svglobal3.layout:58
@@ -5598,7 +5598,7 @@ msgstr "Appendici"
 #: lib/layouts/elsarticle.layout:275 lib/layouts/iopart.layout:242
 #: lib/layouts/iopart.layout:264 lib/layouts/iopart.layout:287
 #: lib/layouts/siamltex.layout:314 lib/layouts/sigplanconf.layout:181
-#: lib/layouts/svglobal3.layout:86 lib/layouts/stdstruct.inc:43
+#: lib/layouts/svglobal3.layout:86 lib/layouts/stdstruct.inc:57
 #: lib/layouts/svjour.inc:290
 msgid "BackMatter"
 msgstr "Materiale posteriore"
@@ -5607,7 +5607,7 @@ msgstr "Materiale posteriore"
 #: lib/layouts/aastex.layout:122 lib/layouts/aastex.layout:450
 #: lib/layouts/ijmpc.layout:313 lib/layouts/ijmpd.layout:324
 #: lib/layouts/kluwer.layout:319 lib/layouts/kluwer.layout:332
-#: src/rowpainter.cpp:469
+#: src/rowpainter.cpp:484
 msgid "Appendix"
 msgstr "Appendice"
 
@@ -5631,7 +5631,7 @@ msgstr "Appendice"
 #: lib/layouts/simplecv.layout:142 lib/layouts/tufte-book.layout:232
 #: lib/layouts/tufte-book.layout:234 lib/layouts/aguplus.inc:170
 #: lib/layouts/aguplus.inc:172 lib/layouts/amsdefs.inc:202
-#: lib/layouts/scrclass.inc:245 lib/layouts/stdstruct.inc:39
+#: lib/layouts/scrclass.inc:245 lib/layouts/stdstruct.inc:53
 #: lib/layouts/svjour.inc:286 src/frontends/qt4/GuiDocument.cpp:1256
 msgid "Bibliography"
 msgstr "Bibliografia"
@@ -5644,9 +5644,8 @@ msgstr "Bibliografia"
 #: lib/layouts/iopart.layout:275 lib/layouts/iopart.layout:290
 #: lib/layouts/kluwer.layout:340 lib/layouts/kluwer.layout:352
 #: lib/layouts/llncs.layout:279 lib/layouts/siamltex.layout:328
-#: lib/layouts/amsdefs.inc:216 lib/layouts/stdstruct.inc:54
-#: lib/layouts/svjour.inc:301 src/insets/InsetBibtex.cpp:926
-#: src/output_plaintext.cpp:145
+#: lib/layouts/amsdefs.inc:216 lib/layouts/stdstruct.inc:68
+#: lib/layouts/svjour.inc:301 src/output_plaintext.cpp:145
 msgid "References"
 msgstr "Riferimenti"
 
@@ -7372,7 +7371,7 @@ msgstr "Testo autore corrispondente:"
 
 #: lib/layouts/elsarticle.layout:263 lib/layouts/ijmpc.layout:79
 #: lib/layouts/ijmpd.layout:82 lib/layouts/iopart.layout:209
-#: lib/layouts/kluwer.layout:287 lib/layouts/paper.layout:173
+#: lib/layouts/kluwer.layout:287 lib/layouts/paper.layout:174
 #: lib/layouts/revtex4.layout:264 lib/layouts/sigplanconf.layout:146
 #: lib/layouts/spie.layout:47 lib/layouts/agu_stdtitle.inc:123
 msgid "Keywords:"
@@ -16499,19 +16498,19 @@ msgid "%1$s et al."
 msgstr "%1$s et al."
 
 #: src/BiblioInfo.cpp:416 src/BiblioInfo.cpp:453 src/BiblioInfo.cpp:464
-#: src/BiblioInfo.cpp:502 src/BiblioInfo.cpp:506
+#: src/BiblioInfo.cpp:514 src/BiblioInfo.cpp:518
 msgid "ERROR!"
 msgstr "ERRORE!"
 
-#: src/BiblioInfo.cpp:645 src/BiblioInfo.cpp:648
+#: src/BiblioInfo.cpp:657 src/BiblioInfo.cpp:660
 msgid "No year"
 msgstr "Nessun anno"
 
-#: src/BiblioInfo.cpp:721 src/BiblioInfo.cpp:781
+#: src/BiblioInfo.cpp:733 src/BiblioInfo.cpp:793
 msgid "Add to bibliography only."
 msgstr "Aggiungi solo alla bibliografia."
 
-#: src/BiblioInfo.cpp:777
+#: src/BiblioInfo.cpp:789
 msgid "before"
 msgstr "prima"
 
@@ -17029,21 +17028,21 @@ msgstr "Apri &originale"
 msgid "Senseless!!! "
 msgstr "Non ha senso!!! "
 
-#: src/Buffer.cpp:4068
+#: src/Buffer.cpp:4069
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Il documento %1$s è stato riaperto."
 
-#: src/Buffer.cpp:4070
+#: src/Buffer.cpp:4071
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Non riesco a riaprire il documento %1$s."
 
-#: src/Buffer.cpp:4105
+#: src/Buffer.cpp:4106
 msgid "Included File Invalid"
 msgstr "File incluso non valido"
 
-#: src/Buffer.cpp:4106
+#: src/Buffer.cpp:4107
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17301,7 +17300,7 @@ msgstr ""
 "siete pregati di cambiare la codifica del file in\n"
 "UTF-8 usando un programma esterno a LyX.\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2215
+#: src/Changes.cpp:363 src/Paragraph.cpp:2424
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:248
 #: src/insets/InsetCommandParams.cpp:382 src/insets/InsetListings.cpp:181
 #: src/insets/InsetListings.cpp:189 src/insets/InsetListings.cpp:213
@@ -17309,7 +17308,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr "Avviso di LyX: "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2216 src/insets/InsetBibitem.cpp:249
+#: src/Changes.cpp:364 src/Paragraph.cpp:2425 src/insets/InsetBibitem.cpp:249
 #: src/insets/InsetCommandParams.cpp:383 src/insets/InsetListings.cpp:182
 #: src/insets/InsetListings.cpp:190 src/insets/InsetNomencl.cpp:282
 #: src/mathed/InsetMathString.cpp:162
@@ -17348,8 +17347,8 @@ msgstr "Identificativo dell'avviso di ChkTeX numero %1$d"
 msgid "ChkTeX warning id # "
 msgstr "Identificativo dell'avviso di ChkTeX numero "
 
-#: src/Color.cpp:159 src/insets/InsetBibtex.cpp:173
-#: src/insets/InsetBibtex.cpp:198
+#: src/Color.cpp:159 src/insets/InsetBibtex.cpp:174
+#: src/insets/InsetBibtex.cpp:199
 msgid "none"
 msgstr "nessuno"
 
@@ -18939,15 +18938,15 @@ msgstr "Ripristino la versione salvata del documento?"
 msgid "&Revert"
 msgstr "&Ripristina"
 
-#: src/Paragraph.cpp:1657
+#: src/Paragraph.cpp:1866
 msgid "Senseless with this layout!"
 msgstr "Non ha senso con questo layout!"
 
-#: src/Paragraph.cpp:1719
+#: src/Paragraph.cpp:1928
 msgid "Alignment not permitted"
 msgstr "Allineamento non consentito"
 
-#: src/Paragraph.cpp:1720
+#: src/Paragraph.cpp:1929
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -18955,11 +18954,11 @@ msgstr ""
 "Il nuovo layout non permette l'allineamento usato in precedenza.\n"
 "Uso quello predefinito."
 
-#: src/Paragraph.cpp:2748
+#: src/Paragraph.cpp:2958
 msgid "Memory problem"
 msgstr "Problema di memoria"
 
-#: src/Paragraph.cpp:2748
+#: src/Paragraph.cpp:2958
 msgid "Paragraph not properly initialized"
 msgstr "Paragrafo non correttamente inizializzato"
 
@@ -18980,7 +18979,7 @@ msgstr "L'indice dell'autore è sconosciuto per la modifica: %1$d\n"
 msgid "Unknown token"
 msgstr "Simbolo sconosciuto"
 
-#: src/Text.cpp:938
+#: src/Text.cpp:941
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -18988,79 +18987,79 @@ msgstr ""
 "Non si può inserire uno spazio all'inizio di un paragrafo. Per favore, "
 "leggete il Tutorial!"
 
-#: src/Text.cpp:949
+#: src/Text.cpp:952
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Non si possono inserire due spazi in questo modo. Per favore, leggete il "
 "Tutorial!"
 
-#: src/Text.cpp:1771
+#: src/Text.cpp:1774
 msgid "[Change Tracking] "
 msgstr "[Tracciamento modifiche] "
 
-#: src/Text.cpp:1777
+#: src/Text.cpp:1780
 msgid "Change: "
 msgstr "Modifica: "
 
-#: src/Text.cpp:1781
+#: src/Text.cpp:1784
 msgid " at "
 msgstr ", "
 
-#: src/Text.cpp:1791
+#: src/Text.cpp:1794
 #, c-format
 msgid "Font: %1$s"
 msgstr "Carattere: %1$s"
 
-#: src/Text.cpp:1796
+#: src/Text.cpp:1799
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Rientro: %1$d"
 
-#: src/Text.cpp:1802
+#: src/Text.cpp:1805
 msgid ", Spacing: "
 msgstr ", Spaziatura: "
 
-#: src/Text.cpp:1808 src/frontends/qt4/GuiDocument.cpp:694
+#: src/Text.cpp:1811 src/frontends/qt4/GuiDocument.cpp:694
 msgid "OneHalf"
 msgstr "Uno e mezzo"
 
-#: src/Text.cpp:1814
+#: src/Text.cpp:1817
 msgid "Other ("
 msgstr "Altro ("
 
-#: src/Text.cpp:1823
+#: src/Text.cpp:1826
 msgid ", Inset: "
 msgstr ", Inserto: "
 
-#: src/Text.cpp:1824
+#: src/Text.cpp:1827
 msgid ", Paragraph: "
 msgstr ", Paragrafo: "
 
-#: src/Text.cpp:1825
+#: src/Text.cpp:1828
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1826
+#: src/Text.cpp:1829
 msgid ", Position: "
 msgstr ", Posizione: "
 
-#: src/Text.cpp:1832
+#: src/Text.cpp:1835
 msgid ", Char: 0x"
 msgstr ", Car: 0x"
 
-#: src/Text.cpp:1834
+#: src/Text.cpp:1837
 msgid ", Boundary: "
 msgstr ", Confine: "
 
-#: src/Text2.cpp:383
+#: src/Text2.cpp:386
 msgid "No font change defined."
 msgstr "Nessun cambio di carattere definito."
 
-#: src/Text2.cpp:423
+#: src/Text2.cpp:426
 msgid "Nothing to index!"
 msgstr "Niente da indicizzare!"
 
-#: src/Text2.cpp:425
+#: src/Text2.cpp:428
 msgid "Cannot index more than one paragraph!"
 msgstr "Non posso indicizzare più di un paragrafo!"
 
@@ -21804,7 +21803,7 @@ msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "Documenti LyX-1.6.x (*.lyx16)"
 
 #: src/frontends/qt4/GuiView.cpp:1784 src/frontends/qt4/Validator.cpp:188
-#: src/insets/ExternalSupport.cpp:367 src/insets/InsetBibtex.cpp:285
+#: src/insets/ExternalSupport.cpp:367 src/insets/InsetBibtex.cpp:286
 #: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:512
 msgid "Invalid filename"
 msgstr "Nome file non valido"
@@ -22339,7 +22338,7 @@ msgstr "Elenco dei rami"
 msgid "List of Changes"
 msgstr "Elenco delle modifiche"
 
-#: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:286
+#: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:287
 #: src/insets/InsetGraphics.cpp:594 src/insets/InsetInclude.cpp:513
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
@@ -22381,7 +22380,7 @@ msgstr ""
 "La chiave %1$s esiste già,\n"
 "verrà cambiata in %2$s."
 
-#: src/insets/InsetBibtex.cpp:139
+#: src/insets/InsetBibtex.cpp:140
 #, c-format
 msgid ""
 "The BibTeX inset includes %1$s databases.\n"
@@ -22390,39 +22389,39 @@ msgstr ""
 "L'inserto BibTeX include %1$s cataloghi.\n"
 "Se si procede, saranno aperti tutti."
 
-#: src/insets/InsetBibtex.cpp:142
+#: src/insets/InsetBibtex.cpp:143
 msgid "Open Databases?"
 msgstr "Aprire cataloghi?"
 
-#: src/insets/InsetBibtex.cpp:143
+#: src/insets/InsetBibtex.cpp:144
 msgid "&Proceed"
 msgstr "&Procedi"
 
-#: src/insets/InsetBibtex.cpp:161
+#: src/insets/InsetBibtex.cpp:162
 msgid "BibTeX Generated Bibliography"
 msgstr "Bibliografia generata da BibTeX"
 
-#: src/insets/InsetBibtex.cpp:168
+#: src/insets/InsetBibtex.cpp:169
 msgid "Databases:"
 msgstr "Cataloghi:"
 
-#: src/insets/InsetBibtex.cpp:193
+#: src/insets/InsetBibtex.cpp:194
 msgid "Style File:"
 msgstr "File di stile:"
 
-#: src/insets/InsetBibtex.cpp:200
+#: src/insets/InsetBibtex.cpp:201
 msgid "Lists:"
 msgstr "Elenchi:"
 
-#: src/insets/InsetBibtex.cpp:211
+#: src/insets/InsetBibtex.cpp:212
 msgid "included in TOC"
 msgstr "incluso nell'indice"
 
-#: src/insets/InsetBibtex.cpp:305 src/insets/InsetBibtex.cpp:355
+#: src/insets/InsetBibtex.cpp:306 src/insets/InsetBibtex.cpp:356
 msgid "Export Warning!"
 msgstr "Avvertimento di esportazione!"
 
-#: src/insets/InsetBibtex.cpp:306
+#: src/insets/InsetBibtex.cpp:307
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -22430,7 +22429,7 @@ msgstr ""
 "Ci sono degli spazi nei percorsi dei cataloghi BibTeX.\n"
 "BibTeX non sarà in grado di trovarli."
 
-#: src/insets/InsetBibtex.cpp:356
+#: src/insets/InsetBibtex.cpp:357
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -23330,7 +23329,7 @@ msgstr "Corrispondenza trovata!"
 msgid " Macro: %1$s: "
 msgstr "Macro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1566
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1568
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23371,25 +23370,25 @@ msgstr "Nessuna linea verticale da cancellare"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "La caratteristica della tabella '%1$s' è sconosciuta "
 
-#: src/mathed/InsetMathHull.cpp:1292 src/mathed/InsetMathHull.cpp:1301
+#: src/mathed/InsetMathHull.cpp:1294 src/mathed/InsetMathHull.cpp:1303
 msgid "No number"
 msgstr "Nessun numero"
 
-#: src/mathed/InsetMathHull.cpp:1292 src/mathed/InsetMathHull.cpp:1301
+#: src/mathed/InsetMathHull.cpp:1294 src/mathed/InsetMathHull.cpp:1303
 msgid "Number"
 msgstr "Numero"
 
-#: src/mathed/InsetMathHull.cpp:1539
+#: src/mathed/InsetMathHull.cpp:1541
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Non posso cambiare il numero di righe in '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1549
+#: src/mathed/InsetMathHull.cpp:1551
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Non posso cambiare il numero di colonne in '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1559
+#: src/mathed/InsetMathHull.cpp:1561
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Non posso aggiungere le linee della griglia orizzontale in '%1$s'"
