@@ -20,6 +20,7 @@
 #include "Format.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "Language.h"
 #include "LaTeXFeatures.h"
 #include "output_xhtml.h"
 #include "OutputParams.h"
@@ -922,8 +923,13 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 	bool const numbers = 
 		(engine == ENGINE_BASIC || engine == ENGINE_NATBIB_NUMERICAL);
 
+	docstring reflabel = from_ascii("References");
+	Language const * l = buffer().params().language;
+	if (l)
+		reflabel = translateIfPossible(reflabel, l->code());
+		
 	xs << html::StartTag("h2", "class='bibtex'")
-		<< _("References")
+		<< reflabel
 		<< html::EndTag("h2")
 		<< html::StartTag("div", "class='bibtex'");
 
