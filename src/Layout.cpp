@@ -18,10 +18,10 @@
 #include "Lexer.h"
 #include "FontInfo.h"
 
-#include "support/Messages.h"
 #include "support/debug.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
+#include "support/Messages.h"
 
 #include "support/regex.h"
 
@@ -1003,20 +1003,35 @@ string Layout::defaultCSSClass() const
 }
 
 
-// NOTE There is a whole ton of stuff that could go into this.
-// Things like bottomsep, topsep, and parsep could become various
-// sorts of margins or padding, for example. But for now we are
-// going to keep it simple.
+namespace {
+	string makeMarginValue(double d) {
+		ostringstream os;
+		os << d << "ex";
+		return os.str();
+	}
+}
+
+
 void Layout::makeDefaultCSS() const {
 	// this never needs to be redone, since reloading layouts will
 	// wipe out what we did before.
 	if (!htmldefaultstyle_.empty()) 
 		return;
-	docstring const mainfontCSS = font.asCSS();
-	if (!mainfontCSS.empty())
+	htmldefaultstyle_ = font.asCSS();
+	string tmp;
+	if (topsep > 0)
+		tmp += "margin-top: " + makeMarginValue(topsep) + ";\n";
+	if (bottomsep > 0)
+		tmp += "margin-bottom: " + makeMarginValue(bottomsep) + ";\n";
+	if (!tmp.empty()) {
+		if (!htmldefaultstyle_.empty())
+			htmldefaultstyle_ += from_ascii("\n");
+		htmldefaultstyle_ += from_ascii(tmp);
+	}
+	if (!htmldefaultstyle_.empty())
 		htmldefaultstyle_ = 
 			from_ascii(htmltag() + "." + defaultCSSClass() + " {\n") +
-			mainfontCSS + from_ascii("\n}\n");
+			htmldefaultstyle_ + from_ascii("\n}\n");
 	if (labelfont == font || htmllabeltag() == "NONE")
 		return;
 	docstring const labelfontCSS = labelfont.asCSS();
