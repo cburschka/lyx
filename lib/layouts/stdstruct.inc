@@ -37,8 +37,8 @@ Style Abstract
 	HTMLLabelFirst        1
 	HTMLStyle
 		div.abstract {
-			margin-top: 1em;
-			margin-bottom: 1em;
+			margin-top: 2em;
+			margin-bottom: 2em;
 		}
 		div.abstract_item {
 			font-size: small;
