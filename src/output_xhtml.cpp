@@ -881,4 +881,20 @@ void xhtmlParagraphs(Text const & text,
 }
 
 
+string alignmentToCSS(LyXAlignment align) {
+	switch (align) {
+	case LYX_ALIGN_BLOCK:
+		// we are NOT going to use text-align: justify!!
+	case LYX_ALIGN_LEFT:
+		return "left";
+	case LYX_ALIGN_RIGHT:
+		return "right";
+	case LYX_ALIGN_CENTER:
+		return "center";
+	default:
+		break;
+	}
+	return "";
+}
+
 } // namespace lyx

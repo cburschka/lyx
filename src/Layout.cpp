@@ -13,10 +13,11 @@
 #include <config.h>
 
 #include "Layout.h"
-#include "Language.h"
-#include "TextClass.h"
-#include "Lexer.h"
 #include "FontInfo.h"
+#include "Language.h"
+#include "Lexer.h"
+#include "output_xhtml.h"
+#include "TextClass.h"
 
 #include "support/debug.h"
 #include "support/lassert.h"
@@ -1032,6 +1033,15 @@ void Layout::makeDefaultCSS() const {
 			htmldefaultstyle_ += from_ascii("\n");
 		htmldefaultstyle_ += from_ascii(tmp);
 	}
+
+// tex2lyx does not see output_xhtml.cpp
+#ifndef TEX2LYX
+	// alignment
+	string where = alignmentToCSS(align);
+	if (!where.empty()) {
+		htmldefaultstyle_ += from_ascii("text-align: " + where + ";\n");
+	}
+#endif
 	
 	// wrap up what we have, if anything
 	if (!htmldefaultstyle_.empty())

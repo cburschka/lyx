@@ -12,6 +12,7 @@
 #ifndef OUTPUT_XHTML_H
 #define OUTPUT_XHTML_H
 
+#include "LayoutEnums.h"
 #include "support/docstream.h"
 #include "support/strfwd.h"
 
@@ -148,6 +149,10 @@ void xhtmlParagraphs(Text const & text,
 		       Buffer const & buf,
 		       XHTMLStream & xs,
 		       OutputParams const & runparams);
+
+/// \return a string appropriate for setting alignment in CSS
+/// Does NOT return "justify" for "block"
+std::string alignmentToCSS(LyXAlignment align);
 
 namespace html {
 ///
