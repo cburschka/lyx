@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 398
+\lyxformat 400
 \begin_document
 \begin_header
 \textclass scrbook
@@ -101,6 +101,7 @@ End
 \use_amsmath 0
 \use_esint 0
 \use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
@@ -16951,6 +16952,46 @@ status collapsed
 
 \begin_layout Plain Layout
 span
+\end_layout
+
+\end_inset
+
+, unless 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelType
+\end_layout
+
+\end_inset
+
+ is either 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Top_Environment
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Centered_Top_Environment
+\end_layout
+
+\end_inset
+
+, in which case it defaults to 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+div
 \end_layout
 
 \end_inset

@@ -33,7 +33,6 @@ Style Abstract
 	  Series              Bold
 	  Size                Large
 	EndFont
-	HTMLLabel             div
 	HTMLLabelFirst        1
 	HTMLForceCSS          1
 	HTMLStyle

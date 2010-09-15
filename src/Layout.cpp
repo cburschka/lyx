@@ -957,8 +957,13 @@ string const & Layout::htmlitemattr() const
 
 string const & Layout::htmllabeltag() const 
 { 
-	if (htmllabeltag_.empty())
-		htmllabeltag_ = "span";
+	if (htmllabeltag_.empty()) {
+		if (labeltype != LABEL_TOP_ENVIRONMENT &&
+		    labeltype != LABEL_CENTERED_TOP_ENVIRONMENT)
+			htmllabeltag_ = "span";
+		else
+			htmllabeltag_ = "div";
+	}
 	return htmllabeltag_; 
 }
 
