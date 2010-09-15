@@ -694,46 +694,52 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 					closeItemTag(xs, *lastlay);
 					lastlay = 0;
 				}
-				if (isNormalEnv(style)) {
-					// in this case, we print the label only for the first 
-					// paragraph (as in a theorem).
+				
+				bool const labelfirst = style.htmllabelfirst();
+				if (!labelfirst)
 					openItemTag(xs, style);
-					if (par == pbegin && style.htmllabeltag() != "NONE") {
-						docstring const lbl = 
-								pbegin->params().labelString();
-						if (!lbl.empty()) {
-							openLabelTag(xs, style);
-							xs << lbl;
-							closeLabelTag(xs, style);
+				
+				// label output
+				if (style.labeltype != LABEL_NO_LABEL && 
+				    style.htmllabeltag() != "NONE") {
+					if (isNormalEnv(style)) {
+						// in this case, we print the label only for the first 
+						// paragraph (as in a theorem).
+						if (par == pbegin) {
+							docstring const lbl = 
+									pbegin->params().labelString();
+							if (!lbl.empty()) {
+								openLabelTag(xs, style);
+								xs << lbl;
+								closeLabelTag(xs, style);
+							}
+							xs.cr();
 						}
-						xs.cr();
+					}	else { // some kind of list
+						if (style.labeltype == LABEL_MANUAL) {
+							openLabelTag(xs, style);
+							sep = par->firstWordLyXHTML(xs, runparams);
+							closeLabelTag(xs, style);
+							xs.cr();
+						}
+						else {
+							openLabelTag(xs, style);
+							xs << par->params().labelString();
+							closeLabelTag(xs, style);
+							xs.cr();
+						}
 					}
-				}	else { // some kind of list
-					bool const labelfirst = style.htmllabelfirst();
-					if (!labelfirst)
-						openItemTag(xs, style);
-					if (style.labeltype == LABEL_MANUAL
-					    && style.htmllabeltag() != "NONE") {
-						openLabelTag(xs, style);
-						sep = par->firstWordLyXHTML(xs, runparams);
-						closeLabelTag(xs, style);
-						xs.cr();
-					}
-					else if (style.labeltype != LABEL_NO_LABEL
-					         && style.htmllabeltag() != "NONE") {
-						openLabelTag(xs, style);
-						xs << par->params().labelString();
-						closeLabelTag(xs, style);
-						xs.cr();
-					}
-					if (labelfirst)
-						openItemTag(xs, style);
-				}
+				} // end label output
+
+				if (labelfirst)
+					openItemTag(xs, style);
+
 				par->simpleLyXHTMLOnePar(buf, xs, runparams, 
 					text.outerFont(distance(begin, par)), sep);
 				++par;
-				// We may not want to close the tag yet, in particular,
-				// if we're not at the end...
+
+				// We may not want to close the tag yet, in particular:
+				// If we're not at the end...
 				if (par != pend 
 					//  and are doing items...
 					 && !isNormalEnv(style)
