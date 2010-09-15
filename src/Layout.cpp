@@ -558,6 +558,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 
 		case LT_HTMLFORCECSS:
 			lex >> htmlforcecss_;
+			break;
 
 		case LT_HTMLPREAMBLE:
 			htmlpreamble_ = from_utf8(lex.getLongString("EndPreamble"));
