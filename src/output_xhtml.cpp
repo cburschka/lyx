@@ -286,6 +286,18 @@ XHTMLStream & XHTMLStream::operator<<(char_type c)
 }
 
 
+XHTMLStream & XHTMLStream::operator<<(char c)
+{
+	clearTagDeque();
+	if (nextraw_) {
+		os_ << c;
+		nextraw_ = false;
+	} else
+		os_ << html::escapeChar(c);
+	return *this;
+}
+
+
 XHTMLStream & XHTMLStream::operator<<(int i)
 {
 	clearTagDeque();

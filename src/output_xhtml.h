@@ -110,6 +110,8 @@ public:
 	///
 	XHTMLStream & operator<<(int);
 	///
+	XHTMLStream & operator<<(char);
+	///
 	XHTMLStream & operator<<(html::StartTag const &);
 	///
 	XHTMLStream & operator<<(html::EndTag const &);
