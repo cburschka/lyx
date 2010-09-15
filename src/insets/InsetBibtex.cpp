@@ -969,6 +969,7 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 		// which will give us all the cross-referenced info. But for every
 		// entry, so there's a lot of repitition. This should be fixed.
 		xs << html::StartTag("span", "class='bibtexinfo'") 
+			<< XHTMLStream::NextRaw()
 			<< bibinfo.getInfo(entry.key(), buffer(), true)
 			<< html::EndTag("span")
 			<< html::EndTag("div");

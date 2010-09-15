@@ -173,6 +173,8 @@ public:
 	/// \return formatted BibTeX data associated with a given key.
 	/// Empty if no info exists. 
 	/// Note that this will retrieve data from the crossref as needed.
+	/// If \param richtext is true, then it will output any richtext tags
+	/// marked in the citation format and escape < and > elsewhere.
 	docstring const getInfo(docstring const & key, Buffer const & buf,
 			bool richtext = false) const;
 	/// Is this a reference from a bibtex database

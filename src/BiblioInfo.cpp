@@ -491,7 +491,19 @@ docstring BibTeXInfo::expandFormat(string const & format,
 		}
 		else if (scanning_key)
 			key += char(thischar);
-		else if (richtext || !scanning_rich)
+		else if (richtext) {
+			if (scanning_rich)
+				ret += thischar;
+			else {
+				// we need to escape '<' and '>'
+				if (thischar == '<')
+					ret += "&lt;";
+				else if (thischar == '>')
+					ret += "&gt;";
+				else 
+					ret += thischar;
+			}	
+		}	else if (!scanning_rich /* && !richtext */)
 			ret += thischar;
 		// else the character is discarded, which will happen only if
 		// richtext == false and we are scanning rich text
