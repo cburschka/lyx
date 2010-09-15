@@ -33,6 +33,21 @@ Style Abstract
 	  Series              Bold
 	  Size                Large
 	EndFont
+	HTMLLabel             div
+	HTMLLabelFirst        1
+	HTMLStyle
+		div.abstract {
+			margin-top: 1em;
+			margin-bottom: 1em;
+		}
+		div.abstract_item {
+			font-size: small;
+			padding-top: 1ex;
+		}
+		div.abstract_label {
+			font-weight: bold;	
+		}
+	EndHTMLStyle
 End
 
 
