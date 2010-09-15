@@ -1017,7 +1017,11 @@ void Layout::makeDefaultCSS() const {
 	// wipe out what we did before.
 	if (!htmldefaultstyle_.empty()) 
 		return;
+	
+	// main font
 	htmldefaultstyle_ = font.asCSS();
+	
+	// top and bottom margins
 	string tmp;
 	if (topsep > 0)
 		tmp += "margin-top: " + makeMarginValue(topsep) + ";\n";
@@ -1028,12 +1032,17 @@ void Layout::makeDefaultCSS() const {
 			htmldefaultstyle_ += from_ascii("\n");
 		htmldefaultstyle_ += from_ascii(tmp);
 	}
+	
+	// wrap up what we have, if anything
 	if (!htmldefaultstyle_.empty())
 		htmldefaultstyle_ = 
 			from_ascii(htmltag() + "." + defaultCSSClass() + " {\n") +
 			htmldefaultstyle_ + from_ascii("\n}\n");
+	
 	if (labelfont == font || htmllabeltag() == "NONE")
 		return;
+	
+	// label font
 	docstring const labelfontCSS = labelfont.asCSS();
 	if (!labelfontCSS.empty())
 		htmldefaultstyle_ +=
