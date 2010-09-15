@@ -157,7 +157,6 @@ cmake/LyX_license.txt \
 cmake/LyX_summary.txt \
 cmake/PyCompile.cmake \
 cmake/build.bat \
-cmake/build.bat \
 cmake/config.cpp.cmake \
 cmake/config.h.cmake \
 cmake/configCompiler.h.cmake \
@@ -173,11 +172,14 @@ cmake/lyx2lyx/CMakeLists.txt \
 cmake/man/CMakeLists.txt \
 cmake/modules/FindASPELL.cmake \
 cmake/modules/FindAiksaurusLIB.cmake \
+cmake/modules/FindEnchant.cmake \
 cmake/modules/FindGNUWIN32.cmake \
+cmake/modules/FindHunspell.cmake \
 cmake/modules/FindICONV.cmake \
 cmake/modules/FindLibintl.cmake \
 cmake/modules/FindLyXGettext.cmake \
 cmake/modules/FindMyThesLIB.cmake \
+cmake/modules/FindOpenSSL.cmake \
 cmake/modules/FindQt4.cmake \
 cmake/modules/FindZLIB.cmake \
 cmake/modules/LyXMacros.cmake \
@@ -202,4 +204,3 @@ cmake/src/tex2lyx/CMakeLists.txt \
 cmake/boost/libs/regex/CMakeLists.txt \
 cmake/boost/libs/signals/CMakeLists.txt \
 cmake/src/frontends/qt4/CMakeLists.txt
-
