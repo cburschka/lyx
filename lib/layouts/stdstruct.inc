@@ -35,10 +35,10 @@ Style Abstract
 	EndFont
 	HTMLLabel             div
 	HTMLLabelFirst        1
+	HTMLForceCSS          1
 	HTMLStyle
 		div.abstract {
-			margin-top: 2em;
-			margin-bottom: 2em;
+			margin: 4ex;
 		}
 		div.abstract_item {
 			font-size: small;

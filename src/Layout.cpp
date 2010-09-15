@@ -1049,15 +1049,21 @@ void Layout::makeDefaultCSS() const {
 			from_ascii(htmltag() + "." + defaultCSSClass() + " {\n") +
 			htmldefaultstyle_ + from_ascii("\n}\n");
 	
-	if (labelfont == font || htmllabeltag() == "NONE")
+	if (labeltype == LABEL_NO_LABEL || htmllabeltag() == "NONE")
 		return;
 	
+	docstring labelCSS;
+	
 	// label font
-	docstring const labelfontCSS = labelfont.asCSS();
-	if (!labelfontCSS.empty())
+	if (labelfont != font)
+		labelCSS = labelfont.asCSS() + from_ascii("\n");
+	if (labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)
+		labelCSS += from_ascii("text-align: center;\n");
+	
+	if (!labelCSS.empty())
 		htmldefaultstyle_ +=
 			from_ascii(htmllabeltag() + "." + defaultCSSLabelClass() + " {\n") +
-			labelfontCSS + from_ascii("\n}\n");
+			labelCSS + from_ascii("\n}\n");
 }
 
 
