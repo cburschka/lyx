@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-09-13 02:19+0200\n"
-"PO-Revision-Date: 2010-09-13 16:27+0200\n"
+"PO-Revision-Date: 2010-09-15 13:39+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenčina <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -11164,7 +11164,7 @@ msgstr "Vrátiť|r"
 
 #: lib/ui/classic.ui:55 lib/ui/stdmenus.inc:54
 msgid "Version Control|V"
-msgstr "Kontrola Verzií|K"
+msgstr "Správa Verzií"
 
 #: lib/ui/classic.ui:57 lib/ui/stdmenus.inc:56
 msgid "Import|I"
@@ -11192,19 +11192,19 @@ msgstr "Registrovať...|R"
 
 #: lib/ui/classic.ui:69 lib/ui/stdmenus.inc:73
 msgid "Check In Changes...|I"
-msgstr "Odoslaj Zmeny..."
+msgstr "Uložiť Zmeny..."
 
 #: lib/ui/classic.ui:70 lib/ui/stdmenus.inc:74
 msgid "Check Out for Edit|O"
-msgstr "Check-out na úpravu"
+msgstr "Prevziať na Úpravu"
 
 #: lib/ui/classic.ui:71 lib/ui/stdmenus.inc:76
 msgid "Revert to Repository Version|v"
-msgstr "Vrátiť sa k Repozitárnej Verzii"
+msgstr "Vrátiť na Verziu Repozitára"
 
 #: lib/ui/classic.ui:72 lib/ui/stdmenus.inc:77
 msgid "Undo Last Check In|U"
-msgstr "Zruš Posledné Odoslané Zmeny"
+msgstr "Zrušiť Posledné Uložené Zmeny"
 
 #: lib/ui/classic.ui:73 lib/ui/stdmenus.inc:79
 msgid "Show History...|H"
@@ -13687,7 +13687,7 @@ msgstr "Aktualizovať Iné Formáty"
 
 #: lib/ui/stdtoolbars.inc:255 src/frontends/qt4/GuiLog.cpp:243
 msgid "Version Control"
-msgstr "Kontrola Verzií"
+msgstr "Správa Verzií"
 
 #: lib/ui/stdtoolbars.inc:256
 msgid "Register"
