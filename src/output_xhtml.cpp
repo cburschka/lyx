@@ -491,6 +491,19 @@ inline void openTag(XHTMLStream & xs, Layout const & lay)
 }
 
 
+void openTag(XHTMLStream & xs, Layout const & lay, ParagraphParameters const & params)
+{
+	// FIXME Are there other things we should handle here?
+	string const align = alignmentToCSS(params.align());
+	if (align.empty()) {
+		openTag(xs, lay);
+		return;
+	}
+	string attrs = lay.htmlattr() + " style='text-align: " + align + ";'";
+	xs << html::StartTag(lay.htmltag(), attrs);
+}
+
+
 inline void closeTag(XHTMLStream & xs, Layout const & lay)
 {
 	xs << html::EndTag(lay.htmltag());
@@ -587,7 +600,7 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		bool const opened = runparams.html_make_pars &&
 			(par != pbegin || !runparams.html_in_par);
 		if (opened)
-			openTag(xs, lay);
+			openTag(xs, lay, par->params());
 		docstring const deferred = 
 			par->simpleLyXHTMLOnePar(buf, xs, runparams, text.outerFont(distance(begin, par)));
 

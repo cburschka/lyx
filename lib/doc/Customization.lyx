@@ -16765,6 +16765,22 @@ layoutname
 \end_inset
 
  is the LyX name of the layout, made lowercase, for example: chapter.
+ This should 
+\emph on
+not
+\emph default
+ contain any style information.
+ Use 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+HTMLStyle
+\end_layout
+
+\end_inset
+
+ for that purpose.
 \end_layout
 
 \begin_layout Description
@@ -16913,6 +16929,22 @@ class=`layoutname_item'
 \end_inset
 
 .
+ This should 
+\emph on
+not
+\emph default
+ contain any style information.
+ Use 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+HTMLStyle
+\end_layout
+
+\end_inset
+
+ for that purpose.
 \end_layout
 
 \begin_layout Description
@@ -17039,6 +17071,22 @@ class=`layoutname_label'
 \end_inset
 
 .
+ This should 
+\emph on
+not
+\emph default
+ contain any style information.
+ Use 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+HTMLStyle
+\end_layout
+
+\end_inset
+
+ for that purpose.
 \end_layout
 
 \begin_layout Description
