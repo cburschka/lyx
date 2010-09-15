@@ -844,7 +844,7 @@ void makeCommand(Buffer const & buf,
 		xs << pbegin->params().labelString();
 		closeLabelTag(xs, style);
 		// Otherwise the label might run together with the text
-		xs << from_ascii(" ");
+		xs << ' ';
 	}
 
 	ParagraphList::const_iterator const begin = text.paragraphs().begin();
