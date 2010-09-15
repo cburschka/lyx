@@ -503,7 +503,8 @@ inline void openTag(XHTMLStream & xs, Layout const & lay)
 }
 
 
-void openTag(XHTMLStream & xs, Layout const & lay, ParagraphParameters const & params)
+void openTag(XHTMLStream & xs, Layout const & lay, 
+             ParagraphParameters const & params)
 {
 	// FIXME Are there other things we should handle here?
 	string const align = alignmentToCSS(params.align());
@@ -537,6 +538,20 @@ inline void closeLabelTag(XHTMLStream & xs, Layout const & lay)
 inline void openItemTag(XHTMLStream & xs, Layout const & lay)
 {
 	xs << html::StartTag(lay.htmlitemtag(), lay.htmlitemattr(), true);
+}
+
+
+void openItemTag(XHTMLStream & xs, Layout const & lay, 
+             ParagraphParameters const & params)
+{
+	// FIXME Are there other things we should handle here?
+	string const align = alignmentToCSS(params.align());
+	if (align.empty()) {
+		openItemTag(xs, lay);
+		return;
+	}
+	string attrs = lay.htmlattr() + " style='text-align: " + align + ";'";
+	xs << html::StartTag(lay.htmlitemtag(), attrs);
 }
 
 
@@ -722,7 +737,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 				
 				bool const labelfirst = style.htmllabelfirst();
 				if (!labelfirst)
-					openItemTag(xs, style);
+					openItemTag(xs, style, par->params());
 				
 				// label output
 				if (style.labeltype != LABEL_NO_LABEL && 
@@ -757,7 +772,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 				} // end label output
 
 				if (labelfirst)
-					openItemTag(xs, style);
+					openItemTag(xs, style, par->params());
 
 				par->simpleLyXHTMLOnePar(buf, xs, runparams, 
 					text.outerFont(distance(begin, par)), sep);
