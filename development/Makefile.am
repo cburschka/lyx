@@ -156,7 +156,7 @@ cmake/LyX_description.txt \
 cmake/LyX_license.txt \
 cmake/LyX_summary.txt \
 cmake/PyCompile.cmake \
-cmake/build-debug.bat \
+cmake/build.bat \
 cmake/build.bat \
 cmake/config.cpp.cmake \
 cmake/config.h.cmake \
