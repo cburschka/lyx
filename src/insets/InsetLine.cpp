@@ -104,8 +104,6 @@ bool InsetLine::getStatus(Cursor & cur, FuncRequest const & cmd,
 void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
-	dim.asc = fm.maxAscent();
-	dim.des = fm.maxDescent();
 	int const max_width = mi.base.textwidth;
 
 	Length const width(to_ascii(getParam("width")));
@@ -119,6 +117,16 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 	// set a minimal width
 	int const minw = (dim.wid < 0) ? 24 : 4;
 	dim.wid = max(minw, max(dim.wid, -dim.wid));
+
+	Length height = Length(to_ascii(getParam("height")));
+	height_ = height.inPixels(dim.height(), fm.width(char_type('M')));
+
+	// get the length of the parameters in pixels
+	Length offset = Length(to_ascii(getParam("offset")));
+	offset_ = offset.inPixels(max_width, fm.width(char_type('M')));
+
+	dim.asc = max(fm.maxAscent(), offset_ + height_/2);
+	dim.des = max(fm.maxDescent(), height_/2 - offset_);
 
 	// Cache the inset dimension
 	setDimCache(mi, dim);
@@ -136,27 +144,23 @@ Dimension const InsetLine::dimension(BufferView const & bv) const
 void InsetLine::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
-	int const max_width = dim.width();
-
-	frontend::FontMetrics const & fm = theFontMetrics(pi.base.font);
-
-	Length height = Length(to_ascii(getParam("height")));
-	int const h = height.inPixels(dim.height(), fm.width(char_type('M')));
-
-	// get the length of the parameters in pixels
-	Length offset = Length(to_ascii(getParam("offset")));
-	int o = offset.inPixels(max_width, fm.width(char_type('M')));
 
 	// check that it doesn't exceed the upper boundary
-	if (y - o - h/2 < 0)
-		o = y - h/2 - 2;
+	// FIXME: not sure this should be done...
+	if (y - offset_ - height_/2 < 0)
+		offset_ = y - height_/2 - 2;
 
 	// get the surrounding text color
 	Color Line_color = pi.base.font.realColor();
 
 	// the offset is a vertical one
-	pi.pain.line(x + 1, y - o - h/2, x + dim.wid - 2, y - o - h/2,
-		Line_color, Painter::line_solid, float(h));
+	// the horizontal dimension must be corrected with the heigth because
+	// of left and right border of the painted line for big heigth.
+	pi.pain.line(x + height_/2 + 1,
+		     y - offset_ - height_/2,
+		     x + dim.wid - height_/2 - 2,
+		     y - offset_ - height_/2,
+		     Line_color, Painter::line_solid, float(height_));
 }
 
 

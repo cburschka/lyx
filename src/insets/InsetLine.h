@@ -60,6 +60,9 @@ private:
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	///
 	Inset * clone() const { return new InsetLine(*this); }
+	///
+	mutable int height_;
+	mutable int offset_;
 };
 
 
