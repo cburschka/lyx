@@ -145,11 +145,6 @@ void InsetLine::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
 
-	// check that it doesn't exceed the upper boundary
-	// FIXME: not sure this should be done...
-	if (y - offset_ - height_/2 < 0)
-		offset_ = y - height_/2 - 2;
-
 	// get the surrounding text color
 	Color Line_color = pi.base.font.realColor();
 
