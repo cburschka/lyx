@@ -462,7 +462,7 @@ Paragraph::Private::Private(Private const & p, Paragraph * owner)
 	: owner_(owner), inset_owner_(p.inset_owner_), fontlist_(p.fontlist_),
 	  params_(p.params_), changes_(p.changes_), insetlist_(p.insetlist_),
 	  begin_of_body_(p.begin_of_body_), text_(p.text_), words_(p.words_),
-	  layout_(p.layout_), speller_state_(p.speller_state_)
+	  layout_(p.layout_)
 {
 	id_ = ++paragraph_id;
 	requestSpellCheck(p.text_.size());
@@ -475,7 +475,7 @@ Paragraph::Private::Private(Private const & p, Paragraph * owner,
 	  params_(p.params_), changes_(p.changes_),
 	  insetlist_(p.insetlist_, beg, end),
 	  begin_of_body_(p.begin_of_body_), words_(p.words_),
-	  layout_(p.layout_), speller_state_(p.speller_state_)
+	  layout_(p.layout_)
 {
 	id_ = ++paragraph_id;
 	if (beg >= pos_type(p.text_.size()))
