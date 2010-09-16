@@ -1771,16 +1771,16 @@
 #0x2321 ""                         "" "" # BOTTOM HALF INTEGRAL
 0x2328 "\\Keyboard"               "marvosym" "" # KEYBOARD
 # missing Qt keysequences (MacSpecialKey)
-0x238b "{\\setlength{\\fboxsep}{0.8pt}\\fbox{\\setlength{\\fboxsep}{2pt}\\fbox{Escape}}}"    "" "" "" # Qt::Key_Escape
-0x21e5 "{\\setlength{\\fboxsep}{0.8pt}\\fbox{\\setlength{\\fboxsep}{2pt}\\fbox{Tab}}}"       "" "" "" # Qt::Key_Tab
-0x21e4 "{\\setlength{\\fboxsep}{0.8pt}\\fbox{\\setlength{\\fboxsep}{2pt}\\fbox{Backtab}}}"   "" "" "" # Qt::Key_Backtab
-0x232b "{\\setlength{\\fboxsep}{0.8pt}\\fbox{\\setlength{\\fboxsep}{2pt}\\fbox{Backspace}}}" "" "" "" # Qt::Key_Backspace
-0x2326 "{\\setlength{\\fboxsep}{0.8pt}\\fbox{\\setlength{\\fboxsep}{2pt}\\fbox{Delete}}}"    "" "" "" # Qt::Key_Delete
-0x2196 "{\\setlength{\\fboxsep}{0.8pt}\\fbox{\\setlength{\\fboxsep}{2pt}\\fbox{Home}}}"      "" "" "" # Qt::Key_Home
-0x2198 "{\\setlength{\\fboxsep}{0.8pt}\\fbox{\\setlength{\\fboxsep}{2pt}\\fbox{End}}}"       "" "" "" # Qt::Key_End
-0x21de "{\\setlength{\\fboxsep}{0.8pt}\\fbox{\\setlength{\\fboxsep}{2pt}\\fbox{PageUp}}}"    "" "" "" # Qt::Key_PageUp
-0x21df "{\\setlength{\\fboxsep}{0.8pt}\\fbox{\\setlength{\\fboxsep}{2pt}\\fbox{PageDown}}}"  "" "" "" # Qt::Key_PageDown
-0x21ea "{\\setlength{\\fboxsep}{0.8pt}\\fbox{\\setlength{\\fboxsep}{2pt}\\fbox{CapsLock}}}"  "" "" "" # Qt::Key_CapsLock
+0x238b "{\\setlength{\\fboxsep}{0.1ex}\\fbox{\\setlength{\\fboxsep}{0.3ex}\\fbox{Escape}}}"    "" "" "" # Qt::Key_Escape
+0x21e5 "{\\setlength{\\fboxsep}{0.1ex}\\fbox{\\setlength{\\fboxsep}{0.3ex}\\fbox{Tab}}}"       "" "" "" # Qt::Key_Tab
+0x21e4 "{\\setlength{\\fboxsep}{0.1ex}\\fbox{\\setlength{\\fboxsep}{0.3ex}\\fbox{Backtab}}}"   "" "" "" # Qt::Key_Backtab
+0x232b "{\\setlength{\\fboxsep}{0.1ex}\\fbox{\\setlength{\\fboxsep}{0.3ex}\\fbox{Backspace}}}" "" "" "" # Qt::Key_Backspace
+0x2326 "{\\setlength{\\fboxsep}{0.1ex}\\fbox{\\setlength{\\fboxsep}{0.3ex}\\fbox{Delete}}}"    "" "" "" # Qt::Key_Delete
+0x2196 "{\\setlength{\\fboxsep}{0.1ex}\\fbox{\\setlength{\\fboxsep}{0.3ex}\\fbox{Home}}}"      "" "" "" # Qt::Key_Home
+0x2198 "{\\setlength{\\fboxsep}{0.1ex}\\fbox{\\setlength{\\fboxsep}{0.3ex}\\fbox{End}}}"       "" "" "" # Qt::Key_End
+0x21de "{\\setlength{\\fboxsep}{0.1ex}\\fbox{\\setlength{\\fboxsep}{0.3ex}\\fbox{PageUp}}}"    "" "" "" # Qt::Key_PageUp
+0x21df "{\\setlength{\\fboxsep}{0.1ex}\\fbox{\\setlength{\\fboxsep}{0.3ex}\\fbox{PageDown}}}"  "" "" "" # Qt::Key_PageDown
+0x21ea "{\\setlength{\\fboxsep}{0.1ex}\\fbox{\\setlength{\\fboxsep}{0.3ex}\\fbox{CapsLock}}}"  "" "" "" # Qt::Key_CapsLock
 
 #
 # control pictures
