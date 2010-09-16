@@ -87,10 +87,12 @@ while [ $# -gt 0 ]; do
 		;;
 	--aspell-deployment=*)
 		aspell_deployment=`echo ${1}|cut -d= -f2`
+		aspell_dictionaries=$aspell_deployment
 		shift
 		;;
 	--hunspell-deployment=*)
 		hunspell_deployment=`echo ${1}|cut -d= -f2`
+		hunspell_dictionaries=$hunspell_deployment
 		shift
 		;;
 	--thesaurus-deployment=*)
@@ -773,6 +775,7 @@ test -n "${DMGLocation}" && (
 	make_dmg "${DMGLocation}"
 	if [ -d "${QtInstallDir}/lib/QtCore.framework/Versions/${QtFrameworkVersion}" -a "yes" = "${qt4_deployment}" ]; then
 		rm -f "${DMGLocation}/${DMGNAME}+qt4.dmg"
+		echo move to "${DMGLocation}/${DMGNAME}+qt4.dmg"
 		mv "${DMGLocation}/${DMGNAME}.dmg" "${DMGLocation}/${DMGNAME}+qt4.dmg"
 		#for libnm in ${QtLibraries} ; do
 		#	fwdir=`framework_name "$libnm"`
