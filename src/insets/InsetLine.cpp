@@ -125,8 +125,8 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 	Length offset = Length(to_ascii(getParam("offset")));
 	offset_ = offset.inPixels(max_width, fm.width(char_type('M')));
 
-	dim.asc = max(fm.maxAscent(), offset_ + height_/2);
-	dim.des = max(fm.maxDescent(), height_/2 - offset_);
+	dim.asc = max(fm.maxAscent(), offset_ + height_);
+	dim.des = max(fm.maxDescent(), - offset_);
 
 	// Cache the inset dimension
 	setDimCache(mi, dim);
