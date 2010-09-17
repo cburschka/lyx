@@ -3488,8 +3488,14 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 		// Ignore words with digits
 		// FIXME: make this customizable
 		// (note that some checkers ignore words with digits by default)
-		if (!hasDigit(word))
+		if (!hasDigit(word)) {
+			bool const trailing_dot = to < size() && d->text_[to] == '.';
 			result = speller->check(wl);
+			if (SpellChecker::misspelled(result) && trailing_dot) {
+				word = word.append(from_ascii("."));
+				result = speller->check(wl);
+			}
+		}
 		d->setMisspelled(from, to, result);
 	} else {
 		result = d->speller_state_.getState(from);
