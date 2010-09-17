@@ -1246,6 +1246,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	docPS->addPanel(latexModule, qt_("Document Class"));
 	docPS->addPanel(masterChildModule, qt_("Child Documents"));
 	docPS->addPanel(modulesModule, qt_("Modules"));
+	docPS->addPanel(localLayout, qt_("Local Layout"));
 	docPS->addPanel(fontModule, qt_("Fonts"));
 	docPS->addPanel(textLayoutModule, qt_("Text Layout"));
 	docPS->addPanel(pageLayoutModule, qt_("Page Layout"));
@@ -1263,7 +1264,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 	docPS->addPanel(branchesModule, qt_("Branches"));
 	docPS->addPanel(outputModule, qt_("Output"));
 	docPS->addPanel(preambleModule, qt_("LaTeX Preamble"));
-	docPS->addPanel(localLayout, qt_("Local Layout"));
 	docPS->setCurrentPanel(qt_("Document Class"));
 // FIXME: hack to work around resizing bug in Qt >= 4.2
 // bug verified with Qt 4.2.{0-3} (JSpitzm)
