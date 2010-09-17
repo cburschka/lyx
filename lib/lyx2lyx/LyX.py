@@ -521,16 +521,16 @@ class LyX_base:
 
     def convert(self):
         "Convert from current (self.format) to self.end_format."
-        mode, convertion_chain = self.chain()
-        self.warning("convertion chain: " + str(convertion_chain), 3)
+        mode, conversion_chain = self.chain()
+        self.warning("conversion chain: " + str(conversion_chain), 3)
 
-        for step in convertion_chain:
+        for step in conversion_chain:
             steps = getattr(__import__("lyx_" + step), mode)
 
             self.warning("Convertion step: %s - %s" % (step, mode),
                          default_debug__ + 1)
             if not steps:
-                self.error("The convertion to an older "
+                self.error("The conversion to an older "
                 "format (%s) is not implemented." % self.format)
 
             multi_conv = len(steps) != 1
@@ -563,7 +563,7 @@ class LyX_base:
 
     def chain(self):
         """ This is where all the decisions related with the
-        convertion are taken.  It returns a list of modules needed to
+        conversion are taken.  It returns a list of modules needed to
         convert the LyX file from self.format to self.end_format"""
 
         self.start =  self.format
