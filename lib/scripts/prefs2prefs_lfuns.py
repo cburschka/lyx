@@ -52,19 +52,50 @@ def optional_insert(line):
 	return simple_renaming(line, "argument-insert", "optional-insert")
 
 
-re_nm = re.compile(r'^(.*)notes-mutate\s+(\w+)\s+(\w+)(.*)')
+re_nm = re.compile(r'^(.*)notes-mutate\s+(\w+)\s+(\w+)(.*)$')
 def notes_mutate(line):
 	m = re_nm.search(line)
 	if not m:
 		return no_match
 
-	prerix = m.group(1)
+	prefix = m.group(1)
 	source = m.group(2)
 	target = m.group(3)
 	suffix = m.group(4)
 	newline = prefix + "inset-forall Note:" + source + \
 		" inset-modify note Note " + target + suffix
 	return (True, newline)
+
+
+re_ait = re.compile(r'^(.*)all-insets-toggle\s+(\w+)(?:\s+(\w+))?(.*)$')
+def all_insets_toggle(line):
+	m = re_ait.search(line)
+	if not m:
+		return no_match
+
+	prefix = m.group(1)
+	action = m.group(2)
+	target = m.group(3) 
+	suffix = m.group(4)
+
+	# we need to transform the target to match the inset layout names
+	# this will not be perfect
+	if target == "ert":
+		target = "ERT"
+	elif target == None:
+		target = "*"
+	elif target == "tabular":
+		# There does not seem to be an InsetLayout for tables, so
+		# I do not know what to do here. If anyone does, then please
+		# fix this. For now, we just have to remove this line.
+		return (True, "")
+	else:
+		target = target.capitalize()
+	
+	newline = prefix + "inset-forall " + target + " inset-toggle " + \
+		action + suffix
+	return (True, newline)
+
 
 
 #
@@ -79,7 +110,8 @@ conversions = [
 		next_inset_toggle,
 		next_inset_modify,
 		optional_insert,
-		notes_mutate
+		notes_mutate,
+		all_insets_toggle
 	] # end conversions for format 0
 ]
 
