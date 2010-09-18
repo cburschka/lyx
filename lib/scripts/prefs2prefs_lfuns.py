@@ -108,6 +108,10 @@ def line_insert(line):
 	return (True, newline)
 
 
+def toc_insert(line):
+	return simple_renaming(line, "toc-insert", "inset-insert toc")
+
+
 #
 #
 ###########################################################
@@ -122,7 +126,8 @@ conversions = [
 		optional_insert,
 		notes_mutate,
 		all_insets_toggle,
-		line_insert
+		line_insert,
+		toc_insert
 	] # end conversions for format 0
 ]
 
