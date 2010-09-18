@@ -118,8 +118,13 @@ The following LyX functions have been removed:
   like "note" in the first case and "Note" in the second.
 
 - LFUN_TABULAR_FEATURE ("tabular-feature"): use "inset-modify" instead.
+  I.e., "tabular-feature FEATURE <ARGS>" becomes:
+    inset-modify tabular FEATURE <ARGS>
 
-- LFUN_LINE_INSERT ("line-insert"): use "inset-insert line" instead.
+- LFUN_LINE_INSERT ("line-insert"): use "inset-insert line" instead. For
+  something close to the previous default, use:
+    inset-insert line rule height 0.25ex width 100col% \\end_inset
+  This is necessary because the line inset now takes various arguments.
 
 - LFUN_TOC_INSERT ("toc-insert"): use "inset-insert toc" instead.
 
