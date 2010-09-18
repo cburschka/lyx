@@ -31,10 +31,11 @@ current_format = 1
 # where the bool indicates whether we changed anything. In 
 # that case, one normally returns: (False, []).
 
+no_match = (False, [])
 
 def simple_renaming(line, old, new):
 	if line.find(old) == -1:
-		return (False, [])
+		return no_match
 	line = line.replace(old, new)
 	return (True, line)
 
@@ -47,6 +48,25 @@ def next_inset_toggle(line):
 	return simple_renaming(line, "next-inset-toggle", "inset-toggle")
 
 
+def optional_insert(line):
+	return simple_renaming(line, "argument-insert", "optional-insert")
+
+
+re_nm = re.compile(r'^(.*)notes-mutate\s+(\w+)\s+(\w+)(.*)')
+def notes_mutate(line):
+	m = re_nm.search(line)
+	if not m:
+		return no_match
+
+	prerix = m.group(1)
+	source = m.group(2)
+	target = m.group(3)
+	suffix = m.group(4)
+	newline = prefix + "inset-forall Note:" + source + \
+		" inset-modify note Note " + target + suffix
+	return (True, newline)
+
+
 #
 #
 ###########################################################
@@ -57,7 +77,9 @@ def next_inset_toggle(line):
 conversions = [
 	[ # this will be a long list of conversions for format 0
 		next_inset_toggle,
-		next_inset_modify
+		next_inset_modify,
+		optional_insert,
+		notes_mutate
 	] # end conversions for format 0
 ]
 
