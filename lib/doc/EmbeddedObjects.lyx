@@ -26992,7 +26992,7 @@ reference "sec:Decoration"
 
 \end_inset
 
-, to prevent words to be hyphenated, see section
+, to prevent words from being hyphenated, see section
 \begin_inset space ~
 \end_inset
 
@@ -27056,8 +27056,13 @@ Box (Minipage)
 \end_inset
 
  will be inserted.
- The box type can be specified by right-clicking on the box.
- The appearing box dialog offers the 
+ The box type can be specified by right-clicking on the box and selecting
+ 
+\family sans
+Settings
+\family default
+.
+ The box dialog offers the 
 \family sans
 Inner
 \begin_inset space ~
@@ -27853,8 +27858,8 @@ break When you use the decoration
 simple rectangular frame
 \family default
  and no inner box, you can allow page breaks within a box.
- Note that then, in contrary to other framed boxes, the frame always uses
- the whole column width, the box is set as its own paragraph, and 
+ Note that then, unlike other framed boxes, the frame always uses the whole
+ column width, the box is set as its own paragraph, and 
 \series bold
 
 \backslash
@@ -28017,8 +28022,8 @@ Shaded
 \begin_inset space ~
 \end_inset
 
-background This draws a box with red background color.
- In contrary to colored boxes
+background This draws a box with a red background.
+ Unlike colored boxes
 \begin_inset Foot
 status collapsed
 
@@ -28318,7 +28323,7 @@ sets the value to 10
 \begin_inset space \thinspace{}
 \end_inset
 
-pt, like for the following box:
+pt, as with the following box:
 \end_layout
 
 \begin_layout Standard
@@ -29185,9 +29190,8 @@ Boxes ! Parboxes
 
 \begin_layout Standard
 Parboxes are very similar to minipages with the difference that they cannot
- have footnotes.
- The main difference to minipages is that minipages are in contrary to parboxes
- no real boxes but LaTeX-environments.
+ have footnotes, because minipages, unlike parboxes, are not real boxes
+ but LaTeX-environments.
 \end_layout
 
 \begin_layout Standard
@@ -29264,7 +29268,7 @@ Boxes ! to Prevent Hyphenation
 \end_layout
 
 \begin_layout Standard
-You can use a special kind of boxes to prevent words or text to be hyphenated.
+You can use a special kind of box to prevent words or text from being hyphenated.
 \begin_inset Newline newline
 \end_inset
 
@@ -29305,7 +29309,7 @@ mbox{
 
 \begin_layout Standard
 in TeX-Code before the word.
- Behind the word insert a closing brace 
+ After the word insert a closing brace 
 \begin_inset Quotes eld
 \end_inset
 
@@ -29506,8 +29510,8 @@ With the help of the command
 \backslash
 raisebox
 \series default
- you can align words, characters or other boxes vertically to the surrounding
- text.
+ you can align words, characters or other boxes vertically relative to the
+ surrounding text.
  
 \series bold
 
@@ -29570,7 +29574,7 @@ depth}{
 
 \begin_layout Standard
 in TeX-Code before the word.
- Behind the word insert a closing brace 
+ After the word insert a closing brace 
 \begin_inset Quotes eld
 \end_inset
 
@@ -29624,7 +29628,7 @@ status collapsed
 
 \end_inset
 
- as raised word.
+ as a raised word.
 \end_layout
 
 \begin_layout Standard
@@ -29670,7 +29674,7 @@ status collapsed
 
 \end_inset
 
- as lowered word.
+ as a lowered word.
 \begin_inset Newline newline
 \end_inset
 
@@ -29706,7 +29710,7 @@ status collapsed
 
 \end_inset
 
- as raised word.
+ as a raised word.
 \end_layout
 
 \begin_layout Standard
@@ -29760,7 +29764,7 @@ status collapsed
 
 \end_inset
 
- as lowered word.
+ as a lowered word.
 \begin_inset Newline newline
 \end_inset
 
@@ -29796,7 +29800,7 @@ status collapsed
 
 \end_inset
 
- as raised word.
+ as a raised word.
 \end_layout
 
 \begin_layout Section
@@ -29893,12 +29897,12 @@ The package
 \series bold
 color
 \series default
- will be loaded automatically by LyX when you color text
+ will be loaded automatically by LyX when you color text.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-To avoid that it is loaded twice the command 
+To avoid it being loaded twice the command 
 \series bold
 
 \backslash
@@ -29909,7 +29913,7 @@ To avoid that it is loaded twice the command
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -30019,7 +30023,7 @@ colorbox{red}{
 
 \begin_layout Standard
 before the word in TeX-Code.
- Behind the word insert a closing brace 
+ After the word insert a closing brace 
 \begin_inset Quotes eld
 \end_inset
 
@@ -30078,7 +30082,7 @@ status collapsed
 \begin_inset VSpace bigskip
 \end_inset
 
-If you would have the box frame in a different color, you can use the command
+If you would like the box frame in a different color, you can use the command
  
 \series bold
 
@@ -30329,7 +30333,7 @@ colorbox{color}{
 
 \begin_layout Standard
 in TeX-Code.
- Behind the minipage insert a closing brace 
+ After the minipage insert a closing brace 
 \begin_inset Quotes eld
 \end_inset
 
@@ -30686,12 +30690,12 @@ b
 \emph on
 t
 \emph default
- (top), and also expedient combinations of the four base positions.
+ (top), along with meaningful combinations of the four base positions.
  For example 
 \emph on
 lt
 \emph default
- means, that the rotation origin is at the top left corner of the box.
+ means that the rotation origin is at the top left corner of the box.
  When no rotation origin is specified, the position 
 \emph on
 l
@@ -31026,7 +31030,7 @@ scalebox{horizontal}[vertical]{box content}
 \begin_layout Standard
 Horizontal and vertical are the corresponding scaling factors.
  If no vertical scaling factor is given, the horizontal factor will also
- be used as vertical one.
+ be used as the vertical one.
 \end_layout
 
 \begin_layout Standard
@@ -31060,7 +31064,7 @@ status collapsed
 
 \end_inset
 
-, compared to the document text size.
+, compared with the document text size.
 \end_layout
 
 \begin_layout Standard
@@ -31070,7 +31074,7 @@ status collapsed
 \backslash
 scalebox{2}[1]{Hello}
 \series default
- in contrary distorts the 
+ on the other hand distorts the 
 \begin_inset ERT
 status collapsed
 
@@ -31098,7 +31102,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-If a the scaling factor is negative, the box content will be mirrored.
+If the scaling factor is negative, the box content will be mirrored.
  Therefore the command 
 \series bold
 
@@ -31209,7 +31213,7 @@ resizebox{width}{height}{box content}
 \end_layout
 
 \begin_layout Standard
-Is one of the two command arguments given as exclamation mark 
+If one of the two command arguments given is an exclamation mark 
 \series bold
 !
 \series default
@@ -31566,7 +31570,7 @@ fleqn
 
 \end_inset
 
-, also display formulas can be scaled.
+, display style formulas can also be scaled.
 \end_layout
 
 \begin_layout Chapter
@@ -31607,8 +31611,8 @@ Plain
 \begin_inset space ~
 \end_inset
 
-Text A text document; every of its text lines is inserted to your document
- as own paragraph.
+Text A text document; each line is inserted in your document as a separate
+ paragraph.
 \end_layout
 
 \begin_layout Description
@@ -31624,8 +31628,8 @@ Join
 \begin_inset space ~
 \end_inset
 
-Lines A text document; its text lines are inserted as they are.
- Empty text lines creates a new paragraph in your document.
+Lines A text document; text lines are inserted in your document continuously
+ but an empty text line creates a new paragraph.
 \end_layout
 
 \begin_layout Description
@@ -31659,11 +31663,12 @@ External Document Parts ! External Material
 \end_layout
 
 \begin_layout Standard
-The external material feature allows you to insert files to your document
- without converting them previously to a format that can be read by the
- document output format because LyX takes care of needed conversions.
+The external material feature allows you to insert files in to your document
+ without converting them to a format that can be read by the document output
+ format.
+ LyX takes care of the necessary conversions.
  This is similar to images that can be inserted in various image formats
- to LyX documents.
+ in LyX documents.
  When you have enabled Instant Preview in LyX's preferences under 
 \family sans
 Look
@@ -31677,7 +31682,7 @@ and
 feel\SpecialChar \menuseparator
 Graphics
 \family default
-, the external material types Dia and Xfig is directly shown in LyX.
+, the external material types Dia and Xfig are directly shown in LyX.
 \end_layout
 
 \begin_layout Standard
@@ -31859,7 +31864,7 @@ reference "sec:Graphics-Dialog"
 \end_inset
 
 .
- The difference is that only raster images are allowed, that means that
+ The difference is that only raster images are allowed; that means that
  PDF and EPS-images are not supported.
 \end_layout
 
@@ -32104,7 +32109,7 @@ External Material
 \begin_inset Newline newline
 \end_inset
 
-External material is displayed in LyX either as box like this: 
+External material is displayed in LyX either as a box like this: 
 \begin_inset Graphics
 	filename clipart/ExternalMaterialQt4.png
 	scale 85
@@ -32171,12 +32176,12 @@ Child documents are used when you have a long document consisting of several
  the document in several files that can be revised separately.
  The different documents are then the so called child documents and a master
  document connects them to print the full document or parts of it.
- A child documents inherits contents of its master, for example the LaTeX
+ A child documents inherits elements of its master, for example the LaTeX
  preamble, the bibliography, and labels for cross-references.
 \end_layout
 
 \begin_layout Standard
-To be able to work on child documents without the need to open its master,
+To be able to work on child documents without the need to open their master,
  specify in the child document the master in the menu
 \family sans
  Document\SpecialChar \menuseparator
@@ -32201,7 +32206,7 @@ Included documents are displayed in LyX as a box like this:
 
 \end_inset
 
- To include child documents to a master document use the menu 
+ To include child documents in a master document use the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 File\SpecialChar \menuseparator
@@ -32226,7 +32231,7 @@ Load
 Child Document
 \family default
  dialog, the included documents will be opened in LyX in a new file tab
- so that you can modify it.
+ so that you can modify them.
 \begin_inset Newline newline
 \end_inset
 
@@ -32252,7 +32257,7 @@ filename "DummyDocument1.lyx"
 The section numbering includes the sections of the included files in the
  order they are inserted in the master document.
  The included example document has for example a subsection that is numbered
- as subsection of this section.
+ as a subsection of this section.
  Labels of included documents can be referenced: Subsection
 \begin_inset space ~
 \end_inset
@@ -32268,17 +32273,17 @@ reference "sub:External-Subsection-1"
 \end_layout
 
 \begin_layout Standard
-The preamble of the child document is ignored, only the preamble of the
+The preamble of the child document is ignored; only the preamble of the
  master document is used.
  Branches in child documents will be ignored by the master document when
  the master document does not have a branch with the same name.
- Included documents are inserted starting on a new page and end with a page
- break.
+ Included documents are inserted starting on a new page and ending with
+ a page break.
 \end_layout
 
 \begin_layout Standard
-In case you are only working on a certain chapter of a large document and
- want to save compiling time, you can put each included file into a branch.
+If you are only working on a certain chapter of a large document and want
+ to save compiling time, you can put each included file into a branch.
 \begin_inset Foot
 status collapsed
 
@@ -32315,8 +32320,8 @@ Note:
 \backslash
 includeonly
 \series default
- can currently not be used as alternative to decide what files should be
- included.
+ can currently not be used as an alternative to decide what files should
+ be included.
 \end_layout
 
 \end_inset
@@ -32334,8 +32339,8 @@ status open
 Note:
 \series default
  When you have included a LyX- or LaTeX-file, you are warned when you export/vie
-w the document in case that the child document uses another document class
- than the master document as this will lead to unexpected outputs.
+w the document in case the child document uses another document class than
+ the master document as this will lead to unexpected outputs.
 \end_layout
 
 \end_inset
@@ -32406,7 +32411,7 @@ filename "DummyDocument2.lyx"
 
 \begin_layout Description
 Verbatim With this method every text file can be included.
- The file is shown in the output with its source code, no command used in
+ The file is shown in the output with its source code; no command used in
  the text is invoked.
  You can use the option 
 \family sans
@@ -32434,7 +32439,7 @@ textvisiblespace
 \end_inset
 
  for every space character in the source code.
- The difference to the method via the menu 
+ The difference from the method via the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 File\SpecialChar \menuseparator
@@ -32601,8 +32606,8 @@ LaTeX-packages ! listings
 
 \end_inset
 
- provides a powerful and flexible way to insert program source code to your
- document.
+ provides a powerful and flexible way to insert program source code into
+ your document.
 \end_layout
 
 \begin_layout Standard
@@ -32866,7 +32871,7 @@ Line
 numbering
 \family default
  of the listings dialog you can specify the line numbering style.
- You can insert a number to specify which lines are numbered to the field
+ You can insert a number to specify which lines are numbered in the field
  
 \family sans
 Step
@@ -32892,7 +32897,7 @@ g.
 \end_layout
 
 \begin_layout Standard
-You can furthermore specify a range of lines, only these will then appear
+You can furthermore specify a range of lines; only these will then appear
  in the output.
  The option 
 \family sans
@@ -33852,7 +33857,7 @@ status open
 \series bold
 Note:
 \series default
- DVI-files doesn't contain images, they will only be a linked.
+ DVI-files do not contain images; they will only be a linked.
 \end_layout
 
 \end_inset
@@ -33862,10 +33867,10 @@ Note:
 .dvi
 \family default
  file to another computer.
- This property can also slow down your computer when you view the DVI.
- Because the DVI-viewer has to convert the image in the background to make
- it visible when you scroll in the DVI.
- So we recommend to use PDF for files with many images.
+ This property can also slow down your computer when you view the DVI, because
+ the DVI-viewer has to convert the image in the background to make it visible
+ when you scroll in the DVI.
+ So it is recommended that you use PDF for files with many images.
 \end_layout
 
 \begin_layout Standard
@@ -33962,10 +33967,10 @@ This file type has the extension
 \family typewriter
 Adobe
 \family default
- as printer language.
- The file contains therefore commands that the printer uses to print the
+ as a printer language.
+ The file therefore contains commands that the printer uses to print the
  file.
- PostScript can be seen as 
+ PostScript can be seen as a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -34023,8 +34028,19 @@ Encapsulated PostScript
 ).
  As LyX allows you to use any known image format in your document, it has
  to convert images in the background to EPS.
- If you have e.g 50 images in your document, LyX has to do 50 conversions
- whenever you view or export your document.
+ If you have e.g.
+\begin_inset space ~
+\end_inset
+
+50
+\begin_inset space ~
+\end_inset
+
+images in your document, LyX has to do 50
+\begin_inset space ~
+\end_inset
+
+conversions whenever you view or export your document.
  This will slow down your work flow with LyX drastically.
  So if you plan to use PostScript, you can insert your images directly as
  EPS to avoid this problem.
@@ -34099,12 +34115,12 @@ Portable Document Format
 \begin_inset Quotes erd
 \end_inset
 
- (PDF) is developed by 
+ (PDF) was developed by 
 \family typewriter
 Adobe
 \family default
- as derivative from PostScript.
- It is more compressed and it uses much less commands than PostScript.
+ as a derivative of PostScript.
+ It is more compressed and it uses fewer commands than PostScript.
  As the name 
 \begin_inset Quotes eld
 \end_inset
@@ -34175,7 +34191,8 @@ Portable Network Graphics
  in the background to one of these formats.
  But as described in the section about PostScript, the image conversion
  will slow down your work flow.
- So it is recommended to use images in one of the three mentioned formats.
+ So it is recommended that you use images in one of the three mentioned
+ formats.
 \end_layout
 
 \begin_layout Standard
@@ -34202,7 +34219,7 @@ ps2pdf
 dvips
 \family default
  which uses a DVI-version as intermediate step.
- So this export variant consist of three conversions.
+ So this export variant consists of three conversions.
 \end_layout
 
 \begin_layout Description
@@ -34231,7 +34248,7 @@ pdftex
 \end_layout
 
 \begin_layout Standard
-It is recommended to use 
+It is recommended that you use 
 \family sans
 PDF
 \begin_inset space ~
@@ -34243,8 +34260,7 @@ PDF
 \family typewriter
 pdftex
 \family default
- supports all features of actual PDF-versions, is quick and works stable
- without problems.
+ supports all features of actual PDF-versions, is quick and works stable.
  The program 
 \family typewriter
 dvipdfm
@@ -34303,7 +34319,7 @@ name "cha:Explanation-of-Equation"
 \end_layout
 
 \begin_layout Standard
-The total width of 
+We can calculate the total width of 
 \emph on
 n
 \emph default
@@ -34311,7 +34327,7 @@ n
 \begin_inset Formula $W_{\mathrm{tot\, n}}$
 \end_inset
 
- can be calculated to
+ as follows:
 \end_layout
 
 \begin_layout Standard
@@ -34320,27 +34336,22 @@ W_{\mathrm{tot}\, n}=n\cdot(W_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cd
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Where 
+where 
 \begin_inset Formula $W_{g\, n}$
 \end_inset
 
- is the given width of all cells.
- 
+ is the given width of all cells, 
 \series bold
 
 \backslash
 tabcolsep
 \series default
- is the LaTeX-length between the cell text and the cell border, its default
+ is the LaTeX-length between the cell text and the cell border (its default
  value is 6
 \begin_inset space \thinspace{}
 \end_inset
 
-pt.
+pt).
  
 \series bold
 
