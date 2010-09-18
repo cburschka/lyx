@@ -133,6 +133,10 @@ def paragraph_spacing(line):
 	return (True, newline)
 
 
+def tabular_feature(line):
+	return simple_renaming(line, "tabular-feature", "inset-modify tabular")
+
+
 #
 #
 ###########################################################
@@ -149,7 +153,8 @@ conversions = [
 		all_insets_toggle,
 		line_insert,
 		toc_insert,
-		paragraph_spacing
+		paragraph_spacing,
+		tabular_feature
 	] # end conversions for format 0
 ]
 
