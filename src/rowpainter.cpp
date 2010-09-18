@@ -348,7 +348,7 @@ void RowPainter::paintForeignMark(double orig_x, Language const * lang,
 void RowPainter::paintMisspelledMark(double orig_x, int desc)
 {
 	int const y = yo_ + desc;
-	pi_.pain.line(int(orig_x), y, int(x_), y, Color_red, Painter::line_onoffdash, 0.5);
+	pi_.pain.line(int(orig_x), y, int(x_), y, Color_red, Painter::line_onoffdash, 1.0);
 }
 
 
