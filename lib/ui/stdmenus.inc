@@ -348,6 +348,7 @@ Menuset
 		Submenu "Branch|B" "insert_branches"
 		Submenu "Custom Insets" "insert_custom"
 		Submenu "File|e" "insert_file"
+		OptSubMenu "Insert Regular Expression" "context-edit-regexp"
 		Item "Box[[Menu]]" "box-insert Frameless"
 		Separator
 		Item "Citation...|C" "dialog-show-new-inset citation"
