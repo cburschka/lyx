@@ -1,4 +1,4 @@
-#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -12366,7 +12366,7 @@ System
 \begin_inset Text
 
 \begin_layout Plain Layout
-Medipix
+Chip
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -12379,7 +12379,7 @@ Medipix
 \begin_inset Text
 
 \begin_layout Plain Layout
-Medipix
+Chip
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -12428,7 +12428,7 @@ cmidrule(l){3-4}
 
 \end_inset
 
-Detector thickness [µm]
+Detector thickness in µm
 \end_layout
 
 \end_inset
@@ -12466,7 +12466,7 @@ Detector thickness [µm]
 \begin_inset Text
 
 \begin_layout Plain Layout
-Edge angle [°]
+Edge angle in °
 \end_layout
 
 \end_inset
@@ -12504,7 +12504,7 @@ Edge angle [°]
 \begin_inset Text
 
 \begin_layout Plain Layout
-Spatial resolution [µm]
+Spatial resolution in µm
 \end_layout
 
 \end_inset
@@ -13175,7 +13175,7 @@ System
 \begin_inset Text
 
 \begin_layout Plain Layout
-Medipix
+Chip
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -13188,7 +13188,7 @@ Medipix
 \begin_inset Text
 
 \begin_layout Plain Layout
-Medipix
+Chip
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -13263,7 +13263,7 @@ cmidrule{2-4}
 
 \end_inset
 
-Detector thickness [µm]
+Detector thickness in µm
 \end_layout
 
 \end_inset
@@ -13301,7 +13301,7 @@ Detector thickness [µm]
 \begin_inset Text
 
 \begin_layout Plain Layout
-Edge angle [°]
+Edge angle in °
 \end_layout
 
 \end_inset
@@ -13339,7 +13339,7 @@ Edge angle [°]
 \begin_inset Text
 
 \begin_layout Plain Layout
-Spatial resolution [µm]
+Spatial resolution in µm
 \end_layout
 
 \end_inset
@@ -26819,7 +26819,14 @@ Cuadro (Minipágina)
 \end_inset
 
 .
- El tipo de cuadro se puede elegir al hacer clic derecho sobre él.
+ El tipo de cuadro se puede elegir al hacer clic derecho sobre él y 
+\lang english
+selecting 
+\family sans
+Settings
+\family default
+\lang spanish
+.
  Sale un diálogo en el que 
 \family sans
 Cuadro
