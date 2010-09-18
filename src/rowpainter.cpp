@@ -103,9 +103,6 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 	// requires a full repaint
 	bool pi_full_repaint = pi_.full_repaint;
 
-	// FIXME: text_metrics_.width() is only about 1.0857 * mi.base.textwidth
-	pi_.base.textwidth = text_metrics_.width();
-
 	// FIXME: We should always use font, see documentation of
 	// noFontChange() in Inset.h.
 	pi_.base.font = inset->noFontChange() ?
