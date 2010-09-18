@@ -112,6 +112,27 @@ def toc_insert(line):
 	return simple_renaming(line, "toc-insert", "inset-insert toc")
 
 
+re_ps = re.compile(r'^(.*)paragraph-spacing\s+(default|single|onehalf|double)\b(.*)$')
+re_psother = re.compile(r'^(.*)paragraph-spacing\s+other\s+(\d+\.\d?|\d?\.\d+|\d+)(.*)$')
+def paragraph_spacing(line):
+	# possible args: default, single, onehalf, double, other FLOAT
+	m = re_ps.search(line)
+	if m:
+		arg = m.group(2)
+		newline = m.group(1) + "paragraph-params \\paragraph-spacing " + arg + \
+			m.group(3)
+		return (True, newline)
+
+	m = re_psother.search(line)
+	if not m:
+		return no_match
+
+	arg = m.group(2)
+	newline = m.group(1) + "paragraph-params \\paragraph-spacing other " + \
+		arg + m.group(3)
+	return (True, newline)
+
+
 #
 #
 ###########################################################
@@ -127,7 +148,8 @@ conversions = [
 		notes_mutate,
 		all_insets_toggle,
 		line_insert,
-		toc_insert
+		toc_insert,
+		paragraph_spacing
 	] # end conversions for format 0
 ]
 
