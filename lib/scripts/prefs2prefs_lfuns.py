@@ -97,6 +97,16 @@ def all_insets_toggle(line):
 	return (True, newline)
 
 
+re_li = re.compile(r'^(.*)\bline-insert\b(.*)$')
+def line_insert(line):
+	m = re_li.search(line)
+	if not m: 
+		return no_match
+	newline = m.group(1) + \
+		"inset-insert line rule height 0.25ex width 100col% \\end_inset" + \
+		m.group(2)
+	return (True, newline)
+
 
 #
 #
@@ -111,7 +121,8 @@ conversions = [
 		next_inset_modify,
 		optional_insert,
 		notes_mutate,
-		all_insets_toggle
+		all_insets_toggle,
+		line_insert
 	] # end conversions for format 0
 ]
 
