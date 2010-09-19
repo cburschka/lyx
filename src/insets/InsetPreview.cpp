@@ -78,7 +78,8 @@ void InsetPreview::preparePreview(DocIterator const & pos) const
 
 bool InsetPreview::previewState(BufferView * bv) const
 {
-	if (!editing(bv) && RenderPreview::status() == LyXRC::PREVIEW_ON) {
+	if (!editing(bv) && (RenderPreview::status() == LyXRC::PREVIEW_ON ||
+			     RenderPreview::status() == LyXRC::PREVIEW_NO_MATH)) {
 		graphics::PreviewImage const * pimage =
 			preview_->getPreviewImage(bv->buffer());
 		return pimage && pimage->image();
