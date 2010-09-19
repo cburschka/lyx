@@ -363,10 +363,10 @@ int writeExternal(InsetExternalParams const & params,
 	string const absname = makeAbsPath(
 		params.filename.outputFileName(buffer.filePath()), buffer.filePath()).absFileName();
 
-	if (!external_in_tmpdir && !isValidLaTeXFileName(absname)) {
+	if (!dryrun && !external_in_tmpdir && !isValidLaTeXFileName(absname)) {
 		lyx::frontend::Alert::warning(_("Invalid filename"),
 					      _("The following filename is likely to cause trouble "
-						"when running the exported file through LaTeX: ") +
+					        "when running the exported file through LaTeX: ") +
 					      from_utf8(absname));
 	}
 
