@@ -23,7 +23,7 @@
 #   - hunspell: the dictionary files in the sibling directory Dictionaries/dict
 #   - mythes:   the data and idx files in the sibling directory Dictionaries/thes
 
-LyXConfigureOptions="--enable-warnings --enable-optimization=-Os --with-included-gettext --x-includes=/usr/X11/include --x-libraries=/usr/X11/lib"
+LyXConfigureOptions="--enable-warnings --enable-optimization=-Os --with-included-gettext --with-libiconv-prefix=/usr"
 AspellConfigureOptions="--enable-warnings --enable-optimization=-O0 --enable-debug --disable-nls --enable-compile-in-filters --disable-pspell-compatibility"
 HunspellConfigureOptions="--with-warnings --disable-nls --with-included-gettext --disable-static"
 Qt4ConfigureOptions="-opensource -silent -shared -release -fast -no-exceptions"
@@ -194,6 +194,8 @@ HunSpellInstallHdr="${HunSpellInstallDir}/include/hunspell/hunspell.h"
 
 if [ -z "${LyXVersion}" ]; then
 	LyXVersion=`grep AC_INIT "${LyxSourceDir}"/configure.ac | cut -d, -f2 | tr -d " ()"`
+	LyXVersionSuffix=`echo "${LyXVersion}" | cut -d. -f1-2`
+	LyXVersionSuffix="${LyXVersionSuffix:-${LyXVersion}}"
 fi
 
 LyxName="LyX"
@@ -261,7 +263,8 @@ updateDictionaries() {
 			case "${pack}" in
 			*de_DE-pack.zip)
 				cd "$TMP_DIR" && unzip "${pack}" de_DE_comb.zip thes_de_DE_v2.zip
-				cd "$1"/dict && unzip -o "$TMP_DIR"/de_DE_comb.zip
+				cd "$1"/dict && unzip -o "$TMP_DIR"/de_DE_comb.zip &&\
+					for suffix in .aff .dic ; do mv de_DE_comb$suffix de_DE$suffix; done
 				cd "$1"/thes && unzip -o "$TMP_DIR"/thes_de_DE_v2.zip
 				;;
 			*pl_PL-pack.zip)
@@ -533,7 +536,7 @@ build_lyx() {
 		echo CPPFLAGS="${CPPFLAGS}"
 		echo CONFIGURE_OPTIONS="${LyXConfigureOptions}"
 		"${LyxSourceDir}/configure"\
-			--prefix="${LyxAppPrefix}" --with-version-suffix="-${LyXVersion}"\
+			--prefix="${LyxAppPrefix}" --with-version-suffix="-${LyXVersionSuffix}"\
 			${QtInstallDir:+"--with-qt4-dir=${QtInstallDir}"} \
 			${LyXConfigureOptions}\
 			--host="${HOSTSYSTEM}" --build="${BuildSystem}" --enable-build-type=rel && \
