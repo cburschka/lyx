@@ -223,6 +223,8 @@ enum InsetCode {
 	///
 	PREVIEW_CODE,
 	///
+	MATH_DIAGRAM_CODE, 
+	///
 	INSET_CODE_SIZE,
 };
 

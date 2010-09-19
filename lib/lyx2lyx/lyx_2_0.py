@@ -1568,7 +1568,6 @@ def revert_fontcolor(document):
                            + ', ' + str(blueout) + '}\n'
                            + '\\color{document_fontcolor}\n')
 
-
 def revert_shadedboxcolor(document):
     " Reverts shaded box color to preamble code "
     i = 0
@@ -2161,6 +2160,26 @@ def revert_rule(document):
       else:
         return
 
+def revert_diagram(document):
+  i = 0
+  re_diagram = re.compile(r'\\begin_inset Formula .*\\Diagram', re.DOTALL)
+  while True:
+    i = find_token(document.body, '\\begin_inset Formula', i)
+    if i == -1:
+      return
+    j = find_end_of_inset(document.body, i)
+    if j == -1:
+        document.warning("Malformed LyX document: Can't find end of line inset.")
+        return 
+    m = re_diagram.search("\n".join(document.body[i:j]))
+    if not m:
+      i += 1
+      continue
+    add_to_preamble(document, "\\use_package{feyn}")
+    # only need to do it once!
+    return
+
+
 
 ##
 # Conversion hub
@@ -2221,10 +2240,12 @@ convert = [[346, []],
            [397, [remove_Nameref]],
            [398, []],
            [399, [convert_mathdots]],
-           [400, [convert_rule]]
+           [400, [convert_rule]],
+           [401, []]
           ]
 
-revert =  [[399, [revert_rule]],
+revert =  [[400, [revert_diagram]],
+           [399, [revert_rule]],
            [398, [revert_mathdots]],
            [397, [revert_mathrsfs]],
            [396, []],

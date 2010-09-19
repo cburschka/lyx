@@ -746,6 +746,9 @@ string const LaTeXFeatures::getPackages() const
 	if (mustProvide("xy"))
 		packages << "\\usepackage[all]{xy}\n";
 
+	if (mustProvide("feyn"))
+		packages << "\\usepackage{feyn}\n"; //Diagram
+
 	if (mustProvide("ulem"))
 		packages << "\\PassOptionsToPackage{normalem}{ulem}\n"
 			    "\\usepackage{ulem}\n";

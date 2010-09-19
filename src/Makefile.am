@@ -409,6 +409,7 @@ SOURCEFILESMATHED = \
 	mathed/InsetMathUnknown.cpp \
 	mathed/InsetMathXArrow.cpp \
 	mathed/InsetMathXYMatrix.cpp \
+	mathed/InsetMathDiagram.cpp \
 	mathed/MathAtom.cpp \
 	mathed/MathAutoCorrect.cpp \
 	mathed/MathData.cpp \
@@ -474,6 +475,7 @@ HEADERFILESMATHED = \
 	mathed/InsetMathUnknown.h \
 	mathed/InsetMathXArrow.h \
 	mathed/InsetMathXYMatrix.h \
+	mathed/InsetMathDiagram.h \
 	mathed/MathAtom.h \
 	mathed/MathAutoCorrect.h \
 	mathed/MathData.h \

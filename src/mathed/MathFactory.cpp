@@ -44,6 +44,7 @@
 #include "InsetMathHull.h"
 #include "InsetMathXArrow.h"
 #include "InsetMathXYMatrix.h"
+#include "InsetMathDiagram.h"
 #include "MacroTable.h"
 #include "MathMacro.h"
 #include "MathMacroArgument.h"
@@ -417,6 +418,9 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 		return MathAtom(new InsetMathXYMatrix(buf, spacing, spacing_code,
 			equal_spacing));
 	}
+
+	if (s == "Diagram")
+		return MathAtom(new InsetMathDiagram(buf));
 	if (s == "xrightarrow" || s == "xleftarrow")
 		return MathAtom(new InsetMathXArrow(buf, s));
 	if (s == "split" || s == "alignedat")

@@ -1994,6 +1994,7 @@ MathCompletionList::MathCompletionList(Cursor const & cur)
 	globals.push_back(from_ascii("\\cases"));
 	globals.push_back(from_ascii("\\substack"));
 	globals.push_back(from_ascii("\\xymatrix"));
+	globals.push_back(from_ascii("\\Diagram"));
 	globals.push_back(from_ascii("\\subarray"));
 	globals.push_back(from_ascii("\\array"));
 	globals.push_back(from_ascii("\\sqrt"));

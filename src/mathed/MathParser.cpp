@@ -1727,6 +1727,14 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				delEmptyLastRow(subgrid);
 		}
 
+		else if (t.cs() == "Diagram") {
+			odocstringstream os;
+			while (good() && nextToken().cat() != catBegin)
+				os << getToken().asInput();
+			cell->push_back(createInsetMath(t.cs() + os.str(), buf));
+			parse2(cell->back(), FLAG_ITEM, mode, false);
+		}
+
 		else if (t.cs() == "framebox" || t.cs() == "makebox") {
 			cell->push_back(createInsetMath(t.cs(), buf));
 			parse(cell->back().nucleus()->cell(0), FLAG_OPTION, InsetMath::TEXT_MODE);
