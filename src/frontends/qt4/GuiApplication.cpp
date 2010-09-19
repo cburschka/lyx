@@ -786,8 +786,6 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	// FIXME: Do we need a lyxrc setting for this on Mac? This behaviour
 	// seems to be the default case for applications like LyX.
 	setQuitOnLastWindowClosed(false);
-	// setAttribute(Qt::AA_MacDontSwapCtrlAndMeta);
-
 	// This allows to translate the strings that appear in the LyX menu.
 	/// A translator suitable for the entries in the LyX menu.
 	/// Only needed with Qt/Mac.
@@ -1988,6 +1986,9 @@ void GuiApplication::execBatchCommands()
 		return;
 
 #ifdef Q_WS_MACX
+#if QT_VERSION > 0x040600
+	setAttribute(Qt::AA_MacDontSwapCtrlAndMeta,lyxrc.mac_dontswap_ctrl_meta);
+#endif
 	// Create the global default menubar which is shown for the dialogs
 	// and if no GuiView is visible.
 	// This must be done after the session was recovered to know the "last files".

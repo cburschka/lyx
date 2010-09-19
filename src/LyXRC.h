@@ -110,6 +110,7 @@ public:
 		RC_LANGUAGE_USE_BABEL,
 		RC_LOADSESSION,
 		RC_MACRO_EDIT_STYLE,
+		RC_MAC_DONTSWAP_CTRL_META,
 		RC_MAC_LIKE_WORD_MOVEMENT,
 		RC_MAKE_BACKUP,
 		RC_MARK_FOREIGN_LANGUAGE,
@@ -410,6 +411,8 @@ public:
 	Alternatives viewer_alternatives;
 	/// all available editors
 	Alternatives editor_alternatives;
+	///
+	bool mac_dontswap_ctrl_meta;
 	///
 	bool mac_like_word_movement;
 	///

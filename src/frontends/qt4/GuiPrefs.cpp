@@ -461,9 +461,20 @@ PrefInput::PrefInput(GuiPreferences * form)
 	connect(mouseWheelSpeedSB, SIGNAL(valueChanged(double)),
 		this, SIGNAL(changed()));
 	connect(scrollzoomEnableCB, SIGNAL(clicked()),
-			this, SIGNAL(changed()));
+		this, SIGNAL(changed()));
 	connect(scrollzoomValueCO, SIGNAL(activated(int)),
-			this, SIGNAL(changed()));
+		this, SIGNAL(changed()));
+	connect(dontswapCB, SIGNAL(toggled(bool)),
+		this, SIGNAL(changed()));
+
+	// reveal checkbox for switching Ctrl and Meta on Mac:
+	bool swapcb = false;
+#ifdef Q_WS_MACX
+#if QT_VERSION > 0x040600
+	swapcb = true;
+#endif
+#endif
+	dontswapCB->setVisible(swapcb);
 }
 
 
@@ -489,6 +500,7 @@ void PrefInput::apply(LyXRC & rc) const
 	} else {
 		rc.scroll_wheel_zoom = LyXRC::SCROLL_WHEEL_ZOOM_OFF;
 	}
+	rc.mac_dontswap_ctrl_meta  = dontswapCB->isChecked();
 }
 
 
@@ -516,6 +528,7 @@ void PrefInput::update(LyXRC const & rc)
 		scrollzoomValueCO->setCurrentIndex(2);
 		break;
 	}
+	dontswapCB->setChecked(rc.mac_dontswap_ctrl_meta);
 }
 
 

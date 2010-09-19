@@ -126,6 +126,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\language_package", LyXRC::RC_LANGUAGE_PACKAGE },
 	{ "\\language_use_babel", LyXRC::RC_LANGUAGE_USE_BABEL },
 	{ "\\load_session", LyXRC::RC_LOADSESSION },
+	{ "\\mac_dontswap_ctrl_meta", LyXRC::RC_MAC_DONTSWAP_CTRL_META },
 	{ "\\mac_like_word_movement", LyXRC::RC_MAC_LIKE_WORD_MOVEMENT },
 	{ "\\macro_edit_style", LyXRC::RC_MACRO_EDIT_STYLE },
 	{ "\\make_backup", LyXRC::RC_MAKE_BACKUP },
@@ -324,6 +325,7 @@ void LyXRC::setDefaults()
 	scroll_below_document = false;
 	scroll_wheel_zoom = SCROLL_WHEEL_ZOOM_CTRL;
 	paragraph_markers = false;
+	mac_dontswap_ctrl_meta = false;
 	mac_like_word_movement = false;
 	macro_edit_style = MACRO_EDIT_INLINE_BOX;
 	dialogs_iconify_with_main = false;
@@ -889,6 +891,10 @@ int LyXRC::read(Lexer & lexrc)
 
 		case RC_PARAGRAPH_MARKERS:
 			lexrc >> paragraph_markers;
+			break;
+
+		case RC_MAC_DONTSWAP_CTRL_META:
+			lexrc >> mac_dontswap_ctrl_meta;
 			break;
 
 		case RC_MAC_LIKE_WORD_MOVEMENT:
@@ -1733,6 +1739,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    != system_lyxrc.paragraph_markers) {
 			os << "\\paragraph_markers "
 			   << convert<string>(paragraph_markers) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_MAC_DONTSWAP_CTRL_META:
+		if (ignore_system_lyxrc ||
+		    mac_dontswap_ctrl_meta
+		    != system_lyxrc.mac_dontswap_ctrl_meta) {
+			os << "\\mac_dontswap_ctrl_meta "
+			   << convert<string>(mac_dontswap_ctrl_meta) << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
@@ -3047,6 +3062,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_SCROLL_BELOW_DOCUMENT:
 		str = _("LyX normally doesn't allow the user to scroll further than the bottom of the document. Set to true if you prefer to scroll the bottom of the document to the top of the screen");
+		break;
+
+	case RC_MAC_DONTSWAP_CTRL_META:
+		str = _("Make Apple key act as Meta and Control key as Ctrl.");
 		break;
 
 	case RC_MAC_LIKE_WORD_MOVEMENT:
