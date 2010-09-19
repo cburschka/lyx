@@ -448,6 +448,7 @@ src_mathed_header_files = Split('''
     InsetMathComment.h
     InsetMathDecoration.h
     InsetMathDelim.h
+    InsetMathDiagram.h
     InsetMathDiff.h
     InsetMathDots.h
     InsetMathEnsureMath.h
@@ -520,6 +521,7 @@ src_mathed_files = Split('''
     InsetMathComment.cpp
     InsetMathDecoration.cpp
     InsetMathDelim.cpp
+    InsetMathDiagram.cpp
     InsetMathDiff.cpp
     InsetMathDots.cpp
     InsetMathEnsureMath.cpp
