@@ -304,6 +304,14 @@ def main(argv, contributers):
 # Store the raw data.
 contributers = [
 
+     contributer(u"Ronen Abravanel",
+                 "ronena () gmail ! com",
+                 "GPL",
+                 "Re: Patch: Diagram inset",
+                 "m=128486837824718",
+                 "19 September 2010",
+                 u"Support for feyn diagrams"),
+
      contributer(u"Maarten Afman",
                  "info () afman ! net",
                  "GPL",
