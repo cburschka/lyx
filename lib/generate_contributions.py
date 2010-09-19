@@ -1104,6 +1104,14 @@ contributers = [
                  "",
                  u"config. handling enhancements, bugfixes, printer enhancements path mingling"),
 
+     contributer(u"Jens Nöckel",
+                 "noeckel () uoregon !edu",
+                 "GPL",
+                 "GPL statement",
+                 "m=128485749516885",
+                 "19 September 2010",
+                 u"Mac OS X enhancements"),
+
      contributer(u"Rob Oakes",
                  "lyx-devel () oak-tree ! us>",
                  "GPL",
