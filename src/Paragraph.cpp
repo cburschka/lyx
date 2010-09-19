@@ -3473,7 +3473,7 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 		return result;
 
 	locateWord(from, to, WHOLE_WORD);
-	if (from == to || from >= pos_type(d->text_.size()))
+	if (from == to || from >= size())
 		return result;
 
 	docstring word = asString(from, to, AS_STR_INSETS);
@@ -3493,7 +3493,13 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 			result = speller->check(wl);
 			if (SpellChecker::misspelled(result) && trailing_dot) {
 				word = word.append(from_ascii("."));
+				wl = WordLangTuple(word, lang);
 				result = speller->check(wl);
+				if (!SpellChecker::misspelled(result)) {
+					LYXERR(Debug::GUI, "misspelled word now correct was: \"" <<
+					   word << "\" [" <<
+					   from << ".." << to << "]");
+				}
 			}
 		}
 		d->setMisspelled(from, to, result);
