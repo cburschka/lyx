@@ -76,6 +76,53 @@ char_type const META_INSET = 0x200001;
 
 /////////////////////////////////////////////////////////////////////
 //
+// SpellResultRange
+//
+/////////////////////////////////////////////////////////////////////
+
+class SpellResultRange {
+public:
+	SpellResultRange(FontSpan range, SpellChecker::Result result)
+	: range_(range), result_(result)
+	{}
+	///
+	FontSpan range() const { return range_; }
+	///
+	void range(FontSpan r) { range_ = r; }
+	///
+	SpellChecker::Result result() const { return result_; }
+	///
+	void result(SpellChecker::Result r) { result_ = r; }
+	///
+	bool inside(pos_type pos) const { return range_.inside(pos); }
+	///
+	bool covered(FontSpan r) const
+	{
+		// 1. first of new range inside current range or
+		// 2. last of new range inside current range or
+		// 3. first of current range inside new range or
+		// 4. last of current range inside new range
+		return range_.inside(r.first) || range_.inside(r.last) ||
+			r.inside(range_.first) || r.inside(range_.last);
+	}
+	///
+	void shift(pos_type pos, int offset)
+	{
+		if (range_.first > pos) {
+			range_.first += offset;
+			range_.last += offset;
+		} else if (range_.last > pos) {
+			range_.last += offset;
+		}
+	}
+private:
+	FontSpan range_ ;
+	SpellChecker::Result result_ ;
+};
+
+
+/////////////////////////////////////////////////////////////////////
+//
 // SpellCheckerState
 //
 /////////////////////////////////////////////////////////////////////
@@ -91,7 +138,7 @@ public:
 	{
 		eraseCoveredRanges(fp);
 		if (state != SpellChecker::WORD_OK)
-			ranges_[fp] = state;
+			ranges_.push_back(SpellResultRange(fp, state));
 	}
 
 	void increasePosAfterPos(pos_type pos)
@@ -112,10 +159,8 @@ public:
 		RangesIterator et = ranges_.end();
 		RangesIterator it = ranges_.begin();
 		for (; it != et; ++it) {
-			FontSpan fc = it->first;
-			if(fc.first <= pos && pos <= fc.last) {
-				result = it->second;
-				break;
+			if(it->inside(pos)) {
+				return it->result();
 			}
 		}
 		return result;
@@ -155,14 +200,15 @@ public:
 	}
 
 private:
-	/// store the ranges as map of FontSpan and spell result pairs
-	typedef map<FontSpan, SpellChecker::Result> Ranges;
+	typedef vector<SpellResultRange> Ranges;
 	typedef Ranges::const_iterator RangesIterator;
 	Ranges ranges_;
-	///
+	/// the area of the paragraph with pending spell check
 	FontSpan refresh_;
 	bool needs_refresh_;
+	/// spell state cache version number
 	SpellChecker::ChangeNumber current_change_number_;
+
 
 	void eraseCoveredRanges(FontSpan const fp)
 	{
@@ -170,37 +216,19 @@ private:
 		RangesIterator et = ranges_.end();
 		RangesIterator it = ranges_.begin();
 		for (; it != et; ++it) {
-			FontSpan fc = it->first;
-			// 1. first of new range inside current range or
-			// 2. last of new range inside current range or
-			// 3. first of current range inside new range or
-			// 4. last of current range inside new range
-			if (fc.inside(fp.first) || fc.inside(fp.last) ||
-				fp.inside(fc.first) || fp.inside(fc.last))
-			{
-				continue;
-			}
-			result[fc] = it->second;
+			if (!it->covered(fp))
+				result.push_back(SpellResultRange(it->range(), it->result()));
 		}
 		ranges_ = result;
 	}
 
 	void correctRangesAfterPos(pos_type pos, int offset)
 	{
-		Ranges result;
 		RangesIterator et = ranges_.end();
-		RangesIterator it = ranges_.begin();
+		Ranges::iterator it = ranges_.begin();
 		for (; it != et; ++it) {
-			FontSpan m = it->first;
-			if (m.first > pos) {
-				m.first += offset;
-				m.last += offset;
-			} else if (m.last > pos) {
-				m.last += offset;
-			}
-			result[m] = it->second;
+			it->shift(pos, offset);
 		}
-		ranges_ = result;
 	}
 
 };
@@ -3492,11 +3520,10 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 			bool const trailing_dot = to < size() && d->text_[to] == '.';
 			result = speller->check(wl);
 			if (SpellChecker::misspelled(result) && trailing_dot) {
-				word = word.append(from_ascii("."));
-				wl = WordLangTuple(word, lang);
+				wl = WordLangTuple(word.append(from_ascii(".")), lang);
 				result = speller->check(wl);
 				if (!SpellChecker::misspelled(result)) {
-					LYXERR(Debug::GUI, "misspelled word now correct was: \"" <<
+					LYXERR(Debug::GUI, "misspelled word is correct with dot: \"" <<
 					   word << "\" [" <<
 					   from << ".." << to << "]");
 				}
