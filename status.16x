@@ -85,6 +85,8 @@ What's new
 - Load the amsmath LaTeX-package when the math command \dddot is used to
   avoid LaTeX errors (bug 6872).
 
+- Do not popup "invalid path" warning when using View > Source (bug 6904).
+
 - Small tweaks for the memoir text class.
 
 
