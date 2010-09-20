@@ -581,7 +581,7 @@ dnl Called like LYX_CHECK_DEF(name, header, codesnippet)
 dnl Defines HAVE_DEF_{NAME}
 AC_DEFUN([LYX_CHECK_DEF],
 [LYX_AH_CHECK_DEF($1, $2)
- AC_MSG_CHECKING([if $1 is defined by header $2])
+ AC_MSG_CHECKING([whether $1 is defined by header $2])
  AC_TRY_COMPILE([#include <$2>], [$3],
      lyx_have_def_name=yes,
      lyx_have_def_name=no)
