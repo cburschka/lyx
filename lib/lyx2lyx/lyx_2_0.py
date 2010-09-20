@@ -2067,14 +2067,34 @@ def convert_mathdots(document):
 
 def revert_mathdots(document):
     " Load mathdots if used in the document "
+    i = 0
+    ddots = re.compile(r'\\begin_inset Formula .*\\ddots', re.DOTALL)
+    vdots = re.compile(r'\\begin_inset Formula .*\\vdots', re.DOTALL)
+    iddots = re.compile(r'\\begin_inset Formula .*\\iddots', re.DOTALL)
+    mathdots = find_token(document.header, "\\use_mathdots" , 0)
+    no = find_token(document.header, "\\use_mathdots 0" , 0)
+    auto = find_token(document.header, "\\use_mathdots 1" , 0)
+    yes = find_token(document.header, "\\use_mathdots 2" , 0)
+    if mathdots != -1:
+      del document.header[mathdots]
     while True:
-      i = find_token(document.header, "\\use_mathdots" , 0)
-      if i != -1:
-        # use \@ifundefined to catch also the "auto" case
-        add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
-        add_to_preamble(document, ["\\@ifundefined{iddots}{\\usepackage{mathdots}}\n"])
-        del document.header[i]
-      break
+      i = find_token(document.body, '\\begin_inset Formula', i)
+      if i == -1:
+        return
+      j = find_end_of_inset(document.body, i)
+      if j == -1:
+        document.warning("Malformed LyX document: Can't find end of Formula inset.")
+        return 
+      k = ddots.search("\n".join(document.body[i:j]))
+      l = vdots.search("\n".join(document.body[i:j]))
+      m = iddots.search("\n".join(document.body[i:j]))
+      if (yes == -1) and ((no != -1) or (not k and not l and not m) or (auto != -1 and not m)):
+        i += 1
+        continue
+      # use \@ifundefined to catch also the "auto" case
+      add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
+      add_to_preamble(document, ["\\@ifundefined{iddots}{\\usepackage{mathdots}}\n"])
+      return
 
 
 def convert_rule(document):
@@ -2170,7 +2190,7 @@ def revert_diagram(document):
       return
     j = find_end_of_inset(document.body, i)
     if j == -1:
-        document.warning("Malformed LyX document: Can't find end of line inset.")
+        document.warning("Malformed LyX document: Can't find end of Formula inset.")
         return 
     m = re_diagram.search("\n".join(document.body[i:j]))
     if not m:
