@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 399
+\lyxformat 401
 \begin_document
 \begin_header
 \textclass article
@@ -210,6 +210,125 @@ Fonts
 \end_layout
 
 \begin_layout Subsection
+Almost European (AE)
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "ae"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+fonts/ae/
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+AE
+\family default
+ package provide virtual PostScript versions of LaTeX' standard font (Computer
+ Modern).
+ Unless you rely on special characters, we recommend to use 
+\family sans
+Latin Modern
+\family default
+ instead.
+ 
+\end_layout
+
+\begin_layout Subsection
+Bera
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "bera"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+fonts/bera
+\end_layout
+
+\begin_layout Description
+Notes: The bera fonts are a clone of Bitstream Vera, including Bera Serif
+ (a slab-serif Roman), Bera Sans (a Frutiger descendant), and Bera Mono
+ (monospaced/typewriter).
+\end_layout
+
+\begin_layout Subsection
+CM bright
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "cmbright"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+fonts/cmbright
+\end_layout
+
+\begin_layout Description
+Notes: CM bright is a sans serif font that also provides nice sans serif
+ math fonts.
+\end_layout
+
+\begin_layout Subsection
+Concrete
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "ccfonts"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+macros/latex/contrib/ccfonts/
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+ccfonts
+\family default
+ package provides support for the font that has been designed by Donald
+ Knuth for his 
+\emph on
+Concrete Mathematics
+\emph default
+ book, hence called concrete fonts.
+\end_layout
+
+\begin_layout Subsection
 EC fonts
 \end_layout
 
@@ -258,6 +377,81 @@ ec
 \end_layout
 
 \begin_layout Subsection
+Eco
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "eco"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+fonts/eco/
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+eco
+\family default
+ package is used by LyX to access the old style numerals of the 
+\family sans
+Computer Modern
+\family default
+ font family.
+ 
+\end_layout
+
+\begin_layout Subsection
+fourier-GUTenberg
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "fourier"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+fonts/fourier-GUT
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+fourier
+\family default
+ package provides support for the Utopia PostScript font.
+ Contrary to the 
+\family sans
+utopia
+\family default
+ package that ships with 
+\family sans
+PSNFSS
+\family default
+ bundle, it also provides suitable math fonts.
+ If this package is installed, it will be used instead of 
+\family sans
+utopia
+\family default
+ if you select the Utopia font.
+\end_layout
+
+\begin_layout Subsection
 Latin Modern
 \end_layout
 
@@ -290,14 +484,14 @@ Latin Modern
 \end_layout
 
 \begin_layout Subsection
-Almost European (AE)
+LuxiMono
 \end_layout
 
 \begin_layout Description
 Found: 
 \begin_inset Info
 type  "package"
-arg   "ae"
+arg   "luximono"
 \end_inset
 
 
@@ -306,55 +500,15 @@ arg   "ae"
 \begin_layout Description
 CTAN: 
 \family sans
-fonts/ae/
+fonts/LuxiMono/
 \end_layout
 
 \begin_layout Description
 Notes: The 
 \family sans
-AE
+luximono
 \family default
- package provide virtual PostScript versions of LaTeX' standard font (Computer
- Modern).
- Unless you rely on special characters, we recommend to use 
-\family sans
-Latin Modern
-\family default
- instead.
- 
-\end_layout
-
-\begin_layout Subsection
-Eco
-\end_layout
-
-\begin_layout Description
-Found: 
-\begin_inset Info
-type  "package"
-arg   "eco"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family sans
-fonts/eco/
-\end_layout
-
-\begin_layout Description
-Notes: The 
-\family sans
-eco
-\family default
- package is used by LyX to access the old style numerals of the 
-\family sans
-Computer Modern
-\family default
- font family.
- 
+ package provides support for the monospaced Luxida Mono font.
 \end_layout
 
 \begin_layout Subsection
@@ -658,160 +812,6 @@ arg   "utopia"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-fourier-GUTenberg
-\end_layout
-
-\begin_layout Description
-Found: 
-\begin_inset Info
-type  "package"
-arg   "fourier"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family sans
-fonts/fourier-GUT
-\end_layout
-
-\begin_layout Description
-Notes: The 
-\family sans
-fourier
-\family default
- package provides support for the Utopia PostScript font.
- Contrary to the 
-\family sans
-utopia
-\family default
- package that ships with 
-\family sans
-PSNFSS
-\family default
- bundle, it also provides suitable math fonts.
- If this package is installed, it will be used instead of 
-\family sans
-utopia
-\family default
- if you select the Utopia font.
-\end_layout
-
-\begin_layout Subsection
-CM bright
-\end_layout
-
-\begin_layout Description
-Found: 
-\begin_inset Info
-type  "package"
-arg   "cmbright"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family sans
-fonts/cmbright
-\end_layout
-
-\begin_layout Description
-Notes: CM bright is a sans serif font that also provides nice sans serif
- math fonts.
-\end_layout
-
-\begin_layout Subsection
-Bera
-\end_layout
-
-\begin_layout Description
-Found: 
-\begin_inset Info
-type  "package"
-arg   "bera"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family sans
-fonts/bera
-\end_layout
-
-\begin_layout Description
-Notes: The bera fonts are a clone of Bitstream Vera, including Bera Serif
- (a slab-serif Roman), Bera Sans (a Frutiger descendant), and Bera Mono
- (monospaced/typewriter).
-\end_layout
-
-\begin_layout Subsection
-Concrete
-\end_layout
-
-\begin_layout Description
-Found: 
-\begin_inset Info
-type  "package"
-arg   "ccfonts"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family sans
-macros/latex/contrib/ccfonts/
-\end_layout
-
-\begin_layout Description
-Notes: The 
-\family sans
-ccfonts
-\family default
- package provides support for the font that has been designed by Donald
- Knuth for his 
-\emph on
-Concrete Mathematics
-\emph default
- book, hence called concrete fonts.
-\end_layout
-
-\begin_layout Subsection
-LuxiMono
-\end_layout
-
-\begin_layout Description
-Found: 
-\begin_inset Info
-type  "package"
-arg   "luximono"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family sans
-fonts/LuxiMono/
-\end_layout
-
-\begin_layout Description
-Notes: The 
-\family sans
-luximono
-\family default
- package provides support for the monospaced Luxida Mono font.
 \end_layout
 
 \begin_layout Subsection
