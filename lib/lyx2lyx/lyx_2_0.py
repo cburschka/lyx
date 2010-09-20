@@ -2161,6 +2161,7 @@ def revert_rule(document):
         return
 
 def revert_diagram(document):
+  " Add the feyn package if \\Diagram is used in math "
   i = 0
   re_diagram = re.compile(r'\\begin_inset Formula .*\\Diagram', re.DOTALL)
   while True:
@@ -2175,7 +2176,8 @@ def revert_diagram(document):
     if not m:
       i += 1
       continue
-    add_to_preamble(document, "\\use_package{feyn}")
+    add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
+    add_to_preamble(document, "\\usepackage{feyn}")
     # only need to do it once!
     return
 
