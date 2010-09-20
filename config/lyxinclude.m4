@@ -571,6 +571,26 @@ do
       [AC_MSG_RESULT(no)])
 done])
 
+dnl this is used by the macro below to generate a proper config.h.in entry
+m4_define([LYX_AH_CHECK_DEF],
+[AH_TEMPLATE(AS_TR_CPP(HAVE_DEF_$1),
+  [Define to 1 if `$1' is defined in `$2'])])
+
+dnl Check whether name is defined in header by using it in codesnippet.
+dnl Called like LYX_CHECK_DEF(name, header, codesnippet)
+dnl Defines HAVE_DEF_{NAME}
+AC_DEFUN([LYX_CHECK_DEF],
+[LYX_AH_CHECK_DEF($1, $2)
+ AC_MSG_CHECKING([if $1 is defined by header $2])
+ AC_TRY_COMPILE([#include <$2>], [$3],
+     lyx_have_def_name=yes,
+     lyx_have_def_name=no)
+ AC_MSG_RESULT($lyx_have_def_name)
+ if test "x$lyx_have_def_name" = xyes; then
+   AC_DEFINE_UNQUOTED(AS_TR_CPP(HAVE_DEF_$1))
+ fi
+])
+
 dnl Extract the single digits from PACKAGE_VERSION and make them available.
 dnl Defines LYX_MAJOR_VERSION, LYX_MINOR_VERSION, LYX_RELEASE_LEVEL,
 dnl LYX_RELEASE_PATCH (possibly equal to 0), LYX_DIR_VER, and LYX_USERDIR_VER.
