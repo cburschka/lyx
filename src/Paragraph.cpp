@@ -86,9 +86,9 @@ public:
 	: range_(range), result_(result)
 	{}
 	///
-	FontSpan range() const { return range_; }
+	FontSpan const & range() const { return range_; }
 	///
-	void range(FontSpan r) { range_ = r; }
+	void range(FontSpan const & r) { range_ = r; }
 	///
 	SpellChecker::Result result() const { return result_; }
 	///
@@ -96,7 +96,7 @@ public:
 	///
 	bool inside(pos_type pos) const { return range_.inside(pos); }
 	///
-	bool covered(FontSpan r) const
+	bool covered(FontSpan const & r) const
 	{
 		// 1. first of new range inside current range or
 		// 2. last of new range inside current range or
