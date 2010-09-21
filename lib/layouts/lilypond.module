@@ -1,0 +1,32 @@
+#\DeclareLyXModule[lilypond-book->latex]{LilyPond Book}
+#DescriptionBegin
+#This module adds an inset to enter LilyPond code directly into LyX.
+#It will be processed in the output. See the lilypond.lyx example file.
+#DescriptionEnd
+
+# Author: Julien Rioux <jrioux@physics.utoronto.ca>
+
+Format                 27
+OutputFormat           lilypond-book
+
+InsetLayout LilyPond
+	LabelString           LilyPond
+	LaTeXType             Environment
+	LaTeXName             lilypond
+	LyXType               Custom
+	Decoration            Classic
+	Font
+	  Color               latex
+	  Family              typewriter
+	EndFont
+	LabelFont
+	  Color               latex
+	  Size                Small
+	EndFont
+	MultiPar              true
+	CustomPars            false
+	ForcePlain            true
+	FreeSpacing           true
+	PassThru              true
+	ForceLTR              true
+End

@@ -257,6 +257,7 @@ dist_examples_DATA = \
 	examples/iecc12.fen \
 	examples/instant_preview.lyx \
 	examples/landslide.lyx \
+	examples/lilypond.lyx \
 	examples/linguistics.lyx \
 	examples/listerrors.lyx \
 	examples/modernCV.lyx \
@@ -1100,6 +1101,7 @@ dist_layouts_DATA =\
 	layouts/kluwer.layout \
 	layouts/latex8.layout \
 	layouts/letter.layout \
+	layouts/lilypond.module \
 	layouts/linguistics.module \
 	layouts/literate-article.layout \
 	layouts/literate-book.layout \
@@ -1209,6 +1211,7 @@ dist_scripts_PYTHON = \
 	scripts/legacy_lyxpreview2ppm.py \
 	scripts/listerrors \
 	scripts/lyxpreview2bitmap.py \
+	scripts/lyxpreview-lytex2bitmap.py \
 	scripts/lyxpreview-platex2bitmap.py \
 	scripts/lyxpreview_tools.py \
 	scripts/tex_copy.py

@@ -505,6 +505,7 @@ def checkFormatEntries(dtl_tools):
 \Format literate   nw      NoWeb                  N  ""	"%%"	"document"
 \Format sweave     Rnw    "Sweave"                S  "" "%%"    "document"
 \Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"
+\Format lilypond-book    lytex "LilyPond book (LaTeX)"   "" ""	"%%"	"document"
 \Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document"
 \Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"	"document"
 \Format xetex      tex    "LaTeX (XeTeX)"         "" ""	"%%"	"document"
@@ -572,6 +573,7 @@ def checkFormatEntries(dtl_tools):
 \Format jlyx       cjklyx "CJK LyX 1.4.x (euc-jp)" "" ""	""	"document"
 \Format klyx       cjklyx "CJK LyX 1.4.x (euc-kr)" "" ""	""	"document"
 \Format lyxpreview lyxpreview "LyX Preview"       "" ""	""	""
+\Format lyxpreview-lytex  lyxpreview-lytex  "LyX Preview (LilyPond book)" "" ""	""	""
 \Format lyxpreview-platex lyxpreview-platex "LyX Preview (pLaTeX)"       "" ""	""	""
 \Format pdftex     pdftex_t PDFTEX                "" ""	""	""
 \Format program    ""      Program                "" ""	""	""
@@ -807,7 +809,7 @@ def checkConverterEntries():
                 addToRC(r'''\converter lilypond   eps        "lilypond -dbackend=eps --ps $$i"	""
 \converter lilypond   png        "lilypond -dbackend=eps --png $$i"	""''')
                 addToRC(r'\converter lilypond   pdf        "lilypond -dbackend=eps --pdf $$i"	""')
-                print '+  found LilyPond version %s.' % version_number
+                logger.info('+  found LilyPond version %s.' % version_number)
             elif int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 6):
                 addToRC(r'''\converter lilypond   eps        "lilypond -b eps --ps $$i"	""
 \converter lilypond   png        "lilypond -b eps --png $$i"	""''')
@@ -818,6 +820,38 @@ def checkConverterEntries():
                 logger.info('+  found LilyPond, but version %s is too old.' % version_number)
         else:
             logger.info('+  found LilyPond, but could not extract version number.')
+    #
+    path, lilypond_book = checkProg('a LilyPond book (LaTeX) -> LaTeX converter', ['lilypond-book'])
+    if (lilypond_book != ''):
+        version_string = cmdOutput("lilypond-book --version")
+        match = re.match('^(\S+)$', version_string)
+        if match:
+            version_number = match.groups()[0]
+            version = version_number.split('.')
+            if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 1):
+                addToRC(r'\converter lyxpreview-lytex ppm "python -tt $$s/scripts/lyxpreview-lytex2bitmap.py" ""')
+                if dvipng == "dvipng":
+                    addToRC(r'\converter lyxpreview-lytex png "python -tt $$s/scripts/lyxpreview-lytex2bitmap.py" ""')
+                else:
+                    addToRC(r'\converter lyxpreview-lytex png "" ""')
+            if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 11):
+                # Note: The --lily-output-dir flag is required because lilypond-book
+                #       does not process input again unless the input has changed,
+                #       even if the output format being requested is different. So
+                #       once a .eps file exists, lilypond-book won't create a .pdf
+                #       even when requested with --pdf. This is a problem if a user
+                #       clicks View PDF after having done a View DVI. To circumvent
+                #       this, use different output folders for eps and pdf outputs.
+                addToRC(r'\converter lilypond-book latex    "lilypond-book --lily-output-dir=ly-eps $$i"                                ""')
+                addToRC(r'\converter lilypond-book pdflatex "lilypond-book --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$i" ""')
+                logger.info('+  found LilyPond-book version %s.' % version_number)
+            elif int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 1):
+                addToRC(r'\converter lilypond-book latex  "lilypond-book $$i"                                ""')
+                logger.info('+  found LilyPond-book version %s.' % version_number)
+            else:
+                logger.info('+  found LilyPond-book, but version %s is too old.' % version_number)
+        else:
+            logger.info('+  found LilyPond-book, but could not extract version number.')
     #
     checkProg('a Noteedit -> LilyPond converter', ['noteedit --export-lilypond $$i'],
         rc_entry = [ r'\converter noteedit   lilypond   "%%"	""', ''])

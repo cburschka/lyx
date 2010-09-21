@@ -388,12 +388,12 @@ namespace graphics {
 PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 	: parent_(p), buffer_(b)
 {
-	if (!pconverter_){
-		if (b.params().encoding().package() == Encoding::japanese)
-			pconverter_ = setConverter("lyxpreview-platex");
-		else
-			pconverter_ = setConverter("lyxpreview");
-	}
+	if (b.bufferFormat() == "lilypond-book")
+		pconverter_ = setConverter("lyxpreview-lytex");
+	else if (b.params().encoding().package() == Encoding::japanese)
+		pconverter_ = setConverter("lyxpreview-platex");
+	else
+		pconverter_ = setConverter("lyxpreview");
 }
 
 
