@@ -1751,6 +1751,8 @@ With the command
 
 \backslash
 dfrac
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -1762,8 +1764,6 @@ dfrac
 
 \end_inset
 
-
-\series default
  a fraction can be created that has in any case the size of a display style
  formula.
  With 
@@ -1771,6 +1771,8 @@ dfrac
 
 \backslash
 tfrac
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -1782,8 +1784,6 @@ tfrac
 
 \end_inset
 
-
-\series default
  the fraction appears always with the size of an inline formula.
  An example:
 \end_layout
@@ -2752,6 +2752,8 @@ binom
 
 \backslash
 dbinom
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -2763,8 +2765,6 @@ dbinom
 
 \end_inset
 
-
-\series default
  and 
 \series bold
 
@@ -12261,6 +12261,8 @@ The space that surrounds inline formulas can be adjusted with the length
 
 \backslash
 mathsurround
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -12272,14 +12274,14 @@ mathsurround
 
 \end_inset
 
-
-\series default
 .
  The value of a length is set with the command 
 \series bold
 
 \backslash
 setlength
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -12291,8 +12293,6 @@ setlength
 
 \end_inset
 
-
-\series default
  that has the following scheme:
 \end_layout
 
@@ -14458,6 +14458,8 @@ fboxrule}{
 
 \backslash
 linewidth
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -14469,8 +14471,6 @@ linewidth
 
 \end_inset
 
-
-\series default
  is hereby the line width set for the document.
  Because the frame is outside the parbox, 2
 \begin_inset space \thinspace{}
@@ -18636,6 +18636,8 @@ boldmath environment
 
 \backslash
 boldmath
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -18647,14 +18649,14 @@ boldmath
 
 \end_inset
 
-
-\series default
  in TeX-mode.
  To end the environment, the command 
 \series bold
 
 \backslash
 unboldmath
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -18666,8 +18668,6 @@ unboldmath
 
 \end_inset
 
-
-\series default
  is inserted in TeX-mode.
 \begin_inset ERT
 status collapsed
@@ -29077,6 +29077,8 @@ With the commands
 
 \backslash
 shoveright
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -29088,13 +29090,13 @@ shoveright
 
 \end_inset
 
-
-\series default
  and 
 \series bold
 
 \backslash
 shoveleft
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -29106,8 +29108,6 @@ shoveleft
 
 \end_inset
 
-
-\series default
  a centered line can be right or left aligned, respectively.
  The commands are used as follows:
 \end_layout
@@ -29135,6 +29135,8 @@ The length
 
 \backslash
 multlinegap
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -29146,8 +29148,6 @@ multlinegap
 
 \end_inset
 
-
-\series default
  specifies the distance of the first line from the left page margin.
  Predefined is the length 0
 \begin_inset space \thinspace{}
@@ -29287,6 +29287,8 @@ To get this formula, a displayed formula is created where the command
 
 \backslash
 aligned
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -29298,8 +29300,6 @@ aligned
 
 \end_inset
 
-
-\series default
  is inserted.
  A purple box appears around the blue formula box where now columns and
  lines can be added.
@@ -29442,6 +29442,8 @@ In the Align environments, and the multline and gather environment, text
 
 \backslash
 intertext
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -29453,8 +29455,6 @@ intertext
 
 \end_inset
 
-
-\series default
  is used in the following scheme:
 \end_layout
 

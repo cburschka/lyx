@@ -2705,6 +2705,8 @@ binom
 
 \backslash
 dbinom
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -2716,8 +2718,6 @@ dbinom
 
 \end_inset
 
-
-\series default
  y 
 \series bold
 
@@ -12349,6 +12349,8 @@ El espacio que rodea a una ecuación en línea se puede ajustar con la longitud
 
 \backslash
 mathsurround
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -12360,8 +12362,6 @@ mathsurround
 
 \end_inset
 
-
-\series default
 .
  El valor de una longitud se establece con el comando 
 \series bold
@@ -14542,6 +14542,8 @@ en modo TeX delante de la ecuación.
 
 \backslash
 linewidth
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -14553,8 +14555,6 @@ linewidth
 
 \end_inset
 
-
-\series default
  es la anchura de línea establecida para el documento.
  Como el marco está por fuera del cuadro de párrafo, hay que restar de dicha
  anchura dos veces la separación del marco y el grosor.
@@ -29538,6 +29538,8 @@ Con los comandos
 
 \backslash
 shoveright
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -29549,8 +29551,6 @@ shoveright
 
 \end_inset
 
-
-\series default
  y 
 \series bold
 

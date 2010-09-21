@@ -1669,6 +1669,8 @@ Avec la commande
 
 \backslash
 dfrac
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -1680,8 +1682,6 @@ dfrac
 
 \end_inset
 
-
-\series default
  on peut créer une fraction qui a dans tous les cas la taille d'une fraction
  qui se trouverait dans une formule hors ligne.
  Avec 
@@ -1689,6 +1689,8 @@ dfrac
 
 \backslash
 tfrac
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -1700,8 +1702,6 @@ tfrac
 
 \end_inset
 
-
-\series default
  la fraction aura toujours la taille d'une formule en ligne.
  Un exemple:
 \end_layout
@@ -2675,6 +2675,8 @@ binom
 
 \backslash
 dbinom
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -2686,8 +2688,6 @@ dbinom
 
 \end_inset
 
-
-\series default
  et 
 \series bold
 
@@ -12191,6 +12191,8 @@ L'espace qui entoure les formules en ligne peut être ajusté avec la longueur
 
 \backslash
 mathsurround
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -12202,14 +12204,14 @@ mathsurround
 
 \end_inset
 
-
-\series default
 .
  La valeur d'une longueur est modifiée avec la commande 
 \series bold
 
 \backslash
 setlength
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -12221,8 +12223,6 @@ setlength
 
 \end_inset
 
-
-\series default
  qui a la syntaxe suivante:
 \end_layout
 
@@ -14371,6 +14371,8 @@ fboxrule}{
 
 \backslash
 linewidth
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -14382,8 +14384,6 @@ linewidth
 
 \end_inset
 
-
-\series default
  est l'épaisseur de ligne qui est active pour tout le document.
  Puisque le cadre se trouve à l'extérieur de la boîte de paragraphe, on
  doit soustraire de l'épaisseur de ligne deux fois la séparation du cadre
@@ -18597,6 +18597,8 @@ boldmath
 
 \backslash
 boldmath
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -18608,14 +18610,14 @@ boldmath
 
 \end_inset
 
-
-\series default
  en mode TeX.
  Pour terminer l'environnement, on insère la commande 
 \series bold
 
 \backslash
 unboldmath
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -18627,8 +18629,6 @@ unboldmath
 
 \end_inset
 
-
-\series default
  toujours en mode TeX.
 \begin_inset ERT
 status collapsed
@@ -29039,6 +29039,8 @@ Avec les commandes
 
 \backslash
 shoveright
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -29050,13 +29052,13 @@ shoveright
 
 \end_inset
 
-
-\series default
  et 
 \series bold
 
 \backslash
 shoveleft
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -29068,8 +29070,6 @@ shoveleft
 
 \end_inset
 
-
-\series default
  une ligne centrée peut être alignée respectivement à droite ou à gauche.
  Les commandes sont utilisées de la façon suivante:
 \end_layout
@@ -29097,6 +29097,8 @@ La longueur
 
 \backslash
 multlinegap
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -29108,8 +29110,6 @@ multlinegap
 
 \end_inset
 
-
-\series default
  précise la distance entre le début de la première ligne et la marge de
  gauche.
  La valeur prédéfinie est 0
@@ -29250,6 +29250,8 @@ Pour obtenir cette formule, on crée une formule hors-ligne dans laquelle
 
 \backslash
 aligned
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -29261,8 +29263,6 @@ aligned
 
 \end_inset
 
-
-\series default
 .
  Une boîte violette apparaît autour de la boîte de formule dans laquelle
  on peut ajouter des lignes et des colonnes.
@@ -29405,6 +29405,8 @@ Dans les environnements align, multline et gather, on peut insérer du texte
 
 \backslash
 intertext
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -29416,8 +29418,6 @@ intertext
 
 \end_inset
 
-
-\series default
  avec la syntaxe suivante:
 \end_layout
 
