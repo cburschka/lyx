@@ -1727,6 +1727,8 @@ Mit dem Befehl
 
 \backslash
 dfrac
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -1738,8 +1740,6 @@ dfrac
 
 \end_inset
 
-
-\series default
  kann man einen Bruch erzeugen, der immer in der Größe einer abgesetzten
  Formel erscheint.
  Mit 
@@ -1747,6 +1747,8 @@ dfrac
 
 \backslash
 tfrac
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -1758,8 +1760,6 @@ tfrac
 
 \end_inset
 
-
-\series default
  erscheint der Bruch immer in der Größe einer eingebetteten Formel.
  Ein Beispiel:
 \end_layout
@@ -2732,6 +2732,8 @@ binom
 
 \backslash
 dbinom
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -2743,8 +2745,6 @@ dbinom
 
 \end_inset
 
-
-\series default
  und 
 \series bold
 
@@ -12214,6 +12214,8 @@ Leerraum ! neben eingebetteten Formeln
 
 \backslash
 mathsurround
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -12225,8 +12227,6 @@ mathsurround
 
 \end_inset
 
-
-\series default
  lässt sich der Leerraum einstellen, der neben eingebettete Formeln gesetzt
  wird.
  Der Wert einer Länge wird mit dem Befehl 
@@ -12234,6 +12234,8 @@ mathsurround
 
 \backslash
 setlength
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -12245,8 +12247,6 @@ setlength
 
 \end_inset
 
-
-\series default
  gesetzt.
  Dieser besitzt folgendes Befehlsschema:
 \end_layout
@@ -14440,6 +14440,8 @@ fboxrule}{
 
 \backslash
 linewidth
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -14451,8 +14453,6 @@ linewidth
 
 \end_inset
 
-
-\series default
  für die im Dokument eingestellte Zeilenbreite.
  Da sich der Rahmen außerhalb der Absatzbox befindet, muss man von der Zeilenbre
 ite zweimal die Rahmendicke und den Rahmenabstand abziehen.
@@ -18578,6 +18578,8 @@ boldmath-Umgebung
 
 \backslash
 boldmath
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -18589,14 +18591,14 @@ boldmath
 
 \end_inset
 
-
-\series default
  eingibt.
  Um die Umgebung wieder zu beenden, gibt man im TeX-Modus den Befehl 
 \series bold
 
 \backslash
 unboldmath
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -18608,8 +18610,6 @@ unboldmath
 
 \end_inset
 
-
-\series default
  ein.
 \begin_inset ERT
 status collapsed
@@ -29071,6 +29071,8 @@ Mit den Befehlen
 
 \backslash
 shoveright
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -29082,13 +29084,13 @@ shoveright
 
 \end_inset
 
-
-\series default
  und 
 \series bold
 
 \backslash
 shoveleft
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -29100,8 +29102,6 @@ shoveleft
 
 \end_inset
 
-
-\series default
  kann eine zentrierte Zeile rechts bzw.
  links ausgerichtet werden.
  Die Befehle werden folgendermaßen verwendet:
@@ -29131,6 +29131,8 @@ Die Länge
 
 \backslash
 multlinegap
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -29142,8 +29144,6 @@ multlinegap
 
 \end_inset
 
-
-\series default
  legt den Abstand der ersten Zeile vom linken Seitenrand fest.
  Voreingestellt ist die Länge 0
 \begin_inset space \thinspace{}
@@ -29289,6 +29289,8 @@ Um diese Formel zu erhalten, wird eine abgesetzte Formel erstellt, in die
 
 \backslash
 aligned
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -29300,8 +29302,6 @@ aligned
 
 \end_inset
 
-
-\series default
  eingegeben wird.
  Es erscheint eine lila Box um das blaue Formelkästchen in der man nun Spalten
  und Zeilen hinzufügen kann.
