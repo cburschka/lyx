@@ -2502,6 +2502,7 @@ lib_examples_files = Split('''
     iecc12.fen
     ItemizeBullets.lyx
     landslide.lyx
+    lilypond.lyx
     linguistics.lyx
     listerrors.lyx
     Literate.lyx
@@ -2893,6 +2894,7 @@ lib_layouts_module_files = Split('''
     foottoend.module
     hanging.module
     initials.module
+    lilypond.module
     linguistics.module
     logicalmkup.module
     minimalistic.module
@@ -2927,6 +2929,7 @@ lib_scripts_files = Split('''
     legacy_lyxpreview2ppm.py
     listerrors
     lyxpreview2bitmap.py
+    lyxpreview-lytex2bitmap.py
     lyxpreview-platex2bitmap.py
     lyxpreview_tools.py
     prefs2prefs.py
