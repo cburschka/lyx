@@ -2495,6 +2495,7 @@ lib_examples_files = Split('''
     europeCV.lyx
     example_lyxified.lyx
     example_raw.lyx
+    FeynmanDiagrams.lyx
     Foils.lyx
     iecc05.fen
     iecc07.fen

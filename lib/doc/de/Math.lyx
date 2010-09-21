@@ -263,7 +263,7 @@ Verfasser: Uwe Stöhr
 
 
 \family sans
-Version 1.6.x
+Version 2.0.x
 \end_layout
 
 \begin_layout Standard
@@ -32535,17 +32535,80 @@ Spezielle
 \begin_inset space ~
 \end_inset
 
-Handbücher\SpecialChar \menuseparator
-XY-pic-Handbuch
+Handbücher
 \family default
  zu finden ist.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
+\begin_layout Subsection
+
+\noun on
+Feynman
+\noun default
+ Diagramme
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Diagramme ! Feynman
+\end_layout
+
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Um 
+\noun on
+Feynman-
+\noun default
+Diagrammen nutzen zu können, muss das LaTeX-Paket 
+\series bold
+feyn
+\series default
+ installiert sein.
+ Ein 
+\noun on
+Feynman-
+\noun default
+Diagramm wird erstellt, indem der Befehl 
+\series bold
+
+\backslash
+Diagram
+\series default
+ in eine Formel eingegeben wird.
+ Dann können Sie neue Matrixspalten und -zeilen wie bei normalen Matrizen
+ hinzufügen, siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Matrizen"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Beispiele wie man in LyX 
+\noun on
+Feynman-
+\noun default
+Diagramme erstellt sind im 
+\emph on
+Feynman-Diagramm Handbuch
+\emph default
+ gegeben, dass im Menü 
+\family sans
+Hilfe\SpecialChar \menuseparator
+Spezielle
+\begin_inset space ~
+\end_inset
+
+Handbücher
+\family default
+ zu finden ist.
 \end_layout
 
 \begin_layout Section

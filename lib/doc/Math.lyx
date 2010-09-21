@@ -255,7 +255,7 @@ author: Uwe Stöhr
 
 
 \family sans
-Version 1.6.x
+Version 2.0.x
 \end_layout
 
 \begin_layout Standard
@@ -32451,12 +32451,78 @@ Specific
 \begin_inset space ~
 \end_inset
 
-Manuals\SpecialChar \menuseparator
-XY-pic
+Manuals
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+
+\noun on
+Feynman
+\noun default
+ Diagrams
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Diagrams ! Feynman
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To be able to use 
+\noun on
+Feynman
+\noun default
+-diagrams, the LaTeX-package 
+\series bold
+feyn
+\series default
+ must be installed.
+ A 
+\noun on
+Feynman
+\noun default
+-diagram is created by inserting the command 
+\series bold
+
+\backslash
+Diagram
+\series default
+ in a formula.
+ Then you are able to add new matrix columns and rows like for normal matrices,
+ see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Matrices"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Examples how to create 
+\noun on
+Feynman-
+\noun default
+diagrams in LyX is given in the 
+\emph on
+Feynman-diagram manual
+\emph default
+ that you find in the menu 
+\family sans
+Help\SpecialChar \menuseparator
+Specific
 \begin_inset space ~
 \end_inset
 
-Manual
+Manuals
 \family default
 .
 \end_layout

@@ -570,6 +570,7 @@ Menuset
 		Item "Braille Manual|B" "help-open Braille"
 		Item "XY-pic Manual|X" "help-open xypic"
 		Item "Multicolumn Manual|M" "help-open multicol"
+		Item "Feynman-diagram Manual|X" "help-open FeynmanDiagrams"
 	End
 
 
