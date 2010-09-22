@@ -35342,7 +35342,7 @@ genfrac
 \series bold
 
 \backslash
-genfrac{delimitador izquierdo}{delimitador derecho}{grosor raya de
+genfrac{delimitador izquierdo}{delimitador derecho}
 \begin_inset Newline newline
 \end_inset
 
@@ -35361,7 +35361,7 @@ phantom{
 
 
 \backslash
-genfrac{
+genfrac
 \begin_inset ERT
 status collapsed
 
@@ -35372,11 +35372,19 @@ status collapsed
 
 \end_inset
 
-fracción}{estilo}{numerador}{denominador}
+{grosor raya de fracción}{estilo}{numerador}{denominador}
 \end_layout
 
 \begin_layout Standard
-El estilo es un número en el rango 0-3.
+El estilo es un número en el rango 0
+\begin_inset space \thinspace{}
+\end_inset
+
+-
+\begin_inset space \thinspace{}
+\end_inset
+
+3.
 \end_layout
 
 \begin_layout Standard
