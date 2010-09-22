@@ -1,0 +1,203 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[ectaart]{article (Econometrica)}
+# Author : Koji Yokota <yok...@res.otaru-uc.ac.jp>
+
+Format 11
+Input article.layout
+
+TitleLatexType		Environment
+TitleLatexName		frontmatter
+
+ClassOptions
+	Other		draft
+End
+
+Style Title
+	Margin		Manual
+	LeftMargin	-MMMMMMMM
+	Align		Left
+End
+
+Style RunTitle
+	Category	FrontMatter
+	LatexType	Command
+	LatexName	runtitle
+	InTitle		1
+	Margin		Dynamic
+	LabelType	Static
+	LabelString	"Running Title:"
+	LabelSep	M
+	LabelFont
+	  Color		Red
+	EndFont
+End
+
+Style RunAuthor
+	CopyStyle	RunTitle
+	LatexType	Command
+	LatexName	runauthor
+	LabelString	"Running Author:"
+End
+
+Style Abstract
+	Margin			Dynamic
+	LatexType		Environment
+	LatexName		abstract
+	InTitle			1
+	Category		FrontMatter
+	NextNoIndent		1
+	LabelSep		xxx
+	ParSkip			0.4
+	TopSep			0.7
+	BottomSep		0.4
+	Align			Block
+	LabelType		Static
+	LabelString		"Abstract"
+	LabelFont
+	  Size			Normal
+	  Series		Medium
+	EndFont
+End
+
+Style Address
+	CopyStyle	RunTitle
+	LatexName	address
+	LabelString	"Address:"
+End
+
+Style Email
+	Category	FrontMatter
+	LatexType	Command
+	LatexName	lyxead
+	OptionalArgs	1
+	InTitle		1
+	Margin		First_Dynamic
+	LabelType	Static
+	LabelString	"E-mail: "
+	LabelSep	M
+	Font
+	  Family	Typewriter
+	EndFont
+	LabelFont
+	  Family	Roman
+	  Series	Medium
+	  Size		Normal
+	  Color		Blue
+	EndFont
+        Preamble
+		\def\lyxead[#1]#2{\ead[label=#1]{#2}}
+        EndPreamble
+End
+
+Style Web_Address
+	CopyStyle	Email
+	LatexName	lyxeadurl
+	LabelString	"Web address: "
+	LabelSep	""
+        Preamble
+		\def\lyxeadurl[#1]#2{\ead[label=#1,url]{#2}}
+        EndPreamble
+End
+
+Style Author
+	LatexType	Command
+	LatexName	author
+	NewLine		0
+	InTitle		1
+End
+
+Style Authors_Block
+	CopyStyle	RunTitle
+	LatexType	Environment
+	LatexName	aug
+	LabelString	"Authors Block: "
+End
+
+Style Keyword
+	CopyStyle	Abstract
+	LatexType	Environment
+	LatexName	keyword
+	LabelString	"Keywords: "
+	LabelFont
+	  Shape		SmallCaps
+	EndFont
+End
+
+Style Thanks_Text
+	CopyStyle	Email
+	LatexType	Command
+	LatexName	lyxthankstext
+	NeedProtect	1
+	LabelType	Counter
+	LabelCounter	Thanks
+	LabelString	"Thanks \theThanks: "
+        Preamble
+		\def\lyxthankstext[#1]#2{\thankstext{#1}{#2}}
+        EndPreamble
+End
+
+InsetLayout Thanks_Reference
+	LyxType		custom
+	LatexType	Command
+	LatexName	thanksref
+	CustomPars	0
+	Decoration	Classic
+	LabelString	"Thanks Ref"
+	ForcePlain	1
+	MultiPar	0
+End
+
+InsetLayout Internet_Address_Reference
+	CopyStyle	Thanks_Reference
+	LatexName	printead
+	LabelString	"Internet Addess Ref"
+End
+
+InsetLayout Corresponding_Author
+	CopyStyle	Thanks_Reference
+	LatexName	corref
+	LabelString	"Corresponding Author"
+	BgColor		black
+End
+
+InsetLayout Author
+	CopyStyle	Thanks_Reference
+	LatexName	author
+	LabelString	"Author"
+End
+
+InsetLayout Name_(First_Name)
+	CopyStyle	Thanks_Reference
+	LatexName	fnms
+	LabelString	"First Name"
+	BgColor		background
+End
+
+InsetLayout Name_(Surname)
+	CopyStyle	Thanks_Reference
+	LatexName	snm
+	LabelString	"Surname"
+	BgColor		background
+End
+
+InsetLayout Email
+	CopyStyle	Thanks_Reference
+	LatexName	printead
+	LabelString	"Email"
+End
+
+InsetLayout Keyword
+	CopyStyle	Thanks_Reference
+	LatexName	kwd
+	LabelString	"Keyword"
+End
+
+InsetLayout By_Same_Author_(bib)
+	CopyStyle	Thanks_Reference
+	LatexName	bysame
+	LabelString	"bysame"
+	BgColor		black
+End
+
+Counter Thanks
+End

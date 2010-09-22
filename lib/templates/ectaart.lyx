@@ -1,0 +1,483 @@
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 401
+\begin_document
+\begin_header
+\textclass ectaart
+\begin_preamble
+\startlocaldefs
+\endlocaldefs
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_xetex false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Title of an article in Econometrica 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This template is prepared for the 
+\series bold
+draft
+\series default
+ mode.
+ When you finalize the document for actual submission, disable 
+\family sans
+Predefined Class Options
+\family default
+ in menu Document -> Preference -> Document Class.
+ It implies to use the default 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+final
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+ option for prepublication.
+\end_layout
+
+\begin_layout Plain Layout
+Other available document options are:
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+titlepage
+\series default
+: print the title page (default in draft mode)
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+notitlepage
+\series default
+: do not print the title page (default in final mode)
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+doublespacing
+\series default
+: set the double spacing (default in draft mode)
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+singlespacing
+\series default
+: set the single spacing (default in final mode)
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+linenumbers
+\series default
+: print line numbers on margins (default in draft mode)
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+nolinenumbers
+\series default
+: turn off line numbers (default in final mode)
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+infoline
+\series default
+: print id line at bottom of the page (default in draft mode)
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+noinfoline
+\series default
+: turn off id line (default in final mode)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout RunTitle
+Title to be shown at the header of even pages
+\end_layout
+
+\begin_layout Authors Block
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+You can use Author environment when there is only one author.
+ However, if you have multiple authors, use Authors Block instead of Author
+ environment as in this example.
+ Put the name of each author in the Author inset.
+ Put all names within one line.
+ For the corresponding author, put Corresponding Author inset as a tag in
+ the Author inset (you don't have to fill in anything in Corresponing Author
+ inset).
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Author
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex Name (First Name)
+status open
+
+\begin_layout Plain Layout
+First
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Name (Surname)
+status open
+
+\begin_layout Plain Layout
+Author
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Thanks Reference
+status open
+
+\begin_layout Plain Layout
+thk1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Author
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex Name (First Name)
+status open
+
+\begin_layout Plain Layout
+Second
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Name (Surname)
+status open
+
+\begin_layout Plain Layout
+Author
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Thanks Reference
+status open
+
+\begin_layout Plain Layout
+thk2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Author
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex Name (First Name)
+status open
+
+\begin_layout Plain Layout
+Corresponding
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Name (Surname)
+status open
+
+\begin_layout Plain Layout
+Author
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Corresponding Author
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout RunAuthor
+Author name to be shown at the header of even pages
+\end_layout
+
+\begin_layout Address
+Address.
+ Email: 
+\begin_inset Flex Email
+status open
+
+\begin_layout Plain Layout
+email
+\end_layout
+
+\end_inset
+
+, Web: 
+\begin_inset Flex Internet Address Reference
+status open
+
+\begin_layout Plain Layout
+web
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Thanks Text
+Short title is used to refer this thanks text.
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+thk1
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Add label via Short Title
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Thanks Text
+Thanks by the second author.
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+thk2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Email
+...@email.address
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+email
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Web Address
+www.my.home.page
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+web
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+This is the abstract text
+\end_layout
+
+\begin_layout Keyword
+\begin_inset Flex Keyword
+status open
+
+\begin_layout Plain Layout
+Keyword1
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Keyword
+status open
+
+\begin_layout Plain Layout
+Keyword2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Section
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:section"
+
+\end_inset
+
+Section label must not be inserted in the section line, but put it in the
+ text body as this example.
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring References
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Smith-1"
+
+\end_inset
+
+Smith, Adam (1759) The Theory of Moral Sentiments, A.
+ Millar, London.
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring References
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Smith-2"
+
+\end_inset
+
+
+\begin_inset Flex By Same Author (bib)
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ (1776) An Inquiry into the Nature and Causes of the Wealth of Nations,
+ W.
+ Strahan and T.
+ Cadell, London.
+\end_layout
+
+\end_body
+\end_document
