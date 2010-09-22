@@ -17983,7 +17983,7 @@ Latin letters in formulas can be set in one of the following font styles:
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="3">
+<lyxtabular version="3" rows="7" columns="3">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -18063,7 +18063,7 @@ ABC
 
 \begin_layout Plain Layout
 \begin_inset Info
-type  "shortcut"
+type  "shortcuts"
 arg   "font-noun"
 \end_inset
 
@@ -18119,7 +18119,7 @@ AbC
 
 \begin_layout Plain Layout
 \begin_inset Info
-type  "shortcut"
+type  "shortcuts"
 arg   "font-bold"
 \end_inset
 
@@ -18231,7 +18231,7 @@ ABC
 
 \begin_layout Plain Layout
 \begin_inset Info
-type  "shortcut"
+type  "shortcuts"
 arg   "font-emph"
 \end_inset
 
@@ -18242,7 +18242,7 @@ arg   "font-emph"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -18270,11 +18270,62 @@ AbC
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Formula $\mathfrak{AbC}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+mathscr
+\series bold
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\series default
+AbC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathscr{AbC}$
 \end_inset
 
 
@@ -18433,7 +18484,7 @@ AbC
 
 \begin_layout Plain Layout
 \begin_inset Info
-type  "shortcut"
+type  "shortcuts"
 arg   "font-roman"
 \end_inset
 
@@ -18489,7 +18540,7 @@ AbC
 
 \begin_layout Plain Layout
 \begin_inset Info
-type  "shortcut"
+type  "shortcuts"
 arg   "font-sans"
 \end_inset
 
@@ -18545,7 +18596,7 @@ AbC
 
 \begin_layout Plain Layout
 \begin_inset Info
-type  "shortcut"
+type  "shortcuts"
 arg   "font-typewriter"
 \end_inset
 
@@ -36741,22 +36792,8 @@ spce
 
 \end_inset
 
-
-\backslash
-{F
+F
 \series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Commands ! M ! 
-\backslash
-mathscr
-\end_layout
-
-\end_inset
-
  or via the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -36773,36 +36810,6 @@ Symbols
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
-
-To be able to use the command 
-\series bold
-
-\backslash
-mathscr
-\series default
-, the LaTeX package 
-\series bold
-mathrsfs
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Packages ! mathrsfs
-\end_layout
-
-\end_inset
-
- needs to be loaded with the LaTeX-preamble line 
-\series bold
-
-\backslash
-usepackage{mathrsfs}
-\series default
-.
 \end_layout
 
 \begin_layout Standard

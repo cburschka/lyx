@@ -17997,7 +17997,7 @@ Dans les formules on peut affecter aux lettres latines un des styles de
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="3">
+<lyxtabular version="3" rows="7" columns="3">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -18232,7 +18232,7 @@ Ctrl+E
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -18256,11 +18256,62 @@ AbC
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Formula $\mathfrak{AbC}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+mathscr
+\series bold
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\series default
+AbC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathscr{AbC}$
 \end_inset
 
 
@@ -36944,22 +36995,8 @@ spce
 
 \end_inset
 
-
-\backslash
-{F
+F
 \series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Commandes ! M ! 
-\backslash
-mathscr
-\end_layout
-
-\end_inset
-
 , soit avec le menu 
 \family sans
 Insérer\SpecialChar \menuseparator
@@ -36971,36 +37008,6 @@ spécial\SpecialChar \menuseparator
 Symboles\SpecialChar \menuseparator
 Symboles de type lettre
 \family default
-:
-\begin_inset Newline newline
-\end_inset
-
-Pour pouvoir utiliser la commande 
-\series bold
-
-\backslash
-mathscr
-\series default
-, on doit charger le paquetage LaTeX 
-\series bold
-mathrsfs
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Paquetages ! mathrsfs
-\end_layout
-
-\end_inset
-
- avec la commande suivante dans le préambule LaTeX : 
-\series bold
-
-\backslash
-usepackage{mathrsfs}
-\series default
 .
 \end_layout
 
