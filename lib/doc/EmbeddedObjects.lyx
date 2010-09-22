@@ -1,5 +1,5 @@
-#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 401
 \begin_document
 \begin_header
 \textclass scrbook
@@ -162,18 +162,25 @@
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \use_default_options false
+\maintain_unincluded_children false
 \language english
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_xetex false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -195,9 +202,17 @@
 \use_geometry false
 \use_amsmath 2
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation skip
@@ -211,8 +226,8 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -264,7 +279,7 @@ author: Uwe Stöhr
 
 
 \family sans
-Version 1.6.x
+Version 2.0.x
 \end_layout
 
 \begin_layout Standard
@@ -320,7 +335,7 @@ http://wiki.lyx.org/LyX/DocumentationDevelopment#EmbeddedObjects
 
 \begin_layout Chapter
 Figures
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -330,7 +345,7 @@ Figures
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -366,7 +381,7 @@ status collapsed
 
 \begin_layout Section
 Graphics Dialog
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -433,7 +448,7 @@ reference "cha:Units-available-in"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -449,7 +464,7 @@ You can rotate images counter-clockwise by setting a rotation angle and
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -658,7 +673,7 @@ Group
 Name
 \family default
  allows you define or join an image settings group.
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -755,7 +770,7 @@ name "sec:Figure-Floats"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -765,7 +780,7 @@ Floats ! Figures
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -943,7 +958,7 @@ M.C.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1224,7 +1239,7 @@ name "sec:Image-Formats"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1234,7 +1249,7 @@ Image Formats
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1314,7 +1329,7 @@ Graphics Interchange Format
 \end_inset
 
 )
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1366,7 +1381,7 @@ Portable Network Graphics
 \end_inset
 
 )
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1430,7 +1445,7 @@ Joint Photographic Experts Group
 \end_inset
 
 )
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1498,7 +1513,7 @@ Scalable Vector Graphics
 \end_inset
 
 )
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1550,7 +1565,7 @@ Encapsulated PostScript
 \end_inset
 
 )
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1602,7 +1617,7 @@ Portable Document Format
 \end_inset
 
 )
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1632,7 +1647,7 @@ Windows Metafile
 \end_inset
 
 )
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1708,7 +1723,7 @@ PDF/EPS converter available.
 
 \begin_layout Chapter
 Tables
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1722,7 +1737,7 @@ Table
 
 \begin_layout Section
 Introduction
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1769,7 +1784,7 @@ Table
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -1971,7 +1986,7 @@ C
 
 \begin_layout Section
 Table Dialog
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2181,7 +2196,7 @@ When the table dialog is open, you can move the cursor with the arrow keys
 
 \begin_layout Section
 Table Toolbar
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2437,7 +2452,7 @@ Note:
 
 \begin_layout Section
 Edit Table Menu
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2469,7 +2484,7 @@ name "sec:Table-Floats"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2479,7 +2494,7 @@ Floats ! Tables
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2535,7 +2550,7 @@ A table float.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -2688,7 +2703,8 @@ Ted
 \color none
 \begin_inset Formula $\left[\begin{array}{cc}
 a & b\\
-c & d\end{array}\right]$
+c & d
+\end{array}\right]$
 \end_inset
 
 
@@ -2807,7 +2823,7 @@ report
 caption
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2866,7 +2882,7 @@ reference "sec:Caption-Formatting"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2934,7 +2950,7 @@ name "sec:Longtables"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2944,7 +2960,7 @@ Longtables
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3048,7 +3064,7 @@ You can also specify a row where the table is split.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="69" columns="3">
-<features islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -5239,7 +5255,7 @@ name "sub:Footnotes-in-Longtables"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5271,7 +5287,7 @@ reference "tab:DiffCaptions"
 
 \begin_layout Subsection
 Longtable Alignment
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5381,7 +5397,7 @@ LTleft}{0pt}
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -5682,7 +5698,7 @@ reference "sub:Longtable-Captions"
 
 \begin_layout Subsection
 Longtable Captions
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5731,7 +5747,7 @@ Here is a short longtable to see how it works:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
-<features islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -5746,7 +5762,7 @@ Here is a short longtable to see how it works:
 
 \begin_layout Plain Layout
 Longtable with caption
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -6144,7 +6160,7 @@ Note
  hyperref
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6172,7 +6188,7 @@ Document Settings
 
 \begin_layout Subsubsection
 References to Longtables
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6187,7 +6203,7 @@ Longtables ! References
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
-<features islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -6523,7 +6539,7 @@ The caption layout can be set together with all other captions of your document
 caption
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6548,7 +6564,7 @@ reference "sec:Caption-Formatting"
 
 \begin_layout Subsubsection
 Caption Width
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6609,7 +6625,7 @@ The following tables show the difference:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
-<features islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -6625,7 +6641,7 @@ The following tables show the difference:
 \begin_layout Plain Layout
 long full title with default width long full title with default width long
  full title with default width
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -6941,7 +6957,7 @@ LTcapwidth}{5cm}
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
-<features islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -6968,7 +6984,7 @@ cm long full title with width set to 5
 \end_inset
 
 cm
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -7310,7 +7326,7 @@ Note:
 caption
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -7371,7 +7387,7 @@ caption
 
 \begin_layout Subsubsection
 Different Captions for Table Pages
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -7421,7 +7437,7 @@ reference "tab:DiffCaptions"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="59" columns="3">
-<features islongtable="true" lastFootEmpty="true">
+<features islongtable="true" lastFootEmpty="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -7441,7 +7457,7 @@ name "tab:DiffCaptions"
 \end_inset
 
 
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -9323,7 +9339,7 @@ name "sec:Special-Longtable-Issues"
 
 \begin_layout Subsection
 Longtable Calculation
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9356,7 +9372,7 @@ setcounter{LTchunksize}{100}
 
 \begin_layout Subsection
 Floats and Longtables
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9394,7 +9410,7 @@ Page
 
 \begin_layout Subsection
 Forced Page Breaks
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9582,7 +9598,7 @@ must be inserted as TeX-Code at the beginning of the cell.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="38" columns="3">
-<features islongtable="true" lastFootEmpty="true">
+<features islongtable="true" lastFootEmpty="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="3cm">
 <column alignment="center" valignment="top" width="0pt">
@@ -9602,7 +9618,7 @@ name "tab:ForcedPagebreak"
 \end_inset
 
 
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -10856,7 +10872,7 @@ name "sub:Multiple-Lines-in"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10866,7 +10882,7 @@ Multiple Lines in Table Cells
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10908,7 +10924,7 @@ Table with multiple lines in cells
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="2.5cm">
 <column alignment="center" valignment="middle" width="0">
 <column alignment="center" valignment="middle" width="0">
@@ -11112,7 +11128,7 @@ Table with and without hyphenation
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="2.5cm">
 <column alignment="center" valignment="middle" width="0">
 <column alignment="center" valignment="middle" width="0">
@@ -11214,7 +11230,7 @@ i
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="2.5cm">
 <column alignment="center" valignment="middle" width="0">
 <column alignment="center" valignment="middle" width="0">
@@ -11334,7 +11350,7 @@ name "sub:Multicolumns"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -11344,7 +11360,7 @@ Multicolumns
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -11395,7 +11411,7 @@ Multicolumns have there own cell settings.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
-<features firstHeadTopDL="true" firstHeadBottomDL="true">
+<features firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="middle" width="0">
 <column alignment="center" valignment="top" width="0in">
@@ -11539,7 +11555,7 @@ name "sub:Multicolumn-Calculations"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -11575,7 +11591,7 @@ name "tab:Table-with-centered"
 
 Table with centered multicolumn text above two columns that have exactly
  half the width of the multicolumn cell
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -11596,7 +11612,7 @@ Perfect multicolumn table
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="0" special=">{\centering}m{1.25cm-6.2pt}">
 <column alignment="center" valignment="middle" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -11769,7 +11785,7 @@ name "tab:Table-without-half"
 
 Table where the spanned table columns are not exactly half the width of
  the multicolumn cell
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -11790,7 +11806,7 @@ Imperfect multicolumn table
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="1.25cm">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -11973,7 +11989,7 @@ To enable calculations in LaTeX, the LaTeX-package
 calc
 \series default
  must be loaded with the document preamble line
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12095,7 +12111,7 @@ centering}m{2.5cm}
 
 \begin_layout Subsection
 Multirows
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12105,7 +12121,7 @@ Multirows
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12125,7 +12141,7 @@ Unlike multicolumns multirows are not yet supported by LyX; so a bit of
 multirow
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12182,7 +12198,7 @@ centering}
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -12416,7 +12432,7 @@ name "sec:Formal-Tables"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12494,7 +12510,7 @@ Example booktabs-table
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="4">
-<features booktabs="true">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -12522,7 +12538,7 @@ Chip
 
 \end_inset
 </cell>
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -13204,7 +13220,7 @@ key "booktabs"
 \end_inset
 
 .
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13245,7 +13261,7 @@ Special booktabs-table
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="4">
-<features booktabs="true">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -13273,7 +13289,7 @@ Chip
 
 \end_inset
 </cell>
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -13656,7 +13672,7 @@ in % of pixel size
 
 \begin_layout Section
 Vertical Table Alignment
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13721,6 +13737,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "15col%"
 special "none"
 height "1in"
@@ -13730,7 +13747,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -13852,6 +13869,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "15col%"
 special "none"
 height "1in"
@@ -13861,7 +13879,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -13983,6 +14001,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "15col%"
 special "none"
 height "1in"
@@ -13992,7 +14011,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -14103,6 +14122,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "15col%"
 special "none"
 height "1in"
@@ -14112,7 +14132,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -14234,6 +14254,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "15col%"
 special "none"
 height "1in"
@@ -14243,7 +14264,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -14455,7 +14476,7 @@ name "sec:Colored-Tables"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14469,7 +14490,7 @@ Table ! Color
 
 \begin_layout Subsection
 Colored Cells
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14479,7 +14500,7 @@ Table Color ! for Cells
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14513,7 +14534,7 @@ Table colored without using the package
 colortbl
 \series default
 
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -14534,7 +14555,7 @@ Table without colortbl
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -14684,7 +14705,7 @@ reference "tab:Table-colored-without"
 colortbl
 \series default
 .
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15067,7 +15088,7 @@ Table colored using the package
 colortbl
 \series default
 
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -15088,7 +15109,7 @@ Table with colortbl
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0" special=">{\columncolor{darkgreen}\centering}c">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -15289,7 +15310,7 @@ fi
 
 \begin_layout Subsection
 Colored Lines
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15299,7 +15320,7 @@ Table Color ! for Lines
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15437,7 +15458,7 @@ Table with colored vertical lines
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0" special="Wc">
 <column alignment="center" valignment="top" width="0" special="Wc">
 <column alignment="center" valignment="top" width="0" special="WcW">
@@ -15580,14 +15601,16 @@ hline}
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -15667,7 +15690,7 @@ Table with colored horizontal lines
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -15831,7 +15854,7 @@ Table with colored lines
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0" special="Wc">
 <column alignment="center" valignment="top" width="0" special="Wc">
 <column alignment="center" valignment="top" width="0" special="WcW">
@@ -15974,7 +15997,7 @@ arrayrulewidth}{0.4pt}
 
 \begin_layout Section
 Table Customization
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15984,7 +16007,7 @@ Table Customization
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16005,7 +16028,7 @@ name "sub:Row-Spacing"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16083,7 +16106,7 @@ em space.
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -16200,7 +16223,7 @@ em space.
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -16300,14 +16323,16 @@ When you want to add extra height to all cells of all tables, you can do
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -16419,7 +16444,7 @@ Normal table.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -16539,7 +16564,7 @@ strut
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -16702,7 +16727,7 @@ Huger
 
 \begin_layout Subsection
 Special Cell Alignment
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16767,7 +16792,7 @@ Table cells of a column aligned with the decimal separator.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0" special="@{}l">
 <row>
@@ -16926,7 +16951,7 @@ Several table cell alignments.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="6">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0" special="@{}l">
 <column alignment="right" valignment="top" width="0">
@@ -17227,7 +17252,7 @@ There is also the LaTeX-package
 dcolumn
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17320,7 +17345,7 @@ Alignments when LaTeX-package dcolumn is used.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0" special="D{x}{\times}{-1}">
 <column alignment="center" valignment="top" width="0" special="D{x}{\times}{4.9}">
 <column alignment="center" valignment="top" width="0" special="D{+}{\,}{9.7}">
@@ -17548,7 +17573,7 @@ name "sub:Customized-Format"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17697,27 +17722,15 @@ hspace{0pt}}
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
-
-\backslash
-phantom{
-\end_layout
-
-\end_inset
-
+\series bold
 
 \backslash
 newcolumntype
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -17883,7 +17896,7 @@ Table using user-defined table formats
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="2.5cm" special="M{2.5cm}">
 <column alignment="center" valignment="middle" width="0" special="S{2.5cm}{2}">
 <column alignment="center" valignment="middle" width="0">
@@ -18023,7 +18036,7 @@ name "sub:Line-Thickness"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -18135,7 +18148,7 @@ pt thick lines
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -18416,7 +18429,7 @@ pt thick horizontal lines
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -18636,7 +18649,7 @@ pt thick vertical lines
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0" special="Vc">
 <column alignment="center" valignment="top" width="0" special="Vc">
 <column alignment="center" valignment="top" width="0" special="VcV">
@@ -18741,7 +18754,7 @@ sd
 
 \begin_layout Subsection
 Dashed Lines
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -18812,7 +18825,7 @@ Table with dashed lines
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0" special=":c">
@@ -19096,7 +19109,7 @@ LyX does not natively support dashed lines, so you have to use TeX-Code.
 arydshln
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19246,7 +19259,7 @@ arydshln
 colortbl
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19331,7 +19344,7 @@ fi
 
 \begin_layout Chapter
 Floats
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19352,7 +19365,7 @@ name "sec:FloatIntroduction"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19502,7 +19515,7 @@ Wrap
 
 \begin_layout Subsection
 Algorithm Floats
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19766,7 +19779,7 @@ package
 
 \begin_layout Subsection
 Wrap Floats
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19851,7 +19864,7 @@ Float
 wrapfig
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20028,7 +20041,7 @@ Wrap floats are not allowed in section headings or tables.
 
 \begin_layout Section
 Float Numbering
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20181,7 +20194,7 @@ name "sec:Referencing-Floats"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20191,7 +20204,7 @@ Floats ! References
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20321,7 +20334,7 @@ name "sub:Cross-Reference-Formats"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20450,7 +20463,7 @@ Note:
 prettyref
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20527,7 +20540,7 @@ Note:
 prettyref
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20609,7 +20622,7 @@ target "http://wiki.lyx.org/LaTeX/LatexBugs#toc5"
 
 \begin_layout Subsection
 Automatic Reference Naming
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20627,7 +20640,7 @@ The LaTeX-package
 hyperref
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20731,14 +20744,16 @@ sectionautorefname}
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -20807,14 +20822,16 @@ equationautorefname}
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -20895,7 +20912,7 @@ name "sub:Reference-Position"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20913,7 +20930,7 @@ If you use
 hyperref
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20941,7 +20958,7 @@ Document Settings
 hypcap
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20955,7 +20972,7 @@ LaTeX-packages ! hypcap
 oberdiek
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21030,7 +21047,7 @@ name "sec:Float-Placement"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21403,7 +21420,7 @@ In some cases it is required to have all figures/tables at the end of the
 endfloat
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21565,7 +21582,7 @@ name "sec:Rotated-Floats"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21677,7 +21694,7 @@ name "tab:Rotated-table"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -21744,7 +21761,7 @@ e
 
 \begin_layout Section
 Subfloats
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21871,7 +21888,7 @@ This is subtable a.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -21965,7 +21982,7 @@ This is subtable b.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -22087,7 +22104,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -22165,7 +22182,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -22237,7 +22254,7 @@ e
 
 \begin_layout Section
 Floats Side by Side
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22337,6 +22354,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "45col%"
 special "none"
 height "1in"
@@ -22387,6 +22405,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "45col%"
 special "none"
 height "1in"
@@ -22440,7 +22459,7 @@ Float on the right side.
 
 \begin_layout Section
 Caption Formatting
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22450,7 +22469,7 @@ Caption ! Formatting
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22521,7 +22540,7 @@ To change the default caption format, load the LaTeX-package
 caption
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22620,25 +22639,20 @@ captionsetup[figure]{labelfont={tt}, textfont=it, indention=1cm,%
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
 
 \backslash
-hphantom{
-\backslash
-
-\backslash
-captionsetup[figure]
-\backslash
-{}
+captionsetup[figure]{
 \end_layout
 
 \end_inset
 
- labelsep=period}
+labelsep=period}
 \begin_inset Newline newline
 \end_inset
 
@@ -22665,7 +22679,7 @@ tableposition=top
 KOMA-Script
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22773,7 +22787,7 @@ If you are using a
 KOMA-Script
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22972,7 +22986,7 @@ This is an example table caption that is longer than one line to show the
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -23039,7 +23053,7 @@ e
 
 \begin_layout Section
 Caption Placement
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23049,7 +23063,7 @@ Caption ! Placement
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23145,7 +23159,7 @@ If you are using a
 KOMA-Script
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23195,7 +23209,7 @@ It is also possible to set the caption beside a figure or table.
 sidecap
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23270,8 +23284,15 @@ To place in LyX the caption of a float on the side, it is necessary to add
 \end_layout
 
 \begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
 
-\lyxline
+\end_inset
+
 
 \end_layout
 
@@ -23287,14 +23308,16 @@ TabBesBeg}{%
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -23310,14 +23333,16 @@ table
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -23333,14 +23358,16 @@ endtable
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -23366,14 +23393,16 @@ TabBesEnd}{%
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -23389,14 +23418,16 @@ MyTable
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -23422,14 +23453,16 @@ FigBesBeg}{%
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -23445,14 +23478,16 @@ figure
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -23468,14 +23503,16 @@ endfigure
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -23501,14 +23538,16 @@ FigBesEnd}{%
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -23524,14 +23563,16 @@ MyFigure
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -23546,8 +23587,15 @@ MyEndfigure}
 \end_layout
 
 \begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
 
-\lyxline
+\end_inset
+
 
 \end_layout
 
@@ -23746,7 +23794,7 @@ Note:
 hypcap
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23873,7 +23921,7 @@ This is a caption beside a table.
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -24220,7 +24268,7 @@ fi
 
 \begin_layout Section
 Listings of Floats
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24267,7 +24315,7 @@ Notes
 
 \begin_layout Section
 LyX Notes
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24554,14 +24602,16 @@ renewenvironment{lyxgreyedout}
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -24604,7 +24654,7 @@ name "sec:Footnotes"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24614,7 +24664,7 @@ Notes ! Footnotes
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24837,7 +24887,7 @@ Printed table footnote.
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -24967,6 +25017,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -25172,7 +25223,7 @@ name "sub:Footnote-Numbering"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25547,7 +25598,7 @@ Roman{footnote}}
 
 \begin_layout Subsection
 Footnote Placement
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25635,7 +25686,7 @@ reference "fig:Footnote-placement-in"
 ftnright
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25815,7 +25866,7 @@ endnotes
 \end_inset
 
 .
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26053,7 +26104,7 @@ Footnotes can also be placed in the page margin and the footnote text alignment
 footmisc
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26086,7 +26137,7 @@ key "latexcompanion,latexguide,latexbook"
 
 \begin_layout Section
 Margin Notes
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26408,7 +26459,7 @@ This restriction can be evaded by using the LaTeX-package
 marginnote
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26737,14 +26788,16 @@ myMarginpar{%
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -26762,14 +26815,16 @@ underbar{Attention!}}}%
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -26956,7 +27011,7 @@ Boxes
 
 \begin_layout Section
 Introduction
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27200,7 +27255,7 @@ name "sec:Box-Dialog"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27214,7 +27269,7 @@ Boxes ! Box Dialog
 
 \begin_layout Subsection
 Size
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27284,6 +27339,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "12col%"
 special "none"
 height "1in"
@@ -27333,6 +27389,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "20col%"
 special "none"
 height "2in"
@@ -27373,6 +27430,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "20col%"
 special "none"
 height "1in"
@@ -27405,6 +27463,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "12col%"
 special "none"
 height "1in"
@@ -27427,7 +27486,7 @@ Width
 
 \begin_layout Subsection
 Alignment
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27460,6 +27519,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "12col%"
 special "none"
 height "1in"
@@ -27485,6 +27545,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "12col%"
 special "none"
 height "1in"
@@ -27510,6 +27571,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "12col%"
 special "none"
 height "1in"
@@ -27581,6 +27643,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "12col%"
 special "none"
 height "1.5in"
@@ -27606,6 +27669,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "12col%"
 special "none"
 height "1.5in"
@@ -27631,6 +27695,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "b"
 use_parbox 0
+use_makebox 0
 width "12col%"
 special "none"
 height "1.5in"
@@ -27656,6 +27721,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "s"
 use_parbox 0
+use_makebox 0
 width "12col%"
 special "none"
 height "1.5in"
@@ -27711,6 +27777,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "s"
 use_parbox 0
+use_makebox 0
 width "15col%"
 special "none"
 height "1.25in"
@@ -27757,6 +27824,7 @@ hor_pos "s"
 has_inner_box 0
 inner_pos "s"
 use_parbox 0
+use_makebox 0
 width "90col%"
 special "none"
 height "1.25in"
@@ -27782,7 +27850,7 @@ name "sec:Decoration"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27828,6 +27896,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "20col%"
 special "none"
 height "1in"
@@ -27886,6 +27955,7 @@ hor_pos "c"
 has_inner_box 0
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -27923,6 +27993,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "20col%"
 special "none"
 height "1in"
@@ -27961,6 +28032,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "20col%"
 special "none"
 height "1in"
@@ -28001,6 +28073,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "20col%"
 special "none"
 height "1in"
@@ -28052,6 +28125,7 @@ hor_pos "c"
 has_inner_box 0
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "50col%"
 special "none"
 height "1in"
@@ -28128,6 +28202,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "20col%"
 special "none"
 height "1in"
@@ -28154,7 +28229,7 @@ LyX's box label will reflect the different frame types.
 fancybox
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28168,7 +28243,7 @@ LaTeX-packages ! fancybox
 
 \begin_layout Section
 Box Customization
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28239,6 +28314,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "25col%"
 special "none"
 height "1in"
@@ -28348,6 +28424,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "25col%"
 special "none"
 height "1in"
@@ -28480,6 +28557,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "25col%"
 special "none"
 height "1in"
@@ -28577,6 +28655,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "25col%"
 special "none"
 height "1in"
@@ -28712,6 +28791,7 @@ hor_pos "c"
 has_inner_box 0
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -28898,6 +28978,7 @@ hor_pos "c"
 has_inner_box 0
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -28964,7 +29045,7 @@ name "sec:Minipages"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29020,6 +29101,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "45col%"
 special "none"
 height "1in"
@@ -29071,6 +29153,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "45col%"
 special "none"
 height "1in"
@@ -29176,7 +29259,7 @@ name "sec:Parboxes"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29202,6 +29285,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 1
+use_makebox 0
 width "33col%"
 special "none"
 height "1in"
@@ -29234,7 +29318,7 @@ This footnote is inside a parbox and will therefore not appear.
 
 \begin_layout Section
 Boxes for Words and Characters
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29255,7 +29339,7 @@ name "sec:Prevent-Hyphenation"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29481,7 +29565,7 @@ name "sub:Vertical-Alignment"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29491,7 +29575,7 @@ Boxes ! for Vertical Alignment
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29812,7 +29896,7 @@ name "sec:Colored-Boxes"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29826,7 +29910,7 @@ Boxes ! Color
 
 \begin_layout Subsection
 Color for Text
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29853,7 +29937,7 @@ colorbox
 color
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29875,14 +29959,16 @@ LaTeX-packages ! color
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -30299,7 +30385,7 @@ name "sub:Color-for-Paragraphs"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30368,6 +30454,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -30400,7 +30487,7 @@ Another example footnote
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -30528,7 +30615,7 @@ To use the commands described in this section, the LaTeX-package
 graphicx
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30550,14 +30637,16 @@ LaTeX-packages ! graphicx
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -30603,7 +30692,7 @@ Note:
 
 \begin_layout Subsection
 Rotated Boxes
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30613,7 +30702,7 @@ Boxes ! rotated
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30623,7 +30712,7 @@ Rotated material
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30633,7 +30722,7 @@ Figures ! rotated
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30781,6 +30870,7 @@ hor_pos "c"
 has_inner_box 0
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "1in"
 special "width"
 height "1in"
@@ -30888,7 +30978,7 @@ rotatebox[origin=l]{-90}{
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -30951,7 +31041,7 @@ status collapsed
 
 \begin_layout Subsection
 Scaled Boxes
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30961,7 +31051,7 @@ Boxes ! scaled
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30971,7 +31061,7 @@ Scaled material
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30981,7 +31071,7 @@ Figures ! scaled
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31454,7 +31544,7 @@ reflectbox{
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -31575,7 +31665,7 @@ fleqn
 
 \begin_layout Chapter
 External Document Parts
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31650,7 +31740,7 @@ Document LyX or LaTeX-documents.
 
 \begin_layout Section
 External Material
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31913,7 +32003,7 @@ Comparison of the date input methods.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -32147,7 +32237,7 @@ name "sec:Child-Documents"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32157,7 +32247,7 @@ External Document Parts ! Child Documents
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32549,7 +32639,7 @@ name "cha:Program-Code-Listings"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32559,7 +32649,7 @@ Listings
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32569,7 +32659,7 @@ Program Code
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32597,7 +32687,7 @@ Program Listing
 listings
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33208,7 +33298,7 @@ key "listings"
 \begin_layout Chapter
 \start_of_appendix
 Units available in LyX
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33278,7 +33368,7 @@ Units
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -33774,7 +33864,7 @@ name "cha:Output-File-Formats"
 
 \begin_layout Section
 DVI
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33784,7 +33874,7 @@ File Formats ! DVI
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33905,7 +33995,7 @@ name "sec:PostScript"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33915,7 +34005,7 @@ File Formats ! PostScript
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34071,7 +34161,7 @@ View
 
 \begin_layout Section
 PDF
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34081,7 +34171,7 @@ File Formats ! PDF
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34437,6 +34527,7 @@ W_{g\, n}=(W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\bac
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexcompanion"
@@ -34452,6 +34543,7 @@ The LaTeX Companion Second Edition.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexguide"
@@ -34468,6 +34560,7 @@ A Guide to LaTeX Fourth Edition.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexbook"
@@ -34483,6 +34576,7 @@ LaTeX: A Document Preparation System.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "booktabs"
@@ -34502,7 +34596,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/booktabs/booktab
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34515,6 +34609,7 @@ LaTeX-packages ! booktabs
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "caption"
@@ -34534,7 +34629,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34547,6 +34642,7 @@ LaTeX-packages ! caption
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "endfloat"
@@ -34566,7 +34662,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/endfloat/endfloa
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34579,6 +34675,7 @@ LaTeX-packages ! endfloat
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "wrapfig"
@@ -34598,7 +34695,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34624,6 +34721,7 @@ vspace{4mm}
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "footmisc"
@@ -34643,7 +34741,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/footmisc/footmis
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34656,6 +34754,7 @@ LaTeX-packages ! footmisc
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hypcap"
@@ -34675,7 +34774,7 @@ target "http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/hypcap.pdf
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34688,6 +34787,7 @@ LaTeX-packages ! hyperref
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hyperref"
@@ -34707,7 +34807,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperre
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34720,6 +34820,7 @@ LaTeX-packages ! hyperref
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "KOMA-Script"
@@ -34739,7 +34840,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/koma-script/scrg
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34752,6 +34853,7 @@ LaTeX-packages ! KOMA-Script
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "listings"
@@ -34771,7 +34873,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/listings/listing
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34784,6 +34886,7 @@ LaTeX-packages ! listings
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "marginnote"
@@ -34803,7 +34906,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/marginnote/margi
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34816,6 +34919,7 @@ LaTeX-packages ! marginnote
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "pstricks"
@@ -34835,7 +34939,7 @@ target "http://tug.org/PSTricks/"
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34848,6 +34952,7 @@ LaTeX-packages ! PSTricks
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "sidecap"
@@ -34867,7 +34972,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/sidecap/sidecap.
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34880,6 +34985,7 @@ LaTeX-packages ! sidecap
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "prettyref"
@@ -34899,7 +35005,7 @@ target "http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34912,6 +35018,7 @@ LaTeX-packages ! prettyref
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "NewInLyX16"
@@ -34936,6 +35043,7 @@ LyX 1.6.0
 \begin_layout Standard
 \begin_inset CommandInset index_print
 LatexCommand printindex
+type "idx"
 
 \end_inset
 
