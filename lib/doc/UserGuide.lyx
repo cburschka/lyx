@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 389
+\lyxformat 401
 \begin_document
 \begin_header
 \textclass scrbook
@@ -72,6 +72,7 @@
 
 \graphics default
 \default_output_format default
+\output_sync 0
 \bibtex_command default
 \index_command default
 \paperfontsize 12
@@ -96,6 +97,7 @@
 \use_amsmath 1
 \use_esint 1
 \use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
@@ -433,8 +435,6 @@ name "sec:LaTeX-Setup"
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1 1269457017
 You can edit documents in LyX without having LaTeX installed, but you will
  not to able to create PDFs or print your documents unless you do have it
  installed.
@@ -447,8 +447,6 @@ You can edit documents in LyX without having LaTeX installed, but you will
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1 1269457113
 Moreover, specific document classes may depend upon specific LaTeX or DocBook
  classes or packages.
  Again, such document classes can be used even if you do not have the required
@@ -456,12 +454,8 @@ Moreover, specific document classes may depend upon specific LaTeX or DocBook
 \end_layout
 
 \begin_layout Standard
-The 
-\change_inserted 1 1269457161
-LaTeX 
-\change_unchanged
-packages that LyX has found on your system are listed in a file you can
- view from the menu 
+The LaTeX packages that LyX has found on your system are listed in a file
+ you can view from the menu 
 \family sans
 Help\SpecialChar \menuseparator
 LaT
@@ -482,17 +476,13 @@ eX
 Configuration
 \family default
 .
-
-\change_inserted 1 1269457187
- If you are missing packages you need, then
-\change_unchanged
- 
-\change_deleted 1 1269457188
-Y
-\change_inserted 1 1269457189
-y
-\change_unchanged
-ou should install the required missing packages and then reconfigure LyX.
+ If you are missing packages you need, then you should install them and
+ then reconfigure LyX (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Reconfigure
+\family default
+).
 \begin_inset Note Note
 status collapsed
 
@@ -543,15 +533,11 @@ Reconfiguration of LyX
 
 \end_inset
 
-
-\change_inserted 1 1269457202
  See section 5.1 of the 
 \emph on
 Customization
 \emph default
  manual for more information on installing additional LaTeX packages.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Chapter
@@ -2355,11 +2341,9 @@ name "sec:Document-Classes"
 You can select a class using the 
 \family sans
 Document\SpecialChar \menuseparator
-Settings
-\change_inserted 1 1269457473
-\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
 Document Class
-\change_unchanged
+\family default
 
 \begin_inset Index idx
 status collapsed
@@ -2370,8 +2354,6 @@ Document ! Settings
 
 \end_inset
 
-
-\family default
  dialog.
  Select the class you want to use, and make any fine tunings of the options
  you may need.
@@ -2692,7 +2674,11 @@ Customization
 \begin_layout Subsubsection
 
 \change_inserted 1 1269458726
-I Need a Document Class That Isn't Even Listed
+I Need a Document C
+\change_unchanged
+lass that is not even list
+\change_inserted 1 1269458726
+ed
 \end_layout
 
 \begin_layout Standard
@@ -4826,7 +4812,7 @@ Section headings ! Short titles
 \end_inset
 
 
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -8329,7 +8315,7 @@ Enumerate
 Itemize
 \family default
  Environments
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -9982,15 +9968,12 @@ Edge would have been jumps the gun.
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-phantom{Mr.
- Edge }
+Mr.
+ Edge 
 \end_layout
 
 \end_inset
@@ -10000,15 +9983,12 @@ has to be jumped
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-phantom{Mr.
- Edge }
+Mr.
+ Edge 
 \end_layout
 
 \end_inset
@@ -10038,42 +10018,31 @@ Edge
 \end_inset
 
 .
- To get this, you can use the LaTeX-command 
-\series bold
-
-\backslash
-phantom
-\series default
- in TeX Code
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-See sec.
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:TeX-Code"
-
-\end_inset
-
- for more information about TeX-Code.
-\end_layout
-
-\end_inset
-
+ To get this, you can use the phantom insets available via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Formatting\SpecialChar \menuseparator
+Phantom
+\family default
 .
- In our case write the command 
-\series bold
+ In our case insert a horizontal phantom at the beginning of the last two
+ lines and insert 
+\begin_inset Quotes eld
+\end_inset
 
-\backslash
-phantom{Mr.
- Edge }
-\series default
- (note the space after 
+Mr.
+\begin_inset space ~
+\end_inset
+
+Edge
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ into the phantom inset (note the space after 
 \begin_inset Quotes eld
 \end_inset
 
@@ -10081,8 +10050,8 @@ Edge
 \begin_inset Quotes erd
 \end_inset
 
-) at the beginning of the last two lines.
- The command prints out the phrase within the two braces, but invisible.
+).
+ A phantom insets prints only the space of its content (like a placeholder).
  That is why it is named 
 \begin_inset Quotes eld
 \end_inset
@@ -10092,36 +10061,9 @@ phantom
 \end_inset
 
 .
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-There exists also the commands 
-\backslash
-
-\series bold
-hphantom
-\series default
- and 
-\backslash
-
-\series bold
-vphantom
-\series default
-, but this too special for the LyX User Guide.
- If you are interested in knowing more about this, have a look at 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latexcompanion,latexguide"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
+ The normal phantom ouputs the width and heigth of the content as space,
+ while the horizontal and vertical variant only outputs the corresponding
+ dimension.
 \end_layout
 
 \begin_layout Subsection
@@ -10704,8 +10646,19 @@ Horizontal lines
 \end_layout
 
 \begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
 
-\lyxline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 In the dialog 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -10718,7 +10671,22 @@ Line
 \family default
  you can insert horizontal lines that span the whole width of the document
  or column.
-\lyxline
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
@@ -12571,25 +12539,11 @@ m
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-phantom{
-\end_layout
-
-\end_inset
-
 no 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -20999,6 +20953,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "30col%"
 special "none"
 height "1pt"
@@ -21057,6 +21012,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "1.5in"
 special "none"
 height "1pt"
@@ -21081,6 +21037,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "1.5in"
 special "none"
 height "1pt"
@@ -28321,7 +28278,7 @@ Note:
 
 \begin_layout Subsection
 Short Introduction to the LaTeX Syntax
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout

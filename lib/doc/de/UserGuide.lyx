@@ -1,5 +1,5 @@
-#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 401
 \begin_document
 \begin_header
 \textclass scrbook
@@ -49,18 +49,25 @@
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove
 \use_default_options false
+\maintain_unincluded_children false
 \language ngerman
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_xetex false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -82,41 +89,45 @@
 \use_geometry false
 \use_amsmath 1
 \use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
 \branch Frage
 \selected 1
+\filename_suffix 0
 \color #00ff00
 \end_branch
 \branch Antwort
 \selected 0
+\filename_suffix 0
 \color #aa55ff
 \end_branch
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 2
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language german
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_be_strict false
 \end_header
 
 \begin_body
 
 \begin_layout Title
 Das LyX-Benutzerhandbuch
-\begin_inset Newline newline
-\end_inset
-
-
-\size large
-Version 1.6.x
 \end_layout
 
 \begin_layout Author
@@ -127,17 +138,11 @@ vom LyX-Team
 status collapsed
 
 \begin_layout Plain Layout
-
-\size normal
 Übersetzung und Bearbeitung : Hartmut Haase (
-\size default
 \noun on
 HHa
-\size normal
 \noun default
-), 
-\size default
-Uwe Stöhr
+), Uwe Stöhr
 \end_layout
 
 \end_inset
@@ -170,32 +175,35 @@ type "mailto:"
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Version 2.0.x
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Die neueste PDF-Version dieses Dokuments kann von hier heruntergeladen werden:
+\begin_inset Newline newline
+\end_inset
+
+ 
+\series bold
+http://wiki.lyx.org/LyX/DocumentationDevelopment#UserGuide
 \end_layout
 
-\begin_layout Date
-letzte Änderung: 24.
- Februar 2010
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList figure
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList table
 
 \end_inset
 
@@ -442,7 +450,7 @@ Beachten Sie, dass es keinen horizontalen Rollbalken gibt.
 Es gibt nur drei Fälle, in denen Sie sich vielleicht einen horizontalen
  Rollbalken wünschen.
  Der erste betrifft große Abbildungen, die WYSIWYG
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -517,7 +525,7 @@ Die beiden anderen Fälle sind Tabellen und Gleichungen, die breiter als
 
 \begin_layout Subsection
 Dialoge
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -609,7 +617,7 @@ Zurücksetzen
 
 \family sans
 OK
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -636,7 +644,7 @@ Eingabe
 
 \family sans
 Übernehmen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -674,7 +682,7 @@ reference "Grundlegende-Tastaturfunktionen"
 
 \family sans
 Schließen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -696,7 +704,7 @@ Taste gelegt.
 
 \family sans
 Zurücksetzen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -826,7 +834,7 @@ Hilfe
 
 \begin_layout Section
 LyX-Grundeinstellungen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1028,7 +1036,7 @@ Anpassung
 
 \begin_layout Section
 LaTeX-Einstellung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1041,8 +1049,35 @@ LaTeX ! -Einstellungen
 \end_layout
 
 \begin_layout Standard
-LyX benötigt viele LaTeX-Pakete, um ordentlich zu arbeiten.
- Die Pakete, die LyX auf Ihrem System gefunden hat, werden in 
+
+\lang english
+You can edit documents in LyX without having LaTeX installed, but you will
+ not to able to create PDFs or print your documents unless you do have it
+ installed.
+ Actually, that isn't quite true.
+ Some LyX documents use DocBook as the `backend' that produces PDFs and
+ the like, and any LyX document can be outupt as plain text or as XHTML.
+ Still, most of the documents people edit in LyX use LaTeX as the backend,
+ and so exporting these documents to PDF, or printing them, requires you
+ to have LaTeX properly installed.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Moreover, specific document classes may depend upon specific LaTeX or DocBook
+ classes or packages.
+ Again, such document classes can be used even if you do not have the required
+ files installed, but you will not be able to produce certain kinds of output.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The LaTeX packages that LyX has found on your system are listed in a file
+ you can view from the
+\lang ngerman
+ Menü 
 \family sans
 Hilfe\SpecialChar \menuseparator
 LaTe
@@ -1058,9 +1093,13 @@ status collapsed
 
 X-Konfiguration
 \family default
- aufgelistet und beschrieben.
- Pakete, die dort als nicht gefunden gekennzeichnet sind, sollten Sie nachinstal
-lieren, wenn Sie das für nötig halten, und LyX neu konfigurieren (
+.
+ 
+\lang english
+If you are missing packages you need, then you should install them and then
+ reconfigure LyX
+\lang ngerman
+ (Menü 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Neu
@@ -1070,6 +1109,69 @@ Neu
 konfigurieren
 \family default
 ).
+\lang english
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+The two braces in the TeX Code box prevent that the term 
+\begin_inset Quotes eld
+\end_inset
+
+LaTeX
+\begin_inset Quotes erd
+\end_inset
+
+ from being printed with sub- and superscript letters.
+ More about TeX Code is described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:TeX-Code"
+
+\end_inset
+
+, the printout of proper names like LaTeX is explained in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LyX's-Proper-Names"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\lang ngerman
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Neukonfiguration von LyX
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+See section 5.1 of the 
+\emph on
+Customization
+\emph default
+ manual for more information on installing additional LaTeX packages.
 \end_layout
 
 \begin_layout Chapter
@@ -1326,7 +1428,7 @@ Bearbeiten
 
 \family sans
 Ausschneiden
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1354,7 +1456,7 @@ Ausschneiden
 
 \family sans
 Kopieren
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1382,7 +1484,7 @@ Kopieren
 
 \family sans
 Einfügen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1423,7 +1525,7 @@ Suchen
 
 Ersetzen\SpecialChar \ldots{}
 ,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1762,7 +1864,7 @@ R
 ückgängig
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1776,7 +1878,7 @@ Ruckgangig@Rückgängig
 iederholen
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1903,7 +2005,7 @@ Rückgängig
 
 \begin_layout Section
 Mausfunktionen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2119,7 +2221,7 @@ name "Navigieren"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2390,7 +2492,7 @@ B.
 
 \begin_layout Section
 Grundlegende Tastaturfunktionen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2481,7 +2583,7 @@ Bild
 
 \family sans
 Tab
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2545,7 +2647,7 @@ reference "Tabellen"
 
 \family sans
 Esc
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2585,7 +2687,7 @@ und
 
 \family sans
 Ende
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2621,7 +2723,7 @@ und
 
 \family sans
 Entf
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2667,7 +2769,7 @@ Weiterhin gibt es die Modifiziertasten:
 
 \family sans
 Strg
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2740,7 +2842,7 @@ Ende
 
 \family sans
 Umschalt
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2775,7 +2877,7 @@ Shift
 
 \family sans
 Alt
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2852,7 +2954,7 @@ reference "Tastaturkürzel-bearbeiten"
 
 \begin_layout Section
 Ausschneiden und Kopieren zwischen LyX und anderen Programmen
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -2870,7 +2972,7 @@ Mit den Funktionen
 Ausschneiden
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2896,7 +2998,7 @@ Strg+X
 ), 
 \family sans
 Kopieren
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2924,7 +3026,7 @@ Strg+C
 ) und 
 \family sans
 Einfügen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3042,11 +3144,11 @@ finden.
 
 \begin_layout Subsection
 Dokumentklassen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Dokument!klassen@-klassen
+Dokument ! klassen@-klassen
 \end_layout
 
 \end_inset
@@ -3061,6 +3163,16 @@ okument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
 Dokumentklasse
 \family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Dokument ! Einstellungen
+\end_layout
+
+\end_inset
+
  auswählen.
  Danach können Sie die benötigten Optionen feineinstellen.
  Wenn Sie ans Ende der Auswahl gehen, sehen Sie einige Dokumentklassen,
@@ -3441,11 +3553,11 @@ Handbuchergänzungen
 
 \begin_layout Subsubsection
 Module
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Dokument!Module
+Dokument ! Module
 \end_layout
 
 \end_inset
@@ -3499,75 +3611,32 @@ Eigenschaften
 \end_layout
 
 \begin_layout Standard
-Jede Dokumentklasse hat Standardwerte, Tabelle
-\begin_inset space \space{}
+Jede Dokumentklasse hat Standardwerte, diese Tabelle beschreibt sie:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
 \end_inset
 
 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Tab:Dokumentklassen"
-
-\end_inset
-
- zeigt sie.
 \end_layout
 
 \begin_layout Standard
 \align center
-\begin_inset Float table
-placement h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Tab:Dokumentklassen"
-
-\end_inset
-
-Dokumentklassen
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Dokument!klassen@-klassen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\family sans
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="5">
-<features>
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="25mm">
+<lyxtabular version="3" rows="5" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
-\series bold
-Dokumentklasse
 \end_layout
 
 \end_inset
@@ -3578,7 +3647,6 @@ Dokumentklasse
 \begin_layout Plain Layout
 
 \family sans
-\series bold
 Seitenstil
 \end_layout
 
@@ -3590,8 +3658,7 @@ Seitenstil
 \begin_layout Plain Layout
 
 \family sans
-\series bold
-Format
+Seiten
 \end_layout
 
 \end_inset
@@ -3602,7 +3669,6 @@ Format
 \begin_layout Plain Layout
 
 \family sans
-\series bold
 Spalten
 \end_layout
 
@@ -3614,7 +3680,6 @@ Spalten
 \begin_layout Plain Layout
 
 \family sans
-\series bold
 höchste Abschnittsstufe
 \end_layout
 
@@ -3626,7 +3691,7 @@ höchste Abschnittsstufe
 \begin_inset Text
 
 \begin_layout Plain Layout
-article[ (KOMA-Script)]
+article
 \end_layout
 
 \end_inset
@@ -3637,62 +3702,7 @@ article[ (KOMA-Script)]
 \begin_layout Plain Layout
 
 \family sans
-plain
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-Einseitig
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-1-spaltig
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-Abschnitt
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-article (AMS)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-headings
+Einfach
 \end_layout
 
 \end_inset
@@ -3714,7 +3724,7 @@ Einseitig
 \begin_layout Plain Layout
 
 \family sans
-1-spaltig
+Eine
 \end_layout
 
 \end_inset
@@ -3736,7 +3746,7 @@ Abschnitt
 \begin_inset Text
 
 \begin_layout Plain Layout
-book[ (KOMA-Script)]
+report
 \end_layout
 
 \end_inset
@@ -3747,7 +3757,62 @@ book[ (KOMA-Script)]
 \begin_layout Plain Layout
 
 \family sans
-headings
+Einfach
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Einseitig
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Eine
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Kapitel
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+book
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+mit Überschriften
 \end_layout
 
 \end_inset
@@ -3769,7 +3834,7 @@ Zweiseitig
 \begin_layout Plain Layout
 
 \family sans
-1-spaltig
+Eine
 \end_layout
 
 \end_inset
@@ -3787,172 +3852,11 @@ Kapitel
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-letter[ (german/KOMA-Script)]
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-plain
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-Einseitig
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-1-spaltig
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-keine
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-report[ (KOMA-Script)]
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-plain
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-Einseitig
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-1-spaltig
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-Kapitel
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-slides (default)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-plain
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-Einseitig
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-1-spaltig
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-keine
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-paper
+letter
 \end_layout
 
 \end_inset
@@ -3963,7 +3867,7 @@ paper
 \begin_layout Plain Layout
 
 \family sans
-headings
+Einfach
 \end_layout
 
 \end_inset
@@ -3985,7 +3889,7 @@ Einseitig
 \begin_layout Plain Layout
 
 \family sans
-1-spaltig
+Eine
 \end_layout
 
 \end_inset
@@ -3996,7 +3900,7 @@ Einseitig
 \begin_layout Plain Layout
 
 \family sans
-Abschnitt
+keine
 \end_layout
 
 \end_inset
@@ -4009,6 +3913,8 @@ Abschnitt
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
 \end_inset
 
 
@@ -4441,7 +4347,7 @@ Mediävalziffern
 \end_inset
 
 verwenden
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4579,7 +4485,7 @@ trennen
 \end_inset
 
 durch:
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4637,7 +4543,7 @@ Zweispaltiges
 \end_inset
 
 Dokument:
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4648,7 +4554,7 @@ Spalten
 
  Beachten Sie, dass LyX keine zwei Spalten anzeigen wird.
  Das wäre unpraktisch, oft unleserlich und gehört nicht zum WYSIWYM
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4754,7 +4660,7 @@ Querformat
 S
 \family sans
 eitenlayout
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4857,7 +4763,7 @@ Doppelseitiges
 \end_inset
 
 Dokument
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5190,7 +5096,7 @@ unbekannt
 
 \begin_layout Section
 Absatzeinrückung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5200,7 +5106,7 @@ Absatz!-einruckung@-einrückung
 \end_inset
 
  und Absatztrennung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5468,7 +5374,7 @@ Einstellungen
 
 \begin_layout Section
 Absatzumgebungen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5769,7 +5675,7 @@ normalerweise
 Zitat (kurz)
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5779,7 +5685,7 @@ Zitat!(kurz)
 \end_inset
 
  – LaTeX-Bezeichnung: Quote
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5797,7 +5703,7 @@ Quote
 Zitat (lang)
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5807,7 +5713,7 @@ Zitat!(lang)
 \end_inset
 
  – LaTeX-Bezeichnung: Quotation
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5823,7 +5729,7 @@ Quotation
 
 \family sans
 Gedicht
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5835,7 +5741,7 @@ Gedicht
 
 \family default
  – LaTeX-Bezeichnung: Verse
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5852,7 +5758,7 @@ Verse
 \family sans
 Auf\SpecialChar \textcompwordmark{}
 listung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5871,7 +5777,7 @@ listung
  – LaTeX-Bezeichnung: Itemize 
 \family sans
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5887,7 +5793,7 @@ Itemize
 
 \family sans
 Aufzählung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5899,7 +5805,7 @@ Aufzahlung@Aufzählung
 
 \family default
  – LaTeX-Bezeichnung: Enumerate
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5915,7 +5821,7 @@ Enumerate
 
 \family sans
 Beschreibung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5927,7 +5833,7 @@ Beschreibung
 
 \family default
  – LaTeX-Bezeichnung: Description
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5943,7 +5849,7 @@ Description
 
 \family sans
 Liste
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5955,7 +5861,7 @@ Liste
 
 \family default
  – LaTeX-Bezeichnung: List
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6021,7 +5927,7 @@ break-paragraph-keep-layout
 
 \begin_layout Subsection
 Standard
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6064,7 +5970,7 @@ Standard
 
 \begin_layout Subsection
 Dokumenttitel
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6118,7 +6024,7 @@ Schreiben Sie den Titel Ihres Dokumentes mit der
 Titel
 \family default
 -Umgebung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6128,7 +6034,7 @@ Titel!Umgebung@-Umgebung
 \end_inset
 
  (LaTeX-Bezeichnung: Title
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6146,7 +6052,7 @@ Schreiben Sie den Autorennamen mit der
 Autor
 \family default
 -Umgebung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6156,7 +6062,7 @@ Autor!-Umgebung
 \end_inset
 
  (LaTeX-Bezeichnung: Author
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6176,7 +6082,7 @@ Wenn Sie wollen, dass das Datum Ihrem Geschmack entspricht, wenn Sie ein
 Datum
 \family default
 -Umgebung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6186,7 +6092,7 @@ Datum-Umgebung
 \end_inset
 
  (LaTeX-Bezeichnung: Date
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6211,7 +6117,7 @@ Danksagungen
 
 \begin_layout Subsection
 Überschriften
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6248,7 +6154,7 @@ Es gibt 6 nummerierte Abschnittsüberschriften:
 
 \family sans
 Kapitel
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6260,7 +6166,7 @@ Kapitel
 
 \family default
  – LaTeX-Bezeichnung: Chapter
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6276,7 +6182,7 @@ Chapter
 
 \family sans
 Abschnitt
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6288,7 +6194,7 @@ Abschnitt
 
 \family default
  – LaTeX-Bezeichnung: Section
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6304,7 +6210,7 @@ Section
 
 \family sans
 Unterabschnitt
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6316,7 +6222,7 @@ Unterabschnitt
 
 \family default
  – LaTeX-Bezeichnung: Subsection
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6332,7 +6238,7 @@ Subsection
 
 \family sans
 Unterunterabschn.
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6344,7 +6250,7 @@ Unterunterabschn.
 
 \family default
  – LaTeX-Bezeichnung: Subsubsection
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6360,7 +6266,7 @@ Subsubsection
 
 \family sans
 Paragraph
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6378,7 +6284,7 @@ Paragraph
 
 \family sans
 Unterparagraph
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6390,7 +6296,7 @@ Unterparagraph
 
 \family default
  – LaTeX-Bezeichnung: Subparagraph
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6543,7 +6449,7 @@ Es gibt drei nichtnummerierte Überschriftsarten:
 Abschnitt*
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6553,7 +6459,7 @@ Abschnitt*
 \end_inset
 
 – LaTeX-Bezeichnung: Section*
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6569,7 +6475,7 @@ Section*
 
 \family sans
 Unterabschnitt*
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6581,7 +6487,7 @@ Unterabschnitt*
 
 \family default
  – LaTeX-Bezeichnung: Subsection*
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6597,7 +6503,7 @@ Subsection*
 
 \family sans
 Unterunterabschn.*
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6609,7 +6515,7 @@ Unterunterabschn.*
 
 \family default
  – LaTeX-Bezeichnung: Subsubsection*
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6711,7 +6617,7 @@ Inhaltsverzeichnis
 
 \begin_layout Subsubsection
 Kurze Titel
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6721,7 +6627,7 @@ Titel!kurze
 \end_inset
 
  mit optionalen Argumenten definieren
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -6817,7 +6723,7 @@ immer
 
 \begin_layout Subsection
 Zitate
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6827,7 +6733,7 @@ Zitat
 \end_inset
 
  und Lyrik
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6914,7 +6820,7 @@ Standard
 Zitat (kurz)
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6928,7 +6834,7 @@ Zitat!(kurz)
 Zitat (lang)
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6961,7 +6867,7 @@ Zitat
  – LaTeX-Bezeichnung: quote
 \family sans
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6983,7 +6889,7 @@ Zitat
  – LaTeX-Bezeichnung: quotation
 \family sans
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -7129,7 +7035,7 @@ Zitat
 
 \family sans
 Gedicht
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -7221,7 +7127,7 @@ Strg+Eingabe
 
 \begin_layout Subsection
 Listen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -7320,7 +7226,7 @@ Auf
 
 \family sans
 listung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -7545,7 +7451,7 @@ ff ausführlich beschreiben.
 
 \family sans
 Aufzählung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -7757,7 +7663,7 @@ ff lesen, um mehr darüber zu erfahren.
 
 \family sans
 Beschreibung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -7915,7 +7821,7 @@ LyX-
 Liste
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -7936,7 +7842,7 @@ X!-Liste
 \end_inset
 
  und Liste
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8019,7 +7925,7 @@ Liste
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Marken
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8050,7 +7956,7 @@ reference "Beschreibung"
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Ränder
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8077,7 +7983,7 @@ der
 \end_inset
 
 Marken
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8101,7 +8007,7 @@ ausgedehnt
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Standardbreite
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8199,7 +8105,7 @@ Liste
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Schachtelung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8239,7 +8145,7 @@ Liste
  In Wirklichkeit ist ein variabler horizontaler Abstand
 \family sans
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8315,7 +8221,7 @@ ff wegen Schachtelungen lesen sollten?
 
 \begin_layout Subsection
 Briefe
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8331,7 +8237,7 @@ Briefe
 
 \family sans
 Adresse
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8351,7 +8257,7 @@ e
 \end_inset
 
 rechts
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8585,7 +8491,7 @@ Wie Sie sehen, ist zwischen
 Adresse (
 \family default
 LaTeX-Bezeichnung: Address
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8639,7 +8545,7 @@ Formatierung\SpecialChar \menuseparator
 Zeilenumbruch
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8653,7 +8559,7 @@ Zeilenumbruch
 
 \begin_layout Subsection
 Wissenschaftliche Texte
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8675,7 +8581,7 @@ Die meisten wissenschaftlichen Texte beginnen mit einer kurzen Zusammenfassung
 
 \family sans
 Zusammenfassung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8693,7 +8599,7 @@ Die
 Zusammenfassung
 \family default
 -Umgebung (LaTeX-Bezeichnung: Abstract
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8812,7 +8718,7 @@ book
 
 \begin_layout Subsubsection
 Literaturverzeichnis
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8837,7 +8743,7 @@ Die
 Literaturverzeichnis
 \family default
 -Umgebung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8847,7 +8753,7 @@ Literaturverzeichnis
 \end_inset
 
  (LaTeX-Bezeichnung: Bibliography
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9066,7 +8972,7 @@ KOMA-Script
 L
 \family default
 yX-Code
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9271,7 +9177,7 @@ LyX-Code
  rc-Dateien usw.
  Benutzen Sie diese Umgebung nur in diesen Spezialfällen, wenn der Text
  aussehen soll, als wäre er mit einer Schreibmaschine geschrieben worden.
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9285,7 +9191,7 @@ Absatz!-umgebungen|)
 
 \begin_layout Section
 Umgebungen schachteln
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9484,7 +9390,7 @@ Nicht
 \end_inset
 
 schachtelbar
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9502,7 +9408,7 @@ schachtelbar!nicht
 
 \family sans
 Literaturverzeichnis,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9512,7 +9418,7 @@ Literaturverzeichnis
 \end_inset
 
  Zusammenfassung,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9522,7 +9428,7 @@ Zusammenfassung
 \end_inset
 
  Titel,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9532,7 +9438,7 @@ Titel
 \end_inset
 
  Autor,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9542,7 +9448,7 @@ Autor
 \end_inset
 
  Datum.
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9561,7 +9467,7 @@ Vollständig
 \end_inset
 
 schachtelbar
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9598,7 +9504,7 @@ Teilweise
 \end_inset
 
 schachtelbar
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9616,7 +9522,7 @@ schachtelbar!teilweise
 
 \family sans
 Standard,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9626,7 +9532,7 @@ Standard
 \end_inset
 
 , Teil
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9640,7 +9546,7 @@ Teil
  (LaTeX-Bezeichnung: part
 \family sans
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9650,7 +9556,7 @@ part
 \end_inset
 
 ), Kapitel,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9660,7 +9566,7 @@ Kapitel
 \end_inset
 
  Abschnitt,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9670,7 +9576,7 @@ Abschnitt
 \end_inset
 
  Unterabschnitt,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9680,7 +9586,7 @@ Unterabschnitt
 \end_inset
 
  Unterunterabschn.,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9690,7 +9596,7 @@ Unterunterabschn.
 \end_inset
 
  Paragraph,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9700,7 +9606,7 @@ Paragraph
 \end_inset
 
  Unterparagraph,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9710,7 +9616,7 @@ Unterparagraph
 \end_inset
 
  Teil*,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9720,7 +9626,7 @@ Teil*
 \end_inset
 
  Kapitel*,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9730,7 +9636,7 @@ Kapitel*
 \end_inset
 
  Abschnitt*,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9740,7 +9646,7 @@ Abschnitt*
 \end_inset
 
  Unterabschnitt*,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9750,7 +9656,7 @@ Unterabschnitt*
 \end_inset
 
  Unterunterabschn.*,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9764,7 +9670,7 @@ Unterunterabschn.*
 \end_inset
 
 rechts,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9774,7 +9680,7 @@ Rechte Adresse
 \end_inset
 
  Adresse.
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9812,7 +9718,7 @@ in zum Beispiel Listen zu schachteln, wird dringend davon abgeraten.
 
 \begin_layout Subsection
 Andere Dinge schachteln: Tabellen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9822,7 +9728,7 @@ Tabellen
 \end_inset
 
 , Mathematik
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9832,7 +9738,7 @@ Mathematik
 \end_inset
 
 , Gleitobjekte
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9842,7 +9748,7 @@ Gleitobjekte
 \end_inset
 
  usw.
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -9933,7 +9839,7 @@ Dies ist (a) und geschachtelt.
 \begin_layout Address
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -10012,7 +9918,7 @@ Dies ist (a) und geschachtelt.
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -10099,7 +10005,7 @@ Dies ist (a) und geschachtelt.
 \begin_layout Address
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -10221,7 +10127,7 @@ wie
 \emph default
  man schachtelt.
  Die Schachtelungstiefe
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10509,7 +10415,7 @@ name "Sloppypar"
 
 \begin_layout Subsubsection
 Beispiel 1: Sechsfache und gemischte Schachtelung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10842,7 +10748,7 @@ Liste
 
 \begin_layout Subsubsection
 Beispiel 2: Vererbung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10943,7 +10849,7 @@ Aufzählung
 Auflistung
 \family default
 -Umgebungen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10953,7 +10859,7 @@ Schachtelungs!-beispiele
 \end_inset
 
 
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -11253,7 +11159,7 @@ Auflistung
 
 \begin_layout Subsubsection
 Beispiel 4: Übergeschnappt
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -11369,7 +11275,7 @@ Hier kommt eine Tabelle:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <row>
@@ -11661,7 +11567,7 @@ Abstände, Seiten- und Zeilenumbrüche
 
 \begin_layout Subsection
 Waagerechter Leerraum
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -11724,7 +11630,7 @@ Strg+Alt+Leertaste
 
 \begin_layout Subsubsection
 Geschütztes Leerzeichen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -11804,7 +11710,7 @@ Strg+Leertaste.
 
 \begin_layout Subsubsection
 Halbes Leerzeichen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12192,18 +12098,30 @@ Herr Meier würde springt
 \end_inset
 
 
-\begin_inset Formula $\hphantom{\mbox{Herr Meier}}$
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+Herr Meier 
+\end_layout
+
 \end_inset
 
- hat gespringt
+hat gespringt
 \begin_inset Newline newline
 \end_inset
 
 
-\begin_inset Formula $\hphantom{\mbox{Herr Meier}}$
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+Herr Meier 
+\end_layout
+
 \end_inset
 
- springt
+springt
 \begin_inset VSpace medskip
 \end_inset
 
@@ -12215,67 +12133,80 @@ Die Auswahlmöglichkeiten sind also rechts vom Begriff
 \begin_inset Quotes gld
 \end_inset
 
-Herr Meier
+Herr
+\begin_inset space ~
+\end_inset
+
+Meier
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Quotes grd
 \end_inset
 
  ausgerichtet.
- Das Phantom-Zeichen 
-\begin_inset Graphics
-	filename ../../images/math/hphantom.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
-	groupId Icon
-
-\end_inset
-
- finden Sie unter 
+ 
+\lang english
+To get this, you can use the phantom insets available via the menu 
 \family sans
-Ansicht\SpecialChar \menuseparator
-Werkzeugleisten\SpecialChar \menuseparator
-Andere
-\begin_inset space \space{}
-\end_inset
-
-Werkzeug\SpecialChar \-
-leisten\SpecialChar \menuseparator
-Abstände
+Insert\SpecialChar \menuseparator
+Formatting\SpecialChar \menuseparator
+Phantom
 \family default
- und weitere Erklärungen im 
-\emph on
-Mathe
-\emph default
--Handbuch.
-\end_layout
+.
+ In our case insert a horizontal phantom at the beginning of the last two
+ lines and insert 
+\lang ngerman
 
-\begin_layout Standard
-
-\series bold
-Hinweis:
-\series default
- Bevor Sie den Text 
 \begin_inset Quotes gld
 \end_inset
 
-Herr Meier
+Herr
+\begin_inset space ~
+\end_inset
+
+Meier
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Quotes grd
 \end_inset
 
- schreiben, sollten Sie mit 
-\family sans
-Alt+M
-\begin_inset space \space{}
+
+\lang english
+ into the phantom inset (note the space after
+\lang ngerman
+ 
+\begin_inset Quotes gld
 \end_inset
 
-M
-\family default
- in den mathematischen Textmodus wechseln, damit die Abstände stimmen.
+Meier
+\begin_inset Quotes grd
+\end_inset
+
+).
+ 
+\lang english
+A phantom insets prints only the space of its content (like a placeholder).
+ That is why it is named 
+\begin_inset Quotes eld
+\end_inset
+
+phantom
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The normal phantom ouputs the width and heigth of the content as space,
+ while the horizontal and vertical variant only outputs the corresponding
+ dimension.
 \end_layout
 
 \begin_layout Subsection
 Senkrechter Leerraum
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12364,7 +12295,7 @@ Absatz
 -Einstellungen
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12401,7 +12332,7 @@ Absatz-Einstellungen
 \end_inset
 
 ) können Sie die Absatzformatierung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12415,7 +12346,7 @@ Absatz!-formatierung
 
 \begin_layout Subsubsection
 Zeilenabstand
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12526,7 +12457,7 @@ einrücken
 
 \begin_layout Subsubsection
 Ausrichtung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12627,7 +12558,7 @@ Direkt
 
 \begin_layout Subsection
 Manueller Seitenumbruch
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12743,7 +12674,7 @@ reference "Tabellen"
 
 \begin_layout Subsubsection
 Leerender Seitenumbruch
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12784,7 +12715,7 @@ leeren
 
 \begin_layout Subsection
 Manueller Zeilenumbruch
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12864,7 +12795,7 @@ reference "Adresse-verwenden"
 
 \begin_layout Standard
 Es gibt auch den rechtsbündigen Zeilenumbruch
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12903,7 +12834,7 @@ umbruch
 Bei langen Internetadressen wie ftp://dante.ctan.org/tex-archive/help/Catalogue/en
 tries/esint.html kann es vorkommen, dass sie über dem rechten Rand hinausragen.
  Das kann man verhindern, indem man einen Schrägstrich
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13368,7 +13299,7 @@ Tutorium
 
 \begin_layout Subsection
 Horizontale Linien
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13404,7 +13335,18 @@ Horizontale Linie
 \family default
  einfügen.
  Hier:
-\lyxline
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
 
 \end_layout
 
@@ -13464,7 +13406,7 @@ alle
 
 \begin_layout Section
 Schrift
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13474,7 +13416,7 @@ Schriften
 \end_inset
 
  und Textstile
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13488,7 +13430,7 @@ Text ! -stil
 
 \begin_layout Subsection
 Schrifttypen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13510,7 +13452,7 @@ Skalierbare
 \end_inset
 
 Schriften
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13520,7 +13462,7 @@ Schriften ! skalierbare
 \end_inset
 
  (auch Vektorschriften
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13566,7 +13508,7 @@ Postscript
 
 \begin_layout Description
 Bitmap-Schriften
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13641,7 +13583,7 @@ Hervorhebungsstil
 
 \begin_layout Subsection
 Dokumentschrift
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13651,7 +13593,7 @@ Dokument ! Schrift@-schrift
 \end_inset
 
  und Schriftgröße
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14034,7 +13976,7 @@ Die Schrift wird als Argument an die Befehle des LaTeX-Paketes
 cjk
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14091,7 +14033,7 @@ reference "Bildschirmschriften"
 
 \begin_layout Subsection
 Gebrauch unterschiedlicher Buchstabenstile
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14257,7 +14199,7 @@ sstil haben wir überall in diesem Dokument benutzt.
 
 \begin_layout Subsection
 Feineinstellung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14383,7 +14325,7 @@ Zurücksetzen
 
 \family sans
 Familie
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14468,7 +14410,7 @@ Alt+Z C
 
 \family sans
 Strichstärke
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14480,7 +14422,7 @@ Strichstärke
 
 \family default
  Dies ist die Druckstärke
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14535,7 +14477,7 @@ Strg+B
 
 \family sans
 Schnitt
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14614,7 +14556,7 @@ Dies ist die Kapitälchenform
 
 \family sans
 Farbe
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14698,7 +14640,7 @@ Gelb
 
 \family sans
 Sprache
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14742,7 +14684,7 @@ name "Fontgröße"
 
 \family default
  Ändert die Schriftgröße
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14787,7 +14729,7 @@ winzige
 tiny
 \color inherit
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14839,7 +14781,7 @@ sehr kleine
 
 \size default
  LaTeX: scriptsize
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14879,7 +14821,7 @@ Fußnoten
  
 \size default
 LaTeX: footnotesize
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14923,7 +14865,7 @@ kleine
  
 \size default
 LaTeX: small
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14971,7 +14913,7 @@ normale
 
  Schriftgröße.
  LaTeX: normalsize
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15016,7 +14958,7 @@ große
  
 \size default
 LaTeX: large
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15064,7 +15006,7 @@ größere
  
 \size default
 LaTeX: Large
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15116,7 +15058,7 @@ noch größere
  
 \size default
 LaTeX: LARGE
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15156,7 +15098,7 @@ riesige
  
 \size default
 LaTeX: huge
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15204,7 +15146,7 @@ gigantische
  
 \size default
 LaTeX: Huge
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15451,7 +15393,7 @@ Zeichenformat
 
 \begin_layout Section
 Druckvorschau
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15461,7 +15403,7 @@ Druckvorschau
 \end_inset
 
  und Drucken
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15640,7 +15582,7 @@ Wie Sie gesehen haben, passieren eine Menge Dinge, bevor Sie einen Ausdruck
 
 \begin_layout Subsection
 Druckvorschau
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15660,7 +15602,7 @@ DVI
 -Betrachter
 \family typewriter
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16079,7 +16021,7 @@ reference "Konverterdatei-Zwischenspeicher"
 
 \begin_layout Subsection
 Eine Datei direkt drucken
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16096,7 +16038,7 @@ name "Eine-Datei-drucken"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16298,7 +16240,7 @@ Ein paar Worte über Typographie
 
 \begin_layout Subsection
 Bindestriche
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16349,7 +16291,7 @@ Minuszeichen
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -16619,7 +16561,7 @@ Wenn Sie dies in LyX lesen, sehen Sie keine Unterschiede, aber in der gedruckten
 
 \begin_layout Subsection
 Silbentrennung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16643,7 +16585,7 @@ In LyX gibt es keine Silbentrennung, erst in der Druckausgabe, und zwar
 babel
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16963,7 +16905,7 @@ kann es wie hier vorkommen, dass die Zeile nach dem
 
 -Zeichen umgebrochen wird, was natürlich Unsinn ist.
  Dann verwendet man am besten den geschützten Trennstrich
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17014,7 +16956,7 @@ Konstrukte, aber nicht alle.
 
 \begin_layout Subsection
 Satzzeichen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17028,7 +16970,7 @@ Satzzeichen
 
 \begin_layout Subsubsection
 Abkürzungen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17038,7 +16980,7 @@ Abkurzungen@Abkürzungen
 \end_inset
 
  und Satzenden
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17214,7 +17156,7 @@ Anmerkung
 
 \begin_layout Subsubsection
 Anführungszeichen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17451,7 +17393,7 @@ Strg+Umschalt+
 
 \begin_layout Subsection
 Ligaturen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17545,7 +17487,7 @@ Dorffest
 Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
 Ligaturtrenner
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17600,7 +17542,7 @@ fest
 
 \begin_layout Subsection
 Schusterjungen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17610,7 +17552,7 @@ Schusterjungen
 \end_inset
 
  und Hurenkinder
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17715,7 +17657,7 @@ Notizen, Abbildungen, Tabellen und Gleitobjekte
 
 \begin_layout Section
 Notizen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17774,7 +17716,7 @@ LyX-Notiz
 \end_inset
 
  sie erscheint nur in LyX.
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17820,7 +17762,7 @@ grauer
 \end_inset
 
  Text gedruckt.
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17830,7 +17772,7 @@ Notiz!Grauschrift
 \end_inset
 
  
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17856,7 +17798,7 @@ Eingebettete Objekte
 
 \begin_layout Section
 Fußnoten
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17993,7 +17935,7 @@ Hinweis: In LyX und LaTeX ist ein Gleitobjekt nicht einfach ein gewöhnlicher
 
 \begin_layout Section
 Randnotizen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -18066,7 +18008,7 @@ hkeiten.
 
 \begin_layout Section
 Abbildungen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -18076,7 +18018,7 @@ Abbildungen
 \end_inset
 
  und eingebundene Grafiken
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -18268,7 +18210,7 @@ name "Tab:Maßeinheiten-zur-Bildskalierung"
 \end_inset
 
 Maßeinheiten zur Bildskalierung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -18289,7 +18231,7 @@ Bildskalierung
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="45mm">
 <row>
@@ -18559,7 +18501,7 @@ dd)
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row>
@@ -18968,7 +18910,7 @@ Objekte
 
 \begin_layout Subsection
 Abbildungen aus der Zwischenablage
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19001,7 +18943,7 @@ Einfügen
 
 \begin_layout Subsection
 Grafikformate
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19080,7 +19022,7 @@ Aliasing
 
 \begin_layout Itemize
 BMP
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19094,7 +19036,7 @@ BMP
 
 \begin_layout Itemize
 GIF
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19108,7 +19050,7 @@ GIF
 
 \begin_layout Itemize
 JP[E]G
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19123,7 +19065,7 @@ JPEG
 
 \begin_layout Itemize
 PNG
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19138,7 +19080,7 @@ er Kompression, auch für Webseiten geeignet
 
 \begin_layout Itemize
 PSD
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19152,7 +19094,7 @@ PSD
 
 \begin_layout Itemize
 TIF[F]
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19167,7 +19109,7 @@ TIFF
 
 \begin_layout Itemize
 XCF
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19204,7 +19146,7 @@ Grafiken
 
 \begin_layout Itemize
 EPS
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19218,7 +19160,7 @@ EPS
 
 \begin_layout Itemize
 PDF
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19232,7 +19174,7 @@ PDF
 
 \begin_layout Itemize
 SVG
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19252,7 +19194,7 @@ Pixelbilder lassen sich nicht oder nur stark vereinfacht in Vektorgrafiken
 
 \begin_layout Subsection
 Abbildungseinstellungen gruppieren
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19334,7 +19276,7 @@ t
 ung von
 \family default
  Abbildungen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19844,7 +19786,7 @@ Gleitobjekt-Platzierung
 
 \begin_layout Section
 Tabellen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19865,7 +19807,7 @@ name "Tabellen"
 
 \begin_layout Standard
 LyX besitzt die Fähigkeit, Tabellen im WYSIWYM
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19917,7 +19859,7 @@ abgetrennt
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -20127,7 +20069,7 @@ Das Dialogfenster
 Tabellen-Einstellungen
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20808,7 +20750,7 @@ Sie können den Mehrfachspalten-Modus auch verwenden, um für eine einzelne
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -21066,7 +21008,7 @@ name "Tab:Zellen-um-90°-drehen"
 \end_inset
 
 Zellen um 90° drehen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21087,7 +21029,7 @@ Tabellen ! -zelle drehen
 \noindent
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="12">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -21919,7 +21861,7 @@ reference "Tab:Zellen-um-90°-drehen"
 
 \begin_layout Subsection
 Was kann eine Zelle
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21953,7 +21895,7 @@ Abschnitt*
 
 \begin_layout Subsection
 Ausschneiden
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21963,7 +21905,7 @@ Tabellen ! ausschneiden
 \end_inset
 
  und Einfügen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21992,7 +21934,7 @@ Umschalt
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -22094,7 +22036,7 @@ Umschalt
  
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -22214,7 +22156,7 @@ en.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -22308,7 +22250,7 @@ en.
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -22400,7 +22342,7 @@ en.
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -22572,7 +22514,7 @@ Sie können auch eine ganze Tabelle auf einmal kopieren, indem Sie den Cursor
 
 \begin_layout Subsection
 Mehrzeiliger Text in Tabellen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22587,7 +22529,7 @@ Tabellen ! mehrzeiliger Text
 \begin_layout Standard
 Mehrzeiliger Text mit Zeilenumbruch ist auch in Tabellen möglich, wenn auch
  nicht im gewohnten WYSIWYM
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22686,7 +22628,7 @@ name "Tab:Mehrzeilige-Tabelle"
 \end_inset
 
 Mehrzeilige Tabelle
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22708,7 +22650,7 @@ Tabellen ! mehrzeilig
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="block" valignment="top" width="3cm">
 <column alignment="block" valignment="top" width="3cm">
 <row>
@@ -22934,7 +22876,7 @@ Erste
 Kopfzeile
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22961,7 +22903,7 @@ Die aktuelle Zeile sowie alle darüberliegenden, die keine Sonderoptionen
 Kopfzeile
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22989,7 +22931,7 @@ Kopfzeile
 Fußzeile
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23021,7 +22963,7 @@ Letzte
 Fußzeile
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23076,7 +23018,7 @@ aktuellen
 Zeile:
 \family default
  manueller Seitenumbruch.
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23195,7 +23137,7 @@ Lange
 Tabelle
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23267,7 +23209,7 @@ Objekte
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="12" columns="3">
-<features islongtable="true" lastFootEmpty="true">
+<features islongtable="true" lastFootEmpty="true" longtabularalignment="center">
 <column alignment="block" valignment="top" width="5cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -23697,7 +23639,7 @@ Tabellen in
 Gleitobjekt
 \family default
 -Umgebungen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23802,7 +23744,7 @@ Eine gleitende Tabelle
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -23883,7 +23825,8 @@ Alina
 \begin_layout Plain Layout
 \begin_inset Formula $\left[\begin{array}{cc}
 a & b\\
-c & d\end{array}\right]$
+c & d
+\end{array}\right]$
 \end_inset
 
 
@@ -23918,7 +23861,7 @@ c & d\end{array}\right]$
 
 \begin_layout Subsubsection
 Tabellentitel
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23997,7 +23940,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -24194,7 +24137,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -24335,7 +24278,7 @@ reference "Platzierung-von-Gleitobjekt-Umgebungen"
 
 \begin_layout Section
 Gleitobjekte
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24365,7 +24308,7 @@ Objekte, Kapitel
 
 \begin_layout Section
 Minipage
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24399,7 +24342,7 @@ Kapitel
 
 \begin_layout Chapter
 Mathematische Formeln
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24418,7 +24361,7 @@ Grundlagen
 \begin_layout Standard
 Mathematische Ausdrücke mit LyX zu schreiben ist jetzt fast vollständig
  WYSIWYM
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24429,7 +24372,7 @@ WYSIWYM
 
 .
  Sie können das mit dem Mathematik-Editor
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24443,7 +24386,7 @@ Mathematik!Editor
 
 \begin_layout Subsection
 Mathed starten
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24593,7 +24536,7 @@ B
 
 \begin_layout Standard
 Dann gibt es noch die Mathe-Kontrollflächen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24636,7 +24579,7 @@ Mathe
 
 \begin_layout Subsection
 Wie man sich in einer Formel
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24682,7 +24625,8 @@ Leertaste
  oder eine Matrix 
 \begin_inset Formula $\left[\begin{array}{cc}
 1 & 2\\
-3 & 4\end{array}\right]$
+3 & 4
+\end{array}\right]$
 \end_inset
 
 ), und bleibt innerhalb von Mathed.
@@ -24806,7 +24750,7 @@ Leertaste
  sprechen: es mag sein, dass Sie Leerzeichen erzeugen wollen, die über das
  hinausgehen, was LaTeX normalerweise erzeugt.
  Wir empfehlen das natürlich nicht, weil das WYSIWYM
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24891,7 +24835,8 @@ Man kann viele teilweise gefüllte Mathed-Strukturen wie diese Matrix verlassen:
 \left(\begin{array}{ccc}
 \lambda_{1}\\
  & \ddots\\
- &  & \lambda_{n}\end{array}\right).\]
+ &  & \lambda_{n}
+\end{array}\right).\]
 
 \end_inset
 
@@ -24903,7 +24848,7 @@ Wenn Sie eine Teilstruktur, die nur teilweise gefüllt ist, verlassen oder
 
 \begin_layout Subsection
 Text auswählen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24937,7 +24882,7 @@ Oder Sie machen es wie gewohnt mit der Maus, obwohl dabei manchmal alles
 
 \begin_layout Subsection
 Exponenten
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24947,7 +24892,7 @@ Exponenten
 \end_inset
 
  und Indizes
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25045,7 +24990,7 @@ Leertaste
 
 \begin_layout Subsection
 Brüche
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25111,7 +25056,8 @@ Mathe-Werkzeugleiste
 \begin_inset Formula \[
 \left[\frac{1}{\left(\begin{array}{cc}
 2 & 3\\
-4 & 5\end{array}\right)}\right]\]
+4 & 5
+\end{array}\right)}\right]\]
 
 \end_inset
 
@@ -25120,7 +25066,7 @@ Mathe-Werkzeugleiste
 
 \begin_layout Subsection
 Wurzeln
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25173,7 +25119,7 @@ root
 
 \begin_layout Subsection
 Summen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25183,7 +25129,7 @@ Summen
 \end_inset
 
  und Integrale
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25347,7 +25293,7 @@ Mathe-Werkzeugleiste
 Die 
 \family sans
 Mathe-Kontrollflächen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25715,7 +25661,7 @@ reference "Andere-Mathe-Symbole"
 Die Mathe-Werkzeugleiste
 \family sans
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26008,7 +25954,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 
 \begin_layout Subsection
 Andere mathematische Symbole
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26067,7 +26013,7 @@ Makromodus.
 
 \begin_layout Standard
 Inzwischen werden fast alle in LaTeX verfügbaren Symbole WYSIWYM
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26147,7 +26093,7 @@ Handbuchergänzungen
 
 \begin_layout Subsection
 Weitere Symbole
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26281,7 +26227,7 @@ Mathe-Werkzeugleiste
 
 \begin_layout Subsection
 Mathematische Funktionen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26371,7 +26317,7 @@ sint
 
 \begin_layout Subsection
 Akzente
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26431,7 +26377,7 @@ name "Tab:Akzente"
 \end_inset
 
 Akzente
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26452,7 +26398,7 @@ Akzente
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -26825,7 +26771,7 @@ vector
 
 \begin_layout Section
 Klammern
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26835,7 +26781,7 @@ Klammern
 \end_inset
 
  und Dekorationen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26873,7 +26819,8 @@ Es gibt in LyX mehrere Klammerarten.
 \begin_inset Formula \[
 \left[\begin{array}{cc}
 1 & 2\\
-3 & 4\end{array}\right].\]
+3 & 4
+\end{array}\right].\]
 
 \end_inset
 
@@ -27001,7 +26948,7 @@ Einfügen
 
 \begin_layout Section
 Gruppierung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27058,7 +27005,7 @@ x^y^z
 
 \begin_layout Section
 Matrizen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27068,7 +27015,7 @@ Matrizen
 \end_inset
 
  und mehrzeilige Gleichungen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27120,7 +27067,8 @@ Mathe-Matrix
 \left(\begin{array}{ccc}
 1 & 2 & 3\\
 4 & 5 & 6\\
-7 & 8 & 9\end{array}\right).\]
+7 & 8 & 9
+\end{array}\right).\]
 
 \end_inset
 
@@ -27241,7 +27189,8 @@ nicht
 \begin{array}{lcr}
 diese & diese & diese\\
 Spalte & Spalte & Spalte\\
-ist\: linksb\ddot{u}ndig & ist\: zentriert & ist\: rechtsb\ddot{u}ndig\end{array}.\]
+ist\: linksb\ddot{u}ndig & ist\: zentriert & ist\: rechtsb\ddot{u}ndig
+\end{array}.\]
 
 \end_inset
 
@@ -27270,7 +27219,8 @@ cases
 \begin_inset Formula \begin{eqnarray*}
 f(x) & := & \begin{cases}
 \frac{1}{q} & \mathrm{f}\ddot{\mathrm{u}}\mathrm{r}\, x=\frac{p}{q}\,(\mathrm{p},\,\mathrm{q}\,\,\mathrm{ganzzahlig})\\
-0 & \mathrm{falls}\, x\,\mathrm{irrational}\,\mathrm{ist}\end{cases}\end{eqnarray*}
+0 & \mathrm{falls}\, x\,\mathrm{irrational}\,\mathrm{ist}
+\end{cases}\end{eqnarray*}
 
 \end_inset
 
@@ -27330,7 +27280,8 @@ Tab
  Hier ist ein Beispiel:
 \begin_inset Formula \begin{eqnarray*}
 3 & = & 1+2\\
-4+5 & = & 9\end{eqnarray*}
+4+5 & = & 9
+\end{eqnarray*}
 
 \end_inset
 
@@ -27417,7 +27368,7 @@ Strg+Eingabe
 
 \begin_layout Section
 Gleichungen nummerieren
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27427,7 +27378,7 @@ Gleichungen!nummerieren
 \end_inset
 
  und markieren
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27535,7 +27486,8 @@ reference "eq:fourth-eqn"
 \begin_inset Formula \begin{eqnarray}
 1 & = & 3-2\\
 2 & = & 4-2\\
-4 & \leq & 7.\end{eqnarray}
+4 & \leq & 7.
+\end{eqnarray}
 
 \end_inset
 
@@ -27563,7 +27515,8 @@ N
 1 & = & 4-3\label{eq:fourth-eqn}\\
 2 & = & 7-5\\
 1 & = & e^{2\pi i}\nonumber \\
-16 & \equiv & 2\,(mod\,7)\label{eq:fifth-eqn}\end{eqnarray}
+16 & \equiv & 2\,(mod\,7)\label{eq:fifth-eqn}
+\end{eqnarray}
 
 \end_inset
 
@@ -27587,7 +27540,7 @@ reference "eq:fifth-eqn"
 
 \begin_layout Section
 Benutzerdefinierte Mathe-Makros
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27628,7 +27581,7 @@ Mathe-Modus
 
 \begin_layout Subsection
 Schriftstile
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27658,7 +27611,7 @@ Mathe-Werkzeugleiste
 \family default
  oder Tastaturbefehle auswählen.
  Nicht alle erscheinen genau WYSIWYM
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27749,7 +27702,7 @@ name "Tab:Mathematik-Schriftstile"
 \end_inset
 
 Mathematik-Schriftstile
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27772,7 +27725,7 @@ mathematische ! Schriftstile
 \family typewriter
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="0pt">
@@ -28378,7 +28331,7 @@ alpha}
 
 \begin_layout Subsection
 Mathematischer Textmodus
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28443,7 +28396,8 @@ text
 \begin_inset Formula \[
 f(x)=\begin{array}{rl}
 x & \textrm{wenn ich es sage}\\
--x & \textrm{sonst}\end{array}\]
+-x & \textrm{sonst}
+\end{array}\]
 
 \end_inset
 
@@ -28459,7 +28413,7 @@ name "sub:Schriftgrößen-Mathe"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28645,7 +28599,7 @@ Dies gilt auch für Mathematikschriften in Titeln usw.
 
 \begin_layout Section
 AMS-LaTeX
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28746,7 +28700,7 @@ mathbb
 
  für reelle und komplexe Zahlen.
  Diese Symbole werden nicht alle WYSIWYM
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28851,7 +28805,7 @@ Weitere Werkzeuge
 
 \begin_layout Section
 Querverweise
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29136,7 +29090,7 @@ Bemerkung:
 prettyref
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29296,7 +29250,7 @@ Eingebettete Objekte
 
 \begin_layout Section
 Inhaltsverzeichnis
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29558,7 +29512,7 @@ reference "Gliederung"
 
 \begin_layout Subsection
 Abbildungs-
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29568,7 +29522,7 @@ Abbildungs!-verzeichnis
 \end_inset
 
 , Tabellen-
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29578,7 +29532,7 @@ Tabellen!verzeichnis@-verzeichnis
 \end_inset
 
  und Algorithmenverzeichnisse
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29667,7 +29621,7 @@ name "URLs"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29758,7 +29712,7 @@ Der Text eines URLs wird immer im Schreibmaschinenstil gedruckt.
 
 \begin_layout Subsection
 Hyperlink
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29913,7 +29867,7 @@ blue
 
 \begin_layout Section
 Anhang
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29974,7 +29928,7 @@ reference "LyX-Einstellungen"
 
 \begin_layout Section
 Literaturverzeichnis
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30196,7 +30150,7 @@ Handbuchergänzungen
 
 \begin_layout Subsection
 Literaturverzeichnis-Datenbanken (BibTeX)
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30206,7 +30160,7 @@ Literaturverzeichnis ! Datenbanken
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30216,7 +30170,7 @@ Literaturverzeichnis ! BibTeX
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30481,7 +30435,7 @@ alphadin.bst
 
 \begin_layout Subsection
 Literaturverzeichnis-Gestaltung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30570,7 +30524,7 @@ Handbuchergänzungen
 
 \begin_layout Section
 Stichwortverzeichnisse
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30750,7 +30704,7 @@ Achten Sie darauf, dass sich zwischen dem zu indizierenden Wort im Text
 
 \begin_layout Subsection
 Stichworte gruppieren
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30858,7 +30812,7 @@ Das Ausrufezeichen
 
 \begin_layout Subsection
 Mehrere Seiten
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30939,7 +30893,7 @@ Die Befehle
 
 \begin_layout Subsection
 Querverweise
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30954,7 +30908,7 @@ Stichwort ! Querverweis
 \begin_layout Standard
 Es ist auch möglich, auf ein anderes Stichwort zu verweisen.
  Wenn Sie zum Beispiel irgendwo den Begriff GIF
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31008,7 +30962,7 @@ GIF|see{Grafikformate}
 
 \begin_layout Subsection
 Stichwort-Reihenfolge
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31185,7 +31139,7 @@ OrgIndex{#1}}
 
 \begin_layout Subsection
 Stichwort formatieren
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31199,7 +31153,7 @@ Stichwort ! formatieren
 
 \begin_layout Standard
 Sie können ein Stichwort wie normalen Text formatieren.
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31234,7 +31188,7 @@ reference "Mediävalziffern-verwenden"
 \end_inset
 
 ) ausgibt.
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31485,7 +31439,7 @@ name "sub:Stichwort-Programm"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31590,7 +31544,7 @@ name "Nomenklatur/Glossar"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31600,7 +31554,7 @@ Nomenklatur
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31687,7 +31641,7 @@ Symbol
 
 \begin_layout Subsection
 Nomenklatur-Einträge sortieren
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31794,7 +31748,7 @@ nomencl
 
 \begin_layout Subsection
 Nomenklatur-Optionen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32010,7 +31964,7 @@ nomnorefeqpage schaltet die entsprechende Option ab.
 
 \begin_layout Subsection
 Glossar drucken
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32176,7 +32130,7 @@ key "nomencl"
 
 \begin_layout Section
 Zweige
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32491,7 +32445,7 @@ Mathe
 
 \begin_layout Section
 PDF-Eigenschaften
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32525,7 +32479,7 @@ PDF-Eigenschaften
 hyperref
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32658,7 +32612,7 @@ key "hyperref"
 
 \begin_layout Section
 TeX-Code und LaTeX-Syntax 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32668,7 +32622,7 @@ LaTeX!-Syntax
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32689,7 +32643,7 @@ name "TeX-Code-Kästchen"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33083,7 +33037,7 @@ Das Ergebnis ist, dass das Paket
 caption
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33320,7 +33274,7 @@ netpbm
 
 \begin_layout Section
 Rechtschreibprüfung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33574,7 +33528,7 @@ Außerdem gibt es eine Anzeige für den Fortschritt der Rechtschreibprüfung.
 
 \begin_layout Subsection
 Optionen für die Rechtschreibprüfung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33622,7 +33576,7 @@ Rechtschreibprüfung
 
 \begin_layout Subsubsection
 Rechtschreibprogramm
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33632,7 +33586,7 @@ Rechtschreibprogramm
 \end_inset
 
 /Wörterbuch
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34053,7 +34007,7 @@ Persönliches
 \end_inset
 
 Wörterbuch
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34210,7 +34164,7 @@ Ersetzen
 
 \begin_layout Section
 Thesaurus
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34228,7 +34182,7 @@ Thesaurus gibt es zur Zeit nur für die englische Sprache.
 
 \begin_layout Section
 Änderungsverfolgung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34238,7 +34192,7 @@ Anderungsverfolgung@Änderungsverfolgung
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34629,7 +34583,7 @@ Um Änderungen in der Druckausgabe anzeigen zu können, benötigen Sie das
 dvipost
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34651,7 +34605,7 @@ key "TeXCatalogue"
 
 \begin_layout Section
 Internationale Unterstützung
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34724,7 +34678,7 @@ Hilfe
 
 \begin_layout Subsection
 Sprachoptionen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34816,7 +34770,7 @@ reference "Zeichentabellen"
 
 \begin_layout Standard
 LyX unterstützt auch die Ausgabe von Unicode
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34845,7 +34799,7 @@ UTF
 utf8x
 \family default
  für CJK-Sprachen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34864,7 +34818,7 @@ utf8-plain
 inputenc
 \family default
 -Paketes
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34914,7 +34868,7 @@ OK
 
 \begin_layout Subsection
 Tastaturtabellen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34960,7 +34914,7 @@ Zweite
 
 \begin_layout Subsection
 Zeichentabellen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35000,7 +34954,7 @@ Außer den Werkzeugleisten werden hier Befehle beschrieben, die im Dokument
 
 \begin_layout Section
 Die Werkzeugleisten
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36322,7 +36276,7 @@ Mathe
  Handbuchs beschrieben, kann dieses Fenster zum Eingeben von Befehlen benutzt
  werden.
  Das ist besonders für die LFUNen,
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36399,7 +36353,7 @@ k
 \family sans
 ontrolle\SpecialChar \menuseparator
 Registrieren
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36421,7 +36375,7 @@ Handbuchergänzungen.
 
 \family sans
 Importieren
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36443,7 +36397,7 @@ Handbuchergänzungen.
 
 \family sans
 Exportieren
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36836,7 +36790,7 @@ Im Browser muss der Knopf für neu laden angeklickt werden, damit die Änderung
 
 \family sans
 OpenDocument
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36994,7 +36948,7 @@ OpenDocument
 
 \begin_layout Subsection
 Ansicht in linke und rechte/obere und untere Hälfte teilen
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -37143,7 +37097,7 @@ ff beschrieben.
 
 \begin_layout Subsection
 Geöffnete Dokumente
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -37175,7 +37129,7 @@ Einfügen
 Mathe\SpecialChar \menuseparator
 Cases/AMS align, alignat, flalign, gather und multline-Um\SpecialChar \-
 gebung
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -37218,7 +37172,7 @@ Hierfür benötigen Sie das LaTeX-Paket
 tipa.sty
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -37298,7 +37252,7 @@ bjekt
 
 \family sans
 Algorithmus
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -37385,7 +37339,7 @@ Damit können Sie ein anderes LyX-Dokument in ein bestehendes LyX-Dokument
 
 \family sans
 Einfacher Text
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -37403,7 +37357,7 @@ Funktioniert genauso wie
 Datei\SpecialChar \menuseparator
 Importieren\SpecialChar \menuseparator
 Einfacher Text
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -37558,7 +37512,7 @@ Objekte
 
 \family sans
 Box
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -37579,7 +37533,7 @@ Eingebettete Objekte.
 
 \begin_layout Subsection
 Nomenklatureintrag
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -37664,7 +37618,7 @@ Navigieren
 
 \family sans
 Lesezeichen
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -37689,7 +37643,7 @@ löschen und dorthin gehen.
 
 \family sans
 Nächste Notiz
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -37771,7 +37725,7 @@ nklicken zu einem in den Verzeichnissen genannten Punkt gehen.
 
 \family sans
 Dokument
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -39431,7 +39385,7 @@ name "Tastaturkürzel-bearbeiten"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40256,7 +40210,7 @@ dvips
 
 \begin_layout Subsection
 Datumsformat
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41078,7 +41032,7 @@ Sprache
 inputenc
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41109,7 +41063,7 @@ utf8x Diese Unicode-Variante basiert auf dem LaTeX-Paket
 ucs
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41127,7 +41081,7 @@ UTF8 Diese Unicode-Variante basiert auf dem LaTeX-Paket
 CJK
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41283,7 +41237,7 @@ reference "Literaturverzeichnis-Datenbanken-(BibTeX)"
 
 \begin_layout Section
 PDF-Eigenschaften
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41487,7 +41441,7 @@ Mit diesen Optionen können Sie LyX zwingen, die LaTeX-Pakete
 amsmath
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41501,7 +41455,7 @@ LaTeX! -Paket ! amsmath
 esint
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41674,7 +41628,7 @@ reference "LaTeX-Syntax"
 
 \begin_layout Chapter
 In LyX verfügbare Maßeinheiten
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41738,7 +41692,7 @@ Maßeinheiten
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row>
@@ -42238,6 +42192,7 @@ em)
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "lyxcredit"
@@ -42271,6 +42226,7 @@ http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/CREDITS
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexbook"
@@ -42287,6 +42243,7 @@ LaTeX: A Document Preparation System.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexcompanion"
@@ -42302,6 +42259,7 @@ The LaTeX Companion.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexguide"
@@ -42312,6 +42270,7 @@ A Guide to LaTeX2e, Kopka and Daly.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "texbook"
@@ -42326,6 +42285,7 @@ The TeXbook
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latex-einführung"
@@ -42342,6 +42302,7 @@ lage
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latex-praxisbuch"
@@ -42356,6 +42317,7 @@ LaTeX-Praxisbuch
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "TeXCatalogue"
@@ -42381,6 +42343,7 @@ http://www.ctan.org/tex-archive/help/Catalogue/bytopic.html
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "LaTeXFAQ"
@@ -42406,6 +42369,7 @@ http://www.tex.ac.uk/cgi-bin/texfaq2html
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "makeindex"
@@ -42443,6 +42407,7 @@ http://tug.ctan.org/indexing/makeindex/doc/manpages.dvi
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "xindy"
@@ -42480,6 +42445,7 @@ http://www.xindy.org/documentation.html
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "caption"
@@ -42499,7 +42465,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.
 caption
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -42527,6 +42493,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "fancyhdr"
@@ -42546,7 +42513,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhd
 fancyhdr
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -42574,6 +42541,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hyperref"
@@ -42597,7 +42565,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperre
 hyperref
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -42625,6 +42593,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "nomencl"
@@ -42644,7 +42613,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.
 nomencl
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -42672,6 +42641,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "tipa"
@@ -42691,7 +42661,7 @@ target "http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf"
 tipa
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -42719,6 +42689,7 @@ http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "wrapfig"
@@ -42738,7 +42709,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.
 wrapfig
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -42766,6 +42737,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.sty
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "XeTeX"
@@ -42799,6 +42771,7 @@ http://wiki.lyx.org/LyX/XeTeX
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Arabic"
@@ -42832,6 +42805,7 @@ http://wiki.lyx.org/Windows/Arabic
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Armenian"
@@ -42865,6 +42839,7 @@ http://wiki.lyx.org/Windows/Armenian
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Farsi"
@@ -42898,6 +42873,7 @@ http://wiki.lyx.org/Windows/Farsi
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Hebrew"
@@ -42931,6 +42907,7 @@ http://wiki.lyx.org/Windows/Hebrew
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Japanese"
@@ -42964,6 +42941,7 @@ http://wiki.lyx.org/Windows/Japanese
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Latvian"
@@ -42997,6 +42975,7 @@ http://wiki.lyx.org/Windows/Latvian
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Lithuanian"
@@ -43030,6 +43009,7 @@ http://wiki.lyx.org/Windows/Lithuanian
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Mongolian"
@@ -43063,6 +43043,7 @@ http://wiki.lyx.org/Windows/Mongolian
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Vietnamese"
@@ -43096,6 +43077,7 @@ http://wiki.lyx.org/Windows/Vietnamese
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "LyX-func"
@@ -43129,6 +43111,7 @@ http://wiki.lyx.org/LyX/LyxFunctionList
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "NewInLyX16"
@@ -43343,6 +43326,7 @@ captions<Dokumentsprache>
 
 \begin_inset CommandInset index_print
 LatexCommand printindex
+type "idx"
 
 \end_inset
 
