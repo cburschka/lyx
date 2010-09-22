@@ -3,7 +3,7 @@
 # elsarticle textclass definition file.
 # Author: Uwe Stöhr (uwestoehr@web.de)
 
-Format 11
+Format 28
 
 Columns			1
 Sides			1
@@ -149,6 +149,7 @@ Style Paragraph
 	CopyStyle		Subsection*
 	Category		BackMatter
 	LatexName		paragraph
+	TocLevel 4
 End
 
 
