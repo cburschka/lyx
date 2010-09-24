@@ -665,7 +665,6 @@ Style Block
 
   LatexName        block
   LabelString      "Block:"
-  RequiredArgs     1
   
   ParSkip          0.5
   TopSep           1
@@ -692,7 +691,6 @@ Style ExampleBlock
 
   LatexName        exampleblock
   LabelString      "Example Block:"
-  RequiredArgs     1
   
   ParSkip          0.5
   TopSep           1
@@ -723,7 +721,6 @@ Style AlertBlock
 
   LatexName        alertblock
   LabelString      "Alert Block:"
-  RequiredArgs     1
   
   ParSkip          0.5
   TopSep           1
