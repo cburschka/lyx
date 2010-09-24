@@ -111,8 +111,6 @@ void IconPalette::addButton(QAction * action)
 	QToolButton * tb = new QToolButton;
 	tb->setAutoRaise(true);
 	tb->setDefaultAction(action);
-	QToolButton * pb = qobject_cast<QToolButton *>(parentWidget());
-	tb->setIconSize(pb->iconSize());
 	// trigger tooltip (children of popups do not receive mousemove events)
 	tb->setMouseTracking(true);
 
@@ -121,6 +119,7 @@ void IconPalette::addButton(QAction * action)
 	QToolBar * toolbar = qobject_cast<QToolBar *>(parentWidget()->parentWidget());
 	connect(toolbar, SIGNAL(iconSizeChanged(const QSize &)),
 		tb, SLOT(setIconSize(const QSize &)));
+	tb->setIconSize(toolbar->iconSize());
 
 	int const i = actions_.size();
 	int const ncols = qMin(6, i);
