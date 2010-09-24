@@ -50,7 +50,7 @@ GuiMathMatrix::GuiMathMatrix(GuiView & lv)
 	connect(columnsSB, SIGNAL(valueChanged(int)),
 		table, SLOT(setNumberColumns(int)));
 	connect(rowsSB, SIGNAL(valueChanged(int)),
-		this, SLOT(rowsChanged(int)));
+		this, SLOT(change_adaptor()));
 	connect(columnsSB, SIGNAL(valueChanged(int)),
 		this, SLOT(columnsChanged(int)) );
 	connect(valignCO, SIGNAL(highlighted(QString)),
@@ -71,20 +71,14 @@ void GuiMathMatrix::columnsChanged(int)
 }
 
 
-void GuiMathMatrix::rowsChanged(int)
-{
-}
-
-
 void GuiMathMatrix::decorationChanged(int deco)
 {
 	// a matrix with a decoration cannot have a vertical alignment
 	if (deco != 0) {
-		alignmentGB->setEnabled(false);
+		valignCO->setEnabled(false);
 		valignCO->setCurrentIndex(1);
-		halignED->clear();
 	} else
-		alignmentGB->setEnabled(true);
+		valignCO->setEnabled(true);
 }
 
 
@@ -99,15 +93,16 @@ void GuiMathMatrix::slotOK()
 	int const nx = columnsSB->value();
 	int const ny = rowsSB->value();
 	// a matrix without a decoration is an array,
-	// otherwise it is an AMS matrix that cannot have a vertical alignment
-	if (decorationCO->currentIndex() == 0) {
-		char v_align_c[] = "tcb";
-		char const c = v_align_c[valignCO->currentIndex()];
-		QString const sh = halignED->text();
-		string const str = fromqstr(
-			QString("%1 %2 %3 %4").arg(nx).arg(ny).arg(c).arg(sh));
-		dispatch(FuncRequest(LFUN_MATH_MATRIX, str));
-	} else {
+	// otherwise it is an AMS matrix
+	// decorated matrices cannot have a vertical alignment
+	
+	char v_align_c[] = "tcb";
+	char const c = v_align_c[valignCO->currentIndex()];
+	QString const sh = halignED->text();
+	string const str = fromqstr(
+		QString("%1 %2 %3 %4").arg(nx).arg(ny).arg(c).arg(sh));
+
+	if (decorationCO->currentIndex() != 0) {
 		int const deco = decorationCO->currentIndex();
 		QString deco_name;
 		switch (deco) {
@@ -122,10 +117,22 @@ void GuiMathMatrix::slotOK()
 			case 5: deco_name = "Vmatrix";
 				break;
 		}
-		string const str_ams = fromqstr(
-			QString("%1 %2 %3").arg(nx).arg(ny).arg(deco_name));
-		dispatch(FuncRequest(LFUN_MATH_AMS_MATRIX, str_ams));
+		// only if a special alignment is set create a 1x1 AMS array in which
+		// a normal array will be created, otherwise create just a normal AMS array
+		if (sh.contains('l') > 0 || sh.contains('r') > 0) {
+			string const str_ams = fromqstr(
+				QString("%1 %2 %3").arg(int(1)).arg(int(1)).arg(deco_name));
+			dispatch(FuncRequest(LFUN_MATH_AMS_MATRIX, str_ams));
+		} else {
+			string const str_ams = fromqstr(
+				QString("%1 %2 %3").arg(nx).arg(ny).arg(deco_name));
+			dispatch(FuncRequest(LFUN_MATH_AMS_MATRIX, str_ams));
+			close();
+			return;
+		}
 	}
+	// create the normal array
+		dispatch(FuncRequest(LFUN_MATH_MATRIX, str));
 	close();
 }
 

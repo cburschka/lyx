@@ -37,7 +37,6 @@ public Q_SLOTS:
 	void slotOK();
 	void slotClose();
 	void columnsChanged(int);
-	void rowsChanged(int);
 	void decorationChanged(int);
 	void change_adaptor();
 };
