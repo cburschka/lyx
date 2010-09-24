@@ -5133,7 +5133,8 @@ Math\SpecialChar \menuseparator
 Matrix
 \family default
 .
- You will be asked for the number of matrix columns and rows and the alignment.
+ In the matrix dialog you can specify the number of columns and rows, the
+ alignment and the decoration.
  The vertical alignment is hereby only of importance for matrices in inline
  formulas:
 \end_layout
@@ -5288,7 +5289,12 @@ arg   "newline-insert newline"
 \begin_inset VSpace bigskip
 \end_inset
 
-Parentheses around a matrix can can either be created with the commands
+The 
+\family sans
+Decoration
+\family default
+ adds parentheses in the selected style around the matrix.
+ Alternatively, parentheses can can either be created with the commands
  
 \series bold
 
@@ -5752,6 +5758,10 @@ vmatrix
 \series default
  is inserted, a blue box appears between two vertical lines where the matrix
  is inserted.
+\begin_inset Newline newline
+\end_inset
+
+Note that decorated matrices ignore the vertical alignment.
 \end_layout
 
 \begin_layout Standard

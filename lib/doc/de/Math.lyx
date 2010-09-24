@@ -5127,7 +5127,8 @@ Mathe\SpecialChar \menuseparator
 Matrix
 \family default
  eingefügt werden.
- Sie werden nach der Spalten- und Zeilenanzahl und der Ausrichtung gefragt.
+ Sie werden nach der Spalten- und Zeilenanzahl, der Ausrichtung und der
+ Verzierung gefragt.
  Die vertikale Ausrichtung ist dabei nur bei Matrizen in eingebetteten Formeln
  von Bedeutung:
 \end_layout
@@ -5286,7 +5287,12 @@ Strg+Enter
 \begin_inset VSpace bigskip
 \end_inset
 
-Klammern um eine Matrix können entweder mit den Befehlen 
+Die 
+\family sans
+Verzierung
+\family default
+ fügt Klammern um die Matrix in der ausgewählten Art hinzu.
+ Alternativ können Klammern entweder mit den Befehlen 
 \series bold
 
 \backslash
@@ -5730,6 +5736,10 @@ vmatrix
 \series default
  eingegeben, erscheint ein blaues Kästchen zwischen zwei senkrechten Strichen,
  in das die Matrix eingefügt wird.
+\begin_inset Newline newline
+\end_inset
+
+Man beachte, dass verzierte Matrizen die vertikale Ausrichtung ignorieren.
 \end_layout
 
 \begin_layout Standard

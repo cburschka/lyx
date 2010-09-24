@@ -5112,8 +5112,8 @@ Ecuación\SpecialChar \menuseparator
 Matriz
 \family default
 .
- Aparece una ventana en la que se pide el número de filas y columnas y la
- alineación.
+ Aparece una ventana en la que se pide el número de filas y columnas, la
+ alineación y la decoración.
  La alineación vertical sólo es relevante para matrices en línea:
 \end_layout
 
@@ -5263,10 +5263,15 @@ Ctrl+Retorno
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Se pueden poner paréntesis alrededor de una matriz con los comandos 
+\lang english
+The 
+\family sans
+Decoration
+\family default
+ adds parentheses in the selected style around the matrix.
+ Alternatively,
+\lang spanish
+ se pueden generar paréntesis con los comandos 
 \series bold
 
 \backslash
@@ -5748,6 +5753,12 @@ vmatrix
 \series default
 , aparece un recuadro azul entre dos líneas verticales donde se inserta
  la matriz.
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+Note that decorated matrices ignore the vertical alignment.
 \end_layout
 
 \begin_layout Standard

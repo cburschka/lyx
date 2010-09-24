@@ -5071,8 +5071,8 @@ Matrice
 mathématique
 \family default
 .
- On vous demande alors le nombre de lignes et de colonnes de la matrice
- et leur alignement.
+ On vous demande alors le nombre de lignes et de colonnes de la matrice,
+ de leur alignement et de la décoration.
  L'alignement vertical n'est en fait important que pour les matrices qui
  se trouvent dans une formule en ligne:
 \end_layout
@@ -5237,7 +5237,16 @@ Ctrl-Entrée
 \begin_inset VSpace bigskip
 \end_inset
 
-On peut ajouter des parenthèses autour d'une matrice, soit avec les commandes
+La 
+\family sans
+Décoration
+\family default
+ 
+\lang english
+adds parentheses in the selected style around the matrix.
+ Alternatively
+\lang french
+, on peut ajouter des parenthèses autour d'une matrice, soit avec les commandes
  
 \series bold
 
@@ -5669,6 +5678,12 @@ vmatrix,
 \series default
  une boîte bleue apparaît entre deux lignes verticales où la matrice est
  insérée.
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+Note that decorated matrices ignore the vertical alignment.
 \end_layout
 
 \begin_layout Standard
