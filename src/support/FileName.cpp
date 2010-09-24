@@ -1109,7 +1109,7 @@ string DocFileName::mangledFileName(string const & dir) const
 	// in the name.
 	static string const keep = "abcdefghijklmnopqrstuvwxyz"
 				   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-				   "+,-0123456789;=";
+				   "+-0123456789;=";
 	string::size_type pos = 0;
 	while ((pos = mname.find_first_not_of(keep, pos)) != string::npos)
 		mname[pos++] = '_';
