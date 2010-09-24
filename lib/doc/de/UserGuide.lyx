@@ -13319,25 +13319,6 @@ name "Horizontale-Linien"
 \end_layout
 
 \begin_layout Standard
-Horizontale Linien können Sie mit 
-\family sans
-Einfügen
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Formatierung
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Horizontale Linie
-\family default
- einfügen.
- Hier:
-\end_layout
-
-\begin_layout Standard
 \noindent
 \begin_inset CommandInset line
 LatexCommand rule
@@ -13351,8 +13332,40 @@ height "1pt"
 \end_layout
 
 \begin_layout Standard
+Horizontale Linien können Sie mit 
+\family sans
+Einfügen
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Formatierung
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Horizontale
+\begin_inset space ~
+\end_inset
+
+Linie
+\family default
+ einfügen.
+ Der Linienversatz ist der vertikale Abstand zwischen Linien und Grundlinie
+ der aktuellen Textzeile oder des Absatzes.
+\end_layout
+
+\begin_layout Standard
 \noindent
-ist eine solche Linie.
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -13501,7 +13514,7 @@ Type
 \begin_inset space \space{}
 \end_inset
 
-Postscript
+PostScript
 \family default
  sind Vektorschriftarten.
 \end_layout
