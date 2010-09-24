@@ -83,7 +83,7 @@ void GuiPainter::setQPainterPen(QColor const & col,
 		case line_onoffdash: pen.setStyle(Qt::DotLine); break;
 	}
 
-	pen.setWidth(lw);
+	pen.setWidth((int)lw);
 
 	setPen(pen);
 }
