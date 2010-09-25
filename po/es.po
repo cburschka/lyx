@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-09-14 10:33+0200\n"
-"PO-Revision-Date: 2010-09-21 14:07+0100\n"
+"PO-Revision-Date: 2010-09-25 15:35+0100\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -12507,7 +12507,7 @@ msgstr "Plegar macro de ecuación"
 
 #: lib/ui/stdmenus.inc:305
 msgid "View Source|S"
-msgstr "Ver fuente|V"
+msgstr "Ver fuente|u"
 
 #: lib/ui/stdmenus.inc:309
 msgid "Split View Into Left and Right Half|i"
@@ -22224,6 +22224,7 @@ msgstr "Usuario desconocido"
 #, fuzzy
 #~ msgid "Glossary term"
 #~ msgstr "Glosa"
+
 #~ msgid "Date format"
 #~ msgstr "Formato de fecha"
 
@@ -22246,119 +22247,173 @@ msgstr "Usuario desconocido"
 #, fuzzy
 #~ msgid "Biography without photo"
 #~ msgstr "BiografíaSinFoto"
+
 #~ msgid "TheoremTemplate"
 #~ msgstr "PlantillaTeorema"
+
 #~ msgid "Theorem #:"
 #~ msgstr "Teorema #:"
+
 #~ msgid "Lemma #:"
 #~ msgstr "Lema #:"
+
 #~ msgid "Corollary #:"
 #~ msgstr "Corolario #:"
+
 #~ msgid "Proposition #:"
 #~ msgstr "Proposición #:"
+
 #~ msgid "Conjecture #:"
 #~ msgstr "Conjetura #:"
+
 #~ msgid "Criterion #:"
 #~ msgstr "Criterio #:"
+
 #~ msgid "Fact #:"
 #~ msgstr "Hecho #:"
+
 #~ msgid "Axiom #:"
 #~ msgstr "Axioma #:"
+
 #~ msgid "Definition #:"
 #~ msgstr "Definición #:"
+
 #~ msgid "Example #:"
 #~ msgstr "Ejemplo #:"
+
 #~ msgid "Condition #:"
 #~ msgstr "Condición #:"
+
 #~ msgid "Problem #:"
 #~ msgstr "Problema #:"
+
 #~ msgid "Exercise #:"
 #~ msgstr "Ejercicio #:"
+
 #~ msgid "Remark #:"
 #~ msgstr "Observación #:"
+
 #~ msgid "Claim #:"
 #~ msgstr "Afirmación #:"
+
 #~ msgid "Note #:"
 #~ msgstr "Nota #:"
+
 #~ msgid "Notation #:"
 #~ msgstr "Notación #:"
+
 #~ msgid "Case #:"
 #~ msgstr "Caso #:"
+
 #~ msgid "Footernote"
 #~ msgstr "Nota al pie"
+
 #~ msgid ""
 #~ "Shortcut `%1$s' is already bound to:\n"
 #~ "%2$s"
 #~ msgstr ""
 #~ "El atajo `%1$s'  ya está asociado a:\n"
 #~ "%2$s"
+
 #~ msgid "Anschrift:"
 #~ msgstr "Anschrift:"
+
 #~ msgid "Briefkopf:"
 #~ msgstr "Briefkopf:"
+
 #~ msgid "Absender:"
 #~ msgstr "Absender:"
+
 #~ msgid "Zusatz:"
 #~ msgstr "Zusatz:"
+
 #~ msgid "Ihre Zeichen:"
 #~ msgstr "Ihre Zeichen:"
+
 #~ msgid "Unsere Zeichen:"
 #~ msgstr "Unsere Zeichen:"
+
 #~ msgid "Sachbearbeiter:"
 #~ msgstr "Sachbearbeiter:"
+
 #~ msgid "Unterschrift:"
 #~ msgstr "Unterschrift:"
+
 #~ msgid "Fusszeile(n):"
 #~ msgstr "Fusszeile(n):"
+
 #~ msgid "Vorwahl:"
 #~ msgstr "Vorwahl:"
+
 #~ msgid "Telefon:"
 #~ msgstr "Teléfono:"
+
 #~ msgid "Ort:"
 #~ msgstr "Ort:"
+
 #~ msgid "Datum:"
 #~ msgstr "Datum:"
+
 #~ msgid "Betreff:"
 #~ msgstr "Betreff:"
+
 #~ msgid "Anrede:"
 #~ msgstr "Anrede:"
+
 #~ msgid "Gruss:"
 #~ msgstr "Gruss:"
+
 #~ msgid "Anlage(n):"
 #~ msgstr "Anlage(n):"
+
 #~ msgid "Verteiler:"
 #~ msgstr "Verteiler:"
+
 #~ msgid "PS:"
 #~ msgstr "PS:"
+
 #~ msgid "Text:"
 #~ msgstr "Texto:"
+
 #~ msgid "Strasse:"
 #~ msgstr "Strasse:"
+
 #~ msgid "Land:"
 #~ msgstr "Land:"
+
 #~ msgid "RetourAdresse:"
 #~ msgstr "RetourAdresse:"
+
 #~ msgid "MeinZeichen:"
 #~ msgstr "MeinZeichen:"
+
 #~ msgid "IhrZeichen:"
 #~ msgstr "IhrZeichen:"
+
 #~ msgid "IhrSchreiben:"
 #~ msgstr "IhrSchreiben:"
+
 #~ msgid "BLZ:"
 #~ msgstr "BLZ:"
+
 #~ msgid "Konto:"
 #~ msgstr "Konto:"
+
 #~ msgid "Adresse:"
 #~ msgstr "Adresse:"
+
 #~ msgid "Anlagen:"
 #~ msgstr "Anlagen:"
+
 #~ msgid "LyX binary not found"
 #~ msgstr "Binario LyX no encontrado"
+
 #~ msgid ""
 #~ "Unable to determine the path to the LyX binary from the command line %1$s"
 #~ msgstr ""
 #~ "No se pudo determinar la ruta al binario LyX desde la línea de comandos %1"
 #~ "$s"
+
 #~ msgid ""
 #~ "Unable to determine the system directory having searched\n"
 #~ "\t%1$s\n"
@@ -22370,54 +22425,73 @@ msgstr "Usuario desconocido"
 #~ "Use el parámetro '-sysdir' de la línea de comandos o ponga en la variable "
 #~ "de entorno\n"
 #~ "%2$s el directorio del sistema que contiene el archivo `chkconfig.ltx'."
+
 #~ msgid "File not found"
 #~ msgstr "Archivo no encontrado"
+
 #~ msgid ""
 #~ "Invalid %1$s switch.\n"
 #~ "Directory %2$s does not contain %3$s."
 #~ msgstr ""
 #~ "Opción %1$s no válida.\n"
 #~ "El directorio %2$s no contiene %3$s."
+
 #~ msgid ""
 #~ "Invalid %1$s environment variable.\n"
 #~ "Directory %2$s does not contain %3$s."
 #~ msgstr ""
 #~ "Variable de entorno %1$s no válida.\n"
 #~ "El directorio %2$s no contiene %3$s."
+
 #~ msgid ""
 #~ "Invalid %1$s environment variable.\n"
 #~ "%2$s is not a directory."
 #~ msgstr ""
 #~ "Variable de entorno %1$s no válida.\n"
 #~ "%2$s no es un directorio."
+
 #~ msgid "Directory not found"
 #~ msgstr "Directorio no encontrado"
+
 #~ msgid "Numbers theorems and the like by section."
 #~ msgstr "Numera los teoremas y demás por sección."
+
 #~ msgid "Latex"
 #~ msgstr "LaTeX"
+
 #~ msgid "Close Tab Group|G"
 #~ msgstr "Cerrar grupo de pestañas|g"
+
 #~ msgid "No file open!"
 #~ msgstr "¡Ningún archivo abierto!"
+
 #~ msgid "You cannot paste into a multicell selection."
 #~ msgstr "No se puede pegar en una selección multicelda."
+
 #~ msgid "Check in Changes...|I"
 #~ msgstr "Entrar cambios...|E"
+
 #~ msgid "Check out for Edit|O"
 #~ msgstr "Comprobar para editar|O"
+
 #~ msgid "Toggle Labeling/Numbering|T"
 #~ msgstr "Conmutar  Etiquetado/Numeración|C"
+
 #~ msgid "Toggle Label|L"
 #~ msgstr "Conmutar etiqueta|e"
+
 #~ msgid "B&rowse..."
 #~ msgstr "E&xaminar..."
+
 #~ msgid "Number of Co&pies:"
 #~ msgstr "Número de co&pias:"
+
 #~ msgid "Sa&ns Serif:"
 #~ msgstr "Sa&ns Serif:"
+
 #~ msgid "Ne&w"
 #~ msgstr "&Nuevo"
+
 #~ msgid "Go back to Reference|G"
 #~ msgstr "Volver a referencia|V"
 
@@ -22430,155 +22504,226 @@ msgstr "Usuario desconocido"
 #~ "Group Name to be set up from the current parameters. Use context menu to "
 #~ "assign the existing one."
 #~ msgstr "Nombre de grupo a crear a partir de los parámetros actuales"
+
 #~ msgid "&Initialize Group Name:"
 #~ msgstr "&Iniciar nombre de grupo"
+
 #~ msgid "&Postscript driver:"
 #~ msgstr "Con&trolador postscript:"
+
 #~ msgid "Find LyX Text"
 #~ msgstr "Encontrar texto LyX"
+
 #~ msgid "&Expand macros"
 #~ msgstr "&Desplegar macros"
+
 #~ msgid "Whole words onl&y"
 #~ msgstr "So&lo palabras completas"
+
 #~ msgid "Ignore For&mat"
 #~ msgstr "Ignorar el for&mato"
+
 #~ msgid "Find &Prev"
 #~ msgstr "Encontrar &anterior"
+
 #~ msgid "Sco&pe"
 #~ msgstr "Ámbi&to"
+
 #~ msgid "Current buffer only"
 #~ msgstr "Solo búfer actual"
+
 #~ msgid "Buffer"
 #~ msgstr "Búfer"
+
 #~ msgid "Current file and all included files"
 #~ msgstr "Archivo actual y todos los archivos incluidos"
+
 #~ msgid "Document"
 #~ msgstr "Documento"
+
 #~ msgid "Current paragraph only"
 #~ msgstr "Solo el párrafo actual"
+
 #~ msgid "All open buffers"
 #~ msgstr "Todos los búferes abiertos"
+
 #~ msgid "Open buffers"
 #~ msgstr "Abrir búferes"
+
 #~ msgid "RegExp"
 #~ msgstr "ExpReg"
+
 #~ msgid "Match..."
 #~ msgstr "Coincidir..."
+
 #~ msgid "Anything"
 #~ msgstr "Cualquiera"
+
 #~ msgid "Any non-empty"
 #~ msgstr "Cualquiera no vacío"
+
 #~ msgid "Any word"
 #~ msgstr "Cualquier palabra"
+
 #~ msgid "Any number"
 #~ msgstr "Cualquier número"
+
 #~ msgid "T&hesaurus dictionaries:"
 #~ msgstr "Diccionarios de sinónimos:"
+
 #~ msgid "Language of the thesaurus"
 #~ msgstr "Idioma del diccionario de sinónimos"
+
 #~ msgid "Word to look up"
 #~ msgstr "Palabra a buscar"
+
 #~ msgid "L&ookup"
 #~ msgstr "C&onsulta"
+
 #~ msgid "Click to select a proposal, double click to look it up."
 #~ msgstr "Clic para seleccionar una propuesta, doble clic para buscar."
+
 #~ msgid "German (Switzerland)"
 #~ msgstr "Alemán (Suiza)"
+
 #~ msgid "Find LyX...|X"
 #~ msgstr "Encontrar LyX...|X"
+
 #~ msgid "Regexp"
 #~ msgstr "Expreg"
+
 #~ msgid "LyX 1.6.x"
 #~ msgstr "LyX 1.6.x"
+
 #~ msgid "This is the place where the files of the thesaurus library reside."
 #~ msgstr ""
 #~ "Este es el sitio en el que residen los archivos de biblioteca de thesaurus"
+
 #~ msgid "Already in regexp mode"
 #~ msgstr "Ya en modo expreg"
+
 #~ msgid "Regexp editor mode"
 #~ msgstr "Modo editor expreg"
+
 #~ msgid "Nothing to search"
 #~ msgstr "Nada que buscar"
+
 #~ msgid "Set the path to the thesaurus dictionaries"
 #~ msgstr "Poner la ruta a los diccionarios de thesaurus"
+
 #~ msgid "No thesaurus available for this language!"
 #~ msgstr "¡No hay diccionarios de sinónimos disponibles para este idioma!"
+
 #~ msgid "Search text is empty!"
 #~ msgstr "¡La búsqueda de texto está vacía!"
+
 #~ msgid "Invalid regular expression!"
 #~ msgstr "¡Expresión regular inválida!"
+
 #~ msgid "Match not found!"
 #~ msgstr "¡Coincidencia no encontrada!"
+
 #~ msgid "Match found!"
 #~ msgstr "¡Coincidencia encontrada!"
+
 #~ msgid "Append Parameter"
 #~ msgstr "Añadir parámetro"
+
 #~ msgid "Remove Last Parameter"
 #~ msgstr "Quitar último parámetro"
+
 #~ msgid "Make First Non-Optional into Optional Parameter"
 #~ msgstr "Hacer opcional el primer parámetro no opcional"
+
 #~ msgid "Make Last Optional into Non-Optional Parameter"
 #~ msgstr "Hacer no opcional el último parámetro opcional"
+
 #~ msgid "Insert Optional Parameter"
 #~ msgstr "Insertar parámetro opcional"
+
 #~ msgid "Remove Optional Parameter"
 #~ msgstr "Quitar parámetro opcional"
+
 #~ msgid "Append Parameter Eating From The Right"
 #~ msgstr "Añadir parámetro comiendo desde la derecha"
+
 #~ msgid "Append Optional Parameter Eating From The Right"
 #~ msgstr "Añadir parámetro opcional comiendo desde la derecha"
+
 #~ msgid "Remove Last Parameter Spitting Out To The Right"
 #~ msgstr "Quitar último parámetro yendo hacia la derecha"
+
 #~ msgid "figure"
 #~ msgstr "Figura|F"
+
 #~ msgid "table"
 #~ msgstr "tabla"
+
 #~ msgid "algorithm"
 #~ msgstr "algoritmo"
+
 #~ msgid "tableau"
 #~ msgstr "tabla"
+
 #~ msgid "Filtering layouts with \""
 #~ msgstr "Filtrar formatos con \""
 
 #, fuzzy
 #~ msgid "keywords"
 #~ msgstr "Palabras clave"
+
 #~ msgid "Table of Contents|a"
 #~ msgstr "Índice general|g"
+
 #~ msgid "FAQ|F"
 #~ msgstr "Preguntas frecuentes|f"
+
 #~ msgid "&Options:"
 #~ msgstr "Opc&iones:"
+
 #~ msgid "Adds \"backlink\" text to the end of each item in the bibliography"
 #~ msgstr "Añadir texto \"enlace\" al final de cada entrada en la bibliografía"
+
 #~ msgid "Backreference by pa&ge number"
 #~ msgstr "R&eferencias por número de página"
+
 #~ msgid "Stadt:"
 #~ msgstr "Stadt:"
+
 #~ msgid "Slidecontents"
 #~ msgstr "ContenidosTransparencia"
+
 #~ msgid "."
 #~ msgstr "."
+
 #~ msgid "American"
 #~ msgstr "Inglés Americano"
 
 #, fuzzy
 #~ msgid "Austrian (old spelling)"
 #~ msgstr "Austriaco (nueva ortografía)"
+
 #~ msgid "Austrian"
 #~ msgstr "Austriaco"
+
 #~ msgid "British"
 #~ msgstr "Inglés británico"
+
 #~ msgid "Canadian"
 #~ msgstr "Inglés canadiense"
+
 #~ msgid "LinuxDoc"
 #~ msgstr "LinuxDoc"
+
 #~ msgid "LinuxDoc|x"
 #~ msgstr "LinuxDoc|x"
+
 #~ msgid "Vertical alignment for fixed width columns"
 #~ msgstr "Alineación vertical para columna de ancho fijo"
+
 #~ msgid "LaTeX default"
 #~ msgstr "Predeterminado LaTeX"
+
 #~ msgid "Keep *roff temporary files"
 #~ msgstr "Mantener archivos temporales *roff"
 
@@ -22588,6 +22733,7 @@ msgstr "Usuario desconocido"
 #~ "El documento especificado\n"
 #~ "%1$s\n"
 #~ "no se pudo leer."
+
 #~ msgid ""
 #~ "Layout had to be changed from\n"
 #~ "%1$s to %2$s\n"
@@ -22598,10 +22744,13 @@ msgstr "Usuario desconocido"
 #~ "%1$s a %2$s\n"
 #~ "a causa de la conversión de clase de\n"
 #~ "%3$s a %4$s"
+
 #~ msgid "Changed Layout"
 #~ msgstr "Formato cambiado"
+
 #~ msgid "Unknown layout"
 #~ msgstr "Formato desconocido"
+
 #~ msgid ""
 #~ "Layout '%1$s' does not exist in textclass '%2$s'\n"
 #~ "Trying to use the default instead.\n"
@@ -22612,28 +22761,38 @@ msgstr "Usuario desconocido"
 #, fuzzy
 #~ msgid "Adds an environment for hanging paragraphs."
 #~ msgstr "¡No se puede indexar más de un párrafo!"
+
 #~ msgid "Opened Environment Inset: "
 #~ msgstr "Recuadro entorno abierto: "
+
 #~ msgid "Display image in LyX"
 #~ msgstr "Mostrar imagen en LyX"
+
 #~ msgid "Screen display"
 #~ msgstr "Presentación en pantalla"
+
 #~ msgid "Monochrome"
 #~ msgstr "Monocromo"
+
 #~ msgid "Grayscale"
 #~ msgstr "Escala de grises"
+
 #~ msgid "Preview"
 #~ msgstr "Vista preliminar"
+
 #~ msgid "%"
 #~ msgstr "%"
+
 #~ msgid "&Display:"
 #~ msgstr "&Pantalla:"
+
 #~ msgid "Sca&le:"
 #~ msgstr "Esca&la:"
 
 #, fuzzy
 #~ msgid "Scr&een Display:"
 #~ msgstr "Presentación en pantalla"
+
 #~ msgid "Do not display"
 #~ msgstr "No mostrar"
 
@@ -22652,8 +22811,10 @@ msgstr "Usuario desconocido"
 #, fuzzy
 #~ msgid "Clear group"
 #~ msgstr "Limpiar página"
+
 #~ msgid " (auto)"
 #~ msgstr " (auto)"
+
 #~ msgid "Plain Text"
 #~ msgstr "Texto simple"
 
@@ -22664,10 +22825,13 @@ msgstr "Usuario desconocido"
 #, fuzzy
 #~ msgid "Toggle tabba&r"
 #~ msgstr "Conmutar barra de herramientas de tabla"
+
 #~ msgid "Edit the file externally"
 #~ msgstr "Editar el archivo externamente"
+
 #~ msgid "&Edit File..."
 #~ msgstr "&Editar archivo..."
+
 #~ msgid "LyX View"
 #~ msgstr "Vista LyX"
 
@@ -22678,8 +22842,10 @@ msgstr "Usuario desconocido"
 #, fuzzy
 #~ msgid "Movie: $$AbsOrRelPathParent$$Basename"
 #~ msgstr "Xfig: $$AbsOrRelPathParent$$Basename"
+
 #~ msgid "<- C&lear"
 #~ msgstr "<- &Limpiar"
+
 #~ msgid "A&pply"
 #~ msgstr "A&plicar"
 
@@ -22820,6 +22986,7 @@ msgstr "Usuario desconocido"
 #, fuzzy
 #~ msgid "Extra embedded file"
 #~ msgstr "Objetos insertados|O"
+
 #~ msgid "Error setting multicolumn"
 #~ msgstr "Error al poner multicolumna"
 
@@ -22830,8 +22997,10 @@ msgstr "Usuario desconocido"
 #, fuzzy
 #~ msgid "Enskip|k"
 #~ msgstr "nsim"
+
 #~ msgid "Document could not be read"
 #~ msgstr "El documento no se pudo leer"
+
 #~ msgid "%1$s could not be read."
 #~ msgstr "%1$s no se pudo leer."
 
@@ -22846,6 +23015,7 @@ msgstr "Usuario desconocido"
 #, fuzzy
 #~ msgid "New Line|e"
 #~ msgstr "Línea izquierda|z"
+
 #~ msgid "Line Break|B"
 #~ msgstr "Salto de línea|a"
 
@@ -22864,10 +23034,13 @@ msgstr "Usuario desconocido"
 #, fuzzy
 #~ msgid "Links"
 #~ msgstr "Lista"
+
 #~ msgid "Horizontal Fill|H"
 #~ msgstr "Relleno horizontal|h"
+
 #~ msgid "Swap Rows|S"
 #~ msgstr "Intercambiar filas|t"
+
 #~ msgid "Swap Columns|w"
 #~ msgstr "Intercambiar columnas|n"
 
@@ -22889,166 +23062,241 @@ msgstr "Usuario desconocido"
 #, fuzzy
 #~ msgid "&float"
 #~ msgstr "flotante"
+
 #~ msgid "S&ubfigure"
 #~ msgstr "Su&bfigura"
+
 #~ msgid "The caption for the sub-figure"
 #~ msgstr "Leyenda para la subfigura"
+
 #~ msgid "Ca&ption:"
 #~ msgstr "&Leyenda:"
+
 #~ msgid "Show ERT inline"
 #~ msgstr "Mostrar insertado ERT"
+
 #~ msgid "&Inline"
 #~ msgstr "&Insertado"
+
 #~ msgid "&Use language's default encoding"
 #~ msgstr "&Usar la codificación predefinida del idioma"
+
 #~ msgid "Framed in box"
 #~ msgstr "Enmarcado en cuadro"
+
 #~ msgid "&Shaded"
 #~ msgstr "&Sombreado"
+
 #~ msgid "Paper Size"
 #~ msgstr "Tamaño del papel"
+
 #~ msgid "&Colors"
 #~ msgstr "&Colores"
+
 #~ msgid "C&opiers"
 #~ msgstr "C&opiadoras"
+
 #~ msgid "&File formats"
 #~ msgstr "&Formatos de archivo"
+
 #~ msgid "F&ormat:"
 #~ msgstr "F&ormato:"
+
 #~ msgid "&GUI name:"
 #~ msgstr "&Nombre GUI:"
+
 #~ msgid "External Applications"
 #~ msgstr "Programas externos"
+
 #~ msgid "Save/restore window size, or use fixed size"
 #~ msgstr "Guardar/restaurar tamaño de la ventana, o usar tamaño fijo"
+
 #~ msgid "Save/restore window position"
 #~ msgstr "Guardar/restaurar posición de la ventana"
+
 #~ msgid " every"
 #~ msgstr " cada"
+
 #~ msgid "Scrolling"
 #~ msgstr "Desplazamiento"
+
 #~ msgid "Pixmap Cache"
 #~ msgstr "Caché de pixmaps"
+
 #~ msgid "Enable Pi&xmap Cache"
 #~ msgstr "Activar caché de pi&xmaps"
+
 #~ msgid "&URL:"
 #~ msgstr "&URL:"
+
 #~ msgid "Output as a hyperlink ?"
 #~ msgstr "¿Salida como hiperenlace?"
+
 #~ msgid "&Units:"
 #~ msgstr "&Unidades:"
+
 #~ msgid "Definition @Section@.\\arabic{definition}."
 #~ msgstr "Definición @Section@.\\arabic{definition}."
+
 #~ msgid "Example @Section@.\\arabic{example}."
 #~ msgstr "Ejemplo @Section@.\\arabic{example}."
+
 #~ msgid "Remark @Section@.\\arabic{remark}."
 #~ msgstr "Observación @Section@.\\arabic{remark}."
+
 #~ msgid "Notation @Section@.\\arabic{notation}."
 #~ msgstr "Notación @Section@.\\arabic{notation}."
+
 #~ msgid "Theorem @Section@.\\arabic{theorem}."
 #~ msgstr "Teorema @Section@.\\arabic{theorem}."
+
 #~ msgid "Corollary @Section@.\\arabic{corollary}."
 #~ msgstr "Corolario @Section@.\\arabic{corollary}."
+
 #~ msgid "Lemma @Section@.\\arabic{lemma}."
 #~ msgstr "Lema @Section@.\\arabic{lemma}."
+
 #~ msgid "Proposition @Section@.\\arabic{proposition}."
 #~ msgstr "Proposición @Section@.\\arabic{proposition}."
+
 #~ msgid "Prop @Section@.\\arabic{prop}."
 #~ msgstr "Prop @Section@.\\arabic{prop}."
+
 #~ msgid "Question @Section@.\\arabic{question}."
 #~ msgstr "Pregunta @Section@.\\arabic{question}."
+
 #~ msgid "Claim @Section@.\\arabic{claim}."
 #~ msgstr "Afirmación @Section@.\\arabic{claim}."
+
 #~ msgid "Conjecture @Section@.\\arabic{conjecture}."
 #~ msgstr "Conjetura @Section@.\\arabic{conjecture}."
+
 #~ msgid "Theorem \\arabic{thm}."
 #~ msgstr "Teorema \\arabic{thm}."
+
 #~ msgid "Fact \\arabic{fact}."
 #~ msgstr "Hecho \\arabic{fact}."
+
 #~ msgid "Axiom \\arabic{axiom}."
 #~ msgstr "Axioma \\arabic{axiom}."
+
 #~ msgid "Problem \\arabic{problem}."
 #~ msgstr "Problema \\arabic{problem}."
+
 #~ msgid "Exercise \\arabic{exercise}."
 #~ msgstr "Ejercicio \\arabic{execise}."
+
 #~ msgid "Corollary @Section@.\\arabic{theorem}."
 #~ msgstr "Corolario @Section@.\\arabic{theorem}."
+
 #~ msgid "Lemma @Section@.\\arabic{theorem}."
 #~ msgstr "Lema @Section@.\\arabic{theorem}."
+
 #~ msgid "Proposition @Section@.\\arabic{theorem}."
 #~ msgstr "Proposición @Section@.\\arabic{theorem}."
+
 #~ msgid "Conjecture @Section@.\\arabic{theorem}."
 #~ msgstr "Conjetura @Section@.\\arabic{theorem}."
+
 #~ msgid "Criterion @Section@.\\arabic{theorem}."
 #~ msgstr "Criterio @Section@.\\arabic{theorem}."
+
 #~ msgid "Algorithm @Section@.\\arabic{theorem}."
 #~ msgstr "Algoritmo @Section@.\\arabic{theorem}."
+
 #~ msgid "Fact @Section@.\\arabic{theorem}."
 #~ msgstr "Hecho @Section@.\\arabic{theorem}."
+
 #~ msgid "Axiom @Section@.\\arabic{theorem}."
 #~ msgstr "Axioma @Section@.\\arabic{theorem}."
+
 #~ msgid "Definition @Section@.\\arabic{theorem}."
 #~ msgstr "Definición @Section@.\\arabic{theorem}."
+
 #~ msgid "Example @Section@.\\arabic{theorem}."
 #~ msgstr "Ejemplo @Section@.\\arabic{theorem}."
+
 #~ msgid "Problem @Section@.\\arabic{theorem}."
 #~ msgstr "Problema @Section@.\\arabic{theorem}."
+
 #~ msgid "Remark @Section@.\\arabic{theorem}."
 #~ msgstr "Observación @Section@.\\arabic{theorem}."
+
 #~ msgid "Claim @Section@.\\arabic{theorem}."
 #~ msgstr "Afirmación @Section@.\\arabic{theorem}."
+
 #~ msgid "Note @Section@.\\arabic{theorem}."
 #~ msgstr "Nota @Section@.\\arabic{theorem}."
+
 #~ msgid "Acknowledgement @Section@.\\arabic{theorem}."
 #~ msgstr "Agradecimiento @Section@.\\arabic{theorem}."
+
 #~ msgid "@Section@.\\arabic{subsection}"
 #~ msgstr "@Section@.\\arabic{subsection}"
+
 #~ msgid "@Subsection@.\\arabic{subsubsection}"
 #~ msgstr "@Subsection@.\\arabic{subsubsection}"
+
 #~ msgid "@Subsubsection@.\\arabic{paragraph}"
 #~ msgstr "@Subsubsection@.\\arabic{paragraph}"
+
 #~ msgid "@Paragraph@.\\arabic{subparagraph}"
 #~ msgstr "@Paragraph@.\\arabic{subparagraph}"
+
 #~ msgid "\\arabic{chapter}.\\arabic{section}"
 #~ msgstr "\\arabic{chapter}.\\arabic{section}"
+
 #~ msgid "\\Alph{chapter}.\\arabic{section}"
 #~ msgstr "\\Alph{chapter}.\\arabic{section}"
+
 #~ msgid "Bahasa"
 #~ msgstr "Bahasa"
+
 #~ msgid "Magyar"
 #~ msgstr "Húngaro"
+
 #~ msgid "Serbo-Croatian"
 #~ msgstr "Servo-Croata"
+
 #~ msgid "Framed|F"
 #~ msgstr "Enmarcado|m"
+
 #~ msgid "Shaded|S"
 #~ msgstr "Sombreado|S"
+
 #~ msgid "Insert URL"
 #~ msgstr "Insertar URL"
+
 #~ msgid "Can't load document class"
 #~ msgstr "No se puede cargar la clase de documento"
+
 #~ msgid ""
 #~ "Using the default document class, because the class %1$s could not be "
 #~ "loaded."
 #~ msgstr ""
 #~ "Usando la clase de documento predeterminada, ya que la clase %1$s no se "
 #~ "pudo cargar."
+
 #~ msgid "Undefined character style"
 #~ msgstr "Estilo de carácter no definido"
+
 #~ msgid ""
 #~ "The document could not be converted\n"
 #~ "into the document class %1$s."
 #~ msgstr ""
 #~ "El documento no puede ser convertido\n"
 #~ "a la clase de documento %1$s."
+
 #~ msgid ""
 #~ "Specify geometry of the main view in width x height (values from last "
 #~ "session will not be used if non-zero values are specified)."
 #~ msgstr ""
 #~ "Especifica la geometría de la vista principal en ancho x alto (no se "
 #~ "usarán valores de la última sesión si se especifican valores no nulos)."
+
 #~ msgid "&Switch to document"
 #~ msgstr "&Cambiar al documento"
+
 #~ msgid ""
 #~ "Could not open the specified document\n"
 #~ "%1$s\n"
@@ -23057,38 +23305,55 @@ msgstr "Usuario desconocido"
 #~ "No se pudo abrir el documento especificado\n"
 #~ "%1$s\n"
 #~ "debido al error: %2$s"
+
 #~ msgid "Formatting document..."
 #~ msgstr "Formateando documento..."
+
 #~ msgid "Rectangular box"
 #~ msgstr "Marco rectangular"
+
 #~ msgid "Shadow box"
 #~ msgstr "Marco con sombra"
+
 #~ msgid "Double box"
 #~ msgstr "Marco doble"
+
 #~ msgid "Index Entry"
 #~ msgstr "Entrada de índice"
+
 #~ msgid "LyX: Delimiters"
 #~ msgstr "LyX: Delimitadores"
+
 #~ msgid "LyX: Insert Matrix"
 #~ msgstr "LyX: insertar matriz"
+
 #~ msgid "Copiers"
 #~ msgstr "Copiadoras"
+
 #~ msgid "Boxed"
 #~ msgstr "Encuadrado"
+
 #~ msgid "ovalbox"
 #~ msgstr "Marco ovalado"
+
 #~ msgid "Ovalbox"
 #~ msgstr "Marco Ovalado"
+
 #~ msgid "Shadowbox"
 #~ msgstr "Marco sombreado"
+
 #~ msgid "Doublebox"
 #~ msgstr "Marco doble"
+
 #~ msgid "Opened CharStyle Inset"
 #~ msgstr "Recuadro CharStyle abierto"
+
 #~ msgid "Unknown inset name: "
 #~ msgstr "Nombre de recuadro desconocido: "
+
 #~ msgid "Program Listing "
 #~ msgstr "Listado del programa "
+
 #~ msgid "Framed"
 #~ msgstr "Enmarcado"
 
@@ -23099,36 +23364,49 @@ msgstr "Usuario desconocido"
 #, fuzzy
 #~ msgid "Opened Theorem Inset"
 #~ msgstr "Recuadro de nota abierto"
+
 #~ msgid "Url: "
 #~ msgstr "URL: "
+
 #~ msgid "HtmlUrl: "
 #~ msgstr "HtmlUrl: "
+
 #~ msgid "Default (outer)"
 #~ msgstr "Predeterminado (exterior)"
+
 #~ msgid "Outer"
 #~ msgstr "Exterior"
+
 #~ msgid "Text Wrap Settings"
 #~ msgstr "Configuración del ajuste de línea"
+
 #~ msgid "%1$d words in selection."
 #~ msgstr "%1$d palabras en la selección."
+
 #~ msgid "%1$d words in document."
 #~ msgstr "%1$d palabras en el documento."
+
 #~ msgid "One word in selection."
 #~ msgstr "Una palabra en la selección."
+
 #~ msgid "One word in document."
 #~ msgstr "Una palabra en el documento."
+
 #~ msgid "Count words"
 #~ msgstr "Contar palabras"
+
 #~ msgid "Encoding error"
 #~ msgstr "Error de codificación"
 
 #, fuzzy
 #~ msgid "Placeholders"
 #~ msgstr "Espacios reservados"
+
 #~ msgid "phantom"
 #~ msgstr "phantom"
+
 #~ msgid "vphantom"
 #~ msgstr "vphantom"
+
 #~ msgid "hphantom"
 #~ msgstr "hphantom"
-
