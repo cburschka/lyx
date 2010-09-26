@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 400
+\lyxformat 401
 \begin_document
 \begin_header
 \textclass scrbook
@@ -5468,21 +5468,165 @@ Some installations may not include a LaTeX package or class file that you
 \begin_inset Quotes eld
 \end_inset
 
-Browse Packages
+Package
+\begin_inset space ~
+\end_inset
+
+Manager
 \begin_inset Quotes erd
 \end_inset
 
  to get a list of available packages.
- To install one, right click on it or use the toolbar button to install
- it.
- 
+ To install one of them, right click on it or use the corresponding toolbar
+ button.
 \end_layout
 
 \begin_layout Standard
-If your LaTeX distribution doesn't provide such a `package manager', or
- if the file is not available from your distribution, then you can follow
- these steps to install it manually.
+If your LaTeX distribution does not provide such a `package manager', or
+ if the package is not available from your distribution, then follow these
+ steps to install it manually:
 \end_layout
+
+\begin_layout Enumerate
+Get the package from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://www.ctan.org/"
+
+\end_inset
+
+ or wherever.
+\end_layout
+
+\begin_layout Enumerate
+If the package contains a file with the ending 
+\begin_inset Quotes eld
+\end_inset
+
+.ins
+\begin_inset Quotes erd
+\end_inset
+
+ (is the case for FoilTeX) then open a console, change to the folder of
+ this file and execute the command
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+latex foiltex.ins
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+You have now unpacked the package and have all files to install it.
+ Most of the LaTeX-packages are not packed and you can directly start with
+ the installation:
+\end_layout
+
+\begin_layout Enumerate
+Change to the folder where LaTeX is installed and change there to the folder
+ ~
+\backslash
+tex
+\backslash
+latex.
+ (For MiKTeX, this would be by default the folder 
+\begin_inset Quotes gld
+\end_inset
+
+~:
+\backslash
+Programme
+\backslash
+MiKTeX
+\backslash
+tex
+\backslash
+latex
+\begin_inset Quotes grd
+\end_inset
+
+, under Linux it would be 
+\begin_inset Quotes gld
+\end_inset
+
+~/usr/local/texmf/
+\begin_inset Quotes grd
+\end_inset
+
+.) Create there a new folder with the Name 
+\begin_inset Quotes gld
+\end_inset
+
+foiltex
+\begin_inset Quotes grd
+\end_inset
+
+ and copy all files of the package into it.
+\end_layout
+
+\begin_layout Enumerate
+Now one only need to tell LaTeX that there are new files.
+ This depends on the used LaTeX-Distribution:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+For MiKTeX start the program 
+\begin_inset Quotes gld
+\end_inset
+
+Settings
+\begin_inset space ~
+\end_inset
+
+(admin)
+\begin_inset Quotes grd
+\end_inset
+
+ and press the button 
+\begin_inset Quotes eld
+\end_inset
+
+Refresh FNDB
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+For TeXLive execute the command
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+texhash
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+from a console with root permissions.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Use now in LyX the menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Reconfigure
+\family default
+ and restart LyX afterwards.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Enumerate
 Get the package from 
@@ -5793,6 +5937,10 @@ FNDB
 \end_inset
 
 Settings
+\begin_inset space ~
+\end_inset
+
+(admin)
 \begin_inset Quotes erd
 \end_inset
 
@@ -5822,33 +5970,36 @@ texhash
  
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-Your package is now installed and available to LaTeX.
- You can verify this from a terminal by typing `
-\begin_inset Flex CharStyle:Code
+Now the package is installed and it should for example as 
+\family sans
+slides (FoilTe
+\family typewriter
+
+\begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-kpsewhich yourfile.ext
+
+{}
 \end_layout
 
 \end_inset
 
-'.
- To make LyX aware of it, however, you will need to reconfigure (
-\begin_inset Flex CharStyle:MenuItem
-status collapsed
 
-\begin_layout Plain Layout
-Tools\SpecialChar \menuseparator
-Reconfigure
-\end_layout
-
-\end_inset
-
-) and then restart LyX.
- If the new package was a document class, such as FoilTeX again, you will
- now see it available under 
+\family sans
+X)
+\family default
+ appear in the field 
+\family sans
+Document class
+\family default
+ in the menu 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -5860,23 +6011,9 @@ Document Class
 
 \end_inset
 
-, in this case as 
-\begin_inset Flex CharStyle:MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-slides (FoilTeX)
-\end_layout
-
-\end_inset
-
 .
-\end_layout
-
-\begin_layout Standard
-What if there isn't a layout file is available for your new document class?
- Then, unfortunately, LyX will know nothing about it until you create a
- layout file yourself (or get someone else to do it).
+ If not, you need to create a layout file by yourself (or ask someone else
+ to do it).
  That is the topic of the next section.
 \end_layout
 
