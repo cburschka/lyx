@@ -73,7 +73,7 @@ Style Email
 	InTitle		1
 	Margin		First_Dynamic
 	LabelType	Static
-	LabelString	"E-mail: "
+	LabelString	"E-mail:"
 	LabelSep	M
 	Font
 	  Family	Typewriter
@@ -92,8 +92,7 @@ End
 Style Web_Address
 	CopyStyle	Email
 	LatexName	lyxeadurl
-	LabelString	"Web address: "
-	LabelSep	""
+	LabelString	"Web address:"
         Preamble
 		\def\lyxeadurl[#1]#2{\ead[label=#1,url]{#2}}
         EndPreamble
@@ -110,14 +109,14 @@ Style Authors_Block
 	CopyStyle	RunTitle
 	LatexType	Environment
 	LatexName	aug
-	LabelString	"Authors Block: "
+	LabelString	"Authors Block:"
 End
 
 Style Keyword
 	CopyStyle	Abstract
 	LatexType	Environment
 	LatexName	keyword
-	LabelString	"Keywords: "
+	LabelString	"Keywords:"
 	LabelFont
 	  Shape		SmallCaps
 	EndFont
@@ -130,7 +129,7 @@ Style Thanks_Text
 	NeedProtect	1
 	LabelType	Counter
 	LabelCounter	Thanks
-	LabelString	"Thanks \theThanks: "
+	LabelString	"Thanks \theThanks:"
         Preamble
 		\def\lyxthankstext[#1]#2{\thankstext{#1}{#2}}
         EndPreamble
