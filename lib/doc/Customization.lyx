@@ -38,9 +38,8 @@
 
 % used for multi-column text
 \usepackage{multicol}
-\usepackage{inputenc}
 \end_preamble
-\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
 \begin_modules
 logicalmkup
@@ -95,12 +94,12 @@ End
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
-\use_mhchem 1
+\use_mhchem 0
 \use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
@@ -5535,19 +5534,18 @@ latex foiltex.ins
 \end_layout
 
 \begin_layout Enumerate
-Now we need to decide where to install the package.
+Now you need to decide if the package should be available for all users
+ or only for you.
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-On *nix systems (Linux, OSX, etc), you have several choices.
- If you want the new package to be available for all users on your system,
- then you should install it in your `local' TeX tree; if you want (or need)
- it to be available just for you, then you can install it in your own `user'
- TeX tree.
+On *nix systems (Linux, OSX, etc.), if you want the new package to be available
+ for all users on your system, then install it in your `local' TeX tree,
+ otherwise install it in your own `user' TeX tree.
  Where these trees should be created, if they do not already exist, depends
- upon the details of your system.
- To find out where they are, look in the file 
+ on your system.
+ To find this out, look in the file 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -5562,17 +5560,11 @@ texmf.cnf
 status collapsed
 
 \begin_layout Plain Layout
-This usually lives in the directory 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
+This is usually in the directory 
+\family sans
 $TEXMF/web2c
-\end_layout
-
-\end_inset
-
-, though you can run 
+\family default
+, though you can execute the command 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -5598,17 +5590,10 @@ TEXMFLOCAL
 \end_inset
 
  variable; this is usually somewhere like 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
+\family sans
 /usr/local/share/texmf/
-\end_layout
-
-\end_inset
-
-.
+\family default
+ .
  The location of the `user' TeX tree is defined by 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -5620,163 +5605,47 @@ TEXMFHOME
 \end_inset
 
  and is commonly 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 $HOME/texmf/
-\end_layout
-
-\end_inset
-
-.
- (If these variables are not predefined, you can define them.) You'll probably
- need root permissions to create or modify the `local' tree, but your `user'
- tree shouldn't have such limitations.
+\family default
+ .
+ (If these variables are not predefined, you have to define them.) You'll
+ probably need root permissions to create or modify the `local' tree, but
+ your `user' tree shouldn't have such limitations.
 \begin_inset Newline newline
 \end_inset
 
-In general, we'd recommend installing in the user tree unless you have reason
- not to do so.
- One advantage to this is that your user tree is less likely to be over-written
- or deleted when you upgrade, and it will typically be backed up together
- with everything else when you backup your home directory (which, of course,
- you do on a regular basis).
+In general, it is recommended to install in the user tree because your user
+ will not be modified or even overwritten when you upgrade your system.
+ It will typically also be backed up together with everything else when
+ you backup your home directory (which, of course, you do on a regular basis).
 \end_layout
 
 \begin_layout Enumerate
-On Windows, change to the folder where LaTeX is installed and then change
- to the subfoler 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
+On Windows, if you want the new package to be available for all users on
+ your system, change to the folder where LaTeX is installed and then change
+ to the subfolder 
+\family sans
+~
+\backslash
 tex
 \backslash
 latex
-\backslash
-
-\end_layout
-
-\end_inset
-
+\family default
 .
  (For MiKTeX, this would be by default the folder 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
+\family sans
 ~:
 \backslash
-Programme
+Programs
 \backslash
 MiKTeX
 \backslash
 tex
 \backslash
 latex
-\end_layout
-
-\end_inset
-
-)
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Note: These should be URLs, so that lines can be broken properly.
- Also, the path is wrong, in general.
- 
-\begin_inset Quotes eld
-\end_inset
-
-Programme
-\begin_inset Quotes erd
-\end_inset
-
- is a German word, obviously, and on systems installed with English it would
- be 
-\begin_inset Quotes eld
-\end_inset
-
-Programs
-\begin_inset Quotes erd
-\end_inset
-
-.
- Who knows what it is elsewhere.
- I also don't know myself what the 
-\begin_inset Quotes eld
-\end_inset
-
-~
-\begin_inset Quotes erd
-\end_inset
-
- means in Windows pathnames.
- Does it mean something like 
-\begin_inset Quotes eld
-\end_inset
-
-boot drive
-\begin_inset Quotes erd
-\end_inset
-
-? I don't know how to fix this.
- Maybe one could say something like 
-\begin_inset Quotes eld
-\end_inset
-
-PROGDIR
-\backslash
-MiKTeX
-\backslash
-tex
-\backslash
-latex
-\begin_inset Quotes erd
-\end_inset
-
-, and then say: where 
-\begin_inset Quotes eld
-\end_inset
-
-PROGDIR
-\begin_inset Quotes erd
-\end_inset
-
- is the default program installation location, something like 
-\begin_inset Quotes eld
-\end_inset
-
-C:
-\backslash
-Programs
-\backslash
-
-\begin_inset Quotes erd
-\end_inset
-
- or 
-\begin_inset Quotes eld
-\end_inset
-
-C:
-\backslash
-Programme
-\backslash
-
-\begin_inset Quotes erd
-\end_inset
-
-, depending upon your language, boot drive, etc.
-\end_layout
-
-\end_inset
-
- Create there a new folder 
+\family default
+ .) Create there a new folder 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -5787,7 +5656,89 @@ foiltex
 \end_inset
 
  and copy all files of the package into it.
- 
+ If the package should only available for you or you don't have admin permission
+s, do the same, but in the local LaTeX folder.
+ E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+on MiKTeX
+\begin_inset space ~
+\end_inset
+
+2.8 this would be on WinXP the folder
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+~:
+\backslash
+Documents and Settings
+\backslash
+<username>
+\backslash
+Application Data
+\backslash
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+~:
+\backslash
+
+\end_layout
+
+\end_inset
+
+MiKTeX
+\backslash
+2.8
+\backslash
+tex
+\backslash
+latex
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+, on WinVista it would be the folder
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+~:
+\backslash
+Users
+\backslash
+<username>
+\backslash
+AppData
+\backslash
+Roaming
+\backslash
+2.8
+\backslash
+MiKTeX
+\backslash
+tex
+\backslash
+latex
+\family default
+ .
 \end_layout
 
 \end_deeper
@@ -5809,26 +5760,25 @@ texhash
 \end_inset
 
  from a console.
- If you installed the package somewhere you needed root permissions, then
- you will need to run 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-texhash
-\end_layout
-
-\end_inset
-
- with root permissions also.
+ If you installed the package for all users, then you will probably need
+ to have root permissions for that.
 \end_layout
 
 \begin_layout Enumerate
-For MiKTeX, start the program Settings
+For MiKTeX, if you have installed the package for all users, start the program
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Settings
 \begin_inset space ~
 \end_inset
 
-(admin) and press the button marked 
+(Admin)
+\begin_inset Quotes erd
+\end_inset
+
+ and press the button marked 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5837,12 +5787,21 @@ Refresh FNDB
 \end_inset
 
 .
+ Otherwise start the program 
+\begin_inset Quotes eld
+\end_inset
+
+Settings
+\begin_inset Quotes erd
+\end_inset
+
+ and do the same.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Finally, we need to tell LyX what we have done.
- So, in LyX, run 
+Finally, you need to tell LyX that there are new packages available.
+ So, in LyX, use the menu 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -5855,19 +5814,23 @@ Reconfigure
 
 \end_inset
 
- and then restart LyX so it will recognize the new package.
+ and then restart LyX.
 \end_layout
 
 \begin_layout Standard
 Now the package is installed.
- In our example, till now appear as 
+ In our example, the document class 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-Slides (FoilTe
+Slides
+\begin_inset space ~
+\end_inset
+
+(FoilTe
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -5881,7 +5844,7 @@ x)
 
 \end_inset
 
- under 
+ will now be available under 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -5898,9 +5861,20 @@ Document Class
 \end_layout
 
 \begin_layout Standard
-Sometimes, you will want to use a LaTeX class or package that does not automatic
-ally appear.
- If so, then you need to create a `layout' file for it.
+If you would like to use a LaTeX document class that is not even listed
+ in the menu 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document Class
+\end_layout
+
+\end_inset
+
+, then you need to create a `layout' file for it.
  That is the topic of the next section.
 \end_layout
 
@@ -5948,7 +5922,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Note that LyX is licensed under the General Public License, so any material
- that is contribued to LyX must be similarly licensed.
+ that is contributed to LyX must be similarly licensed.
 \end_layout
 
 \end_inset

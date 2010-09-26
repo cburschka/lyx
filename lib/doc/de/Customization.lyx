@@ -35,12 +35,6 @@
   \myTOC
   \mainmatter }
 
-% Formatierung von Legenden
-\usepackage[labelfont={bf,sf}, tableposition=top]{caption}[2004/07/16]
-
-% Damit der Index den Namen "Stichwortverzeichnis" erhält
-\addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
-
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
@@ -49,8 +43,11 @@
 % wird für mehrspaltigen Text benötigt
 \usepackage{multicol}
 \end_preamble
-\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
+\begin_modules
+logicalmkup
+\end_modules
 \maintain_unincluded_children false
 \language ngerman
 \inputencoding auto
@@ -86,34 +83,35 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
-\use_geometry true
+\use_geometry false
 \use_amsmath 0
 \use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_mhchem 0
+\use_mathdots 0
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
 \index Stichwortverzeichnis
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 35mm
-\topmargin 35mm
-\rightmargin 35mm
-\bottommargin 35mm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
 \quotes_language german
 \papercolumns 1
-\papersides 1
-\paperpagestyle default
+\papersides 2
+\paperpagestyle headings
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -168,11 +166,6 @@ Haase
 Version 2.0.x
 \end_layout
 
-\begin_layout Date
-letzte Änderung: 21.
- Juli 2009
-\end_layout
-
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
@@ -199,8 +192,8 @@ behandelt.
  Es kann hier nicht alles beschrieben werden, das an LyX individuell eingestellt
  und verändert werden kann --- die Entwickler fügen Neuerungen schneller
  ein, als wir sie dokumentieren können --- doch werden die grundlegenden
- Fähigkeiten von LyX dokumentiert sowie für einige der etwas obskureren
- Hinweise gegeben.
+ Fähigkeiten von LyX dokumentiert sowie für einige der etwas obskuren Hinweise
+ gegeben.
 \end_layout
 
 \begin_layout Standard
@@ -4238,7 +4231,17 @@ Falls das Paket eine Datei mit der Endung
 \begin_inset Quotes gld
 \end_inset
 
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 .ins
+\end_layout
+
+\end_inset
+
+
 \begin_inset Quotes grd
 \end_inset
 
@@ -4263,16 +4266,115 @@ n.
 \end_layout
 
 \begin_layout Enumerate
-Gehen Sie in den Ordner, in dem LaTeX installiert ist und wechseln dort
- in das Verzeichnis ~
-\backslash
-tex
-\backslash
-latex.
- (Verwendet man MiKTeX, wäre es standardmäßig der Ordner 
+Nun müssen Sie entscheiden, ob das Paket für alle Nutzer oder nur für Sie
+ verfügbar sein soll.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Bei *nix Systemen (Linux, OSX, etc.), wenn Sie das Paket für alle Nutzer
+ installieren möchten, installieren Sie es in den lokalen TeX Ordner; anderenfal
+ls installieren Sie es in dein eigenen 
 \begin_inset Quotes gld
 \end_inset
 
+Benutzer
+\begin_inset Quotes grd
+\end_inset
+
+-TeX Ordner.
+ Wo man diese Ordner anlegt, sofern sie nicht schon existieren, hängt von
+ Ihrem System ab.
+ Dazu schauen Sie in die Datei 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+texmf.cnf
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Diese befindet sich normalerweise im Ordner 
+\family sans
+$TEXMF/web2c
+\family default
+.
+ Falls nicht, führen Sie den Befehl 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+kpsewhich texmf.cnf
+\end_layout
+
+\end_inset
+
+ aus, um sie zu lokalisieren.
+\end_layout
+
+\end_inset
+
+ Der Ort des lokalen TeX Ordners ist in der Variable 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+TEXMFLOCAL
+\end_layout
+
+\end_inset
+
+ definiert; es ist üblicherweise der Pfad 
+\family sans
+/usr/local/share/texmf/
+\family default
+ .
+ Der Ort des Benutzer-TeX Ordners ist in der Variable 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+TEXMFHOME
+\end_layout
+
+\end_inset
+
+ definiert und ist üblicherweise der Pfad 
+\family sans
+$HOME/texmf/
+\family default
+ .
+ (Wenn diese Variablen nicht vordefiniert sind, müssen Sie diese selbst
+ definieren.) Sie brauchen wahrscheinlich Root-Rechte um in den lokalen TeX
+ Ordner zu schreiben, beim Benutzer-TeX Ordner ist die nicht nötig.
+\begin_inset Newline newline
+\end_inset
+
+Allgemein empfiehlt es sich, Pakete in den Benutzer-TeX Ordner zu installieren,
+ da dieser nicht verändert oder gar überschrieben wird, wenn Sie ihr System
+ aktualisieren.
+ Des Weiteren wird er zusammen mit Ihren Nutzerdaten gesichert, wenn Sie
+ ein Backup machen (was Sie natürlich regelmäßig tun).
+\end_layout
+
+\begin_layout Enumerate
+Bei Windows, wenn Sie das Paket für alle Nutzer installieren möchten, gehen
+ Sie in den Ordner, in dem LaTeX installiert ist und wechseln dort in das
+ Verzeichnis 
+\family sans
+~tex
+\backslash
+latex
+\family default
+.
+ (Verwendet man MiKTeX, wäre es standardmäßig der Ordner 
+\family sans
 ~:
 \backslash
 Programme
@@ -4282,18 +4384,8 @@ MiKTeX
 tex
 \backslash
 latex
-\begin_inset Quotes grd
-\end_inset
-
-, unter Linux wäre es 
-\begin_inset Quotes gld
-\end_inset
-
-~/usr/local/texmf/
-\begin_inset Quotes grd
-\end_inset
-
-.) Legen Sie dort einen neuen Ordner mit dem Namen 
+\family default
+ .) Legen Sie dort einen neuen Ordner mit dem Namen 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4302,8 +4394,90 @@ foiltex
 \end_inset
 
  an und kopieren Sie alle Dateien das Pakets hinein.
+ Wenn das Paket nur für den aktuellen Benutzer verfügbar sein soll bzw.
+ Sie keine Administrator-Rechte haben, tun Sie dasselbe, aber im lokalen
+ LaTeX-Ordner.
+ Z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ bei MiKTeX
+\begin_inset space ~
+\end_inset
+
+2.8 wäre das unter WinXP der Ordner
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+~:
+\backslash
+Dokumente und Einstellungen
+\backslash
+<Benutzername>
+\backslash
+Anwendungsdaten
+\backslash
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+~:
+\backslash
+
 \end_layout
 
+\end_inset
+
+MiKTeX
+\backslash
+2.8
+\backslash
+tex
+\backslash
+latex
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+, unter WinVista wäre es der Ordner
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+~:
+\backslash
+Users
+\backslash
+<Benutzername>
+\backslash
+AppData
+\backslash
+Roaming
+\backslash
+2.8
+\backslash
+MiKTeX
+\backslash
+tex
+\backslash
+latex
+\family default
+ .
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 Jetzt muss man LaTeX nur noch mitteilen, dass es neue Dateien gibt.
  Die ist je nach LaTeX-Distribution anders:
@@ -4311,7 +4485,24 @@ Jetzt muss man LaTeX nur noch mitteilen, dass es neue Dateien gibt.
 
 \begin_deeper
 \begin_layout Enumerate
-Bei MiKTeX starten Sie das Programm 
+Bei TeXLive führen Sie von einer Kommandozeile den Befehl 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+texhash
+\end_layout
+
+\end_inset
+
+ aus.
+ Wenn Sie das Paket für alle Nutzer installiert haben, brauchen sie dazu
+ wahrscheinlich Root-Rechte.
+\end_layout
+
+\begin_layout Enumerate
+Bei MiKTeX, wenn Sie das Paket für alle Nutzer installiert haben, starten
+ Sie das Programm 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4319,7 +4510,7 @@ Settings
 \begin_inset space ~
 \end_inset
 
-(admin)
+(Admin)
 \begin_inset Quotes grd
 \end_inset
 
@@ -4332,27 +4523,21 @@ Refresh FNDB
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Enumerate
-Bei TeXLive führen Sie von einer Kommandozeile den Befehl
-\begin_inset Newline newline
+ Anderenfalls starten Sie das Programm 
+\begin_inset Quotes gld
 \end_inset
 
-
-\family typewriter
-texhash
-\family default
-
-\begin_inset Newline newline
+Settings
+\begin_inset Quotes grd
 \end_inset
 
-mit Administrator-Rechten aus.
+ und machen dasselbe.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Wählen Sie nun in LyX den Menüpunkt 
+Nun muss man LyX noch mitteilen, dass es neue Pakete gibt.
+ Verwenden Sie dazu in LyX das Menü 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Neu
@@ -4361,15 +4546,21 @@ Neu
 
 konfigurieren
 \family default
- an und starten LyX danach neu.
+ und starten LyX danach neu.
 \end_layout
 
 \begin_layout Standard
-Nun ist das Paket installiert und sollte beispielsweise als 
-\family sans
-slides (FoilTe
-\family typewriter
+Nun ist das Paket installiert.
+ In unserem Beispiel wird nun die Dokumentklasse 
+\begin_inset Flex CharStyle:Code
+status collapsed
 
+\begin_layout Plain Layout
+Slides
+\begin_inset space ~
+\end_inset
+
+(FoilTe
 \begin_inset ERT
 status collapsed
 
@@ -4380,23 +4571,37 @@ status collapsed
 
 \end_inset
 
+x)
+\end_layout
 
-\family sans
-X)
-\family default
- im Feld 
-\family sans
-Dokumentklasse
-\family default
- des Menüs 
+\end_inset
+
+ im Menü 
 \family sans
 Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
 Dokumentklasse
 \family default
- erscheinen.
- Falls nicht, dann gibt es für dieses Paket noch keine Layout-Datei.
- Sie müssen dann selbst ein Layout erstellen (oder jemanden darum bitten).
+ verfügbar sein.
+\end_layout
+
+\begin_layout Standard
+Möchten sie eine LaTeX-Dokumentklasse verwenden, die generell nicht im Menü
+ 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Dokumentklasse
+\family default
+ gelistet ist, müssen Sie dafür selbst ein 
+\begin_inset Quotes gld
+\end_inset
+
+Layout
+\begin_inset Quotes grd
+\end_inset
+
+ erstellen.
  Dies ist das Thema des nächsten Abschnitts.
 \end_layout
 

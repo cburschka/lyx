@@ -1,5 +1,5 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 401
 \begin_document
 \begin_header
 \textclass scrbook
@@ -38,20 +38,30 @@
 % used for multi-column text
 \usepackage{multicol}
 \end_preamble
-\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
+\begin_modules
+logicalmkup
+\end_modules
+\maintain_unincluded_children false
 \language french
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_xetex false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -68,26 +78,39 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
+\use_mhchem 0
+\use_mathdots 0
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language french
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -163,6 +186,14 @@ Rebollo
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Version 2.0.x 
 \end_layout
 
 \begin_layout Standard
@@ -2960,7 +2991,7 @@ name "chap:classe-texte"
 \end_inset
 
 
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -3066,210 +3097,476 @@ Installer un nouveau paquetage LaTeX
 \begin_layout Standard
 Certaines installations peuvent ne pas contenir le paquetage LaTeX que vous
  vouliez justement utiliser avec LyX.
- Par exemple, vous pouvez avoir besoin de FoilTeX, un paquetage courant
- (et très puissant) pour préparer des transparents pour rétroprojecteurs.
- Voici les étapes pour installer un paquetage si vous utilisez teTeX ou
- une autre distribution basée sur web2c.
-\end_layout
+ Par exemple, vous pouvez avoir besoin de FoilTeX, un paquetage pour préparer
+ des transparents pour rétroprojecteurs.
+ 
+\lang english
+Modern LaTeX distributions like TeXLive (2008 or newer) or MiKTeX provide
+ a user interface for installing such packages.
+ For example, with MiKTeX, you start the program 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Enumerate
-Procurez-vous le paquetage sur le CTAN ou ailleurs
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Voir le manuel de 
-\emph on
-Configuration
+Package
 \begin_inset space ~
 \end_inset
 
-LaTeX
-\emph default
- pour savoir ce qu'est le CTAN et où l'on peut trouver les classes de document
- supportées.
+Manager
+\begin_inset Quotes erd
+\end_inset
+
+ to get a list of available packages.
+ To install one of them, right click on it or use the corresponding toolbar
+ button.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If your LaTeX distribution does not provide such a `package manager', or
+ if the package is not available from your distribution, then follow these
+ steps to install it manually:
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Get the package from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://www.ctan.org/"
+
+\end_inset
+
+ or wherever.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+If the package contains a file with the ending 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+.ins
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ (is the case for FoilTeX) then open a console, change to the folder of
+ this file and execute the command 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+latex foiltex.ins
 \end_layout
 
 \end_inset
 
 .
+ You have now unpacked the package and have all files to install it.
+ Most LaTeX-packages are not packed and you can skip this step.
 \end_layout
 
 \begin_layout Enumerate
-Lisez le fichier 
-\family typewriter
-texmf.cnf
-\family default
- (qui réside habituellement dans le répertoire 
-\family typewriter
-$TEXMF/web2c
-\family default
-, mais il vous faudra peut-être faire 
-\family typewriter
-kpsewhich texmf.cnf
-\family default
- pour le localiser).
- Il décrit comment ajouter un répertoire 
-\family typewriter
-texmf
-\family default
- local ; suivez les instructions.
- Vous devez insérer le nom de votre répertoire 
-\family typewriter
-texmf
-\family default
- local dans 
-\family typewriter
-texmf.cnf
-\family default
-.
- Sous Linux, 
-\family typewriter
-/usr/local
-\family default
- est un endroit logique pour installer les logiciels qui ne viennent pas
- avec votre distribution, vous pouvez donc utiliser 
-\family typewriter
-/usr/local/texmf
-\family default
-.
- D'habitude, vous n'avez que deux choses à modifier :
+
+\lang english
+Now you need to decide if the package should be available for all users
+ or only for you.
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Réglez 
-\family typewriter
-TEXMFLOCAL
+
+\lang english
+On *nix systems (Linux, OSX, etc.), if you want the new package to be available
+ for all users on your system, then install it in your `local' TeX tree,
+ otherwise install it in your own `user' TeX tree.
+ Where these trees should be created, if they do not already exist, depends
+ on your system.
+ To find this out, look in the file 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+texmf.cnf
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+This is usually in the directory 
+\family sans
+$TEXMF/web2c
 \family default
- sur le répertoire que vous avez choisi, par exemple :
+, though you can execute the command 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+kpsewhich texmf.cnf
+\end_layout
+
+\end_inset
+
+ to locate it.
+\end_layout
+
+\end_inset
+
+ The location of the `local' TeX tree is defined by the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+TEXMFLOCAL
+\end_layout
+
+\end_inset
+
+ variable; this is usually somewhere like 
+\family sans
+/usr/local/share/texmf/
+\family default
+ .
+ The location of the `user' TeX tree is defined by 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+TEXMFHOME
+\end_layout
+
+\end_inset
+
+ and is commonly 
+\family sans
+$HOME/texmf/
+\family default
+ .
+ (If these variables are not predefined, you have to define them.) You'll
+ probably need root permissions to create or modify the `local' tree, but
+ your `user' tree shouldn't have such limitations.
 \begin_inset Newline newline
 \end_inset
 
-
-\family typewriter
-TEXMFLOCAL = /usr/local/texmf
+In general, it is recommended to install in the user tree because your user
+ will not be modified or even overwritten when you upgrade your system.
+ It will typically also be backed up together with everything else when
+ you backup your home directory (which, of course, you do on a regular basis).
 \end_layout
 
 \begin_layout Enumerate
-Assurez-vous que 
-\family typewriter
-TEXMF
+
+\lang english
+On Windows, if you want the new package to be available for all users on
+ your system, change to the folder where LaTeX is installed and then change
+ to the subfolder 
+\family sans
+~
+\backslash
+tex
+\backslash
+latex
 \family default
- inclut bien la variable 
-\family typewriter
-TEXMFLOCAL
+.
+ (For MiKTeX, this would be by default the folder 
+\family sans
+~:
+\backslash
+Programs
+\backslash
+MiKTeX
+\backslash
+tex
+\backslash
+latex
 \family default
-, par exemple :
+ .) Create there a new folder 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+foiltex
+\end_layout
+
+\end_inset
+
+ and copy all files of the package into it.
+ If the package should only available for you or you don't have admin permission
+s, do the same, but in the local LaTeX folder.
+ E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+on MiKTeX
+\begin_inset space ~
+\end_inset
+
+2.8 this would be on WinXP the folder
 \begin_inset Newline newline
 \end_inset
 
 
-\family typewriter
-TEXMF = {$HOMETEXMF,!!$TEXMFLOCAL,!!$TEXMFMAIN}
+\family sans
+~:
+\backslash
+Documents and Settings
+\backslash
+<username>
+\backslash
+Application Data
+\backslash
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+\lang english
+~:
+\backslash
+
+\end_layout
+
+\end_inset
+
+MiKTeX
+\backslash
+2.8
+\backslash
+tex
+\backslash
+latex
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+, on WinVista it would be the folder
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+~:
+\backslash
+Users
+\backslash
+<username>
+\backslash
+AppData
+\backslash
+Roaming
+\backslash
+2.8
+\backslash
+MiKTeX
+\backslash
+tex
+\backslash
+latex
+\family default
+ .
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Créez votre répertoire 
-\family typewriter
-texmf
-\family default
- local (par exemple 
-\family typewriter
-/usr/local/texmf
-\family default
-).
- Vous devez suivre la structure de votre répertoire 
-\family typewriter
-texmf
-\family default
- existant (par exemple, les paquetages LaTeX doivent aller dans 
-\family typewriter
-/usr/local/texmf/tex/latex/
-\family default
-).
+
+\lang english
+Now one only need to tell LaTeX that there are new files.
+ This depends on the used LaTeX-Distribution:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
-Installez le paquetage.
- Par exemple, vous pouvez décompresser l'archive FoilTeX et créer 
-\family typewriter
-/usr/local/texmf/tex/latex/foiltex
-\family default
-.
- Le répertoire 
-\family typewriter
-foiltex
-\family default
- contient différents fichiers.
-\end_layout
 
-\begin_layout Enumerate
-Lancez 
-\family typewriter
+\lang english
+For TeXLive execute the command 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 texhash
-\family default
-.
- Ça devrait entre autres créer 
-\family typewriter
-/usr/local/texmf/ls-R
-\family default
-.
+\end_layout
+
+\end_inset
+
+ from a console.
+ If you installed the package for all users, then you will probably need
+ to have root permissions for that.
 \end_layout
 
 \begin_layout Enumerate
-Depuis LyX, faites 
-\family sans
-Éditer\SpecialChar \menuseparator
-Reconfigurer
-\family default
-.
- Redémarrez LyX.
-\end_layout
 
-\begin_layout Standard
-Maintenant vous devriez voir votre nouveau paquetage – par exemple 
-\family sans
-slides
+\lang english
+For MiKTeX, if you have installed the package for all users, start the program
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Settings
 \begin_inset space ~
 \end_inset
 
-(FoilTeX)
-\family default
- – dans le champ 
-\family sans
-Classe
-\family default
- de la fenêtre 
-\family sans
-Format\SpecialChar \menuseparator
-Document\SpecialChar \menuseparator
-Document
-\family default
+(Admin)
+\begin_inset Quotes erd
+\end_inset
+
+ and press the button marked 
+\begin_inset Quotes eld
+\end_inset
+
+Refresh FNDB
+\begin_inset Quotes erd
+\end_inset
+
 .
- Notez qu'il y a des façons plus simples d'installer des paquetages : vous
- pouvez ajouter un lien au répertoire du nouveau paquetage dans le répertoire
- LaTeX du système (
-\family typewriter
-$TEXMF/tex/latex
-\family default
-, n'oubliez pas de lancer ensuite 
-\family typewriter
-texconfig
-\family default
-), ou parfois simplement régler la variable d'environnement 
-\family typewriter
-$TEXINPUTS
-\family default
- pour inclure le nouveau paquetage.
- Cependant, la procédure stricte décrite dans 
-\family typewriter
-texmf.cnf
-\family default
- est garantie de fonctionner, vous devez donc la suivre sauf si les circonstance
-s l'empêchent absolument : par exemple si vous n'avez pas les droits de
- super-utilisateur.
+ Otherwise start the program 
+\begin_inset Quotes eld
+\end_inset
+
+Settings
+\begin_inset Quotes erd
+\end_inset
+
+ and do the same.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Finally, you need to tell LyX that there are new packages available.
+ So, in LyX, use the menu 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Tools
+\family sans
+\SpecialChar \menuseparator
+Reconfigure
+\end_layout
+
+\end_inset
+
+ and then restart LyX.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Now the package is installed.
+ In our example, the document class 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Slides
+\begin_inset space ~
+\end_inset
+
+(FoilTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+x)
+\end_layout
+
+\end_inset
+
+ will now be available under 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document Class
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you would like to use a LaTeX document class that is not even listed
+ in the menu 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document Class
+\end_layout
+
+\end_inset
+
+, then you need to create a `layout' file for it.
+ That is the topic of the next section.
 \end_layout
 
 \begin_layout Section
@@ -13992,7 +14289,9 @@ math-matrix 3 3
 
  
 \begin_inset Formula $\begin{array}{ccc}
-\\\\\end{array}$
+\\
+\\
+\end{array}$
 \end_inset
 
 .
