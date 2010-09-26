@@ -1,5 +1,5 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 401
 \begin_document
 \begin_header
 \textclass jbook
@@ -67,20 +67,27 @@
 %\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}\fi
 %\AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}
 \end_preamble
-\options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove
+\options intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
 \use_default_options false
+\maintain_unincluded_children false
 \language japanese
 \inputencoding EUC-JP-pLaTeX
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_xetex false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref true
@@ -97,34 +104,44 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "unicode=false,linkcolor=black,citecolor=black,urlcolor=blue,filecolor=blue,pdfpagelayout=OneColumn,pdfnewwindow=true,pdfstartview=XYZ,plainpages=false,pdfpagelabels"
+\pdf_quoted_options "unicode=false, linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
 \use_geometry false
 \use_amsmath 1
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
 \branch 質問
 \selected 1
+\filename_suffix 0
 \color #00ff00
 \end_branch
 \branch 解答
 \selected 0
+\filename_suffix 0
 \color #aa55ff
 \end_branch
+\index 索引
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -415,7 +432,7 @@ aTeXパッケージが、システムに備わっているかを検査するこ�
 設定
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -431,7 +448,7 @@ status collapsed
 再設定
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -487,7 +504,7 @@ status collapsed
 eXの設定
 \emph default
 」というファイルに一覧表示されます。導入されていない必須パッケージがあれば導入して、LyXを再設定
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -530,7 +547,7 @@ LyXでの作業のしかた
 
 \begin_layout Section
 基本的なファイル操作
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -838,7 +855,7 @@ status collapsed
 
 \begin_layout Section
 基本的な編集機能
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1024,7 +1041,7 @@ Backspace
 \end_layout
 
 \begin_layout Standard
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1055,7 +1072,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1065,7 +1082,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1234,7 +1251,7 @@ Delete
 
 \begin_layout Section
 元に戻すとやり直す
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1244,7 +1261,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1394,7 +1411,7 @@ LyXでは、何か失敗をしても、簡単にもとに戻すことができ�
 
 \begin_layout Section
 マウス操作
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1619,7 +1636,7 @@ name "sec:移動"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1758,7 +1775,7 @@ name "sec:入力補完"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1768,7 +1785,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1858,7 +1875,7 @@ reference "sub:入力補完-附録"
 
 \begin_layout Section
 基本的なキー割り当て
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1886,7 +1903,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1918,7 +1935,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1950,7 +1967,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2847,7 +2864,7 @@ reference "sub:短絡キーの編集"
 
 \begin_layout Chapter
 LyXの基本
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2861,7 +2878,7 @@ Lyx@LyX ! きほん@基本
 
 \begin_layout Section
 文書型
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2940,7 +2957,7 @@ LyXで使える文書クラスの情報、そしてそれをどう変えるか�
 
 \begin_layout Subsection
 文書クラス
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2984,7 +3001,7 @@ name "sec:文書クラス"
 設定
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3491,7 +3508,7 @@ name "sub:モジュール"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3511,7 +3528,7 @@ status collapsed
 設定
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3591,7 +3608,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -4200,7 +4217,7 @@ name "sub:文書レイアウト"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4210,7 +4227,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4419,7 +4436,7 @@ status collapsed
 fancyhdr
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4497,7 +4514,7 @@ reference "sec:段落の字下げと分け方"
 
 \begin_layout Subsection
 用紙寸法と方向
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4543,7 +4560,7 @@ name "sub:用紙寸法と方向"
 ページレイアウト
 \family default
 メニューには、以下のオプションがあります。
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4693,7 +4710,7 @@ USエグゼクティブ
 
 \begin_layout Subsection
 余白
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4710,7 +4727,7 @@ name "sub:余白"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4727,7 +4744,7 @@ status collapsed
 \family sans
 文書\SpecialChar \menuseparator
 設定
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4793,7 +4810,7 @@ KOMA-Script文書クラスをお使いの時は、既定値で使って構いま
 
 \begin_layout Section
 段落の字下げと分け方
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4987,7 +5004,7 @@ LaTeXが行います。
 
 \begin_layout Subsection
 段落の分け方
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5029,7 +5046,7 @@ status collapsed
 \noun off
 \color none
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5207,7 +5224,7 @@ ptです。
 \noun off
 \color none
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5251,7 +5268,7 @@ status collapsed
 \noun off
 \color none
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5300,7 +5317,7 @@ name "sec:段落環境"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5310,7 +5327,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5798,7 +5815,7 @@ arg   "break-paragraph inverse"
 
 \begin_layout Subsection
 文書タイトル
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6086,7 +6103,7 @@ date{}
 \noun off
 \color none
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6138,7 +6155,7 @@ name "sub:見出し"
 \noun off
 \color none
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6529,7 +6546,7 @@ status open
 \noun off
 \color none
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6726,7 +6743,7 @@ name "sub:番号の付け方-深度"
 \noun off
 \color none
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6786,7 +6803,7 @@ status collapsed
 
 \begin_layout Subsubsection
 見出しの短縮タイトル
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6796,7 +6813,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -7025,7 +7042,7 @@ name "sec:引用"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -7284,7 +7301,7 @@ status collapsed
 詩句
 \family sans
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -7294,7 +7311,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -7677,7 +7694,7 @@ reference "sec:入れ子"
 箇条書き（記号）
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8159,7 +8176,7 @@ reference "sec:入れ子"
 \noun off
 \color none
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8222,7 +8239,7 @@ reference "sec:入れ子"
 
 \family sans
 箇条書き（連番）
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8677,7 +8694,7 @@ reference "sec:入れ子"
 
 \family sans
 箇条書き（記述）
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9064,7 +9081,7 @@ Example:
 LyX
 \family sans
 リスト
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9680,7 +9697,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10332,7 +10349,7 @@ arg   "newline-insert newline"
 
 \begin_layout Subsubsection
 概要
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10529,7 +10546,7 @@ reference "cap:概要環境内の段落"
 
 \begin_layout Subsubsection
 参考文献
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10746,7 +10763,7 @@ reference "sec:参考文献"
 
 \family sans
 LyXコード
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -11392,7 +11409,7 @@ LyXコード
 \color none
 の目的はただ一つ、プログラムソースやシェルスクリプト、rcファイルなどのコードを植字することです。この環境は、タイプライタを使ったような文字列を生成する必要があ
 るような、非常に特別な場合にのみ使って下さい。
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -11415,7 +11432,7 @@ status collapsed
 
 \begin_layout Section
 環境を入れ子にする
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -11921,7 +11938,7 @@ status open
 
 \begin_layout Subsection
 他のものを入れ子にする：表・数式・フロートなど
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12132,7 +12149,7 @@ LyXはこれら3つのオブジェクトを、単語または段落として扱�
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -12305,7 +12322,7 @@ LyXはこれら3つのオブジェクトを、単語または段落として扱�
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -12488,7 +12505,7 @@ LyXはこれら3つのオブジェクトを、単語または段落として扱�
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -12780,7 +12797,7 @@ name "sub:入れ子−使い方"
 
 \begin_layout Subsection
 いくつかの例
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13675,7 +13692,7 @@ arg   "depth-decrement"
 
 \begin_layout Subsubsection
 例3：ラベルと階層、および箇条書き（連番）と箇条書き（記号）環境
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -14498,7 +14515,7 @@ arg   "break-paragraph inverse"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -15004,7 +15021,7 @@ Moosegroin, MT 00100
 
 \begin_layout Section
 余白取りとページ付けおよび改行
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15031,7 +15048,7 @@ name "sub:保護された空白"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15107,7 +15124,7 @@ name "sub:水平方向の空白"
 \end_inset
 
  
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15145,7 +15162,7 @@ name "sub:単語間の空白"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15187,7 +15204,7 @@ name "sub:小空白"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15417,7 +15434,7 @@ name "tab:空白の幅"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -15645,7 +15662,7 @@ name "sub:水平フィル"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15925,7 +15942,7 @@ name "sub:埋め草"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16081,7 +16098,7 @@ name "sub:垂直方向の空白"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16212,7 +16229,7 @@ status collapsed
 \noun off
 \color none
 ダイアログ
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16282,7 +16299,7 @@ status collapsed
 \noun off
 \color none
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16545,7 +16562,7 @@ arg   "paragraph-params \\align default"
 
 \begin_layout Subsection
 強制改頁
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16641,7 +16658,7 @@ name "sub:改段改頁"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16677,7 +16694,7 @@ status collapsed
 
 \begin_layout Subsection
 強制改行
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16790,7 +16807,7 @@ name "sub:水平線"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16803,8 +16820,19 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
 
-\lyxline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \family sans
 挿入\SpecialChar \menuseparator
@@ -16815,8 +16843,19 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
 
-\lyxline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
@@ -16881,7 +16920,7 @@ name "sec:フォントと文字形式"
 
 \begin_layout Subsection
 フォントの種類
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16899,7 +16938,7 @@ status collapsed
 
 \begin_layout Description
 ベクターフォント
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16941,7 +16980,7 @@ Type
 
 \begin_layout Description
 ビットマップフォント
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17003,7 +17042,7 @@ name "sub:文書フォント"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17022,7 +17061,7 @@ status collapsed
 設定
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17204,7 +17243,7 @@ LaTeXパッケージの
 aeguill
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17736,7 +17775,7 @@ reference "sub:画面フォント"
 
 \begin_layout Subsection
 異なる文字形式を使う
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17746,7 +17785,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -18228,7 +18267,7 @@ name "sub:文字微調整"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19235,7 +19274,7 @@ This is text with Noun on（これは名詞体の文章です）。
 \noun off
 \color none
 が選べます。
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19668,7 +19707,7 @@ LaTeX
 
 \begin_layout Subsection
 出力ファイル形式
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19689,7 +19728,7 @@ name "sub:出力ファイル形式"
 
 \begin_layout Subsubsection
 ASCII
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19721,7 +19760,7 @@ status collapsed
 
 \begin_layout Subsubsection
 LaTeX
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19766,7 +19805,7 @@ X
 
 \begin_layout Subsubsection
 DVI
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19822,7 +19861,7 @@ DVI
 
 \begin_layout Subsubsection
 PostScript
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19850,7 +19889,7 @@ status collapsed
 pstricks
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19890,7 +19929,7 @@ PostScript
 
 \begin_layout Subsubsection
 PDF
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19900,7 +19939,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20064,7 +20103,7 @@ dvipdfm
 \noun off
 \color none
 プレビュー
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20390,7 +20429,7 @@ reference "sub:プリンタ"
 
 \begin_layout Section
 その他組版について
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20404,7 +20443,7 @@ status collapsed
 
 \begin_layout Subsection
 ハイフン
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20489,7 +20528,7 @@ LyXには、
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -20805,7 +20844,7 @@ Oh — there's a dash.
 
 \begin_layout Subsection
 ハイフネーション
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20836,7 +20875,7 @@ name "sub:ハイフネーション"
 \color none
 LyX内では単語のハイフネーション（行末におけるハイフン区切り）は行われませんが、出力においては自動的になされます。ハイフネーションは、LaTeXパッケージのb
 abel
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20956,7 +20995,7 @@ reference "sec:TeXコード"
 
 \begin_layout Subsection
 句読点
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21152,7 +21191,7 @@ reference "sub:単語間の空白"
 \end_inset
 
 節を参照）。
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21218,7 +21257,7 @@ reference "sub:小空白"
 \noun off
 \color none
 節参照）。
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21325,7 +21364,7 @@ TeX
 
 \begin_layout Subsubsection
 引用符
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21335,7 +21374,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21828,7 +21867,7 @@ this
 
 \begin_layout Subsection
 合字
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21838,7 +21877,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21995,7 +22034,7 @@ fest」のようになります。
 
 \begin_layout Subsection
 LyXの固有名称
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22136,7 +22175,7 @@ reference "sec:TeXコード"
 
 \begin_layout Subsection
 単位
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22172,7 +22211,7 @@ arg   "space-insert thin"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row>
@@ -22240,7 +22279,7 @@ h
 
 \begin_layout Subsection
 孤立行
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22408,7 +22447,7 @@ name "cha:フロートと注釈"
 
 \begin_layout Section
 注釈
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22533,7 +22572,7 @@ status collapsed
 
 \begin_layout Section
 脚注
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22730,7 +22769,7 @@ status open
 
 \begin_layout Section
 傍注
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22806,7 +22845,7 @@ status open
 
 \begin_layout Section
 図と画像
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22816,7 +22855,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22940,7 +22979,7 @@ reference "sub:図フロート"
 
 \begin_layout Subsection
 画像形式
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22993,7 +23032,7 @@ reference "sub:出力ファイル形式"
 .gif
 \family default
 」）
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23029,7 +23068,7 @@ status collapsed
 .png
 \family default
 」）
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23069,7 +23108,7 @@ status collapsed
 .jpeg
 \family default
 」）
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23142,7 +23181,7 @@ PDFの場合には、元の画像を圧縮することもあります。
 
 \begin_layout Subsection
 画像設定のグループ化
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23171,7 +23210,7 @@ status collapsed
 
 \begin_layout Section
 表
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23227,7 +23266,7 @@ name "sec:表"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -23505,7 +23544,7 @@ reference "sub:表のセル"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
-<features firstHeadTopDL="true" firstHeadBottomDL="true">
+<features firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="middle" width="0">
 <column alignment="center" valignment="top" width="0in">
@@ -23672,7 +23711,7 @@ status open
 
 \begin_layout Subsection
 長尺表
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23682,7 +23721,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23692,7 +23731,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23869,7 +23908,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="69" columns="3">
-<features islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="block" valignment="top" width="5cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -26015,7 +26054,7 @@ Franz
 
 \begin_layout Subsection
 表のセル
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26084,7 +26123,7 @@ name "sub:表のセル"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="block" valignment="top" width="4cm">
 <column alignment="center" valignment="top" width="0pt">
@@ -26340,7 +26379,7 @@ status collapsed
 
 \begin_layout Section
 フロート
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26405,7 +26444,7 @@ reference "sec:相互参照"
 \end_inset
 
 #:」（#は実際には番号）というキャプションの付いたボックスが挿入されます。ラベルは、出力時に自動的に文書言語に翻訳されます。ラベルの後にはキャプション文
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26434,7 +26473,7 @@ status collapsed
 
 \begin_layout Subsubsection
 図フロート
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26853,7 +26892,7 @@ reference "sec:図・表・アルゴリズム一覧"
 
 \begin_layout Subsubsection
 表フロート
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26923,7 +26962,7 @@ name "cap:表フロート"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -27049,7 +27088,8 @@ name "cap:表フロート"
 \color none
 \begin_inset Formula $\left[\begin{array}{cc}
 a & b\\
-c & d\end{array}\right]$
+c & d
+\end{array}\right]$
 \end_inset
 
 
@@ -27093,7 +27133,7 @@ c & d\end{array}\right]$
 
 \begin_layout Subsubsection
 アルゴリズムフロート
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27173,7 +27213,7 @@ algorithm
 
 \begin_layout Subsubsection
 折返しフロート
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27233,7 +27273,7 @@ name "cap:折返し図"
 wrapfig
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27326,7 +27366,7 @@ status open
 
 \begin_layout Subsection
 回転フロート
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27418,7 +27458,7 @@ name "cap:回転した表"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -27485,7 +27525,7 @@ name "cap:回転した表"
 
 \begin_layout Subsection
 フロートの配置
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27731,7 +27771,7 @@ key "latexcompanion,latexguide,latexbook"
 
 \begin_layout Section
 ミニページ
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27771,6 +27811,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "30col%"
 special "none"
 height "1pt"
@@ -27823,6 +27864,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "1.5in"
 special "none"
 height "1pt"
@@ -27846,6 +27888,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "1.5in"
 special "none"
 height "1pt"
@@ -27879,7 +27922,7 @@ status open
 
 \begin_layout Chapter
 数式
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27889,7 +27932,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27936,7 +27979,7 @@ name "cha:数式"
 
 \begin_layout Section
 数式編集の基本
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28018,7 +28061,7 @@ alpha
 
 \begin_layout Subsection
 数式内の移動
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28114,7 +28157,8 @@ LyXは、何かを挿入できる場所を小さな箱で示します。矢印�
 
 \begin_inset Formula $\left[\begin{array}{cc}
 1 & 2\\
-3 & 4\end{array}\right]$
+3 & 4
+\end{array}\right]$
 \end_inset
 
 
@@ -28365,7 +28409,8 @@ spce
 \left(\begin{array}{ccc}
 \lambda_{1}\\
  & \ddots\\
- &  & \lambda_{n}\end{array}\right)\]
+ &  & \lambda_{n}
+\end{array}\right)\]
 
 \end_inset
 
@@ -28419,7 +28464,7 @@ spce
 
 \begin_layout Subsection
 指数と下付き文字
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28429,7 +28474,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28734,7 +28779,7 @@ spce
 
 \begin_layout Subsection
 分数
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28850,7 +28895,8 @@ frac
 \begin_inset Formula \[
 \left[\frac{1}{\left(\begin{array}{cc}
 2 & 3\\
-4 & 5\end{array}\right)}\right]\]
+4 & 5
+\end{array}\right)}\right]\]
 
 \end_inset
 
@@ -28859,7 +28905,7 @@ frac
 
 \begin_layout Subsection
 根号
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28907,7 +28953,7 @@ sqrt
 
 \begin_layout Subsection
 範囲付き演算子
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28917,7 +28963,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29088,7 +29134,7 @@ arg   "math-limits"
 \noun default
 \color inherit
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29098,7 +29144,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29239,7 +29285,7 @@ reference "sub:関数"
 
 \begin_layout Subsection
 数式記号
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29276,7 +29322,7 @@ status collapsed
 
 \begin_layout Subsection
 余白を変更する
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29286,7 +29332,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29462,7 +29508,7 @@ Space
 
 \begin_layout Subsection
 関数
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29622,7 +29668,7 @@ reference "sub:範囲付き演算子"
 
 \begin_layout Subsection
 アクセント
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29749,7 +29795,7 @@ name "tab:アクセント名とそれに対応するコマンド"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -30363,7 +30409,7 @@ vec
 
 \begin_layout Section
 括弧と区分記号
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30373,7 +30419,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30443,7 +30489,8 @@ LyXで使える括弧には、いくつかのものがあります。ほとん�
 \begin_inset Formula \[
 \left[\begin{array}{cc}
 1 & 2\\
-3 & 4\end{array}\right]\]
+3 & 4
+\end{array}\right]\]
 
 \end_inset
 
@@ -30544,7 +30591,7 @@ LyXで使える括弧には、いくつかのものがあります。ほとん�
 
 \begin_layout Section
 配列と多行数式
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30554,7 +30601,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30564,7 +30611,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30607,7 +30654,8 @@ LyXでは、行列は数式パネルの行列ボタン
 \left(\begin{array}{ccc}
 1 & 2 & 3\\
 4 & 5 & 6\\
-7 & 8 & 9\end{array}\right)\]
+7 & 8 & 9
+\end{array}\right)\]
 
 \end_inset
 
@@ -30666,7 +30714,8 @@ lrc
 \begin{array}{lcr}
 \mbox{この} & \mbox{この} & \mbox{この}\\
 \mbox{列は} & \mbox{列は} & \mbox{列は}\\
-\mbox{左揃えです} & \mbox{中央揃えです} & \mbox{右揃えです}\end{array}\]
+\mbox{左揃えです} & \mbox{中央揃えです} & \mbox{右揃えです}
+\end{array}\]
 
 \end_inset
 
@@ -30724,7 +30773,8 @@ cases
 f(x)=\begin{cases}
 -1 & x<0\\
 0 & x=0\\
-1 & x>0\end{cases}\]
+1 & x>0
+\end{cases}\]
 
 \end_inset
 
@@ -30774,7 +30824,8 @@ arg   "newline-insert newline"
  
 \begin_inset Formula \begin{eqnarray}
 a^{2} & = & (b^{2}+c^{2})(b^{2}-c^{2})\nonumber \\
-a & = & \sqrt{b^{4}-c^{4}}\label{eq:asquared}\end{eqnarray}
+a & = & \sqrt{b^{4}-c^{4}}\label{eq:asquared}
+\end{eqnarray}
 
 \end_inset
 
@@ -30871,7 +30922,7 @@ reference "sub:AMS数式型"
 
 \begin_layout Section
 数式番号と参照
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30881,7 +30932,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31020,7 +31071,8 @@ arg   "math-number-line-toggle"
 \begin_inset Formula \begin{eqnarray}
 1 & = & 3-2\\
 2 & = & 4-2\nonumber \\
-4 & \leq & 7\end{eqnarray}
+4 & \leq & 7
+\end{eqnarray}
 
 \end_inset
 
@@ -31093,7 +31145,8 @@ p」というラベルをつけています。
 
 \begin_inset Formula \begin{eqnarray}
 \tanh(x) & = & \frac{\sinh(x)}{\cosh(x)}\nonumber \\
- & = & \frac{\mathrm{e}^{2x}-1}{\mathrm{e}^{2x}+1}\label{eq:tanhExp}\end{eqnarray}
+ & = & \frac{\mathrm{e}^{2x}-1}{\mathrm{e}^{2x}+1}\label{eq:tanhExp}
+\end{eqnarray}
 
 \end_inset
 
@@ -31168,7 +31221,7 @@ status collapsed
 
 \begin_layout Section
 ユーザー定義の数式マクロ
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31235,7 +31288,7 @@ LyXでは、数式用に自前のマクロを定義することができるの�
 
 \begin_layout Subsection
 書体
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31310,7 +31363,7 @@ name "tab:書体とそれに対応するコマンド"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -31745,7 +31798,7 @@ boldsymbol
 
 \begin_layout Subsection
 数式内文章
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31785,7 +31838,8 @@ M
 \begin_inset Formula \[
 f(x)=\begin{cases}
 x & \mbox{もし私がそう言った場合}\\
--x & \textrm{unter Umständen（場合によっては）}\end{cases}\]
+-x & \textrm{unter Umständen（場合によっては）}
+\end{cases}\]
 
 \end_inset
 
@@ -31794,7 +31848,7 @@ x & \mbox{もし私がそう言った場合}\\
 
 \begin_layout Subsection
 フォント寸法
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32004,7 +32058,7 @@ displaystyle
 
 \begin_layout Standard
 LyX 1.6の時点において、定理型環境を有効にするには、文書クラスで指定するのではなく、レイアウトモジュール
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32026,7 +32080,7 @@ reference "sub:モジュール"
 
 \begin_layout Section
 AMS-LaTeX
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32036,7 +32090,7 @@ AMSすうしき@AMS 数式
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32063,7 +32117,7 @@ AMSサポートを有効にする
 設定
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32097,7 +32151,7 @@ name "sub:AMS数式型"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32139,7 +32193,7 @@ multline
 
 \begin_layout Section
 相互参照
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32525,7 +32579,7 @@ status open
 prettyref
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32644,7 +32698,7 @@ reference "sec:数式番号と参照"
 
 \begin_layout Section
 目次と他の一覧
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32654,7 +32708,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32664,7 +32718,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32848,7 +32902,7 @@ name "sec:図・表・アルゴリズム一覧"
 
 \begin_layout Section
 URLとハイパーリンク
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -32858,7 +32912,7 @@ URL
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33025,7 +33079,7 @@ urlcolor=blue
 
 \begin_layout Section
 付録
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33078,7 +33132,7 @@ reference "sub:書き出し"
 
 \begin_layout Section
 参考文献
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33192,7 +33246,7 @@ key "lyxcredit"
 
 \begin_layout Subsection
 文献データベース（BibTeX）
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33202,7 +33256,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33212,7 +33266,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33430,7 +33484,7 @@ alphadin.bst
 
 \begin_layout Subsection
 文献レイアウト
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33449,7 +33503,7 @@ status collapsed
 設定
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33488,7 +33542,7 @@ key "latexcompanion"
 
 \begin_layout Section
 索引
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33558,7 +33612,7 @@ key "latexcompanion,latexguide,latexbook"
 
 \begin_layout Subsection
 索引項目のグループ化
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33654,7 +33708,7 @@ reference "sub:索引項目の整序"
 
 \begin_layout Subsection
 ページ範囲
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33720,7 +33774,7 @@ reference "sub:LyXコード"
 
 \begin_layout Subsection
 相互参照
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33782,7 +33836,7 @@ seename}{→}」と宣言します。
 
 \begin_layout Subsection
 索引項目の整序
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -33862,7 +33916,7 @@ status collapsed
 \end_inset
 
 itre」
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -33885,7 +33939,7 @@ is
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -33908,7 +33962,7 @@ itre
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -34102,7 +34156,7 @@ OrgIndex{#1}}
 
 \begin_layout Subsection
 索引項目のレイアウト
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34116,7 +34170,7 @@ status collapsed
 
 \begin_layout Standard
 索引項目の外観は、文字形式ダイアログを使用して変更することができます。
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -34140,7 +34194,7 @@ status open
 \end_inset
 
 と書くと、イタリック体のページ番号を得ることができます。
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -34247,7 +34301,7 @@ textit{#1}}
 \end_inset
 
 と書いてください。
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -34290,7 +34344,7 @@ key "makeindex,xindy"
 
 \begin_layout Subsection
 索引プログラム
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34358,7 +34412,7 @@ xindy
 
 \begin_layout Section
 記号一覧／用語集
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34390,7 +34444,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34400,7 +34454,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34432,7 +34486,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34483,7 +34537,7 @@ name "sec:用語集"
 nomencl
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34540,7 +34594,7 @@ status open
 
 \begin_layout Subsection
 用語の定義とレイアウト
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34665,7 +34719,7 @@ emph
 
 \begin_layout Subsection
 用語集項目の整序順
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34769,7 +34823,7 @@ key "nomencl"
 
 \begin_layout Subsection
 用語集オプション
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34946,7 +35000,7 @@ nomnorefeqpage 対応するオプションを解除する
 
 \begin_layout Subsection
 用語集の出力
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35030,7 +35084,7 @@ cmです。
 
 \begin_layout Subsection
 用語集プログラム
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35077,7 +35131,7 @@ key "nomencl,makeindex"
 
 \begin_layout Section
 派生枝
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35087,7 +35141,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35381,7 +35435,7 @@ name "sec:PDF特性"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35400,7 +35454,7 @@ PDFとくせい@PDF特性
 hyperref
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35485,7 +35539,7 @@ name "sec:TeXコード"
 
 \begin_layout Subsection
 TeXコード枠
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35612,7 +35666,7 @@ status open
 
 \begin_layout Subsection
 簡単なLaTeX文法入門
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -35622,7 +35676,7 @@ LaTeX文法
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35667,7 +35721,7 @@ key "Catalogue"
 caption
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35799,7 +35853,7 @@ name "sec:文書の断片プレビュー"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35809,7 +35863,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35836,7 +35890,7 @@ DVI
 preview-latex
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35938,7 +35992,7 @@ name "sec:スペルチェック"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36159,7 +36213,7 @@ ispell
 
 \begin_layout Section
 類語辞典
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36169,7 +36223,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36241,7 +36295,7 @@ ort」ならば、結果が表示されます。対策として、結果を得�
 
 \begin_layout Section
 変更追跡機能
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36251,7 +36305,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36296,7 +36350,7 @@ name "sec:変更追跡機能"
 操作性・色
 \family default
 面で変更できます
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36316,7 +36370,7 @@ status collapsed
 
 \begin_layout Standard
 変更追跡が有効にされると、以下のような校閲ツールバーがLyXに表示されるようになります。
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36356,7 +36410,7 @@ status collapsed
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row>
@@ -36671,7 +36725,7 @@ LyX注釈
 dvipost
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36692,7 +36746,7 @@ key "TeXCatalogue"
 
 \begin_layout Section
 国際化サポート
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36729,7 +36783,7 @@ reference "sub:特殊文字"
 
 \begin_layout Subsection
 言語オプション
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36739,7 +36793,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36749,7 +36803,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36963,7 +37017,7 @@ latin1文字セット
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="17">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -39922,7 +39976,7 @@ name "cha:ユーザーインタフェース"
 
 \begin_layout Section
 ファイルメニュー
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40283,7 +40337,7 @@ reference "sec:LaTeXの設定"
 \end_inset
 
 節をご覧ください。
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40376,7 +40430,7 @@ LyXの新規インスタンスを開いたり閉じたりします。
 
 \begin_layout Section
 編集メニュー
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40466,7 +40520,7 @@ reference "sub:文字微調整"
 
 \begin_layout Subsection
 段落設定
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40542,7 +40596,7 @@ reference "sub:番号の付け方-深度"
 
 \begin_layout Section
 表示メニュー
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40588,7 +40642,7 @@ reference "sec:LaTeXの設定"
 \end_inset
 
 節をご覧ください。
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40698,7 +40752,7 @@ reference "sec:文書の断片プレビュー"
 
 \begin_layout Subsection
 ツールバー
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40776,7 +40830,7 @@ reference "sec:ツールバー"
 
 \begin_layout Section
 挿入メニュー
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40910,7 +40964,7 @@ reference "sub:略語"
 
 \begin_layout Description
 発音記号
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40920,7 +40974,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40934,7 +40988,7 @@ status collapsed
 tipa
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41254,7 +41308,7 @@ Flex insets and InsetLayout
 
 \begin_layout Subsection
 ファイル
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41280,7 +41334,7 @@ External Stuff
 
 \begin_layout Subsection
 ボックス
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41358,7 +41412,7 @@ reference "sec:相互参照"
 
 \begin_layout Subsection
 キャプション
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41368,7 +41422,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41551,7 +41605,7 @@ reference "sub:TeXコード枠"
 
 \begin_layout Subsection
 プログラムリスト
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41593,7 +41647,7 @@ External Material
 
 \begin_layout Section
 移動メニュー
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41699,7 +41753,7 @@ status open
 
 \begin_layout Section
 文書メニュー
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41816,7 +41870,7 @@ reference "cha:文書設定"
 
 \begin_layout Section
 ツールメニュー
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41860,7 +41914,7 @@ reference "sec:類語辞典"
 
 \begin_layout Subsection
 統計
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41870,7 +41924,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41888,7 +41942,7 @@ status collapsed
 
 \begin_layout Subsection
 TeX情報
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41906,7 +41960,7 @@ Texじょうほう@TeX情報
 
 \begin_layout Subsection
 再設定
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41938,7 +41992,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41978,7 +42032,7 @@ reference "cha:設定ダイアログ"
 
 \begin_layout Section
 ヘルプメニュー
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -42041,7 +42095,7 @@ reference "sub:ツールバー"
 
 \begin_layout Subsection
 標準ツールバー
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -42100,7 +42154,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -42139,7 +42193,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="21" columns="2">
-<features islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row interlinespace="2.5mm">
@@ -42773,7 +42827,7 @@ status collapsed
 
 \begin_layout Subsection
 追加ツールバー
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -42807,7 +42861,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="25" columns="2">
-<features islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row interlinespace="2.5mm">
@@ -43560,7 +43614,7 @@ eX
 
 \begin_layout Subsection
 表示／更新ツールバー
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -43602,7 +43656,7 @@ status collapsed
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row interlinespace="2.5mm">
@@ -43808,7 +43862,7 @@ reference "sec:変更追跡機能"
 \end_inset
 
 節に説明があります。表ツールバー
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -43837,7 +43891,7 @@ name "cha:文書設定"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -44018,7 +44072,7 @@ reference "sub:余白"
 
 \begin_layout Section
 言語
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -44103,7 +44157,7 @@ LaTeX既定値（inputenc不使用） 文字コードに
 inputenc
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -44235,7 +44289,7 @@ LaTeXコマンドが必要な場合には、ファイルが大きくなる可能
  CJK
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -44282,7 +44336,7 @@ key "XeTeX"
 ucs
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -44300,7 +44354,7 @@ LaTeXパッケージに基づいたUnicode utf8（包括的。ラテン文字・
 inputenc
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -44370,7 +44424,7 @@ Latexぱっけーじ@LaTeXパッケージ ! inputenc
 CJK
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -44404,7 +44458,7 @@ CJK
 japanese
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -44438,7 +44492,7 @@ japanese
 japanese
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -44526,7 +44580,7 @@ reference "sub:番号の付け方-深度"
 natbib
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -44540,7 +44594,7 @@ Latexぱっけーじ@LaTeXパッケージ ! natbib
 jurabib
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -44584,7 +44638,7 @@ reference "sec:PDF特性"
 amsmath
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -44598,7 +44652,7 @@ Latexぱっけーじ@LaTeXパッケージ ! amsmath
 esint
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -44711,7 +44765,7 @@ name "cha:設定ダイアログ"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -44738,7 +44792,7 @@ status collapsed
 
 \begin_layout Subsection
 操作画面
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -44748,7 +44802,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -44762,7 +44816,7 @@ status collapsed
 
 \begin_layout Subsubsection
 操作画面設定ファイル
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -44772,7 +44826,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -44999,7 +45053,7 @@ name "sub:文書のバックアップ"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -45038,7 +45092,7 @@ status collapsed
 
 \begin_layout Subsection
 画面フォント
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -45162,7 +45216,7 @@ OSとWindowsでのみ使うことができ、また意味があることにご�
 
 \begin_layout Subsection
 色
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -45172,7 +45226,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -45194,7 +45248,7 @@ status collapsed
 
 \begin_layout Subsection
 表示
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -45295,7 +45349,7 @@ reference "sec:文書の断片プレビュー"
 
 \begin_layout Subsection
 短絡キー
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -45305,7 +45359,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -45337,7 +45391,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -45419,7 +45473,7 @@ name "sub:短絡キーの編集"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -45515,7 +45569,7 @@ name "sub:キーボード配置表"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -45525,7 +45579,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -45580,7 +45634,7 @@ name "sub:入力補完-附録"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -45613,7 +45667,7 @@ name "sec:パス"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -45623,7 +45677,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -45693,7 +45747,7 @@ MacOSやWindowsシステムでLyXを使用しているときには、用例ボ�
 
 \begin_layout Description
 バックアップディレクトリ
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -45776,7 +45830,7 @@ reference "sec:変更追跡機能"
 
 \begin_layout Section
 言語設定
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -45786,7 +45840,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -45962,7 +46016,7 @@ name "sub:プリンタ"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -45972,7 +46026,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -46033,7 +46087,7 @@ dvips
 
 \begin_layout Subsection
 日付書式
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -46043,7 +46097,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -46133,7 +46187,7 @@ name "sub:LaTeX-設定"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -46289,7 +46343,7 @@ xdvi
 LaTeXファイルでWindows流のパス表記を使う Windowsのパス記法を使用します。すなわち、フォルダを区切るのに「/」ではなく「
 \backslash
 」を使用します。このオプションは、LyXをWindows上で使用する際には、既定で有効化されています。
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -46299,7 +46353,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -46322,7 +46376,7 @@ status collapsed
 
 \begin_layout Section
 ファイル処理
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -46343,7 +46397,7 @@ name "sub:変換子"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -46411,7 +46465,7 @@ Converters
 
 \begin_layout Subsection
 ファイル形式
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -46473,7 +46527,7 @@ name "cha:LyXで使用できる単位"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -46532,7 +46586,7 @@ name "cap:単位"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -47193,6 +47247,7 @@ key "lyxcredit"
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "Credits"
@@ -47227,6 +47282,7 @@ http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/CREDITS
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexcompanion"
@@ -47242,6 +47298,7 @@ The LaTeX Companion Second Edition.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexguide"
@@ -47258,6 +47315,7 @@ A Guide to LaTeX Fourth Edition.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexbook"
@@ -47274,6 +47332,7 @@ LaTeX: A Document Preparation System.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "texbook"
@@ -47291,6 +47350,7 @@ The TeXbook.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "TeXCatalogue"
@@ -47316,6 +47376,7 @@ http://www.ctan.org/tex-archive/help/Catalogue/bytopic.html
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "LaTeXFAQ"
@@ -47341,6 +47402,7 @@ http://www.tex.ac.uk/cgi-bin/texfaq2html
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "BibTeX"
@@ -47378,6 +47440,7 @@ http://www.ctan.org/get/biblio/bibtex/contrib/doc/btxdoc.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "BibTeX-2"
@@ -47411,6 +47474,7 @@ http://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "makeindex"
@@ -47448,6 +47512,7 @@ http://tug.ctan.org/indexing/makeindex/doc/manpages.dvi
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "xindy"
@@ -47485,6 +47550,7 @@ http://www.xindy.org/documentation.html
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "caption"
@@ -47522,6 +47588,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "fancyhdr"
@@ -47533,7 +47600,7 @@ LaTeXパッケージ
 fancyhdr
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -47569,6 +47636,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hyperref"
@@ -47580,7 +47648,7 @@ key "hyperref"
 hyperref
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -47620,6 +47688,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "nomencl"
@@ -47631,7 +47700,7 @@ LaTeXパッケージ
 nomencl
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -47667,6 +47736,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "tipa"
@@ -47678,7 +47748,7 @@ LaTeXパッケージ
 tipa
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -47714,6 +47784,7 @@ http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "wrapfig"
@@ -47725,7 +47796,7 @@ LaTeXパッケージ
 wrapfig
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -47761,6 +47832,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.sty
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "XeTeX"
@@ -47794,6 +47866,7 @@ http://wiki.lyx.org/LyX/XeTeX
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Arabic"
@@ -47827,6 +47900,7 @@ http://wiki.lyx.org/Windows/Arabic
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Armenian"
@@ -47860,6 +47934,7 @@ http://wiki.lyx.org/Windows/Armenian
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Farsi"
@@ -47893,6 +47968,7 @@ http://wiki.lyx.org/Windows/Farsi
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Hebrew"
@@ -47926,6 +48002,7 @@ http://wiki.lyx.org/Windows/Hebrew
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Japanese"
@@ -47959,6 +48036,7 @@ http://wiki.lyx.org/Windows/Japanese
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Vietnamese"
@@ -47992,6 +48070,7 @@ http://wiki.lyx.org/Windows/Vietnamese
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "LyX-func"
@@ -48025,6 +48104,7 @@ http://wiki.lyx.org/LyX/LyxFunctionList
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "NewInLyX16"
@@ -48134,12 +48214,14 @@ options "../biblio/alphadin"
 
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
+set_width "none"
 
 \end_inset
 
 
 \begin_inset CommandInset index_print
 LatexCommand printindex
+type "idx"
 
 \end_inset
 

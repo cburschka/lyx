@@ -1,5 +1,5 @@
-#LyX 2.0.0alpha5 created this file. For more info see http://www.lyx.org/
-\lyxformat 398
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 401
 \begin_document
 \begin_header
 \textclass jbook
@@ -38,7 +38,6 @@
 
 % used for multi-column text
 \usepackage{multicol}
-\usepackage{inputenc}
 
 % Added only for Japanese translation
 % This is needed to use \textquotedbl (this doesn't exist in OT1 encoding)
@@ -50,7 +49,7 @@
 %\ifnum 42146=\euc"A4A2 \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}\else
 %\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}\fi
 \end_preamble
-\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
 \begin_modules
 logicalmkup
@@ -105,12 +104,13 @@ End
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
-\use_mhchem 1
+\use_mhchem 0
+\use_mathdots 0
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
@@ -4810,13 +4810,20 @@ reference "sec:XHTML出力のタグ"
 \begin_layout Standard
 頒布版によっては、LyXで使いたいLaTeXパッケージやクラスファイルが含まれていないことがあるかもしれません。たとえば、オーバーヘッドプロジェクタ用のスライド
 を準備するためのパッケージである、FoilTeXがないかもしれません。TeXLive（2008年以降）やMiKTeXのような最近のLaTeX頒布版には、これらの
-パッケージを導入するためのユーザーインタフェースが用意されています。たとえば、MiKTeXでは、付属の「Browse Packages」プログラムを起動すると、
-利用できるパッケージの一覧を得ることができます。どれかを導入するには、その上で右クリックするかツールバーボタンを押してください。
+パッケージを導入するためのユーザーインタフェースが用意されています。たとえば、MiKTeXでは、付属の「Package
+\begin_inset space ~
+\end_inset
+
+Manager」プログラムを起動すると、利用できるパッケージの一覧を得ることができます。どれかを導入するには、その上で右クリックするかツールバーボタンを押してく
+ださい。
 \end_layout
 
 \begin_layout Standard
-お使いのLaTeX頒布版が、これらの「パッケージマネージャ」を提供していなかったり、頒布版にそのファイルが入っていなかったりした場合には、以下の手順に従って手動
-で導入するとことができます。
+
+\lang english
+If your LaTeX distribution does not provide such a `package manager', or
+ if the package is not available from your distribution, then follow these
+ steps to install it manually:
 \end_layout
 
 \begin_layout Enumerate
@@ -4831,326 +4838,377 @@ target "http://www.ctan.org/"
 \end_layout
 
 \begin_layout Enumerate
-このパッケージは、いくつかの場所に置くことができます。このパッケージを、お使いのシステム上の全ユーザに使用できるようにするためには、これをその「ローカル」TeX
-ツリーにインストールしなくてはなりません。逆に、あなた個人だけで使いたい（あるいはその必要がある）場合には、これをあなたの「ユーザ」TeXツリーにインストールす
-ると良いでしょう。これらが既に存在しない場合に、どこにこれらを作ればよいかは、お使いのシステムの子細に依存します。これらをどこに作ればよいかを調べるには、
+
+\lang english
+If the package contains a file with the ending 
+\begin_inset Quotes eld
+\end_inset
+
+
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang english
+.ins
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ (is the case for FoilTeX) then open a console, change to the folder of
+ this file and execute the command 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+latex foiltex.ins
+\end_layout
+
+\end_inset
+
+.
+ You have now unpacked the package and have all files to install it.
+ Most LaTeX-packages are not packed and you can skip this step.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Now you need to decide if the package should be available for all users
+ or only for you.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\lang english
+On *nix systems (Linux, OSX, etc.), if you want the new package to be available
+ for all users on your system, then install it in your `local' TeX tree,
+ otherwise install it in your own `user' TeX tree.
+ Where these trees should be created, if they do not already exist, depends
+ on your system.
+ To find this out, look in the file 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 texmf.cnf
 \end_layout
 
 \end_inset
 
-
+.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-これは通常
-\begin_inset Flex CharStyle:Code
-status collapsed
 
-\begin_layout Plain Layout
+\lang english
+This is usually in the directory 
+\family sans
 $TEXMF/web2c
-\end_layout
-
-\end_inset
-
-にありますが、
+\family default
+, though you can execute the command 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang english
 kpsewhich texmf.cnf
 \end_layout
 
 \end_inset
 
-を実行すれば、どこにあるかががわかります。
+ to locate it.
 \end_layout
 
 \end_inset
 
-ファイルを見ると良いでしょう。「ローカル」TeXツリーの場所は
+ The location of the `local' TeX tree is defined by the 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang english
 TEXMFLOCAL
 \end_layout
 
 \end_inset
 
-変数で定義されていて、通常は
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-/usr/local/share/texmf/
-\end_layout
-
-\end_inset
-
-のような場所になっています。「ユーザ」TeXツリーは
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-TEXMFHOME
-\end_layout
-
-\end_inset
-
-で定義されており、多くは
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-$HOME/texmf/
-\end_layout
-
-\end_inset
-
-になっています（もしこれらの変数が既に定義されていなければ、新たに定義することができます）。「ローカル」ツリーを作成したり修正したりするためには、おそらくroo
-t権限が必要ですが、「ユーザ」ツリーの場合にはそのような制限はないはずです。
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-TEXMF
-\end_layout
-
-\end_inset
-
-変数に
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-TEXMFLOCAL
-\end_layout
-
-\end_inset
-
-変数と
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-TEXMFHOME
-\end_layout
-
-\end_inset
-
-変数が含まれていることを確認してください。たとえば、
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-TEXMF = {$TEXMFHOME,!!$TEXMFLOCAL,!!$TEXMFMAIN}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-のようになります。ほとんどの場合はこうなっているはずです。
-\end_layout
-
-\begin_layout Enumerate
-ローカルツリーとユーザーツリーは、
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-TEXMFMAIN
-\end_layout
-
-\end_inset
-
-に指定されている、既存の
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-texmf
-\end_layout
-
-\end_inset
-
-ディレクトリ（通常は
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-/usr/share/texmf/
-\end_layout
-
-\end_inset
-
-）のディレクトリ構造と同様に
-\emph on
-なっていなくてはなりません
-\emph default
-。たとえば、LaTeXパッケージは、
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-$TEXMFLOCAL/tex/latex/
-\end_layout
-
-\end_inset
-
-か
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-$TEXMFHOME/tex/latex/
-\end_layout
-
-\end_inset
-
-以下に入らなくてはなりません。 パッケージをここに置かない場合には、おそらく機能しません。
-\end_layout
-
-\begin_layout Enumerate
-ツリーが適切に設定されたならば、パッケージを適切な場所に導入することができます。幸運ならば、導入しようとしているパッケージが、いわゆる「TDS」（TeX
- Directory Structure）zipファイルとして提供されているかもしれません。これを導入するには、ツリーの最上層で解凍すれば結構です。たとえば、
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-newpkg.zip
-\end_layout
-
-\end_inset
-
-ファイルを
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-/home/yourname/texmf
-\end_layout
-
-\end_inset
-
-にコピーし、このディレクトリの中から、
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-unzip newpkg.zip
-\end_layout
-
-\end_inset
-
-を実行するだけです。これによって、必要なファイルが抽出され、必要な場所にコピーされます。
-\begin_inset Newline newline
-\end_inset
-
-TDSファイルになっていない場合には、手動でこれを行わなくてはなりません。たとえば、FoilTeXのファイルを
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-$TEXMFLOCAL/tex/latex/foiltex
-\end_layout
-
-\end_inset
-
-に導入するものとしましょう。どうしてここなのでしょうか。CTANダウンロードディレクトリは、それ自身TeXツリーと同様に構成されているので、自身で導入を行う際に
-その構造に従うことは、悪い考えではありません。たとえば、FoilTeXは
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://ctan.org/texarchive/macros/latex/contrib/foiltex/
-\end_layout
-
-\end_inset
-
-にあります。
-\end_layout
-
-\begin_layout Enumerate
-最後に、TeXがファイルを発見するのに使用するデータベースを更新しなくてはなりません。MiKTeXでは、MiKTeXの「Setings」プログラムにある
+ variable; this is usually somewhere like 
 \family sans
-Refresh
+/usr/local/share/texmf/
+\family default
+ .
+ The location of the `user' TeX tree is defined by 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+TEXMFHOME
+\end_layout
+
+\end_inset
+
+ and is commonly 
+\family sans
+$HOME/texmf/
+\family default
+ .
+ (If these variables are not predefined, you have to define them.) You'll
+ probably need root permissions to create or modify the `local' tree, but
+ your `user' tree shouldn't have such limitations.
+\begin_inset Newline newline
+\end_inset
+
+In general, it is recommended to install in the user tree because your user
+ will not be modified or even overwritten when you upgrade your system.
+ It will typically also be backed up together with everything else when
+ you backup your home directory (which, of course, you do on a regular basis).
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+On Windows, if you want the new package to be available for all users on
+ your system, change to the folder where LaTeX is installed and then change
+ to the subfolder 
+\family sans
+~
+\backslash
+tex
+\backslash
+latex
+\family default
+.
+ (For MiKTeX, this would be by default the folder 
+\family sans
+~:
+\backslash
+Programs
+\backslash
+MiKTeX
+\backslash
+tex
+\backslash
+latex
+\family default
+ .) Create there a new folder 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+foiltex
+\end_layout
+
+\end_inset
+
+ and copy all files of the package into it.
+ If the package should only available for you or you don't have admin permission
+s, do the same, but in the local LaTeX folder.
+ E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space ~
 \end_inset
 
-FNDB
+on MiKTeX
+\begin_inset space ~
+\end_inset
+
+2.8 this would be on WinXP the folder
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+~:
+\backslash
+Documents and Settings
+\backslash
+<username>
+\backslash
+Application Data
+\backslash
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+\lang english
+~:
+\backslash
+
+\end_layout
+
+\end_inset
+
+MiKTeX
+\backslash
+2.8
+\backslash
+tex
+\backslash
+latex
 \family default
-ボタンを押すことで、これを行うことができます。TeXLiveなどでは、必要に応じてroot権限で、端末から
+
+\begin_inset Newline newline
+\end_inset
+
+, on WinVista it would be the folder
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+~:
+\backslash
+Users
+\backslash
+<username>
+\backslash
+AppData
+\backslash
+Roaming
+\backslash
+2.8
+\backslash
+MiKTeX
+\backslash
+tex
+\backslash
+latex
+\family default
+ .
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Now one only need to tell LaTeX that there are new files.
+ This depends on the used LaTeX-Distribution:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\lang english
+For TeXLive execute the command 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang english
 texhash
 \end_layout
 
 \end_inset
 
-を実行してください。
+ from a console.
+ If you installed the package for all users, then you will probably need
+ to have root permissions for that.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+For MiKTeX, if you have installed the package for all users, start the program
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Settings
+\begin_inset space ~
+\end_inset
+
+(Admin)
+\begin_inset Quotes erd
+\end_inset
+
+ and press the button marked 
+\begin_inset Quotes eld
+\end_inset
+
+Refresh FNDB
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Otherwise start the program 
+\begin_inset Quotes eld
+\end_inset
+
+Settings
+\begin_inset Quotes erd
+\end_inset
+
+ and do the same.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Finally, you need to tell LyX that there are new packages available.
+ So, in LyX, use the menu 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Tools
+\family sans
+\SpecialChar \menuseparator
+Reconfigure
+\end_layout
+
+\end_inset
+
+ and then restart LyX.
 \end_layout
 
 \begin_layout Standard
-これでパッケージが導入され、LaTeXに利用可能となります。これは、端末から「
+
+\lang english
+Now the package is installed.
+ In our example, the document class 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-kpsewhich yourfile.ext
-\end_layout
 
+\lang english
+Slides
+\begin_inset space ~
 \end_inset
 
-のように打ち込むことで確認することができます。LyXにこれを認識させるためには、再設定をして（
-\begin_inset Flex CharStyle:MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-ツール\SpecialChar \menuseparator
-再設定
-\end_layout
-
-\end_inset
-
-）LyXを再起動する必要があります。もし新規パッケージが、FoilTeXの場合のように文書クラスであるならば、
-\begin_inset Flex CharStyle:MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-文書\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
-文書クラス
-\end_layout
-
-\end_inset
-
-で、この場合には
-\begin_inset Flex CharStyle:MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-slides (FoilT
+(FoilTe
 \begin_inset ERT
 status collapsed
 
@@ -5161,17 +5219,49 @@ status collapsed
 
 \end_inset
 
-eX)
+x)
 \end_layout
 
 \end_inset
 
-が利用可能となって見えるはずです。
+ will now be available under 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document Class
+\end_layout
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
-新しい文書クラスのレイアウトファイルが利用可能でない場合にはどうなるでしょうか。この場合には、残念ながら、あなたが自身でレイアウトファイルを作成しない限り（ある
-いは他の人に作成してもらわない限り）は、LyXはこの文書クラスについて何も知ることができません。これが次節の話題です。
+
+\lang english
+If you would like to use a LaTeX document class that is not even listed
+ in the menu 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document Class
+\end_layout
+
+\end_inset
+
+, then you need to create a `layout' file for it.
+ That is the topic of the next section.
 \end_layout
 
 \begin_layout Section

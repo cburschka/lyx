@@ -1,5 +1,5 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 401
 \begin_document
 \begin_header
 \textclass scrbook
@@ -41,20 +41,27 @@
 %remove this line when bug 5291 is fixed
 \@ifundefined{textcolor}{\usepackage{color}}{}
 \end_preamble
-\options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove
+\options intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
 \use_default_options false
+\maintain_unincluded_children false
 \language slovak
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_xetex false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -71,26 +78,34 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels,pdftex"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
 \use_amsmath 1
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 2
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language german
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -3353,7 +3368,7 @@ preddefinované hodnoty
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -5160,7 +5175,7 @@ Hĺbka číslovania odsekov
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8228,7 +8243,7 @@ Toto je (a) a je vnorené.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8321,7 +8336,7 @@ Toto je (a) a je vnorené.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8417,7 +8432,7 @@ Toto je (a) a je vnorené.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9363,7 +9378,7 @@ A máme tu tabuľku:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -13888,7 +13903,7 @@ Vložiť
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -14218,7 +14233,7 @@ Viac stĺpcov môžete použiť ak potrebujete samostatnú bunku zvlášť nafor
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -14486,7 +14501,7 @@ to nebute fungovať.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="12">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -15239,7 +15254,7 @@ Shift
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -15355,7 +15370,7 @@ Shift
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -15563,7 +15578,7 @@ Tu je príklad:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="block" valignment="top" width="6.5cm">
 <column alignment="center" valignment="top" width="0pt">
@@ -15996,7 +16011,7 @@ Inset s tabuľkou.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -16077,7 +16092,8 @@ Ferko
 \begin_layout Plain Layout
 \begin_inset Formula $\left[\begin{array}{cc}
 a & b\\
-c & d\end{array}\right]$
+c & d
+\end{array}\right]$
 \end_inset
 
 
@@ -16160,7 +16176,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -16345,7 +16361,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -16975,7 +16991,8 @@ Medzery
 , alebo maticu 
 \begin_inset Formula $\left(\begin{array}{cc}
 1 & 2\\
-3 & 4\end{array}\right)$
+3 & 4
+\end{array}\right)$
 \end_inset
 
 ), pričom kurzor zostane vo výraze.
@@ -17123,7 +17140,8 @@ Akúkoľvek matematickú štruktúru môžete nachať vyplnenú len čiastočne,
 \left(\begin{array}{ccc}
 \lambda_{1}\\
  & \ddots\\
- &  & \lambda_{n}\end{array}\right)\]
+ &  & \lambda_{n}
+\end{array}\right)\]
 
 \end_inset
 
@@ -17283,7 +17301,8 @@ Zlomok
 \begin_inset Formula \[
 \left[\frac{1}{\left(\begin{array}{cc}
 2 & 3\\
-4 & 5\end{array}\right)}\right]\]
+4 & 5
+\end{array}\right)}\right]\]
 
 \end_inset
 
@@ -17449,7 +17468,8 @@ Prvé dve tlačítka sú druhá odmocnina
  môžete nastaviť zarovnanie 
 \begin_inset Formula $\left(\begin{array}{ccc}
 1 & 2 & 3\\
-45 & 67 & 89\end{array}\right)$
+45 & 67 & 89
+\end{array}\right)$
 \end_inset
 
 .
@@ -17779,7 +17799,7 @@ kom režime:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -18177,7 +18197,8 @@ nej matice:
 \begin_inset Formula \[
 \left(\begin{array}{cc}
 1 & 2\\
-3 & 4\end{array}\right)\]
+3 & 4
+\end{array}\right)\]
 
 \end_inset
 
@@ -18251,7 +18272,8 @@ Matica
 \left(\begin{array}{ccc}
 1 & 2 & 3\\
 4 & 5 & 6\\
-7 & 8 & 9\end{array}\right)\]
+7 & 8 & 9
+\end{array}\right)\]
 
 \end_inset
 
@@ -18306,7 +18328,8 @@ e.
 \begin{array}{lcr}
 stlpec & stlpec & tento\\
 zarovnany & je & je\, zarovnany\\
-nalavo & vycentrovany & doprava\end{array}\]
+nalavo & vycentrovany & doprava
+\end{array}\]
 
 \end_inset
 
@@ -18350,7 +18373,8 @@ robí).
 \begin_inset Formula \[
 f(x)=\left\{ \begin{array}{cl}
 \frac{1}{q}, & \mathrm{ak}\, x=\frac{p}{q}\\
-0, & \mathrm{ak}\, x\,\mathrm{je}\,\mathrm{iracionalne}\end{array}\right.\]
+0, & \mathrm{ak}\, x\,\mathrm{je}\,\mathrm{iracionalne}
+\end{array}\right.\]
 
 \end_inset
 
@@ -18390,7 +18414,8 @@ C-Enter
  Tu je príklad:
 \begin_inset Formula \begin{eqnarray*}
 3 & = & 1+2\\
-4+5 & = & 9\end{eqnarray*}
+4+5 & = & 9
+\end{eqnarray*}
 
 \end_inset
 
@@ -18578,7 +18603,8 @@ používať medzery, pretože vám to môže spôsobiť problémy.
 1 & = & 4-3\label{mathed:druha_rovnica}\\
 2 & = & 7-5\\
 1 & = & e^{2\pi i}\\
-16 & = & 2\,(mod\,7)\label{mathed:tertia_rovnica}\end{eqnarray}
+16 & = & 2\,(mod\,7)\label{mathed:tertia_rovnica}
+\end{eqnarray}
 
 \end_inset
 
@@ -19000,7 +19026,7 @@ i nefunguje.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -20253,8 +20279,15 @@ Prostredie odstavca
 \end_layout
 
 \begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
 
-\lyxline
+\end_inset
+
 
 \end_layout
 
@@ -23459,6 +23492,7 @@ Po jeseni 1997 prevzal správu nad dokumentáciou LyX Tím ako celok.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliografia
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "lyxcredit"
@@ -23470,6 +23504,7 @@ The LyX source tree.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliografia
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexbook"
@@ -23485,6 +23520,7 @@ LaTeX: A Document Preparation System
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliografia
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexcompanion"
@@ -23500,6 +23536,7 @@ The LaTeX Companion
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliografia
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexguide"
@@ -23510,6 +23547,7 @@ A Guide to LaTeX2e, Kopka and Daly.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliografia
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "texbook"
