@@ -5504,24 +5504,33 @@ If the package contains a file with the ending
 \begin_inset Quotes eld
 \end_inset
 
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 .ins
+\end_layout
+
+\end_inset
+
+
 \begin_inset Quotes erd
 \end_inset
 
  (is the case for FoilTeX) then open a console, change to the folder of
- this file and execute the command
-\begin_inset Newline newline
-\end_inset
+ this file and execute the command 
+\begin_inset Flex CharStyle:Code
+status collapsed
 
-
-\family sans
+\begin_layout Plain Layout
 latex foiltex.ins
-\begin_inset Newline newline
+\end_layout
+
 \end_inset
 
-
-\family default
-You have now unpacked the package and have all files to install it.
+.
+ You have now unpacked the package and have all files to install it.
  Most LaTeX-packages are not packed and you can skip this step.
 \end_layout
 
@@ -5639,13 +5648,15 @@ In general, we'd recommend installing in the user tree unless you have reason
 On Windows, change to the folder where LaTeX is installed and then change
  to the subfoler 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 tex
 \backslash
 latex
+\backslash
+
 \end_layout
 
 \end_inset
@@ -5695,6 +5706,7 @@ Programs
 \end_inset
 
 .
+ Who knows what it is elsewhere.
  I also don't know myself what the 
 \begin_inset Quotes eld
 \end_inset
@@ -5712,7 +5724,54 @@ boot drive
 \begin_inset Quotes erd
 \end_inset
 
-?
+? I don't know how to fix this.
+ Maybe one could say something like 
+\begin_inset Quotes eld
+\end_inset
+
+PROGDIR
+\backslash
+MiKTeX
+\backslash
+tex
+\backslash
+latex
+\begin_inset Quotes erd
+\end_inset
+
+, and then say: where 
+\begin_inset Quotes eld
+\end_inset
+
+PROGDIR
+\begin_inset Quotes erd
+\end_inset
+
+ is the default program installation location, something like 
+\begin_inset Quotes eld
+\end_inset
+
+C:
+\backslash
+Programs
+\backslash
+
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+C:
+\backslash
+Programme
+\backslash
+
+\begin_inset Quotes erd
+\end_inset
+
+, depending upon your language, boot drive, etc.
 \end_layout
 
 \end_inset
@@ -5784,10 +5843,18 @@ Refresh FNDB
 \begin_layout Enumerate
 Finally, we need to tell LyX what we have done.
  So, in LyX, run 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Tools
 \family sans
-Tools\SpecialChar \menuseparator
+\SpecialChar \menuseparator
 Reconfigure
-\family default
+\end_layout
+
+\end_inset
+
  and then restart LyX so it will recognize the new package.
 \end_layout
 
