@@ -1054,9 +1054,17 @@ LaTeX ! -Einstellungen
 You can edit documents in LyX without having LaTeX installed, but you will
  not to able to create PDFs or print your documents unless you do have it
  installed.
- Actually, that isn't quite true.
- Some LyX documents use DocBook as the `backend' that produces PDFs and
- the like, and any LyX document can be outupt as plain text or as XHTML.
+ Actually, that is not quite true.
+ Some LyX documents use DocBook as the 
+\begin_inset Quotes gld
+\end_inset
+
+backend
+\begin_inset Quotes grd
+\end_inset
+
+ that produces PDFs and the like, and any LyX document can be output as
+ plain text or as XHTML.
  Still, most of the documents people edit in LyX use LaTeX as the backend,
  and so exporting these documents to PDF, or printing them, requires you
  to have LaTeX properly installed.
@@ -1072,12 +1080,8 @@ Moreover, specific document classes may depend upon specific LaTeX or DocBook
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The LaTeX packages that LyX has found on your system are listed in a file
- you can view from the
-\lang ngerman
- Menü 
+Die LaTeX-Pakete die LyX auf Ihrem System gefunden hat, sind in einer Datei
+ aufgelistet, die Sie über das Menü 
 \family sans
 Hilfe\SpecialChar \menuseparator
 LaTe
@@ -1093,69 +1097,18 @@ status collapsed
 
 X-Konfiguration
 \family default
-.
- 
-\lang english
-If you are missing packages you need, then you should install them and then
- reconfigure LyX
-\lang ngerman
- (Menü 
+ anschauen können.
+ Wenn sie Pakete vermissen, die sie benötigen, müssen Sie das fehlende Paket
+ installieren und LyX anschließend über das Menü 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Neu
-\begin_inset space \space{}
+\begin_inset space ~
 \end_inset
 
 konfigurieren
 \family default
-).
-\lang english
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-The two braces in the TeX Code box prevent that the term 
-\begin_inset Quotes eld
-\end_inset
-
-LaTeX
-\begin_inset Quotes erd
-\end_inset
-
- from being printed with sub- and superscript letters.
- More about TeX Code is described in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:TeX-Code"
-
-\end_inset
-
-, the printout of proper names like LaTeX is explained in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:LyX's-Proper-Names"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\lang ngerman
-
+ neu konfigurieren.
 \begin_inset Index idx
 status collapsed
 
@@ -1165,13 +1118,19 @@ Neukonfiguration von LyX
 
 \end_inset
 
- 
-\lang english
-See section 5.1 of the 
+ Siehe Abschnitt 
+\begin_inset Quotes gld
+\end_inset
+
+Installation eines neuen LaTeX-Paketes
+\begin_inset Quotes grd
+\end_inset
+
+ des 
 \emph on
-Customization
+Anpassung
 \emph default
- manual for more information on installing additional LaTeX packages.
+ Handbuchs für mehr Informationen wie man Pakete installiert.
 \end_layout
 
 \begin_layout Chapter
@@ -3188,57 +3147,19 @@ In LyX gibt es vier Standarddokumentklassen:
 \end_layout
 
 \begin_layout Description
-article[
-\begin_inset space \space{}
-\end_inset
-
-(KOMA-Script)] für Standardartikel
+Article für Standardartikel
 \end_layout
 
 \begin_layout Description
-book[
-\begin_inset space \space{}
-\end_inset
-
-(KOMA-Script)] für Bücher
+Book für Bücher
 \end_layout
 
 \begin_layout Description
-letter[
-\begin_inset space \space{}
-\end_inset
-
-(DIN-Brief/german/KOMA-Script)] für Briefe im deutschen Stil
+Letter für Briefe
 \end_layout
 
 \begin_layout Description
-report[
-\begin_inset space \space{}
-\end_inset
-
-(KOMA-Script)] für Standardberichte
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-\series bold
-KOMA-Script
-\family default
-\series default
- ersetzt die Standardklassen und bietet viele nützliche Funktionen wie das
- Formatieren von Beschriftungen, automatische Druckgrößen-Berechnung usw.
- Weitere Hinweise zu 
-\family sans
-\series bold
-KOMA-Script
-\family default
-\series default
- finden Sie in den 
-\emph on
-Handbuchergänzungen
-\emph default
-.
+Report für Standardberichte
 \end_layout
 
 \begin_layout Standard
@@ -3253,28 +3174,19 @@ Handbuchergänzungen
 \end_layout
 
 \begin_layout Description
-article
-\begin_inset space ~
-\end_inset
-
-(A&A) Journal-Artikel in Stil und Format von Astronomy & Astrophysics.
+A&A Journal-Artikel in Stil und Format von Astronomy & Astrophysics.
 \end_layout
 
 \begin_layout Description
-article
-\begin_inset space ~
-\end_inset
-
-(AASTeX) Für Artikel, die von der American Astronomical Society herausgegeben
- werden.
+ACS Layout für Journale der American Chemistry Society
 \end_layout
 
 \begin_layout Description
-article
-\begin_inset space ~
-\end_inset
+AGU Layout für Journale der American Geophysical Union
+\end_layout
 
-(AMS) Artikel im Stil und Format der AMS (American Mathematical Society).
+\begin_layout Description
+AMS Artikel im Stil und Format der AMS (American Mathematical Society).
  Es gibt drei amsart-Layouts.
  
 \begin_inset Newline newline
@@ -3307,144 +3219,11 @@ unnumbered
 \end_layout
 
 \begin_layout Description
-article
-\begin_inset space ~
-\end_inset
-
-(Elsevier) Layout für Journale der Elsevier-Gruppe
+Beamer Layout für Präsentationen
 \end_layout
 
 \begin_layout Description
-article
-\begin_inset space ~
-\end_inset
-
-(IEEEtran) Layout für Journale des Institute of Electrical and Electronics
- Engineers (IEEE)
-\end_layout
-
-\begin_layout Description
-article
-\begin_inset space ~
-\end_inset
-
-(IOP) Layout für Journale des Institute of Physics
-\end_layout
-
-\begin_layout Description
-article
-\begin_inset space ~
-\end_inset
-
-(Kluwer) Layout für Journale der Kluwer-Gruppe
-\end_layout
-
-\begin_layout Description
-article
-\begin_inset space ~
-\end_inset
-
-(paper) für die 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-paper
-\family default
- LaTeX
-\begin_inset Quotes grd
-\end_inset
-
--Dokumentklasse (nicht in allen LaTeX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"=
-\end_layout
-
-\end_inset
-
-Distributionen enthalten)
-\end_layout
-
-\begin_layout Description
-article
-\begin_inset space ~
-\end_inset
-
-(REVTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X) Artikel für Veröffentlichungen der APS (American Physical Society), des
- AIP (American Institute of Physics) und der OSA (Optical Society of America).
- Diese Klasse ist nicht mit allen LyX-Funktionen kompatibel.
-\end_layout
-
-\begin_layout Description
-article
-\begin_inset space ~
-\end_inset
-
-(SPIE
-\begin_inset space ~
-\end_inset
-
-Proceedings) Layout für Journale der International Society for Optical Engineeri
-ng (SPIE)
-\end_layout
-
-\begin_layout Description
-article
-\begin_inset space ~
-\end_inset
-
-(Springer) Layouts für Journale der Springer-Gruppe
-\end_layout
-
-\begin_layout Description
-article
-\begin_inset space ~
-\end_inset
-
-(TUGboat) Layout für TUGboat, das Journal der International TeX User Group
- (TUG)
-\end_layout
-
-\begin_layout Description
-book
-\begin_inset space ~
-\end_inset
-
-(AMS) Bücher im Stil und Format der AMS.
- Es wird nur die Standardnummerierung benutzt, in der Annahme, dass man
- Sätze usw.
-\begin_inset space \space{}
-\end_inset
-
-nummerieren muss, aber nicht durchgehend.
-\end_layout
-
-\begin_layout Description
-book
-\begin_inset space ~
-\end_inset
-
-(Memoir) ein weiterer Ersatz für die Standardklassen
-\end_layout
-
-\begin_layout Description
-broadway Layout zum Schreiben von Theaterstücken.
+Broadway Layout zum Schreiben von Theaterstücken.
  Dies ist keine LaTeX
 \begin_inset ERT
 status collapsed
@@ -3477,7 +3256,11 @@ reference "Zusammengesetzte-Worte"
 \end_layout
 
 \begin_layout Description
-curiculum
+Chess Layout um über Schachspiele zu schreiben
+\end_layout
+
+\begin_layout Description
+Curiculum
 \begin_inset space ~
 \end_inset
 
@@ -3485,7 +3268,15 @@ vitae für Lebensläufe
 \end_layout
 
 \begin_layout Description
-hollywood für spezielle Filmskripte der US-Filmindustrie.
+Elsarticle Layout für Journale der Elsevier-Gruppe
+\end_layout
+
+\begin_layout Description
+Foils um Präsentationsfolien zu erstellen
+\end_layout
+
+\begin_layout Description
+Hollywood für spezielle Filmskripte der US-Filmindustrie.
  Dies ist keine LaTeX
 \begin_inset ERT
 status collapsed
@@ -3501,23 +3292,40 @@ Dokumentklasse, sondern eine, die zusammen mit LyX ausgeliefert wird.
 \end_layout
 
 \begin_layout Description
-letter für Briefe im US-amerikanischen Stil
+IEEEtran Layout für Journale des Institute of Electrical and Electronics
+ Engineers (IEEE)
 \end_layout
 
 \begin_layout Description
-presentation
-\begin_inset space ~
-\end_inset
-
-(beamer) Layout für Präsentationen
+IOP Layout für Journale des Institute of Physics
 \end_layout
 
 \begin_layout Description
-presentation
-\begin_inset space ~
-\end_inset
+Kluwer Layout für Journale der Kluwer-Gruppe
+\end_layout
 
-(FoilTe
+\begin_layout Standard
+
+\family sans
+\series bold
+KOMA-Script
+\family default
+\series default
+ ersetzt die Standardklassen und bietet viele nützliche Funktionen wie das
+ Formatieren von Beschriftungen, automatische Druckgrößen-Berechnung usw.
+ (Wird von diesem Dokument benutzt.)
+\end_layout
+
+\begin_layout Description
+Memoir ein weiterer Ersatz für die Standardklassen
+\end_layout
+
+\begin_layout Description
+Powerdot Layout für Präsentationen
+\end_layout
+
+\begin_layout Description
+REVTe
 \begin_inset ERT
 status collapsed
 
@@ -3528,15 +3336,26 @@ status collapsed
 
 \end_inset
 
-X) für Projektionsfolien
+X Artikel für Veröffentlichungen der APS (American Physical Society), des
+ AIP (American Institute of Physics) und der OSA (Optical Society of America).
+ Diese Klasse ist nicht mit allen LyX-Funktionen kompatibel.
 \end_layout
 
 \begin_layout Description
-presentation
+Slides um Präsentationsfolien zu erstellen
+\end_layout
+
+\begin_layout Description
+SPIE
 \begin_inset space ~
 \end_inset
 
-(powerdot) Layout für Präsentationen
+Proceedings Layout für Journale der International Society for Optical Engineerin
+g (SPIE)
+\end_layout
+
+\begin_layout Description
+Springer Layouts für Journale der Springer-Gruppe
 \end_layout
 
 \begin_layout Standard
@@ -3549,6 +3368,125 @@ Handbuchergänzungen
 .
  Hier wollen wir uns mit Eigenschaften befassen, die allen Dokumentklassen
  gemeinsam sind.
+\end_layout
+
+\begin_layout Subsubsection
+Verfügbarkeit
+\end_layout
+
+\begin_layout Standard
+Neue Benutzer sind manchmal verwundert, dass viele Dokumentklassen, die
+ im Menü 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Dokumentklasse
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Dokument ! Einstellungen
+\end_layout
+
+\end_inset
+
+ gelistet sind, als 
+\begin_inset Quotes gld
+\end_inset
+
+nicht verfügbar
+\begin_inset Quotes grd
+\end_inset
+
+ markiert sind.
+ Oder sie sind überrascht wenn sie z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ die Vorlage 
+\family sans
+iop-article
+\family default
+ öffnen und eine Warnung erhalten, dass das Dokument Dateien benötigt, die
+ nicht installiert sind.
+ Daher könnte man meinen, dass etwas nicht stimmt.
+\end_layout
+
+\begin_layout Standard
+Aber alles ist in Ordnung.
+ LyX enthält weit mehr Dokumentklassen als man jemals benutzen wird.
+ Die meisten, wie z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\family sans
+IOP
+\family default
+, sind sehr speziell.
+ LyX versucht so viele Klassen wie möglich zu unterstützen und enthält annähernd
+ hundert verschiedene Layout-Dateien, Tendenz steigend.
+ Keine LaTeX-Distribution wird standardmäßig alle Dateien installieren,
+ die von irgend einer Dokumentklasse benötigt werden.
+ Es sind einfach zu viele.
+ Das ist der Grund warum einige Dokumentklassen nicht verfügbar sind.
+\end_layout
+
+\begin_layout Standard
+Falls es eine Dokumentklasse gibt, die Sie benutzen möchten, die aber als
+ 
+\begin_inset Quotes gld
+\end_inset
+
+nicht verfügbar
+\begin_inset Quotes grd
+\end_inset
+
+ gekennzeichnet ist, müssen Sie die entsprechenden Paketdateien installieren.
+ Der einfachste Weg herauszufinden welche Dateien Sie installieren müssen,
+ ist es, die Dokumentklasse für eine neue Datei zu verwenden.
+ LyX wird dann einen Dialog zeigen, der die fehlenden Dateien auflistet.
+ In Abschnitt 
+\begin_inset Quotes gld
+\end_inset
+
+Installation eines neuen LaTeX-Paketes
+\begin_inset Quotes grd
+\end_inset
+
+ des 
+\emph on
+Anpassung
+\emph default
+ Handbuchs ist beschrieben, wie man diese installiert.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Obwohl LyX viele verschiedenen Dokumenttypen unterstützt, kann es nicht
+ alle unterstützen, die man vielleicht benutzen möchte.
+ Zum Beispiel stellen viele Universitäten LaTeX-Dokumentklassen bereit,
+ die man für Dissertationen verwenden muss.
+ Das LyX-Team kann nicht für jede davon eine Layout-Datei schreiben, da
+ es zu viele davon gibt, die sich auch noch oft ändern.
+ Glücklicherweise kann man sich aber sein eigenes Layout schreiben, und
+ viele LyX-Nutzer haben das schon getan.
+ Kapitel
+\begin_inset space ~
+\end_inset
+
+5 des 
+\emph on
+Anpassung
+\emph default
+ Handbuchs enthält Informationen wie man Layout-Dateien erstellt.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3588,22 +3526,64 @@ Einstellungen
 \end_layout
 
 \begin_layout Standard
+Einige Module benötigen LaTeX-Pakete die nicht standardmäßig installiert
+ sind.
+ LyX wird Sie warnen falls das benötigte Paket nicht installiert ist.
+ Sie können das Modul dann trotzdem verwenden um das Dokument zu bearbeiten,
+ nur keine Ausgabe erzeugen oder es als PDF ansehen, da LyX ohne das Paket
+ nicht kompilieren kann.
+ Um eine Ausgabe erzeugen zu können müssen Sie das fehlende Paket installieren
+ und LyX anschließend über das Menü 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Neu
+\begin_inset space ~
+\end_inset
 
-\series bold
-Anmerkung 1
-\series default
-: Manche Module benötigen LaTeX-Pakete, die nicht immer standardmäßig installier
-t sind.
- LyX warnt in diesem Fall.
+konfigurieren
+\family default
+ neu konfigurieren.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Neukonfiguration von LyX
+\end_layout
+
+\end_inset
+
+ Siehe Abschnitt 
+\begin_inset Quotes gld
+\end_inset
+
+Installation eines neuen LaTeX-Paketes
+\begin_inset Quotes grd
+\end_inset
+
+ des 
+\emph on
+Anpassung
+\emph default
+ Handbuchs für mehr Informationen wie man Pakete installiert.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
 
 \series bold
-Anmerkung 2
+Achtung:
 \series default
-: Manche Module benötigen weitere Module, und manche Module sind nicht kompatibe
-l.
+ Einige Module benötigen andere Module und manche Module sind miteinander
+ inkompatibel.
+ LyX wird Sie darauf hinweisen.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -4121,7 +4101,11 @@ pubps
 ln
 \family default
  benutzen wollen, müssen Sie ihn in Ihrer LaTeX-Distribution aktivieren,
- siehe Abschnitt 2 von 
+ siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+2 von 
 \begin_inset Flex URL
 status open
 

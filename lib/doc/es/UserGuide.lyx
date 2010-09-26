@@ -2192,7 +2192,7 @@ del
 
 documento
 \family default
-
+.
 \begin_inset Index idx
 status collapsed
 
@@ -2202,7 +2202,6 @@ Documentos ! Configuración
 
 \end_inset
 
-.
  Selecciona la clase que quieras y haz los ajustes finos que necesites en
  las distintas opciones.
 \end_layout
@@ -2255,24 +2254,15 @@ Astronomy & Astrophysics
 \end_layout
 
 \begin_layout Description
-AAST
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
+ACS 
+\lang english
+For submissions to the journals published by the American Chemistry Society
 \end_layout
 
-\end_inset
-
-
-\family default
-eX Para artículos de publicaciones de la 
-\emph on
-American Astronomical Society
+\begin_layout Description
+AGU 
+\lang english
+For submissions to the journals published by the American Geophysical Union
 \end_layout
 
 \begin_layout Description
@@ -2311,6 +2301,12 @@ Broadway Formato para escribir guiones.
 \end_layout
 
 \begin_layout Description
+Chess 
+\lang english
+Layout to write about chess games
+\end_layout
+
+\begin_layout Description
 Curiculum
 \begin_inset space ~
 \end_inset
@@ -2319,29 +2315,13 @@ vitae clases para confeccionar currículum vitae
 \end_layout
 
 \begin_layout Description
-Dinbrief Cartas en el formato alemán DIN (norma de la industria alemana)
-\end_layout
-
-\begin_layout Description
-dtk Formato para el 
-\emph on
-Die TeXnische Komödie
-\emph default
-, publicación del Grupo alemán de usuarios de TeX (Dante)
-\end_layout
-
-\begin_layout Description
-Elsevier Formato para publicaciones del grupo 
+Elsarticle Formato para publicaciones del grupo 
 \emph on
 Elsevier
 \end_layout
 
 \begin_layout Description
 Foils Para hacer transparencias
-\end_layout
-
-\begin_layout Description
-g-brief Cartas en formato alemán DIN (norma de la industria alemana)
 \end_layout
 
 \begin_layout Description
@@ -2373,16 +2353,13 @@ Kluwer
 KOMA-Script Una revisión de las clases estándar, ofrece varias características
  útiles como formato de encabezados, cálculo automático de espacio de impresión
  etc.
+ 
+\lang english
+(Is used by this document.)
 \end_layout
 
 \begin_layout Description
 Memoir Otra revisión de las clases estándar
-\end_layout
-
-\begin_layout Description
-Paper Se usa con la clase de documento LaTeX 
-\family typewriter
-paper
 \end_layout
 
 \begin_layout Description
@@ -2440,14 +2417,6 @@ Springer Formato para publicaciones del grupo
 Springer
 \end_layout
 
-\begin_layout Description
-TUGboat Formato para 
-\emph on
-TUGboat
-\emph default
-, revista del Grupo internacional de Usuarios de TeX (TUG)
-\end_layout
-
 \begin_layout Standard
 No entraremos aquí en detalles sobre el uso de las distintas clases de documento.
  Puedes encontrar información sobre las clases no estándar en el manual
@@ -2458,6 +2427,129 @@ Características adicionales
 .
  Aquí, nos centraremos en repasar algunas de las propiedades comunes a todas
  las clases de documento.
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Availability
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+New users are sometimes puzzled by the fact that many of the document classes
+ listed under 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document Class
+\family default
+\lang spanish
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Documentos ! Configuración
+\end_layout
+
+\end_inset
+
+
+\lang english
+ are marked as 
+\begin_inset Quotes eld
+\end_inset
+
+Unavailable
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Or they are surprised that, when they open e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+the 
+\family sans
+iop-article
+\family default
+ template, they receive a warning saying that the document requires files
+ that are not installed to produce output.
+ So it seems that something is wrong.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+But nothing is wrong.
+ LyX includes many more document classes than you will ever need to use,
+ and some of them, like 
+\family sans
+IOP
+\family default
+, are highly specialized.LyX tries to support as many different types of
+ documents as possible, and it includes almost one hundred different layout
+ files, with a growing number.
+ No LaTeX distribution will install by default all files that might be needed
+ by some document class.
+ There are just too many of them.
+ That is why some of the document classes are unavailable.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If there is a document class you would like to use that is marked as `Unavailabl
+e', you need to install the appropriate package files.
+ The easiest way to find out which files you need to install is to use that
+ document class for a new file.
+ LyX will display a dialog that will list the missing files.
+ See section 
+\begin_inset Quotes eld
+\end_inset
+
+Installing new LaTeX files
+\begin_inset Quotes erd
+\end_inset
+
+ of the 
+\emph on
+Customization
+\emph default
+ manual for information on how to install them.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Although LyX provides support for many different sorts of documents, it
+ does not include support for every document class people might want to
+ use.
+ For example, many universities provide LaTeX class files to be used for
+ dissertations submitted to those universities.
+ The LyX team cannot write layout files to support every one of these.
+ There are too many.
+ Fortunately, users can write their own layout files, and many users have
+ done so.
+ Chapter
+\begin_inset space ~
+\end_inset
+
+5 of the 
+\emph on
+Customization
+\emph default
+ manual contains information on how to create layout files.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2507,7 +2599,47 @@ Documentos ! Configuración
 
 .
  Seleccionando un módulo en la lista se mostrará una descripción del mismo.
- 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Some modules require LaTeX packages that are not always installed by default.
+ LyX will warn you if you do not have the needed package.
+ You can still use the module while editing your file, but you will not
+ be able to export to PDF or print your document, since LyX will not be
+ able to compile the LaTeX file without the missing package.
+ If you want to be able to produce output, then you need to install the
+ missing package and then reconfigure LyX by selecting 
+\family sans
+Tools\SpecialChar \menuseparator
+Reconfigure
+\family default
+.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Reconfiguration of LyX
+\end_layout
+
+\end_inset
+
+ See section 
+\begin_inset Quotes eld
+\end_inset
+
+Installing new LaTeX files
+\begin_inset Quotes erd
+\end_inset
+
+ of the 
+\emph on
+Customization
+\emph default
+ manual for more information on installing needed packages.
 \end_layout
 
 \begin_layout Standard

@@ -2448,7 +2448,7 @@ de
 
 Document
 \family default
-
+.
 \begin_inset Index idx
 status collapsed
 
@@ -2458,7 +2458,6 @@ Document ! Paramètres
 
 \end_inset
 
-.
  Ensuite sélectionnez la classe que vous voulez utiliser et ajoutez les
  options dont vous avez besoin.
 \end_layout
@@ -2509,20 +2508,15 @@ A&A Articles de publications dans le style et le format utilisés par Astronomy
 \end_layout
 
 \begin_layout Description
-AAST
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
+ACS 
+\lang english
+For submissions to the journals published by the American Chemistry Society
 \end_layout
 
-\end_inset
-
-eX Pour soumettre à des journaux publiés par l'AAS (
+\begin_layout Description
+AGU 
 \lang english
-American Astronomical Society)
+For submissions to the journals published by the American Geophysical Union
 \end_layout
 
 \begin_layout Description
@@ -2562,13 +2556,19 @@ Beamer Sert à faire des transparents pour des présentations.
 \end_layout
 
 \begin_layout Description
-broadway Disposition pour écrire des pièces de théatre.
+Broadway Disposition pour écrire des pièces de théatre.
  Ce n'est pas une classe qui existe dans LaTeX, mais une nouvelle qui est
  distribuée avec LyX.
 \end_layout
 
 \begin_layout Description
-curriculum
+Chess 
+\lang english
+Layout to write about chess games
+\end_layout
+
+\begin_layout Description
+Curriculum
 \begin_inset space ~
 \end_inset
 
@@ -2580,18 +2580,7 @@ Dinbrief Sert à écrire des lettres au format DIN (norme industrielle allemande
 \end_layout
 
 \begin_layout Description
-dtk Disposition pour 
-\family typewriter
-\lang english
-Die TeXnische Komödie
-\family default
-,
-\lang french
- le journal du groupe allemand d'utilisateur de TeX (Dante).
-\end_layout
-
-\begin_layout Description
-Elsevier Disposition pour les journaux du groupe Elsevier.
+Elsarticle Disposition pour les journaux du groupe Elsevier.
 \end_layout
 
 \begin_layout Description
@@ -2599,11 +2588,7 @@ Foils Sert à faire des transparents pour des présentations.
 \end_layout
 
 \begin_layout Description
-g-brief Sert à écrire des lettres au format DIN (norme industrielle allemande).
-\end_layout
-
-\begin_layout Description
-hollywood Utilisé pour taper des scripts pour l'industrie cinématographique
+Hollywood Utilisé pour taper des scripts pour l'industrie cinématographique
  US.
  Ce n'est pas une classe qui existe dans LaTeX, mais une nouvelle qui est
  distribuée avec LyX.
@@ -2627,18 +2612,13 @@ Kluwer Disposition pour les journaux publiés par le groupe Kluwer.
 KOMA-Script Remplacement pour les classes standard, offre de nombreuses
  fonctions intéressantes comme le formattage des légendes, le calcul automatique
  de la taille de la zone d'impression etc...
+ 
+\lang english
+(Is used by this document.)
 \end_layout
 
 \begin_layout Description
 Memoir Un autre remplacement pour les classes standard.
-\end_layout
-
-\begin_layout Description
-paper Pour se servir de la classe de document LaTeX 
-\family typewriter
-paper
-\family default
- (pas présente dans toutes les distributions LaTeX).
 \end_layout
 
 \begin_layout Description
@@ -2682,14 +2662,6 @@ Proceedings Disposition pour les journaux publiés par SPIE
 Springer Disposition pour les journaux publiés par Springer
 \end_layout
 
-\begin_layout Description
-TUGboat Disposition pour 
-\family typewriter
-TUGboat
-\family default
-, le journal du groupe international des utilisateurs TeX (TUG)
-\end_layout
-
 \begin_layout Standard
 Nous n'entrerons pas plus dans les détails ici sur l'utilisation de ces
  différentes classes de document.
@@ -2705,6 +2677,129 @@ avancées
 .
  Ici, nous nous contenterons de faire la liste de quelques-unes des propriétés
  communes à toutes ces classes de document.
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Availability
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+New users are sometimes puzzled by the fact that many of the document classes
+ listed under 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document Class
+\family default
+\lang french
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Document ! Paramètres
+\end_layout
+
+\end_inset
+
+
+\lang english
+ are marked as 
+\begin_inset Quotes eld
+\end_inset
+
+Unavailable
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Or they are surprised that, when they open e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+the 
+\family sans
+iop-article
+\family default
+ template, they receive a warning saying that the document requires files
+ that are not installed to produce output.
+ So it seems that something is wrong.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+But nothing is wrong.
+ LyX includes many more document classes than you will ever need to use,
+ and some of them, like 
+\family sans
+IOP
+\family default
+, are highly specialized.LyX tries to support as many different types of
+ documents as possible, and it includes almost one hundred different layout
+ files, with a growing number.
+ No LaTeX distribution will install by default all files that might be needed
+ by some document class.
+ There are just too many of them.
+ That is why some of the document classes are unavailable.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If there is a document class you would like to use that is marked as `Unavailabl
+e', you need to install the appropriate package files.
+ The easiest way to find out which files you need to install is to use that
+ document class for a new file.
+ LyX will display a dialog that will list the missing files.
+ See section 
+\begin_inset Quotes eld
+\end_inset
+
+Installing new LaTeX files
+\begin_inset Quotes erd
+\end_inset
+
+ of the 
+\emph on
+Customization
+\emph default
+ manual for information on how to install them.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Although LyX provides support for many different sorts of documents, it
+ does not include support for every document class people might want to
+ use.
+ For example, many universities provide LaTeX class files to be used for
+ dissertations submitted to those universities.
+ The LyX team cannot write layout files to support every one of these.
+ There are too many.
+ Fortunately, users can write their own layout files, and many users have
+ done so.
+ Chapter
+\begin_inset space ~
+\end_inset
+
+5 of the 
+\emph on
+Customization
+\emph default
+ manual contains information on how to create layout files.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2756,22 +2851,49 @@ Documents ! Paramètres
 .
  Sélectionner un module de la liste fait apparaître la description correspondant
 e.
- 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
+
+\lang english
+Some modules require LaTeX packages that are not always installed by default.
+ LyX will warn you if you do not have the needed package.
+ You can still use the module while editing your file, but you will not
+ be able to export to PDF or print your document, since LyX will not be
+ able to compile the LaTeX file without the missing package.
+ If you want to be able to produce output, then you need to install the
+ missing package and then reconfigure LyX by selecting 
+\family sans
+Tools\SpecialChar \menuseparator
+Reconfigure
+\family default
+.
+\lang french
+
+\begin_inset Index idx
+status collapsed
 
 \begin_layout Plain Layout
-Note : Certains modules ont besoin de paquetages LaTeX qui ne sont pas toujours
- installés implicitement.
- LyX vous préviendra si vous n'avez pas les paquetages nécessaires.
+Reconfiguration de LyX
 \end_layout
 
 \end_inset
 
 
+\lang english
+ See section 
+\begin_inset Quotes eld
+\end_inset
+
+Installing new LaTeX files
+\begin_inset Quotes erd
+\end_inset
+
+ of the 
+\emph on
+Customization
+\emph default
+ manual for more information on installing needed packages.
 \end_layout
 
 \begin_layout Standard
@@ -2779,8 +2901,8 @@ Note : Certains modules ont besoin de paquetages LaTeX qui ne sont pas toujours
 status open
 
 \begin_layout Plain Layout
-Notez aussi : Certains modules ont besoin d'autres modules et que certaines
- paires de modules sont incompatibles.
+Notez : Certains modules ont besoin d'autres modules et que certaines paires
+ de modules sont incompatibles.
 \end_layout
 
 \end_inset

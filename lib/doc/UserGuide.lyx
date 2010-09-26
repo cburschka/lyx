@@ -103,6 +103,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\notefontcolor #0055ff
 \branch Question
 \selected 1
 \filename_suffix 0
@@ -125,11 +126,10 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_be_strict true
-\author 1 "Richard Heck" 
 \end_header
 
 \begin_body
@@ -438,9 +438,9 @@ name "sec:LaTeX-Setup"
 You can edit documents in LyX without having LaTeX installed, but you will
  not to able to create PDFs or print your documents unless you do have it
  installed.
- Actually, that isn't quite true.
+ Actually, that is not quite true.
  Some LyX documents use DocBook as the `backend' that produces PDFs and
- the like, and any LyX document can be outupt as plain text or as XHTML.
+ the like, and any LyX document can be output as plain text or as XHTML.
  Still, most of the documents people edit in LyX use LaTeX as the backend,
  and so exporting these documents to PDF, or printing them, requires you
  to have LaTeX properly installed.
@@ -476,8 +476,8 @@ eX
 Configuration
 \family default
 .
- If you are missing packages you need, then you should install them and
- then reconfigure LyX (menu 
+ If you are missing packages you need, then you must install them and then
+ reconfigure LyX (menu 
 \family sans
 Tools\SpecialChar \menuseparator
 Reconfigure
@@ -2405,23 +2405,13 @@ A&A Journal articles in the style and format used in Astronomy & Astrophysics
 \end_layout
 
 \begin_layout Description
-AAST
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
+ACS For submissions to the journals published by the American Chemistry
+ Society
 \end_layout
 
-\end_inset
-
-
-\family default
-eX For submissions to the journals published by the American Astronomical
- Society
+\begin_layout Description
+AGU For submissions to the journals published by the American Geophysical
+ Union
 \end_layout
 
 \begin_layout Description
@@ -2451,13 +2441,17 @@ Beamer Layout for presentations
 \end_layout
 
 \begin_layout Description
-broadway Layout for writing plays.
+Broadway Layout for writing plays.
  It is not an existing LaTeX document class, but a new one which is distributed
  with LyX.
 \end_layout
 
 \begin_layout Description
-curriculum
+Chess Layout to write about chess games
+\end_layout
+
+\begin_layout Description
+Curriculum
 \begin_inset space ~
 \end_inset
 
@@ -2465,19 +2459,7 @@ vitae classes to create curriculum vitae
 \end_layout
 
 \begin_layout Description
-Dinbrief Letters in format of the DIN (German industry norm)
-\end_layout
-
-\begin_layout Description
-dtk Layout for 
-\family typewriter
-Die TeXnische Komödie
-\family default
-, the journal of the German TeX user Group (Dante)
-\end_layout
-
-\begin_layout Description
-Elsevier Layout for journals of the Elsevier publishing group
+Elsarticle Layout for journals of the Elsevier publishing group
 \end_layout
 
 \begin_layout Description
@@ -2485,11 +2467,7 @@ Foils Used to make transparencies
 \end_layout
 
 \begin_layout Description
-g-brief Letters in format of the DIN (German industry norm)
-\end_layout
-
-\begin_layout Description
-hollywood Used to type spec scripts for the US film industry.
+Hollywood Used to type spec scripts for the US film industry.
  It is not an existing LaTeX document class, but a new one which is distributed
  with LyX.
 \end_layout
@@ -2510,18 +2488,11 @@ Kluwer Layout for journals of the Kluwer publishing group
 \begin_layout Description
 KOMA-Script a replacement for the standard classes, offers many useful features
  like caption formatting, automatic print space calculation etc.
+ (Is used by this document.)
 \end_layout
 
 \begin_layout Description
 Memoir another replacement for the standard classes
-\end_layout
-
-\begin_layout Description
-paper Used with the 
-\family typewriter
-paper
-\family default
- LaTeX document class
 \end_layout
 
 \begin_layout Description
@@ -2563,14 +2534,6 @@ Proceedings Layout for the journals published by The International Society
 Springer Layouts for journals of the Springer publishing group
 \end_layout
 
-\begin_layout Description
-TUGboat Layout for 
-\family typewriter
-TUGboat
-\family default
-, the journal of the international TeX user Group (TUG)
-\end_layout
-
 \begin_layout Standard
 We won't go into any detail about how to use these different document classes
  here.
@@ -2582,19 +2545,13 @@ Additional Features
  manual.
  Here, we will settle with a list of some of the common properties of all
  of the document classes.
-\change_inserted 1 1269457401
-
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted 1 1269457704
-Why Is My Document Class `Unavailable'?
+Availability
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1 1269458954
 New users are sometimes puzzled by the fact that many of the document classes
  listed under 
 \family sans
@@ -2605,8 +2562,6 @@ Document Class
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1269457484
 Document ! Settings
 \end_layout
 
@@ -2623,95 +2578,83 @@ Unavailable
 \end_inset
 
 .
- Or they are surprised that, when they try to open the 
+ Or they are surprised that, when they open e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+the 
 \family sans
-hollywood
+iop-article
 \family default
- template, they receive a message saying that the document class requires
- external files to produce output, files that are not installed.
- Surely something is wrong.
- Right?
+ template, they receive a warning saying that the document requires files
+ that are not installed to produce output.
+ So it seems that something is wrong.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1 1269458991
-Nothing is wrong.
+But nothing is wrong.
  LyX includes many more document classes than you will ever need to use,
  and some of them, like 
 \family sans
-hollywood
+IOP
 \family default
- (which is used for screenplays), are highly specialized.
- Indeed, we want LyX to support as many different types of documents as
- possible, and, as of LyX 2.0, it includes almost one hundred different layout
- files, with the number growing all the time.
- No sensible LaTeX distribution will install all of the different files
- that might be needed by some LyX document class by default.
- There are too many, and they are too various.
+, are highly specialized.LyX tries to support as many different types of
+ documents as possible, and it includes almost one hundred different layout
+ files, with a growing number.
+ No LaTeX distribution will install by default all files that might be needed
+ by some document class.
+ There are just too many of them.
  That is why some of the document classes are unavailable.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
+If there is a document class you would like to use that is marked as `Unavailabl
+e', you need to install the appropriate package files.
+ The easiest way to find out which files you need to install is to use that
+ document class for a new file.
+ LyX will display a dialog that will list the missing files.
+ See section 
+\begin_inset Quotes eld
+\end_inset
 
-\change_inserted 1 1269459048
-So, if there is a document class you would like to use that is marked as
- `Unavailable', all you need to do is install the appropriate class or package
- files.
- The easiest way to find out which files you need to install is to try selecting
- that document class.
- LyX will display a dialog that, among other things, will list the missing
- files.
- Most TeX distributions now include a See section 5.1 of the 
+Installing new LaTeX files
+\begin_inset Quotes erd
+\end_inset
+
+ of the 
 \emph on
 Customization
 \emph default
  manual for information on how to install them.
-\end_layout
+\begin_inset VSpace medskip
+\end_inset
 
-\begin_layout Subsubsection
 
-\change_inserted 1 1269458726
-I Need a Document C
-\change_unchanged
-lass that is not even list
-\change_inserted 1 1269458726
-ed
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1 1269459092
-Although, as said, LyX provides support for many different sorts of documents,
- it does not include support for every document class people might want
- to use.
+Although LyX provides support for many different sorts of documents, it
+ does not include support for every document class people might want to
+ use.
  For example, many universities provide LaTeX class files to be used for
  dissertations submitted to those universities.
- For example, the LaTeX document class 
-\family sans
-ucthesis
-\family default
- is used for dissertations at the University of California.
- The LyX team cannot write `layout files' to support every one of these.
+ The LyX team cannot write layout files to support every one of these.
  There are too many.
-\end_layout
+ Fortunately, users can write their own layout files, and many users have
+ done so.
+ Chapter
+\begin_inset space ~
+\end_inset
 
-\begin_layout Standard
-
-\change_inserted 1 1269459143
-Fortunately, however, users can write their own layout files, and many users
- have done so.
- Sometimes, this is quite easy, but sometimes it can be quite hard.
- Chapter 5 of the 
+5 of the 
 \emph on
 Customization
 \emph default
- manual contains information on how to add support for your favorite document
- type.
-\change_unchanged
-
+ manual contains information on how to create layout files.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2762,18 +2705,14 @@ Document ! Settings
  dialog.
  Highlighting a module in the dialog will bring up a description of the
  module.
-\change_inserted 1 1269456873
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1 1274730016
 Some modules require LaTeX packages that are not always installed by default.
  LyX will warn you if you do not have the needed package.
  You can still use the module while editing your file, but you will not
- be able to export PDF or print your document, since LyX will not be able
- to compile the LaTeX file without the missing package.
+ be able to export to PDF or print your document, since LyX will not be
+ able to compile the LaTeX file without the missing package.
  If you want to be able to produce output, then you need to install the
  missing package and then reconfigure LyX by selecting 
 \family sans
@@ -2785,20 +2724,24 @@ Reconfigure
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1269456873
 Reconfiguration of LyX
 \end_layout
 
 \end_inset
 
- See section 5.1 of the 
+ See section 
+\begin_inset Quotes eld
+\end_inset
+
+Installing new LaTeX files
+\begin_inset Quotes erd
+\end_inset
+
+ of the 
 \emph on
 Customization
 \emph default
  manual for more information on installing needed packages.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -2808,7 +2751,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note also:
+Note:
 \series default
  Some modules require other modules, and some pairs of modules are incompatible.
  LyX will advise you about these things.
