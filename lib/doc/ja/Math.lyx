@@ -1,4 +1,4 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -177,7 +177,7 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
 \use_geometry true
 \use_amsmath 2
@@ -9400,7 +9400,20 @@ A
 \begin_layout Plain Layout
 
 \backslash
-ddddot{A
+ddddot
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+A
 \end_layout
 
 \end_inset
@@ -31474,8 +31487,8 @@ reference "eq:TEOS反応2"
 
 式は、多段化学反応式の例で、一つの式毎に番号が振られています。
 \begin_inset Formula \begin{eqnarray}
-\ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS反応1}\\
-\ce{Si(OH)4} & \ce{->} & \ce{SiO2 + 2H2O}\label{eq:TEOS反応2}\end{eqnarray}
+\ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS=00003D0053CD=00003D005FDC1}\\
+\ce{Si(OH)4} & \ce{->} & \ce{SiO2 + 2H2O}\label{eq:TEOS=00003D0053CD=00003D005FDC2}\end{eqnarray}
 
 \end_inset
 
