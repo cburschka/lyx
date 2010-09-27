@@ -177,7 +177,7 @@ type "mailto:"
 \begin_inset Newline newline
 \end_inset
 
-第1.6.x版
+第2.0.x版
 \end_layout
 
 \begin_layout Standard
@@ -472,9 +472,35 @@ name "sec:LaTeXの設定"
 \end_layout
 
 \begin_layout Standard
-LyXが正常に動作するためには、いくつかのLaTeXパッケージを必要とします。LyXがシステム上で検出したパッケージは、
+
+\lang english
+You can edit documents in LyX without having LaTeX installed, but you will
+ not to able to create PDFs or print your documents unless you do have it
+ installed.
+ Actually, that is not quite true.
+ Some LyX documents use DocBook as the `backend' that produces PDFs and
+ the like, and any LyX document can be output as plain text or as XHTML.
+ Still, most of the documents people edit in LyX use LaTeX as the backend,
+ and so exporting these documents to PDF, or printing them, requires you
+ to have LaTeX properly installed.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Moreover, specific document classes may depend upon specific LaTeX or DocBook
+ classes or packages.
+ Again, such document classes can be used even if you do not have the required
+ files installed, but you will not be able to produce certain kinds of output.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The LaTeX packages that LyX has found on your system are listed in a file
+ you can view from the menu 
 \family sans
-ヘルプ\SpecialChar \menuseparator
+Help\SpecialChar \menuseparator
 LaT
 \begin_inset ERT
 status collapsed
@@ -486,34 +512,22 @@ status collapsed
 
 \end_inset
 
-eXの設定
+eX
+\begin_inset space ~
+\end_inset
+
+Configuration
 \family default
-メニューを使用したときに生成される「
-\emph on
-LaT
-\begin_inset ERT
-status collapsed
+.
+ If you are missing packages you need, then you must install them and then
+ reconfigure LyX (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Reconfigure
+\family default
+).
+\lang japanese
 
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXの設定
-\emph default
-」というファイルに一覧表示されます。導入されていない必須パッケージがあれば導入して、LyXを再設定
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-さいせってい@再設定
-\end_layout
-
-\end_inset
-
-すべきです。
 \begin_inset Note Note
 status collapsed
 
@@ -539,6 +553,28 @@ reference "sub:LyXの固有名称"
 \end_inset
 
 
+\lang english
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Reconfiguration of LyX
+\end_layout
+
+\end_inset
+
+
+\lang japanese
+ 
+\lang english
+See section 5.1 of the 
+\emph on
+Customization
+\emph default
+ manual for more information on installing additional LaTeX packages.
 \end_layout
 
 \begin_layout Chapter
@@ -3147,20 +3183,20 @@ Astronomy and Astrophysics
 \begin_layout Description
 
 \family sans
-AAST
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
+ACS 
+\family default
+\lang english
+For submissions to the journals published by the American Chemistry Society
 \end_layout
 
-\end_inset
+\begin_layout Description
 
-eX
+\family sans
+AGU
 \family default
- アメリカ天文学会（American Astronomical Society）が発行する学術誌への提出用
+ 
+\lang english
+For submissions to the journals published by the American Geophysical Union
 \end_layout
 
 \begin_layout Description
@@ -3248,7 +3284,7 @@ Beamer
 
 \family sans
 \series bold
-broadway
+Broadway
 \family default
 \series default
  戯曲を書くためのレイアウト。既存のLaTeXの文書クラスではなく、LyXとともに新たに頒布されているものです。
@@ -3257,7 +3293,17 @@ broadway
 \begin_layout Description
 
 \family sans
-curiculum
+Chess
+\family default
+ 
+\lang english
+Layout to write about chess games
+\end_layout
+
+\begin_layout Description
+
+\family sans
+Curiculum
 \begin_inset space ~
 \end_inset
 
@@ -3277,16 +3323,8 @@ Dinbrief
 \begin_layout Description
 
 \family sans
-dtk
-\family default
- ドイツTeXユーザーグループ（Dante）誌「Die TeXnische Komödie」向けのレイアウト
-\end_layout
-
-\begin_layout Description
-
-\family sans
 \series bold
-Elsevier
+Elsarticle
 \family default
 \series default
  Elsevier出版グループの学術誌向けのレイアウト
@@ -3303,15 +3341,7 @@ Foils
 \begin_layout Description
 
 \family sans
-g-brief
-\family default
- DIN（ドイツ産業規格）書式の書簡
-\end_layout
-
-\begin_layout Description
-
-\family sans
-hollywood
+Hollywood
 \family default
  アメリカ映画産業向けのスペック・スクリプト（持ち込み原稿）を書くのに使われます。既存のLaTeXの文書クラスではなく、LyXとともに新たに頒布されているもので
 す。
@@ -3355,27 +3385,6 @@ KOMA-Script
 Memoir
 \family default
  もう一つの標準クラスの代替クラス
-\end_layout
-
-\begin_layout Description
-
-\family sans
-paper
-\family default
- 
-\family typewriter
-paper
-\family default
- 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-LaTeX文書クラスで使用
 \end_layout
 
 \begin_layout Description
@@ -3458,14 +3467,6 @@ Springer
  Springer出版グループの学術誌向けのレイアウト
 \end_layout
 
-\begin_layout Description
-
-\family sans
-TUGboat
-\family default
- 国際TeXユーザーグループ（TUG）の『TUGboat』誌向けのレイアウト
-\end_layout
-
 \begin_layout Standard
 
 \family roman
@@ -3497,6 +3498,129 @@ TUGboat
 \noun off
 \color none
 』にこのような標準的でないクラスについての説明があります。ここでは次にすべての文書クラスに共通する性質を説明します。
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Availability
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+New users are sometimes puzzled by the fact that many of the document classes
+ listed under 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document Class
+\family default
+\lang japanese
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ぶんしょ@文書 ! せってい@設定
+\end_layout
+
+\end_inset
+
+
+\lang english
+are marked as 
+\begin_inset Quotes eld
+\end_inset
+
+Unavailable
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Or they are surprised that, when they open e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+the 
+\family sans
+iop-article
+\family default
+ template, they receive a warning saying that the document requires files
+ that are not installed to produce output.
+ So it seems that something is wrong.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+But nothing is wrong.
+ LyX includes many more document classes than you will ever need to use,
+ and some of them, like 
+\family sans
+IOP
+\family default
+, are highly specialized.LyX tries to support as many different types of
+ documents as possible, and it includes almost one hundred different layout
+ files, with a growing number.
+ No LaTeX distribution will install by default all files that might be needed
+ by some document class.
+ There are just too many of them.
+ That is why some of the document classes are unavailable.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If there is a document class you would like to use that is marked as `Unavailabl
+e', you need to install the appropriate package files.
+ The easiest way to find out which files you need to install is to use that
+ document class for a new file.
+ LyX will display a dialog that will list the missing files.
+ See section 
+\begin_inset Quotes eld
+\end_inset
+
+Installing new LaTeX files
+\begin_inset Quotes erd
+\end_inset
+
+ of the 
+\emph on
+Customization
+\emph default
+ manual for information on how to install them.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Although LyX provides support for many different sorts of documents, it
+ does not include support for every document class people might want to
+ use.
+ For example, many universities provide LaTeX class files to be used for
+ dissertations submitted to those universities.
+ The LyX team cannot write layout files to support every one of these.
+ There are too many.
+ Fortunately, users can write their own layout files, and many users have
+ done so.
+ Chapter
+\begin_inset space ~
+\end_inset
+
+5 of the 
+\emph on
+Customization
+\emph default
+ manual contains information on how to create layout files.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3545,34 +3669,60 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
+
+\lang english
+Some modules require LaTeX packages that are not always installed by default.
+ LyX will warn you if you do not have the needed package.
+ You can still use the module while editing your file, but you will not
+ be able to export to PDF or print your document, since LyX will not be
+ able to compile the LaTeX file without the missing package.
+ If you want to be able to produce output, then you need to install the
+ missing package and then reconfigure LyX by selecting 
+\family sans
+Tools\SpecialChar \menuseparator
+Reconfigure
+\family default
+.
+\begin_inset Index idx
+status collapsed
 
 \begin_layout Plain Layout
 
-\series bold
-（註）
-\series default
-モジュールによっては、既定では装備されているとは限らないLaTeXパッケージを必須としているものがありますので、注意してください。必要なパッケージが導入されてい
-ない場合には、LyXは警告を発します。
+\lang english
+Reconfiguration of LyX
 \end_layout
 
 \end_inset
 
+ See section 
+\begin_inset Quotes eld
+\end_inset
 
+Installing new LaTeX files
+\begin_inset Quotes erd
+\end_inset
+
+ of the 
+\emph on
+Customization
+\emph default
+ manual for more information on installing needed packages.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-（追註）
+\lang english
+Note:
 \series default
-モジュールの中には他のモジュールを必要とするものがあります。さらに、組み合わせによっては、お互いに衝突を起こす可能性もあります。LyXはこれらの情報を通知します
-。
+ Some modules require other modules, and some pairs of modules are incompatible.
+ LyX will advise you about these things.
 \end_layout
 
 \end_inset
@@ -15979,15 +16129,12 @@ Edge would have been jumps the gun.
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-phantom{Mr.
- Edge }
+Mr.
+ Edge 
 \end_layout
 
 \end_inset
@@ -15997,15 +16144,12 @@ has to be jumped
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-phantom{Mr.
- Edge }
+Mr.
+ Edge 
 \end_layout
 
 \end_inset
@@ -16018,7 +16162,13 @@ jumps
 \end_layout
 
 \begin_layout Standard
-ここでは、選択肢が「Mr.
+
+\lang english
+So that the choices appear exactly after the phrase 
+\begin_inset Quotes eld
+\end_inset
+
+Mr.
 \begin_inset space ~
 \end_inset
 
@@ -16026,67 +16176,57 @@ Edge
 \begin_inset space ~
 \end_inset
 
-」というフレーズのちょうど後に現れるようにしています。これを実現するには、TeXコードボックスで
-\series bold
 
-\backslash
+\begin_inset Quotes erd
+\end_inset
+
+.
+ To get this, you can use the phantom insets available via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Formatting\SpecialChar \menuseparator
+Phantom
+\family default
+.
+ In our case insert a horizontal phantom at the beginning of the last two
+ lines and insert 
+\begin_inset Quotes eld
+\end_inset
+
+Mr.
+\begin_inset space ~
+\end_inset
+
+Edge
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ into the phantom inset (note the space after 
+\begin_inset Quotes eld
+\end_inset
+
+Edge
+\begin_inset Quotes erd
+\end_inset
+
+).
+ A phantom insets prints only the space of its content (like a placeholder).
+ That is why it is named 
+\begin_inset Quotes eld
+\end_inset
+
 phantom
-\series default
-というLaTeXコマンドを使用します
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-TeXコードについての詳細は、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:TeXコード"
-
+\begin_inset Quotes erd
 \end_inset
 
-節をご覧ください。
-\end_layout
-
-\end_inset
-
-。この例では、
-\series bold
-
-\backslash
-phantom{Mr.
- Edge }
-\series default
-というコマンド（「Edge」の後に空白があることに注意してください）を最後の2行の頭に挿入します。このコマンドは、中括弧にはさまれたフレーズを印字しますが、印字
-は見えません。ですからこの空白は「phantom（幽霊）」と命名されているのです
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-
-\backslash
-hphantom
-\series default
-や
-\series bold
-
-\backslash
-vphantom
-\series default
-というコマンドもありますが、LyXユーザーの手引きとしては高度すぎます。これをもう少し知りたい場合には、
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latexcompanion,latexguide"
-
-\end_inset
-
-を参照してください。
-\end_layout
-
-\end_inset
-
-。
+.
+ The normal phantom ouputs the width and heigth of the content as space,
+ while the horizontal and vertical variant only outputs the corresponding
+ dimension.
 \end_layout
 
 \begin_layout Subsection
@@ -16834,12 +16974,20 @@ height "1pt"
 
 \begin_layout Standard
 
+\lang english
+In the dialog 
 \family sans
-挿入\SpecialChar \menuseparator
-整形\SpecialChar \menuseparator
-水平線
+Insert\SpecialChar \menuseparator
+Formatting\SpecialChar \menuseparator
+Horizontal
+\begin_inset space ~
+\end_inset
+
+Line
 \family default
-ダイアログで、文書の列幅全体に亙る水平線を挿入することができます。
+ you can insert horizontal lines.
+ The line offset is the vertical distance between the line and the baseline
+ of the current text line or the paragraph.
 \end_layout
 
 \begin_layout Standard
