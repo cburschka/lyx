@@ -1049,34 +1049,30 @@ LaTeX ! -Einstellungen
 \end_layout
 
 \begin_layout Standard
+Sie können Dokumente in LyX bearbeiten ohne LaTeX installiert zu haben,
+ aber sie können dann keine PDFs erzeugen oder drucken.
+ Einige LyX-Dokumente benutzen jedoch z.
+\begin_inset space \thinspace{}
+\end_inset
 
-\lang english
-You can edit documents in LyX without having LaTeX installed, but you will
- not to able to create PDFs or print your documents unless you do have it
- installed.
- Actually, that is not quite true.
- Some LyX documents use DocBook as the 
+B.
+ DocBook als 
 \begin_inset Quotes gld
 \end_inset
 
-backend
+Backend
 \begin_inset Quotes grd
 \end_inset
 
- that produces PDFs and the like, and any LyX document can be output as
- plain text or as XHTML.
- Still, most of the documents people edit in LyX use LaTeX as the backend,
- and so exporting these documents to PDF, or printing them, requires you
- to have LaTeX properly installed.
+ das PDFs erzeugen kann.
+ Des Weiteren können Sie LyX-Dokumente jederzeit als reine Textdatei oder
+ XHTML ausgeben.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Moreover, specific document classes may depend upon specific LaTeX or DocBook
- classes or packages.
- Again, such document classes can be used even if you do not have the required
- files installed, but you will not be able to produce certain kinds of output.
+Manche Dokumentklassen benötigen spezielle LaTeX- oder DocBook-Pakete.
+ Wenn sie nicht installiert sind, können Sie diese Dokumentklassen trotzdem
+ verwenden, nur keine Ausgabe erzeugen.
 \end_layout
 
 \begin_layout Standard

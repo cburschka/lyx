@@ -438,18 +438,15 @@ name "sec:LaTeX-Setup"
 You can edit documents in LyX without having LaTeX installed, but you will
  not to able to create PDFs or print your documents unless you do have it
  installed.
- Actually, that is not quite true.
- Some LyX documents use DocBook as the `backend' that produces PDFs and
- the like, and any LyX document can be output as plain text or as XHTML.
- Still, most of the documents people edit in LyX use LaTeX as the backend,
- and so exporting these documents to PDF, or printing them, requires you
- to have LaTeX properly installed.
+ However, some LyX documents use DocBook as the `backend' that can produce
+ PDFs and the like, and every LyX document can always be output as plain
+ text or as XHTML.
 \end_layout
 
 \begin_layout Standard
-Moreover, specific document classes may depend upon specific LaTeX or DocBook
- classes or packages.
- Again, such document classes can be used even if you do not have the required
+Some document classes may depend upon specific LaTeX or DocBook classes
+ or packages.
+ Such document classes can be used even if you do not have the required
  files installed, but you will not be able to produce certain kinds of output.
 \end_layout
 
