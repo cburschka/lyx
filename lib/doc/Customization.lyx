@@ -59,6 +59,16 @@ Preamble
 \newcommand*{\menuitem}[1]{{\sffamily #1}}
 EndPreamble
 End
+
+# In case we need to do with sans...
+#InsetLayout CharStyle:Code
+#Font
+#Family              Sans
+#EndFont
+#Preamble
+#\renewcommand{\code}[1]{{\sffamily #1}}
+#EndPreamble
+#End
 \end_local_layout
 \language english
 \inputencoding auto
@@ -5561,9 +5571,15 @@ status collapsed
 
 \begin_layout Plain Layout
 This is usually in the directory 
-\family sans
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 $TEXMF/web2c
-\family default
+\end_layout
+
+\end_inset
+
 , though you can execute the command 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -5590,10 +5606,16 @@ TEXMFLOCAL
 \end_inset
 
  variable; this is usually somewhere like 
-\family sans
-/usr/local/share/texmf/
-\family default
- .
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+/usr/local/share/texmf
+\end_layout
+
+\end_inset
+
+.
  The location of the `user' TeX tree is defined by 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -5605,13 +5627,19 @@ TEXMFHOME
 \end_inset
 
  and is commonly 
-\family sans
-$HOME/texmf/
-\family default
- .
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+$HOME/texmf
+\end_layout
+
+\end_inset
+
+.
  (If these variables are not predefined, you have to define them.) You'll
  probably need root permissions to create or modify the `local' tree, but
- your `user' tree shouldn't have such limitations.
+ not for your `user' tree.
 \begin_inset Newline newline
 \end_inset
 
@@ -5625,16 +5653,25 @@ In general, it is recommended to install in the user tree because your user
 On Windows, if you want the new package to be available for all users on
  your system, change to the folder where LaTeX is installed and then change
  to the subfolder 
-\family sans
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 ~
 \backslash
 tex
 \backslash
 latex
-\family default
+\end_layout
+
+\end_inset
+
 .
  (For MiKTeX, this would be by default the folder 
-\family sans
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 ~:
 \backslash
 Programs
@@ -5644,8 +5681,40 @@ MiKTeX
 tex
 \backslash
 latex
-\family default
- .) Create there a new folder 
+\end_layout
+
+\end_inset
+
+.)
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Note that this will be the correct path only on English installations.
+ On a German one, it would be 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+~:
+\backslash
+Programme
+\backslash
+MiKTeX
+\backslash
+tex
+\backslash
+latex
+\end_layout
+
+\end_inset
+
+, and similarly for other languages.
+\end_layout
+
+\end_inset
+
+ Create there a new folder 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -5656,26 +5725,31 @@ foiltex
 \end_inset
 
  and copy all files of the package into it.
- If the package should only available for you or you don't have admin permission
-s, do the same, but in the local LaTeX folder.
+ 
+\begin_inset Newline newline
+\end_inset
+
+If the package should only available for you or you don't have admin permissions
+, do the same, but in the local LaTeX folder.
  E.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
+g., for MiKTeX
 \begin_inset space ~
 \end_inset
 
-on MiKTeX
-\begin_inset space ~
-\end_inset
-
-2.8 this would be on WinXP the folder
+2.8 under Windows XP, this would be the folder:
 \begin_inset Newline newline
 \end_inset
 
 
 \family sans
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 ~:
 \backslash
 Documents and Settings
@@ -5685,9 +5759,16 @@ Documents and Settings
 Application Data
 \backslash
 
+\end_layout
+
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
+
+\family default
 
 \begin_inset Phantom HPhantom
 status open
@@ -5702,6 +5783,11 @@ status open
 
 \end_inset
 
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 MiKTeX
 \backslash
 2.8
@@ -5709,17 +5795,23 @@ MiKTeX
 tex
 \backslash
 latex
-\family default
+\end_layout
+
+\end_inset
+
 
 \begin_inset Newline newline
 \end_inset
 
-, on WinVista it would be the folder
+On Vista, it would be:
 \begin_inset Newline newline
 \end_inset
 
 
-\family sans
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 ~:
 \backslash
 Users
@@ -5737,8 +5829,11 @@ MiKTeX
 tex
 \backslash
 latex
-\family default
- .
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
