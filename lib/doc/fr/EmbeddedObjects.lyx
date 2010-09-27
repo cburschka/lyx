@@ -122,9 +122,6 @@
 % number algorithm floats within chapters
 \numberwithin{algorithm}{chapter}
 
-% redefine the greyed out note
-\renewenvironment{lyxgreyedout}
- {\textcolor{blue}\bgroup}{\egroup}
 
 % ------------------------------------
 % used to check for needed LaTeX packages
@@ -212,6 +209,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000

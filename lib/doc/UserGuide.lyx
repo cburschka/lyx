@@ -44,10 +44,6 @@
 % macro for italic page numbers in the index
 \newcommand{\IndexDef}[1]{\textit{#1}}
 
-% redefine the greyed out note
-\renewenvironment{lyxgreyedout}
- {\textcolor{blue}\bgroup}{\egroup}
-
 % workaround for a makeindex bug,
 % see sec. "Index Entry Order"
 % only uncomment this when you are using makindex
@@ -103,7 +99,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\notefontcolor #0055ff
+\notefontcolor #0000ff
 \branch Question
 \selected 1
 \filename_suffix 0
@@ -738,7 +734,15 @@ reference "sec:Document-Classes"
 \end_layout
 
 \begin_layout Standard
-Note: There is no 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ There is no 
 \begin_inset Quotes eld
 \end_inset
 
@@ -764,6 +768,11 @@ scratch.
 
  Unless you tell LyX to open a file or create a new one, that big, blank
  space is just that — a big, blank space.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

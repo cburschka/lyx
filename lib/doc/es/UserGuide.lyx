@@ -44,10 +44,6 @@
 % macro for italic page numbers in the index
 \newcommand{\IndexDef}[1]{\textit{#1}}
 
-% redefine the greyed out note
-\renewenvironment{lyxgreyedout}
- {\textcolor{blue}\bgroup}{\egroup}
-
 % workaround for a makeindex bug, 
 % see sec. "Index Entry Order"
 % only uncomment this when you are using makindex
@@ -103,6 +99,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\notefontcolor #0000ff
 \branch Pregunta
 \selected 1
 \filename_suffix 0
@@ -731,9 +728,22 @@ reference "sec:Clases-de-documento"
 \end_layout
 
 \begin_layout Standard
-Nota: No hay «archivo predeterminado» ni documento «Sin título» ni «de inicio».
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Nota:
+\series default
+ No hay «archivo predeterminado» ni documento «Sin título» ni «de inicio».
  A menos que indiques a LyX abrir un archivo o crear uno nuevo, este gran
  espacio en blanco es sólo eso —un gran espacio en blanco—.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

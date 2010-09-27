@@ -96,6 +96,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\notefontcolor #0000ff
 \branch Frage
 \selected 1
 \filename_suffix 0
@@ -1280,8 +1281,7 @@ von
 \begin_inset space \space{}
 \end_inset
 
-Vorlage\SpecialChar \ldots{}
-
+Vorlage
 \family default
  erfragt den Namen einer Vorlage, die verwendet werden soll.
  Mit der Auswahl einer Vorlagedatei werden automatisch verschiedene Layout-Einst
@@ -1290,7 +1290,7 @@ ellungen aktiviert, die Sie sonst von Hand verändern müssten.
  sie bieten sich aber vor allem für Briefe an (siehe Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Tab:Dokumentklassen"
+reference "sub:Dokumentklassen"
 
 \end_inset
 
@@ -1298,13 +1298,26 @@ reference "Tab:Dokumentklassen"
 \end_layout
 
 \begin_layout Standard
-Hinweis: Es gibt keine Standarddatei oder ein Dokument 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Hinweis:
+\series default
+ Es gibt keine Standarddatei oder ein Dokument 
 \emph on
 unbenannt
 \emph default
 , das automatisch geladen wird.
  Solange Sie nicht selber eine Datei öffnen oder neu anlegen, ist der leere
  Bereich auf dem Bildschirm genau das – ein großer, leerer Bereich.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3099,6 +3112,13 @@ finden.
 
 \begin_layout Subsection
 Dokumentklassen
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Dokumentklassen"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 

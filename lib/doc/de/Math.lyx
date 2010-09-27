@@ -112,10 +112,6 @@
 \def\mathclap {\mathpalette \mathclapinternal}
 \def\mathclapinternal #1#2{\clap{$\mathsurround =0pt #1{#2}$}}
 
-% Grauschrift Notiz umdefinieren
-\renewenvironment{lyxgreyedout}
- {\textcolor{blue}\bgroup}{\egroup}
-
 % Damit der Index einen anderen Namen erhält.
 \addto\captionsngerman
 {\renewcommand{\indexname}
@@ -208,6 +204,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\notefontcolor #0000ff
 \index Stichwortverzeichnis
 \shortcut idx
 \color #008000

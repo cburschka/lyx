@@ -112,9 +112,6 @@
 \def\mathclap {\mathpalette \mathclapinternal}
 \def\mathclapinternal #1#2{\clap{$\mathsurround =0pt #1{#2}$}}
 
-% redefine the greyed out note
-\renewenvironment{lyxgreyedout}
- {\textcolor{blue}\bgroup}{\egroup}
 
 % ------------------------------------
 % used to check for needed LaTeX packages
@@ -199,6 +196,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\notefontcolor #0000ff
 \index Índice
 \shortcut idx
 \color #008000

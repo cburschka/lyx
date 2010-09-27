@@ -120,9 +120,6 @@
 % Gleit-Algorithmen werden innerhalb von Kapiteln numeriert
 \numberwithin{algorithm}{chapter}
 
-% Grauschrift-Notizen in blauer Farbe
-\renewenvironment{lyxgreyedout}
- {\textcolor{blue}\bgroup}{\egroup}
 
 % ------------------------------------
 % Prüfung auf benötigte LaTeXPakete
@@ -210,6 +207,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\notefontcolor #0000ff
 \index Stichwortverzeichnis
 \shortcut idx
 \color #008000

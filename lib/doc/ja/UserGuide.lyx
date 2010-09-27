@@ -52,10 +52,6 @@
 % macro for italic page numbers in the index
 \newcommand{\IndexDef}[1]{\textit{#1}}
 
-% redefine the greyed out note
-\renewenvironment{lyxgreyedout}
- {\textcolor{blue}\bgroup}{\egroup}
-
 \usepackage{t1enc}
 \renewcommand{\seename}{→}
 
@@ -116,6 +112,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\notefontcolor #0000ff
 \branch 質問
 \selected 1
 \filename_suffix 0
@@ -770,8 +767,26 @@ reference "sec:文書クラス"
 \bar no
 \noun off
 \color none
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
 （註）「既定ファイル」や「無題」、「下書き」というファイル名のファイルはありません。LyXにファイルを開くか新しいファイルを作るのを知らせるまでは、大きな何もな
 いスペースがあるだけです。
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
