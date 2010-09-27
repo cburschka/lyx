@@ -74,7 +74,14 @@ bool isSGMLFileName(string const & filename)
 
 bool isValidLaTeXFileName(string const & filename)
 {
-	string const invalid_chars("#$%{}()[]\"^");
+	string const invalid_chars("#%\"");
+	return filename.find_first_of(invalid_chars) == string::npos;
+}
+
+
+bool isValidDVIFileName(string const & filename)
+{
+	string const invalid_chars("${}()[]^");
 	return filename.find_first_of(invalid_chars) == string::npos;
 }
 

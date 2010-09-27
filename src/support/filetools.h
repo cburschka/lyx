@@ -69,8 +69,14 @@ bool isLyXFileName(std::string const & filename);
 ///
 bool isSGMLFileName(std::string const & filename);
 
-///
+/// check for characters in filenames not allowed by LaTeX
 bool isValidLaTeXFileName(std::string const & filename);
+
+/** check for characters in filenames that might lead to
+  problems when manually compiling the LaTeX export of LyX
+  and opening the result with some older DVI-viewers
+*/
+bool isValidDVIFileName(std::string const & filename);
 
 /** Returns the path of a library data file.
     Search the file name.ext in the subdirectory dir of

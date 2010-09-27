@@ -281,12 +281,20 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 				       << "' to '" << out_file << "'"
 				       << endl;
 			}
-		} else if (!runparams.inComment && runparams.nice && not_from_texmf &&
-			   !isValidLaTeXFileName(database)) {
+		} else if (!runparams.inComment && runparams.nice && not_from_texmf) {
+			if (!isValidLaTeXFileName(database)) {
 				frontend::Alert::warning(_("Invalid filename"),
-						         _("The following filename is likely to cause trouble "
-							   "when running the exported file through LaTeX: ") +
-							    from_utf8(database));
+				         _("The following filename will cause troubles "
+					       "when running the exported file through LaTeX: ") +
+					     from_utf8(database));
+			}
+			if (!isValidDVIFileName(database)) {
+				frontend::Alert::warning(_("Problematic filename for DVI"),
+				         _("The following filename can cause troubles "
+					       "when running the exported file through LaTeX "
+						   "and opening the resulting DVI: ") +
+					     from_utf8(database), true);
+			}
 		}
 
 		if (didone)
