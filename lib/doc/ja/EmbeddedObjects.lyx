@@ -1,5 +1,5 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 401
 \begin_document
 \begin_header
 \textclass jbook
@@ -128,9 +128,6 @@
 % number algorithm floats within chapters
 \numberwithin{algorithm}{chapter}
 
-% redefine the greyed out note
-\renewenvironment{lyxgreyedout}
- {\textcolor{blue}\bgroup}{\egroup}
 
 % ------------------------------------
 % used to check for needed LaTeX packages
@@ -175,18 +172,25 @@
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \use_default_options false
+\maintain_unincluded_children false
 \language japanese
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_xetex false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -208,9 +212,18 @@
 \use_geometry true
 \use_amsmath 2
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\notefontcolor #0000ff
+\index 索引
+\shortcut idx
+\color #008000
+\end_index
 \leftmargin 2.5cm
 \topmargin 2.5cm
 \rightmargin 2.5cm
@@ -228,8 +241,8 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -339,7 +352,7 @@ http://wiki.lyx.org/LyX/DocumentationDevelopment#EmbeddedObjects
 
 \begin_layout Chapter
 図
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -349,7 +362,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -385,7 +398,7 @@ status collapsed
 
 \begin_layout Section
 画像ダイアログ
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -442,7 +455,7 @@ reference "cha:LyXで使用できる単位"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -456,7 +469,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -564,7 +577,7 @@ zgrep %%Bounding x.eps.gz > x.eps.bb
 画像グループ
 \family default
 フィールドでは、画像設定グループを定義したり既存のグループに所属させたりすることができます
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -653,7 +666,7 @@ name "sec:図フロート"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -663,7 +676,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -810,7 +823,7 @@ name "fig:エッシャー"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1036,7 +1049,7 @@ name "sec:画像書式"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1046,7 +1059,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1093,7 +1106,7 @@ reference "cha:ファイル出力形式"
 .gif
 \family default
 」）
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1129,7 +1142,7 @@ status collapsed
 .png
 \family default
 」）
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1169,7 +1182,7 @@ status collapsed
 .jpeg
 \family default
 」）
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1215,7 +1228,7 @@ status collapsed
 .svg
 \family default
 」）
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1251,7 +1264,7 @@ status collapsed
 .eps
 \family default
 」）
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1287,7 +1300,7 @@ status collapsed
 .pdf
 \family default
 」）
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1301,7 +1314,7 @@ PDF
 .wmf
 \family default
 」）
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1361,7 +1374,7 @@ PDF/EPS変換子がないので、SVGおよびWMF画像は、出力ファイル�
 
 \begin_layout Chapter
 表
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1375,7 +1388,7 @@ status collapsed
 
 \begin_layout Section
 はじめに
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1429,7 +1442,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -1595,7 +1608,7 @@ status collapsed
 
 \begin_layout Section
 表ダイアログ
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1767,7 +1780,7 @@ reference "sec:長尺表にまつわる諸点"
 
 \begin_layout Section
 表ツールバー
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1997,7 +2010,7 @@ status open
 
 \begin_layout Section
 表編集メニュー
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2028,7 +2041,7 @@ name "sec:表フロート"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2038,7 +2051,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2090,7 +2103,7 @@ name "tab:表フロート"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -2216,7 +2229,8 @@ name "tab:表フロート"
 \color none
 \begin_inset Formula $\left[\begin{array}{cc}
 a & b\\
-c & d\end{array}\right]$
+c & d
+\end{array}\right]$
 \end_inset
 
 
@@ -2310,7 +2324,7 @@ eXパッケージの
 caption
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2361,7 +2375,7 @@ caption
 \end_layout
 
 \begin_layout Standard
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2415,7 +2429,7 @@ name "sec:長尺表"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2425,7 +2439,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2548,7 +2562,7 @@ reference "sub:長尺表のキャプション"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="69" columns="3">
-<features islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -4731,7 +4745,7 @@ name "sub:長尺表での脚注"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4756,7 +4770,7 @@ reference "tab:別キャプション"
 
 \begin_layout Subsection
 長尺表の縦横揃え
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4855,7 +4869,7 @@ LTleft}{0pt}
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -5152,7 +5166,7 @@ reference "sub:長尺表のキャプション"
 
 \begin_layout Subsection
 長尺表のキャプション
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5193,7 +5207,7 @@ reference "sec:長尺表"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
-<features islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -5208,7 +5222,7 @@ reference "sec:長尺表"
 
 \begin_layout Plain Layout
 キャプション付き長尺表
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -5590,7 +5604,7 @@ PDF特性
 hyperref
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5609,7 +5623,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! hyperref
 
 \begin_layout Subsubsection
 長尺表への参照
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5624,7 +5638,7 @@ status collapsed
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
-<features islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -5955,7 +5969,7 @@ reference "tab:参照例"
 caption
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5976,7 +5990,7 @@ reference "sec:キャプションの書式設定"
 
 \begin_layout Subsubsection
 キャプションの幅
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6030,7 +6044,7 @@ reference "cha:LyXで使用できる単位"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
-<features islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -6045,7 +6059,7 @@ reference "cha:LyXで使用できる単位"
 
 \begin_layout Plain Layout
 既定幅のなが〜いフルタイトル・既定幅のなが〜いフルタイトル・既定幅のなが〜いフルタイトル
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -6361,7 +6375,7 @@ LTcapwidth}{5cm}
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
-<features islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -6388,7 +6402,7 @@ cm幅のなが〜いフルタイトル・5
 \end_inset
 
 cm幅のなが〜いフルタイトル
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -6722,7 +6736,7 @@ status open
 caption
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6773,7 +6787,7 @@ captionsetup{width=値}
 
 \begin_layout Subsubsection
 表の各ページごとに異なるキャプション
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6816,7 +6830,7 @@ reference "tab:別キャプション"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="59" columns="3">
-<features islongtable="true" lastFootEmpty="true">
+<features islongtable="true" lastFootEmpty="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -6836,7 +6850,7 @@ name "tab:別キャプション"
 \end_inset
 
 
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -8718,7 +8732,7 @@ name "sec:長尺表にまつわる諸点"
 
 \begin_layout Subsection
 長尺表の計算
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8749,7 +8763,7 @@ setcounter{LTchunksize}{100}
 
 \begin_layout Subsection
 フロートと長尺表
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8773,7 +8787,7 @@ clearpage
 
 \begin_layout Subsection
 強制改頁
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8919,7 +8933,7 @@ parfillskip}{0pt}
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="38" columns="3">
-<features islongtable="true" lastFootEmpty="true">
+<features islongtable="true" lastFootEmpty="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="3cm">
 <column alignment="center" valignment="top" width="0pt">
@@ -8939,7 +8953,7 @@ name "tab:強制改頁"
 \end_inset
 
 
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -10191,7 +10205,7 @@ name "sub:複数行"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10201,7 +10215,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10243,7 +10257,7 @@ name "tab:複数行表"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="2.5cm">
 <column alignment="center" valignment="middle" width="0">
 <column alignment="center" valignment="middle" width="0">
@@ -10445,7 +10459,7 @@ name "tab:ハイフネーション表"
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="2.5cm">
 <column alignment="center" valignment="middle" width="0">
 <column alignment="center" valignment="middle" width="0">
@@ -10547,7 +10561,7 @@ verylongtablecellword
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="2.5cm">
 <column alignment="center" valignment="middle" width="0">
 <column alignment="center" valignment="middle" width="0">
@@ -10667,7 +10681,7 @@ name "sub:連結列"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10677,7 +10691,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10724,7 +10738,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
-<features firstHeadTopDL="true" firstHeadBottomDL="true">
+<features firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="middle" width="0">
 <column alignment="center" valignment="top" width="0in">
@@ -10859,7 +10873,7 @@ name "sub:連結列の計算"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10893,7 +10907,7 @@ name "tab:中央揃え表"
 \end_inset
 
 中央揃え連結列の下にちょうど半分の幅を持つ列が2つある表
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -10914,7 +10928,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="1.25cm" special=">{\centering}m{1.25cm-6.2pt}">
 <column alignment="center" valignment="middle" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -11076,7 +11090,7 @@ name "tab:半分でない表"
 \end_inset
 
 連結セルの下の列が正確に半分になっていない表
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -11097,7 +11111,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="1.25cm">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -11285,7 +11299,7 @@ usepackage{calc}
 calc
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -11388,7 +11402,7 @@ centering}m{2.5cm}
 
 \begin_layout Subsection
 連結行
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -11398,7 +11412,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -11428,7 +11442,7 @@ usepackage{multirow}
 multirow
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -11473,7 +11487,7 @@ centering}
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -11695,7 +11709,7 @@ name "sec:フォーマル形式の表"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -11751,7 +11765,7 @@ name "tab:ブックタブ表の例"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="4">
-<features booktabs="true">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -12421,7 +12435,7 @@ key "booktabs"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12462,7 +12476,7 @@ name "tab:特殊なブックタブ表"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="4">
-<features booktabs="true">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -12872,7 +12886,7 @@ LSF空間分解能
 
 \begin_layout Section
 表の垂直揃え
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12928,6 +12942,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "15col%"
 special "none"
 height "1in"
@@ -12937,7 +12952,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -13059,6 +13074,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "15col%"
 special "none"
 height "1in"
@@ -13068,7 +13084,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -13190,6 +13206,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "15col%"
 special "none"
 height "1in"
@@ -13199,7 +13216,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -13310,6 +13327,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "15col%"
 special "none"
 height "1in"
@@ -13319,7 +13337,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -13441,6 +13459,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "15col%"
 special "none"
 height "1in"
@@ -13450,7 +13469,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -13649,7 +13668,7 @@ name "sec:色付きの表"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13663,7 +13682,7 @@ status collapsed
 
 \begin_layout Subsection
 色付きのセル
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13673,7 +13692,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13707,7 +13726,7 @@ name "tab:colortblなしの表"
 colortbl
 \series default
 パッケージを使用しない色付き表
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -13728,7 +13747,7 @@ colortblなしの表
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -13867,7 +13886,7 @@ reference "tab:colortblなしの表"
 colortbl
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14242,7 +14261,7 @@ name "tab:色付き表"
 colortbl
 \series default
 パッケージを使用した色付き表
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -14263,7 +14282,7 @@ colortblを使った表
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0" special=">{\columncolor{darkgreen}\centering}c">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -14464,7 +14483,7 @@ fi
 
 \begin_layout Subsection
 色付き罫線
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14474,7 +14493,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14597,7 +14616,7 @@ name "tab:色付き縦罫線の表"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0" special="Wc">
 <column alignment="center" valignment="top" width="0" special="Wc">
 <column alignment="center" valignment="top" width="0" special="WcW">
@@ -14736,14 +14755,14 @@ hline}
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
 
 
-\backslash
-hphantom{ }
 \end_layout
 
 \end_inset
@@ -14827,7 +14846,7 @@ name "tab:色付き横罫線の表"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -14986,7 +15005,7 @@ name "tab:色付き罫線の表"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0" special="Wc">
 <column alignment="center" valignment="top" width="0" special="Wc">
 <column alignment="center" valignment="top" width="0" special="WcW">
@@ -15129,7 +15148,7 @@ arrayrulewidth}{0.4pt}
 
 \begin_layout Section
 表の調整
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15139,7 +15158,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15160,7 +15179,7 @@ name "sub:行の余白取り"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15222,7 +15241,7 @@ emの余白を挿入します。通常の表の場合には、余白を追加す
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -15322,7 +15341,7 @@ emの余白を挿入します。通常の表の場合には、余白を追加す
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -15420,14 +15439,14 @@ mmの余白
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
 
 
-\backslash
-hphantom{ }
 \end_layout
 
 \end_inset
@@ -15529,7 +15548,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -15649,7 +15668,7 @@ strut
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -15810,7 +15829,7 @@ Huger
 
 \begin_layout Subsection
 特殊なセル揃え
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15862,7 +15881,7 @@ name "tab:表セル"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0" special="@{}l">
 <row>
@@ -16012,7 +16031,7 @@ name "tab:表セル揃え"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="6">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0" special="@{}l">
 <column alignment="right" valignment="top" width="0">
@@ -16305,7 +16324,7 @@ cm
 dcolumn
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16379,7 +16398,7 @@ LaTeXパッケージdcolumnを使用したときの揃えの様子。この出�
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0" special="D{x}{\times}{-1}">
 <column alignment="center" valignment="top" width="0" special="D{x}{\times}{4.9}">
 <column alignment="center" valignment="top" width="0" special="D{~}{\,}{9.7}">
@@ -16583,7 +16602,7 @@ name "sub:自製書式"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16718,27 +16737,15 @@ hspace{0pt}}
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
-
-\backslash
-phantom{
-\end_layout
-
-\end_inset
-
+\series bold
 
 \backslash
 newcolumntype
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -16889,7 +16896,7 @@ name "tab:ユーザー定義の表書式"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="2.5cm" special="M{2.5cm}">
 <column alignment="center" valignment="middle" width="0" special="S{2.5cm}{2}">
 <column alignment="center" valignment="middle" width="0">
@@ -17029,7 +17036,7 @@ name "sub:罫線幅"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17133,7 +17140,7 @@ pt幅罫線の表
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -17409,7 +17416,7 @@ pt幅横罫の表
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -17620,7 +17627,7 @@ pt幅縦罫の表
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0" special="Vc">
 <column alignment="center" valignment="top" width="0" special="Vc">
 <column alignment="center" valignment="top" width="0" special="VcV">
@@ -17725,7 +17732,7 @@ sd
 
 \begin_layout Subsection
 点罫
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -17792,7 +17799,7 @@ name "tab:点罫表"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0" special=":c">
@@ -18087,7 +18094,7 @@ usepackage{arydshln}
 arydshln
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -18202,7 +18209,7 @@ reference "sec:色付きの表"
 colortbl
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -18275,7 +18282,7 @@ fi
 
 \begin_layout Chapter
 フロート
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -18296,7 +18303,7 @@ name "sec:フロートはじめに"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -18404,7 +18411,7 @@ reference "sec:表フロート"
 
 \begin_layout Subsection
 アルゴリズムフロート
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -18590,7 +18597,7 @@ AMS mathパッケージを使用する
 
 \begin_layout Subsection
 折返しフロート
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -18647,7 +18654,7 @@ name "fig:折返し図フロート"
 wrapfig
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -18770,7 +18777,7 @@ status open
 
 \begin_layout Section
 フロートの連番
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -18879,7 +18886,7 @@ name "sec:フロートの参照"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -18889,7 +18896,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -18982,7 +18989,7 @@ name "sub:相互参照の書式"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19111,7 +19118,7 @@ on this page
 
 \begin_layout Subsection
 参照名の自動命名
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19137,7 +19144,7 @@ PDF特性
 hyperref
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19194,14 +19201,16 @@ sectionautorefname}
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -19265,14 +19274,16 @@ equationautorefname}
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -19340,7 +19351,7 @@ name "sub:参照位置"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19366,7 +19377,7 @@ PDF特性
 hyperref
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19381,7 +19392,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! hyperref
 hyperref
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19395,7 +19406,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! hyperref
 hyperref
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19453,7 +19464,7 @@ name "sec:フロートの配置"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19790,7 +19801,7 @@ mySection}
 endfloat
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19917,7 +19928,7 @@ name "sec:回転フロート"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20010,7 +20021,7 @@ name "tab:回転した表"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -20077,7 +20088,7 @@ name "tab:回転した表"
 
 \begin_layout Section
 従属フロート
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20185,7 +20196,7 @@ name "tab:これは従属表a"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -20279,7 +20290,7 @@ name "tab:これは従属表b"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -20396,7 +20407,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -20473,7 +20484,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -20545,7 +20556,7 @@ status open
 
 \begin_layout Section
 横並びのフロート
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20625,6 +20636,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "45col%"
 special "none"
 height "1in"
@@ -20675,6 +20687,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "45col%"
 special "none"
 height "1in"
@@ -20728,7 +20741,7 @@ name "fig:右側のフロート"
 
 \begin_layout Section
 キャプションの書式設定
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20738,7 +20751,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20796,7 +20809,7 @@ usepackage[format definition]{caption}
 caption
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20870,25 +20883,18 @@ captionsetup[figure]{labelfont={tt}, textfont=it, indention=1cm,%
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
-
 \backslash
-hphantom{
-\backslash
-
-\backslash
-captionsetup[figure]
-\backslash
-{}
+captionsetup[figure]{
 \end_layout
 
 \end_inset
 
- labelsep=period}
+labelsep=period}
 \begin_inset Newline newline
 \end_inset
 
@@ -20915,7 +20921,7 @@ tableposition=top
 KOMA-script
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20990,7 +20996,7 @@ thefigure
 KOMA-script
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21177,7 +21183,7 @@ name "tab:表キャプション"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -21244,7 +21250,7 @@ name "tab:表キャプション"
 
 \begin_layout Section
 キャプションの配置
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21254,7 +21260,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21343,7 +21349,7 @@ reference "sec:キャプションの書式設定"
 KOMA-script
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21404,7 +21410,7 @@ usepackage[option]{sidecap}
 sidecap
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21463,8 +21469,15 @@ LyXでフロートのキャプションを横に配置するには、以下の�
 \end_layout
 
 \begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
 
-\lyxline
+\end_inset
+
 
 \end_layout
 
@@ -21480,14 +21493,16 @@ TabBesBeg}{%
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -21503,14 +21518,16 @@ table
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -21526,14 +21543,16 @@ endtable
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -21559,14 +21578,16 @@ TabBesEnd}{%
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -21582,14 +21603,16 @@ MyTable
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -21615,14 +21638,16 @@ FigBesBeg}{%
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -21638,14 +21663,16 @@ figure
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -21661,14 +21688,16 @@ endfigure
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -21694,14 +21723,16 @@ FigBesEnd}{%
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -21717,14 +21748,16 @@ MyFigure
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -21739,8 +21772,15 @@ MyEndfigure}
 \end_layout
 
 \begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
 
-\lyxline
+\end_inset
+
 
 \end_layout
 
@@ -21907,7 +21947,7 @@ reference "sub:参照位置"
 hypcap
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22023,7 +22063,7 @@ name "tab:表横キャプション"
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -22370,7 +22410,7 @@ fi
 
 \begin_layout Section
 フロート一覧
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22405,7 +22445,7 @@ status collapsed
 
 \begin_layout Section
 LyX注釈
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22652,14 +22692,16 @@ renewenvironment{lyxgreyedout}
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -22697,7 +22739,7 @@ name "sec:脚注"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22707,7 +22749,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22918,7 +22960,7 @@ name "sub:脚注の付番"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23236,7 +23278,7 @@ Roman{footnote}}
 
 \begin_layout Subsection
 脚注の配置
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23316,7 +23358,7 @@ usepackage{ftnright}
 ftnright
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23471,7 +23513,7 @@ reference "fig:後注"
 \end_inset
 
 のように、節の末尾に別段落を設けて、脚注をまとめて出力することも普通に行われます。これは「後注
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23669,7 +23711,7 @@ endnotemark[番号]
 footmisc
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23701,7 +23743,7 @@ key "latexcompanion,latexguide,latexbook"
 
 \begin_layout Section
 傍注
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23963,7 +24005,7 @@ marginnote
 marginnote
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24254,14 +24296,16 @@ myMarginpar{%
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -24279,14 +24323,16 @@ underbar{注意！}}}%
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -24461,7 +24507,7 @@ fi
 
 \begin_layout Section
 はじめに
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24645,7 +24691,7 @@ name "sec:ボックスダイアログ"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24659,7 +24705,7 @@ status collapsed
 
 \begin_layout Subsection
 寸法
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24714,6 +24760,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "12col%"
 special "none"
 height "1in"
@@ -24746,6 +24793,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "20col%"
 special "none"
 height "2in"
@@ -24770,6 +24818,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "20col%"
 special "none"
 height "1in"
@@ -24794,6 +24843,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "12col%"
 special "none"
 height "1in"
@@ -24812,7 +24862,7 @@ status open
 
 \begin_layout Subsection
 文字揃え
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24840,6 +24890,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "12col%"
 special "none"
 height "1in"
@@ -24864,6 +24915,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "12col%"
 special "none"
 height "1in"
@@ -24888,6 +24940,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "12col%"
 special "none"
 height "1in"
@@ -24944,6 +24997,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "12col%"
 special "none"
 height "1.5in"
@@ -24968,6 +25022,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "12col%"
 special "none"
 height "1.5in"
@@ -24992,6 +25047,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "b"
 use_parbox 0
+use_makebox 0
 width "12col%"
 special "none"
 height "1.5in"
@@ -25016,6 +25072,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "s"
 use_parbox 0
+use_makebox 0
 width "17col%"
 special "none"
 height "1.5in"
@@ -25065,6 +25122,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "s"
 use_parbox 0
+use_makebox 0
 width "25col%"
 special "none"
 height "1.25in"
@@ -25107,6 +25165,7 @@ hor_pos "s"
 has_inner_box 0
 inner_pos "s"
 use_parbox 0
+use_makebox 0
 width "90col%"
 special "none"
 height "1.25in"
@@ -25132,7 +25191,7 @@ name "sec:装飾"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25166,6 +25225,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "20col%"
 special "none"
 height "1in"
@@ -25213,6 +25273,7 @@ hor_pos "c"
 has_inner_box 0
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -25240,6 +25301,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "20col%"
 special "none"
 height "1in"
@@ -25268,6 +25330,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "20col%"
 special "none"
 height "1in"
@@ -25302,6 +25365,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "20col%"
 special "none"
 height "1in"
@@ -25343,6 +25407,7 @@ hor_pos "c"
 has_inner_box 0
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "50col%"
 special "none"
 height "1in"
@@ -25408,6 +25473,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "20col%"
 special "none"
 height "1in"
@@ -25433,7 +25499,7 @@ LyXのボックスラベルには、使用中の枠の型が表示されます�
 fancybox
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25447,7 +25513,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! fancybox
 
 \begin_layout Section
 ボックスの詳細な設定
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25509,6 +25575,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "25col%"
 special "none"
 height "1in"
@@ -25615,6 +25682,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "25col%"
 special "none"
 height "1in"
@@ -25743,6 +25811,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "25col%"
 special "none"
 height "1in"
@@ -25843,6 +25912,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "25col%"
 special "none"
 height "1in"
@@ -25977,6 +26047,7 @@ hor_pos "c"
 has_inner_box 0
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -26155,6 +26226,7 @@ hor_pos "c"
 has_inner_box 0
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -26214,7 +26286,7 @@ name "sec:ミニページ"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26263,6 +26335,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "45col%"
 special "none"
 height "1in"
@@ -26310,6 +26383,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "45col%"
 special "none"
 height "1in"
@@ -26363,7 +26437,7 @@ This is an English footnote.
 この表の脚注は表示されません。
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -26507,6 +26581,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "30col%"
 special "none"
 height "1in"
@@ -26517,7 +26592,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -26706,7 +26781,7 @@ name "sec:Parboxes"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26731,6 +26806,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 1
+use_makebox 0
 width "33col%"
 special "none"
 height "1in"
@@ -26762,7 +26838,7 @@ status open
 
 \begin_layout Section
 単語や文字のボックス
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26783,7 +26859,7 @@ name "sec:ハイフネーションの回避"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26983,7 +27059,7 @@ name "sub:垂直揃え"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26993,7 +27069,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27279,7 +27355,7 @@ name "sec:色付きボックス"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27293,7 +27369,7 @@ status collapsed
 
 \begin_layout Subsection
 文字の着色
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27311,7 +27387,7 @@ status collapsed
 color
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27333,14 +27409,16 @@ LaTeXぱっけーじ@LaTeXパッケージ ! color
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -27714,7 +27792,7 @@ name "sub:段落の着色"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27772,6 +27850,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -27803,7 +27882,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -27939,14 +28018,16 @@ status collapsed
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+\begin_inset space ~
+\end_inset
 
-\backslash
-hphantom{ }
+
 \end_layout
 
 \end_inset
@@ -27962,7 +28043,7 @@ usepackage{graphicx}}{}
 graphicx
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28010,7 +28091,7 @@ status open
 
 \begin_layout Subsection
 ボックスの回転
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28020,7 +28101,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28030,7 +28111,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28040,7 +28121,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28173,6 +28254,7 @@ hor_pos "c"
 has_inner_box 0
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "1in"
 special "width"
 height "1in"
@@ -28280,7 +28362,7 @@ rotatebox[origin=l]{-90}{
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -28343,7 +28425,7 @@ status collapsed
 
 \begin_layout Subsection
 ボックスの伸縮
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28353,7 +28435,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28363,7 +28445,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28373,7 +28455,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28832,7 +28914,7 @@ reflectbox{
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -28945,7 +29027,7 @@ status collapsed
 
 \begin_layout Chapter
 外部文書構成要素
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28988,7 +29070,7 @@ LyX文書 別のLyX文書。その内容は直接使用中の文書に挿入さ�
 
 \begin_layout Section
 外部素材
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29220,7 +29302,7 @@ name "tab:日付挿入方法"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -29456,7 +29538,7 @@ name "sec:子文書"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29466,7 +29548,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29823,7 +29905,7 @@ name "cha:プログラムコードリスト"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29833,7 +29915,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29843,7 +29925,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29870,7 +29952,7 @@ status collapsed
 listings
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30342,7 +30424,7 @@ key "listings"
 \begin_layout Chapter
 \start_of_appendix
 LyXで使用できる単位
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30408,7 +30490,7 @@ name "tab:単位"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -30896,7 +30978,7 @@ name "cha:ファイル出力形式"
 
 \begin_layout Section
 DVI
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -30906,7 +30988,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31008,7 +31090,7 @@ name "sec:PostScript"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31018,7 +31100,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31129,7 +31211,7 @@ Postscript
 
 \begin_layout Section
 PDF
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31139,7 +31221,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31409,6 +31491,7 @@ W_{g\, n}=(W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\bac
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexcompanion"
@@ -31424,6 +31507,7 @@ The LaTeX Companion Second Edition.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexguide"
@@ -31440,6 +31524,7 @@ A Guide to LaTeX Fourth Edition.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexbook"
@@ -31455,6 +31540,7 @@ LaTeX: A Document Preparation System.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "booktabs"
@@ -31474,7 +31560,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/booktabs/booktab
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31487,6 +31573,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! booktabs
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "caption"
@@ -31506,7 +31593,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31519,6 +31606,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! caption
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "endfloat"
@@ -31538,7 +31626,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/endfloat/endfloa
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31551,6 +31639,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! endfloat
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "wrapfig"
@@ -31570,7 +31659,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31583,6 +31672,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! wrapfig
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "footmisc"
@@ -31602,7 +31692,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/footmisc/footmis
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31615,6 +31705,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! footmisc
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hypcap"
@@ -31634,7 +31725,7 @@ target "http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/hypcap.pdf
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31647,6 +31738,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! hyperref
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hyperref"
@@ -31666,7 +31758,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperre
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31679,6 +31771,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! hyperref
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "KOMA-script"
@@ -31698,7 +31791,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/koma-script/scrg
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31711,6 +31804,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! KOMA-script
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "listings"
@@ -31730,7 +31824,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/listings/listing
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31743,6 +31837,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! listings
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "marginnote"
@@ -31762,7 +31857,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/marginnote/margi
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31775,6 +31870,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! marginnote
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "pstricks"
@@ -31794,7 +31890,7 @@ target "http://tug.org/PSTricks/"
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31807,6 +31903,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! PSTricks
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "sidecap"
@@ -31826,7 +31923,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/sidecap/sidecap.
 
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -31839,6 +31936,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! sidecap
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "NewInLyX16"
@@ -31863,6 +31961,7 @@ target "http://wiki.lyx.org/LyX/NewInLyX16"
 \begin_layout Standard
 \begin_inset CommandInset index_print
 LatexCommand printindex
+type "idx"
 
 \end_inset
 
