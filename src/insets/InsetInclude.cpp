@@ -510,16 +510,16 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		incfile = mangled;
 	else if (!isValidLaTeXFileName(incfile)) {
 		frontend::Alert::warning(_("Invalid filename"),
-				         _("The following filename will cause troubles "
-					       "when running the exported file through LaTeX: ") +
-					     from_utf8(incfile));
+			_("The following filename will cause troubles "
+			  "when running the exported file through LaTeX: ") +
+			from_utf8(incfile));
 	}
 	else if (!isValidDVIFileName(incfile)) {
-			frontend::Alert::warning(_("Problematic filename for DVI"),
-				         _("The following filename can cause troubles "
-					       "when running the exported file through LaTeX "
-						   "and opening the resulting DVI: ") +
-					     from_utf8(incfile), true);
+		frontend::Alert::warning(_("Problematic filename for DVI"),
+			_("The following filename can cause troubles "
+			  "when running the exported file through LaTeX "
+			  "and opening the resulting DVI: ") +
+			from_utf8(incfile), true);
 	}
 	LYXERR(Debug::LATEX, "incfile:" << incfile);
 	LYXERR(Debug::LATEX, "exportfile:" << exportfile);

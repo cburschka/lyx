@@ -589,17 +589,17 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 		params().filename.outputFileName(masterBuffer->filePath()) :
 		onlyFileName(temp_file.absFileName());
 
-	if (runparams.nice ) {
+	if (runparams.nice) {
 		if (!isValidLaTeXFileName(output_file)) {
 			frontend::Alert::warning(_("Invalid filename"),
-				         _("The following filename will cause troubles "
-					       "when running the exported file through LaTeX: ") +
-					     from_utf8(output_file));
+				_("The following filename will cause troubles "
+				  "when running the exported file through LaTeX: ") +
+				from_utf8(output_file));
 		}
 		// only show DVI-specific warning when export format is plain latex
 		if (!isValidDVIFileName(output_file)
 			&& runparams.flavor == OutputParams::LATEX) {
-			frontend::Alert::warning(_("Problematic filename for DVI"),
+				frontend::Alert::warning(_("Problematic filename for DVI"),
 				         _("The following filename can cause troubles "
 					       "when running the exported file through LaTeX "
 						   "and opening the resulting DVI: ") +
