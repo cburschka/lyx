@@ -157,6 +157,13 @@ void GuiSpellchecker::updateView()
 }
 
 
+void GuiSpellchecker::forward()
+{
+	dispatch(FuncRequest(LFUN_ESCAPE));
+	dispatch(FuncRequest(LFUN_CHAR_FORWARD));
+}
+	
+	
 void GuiSpellchecker::on_languageCO_activated(int index)
 {
 	string const lang =
@@ -174,6 +181,7 @@ void GuiSpellchecker::on_ignoreAllPB_clicked()
 	/// replace all occurrences of word
 	if (d->word_.lang() && !d->word_.word().empty())
 		theSpellChecker()->accept(d->word_);
+	forward();
 	check();
 }
 
@@ -182,14 +190,14 @@ void GuiSpellchecker::on_addPB_clicked()
 {
 	/// insert word in personal dictionary
 	theSpellChecker()->insert(d->word_);
+	forward();
 	check();
 }
 
 
 void GuiSpellchecker::on_ignorePB_clicked()
 {
-	dispatch(FuncRequest(LFUN_ESCAPE));
-	dispatch(FuncRequest(LFUN_CHAR_FORWARD));
+	forward();
 	check();
 }
 

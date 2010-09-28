@@ -58,8 +58,9 @@ private:
 	bool needBufferOpen() const { return true; }
 	///}
 
+	/// move to next position after current word
+	void forward();
 	/// check text until next misspelled/unknown word
-	/// returns true when finished
 	void check();
 	/// show count of checked words at normal exit
 	void showSummary();
