@@ -28,7 +28,7 @@ AC_DEFUN([QT4_CHECK_COMPILE],
 		AC_LANG_CPLUSPLUS
 		SAVE_CXXFLAGS=$CXXFLAGS
 		CXXFLAGS="$CXXFLAGS $QT4_INCLUDES $QT4_LDFLAGS"
-		for libname in -lQtCore -lQtCore4 '-framework XQtCore'
+		for libname in -lQtCore -lQtCore4 '-framework QtCore'
 		do
 			QT4_TRY_LINK($libname)
 			if test -n "$qt4_cv_libname"; then
@@ -39,7 +39,7 @@ AC_DEFUN([QT4_CHECK_COMPILE],
 		qt4_cv_libname=
 		for libname in '-lQtCore -lQtGui' \
 		               '-lQtCore4 -lQtGui4' \
-		               '-framework XQtCore -framework XQtGui'
+		               '-framework QtCore -framework QtGui'
 		do
 			QT4_TRY_LINK($libname)
 			if test -n "$qt4_cv_libname"; then
