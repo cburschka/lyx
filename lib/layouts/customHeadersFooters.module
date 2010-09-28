@@ -1,0 +1,61 @@
+#\DeclareLyXModule[fancyhdr.sty]{Custom Header/Footerlines}
+#DescriptionBegin
+#Adds environments to define header and footer lines
+#NOTE: To use this mudule you must set the "Headings style" in 
+#      the menu Document Settings -> Page Layout to "fancy"!
+#DescriptionEnd
+
+Format 28
+
+Style "Left Header"
+  Category		FrontMatter
+  Margin		First_Dynamic
+  LatexType		command
+  LabelType		Static
+  LabelSep		xx
+  LatexName	        lhead
+  LabelString		"Left Header:"
+  OptionalArgs		1
+  KeepEmpty		1
+  ParSkip		0
+  TopSep		0
+  BottomSep		0
+  ParSep		0
+  LabelFont
+	  Color		Green
+  EndFont
+End
+
+Style "Center Header"
+  CopyStyle		"Left Header"
+  LatexName	        chead
+  LabelString		"Center Header:"
+End
+
+
+Style "Right Header"
+  CopyStyle		"Left Header"
+  LatexName	        rhead
+  LabelString		"Right Header:"
+End
+
+
+Style "Left Footer"
+  CopyStyle		"Left Header"
+  LatexName	        lfoot
+  LabelString		"Left Footer:"
+End
+
+
+Style "Center Footer"
+  CopyStyle		"Left Header"
+  LatexName	        cfoot
+  LabelString		"Center Footer:"
+End
+
+
+Style "Right Footer"
+  CopyStyle		"Left Header"
+  LatexName	        rfoot
+  LabelString		"Right Footer:"
+End

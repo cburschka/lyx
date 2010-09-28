@@ -2752,6 +2752,7 @@ lib_layouts_files = Split('''
     broadway.layout
     chess.layout
     cl2emult.layout
+    customHeadersFooters.module
     dinbrief.layout
     docbook-book.layout
     docbook-chapter.layout

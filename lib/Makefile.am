@@ -1048,6 +1048,7 @@ dist_layouts_DATA =\
 	layouts/broadway.layout \
 	layouts/chess.layout \
 	layouts/cl2emult.layout \
+	layouts/customHeadersFooters.module \
 	layouts/db_lyxmacros.inc \
 	layouts/db_stdclass.inc \
 	layouts/db_stdcharstyles.inc \
