@@ -51,6 +51,9 @@
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \use_default_options false
+\begin_modules
+logicalmkup
+\end_modules
 \language ngerman
 \inputencoding auto
 \font_roman default
@@ -4166,224 +4169,374 @@ Installation eines neuen LaTeX-Paketes
 \begin_layout Standard
 Bei manchen TeX-Installationen fehlt möglicherweise das eine oder andere
  Paket, das Sie gerne mit LyX verwenden würden.
- Ein Beispiel dafür ist FoilTeX, ein verbreitetes (und sehr leistungsfähiges)
- Paket zur Erstellung von Dias und Folien für Overheadprojektoren.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Weitere Dokumentation zu FoilTeX finden Sie im Teil 
-\emph on
-Handbuchergänzungen
-\emph default
- der Online-Hilfe.
-\end_layout
-
+ Zum Beispiel wollen Sie FoilTeX verwenden, ein Paket zur Erstellung von
+ Dias und Folien für Overheadprojektoren.
+ Moderne LaTeX-Distributionen wie TeXLive (2008 oder neuer) oder MiKTeX
+ besitzen ein grafisches Programm um solche Pakete zu installieren.
+ Z.
+\begin_inset space \thinspace{}
 \end_inset
 
- Sie finden hier eine Beschreibung der grundlegenden Schritte, um ein solches
- zusätzliches Paket in einer aktuellen Version von teTeX
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Die Prozedur gilt auf jeden Fall für v1.0 sowie die 0.9 Betaversionen.
- Hinweise darauf, ob dies auch in Version 0.4 funktioniert, sind willkommen,
- andererseits ist ein Upgrade auf 1.0 sicher die bessere Wahl.
-\end_layout
-
+B.
+ bei MiKTeX starten Sie das Programm 
+\begin_inset Quotes gld
 \end_inset
 
- oder einer anderen, web2c basierten TeX-Distribution einzubinden.
+Package
+\begin_inset space ~
+\end_inset
+
+Manager
+\begin_inset Quotes grd
+\end_inset
+
+ um eine Liste mit den verfügbaren Paketen zu bekommen.
+ Um eines davon zu installieren, rechts-klicken Sie oder benutzen den entspreche
+nden Werkzeugleistenknopf.
+\end_layout
+
+\begin_layout Standard
+Falls Ihre LaTeX-Distribution keinen Paketmanager besitzt, oder falls das
+ Paket nicht direkt über Ihre Distribution verfügbar ist, folgen Sie diesen
+ Schritten um es manuell zu installieren:
 \end_layout
 
 \begin_layout Enumerate
-Besorgen Sie sich das Paket von CTAN oder einer anderen Quelle
+Besorgen Sie sich das Paket von 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://www.ctan.org/"
+
+\end_inset
+
+ oder einer anderen Quelle.
+\end_layout
+
+\begin_layout Enumerate
+Falls das Paket eine Datei mit der Endung 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+.ins
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ enthält (was bei FoilTeX der Fall ist), dann öffnen sie eine Kommandozeile
+ wechseln in das Verzeichnis der Datei und führen den Befehl
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+latex foiltex.ins
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+aus.
+ Sie haben damit dass Paket entpackt und haben alle Dateien um es zu installiere
+n.
+ Die meisten LaTeX-Pakete sind nicht gepackt und man kann direkt mit der
+ Installation beginnen:
+\end_layout
+
+\begin_layout Enumerate
+Nun müssen Sie entscheiden, ob das Paket für alle Nutzer oder nur für Sie
+ verfügbar sein soll.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Bei *nix Systemen (Linux, OSX, etc.), wenn Sie das Paket für alle Nutzer
+ installieren möchten, installieren Sie es in den lokalen TeX Ordner; anderenfal
+ls installieren Sie es in dein eigenen 
+\begin_inset Quotes gld
+\end_inset
+
+Benutzer
+\begin_inset Quotes grd
+\end_inset
+
+-TeX Ordner.
+ Wo man diese Ordner anlegt, sofern sie nicht schon existieren, hängt von
+ Ihrem System ab.
+ Dazu schauen Sie in die Datei 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+texmf.cnf
+\end_layout
+
+\end_inset
+
+.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Informationen darüber, was CTAN ist und wo unterstützte Dokumentenklassen
- gefunden werden können, finden Sie im Hilfedokument 
-\emph on
-LaTe
+Diese befindet sich normalerweise im Ordner 
 \family sans
-\emph default
+$TEXMF/web2c
+\family default
+.
+ Falls nicht, führen Sie den Befehl 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+kpsewhich texmf.cnf
+\end_layout
+
+\end_inset
+
+ aus, um sie zu lokalisieren.
+\end_layout
+
+\end_inset
+
+ Der Ort des lokalen TeX Ordners ist in der Variable 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+TEXMFLOCAL
+\end_layout
+
+\end_inset
+
+ definiert; es ist üblicherweise der Pfad 
+\family sans
+/usr/local/share/texmf/
+\family default
+ .
+ Der Ort des Benutzer-TeX Ordners ist in der Variable 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+TEXMFHOME
+\end_layout
+
+\end_inset
+
+ definiert und ist üblicherweise der Pfad 
+\family sans
+$HOME/texmf/
+\family default
+ .
+ (Wenn diese Variablen nicht vordefiniert sind, müssen Sie diese selbst
+ definieren.) Sie brauchen wahrscheinlich Root-Rechte um in den lokalen TeX
+ Ordner zu schreiben, beim Benutzer-TeX Ordner ist die nicht nötig.
+\begin_inset Newline newline
+\end_inset
+
+Allgemein empfiehlt es sich, Pakete in den Benutzer-TeX Ordner zu installieren,
+ da dieser nicht verändert oder gar überschrieben wird, wenn Sie ihr System
+ aktualisieren.
+ Des Weiteren wird er zusammen mit Ihren Nutzerdaten gesichert, wenn Sie
+ ein Backup machen (was Sie natürlich regelmäßig tun).
+\end_layout
+
+\begin_layout Enumerate
+Bei Windows, wenn Sie das Paket für alle Nutzer installieren möchten, gehen
+ Sie in den Ordner, in dem LaTeX installiert ist und wechseln dort in das
+ Verzeichnis 
+\family sans
+~tex
+\backslash
+latex
+\family default
+.
+ (Verwendet man MiKTeX, wäre es standardmäßig der Ordner 
+\family sans
+~:
+\backslash
+Programme
+\backslash
+MiKTeX
+\backslash
+tex
+\backslash
+latex
+\family default
+ .) Legen Sie dort einen neuen Ordner mit dem Namen 
+\begin_inset Quotes gld
+\end_inset
+
+foiltex
+\begin_inset Quotes grd
+\end_inset
+
+ an und kopieren Sie alle Dateien das Pakets hinein.
+ Wenn das Paket nur für den aktuellen Benutzer verfügbar sein soll bzw.
+ Sie keine Administrator-Rechte haben, tun Sie dasselbe, aber im lokalen
+ LaTeX-Ordner.
+ Z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ bei MiKTeX
+\begin_inset space ~
+\end_inset
+
+2.8 wäre das unter WinXP der Ordner
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+~:
+\backslash
+Dokumente und Einstellungen
+\backslash
+<Benutzername>
+\backslash
+Anwendungsdaten
+\backslash
+
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{}
+
+\backslash
+hphantom{
 \end_layout
 
 \end_inset
 
+~:
+\backslash
 
-\family default
-\emph on
-X-Konfiguration
-\emph default
-.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \end_inset
 
-.
-\end_layout
+MiKTeX
+\backslash
+2.8
+\backslash
+tex
+\backslash
+latex
+\family default
 
-\begin_layout Enumerate
-Lesen Sie die Datei 
-\family typewriter
-texmf.cnf
-\family default
- (normalerweise befindet sie sich im Verzeichnis 
-\family typewriter
-$TEXMF/web2c
-\family default
-, Sie können sie aber auch mit dem Befehl 
-\family typewriter
-kpsewhich texmf.cnf
-\family default
- lokalisieren).
- Dort wird beschrieben, wie Sie ein lokales 
-\family typewriter
-texmf
-\family default
--Verzeichnis anlegen können; folgen Sie diesen Instruktionen.
- Sie müssen den Namen Ihres lokalen 
-\family typewriter
-texmf
-\family default
--Ver\SpecialChar \-
-zeich\SpecialChar \-
-nis\SpecialChar \-
-ses in 
-\family typewriter
-texmf.cnf
-\family default
- eintragen.
- Typischerweise wird unter Linux Software, die nicht zur normalen Distribution
- gehört, unterhalb von 
-\family typewriter
-/usr/local
-\family default
- installiert, es bietet sich also 
-\family typewriter
-/usr/local/
-\begin_inset Newline linebreak
+\begin_inset Newline newline
 \end_inset
 
-texmf
-\family default
- an.
- Im Normalfall müssen Sie nur zwei Dinge verändern:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Setzen Sie die Umgebungsvariable 
-\family typewriter
-TEXMFLOCAL
-\family default
- auf das gewählte Verzeichnis, zum Beispiel
+, unter WinVista wäre es der Ordner
 \begin_inset Newline newline
 \end_inset
 
 
-\family typewriter
-TEXMFLOCAL = /usr/local/texmf
-\end_layout
-
-\begin_layout Enumerate
-Stellen Sie sicher, dass 
-\family typewriter
-TEXMF
+\family sans
+~:
+\backslash
+Users
+\backslash
+<Benutzername>
+\backslash
+AppData
+\backslash
+Roaming
+\backslash
+2.8
+\backslash
+MiKTeX
+\backslash
+tex
+\backslash
+latex
 \family default
- die Variable 
-\family typewriter
-TEXMFLOCAL
-\family default
- enthält:
-\begin_inset Newline newline
-\end_inset
-
-
-\family typewriter
-TEXMF = {$HOMETEXMF,!!$TEXMFLOCAL,!!TEXMFMAIN} 
+ .
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Legen Sie das lokale Verzeichnis an.
- Die Verzeichnisstruktur muss dabei derjenigen des bestehenden 
-\family typewriter
-texmf
-\family default
--Ver\SpecialChar \-
-zeich\SpecialChar \-
-nis\SpecialChar \-
-ses entsprechen, also LaTeX-Pakete in 
-\begin_inset Flex URL
+Jetzt muss man LaTeX nur noch mitteilen, dass es neue Dateien gibt.
+ Die ist je nach LaTeX-Distribution anders:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Bei TeXLive führen Sie von einer Kommandozeile den Befehl 
+\begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-/usr/local/texmf/latex/
-\end_layout
-
-\end_inset
-
- usw.
-\end_layout
-
-\begin_layout Enumerate
-Installieren Sie das neue Paket.
- Am Beispiel FoilTeX: Legen Sie das Verzeichnis 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-/usr/local/texmf/latex/foiltex
-\end_layout
-
-\end_inset
-
- an und kopieren Sie die diversen Dateien des entpackten 
-\family typewriter
-tar
-\family default
--Archives in dieses Verzeichnis.
-\end_layout
-
-\begin_layout Enumerate
-Starten Sie das Programm 
-\family typewriter
 texhash
-\family default
-.
- Dabei wird (unter anderem) die Datei
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-/usr/local/texmf/ls-R
 \end_layout
 
 \end_inset
 
- angelegt oder aktualisiert.
+ aus.
+ Wenn Sie das Paket für alle Nutzer installiert haben, brauchen sie dazu
+ wahrscheinlich Root-Rechte.
 \end_layout
 
 \begin_layout Enumerate
-Wählen Sie in LyX den Menüpunkt 
+Bei MiKTeX, wenn Sie das Paket für alle Nutzer installiert haben, starten
+ Sie das Programm 
+\begin_inset Quotes gld
+\end_inset
+
+Settings
+\begin_inset space ~
+\end_inset
+
+(Admin)
+\begin_inset Quotes grd
+\end_inset
+
+ und drücken dann auf den Kopf 
+\begin_inset Quotes gld
+\end_inset
+
+Refresh FNDB
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Anderenfalls starten Sie das Programm 
+\begin_inset Quotes gld
+\end_inset
+
+Settings
+\begin_inset Quotes grd
+\end_inset
+
+ und machen dasselbe.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Nun muss man LyX noch mitteilen, dass es neue Pakete gibt.
+ Verwenden Sie dazu in LyX das Menü 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Neu
@@ -4392,15 +4545,21 @@ Neu
 
 konfigurieren
 \family default
- an; starten Sie LyX danach erneut.
+ und starten LyX danach neu.
 \end_layout
 
 \begin_layout Standard
-Nun sollte das neue Paket --- beispielsweise 
-\family sans
-slides (FoilTe
-\family typewriter
+Nun ist das Paket installiert.
+ In unserem Beispiel wird nun die Dokumentklasse 
+\begin_inset Flex CharStyle:Code
+status collapsed
 
+\begin_layout Plain Layout
+Slides
+\begin_inset space ~
+\end_inset
+
+(FoilTe
 \begin_inset ERT
 status collapsed
 
@@ -4411,41 +4570,38 @@ status collapsed
 
 \end_inset
 
+x)
+\end_layout
 
-\family sans
-X)
-\family default
- --- im Feld 
-\family sans
-Dokumentklasse
-\family default
- des Menüs 
+\end_inset
+
+ im Menü 
 \family sans
 Dokument\SpecialChar \menuseparator
-Einstellungen
+Einstellungen\SpecialChar \menuseparator
+Dokumentklasse
 \family default
- erscheinen.
- Ein Hinweis am Rande: es gibt auch einfachere Möglichkeiten, ein neues
- Paket zu installieren, Sie können etwa im LaTeX-Systemverzeichnis (
-\family typewriter
-$TEXMF/tex/latex
+ verfügbar sein.
+\end_layout
+
+\begin_layout Standard
+Möchten sie eine LaTeX-Dokumentklasse verwenden, die generell nicht im Menü
+ 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Dokumentklasse
 \family default
-) lediglich einen Link auf das neue Paket anlegen (nicht vergessen, 
-\family typewriter
-texconfig
-\family default
- aufzurufen!) oder die Umgebungsvariable 
-\family typewriter
-$TEXINPUTS
-\family default
- entsprechend setzen.
- Die in 
-\family typewriter
-texmf.cnf
-\family default
- beschriebene, formale Methode funktioniert aber garantiert, deshalb sollten
- Sie diese auch verwenden, solange die Umstände dies nicht verhindern, etwa
- wenn Sie keine Administratorrechte haben.
+ gelistet ist, müssen Sie dafür selbst ein 
+\begin_inset Quotes gld
+\end_inset
+
+Layout
+\begin_inset Quotes grd
+\end_inset
+
+ erstellen.
+ Dies ist das Thema des nächsten Abschnitts.
 \end_layout
 
 \begin_layout Section
