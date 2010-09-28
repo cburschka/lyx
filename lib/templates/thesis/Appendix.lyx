@@ -4,28 +4,28 @@
 \begin_header
 \textclass scrbook
 \begin_preamble
-% increase link area for cross-references and autoname them
+% Linkfläche für Querverweise vergrößern und automatisch benenne
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
 \newlength{\abc}
 \settowidth{\abc}{\space}
-\addto\extrasenglish{
+\addto\extrasngerman{
  \renewcommand{\equationautorefname}{\hspace{-\abc}}
- \renewcommand{\sectionautorefname}{sec.\negthinspace}
- \renewcommand{\subsectionautorefname}{sec.\negthinspace}
- \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}
- \renewcommand{\figureautorefname}{Fig.\negthinspace}
+ \renewcommand{\sectionautorefname}{Kap.\negthinspace}
+ \renewcommand{\subsectionautorefname}{Kap.\negthinspace}
+ \renewcommand{\subsubsectionautorefname}{Kap.\negthinspace}
+ \renewcommand{\figureautorefname}{Abb.\negthinspace}
  \renewcommand{\tableautorefname}{Tab.\negthinspace}
 }
 
-% in case somebody want to have the label "Gleichung"
+% für den Fall, dass jemand die Bezeichnung "Gleichung" haben will
 %\renewcommand{\eqref}[1]{Gleichung~(\negthinspace\autoref{#1})}
 
-% put the link to figure floats to the beginning
-% of the figure and not to its end
+% Setzt den Link für Sprünge zu Gleitabbildungen
+% auf den Anfang des Gelitobjekts und nicht aufs Ende
 \usepackage[figure]{hypcap}
 
-% the pages of the TOC is numbered roman
-% and a pdf-bookmark for the TOC is added
+% Die Seiten des Inhaltsverzeichnisses werden römisch numeriert,
+% ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
 \let\myTOC\tableofcontents
 \renewcommand\tableofcontents{%
   \frontmatter
@@ -44,10 +44,11 @@
 \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
 
-% increase the bottom float placement fraction
+%Vergrößert den Teil der Seite, in dem Gleitobjekte
+% unten angeordnet werden dürfen
 \renewcommand{\bottomfraction}{0.5}
 
-% avoid that floats are placed above its sections
+% Vermeidet, dass Gleitobjekte vor ihrem Abschnitt gedruckt werden
 \let\mySection\section\renewcommand{\section}{\suppressfloats[t]\mySection}
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
@@ -262,7 +263,7 @@ thepage
 \end_layout
 
 \begin_layout Chapter
-Title of next chapter
+Title of the first appendix chapter
 \end_layout
 
 \begin_layout Section
@@ -270,23 +271,39 @@ Overview
 \end_layout
 
 \begin_layout Standard
-bla bla bla bla bla bla bla bla bla bla bla bla bla PPS
+bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+ bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+ bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+ bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+ bla bla bla bla bla bla bla bla roughness parameter 
+\begin_inset Formula $R_{a}$
+\end_inset
+
+
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
-symbol "PPS"
-description "Polyphenylene sulfide"
+symbol "$R_a$"
+description "arithmetic average roughness"
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+For nomenclature entries with indices one need to enclose the expression
+ with $-signs.
+ (This creates a formula.)
+\end_layout
 
 \end_inset
 
  bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
- bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
- bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
- bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
- bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
- bla bla bla bla bla bla bla, see 
+ bla bla bla bla bla bla bla bla bla bla bla bla, see 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Rich1921,Marq1963"
+key "ISO10780"
 
 \end_inset
 
@@ -304,8 +321,8 @@ status open
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "thesisExample"
-options "alpha"
+bibfiles "biblio/Plasma"
+options "biblio/alpha"
 
 \end_inset
 

@@ -1,12 +1,9 @@
-#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 401
 \begin_document
 \begin_header
 \textclass scrbook
 \begin_preamble
-% print no date
-\date{}
-
 % increase link area for cross-references and autoname them
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
 \newlength{\abc}
@@ -46,35 +43,37 @@
 % fancy page header/footer settings
 \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-%\lhead[\fancyplain{}{}]{\fancyplain{}{\rightmark}}
-\rhead[\fancyplain{}{\leftmark}]{\fancyplain{}{}}
-\lfoot[\thepage]{}
-\rfoot[]{\thepage}
-\cfoot{}
 
 % increase the bottom float placement fraction
 \renewcommand{\bottomfraction}{0.5}
 
 % avoid that floats are placed above its sections
 \let\mySection\section\renewcommand{\section}{\suppressfloats[t]\mySection}
-
-% widen the space for the nomenclature entry labels
-\renewcommand{\nomlabelwidth}{2.5cm}
 \end_preamble
-\options intoc,bibtotoc,idxtotoc,BCOR10mm,titlepage,tablecaptionabove,fleqn
+\options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
+\begin_modules
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
 \language english
 \inputencoding auto
+\fontencoding global
 \font_roman lmodern
 \font_sans lmss
 \font_typewriter lmtt
 \font_default_family default
+\use_xetex false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \float_placement h
 \paperfontsize 12
 \spacing single
@@ -93,25 +92,42 @@
 \use_geometry false
 \use_amsmath 2
 \use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date true
 \branch chapter-1
 \selected 1
+\filename_suffix 0
 \color #ffaa00
 \end_branch
 \branch chapter-2
 \selected 1
+\filename_suffix 0
 \color #55aaff
 \end_branch
 \branch Summary
 \selected 1
+\filename_suffix 0
 \color #7f7f7f
 \end_branch
 \branch Acknowledgments
 \selected 1
+\filename_suffix 0
 \color #ffff00
 \end_branch
+\branch Appendix
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 2
 \paragraph_separation skip
@@ -122,8 +138,8 @@
 \paperpagestyle fancy
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -146,12 +162,16 @@ Use the official terms and title page layout instead of this one!
 Title of the thesis
 \end_layout
 
+\begin_layout Subtitle
+Subtitle (if you have one)
+\end_layout
+
 \begin_layout Author
 Your name
 \end_layout
 
 \begin_layout Date
-Date
+Date (optional)
 \end_layout
 
 \begin_layout Publishers
@@ -161,6 +181,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "40col%"
 special "none"
 height "1in"
@@ -208,7 +229,11 @@ Faculty for leading edge science
 \begin_inset Newline newline
 \end_inset
 
-Institute for nobel price winning research
+Institute for 
+\noun on
+Nobel
+\noun default
+ price winning research
 \begin_inset VSpace -3cm
 \end_inset
 
@@ -296,7 +321,7 @@ Dedication, cite from a famous person, or whatever you like (optional)
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Left Header
 \begin_inset ERT
 status collapsed
 
@@ -304,13 +329,7 @@ status collapsed
 
 
 \backslash
-lhead[
-\backslash
-fancyplain{}{}]{
-\backslash
-fancyplain{}{
-\backslash
-rightmark}}
+rightmark
 \end_layout
 
 \end_inset
@@ -320,7 +339,77 @@ rightmark}}
 status collapsed
 
 \begin_layout Plain Layout
-define a header line
+defines the header line
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Header
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leftmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Left Footer
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Center Footer
+
+\end_layout
+
+\begin_layout Right Footer
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
 \end_layout
 
 \end_inset
@@ -410,6 +499,13 @@ pagestyle{fancy}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Left Header
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -417,19 +513,42 @@ status collapsed
 
 
 \backslash
-lhead[
-\backslash
-fancyplain{}{
-\backslash
 chaptername
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
 \backslash
-;
+thechapter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
 \backslash
-thechapter}]{
-\backslash
-fancyplain{}{
-\backslash
-rightmark}}
+rightmark
 \end_layout
 
 \end_inset
@@ -492,24 +611,17 @@ filename "chapter-2.lyx"
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_layout Left Header
+\begin_inset Argument
+status open
 
 \begin_layout Plain Layout
 
-
-\backslash
-lhead[
-\backslash
-fancyplain{}{}]{
-\backslash
-fancyplain{}{Acknowledgments}}
 \end_layout
 
 \end_inset
 
-
+Acknowledgments
 \begin_inset Note Note
 status collapsed
 
@@ -530,19 +642,12 @@ Acknowledgments
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_layout Right Header
+\begin_inset Argument
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-rhead[
-\backslash
-fancyplain{}{Acknowledgments}]{
-\backslash
-fancyplain{}{}}
+Acknowledgments
 \end_layout
 
 \end_inset
@@ -575,11 +680,40 @@ status open
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "Acknowledgements.lyx"
+filename "Acknowledgments.lyx"
 
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Appendix
+status open
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Appendix.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Appendix is of course optional
 \end_layout
 
 \end_inset
@@ -594,7 +728,17 @@ filename "Acknowledgements.lyx"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Left Header
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -602,13 +746,7 @@ status collapsed
 
 
 \backslash
-lhead[
-\backslash
-fancyplain{}{}]{
-\backslash
-fancyplain{}{
-\backslash
-rightmark}}
+rightmark
 \end_layout
 
 \end_inset
@@ -626,7 +764,11 @@ remove the chapter from the header line
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Right Header
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -634,13 +776,12 @@ status collapsed
 
 
 \backslash
-rhead[
-\backslash
-fancyplain{}{
-\backslash
-leftmark}]{
-\backslash
-fancyplain{}{}}
+leftmark
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -676,35 +817,17 @@ options "alpha"
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_layout Left Header
+\begin_inset Argument
+status open
 
 \begin_layout Plain Layout
 
-
-\backslash
-lhead[
-\backslash
-fancyplain{}{}]{
-\backslash
-fancyplain{}{Nomenclature}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-rhead[
-\backslash
-fancyplain{}{Nomenclature}]{
-\backslash
-fancyplain{}{}}
 \end_layout
 
 \end_inset
 
-
+Nomenclature
 \begin_inset Note Note
 status collapsed
 
@@ -725,9 +848,35 @@ Nomenclature
 
 \end_layout
 
+\begin_layout Right Header
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Nomenclature
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
+set_width "custom"
+width "2.5cm"
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The width of the nomenclature entries can be changed by clicking on the
+ nomenclature inset.
+\end_layout
 
 \end_inset
 
