@@ -1339,7 +1339,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				saveBookmark(0);
 			}
 		}
-	        if (!label.empty())
+		if (!label.empty())
 			gotoLabel(label);
 		break;
 	}
