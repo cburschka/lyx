@@ -2782,10 +2782,7 @@ void GuiDocument::paramsToDialog()
 	}
 
 	// Master/Child
-	ListOfBuffers children;
-	if (bufferview())
-		children = buffer().getChildren(false);
-	if (children.empty()) {
+	if (!buffer().hasChildren()) {
 		masterChildModule->childrenTW->clear();
 		includeonlys_.clear();
 		docPS->showPanel(qt_("Child Documents"), false);

@@ -316,6 +316,9 @@ public:
 	/// \return true if \p child is a child of this \c Buffer.
 	bool isChild(Buffer * child) const;
 	
+	/// \return true if this \c Buffer has children
+	bool hasChildren() const;
+	
 	/// return a vector of all children (and grandchildren)
 	ListOfBuffers getChildren(bool grand_children = true) const;
 

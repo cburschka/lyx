@@ -2514,6 +2514,12 @@ DocIterator Buffer::firstChildPosition(Buffer const * child)
 }
 
 
+bool Buffer::hasChildren() const
+{
+	return !d->children_positions.empty();	
+}
+
+
 void Buffer::getChildren(ListOfBuffers & clist, bool grand_children) const
 {
 	// loop over children
