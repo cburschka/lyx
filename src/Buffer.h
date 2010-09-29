@@ -71,7 +71,7 @@ class FileNameList;
 
 
 class Buffer;
-typedef std::vector<Buffer *> ListOfBuffers;
+typedef std::list<Buffer *> ListOfBuffers;
 
 
 /** The buffer object.
