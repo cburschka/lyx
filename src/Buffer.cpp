@@ -1682,10 +1682,9 @@ void Buffer::validate(LaTeXFeatures & features) const
 
 void Buffer::getLabelList(vector<docstring> & list) const
 {
-	// If this is a child document, use the parent's list instead.
-	Buffer const * const pbuf = d->parent();
-	if (pbuf) {
-		pbuf->getLabelList(list);
+	// If this is a child document, use the master's list instead.
+	if (parent()) {
+		masterBuffer()->getLabelList(list);
 		return;
 	}
 
@@ -1704,9 +1703,8 @@ void Buffer::updateBibfilesCache(UpdateScope scope) const
 {
 	// FIXME This is probably unnecssary, given where we call this.
 	// If this is a child document, use the parent's cache instead.
-	Buffer const * const pbuf = d->parent();
-	if (pbuf && scope != UpdateChildOnly) {
-		pbuf->updateBibfilesCache();
+	if (parent() && scope != UpdateChildOnly) {
+		masterBuffer()->updateBibfilesCache();
 		return;
 	}
 
@@ -2483,13 +2481,15 @@ Buffer const * Buffer::parent() const
 ListOfBuffers Buffer::allRelatives() const
 {
 	if (parent())
-		return parent()->allRelatives();
+		return masterBuffer()->allRelatives();
 	return getChildren(/* true */);
 }
 
 
 Buffer const * Buffer::masterBuffer() const
 {
+	// FIXME Should be make sure we are not in some kind
+	// of recursive include? A -> B -> A will crash this.
 	Buffer const * const pbuf = d->parent();
 	if (!pbuf)
 		return this;
