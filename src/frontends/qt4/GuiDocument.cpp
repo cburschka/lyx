@@ -3045,7 +3045,7 @@ void GuiDocument::updateIncludeonlys()
 		masterChildModule->maintainAuxCB->setEnabled(true);
 	}
 	QTreeWidgetItem * item = 0;
-	ListOfBuffers children = buffer().getChildren(false);
+	ListOfBuffers children = buffer().getChildren();
 	ListOfBuffers::const_iterator it  = children.begin();
 	ListOfBuffers::const_iterator end = children.end();
 	bool has_unincluded = false;

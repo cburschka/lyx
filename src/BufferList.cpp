@@ -276,7 +276,7 @@ Buffer * BufferList::getBufferFromTmp(string const & s)
 			if (suffixIs(s, master_name))
 				return *it;
 			// if not, try with the children
-			ListOfBuffers clist = (*it)->getChildren();
+			ListOfBuffers clist = (*it)->getDescendents();
 			ListOfBuffers::const_iterator cit = clist.begin();
 			ListOfBuffers::const_iterator cend = clist.end();
 			for (; cit != cend; ++cit) {

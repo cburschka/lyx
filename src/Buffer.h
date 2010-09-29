@@ -305,14 +305,6 @@ public:
 	void setParent(Buffer const *);
 	Buffer const * parent() const;
 
-	/// Collect all relative buffers, in the order in which they appear.
-	/// I.e., the "root" Buffer is first, then its first child, then any
-	/// of its children, etc. However, there are no duplicates in this
-	/// list.
-	/// This is "stable", too, in the sense that it returns the same
-	/// thing from whichever Buffer it is called.
-	ListOfBuffers allRelatives() const;
-
 	/** Get the document's master (or \c this if this is not a
 	    child document)
 	 */
@@ -324,11 +316,23 @@ public:
 	/// \return true if this \c Buffer has children
 	bool hasChildren() const;
 	
-	/// return a vector of all children (and grandchildren)
-	ListOfBuffers getChildren(bool grand_children = true) const;
+	/// \return a list of the direct children of this Buffer.
+	/// this list has no duplicates and is in the order in which
+	/// the children appear.
+	ListOfBuffers getChildren() const;
+	
+	/// \return a list of all descendents of this Buffer (children,
+	/// grandchildren, etc). this list has no duplicates and is in
+	/// the order in which the children appear.
+	ListOfBuffers getDescendents() const;
 
-	/// Add all children (and grandchildren) to supplied vector
-	void getChildren(ListOfBuffers & children, bool grand_children = true) const;
+	/// Collect all relative buffers, in the order in which they appear.
+	/// I.e., the "root" Buffer is first, then its first child, then any
+	/// of its children, etc. However, there are no duplicates in this
+	/// list.
+	/// This is "stable", too, in the sense that it returns the same
+	/// thing from whichever Buffer it is called.
+	ListOfBuffers allRelatives() const;
 
 	/// Is buffer read-only?
 	bool isReadonly() const;
@@ -606,7 +610,10 @@ private:
 	/// of loaded child documents).
 	support::FileNameList const & 
 		getBibfilesCache(UpdateScope scope = UpdateMaster) const;
+	///
+	void collectChildren(ListOfBuffers & children, bool grand_children) const;
 
+	
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;
 	/// The pointer never changes although *pimpl_'s contents may.

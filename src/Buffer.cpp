@@ -2292,7 +2292,7 @@ void Buffer::getLanguages(std::set<Language const *> & languages) const
 	for (ParConstIterator it = par_iterator_begin(); it != end; ++it)
 		it->getLanguages(languages);
 	// also children
-	ListOfBuffers clist = getChildren();
+	ListOfBuffers clist = getDescendents();
 	ListOfBuffers::const_iterator cit = clist.begin();
 	ListOfBuffers::const_iterator const cen = clist.end();
 	for (; cit != cen; ++cit)
@@ -2482,7 +2482,7 @@ ListOfBuffers Buffer::allRelatives() const
 {
 	if (parent())
 		return masterBuffer()->allRelatives();
-	return getChildren(/* true */);
+	return getDescendents();
 }
 
 
@@ -2520,7 +2520,7 @@ bool Buffer::hasChildren() const
 }
 
 
-void Buffer::getChildren(ListOfBuffers & clist, bool grand_children) const
+void Buffer::collectChildren(ListOfBuffers & clist, bool grand_children) const
 {
 	// loop over children
 	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
@@ -2534,15 +2534,23 @@ void Buffer::getChildren(ListOfBuffers & clist, bool grand_children) const
 		clist.push_back(child);
 		if (grand_children) 
 			// there might be grandchildren
-			child->getChildren(clist /*, true */);
+			child->collectChildren(clist, true);
 	}
 }
 
 
-ListOfBuffers Buffer::getChildren(bool grand_children) const
+ListOfBuffers Buffer::getChildren() const
 {
 	ListOfBuffers v;
-	getChildren(v, grand_children);
+	collectChildren(v, false);
+	return v;
+}
+
+
+ListOfBuffers Buffer::getDescendents() const
+{
+	ListOfBuffers v;
+	collectChildren(v, true);
 	return v;
 }
 
@@ -3430,7 +3438,7 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		} else 
 			errors(error_type);
 		// also to the children, in case of master-buffer-view
-		ListOfBuffers clist = getChildren();
+		ListOfBuffers clist = getDescendents();
 		ListOfBuffers::const_iterator cit = clist.begin();
 		ListOfBuffers::const_iterator const cen = clist.end();
 		for (; cit != cen; ++cit) {

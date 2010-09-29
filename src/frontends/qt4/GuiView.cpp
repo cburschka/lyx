@@ -2328,7 +2328,7 @@ bool GuiView::closeBuffer(Buffer & buf)
 	// in the session file in the correct order. If we close the master
 	// buffer, we can close or release the child buffers here too.
 	if (!closing_) {
-		ListOfBuffers clist = buf.getChildren(false);
+		ListOfBuffers clist = buf.getChildren();
 		ListOfBuffers::const_iterator it = clist.begin();
 		ListOfBuffers::const_iterator const bend = clist.end();
 		for (; it != bend; ++it) {
