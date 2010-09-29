@@ -305,7 +305,12 @@ public:
 	void setParent(Buffer const *);
 	Buffer const * parent() const;
 
-	/// Collect all relative buffers
+	/// Collect all relative buffers, in the order in which they appear.
+	/// I.e., the "root" Buffer is first, then its first child, then any
+	/// of its children, etc. However, there are no duplicates in this
+	/// list.
+	/// This is "stable", too, in the sense that it returns the same
+	/// thing from whichever Buffer it is called.
 	ListOfBuffers allRelatives() const;
 
 	/** Get the document's master (or \c this if this is not a
