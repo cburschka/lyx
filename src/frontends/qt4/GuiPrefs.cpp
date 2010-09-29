@@ -1474,7 +1474,15 @@ void PrefSpellchecker::update(LyXRC const & rc)
 }
 
 
-
+void PrefSpellchecker::on_spellcheckerCB_currentIndexChanged(int index)
+{
+	QString spellchecker = spellcheckerCB->itemData(index).toString();
+	
+	compoundWordCB->setEnabled(spellchecker != QString("native"));
+}
+	
+	
+	
 /////////////////////////////////////////////////////////////////////
 //
 // PrefConverters

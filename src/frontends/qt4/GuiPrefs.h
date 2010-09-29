@@ -309,6 +309,8 @@ public:
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
 
+private Q_SLOTS:
+	void on_spellcheckerCB_currentIndexChanged(int);
 };
 
 
