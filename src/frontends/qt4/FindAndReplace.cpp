@@ -122,7 +122,8 @@ bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 }
 
 
-static docstring buffer_to_latex(Buffer & buffer) {
+static docstring buffer_to_latex(Buffer & buffer) 
+{
 	OutputParams runparams(&buffer.params().encoding());
 	odocstringstream os;
 	runparams.nice = true;
@@ -143,7 +144,8 @@ static docstring buffer_to_latex(Buffer & buffer) {
 }
 
 
-static vector<string> const & allManualsFiles() {
+static vector<string> const & allManualsFiles() 
+{
 	static vector<string> v;
 	static const char * files[] = {
 		"Intro", "UserGuide", "Tutorial", "Additional",
@@ -169,9 +171,10 @@ static vector<string> const & allManualsFiles() {
  ** Not using p_buf->allRelatives() here, because I'm not sure
  ** whether or not the returned order is independent of p_buf.
  **/
-static bool next_document_buffer(Buffer * & p_buf) {
-	Buffer *p_master = p_buf;
-	Buffer *p_old;
+static bool next_document_buffer(Buffer * & p_buf) 
+{
+	Buffer * p_master = p_buf;
+	Buffer * p_old;
 	do {
 		p_old = p_master;
 		p_master = const_cast<Buffer *>(p_master->masterBuffer());
@@ -181,12 +184,12 @@ static bool next_document_buffer(Buffer * & p_buf) {
 			<< p_master);
 	} while (p_master != p_old);
 	LASSERT(p_master != NULL, /**/);
-	vector<Buffer *> v_children;
+	ListOfBuffers v_children;
 	/* Root master added as first buffer in the vector */
 	v_children.push_back(p_master);
 	p_master->getChildren(v_children, true);
 	LYXERR(Debug::FIND, "v_children.size()=" << v_children.size());
-	vector<Buffer *>::const_iterator it =
+	ListOfBuffers::const_iterator it =
 		find(v_children.begin(), v_children.end(), p_buf);
 	LASSERT(it != v_children.end(), /**/)
 	++it;
@@ -207,9 +210,10 @@ static bool next_document_buffer(Buffer * & p_buf) {
  ** Not using p_buf->allRelatives() here, because I'm not sure
  ** whether or not the returned order is independent of p_buf.
  **/
-static bool prev_document_buffer(Buffer * & p_buf) {
-	Buffer *p_master = p_buf;
-	Buffer *p_old;
+static bool prev_document_buffer(Buffer * & p_buf) 
+{
+	Buffer * p_master = p_buf;
+	Buffer * p_old;
 	do {
 		p_old = p_master;
 		p_master = const_cast<Buffer *>(p_master->masterBuffer());
@@ -218,12 +222,13 @@ static bool prev_document_buffer(Buffer * & p_buf) {
 			<< ", p_master=" << p_master);
 	} while (p_master != p_old);
 	LASSERT(p_master != NULL, /**/);
-	vector<Buffer *> v_children;
+	// Use allRelatives()...
+	ListOfBuffers v_children;
 	/* Root master added as first buffer in the vector */
 	v_children.push_back(p_master);
 	p_master->getChildren(v_children, true);
 	LYXERR(Debug::FIND, "v_children.size()=" << v_children.size());
-	vector<Buffer *>::const_iterator it =
+	ListOfBuffers::const_iterator it =
 		find(v_children.begin(), v_children.end(), p_buf);
 	LASSERT(it != v_children.end(), /**/)
 	if (it == v_children.begin()) {

@@ -276,10 +276,10 @@ Buffer * BufferList::getBufferFromTmp(string const & s)
 			if (suffixIs(s, master_name))
 				return *it;
 			// if not, try with the children
-			vector<Buffer *> clist = (*it)->getChildren();
-			vector<Buffer *>::const_iterator cit = clist.begin();
-			vector<Buffer *>::const_iterator cend = clist.end();
-			for (; cit < cend; ++cit) {
+			ListOfBuffers clist = (*it)->getChildren();
+			ListOfBuffers::const_iterator cit = clist.begin();
+			ListOfBuffers::const_iterator cend = clist.end();
+			for (; cit != cend; ++cit) {
 				string const mangled_child_name = DocFileName(
 					changeExtension((*cit)->absFileName(),
 						".tex")).mangledFileName();

@@ -2190,8 +2190,8 @@ bool BufferView::setCursorFromInset(Inset const * inset)
 
 void BufferView::gotoLabel(docstring const & label)
 {
-	std::vector<Buffer const *> bufs = buffer().allRelatives();
-	std::vector<Buffer const *>::iterator it = bufs.begin();
+	ListOfBuffers bufs = buffer().allRelatives();
+	ListOfBuffers::iterator it = bufs.begin();
 	for (; it != bufs.end(); ++it) {
 		Buffer const * buf = *it;
 

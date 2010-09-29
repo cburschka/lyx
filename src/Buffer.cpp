@@ -142,7 +142,9 @@ void showPrintError(string const & name)
 
 } // namespace anon
 
-class BufferSet : public std::set<Buffer const *> {};
+
+typedef std::set<Buffer *> BufferSet;
+
 
 class Buffer::Impl
 {
@@ -2297,9 +2299,10 @@ void Buffer::getLanguages(std::set<Language const *> & languages) const
 	for (ParConstIterator it = par_iterator_begin(); it != end; ++it)
 		it->getLanguages(languages);
 	// also children
-	std::vector<Buffer *> clist = getChildren();
-	for (vector<Buffer *>::const_iterator cit = clist.begin();
-	     cit != clist.end(); ++cit)
+	ListOfBuffers clist = getChildren();
+	ListOfBuffers::const_iterator cit = clist.begin();
+	ListOfBuffers::const_iterator const cen = clist.end();
+	for (; cit != cen; ++cit)
 		(*cit)->getLanguages(languages);
 }
 
@@ -2496,12 +2499,12 @@ void Buffer::Impl::collectRelatives(BufferSet & bufs) const
 }
 
 
-std::vector<Buffer const *> Buffer::allRelatives() const
+ListOfBuffers Buffer::allRelatives() const
 {
 	BufferSet bufs;
 	d->collectRelatives(bufs);
 	BufferSet::iterator it = bufs.begin();
-	std::vector<Buffer const *> ret;
+	ListOfBuffers ret;
 	for (; it != bufs.end(); ++it)
 		ret.push_back(*it);
 	return ret;
@@ -2534,7 +2537,7 @@ DocIterator Buffer::firstChildPosition(Buffer const * child)
 }
 
 
-void Buffer::getChildren(std::vector<Buffer *> & clist, bool grand_children) const
+void Buffer::getChildren(ListOfBuffers & clist, bool grand_children) const
 {
 	// loop over children
 	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
@@ -2544,16 +2547,16 @@ void Buffer::getChildren(std::vector<Buffer *> & clist, bool grand_children) con
 		clist.push_back(child);
 		if (grand_children) {
 			// there might be grandchildren
-			vector<Buffer *> glist = child->getChildren();
+			ListOfBuffers glist = child->getChildren();
 			clist.insert(clist.end(), glist.begin(), glist.end());
 		}
 	}
 }
 
 
-vector<Buffer *> Buffer::getChildren(bool grand_children) const
+ListOfBuffers Buffer::getChildren(bool grand_children) const
 {
-	vector<Buffer *> v;
+	ListOfBuffers v;
 	getChildren(v, grand_children);
 	return v;
 }
@@ -3442,9 +3445,10 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		} else 
 			errors(error_type);
 		// also to the children, in case of master-buffer-view
-		std::vector<Buffer *> clist = getChildren();
-		for (vector<Buffer *>::const_iterator cit = clist.begin();
-			cit != clist.end(); ++cit) {
+		ListOfBuffers clist = getChildren();
+		ListOfBuffers::const_iterator cit = clist.begin();
+		ListOfBuffers::const_iterator const cen = clist.end();
+		for (; cit != cen; ++cit) {
 			if (d->cloned_buffer_) {
 				(*cit)->d->cloned_buffer_->d->errorLists[error_type] = 
 					(*cit)->d->errorLists[error_type];

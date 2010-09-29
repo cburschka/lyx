@@ -2782,7 +2782,7 @@ void GuiDocument::paramsToDialog()
 	}
 
 	// Master/Child
-	std::vector<Buffer *> children;
+	ListOfBuffers children;
 	if (bufferview())
 		children = buffer().getChildren(false);
 	if (children.empty()) {
@@ -3048,9 +3048,9 @@ void GuiDocument::updateIncludeonlys()
 		masterChildModule->maintainAuxCB->setEnabled(true);
 	}
 	QTreeWidgetItem * item = 0;
-	std::vector<Buffer *> children = buffer().getChildren(false);
-	vector<Buffer *>::const_iterator it  = children.begin();
-	vector<Buffer *>::const_iterator end = children.end();
+	ListOfBuffers children = buffer().getChildren(false);
+	ListOfBuffers::const_iterator it  = children.begin();
+	ListOfBuffers::const_iterator end = children.end();
 	bool has_unincluded = false;
 	bool all_unincluded = true;
 	for (; it != end; ++it) {

@@ -29,7 +29,6 @@ namespace lyx {
 
 class BiblioInfo;
 class BufferParams;
-class BufferSet;
 class DispatchResult;
 class DocIterator;
 class docstring_list;
@@ -69,6 +68,11 @@ namespace support {
 class FileName;
 class FileNameList;
 }
+
+
+class Buffer;
+typedef std::vector<Buffer *> ListOfBuffers;
+
 
 /** The buffer object.
  * This is the buffer object. It contains all the informations about
@@ -301,8 +305,8 @@ public:
 	void setParent(Buffer const *);
 	Buffer const * parent() const;
 
-	// Collect all relative buffer
-	std::vector<Buffer const *> allRelatives() const;
+	/// Collect all relative buffers
+	ListOfBuffers allRelatives() const;
 
 	/** Get the document's master (or \c this if this is not a
 	    child document)
@@ -312,11 +316,11 @@ public:
 	/// \return true if \p child is a child of this \c Buffer.
 	bool isChild(Buffer * child) const;
 	
-	/// return a vector with all children (and grandchildren)
-	std::vector<Buffer *> getChildren(bool grand_children = true) const;
+	/// return a vector of all children (and grandchildren)
+	ListOfBuffers getChildren(bool grand_children = true) const;
 
 	/// Add all children (and grandchildren) to supplied vector
-	void getChildren(std::vector<Buffer *> & children, bool grand_children = true) const;
+	void getChildren(ListOfBuffers & children, bool grand_children = true) const;
 
 	/// Is buffer read-only?
 	bool isReadonly() const;

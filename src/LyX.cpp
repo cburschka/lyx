@@ -808,6 +808,7 @@ bool LyX::init()
 	// Set up command definitions
 	pimpl_->toplevel_cmddef_.read(lyxrc.def_file);
 
+	// FIXME
 	// Set up bindings
 	pimpl_->toplevel_keymap_.read("site");
 	pimpl_->toplevel_keymap_.read(lyxrc.bind_file);
