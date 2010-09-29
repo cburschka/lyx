@@ -1263,6 +1263,7 @@ thesistemplatesdir = $(pkgdatadir)/templates/thesis
 dist_thesistemplates_DATA = \
 	templates/thesis/Acknowledgments.lyx \
 	templates/thesis/alpha.bst \
+	templates/thesis/Appendix.lyx \
 	templates/thesis/chapter-1.lyx \
 	templates/thesis/chapter-2.lyx \
 	templates/thesis/Summary.lyx \

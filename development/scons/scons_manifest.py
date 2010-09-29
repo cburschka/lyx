@@ -1377,6 +1377,7 @@ lib_templates_files = Split('''
 
 lib_templates_thesis_files = Split('''
     Acknowledgments.lyx
+    Appendix.lyx
     alpha.bst
     chapter-1.lyx
     chapter-2.lyx
