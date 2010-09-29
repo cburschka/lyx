@@ -2527,6 +2527,10 @@ void Buffer::getChildren(ListOfBuffers & clist, bool grand_children) const
 	Impl::BufferPositionMap::iterator end = d->children_positions.end();
 	for (; it != end; ++it) {
 		Buffer * child = const_cast<Buffer *>(it->first);
+		// No duplicates
+		ListOfBuffers::const_iterator bit = find(clist.begin(), clist.end(), child);
+		if (bit != clist.end())
+			continue;
 		clist.push_back(child);
 		if (grand_children) 
 			// there might be grandchildren
