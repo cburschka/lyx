@@ -333,14 +333,16 @@ public:
 	/// match a string against a particular point in the paragraph
 	bool isTextAt(string const & str, pos_type pos) const;
 
-	/// a vector of inset positions
-	typedef vector<pos_type> Positions;
-	typedef Positions::const_iterator PositionsIterator;
+	/// a vector of speller skip positions
+	typedef vector<FontSpan> SkipPositions;
+	typedef SkipPositions::const_iterator SkipPositionsIterator;
 
+	void appendSkipPosition(SkipPositions & skips, pos_type const pos) const;
+	
 	Language * getSpellLanguage(pos_type const from) const;
 
 	Language * locateSpellRange(pos_type & from, pos_type & to,
-								Positions & softbreaks) const;
+								SkipPositions & skips) const;
 
 	bool hasSpellerChange() const {
 		SpellChecker::ChangeNumber speller_change_number = 0;
@@ -391,22 +393,23 @@ public:
 		last = endpos;
 	}
 
-	int countSoftbreaks(PositionsIterator & it, PositionsIterator const et,
+	int countSkips(SkipPositionsIterator & it, SkipPositionsIterator const et,
 			    int & start) const
 	{
-		int numbreaks = 0;
-		while (it != et && *it < start) {
-			++start;
-			++numbreaks;
+		int numskips = 0;
+		while (it != et && it->first < start) {
+			int skip = it->last - it->first + 1;
+			start += skip;
+			numskips += skip;
 			++it;
 		}
-		return numbreaks;
+		return numskips;
 	}
 
 	void markMisspelledWords(pos_type const & first, pos_type const & last,
 							 SpellChecker::Result result,
 							 docstring const & word,
-							 Positions const & softbreaks);
+							 SkipPositions const & skips);
 
 	InsetCode ownerCode() const
 	{
@@ -2891,6 +2894,8 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options) const
 		os << d->params_.labelString() << ' ';
 
 	for (pos_type i = beg; i < end; ++i) {
+		if ((options & AS_STR_SKIPDELETE) && isDeleted(i))
+			continue;
 		char_type const c = d->text_[i];
 		if (isPrintable(c) || c == '\t'
 		    || (c == '\n' && (options & AS_STR_NEWLINES)))
@@ -3410,9 +3415,24 @@ void Paragraph::updateWords()
 }
 
 
+void Paragraph::Private::appendSkipPosition(SkipPositions & skips, pos_type const pos) const
+{
+	SkipPositionsIterator begin = skips.begin();
+	SkipPositions::iterator end = skips.end();
+	if (pos > 0 && begin < end) {
+		--end;
+		if (end->last == pos - 1) {
+			end->last = pos;
+			return;
+		}
+	}
+	skips.insert(end, FontSpan(pos, pos));
+}
+
+
 Language * Paragraph::Private::locateSpellRange(
 	pos_type & from, pos_type & to,
-	Positions & softbreaks) const
+	SkipPositions & skips) const
 {
 	// skip leading white space
 	while (from < to && owner_->isWordSeparator(from))
@@ -3429,7 +3449,9 @@ Language * Paragraph::Private::locateSpellRange(
 		// hop to end of word
 		while (last < to && !owner_->isWordSeparator(last)) {
 			if (owner_->getInset(last)) {
-				softbreaks.insert(softbreaks.end(), last);
+				appendSkipPosition(skips, last);
+			} else if (owner_->isDeleted(last)) {
+				appendSkipPosition(skips, last);
 			}
 			++last;
 		}
@@ -3437,6 +3459,9 @@ Language * Paragraph::Private::locateSpellRange(
 		while (sameinset && last < to && owner_->isWordSeparator(last)) {
 			if (Inset const * inset = owner_->getInset(last))
 				sameinset = inset->isChar() && inset->isLetter();
+			if (sameinset && owner_->isDeleted(last)) {
+				appendSkipPosition(skips, last);
+			}
 			if (sameinset)
 				last++;
 		}
@@ -3504,7 +3529,7 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 	if (from == to || from >= size())
 		return result;
 
-	docstring word = asString(from, to, AS_STR_INSETS);
+	docstring word = asString(from, to, AS_STR_INSETS + AS_STR_SKIPDELETE);
 	Language * lang = d->getSpellLanguage(from);
 
 	wl = WordLangTuple(word, lang);
@@ -3552,7 +3577,7 @@ void Paragraph::Private::markMisspelledWords(
 	pos_type const & first, pos_type const & last,
 	SpellChecker::Result result,
 	docstring const & word,
-	Positions const & softbreaks)
+	SkipPositions const & skips)
 {
 	if (!SpellChecker::misspelled(result)) {
 		setMisspelled(first, last, SpellChecker::WORD_OK);
@@ -3562,9 +3587,9 @@ void Paragraph::Private::markMisspelledWords(
 	SpellChecker * speller = theSpellChecker();
 	// locate and enumerate the error positions
 	int nerrors = speller->numMisspelledWords();
-	int numbreaks = 0;
-	PositionsIterator it = softbreaks.begin();
-	PositionsIterator et = softbreaks.end();
+	int numskipped = 0;
+	SkipPositionsIterator it = skips.begin();
+	SkipPositionsIterator et = skips.end();
 	for (int index = 0; index < nerrors; ++index) {
 		int wstart;
 		int wlen = 0;
@@ -3572,15 +3597,15 @@ void Paragraph::Private::markMisspelledWords(
 		/// should not happen if speller supports range checks
 		if (!wlen) continue;
 		docstring const misspelled = word.substr(wstart, wlen);
-		wstart += first + numbreaks;
+		wstart += first + numskipped;
 		if (snext < wstart) {
 			/// mark the range of correct spelling
-			numbreaks += countSoftbreaks(it, et, wstart);
+			numskipped += countSkips(it, et, wstart);
 			setMisspelled(snext,
 				wstart - 1, SpellChecker::WORD_OK);
 		}
 		snext = wstart + wlen;
-		numbreaks += countSoftbreaks(it, et, snext);
+		numskipped += countSkips(it, et, snext);
 		/// mark the range of misspelling
 		setMisspelled(wstart, snext, result);
 		LYXERR(Debug::GUI, "misspelled word: \"" <<
@@ -3607,16 +3632,16 @@ void Paragraph::spellCheck() const
 		// loop until we leave the range
 		for (pos_type first = start; first < endpos; ) {
 			pos_type last = endpos;
-			Private::Positions softbreaks;
-			Language * lang = d->locateSpellRange(first, last, softbreaks);
+			Private::SkipPositions skips;
+			Language * lang = d->locateSpellRange(first, last, skips);
 			if (first >= endpos)
 				break;
 			// start the spell checker on the unit of meaning
-			docstring word = asString(first, last, AS_STR_INSETS);
+			docstring word = asString(first, last, AS_STR_INSETS + AS_STR_SKIPDELETE);
 			WordLangTuple wl = WordLangTuple(word, lang);
 			SpellChecker::Result result = word.size() ?
 				speller->check(wl) : SpellChecker::WORD_OK;
-			d->markMisspelledWords(first, last, result, word, softbreaks);
+			d->markMisspelledWords(first, last, result, word, skips);
 			first = ++last;
 		}
 	} else {
