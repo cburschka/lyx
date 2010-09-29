@@ -751,6 +751,8 @@ bool Paragraph::eraseChar(pos_type pos, bool trackChanges)
 		if (!change.changed() ||
 		      (change.inserted() && !change.currentAuthor())) {
 			setChange(pos, Change(Change::DELETED));
+			// request run of spell checker
+			requestSpellCheck(pos);
 			return false;
 		}
 
