@@ -166,28 +166,10 @@ static vector<string> const & allManualsFiles()
 /** Switch p_buf to point to next document buffer.
  **
  ** Return true if restarted from master-document buffer.
- **
- ** @note
- ** Not using p_buf->allRelatives() here, because I'm not sure
- ** whether or not the returned order is independent of p_buf.
  **/
 static bool next_document_buffer(Buffer * & p_buf) 
 {
-	Buffer * p_master = p_buf;
-	Buffer * p_old;
-	do {
-		p_old = p_master;
-		p_master = const_cast<Buffer *>(p_master->masterBuffer());
-		LYXERR(Debug::FIND, "p_old="
-			<< p_old 
-			<< ", p_master=" 
-			<< p_master);
-	} while (p_master != p_old);
-	LASSERT(p_master != NULL, /**/);
-	ListOfBuffers v_children;
-	/* Root master added as first buffer in the vector */
-	v_children.push_back(p_master);
-	p_master->getChildren(v_children, true);
+	ListOfBuffers v_children = p_buf->allRelatives();
 	LYXERR(Debug::FIND, "v_children.size()=" << v_children.size());
 	ListOfBuffers::const_iterator it =
 		find(v_children.begin(), v_children.end(), p_buf);
@@ -205,28 +187,11 @@ static bool next_document_buffer(Buffer * & p_buf)
 /** Switch p_buf to point to previous document buffer.
  **
  ** Return true if restarted from last child buffer.
- **
- ** @note
- ** Not using p_buf->allRelatives() here, because I'm not sure
- ** whether or not the returned order is independent of p_buf.
  **/
 static bool prev_document_buffer(Buffer * & p_buf) 
 {
-	Buffer * p_master = p_buf;
-	Buffer * p_old;
-	do {
-		p_old = p_master;
-		p_master = const_cast<Buffer *>(p_master->masterBuffer());
-		LYXERR(Debug::FIND, 
-			"p_old=" << p_old 
-			<< ", p_master=" << p_master);
-	} while (p_master != p_old);
-	LASSERT(p_master != NULL, /**/);
-	// Use allRelatives()...
-	ListOfBuffers v_children;
+	ListOfBuffers v_children = p_buf->allRelatives();
 	/* Root master added as first buffer in the vector */
-	v_children.push_back(p_master);
-	p_master->getChildren(v_children, true);
 	LYXERR(Debug::FIND, "v_children.size()=" << v_children.size());
 	ListOfBuffers::const_iterator it =
 		find(v_children.begin(), v_children.end(), p_buf);
