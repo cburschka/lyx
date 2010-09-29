@@ -143,9 +143,6 @@ void showPrintError(string const & name)
 } // namespace anon
 
 
-typedef std::set<Buffer *> BufferSet;
-
-
 class Buffer::Impl
 {
 public:
@@ -169,8 +166,6 @@ public:
 	void updateMacros(DocIterator & it, DocIterator & scope);
 	///
 	void setLabel(ParIterator & it, UpdateType utype) const;
-	///
-	void collectRelatives(BufferSet & bufs) const;
 
 	/** If we have branches that use the file suffix
 	    feature, return the file name with suffix appended.
@@ -2485,29 +2480,11 @@ Buffer const * Buffer::parent() const
 }
 
 
-void Buffer::Impl::collectRelatives(BufferSet & bufs) const
-{
-	bufs.insert(owner_);
-	if (parent())
-		parent()->d->collectRelatives(bufs);
-
-	// loop over children
-	BufferPositionMap::const_iterator it = children_positions.begin();
-	BufferPositionMap::const_iterator end = children_positions.end();
-	for (; it != end; ++it)
-		bufs.insert(const_cast<Buffer *>(it->first));
-}
-
-
 ListOfBuffers Buffer::allRelatives() const
 {
-	BufferSet bufs;
-	d->collectRelatives(bufs);
-	BufferSet::iterator it = bufs.begin();
-	ListOfBuffers ret;
-	for (; it != bufs.end(); ++it)
-		ret.push_back(*it);
-	return ret;
+	if (parent())
+		return parent()->allRelatives();
+	return getChildren(/* true */);
 }
 
 
@@ -2545,11 +2522,9 @@ void Buffer::getChildren(ListOfBuffers & clist, bool grand_children) const
 	for (; it != end; ++it) {
 		Buffer * child = const_cast<Buffer *>(it->first);
 		clist.push_back(child);
-		if (grand_children) {
+		if (grand_children) 
 			// there might be grandchildren
-			ListOfBuffers glist = child->getChildren();
-			clist.insert(clist.end(), glist.begin(), glist.end());
-		}
+			child->getChildren(clist /*, true */);
 	}
 }
 
