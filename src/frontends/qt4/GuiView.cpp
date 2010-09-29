@@ -2329,9 +2329,9 @@ bool GuiView::closeBuffer(Buffer & buf)
 	// buffer, we can close or release the child buffers here too.
 	if (!closing_) {
 		ListOfBuffers clist = buf.getChildren(false);
+		ListOfBuffers::const_iterator it = clist.begin();
 		ListOfBuffers::const_iterator const bend = clist.end();
-		for (ListOfBuffers::const_iterator it = clist.begin();
-			 it != bend; ++it) {
+		for (; it != bend; ++it) {
 			// If a child is dirty, do not close
 			// without user intervention
 			//FIXME: should we look in other tabworkareas?
