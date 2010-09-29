@@ -2480,9 +2480,7 @@ Buffer const * Buffer::parent() const
 
 ListOfBuffers Buffer::allRelatives() const
 {
-	if (parent())
-		return masterBuffer()->allRelatives();
-	return getDescendents();
+	return masterBuffer()->getDescendents();
 }
 
 
