@@ -167,19 +167,19 @@ static vector<string> const & allManualsFiles()
  **
  ** Return true if restarted from master-document buffer.
  **/
-static bool next_document_buffer(Buffer * & p_buf) 
+static bool nextDocumentBuffer(Buffer * & buf) 
 {
-	ListOfBuffers v_children = p_buf->allRelatives();
-	LYXERR(Debug::FIND, "v_children.size()=" << v_children.size());
+	ListOfBuffers const children = buf->allRelatives();
+	LYXERR(Debug::FIND, "children.size()=" << children.size());
 	ListOfBuffers::const_iterator it =
-		find(v_children.begin(), v_children.end(), p_buf);
-	LASSERT(it != v_children.end(), /**/)
+		find(children.begin(), children.end(), buf);
+	LASSERT(it != children.end(), /**/)
 	++it;
-	if (it == v_children.end()) {
-		p_buf = *v_children.begin();
+	if (it == children.end()) {
+		buf = *children.begin();
 		return true;
 	}
-	p_buf = *it;
+	buf = *it;
 	return false;
 }
 
@@ -188,22 +188,21 @@ static bool next_document_buffer(Buffer * & p_buf)
  **
  ** Return true if restarted from last child buffer.
  **/
-static bool prev_document_buffer(Buffer * & p_buf) 
+static bool prevDocumentBuffer(Buffer * & buf) 
 {
-	ListOfBuffers v_children = p_buf->allRelatives();
-	/* Root master added as first buffer in the vector */
-	LYXERR(Debug::FIND, "v_children.size()=" << v_children.size());
+	ListOfBuffers const children = buf->allRelatives();
+	LYXERR(Debug::FIND, "children.size()=" << children.size());
 	ListOfBuffers::const_iterator it =
-		find(v_children.begin(), v_children.end(), p_buf);
-	LASSERT(it != v_children.end(), /**/)
-	if (it == v_children.begin()) {
-		it = v_children.end();
+		find(children.begin(), children.end(), buf);
+	LASSERT(it != children.end(), /**/)
+	if (it == children.begin()) {
+		it = children.end();
 		--it;
-		p_buf = *it;
+		buf = *it;
 		return true;
 	}
 	--it;
-	p_buf = *it;
+	buf = *it;
 	return false;
 }
 
@@ -212,7 +211,7 @@ static bool prev_document_buffer(Buffer * & p_buf)
  **
  ** Return true if restarted from scratch.
  **/
-static bool next_prev_buffer(Buffer * & buf,
+static bool nextPrevBuffer(Buffer * & buf,
 			     FindAndReplaceOptions const & opt)
 {
 	bool restarted = false;
@@ -222,34 +221,34 @@ static bool next_prev_buffer(Buffer * & buf,
 		break;
 	case FindAndReplaceOptions::S_DOCUMENT:
 		if (opt.forward)
-			restarted = next_document_buffer(buf);
+			restarted = nextDocumentBuffer(buf);
 		else
-			restarted = prev_document_buffer(buf);
+			restarted = prevDocumentBuffer(buf);
 		break;
 	case FindAndReplaceOptions::S_OPEN_BUFFERS:
 		if (opt.forward) {
 			buf = theBufferList().next(buf);
-			restarted = buf == *theBufferList().begin();
+			restarted = (buf == *theBufferList().begin());
 		} else {
 			buf = theBufferList().previous(buf);
-			restarted = buf == *(theBufferList().end() - 1);
+			restarted = (buf == *(theBufferList().end() - 1));
 		}
 		break;
 	case FindAndReplaceOptions::S_ALL_MANUALS:
-		vector<string> const & v = allManualsFiles();
+		vector<string> const & manuals = allManualsFiles();
 		vector<string>::const_iterator it =
-			find(v.begin(), v.end(), buf->absFileName());
-		if (it == v.end()) {
-			it = v.begin();
-		} else if (opt.forward) {
+			find(manuals.begin(), manuals.end(), buf->absFileName());
+		if (it == manuals.end())
+			it = manuals.begin();
+		else if (opt.forward) {
 			++it;
-			if (it == v.end()) {
-				it = v.begin();
+			if (it == manuals.end()) {
+				it = manuals.begin();
 				restarted = true;
 			}
 		} else {
-			if (it == v.begin()) {
-				it = v.end();
+			if (it == manuals.begin()) {
+				it = manuals.end();
 				restarted = true;
 			}
 			--it;
@@ -268,7 +267,7 @@ static bool next_prev_buffer(Buffer * & buf,
 
 
 /** Find the finest question message to post to the user */
-docstring question_string(FindAndReplaceOptions const & opt)
+docstring getQuestionString(FindAndReplaceOptions const & opt)
 {
 	docstring scope;
 	switch (opt.scope) {
@@ -338,11 +337,11 @@ void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt)
 
 		// No match found in current buffer:
 		// select next buffer in scope, if any
-		bool prompt = next_prev_buffer(buf, opt);
+		bool prompt = nextPrevBuffer(buf, opt);
 		if (prompt) {
 			if (wrap_answer != -1)
 				break;
-			docstring q = question_string(opt);
+			docstring q = getQuestionString(opt);
 			wrap_answer = frontend::Alert::prompt(
 				_("Wrap search?"), q,
 				0, 1, _("&Yes"), _("&No"));
