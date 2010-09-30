@@ -13,7 +13,10 @@ These four steps will compile, test and install LyX:
 	   configures LyX according to your system. 
 	   You may have to set
            --with-qt4-dir=<path-to-your-qt4-installation>
-     if the environment variable QTDIR is not set. 
+     if the environment variable QTDIR is not set (for exmaple,
+     '--with-qt4-dir=/usr/share/qt4/'). Alternatively, you could
+     install pkgconfig (the name might vary depending on your 
+     distribution). 
 	   See Note below if ./configure script is not present.
 
 	2) make
