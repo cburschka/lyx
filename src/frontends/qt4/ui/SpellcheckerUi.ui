@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>SpellcheckerUi</class>
  <widget class="QDockWidget" name="SpellcheckerUi">
@@ -67,6 +68,12 @@
     </item>
     <item row="3" column="1">
      <widget class="QPushButton" name="findNextPB">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>32</verstretch>
+       </sizepolicy>
+      </property>
       <property name="toolTip">
        <string>Replace word with current choice</string>
       </property>
@@ -87,12 +94,6 @@
     </item>
     <item row="5" column="0">
      <widget class="QComboBox" name="replaceCO">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
       <property name="focusPolicy">
        <enum>Qt::StrongFocus</enum>
       </property>
@@ -115,6 +116,12 @@
     </item>
     <item row="5" column="1">
      <widget class="QPushButton" name="replacePB">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>32</verstretch>
+       </sizepolicy>
+      </property>
       <property name="toolTip">
        <string>Replace word with current choice</string>
       </property>
@@ -135,6 +142,12 @@
     </item>
     <item row="6" column="1">
      <widget class="QPushButton" name="replaceAllPB">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>32</verstretch>
+       </sizepolicy>
+      </property>
       <property name="toolTip">
        <string>Replace word with current choice</string>
       </property>
@@ -148,6 +161,12 @@
     </item>
     <item row="7" column="1">
      <widget class="QPushButton" name="ignorePB">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>32</verstretch>
+       </sizepolicy>
+      </property>
       <property name="toolTip">
        <string>Ignore this word</string>
       </property>
@@ -158,6 +177,12 @@
     </item>
     <item row="8" column="1">
      <widget class="QPushButton" name="ignoreAllPB">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>32</verstretch>
+       </sizepolicy>
+      </property>
       <property name="toolTip">
        <string>Ignore this word throughout this session</string>
       </property>
@@ -168,6 +193,12 @@
     </item>
     <item row="9" column="1">
      <widget class="QPushButton" name="addPB">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>32</verstretch>
+       </sizepolicy>
+      </property>
       <property name="toolTip">
        <string>Add the word to your personal dictionary</string>
       </property>
@@ -204,6 +235,12 @@
     </item>
     <item row="11" column="1">
      <widget class="QPushButton" name="closePB">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>100</horstretch>
+        <verstretch>32</verstretch>
+       </sizepolicy>
+      </property>
       <property name="text">
        <string>&amp;Close</string>
       </property>
