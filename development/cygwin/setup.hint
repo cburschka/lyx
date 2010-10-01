@@ -1,0 +1,11 @@
+# setup.hint for lyx
+sdesc: "A latex-based WYSIWYM word processor"
+ldesc: "A document processor that encourages an approach to writing based
+on the structure of your documents, not their appearance. It is designed
+for people that write and want their writing to look great, right out of
+the box. No more endless tinkering with formatting details, 'finger
+painting' font attributes or futzing around with page boundaries. You just
+write. In the background, Prof. Knuth's legendary TeX typesetting engine
+makes you look good."
+category: Publishing Editors Graphics
+requires: cygwin aspell python libQtCore4 libQtGui4 libintl8 gettext gv tetex tetex-base tetex-bin ImageMagick ghostscript-fonts-std font-adobe-dpi75 libgcc1 libiconv2 libintl8 libstdc++6 libX11_6 zlib0
