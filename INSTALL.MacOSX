@@ -24,10 +24,12 @@ build developmental versions must have automake and gettext as
 well.
 
 1. Qt/Mac Opensource Edition, version 4.
+
 This library is GPL-licensed and can be downloaded from
-<http://trolltech.com/developer/downloads/qt/mac/>. To compile it,
-create a directory where you want to install Qt4. In the following, 
-the full path to this directory is called /path/to/Qt4
+<http://trolltech.com/developer/downloads/qt/mac/>.
+An alternative location is <ftp://ftp.qt.nokia.com/qt/source>.
+To compile it, create a directory where you want to install Qt4.
+In the following, the full path to this directory is called /path/to/Qt4
 Decompress Qt/Mac in a convenient directory, cd to the top of the
 Qt source hierarcy, and enter:
 
@@ -56,6 +58,13 @@ To build the libraries with 64bit architecture you have to replace the
 32bit and 64bit mixed architecture mode. (At least not with Qt4.6)
 And the build with 64bit has known problems - so it's not recommended.
 
+Furthermore Apples developer documentation states:
+"Although 64-bit executables make it easier for you to manage large
+data sets ..., the use of 64-bit executables may raise other issues.
+Therefore you should transition your software to a 64-bit executable
+format only when the 64-bit environment offers a compelling advantage
+for your specific purposes."
+
 
 2. [Needed only for developmental builds:] automake, version 1.10.1
 or higher (check with automake --version). Probably the easiest
@@ -64,6 +73,7 @@ and install automake using
 
      sudo port install automake
 
+
 3. [Needed only for developmental builds:] gettext version >= 0.12
 (check with gettext --version). If the installed version is
 insufficient the easiest way to obtain a later version is to use
@@ -71,6 +81,7 @@ MacPorts (from http://www.macports.org/) and install gettext
 using:
 
      sudo port install gettext
+
 
 4. pkg-config >= 0.9.0. Again, the simplest way is through MacPorts:
 
@@ -96,63 +107,102 @@ you have to tell configure the compiler and compiler options to use.
 If your Qt-libraries don't match your compiler defaults you may
 adjust some environment variables to do so.
 
+
 1. Environment
 
-(a) Qt-4.6 libraries from Nokia or self compiled universal libs
+(a) Qt-4.6 self compiled universal libs
 
-	Since MacOSX 10.6 the default is to compile 64bit applications.
-	We have to change that with if on that build system.
+   Since MacOSX 10.6 the default is to compile 64bit applications.
+   We have to change the default if using that build system.
 
-	export CPPFLAGS="-arch i386"
-	export LDFLAGS="-arch i386" 
+   export CPPFLAGS="-arch i386"
+   export LDFLAGS="-arch i386" 
 
 (b) Qt-4.6 libraries 64bit
 
-	You're at least on MacOSX 10.6 and don't have to change anything.
-	Note: Your LyX binary will run only on 10.6 64bit Intel machines.
-	Additionally you'll have to provide your Qt libraries somehow...
-	FIXME: actually this is a dream, 64bit LyX crashes on startup!
+   You're at least on MacOSX 10.6 and don't have to change anything.
+   Note: Your LyX binary will run only on 10.6 64bit Intel machines.
+   Additionally you'll have to provide your Qt libraries somehow...
+   FIXME: actually this is a dream, 64bit LyX crashes on startup!
 
-(c) Qt-4.6 libraries self compiled with Tiger support
+(c) Qt-4.6 self compiled libraries with Tiger support
 
-	You have to choose the gcc4.0 compiler suite and the correct SDK:
+   You have to choose the gcc4.0 compiler suite and the correct SDK:
 
-	export CC=gcc-4.0
-	export OBJC=gcc-4.0
-	export CXX=g++-4.0
-	export CPPFLAGS="-arch i386 -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mmacosx-version-min=10.4"
-	export LDFLAGS="-arch i386 -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mmacosx-version-min=10.4"
+   export CC=gcc-4.0
+   export OBJC=gcc-4.0
+   export CXX=g++-4.0
+   export CPPFLAGS="-arch i386 -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mmacosx-version-min=10.4"
+   export LDFLAGS="-arch i386 -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mmacosx-version-min=10.4"
 
-(d) When working without pkgconfig or pkgconfig fails to detect frameworks
+(d) When working without pkgconfig or pkgconfig fails to detect Carbon and Appkit frameworks
 
    Current pkgconfig from macports is able to detect the frameworks Qt4 is using.
-	The build of LyX succeeds because the frameworks are added automatically to the linker options.
-	If you need to add them yourself because of link errors, e. g.
-		lyx Undefined symbols: "_FSPathMakeRef"...
-	you have to verify the required frameworks with otool and add them to the LDFLAGS.
+   The build of LyX succeeds because the frameworks are added automatically to the linker options.
+   If you need to add them yourself because of link errors, e. g.
+      lyx Undefined symbols: "_FSPathMakeRef"...
+   you have to verify the required frameworks with otool and add them to the LDFLAGS.
 
-	Check the output of
-		otool -L /path/to/QT4/lib/libQtGui.dylib
-	and look for lines with Frameworks.
+   Check the output of
+      otool -L /path/to/QT4/lib/libQtGui.dylib
+   and look for lines with Frameworks.
 
-	Currently there are two different Qt4 builds available for download:
-	* with Tiger support it's with Carbon. You have to add
-	export LDFLAGS="$LDFLAGS -framework ApplicationServices -framework Carbon -framework AppKit" 
-	* with Cocoa framework without Tiger support you have to add
-	export LDFLAGS="$LDFLAGS -framework ApplicationServices -framework Cocoa -framework AppKit" 
+   Currently there are two different Qt4 builds available for download:
+   * with Tiger support it's with Carbon. You have to add
+   export LDFLAGS="$LDFLAGS -framework ApplicationServices -framework Carbon -framework AppKit" 
+   * with Cocoa framework without Tiger support you have to add
+   export LDFLAGS="$LDFLAGS -framework ApplicationServices -framework Cocoa -framework AppKit" 
 
-	Note: The latter is untested.
+   Note: The latter is untested.
+
+(e) When working with the Qt4 frameworks provided by Nokia
+
+   We have to help again with some environment variables to make configure work.
+
+   In case pkgconfig is installed... disable it.
+   The Qt4 frameworks come without the required .pc files.
+
+   export PKG_CONFIG=""
+
+   The required compiler flags to compile a Qt4 application has to be provided.
+
+   export QT4_CORE_CFLAGS="-FQtCore"
+   export QT4_CORE_LIBS="-framework QtCore"
+   export QT4_FRONTEND_CFLAGS="-FQtGui"
+   export QT4_FRONTEND_LIBS="-framework QtGui"
+
+   Depending on the architecture and target os add the compiler flags:
+
+   - for default SDK
+   export CPPFLAGS="-arch i386"
+   export CPPFLAGS="$CPPFLAGS -I/Library/Frameworks/QtCore.framework/Headers"
+   export CPPFLAGS="$CPPFLAGS -I/Library/Frameworks/QtGui.framework/Headers"
+   export LDFLAGS="-arch i386 -framework ApplicationServices -framework Carbon -framework AppKit" 
+
+   - or to force 10.5 SDK
+
+   export CPPFLAGS="-arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk -mmacosx-version-min=10.4"
+   export CPPFLAGS="$CPPFLAGS -I/Developer/SDKs/MacOSX10.5.sdk/Library/Frameworks/QtCore.framework/Headers"
+   export CPPFLAGS="$CPPFLAGS -I/Developer/SDKs/MacOSX10.5.sdk/Library/Frameworks/QtGui.framework/Headers"
+   export LDFLAGS="-arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk -mmacosx-version-min=10.4"
+   export LDFLAGS="$LDFLAGS -framework ApplicationServices -framework Carbon -framework AppKit" 
+
+   Note: it may depend on Qt4 frameworks what actually works.
+   The 4.6.2 frameworks has to be used with 10.5 SDK.
+
 
 2. Configure and build
 
 (a) Official Releases (compile from tar-ball)
 
-	cd to the top of the LyX source hierarchy, and enter:
+   cd to the top of the LyX source hierarchy, and enter:
 
      ./configure \
-	      --with-version-suffix=-2.0 \
-			--prefix=/path/to/LyX.app \
-			--with-qt4-dir=/path/to/Qt4
+         --with-version-suffix=-2.0 \
+         --with-libiconv-prefix=/usr \
+         --with-x=no \
+         --prefix=/path/to/LyX.app \
+         --with-qt4-dir=/path/to/Qt4
      make
      make install-strip
 
@@ -165,14 +215,16 @@ user's directory being located at ~/Library/Application Support/LyX-2.0)
 Building LyX from developmental sources requires a few more steps.
 Instead of the instructions above, do the following:
 
-	cd to the top of the LyX source hierarchy, and enter:
+   cd to the top of the LyX source hierarchy, and enter:
 
      ./autogen.sh
      ./configure \
-	      --with-version-suffix=-2.0 \
-	      --disable-stdlib-debug \
-			--prefix=/path/to/LyX.app \
-			--with-qt4-dir=/path/to/Qt4
+         --with-version-suffix=-2.0 \
+         --with-libiconv-prefix=/usr \
+         --with-x=no \
+         --disable-stdlib-debug \
+         --prefix=/path/to/LyX.app \
+         --with-qt4-dir=/path/to/Qt4
      make
      make install-strip
 
@@ -191,7 +243,7 @@ Please read the script if you're about to make a distributable disk image.
 
 To use it, cd to the top of the LyX source hierarchy, and enter:
 
-	sh development/LyX-Mac-binary-release.sh --with-qt4-dir=/path/to/Qt4
+   sh development/LyX-Mac-binary-release.sh --with-qt4-dir=/path/to/Qt4
 
 This script automates all steps of the build process.
 It detects the sources for Qt4, Aspell and Hunspell when placed in a
@@ -200,6 +252,30 @@ These libraries are then bundled with the LyX application as private
 frameworks. Therefore the Qt4 libraries are build as frameworks.
 Per default the resulting LyX application is build for ppc and i386
 to be usable on all systems from Tiger upwards.
+
+
+(d) Developmental Versions (svn checkouts and Qt4 frameworks)
+
+Instead of the instructions in (b), do the following:
+
+   cd to the top of the LyX source hierarchy, and enter:
+
+     ./autogen.sh
+     ./configure \
+         --with-version-suffix=-2.0 \
+         --with-libiconv-prefix=/usr \
+         --with-x=no \
+         --disable-stdlib-debug \
+         --prefix=/path/to/LyX.app
+     make
+     make install-strip
+
+   Note: The produced binary depends on the frameworks in location
+   /Library/Frameworks.  These frameworks have to match the frameworks
+   you used on build.
+
+
+3. Disclaimer
 
 The information on this page is believed to be accurate, has been used
 successfully on many systems and sites, and has benefited from the
