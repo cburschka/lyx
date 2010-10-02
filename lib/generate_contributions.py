@@ -342,7 +342,7 @@ contributers = [
                  "contributions GPLed",
                  "m=121869084720708",
                  "14 August 2008",
-                 u"Romanian localization"),
+                 u"Romanian localization and support for the frletter document class"),
 
      contributer(u"João Luis Meloni Assirati",
                  "assirati () nonada ! if ! usp ! br",
@@ -519,7 +519,7 @@ contributers = [
                  "m=110908857130107",
                  "22 February 2005",
                  u"Qt2 port"),
-     
+
      contributer(u"Ulysse Danglis",
                  "o2d () freemail ! gr",
                  "GPL",
@@ -992,7 +992,7 @@ contributers = [
                  "27 February 2005",
                  u"Slovenian translation coordinator"),
  
-       contributer(u"Caolán McNamara",
+     contributer(u"Caolán McNamara",
                  "caolanm () redhat ! com",
                  "GPL",
                  "Statement for enchant integration",
@@ -1087,14 +1087,6 @@ contributers = [
                  "m=119853644302866",
                  "24 December 2007",
                  u"Russian translation of the user interface"),
-
-     contributer(u'Sanda Pavel',
-                 "ps () ucw ! cz",
-                 "GPL",
-                 "Re: czech translation",
-                 "m=115522417204086",
-                 "10 August 2006",
-                 u"Czech translation, support for the LaTeX package hyperref, fullscreen support, lfuns docs/review"),
 
      contributer(u'Bo Peng',
                  "ben.bob () gmail ! com",
@@ -1263,6 +1255,14 @@ contributers = [
                  "m=116172457024967",
                  "24 October 2006",
                  u"Hebrew translation"),
+
+     contributer(u'Pavel Sanda',
+                 "ps () ucw ! cz",
+                 "GPL",
+                 "Re: czech translation",
+                 "m=115522417204086",
+                 "10 August 2006",
+                 u"Czech translation, support for the LaTeX package hyperref, fullscreen support, lfuns docs/review"),
 
      contributer(u"Szõke Sándor",
                  "alex () lyx ! hu",
