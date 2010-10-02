@@ -1,0 +1,164 @@
+#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass frletter
+\use_default_options false
+\language french
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 0
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout My Address
+<My Name>
+\begin_inset Newline newline
+\end_inset
+
+<My Street>
+\begin_inset Newline newline
+\end_inset
+
+<My Town>
+\end_layout
+
+\begin_layout Send To Address
+<Send To Name> 
+\begin_inset Newline newline
+\end_inset
+
+<Send To Street> 
+\begin_inset Newline newline
+\end_inset
+
+<Send To Town>
+\end_layout
+
+\begin_layout Date
+Paris, le 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Signature
+<Your signature>
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This field MUST be before the "Opening" field!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Opening
+<Objet: Demande de stage>
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+<Madame, Monsieur,>
+\end_layout
+
+\begin_layout Standard
+<Text of Your 
+\begin_inset Quotes fld
+\end_inset
+
+Letter
+\begin_inset Quotes frd
+\end_inset
+
+.
+ To create a real letter: just replace erase all the text in <> (including
+ the 
+\begin_inset Quotes eld
+\end_inset
+
+<>
+\begin_inset Quotes erd
+\end_inset
+
+ characters) with the desired text.> 
+\end_layout
+
+\begin_layout Standard
+<Text of Your Letter.
+ To create a real letter, just replace erase all the text in <> (including
+ the 
+\begin_inset Quotes eld
+\end_inset
+
+<>
+\begin_inset Quotes erd
+\end_inset
+
+ characters) with the desired text.> 
+\end_layout
+
+\begin_layout Closing
+<Veuillez agréer, Madame, Monsieur, l'expression de mes sentiments distingués.>
+\end_layout
+
+\begin_layout cc
+<cc>
+\end_layout
+
+\begin_layout encl
+<encl>
+\end_layout
+
+\end_body
+\end_document

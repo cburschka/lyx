@@ -1300,6 +1300,7 @@ lib_templates_files = Split('''
     elsarticle.lyx
     es_beamer-conference-ornate-20min.lyx
     fr_beamer-conference-ornate-20min.lyx
+    frletter.lyx
     g-brief-de.lyx
     g-brief-en.lyx
     g-brief2.lyx
@@ -2675,6 +2676,7 @@ lib_layouts_files = Split('''
     extletter.layout
     extreport.layout
     foils.layout
+    frletter.layout
     g-brief-de.layout
     g-brief-en.layout
     g-brief2.layout

@@ -1048,6 +1048,7 @@ dist_layouts_DATA =\
 	layouts/figs-within-sections.module \
 	layouts/foils.layout \
 	layouts/foottoend.module \
+	layouts/frletter.layout \
 	layouts/g-brief-de.layout \
 	layouts/g-brief-en.layout \
 	layouts/g-brief2.layout \
@@ -1192,6 +1193,7 @@ dist_templates_DATA = \
 	templates/elsarticle.lyx \
 	templates/es_beamer-conference-ornate-20min.lyx \
 	templates/fr_beamer-conference-ornate-20min.lyx \
+	templates/frletter.lyx \
 	templates/g-brief2.lyx \
 	templates/g-brief-de.lyx \
 	templates/g-brief-en.lyx \

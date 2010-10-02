@@ -19,7 +19,7 @@ What's new
 ==========
 
 
-** Updates:
+** Updates and new features:
 ***********
 
 * DOCUMENT INPUT/OUTPUT
@@ -37,13 +37,16 @@ What's new
 
 - Add support for lists and quotes in the g-brief2 letter class (bug 6857).
 
-- Add support for the math command \ddddot.
+- Add support for the math command \ddddot (part of bug 6872).
 
 
 * USER INTERFACE
 
 - New layout and template file for submissions to journals published by
   the American Geophysical Union (AGU).
+
+- New layout and template file for the document class frletter thiat is
+  used to write letters in French (bug 6915).
 
 - Improve the detection of LaTeX warnings in the Log dialog.
 
