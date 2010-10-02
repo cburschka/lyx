@@ -1,0 +1,46 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[frletter]{letter (frletter)}
+# Layout file for the frletter class.
+# Author : Liviu Andronic and Uwe Stöhr
+
+Format 28
+
+# Read the definitions from letter.layout
+Input letter.layout
+
+# change placement within LyX
+Style My_Address
+	Margin			Static
+End
+
+Style Send_To_Address
+	Margin			Right_Address_Box
+End
+
+
+Style Date
+	Margin			Right_Address_Box
+	LatexType		Command
+	LatexName		date
+	LabelSep		xxx
+	ParSkip			0.4
+	TopSep			0.9
+	BottomSep		0.5
+	ParSep			1
+	Align			Left
+	LabelType		No_Label
+End
+
+
+# add more space as in stdletter.inc because the French words are wider
+Style Opening
+	LeftMargin		Fermeture:xxx
+End
+
+Style Signature
+	LeftMargin		Fermeture:xxx
+End
+
+Style Closing
+	LeftMargin		Fermeture:xxx
+End
