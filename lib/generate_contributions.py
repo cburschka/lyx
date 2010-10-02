@@ -350,7 +350,7 @@ contributers = [
                  "contributions GPLed",
                  "m=121869084720708",
                  "14 August 2008",
-                 u"Romanian localization"),
+                 u"Romanian localization and support for the frletter document class"),
 
      contributer(u"João Luis Meloni Assirati",
                  "assirati () nonada ! if ! usp ! br",
@@ -1040,7 +1040,7 @@ contributers = [
                  "15 June 2009",
                  u"Keys-test module, bug fixing"),
  
-      contributer(u"Caolán McNamara",
+     contributer(u"Caolán McNamara",
                  "caolanm () redhat ! com",
                  "GPL",
                  "Statement for enchant integration",
@@ -1695,14 +1695,6 @@ contributers = [
                  "m=110911591218107",
                  "22 February 2005",
                  u"rotation of wysiwyg figures"),
-
-     contributer(u"Ziegler & Partner GmbH",
-                 "info () transsib ! com",
-                 "GPL",
-                 "RE: Trans-Siberian Railroad pictures - question",
-                 "m=126385210219932",
-                 "19 January 2009",
-                 u"photo for banner"),
 
      contributer(u"Xiaokun Zhu",
                  "xiaokun () aero ! gla ! ac ! uk",
