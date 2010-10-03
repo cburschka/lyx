@@ -498,7 +498,7 @@ if(ENCHANT_FOUND)
 endif()
 if(LYX_USE_EXTERNAL_BOOST)
 	if(Boost_FOUND)
-		set(CPACK_DEBIAN_PACKAGE_DEPENDS "libboost-regex1.38.0 (>= 1.38.0-6),libboost-signals1.38.0 (>= 1.38.0-6),${CPACK_DEBIAN_PACKAGE_DEPENDS}")
+		set(CPACK_DEBIAN_PACKAGE_DEPENDS "libboost-regex1.40.0 (>= 1.40.0-4),libboost-signals1.40.0 (>= 1.40.0-4),${CPACK_DEBIAN_PACKAGE_DEPENDS}")
 	endif()
 endif()
 #
