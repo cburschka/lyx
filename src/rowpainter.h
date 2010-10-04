@@ -58,13 +58,13 @@ public:
 
 private:
 	void paintForeignMark(double orig_x, Language const * lang, int desc = 0);
-	void paintMisspelledMark(double orig_x, int desc);
+	void paintMisspelledMark(double orig_x, int desc, bool changed);
 	void paintHebrewComposeChar(pos_type & vpos, FontInfo const & font);
 	void paintArabicComposeChar(pos_type & vpos, FontInfo const & font);
 	void paintChars(pos_type & vpos, FontInfo const & font,
 			bool hebrew, bool arabic);
 	int paintAppendixStart(int y);
-	void paintFromPos(pos_type & vpos);
+	void paintFromPos(pos_type & vpos, bool changed);
 	void paintInset(Inset const * inset, pos_type const pos);
 	void paintInlineCompletion(Font const & font);
 	
