@@ -342,14 +342,18 @@ void RowPainter::paintForeignMark(double orig_x, Language const * lang,
 }
 
 
-void RowPainter::paintMisspelledMark(double orig_x, int desc)
+void RowPainter::paintMisspelledMark(double orig_x, int desc, bool changed)
 {
-	int const y = yo_ + desc;
+	// derive the offset from zoom factor specified by user in percent
+	// if changed the misspelled marker gets placed slightly lower than normal
+	// to avoid drawing at the same vertical offset 
+	int const offset = (1.5 * lyxrc.zoom / 100.0); // [percent]
+	int const y = yo_ + desc + (changed ? offset : 0);
 	pi_.pain.line(int(orig_x), y, int(x_), y, Color_red, Painter::line_onoffdash, 1.0);
 }
 
 
-void RowPainter::paintFromPos(pos_type & vpos)
+void RowPainter::paintFromPos(pos_type & vpos, bool changed)
 {
 	pos_type const pos = bidi_.vis2log(vpos);
 	Font const orig_font = text_metrics_.displayFont(pit_, pos);
@@ -382,7 +386,7 @@ void RowPainter::paintFromPos(pos_type & vpos)
 	paintForeignMark(orig_x, orig_font.language());
 
 	if (lyxrc.spellcheck_continuously && misspelled_) {
-		paintMisspelledMark(orig_x, 2);
+		paintMisspelledMark(orig_x, 2, changed);
 	}
 }
 
@@ -884,7 +888,7 @@ void RowPainter::paintText()
 
 		} else {
 			// paint as many characters as possible.
-			paintFromPos(vpos);
+			paintFromPos(vpos, change_running.changed());
 		}
 
 		// Is the inline completion after character?
