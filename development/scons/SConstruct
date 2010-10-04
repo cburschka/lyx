@@ -1431,10 +1431,10 @@ Help(opts.GenerateHelpText(env))
 env.SConsignFile(os.path.join(Dir(env['BUILDDIR']).abspath, '.sconsign'))
 # this usage needs further investigation.
 #env.CacheDir('%s/Cache/%s' % (env['BUILDDIR'], frontend))
-env.BuildDir('$BUILDDIR/boost', '$TOP_SRCDIR/boost/libs', duplicate = 0)
-env.BuildDir('$BUILDDIR/intl', '$TOP_SRCDIR/intl', duplicate = 0)
-env.BuildDir('$BUILDDIR/src', '$TOP_SRCDIR/src', duplicate = 0)
-env.BuildDir('$BUILDDIR/src', '$TOP_SRCDIR/src', duplicate = 0)
+env.VariantDir('$BUILDDIR/boost', '$TOP_SRCDIR/boost/libs', duplicate = 0)
+env.VariantDir('$BUILDDIR/intl', '$TOP_SRCDIR/intl', duplicate = 0)
+env.VariantDir('$BUILDDIR/src', '$TOP_SRCDIR/src', duplicate = 0)
+env.VariantDir('$BUILDDIR/src', '$TOP_SRCDIR/src', duplicate = 0)
 
 print "Building all targets recursively"
 
