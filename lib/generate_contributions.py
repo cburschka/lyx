@@ -703,8 +703,16 @@ contributers = [
                  "m=111225910223564",
                  "30 March 2005",
                  u"Improvements to Koma-Script classes"),
-     
-     contributer(u"Peter Gumm",
+
+     contributer(u"Riccardo Gori",
+                 "goriccardo () gmail ! com",
+                 "GPL",
+                 "Re: r35561 - lyx-devel/trunk/src/insets",
+                 "m=128626762015975",
+                 "5 Oct 2010",
+                 u"Fixing tabular code"),
+
+      contributer(u"Peter Gumm",
                  "gumm () mathematik ! uni-marburg ! de",
                  "GPL",
                  "Re: xy-pic manual",
