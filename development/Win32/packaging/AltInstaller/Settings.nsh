@@ -1,11 +1,11 @@
 # installer settings
 # You should need to change only these macros for new releases.
 
-!define INSTALLER_SUBVERSION "1"
+!define INSTALLER_SUBVERSION "6"
 !define PRODUCT_DIR "D:\LyXPackage2.0"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "2.0alpha2"
-!define PRODUCT_VERSION_SHORT "20alpha2"
+!define PRODUCT_VERSION "2.0alpha6"
+!define PRODUCT_VERSION_SHORT "20alpha6"
 !define PRODUCT_SUBFOLDER "lyx20"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
 !define PRODUCT_SOURCEDIR "${PRODUCT_DIR}\LyX"
@@ -66,11 +66,11 @@ BrandingText "LyXWinInstaller v5.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
 
 !define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
 
-!define ImageMagickVersion "6.6.1"
+!define ImageMagickVersion "6.6.4"
 # for some odd reason the ImageMagick folder may not be a subfolder of $INSTDIR\bin!
 !define ImageMagickDir "$INSTDIR\etc\ImageMagick"
 !define GhostscriptDir "$INSTDIR\etc\Ghostscript"
-!define GhostscriptVersion "8.71"
+!define GhostscriptVersion "9.00"
 !define Metafile2epsDir "$INSTDIR\etc\Metafile2eps"
 !define AiksaurusDir "$APPDATA\Aiksaurus"
 !define AiksaurusInstall "external\Aiksaurus"
