@@ -27818,6 +27818,23 @@ reference "sec:Parboxes"
 
 \end_inset
 
+ et le type 
+\family sans
+\lang english
+Makebox
+\family default
+\lang french
+ est décrit dans la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Empêcher-césure"
+
+\end_inset
+
 .
 \end_layout
 
@@ -28554,7 +28571,25 @@ Décoration
 \end_layout
 
 \begin_layout Description
+Aucun
+\begin_inset space ~
+\end_inset
+
+cadre
+\begin_inset space ~
+\end_inset
+
+tracé 
+\lang english
+Nothing is drawn.
+\end_layout
+
+\begin_layout Description
 Cadre
+\begin_inset space ~
+\end_inset
+
+rectangulaire
 \begin_inset space ~
 \end_inset
 
@@ -28566,7 +28601,10 @@ simple Ceci dessine un cadre rectangulaire autour de la boîte.
 fboxrule
 \series default
 .
- 
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Box Boxed
 position "c"
 hor_pos "c"
@@ -28583,76 +28621,6 @@ status open
 \begin_layout Plain Layout
 \align center
 Boîte rectangulaire
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-Cadre
-\begin_inset space ~
-\end_inset
-
-simple,
-\begin_inset space ~
-\end_inset
-
-sauts
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-page Quand vous utilisez le style de décoration 
-\family sans
-cadre simple
-\family default
- sans boîte intérieure, vous pouvez autoriser les sauts de page à l'intérieur
- de la boîte.
- Notez que dans ce cas, contrairement aux autres boîtes avec cadre, le cadre
- predra toute la largeur de la colonne, la boîte sera considérée comme son
- propre paragraphe et 
-\series bold
-
-\backslash
-fboxrule
-\series default
- et 
-\series bold
-
-\backslash
-fboxsep
-\series default
- n'ont aucun effet sur ce type de boîte.
- L'épaisseur de la ligne du cadre a la valeur de 
-\series bold
-
-\backslash
-FrameRule
-\series default
-.
- 
-\lang english
-
-\begin_inset Box Framed
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status collapsed
-
-\begin_layout Plain Layout
-Boîte avec cadre simple et sauts de page
 \end_layout
 
 \end_inset
@@ -28837,11 +28805,16 @@ Boîte avec fond ombré
 \end_layout
 
 \begin_layout Description
-Double
+Cadre
 \begin_inset space ~
 \end_inset
 
-cadre Ceci dessine un cadre rectangulaire à deux traits autour de la boîte.
+rectangulaire
+\begin_inset space ~
+\end_inset
+
+dédoublé Ceci dessine un cadre rectangulaire à deux traits autour de la
+ boîte.
  L'épaisseur du trait du cadre interne est de 0.75
 \begin_inset space \thinspace{}
 \end_inset
@@ -28932,6 +28905,61 @@ Paquetages LaTeX ! fancybox
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Quand vous utilisez le style de décoration 
+\family sans
+cadre rectangulaire simple
+\family default
+ sans boîte intérieure, vous pouvez autoriser les sauts de page à l'intérieur
+ de la boîte.
+ Notez que dans ce cas, contrairement aux autres boîtes avec cadre, le cadre
+ predra toute la largeur de la colonne, la boîte sera considérée comme son
+ propre paragraphe et 
+\series bold
+
+\backslash
+fboxrule
+\series default
+ et 
+\series bold
+
+\backslash
+fboxsep
+\series default
+ n'ont aucun effet sur ce type de boîte.
+ L'épaisseur de la ligne du cadre a la valeur de 
+\series bold
+
+\backslash
+FrameRule
+\series default
+.
+ 
+\begin_inset Box Framed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+Boîte avec cadre simple et sauts de page
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -30076,8 +30104,14 @@ Boîtes ! Pour empêcher la césure
 \end_layout
 
 \begin_layout Standard
-Vous pouvez utiliser un type spécial de boîte pour empêcher qu'un mot ou
- un texte ne soit coupé par une césure.
+Vous pouvez utiliser 
+\lang english
+the box type 
+\family sans
+Makebox
+\family default
+\lang french
+ pour empêcher qu'un mot ou un texte ne soit coupé par une césure.
 \begin_inset Newline newline
 \end_inset
 
@@ -30085,8 +30119,7 @@ Voici un exemple de texte :
 \end_layout
 
 \begin_layout Standard
-Cette ligne est un exemple pour montrer comment vous pouvez empêcher une
- césure dans un 
+Cette ligne est un exemple comment vous pouvez empêcher une césure: 
 \begin_inset Quotes eld
 \end_inset
 
@@ -30106,32 +30139,25 @@ motTrèsTrèsLong
 \begin_inset Quotes erd
 \end_inset
 
- soit coupé, ajoutez la commande
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-mbox{
-\end_layout
-
-\begin_layout Standard
-en code TeX avant le mot.
- Après le mot, insérez l'accolade fermante 
-\begin_inset Quotes eld
+ 
+\lang english
+put the word into a box, set the 
+\family sans
+Inner
+\begin_inset space ~
 \end_inset
 
-
-\series bold
-}
-\series default
-
-\begin_inset Quotes erd
+box
+\family default
+ to 
+\family sans
+Makebox
+\family default
+ and its width to 1
+\begin_inset space \thinspace{}
 \end_inset
 
- en code TeX.
+Width.
 \end_layout
 
 \begin_layout Standard
@@ -30139,21 +30165,21 @@ Voici le résultat :
 \end_layout
 
 \begin_layout Standard
-Cette ligne est un exemple pour montrer comment vous pouvez empêcher une
- césure dans un
-\begin_inset ERT
-status collapsed
+Cette ligne est un exemple comment vous pouvez empêcher une césure: 
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "1in"
+special "width"
+height "1in"
+height_special "totalheight"
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -30161,13 +30187,7 @@ motTrèsTrèsLong
 \begin_inset Quotes erd
 \end_inset
 
-.
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -30194,8 +30214,7 @@ Une autre méthode consiste à mettre la commande
 \end_layout
 
 \begin_layout Standard
-Cette ligne est un exemple pour montrer comment vous pouvez empêcher une
- césure dans un 
+Cette ligne est un exemple comment vous pouvez empêcher une césure: 
 \begin_inset Quotes eld
 \end_inset
 
@@ -30216,7 +30235,7 @@ motTrèsTrèsLong
 \begin_inset Quotes erd
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -30240,32 +30259,32 @@ la
 Ligne
 \family default
  (raccourci 
-\series bold
+\family sans
 Ctrl-Entrée
-\series default
+\family default
 ) :
 \end_layout
 
 \begin_layout Standard
-Cette ligne est un exemple pour montrer comment vous pouvez empêcher une
- césure dans un
+Cette ligne est un exemple comment vous pouvez empêcher une césure:
 \begin_inset Newline newline
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "1in"
+special "width"
+height "1in"
+height_special "totalheight"
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -30273,13 +30292,7 @@ motTrèsTrèsLong
 \begin_inset Quotes erd
 \end_inset
 
-.
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset

@@ -27125,6 +27125,10 @@ Box
 \family default
  types 
 \family sans
+Makebox
+\family default
+, 
+\family sans
 Parbox
 \family default
  and 
@@ -27159,6 +27163,17 @@ Parbox
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Parboxes"
+
+\end_inset
+
+ and the type 
+\family sans
+Makebox
+\family default
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Prevent-Hyphenation"
 
 \end_inset
 
@@ -27871,6 +27886,14 @@ Decoration
 \end_layout
 
 \begin_layout Description
+No
+\begin_inset space ~
+\end_inset
+
+frame Nothing is drawn.
+\end_layout
+
+\begin_layout Description
 Simple
 \begin_inset space ~
 \end_inset
@@ -27904,64 +27927,6 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 Rectangular box
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-Allow
-\begin_inset space ~
-\end_inset
-
-page
-\begin_inset space ~
-\end_inset
-
-break When you use the decoration 
-\family sans
-simple rectangular frame
-\family default
- and no inner box, you can allow page breaks within a box.
- Note that then, unlike other framed boxes, the frame always uses the whole
- column width, the box is set as its own paragraph, and 
-\series bold
-
-\backslash
-fboxrule
-\series default
- and 
-\series bold
-
-\backslash
-fboxsep
-\series default
- have no effect on this box type.
- The frame line thickness has the size of 
-\series bold
-
-\backslash
-FrameRule
-\series default
-.
- 
-\begin_inset Box Framed
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status collapsed
-
-\begin_layout Plain Layout
-Allow page break box
 \end_layout
 
 \end_inset
@@ -28237,6 +28202,59 @@ LaTeX-packages ! fancybox
 \end_inset
 
  must be installed.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+When you use the decoration 
+\family sans
+simple rectangular frame
+\family default
+ and no inner box, you can allow page breaks within a box.
+ Note that then, unlike other framed boxes, the frame always uses the whole
+ column width, the box is set as its own paragraph, and 
+\series bold
+
+\backslash
+fboxrule
+\series default
+ and 
+\series bold
+
+\backslash
+fboxsep
+\series default
+ have no effect on this box type.
+ The frame line thickness has the size of 
+\series bold
+
+\backslash
+FrameRule
+\series default
+.
+ 
+\begin_inset Box Framed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+Allow page break box
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -29350,7 +29368,11 @@ Boxes ! to Prevent Hyphenation
 \end_layout
 
 \begin_layout Standard
-You can use a special kind of box to prevent words or text from being hyphenated.
+You can use the box type 
+\family sans
+Makebox
+\family default
+ to prevent words or text from being hyphenated.
 \begin_inset Newline newline
 \end_inset
 
@@ -29378,32 +29400,23 @@ veryverylongword
 \begin_inset Quotes erd
 \end_inset
 
-, add the command
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-mbox{
-\end_layout
-
-\begin_layout Standard
-in TeX-Code before the word.
- After the word insert a closing brace 
-\begin_inset Quotes eld
+, put the word into a box, set the 
+\family sans
+Inner
+\begin_inset space ~
 \end_inset
 
-
-\series bold
-}
-\series default
-
-\begin_inset Quotes erd
+box
+\family default
+ to 
+\family sans
+Makebox
+\family default
+ and its width to 1
+\begin_inset space \thinspace{}
 \end_inset
 
- in TeX-Code.
+Width.
 \end_layout
 
 \begin_layout Standard
@@ -29412,19 +29425,20 @@ This is the result:
 
 \begin_layout Standard
 This line is an example to show how you can prevent the hyphenation of 
-\begin_inset ERT
-status collapsed
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "1in"
+special "width"
+height "1in"
+height_special "totalheight"
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -29432,18 +29446,12 @@ veryverylongword
 \begin_inset Quotes erd
 \end_inset
 
-.
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -29520,19 +29528,20 @@ This line is an example to show how you can prevent the hyphenation of
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "1in"
+special "width"
+height "1in"
+height_special "totalheight"
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -29540,18 +29549,12 @@ veryverylongword
 \begin_inset Quotes erd
 \end_inset
 
-.
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsection

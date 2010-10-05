@@ -24622,7 +24622,22 @@ reference "sec:Parboxes"
 
 \end_inset
 
-節で述べます。
+節で述べます 
+\lang english
+and the type 
+\family sans
+Makebox
+\family default
+ in 
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ハイフネーションの回避"
+
+\end_inset
+
+。
 \end_layout
 
 \begin_layout Standard
@@ -25212,6 +25227,16 @@ status collapsed
 \end_layout
 
 \begin_layout Description
+
+\lang english
+No
+\begin_inset space ~
+\end_inset
+
+frame Nothing is drawn.
+\end_layout
+
+\begin_layout Description
 簡素な長方形の枠 これはボックスの周りに長方形の枠を描きます。枠線の太さは
 \series bold
 
@@ -25235,53 +25260,6 @@ status open
 \begin_layout Plain Layout
 \align center
 長方形の箱型
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-改行を可能にする 装飾として
-\family sans
-簡素な長方形の箱型
-\family default
-を使用し、内部ボックスをなしにした場合には、ボックス内で改行をすることができます。その際、他の枠付きボックスと異なり、枠は列幅全体に広げられて独立した段落に置か
-れ、このボックス型では
-\series bold
-
-\backslash
-fboxrule
-\series default
-と
-\series bold
-
-\backslash
-fboxsep
-\series default
-は無効となります。枠線の太さは
-\series bold
-
-\backslash
-FrameRule
-\series default
-の値になります。 
-\begin_inset Box Framed
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-改行可能な箱型
 \end_layout
 
 \end_inset
@@ -25509,6 +25487,56 @@ LaTeXぱっけーじ@LaTeXパッケージ ! fancybox
 \end_inset
 
 が導入済みでなくてはなりません。
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+装飾として
+\family sans
+簡素な長方形の箱型
+\family default
+を使用し、内部ボックスをなしにした場合には、ボックス内で改行をすることができます。その際、他の枠付きボックスと異なり、枠は列幅全体に広げられて独立した段落に置か
+れ、このボックス型では
+\series bold
+
+\backslash
+fboxrule
+\series default
+と
+\series bold
+
+\backslash
+fboxsep
+\series default
+は無効となります。枠線の太さは
+\series bold
+
+\backslash
+FrameRule
+\series default
+の値になります。 
+\begin_inset Box Framed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+改行可能な箱型
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -26811,7 +26839,7 @@ width "33col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 これはparbox内の文章です。これはparbox内の文章です。
@@ -26820,7 +26848,7 @@ status open
 \begin_layout Plain Layout
 右の脚注は表示されません。
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 これはparbox内の脚注であり、したがって表示はされません。
@@ -26872,7 +26900,15 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-単語や文章がハイフネートされるのを抑制する特殊なボックスを作ることができます。
+
+\lang english
+You can use the box type 
+\family sans
+Makebox
+\family default
+ to prevent words or text from being hyphenated.
+\lang japanese
+
 \begin_inset Newline newline
 \end_inset
 
@@ -26892,23 +26928,33 @@ veryverylongword
 \end_layout
 
 \begin_layout Standard
-「veryverylongword」という単語がハイフネートされるのを抑制するには、単語の前にTeXコードで
-\end_layout
 
-\begin_layout Standard
+\lang english
+To prevent the hyphenation of the word 
+\begin_inset Quotes eld
+\end_inset
 
-\series bold
+veryverylongword
+\begin_inset Quotes erd
+\end_inset
 
-\backslash
-mbox{
-\end_layout
+, put the word into a box, set the 
+\family sans
+Inner
+\begin_inset space ~
+\end_inset
 
-\begin_layout Standard
-というコマンドを付け加えます。単語の後ろには、 TeXコードで閉じ括弧「
-\series bold
-}
-\series default
-」を入れてください。
+box
+\family default
+ to 
+\family sans
+Makebox
+\family default
+ and its width to 1
+\begin_inset space \thinspace{}
+\end_inset
+
+Width.
 \end_layout
 
 \begin_layout Standard
@@ -26917,19 +26963,20 @@ mbox{
 
 \begin_layout Standard
 This line is an example to show how you can prevent the hyphenation of 
-\begin_inset ERT
-status collapsed
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "1in"
+special "width"
+height "1in"
+height_special "totalheight"
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -26937,18 +26984,12 @@ veryverylongword
 \begin_inset Quotes erd
 \end_inset
 
-.
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -27016,19 +27057,20 @@ This line is an example to show how you can prevent the hyphenation of
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "1in"
+special "width"
+height "1in"
+height_special "totalheight"
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -27036,18 +27078,12 @@ veryverylongword
 \begin_inset Quotes erd
 \end_inset
 
-.
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsection

@@ -26930,6 +26930,23 @@ reference "sec:Cuadros-de-Párrafo"
 
 \end_inset
 
+ y el tipo 
+\family sans
+\lang english
+Makebox
+\family default
+\lang spanish
+ se describe en la sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Evitar-la-Partición"
+
+\end_inset
+
 .
 \end_layout
 
@@ -27626,7 +27643,21 @@ Tipo
 \end_layout
 
 \begin_layout Description
+Sin
+\begin_inset space ~
+\end_inset
+
+marco 
+\lang english
+Nothing is drawn.
+\end_layout
+
+\begin_layout Description
 Marco
+\begin_inset space ~
+\end_inset
+
+rectangular
 \begin_inset space ~
 \end_inset
 
@@ -27655,76 +27686,6 @@ status open
 \begin_layout Plain Layout
 \align center
 Cuadro rectangular
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-Marco
-\begin_inset space ~
-\end_inset
-
-sencillo
-\begin_inset space ~
-\end_inset
-
-con
-\begin_inset space ~
-\end_inset
-
-salto
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-página Si usas la decoración 
-\family sans
-marco sencillo rectangular
-\family default
- sin cuadro interior, puedes permitir saltos de página dentro del cuadro.
- Ten en cuenta que en ese caso, al contrario que otros cuadros enmarcados,
- el marco usa siempre todo el ancho de columna, el cuadro va en un párrafo
- propio y 
-\series bold
-
-\backslash
-fboxrule
-\series default
- y 
-\series bold
-
-\backslash
-fboxsep
-\series default
- no funcionan.
- El grosor del marco tiene el tamaño de 
-\series bold
-
-\backslash
-FrameRule
-\series default
-.
-\begin_inset Box Framed
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status collapsed
-
-\begin_layout Plain Layout
-Cuadro que permite saltos de página
 \end_layout
 
 \end_inset
@@ -27901,6 +27862,10 @@ Marco
 \begin_inset space ~
 \end_inset
 
+rectangular
+\begin_inset space ~
+\end_inset
+
 doble Dibuja un rectángulo de línea doble alrededor del cuadro.
  El grosor de la línea interior es 0.75
 \begin_inset space \thinspace{}
@@ -27971,9 +27936,6 @@ Marco doble
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
 La etiqueta del cuadro en LyX reflejará el estilo de marco elegido.
  Para poder utilizar los distintos marcos, debe estar instalado el paquete
  LaTeX 
@@ -27991,6 +27953,59 @@ LaTeX-paquetes ! fancybox
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Si usas la decoración 
+\family sans
+marco rectangular sencillo
+\family default
+ sin cuadro interior, puedes permitir saltos de página dentro del cuadro.
+ Ten en cuenta que en ese caso, al contrario que otros cuadros enmarcados,
+ el marco usa siempre todo el ancho de columna, el cuadro va en un párrafo
+ propio y 
+\series bold
+
+\backslash
+fboxrule
+\series default
+ y 
+\series bold
+
+\backslash
+fboxsep
+\series default
+ no funcionan.
+ El grosor del marco tiene el tamaño de 
+\series bold
+
+\backslash
+FrameRule
+\series default
+.
+\begin_inset Box Framed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+Cuadro que permite saltos de página
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -29134,8 +29149,14 @@ Cuadros ! para evitar la partición de palabras
 \end_layout
 
 \begin_layout Standard
-Hay un tipo especial de cuadro para impedir que una palabra sea partida
- con guión.
+
+\lang english
+You can use the box type 
+\family sans
+Makebox
+\family default
+\lang spanish
+ para impedir que una palabra sea partida con guión.
 \begin_inset Newline newline
 \end_inset
 
@@ -29148,24 +29169,33 @@ palabra».
 \end_layout
 
 \begin_layout Standard
-Para evitar su división usa el comando
-\end_layout
+Para evitar su división 
+\lang english
+of the word 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Standard
+veryverylongword
+\begin_inset Quotes erd
+\end_inset
 
-\series bold
+, put the word into a box, set the 
+\family sans
+Inner
+\begin_inset space ~
+\end_inset
 
-\backslash
-mbox{
-\end_layout
+box
+\family default
+ to 
+\family sans
+Makebox
+\family default
+ and its width to 1
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Standard
-en código TeX antes de la palabra.
- Tras ella inserta una llave de cierre «
-\series bold
-}
-\series default
-» en código TeX.
+Width.
 \end_layout
 
 \begin_layout Standard
@@ -29174,30 +29204,26 @@ Este es el resultado:
 
 \begin_layout Standard
 Esta línea es un ejemplo para mostrar cómo evitar la división de 
-\begin_inset ERT
-status collapsed
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "1in"
+special "width"
+height "1in"
+height_special "totalheight"
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-mbox{
+«estalarguísimapalabra»
 \end_layout
 
 \end_inset
 
-«estalarguísimapalabra».
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -29256,30 +29282,26 @@ Esta línea es un ejemplo para mostrar cómo prevenir la división de
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "1in"
+special "width"
+height "1in"
+height_special "totalheight"
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-mbox{
+«estalarguísimapalabra»
 \end_layout
 
 \end_inset
 
-«estalarguísimapalabra».
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
+.
 \end_layout
 
 \begin_layout Subsection

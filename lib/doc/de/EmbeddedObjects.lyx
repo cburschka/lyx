@@ -27393,6 +27393,10 @@ Box
 \family default
  die Typen 
 \family sans
+Makebox
+\family default
+, 
+\family sans
 Parbox
 \family default
  und 
@@ -27427,6 +27431,17 @@ Parbox
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "abs:Parbox"
+
+\end_inset
+
+ und 
+\family sans
+Makebox
+\family default
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "abs:Silbentrennung-unterbinden"
 
 \end_inset
 
@@ -28141,6 +28156,14 @@ Verzierung
 \end_layout
 
 \begin_layout Description
+Kein
+\begin_inset space ~
+\end_inset
+
+Rahmen Nichts wird gezeichnet.
+\end_layout
+
+\begin_layout Description
 Einfacher
 \begin_inset space ~
 \end_inset
@@ -28149,7 +28172,7 @@ rechteckiger
 \begin_inset space ~
 \end_inset
 
-Rahmen Um die Box wird ein rechteckiger Rahmen gezogen.
+Rahmen Um die Box wird ein rechteckiger Rahmen gezeichnet.
  Die Rahmendicke wird durch 
 \series bold
 
@@ -28191,54 +28214,7 @@ erlaube
 \begin_inset space ~
 \end_inset
 
-Seitenumbrüche Wenn Sie die Verzierung 
-\family sans
-Einfacher rechteckiger Rahmen
-\family default
- und keine innere Box verwenden, können Sie Seitenumbrüche in der Box erlauben.
- Beachten Sie, dass im Gegensatz zu anderen gerahmten Boxen, der Rahmen
- immer über die gesamte Zeilenbreite gezeichnet wird, die Box ein Absatz
- für sich ist und 
-\series bold
-
-\backslash
-fboxrule
-\series default
- und 
-\series bold
-
-\backslash
-fboxsep
-\series default
- keinen Einfluss auf diesen Box Typ haben.
- Die Rahmendicke wird durch 
-\series bold
-
-\backslash
-FrameRule
-\series default
- festgelegt.
- 
-\begin_inset Box Framed
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status collapsed
-
-\begin_layout Plain Layout
-Box erlaubt Seitenumbruch
-\end_layout
-
-\end_inset
-
-
+Seitenumbrüche 
 \end_layout
 
 \begin_layout Description
@@ -28532,6 +28508,60 @@ LaTeX-Pakete ! fancybox
 \end_inset
 
  installiert sein.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Wenn Sie die Verzierung 
+\family sans
+Einfacher rechteckiger Rahmen
+\family default
+ und keine innere Box verwenden, können Sie Seitenumbrüche in der Box erlauben.
+ Beachten Sie, dass im Gegensatz zu anderen gerahmten Boxen, der Rahmen
+ immer über die gesamte Zeilenbreite gezeichnet wird, die Box ein Absatz
+ für sich ist und 
+\series bold
+
+\backslash
+fboxrule
+\series default
+ und 
+\series bold
+
+\backslash
+fboxsep
+\series default
+ keinen Einfluss auf diesen Box Typ haben.
+ Die Rahmendicke wird durch 
+\series bold
+
+\backslash
+FrameRule
+\series default
+ festgelegt.
+ 
+\begin_inset Box Framed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+Box erlaubt Seitenumbruch
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -29640,7 +29670,11 @@ Boxen ! zur Vermeidung von Silbentrennung
 \end_layout
 
 \begin_layout Standard
-Sie können eine spezielle Box benutzen, um Silbentrennungen zu unterbinden.
+Sie können den Boxtyp 
+\family sans
+Makebox
+\family default
+ benutzen, um Silbentrennungen zu unterbinden.
 \begin_inset Newline newline
 \end_inset
 
@@ -29660,51 +29694,38 @@ einsehrsehrsehrlangeswort
 \end_layout
 
 \begin_layout Standard
-Um das zu verhindern, fügen Sie vor dem Wort, das nicht getrennt werden
- soll, den TeX-Code
+Um das zu verhindern, fügen Sie das Wort in eine Box ein, setzen Sie die
+ Innere
+\begin_inset space ~
+\end_inset
+
+Box auf Makebox und deren Breite auf 1
+\begin_inset space \thinspace{}
+\end_inset
+
+Width.
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-
-\backslash
-mbox{
-\end_layout
-
-\begin_layout Standard
-ein.
- Hinter dem Wort fügen Sie 
-\series bold
-
-\begin_inset Quotes gld
-\end_inset
-
-}
-\series default
-
-\begin_inset Quotes grd
-\end_inset
-
- als TeX-Code ein.
- Hier ist das Ergebnis:
+Hier ist das Ergebnis:
 \end_layout
 
 \begin_layout Standard
 In dieser Zeile wird ein sehr langes Wort NICHT getrennt, nämlich 
-\begin_inset ERT
-status collapsed
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "1in"
+special "width"
+height "1in"
+height_special "totalheight"
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Quotes gld
 \end_inset
 
@@ -29713,12 +29734,6 @@ einsehrsehrsehrlangeswort
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -29772,9 +29787,9 @@ einsehrsehrsehrlangeswort
 \begin_layout Standard
 Natürlich ragt das Wort jetzt in den Seitenrand hinein.
  Wenn Sie das nicht wollen, müssen Sie einen manuellen Zeilenumbruch (
-\series bold
+\family sans
 Strg-Eingabe
-\series default
+\family default
 ) einfügen: 
 \end_layout
 
@@ -29784,19 +29799,20 @@ In dieser Zeile wird ein sehr langes Wort NICHT getrennt, nämlich
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "1in"
+special "width"
+height "1in"
+height_special "totalheight"
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Quotes gld
 \end_inset
 
@@ -29805,12 +29821,6 @@ einsehrsehrsehrlangeswort
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
