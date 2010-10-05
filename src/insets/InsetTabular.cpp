@@ -1995,29 +1995,29 @@ int Tabular::TeXTopHLine(odocstream & os, row_type row, string const lang) const
 		}
 	} else if (row == 0) {
 		for (col_type c = 0; c < ncols(); ++c) {
-			for ( ; c < ncols() && !topline[c]; ++c) {}
-
-			col_type offset = 0;
-			for (col_type j = 0 ; j < c; ++j)
-				if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
-					++offset;
-
-			//babel makes the "-" character an active one, so we have to suppress this here
-			//see http://groups.google.com/group/comp.text.tex/browse_thread/thread/af769424a4a0f289#
-			if (lang == "slovak" || lang == "czech")
-				os << "\\expandafter" << (use_booktabs ? "\\cmidrule" : "\\cline") 
-				   << "\\expandafter{\\expandafter" << c + 1 + offset << "\\string-";
-			else
-				os << (use_booktabs ? "\\cmidrule{" : "\\cline{") << c + 1 + offset << '-';
-
-			col_type cstart = c;
-			for ( ; c < ncols() && topline[c]; ++c) {}
-
-			for (col_type j = cstart ; j < c ; ++j)
-				if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
-					++offset;
-
-			os << c + offset << "} ";
+			if (topline[c]) {
+				col_type offset = 0;
+				for (col_type j = 0 ; j < c; ++j)
+					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
+						++offset;
+				
+				//babel makes the "-" character an active one, so we have to suppress this here
+				//see http://groups.google.com/group/comp.text.tex/browse_thread/thread/af769424a4a0f289#
+				if (lang == "slovak" || lang == "czech")
+					os << "\\expandafter" << (use_booktabs ? "\\cmidrule" : "\\cline") 
+					<< "\\expandafter{\\expandafter" << c + 1 + offset << "\\string-";
+				else
+					os << (use_booktabs ? "\\cmidrule{" : "\\cline{") << c + 1 + offset << '-';
+				
+				col_type cstart = c;
+				for ( ; c < ncols() && topline[c]; ++c) {}
+				
+				for (col_type j = cstart ; j < c ; ++j)
+					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
+						++offset;
+				
+				os << c + offset << "} ";
+			}
 		}
 	}
 	os << "\n";
@@ -2068,29 +2068,29 @@ int Tabular::TeXBottomHLine(odocstream & os, row_type row, string const lang) co
 			os << "\\hline ";
 	} else {
 		for (col_type c = 0; c < ncols(); ++c) {
-			for ( ; c < ncols() && !bottomline[c]; ++c) {}
-
-			col_type offset = 0;
-			for (col_type j = 0 ; j < c; ++j)
-				if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
-					++offset;
-
-			//babel makes the "-" character an active one, so we have to suppress this here
-			//see http://groups.google.com/group/comp.text.tex/browse_thread/thread/af769424a4a0f289#
-			if (lang == "slovak" || lang == "czech")
-				os << "\\expandafter" << (use_booktabs ? "\\cmidrule" : "\\cline") 
-				   << "\\expandafter{\\expandafter" << c + 1 + offset << "\\string-";
-			else
-				os << (use_booktabs ? "\\cmidrule{" : "\\cline{") << c + 1 + offset << '-';
-
-			col_type cstart = c;
-			for ( ; c < ncols() && bottomline[c]; ++c) {}
-
-			for (col_type j = cstart ; j < c ; ++j)
-				if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
-					++offset;
-
-			os << c + offset << "} ";
+			if (bottomline[c]) {
+				col_type offset = 0;
+				for (col_type j = 0 ; j < c; ++j)
+					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
+						++offset;
+				
+				//babel makes the "-" character an active one, so we have to suppress this here
+				//see http://groups.google.com/group/comp.text.tex/browse_thread/thread/af769424a4a0f289#
+				if (lang == "slovak" || lang == "czech")
+					os << "\\expandafter" << (use_booktabs ? "\\cmidrule" : "\\cline")
+					<< "\\expandafter{\\expandafter" << c + 1 + offset << "\\string-";
+				else
+					os << (use_booktabs ? "\\cmidrule{" : "\\cline{") << c + 1 + offset << '-';
+				
+				col_type cstart = c;
+				for ( ; c < ncols() && bottomline[c]; ++c) {}
+				
+				for (col_type j = cstart ; j < c ; ++j)
+					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
+						++offset;
+				
+				os << c + offset << "} ";
+			}
 		}
 	}
 	os << "\n";
