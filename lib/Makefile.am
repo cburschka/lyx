@@ -248,6 +248,7 @@ dist_examples_DATA = \
 	examples/chess-article.lyx \
 	examples/chessgame.lyx \
 	examples/docbook_article.lyx \
+	examples/ecta-draft-sample.lyx \
 	examples/europeCV.lyx \
 	examples/example_lyxified.lyx \
 	examples/example_raw.lyx \
