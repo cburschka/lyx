@@ -4,10 +4,20 @@
 \begin_header
 \textclass ectaart
 \begin_preamble
+%\RequirePackage{hypernat}
+
+%% Local definitions
 \startlocaldefs
+% These require a theorem-like module
+\numberwithin{equation}{section}
+\theoremstyle{plain}
 \endlocaldefs
 \end_preamble
-\use_default_options true
+\options draft, pdftex
+\use_default_options false
+\begin_modules
+theorems-ams
+\end_modules
 \maintain_unincluded_children false
 \language english
 \inputencoding auto
@@ -76,7 +86,9 @@ draft
 \family sans
 Predefined Class Options
 \family default
- in menu Document -> Preference -> Document Class.
+ in menu Document\SpecialChar \menuseparator
+Preference\SpecialChar \menuseparator
+Document Class.
  It implies to use the default 
 \begin_inset Quotes eld
 \end_inset
@@ -313,7 +325,7 @@ Author name to be shown at the header of even pages
 \begin_layout Address
 Address.
  Email: 
-\begin_inset Flex Email
+\begin_inset Flex Internet Address Reference
 status open
 
 \begin_layout Plain Layout
@@ -477,6 +489,20 @@ status collapsed
  W.
  Strahan and T.
  Cadell, London.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The 
+\family sans
+bysame
+\family default
+ inset is used in Reference section to indicate "same author" (long dash).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

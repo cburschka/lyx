@@ -62,6 +62,7 @@ End
 Style Address
 	CopyStyle	RunTitle
 	LatexName	address
+	OptionalArgs	1
 	LabelString	"Address:"
 End
 
@@ -135,6 +136,19 @@ Style Thanks_Text
         EndPreamble
 End
 
+Style Emphasize
+	CopyStyle	Standard
+	LatexType	Environment
+	LatexName	lyxem
+	TopSep		1
+	Font
+	  Shape		Italic
+	EndFont
+	Preamble
+		\newenvironment{lyxem}{\par\begin{em}}{\end{em}\par}
+	EndPreamble
+End
+
 InsetLayout Thanks_Reference
 	LyxType		custom
 	LatexType	Command
@@ -144,6 +158,7 @@ InsetLayout Thanks_Reference
 	LabelString	"Thanks Ref"
 	ForcePlain	1
 	MultiPar	0
+	BgColor		background
 End
 
 InsetLayout Internet_Address_Reference
@@ -163,6 +178,7 @@ InsetLayout Author
 	CopyStyle	Thanks_Reference
 	LatexName	author
 	LabelString	"Author"
+	BgColor		green
 End
 
 InsetLayout Name_(First_Name)
@@ -179,12 +195,6 @@ InsetLayout Name_(Surname)
 	BgColor		background
 End
 
-InsetLayout Email
-	CopyStyle	Thanks_Reference
-	LatexName	printead
-	LabelString	"Email"
-End
-
 InsetLayout Keyword
 	CopyStyle	Thanks_Reference
 	LatexName	kwd
@@ -195,7 +205,7 @@ InsetLayout By_Same_Author_(bib)
 	CopyStyle	Thanks_Reference
 	LatexName	bysame
 	LabelString	"bysame"
-	BgColor		black
+	BgColor		blue
 End
 
 Counter Thanks
