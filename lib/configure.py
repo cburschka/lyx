@@ -778,7 +778,6 @@ def checkConverterEntries():
     checkProg('a Dot -> Image converter', ['dot'],
         rc_entry = [
             r'''\converter dot        eps        "dot -Teps $$i -o $$o"	""
-\converter dot        pdf        "dot -Tpdf $$i -o $$o"	""
 \converter dot        png        "dot -Tpng $$i -o $$o"	""''',
             ''])
     #
