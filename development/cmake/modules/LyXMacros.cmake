@@ -113,6 +113,7 @@ macro(LYX_AUTOMOC)
                        ARGS ${_def} ${_moc_INCS} ${_header} -o ${_moc}
                        MAIN_DEPENDENCY ${_header})
                macro_add_file_dependencies(${_abs_FILE} ${_moc})
+               SET_SOURCE_FILES_PROPERTIES(${_moc} GENERATED)
             endforeach (_current_MOC_INC)
          else()
             #message(STATUS "moc not found : ${_abs_FILE} ")
