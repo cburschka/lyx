@@ -1651,13 +1651,13 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		flag.setOnOff(enable && doc_buffer->lyxvc().locking());
 		break;
 	case LFUN_VC_REVERT:
-		enable = doc_buffer && doc_buffer->lyxvc().inUse();
+		enable = doc_buffer && doc_buffer->lyxvc().inUse() && !doc_buffer->isReadonly();
 		break;
 	case LFUN_VC_UNDO_LAST:
 		enable = doc_buffer && doc_buffer->lyxvc().undoLastEnabled();
 		break;
 	case LFUN_VC_REPO_UPDATE:
-		enable = doc_buffer && doc_buffer->lyxvc().inUse();
+		enable = doc_buffer && doc_buffer->lyxvc().repoUpdateEnabled();
 		break;
 	case LFUN_VC_COMMAND: {
 		if (cmd.argument().empty())
