@@ -443,23 +443,32 @@ string CVS::checkIn(string const & msg)
 
 bool CVS::checkInEnabled()
 {
-	return true;
+	return !owner_->isReadonly();
 }
 
 
 string CVS::checkOut()
 {
-	// cvs update or perhaps for cvs this should be a noop
-	// we need to detect conflict (eg "C" in output)
-	// before we can do this.
-	lyxerr << "Sorry, not implemented." << endl;
-	return string();
+	// to be sure we test it again...
+	if (!checkOutEnabled())
+		return string();
+
+	int ret = doVCCommand("cvs -q edit "
+						  + quoteName(onlyFileName(owner_->absFileName())),
+						  FileName(owner_->filePath()));
+	if (ret)
+		return string();
+
+	ret = doVCCommand("cvs update "
+					  + quoteName(onlyFileName(owner_->absFileName())),
+					  FileName(owner_->filePath()));
+	return ret ? string() : "CVS: Proceeded";
 }
 
 
 bool CVS::checkOutEnabled()
 {
-	return false;
+	return owner_->isReadonly();
 }
 
 
@@ -500,7 +509,7 @@ void CVS::revert()
 		return;
 	FileName f(owner_->absFileName());
 	f.removeFile();
-	doVCCommand("cvs update " + fil,
+	doVCCommand("cvs -q update " + fil,
 		    FileName(owner_->filePath()));
 	owner_->markClean();
 }
