@@ -180,7 +180,11 @@ Function ConfigureMiKTeX
    File /r "${DVIPostFileDir}"
    
    # refresh MiKTeX's file name database
-   ExecWait "$LaTeXPath\initexmf --update-fndb"
+    ${if} $MiKTeXUser != "HKCU" # call the admin version when the user is admin
+     ExecWait "$LaTeXPath\initexmf --admin --update-fndb"
+    ${else} 
+     ExecWait "$LaTeXPath\initexmf --update-fndb"
+    ${endif}
    
    # enable package installation without asking (1 = Yes, 0 = No, 2 = Ask me first)
    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1" # if only for current user
