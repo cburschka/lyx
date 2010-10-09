@@ -1981,14 +1981,14 @@ void LyXAction::init()
  * \li Origin: Jug, 22 May 2000
  * \endvar
  */
-		{ LFUN_CELL_BACKWARD, "cell-backward", Noop, Edit },
+		{ LFUN_CELL_BACKWARD, "cell-backward", ReadOnly | NoUpdate, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_CELL_FORWARD
  * \li Action: Moves the cursor to the next cell inside the table.
  * \li Syntax: cell-forward
  * \endvar
  */
-		{ LFUN_CELL_FORWARD, "cell-forward", Noop, Edit },
+		{ LFUN_CELL_FORWARD, "cell-forward", ReadOnly | NoUpdate, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_CELL_SPLIT
  * \li Action: Splits cell and shifts right part to the next cell (inside the math grid).
