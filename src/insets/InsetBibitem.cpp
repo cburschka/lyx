@@ -122,6 +122,54 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		}
 		docstring const & old_key = params()["key"];
+		docstring const & old_label = params()["label"];
+		docstring label = p["label"];
+
+		// definitions for escaping
+		int previous;
+		static docstring const backslash = from_ascii("\\");
+		static docstring const lbrace = from_ascii("{");
+		static docstring const rbrace = from_ascii("}");
+		static char_type const chars_escape[6] = {
+			'&', '_', '$', '%', '#', '^'};
+		static char_type const brackets_escape[2] = {'[', ']'};
+
+		if (!label.empty()) {
+			// The characters in chars_name[] need to be changed to a command when
+			// they are in the name field.
+			for (int k = 0; k < 6; k++)
+				for (size_t i = 0, pos;
+					(pos = label.find(chars_escape[k], i)) != string::npos;
+					i = pos + 2) {
+						if (pos == 0)
+							previous = 0;
+						else
+							previous = pos - 1;
+						// only if not already escaped
+						if (label[previous] != '\\')
+							label.replace(pos, 1, backslash + chars_escape[k] + lbrace + rbrace);
+				}
+			// The characters '[' and ']' need to be put into braces
+			for (int k = 0; k < 2; k++)
+				for (size_t i = 0, pos;
+					(pos = label.find(brackets_escape[k], i)) != string::npos;
+					i = pos + 2) {
+						if (pos == 0)
+							previous = 0;
+						else
+							previous = pos - 1;
+						// only if not already escaped
+						if (label[previous] != '{')
+							label.replace(pos, 1, lbrace + brackets_escape[k] + rbrace);
+				}
+
+			if (old_label != label) {
+				p["label"] = label;
+				cur.forceBufferUpdate();
+				buffer().invalidateBibinfoCache();
+			}
+		}
+
 		setParam("label", p["label"]);
 		if (p["key"] != old_key) {
 			updateCommand(p["key"]);
