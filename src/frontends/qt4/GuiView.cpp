@@ -1367,7 +1367,7 @@ static FileName selectTemplateFile()
 {
 	FileDialog dlg(qt_("Select template file"));
 	dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
-	dlg.setButton1(qt_("Templates|#T#t"), toqstr(lyxrc.template_path));
+	dlg.setButton2(qt_("Templates|#T#t"), toqstr(lyxrc.template_path));
 
 	FileDialog::Result result = dlg.open(toqstr(lyxrc.template_path),
 			     QStringList(qt_("LyX Documents (*.lyx)")));
