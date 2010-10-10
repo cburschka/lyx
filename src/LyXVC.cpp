@@ -292,4 +292,10 @@ bool LyXVC::undoLastEnabled()
 }
 
 
+bool LyXVC::repoUpdateEnabled()
+{
+	return vcs && vcs->repoUpdateEnabled();
+}
+
+
 } // namespace lyx

@@ -483,7 +483,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		flag.setOnOff(enable && !buf->lyxvc().locker().empty());
 		break;
 	case LFUN_VC_REVERT:
-		enable = buf->lyxvc().inUse();
+		enable = !buf->isReadonly() && buf->lyxvc().inUse();
 		break;
 	case LFUN_VC_UNDO_LAST:
 		enable = buf->lyxvc().undoLastEnabled();
@@ -583,7 +583,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	case LFUN_VC_REPO_UPDATE:
-		enable = buf->lyxvc().inUse();
+		enable = buf->lyxvc().repoUpdateEnabled();
 		break;
 
 	case LFUN_VC_COMMAND: {
