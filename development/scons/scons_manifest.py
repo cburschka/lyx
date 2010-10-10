@@ -1297,6 +1297,7 @@ lib_templates_files = Split('''
     de_beamer-conference-ornate-20min.lyx
     dinbrief.lyx
     docbook_article.lyx
+    ectaart.lyx
     elsarticle.lyx
     es_beamer-conference-ornate-20min.lyx
     fr_beamer-conference-ornate-20min.lyx
@@ -2666,6 +2667,7 @@ lib_layouts_files = Split('''
     docbook.layout
     doublecol-new.layout
     dtk.layout
+    ectaart.layout
     egs.layout
     elsart.layout
     elsarticle.layout
