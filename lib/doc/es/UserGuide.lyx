@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 401
+\lyxformat 402
 \begin_document
 \begin_header
 \textclass scrbook
@@ -29392,8 +29392,10 @@ texto subrayado
 \bar default
 \color inherit
  es texto añadido, 
+\strikeout on
 \color blue
 texto tachado
+\strikeout default
 \color inherit
  es texto borrado.
  El color depende del autor que hizo el cambio.

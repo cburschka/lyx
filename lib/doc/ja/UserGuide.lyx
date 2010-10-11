@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 401
+\lyxformat 402
 \begin_document
 \begin_header
 \textclass jbook
@@ -36502,8 +36502,10 @@ name "sec:変更追跡機能"
 \bar default
 \color inherit
 、削除部分は
+\strikeout on
 \color blue
 取り消し文章
+\strikeout default
 \color inherit
 のように表示されるようになります。色は、変更した執筆者によって異なります。色は、LyX設定ダイアログの
 \family sans

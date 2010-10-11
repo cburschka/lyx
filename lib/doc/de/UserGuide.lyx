@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 401
+\lyxformat 402
 \begin_document
 \begin_header
 \textclass scrbook
@@ -24367,63 +24367,21 @@ mathematische!Formeln
 
 \end_layout
 
+\begin_layout Standard
+Alle Themen dieses Kapitels sind im Detail im 
+\emph on
+Mathe
+\emph default
+ Handbuch beschrieben.
+ Dort finden Sie außerdem Tipps und Tricks für spezielle Fälle.
+\end_layout
+
 \begin_layout Section
 Grundlagen
 \end_layout
 
 \begin_layout Standard
-Mathematische Ausdrücke mit LyX zu schreiben ist jetzt fast vollständig
- WYSIWYM
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-WYSIWYM
-\end_layout
-
-\end_inset
-
-.
- Sie können das mit dem Mathematik-Editor
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Mathematik!Editor
-\end_layout
-
-\end_inset
-
- (kurz Mathed) erledigen.
-\end_layout
-
-\begin_layout Subsection
-Mathed starten
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Mathed
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Mathed-starten"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Es gibt verschiedene Wege, um 
-\family roman
-Mathed
-\family default
- zu starten.
+Es gibt verschiedene Wege eine Formel einzufügen.
  Sie können einfach auf den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/math-mode.png
@@ -24436,8 +24394,7 @@ Mathed
 
  klicken.
  Das öffnet ein kleines blaues Rechteck, mit purpurnen Häkchen umrandet.
- Das blaue Rechteck ist die Mathed-Cursor-Position, und die purpurne Farbe
- deutet an, dass Sie im 
+ Die purpurne Farbe deutet an, dass Sie im 
 \family typewriter
 Mathe-Modus
 \family default
@@ -24475,16 +24432,16 @@ M
 \family sans
 Strg+M
 \family default
- (letzteres nur im CUA-Modus) benutzen.
- Auf all diese Arten wird ein Mathed-Kästchen 
+ benutzen.
+ Auf all diese Arten wird eine Formel 
 \emph on
 in der Zeile
 \emph default
- erzeugt.
+ (eingebettet) erzeugt.
 \end_layout
 
 \begin_layout Standard
-Um eine eigenständige Formel oder Gleichung zu erhalten, wählen Sie 
+Um eine abgesetzte Formel zu erhalten, wählen Sie 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Mathe\SpecialChar \menuseparator
@@ -34257,8 +34214,11 @@ Unterstrichener Text
 \bar default
 \color inherit
 ist eine Einfügung, 
+\strikeout on
 \color blue
-durchgestrichener Text 
+durchgestrichener Text
+\strikeout default
+ 
 \color inherit
 eine Löschung.
  Die Farbe hängt vom Autor der Änderung ab.

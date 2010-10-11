@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 401
+\lyxformat 402
 \begin_document
 \begin_header
 \textclass scrbook
@@ -30664,7 +30664,11 @@ du texte souligné
 \color inherit
 est un ajout
 \color blue
-, du texte barré 
+, 
+\strikeout on
+du texte barré
+\strikeout default
+ 
 \color inherit
 est une suppression.
  La couleur dépend de l'auteur de la modification.
