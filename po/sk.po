@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-10-11 07:40+0200\n"
-"PO-Revision-Date: 2010-10-10 17:33+0200\n"
+"PO-Revision-Date: 2010-10-11 14:22+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenčina <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -5847,48 +5847,40 @@ msgid "Verteiler"
 msgstr "Na vedomie"
 
 #: lib/layouts/ectaart.layout:21
-#, fuzzy
 msgid "RunTitle"
-msgstr "StĺpecNadpis"
+msgstr "Vrchný riadok: Nadpis"
 
 #: lib/layouts/ectaart.layout:28
-#, fuzzy
 msgid "Running Title:"
-msgstr "Stĺpec nadpis:"
+msgstr "Nadpis vo vrchnom riadku:"
 
 #: lib/layouts/ectaart.layout:35
-#, fuzzy
 msgid "RunAuthor"
-msgstr "StĺpecAutor"
+msgstr "Vrchný riadok: Autor"
 
 #: lib/layouts/ectaart.layout:39
-#, fuzzy
 msgid "Running Author:"
-msgstr "Stĺpec autor:"
+msgstr "Autor vo vrchnom riadku:"
 
 #: lib/layouts/ectaart.layout:77 lib/layouts/latex8.layout:70
 msgid "E-mail:"
 msgstr "E-mail:"
 
 #: lib/layouts/ectaart.layout:93
-#, fuzzy
 msgid "Web Address"
-msgstr "Adresa"
+msgstr "Web Adresa"
 
 #: lib/layouts/ectaart.layout:96
-#, fuzzy
 msgid "Web address:"
-msgstr "Ďalšia Adresa:"
+msgstr "Web-adresa:"
 
 #: lib/layouts/ectaart.layout:109
-#, fuzzy
 msgid "Authors Block"
-msgstr "Autori"
+msgstr "Block Autorov"
 
 #: lib/layouts/ectaart.layout:113
-#, fuzzy
 msgid "Authors Block:"
-msgstr "Autori"
+msgstr "Blok Autorov:"
 
 #: lib/layouts/ectaart.layout:116 lib/layouts/ectaart.layout:198
 #: lib/layouts/ectaart.layout:201 lib/layouts/entcs.layout:99
@@ -5906,57 +5898,48 @@ msgid "Keywords:"
 msgstr "Heslá:"
 
 #: lib/layouts/ectaart.layout:126
-#, fuzzy
 msgid "Thanks Text"
-msgstr "Vďaka"
+msgstr "Vďaka Text"
 
 #: lib/layouts/ectaart.layout:133
 msgid "Thanks \\theThanks:"
-msgstr ""
+msgstr "Vďaka \\theThanks:"
 
 #: lib/layouts/ectaart.layout:139
-#, fuzzy
 msgid "Emphasize"
-msgstr "Štýl zvýraznenie"
+msgstr "Zvýraznenie"
 
 #: lib/layouts/ectaart.layout:152
-#, fuzzy
 msgid "Thanks Reference"
-msgstr "Referencia"
+msgstr "Referencia na Vďaku"
 
 #: lib/layouts/ectaart.layout:158
-#, fuzzy
 msgid "Thanks Ref"
-msgstr "Vďaka"
+msgstr "Referencia na Vďaku"
 
 #: lib/layouts/ectaart.layout:164
-#, fuzzy
 msgid "Internet Address Reference"
-msgstr "Vložiť krížovú referenciu"
+msgstr "Referencia na internetovú adresu"
 
 #: lib/layouts/ectaart.layout:167
 msgid "Internet Addess Ref"
-msgstr ""
+msgstr "Referencia na internetovú adresu"
 
 #: lib/layouts/ectaart.layout:170 lib/layouts/ectaart.layout:173
-#, fuzzy
 msgid "Corresponding Author"
-msgstr "Príslušný autor"
+msgstr "Príslušný Autor"
 
 #: lib/layouts/ectaart.layout:184
-#, fuzzy
 msgid "Name (First Name)"
-msgstr "Krstné_meno"
+msgstr "Meno (Krstné Meno)"
 
 #: lib/layouts/ectaart.layout:187
-#, fuzzy
 msgid "First Name"
-msgstr "Krstné_meno"
+msgstr "Krstné Meno"
 
 #: lib/layouts/ectaart.layout:191
-#, fuzzy
 msgid "Name (Surname)"
-msgstr "Priezvisko"
+msgstr "Meno (Priezvisko)"
 
 #: lib/layouts/ectaart.layout:194 lib/layouts/agu_stdclass.inc:65
 #: lib/layouts/db_stdcharstyles.inc:48 lib/layouts/db_stdtitle.inc:98
@@ -5965,12 +5948,11 @@ msgstr "Priezvisko"
 
 #: lib/layouts/ectaart.layout:204
 msgid "By Same Author (bib)"
-msgstr ""
+msgstr "Od rovnakého Autora (bib)"
 
 #: lib/layouts/ectaart.layout:207
-#, fuzzy
 msgid "bysame"
-msgstr "Meno"
+msgstr "Od rovnakého autora"
 
 #: lib/layouts/egs.layout:141 lib/layouts/stdlists.inc:86
 msgid "00.00.0000"
