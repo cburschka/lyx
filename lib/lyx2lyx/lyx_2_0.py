@@ -2180,6 +2180,7 @@ def revert_rule(document):
       else:
         return
 
+
 def revert_diagram(document):
   " Add the feyn package if \\Diagram is used in math "
   i = 0
@@ -2201,6 +2202,34 @@ def revert_diagram(document):
     # only need to do it once!
     return
 
+
+def convert_bibtexClearpage(document):
+  " insert a clear(double)page bibliographystyle if bibtotoc option is used "
+  while True:
+    i = find_token(document.header, '\\papersides', 0)
+    document.warning(str(i))
+    if i == -1:
+      document.warning("Malformed LyX document: Can't find papersides definition.")
+      return
+    else:
+      sides = int(document.header[i][12])
+    # only act of there is the option "bibtotoc"
+    j = find_token(document.body, 'options "bibtotoc', 0)
+    if j == -1:
+      return
+    subst1 = '\\begin_layout Standard\n' \
+      + '\\begin_inset Newpage clearpage\n' \
+      + '\end_inset\n\n\n' \
+      + '\end_layout\n'
+    subst2 = '\\begin_layout Standard\n' \
+      + '\\begin_inset Newpage cleardoublepage\n' \
+      + '\end_inset\n\n\n' \
+      + '\end_layout\n'
+    if sides == 1:
+      document.body.insert(j -5, subst1)
+    else:
+      document.body.insert(j -5, subst2)
+    return
 
 
 ##
@@ -2263,10 +2292,12 @@ convert = [[346, []],
            [398, []],
            [399, [convert_mathdots]],
            [400, [convert_rule]],
-           [401, []]
+           [401, []],
+           [402, [convert_bibtexClearpage]]
           ]
 
-revert =  [[400, [revert_diagram]],
+revert =  [[401, []],
+           [400, [revert_diagram]],
            [399, [revert_rule]],
            [398, [revert_mathdots]],
            [397, [revert_mathrsfs]],

@@ -24,6 +24,7 @@
 #include "LaTeXFeatures.h"
 #include "output_xhtml.h"
 #include "OutputParams.h"
+#include "PDFOptions.h"
 #include "TextClass.h"
 
 #include "frontends/alert.h"
@@ -379,16 +380,12 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 
 	// bibtotoc-Option
 	if (!bibtotoc.empty() && !buffer().params().use_bibtopic) {
-		if (buffer().params().documentClass().hasLaTeXLayout("chapter")) {
-			if (buffer().params().sides == OneSide) {
-				// oneside
-				os << "\\clearpage";
-			} else {
-				// twoside
-				os << "\\cleardoublepage";
-			}
+		// set label for hyperref, see http://www.lyx.org/trac/ticket/6470
+		if (buffer().params().pdfoptions().use_hyperref)
+				os << "\\phantomsection";
+		if (buffer().params().documentClass().hasLaTeXLayout("chapter"))
 			os << "\\addcontentsline{toc}{chapter}{\\bibname}";
-		} else if (buffer().params().documentClass().hasLaTeXLayout("section"))
+		else if (buffer().params().documentClass().hasLaTeXLayout("section"))
 			os << "\\addcontentsline{toc}{section}{\\refname}";
 	}
 
