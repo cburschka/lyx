@@ -7,6 +7,11 @@ The good example would be 2010-01-10 entry.
 
 -----------------------
 
+2010-10-11 Uwe Stöhr <uwestoehr@web.de>
+	* Format incremented to 402: fix for bug 1881
+	  no new or removed parameter, only used to handle a LaTeX
+	  output issue
+
 2010-09-19 Ronen Abravanel <ronena@gmail.com>
 	* Format incremented to 401: support for Feynman diagrams
 	  new math command \Diagram
