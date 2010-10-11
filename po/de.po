@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-09-15 23:10+0200\n"
-"PO-Revision-Date: 2010-10-10 15:24+0200\n"
+"PO-Revision-Date: 2010-10-11 08:03+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -3392,7 +3392,7 @@ msgstr "&Vektorgrafik-Format"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:73
 msgid "S&hort Name:"
-msgstr "&Einsortieren als:"
+msgstr "Kur&ztitel:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:86
 msgid "E&xtension:"
@@ -6061,7 +6061,7 @@ msgstr "Biografie ohne Foto"
 
 #: lib/layouts/IEEEtran.layout:283
 msgid "BiographyNoPhoto"
-msgstr "BiografieOhneFoto"
+msgstr "Biographie ohne Foto"
 
 #: lib/layouts/IEEEtran.layout:305
 #: lib/layouts/beamer.layout:1063
@@ -6696,11 +6696,11 @@ msgstr "Zugehörigkeitsmarke"
 
 #: lib/layouts/agutex.layout:111
 msgid "Author affiliation"
-msgstr "Autor Zugehörigkeit"
+msgstr "Zugehörigkeit des Autors"
 
 #: lib/layouts/agutex.layout:121
 msgid "Author affiliation:"
-msgstr "Autor Zugehörigkeit:"
+msgstr "Zugehörigkeit des Autors:"
 
 #: lib/layouts/agutex.layout:141
 #: lib/layouts/egs.layout:502
@@ -13305,7 +13305,7 @@ msgstr "Halbgeviert-Abstand (Enskip)|k"
 
 #: lib/ui/stdcontext.inc:210
 msgid "Protected Half Quad Space (Enspace)|E"
-msgstr "Geschützter Halbgeviert-Abstand (Enpace)|E"
+msgstr "Geschützter Halbgeviert-Abstand (Enspace)|E"
 
 #: lib/ui/stdcontext.inc:211
 #: lib/ui/stdcontext.inc:237
@@ -18921,7 +18921,7 @@ msgstr "Undefinierter Zeichenstil"
 
 #: src/Exporter.cpp:50
 msgid "&Keep file"
-msgstr "&Datei behalten"
+msgstr "&Nicht überschreiben"
 
 #: src/Exporter.cpp:51
 msgid "Overwrite &all"
@@ -21531,7 +21531,7 @@ msgstr ""
 #: src/frontends/qt4/GuiErrorList.cpp:44
 #: src/frontends/qt4/GuiLog.cpp:237
 msgid "Literate"
-msgstr "Literarisch"
+msgstr "Literal"
 
 #: src/frontends/qt4/GuiErrorList.cpp:46
 msgid "pLaTeX"
