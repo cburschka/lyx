@@ -2186,7 +2186,6 @@ lib_doc_clipart_files = Split('''
     macrobox.png
     MacroToolbar.png
     macrouse.png
-    mbox.png
     mobius.eps
     platypus.eps
     referenceQt4.png

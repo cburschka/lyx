@@ -16653,30 +16653,20 @@ Strg+
 
 \begin_layout Standard
 Manchmal will man verhindern, dass etwas getrennt wird.
- Dann schreibt man den Begriff am besten in eine 
-\family typewriter
-
-\backslash
-mbox
-\family default
- als TeX-Code, zum Beispiel 
-\begin_inset Graphics
-	filename ../clipart/mbox.png
-	scale 70
-	BoundingBox 0bp 6bp 102bp 22bp
-
-\end_inset
-
-.
- In diesem Fall würde 
+ Dann schreibt man den Begriff am besten in eine Makebox wie in Abschnitt
+ 
 \begin_inset Quotes gld
 \end_inset
 
-A-b c
+Silbentrennung unterbinden
 \begin_inset Quotes grd
 \end_inset
 
- in einer Zeile gedruckt werden.
+ des 
+\emph on
+EingebetteteObjekte
+\emph default
+ Handbuchs beschrieben.
 \end_layout
 
 \begin_layout Description

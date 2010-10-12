@@ -14889,46 +14889,25 @@ A-b c
 .
  LaTeX considère le tiret comme une possibilité de césure, or une césure
  à cet endroit serait peu judicieuse.
- Pour empêcher le raccourci d'être coupe en deux, vous pouvez le mettre
- comme argument de la commande LaTeX 
-\series bold
-
-\backslash
-mbox
-\series default
-, parce que le texte qui est dans une boîte LaTeX ne peut pas être coupé.
- Comme LyX ne gère pas la commande 
-\series bold
-
-\backslash
-mbox
-\series default
- vous devez utiliser du code TeX.
- Le résultat, dans LyX, ressemble à ceci :
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename ../clipart/mbox.png
-
+ Pour empêcher le raccourci d'être coupe en deux, 
+\lang english
+you can put it into a makebox as described in section
+\lang french
+ 
+\begin_inset Quotes fld
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Pour en apprendre plus sur le code TeX, jettez un coup d'œil à la section
-\begin_inset space ~
+Empêcher la Césure
+\begin_inset Quotes frd
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Code-TeX"
-
-\end_inset
-
-.
+ 
+\lang english
+of the 
+\emph on
+EmbeddedObjects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Subsection

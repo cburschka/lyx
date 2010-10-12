@@ -21124,33 +21124,43 @@ LaTeXは、ハイフネーションをほとんど完璧にこなしますが、
 \end_layout
 
 \begin_layout Standard
-ときには、単語や複合語がハイフンで区切られることを避けたい場合があるかもしれません。たとえば文書中で、キー割り当てや短絡キーを「A-b c」のように表すものとし
-ましょう。するとLaTeXは、ハイフン「-」をハイフネーション位置の候補として考えます。しかし、この場所でのハイフネーションは醜悪です。この短絡キー表記がハイフ
-ンで区切られるのを避けるには、それをLaTeXのボックスコマンド
-\backslash
-mboxの引数に入れると、LaTeXボックス内の字句はハイフンネーションの対象とならないので、うまく回避できます。LyXは
-\backslash
-mboxをサポートしていないので、TeXコードを使わなくてはなりません。その結果、以下のような外観になるでしょう。
-\end_layout
 
-\begin_layout Standard
-\begin_inset Graphics
-	filename ../clipart/mbox.png
-
+\lang english
+Sometimes you want to prevent words or constructs to be hyphenated.
+ Imagine that you are describing keybindings/shortcuts in your document
+ in the form 
+\begin_inset Quotes eld
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-TeXコードの詳細に関しては、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:TeXコード"
-
+A-b c
+\begin_inset Quotes erd
 \end_inset
 
-節を参照してください。
+.
+ LaTeX would then see the hyphen 
+\begin_inset Quotes eld
+\end_inset
+
+-
+\begin_inset Quotes erd
+\end_inset
+
+ as hyphenation possibility.
+ Hyphenating at this point would look ugly.
+ To prevent the shortcut from being hyphenated, you can put it into a makebox
+ as described in section 
+\begin_inset Quotes eld
+\end_inset
+
+Prevent Hyphenation
+\begin_inset Quotes erd
+\end_inset
+
+ of the 
+\emph on
+EmbeddedObjects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Subsection

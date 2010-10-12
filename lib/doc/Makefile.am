@@ -47,7 +47,6 @@ dist_clipartdoc_DATA = \
 	clipart/macrobox.png \
 	clipart/MacroToolbar.png \
 	clipart/macrouse.png \
-	clipart/mbox.png \
 	clipart/referenceQt4.png \
 	clipart/SpaceMarker.png \
 	clipart/StandardToolbar.png \
