@@ -42,6 +42,12 @@ InsetFlex::InsetFlex(InsetFlex const & in)
 {}
 
 
+docstring InsetFlex::name() const
+{ 
+	return from_utf8("Flex:" + name_); 
+}
+
+
 InsetLayout::InsetDecoration InsetFlex::decoration() const
 {
 	InsetLayout::InsetDecoration const dec = getLayout().decoration();

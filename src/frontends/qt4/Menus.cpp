@@ -1090,7 +1090,10 @@ void MenuDefinition::expandFlexInsert(
 	TextClass::InsetLayouts::const_iterator end = insetLayouts.end();
 	for (; cit != end; ++cit) {
 		if (cit->second.lyxtype() == type) {
-			docstring const label = cit->first;
+			docstring label = cit->first;
+			// we remove the "Flex:" prefix, if it is present
+			if (prefixIs(label, from_utf8("Flex:")))
+				label = label.substr(5);
 			addWithStatusCheck(MenuItem(MenuItem::Command, 
 				toqstr(translateIfPossible(label)),
 				FuncRequest(LFUN_FLEX_INSERT, Lexer::quoteString(label))));

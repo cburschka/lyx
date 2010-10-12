@@ -100,6 +100,10 @@ import os, re, string, sys
 # Incremented to format 28, 6 August 2010 by lasgouttes
 # Added ParbreakIsNewline tag for Layout and InsetLayout.
 
+# Incremented to format 29, 10 August 2010 by rgh
+# Changed Custom:Style, CharStyle:Style, and Element:Style
+# uniformly to Flex:Style.
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -107,7 +111,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 28
+currentFormat = 29
 
 
 def usage(prog_name):
@@ -191,6 +195,9 @@ def convert(lines):
     re_Type = re.compile(r'\s*Type\s+(\w+)', re.IGNORECASE)
     re_Builtin = re.compile(r'^(\s*)LaTeXBuiltin\s+(\w*)', re.IGNORECASE)
     re_True = re.compile(r'^\s*(?:true|1)\s*$', re.IGNORECASE)
+    re_InsetLayout = re.compile(r'^\s*InsetLayout\s+(?:Custom|CharStyle|Element):(\S+)\s*$')
+    # with quotes
+    re_QInsetLayout = re.compile(r'^\s*InsetLayout\s+"(?:Custom|CharStyle|Element):([^"]+)"\s*$')
 
     # counters for sectioning styles (hardcoded in 1.3)
     counters = {"part"          : "\\Roman{part}",
@@ -279,10 +286,21 @@ def convert(lines):
                 i += 1
             continue
         
+        if format == 28:
+          match = re_InsetLayout.match(lines[i])
+          if match:
+            lines[i] = "InsetLayout Flex:" + match.group(1)
+          else:
+            match = re_QInsetLayout.match(lines[i])
+            if match:
+              lines[i] = "InsetLayout \"Flex:" + match.group(1) + "\""
+          i += 1
+          continue
+        
         # Only new features
         if format >= 24 and format <= 27:
-            i += 1
-            continue
+          i += 1
+          continue
 
         if format == 23:
           match = re_Float.match(lines[i])

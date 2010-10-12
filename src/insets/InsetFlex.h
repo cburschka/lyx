@@ -25,7 +25,7 @@ public:
 	///
 	InsetFlex(Buffer *, std::string const & layoutName);
 	///
-	docstring name() const { return from_utf8(name_); }
+	docstring name() const;
 	///
 	InsetCode lyxCode() const { return FLEX_CODE; }
 	/// Default looks
@@ -33,7 +33,7 @@ public:
 	///
 	void write(std::ostream &) const;
 	/// should paragraph indendation be ommitted in any case?
-	bool neverIndent() const { return true; }
+	bool neverIndent() const { return true; }	
 	///
 	bool hasSettings() const { return false; }
 	///

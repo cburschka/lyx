@@ -2,10 +2,10 @@
 # Author : Martin vermeer <martin.vermeer@hut.fi>
 # Character Styles definition
 
-Format 28
+Format 29
 
 # Error fallback:
-InsetLayout CharStyle
+InsetLayout Flex
 	LyxType               end
 	LabelString           "UNDEFINED"
 	Font

@@ -84,7 +84,8 @@ def layouts_l10n(input_files, output, base):
     ListName = re.compile(r'\s*ListName\s+(.*)')
     CategoryName = re.compile(r'\s*Category\s+(.*)')
     NameRE = re.compile(r'DeclareLyXModule.*{(.*)}')
-    InsetLayout = re.compile(r'^InsetLayout\s+(.*)')
+    InsetLayout = re.compile(r'^InsetLayout\s+\"?(.*)\"?')
+    FlexCheck = re.compile(r'^Flex:(.*)')
     DescBegin = re.compile(r'#+\s*DescriptionBegin\s*$')
     DescEnd = re.compile(r'#+\s*DescriptionEnd\s*$')
     Category = re.compile(r'#Category: (.*)$')
@@ -172,6 +173,9 @@ def layouts_l10n(input_files, output, base):
                 string = res.group(1)
                 string = string.replace('_', ' ')
                 writeString(out, src, base, lineno, string)
+                m = FlexCheck.search(string)
+                if m:
+                  writeString(out, src, base, lineno, m.group(1))
                 continue
             res = Category.search(line)
             if res != None:

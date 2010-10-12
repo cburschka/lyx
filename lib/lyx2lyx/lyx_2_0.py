@@ -2056,6 +2056,110 @@ def revert_mathrsfs(document):
       i += 1
 
 
+def convert_flexnames(document):
+    "Convert \\begin_inset Flex Custom:Style to \\begin_inset Flex Style and similarly for CharStyle and Element."
+    
+    i = 0
+    rx = re.compile(r'^\\begin_inset Flex (?:Custom|CharStyle|Element):(.+)$')
+    while True:
+      i = find_token(document.body, "\\begin_inset Flex", i)
+      if i == -1:
+        return
+      m = rx.match(document.body[i])
+      if m:
+        document.body[i] = "\\begin_inset Flex " + m.group(1)
+      i += 1
+
+
+flex_insets = [
+  ["Alert", "CharStyle:Alert"],
+  ["Code", "CharStyle:Code"],
+  ["Concepts", "CharStyle:Concepts"],
+  ["E-Mail", "CharStyle:E-Mail"],
+  ["Emph", "CharStyle:Emph"],
+  ["Expression", "CharStyle:Expression"],
+  ["Initial", "CharStyle:Initial"],
+  ["Institute", "CharStyle:Institute"],
+  ["Meaning", "CharStyle:Meaning"],
+  ["Noun", "CharStyle:Noun"],
+  ["Strong", "CharStyle:Strong"],
+  ["Structure", "CharStyle:Structure"],
+  ["ArticleMode", "Custom:ArticleMode"],
+  ["Endnote", "Custom:Endnote"],
+  ["Glosse", "Custom:Glosse"],
+  ["PresentationMode", "Custom:PresentationMode"],
+  ["Tri-Glosse", "Custom:Tri-Glosse"]
+]
+
+flex_elements = [
+  ["Abbrev", "Element:Abbrev"],
+  ["CCC-Code", "Element:CCC-Code"],
+  ["Citation-number", "Element:Citation-number"],
+  ["City", "Element:City"],
+  ["Code", "Element:Code"],
+  ["CODEN", "Element:CODEN"],
+  ["Country", "Element:Country"],
+  ["Day", "Element:Day"],
+  ["Directory", "Element:Directory"],
+  ["Dscr", "Element:Dscr"],
+  ["Email", "Element:Email"],
+  ["Emph", "Element:Emph"],
+  ["Filename", "Element:Filename"],
+  ["Firstname", "Element:Firstname"],
+  ["Fname", "Element:Fname"],
+  ["GuiButton", "Element:GuiButton"],
+  ["GuiMenu", "Element:GuiMenu"],
+  ["GuiMenuItem", "Element:GuiMenuItem"],
+  ["ISSN", "Element:ISSN"],
+  ["Issue-day", "Element:Issue-day"],
+  ["Issue-months", "Element:Issue-months"],
+  ["Issue-number", "Element:Issue-number"],
+  ["KeyCap", "Element:KeyCap"],
+  ["KeyCombo", "Element:KeyCombo"],
+  ["Keyword", "Element:Keyword"],
+  ["Literal", "Element:Literal"],
+  ["MenuChoice", "Element:MenuChoice"],
+  ["Month", "Element:Month"],
+  ["Orgdiv", "Element:Orgdiv"],
+  ["Orgname", "Element:Orgname"],
+  ["Postcode", "Element:Postcode"],
+  ["SS-Code", "Element:SS-Code"],
+  ["SS-Title", "Element:SS-Title"],
+  ["State", "Element:State"],
+  ["Street", "Element:Street"],
+  ["Surname", "Element:Surname"],
+  ["Volume", "Element:Volume"],
+  ["Year", "Element:Year"]
+]
+
+
+def revert_flexnames(document):
+  if document.backend == "latex":
+    flexlist = flex_insets
+  else:
+    flexlist = flex_elements
+  
+  rx = re.compile(r'^\\begin_inset Flex\s+(.+)$')
+  i = 0
+  while True:
+    i = find_token(document.body, "\\begin_inset Flex", i)
+    if i == -1:
+      return
+    m = rx.match(document.body[i])
+    if not m:
+      document.warning("Illegal flex inset: " + document.body[i])
+      i += 1
+      continue
+    
+    style = m.group(1)
+    for f in flexlist:
+      if f[0] == style:
+        document.body[i] = "\\begin_inset Flex " + f[1]
+        break
+
+    i += 1
+
+
 def convert_mathdots(document):
     " Load mathdots automatically "
     while True:
@@ -2293,10 +2397,12 @@ convert = [[346, []],
            [399, [convert_mathdots]],
            [400, [convert_rule]],
            [401, []],
-           [402, [convert_bibtexClearpage]]
-          ]
+           [402, [convert_bibtexClearpage]],
+           [403, [convert_flexnames]]
+]
 
-revert =  [[401, []],
+revert =  [[402, [revert_flexnames]],
+           [401, []],
            [400, [revert_diagram]],
            [399, [revert_rule]],
            [398, [revert_mathdots]],
