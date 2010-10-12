@@ -6,7 +6,7 @@
 # It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
-Format 28
+Format 29
 Input stdtitle.inc
 
 
@@ -318,7 +318,7 @@ End
 
 # Inside AGU-journal:
 
-InsetLayout Element:ISSN
+InsetLayout Flex:ISSN
 	LyXType element
 	LabelString ISSN
 	LatexType             Command
@@ -329,7 +329,7 @@ InsetLayout Element:ISSN
 End
 
 
-InsetLayout Element:CODEN
+InsetLayout Flex:CODEN
 	LyXType element
 	LabelString CODEN
 	LatexType             Command
@@ -341,7 +341,7 @@ End
 
 # Inside Special-section:
 
-InsetLayout Element:SS-Code
+InsetLayout Flex:SS-Code
 	LyXType element
 	LabelString SS-Code
 	LatexType             Command
@@ -352,7 +352,7 @@ InsetLayout Element:SS-Code
 End
 
 
-InsetLayout Element:SS-Title
+InsetLayout Flex:SS-Title
 	LyXType element
 	LabelString SS-Title
 	LatexType             Command
@@ -364,7 +364,7 @@ End
 
 # Inside Copyright:
 
-InsetLayout Element:CCC-Code
+InsetLayout Flex:CCC-Code
 	LyXType element
 	LabelString CCC-Code
 	LatexType             Command
@@ -377,7 +377,7 @@ End
 
 # Inside Index-term:
 
-InsetLayout Element:Code
+InsetLayout Flex:Code
 	LyXType element
 	LabelString Code
 	LatexType             Command
@@ -388,7 +388,7 @@ InsetLayout Element:Code
 End
 
 
-InsetLayout Element:Dscr
+InsetLayout Flex:Dscr
 	LyXType element
 	LabelString Dscr
 	LatexType             Command
@@ -400,7 +400,7 @@ End
 
 # Inside Keywords:
 
-InsetLayout Element:Keyword
+InsetLayout Flex:Keyword
 	LyXType element
 	LabelString Keyword
 	LatexType             Command
@@ -412,7 +412,7 @@ End
 
 #inside Affiliation:
 
-InsetLayout Element:Orgdiv
+InsetLayout Flex:Orgdiv
 	LyXType element
 	LabelString Orgdiv
 	LatexType             Command
@@ -423,7 +423,7 @@ InsetLayout Element:Orgdiv
 End
 
 
-InsetLayout Element:Orgname
+InsetLayout Flex:Orgname
 	LyXType element
 	LabelString Orgname
 	LatexType             Command
@@ -434,7 +434,7 @@ InsetLayout Element:Orgname
 End
 
 
-InsetLayout Element:Street
+InsetLayout Flex:Street
 	LyXType element
 	LabelString Street
 	LatexType             Command
@@ -445,7 +445,7 @@ InsetLayout Element:Street
 End
 
 
-InsetLayout Element:City
+InsetLayout Flex:City
 	LyXType element
 	LabelString City
 	LatexType             Command
@@ -456,7 +456,7 @@ InsetLayout Element:City
 End
 
 
-InsetLayout Element:State
+InsetLayout Flex:State
 	LyXType element
 	LabelString State
 	LatexType             Command
@@ -467,7 +467,7 @@ InsetLayout Element:State
 End
 
 
-InsetLayout Element:Postcode
+InsetLayout Flex:Postcode
 	LyXType element
 	LabelString Postcode
 	LatexType             Command
@@ -478,7 +478,7 @@ InsetLayout Element:Postcode
 End
 
 
-InsetLayout Element:Country
+InsetLayout Flex:Country
 	LyXType element
 	LabelString Country
 	LatexType             Command
