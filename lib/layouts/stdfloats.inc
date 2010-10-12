@@ -4,7 +4,7 @@
 # in most LyX layouts.
 
 
-Format 28
+Format 29
 
 Float
 	Type                  table

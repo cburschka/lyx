@@ -2,8 +2,8 @@
 # Author : José Abílio Oliveira Matos <jamatos@lyx.org>
 # Character Styles definition
 
-Format 28
-InsetLayout Element:Filename
+Format 29
+InsetLayout Flex:Filename
 	LyXType element
 	LabelString Filename
 	LatexType             Command
@@ -17,7 +17,7 @@ InsetLayout Element:Filename
 	EndFont
 End
 
-InsetLayout Element:Directory
+InsetLayout Flex:Directory
 	LyXType element
 	LabelString Directory
 	LatexType             Command
@@ -32,7 +32,7 @@ InsetLayout Element:Directory
 	EndFont
 End
 
-InsetLayout Element:Firstname
+InsetLayout Flex:Firstname
 	LyXType element
 	LabelString Firstname
 	LatexType             Command
@@ -43,7 +43,7 @@ InsetLayout Element:Firstname
 	EndFont
 End
 
-InsetLayout Element:Surname
+InsetLayout Flex:Surname
 	LyXType element
 	LabelString Surname
 	LatexType             Command
@@ -54,7 +54,7 @@ InsetLayout Element:Surname
 	EndFont
 End
 
-InsetLayout Element:Literal
+InsetLayout Flex:Literal
 	LyXType element
 	LabelString Literal
 	LatexType             Command
@@ -68,7 +68,7 @@ InsetLayout Element:Literal
 	EndFont
 End
 
-InsetLayout Element:Email
+InsetLayout Flex:Email
 	LyXType element
 	LabelString Email
         LatexType             Command
@@ -82,7 +82,7 @@ InsetLayout Element:Email
         EndFont
 End
 
-InsetLayout Element:KeyCombo
+InsetLayout Flex:KeyCombo
 	LyXType element
 	LabelString KeyCombo
         LatexType             Command
@@ -96,7 +96,7 @@ InsetLayout Element:KeyCombo
         EndFont
 End
 
-InsetLayout Element:KeyCap
+InsetLayout Flex:KeyCap
 	LyXType element
 	LabelString KeyCap
         LatexType             Command
@@ -110,7 +110,7 @@ InsetLayout Element:KeyCap
         EndFont
 End
 
-InsetLayout Element:GuiMenu
+InsetLayout Flex:GuiMenu
 	LyXType element
 	LabelString GuiMenu
         LatexType             Command
@@ -124,7 +124,7 @@ InsetLayout Element:GuiMenu
         EndFont
 End
 
-InsetLayout Element:GuiMenuItem
+InsetLayout Flex:GuiMenuItem
 	LyXType element
 	LabelString GuiMenuItem
         LatexType             Command
@@ -138,7 +138,7 @@ InsetLayout Element:GuiMenuItem
         EndFont
 End
 
-InsetLayout Element:GuiButton
+InsetLayout Flex:GuiButton
 	LyXType element
 	LabelString GuiButton
         LatexType             Command
@@ -152,7 +152,7 @@ InsetLayout Element:GuiButton
         EndFont
 End
 
-InsetLayout Element:MenuChoice
+InsetLayout Flex:MenuChoice
 	LyXType element
 	LabelString MenuChoice
         LatexType             Command

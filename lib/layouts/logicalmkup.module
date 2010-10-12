@@ -6,9 +6,9 @@
 
 # Author : Martin vermeer <martin.vermeer@hut.fi>
 
-Format 28
+Format 29
 
-InsetLayout CharStyle:Noun
+InsetLayout Flex:Noun
 	LyxType               charstyle
 	LabelString           noun
 	LatexType             command
@@ -28,7 +28,7 @@ InsetLayout CharStyle:Noun
 End
 
 
-InsetLayout CharStyle:Emph
+InsetLayout Flex:Emph
 	LyxType               charstyle
 	LabelString           emph
 	LatexType             command
@@ -41,7 +41,7 @@ InsetLayout CharStyle:Emph
 End
 
 
-InsetLayout CharStyle:Strong
+InsetLayout Flex:Strong
 	LyxType               charstyle
 	LabelString           strong
 	LatexType             command
@@ -57,7 +57,7 @@ InsetLayout CharStyle:Strong
 End
 
 
-InsetLayout CharStyle:Code
+InsetLayout Flex:Code
 	LyxType               charstyle
 	LabelString           code
 	LatexType             command
