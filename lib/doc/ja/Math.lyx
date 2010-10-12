@@ -31712,21 +31712,21 @@ ce
 コマンドを使用します。
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:TEOS反応1"
+reference "eq:TEOS-reaction-1"
 
 \end_inset
 
 式と
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:TEOS反応2"
+reference "eq:TEOS-reaction-2"
 
 \end_inset
 
 式は、多段化学反応式の例で、一つの式毎に番号が振られています。
 \begin_inset Formula \begin{eqnarray}
-\ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS=00003D00003D00003D00003D0053CD=00003D00003D00003D00003D005FDC1}\\
-\ce{Si(OH)4} & \ce{->} & \ce{SiO2 + 2H2O}\label{eq:TEOS=00003D00003D00003D00003D0053CD=00003D00003D00003D00003D005FDC2}
+\ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS-reaction-1}\\
+\ce{Si(OH)4} & \ce{->} & \ce{SiO2 + 2H2O}\label{eq:TEOS-reaction-2}
 \end{eqnarray}
 
 \end_inset
