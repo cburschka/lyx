@@ -7,6 +7,14 @@ The good example would be 2010-01-10 entry.
 
 -----------------------
 
+2010-10-11 Richard Heck <rgheck@comcast.net>
+	* Format incremented to 403: renaming of flex insets
+	  changed 
+	    \begin_inset Flex TAG:Style 
+	  to
+	    \begin_inset Flex Style
+	  where TAG is Custom, CharStyle, or Element
+
 2010-10-11 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 402: fix for bug 1881
 	  no new or removed parameter, used to insert a
