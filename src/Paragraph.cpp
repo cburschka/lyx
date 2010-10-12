@@ -153,6 +153,12 @@ public:
 		needsRefresh(pos);
 	}
 
+	void refreshLast(pos_type pos)
+	{
+		if (pos < refresh_.last)
+			refresh_.last = pos;
+	}
+
 	SpellChecker::Result getState(pos_type pos) const
 	{
 		SpellChecker::Result result = SpellChecker::WORD_OK;
@@ -784,6 +790,7 @@ bool Paragraph::eraseChar(pos_type pos, bool trackChanges)
 
 	// Update list of misspelled positions
 	d->speller_state_.decreasePosAfterPos(pos);
+	d->speller_state_.refreshLast(size());
 
 	return true;
 }
