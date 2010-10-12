@@ -42,9 +42,13 @@ InsetFlex::InsetFlex(InsetFlex const & in)
 {}
 
 
-docstring InsetFlex::name() const
-{ 
-	return from_utf8("Flex:" + name_); 
+InsetLayout const & InsetFlex::getLayout() const
+{
+	DocumentClass const & dc = buffer().params().documentClass();
+	docstring const dname = from_utf8(name_); 
+	if (dc.hasInsetLayout(dname))
+		return dc.insetLayout(dname);
+	return dc.insetLayout(from_utf8("Flex:" + name_));
 }
 
 
