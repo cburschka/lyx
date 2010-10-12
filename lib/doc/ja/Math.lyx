@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 401
+\lyxformat 402
 \begin_document
 \begin_header
 \textclass jarticle
@@ -4452,7 +4452,7 @@ dots
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="2">
+<lyxtabular version="3" rows="9" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -4706,7 +4706,7 @@ vdots
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4717,11 +4717,36 @@ ddots
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Formula $\ddots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+iddots
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\iddots$
 \end_inset
 
 
@@ -4777,6 +4802,42 @@ A_{n1} & \cdots & A_{nm}
 ldots
 \series default
 です。
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\lang english
+To use 
+\series bold
+
+\backslash
+iddots
+\series default
+, one of the options 
+\family sans
+Use mathdots package (automatically)
+\family default
+ must be set in the document settings under 
+\family sans
+Math
+\begin_inset space ~
+\end_inset
+
+Options
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+Using the option 
+\family sans
+Use mathdots package
+\family default
+ will improve the appearance of all dots in the documents if their font
+ style or size is not the default.
 \end_layout
 
 \begin_layout Standard
@@ -31664,8 +31725,8 @@ reference "eq:TEOS反応2"
 
 式は、多段化学反応式の例で、一つの式毎に番号が振られています。
 \begin_inset Formula \begin{eqnarray}
-\ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS=00003D00003D0053CD=00003D00003D005FDC1}\\
-\ce{Si(OH)4} & \ce{->} & \ce{SiO2 + 2H2O}\label{eq:TEOS=00003D00003D0053CD=00003D00003D005FDC2}
+\ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS=00003D00003D00003D00003D0053CD=00003D00003D00003D00003D005FDC1}\\
+\ce{Si(OH)4} & \ce{->} & \ce{SiO2 + 2H2O}\label{eq:TEOS=00003D00003D00003D00003D0053CD=00003D00003D00003D00003D005FDC2}
 \end{eqnarray}
 
 \end_inset

@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 401
+\lyxformat 402
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -4573,7 +4573,7 @@ dots
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="2">
+<lyxtabular version="3" rows="9" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -4827,7 +4827,7 @@ vdots
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4838,11 +4838,36 @@ ddots
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Formula $\ddots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+iddots
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\iddots$
 \end_inset
 
 
@@ -4906,6 +4931,40 @@ Sonderzeichen
 ldots
 \series default
 .
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset VSpace medskip
+\end_inset
+
+
+\lang ngerman
+Um 
+\series bold
+
+\backslash
+iddots
+\series default
+ nutzen zu können, muss eine der Optionen 
+\family sans
+Mathdots Paket (automatisch) verwenden 
+\family default
+in den Dokumenteinstellungen unter 
+\family sans
+Mathe-Optionen
+\family default
+ gewählt sein.
+\begin_inset Newline newline
+\end_inset
+
+Die Option 
+\family sans
+Mathdots Paket verwenden
+\family default
+ verbessert das Aussehen aller Fortsetzungspunkte des Dokuments wenn deren
+ Schriftstil oder die Schriftgröße nicht Standard sind.
 \end_layout
 
 \begin_layout Standard
