@@ -7,7 +7,7 @@
 
 # Author: Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 29
+Format 28
 
 # single numbered example with covington.sty
 Style Numbered_Example_(multiline)
@@ -62,7 +62,7 @@ End
 
 # glosse (2 lines) with covington.sty
 # mandatory translation must be entered verbatim!
-InsetLayout Flex:Glosse
+InsetLayout Custom:Glosse
 	LyXType               custom
 	LabelString           Glosse
 	LatexType             environment
@@ -90,7 +90,7 @@ End
 
 # glosse (3 lines) with covington.sty
 # mandatory translation must be entered verbatim!
-InsetLayout Flex:Tri-Glosse
+InsetLayout Custom:Tri-Glosse
 	LyXType               custom
 	LabelString           Tri-Glosse
 	LatexType             environment
@@ -117,7 +117,7 @@ End
 
 
 # Some semantik markup for Semantics
-InsetLayout Flex:Expression
+InsetLayout CharStyle:Expression
 	LyxType               charstyle
 	LabelString           expr.
 	LatexType             command
@@ -132,7 +132,7 @@ InsetLayout Flex:Expression
 End
 
 
-InsetLayout Flex:Concepts
+InsetLayout CharStyle:Concepts
 	LyxType               charstyle
 	LabelString           concept
 	LatexType             command
@@ -147,7 +147,7 @@ InsetLayout Flex:Concepts
 End
 
 
-InsetLayout Flex:Meaning
+InsetLayout CharStyle:Meaning
 	LyxType               charstyle
 	LabelString           meaning
 	LatexType             command

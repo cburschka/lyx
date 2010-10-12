@@ -6,7 +6,7 @@
 # It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
-Format 29
+Format 28
 OutputType              docbook
 
 Columns                 1
@@ -31,7 +31,7 @@ Style Standard
 End
 
 
-InsetLayout Flex:Firstname
+InsetLayout Element:Firstname
 	LyXType element
 	LabelString Firstname
 	LatexType             Command
@@ -45,7 +45,7 @@ InsetLayout Flex:Firstname
 	EndFont
 End
 
-InsetLayout Flex:Fname
+InsetLayout Element:Fname
 	LyXType element
 	LabelString Fname
 	LatexType             Command
@@ -60,7 +60,7 @@ InsetLayout Flex:Fname
 End
 
 
-InsetLayout Flex:Surname
+InsetLayout Element:Surname
 	LyXType element
 	LabelString Surname
 	LatexType             Command
@@ -75,7 +75,7 @@ InsetLayout Flex:Surname
 End
 
 
-InsetLayout Flex:Filename
+InsetLayout Element:Filename
 	LyXType element
 	LabelString Filename
 	LatexType             Command
@@ -90,7 +90,7 @@ InsetLayout Flex:Filename
 End
 
 
-InsetLayout Flex:Literal
+InsetLayout Element:Literal
 	LyXType element
 	LabelString Literal
 	LatexType             Command
@@ -105,7 +105,7 @@ InsetLayout Flex:Literal
 End
 
 
-InsetLayout Flex:Emph
+InsetLayout Element:Emph
 	LyXType element
 	LabelString Emph
 	LatexType             Command
@@ -121,7 +121,7 @@ InsetLayout Flex:Emph
 End
 
 
-InsetLayout Flex:Abbrev
+InsetLayout Element:Abbrev
 	LyXType element
 	LabelString Abbrev
 	LatexType             Command
@@ -132,7 +132,7 @@ InsetLayout Flex:Abbrev
 End
 
 
-InsetLayout Flex:Citation-number
+InsetLayout Element:Citation-number
 	LyXType element
 	LabelString Citation-number
 	LatexType             Command
@@ -143,7 +143,7 @@ InsetLayout Flex:Citation-number
 End
 
 
-InsetLayout Flex:Volume
+InsetLayout Element:Volume
 	LyXType element
 	LabelString Volume
 	LatexType             Command
@@ -154,7 +154,7 @@ InsetLayout Flex:Volume
 End
 
 
-InsetLayout Flex:Day
+InsetLayout Element:Day
 	LyXType element
 	LabelString Day
 	LatexType             Command
@@ -165,7 +165,7 @@ InsetLayout Flex:Day
 End
 
 
-InsetLayout Flex:Month
+InsetLayout Element:Month
 	LyXType element
 	LabelString Month
 	LatexType             Command
@@ -176,7 +176,7 @@ InsetLayout Flex:Month
 End
 
 
-InsetLayout Flex:Year
+InsetLayout Element:Year
 	LyXType element
 	LabelString Year
 	LatexType             Command
@@ -187,7 +187,7 @@ InsetLayout Flex:Year
 End
 
 
-InsetLayout Flex:Issue-number
+InsetLayout Element:Issue-number
 	LyXType element
 	LabelString Issue-number
 	LatexType             Command
@@ -198,7 +198,7 @@ InsetLayout Flex:Issue-number
 End
 
 
-InsetLayout Flex:Issue-day
+InsetLayout Element:Issue-day
 	LyXType element
 	LabelString Issue-day
 	LatexType             Command
@@ -209,7 +209,7 @@ InsetLayout Flex:Issue-day
 End
 
 
-InsetLayout Flex:Issue-months
+InsetLayout Element:Issue-months
 	LyXType element
 	LabelString Issue-months
 	LatexType             Command

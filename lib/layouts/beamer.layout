@@ -5,7 +5,7 @@
 # $Header: /cvsroot/latex-beamer/latex-beamer/lyx/layouts/beamer.layout,v 1.16 2004/10/07 20:53:07 tantau Exp $
 
 # Includes
-Format 29
+Format 28
 Input stdcounters.inc
 Input stdinsets.inc
 
@@ -1158,7 +1158,7 @@ End
 
 # Charstyles:
 
-InsetLayout Flex:Alert
+InsetLayout CharStyle:Alert
   LyXType charstyle
   LabelString Alert
   LatexType        command
@@ -1169,7 +1169,7 @@ InsetLayout Flex:Alert
 End
 
 
-InsetLayout Flex:Structure
+InsetLayout CharStyle:Structure
   LyXType charstyle
   LabelString Structure
   LatexType        command
@@ -1180,7 +1180,7 @@ InsetLayout Flex:Structure
 End
 
 
-InsetLayout Flex:ArticleMode
+InsetLayout Custom:ArticleMode
    LyXType	custom
    LatexName	mode<article>
    LatexType	command
@@ -1190,7 +1190,7 @@ InsetLayout Flex:ArticleMode
 End
 
 
-InsetLayout Flex:PresentationMode
+InsetLayout Custom:PresentationMode
    LyXType	custom
    LatexName	mode<presentation>
    LatexType	command

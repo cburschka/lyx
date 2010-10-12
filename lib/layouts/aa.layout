@@ -16,7 +16,7 @@
 # 2008-10-26  Updated for aa.cls version 6.1
 
 
-Format 29
+Format 28
 Columns                 2
 Sides                   2
 SecNumDepth             3
@@ -382,7 +382,7 @@ Style Bibliography
 End
 
 
-InsetLayout Flex:Institute
+InsetLayout CharStyle:Institute
   LyXType			charstyle
   LatexType			command
   LatexName			inst
@@ -392,7 +392,7 @@ InsetLayout Flex:Institute
 End
 
 
-InsetLayout Flex:E-Mail
+InsetLayout CharStyle:E-Mail
   LyXType			charstyle
   LatexType			command
   LatexName			email
