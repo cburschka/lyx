@@ -257,7 +257,8 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		case IL_CONTENTASLABEL:
 			lex >> contentaslabel_;
 			break;
-		case IL_COPYSTYLE: {     // initialize with a known style
+		case IL_COPYSTYLE: {
+			// initialize with a known style
 			docstring style;
 			lex >> style;
 			style = support::subst(style, '_', ' ');
