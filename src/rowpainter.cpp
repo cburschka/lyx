@@ -347,7 +347,7 @@ void RowPainter::paintMisspelledMark(double orig_x, int desc, bool changed)
 	// derive the offset from zoom factor specified by user in percent
 	// if changed the misspelled marker gets placed slightly lower than normal
 	// to avoid drawing at the same vertical offset 
-	int const offset = (1.5 * lyxrc.zoom / 100.0); // [percent]
+	int const offset = int(1.5 * lyxrc.zoom / 100.0); // [percent]
 	int const y = yo_ + desc + (changed ? offset : 0);
 	pi_.pain.line(int(orig_x), y, int(x_), y, Color_red, Painter::line_onoffdash, 1.0);
 }
