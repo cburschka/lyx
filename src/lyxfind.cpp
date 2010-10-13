@@ -329,7 +329,7 @@ bool lyxreplace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
 			? replaceAll(bv, search, rplc, casesensitive, matchword)
 			: replaceOne(bv, search, rplc, casesensitive, matchword, forward);
 
-		Buffer & buf = bv->buffer();
+		Buffer const & buf = bv->buffer();
 		if (replace_count == 0) {
 			// emit message signal.
 			buf.message(_("String not found!"));
