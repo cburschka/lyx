@@ -339,7 +339,8 @@ bool lyxreplace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
 				// emit message signal.
 				buf.message(_("String has been replaced."));
 			} else {
-				docstring str = bformat(_("%1$d strings have been replaced."), replace_count);
+				docstring const str = 
+					bformat(_("%1$d strings have been replaced."), replace_count);
 				// emit message signal.
 				buf.message(str);
 			}
