@@ -1854,12 +1854,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 		cur.recordUndo();
 		FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
-		// FIXME There may be some cases where the inset knows that
-		// single par update would be good enough, but it has no way
-		// to tell us that at the moment.
 		inset->dispatch(cur, fr);
-		dr.screenUpdate(Update::Force | Update::FitCursor);
-		dr.forceBufferUpdate();
+		dr.screenUpdate(cur.result().screenUpdate());
+		if (cur.result().needBufferUpdate())
+			dr.forceBufferUpdate();
 		break;
 	}
 
