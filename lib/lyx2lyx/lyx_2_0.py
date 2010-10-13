@@ -1960,6 +1960,52 @@ def revert_IEEEtran(document):
           del document.body[i:j + 1]
 
 
+def convert_prettyref(document):
+	" Converts prettyref references to neutral formatted refs "
+	re_ref = re.compile("^\s*reference\s+\"(\w+):(\S+)\"")
+	nm_ref = re.compile("^\s*name\s+\"(\w+):(\S+)\"")
+
+	i = 0
+	while True:
+		i = find_token(document.body, "\\begin_inset CommandInset ref", i)
+		if i == -1:
+			break
+		j = find_end_of_inset(document.body, i)
+		if j == -1:
+			document.warning("Malformed LyX document: No end of InsetRef!")
+			i += 1
+			continue
+		k = find_token(document.body, "LatexCommand prettyref", i)
+		if k != -1 and k < j:
+			document.body[k] = "LatexCommand formatted"
+		i = j + 1
+	document.header.insert(-1, "\\use_refstyle 0")
+		
+ 
+def revert_refstyle(document):
+	" Reverts neutral formatted refs to prettyref "
+	re_ref = re.compile("^reference\s+\"(\w+):(\S+)\"")
+	nm_ref = re.compile("^\s*name\s+\"(\w+):(\S+)\"")
+
+	i = 0
+	while True:
+		i = find_token(document.body, "\\begin_inset CommandInset ref", i)
+		if i == -1:
+			break
+		j = find_end_of_inset(document.body, i)
+		if j == -1:
+			document.warning("Malformed LyX document: No end of InsetRef")
+			i += 1
+			continue
+		k = find_token(document.body, "LatexCommand formatted", i)
+		if k != -1 and k < j:
+			document.body[k] = "LatexCommand prettyref"
+		i = j + 1
+	i = find_token(document.header, "\\use_refstyle", 0)
+	if i != -1:
+		document.header.pop(i)
+ 
+
 def revert_nameref(document):
   " Convert namerefs to regular references "
   cmds = ["Nameref", "nameref"]
@@ -2311,6 +2357,7 @@ def convert_bibtexClearpage(document):
   " insert a clear(double)page bibliographystyle if bibtotoc option is used "
   while True:
     i = find_token(document.header, '\\papersides', 0)
+    #document.warning(str(i))
     if i == -1:
       document.warning("Malformed LyX document: Can't find papersides definition.")
       return
@@ -2397,10 +2444,12 @@ convert = [[346, []],
            [400, [convert_rule]],
            [401, []],
            [402, [convert_bibtexClearpage]],
-           [403, [convert_flexnames]]
+           [403, [convert_flexnames]],
+           [404, [convert_prettyref]]
 ]
 
-revert =  [[402, [revert_flexnames]],
+revert =  [[403, [revert_refstyle]],
+           [402, [revert_flexnames]],
            [401, []],
            [400, [revert_diagram]],
            [399, [revert_rule]],

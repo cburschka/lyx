@@ -1118,6 +1118,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(browseMaster()));
 	connect(latexModule->suppressDateCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+	connect(latexModule->refstyleCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 
 	// postscript drivers
 	for (int n = 0; tex_graphics[n][0]; ++n) {
@@ -2106,6 +2108,7 @@ void GuiDocument::applyView()
 
 	// date
 	bp_.suppress_date = latexModule->suppressDateCB->isChecked();
+	bp_.use_refstyle  = latexModule->refstyleCB->isChecked();
 
 	// biblio
 	bp_.setCiteEngine(ENGINE_BASIC);
@@ -2531,6 +2534,7 @@ void GuiDocument::paramsToDialog()
 
 	// date
 	latexModule->suppressDateCB->setChecked(bp_.suppress_date);
+	latexModule->refstyleCB->setChecked(bp_.use_refstyle);
 
 	// biblio
 	biblioModule->citeDefaultRB->setChecked(

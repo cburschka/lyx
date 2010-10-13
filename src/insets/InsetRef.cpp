@@ -12,6 +12,7 @@
 #include "InsetRef.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "InsetLabel.h"
@@ -50,7 +51,7 @@ bool InsetRef::isCompatibleCommand(string const & s) {
 		|| s == "pageref"
 		|| s == "vref" 
 		|| s == "vpageref"
-		|| s == "prettyref"
+		|| s == "formatted"
 		|| s == "eqref"
 		|| s == "nameref";
 }
@@ -70,11 +71,24 @@ ParamInfo const & InsetRef::findInfo(string const & /* cmdName */)
 
 int InsetRef::latex(odocstream & os, OutputParams const & runparams) const
 {
-	// We don't want to output p_["name"], since that is only used 
-	// in docbook. So we construct new params, without it, and use that.
-	InsetCommandParams p(REF_CODE, getCmdName());
-	p["reference"] = getParam("reference");
-	os << p.getCommand(runparams);
+	string const cmd = getCmdName();
+	docstring const ref = getParam("reference");
+	if (cmd != "formatted") {
+		// We don't want to output p_["name"], since that is only used 
+		// in docbook. So we construct new params, without it, and use that.
+		InsetCommandParams p(REF_CODE, cmd);
+		p["reference"] = ref;
+		os << p.getCommand(runparams);
+		return 0;
+	} 
+	
+	// so we're doing a formatted reference.
+	if  (!buffer().params().use_refstyle) {
+		os << "\\prettyref{" << ref << '}';
+		return 0;
+	}
+	
+	os << "\\lyxref{" << ref << '}';
 	return 0;
 }
 
@@ -211,9 +225,14 @@ void InsetRef::validate(LaTeXFeatures & features) const
 	string const cmd = getCmdName();
 	if (cmd == "vref" || cmd == "vpageref")
 		features.require("varioref");
-	else if (cmd == "prettyref")
-		features.require("prettyref");
-	else if (cmd == "eqref")
+	else if (getCmdName() == "formatted") {
+		if (buffer().params().use_refstyle) {
+			features.require("refstyle");
+			//features.addPreambleSnippet("");
+		} else
+			features.require("prettyref");
+	} else if (getCmdName() == "eqref" && !buffer().params().use_refstyle)
+		// refstyle defines its own version
 		features.require("amsmath");
 	else if (cmd == "nameref")
 		features.require("nameref");
@@ -226,7 +245,7 @@ InsetRef::type_info InsetRef::types[] = {
 	{ "pageref",   N_("Page Number"),           N_("Page: ")},
 	{ "vpageref",  N_("Textual Page Number"),   N_("TextPage: ")},
 	{ "vref",      N_("Standard+Textual Page"), N_("Ref+Text: ")},
-	{ "prettyref", N_("PrettyRef"),             N_("FrmtRef: ")},
+	{ "formatted", N_("Formatted"),             N_("Format: ")},
 	{ "nameref",   N_("Reference to Name"),     N_("NameRef:")},
 	{ "", "", "" }
 };

@@ -415,6 +415,7 @@ BufferParams::BufferParams()
 	html_math_img_scale = 1.0;
 
 	output_sync = false;
+	use_refstyle = true;
 }
 
 
@@ -853,6 +854,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex >> output_sync;
 	} else if (token == "\\output_sync_macro") {
 		lex >> output_sync_macro;
+	} else if (token == "\\use_refstyle") {
+		lex >> use_refstyle;
 	} else {
 		lyxerr << "BufferParams::readToken(): Unknown token: " << 
 			token << endl;
@@ -980,6 +983,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\use_indices " << convert<string>(use_indices)
 	   << "\n\\paperorientation " << string_orientation[orientation]
 	   << "\n\\suppress_date " << convert<string>(suppress_date)
+		 << "\n\\use_refstyle " << use_refstyle
 	   << '\n';
 	if (isbackgroundcolor == true)
 		os << "\\backgroundcolor " << lyx::X11hexname(backgroundcolor) << '\n';

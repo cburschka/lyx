@@ -7,7 +7,14 @@ The good example would be 2010-01-10 entry.
 
 -----------------------
 
-2010-10-11 Richard Heck <rgheck@comcast.net>
+2010-10-13 Richard Heck <rgheck@comcast.net>
+	* Format incremented to 404: refstyle support
+	  Changed the LaTeXCommand for InsetRef from "prettyref"
+	  to "formatted", where "formatted" is now interprted
+	  differently, depending upon whether the new buffer param
+	  use_refstyle is true or false.
+
+2010-10-12 Richard Heck <rgheck@comcast.net>
 	* Format incremented to 403: renaming of flex insets
 	  changed 
 	    \begin_inset Flex TAG:Style 

@@ -2311,7 +2311,7 @@ void LyXAction::init()
                pageref -- <page> \n
                vpageref -- on <page> \n
                vref -- <reference> on <page> \n
-               prettyref -- Formatted reference
+               formatted -- Formatted reference
  * \endvar
  */
 		{ LFUN_INSET_INSERT, "inset-insert", Noop, Edit },

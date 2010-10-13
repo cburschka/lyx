@@ -256,6 +256,25 @@ static docstring const ogonek_def = from_ascii(
 	"  \\mathchar\"0\\hexnumber@\\symtipasymb0C}{#2}}\n"
 	"\\newcommand{\\ogonek}[1]{\\mathpalette\\doogonek{#1}}\n");
 
+static docstring const lyxref_def = from_ascii(
+	"\\makeatletter\n"
+	"\\def\\lyxref#1{\\@lyxref#1:@@@@@:}\n"
+	"\\def\\@lyxref#1:#2:{%\n"
+	"\\ifthenelse{\\equal{#2}{@@@@@}}%\n"
+	"	{\\ref{#1}}%\n"
+	"	{\\@@lyxref#1:#2:}%\n"
+	"}\n"
+	"\\def\\@@lyxref#1:#2:@@@@@:{%\n"
+	"	\\RS@ifundefined{#1ref}%\n"
+	"	{\\ref{#1:#2}}%\n"
+	"	{\\RS@nameuse{#1ref}{#2}}%\n"
+	"}\n"
+	"\\RS@ifundefined{\thmref}\n"
+	"  {\\def\\RSthmtxt{theorem~}\\newref{thm}{name = \\RSthmtxt}}\n"
+	"  {}\n"
+	"\\makeatother\n"
+	);
+
 /////////////////////////////////////////////////////////////////////
 //
 // LaTeXFeatures
@@ -507,6 +526,7 @@ char const * simplefeatures[] = {
 	// subfig is handled in BufferParams.cpp
 	"varioref",
 	"prettyref",
+	"refstyle",
 	/*For a successful cooperation of the `wrapfig' package with the
 	  `float' package you should load the `wrapfig' package *after*
 	  the `float' package. See the caption package documentation
@@ -900,6 +920,9 @@ docstring const LaTeXFeatures::getMacros() const
 
 	// floats
 	getFloatDefinitions(macros);
+	
+	if (mustProvide("refstyle"))
+		macros << lyxref_def << '\n';
 
 	// change tracking
 	if (mustProvide("ct-dvipost"))
