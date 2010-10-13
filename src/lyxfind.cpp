@@ -142,7 +142,7 @@ bool searchAllowed(BufferView * /*bv*/, docstring const & str)
 }
 
 
-bool find(BufferView * bv, docstring const & searchstr,
+bool findOne(BufferView * bv, docstring const & searchstr,
 	bool cs, bool mw, bool fw, bool find_del = true)
 {
 	if (!searchAllowed(bv, searchstr))
@@ -220,12 +220,11 @@ bool stringSelected(BufferView * bv, docstring & searchstr,
 		return true;
 	}
 
-	// if nothing selected or selection does not equal search
-	// string search and select next occurance and return
-	docstring const & str1 = searchstr;
+	// if nothing selected or selection does not equal search string
+	// then search and select next occurence and return
 	docstring const str2 = bv->cursor().selectionAsString(false);
-	if ((cs && str1 != str2) || compare_no_case(str1, str2) != 0) {
-		find(bv, searchstr, cs, mw, fw);
+	if ((cs && searchstr != str2) || compare_no_case(searchstr, str2) != 0) {
+		findOne(bv, searchstr, cs, mw, fw);
 		return false;
 	}
 
@@ -233,7 +232,7 @@ bool stringSelected(BufferView * bv, docstring & searchstr,
 }
 
 
-int replace(BufferView * bv, docstring & searchstr,
+int replaceOne(BufferView * bv, docstring & searchstr,
 	    docstring const & replacestr, bool cs, bool mw, bool fw)
 {
 	if (!stringSelected(bv, searchstr, cs, mw, fw))
@@ -245,7 +244,7 @@ int replace(BufferView * bv, docstring & searchstr,
 	Cursor & cur = bv->cursor();
 	cap::replaceSelectionWithString(cur, replacestr, fw);
 	bv->buffer().markDirty();
-	find(bv, searchstr, cs, mw, fw, false);
+	findOne(bv, searchstr, cs, mw, fw, false);
 	bv->buffer().updateMacros();
 	bv->processUpdateFlags(Update::Force | Update::FitCursor);
 
@@ -299,7 +298,7 @@ bool find(BufferView * bv, FuncRequest const & ev)
 	bool matchword     = parse_bool(howto);
 	bool forward       = parse_bool(howto);
 
-	return find(bv, search, casesensitive, matchword, forward);
+	return findOne(bv, search, casesensitive, matchword, forward);
 }
 
 
@@ -325,7 +324,7 @@ void replace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
 	if (!has_deleted) {
 		int const replace_count = all
 			? replaceAll(bv, search, rplc, casesensitive, matchword)
-			: replace(bv, search, rplc, casesensitive, matchword, forward);
+			: replaceOne(bv, search, rplc, casesensitive, matchword, forward);
 
 		Buffer & buf = bv->buffer();
 		if (replace_count == 0) {
@@ -345,7 +344,7 @@ void replace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
 	} else {
 		// if we have deleted characters, we do not replace at all, but
 		// rather search for the next occurence
-		if (find(bv, search, casesensitive, matchword, forward))
+		if (findOne(bv, search, casesensitive, matchword, forward))
 			bv->showCursor();
 		else
 			bv->message(_("String not found!"));
