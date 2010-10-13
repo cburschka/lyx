@@ -132,7 +132,7 @@ bool findChange(DocIterator & cur, bool next)
 }
 
 
-bool searchAllowed(BufferView * /*bv*/, docstring const & str)
+bool searchAllowed(docstring const & str)
 {
 	if (str.empty()) {
 		frontend::Alert::error(_("Search error"), _("Search string is empty"));
@@ -145,7 +145,7 @@ bool searchAllowed(BufferView * /*bv*/, docstring const & str)
 bool findOne(BufferView * bv, docstring const & searchstr,
 	bool case_sens, bool whole, bool forward, bool find_del = true)
 {
-	if (!searchAllowed(bv, searchstr))
+	if (!searchAllowed(searchstr))
 		return false;
 
 	DocIterator cur = bv->cursor();
@@ -168,7 +168,7 @@ int replaceAll(BufferView * bv,
 {
 	Buffer & buf = bv->buffer();
 
-	if (!searchAllowed(bv, searchstr) || buf.isReadonly())
+	if (!searchAllowed(searchstr) || buf.isReadonly())
 		return 0;
 
 	DocIterator cur_orig(bv->cursor());
@@ -240,7 +240,7 @@ int replaceOne(BufferView * bv, docstring & searchstr,
 	if (!stringSelected(bv, searchstr, case_sens, whole, forward))
 		return 0;
 
-	if (!searchAllowed(bv, searchstr) || bv->buffer().isReadonly())
+	if (!searchAllowed(searchstr) || bv->buffer().isReadonly())
 		return 0;
 
 	Cursor & cur = bv->cursor();
