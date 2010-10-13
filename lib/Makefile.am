@@ -1104,6 +1104,7 @@ dist_layouts_DATA =\
 	layouts/kluwer.layout \
 	layouts/latex8.layout \
 	layouts/letter.layout \
+	layouts/lettre.layout \
 	layouts/lilypond.module \
 	layouts/linguistics.module \
 	layouts/literate-article.layout \
@@ -1251,6 +1252,7 @@ dist_templates_DATA = \
 	templates/koma-letter2.lyx \
 	templates/latex8.lyx \
 	templates/letter.lyx \
+	templates/lettre.lyx \
 	templates/README.new_templates \
 	templates/revtex.lyx \
 	templates/revtex4.lyx \
