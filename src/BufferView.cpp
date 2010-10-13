@@ -1219,7 +1219,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		buffer_.params().clearLayoutModules();
 		buffer_.params().makeDocumentClass();
 		updateDocumentClass(oldClass);
-		dr.screenUpdate(Update::Force | Update::FitCursor);
+		dr.screenUpdate(Update::Force);
 		dr.forceBufferUpdate();
 		break;
 	}
@@ -1237,7 +1237,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		buffer_.params().addLayoutModule(argument);
 		buffer_.params().makeDocumentClass();
 		updateDocumentClass(oldClass);
-		dr.screenUpdate(Update::Force | Update::FitCursor);
+		dr.screenUpdate(Update::Force);
 		dr.forceBufferUpdate();
 		break;
 	}
@@ -1269,7 +1269,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		buffer_.params().setBaseClass(argument);
 		buffer_.params().makeDocumentClass();
 		updateDocumentClass(oldDocClass);
-		dr.screenUpdate(Update::Force | Update::FitCursor);
+		dr.screenUpdate(Update::Force);
 		dr.forceBufferUpdate();
 		break;
 	}
@@ -1295,7 +1295,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		buffer_.params().setBaseClass(bc);
 		buffer_.params().makeDocumentClass();
 		updateDocumentClass(oldClass);
-		dr.screenUpdate(Update::Force | Update::FitCursor);
+		dr.screenUpdate(Update::Force);
 		dr.forceBufferUpdate();
 		break;
 	}
@@ -1339,8 +1339,13 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				saveBookmark(0);
 			}
 		}
-		if (!label.empty())
+		if (!label.empty()) {
 			gotoLabel(label);
+			// at the moment, this is redundant, since gotoLabel will
+			// eventually call LFUN_PARAGRAPH_GOTO, but it seems best
+			// to have it here.
+			dr.screenUpdate(Update::Force | Update::FitCursor);
+		}
 		break;
 	}
 	
