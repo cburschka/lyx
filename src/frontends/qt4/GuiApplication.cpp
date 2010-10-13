@@ -1092,7 +1092,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd)
 	DispatchResult dr;
 	// redraw the screen at the end (first of the two drawing steps).
 	//This is done unless explicitly requested otherwise
-	dr.update(Update::FitCursor);
+	dr.screenUpdate(Update::FitCursor);
 	dispatch(cmd, dr);
 
 	if (!current_view_)
@@ -1108,7 +1108,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd)
 		// also initializes the position cache for all insets in
 		// (at least partially) visible top-level paragraphs.
 		// We will redraw the screen only if needed.
-		bv->processUpdateFlags(dr.update());
+		bv->processUpdateFlags(dr.screenUpdate());
 
 		// Do we have a selection?
 		theSelection().haveSelection(bv->cursor().selection());
@@ -1237,7 +1237,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		dr.setMessage(flag.message());
 		dr.setError(true);
 		dr.dispatched(false);
-		dr.update(Update::None);
+		dr.screenUpdate(Update::None);
 		dr.clearBufferUpdate();
 		return;
 	};
@@ -1564,7 +1564,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_BOOKMARK_GOTO:
 		// go to bookmark, open unopened file and switch to buffer if necessary
 		gotoBookmark(convert<unsigned int>(to_utf8(cmd.argument())), true, true);
-		dr.update(Update::Force | Update::FitCursor);
+		dr.screenUpdate(Update::Force | Update::FitCursor);
 		break;
 
 	case LFUN_BOOKMARK_CLEAR:

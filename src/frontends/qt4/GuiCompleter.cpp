@@ -313,8 +313,8 @@ void GuiCompleter::updateVisibility(Cursor & cur, bool start, bool keep, bool cu
 		inline_timer_.start(int(lyxrc.completion_inline_delay * 1000));
 	else {
 		// no inline completion, hence a metrics update is needed
-		if (!(cur.result().update() & Update::Force))
-			cur.screenUpdateFlags(cur.result().update() | Update::SinglePar);
+		if (!(cur.result().screenUpdate() & Update::Force))
+			cur.screenUpdateFlags(cur.result().screenUpdate() | Update::SinglePar);
 	}
 
 	// update prefix if any completion is possible
@@ -335,8 +335,8 @@ void GuiCompleter::updateVisibility(bool start, bool keep)
 	
 	updateVisibility(cur, start, keep);
 	
-	if (cur.result().update())
-		gui_->bufferView().processUpdateFlags(cur.result().update());
+	if (cur.result().screenUpdate())
+		gui_->bufferView().processUpdateFlags(cur.result().screenUpdate());
 }
 
 
@@ -600,8 +600,8 @@ void GuiCompleter::showPopup()
 	showPopup(cur);
 
 	// redraw if needed
-	if (cur.result().update())
-		gui_->bufferView().processUpdateFlags(cur.result().update());
+	if (cur.result().screenUpdate())
+		gui_->bufferView().processUpdateFlags(cur.result().screenUpdate());
 }
 
 
@@ -613,8 +613,8 @@ void GuiCompleter::showInline()
 	showInline(cur);
 
 	// redraw if needed
-	if (cur.result().update())
-		gui_->bufferView().processUpdateFlags(cur.result().update());
+	if (cur.result().screenUpdate())
+		gui_->bufferView().processUpdateFlags(cur.result().screenUpdate());
 }
 
 
@@ -626,8 +626,8 @@ void GuiCompleter::hidePopup()
 	hidePopup(cur);
 	
 	// redraw if needed
-	if (cur.result().update())
-		gui_->bufferView().processUpdateFlags(cur.result().update());
+	if (cur.result().screenUpdate())
+		gui_->bufferView().processUpdateFlags(cur.result().screenUpdate());
 }
 
 
@@ -639,8 +639,8 @@ void GuiCompleter::hideInline()
 	hideInline(cur);
 	
 	// redraw if needed
-	if (cur.result().update())
-		gui_->bufferView().processUpdateFlags(cur.result().update());
+	if (cur.result().screenUpdate())
+		gui_->bufferView().processUpdateFlags(cur.result().screenUpdate());
 }
 
 
@@ -718,8 +718,8 @@ void GuiCompleter::tab()
 		popup_timer_.start(0);
 
 	// redraw if needed
-	if (cur.result().update())
-		gui_->bufferView().processUpdateFlags(cur.result().update());
+	if (cur.result().screenUpdate())
+		gui_->bufferView().processUpdateFlags(cur.result().screenUpdate());
 }
 
 
@@ -884,8 +884,8 @@ void GuiCompleter::popupActivated(const QString & completion)
 	hidePopup(cur);
 	hideInline(cur);
 	
-	if (cur.result().update())
-		gui_->bufferView().processUpdateFlags(cur.result().update());
+	if (cur.result().screenUpdate())
+		gui_->bufferView().processUpdateFlags(cur.result().screenUpdate());
 }
 
 
@@ -900,8 +900,8 @@ void GuiCompleter::popupHighlighted(const QString & completion)
 	if (inlineVisible())
 		updateInline(cur, completion);
 	
-	if (cur.result().update())
-		gui_->bufferView().processUpdateFlags(cur.result().update());
+	if (cur.result().screenUpdate())
+		gui_->bufferView().processUpdateFlags(cur.result().screenUpdate());
 }
 
 } // namespace frontend

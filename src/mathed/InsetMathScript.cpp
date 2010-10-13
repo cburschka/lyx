@@ -704,13 +704,13 @@ bool InsetMathScript::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 			// must be a subscript...
 			old.recordUndoInset();
 			removeScript(false);
-			cur.screenUpdateFlags(cur.result().update() | Update::SinglePar);
+			cur.screenUpdateFlags(cur.result().screenUpdate() | Update::SinglePar);
 			return true;
 		} else if (cell(1).empty()) {
 			// must be a superscript...
 			old.recordUndoInset();
 			removeScript(true);
-			cur.screenUpdateFlags(cur.result().update() | Update::SinglePar);
+			cur.screenUpdateFlags(cur.result().screenUpdate() | Update::SinglePar);
 			return true;
 		}
 	}
@@ -740,7 +740,7 @@ bool InsetMathScript::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 		insetCur.cell().insert(insetCur.pos(), ar);
 
 		// redraw
-		cur.screenUpdateFlags(cur.result().update() | Update::SinglePar);
+		cur.screenUpdateFlags(cur.result().screenUpdate() | Update::SinglePar);
 		return true;
 	}
 

@@ -2045,7 +2045,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 				docstring const str = branch_name + ' ' + from_ascii(x11hexname);
 				lyx::dispatch(FuncRequest(LFUN_SET_COLOR, str));
 				dr.setError(false);
-				dr.update(Update::Force);
+				dr.screenUpdate(Update::Force);
 			}
 		}
 		if (!msg.empty())
@@ -2072,7 +2072,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		} else {
 			branch->setSelected(func.action() == LFUN_BRANCH_ACTIVATE);
 			dr.setError(false);
-			dr.update(Update::Force);
+			dr.screenUpdate(Update::Force);
 			dr.forceBufferUpdate();
 		}
 		break;
@@ -2109,7 +2109,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		}
 
 		if (success) {
-			dr.update(Update::Force);
+			dr.screenUpdate(Update::Force);
 			dr.forceBufferUpdate();
 		}
 		break;

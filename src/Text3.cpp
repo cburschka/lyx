@@ -2133,7 +2133,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	// for now only Text::erase() and Text::backspace() do that.
 	// The plan is to verify all the LFUNs and then to remove this
 	// singleParUpdate boolean altogether.
-	if (cur.result().update() & Update::Force) {
+	if (cur.result().screenUpdate() & Update::Force) {
 		singleParUpdate = false;
 		needsUpdate = true;
 	}

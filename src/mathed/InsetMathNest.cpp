@@ -1454,7 +1454,7 @@ void InsetMathNest::lfunMousePress(Cursor & cur, FuncRequest & cmd)
 		//                    position if needed
 		// cur.result().update(): don't overwrite previously set flags.
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor
-				| cur.result().update());
+				| cur.result().screenUpdate());
 	} else if (cmd.button() == mouse_button::button2) {
 		if (cap::selection()) {
 			// See comment in Text::dispatch why we do this

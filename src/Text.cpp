@@ -2036,8 +2036,8 @@ bool Text::insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/
 	LASSERT(cur.bv().cursor() == cur, /**/);
 	cur.insert(s);
 	cur.bv().cursor() = cur;
-	if (!(cur.result().update() & Update::Force))
-		cur.screenUpdateFlags(cur.result().update() | Update::SinglePar);
+	if (!(cur.result().screenUpdate() & Update::Force))
+		cur.screenUpdateFlags(cur.result().screenUpdate() | Update::SinglePar);
 	return true;
 }
 	

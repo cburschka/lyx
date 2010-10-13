@@ -1207,7 +1207,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// We are most certainly here because of a change in the document
 		// It is then better to make sure that all dialogs are in sync with
 		// current document settings.
-		dr.update(Update::Force | Update::FitCursor);
+		dr.screenUpdate(Update::Force | Update::FitCursor);
 		dr.forceBufferUpdate();
 		break;
 	}
@@ -1219,7 +1219,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		buffer_.params().clearLayoutModules();
 		buffer_.params().makeDocumentClass();
 		updateDocumentClass(oldClass);
-		dr.update(Update::Force | Update::FitCursor);
+		dr.screenUpdate(Update::Force | Update::FitCursor);
 		dr.forceBufferUpdate();
 		break;
 	}
@@ -1237,7 +1237,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		buffer_.params().addLayoutModule(argument);
 		buffer_.params().makeDocumentClass();
 		updateDocumentClass(oldClass);
-		dr.update(Update::Force | Update::FitCursor);
+		dr.screenUpdate(Update::Force | Update::FitCursor);
 		dr.forceBufferUpdate();
 		break;
 	}
@@ -1269,7 +1269,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		buffer_.params().setBaseClass(argument);
 		buffer_.params().makeDocumentClass();
 		updateDocumentClass(oldDocClass);
-		dr.update(Update::Force | Update::FitCursor);
+		dr.screenUpdate(Update::Force | Update::FitCursor);
 		dr.forceBufferUpdate();
 		break;
 	}
@@ -1295,7 +1295,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		buffer_.params().setBaseClass(bc);
 		buffer_.params().makeDocumentClass();
 		updateDocumentClass(oldClass);
-		dr.update(Update::Force | Update::FitCursor);
+		dr.screenUpdate(Update::Force | Update::FitCursor);
 		dr.forceBufferUpdate();
 		break;
 	}
@@ -1306,7 +1306,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (!cur.textUndo())
 			dr.setMessage(_("No further undo information"));
 		else
-			dr.update(Update::Force | Update::FitCursor);
+			dr.screenUpdate(Update::Force | Update::FitCursor);
 		dr.forceBufferUpdate();
 		break;
 
@@ -1316,7 +1316,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (!cur.textRedo())
 			dr.setMessage(_("No further redo information"));
 		else
-			dr.update(Update::Force | Update::FitCursor);
+			dr.screenUpdate(Update::Force | Update::FitCursor);
 		dr.forceBufferUpdate();
 		break;
 
@@ -1365,7 +1365,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				// Set the cursor
 				dit.pos() = pos;
 				setCursor(dit);
-				dr.update(Update::Force | Update::FitCursor);
+				dr.screenUpdate(Update::Force | Update::FitCursor);
 			} else {
 				// Switch to other buffer view and resend cmd
 				lyx::dispatch(FuncRequest(
@@ -1419,18 +1419,18 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_CHANGE_NEXT:
 		findNextChange(this);
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
-		dr.update(Update::Force | Update::FitCursor);
+		dr.screenUpdate(Update::Force | Update::FitCursor);
 		break;
 	
 	case LFUN_CHANGE_PREVIOUS:
 		findPreviousChange(this);
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
-		dr.update(Update::Force | Update::FitCursor);
+		dr.screenUpdate(Update::Force | Update::FitCursor);
 		break;
 
 	case LFUN_CHANGES_MERGE:
 		if (findNextChange(this) || findPreviousChange(this)) {
-			dr.update(Update::Force | Update::FitCursor);
+			dr.screenUpdate(Update::Force | Update::FitCursor);
 			dr.forceBufferUpdate();
 			showDialog("changes");
 		}
@@ -1444,7 +1444,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// accept everything in a single step to support atomic undo
 		buffer_.text().acceptOrRejectChanges(cur, Text::ACCEPT);
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
-		dr.update(Update::Force | Update::FitCursor);
+		dr.screenUpdate(Update::Force | Update::FitCursor);
 		dr.forceBufferUpdate();
 		break;
 
@@ -1457,7 +1457,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// Note: reject does not work recursively; the user may have to repeat the operation
 		buffer_.text().acceptOrRejectChanges(cur, Text::REJECT);
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
-		dr.update(Update::Force | Update::FitCursor);
+		dr.screenUpdate(Update::Force | Update::FitCursor);
 		dr.forceBufferUpdate();
 		break;
 
@@ -1663,7 +1663,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		bool update = in_texted && cur.bv().checkDepm(cur, old);
 		cur.finishUndo();
 		if (update) {
-			dr.update(Update::Force | Update::FitCursor);
+			dr.screenUpdate(Update::Force | Update::FitCursor);
 			dr.forceBufferUpdate();
 		}
 		break;
@@ -1687,7 +1687,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			y = getPos(cur).y_;
 
 		cur.finishUndo();
-		dr.update(Update::SinglePar | Update::FitCursor);
+		dr.screenUpdate(Update::SinglePar | Update::FitCursor);
 		break;
 	}
 
@@ -1704,7 +1704,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			y = getPos(cur).y_;
 
 		cur.finishUndo();
-		dr.update(Update::SinglePar | Update::FitCursor);
+		dr.screenUpdate(Update::SinglePar | Update::FitCursor);
 		break;
 	}
 
@@ -1747,7 +1747,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		cur.endUndoGroup();
 		cur = savecur;
 		cur.fixIfBroken();
-		dr.update(Update::Force);
+		dr.screenUpdate(Update::Force);
 		dr.forceBufferUpdate();
 
 		if (iterations >= max_iter) {
@@ -1853,7 +1853,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// single par update would be good enough, but it has no way
 		// to tell us that at the moment.
 		inset->dispatch(cur, fr);
-		dr.update(Update::Force | Update::FitCursor);
+		dr.screenUpdate(Update::Force | Update::FitCursor);
 		dr.forceBufferUpdate();
 		break;
 	}
@@ -2061,8 +2061,8 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 	theSelection().haveSelection(cursor().selection());
 
 	// If the command has been dispatched,
-	if (cur.result().dispatched() || cur.result().update())
-		processUpdateFlags(cur.result().update());
+	if (cur.result().dispatched() || cur.result().screenUpdate())
+		processUpdateFlags(cur.result().screenUpdate());
 }
 
 
@@ -2878,10 +2878,10 @@ void BufferView::setInlineCompletion(Cursor & cur, DocIterator const & pos,
 	
 	// set update flags
 	if (changed) {
-		if (singlePar && !(cur.result().update() & Update::Force))
-			cur.screenUpdateFlags(cur.result().update() | Update::SinglePar);
+		if (singlePar && !(cur.result().screenUpdate() & Update::Force))
+			cur.screenUpdateFlags(cur.result().screenUpdate() | Update::SinglePar);
 		else
-			cur.screenUpdateFlags(cur.result().update() | Update::Force);
+			cur.screenUpdateFlags(cur.result().screenUpdate() | Update::Force);
 	}
 }
 

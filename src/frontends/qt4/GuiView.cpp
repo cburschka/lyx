@@ -2831,7 +2831,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 {
 	BufferView * bv = currentBufferView();
 	// By default we won't need any update.
-	dr.update(Update::None);
+	dr.screenUpdate(Update::None);
 	// assume cmd will be dispatched
 	dr.dispatched(true);
 

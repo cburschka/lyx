@@ -41,9 +41,9 @@ public:
 	///
 	void setMessage(docstring m) { message_ = m; }
 	///
-	Update::flags update() const { return update_; }
+	Update::flags screenUpdate() const { return update_; }
 	///
-	void update(Update::flags f) { update_ = f; }
+	void screenUpdate(Update::flags f) { update_ = f; }
 	/// Does the buffer need updating?
 	bool needBufferUpdate() const { return need_buf_update_; }
 	/// Force the buffer to be updated

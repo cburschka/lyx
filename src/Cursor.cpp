@@ -339,7 +339,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	if (lyxaction.funcHasFlag(cmd.action(), LyXAction::AtPoint)
 	    && nextInset()) {
 		disp_.dispatched(true);
-		disp_.update(Update::FitCursor | Update::Force);
+		disp_.screenUpdate(Update::FitCursor | Update::Force);
 		FuncRequest tmpcmd = cmd;
 		LYXERR(Debug::DEBUG, "Cursor::dispatch: (AtPoint) cmd: "
 			<< cmd0 << endl << *this);
@@ -362,7 +362,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 		// The common case is 'LFUN handled, need update', so make the
 		// LFUN handler's life easier by assuming this as default value.
 		// The handler can reset the update and val flags if necessary.
-		disp_.update(Update::FitCursor | Update::Force);
+		disp_.screenUpdate(Update::FitCursor | Update::Force);
 		disp_.dispatched(true);
 		inset().dispatch(*this, cmd);
 		if (disp_.dispatched())
@@ -383,7 +383,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 			safe.pos() = safe.lastpos();
 		}
 		operator=(safe);
-		disp_.update(Update::None);
+		disp_.screenUpdate(Update::None);
 		disp_.dispatched(false);
 	} else {
 		// restore the previous one because nested Cursor::dispatch calls
@@ -2122,7 +2122,7 @@ void Cursor::dispatched()
 
 void Cursor::screenUpdateFlags(Update::flags f)
 {
-	disp_.update(f);
+	disp_.screenUpdate(f);
 }
 
 
@@ -2146,7 +2146,7 @@ bool Cursor::needBufferUpdate() const
 
 void Cursor::noScreenUpdate()
 {
-	disp_.update(Update::None);
+	disp_.screenUpdate(Update::None);
 }
 
 
