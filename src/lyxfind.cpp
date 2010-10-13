@@ -1079,6 +1079,7 @@ FindAndReplaceOptions::FindAndReplaceOptions(docstring const & search, bool case
 }
 
 
+namespace {
 /** Checks if the supplied character is lower-case */
 static bool isLowerCase(char_type ch) {
 	return lowercase(ch) == ch;
@@ -1130,7 +1131,7 @@ static void changeFirstCase(Buffer & buffer, TextCase first_case, TextCase other
 	right = pit->size() + 1;
 	pit->changeCase(buffer.params(), right, right, others_case);
 }
-
+} // anon namespace
 
 ///
 static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, MatchStringAdv & matchAdv)
