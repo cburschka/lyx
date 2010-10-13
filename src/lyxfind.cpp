@@ -71,23 +71,23 @@ class MatchString : public binary_function<Paragraph, pos_type, bool>
 {
 public:
 	MatchString(docstring const & str, bool cs, bool mw)
-		: str(str), cs(cs), mw(mw)
+		: str(str), case_sens(cs), whole_words(mw)
 	{}
 
 	// returns true if the specified string is at the specified position
 	// del specifies whether deleted strings in ct mode will be considered
 	bool operator()(Paragraph const & par, pos_type pos, bool del = true) const
 	{
-		return par.find(str, cs, mw, pos, del);
+		return par.find(str, case_sens, whole_words, pos, del);
 	}
 
 private:
 	// search string
 	docstring str;
 	// case sensitive
-	bool cs;
+	bool case_sens;
 	// match whole words only
-	bool mw;
+	bool whole_words;
 };
 
 
@@ -143,20 +143,20 @@ bool searchAllowed(BufferView * /*bv*/, docstring const & str)
 
 
 bool findOne(BufferView * bv, docstring const & searchstr,
-	bool cs, bool mw, bool fw, bool find_del = true)
+	bool case_sens, bool whole, bool forward, bool find_del = true)
 {
 	if (!searchAllowed(bv, searchstr))
 		return false;
 
 	DocIterator cur = bv->cursor();
 
-	MatchString const match(searchstr, cs, mw);
+	MatchString const match(searchstr, case_sens, whole);
 
-	bool found = fw ? findForward(cur, match, find_del) :
+	bool found = forward ? findForward(cur, match, find_del) :
 			  findBackwards(cur, match, find_del);
 
 	if (found)
-		bv->putSelectionAt(cur, searchstr.length(), !fw);
+		bv->putSelectionAt(cur, searchstr.length(), !forward);
 
 	return found;
 }
@@ -164,7 +164,7 @@ bool findOne(BufferView * bv, docstring const & searchstr,
 
 int replaceAll(BufferView * bv,
 	       docstring const & searchstr, docstring const & replacestr,
-	       bool cs, bool mw)
+	       bool case_sens, bool whole)
 {
 	Buffer & buf = bv->buffer();
 
@@ -173,7 +173,7 @@ int replaceAll(BufferView * bv,
 
 	DocIterator cur_orig(bv->cursor());
 
-	MatchString const match(searchstr, cs, mw);
+	MatchString const match(searchstr, case_sens, whole);
 	int num = 0;
 
 	int const rsize = replacestr.size();
@@ -208,7 +208,7 @@ int replaceAll(BufferView * bv,
 
 
 bool stringSelected(BufferView * bv, docstring & searchstr,
-		    bool cs, bool mw, bool fw)
+		    bool case_sens, bool whole, bool forward)
 {
 	// if nothing selected and searched string is empty, this
 	// means that we want to search current word at cursor position,
@@ -223,8 +223,9 @@ bool stringSelected(BufferView * bv, docstring & searchstr,
 	// if nothing selected or selection does not equal search string
 	// then search and select next occurence and return
 	docstring const str2 = bv->cursor().selectionAsString(false);
-	if ((cs && searchstr != str2) || compare_no_case(searchstr, str2) != 0) {
-		findOne(bv, searchstr, cs, mw, fw);
+	if ((case_sens && searchstr != str2) 
+	    || compare_no_case(searchstr, str2) != 0) {
+		findOne(bv, searchstr, case_sens, whole, forward);
 		return false;
 	}
 
@@ -233,18 +234,19 @@ bool stringSelected(BufferView * bv, docstring & searchstr,
 
 
 int replaceOne(BufferView * bv, docstring & searchstr,
-	    docstring const & replacestr, bool cs, bool mw, bool fw)
+	    docstring const & replacestr, bool case_sens, 
+			bool whole, bool forward)
 {
-	if (!stringSelected(bv, searchstr, cs, mw, fw))
+	if (!stringSelected(bv, searchstr, case_sens, whole, forward))
 		return 0;
 
 	if (!searchAllowed(bv, searchstr) || bv->buffer().isReadonly())
 		return 0;
 
 	Cursor & cur = bv->cursor();
-	cap::replaceSelectionWithString(cur, replacestr, fw);
+	cap::replaceSelectionWithString(cur, replacestr, forward);
 	bv->buffer().markDirty();
-	findOne(bv, searchstr, cs, mw, fw, false);
+	findOne(bv, searchstr, case_sens, whole, forward, false);
 	bv->buffer().updateMacros();
 	bv->processUpdateFlags(Update::Force | Update::FitCursor);
 
