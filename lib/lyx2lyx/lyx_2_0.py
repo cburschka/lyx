@@ -2311,7 +2311,6 @@ def convert_bibtexClearpage(document):
   " insert a clear(double)page bibliographystyle if bibtotoc option is used "
   while True:
     i = find_token(document.header, '\\papersides', 0)
-    document.warning(str(i))
     if i == -1:
       document.warning("Malformed LyX document: Can't find papersides definition.")
       return
