@@ -1513,9 +1513,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			DocIterator end = cur.selectionEnd();
 			if (beg.pit() == end.pit()) {
 				for (pos_type p = beg.pos() ; p < end.pos() ; ++p) {
-					if (!cur.inMathed()
-					    && cur.paragraph().isDeleted(p))
+					if (!cur.inMathed() && cur.paragraph().isDeleted(p)) {
 						has_deleted = true;
+						break;
+					}
 				}
 			}
 		}
