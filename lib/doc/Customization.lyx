@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 403
+\lyxformat 404
 \begin_document
 \begin_header
 \textclass scrbook
@@ -115,6 +115,7 @@ End
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \branch OutDated
 \selected 0
 \filename_suffix 0
@@ -14376,7 +14377,7 @@ HTML*
  These tags control XHTML output.
  See 
 \begin_inset CommandInset ref
-LatexCommand prettyref
+LatexCommand formatted
 reference "sec:Tags-for-XHTML"
 
 \end_inset
@@ -14956,6 +14957,43 @@ reference "des:Requires"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ResetsFont
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+1
+\end_layout
+
+\end_inset
+
+] Whether this inset should use the font of its surrounding environment
+ or uses its own.
+ Default is true: uses its own.
 \end_layout
 
 \begin_layout Description
