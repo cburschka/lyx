@@ -142,6 +142,8 @@ public:
 	bool isInToc() const { return intoc_; }
 	///
 	bool spellcheck() const { return spellcheck_; }
+	///
+	bool resetsFont() const { return resetsfont_; }
 private:
 	///
 	void makeDefaultCSS() const;
@@ -228,6 +230,8 @@ private:
 	bool intoc_;
 	/// check spelling of this inset?
 	bool spellcheck_;
+	///
+	bool resetsfont_;
 };
 
 ///

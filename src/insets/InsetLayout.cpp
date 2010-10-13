@@ -38,7 +38,8 @@ InsetLayout::InsetLayout() :
 	multipar_(true), custompars_(true), forceplain_(false), 
 	passthru_(false), parbreakisnewline_(false), freespacing_(false), 
 	keepempty_(false), forceltr_(false), 
-	needprotect_(false), intoc_(false), spellcheck_(true)
+	needprotect_(false), intoc_(false), spellcheck_(true), 
+	resetsfont_(true)
 { 
 	labelfont_.setColor(Color_error);
 }
@@ -109,6 +110,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_REQUIRES,
 		IL_SPELLCHECK,
 		IL_REFPREFIX,
+		IL_RESETSFONT,
 		IL_END
 	};
 
@@ -149,6 +151,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "preamble", IL_PREAMBLE },
 		{ "refprefix", IL_REFPREFIX },
 		{ "requires", IL_REQUIRES },
+		{ "resetsfont", IL_RESETSFONT },
 		{ "spellcheck", IL_SPELLCHECK }
 	};
 
@@ -338,6 +341,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		}
 		case IL_SPELLCHECK:
 			lex >> spellcheck_;
+			break;
+		case IL_RESETSFONT:
+			lex >> resetsfont_;
 			break;
 		case IL_END:
 			getout = true;

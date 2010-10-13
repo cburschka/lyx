@@ -104,6 +104,9 @@ import os, re, string, sys
 # Changed Custom:Style, CharStyle:Style, and Element:Style
 # uniformly to Flex:Style.
 
+# Incremented to format 30, 13 August 2010 by rgh
+# Introduced ResetsFont tag for InsetLayout.
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -111,7 +114,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 29
+currentFormat = 30
 
 
 def usage(prog_name):
@@ -286,6 +289,11 @@ def convert(lines):
                 i += 1
             continue
         
+        # Only new features
+        if format == 29:
+          i += 1
+          continue
+
         if format == 28:
           match = re_InsetLayout.match(lines[i])
           if match:
