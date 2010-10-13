@@ -55,13 +55,14 @@ docstring const replace2string(docstring const & replace,
  * The string is encoded by \c find2string.
  * \return true if the string was found.
  */
-bool find(BufferView * bv, FuncRequest const & ev);
+bool lyxfind(BufferView * bv, FuncRequest const & ev);
 
 /** Parse the string encoding of the replace request that is found in
  *  \c ev.argument and act on it.
  * The string is encoded by \c replace2string.
+ * \return whether we did anything
  */
-void replace(BufferView * bv, FuncRequest const &, bool has_deleted = false);
+bool lyxreplace(BufferView * bv, FuncRequest const &, bool has_deleted = false);
 
 /// find the next change in the buffer
 bool findNextChange(BufferView * bv);

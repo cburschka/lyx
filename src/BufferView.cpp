@@ -1484,7 +1484,9 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		bool const fw = act == LFUN_WORD_FIND_FORWARD;
 		docstring const data =
 			find2string(searched_string, true, false, fw);
-		find(this, FuncRequest(LFUN_WORD_FIND, data));
+		bool found = lyxfind(this, FuncRequest(LFUN_WORD_FIND, data));
+		if (found)
+			dr.screenUpdate(Update::Force | Update::FitCursor);
 		break;
 	}
 
@@ -1496,8 +1498,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, "findreplace"));
 			break;
 		}
-		if (find(this, req))
-			showCursor();
+		if (lyxfind(this, req))
+			dr.screenUpdate(Update::Force | Update::FitCursor);
 		else
 			message(_("String not found!"));
 		d->search_request_cache_ = req;
@@ -1517,8 +1519,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				}
 			}
 		}
-		replace(this, cmd, has_deleted);
-		dr.forceBufferUpdate();
+		if (lyxreplace(this, cmd, has_deleted)) {
+			dr.forceBufferUpdate();
+			dr.screenUpdate(Update::Force | Update::FitCursor);
+		}
 		break;
 	}
 

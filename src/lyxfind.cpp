@@ -247,8 +247,6 @@ int replaceOne(BufferView * bv, docstring & searchstr,
 	cap::replaceSelectionWithString(cur, replacestr, forward);
 	bv->buffer().markDirty();
 	findOne(bv, searchstr, case_sens, whole, forward, false);
-	bv->buffer().updateMacros();
-	bv->processUpdateFlags(Update::Force | Update::FitCursor);
 
 	return 1;
 }
@@ -283,7 +281,7 @@ docstring const replace2string(docstring const & replace,
 }
 
 
-bool find(BufferView * bv, FuncRequest const & ev)
+bool lyxfind(BufferView * bv, FuncRequest const & ev)
 {
 	if (!bv || ev.action() != LFUN_WORD_FIND)
 		return false;
@@ -304,11 +302,14 @@ bool find(BufferView * bv, FuncRequest const & ev)
 }
 
 
-void replace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
+bool lyxreplace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
 {
 	if (!bv || ev.action() != LFUN_WORD_REPLACE)
-		return;
+		return false;
 
+	// assume we didn't do anything
+	bool retval = false;
+	
 	// data is of the form
 	// "<search>
 	//  <replace>
@@ -333,12 +334,12 @@ void replace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
 			// emit message signal.
 			buf.message(_("String not found!"));
 		} else {
+			retval = true;
 			if (replace_count == 1) {
 				// emit message signal.
 				buf.message(_("String has been replaced."));
 			} else {
-				docstring str = convert<docstring>(replace_count);
-				str += _(" strings have been replaced.");
+				docstring str = bformat(_("%1$d strings have been replaced."), replace_count);
 				// emit message signal.
 				buf.message(str);
 			}
@@ -347,10 +348,11 @@ void replace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
 		// if we have deleted characters, we do not replace at all, but
 		// rather search for the next occurence
 		if (findOne(bv, search, casesensitive, matchword, forward))
-			bv->showCursor();
+			retval = true;
 		else
 			bv->message(_("String not found!"));
 	}
+	return retval;
 }
 
 
