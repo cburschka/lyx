@@ -842,7 +842,7 @@ string SVN::repoUpdate()
 	// res = "Revert log:\n" + tmpf.fileContents("UTF-8");
 	doVCCommand("svn update --accept mine-full " + quoteName(owner_->filePath())
 		+ " > " + quoteName(tmpf.toFilesystemEncoding()),
-	FileName(owner_->filePath()));
+		FileName(owner_->filePath()));
 	res += "Update log:\n" + tmpf.fileContents("UTF-8");
 
 	LYXERR(Debug::LYXVC, res);
