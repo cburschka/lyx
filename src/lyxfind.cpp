@@ -207,48 +207,69 @@ int replaceAll(BufferView * bv,
 }
 
 
-bool stringSelected(BufferView * bv, docstring & searchstr,
-		    bool case_sens, bool whole, bool forward)
-{
-	// if nothing selected and searched string is empty, this
-	// means that we want to search current word at cursor position,
-	// but only if we are in texted() mode.
-	if (!bv->cursor().selection() && searchstr.empty()
-	    && bv->cursor().inTexted()) {
-		bv->cursor().innerText()->selectWord(bv->cursor(), WHOLE_WORD);
-		searchstr = bv->cursor().selectionAsString(false);
-		return true;
-	}
-
-	// if nothing selected or selection does not equal search string
-	// then search and select next occurence and return
-	docstring const str2 = bv->cursor().selectionAsString(false);
-	if ((case_sens && searchstr != str2) 
-	    || compare_no_case(searchstr, str2) != 0) {
-		findOne(bv, searchstr, case_sens, whole, forward);
-		return false;
-	}
-
-	return true;
-}
-
-
-int replaceOne(BufferView * bv, docstring & searchstr,
+// the idea here is that we are going to replace the string that
+// is selected IF it is the search string. 
+// if there is a selection, but it is not the search string, then
+// we basically ignore it. (FIXME We ought to replace only within
+// the selection.)
+// if there is no selection, then:
+//  (i) if some search string has been provided, then we find it.
+//      (think of how the dialog works when you hit "replace" the
+//      first time.) 
+// (ii) if no search string has been provided, then we treat the
+//      word the cursor is in as the search string. (why? i have no
+//      idea.) but this only works in text?
+//
+// returns the number of replacements made (one, if any) and 
+// whether anything at all was done.
+pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 	    docstring const & replacestr, bool case_sens, 
 			bool whole, bool forward)
 {
-	if (!stringSelected(bv, searchstr, case_sens, whole, forward))
-		return 0;
-
-	if (!searchAllowed(searchstr) || bv->buffer().isReadonly())
-		return 0;
-
 	Cursor & cur = bv->cursor();
+	if (!cur.selection()) {
+		// no selection, non-empty search string: find it
+		if (!searchstr.empty()) {
+			findOne(bv, searchstr, case_sens, whole, forward);
+			return pair<bool, int>(true, 0);
+		}
+		// empty search string
+		if (!cur.inTexted())
+			// bail in math
+			return pair<int, bool>(0, false);
+		// select current word and treat it as the search string
+		cur.innerText()->selectWord(cur, WHOLE_WORD);
+		searchstr = cur.selectionAsString(false);
+	}
+	
+	// if we still don't have a search string, report the error
+	// and abort.
+	if (!searchAllowed(searchstr))
+		return pair<bool, int>(false, 0);
+	
+	bool have_selection = cur.selection();
+	docstring const selected = cur.selectionAsString(false);
+	bool match = 
+		case_sens ? searchstr == selected
+	            : compare_no_case(searchstr, selected) == 0;
+
+	// no selection or current selection is not search word:
+	// just find the search word
+	if (!have_selection || !match) {
+		findOne(bv, searchstr, case_sens, whole, forward);
+		return pair<bool, int>(true, 0);
+	}
+
+	// we're now actually ready to replace. if the buffer is
+	// read-only, we can't, though.
+	if (bv->buffer().isReadonly())
+		return pair<bool, int>(false, 0);
+
 	cap::replaceSelectionWithString(cur, replacestr, forward);
 	bv->buffer().markDirty();
 	findOne(bv, searchstr, case_sens, whole, forward, false);
 
-	return 1;
+	return pair<bool, int>(true, 1);
 }
 
 } // namespace anon
@@ -302,14 +323,12 @@ bool lyxfind(BufferView * bv, FuncRequest const & ev)
 }
 
 
-bool lyxreplace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
+bool lyxreplace(BufferView * bv, 
+		FuncRequest const & ev, bool has_deleted)
 {
 	if (!bv || ev.action() != LFUN_WORD_REPLACE)
 		return false;
 
-	// assume we didn't do anything
-	bool retval = false;
-	
 	// data is of the form
 	// "<search>
 	//  <replace>
@@ -324,24 +343,32 @@ bool lyxreplace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
 	bool all           = parse_bool(howto);
 	bool forward       = parse_bool(howto);
 
+	int replace_count = 0;
+	bool update = false;
+
 	if (!has_deleted) {
-		int const replace_count = all
-			? replaceAll(bv, search, rplc, casesensitive, matchword)
-			: replaceOne(bv, search, rplc, casesensitive, matchword, forward);
+		if (all) {
+			replace_count = replaceAll(bv, search, rplc, casesensitive, matchword);
+			update = replace_count > 0;
+		} else {
+			pair<bool, int> rv = 
+				replaceOne(bv, search, rplc, casesensitive, matchword, forward);
+			update = rv.first;
+			replace_count = rv.second;
+		}
 
 		Buffer const & buf = bv->buffer();
-		if (replace_count == 0) {
+		if (!update) {
 			// emit message signal.
 			buf.message(_("String not found!"));
 		} else {
-			retval = true;
-			if (replace_count == 1) {
-				// emit message signal.
+			if (replace_count == 0) {
+				buf.message(_("String found."));
+			} else if (replace_count == 1) {
 				buf.message(_("String has been replaced."));
 			} else {
 				docstring const str = 
 					bformat(_("%1$d strings have been replaced."), replace_count);
-				// emit message signal.
 				buf.message(str);
 			}
 		}
@@ -349,11 +376,11 @@ bool lyxreplace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
 		// if we have deleted characters, we do not replace at all, but
 		// rather search for the next occurence
 		if (findOne(bv, search, casesensitive, matchword, forward))
-			retval = true;
+			update = true;
 		else
 			bv->message(_("String not found!"));
 	}
-	return retval;
+	return update;
 }
 
 
