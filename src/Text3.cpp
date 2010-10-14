@@ -1942,6 +1942,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (!cmd.argument().empty())
 			// FIXME: Are all these characters encoded in one byte in utf8?
 			bv->translateAndInsert(cmd.argument()[0], this, cur);
+		cur.screenUpdateFlags(Update::FitCursor);
 		break;
 
 	case LFUN_FLOAT_LIST_INSERT: {

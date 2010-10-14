@@ -1685,7 +1685,6 @@ void GuiApplication::handleKeyFunc(FuncCode action)
 	d->keyseq.clear();
 	// copied verbatim from do_accent_char
 	bv->cursor().resetAnchor();
-	bv->processUpdateFlags(Update::FitCursor);
 }
 
 
