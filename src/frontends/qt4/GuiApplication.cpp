@@ -1091,7 +1091,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd)
 
 	DispatchResult dr;
 	// redraw the screen at the end (first of the two drawing steps).
-	//This is done unless explicitly requested otherwise
+	// This is done unless explicitly requested otherwise
 	dr.screenUpdate(Update::FitCursor);
 	dispatch(cmd, dr);
 

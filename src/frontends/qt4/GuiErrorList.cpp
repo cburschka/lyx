@@ -166,8 +166,8 @@ bool GuiErrorList::goTo(int item)
 	DocIterator dit = buf_->getParFromID(err.par_id);
 
 	if (dit == doc_iterator_end(buf_)) {
-        // FIXME: Happens when loading a read-only doc with 
-        // unknown layout. Should this be the case?
+		// FIXME: Happens when loading a read-only doc with 
+		// unknown layout. Should this be the case?
 		LYXERR0("par id " << err.par_id << " not found");
 		return false;
 	}
