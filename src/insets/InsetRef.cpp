@@ -228,7 +228,7 @@ void InsetRef::validate(LaTeXFeatures & features) const
 	else if (getCmdName() == "formatted") {
 		if (buffer().params().use_refstyle) {
 			features.require("refstyle");
-			//features.addPreambleSnippet("");
+			features.require("ifthen");
 		} else
 			features.require("prettyref");
 	} else if (getCmdName() == "eqref" && !buffer().params().use_refstyle)
