@@ -453,16 +453,12 @@ void LyXAction::init()
                a few contained in the Logical Markup module. You can also of
                course create some yourself. \n
                For dissolving the element see #LFUN_INSET_DISSOLVE.
- * \li Syntax: flex-insert <TYPE:Name>
- * \li Params: TYPE: CharStyle|Custom|Element|Standard \n
-                     Identifies whether this is a Character Style, a
-                     Custom Inset or an XML Element, and which dynamical 
-                     sub-menu this flex inset is in on the LyX menu tree. 
-                     If Standard (currently unused): none of these.\n
-               Name: This name must be defined either in your layout file
+ * \li Syntax: flex-insert Name
+ * \li Params: Name: This name must be defined either in your layout file
                      or imported by some module. The definition is 
-                     InsetLayout <TYPE:Name>
- * \li Sample: flex-insert CharStyle:Code
+                     InsetLayout Name or InsetLayout <Flex:Name>. The Flex:
+                     prefix is optional.
+ * \li Sample: flex-insert Code
  * \endvar
  */
 		{ LFUN_FLEX_INSERT, "flex-insert", Noop, Edit },
