@@ -3311,7 +3311,8 @@ void GuiDocument::dispatchParams()
 			dispatch(FuncRequest(LFUN_SET_COLOR, str));
 		}
 	}
-	// FIXME: If we used an LFUN, we would not need those two lines:
+	// FIXME LFUN
+	// If we used an LFUN, we would not need these two lines:
 	BufferView * bv = const_cast<BufferView *>(bufferview());
 	bv->processUpdateFlags(Update::Force | Update::FitCursor);
 }

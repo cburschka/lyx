@@ -324,8 +324,8 @@ void GuiSpellchecker::check()
 	if (pos != -1)
 		d->ui.languageCO->setCurrentIndex(pos);
 
-	// FIXME: if we used a lfun like in find/replace, dispatch would do
-	// all of this for us
+	// FIXME LFUN
+	// If we used a LFUN, dispatch would do all of this for us
 	int const size = to.pos() - from.pos();
 	BufferView * bv = const_cast<BufferView *>(bufferview());
 	bv->putSelectionAt(from, size, false);
