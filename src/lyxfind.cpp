@@ -1083,16 +1083,6 @@ FindAndReplaceOptions::FindAndReplaceOptions(docstring const & search, bool case
 
 
 namespace {
-/** Checks if the supplied character is lower-case */
-static bool isLowerCase(char_type ch) {
-	return lowercase(ch) == ch;
-}
-
-
-/** Checks if the supplied character is upper-case */
-static bool isUpperCase(char_type ch) {
-	return uppercase(ch) == ch;
-}
 
 
 /** Check if 'len' letters following cursor are all non-lowercase */

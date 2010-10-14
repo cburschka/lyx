@@ -432,6 +432,16 @@ char_type uppercase(char_type c)
 }
 
 
+bool isLowerCase(char_type ch) {
+	return lowercase(ch) == ch;
+}
+
+
+bool isUpperCase(char_type ch) {
+	return uppercase(ch) == ch;
+}
+
+
 namespace {
 
 // since we cannot use tolower and toupper directly in the

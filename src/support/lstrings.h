@@ -83,6 +83,12 @@ char_type lowercase(char_type c);
 /// Does not depend on the locale.
 char_type uppercase(char_type c);
 
+/// Checks if the supplied character is lower-case
+bool isLowerCase(char_type ch);
+
+/// Checks if the supplied character is upper-case
+bool isUpperCase(char_type ch);
+
 /// same as lowercase(), but ignores locale
 std::string const ascii_lowercase(std::string const &);
 docstring const ascii_lowercase(docstring const &);
