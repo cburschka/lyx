@@ -126,6 +126,9 @@ Preamble
     \fi		% if needSendFax
   }	%findemessage
 
+% to get the specified pagesize (workaround for a lettre problem)
+\input pdftexconfig.tex
+
 EndPreamble
 
 # My Address style used to specify sender name and coordinates

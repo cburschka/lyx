@@ -1,12 +1,8 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 403
+\lyxformat 404
 \begin_document
 \begin_header
 \textclass lettre
-\begin_preamble
-% to get A4 pagesize
-\input pdftexconfig.tex
-\end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language french
@@ -41,6 +37,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \index Index
 \shortcut idx
 \color #008000
@@ -73,22 +70,6 @@ La liste des styles couvre tous les éléments d'une lettre qui apparaissent
 
 \begin_layout Plain Layout
 L'ordre des éléments est indifférent.
-\end_layout
-
-\begin_layout Plain Layout
-Pour la compilation 
-\family typewriter
-pdflatex
-\family default
-, le police implicite est 
-\family typewriter
-lmodern
-\family default
- : si vous voulez utiliser une autre police via 
-\family sans
-Documents ▹ Paramètres ▹ Polices, 
-\family default
-supprimez le préambule LaTeX
 \end_layout
 
 \end_inset
