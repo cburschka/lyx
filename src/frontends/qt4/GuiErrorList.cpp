@@ -180,8 +180,9 @@ bool GuiErrorList::goTo(int item)
 	pos_type const range = end - start;
 	dit.pos() = start;
 	BufferView * bv = const_cast<BufferView *>(bufferview());
-	// FIXME: If we used an LFUN, we would not need this line:
+	// FIXME: If we used an LFUN, we would not need these lines:
 	bv->putSelectionAt(dit, range, false);
+	bv->processUpdateFlags(Update::Force | Update::FitCursor);
 	return true;
 }
 

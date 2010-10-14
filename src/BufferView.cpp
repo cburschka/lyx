@@ -1532,9 +1532,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		istringstream iss(to_utf8(cmd.argument()));
 		iss >> opt;
 		if (findAdv(this, opt))
-			cur.dispatched();
-		else
-			cur.undispatched();
+			dr.screenUpdate(Update::Force | Update::FitCursor);
 		break;
 	}
 
@@ -2344,9 +2342,6 @@ void BufferView::putSelectionAt(DocIterator const & cur,
 		} else
 			d->cursor_.setSelection(d->cursor_, length);
 	}
-	// Ensure a redraw happens in any case because the new selection could 
-	// possibly be on the same screen as the previous selection.
-	processUpdateFlags(Update::Force | Update::FitCursor);
 }
 
 
