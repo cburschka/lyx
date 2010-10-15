@@ -155,6 +155,9 @@ What's new
 
 - Correct check for enable condition of VC repository update.
 
+- Correct enabled check for LFUN_MATH_NUMBER_TOGGLE.
+  Avoid implicite conversion of enum to bool.
+
 
 * DOCUMENTATION AND LOCALIZATION
 
