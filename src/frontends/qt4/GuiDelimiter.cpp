@@ -173,6 +173,9 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 	leftLW->setViewMode(QListView::IconMode);
 	rightLW->setViewMode(QListView::IconMode);
 
+	leftLW->setDragDropMode(QAbstractItemView::NoDragDrop);
+	rightLW->setDragDropMode(QAbstractItemView::NoDragDrop);
+
 	initMathSymbols();
 
 	typedef map<char_type, QListWidgetItem *> ListItems;
