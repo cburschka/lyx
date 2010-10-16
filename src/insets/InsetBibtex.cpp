@@ -23,6 +23,7 @@
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "PDFOptions.h"
 #include "TextClass.h"
 
 #include "frontends/alert.h"
@@ -381,6 +382,9 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 				// twoside
 				os << "\\cleardoublepage";
 			}
+			// set label for hyperref, see http://www.lyx.org/trac/ticket/6470
+			if (buffer().params().pdfoptions().use_hyperref)
+				os << "\\phantomsection";
 			os << "\\addcontentsline{toc}{chapter}{\\bibname}";
 		} else if (buffer().params().documentClass().hasLaTeXLayout("section"))
 			os << "\\addcontentsline{toc}{section}{\\refname}";
