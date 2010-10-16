@@ -1315,6 +1315,7 @@ lib_templates_files = Split('''
     koma-letter2.lyx
     latex8.lyx
     letter.lyx
+    lettre.lyx
     README.new_templates
     revtex.lyx
     revtex4.lyx
@@ -2700,6 +2701,7 @@ lib_layouts_files = Split('''
     kluwer.layout
     latex8.layout
     letter.layout
+    lettre.layout
     literate-article.layout
     literate-book.layout
     literate-report.layout

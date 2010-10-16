@@ -1,0 +1,672 @@
+#% Do not delete the line below; configure depends on this
+#    \DeclareLaTeXClass{letter (lettre)}
+# French Letter textclass definition file. 
+# Author : Alain Castera <castera@in2p3.fr>
+# Modifies only some things from letter.layout
+# to use the lettre.cls class from Denis Megevand
+# (almost) nothing regarding fax, only letter
+#---------------
+# rev 1; A. Castera :
+# A lot of LateX code added to avoid being bored by
+# the imposed command order of the class letter (see comments)
+#---------------
+#rev 2; A. Castera :
+# further more LaTeX code to make tth happy
+# with the class.(Following a request on 
+# such kind of thing from lyx-users@lists.lyx.org)
+#---------------
+# rev.3; J.-P. Chretien oct 2010
+# general update and review for inclusion in lyx-1.6.8
+#  - remove tth stuff
+#  - english named styles (translated in fr.po)
+#  - margins set to dynamic to ensure alignment of line headings
+#  - categories
+#  - ordering control left at the beginning (any other way ?)
+
+
+Format 11
+
+#(pre)declarations (just to impose some order on the menus)
+Style Standard
+End
+
+Style My_Address
+End
+Style Location
+End
+Style Telephone
+End
+Style NoTelephone
+End
+Style Fax
+End
+Style NoFax
+End
+Style Email
+End
+Style Place
+End
+Style NoPlace
+End
+Style Date
+End
+Style NoDate
+End
+Style Send_To_Address
+End
+Style Subject
+End
+Style YourRef
+End
+Style MyRef
+End 
+Style Opening
+End
+Style Closing
+End
+Style Signature
+End
+Style encl
+End
+Style 	cc
+End
+Style Post_Scriptum
+End
+Style EndOfMessage
+End
+Style EndOfFile
+End
+
+
+# Input general definitions
+Input letter.layout
+
+Preamble
+%% A lot of newif 
+%% to allow reorder commands and output them when needed only
+ \newif\ifneedsendletter	% we started a letter
+ \newif\ifneedsendfax      	% we started a fax
+ \newif\ifmonaddressused 	% sender address specified
+ \newif\ifmonlieuused		% city
+ \newif\ifmonlocationused	% sender extra info (office, etc..)
+ \newif\ifmontelephoneused	% sender phone # specified
+ \newif\ifmonfaxused		% sender fax # specified
+ \newif\ifmonemailused		% sender email address specified
+ \newif\iflyxsigp		% first of up to 3 signatures
+ \newif\iflyxsigs		% second signature
+ \newif\iflyxsigt		% third one
+ \newif\ifpsneeded		% post-scriptum
+ \newif\ifccneeded		% carbon copy to somebody
+ \newif\ifencneeded		% encluded items
+   
+%% Sometimes you don't want a closing ("formule de politesse"),
+%% but the package still needs it. Use a void macro instead of a newif
+ \newcommand{\Lyclose}{}
+%% 
+
+%% here is the real stuff : ouput the commands in the "proper" order
+ \newcommand{\findemessage}
+  { 
+    \ifneedsendletter %% did we start a letter ?
+      \iflyxsigp \signature{\Lysigp} \else \name{} \fi
+      \iflyxsigs \secondsignature{\Lysigs} \fi
+      \iflyxsigt \thirdsignature{\Lysigt} \fi	
+      \lyxsigpfalse
+      \lyxsigsfalse
+      \lyxsigtfalse
+      \closing{\Lyclose}
+      \ifpsneeded \ps{P.S. : }{\Lyps} \psneededfalse \fi
+      \ifccneeded \cc{\Lycc} \ccneededfalse \fi
+      \ifencneeded \encl{\Lyenc} \encneededfalse \fi
+      \end{letter}
+      \needsendletterfalse %% done with letter
+    \fi		% if needSendLetter
+      \ifneedsendfax \end{telefax} %% nothing provided yet for telefax !
+      \needsendfaxfalse 
+    \fi		% if needSendFax
+  }	%findemessage
+
+% to get the specified pagesize (workaround for a lettre problem)
+\input pdftexconfig.tex
+
+EndPreamble
+
+# My Address style used to specify sender name and coordinates
+Style My_Address
+  CopyStyle     My_Address
+  Category      Headings
+  Margin        Static
+  LatexType     Command
+  LatexName     MyAddress
+  ParSkip       0.4
+  BottomSep     1.5
+  ParSep        1.5
+  Align         Left
+  AlignPossible     Left
+  Preamble
+   \newcommand{\MyAddress}[1]{ % will save the info for future use
+	\monaddressusedtrue
+	\providecommand{\lyaddress}{\address{#1}}
+	}
+  EndPreamble
+End
+
+# City name style
+Style Place
+  Category 		Headings
+  Margin  		Dynamic
+  LatexType 		Command
+  LatexName 		Myplace
+  LabelSep		xx
+  TopSep		0.4
+  BottomSep		0.4
+  ParSep		0.4
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		City:
+  LeftMargin  		x
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+  Preamble
+   \newcommand{\Myplace}[1]{   % will save the info for future use
+        \monlieuusedtrue
+	\providecommand{\lylieu}{\relax}
+        \renewcommand{\lylieu}{\lieu{#1}}
+        }
+  EndPreamble
+End
+
+#suppress City indication
+Style NoPlace
+  Category 		Headings
+  KeepEmpty		1
+  LatexType		Command
+  LatexName		MyNoPlace
+  LabelType		Static
+  Margin		Dynamic
+  LabelString		NoPlace
+  LeftMargin  		x
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+
+  Preamble
+   \newcommand{\MyNoPlace}{
+        \monlieuusedtrue
+	\providecommand{\lylieu}{\relax}
+        \renewcommand{\lylieu}{\nolieu{}}
+        }
+  EndPreamble
+End
+
+# date Style
+Style Date
+  Category		Headings
+  Margin  		Dynamic
+  LatexType 		Command
+  LatexName 		date
+  LeftMargin		x
+  LabelSep		xx
+  TopSep		0.4
+  BottomSep		0.4
+  ParSep		0.4
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		Date:
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+End
+
+#suppress date indication
+Style NoDate
+  Category		Headings
+  KeepEmpty		1
+  Margin  		Dynamic
+  LatexType		Command
+  LatexName		nodate
+  LabelType		Static
+  LeftMargin		x
+  LabelString		NoDate
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+  Preamble
+  EndPreamble
+End
+
+# location (i.e. office, department ...)
+Style Location
+  Category		Headings
+  Margin  		Dynamic
+  LatexType 		Command
+  LatexName 		MyLocation
+  LeftMargin		x
+  LabelString		Office:
+  LabelSep		xx
+  TopSep		0.4
+  BottomSep		0.4
+  ParSep		0.4
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+  Preamble
+   \newcommand{\MyLocation}[1]{ % will save the info for future use
+        \monlocationusedtrue
+	\providecommand{\lylocation}{\relax}
+        \renewcommand{\lylocation}{\location{#1}}
+        }
+  EndPreamble
+End
+
+# telephone Style
+Style Telephone
+  Category		Headings
+  Margin  		Dynamic
+  LatexType 		Command
+  LatexName 		MyTelephone
+  LeftMargin		x
+  LabelString		Tel:
+  LabelSep		xx
+  TopSep		0.4
+  BottomSep		0.4
+  ParSep		0.4
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+  Preamble
+    \newcommand{\MyTelephone}[1]{ % will save the info for future use
+        \montelephoneusedtrue
+        \providecommand{\lytelephone}{\relax}
+        \renewcommand{\lytelephone}{\telephone{#1}}
+       }
+  EndPreamble
+End
+
+#suppress telephone indication
+Style NoTelephone
+  Category		Headings
+  KeepEmpty		1
+  Margin  		Dynamic
+  LatexType		Command
+  LatexName		MyNoTelephone
+  LabelType		Static
+  LeftMargin		x
+  LabelString		NoTel
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+  Preamble
+   \newcommand{\MyNoTelephone}{
+        \montelephoneusedtrue
+        \providecommand{\lytelephone}{\relax}
+        \renewcommand{\lytelephone}{\notelephone{}}
+        }
+  EndPreamble
+
+End
+
+# telefax Style
+Style Fax
+  Category		Headings
+  Margin  		Dynamic
+  LatexType 		Command
+  LatexName 		MyFax
+  LeftMargin		x
+  LabelSep		xx
+  TopSep		0.4
+  BottomSep		0.4
+  ParSep		0.4
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		Fax:
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+  Preamble
+   \newcommand{\MyFax}[1]{ % will save the info for future use
+        \monfaxusedtrue
+        \providecommand{\lyfax}{\relax}
+        \renewcommand{\lyfax}{\fax{#1}}
+        }
+  EndPreamble
+End
+
+#suppress fax indication
+Style NoFax
+  Category		Headings
+  KeepEmpty		1
+  Margin  		Dynamic
+  LatexType		Command
+  LatexName		MyNoFax
+  LabelType		Static
+  LeftMargin		x
+  LabelString		NoFax
+   # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+  Preamble
+   \newcommand{\MyNoFax}{
+        \monfaxusedtrue
+        \providecommand{\lyfax}{\relax}
+        \renewcommand{\lyfax}{\nofax{}}
+        }
+  EndPreamble
+End
+
+
+# Email Style
+Style Email
+  Category		Headings
+  Margin  		Dynamic
+  LatexType 		Command
+  LatexName 		MyEmail
+  LeftMargin		x
+  LabelString		Email:
+  LabelSep		xx
+  TopSep		0.4
+  BottomSep		0.4
+  ParSep		0.4
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+  Preamble
+   \newcommand{\MyEmail}[1]{ % will save the info for future use
+        \monemailusedtrue
+        \providecommand{\lyemail}{\relax}
+        \renewcommand{\lyemail}{\email{#1}}
+        }
+  EndPreamble
+End
+
+# Subject Style
+Style Subject
+  Margin  		Dynamic
+  LatexType             Command
+  LatexName             conc
+  LeftMargin            x
+  LabelString           Subject:
+  LabelSep		xx
+  TopSep		0.4
+  BottomSep		0.4
+  ParSep		0.4
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+End
+
+# YourRef Style
+Style YourRef
+  CopyStyle             Subject
+  Margin  		Dynamic
+  LatexType             Command
+  LatexName             Vref
+  LeftMargin            x
+  LabelString           YourRef:
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+End
+
+# MyRef Style
+Style MyRef
+  CopyStyle             Subject
+  Margin  		Dynamic
+  LatexType             Command
+  LatexName             Nref
+  LeftMargin            x
+  LabelString           MyRef:
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+End
+
+Style Send_To_Address
+  CopyStyle		Send_To_Address
+  Margin		Right_Address_Box
+  LatexType		Command
+  LatexName		lettre
+  Preamble
+  \newcommand{\lettre}[1] { %% organized as expected by the package
+	  \findemessage   %% if we already started a letter or a fax
+	  \begin{letter}{#1} %% now the new one
+	  \ifmonaddressused
+	  \lyaddress{}
+	  \fi
+          \ifmonlocationused
+          \lylocation{}
+          \fi
+	  \ifmonlieuused
+	  \lylieu{}
+	  \fi
+          \ifmontelephoneused
+          \lytelephone{}
+          \fi
+          \ifmonfaxused
+          \lyfax{}
+          \fi
+          \ifmonemailused
+          \lyemail{}
+          \fi
+	  \needsendlettertrue
+	}
+  EndPreamble
+End
+
+#As a temporary(?) trick the last(only?) letter of the file must be processed
+# and to allow changing sender address, location,etc.. in between 2 letters
+Style EndOfMessage
+  Category		Closings
+  KeepEmpty		1
+  Margin  		Dynamic
+  TopSep		0.8
+  BottomSep		0.8
+  ParSep		0.8
+  LatexType		Command
+  LatexName		findemessage
+  LabelType		Static
+  LabelString		EndOfMessage.
+  LeftMargin		x
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+End
+
+Style EndOfFile
+  CopyStyle		EndOfMessage
+  LabelString		EndOfFile.
+End
+
+# Opening style definition (Accroche)
+Style Opening
+  CopyStyle		Opening
+  Margin  		Dynamic
+  LeftMargin		x
+  LabelString		Opening:
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+End
+
+# Closing style definition (FormuleDePolitesse, Salutations)
+Style Closing
+  CopyStyle		Closing
+  Margin		Dynamic
+  LeftMargin		x
+  LabelString		Closing:
+  LatexType		Command
+  LatexName		lyxclose
+  Preamble
+    \newcommand{\lyxclose}[1]{\renewcommand{\Lyclose}{#1}}
+  EndPreamble
+End
+
+# Signature style definition
+Style Signature
+  Margin		Dynamic
+  LeftMargin		x
+  LabelString		Signature:
+  LatexType		Command
+  LatexName		lyxsig
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+  Preamble
+      %% automatic assignment of signatures
+      %% there is only 1 Signature style, but multiple latex commands
+       \newcommand{\lyxsig}[1]{
+         \iflyxsigs %% the second sig. exists, so this one is the third
+           \providecommand{\Lysigt}{\relax}
+           \renewcommand{\Lysigt}{#1}
+           \lyxsigttrue
+          \else			%% if lyxsigs exist
+            \iflyxsigp 		%% the second one
+              \providecommand{\Lysigs}{\relax}
+              \renewcommand{\Lysigs}{#1}
+              \lyxsigstrue
+             \else 		%% the first one
+               \providecommand{\Lysigp}{\relax}
+               \renewcommand{\Lysigp}{#1}
+               \lyxsigptrue
+             \fi 		%% if lyxsidp exist
+          \fi 			%% if lyxsigs exist
+	}
+  EndPreamble
+End
+
+
+# encl style definition (Ci-joint)
+Style encl
+  CopyStyle		encl
+  Category 		Closings
+  Margin		Dynamic
+  LeftMargin		x
+  LabelString		encl:
+  LatexName		lyxenc
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+  Preamble
+    \newcommand{\lyxenc}[1]{
+	 \providecommand{\Lyenc}{\relax}
+	 \renewcommand{\Lyenc}{#1} 
+	 \encneededtrue
+	}
+  EndPreamble
+End
+
+#Carbon Copy
+Style 	cc
+  CopyStyle		encl
+  LatexName		lyxcc
+  LeftMargin		x
+  LabelString		cc:
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+  Preamble
+    \newcommand{\lyxcc}[1]{
+         \providecommand{\Lycc}{\relax}
+	 \renewcommand{\Lycc}{#1} 
+	 \ccneededtrue
+	}
+  EndPreamble
+End
+
+#Post Scriptum
+Style Post_Scriptum
+  Category 		Closings
+  Margin       		Dynamic
+  LatexType         	Command
+  LatexName		lyxps
+  LabelSep		xx
+  LabelType		Static
+  LeftMargin		x
+  LabelString		P.S.:
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+  Preamble
+    \newcommand{\lyxps}[1]{
+	 \providecommand{\Lyps}{\relax}
+	 \renewcommand{\Lyps}{#1} 
+	 \psneededtrue
+	}
+  EndPreamble
+End
+
+
+
