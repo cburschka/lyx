@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -87,6 +87,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \author "" 
 \end_header
 
@@ -297,8 +298,15 @@ Sekcia
 \begin_layout Standard
 Ďalej je tu problém dôslednosti.
  O päť dní neskôr si otvoríte svoju správu a začnete písať časť 4.
- Avšak zabudli ste, že ste používali 18pt tučné písmo, namiesto 16pt, takže
- nadpis časti 4 bude napísaný iným písmom, ako nadpis časti 1.
+ Avšak zabudli ste, že ste používali 18
+\begin_inset space \thinspace{}
+\end_inset
+
+pt tučné písmo, namiesto 16
+\begin_inset space \thinspace{}
+\end_inset
+
+pt, takže nadpis časti 4 bude napísaný iným písmom, ako nadpis časti 1.
  Tento problém v LyX\SpecialChar \nobreakdash-
 e neexistuje.
  Počítač sa stará o všetko to, ktorá vec má akú veľkosť písma.

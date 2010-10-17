@@ -1,4 +1,4 @@
-#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -430,8 +430,15 @@ status collapsed
 \bar no
 \noun off
 \color none
-次に、一貫性の問題を見てみましょう。5日後、あなたはレポートをもういちど開いて、第4節を書きはじめます。しかしながら、あなたは18ポイントのボールド体を使うべき
-ことを忘れてしまって16ポイントを使ってしまったので、第4節の節見出しは、第1節で使ったのとは違うフォントで組版されることになってしまいます。このような問題は、
+次に、一貫性の問題を見てみましょう。5日後、あなたはレポートをもういちど開いて、第4節を書きはじめます。しかしながら、あなたは18
+\begin_inset space \thinspace{}
+\end_inset
+
+ポイントのボールド体を使うべきことを忘れてしまって16
+\begin_inset space \thinspace{}
+\end_inset
+
+ポイントを使ってしまったので、第4節の節見出しは、第1節で使ったのとは違うフォントで組版されることになってしまいます。このような問題は、
 \family default
 \series default
 \shape default

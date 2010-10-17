@@ -1,4 +1,4 @@
-#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -333,9 +333,12 @@ Introducción
 \begin_layout Standard
 Veamos ahora el problema de la consistencia.
  Cinco días más tarde, abres tu informe y comienzas la sección 4.
- Sin embargo, has olvidado que estabas usando letra en negrita de 18 puntos,
- y usas la de 16, así que acabas escribiendo el encabezado de la sección
- 4 con un tipo de letra distinto al que usaste para la sección 1.
+ Sin embargo, has olvidado que estabas usando letra en negrita de 18
+\begin_inset space \thinspace{}
+\end_inset
+
+puntos, y usas la de 16, así que acabas escribiendo el encabezado de la
+ sección 4 con un tipo de letra distinto al que usaste para la sección 1.
  Este problema ni siquiera existe en LyX.
  El ordenador se encarga de todo el tedioso trabajo de llevar la cuenta
  de tamaños y fuentes, no tú.
