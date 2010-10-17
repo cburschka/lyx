@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-10-17 10:50+0200\n"
-"PO-Revision-Date: 2010-10-11 14:22+0200\n"
+"PO-Revision-Date: 2010-10-17 12:44+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenčina <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -7167,9 +7167,8 @@ msgid "Running author:"
 msgstr "Stĺpec autor:"
 
 #: lib/layouts/lettre.layout:39 lib/layouts/lettre.layout:314
-#, fuzzy
 msgid "NoTelephone"
-msgstr "Telefón"
+msgstr "Bez Telefónu"
 
 #: lib/layouts/lettre.layout:41 lib/layouts/lettre.layout:340
 #: lib/layouts/scrlttr2.layout:189 lib/configure.py:352
@@ -7178,35 +7177,30 @@ msgstr "Fax"
 
 #: lib/layouts/lettre.layout:43 lib/layouts/lettre.layout:370
 #: lib/layouts/lettre.layout:378
-#, fuzzy
 msgid "NoFax"
-msgstr "Fax"
+msgstr "Bez Faxu"
 
 #: lib/layouts/lettre.layout:49 lib/layouts/lettre.layout:185
 #: lib/layouts/lettre.layout:192
-#, fuzzy
 msgid "NoPlace"
-msgstr "Miesto"
+msgstr "Bez Miesta"
 
 #: lib/layouts/lettre.layout:53 lib/layouts/lettre.layout:234
 #: lib/layouts/lettre.layout:242
-#, fuzzy
 msgid "NoDate"
-msgstr "Dátum"
+msgstr "Bez Dátumu"
 
 #: lib/layouts/lettre.layout:73 lib/layouts/lettre.layout:647
-#, fuzzy
 msgid "Post Scriptum"
-msgstr "Postskriptum:"
+msgstr "Postskriptum"
 
 #: lib/layouts/lettre.layout:75 lib/layouts/lettre.layout:513
 msgid "EndOfMessage"
-msgstr ""
+msgstr "KoniecSprávy"
 
 #: lib/layouts/lettre.layout:77 lib/layouts/lettre.layout:533
-#, fuzzy
 msgid "EndOfFile"
-msgstr "KoniecFólie"
+msgstr "KoniecSúboru"
 
 #: lib/layouts/lettre.layout:137 lib/layouts/lettre.layout:156
 #: lib/layouts/lettre.layout:186 lib/layouts/lettre.layout:212
@@ -7214,54 +7208,45 @@ msgstr "KoniecFólie"
 #: lib/layouts/lettre.layout:285 lib/layouts/lettre.layout:315
 #: lib/layouts/lettre.layout:341 lib/layouts/lettre.layout:371
 #: lib/layouts/lettre.layout:397
-#, fuzzy
 msgid "Headings"
-msgstr "s nadpismi (headings)"
+msgstr "Záhlavie listu"
 
 #: lib/layouts/lettre.layout:167
-#, fuzzy
 msgid "City:"
-msgstr "Mesto"
+msgstr "Mesto:"
 
 #: lib/layouts/lettre.layout:260
-#, fuzzy
 msgid "Office:"
-msgstr "Vypnuté"
+msgstr "Úrad:"
 
 #: lib/layouts/lettre.layout:290
-#, fuzzy
 msgid "Tel:"
-msgstr "Telex:"
+msgstr "Tel:"
 
 #: lib/layouts/lettre.layout:322
-#, fuzzy
 msgid "NoTel"
-msgstr "Žiadne"
+msgstr "Bez Telefónu"
 
 #: lib/layouts/lettre.layout:353
-#, fuzzy
 msgid "Fax:"
-msgstr "Fax"
+msgstr "Fax:"
 
 #: lib/layouts/lettre.layout:514 lib/layouts/lettre.layout:605
 #: lib/layouts/lettre.layout:648
-#, fuzzy
 msgid "Closings"
-msgstr "Záverečný pozdrav"
+msgstr "Záverečné pozdravy"
 
 #: lib/layouts/lettre.layout:523
 msgid "EndOfMessage."
-msgstr ""
+msgstr "KoniecSprávy."
 
 #: lib/layouts/lettre.layout:535
-#, fuzzy
 msgid "EndOfFile."
-msgstr "KoniecFólie"
+msgstr "KoniecSúboru."
 
 #: lib/layouts/lettre.layout:655
-#, fuzzy
 msgid "P.S.:"
-msgstr "PS:"
+msgstr "P.S.:"
 
 #: lib/layouts/llncs.layout:39 lib/layouts/memoir.layout:56
 #: lib/layouts/recipebook.layout:41 lib/layouts/scrbook.layout:16
