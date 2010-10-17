@@ -292,8 +292,10 @@ XHTMLStream & XHTMLStream::operator<<(char c)
 	if (nextraw_) {
 		os_ << c;
 		nextraw_ = false;
-	} else
-		os_ << html::escapeChar(c);
+	} else {
+		string const d = html::escapeChar(c);
+		os_ << from_ascii(d);
+	}
 	return *this;
 }
 
