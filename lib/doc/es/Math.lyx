@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 402
+\lyxformat 404
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -196,6 +196,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \notefontcolor #0000ff
 \index Índice
 \shortcut idx
@@ -9576,15 +9577,22 @@ status collapsed
 
 \begin_layout Plain Layout
 
+\series bold
+
 \backslash
-texorpdfstring se usa para evitar que la nota al pie aparezca en los marcadores
- PDF.
+texorpdfstring
+\series default
+ se usa para evitar que la nota al pie aparezca en los marcadores PDF.
 \end_layout
 
 \begin_layout Plain Layout
 Más sobre 
+\series bold
+
 \backslash
-texorpdfstring en la sección 
+texorpdfstring
+\series default
+ en la sección 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Ecuaciones-en-encabezados"

@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 402
+\lyxformat 404
 \begin_document
 \begin_header
 \textclass jarticle
@@ -193,6 +193,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \notefontcolor #0000ff
 \index 索引
 \shortcut idx
@@ -9359,14 +9360,22 @@ status collapsed
 
 \begin_layout Plain Layout
 
+\series bold
+
 \backslash
-texorpdfstringは、PDFのしおりに脚注が現れるのを防ぐために使われています。
+texorpdfstring
+\series default
+は、PDFのしおりに脚注が現れるのを防ぐために使われています。
 \end_layout
 
 \begin_layout Plain Layout
 
+\series bold
+
 \backslash
-texorpdfstringについての詳細は、第
+texorpdfstring
+\series default
+についての詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:節見出し中の数式"

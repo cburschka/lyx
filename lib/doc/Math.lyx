@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 402
+\lyxformat 404
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -196,6 +196,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \notefontcolor #0000ff
 \index Index
 \shortcut idx
@@ -9544,14 +9545,22 @@ status collapsed
 
 \begin_layout Plain Layout
 
+\series bold
+
 \backslash
-texorpdfstring is used to avoid that the footnote appears in the PDF-bookmark.
+texorpdfstring
+\series default
+ is used to avoid that the footnote appears in the PDF-bookmark.
 \end_layout
 
 \begin_layout Plain Layout
 More about 
+\series bold
+
 \backslash
-texorpdfstring is in section 
+texorpdfstring
+\series default
+ is in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Formulas-in-Section"
