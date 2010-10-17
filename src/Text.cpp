@@ -936,23 +936,17 @@ void Text::insertChar(Cursor & cur, char_type c)
 	// disable the double-space checking
 	if (!freeSpacing && isLineSeparatorChar(c)) {
 		if (cur.pos() == 0) {
-			static bool sent_space_message = false;
-			if (!sent_space_message) {
-				cur.message(_("You cannot insert a space at the "
-							   "beginning of a paragraph. Please read the Tutorial."));
-				sent_space_message = true;
-			}
+			cur.message(_(
+					"You cannot insert a space at the "
+					"beginning of a paragraph. Please read the Tutorial."));
 			return;
 		}
 		LASSERT(cur.pos() > 0, /**/);
 		if ((par.isLineSeparator(cur.pos() - 1) || par.isNewline(cur.pos() - 1))
-		    && !par.isDeleted(cur.pos() - 1)) {
-			static bool sent_space_message = false;
-			if (!sent_space_message) {
-				cur.message(_("You cannot type two spaces this way. "
-							   "Please read the Tutorial."));
-				sent_space_message = true;
-			}
+				&& !par.isDeleted(cur.pos() - 1)) {
+			cur.message(_(
+					"You cannot type two spaces this way. "
+					"Please read the Tutorial."));
 			return;
 		}
 	}

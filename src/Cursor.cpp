@@ -332,6 +332,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	fixIfBroken();
 	FuncRequest cmd = cmd0;
 	Cursor safe = *this;
+	disp_ = DispatchResult();
 
 	buffer()->undo().beginUndoGroup();
 	
