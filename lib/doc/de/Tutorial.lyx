@@ -1,5 +1,5 @@
-#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 404
 \begin_document
 \begin_header
 \textclass book
@@ -36,18 +36,25 @@
   {LyX}}
 \end_preamble
 \use_default_options false
+\maintain_unincluded_children false
 \language ngerman
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_xetex false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -64,14 +71,23 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue,  filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
 \use_geometry true
 \use_amsmath 1
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
 \leftmargin 3.5cm
 \topmargin 3.5cm
 \rightmargin 3.5cm
@@ -79,27 +95,21 @@
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language german
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_be_strict false
 \end_header
 
 \begin_body
 
 \begin_layout Title
 Das LyX-Tutorium
-\begin_inset Newline newline
-\end_inset
-
-
-\size large
-Version LyX 1.6.x
 \end_layout
 
 \begin_layout Author
@@ -577,8 +587,6 @@ DVI
 	filename ../../images/buffer-view_dvi.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
-	clip
 
 \end_inset
 
@@ -621,7 +629,6 @@ DVI
 	filename ../../images/buffer-update_dvi.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -703,7 +710,6 @@ Rückgängig
 \begin_inset Graphics
 	filename ../../images/undo.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -718,7 +724,6 @@ Wiederholen
 \begin_inset Graphics
 	filename ../../images/redo.png
 	scale 70
-	BoundingBox 0bp 4bp 22bp 22bp
 
 \end_inset
 
@@ -744,7 +749,6 @@ den (
 \begin_inset Graphics
 	filename ../../images/cut.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -761,7 +765,6 @@ Kopieren
 \begin_inset Graphics
 	filename ../../images/copy.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -774,7 +777,6 @@ Einfügen
 \begin_inset Graphics
 	filename ../../images/paste.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -805,7 +807,6 @@ Ersetzen\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/dialog-show_findreplace.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -829,7 +830,6 @@ Textstil
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
 	scale 70
-	BoundingBox 0bp 2bp 20bp 20bp
 
 \end_inset
 
@@ -1017,7 +1017,6 @@ Leerzeichen
 	filename ../../images/math/space.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -1654,7 +1653,6 @@ Auflistung
 \begin_inset Graphics
 	filename ../../images/layout_Itemize.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -1730,7 +1728,6 @@ Aufzählung
 \begin_inset Graphics
 	filename ../../images/layout_Enumerate.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -2100,7 +2097,7 @@ Handbuchergänzungen
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <row>
@@ -2538,7 +2535,6 @@ Marke\SpecialChar \ldots{}
 	filename ../../images/label-insert.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -2670,7 +2666,6 @@ Querverweis
 	filename ../../images/dialog-show-new-inset_ref.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -2862,7 +2857,6 @@ Fußnote
 \begin_inset Graphics
 	filename ../../images/footnote-insert.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -2967,7 +2961,6 @@ Kopieren
  Sie den Cursor vor den Fußnotentext stellen und die 
 \begin_inset Graphics
 	filename ../../images/math/leftarrow.png
-	BoundingBox 0bp 4bp 10bp 10bp
 
 \end_inset
 
@@ -2992,7 +2985,6 @@ Randnotiz
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.png
 	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -3110,7 +3102,6 @@ Zitat
 	filename ../../images/dialog-show-new-inset_citation.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -3275,7 +3266,6 @@ Innerhalb von LyX selber wird das Inhaltsverzeichnis in einem Unterfenster
 	filename ../../images/dialog-toggle_toc.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -3402,7 +3392,6 @@ matik-Modus.
 	filename ../../images/math-mode.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -3557,7 +3546,6 @@ Rückgängig
 	filename ../../images/undo.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -3589,7 +3577,6 @@ Rückgängig
 \begin_inset Graphics
 	filename ../../images/undo.png
 	scale 70
-	BoundingBox 0bp 4bp 22bp 22bp
 
 \end_inset
 
@@ -3866,7 +3853,6 @@ Mathe
 	filename ../../images/toolbar-toggle_math.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -3888,7 +3874,6 @@ Mathe
 	filename ../../images/toolbar-toggle_math.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -3943,7 +3928,6 @@ Wenn Sie auf den Schalter
 	filename ../../images/math/sqrt.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 0bp 20bp 20bp
 
 \end_inset
 
@@ -3974,7 +3958,6 @@ Eine Variable (
 	filename ../../images/math/hat.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 20bp
 
 \end_inset
 
@@ -3996,7 +3979,6 @@ Gruppensymbole wie Trennungsstriche, Klammern und Pfeile werden ähnlich,
 	filename ../../images/dialog-show_mathdelimiter.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -4091,7 +4073,6 @@ Brüche
 	filename ../../images/math/frac-square.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 12bp 20bp
 
 \end_inset
 
@@ -4140,7 +4121,6 @@ Kontrollfläche
 	filename ../../images/math/frac.png
 	scale 50
 	scaleBeforeRotation
-	BoundingBox 0bp 10bp 12bp 22bp
 
 \end_inset
 
@@ -4172,7 +4152,7 @@ tik-Modus.
 
 \begin_layout Subsection
 TeX-Modus: Grenzwerte, Logarithmen, Trigonometrische Funktionen und anderes
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -4368,7 +4348,6 @@ Um eine Matrix zu erstellen, klicken Sie auf den Schalter
 	filename ../../images/math-matrix.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -4434,7 +4413,6 @@ Spalten
 	filename ../../images/tabular-feature_append-row.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -4443,7 +4421,6 @@ Spalten
 	filename ../../images/tabular-feature_delete-row.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -4452,7 +4429,6 @@ Spalten
 	filename ../../images/tabular-feature_append-column.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -4461,7 +4437,6 @@ Spalten
 	filename ../../images/tabular-feature_delete-column.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -4533,7 +4508,6 @@ Anzeige
 \begin_inset Graphics
 	filename ../../images/math/equation.png
 	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -4635,7 +4609,8 @@ beispiel_roh.lyx
 f(x)=\left\{ \begin{array}{cc}
 \log_{8}x & x>0\\
 0 & x=0\\
-\sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0\end{array}\right.\]
+\sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0
+\end{array}\right.\]
 
 \end_inset
 
@@ -4690,7 +4665,8 @@ szeichen untereinander stehen; dies ist besonders wichtig, wenn in der zweiten
 glichkeiten hinsichtlich der Ausrichtung: 
 \begin_inset Formula \begin{eqnarray*}
 x & = & y+y+y+y+y\\
- & = & 5y\end{eqnarray*}
+ & = & 5y
+\end{eqnarray*}
 
 \end_inset
 
@@ -4774,7 +4750,8 @@ Benutzerhandbuch
 
 \begin_inset Formula \begin{eqnarray*}
 x & = & a+b+c+d\\
- &  & +e+f+g\end{eqnarray*}
+ &  & +e+f+g
+\end{eqnarray*}
 
 \end_inset
 
@@ -4834,7 +4811,8 @@ Strg+Tab
 \begin_layout Standard
 \begin_inset Formula \begin{eqnarray*}
 E & = & mc^{2}\\
- & = & mc\times c\end{eqnarray*}
+ & = & mc\times c
+\end{eqnarray*}
 
 \end_inset
 
@@ -5014,7 +4992,6 @@ le\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/tabular-insert.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -5038,7 +5015,6 @@ Einstellungen
 	filename ../../images/toolbar-toggle_table.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -5057,7 +5033,6 @@ Grafik
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -5272,7 +5247,6 @@ X
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
 	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -5763,6 +5737,7 @@ de LaTeX-Meldung ausgegeben und der Cursor im LyX-Fenster in etwa an die
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "lyxtutorium"

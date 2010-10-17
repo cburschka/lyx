@@ -1,5 +1,5 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 404
 \begin_document
 \begin_header
 \textclass book
@@ -16,14 +16,17 @@
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX}}
 \end_preamble
-\options a4paper,cjk
+\options cjk
 \use_default_options true
+\maintain_unincluded_children false
 \language chinese-simplified
 \inputencoding UTF8
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_xetex false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -31,6 +34,10 @@
 \font_cjk gbsn
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \float_placement th
 \paperfontsize 12
 \spacing onehalf
@@ -48,33 +55,35 @@
 \pdf_colorlinks true
 \pdf_backref section
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
-\use_geometry true
+\use_geometry false
 \use_amsmath 1
 \use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
-\leftmargin 3cm
-\topmargin 3cm
-\rightmargin 2cm
-\bottommargin 2.5cm
-\headheight 2cm
-\headsep 0.75cm
-\footskip 0.75cm
+\suppress_date false
+\use_refstyle 0
+\index 索引
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -1035,7 +1044,7 @@ Additional Features
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -2348,7 +2357,8 @@ Environment。
 f(x)=\left\{ \begin{array}{cc}
 \log_{8}x & x>0\\
 0 & x=0\\
-\sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0\end{array}\right.\]
+\sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0
+\end{array}\right.\]
 
 \end_inset
 
