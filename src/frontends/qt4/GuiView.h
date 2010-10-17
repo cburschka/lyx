@@ -398,9 +398,9 @@ private:
 	///
 	Dialog * build(std::string const & name);
 	///
-	void reloadBuffer();
+	bool reloadBuffer();
 	///
-	void dispatchVC(FuncRequest const & cmd);
+	void dispatchVC(FuncRequest const & cmd, DispatchResult & dr);
 	///
 	void showMessage();
 

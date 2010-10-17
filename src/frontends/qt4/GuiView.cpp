@@ -2522,10 +2522,10 @@ static bool ensureBufferClean(Buffer * buffer)
 }
 
 
-void GuiView::reloadBuffer()
+bool GuiView::reloadBuffer()
 {
 	Buffer * buf = &documentBufferView()->buffer();
-	buf->reload();
+	return buf->reload();
 }
 
 
@@ -2548,11 +2548,8 @@ void GuiView::checkExternallyModifiedBuffers()
 }
 
 
-//FIXME use a DispatchResult object to transmit messages
-void GuiView::dispatchVC(FuncRequest const & cmd)
+void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 {
-	// message for statusbar
-	string msg;
 	Buffer * buffer = documentBufferView()
 		? &(documentBufferView()->buffer()) : 0;
 
@@ -2561,8 +2558,10 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 		if (!buffer || !ensureBufferClean(buffer))
 			break;
 		if (!buffer->lyxvc().inUse()) {
-			if (buffer->lyxvc().registrer())
+			if (buffer->lyxvc().registrer()) {
 				reloadBuffer();
+				dr.suppressMessageUpdate();
+			}
 		}
 		break;
 
@@ -2570,8 +2569,8 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 		if (!buffer || !ensureBufferClean(buffer))
 			break;
 		if (buffer->lyxvc().inUse() && !buffer->isReadonly()) {
-			msg = buffer->lyxvc().checkIn();
-			if (!msg.empty())
+			dr.setMessage(buffer->lyxvc().checkIn());
+			if (!dr.message().empty())
 				reloadBuffer();
 		}
 		break;
@@ -2580,7 +2579,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 		if (!buffer || !ensureBufferClean(buffer))
 			break;
 		if (buffer->lyxvc().inUse()) {
-			msg = buffer->lyxvc().checkOut();
+			dr.setMessage(buffer->lyxvc().checkOut());
 			reloadBuffer();
 		}
 		break;
@@ -2595,7 +2594,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 				frontend::Alert::error(_("Revision control error."),
 				_("Error when setting the locking property."));
 			} else {
-				msg = res;
+				dr.setMessage(res);
 				reloadBuffer();
 			}
 		}
@@ -2605,18 +2604,20 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 		LASSERT(buffer, return);
 		buffer->lyxvc().revert();
 		reloadBuffer();
+		dr.suppressMessageUpdate();
 		break;
 
 	case LFUN_VC_UNDO_LAST:
 		LASSERT(buffer, return);
 		buffer->lyxvc().undoLast();
 		reloadBuffer();
+		dr.suppressMessageUpdate();
 		break;
 
 	case LFUN_VC_REPO_UPDATE:
 		LASSERT(buffer, return);
 		if (ensureBufferClean(buffer)) {
-			msg = buffer->lyxvc().repoUpdate();
+			dr.setMessage(buffer->lyxvc().repoUpdate());
 			checkExternallyModifiedBuffers();
 		}
 		break;
@@ -2698,9 +2699,6 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 	default:
 		break;
 	}
-
-	if (!msg.empty())
-		message(from_utf8(msg));
 }
 
 
@@ -3268,7 +3266,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		case LFUN_VC_UNDO_LAST:
 		case LFUN_VC_COMMAND:
 		case LFUN_VC_COMPARE:
-			dispatchVC(cmd);
+			dispatchVC(cmd, dr);
 			break;
 
 		case LFUN_SERVER_GOTO_FILE_ROW:

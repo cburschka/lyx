@@ -1116,9 +1116,11 @@ void GuiApplication::dispatch(FuncRequest const & cmd)
 		// update gui
 		current_view_->restartCursor();
 	}
-	// Some messages may already be translated, so we cannot use _()
-	current_view_->message(makeDispatchMessage(
-			translateIfPossible(dr.message()), cmd));
+	if (dr.needMessageUpdate()) {
+		// Some messages may already be translated, so we cannot use _()
+		current_view_->message(makeDispatchMessage(
+				translateIfPossible(dr.message()), cmd));
+	}
 }
 
 
