@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zh_CN\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-10-11 07:40+0200\n"
+"POT-Creation-Date: 2010-10-17 10:50+0200\n"
 "PO-Revision-Date: 2009-10-18 22:58+0000\n"
 "Last-Translator: mgc <mgcgogo@gmail.com>\n"
 "Language-Team: 简体中文 <lyx-docs@lists.lyx.org>\n"
@@ -97,7 +97,7 @@ msgstr "确认(&O)"
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1625
 #: src/frontends/qt4/GuiView.cpp:1817 src/frontends/qt4/GuiView.cpp:1869
-#: src/frontends/qt4/GuiView.cpp:1930 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiView.cpp:1930 src/insets/InsetBibtex.cpp:144
 msgid "&Cancel"
 msgstr "取消(&C)"
 
@@ -219,16 +219,16 @@ msgstr "此章文献引用包含..."
 msgid "&Content:"
 msgstr "内容(&C):"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:207
+#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:208
 msgid "all cited references"
 msgstr "所有引用的文献"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:153 src/frontends/qt4/GuiBibtex.cpp:328
-#: src/insets/InsetBibtex.cpp:205
+#: src/insets/InsetBibtex.cpp:206
 msgid "all uncited references"
 msgstr "使用未引用的文献"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:203
+#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:204
 msgid "all references"
 msgstr "所有文献"
 
@@ -833,7 +833,7 @@ msgid "&Down"
 msgstr "下(&D)"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:143
-#: src/frontends/qt4/GuiDelimiter.cpp:275
+#: src/frontends/qt4/GuiDelimiter.cpp:278
 msgid "TeX Code: "
 msgstr "TeX代码: "
 
@@ -3993,18 +3993,18 @@ msgstr "允许浮动(&f)"
 #: lib/layouts/europecv.layout:16 lib/layouts/foils.layout:30
 #: lib/layouts/g-brief2.layout:31 lib/layouts/hollywood.layout:345
 #: lib/layouts/iopart.layout:34 lib/layouts/kluwer.layout:33
-#: lib/layouts/llncs.layout:23 lib/layouts/ltugboat.layout:30
-#: lib/layouts/memoir.layout:30 lib/layouts/moderncv.layout:19
-#: lib/layouts/paper.layout:14 lib/layouts/powerdot.layout:108
-#: lib/layouts/revtex.layout:22 lib/layouts/revtex4.layout:40
-#: lib/layouts/scrlettr.layout:7 lib/layouts/scrlttr2.layout:8
-#: lib/layouts/siamltex.layout:31 lib/layouts/sigplanconf.layout:37
-#: lib/layouts/simplecv.layout:16 lib/layouts/slides.layout:60
-#: lib/layouts/tufte-book.layout:16 lib/layouts/agu_stdclass.inc:22
-#: lib/layouts/db_stdclass.inc:22 lib/layouts/scrclass.inc:15
-#: lib/layouts/stdclass.inc:28 lib/layouts/stdletter.inc:12
-#: lib/layouts/svjour.inc:27 lib/ui/stdtoolbars.inc:67
-#: src/insets/InsetRef.cpp:179
+#: lib/layouts/lettre.layout:30 lib/layouts/llncs.layout:23
+#: lib/layouts/ltugboat.layout:30 lib/layouts/memoir.layout:30
+#: lib/layouts/moderncv.layout:19 lib/layouts/paper.layout:14
+#: lib/layouts/powerdot.layout:108 lib/layouts/revtex.layout:22
+#: lib/layouts/revtex4.layout:40 lib/layouts/scrlettr.layout:7
+#: lib/layouts/scrlttr2.layout:8 lib/layouts/siamltex.layout:31
+#: lib/layouts/sigplanconf.layout:37 lib/layouts/simplecv.layout:16
+#: lib/layouts/slides.layout:60 lib/layouts/tufte-book.layout:16
+#: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
+#: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
+#: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
+#: lib/ui/stdtoolbars.inc:67 src/insets/InsetRef.cpp:179
 msgid "Standard"
 msgstr "标准"
 
@@ -4404,6 +4404,7 @@ msgstr "邮件"
 #: lib/layouts/egs.layout:466 lib/layouts/foils.layout:140
 #: lib/layouts/frletter.layout:21 lib/layouts/g-brief-en.layout:189
 #: lib/layouts/g-brief2.layout:801 lib/layouts/kluwer.layout:141
+#: lib/layouts/lettre.layout:51 lib/layouts/lettre.layout:211
 #: lib/layouts/powerdot.layout:86 lib/layouts/revtex.layout:106
 #: lib/layouts/revtex4.layout:137 lib/layouts/scrlettr.layout:160
 #: lib/layouts/scrlttr2.layout:237 lib/layouts/siamltex.layout:223
@@ -4461,6 +4462,7 @@ msgstr "字符样式：Email"
 #: lib/layouts/aastex.layout:100 lib/layouts/aastex.layout:344
 #: lib/layouts/ectaart.layout:69 lib/layouts/elsarticle.layout:210
 #: lib/layouts/iopart.layout:158 lib/layouts/latex8.layout:57
+#: lib/layouts/lettre.layout:45 lib/layouts/lettre.layout:396
 #: lib/layouts/llncs.layout:229 lib/layouts/svglobal3.layout:33
 #: lib/layouts/svglobal3.layout:37 lib/layouts/aapaper.inc:46
 #: lib/layouts/amsdefs.inc:150 lib/layouts/db_stdcharstyles.inc:73
@@ -5531,7 +5533,8 @@ msgid "DinBrief"
 msgstr ""
 
 #: lib/layouts/dinbrief.layout:47 lib/layouts/frletter.layout:16
-#: lib/layouts/heb-letter.layout:15 lib/layouts/stdletter.inc:35
+#: lib/layouts/heb-letter.layout:15 lib/layouts/lettre.layout:55
+#: lib/layouts/lettre.layout:479 lib/layouts/stdletter.inc:35
 msgid "Send To Address"
 msgstr "Send To Address"
 
@@ -5545,7 +5548,8 @@ msgid "Address:"
 msgstr "地址："
 
 #: lib/layouts/dinbrief.layout:61 lib/layouts/frletter.layout:12
-#: lib/layouts/heb-letter.layout:10 lib/layouts/stdletter.inc:24
+#: lib/layouts/heb-letter.layout:10 lib/layouts/lettre.layout:33
+#: lib/layouts/lettre.layout:135 lib/layouts/stdletter.inc:24
 msgid "My Address"
 msgstr "My Address"
 
@@ -5584,7 +5588,8 @@ msgid "Handling:"
 msgstr "边框"
 
 #: lib/layouts/dinbrief.layout:94 lib/layouts/g-brief-en.layout:103
-#: lib/layouts/g-brief2.layout:758
+#: lib/layouts/g-brief2.layout:758 lib/layouts/lettre.layout:59
+#: lib/layouts/lettre.layout:448
 msgid "YourRef"
 msgstr "YourRef"
 
@@ -5594,7 +5599,8 @@ msgid "Your ref.:"
 msgstr "Your ref.:"
 
 #: lib/layouts/dinbrief.layout:100 lib/layouts/g-brief-en.layout:96
-#: lib/layouts/g-brief2.layout:737
+#: lib/layouts/g-brief2.layout:737 lib/layouts/lettre.layout:61
+#: lib/layouts/lettre.layout:464
 msgid "MyRef"
 msgstr "MyRef"
 
@@ -5615,6 +5621,7 @@ msgstr "打印机"
 
 #: lib/layouts/dinbrief.layout:112 lib/layouts/frletter.layout:40
 #: lib/layouts/g-brief-en.layout:54 lib/layouts/g-brief2.layout:892
+#: lib/layouts/lettre.layout:67 lib/layouts/lettre.layout:566
 #: lib/layouts/scrlettr.layout:132 lib/layouts/scrlttr2.layout:165
 #: lib/layouts/stdletter.inc:71
 msgid "Signature"
@@ -5622,8 +5629,8 @@ msgstr "签名"
 
 #: lib/layouts/dinbrief.layout:114 lib/layouts/g-brief-de.layout:57
 #: lib/layouts/g-brief-en.layout:57 lib/layouts/g-brief2.layout:902
-#: lib/layouts/scrlettr.layout:135 lib/layouts/scrlttr2.layout:169
-#: lib/layouts/stdletter.inc:83
+#: lib/layouts/lettre.layout:569 lib/layouts/scrlettr.layout:135
+#: lib/layouts/scrlttr2.layout:169 lib/layouts/stdletter.inc:83
 msgid "Signature:"
 msgstr "签名："
 
@@ -5647,7 +5654,8 @@ msgstr "Anrede"
 msgid "Area Code:"
 msgstr "Anrede"
 
-#: lib/layouts/dinbrief.layout:135 lib/layouts/scrlettr.layout:146
+#: lib/layouts/dinbrief.layout:135 lib/layouts/lettre.layout:37
+#: lib/layouts/lettre.layout:284 lib/layouts/scrlettr.layout:146
 #: lib/layouts/scrlttr2.layout:181 lib/layouts/stdletter.inc:126
 msgid "Telephone"
 msgstr "电话铃声"
@@ -5657,7 +5665,8 @@ msgstr "电话铃声"
 msgid "Telephone:"
 msgstr "电话："
 
-#: lib/layouts/dinbrief.layout:142 lib/layouts/scrlettr.layout:181
+#: lib/layouts/dinbrief.layout:142 lib/layouts/lettre.layout:35
+#: lib/layouts/lettre.layout:254 lib/layouts/scrlettr.layout:181
 #: lib/layouts/scrlttr2.layout:261 lib/layouts/stdletter.inc:119
 msgid "Location"
 msgstr "位置"
@@ -5669,24 +5678,27 @@ msgstr "位置："
 
 #: lib/layouts/dinbrief.layout:154 lib/layouts/g-brief-de.layout:192
 #: lib/layouts/g-brief-en.layout:192 lib/layouts/g-brief2.layout:811
-#: lib/layouts/revtex.layout:108 lib/layouts/revtex4.layout:139
-#: lib/layouts/scrlettr.layout:163 lib/layouts/scrlttr2.layout:241
-#: lib/layouts/siamltex.layout:235 lib/layouts/amsdefs.inc:85
+#: lib/layouts/lettre.layout:224 lib/layouts/revtex.layout:108
+#: lib/layouts/revtex4.layout:139 lib/layouts/scrlettr.layout:163
+#: lib/layouts/scrlttr2.layout:241 lib/layouts/siamltex.layout:235
+#: lib/layouts/amsdefs.inc:85
 msgid "Date:"
 msgstr "日期："
 
-#: lib/layouts/dinbrief.layout:159 lib/layouts/scrlettr.layout:195
+#: lib/layouts/dinbrief.layout:159 lib/layouts/lettre.layout:57
+#: lib/layouts/lettre.layout:426 lib/layouts/scrlettr.layout:195
 #: lib/layouts/scrlttr2.layout:277 lib/layouts/scrclass.inc:178
 msgid "Subject"
 msgstr "主题"
 
-#: lib/layouts/dinbrief.layout:161 lib/layouts/scrlettr.layout:198
-#: lib/layouts/scrlttr2.layout:281
+#: lib/layouts/dinbrief.layout:161 lib/layouts/lettre.layout:431
+#: lib/layouts/scrlettr.layout:198 lib/layouts/scrlttr2.layout:281
 msgid "Subject:"
 msgstr "主题："
 
 #: lib/layouts/dinbrief.layout:175 lib/layouts/frletter.layout:36
 #: lib/layouts/g-brief-en.layout:205 lib/layouts/g-brief2.layout:844
+#: lib/layouts/lettre.layout:63 lib/layouts/lettre.layout:539
 #: lib/layouts/scrlettr.layout:60 lib/layouts/scrlttr2.layout:92
 #: lib/layouts/stdletter.inc:49
 msgid "Opening"
@@ -5694,12 +5706,14 @@ msgstr "Opening"
 
 #: lib/layouts/dinbrief.layout:179 lib/layouts/g-brief-de.layout:210
 #: lib/layouts/g-brief-en.layout:210 lib/layouts/g-brief2.layout:856
-#: lib/layouts/scrlttr2.layout:103 lib/layouts/stdletter.inc:62
+#: lib/layouts/lettre.layout:543 lib/layouts/scrlttr2.layout:103
+#: lib/layouts/stdletter.inc:62
 msgid "Opening:"
 msgstr "Opening:"
 
 #: lib/layouts/dinbrief.layout:191 lib/layouts/frletter.layout:44
 #: lib/layouts/g-brief-en.layout:231 lib/layouts/g-brief2.layout:866
+#: lib/layouts/lettre.layout:65 lib/layouts/lettre.layout:553
 #: lib/layouts/scrlettr.layout:70 lib/layouts/scrlttr2.layout:112
 #: lib/layouts/stdletter.inc:92
 msgid "Closing"
@@ -5707,28 +5721,32 @@ msgstr "正在关闭"
 
 #: lib/layouts/dinbrief.layout:193 lib/layouts/g-brief-de.layout:236
 #: lib/layouts/g-brief-en.layout:236 lib/layouts/g-brief2.layout:877
-#: lib/layouts/scrlttr2.layout:116 lib/layouts/stdletter.inc:95
+#: lib/layouts/lettre.layout:557 lib/layouts/scrlttr2.layout:116
+#: lib/layouts/stdletter.inc:95
 msgid "Closing:"
 msgstr "结束语:"
 
-#: lib/layouts/dinbrief.layout:199 lib/layouts/stdletter.inc:111
+#: lib/layouts/dinbrief.layout:199 lib/layouts/lettre.layout:69
+#: lib/layouts/lettre.layout:603 lib/layouts/stdletter.inc:111
 msgid "encl"
 msgstr "附录"
 
-#: lib/layouts/dinbrief.layout:201 lib/layouts/scrlettr.layout:108
-#: lib/layouts/scrlttr2.layout:139 lib/layouts/stdletter.inc:114
+#: lib/layouts/dinbrief.layout:201 lib/layouts/lettre.layout:608
+#: lib/layouts/scrlettr.layout:108 lib/layouts/scrlttr2.layout:139
+#: lib/layouts/stdletter.inc:114
 msgid "encl:"
 msgstr "附件:"
 
 #: lib/layouts/dinbrief.layout:214 lib/layouts/g-brief-en.layout:222
-#: lib/layouts/g-brief2.layout:933 lib/layouts/stdletter.inc:99
+#: lib/layouts/g-brief2.layout:933 lib/layouts/lettre.layout:71
+#: lib/layouts/lettre.layout:626 lib/layouts/stdletter.inc:99
 msgid "cc"
 msgstr "cc"
 
 #: lib/layouts/dinbrief.layout:216 lib/layouts/g-brief-de.layout:227
 #: lib/layouts/g-brief-en.layout:227 lib/layouts/g-brief2.layout:944
-#: lib/layouts/scrlettr.layout:101 lib/layouts/scrlttr2.layout:132
-#: lib/layouts/stdletter.inc:102
+#: lib/layouts/lettre.layout:630 lib/layouts/scrlettr.layout:101
+#: lib/layouts/scrlttr2.layout:132 lib/layouts/stdletter.inc:102
 msgid "cc:"
 msgstr "副本:"
 
@@ -5795,7 +5813,8 @@ msgstr "电话"
 msgid "Telefon"
 msgstr "Telefon"
 
-#: lib/layouts/dinbrief.layout:305 lib/layouts/scrlettr.layout:153
+#: lib/layouts/dinbrief.layout:305 lib/layouts/lettre.layout:47
+#: lib/layouts/lettre.layout:155 lib/layouts/scrlettr.layout:153
 #: lib/layouts/scrlttr2.layout:229
 msgid "Place"
 msgstr "地址"
@@ -6073,7 +6092,8 @@ msgstr "作者地址"
 msgid "Author Email"
 msgstr "作者电子邮件"
 
-#: lib/layouts/elsart.layout:155 lib/layouts/llncs.layout:233
+#: lib/layouts/elsart.layout:155 lib/layouts/lettre.layout:402
+#: lib/layouts/llncs.layout:233
 msgid "Email:"
 msgstr "电子邮件地址："
 
@@ -6570,12 +6590,12 @@ msgid "ReturnAddress:"
 msgstr "ReturnAddress:"
 
 #: lib/layouts/g-brief-de.layout:99 lib/layouts/g-brief-en.layout:99
-#: lib/layouts/g-brief2.layout:748
+#: lib/layouts/g-brief2.layout:748 lib/layouts/lettre.layout:470
 msgid "MyRef:"
 msgstr "MyRef:"
 
 #: lib/layouts/g-brief-de.layout:106 lib/layouts/g-brief-en.layout:106
-#: lib/layouts/g-brief2.layout:769
+#: lib/layouts/g-brief2.layout:769 lib/layouts/lettre.layout:454
 msgid "YourRef:"
 msgstr "YourRef:"
 
@@ -7208,6 +7228,103 @@ msgstr "RunningAuthor"
 msgid "Running author:"
 msgstr "Running author:"
 
+#: lib/layouts/lettre.layout:39 lib/layouts/lettre.layout:314
+#, fuzzy
+msgid "NoTelephone"
+msgstr "电话铃声"
+
+#: lib/layouts/lettre.layout:41 lib/layouts/lettre.layout:340
+#: lib/layouts/scrlttr2.layout:189 lib/configure.py:352
+msgid "Fax"
+msgstr "传真"
+
+#: lib/layouts/lettre.layout:43 lib/layouts/lettre.layout:370
+#: lib/layouts/lettre.layout:378
+#, fuzzy
+msgid "NoFax"
+msgstr "传真"
+
+#: lib/layouts/lettre.layout:49 lib/layouts/lettre.layout:185
+#: lib/layouts/lettre.layout:192
+#, fuzzy
+msgid "NoPlace"
+msgstr "地址"
+
+#: lib/layouts/lettre.layout:53 lib/layouts/lettre.layout:234
+#: lib/layouts/lettre.layout:242
+#, fuzzy
+msgid "NoDate"
+msgstr "日期"
+
+#: lib/layouts/lettre.layout:73 lib/layouts/lettre.layout:647
+#, fuzzy
+msgid "Post Scriptum"
+msgstr "Post Scriptum:"
+
+#: lib/layouts/lettre.layout:75 lib/layouts/lettre.layout:513
+msgid "EndOfMessage"
+msgstr ""
+
+#: lib/layouts/lettre.layout:77 lib/layouts/lettre.layout:533
+#, fuzzy
+msgid "EndOfFile"
+msgstr "EndSlide"
+
+#: lib/layouts/lettre.layout:137 lib/layouts/lettre.layout:156
+#: lib/layouts/lettre.layout:186 lib/layouts/lettre.layout:212
+#: lib/layouts/lettre.layout:235 lib/layouts/lettre.layout:255
+#: lib/layouts/lettre.layout:285 lib/layouts/lettre.layout:315
+#: lib/layouts/lettre.layout:341 lib/layouts/lettre.layout:371
+#: lib/layouts/lettre.layout:397
+#, fuzzy
+msgid "Headings"
+msgstr "headings"
+
+#: lib/layouts/lettre.layout:167
+#, fuzzy
+msgid "City:"
+msgstr "infty"
+
+#: lib/layouts/lettre.layout:260
+#, fuzzy
+msgid "Office:"
+msgstr "关闭"
+
+#: lib/layouts/lettre.layout:290
+#, fuzzy
+msgid "Tel:"
+msgstr "Telex:"
+
+#: lib/layouts/lettre.layout:322
+#, fuzzy
+msgid "NoTel"
+msgstr "无"
+
+#: lib/layouts/lettre.layout:353
+#, fuzzy
+msgid "Fax:"
+msgstr "传真"
+
+#: lib/layouts/lettre.layout:514 lib/layouts/lettre.layout:605
+#: lib/layouts/lettre.layout:648
+#, fuzzy
+msgid "Closings"
+msgstr "正在关闭"
+
+#: lib/layouts/lettre.layout:523
+msgid "EndOfMessage."
+msgstr ""
+
+#: lib/layouts/lettre.layout:535
+#, fuzzy
+msgid "EndOfFile."
+msgstr "EndSlide"
+
+#: lib/layouts/lettre.layout:655
+#, fuzzy
+msgid "P.S.:"
+msgstr "PS:"
+
 #: lib/layouts/llncs.layout:39 lib/layouts/memoir.layout:56
 #: lib/layouts/recipebook.layout:41 lib/layouts/scrbook.layout:16
 #: lib/layouts/svmono.layout:101 lib/layouts/svmult.layout:243
@@ -7578,10 +7695,6 @@ msgstr "发件人姓名"
 #: lib/layouts/scrlttr2.layout:185
 msgid "Sender Phone:"
 msgstr "发件人电话"
-
-#: lib/layouts/scrlttr2.layout:189 lib/configure.py:352
-msgid "Fax"
-msgstr "传真"
 
 #: lib/layouts/scrlttr2.layout:193
 msgid "Sender Fax:"
@@ -16104,8 +16217,8 @@ msgstr "ChkTeX 警告编号 # %1$d"
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX 警告编号 #"
 
-#: src/Color.cpp:135 src/insets/InsetBibtex.cpp:173
-#: src/insets/InsetBibtex.cpp:198
+#: src/Color.cpp:135 src/insets/InsetBibtex.cpp:174
+#: src/insets/InsetBibtex.cpp:199
 msgid "none"
 msgstr "无"
 
@@ -18652,12 +18765,12 @@ msgstr "Bigg[[delimiter size]]"
 msgid "Math Delimiter"
 msgstr "Math Delimiter"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:203
-#: src/frontends/qt4/GuiDelimiter.cpp:204
+#: src/frontends/qt4/GuiDelimiter.cpp:206
+#: src/frontends/qt4/GuiDelimiter.cpp:207
 msgid "(None)"
 msgstr "(无)"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:206
+#: src/frontends/qt4/GuiDelimiter.cpp:209
 msgid "Variable"
 msgstr "变量"
 
@@ -20334,7 +20447,7 @@ msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "LyX 文档 (*.lyx)"
 
 #: src/frontends/qt4/GuiView.cpp:1460 src/frontends/qt4/Validator.cpp:182
-#: src/insets/ExternalSupport.cpp:367 src/insets/InsetBibtex.cpp:286
+#: src/insets/ExternalSupport.cpp:367 src/insets/InsetBibtex.cpp:287
 #: src/insets/InsetGraphics.cpp:598 src/insets/InsetInclude.cpp:477
 msgid "Invalid filename"
 msgstr "无效文件名"
@@ -20692,7 +20805,7 @@ msgstr "表格列表"
 msgid "List of Changes"
 msgstr "表格列表"
 
-#: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:287
+#: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:288
 #: src/insets/InsetGraphics.cpp:599 src/insets/InsetInclude.cpp:478
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
@@ -20727,50 +20840,50 @@ msgid ""
 "%1$s."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:139
+#: src/insets/InsetBibtex.cpp:140
 #, c-format
 msgid ""
 "The BibTeX inset includes %1$s databases.\n"
 "If you proceed, all of them will be opened."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:142
+#: src/insets/InsetBibtex.cpp:143
 #, fuzzy
 msgid "Open Databases?"
 msgstr "数据库(&s)"
 
-#: src/insets/InsetBibtex.cpp:143
+#: src/insets/InsetBibtex.cpp:144
 msgid "&Proceed"
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:161
+#: src/insets/InsetBibtex.cpp:162
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX Generated Bibliography"
 
-#: src/insets/InsetBibtex.cpp:168
+#: src/insets/InsetBibtex.cpp:169
 #, fuzzy
 msgid "Databases:"
 msgstr "数据库(&s)"
 
-#: src/insets/InsetBibtex.cpp:193
+#: src/insets/InsetBibtex.cpp:194
 #, fuzzy
 msgid "Style File:"
 msgstr "关闭"
 
-#: src/insets/InsetBibtex.cpp:200
+#: src/insets/InsetBibtex.cpp:201
 #, fuzzy
 msgid "Lists:"
 msgstr "列表"
 
-#: src/insets/InsetBibtex.cpp:211
+#: src/insets/InsetBibtex.cpp:212
 msgid "included in TOC"
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:307 src/insets/InsetBibtex.cpp:358
+#: src/insets/InsetBibtex.cpp:308 src/insets/InsetBibtex.cpp:359
 msgid "Export Warning!"
 msgstr "导出警告!"
 
-#: src/insets/InsetBibtex.cpp:308
+#: src/insets/InsetBibtex.cpp:309
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -20778,7 +20891,7 @@ msgstr ""
 "您BibTeX数据库文件名中有空格.\n"
 "BibTeX将不能找到此文件."
 
-#: src/insets/InsetBibtex.cpp:359
+#: src/insets/InsetBibtex.cpp:360
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -22080,9 +22193,6 @@ msgstr "未知用户"
 
 #~ msgid "Verteiler:"
 #~ msgstr "Verteiler:"
-
-#~ msgid "PS:"
-#~ msgstr "PS:"
 
 #~ msgid "Text:"
 #~ msgstr "文字："
