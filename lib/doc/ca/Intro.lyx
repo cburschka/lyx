@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -333,9 +333,13 @@ Introducció
 \begin_layout Standard
 Veiem ara el problema de la consistència.
  Cinc dies més tard, obriu l'informe i comenceu la secció 4.
- Però heu oblidat que estàveu usant lletra en negreta de 18 punts, i useu
- la de 16, així que acabeu escrivint l'encapçalament de la secció 4 amb
- un tipus de lletra diferent al que vau emprar a la secció 1.
+ Però heu oblidat que estàveu usant lletra en negreta de 18
+\begin_inset space \thinspace{}
+\end_inset
+
+punts, i useu la de 16, així que acabeu escrivint l'encapçalament de la
+ secció 4 amb un tipus de lletra diferent al que vau emprar a la secció
+ 1.
  Aquest problema no existeix al LyX.
  L'ordinador s'encarrega de tota la feina feixuga de portar el compte de
  mides i tipus de lletra, no l'autor.
@@ -987,7 +991,7 @@ esteses
 
  (fitxer 
 \family typewriter
-Additional.lyx
+Extended.lyx
 \family default
 ).
  Quan necessitem fer referència a associacions de tecles, usarem la següent

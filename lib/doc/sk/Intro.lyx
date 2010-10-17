@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 370
+#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
+\lyxformat 345
 \begin_document
 \begin_header
 \textclass article
@@ -43,16 +43,12 @@
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
-\default_output_format default
-\bibtex_command default
-\index_command default
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -76,24 +72,23 @@
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
-\use_indices false
 \paperorientation portrait
-\suppress_date false
 \branch english
 \selected 0
-\filename_suffix 0
 \color #fa1849
 \end_branch
 \secnumdepth 3
 \tocdepth 2
 \paragraph_separation indent
-\paragraph_indentation default
+\defskip medskip
 \quotes_language german
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -303,8 +298,15 @@ Sekcia
 \begin_layout Standard
 Ďalej je tu problém dôslednosti.
  O päť dní neskôr si otvoríte svoju správu a začnete písať časť 4.
- Avšak zabudli ste, že ste používali 18pt tučné písmo, namiesto 16pt, takže
- nadpis časti 4 bude napísaný iným písmom, ako nadpis časti 1.
+ Avšak zabudli ste, že ste používali 18
+\begin_inset space \thinspace{}
+\end_inset
+
+pt tučné písmo, namiesto 16
+\begin_inset space \thinspace{}
+\end_inset
+
+pt, takže nadpis časti 4 bude napísaný iným písmom, ako nadpis časti 1.
  Tento problém v LyX\SpecialChar \nobreakdash-
 e neexistuje.
  Počítač sa stará o všetko to, ktorá vec má akú veľkosť písma.
@@ -1166,7 +1168,7 @@ Jednotky
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features tabularvalignment="middle">
+<features>
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>

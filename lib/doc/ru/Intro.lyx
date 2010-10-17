@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -432,8 +432,11 @@ status collapsed
 \end_inset
 
 4.
- Однако вы забыли, что использовали жирный шрифт размером 18 пунктов вместо
- 16-ти пунктов, так что теперь вы набираете заголовок Раздел
+ Однако вы забыли, что использовали жирный шрифт размером 18
+\begin_inset space ~
+\end_inset
+
+пунктов вместо 16-ти пунктов, так что теперь вы набираете заголовок Раздел
 \begin_inset space ~
 \end_inset
 
@@ -1345,7 +1348,7 @@ C-<
 
  (файл 
 \family typewriter
-Additional.lyx
+Extended.lyx
 \family default
 ).
  Когда нам нужно указать комбинацию клавиш, мы используем следующее соглашение

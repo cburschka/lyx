@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -331,8 +331,15 @@ status collapsed
 \end_inset
 
 4.
- Але ви забули, що використовували жирний шрифт розміру 18пт замість 16пт,
- отже, ви набираєте заголовок для Розділу
+ Але ви забули, що використовували жирний шрифт розміру 18
+\begin_inset space \thinspace{}
+\end_inset
+
+пт замість 16
+\begin_inset space \thinspace{}
+\end_inset
+
+пт, отже, ви набираєте заголовок для Розділу
 \begin_inset space ~
 \end_inset
 
@@ -960,7 +967,7 @@ type "mailto:"
 \emph default
  (the file 
 \family typewriter
-Additional.lyx
+Extended.lyx
 \family default
 ).
  У тексті ви побачите певні скорочення назв клавіш, ми будемо використовувати
