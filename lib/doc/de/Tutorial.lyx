@@ -64,7 +64,7 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue,  filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
 \use_geometry true
 \use_amsmath 1
@@ -86,7 +86,6 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author "" 
 \author "" 
 \end_header
 
@@ -577,8 +576,6 @@ DVI
 	filename ../../images/buffer-view_dvi.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
-	clip
 
 \end_inset
 
@@ -621,7 +618,6 @@ DVI
 	filename ../../images/buffer-update_dvi.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -703,7 +699,6 @@ Rückgängig
 \begin_inset Graphics
 	filename ../../images/undo.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -718,7 +713,6 @@ Wiederholen
 \begin_inset Graphics
 	filename ../../images/redo.png
 	scale 70
-	BoundingBox 0bp 4bp 22bp 22bp
 
 \end_inset
 
@@ -744,7 +738,6 @@ den (
 \begin_inset Graphics
 	filename ../../images/cut.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -761,7 +754,6 @@ Kopieren
 \begin_inset Graphics
 	filename ../../images/copy.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -774,7 +766,6 @@ Einfügen
 \begin_inset Graphics
 	filename ../../images/paste.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -805,7 +796,6 @@ Ersetzen\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/dialog-show_findreplace.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -829,7 +819,6 @@ Textstil
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
 	scale 70
-	BoundingBox 0bp 2bp 20bp 20bp
 
 \end_inset
 
@@ -1017,7 +1006,6 @@ Leerzeichen
 	filename ../../images/math/space.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -1654,7 +1642,6 @@ Auflistung
 \begin_inset Graphics
 	filename ../../images/layout_Itemize.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -1730,7 +1717,6 @@ Aufzählung
 \begin_inset Graphics
 	filename ../../images/layout_Enumerate.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -2538,7 +2524,6 @@ Marke\SpecialChar \ldots{}
 	filename ../../images/label-insert.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -2670,7 +2655,6 @@ Querverweis
 	filename ../../images/dialog-show-new-inset_ref.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -2862,7 +2846,6 @@ Fußnote
 \begin_inset Graphics
 	filename ../../images/footnote-insert.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -2967,7 +2950,6 @@ Kopieren
  Sie den Cursor vor den Fußnotentext stellen und die 
 \begin_inset Graphics
 	filename ../../images/math/leftarrow.png
-	BoundingBox 0bp 4bp 10bp 10bp
 
 \end_inset
 
@@ -2992,7 +2974,6 @@ Randnotiz
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.png
 	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -3110,7 +3091,6 @@ Zitat
 	filename ../../images/dialog-show-new-inset_citation.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -3275,7 +3255,6 @@ Innerhalb von LyX selber wird das Inhaltsverzeichnis in einem Unterfenster
 	filename ../../images/dialog-toggle_toc.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -3402,7 +3381,6 @@ matik-Modus.
 	filename ../../images/math-mode.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -3557,7 +3535,6 @@ Rückgängig
 	filename ../../images/undo.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -3589,7 +3566,6 @@ Rückgängig
 \begin_inset Graphics
 	filename ../../images/undo.png
 	scale 70
-	BoundingBox 0bp 4bp 22bp 22bp
 
 \end_inset
 
@@ -3866,7 +3842,6 @@ Mathe
 	filename ../../images/toolbar-toggle_math.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -3888,7 +3863,6 @@ Mathe
 	filename ../../images/toolbar-toggle_math.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -3943,7 +3917,6 @@ Wenn Sie auf den Schalter
 	filename ../../images/math/sqrt.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 0bp 20bp 20bp
 
 \end_inset
 
@@ -3974,7 +3947,6 @@ Eine Variable (
 	filename ../../images/math/hat.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 20bp
 
 \end_inset
 
@@ -3996,7 +3968,6 @@ Gruppensymbole wie Trennungsstriche, Klammern und Pfeile werden ähnlich,
 	filename ../../images/dialog-show_mathdelimiter.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -4091,7 +4062,6 @@ Brüche
 	filename ../../images/math/frac-square.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 12bp 20bp
 
 \end_inset
 
@@ -4140,7 +4110,6 @@ Kontrollfläche
 	filename ../../images/math/frac.png
 	scale 50
 	scaleBeforeRotation
-	BoundingBox 0bp 10bp 12bp 22bp
 
 \end_inset
 
@@ -4368,7 +4337,6 @@ Um eine Matrix zu erstellen, klicken Sie auf den Schalter
 	filename ../../images/math-matrix.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -4434,7 +4402,6 @@ Spalten
 	filename ../../images/tabular-feature_append-row.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -4443,7 +4410,6 @@ Spalten
 	filename ../../images/tabular-feature_delete-row.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -4452,7 +4418,6 @@ Spalten
 	filename ../../images/tabular-feature_append-column.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -4461,7 +4426,6 @@ Spalten
 	filename ../../images/tabular-feature_delete-column.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -4533,7 +4497,6 @@ Anzeige
 \begin_inset Graphics
 	filename ../../images/math/equation.png
 	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -5014,7 +4977,6 @@ le\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/tabular-insert.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -5038,7 +5000,6 @@ Einstellungen
 	filename ../../images/toolbar-toggle_table.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -5057,7 +5018,6 @@ Grafik
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -5272,7 +5232,6 @@ X
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
 	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 

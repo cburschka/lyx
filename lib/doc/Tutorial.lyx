@@ -67,7 +67,7 @@ logicalmkup
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -1163,7 +1163,7 @@ Environment
 
 , and typesets it in a font which is bigger than regular text but smaller
  than the section title.
- Change the fourth line 
+ Change the fourth line to the 
 \family sans
 Subsection
 \family default
@@ -1744,7 +1744,7 @@ Environment
 
 \begin_layout Standard
 Font sizes, one- or two-column printing, and page headings are just some
- of the ways journals typesettings differ from one another.
+ of the ways journals' typesettings differ from one another.
  As the Computer Age continues to mature, journals have begun accepting
  electronic submissions, creating LaTeX 
 \begin_inset Quotes eld
