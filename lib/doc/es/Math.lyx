@@ -2027,7 +2027,7 @@ cfrac
 
 \begin_layout Standard
 \begin_inset Formula \begin{align*}
-\textrm{creada con \textbf{\textbackslash frac} } &  & \textrm{creada con }\mathbf{\textbackslash\textbf{cfrac}}\\
+\textrm{creada con \textbf{\textbackslash frac}} &  & \textrm{creada con \textbf{\textbackslash cfrac}}\\
 \frac{A}{B+\frac{C+\frac{E}{F}}{D}} &  & \cfrac{A}{B+\cfrac{C+\cfrac{E}{F}}{D}}\end{align*}
 
 \end_inset
@@ -34328,7 +34328,6 @@ La barra de herramientas de macros contiene los siguientes botones:
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro-remove-param.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34360,7 +34359,6 @@ Quitar último argumento
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro-add-param.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34392,7 +34390,6 @@ Añadir argumento
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro-make-optional.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34455,7 +34452,6 @@ argumento no opcional
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro-make-nonoptional.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34518,7 +34514,6 @@ argumento opcional
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro-remove-optional-param.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34550,7 +34545,6 @@ Quitar argumento opcional
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro-add-optional-param.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34582,7 +34576,6 @@ Insertar argumento opcional
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro-remove-greedy-param.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34645,7 +34638,6 @@ yendo hacia la derecha
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro-append-greedy-param.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34708,7 +34700,6 @@ desde la derecha
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro-add-greedy-optional-param.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
