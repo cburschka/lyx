@@ -976,7 +976,7 @@ Delete
 \family sans
 Backspace
 \family default
- keys also functions as the 
+ keys also function as the 
 \family sans
 Cut
 \family default
@@ -10812,7 +10812,7 @@ Type
 \begin_layout Standard
 The result of all this, is that bitmap fonts are best for the size they
  are designed for, while scalable fonts are good for nearly all sizes.
- So one need fewer font size definitions for scalable fonts.
+ So one needs fewer font size definitions for scalable fonts.
  That's the reason why nearly all text rendering and typesetting programs
  use scalable fonts.
 \end_layout
@@ -13884,7 +13884,7 @@ Point
 \end_layout
 
 \begin_layout Standard
-Sometimes you want to prevent words or constructs to be hyphenated.
+Sometimes you want to prevent words or constructs from being hyphenated.
  Imagine that you are describing keybindings/shortcuts in your document
  in the form 
 \begin_inset Quotes eld
@@ -13903,7 +13903,7 @@ A-b c
 \begin_inset Quotes erd
 \end_inset
 
- as hyphenation possibility.
+ as a hyphenation possibility.
  Hyphenating at this point would look ugly.
  To prevent the shortcut from being hyphenated, you can put it into a makebox
  as described in section 
@@ -16069,7 +16069,7 @@ In the case of PDF, the original image is additionally compressed.
 \end_layout
 
 \begin_layout Standard
-Normally one can't convert a bitmap image into a scalable one, only vice
+Normally one cannot convert a bitmap image into a scalable one, only vice
  versa.
 \end_layout
 
@@ -16740,7 +16740,7 @@ footer
 \end_layout
 
 \begin_layout Description
-Caption: The first row is reset as single column.
+Caption: The first row is reset as a single column.
  You can now insert there the table caption via the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -19576,7 +19576,7 @@ the figure above
 \begin_inset Quotes erd
 \end_inset
 
-, because as LaTeX will reposition the floats in the final document; it
+, because, as LaTeX will reposition the floats in the final document, it
  might not be 
 \begin_inset Quotes eld
 \end_inset
@@ -21099,8 +21099,8 @@ This is a line with an inline formula
 \end_layout
 
 \begin_layout Standard
-Displayed formulas appear outside the text like as if they were in an own
- paragraph, like this one:
+Displayed formulas appear outside the text like if they were in an own paragraph
+, like this one:
 \begin_inset Formula \[
 A=B\]
 
@@ -21987,7 +21987,7 @@ etc
 sin
 \series default
  etc.).
- Standard mathematical practice is, that functions are printed upright to
+ Standard mathematical practice is that functions are printed upright to
  avoid confusions, because 
 \begin_inset Formula $sin$
 \end_inset
@@ -22960,7 +22960,7 @@ c
 
 
 \family sans
-lrc
+lcr
 \family default
 
 \begin_inset Quotes erd
@@ -23057,7 +23057,7 @@ arg   "newline-insert newline"
 \begin_inset Quotes erd
 \end_inset
 
- etc.) will be inserted automatically to the first column, the relation sign
+ etc.) will be inserted automatically in the first column, the relation sign
  is in the second column, and the rest in the third column.
  A new row is created by every further hit of 
 \begin_inset Info
@@ -23190,7 +23190,7 @@ arg   "math-number-toggle"
 \begin_inset Quotes erd
 \end_inset
 
- denotes, that the number will be calculated automatically when the output
+ denotes that the number will be calculated automatically when the output
  is generated.
  The placement and format of the formula number in the output depends on
  the document class.
@@ -23775,8 +23775,8 @@ When you use a typeface, a blue box is inserted in the formula.
 \family sans
 Space
 \family default
- within the box, will set the cursor outside, so that you have to use a
- protected space when you need a space in the box.
+ within the box will set the cursor outside, so that you have to use a protected
+ space when you need a space in the box.
  Here an example where 
 \begin_inset Quotes eld
 \end_inset
@@ -24175,7 +24175,7 @@ Options
  will include the AMS-packages in the document, and make the facilities
  available.
  AMS is needed for many math-constructs, so when you get LaTeX-errors in
- formulas, assure that you have enabled AMS.
+ formulas, ensure that you have enabled AMS.
 \end_layout
 
 \begin_layout Subsection
@@ -24628,7 +24628,7 @@ on this page
 \end_layout
 
 \begin_layout Standard
-The number and current page of the referenced document part in the output,
+The number and current page of the referenced document part in the output
  is automatically calculated by LaTeX.
  The varieties are adjusted in the field 
 \family sans
@@ -25457,7 +25457,8 @@ Add bibliography to TOC
 \family sans
 Content
 \family default
- drop box you can select what part of the database should be output.
+ drop box you can select whether to include > all the entries in the database
+ in the document or just the cited references.
 \end_layout
 
 \begin_layout Standard
@@ -26398,8 +26399,8 @@ reference "sub:Index-Program"
 xindy
 \family default
 , however, this won't work for anything other than bold or italic text.
- This is because xindy requires to define semantic elements before they
- can be used, see 
+ This is because xindy requires you  to define semantic elements before
+ they can be used, see 
 \begin_inset CommandInset citation
 LatexCommand cite
 after "p. 678 ff."
@@ -28090,8 +28091,8 @@ Code
 \begin_layout Standard
 You can insert complete or incomplete commands as TeX Code.
  Incomplete means that the command argument can be Standard LyX text.
- For example, if you want to draw a frame around a word are therefore using
- the LaTeX-command 
+ For example, if you want to draw a frame around a word and are therefore
+ using the LaTeX-command 
 \series bold
 
 \backslash
@@ -29669,7 +29670,7 @@ Note
 The review toolbar helps you to accept, reject, or merge changes – highlight
  the change and press one of the desired toolbar buttons.
  When you merge changes, a window pops up showing you information about
- the next change behind the current cursor position.
+ the next change after the current cursor position.
  So you don't need to highlight a certain change.
  Within the merge window you can decide to accept or reject changes and
  step to the next change.
@@ -34809,8 +34810,8 @@ Word) HTML-format specialized so that the result can be imported to
 \family sans
 MS Word
 \family default
-, as consequence of this formulas will be embedded as bitmap fonts and not
- in the format 
+; as a consequence of this formulas will be embedded as bitmap fonts and
+ not in the format 
 \family sans
 MathML
 \family default
@@ -35448,7 +35449,7 @@ reference "sec:File-Formats"
 \end_inset
 
 .
- The default viewers are set by LyX while it is first configured.
+ The default viewers are set by LyX when it is first configured.
 \end_layout
 
 \begin_layout Standard
