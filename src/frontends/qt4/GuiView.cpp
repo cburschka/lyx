@@ -370,13 +370,12 @@ public:
 	static docstring saveAndDestroy(Buffer const * orig, Buffer * buffer, FileName const & fname);
 
 	// TODO syncFunc/previewFunc: use bind
-	bool asyncBufferProcessing(
-			string const & argument,
-			Buffer const * used_buffer,
-			docstring const & msg,
-			docstring (*asyncFunc)(Buffer const *, Buffer *, string const &),
-			bool (Buffer::*syncFunc)(string const &, bool, bool) const,
-			bool (Buffer::*previewFunc)(string const &, bool) const);
+	bool asyncBufferProcessing(string const & argument,
+	                           Buffer const * used_buffer,
+	                           docstring const & msg,
+	                           docstring (*asyncFunc)(Buffer const *, Buffer *, string const &),
+	                           bool (Buffer::*syncFunc)(string const &, bool, bool) const,
+	                           bool (Buffer::*previewFunc)(string const &, bool) const);
 
 	
 };
@@ -2926,13 +2925,13 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			}
 #else
 			/* TODO/Review: Is it a problem to also export the children?
-			                See the update_unincluded flag
-			*/
+			                See the update_unincluded flag */
 			d.asyncBufferProcessing(argument,
-			                      doc_buffer,
-			                      _("Exporting ..."),
-			                      &GuiViewPrivate::exportAndDestroy,
-			                      &Buffer::doExport, 0);
+			                        doc_buffer,
+			                        _("Exporting ..."),
+			                        &GuiViewPrivate::exportAndDestroy,
+			                        &Buffer::doExport,
+			                        0);
 			// TODO Inform user about success
 #endif
 			break;
@@ -2940,34 +2939,37 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		case LFUN_BUFFER_UPDATE: {
 			d.asyncBufferProcessing(argument,
-			                      doc_buffer,
-			                      _("Exporting ..."),
-			                      &GuiViewPrivate::exportAndDestroy,
-			                      &Buffer::doExport, 0);
+			                        doc_buffer,
+			                        _("Exporting ..."),
+			                        &GuiViewPrivate::exportAndDestroy,
+			                        &Buffer::doExport,
+			                        0);
 			break;
 		}
 		case LFUN_BUFFER_VIEW: {
 			d.asyncBufferProcessing(argument,
-		                      doc_buffer,
-		                      _("Previewing ..."),
-		                      &GuiViewPrivate::previewAndDestroy,
-		                      0, &Buffer::preview);
+			                        doc_buffer,
+			                        _("Previewing ..."),
+			                        &GuiViewPrivate::previewAndDestroy,
+			                        0,
+			                        &Buffer::preview);
 			break;
 		}
 		case LFUN_MASTER_BUFFER_UPDATE: {
 			d.asyncBufferProcessing(argument,
-			                      (doc_buffer ? doc_buffer->masterBuffer() : 0),
-			                      docstring(),
-			                      &GuiViewPrivate::exportAndDestroy,
-			                      &Buffer::doExport, 0);
+			                        (doc_buffer ? doc_buffer->masterBuffer() : 0),
+			                        docstring(),
+			                        &GuiViewPrivate::exportAndDestroy,
+			                        &Buffer::doExport,
+			                        0);
 			break;
 		}
 		case LFUN_MASTER_BUFFER_VIEW: {
 			d.asyncBufferProcessing(argument,
-		                      (doc_buffer ? doc_buffer->masterBuffer() : 0),
-		                      docstring(),
-		                      &GuiViewPrivate::previewAndDestroy,
-		                      0, &Buffer::preview);
+			                        (doc_buffer ? doc_buffer->masterBuffer() : 0),
+			                        docstring(),
+			                        &GuiViewPrivate::previewAndDestroy,
+			                        0, &Buffer::preview);
 			break;
 		}
 		case LFUN_BUFFER_SWITCH: {
