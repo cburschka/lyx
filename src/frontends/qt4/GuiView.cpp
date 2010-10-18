@@ -370,7 +370,7 @@ public:
 	static docstring saveAndDestroy(Buffer const * orig, Buffer * buffer, FileName const & fname);
 
 	// TODO syncFunc/previewFunc: use bind
-	void asyncBufferProcessing(
+	bool asyncBufferProcessing(
 			string const & argument,
 			Buffer const * used_buffer,
 			docstring const & msg,
@@ -2835,7 +2835,7 @@ docstring GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer
 #endif
 
 
-void GuiView::GuiViewPrivate::asyncBufferProcessing(
+bool GuiView::GuiViewPrivate::asyncBufferProcessing(
                            string const & argument,
                            Buffer const * used_buffer,
                            docstring const & msg,
@@ -2843,8 +2843,9 @@ void GuiView::GuiViewPrivate::asyncBufferProcessing(
                            bool (Buffer::*syncFunc)(string const &, bool, bool) const,
                            bool (Buffer::*previewFunc)(string const &, bool) const)
 {
-	if (!used_buffer)
-		return;
+	if (!used_buffer) {
+		return false;
+	}
 	string format = argument;
 	if (format.empty()) {
 		format = used_buffer->getDefaultOutputFormat();
@@ -2864,14 +2865,16 @@ void GuiView::GuiViewPrivate::asyncBufferProcessing(
 	last_export_format = used_buffer->bufferFormat();
 	(void) syncFunc;
 	(void) previewFunc;
+	// We are asynchronous, so we don't know here anything about the success
+	return true;
 #else
 	bool const update_unincluded =
 		used_buffer->params().maintain_unincluded_children &&
 		!used_buffer->params().getIncludedChildren().empty();
 	if (syncFunc) {
-		(used_buffer->*syncFunc)(format, true, update_unincluded);
+		return (used_buffer->*syncFunc)(format, true, update_unincluded);
 	} else if (previewFunc) {
-		(used_buffer->*previewFunc)(format, update_unincluded);
+		return (used_buffer->*previewFunc)(format, update_unincluded);
 	}
 	(void) asyncFunc;
 #endif
@@ -2911,15 +2914,26 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				break;
 			// GCC only sees strfwd.h when building merged
 			if (::lyx::operator==(cmd.argument(), "custom")) {
-				dispatch(FuncRequest(LFUN_DIALOG_SHOW, "sendto"),
-					 dr);
+				dispatch(FuncRequest(LFUN_DIALOG_SHOW, "sendto"), dr);
 				break;
 			}
+#if 0
+			// TODO Remove if we could export asynchronous
 			if (!doc_buffer->doExport(argument, false)) {
 				dr.setError(true);
 				dr.setMessage(bformat(_("Error exporting to format: %1$s."),
 					cmd.argument()));
 			}
+#else
+			// TODO/Review: Could we also export with doExport(argument, true)
+			//              as done in exportAndDestroy?
+			d.asyncBufferProcessing(argument,
+			                      doc_buffer,
+			                      _("Exporting ..."),
+			                      &GuiViewPrivate::exportAndDestroy,
+			                      &Buffer::doExport, 0);
+			// TODO Inform user about success
+#endif
 			break;
 		}
 
