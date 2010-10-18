@@ -19,7 +19,8 @@ namespace lyx {
 
 class Counter;
 
-class InsetLabel : public InsetCommand {
+class InsetLabel : public InsetCommand 
+{
 public:
 	///
 	InsetLabel(Buffer * buf, InsetCommandParams const &);

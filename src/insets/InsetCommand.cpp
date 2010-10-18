@@ -54,9 +54,7 @@ namespace lyx {
 // place of the mailer name and recover that information?
 InsetCommand::InsetCommand(Buffer * buf, InsetCommandParams const & p,
 			   string const & mailer_name)
-	: Inset(buf), p_(p),
-	  mailer_name_(mailer_name),
-	  mouse_hover_()
+	: Inset(buf), p_(p), mailer_name_(mailer_name)
 {}
 
 
@@ -71,6 +69,7 @@ InsetCommand::~InsetCommand()
 {
 	if (!mailer_name_.empty())
 		hideDialogs(mailer_name_, this);
+
 	map<BufferView const *, bool>::iterator it = mouse_hover_.begin();
 	map<BufferView const *, bool>::iterator end = mouse_hover_.end();
 	for (; it != end; ++it)

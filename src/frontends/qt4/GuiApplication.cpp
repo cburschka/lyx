@@ -1124,12 +1124,14 @@ void GuiApplication::dispatch(FuncRequest const & cmd)
 }
 
 
-void GuiApplication::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
+void GuiApplication::gotoBookmark(unsigned int idx, bool openFile,
+	bool switchToBuffer)
 {
 	LASSERT(current_view_, /**/);
 	if (!theSession().bookmarks().isValid(idx))
 		return;
-	BookmarksSection::Bookmark const & bm = theSession().bookmarks().bookmark(idx);
+	BookmarksSection::Bookmark const & bm =
+		theSession().bookmarks().bookmark(idx);
 	LASSERT(!bm.filename.empty(), /**/);
 	string const file = bm.filename.absFileName();
 	// if the file is not opened, open it.
@@ -1151,16 +1153,18 @@ void GuiApplication::gotoBookmark(unsigned int idx, bool openFile, bool switchTo
 		dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"));
 
 	// if the current buffer is not that one, switch to it.
-	if (!current_view_->documentBufferView()
-		|| current_view_->documentBufferView()->buffer().fileName() != tmp.filename) {
-		if (!switchToBuffer)
+	BufferView * doc_bv = current_view_->documentBufferView();
+	if (!doc_bv || doc_bv->buffer().fileName() != tmp.filename) {
+		if (switchToBuffer) {
+			dispatch(FuncRequest(LFUN_BUFFER_SWITCH, file));
+			doc_bv = current_view_->documentBufferView();
+		} else
 			return;
-		dispatch(FuncRequest(LFUN_BUFFER_SWITCH, file));
 	}
 
 	// moveToPosition try paragraph id first and then paragraph (pit, pos).
-	if (!current_view_->documentBufferView()->moveToPosition(
-		tmp.bottom_pit, tmp.bottom_pos, tmp.top_id, tmp.top_pos))
+	if (!doc_bv->moveToPosition(
+			tmp.bottom_pit, tmp.bottom_pos, tmp.top_id, tmp.top_pos))
 		return;
 
 	// bm changed
@@ -1168,7 +1172,7 @@ void GuiApplication::gotoBookmark(unsigned int idx, bool openFile, bool switchTo
 		return;
 
 	// Cursor jump succeeded!
-	Cursor const & cur = current_view_->documentBufferView()->cursor();
+	Cursor const & cur = doc_bv->cursor();
 	pit_type new_pit = cur.pit();
 	pos_type new_pos = cur.pos();
 	int new_id = cur.paragraph().id();
@@ -1310,11 +1314,11 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 		break;
 
-	case LFUN_FILE_OPEN:
+	case LFUN_FILE_OPEN: {
 		// FIXME: create a new method shared with LFUN_HELP_OPEN.
-		if (d->views_.empty()
-			|| (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
-			string const fname = to_utf8(cmd.argument());
+		string const fname = to_utf8(cmd.argument());
+		if (d->views_.empty() || (!lyxrc.open_buffers_in_tabs 
+			  && current_view_->documentBufferView() != 0)) {
 			// We want the ui session to be saved per document and not per
 			// window number. The filename crc is a good enough identifier.
 			boost::crc_32_type crc;
@@ -1324,8 +1328,9 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			if (current_view_ && !current_view_->documentBufferView())
 				current_view_->close();
 		} else
-			current_view_->openDocument(to_utf8(cmd.argument()));
+			current_view_->openDocument(fname);
 		break;
+	}
 
 	case LFUN_HELP_OPEN: {
 		// FIXME: create a new method shared with LFUN_FILE_OPEN.

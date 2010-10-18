@@ -919,8 +919,9 @@ void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool tra
 			}
 		}
 
-		// don't delete anything if this is the only remaining paragraph within the given range
-		// note: Text::acceptOrRejectChanges() sets the cursor to 'first' after calling DEPM
+		// don't delete anything if this is the only remaining paragraph
+		// within the given range. Note: Text::acceptOrRejectChanges()
+		// sets the cursor to 'first' after calling DEPM
 		if (first == last)
 			continue;
 

@@ -280,7 +280,8 @@ public:
 	/// Returns true if cursor is now invalid, e.g. if former 
 	/// insets in higher cursor slices of \c old do not exist 
 	/// anymore.
-	/// \c cur is the new cursor, some slice points to this. Use the update flags to cause a redraw.
+	/// \c cur is the new cursor, some slice points to this. Use the update
+	/// flags to cause a redraw.
 	virtual bool notifyCursorEnters(Cursor & /*cur*/)
 		{ return false; }
 	/// is called when the mouse enters or leaves this inset
@@ -381,7 +382,8 @@ public:
 	virtual bool forcePlainLayout(idx_type = 0) const { return false; }
 	/// if this inset has paragraphs should the user be allowed to
 	/// customize alignment, etc?
-	virtual bool allowParagraphCustomization(idx_type = 0) const { return true; }
+	virtual bool allowParagraphCustomization(idx_type = 0) const
+		{ return true; }
 	/// Is the width forced to some value?
 	virtual bool hasFixedWidth() const { return false; }
 

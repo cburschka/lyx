@@ -13,12 +13,13 @@
 #define GUICOMPARE_H
 
 #include "GuiDialog.h"
-#include "ui_CompareUi.h"
-#include "qt_helpers.h"
 
-#include "Compare.h"
+#include "ui_CompareUi.h"
 
 namespace lyx {
+
+class Compare;
+
 namespace frontend {
 
 

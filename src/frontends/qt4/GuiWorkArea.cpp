@@ -1319,7 +1319,7 @@ EmbeddedWorkArea::EmbeddedWorkArea(QWidget * w): GuiWorkArea(w)
 EmbeddedWorkArea::~EmbeddedWorkArea()
 {
 	// No need to destroy buffer and bufferview here, because it is done
-	// in theBuffeerList() destruction loop at application exit
+	// in theBufferList() destruction loop at application exit
 }
 
 

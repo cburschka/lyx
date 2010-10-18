@@ -2533,8 +2533,11 @@ static bool ensureBufferClean(Buffer * buffer)
 
 bool GuiView::reloadBuffer()
 {
-	Buffer * buf = &documentBufferView()->buffer();
-	return buf->reload();
+	Buffer * buffer = documentBufferView()
+		? &(documentBufferView()->buffer()) : 0;
+	if (buffer)
+		return buffer->reload();
+	return false;
 }
 
 
@@ -3046,6 +3049,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		case LFUN_FILE_INSERT:
 			insertLyXFile(cmd.argument());
 			break;
+
 		case LFUN_FILE_INSERT_PLAINTEXT_PARA:
 			insertPlaintextFile(cmd.argument(), true);
 			break;

@@ -1946,12 +1946,14 @@ DocumentClass const & BufferParams::documentClass() const
 }
 
 
-DocumentClass const * BufferParams::documentClassPtr() const {
+DocumentClass const * BufferParams::documentClassPtr() const
+{
 	return doc_class_;
 }
 
 
-void BufferParams::setDocumentClass(DocumentClass const * const tc) {
+void BufferParams::setDocumentClass(DocumentClass const * const tc)
+{
 	// evil, but this function is evil
 	doc_class_ = const_cast<DocumentClass *>(tc);
 }

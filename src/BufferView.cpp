@@ -58,9 +58,9 @@
 #include "insets/InsetCommand.h" // ChangeRefs
 #include "insets/InsetExternal.h"
 #include "insets/InsetGraphics.h"
+#include "insets/InsetNote.h"
 #include "insets/InsetRef.h"
 #include "insets/InsetText.h"
-#include "insets/InsetNote.h"
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"

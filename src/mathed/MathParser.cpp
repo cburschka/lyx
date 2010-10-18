@@ -1348,7 +1348,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 #endif
 
 		else if (t.cs() == "limits" || t.cs() == "nolimits") {
-			CatCode cat = nextToken().cat();
+			CatCode const cat = nextToken().cat();
 			if (cat == catSuper || cat == catSub)
 				limits = t.cs() == "limits" ? 1 : -1;
 			else {
