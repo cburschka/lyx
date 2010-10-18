@@ -2876,6 +2876,7 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 		return (used_buffer->*previewFunc)(format, update_unincluded);
 	}
 	(void) asyncFunc;
+	return false;
 #endif
 }
 
