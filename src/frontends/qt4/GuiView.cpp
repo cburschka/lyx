@@ -2950,7 +2950,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			bool const update_unincluded =
 				used_buffer->params().maintain_unincluded_children &&
 				!used_buffer->params().getIncludedChildren().empty();
-			used_buffer->doExport(format, true);
+			used_buffer->doExport(format, update_unincluded);
 #endif
 			break;
 		}
