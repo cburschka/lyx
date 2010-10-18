@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 401
+\lyxformat 404
 \begin_document
 \begin_header
 \textclass scrbook
@@ -29,7 +29,7 @@
   \mainmatter }
 
 % provides caption formatting
-\usepackage[labelfont={bf,sf}, tableposition=top]{caption}[2004/07/16]
+\usepackage[labelfont={bf,sf}]{caption}[2004/07/16]
 
 % provides commands to set caption
 % beside tables/images
@@ -158,9 +158,9 @@
   {LyX}}
 
 % use normal list environments also in French documents
-\StandardLayout
+\frenchbsetup{StandardLayout}
 \end_preamble
-\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
 \maintain_unincluded_children false
 \language french
@@ -209,6 +209,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \notefontcolor #0000ff
 \index Index
 \shortcut idx
@@ -23272,7 +23273,7 @@ Paquetages LaTeX ! KOMA-Script
 .
  Dans ce cas on doit utiliser l'option 
 \series bold
-tablecaptionabove
+captions=tableheading
 \series default
  de la classe de document.
 \end_layout
@@ -23775,7 +23776,7 @@ caption
 \series default
  l'option 
 \series bold
-tablecaptionabove
+captions=tableheading
 \series default
  de la classe de document.
 \end_layout
@@ -34124,6 +34125,133 @@ lstparams "breaklines=true,caption={Lignes 10 - 15 de ce fichier LyX},extendedch
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+Inserting a formula into a listing can be done the following way:
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Open the listings dialog and add
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+mathescape=true
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+to the field of the 
+\family sans
+Advanced
+\family default
+ tab.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Create a formula outside the listing
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Copy the content of the formula (not the formula inset) to the clipboard
+ (shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "copy"
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+In the listing write 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+$$
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ and copy from the clipboard between the dollar-signs (shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "paste"
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Python,mathescape=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Exemple de listing flottant 
+\lang english
+containing a formula
+\end_layout
+
+\end_inset
+
+# Exemple de listing flottant
+\end_layout
+
+\begin_layout Plain Layout
+
+def func(param):
+\end_layout
+
+\begin_layout Plain Layout
+
+    # $
+\backslash
+prod_{n=1}^{
+\backslash
+infty}
+\backslash
+,
+\backslash
+frac{1}{x^{2}}$
+\end_layout
+
+\begin_layout Plain Layout
+
+    pass
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Les paramètres globaux pour les listings peuvent être modifiés avec la fenêtre
  de dialogue 
 \family sans
@@ -35270,14 +35398,14 @@ Explication de l' Équation
 \begin_inset space ~
 \end_inset
 
-
+(
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "eq:Wgn"
 
 \end_inset
 
-
+)
 \begin_inset CommandInset label
 LatexCommand label
 name "cha:Explication-de-l'Equation"
@@ -35906,7 +36034,7 @@ Paquetages LaTeX ! prettyref
 \labelwidthstring Bibliographie
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "NewInLyX16"
+key "NewInLyX20"
 
 \end_inset
 
@@ -35914,13 +36042,13 @@ key "NewInLyX16"
 \begin_inset CommandInset href
 LatexCommand href
 name "Page Wiki"
-target "http://wiki.lyx.org/LyX/NewInLyX16"
+target "http://wiki.lyx.org/LyX/NewInLyX20"
 
 \end_inset
 
  au sujet des nouveautés de 
 \family sans
-LyX 1.6.0
+LyX 2.0
 \family default
 .
 \end_layout
@@ -35929,59 +36057,6 @@ LyX 1.6.0
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList figure
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList table
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-listof{algorithm}{Liste des Algorithmes}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-voir la section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Flottant-d'Algorithme"
-
-\end_inset
-
- pour une description
-\end_layout
 
 \end_inset
 
