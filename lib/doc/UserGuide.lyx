@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 402
+\lyxformat 404
 \begin_document
 \begin_header
 \textclass scrbook
@@ -50,7 +50,7 @@
 %\let\OrgIndex\index 
 %\renewcommand*{\index}[1]{\OrgIndex{#1}}
 \end_preamble
-\options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove
+\options intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
 \use_default_options false
 \maintain_unincluded_children false
 \language english
@@ -87,7 +87,7 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels,pdftex"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -99,6 +99,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \notefontcolor #0000ff
 \branch Question
 \selected 1
@@ -566,7 +567,6 @@ File
 New 
 \begin_inset Graphics
 	filename ../images/buffer-new.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -599,7 +599,6 @@ Open
 
 \begin_inset Graphics
 	filename ../images/file-open.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -620,7 +619,6 @@ Save
 
 \begin_inset Graphics
 	filename ../images/buffer-write.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -681,7 +679,6 @@ Print
 
 \begin_inset Graphics
 	filename ../images/dialog-show_print.png
-	BoundingBox 0bp 5bp 24bp 20bp
 
 \end_inset
 
@@ -890,7 +887,6 @@ Cut
 
 \begin_inset Graphics
 	filename ../images/cut.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -905,7 +901,6 @@ Copy
 
 \begin_inset Graphics
 	filename ../images/copy.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -920,7 +915,6 @@ Paste
 
 \begin_inset Graphics
 	filename ../images/paste.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -963,7 +957,6 @@ Replace
 
 \begin_inset Graphics
 	filename ../images/dialog-show_findreplace.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -1263,7 +1256,6 @@ Undo
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/undo.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -1276,7 +1268,6 @@ Redo
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/redo.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -1459,7 +1450,6 @@ Outline
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/dialog-toggle_toc.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -1545,7 +1535,6 @@ With the buttons
 
 \begin_inset Graphics
 	filename ../images/down.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -1561,7 +1550,6 @@ With the buttons
 
 \begin_inset Graphics
 	filename ../images/up.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -1585,14 +1573,12 @@ With the buttons
  With the buttons 
 \begin_inset Graphics
 	filename ../images/promote.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
  and 
 \begin_inset Graphics
 	filename ../images/demote.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -1624,7 +1610,6 @@ Shift-Tab
 The toolbar button 
 \begin_inset Graphics
 	filename ../images/bookmark-goto_0.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -1636,15 +1621,7 @@ The toolbar button
 \end_layout
 
 \begin_layout Section
-Input
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-Word Completion
+Input / Word Completion
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Input-Completion"
@@ -24718,7 +24695,6 @@ Back
  You can also go back with the toolbar button 
 \begin_inset Graphics
 	filename ../images/bookmark-goto_0.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -24997,7 +24973,6 @@ Hyperlink
  or with the toolbar button 
 \begin_inset Graphics
 	filename ../images/href-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -25285,7 +25260,6 @@ Citation
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_citation.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -25733,7 +25707,6 @@ Entry
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/index-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -26876,7 +26849,6 @@ Entry
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/nomencl-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -28692,7 +28664,6 @@ Spellchecker
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/dialog-show_spellchecker.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -29027,7 +28998,6 @@ Thesaurus
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/thesaurus-entry.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -29244,7 +29214,6 @@ Color ! Change tracking
  The same information is shown when you use the toolbar button 
 \begin_inset Graphics
 	filename ../images/changes-merge.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -29314,7 +29283,6 @@ The review toolbar as shown above contains from left to right the following
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/changes-track.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -29353,7 +29321,6 @@ Changes
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/changes-output.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -29400,7 +29367,6 @@ Output
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/change-next.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -29427,7 +29393,6 @@ Jumps to the next change
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/change-accept.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -29466,7 +29431,6 @@ Change
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/change-reject.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -29505,7 +29469,6 @@ Change
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/changes-merge.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -29544,7 +29507,6 @@ Changes
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/all-changes-accept.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -29587,7 +29549,6 @@ Changes
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/all-changes-reject.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -29630,7 +29591,6 @@ Changes
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/note-insert.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -29665,7 +29625,6 @@ Note
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/note-next.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -37443,7 +37402,6 @@ pull-down box for the paragraph environments
 \family sans
 \begin_inset Graphics
 	filename ../images/buffer-new.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37472,7 +37430,6 @@ New
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/file-open.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37501,7 +37458,6 @@ Open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/buffer-write.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37530,7 +37486,6 @@ Save
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/dialog-show_print.png
-	BoundingBox 0bp 5bp 24bp 20bp
 
 \end_inset
 
@@ -37559,7 +37514,6 @@ Print
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/dialog-show_spellchecker.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37588,7 +37542,6 @@ Spellchecker
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/undo.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37617,7 +37570,6 @@ Undo
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/redo.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37646,7 +37598,6 @@ Redo
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/cut.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37675,7 +37626,6 @@ Cut
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/copy.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37704,7 +37654,6 @@ Copy
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/paste.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37733,7 +37682,6 @@ Paste
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/dialog-show_findreplace.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -37771,7 +37719,6 @@ Replace
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/bookmark-goto_0.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -37802,7 +37749,6 @@ Navigate Back
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/font-emph.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37837,7 +37783,6 @@ Style
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/font-noun.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37872,7 +37817,6 @@ Style
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/textstyle-apply.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37907,7 +37851,6 @@ Style
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/math-mode.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37941,7 +37884,6 @@ Formula
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_graphics.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -37971,7 +37913,6 @@ Graphics
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/tabular-insert.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38001,7 +37942,6 @@ Table
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/dialog-toggle_toc.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38031,7 +37971,6 @@ Outline
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/toolbar-toggle_math.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38058,7 +37997,6 @@ Toggle math toolbar on/off
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/toolbar-toggle_table.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38141,7 +38079,6 @@ The extra toolbar as shown above contains from left to right the following
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/layout.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38168,7 +38105,6 @@ Default
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/layout_Enumerate.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38195,7 +38131,6 @@ Numbered list
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/layout_Itemize.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38222,7 +38157,6 @@ Itemized list
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/layout_List.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38249,7 +38183,6 @@ List
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/layout_Description.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38276,7 +38209,6 @@ Description list
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/depth-increment.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38314,7 +38246,6 @@ Depth
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/depth-decrement.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38352,7 +38283,6 @@ Depth
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/float-insert_figure.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38382,7 +38312,6 @@ Figure
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/float-insert_table.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38412,7 +38341,6 @@ Table
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/label-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38441,7 +38369,6 @@ Label
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_ref.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38470,7 +38397,6 @@ Cross-Reference
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_citation.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38499,7 +38425,6 @@ Citation
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/index-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38532,7 +38457,6 @@ Entry
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/nomencl-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38565,7 +38489,6 @@ Entry
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/footnote-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38594,7 +38517,6 @@ Footnote
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/marginalnote-insert.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38628,7 +38550,6 @@ Note
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/note-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38662,7 +38583,6 @@ Note
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/box-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38691,7 +38611,6 @@ Box
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/url-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38720,7 +38639,6 @@ URL
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/ert-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38764,7 +38682,6 @@ eX
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/math-macro_newmacroname_newcommand.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38794,7 +38711,6 @@ Macro
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_include.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38828,7 +38744,6 @@ Document
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/dialog-show_character.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38862,7 +38777,6 @@ Style
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/layout-paragraph.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38896,7 +38810,6 @@ Settings
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/thesaurus-entry.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38981,7 +38894,6 @@ The view / update toolbar as shown above contains from left to right the
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/buffer-view_dvi.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -39011,7 +38923,6 @@ DVI
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/buffer-update_dvi.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -39042,7 +38953,6 @@ DVI
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/buffer-view_pdf2.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -39072,7 +38982,6 @@ PDF
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/buffer-update_pdf2.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -39103,7 +39012,6 @@ PDF
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/buffer-view_ps.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -39133,7 +39041,6 @@ Postscript
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/buffer-update_ps.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -41388,15 +41295,7 @@ LyX-function
 \end_layout
 
 \begin_layout Subsection
-Keyboard
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-Mouse
+Keyboard / Mouse
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Keyboard-Map"

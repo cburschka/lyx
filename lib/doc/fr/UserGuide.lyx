@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 402
+\lyxformat 404
 \begin_document
 \begin_header
 \textclass scrbook
@@ -51,7 +51,7 @@
 %\renewcommand*{\index}[1]{\OrgIndex{#1}}
 
 % use normal list environments also in French documents
-\StandardLayout
+\frenchbsetup{StandardLayout}
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
 \use_default_options false
@@ -90,11 +90,11 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels,pdftex"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
 \use_amsmath 1
-\use_esint 0
+\use_esint 1
 \use_mhchem 1
 \use_mathdots 1
 \cite_engine basic
@@ -102,6 +102,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \notefontcolor #0000ff
 \branch Question
 \selected 1
@@ -600,7 +601,6 @@ Fichier
 Nouveau 
 \begin_inset Graphics
 	filename ../../images/buffer-new.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -629,7 +629,6 @@ Ouvrir
 
 \begin_inset Graphics
 	filename ../../images/file-open.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -660,7 +659,6 @@ Enregistrer
 
 \begin_inset Graphics
 	filename ../../images/buffer-write.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -739,7 +737,6 @@ Imprimer
 
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.png
-	BoundingBox 0bp 5bp 24bp 20bp
 
 \end_inset
 
@@ -994,7 +991,6 @@ Couper
 
 \begin_inset Graphics
 	filename ../../images/cut.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -1009,7 +1005,6 @@ Copier
 
 \begin_inset Graphics
 	filename ../../images/copy.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -1024,7 +1019,6 @@ Coller
 
 \begin_inset Graphics
 	filename ../../images/paste.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -1075,7 +1069,6 @@ Remplacer
 
 \begin_inset Graphics
 	filename ../../images/dialog-show_findreplace.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -1387,7 +1380,6 @@ Annuler
  ou utilisez le bouton 
 \begin_inset Graphics
 	filename ../../images/undo.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -1400,7 +1392,6 @@ Refaire
  ou utilisez le bouton 
 \begin_inset Graphics
 	filename ../../images/redo.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -1592,7 +1583,6 @@ Plan
  ou le bouton 
 \begin_inset Graphics
 	filename ../../images/dialog-toggle_toc.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -1673,7 +1663,6 @@ Avec les boutons
 
 \begin_inset Graphics
 	filename ../../images/down.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -1689,7 +1678,6 @@ Avec les boutons
 
 \begin_inset Graphics
 	filename ../../images/up.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -1714,14 +1702,12 @@ Avec les boutons
  Avec les boutons 
 \begin_inset Graphics
 	filename ../../images/promote.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
  et 
 \begin_inset Graphics
 	filename ../../images/demote.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -1753,7 +1739,6 @@ Shift-Tab
 Le bouton 
 \begin_inset Graphics
 	filename ../../images/bookmark-goto_0.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -25000,6 +24985,19 @@ Texte
 
 \begin_layout Subsection
 Mode Texte-Math
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+
 \begin_inset Foot
 status collapsed
 
@@ -25013,6 +25011,34 @@ Math Text Mode
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+
+\backslash
+texorpdfstring
+\series default
+ is used to avoid that the footnote appears in the PDF-bookmark.
 \end_layout
 
 \end_inset
@@ -25967,7 +25993,6 @@ so that you can use it to set the cursor back to the cross-reference.
  Vous pouvez aussi revenir au point de départ avec le bouton 
 \begin_inset Graphics
 	filename ../../images/bookmark-goto_0.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -26275,7 +26300,6 @@ ou avec le bouton
 
 \begin_inset Graphics
 	filename ../../images/href-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -26578,7 +26602,6 @@ Citation
 , soit en utilisant le bouton 
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_citation.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -27074,7 +27097,6 @@ d'Index
  ou le bouton 
 \begin_inset Graphics
 	filename ../../images/index-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -28093,7 +28115,6 @@ Glossaire
  ou le bouton
 \begin_inset Graphics
 	filename ../../images/nomencl-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -30063,7 +30084,6 @@ Orthographique
 , soit en cliquant sur le bouton
 \begin_inset Graphics
 	filename ../../images/dialog-show_spellchecker.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -30493,7 +30513,6 @@ Synonymes
 ou le bouton 
 \begin_inset Graphics
 	filename ../../images/thesaurus-entry.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -30675,7 +30694,6 @@ Couleurs ! Suivi des modifications
  La même information est affichée quand vous utilisez le bouton 
 \begin_inset Graphics
 	filename ../../images/changes-merge.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -30745,7 +30763,6 @@ Cette barre d'outils, illustrée ci-dessus contient les boutons suivants:
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/changes-track.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -30792,7 +30809,6 @@ modifications
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/changes-output.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -30851,7 +30867,6 @@ Sortie
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/change-next.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -30885,7 +30900,6 @@ suivante
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/change-accept.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -30928,7 +30942,6 @@ Modification
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/change-reject.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -30971,7 +30984,6 @@ Modification
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/changes-merge.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -31018,7 +31030,6 @@ Modifications
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/all-changes-accept.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -31069,7 +31080,6 @@ Modifications
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/all-changes-reject.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -31120,7 +31130,6 @@ Modifications
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/note-insert.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -31155,7 +31164,6 @@ LyX
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/note-next.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -37465,7 +37473,6 @@ menu déroulant pour les environnements de paragraphes
 \family sans
 \begin_inset Graphics
 	filename ../../images/buffer-new.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37494,7 +37501,6 @@ Nouveau
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/file-open.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37523,7 +37529,6 @@ Ouvrir
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-write.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37552,7 +37557,6 @@ Enregistrer
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.png
-	BoundingBox 0bp 5bp 24bp 20bp
 
 \end_inset
 
@@ -37581,7 +37585,6 @@ Imprimer
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show_spellchecker.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37614,7 +37617,6 @@ Orthographique
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/undo.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37643,7 +37645,6 @@ Annuler
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/redo.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37672,7 +37673,6 @@ Refaire
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/cut.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37701,7 +37701,6 @@ Couper
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/copy.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37730,7 +37729,6 @@ Copier
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/paste.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37759,7 +37757,6 @@ Coller
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show_findreplace.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -37797,7 +37794,6 @@ Remplacer
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/bookmark-goto_0.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -37828,7 +37824,6 @@ Naviguer en arrière
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/font-emph.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37865,7 +37860,6 @@ Texte
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/font-noun.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37938,7 +37932,6 @@ Texte
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-mode.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -37976,7 +37969,6 @@ Ligne
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38006,7 +37998,6 @@ Graphique
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/tabular-insert.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38036,7 +38027,6 @@ Tableau
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-toggle_toc.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38066,7 +38056,6 @@ Plan
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/toolbar-toggle_math.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38093,7 +38082,6 @@ Active ou désactive la barre d'outils Math
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/toolbar-toggle_table.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38176,7 +38164,6 @@ La barre d'outils supplémentaire illustrée ci-dessus contient les boutons
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38203,7 +38190,6 @@ Défaut
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout_Enumerate.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38230,7 +38216,6 @@ Liste numérotée
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout_Itemize.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38257,7 +38242,6 @@ Liste à puces
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout_List.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38284,7 +38268,6 @@ Liste
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout_Description.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38311,7 +38294,6 @@ Description
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38357,7 +38339,6 @@ Liste
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/depth-decrement.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38403,7 +38384,6 @@ Liste
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/float-insert_figure.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38433,7 +38413,6 @@ Figure
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/float-insert_table.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38463,7 +38442,6 @@ Tableau
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/label-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38492,7 +38470,6 @@ Insérer\SpecialChar \menuseparator
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38521,7 +38498,6 @@ Référence croisée
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_citation.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38550,7 +38526,6 @@ Citation
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/index-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38583,7 +38558,6 @@ d'Index
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/nomencl-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38620,7 +38594,6 @@ Glossaire
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/footnote-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38665,7 +38638,6 @@ Page
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38703,7 +38675,6 @@ Marge
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/note-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38737,7 +38708,6 @@ LyX
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/box-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38766,7 +38736,6 @@ Box
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/url-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38795,7 +38764,6 @@ URL
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38839,7 +38807,6 @@ eX
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_include.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -38869,7 +38836,6 @@ Sous-document
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38907,7 +38873,6 @@ Texte
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38945,7 +38910,6 @@ Paragraphe
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/thesaurus-entry.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -39038,7 +39002,6 @@ La barre d'outils Visionner/Mettre à jour contient de gauche à droite les
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -39068,7 +39031,6 @@ DVI
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-update_dvi.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -39106,7 +39068,6 @@ DVI
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-view_pdf2.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -39136,7 +39097,6 @@ PDF
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-update_pdf2.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -39174,7 +39134,6 @@ PDF
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-view_ps.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -39204,7 +39163,6 @@ PostScript
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-update_ps.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -41497,15 +41455,7 @@ fonction-lyx
 \end_layout
 
 \begin_layout Subsection
-Clavier
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-Souris
+Clavier / Souris
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Clavier/Souris"

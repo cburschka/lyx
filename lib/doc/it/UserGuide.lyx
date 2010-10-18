@@ -1,5 +1,5 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 404
 \begin_document
 \begin_header
 \textclass scrbook
@@ -18,36 +18,18 @@
 \ifpdf % if pdflatex is used
 
  % set fonts for nicer pdf view
- \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{%
- \usepackage[scaled=0.92]{helvet}
- \usepackage{mathptmx}
- \usepackage{courier} }
-
- % link all cross references and URLs in pdf output
- \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
- linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
- pdfpagelayout=OneColumn, pdfnewwindow=true,
- pdfstartview=XYZ, plainpages=false, pdfpagelabels,
- pdfauthor={LyX Team}, pdftex,
- pdftitle={La Guida dell'Utente di LyX},pdfsubject={LyX},
- pdfkeywords={LyX}]{hyperref}
- 
-\else % if dvi or ps is produced
-
- % link all cross references and URLs in dvi output
- \usepackage[ps2pdf]{hyperref}
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
 
 \fi % end if pdflatex is used
 
- % the pages of the TOC are numbered roman
- % and a pdf-bookmark for the TOC is added
- \pagenumbering{roman}
- \let\myTOC\tableofcontents
- \renewcommand\tableofcontents{%
-   \pdfbookmark[1]{Indice}{}
-   \myTOC
-   \cleardoublepage
-   \pagenumbering{arabic} }
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
 
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
@@ -57,42 +39,73 @@
 % define a short command for \textvisiblespace
 \newcommand{\spce}{\textvisiblespace}
 \end_preamble
-\options intoc,refpage,idxtotoc,BCOR7mm
+\options bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
 \use_default_options false
+\maintain_unincluded_children false
 \language italian
-\inputencoding latin1
+\inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_xetex false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize 12
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_title "La Guida dell'Utente di LyX"
+\pdf_author "LyX Team"
+\pdf_subject "LyX"
+\pdf_keywords "LyX"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
-\use_amsmath 0
-\use_esint 0
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\notefontcolor #0000ff
+\index Indice
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
-\tocdepth 3
+\tocdepth 2
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -3107,7 +3120,7 @@ Ogni classe è caratterizzata da un certo insieme predefinito di opzioni.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -4951,7 +4964,7 @@ Numerazione
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8438,7 +8451,7 @@ Questo è (a) ed è annidato.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8532,7 +8545,7 @@ Questo è (a) ed è annidato.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8633,7 +8646,7 @@ Questo è (a) ed è annidato.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9274,7 +9287,7 @@ Enumera
 Puntualizza
 \family default
 
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -9646,7 +9659,7 @@ Ecco una tabella tutta per voi:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -12831,7 +12844,7 @@ key "latexguide"
 
 \begin_layout Chapter
 Oggetti flottanti: tabelle, figure, note a piè di pagina e al margine 
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -13460,7 +13473,7 @@ Unità per impostare la dimensione dell'immagine
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -14887,7 +14900,7 @@ Tabella
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -15230,7 +15243,7 @@ Multicolonna
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -15512,7 +15525,7 @@ DVI
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="12">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -16247,7 +16260,7 @@ Shift
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -16349,7 +16362,7 @@ Shift
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -16515,7 +16528,7 @@ Segue una tabella d'esempio:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="block" valignment="top" width="4cm">
 <column alignment="center" valignment="top" width="0pt">
@@ -16941,7 +16954,7 @@ Una tabella flottante.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -17022,7 +17035,8 @@ Ted
 \begin_layout Plain Layout
 \begin_inset Formula $\left[\begin{array}{cc}
 a & b\\
-c & d\end{array}\right]$
+c & d
+\end{array}\right]$
 \end_inset
 
 
@@ -17428,7 +17442,8 @@ Spazio
 , o una matrice 
 \begin_inset Formula $\left[\begin{array}{cc}
 1 & 2\\
-3 & 4\end{array}\right]$
+3 & 4
+\end{array}\right]$
 \end_inset
 
 ).
@@ -17557,7 +17572,8 @@ In genere potete lasciare molte parti di una formula,
 \left(\begin{array}{ccc}
 \lambda_{1}\\
  & \ddots\\
- &  & \lambda_{n}\end{array}\right).\]
+ &  & \lambda_{n}
+\end{array}\right).\]
 
 \end_inset
 
@@ -17741,7 +17757,8 @@ u.
 \begin_inset Formula \[
 \left[\frac{1}{\left(\begin{array}{cc}
 2 & 3\\
-4 & 5\end{array}\right)}\right]\]
+4 & 5
+\end{array}\right)}\right]\]
 
 \end_inset
 
@@ -18197,7 +18214,7 @@ hat a
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -18742,7 +18759,8 @@ reference "sec:math-panel"
 \begin_inset Formula \[
 \left[\begin{array}{cc}
 1 & 2\\
-3 & 4\end{array}\right],\]
+3 & 4
+\end{array}\right],\]
 
 \end_inset
 
@@ -18888,7 +18906,8 @@ matematico
 \left(\begin{array}{ccc}
 1 & 2 & 3\\
 4 & 5 & 6\\
-7 & 8 & 9\end{array}\right).\]
+7 & 8 & 9
+\end{array}\right).\]
 
 \end_inset
 
@@ -18925,7 +18944,8 @@ lcr
 \begin{array}{lcr}
 questa & questa\, colonna & questa\, colonna\\
 colonna & è & è\, allineata\\
-è\, allineata\, a\, sinistra & allineata\, al\, centro & a\, destra\end{array}.\]
+è\, allineata\, a\, sinistra & allineata\, al\, centro & a\, destra
+\end{array}.\]
 
 \end_inset
 
@@ -19029,7 +19049,8 @@ Tab
 \begin_layout Standard
 \begin_inset Formula \begin{eqnarray*}
 3 & = & 1+2\\
-4+5 & = & 9.\end{eqnarray*}
+4+5 & = & 9.
+\end{eqnarray*}
 
 \end_inset
 
@@ -19202,7 +19223,8 @@ reference "mathed:third-eqn"
 \begin_inset Formula \begin{eqnarray}
 1 & = & 3-2\\
 2 & = & 4-2\label{mathed:third-eqn}\\
-4 & \leq & 7.\end{eqnarray}
+4 & \leq & 7.
+\end{eqnarray}
 
 \end_inset
 
@@ -19237,7 +19259,8 @@ linea
 1 & = & 4-3\label{mathed:fourth-eqn}\\
 2 & = & 7-5\\
 1 & = & e^{2\pi i}\nonumber \\
-16 & \equiv & 2\,(mod\,7)\label{mathed:fifth-eqn}\end{eqnarray}
+16 & \equiv & 2\,(mod\,7)\label{mathed:fifth-eqn}
+\end{eqnarray}
 
 \end_inset
 
@@ -19547,7 +19570,7 @@ Nella costruzione di una formula, potete utilizzare diverse famiglie di
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -19912,7 +19935,8 @@ text
 \begin_inset Formula \[
 f(x)=\begin{array}{cc}
 x & \textrm{in un caso}\\
--x & \textrm{in tutti gli altri}\end{array}\]
+-x & \textrm{in tutti gli altri}
+\end{array}\]
 
 \end_inset
 
@@ -20668,7 +20692,7 @@ ipercollegamento
 
 \begin_layout Section
 Creazione di titoli brevi mediante parametri opzionali
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -21606,7 +21630,7 @@ Altri spazi
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -22675,7 +22699,7 @@ latin1
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="17">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -25910,6 +25934,7 @@ A partire dall'inizio del 1997, il LyX Team si è incaricato della completa
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliografia
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "lyxcredit"
@@ -25948,6 +25973,7 @@ status collapsed
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliografia
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexbook"
@@ -25963,6 +25989,7 @@ LaTeX: A Document Preparation System.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliografia
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexcompanion"
@@ -25978,6 +26005,7 @@ The LaTeX Companion.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliografia
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexguide"
@@ -25993,6 +26021,7 @@ A Guide to LaTeX2e
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Bibliografia
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "texbook"

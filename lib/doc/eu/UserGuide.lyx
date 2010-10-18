@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 401
+\lyxformat 404
 \begin_document
 \begin_header
 \textclass scrbook
@@ -103,6 +103,8 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
+\notefontcolor #0000ff
 \branch galdera
 \selected 1
 \filename_suffix 0
@@ -173,7 +175,7 @@ Zuzenketak: Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
 \begin_inset Newline newline
 \end_inset
 
-1.6 bertsioa
+2.0 bertsioa
 \begin_inset Note Note
 status open
 
@@ -1438,15 +1440,7 @@ Tresna-barrako
 \end_layout
 
 \begin_layout Subsection
-Sarreren
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-Hitzen osaketa
+Sarreren / Hitzen osaketa
 \begin_inset Index idx
 status collapsed
 
@@ -13103,46 +13097,22 @@ A-b c
 
  ikurra hitza zatitzeko puntua dela usteko du, eta leku horretan hitza zatitzeak
  itxura itsusia eragingo luke.
- Lasterbidea ez zatitzeko, LaTeX-eko kutxarentzako 
-\series bold
-
-\backslash
-mbox
-\series default
- komandoa erabil dezakezu.
- LaTeX-eko kutxak ez dira inoiz zatitzen.
- LyX-ek ez duenez 
-\series bold
-
-\backslash
-mbox
-\series default
- komandoa onartzen, TeX kodean idatzi behar da, eta LyX-en honako itxura
- edukiko luke:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename ../clipart/mbox.png
-
+ 
+\lang english
+To prevent the shortcut from being hyphenated, you can put it into a makebox
+ as described in section 
+\begin_inset Quotes eld
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-TeX kodeari buruz gehiago ikasteko, irakurri 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:TeX-kodea"
-
+Prevent Hyphenation
+\begin_inset Quotes erd
 \end_inset
 
-
-\begin_inset space ~
-\end_inset
-
-atala.
+ of the 
+\emph on
+EmbeddedObjects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Subsection
@@ -23529,7 +23499,7 @@ Atal bati erreferentzia egitea nahi baduzu, jarri etiketa bat atalaren goiburuan
  haien barruan.
  Formulei erreferentzia egitea 
 \begin_inset CommandInset ref
-LatexCommand prettyref
+LatexCommand formatted
 reference "sec:Ekuazioak-zenbatu-eta"
 
 \end_inset
@@ -27864,7 +27834,6 @@ berrikusi
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/changes-track.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -27903,7 +27872,6 @@ aldaketak
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/changes-output.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -27938,7 +27906,6 @@ Erakutsi aldaketak irteeran
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/change-next.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -27965,7 +27932,6 @@ Joan hurrengo aldaketara
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/change-accept.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -28004,7 +27970,6 @@ aldaketa
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/change-reject.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -28043,7 +28008,6 @@ aldaketa
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/changes-merge.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -28082,7 +28046,6 @@ aldaketak
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/all-changes-accept.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -28125,7 +28088,6 @@ guztiak
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/all-changes-reject.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -28168,7 +28130,6 @@ guztiak
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/note-insert.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -28203,7 +28164,6 @@ oharra
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/note-next.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34159,7 +34119,6 @@ paragrafo-inguruneen goitibeherako zerrenda
 \family sans
 \begin_inset Graphics
 	filename ../../images/buffer-new.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -34188,7 +34147,6 @@ Berria
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/file-open.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -34217,7 +34175,6 @@ Ireki
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-write.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -34246,7 +34203,6 @@ gorde
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.png
-	BoundingBox 0bp 5bp 24bp 20bp
 
 \end_inset
 
@@ -34275,7 +34231,6 @@ Inprimatu
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show_spellchecker.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -34304,7 +34259,6 @@ Zuzentzailea
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/undo.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -34333,7 +34287,6 @@ Desegin
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/redo.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -34362,7 +34315,6 @@ Berregin
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/cut.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -34391,7 +34343,6 @@ Ebaki
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/copy.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -34420,7 +34371,6 @@ Kopiatu
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/paste.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -34449,7 +34399,6 @@ Itsatsi
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show_findreplace.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34487,7 +34436,6 @@ ordeztu
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/bookmark-goto_0.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34518,7 +34466,6 @@ Arakatu atzerantz
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/font-emph.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -34549,7 +34496,6 @@ Testu-estiloa
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/font-noun.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -34580,7 +34526,6 @@ Testu-estiloa
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/textstyle-apply.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -34611,7 +34556,6 @@ Testu-estiloa
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-mode.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -34645,7 +34589,6 @@ formula
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34675,7 +34618,6 @@ Grafikoak
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/tabular-insert.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34705,7 +34647,6 @@ Taula
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-toggle_toc.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34737,7 +34678,6 @@ Eskema
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/toolbar-toggle_math.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34764,7 +34704,6 @@ Erakutsi/Ezkutatu matematikaren tresna-barra
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/toolbar-toggle_table.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34850,7 +34789,6 @@ Gehigarria
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34877,7 +34815,6 @@ Lehenetsia
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout_Enumerate.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34904,7 +34841,6 @@ Zenbatutako zerrenda
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout_Itemize.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34931,7 +34867,6 @@ Elementuen zerrenda
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout_List.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34958,7 +34893,6 @@ Zerrenda
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout_Description.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34985,7 +34919,6 @@ Azalpenen zerrenda
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -35019,7 +34952,6 @@ sakonera
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/depth-decrement.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -35053,7 +34985,6 @@ sakonera
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/float-insert_figure.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -35083,7 +35014,6 @@ Irudia
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/float-insert_table.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -35113,7 +35043,6 @@ Taula
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/label-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -35142,7 +35071,6 @@ Etiketa
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -35171,7 +35099,6 @@ Erreferentzia gurutzatua
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_citation.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -35200,7 +35127,6 @@ Aipamena
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/index-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -35229,7 +35155,6 @@ Indize-sarrera
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/nomencl-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -35258,7 +35183,6 @@ Nomenklatura-sarrera
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/footnote-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -35287,7 +35211,6 @@ Oin-oharra
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -35317,7 +35240,6 @@ Albo-oharra
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/note-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -35351,7 +35273,6 @@ oharra
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/box-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -35380,7 +35301,6 @@ Kutxa
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/url-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -35409,7 +35329,6 @@ Hiperesteka
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -35453,7 +35372,6 @@ eX
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro_newmacroname_newcommand.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -35483,7 +35401,6 @@ Makroa
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_include.png
-	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
 
@@ -35517,7 +35434,6 @@ umea
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -35547,7 +35463,6 @@ Testu-estiloa
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -35577,7 +35492,6 @@ Paragrafo-ezarpenak
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/thesaurus-entry.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -35661,7 +35575,6 @@ Ikusi/eguneratu tresna-barrak honako botoiak ditu (ezkerretik eskuinera):
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -35691,7 +35604,6 @@ DVI
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-update_dvi.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -35722,7 +35634,6 @@ DVI
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-view_pdf2.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -35752,7 +35663,6 @@ PDF
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-update_pdf2.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -35783,7 +35693,6 @@ PDF
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-view_ps.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -35813,7 +35722,6 @@ Postscript
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-update_ps.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -38054,15 +37962,7 @@ LyX-funtzioa
 \end_layout
 
 \begin_layout Subsection
-Teklatua
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-sagua
+Teklatua / sagua
 \begin_inset Index idx
 status collapsed
 

@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 401
+\lyxformat 404
 \begin_document
 \begin_header
 \textclass scrbook
@@ -41,7 +41,7 @@
 %remove this line when bug 5291 is fixed
 \@ifundefined{textcolor}{\usepackage{color}}{}
 \end_preamble
-\options intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
+\options bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
 \use_default_options false
 \maintain_unincluded_children false
 \language slovak
@@ -90,6 +90,8 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000
