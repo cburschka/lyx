@@ -29,7 +29,7 @@
   \mainmatter }
 
 % provides caption formatting
-\usepackage[labelfont={bf,sf}, tableposition=top]{caption}[2004/07/16]
+\usepackage[labelfont={bf,sf}]{caption}[2004/07/16]
 
 % provides commands to set caption
 % beside tables/images
@@ -34023,6 +34023,140 @@ lstparams "breaklines=true,caption={Lignes 10 - 15 de ce fichier LyX},extendedch
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Inserting a formula into a listing can be done the following way:
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Open the listings dialog and add
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+mathescape=true
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+to the field of the 
+\family sans
+Advanced
+\family default
+ tab.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Create a formula outside the listing
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Copy the content of the formula (not the formula inset) to the clipboard
+ (shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "copy"
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+In the listing write 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+$$
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ and copy from the clipboard between the dollar-signs (shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "paste"
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Python,mathescape=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Exemple de listing flottant 
+\lang english
+containing a formula
+\end_layout
+
+\end_inset
+
+# Exemple de listing flottant
+\end_layout
+
+\begin_layout Plain Layout
+
+def func(param):
+\end_layout
+
+\begin_layout Plain Layout
+
+    # $
+\backslash
+prod_{n=1}^{
+\backslash
+infty}
+\backslash
+,
+\backslash
+frac{1}{x^{2}}$
+\end_layout
+
+\begin_layout Plain Layout
+
+    pass
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Les paramètres globaux pour les listings peuvent être modifiés avec la fenêtre
  de dialogue 
 \family sans
@@ -35169,14 +35303,14 @@ Explication de l' Équation
 \begin_inset space ~
 \end_inset
 
-
+(
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "eq:Wgn"
 
 \end_inset
 
-
+)
 \begin_inset CommandInset label
 LatexCommand label
 name "cha:Explication-de-l'Equation"
