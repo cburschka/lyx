@@ -329,24 +329,22 @@ void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 			pit_type const pit_end = cur.selEnd().pit();
 			for (pit_type pit = cur.selBegin().pit(); pit <= pit_end; pit++) {
 				Paragraph & par = paragraphs()[pit];
-				if (par.getChar(0) == '\t') {
-					if (cur.pit() == pit)
-						cur.posBackward();
-					if (cur.anchor_.pit() == pit && cur.anchor_.pos() > 0 )
-						cur.anchor_.backwardPos();
-
-					par.eraseChar(0, buffer().params().trackChanges);
-				} else 
-					// If no tab was present, try to remove up to four spaces.
-					for (int n_spaces = 0;
-						par.getChar(0) == ' ' && n_spaces < 4; ++n_spaces) {
-							if (cur.pit() == pit)
-								cur.posBackward();
-							if (cur.anchor_.pit() == pit && cur.anchor_.pos() > 0 )
-								cur.anchor_.backwardPos();
-
-							par.eraseChar(0, buffer().params().trackChanges);
+				if (par.empty())
+					continue;
+				char_type const c = par.getChar(0);
+				if (c == '\t' || c == ' ') {
+					// remove either 1 tab or 4 spaces.
+					int const n = (c == ' ' ? 4 : 1);
+					for (int i = 0; i < n 
+						  && !par.empty() && par.getChar(0) == c; ++i) {
+						if (cur.pit() == pit)
+							cur.posBackward();
+						if (cur.anchor_.pit() == pit 
+							  && cur.anchor_.pos() > 0 )
+							cur.anchor_.backwardPos();
+						par.eraseChar(0, buffer().params().trackChanges);
 					}
+				}
 			}
 			cur.finishUndo();
 		} else {

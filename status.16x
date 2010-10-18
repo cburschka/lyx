@@ -120,6 +120,9 @@ What's new
 - Disable cut and paste inside the Math Delimters dialog. This was of no
   use and could trigger a crash (bug 6942).
 
+- Fix an assertion when unindenting empty lines in a listings inset
+  (bug 6869).
+
 - Box dialog: only shaded boxes can have multiple paragraphs when there
   is no inner box.
 
