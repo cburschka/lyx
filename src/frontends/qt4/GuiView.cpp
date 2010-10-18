@@ -369,6 +369,16 @@ public:
 	static docstring exportAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
 	static docstring saveAndDestroy(Buffer const * orig, Buffer * buffer, FileName const & fname);
 
+	// TODO syncFunc/previewFunc: use bind
+	void asyncBufferProcessing(
+			string const & argument,
+			Buffer const * used_buffer,
+			docstring const & msg,
+			docstring (*asyncFunc)(Buffer const *, Buffer *, string const &),
+			bool (Buffer::*syncFunc)(string const &, bool, bool) const,
+			bool (Buffer::*previewFunc)(string const &, bool) const);
+
+	
 };
 
 QSet<Buffer const *> GuiView::GuiViewPrivate::busyBuffers;
@@ -2825,6 +2835,47 @@ docstring GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer
 #endif
 
 
+void GuiView::GuiViewPrivate::asyncBufferProcessing(
+                           string const & argument,
+                           Buffer const * used_buffer,
+                           docstring const & msg,
+                           docstring (*asyncFunc)(Buffer const *, Buffer *, string const &),
+                           bool (Buffer::*syncFunc)(string const &, bool, bool) const,
+                           bool (Buffer::*previewFunc)(string const &, bool) const)
+{
+	if (!used_buffer)
+		return;
+	string format = argument;
+	if (format.empty()) {
+		format = used_buffer->getDefaultOutputFormat();
+	}
+#if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
+	if (!msg.empty()) {
+		progress_->clearMessages();
+		gv_->message(msg);
+	}
+	GuiViewPrivate::busyBuffers.insert(used_buffer);
+	QFuture<docstring> f = QtConcurrent::run(
+				asyncFunc,
+				used_buffer,
+				used_buffer->clone(),
+				format);
+	setPreviewFuture(f);
+	last_export_format = used_buffer->bufferFormat();
+	(void) syncFunc;
+	(void) previewFunc;
+#else
+	bool const update_unincluded =
+		used_buffer->params().maintain_unincluded_children &&
+		!used_buffer->params().getIncludedChildren().empty();
+	if (syncFunc) {
+		(used_buffer->*syncFunc)(format, true, update_unincluded);
+	} else if (previewFunc) {
+		(used_buffer->*previewFunc)(format, true);
+	}
+	(void) asyncFunc;
+#endif
+}
 
 void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 {
@@ -2873,107 +2924,35 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 
 		case LFUN_BUFFER_UPDATE: {
-			if (!doc_buffer)
-				break;
-			docstring msg = _("Exporting ...");
-			Buffer const * used_buffer = doc_buffer;
-			string format = argument;
-			if (format.empty())
-				format = used_buffer->getDefaultOutputFormat();
-#if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
-			if (!msg.empty()) {
-				d.progress_->clearMessages();
-				message(msg);
-			}
-			GuiViewPrivate::busyBuffers.insert(used_buffer);
-			QFuture<docstring> f = QtConcurrent::run(
-			            GuiViewPrivate::exportAndDestroy,
-			            used_buffer,
-			            used_buffer->clone(),
-			            format);
-			d.setPreviewFuture(f);
-			d.last_export_format = used_buffer->bufferFormat();
-#else
-			bool const update_unincluded =
-				used_buffer->params().maintain_unincluded_children &&
-				!used_buffer->params().getIncludedChildren().empty();
-			used_buffer->doExport(format, true, update_unincluded);
-#endif
+			d.asyncBufferProcessing(argument,
+			                      doc_buffer,
+			                      _("Exporting ..."),
+			                      &GuiViewPrivate::exportAndDestroy,
+			                      &Buffer::doExport, 0);
 			break;
 		}
 		case LFUN_BUFFER_VIEW: {
-			if (!doc_buffer)
-				break;
-			docstring msg = _("Previewing ...");
-			Buffer const * used_buffer = doc_buffer;
-			string format = argument;
-			if (format.empty())
-				format = used_buffer->getDefaultOutputFormat();
-#if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
-			if (!msg.empty()) {
-				d.progress_->clearMessages();
-				message(msg);
-			}
-			GuiViewPrivate::busyBuffers.insert(used_buffer);
-			QFuture<docstring> f = QtConcurrent::run(
-			            GuiViewPrivate::previewAndDestroy,
-			            used_buffer,
-			            used_buffer->clone(),
-			            format);
-			d.setPreviewFuture(f);
-			d.last_export_format = used_buffer->bufferFormat();
-#else
-			bool const update_unincluded =
-				used_buffer->params().maintain_unincluded_children &&
-				!used_buffer->params().getIncludedChildren().empty();
-			used_buffer->preview(format, update_unincluded);
-#endif
+			d.asyncBufferProcessing(argument,
+		                      doc_buffer,
+		                      _("Previewing ..."),
+		                      &GuiViewPrivate::previewAndDestroy,
+		                      0, &Buffer::preview);
 			break;
 		}
 		case LFUN_MASTER_BUFFER_UPDATE: {
-			if (!doc_buffer)
-				break;
-			Buffer const * used_buffer = doc_buffer->masterBuffer();
-			string format = argument;
-			if (format.empty())
-				format = used_buffer->getDefaultOutputFormat();
-#if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
-			GuiViewPrivate::busyBuffers.insert(used_buffer);
-			QFuture<docstring> f = QtConcurrent::run(
-			            GuiViewPrivate::exportAndDestroy,
-			            used_buffer,
-			            used_buffer->clone(),
-			            format);
-			d.setPreviewFuture(f);
-			d.last_export_format = used_buffer->bufferFormat();
-#else
-			bool const update_unincluded =
-				used_buffer->params().maintain_unincluded_children &&
-				!used_buffer->params().getIncludedChildren().empty();
-			used_buffer->doExport(format, update_unincluded);
-#endif
+			d.asyncBufferProcessing(argument,
+			                      (doc_buffer ? doc_buffer->masterBuffer() : 0),
+			                      docstring(),
+			                      &GuiViewPrivate::exportAndDestroy,
+			                      &Buffer::doExport, 0);
 			break;
 		}
 		case LFUN_MASTER_BUFFER_VIEW: {
-			if (!doc_buffer)
-				break;
-			Buffer const * used_buffer = doc_buffer->masterBuffer();
-			string format = argument;
-			if (format.empty())
-				format = used_buffer->getDefaultOutputFormat();
-#if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
-			GuiViewPrivate::busyBuffers.insert(used_buffer);
-			QFuture<docstring> f = QtConcurrent::run(
-			            GuiViewPrivate::previewAndDestroy,
-			            used_buffer, 
-			            used_buffer->clone(), 
-			            format);
-			d.setPreviewFuture(f);
-			// TODO doc_buffer was used used? Was this this a copy & paste error?
-			d.last_export_format = used_buffer->bufferFormat();
-#else
-			used_buffer->preview(format);
-#endif
+			d.asyncBufferProcessing(argument,
+		                      (doc_buffer ? doc_buffer->masterBuffer() : 0),
+		                      docstring(),
+		                      &GuiViewPrivate::previewAndDestroy,
+		                      0, &Buffer::preview);
 			break;
 		}
 		case LFUN_BUFFER_SWITCH: {
