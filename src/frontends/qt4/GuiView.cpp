@@ -2925,8 +2925,9 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 					cmd.argument()));
 			}
 #else
-			// TODO/Review: Could we also export with doExport(argument, true)
-			//              as done in exportAndDestroy?
+			/* TODO/Review: Is it a problem to also export the children?
+			                See the update_unincluded flag
+			*/
 			d.asyncBufferProcessing(argument,
 			                      doc_buffer,
 			                      _("Exporting ..."),
