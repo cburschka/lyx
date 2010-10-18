@@ -24917,6 +24917,19 @@ Texte
 
 \begin_layout Subsection
 Mode Texte-Math
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+
 \begin_inset Foot
 status collapsed
 
@@ -24930,6 +24943,34 @@ Math Text Mode
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+
+\backslash
+texorpdfstring
+\series default
+ is used to avoid that the footnote appears in the PDF-bookmark.
 \end_layout
 
 \end_inset
@@ -41397,15 +41438,7 @@ fonction-lyx
 \end_layout
 
 \begin_layout Subsection
-Clavier
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-Souris
+Clavier / Souris
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Clavier/Souris"
