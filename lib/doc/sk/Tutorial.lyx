@@ -383,10 +383,13 @@ prácou.
 Tak som neochotne roztrhal asi 20 strán cenného materiálu, ktorý som napísal,
  a rozhodol som sa znovu začať.
  Jediná vec, ktorú som nechal, je teraz časť 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec: čo-je-lyx"
+\begin_inset Quotes gld
+\end_inset
 
+Pomocník\SpecialChar \menuseparator
+Úvod\SpecialChar \menuseparator
+1.1 Čo je LyX
+\begin_inset Quotes grd
 \end_inset
 
 .
@@ -411,10 +414,11 @@ John Weiss
 
 \begin_layout Standard
 Časť 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec: čo-je-lyx"
+\begin_inset Quotes gld
+\end_inset
 
+Čo je LyX
+\begin_inset Quotes grd
 \end_inset
 
  je pozostatok z pôvodnej verzie Sprievodcu.
@@ -1251,13 +1255,20 @@ vášho dokumentu a menej času jeho
 formátovaním
 \emph toggle
 .
- Pozrite s časť 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec: čo-je-lyx"
+ Pozrite si časť 
+\emph default
 
+\begin_inset Quotes gld
 \end_inset
 
+Pomocník\SpecialChar \menuseparator
+Úvod\SpecialChar \menuseparator
+1.1 Čo je LyX
+\begin_inset Quotes grd
+\end_inset
+
+
+\emph toggle
  pre viac informácií o koncepte WYSIWYM.
 \end_layout
 
