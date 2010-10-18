@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 402
+\lyxformat 404
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -204,6 +204,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \notefontcolor #0000ff
 \index Stichwortverzeichnis
 \shortcut idx
@@ -34024,7 +34025,6 @@ Die Makro-Werkzeugleiste enthält von links nach rechts die folgenden Knöpfe:
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro-remove-param.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34056,7 +34056,6 @@ Letztes Argument entfernen
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro-add-param.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34088,7 +34087,6 @@ Argument hinzufügen
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro-make-optional.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34158,7 +34156,6 @@ Makro-Definition\SpecialChar \menuseparator
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro-make-nonoptional.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34209,7 +34206,6 @@ einen nicht-optionales ändern
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro-remove-optional-param.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34241,7 +34237,6 @@ Optionales Argument entfernen
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro-add-optional-param.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34273,7 +34268,6 @@ Optionales Argument einfügen
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro-remove-greedy-param.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34305,7 +34299,6 @@ Letztes Argument rechts entfernen
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro-append-greedy-param.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
@@ -34337,7 +34330,6 @@ Argument von rechts hinzufügen
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro-add-greedy-optional-param.png
-	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
 \end_inset
