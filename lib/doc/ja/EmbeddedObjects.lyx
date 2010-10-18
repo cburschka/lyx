@@ -22818,51 +22818,328 @@ reference "fn:これは脚注の一例"
 \begin_inset VSpace defskip
 \end_inset
 
-脚注を表中で使用するには、ミニページを使わなくてはなりません。第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ミニページ"
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Footnotes in tables are not printed by LaTeX due to technical reasons.
+ However there exists another method to print them: Instead of the footnote
+ the command 
+\series bold
+
+\backslash
+footnotemark{}
+\series default
+ is inserted as TeX-code.
+ The text of the footnote is entered as an argument of the TeX-code command
+ 
+\series bold
+
+\backslash
+footnotetext
+\series default
+ after the table.
+\begin_inset Newline newline
+\end_inset
+
+This was done for the following table with the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+footnotetext{
+\series default
+Printed table footnote.
+\series bold
+}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features>
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+This an example text.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+This footnote will not be printed!
+\end_layout
 
 \end_inset
 
-節をご参照ください。長尺表中の脚注については、第
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+This an example text.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext{
+\end_layout
+
+\end_inset
+
+Printed table footnote.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Footnotes in longtables are described in section
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:長尺表での脚注"
 
 \end_inset
 
-節に説明があります。
+
+\lang english
+.
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
+
+\lang english
+Footnotes in minipage boxes are printed, but inside the box and with a different
+ numbering because a minipage box is like a page inside a page.
+ (For more about minipages, see section
+\begin_inset space ~
 \end_inset
 
-脚注の印だけを作成するには、TeXコードで
+
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ミニページ"
+
+\end_inset
+
+
+\lang english
+.) To get a footnote in the minipage that is output at the bottom of the
+ page like normal footnotes, also use the method of 
 \series bold
 
 \backslash
-footnotemark[番号]
+footnotemark{}
 \series default
-というコマンドを使用してください。これは、同じ注釈を何度も本文中で使用する際に、いちいち脚注を印字したくないときに使用します。
+ and 
+\series bold
+
+\backslash
+footnotetext
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+This an example text in a minipage.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Footnote in the minipage.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+This an example text in a minipage.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext{
+\end_layout
+
+\end_inset
+
+Footnote outside the minipage.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To refer to the same footnote several times without printing the footnote
+ text every time, use the command 
+\series bold
+
+\backslash
+footnotemark[number]
+\series default
+ in TeX-code.
 \begin_inset Newline newline
 \end_inset
 
-これらの重複した脚注の番号が何になるかは、文章を書いている時には分からないので、この番号を保管しておかなくてはなりません。以下の脚注印の例では、脚注番号を保管し
-ておくために脚注
+As you do not know the number of the repeating footnote while you are writing
+ the text, you have to store its number.
+ For the following footnote mark example, these commands were inserted in
+ TeX-code after Footnote
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fn:これは脚注の一例"
 
 \end_inset
 
-の後に、TeXコードで以下のコマンドを挿入してあります。
+
+\lang english
+ to store the footnote number:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
+\lang english
 
 \backslash
 newcounter{MyRepeatFoot}
@@ -22877,12 +23154,15 @@ thefootnote}
 \end_layout
 
 \begin_layout Standard
-そして、以下のコマンドを使って、脚注印を付けます。
+
+\lang english
+The footnote mark was then created with this command:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
+\lang english
 
 \backslash
 footnotemark[
@@ -22891,7 +23171,13 @@ theMyRepeatFoot]
 \end_layout
 
 \begin_layout Standard
-これは、脚注印の例です
+
+\lang english
+Here is a repeated footnote:
+\family roman
+\series medium
+\bar no
+
 \begin_inset ERT
 status collapsed
 
@@ -22906,7 +23192,50 @@ theMyRepeatFoot]
 
 \end_inset
 
-。
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you want to repeat the previous footnote, you can omit the storage of
+ the footnote number and just use this command instead:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+footnotemark[
+\backslash
+thefootnote]
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Here is another repeated footnote:
+\family roman
+\series medium
+\bar no
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark[
+\backslash
+thefootnote]
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -30373,6 +30702,7 @@ inline false
 status open
 
 \begin_layout Plain Layout
+
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -30387,10 +30717,12 @@ Example Listing float containing a formula
 \end_layout
 
 \begin_layout Plain Layout
+
 def func(param):
 \end_layout
 
 \begin_layout Plain Layout
+
     # $
 \backslash
 prod_{n=1}^{
@@ -30403,6 +30735,7 @@ frac{1}{x^{2}}$
 \end_layout
 
 \begin_layout Plain Layout
+
     pass
 \end_layout
 
