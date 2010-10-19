@@ -40723,13 +40723,18 @@ fonction LyX
 \begin_inset VSpace smallskip*
 \end_inset
 
-Toutes les fonctions de LyX sont listées dans 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "LyX-func"
-
+Toutes les fonctions de LyX sont listées dans le 
+\lang english
+the menu 
+\family sans
+Help\SpecialChar \menuseparator
+LyX
+\begin_inset space ~
 \end_inset
 
+Functions
+\family default
+\lang french
 .
 \end_layout
 
@@ -44625,39 +44630,6 @@ status collapsed
 \begin_layout Plain Layout
 
 http://wiki.lyx.org/Windows/Vietnamese
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "LyX-func"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "page Wiki"
-target "http://wiki.lyx.org/LyX/LyxFunctionList"
-
-\end_inset
-
- avec une liste de toutes les fonctions LyX disponibles:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/LyX/LyxFunctionList
 \end_layout
 
 \end_inset

@@ -44895,14 +44895,20 @@ LyX関数
 \begin_inset VSpace smallskip*
 \end_inset
 
-全LyX関数は
-\begin_inset CommandInset citation
-LatexCommand cite
-key "LyX-func"
 
+\lang english
+All LyX-functions are listed in the menu 
+\family sans
+Help\SpecialChar \menuseparator
+LyX
+\begin_inset space ~
 \end_inset
 
-に挙げてあります。
+Functions
+\family default
+.
+\lang japanese
+
 \begin_inset VSpace medskip
 \end_inset
 
@@ -47984,39 +47990,6 @@ status collapsed
 \begin_layout Plain Layout
 
 http://wiki.lyx.org/Windows/Vietnamese
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "LyX-func"
-
-\end_inset
-
-使用可能なLyX関数の一覧を載せた
-\begin_inset CommandInset href
-LatexCommand href
-name "Wikiページ"
-target "http://wiki.lyx.org/LyX/LyxFunctionList"
-
-\end_inset
-
-:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/LyX/LyxFunctionList
 \end_layout
 
 \end_inset
