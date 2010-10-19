@@ -25772,7 +25772,7 @@ endnote
 \end_layout
 
 \begin_layout Standard
-Para notas al final hay el comando  el comando 
+Para notas al final hay el comando 
 \series bold
 
 \backslash
@@ -26819,13 +26819,11 @@ Cuadro (Minipágina)
 \end_inset
 
 .
- El tipo de cuadro se puede elegir al hacer clic derecho sobre él y 
-\lang english
-selecting 
+ El tipo de cuadro se puede elegir haciendo clic derecho sobre él y seleccionand
+o 
 \family sans
-Settings
+Configuración
 \family default
-\lang spanish
 .
  Sale un diálogo en el que 
 \family sans
@@ -32712,44 +32710,34 @@ lstparams "breaklines=true,caption={Líneas  10 - 15 de este archivo LyX},firstl
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Inserting a formula into a listing can be done the following way:
+Insertar una ecuación en un listado se puede hacer de la siguiente forma:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Open the listings dialog and add
+Abre el diálogo de listado y añade
 \begin_inset Newline newline
 \end_inset
 
 
 \family sans
 mathescape=true
-\family default
-
 \begin_inset Newline newline
 \end_inset
 
-to the field of the 
-\family sans
-Advanced
+
 \family default
- tab.
+en el campo de texto de la solapa 
+\family sans
+Avanzado
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Create a formula outside the listing
+Crea una ecuación fuera del listado
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Copy the content of the formula (not the formula inset) to the clipboard
- (shortcut 
+Copia el contenido de la ecuación (no el recuadro de la misma) al portapapeles
+ (teclas 
 \begin_inset Info
 type  "shortcut"
 arg   "copy"
@@ -32759,9 +32747,7 @@ arg   "copy"
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-In the listing write 
+En el listado escribe 
 \begin_inset Quotes eld
 \end_inset
 
@@ -32773,7 +32759,7 @@ $$
 \begin_inset Quotes erd
 \end_inset
 
- and copy from the clipboard between the dollar-signs (shortcut 
+ y pega desde el portapapeles entre los símbolos dólar (teclas 
 \begin_inset Info
 type  "shortcut"
 arg   "paste"
@@ -32789,24 +32775,25 @@ inline false
 status open
 
 \begin_layout Plain Layout
+
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Ejemplo de listado de programa flotante 
-\lang english
-containing a formula
+Ejemplo de listado flotante con una ecuación
 \end_layout
 
 \end_inset
 
-# Example listing float
+# Ejemplo de listado flotante
 \end_layout
 
 \begin_layout Plain Layout
+
 def func(param):
 \end_layout
 
 \begin_layout Plain Layout
+
     # $
 \backslash
 prod_{n=1}^{
@@ -32819,6 +32806,7 @@ frac{1}{x^{2}}$
 \end_layout
 
 \begin_layout Plain Layout
+
     pass
 \end_layout
 
