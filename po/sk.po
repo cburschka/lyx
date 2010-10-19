@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-10-19 02:12+0200\n"
-"PO-Revision-Date: 2010-10-10 17:34+0200\n"
+"PO-Revision-Date: 2010-10-19 10:21+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenčina <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -2046,7 +2046,7 @@ msgstr "Potlačiť štandardný dátum na titulnej stránke"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:206
 msgid "Use refstyle (not prettyref) for cross-references"
-msgstr ""
+msgstr "Používajte refstyle (nie prettyref) pre krížové referencie"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:25
 msgid "Encoding"
@@ -2081,14 +2081,12 @@ msgid "Value of the line width."
 msgstr "Hodnota šírky riadku."
 
 #: src/frontends/qt4/ui/LineUi.ui:92
-#, fuzzy
 msgid "Thickness:"
-msgstr "Tučná čiara"
+msgstr "Hrúbka:"
 
 #: src/frontends/qt4/ui/LineUi.ui:102
-#, fuzzy
 msgid "Value of the line thickness."
-msgstr "Hodnota šírky riadku."
+msgstr "Hodnota hrúbky riadku."
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:333
 #: src/insets/InsetListings.cpp:356 src/insets/InsetListings.cpp:358
@@ -3294,10 +3292,12 @@ msgid ""
 "Mac OS X specific setting for use with emacs bindings. Takes effect next "
 "time LyX is launched."
 msgstr ""
+"Špeciálne nastavenia pre MAC OS X na používanie skratiek v emacs. Zmeny sa "
+"aktivujú pri nasledujúcom vyvolaní lyx-a."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:123
 msgid "Do not swap Apple and Control keys"
-msgstr ""
+msgstr "Neprehadzuj Apple a Kontrolné klávesy"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:136
 msgid "Mouse"
@@ -5388,9 +5388,8 @@ msgid "Key words."
 msgstr "Heslá."
 
 #: lib/layouts/aa.layout:385
-#, fuzzy
 msgid "Flex:Institute"
-msgstr "Inštitút"
+msgstr "Flex:Inštitút"
 
 #: lib/layouts/aa.layout:385 lib/layouts/beamer.layout:823
 #: lib/layouts/cl2emult.layout:70 lib/layouts/llncs.layout:218
@@ -5399,9 +5398,8 @@ msgid "Institute"
 msgstr "Inštitút"
 
 #: lib/layouts/aa.layout:395
-#, fuzzy
 msgid "Flex:E-Mail"
-msgstr "E-mail"
+msgstr "Flex:E-mail"
 
 #: lib/layouts/aa.layout:395 lib/layouts/scrlttr2.layout:197
 msgid "E-Mail"
@@ -6122,7 +6120,7 @@ msgstr "Kapitola Úlohy"
 
 #: lib/layouts/apa.layout:51
 msgid "RightHeader"
-msgstr "RightHeader"
+msgstr "HlavičkaVpravo"
 
 #: lib/layouts/apa.layout:60
 msgid "Right header:"
@@ -6555,48 +6553,42 @@ msgid "Note:"
 msgstr "Poznámka:"
 
 #: lib/layouts/beamer.layout:1161
-#, fuzzy
 msgid "Flex:Alert"
-msgstr "Alert"
+msgstr "Flex:Výstrah"
 
 #: lib/layouts/beamer.layout:1161 lib/layouts/beamer.layout:1163
 msgid "Alert"
-msgstr "Alert"
+msgstr "Výstrah"
 
 #: lib/layouts/beamer.layout:1172
-#, fuzzy
 msgid "Flex:Structure"
-msgstr "Structure"
+msgstr "Flex:Struktúra"
 
 #: lib/layouts/beamer.layout:1172 lib/layouts/beamer.layout:1174
 #: lib/layouts/svmono.layout:29 lib/layouts/svmono.layout:56
 #: lib/layouts/svmono.layout:63
 msgid "Structure"
-msgstr "Structure"
+msgstr "Struktúra"
 
 #: lib/layouts/beamer.layout:1183
-#, fuzzy
 msgid "Flex:ArticleMode"
-msgstr "Custom:ArticleMode"
+msgstr "Flex:ArticleMode"
 
 #: lib/layouts/beamer.layout:1183
-#, fuzzy
 msgid "ArticleMode"
-msgstr "Article"
+msgstr "MódPreČlánok"
 
 #: lib/layouts/beamer.layout:1188
 msgid "Article"
-msgstr "Article"
+msgstr "Článok"
 
 #: lib/layouts/beamer.layout:1193
-#, fuzzy
 msgid "Flex:PresentationMode"
-msgstr "Prezentačný mód"
+msgstr "Flex:PrezentačnýMód"
 
 #: lib/layouts/beamer.layout:1193
-#, fuzzy
 msgid "PresentationMode"
-msgstr "Prezentácia"
+msgstr "PrezentačnýMód"
 
 #: lib/layouts/beamer.layout:1198
 msgid "Presentation"
@@ -6789,7 +6781,7 @@ msgstr "KnightMove:"
 
 #: lib/layouts/customHeadersFooters.module:2
 msgid "Custom Header/Footerlines"
-msgstr ""
+msgstr "Vlastné riadky pre Hlavičku/Pätu"
 
 #: lib/layouts/customHeadersFooters.module:7
 msgid ""
@@ -6797,6 +6789,9 @@ msgid ""
 "you must set the Headings style in the menu Document Settings -> Page Layout "
 "to fancy!"
 msgstr ""
+"Pridáva prostredia na definície riadkov hlavičiek a pätičiek v NOTE: Na "
+"použitie tohto modulu treba nastaviť Štýl hlavičky v menu Dokument->"
+"Nastavenia...->Formát Stránky na pestrý(fancy)!"
 
 #: lib/layouts/customHeadersFooters.module:10 lib/layouts/foils.layout:185
 #: lib/layouts/simplecv.layout:97 lib/layouts/aguplus.inc:78
@@ -6809,14 +6804,12 @@ msgid "Left Header:"
 msgstr "Ľavá Hlavička:"
 
 #: lib/layouts/customHeadersFooters.module:29
-#, fuzzy
 msgid "Center Header"
-msgstr "Ľavá Hlavička"
+msgstr "Stredná Hlavička"
 
 #: lib/layouts/customHeadersFooters.module:32
-#, fuzzy
 msgid "Center Header:"
-msgstr "Ľavá Hlavička:"
+msgstr "Centrovaná Hlavička:"
 
 #: lib/layouts/customHeadersFooters.module:36 lib/layouts/foils.layout:193
 #: lib/layouts/simplecv.layout:114 lib/layouts/aguplus.inc:101
@@ -6829,24 +6822,20 @@ msgid "Right Header:"
 msgstr "Pravá Hlavička:"
 
 #: lib/layouts/customHeadersFooters.module:43
-#, fuzzy
 msgid "Left Footer"
-msgstr "TextListu"
+msgstr "Ľavá Päta"
 
 #: lib/layouts/customHeadersFooters.module:46
-#, fuzzy
 msgid "Left Footer:"
-msgstr "Posledná päta:"
+msgstr "Ľavá Päta:"
 
 #: lib/layouts/customHeadersFooters.module:50
-#, fuzzy
 msgid "Center Footer"
-msgstr "Pravá päta"
+msgstr "Centrovaná Päta"
 
 #: lib/layouts/customHeadersFooters.module:53
-#, fuzzy
 msgid "Center Footer:"
-msgstr "Päta:"
+msgstr "Centrovaná Päta:"
 
 #: lib/layouts/customHeadersFooters.module:57 lib/layouts/foils.layout:201
 msgid "Right Footer"
@@ -7199,48 +7188,40 @@ msgid "Verteiler"
 msgstr "Na vedomie"
 
 #: lib/layouts/ectaart.layout:21
-#, fuzzy
 msgid "RunTitle"
-msgstr "StĺpecNadpis"
+msgstr "Vrchný riadok: Nadpis"
 
 #: lib/layouts/ectaart.layout:28
-#, fuzzy
 msgid "Running Title:"
-msgstr "Stĺpec nadpis:"
+msgstr "Nadpis vo vrchnom riadku:"
 
 #: lib/layouts/ectaart.layout:35
-#, fuzzy
 msgid "RunAuthor"
-msgstr "StĺpecAutor"
+msgstr "Vrchný riadok: Autor"
 
 #: lib/layouts/ectaart.layout:39
-#, fuzzy
 msgid "Running Author:"
-msgstr "Stĺpec autor:"
+msgstr "Autor vo vrchnom riadku:"
 
 #: lib/layouts/ectaart.layout:77 lib/layouts/latex8.layout:72
 msgid "E-mail:"
 msgstr "E-mail:"
 
 #: lib/layouts/ectaart.layout:93
-#, fuzzy
 msgid "Web Address"
-msgstr "Adresa"
+msgstr "Web Adresa"
 
 #: lib/layouts/ectaart.layout:96
-#, fuzzy
 msgid "Web address:"
-msgstr "Ďalšia Adresa:"
+msgstr "Web-adresa:"
 
 #: lib/layouts/ectaart.layout:109
-#, fuzzy
 msgid "Authors Block"
-msgstr "Autori"
+msgstr "Block Autorov"
 
 #: lib/layouts/ectaart.layout:113
-#, fuzzy
 msgid "Authors Block:"
-msgstr "Výstražný Blok:"
+msgstr "Blok Autorov:"
 
 #: lib/layouts/ectaart.layout:116 lib/layouts/ectaart.layout:198
 #: lib/layouts/ectaart.layout:201 lib/layouts/entcs.layout:100
@@ -7258,57 +7239,48 @@ msgid "Keywords:"
 msgstr "Heslá:"
 
 #: lib/layouts/ectaart.layout:126
-#, fuzzy
 msgid "Thanks Text"
-msgstr "Vďaka"
+msgstr "Vďaka Text"
 
 #: lib/layouts/ectaart.layout:133
 msgid "Thanks \\theThanks:"
-msgstr ""
+msgstr "Vďaka \\theThanks:"
 
 #: lib/layouts/ectaart.layout:139
-#, fuzzy
 msgid "Emphasize"
-msgstr "Štýl zvýraznenie"
+msgstr "Zvýraznenie"
 
 #: lib/layouts/ectaart.layout:152
-#, fuzzy
 msgid "Thanks Reference"
-msgstr "Referencia"
+msgstr "Referencia na Vďaku"
 
 #: lib/layouts/ectaart.layout:158
-#, fuzzy
 msgid "Thanks Ref"
-msgstr "Vďaka"
+msgstr "Referencia na Vďaku"
 
 #: lib/layouts/ectaart.layout:164
-#, fuzzy
 msgid "Internet Address Reference"
-msgstr "Vložiť krížovú referenciu"
+msgstr "Referencia na internetovú adresu"
 
 #: lib/layouts/ectaart.layout:167
 msgid "Internet Addess Ref"
-msgstr ""
+msgstr "Referencia na Internetovú Adresu"
 
 #: lib/layouts/ectaart.layout:170 lib/layouts/ectaart.layout:173
-#, fuzzy
 msgid "Corresponding Author"
-msgstr "Príslušný autor"
+msgstr "Príslušný Autor"
 
 #: lib/layouts/ectaart.layout:184
-#, fuzzy
 msgid "Name (First Name)"
-msgstr "Krstné_meno"
+msgstr "Meno (Krstné Meno)"
 
 #: lib/layouts/ectaart.layout:187
-#, fuzzy
 msgid "First Name"
-msgstr "Krstné_meno"
+msgstr "Krstné Meno"
 
 #: lib/layouts/ectaart.layout:191
-#, fuzzy
 msgid "Name (Surname)"
-msgstr "Priezvisko"
+msgstr "Meno (Priezvisko)"
 
 #: lib/layouts/ectaart.layout:194 lib/layouts/agu_stdclass.inc:63
 #: lib/layouts/agu_stdclass.inc:65 lib/layouts/db_stdcharstyles.inc:46
@@ -7318,12 +7290,11 @@ msgstr "Priezvisko"
 
 #: lib/layouts/ectaart.layout:204
 msgid "By Same Author (bib)"
-msgstr ""
+msgstr "Od Rovnakého Autora (bib)"
 
 #: lib/layouts/ectaart.layout:207
-#, fuzzy
 msgid "bysame"
-msgstr "Meno"
+msgstr "od rovnakého autora"
 
 #: lib/layouts/egs.layout:145 lib/layouts/stdlists.inc:102
 msgid "00.00.0000"
@@ -8390,9 +8361,8 @@ msgid "Running author:"
 msgstr "Stĺpec autor:"
 
 #: lib/layouts/lettre.layout:39 lib/layouts/lettre.layout:314
-#, fuzzy
 msgid "NoTelephone"
-msgstr "Telefón"
+msgstr "BezTelefónu"
 
 #: lib/layouts/lettre.layout:41 lib/layouts/lettre.layout:340
 #: lib/layouts/scrlttr2.layout:189 lib/configure.py:566
@@ -8401,35 +8371,30 @@ msgstr "Fax"
 
 #: lib/layouts/lettre.layout:43 lib/layouts/lettre.layout:370
 #: lib/layouts/lettre.layout:378
-#, fuzzy
 msgid "NoFax"
-msgstr "Fax"
+msgstr "BezFaxu"
 
 #: lib/layouts/lettre.layout:49 lib/layouts/lettre.layout:185
 #: lib/layouts/lettre.layout:192
-#, fuzzy
 msgid "NoPlace"
-msgstr "Miesto"
+msgstr "Bez Miesta"
 
 #: lib/layouts/lettre.layout:53 lib/layouts/lettre.layout:234
 #: lib/layouts/lettre.layout:242
-#, fuzzy
 msgid "NoDate"
-msgstr "Dátum"
+msgstr "Bez Dátumu"
 
 #: lib/layouts/lettre.layout:73 lib/layouts/lettre.layout:647
-#, fuzzy
 msgid "Post Scriptum"
-msgstr "Postskriptum:"
+msgstr "Postskriptum"
 
 #: lib/layouts/lettre.layout:75 lib/layouts/lettre.layout:513
 msgid "EndOfMessage"
-msgstr ""
+msgstr "KoniecSprávy"
 
 #: lib/layouts/lettre.layout:77 lib/layouts/lettre.layout:533
-#, fuzzy
 msgid "EndOfFile"
-msgstr "KoniecFólie"
+msgstr "KoniecSúboru"
 
 #: lib/layouts/lettre.layout:137 lib/layouts/lettre.layout:156
 #: lib/layouts/lettre.layout:186 lib/layouts/lettre.layout:212
@@ -8437,54 +8402,45 @@ msgstr "KoniecFólie"
 #: lib/layouts/lettre.layout:285 lib/layouts/lettre.layout:315
 #: lib/layouts/lettre.layout:341 lib/layouts/lettre.layout:371
 #: lib/layouts/lettre.layout:397
-#, fuzzy
 msgid "Headings"
-msgstr "s nadpismi (headings)"
+msgstr "Záhlavie listu"
 
 #: lib/layouts/lettre.layout:167
-#, fuzzy
 msgid "City:"
-msgstr "Mesto"
+msgstr "Mesto:"
 
 #: lib/layouts/lettre.layout:260
-#, fuzzy
 msgid "Office:"
-msgstr "Vyrovnanie:"
+msgstr "Úrad:"
 
 #: lib/layouts/lettre.layout:290
-#, fuzzy
 msgid "Tel:"
-msgstr "Telex:"
+msgstr "Tel:"
 
 #: lib/layouts/lettre.layout:322
-#, fuzzy
 msgid "NoTel"
-msgstr "Žiadne"
+msgstr "Bez Telefónu"
 
 #: lib/layouts/lettre.layout:353
-#, fuzzy
 msgid "Fax:"
-msgstr "Fax"
+msgstr "Fax:"
 
 #: lib/layouts/lettre.layout:514 lib/layouts/lettre.layout:605
 #: lib/layouts/lettre.layout:648
-#, fuzzy
 msgid "Closings"
 msgstr "Záverečný pozdrav"
 
 #: lib/layouts/lettre.layout:523
 msgid "EndOfMessage."
-msgstr ""
+msgstr "KoniecSprávy."
 
 #: lib/layouts/lettre.layout:535
-#, fuzzy
 msgid "EndOfFile."
-msgstr "KoniecFólie"
+msgstr "KoniecSúboru."
 
 #: lib/layouts/lettre.layout:655
-#, fuzzy
 msgid "P.S.:"
-msgstr "PS:"
+msgstr "P.S.:"
 
 #: lib/layouts/llncs.layout:39 lib/layouts/memoir.layout:58
 #: lib/layouts/recipebook.layout:41 lib/layouts/scrbook.layout:16
@@ -9179,9 +9135,8 @@ msgid "Thesaurus not supported in recent A&A:"
 msgstr "Thesaurus nepodporované v recentnom A&A:"
 
 #: lib/layouts/agu_stdclass.inc:34 lib/layouts/db_stdcharstyles.inc:35
-#, fuzzy
 msgid "Flex:Firstname"
-msgstr "Krstné_meno"
+msgstr "Flex:Krstné_meno"
 
 #: lib/layouts/agu_stdclass.inc:34 lib/layouts/agu_stdclass.inc:36
 #: lib/layouts/db_stdcharstyles.inc:35 lib/layouts/db_stdcharstyles.inc:37
@@ -9189,28 +9144,24 @@ msgid "Firstname"
 msgstr "Krstné_meno"
 
 #: lib/layouts/agu_stdclass.inc:48
-#, fuzzy
 msgid "Flex:Fname"
-msgstr "Názov súboru"
+msgstr "Flex:Názov súboru"
 
 #: lib/layouts/agu_stdclass.inc:48 lib/layouts/agu_stdclass.inc:50
 msgid "Fname"
 msgstr "Kmeno"
 
 #: lib/layouts/agu_stdclass.inc:63 lib/layouts/db_stdcharstyles.inc:46
-#, fuzzy
 msgid "Flex:Surname"
-msgstr "Element:Priezvisko"
+msgstr "Flex:Priezvisko"
 
 #: lib/layouts/agu_stdclass.inc:78 lib/layouts/db_stdcharstyles.inc:6
-#, fuzzy
 msgid "Flex:Filename"
-msgstr "Názov súboru"
+msgstr "Flex:Názov súboru"
 
 #: lib/layouts/agu_stdclass.inc:93 lib/layouts/db_stdcharstyles.inc:57
-#, fuzzy
 msgid "Flex:Literal"
-msgstr "Element:Doslovne"
+msgstr "Flex:Doslovne"
 
 #: lib/layouts/agu_stdclass.inc:93 lib/layouts/agu_stdclass.inc:95
 #: lib/layouts/db_stdcharstyles.inc:57 lib/layouts/db_stdcharstyles.inc:59
@@ -9219,9 +9170,8 @@ msgid "Literal"
 msgstr "Doslovné"
 
 #: lib/layouts/agu_stdclass.inc:108 lib/layouts/logicalmkup.module:31
-#, fuzzy
 msgid "Flex:Emph"
-msgstr "Element:Dôraz"
+msgstr "Flex:Dôraz"
 
 #: lib/layouts/agu_stdclass.inc:108 lib/layouts/agu_stdclass.inc:110
 #: lib/layouts/logicalmkup.module:31 src/frontends/qt4/GuiCharacter.cpp:77
@@ -9229,18 +9179,16 @@ msgid "Emph"
 msgstr "Zvýrazniť"
 
 #: lib/layouts/agu_stdclass.inc:124
-#, fuzzy
 msgid "Flex:Abbrev"
-msgstr "Element:Skratka"
+msgstr "Flex:Skratka"
 
 #: lib/layouts/agu_stdclass.inc:124 lib/layouts/agu_stdclass.inc:126
 msgid "Abbrev"
 msgstr "Skratka"
 
 #: lib/layouts/agu_stdclass.inc:135
-#, fuzzy
 msgid "Flex:Citation-number"
-msgstr "ČísloCitácie"
+msgstr "Flex:ČísloCitácie"
 
 #: lib/layouts/agu_stdclass.inc:135 lib/layouts/agu_stdclass.inc:137
 #: lib/layouts/agu_stdtitle.inc:56
@@ -9248,63 +9196,56 @@ msgid "Citation-number"
 msgstr "ČísloCitácie"
 
 #: lib/layouts/agu_stdclass.inc:146
-#, fuzzy
 msgid "Flex:Volume"
-msgstr "Element:Volume"
+msgstr "Flex:Volume"
 
 #: lib/layouts/agu_stdclass.inc:146 lib/layouts/agu_stdclass.inc:148
 msgid "Volume"
 msgstr "Volume"
 
 #: lib/layouts/agu_stdclass.inc:157
-#, fuzzy
 msgid "Flex:Day"
-msgstr "Element:Deň"
+msgstr "Flex:Deň"
 
 #: lib/layouts/agu_stdclass.inc:157 lib/layouts/agu_stdclass.inc:159
 msgid "Day"
 msgstr "Deň"
 
 #: lib/layouts/agu_stdclass.inc:168
-#, fuzzy
 msgid "Flex:Month"
-msgstr "Element:Mesiac"
+msgstr "Flex:Mesiac"
 
 #: lib/layouts/agu_stdclass.inc:168 lib/layouts/agu_stdclass.inc:170
 msgid "Month"
 msgstr "Mesiac"
 
 #: lib/layouts/agu_stdclass.inc:179
-#, fuzzy
 msgid "Flex:Year"
-msgstr "Element:Rok"
+msgstr "Flex:Rok"
 
 #: lib/layouts/agu_stdclass.inc:179 lib/layouts/agu_stdclass.inc:181
 msgid "Year"
 msgstr "Rok"
 
 #: lib/layouts/agu_stdclass.inc:190
-#, fuzzy
 msgid "Flex:Issue-number"
-msgstr "Issue-number"
+msgstr "Flex:Issue-number"
 
 #: lib/layouts/agu_stdclass.inc:190 lib/layouts/agu_stdclass.inc:192
 msgid "Issue-number"
 msgstr "Issue-number"
 
 #: lib/layouts/agu_stdclass.inc:201
-#, fuzzy
 msgid "Flex:Issue-day"
-msgstr "Issue-day"
+msgstr "Flex:Issue-day"
 
 #: lib/layouts/agu_stdclass.inc:201 lib/layouts/agu_stdclass.inc:203
 msgid "Issue-day"
 msgstr "Issue-day"
 
 #: lib/layouts/agu_stdclass.inc:212
-#, fuzzy
 msgid "Flex:Issue-months"
-msgstr "Issue-months"
+msgstr "Flex:Issue-months"
 
 #: lib/layouts/agu_stdclass.inc:212 lib/layouts/agu_stdclass.inc:214
 msgid "Issue-months"
@@ -9495,54 +9436,48 @@ msgid "Datasets:"
 msgstr "Datasets:"
 
 #: lib/layouts/agu_stdtitle.inc:321
-#, fuzzy
 msgid "Flex:ISSN"
-msgstr "Element:SSN"
+msgstr "Flex:SSN"
 
 #: lib/layouts/agu_stdtitle.inc:321 lib/layouts/agu_stdtitle.inc:323
 msgid "ISSN"
 msgstr "ISSN"
 
 #: lib/layouts/agu_stdtitle.inc:332
-#, fuzzy
 msgid "Flex:CODEN"
-msgstr "Element:CODEN"
+msgstr "Flex:CODEN"
 
 #: lib/layouts/agu_stdtitle.inc:332 lib/layouts/agu_stdtitle.inc:334
 msgid "CODEN"
 msgstr "CODEN"
 
 #: lib/layouts/agu_stdtitle.inc:344
-#, fuzzy
 msgid "Flex:SS-Code"
-msgstr "Element:SS-Kód"
+msgstr "Flex:SS-Kód"
 
 #: lib/layouts/agu_stdtitle.inc:344 lib/layouts/agu_stdtitle.inc:346
 msgid "SS-Code"
 msgstr "SS-Kód"
 
 #: lib/layouts/agu_stdtitle.inc:355
-#, fuzzy
 msgid "Flex:SS-Title"
-msgstr "SS-Titul"
+msgstr "Flex:SS-Titul"
 
 #: lib/layouts/agu_stdtitle.inc:355 lib/layouts/agu_stdtitle.inc:357
 msgid "SS-Title"
 msgstr "SS-Titul"
 
 #: lib/layouts/agu_stdtitle.inc:367
-#, fuzzy
 msgid "Flex:CCC-Code"
-msgstr "CCC-Kód"
+msgstr "Flex:CCC-Kód"
 
 #: lib/layouts/agu_stdtitle.inc:367 lib/layouts/agu_stdtitle.inc:369
 msgid "CCC-Code"
 msgstr "CCC-Kód"
 
 #: lib/layouts/agu_stdtitle.inc:380 lib/layouts/logicalmkup.module:60
-#, fuzzy
 msgid "Flex:Code"
-msgstr "Element:Kód"
+msgstr "Flex:Kód"
 
 #: lib/layouts/agu_stdtitle.inc:380 lib/layouts/agu_stdtitle.inc:382
 #: lib/layouts/db_lyxmacros.inc:11 lib/layouts/logicalmkup.module:60
@@ -9550,69 +9485,60 @@ msgid "Code"
 msgstr "Kód"
 
 #: lib/layouts/agu_stdtitle.inc:391
-#, fuzzy
 msgid "Flex:Dscr"
-msgstr "Element:Dscr"
+msgstr "Flex:Dscr"
 
 #: lib/layouts/agu_stdtitle.inc:391 lib/layouts/agu_stdtitle.inc:393
 msgid "Dscr"
 msgstr "Dscr"
 
 #: lib/layouts/agu_stdtitle.inc:403
-#, fuzzy
 msgid "Flex:Keyword"
-msgstr "Element:Heslo"
+msgstr "Flex:Heslo"
 
 #: lib/layouts/agu_stdtitle.inc:415
-#, fuzzy
 msgid "Flex:Orgdiv"
-msgstr "Element:Orgdiv"
+msgstr "Flex:Orgdiv"
 
 #: lib/layouts/agu_stdtitle.inc:415 lib/layouts/agu_stdtitle.inc:417
 msgid "Orgdiv"
 msgstr "Orgdiv"
 
 #: lib/layouts/agu_stdtitle.inc:426
-#, fuzzy
 msgid "Flex:Orgname"
-msgstr "Element:Orgname"
+msgstr "Flex:Orgname"
 
 #: lib/layouts/agu_stdtitle.inc:426 lib/layouts/agu_stdtitle.inc:428
 msgid "Orgname"
 msgstr "Orgname"
 
 #: lib/layouts/agu_stdtitle.inc:437
-#, fuzzy
 msgid "Flex:Street"
-msgstr "Element:Ulica"
+msgstr "Flex:Ulica"
 
 #: lib/layouts/agu_stdtitle.inc:448
-#, fuzzy
 msgid "Flex:City"
-msgstr "Element:Mesto"
+msgstr "Flex:Mesto"
 
 #: lib/layouts/agu_stdtitle.inc:448 lib/layouts/agu_stdtitle.inc:450
 msgid "City"
 msgstr "Mesto"
 
 #: lib/layouts/agu_stdtitle.inc:459
-#, fuzzy
 msgid "Flex:State"
-msgstr "Element:Štát"
+msgstr "Flex:Štát"
 
 #: lib/layouts/agu_stdtitle.inc:470
-#, fuzzy
 msgid "Flex:Postcode"
-msgstr "PoštovéSmerovacieČíslo"
+msgstr "Flex:PoštovéSmerovacieČíslo"
 
 #: lib/layouts/agu_stdtitle.inc:470 lib/layouts/agu_stdtitle.inc:472
 msgid "Postcode"
 msgstr "PoštovéSmerovacieČíslo"
 
 #: lib/layouts/agu_stdtitle.inc:481
-#, fuzzy
 msgid "Flex:Country"
-msgstr "Element:Krajina"
+msgstr "Flex:Krajina"
 
 #: lib/layouts/agu_stdtitle.inc:481 lib/layouts/agu_stdtitle.inc:483
 msgid "Country"
@@ -9708,68 +9634,60 @@ msgid "2000 Mathematics Subject Classification:"
 msgstr "2000 Mathematics Subject Classification:"
 
 #: lib/layouts/db_stdcharstyles.inc:20
-#, fuzzy
 msgid "Flex:Directory"
-msgstr "Adresár"
+msgstr "Flex:Adresár"
 
 #: lib/layouts/db_stdcharstyles.inc:20 lib/layouts/db_stdcharstyles.inc:22
 msgid "Directory"
 msgstr "Adresár"
 
 #: lib/layouts/db_stdcharstyles.inc:71
-#, fuzzy
 msgid "Flex:Email"
-msgstr "Element:Email"
+msgstr "Flex:Email"
 
 #: lib/layouts/db_stdcharstyles.inc:85
-#, fuzzy
 msgid "Flex:KeyCombo"
-msgstr "KeyCombo"
+msgstr "Flex:KeyCombo"
 
 #: lib/layouts/db_stdcharstyles.inc:85 lib/layouts/db_stdcharstyles.inc:87
 msgid "KeyCombo"
 msgstr "KeyCombo"
 
 #: lib/layouts/db_stdcharstyles.inc:99
-#, fuzzy
 msgid "Flex:KeyCap"
-msgstr "Element:KeyCap"
+msgstr "Flex:KeyCap"
 
 #: lib/layouts/db_stdcharstyles.inc:99 lib/layouts/db_stdcharstyles.inc:101
 msgid "KeyCap"
 msgstr "KeyCap"
 
 #: lib/layouts/db_stdcharstyles.inc:113
-#, fuzzy
 msgid "Flex:GuiMenu"
-msgstr "Element:GuiMenu"
+msgstr "Flex:GuiMenu"
 
 #: lib/layouts/db_stdcharstyles.inc:113 lib/layouts/db_stdcharstyles.inc:115
 msgid "GuiMenu"
 msgstr "GuiMenu"
 
 #: lib/layouts/db_stdcharstyles.inc:127
-#, fuzzy
 msgid "Flex:GuiMenuItem"
-msgstr "GuiMenuItem"
+msgstr "Flex:GuiMenuItem"
 
 #: lib/layouts/db_stdcharstyles.inc:127 lib/layouts/db_stdcharstyles.inc:129
 msgid "GuiMenuItem"
 msgstr "GuiMenuItem"
 
 #: lib/layouts/db_stdcharstyles.inc:141
-#, fuzzy
 msgid "Flex:GuiButton"
-msgstr "GuiButton"
+msgstr "Flex:GuiButton"
 
 #: lib/layouts/db_stdcharstyles.inc:141 lib/layouts/db_stdcharstyles.inc:143
 msgid "GuiButton"
 msgstr "GuiButton"
 
 #: lib/layouts/db_stdcharstyles.inc:155
-#, fuzzy
 msgid "Flex:MenuChoice"
-msgstr "MenuChoice"
+msgstr "Flex:MenuVýber"
 
 #: lib/layouts/db_stdcharstyles.inc:155 lib/layouts/db_stdcharstyles.inc:157
 msgid "MenuChoice"
@@ -9913,9 +9831,8 @@ msgid "Dictum"
 msgstr "Výrok"
 
 #: lib/layouts/stdcharstyles.inc:8
-#, fuzzy
 msgid "Flex"
-msgstr "S&úbor"
+msgstr "Flex"
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
 msgid "UNDEFINED"
@@ -10293,19 +10210,17 @@ msgid "Endnote"
 msgstr "Koncová poznámka"
 
 #: lib/layouts/endnotes.module:6
-#, fuzzy
 msgid ""
 "Adds an endnote inset, in addition to footnotes. You will need to add "
 "\\theendnotes in TeX-code where you want the endnotes to appear."
 msgstr ""
-"Pridáva vložku pre koncové poznámky (Endnote) (okrem už existujúcich "
-"poznámok pod čiarou). Nutné je pridať \\theendnotes do vložky TeX-ového kódu "
+"Pridáva vložku pre koncové poznámky (Endnote).  Nutné je pridať "
+"\\theendnotes do vložky TeX-ového kódu "
 "tam, kde sa koncové poznámky majú objaviť."
 
 #: lib/layouts/endnotes.module:9
-#, fuzzy
 msgid "Flex:Endnote"
-msgstr "Koncová poznámka"
+msgstr "Flex:Koncová poznámka"
 
 #: lib/layouts/endnotes.module:18
 msgid "endnote"
@@ -10340,7 +10255,6 @@ msgid "Foot to End"
 msgstr "Pätky na koncové"
 
 #: lib/layouts/foottoend.module:6
-#, fuzzy
 msgid ""
 "Sets all footnotes as endnotes. You will need to add \\theendnotes in TeX-"
 "code where you want the endnotes to appear."
@@ -10379,24 +10293,24 @@ msgid "charstyles"
 msgstr "Štýly znakov"
 
 #: lib/layouts/initials.module:10
-#, fuzzy
 msgid "Flex:Initial"
-msgstr "Iniciálka"
+msgstr "Flex:Iniciálka"
 
 #: lib/layouts/initials.module:10 lib/layouts/initials.module:12
 msgid "Initial"
 msgstr "Iniciálka"
 
 #: lib/layouts/lilypond.module:2
-#, fuzzy
 msgid "LilyPond Book"
-msgstr "LilyPond"
+msgstr "LilyPond Kniha"
 
 #: lib/layouts/lilypond.module:6
 msgid ""
 "This module adds an inset to enter LilyPond code directly into LyX. It will "
 "be processed in the output. See the lilypond.lyx example file."
 msgstr ""
+"Tento modul pridáva vložku na priamy vklad kódu LilyPond do LyXu. Bude "
+"spracovaný vo výstupe. Pozrite si príkladný súbor lilypond.lyx."
 
 #: lib/layouts/lilypond.module:12 lib/layouts/lilypond.module:13
 #: lib/external_templates:212
@@ -10442,60 +10356,52 @@ msgid "Subexample:"
 msgstr "Podpríklad:"
 
 #: lib/layouts/linguistics.module:65
-#, fuzzy
 msgid "Flex:Glosse"
-msgstr "Glosse"
+msgstr "Flex:Glosse"
 
 #: lib/layouts/linguistics.module:65 lib/layouts/linguistics.module:67
 msgid "Glosse"
 msgstr "Glosse"
 
 #: lib/layouts/linguistics.module:93
-#, fuzzy
 msgid "Flex:Tri-Glosse"
-msgstr "Tri-Glosse"
+msgstr "Flex:Tri-Glosse"
 
 #: lib/layouts/linguistics.module:93 lib/layouts/linguistics.module:95
 msgid "Tri-Glosse"
 msgstr "Tri-Glosse"
 
 #: lib/layouts/linguistics.module:120
-#, fuzzy
 msgid "Flex:Expression"
-msgstr "Štýl znaku: Výraz"
+msgstr "Flex: Výraz"
 
 #: lib/layouts/linguistics.module:120
-#, fuzzy
 msgid "Expression"
-msgstr "S/R výraz"
+msgstr "Výraz"
 
 #: lib/layouts/linguistics.module:122
 msgid "expr."
 msgstr "výraz"
 
 #: lib/layouts/linguistics.module:135
-#, fuzzy
 msgid "Flex:Concepts"
-msgstr "Štýl znaku:Concepts"
+msgstr "Flex:Koncepty"
 
 #: lib/layouts/linguistics.module:135
-#, fuzzy
 msgid "Concepts"
-msgstr "concept"
+msgstr "Koncepty"
 
 #: lib/layouts/linguistics.module:137
 msgid "concept"
 msgstr "concept"
 
 #: lib/layouts/linguistics.module:150
-#, fuzzy
 msgid "Flex:Meaning"
-msgstr "Štýl znaku: Význam"
+msgstr "Flex: Význam"
 
 #: lib/layouts/linguistics.module:150
-#, fuzzy
 msgid "Meaning"
-msgstr "význam"
+msgstr "Význam"
 
 #: lib/layouts/linguistics.module:152
 msgid "meaning"
@@ -10522,9 +10428,8 @@ msgstr ""
 "(emph), (silný dôraz) strong, kód (code)."
 
 #: lib/layouts/logicalmkup.module:11
-#, fuzzy
 msgid "Flex:Noun"
-msgstr "Meno"
+msgstr "Flex:Meno"
 
 #: lib/layouts/logicalmkup.module:11 src/frontends/qt4/GuiCharacter.cpp:82
 msgid "Noun"
@@ -10539,14 +10444,12 @@ msgid "emph"
 msgstr "dôraz"
 
 #: lib/layouts/logicalmkup.module:44
-#, fuzzy
 msgid "Flex:Strong"
-msgstr "Štýl znaku: Silný dôraz"
+msgstr "Flex:Silný dôraz"
 
 #: lib/layouts/logicalmkup.module:44
-#, fuzzy
 msgid "Strong"
-msgstr "silný dôraz"
+msgstr "Silný dôraz"
 
 #: lib/layouts/logicalmkup.module:46
 msgid "strong"
@@ -13636,7 +13539,7 @@ msgstr "Viacstĺpcová príručka"
 
 #: lib/ui/stdmenus.inc:573
 msgid "Feynman-diagram Manual|F"
-msgstr ""
+msgstr "Feynman-diagram Manuál"
 
 #: lib/ui/stdtoolbars.inc:69
 msgid "New document"
@@ -16620,7 +16523,7 @@ msgstr "LilyPond nóty"
 
 #: lib/configure.py:508
 msgid "LilyPond book (LaTeX)"
-msgstr ""
+msgstr "LilyPond book (LaTeX)"
 
 #: lib/configure.py:509
 msgid "LaTeX (plain)"
@@ -16804,9 +16707,8 @@ msgid "LyX Preview"
 msgstr "Náhľad LyX"
 
 #: lib/configure.py:576
-#, fuzzy
 msgid "LyX Preview (LilyPond book)"
-msgstr "Náhľad LyX (pLaTeX)"
+msgstr "Náhľad LyX (LilyPond book)"
 
 #: lib/configure.py:577
 msgid "LyX Preview (pLaTeX)"
@@ -18724,7 +18626,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3069
 msgid "Make Apple key act as Meta and Control key as Ctrl."
-msgstr ""
+msgstr "Prehoď Apple klávesu na Meta a Kontrol klávesu na Ctrl."
 
 #: src/LyXRC.cpp:3073
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
@@ -22624,7 +22526,6 @@ msgstr "Zoznam zmien"
 
 #: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:288
 #: src/insets/InsetGraphics.cpp:595 src/insets/InsetInclude.cpp:513
-#, fuzzy
 msgid ""
 "The following filename will cause troubles when running the exported file "
 "through LaTeX: "
@@ -22635,17 +22536,16 @@ msgstr ""
 #: src/insets/ExternalSupport.cpp:374 src/insets/InsetBibtex.cpp:293
 #: src/insets/InsetGraphics.cpp:602 src/insets/InsetInclude.cpp:518
 msgid "Problematic filename for DVI"
-msgstr ""
+msgstr "Meno súboru je pre DVI problematické"
 
 #: src/insets/ExternalSupport.cpp:375 src/insets/InsetBibtex.cpp:294
 #: src/insets/InsetGraphics.cpp:603 src/insets/InsetInclude.cpp:519
-#, fuzzy
 msgid ""
 "The following filename can cause troubles when running the exported file "
 "through LaTeX and opening the resulting DVI: "
 msgstr ""
 "Nasledujúce meno súboru je vhodné na spôsobenie problémov pri preklade "
-"exportovaného súboru LaTeX-om: "
+"exportovaného súboru LaTeX-om nasledujúc otvorením s DVI: "
 
 #: src/insets/Inset.cpp:88
 msgid "Bibliography Entry"
@@ -23387,14 +23287,12 @@ msgid "Ref+Text: "
 msgstr "Ref+Text: "
 
 #: src/insets/InsetRef.cpp:248
-#, fuzzy
 msgid "Formatted"
-msgstr "Formátovanie"
+msgstr "Formátované"
 
 #: src/insets/InsetRef.cpp:248
-#, fuzzy
 msgid "Format: "
-msgstr "F&ormát:"
+msgstr "Formát: "
 
 #: src/insets/InsetRef.cpp:249
 msgid "Reference to Name"
@@ -23599,18 +23497,17 @@ msgid "Search string is empty"
 msgstr "Reťazec na hľadanie je prázdny"
 
 #: src/lyxfind.cpp:366
-#, fuzzy
 msgid "String found."
-msgstr "Reťazec nebol nájdený!"
+msgstr "Reťazec nájdený."
 
 #: src/lyxfind.cpp:368
 msgid "String has been replaced."
 msgstr "Reťazec bol nahradený."
 
 #: src/lyxfind.cpp:371
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d strings have been replaced."
-msgstr " reťazce boli nahradené."
+msgstr "%1$d reťazcov bolo nahradených."
 
 #: src/lyxfind.cpp:1233
 msgid "Search text is empty!"
