@@ -367,7 +367,6 @@ public:
 	static QSet<Buffer const *> busyBuffers;
 	static docstring previewAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
 	static docstring exportAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
-	static docstring compileAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
 	static docstring saveAndDestroy(Buffer const * orig, Buffer * buffer, FileName const & fname);
 
 	// TODO syncFunc/previewFunc: use bind
@@ -2815,26 +2814,12 @@ bool GuiView::goToFileRow(string const & argument)
 
 
 #if (QT_VERSION >= 0x040400)
-docstring GuiView::GuiViewPrivate::compileAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
-{
-	bool const update_unincluded =
-				buffer->params().maintain_unincluded_children
-				&& !buffer->params().getIncludedChildren().empty();
-	bool const success = buffer->doExport(format, true, update_unincluded);
-	delete buffer;
-	busyBuffers.remove(orig);
-	return success
-		? bformat(_("Successful compilation to format: %1$s"), from_utf8(format))
-		: bformat(_("Error compiling format: %1$s"), from_utf8(format));
-}
-
-
 docstring GuiView::GuiViewPrivate::exportAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
 {
 	bool const update_unincluded =
 				buffer->params().maintain_unincluded_children
 				&& !buffer->params().getIncludedChildren().empty();
-	bool const success = buffer->doExport(format, false, update_unincluded);
+	bool const success = buffer->doExport(format, true, update_unincluded);
 	delete buffer;
 	busyBuffers.remove(orig);
 	return success
@@ -2966,7 +2951,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			d.asyncBufferProcessing(argument,
 			                        doc_buffer,
 			                        _("Exporting ..."),
-			                        &GuiViewPrivate::compileAndDestroy,
+			                        &GuiViewPrivate::exportAndDestroy,
 			                        &Buffer::doExport,
 			                        0);
 			break;
@@ -2984,7 +2969,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			d.asyncBufferProcessing(argument,
 			                        (doc_buffer ? doc_buffer->masterBuffer() : 0),
 			                        docstring(),
-			                        &GuiViewPrivate::compileAndDestroy,
+			                        &GuiViewPrivate::exportAndDestroy,
 			                        &Buffer::doExport,
 			                        0);
 			break;

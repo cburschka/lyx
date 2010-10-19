@@ -70,7 +70,6 @@
 #include "insets/InsetBibtex.h"
 #include "insets/InsetBranch.h"
 #include "insets/InsetInclude.h"
-#include "insets/InsetTabular.h"
 #include "insets/InsetText.h"
 
 #include "mathed/InsetMathHull.h"
@@ -2731,17 +2730,6 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 				it.push_back(CursorSlice(*iit->inset));
 				updateMacros(it, newScope ? insetScope : scope);
 				it.pop_back();
-				continue;
-			}
-			
-			if (iit->inset->asInsetTabular()) {
-				CursorSlice slice(*iit->inset);
-				size_t const numcells = slice.nargs();
-				for (; slice.idx() < numcells; slice.forwardIdx()) {
-					it.push_back(slice);
-					updateMacros(it, scope);
-					it.pop_back();
-				}
 				continue;
 			}
 
