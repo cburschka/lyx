@@ -32697,10 +32697,24 @@ reference "cap:歪められた二つの像"
 
 \begin_layout Description
 (<参照>) フロート番号をかっこの中に印字します。これは通常、数式を参照するのに使われる形式で、特に参照接頭辞「式」を省略するときに使われます。（例）
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "cap:歪められた二つの像"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
 <参照ページ> ページ番号を印字します。（例）
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "cap:歪められた二つの像"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -32713,6 +32727,13 @@ page
 \end_inset
 
 <参照ページ> 「on page」という文とページ番号を印字します。（例）
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "cap:歪められた二つの像"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -32729,6 +32750,13 @@ page
 \end_inset
 
 <参照ページ> フロート番号、「on page」という文、ページ番号の順に印字します。（例）
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "cap:歪められた二つの像"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -32737,30 +32765,69 @@ page
 \end_inset
 
 
+\lang english
+
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-（註）
+\lang english
+Note:
 \series default
-この機能は、LaTeXパッケージ
+ This feature is only available when you have the LaTeX-package 
 \series bold
 prettyref
 \series default
+ or 
+\series bold
+refstyle
+\series default
+\lang japanese
 
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! prettyref
+LaTeXぱっけーじ@LaTeXパッケージ! prettyref
 \end_layout
 
 \end_inset
 
-が導入されているときのみ使用可能です。
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
 \end_layout
+
+\end_inset
+
+
+\lang english
+ installed.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Textual
+\begin_inset space ~
+\end_inset
+
+reference: prints the caption of the reference
+\lang japanese
+: 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "cap:歪められた二つの像"
 
 \end_inset
 
@@ -32864,7 +32931,23 @@ reference "sec:数式番号と参照"
 \emph on
 埋込オブジェクト篇
 \emph default
-』に詳述されています。
+』に詳述されています 
+\lang english
+in sec
+\lang japanese
+.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+フロートの参照
+\begin_inset Quotes erd
+\end_inset
+
+。
 \end_layout
 
 \begin_layout Section
@@ -45070,14 +45153,20 @@ LyX関数
 \begin_inset VSpace smallskip*
 \end_inset
 
-全LyX関数は
-\begin_inset CommandInset citation
-LatexCommand cite
-key "LyX-func"
 
+\lang english
+All LyX-functions are listed in the menu 
+\family sans
+Help\SpecialChar \menuseparator
+LyX
+\begin_inset space ~
 \end_inset
 
-に挙げてあります。
+Functions
+\family default
+.
+\lang japanese
+
 \begin_inset VSpace medskip
 \end_inset
 
@@ -48194,53 +48283,19 @@ http://wiki.lyx.org/Windows/Vietnamese
 \labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "LyX-func"
-
-\end_inset
-
-使用可能なLyX関数の一覧を載せた
-\begin_inset CommandInset href
-LatexCommand href
-name "Wikiページ"
-target "http://wiki.lyx.org/LyX/LyxFunctionList"
-
-\end_inset
-
-:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/LyX/LyxFunctionList
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\labelwidthstring 参考文献
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "NewInLyX16"
+key "NewInLyX20"
 
 \end_inset
 
 
 \family sans
-LyX 1.6.0
+LyX 2.0
 \family default
 の新機能に関する
 \begin_inset CommandInset href
 LatexCommand href
 name "Wikiページ"
-target "http://wiki.lyx.org/LyX/NewInLyX16"
+target "http://wiki.lyx.org/LyX/NewInLyX20"
 
 \end_inset
 
@@ -48254,7 +48309,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/LyX/NewInLyX16
+http://wiki.lyx.org/LyX/NewInLyX20
 \end_layout
 
 \end_inset

@@ -24985,8 +24985,7 @@ Hay seis estilos de referencias cruzadas:
 \end_layout
 
 \begin_layout Description
-<referencia>: imprime el número del flotante, es la opción predeterminada:
- 
+<referencia>: imprime el número, es la opción predeterminada: 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cap:Dos-imágenes"
@@ -24997,9 +24996,9 @@ reference "cap:Dos-imágenes"
 \end_layout
 
 \begin_layout Description
-(<referencia>): imprime el número del flotante entre paréntesis, este estilo
- es el habitual para referir ecuaciones, especialmente cuando se omite el
- nombre de referencia 
+(<referencia>): imprime el número entre paréntesis, este estilo es el habitual
+ para referir ecuaciones, especialmente cuando se omite el nombre de referencia
+ 
 \begin_inset Quotes fld
 \end_inset
 
@@ -25076,7 +25075,7 @@ página
 \begin_inset space ~
 \end_inset
 
-<página>: imprime el número del flotante, el texto 
+<página>: imprime el número, el texto 
 \begin_inset Quotes fld
 \end_inset
 
@@ -25116,11 +25115,16 @@ status open
 \series bold
 Nota:
 \series default
- Estilo sólo  disponible si está instalado el paquete LaTeX 
+ Esta característica sólo está disponible si está instalado el paquete LaTeX
+ 
 \series bold
 prettyref
 \series default
-
+ o 
+\series bold
+refstyle
+\series default
+.
 \begin_inset Index idx
 status collapsed
 
@@ -25130,12 +25134,41 @@ LaTeX, paquetes ! prettyref
 
 \end_inset
 
-.
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX, paquetes ! refstyle
 \end_layout
 
 \end_inset
 
- 
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Textual
+\begin_inset space ~
+\end_inset
+
+reference: prints the caption of the reference
+\lang spanish
+: 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "cap:Dos-imágenes"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -25272,7 +25305,15 @@ Si una referencia cruzada no encuentra su etiqueta, en la salida verás dos
 \end_layout
 
 \begin_layout Standard
-Las referencias se describen con detalle en el manual 
+Las referencias se describen con detalle en sección 
+\begin_inset Quotes fld
+\end_inset
+
+Referencias a flotantes
+\begin_inset Quotes frd
+\end_inset
+
+ en el manual 
 \emph on
 Objetos insertados
 \emph default
@@ -40912,12 +40953,17 @@ o
 
 \begin_layout Standard
 Las funciones de LyX se listan en 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "LyX-func"
-
+\lang english
+the menu 
+\family sans
+Help\SpecialChar \menuseparator
+LyX
+\begin_inset space ~
 \end_inset
 
+Functions
+\family default
+\lang spanish
 .
 \begin_inset VSpace medskip
 \end_inset
@@ -44847,41 +44893,7 @@ http://wiki.lyx.org/Windows/Vietnamese
 \labelwidthstring Bibliografía
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "LyX-func"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Página Wiki"
-target "http://wiki.lyx.org/LyX/LyxFunctionList"
-
-\end_inset
-
- con una lista de todas las funciones de LyX disponibles:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/LyX/LyxFunctionList
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\labelwidthstring Bibliografía
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "NewInLyX16"
+key "NewInLyX20"
 
 \end_inset
 
@@ -44889,13 +44901,13 @@ key "NewInLyX16"
 \begin_inset CommandInset href
 LatexCommand href
 name "Página wiki"
-target "http://wiki.lyx.org/LyX/NewInLyX16"
+target "http://wiki.lyx.org/LyX/NewInLyX20"
 
 \end_inset
 
  sobre características nuevas en 
 \family sans
-LyX 1.6.0
+LyX 2.0
 \family default
 :
 \begin_inset Newline newline
@@ -44907,7 +44919,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/LyX/NewInLyX16
+http://wiki.lyx.org/LyX/NewInLyX20
 \end_layout
 
 \end_inset

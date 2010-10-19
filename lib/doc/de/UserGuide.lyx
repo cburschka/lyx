@@ -13937,7 +13937,7 @@ cjk
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX! -Paket ! cjk
+LaTeX-Paket ! cjk
 \end_layout
 
 \end_inset
@@ -16535,7 +16535,7 @@ babel
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX! -Paket ! babel
+LaTeX-Paket ! babel
 \end_layout
 
 \end_inset
@@ -28747,8 +28747,7 @@ Es gibt folgende Querverweisstile:
 \end_layout
 
 \begin_layout Description
-<Querverweis>: druckt die Nummer der Gleitumgebung, dies ist die Voreinstellung:
- 
+<Querverweis>: druckt die Nummer, dies ist die Voreinstellung: 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Tab:Gleitende-Tabelle"
@@ -28759,9 +28758,9 @@ reference "Tab:Gleitende-Tabelle"
 \end_layout
 
 \begin_layout Description
-(<Querverweis>): druckt die Nummer der Gleitumgebung umgeben von zwei runden
- Klammern, dies ist der Stil, wie er normalerweise für Verweise auf Formeln
- verwendet wird, speziell wenn der Name 
+(<Querverweis>): druckt die Nummer umgeben von zwei runden Klammern, dies
+ ist der Stil, wie er normalerweise für Verweise auf Formeln verwendet wird,
+ speziell wenn der Name 
 \begin_inset Quotes gld
 \end_inset
 
@@ -28834,7 +28833,7 @@ Seite
 \begin_inset space ~
 \end_inset
 
-<Seite>: druckt die Nummer der Gleitumgebung, den Text 
+<Seite>: druckt die Nummer, den Text 
 \begin_inset Quotes gld
 \end_inset
 
@@ -28874,18 +28873,43 @@ Bemerkung:
 \series bold
 prettyref
 \series default
+ oder 
+\series bold
+refstyle
+\series default
 
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-Pakete! prettyref
+LaTeX-Paket ! prettyref
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! refstyle
 \end_layout
 
 \end_inset
 
  installiert ist.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Textverweis: druckt die Beschriftung oder den Namen der Referenz: 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "Tab:Gleitende-Tabelle"
 
 \end_inset
 
@@ -29025,7 +29049,19 @@ Wenn ein Querverweis eine nicht existierende Marke referenziert, erscheinen
 \end_layout
 
 \begin_layout Standard
-Querverweise sind detailliert im 
+Querverweise sind detailliert im Kap.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes gld
+\end_inset
+
+Auf Gleitobjekte verweisen
+\begin_inset Quotes grd
+\end_inset
+
+ im 
 \emph on
 Eingebettete Objekte
 \emph default
@@ -32261,7 +32297,7 @@ hyperref
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX! -Paket ! hyperref
+LaTeX-Paket ! hyperref
 \end_layout
 
 \end_inset
@@ -32816,7 +32852,7 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX ! -Paket ! caption
+LaTeX-Paket ! caption
 \end_layout
 
 \end_inset
@@ -34353,7 +34389,7 @@ dvipost
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX ! -Paket ! dvipost
+LaTeX-Paket ! dvipost
 \end_layout
 
 \end_inset
@@ -34588,7 +34624,7 @@ inputenc
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX ! -Paket ! inputenc
+LaTeX-Paket ! inputenc
 \end_layout
 
 \end_inset
@@ -36874,7 +36910,7 @@ tipa.sty
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX!-Paket ! tipa
+LaTeX-Paket ! tipa
 \end_layout
 
 \end_inset
@@ -37738,13 +37774,11 @@ LyX-Funktion
 \end_layout
 
 \begin_layout Standard
-Alle LyX-Funktionen sind in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "LyX-func"
-
-\end_inset
-
+Alle LyX-Funktionen sind im Menü 
+\family sans
+Hilfe\SpecialChar \menuseparator
+LyX-Funktionen
+\family default
  aufgelistet.
  
 \end_layout
@@ -40734,7 +40768,7 @@ inputenc
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX! -Paket ! inputenc
+LaTeX-Paket ! inputenc
 \end_layout
 
 \end_inset
@@ -40765,7 +40799,7 @@ ucs
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX! -Paket ! ucs
+LaTeX-Paket ! ucs
 \end_layout
 
 \end_inset
@@ -40783,7 +40817,7 @@ CJK
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX! -Paket ! cjk
+LaTeX-Paket ! cjk
 \end_layout
 
 \end_inset
@@ -41143,7 +41177,7 @@ amsmath
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX! -Paket ! amsmath
+LaTeX-Paket ! amsmath
 \end_layout
 
 \end_inset
@@ -41157,7 +41191,7 @@ esint
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX! -Paket ! esint
+LaTeX-Paket ! esint
 \end_layout
 
 \end_inset
@@ -42243,7 +42277,7 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX!-Paket ! caption
+LaTeX-Paket ! caption
 \end_layout
 
 \end_inset
@@ -42291,7 +42325,7 @@ fancyhdr
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX!-Paket ! fancyhdr
+LaTeX-Paket ! fancyhdr
 \end_layout
 
 \end_inset
@@ -42343,7 +42377,7 @@ hyperref
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX!-Paket ! hyperref
+LaTeX-Paket ! hyperref
 \end_layout
 
 \end_inset
@@ -42391,7 +42425,7 @@ nomencl
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX!-Paket! nomencl
+LaTeX-Paket! nomencl
 \end_layout
 
 \end_inset
@@ -42439,7 +42473,7 @@ tipa
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX!-Paket ! tipa
+LaTeX-Paket ! tipa
 \end_layout
 
 \end_inset
@@ -42487,7 +42521,7 @@ wrapfig
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX!-Paket ! wrapfig
+LaTeX-Paket ! wrapfig
 \end_layout
 
 \end_inset
@@ -42854,7 +42888,7 @@ http://wiki.lyx.org/Windows/Vietnamese
 \labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "LyX-func"
+key "NeuInLyX20"
 
 \end_inset
 
@@ -42862,47 +42896,13 @@ key "LyX-func"
 \begin_inset CommandInset href
 LatexCommand href
 name "Wiki-Seite"
-target "http://wiki.lyx.org/LyX/LyxFunctionList"
-
-\end_inset
-
- mit einer Liste aller LyX-Funktionen:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/LyX/LyxFunctionList
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\labelwidthstring Literaturverzeichnis
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "NewInLyX16"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Wiki-Seite"
-target "http://wiki.lyx.org/LyX/NewInLyX16"
+target "http://wiki.lyx.org/LyX/NewInLyX20"
 
 \end_inset
 
  über neue Funktionen in 
 \family sans
-LyX 1.6.0
+LyX 2.0
 \family default
 :
 \begin_inset Newline newline
@@ -42914,7 +42914,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/LyX/NewInLyX16
+http://wiki.lyx.org/LyX/NewInLyX20
 \end_layout
 
 \end_inset
