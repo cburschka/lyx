@@ -390,7 +390,6 @@ Um eine Abbildung in Ihr Dokument einzufügen, klicken Sie auf das Symbol
 	scale 70
 	scaleBeforeRotation
 
-
 \end_inset
 
  in der Werkzeugleiste oder wählen das Menü 
@@ -793,7 +792,6 @@ Wenn Sie auf das Werkzeugleisten-Symbol
 	scale 70
 	scaleBeforeRotation
 
-
 \end_inset
 
  klicken oder 
@@ -979,7 +977,6 @@ Marke
 	scale 70
 	scaleBeforeRotation
 
-
 \end_inset
 
  eine Marke ein.
@@ -993,7 +990,6 @@ Querverweis
 	filename ../../images/dialog-show-new-inset_ref.png
 	scale 70
 	scaleBeforeRotation
-
 
 \end_inset
 
@@ -1616,7 +1612,6 @@ Eine Tabelle können Sie mit dem Werkzeugleistenknopf
 	filename ../../images/tabular-insert.png
 	scale 70
 	scaleBeforeRotation
-
 
 \end_inset
 
@@ -2739,7 +2734,6 @@ Tabelle
 	scale 70
 	scaleBeforeRotation
 
-
 \end_inset
 
  erzeugt werden.
@@ -2766,7 +2760,6 @@ Nr:
 	filename ../../images/tabular-insert.png
 	scale 70
 	scaleBeforeRotation
-
 
 \end_inset
 
@@ -2898,7 +2891,6 @@ Marke
 	scale 70
 	scaleBeforeRotation
 
-
 \end_inset
 
  eine Marke ein.
@@ -2912,7 +2904,6 @@ Querverweis
 	filename ../../images/dialog-show-new-inset_ref.png
 	scale 70
 	scaleBeforeRotation
-
 
 \end_inset
 
@@ -11455,7 +11446,6 @@ Um mehrere Zellen einer Zeile zu einer zu verbinden, markieren Sie diese
 	scale 70
 	scaleBeforeRotation
 
-
 \end_inset
 
  in der Werkzeugleiste, das Menü 
@@ -19865,7 +19855,6 @@ Gleitobjekt
 	scale 70
 	scaleBeforeRotation
 
-
 \end_inset
 
  oder 
@@ -19873,7 +19862,6 @@ Gleitobjekt
 	filename ../../images/float-insert_table.png
 	scale 70
 	scaleBeforeRotation
-
 
 \end_inset
 
@@ -19924,7 +19912,6 @@ Vorhandene Abbildungen oder Tabellen können Sie in ein Gleitobjekt packen,
 	scale 70
 	scaleBeforeRotation
 
-
 \end_inset
 
  oder 
@@ -19932,7 +19919,6 @@ Vorhandene Abbildungen oder Tabellen können Sie in ein Gleitobjekt packen,
 	filename ../../images/float-insert_table.png
 	scale 70
 	scaleBeforeRotation
-
 
 \end_inset
 
@@ -20912,18 +20898,114 @@ Bemerkung:
 \series bold
 prettyref
 \series default
+ oder 
+\series bold
+refstyle
+\series default
 
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-Pakete! prettyref
+LaTeX-Pakete ! prettyref
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! refstyle
 \end_layout
 
 \end_inset
 
  installiert ist.
 \end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Sie können duch setzen der Option 
+\family sans
+Verwende refstyle (nicht prettyref) für Querverweise
+\family default
+ im Menü 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Dokumentklasse
+\family default
+ wählen, welches LaTeX-Paket für diesen Verweistyp verwendet wird.
+ Das Format wird definiert, indem man den Befehl 
+\series bold
+
+\backslash
+newrefformat
+\series default
+ (prettyref) oder 
+\series bold
+
+\backslash
+newref
+\series default
+ (refstyle) in die Dokumentpräambel einfügt.
+ Z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ kann das Format aller Referenzen auf Abbildungen (haben das Marken-Kürzel
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+abb
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+) mit dem Befehle
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+newref{abb}{refcmd={Bild auf Seite 
+\backslash
+pageref{#1}}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+geändert werden.
+ Für weitere Informationen bezüglich des Formats sei auf die Paket-Dokumentation
+en verwiesen, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "prettyref,refstyle"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Textverweis: druckt die Beschriftung oder den Namen der Referenz: 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "abb:Zwei-Teilabbildungen"
 
 \end_inset
 
@@ -20995,7 +21077,21 @@ status open
 \series bold
 Bemerkung:
 \series default
- Das LaTeX-Paket 
+ Es wird empfohlen, das LaTeX-Paket 
+\series bold
+refstyle
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! refstyle
+\end_layout
+
+\end_inset
+
+ zu verwenden, da 
 \series bold
 prettyref
 \series default
@@ -21004,12 +21100,12 @@ prettyref
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-Pakete! prettyref
+LaTeX-Pakete ! prettyref
 \end_layout
 
 \end_inset
 
- kennt nicht alle möglichen Marken-Kürzel
+ nicht alle möglichen LyX Marken-Kürzel
 \begin_inset Foot
 status collapsed
 
@@ -21032,20 +21128,7 @@ B.
 
 \end_inset
 
- von LyX und ist auch nicht internationalisiert.
- Wie man weitere Marken-Kürzel und Übersetzungen hinzufüg, ist in der Dokumentat
-ion von 
-\series bold
-prettyref
-\series default
- beschrieben 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "prettyref"
-
-\end_inset
-
-.
+ kennt und auch nicht internationalisiert ist.
 \end_layout
 
 \end_inset
@@ -24682,7 +24765,6 @@ Notizen werden mit einem Klick auf
 	scale 85
 	scaleBeforeRotation
 
-
 \end_inset
 
  oder 
@@ -24906,7 +24988,6 @@ Wenn Sie auf den Werkzeugleistenknopf
 	filename ../../images/note-insert.png
 	scale 85
 	scaleBeforeRotation
-
 
 \end_inset
 
@@ -35456,7 +35537,40 @@ LaTeX-Pakete ! prettyref
 \labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "NewInLyX20"
+key "refstyle"
+
+\end_inset
+
+Dokumentation des LaTeX-Pakets 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "refstyle"
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/refstyle/doc/latex/refstyle/refstyle.pdf"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! refstyle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "NeuInLyX20"
 
 \end_inset
 

@@ -20304,6 +20304,10 @@ Nota:
 \series bold
 prettyref
 \series default
+ o 
+\series bold
+refstyle
+\series default
 .
 \begin_inset Index idx
 status collapsed
@@ -20315,7 +20319,117 @@ LaTeX-paquetes ! prettyref
 \end_inset
 
 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-paquetes ! refstyle
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+You can select which LaTeX-package should be used for this feature by setting
+ the option 
+\family sans
+Use refstyle (not prettyref) for cross-references
+\family default
+ in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document Class
+\family default
+.
+ The format is specified by adding the command 
+\series bold
+
+\backslash
+newrefformat
+\series default
+ (prettyref) or 
+\series bold
+
+\backslash
+newref
+\series default
+ (refstyle) to the preamble of the document.
+ For example redefining all references to figures (which have the label
+ shortcut
+\lang spanish
+ 
+\begin_inset Quotes fld
+\end_inset
+
+
+\family sans
+fig
+\family default
+
+\begin_inset Quotes frd
+\end_inset
+
+) 
+\lang english
+can be done with this command
+\lang spanish
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+newref{fig}{refcmd={
+\lang english
+Image on page
+\lang spanish
+ 
+\backslash
+pageref{#1}}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+For more information about the format, have a look at the package documentations
+\lang spanish
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "prettyref,refstyle"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Textual
+\begin_inset space ~
+\end_inset
+
+reference: prints the caption of the reference
+\lang spanish
+: 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "fig:Dos-imágenes-distorsionadas"
 
 \end_inset
 
@@ -20384,7 +20498,29 @@ status open
 \series bold
 Nota:
 \series default
- El paquete LaTeX 
+ 
+\lang english
+It is recommended to use
+\lang spanish
+ el paquete LaTeX 
+\series bold
+refstyle
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-paquetes ! refstyle
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+because
+\lang spanish
+ 
 \series bold
 prettyref
 \series default
@@ -20417,19 +20553,6 @@ fig:
 \end_inset
 
  posibles en LyX y no está internacionalizado.
- Para saber cómo indicar a 
-\series bold
-prettyref
-\series default
- nuevas abreviaturas y traducciones, echa un vistazo a su documentación,
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "prettyref"
-
-\end_inset
-
-.
 \end_layout
 
 \end_inset
@@ -34625,6 +34748,39 @@ status collapsed
 
 \begin_layout Plain Layout
 LaTeX-paquetes ! prettyref
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Bibliografía
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "refstyle"
+
+\end_inset
+
+Documentación del paquete LaTeX 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "refstyle"
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/refstyle/doc/latex/refstyle/refstyle.pdf"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-paquetes ! refstyle
 \end_layout
 
 \end_inset

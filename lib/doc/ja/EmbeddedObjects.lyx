@@ -19087,13 +19087,157 @@ reference "fig:歪められた二つの像"
 \end_layout
 
 \begin_layout Description
-整形された参照: これはユーザー定義の相互参照書式で表示します。
+
+\lang english
+Formatted
+\begin_inset space ~
+\end_inset
+
+reference: prints a self-defined cross-reference format.
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
-【註】この機能は、LaTeXパッケージのprettyrefが導入済みの時のみ利用できます。
+
+\series bold
+\lang english
+Note:
+\series default
+ This feature is only available when you have the LaTeX-package 
+\series bold
+prettyref
+\series default
+ or 
+\series bold
+refstyle
+\series default
+\lang japanese
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ! prettyref
 \end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
+\end_layout
+
+\end_inset
+
+
+\lang english
+ installed.
+\end_layout
+
+\end_inset
+
+
+\lang japanese
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+You can select which LaTeX-package should be used for this feature by setting
+ the option 
+\family sans
+Use refstyle (not prettyref) for cross-references
+\family default
+ in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document Class
+\family default
+.
+ The format is specified by adding the command 
+\series bold
+
+\backslash
+newrefformat
+\series default
+ (prettyref) or 
+\series bold
+
+\backslash
+newref
+\series default
+ (refstyle) to the preamble of the document.
+ For example redefining all references to figures (which have the label
+ shortcut 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+fig
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+) can be done with this command
+\lang japanese
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+newref{fig}{refcmd={
+\lang english
+Image on page
+\lang japanese
+ 
+\backslash
+pageref{#1}}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+For more information about the format, have a look at the package documentations
+\lang japanese
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "prettyref,refstyle"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Textual
+\begin_inset space ~
+\end_inset
+
+reference: prints the caption of the reference
+\lang japanese
+: 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "fig:歪められた二つの像"
 
 \end_inset
 
@@ -19101,20 +19245,125 @@ status open
 \end_layout
 
 \begin_layout Standard
-<参照ページ>様式は、ラベルが同じページにあるか前後隣接するページにある場合には、ページ番号を出力しないことに注意してください。その代わりに、たとえば「
+
+\family sans
+\lang english
+<page>
+\family default
+ will not print the page number if the label is on the previous, the same,
+ or the next page.
+ You will e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+see the text 
+\begin_inset Quotes eld
+\end_inset
+
+
 \family sans
 on this page
 \family default
-」という文が出力されます。
+
+\begin_inset Quotes erd
+\end_inset
+
+ instead.
+ The style 
+\family sans
+<reference> on page <page>
+\family default
+ will not print anything about the page if the label is on the same page.
 \end_layout
 
 \begin_layout Standard
-出力中では、参照されている文書の箇所のページ番号は、LaTeXによって自動的に計算されます。参照の種類は、相互参照ボックスをクリックすると現れる相互参照ウィンド
-ウの
+
+\lang english
+The number and current page of the part of the document referred to in the
+ output is automatically calculated by LaTeX.
+ The varieties are adjusted in the field 
 \family sans
-書式
+Format
 \family default
-フィールドで選ぶことができます。
+ of the cross-reference window that appears when you click on the cross-referenc
+e box.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ It is recommended to use the LaTeX-package 
+\series bold
+refstyle
+\series default
+\lang japanese
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
+\end_layout
+
+\end_inset
+
+
+\lang english
+ because 
+\series bold
+prettyref
+\series default
+\lang japanese
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ! prettyref
+\end_layout
+
+\end_inset
+
+
+\lang english
+ does not know all of LyX's possible label shortcuts
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+fig:
+\begin_inset Quotes erd
+\end_inset
+
+ is for example LyX's shortcut for labels in figure captions.
+\end_layout
+
+\end_inset
+
+ and is not internationalized.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -32427,6 +32676,72 @@ LaTeXぱっけーじ@LaTeXパッケージ ! sidecap
 \end_inset
 
 の取扱説明書
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring 参考文献
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "prettyref"
+
+\end_inset
+
+LaTeXパッケージ
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "prettyref"
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ! prettyref
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring 参考文献
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "refstyle"
+
+\end_inset
+
+LaTeXパッケージ
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "refstyle"
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/refstyle/doc/latex/refstyle/refstyle.pdf"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography

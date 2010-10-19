@@ -122,7 +122,6 @@
 % number algorithm floats within chapters
 \numberwithin{algorithm}{chapter}
 
-
 % ------------------------------------
 % used to check for needed LaTeX packages
 \usepackage{ifthen}
@@ -1197,6 +1196,13 @@ A Platypus.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Two-distorted-images"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig2:Two-distorted-images-2"
 
 \end_inset
 
@@ -20444,7 +20450,7 @@ Formatted
 \begin_inset space ~
 \end_inset
 
-reference: prints a self defined cross-reference format.
+reference: prints a self-defined cross-reference format.
 \begin_inset Newline newline
 \end_inset
 
@@ -20461,6 +20467,10 @@ Note:
 \series bold
 prettyref
 \series default
+ or 
+\series bold
+refstyle
+\series default
 
 \begin_inset Index idx
 status collapsed
@@ -20471,8 +20481,99 @@ LaTeX-packages ! prettyref
 
 \end_inset
 
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! refstyle
+\end_layout
+
+\end_inset
+
  installed.
 \end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+You can select which LaTeX-package should be used for this feature by setting
+ the option 
+\family sans
+Use refstyle (not prettyref) for cross-references
+\family default
+ in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document Class
+\family default
+.
+ The format is specified by adding the command 
+\series bold
+
+\backslash
+newrefformat
+\series default
+ (prettyref) or 
+\series bold
+
+\backslash
+newref
+\series default
+ (refstyle) to the preamble of the document.
+ For example redefining all references to figures (which have the label
+ shortcut 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+fig
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+) can be done with this command
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+newref{fig}{refcmd={Image on page 
+\backslash
+pageref{#1}}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+For more information about the format, have a look at the package documentations
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "prettyref,refstyle"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Textual
+\begin_inset space ~
+\end_inset
+
+reference: prints the caption of the reference: 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "fig:Two-distorted-images"
 
 \end_inset
 
@@ -20534,7 +20635,21 @@ status open
 \series bold
 Note:
 \series default
- The LaTeX-package 
+ It is recommended to use the LaTeX-package 
+\series bold
+refstyle
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! refstyle
+\end_layout
+
+\end_inset
+
+ because 
 \series bold
 prettyref
 \series default
@@ -20566,18 +20681,6 @@ fig:
 \end_inset
 
  and is not internationalized.
- To find out how to tell 
-\series bold
-prettyref
-\series default
- new shortcuts and translations, have a look at its documentation 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "prettyref"
-
-\end_inset
-
-.
 \end_layout
 
 \end_inset
@@ -35127,6 +35230,39 @@ status collapsed
 
 \begin_layout Plain Layout
 LaTeX-packages ! prettyref
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "refstyle"
+
+\end_inset
+
+Documentation of the LaTeX-package 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "refstyle"
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/refstyle/doc/latex/refstyle/refstyle.pdf"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! refstyle
 \end_layout
 
 \end_inset

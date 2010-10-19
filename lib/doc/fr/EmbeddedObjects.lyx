@@ -20971,10 +20971,9 @@ forme
 \end_inset
 
 : affiche une référence croisée qui définit son propre format.
+\begin_inset Newline newline
+\end_inset
 
-\lang english
- 
-\lang french
 
 \begin_inset Note Greyedout
 status open
@@ -20989,6 +20988,10 @@ Note:
 \series bold
 prettyref
 \series default
+ ou 
+\series bold
+refstyle
+\series default
 
 \begin_inset Index idx
 status collapsed
@@ -20999,8 +21002,114 @@ Paquetages LaTeX ! prettyref
 
 \end_inset
 
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! refstyle
+\end_layout
+
+\end_inset
+
 .
 \end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+You can select which LaTeX-package should be used for this feature by setting
+ the option 
+\family sans
+Use refstyle (not prettyref) for cross-references
+\family default
+ in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document Class
+\family default
+.
+ The format is specified by adding the command 
+\series bold
+
+\backslash
+newrefformat
+\series default
+ (prettyref) or 
+\series bold
+
+\backslash
+newref
+\series default
+ (refstyle) to the preamble of the document.
+ For example redefining all references to figures (which have the label
+ shortcut 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+fig
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+) can be done with this command
+\lang french
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+newref{fig}{refcmd={
+\lang english
+Image on page
+\lang french
+ 
+\backslash
+pageref{#1}}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+For more information about the format, have a look at the package documentations
+\lang french
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "prettyref,refstyle"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Textual
+\begin_inset space ~
+\end_inset
+
+reference: prints the caption of the reference
+\lang french
+: 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "fig:Deux-images-déformées"
 
 \end_inset
 
@@ -21061,7 +21170,29 @@ status open
 \series bold
 Note:
 \series default
- Le paquetage LaTeX 
+ 
+\lang english
+It is recommended to use
+\lang french
+ le paquetage LaTeX 
+\series bold
+refstyle
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! refstyle
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+because
+\lang french
+ 
 \series bold
 prettyref
 \series default
@@ -21094,19 +21225,6 @@ fig:
 \end_inset
 
  et n'est pas internationalisé.
- Pour savoir comment introduire de nouveaux raccourcis ou de nouvelles traductio
-ns dans 
-\series bold
-prettyref
-\series default
-, voir la documentation du paquetage
-\begin_inset CommandInset citation
-LatexCommand cite
-key "prettyref"
-
-\end_inset
-
-.
 \end_layout
 
 \end_inset
@@ -36023,6 +36141,39 @@ status collapsed
 
 \begin_layout Plain Layout
 Paquetages LaTeX ! prettyref
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Bibliographie
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "refstyle"
+
+\end_inset
+
+Documentation du paquetage LaTeX
+\series bold
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "refstyle"
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/refstyle/doc/latex/refstyle/refstyle.pdf"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! refstyle
 \end_layout
 
 \end_inset
