@@ -1672,7 +1672,15 @@ reference "sub:連結列"
 
 \end_inset
 
-節をご参照下さい。
+節をご参照下さい 
+\lang english
+or the cells of one column as multirow cell, see section
+\begin_inset space ~
+\end_inset
+
+??
+\lang japanese
+。
 \begin_inset Newline newline
 \end_inset
 
@@ -1934,6 +1942,18 @@ status collapsed
 
 \begin_layout Labeling
 \begin_inset Graphics
+	filename ../../images/tabular-feature_align-decimal.png
+	scaleBeforeRotation
+
+\end_inset
+
+ 
+\lang english
+aligns the content of the current column at a character
+\end_layout
+
+\begin_layout Labeling
+\begin_inset Graphics
 	filename ../../images/tabular-feature_m-valign-top.png
 	scaleBeforeRotation
 
@@ -1990,6 +2010,18 @@ status collapsed
 \end_inset
 
 は、現在セルあるいは選択範囲を連結列にします。
+\end_layout
+
+\begin_layout Labeling
+\begin_inset Graphics
+	filename ../../images/tabular-feature_multirow.png
+	scaleBeforeRotation
+
+\end_inset
+
+ 
+\lang english
+sets the current cell or selection as a multirow
 \end_layout
 
 \begin_layout Standard
@@ -4784,7 +4816,25 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-長尺表は、既定値では中央揃えになっています。行や列の揃えとは異なり、表の揃えは、いまのところ表ダイアログで変更することができません。長尺表の揃えを変更するには、
+
+\lang english
+The horizontal alignment of longtables can be set in the table settings
+ dialog.
+ For left- and right-alignment the table will be directly at the page border.
+ To add space between the table and the border one has to set the alignment
+ to center and change the value of the LaTeX-lengths 
+\series bold
+
+\backslash
+LTleft 
+\series default
+or 
+\series bold
+
+\backslash
+LTright
+\series default
+ by inserting this line as TeX-Code before the longtable:
 \end_layout
 
 \begin_layout Standard
@@ -4839,17 +4889,27 @@ fill
 \end_layout
 
 \begin_layout Standard
-以下の長尺表は
+
+\lang english
+The following longtable was centered and
+\lang japanese
+ 
 \series bold
 
 \backslash
 LTleft
 \series default
-を0
-\begin_inset space \thinspace{}
-\end_inset
-
-ptに設定して、左揃えにした例です。
+ 
+\lang english
+set to
+\lang japanese
+ 
+\family sans
+0.1
+\backslash
+columnwidth
+\family default
+:
 \begin_inset ERT
 status collapsed
 
@@ -4859,7 +4919,9 @@ status collapsed
 \backslash
 setlength{
 \backslash
-LTleft}{0pt}
+LTleft}{0.1
+\backslash
+columnwidth}
 \end_layout
 
 \end_inset
@@ -5147,7 +5209,7 @@ addtocounter{table}{-1}
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 このコマンドの説明に関しては、第

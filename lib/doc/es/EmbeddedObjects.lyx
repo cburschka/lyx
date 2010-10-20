@@ -1909,7 +1909,7 @@ tabla
  actual.
  Una vez puesta la anchura puedes ajustar también el alineamiento vertical.
  Una anchura determinada permite tener saltos de línea y distintos párrafos
- de texto, véase sección 
+ de texto, véase sección
 \begin_inset space ~
 \end_inset
 
@@ -1938,7 +1938,19 @@ reference "sub:Multicolumnas"
 
 \end_inset
 
-.
+ 
+\lang english
+or the cells of one column as multirow cell
+\lang spanish
+, véase sección
+\begin_inset space ~
+\end_inset
+
+
+\lang english
+??
+\lang spanish
+..
 \begin_inset Newline newline
 \end_inset
 
@@ -2235,6 +2247,19 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
+	filename ../../images/tabular-feature_align-decimal.png
+	scaleBeforeRotation
+
+\end_inset
+
+ alinea el contenido de la celda/columna 
+\lang english
+at a character
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Graphics
 	filename ../../images/tabular-feature_m-valign-top.png
 
 \end_inset
@@ -2290,6 +2315,19 @@ La barra de herramientas tiene los siguientes iconos:
 \end_inset
 
  establece la celda actual o selección como multicolumna
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Graphics
+	filename ../../images/tabular-feature_multirow.png
+	scaleBeforeRotation
+
+\end_inset
+
+ establece la celda actual o selección como 
+\lang english
+multirow
 \end_layout
 
 \begin_layout Standard
@@ -5191,11 +5229,15 @@ Tablas largas ! Alineación
 \end_layout
 
 \begin_layout Standard
-Las tablas largas se centran por omisión.
- Al contrario de la alineación de filas y columnas, la alineación de una
- tabla no se puede cambiar por ahora en el diálogo de tablas.
- Para cambiar la alineación de tablas largas debes cambiar el valor de las
- longitudes 
+
+\lang english
+The horizontal alignment of longtables can be set in the table settings
+ dialog.
+ For left- and right-alignment the table will be directly at the page border.
+ To add space between the table and the border one has to set the alignment
+ to center
+\lang spanish
+ y cambiar el valor de las longitudes 
 \series bold
 
 \backslash
@@ -5258,13 +5300,27 @@ fill
 \end_layout
 
 \begin_layout Standard
-La siguiente tabla larga se ha alineado a la izquierda poniendo 
+La siguiente tabla larga se ha alineado 
+\lang english
+centered
+\lang spanish
+ y 
 \series bold
 
 \backslash
 LTleft
 \series default
- 0 pt.
+ 
+\lang english
+set to
+\lang spanish
+ 
+\family sans
+0.1
+\backslash
+columnwidth
+\family default
+:
 \begin_inset ERT
 status collapsed
 
@@ -5274,7 +5330,9 @@ status collapsed
 \backslash
 setlength{
 \backslash
-LTleft}{0pt}
+LTleft}{0.1
+\backslash
+columnwidth}
 \end_layout
 
 \end_inset

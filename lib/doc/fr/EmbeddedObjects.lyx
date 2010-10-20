@@ -2226,7 +2226,15 @@ reference "sub:Multicolonnes"
 
 \end_inset
 
-.
+ 
+\lang english
+or the cells of one column as multirow cell
+\lang french
+, voir la section
+\begin_inset space ~
+\end_inset
+
+??.
 \begin_inset Newline newline
 \end_inset
 
@@ -2629,6 +2637,19 @@ ou colonne ?
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
+	filename ../../images/tabular-feature_align-decimal.png
+	scaleBeforeRotation
+
+\end_inset
+
+ aligne le contenu de la colonne courante 
+\lang english
+at a character
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Graphics
 	filename ../../images/tabular-feature_m-valign-top.png
 	scaleBeforeRotation
 
@@ -2691,6 +2712,21 @@ re
 \end_inset
 
  transforme en multi-colonne la cellule ou la sélection courante
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Graphics
+	filename ../../images/tabular-feature_multirow.png
+	scaleBeforeRotation
+
+\end_inset
+
+ transforme en 
+\lang english
+multirow
+\lang french
+ la cellule ou la sélection courante
 \end_layout
 
 \begin_layout Standard
@@ -5518,12 +5554,15 @@ Tableaux longs ! Alignement
 \end_layout
 
 \begin_layout Standard
-Implicitement les Tableaux Longs sont centrés.
- Contrairement à l'alignement dans les colonnes et les lignes, l'alignement
- du tableau ne peut actuellement pas être modifié à partir de la fenêtre
- de dialogue.
- Pour modifier l'alignement d'un tableau long, vous devez modifier les valeurs
- des longueurs 
+
+\lang english
+The horizontal alignment of longtables can be set in the table settings
+ dialog.
+ For left- and right-alignment the table will be directly at the page border.
+ To add space between the table and the border one has to set the alignment
+ to center
+\lang french
+ et modifier les valeurs des longueurs 
 \series bold
 
 \backslash
@@ -5590,17 +5629,19 @@ fill
 \end_layout
 
 \begin_layout Standard
-Le tableau long suivant a été aligné à gauche en mettant 
+Le tableau long suivant a été centrée en mettant 
 \series bold
 
 \backslash
 LTleft
 \series default
- à 0
-\begin_inset space \thinspace{}
-\end_inset
-
-pt.
+ à 
+\family sans
+0.1
+\backslash
+columnwidth
+\family default
+:
 \begin_inset ERT
 status collapsed
 
@@ -5610,7 +5651,9 @@ status collapsed
 \backslash
 setlength{
 \backslash
-LTleft}{0pt}
+LTleft}{0.1
+\backslash
+columnwidth}
 \end_layout
 
 \end_inset

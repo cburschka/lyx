@@ -2062,7 +2062,11 @@ reference "sub:Multicolumns"
 
 \end_inset
 
-.
+ or the cells of one column as multirow cell, see section
+\begin_inset space ~
+\end_inset
+
+??.
 \begin_inset Newline newline
 \end_inset
 
@@ -2374,6 +2378,17 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
+	filename ../images/tabular-feature_align-decimal.png
+	scaleBeforeRotation
+
+\end_inset
+
+ aligns the content of the current column at a character
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Graphics
 	filename ../images/tabular-feature_m-valign-top.png
 	scaleBeforeRotation
 
@@ -2435,6 +2450,17 @@ The toolbar has the following icons:
 \end_inset
 
  sets the current cell or selection as a multicolumn
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Graphics
+	filename ../images/tabular-feature_multirow.png
+	scaleBeforeRotation
+
+\end_inset
+
+ sets the current cell or selection as a multirow
 \end_layout
 
 \begin_layout Standard
@@ -5305,23 +5331,23 @@ Longtables ! Alignment
 \end_layout
 
 \begin_layout Standard
-Longtables are by default centered.
- Unlike the alignment of the table columns and rows, the table alignment
- can currently not be changed in the table dialog.
- To change the alignment of longtables you have to change the value of the
- lengths 
+The horizontal alignment of longtables can be set in the table settings
+ dialog.
+ For left- and right-alignment the table will be directly at the page border.
+ To add space between the table and the border one has to set the alignment
+ to center and change the value of the LaTeX-lengths 
 \series bold
 
 \backslash
 LTleft 
 \series default
-and 
+or 
 \series bold
 
 \backslash
 LTright
 \series default
- by inserting this line as TeX-Code before the corresponding longtable:
+ by inserting this line as TeX-Code before the longtable:
 \end_layout
 
 \begin_layout Standard
@@ -5335,7 +5361,7 @@ LTleft}{value}
 \end_layout
 
 \begin_layout Standard
-where the value can have any of the units listed in Table
+The value can have any of the units listed in Table
 \begin_inset space ~
 \end_inset
 
@@ -5371,17 +5397,19 @@ fill
 \end_layout
 
 \begin_layout Standard
-The following longtable was left-aligned by setting 
+The following longtable was centered and 
 \series bold
 
 \backslash
 LTleft
 \series default
- to 0
-\begin_inset space \thinspace{}
-\end_inset
-
-pt.
+ set to 
+\family sans
+0.1
+\backslash
+columnwidth
+\family default
+:
 \begin_inset ERT
 status collapsed
 
@@ -5391,7 +5419,9 @@ status collapsed
 \backslash
 setlength{
 \backslash
-LTleft}{0pt}
+LTleft}{0.1
+\backslash
+columnwidth}
 \end_layout
 
 \end_inset
@@ -5404,7 +5434,7 @@ LTleft}{0pt}
 <lyxtabular version="3" rows="5" columns="5">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">

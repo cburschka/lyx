@@ -1978,11 +1978,7 @@ reference "uab:Mehrfache-Zeilen-in"
 \end_inset
 
 Außerdem können Sie mehrere Zellen einer Zeile markieren und die Auswahl
- als 
-\family sans
-Mehrfachspalte
-\family default
- definieren, wie in Abschnitt
+ als Mehrfachspalte oder Mehrfachzeile definieren, wie in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -1993,7 +1989,7 @@ reference "uab:Mehrfachspalten"
 
 \end_inset
 
- beschrieben.
+ und ?? beschrieben.
 \begin_inset Newline newline
 \end_inset
 
@@ -2324,6 +2320,17 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
+	filename ../../images/tabular-feature_align-decimal.png
+	scaleBeforeRotation
+
+\end_inset
+
+ Richtet den Inhalt der ausgewählten Spalte an einem Zeichen aus
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Graphics
 	filename ../../images/tabular-feature_m-valign-top.png
 	scaleBeforeRotation
 
@@ -2385,6 +2392,17 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \end_inset
 
  Setzt die ausgewählte(n) Zelle(n) einer Zeile als Mehrfachspalte
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Graphics
+	filename ../../images/tabular-feature_multirow.png
+	scaleBeforeRotation
+
+\end_inset
+
+ Setzt die ausgewählte(n) Zelle(n) einer Zeile als Mehrfachzeile
 \end_layout
 
 \begin_layout Standard
@@ -5286,11 +5304,12 @@ Tabellen ! lange ! Ausrichtung
 \end_layout
 
 \begin_layout Standard
-Lange Tabellen sind standardmäßig zentriert ausgerichtet.
- Im Gegensatz zur Ausrichtung von Tabellenspalten und -zeilen kann die Ausrichtu
-ng von Tabellen nicht im Tabellen-Dialogfenster geändert werden.
- Um die Ausrichtung von langen Tabellen zu ändern, müssen die Werte der
- Längen 
+Die horizontale Ausrichtung von langen Tabellen kann in den Tabelleneinstellunge
+n festgelegt werden.
+ Bei linker und rechter Ausrichtung befindet sich die Tabelle direkt am
+ Seitenrand.
+ Um Platz zwischen Seitenrand und Tabelle einzufügen, muss die Tabelle zentriert
+ ausgerichtet werden und die Werte der Längen 
 \series bold
 
 \backslash
@@ -5317,7 +5336,7 @@ LTleft}{Wert}
 \end_layout
 
 \begin_layout Standard
-Wobei der Wert eine der in Tabelle
+Der Wert kann eine der in Tabelle
 \begin_inset space ~
 \end_inset
 
@@ -5328,7 +5347,7 @@ reference "tab:Maßeinheiten"
 
 \end_inset
 
- aufgelisteten Einheiten haben kann.
+ aufgelisteten Einheiten kann.
  
 \series bold
 
@@ -5354,17 +5373,19 @@ fill
 \end_layout
 
 \begin_layout Standard
-Die folgende lange Tabelle wurde links ausgerichtet, indem 
+Die folgende lange Tabelle wurde zentriert und 
 \series bold
 
 \backslash
 LTleft
 \series default
- auf den Wert 0
-\begin_inset space \thinspace{}
-\end_inset
-
-pt gesetzt wurde.
+ auf den Wert 
+\family sans
+0.1
+\backslash
+columnwidth
+\family default
+ gesetzt:
 \begin_inset ERT
 status collapsed
 
@@ -5374,7 +5395,9 @@ status collapsed
 \backslash
 setlength{
 \backslash
-LTleft}{0pt}
+LTleft}{0.1
+\backslash
+columnwidth}
 \end_layout
 
 \end_inset
@@ -5388,7 +5411,7 @@ LTleft}{0pt}
 <features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
