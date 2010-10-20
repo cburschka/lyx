@@ -14,7 +14,6 @@
 
 #include "alert.h"
 
-
 #include "frontends/Application.h"
 
 #include "qt_helpers.h"
@@ -25,6 +24,7 @@
 #include "support/docstring.h"
 #include "support/lstrings.h"
 #include "support/ProgressInterface.h"
+#include "support/InGuiThread.h"
 
 #include <QApplication>
 #include <QCheckBox>
@@ -36,6 +36,11 @@
 
 #include <iomanip>
 #include <iostream>
+
+
+// sync with GuiView.cpp
+#define EXPORT_in_THREAD 0
+
 
 using namespace std;
 using namespace lyx::support;
@@ -124,7 +129,8 @@ void noAppDialog(QString const & title, QString const & msg, QMessageBox::Icon m
 
 namespace Alert {
 
-int prompt(docstring const & title0, docstring const & question,
+
+int doPrompt(docstring const & title0, docstring const & question,
 		  int default_button, int cancel_button,
 		  docstring const & b1, docstring const & b2,
 		  docstring const & b3, docstring const & b4)
@@ -178,8 +184,21 @@ int prompt(docstring const & title0, docstring const & question,
 	return res;
 }
 
+int prompt(docstring const & title0, docstring const & question,
+		  int default_button, int cancel_button,
+		  docstring const & b1, docstring const & b2,
+		  docstring const & b3, docstring const & b4)
+{
+#ifdef EXPORT_in_THREAD
+	return InGuiThread<int>().call(&doPrompt,
+#else
+	return doPrompt(
+#endif
+				title0, question, default_button,
+				cancel_button, b1, b2, b3, b4);
+}
 
-void warning(docstring const & title0, docstring const & message,
+void doWarning(docstring const & title0, docstring const & message,
 	     bool const & askshowagain)
 {
 	lyxerr << "Warning: " << title0 << '\n'
@@ -213,8 +232,18 @@ void warning(docstring const & title0, docstring const & message,
 	qApp->restoreOverrideCursor();
 }
 
+void warning(docstring const & title0, docstring const & message,
+	     bool const & askshowagain)
+{
+#ifdef EXPORT_in_THREAD	
+	InGuiThread<void>().call(&doWarning,
+#else
+	doWarning(
+#endif
+				title0, message, askshowagain);
+}
 
-void error(docstring const & title0, docstring const & message)
+void doError(docstring const & title0, docstring const & message)
 {
 	lyxerr << "Error: " << title0 << '\n'
 	       << "----------------------------------------\n"
@@ -240,8 +269,17 @@ void error(docstring const & title0, docstring const & message)
 	qApp->restoreOverrideCursor();
 }
 
+void error(docstring const & title0, docstring const & message)
+{
+#ifdef EXPORT_in_THREAD
+	InGuiThread<void>().call(&doError, 
+#else
+	doError(
+#endif
+				title0, message);
+}
 
-void information(docstring const & title0, docstring const & message)
+void doInformation(docstring const & title0, docstring const & message)
 {
 	if (!use_gui || lyxerr.debugging())
 		lyxerr << title0 << '\n'
@@ -268,8 +306,17 @@ void information(docstring const & title0, docstring const & message)
 	qApp->restoreOverrideCursor();
 }
 
+void information(docstring const & title0, docstring const & message)
+{
+#ifdef EXPORT_in_THREAD
+	InGuiThread<void>().call(&doInformation,
+#else
+	doInformation(
+#endif
+				title0, message);
+}
 
-bool askForText(docstring & response, docstring const & msg,
+bool doAskForText(docstring & response, docstring const & msg,
 	docstring const & dflt)
 {
 	if (!use_gui || lyxerr.debugging()) {
@@ -300,6 +347,16 @@ bool askForText(docstring & response, docstring const & msg,
 	return false;
 }
 
+bool askForText(docstring & response, docstring const & msg,
+	docstring const & dflt)
+{
+#ifdef EXPORT_in_THREAD
+	return InGuiThread<bool>().call(&doAskForText,
+#else
+	return doAskGForText(
+#endif
+				response, msg, dflt);
+}
 
 } // namespace Alert
 } // namespace frontend

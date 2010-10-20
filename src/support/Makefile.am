@@ -56,10 +56,13 @@ liblyxsupport_a_SOURCES = \
 	foreach.h \
 	ForkedCalls.cpp \
 	ForkedCalls.h \
+	functional.h \
 	gettext.cpp \
 	gettext.h \
 	gzstream.cpp \
 	gzstream.h \
+	InGuiThread.h \
+	InGuiThread.cpp \
 	kill.cpp \
 	lassert.h \
 	lassert.cpp \
