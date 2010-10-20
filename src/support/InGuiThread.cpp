@@ -8,7 +8,9 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#include "InGuiThread.h"
+#include <config.h>
+
+#include "support/InGuiThread.h"
 
 #include <QThread>
 #include <QEventLoop>
