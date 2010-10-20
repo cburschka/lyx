@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-10-19 02:12+0200\n"
+"POT-Creation-Date: 2010-10-20 02:33+0200\n"
 "PO-Revision-Date: 2009-10-18 18:07+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -563,8 +563,8 @@ msgid "Remove the selected branch"
 msgstr "Sititchî on s' apinse"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3619
-#: src/Buffer.cpp:3630
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3631
+#: src/Buffer.cpp:3642
 #, fuzzy
 msgid "&Remove"
 msgstr "Comincî pal difén|#R"
@@ -602,17 +602,17 @@ msgstr ""
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:205
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
-#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1005
-#: src/Buffer.cpp:2213 src/Buffer.cpp:3603 src/Buffer.cpp:3649
+#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1006
+#: src/Buffer.cpp:2214 src/Buffer.cpp:3615 src/Buffer.cpp:3661
 #: src/LyXVC.cpp:88 src/LyXVC.cpp:216 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1774
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1959
-#: src/frontends/qt4/GuiView.cpp:2151 src/frontends/qt4/GuiView.cpp:2211
-#: src/frontends/qt4/GuiView.cpp:2417 src/frontends/qt4/GuiView.cpp:2424
-#: src/frontends/qt4/GuiView.cpp:2525 src/frontends/qt4/GuiView.cpp:2555
-#: src/frontends/qt4/GuiView.cpp:3052 src/insets/InsetBibtex.cpp:145
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1966
+#: src/frontends/qt4/GuiView.cpp:2158 src/frontends/qt4/GuiView.cpp:2218
+#: src/frontends/qt4/GuiView.cpp:2424 src/frontends/qt4/GuiView.cpp:2431
+#: src/frontends/qt4/GuiView.cpp:2532 src/frontends/qt4/GuiView.cpp:2562
+#: src/frontends/qt4/GuiView.cpp:3088 src/insets/InsetBibtex.cpp:145
 #, fuzzy
 msgid "&Cancel"
 msgstr "Rinoncî"
@@ -4497,8 +4497,8 @@ msgstr ""
 msgid "&Single close-tab button"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/frontends/qt4/GuiView.cpp:2417
-#: src/frontends/qt4/GuiView.cpp:2424 src/frontends/qt4/GuiView.cpp:2525
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/frontends/qt4/GuiView.cpp:2424
+#: src/frontends/qt4/GuiView.cpp:2431 src/frontends/qt4/GuiView.cpp:2532
 #, fuzzy
 msgid "&Save"
 msgstr "Schaper"
@@ -5843,7 +5843,7 @@ msgstr "Matrice"
 #: lib/layouts/tufte-book.layout:42 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:73 lib/layouts/db_stdtitle.inc:35
 #: lib/layouts/scrclass.inc:184 lib/layouts/stdtitle.inc:87
-#: lib/layouts/svjour.inc:188 lib/ui/stdmenus.inc:370
+#: lib/layouts/svjour.inc:188 lib/ui/stdmenus.inc:371
 #: lib/external_templates:301 lib/external_templates:302
 #: lib/external_templates:306
 #, fuzzy
@@ -6704,7 +6704,7 @@ msgid "Summary"
 msgstr ""
 
 #: lib/layouts/AEA.layout:255 lib/layouts/stdinsets.inc:359
-#: lib/ui/stdmenus.inc:357
+#: lib/ui/stdmenus.inc:358
 #, fuzzy
 msgid "Caption"
 msgstr "Tite|#k"
@@ -11211,7 +11211,7 @@ msgid "ERT"
 msgstr ""
 
 #: lib/layouts/stdinsets.inc:155 lib/ui/stdcontext.inc:194
-#: lib/ui/stdmenus.inc:396 lib/ui/stdmenus.inc:469
+#: lib/ui/stdmenus.inc:397 lib/ui/stdmenus.inc:470
 #: src/insets/InsetPhantom.cpp:65
 #, fuzzy
 msgid "Phantom"
@@ -11230,7 +11230,7 @@ msgid "Branch"
 msgstr "Intreye bibiografike"
 
 #: lib/layouts/stdinsets.inc:197 lib/layouts/minimalistic.module:8
-#: src/Buffer.cpp:818 src/BufferParams.cpp:412
+#: src/Buffer.cpp:819 src/BufferParams.cpp:412
 #: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:450
 #: src/insets/InsetIndex.cpp:715
 msgid "Index"
@@ -12902,12 +12902,12 @@ msgstr "Trover eyèt mete el plaece"
 msgid "Tabular|T"
 msgstr "Arindjmint do tåvlea"
 
-#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:120 lib/ui/stdmenus.inc:558
+#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:120 lib/ui/stdmenus.inc:559
 #, fuzzy
 msgid "Math|M"
 msgstr "Matem|#M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:535
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:536
 #, fuzzy
 msgid "Spellchecker...|S"
 msgstr "Coridjeu di scrîjhaedje"
@@ -12922,7 +12922,7 @@ msgstr "Arindjmint do tåvlea"
 msgid "Statistics...|i"
 msgstr "Schaper"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:538
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:539
 #, fuzzy
 msgid "Check TeX|h"
 msgstr "Waitî TeX"
@@ -12932,12 +12932,12 @@ msgstr "Waitî TeX"
 msgid "Change Tracking|g"
 msgstr "Lingaedje"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:546
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:547
 #, fuzzy
 msgid "Preferences...|P"
 msgstr "Sititchî on rahuca"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:545
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:546
 #, fuzzy
 msgid "Reconfigure|R"
 msgstr "Rapontyî"
@@ -12982,7 +12982,7 @@ msgstr "Droete|#R"
 msgid "Alignment|i"
 msgstr "Aroymint"
 
-#: lib/ui/classic.ui:129 lib/ui/stdmenus.inc:201
+#: lib/ui/classic.ui:129 lib/ui/stdmenus.inc:202
 #, fuzzy
 msgid "Add Row|A"
 msgstr "Radjouter ene roye|#j#p"
@@ -13002,7 +13002,7 @@ msgstr "Copyî"
 msgid "Swap Rows"
 msgstr "Royes"
 
-#: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:206
+#: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:207
 #, fuzzy
 msgid "Add Column|u"
 msgstr "Radjouter ene colone|#A"
@@ -13022,32 +13022,32 @@ msgstr "Radjouter ene colone|#A"
 msgid "Swap Columns"
 msgstr "Colones"
 
-#: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:193
+#: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:194
 #, fuzzy
 msgid "Left|L"
 msgstr "Hintche|#H#f"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:411 lib/ui/stdmenus.inc:194
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:411 lib/ui/stdmenus.inc:195
 #, fuzzy
 msgid "Center|C"
 msgstr "Å mitan|#n"
 
-#: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:195
+#: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:196
 #, fuzzy
 msgid "Right|R"
 msgstr "Droete|#R"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:414 lib/ui/stdmenus.inc:197
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:414 lib/ui/stdmenus.inc:198
 #, fuzzy
 msgid "Top|T"
 msgstr "Dizeu|#u#T"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:415 lib/ui/stdmenus.inc:198
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:415 lib/ui/stdmenus.inc:199
 #, fuzzy
 msgid "Middle|M"
 msgstr "Mitan|#t"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:416 lib/ui/stdmenus.inc:199
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:416 lib/ui/stdmenus.inc:200
 #, fuzzy
 msgid "Bottom|B"
 msgstr "Dizo|#o#B"
@@ -13062,15 +13062,15 @@ msgstr "Sorlignî/Nén"
 msgid "Toggle Numbering of Line|u"
 msgstr "Sorlignî/Nén"
 
-#: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:215
+#: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:216
 msgid "Change Limits Type|L"
 msgstr ""
 
-#: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:218
+#: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:219
 msgid "Change Formula Type|F"
 msgstr ""
 
-#: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:222
+#: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:223
 msgid "Use Computer Algebra System|S"
 msgstr ""
 
@@ -13084,7 +13084,7 @@ msgstr "Aroymint"
 msgid "Add Row|R"
 msgstr "Radjouter ene roye|#j#p"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:419 lib/ui/stdmenus.inc:202
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:419 lib/ui/stdmenus.inc:203
 #, fuzzy
 msgid "Delete Row|D"
 msgstr "Disfacer li roye|#f#w"
@@ -13094,22 +13094,22 @@ msgstr "Disfacer li roye|#f#w"
 msgid "Add Column|C"
 msgstr "Radjouter ene colone|#A"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:424 lib/ui/stdmenus.inc:207
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:424 lib/ui/stdmenus.inc:208
 #, fuzzy
 msgid "Delete Column|e"
 msgstr "Disfacer li colone|#O"
 
-#: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:252
+#: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:253
 #, fuzzy
 msgid "Default|t"
 msgstr "Prémetu"
 
-#: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:253
+#: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:254
 #, fuzzy
 msgid "Display|D"
 msgstr "[nén håyné]"
 
-#: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:254
+#: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:255
 #, fuzzy
 msgid "Inline|I"
 msgstr "Sititchî"
@@ -13144,12 +13144,12 @@ msgid "Maple, evalf"
 msgstr ""
 
 #: lib/ui/classic.ui:199 lib/ui/classic.ui:265 lib/ui/stdcontext.inc:49
-#: lib/ui/stdmenus.inc:295 lib/ui/stdmenus.inc:410
+#: lib/ui/stdmenus.inc:296 lib/ui/stdmenus.inc:411
 #, fuzzy
 msgid "Inline Formula|I"
 msgstr "Sititchî ene imådje"
 
-#: lib/ui/classic.ui:200 lib/ui/stdcontext.inc:50 lib/ui/stdmenus.inc:296
+#: lib/ui/classic.ui:200 lib/ui/stdcontext.inc:50 lib/ui/stdmenus.inc:297
 #, fuzzy
 msgid "Displayed Formula|D"
 msgstr "Håyner li cåde|#C"
@@ -13184,7 +13184,7 @@ msgstr "Aroymint"
 msgid "Multline Environment"
 msgstr "Aroymint"
 
-#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:342
+#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:343
 #, fuzzy
 msgid "Math|h"
 msgstr "Matem|#M"
@@ -13194,7 +13194,7 @@ msgstr "Matem|#M"
 msgid "Special Character|S"
 msgstr "Speciå:|#S"
 
-#: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:354
+#: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:355
 #, fuzzy
 msgid "Citation...|C"
 msgstr "Sapinse"
@@ -13204,17 +13204,17 @@ msgstr "Sapinse"
 msgid "Cross-reference...|r"
 msgstr "Sititchî on croejhlé rahuca"
 
-#: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:356
+#: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:357
 #, fuzzy
 msgid "Label...|L"
 msgstr "Etikete:|#E#L"
 
-#: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:365
+#: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:366
 #, fuzzy
 msgid "Footnote|F"
 msgstr "Sititchî ene pînote"
 
-#: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:366
+#: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:367
 #, fuzzy
 msgid "Marginal Note|M"
 msgstr "Sititchî ene rawete di costé"
@@ -13238,7 +13238,7 @@ msgstr ""
 msgid "URL...|U"
 msgstr "Hårdeye URL..."
 
-#: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:347
+#: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:348
 #, fuzzy
 msgid "Note|N"
 msgstr "Ôte"
@@ -13257,7 +13257,7 @@ msgstr "LaTeX|#T"
 msgid "Minipage|p"
 msgstr "Minipådje|#M"
 
-#: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:362
+#: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:363
 #, fuzzy
 msgid "Graphics...|G"
 msgstr "Fitchî|#F"
@@ -13286,17 +13286,17 @@ msgstr "Sititchî ene imådje"
 msgid "External Material...|x"
 msgstr ""
 
-#: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:375
+#: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:376
 #, fuzzy
 msgid "Symbols...|b"
 msgstr "Simbole"
 
-#: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:387
+#: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:388
 #, fuzzy
 msgid "Superscript|S"
 msgstr "Postscript|#P"
 
-#: lib/ui/classic.ui:243 lib/ui/stdmenus.inc:388
+#: lib/ui/classic.ui:243 lib/ui/stdmenus.inc:389
 #, fuzzy
 msgid "Subscript|u"
 msgstr "Postscript|#P"
@@ -13306,12 +13306,12 @@ msgstr "Postscript|#P"
 msgid "Hyphenation Point|P"
 msgstr "Plaece di côpaedje di mot"
 
-#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:380
+#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:381
 #, fuzzy
 msgid "Protected Hyphen|y"
 msgstr "Sititchî on vûde waranti"
 
-#: lib/ui/classic.ui:246 lib/ui/stdmenus.inc:399
+#: lib/ui/classic.ui:246 lib/ui/stdmenus.inc:400
 #, fuzzy
 msgid "Ligature Break|k"
 msgstr "Roye d' après|#y#N"
@@ -13321,17 +13321,17 @@ msgstr "Roye d' après|#y#N"
 msgid "Protected Space|r"
 msgstr "Sititchî on vûde waranti"
 
-#: lib/ui/classic.ui:248 lib/ui/stdcontext.inc:205 lib/ui/stdmenus.inc:391
+#: lib/ui/classic.ui:248 lib/ui/stdcontext.inc:205 lib/ui/stdmenus.inc:392
 #, fuzzy
 msgid "Interword Space|w"
 msgstr "Minipådje|#M"
 
 #: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:207 lib/ui/stdcontext.inc:230
-#: lib/ui/stdmenus.inc:392
+#: lib/ui/stdmenus.inc:393
 msgid "Thin Space|T"
 msgstr ""
 
-#: lib/ui/classic.ui:250 lib/ui/stdmenus.inc:393
+#: lib/ui/classic.ui:250 lib/ui/stdmenus.inc:394
 #, fuzzy
 msgid "Horizontal Space...|o"
 msgstr "Espaçmints d' astampé"
@@ -13346,11 +13346,11 @@ msgstr "Espaçmints d' astampé"
 msgid "Line Break|L"
 msgstr "Roye d' après|#y#N"
 
-#: lib/ui/classic.ui:253 lib/ui/stdmenus.inc:376
+#: lib/ui/classic.ui:253 lib/ui/stdmenus.inc:377
 msgid "Ellipsis|i"
 msgstr ""
 
-#: lib/ui/classic.ui:254 lib/ui/stdmenus.inc:377
+#: lib/ui/classic.ui:254 lib/ui/stdmenus.inc:378
 #, fuzzy
 msgid "End of Sentence|E"
 msgstr "Sititchî on pont"
@@ -13360,7 +13360,7 @@ msgstr "Sititchî on pont"
 msgid "Protected Dash|D"
 msgstr "Sititchî on vûde waranti"
 
-#: lib/ui/classic.ui:256 lib/ui/stdmenus.inc:381
+#: lib/ui/classic.ui:256 lib/ui/stdmenus.inc:382
 msgid "Breakable Slash|a"
 msgstr ""
 
@@ -13373,7 +13373,7 @@ msgstr "Simpe|#S"
 msgid "Ordinary Quote|O"
 msgstr ""
 
-#: lib/ui/classic.ui:259 lib/ui/stdmenus.inc:382
+#: lib/ui/classic.ui:259 lib/ui/stdmenus.inc:383
 #, fuzzy
 msgid "Menu Separator|M"
 msgstr "Evoye xxx"
@@ -13388,58 +13388,58 @@ msgstr "Aroymint di coûtchî|#c"
 msgid "Page Break"
 msgstr "Côper li pådje"
 
-#: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:411
+#: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:412
 #, fuzzy
 msgid "Display Formula|D"
 msgstr "Håyner li cåde|#C"
 
-#: lib/ui/classic.ui:267 lib/ui/stdcontext.inc:51 lib/ui/stdmenus.inc:297
-#: lib/ui/stdmenus.inc:413
+#: lib/ui/classic.ui:267 lib/ui/stdcontext.inc:51 lib/ui/stdmenus.inc:298
+#: lib/ui/stdmenus.inc:414
 #, fuzzy
 msgid "Eqnarray Environment|E"
 msgstr "Li sôrt d' inviron'mint pol hagnon est metuwe"
 
-#: lib/ui/classic.ui:268 lib/ui/stdcontext.inc:41 lib/ui/stdmenus.inc:298
-#: lib/ui/stdmenus.inc:414
+#: lib/ui/classic.ui:268 lib/ui/stdcontext.inc:41 lib/ui/stdmenus.inc:299
+#: lib/ui/stdmenus.inc:415
 #, fuzzy
 msgid "AMS align Environment|a"
 msgstr "Aroymint"
 
-#: lib/ui/classic.ui:269 lib/ui/stdcontext.inc:42 lib/ui/stdmenus.inc:299
-#: lib/ui/stdmenus.inc:415
+#: lib/ui/classic.ui:269 lib/ui/stdcontext.inc:42 lib/ui/stdmenus.inc:300
+#: lib/ui/stdmenus.inc:416
 #, fuzzy
 msgid "AMS alignat Environment|t"
 msgstr "Aroymint"
 
-#: lib/ui/classic.ui:270 lib/ui/stdcontext.inc:43 lib/ui/stdmenus.inc:300
-#: lib/ui/stdmenus.inc:416
+#: lib/ui/classic.ui:270 lib/ui/stdcontext.inc:43 lib/ui/stdmenus.inc:301
+#: lib/ui/stdmenus.inc:417
 #, fuzzy
 msgid "AMS flalign Environment|f"
 msgstr "Aroymint"
 
-#: lib/ui/classic.ui:273 lib/ui/stdcontext.inc:44 lib/ui/stdmenus.inc:301
-#: lib/ui/stdmenus.inc:417
+#: lib/ui/classic.ui:273 lib/ui/stdcontext.inc:44 lib/ui/stdmenus.inc:302
+#: lib/ui/stdmenus.inc:418
 #, fuzzy
 msgid "AMS gather Environment|g"
 msgstr "Aroymint"
 
-#: lib/ui/classic.ui:274 lib/ui/stdcontext.inc:45 lib/ui/stdmenus.inc:302
-#: lib/ui/stdmenus.inc:418
+#: lib/ui/classic.ui:274 lib/ui/stdcontext.inc:45 lib/ui/stdmenus.inc:303
+#: lib/ui/stdmenus.inc:419
 #, fuzzy
 msgid "AMS multline Environment|m"
 msgstr "Aroymint"
 
-#: lib/ui/classic.ui:276 lib/ui/stdcontext.inc:28 lib/ui/stdmenus.inc:420
+#: lib/ui/classic.ui:276 lib/ui/stdcontext.inc:28 lib/ui/stdmenus.inc:421
 #, fuzzy
 msgid "Array Environment|y"
 msgstr "Li sôrt d' inviron'mint pol hagnon est metuwe"
 
-#: lib/ui/classic.ui:277 lib/ui/stdcontext.inc:29 lib/ui/stdmenus.inc:421
+#: lib/ui/classic.ui:277 lib/ui/stdcontext.inc:29 lib/ui/stdmenus.inc:422
 #, fuzzy
 msgid "Cases Environment|C"
 msgstr "Candjî li parfondeu d' eviron'mint"
 
-#: lib/ui/classic.ui:278 lib/ui/stdcontext.inc:33 lib/ui/stdmenus.inc:425
+#: lib/ui/classic.ui:278 lib/ui/stdcontext.inc:33 lib/ui/stdmenus.inc:426
 #, fuzzy
 msgid "Split Environment|S"
 msgstr "Aroymint"
@@ -13484,45 +13484,45 @@ msgstr "Môde matematike"
 msgid "Text Normal Font"
 msgstr "Môde di scrîjhaedje"
 
-#: lib/ui/classic.ui:295 lib/ui/stdmenus.inc:270
+#: lib/ui/classic.ui:295 lib/ui/stdmenus.inc:271
 #, fuzzy
 msgid "Text Roman Family"
 msgstr "Famile:|#F"
 
-#: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:271
+#: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:272
 #, fuzzy
 msgid "Text Sans Serif Family"
 msgstr "Famile:|#F"
 
-#: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:272
+#: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:273
 #, fuzzy
 msgid "Text Typewriter Family"
 msgstr "Machine a scrîre"
 
-#: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:274
+#: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:275
 #, fuzzy
 msgid "Text Bold Series"
 msgstr "Môde di scrîjhaedje"
 
-#: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:275
+#: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:276
 #, fuzzy
 msgid "Text Medium Series"
 msgstr "Môde di scrîjhaedje"
 
-#: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:277
+#: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:278
 msgid "Text Italic Shape"
 msgstr ""
 
-#: lib/ui/classic.ui:303 lib/ui/stdmenus.inc:278
+#: lib/ui/classic.ui:303 lib/ui/stdmenus.inc:279
 #, fuzzy
 msgid "Text Small Caps Shape"
 msgstr "Pititès grandès letes"
 
-#: lib/ui/classic.ui:304 lib/ui/stdmenus.inc:279
+#: lib/ui/classic.ui:304 lib/ui/stdmenus.inc:280
 msgid "Text Slanted Shape"
 msgstr ""
 
-#: lib/ui/classic.ui:305 lib/ui/stdmenus.inc:280
+#: lib/ui/classic.ui:305 lib/ui/stdmenus.inc:281
 msgid "Text Upright Shape"
 msgstr ""
 
@@ -13531,7 +13531,7 @@ msgstr ""
 msgid "Floatflt Figure"
 msgstr "Imådje"
 
-#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:440
+#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:441
 #, fuzzy
 msgid "Table of Contents|C"
 msgstr "Ådvins"
@@ -13541,37 +13541,37 @@ msgstr "Ådvins"
 msgid "Index List|I"
 msgstr "xxx Indentation|#I"
 
-#: lib/ui/classic.ui:317 lib/ui/stdmenus.inc:443
+#: lib/ui/classic.ui:317 lib/ui/stdmenus.inc:444
 #, fuzzy
 msgid "Nomenclature|N"
 msgstr "Ôte"
 
-#: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:444
+#: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:445
 #, fuzzy
 msgid "BibTeX Bibliography...|B"
 msgstr "Intreye bibiografike"
 
-#: lib/ui/classic.ui:322 lib/ui/stdmenus.inc:448
+#: lib/ui/classic.ui:322 lib/ui/stdmenus.inc:449
 #, fuzzy
 msgid "LyX Document...|X"
 msgstr "Documint"
 
-#: lib/ui/classic.ui:323 lib/ui/stdmenus.inc:449
+#: lib/ui/classic.ui:323 lib/ui/stdmenus.inc:450
 #, fuzzy
 msgid "Plain Text...|T"
 msgstr "Mete el plaece"
 
-#: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:450
+#: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:451
 #, fuzzy
 msgid "Plain Text, Join Lines...|J"
 msgstr "Royes"
 
-#: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:495
+#: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:496
 #, fuzzy
 msgid "Track Changes|T"
 msgstr "Waitîz dins les candjmints"
 
-#: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:496
+#: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:497
 #, fuzzy
 msgid "Merge Changes...|M"
 msgstr "Waitîz dins les candjmints"
@@ -13584,7 +13584,7 @@ msgstr ""
 msgid "Reject All Changes|R"
 msgstr ""
 
-#: lib/ui/classic.ui:332 lib/ui/stdmenus.inc:501
+#: lib/ui/classic.ui:332 lib/ui/stdmenus.inc:502
 msgid "Show Changes in Output|S"
 msgstr ""
 
@@ -13635,7 +13635,7 @@ msgstr "Fé crexhe li parfondeu d' eviron'mint"
 msgid "Start Appendix Here|S"
 msgstr ""
 
-#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:484
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:485
 msgid "Build Program|B"
 msgstr ""
 
@@ -13644,12 +13644,12 @@ msgstr ""
 msgid "Update|U"
 msgstr "Metaedje a djoû|#û#U"
 
-#: lib/ui/classic.ui:363 lib/ui/stdmenus.inc:485
+#: lib/ui/classic.ui:363 lib/ui/stdmenus.inc:486
 #, fuzzy
 msgid "LaTeX Log|L"
 msgstr "Fitchî des messaedjes LaTeX"
 
-#: lib/ui/classic.ui:364 lib/ui/stdmenus.inc:486
+#: lib/ui/classic.ui:364 lib/ui/stdmenus.inc:487
 msgid "Outline|O"
 msgstr ""
 
@@ -13658,39 +13658,39 @@ msgstr ""
 msgid "TeX Information|X"
 msgstr "Nole informåcion po disfé"
 
-#: lib/ui/classic.ui:378 lib/ui/stdmenus.inc:509
+#: lib/ui/classic.ui:378 lib/ui/stdmenus.inc:510
 #, fuzzy
 msgid "Next Note|N"
 msgstr "Ôte"
 
-#: lib/ui/classic.ui:379 lib/ui/stdmenus.inc:512
+#: lib/ui/classic.ui:379 lib/ui/stdmenus.inc:513
 #, fuzzy
 msgid "Go to Label|L"
 msgstr "Li tåvlea est stitchî"
 
-#: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:508
+#: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:509
 #, fuzzy
 msgid "Bookmarks|B"
 msgstr "Dizo|#o#B"
 
-#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:519
+#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:520
 msgid "Save Bookmark 1|S"
 msgstr ""
 
-#: lib/ui/classic.ui:385 lib/ui/stdmenus.inc:520
+#: lib/ui/classic.ui:385 lib/ui/stdmenus.inc:521
 msgid "Save Bookmark 2"
 msgstr ""
 
-#: lib/ui/classic.ui:386 lib/ui/stdmenus.inc:521
+#: lib/ui/classic.ui:386 lib/ui/stdmenus.inc:522
 msgid "Save Bookmark 3"
 msgstr ""
 
-#: lib/ui/classic.ui:387 lib/ui/stdmenus.inc:522
+#: lib/ui/classic.ui:387 lib/ui/stdmenus.inc:523
 #, fuzzy
 msgid "Save Bookmark 4"
 msgstr "Dizo|#o#B"
 
-#: lib/ui/classic.ui:388 lib/ui/stdmenus.inc:523
+#: lib/ui/classic.ui:388 lib/ui/stdmenus.inc:524
 #, fuzzy
 msgid "Save Bookmark 5"
 msgstr "Dizo|#o#B"
@@ -13720,15 +13720,15 @@ msgstr "Dizo|#o#B"
 msgid "Go to Bookmark 5|5"
 msgstr "Dizo|#o#B"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:553
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:554
 msgid "Introduction|I"
 msgstr ""
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:554
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:555
 msgid "Tutorial|T"
 msgstr ""
 
-#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:555
+#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:556
 #, fuzzy
 msgid "User's Guide|U"
 msgstr "Eployî include|#U"
@@ -13741,16 +13741,16 @@ msgstr ""
 msgid "Embedded Objects|m"
 msgstr ""
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:559
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:560
 #, fuzzy
 msgid "Customization|C"
 msgstr "Sapinse"
 
-#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:562
+#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:563
 msgid "LaTeX Configuration|L"
 msgstr ""
 
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:565
+#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:566
 msgid "About LyX|X"
 msgstr ""
 
@@ -13767,32 +13767,32 @@ msgstr "Sititchî on rahuca"
 msgid "Quit LyX"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:30 lib/ui/stdmenus.inc:422
+#: lib/ui/stdcontext.inc:30 lib/ui/stdmenus.inc:423
 #, fuzzy
 msgid "Aligned Environment|l"
 msgstr "Aroymint"
 
-#: lib/ui/stdcontext.inc:31 lib/ui/stdmenus.inc:423
+#: lib/ui/stdcontext.inc:31 lib/ui/stdmenus.inc:424
 #, fuzzy
 msgid "AlignedAt Environment|v"
 msgstr "Aroymint"
 
-#: lib/ui/stdcontext.inc:32 lib/ui/stdmenus.inc:424
+#: lib/ui/stdcontext.inc:32 lib/ui/stdmenus.inc:425
 #, fuzzy
 msgid "Gathered Environment|h"
 msgstr "Aroymint"
 
-#: lib/ui/stdcontext.inc:35 lib/ui/stdmenus.inc:427
+#: lib/ui/stdcontext.inc:35 lib/ui/stdmenus.inc:428
 #, fuzzy
 msgid "Delimiters...|r"
 msgstr "Côpeu"
 
-#: lib/ui/stdcontext.inc:36 lib/ui/stdmenus.inc:428
+#: lib/ui/stdcontext.inc:36 lib/ui/stdmenus.inc:429
 #, fuzzy
 msgid "Matrix...|x"
 msgstr "Matrice"
 
-#: lib/ui/stdcontext.inc:37 lib/ui/stdmenus.inc:429
+#: lib/ui/stdcontext.inc:37 lib/ui/stdmenus.inc:430
 msgid "Macro|o"
 msgstr ""
 
@@ -13801,12 +13801,12 @@ msgstr ""
 msgid "AMS Environment|A"
 msgstr "Aroymint"
 
-#: lib/ui/stdcontext.inc:54 lib/ui/stdmenus.inc:213
+#: lib/ui/stdcontext.inc:54 lib/ui/stdmenus.inc:214
 #, fuzzy
 msgid "Number Whole Formula|N"
 msgstr "Nombe"
 
-#: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:214
+#: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:215
 #, fuzzy
 msgid "Number This Line|u"
 msgstr "Sorlignî/Nén"
@@ -13821,7 +13821,7 @@ msgstr "Li tåvlea est stitchî"
 msgid "Copy as Reference|R"
 msgstr "Sititchî on croejhlé rahuca"
 
-#: lib/ui/stdcontext.inc:59 lib/ui/stdmenus.inc:224
+#: lib/ui/stdcontext.inc:59 lib/ui/stdmenus.inc:225
 #, fuzzy
 msgid "Split Cell|C"
 msgstr "Celule especiåle"
@@ -13836,7 +13836,7 @@ msgstr "Sititchî"
 msgid "Add Line Above|o"
 msgstr "Boirds"
 
-#: lib/ui/stdcontext.inc:64 lib/ui/stdmenus.inc:227
+#: lib/ui/stdcontext.inc:64 lib/ui/stdmenus.inc:228
 #, fuzzy
 msgid "Add Line Below|B"
 msgstr "Boirds"
@@ -13851,22 +13851,22 @@ msgstr "Tchwezixhoz on documint po stitchî"
 msgid "Delete Line Below|w"
 msgstr "Disfacer li roye|#f#w"
 
-#: lib/ui/stdcontext.inc:68 lib/ui/stdmenus.inc:231
+#: lib/ui/stdcontext.inc:68 lib/ui/stdmenus.inc:232
 #, fuzzy
 msgid "Add Line to Left"
 msgstr "Hintche|#H#L"
 
-#: lib/ui/stdcontext.inc:69 lib/ui/stdmenus.inc:232
+#: lib/ui/stdcontext.inc:69 lib/ui/stdmenus.inc:233
 #, fuzzy
 msgid "Add Line to Right"
 msgstr "Droete|#R"
 
-#: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:233
+#: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:234
 #, fuzzy
 msgid "Delete Line to Left"
 msgstr "Tchwezixhoz on documint po stitchî"
 
-#: lib/ui/stdcontext.inc:71 lib/ui/stdmenus.inc:234
+#: lib/ui/stdcontext.inc:71 lib/ui/stdmenus.inc:235
 #, fuzzy
 msgid "Delete Line to Right"
 msgstr "Tchwezixhoz on documint po stitchî"
@@ -13947,7 +13947,7 @@ msgstr "Sititchî on croejhlé rahuca"
 #: lib/ui/stdcontext.inc:550 lib/ui/stdcontext.inc:560
 #: lib/ui/stdcontext.inc:575 lib/ui/stdcontext.inc:588
 #: lib/ui/stdcontext.inc:596 lib/ui/stdcontext.inc:640
-#: lib/ui/stdcontext.inc:647 lib/ui/stdmenus.inc:491
+#: lib/ui/stdcontext.inc:647 lib/ui/stdmenus.inc:492
 #, fuzzy
 msgid "Settings...|S"
 msgstr "Gåliotaedje"
@@ -14032,7 +14032,7 @@ msgstr "Sititchî ene etikete"
 msgid "Double Frame|u"
 msgstr "Dobe|#D"
 
-#: lib/ui/stdcontext.inc:176 lib/ui/stdmenus.inc:457
+#: lib/ui/stdcontext.inc:176 lib/ui/stdmenus.inc:458
 #, fuzzy
 msgid "LyX Note|N"
 msgstr "Ôte"
@@ -14042,7 +14042,7 @@ msgstr "Ôte"
 msgid "Comment|m"
 msgstr "Rawete:"
 
-#: lib/ui/stdcontext.inc:178 lib/ui/stdmenus.inc:459
+#: lib/ui/stdcontext.inc:178 lib/ui/stdmenus.inc:460
 msgid "Greyed Out|G"
 msgstr ""
 
@@ -14219,31 +14219,31 @@ msgstr "Royes"
 msgid "Edit Included File...|E"
 msgstr "Prinde avou"
 
-#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:403
+#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:404
 #, fuzzy
 msgid "New Page|N"
 msgstr "Ôte"
 
-#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:404
+#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:405
 #, fuzzy
 msgid "Page Break|a"
 msgstr "Côper li pådje"
 
-#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:405
+#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:406
 #, fuzzy
 msgid "Clear Page|C"
 msgstr "Dizo|#o#B"
 
-#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:406
+#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:407
 msgid "Clear Double Page|D"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:287 lib/ui/stdmenus.inc:400
+#: lib/ui/stdcontext.inc:287 lib/ui/stdmenus.inc:401
 #, fuzzy
 msgid "Ragged Line Break|R"
 msgstr "Roye d' après|#y#N"
 
-#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:401
+#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:402
 #, fuzzy
 msgid "Justified Line Break|J"
 msgstr "Roye d' après|#y#N"
@@ -14276,7 +14276,7 @@ msgstr "Aroymint"
 msgid "Jump Back to Saved Bookmark|B"
 msgstr "Dizo|#o#B"
 
-#: lib/ui/stdcontext.inc:303 lib/ui/stdmenus.inc:513
+#: lib/ui/stdcontext.inc:303 lib/ui/stdmenus.inc:514
 msgid "Forward search|F"
 msgstr ""
 
@@ -14368,12 +14368,12 @@ msgstr "Nombe"
 msgid "User Defined|U"
 msgstr "Rexhe"
 
-#: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:238
+#: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:239
 #, fuzzy
 msgid "Append Argument"
 msgstr "I manke èn årgumint"
 
-#: lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:239
+#: lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:240
 #, fuzzy
 msgid "Remove Last Argument"
 msgstr "I manke èn årgumint"
@@ -14388,27 +14388,27 @@ msgstr "I manke èn årgumint"
 msgid "Make Last Optional Into Non-Optional Argument"
 msgstr "I manke èn årgumint"
 
-#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:243
+#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:244
 #, fuzzy
 msgid "Insert Optional Argument"
 msgstr "I manke èn årgumint"
 
-#: lib/ui/stdcontext.inc:350 lib/ui/stdmenus.inc:244
+#: lib/ui/stdcontext.inc:350 lib/ui/stdmenus.inc:245
 #, fuzzy
 msgid "Remove Optional Argument"
 msgstr "inset drovu"
 
-#: lib/ui/stdcontext.inc:352 lib/ui/stdmenus.inc:246
+#: lib/ui/stdcontext.inc:352 lib/ui/stdmenus.inc:247
 #, fuzzy
 msgid "Append Argument Eating From the Right"
 msgstr "inset drovu"
 
-#: lib/ui/stdcontext.inc:353 lib/ui/stdmenus.inc:247
+#: lib/ui/stdcontext.inc:353 lib/ui/stdmenus.inc:248
 #, fuzzy
 msgid "Append Optional Argument Eating From the Right"
 msgstr "inset drovu"
 
-#: lib/ui/stdcontext.inc:354 lib/ui/stdmenus.inc:248
+#: lib/ui/stdcontext.inc:354 lib/ui/stdmenus.inc:249
 #, fuzzy
 msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "inset drovu"
@@ -14444,12 +14444,12 @@ msgstr "Dizeu|#u#T"
 msgid "Bottom Line|i"
 msgstr "Dizo|#o#B"
 
-#: lib/ui/stdcontext.inc:407 lib/ui/stdmenus.inc:184
+#: lib/ui/stdcontext.inc:407 lib/ui/stdmenus.inc:185
 #, fuzzy
 msgid "Left Line|L"
 msgstr "Li tåvlea est stitchî"
 
-#: lib/ui/stdcontext.inc:408 lib/ui/stdmenus.inc:185
+#: lib/ui/stdcontext.inc:408 lib/ui/stdmenus.inc:186
 #, fuzzy
 msgid "Right Line|R"
 msgstr "Droete|#R"
@@ -14469,7 +14469,7 @@ msgstr "Droete|#R"
 msgid "Append Row|A"
 msgstr "Radjouter ene roye|#j#p"
 
-#: lib/ui/stdcontext.inc:420 lib/ui/stdmenus.inc:203
+#: lib/ui/stdcontext.inc:420 lib/ui/stdmenus.inc:204
 #, fuzzy
 msgid "Copy Row|o"
 msgstr "Copyî"
@@ -14561,7 +14561,7 @@ msgstr "inset drovu"
 msgid "Subindex|b"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:614 lib/ui/stdmenus.inc:498
+#: lib/ui/stdcontext.inc:614 lib/ui/stdmenus.inc:499
 #, fuzzy
 msgid "Reject Change|R"
 msgstr "Rissayî|#R#r"
@@ -14822,473 +14822,478 @@ msgstr "Metaedje a djoû|#û#U"
 msgid "Lowercase|L"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:182
+#: lib/ui/stdmenus.inc:181
+#, fuzzy
+msgid "Multirow|u"
+msgstr "Multicolones|#M"
+
+#: lib/ui/stdmenus.inc:183
 #, fuzzy
 msgid "Top Line|T"
 msgstr "Dizeu|#u#T"
 
-#: lib/ui/stdmenus.inc:183
+#: lib/ui/stdmenus.inc:184
 #, fuzzy
 msgid "Bottom Line|B"
 msgstr "Dizo|#o#B"
 
-#: lib/ui/stdmenus.inc:187
+#: lib/ui/stdmenus.inc:188
 #, fuzzy
 msgid "Top|p"
 msgstr "Dizeu|#u#T"
 
-#: lib/ui/stdmenus.inc:188
+#: lib/ui/stdmenus.inc:189
 #, fuzzy
 msgid "Middle|i"
 msgstr "Mitan|#t"
 
-#: lib/ui/stdmenus.inc:189
+#: lib/ui/stdmenus.inc:190
 #, fuzzy
 msgid "Bottom|o"
 msgstr "Dizo|#o#B"
 
-#: lib/ui/stdmenus.inc:208
+#: lib/ui/stdmenus.inc:209
 #, fuzzy
 msgid "Copy Column|p"
 msgstr "Radjouter ene colone|#A"
 
-#: lib/ui/stdmenus.inc:216
+#: lib/ui/stdmenus.inc:217
 #, fuzzy
 msgid "Macro Definition"
 msgstr "Po:"
 
-#: lib/ui/stdmenus.inc:220
+#: lib/ui/stdmenus.inc:221
 #, fuzzy
 msgid "Text Style|T"
 msgstr "Documint"
 
-#: lib/ui/stdmenus.inc:226
+#: lib/ui/stdmenus.inc:227
 #, fuzzy
 msgid "Add Line Above|A"
 msgstr "Boirds"
 
-#: lib/ui/stdmenus.inc:228
+#: lib/ui/stdmenus.inc:229
 #, fuzzy
 msgid "Delete Line Above|D"
 msgstr "Tchwezixhoz on documint po stitchî"
 
-#: lib/ui/stdmenus.inc:229
+#: lib/ui/stdmenus.inc:230
 #, fuzzy
 msgid "Delete Line Below|e"
 msgstr "Disfacer li roye|#f#w"
 
-#: lib/ui/stdmenus.inc:241
+#: lib/ui/stdmenus.inc:242
 msgid "Make First Non-Optional into Optional Argument"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:242
+#: lib/ui/stdmenus.inc:243
 msgid "Make Last Optional into Non-Optional Argument"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:258
+#: lib/ui/stdmenus.inc:259
 #, fuzzy
 msgid "Math Normal Font|N"
 msgstr "Miernuwes"
 
-#: lib/ui/stdmenus.inc:260
+#: lib/ui/stdmenus.inc:261
 #, fuzzy
 msgid "Math Calligraphic Family|C"
 msgstr "Famile:|#F"
 
-#: lib/ui/stdmenus.inc:261
+#: lib/ui/stdmenus.inc:262
 #, fuzzy
 msgid "Math Formal Script Family|o"
 msgstr "Famile:|#F"
 
-#: lib/ui/stdmenus.inc:262
+#: lib/ui/stdmenus.inc:263
 #, fuzzy
 msgid "Math Fraktur Family|F"
 msgstr "Famile:|#F"
 
-#: lib/ui/stdmenus.inc:263
+#: lib/ui/stdmenus.inc:264
 #, fuzzy
 msgid "Math Roman Family|R"
 msgstr "Famile:|#F"
 
-#: lib/ui/stdmenus.inc:264
+#: lib/ui/stdmenus.inc:265
 #, fuzzy
 msgid "Math Sans Serif Family|S"
 msgstr "Famile:|#F"
 
-#: lib/ui/stdmenus.inc:266
+#: lib/ui/stdmenus.inc:267
 #, fuzzy
 msgid "Math Bold Series|B"
 msgstr "Môde matematike"
 
-#: lib/ui/stdmenus.inc:268
+#: lib/ui/stdmenus.inc:269
 #, fuzzy
 msgid "Text Normal Font|T"
 msgstr "Môde di scrîjhaedje"
 
-#: lib/ui/stdmenus.inc:284
+#: lib/ui/stdmenus.inc:285
 #, fuzzy
 msgid "Octave|O"
 msgstr "Ôte...|#Ô#O"
 
-#: lib/ui/stdmenus.inc:285
+#: lib/ui/stdmenus.inc:286
 msgid "Maxima|M"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:286
+#: lib/ui/stdmenus.inc:287
 #, fuzzy
 msgid "Mathematica|a"
 msgstr "Matrice"
 
-#: lib/ui/stdmenus.inc:288
+#: lib/ui/stdmenus.inc:289
 msgid "Maple, Simplify|S"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:289
+#: lib/ui/stdmenus.inc:290
 msgid "Maple, Factor|F"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:290
+#: lib/ui/stdmenus.inc:291
 msgid "Maple, Evalm|E"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:291
+#: lib/ui/stdmenus.inc:292
 msgid "Maple, Evalf|v"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:310
+#: lib/ui/stdmenus.inc:311
 #, fuzzy
 msgid "Open All Insets|O"
 msgstr "inset drovu"
 
-#: lib/ui/stdmenus.inc:311
+#: lib/ui/stdmenus.inc:312
 msgid "Close All Insets|C"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:313
+#: lib/ui/stdmenus.inc:314
 #, fuzzy
 msgid "Unfold Math Macro|n"
 msgstr "Sititchî ene etikete"
 
-#: lib/ui/stdmenus.inc:314
+#: lib/ui/stdmenus.inc:315
 #, fuzzy
 msgid "Fold Math Macro|d"
 msgstr "Sititchî ene etikete"
 
-#: lib/ui/stdmenus.inc:316
+#: lib/ui/stdmenus.inc:317
 msgid "View Source|S"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:317
+#: lib/ui/stdmenus.inc:318
 msgid "View Messages|g"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:320
+#: lib/ui/stdmenus.inc:321
 #, fuzzy
 msgid "View Master Document|M"
 msgstr "Schaper li documint?"
 
-#: lib/ui/stdmenus.inc:321
+#: lib/ui/stdmenus.inc:322
 #, fuzzy
 msgid "Update Master Document|a"
 msgstr "Schaper li documint?"
 
-#: lib/ui/stdmenus.inc:323
+#: lib/ui/stdmenus.inc:324
 msgid "Split View Into Left and Right Half|i"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:324
+#: lib/ui/stdmenus.inc:325
 msgid "Split View Into Upper and Lower Half|e"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:325
+#: lib/ui/stdmenus.inc:326
 msgid "Close Current View|w"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:326
+#: lib/ui/stdmenus.inc:327
 msgid "Fullscreen|l"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:327
+#: lib/ui/stdmenus.inc:328
 #, fuzzy
 msgid "Toolbars|b"
 msgstr "Dizeu|#u#T"
 
-#: lib/ui/stdmenus.inc:343
+#: lib/ui/stdmenus.inc:344
 #, fuzzy
 msgid "Special Character|p"
 msgstr "Speciå:|#S"
 
-#: lib/ui/stdmenus.inc:344
+#: lib/ui/stdmenus.inc:345
 #, fuzzy
 msgid "Formatting|o"
 msgstr "Floatflt xxx|#F"
 
-#: lib/ui/stdmenus.inc:345
+#: lib/ui/stdmenus.inc:346
 #, fuzzy
 msgid "List / TOC|i"
 msgstr "Djîveye des tåvleas"
 
-#: lib/ui/stdmenus.inc:346
+#: lib/ui/stdmenus.inc:347
 #, fuzzy
 msgid "Float|a"
 msgstr "Floatflt xxx|#F"
 
-#: lib/ui/stdmenus.inc:348
+#: lib/ui/stdmenus.inc:349
 msgid "Branch|B"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:349
+#: lib/ui/stdmenus.inc:350
 #, fuzzy
 msgid "Custom Insets"
 msgstr "A vosse môde"
 
-#: lib/ui/stdmenus.inc:350
+#: lib/ui/stdmenus.inc:351
 #, fuzzy
 msgid "File|e"
 msgstr "Fitchî|#F"
 
-#: lib/ui/stdmenus.inc:352
+#: lib/ui/stdmenus.inc:353
 msgid "Box[[Menu]]"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:355
+#: lib/ui/stdmenus.inc:356
 #, fuzzy
 msgid "Cross-Reference...|R"
 msgstr "Sititchî on croejhlé rahuca"
 
-#: lib/ui/stdmenus.inc:359
+#: lib/ui/stdmenus.inc:360
 #, fuzzy
 msgid "Nomenclature Entry...|y"
 msgstr "Floatflt xxx|#F"
 
-#: lib/ui/stdmenus.inc:361
+#: lib/ui/stdmenus.inc:362
 #, fuzzy
 msgid "Table...|T"
 msgstr "Arindjmint do tåvlea"
 
-#: lib/ui/stdmenus.inc:363
+#: lib/ui/stdmenus.inc:364
 #, fuzzy
 msgid "URL|U"
 msgstr "Hårdeye URL..."
 
-#: lib/ui/stdmenus.inc:364
+#: lib/ui/stdmenus.inc:365
 #, fuzzy
 msgid "Hyperlink...|k"
 msgstr "Espåçmint"
 
-#: lib/ui/stdmenus.inc:367
+#: lib/ui/stdmenus.inc:368
 #, fuzzy
 msgid "Short Title|S"
 msgstr "Fitchî"
 
-#: lib/ui/stdmenus.inc:368
+#: lib/ui/stdmenus.inc:369
 #, fuzzy
 msgid "TeX Code|X"
 msgstr "LaTeX|#T"
 
-#: lib/ui/stdmenus.inc:369
+#: lib/ui/stdmenus.inc:370
 #, fuzzy
 msgid "Program Listing[[Menu]]"
 msgstr "LyX VC: discrîjhaedje po cmincî"
 
-#: lib/ui/stdmenus.inc:371
+#: lib/ui/stdmenus.inc:372
 #, fuzzy
 msgid "Preview|w"
 msgstr "Fitchî"
 
-#: lib/ui/stdmenus.inc:378
+#: lib/ui/stdmenus.inc:379
 msgid "Ordinary Quote|Q"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:379
+#: lib/ui/stdmenus.inc:380
 #, fuzzy
 msgid "Single Quote|S"
 msgstr "Simpe|#S"
 
-#: lib/ui/stdmenus.inc:383
+#: lib/ui/stdmenus.inc:384
 msgid "Phonetic Symbols|P"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:390
+#: lib/ui/stdmenus.inc:391
 #, fuzzy
 msgid "Protected Space|P"
 msgstr "Sititchî on vûde waranti"
 
-#: lib/ui/stdmenus.inc:394
+#: lib/ui/stdmenus.inc:395
 #, fuzzy
 msgid "Horizontal Line...|L"
 msgstr "Aroymint di coûtchî|#c"
 
-#: lib/ui/stdmenus.inc:395
+#: lib/ui/stdmenus.inc:396
 #, fuzzy
 msgid "Vertical Space...|V"
 msgstr "Espaçmints d' astampé"
 
-#: lib/ui/stdmenus.inc:398
+#: lib/ui/stdmenus.inc:399
 #, fuzzy
 msgid "Hyphenation Point|H"
 msgstr "Plaece di côpaedje di mot"
 
-#: lib/ui/stdmenus.inc:412
+#: lib/ui/stdmenus.inc:413
 #, fuzzy
 msgid "Numbered Formula|N"
 msgstr "Nombe"
 
-#: lib/ui/stdmenus.inc:435
+#: lib/ui/stdmenus.inc:436
 #, fuzzy
 msgid "Figure Wrap Float|F"
 msgstr "Sititchî on tåvlea"
 
-#: lib/ui/stdmenus.inc:436
+#: lib/ui/stdmenus.inc:437
 #, fuzzy
 msgid "Table Wrap Float|T"
 msgstr "Sititchî on tåvlea"
 
-#: lib/ui/stdmenus.inc:452
+#: lib/ui/stdmenus.inc:453
 #, fuzzy
 msgid "External Material...|M"
 msgstr "Co des ôtès tchûzes|#C#X"
 
-#: lib/ui/stdmenus.inc:453
+#: lib/ui/stdmenus.inc:454
 #, fuzzy
 msgid "Child Document...|d"
 msgstr "Documints"
 
-#: lib/ui/stdmenus.inc:458
+#: lib/ui/stdmenus.inc:459
 #, fuzzy
 msgid "Comment|C"
 msgstr "Rawete:"
 
-#: lib/ui/stdmenus.inc:465
+#: lib/ui/stdmenus.inc:466
 msgid "Insert New Branch...|I"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:470
+#: lib/ui/stdmenus.inc:471
 #, fuzzy
 msgid "Horizontal Phantom"
 msgstr "Aroymint di coûtchî|#c"
 
-#: lib/ui/stdmenus.inc:471
+#: lib/ui/stdmenus.inc:472
 #, fuzzy
 msgid "Vertical Phantom"
 msgstr "Aroymint d' astampé|#a"
 
-#: lib/ui/stdmenus.inc:483
+#: lib/ui/stdmenus.inc:484
 #, fuzzy
 msgid "Change Tracking|C"
 msgstr "Lingaedje"
 
-#: lib/ui/stdmenus.inc:487
+#: lib/ui/stdmenus.inc:488
 msgid "Start Appendix Here|A"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:489
+#: lib/ui/stdmenus.inc:490
 msgid "Save in Bundled Format|F"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:490
+#: lib/ui/stdmenus.inc:491
 msgid "Compressed|m"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:497
+#: lib/ui/stdmenus.inc:498
 #, fuzzy
 msgid "Accept Change|A"
 msgstr "Parint:"
 
-#: lib/ui/stdmenus.inc:499
+#: lib/ui/stdmenus.inc:500
 #, fuzzy
 msgid "Accept All Changes|c"
 msgstr "Parint:"
 
-#: lib/ui/stdmenus.inc:500
+#: lib/ui/stdmenus.inc:501
 #, fuzzy
 msgid "Reject All Changes|e"
 msgstr "Rissayî|#R#r"
 
-#: lib/ui/stdmenus.inc:510
+#: lib/ui/stdmenus.inc:511
 #, fuzzy
 msgid "Next Change|C"
 msgstr "(Candjî)"
 
-#: lib/ui/stdmenus.inc:511
+#: lib/ui/stdmenus.inc:512
 #, fuzzy
 msgid "Next Cross-Reference|R"
 msgstr "Sititchî on croejhlé rahuca"
 
-#: lib/ui/stdmenus.inc:524
+#: lib/ui/stdmenus.inc:525
 #, fuzzy
 msgid "Clear Bookmarks|C"
 msgstr "Dizo|#o#B"
 
-#: lib/ui/stdmenus.inc:526
+#: lib/ui/stdmenus.inc:527
 #, fuzzy
 msgid "Navigate Back|B"
 msgstr "Negatif|#N"
 
-#: lib/ui/stdmenus.inc:536
+#: lib/ui/stdmenus.inc:537
 #, fuzzy
 msgid "Thesaurus...|T"
 msgstr "Arindjmint do tåvlea"
 
-#: lib/ui/stdmenus.inc:537
+#: lib/ui/stdmenus.inc:538
 #, fuzzy
 msgid "Statistics...|a"
 msgstr "Schaper"
 
-#: lib/ui/stdmenus.inc:539
+#: lib/ui/stdmenus.inc:540
 #, fuzzy
 msgid "TeX Information|I"
 msgstr "Nole informåcion po disfé"
 
-#: lib/ui/stdmenus.inc:540
+#: lib/ui/stdmenus.inc:541
 #, fuzzy
 msgid "Compare...|C"
 msgstr "A vosse môde"
 
-#: lib/ui/stdmenus.inc:556
+#: lib/ui/stdmenus.inc:557
 #, fuzzy
 msgid "Additional Features|F"
 msgstr "Espaçmints d' astampé"
 
-#: lib/ui/stdmenus.inc:557
+#: lib/ui/stdmenus.inc:558
 msgid "Embedded Objects|O"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:560
+#: lib/ui/stdmenus.inc:561
 #, fuzzy
 msgid "Shortcuts|S"
 msgstr "Dji rgrete."
 
-#: lib/ui/stdmenus.inc:561
+#: lib/ui/stdmenus.inc:562
 #, fuzzy
 msgid "LyX Functions|y"
 msgstr "Foncsions"
 
-#: lib/ui/stdmenus.inc:563
+#: lib/ui/stdmenus.inc:564
 #, fuzzy
 msgid "Specific Manuals|p"
 msgstr "Celule especiåle"
 
-#: lib/ui/stdmenus.inc:569
+#: lib/ui/stdmenus.inc:570
 #, fuzzy
 msgid "Linguistics Manual|L"
 msgstr "Royes"
 
-#: lib/ui/stdmenus.inc:570
+#: lib/ui/stdmenus.inc:571
 #, fuzzy
 msgid "Braille Manual|B"
 msgstr "Fitchî des messaedjes LaTeX"
 
-#: lib/ui/stdmenus.inc:571
+#: lib/ui/stdmenus.inc:572
 msgid "XY-pic Manual|X"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:572
+#: lib/ui/stdmenus.inc:573
 #, fuzzy
 msgid "Multicolumn Manual|M"
 msgstr "Multicolones|#M"
 
-#: lib/ui/stdmenus.inc:573
+#: lib/ui/stdmenus.inc:574
 msgid "Feynman-diagram Manual|F"
 msgstr ""
 
@@ -18555,8 +18560,8 @@ msgstr "Enonder ene comande"
 msgid "Table (CSV)"
 msgstr "Tåvlea%t"
 
-#: lib/configure.py:567 src/frontends/qt4/GuiView.cpp:1023
-#: src/frontends/qt4/GuiView.cpp:1024 src/mathed/MathMacroTemplate.cpp:542
+#: lib/configure.py:567 src/frontends/qt4/GuiView.cpp:1024
+#: src/frontends/qt4/GuiView.cpp:1025 src/mathed/MathMacroTemplate.cpp:542
 msgid "LyX"
 msgstr "LyX"
 
@@ -18664,81 +18669,81 @@ msgstr "Intreye bibiografike"
 msgid "before"
 msgstr "Môde di scrîjhaedje"
 
-#: src/Buffer.cpp:137
+#: src/Buffer.cpp:138
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/Buffer.cpp:140
+#: src/Buffer.cpp:141
 #, fuzzy
 msgid "Print document failed"
 msgstr "Rexhe so"
 
-#: src/Buffer.cpp:318
+#: src/Buffer.cpp:319
 msgid "Disk Error: "
 msgstr ""
 
-#: src/Buffer.cpp:319
+#: src/Buffer.cpp:320
 #, fuzzy, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/Buffer.cpp:401
+#: src/Buffer.cpp:402
 msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr ""
 
-#: src/Buffer.cpp:403
+#: src/Buffer.cpp:404
 #, fuzzy
 msgid "Attempting to close changed document!"
 msgstr "lyx: dji saye di schaper li documint"
 
-#: src/Buffer.cpp:411
+#: src/Buffer.cpp:412
 #, fuzzy
 msgid "Could not remove temporary directory"
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/Buffer.cpp:412
+#: src/Buffer.cpp:413
 #, fuzzy, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/Buffer.cpp:722
+#: src/Buffer.cpp:723
 #, fuzzy
 msgid "Unknown document class"
 msgstr "dins li classe ki vos avîz tchwezi"
 
-#: src/Buffer.cpp:723
+#: src/Buffer.cpp:724
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/Buffer.cpp:727 src/Text.cpp:477
+#: src/Buffer.cpp:728 src/Text.cpp:477
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Bouye nén cnoxhuwe"
 
-#: src/Buffer.cpp:731 src/Buffer.cpp:738 src/Buffer.cpp:758
+#: src/Buffer.cpp:732 src/Buffer.cpp:739 src/Buffer.cpp:759
 #, fuzzy
 msgid "Document header error"
 msgstr "Aroke dins LaTeX"
 
-#: src/Buffer.cpp:737
+#: src/Buffer.cpp:738
 msgid "\\begin_header is missing"
 msgstr ""
 
-#: src/Buffer.cpp:757
+#: src/Buffer.cpp:758
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/Buffer.cpp:773 src/Buffer.cpp:779 src/BufferView.cpp:1409
+#: src/Buffer.cpp:774 src/Buffer.cpp:780 src/BufferView.cpp:1409
 #: src/BufferView.cpp:1415
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:774 src/BufferView.cpp:1410
+#: src/Buffer.cpp:775 src/BufferView.cpp:1410
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -18746,7 +18751,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:780 src/BufferView.cpp:1416
+#: src/Buffer.cpp:781 src/BufferView.cpp:1416
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -18754,173 +18759,173 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:894 src/Buffer.cpp:984
+#: src/Buffer.cpp:895 src/Buffer.cpp:985
 #, fuzzy
 msgid "Document format failure"
 msgstr "Documint"
 
-#: src/Buffer.cpp:895
+#: src/Buffer.cpp:896
 #, fuzzy, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "Dji n' sai drovi li documint"
 
-#: src/Buffer.cpp:932
+#: src/Buffer.cpp:933
 #, fuzzy
 msgid "Conversion failed"
 msgstr "Dj' a aroké come dji ratoûrneve!"
 
-#: src/Buffer.cpp:933
+#: src/Buffer.cpp:934
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
-#: src/Buffer.cpp:942
+#: src/Buffer.cpp:943
 #, fuzzy
 msgid "Conversion script not found"
 msgstr "Nol advertixhmint d' oyu."
 
-#: src/Buffer.cpp:943
+#: src/Buffer.cpp:944
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
-#: src/Buffer.cpp:963 src/Buffer.cpp:969
+#: src/Buffer.cpp:964 src/Buffer.cpp:970
 #, fuzzy
 msgid "Conversion script failed"
 msgstr "Dj' a aroké come dji ratoûrneve!"
 
-#: src/Buffer.cpp:964
+#: src/Buffer.cpp:965
 #, c-format
 msgid ""
 "%1$s is from an older version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
-#: src/Buffer.cpp:970
+#: src/Buffer.cpp:971
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and cannot be converted by the lyx2lyx "
 "script."
 msgstr ""
 
-#: src/Buffer.cpp:985
+#: src/Buffer.cpp:986
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/Buffer.cpp:1002
+#: src/Buffer.cpp:1003
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
 msgstr ""
 
-#: src/Buffer.cpp:1004
+#: src/Buffer.cpp:1005
 #, fuzzy
 msgid "Overwrite modified file?"
 msgstr "Machine a scrîre"
 
-#: src/Buffer.cpp:1005 src/Buffer.cpp:2213 src/Exporter.cpp:50
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1959
-#: src/frontends/qt4/GuiView.cpp:2151
+#: src/Buffer.cpp:1006 src/Buffer.cpp:2214 src/Exporter.cpp:50
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1966
+#: src/frontends/qt4/GuiView.cpp:2158
 #, fuzzy
 msgid "&Overwrite"
 msgstr "Machine a scrîre"
 
-#: src/Buffer.cpp:1029
+#: src/Buffer.cpp:1030
 #, fuzzy
 msgid "Backup failure"
 msgstr "Prémetu"
 
-#: src/Buffer.cpp:1030
+#: src/Buffer.cpp:1031
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writeable."
 msgstr ""
 
-#: src/Buffer.cpp:1056
+#: src/Buffer.cpp:1057
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Dji schape li documint"
 
-#: src/Buffer.cpp:1071
+#: src/Buffer.cpp:1072
 #, fuzzy
 msgid " could not write file!"
 msgstr "Dji n' a nén parvinu a-z enonder ci fitchî ci:"
 
-#: src/Buffer.cpp:1079
+#: src/Buffer.cpp:1080
 #, fuzzy
 msgid " done."
 msgstr "Dischinde"
 
-#: src/Buffer.cpp:1094
+#: src/Buffer.cpp:1095
 #, fuzzy, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "lyx: dji saye di schaper li documint"
 
-#: src/Buffer.cpp:1104 src/Buffer.cpp:1117 src/Buffer.cpp:1131
+#: src/Buffer.cpp:1105 src/Buffer.cpp:1118 src/Buffer.cpp:1132
 #, fuzzy, c-format
 msgid "  Saved to %1$s. Phew.\n"
 msgstr "Dj' a l' ideye ki ça a stî, pai-st a Diè"
 
-#: src/Buffer.cpp:1107
+#: src/Buffer.cpp:1108
 #, fuzzy
 msgid "  Save failed! Trying again...\n"
 msgstr " Dji n' a savu schaper! Dji rsaye..."
 
-#: src/Buffer.cpp:1121
+#: src/Buffer.cpp:1122
 #, fuzzy
 msgid "  Save failed! Trying yet again...\n"
 msgstr " Dji n' a savu schaper! Dji rsaye..."
 
-#: src/Buffer.cpp:1135
+#: src/Buffer.cpp:1136
 msgid "  Save failed! Bummer. Document is lost."
 msgstr " Dji n' a savu schaper! Berwete, vosse documint est pierdu!"
 
-#: src/Buffer.cpp:1219
+#: src/Buffer.cpp:1220
 msgid "Iconv software exception Detected"
 msgstr ""
 
-#: src/Buffer.cpp:1219
+#: src/Buffer.cpp:1220
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr ""
 
-#: src/Buffer.cpp:1241
+#: src/Buffer.cpp:1242
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 
-#: src/Buffer.cpp:1244
+#: src/Buffer.cpp:1245
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/Buffer.cpp:1251
+#: src/Buffer.cpp:1252
 #, fuzzy
 msgid "iconv conversion failed"
 msgstr "Dj' a aroké come dji ratoûrneve!"
 
-#: src/Buffer.cpp:1256
+#: src/Buffer.cpp:1257
 #, fuzzy
 msgid "conversion failed"
 msgstr "Dj' a aroké come dji ratoûrneve!"
 
-#: src/Buffer.cpp:1353
+#: src/Buffer.cpp:1354
 #, fuzzy
 msgid "Uncodable character in file path"
 msgstr "Speciå:|#S"
 
-#: src/Buffer.cpp:1354
+#: src/Buffer.cpp:1355
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -18933,55 +18938,55 @@ msgid ""
 "or change the file path name."
 msgstr ""
 
-#: src/Buffer.cpp:1638
+#: src/Buffer.cpp:1639
 msgid "Running chktex..."
 msgstr "Dj' enonde chktex..."
 
-#: src/Buffer.cpp:1652
+#: src/Buffer.cpp:1653
 msgid "chktex failure"
 msgstr ""
 
-#: src/Buffer.cpp:1653
+#: src/Buffer.cpp:1654
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex n' a pont trové di måcules"
 
-#: src/Buffer.cpp:1886
+#: src/Buffer.cpp:1887
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr ""
 
-#: src/Buffer.cpp:1958 src/frontends/qt4/GuiView.cpp:2923
+#: src/Buffer.cpp:1959 src/frontends/qt4/GuiView.cpp:2948
 #, fuzzy, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Dj' a aroké come dji sayîve do lere "
 
-#: src/Buffer.cpp:2040
+#: src/Buffer.cpp:2041
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr ""
 
-#: src/Buffer.cpp:2070
+#: src/Buffer.cpp:2071
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr ""
 
-#: src/Buffer.cpp:2130
+#: src/Buffer.cpp:2131
 #, fuzzy, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Bouye nén cnoxhuwe"
 
-#: src/Buffer.cpp:2137
+#: src/Buffer.cpp:2138
 #, fuzzy, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Bouye nén cnoxhuwe"
 
-#: src/Buffer.cpp:2147
+#: src/Buffer.cpp:2148
 #, fuzzy
 msgid "Error exporting to DVI."
 msgstr "Dj' a aroké come dji sayîve do lere "
 
-#: src/Buffer.cpp:2209 src/Exporter.cpp:45
+#: src/Buffer.cpp:2210 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -18989,80 +18994,80 @@ msgid ""
 "Do you want to overwrite that file?"
 msgstr ""
 
-#: src/Buffer.cpp:2212 src/Exporter.cpp:48
+#: src/Buffer.cpp:2213 src/Exporter.cpp:48
 #, fuzzy
 msgid "Overwrite file?"
 msgstr "Machine a scrîre"
 
-#: src/Buffer.cpp:2229
+#: src/Buffer.cpp:2230
 #, fuzzy
 msgid "Error running external commands."
 msgstr "Nole informåcion po disfé"
 
-#: src/Buffer.cpp:3016
+#: src/Buffer.cpp:3028
 #, fuzzy
 msgid "Preview source code"
 msgstr "Comincî pal difén|#R"
 
-#: src/Buffer.cpp:3030
+#: src/Buffer.cpp:3042
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Comincî pal difén|#R"
 
-#: src/Buffer.cpp:3034
+#: src/Buffer.cpp:3046
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr ""
 
-#: src/Buffer.cpp:3142
+#: src/Buffer.cpp:3154
 #, fuzzy, c-format
 msgid "Auto-saving %1$s"
 msgstr "Schaper tot seu"
 
-#: src/Buffer.cpp:3196
+#: src/Buffer.cpp:3208
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Dj' a fwait berwete come dji sayîve di schaper tot seu !"
 
-#: src/Buffer.cpp:3254
+#: src/Buffer.cpp:3266
 msgid "Autosaving current document..."
 msgstr "Dji schape tot seu li documint drovu..."
 
-#: src/Buffer.cpp:3353
+#: src/Buffer.cpp:3365
 #, fuzzy
 msgid "Couldn't export file"
 msgstr "Dji n' sai scrîre li fitchî"
 
-#: src/Buffer.cpp:3354
+#: src/Buffer.cpp:3366
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr ""
 
-#: src/Buffer.cpp:3414
+#: src/Buffer.cpp:3426
 #, fuzzy
 msgid "File name error"
 msgstr "No do fitchî:|#F"
 
-#: src/Buffer.cpp:3415
+#: src/Buffer.cpp:3427
 msgid "The directory path to the document cannot contain spaces."
 msgstr ""
 
-#: src/Buffer.cpp:3491
+#: src/Buffer.cpp:3503
 #, fuzzy
 msgid "Document export cancelled."
 msgstr "Documint rlomé ("
 
-#: src/Buffer.cpp:3501
+#: src/Buffer.cpp:3513
 #, fuzzy, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Documint rlomé ("
 
-#: src/Buffer.cpp:3507
+#: src/Buffer.cpp:3519
 #, fuzzy, c-format
 msgid "Document exported as %1$s"
 msgstr "Documint rlomé ("
 
-#: src/Buffer.cpp:3586
+#: src/Buffer.cpp:3598
 #, fuzzy, c-format
 msgid ""
 "The specified document\n"
@@ -19070,12 +19075,12 @@ msgid ""
 "could not be read."
 msgstr "L'adjinçmint do documint est metu"
 
-#: src/Buffer.cpp:3588
+#: src/Buffer.cpp:3600
 #, fuzzy
 msgid "Could not read document"
 msgstr "Dji n' sai drovi li documint"
 
-#: src/Buffer.cpp:3598
+#: src/Buffer.cpp:3610
 #, fuzzy, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -19083,57 +19088,57 @@ msgid ""
 "Recover emergency save?"
 msgstr "I gn a ene copeye di schapeye po ci documint ci."
 
-#: src/Buffer.cpp:3601
+#: src/Buffer.cpp:3613
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:3602
+#: src/Buffer.cpp:3614
 #, fuzzy
 msgid "&Recover"
 msgstr "Comincî pal difén|#R"
 
-#: src/Buffer.cpp:3602
+#: src/Buffer.cpp:3614
 msgid "&Load Original"
 msgstr ""
 
-#: src/Buffer.cpp:3612
+#: src/Buffer.cpp:3624
 msgid "Document was successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3614
+#: src/Buffer.cpp:3626
 msgid "Document was NOT successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3615
+#: src/Buffer.cpp:3627
 #, fuzzy, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr "Tchwezi li roye shûvante"
 
-#: src/Buffer.cpp:3618 src/Buffer.cpp:3628
+#: src/Buffer.cpp:3630 src/Buffer.cpp:3640
 #, fuzzy
 msgid "Delete emergency file?"
 msgstr "Tchwezi li roye shûvante"
 
-#: src/Buffer.cpp:3619 src/Buffer.cpp:3630
+#: src/Buffer.cpp:3631 src/Buffer.cpp:3642
 #, fuzzy
 msgid "&Keep it"
 msgstr "Tite|#k"
 
-#: src/Buffer.cpp:3622
+#: src/Buffer.cpp:3634
 msgid "Emergency file deleted"
 msgstr ""
 
-#: src/Buffer.cpp:3623
+#: src/Buffer.cpp:3635
 msgid "Do not forget to save your file now!"
 msgstr ""
 
-#: src/Buffer.cpp:3629
+#: src/Buffer.cpp:3641
 msgid "Remove emergency file now?"
 msgstr ""
 
-#: src/Buffer.cpp:3644
+#: src/Buffer.cpp:3656
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -19141,40 +19146,40 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/Buffer.cpp:3647
+#: src/Buffer.cpp:3659
 #, fuzzy
 msgid "Load backup?"
 msgstr "Noer"
 
-#: src/Buffer.cpp:3648
+#: src/Buffer.cpp:3660
 #, fuzzy
 msgid "&Load backup"
 msgstr "Noer"
 
-#: src/Buffer.cpp:3648
+#: src/Buffer.cpp:3660
 msgid "Load &original"
 msgstr ""
 
-#: src/Buffer.cpp:3943 src/insets/InsetCaption.cpp:327
+#: src/Buffer.cpp:3955 src/insets/InsetCaption.cpp:327
 msgid "Senseless!!! "
 msgstr ""
 
-#: src/Buffer.cpp:4066
+#: src/Buffer.cpp:4078
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "I gn a nou documint di drovu!%t"
 
-#: src/Buffer.cpp:4068
+#: src/Buffer.cpp:4080
 #, fuzzy, c-format
 msgid "Could not reload document %1$s."
 msgstr "Dji n' sai drovi li documint"
 
-#: src/Buffer.cpp:4103
+#: src/Buffer.cpp:4115
 #, fuzzy
 msgid "Included File Invalid"
 msgstr "Prinde avou"
 
-#: src/Buffer.cpp:4104
+#: src/Buffer.cpp:4116
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -20100,7 +20105,7 @@ msgstr "Dji n' sai scrîre li fitchî"
 msgid "Cannot view file"
 msgstr "Dji n' sai scrîre li fitchî"
 
-#: src/Format.cpp:289 src/Format.cpp:360 src/frontends/qt4/GuiView.cpp:2799
+#: src/Format.cpp:289 src/Format.cpp:360 src/frontends/qt4/GuiView.cpp:2806
 #, fuzzy, c-format
 msgid "File does not exist: %1$s"
 msgstr "Ci fitchî la egzisteye dedja :"
@@ -20288,7 +20293,7 @@ msgstr ""
 msgid "LyX crashed!"
 msgstr ""
 
-#: src/LyX.cpp:697 src/frontends/qt4/GuiView.cpp:862
+#: src/LyX.cpp:697 src/frontends/qt4/GuiView.cpp:863
 #, fuzzy
 msgid "LyX: "
 msgstr "Rexhe"
@@ -20944,7 +20949,7 @@ msgstr "LyX VC: discrîjhaedje po cmincî"
 msgid "(no log message)"
 msgstr ""
 
-#: src/LyXVC.cpp:166 src/frontends/qt4/GuiView.cpp:2643
+#: src/LyXVC.cpp:166 src/frontends/qt4/GuiView.cpp:2650
 msgid "LyX VC: Log Message"
 msgstr "LyX VC: messaedjes"
 
@@ -20962,7 +20967,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Tchwezi djusk' al difén do documint"
 
-#: src/LyXVC.cpp:216 src/frontends/qt4/GuiView.cpp:3052
+#: src/LyXVC.cpp:216 src/frontends/qt4/GuiView.cpp:3088
 #, fuzzy
 msgid "&Revert"
 msgstr "Schaper"
@@ -21203,7 +21208,7 @@ msgstr ""
 
 #: src/VCBackend.cpp:60 src/VCBackend.cpp:686 src/VCBackend.cpp:755
 #: src/VCBackend.cpp:761 src/VCBackend.cpp:782
-#: src/frontends/qt4/GuiView.cpp:2606
+#: src/frontends/qt4/GuiView.cpp:2613
 #, fuzzy
 msgid "Revision control error."
 msgstr "Shûre li modeye%t"
@@ -21341,7 +21346,7 @@ msgstr ""
 msgid "Reload saved document?"
 msgstr "Rivni å doc. come il esteut li dierin côp k' il a stî schapé"
 
-#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2555
+#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2562
 #, fuzzy
 msgid "&Reload"
 msgstr "Mete el plaece"
@@ -21723,9 +21728,9 @@ msgstr "Intreye bibiografike"
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
 #: src/frontends/qt4/GuiDocument.cpp:1816
 #: src/frontends/qt4/GuiExternal.cpp:639 src/frontends/qt4/GuiGraphics.cpp:799
-#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1702
-#: src/frontends/qt4/GuiView.cpp:1760 src/frontends/qt4/GuiView.cpp:1909
-#: src/frontends/qt4/GuiView.cpp:2036 src/frontends/qt4/GuiView.cpp:2120
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1703
+#: src/frontends/qt4/GuiView.cpp:1767 src/frontends/qt4/GuiView.cpp:1916
+#: src/frontends/qt4/GuiView.cpp:2043 src/frontends/qt4/GuiView.cpp:2127
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Documints"
@@ -22003,10 +22008,10 @@ msgstr ""
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Tapez on no po schaper eyèt lomer li fitchî"
 
-#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1779
-#: src/frontends/qt4/GuiView.cpp:1929 src/frontends/qt4/GuiView.cpp:1945
-#: src/frontends/qt4/GuiView.cpp:1962 src/frontends/qt4/GuiView.cpp:2053
-#: src/frontends/qt4/GuiView.cpp:2096
+#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1786
+#: src/frontends/qt4/GuiView.cpp:1936 src/frontends/qt4/GuiView.cpp:1952
+#: src/frontends/qt4/GuiView.cpp:1969 src/frontends/qt4/GuiView.cpp:2060
+#: src/frontends/qt4/GuiView.cpp:2103
 msgid "Canceled."
 msgstr "Vos avoz rnoncî"
 
@@ -22039,9 +22044,9 @@ msgstr ""
 msgid "Select document"
 msgstr "Schaper li documint?"
 
-#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1706
-#: src/frontends/qt4/GuiView.cpp:1764 src/frontends/qt4/GuiView.cpp:2042
-#: src/frontends/qt4/GuiView.cpp:2128
+#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1707
+#: src/frontends/qt4/GuiView.cpp:1771 src/frontends/qt4/GuiView.cpp:2049
+#: src/frontends/qt4/GuiView.cpp:2135
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "Documint"
@@ -23955,91 +23960,91 @@ msgstr ""
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:690
+#: src/frontends/qt4/GuiView.cpp:691
 msgid "Exit LyX"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:690
+#: src/frontends/qt4/GuiView.cpp:691
 msgid "LyX could not be closed because documents are processed by LyX."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:943
+#: src/frontends/qt4/GuiView.cpp:944
 msgid "Welcome to LyX!"
 msgstr "Wilicome dins LyX !"
 
-#: src/frontends/qt4/GuiView.cpp:1378
+#: src/frontends/qt4/GuiView.cpp:1379
 #, fuzzy
 msgid "Automatic save failed!"
 msgstr "Dj' a fwait berwete come dji sayîve di schaper tot seu !"
 
-#: src/frontends/qt4/GuiView.cpp:1379
+#: src/frontends/qt4/GuiView.cpp:1380
 #, fuzzy
 msgid "Automatic save done."
 msgstr "Miernuwes"
 
-#: src/frontends/qt4/GuiView.cpp:1422
+#: src/frontends/qt4/GuiView.cpp:1423
 msgid "Command not allowed without any document open"
 msgstr "Vos n' poloz nén enonder cisse comande sins documint di drovu"
 
-#: src/frontends/qt4/GuiView.cpp:1524
+#: src/frontends/qt4/GuiView.cpp:1525
 #, fuzzy, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Bouye nén cnoxhuwe"
 
-#: src/frontends/qt4/GuiView.cpp:1701
+#: src/frontends/qt4/GuiView.cpp:1702
 #, fuzzy
 msgid "Select template file"
 msgstr "Tchwezi li roye shûvante"
 
-#: src/frontends/qt4/GuiView.cpp:1703 src/frontends/qt4/GuiView.cpp:2121
+#: src/frontends/qt4/GuiView.cpp:1704 src/frontends/qt4/GuiView.cpp:2128
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Modeles"
 
-#: src/frontends/qt4/GuiView.cpp:1723
+#: src/frontends/qt4/GuiView.cpp:1730
 #, fuzzy
 msgid "Document not loaded."
 msgstr "L'adjinçmint do documint est metu"
 
-#: src/frontends/qt4/GuiView.cpp:1759
+#: src/frontends/qt4/GuiView.cpp:1766
 #, fuzzy
 msgid "Select document to open"
 msgstr "Tchwezixhoz on documint po drovi"
 
-#: src/frontends/qt4/GuiView.cpp:1761 src/frontends/qt4/GuiView.cpp:1910
-#: src/frontends/qt4/GuiView.cpp:2037
+#: src/frontends/qt4/GuiView.cpp:1768 src/frontends/qt4/GuiView.cpp:1917
+#: src/frontends/qt4/GuiView.cpp:2044
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Egzimpes"
 
-#: src/frontends/qt4/GuiView.cpp:1765
+#: src/frontends/qt4/GuiView.cpp:1772
 #, fuzzy
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "Documint"
 
-#: src/frontends/qt4/GuiView.cpp:1766
+#: src/frontends/qt4/GuiView.cpp:1773
 #, fuzzy
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "Documint"
 
-#: src/frontends/qt4/GuiView.cpp:1767
+#: src/frontends/qt4/GuiView.cpp:1774
 #, fuzzy
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "Documint"
 
-#: src/frontends/qt4/GuiView.cpp:1768
+#: src/frontends/qt4/GuiView.cpp:1775
 #, fuzzy
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "Documint"
 
-#: src/frontends/qt4/GuiView.cpp:1793 src/frontends/qt4/Validator.cpp:188
+#: src/frontends/qt4/GuiView.cpp:1800 src/frontends/qt4/Validator.cpp:188
 #: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:287
 #: src/insets/InsetGraphics.cpp:594 src/insets/InsetInclude.cpp:512
 #, fuzzy
 msgid "Invalid filename"
 msgstr "Prinde avou"
 
-#: src/frontends/qt4/GuiView.cpp:1794
+#: src/frontends/qt4/GuiView.cpp:1801
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -24047,42 +24052,42 @@ msgid ""
 "does not exist."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1810
+#: src/frontends/qt4/GuiView.cpp:1817
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Dji drove li documint"
 
-#: src/frontends/qt4/GuiView.cpp:1819
+#: src/frontends/qt4/GuiView.cpp:1826
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "I gn a nou documint di drovu!%t"
 
-#: src/frontends/qt4/GuiView.cpp:1822
+#: src/frontends/qt4/GuiView.cpp:1829
 #, fuzzy
 msgid "Version control detected."
 msgstr "Shûre li modeye%t"
 
-#: src/frontends/qt4/GuiView.cpp:1824
+#: src/frontends/qt4/GuiView.cpp:1831
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Dji n' sai drovi li documint"
 
-#: src/frontends/qt4/GuiView.cpp:1853
+#: src/frontends/qt4/GuiView.cpp:1860
 #, fuzzy
 msgid "Couldn't import file"
 msgstr "Dji n' sai scrîre li fitchî"
 
-#: src/frontends/qt4/GuiView.cpp:1854
+#: src/frontends/qt4/GuiView.cpp:1861
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1905
+#: src/frontends/qt4/GuiView.cpp:1912
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Tchwezixhoz on documint po stitchî"
 
-#: src/frontends/qt4/GuiView.cpp:1956 src/frontends/qt4/GuiView.cpp:2146
+#: src/frontends/qt4/GuiView.cpp:1963 src/frontends/qt4/GuiView.cpp:2153
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -24090,60 +24095,60 @@ msgid ""
 "Do you want to overwrite that document?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1958 src/frontends/qt4/GuiView.cpp:2150
+#: src/frontends/qt4/GuiView.cpp:1965 src/frontends/qt4/GuiView.cpp:2157
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "Schaper li documint?"
 
-#: src/frontends/qt4/GuiView.cpp:1967
+#: src/frontends/qt4/GuiView.cpp:1974
 #, fuzzy, c-format
 msgid "Importing %1$s..."
 msgstr "Abaguer%m"
 
-#: src/frontends/qt4/GuiView.cpp:1970
+#: src/frontends/qt4/GuiView.cpp:1977
 msgid "imported."
 msgstr "e-st abagué."
 
-#: src/frontends/qt4/GuiView.cpp:1972
+#: src/frontends/qt4/GuiView.cpp:1979
 #, fuzzy
 msgid "file not imported!"
 msgstr "Dji n' a nén trové li pådje di caracteres !"
 
-#: src/frontends/qt4/GuiView.cpp:1997
+#: src/frontends/qt4/GuiView.cpp:2004
 #, fuzzy
 msgid "newfile"
 msgstr "Prinde avou"
 
-#: src/frontends/qt4/GuiView.cpp:2035
+#: src/frontends/qt4/GuiView.cpp:2042
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Tchwezixhoz on documint po stitchî"
 
-#: src/frontends/qt4/GuiView.cpp:2069 src/frontends/qt4/GuiView.cpp:2968
+#: src/frontends/qt4/GuiView.cpp:2076 src/frontends/qt4/GuiView.cpp:3004
 msgid "Absolute filename expected."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2081
+#: src/frontends/qt4/GuiView.cpp:2088
 #, fuzzy
 msgid "Select file to insert"
 msgstr "Tchwezixhoz on documint po stitchî"
 
-#: src/frontends/qt4/GuiView.cpp:2085
+#: src/frontends/qt4/GuiView.cpp:2092
 #, fuzzy
 msgid "All Files (*)"
 msgstr "[nou fitchî]"
 
-#: src/frontends/qt4/GuiView.cpp:2118
+#: src/frontends/qt4/GuiView.cpp:2125
 #, fuzzy
 msgid "Choose a filename to save document as"
 msgstr "Tapez on no po schaper eyèt lomer li fitchî"
 
-#: src/frontends/qt4/GuiView.cpp:2151 src/frontends/qt4/GuiView.cpp:2211
+#: src/frontends/qt4/GuiView.cpp:2158 src/frontends/qt4/GuiView.cpp:2218
 #, fuzzy
 msgid "&Rename"
 msgstr "No:|#N"
 
-#: src/frontends/qt4/GuiView.cpp:2207
+#: src/frontends/qt4/GuiView.cpp:2214
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -24151,25 +24156,25 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2210
+#: src/frontends/qt4/GuiView.cpp:2217
 msgid "Rename and save?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2211
+#: src/frontends/qt4/GuiView.cpp:2218
 #, fuzzy
 msgid "&Retry"
 msgstr "Comincî pal difén|#R"
 
-#: src/frontends/qt4/GuiView.cpp:2317
+#: src/frontends/qt4/GuiView.cpp:2324
 #, fuzzy
 msgid "Close document "
 msgstr "Novea documint"
 
-#: src/frontends/qt4/GuiView.cpp:2317
+#: src/frontends/qt4/GuiView.cpp:2324
 msgid "Document could not be closed because it is processed by LyX."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2413 src/frontends/qt4/GuiView.cpp:2520
+#: src/frontends/qt4/GuiView.cpp:2420 src/frontends/qt4/GuiView.cpp:2527
 #, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -24177,12 +24182,12 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2416 src/frontends/qt4/GuiView.cpp:2523
+#: src/frontends/qt4/GuiView.cpp:2423 src/frontends/qt4/GuiView.cpp:2530
 #, fuzzy
 msgid "Save new document?"
 msgstr "Schaper li documint?"
 
-#: src/frontends/qt4/GuiView.cpp:2421
+#: src/frontends/qt4/GuiView.cpp:2428
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -24190,16 +24195,16 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2423 src/frontends/qt4/GuiView.cpp:2517
+#: src/frontends/qt4/GuiView.cpp:2430 src/frontends/qt4/GuiView.cpp:2524
 #, fuzzy
 msgid "Save changed document?"
 msgstr "Schaper li documint?"
 
-#: src/frontends/qt4/GuiView.cpp:2424
+#: src/frontends/qt4/GuiView.cpp:2431
 msgid "&Discard"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2514
+#: src/frontends/qt4/GuiView.cpp:2521
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -24207,7 +24212,7 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2551
+#: src/frontends/qt4/GuiView.cpp:2558
 #, c-format
 msgid ""
 "Document \n"
@@ -24215,92 +24220,102 @@ msgid ""
 " has been externally modified. Reload now? Any local changes will be lost."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2554
+#: src/frontends/qt4/GuiView.cpp:2561
 #, fuzzy
 msgid "Reload externally changed document?"
 msgstr "Schaper li documint?"
 
-#: src/frontends/qt4/GuiView.cpp:2607
+#: src/frontends/qt4/GuiView.cpp:2614
 msgid "Error when setting the locking property."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2652
+#: src/frontends/qt4/GuiView.cpp:2659
 msgid "Directory is not accessible."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2728
+#: src/frontends/qt4/GuiView.cpp:2735
 #, fuzzy, c-format
 msgid "Opening child document %1$s..."
 msgstr "Dji drove li documint"
 
-#: src/frontends/qt4/GuiView.cpp:2820
+#: src/frontends/qt4/GuiView.cpp:2827
+#, fuzzy, c-format
+msgid "Successful compilation to format: %1$s"
+msgstr "Dj' a aroké come dji sayîve do lere "
+
+#: src/frontends/qt4/GuiView.cpp:2828
+#, fuzzy, c-format
+msgid "Error compiling format: %1$s"
+msgstr "Dj' a aroké come dji sayîve do lere "
+
+#: src/frontends/qt4/GuiView.cpp:2841
 #, c-format
 msgid "Successful export to format: %1$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2821
+#: src/frontends/qt4/GuiView.cpp:2842
 #, fuzzy, c-format
 msgid "Error exporting to format: %1$s"
 msgstr "Dj' a aroké come dji sayîve do lere "
 
-#: src/frontends/qt4/GuiView.cpp:2834
+#: src/frontends/qt4/GuiView.cpp:2855
 #, c-format
 msgid "Successful preview of format: %1$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2835
+#: src/frontends/qt4/GuiView.cpp:2856
 #, c-format
 msgid "Error previewing format: %1$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2932
+#: src/frontends/qt4/GuiView.cpp:2956 src/frontends/qt4/GuiView.cpp:2968
 #, fuzzy
 msgid "Exporting ..."
 msgstr "Abaguer%m"
 
-#: src/frontends/qt4/GuiView.cpp:2941
+#: src/frontends/qt4/GuiView.cpp:2977
 #, fuzzy
 msgid "Previewing ..."
 msgstr "Comincî pal difén|#R"
 
-#: src/frontends/qt4/GuiView.cpp:2975
+#: src/frontends/qt4/GuiView.cpp:3011
 #, fuzzy
 msgid "Document not loaded"
 msgstr "L'adjinçmint do documint est metu"
 
-#: src/frontends/qt4/GuiView.cpp:3049
+#: src/frontends/qt4/GuiView.cpp:3085
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3051
+#: src/frontends/qt4/GuiView.cpp:3087
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Rivni å doc. come il esteut li dierin côp k' il a stî schapé"
 
-#: src/frontends/qt4/GuiView.cpp:3076
+#: src/frontends/qt4/GuiView.cpp:3112
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "Dji schape li documint"
 
-#: src/frontends/qt4/GuiView.cpp:3086
+#: src/frontends/qt4/GuiView.cpp:3122
 #, fuzzy
 msgid "All documents saved."
 msgstr "L'adjinçmint do documint est metu"
 
-#: src/frontends/qt4/GuiView.cpp:3187
+#: src/frontends/qt4/GuiView.cpp:3223
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3294
+#: src/frontends/qt4/GuiView.cpp:3330
 #, fuzzy
 msgid "Please, preview the document first."
 msgstr "Ké papî"
 
-#: src/frontends/qt4/GuiView.cpp:3309
+#: src/frontends/qt4/GuiView.cpp:3345
 #, fuzzy
 msgid "Couldn't proceed."
 msgstr "Dji n' sai scrîre li fitchî"

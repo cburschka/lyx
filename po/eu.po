@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-10-19 02:12+0200\n"
+"POT-Creation-Date: 2010-10-20 02:33+0200\n"
 "PO-Revision-Date: 2010-04-27 16:59+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -498,8 +498,8 @@ msgid "Remove the selected branch"
 msgstr "Kendu hautatutako adarra"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3619
-#: src/Buffer.cpp:3630
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3631
+#: src/Buffer.cpp:3642
 msgid "&Remove"
 msgstr "&Kendu"
 
@@ -532,17 +532,17 @@ msgstr "Gehitu &denak"
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:205
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
-#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1005
-#: src/Buffer.cpp:2213 src/Buffer.cpp:3603 src/Buffer.cpp:3649
+#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1006
+#: src/Buffer.cpp:2214 src/Buffer.cpp:3615 src/Buffer.cpp:3661
 #: src/LyXVC.cpp:88 src/LyXVC.cpp:216 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1774
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1959
-#: src/frontends/qt4/GuiView.cpp:2151 src/frontends/qt4/GuiView.cpp:2211
-#: src/frontends/qt4/GuiView.cpp:2417 src/frontends/qt4/GuiView.cpp:2424
-#: src/frontends/qt4/GuiView.cpp:2525 src/frontends/qt4/GuiView.cpp:2555
-#: src/frontends/qt4/GuiView.cpp:3052 src/insets/InsetBibtex.cpp:145
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1966
+#: src/frontends/qt4/GuiView.cpp:2158 src/frontends/qt4/GuiView.cpp:2218
+#: src/frontends/qt4/GuiView.cpp:2424 src/frontends/qt4/GuiView.cpp:2431
+#: src/frontends/qt4/GuiView.cpp:2532 src/frontends/qt4/GuiView.cpp:2562
+#: src/frontends/qt4/GuiView.cpp:3088 src/insets/InsetBibtex.cpp:145
 msgid "&Cancel"
 msgstr "&Utzi"
 
@@ -4089,8 +4089,8 @@ msgstr ""
 msgid "&Single close-tab button"
 msgstr "Fitxak &ixteko botoi bakuna"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/frontends/qt4/GuiView.cpp:2417
-#: src/frontends/qt4/GuiView.cpp:2424 src/frontends/qt4/GuiView.cpp:2525
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/frontends/qt4/GuiView.cpp:2424
+#: src/frontends/qt4/GuiView.cpp:2431 src/frontends/qt4/GuiView.cpp:2532
 msgid "&Save"
 msgstr "&Gorde"
 
@@ -5307,7 +5307,7 @@ msgstr "Posta"
 #: lib/layouts/tufte-book.layout:42 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:73 lib/layouts/db_stdtitle.inc:35
 #: lib/layouts/scrclass.inc:184 lib/layouts/stdtitle.inc:87
-#: lib/layouts/svjour.inc:188 lib/ui/stdmenus.inc:370
+#: lib/layouts/svjour.inc:188 lib/ui/stdmenus.inc:371
 #: lib/external_templates:301 lib/external_templates:302
 #: lib/external_templates:306
 msgid "Date"
@@ -6105,7 +6105,7 @@ msgid "Summary"
 msgstr "Laburpena"
 
 #: lib/layouts/AEA.layout:255 lib/layouts/stdinsets.inc:359
-#: lib/ui/stdmenus.inc:357
+#: lib/ui/stdmenus.inc:358
 msgid "Caption"
 msgstr "Epigrafea"
 
@@ -10136,7 +10136,7 @@ msgid "ERT"
 msgstr "ITG"
 
 #: lib/layouts/stdinsets.inc:155 lib/ui/stdcontext.inc:194
-#: lib/ui/stdmenus.inc:396 lib/ui/stdmenus.inc:469
+#: lib/ui/stdmenus.inc:397 lib/ui/stdmenus.inc:470
 #: src/insets/InsetPhantom.cpp:65
 msgid "Phantom"
 msgstr "Mamua"
@@ -10152,7 +10152,7 @@ msgid "Branch"
 msgstr "Adarra"
 
 #: lib/layouts/stdinsets.inc:197 lib/layouts/minimalistic.module:8
-#: src/Buffer.cpp:818 src/BufferParams.cpp:412
+#: src/Buffer.cpp:819 src/BufferParams.cpp:412
 #: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:450
 #: src/insets/InsetIndex.cpp:715
 msgid "Index"
@@ -11752,11 +11752,11 @@ msgstr "Bilatu eta ordeztu...|o"
 msgid "Tabular|T"
 msgstr "Taula|T"
 
-#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:120 lib/ui/stdmenus.inc:558
+#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:120 lib/ui/stdmenus.inc:559
 msgid "Math|M"
 msgstr "Matematika|M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:535
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:536
 msgid "Spellchecker...|S"
 msgstr "Zuzentzailea...|Z"
 
@@ -11768,7 +11768,7 @@ msgstr "Thesaurus..."
 msgid "Statistics...|i"
 msgstr "Estatistikak...|i"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:538
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:539
 msgid "Check TeX|h"
 msgstr "Egiaztatu TeX|X"
 
@@ -11776,11 +11776,11 @@ msgstr "Egiaztatu TeX|X"
 msgid "Change Tracking|g"
 msgstr "Aldaketen jarraipena|j"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:546
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:547
 msgid "Preferences...|P"
 msgstr "Hobespenak...|H"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:545
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:546
 msgid "Reconfigure|R"
 msgstr "Birkonfiguratu|B"
 
@@ -11816,7 +11816,7 @@ msgstr "Marra eskuinean|s"
 msgid "Alignment|i"
 msgstr "Lerrokatzea|L"
 
-#: lib/ui/classic.ui:129 lib/ui/stdmenus.inc:201
+#: lib/ui/classic.ui:129 lib/ui/stdmenus.inc:202
 msgid "Add Row|A"
 msgstr "Gehitu errenkada|e"
 
@@ -11832,7 +11832,7 @@ msgstr "Kopiatu errenkada"
 msgid "Swap Rows"
 msgstr "Trukatu errenkadak"
 
-#: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:206
+#: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:207
 msgid "Add Column|u"
 msgstr "Gehitu zutabea|z"
 
@@ -11848,27 +11848,27 @@ msgstr "Kopiatu zutabea"
 msgid "Swap Columns"
 msgstr "Trukatu zutabeak"
 
-#: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:193
+#: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:194
 msgid "Left|L"
 msgstr "Ezkerrean|z"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:411 lib/ui/stdmenus.inc:194
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:411 lib/ui/stdmenus.inc:195
 msgid "Center|C"
 msgstr "Erdian|r"
 
-#: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:195
+#: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:196
 msgid "Right|R"
 msgstr "Eskuinean|s"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:414 lib/ui/stdmenus.inc:197
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:414 lib/ui/stdmenus.inc:198
 msgid "Top|T"
 msgstr "Goian|G"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:415 lib/ui/stdmenus.inc:198
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:415 lib/ui/stdmenus.inc:199
 msgid "Middle|M"
 msgstr "Erdian|E"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:416 lib/ui/stdmenus.inc:199
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:416 lib/ui/stdmenus.inc:200
 msgid "Bottom|B"
 msgstr "Behean|B"
 
@@ -11880,15 +11880,15 @@ msgstr "Txandakatu zenbaketa|z"
 msgid "Toggle Numbering of Line|u"
 msgstr "Txandakatu lerro-zenbakera|b"
 
-#: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:215
+#: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:216
 msgid "Change Limits Type|L"
 msgstr "Aldatu muga-motak|m"
 
-#: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:218
+#: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:219
 msgid "Change Formula Type|F"
 msgstr "Aldatu formula-mota|f"
 
-#: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:222
+#: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:223
 msgid "Use Computer Algebra System|S"
 msgstr "Erabili ordenagailuaren aljebra sistema|s"
 
@@ -11900,7 +11900,7 @@ msgstr "Lerrokatzea|L"
 msgid "Add Row|R"
 msgstr "Gehitu errenkada|e"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:419 lib/ui/stdmenus.inc:202
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:419 lib/ui/stdmenus.inc:203
 msgid "Delete Row|D"
 msgstr "Ezabatu errenkada|r"
 
@@ -11908,19 +11908,19 @@ msgstr "Ezabatu errenkada|r"
 msgid "Add Column|C"
 msgstr "Gehitu zutabea|z"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:424 lib/ui/stdmenus.inc:207
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:424 lib/ui/stdmenus.inc:208
 msgid "Delete Column|e"
 msgstr "Ezabatu zutabea|u"
 
-#: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:252
+#: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:253
 msgid "Default|t"
 msgstr "Lehenetsia|t"
 
-#: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:253
+#: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:254
 msgid "Display|D"
 msgstr "Bistaratu|B"
 
-#: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:254
+#: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:255
 msgid "Inline|I"
 msgstr "Lerroan|L"
 
@@ -11953,11 +11953,11 @@ msgid "Maple, evalf"
 msgstr "Maple, evalf"
 
 #: lib/ui/classic.ui:199 lib/ui/classic.ui:265 lib/ui/stdcontext.inc:49
-#: lib/ui/stdmenus.inc:295 lib/ui/stdmenus.inc:410
+#: lib/ui/stdmenus.inc:296 lib/ui/stdmenus.inc:411
 msgid "Inline Formula|I"
 msgstr "Lerroko formula|l"
 
-#: lib/ui/classic.ui:200 lib/ui/stdcontext.inc:50 lib/ui/stdmenus.inc:296
+#: lib/ui/classic.ui:200 lib/ui/stdcontext.inc:50 lib/ui/stdmenus.inc:297
 msgid "Displayed Formula|D"
 msgstr "Adierazpen-formula|A"
 
@@ -11985,7 +11985,7 @@ msgstr "Gather ingurunea"
 msgid "Multline Environment"
 msgstr "Multline ingurunea"
 
-#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:342
+#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:343
 msgid "Math|h"
 msgstr "Matematika|M"
 
@@ -11993,7 +11993,7 @@ msgstr "Matematika|M"
 msgid "Special Character|S"
 msgstr "Hizki berezia|b"
 
-#: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:354
+#: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:355
 msgid "Citation...|C"
 msgstr "Aipamena...|A"
 
@@ -12001,15 +12001,15 @@ msgstr "Aipamena...|A"
 msgid "Cross-reference...|r"
 msgstr "Erreferentzia gurutzatua...|u"
 
-#: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:356
+#: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:357
 msgid "Label...|L"
 msgstr "Etiketa...|E"
 
-#: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:365
+#: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:366
 msgid "Footnote|F"
 msgstr "Oin-oharra|n"
 
-#: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:366
+#: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:367
 msgid "Marginal Note|M"
 msgstr "Albo-oharra|M"
 
@@ -12029,7 +12029,7 @@ msgstr "Nomenklatura sarrera"
 msgid "URL...|U"
 msgstr "URLa...|U"
 
-#: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:347
+#: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:348
 msgid "Note|N"
 msgstr "Oharra|O"
 
@@ -12045,7 +12045,7 @@ msgstr "TeX kodea|T"
 msgid "Minipage|p"
 msgstr "Orritxoa|O"
 
-#: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:362
+#: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:363
 msgid "Graphics...|G"
 msgstr "Grafikoak...|G"
 
@@ -12069,15 +12069,15 @@ msgstr "Txertatu fitxategia|T"
 msgid "External Material...|x"
 msgstr "Kanpo-materiala...|K"
 
-#: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:375
+#: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:376
 msgid "Symbols...|b"
 msgstr "Ikurrak...|k"
 
-#: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:387
+#: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:388
 msgid "Superscript|S"
 msgstr "Goi-indizea|G"
 
-#: lib/ui/classic.ui:243 lib/ui/stdmenus.inc:388
+#: lib/ui/classic.ui:243 lib/ui/stdmenus.inc:389
 msgid "Subscript|u"
 msgstr "Azpindizea|A"
 
@@ -12085,11 +12085,11 @@ msgstr "Azpindizea|A"
 msgid "Hyphenation Point|P"
 msgstr "Hitz-zatitze marra|H"
 
-#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:380
+#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:381
 msgid "Protected Hyphen|y"
 msgstr "Hitz-zatitze babestua|b"
 
-#: lib/ui/classic.ui:246 lib/ui/stdmenus.inc:399
+#: lib/ui/classic.ui:246 lib/ui/stdmenus.inc:400
 msgid "Ligature Break|k"
 msgstr "Hizki-lotura etena|t"
 
@@ -12097,16 +12097,16 @@ msgstr "Hizki-lotura etena|t"
 msgid "Protected Space|r"
 msgstr "Zuriune babestua|Z"
 
-#: lib/ui/classic.ui:248 lib/ui/stdcontext.inc:205 lib/ui/stdmenus.inc:391
+#: lib/ui/classic.ui:248 lib/ui/stdcontext.inc:205 lib/ui/stdmenus.inc:392
 msgid "Interword Space|w"
 msgstr "Hitzen arteko tartea|H"
 
 #: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:207 lib/ui/stdcontext.inc:230
-#: lib/ui/stdmenus.inc:392
+#: lib/ui/stdmenus.inc:393
 msgid "Thin Space|T"
 msgstr "Zuriune txikia|t"
 
-#: lib/ui/classic.ui:250 lib/ui/stdmenus.inc:393
+#: lib/ui/classic.ui:250 lib/ui/stdmenus.inc:394
 msgid "Horizontal Space...|o"
 msgstr "Tarte horizontala...|o"
 
@@ -12118,11 +12118,11 @@ msgstr "Tarte bertikala..."
 msgid "Line Break|L"
 msgstr "Lerro-jauzia|L"
 
-#: lib/ui/classic.ui:253 lib/ui/stdmenus.inc:376
+#: lib/ui/classic.ui:253 lib/ui/stdmenus.inc:377
 msgid "Ellipsis|i"
 msgstr "Elipsia|E"
 
-#: lib/ui/classic.ui:254 lib/ui/stdmenus.inc:377
+#: lib/ui/classic.ui:254 lib/ui/stdmenus.inc:378
 msgid "End of Sentence|E"
 msgstr "Esaldi-amaiera|A"
 
@@ -12130,7 +12130,7 @@ msgstr "Esaldi-amaiera|A"
 msgid "Protected Dash|D"
 msgstr "Marratxo babestua|M"
 
-#: lib/ui/classic.ui:256 lib/ui/stdmenus.inc:381
+#: lib/ui/classic.ui:256 lib/ui/stdmenus.inc:382
 msgid "Breakable Slash|a"
 msgstr "Barra zatigarria|a"
 
@@ -12142,7 +12142,7 @@ msgstr "Komatxo bakuna|K"
 msgid "Ordinary Quote|O"
 msgstr "Komatxo zuzena|z"
 
-#: lib/ui/classic.ui:259 lib/ui/stdmenus.inc:382
+#: lib/ui/classic.ui:259 lib/ui/stdmenus.inc:383
 msgid "Menu Separator|M"
 msgstr "Menu-bereizlea|M"
 
@@ -12154,49 +12154,49 @@ msgstr "Marra horizontala"
 msgid "Page Break"
 msgstr "Orri-jauzia"
 
-#: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:411
+#: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:412
 msgid "Display Formula|D"
 msgstr "Adierazpen-formula|d"
 
-#: lib/ui/classic.ui:267 lib/ui/stdcontext.inc:51 lib/ui/stdmenus.inc:297
-#: lib/ui/stdmenus.inc:413
+#: lib/ui/classic.ui:267 lib/ui/stdcontext.inc:51 lib/ui/stdmenus.inc:298
+#: lib/ui/stdmenus.inc:414
 msgid "Eqnarray Environment|E"
 msgstr "Ekuazio-ingurunea|E"
 
-#: lib/ui/classic.ui:268 lib/ui/stdcontext.inc:41 lib/ui/stdmenus.inc:298
-#: lib/ui/stdmenus.inc:414
+#: lib/ui/classic.ui:268 lib/ui/stdcontext.inc:41 lib/ui/stdmenus.inc:299
+#: lib/ui/stdmenus.inc:415
 msgid "AMS align Environment|a"
 msgstr "AMS align ingurunea|A"
 
-#: lib/ui/classic.ui:269 lib/ui/stdcontext.inc:42 lib/ui/stdmenus.inc:299
-#: lib/ui/stdmenus.inc:415
+#: lib/ui/classic.ui:269 lib/ui/stdcontext.inc:42 lib/ui/stdmenus.inc:300
+#: lib/ui/stdmenus.inc:416
 msgid "AMS alignat Environment|t"
 msgstr "AMS alignat ingurunea|t"
 
-#: lib/ui/classic.ui:270 lib/ui/stdcontext.inc:43 lib/ui/stdmenus.inc:300
-#: lib/ui/stdmenus.inc:416
+#: lib/ui/classic.ui:270 lib/ui/stdcontext.inc:43 lib/ui/stdmenus.inc:301
+#: lib/ui/stdmenus.inc:417
 msgid "AMS flalign Environment|f"
 msgstr "AMS flalign ingurunea|f"
 
-#: lib/ui/classic.ui:273 lib/ui/stdcontext.inc:44 lib/ui/stdmenus.inc:301
-#: lib/ui/stdmenus.inc:417
+#: lib/ui/classic.ui:273 lib/ui/stdcontext.inc:44 lib/ui/stdmenus.inc:302
+#: lib/ui/stdmenus.inc:418
 msgid "AMS gather Environment|g"
 msgstr "AMS gather ingurunea|g"
 
-#: lib/ui/classic.ui:274 lib/ui/stdcontext.inc:45 lib/ui/stdmenus.inc:302
-#: lib/ui/stdmenus.inc:418
+#: lib/ui/classic.ui:274 lib/ui/stdcontext.inc:45 lib/ui/stdmenus.inc:303
+#: lib/ui/stdmenus.inc:419
 msgid "AMS multline Environment|m"
 msgstr "Lerro anitzeko AMS ingurunea|L"
 
-#: lib/ui/classic.ui:276 lib/ui/stdcontext.inc:28 lib/ui/stdmenus.inc:420
+#: lib/ui/classic.ui:276 lib/ui/stdcontext.inc:28 lib/ui/stdmenus.inc:421
 msgid "Array Environment|y"
 msgstr "Matrize-ingurunea|M"
 
-#: lib/ui/classic.ui:277 lib/ui/stdcontext.inc:29 lib/ui/stdmenus.inc:421
+#: lib/ui/classic.ui:277 lib/ui/stdcontext.inc:29 lib/ui/stdmenus.inc:422
 msgid "Cases Environment|C"
 msgstr "Kasu-ingurunea|K"
 
-#: lib/ui/classic.ui:278 lib/ui/stdcontext.inc:33 lib/ui/stdmenus.inc:425
+#: lib/ui/classic.ui:278 lib/ui/stdcontext.inc:33 lib/ui/stdmenus.inc:426
 msgid "Split Environment|S"
 msgstr "Zatitze ingurunea|S"
 
@@ -12232,39 +12232,39 @@ msgstr "Mat. lodi-serieak"
 msgid "Text Normal Font"
 msgstr "Testua, letra-tipo arrunta"
 
-#: lib/ui/classic.ui:295 lib/ui/stdmenus.inc:270
+#: lib/ui/classic.ui:295 lib/ui/stdmenus.inc:271
 msgid "Text Roman Family"
 msgstr "Testua, erromatar familia"
 
-#: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:271
+#: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:272
 msgid "Text Sans Serif Family"
 msgstr "Testua, Sans-Serif familia"
 
-#: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:272
+#: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:273
 msgid "Text Typewriter Family"
 msgstr "Testua, idazmakina familia"
 
-#: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:274
+#: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:275
 msgid "Text Bold Series"
 msgstr "Testua, serie lodiak"
 
-#: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:275
+#: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:276
 msgid "Text Medium Series"
 msgstr "Testua, serie ertainak"
 
-#: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:277
+#: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:278
 msgid "Text Italic Shape"
 msgstr "Testua forma etzana"
 
-#: lib/ui/classic.ui:303 lib/ui/stdmenus.inc:278
+#: lib/ui/classic.ui:303 lib/ui/stdmenus.inc:279
 msgid "Text Small Caps Shape"
 msgstr "Testua, maiuskula-txikia forma"
 
-#: lib/ui/classic.ui:304 lib/ui/stdmenus.inc:279
+#: lib/ui/classic.ui:304 lib/ui/stdmenus.inc:280
 msgid "Text Slanted Shape"
 msgstr "Testua, forma inklinatua"
 
-#: lib/ui/classic.ui:305 lib/ui/stdmenus.inc:280
+#: lib/ui/classic.ui:305 lib/ui/stdmenus.inc:281
 msgid "Text Upright Shape"
 msgstr "Testua, zutikako forma"
 
@@ -12272,7 +12272,7 @@ msgstr "Testua, zutikako forma"
 msgid "Floatflt Figure"
 msgstr "Floatflt irudia"
 
-#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:440
+#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:441
 msgid "Table of Contents|C"
 msgstr "Gaien aurkibidea|G"
 
@@ -12280,31 +12280,31 @@ msgstr "Gaien aurkibidea|G"
 msgid "Index List|I"
 msgstr "Indize-zerrenda|I"
 
-#: lib/ui/classic.ui:317 lib/ui/stdmenus.inc:443
+#: lib/ui/classic.ui:317 lib/ui/stdmenus.inc:444
 msgid "Nomenclature|N"
 msgstr "Nomenklatura|N"
 
-#: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:444
+#: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:445
 msgid "BibTeX Bibliography...|B"
 msgstr "BibTeX bibliografia...|B"
 
-#: lib/ui/classic.ui:322 lib/ui/stdmenus.inc:448
+#: lib/ui/classic.ui:322 lib/ui/stdmenus.inc:449
 msgid "LyX Document...|X"
 msgstr "LyX dokumentua...|X"
 
-#: lib/ui/classic.ui:323 lib/ui/stdmenus.inc:449
+#: lib/ui/classic.ui:323 lib/ui/stdmenus.inc:450
 msgid "Plain Text...|T"
 msgstr "Testu soila...|s"
 
-#: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:450
+#: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:451
 msgid "Plain Text, Join Lines...|J"
 msgstr "Testu soila, elkartu lerroak...|l"
 
-#: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:495
+#: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:496
 msgid "Track Changes|T"
 msgstr "Jarraitu aldaketak|J"
 
-#: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:496
+#: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:497
 msgid "Merge Changes...|M"
 msgstr "Batu aldaketak...|E"
 
@@ -12316,7 +12316,7 @@ msgstr "Onartu aldaketa guztiak|g"
 msgid "Reject All Changes|R"
 msgstr "Baztertu aldaketa guztiak|B"
 
-#: lib/ui/classic.ui:332 lib/ui/stdmenus.inc:501
+#: lib/ui/classic.ui:332 lib/ui/stdmenus.inc:502
 msgid "Show Changes in Output|S"
 msgstr "Erakutsi aldaketak irteeran|E"
 
@@ -12360,7 +12360,7 @@ msgstr "Handiagotu ingurune-sakonera|H"
 msgid "Start Appendix Here|S"
 msgstr "Hasi eranskina hemen|H"
 
-#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:484
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:485
 msgid "Build Program|B"
 msgstr "Eraiki programa|E"
 
@@ -12368,11 +12368,11 @@ msgstr "Eraiki programa|E"
 msgid "Update|U"
 msgstr "Eguneratu|E"
 
-#: lib/ui/classic.ui:363 lib/ui/stdmenus.inc:485
+#: lib/ui/classic.ui:363 lib/ui/stdmenus.inc:486
 msgid "LaTeX Log|L"
 msgstr "LaTeX egunkaria|L"
 
-#: lib/ui/classic.ui:364 lib/ui/stdmenus.inc:486
+#: lib/ui/classic.ui:364 lib/ui/stdmenus.inc:487
 msgid "Outline|O"
 msgstr "Eskema|E"
 
@@ -12380,35 +12380,35 @@ msgstr "Eskema|E"
 msgid "TeX Information|X"
 msgstr "TeX informazioa|X"
 
-#: lib/ui/classic.ui:378 lib/ui/stdmenus.inc:509
+#: lib/ui/classic.ui:378 lib/ui/stdmenus.inc:510
 msgid "Next Note|N"
 msgstr "Hurrengo oharra|H"
 
-#: lib/ui/classic.ui:379 lib/ui/stdmenus.inc:512
+#: lib/ui/classic.ui:379 lib/ui/stdmenus.inc:513
 msgid "Go to Label|L"
 msgstr "Joan etiketara|t"
 
-#: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:508
+#: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:509
 msgid "Bookmarks|B"
 msgstr "Laster-markak|L"
 
-#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:519
+#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:520
 msgid "Save Bookmark 1|S"
 msgstr "Gorde 1. laster-marka|G"
 
-#: lib/ui/classic.ui:385 lib/ui/stdmenus.inc:520
+#: lib/ui/classic.ui:385 lib/ui/stdmenus.inc:521
 msgid "Save Bookmark 2"
 msgstr "Gorde 2. laster-marka"
 
-#: lib/ui/classic.ui:386 lib/ui/stdmenus.inc:521
+#: lib/ui/classic.ui:386 lib/ui/stdmenus.inc:522
 msgid "Save Bookmark 3"
 msgstr "Gorde 3. laster-marka"
 
-#: lib/ui/classic.ui:387 lib/ui/stdmenus.inc:522
+#: lib/ui/classic.ui:387 lib/ui/stdmenus.inc:523
 msgid "Save Bookmark 4"
 msgstr "Gorde 4. laster-marka"
 
-#: lib/ui/classic.ui:388 lib/ui/stdmenus.inc:523
+#: lib/ui/classic.ui:388 lib/ui/stdmenus.inc:524
 msgid "Save Bookmark 5"
 msgstr "Gorde 5. laster-marka"
 
@@ -12432,15 +12432,15 @@ msgstr "Joan 4. laster-markara|4"
 msgid "Go to Bookmark 5|5"
 msgstr "Joan 5. laster-markara|5"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:553
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:554
 msgid "Introduction|I"
 msgstr "Sarrera|S"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:554
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:555
 msgid "Tutorial|T"
 msgstr "Tutoretza|T"
 
-#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:555
+#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:556
 msgid "User's Guide|U"
 msgstr "Erabiltzailearen gida|E"
 
@@ -12452,15 +12452,15 @@ msgstr "Ezaugarri hedatuak|h"
 msgid "Embedded Objects|m"
 msgstr "Kapsulatutako objektuak|o"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:559
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:560
 msgid "Customization|C"
 msgstr "Pertsonalizazioa|P"
 
-#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:562
+#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:563
 msgid "LaTeX Configuration|L"
 msgstr "LaTeX konfigurazioa|L"
 
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:565
+#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:566
 msgid "About LyX|X"
 msgstr "LyX-i buruz|L"
 
@@ -12476,27 +12476,27 @@ msgstr "Hobespenak..."
 msgid "Quit LyX"
 msgstr "Irten LyX-etik"
 
-#: lib/ui/stdcontext.inc:30 lib/ui/stdmenus.inc:422
+#: lib/ui/stdcontext.inc:30 lib/ui/stdmenus.inc:423
 msgid "Aligned Environment|l"
 msgstr "'Lerrokatuta' ingurunea|L"
 
-#: lib/ui/stdcontext.inc:31 lib/ui/stdmenus.inc:423
+#: lib/ui/stdcontext.inc:31 lib/ui/stdmenus.inc:424
 msgid "AlignedAt Environment|v"
 msgstr "'LerrokatutaNon' ingurunea|N"
 
-#: lib/ui/stdcontext.inc:32 lib/ui/stdmenus.inc:424
+#: lib/ui/stdcontext.inc:32 lib/ui/stdmenus.inc:425
 msgid "Gathered Environment|h"
 msgstr "'Bilduta' ingurunea|B"
 
-#: lib/ui/stdcontext.inc:35 lib/ui/stdmenus.inc:427
+#: lib/ui/stdcontext.inc:35 lib/ui/stdmenus.inc:428
 msgid "Delimiters...|r"
 msgstr "Mugatzaileak...|g"
 
-#: lib/ui/stdcontext.inc:36 lib/ui/stdmenus.inc:428
+#: lib/ui/stdcontext.inc:36 lib/ui/stdmenus.inc:429
 msgid "Matrix...|x"
 msgstr "Matrizea...|a"
 
-#: lib/ui/stdcontext.inc:37 lib/ui/stdmenus.inc:429
+#: lib/ui/stdcontext.inc:37 lib/ui/stdmenus.inc:430
 msgid "Macro|o"
 msgstr "Makroa|o"
 
@@ -12504,11 +12504,11 @@ msgstr "Makroa|o"
 msgid "AMS Environment|A"
 msgstr "AMS ingurunea|A"
 
-#: lib/ui/stdcontext.inc:54 lib/ui/stdmenus.inc:213
+#: lib/ui/stdcontext.inc:54 lib/ui/stdmenus.inc:214
 msgid "Number Whole Formula|N"
 msgstr "Zenbatu formula osoa|f"
 
-#: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:214
+#: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:215
 msgid "Number This Line|u"
 msgstr "Zenbatu lerro hau|h"
 
@@ -12520,7 +12520,7 @@ msgstr "Ekuazioaren etiketa|t"
 msgid "Copy as Reference|R"
 msgstr "Kopiatu erreferentzi gisa|K"
 
-#: lib/ui/stdcontext.inc:59 lib/ui/stdmenus.inc:224
+#: lib/ui/stdcontext.inc:59 lib/ui/stdmenus.inc:225
 msgid "Split Cell|C"
 msgstr "Zatitu gelaxka|Z"
 
@@ -12532,7 +12532,7 @@ msgstr "Txertatu|T"
 msgid "Add Line Above|o"
 msgstr "Gehitu marra gainean|e"
 
-#: lib/ui/stdcontext.inc:64 lib/ui/stdmenus.inc:227
+#: lib/ui/stdcontext.inc:64 lib/ui/stdmenus.inc:228
 msgid "Add Line Below|B"
 msgstr "Gehitu marra azpian|h"
 
@@ -12546,19 +12546,19 @@ msgstr "Ezabatu gaineko marra|t"
 msgid "Delete Line Below|w"
 msgstr "Ezabatu azpiko marra|u"
 
-#: lib/ui/stdcontext.inc:68 lib/ui/stdmenus.inc:231
+#: lib/ui/stdcontext.inc:68 lib/ui/stdmenus.inc:232
 msgid "Add Line to Left"
 msgstr "Gehitu marra ezkerrean"
 
-#: lib/ui/stdcontext.inc:69 lib/ui/stdmenus.inc:232
+#: lib/ui/stdcontext.inc:69 lib/ui/stdmenus.inc:233
 msgid "Add Line to Right"
 msgstr "Gehitu marra eskuinean"
 
-#: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:233
+#: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:234
 msgid "Delete Line to Left"
 msgstr "Ezabatu marra ezkerretik"
 
-#: lib/ui/stdcontext.inc:71 lib/ui/stdmenus.inc:234
+#: lib/ui/stdcontext.inc:71 lib/ui/stdmenus.inc:235
 msgid "Delete Line to Right"
 msgstr "Ezabatu marra eskuinetik"
 
@@ -12629,7 +12629,7 @@ msgstr "Hurrengo erreferentzia gurutzatua|e"
 #: lib/ui/stdcontext.inc:550 lib/ui/stdcontext.inc:560
 #: lib/ui/stdcontext.inc:575 lib/ui/stdcontext.inc:588
 #: lib/ui/stdcontext.inc:596 lib/ui/stdcontext.inc:640
-#: lib/ui/stdcontext.inc:647 lib/ui/stdmenus.inc:491
+#: lib/ui/stdcontext.inc:647 lib/ui/stdmenus.inc:492
 msgid "Settings...|S"
 msgstr "Ezarpenak...|E"
 
@@ -12703,7 +12703,7 @@ msgstr "Atzeko planoa itzalarekin|z"
 msgid "Double Frame|u"
 msgstr "Marko bikoitza|b"
 
-#: lib/ui/stdcontext.inc:176 lib/ui/stdmenus.inc:457
+#: lib/ui/stdcontext.inc:176 lib/ui/stdmenus.inc:458
 msgid "LyX Note|N"
 msgstr "LyX oharra|o"
 
@@ -12711,7 +12711,7 @@ msgstr "LyX oharra|o"
 msgid "Comment|m"
 msgstr "Iruzkina|I"
 
-#: lib/ui/stdcontext.inc:178 lib/ui/stdmenus.inc:459
+#: lib/ui/stdcontext.inc:178 lib/ui/stdmenus.inc:460
 msgid "Greyed Out|G"
 msgstr "Grisa|G"
 
@@ -12859,27 +12859,27 @@ msgstr "Zerrenda|Z"
 msgid "Edit Included File...|E"
 msgstr "Editatu sartutako fitxategia...|E"
 
-#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:403
+#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:404
 msgid "New Page|N"
 msgstr "Orrialde berria|b"
 
-#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:404
+#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:405
 msgid "Page Break|a"
 msgstr "Orri-jauzia|j"
 
-#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:405
+#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:406
 msgid "Clear Page|C"
 msgstr "Garbitu orrialdea|G"
 
-#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:406
+#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:407
 msgid "Clear Double Page|D"
 msgstr "Garbitu orrialde bikoitza|b"
 
-#: lib/ui/stdcontext.inc:287 lib/ui/stdmenus.inc:400
+#: lib/ui/stdcontext.inc:287 lib/ui/stdmenus.inc:401
 msgid "Ragged Line Break|R"
 msgstr "Lerro-jauzi koskatua|k"
 
-#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:401
+#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:402
 msgid "Justified Line Break|J"
 msgstr "Lerro-jauzi justifikatua|j"
 
@@ -12909,7 +12909,7 @@ msgstr "Itsatsi azkena|a"
 msgid "Jump Back to Saved Bookmark|B"
 msgstr "Itzuli gordetako laster-markara|l"
 
-#: lib/ui/stdcontext.inc:303 lib/ui/stdmenus.inc:513
+#: lib/ui/stdcontext.inc:303 lib/ui/stdmenus.inc:514
 #, fuzzy
 msgid "Forward search|F"
 msgstr "Bilaketa errekurtsiboa?"
@@ -12986,11 +12986,11 @@ msgstr "Edozer zenbaki|z"
 msgid "User Defined|U"
 msgstr "Erabiltzaileak definitua|E"
 
-#: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:238
+#: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:239
 msgid "Append Argument"
 msgstr "Erantsi argumentua"
 
-#: lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:239
+#: lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:240
 msgid "Remove Last Argument"
 msgstr "Kendu azken argumentua"
 
@@ -13002,23 +13002,23 @@ msgstr "Bihurtu aurreneko ez-aukerakoa aukerako argumentu"
 msgid "Make Last Optional Into Non-Optional Argument"
 msgstr "Bihurtu azken aukerakoa ez-aukerako argumentu"
 
-#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:243
+#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:244
 msgid "Insert Optional Argument"
 msgstr "Txertatu aukerako argumentua"
 
-#: lib/ui/stdcontext.inc:350 lib/ui/stdmenus.inc:244
+#: lib/ui/stdcontext.inc:350 lib/ui/stdmenus.inc:245
 msgid "Remove Optional Argument"
 msgstr "Kendu aukerako argumentua"
 
-#: lib/ui/stdcontext.inc:352 lib/ui/stdmenus.inc:246
+#: lib/ui/stdcontext.inc:352 lib/ui/stdmenus.inc:247
 msgid "Append Argument Eating From the Right"
 msgstr "Erantsi argumentua eskuinetik"
 
-#: lib/ui/stdcontext.inc:353 lib/ui/stdmenus.inc:247
+#: lib/ui/stdcontext.inc:353 lib/ui/stdmenus.inc:248
 msgid "Append Optional Argument Eating From the Right"
 msgstr "Erantsi aukerako argumentua eskuinetik"
 
-#: lib/ui/stdcontext.inc:354 lib/ui/stdmenus.inc:248
+#: lib/ui/stdcontext.inc:354 lib/ui/stdmenus.inc:249
 msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "Kendu azken aukerako argumentua eskuinerantz"
 
@@ -13051,11 +13051,11 @@ msgstr "Goiko marra|G"
 msgid "Bottom Line|i"
 msgstr "Beheko marra|B"
 
-#: lib/ui/stdcontext.inc:407 lib/ui/stdmenus.inc:184
+#: lib/ui/stdcontext.inc:407 lib/ui/stdmenus.inc:185
 msgid "Left Line|L"
 msgstr "Ezkerreko marra|z"
 
-#: lib/ui/stdcontext.inc:408 lib/ui/stdmenus.inc:185
+#: lib/ui/stdcontext.inc:408 lib/ui/stdmenus.inc:186
 msgid "Right Line|R"
 msgstr "Eskuineko marra|s"
 
@@ -13072,7 +13072,7 @@ msgstr "Eskuinean|s"
 msgid "Append Row|A"
 msgstr "Gehitu errenkada|e"
 
-#: lib/ui/stdcontext.inc:420 lib/ui/stdmenus.inc:203
+#: lib/ui/stdcontext.inc:420 lib/ui/stdmenus.inc:204
 msgid "Copy Row|o"
 msgstr "Kopiatu errenkada|e"
 
@@ -13152,7 +13152,7 @@ msgstr "Indize guztiak|g"
 msgid "Subindex|b"
 msgstr "Azpindizea|p"
 
-#: lib/ui/stdcontext.inc:614 lib/ui/stdmenus.inc:498
+#: lib/ui/stdcontext.inc:614 lib/ui/stdmenus.inc:499
 msgid "Reject Change|R"
 msgstr "Baztertu aldaketa|B"
 
@@ -13370,401 +13370,406 @@ msgstr "Maiuskulak|i"
 msgid "Lowercase|L"
 msgstr "Minuskulak|n"
 
-#: lib/ui/stdmenus.inc:182
+#: lib/ui/stdmenus.inc:181
+#, fuzzy
+msgid "Multirow|u"
+msgstr "Zutabe anitza|Z"
+
+#: lib/ui/stdmenus.inc:183
 msgid "Top Line|T"
 msgstr "Goiko marra|G"
 
-#: lib/ui/stdmenus.inc:183
+#: lib/ui/stdmenus.inc:184
 msgid "Bottom Line|B"
 msgstr "Beheko marra|B"
 
-#: lib/ui/stdmenus.inc:187
+#: lib/ui/stdmenus.inc:188
 msgid "Top|p"
 msgstr "Goian|G"
 
-#: lib/ui/stdmenus.inc:188
+#: lib/ui/stdmenus.inc:189
 msgid "Middle|i"
 msgstr "Erdian|E"
 
-#: lib/ui/stdmenus.inc:189
+#: lib/ui/stdmenus.inc:190
 msgid "Bottom|o"
 msgstr "Behean|B"
 
-#: lib/ui/stdmenus.inc:208
+#: lib/ui/stdmenus.inc:209
 msgid "Copy Column|p"
 msgstr "Kopiatu zutabea|z"
 
-#: lib/ui/stdmenus.inc:216
+#: lib/ui/stdmenus.inc:217
 msgid "Macro Definition"
 msgstr "Makroaren definizioa"
 
-#: lib/ui/stdmenus.inc:220
+#: lib/ui/stdmenus.inc:221
 msgid "Text Style|T"
 msgstr "Testu-estiloa|T"
 
-#: lib/ui/stdmenus.inc:226
+#: lib/ui/stdmenus.inc:227
 msgid "Add Line Above|A"
 msgstr "Gehitu marra gainean|G"
 
-#: lib/ui/stdmenus.inc:228
+#: lib/ui/stdmenus.inc:229
 msgid "Delete Line Above|D"
 msgstr "Ezabatu gaineko marra|t"
 
-#: lib/ui/stdmenus.inc:229
+#: lib/ui/stdmenus.inc:230
 msgid "Delete Line Below|e"
 msgstr "Ezabatu azpiko marra|u"
 
-#: lib/ui/stdmenus.inc:241
+#: lib/ui/stdmenus.inc:242
 msgid "Make First Non-Optional into Optional Argument"
 msgstr "Bihurtu aurreneko ez-aukerakoa aukerako argumentu"
 
-#: lib/ui/stdmenus.inc:242
+#: lib/ui/stdmenus.inc:243
 msgid "Make Last Optional into Non-Optional Argument"
 msgstr "Bihurtu azken aukerakoa ez-aukerako argumentu"
 
-#: lib/ui/stdmenus.inc:258
+#: lib/ui/stdmenus.inc:259
 msgid "Math Normal Font|N"
 msgstr "Mat. letra-tipo normala|n"
 
-#: lib/ui/stdmenus.inc:260
+#: lib/ui/stdmenus.inc:261
 msgid "Math Calligraphic Family|C"
 msgstr "Mat. kaligrafi-familia|k"
 
-#: lib/ui/stdmenus.inc:261
+#: lib/ui/stdmenus.inc:262
 #, fuzzy
 msgid "Math Formal Script Family|o"
 msgstr "Mat. Fraktur familia|F"
 
-#: lib/ui/stdmenus.inc:262
+#: lib/ui/stdmenus.inc:263
 msgid "Math Fraktur Family|F"
 msgstr "Mat. Fraktur familia|F"
 
-#: lib/ui/stdmenus.inc:263
+#: lib/ui/stdmenus.inc:264
 msgid "Math Roman Family|R"
 msgstr "Mat. erromatar familia|r"
 
-#: lib/ui/stdmenus.inc:264
+#: lib/ui/stdmenus.inc:265
 msgid "Math Sans Serif Family|S"
 msgstr "Mat. Sans Serif familia|S"
 
-#: lib/ui/stdmenus.inc:266
+#: lib/ui/stdmenus.inc:267
 msgid "Math Bold Series|B"
 msgstr "Mat. lodi-serieak|l"
 
-#: lib/ui/stdmenus.inc:268
+#: lib/ui/stdmenus.inc:269
 msgid "Text Normal Font|T"
 msgstr "Testua, letra-tipo arrunta|a"
 
-#: lib/ui/stdmenus.inc:284
+#: lib/ui/stdmenus.inc:285
 msgid "Octave|O"
 msgstr "Octave|O"
 
-#: lib/ui/stdmenus.inc:285
+#: lib/ui/stdmenus.inc:286
 msgid "Maxima|M"
 msgstr "Maxima|M"
 
-#: lib/ui/stdmenus.inc:286
+#: lib/ui/stdmenus.inc:287
 msgid "Mathematica|a"
 msgstr "Mathematica|a"
 
-#: lib/ui/stdmenus.inc:288
+#: lib/ui/stdmenus.inc:289
 msgid "Maple, Simplify|S"
 msgstr "Maple, sinplea|s"
 
-#: lib/ui/stdmenus.inc:289
+#: lib/ui/stdmenus.inc:290
 msgid "Maple, Factor|F"
 msgstr "Maple, faktorea|f"
 
-#: lib/ui/stdmenus.inc:290
+#: lib/ui/stdmenus.inc:291
 msgid "Maple, Evalm|E"
 msgstr "Maple, Evalm|E"
 
-#: lib/ui/stdmenus.inc:291
+#: lib/ui/stdmenus.inc:292
 msgid "Maple, Evalf|v"
 msgstr "Maple, Evalf|v"
 
-#: lib/ui/stdmenus.inc:310
+#: lib/ui/stdmenus.inc:311
 msgid "Open All Insets|O"
 msgstr "Ireki barneko guztiak|I"
 
-#: lib/ui/stdmenus.inc:311
+#: lib/ui/stdmenus.inc:312
 msgid "Close All Insets|C"
 msgstr "Itxi barneko guztiak|x"
 
-#: lib/ui/stdmenus.inc:313
+#: lib/ui/stdmenus.inc:314
 msgid "Unfold Math Macro|n"
 msgstr "Zabaldu mat. makroa|Z"
 
-#: lib/ui/stdmenus.inc:314
+#: lib/ui/stdmenus.inc:315
 msgid "Fold Math Macro|d"
 msgstr "Tolestu mat. makroa|T"
 
-#: lib/ui/stdmenus.inc:316
+#: lib/ui/stdmenus.inc:317
 msgid "View Source|S"
 msgstr "Ikusi iturburua|t"
 
-#: lib/ui/stdmenus.inc:317
+#: lib/ui/stdmenus.inc:318
 msgid "View Messages|g"
 msgstr "Ikusi mezuak|I"
 
-#: lib/ui/stdmenus.inc:320
+#: lib/ui/stdmenus.inc:321
 msgid "View Master Document|M"
 msgstr "Ikusi dokumentu maisua|m"
 
-#: lib/ui/stdmenus.inc:321
+#: lib/ui/stdmenus.inc:322
 msgid "Update Master Document|a"
 msgstr "Eguneratu dokumentu maisua|E"
 
-#: lib/ui/stdmenus.inc:323
+#: lib/ui/stdmenus.inc:324
 msgid "Split View Into Left and Right Half|i"
 msgstr "Zatitu ikuspegia bertikalki|b"
 
-#: lib/ui/stdmenus.inc:324
+#: lib/ui/stdmenus.inc:325
 msgid "Split View Into Upper and Lower Half|e"
 msgstr "Zatitu ikuspegia horizontalki|h"
 
-#: lib/ui/stdmenus.inc:325
+#: lib/ui/stdmenus.inc:326
 msgid "Close Current View|w"
 msgstr "Itxi uneko ikuspegia|x"
 
-#: lib/ui/stdmenus.inc:326
+#: lib/ui/stdmenus.inc:327
 msgid "Fullscreen|l"
 msgstr "Pantaila osoa|P"
 
-#: lib/ui/stdmenus.inc:327
+#: lib/ui/stdmenus.inc:328
 msgid "Toolbars|b"
 msgstr "Tresna-barrak|T"
 
-#: lib/ui/stdmenus.inc:343
+#: lib/ui/stdmenus.inc:344
 msgid "Special Character|p"
 msgstr "Karaktere berezia|K"
 
-#: lib/ui/stdmenus.inc:344
+#: lib/ui/stdmenus.inc:345
 msgid "Formatting|o"
 msgstr "Tipografia berezia|g"
 
-#: lib/ui/stdmenus.inc:345
+#: lib/ui/stdmenus.inc:346
 msgid "List / TOC|i"
 msgstr "Zerrendak / Aurk.|e"
 
-#: lib/ui/stdmenus.inc:346
+#: lib/ui/stdmenus.inc:347
 msgid "Float|a"
 msgstr "Mugikorra|M"
 
-#: lib/ui/stdmenus.inc:348
+#: lib/ui/stdmenus.inc:349
 msgid "Branch|B"
 msgstr "Adarra|A"
 
-#: lib/ui/stdmenus.inc:349
+#: lib/ui/stdmenus.inc:350
 msgid "Custom Insets"
 msgstr "Barneko pertsonalizatuak"
 
-#: lib/ui/stdmenus.inc:350
+#: lib/ui/stdmenus.inc:351
 msgid "File|e"
 msgstr "Fitxategia|F"
 
-#: lib/ui/stdmenus.inc:352
+#: lib/ui/stdmenus.inc:353
 msgid "Box[[Menu]]"
 msgstr "Kutxa[[menua]]"
 
-#: lib/ui/stdmenus.inc:355
+#: lib/ui/stdmenus.inc:356
 msgid "Cross-Reference...|R"
 msgstr "Erreferentzia gurutzatua...|g"
 
-#: lib/ui/stdmenus.inc:359
+#: lib/ui/stdmenus.inc:360
 msgid "Nomenclature Entry...|y"
 msgstr "Nomenklatura-sarrera...|s"
 
-#: lib/ui/stdmenus.inc:361
+#: lib/ui/stdmenus.inc:362
 msgid "Table...|T"
 msgstr "Taula...|T"
 
-#: lib/ui/stdmenus.inc:363
+#: lib/ui/stdmenus.inc:364
 msgid "URL|U"
 msgstr "URLa|U"
 
-#: lib/ui/stdmenus.inc:364
+#: lib/ui/stdmenus.inc:365
 msgid "Hyperlink...|k"
 msgstr "Hiperesteka...|H"
 
-#: lib/ui/stdmenus.inc:367
+#: lib/ui/stdmenus.inc:368
 msgid "Short Title|S"
 msgstr "Titulu laburtua|T"
 
-#: lib/ui/stdmenus.inc:368
+#: lib/ui/stdmenus.inc:369
 msgid "TeX Code|X"
 msgstr "TeX kodea|k"
 
-#: lib/ui/stdmenus.inc:369
+#: lib/ui/stdmenus.inc:370
 msgid "Program Listing[[Menu]]"
 msgstr "Programen zerrenda[[menua]]"
 
-#: lib/ui/stdmenus.inc:371
+#: lib/ui/stdmenus.inc:372
 msgid "Preview|w"
 msgstr "Aurrebista|A"
 
-#: lib/ui/stdmenus.inc:378
+#: lib/ui/stdmenus.inc:379
 msgid "Ordinary Quote|Q"
 msgstr "Komatxo zuzena|a"
 
-#: lib/ui/stdmenus.inc:379
+#: lib/ui/stdmenus.inc:380
 msgid "Single Quote|S"
 msgstr "Komatxo bakuna|b"
 
-#: lib/ui/stdmenus.inc:383
+#: lib/ui/stdmenus.inc:384
 msgid "Phonetic Symbols|P"
 msgstr "Ikur fonetikoak|f"
 
-#: lib/ui/stdmenus.inc:390
+#: lib/ui/stdmenus.inc:391
 msgid "Protected Space|P"
 msgstr "Zuriune babestua|Z"
 
-#: lib/ui/stdmenus.inc:394
+#: lib/ui/stdmenus.inc:395
 #, fuzzy
 msgid "Horizontal Line...|L"
 msgstr "Marra horizontala|h"
 
-#: lib/ui/stdmenus.inc:395
+#: lib/ui/stdmenus.inc:396
 msgid "Vertical Space...|V"
 msgstr "Tarte bertikala...|b"
 
-#: lib/ui/stdmenus.inc:398
+#: lib/ui/stdmenus.inc:399
 msgid "Hyphenation Point|H"
 msgstr "Hitz-zatitze marra|H"
 
-#: lib/ui/stdmenus.inc:412
+#: lib/ui/stdmenus.inc:413
 msgid "Numbered Formula|N"
 msgstr "Zenbatutako formula|Z"
 
-#: lib/ui/stdmenus.inc:435
+#: lib/ui/stdmenus.inc:436
 msgid "Figure Wrap Float|F"
 msgstr "Irudiaren bilgarri mugikorra|I"
 
-#: lib/ui/stdmenus.inc:436
+#: lib/ui/stdmenus.inc:437
 msgid "Table Wrap Float|T"
 msgstr "Taularen bilgarri mugikorra|T"
 
-#: lib/ui/stdmenus.inc:452
+#: lib/ui/stdmenus.inc:453
 msgid "External Material...|M"
 msgstr "Kanpoko materiala...|K"
 
-#: lib/ui/stdmenus.inc:453
+#: lib/ui/stdmenus.inc:454
 msgid "Child Document...|d"
 msgstr "Dokumentu umea...|D"
 
-#: lib/ui/stdmenus.inc:458
+#: lib/ui/stdmenus.inc:459
 msgid "Comment|C"
 msgstr "Iruzkina|I"
 
-#: lib/ui/stdmenus.inc:465
+#: lib/ui/stdmenus.inc:466
 msgid "Insert New Branch...|I"
 msgstr "Txertatu adar berria...|T"
 
-#: lib/ui/stdmenus.inc:470
+#: lib/ui/stdmenus.inc:471
 msgid "Horizontal Phantom"
 msgstr "Mamu horizontala"
 
-#: lib/ui/stdmenus.inc:471
+#: lib/ui/stdmenus.inc:472
 msgid "Vertical Phantom"
 msgstr "Mamu bertikala"
 
-#: lib/ui/stdmenus.inc:483
+#: lib/ui/stdmenus.inc:484
 msgid "Change Tracking|C"
 msgstr "Aldaketen jarraipena|j"
 
-#: lib/ui/stdmenus.inc:487
+#: lib/ui/stdmenus.inc:488
 msgid "Start Appendix Here|A"
 msgstr "Hasi eranskina hemen|h"
 
-#: lib/ui/stdmenus.inc:489
+#: lib/ui/stdmenus.inc:490
 msgid "Save in Bundled Format|F"
 msgstr "Gorde paketatutako formatuan|p"
 
-#: lib/ui/stdmenus.inc:490
+#: lib/ui/stdmenus.inc:491
 msgid "Compressed|m"
 msgstr "Konprimituta|K"
 
-#: lib/ui/stdmenus.inc:497
+#: lib/ui/stdmenus.inc:498
 msgid "Accept Change|A"
 msgstr "Onartu aldaketa|O"
 
-#: lib/ui/stdmenus.inc:499
+#: lib/ui/stdmenus.inc:500
 msgid "Accept All Changes|c"
 msgstr "Onartu aldaketa guztiak|g"
 
-#: lib/ui/stdmenus.inc:500
+#: lib/ui/stdmenus.inc:501
 msgid "Reject All Changes|e"
 msgstr "Baztertu aldaketa guztiak|B"
 
-#: lib/ui/stdmenus.inc:510
+#: lib/ui/stdmenus.inc:511
 msgid "Next Change|C"
 msgstr "Hurrengo aldaketa|a"
 
-#: lib/ui/stdmenus.inc:511
+#: lib/ui/stdmenus.inc:512
 msgid "Next Cross-Reference|R"
 msgstr "Hurrengo erreferentzia gurutzatua|g"
 
-#: lib/ui/stdmenus.inc:524
+#: lib/ui/stdmenus.inc:525
 msgid "Clear Bookmarks|C"
 msgstr "Garbitu laster-markak|l"
 
-#: lib/ui/stdmenus.inc:526
+#: lib/ui/stdmenus.inc:527
 msgid "Navigate Back|B"
 msgstr "Arakatu atzerantz|z"
 
-#: lib/ui/stdmenus.inc:536
+#: lib/ui/stdmenus.inc:537
 msgid "Thesaurus...|T"
 msgstr "Thesaurus...|T"
 
-#: lib/ui/stdmenus.inc:537
+#: lib/ui/stdmenus.inc:538
 msgid "Statistics...|a"
 msgstr "Estatistikak|a"
 
-#: lib/ui/stdmenus.inc:539
+#: lib/ui/stdmenus.inc:540
 msgid "TeX Information|I"
 msgstr "TeX informazioa|i"
 
-#: lib/ui/stdmenus.inc:540
+#: lib/ui/stdmenus.inc:541
 msgid "Compare...|C"
 msgstr "Konparatu...|K"
 
-#: lib/ui/stdmenus.inc:556
+#: lib/ui/stdmenus.inc:557
 msgid "Additional Features|F"
 msgstr "Eginbide gehigarriak|E"
 
-#: lib/ui/stdmenus.inc:557
+#: lib/ui/stdmenus.inc:558
 msgid "Embedded Objects|O"
 msgstr "Kapsulatutako objektuak|o"
 
-#: lib/ui/stdmenus.inc:560
+#: lib/ui/stdmenus.inc:561
 msgid "Shortcuts|S"
 msgstr "Lasterbideak|L"
 
-#: lib/ui/stdmenus.inc:561
+#: lib/ui/stdmenus.inc:562
 msgid "LyX Functions|y"
 msgstr "LyX-en funtzioak|f"
 
-#: lib/ui/stdmenus.inc:563
+#: lib/ui/stdmenus.inc:564
 msgid "Specific Manuals|p"
 msgstr "Eskuliburu zehatzak|z"
 
-#: lib/ui/stdmenus.inc:569
+#: lib/ui/stdmenus.inc:570
 msgid "Linguistics Manual|L"
 msgstr "Hizkuntzalaritzako eskuliburua|H"
 
-#: lib/ui/stdmenus.inc:570
+#: lib/ui/stdmenus.inc:571
 msgid "Braille Manual|B"
 msgstr "Braille-ren eskuliburua|B"
 
-#: lib/ui/stdmenus.inc:571
+#: lib/ui/stdmenus.inc:572
 msgid "XY-pic Manual|X"
 msgstr "XY-pic eskuliburua|X"
 
-#: lib/ui/stdmenus.inc:572
+#: lib/ui/stdmenus.inc:573
 msgid "Multicolumn Manual|M"
 msgstr "Zutabe anitzen eskuliburua|a"
 
-#: lib/ui/stdmenus.inc:573
+#: lib/ui/stdmenus.inc:574
 msgid "Feynman-diagram Manual|F"
 msgstr ""
 
@@ -16896,8 +16901,8 @@ msgstr "'date' komandoa"
 msgid "Table (CSV)"
 msgstr "Taula (CSV)"
 
-#: lib/configure.py:567 src/frontends/qt4/GuiView.cpp:1023
-#: src/frontends/qt4/GuiView.cpp:1024 src/mathed/MathMacroTemplate.cpp:542
+#: lib/configure.py:567 src/frontends/qt4/GuiView.cpp:1024
+#: src/frontends/qt4/GuiView.cpp:1025 src/mathed/MathMacroTemplate.cpp:542
 msgid "LyX"
 msgstr "LyX"
 
@@ -16997,7 +17002,7 @@ msgstr "Gehitu bibliografiari soilik."
 msgid "before"
 msgstr "aurretik"
 
-#: src/Buffer.cpp:137
+#: src/Buffer.cpp:138
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -17006,15 +17011,15 @@ msgstr ""
 "Ezin izan da %1$s dokumentua inprimatu.\n"
 "Egiaztatu inprimagailua ongi konfiguratuta dagoela."
 
-#: src/Buffer.cpp:140
+#: src/Buffer.cpp:141
 msgid "Print document failed"
 msgstr "Huts egin du dokumentua inprimatzean"
 
-#: src/Buffer.cpp:318
+#: src/Buffer.cpp:319
 msgid "Disk Error: "
 msgstr "Diskoaren errorea: "
 
-#: src/Buffer.cpp:319
+#: src/Buffer.cpp:320
 #, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
@@ -17022,55 +17027,55 @@ msgstr ""
 "LyX-ek ezin izan du %1$s aldi baterako direktorioa sortu (agian diskoa "
 "beteta dago?)"
 
-#: src/Buffer.cpp:401
+#: src/Buffer.cpp:402
 msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr "Gorde gabeko aldaketak dituen dokumentu bat ixten saiatu da LyX.\n"
 
-#: src/Buffer.cpp:403
+#: src/Buffer.cpp:404
 msgid "Attempting to close changed document!"
 msgstr "Aldatutako dokumentua gordetzen saiatzen."
 
-#: src/Buffer.cpp:411
+#: src/Buffer.cpp:412
 msgid "Could not remove temporary directory"
 msgstr "Ezin izan da aldi baterako direktorioa kendu"
 
-#: src/Buffer.cpp:412
+#: src/Buffer.cpp:413
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Ezin izan da %1$s aldi baterako direktorioa kendu"
 
-#: src/Buffer.cpp:722
+#: src/Buffer.cpp:723
 msgid "Unknown document class"
 msgstr "Dokumentu-klase ezezaguna"
 
-#: src/Buffer.cpp:723
+#: src/Buffer.cpp:724
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Dokumentu-klase lehenetsia erabiltzen, %1$s klasea ezezaguna delako."
 
-#: src/Buffer.cpp:727 src/Text.cpp:477
+#: src/Buffer.cpp:728 src/Text.cpp:477
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Token ezezaguna: %1$s %2$s\n"
 
-#: src/Buffer.cpp:731 src/Buffer.cpp:738 src/Buffer.cpp:758
+#: src/Buffer.cpp:732 src/Buffer.cpp:739 src/Buffer.cpp:759
 msgid "Document header error"
 msgstr "Dokumentuaren goiburuan errorea"
 
-#: src/Buffer.cpp:737
+#: src/Buffer.cpp:738
 msgid "\\begin_header is missing"
 msgstr "\\begin_header falta da"
 
-#: src/Buffer.cpp:757
+#: src/Buffer.cpp:758
 msgid "\\begin_document is missing"
 msgstr "\\begin_document falta da"
 
-#: src/Buffer.cpp:773 src/Buffer.cpp:779 src/BufferView.cpp:1409
+#: src/Buffer.cpp:774 src/Buffer.cpp:780 src/BufferView.cpp:1409
 #: src/BufferView.cpp:1415
 msgid "Changes not shown in LaTeX output"
 msgstr "Erakutsi gabeko aldaketak LaTeX irteeran"
 
-#: src/Buffer.cpp:774 src/BufferView.cpp:1410
+#: src/Buffer.cpp:775 src/BufferView.cpp:1410
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -17082,7 +17087,7 @@ msgstr ""
 "Instalatu pakete hauek edo birdefinitu \\lyxadded eta \\lyxdeleted LaTeX-eko "
 "aitzinsolasean."
 
-#: src/Buffer.cpp:780 src/BufferView.cpp:1416
+#: src/Buffer.cpp:781 src/BufferView.cpp:1416
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -17094,20 +17099,20 @@ msgstr ""
 "Instalatu pakete hauek edo birdefinitu \\lyxadded eta \\lyxdeleted LaTeX-eko "
 "aitzinsolasean."
 
-#: src/Buffer.cpp:894 src/Buffer.cpp:984
+#: src/Buffer.cpp:895 src/Buffer.cpp:985
 msgid "Document format failure"
 msgstr "Huts egitea dokumentu-formatuan"
 
-#: src/Buffer.cpp:895
+#: src/Buffer.cpp:896
 #, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s ez da LyX dokumentu irakurgarria."
 
-#: src/Buffer.cpp:932
+#: src/Buffer.cpp:933
 msgid "Conversion failed"
 msgstr "Bihurketak huts egin du"
 
-#: src/Buffer.cpp:933
+#: src/Buffer.cpp:934
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -17116,11 +17121,11 @@ msgstr ""
 "%1$s LyX-en beste bertsio batekoa da, baina ezin izan da aldi baterako "
 "fitxategia sortu bihurketa lantzeko."
 
-#: src/Buffer.cpp:942
+#: src/Buffer.cpp:943
 msgid "Conversion script not found"
 msgstr "Ez da bihurtzeko script-a aurkitu"
 
-#: src/Buffer.cpp:943
+#: src/Buffer.cpp:944
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -17129,11 +17134,11 @@ msgstr ""
 "%1$s LyX-en beste bertsio batekoa da, baina ezin izan da lyx2lyx script-a "
 "aurkitu."
 
-#: src/Buffer.cpp:963 src/Buffer.cpp:969
+#: src/Buffer.cpp:964 src/Buffer.cpp:970
 msgid "Conversion script failed"
 msgstr "Bihurtzeko script-ak huts egin du"
 
-#: src/Buffer.cpp:964
+#: src/Buffer.cpp:965
 #, c-format
 msgid ""
 "%1$s is from an older version of LyX, but the lyx2lyx script failed to "
@@ -17142,7 +17147,7 @@ msgstr ""
 "%1$s LyX-en bertsio zaharrago batekoa da, baina lyx2lyx script-ak huts egin "
 "du hau bihurtzean."
 
-#: src/Buffer.cpp:970
+#: src/Buffer.cpp:971
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and cannot be converted by the lyx2lyx "
@@ -17151,12 +17156,12 @@ msgstr ""
 "%1$s LyX-en bertsio berriago batekoa da, baina lyx2lyx script-ak huts egin "
 "du hau bihurtzean."
 
-#: src/Buffer.cpp:985
+#: src/Buffer.cpp:986
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s ustekabean amaitu da, hondatuta dagoela dirudi."
 
-#: src/Buffer.cpp:1002
+#: src/Buffer.cpp:1003
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
@@ -17165,21 +17170,21 @@ msgstr ""
 "%1$s dokumentua kanpotik aldatu da. Ziur zaude fitxategi hau gainidaztea "
 "nahi duzula?"
 
-#: src/Buffer.cpp:1004
+#: src/Buffer.cpp:1005
 msgid "Overwrite modified file?"
 msgstr "Gainidatzi aldatutako fitxategia?"
 
-#: src/Buffer.cpp:1005 src/Buffer.cpp:2213 src/Exporter.cpp:50
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1959
-#: src/frontends/qt4/GuiView.cpp:2151
+#: src/Buffer.cpp:1006 src/Buffer.cpp:2214 src/Exporter.cpp:50
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1966
+#: src/frontends/qt4/GuiView.cpp:2158
 msgid "&Overwrite"
 msgstr "&Gainidatzi"
 
-#: src/Buffer.cpp:1029
+#: src/Buffer.cpp:1030
 msgid "Backup failure"
 msgstr "Babeskopiak huts egin du"
 
-#: src/Buffer.cpp:1030
+#: src/Buffer.cpp:1031
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -17188,60 +17193,60 @@ msgstr ""
 "Ezin da %1$s(r)en babeseko kopiarik egin.\n"
 "Egiaztatu direktorioa existitzen dela, eta bertan idatz daitekela."
 
-#: src/Buffer.cpp:1056
+#: src/Buffer.cpp:1057
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "%1$s dokumentua gordetzen ..."
 
-#: src/Buffer.cpp:1071
+#: src/Buffer.cpp:1072
 msgid " could not write file!"
 msgstr " ezin izan da fitxategia idatzi."
 
-#: src/Buffer.cpp:1079
+#: src/Buffer.cpp:1080
 msgid " done."
 msgstr " eginda."
 
-#: src/Buffer.cpp:1094
+#: src/Buffer.cpp:1095
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: %1$s dokumentua gordetzen saiatzen\n"
 
-#: src/Buffer.cpp:1104 src/Buffer.cpp:1117 src/Buffer.cpp:1131
+#: src/Buffer.cpp:1105 src/Buffer.cpp:1118 src/Buffer.cpp:1132
 #, c-format
 msgid "  Saved to %1$s. Phew.\n"
 msgstr "  %1$s(e)n gordeta. Uffff.\n"
 
-#: src/Buffer.cpp:1107
+#: src/Buffer.cpp:1108
 msgid "  Save failed! Trying again...\n"
 msgstr "  Huts egin du gordetzean! Berriro saiatzen...\n"
 
-#: src/Buffer.cpp:1121
+#: src/Buffer.cpp:1122
 msgid "  Save failed! Trying yet again...\n"
 msgstr " Huts egin du gordetzean! Beste behin saiatzen...\n"
 
-#: src/Buffer.cpp:1135
+#: src/Buffer.cpp:1136
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Huts egin du gordetzean! Dokumentua galdu da."
 
-#: src/Buffer.cpp:1219
+#: src/Buffer.cpp:1220
 msgid "Iconv software exception Detected"
 msgstr "Iconv softwarearen salbuespena detektatu da"
 
-#: src/Buffer.cpp:1219
+#: src/Buffer.cpp:1220
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr "Egiaztatu zure kodeketaren (%1$s) euskarria ongi instalatuta dagoela"
 
-#: src/Buffer.cpp:1241
+#: src/Buffer.cpp:1242
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 "Ezin izan da LaTeX komandoa aurkitu '%1$s' karakterearentzako (kodeko %2$s "
 "puntua)"
 
-#: src/Buffer.cpp:1244
+#: src/Buffer.cpp:1245
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -17251,19 +17256,19 @@ msgstr ""
 "kodeketarekin.\n"
 "Dokumentua UTF8 kodeketara bihurtzeak lagun dezake."
 
-#: src/Buffer.cpp:1251
+#: src/Buffer.cpp:1252
 msgid "iconv conversion failed"
 msgstr "iconv bihurketak huts egin du"
 
-#: src/Buffer.cpp:1256
+#: src/Buffer.cpp:1257
 msgid "conversion failed"
 msgstr "bihurketak huts egin du"
 
-#: src/Buffer.cpp:1353
+#: src/Buffer.cpp:1354
 msgid "Uncodable character in file path"
 msgstr "Kodetu ezin daitekeen karakterea fitxategiaren bide-izenean"
 
-#: src/Buffer.cpp:1354
+#: src/Buffer.cpp:1355
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -17284,53 +17289,53 @@ msgstr ""
 "Aukeratu dokumentuari dagokion kodeketa egokia (utf8 bezalakoa) edo aldatu "
 "bide-izena."
 
-#: src/Buffer.cpp:1638
+#: src/Buffer.cpp:1639
 msgid "Running chktex..."
 msgstr "chktex exekutatzen..."
 
-#: src/Buffer.cpp:1652
+#: src/Buffer.cpp:1653
 msgid "chktex failure"
 msgstr "chktex-ek huts egin du"
 
-#: src/Buffer.cpp:1653
+#: src/Buffer.cpp:1654
 msgid "Could not run chktex successfully."
 msgstr "Ezin izan da ongi chktex exekutatu."
 
-#: src/Buffer.cpp:1886
+#: src/Buffer.cpp:1887
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Ez dago informaziorik honako formatura esportatzeko: %1$s"
 
-#: src/Buffer.cpp:1958 src/frontends/qt4/GuiView.cpp:2923
+#: src/Buffer.cpp:1959 src/frontends/qt4/GuiView.cpp:2948
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Errorea honako formatura esportatzean: %1$s."
 
-#: src/Buffer.cpp:2040
+#: src/Buffer.cpp:2041
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "\"%1$s\" adarra badago lehendik ere."
 
-#: src/Buffer.cpp:2070
+#: src/Buffer.cpp:2071
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "\"%1$s\" adarra ez da existitzen."
 
-#: src/Buffer.cpp:2130
+#: src/Buffer.cpp:2131
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Ezin da \"%1$s\" analizatu"
 
-#: src/Buffer.cpp:2137
+#: src/Buffer.cpp:2138
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "\"%1$s\" helburu ezezaguna"
 
-#: src/Buffer.cpp:2147
+#: src/Buffer.cpp:2148
 msgid "Error exporting to DVI."
 msgstr "Errorea DVI-ra esportatzean."
 
-#: src/Buffer.cpp:2209 src/Exporter.cpp:45
+#: src/Buffer.cpp:2210 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -17341,73 +17346,73 @@ msgstr ""
 "\n"
 "Nahi duzu fitxategi hori gainidaztea?"
 
-#: src/Buffer.cpp:2212 src/Exporter.cpp:48
+#: src/Buffer.cpp:2213 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Gainidatzi fitxategia?"
 
-#: src/Buffer.cpp:2229
+#: src/Buffer.cpp:2230
 msgid "Error running external commands."
 msgstr "Errorea kanpoko komandoak exekutatzean."
 
-#: src/Buffer.cpp:3016
+#: src/Buffer.cpp:3028
 msgid "Preview source code"
 msgstr "Aurreikusi iturburuko kodea"
 
-#: src/Buffer.cpp:3030
+#: src/Buffer.cpp:3042
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Aurreikusi iturburuko kodea %1$d. paragrafoarentzako"
 
-#: src/Buffer.cpp:3034
+#: src/Buffer.cpp:3046
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Aurreikusi iturburuko kodea %1$s. paragrafotik %2$s.(e)ra"
 
-#: src/Buffer.cpp:3142
+#: src/Buffer.cpp:3154
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Autogordetzea %1$s"
 
-#: src/Buffer.cpp:3196
+#: src/Buffer.cpp:3208
 msgid "Autosave failed!"
 msgstr "Huts egin du automatikoki gordetzean!"
 
-#: src/Buffer.cpp:3254
+#: src/Buffer.cpp:3266
 msgid "Autosaving current document..."
 msgstr "Uneko dokumentua autogordetzen..."
 
-#: src/Buffer.cpp:3353
+#: src/Buffer.cpp:3365
 msgid "Couldn't export file"
 msgstr "Ezin izan da fitxategia esportatu"
 
-#: src/Buffer.cpp:3354
+#: src/Buffer.cpp:3366
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Ez dago informaziorik %1$s formatua esportatzeko."
 
-#: src/Buffer.cpp:3414
+#: src/Buffer.cpp:3426
 msgid "File name error"
 msgstr "Fitxategi-izenean errorea"
 
-#: src/Buffer.cpp:3415
+#: src/Buffer.cpp:3427
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Dokumentuaren bide-izenak ezin du zuriunerik izan."
 
-#: src/Buffer.cpp:3491
+#: src/Buffer.cpp:3503
 msgid "Document export cancelled."
 msgstr "Dokumentua esportatzea bertan behera utzi da."
 
-#: src/Buffer.cpp:3501
+#: src/Buffer.cpp:3513
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokumentua %1$s gisa esportatuta '%2$s' fitxategira"
 
-#: src/Buffer.cpp:3507
+#: src/Buffer.cpp:3519
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokumentua %1$s gisa esportatuta"
 
-#: src/Buffer.cpp:3586
+#: src/Buffer.cpp:3598
 #, c-format
 msgid ""
 "The specified document\n"
@@ -17418,11 +17423,11 @@ msgstr ""
 "%1$s\n"
 "ezin izan da irakurri."
 
-#: src/Buffer.cpp:3588
+#: src/Buffer.cpp:3600
 msgid "Could not read document"
 msgstr "Ezin izan da dokumentua irakurri"
 
-#: src/Buffer.cpp:3598
+#: src/Buffer.cpp:3610
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17433,27 +17438,27 @@ msgstr ""
 "\n"
 "Larrialdian gordetakoa berreskuratu?"
 
-#: src/Buffer.cpp:3601
+#: src/Buffer.cpp:3613
 msgid "Load emergency save?"
 msgstr "Kargatu larrialdian gordetakoa?"
 
-#: src/Buffer.cpp:3602
+#: src/Buffer.cpp:3614
 msgid "&Recover"
 msgstr "&Berreskuratu"
 
-#: src/Buffer.cpp:3602
+#: src/Buffer.cpp:3614
 msgid "&Load Original"
 msgstr "&Kargatu jatorrizkoa"
 
-#: src/Buffer.cpp:3612
+#: src/Buffer.cpp:3624
 msgid "Document was successfully recovered."
 msgstr "Dokumentua ongi berreskuratu da."
 
-#: src/Buffer.cpp:3614
+#: src/Buffer.cpp:3626
 msgid "Document was NOT successfully recovered."
 msgstr "Dokumentua EZ da ongi berreskuratu."
 
-#: src/Buffer.cpp:3615
+#: src/Buffer.cpp:3627
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17462,27 +17467,27 @@ msgstr ""
 "Kendu larrialdiko fitxategia orain?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3618 src/Buffer.cpp:3628
+#: src/Buffer.cpp:3630 src/Buffer.cpp:3640
 msgid "Delete emergency file?"
 msgstr "Ezabatu larrialdiko fitxategia?"
 
-#: src/Buffer.cpp:3619 src/Buffer.cpp:3630
+#: src/Buffer.cpp:3631 src/Buffer.cpp:3642
 msgid "&Keep it"
 msgstr "&Mantendu"
 
-#: src/Buffer.cpp:3622
+#: src/Buffer.cpp:3634
 msgid "Emergency file deleted"
 msgstr "Larrialdiko fitxategia ezabatuta"
 
-#: src/Buffer.cpp:3623
+#: src/Buffer.cpp:3635
 msgid "Do not forget to save your file now!"
 msgstr "Ez zaitez ahaztu zure fitxategia orain gordetzeaz."
 
-#: src/Buffer.cpp:3629
+#: src/Buffer.cpp:3641
 msgid "Remove emergency file now?"
 msgstr "Kendu larrialdiko fitxategia orain?"
 
-#: src/Buffer.cpp:3644
+#: src/Buffer.cpp:3656
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17493,37 +17498,37 @@ msgstr ""
 "\n"
 "Kargatu babeskopia horren ordez?"
 
-#: src/Buffer.cpp:3647
+#: src/Buffer.cpp:3659
 msgid "Load backup?"
 msgstr "Kargatu babeskopia?"
 
-#: src/Buffer.cpp:3648
+#: src/Buffer.cpp:3660
 msgid "&Load backup"
 msgstr "&Kargatu babeskopia"
 
-#: src/Buffer.cpp:3648
+#: src/Buffer.cpp:3660
 msgid "Load &original"
 msgstr "Kargatu &jatorrizkoa"
 
-#: src/Buffer.cpp:3943 src/insets/InsetCaption.cpp:327
+#: src/Buffer.cpp:3955 src/insets/InsetCaption.cpp:327
 msgid "Senseless!!! "
 msgstr "Zentzugabea. "
 
-#: src/Buffer.cpp:4066
+#: src/Buffer.cpp:4078
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "%1$s dokumentua kargatuta."
 
-#: src/Buffer.cpp:4068
+#: src/Buffer.cpp:4080
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Ezin izan da %1$s dokumentua birkargatu."
 
-#: src/Buffer.cpp:4103
+#: src/Buffer.cpp:4115
 msgid "Included File Invalid"
 msgstr "Sartutako fitxategi baliogabea"
 
-#: src/Buffer.cpp:4104
+#: src/Buffer.cpp:4116
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -18393,7 +18398,7 @@ msgstr "Ezin da fitxategia ikusi"
 msgid "Cannot view file"
 msgstr "Ezin da fitxategia ikusi"
 
-#: src/Format.cpp:289 src/Format.cpp:360 src/frontends/qt4/GuiView.cpp:2799
+#: src/Format.cpp:289 src/Format.cpp:360 src/frontends/qt4/GuiView.cpp:2806
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Fitxategia ez da existitzen: %1$s"
@@ -18586,7 +18591,7 @@ msgstr ""
 msgid "LyX crashed!"
 msgstr ""
 
-#: src/LyX.cpp:697 src/frontends/qt4/GuiView.cpp:862
+#: src/LyX.cpp:697 src/frontends/qt4/GuiView.cpp:863
 msgid "LyX: "
 msgstr "LyX: "
 
@@ -19367,7 +19372,7 @@ msgstr "(hasierako azalpenik ez)"
 msgid "(no log message)"
 msgstr "(egunkari-mezurik ez)"
 
-#: src/LyXVC.cpp:166 src/frontends/qt4/GuiView.cpp:2643
+#: src/LyXVC.cpp:166 src/frontends/qt4/GuiView.cpp:2650
 msgid "LyX VC: Log Message"
 msgstr "LyX BK: egunkari-mezua"
 
@@ -19388,7 +19393,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Leheneratu dokumentuaren gordetako bertsiora?"
 
-#: src/LyXVC.cpp:216 src/frontends/qt4/GuiView.cpp:3052
+#: src/LyXVC.cpp:216 src/frontends/qt4/GuiView.cpp:3088
 msgid "&Revert"
 msgstr "&Leheneratu"
 
@@ -19619,7 +19624,7 @@ msgstr ""
 
 #: src/VCBackend.cpp:60 src/VCBackend.cpp:686 src/VCBackend.cpp:755
 #: src/VCBackend.cpp:761 src/VCBackend.cpp:782
-#: src/frontends/qt4/GuiView.cpp:2606
+#: src/frontends/qt4/GuiView.cpp:2613
 msgid "Revision control error."
 msgstr "Berrikuspenaren kontrolaren errorea."
 
@@ -19774,7 +19779,7 @@ msgstr ""
 msgid "Reload saved document?"
 msgstr "Gordetako dokumentua birkargatu?"
 
-#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2555
+#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2562
 msgid "&Reload"
 msgstr "&Birkargatu"
 
@@ -20169,9 +20174,9 @@ msgstr "BibTex bibliografia"
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
 #: src/frontends/qt4/GuiDocument.cpp:1816
 #: src/frontends/qt4/GuiExternal.cpp:639 src/frontends/qt4/GuiGraphics.cpp:799
-#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1702
-#: src/frontends/qt4/GuiView.cpp:1760 src/frontends/qt4/GuiView.cpp:1909
-#: src/frontends/qt4/GuiView.cpp:2036 src/frontends/qt4/GuiView.cpp:2120
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1703
+#: src/frontends/qt4/GuiView.cpp:1767 src/frontends/qt4/GuiView.cpp:1916
+#: src/frontends/qt4/GuiView.cpp:2043 src/frontends/qt4/GuiView.cpp:2127
 msgid "Documents|#o#O"
 msgstr "Dokumentuak|#d#D"
 
@@ -20416,10 +20421,10 @@ msgstr "%1$s fitxategiak"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Aukeratu fitxategi-izena itsatsitako grafikoak gordetzeko"
 
-#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1779
-#: src/frontends/qt4/GuiView.cpp:1929 src/frontends/qt4/GuiView.cpp:1945
-#: src/frontends/qt4/GuiView.cpp:1962 src/frontends/qt4/GuiView.cpp:2053
-#: src/frontends/qt4/GuiView.cpp:2096
+#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1786
+#: src/frontends/qt4/GuiView.cpp:1936 src/frontends/qt4/GuiView.cpp:1952
+#: src/frontends/qt4/GuiView.cpp:1969 src/frontends/qt4/GuiView.cpp:2060
+#: src/frontends/qt4/GuiView.cpp:2103
 msgid "Canceled."
 msgstr "Bertan behera utzita."
 
@@ -20449,9 +20454,9 @@ msgstr "Konparatu LyX fitxategiak"
 msgid "Select document"
 msgstr "Hautatu dokumentua"
 
-#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1706
-#: src/frontends/qt4/GuiView.cpp:1764 src/frontends/qt4/GuiView.cpp:2042
-#: src/frontends/qt4/GuiView.cpp:2128
+#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1707
+#: src/frontends/qt4/GuiView.cpp:1771 src/frontends/qt4/GuiView.cpp:2049
+#: src/frontends/qt4/GuiView.cpp:2135
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumentuak (*.lyx)"
 
@@ -22199,80 +22204,80 @@ msgstr "Tamaina arrunteko ikonoak"
 msgid "Big-sized icons"
 msgstr "Tamaina handiko ikonoak"
 
-#: src/frontends/qt4/GuiView.cpp:690
+#: src/frontends/qt4/GuiView.cpp:691
 #, fuzzy
 msgid "Exit LyX"
 msgstr "&Irten LyX-etik"
 
-#: src/frontends/qt4/GuiView.cpp:690
+#: src/frontends/qt4/GuiView.cpp:691
 msgid "LyX could not be closed because documents are processed by LyX."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:943
+#: src/frontends/qt4/GuiView.cpp:944
 msgid "Welcome to LyX!"
 msgstr "Ongi etorri LyX-era!"
 
-#: src/frontends/qt4/GuiView.cpp:1378
+#: src/frontends/qt4/GuiView.cpp:1379
 msgid "Automatic save failed!"
 msgstr "Huts egin du automatikoki gordetzean!"
 
-#: src/frontends/qt4/GuiView.cpp:1379
+#: src/frontends/qt4/GuiView.cpp:1380
 msgid "Automatic save done."
 msgstr "Automatikoki gorde da."
 
-#: src/frontends/qt4/GuiView.cpp:1422
+#: src/frontends/qt4/GuiView.cpp:1423
 msgid "Command not allowed without any document open"
 msgstr "Ezin da komandoa erabili dokumentu bat ireki arte"
 
-#: src/frontends/qt4/GuiView.cpp:1524
+#: src/frontends/qt4/GuiView.cpp:1525
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "\"%1$s\" tresna--barra ezezaguna"
 
-#: src/frontends/qt4/GuiView.cpp:1701
+#: src/frontends/qt4/GuiView.cpp:1702
 msgid "Select template file"
 msgstr "Hautatu txantiloia"
 
-#: src/frontends/qt4/GuiView.cpp:1703 src/frontends/qt4/GuiView.cpp:2121
+#: src/frontends/qt4/GuiView.cpp:1704 src/frontends/qt4/GuiView.cpp:2128
 msgid "Templates|#T#t"
 msgstr "Txantiloiak|#T#t"
 
-#: src/frontends/qt4/GuiView.cpp:1723
+#: src/frontends/qt4/GuiView.cpp:1730
 msgid "Document not loaded."
 msgstr "Dokumentua ez da kargatu."
 
-#: src/frontends/qt4/GuiView.cpp:1759
+#: src/frontends/qt4/GuiView.cpp:1766
 msgid "Select document to open"
 msgstr "Hautatu dokumentua irekitzeko"
 
-#: src/frontends/qt4/GuiView.cpp:1761 src/frontends/qt4/GuiView.cpp:1910
-#: src/frontends/qt4/GuiView.cpp:2037
+#: src/frontends/qt4/GuiView.cpp:1768 src/frontends/qt4/GuiView.cpp:1917
+#: src/frontends/qt4/GuiView.cpp:2044
 msgid "Examples|#E#e"
 msgstr "Adibideak|#A#a"
 
-#: src/frontends/qt4/GuiView.cpp:1765
+#: src/frontends/qt4/GuiView.cpp:1772
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "LyX-1.3.x dokumentuak (*.lyx13)"
 
-#: src/frontends/qt4/GuiView.cpp:1766
+#: src/frontends/qt4/GuiView.cpp:1773
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "LyX-1.4.x dokumentuak (*.lyx14)"
 
-#: src/frontends/qt4/GuiView.cpp:1767
+#: src/frontends/qt4/GuiView.cpp:1774
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "LyX-1.5.x dokumentuak (*.lyx15)"
 
-#: src/frontends/qt4/GuiView.cpp:1768
+#: src/frontends/qt4/GuiView.cpp:1775
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "LyX-1.6.x dokumentuak (*.lyx16)"
 
-#: src/frontends/qt4/GuiView.cpp:1793 src/frontends/qt4/Validator.cpp:188
+#: src/frontends/qt4/GuiView.cpp:1800 src/frontends/qt4/Validator.cpp:188
 #: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:287
 #: src/insets/InsetGraphics.cpp:594 src/insets/InsetInclude.cpp:512
 msgid "Invalid filename"
 msgstr "Fitxategi-izen baliogabea"
 
-#: src/frontends/qt4/GuiView.cpp:1794
+#: src/frontends/qt4/GuiView.cpp:1801
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -22283,40 +22288,40 @@ msgstr ""
 "%1$s\n"
 "ez da direktorioa existitzen."
 
-#: src/frontends/qt4/GuiView.cpp:1810
+#: src/frontends/qt4/GuiView.cpp:1817
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "%1$s dokumentua irekitzen..."
 
-#: src/frontends/qt4/GuiView.cpp:1819
+#: src/frontends/qt4/GuiView.cpp:1826
 #, c-format
 msgid "Document %1$s opened."
 msgstr "%1$s dokumentua irekita."
 
-#: src/frontends/qt4/GuiView.cpp:1822
+#: src/frontends/qt4/GuiView.cpp:1829
 msgid "Version control detected."
 msgstr "Bertsio-kontrola antzemanda."
 
-#: src/frontends/qt4/GuiView.cpp:1824
+#: src/frontends/qt4/GuiView.cpp:1831
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Ezin izan da %1$s dokumentua ireki"
 
-#: src/frontends/qt4/GuiView.cpp:1853
+#: src/frontends/qt4/GuiView.cpp:1860
 msgid "Couldn't import file"
 msgstr "Ezin izan da fitxategia inportatu"
 
-#: src/frontends/qt4/GuiView.cpp:1854
+#: src/frontends/qt4/GuiView.cpp:1861
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Ez dago informaziorik %1$s formatutik inportatzeko."
 
-#: src/frontends/qt4/GuiView.cpp:1905
+#: src/frontends/qt4/GuiView.cpp:1912
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Hautatu %1$s fitxategia inportatzeko"
 
-#: src/frontends/qt4/GuiView.cpp:1956 src/frontends/qt4/GuiView.cpp:2146
+#: src/frontends/qt4/GuiView.cpp:1963 src/frontends/qt4/GuiView.cpp:2153
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -22327,52 +22332,52 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gainidaztea?"
 
-#: src/frontends/qt4/GuiView.cpp:1958 src/frontends/qt4/GuiView.cpp:2150
+#: src/frontends/qt4/GuiView.cpp:1965 src/frontends/qt4/GuiView.cpp:2157
 msgid "Overwrite document?"
 msgstr "Gainidatzi dokumentua?"
 
-#: src/frontends/qt4/GuiView.cpp:1967
+#: src/frontends/qt4/GuiView.cpp:1974
 #, c-format
 msgid "Importing %1$s..."
 msgstr "%1$s inportatzen..."
 
-#: src/frontends/qt4/GuiView.cpp:1970
+#: src/frontends/qt4/GuiView.cpp:1977
 msgid "imported."
 msgstr "inportatua."
 
-#: src/frontends/qt4/GuiView.cpp:1972
+#: src/frontends/qt4/GuiView.cpp:1979
 msgid "file not imported!"
 msgstr "ez da fitxategirik inportatu."
 
-#: src/frontends/qt4/GuiView.cpp:1997
+#: src/frontends/qt4/GuiView.cpp:2004
 msgid "newfile"
 msgstr "fitxategi berria"
 
-#: src/frontends/qt4/GuiView.cpp:2035
+#: src/frontends/qt4/GuiView.cpp:2042
 msgid "Select LyX document to insert"
 msgstr "Hautatu LyX dokumentua txertatzeko"
 
-#: src/frontends/qt4/GuiView.cpp:2069 src/frontends/qt4/GuiView.cpp:2968
+#: src/frontends/qt4/GuiView.cpp:2076 src/frontends/qt4/GuiView.cpp:3004
 msgid "Absolute filename expected."
 msgstr "Fitxategi-izen absolutua espero da."
 
-#: src/frontends/qt4/GuiView.cpp:2081
+#: src/frontends/qt4/GuiView.cpp:2088
 msgid "Select file to insert"
 msgstr "Hautatu fitxategia txertatzeko"
 
-#: src/frontends/qt4/GuiView.cpp:2085
+#: src/frontends/qt4/GuiView.cpp:2092
 msgid "All Files (*)"
 msgstr "Fitxategi guztiak (*)"
 
-#: src/frontends/qt4/GuiView.cpp:2118
+#: src/frontends/qt4/GuiView.cpp:2125
 msgid "Choose a filename to save document as"
 msgstr "Aukeratu fitxategi-izena dokumentua gordetzeko"
 
-#: src/frontends/qt4/GuiView.cpp:2151 src/frontends/qt4/GuiView.cpp:2211
+#: src/frontends/qt4/GuiView.cpp:2158 src/frontends/qt4/GuiView.cpp:2218
 msgid "&Rename"
 msgstr "&Aldatu izena"
 
-#: src/frontends/qt4/GuiView.cpp:2207
+#: src/frontends/qt4/GuiView.cpp:2214
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -22383,24 +22388,24 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua izenez aldatzea eta berriro saiatzea?"
 
-#: src/frontends/qt4/GuiView.cpp:2210
+#: src/frontends/qt4/GuiView.cpp:2217
 msgid "Rename and save?"
 msgstr "Aldatu izenez eta gorde?"
 
-#: src/frontends/qt4/GuiView.cpp:2211
+#: src/frontends/qt4/GuiView.cpp:2218
 msgid "&Retry"
 msgstr "&Saiatu berriro"
 
-#: src/frontends/qt4/GuiView.cpp:2317
+#: src/frontends/qt4/GuiView.cpp:2324
 #, fuzzy
 msgid "Close document "
 msgstr "Dokumentu berria"
 
-#: src/frontends/qt4/GuiView.cpp:2317
+#: src/frontends/qt4/GuiView.cpp:2324
 msgid "Document could not be closed because it is processed by LyX."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2413 src/frontends/qt4/GuiView.cpp:2520
+#: src/frontends/qt4/GuiView.cpp:2420 src/frontends/qt4/GuiView.cpp:2527
 #, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -22411,11 +22416,11 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gordetzea?"
 
-#: src/frontends/qt4/GuiView.cpp:2416 src/frontends/qt4/GuiView.cpp:2523
+#: src/frontends/qt4/GuiView.cpp:2423 src/frontends/qt4/GuiView.cpp:2530
 msgid "Save new document?"
 msgstr "Gorde dokumentu berria?"
 
-#: src/frontends/qt4/GuiView.cpp:2421
+#: src/frontends/qt4/GuiView.cpp:2428
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -22426,15 +22431,15 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gordetzea edo aldaketak baztertu nahi dituzu?"
 
-#: src/frontends/qt4/GuiView.cpp:2423 src/frontends/qt4/GuiView.cpp:2517
+#: src/frontends/qt4/GuiView.cpp:2430 src/frontends/qt4/GuiView.cpp:2524
 msgid "Save changed document?"
 msgstr "Gorde aldatutako dokumentua?"
 
-#: src/frontends/qt4/GuiView.cpp:2424
+#: src/frontends/qt4/GuiView.cpp:2431
 msgid "&Discard"
 msgstr "&Baztertu"
 
-#: src/frontends/qt4/GuiView.cpp:2514
+#: src/frontends/qt4/GuiView.cpp:2521
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -22445,7 +22450,7 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gordetzea?"
 
-#: src/frontends/qt4/GuiView.cpp:2551
+#: src/frontends/qt4/GuiView.cpp:2558
 #, c-format
 msgid ""
 "Document \n"
@@ -22457,56 +22462,66 @@ msgstr ""
 "\n"
 "Orain birkargatu? Aldaketa lokal guztiak galduko dira."
 
-#: src/frontends/qt4/GuiView.cpp:2554
+#: src/frontends/qt4/GuiView.cpp:2561
 msgid "Reload externally changed document?"
 msgstr "Birkargatu kanpoan aldatutako dokumentua?"
 
-#: src/frontends/qt4/GuiView.cpp:2607
+#: src/frontends/qt4/GuiView.cpp:2614
 msgid "Error when setting the locking property."
 msgstr "Errorea blokeatze-propietatea ezartzean."
 
-#: src/frontends/qt4/GuiView.cpp:2652
+#: src/frontends/qt4/GuiView.cpp:2659
 msgid "Directory is not accessible."
 msgstr "Direktorioa ez dago atzigarri."
 
-#: src/frontends/qt4/GuiView.cpp:2728
+#: src/frontends/qt4/GuiView.cpp:2735
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "%1$s ume-dokumentua irekitzen..."
 
-#: src/frontends/qt4/GuiView.cpp:2820
+#: src/frontends/qt4/GuiView.cpp:2827
+#, fuzzy, c-format
+msgid "Successful compilation to format: %1$s"
+msgstr "Ongi esportatu da formatura: %1$s"
+
+#: src/frontends/qt4/GuiView.cpp:2828
+#, fuzzy, c-format
+msgid "Error compiling format: %1$s"
+msgstr "Errorea formatuaren aurrebistan: %1$s"
+
+#: src/frontends/qt4/GuiView.cpp:2841
 #, c-format
 msgid "Successful export to format: %1$s"
 msgstr "Ongi esportatu da formatura: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2821
+#: src/frontends/qt4/GuiView.cpp:2842
 #, c-format
 msgid "Error exporting to format: %1$s"
 msgstr "Errorea formatura esportatzean: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2834
+#: src/frontends/qt4/GuiView.cpp:2855
 #, c-format
 msgid "Successful preview of format: %1$s"
 msgstr "Formatuaren aurrebista ongi: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2835
+#: src/frontends/qt4/GuiView.cpp:2856
 #, c-format
 msgid "Error previewing format: %1$s"
 msgstr "Errorea formatuaren aurrebistan: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2932
+#: src/frontends/qt4/GuiView.cpp:2956 src/frontends/qt4/GuiView.cpp:2968
 msgid "Exporting ..."
 msgstr "Esportatzen..."
 
-#: src/frontends/qt4/GuiView.cpp:2941
+#: src/frontends/qt4/GuiView.cpp:2977
 msgid "Previewing ..."
 msgstr "Aurrebista lantzen..."
 
-#: src/frontends/qt4/GuiView.cpp:2975
+#: src/frontends/qt4/GuiView.cpp:3011
 msgid "Document not loaded"
 msgstr "Dokumentua ez da kargatu"
 
-#: src/frontends/qt4/GuiView.cpp:3049
+#: src/frontends/qt4/GuiView.cpp:3085
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -22515,29 +22530,29 @@ msgstr ""
 "Edozein aldaketa galdu egingo da. Ziur zaude %1$s dokumentuaren gordetako "
 "bertsioa leheneratu nahi duzula?"
 
-#: src/frontends/qt4/GuiView.cpp:3051
+#: src/frontends/qt4/GuiView.cpp:3087
 msgid "Revert to saved document?"
 msgstr "Gordetako dokumentua leheneratu?"
 
-#: src/frontends/qt4/GuiView.cpp:3076
+#: src/frontends/qt4/GuiView.cpp:3112
 msgid "Saving all documents..."
 msgstr "Dokumentu guztiak gordetzen..."
 
-#: src/frontends/qt4/GuiView.cpp:3086
+#: src/frontends/qt4/GuiView.cpp:3122
 msgid "All documents saved."
 msgstr "Dokumentu guztiak gordeta."
 
-#: src/frontends/qt4/GuiView.cpp:3187
+#: src/frontends/qt4/GuiView.cpp:3223
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s komando ezezaguna."
 
-#: src/frontends/qt4/GuiView.cpp:3294
+#: src/frontends/qt4/GuiView.cpp:3330
 #, fuzzy
 msgid "Please, preview the document first."
 msgstr "Dokumentuaren zati hau ezabatu egin da."
 
-#: src/frontends/qt4/GuiView.cpp:3309
+#: src/frontends/qt4/GuiView.cpp:3345
 #, fuzzy
 msgid "Couldn't proceed."
 msgstr "Ezin izan da fitxategia esportatu"
