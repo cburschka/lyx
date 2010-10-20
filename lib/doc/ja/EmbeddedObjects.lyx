@@ -62,9 +62,6 @@
 % enables calculation of values,
 \usepackage{calc}
 
-% provides special table cell alignments
-\usepackage{dcolumn}
-
 % increase the bottom float placement fraction
 \renewcommand{\bottomfraction}{0.5}
 
@@ -1649,8 +1646,30 @@ status collapsed
 \family sans
 表の設定
 \family default
- ここでは、現在列の幅と水平揃えを設定することができます。幅を設定した場合には、現在行の垂直揃えも調整することができます。列幅を与えると、改行や多段落の文章をセ
-ルに入れることができます。これに関しては、第
+ ここでは、現在列の幅と水平揃えを設定することができます。
+\lang english
+The alignment 
+\family sans
+At
+\begin_inset space ~
+\end_inset
+
+Decimal
+\begin_inset space ~
+\end_inset
+
+Separator
+\family default
+ is described in
+\lang japanese
+ 第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:特殊なセル揃え"
+
+\end_inset
+
+。幅を設定した場合には、現在行の垂直揃えも調整することができます。列幅を与えると、改行や多段落の文章をセルに入れることができます。これに関しては、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:複数行"
@@ -15770,6 +15789,13 @@ Huger
 
 \begin_layout Subsection
 特殊なセル揃え
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:特殊なセル揃え"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -15790,7 +15816,39 @@ reference "tab:表セル"
 
 \end_inset
 
-の小数点のように、同一列の各セルの内容が、特定の文字で揃えられた方が見栄えの良いことがあります。
+の小数点のように、同一列の各セルの内容が、特定の文字で揃えられた方が見栄えの良いことがあります。 
+\lang english
+This alignment is achieved by highlighting the last 3
+\begin_inset space ~
+\end_inset
+
+cells of the column and then either pressing the toolbar button
+\lang japanese
+ 
+\begin_inset Graphics
+	filename ../../images/tabular-feature_align-decimal.png
+	scale 85
+	scaleBeforeRotation
+
+\end_inset
+
+ 
+\lang english
+or setting the alignment in the table settings to 
+\family sans
+At
+\begin_inset space ~
+\end_inset
+
+Decimal
+\begin_inset space ~
+\end_inset
+
+Separator
+\family default
+.
+ The alignment character can be a character of your choice and is specified
+ in the table settings.
 \end_layout
 
 \begin_layout Standard
@@ -15821,10 +15879,99 @@ name "tab:表セル"
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="1">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="decimal" decimal_point="." valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+見出し
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12.6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.68
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-123.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Table-align-operator"
+
+\end_inset
+
+
+\lang english
+Table cells of a column aligned with the operators.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="right" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0" special="@{}l">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="right" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt" special="@{}l">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
@@ -15850,7 +15997,10 @@ name "tab:表セル"
 \begin_inset Text
 
 \begin_layout Plain Layout
-12.
+\begin_inset Formula $12\,+$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -15859,27 +16009,10 @@ name "tab:表セル"
 \begin_inset Text
 
 \begin_layout Plain Layout
-6
-\end_layout
-
+\begin_inset Formula $\,6$
 \end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
 
-\begin_layout Plain Layout
-0.
-\end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-68
 \end_layout
 
 \end_inset
@@ -15890,7 +16023,10 @@ name "tab:表セル"
 \begin_inset Text
 
 \begin_layout Plain Layout
--123.
+\begin_inset Formula $0\,-$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -15899,7 +16035,36 @@ name "tab:表セル"
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+\begin_inset Formula $\,68$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-123\,/$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\,0$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -15918,8 +16083,32 @@ name "tab:表セル"
 \end_layout
 
 \begin_layout Standard
-この表は4×2表として作成されています。見出しは中央揃えの連結列になっています。第1列には、小数点以上の各桁と小数点が右揃えで収められています。第2列には、小数
-点以下の各桁が左揃えで収められています。通常、表の列間に加えられる余白を削るために、
+
+\lang english
+For alignments at characters in formulas this method does not work because
+ the field to specify the alignment character does not allow formulas.
+ In this case one need to use the method from 
+\lang japanese
+表
+\lang english
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Table-align-operator"
+
+\end_inset
+
+.
+ This table was created with a 4×2 table.
+ The heading is a centered multicolumn.
+ The first column is right-aligned and contains the first part including
+ the operator.
+ The second column is left aligned and contains the rest.
+ A small space was added at the beginning of each cell of the second column
+ to get the space that is usually around operators.
+
+\lang japanese
+ 第2列には、小数点以下の各桁が左揃えで収められています。通常、表の列間に加えられる余白を削るために、
 \end_layout
 
 \begin_layout Standard
@@ -15940,8 +16129,19 @@ reference "tab:表セル揃え"
 
 \end_inset
 
-は、揃え方の例をいくつか示しています。関係子で揃えを行うには、関係詞の周りに正しい余白を取るために、二番目に小さい数式余白を最終列の初めに加えなくてはなりません
-。
+は、揃え方の例をいくつか示しています。
+\lang english
+For the alignment with the relation sign, a small space was added like for
+ the second column of
+\lang japanese
+ 表
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Table-align-operator"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -16236,284 +16436,6 @@ cm
 
 \begin_layout Plain Layout
 \begin_inset Formula $\:\sin(\beta)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-表のセルの揃えを取り扱うものには、
-\series bold
-dcolumn
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeXぱっけーじ@LaTeXパッケージ ! dcolumn
-\end_layout
-
-\end_inset
-
- LaTeXパッケージもあります。しかし残念ながら、このパッケージはセルの内容全体を数式として取扱うため、表セル中に数式を入れることはできません。表
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:表セル揃え"
-
-\end_inset
-
-の第1列は、
-\series bold
-dcolumn
-\series default
-では表
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:使用したときの揃え"
-
-\end_inset
-
-の第1列のようになり、ちょっとしたテクニックを使わなければ、期待通りにはなりません。表
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:表セル揃え"
-
-\end_inset
-
-の第2列と第3列のような揃え方は、
-\series bold
-dcolumn
-\series default
-ではできません。
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:使用したときの揃え"
-
-\end_inset
-
-LaTeXパッケージdcolumnを使用したときの揃えの様子。この出力のようにすべての列を揃えるには、テクニックを用いなくてはなりません。
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0" special="D{x}{\times}{-1}">
-<column alignment="center" valignment="top" width="0" special="D{x}{\times}{4.9}">
-<column alignment="center" valignment="top" width="0" special="D{~}{\,}{9.7}">
-<row>
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-単位
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-単位
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-単位
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-12x24本の瓶
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-12x24本の瓶
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-12
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-times 
-\end_layout
-
-\end_inset
-
-24+
-\begin_inset Formula $\mbox{本の瓶}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1024x768ピクセル
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1024x768ピクセル
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1024
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-times 
-\end_layout
-
-\end_inset
-
-768+
-\begin_inset Formula $\mbox{ピクセル}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-32x6
-\begin_inset space \thinspace{}
-\end_inset
-
-cm
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-32x6
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset Formula $\mbox{cm}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-32
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-times 
-\end_layout
-
-\end_inset
-
-6+
-\begin_inset Formula $\mbox{cm}$
 \end_inset
 
 

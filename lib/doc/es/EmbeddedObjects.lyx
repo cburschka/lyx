@@ -56,9 +56,6 @@
 % enables calculation of values,
 \usepackage{calc}
 
-% provides special table cell alignments
-\usepackage{dcolumn}
-
 % increase the bottom float placement fraction
 \renewcommand{\bottomfraction}{0.5}
 
@@ -1903,6 +1900,33 @@ tabla
 \family default
  Aquí puedes establecer la alineación horizontal y la anchura de la columna
  actual.
+ La alineación 
+\family sans
+\lang english
+At
+\begin_inset space ~
+\end_inset
+
+Decimal
+\begin_inset space ~
+\end_inset
+
+Separator
+\family default
+ is described in
+\lang spanish
+ sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Alineación-especial-de"
+
+\end_inset
+
+.
  Una vez puesta la anchura puedes ajustar también el alineamiento vertical.
  Una anchura determinada permite tener saltos de línea y distintos párrafos
  de texto, véase sección
@@ -16566,6 +16590,13 @@ Más enorme
 
 \begin_layout Subsection
 Alineación especial de celdas
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Alineación-especial-de"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -16595,11 +16626,132 @@ el separador decimal, como en la tabla
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-con-celdas-de"
+reference "tab:Table-cells-align"
 
 \end_inset
 
 .
+ 
+\lang english
+This alignment is achieved by highlighting the last 3
+\begin_inset space ~
+\end_inset
+
+cells of the column and then either pressing the toolbar button
+\lang spanish
+ 
+\begin_inset Graphics
+	filename ../../images/tabular-feature_align-decimal.png
+	scale 85
+	scaleBeforeRotation
+
+\end_inset
+
+ 
+\lang english
+or setting the alignment in the table settings to 
+\family sans
+At
+\begin_inset space ~
+\end_inset
+
+Decimal
+\begin_inset space ~
+\end_inset
+
+Separator
+\family default
+.
+ The alignment character can be a character of your choice and is specified
+ in the table settings.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Table-cells-align"
+
+\end_inset
+
+Ta
+\lang english
+ble cells of a column aligned with the decimal separator.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="1">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="decimal" decimal_point="," valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+leyenda
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12,6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,68
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-123,0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -16618,7 +16770,11 @@ name "tab:Tabla-con-celdas-de"
 
 \end_inset
 
-Tabla con celdas alineadas con el separador decimal.
+Tabla con celdas alineadas con 
+\lang english
+the operators
+\lang spanish
+.
 \end_layout
 
 \end_inset
@@ -16630,9 +16786,9 @@ Tabla con celdas alineadas con el separador decimal.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="right" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0" special="@{}l">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="right" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt" special="@{}l">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
@@ -16658,7 +16814,10 @@ leyenda
 \begin_inset Text
 
 \begin_layout Plain Layout
-12,
+\begin_inset Formula $12\,+$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16667,27 +16826,10 @@ leyenda
 \begin_inset Text
 
 \begin_layout Plain Layout
-6
-\end_layout
-
+\begin_inset Formula $\,6$
 \end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
 
-\begin_layout Plain Layout
-0,
-\end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-68
 \end_layout
 
 \end_inset
@@ -16698,7 +16840,10 @@ leyenda
 \begin_inset Text
 
 \begin_layout Plain Layout
--123,
+\begin_inset Formula $0\,-$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16707,7 +16852,36 @@ leyenda
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+\begin_inset Formula $\,68$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-123\,/$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\,0$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16726,12 +16900,34 @@ leyenda
 \end_layout
 
 \begin_layout Standard
-Esta es una tabla 4×2.
+
+\lang english
+For alignments at characters in formulas this method does not work because
+ the field to specify the alignment character does not allow formulas.
+ In this case one need to use the method from 
+\lang spanish
+tabla
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Tabla-con-celdas-de"
+
+\end_inset
+
+.
+ Esta es una tabla 4×2.
  La leyenda es una multicolumna centrada.
- La primera columna está alineada a la derecha y contiene el punto decimal
- y los dígitos anteriores.
- La segunda columna está alineada a la izquierda y contiene los dígitos
- posteriores al punto decimal.
+ La primera columna está alineada a la derecha y contiene el 
+\lang english
+first part including the operator.
+ The second column is left aligned and contains the rest.
+ A small space was added at the beginning of each cell of the second column
+ to get the space that is usually around operators.
+
+\lang spanish
  Para omitir el espacio que hay normalmente entre dos columnas se ha usado
  el siguiente argumento LaTeX para la segunda columna:
 \end_layout
@@ -16755,9 +16951,22 @@ reference "tab:Varias-alineaciones"
 \end_inset
 
  muestra varios ejemplos de alineación.
- Para alinear con el signo de relación debes añadir el segundo espacio matemátic
-o más pequeño al comienzo de la última columna para conseguir el espacio
- adecuado alrededor del signo.
+ Para alinear con el signo de relación 
+\lang english
+a small space was added like for the second column of
+\lang spanish
+ tabla
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Tabla-con-celdas-de"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -17061,343 +17270,6 @@ cm
 
 \begin_layout Plain Layout
 \begin_inset Formula $\:\sen(\beta)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-También hay un paquete LaTeX, 
-\series bold
-dcolumn
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-paquetes ! dcolumn
-\end_layout
-
-\end_inset
-
-, que permite alinear el contenido de las celdas.
- Pero desgraciadamente trata las entradas de celda en modo matemático y
- no permite fórmulas en celdas: la primera columna de la tabla
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Varias-alineaciones"
-
-\end_inset
-
- se verá con 
-\series bold
-dcolumn
-\series default
- como la primera columna en la tabla
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Alineaciones-con-el"
-
-\end_inset
-
- y sólo con algunos trucos se consigue lo que se espera.
- La alineación de la segunda y tercera columnas de la tabla
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Varias-alineaciones"
-
-\end_inset
-
- no es posible con 
-\series bold
-dcolumn
-\series default
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:Alineaciones-con-el"
-
-\end_inset
-
-
-\begin_inset Argument
-status collapsed
-
-\begin_layout Plain Layout
-Tabla alineada con 
-\series bold
-dcolumn
-\end_layout
-
-\end_inset
-
-Alineaciones con el paquete LaTeX 
-\series bold
-dcolumn
-\series default
-.
- Hay que usar algunos trucos para la alineación de las columnas en la salida.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0" special="D{x}{\times}{4.9}">
-<column alignment="center" valignment="top" width="0" special="D{x}{\times}{4.9}">
-<column alignment="center" valignment="top" width="0" special="D{+}{\,}{9.7}">
-<row>
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-unidades
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-unidades
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-unidades
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-12x24
-\begin_inset space \thinspace{}
-\end_inset
-
-bottles
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-12x24
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset Formula $\mbox{bottles}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-12
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-times
-\end_layout
-
-\end_inset
-
-24+
-\begin_inset Formula $\mbox{bottles}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1024x768
-\begin_inset space \thinspace{}
-\end_inset
-
-Pixels
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1024x768
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset Formula $\mbox{Pixels}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1024
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-times
-\end_layout
-
-\end_inset
-
-768+
-\begin_inset Formula $\mbox{Pixels}$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-32x6
-\begin_inset space \thinspace{}
-\end_inset
-
-cm
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-32x6
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset Formula $\mbox{cm}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-32
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-times
-\end_layout
-
-\end_inset
-
-6+
-\begin_inset Formula $\mbox{cm}$
 \end_inset
 
 
