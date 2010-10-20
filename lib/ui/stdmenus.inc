@@ -178,6 +178,7 @@ Menuset
 # not much we can do to help here
 	Menu "edit_tabular"
 		Item "Multicolumn|M" "inset-modify tabular multicolumn"
+		Item "Multirow|u" "inset-modify tabular multirow"
 		Separator
 		Item "Top Line|T" "inset-modify tabular toggle-line-top"
 		Item "Bottom Line|B" "inset-modify tabular toggle-line-bottom"
