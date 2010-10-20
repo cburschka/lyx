@@ -92,10 +92,6 @@
   \setboolean{colortbl}{true}}
  {\setboolean{colortbl}{false}}
 
-% used for multirows
-\usepackage{multirow}
-%\renewcommand{\multirowsetup}{\centering}
-
 % used for book-style tables
 \usepackage{booktabs}
 
@@ -1675,11 +1671,18 @@ reference "sub:連結列"
 節をご参照下さい 
 \lang english
 or the cells of one column as multirow cell, see section
+\lang japanese
+
 \begin_inset space ~
 \end_inset
 
-??
-\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:連結行"
+
+\end_inset
+
 。
 \begin_inset Newline newline
 \end_inset
@@ -11465,6 +11468,13 @@ centering}m{2.5cm}
 
 \begin_layout Subsection
 連結行
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:連結行"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -11488,74 +11498,50 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-連結列とは対照的に、連結行はLyXではまだサポートされていないために、若干のTeXコードを使用する必要があります。連結行を利用するには、文書プリアンブルに
-\end_layout
 
-\begin_layout Standard
-
-\series bold
-
-\backslash
-usepackage{multirow}
-\end_layout
-
-\begin_layout Standard
-というコマンドを書いて、LaTeXパッケージの
-\series bold
-multirow
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeXぱっけーじ@LaTeXパッケージ ! multirow
-\end_layout
+\lang english
+To merge cells over multiple rows, select as many cells within a column
+ as you want to merge and use either the table-toolbar button
+\lang japanese
+ 
+\begin_inset Graphics
+	filename ../../images/tabular-feature_multirow.png
+	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
-を読み込んでおく必要があります。連結列は
+, 
+\lang english
+or the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Table\SpecialChar \menuseparator
+Multirow
+\family default
+, or right click on the marked cells and choose 
+\family sans
+Multirow
+\family default
+ in the context menu.
 \end_layout
 
 \begin_layout Standard
 
-\series bold
-
-\backslash
-multirow{行数}{セル幅}{セルの内容}
-\end_layout
-
-\begin_layout Standard
-というコマンドで生成することができます。以下の表を作成するには、
+\lang english
+Here is an example table with a multirow in the first column:
 \end_layout
 
 \begin_layout Standard
 \align center
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-multirowsetup}{
-\backslash
-centering}
-\end_layout
-
-\end_inset
-
-
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11584,34 +11570,11 @@ centering}
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-multirow{2}{2.5cm}{
-\end_layout
-
-\end_inset
-
 連結行の項目
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -11636,7 +11599,7 @@ status collapsed
 </cell>
 </row>
 <row>
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11669,98 +11632,13 @@ status collapsed
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-multirowsetup}{
-\backslash
-raggedright}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-まず3×3表を作成して下さい。第一列の最下セル上の罫線を削除して下さい。そして、第二行第一列に
 \end_layout
 
 \begin_layout Standard
 
-\series bold
-
-\backslash
-multirow{2}{2.5cm}{
-\end_layout
-
-\begin_layout Standard
-というコマンドをTeXコードとして入れると、連結行を作成することができます。このコマンドのパラメータに指定されているように、連結行は2行を連結し、2.5
-\begin_inset space \thinspace{}
-\end_inset
-
-cmの幅を持つようになります。連結行セルの内容は、TeXコードボックスの後に書き込み、その文章の後に別のTeXコードボックスで右括弧
-\series bold
-}
-\series default
-を入れて、コマンドを閉じます。
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-multirow
-\series default
-は、既定値でその中身を左揃えにします。この既定値を上書きするには、文書プリアンブル中のTeXコードで
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-multirowsetup}{
-\backslash
-centering}
-\end_layout
-
-\begin_layout Standard
-というコマンドを使用して、コマンド
-\series bold
-
-\backslash
-multirowsetup
-\series default
-を書き換えて下さい。すると、文書中の連結行の中身が、すべて中央揃えになります。もしいくつかの表だけ中央揃えにしたいのであれば、プリアンブルではなく表の直前にTe
-Xコードボックスを入れて、このコマンドを書き換えれば済みます。文章を右揃えにしたい場合には、
-\series bold
-
-\backslash
-centering
-\series default
-の代わりに
-\series bold
-
-\backslash
-raggedleft
-\series default
-を使用して下さい。左揃えに戻すには、
-\series bold
-
-\backslash
-raggedright
-\series default
-とします。
+\lang english
+The width and alignment of multirow cells is set by setting the width and
+ alignment for the whole column.
 \end_layout
 
 \begin_layout Section

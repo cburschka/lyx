@@ -86,10 +86,6 @@
   \setboolean{colortbl}{true}}
  {\setboolean{colortbl}{false}}
 
-% used for multirows
-\usepackage{multirow}
-%\renewcommand{\multirowsetup}{\centering}
-
 % used for book-style tables
 \usepackage{booktabs}
 
@@ -2226,15 +2222,22 @@ reference "sub:Multicolonnes"
 
 \end_inset
 
- 
+ ou 
 \lang english
-or the cells of one column as multirow cell
+the cells of one column as multirow cell
 \lang french
 , voir la section
 \begin_inset space ~
 \end_inset
 
-??.
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Multi-lignes"
+
+\end_inset
+
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -11704,9 +11707,7 @@ Multi-colonnes
 \family sans
 Multi-colonnes
 \family default
- 
-\lang english
-in the appearing context menu.
+.
 \end_layout
 
 \begin_layout Standard
@@ -12433,6 +12434,13 @@ centering}m{2.5cm}
 
 \begin_layout Subsection
 Multi-lignes
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Multi-lignes"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -12456,80 +12464,45 @@ Tableau ! Multi-ligne
 \end_layout
 
 \begin_layout Standard
-Au contraire des multi-colonnes, les multi-lignes ne sont pas encore gérés
- par LyX, il faut donc utiliser un peu de code TeX.
- Pour utiliser les multi-lignes, vous devez charger le paquetage LaTeX 
-\series bold
-multirow
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Paquetages LaTeX ! multirow
-\end_layout
+Pour faire qu'une cellule couvre plusieurs lignes, marquez les cellules
+ qu'elle doit couvrir et utilisez soit le bouton 
+\begin_inset Graphics
+	filename ../../images/tabular-feature_multirow.png
+	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
-
-\series bold
+de la barre d'outils tableau, ou le menu 
+\family sans
+Éditer\SpecialChar \menuseparator
+Tableau\SpecialChar \menuseparator
+Multi-lignes
+\family default
+, ou encore faites un clic droit sur les cellules sélectionnées et choisissez
  
-\series default
-dans le préambule de votre document avec la commande 
+\family sans
+Multi-lignes
+\family default
+.
 \end_layout
 
 \begin_layout Standard
 
-\series bold
-
-\backslash
-usepackage{multirow}
-\end_layout
-
-\begin_layout Standard
-Les cellules multilignes sont créées avec la commande
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-multirow{number of rows}{cell width}{cell entry}
-\end_layout
-
-\begin_layout Standard
-Pour créer le tableau suivant :
+\lang english
+Here is an example table with a multirow in the first column:
 \end_layout
 
 \begin_layout Standard
 \align center
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-multirowsetup}{
-\backslash
-centering}
-\end_layout
-
-\end_inset
-
-
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12558,34 +12531,11 @@ c
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-multirow{2}{2.5cm}{
-\end_layout
-
-\end_inset
-
 cellule multi-lignes
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -12610,7 +12560,7 @@ f
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12643,114 +12593,13 @@ i
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-multirowsetup}{
-\backslash
-raggedright}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-créez un tableau 3×3.
- Désactivez la bordure supérieure de la dernière cellule dans la première
- colonne.
- La cellule multi-ligne est ensuite créée dans la deuxième cellule de la
- première colonne en y insérant la commande
 \end_layout
 
 \begin_layout Standard
 
-\series bold
-
-\backslash
-multirow{2}{2.5cm}{
-\end_layout
-
-\begin_layout Standard
-comme du code TeX.
- Les paramètres de la commande indiquent que la cellule multi-ligne couvre
- deux lignes et a une largeur de 2.5
-\begin_inset space \thinspace{}
-\end_inset
-
-cm.
- Le contenu de la cellule suit le code TeX et on termine la commande en
- ajoutant l'accolade fermante 
-\series bold
-}
-\series default
- dans une nouvelle boîte de code TeX, juste après le texte.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-multirow
-\series default
- aligne implicitement son contenu à gauche.
- Pour passer outre le comportement implicite, vous devez redéfinir la commande
- 
-\series bold
-
-\backslash
-multirowsetup
-\series default
- avec la commande
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-multirowsetup}{
-\backslash
-centering}
-\end_layout
-
-\begin_layout Standard
-dans le préambule du document.
- Après ça, tous les contenus de cellules multi-lignes du document seront
- centrés.
- Si vous ne souhaitez utiliser des contenus centrés que pour quelques tableaux,
- vous pouvez redéfinir la commande en l'insérant sous forme de code TeX
- juste avant le tableau concerné, plutôt que dans le préambule.
- Si le texte doit être aligné à droite, remplacez 
-\series bold
-
-\backslash
-centering
-\series default
- par 
-\series bold
-
-\backslash
-raggedleft
-\series default
-.
- Pour revenir à l'alignement à gauche utilisez 
-\series bold
-
-\backslash
-raggedright
-\series default
-.
+\lang english
+The width and alignment of multirow cells is set by setting the width and
+ alignment for the whole column.
 \end_layout
 
 \begin_layout Section

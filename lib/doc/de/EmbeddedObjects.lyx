@@ -84,10 +84,6 @@
   \setboolean{colortbl}{true}}
  {\setboolean{colortbl}{false}}
 
-% wird für Mehrfachzeilen benutzt
-\usepackage{multirow}
-%\renewcommand{\multirowsetup}{\centering}
-
 % wird fuer Tabellen im Buchstil benutzt
 \usepackage{booktabs}
 
@@ -1989,7 +1985,14 @@ reference "uab:Mehrfachspalten"
 
 \end_inset
 
- und ?? beschrieben.
+ und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "uab:Mehrfachzeilen"
+
+\end_inset
+
+ beschrieben.
 \begin_inset Newline newline
 \end_inset
 
@@ -12347,77 +12350,43 @@ Tabellen ! Mehrfachzeilen
 \end_layout
 
 \begin_layout Standard
-Im Gegensatz zu Mehrfachspalten werden Mehrfachzeilen noch nicht durch LyX
- unterstützt, sodass etwas TeX-Code notwendig ist.
- Damit LaTeX Mehrfachzeilen erzeugen kann, muss das Paket 
-\series bold
-multirow
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-Pakete ! multirow
-\end_layout
+Um mehrere Zellen einer Zeile zu einer zu verbinden, markieren Sie diese
+ und verwenden dann den Knopf 
+\begin_inset Graphics
+	filename ../../images/tabular-feature_multirow.png
+	scale 70
+	scaleBeforeRotation
 
 \end_inset
 
- im Vorspann geladen werden:
+ in der Werkzeugleiste, das Menü 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Tabelle\SpecialChar \menuseparator
+Mehrfachzeile
+\family default
+, oder klicken Sie rechts auf die markierten Zellen und wählen im Kontextmenü
+ 
+\family sans
+Mehrfachzeile
+\family default
+.
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-
-\backslash
-usepackage{multirow}
-\end_layout
-
-\begin_layout Standard
-Mehrfachzeilen werden mit folgendem Befehl erzeugt:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-multirow{Zeilenzahl}{Zellenbreite}{Zelleninhalt}
-\end_layout
-
-\begin_layout Standard
-In der folgenden 3×3-Tabelle wurde obere Linie der letzten Zelle der ersten
- Spalte entfernt.
+Dies ist eine Beispieltabelle mit einer Mehrfachzeile in der ersten Spalte:
 \end_layout
 
 \begin_layout Standard
 \align center
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-multirowsetup}{
-\backslash
-centering}
-\end_layout
-
-\end_inset
-
-
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12446,34 +12415,11 @@ c
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-multirow{2}{2.5cm}{
-\end_layout
-
-\end_inset
-
 mehrzeiliger Text
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -12498,7 +12444,7 @@ f
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12531,115 +12477,11 @@ i
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-multirowsetup}{
-\backslash
-raggedright}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-In der Zelle darüber wurde dann mit dem Befehl
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-multirow{2}{2.5cm}{
-\end_layout
-
-\begin_layout Standard
-als TeX-Code die Mehrfachzeile definiert.
- Sie besteht aus zwei Zeilen und einer Breite von 2.5
-\begin_inset space \thinspace{}
-\end_inset
-
-cm.
- Der Inhalt steht außerhalb des TeX-Code-Kästchens, und der Befehl wird
- mit der Klammer 
-\begin_inset Quotes gld
-\end_inset
-
-
-\series bold
-}
-\series default
-
-\begin_inset Quotes grd
-\end_inset
-
- in einem weiteren TeX-Code-Kästchen abgeschlossen.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-multirow
-\series default
- richtet seinen Inhalt standardmäßig linksbündig aus.
- Um die Ausrichtung zu Ändern, erneuern Sie den Befehl 
-\series bold
-
-\backslash
-multirowsetup
-\series default
- mit dem Befehl
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-multirowsetup}{
-\backslash
-centering}
-\end_layout
-
-\begin_layout Standard
-im LaTeX-Vorspann.
- Es werden dann die Inhalte aller Mehrfachzeilen-Zellen des Dokuments zentriert.
- Wenn diese Ausrichtung nur für einige Tabellen gelten soll, kann der Befehl
- auch mittels TeX-Code vor der jeweiligen Tabelle, statt im LaTeX-Vorspann,
- erneuert werden.
- Für rechtsbündigen Text ersetzt man 
-\series bold
-
-\backslash
-centering
-\series default
- durch 
-\series bold
-
-\backslash
-raggedleft
-\series default
-.
- Um zur linksbündigen Ausrichtung zurückzukehren, wird 
-\series bold
-
-\backslash
-raggedright
-\series default
- verwendet.
+Die Breite und Ausrichtung einer Mehrfachzeile wird durch Setzen der Breite
+ und Ausrichtung für die komplette Spalte festgelegt.
 \end_layout
 
 \begin_layout Section

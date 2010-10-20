@@ -86,10 +86,6 @@
   \setboolean{colortbl}{true}}
  {\setboolean{colortbl}{false}}
 
-% used for multirows
-\usepackage{multirow}
-%\renewcommand{\multirowsetup}{\centering}
-
 % used for book-style tables
 \usepackage{booktabs}
 
@@ -1947,10 +1943,13 @@ or the cells of one column as multirow cell
 \end_inset
 
 
-\lang english
-??
-\lang spanish
-..
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Multifilas"
+
+\end_inset
+
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -11299,7 +11298,7 @@ Multicolumna
 \family sans
 Multicolumna 
 \family default
-en el menú contextual emergente.
+en el menú contextual.
 \end_layout
 
 \begin_layout Standard
@@ -12019,6 +12018,13 @@ centering}m{2.5cm}
 
 \begin_layout Subsection
 Multifilas
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Multifilas"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -12042,76 +12048,44 @@ Tablas ! Multifilas
 \end_layout
 
 \begin_layout Standard
-A diferencia de multicolumnas, LyX aún no soporta multifilas por lo que
- hace falta un poco de código TeX.
- Hay que cargar el paquete de LaTeX 
-\series bold
-multirow
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-paquetes ! multirow
-\end_layout
+Para extender una celda sobre varias filas, se marcan las celdas que se
+ desee combinar y se usa el botón 
+\begin_inset Graphics
+	filename ../../images/tabular-feature_multirow.png
+	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
- en el preámbulo del documento con el comando
+, el menú 
+\family sans
+Editar\SpecialChar \menuseparator
+Tabla\SpecialChar \menuseparator
+Multifila
+\family default
+, o clic derecho sobre las celdas marcadas y elige 
+\family sans
+Multifila 
+\family default
+en el menú contextual.
 \end_layout
 
 \begin_layout Standard
 
-\series bold
-
-\backslash
-usepackage{multirow}
-\end_layout
-
-\begin_layout Standard
-Las multifilas se crean con el comando
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-multirow{número de filas}{ancho de celda}{entrada de celda}
-\end_layout
-
-\begin_layout Standard
-Para crear la siguiente tabla:
+\lang english
+Here is an example table with a multirow in the first column:
 \end_layout
 
 \begin_layout Standard
 \align center
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-multirowsetup}{
-\backslash
-centering}
-\end_layout
-
-\end_inset
-
-
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12140,34 +12114,11 @@ c
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-multirow{2}{2.5cm}{
-\end_layout
-
-\end_inset
-
 entrada multifila
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -12192,7 +12143,7 @@ f
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12225,110 +12176,13 @@ i
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-multirowsetup}{
-\backslash
-raggedright}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-crea una tabla 3×3.
- Elimina el borde superior de la última celda en la primera columna.
- Ahora se crea la multifila en la segunda fila de la primera columna insertando
- ahí el comando
 \end_layout
 
 \begin_layout Standard
 
-\series bold
-
-\backslash
-multirow{2}{2.5cm}{
-\end_layout
-
-\begin_layout Standard
-en código TeX.
- Según los parámetros del comando la multifila se expande a dos filas y
- tiene de ancho 2.5
-\begin_inset space \thinspace{}
-\end_inset
-
-cm.
- El contenido de la celda multifila sigue fuera del cuadro de código TeX
- y el comando finaliza con llave derecha 
-\series bold
-}
-\series default
- en otro cuadro de código TeX tras el texto.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-multirow
-\series default
- alinea su contenido a la izquierda por omisión.
- Para cambiarlo renombra el comando 
-\series bold
-
-\backslash
-multirowsetup
-\series default
- con el comando
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-multirowsetup}{
-\backslash
-centering}
-\end_layout
-
-\begin_layout Standard
-en el preámbulo del documento.
- Entonces se centran todas las entradas de celdas multifila en el documento.
- Si sólo queremos centrar en algunas tablas, se puede renombrar el comando
- en código TeX justo antes de la tabla en lugar de en el preámbulo.
- Si el texto debe estar alineado a la derecha, reemplaza 
-\series bold
-
-\backslash
-centering
-\series default
- por 
-\series bold
-
-\backslash
-raggedleft
-\series default
-.
- Para volver a alineado a la izquierda usa 
-\series bold
-
-\backslash
-raggedright
-\series default
-.
+\lang english
+The width and alignment of multirow cells is set by setting the width and
+ alignment for the whole column.
 \end_layout
 
 \begin_layout Section
