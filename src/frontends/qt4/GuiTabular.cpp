@@ -159,7 +159,8 @@ GuiTabular::GuiTabular(QWidget * parent)
 
 void GuiTabular::checkEnabled()
 {
-	hAlignCB->setEnabled(true);
+	// multirows don't have their own alignment
+	hAlignCB->setEnabled(!multirowCB->isChecked());
 	bool dalign =
 		hAlignCB->itemData(hAlignCB->currentIndex()).toString() == QString("decimal");
 	decimalPointLE->setEnabled(dalign);
