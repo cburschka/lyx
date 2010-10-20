@@ -17600,16 +17600,20 @@ reference "sub:Cellules-de-tableau"
 
 \begin_layout Standard
 Vous pouvez marquer plusieurs cellules d'une même ligne comme constituant
- une cellule multi-colonne en utilisant l'option 
+ une cellule multi-colonne/ligne en utilisant l'option 
 \family sans
 Multi-colonnes
+\family default
+ ou 
+\family sans
+Multi-lignes
 \family default
 .
  Cette option fait que les cellules sont fusionnées en 
 \emph on
 une seule 
 \emph default
-cellule, répartie sur plusieurs colonnes.
+cellule, répartie sur plusieurs colonnes/lignes.
  Les cellules multi-colonnes sont traitées comme des lignes à part, ce qui
  fait que leur alignement, leur largeur et la configuration de leur bordure
  n'affectent que la cellule et elle seule.
@@ -17748,8 +17752,7 @@ D
 \end_layout
 
 \begin_layout Standard
-La version actuelle de LyX ne gère pas les cellules multi-lignes.
- Les utilisateurs compétents peuvent déclarer des paramètres LaTeX spéciaux
+Les utilisateurs compétents peuvent déclarer des paramètres LaTeX spéciaux
  pour modifier leur tableau.
  Ces derniers sont indispensables pour certaines mise en forme spéciales,
  comme les cellules multi-lignes, ils sont expliqués dans le manuel  

@@ -23691,15 +23691,25 @@ reference "sub:表のセル"
 
 \begin_layout Standard
 
+\lang english
+You can mark multiple cells of one row/column as a multicolumn/row cell
+ using the check box 
 \family sans
-連結列
+Multicolumn
 \family default
-チェックボックスを使用すれば、同一行内の複数のセルを連結列として指定することができます。このようにすると、複数のセルを
+ or 
+\family sans
+Multirow
+\family default
+.
+ This will merge the cells to 
 \emph on
-一つの
+one
 \emph default
-セルに連結し、このセルが複数列にわたって広がることになります。連結列はそれ自体独立した行として取り扱われるので、連結列における水平揃えや列幅や罫線などの設定は、
-連結列のセルのみに有効です。
+ cell, spread over more than one column/row.
+
+\lang japanese
+ 連結列はそれ自体独立した行として取り扱われるので、連結列における水平揃えや列幅や罫線などの設定は、連結列のセルのみに有効です。
 \family roman
 \series medium
 \shape up
@@ -23842,9 +23852,8 @@ reference "sub:表のセル"
 \end_layout
 
 \begin_layout Standard
-LyXは、いまのところ連結「行」セルのサポートはしていません。熟練ユーザーは、特別なLaTeX引数を表に宣言することができます。これは、取扱説明書『高度な機能篇
-』の表の節に説明されているように、連結行セルのように表に特別な整形を行うときに必要になるでしょう。また、現在のセルや表全体を90度左向きに回転させることもできま
-す。この回転はLyX上には表示されませんが、出力では正しく表示されます。
+これは、取扱説明書『高度な機能篇』の表の節に説明されているように、連結行セルのように表に特別な整形を行うときに必要になるでしょう。また、現在のセルや表全体を90
+度左向きに回転させることもできます。この回転はLyX上には表示されませんが、出力では正しく表示されます。
 \end_layout
 
 \begin_layout Standard

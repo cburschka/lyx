@@ -20212,6 +20212,32 @@ Mehrfachspalte
 \end_layout
 
 \begin_layout Itemize
+
+\family sans
+Mehrfachzeile
+\family default
+ definieren (
+\family sans
+
+\begin_inset Graphics
+	filename ../../images/tabular-feature_multirow.png
+	scale 70
+	scaleBeforeRotation
+	groupId Icon
+
+\end_inset
+
+
+\family default
+).
+ Die Option 
+\family sans
+Mehrfachzeile
+\family default
+ verbindet zwei oder mehr benachbarte Zellen in einer Spalte.
+\end_layout
+
+\begin_layout Itemize
 Drehen der gesamten Tabelle oder einzelner Zellen um 90 Grad (
 \family sans
 
@@ -20537,7 +20563,7 @@ T
 \family sans
 abelle
 \family default
- setzt Rahmen und Mehrfachspalte 
+ setzt Rahmen, Mehrfachspalten und Mahrfachzeilen 
 \end_layout
 
 \begin_layout Description

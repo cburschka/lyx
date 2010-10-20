@@ -16658,17 +16658,21 @@ reference "sub:Celdas-de-tablas"
 \end_layout
 
 \begin_layout Standard
-Puedes seleccionar varias celdas de una fila como celda multicolumna marcando
- el cuadro 
+Puedes seleccionar varias celdas de una fila como celda multicolumna/fila
+ marcando el cuadro 
 \family sans
-Multicolumna.
+Multicolumna 
+\family default
+o 
+\family sans
+Multifila.
 
 \family default
  Así se funden las celdas en 
 \emph on
 una
 \emph default
-, que se extiende sobre más de una columna.
+, que se extiende sobre más de una columna/fila.
  Las celdas multicolumna se consideran como filas propias, de forma que
  la alineación, la anchura, y los bordes afectan sólo a la celda multicolumna.
  Aquí hay un ejemplo de tabla con multicolumna en la primera fila, y una
@@ -16890,10 +16894,9 @@ D
 \end_layout
 
 \begin_layout Standard
-Por el momento, LyX no soporta celdas multifila.
- Los expertos pueden añadir argumentos especiales de LaTeX a la tabla, necesario
-s para formatos de tabla especiales, como multifilas; se explican en la
- sección 
+Los expertos pueden añadir argumentos especiales de LaTeX a la tabla, necesarios
+ para formatos de tabla especiales, como multifilas; se explican en la sección
+ 
 \emph on
 Tablas
 \emph default
