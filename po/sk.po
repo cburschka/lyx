@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-10-20 02:33+0200\n"
-"PO-Revision-Date: 2010-10-19 10:21+0200\n"
+"PO-Revision-Date: 2010-10-20 07:24+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenčina <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -13146,7 +13146,6 @@ msgid "Lowercase|L"
 msgstr "Malé písmená"
 
 #: lib/ui/stdmenus.inc:181
-#, fuzzy
 msgid "Multirow|u"
 msgstr "Viacriadkové"
 
@@ -22201,14 +22200,14 @@ msgid "Opening child document %1$s..."
 msgstr "Otváram dokument potomku %1$s..."
 
 #: src/frontends/qt4/GuiView.cpp:2827
-#, fuzzy, c-format
+#, c-format
 msgid "Successful compilation to format: %1$s"
-msgstr "Úspešný export do formátu: %1$s"
+msgstr "Úspešný preklad do formátu: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2828
-#, fuzzy, c-format
+#, c-format
 msgid "Error compiling format: %1$s"
-msgstr "Chyba pri zobrazovaní formátu: %1$s"
+msgstr "Chyba pri preklade formátu: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2841
 #, c-format
