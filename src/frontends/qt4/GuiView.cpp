@@ -370,6 +370,9 @@ public:
 	static docstring compileAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
 	static docstring saveAndDestroy(Buffer const * orig, Buffer * buffer, FileName const & fname);
 
+	template<class T>
+	static docstring runAndDestroy(const T& func, Buffer const * orig, Buffer * buffer, string const & format, string const & msg);
+	
 	// TODO syncFunc/previewFunc: use bind
 	bool asyncBufferProcessing(string const & argument,
 	                           Buffer const * used_buffer,
@@ -2815,45 +2818,37 @@ bool GuiView::goToFileRow(string const & argument)
 
 
 #if (QT_VERSION >= 0x040400)
-docstring GuiView::GuiViewPrivate::compileAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
+template<class T>
+docstring GuiView::GuiViewPrivate::runAndDestroy(const T& func, Buffer const * orig, Buffer * buffer, string const & format, string const & msg)
 {
 	bool const update_unincluded =
 				buffer->params().maintain_unincluded_children
 				&& !buffer->params().getIncludedChildren().empty();
-	bool const success = buffer->doExport(format, true, update_unincluded);
+	bool const success = func(format, update_unincluded);
 	delete buffer;
 	busyBuffers.remove(orig);
 	return success
-		? bformat(_("Successful compilation to format: %1$s"), from_utf8(format))
-		: bformat(_("Error compiling format: %1$s"), from_utf8(format));
+		? bformat(_("Successful " + msg + " to format: %1$s"), from_utf8(format))
+		: bformat(_("Error " + msg + " format: %1$s"), from_utf8(format));
 }
 
+docstring GuiView::GuiViewPrivate::compileAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
+{
+	bool (Buffer::* mem_func)(std::string const &, bool, bool) const = &Buffer::doExport;
+	return runAndDestroy(bind(mem_func, buffer, _1, true, _2), orig, buffer, format, "export");
+}
 
 docstring GuiView::GuiViewPrivate::exportAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
 {
-	bool const update_unincluded =
-				buffer->params().maintain_unincluded_children
-				&& !buffer->params().getIncludedChildren().empty();
-	bool const success = buffer->doExport(format, false, update_unincluded);
-	delete buffer;
-	busyBuffers.remove(orig);
-	return success
-		? bformat(_("Successful export to format: %1$s"), from_utf8(format))
-		: bformat(_("Error exporting to format: %1$s"), from_utf8(format));
-}
+	bool (Buffer::* mem_func)(std::string const &, bool, bool) const = &Buffer::doExport;
+	return runAndDestroy(bind(mem_func, buffer, _1, false, _2), orig, buffer, format, "export");
 
+}
 
 docstring GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
 {
-	bool const update_unincluded =
-				buffer->params().maintain_unincluded_children
-				&& !buffer->params().getIncludedChildren().empty();
-	bool const success = buffer->preview(format, update_unincluded);
-	delete buffer;
-	busyBuffers.remove(orig);
-	return success
-		? bformat(_("Successful preview of format: %1$s"), from_utf8(format))
-		: bformat(_("Error previewing format: %1$s"), from_utf8(format));
+	bool(Buffer::* mem_func)(std::string const &, bool) const = &Buffer::preview;
+	return runAndDestroy(bind(mem_func, buffer, _1, _2), orig, buffer, format, "preview");
 }
 #endif
 
