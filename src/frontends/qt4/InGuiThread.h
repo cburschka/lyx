@@ -173,4 +173,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // GUIABOUT_H
+#endif // INGUITHREAD_H
