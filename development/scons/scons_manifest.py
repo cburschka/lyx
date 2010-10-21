@@ -297,8 +297,10 @@ src_support_header_files = Split('''
     filetools.h
     foreach.h
     ForkedCalls.h
+    functional.h
     gettext.h
     gzstream.h
+    InGuiThread.h
     lassert.h
     limited_stack.h
     lstrings.h
@@ -341,6 +343,7 @@ src_support_files = Split('''
     ForkedCalls.cpp
     gettext.cpp
     gzstream.cpp
+    InGuiThread.cpp
     kill.cpp
     lassert.cpp
     lstrings.cpp
