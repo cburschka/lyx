@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "support/InGuiThread.h"
+#include "InGuiThread.h"
 
 #include <QThread>
 #include <QEventLoop>

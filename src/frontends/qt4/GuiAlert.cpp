@@ -13,18 +13,18 @@
 #include <config.h>
 
 #include "alert.h"
+#include "InGuiThread.h"
 
 #include "frontends/Application.h"
 
 #include "qt_helpers.h"
 #include "LyX.h" // for lyx::use_gui
-#include "support/gettext.h"
 
+#include "support/gettext.h"
 #include "support/debug.h"
 #include "support/docstring.h"
 #include "support/lstrings.h"
 #include "support/ProgressInterface.h"
-#include "support/InGuiThread.h"
 
 #include <QApplication>
 #include <QCheckBox>
