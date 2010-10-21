@@ -170,6 +170,8 @@ What's new
 - Correct enabled check for LFUN_MATH_NUMBER_TOGGLE.
   Avoid implicit conversion of enum to bool.
 
+- Fix some accelerator conflicts in Document Class dialog (bug 6963).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
