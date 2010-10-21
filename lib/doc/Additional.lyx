@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 400
+\lyxformat 404
 \begin_document
 \begin_header
 \textclass scrbook
@@ -113,6 +113,7 @@ End
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \index Index
 \shortcut idx
 \color #008000
@@ -153,7 +154,7 @@ Principal maintainer of this file is
 .
  If you have comments or error corrections, please send them to the LyX
  Documentation mailing list, 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -304,7 +305,7 @@ does
  For one thing, you don't need to know LaTeX to use LyX effectively.
  And LyX has added its own extensions to LaTeX.
  Try the following sometime: select 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -315,7 +316,7 @@ LaTeX
 \end_inset
 
  from the 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -325,7 +326,7 @@ File
 \end_inset
 
  menu (or 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -336,7 +337,7 @@ Source
 \end_inset
 
 ), then look at the preamble of the resulting 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -357,7 +358,7 @@ There are several commands that automatically invoke LaTeX.
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -371,7 +372,7 @@ Format
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -386,7 +387,7 @@ Format
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -400,7 +401,7 @@ Print
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -425,7 +426,7 @@ When LyX runs LaTeX on the file you're editing, it performs these steps:
 
 \begin_layout Enumerate
 Convert the document to LaTeX and save to a file with the extension 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -435,7 +436,7 @@ status collapsed
 \end_inset
 
  in place of 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -449,7 +450,7 @@ status collapsed
 
 \begin_layout Enumerate
 Run LaTeX on the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -459,7 +460,7 @@ status collapsed
 \end_inset
 
  file (maybe several times), and run any other commands (such as 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -469,7 +470,7 @@ bibtex
 \end_inset
 
  or 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -487,7 +488,7 @@ If there are any errors, show the error log.
 
 \begin_layout Standard
 If you've run LaTeX using 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -503,7 +504,7 @@ DVI
 
 , LyX then runs a DVI viewer to display the DVI-file.
  If you've used 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -522,7 +523,7 @@ PostScript
 
 \begin_layout Itemize
 Run 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -536,7 +537,7 @@ dvips
 
 \begin_layout Itemize
 Run a PostScript viewer, such as 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -558,7 +559,7 @@ Translating LaTeX files into LyX
 
 \begin_layout Standard
 You can import a LaTeX file into LyX by using the 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -571,7 +572,7 @@ LaTeX
 
  command in LyX.
  This will call a program named 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -581,7 +582,7 @@ tex2lyx
 \end_inset
 
  which will create a file 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -591,7 +592,7 @@ foo.lyx
 \end_inset
 
  from the file 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -606,7 +607,7 @@ foo.tex
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -624,7 +625,7 @@ tex2lyx
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -636,7 +637,7 @@ tex2lyx
  will translate most legal LaTeX, but not everything.
  It will put things it doesn't understand into TeX code, so after translating
  a file with 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -668,7 +669,7 @@ Anything you can do in LaTeX you can do in LyX, for a very simple reason:
  LyX cannot, and will never be able to, display every possible LaTeX construct.
  If ever you need to insert LaTeX commands into your LyX document, you can
  use the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -678,7 +679,7 @@ TeX Code
 \end_inset
 
  box, which you can insert into your document with 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -785,7 +786,7 @@ end{tabular}
 
 \begin_layout Standard
 The 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -899,7 +900,7 @@ end{tabular}
 \begin_layout Standard
 In addition to using TeX code, you can also create a separate file containing
  some complex LaTeX structure and then use 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -914,7 +915,7 @@ Document
 \end_inset
 
  to include your file (you should select the type 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -925,7 +926,7 @@ Input
 
 ).
  We recommend that you only do this if you have a 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1044,7 +1045,7 @@ Declare the usage of packages.
 LaTeX packages provide special commands, which are only available within
  a document when the package has been declared in the preamble.
  For example, the package 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1078,7 +1079,7 @@ must
 
 \begin_layout Itemize
 Declare user defined commands (with 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1090,7 +1091,7 @@ newcommand
 \end_inset
 
  or 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1118,7 +1119,7 @@ can
 
 \begin_layout Standard
 LyX adds its own set of definitions to the preamble of the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1139,7 +1140,7 @@ Changing the Preamble
 The commands which LyX adds to the preamble of a LaTeX file are fixed; you
  can't change them without patching LyX itself.
  You can, however, add your own stuff to the preamble by selecting 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -1153,7 +1154,7 @@ Preamble
 \end_inset
 
  in the 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -1165,7 +1166,7 @@ Settings
 
  dialog.
  LyX adds anything in the 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -1188,7 +1189,7 @@ make sure your preamble code is correct
 \end_inset
 
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1222,7 +1223,7 @@ Example #1: Offsets
 
 \begin_layout Standard
 There are two variables under LaTeX that control page position: 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1234,7 +1235,7 @@ hoffset
 \end_inset
 
  and 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1251,7 +1252,7 @@ voffset
  Sometimes, the size of a print medium and the area of the medium that you
  can actually print on aren't the same.
  This is where 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1263,7 +1264,7 @@ hoffset
 \end_inset
 
  and 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1279,7 +1280,7 @@ voffset
 
 \begin_layout Standard
 The default values for 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1291,7 +1292,7 @@ hoffset
 \end_inset
 
  and 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1319,7 +1320,7 @@ the page isn't shifted.
  We have no idea why, or why the sysadmin hasn't fixed such behavior.
  If you're using LyX on a system that you don't personally maintain, and
  your sysadmin is a doofus, 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1331,7 +1332,7 @@ hoffset
 \end_inset
 
  and 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1379,7 +1380,7 @@ Example #2: Labels
 Speaking of labels, suppose you wanted to print out a bunch of address labels.
  There's a rather nice package, available at your nearest CTAN archive,
  for printing sheets of labels: 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1399,7 +1400,7 @@ labels.sty
 
 \begin_layout Standard
 First, make sure you're using the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1458,7 +1459,7 @@ BottomBorder=2mm
 This sets things up for Avery label sheets, stock #5360.
  You're now ready to print labels, but you'll need to insert LaTeX code,
  placing the commands 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1470,7 +1471,7 @@ begin{labels}
 \end_inset
 
  and 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1483,7 +1484,7 @@ end{labels}
 
  around each label text.
  This and other special features of 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1614,7 +1615,7 @@ Well, usually.
 \begin_layout Standard
 Some folks also like to look at the log file directly: It is available from
  
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -1639,7 +1640,7 @@ Log
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1669,7 +1670,7 @@ debugging
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1689,7 +1690,7 @@ Another warning message, this time about fonts which LaTeX couldn't find.
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1727,7 +1728,7 @@ status collapsed
 
 \begin_layout Plain Layout
 You can also enable the `draft' option in 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -1750,7 +1751,7 @@ Settings
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1772,7 +1773,7 @@ Not quite as common as its cousin.
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1784,7 +1785,7 @@ vbox
 \end_inset
 
  and 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1805,7 +1806,7 @@ Warnings about troubles breaking the page.
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1837,7 +1838,7 @@ Xxxx
  isn't installed on this system.
  This usually appears because some package your document needs isn't installed.
  If you didn't touch the preamble or didn't use the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1850,7 +1851,7 @@ usepackage{}
 
  command, then one of the packages LyX tried to load is missing.
  Use 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -1862,7 +1863,7 @@ LaTeX Configuration
 
  to get a list of packages that LyX knows about.
  This file is updated whenever you reconfigure LyX (using 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -1877,7 +1878,7 @@ Reconfigure
 \end_inset
 
 If you did use the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1893,7 +1894,7 @@ usepackage{}
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1912,7 +1913,7 @@ Error messages beginning with this are trying to tell you that you specified
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1965,7 +1966,7 @@ If you get a bunch of error boxes piled up at the very top of the document—and
 \end_inset
 
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1998,7 +1999,7 @@ Okay, so there are no missing packages.
 misuse
 \emph default
  any of them, like trying to manually insert lots of 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2012,7 +2013,7 @@ Blanks
 \end_inset
 
 , 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2022,7 +2023,7 @@ Linebreaks
 \end_inset
 
 , or 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2048,7 +2049,7 @@ Do you have long sections of text where LaTeX cannot find a place to break
  spacing it will add in order to break a line.
  Preferably, you should rework the paragraph to avoid the problem.
  If this isn't an option, you can wrap your text in 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2167,7 +2168,7 @@ Knuth 1984a
 
 ).
  LyX supports two packages that provide this style, 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2177,7 +2178,7 @@ natbib
 \end_inset
 
  and 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2190,7 +2191,7 @@ jurabib
  Both packages have their pros and cons, which cannot be listed in detail.
  If you only want to have simple author-year (or author-numerical) style,
  or if you want to use one of the countless style files for 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2200,7 +2201,7 @@ natbib
 \end_inset
 
 , than the established 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2212,7 +2213,7 @@ natbib
  package is probably your choice.
  If you need special features like short title references, ibidem etc., you
  might consider the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2227,7 +2228,7 @@ jurabib
 \begin_layout Standard
 The handling of both packages in LyX is basically the same.
  Go to 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -2238,7 +2239,7 @@ Settings
 \end_inset
 
  and select under 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -2248,7 +2249,7 @@ Bibliography
 \end_inset
 
  the option 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -2258,7 +2259,7 @@ Natbib
 \end_inset
 
  or 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -2326,7 +2327,7 @@ ftp://ctan.tug.org/tex-archive/macros/latex/contrib/custom-bib/
 \end_inset
 
  for 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2418,7 +2419,7 @@ g.
 \end_inset
 
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2428,7 +2429,7 @@ sources.bib
 \end_inset
 
  and 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2443,7 +2444,7 @@ scientific.bib
 
 \begin_layout Standard
 Go to 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -2454,7 +2455,7 @@ Settings
 \end_inset
 
  and check under 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -2464,7 +2465,7 @@ Bibliography
 \end_inset
 
  the option 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -2477,7 +2478,7 @@ Sectioned bibliography
  Now you can insert multiple BibTeX bibliographies, one for each section
  of your bibliography.
  Returning to our example: Insert the BibTeX bibliography 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2487,7 +2488,7 @@ sources.bib
 \end_inset
 
  and a second one for the database 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2552,7 +2553,7 @@ Scientific works
 .
  The titles for the sections can be added as ordinary sections or subsections.
  Since 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2581,7 +2582,7 @@ g.
 a bibliography for each section or chapter of the document, are not supported
  by BibTeX itself.
  But the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2593,7 +2594,7 @@ bibtopic
  package, which is used for the creation of sectioned bibliographies in
  LyX (see the previous section), provides an easy way to solve this task,
  if you are willing to use some 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -2619,7 +2620,7 @@ status collapsed
 
 \begin_layout Plain Layout
 An alternative approach is to use the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2629,7 +2630,7 @@ chapterbib
 \end_inset
 
  or 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2648,7 +2649,7 @@ bibunits
 
 \begin_layout Standard
 First go to 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -2659,7 +2660,7 @@ Settings
 \end_inset
 
  and under 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -2669,7 +2670,7 @@ Bibliography
 \end_inset
 
  check 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -2682,7 +2683,7 @@ Sectioned bibliography
  In the document, you have to enclose the sections, which shall contain
  their own bibliography (including the BibTeX bibliography itself), between
  
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2694,7 +2695,7 @@ begin{btUnit}
 \end_inset
 
  and 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2708,7 +2709,7 @@ end{btUnit}
  (those commands have to be inserted as TeX code).
  The bibliography will contain all references which have been cited in the
  current 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2724,7 +2725,7 @@ Note:
 \series default
  If you are using this approach, then every citation reference has to be
  inside some 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2735,7 +2736,7 @@ btUnit
 
 .
  Also, the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2788,7 +2789,7 @@ g.
 \end_inset
 
 everything up to and including the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2800,7 +2801,7 @@ begin{document}
 \end_inset
 
  line as well as the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2817,7 +2818,7 @@ end{document}
 
 \begin_layout Standard
 LyX allows you to include files quite easily with 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -2927,7 +2928,7 @@ g.
 \end_inset
 
 in 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2940,7 +2941,7 @@ verbatim
  Normally, spaces in this file are invisible, though two consecutive spaces
  are conserved, unlike LyX's normal treatment of spaces.
  However, setting the 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -3044,7 +3045,7 @@ This section also needs updating.
 Copy the bibliography list with all entries to all subdocuments and transform
  them to a comment.
  This way LyX will find the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3061,7 +3062,7 @@ status collapsed
 As the bibliography list is in a comment, LaTeX won't use use it and the
  references will look like this: [?], instead of like this: [1].
  One solution is to use the LaTeX-package 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3107,7 +3108,7 @@ Fancy Headers and Footers
 
 \begin_layout Standard
 The default page layout is rather plain; for an 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3140,7 +3141,7 @@ User Guide
 
 \begin_layout Standard
 For more information on fancy headers, see the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3192,7 +3193,7 @@ right
 .
  The footer is also divided into these three fields.
  The LaTeX commands to set these fields in the simplest manner are 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3204,7 +3205,7 @@ lhead
 \end_inset
 
 , 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3216,7 +3217,7 @@ chead
 \end_inset
 
 , 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3228,7 +3229,7 @@ rhead
 \end_inset
 
 , 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3360,7 +3361,7 @@ today}
 
 \begin_layout Standard
 The commands 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3372,7 +3373,7 @@ thesection
 \end_inset
 
  and 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3386,7 +3387,7 @@ thepage
  access LaTeX's section and page counters, and so print out the current
  section and page numbers.
  
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3410,7 +3411,7 @@ The thicknesses of the horizontal rules drawn beneath the header and above
  
 \family default
 like 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3424,7 +3425,7 @@ headrulewidth}{0.4pt}
 \end_inset
 
  and 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3443,7 +3444,7 @@ footrulewidth}{0.4pt}
 \begin_layout Standard
 You can switch the header/footer settings on and off for individual pages
  using commands like 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3455,7 +3456,7 @@ thispagestyle{empty}
 \end_inset
 
 , 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3467,7 +3468,7 @@ thispagestyle{plain}
 \end_inset
 
 , and 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3507,7 +3508,7 @@ includegraphics{logo.eps}}}
 \begin_layout Standard
 \noindent
 (you may need to preface this with 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3567,7 +3568,7 @@ How it looks
 
 \begin_layout Standard
 Open the dialog by selecting the 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -3578,7 +3579,7 @@ Settings
 \end_inset
 
  menu item and then select the 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -3980,7 +3981,7 @@ sharp
 
 \begin_layout Itemize
 Use the LaTeX command 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4056,7 +4057,7 @@ star
 
  Specify each individual entry by starting each item with the bullet shape
  enclosed in square brackets and set as 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -4067,7 +4068,7 @@ TeX Code
 
 .
  For example, this item was started with 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4150,7 +4151,7 @@ Converters
 
  These fall into two large groups: there are converters that use LaTeX as
  an intermediate format, such as 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4160,7 +4161,7 @@ htlatex
 \end_inset
 
 , 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4170,7 +4171,7 @@ html2latex
 \end_inset
 
 , and 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4181,7 +4182,7 @@ plastex
 
 , relying upon LyX to produce the LaTeX; and there is a converter that works
  directly on LyX files, 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4201,7 +4202,7 @@ The LaTeX-based converters have the advantage that, in principle, they know
  Such converters do not care, for example, if a certain block of code was
  produced by LyX or was Evil Red Text.
  These converters know about 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4211,7 +4212,7 @@ aux
 \end_inset
 
  files, counters, and references, and can often make use of the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4229,7 +4230,7 @@ bbl
 Embedded Objects
 \emph default
  manual will not export with 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4250,7 +4251,7 @@ htlatex
 
 \begin_layout Standard
 Alex Fernandez's 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4261,7 +4262,7 @@ eLyXer
 
  solves some of these problems.
  In particular, its rendering of math tends to look better than 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4273,7 +4274,7 @@ htlatex
 's, at least in simpler cases, since it renders math using a combination
  of HTML and CSS rather than converting the formulae to images.
  But more complex formula tend to be rendered less well than with 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4284,7 +4285,7 @@ htlatex
 
 , since there is no reasonable way of scaling parentheses in HTML, for example.
  More importantly (as of version 0.39, at least), 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4297,7 +4298,7 @@ eLyXer
  styles, or for tables of contents and figures, and its treatment of cross-refer
 ences is minimal.
  These limitations make 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4329,7 +4330,7 @@ status collapsed
 
 \begin_layout Plain Layout
 The file 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4463,7 +4464,7 @@ MathML is a dialect of XML designed specifically for mathematics on the
 
 If Lyx is unable to render a formula as MathML---for example, if the formula
  uses the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4482,7 +4483,7 @@ HTML
 \end_inset
 
 As mentioned above, 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4497,7 +4498,7 @@ status collapsed
 
 \begin_layout Plain Layout
 LyX has borrowed some of the CSS for its HTML output from 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4521,7 +4522,7 @@ elyxer
 
 If Lyx is unable to render a formula as MathML---for example, if the formula
  uses the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4540,7 +4541,7 @@ Images
 \end_inset
 
 Like 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4580,7 +4581,7 @@ Math Images Scaling
 \end_inset
 
  parameter under 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -4628,7 +4629,7 @@ target "http://www.math.union.edu/~dpvc/jsMath/"
 
 , which uses JavaScript to render LaTeX embedded in HTML documents.
  LyX wraps the LaTeX in either a 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4638,7 +4639,7 @@ span
 \end_inset
 
  (for inline formulas) or 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4648,7 +4649,7 @@ div
 \end_inset
 
  (for displayed formulas) with 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4662,7 +4663,7 @@ class='math'
 
 \begin_layout Standard
 One of these output methods must be selected under 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -4924,7 +4925,7 @@ Starting the LyX Server
 \begin_layout Standard
 The LyX server works through the use of a pair of named pipes.
  These are usually located in 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4938,7 +4939,7 @@ UserDir
 local
 \emph default
  named pipes are special objects located in 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4958,7 +4959,7 @@ pipe
 \end_inset
 
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4976,7 +4977,7 @@ lyxpipe.in
 \end_inset
 
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4991,7 +4992,7 @@ lyxpipe.out
 
 .
  External programs write into 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5001,7 +5002,7 @@ lyxpipe.in
 \end_inset
 
  and read back data from 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5012,7 +5013,7 @@ lyxpipe.out
 
 .
  The stem of the pipe names can be defined in the 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -5023,7 +5024,7 @@ Preferences
 \end_inset
 
  dialog, for example 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5033,7 +5034,7 @@ status collapsed
 \end_inset
 
 , or 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5060,7 +5061,7 @@ must
 
 \begin_layout Standard
 LyX will add the '
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5070,7 +5071,7 @@ status collapsed
 \end_inset
 
 ' and '
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5110,7 +5111,7 @@ stale
 To have several LyX processes with servers at the same time, you have to
  use different configurations, perhaps by using separate user directories,
  each with its own 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5126,7 +5127,7 @@ preferences
 If you are developing a client program, you might find it useful to enable
  debugging information from the LyX server.
  Do this by starting LyX as 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5141,7 +5142,7 @@ lyx -dbg lyxserver
 \begin_layout Standard
 You can find a complete example client written in C in the source distribution
  as 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5155,7 +5156,7 @@ development/lyxserver/server_monitor.c
 
 \begin_layout Standard
 Another useful tool is command-line based client you will find in 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5327,7 +5328,7 @@ notify
 \end_layout
 
 \begin_layout Quote
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5464,7 +5465,7 @@ lyxpipe
 lyxsocket
 \emph default
 ) that LyX creates in its temporary directory (this is the way the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5501,7 +5502,7 @@ Automatical enabling
 
 \change_inserted 2 1274789582
 In most cases LyX will do the work for you by enabling 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -5518,7 +5519,7 @@ Output Sync
  In such a case LyX will automatically insert SyncTeX macro (for PDF) or
  srcltx package (for DVI) respectively.
  This option can be easily reached also on 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5538,7 +5539,7 @@ View/update
 
 \change_inserted 2 1274789534
 Plase note that including 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5552,7 +5553,7 @@ srcltx
 \end_inset
 
  package or 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5592,7 +5593,7 @@ Manual enabling
 \begin_layout Standard
 LaTeX provides several different methods for reverse search.
  Some are built-in in the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5620,7 +5621,7 @@ This method provides the DVI file with the necessary information for reverse
  It is available in LaTeX since quite some time (any somewhat recent LaTeX
  distribution should include it), and it works reliably.
  To enable it, change the 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -5641,7 +5642,7 @@ eX (plain)->DVI
 \end_inset
 
  or 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -5662,7 +5663,7 @@ eX (plain)->DraftDVI
 \end_inset
 
  converter in 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -5674,7 +5675,7 @@ Converters
 \end_inset
 
  to 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5707,7 +5708,7 @@ scrltx
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5723,7 +5724,7 @@ usepackage{pdfsync}
 
 \begin_layout Itemize
  
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5794,7 +5795,7 @@ Built-in reverse search via SyncTeX (DVI and PDF)
 
 \begin_layout Standard
 Recent versions of 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5822,7 +5823,7 @@ scr-specials
 
 \begin_layout Standard
 To enable SyncTeX for DVI output, change the 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -5843,7 +5844,7 @@ eX (plain) -> DVI
 \end_inset
 
  or 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -5864,7 +5865,7 @@ eX (plain) -> DraftDVI
 \end_inset
 
  converter in 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -5876,7 +5877,7 @@ Converters
 \end_inset
 
  to 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5886,7 +5887,7 @@ latex -synctex=1 $$i
 \end_inset
 
 , and for PDF output, change the 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -5907,7 +5908,7 @@ eX (pdflatex) -> PDF (pdflatex)
 \end_inset
 
  or converter to 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5924,7 +5925,7 @@ status collapsed
 
 \begin_layout Plain Layout
 The 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5935,7 +5936,7 @@ status collapsed
 
  option enables gzip compression.
  If your viewer does not support it, you should instead use 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5962,7 +5963,7 @@ Xdvi (all platforms)
 
 \begin_layout Standard
 If you use 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5974,7 +5975,7 @@ xdvi
 , you don't need to do anything else for performing a reverse DVI search,
  as LyX already provides the necessary hooks for automatically using the
  
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5992,7 +5993,7 @@ lyxclient
 However, if for whatever reason you want to use the named pipe instead of
  the socket for communicating with LyX, simply change the DVI viewer in
  
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -6009,7 +6010,7 @@ status collapsed
 
 \begin_layout Plain Layout
 On Mac OSX you have to use 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6024,7 +6025,7 @@ DISPLAY=:0.0 xdvi -editor 'lyxeditor.sh %f %l'
 \end_inset
 
  
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6034,7 +6035,7 @@ xdvi -editor 'lyxeditor.sh %f %l'
 \end_inset
 
 , where 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6069,7 +6070,7 @@ read < "${LYXPIPE}".out || exit
 
 \begin_layout Standard
 where 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6090,7 +6091,7 @@ status collapsed
 \end_inset
 
 XServer pipe path specified in 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -6106,7 +6107,7 @@ status collapsed
 
 \begin_layout Plain Layout
 In the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6116,7 +6117,7 @@ development/tools
 \end_inset
 
  folder of a source distribution you can find a 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6143,7 +6144,7 @@ MacDviX (Mac OSX)
 
 \begin_layout Standard
 At the end of 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6189,7 +6190,7 @@ Skim (Mac OSX)
 
 \begin_layout Standard
 Enter 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6199,7 +6200,7 @@ open -a Skim.app $$i
 \end_inset
 
  to the viewer setting in 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -6212,7 +6213,7 @@ PDF (pdflatex)
 \end_inset
 
 , and then in 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -6247,7 +6248,7 @@ Okular (KDE)
 
 \begin_layout Standard
 Go to 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -6268,7 +6269,7 @@ Custom Text Editor
 \end_inset
 
  and add the command 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6290,7 +6291,7 @@ YAP (Windows)
 
 \begin_layout Standard
 Launch yap, choose its 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -6346,7 +6347,7 @@ Name:
 
  to open a file dialog and navigate to the directory containing the batch
  file 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6357,7 +6358,7 @@ lyxeditor.bat
 
  (see below).
  Select 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6367,7 +6368,7 @@ lyxeditor.bat
 \end_inset
 
  and then specify the program arguments as 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6378,7 +6379,7 @@ status collapsed
 
 .
  The 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6424,7 +6425,7 @@ lyxpipe.out
 
 \begin_layout Standard
 Make sure that the LyXServer pipe path you specified in LyX is 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6442,7 +6443,7 @@ lyxpipe
 \end_inset
 
 , otherwise change the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6464,7 +6465,7 @@ SumatraPDF (Windows)
 
 \begin_layout Standard
 In order to use SumatraPDF for inverse search, enter 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6474,7 +6475,7 @@ SumatraPDF -inverse-search "lyxeditor.bat %f %l"
 \end_inset
 
  in the viewer setting in 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -6487,7 +6488,7 @@ PDF (pdflatex)
 \end_inset
 
 , where 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6511,7 +6512,7 @@ YAP (Cygwin)
 \begin_layout Standard
 First of all, make sure that yap is your default DVI viewer in the Windows
  environment, then launch it, choose its 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -6566,7 +6567,7 @@ Name:
 \end_inset
 
  to open a file dialog and navigate to the directory containing the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6577,7 +6578,7 @@ lyxeditor.exe
 
  program (which is installed by default on Cygwin along with the LyX executable).
  Select 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6587,7 +6588,7 @@ lyxeditor.exe
 \end_inset
 
  and then specify the program arguments as 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6607,7 +6608,7 @@ lyxsocket
 lyxpipe
 \emph default
 , omit the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6629,7 +6630,7 @@ SumatraPDF (Cygwin)
 
 \begin_layout Standard
 In order to use SumatraPDF for inverse search, enter 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6639,7 +6640,7 @@ SumatraPDF.sh
 \end_inset
 
  in the viewer setting in 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -6652,7 +6653,7 @@ PDF (pdflatex)
 \end_inset
 
 , where 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6662,7 +6663,7 @@ SumatraPDF.sh
 \end_inset
 
  is the following script (to be placed in your command PATH, 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6692,7 +6693,7 @@ This wrapper script is needed because SumatraPDF is a native Windows application
  If SumatraPDF.exe is not in your command PATH, use its full posix path in
  the script above.
  The 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6707,7 +6708,7 @@ lyxsocket
 \emph default
 .
  Again, omit the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6754,7 +6755,7 @@ reference "sub:rev-search"
 
 \change_inserted 1 1271454479
 Secondly you need to configure LyX for using your viewers in 
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -8640,7 +8641,7 @@ The layouts themselves contain only the minimum necessary to use the AMS
  They do not, in particular, contain any of the `theorem' environments used
  for setting theorems, lemmas, and the like.
  These are contained, instead, in the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -8653,7 +8654,7 @@ Theorems (AMS)
  classes.
  (It can also be used with other classes and can be removed, if you would
  rather use something else.) Less commonly used environments are in the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -8668,7 +8669,7 @@ Theorems (AMS-Extended)
 \begin_layout Standard
 By default, theorems and the like are numbered consecutively throughout
  the document, but this may be modified by loading the module 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -8678,7 +8679,7 @@ Theorems (Order by Section)
 \end_inset
 
  or, if you are using 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -8688,7 +8689,7 @@ book (AMS)
 \end_inset
 
 , the module 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -8711,7 +8712,7 @@ Theorems (Order by Chapter)
 only
 \emph default
  unnumbered results, the module 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -8730,7 +8731,7 @@ have
 \emph default
  to be used with the AMS classes.
  It is perfectly possible to use the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -8740,7 +8741,7 @@ Theorems (AMS)
 \end_inset
 
  module, and the others mentioned, with other classes, such as 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -8750,7 +8751,7 @@ article
 \end_inset
 
 , 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -8760,7 +8761,7 @@ report
 \end_inset
 
 , 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -8787,7 +8788,7 @@ There is a long list of included environments provided by these layouts.
 \begin_layout Standard
 The following environments—as well as the standard environments, such as
  
-\begin_inset Flex CharStyle:Noun
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -8797,7 +8798,7 @@ section
 \end_inset
 
 , 
-\begin_inset Flex CharStyle:Noun
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -8807,7 +8808,7 @@ bibliography
 \end_inset
 
 , 
-\begin_inset Flex CharStyle:Noun
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -8817,7 +8818,7 @@ title
 \end_inset
 
 , 
-\begin_inset Flex CharStyle:Noun
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -8827,7 +8828,7 @@ author
 \end_inset
 
 , and 
-\begin_inset Flex CharStyle:Noun
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -8837,7 +8838,7 @@ date
 \end_inset
 
 —are provided by 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -8847,7 +8848,7 @@ article (AMS)
 \end_inset
 
  and 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -8909,7 +8910,7 @@ Translator
 
 \begin_layout Standard
 The following environments are provided by both the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -8919,7 +8920,7 @@ Theorems
 \end_inset
 
  and 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -8932,7 +8933,7 @@ Theorems (AMS)
  (numbered) versions.
  These same environments are provided only in the starred versions by the
  
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -9028,7 +9029,7 @@ User's Guide
 
 \begin_layout Standard
 And these environments are provided by 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -17796,7 +17797,7 @@ The
 ChkTeX
 \family default
  package is a program that was written by 
-\begin_inset Flex CharStyle:Noun
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -19513,7 +19514,7 @@ Note that this command will work only with subversion
 All the commands above have one shortcomming - they deal with the current
  document only.
  Once your document contains pictures, includes external 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -19543,7 +19544,7 @@ One need to organize the files structure so that all external files are
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -19572,7 +19573,7 @@ commands:
 \end_inset
 
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -19586,7 +19587,7 @@ svn diff $path
 \end_inset
 
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -19600,7 +19601,7 @@ svn update --accept mine-full $path
 
 \begin_layout Standard
 where 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -19666,7 +19667,7 @@ reference "subsec:Automatical-Locking-Property"
 \end_inset
 
 ) based on 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -19841,7 +19842,7 @@ LyX supports directly:
 \begin_deeper
 \begin_layout Itemize
 tree revision information (
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -19852,7 +19853,7 @@ vcs-tree-revision
 
 ).
  The result is the output of the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20001,7 +20002,7 @@ mixed revision, modified, switched working copy
 \begin_layout Itemize
 file revision information.
  The result comes from parsing the output of 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20029,7 +20030,7 @@ file.lyx
 \begin_deeper
 \begin_layout Itemize
 version number of the last commit (
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20043,7 +20044,7 @@ vcs-revision
 
 \begin_layout Itemize
 author of the last commit (
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20057,7 +20058,7 @@ vcs-author
 
 \begin_layout Itemize
 date of the last commit (
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20071,7 +20072,7 @@ vcs-date
 
 \begin_layout Itemize
 time of the last commit (
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20087,7 +20088,7 @@ vcs-time
 \begin_layout Standard
 You can obtain this info via InsetInfo (e.g.
  
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20100,7 +20101,7 @@ info-insert buffer vcs-date
  The information will be available only when you have the file stored under
  svn managment (i.e.
  the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20388,7 +20389,7 @@ Compared to linux setting svn client to communicate over ssh under Windows
 Get svn client for windows, as described in previous sections.
  When it is fresh install run some svn command (e.g.
  
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20432,7 +20433,7 @@ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 \begin_deeper
 \begin_layout Enumerate
 Generate keys by 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20450,7 +20451,7 @@ e the key from the “
 Public key for pasting into OpenSSH authorized_keys file
 \emph default
 :” edit field into the server's 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20460,7 +20461,7 @@ status collapsed
 \end_inset
 
 / 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20474,7 +20475,7 @@ authorized_keys2
 
 \begin_layout Enumerate
 Get the Putty's 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20490,7 +20491,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Exact path depends on Windows version, usually somewhere around 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20510,7 +20511,7 @@ config
 \end_inset
 
  / 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20530,7 +20531,7 @@ Subversion
 
 , section [tunnels], setup ssh command, e.g.
  
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20560,7 +20561,7 @@ It will usually take a lot of time to get exact command right and it depends
 \begin_layout Enumerate
 Checkout the SVN archive, e.g.
  
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20602,7 +20603,7 @@ http://svnbook.red-bean.com/en/1.4/svn.advanced.props.file-portability.html
 \end_inset
 
  how to deal with CR/LF problems when switching .lyx files to the 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20617,7 +20618,7 @@ status collapsed
 
 \begin_layout Plain Layout
 For the lazy guys: 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20650,7 +20651,7 @@ As an example you can see how two TortoiseSVN commands could be integrated
 
 \begin_layout Description
 Commit: 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20664,7 +20665,7 @@ vc-command DR "." "TortoiseProc /command:commit /path:$$p"
 
 \begin_layout Description
 Revert: 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20683,7 +20684,7 @@ Version control and Document comparison
 \begin_layout Standard
 One of the typical uses of version control is to inspect the changes between
  revisions, usually by creating 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20697,7 +20698,7 @@ diff
  case of LyX files, which have more complicated structure.
  Hence we provide binding to the Document comparison feature.
  They are two ways of calling this feature - either by direct call of 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -20708,7 +20709,7 @@ VC_COMPARE
 
  LyX function (for details see LyX functions manual) or by icon/menu item
  
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
@@ -20721,7 +20722,7 @@ Compare with older revision...
  One can either compare two chosen revisions of the document or he can simply
  compare the current version of edited text with older revisions (where
  '
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
