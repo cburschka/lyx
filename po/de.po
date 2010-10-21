@@ -97,7 +97,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-10-17 10:50+0200\n"
-"PO-Revision-Date: 2010-10-17 11:08+0200\n"
+"PO-Revision-Date: 2010-10-21 16:13+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -2884,7 +2884,7 @@ msgstr "Verwende &windowskonforme Pfade in LaTeX-Dateien"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:197
 msgid "Command and options for nomencl (usually makeindex)"
-msgstr "Befehl und Optionen für Nomenklaturen (üblicherweise makeindex)"
+msgstr "Befehl und Optionen für Nomenklaturen (üblicherweise \"makeindex\")"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:204
 msgid "Index command and options (makeindex, xindy)"
@@ -3515,7 +3515,7 @@ msgstr "&Ersetzen"
 
 #: src/frontends/qt4/ui/SearchUi.ui:193
 msgid "Replace &All"
-msgstr "&Alles ersetzen"
+msgstr "&Alle ersetzen"
 
 #: src/frontends/qt4/ui/SearchUi.ui:200
 msgid "Search &backwards"
@@ -4364,7 +4364,7 @@ msgstr "Literaturverzeichnis"
 #: lib/layouts/stdstruct.inc:54 lib/layouts/svjour.inc:297
 #: src/output_plaintext.cpp:145
 msgid "References"
-msgstr "Referenzen"
+msgstr "Literaturverzeichnis"
 
 #: lib/layouts/IEEEtran.layout:198
 msgid "Biography"
@@ -8177,7 +8177,7 @@ msgstr "Element: Volume"
 
 #: lib/layouts/agu_stdclass.inc:148
 msgid "Volume"
-msgstr "Volume"
+msgstr "Band"
 
 #: lib/layouts/agu_stdclass.inc:157
 msgid "Element:Day"
@@ -11755,31 +11755,31 @@ msgstr "Das letzte optionale Argument in ein nicht-optionales ändern"
 
 #: lib/ui/stdmenus.inc:248
 msgid "Math Normal Font|N"
-msgstr "Mathe Normale Schrift|N"
+msgstr "Normale Mathe-Schrift|N"
 
 #: lib/ui/stdmenus.inc:250
 msgid "Math Calligraphic Family|C"
-msgstr "Mathe Familie Kalligrafisch|K"
+msgstr "Kalligrafische Mathe-Schrift |K"
 
 #: lib/ui/stdmenus.inc:251
 msgid "Math Fraktur Family|F"
-msgstr "Mathe Familie Fraktur|u"
+msgstr "Mathe-Schrift Fraktur|u"
 
 #: lib/ui/stdmenus.inc:252
 msgid "Math Roman Family|R"
-msgstr "Mathe Familie Serifenschrift|r"
+msgstr "Mathe-Serifenschrift|r"
 
 #: lib/ui/stdmenus.inc:253
 msgid "Math Sans Serif Family|S"
-msgstr "Mathe Familie Serifenlos|S"
+msgstr "Serifenlose Mathe-Schrift|S"
 
 #: lib/ui/stdmenus.inc:255
 msgid "Math Bold Series|B"
-msgstr "Mathe Strichstärke Fett|F"
+msgstr "Mathe-Strichstärke Fett|F"
 
 #: lib/ui/stdmenus.inc:257
 msgid "Text Normal Font|T"
-msgstr "Text Strichstärke Normal|T"
+msgstr "Text-Strichstärke Normal|T"
 
 #: lib/ui/stdmenus.inc:273
 msgid "Octave|O"
@@ -21208,7 +21208,7 @@ msgstr "Querverweis+Text: "
 
 #: src/insets/InsetRef.cpp:184 src/mathed/InsetMathRef.cpp:192
 msgid "PrettyRef"
-msgstr "PrettyRef"
+msgstr "Prettyref"
 
 #: src/insets/InsetRef.cpp:184 src/mathed/InsetMathRef.cpp:192
 msgid "FormatRef: "
