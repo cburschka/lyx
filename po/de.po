@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-10-20 02:33+0200\n"
-"PO-Revision-Date: 2010-10-21 12:51+0200\n"
+"PO-Revision-Date: 2010-10-21 16:19+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1211,20 +1211,19 @@ msgstr "A&ltem Dokument"
 
 #: src/frontends/qt4/ui/CompareUi.ui:173
 msgid "Turns on the change tracking and showing changes in LaTeX output for the resulting document"
-msgstr ""
+msgstr "Die Unterschiede werden in der Ausgabe des Dokuments durch Änderungsmarkierungen angezeigt"
 
 #: src/frontends/qt4/ui/CompareUi.ui:176
 msgid "Enable &change tracking features in the output"
-msgstr ""
+msgstr "Änderungs&verfolgung in der Ausgabe"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:22
 msgid "Compare Revisions"
 msgstr "Vergleiche Überarbeitungen"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:30
-#, fuzzy
 msgid "&Revisions back"
-msgstr "Überarbeitung"
+msgstr "&Zurückliegende Revisionen"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:83
 msgid "&Between revisions"
