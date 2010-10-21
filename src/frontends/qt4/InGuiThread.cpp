@@ -22,17 +22,19 @@ namespace frontend {
 
 IntoGuiThreadMover::IntoGuiThreadMover()
 {
-	moveToThread(QApplication::instance()->thread());
-	connect(this, SIGNAL(triggerCall()), this, SLOT(doFunctionCall()),
-	        Qt::QueuedConnection);
 }
 
 
 void IntoGuiThreadMover::callInGuiThread()
 {
-	if (QThread::currentThread() == QApplication::instance()->thread()) {
+	QThread* gui_thread = QApplication::instance()->thread();
+	if (QThread::currentThread() == gui_thread) {
 		synchronousFunctionCall();
 	} else {
+		moveToThread(gui_thread);
+		connect(this, SIGNAL(triggerCall()), this, SLOT(doFunctionCall()),
+		        Qt::QueuedConnection);
+		// TODO try with condition, it's maybe cheaper
 		QEventLoop loop;
 		connect(this, SIGNAL(called()), &loop, SLOT(quit()));
 		Q_EMIT triggerCall();
