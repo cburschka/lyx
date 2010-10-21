@@ -96,8 +96,8 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-10-20 02:33+0200\n"
-"PO-Revision-Date: 2010-10-20 02:42+0100\n"
-"Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
+"PO-Revision-Date: 2010-10-21 12:51+0200\n"
+"Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2241,7 +2241,7 @@ msgstr "Datum auf der Titelseite nicht anzeigen"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:206
 msgid "Use refstyle (not prettyref) for cross-references"
-msgstr "Verwende refstyle (nicht prettyref) für Querverweise"
+msgstr "Verwende Refstyle (nicht Prettyref) für Querverweise"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:25
 msgid "Encoding"
@@ -2281,7 +2281,7 @@ msgstr "Dicke:"
 
 #: src/frontends/qt4/ui/LineUi.ui:102
 msgid "Value of the line thickness."
-msgstr "Wert der Linienbreite."
+msgstr "Wert der Liniendicke."
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13
 #: src/insets/InsetCaption.cpp:333
@@ -3463,11 +3463,11 @@ msgstr "&Zweite:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:120
 msgid "Mac OS X specific setting for use with emacs bindings. Takes effect next time LyX is launched."
-msgstr ""
+msgstr "Mac-OSX-spezifische Einstellung für die Emacs-Tastaturbelegung. Wird beim nächsten LyX-Neustart wirksam."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:123
 msgid "Do not swap Apple and Control keys"
-msgstr ""
+msgstr "Vertausche Apfel- und Control-Taste nicht"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:136
 msgid "Mouse"
@@ -5928,7 +5928,7 @@ msgstr "Anhang"
 #: lib/layouts/svjour.inc:301
 #: src/output_plaintext.cpp:145
 msgid "References"
-msgstr "Referenzen"
+msgstr "Literaturverzeichnis"
 
 #: lib/layouts/aastex.layout:128
 #: lib/layouts/aastex.layout:410
@@ -6182,19 +6182,19 @@ msgstr "Jahr der Publikation:"
 
 #: lib/layouts/AEA.layout:79
 msgid "Publication Volume"
-msgstr "Publikations-Volume"
+msgstr "Band der Publikation"
 
 #: lib/layouts/AEA.layout:82
 msgid "Publication Volume:"
-msgstr "Publikations-Volume:"
+msgstr "Band der Publikation:"
 
 #: lib/layouts/AEA.layout:85
 msgid "Publication Issue"
-msgstr "Publikations-Issue"
+msgstr "Ausgabe"
 
 #: lib/layouts/AEA.layout:88
 msgid "Publication Issue:"
-msgstr "Publikations-Issue:"
+msgstr "Ausgabe:"
 
 #: lib/layouts/AEA.layout:97
 #: lib/layouts/egs.layout:548
@@ -7257,9 +7257,8 @@ msgid "Note:"
 msgstr "Notiz:"
 
 #: lib/layouts/beamer.layout:1161
-#, fuzzy
 msgid "Flex:Alert"
-msgstr "Alarm"
+msgstr "Flex:Alarm"
 
 #: lib/layouts/beamer.layout:1161
 #: lib/layouts/beamer.layout:1163
@@ -7292,11 +7291,11 @@ msgstr "Artikel"
 
 #: lib/layouts/beamer.layout:1193
 msgid "Flex:PresentationMode"
-msgstr "Flex:PräsentationsModus"
+msgstr "Flex:Präsentationsmodus"
 
 #: lib/layouts/beamer.layout:1193
 msgid "PresentationMode"
-msgstr "PräsentationsModus"
+msgstr "Präsentationsmodus"
 
 #: lib/layouts/beamer.layout:1198
 msgid "Presentation"
@@ -7511,7 +7510,7 @@ msgstr "Benutzerdefinierte Kopf/Fußzeilen"
 
 #: lib/layouts/customHeadersFooters.module:7
 msgid "Adds environments to define header and footer lines NOTE: To use this mudule you must set the Headings style in the menu Document Settings -> Page Layout to fancy!"
-msgstr ""
+msgstr "Fügt Umgebungen zur Definition von Kopf- und Fußzeilen hinzu. WICHTIG: Um dieses Modul verwenden zu können, müssen Sie in Dokument > Einstellungen > Seitenlayout  den Seiten-Stil \"ausgefallen\" wählen."
 
 #: lib/layouts/customHeadersFooters.module:10
 #: lib/layouts/foils.layout:185
@@ -7999,24 +7998,20 @@ msgid "Verteiler"
 msgstr "Verteiler"
 
 #: lib/layouts/ectaart.layout:21
-#, fuzzy
 msgid "RunTitle"
-msgstr "Kolumnentitel"
+msgstr "Kopfzeile: Titel"
 
 #: lib/layouts/ectaart.layout:28
-#, fuzzy
 msgid "Running Title:"
-msgstr "Kolumnentitel:"
+msgstr "Titel in Kopfzeile:"
 
 #: lib/layouts/ectaart.layout:35
-#, fuzzy
 msgid "RunAuthor"
-msgstr "Kolumne Autor"
+msgstr "Kopfzeile: Autor"
 
 #: lib/layouts/ectaart.layout:39
-#, fuzzy
 msgid "Running Author:"
-msgstr "Kolumne Autor:"
+msgstr "Autor in Kopfzeile:"
 
 #: lib/layouts/ectaart.layout:77
 #: lib/layouts/latex8.layout:72
@@ -8025,21 +8020,19 @@ msgstr "E-Mail:"
 
 #: lib/layouts/ectaart.layout:93
 msgid "Web Address"
-msgstr "Webadresse"
+msgstr "Web-Adresse"
 
 #: lib/layouts/ectaart.layout:96
 msgid "Web address:"
-msgstr "Webadresse:"
+msgstr "Web-Adresse:"
 
 #: lib/layouts/ectaart.layout:109
-#, fuzzy
 msgid "Authors Block"
-msgstr "Autoren"
+msgstr "Autorenblock"
 
 #: lib/layouts/ectaart.layout:113
-#, fuzzy
 msgid "Authors Block:"
-msgstr "Alarm-Block:"
+msgstr "Autorenblock:"
 
 #: lib/layouts/ectaart.layout:116
 #: lib/layouts/ectaart.layout:198
@@ -8066,34 +8059,31 @@ msgstr "Schlagwörter:"
 
 #: lib/layouts/ectaart.layout:126
 msgid "Thanks Text"
-msgstr "Danksagungstext"
+msgstr "Danksagung"
 
 #: lib/layouts/ectaart.layout:133
 msgid "Thanks \\theThanks:"
-msgstr "Danke \\theThanks:"
+msgstr "Danksagung \\theThanks:"
 
 #: lib/layouts/ectaart.layout:139
 msgid "Emphasize"
-msgstr "Hervorgehoben"
+msgstr "Hervorhebung"
 
 #: lib/layouts/ectaart.layout:152
-#, fuzzy
 msgid "Thanks Reference"
-msgstr "Referenz"
+msgstr "Danksagungsverweis"
 
 #: lib/layouts/ectaart.layout:158
-#, fuzzy
 msgid "Thanks Ref"
-msgstr "Dank"
+msgstr "Danksagungsverweis"
 
 #: lib/layouts/ectaart.layout:164
-#, fuzzy
 msgid "Internet Address Reference"
-msgstr "Querverweis einfügen"
+msgstr "Verweis auf Internetadresse"
 
 #: lib/layouts/ectaart.layout:167
 msgid "Internet Addess Ref"
-msgstr ""
+msgstr "Verweis auf Internetadresse"
 
 #: lib/layouts/ectaart.layout:170
 #: lib/layouts/ectaart.layout:173
@@ -8123,12 +8113,11 @@ msgstr "Nachname"
 
 #: lib/layouts/ectaart.layout:204
 msgid "By Same Author (bib)"
-msgstr ""
+msgstr "Vom selben Autor (Lit.)"
 
 #: lib/layouts/ectaart.layout:207
-#, fuzzy
 msgid "bysame"
-msgstr "Name"
+msgstr "Vom selben Autor"
 
 #: lib/layouts/egs.layout:145
 #: lib/layouts/stdlists.inc:102
@@ -9289,7 +9278,7 @@ msgstr "Kolumne Autor:"
 #: lib/layouts/lettre.layout:39
 #: lib/layouts/lettre.layout:314
 msgid "NoTelephone"
-msgstr "KeinTelefon"
+msgstr "Kein Telefon"
 
 #: lib/layouts/lettre.layout:41
 #: lib/layouts/lettre.layout:340
@@ -9302,19 +9291,19 @@ msgstr "Fax"
 #: lib/layouts/lettre.layout:370
 #: lib/layouts/lettre.layout:378
 msgid "NoFax"
-msgstr "KeinFax"
+msgstr "Kein Fax"
 
 #: lib/layouts/lettre.layout:49
 #: lib/layouts/lettre.layout:185
 #: lib/layouts/lettre.layout:192
 msgid "NoPlace"
-msgstr "KeinOrt"
+msgstr "Kein Ort"
 
 #: lib/layouts/lettre.layout:53
 #: lib/layouts/lettre.layout:234
 #: lib/layouts/lettre.layout:242
 msgid "NoDate"
-msgstr "KeinDatum"
+msgstr "Kein Datum"
 
 #: lib/layouts/lettre.layout:73
 #: lib/layouts/lettre.layout:647
@@ -9324,12 +9313,12 @@ msgstr "Postscriptum"
 #: lib/layouts/lettre.layout:75
 #: lib/layouts/lettre.layout:513
 msgid "EndOfMessage"
-msgstr "EndeDerNachricht"
+msgstr "Ende der Nachricht"
 
 #: lib/layouts/lettre.layout:77
 #: lib/layouts/lettre.layout:533
 msgid "EndOfFile"
-msgstr "EndeDerDatei"
+msgstr "Ende des Dokuments"
 
 #: lib/layouts/lettre.layout:137
 #: lib/layouts/lettre.layout:156
@@ -9342,9 +9331,8 @@ msgstr "EndeDerDatei"
 #: lib/layouts/lettre.layout:341
 #: lib/layouts/lettre.layout:371
 #: lib/layouts/lettre.layout:397
-#, fuzzy
 msgid "Headings"
-msgstr "mit Überschriften"
+msgstr "Briefkopf"
 
 #: lib/layouts/lettre.layout:167
 msgid "City:"
@@ -9356,11 +9344,11 @@ msgstr "Büro:"
 
 #: lib/layouts/lettre.layout:290
 msgid "Tel:"
-msgstr "Tel:"
+msgstr "Telefon:"
 
 #: lib/layouts/lettre.layout:322
 msgid "NoTel"
-msgstr "KeinTel"
+msgstr "Kein Telefon"
 
 #: lib/layouts/lettre.layout:353
 msgid "Fax:"
@@ -9370,15 +9358,15 @@ msgstr "Fax:"
 #: lib/layouts/lettre.layout:605
 #: lib/layouts/lettre.layout:648
 msgid "Closings"
-msgstr "Grußformeln"
+msgstr "Schlussteil"
 
 #: lib/layouts/lettre.layout:523
 msgid "EndOfMessage."
-msgstr "EndeDerNachricht."
+msgstr "Ende der Nachricht."
 
 #: lib/layouts/lettre.layout:535
 msgid "EndOfFile."
-msgstr "EndeDerDatei."
+msgstr "Ende des Dokuments."
 
 #: lib/layouts/lettre.layout:655
 msgid "P.S.:"
@@ -10226,12 +10214,12 @@ msgstr "Zitat-Nummer"
 
 #: lib/layouts/agu_stdclass.inc:146
 msgid "Flex:Volume"
-msgstr "Flex:Volume"
+msgstr "Flex:Band"
 
 #: lib/layouts/agu_stdclass.inc:146
 #: lib/layouts/agu_stdclass.inc:148
 msgid "Volume"
-msgstr "Volume"
+msgstr "Band"
 
 #: lib/layouts/agu_stdclass.inc:157
 msgid "Flex:Day"
@@ -10494,7 +10482,7 @@ msgstr "CODEN"
 
 #: lib/layouts/agu_stdtitle.inc:344
 msgid "Flex:SS-Code"
-msgstr "Flex:Element:SS-Code"
+msgstr "Flex:SS-Code"
 
 #: lib/layouts/agu_stdtitle.inc:344
 #: lib/layouts/agu_stdtitle.inc:346
@@ -11255,7 +11243,9 @@ msgstr "Braille"
 
 #: lib/layouts/braille.module:6
 msgid "Defines an environment to typeset Braille. For more details see Braille.lyx in examples."
-msgstr "Definiert eine Umgebung, um Braille zu schreiben. Mehr Details dazu sind in der Beispieldatei Braille.lyx zu finden."
+msgstr ""
+"Definiert eine Umgebung, um Braille zu schreiben. Mehr Details dazu sind in "
+"der Beispieldatei Braille.lyx zu finden."
 
 #: lib/layouts/braille.module:22
 msgid "Braille (default)"
@@ -11316,14 +11306,12 @@ msgid "Endnote"
 msgstr "Endnote"
 
 #: lib/layouts/endnotes.module:6
-#, fuzzy
 msgid "Adds an endnote inset, in addition to footnotes. You will need to add \\theendnotes in TeX-code where you want the endnotes to appear."
 msgstr "Stellt einen Endnotenbefehl zusätzlich zum Fußnotenbefehl bereit. Sie müssen \\theendnotes im TeX-Modus dort einfügen, wo die Endnoten erscheinen sollen."
 
 #: lib/layouts/endnotes.module:9
-#, fuzzy
 msgid "Flex:Endnote"
-msgstr "Endnote"
+msgstr "Flex:Endnote"
 
 #: lib/layouts/endnotes.module:18
 msgid "endnote"
@@ -11350,7 +11338,6 @@ msgid "Foot to End"
 msgstr "Fußnote als Endnote"
 
 #: lib/layouts/foottoend.module:6
-#, fuzzy
 msgid "Sets all footnotes as endnotes. You will need to add \\theendnotes in TeX-code where you want the endnotes to appear."
 msgstr "Wandelt alle Fußnoten in Endnoten um. Sie müssen \\theendnotes im TeX-Modus dort einfügen, wo die Endnoten erscheinen sollen."
 
@@ -11387,11 +11374,11 @@ msgstr "Initiale"
 
 #: lib/layouts/lilypond.module:2
 msgid "LilyPond Book"
-msgstr "LilyPond Buch"
+msgstr "LilyPond-Buch"
 
 #: lib/layouts/lilypond.module:6
 msgid "This module adds an inset to enter LilyPond code directly into LyX. It will be processed in the output. See the lilypond.lyx example file."
-msgstr ""
+msgstr "Dieses Modul stellt eine Umgebung bereit, mit der man LilyPond-Code direkt in LyX eingeben kann. Der Code wird bei der Ausgabe umgewandelt. Beispiele zeigt die lilypond.lyx-Beispieldatei."
 
 #: lib/layouts/lilypond.module:12
 #: lib/layouts/lilypond.module:13
@@ -11463,11 +11450,11 @@ msgstr "Ausdr."
 
 #: lib/layouts/linguistics.module:135
 msgid "Flex:Concepts"
-msgstr "Flex:Konzepte"
+msgstr "Flex:Konzept"
 
 #: lib/layouts/linguistics.module:135
 msgid "Concepts"
-msgstr "Konzepte"
+msgstr "Konzept"
 
 #: lib/layouts/linguistics.module:137
 msgid "concept"
@@ -11523,9 +11510,8 @@ msgid "Flex:Strong"
 msgstr "Flex:Stark"
 
 #: lib/layouts/logicalmkup.module:44
-#, fuzzy
 msgid "Strong"
-msgstr "stark"
+msgstr "Stark"
 
 #: lib/layouts/logicalmkup.module:46
 msgid "strong"
@@ -14765,7 +14751,7 @@ msgstr "Mehrfachspalten-Handbuch|M"
 
 #: lib/ui/stdmenus.inc:574
 msgid "Feynman-diagram Manual|F"
-msgstr "Feynman-Diagramm Handbuch|F"
+msgstr "Feynman-Diagramm-Handbuch|F"
 
 #: lib/ui/stdtoolbars.inc:69
 msgid "New document"
@@ -17803,7 +17789,7 @@ msgstr "LilyPond-Musik"
 
 #: lib/configure.py:508
 msgid "LilyPond book (LaTeX)"
-msgstr "LilyPond Buch (LaTeX)"
+msgstr "LilyPond-Buch (LaTeX)"
 
 #: lib/configure.py:509
 msgid "LaTeX (plain)"
@@ -17993,7 +17979,7 @@ msgstr "LyX-Vorschau"
 
 #: lib/configure.py:576
 msgid "LyX Preview (LilyPond book)"
-msgstr "LyX-Vorschau (LilyPond Buch)"
+msgstr "LyX-Vorschau (LilyPond-Buch)"
 
 #: lib/configure.py:577
 msgid "LyX Preview (pLaTeX)"
@@ -19898,7 +19884,7 @@ msgstr "Normalerweise kann nur bis zum unteren Rand des Dokuments gescrollt werd
 
 #: src/LyXRC.cpp:3069
 msgid "Make Apple key act as Meta and Control key as Ctrl."
-msgstr ""
+msgstr "Mit dieser Einstellung verhält sich die Apfeltaste wie die Meta-Taste und die Control-Taste wie Ctlr."
 
 #: src/LyXRC.cpp:3073
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
@@ -23386,14 +23372,14 @@ msgid "Opening child document %1$s..."
 msgstr "Öffne Unterdokument %1$s..."
 
 #: src/frontends/qt4/GuiView.cpp:2827
-#, fuzzy, c-format
+#, c-format
 msgid "Successful compilation to format: %1$s"
 msgstr "Export in das Format %1$s erfolgreich"
 
 #: src/frontends/qt4/GuiView.cpp:2828
-#, fuzzy, c-format
+#, c-format
 msgid "Error compiling format: %1$s"
-msgstr "Fehler bei der Vorschau des Formats %1$s"
+msgstr "Fehler bei der Umwandlung des Formats %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2841
 #, c-format
@@ -23741,7 +23727,7 @@ msgstr "Problematischer Dateiname für DVI"
 #: src/insets/InsetGraphics.cpp:603
 #: src/insets/InsetInclude.cpp:519
 msgid "The following filename can cause troubles when running the exported file through LaTeX and opening the resulting DVI: "
-msgstr "Der folgende Dateiname könnte Probleme bereiten, wenn LaTeX mit der exportierten Datei ausgeführt wird und das erzeugte DVI geöffnet wird: "
+msgstr "Der folgende Dateiname könnte Probleme bereiten, wenn LaTeX mit der exportierten Datei ausgeführt und die erzeugte DVI-Datei geöffnet wird: "
 
 #: src/insets/Inset.cpp:88
 msgid "Bibliography Entry"
@@ -24820,7 +24806,7 @@ msgstr "Standard"
 
 #: src/mathed/InsetMathRef.cpp:229
 msgid "PrettyRef"
-msgstr "PrettyRef"
+msgstr "Prettyref"
 
 #: src/mathed/InsetMathRef.cpp:229
 msgid "FormatRef: "
