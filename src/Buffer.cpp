@@ -3987,10 +3987,8 @@ void Buffer::updateBuffer(ParIterator & parit, UpdateType utype) const
 {
 	LASSERT(parit.pit() == 0, /**/);
 
-	// set the position of the text in the buffer to be able
-	// to resolve macros in it. This has nothing to do with
-	// labels, but by putting it here we avoid implementing
-	// a whole bunch of traversal routines just for this call.
+	// Set the position of the text in the buffer to be able
+	// to resolve macros in it.
 	parit.text()->setMacrocontextPosition(parit);
 
 	depth_type maxdepth = 0;
