@@ -365,7 +365,6 @@ bool InsetCommandParams::writeEmptyOptional(ParamInfo::const_iterator ci) const
 }
 
 
-
 docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 					     docstring const & command,
 					     ParamInfo::ParamHandling handling) const
@@ -425,14 +424,14 @@ docstring InsetCommandParams::getCommand(OutputParams const & runparams) const
 			break;
 
 		case ParamInfo::LATEX_REQUIRED: {
-			docstring const & data =
+			docstring const data =
 				prepareCommand(runparams, (*this)[name], it->handling());
 			s += '{' + data + '}';
 			noparam = false;
 			break;
 		}
 		case ParamInfo::LATEX_OPTIONAL: {
-			docstring const & data =
+			docstring const data =
 				prepareCommand(runparams, (*this)[name], it->handling());
 			if (!data.empty()) {
 				s += '[' + data + ']';

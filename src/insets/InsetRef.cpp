@@ -83,12 +83,19 @@ int InsetRef::latex(odocstream & os, OutputParams const & runparams) const
 	} 
 	
 	// so we're doing a formatted reference.
+	// the command may need to be escaped.
+	InsetCommandParams const & p = params();
+	ParamInfo const & pi = p.info();
+	ParamInfo::ParamData const & pd = pi["reference"];
+	docstring const data = 
+			p.prepareCommand(runparams, ref, pd.handling());
+
 	if  (!buffer().params().use_refstyle) {
-		os << "\\prettyref{" << ref << '}';
+		os << "\\prettyref{" << data << '}';
 		return 0;
 	}
 	
-	os << "\\lyxref{" << ref << '}';
+	os << "\\lyxref{" << data << '}';
 	return 0;
 }
 

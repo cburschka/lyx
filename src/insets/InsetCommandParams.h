@@ -140,16 +140,16 @@ public:
 	void clear();
 	///
 	static bool isCompatibleCommand(InsetCode code, std::string const & s);
-
+	/// 
+	ParamInfo const & info() const { return info_; };
+	///
+	docstring prepareCommand(OutputParams const & runparams,
+	        docstring const & command, ParamInfo::ParamHandling handling) const;
 private:
 	std::string getDefaultCmd(InsetCode code);
 	/// checks whether we need to write an empty optional parameter
 	/// \return true if a non-empty optional parameter follows ci
 	bool writeEmptyOptional(ParamInfo::const_iterator ci) const;
-	///
-	docstring prepareCommand(OutputParams const & runparams,
-					     docstring const & command,
-					     ParamInfo::ParamHandling handling) const;
 
 	/// Description of all command properties
 	ParamInfo info_;
