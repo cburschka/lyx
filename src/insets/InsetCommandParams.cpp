@@ -370,7 +370,8 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 					     ParamInfo::ParamHandling handling) const
 {
 	docstring result;
-	if (handling == ParamInfo::HANDLING_LATEXIFY) {
+	switch (handling) {
+	case ParamInfo::HANDLING_LATEXIFY: {
 		docstring uncodable;
 		for (size_t n = 0; n < command.size(); ++n) {
 			try {
@@ -402,10 +403,15 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 					  "representable in the current encoding and therefore have been omitted:\n%2$s."),
 					from_utf8(insetType()), uncodable));
 		}
-	} else if (handling == ParamInfo::HANDLING_ESCAPE)
+		break;
+	} 
+	case ParamInfo::HANDLING_ESCAPE:
 		result = escape(command);
-	else
+		break;
+	case ParamInfo::HANDLING_NONE:
 		result = command;
+		break;
+	} // switch
 
 	return result;
 }
