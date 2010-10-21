@@ -3135,21 +3135,21 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		case LFUN_DIALOG_UPDATE: {
 			string const name = to_utf8(cmd.argument());
-			if (currentBufferView()) {
+			if (name == "prefs" || name == "document")
+				updateDialog(name, string());
+			else if (name == "paragraph")
+				lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
+			else if (currentBufferView()) {
 				Inset * inset = currentBufferView()->editedInset(name);
 				// Can only update a dialog connected to an existing inset
-				if (!inset)
-					break;
-				// FIXME: get rid of this indirection; GuiView ask the inset
-				// if he is kind enough to update itself...
-				FuncRequest fr(LFUN_INSET_DIALOG_UPDATE, cmd.argument());
-				//FIXME: pass DispatchResult here?
-				inset->dispatch(currentBufferView()->cursor(), fr);
-			} else if (name == "paragraph") {
-				lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
-			} else if (name == "prefs" || name == "document") {
-				updateDialog(name, string());
-			}
+				if (inset) {
+					// FIXME: get rid of this indirection; GuiView ask the inset
+					// if he is kind enough to update itself...
+					FuncRequest fr(LFUN_INSET_DIALOG_UPDATE, cmd.argument());
+					//FIXME: pass DispatchResult here?
+					inset->dispatch(currentBufferView()->cursor(), fr);
+				}
+			} 
 			break;
 		}
 
