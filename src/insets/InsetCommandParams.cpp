@@ -375,7 +375,15 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 		docstring uncodable;
 		for (size_t n = 0; n < command.size(); ++n) {
 			try {
-				result += runparams.encoding->latexChar(command[n]);
+				char_type const c = command[n];
+				docstring const latex = runparams.encoding->latexChar(c);
+				result += latex;
+				if (latex.length() > 1 && latex[latex.length() - 1] != '}') {
+					// Prevent eating of a following
+					// space or command corruption by
+					// following characters
+					result +=  "{}";
+				}
 			} catch (EncodingException & /* e */) {
 				LYXERR0("Uncodable character in command inset!");
 				if (runparams.dryrun) {
