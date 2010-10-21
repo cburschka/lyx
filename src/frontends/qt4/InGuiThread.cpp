@@ -15,6 +15,8 @@
 #include <QThread>
 #include <QEventLoop>
 #include <QApplication>
+#include <QMutexLocker>
+
 
 namespace lyx {
 namespace frontend {
@@ -32,13 +34,11 @@ void IntoGuiThreadMover::callInGuiThread()
 		synchronousFunctionCall();
 	} else {
 		moveToThread(gui_thread);
-		connect(this, SIGNAL(triggerCall()), this, SLOT(doFunctionCall()),
-		        Qt::QueuedConnection);
-		// TODO try with condition, it's maybe cheaper
-		QEventLoop loop;
-		connect(this, SIGNAL(called()), &loop, SLOT(quit()));
-		Q_EMIT triggerCall();
-		loop.exec();
+		connect(this, SIGNAL(triggerFunctionCall()), 
+		        this, SLOT(doFunctionCall()), Qt::QueuedConnection);
+		QMutexLocker lock(&sync_mutex_);
+		Q_EMIT triggerFunctionCall();
+		condition_.wait(&sync_mutex_);
 	}
 }
 
@@ -46,7 +46,7 @@ void IntoGuiThreadMover::callInGuiThread()
 void IntoGuiThreadMover::doFunctionCall()
 {
 	synchronousFunctionCall();
-	Q_EMIT called();
+	condition_.wakeOne();
 }
 
 

@@ -12,7 +12,9 @@
 #ifndef INGUITHREAD_H
 #define INGUITHREAD_H
 
+#include <QMutex>
 #include <QObject>
+#include <QWaitCondition>
 
 #include "support/bind.h"
 #include "support/functional.h"
@@ -32,14 +34,16 @@ protected:
 	void callInGuiThread();
 
 Q_SIGNALS:
-	void triggerCall();
-	void called();
+	void triggerFunctionCall();
 
 private Q_SLOTS:
 	void doFunctionCall();
 
 private:
 	virtual void synchronousFunctionCall() = 0;
+
+	QWaitCondition condition_;
+	QMutex sync_mutex_;
 };
 
 
