@@ -61,8 +61,6 @@ liblyxsupport_a_SOURCES = \
 	gettext.h \
 	gzstream.cpp \
 	gzstream.h \
-	InGuiThread.h \
-	InGuiThread.cpp \
 	kill.cpp \
 	lassert.h \
 	lassert.cpp \

@@ -132,6 +132,7 @@ SOURCEFILES = \
 	GuiWorkArea.cpp \
 	GuiWrap.cpp \
 	IconPalette.cpp \
+	InGuiThread.cpp \
 	InsertTableWidget.cpp \
 	InsetParamsDialog.cpp \
 	InsetParamsWidget.cpp \
@@ -237,6 +238,7 @@ MOCHEADER = \
 	GuiWorkArea.h \
 	GuiWrap.h \
 	IconPalette.h \
+	InGuiThread.h \
 	InsertTableWidget.h \
 	InsetParamsDialog.h \
 	InsetParamsWidget.h \
