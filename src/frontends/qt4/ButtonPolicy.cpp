@@ -398,6 +398,7 @@ void ButtonPolicy::Private::initNoRepeatedApplyReadOnly()
 	state_machine_[INITIAL][SMI_VALID] = VALID;
 	state_machine_[INITIAL][SMI_INVALID] = INVALID;
 	state_machine_[INITIAL][SMI_READ_ONLY] = RO_INITIAL;
+	state_machine_[INITIAL][SMI_RESTORE] = INITIAL;
 	// State::VALID
 	state_machine_[VALID][SMI_VALID] = VALID;
 	state_machine_[VALID][SMI_READ_WRITE] = VALID;
@@ -419,6 +420,7 @@ void ButtonPolicy::Private::initNoRepeatedApplyReadOnly()
 	state_machine_[RO_INITIAL][SMI_VALID] = RO_VALID;
 	state_machine_[RO_INITIAL][SMI_INVALID] = RO_INVALID;
 	state_machine_[RO_INITIAL][SMI_READ_WRITE] = INITIAL;
+	state_machine_[RO_INITIAL][SMI_RESTORE] = INITIAL;
 	// State::RO_VALID
 	state_machine_[RO_VALID][SMI_VALID] = RO_VALID;
 	state_machine_[RO_VALID][SMI_READ_ONLY] = RO_VALID;
