@@ -39,7 +39,7 @@
 
 
 // sync with GuiView.cpp
-#define EXPORT_in_THREAD 0
+#define EXPORT_in_THREAD 1
 
 
 using namespace std;

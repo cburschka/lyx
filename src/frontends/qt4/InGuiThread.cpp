@@ -51,4 +51,4 @@ void IntoGuiThreadMover::doFunctionCall()
 } // namespace frontend
 } // namespace lyx
 
-
+#include "moc_InGuiThread.cpp"
