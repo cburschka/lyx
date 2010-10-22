@@ -1200,11 +1200,10 @@ dist_layouts_DATA =\
 scriptsdir = $(pkgdatadir)/scripts
 # Note that we "chmod 755" manually these files in install-data-hook.
 dist_scripts_PYTHON = \
-	scripts/TeXFiles.py \
 	scripts/bash_completion \
 	scripts/clean_dvi.py \
-	scripts/csv2lyx.py \
 	scripts/convertDefault.py \
+	scripts/csv2lyx.py \
 	scripts/date.py \
 	scripts/ext_copy.py \
 	scripts/fen2ascii.py \
@@ -1218,7 +1217,12 @@ dist_scripts_PYTHON = \
 	scripts/lyxpreview-lytex2bitmap.py \
 	scripts/lyxpreview-platex2bitmap.py \
 	scripts/lyxpreview_tools.py \
-	scripts/tex_copy.py
+	scripts/lyxsweave.R \
+	scripts/prefs2prefs.py \
+	scripts/prefs2prefs_lfuns.py \
+	scripts/prefs2prefs_prefs.py \
+	scripts/tex_copy.py \
+	scripts/TeXFiles.py
 
 templatesdir = $(pkgdatadir)/templates
 dist_templates_DATA = \
