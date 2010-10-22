@@ -300,7 +300,6 @@ src_support_header_files = Split('''
     functional.h
     gettext.h
     gzstream.h
-    InGuiThread.h
     lassert.h
     limited_stack.h
     lstrings.h
@@ -343,7 +342,6 @@ src_support_files = Split('''
     ForkedCalls.cpp
     gettext.cpp
     gzstream.cpp
-    InGuiThread.cpp
     kill.cpp
     lassert.cpp
     lstrings.cpp
@@ -784,6 +782,7 @@ src_frontends_qt4_header_files = Split('''
     GuiWorkArea.h
     GuiWrap.h
     IconPalette.h
+    InGuiThread.h
     InsertTableWidget.h
     InsetParamsDialog.h
     InsetParamsWidget.h
@@ -887,6 +886,7 @@ src_frontends_qt4_files = Split('''
     GuiWorkArea.cpp
     GuiWrap.cpp
     IconPalette.cpp
+    InGuiThread.cpp
     InsertTableWidget.cpp
     InsetParamsDialog.cpp
     InsetParamsWidget.cpp
@@ -2942,6 +2942,7 @@ lib_scripts_files = Split('''
     lyxpreview-lytex2bitmap.py
     lyxpreview-platex2bitmap.py
     lyxpreview_tools.py
+    lyxsweave.R
     prefs2prefs.py
     prefs2prefs_lfuns.py
     prefs2prefs_prefs.py
