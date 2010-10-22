@@ -12,10 +12,11 @@
 
 #include "Converter.h"
 
-#include "ConverterCache.h"
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "BufferParams.h"
+#include "ConverterCache.h"
+#include "Encoding.h"
 #include "ErrorList.h"
 #include "Format.h"
 #include "Language.h"
@@ -49,7 +50,7 @@ string const token_base("$$b");
 string const token_to("$$o");
 string const token_path("$$p");
 string const token_orig_path("$$r");
-
+string const token_encoding("$$e");
 
 
 string const add_options(string const & command, string const & options)
@@ -325,7 +326,7 @@ bool Converters::convert(Buffer const * buffer,
 	// used anyway.
 	OutputParams runparams(buffer ? &buffer->params().encoding() : 0);
 	runparams.flavor = getFlavor(edgepath);
-	
+
 	if (buffer) {
 		runparams.use_japanese = buffer->bufferFormat() == "platex";
 		runparams.use_indices = buffer->params().use_indices;
@@ -397,9 +398,9 @@ bool Converters::convert(Buffer const * buffer,
 			}
 
 			// FIXME UNICODE
-			string const infile2 = 
+			string const infile2 =
 				to_utf8(makeRelPath(from_utf8(infile.absFileName()), from_utf8(path)));
-			string const outfile2 = 
+			string const outfile2 =
 				to_utf8(makeRelPath(from_utf8(outfile.absFileName()), from_utf8(path)));
 
 			string command = conv.command;
@@ -408,6 +409,7 @@ bool Converters::convert(Buffer const * buffer,
 			command = subst(command, token_to, quoteName(outfile2));
 			command = subst(command, token_path, quoteName(infile.onlyPath().absFileName()));
 			command = subst(command, token_orig_path, quoteName(orig_from.onlyPath().absFileName()));
+			command = subst(command, token_encoding, buffer ? buffer->params().encoding().iconvName() : string());
 			command = libScriptSearch(command);
 
 			if (!conv.parselog.empty())

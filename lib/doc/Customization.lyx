@@ -133,10 +133,11 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_be_strict true
+\author 1 "Jean-Marc Lasgouttes" 
 \end_header
 
 \begin_body
@@ -2140,7 +2141,29 @@ $$r
 \end_inset
 
  The path to the original input file (this is different from $$p when a
- chain of converters is called).
+ chain of converters is called)
+\change_deleted 1 1287732759
+.
+\change_inserted 1 1287732721
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted 1 1287732753
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1 1287732729
+$$e
+\end_layout
+
+\end_inset
+
+ The iconv name for the encoding of the document.
 \end_layout
 
 \begin_layout Standard
