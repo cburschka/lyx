@@ -795,10 +795,12 @@ void GuiView::dropEvent(QDropEvent * event)
 			cmd = FuncRequest(LFUN_FILE_OPEN, file);
 		}
 		// add the functions to the queue
-		guiApp->addtoFuncRequestQueue(cmd);
+		guiApp->addToFuncRequestQueue(cmd);
 		event->accept();
 	}
-	// now process the collected functions
+	// now process the collected functions. We perform the events
+	// asynchronously. This prevents potential problems in case the
+	// BufferView is closed within an event.
 	guiApp->processFuncRequestQueueAsync();
 }
 

@@ -1428,7 +1428,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		GuiView * gv = currentView();
 		if (gv && gv->currentBufferView())
 			// cancel any selection
-			lyx::dispatch(FuncRequest(LFUN_MARK_OFF));
+			processFuncRequest(FuncRequest(LFUN_MARK_OFF));
 		dr.setMessage(from_ascii(N_("Cancel")));
 		break;
 	}
@@ -1776,33 +1776,46 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	if (func.action() == LFUN_SELF_INSERT) {
 		if (encoded_last_key != 0) {
 			docstring const arg(1, encoded_last_key);
-			lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, arg,
+			processFuncRequest(FuncRequest(LFUN_SELF_INSERT, arg,
 					     FuncRequest::KEYBOARD));
 			LYXERR(Debug::KEY, "SelfInsert arg[`" << to_utf8(arg) << "']");
 		}
 	} else
-		lyx::dispatch(func);
+		processFuncRequest(func);
 }
 
 
-void GuiApplication::dispatchDelayed(FuncRequest const & func)
+void GuiApplication::processFuncRequest(FuncRequest const & func)
 {
-	addtoFuncRequestQueue(func);
+	lyx::dispatch(func);
+}
+
+
+void GuiApplication::processFuncRequestAsync(FuncRequest const & func)
+{
+	addToFuncRequestQueue(func);
 	processFuncRequestQueueAsync();
 }
 
 
-void GuiApplication::addtoFuncRequestQueue(FuncRequest const & func)
+void GuiApplication::processFuncRequestQueue()
 {
-	d->func_request_queue_.push(func);
+	while (!d->func_request_queue_.empty()) {
+		processFuncRequest(d->func_request_queue_.front());
+		d->func_request_queue_.pop();
+	}
 }
 
 
 void GuiApplication::processFuncRequestQueueAsync()
 {
-	// We perform the events asynchronously. This prevents potential
-	// problems in case the BufferView is closed within an event.
-	QTimer::singleShot(0, this, SLOT(processFuncRequestQueue()));
+	QTimer::singleShot(0, this, SLOT(slotProcessFuncRequestQueue()));
+}
+
+
+void GuiApplication::addToFuncRequestQueue(FuncRequest const & func)
+{
+	d->func_request_queue_.push(func);
 }
 
 
@@ -1827,7 +1840,7 @@ void GuiApplication::resetGui()
 		gv->resetDialogs();
 	}
 
-	lyx::dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
+	processFuncRequest(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
 }
 
 
@@ -1987,15 +2000,6 @@ void GuiApplication::setGuiLanguage()
 }
 
 
-void GuiApplication::processFuncRequestQueue()
-{
-	while (!d->func_request_queue_.empty()) {
-		lyx::dispatch(d->func_request_queue_.front());
-		d->func_request_queue_.pop();
-	}
-}
-
-
 void GuiApplication::execBatchCommands()
 {
 	setGuiLanguage();
@@ -2145,7 +2149,8 @@ bool GuiApplication::event(QEvent * e)
 		// commands are not executed here yet and the gui is not ready
 		// therefore.
 		QFileOpenEvent * foe = static_cast<QFileOpenEvent *>(e);
-		dispatchDelayed(FuncRequest(LFUN_FILE_OPEN, qstring_to_ucs4(foe->file())));
+		FuncRequest const fr(LFUN_FILE_OPEN, qstring_to_ucs4(foe->file()));
+		processFuncRequestAsync(fr);
 		e->accept();
 		return true;
 	}

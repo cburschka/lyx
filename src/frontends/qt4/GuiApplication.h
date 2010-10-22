@@ -144,10 +144,21 @@ public:
 	/// return the status bar state string
 	docstring viewStatusMessage();
 
-	/// add a func request to the queue for later procession
-	void addtoFuncRequestQueue(FuncRequest const &);
-	/// process the func request in the queue asynchronously
+	/// \name Methods to process FuncRequests
+	//@{
+	/// process the func request
+	void processFuncRequest(FuncRequest const &);
+	/// add a func request to the queue and process it asynchronously
+	/// \note As a side-effect this will also process the
+	/// func requests that were added to the queue before.
+	void processFuncRequestAsync(FuncRequest const &);
+	/// process the func requests in the queue
+	void processFuncRequestQueue();
+	/// process the func requests in the queue asynchronously
 	void processFuncRequestQueueAsync();
+	/// add a func request to the queue for later processing
+	void addToFuncRequestQueue(FuncRequest const &);
+	//@}
 
 	/// goto a bookmark
 	/// openFile: whether or not open a file if the file is not opened
@@ -165,7 +176,7 @@ private Q_SLOTS:
 	///
 	void onLastWindowClosed();
 	///
-	void processFuncRequestQueue();
+	void slotProcessFuncRequestQueue() { processFuncRequestQueue(); }
 
 private:
 	///
@@ -176,8 +187,6 @@ private:
 	void setGuiLanguage();
 	///
 	void reconfigure(std::string const & option);
-	/// add a func request to the queue and process it asynchronously
-	void dispatchDelayed(FuncRequest const &);
 
 	/// This GuiView is the one receiving Clipboard and Selection
 	/// events
