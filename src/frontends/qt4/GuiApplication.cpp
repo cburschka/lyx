@@ -1127,7 +1127,6 @@ void GuiApplication::dispatch(FuncRequest const & cmd)
 void GuiApplication::gotoBookmark(unsigned int idx, bool openFile,
 	bool switchToBuffer)
 {
-	LASSERT(current_view_, /**/);
 	if (!theSession().bookmarks().isValid(idx))
 		return;
 	BookmarksSection::Bookmark const & bm =
@@ -1367,7 +1366,8 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		string lyx_name;
 		string const x11_name = split(to_utf8(cmd.argument()), lyx_name, ' ');
 		if (lyx_name.empty() || x11_name.empty()) {
-			current_view_->message(
+			if (current_view_)
+				current_view_->message(
 					_("Syntax: set-color <lyx_name> <x11_name>"));
 			break;
 		}
@@ -1702,7 +1702,8 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	// Do nothing if we have nothing (JMarc)
 	if (!keysym.isOK()) {
 		LYXERR(Debug::KEY, "Empty kbd action (probably composing)");
-		current_view_->restartCursor();
+		if (current_view_)
+			current_view_->restartCursor();
 		return;
 	}
 
@@ -1745,7 +1746,7 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	// why not return already here if action == -1 and
 	// num_bytes == 0? (Lgb)
 
-	if (d->keyseq.length() > 1)
+	if (d->keyseq.length() > 1 && current_view_)
 		current_view_->message(d->keyseq.print(KeySequence::ForGui));
 
 
@@ -1767,8 +1768,10 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 					   FuncRequest::KEYBOARD);
 		} else {
 			LYXERR(Debug::KEY, "Unknown, !isText() - giving up");
-			current_view_->message(_("Unknown function."));
-			current_view_->restartCursor();
+			if (current_view_) {
+				current_view_->message(_("Unknown function."));
+				current_view_->restartCursor();
+			}
 			return;
 		}
 	}
