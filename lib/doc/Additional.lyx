@@ -19089,7 +19089,7 @@ Show History
 \end_layout
 
 \begin_layout Standard
-This show the complete history of the RCS document.
+This shows the complete history of the RCS document.
  The output of 
 \family typewriter
 rlog <file-name>
@@ -19253,7 +19253,7 @@ Show History
 \end_layout
 
 \begin_layout Standard
-This show the complete history of the CVS document.
+This shows the complete history of the CVS document.
  The output of 
 \family typewriter
 cvs log 
@@ -19600,7 +19600,7 @@ Show History
 \end_layout
 
 \begin_layout Standard
-This show the complete history of the SVN document.
+This shows the complete history of the SVN document.
  The output of 
 \family typewriter
 svn log 
@@ -19631,14 +19631,14 @@ name "subsec:SVN-File-Locking"
 The file exchange through various revision control systems brings the problem
  of merge conflicts in case two different users try to edit the same (parts
  of) document.
- When such conflict happens it needs manual resolving and one reasonable
+ When such a conflict happens it needs manual resolving and one reasonable
  alternative is to provide some kind of locking mechanism, which guarantees
  that only one user is allowed to edit file at the given time.
 \end_layout
 
 \begin_layout Standard
-SVN has two mechanisms to provide such kind of mutual exclusivity for file
- access - locks and automatical setting of write permissions (see sec.
+SVN has two such mechanisms to provide mutual exclusivity for file access
+ - locks and automatic setting of write permissions (see sec.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -19667,22 +19667,21 @@ http://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html
 \end_inset
 
 .
- In a case this property is detected for a given document LyX starts to
- use SVN locks for document editing automatically and the whole check-in/out
- mechanism switches to the same regimen as for RCS.
- This in particular means there are two different modes how file is used
- in LyX:
+ If this property is detected for a given document LyX starts to use SVN
+ locks for document editing automatically and the whole check-in/out mechanism
+ switches to the same regimen as for RCS.
+ This in particular means there are two different modes of file use in LyX:
 \end_layout
 
 \begin_layout Itemize
 Unlocked state.
  The loaded file is in the read-only mode.
- For editation on needs to check-out.
+ For editing on needs to check-out.
  
 \emph on
 Check-out
 \emph default
- consists of update from repository and gaining write lock.
+ consists of updating from the repository and gaining write lock.
  If the lock is not possible to obtain, we remain in unlocked state.
 \end_layout
 
@@ -19745,12 +19744,12 @@ name "subsec:Automatical-Locking-Property"
 
 
 \family default
-Automatical Locking Property
+Automatic Locking Property
 \end_layout
 
 \begin_layout Standard
-The above mentioned automatical setting of write permissions of the .lyx
- file can be set through
+The above mentioned automatic setting of write permissions of the .lyx file
+ can be set through
 \family sans
 \bar under
  F
@@ -20358,16 +20357,17 @@ SSH tunel used with SVN under Windows
 \end_layout
 
 \begin_layout Standard
-Compared to linux setting svn client to communicate over ssh under Windows
- is rather troublesome task.
- We will at least make some hints how to setup client side but former knowledge
- about ssh and Windows command line is needed, also be prepared for a great
- deal of frustration...
+Compared with Linux setting up svn client to communicate over ssh under
+ Windows is a rather troublesome task.
+ We will at least offer some hints how to setup the client side but prior
+ knowledge about ssh and the Windows command line is needed, also be prepared
+ for a great deal of frustration\SpecialChar \ldots{}
+
 \end_layout
 
 \begin_layout Enumerate
-Get svn client for windows, as described in previous sections.
- When it is fresh install run some svn command (e.g.
+Get a svn client for windows, as described in the previous sections.
+ When it is a fresh install run some svn command (e.g.
  
 \begin_inset Flex Code
 status collapsed
@@ -20378,12 +20378,12 @@ svn --version
 
 \end_inset
 
-) to have created config files, which you will need to change later on.
+) to create config files, which you will need to change later on.
 \end_layout
 
 \begin_layout Enumerate
-Choose ssh client for Windows.
- There are more possibilities, we will use the one from Putty tools
+Choose a ssh client for Windows.
+ There are several possibilities, we will use the one from Putty tools
 \begin_inset Foot
 status open
 
@@ -20404,8 +20404,8 @@ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 \end_inset
 
 .
- You will need to automatize connection, so client doesn't ask for any password
- from you.
+ You will need to set the connection up so that the client doesn't ask for
+ any password from you.
  To keep things easy we will use only keys without any additional password
  protection etc.
 \end_layout
@@ -20424,9 +20424,9 @@ puttygen
 
 .
  Save your private .ppk key file and put the public one on the server side.
- In case the SVN server runs on linux, note that the format of the public
- key is not compatible with linux openssh and you will need to direcly copy-past
-e the key from the “
+ If the SVN server runs on Linux, note that the format of the public key
+ is not compatible with Linux openssh and you will need to direcly copy-paste
+ the key from the “
 \emph on
 Public key for pasting into OpenSSH authorized_keys file
 \emph default
@@ -20560,8 +20560,8 @@ End-of-Line Conversions
 \begin_layout Standard
 When the collsraborators are mixing Linux and Windows environments, LyX
  will use different line endings inside the .lyx files.
- This is not problem as far as LyX functionality is concerned, but the commit
- diffs will be huge and merge-conflicts prone.
+ This is not a problem as far as LyX functionality is concerned, but the
+ commit diffs will be huge and merge-conflicts prone.
  Fortunately SVN itself knows
 \begin_inset Foot
 status collapsed
@@ -20751,9 +20751,8 @@ Introduction
 
 \begin_layout Standard
 The main purpose of this documentation is to show you how to use LyX for
- literate programming.
- Where it is assumed that you are familiar with this programming technique,
- and know what 
+ literate programming, where it is assumed that you are familiar with this
+ programming technique, and know what 
 \begin_inset Quotes eld
 \end_inset
 
@@ -20803,7 +20802,7 @@ Literate programming is the combination of documentation and source together
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
+E.
  Knuth during the development of his TeX typesetting software.
  
 \end_layout
@@ -20856,7 +20855,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://shelob.ce.ttu.edu/daves/lpfaq/faq.html
+http://www.literateprogramming.com/lpfaq.pdf
 \end_layout
 
 \end_inset
@@ -22100,7 +22099,7 @@ Do try this at home
 
 \begin_layout Standard
 Most ideas in this section require less common files in your LaTeX installation.
- If you have a system like teTeX, most will already be available.
+ If you have a system like TeXLive, most will already be available.
  A few, however, will need to be downloaded from one of the CTAN archives.
  Often, there are several ways to do something, or several LaTeX style files
  which do the same thing.
@@ -22800,10 +22799,6 @@ a+
  
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Section
 Dropped Capitals
 \end_layout
@@ -22900,7 +22895,7 @@ dropcaps
 dropping
 \family default
 ) package from CTAN allows a simple way to add such letters to your documents.
- Since this package is not a standard part of teTeX, I can't demonstrate
+ Since this package is not a standard part of TeXLive, I can't demonstrate
  it within this document, but if you copy this paragraph to a new document,
  delete the 
 \begin_inset Quotes eld
