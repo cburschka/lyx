@@ -52,18 +52,13 @@ public:
 	GuiApplication(int & argc, char ** argv);
 	~GuiApplication();
 
-	/// Clear all session information.
-	void clearSession();
-
 	/// \name Methods inherited from Application class
 	//@{
 	void dispatch(FuncRequest const &);
 	void dispatch(FuncRequest const &, DispatchResult & dr);
 	FuncStatus getStatus(FuncRequest const & cmd) const;
 	void restoreGuiSession();
-	Clipboard & clipboard();
-	Selection & selection();
-	FontLoader & fontLoader();
+	Buffer const * updateInset(Inset const * inset) const;
 	int exec();
 	void exit(int status);
 	bool event(QEvent * e);
@@ -73,9 +68,9 @@ public:
 	void unregisterSocketCallback(int fd);
 	bool searchMenu(FuncRequest const & func, docstring_list & names) const;
 	docstring iconName(FuncRequest const & f, bool unknown);
-	Buffer const * updateInset(Inset const * inset) const;
 	void handleKeyFunc(FuncCode action);
 	//@}
+
 	///
 	bool getStatus(FuncRequest const & cmd, FuncStatus & status) const;
 	///
@@ -83,9 +78,20 @@ public:
 	///
 	void resetGui();
 
+	///
+	Clipboard & clipboard();
+	///
+	Selection & selection();
+	///
+	FontLoader & fontLoader();
+
+	///
 	Toolbars const & toolbars() const;
+	///
 	Toolbars & toolbars();
+	///
 	Menus const & menus() const;
+	///
 	Menus & menus();
 
 	/// \name Methods inherited from QApplication class
@@ -112,10 +118,13 @@ public:
 	void setCurrentView(GuiView * view) { current_view_ = view; }
 	///
 	QList<int> viewIds() const;
+	
+	/// Clear all session information.
+	void clearSession();
 
 	///
 	ColorCache & colorCache();
-
+	///
 	QAbstractItemModel * languageModel();
 
 	/// return a suitable serif font name.
@@ -151,11 +160,10 @@ private Q_SLOTS:
 	void execBatchCommands();
 	///
 	void socketDataReceived(int fd);
-	/// events to be triggered by general_timer_ should go here
+	/// events to be triggered by Private::general_timer_ should go here
 	void handleRegularEvents();
 	///
 	void onLastWindowClosed();
-
 	///
 	void processFuncRequestQueue();
 
@@ -185,13 +193,13 @@ extern GuiApplication * guiApp;
 /// \return the icon file name for the given action.
 QString iconName(FuncRequest const & f, bool unknown);
 
-
 /// \return the pixmap for the given path, name and extension.
 QPixmap getPixmap(QString const & path, QString const & name, QString const & ext);
 
 /// \return an icon for the given action.
 QIcon getIcon(FuncRequest const & f, bool unknown);
 
+///
 GuiApplication * theGuiApp();
 
 } // namespace frontend
