@@ -9671,7 +9671,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://authors.elsevier.com/
+http://www.elsevier.com/wps/find/authorsview.authors/latex
 \end_layout
 
 \end_inset
@@ -9679,7 +9679,7 @@ http://authors.elsevier.com/
 .
  Instructions are supplied along with the class file, which details the
  requirements of the publishers.
- LyX includes package that allows for the use of this class, by a layout
+ LyX includes a package that allows for the use of this class, by a layout
  and a template file.
  Installation of the class file is the same as for any other LaTeX package;
  instructions are provided in the Elsevier documentation.
@@ -12030,7 +12030,7 @@ tbl
  command to implement table captions.
  As a result, a table created by LyX is printed correctly, but its caption
  is ignored.
- However, you can use some TeX code to overpass this problem, so that captions
+ However, you can use some TeX code to overcome this problem, so that captions
  are printed as expected.
  To do so, create a float table as usual, remove the caption, and replace
  it with the TeX code 
@@ -12225,7 +12225,7 @@ IOP-article.lyx
 \end_layout
 
 \begin_layout Itemize
-To be able to compile your document to a PDF, PS, or DVI, assure that the
+To be able to compile your document to a PDF, PS, or DVI, ensure that the
  two options 
 \family sans
 Use AMS math package
@@ -12380,7 +12380,7 @@ Solar Physics
 \emph default
 , but there are many others (see a complete list at 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -12898,12 +12898,7 @@ Layout\SpecialChar \menuseparator
 Document
 \family default
 ).
- A detailed German description of these options can be found in the Koma-Script
- documentation 
-\emph on
-scrguide
-\emph default
-.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -12929,12 +12924,7 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
 .
- A detailed German description of these and other type area options can
- be found in the Koma-Script documentation 
-\emph on
-scrguide
-\emph default
-.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -12945,27 +12935,16 @@ The LaTeX document classes of the Koma-Script family define a number of
 \end_layout
 
 \begin_layout Standard
-A detailed German description of the LaTeX document classes of the Koma-Script
- family can be found in the Koma-Script documentation 
+Detailed descriptions of the LaTeX document classes of the Koma-Script family
+ can be found in the Koma-Script documentation 
 \emph on
 scrguide
 \emph default
-.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-There is an English translation 
+ (German) and 
 \emph on
-screnggu
+scrguien
 \emph default
-, but it is not a complete one.
-\end_layout
-
-\end_inset
-
- The following sections describe only those aspects, which are relevant
- in LyX.
+ (English).
 \end_layout
 
 \begin_layout Subsection
@@ -14188,7 +14167,8 @@ scrlettr
 .
  It has — on the LaTeX side — a completely new interface and is not compatible
  with the old class.
- Therefore, LyX supports both, though it is recommended to use the new class.
+ Therefore, LyX supports both, though it is recommended you use the new
+ class.
 \end_layout
 
 \begin_layout Standard
@@ -14257,7 +14237,7 @@ Graphics
 
 \begin_layout Standard
 The biggest improvement is, though, that the letter's layout is configurable
- at almost any needs.
+ to meet almost any needs.
  This can be done via the preamble or with a special style file (Letter
  Class Option, extension 
 \family typewriter
@@ -14600,8 +14580,8 @@ reference "sec:Inserting-TeX-Code"
 ).
  In this section, we can only list those features which are natively supported
  by LyX.
- For detailed descriptions (and for the rest of features) we are recommending
- to have a look at the detailed manual of the Memoir class
+ For detailed descriptions (and for the rest of features) we recommend you
+ have a look at the detailed manual of the Memoir class
 \begin_inset Foot
 status collapsed
 
@@ -14663,9 +14643,9 @@ Page
 \end_inset
 
 style: The fancy page style is not supported, due to a command clash between
- Memoir and the fancyhdr package (they are both defining a command with
- the same name, which confuses LaTeX).
- Instead, Memoir comes with a bunch of own page styles (see 
+ Memoir and the fancyhdr package (they both define a command with the same
+ name, which confuses LaTeX).
+ Instead, Memoir comes with a number of its own page styles (see 
 \family sans
 Layout\SpecialChar \menuseparator
 Document\SpecialChar \menuseparator
@@ -14701,8 +14681,8 @@ chapterstyle{companion}
 \end_layout
 
 \begin_layout Description
-Sectioning: Sectionings (chapter, section, subsection etc.) are coming with
- an optional argument in the standard classes.
+Sectioning: Sectionings (chapter, section, subsection etc.) come with an
+ optional argument in the standard classes.
  With this, you can specify an alternative version of the title for the
  table of contents and the headers (for instance, if the title is too long).
  In LyX, you can do this via 
@@ -14876,8 +14856,8 @@ Abstract: You may wonder why an abstract is an extra feature.
 \end_layout
 
 \begin_layout Description
-Chapterprecis: You may know this from belletristic: The contents of a chapter
- is shortly described below the title and also in the table of contents
+Chapterprecis: You may know this older typesetting style: The contents of
+ a chapter are summarized below the title and also in the table of contents
  (e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -16349,7 +16329,7 @@ have
 Slide
 \family default
 , for example.
- In that case, enter in your descriptive comment and hit 
+ In that case, enter your descriptive comment and hit 
 \family sans
 Return
 \family default
@@ -16357,8 +16337,8 @@ Return
 \end_layout
 
 \begin_layout Standard
-If, on the other hand, you don't want to enter in any descriptive text,
- you'll hit another LyX quirk.
+If, on the other hand, you don't want to enter any descriptive text, you'll
+ hit another LyX quirk.
  LyX, like nature, abhors a vacuum, and will not let you start a new paragraph
  environment until you put something in the old one.
  So, do this:
