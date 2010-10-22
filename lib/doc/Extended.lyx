@@ -1,4 +1,4 @@
-#LyX 1.6.7svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -179,8 +179,8 @@ User's Guide
 \emph default
  is already quite lengthy, and it contains information on all of the basic
  features one needs to know in order to prepare most documents.
- However, the LyX Team has worked to LyX extensible through various configuratio
-n files and external packages.
+ However, the LyX Team has worked to make LyX extensible through various
+ configuration files and external packages.
  That means that if you want to support the Fizzwizzle LaTeX package, you
  can create a layout file (or module) for it without having to alter LyX
  itself.
@@ -1284,7 +1284,7 @@ points, i.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
+e.
 \begin_inset space \space{}
 \end_inset
 
@@ -1317,7 +1317,7 @@ voffset
 \end_inset
 
  can save the day.
- Suppose you're left and top margins are always 0.5
+ Suppose your left and top margins are always 0.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -5960,15 +5960,15 @@ ftp://ftp.edpsciences.org/pub/aa/readme.html
 
 \begin_layout Standard
 A manual comes together with that package, and this text is not meant to
- replace the original manual but merely a short guide how to realize the
- correct form of your paper.
+ replace the original manual but is merely a short guide in how to realize
+ the correct form of your paper.
  
 \end_layout
 
 \begin_layout Standard
 Please note that the publisher of the journal was changed from Springer
  to EDP Sciences starting January 1, 2001.
- That change implicated also some slight changes of the style files, namely
+ That change involved also some slight changes to the style files, namely
  the removal of the thesaurus command.
  The LyX class aa supports the newest version of these style files, V 5.01.
  If you have an older version installed, please upgrade.
