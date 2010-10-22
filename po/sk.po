@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-10-22 11:29+0200\n"
-"PO-Revision-Date: 2010-10-17 12:44+0200\n"
+"PO-Revision-Date: 2010-10-22 12:03+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenčina <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1561,12 +1561,10 @@ msgid "Enable to use the options that are predefined in the layout file"
 msgstr "Umožni voľby preddefinované vo formátovom súbore."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:103
-#, fuzzy
 msgid "&Predefined:"
-msgstr "P&reddefinované:"
+msgstr "Preddefinované:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:110
-#, fuzzy
 msgid "Cus&tom:"
 msgstr "Vlastné:"
 
@@ -18515,7 +18513,7 @@ msgstr "prostý"
 
 #: src/frontends/qt4/GuiDocument.cpp:671
 msgid "headings"
-msgstr "s nadpismi (headings)"
+msgstr "záhlavie"
 
 #: src/frontends/qt4/GuiDocument.cpp:672
 msgid "fancy"
