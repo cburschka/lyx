@@ -353,7 +353,7 @@ bool askForText(docstring & response, docstring const & msg,
 #ifdef EXPORT_in_THREAD
 	return InGuiThread<bool>().call(&doAskForText,
 #else
-	return doAskGForText(
+	return doAskForText(
 #endif
 				response, msg, dflt);
 }
