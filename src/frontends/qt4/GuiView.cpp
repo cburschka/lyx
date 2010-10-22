@@ -794,13 +794,12 @@ void GuiView::dropEvent(QDropEvent * event)
 				"No formats found, trying to open it as a lyx file");
 			cmd = FuncRequest(LFUN_FILE_OPEN, file);
 		}
-
-		// Asynchronously post the event. DropEvent usually comes
-		// from the BufferView. But reloading a file might close
-		// the BufferView from within its own event handler.
-		guiApp->dispatchDelayed(cmd);
+		// add the functions to the queue
+		guiApp->addtoFuncRequestQueue(cmd);
 		event->accept();
 	}
+	// now process the collected functions
+	guiApp->processFuncRequestQueueAsync();
 }
 
 

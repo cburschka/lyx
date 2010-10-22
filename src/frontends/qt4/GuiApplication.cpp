@@ -1787,7 +1787,21 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 
 void GuiApplication::dispatchDelayed(FuncRequest const & func)
 {
+	addtoFuncRequestQueue(func);
+	processFuncRequestQueueAsync();
+}
+
+
+void GuiApplication::addtoFuncRequestQueue(FuncRequest const & func)
+{
 	d->func_request_queue_.push(func);
+}
+
+
+void GuiApplication::processFuncRequestQueueAsync()
+{
+	// We perform the events asynchronously. This prevents potential
+	// problems in case the BufferView is closed within an event.
 	QTimer::singleShot(0, this, SLOT(processFuncRequestQueue()));
 }
 
@@ -1976,7 +1990,7 @@ void GuiApplication::setGuiLanguage()
 void GuiApplication::processFuncRequestQueue()
 {
 	while (!d->func_request_queue_.empty()) {
-		lyx::dispatch(d->func_request_queue_.back());
+		lyx::dispatch(d->func_request_queue_.front());
 		d->func_request_queue_.pop();
 	}
 }

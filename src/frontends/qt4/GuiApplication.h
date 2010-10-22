@@ -60,7 +60,6 @@ public:
 	void dispatch(FuncRequest const &);
 	void dispatch(FuncRequest const &, DispatchResult & dr);
 	FuncStatus getStatus(FuncRequest const & cmd) const;
-	void dispatchDelayed(FuncRequest const &);
 	void restoreGuiSession();
 	Clipboard & clipboard();
 	Selection & selection();
@@ -136,6 +135,11 @@ public:
 	/// return the status bar state string
 	docstring viewStatusMessage();
 
+	/// add a func request to the queue for later procession
+	void addtoFuncRequestQueue(FuncRequest const &);
+	/// process the func request in the queue asynchronously
+	void processFuncRequestQueueAsync();
+
 	/// goto a bookmark
 	/// openFile: whether or not open a file if the file is not opened
 	/// switchToBuffer: whether or not switch to buffer if the buffer is
@@ -164,6 +168,8 @@ private:
 	void setGuiLanguage();
 	///
 	void reconfigure(std::string const & option);
+	/// add a func request to the queue and process it asynchronously
+	void dispatchDelayed(FuncRequest const &);
 
 	/// This GuiView is the one receiving Clipboard and Selection
 	/// events
