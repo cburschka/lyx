@@ -34,6 +34,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\DummyDocument2.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\DummyTextDocument.txt"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\Extended.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Intro.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Math.lyx"
