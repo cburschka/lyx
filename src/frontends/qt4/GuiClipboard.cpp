@@ -82,8 +82,8 @@ void CacheMimeData::update()
 
 	// Qt times out after 5 seconds if it does not recieve a response.
 	if (current_time() - start_time > 3) {
-		lyxerr << "No timely response from clipboard, perhaps process "
-			<< "holding clipboard is frozen?" << endl;
+		LYXERR0("No timely response from clipboard, perhaps process "
+			<< "holding clipboard is frozen?");
 	}
 }
 
