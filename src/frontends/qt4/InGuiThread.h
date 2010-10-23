@@ -63,27 +63,27 @@ public:
 	}
 
 	template<class F, class P1>
-	R call(F f, P1 p1)
+	R call(F f, P1& p1)
 	{
-		return call(bind(f, p1));
+		return call(bind(f, ref(p1)));
 	}
 
 	template<class F, class P1, class P2>
-	R call(F f, P1 p1, P2 p2)
+	R call(F f, P1& p1, P2& p2)
 	{
-		return call(bind(f, p1, p2));
+		return call(bind(f, ref(p1), ref(p2)));
 	}
 
 	template<class F, class P1, class P2, class P3>
-	R call(F f, P1 p1, P2 p2, P3 p3)
+	R call(F f, P1& p1, P2& p2, P3& p3)
 	{
-		return call(bind(f, p1, p2, p3));
+		return call(bind(f, ref(p1), ref(p2), ref(p3)));
 	}
 
 	template<class F, class P1, class P2, class P3, class P4>
-	R call(F f, P1 p1, P2 p2, P3 p3, P4 p4)
+	R call(F f, P1& p1, P2& p2, P3& p3, P4& p4)
 	{
-		return call(bind(f, p1, p2, p3, p4));
+		return call(bind(f, ref(p1), ref(p2), ref(p3), ref(p4)));
 	}
 
 	/*
@@ -91,9 +91,9 @@ public:
 	*/
 
 	template<class F, class P1, class P2, class P3, class P4, class P5, class P6, class P7, class P8>
-	R call(F f, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7, P8 p8)
+	R call(F f, P1& p1, P2& p2, P3& p3, P4& p4, P5& p5, P6& p6, P7& p7, P8& p8)
 	{
-		return call(bind(f, p1, p2, p3, p4, p5, p6, p7, p8));
+		return call(bind(f, ref(p1), ref(p2), ref(p3), ref(p4), ref(p5), ref(p6), ref(p7), ref(p8)));
 	}
 
 private:
@@ -125,27 +125,27 @@ public:
 	}
 
 	template<class F, class P1>
-	void call(F f, P1 p1)
+	void call(F f, P1& p1)
 	{
-		call(bind(f, p1));
+		call(bind(f, ref(p1)));
 	}
 
 	template<class F, class P1, class P2>
-	void call(F f, P1 p1, P2 p2)
+	void call(F f, P1& p1, P2& p2)
 	{
-		call(bind(f, p1, p2));
+		call(bind(f, ref(p1), ref(p2)));
 	}
 
 	template<class F, class P1, class P2, class P3>
-	void call(F f, P1 p1, P2 p2, P3 p3)
+	void call(F f, P1& p1, P2& p2, P3& p3)
 	{
-		call(bind(f, p1, p2, p3));
+		call(bind(f, ref(p1), ref(p2), ref(p3)));
 	}
 
 	template<class F, class P1, class P2, class P3, class P4>
-	void call(F f, P1 p1, P2 p2, P3 p3, P4 p4)
+	void call(F f, P1& p1, P2& p2, P3& p3, P4& p4)
 	{
-		call(bind(f, p1, p2, p3, p4));
+		call(bind(f, ref(p1), ref(p2), ref(p3), ref(p4)));
 	}
 
 	/*
@@ -153,9 +153,9 @@ public:
 	*/
 
 	template<class F, class P1, class P2, class P3, class P4, class P5, class P6, class P7, class P8>
-	void call(F f, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7, P8 p8)
+	void call(F f, P1& p1, P2& p2, P3& p3, P4& p4, P5& p5, P6& p6, P7& p7, P8& p8)
 	{
-		call(bind(f, p1, p2, p3, p4, p5, p6, p7, p8));
+		call(bind(f, ref(p1), ref(p2), ref(p3), ref(p4), ref(p5), ref(p6), ref(p7), ref(p8)));
 	}
 
 private:
