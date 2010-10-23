@@ -68,6 +68,7 @@ bool LyXVC::file_found_hook(FileName const & fn)
 	}
 
 	// file is not under any VCS.
+	vcs.reset(0);
 	return false;
 }
 
