@@ -27,6 +27,7 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/lyxtime.h"
 
 #ifdef Q_WS_MACX
 #include "support/linkback/LinkBackProxy.h"
@@ -55,6 +56,43 @@ namespace lyx {
 
 namespace frontend {
 
+static QMimeData const * read_clipboard() 
+{
+	LYXERR(Debug::ACTION, "Getting Clipboard");
+	QMimeData const * source =
+		qApp->clipboard()->mimeData(QClipboard::Clipboard);
+	if (!source) {
+		LYXERR0("0 bytes (no QMimeData)");
+		return new QMimeData();
+	}
+	// It appears that doing IO between getting a mimeData object
+	// and using it can cause a crash (maybe Qt used IO
+	// as an excuse to free() it? Anyway let's not introduce
+	// any new IO here, so e.g. leave the following line commented.
+	// lyxerr << "Got Clipboard (" << (long) source << ")\n" ;
+	return source;
+}
+
+
+void CacheMimeData::update()
+{
+	time_t const start_time = current_time();
+	LYXERR(Debug::ACTION, "Creating CacheMimeData object");
+	cached_formats_ = read_clipboard()->formats();
+
+	// Qt times out after 5 seconds if it does not recieve a response.
+	if (current_time() - start_time > 3) {
+		lyxerr << "No timely response from clipboard, perhaps process "
+			<< "holding clipboard is frozen?" << endl;
+	}
+}
+
+
+QByteArray CacheMimeData::data(QString const & mimeType) const 
+{
+	return read_clipboard()->data(mimeType);
+}
+
 
 QString const lyxMimeType(){ return "application/x-lyx"; }
 QString const pdfMimeType(){ return "application/pdf"; }
@@ -76,16 +114,9 @@ string const GuiClipboard::getAsLyX() const
 	LYXERR(Debug::ACTION, "GuiClipboard::getAsLyX(): `");
 	// We don't convert encodings here since the encoding of the
 	// clipboard contents is specified in the data itself
-	QMimeData const * source =
-		qApp->clipboard()->mimeData(QClipboard::Clipboard);
-	if (!source) {
-		LYXERR(Debug::ACTION, "' (no QMimeData)");
-		return string();
-	}
-
-	if (source->hasFormat(lyxMimeType())) {
+	if (cache_.hasFormat(lyxMimeType())) {
 		// data from ourself or some other LyX instance
-		QByteArray const ar = source->data(lyxMimeType());
+		QByteArray const ar = cache_.data(lyxMimeType());
 		string const s(ar.data(), ar.count());
 		LYXERR(Debug::ACTION, s << "'");
 		return s;
@@ -247,14 +278,6 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 		return filename;
 	}
 	
-	// get mime data
-	QMimeData const * source =
-	qApp->clipboard()->mimeData(QClipboard::Clipboard);
-	if (!source) {
-		LYXERR(Debug::ACTION, "0 bytes (no QMimeData)");
-		return FileName();
-	}
-	
 	// get mime for type
 	QString mime;
 	switch (type) {
@@ -266,10 +289,10 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 	}
 	
 	// get data
-	if (!source->hasFormat(mime))
+	if (!cache_.hasFormat(mime))
 		return FileName();
 	// data from ourself or some other LyX instance
-	QByteArray const ar = source->data(mime);
+	QByteArray const ar = cache_.data(mime);
 	LYXERR(Debug::ACTION, "Getting from clipboard: mime = " << mime.data()
 	       << "length = " << ar.count());
 	
@@ -336,17 +359,13 @@ void GuiClipboard::put(string const & lyx, docstring const & text)
 
 bool GuiClipboard::hasLyXContents() const
 {
-	QMimeData const * const source =
-		qApp->clipboard()->mimeData(QClipboard::Clipboard);
-	return source && source->hasFormat(lyxMimeType());
+	return cache_.hasFormat(lyxMimeType());
 }
 
 
 bool GuiClipboard::hasTextContents() const
 {
-	QMimeData const * const source =
-		qApp->clipboard()->mimeData(QClipboard::Clipboard);
-	return source && source->hasText();	
+	return cache_.hasText();
 }
 
 
@@ -361,12 +380,9 @@ bool GuiClipboard::hasGraphicsContents(Clipboard::GraphicsType type) const
 			|| hasGraphicsContents(LinkBackGraphicsType);
 	}
 
-	QMimeData const * const source =
-	qApp->clipboard()->mimeData(QClipboard::Clipboard);
-
 	// handle image cases first
 	if (type == PngGraphicsType || type == JpegGraphicsType)
-		return source->hasImage();
+		return cache_.hasImage();
 
 	// handle LinkBack for Mac
 	if (type == LinkBackGraphicsType)
@@ -377,7 +393,7 @@ bool GuiClipboard::hasGraphicsContents(Clipboard::GraphicsType type) const
 #endif // Q_WS_MACX
 	
 	// get mime data
-	QStringList const & formats = source->formats();
+	QStringList const & formats = cache_.formats();
 	LYXERR(Debug::ACTION, "We found " << formats.size() << " formats");
 	for (int i = 0; i < formats.size(); ++i)
 		LYXERR(Debug::ACTION, "Found format " << formats[i]);
@@ -391,7 +407,7 @@ bool GuiClipboard::hasGraphicsContents(Clipboard::GraphicsType type) const
 	default: LASSERT(false, /**/);
 	}
 	
-	return source && source->hasFormat(mime);
+	return cache_.hasFormat(mime);
 }
 
 
@@ -420,9 +436,14 @@ bool GuiClipboard::hasInternal() const
 
 void GuiClipboard::on_dataChanged()
 {
-	QMimeData const * const source =
-	qApp->clipboard()->mimeData(QClipboard::Clipboard);
-	QStringList l = source->formats();
+	//Note: we do not really need to run cache_.update() unless the
+	//data has been changed *and* the GuiClipboard has been queried.
+	//However if run cache_.update() the moment a process grabs the
+	//clipboard, the process holding the clipboard presumably won't
+	//yet be frozen, and so we won't need to wait 5 seconds for Qt
+	//to time-out waiting for the clipboard.
+	cache_.update();
+	QStringList l = cache_.formats();
 	LYXERR(Debug::ACTION, "Qt Clipboard changed. We found the following mime types:");
 	for (int i = 0; i < l.count(); i++)
 		LYXERR(Debug::ACTION, l.value(i));
