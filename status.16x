@@ -91,6 +91,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix a crash when dropping multiple files onto LyX (bug 6944).
+
 - Assure that Japanese LaTeX (pLaTeX) is in fact only used for Japanese
   documents. This fixes major configuration problems with TeXLive 2010.
 

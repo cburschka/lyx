@@ -59,7 +59,6 @@ public:
 	//@{
 	bool getStatus(FuncRequest const & cmd, FuncStatus & flag) const;
 	bool dispatch(FuncRequest const &);
-	void dispatchDelayed(FuncRequest const &);
 	void resetGui();
 	void restoreGuiSession();
 	Clipboard & clipboard();
@@ -111,6 +110,13 @@ public:
 	ColorCache & colorCache();
 
 	QAbstractItemModel * languageModel();
+
+	/// add a func request to the queue for later processing
+	void addtoFuncRequestQueue(FuncRequest const &);
+	/// process the func requests in the queue asynchronously
+	void processFuncRequestQueueAsync();
+	/// add a func request to the queue and process it asynchronously
+	void processFuncRequestAsync(FuncRequest const &);
 
 	/// return a suitable serif font name.
 	QString const romanFontName();

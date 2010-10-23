@@ -940,9 +940,21 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 }
 
 
-void GuiApplication::dispatchDelayed(FuncRequest const & func)
+void GuiApplication::processFuncRequestAsync(FuncRequest const & func)
+{
+	addtoFuncRequestQueue(func);
+	processFuncRequestQueueAsync();
+}
+
+
+void GuiApplication::addtoFuncRequestQueue(FuncRequest const & func)
 {
 	d->func_request_queue_.push(func);
+}
+
+
+void GuiApplication::processFuncRequestQueueAsync()
+{
 	QTimer::singleShot(0, this, SLOT(processFuncRequestQueue()));
 }
 
@@ -1130,7 +1142,7 @@ void GuiApplication::setGuiLanguage()
 void GuiApplication::processFuncRequestQueue()
 {
 	while (!d->func_request_queue_.empty()) {
-		lyx::dispatch(d->func_request_queue_.back());
+		lyx::dispatch(d->func_request_queue_.front());
 		d->func_request_queue_.pop();
 	}
 }
@@ -1272,7 +1284,8 @@ bool GuiApplication::event(QEvent * e)
 		// commands are not executed here yet and the gui is not ready
 		// therefore.
 		QFileOpenEvent * foe = static_cast<QFileOpenEvent *>(e);
-		dispatchDelayed(FuncRequest(LFUN_FILE_OPEN, qstring_to_ucs4(foe->file())));
+		processFuncRequestAsync(
+			FuncRequest(LFUN_FILE_OPEN, qstring_to_ucs4(foe->file())));
 		e->accept();
 		return true;
 	}
