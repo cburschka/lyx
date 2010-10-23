@@ -558,6 +558,7 @@ static std::string const qkey_to_string(int lkey)
 	case Qt::Key_THORN: return "THORN";
 	case Qt::Key_ssharp: return "ssharp";
 	case Qt::Key_ydiaeresis: return "ydiaeresis";
+	case Qt::Key_Bar: return "bar";
 
 	// FIXME: these ones I don't know the names of ... help !
 	// what's here is basically guesses ...
@@ -567,7 +568,6 @@ static std::string const qkey_to_string(int lkey)
 	case Qt::Key_Hyper_L: return "Hyper_L";
 	case Qt::Key_Hyper_R: return "Hyper_R";
 	case Qt::Key_Help: return "Help";
-	case Qt::Key_Bar: return "Bar";
 	case Qt::Key_Backtab: return "BackTab";
 
 	default:
