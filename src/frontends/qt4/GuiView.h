@@ -82,6 +82,10 @@ public:
 	/// are we busy ?
 	bool busy() const;
 
+	void saveCursorShapes();
+	void restoreCursorShapes();
+	void setCursorShapes(Qt::CursorShape shape);
+
 	/// \name Generic accessor functions
 	//@{
 	/// The current BufferView refers to the BufferView that has the focus,
@@ -224,8 +228,10 @@ private Q_SLOTS:
 	void normalSizedIcons();
 	void bigSizedIcons();
 
-	/// For completion of autosave or exporrt threads.
-	void threadFinished();
+	/// For completion of autosave or export threads.
+	void processingThreadStarted();
+	void processingThreadFinished();
+	void indicateProcessing();
 
 	/// must be called in GUI thread
 	void doShowDialog(QString const & qname, QString const & qdata,
@@ -411,6 +417,7 @@ private:
 	bool closing_;
 	/// if the view is busy the cursor shouldn't blink for instance.
 	bool busy_;
+
 };
 
 } // namespace frontend

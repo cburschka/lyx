@@ -288,7 +288,7 @@ void GuiWorkArea::init()
 
 	setFocusPolicy(Qt::StrongFocus);
 
-	viewport()->setCursor(Qt::IBeamCursor);
+	setCursorShape(Qt::IBeamCursor);
 
 	synthetic_mouse_event_.timeout.timeout.connect(
 		bind(&GuiWorkArea::generateSyntheticMouseEvent,
@@ -319,6 +319,16 @@ GuiWorkArea::~GuiWorkArea()
 	// delete completer_;
 }
 
+
+Qt::CursorShape GuiWorkArea::cursorShape() const
+{
+	return viewport()->cursor().shape();
+}
+
+void GuiWorkArea::setCursorShape(Qt::CursorShape shape)
+{
+	viewport()->setCursor(shape);
+}
 
 void GuiWorkArea::setGuiView(GuiView & gv)
 {
@@ -1465,7 +1475,7 @@ void TabWorkArea::mouseDoubleClickEvent(QMouseEvent * event)
 void TabWorkArea::setFullScreen(bool full_screen)
 {
 	for (int i = 0; i != count(); ++i) {
-		if (GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(i)))
+		if (GuiWorkArea * wa = workArea(i))
 			wa->setFullScreen(full_screen);
 	}
 
@@ -1496,12 +1506,18 @@ GuiWorkArea * TabWorkArea::currentWorkArea()
 }
 
 
+GuiWorkArea * TabWorkArea::workArea(int index)
+{
+	return dynamic_cast<GuiWorkArea *>(widget(index));
+}
+
+
 GuiWorkArea * TabWorkArea::workArea(Buffer & buffer)
 {
 	// FIXME: this method doesn't work if we have more than work area
 	// showing the same buffer.
 	for (int i = 0; i != count(); ++i) {
-		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(i));
+		GuiWorkArea * wa = workArea(i);
 		LASSERT(wa, return 0);
 		if (&wa->bufferView().buffer() == &buffer)
 			return wa;
@@ -1513,7 +1529,7 @@ GuiWorkArea * TabWorkArea::workArea(Buffer & buffer)
 void TabWorkArea::closeAll()
 {
 	while (count()) {
-		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(0));
+		GuiWorkArea * wa = workArea(0);
 		LASSERT(wa, /**/);
 		removeTab(0);
 		delete wa;
@@ -1596,7 +1612,7 @@ void TabWorkArea::on_currentTabChanged(int i)
 	// returns e.g. on application destruction
 	if (i == -1)
 		return;
-	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(i));
+	GuiWorkArea * wa = workArea(i);
 	LASSERT(wa, return);
 	wa->setUpdatesEnabled(true);
 	wa->redraw(true);
@@ -1615,7 +1631,7 @@ void TabWorkArea::closeCurrentBuffer()
 	if (clicked_tab_ == -1)
 		wa = currentWorkArea();
 	else {
-		wa = dynamic_cast<GuiWorkArea *>(widget(clicked_tab_));
+		wa = workArea(clicked_tab_);
 		LASSERT(wa, /**/);
 	}
 	wa->view().closeWorkArea(wa);
@@ -1628,7 +1644,7 @@ void TabWorkArea::hideCurrentTab()
 	if (clicked_tab_ == -1)
 		wa = currentWorkArea();
 	else {
-		wa = dynamic_cast<GuiWorkArea *>(widget(clicked_tab_));
+		wa = workArea(clicked_tab_);
 		LASSERT(wa, /**/);
 	}
 	wa->view().hideWorkArea(wa);
@@ -1642,7 +1658,7 @@ void TabWorkArea::closeTab(int index)
 	if (index == -1)
 		wa = currentWorkArea();
 	else {
-		wa = dynamic_cast<GuiWorkArea *>(widget(index));
+		wa = workArea(index);
 		LASSERT(wa, /**/);
 	}
 	wa->view().closeWorkArea(wa);
@@ -1753,7 +1769,7 @@ void TabWorkArea::updateTabTexts()
 	// collect full names first: path into postfix, empty prefix and
 	// filename without extension
 	for (size_t i = 0; i < n; ++i) {
-		GuiWorkArea * i_wa = dynamic_cast<GuiWorkArea *>(widget(i));
+		GuiWorkArea * i_wa = workArea(i);
 		FileName const fn = i_wa->bufferView().buffer().fileName();
 		paths.push_back(DisplayPath(i, fn));
 	}
@@ -1837,7 +1853,7 @@ void TabWorkArea::updateTabTexts()
 
 	// set new tab titles
 	for (It it = paths.begin(); it != paths.end(); ++it) {
-		GuiWorkArea * i_wa = dynamic_cast<GuiWorkArea *>(widget(it->tab()));
+		GuiWorkArea * i_wa = workArea(it->tab());
 		Buffer & buf = i_wa->bufferView().buffer();
 		if (!buf.fileName().empty() && !buf.isClean())
 			setTabText(it->tab(), it->displayString() + "*");

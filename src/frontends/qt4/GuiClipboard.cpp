@@ -47,6 +47,7 @@
 
 #include <memory>
 #include <map>
+#include <iostream>
 
 using namespace std;
 using namespace lyx::support;

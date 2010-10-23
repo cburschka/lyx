@@ -26,6 +26,7 @@
 #include "GuiToc.h"
 #include "GuiToolbar.h"
 #include "GuiWorkArea.h"
+#include "GuiProgress.h"
 #include "LayoutBox.h"
 #include "Menus.h"
 #include "TocModel.h"
@@ -79,7 +80,6 @@
 #include "support/Systemcall.h"
 #include "support/Timeout.h"
 #include "support/ProgressInterface.h"
-#include "GuiProgress.h"
 
 #include <QAction>
 #include <QApplication>
@@ -283,6 +283,11 @@ struct GuiView::GuiViewPrivate
 		bg_widget_->setFocus();
 	}
 
+	int tabWorkAreaCount()
+	{
+		return splitter_->count();
+	}
+	
 	TabWorkArea * tabWorkArea(int i)
 	{
 		return dynamic_cast<TabWorkArea *>(splitter_->widget(i));
@@ -290,11 +295,12 @@ struct GuiView::GuiViewPrivate
 
 	TabWorkArea * currentTabWorkArea()
 	{
-		if (splitter_->count() == 1)
+		int areas = tabWorkAreaCount();
+		if (areas == 1)
 			// The first TabWorkArea is always the first one, if any.
 			return tabWorkArea(0);
 
-		for (int i = 0; i != splitter_->count(); ++i) {
+		for (int i = 0; i != areas;  ++i) {
 			TabWorkArea * twa = tabWorkArea(i);
 			if (current_main_work_area_ == twa->currentWorkArea())
 				return twa;
@@ -307,12 +313,12 @@ struct GuiView::GuiViewPrivate
 #if (QT_VERSION >= 0x040400)
 	void setPreviewFuture(QFuture<docstring> const & f)
 	{
-		if (preview_watcher_.isRunning()) {
+		if (processing_thread_watcher_.isRunning()) {
 			// we prefer to cancel this preview in order to keep a snappy
 			// interface.
 			return;
 		}
-		preview_watcher_.setFuture(f);
+		processing_thread_watcher_.setFuture(f);
 	}
 #endif
 
@@ -356,12 +362,12 @@ public:
 #if (QT_VERSION >= 0x040400)
 	///
 	QFutureWatcher<docstring> autosave_watcher_;
-	QFutureWatcher<docstring> preview_watcher_;
+	QFutureWatcher<docstring> processing_thread_watcher_;
 	///
 	string last_export_format;
 #else
 	struct DummyWatcher { bool isRunning(){return false;} };
-	DummyWatcher preview_watcher_;
+	DummyWatcher processing_thread_watcher_;
 #endif
 
 	static QSet<Buffer const *> busyBuffers;
@@ -381,7 +387,10 @@ public:
 	                           bool (Buffer::*syncFunc)(string const &, bool, bool) const,
 	                           bool (Buffer::*previewFunc)(string const &, bool) const);
 
-	
+	QTimer processing_cursor_timer_;
+	bool indicates_processing_;
+	QMap<GuiWorkArea*, Qt::CursorShape> orig_cursors_;
+	QVector<GuiWorkArea*> guiWorkAreas();
 };
 
 QSet<Buffer const *> GuiView::GuiViewPrivate::busyBuffers;
@@ -436,9 +445,13 @@ GuiView::GuiView(int id)
 
 #if (QT_VERSION >= 0x040400)
 	connect(&d.autosave_watcher_, SIGNAL(finished()), this,
-		SLOT(threadFinished()));
-	connect(&d.preview_watcher_, SIGNAL(finished()), this,
-		SLOT(threadFinished()));
+		SLOT(processingThreadFinished()));
+	connect(&d.processing_thread_watcher_, SIGNAL(finished()), this,
+		SLOT(processingThreadFinished()));
+
+	d.processing_cursor_timer_.setInterval(1000 * 3);
+	connect(&d.processing_cursor_timer_, SIGNAL(timeout()), this,
+		SLOT(indicateProcessing()));
 #endif
 
 	connect(this, SIGNAL(triggerShowDialog(QString const &, QString const &, Inset *)),
@@ -470,7 +483,64 @@ GuiView::~GuiView()
 }
 
 
-void GuiView::threadFinished()
+QVector<GuiWorkArea*> GuiView::GuiViewPrivate::guiWorkAreas()
+{
+	QVector<GuiWorkArea*> areas;
+	for (int i = 0; i < tabWorkAreaCount(); i++) {
+		TabWorkArea* ta = tabWorkArea(i);
+		for (int u = 0; u < ta->count(); u++) {
+			areas << ta->workArea(u);
+		}
+	}
+	return areas;
+}
+
+void GuiView::setCursorShapes(Qt::CursorShape shape)
+{
+	QVector<GuiWorkArea*> areas = d.guiWorkAreas();
+	Q_FOREACH(GuiWorkArea* wa, areas) {
+		wa->setCursorShape(shape);
+	}
+}
+
+void GuiView::restoreCursorShapes()
+{
+	QVector<GuiWorkArea*> areas = d.guiWorkAreas();
+	Q_FOREACH(GuiWorkArea* wa, areas) {
+		if (d.orig_cursors_.contains(wa)) {
+			wa->setCursorShape(d.orig_cursors_[wa]);
+		}
+	}
+}
+
+void GuiView::saveCursorShapes()
+{
+	d.orig_cursors_.clear();
+	QVector<GuiWorkArea*> areas = d.guiWorkAreas();
+	Q_FOREACH(GuiWorkArea* wa, areas) {
+		d.orig_cursors_[wa] = wa->cursorShape();
+	}
+}
+
+void GuiView::indicateProcessing()
+{
+	if (d.indicates_processing_) {
+		restoreCursorShapes();
+	} else {
+		setCursorShapes(Qt::BusyCursor);
+	}
+	d.indicates_processing_ = !d.indicates_processing_;
+}
+
+void GuiView::processingThreadStarted()
+{
+	saveCursorShapes();
+	d.indicates_processing_ = false;
+	indicateProcessing();
+	d.processing_cursor_timer_.start();
+}
+
+void GuiView::processingThreadFinished()
 {
 #if (QT_VERSION >= 0x040400)
 	QFutureWatcher<docstring> const * watcher =
@@ -478,6 +548,9 @@ void GuiView::threadFinished()
 	message(watcher->result());
 	updateToolbars();
 	errors(d.last_export_format);
+	d.processing_cursor_timer_.stop();
+	restoreCursorShapes();
+	d.indicates_processing_ = false;
 #endif
 }
 
@@ -1444,12 +1517,12 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_MASTER_BUFFER_UPDATE:
 	case LFUN_MASTER_BUFFER_VIEW:
 		enable = doc_buffer && doc_buffer->parent() != 0
-			&& !d.preview_watcher_.isRunning();
+			&& !d.processing_thread_watcher_.isRunning();
 		break;
 
 	case LFUN_BUFFER_UPDATE:
 	case LFUN_BUFFER_VIEW: {
-		if (!doc_buffer || d.preview_watcher_.isRunning()) {
+		if (!doc_buffer || d.processing_thread_watcher_.isRunning()) {
 			enable = false;
 			break;
 		}
@@ -2865,6 +2938,7 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 	if (!used_buffer) {
 		return false;
 	}
+	gv_->processingThreadStarted();
 	string format = argument;
 	if (format.empty()) {
 		format = used_buffer->getDefaultOutputFormat();

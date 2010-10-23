@@ -12,13 +12,9 @@
 #ifndef LYX_BIND_H
 #define LYX_BIND_H
 
+#include "support/functional.h"
+
 #ifdef LYX_USE_TR1
-
-#include <functional>
-
-#ifdef __GNUC__
-#include <tr1/functional>
-#endif
 
 namespace lyx
 {

@@ -139,6 +139,9 @@ public:
 	///
 	GuiCompleter & completer() { return *completer_; }
 
+	Qt::CursorShape cursorShape() const;
+	void setCursorShape(Qt::CursorShape shape);
+
 
 	/// Return the GuiView this workArea belongs to
 	GuiView const & view() const { return *lyx_view_; }
@@ -309,6 +312,7 @@ public:
 	bool removeWorkArea(GuiWorkArea *);
 	GuiWorkArea * currentWorkArea();
 	GuiWorkArea * workArea(Buffer & buffer);
+	GuiWorkArea * workArea(int index);
 
 Q_SIGNALS:
 	///
