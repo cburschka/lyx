@@ -219,7 +219,7 @@ private:
 	/// "none", "simple", "display", "eqnarray",...
 	HullType type_;
 	///
-	std::vector<bool> nonum_;
+	std::vector<bool> numbered_;
 	///
 	std::vector<InsetLabel *> label_;
 	///
