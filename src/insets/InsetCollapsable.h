@@ -127,7 +127,7 @@ public:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
-	bool setMouseHover(BufferView const * bv, bool mouse_hover);
+	bool setMouseHover(BufferView const * bv, bool mouse_hover) const;
 	///
 	ColorCode backgroundColor(PainterInfo const &) const
 		{ return getLayout().bgcolor(); }

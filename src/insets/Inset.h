@@ -286,7 +286,8 @@ public:
 		{ return false; }
 	/// is called when the mouse enters or leaves this inset
 	/// return true if this inset needs a repaint
-	virtual bool setMouseHover(BufferView const *, bool) { return false; }
+	virtual bool setMouseHover(BufferView const *, bool) const
+		{ return false; }
 	/// return true if this inset is hovered (under mouse)
 	/// This is by now only used by mathed to draw corners 
 	/// (Inset::drawMarkers() and Inset::drawMarkers2()).
