@@ -115,7 +115,8 @@ public:
 	docstring contextMenu(BufferView const & bv, int x, int y) const;
 	///
 	bool setMouseHover(BufferView const * bv, bool mouse_hover);
-
+	///
+	bool clickable(int x, int y) const { return true; }
 private:
 	///
 	InsetExternal(InsetExternal const &);

@@ -99,6 +99,8 @@ private:
 	///
 	InsetCode lyxCode() const { return NO_CODE; }
 	///
+	bool clickable(int x, int y) const { return hasSettings(); }
+	///
 	RenderButton & button() const { return button_; }
 	///
 	bool setMouseHover(BufferView const * bv, bool mouse_hover) const;

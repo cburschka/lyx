@@ -51,6 +51,8 @@ public:
 	bool setParams(InsetGraphicsParams const & params);
 
 	InsetGraphicsParams getParams() const { return params_;}
+	///
+	bool clickable(int x, int y) const { return true; }
 
 private:
 	///
