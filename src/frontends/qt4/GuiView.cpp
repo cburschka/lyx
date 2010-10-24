@@ -1328,6 +1328,12 @@ void GuiView::setBuffer(Buffer * newBuffer)
 	if (wa == 0) {
 		newBuffer->masterBuffer()->updateBuffer();
 		wa = addWorkArea(*newBuffer);
+		// scroll to the position when the file was last closed
+		if (lyxrc.use_lastfilepos) {
+			LastFilePosSection::FilePos filepos =
+				theSession().lastFilePos().load(newBuffer->fileName());
+			wa->bufferView().moveToPosition(filepos.pit, filepos.pos, 0, 0);
+		}
 	} else {
 		//Disconnect the old buffer...there's no new one.
 		disconnectBuffer();
@@ -1810,13 +1816,6 @@ Buffer * GuiView::loadDocument(FileName const & filename, bool tolastfiles)
 	}
 
 	setBuffer(newBuffer);
-
-	// scroll to the position when the file was last closed
-	if (lyxrc.use_lastfilepos) {
-		LastFilePosSection::FilePos filepos =
-			theSession().lastFilePos().load(filename);
-		documentBufferView()->moveToPosition(filepos.pit, filepos.pos, 0, 0);
-	}
 
 	if (tolastfiles)
 		theSession().lastFiles().add(filename);
