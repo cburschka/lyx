@@ -325,10 +325,19 @@ Qt::CursorShape GuiWorkArea::cursorShape() const
 	return viewport()->cursor().shape();
 }
 
+
 void GuiWorkArea::setCursorShape(Qt::CursorShape shape)
 {
 	viewport()->setCursor(shape);
 }
+
+
+void GuiWorkArea::updateCursorShape()
+{
+	setCursorShape(buffer_view_->clickableInset() 
+		? Qt::PointingHandCursor : Qt::IBeamCursor);
+}
+
 
 void GuiWorkArea::setGuiView(GuiView & gv)
 {
@@ -458,6 +467,8 @@ void GuiWorkArea::redraw(bool update_metrics)
 		buffer_view_->coordCache().dump();
 
 	setReadOnly(buffer_view_->buffer().isReadonly());
+
+	updateCursorShape();
 }
 
 
@@ -528,8 +539,7 @@ void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 		startBlinkingCursor();
 	}
 
-	setCursorShape(buffer_view_->clickableInset() 
-		? Qt::PointingHandCursor : Qt::IBeamCursor);
+	updateCursorShape();
 }
 
 

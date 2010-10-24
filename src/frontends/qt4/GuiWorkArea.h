@@ -142,6 +142,8 @@ public:
 	Qt::CursorShape cursorShape() const;
 	void setCursorShape(Qt::CursorShape shape);
 
+	/// Change the cursor when the mouse hovers over a clickable inset
+	void updateCursorShape();
 
 	/// Return the GuiView this workArea belongs to
 	GuiView const & view() const { return *lyx_view_; }
