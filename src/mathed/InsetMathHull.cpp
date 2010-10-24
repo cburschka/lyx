@@ -141,7 +141,7 @@ docstring hullName(HullType type)
 static InsetLabel * dummy_pointer = 0;
 
 InsetMathHull::InsetMathHull(Buffer * buf)
-	: InsetMathGrid(buf, 1, 1), type_(hullNone), nonum_(1, false),
+	: InsetMathGrid(buf, 1, 1), type_(hullNone), nonum_(1, true),
 	  label_(1, dummy_pointer), preview_(new RenderPreview(this))
 {
 	//lyxerr << "sizeof InsetMath: " << sizeof(InsetMath) << endl;
@@ -155,7 +155,7 @@ InsetMathHull::InsetMathHull(Buffer * buf)
 
 
 InsetMathHull::InsetMathHull(Buffer * buf, HullType type)
-	: InsetMathGrid(buf, getCols(type), 1), type_(type), nonum_(1, false),
+	: InsetMathGrid(buf, getCols(type), 1), type_(type), nonum_(1, true),
 	  label_(1, dummy_pointer), preview_(new RenderPreview(this))
 {
 	buffer_ = buf;
