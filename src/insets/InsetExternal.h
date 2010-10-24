@@ -113,6 +113,8 @@ public:
 	int latex(odocstream &, OutputParams const &) const;
 	///
 	docstring contextMenu(BufferView const & bv, int x, int y) const;
+	///
+	bool setMouseHover(BufferView const * bv, bool mouse_hover);
 
 private:
 	///
@@ -161,6 +163,8 @@ private:
 	InsetExternalParams params_;
 	/// The thing that actually draws the image on LyX's screen.
 	boost::scoped_ptr<RenderBase> renderer_;
+	/// changes color of the button when mouse enters/leaves this inset
+	mutable std::map<BufferView const *, bool> mouse_hover_;
 };
 
 } // namespace lyx

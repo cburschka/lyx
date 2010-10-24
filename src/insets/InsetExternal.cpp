@@ -371,6 +371,7 @@ InsetExternal::InsetExternal(Buffer * buf)
 }
 
 
+// Mouse hover is not copied and remains empty
 InsetExternal::InsetExternal(InsetExternal const & other)
 	: Inset(other),
 	  boost::signals::trackable(),
@@ -382,6 +383,19 @@ InsetExternal::InsetExternal(InsetExternal const & other)
 InsetExternal::~InsetExternal()
 {
 	hideDialogs("external", this);
+
+	map<BufferView const *, bool>::iterator it = mouse_hover_.begin();
+	map<BufferView const *, bool>::iterator end = mouse_hover_.end();
+	for (; it != end; ++it)
+		if (it->second)
+			it->first->clearLastInset(this);
+}
+
+
+bool InsetExternal::setMouseHover(BufferView const * bv, bool mouse_hover)
+{
+	mouse_hover_[bv] = mouse_hover;
+	return true;
 }
 
 
@@ -454,6 +468,8 @@ void InsetExternal::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetExternal::draw(PainterInfo & pi, int x, int y) const
 {
+	if (renderer_->asButton())
+		renderer_->setRenderState(mouse_hover_[pi.base.bv]);
 	renderer_->draw(pi, x, y);
 }
 
