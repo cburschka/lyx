@@ -4073,6 +4073,7 @@ bool Buffer::reload()
 		changed(true);
 		updateTitles();
 		markClean();
+		saveCheckSum(d->filename);
 		message(bformat(_("Document %1$s reloaded."), disp_fn));
 	} else {
 		message(bformat(_("Could not reload document %1$s."), disp_fn));
