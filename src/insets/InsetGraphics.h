@@ -52,7 +52,7 @@ public:
 
 	InsetGraphicsParams getParams() const { return params_;}
 	///
-	bool clickable(int x, int y) const { return true; }
+	bool clickable(int, int) const { return true; }
 
 private:
 	///

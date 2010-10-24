@@ -336,7 +336,7 @@ public:
 	// true for InsetTabular & InsetText
 	virtual bool isActive() const { return nargs() > 0; }
 	/// can we click at the specified position ?
-	virtual bool clickable(int x, int y) const { return false; }
+	virtual bool clickable(int, int) const { return false; }
 
 	/// does this contain text that can be change track marked in DVI?
 	virtual bool canTrackChanges() const { return false; }

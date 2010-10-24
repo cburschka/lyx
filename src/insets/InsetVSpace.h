@@ -38,7 +38,7 @@ public:
 	///
 	static std::string params2string(VSpace const &);
 	///
-	bool clickable(int x, int y) const { return true; }
+	bool clickable(int, int) const { return true; }
 private:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;

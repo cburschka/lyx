@@ -116,7 +116,7 @@ public:
 	///
 	bool setMouseHover(BufferView const * bv, bool mouse_hover);
 	///
-	bool clickable(int x, int y) const { return true; }
+	bool clickable(int, int) const { return true; }
 private:
 	///
 	InsetExternal(InsetExternal const &);

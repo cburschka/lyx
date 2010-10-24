@@ -99,7 +99,7 @@ private:
 	///
 	InsetCode lyxCode() const { return NO_CODE; }
 	///
-	bool clickable(int x, int y) const { return hasSettings(); }
+	bool clickable(int, int) const { return hasSettings(); }
 	///
 	RenderButton & button() const { return button_; }
 	///
