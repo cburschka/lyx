@@ -2273,7 +2273,15 @@ section, which can be found on page.
 \end_layout
 
 \begin_layout Standard
-Now — with the cursor after the word `Section' — choose 
+Now — with the cursor after the word 
+\begin_inset Quotes eld
+\end_inset
+
+Section
+\begin_inset Quotes erd
+\end_inset
+
+ — choose 
 \family sans
 Insert\SpecialChar \menuseparator
 Cross
@@ -2293,11 +2301,42 @@ Reference
 .
  The Cross-reference dialog pops up.
  It shows a list of the possible labels you can reference.
- At the moment, there should be only one, `sec:About-This-Document'.
- First, select the drop-down menu labeled Format and select '<reference>
- on page <page>.' Then select `sec:About-This-Document' (it may be selected
- by default), and a reference marker will appear containing `Ref+Text: sec:About
--This-Document' (To be really correct, you should put a 
+ At the moment, there should be only one, 
+\begin_inset Quotes eld
+\end_inset
+
+sec:About-This-Document
+\begin_inset Quotes erd
+\end_inset
+
+.
+ First, select the drop-down menu labeled Format and select 
+\begin_inset Quotes eld
+\end_inset
+
+<reference> on page <page>
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Then select 
+\begin_inset Quotes eld
+\end_inset
+
+sec:About-This-Document
+\begin_inset Quotes erd
+\end_inset
+
+ (it may be selected by default), and a reference marker will appear containing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Ref+Text: sec:About-This-Document
+\begin_inset Quotes erd
+\end_inset
+
+ (To be really correct, you should put a 
 \family sans
 Protected
 \begin_inset space ~
@@ -2305,7 +2344,15 @@ Protected
 
 Space
 \family default
- in between the word `Section' and the reference).
+ in between the word 
+\begin_inset Quotes eld
+\end_inset
+
+Section
+\begin_inset Quotes erd
+\end_inset
+
+ and the reference).
  Alternatively to that method, you can right-click on a label and use in
  the appearing context menu 
 \family sans
@@ -2327,9 +2374,40 @@ Ctrl+V
  section number and then the page number.
  View your document as DVI, and you will see that LaTeX has been even cleverer
  than that.
- It refers to `Section 2' and depending how much text you have between the
- start of Section 2 and this cross-reference you may see `on this page,'
- 'on the previous page' or `on page n' (whereas 
+ It refers to 
+\begin_inset Quotes eld
+\end_inset
+
+Section 2
+\begin_inset Quotes erd
+\end_inset
+
+ and depending how much text you have between the start of Section 2 and
+ this cross-reference you may see 
+\begin_inset Quotes eld
+\end_inset
+
+on this page
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+on the previous page
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+on page n
+\begin_inset Quotes erd
+\end_inset
+
+ (whereas 
 \emph on
 n
 \emph default
