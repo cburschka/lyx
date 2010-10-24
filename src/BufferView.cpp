@@ -220,7 +220,8 @@ struct BufferView::Private
 	Private(BufferView & bv): wh_(0), cursor_(bv),
 		anchor_pit_(0), anchor_ypos_(0),
 		inlineCompletionUniqueChars_(0),
-		last_inset_(0), mouse_position_cache_(),
+		last_inset_(0), clickable_inset_(false), 
+		mouse_position_cache_(),
 		bookmark_edit_position_(-1), gui_(0)
 	{}
 
@@ -263,6 +264,8 @@ struct BufferView::Private
 	  * Not owned, so don't delete.
 	  */
 	Inset * last_inset_;
+	/// are we hovering something that we can click
+	bool clickable_inset_;
 
 	/// position of the mouse at the time of the last mouse move
 	/// This is used to update the hovering status of inset in
@@ -1959,8 +1962,12 @@ Inset const * BufferView::getCoveringInset(Text const & text,
 void BufferView::updateHoveredInset() const
 {
 	// Get inset under mouse, if there is one.
-	Inset const * covering_inset = getCoveringInset(buffer_.text(),
-			d->mouse_position_cache_.x_, d->mouse_position_cache_.y_);
+	int const x = d->mouse_position_cache_.x_;
+	int const y = d->mouse_position_cache_.y_;
+	Inset const * covering_inset = getCoveringInset(buffer_.text(), x, y);
+
+	d->clickable_inset_ = covering_inset && covering_inset->clickable(x, y);
+
 	if (covering_inset == d->last_inset_)
 		// Same inset, no need to do anything...
 		return;
@@ -2886,6 +2893,12 @@ void BufferView::setInlineCompletion(Cursor & cur, DocIterator const & pos,
 		else
 			cur.screenUpdateFlags(cur.result().screenUpdate() | Update::Force);
 	}
+}
+
+
+bool BufferView::clickableInset() const
+{ 
+	return d->clickable_inset_; 
 }
 
 } // namespace lyx

@@ -527,6 +527,9 @@ void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 		// Show the cursor immediately after any operation
 		startBlinkingCursor();
 	}
+
+	setCursorShape(buffer_view_->clickableInset() 
+		? Qt::PointingHandCursor : Qt::IBeamCursor);
 }
 
 

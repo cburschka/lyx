@@ -311,6 +311,8 @@ public:
 	void editInset(std::string const & name, Inset * inset);
 	///
 	void clearLastInset(Inset * inset) const;
+	/// Is the mouse hovering a clickable inset or element?
+	bool clickableInset() const;
 
 private:
 	/// noncopyable
