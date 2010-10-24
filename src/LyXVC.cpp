@@ -149,6 +149,7 @@ bool LyXVC::registrer()
 			_("(no initial description)"));
 	if (!ok) {
 		LYXERR(Debug::LYXVC, "LyXVC: user cancelled");
+		vcs.reset(0);
 		return false;
 	}
 	if (response.empty())
