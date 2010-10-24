@@ -2261,6 +2261,11 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 		return false;
 	}
 
+	// validate version control data and
+	// correct buffer title
+	b.lyxvc().file_found_hook(b.fileName());
+	b.updateTitles();
+
 	// the file has now been saved to the new location.
 	// we need to check that the locations of child buffers
 	// are still valid.
@@ -2280,10 +2285,6 @@ bool GuiView::saveBuffer(Buffer & b)
 
 	if (b.save()) {
 		theSession().lastFiles().add(b.fileName());
-		// validate version control data and
-		// correct buffer title
-		b.lyxvc().file_found_hook(b.fileName());
-		b.updateTitles();
 		return true;
 	}
 
