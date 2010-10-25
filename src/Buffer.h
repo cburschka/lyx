@@ -102,8 +102,15 @@ public:
 		ReadWrongVersion,
 		ReadFileNotFound,
 		ReadVCError,
-		ReadAutosaveFailure,
+		ReadAutosaveFailure,		
 		ReadEmergencyFailure,
+		ReadNoLyXFormat,
+		ReadDocumentFailure,
+		// lyx2lyx
+		LyX2LyXNoTempFile,
+		LyX2LyXNotFound,
+		LyX2LyXOlderFormat,
+		LyX2LyXNewerFormat,
 		// other
 		ReadOriginal
 	};
@@ -160,14 +167,22 @@ public:
 	/// read a new document from a string
 	bool readString(std::string const &);
 	
+	/// Reads the first tag of a LyX File and 
+	/// returns the file format number.
+	ReadStatus parseLyXFormat(Lexer & lex, 
+		support::FileName const & fn, int & file_format) const;
 	/// read the header, returns number of unknown tokens
 	int readHeader(Lexer & lex);
-
 	/** Reads a file without header.
 	    \param par if != 0 insert the file.
 	    \return \c true if file is not completely read.
 	*/
 	bool readDocument(Lexer &);
+	/// Convert the LyX file to the LYX_FORMAT using
+	/// the lyx2lyx script and returns the filename
+	/// of the temporary file to be read
+	ReadStatus convertLyXFormat(support::FileName const & fn, 
+		support::FileName & tmpfile, int from_format);
 
 	///
 	DocIterator getParFromID(int id) const;

@@ -910,6 +910,65 @@ Buffer::ReadStatus Buffer::parseLyXFormat(Lexer & lex,
 }
 
 
+Buffer::ReadStatus Buffer::convertLyXFormat(FileName const & fn, 
+	FileName & tmpfile, int from_format)
+{
+	tmpfile = FileName::tempName("Buffer_convertLyXFormat");
+	if(tmpfile.empty()) {
+		Alert::error(_("Conversion failed"),
+			bformat(_("%1$s is from a different"
+				" version of LyX, but a temporary"
+				" file for converting it could"
+				" not be created."),
+				from_utf8(fn.absFileName())));
+		return LyX2LyXNoTempFile;
+	}
+
+	FileName const lyx2lyx = libFileSearch("lyx2lyx", "lyx2lyx");
+	if (lyx2lyx.empty()) {
+		Alert::error(_("Conversion script not found"),
+		     bformat(_("%1$s is from a different"
+			       " version of LyX, but the"
+			       " conversion script lyx2lyx"
+			       " could not be found."),
+			       from_utf8(fn.absFileName())));
+		return LyX2LyXNotFound;
+	}
+
+	// Run lyx2lyx:
+	//   $python$ "$lyx2lyx$" -t $LYX_FORMAT$ -o "$tempfile$" "$filetoread$"
+	ostringstream command;
+	command << os::python()
+		<< ' ' << quoteName(lyx2lyx.toFilesystemEncoding())
+		<< " -t " << convert<string>(LYX_FORMAT)
+		<< " -o " << quoteName(tmpfile.toFilesystemEncoding())
+		<< ' ' << quoteName(fn.toSafeFilesystemEncoding());
+	string const command_str = command.str();
+
+	LYXERR(Debug::INFO, "Running '" << command_str << '\'');
+
+	cmd_ret const ret = runCommand(command_str);
+	if (ret.first != 0) {
+		if (from_format < LYX_FORMAT) {
+			Alert::error(_("Conversion script failed"),
+				bformat(_("%1$s is from an older version"
+					" of LyX, but the lyx2lyx script"
+					" failed to convert it."),
+					from_utf8(fn.absFileName())));
+			return LyX2LyXOlderFormat;
+		} else {
+			Alert::error(_("Conversion script failed"),
+				bformat(_("%1$s is from an newer version"
+					" of LyX, but the lyx2lyx script"
+					" failed to convert it."),
+					from_utf8(fn.absFileName())));
+			return LyX2LyXNewerFormat;
+		}
+	}
+	return ReadSuccess;
+}
+
+
 Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & fn,
 		bool fromstring)
 {
@@ -923,56 +982,12 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & fn,
 			// lyx2lyx would fail
 			return ReadWrongVersion;
 
-		FileName const tmpfile = FileName::tempName("Buffer_readFile");
-		if (tmpfile.empty()) {
-			Alert::error(_("Conversion failed"),
-				     bformat(_("%1$s is from a different"
-					      " version of LyX, but a temporary"
-					      " file for converting it could"
-					      " not be created."),
-					      from_utf8(fn.absFileName())));
-			return ReadFailure;
-		}
-		FileName const lyx2lyx = libFileSearch("lyx2lyx", "lyx2lyx");
-		if (lyx2lyx.empty()) {
-			Alert::error(_("Conversion script not found"),
-				     bformat(_("%1$s is from a different"
-					       " version of LyX, but the"
-					       " conversion script lyx2lyx"
-					       " could not be found."),
-					       from_utf8(fn.absFileName())));
-			return ReadFailure;
-		}
-		ostringstream command;
-		command << os::python()
-			<< ' ' << quoteName(lyx2lyx.toFilesystemEncoding())
-			<< " -t " << convert<string>(LYX_FORMAT)
-			<< " -o " << quoteName(tmpfile.toFilesystemEncoding())
-			<< ' ' << quoteName(fn.toSafeFilesystemEncoding());
-		string const command_str = command.str();
-
-		LYXERR(Debug::INFO, "Running '" << command_str << '\'');
-
-		cmd_ret const ret = runCommand(command_str);
-		if (ret.first != 0) {
-			if (file_format < LYX_FORMAT)
-				Alert::error(_("Conversion script failed"),
-				     bformat(_("%1$s is from an older version"
-					      " of LyX, but the lyx2lyx script"
-					      " failed to convert it."),
-					      from_utf8(fn.absFileName())));
-			else
-				Alert::error(_("Conversion script failed"),
-				     bformat(_("%1$s is from a newer version"
-					      " of LyX and cannot be converted by the"
-								" lyx2lyx script."),
-					      from_utf8(fn.absFileName())));
-			return ReadFailure;
-		} else {
-			// Do stuff with tmpfile name and buffer name here.
-			return readFile(tmpfile);
-		}
-
+		FileName tmpFile;
+		ReadStatus const ret_clf = convertLyXFormat(fn, tmpFile, file_format);
+		if (ret_clf != ReadSuccess)
+			return ret_clf;
+		else
+			return readFile(tmpFile);
 	}
 
 	if (readDocument(lex)) {
@@ -980,7 +995,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & fn,
 			     bformat(_("%1$s ended unexpectedly, which means"
 						    " that it is probably corrupted."),
 				       from_utf8(fn.absFileName())));
-		return ReadFailure;
+		return ReadDocumentFailure;
 	}
 
 	d->file_fully_loaded = true;
