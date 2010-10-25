@@ -819,6 +819,26 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_FORWARD_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action() == LFUN_WORD_FORWARD_SELECT);
 		needsUpdate |= cursorForwardOneWord(cur);
+
+		if (!needsUpdate && oldTopSlice == cur.top()
+				&& cur.boundary() == oldBoundary) {
+			cur.undispatched();
+			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
+		
+			// we will probably be moving out the inset, so we should execute
+			// the depm-mechanism, but only when the cursor has a place to 
+			// go outside this inset, i.e. in a slice above.
+			if (cur.depth() > 1 && cur.pos() == cur.lastpos() 
+				  && cur.pit() == cur.lastpit()) {
+				// The cursor hasn't changed yet. To give the 
+				// DEPM the possibility of doing something we must
+				// provide it with two different cursors.
+				Cursor dummy = cur;
+				dummy.pos() = dummy.pit() = 0;
+				if (cur.bv().checkDepm(dummy, cur))
+					cur.forceBufferUpdate();;
+			}
+		}
 		break;
 
 	case LFUN_WORD_LEFT:
@@ -848,6 +868,27 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_BACKWARD_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action() == LFUN_WORD_BACKWARD_SELECT);
 		needsUpdate |= cursorBackwardOneWord(cur);
+	
+		if (!needsUpdate && oldTopSlice == cur.top()
+				&& cur.boundary() == oldBoundary) {
+			cur.undispatched();
+			cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
+		
+			// we will probably be moving out the inset, so we should execute
+			// the depm-mechanism, but only when the cursor has a place to 
+			// go outside this inset, i.e. in a slice above.
+			if (cur.depth() > 1 && cur.pos() == 0 
+				  && cur.pit() == 0) {
+				// The cursor hasn't changed yet. To give the 
+				// DEPM the possibility of doing something we must
+				// provide it with two different cursors.
+				Cursor dummy = cur;
+				dummy.pos() = cur.lastpos();
+				dummy.pit() = cur.lastpit();
+				if (cur.bv().checkDepm(dummy, cur))
+					cur.forceBufferUpdate();
+			}
+		}
 		break;
 
 	case LFUN_WORD_SELECT: {
