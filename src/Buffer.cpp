@@ -885,29 +885,38 @@ void Buffer::setFullyLoaded(bool value)
 }
 
 
-Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
-		bool fromstring)
+Buffer::ReadStatus Buffer::parseLyXFormat(Lexer & lex,
+	FileName const & fn, int & file_format) const
 {
-	LASSERT(!filename.empty(), /**/);
-
-	// the first (non-comment) token _must_ be...
-	if (!lex.checkFor("\\lyxformat")) {
+	if(!lex.checkFor("\\lyxformat")) {
 		Alert::error(_("Document format failure"),
-			     bformat(_("%1$s is not a readable LyX document."),
-				       from_utf8(filename.absFileName())));
-		return ReadFailure;
-	}
+			bformat(_("%1$s is not a readable LyX document."),
+				from_utf8(fn.absFileName())));
+		return ReadNoLyXFormat;
+	}	
 
 	string tmp_format;
 	lex >> tmp_format;
-	//lyxerr << "LyX Format: `" << tmp_format << '\'' << endl;
-	// if present remove ".," from string.
+
+	// LyX formats 217 and earlier were written as 2.17. This corresponds
+	// to files from LyX versions < 1.1.6.3. We just remove the dot in
+	// these cases. See also: www.lyx.org/trac/changeset/1313.
 	size_t dot = tmp_format.find_first_of(".,");
-	//lyxerr << "           dot found at " << dot << endl;
 	if (dot != string::npos)
-			tmp_format.erase(dot, 1);
-	int const file_format = convert<int>(tmp_format);
-	//lyxerr << "format: " << file_format << endl;
+		tmp_format.erase(dot, 1);
+
+	file_format = convert<int>(tmp_format);
+	return ReadSuccess;
+}
+
+
+Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & fn,
+		bool fromstring)
+{
+	int file_format;
+	ReadStatus const ret_plf = parseLyXFormat(lex, fn, file_format);
+	if (ret_plf != ReadSuccess)
+		return ret_plf;
 
 	// save timestamp and checksum of the original disk file, making sure
 	// to not overwrite them with those of the file created in the tempdir
@@ -916,14 +925,13 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 		// Save the timestamp and checksum of disk file. If filename is an
 		// emergency file, save the timestamp and checksum of the original lyx file
 		// because isExternallyModified will check for this file. (BUG4193)
-		string diskfile = filename.absFileName();
+		string diskfile = fn.absFileName();
 		if (suffixIs(diskfile, ".emergency"))
 			diskfile = diskfile.substr(0, diskfile.size() - 10);
 		saveCheckSum(FileName(diskfile));
 	}
 
 	if (file_format != LYX_FORMAT) {
-
 		if (fromstring)
 			// lyx2lyx would fail
 			return ReadWrongVersion;
@@ -935,7 +943,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 					      " version of LyX, but a temporary"
 					      " file for converting it could"
 					      " not be created."),
-					      from_utf8(filename.absFileName())));
+					      from_utf8(fn.absFileName())));
 			return ReadFailure;
 		}
 		FileName const lyx2lyx = libFileSearch("lyx2lyx", "lyx2lyx");
@@ -945,7 +953,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 					       " version of LyX, but the"
 					       " conversion script lyx2lyx"
 					       " could not be found."),
-					       from_utf8(filename.absFileName())));
+					       from_utf8(fn.absFileName())));
 			return ReadFailure;
 		}
 		ostringstream command;
@@ -953,7 +961,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 			<< ' ' << quoteName(lyx2lyx.toFilesystemEncoding())
 			<< " -t " << convert<string>(LYX_FORMAT)
 			<< " -o " << quoteName(tmpfile.toFilesystemEncoding())
-			<< ' ' << quoteName(filename.toSafeFilesystemEncoding());
+			<< ' ' << quoteName(fn.toSafeFilesystemEncoding());
 		string const command_str = command.str();
 
 		LYXERR(Debug::INFO, "Running '" << command_str << '\'');
@@ -965,13 +973,13 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 				     bformat(_("%1$s is from an older version"
 					      " of LyX, but the lyx2lyx script"
 					      " failed to convert it."),
-					      from_utf8(filename.absFileName())));
+					      from_utf8(fn.absFileName())));
 			else
 				Alert::error(_("Conversion script failed"),
 				     bformat(_("%1$s is from a newer version"
 					      " of LyX and cannot be converted by the"
 								" lyx2lyx script."),
-					      from_utf8(filename.absFileName())));
+					      from_utf8(fn.absFileName())));
 			return ReadFailure;
 		} else {
 			// Do stuff with tmpfile name and buffer name here.
@@ -984,7 +992,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 		Alert::error(_("Document format failure"),
 			     bformat(_("%1$s ended unexpectedly, which means"
 						    " that it is probably corrupted."),
-				       from_utf8(filename.absFileName())));
+				       from_utf8(fn.absFileName())));
 		return ReadFailure;
 	}
 
@@ -3640,9 +3648,10 @@ Buffer::ReadStatus Buffer::readEmergency(FileName const & fn)
 		docstring str;
 		bool res;
 		ReadStatus const ret_rf = readFile(emergencyFile);
-		if (res = (ret_rf == ReadSuccess))
+		if (res = (ret_rf == ReadSuccess)) {
+			saveCheckSum(fn);
 			str = _("Document was successfully recovered.");
-		else
+		} else
 			str = _("Document was NOT successfully recovered.");
 		str += "\n\n" + bformat(_("Remove emergency file now?\n(%1$s)"),
 					makeDisplayPath(emergencyFile.absFileName()));
@@ -3691,6 +3700,7 @@ Buffer::ReadStatus Buffer::readAutosave(FileName const & fn)
 		// the file is not saved if we load the autosave file.
 		if (ret_rf == ReadSuccess) {
 			markDirty();
+			saveCheckSum(autosaveFile);
 			return ReadSuccess;
 		}
 		return ReadAutosaveFailure;
