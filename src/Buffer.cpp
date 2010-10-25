@@ -3661,31 +3661,36 @@ Buffer::ReadStatus Buffer::readAutosave(FileName const & fn)
 	// Now check if autosave file is newer.
 	FileName const autosaveFile(onlyPath(fn.absFileName()) 
 		+ '#' + onlyFileName(fn.absFileName()) + '#');
-	if (autosaveFile.exists() 
-		  && autosaveFile.lastModified() > fn.lastModified()) {
-		docstring const file = makeDisplayPath(fn.absFileName(), 20);
-		docstring const text =
-			bformat(_("The backup of the document "
-				  "%1$s is newer.\n\nLoad the "
-					       "backup instead?"), file);
-		switch (Alert::prompt(_("Load backup?"), text, 0, 2,
-				      _("&Load backup"), _("Load &original"),
-				      _("&Cancel") ))
-		{
-		case 0:
-			// the file is not saved if we load the autosave file.
+	if (!autosaveFile.exists() 
+		  || autosaveFile.lastModified() <= fn.lastModified()) 
+		return ReadFileNotFound;
+
+	docstring const file = makeDisplayPath(fn.absFileName(), 20);
+	docstring const text =
+		bformat(_("The backup of the document %1$s is newer.\n\n"
+				"Load the backup instead?"), file);
+	switch (Alert::prompt(_("Load backup?"), text, 0, 2,
+						_("&Load backup"), _("Load &original"),
+						_("&Cancel") ))
+	{
+	case 0: {
+		bool success = readFile(autosaveFile);
+		// the file is not saved if we load the autosave file.
+		if (success) {
 			markDirty();
-			return readFile(autosaveFile) ? ReadSuccess
-				: ReadAutosaveFailure;
-		case 1:
-			// Here we delete the autosave
-			autosaveFile.removeFile();
-			return ReadOriginal;
-		default:
-			return ReadCancel;
+			return ReadSuccess;
 		}
+		return ReadAutosaveFailure;
 	}
-	return ReadFileNotFound;
+	case 1:
+		// Here we delete the autosave
+		autosaveFile.removeFile();
+		return ReadOriginal;
+	default:
+		return ReadCancel;
+	}
+	// suppress warning
+	return ReadCancel;
 }
 
 
