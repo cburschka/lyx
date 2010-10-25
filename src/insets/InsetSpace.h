@@ -148,7 +148,7 @@ public:
 	///
 	docstring contextMenu(BufferView const & bv, int x, int y) const;
 	///
-	bool clickable(int x, int y) const { return true; }
+	bool clickable(int /* x */, int /* y */) const { return true; }
 protected:
 	///
 	Inset * clone() const { return new InsetSpace(*this); }
