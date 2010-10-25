@@ -42,6 +42,8 @@ public:
 	virtual std::string checkIn(std::string const & msg) = 0;
 	// can be this operation processed in the current RCS?
 	virtual bool checkInEnabled() = 0;
+	// should a log message provided for next checkin?
+	virtual bool isCheckInWithConfirmation() = 0;
 	/// check out for editing, returns log
 	virtual std::string checkOut() = 0;
 	// can be this operation processed in the current RCS?
@@ -56,6 +58,8 @@ public:
 	virtual bool lockingToggleEnabled() = 0;
 	/// revert current edits
 	virtual void revert() = 0;
+	// should a confirmation before revert requested?
+	virtual bool isRevertWithConfirmation() = 0;
 	/// FIXME
 	virtual void undoLast() = 0;
 	// can be this operation processed in the current RCS?
@@ -129,6 +133,8 @@ public:
 
 	virtual bool checkInEnabled();
 
+	virtual bool isCheckInWithConfirmation();
+
 	virtual std::string checkOut();
 
 	virtual bool checkOutEnabled();
@@ -142,6 +148,8 @@ public:
 	virtual bool lockingToggleEnabled();
 
 	virtual void revert();
+
+	virtual bool isRevertWithConfirmation();
 
 	virtual void undoLast();
 
@@ -190,6 +198,8 @@ public:
 
 	virtual bool checkInEnabled();
 
+	virtual bool isCheckInWithConfirmation();
+
 	virtual std::string checkOut();
 
 	virtual bool checkOutEnabled();
@@ -201,6 +211,8 @@ public:
 	virtual std::string lockingToggle();
 
 	virtual bool lockingToggleEnabled();
+
+	virtual bool isRevertWithConfirmation();
 
 	virtual void revert();
 
@@ -287,6 +299,8 @@ public:
 
 	virtual bool checkInEnabled();
 
+	virtual bool isCheckInWithConfirmation();
+
 	virtual std::string checkOut();
 
 	virtual bool checkOutEnabled();
@@ -300,6 +314,8 @@ public:
 	virtual bool lockingToggleEnabled();
 
 	virtual void revert();
+
+	virtual bool isRevertWithConfirmation();
 
 	virtual void undoLast();
 

@@ -195,6 +195,12 @@ bool RCS::checkInEnabled()
 	return owner_ && !owner_->isReadonly();
 }
 
+bool RCS::isCheckInWithConfirmation()
+{
+	//FIXME diff
+	return true;
+}
+
 
 string RCS::checkOut()
 {
@@ -244,6 +250,13 @@ void RCS::revert()
 		    FileName(owner_->filePath()));
 	// We ignore changes and just reload!
 	owner_->markClean();
+}
+
+
+bool RCS::isRevertWithConfirmation()
+{
+	//FIXME owner && diff ?
+	return true;
 }
 
 
@@ -612,6 +625,13 @@ bool CVS::checkInEnabled()
 }
 
 
+bool CVS::isCheckInWithConfirmation()
+{
+	CvsStatus status = getStatus();
+	return status == LocallyModified || status == LocallyAdded;
+}
+
+
 string CVS::checkOut()
 {
 	if (vcstatus != NOLOCKING && edit())
@@ -705,6 +725,13 @@ bool CVS::lockingToggleEnabled()
 }
 
 
+bool CVS::isRevertWithConfirmation()
+{
+	CvsStatus status = getStatus();
+	return !owner_->isClean() || status == LocallyModified || status == NeedsMerge;
+}
+
+
 void CVS::revert()
 {
 	// Reverts to the version in CVS repository and
@@ -724,17 +751,22 @@ void CVS::revert()
 		owner_->markClean();
 		break;
 	}
-	case LocallyAdded:
+	case LocallyAdded: {
+		docstring const file = owner_->fileName().displayName(20);
 		frontend::Alert::error(_("Revision control error."),
-			_("The current file is not in repository.\n"
-			  "You have to check in the first revision before you can revert.")) ;
+			bformat(_("The document %1$s is not in repository.\n"
+			          "You have to check in the first revision before you can revert."),
+				file)) ;
 		break;
-	default:
+	}
+	default: {
+		docstring const file = owner_->fileName().displayName(20);
 		frontend::Alert::error(_("Revision control error."),
-			bformat(_("Bad status when checking in changes.\n"
-					  "\n'%1$s'\n\n"),
-				toString(status)));
+			bformat(_("Cannot revert document %1$s to repository version.\n"
+			          "The status '%2$s' is unexpected."),
+				file, toString(status)));
 		break;
+		}
 	}
 }
 
@@ -925,6 +957,13 @@ bool SVN::checkInEnabled()
 		return isLocked();
 	else
 		return true;
+}
+
+
+bool SVN::isCheckInWithConfirmation()
+{
+	//FIXME diff
+	return true;
 }
 
 
@@ -1129,13 +1168,20 @@ bool SVN::lockingToggleEnabled()
 
 void SVN::revert()
 {
-	// Reverts to the version in CVS repository and
+	// Reverts to the version in SVN repository and
 	// gets the updated version from the repository.
 	string const fil = quoteName(onlyFileName(owner_->absFileName()));
 
 	doVCCommand("svn revert -q " + fil,
 		    FileName(owner_->filePath()));
 	owner_->markClean();
+}
+
+
+bool SVN::isRevertWithConfirmation()
+{
+	//FIXME owner && diff
+	return true;
 }
 
 

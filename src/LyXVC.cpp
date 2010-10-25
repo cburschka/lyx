@@ -165,7 +165,9 @@ string LyXVC::checkIn()
 	docstring empty(_("(no log message)"));
 	docstring response;
 	string log;
-	bool ok = Alert::askForText(response, _("LyX VC: Log Message"));
+	bool ok = true;
+	if (vcs->isCheckInWithConfirmation())
+		ok = Alert::askForText(response, _("LyX VC: Log Message"));
 	if (ok) {
 		if (response.empty())
 			response = empty;
@@ -214,8 +216,10 @@ void LyXVC::revert()
 	docstring text = bformat(_("Reverting to the stored version of the "
 				"document %1$s will lose all current changes.\n\n"
 				"Do you want to revert to the older version?"), file);
-	int const ret = Alert::prompt(_("Revert to stored version of document?"),
-		text, 0, 1, _("&Revert"), _("&Cancel"));
+	int ret = 0;
+	if (vcs->isRevertWithConfirmation())
+		ret = Alert::prompt(_("Revert to stored version of document?"),
+			text, 0, 1, _("&Revert"), _("&Cancel"));
 
 	if (ret == 0)
 		vcs->revert();
