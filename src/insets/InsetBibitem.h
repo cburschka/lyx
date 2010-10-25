@@ -42,6 +42,8 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "bibitem"; }
+	///
+	void updateCommand(docstring const & new_key, bool dummy = false);
 private:
 	/// verify label and update references.
 	/// Overloaded from Inset::initView.
@@ -66,8 +68,6 @@ private:
 	virtual void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
 	/// Update the counter of this inset
 	void updateBuffer(ParIterator const &, UpdateType);
-	///
-	void updateCommand(docstring const & new_key, bool dummy = false);
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///

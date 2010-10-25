@@ -36,6 +36,7 @@
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
 
+#include "insets/InsetBibitem.h"
 #include "insets/InsetBranch.h"
 #include "insets/InsetCommand.h"
 #include "insets/InsetFlex.h"
@@ -271,7 +272,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 
 		case LABEL_CODE: {
 			// check for duplicates
-			InsetCommand & lab = static_cast<InsetCommand &>(*it);
+			InsetLabel & lab = dynamic_cast<InsetLabel &>(*it);
 			docstring const oldname = lab.getParam("name");
 			lab.updateCommand(oldname, false);
 			// We need to update the buffer reference cache.
@@ -309,7 +310,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 
 		case BIBITEM_CODE: {
 			// check for duplicates
-			InsetCommand & bib = static_cast<InsetCommand &>(*it);
+			InsetBibitem & bib = dynamic_cast<InsetBibitem &>(*it);
 			docstring const oldkey = bib.getParam("key");
 			bib.updateCommand(oldkey, false);
 			// We need to update the buffer reference cache.
