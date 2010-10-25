@@ -33,15 +33,6 @@ What's new
   "all" for letting LyX behave as in 1.6.6 and previous versions; set it
   to "none" for mimicking the 1.6.7 behavior of not overwriting any file.
 
-- Add support for subtitles in the KOMA classes.
-
-- Add support for lists and quotes in the g-brief2 letter class (bug 6857).
-
-- Add support for the math command \ddddot (part of bug 6872).
-
-
-* USER INTERFACE
-
 - New layout and template file for submissions to journals published by
   the American Geophysical Union (AGU).
 
@@ -51,8 +42,18 @@ What's new
 - New layout and template file for the document class frletter that is
   used to write letters in French (bug 6915).
 
-- New layout and template file for the document class lettre that is
-  also used to write letters in French.
+- New layout and template file for the document class lettre, another
+  French letter class.
+
+- Add support for subtitles in the KOMA classes.
+
+- Add support for lists and quotes in the g-brief2 letter class
+  (bug 6857).
+
+- Add support for the math command \ddddot (part of bug 6872).
+
+
+* USER INTERFACE
 
 - Improve the detection of LaTeX warnings in the Log dialog.
 
@@ -63,7 +64,8 @@ What's new
 
 - Revised section 4.2 "Footnotes" of the EmbeddedObjects manual.
 
-- Revised section 5.1 "Installing a new LaTeX package" of the Customization manual.
+- Revised section 5.1 "Installing a new LaTeX package" of the
+  Customization manual.
 
 - Describe how to use formulas in program listings in sec. 7 of the
   EmbeddedObjects manual.
@@ -72,8 +74,8 @@ What's new
 
 - Updated English and German Linguistics manual.
 
-- Updated French, German, Italian, Spanish and Slovak User Interface
-  localizations.
+- Updated French, German, Italian, Spanish and Slovak User
+  Interface localizations.
 
 
 * WINDOWS INSTALLER
@@ -103,12 +105,12 @@ What's new
 
 - Do not popup "invalid path" warning when using View > Source (bug 6904).
 
-- Small tweaks for the memoir text class.
+- Small tweaks to the memoir text class.
 
 - Allow pathnames with commas for BibTeX files (bug 6914).
 
 - Set correct anchor for the link to the bibliography in the table
-  of contents (bug 6470).
+  of contents if hyperref is used (bug 6470).
 
 
 * USER INTERFACE
@@ -125,14 +127,14 @@ What's new
 - Fix an assertion when unindenting empty lines in a listings inset
   (bug 6869).
 
-- Box dialog: only shaded boxes can have multiple paragraphs when there
+- Box dialog: only shaded boxes can have multiple paragraphs if there
   is no inner box.
 
 - Fix mouse wheel scrolling on Mac OS 10.6 (bug 6775).
 
-- Fix tab switching keyboard shortcut (bug 5970).
+- Fix tab-switching keyboard shortcut (bug 5970).
 
-- Fix parsing of in-line math environments nested in (unknown to LyX)
+- Fix parsing of inline math environments nested in (unknown to LyX)
   text-mode user macros (bug 1337).
 
 - When undo returns to a state where the file was saved, make sure to
@@ -144,7 +146,7 @@ What's new
 - Don't allow to insert margin notes and footnotes into captions because
   this would lead to LaTeX errors.
 
-- Fix handling of commands containing a double quote (") in shortcut
+- Fix handling of commands containing a straight quote (") in shortcut
   editor (bug 6786).
 
 - Use correct mode and screen fonts for old-style font changing macros
@@ -162,7 +164,7 @@ What's new
 - Don't try to blindly execute the latex command if no latex binary is
   available (bug 6873).
 
-- Fix button link assignment in select from template dialogue.
+- Fix button link assignment in "Select from Template" dialog.
 
 - Don't mark document as changed when navigating with cell-forward
   or cell-backward.
