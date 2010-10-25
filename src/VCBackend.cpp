@@ -443,7 +443,9 @@ string const CVS::getTarget(OperationMode opmode) const
 {
 	switch(opmode) {
 	case Directory:
-		return quoteName(owner_->filePath());
+		// in client server mode CVS does not like full path operand for directory operation
+		// since LyX switches to the repo dir "." is good enough as target
+		return ".";
 	case File:
 		return quoteName(onlyFileName(owner_->absFileName()));
 	}
