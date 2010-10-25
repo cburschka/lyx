@@ -849,7 +849,7 @@ bool Buffer::readString(string const & s)
 		os.close();
 		return readFile(name);
 	}
-	case default:
+	default:
 		break;
 	}
 
