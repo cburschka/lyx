@@ -16,6 +16,10 @@
 #include <string>
 #include <boost/limits.hpp>
 
+#if defined(BOOST_HASH_NO_IMPLICIT_CASTS)
+#include <boost/static_assert.hpp>
+#endif
+
 #if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
 #include <boost/type_traits/is_pointer.hpp>
 #endif
@@ -29,6 +33,18 @@
 
 namespace boost
 {
+#if defined(BOOST_HASH_NO_IMPLICIT_CASTS)
+
+    // If you get a static assertion here, it's because hash_value
+    // isn't declared for your type.
+    template <typename T>
+    std::size_t hash_value(T const&) {
+        BOOST_STATIC_ASSERT((T*) 0 && false);
+        return 0;
+    }
+
+#endif
+
     std::size_t hash_value(bool);
     std::size_t hash_value(char);
     std::size_t hash_value(unsigned char);
@@ -44,7 +60,7 @@ namespace boost
     std::size_t hash_value(wchar_t);
 #endif
     
-#if defined(BOOST_HAS_LONG_LONG)
+#if !defined(BOOST_NO_LONG_LONG)
     std::size_t hash_value(boost::long_long_type);
     std::size_t hash_value(boost::ulong_long_type);
 #endif
@@ -174,7 +190,7 @@ namespace boost
     }
 #endif
 
-#if defined(BOOST_HAS_LONG_LONG)
+#if !defined(BOOST_NO_LONG_LONG)
     inline std::size_t hash_value(boost::long_long_type v)
     {
         return hash_detail::hash_value_signed(v);
@@ -408,7 +424,7 @@ namespace boost
     BOOST_HASH_SPECIALIZE_REF(std::wstring)
 #endif
 
-#if defined(BOOST_HAS_LONG_LONG)
+#if !defined(BOOST_NO_LONG_LONG)
     BOOST_HASH_SPECIALIZE(boost::long_long_type)
     BOOST_HASH_SPECIALIZE(boost::ulong_long_type)
 #endif
