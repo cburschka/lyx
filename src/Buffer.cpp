@@ -3220,6 +3220,18 @@ int AutoSaveBuffer::generateChild()
 } // namespace anon
 
 
+FileName Buffer::getEmergencyFileName() const
+{
+	return getEmergencyFileNameFor(d->filename);
+}
+
+
+FileName Buffer::getEmergencyFileNameFor(FileName const & fn) const
+{
+	return FileName(fn.absFileName() + ".emergency");
+}
+
+
 FileName Buffer::getAutosaveFileName() const
 {
 	// if the document is unnamed try to save in the backup dir, else
@@ -3232,8 +3244,15 @@ FileName Buffer::getAutosaveFileName() const
 	if (!isUnnamed() || fpath.empty() || !FileName(fpath).exists())
 		fpath = filePath();
 
-	string const fname = "#" + d->filename.onlyFileName() + "#";
-	return makeAbsPath(fname, fpath);
+	string const fname = d->filename.onlyFileName();
+	return getAutosaveFileNameFor(makeAbsPath(fname, fpath));
+}
+
+
+FileName Buffer::getAutosaveFileNameFor(FileName const & fn) const
+{
+	string const fname = "#" + onlyFileName(fn.absFileName()) + "#";
+	return FileName(onlyPath(fn.absFileName()) + fname);
 }
 
 
@@ -3605,20 +3624,18 @@ Buffer::ReadStatus Buffer::readFromVC(FileName const & fn)
 
 Buffer::ReadStatus Buffer::readEmergency(FileName const & fn)
 {
-	FileName const emergencyFile(fn.absFileName() + ".emergency");
+	FileName const emergencyFile = getEmergencyFileNameFor(fn);
 	if (!emergencyFile.exists() 
 		  || emergencyFile.lastModified() <= fn.lastModified())
 		return ReadFileNotFound;
 
 	docstring const file = makeDisplayPath(fn.absFileName(), 20);
-	docstring const text =
-		bformat(_("An emergency save of the document "
-				"%1$s exists.\n\n"
-				"Recover emergency save?"), file);
+	docstring const text = bformat(_("An emergency save of the document "
+		"%1$s exists.\n\nRecover emergency save?"), file);
+	int const ret = Alert::prompt(_("Load emergency save?"), text,
+		0, 2, _("&Recover"), _("&Load Original"), _("&Cancel"));
 
-	switch (Alert::prompt(_("Load emergency save?"), text, 0, 2,
-					_("&Recover"),  _("&Load Original"),
-					_("&Cancel")))
+	switch (ret)
 	{
 	case 0: {
 		// the file is not saved if we load the emergency file.
@@ -3649,9 +3666,8 @@ Buffer::ReadStatus Buffer::readEmergency(FileName const & fn)
 		return ReadOriginal;
 
 	default:
-		return ReadCancel;
+		break;
 	}
-	// suppress warning
 	return ReadCancel;
 }
 
@@ -3659,19 +3675,18 @@ Buffer::ReadStatus Buffer::readEmergency(FileName const & fn)
 Buffer::ReadStatus Buffer::readAutosave(FileName const & fn)
 {
 	// Now check if autosave file is newer.
-	FileName const autosaveFile(onlyPath(fn.absFileName()) 
-		+ '#' + onlyFileName(fn.absFileName()) + '#');
+	FileName autosaveFile = getAutosaveFileNameFor(fn);
 	if (!autosaveFile.exists() 
 		  || autosaveFile.lastModified() <= fn.lastModified()) 
 		return ReadFileNotFound;
 
 	docstring const file = makeDisplayPath(fn.absFileName(), 20);
-	docstring const text =
-		bformat(_("The backup of the document %1$s is newer.\n\n"
-				"Load the backup instead?"), file);
-	switch (Alert::prompt(_("Load backup?"), text, 0, 2,
-						_("&Load backup"), _("Load &original"),
-						_("&Cancel") ))
+	docstring const text = bformat(_("The backup of the document %1$s 
+		"is newer.\n\nLoad the backup instead?"), file);
+	int const ret = Alert::prompt(_("Load backup?"), text, 0, 2,
+		_("&Load backup"), _("Load &original"),	_("&Cancel"));
+	
+	switch (ret)
 	{
 	case 0: {
 		bool success = readFile(autosaveFile);
@@ -3687,9 +3702,8 @@ Buffer::ReadStatus Buffer::readAutosave(FileName const & fn)
 		autosaveFile.removeFile();
 		return ReadOriginal;
 	default:
-		return ReadCancel;
+		break;
 	}
-	// suppress warning
 	return ReadCancel;
 }
 
