@@ -159,9 +159,7 @@ public:
 
 	/// read a new document from a string
 	bool readString(std::string const &);
-	/// load a new file
-	bool readFile(support::FileName const & filename);
-
+	
 	/// read the header, returns number of unknown tokens
 	int readHeader(Lexer & lex);
 
@@ -197,7 +195,9 @@ public:
 	/// tries to extract the file from version control if it
 	/// cannot be found. If it can be found, it will try to
 	/// read an emergency save file or an autosave file.
-	ReadStatus loadLyXFile(support::FileName const & s);
+	ReadStatus loadLyXFile(support::FileName const & fn);
+	/// read a new file
+	ReadStatus readFile(support::FileName const & fn);
 	/// Try to extract the file from a version control container
 	/// before reading if the file cannot be found. This is only
 	/// implemented for RCS.
@@ -548,8 +548,16 @@ public:
 	void removeAutosaveFile() const;
 	///
 	void moveAutosaveFile(support::FileName const & old) const;
-	///
+	/// Get the filename of the autosave file associated with the Buffer
 	support::FileName getAutosaveFileName() const;
+	/// Get the filename of the autosave file associated with \c fn
+	support::FileName getAutosaveFileNameFor(support::FileName const & fn)
+		const;
+	/// Get the filename of the emergency file associated with the Buffer
+	support::FileName getEmergencyFileName() const;
+	/// Get the filename of the emergency file associated with \c fn
+	support::FileName getEmergencyFileNameFor(support::FileName const & fn)
+		const;
 
 	/// return the format of the buffer on a string
 	std::string bufferFormat() const;
