@@ -918,19 +918,6 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & fn,
 	if (ret_plf != ReadSuccess)
 		return ret_plf;
 
-	// save timestamp and checksum of the original disk file, making sure
-	// to not overwrite them with those of the file created in the tempdir
-	// when it has to be converted to the current format.
-	if (!d->checksum_) {
-		// Save the timestamp and checksum of disk file. If filename is an
-		// emergency file, save the timestamp and checksum of the original lyx file
-		// because isExternallyModified will check for this file. (BUG4193)
-		string diskfile = fn.absFileName();
-		if (suffixIs(diskfile, ".emergency"))
-			diskfile = diskfile.substr(0, diskfile.size() - 10);
-		saveCheckSum(FileName(diskfile));
-	}
-
 	if (file_format != LYX_FORMAT) {
 		if (fromstring)
 			// lyx2lyx would fail
@@ -3700,7 +3687,7 @@ Buffer::ReadStatus Buffer::readAutosave(FileName const & fn)
 		// the file is not saved if we load the autosave file.
 		if (ret_rf == ReadSuccess) {
 			markDirty();
-			saveCheckSum(autosaveFile);
+			saveCheckSum(fn);
 			return ReadSuccess;
 		}
 		return ReadAutosaveFailure;
