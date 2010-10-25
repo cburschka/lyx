@@ -638,11 +638,6 @@ public:
 private:
 	///
 	std::vector<std::string> backends() const;
-	/** Inserts a file into a document
-	    \return \c false if method fails.
-	*/
-	ReadStatus readFile(Lexer &, support::FileName const & filename,
-			    bool fromString = false);
 	///
 	void getLanguages(std::set<Language const *> &) const;
 	/// Update the list of all bibfiles in use (including bibfiles

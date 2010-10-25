@@ -835,22 +835,24 @@ bool Buffer::readString(string const & s)
 	Lexer lex;
 	istringstream is(s);
 	lex.setStream(is);
-	FileName const name = FileName::tempName("Buffer_readString");
-	switch (readFile(lex, name, true)) {
-	case ReadFailure:
-		return false;
+	FileName const fn = FileName::tempName("Buffer_readString");
 
-	case ReadWrongVersion: {
+	int file_format;
+	ReadStatus const ret_plf = parseLyXFormat(lex, fn, file_format);
+	if (ret_plf != ReadSuccess)
+		return ret_plf;
+
+	if (file_format != LYX_FORMAT) {
 		// We need to call lyx2lyx, so write the input to a file
-		ofstream os(name.toFilesystemEncoding().c_str());
+		ofstream os(fn.toFilesystemEncoding().c_str());
 		os << s;
 		os.close();
-		return readFile(name);
-	}
-	default:
-		break;
+		// lyxvc in readFile
+		return readFile(fn) == ReadSuccess;
 	}
 
+	if (readDocument(lex))
+		return false;
 	return true;
 }
 
@@ -861,10 +863,28 @@ Buffer::ReadStatus Buffer::readFile(FileName const & fn)
 	Lexer lex;
 	lex.setFile(fname);
 
-	ReadStatus const ret_rf = readFile(lex, fname);
-	if (ret_rf != ReadSuccess)
-		return ret_rf;
+	int file_format;
+	ReadStatus const ret_plf = parseLyXFormat(lex, fn, file_format);
+	if (ret_plf != ReadSuccess)
+		return ret_plf;
 
+	if (file_format != LYX_FORMAT) {
+		FileName tmpFile;
+		ReadStatus const ret_clf = convertLyXFormat(fn, tmpFile, file_format);
+		if (ret_clf != ReadSuccess)
+			return ret_clf;
+		return readFile(tmpFile);
+	}
+
+	if (readDocument(lex)) {
+		Alert::error(_("Document format failure"),
+			bformat(_("%1$s ended unexpectedly, which means"
+				" that it is probably corrupted."),
+					from_utf8(fn.absFileName())));
+		return ReadDocumentFailure;
+	}
+
+	d->file_fully_loaded = true;
 	// InsetInfo needs to know if file is under VCS
 	lyxvc().file_found_hook(fn);
 	d->read_only = !fname.isWritable();
@@ -965,40 +985,6 @@ Buffer::ReadStatus Buffer::convertLyXFormat(FileName const & fn,
 			return LyX2LyXNewerFormat;
 		}
 	}
-	return ReadSuccess;
-}
-
-
-Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & fn,
-		bool fromstring)
-{
-	int file_format;
-	ReadStatus const ret_plf = parseLyXFormat(lex, fn, file_format);
-	if (ret_plf != ReadSuccess)
-		return ret_plf;
-
-	if (file_format != LYX_FORMAT) {
-		if (fromstring)
-			// lyx2lyx would fail
-			return ReadWrongVersion;
-
-		FileName tmpFile;
-		ReadStatus const ret_clf = convertLyXFormat(fn, tmpFile, file_format);
-		if (ret_clf != ReadSuccess)
-			return ret_clf;
-		else
-			return readFile(tmpFile);
-	}
-
-	if (readDocument(lex)) {
-		Alert::error(_("Document format failure"),
-			     bformat(_("%1$s ended unexpectedly, which means"
-						    " that it is probably corrupted."),
-				       from_utf8(fn.absFileName())));
-		return ReadDocumentFailure;
-	}
-
-	d->file_fully_loaded = true;
 	return ReadSuccess;
 }
 
