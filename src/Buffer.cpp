@@ -869,6 +869,7 @@ bool Buffer::readFile(FileName const & filename)
 	if (readFile(lex, fname) != ReadSuccess)
 		return false;
 
+	d->read_only = !fname.isWritable();
 	return true;
 }
 
@@ -3590,68 +3591,76 @@ vector<string> Buffer::backends() const
 }
 
 
-bool Buffer::readFileHelper(FileName const & s)
+Buffer::ReadStatus Buffer::readFromVC(FileName const & fn)
 {
-	// File information about normal file
-	if (!s.exists()) {
-		docstring const file = makeDisplayPath(s.absFileName(), 50);
-		docstring text = bformat(_("The specified document\n%1$s"
-						     "\ncould not be read."), file);
-		Alert::error(_("Could not read document"), text);
-		return false;
-	}
+	bool const found = LyXVC::file_not_found_hook(fn);
+	if (!found)
+		return ReadFileNotFound;
+	if (!fn.isReadableFile())
+		return ReadVCError;
+	return ReadSuccess;
+}
 
-	// Check if emergency save file exists and is newer.
-	FileName const e(s.absFileName() + ".emergency");
 
-	if (e.exists() && s.exists() && e.lastModified() > s.lastModified()) {
-		docstring const file = makeDisplayPath(s.absFileName(), 20);
+Buffer::ReadStatus Buffer::readEmergency(FileName const & fn)
+{
+	FileName const emergencyFile(fn.absFileName() + ".emergency");
+	if (emergencyFile.exists() 
+		  && emergencyFile.lastModified() > fn.lastModified()) {
+		docstring const file = makeDisplayPath(fn.absFileName(), 20);
 		docstring const text =
 			bformat(_("An emergency save of the document "
 				  "%1$s exists.\n\n"
-					       "Recover emergency save?"), file);
+						   "Recover emergency save?"), file);
+
 		switch (Alert::prompt(_("Load emergency save?"), text, 0, 2,
-				      _("&Recover"),  _("&Load Original"),
-				      _("&Cancel")))
+					  _("&Recover"),  _("&Load Original"),
+					  _("&Cancel")))
 		{
 		case 0: {
 			// the file is not saved if we load the emergency file.
 			markDirty();
 			docstring str;
-			bool res;
-
-			if (res = readFile(e))
+			bool const res = readFile(emergencyFile);
+			if (res)
 				str = _("Document was successfully recovered.");
 			else
 				str = _("Document was NOT successfully recovered.");
 			str += "\n\n" + bformat(_("Remove emergency file now?\n(%1$s)"),
-						makeDisplayPath(e.absFileName()));
+						makeDisplayPath(emergencyFile.absFileName()));
 
 			if (!Alert::prompt(_("Delete emergency file?"), str, 1, 1,
-					_("&Remove"), _("&Keep it"))) {
-				e.removeFile();
+					_("&Remove"), _("&Keep"))) {
+				emergencyFile.removeFile();
 				if (res)
 					Alert::warning(_("Emergency file deleted"),
 						_("Do not forget to save your file now!"), true);
 				}
-			return res;
+			return res ? ReadSuccess : ReadEmergencyFailure;
 		}
 		case 1:
 			if (!Alert::prompt(_("Delete emergency file?"),
 					_("Remove emergency file now?"), 1, 1,
-					_("&Remove"), _("&Keep it")))
-				e.removeFile();
-			break;
+					_("&Remove"), _("&Keep")))
+				emergencyFile.removeFile();
+			return ReadOriginal;
+
 		default:
-			return false;
+			return ReadCancel;
 		}
 	}
+	return ReadFileNotFound;
+}
 
+
+Buffer::ReadStatus Buffer::readAutosave(FileName const & fn)
+{
 	// Now check if autosave file is newer.
-	FileName const a(onlyPath(s.absFileName()) + '#' + onlyFileName(s.absFileName()) + '#');
-
-	if (a.exists() && s.exists() && a.lastModified() > s.lastModified()) {
-		docstring const file = makeDisplayPath(s.absFileName(), 20);
+	FileName const autosaveFile(onlyPath(fn.absFileName()) 
+		+ '#' + onlyFileName(fn.absFileName()) + '#');
+	if (autosaveFile.exists() 
+		  && autosaveFile.lastModified() > fn.lastModified()) {
+		docstring const file = makeDisplayPath(fn.absFileName(), 20);
 		docstring const text =
 			bformat(_("The backup of the document "
 				  "%1$s is newer.\n\nLoad the "
@@ -3663,35 +3672,40 @@ bool Buffer::readFileHelper(FileName const & s)
 		case 0:
 			// the file is not saved if we load the autosave file.
 			markDirty();
-			return readFile(a);
+			return readFile(autosaveFile) ? ReadSuccess
+				: ReadAutosaveFailure;
 		case 1:
 			// Here we delete the autosave
-			a.removeFile();
-			break;
+			autosaveFile.removeFile();
+			return ReadOriginal;
 		default:
-			return false;
+			return ReadCancel;
 		}
 	}
-	return readFile(s);
+	return ReadFileNotFound;
 }
 
 
-Buffer::ReadStatus Buffer::loadLyXFile(FileName const & s)
+Buffer::ReadStatus Buffer::loadLyXFile(FileName const & fn)
 {
-	// If the file is not readable, we try to
-	// retrieve the file from version control.
-	if (!s.isReadableFile()
-		  && !LyXVC::file_not_found_hook(s))
-		return ReadFailure;
-	
-	if (s.isReadableFile()){
-		// InsetInfo needs to know if file is under VCS
-		lyxvc().file_found_hook(s);
-		if (readFileHelper(s)) {
-			d->read_only = !s.isWritable();
-			return ReadSuccess;
-		}
+	if (!fn.isReadableFile()) {
+		ReadStatus const ret_rvc = readFromVC(fn);
+		if (ret_rvc != ReadSuccess)
+			return ret_rvc;
 	}
+	// InsetInfo needs to know if file is under VCS
+	lyxvc().file_found_hook(fn);
+
+	ReadStatus const ret_re = readEmergency(fn);
+	if (ret_re == ReadSuccess || ret_re == ReadCancel)
+		return ret_re;
+	
+	ReadStatus const ret_ra = readAutosave(fn);
+	if (ret_ra == ReadSuccess || ret_ra == ReadCancel)
+		return ret_ra;
+
+	if (readFile(fn))
+		return ReadSuccess;
 	return ReadFailure;
 }
 

@@ -97,8 +97,15 @@ public:
 	enum ReadStatus {
 		ReadSuccess,
 		ReadCancel,
+		// failures
 		ReadFailure,
-		ReadWrongVersion
+		ReadWrongVersion,
+		ReadFileNotFound,
+		ReadVCError,
+		ReadAutosaveFailure,
+		ReadEmergencyFailure,
+		// other
+		ReadOriginal
 	};
 
 
@@ -186,8 +193,21 @@ public:
 	/// Write file. Returns \c false if unsuccesful.
 	bool writeFile(support::FileName const &) const;
 
-	/// Loads LyX file \c filename into buffer, *  and return success
+	/// Loads a LyX file \c fn into the buffer. This function
+	/// tries to extract the file from version control if it
+	/// cannot be found. If it can be found, it will try to
+	/// read an emergency save file or an autosave file.
 	ReadStatus loadLyXFile(support::FileName const & s);
+	/// Try to extract the file from a version control container
+	/// before reading if the file cannot be found. This is only
+	/// implemented for RCS.
+	/// \sa LyXVC::file_not_found_hook
+	ReadStatus readFromVC(support::FileName const & fn);
+	/// Try to read an emergency file associated to \c fn. 
+	ReadStatus readEmergency(support::FileName const & fn);
+	/// Try to read an autosave file associated to \c fn.
+	ReadStatus readAutosave(support::FileName const & fn);
+
 	/// Reloads the LyX file
 	bool reload();
 
@@ -593,8 +613,6 @@ public:
 	void checkChildBuffers();
 
 private:
-	///
-	bool readFileHelper(support::FileName const & s);
 	///
 	std::vector<std::string> backends() const;
 	/** Inserts a file into a document
