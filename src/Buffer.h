@@ -95,9 +95,10 @@ public:
 
 	/// Result of \c readFile()
 	enum ReadStatus {
-		failure, ///< The file could not be read
-		success, ///< The file could not be read
-		wrongversion ///< The version of the file does not match ours
+		ReadSuccess,
+		ReadCancel,
+		ReadFailure,
+		ReadWrongVersion
 	};
 
 
@@ -186,7 +187,7 @@ public:
 	bool writeFile(support::FileName const &) const;
 
 	/// Loads LyX file \c filename into buffer, *  and return success
-	bool loadLyXFile(support::FileName const & s);
+	ReadStatus loadLyXFile(support::FileName const & s);
 	/// Reloads the LyX file
 	bool reload();
 

@@ -496,7 +496,7 @@ bool LyX::loadFiles()
 			continue;
 
 		Buffer * buf = pimpl_->buffer_list_.newBuffer(fname.absFileName(), false);
-		if (buf->loadLyXFile(fname)) {
+		if (buf->loadLyXFile(fname) == Buffer::ReadSuccess) {
 			ErrorList const & el = buf->errorList("Parse");
 			if (!el.empty())
 				for_each(el.begin(), el.end(),

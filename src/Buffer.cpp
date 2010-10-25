@@ -839,16 +839,16 @@ bool Buffer::readString(string const & s)
 	lex.setStream(is);
 	FileName const name = FileName::tempName("Buffer_readString");
 	switch (readFile(lex, name, true)) {
-	case failure:
+	case ReadFailure:
 		return false;
-	case wrongversion: {
+	case ReadWrongVersion: {
 		// We need to call lyx2lyx, so write the input to a file
 		ofstream os(name.toFilesystemEncoding().c_str());
 		os << s;
 		os.close();
 		return readFile(name);
 	}
-	case success:
+	case ReadSuccess:
 		break;
 	}
 
@@ -866,7 +866,7 @@ bool Buffer::readFile(FileName const & filename)
 	paragraphs().clear();
 	Lexer lex;
 	lex.setFile(fname);
-	if (readFile(lex, fname) != success)
+	if (readFile(lex, fname) != ReadSuccess)
 		return false;
 
 	return true;
@@ -895,7 +895,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 		Alert::error(_("Document format failure"),
 			     bformat(_("%1$s is not a readable LyX document."),
 				       from_utf8(filename.absFileName())));
-		return failure;
+		return ReadFailure;
 	}
 
 	string tmp_format;
@@ -926,7 +926,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 
 		if (fromstring)
 			// lyx2lyx would fail
-			return wrongversion;
+			return ReadWrongVersion;
 
 		FileName const tmpfile = FileName::tempName("Buffer_readFile");
 		if (tmpfile.empty()) {
@@ -936,7 +936,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 					      " file for converting it could"
 					      " not be created."),
 					      from_utf8(filename.absFileName())));
-			return failure;
+			return ReadFailure;
 		}
 		FileName const lyx2lyx = libFileSearch("lyx2lyx", "lyx2lyx");
 		if (lyx2lyx.empty()) {
@@ -946,7 +946,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 					       " conversion script lyx2lyx"
 					       " could not be found."),
 					       from_utf8(filename.absFileName())));
-			return failure;
+			return ReadFailure;
 		}
 		ostringstream command;
 		command << os::python()
@@ -972,11 +972,11 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 					      " of LyX and cannot be converted by the"
 								" lyx2lyx script."),
 					      from_utf8(filename.absFileName())));
-			return failure;
+			return ReadFailure;
 		} else {
 			bool const ret = readFile(tmpfile);
 			// Do stuff with tmpfile name and buffer name here.
-			return ret ? success : failure;
+			return ret ? ReadSuccess : ReadFailure;
 		}
 
 	}
@@ -986,11 +986,11 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 			     bformat(_("%1$s ended unexpectedly, which means"
 						    " that it is probably corrupted."),
 				       from_utf8(filename.absFileName())));
-		return failure;
+		return ReadFailure;
 	}
 
 	d->file_fully_loaded = true;
-	return success;
+	return ReadSuccess;
 }
 
 
@@ -3620,7 +3620,7 @@ bool Buffer::readFileHelper(FileName const & s)
 			docstring str;
 			bool res;
 
-			if ((res = readFile(e)) == success)
+			if (res = readFile(e))
 				str = _("Document was successfully recovered.");
 			else
 				str = _("Document was NOT successfully recovered.");
@@ -3630,7 +3630,7 @@ bool Buffer::readFileHelper(FileName const & s)
 			if (!Alert::prompt(_("Delete emergency file?"), str, 1, 1,
 					_("&Remove"), _("&Keep it"))) {
 				e.removeFile();
-				if (res == success)
+				if (res)
 					Alert::warning(_("Emergency file deleted"),
 						_("Do not forget to save your file now!"), true);
 				}
@@ -3676,23 +3676,23 @@ bool Buffer::readFileHelper(FileName const & s)
 }
 
 
-bool Buffer::loadLyXFile(FileName const & s)
+Buffer::ReadStatus Buffer::loadLyXFile(FileName const & s)
 {
 	// If the file is not readable, we try to
 	// retrieve the file from version control.
 	if (!s.isReadableFile()
 		  && !LyXVC::file_not_found_hook(s))
-		return false;
+		return ReadFailure;
 	
 	if (s.isReadableFile()){
 		// InsetInfo needs to know if file is under VCS
 		lyxvc().file_found_hook(s);
 		if (readFileHelper(s)) {
 			d->read_only = !s.isWritable();
-			return true;
+			return ReadSuccess;
 		}
 	}
-	return false;
+	return ReadFailure;
 }
 
 
@@ -4067,7 +4067,7 @@ bool Buffer::reload()
 	d->filename.refresh();
 	docstring const disp_fn = makeDisplayPath(d->filename.absFileName());
 
-	bool const success = loadLyXFile(d->filename);
+	bool const success = (loadLyXFile(d->filename) == ReadSuccess);
 	if (success) {
 		updateBuffer();
 		changed(true);
