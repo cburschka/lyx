@@ -3625,40 +3625,45 @@ Buffer::ReadStatus Buffer::readEmergency(FileName const & fn)
 	docstring const file = makeDisplayPath(fn.absFileName(), 20);
 	docstring const text = bformat(_("An emergency save of the document "
 		"%1$s exists.\n\nRecover emergency save?"), file);
-	int const ret = Alert::prompt(_("Load emergency save?"), text,
+	
+	int const load_emerg = Alert::prompt(_("Load emergency save?"), text,
 		0, 2, _("&Recover"), _("&Load Original"), _("&Cancel"));
 
-	switch (ret)
+	switch (load_emerg)
 	{
 	case 0: {
-		// the file is not saved if we load the emergency file.
-		markDirty();
 		docstring str;
-		bool res;
 		ReadStatus const ret_rf = readFile(emergencyFile);
-		if (res = (ret_rf == ReadSuccess)) {
+		bool const success = (ret_rf == ReadSuccess);
+		if (success) {
 			saveCheckSum(fn);
+			markDirty();
 			str = _("Document was successfully recovered.");
 		} else
 			str = _("Document was NOT successfully recovered.");
 		str += "\n\n" + bformat(_("Remove emergency file now?\n(%1$s)"),
 					makeDisplayPath(emergencyFile.absFileName()));
 
-		if (!Alert::prompt(_("Delete emergency file?"), str, 1, 1,
-				_("&Remove"), _("&Keep"))) {
+		int const del_emerg = 
+			Alert::prompt(_("Delete emergency file?"), str, 1, 1,
+				_("&Remove"), _("&Keep"));
+		if (del_emerg == 0) {
 			emergencyFile.removeFile();
-			if (res)
+			if (success)
 				Alert::warning(_("Emergency file deleted"),
 					_("Do not forget to save your file now!"), true);
 			}
-		return res ? ReadSuccess : ReadEmergencyFailure;
+		return success ? ReadSuccess : ReadEmergencyFailure;
 	}
-	case 1:
-		if (!Alert::prompt(_("Delete emergency file?"),
+	case 1: {
+		int const del_emerg =
+			Alert::prompt(_("Delete emergency file?"),
 				_("Remove emergency file now?"), 1, 1,
-				_("&Remove"), _("&Keep")))
+				_("&Remove"), _("&Keep"));
+		if (del_emerg == 0)
 			emergencyFile.removeFile();
 		return ReadOriginal;
+	}
 
 	default:
 		break;
