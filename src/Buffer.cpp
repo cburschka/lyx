@@ -841,6 +841,7 @@ bool Buffer::readString(string const & s)
 	switch (readFile(lex, name, true)) {
 	case ReadFailure:
 		return false;
+
 	case ReadWrongVersion: {
 		// We need to call lyx2lyx, so write the input to a file
 		ofstream os(name.toFilesystemEncoding().c_str());
@@ -848,7 +849,7 @@ bool Buffer::readString(string const & s)
 		os.close();
 		return readFile(name);
 	}
-	case ReadSuccess:
+	case default:
 		break;
 	}
 
