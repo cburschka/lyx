@@ -88,7 +88,7 @@ protected:
 	virtual void scanMaster() = 0;
 
 	// GUI container for doVCCommandCall
-	int doVCCommand(std::string const & cmd, support::FileName const & path);
+	int doVCCommand(std::string const & cmd, support::FileName const & path, bool reportError = true);
 	/**
 	 * doVCCommandCall - call out to the version control utility
 	 * @param cmd the command to execute
@@ -210,6 +210,10 @@ public:
 
 	virtual void getLog(support::FileName const &);
 
+	/// Check for messages in cvs output. 
+	/// Returns conflict line.
+	std::string scanLogFile(support::FileName const & f, std::string & status);
+
 	virtual std::string const versionString() const {
 		return "CVS: " + version_;
 	}
@@ -224,13 +228,46 @@ public:
 
 protected:
 	virtual void scanMaster();
+	/// the mode of operation for some VC commands
+	enum OperationMode {
+		Directory = 0,
+		File = 1
+	};
+	/// possible status values of file
+	enum CvsStatus {
+		UpToDate = 0,
+		LocallyModified = 1,
+		LocallyAdded = 2,
+		NeedsMerge = 3,
+		NeedsCheckout = 4,
+		NoCvsFile = 5,
+		StatusError = 6
+	};
 
 private:
 	support::FileName file_;
 	// revision number from scanMaster
 	std::string version_;
-	/// The user currently keeping the lock on the VC file.
-	std::string locker_;
+
+	/// return the quoted pathname if Directory or filename if File
+	virtual std::string const getTarget(OperationMode opmode) const;
+	/// collect the diff of file or directory against repository
+	/// result is placed in temporary file
+	void getDiff(OperationMode opmode, support::FileName const & tmpf);
+	/// make the file ready for editing:
+	/// save a copy in CVS/Base and change file permissions to rw if needed
+	virtual int edit();
+	/// revert the edit operation
+	virtual int unedit();
+	/// retrieve repository changes into working copy
+	virtual int update(OperationMode opmode, support::FileName const & tmpf);
+	/// check readonly state for file
+	/// assume true when file is writable
+	virtual bool isLocked() const;
+	/// query and parse the cvs status of file
+	virtual CvsStatus getStatus();
+	/// convert enum to string
+	virtual docstring toString(CvsStatus status) const;
 };
 
 
