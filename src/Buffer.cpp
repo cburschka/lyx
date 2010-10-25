@@ -754,14 +754,14 @@ bool Buffer::readDocument(Lexer & lex)
 	ErrorList & errorList = d->errorLists["Parse"];
 	errorList.clear();
 
+	// remove dummy empty par
+	paragraphs().clear();
+
 	if (!lex.checkFor("\\begin_document")) {
 		docstring const s = _("\\begin_document is missing");
 		errorList.push_back(ErrorItem(_("Document header error"),
 			s, -1, 0, 0));
 	}
-
-	// we are reading in a brand new document
-	LASSERT(paragraphs().empty(), /**/);
 
 	readHeader(lex);
 
@@ -832,8 +832,6 @@ bool Buffer::readString(string const & s)
 {
 	params().compressed = false;
 
-	// remove dummy empty par
-	paragraphs().clear();
 	Lexer lex;
 	istringstream is(s);
 	lex.setStream(is);
@@ -857,21 +855,21 @@ bool Buffer::readString(string const & s)
 }
 
 
-bool Buffer::readFile(FileName const & filename)
+Buffer::ReadStatus Buffer::readFile(FileName const & fn)
 {
-	FileName fname(filename);
-
-	params().compressed = fname.isZippedFile();
-
-	// remove dummy empty par
-	paragraphs().clear();
+	FileName fname(fn);
 	Lexer lex;
 	lex.setFile(fname);
-	if (readFile(lex, fname) != ReadSuccess)
-		return false;
 
+	ReadStatus const ret_rf = readFile(lex, fname);
+	if (ret_rf != ReadSuccess)
+		return ret_rf;
+
+	// InsetInfo needs to know if file is under VCS
+	lyxvc().file_found_hook(fn);
 	d->read_only = !fname.isWritable();
-	return true;
+	params().compressed = fname.isZippedFile();
+	return ReadSuccess;
 }
 
 
@@ -976,9 +974,8 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 					      from_utf8(filename.absFileName())));
 			return ReadFailure;
 		} else {
-			bool const ret = readFile(tmpfile);
 			// Do stuff with tmpfile name and buffer name here.
-			return ret ? ReadSuccess : ReadFailure;
+			return readFile(tmpfile);
 		}
 
 	}
@@ -3641,8 +3638,9 @@ Buffer::ReadStatus Buffer::readEmergency(FileName const & fn)
 		// the file is not saved if we load the emergency file.
 		markDirty();
 		docstring str;
-		bool const res = readFile(emergencyFile);
-		if (res)
+		bool res;
+		ReadStatus const ret_rf = readFile(emergencyFile);
+		if (res = (ret_rf == ReadSuccess))
 			str = _("Document was successfully recovered.");
 		else
 			str = _("Document was NOT successfully recovered.");
@@ -3675,13 +3673,13 @@ Buffer::ReadStatus Buffer::readEmergency(FileName const & fn)
 Buffer::ReadStatus Buffer::readAutosave(FileName const & fn)
 {
 	// Now check if autosave file is newer.
-	FileName autosaveFile = getAutosaveFileNameFor(fn);
+	FileName const autosaveFile = getAutosaveFileNameFor(fn);
 	if (!autosaveFile.exists() 
 		  || autosaveFile.lastModified() <= fn.lastModified()) 
 		return ReadFileNotFound;
 
 	docstring const file = makeDisplayPath(fn.absFileName(), 20);
-	docstring const text = bformat(_("The backup of the document %1$s 
+	docstring const text = bformat(_("The backup of the document %1$s " 
 		"is newer.\n\nLoad the backup instead?"), file);
 	int const ret = Alert::prompt(_("Load backup?"), text, 0, 2,
 		_("&Load backup"), _("Load &original"),	_("&Cancel"));
@@ -3689,9 +3687,9 @@ Buffer::ReadStatus Buffer::readAutosave(FileName const & fn)
 	switch (ret)
 	{
 	case 0: {
-		bool success = readFile(autosaveFile);
+		ReadStatus const ret_rf = readFile(autosaveFile);
 		// the file is not saved if we load the autosave file.
-		if (success) {
+		if (ret_rf == ReadSuccess) {
 			markDirty();
 			return ReadSuccess;
 		}
@@ -3715,8 +3713,6 @@ Buffer::ReadStatus Buffer::loadLyXFile(FileName const & fn)
 		if (ret_rvc != ReadSuccess)
 			return ret_rvc;
 	}
-	// InsetInfo needs to know if file is under VCS
-	lyxvc().file_found_hook(fn);
 
 	ReadStatus const ret_re = readEmergency(fn);
 	if (ret_re == ReadSuccess || ret_re == ReadCancel)
@@ -3726,9 +3722,7 @@ Buffer::ReadStatus Buffer::loadLyXFile(FileName const & fn)
 	if (ret_ra == ReadSuccess || ret_ra == ReadCancel)
 		return ret_ra;
 
-	if (readFile(fn))
-		return ReadSuccess;
-	return ReadFailure;
+	return readFile(fn);
 }
 
 
