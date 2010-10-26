@@ -2201,7 +2201,6 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell,
 			os << from_ascii(getPWidth(cell).asLatexString());
 		else
 			// we need to set a default value
-			// needs to be discussed
 			os << "*";
 		os << "}{";
 	} // end if ismultirow
