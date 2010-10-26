@@ -1892,22 +1892,22 @@ namespace {
 		if (v.size() == 0)
 			return docstring();
 		if (v.size() == 1) 
-			return from_utf8(v[0]);
+			return _(v[0]);
 		if (v.size() == 2) {
 			docstring retval = _("%1$s and %2$s");
 			retval = subst(retval, _("and"), s);
-			return bformat(retval, from_utf8(v[0]), from_utf8(v[1]));
+			return bformat(retval, _(v[0]), _(v[1]));
 		}
 		// The idea here is to format all but the last two items...
 		int const vSize = v.size();
 		docstring t2 = _("%1$s, %2$s");
-		docstring retval = from_utf8(v[0]);
+		docstring retval = _(v[0]);
 		for (int i = 1; i < vSize - 2; ++i)
-			retval = bformat(t2, retval, from_utf8(v[i])); 
+			retval = bformat(t2, retval, _(v[i])); 
 		//...and then to  plug them, and the last two, into this schema
 		docstring t = _("%1$s, %2$s, and %3$s");
 		t = subst(t, _("and"), s);
-		return bformat(t, retval, from_utf8(v[vSize - 2]), from_utf8(v[vSize - 1]));
+		return bformat(t, retval, _(v[vSize - 2]), _(v[vSize - 1]));
 	}
 	
 	vector<string> idsToNames(vector<string> const & idList)
