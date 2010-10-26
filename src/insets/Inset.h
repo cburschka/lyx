@@ -226,6 +226,8 @@ public:
 	virtual bool allowEmpty() const;
 	/// Force inset into LTR environment if surroundings are RTL
 	virtual bool forceLTR() const;
+	/// whether to include this inset in the strings generated for the TOC
+	virtual bool isInToc() const;
 
 	/// Where should we go when we press the up or down cursor key?
 	virtual bool idxUpDown(Cursor & cur, bool up) const;

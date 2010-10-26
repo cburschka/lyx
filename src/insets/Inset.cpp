@@ -234,9 +234,16 @@ bool Inset::allowEmpty() const
 	return getLayout().isKeepEmpty();
 }
 
+
 bool Inset::forceLTR() const
 {
 	return getLayout().forceLTR();
+}
+
+
+bool Inset::isInToc() const
+{
+	return getLayout().isInToc();
 }
 
 

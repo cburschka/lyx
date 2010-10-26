@@ -2725,13 +2725,9 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 
 		Inset const * inset = getInset(i);
 		if (inset) {
-			InsetCommand const * ic = inset->asInsetCommand();
-			InsetLayout const & il = inset->getLayout();
-			InsetMath const * im = inset->asInsetMath();
-			if (!runparams.for_toc
-			    || im || il.isInToc() || (ic && ic->isInToc())) {
+			if (!runparams.for_toc || inset->isInToc()) {
 				OutputParams np = runparams;
-				if (!il.htmlisblock())
+				if (!inset->getLayout().htmlisblock())
 					np.html_in_par = true;
 				retval += inset->xhtml(xs, np);
 			}

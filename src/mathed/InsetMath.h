@@ -216,6 +216,8 @@ public:
 	/// superscript kerning
 	virtual int kerning(BufferView const *) const { return 0; }
 	///
+	bool isInToc() const { return true; }
+	///
 	InsetCode lyxCode() const { return MATH_CODE; }
 };
 

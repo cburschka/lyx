@@ -63,8 +63,6 @@ public:
 	void setParam(std::string const & name, docstring const & value);
 	/// FIXME Remove
 	docstring const getFirstNonOptParam() const { return p_.getFirstNonOptParam(); }
-	/// whether to include this inset in the strings generated for the TOC
-	virtual bool isInToc() const { return false; }
 
 	/// \name Methods inherited from Inset class
 	//@{
