@@ -3633,8 +3633,8 @@ Buffer::ReadStatus Buffer::readEmergency(FileName const & fn)
 	{
 	case 0: {
 		docstring str;
-		ReadStatus const ret_rf = readFile(emergencyFile);
-		bool const success = (ret_rf == ReadSuccess);
+		ReadStatus const ret_llf = loadThisLyXFile(emergencyFile);
+		bool const success = (ret_llf == ReadSuccess);
 		if (success) {
 			saveCheckSum(fn);
 			markDirty();
@@ -3689,9 +3689,9 @@ Buffer::ReadStatus Buffer::readAutosave(FileName const & fn)
 	switch (ret)
 	{
 	case 0: {
-		ReadStatus const ret_rf = readFile(autosaveFile);
+		ReadStatus const ret_llf = loadThisLyXFile(autosaveFile);
 		// the file is not saved if we load the autosave file.
-		if (ret_rf == ReadSuccess) {
+		if (ret_llf == ReadSuccess) {
 			markDirty();
 			saveCheckSum(fn);
 			return ReadSuccess;
@@ -3725,6 +3725,12 @@ Buffer::ReadStatus Buffer::loadLyXFile(FileName const & fn)
 	if (ret_ra == ReadSuccess || ret_ra == ReadCancel)
 		return ret_ra;
 
+	return loadThisLyXFile(fn);
+}
+
+
+Buffer::ReadStatus Buffer::loadThisLyXFile(FileName const & fn)
+{
 	return readFile(fn);
 }
 

@@ -189,19 +189,25 @@ public:
 	/// tries to extract the file from version control if it
 	/// cannot be found. If it can be found, it will try to
 	/// read an emergency save file or an autosave file.
+	/// \sa loadThisLyXFile
 	ReadStatus loadLyXFile(support::FileName const & fn);
+	/// Loads a LyX file \c fn into the buffer. If you want
+	/// to check for files in a version control container,
+	/// emergency or autosave files, one should use \c loadLyXFile.
+	/// /sa loadLyXFile
+	ReadStatus loadThisLyXFile(support::FileName const & fn);
 	/// read a new document from a string
 	bool readString(std::string const &);
 	/// Reloads the LyX file
 	bool reload();
-//FIXME: The following two functions should be private
+//FIXME: The following function should be private
 //private:
-	/// read a new file
-	ReadStatus readFile(support::FileName const & fn);
 	/// read the header, returns number of unknown tokens
 	int readHeader(Lexer & lex);
 	
 private:
+	/// read a new file
+	ReadStatus readFile(support::FileName const & fn);
 	/// Reads a file without header.
 	/// \param par if != 0 insert the file.
 	/// \return \c true if file is not completely read.
