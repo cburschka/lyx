@@ -2761,8 +2761,10 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 			}
 
 			InsetMath * im = iit->inset->asInsetMath();
-			if (doing_export && im)
-				im->asHullInset()->recordLocation(it);
+			if (doing_export && im) 
+				InsetMathHull * hull = im->asHullInset();
+				if (hull)
+					hull->recordLocation(it);
 
 			if (iit->inset->lyxCode() != MATHMACRO_CODE)
 				continue;
