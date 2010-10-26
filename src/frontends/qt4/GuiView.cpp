@@ -1328,7 +1328,7 @@ void GuiView::setBuffer(Buffer * newBuffer)
 	if (wa == 0) {
 		newBuffer->masterBuffer()->updateBuffer();
 		wa = addWorkArea(*newBuffer);
-		// scroll to the position when the file was last closed
+		// scroll to the position when the BufferView was last closed
 		if (lyxrc.use_lastfilepos) {
 			LastFilePosSection::FilePos filepos =
 				theSession().lastFilePos().load(newBuffer->fileName());

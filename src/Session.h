@@ -168,7 +168,7 @@ public:
 
 	/** add cursor position to the fname entry in the filepos map
 	    @param fname file entry for which to save position information
-	    @param pos position of the cursor when the file is closed.
+	    @param pos position of the cursor when the BufferView is closed.
 	*/
 	void save(support::FileName const & fname, FilePos const & pos);
 
