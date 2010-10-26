@@ -1011,7 +1011,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_REGEXP_MODE: {
-		InsetMathHull * i = dynamic_cast<InsetMathHull *>(cur.inset().asInsetMath());
+		InsetMathHull * i = cur.inset().asInsetMath()->asHullInset();		
 		if (i && i->getType() == hullRegexp) {
 			cur.message(_("Already in regular expression mode"));
 			break;

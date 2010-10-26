@@ -272,7 +272,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 
 		case LABEL_CODE: {
 			// check for duplicates
-			InsetLabel & lab = dynamic_cast<InsetLabel &>(*it);
+			InsetLabel & lab = static_cast<InsetLabel &>(*it);
 			docstring const oldname = lab.getParam("name");
 			lab.updateCommand(oldname, false);
 			// We need to update the buffer reference cache.
@@ -310,7 +310,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 
 		case BIBITEM_CODE: {
 			// check for duplicates
-			InsetBibitem & bib = dynamic_cast<InsetBibitem &>(*it);
+			InsetBibitem & bib = static_cast<InsetBibitem &>(*it);
 			docstring const oldkey = bib.getParam("key");
 			bib.updateCommand(oldkey, false);
 			// We need to update the buffer reference cache.

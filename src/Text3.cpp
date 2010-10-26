@@ -268,10 +268,10 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	cur.buffer()->errors("Paste");
 	cur.clearSelection(); // bug 393
 	cur.finishUndo();
-	InsetText * insetText = dynamic_cast<InsetText *>(inset);
-	if (insetText) {
-		insetText->fixParagraphsFont();
-		if (!insetText->allowMultiPar() || cur.lastpit() == 0) {
+	InsetText * inset_text = inset->asInsetText();
+	if (inset_text) {
+		inset_text->fixParagraphsFont();
+		if (!inset_text->allowMultiPar() || cur.lastpit() == 0) {
 			// reset first par to default
 			cur.text()->paragraphs().begin()
 				->setPlainOrDefaultLayout(bparams.documentClass());

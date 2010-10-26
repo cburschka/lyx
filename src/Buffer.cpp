@@ -2085,7 +2085,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		bool success = false;
 		for (; it != end; ++it) {
 			if (it->lyxCode() == BRANCH_CODE) {
-				InsetBranch & ins = dynamic_cast<InsetBranch &>(*it);
+				InsetBranch & ins = static_cast<InsetBranch &>(*it);
 				if (ins.branch() == oldname) {
 					undo().recordUndo(it);
 					ins.rename(newname);
@@ -2830,7 +2830,7 @@ void Buffer::getUsedBranches(std::list<docstring> & result, bool const from_mast
 	InsetIterator const end = inset_iterator_end(inset());
 	for (; it != end; ++it) {
 		if (it->lyxCode() == BRANCH_CODE) {
-			InsetBranch & br = dynamic_cast<InsetBranch &>(*it);
+			InsetBranch & br = static_cast<InsetBranch &>(*it);
 			docstring const name = br.branch();
 			if (!from_master && !params().branchlist().find(name))
 				result.push_back(name);

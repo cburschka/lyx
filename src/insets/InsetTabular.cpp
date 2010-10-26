@@ -580,7 +580,7 @@ Tabular::CellData::CellData(CellData const & cs)
 	  rotate(cs.rotate),
 	  align_special(cs.align_special),
 	  p_width(cs.p_width),
-	  inset(dynamic_cast<InsetTableCell *>(cs.inset->clone()))
+	  inset(static_cast<InsetTableCell *>(cs.inset->clone()))
 {
 }
 

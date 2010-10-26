@@ -91,7 +91,7 @@ DocIterator DocIterator::clone(Buffer * buffer) const
 
 bool DocIterator::inRegexped() const
 {
-	InsetMathHull * i = dynamic_cast<InsetMathHull *>(inset().asInsetMath());
+	InsetMathHull * i = inset().asInsetMath()->asHullInset();
 	return i && i->getType() == hullRegexp;
 }
 
