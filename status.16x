@@ -176,6 +176,9 @@ What's new
 
 - Fix some accelerator conflicts in Document Class dialog (bug 6963).
 
+- Do not warn any changes will be lost when reverting to the
+  saved file if the document is clean (bug 6550).
+
 
 * DOCUMENTATION AND LOCALIZATION
 

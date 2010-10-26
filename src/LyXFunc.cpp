@@ -859,11 +859,17 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BUFFER_RELOAD: {
 			LASSERT(lyx_view_ && buffer, /**/);
-			docstring const file = makeDisplayPath(buffer->absFileName(), 20);
-			docstring text = bformat(_("Any changes will be lost. Are you sure "
-							     "you want to revert to the saved version of the document %1$s?"), file);
-			int const ret = Alert::prompt(_("Revert to saved document?"),
-				text, 1, 1, _("&Revert"), _("&Cancel"));
+
+			int ret = 0;
+			if (!buffer->isClean()) { 
+				docstring const file = 
+					makeDisplayPath(buffer->absFileName(), 20);
+				docstring text = bformat(_("Any changes will be lost. "
+					"Are you sure you want to revert to the saved version "
+					"of the document %1$s?"), file);
+				ret = Alert::prompt(_("Revert to saved document?"),
+					text, 1, 1, _("&Revert"), _("&Cancel"));
+			}
 
 			if (ret == 0) {
 				buffer->markClean();
