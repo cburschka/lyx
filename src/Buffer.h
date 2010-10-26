@@ -216,7 +216,7 @@ private:
 	/// before reading if the file cannot be found. This is only
 	/// implemented for RCS.
 	/// \sa LyXVC::file_not_found_hook
-	ReadStatus readFromVC(support::FileName const & fn);
+	ReadStatus extractFromVC(support::FileName const & fn);
 	/// Reads the first tag of a LyX File and 
 	/// returns the file format number.
 	ReadStatus parseLyXFormat(Lexer & lex, support::FileName const & fn,
@@ -247,14 +247,14 @@ public:
 	support::FileName getAutosaveFileName() const;
 	
 private:
-	/// Try to read an autosave file associated to \c fn.
-	ReadStatus readAutosave(support::FileName const & fn);
+	/// Try to load an autosave file associated to \c fn.
+	ReadStatus loadAutosave(support::FileName const & fn);
 	/// Get the filename of the autosave file associated with \c fn
 	support::FileName getAutosaveFileNameFor(support::FileName const & fn)
 		const;
 
-	/// Try to read an emergency file associated to \c fn. 
-	ReadStatus readEmergency(support::FileName const & fn);
+	/// Try to load an emergency file associated to \c fn. 
+	ReadStatus loadEmergency(support::FileName const & fn);
 	/// Get the filename of the emergency file associated with the Buffer
 	support::FileName getEmergencyFileName() const;
 	/// Get the filename of the emergency file associated with \c fn

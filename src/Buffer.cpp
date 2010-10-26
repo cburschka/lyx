@@ -3604,7 +3604,7 @@ vector<string> Buffer::backends() const
 }
 
 
-Buffer::ReadStatus Buffer::readFromVC(FileName const & fn)
+Buffer::ReadStatus Buffer::extractFromVC(FileName const & fn)
 {
 	bool const found = LyXVC::file_not_found_hook(fn);
 	if (!found)
@@ -3615,7 +3615,7 @@ Buffer::ReadStatus Buffer::readFromVC(FileName const & fn)
 }
 
 
-Buffer::ReadStatus Buffer::readEmergency(FileName const & fn)
+Buffer::ReadStatus Buffer::loadEmergency(FileName const & fn)
 {
 	FileName const emergencyFile = getEmergencyFileNameFor(fn);
 	if (!emergencyFile.exists() 
@@ -3672,7 +3672,7 @@ Buffer::ReadStatus Buffer::readEmergency(FileName const & fn)
 }
 
 
-Buffer::ReadStatus Buffer::readAutosave(FileName const & fn)
+Buffer::ReadStatus Buffer::loadAutosave(FileName const & fn)
 {
 	// Now check if autosave file is newer.
 	FileName const autosaveFile = getAutosaveFileNameFor(fn);
@@ -3712,16 +3712,16 @@ Buffer::ReadStatus Buffer::readAutosave(FileName const & fn)
 Buffer::ReadStatus Buffer::loadLyXFile(FileName const & fn)
 {
 	if (!fn.isReadableFile()) {
-		ReadStatus const ret_rvc = readFromVC(fn);
+		ReadStatus const ret_rvc = extractFromVC(fn);
 		if (ret_rvc != ReadSuccess)
 			return ret_rvc;
 	}
 
-	ReadStatus const ret_re = readEmergency(fn);
+	ReadStatus const ret_re = loadEmergency(fn);
 	if (ret_re == ReadSuccess || ret_re == ReadCancel)
 		return ret_re;
 	
-	ReadStatus const ret_ra = readAutosave(fn);
+	ReadStatus const ret_ra = loadAutosave(fn);
 	if (ret_ra == ReadSuccess || ret_ra == ReadCancel)
 		return ret_ra;
 
