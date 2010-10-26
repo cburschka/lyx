@@ -132,7 +132,7 @@ Buffer * newFile(string const & filename, string const & templatename,
 		tname = makeAbsPath(templatename);
 
 	if (!tname.empty()) {
-		if (b->readFile(tname) != Buffer::ReadSuccess) {
+		if (b->loadThisLyXFile(tname) != Buffer::ReadSuccess) {
 			docstring const file = makeDisplayPath(tname.absFileName(), 50);
 			docstring const text  = bformat(
 				_("The specified document template\n%1$s\ncould not be read."),
