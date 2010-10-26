@@ -121,6 +121,9 @@ bool findNextInset(DocIterator & dit, vector<InsetCode> const & codes,
 		if (inset
 		    && std::find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()
 		    && (contents.empty() ||
+			//FIXME: This static_cast seems very dangerous. Does this
+			// mean that if contents is not empty, we must only be
+			// looking for InsetCommand's ??
 		    static_cast<InsetCommand const *>(inset)->getFirstNonOptParam() == contents)) {
 			dit = tmpdit;
 			return true;
@@ -146,6 +149,9 @@ bool findInset(DocIterator & dit, vector<InsetCode> const & codes,
 		Inset const * inset = tmpdit.nextInset();
 		if (inset
 		    && std::find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()) {
+			//FIXME: This static_cast seems very dangerous. Does this
+			// mean that if contents is not empty, we must only be
+			// looking for InsetCommand's ??
 			contents = static_cast<InsetCommand const *>(inset)->getFirstNonOptParam();
 		}
 	}

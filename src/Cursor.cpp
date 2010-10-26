@@ -1315,7 +1315,7 @@ void Cursor::insert(Inset * inset0)
 {
 	LASSERT(inset0, /**/);
 	if (inMathed())
-		insert(MathAtom(inset0));
+		insert(MathAtom(inset0->asInsetMath()));
 	else {
 		text()->insertInset(*this, inset0);
 		inset0->setBuffer(bv_->buffer());

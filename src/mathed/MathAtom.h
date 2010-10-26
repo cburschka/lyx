@@ -51,7 +51,7 @@ public:
 	/// std::containers
 	MathAtom();
 	/// the "real constructor"
-	explicit MathAtom(Inset * p);
+	explicit MathAtom(InsetMath * p);
 	/// copy constructor, invokes nucleus_->clone()
 	MathAtom(MathAtom const &);
 	/// we really need to clean up

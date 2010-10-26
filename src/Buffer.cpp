@@ -1707,15 +1707,13 @@ void Buffer::updateBibfilesCache(UpdateScope scope) const
 	d->bibfiles_cache_.clear();
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		if (it->lyxCode() == BIBTEX_CODE) {
-			InsetBibtex const & inset =
-				static_cast<InsetBibtex const &>(*it);
+			InsetBibtex const & inset = static_cast<InsetBibtex const &>(*it);
 			support::FileNameList const bibfiles = inset.getBibFiles();
 			d->bibfiles_cache_.insert(d->bibfiles_cache_.end(),
 				bibfiles.begin(),
 				bibfiles.end());
 		} else if (it->lyxCode() == INCLUDE_CODE) {
-			InsetInclude & inset =
-				static_cast<InsetInclude &>(*it);
+			InsetInclude & inset = static_cast<InsetInclude &>(*it);
 			Buffer const * const incbuf = inset.getChildBuffer();
 			if (!incbuf)
 				continue;
@@ -2762,20 +2760,16 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 				continue;
 			}
 
-			if (doing_export && iit->inset->asInsetMath()) {
-				InsetMath * im = static_cast<InsetMath *>(iit->inset);
-				if (im->asHullInset()) {
-					InsetMathHull * hull = static_cast<InsetMathHull *>(im);
-					hull->recordLocation(it);
-				}
-			}
+			InsetMath * im = iit->inset->asInsetMath();
+			if (doing_export && im)
+				im->asHullInset()->recordLocation(it);
 
 			if (iit->inset->lyxCode() != MATHMACRO_CODE)
 				continue;
 
 			// get macro data
 			MathMacroTemplate & macroTemplate =
-				static_cast<MathMacroTemplate &>(*iit->inset);
+				*iit->inset->asInsetMath()->asMacroTemplate();
 			MacroContext mc(owner_, it);
 			macroTemplate.updateToContext(mc);
 
@@ -2999,10 +2993,12 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		if (it->lyxCode() == code) {
-			InsetCommand & inset = static_cast<InsetCommand &>(*it);
-			docstring const oldValue = inset.getParam(paramName);
+			InsetCommand * inset = it->asInsetCommand();
+			if (!inset)
+				continue;
+			docstring const oldValue = inset->getParam(paramName);
 			if (oldValue == from)
-				inset.setParam(paramName, to);
+				inset->setParam(paramName, to);
 		}
 	}
 }

@@ -234,8 +234,8 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 
 		case MATH_HULL_CODE: {
 			// check for equation labels and resolve duplicates
-			InsetMathHull & ins = static_cast<InsetMathHull &>(*it);
-			std::vector<InsetLabel *> labels = ins.getLabels();
+			InsetMathHull * ins = it->asInsetMath()->asHullInset();
+			std::vector<InsetLabel *> labels = ins->getLabels();
 			for (size_t i = 0; i != labels.size(); ++i) {
 				if (!labels[i])
 					continue;
@@ -251,19 +251,17 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 				for (InsetIterator itt = inset_iterator_begin(in);
 				      itt != i_end; ++itt) {
 					if (itt->lyxCode() == REF_CODE) {
-						InsetCommand & ref =
-							static_cast<InsetCommand &>(*itt);
-						if (ref.getParam("reference") == oldname)
-							ref.setParam("reference", newname);
+						InsetCommand * ref = itt->asInsetCommand();
+						if (ref->getParam("reference") == oldname)
+							ref->setParam("reference", newname);
 					} else if (itt->lyxCode() == MATH_REF_CODE) {
-						InsetMathHull & mi =
-							static_cast<InsetMathHull &>(*itt);
+						InsetMathHull * mi = itt->asInsetMath()->asHullInset();
 						// this is necessary to prevent an uninitialized
 						// buffer when the RefInset is in a MathBox.
 						// FIXME audit setBuffer calls
-						mi.setBuffer(const_cast<Buffer &>(buffer));
-						if (mi.asRefInset()->getTarget() == oldname)
-							mi.asRefInset()->changeTarget(newname);
+						mi->setBuffer(const_cast<Buffer &>(buffer));
+						if (mi->asRefInset()->getTarget() == oldname)
+							mi->asRefInset()->changeTarget(newname);
 					}
 				}
 			}
@@ -322,10 +320,9 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 			for (InsetIterator itt = inset_iterator_begin(in);
 			     itt != i_end; ++itt) {
 				if (itt->lyxCode() == CITE_CODE) {
-					InsetCommand & ref =
-						static_cast<InsetCommand &>(*itt);
-					if (ref.getParam("key") == oldkey)
-						ref.setParam("key", newkey);
+					InsetCommand * ref = itt->asInsetCommand();
+					if (ref->getParam("key") == oldkey)
+						ref->setParam("key", newkey);
 				}
 			}
 			break;

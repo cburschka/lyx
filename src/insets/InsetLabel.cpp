@@ -86,12 +86,10 @@ void InsetLabel::updateCommand(docstring const & new_label, bool updaterefs)
 		for (; it != end; ++it) {
 			buffer().undo().recordUndo(it->second);
 			if (it->first->lyxCode() == MATH_REF_CODE) {
-				InsetMathHull * mi =
-					static_cast<InsetMathHull *>(it->first);
+				InsetMathHull * mi = it->first->asInsetMath()->asHullInset();
 				mi->asRefInset()->changeTarget(label);
 			} else {
-				InsetCommand * ref =
-					static_cast<InsetCommand *>(it->first);
+				InsetCommand * ref = it->first->asInsetCommand();
 				ref->setParam("reference", label);
 			}
 		}
@@ -160,7 +158,7 @@ void InsetLabel::addToToc(DocIterator const & cpit)
 		DocIterator const ref_pit(it->second);
 		if (it->first->lyxCode() == MATH_REF_CODE)
 			toc.push_back(TocItem(ref_pit, 1,
-				static_cast<InsetMathHull *>(it->first)->asRefInset()
+				it->first->asInsetMath()->asHullInset()->asRefInset()
 					->screenLabel()));
 		else
 			toc.push_back(TocItem(ref_pit, 1,

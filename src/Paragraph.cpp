@@ -3096,8 +3096,8 @@ int Paragraph::checkBiblio(Buffer const & buffer)
 	InsetList::iterator end = d->insetlist_.end();
 	for (; it != end; ++it)
 		if (it->inset->lyxCode() == BIBITEM_CODE
-		    && it->pos > 0) {
-			InsetBibitem * olditem = static_cast<InsetBibitem *>(it->inset);
+		      && it->pos > 0) {
+			InsetCommand * olditem = it->inset->asInsetCommand();
 			oldkey = olditem->getParam("key");
 			oldlabel = olditem->getParam("label");
 			erasedInsetPosition = it->pos;
@@ -3113,8 +3113,7 @@ int Paragraph::checkBiblio(Buffer const & buffer)
 	// There was an InsetBibitem at the beginning and we did have to
 	// erase one. So we give its properties to the beginning inset.
 	if (hasbibitem) {
-		InsetBibitem * inset =
-			static_cast<InsetBibitem *>(d->insetlist_.begin()->inset);
+		InsetCommand * inset = d->insetlist_.begin()->inset->asInsetCommand();
 		if (!oldkey.empty())
 			inset->setParam("key", oldkey);
 		inset->setParam("label", oldlabel);
@@ -3129,7 +3128,7 @@ int Paragraph::checkBiblio(Buffer const & buffer)
 	if (!oldkey.empty())
 		inset->setParam("key", oldkey);
 	inset->setParam("label", oldlabel);
-	insertInset(0, static_cast<Inset *>(inset),
+	insertInset(0, inset,
 		    Change(track_changes ? Change::INSERTED : Change::UNCHANGED));
 
 	return 1;

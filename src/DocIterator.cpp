@@ -142,8 +142,8 @@ Inset * DocIterator::realInset() const
 	LASSERT(inTexted(), /**/);
 	// if we are in a tabular, we need the cell
 	if (inset().lyxCode() == TABULAR_CODE) {
-		InsetTabular & tabular = static_cast<InsetTabular&>(inset());
-		return tabular.cell(idx()).get();
+		InsetTabular * tabular = inset().asInsetTabular();
+		return tabular->cell(idx()).get();
 	}
 	return &inset();
 }

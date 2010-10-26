@@ -23,8 +23,8 @@ MathAtom::MathAtom()
 {}
 
 
-MathAtom::MathAtom(Inset * p)
-	: nucleus_(static_cast<InsetMath *>(p))
+MathAtom::MathAtom(InsetMath * p)
+	: nucleus_(p)
 {}
 
 
