@@ -164,26 +164,6 @@ public:
 	/// \return true if we made a decision
 	bool getStatus(FuncRequest const & cmd, FuncStatus & flag);
 
-	/// read a new document from a string
-	bool readString(std::string const &);
-	
-	/// Reads the first tag of a LyX File and 
-	/// returns the file format number.
-	ReadStatus parseLyXFormat(Lexer & lex, 
-		support::FileName const & fn, int & file_format) const;
-	/// read the header, returns number of unknown tokens
-	int readHeader(Lexer & lex);
-	/** Reads a file without header.
-	    \param par if != 0 insert the file.
-	    \return \c true if file is not completely read.
-	*/
-	bool readDocument(Lexer &);
-	/// Convert the LyX file to the LYX_FORMAT using
-	/// the lyx2lyx script and returns the filename
-	/// of the temporary file to be read
-	ReadStatus convertLyXFormat(support::FileName const & fn, 
-		support::FileName & tmpfile, int from_format);
-
 	///
 	DocIterator getParFromID(int id) const;
 	/// do we have a paragraph with this id?
@@ -200,32 +180,83 @@ public:
 
 	/// Write document to stream. Returns \c false if unsuccesful.
 	bool write(std::ostream &) const;
-	/// save emergency file
-	/// \return a status message towards the user.
-	docstring emergencyWrite();
 	/// Write file. Returns \c false if unsuccesful.
 	bool writeFile(support::FileName const &) const;
 
+	/// \name Functions involved in reading files/strings.
+	//@{
 	/// Loads a LyX file \c fn into the buffer. This function
 	/// tries to extract the file from version control if it
 	/// cannot be found. If it can be found, it will try to
 	/// read an emergency save file or an autosave file.
 	ReadStatus loadLyXFile(support::FileName const & fn);
+	/// read a new document from a string
+	bool readString(std::string const &);
+	/// Reloads the LyX file
+	bool reload();
+//FIXME: The following two functions should be private
+//private:
 	/// read a new file
 	ReadStatus readFile(support::FileName const & fn);
+	/// read the header, returns number of unknown tokens
+	int readHeader(Lexer & lex);
+	
+private:
+	/// Reads a file without header.
+	/// \param par if != 0 insert the file.
+	/// \return \c true if file is not completely read.
+	bool readDocument(Lexer &);
 	/// Try to extract the file from a version control container
 	/// before reading if the file cannot be found. This is only
 	/// implemented for RCS.
 	/// \sa LyXVC::file_not_found_hook
 	ReadStatus readFromVC(support::FileName const & fn);
-	/// Try to read an emergency file associated to \c fn. 
-	ReadStatus readEmergency(support::FileName const & fn);
+	/// Reads the first tag of a LyX File and 
+	/// returns the file format number.
+	ReadStatus parseLyXFormat(Lexer & lex, support::FileName const & fn,
+		int & file_format) const;
+	/// Convert the LyX file to the LYX_FORMAT using
+	/// the lyx2lyx script and returns the filename
+	/// of the temporary file to be read
+	ReadStatus convertLyXFormat(support::FileName const & fn, 
+		support::FileName & tmpfile, int from_format);
+	//@}
+
+public:
+	/// \name Functions involved in autosave and emergency files.
+	//@{
+	///
+	void autoSave() const;
+	/// save emergency file
+	/// \return a status message towards the user.
+	docstring emergencyWrite();
+
+//FIXME:The following three functions should be private
+//private:
+	///
+	void removeAutosaveFile() const;
+	///
+	void moveAutosaveFile(support::FileName const & old) const;
+	/// Get the filename of the autosave file associated with the Buffer
+	support::FileName getAutosaveFileName() const;
+	
+private:
 	/// Try to read an autosave file associated to \c fn.
 	ReadStatus readAutosave(support::FileName const & fn);
+	/// Get the filename of the autosave file associated with \c fn
+	support::FileName getAutosaveFileNameFor(support::FileName const & fn)
+		const;
 
-	/// Reloads the LyX file
-	bool reload();
+	/// Try to read an emergency file associated to \c fn. 
+	ReadStatus readEmergency(support::FileName const & fn);
+	/// Get the filename of the emergency file associated with the Buffer
+	support::FileName getEmergencyFileName() const;
+	/// Get the filename of the emergency file associated with \c fn
+	support::FileName getEmergencyFileNameFor(support::FileName const & fn)
+		const;
+	//@}
 
+public:
 	/// Fill in the ErrorList with the TeXErrors
 	void bufferErrors(TeXErrors const &, ErrorList &) const;
 
@@ -557,22 +588,7 @@ public:
 	///
 	bool hasGuiDelegate() const;
 
-	///
-	void autoSave() const;
-	///
-	void removeAutosaveFile() const;
-	///
-	void moveAutosaveFile(support::FileName const & old) const;
-	/// Get the filename of the autosave file associated with the Buffer
-	support::FileName getAutosaveFileName() const;
-	/// Get the filename of the autosave file associated with \c fn
-	support::FileName getAutosaveFileNameFor(support::FileName const & fn)
-		const;
-	/// Get the filename of the emergency file associated with the Buffer
-	support::FileName getEmergencyFileName() const;
-	/// Get the filename of the emergency file associated with \c fn
-	support::FileName getEmergencyFileNameFor(support::FileName const & fn)
-		const;
+	
 
 	/// return the format of the buffer on a string
 	std::string bufferFormat() const;
