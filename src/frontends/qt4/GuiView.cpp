@@ -3774,7 +3774,6 @@ Dialog * createGuiIndex(GuiView & lv);
 Dialog * createGuiListings(GuiView & lv);
 Dialog * createGuiLog(GuiView & lv);
 Dialog * createGuiMathMatrix(GuiView & lv);
-Dialog * createGuiNomenclature(GuiView & lv);
 Dialog * createGuiNote(GuiView & lv);
 Dialog * createGuiParagraph(GuiView & lv);
 Dialog * createGuiPhantom(GuiView & lv);
@@ -3849,8 +3848,6 @@ Dialog * GuiView::build(string const & name)
 		return createGuiDelimiter(*this);
 	if (name == "mathmatrix")
 		return createGuiMathMatrix(*this);
-	if (name == "nomenclature")
-		return createGuiNomenclature(*this);
 	if (name == "nomencl_print")
 		return createGuiPrintNomencl(*this);
 	if (name == "note")

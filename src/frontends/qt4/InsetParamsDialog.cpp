@@ -16,11 +16,12 @@
 #include "GuiBranch.h"
 #include "GuiBibitem.h"
 #include "GuiERT.h"
+#include "GuiHSpace.h"
 #include "GuiHyperlink.h"
 #include "GuiInfo.h"
 #include "GuiLabel.h"
 #include "GuiLine.h"
-#include "GuiHSpace.h"
+#include "GuiNomencl.h"
 #include "GuiTabular.h"
 #include "GuiVSpace.h"
 #include "FloatPlacement.h"
@@ -248,6 +249,9 @@ Dialog * createDialog(GuiView & lv, InsetCode code)
 		break;
 	case MATH_SPACE_CODE:
 		widget = new GuiHSpace(true);
+		break;
+	case NOMENCL_CODE:
+		widget = new GuiNomenclature;
 		break;
 	case SPACE_CODE:
 		widget = new GuiHSpace(false);

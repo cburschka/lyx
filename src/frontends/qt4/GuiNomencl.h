@@ -14,46 +14,29 @@
 #ifndef GUINOMENCLATURE_H
 #define GUINOMENCLATURE_H
 
-#include "GuiDialog.h"
 #include "ui_NomenclUi.h"
 
-#include "insets/InsetCommandParams.h"
+#include "InsetParamsWidget.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiNomenclature : public GuiDialog, public Ui::NomenclUi
+class GuiNomenclature : public InsetParamsWidget, public Ui::NomenclUi
 {
 	Q_OBJECT
 
 public:
-	GuiNomenclature(GuiView & lv);
-
-private Q_SLOTS:
-	void change_adaptor();
-	void reject();
+	GuiNomenclature(QWidget * parent = 0);
 
 private:
-	///
-	bool isValid();
-	/// Apply changes
-	void applyView();
-	/// update
-	void updateContents() {}
-	///
-	bool initialiseParams(std::string const & data);
-	///
-	void paramsToDialog(InsetCommandParams const & icp);
-	/// clean-up on hide.
-	void clearParams() { params_.clear(); }
-	/// clean-up on hide.
-	void dispatchParams();
-	///
-	bool isBufferDependent() const { return true; }
-
-private:
-	///
-	InsetCommandParams params_;
+	/// \name InsetParamsWidget inherited methods
+	//@{
+	InsetCode insetCode() const { return NOMENCL_CODE; }
+	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
+	void paramsToDialog(Inset const *);
+	docstring dialogToParams() const;
+	bool checkWidgets() const;
+	//@}
 };
 
 } // namespace frontend

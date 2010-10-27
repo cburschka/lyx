@@ -14,107 +14,59 @@
 #include "GuiNomencl.h"
 
 #include "qt_helpers.h"
-#include "FuncRequest.h"
 
-#include "insets/InsetCommand.h"
-
-#include "support/debug.h"
-
-#include <QLabel>
-#include <QLineEdit>
+#include "insets/InsetNomencl.h"
 
 using namespace std;
 
 namespace lyx {
 namespace frontend {
 
-GuiNomenclature::GuiNomenclature(GuiView & lv)
-	: GuiDialog(lv, "nomenclature", qt_("Nomenclature")),
-	  params_(insetCode("nomenclature"))
+GuiNomenclature::GuiNomenclature(QWidget * parent) : InsetParamsWidget(parent)
 {
 	setupUi(this);
-
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(symbolED, SIGNAL(textChanged(QString)),
-		this, SLOT(change_adaptor()));
+		this, SIGNAL(changed()));
 	connect(descriptionTE, SIGNAL(textChanged()),
-		this, SLOT(change_adaptor()));
+		this, SIGNAL(changed()));
 
 	setFocusProxy(descriptionTE);
-
-	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
-	bc().setOK(okPB);
-	bc().setCancel(closePB);
-	bc().addReadOnly(symbolED);
-	bc().addReadOnly(descriptionTE);
-	bc().addReadOnly(prefixED);
 }
 
 
-void GuiNomenclature::change_adaptor()
+void GuiNomenclature::paramsToDialog(Inset const * inset)
 {
-	changed();
-}
+	InsetNomencl const * nomencl = static_cast<InsetNomencl const *>(inset);
+	InsetCommandParams const & params = nomencl->params();
 
-
-void GuiNomenclature::reject()
-{
-	slotClose();
-}
-
-
-void GuiNomenclature::paramsToDialog(InsetCommandParams const & /*icp*/)
-{
-	prefixED->setText(toqstr(params_["prefix"]));
-	symbolED->setText(toqstr(params_["symbol"]));
-	QString description = toqstr(params_["description"]);
+	prefixED->setText(toqstr(params["prefix"]));
+	symbolED->setText(toqstr(params["symbol"]));
+	QString description = toqstr(params["description"]);
 	description.replace("\\\\","\n");
 	descriptionTE->setPlainText(description);
 	descriptionTE->setFocus();
-
-	bc().setValid(isValid());
 }
 
 
-void GuiNomenclature::applyView()
+docstring GuiNomenclature::dialogToParams() const
 {
-	params_["prefix"] = qstring_to_ucs4(prefixED->text());
-	params_["symbol"] = qstring_to_ucs4(symbolED->text());
+	InsetCommandParams params(insetCode());
+	params["prefix"] = qstring_to_ucs4(prefixED->text());
+	params["symbol"] = qstring_to_ucs4(symbolED->text());
 	QString description = descriptionTE->toPlainText();
 	description.replace('\n',"\\\\");
-	params_["description"] = qstring_to_ucs4(description);
+	params["description"] = qstring_to_ucs4(description);
+	return from_ascii(InsetNomencl::params2string("nomenclature", params));
 }
 
 
-bool GuiNomenclature::isValid()
+bool GuiNomenclature::checkWidgets() const
 {
+	if (!InsetParamsWidget::checkWidgets())
+		return false;
 	QString const description = descriptionTE->toPlainText();
 	return !symbolED->text().isEmpty() && !description.isEmpty();
 }
-
-
-bool GuiNomenclature::initialiseParams(std::string const & data)
-{
-	InsetCommand::string2params("nomenclature", data, params_);
-	paramsToDialog(params_);
-	return true;
-}
-
-
-void GuiNomenclature::dispatchParams()
-{
-	std::string const lfun = InsetCommand::params2string("nomenclature", params_);
-	dispatch(FuncRequest(getLfun(), lfun));
-}
-
-
-
-Dialog * createGuiNomenclature(GuiView & lv)
-{
-	return new GuiNomenclature(lv);
-}
-
 
 } // namespace frontend
 } // namespace lyx

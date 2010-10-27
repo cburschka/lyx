@@ -1,132 +1,82 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>NomenclUi</class>
- <widget class="QDialog" name="NomenclUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="NomenclUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>254</width>
-    <height>165</height>
+    <height>172</height>
    </rect>
   </property>
-  <property name="windowTitle" >
-   <string/>
+  <property name="windowTitle">
+   <string>Nomenclature</string>
   </property>
-  <property name="sizeGripEnabled" >
-   <bool>true</bool>
-  </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
+  <layout class="QGridLayout">
+   <property name="margin">
     <number>9</number>
    </property>
-   <property name="spacing" >
+   <property name="spacing">
     <number>6</number>
    </property>
-   <item row="2" column="1" >
-    <widget class="QLineEdit" name="prefixED" />
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="prefixED"/>
    </item>
-   <item row="2" column="0" >
-    <widget class="QLabel" name="prefixLA" >
-     <property name="text" >
+   <item row="2" column="0">
+    <widget class="QLabel" name="prefixLA">
+     <property name="text">
       <string>Sort &amp;as:</string>
      </property>
-     <property name="buddy" >
+     <property name="buddy">
       <cstring>prefixED</cstring>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="descrLA" >
-     <property name="text" >
+   <item row="1" column="0">
+    <widget class="QLabel" name="descrLA">
+     <property name="text">
       <string>&amp;Description:</string>
      </property>
-     <property name="buddy" >
+     <property name="buddy">
       <cstring>descriptionTE</cstring>
      </property>
     </widget>
    </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="symbolLA" >
-     <property name="text" >
+   <item row="0" column="0">
+    <widget class="QLabel" name="symbolLA">
+     <property name="text">
       <string>&amp;Symbol:</string>
      </property>
-     <property name="buddy" >
+     <property name="buddy">
       <cstring>symbolED</cstring>
      </property>
     </widget>
    </item>
-   <item row="0" column="1" >
-    <widget class="QLineEdit" name="symbolED" >
-     <property name="toolTip" >
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="symbolED">
+     <property name="toolTip">
       <string/>
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="okPB" >
-       <property name="text" >
-        <string>&amp;OK</string>
-       </property>
-       <property name="shortcut" >
-        <string>Alt+O</string>
-       </property>
-       <property name="default" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB" >
-       <property name="text" >
-        <string>Cancel</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="1" column="1" >
-    <widget class="QTextEdit" name="descriptionTE" >
-     <property name="acceptRichText" >
+   <item row="1" column="1">
+    <widget class="QTextEdit" name="descriptionTE">
+     <property name="acceptRichText">
       <bool>false</bool>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="6" margin="11" />
+ <layoutdefault spacing="6" margin="11"/>
  <tabstops>
   <tabstop>symbolED</tabstop>
   <tabstop>descriptionTE</tabstop>
   <tabstop>prefixED</tabstop>
-  <tabstop>okPB</tabstop>
-  <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>
