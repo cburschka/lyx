@@ -1011,10 +1011,13 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_REGEXP_MODE: {
-		InsetMathHull * i = cur.inset().asInsetMath()->asHullInset();		
-		if (i && i->getType() == hullRegexp) {
-			cur.message(_("Already in regular expression mode"));
-			break;
+		InsetMath * im = cur.inset().asInsetMath();
+		if (im) {
+			InsetMathHull * i = im->asHullInset();		
+			if (i && i->getType() == hullRegexp) {
+				cur.message(_("Already in regular expression mode"));
+				break;
+			}
 		}
 		cur.macroModeClose();
 		docstring const save_selection = grabAndEraseSelection(cur);

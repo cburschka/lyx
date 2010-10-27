@@ -164,9 +164,12 @@ bool MathMacro::editMode(BufferView const * bv) const {
 			// look if there is no other macro in edit mode above
 			++i;
 			for (; i != cur.depth(); ++i) {
-				MathMacro const * macro = cur[i].asInsetMath()->asMacro();
-				if (macro && macro->displayMode() == DISPLAY_NORMAL)
-					return false;
+				InsetMath * im = cur[i].asInsetMath();
+				if (im) {
+					MathMacro const * macro = im->asMacro();
+					if (macro && macro->displayMode() == DISPLAY_NORMAL)
+						return false;
+				}
 			}
 
 			// ok, none found, I am the highest one
