@@ -52,8 +52,14 @@ namespace frontend {
 
 struct InsetParamsDialog::Private
 {
+	Private() : widget_(0), inset_(0), changed_(false) {}
 	///
 	InsetParamsWidget * widget_;
+	/// The inset that was used at last Restore or Apply operation.
+	Inset const * inset_;
+	/// Set to true whenever the dialog is changed and set back to
+	/// false when the dialog is applied or restored.
+	bool changed_;
 };
 
 /////////////////////////////////////////////////////////////////
@@ -98,6 +104,8 @@ void InsetParamsDialog::on_restorePB_clicked()
 {
 	updateView(true);
 	restorePB->setEnabled(false);
+	d->changed_ = false;
+	d->inset_ = inset(d->widget_->insetCode());
 }
 
 
@@ -157,7 +165,9 @@ docstring InsetParamsDialog::checkWidgets(bool synchronized_view)
 	bool const read_only = buffer().isReadonly();
 
 	okPB->setEnabled(!synchronized_view && widget_ok && !read_only && valid_argument);
-	restorePB->setEnabled(!synchronized_view && ins && !read_only);
+	bool const can_be_restored = !synchronized_view && !read_only
+			&& ins && (ins != d->inset_ || d->changed_);
+	restorePB->setEnabled(can_be_restored);
 	applyPB->setEnabled(lfun_ok && widget_ok && !read_only && valid_argument);
 	d->widget_->setEnabled(!read_only);
 	return argument;
@@ -166,6 +176,7 @@ docstring InsetParamsDialog::checkWidgets(bool synchronized_view)
 
 void InsetParamsDialog::onWidget_changed()
 {
+	d->changed_ = true;
 	docstring const argument = checkWidgets(synchronizedViewCB->isChecked());
 	if (synchronizedViewCB->isChecked())
 		dispatch(FuncRequest(LFUN_INSET_MODIFY, argument));
@@ -176,6 +187,9 @@ void InsetParamsDialog::applyView()
 {
 	docstring const argument = checkWidgets(synchronizedViewCB->isChecked());
 	dispatch(FuncRequest(LFUN_INSET_MODIFY, argument));
+	d->changed_ = false;
+	d->inset_ = inset(d->widget_->insetCode());
+	updateView(true);
 }
 
 
