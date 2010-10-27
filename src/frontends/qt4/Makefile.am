@@ -100,7 +100,7 @@ SOURCEFILES = \
 	GuiListings.cpp \
 	GuiLog.cpp \
 	GuiMathMatrix.cpp \
-	GuiNomencl.cpp \
+	GuiNomenclature.cpp \
 	GuiNote.cpp \
 	GuiPainter.cpp \
 	GuiParagraph.cpp \
@@ -207,7 +207,7 @@ MOCHEADER = \
 	GuiListings.h \
 	GuiLog.h \
 	GuiMathMatrix.h \
-	GuiNomencl.h \
+	GuiNomenclature.h \
 	GuiNote.h \
 	GuiParagraph.h \
 	GuiPhantom.h \

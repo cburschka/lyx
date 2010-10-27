@@ -750,7 +750,7 @@ src_frontends_qt4_header_files = Split('''
     GuiListings.h
     GuiLog.h
     GuiMathMatrix.h
-    GuiNomencl.h
+    GuiNomenclature.h
     GuiNote.h
     GuiPainter.h
     GuiParagraph.h
@@ -854,7 +854,7 @@ src_frontends_qt4_files = Split('''
     GuiListings.cpp
     GuiLog.cpp
     GuiMathMatrix.cpp
-    GuiNomencl.cpp
+    GuiNomenclature.cpp
     GuiNote.cpp
     GuiPainter.cpp
     GuiParagraph.cpp
