@@ -37,11 +37,39 @@ class InsetInclude : public InsetCommand {
 public:
 	///
 	InsetInclude(Buffer * buf, InsetCommandParams const &);
+	///
 	~InsetInclude();
 
-	void setBuffer(Buffer & buffer);
-	bool isLabeled() const { return true; }
+	///
+	void setChildBuffer(Buffer * buffer);
+	/// \return the child buffer if the file is a LyX doc and could be loaded
+	Buffer * getChildBuffer() const;
 
+	/** Update the cache with all bibfiles in use of the child buffer
+	 *  (including bibfiles of grandchild documents).
+	 *  Does nothing if the child document is not loaded to prevent
+	 *  automatic loading of all child documents upon loading the master.
+	 *  \param buffer the Buffer containing this inset.
+	 */
+	void updateBibfilesCache();
+
+	/** Return the cache with all bibfiles in use of the child buffer
+	 *  (including bibfiles of grandchild documents).
+	 *  Return an empty vector if the child doc is not loaded.
+	 *  \param buffer the Buffer containing this inset.
+	 */
+	support::FileNameList const &
+		getBibfilesCache() const;
+
+	///
+	void updateCommand();
+
+	/// \name Public functions inherited from Inset class
+	//@{
+	///
+	void setBuffer(Buffer & buffer);
+	///
+	bool isLabeled() const { return true; }
 	/// Override these InsetButton methods if Previewing
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -50,17 +78,11 @@ public:
 	DisplayType display() const;
 	///
 	InsetCode lyxCode() const { return INCLUDE_CODE; }
-
-	///
-	void setChildBuffer(Buffer * buffer);
-
-	/** Fills \c keys
-	 *  \param buffer the Buffer containing this inset.
+	/** Fills \c key
 	 *  \param keys the list of bibkeys in the child buffer.
 	 *  \param it not used here
 	 */
 	void fillWithBibKeys(BiblioInfo & keys, InsetIterator const & it) const;
-	
 	///
 	bool hasSettings() const { return true; }
 	///
@@ -78,45 +100,57 @@ public:
 	///
 	void addToToc(DocIterator const &);
 	///
-	void updateCommand();
-	///
 	void updateBuffer(ParIterator const &, UpdateType);
+	///
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
+	//@}
+
+	/// \name Static public methods obligated for InsetCommand derived classes
+	//@{
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
 	static std::string defaultCommand() { return "include"; }
 	///
 	static bool isCompatibleCommand(std::string const & s);
-	///
-	docstring contextMenu(BufferView const & bv, int x, int y) const;
-	/// \return the child buffer if the file is a LyX doc and could be loaded
-	Buffer * getChildBuffer() const;
-protected:
-	InsetInclude(InsetInclude const &);
-	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
-	///
-	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
-private:
-	Inset * clone() const { return new InsetInclude(*this); }
+	//@}
 
+protected:
+	///
+	InsetInclude(InsetInclude const &);
+
+private:
 	/** Slot receiving a signal that the external file has changed
 	 *  and the preview should be regenerated.
 	 */
 	void fileChanged() const;
-
 	/// \return loaded Buffer or zero if the file loading did not proceed.
 	Buffer * loadIfNeeded() const;
 	/// launch external application
 	void editIncluded(std::string const & file);
+	///
+	bool isChildIncluded() const;
+
+	/// \name Private functions inherited from Inset class
+	//@{
+	Inset * clone() const { return new InsetInclude(*this); }
+	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	//@}
+
+	/// \name Private functions inherited from InsetCommand class
+	//@{
 	/// set the parameters
+	// FIXME:InsetCommmand::setParams is not virtual
 	void setParams(InsetCommandParams const & params);
 	/// get the text displayed on the button
 	docstring screenLabel() const;
+	//@}	
+	
 	/// holds the entity name that defines the file location (SGML)
 	docstring const include_label;
-	///
-	bool isChildIncluded() const;
 
 	/// The pointer never changes although *preview_'s contents may.
 	boost::scoped_ptr<RenderMonitoredPreview> const preview_;

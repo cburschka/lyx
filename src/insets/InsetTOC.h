@@ -26,8 +26,9 @@ class InsetTOC : public InsetCommand {
 public:
 	///
 	InsetTOC(Buffer * buf, InsetCommandParams const &);
-	///
-	docstring screenLabel() const;
+
+	/// \name Public functions inherited from Inset class
+	//@{
 	///
 	InsetCode lyxCode() const { return TOC_CODE; }
 	///
@@ -38,6 +39,10 @@ public:
 	int docbook(odocstream &, OutputParams const &) const;
 	///
 	docstring xhtml(XHTMLStream & xs, OutputParams const &) const;
+	//@}
+
+	/// \name Static public methods obligated for InsetCommand derived classes
+	//@{
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
@@ -45,8 +50,20 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & cmd)
 		{ return cmd == defaultCommand(); }
+	//@}
+
 private:
+	/// \name Private functions inherited from Inset class
+	//@{
+	///
 	Inset * clone() const { return new InsetTOC(*this); }
+	//@}
+
+	/// \name Private functions inherited from InsetCommand class
+	//@{
+	///
+	docstring screenLabel() const;
+	//@}
 };
 
 

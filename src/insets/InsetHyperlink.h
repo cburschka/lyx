@@ -23,17 +23,26 @@ class InsetHyperlink : public InsetCommand
 {
 public:
 	///
-	explicit InsetHyperlink(Buffer * buf, InsetCommandParams const &);
+	InsetHyperlink(Buffer * buf, InsetCommandParams const &);
+				
+	/// \name Public functions inherited from Inset class
+	//@{
 	///
 	InsetCode lyxCode() const { return HYPERLINK_CODE; }
 	///
-	void validate(LaTeXFeatures &) const;
-	///
-	docstring screenLabel() const;
-	///
 	bool hasSettings() const { return true; }
 	///
-	DisplayType display() const { return Inline; }
+	bool forceLTR() const { return true; }
+	///
+	bool isInToc() const { return true; }
+	///
+	void tocString(odocstream &) const;
+	///
+	docstring toolTip(BufferView const & bv, int x, int y) const;
+	///
+	docstring contextMenu(BufferView const &, int, int) const;
+	///
+	void validate(LaTeXFeatures &) const;
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
@@ -42,37 +51,42 @@ public:
 	int docbook(odocstream &, OutputParams const &) const;
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
-	/// the string that is passed to the TOC
-	void tocString(odocstream &) const;
-	///
-	static ParamInfo const & findInfo(std::string const &);
-	///
-	static std::string defaultCommand() { return "href"; }
+	//@}
+
+	/// \name Static public methods obligated for InsetCommand derived classes
+	//@{
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "href"; }
-	/// Force inset into LTR environment if surroundings are RTL
-	bool forceLTR() const { return true; }
 	///
-	bool isInToc() const { return true; }
+	static std::string defaultCommand() { return "href"; }
 	///
-	docstring contextMenu(BufferView const & bv, int x, int y) const;
-	///
-	docstring toolTip(BufferView const & bv, int x, int y) const;
-
+	static ParamInfo const & findInfo(std::string const &);
+	//@}
+	
 private:
-  	///
+	/// \name Private functions inherited from Inset class
+	//@{
+	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const;
 	///
-	void viewTarget() const;
-	///
 	Inset * clone() const { return new InsetHyperlink(*this); }
+	//@}
+
+	/// \name Private functions inherited from InsetCommand class
+	//@{
+	///
+	docstring screenLabel() const;
+	//@}
+
+	///
+	void viewTarget() const;
 };
 
 
 } // namespace lyx
 
-#endif
+#endif // INSET_HYPERLINK_H

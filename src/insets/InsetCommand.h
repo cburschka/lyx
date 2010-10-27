@@ -64,7 +64,7 @@ public:
 	/// FIXME Remove
 	docstring const getFirstNonOptParam() const { return p_.getFirstNonOptParam(); }
 
-	/// \name Methods inherited from Inset class
+	/// \name Public functions inherited from Inset class
 	//@{
 	///
 	void write(std::ostream & os) const { p_.write(os); }
@@ -98,7 +98,7 @@ public:
 	//@}
 
 protected:
-	/// \name Methods relaying to the InsetCommandParams
+	/// \name Functions relaying to the InsetCommandParams
 	//@{
 	/// Build the complete LaTeX command
 	/// \see InsetCommandParams::getCommand
@@ -120,7 +120,7 @@ private:
 	/// This should provide the text for the button
 	virtual docstring screenLabel() const = 0;
 
-	/// \name Methods obligated for InsetCommand derived classes
+	/// \name Static public methods obligated for InsetCommand derived classes
 	//@{
 	/// Return parameter information for command cmdName.
 	/// Not implemented here. Must be implemented in derived class.

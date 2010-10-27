@@ -26,8 +26,9 @@ public:
 	InsetFloatList(Buffer *);
 	///
 	InsetFloatList(Buffer *, std::string const & type);
-	///
-	docstring screenLabel() const;
+
+	/// \name Public functions inherited from Inset class
+	//@{
 	///
 	InsetCode lyxCode() const { return FLOAT_LIST_CODE; }
 	///
@@ -46,15 +47,31 @@ public:
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
+	//@}
+
+	/// \name Static public methods obligated for InsetCommand derived classes
+	//@{
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
 	static std::string defaultCommand() { return "listoftables"; }
 	///
 	static bool isCompatibleCommand(std::string const & s);
+	//@}
+
 private:
+	/// \name Private functions inherited from Inset class
+	//@{
 	///
 	Inset * clone() const { return new InsetFloatList(*this); }
+	//@}
+
+	/// \name Private functions inherited from InsetCommand class
+	//@{
+	///
+	docstring screenLabel() const;
+	//@}
+
 	///
 	static ParamInfo param_info_;
 };

@@ -35,6 +35,35 @@ public:
 	InsetBibitem(Buffer *, InsetCommandParams const &);
 	///
 	~InsetBibitem();
+
+	///
+	void updateCommand(docstring const & new_key, bool dummy = false);
+
+	/// \name Public functions inherited from Inset class
+	//@{
+	///
+	InsetCode lyxCode() const { return BIBITEM_CODE; }
+	///
+	bool hasSettings() const { return true; }
+	/// \copydoc Inset::initView()
+	/// verify label and update references.
+	void initView();
+	///
+	bool isLabeled() const { return true; }
+	///
+	void read(Lexer & lex);
+	///
+	int plaintext(odocstream &, OutputParams const &) const;
+	///
+	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	///
+	void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
+	/// update the counter of this inset
+	void updateBuffer(ParIterator const &, UpdateType);
+	///@}
+
+	/// \name Static public methods obligated for InsetCommand derived classes
+	//@{
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
@@ -42,38 +71,28 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "bibitem"; }
-	///
-	void updateCommand(docstring const & new_key, bool dummy = false);
+	///@}
+
 private:
-	/// verify label and update references.
-	/// Overloaded from Inset::initView.
-	void initView();
-	///
-	bool isLabeled() const { return true; }
-	///
-	void read(Lexer & lex);
-	///
-	docstring screenLabel() const;
-	///
-	bool hasSettings() const { return true; }
-	///
-	InsetCode lyxCode() const { return BIBITEM_CODE; }
 	///
 	docstring bibLabel() const;
-	///
-	int plaintext(odocstream &, OutputParams const &) const;
-	///
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
-	///
-	virtual void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
-	/// Update the counter of this inset
-	void updateBuffer(ParIterator const &, UpdateType);
+
+	/// \name Private functions inherited from Inset class
+	//@{
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	Inset * clone() const { return new InsetBibitem(*this); }
+	///@}
+
+	/// \name Private functions inherited from InsetCommand class
+	//@{
+	///
+	docstring screenLabel() const;
+	//@}
 
 	friend docstring bibitemWidest(Buffer const & buffer, OutputParams const &);
+
 	/// The label that is set by updateBuffer
 	docstring autolabel_;
 	///
@@ -83,6 +102,7 @@ private:
 
 /// Return the widest label in the Bibliography.
 docstring bibitemWidest(Buffer const &, OutputParams const &);
+
 
 } // namespace lyx
 

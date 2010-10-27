@@ -25,17 +25,21 @@ public:
 	///
 	InsetLabel(Buffer * buf, InsetCommandParams const &);
 
-	/// verify label and update references.
-	/**
-	  * Overloaded from Inset::initView.
-	  **/
-	void initView();
+	///
+	docstring const & activeCounter() const { return active_counter_; }
+	///
+	docstring const & counterValue() const { return counter_value_; }
+	///
+	docstring const & prettyCounter() const { return pretty_counter_; }
+	///
+	void updateCommand(docstring const & new_label, bool updaterefs = true);
 
+	/// \name Public functions inherited from Inset class
+	//@{
+	/// verify label and update references.
+	void initView();
 	///
 	bool isLabeled() const { return true; }
-
-	///
-	docstring screenLabel() const;
 	///
 	bool hasSettings() const { return true; }
 	///
@@ -47,32 +51,40 @@ public:
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
+	void updateBuffer(ParIterator const & it, UpdateType);
+	///
+	void addToToc(DocIterator const &);
+	//@}
+
+	/// \name Static public methods obligated for InsetCommand derived classes
+	//@{
+	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
 	static std::string defaultCommand() { return "label"; }
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "label"; }
+	//@}
+
+	//FIXME: private
+	/// \name Private functions inherited from InsetCommand class
+	//@{
 	///
-	void updateBuffer(ParIterator const & it, UpdateType);
+	docstring screenLabel() const;
+	//@}
+	
+private:
+	/// \name Private functions inherited from Inset class
+	//@{
 	///
-	void addToToc(DocIterator const &);
-	///
-	void updateCommand(docstring const & new_label, bool updaterefs = true);
+	Inset * clone() const { return new InsetLabel(*this); }
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus & status) const;
 	///
-	docstring const & activeCounter() const { return active_counter_; }
-	///
-	docstring const & counterValue() const { return counter_value_; }
-	///
-	docstring const & prettyCounter() const { return pretty_counter_; }
-protected:
-	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
-private:
-	///
-	Inset * clone() const { return new InsetLabel(*this); }
+	//@}
+
 	///
 	docstring screen_label_;
 	///

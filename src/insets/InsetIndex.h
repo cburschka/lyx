@@ -94,15 +94,11 @@ class InsetPrintIndex : public InsetCommand {
 public:
 	///
 	InsetPrintIndex(Buffer * buf, InsetCommandParams const &);
+
+	/// \name Public functions inherited from Inset class
+	//@{
 	///
 	InsetCode lyxCode() const { return INDEX_PRINT_CODE; }
-
-	///
-	static ParamInfo const & findInfo(std::string const &);
-	///
-	static std::string defaultCommand() { return "printindex"; }
-	///
-	static bool isCompatibleCommand(std::string const & s);
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	/// 
@@ -112,19 +108,37 @@ public:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
-	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
-private:
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
 	///
 	bool hasSettings() const;
-
 	///
 	DisplayType display() const { return AlignCenter; }
+	//@}
+
+	/// \name Static public methods obligated for InsetCommand derived classes
+	//@{
 	///
-	docstring screenLabel() const;
+	static ParamInfo const & findInfo(std::string const &);
+	///
+	static std::string defaultCommand() { return "printindex"; }
+	///
+	static bool isCompatibleCommand(std::string const & s);
+	//@}
+
+private:
+	/// \name Private functions inherited from Inset class
+	//@{
 	///
 	Inset * clone() const { return new InsetPrintIndex(*this); }
+	//@}
+
+	/// \name Private functions inherited from InsetCommand class
+	//@{
+	///
+	docstring screenLabel() const;
+	//@}
 };
 
 

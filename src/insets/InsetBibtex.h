@@ -29,8 +29,16 @@ public:
 	InsetBibtex(Buffer *, InsetCommandParams const &);
 	///
 	~InsetBibtex();
+
 	///
-	docstring screenLabel() const;
+	support::FileNameList getBibFiles() const;
+	///
+	bool addDatabase(docstring const &);
+	///
+	bool delDatabase(docstring const &);
+
+	/// \name Public functions inherited from Inset class
+	//@{
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
@@ -44,15 +52,15 @@ public:
 	///
 	void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
 	///
-	support::FileNameList getBibFiles() const;
-	///
-	bool addDatabase(docstring const &);
-	///
-	bool delDatabase(docstring const &);
-	///
 	void validate(LaTeXFeatures &) const;
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	///
+	docstring contextMenu(BufferView const &, int, int) const;
+	//@}
+
+	/// \name Static public methods obligated for InsetCommand derived classes
+	//@{
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
@@ -60,21 +68,31 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "bibtex"; }
+	//@}
+
+private:
 	/// look up the path to the file using TeX
 	static support::FileName 
 		getBibTeXPath(docstring const & filename, Buffer const & buf);
 	///
-	docstring contextMenu(BufferView const &, int, int) const;
-private:
-	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void editDatabases() const;
+
+	/// \name Private functions inherited from Inset class
+	//@{
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const;
 	///
-	void editDatabases() const;
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	Inset * clone() const { return new InsetBibtex(*this); }
+	//@}
+
+	/// \name Private functions inherited from InsetCommand class
+	//@{
+	///
+	docstring screenLabel() const;
+	//@}
 };
 
 

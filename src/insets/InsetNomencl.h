@@ -27,8 +27,12 @@ class InsetNomencl : public InsetCommand {
 public:
 	///
 	InsetNomencl(Buffer * buf, InsetCommandParams const &);
+
 	///
-	docstring screenLabel() const;
+	int docbookGlossary(odocstream &) const;
+
+	/// \name Public functions inherited from Inset class
+	//@{
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
@@ -41,8 +45,10 @@ public:
 	int docbook(odocstream &, OutputParams const &) const;
 	/// Does nothing at the moment.
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
-	///
-	int docbookGlossary(odocstream &) const;
+	//@}
+
+	/// \name Static public methods obligated for InsetCommand derived classes
+	//@{
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
@@ -50,8 +56,21 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "nomenclature"; }
+	//@}
+
 private:
+	/// \name Private functions inherited from Inset class
+	//@{
+	///
 	Inset * clone() const { return new InsetNomencl(*this); }
+	//@}
+
+	/// \name Private functions inherited from InsetCommand class
+	//@{
+	///
+	docstring screenLabel() const;
+	//@}
+
 	/// unique id for this nomenclature entry for docbook export
 	docstring nomenclature_entry_id;
 };
@@ -61,6 +80,9 @@ class InsetPrintNomencl : public InsetCommand {
 public:
 	///
 	InsetPrintNomencl(Buffer * buf, InsetCommandParams const &);
+
+	/// \name Public functions inherited from Inset class
+	//@{
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
 	///
@@ -74,7 +96,13 @@ public:
 	///
 	DisplayType display() const { return AlignCenter; }
 	///
-	docstring screenLabel() const;
+	int latex(odocstream &, OutputParams const &) const;
+	///
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
+	//@}
+
+	/// \name Static public methods obligated for InsetCommand derived classes
+	//@{
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
@@ -82,17 +110,24 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "printnomenclature"; }
+	//@}
+
+private:
+	/// \name Private functions inherited from Inset class
+	//@{
 	///
-	int latex(odocstream &, OutputParams const &) const;
+	Inset * clone() const { return new InsetPrintNomencl(*this); }
 	///
-	docstring contextMenu(BufferView const & bv, int x, int y) const;
-protected:
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus & status) const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	//@}
+
+	/// \name Private functions inherited from InsetCommand class
+	//@{
 	///
-	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
-private:
-	Inset * clone() const { return new InsetPrintNomencl(*this); }
+	docstring screenLabel() const;
+	//@}
 };
 
 } // namespace lyx

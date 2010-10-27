@@ -35,13 +35,13 @@ public:
 	///
 	static std::string const & getName(int type);
 
-
+	///
 	InsetRef(Buffer * buffer, InsetCommandParams const &);
 
+	/// \name Public functions inherited from Inset class
+	//@{
 	///
 	bool isLabeled() const { return true; }
-	///
-	docstring screenLabel() const { return screen_label_; }
 	///
 	docstring toolTip(BufferView const &, int, int) const
 		{ return tooltip_; }
@@ -64,21 +64,39 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
+	void updateBuffer(ParIterator const & it, UpdateType);
+	///
+	void addToToc(DocIterator const &);
+	//@}
+
+	/// \name Static public methods obligated for InsetCommand derived classes
+	//@{
+	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
 	static std::string defaultCommand() { return "ref"; }
 	///
 	static bool isCompatibleCommand(std::string const & s);
+	//@}
+
+	//FIXME: private
+	/// \name Private functions inherited from InsetCommand class
+	//@{
 	///
-	void updateBuffer(ParIterator const & it, UpdateType);
-	///
-	void addToToc(DocIterator const &);
+	docstring screenLabel() const { return screen_label_; }
+	//@}
+
 protected:
 	///
 	InsetRef(InsetRef const &);
+
 private:
+	/// \name Private functions inherited from Inset class
+	//@{
 	///
 	Inset * clone() const { return new InsetRef(*this); }
+	//@}
+
 	///
 	bool isLatex;
 	/// Force inset into LTR environment if surroundings are RTL
@@ -89,6 +107,7 @@ private:
 	mutable docstring tooltip_;
 };
 
+
 } // namespace lyx
 
-#endif
+#endif // INSET_REF_H

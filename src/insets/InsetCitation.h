@@ -32,11 +32,12 @@ class InsetCitation : public InsetCommand
 {
 public:
 	///
-	explicit InsetCitation(Buffer * buf, InsetCommandParams const &);
+	InsetCitation(Buffer * buf, InsetCommandParams const &);
+
+	/// \name Public functions inherited from Inset class
+	//@{
 	///
 	bool isLabeled() const { return true; }
-	///
-	docstring screenLabel() const;
 	///
 	bool hasSettings() const { return true; }
 	///
@@ -51,7 +52,7 @@ public:
 	int docbook(odocstream &, OutputParams const &) const;
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
-	/// the string that is passed to the TOC
+	///
 	void tocString(odocstream &) const;
 	///
 	void validate(LaTeXFeatures &) const;
@@ -59,7 +60,12 @@ public:
 	void updateBuffer(ParIterator const & it, UpdateType);
 	///
 	void addToToc(DocIterator const &);
+	///
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
+	//@}
 
+	/// \name Static public methods obligated for InsetCommand derived classes
+	//@{
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	// FIXME This is the locus of the design problem we have.
@@ -69,17 +75,28 @@ public:
 	static std::string defaultCommand() { return "cite"; }
 	///
 	static bool isCompatibleCommand(std::string const & cmd);
-	///
-	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
+	//@}
+
 private:
-	///
-	Inset * clone() const { return new InsetCitation(*this); }
 	/// tries to make a pretty label and makes a basic one if not
 	docstring generateLabel(bool for_xhtml = false) const;
 	/// makes a pretty label
 	docstring complexLabel(bool for_xhtml = false) const;
 	/// makes a very basic label, in case we can't make a pretty one
 	docstring basicLabel(bool for_xhtml = false) const;
+
+	/// \name Private functions inherited from Inset class
+	//@{
+	///
+	Inset * clone() const { return new InsetCitation(*this); }
+	//@}
+
+	/// \name Private functions inherited from InsetCommand class
+	//@{
+	///
+	docstring screenLabel() const;
+	//@}
+
 	/// we'll eventually want to be able to get info on this from the 
 	/// various CiteEngines
 	static ParamInfo param_info_;
@@ -101,6 +118,7 @@ private:
 	///
 	mutable Cache cache;
 };
+
 
 } // namespace lyx
 
