@@ -71,4 +71,4 @@ bool GuiNomenclature::checkWidgets() const
 } // namespace frontend
 } // namespace lyx
 
-#include "moc_GuiNomencl.cpp"
+#include "moc_GuiNomenclature.cpp"
