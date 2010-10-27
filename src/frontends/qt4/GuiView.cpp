@@ -287,7 +287,7 @@ struct GuiView::GuiViewPrivate
 	{
 		return splitter_->count();
 	}
-	
+
 	TabWorkArea * tabWorkArea(int i)
 	{
 		return dynamic_cast<TabWorkArea *>(splitter_->widget(i));
@@ -378,14 +378,14 @@ public:
 
 	template<class T>
 	static docstring runAndDestroy(const T& func, Buffer const * orig, Buffer * buffer, string const & format, string const & msg);
-	
+
 	// TODO syncFunc/previewFunc: use bind
 	bool asyncBufferProcessing(string const & argument,
-	                           Buffer const * used_buffer,
-	                           docstring const & msg,
-	                           docstring (*asyncFunc)(Buffer const *, Buffer *, string const &),
-	                           bool (Buffer::*syncFunc)(string const &, bool, bool) const,
-	                           bool (Buffer::*previewFunc)(string const &, bool) const);
+				   Buffer const * used_buffer,
+				   docstring const & msg,
+				   docstring (*asyncFunc)(Buffer const *, Buffer *, string const &),
+				   bool (Buffer::*syncFunc)(string const &, bool, bool) const,
+				   bool (Buffer::*previewFunc)(string const &, bool) const);
 
 	QTimer processing_cursor_timer_;
 	bool indicates_processing_;
@@ -2932,12 +2932,12 @@ docstring GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer
 
 
 bool GuiView::GuiViewPrivate::asyncBufferProcessing(
-                           string const & argument,
-                           Buffer const * used_buffer,
-                           docstring const & msg,
-                           docstring (*asyncFunc)(Buffer const *, Buffer *, string const &),
-                           bool (Buffer::*syncFunc)(string const &, bool, bool) const,
-                           bool (Buffer::*previewFunc)(string const &, bool) const)
+			   string const & argument,
+			   Buffer const * used_buffer,
+			   docstring const & msg,
+			   docstring (*asyncFunc)(Buffer const *, Buffer *, string const &),
+			   bool (Buffer::*syncFunc)(string const &, bool, bool) const,
+			   bool (Buffer::*previewFunc)(string const &, bool) const)
 {
 	if (!used_buffer) {
 		return false;
@@ -3024,13 +3024,13 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			}
 #else
 			/* TODO/Review: Is it a problem to also export the children?
-			                See the update_unincluded flag */
+					See the update_unincluded flag */
 			d.asyncBufferProcessing(argument,
-			                        doc_buffer,
-			                        _("Exporting ..."),
-			                        &GuiViewPrivate::exportAndDestroy,
-			                        &Buffer::doExport,
-			                        0);
+						doc_buffer,
+						_("Exporting ..."),
+						&GuiViewPrivate::exportAndDestroy,
+						&Buffer::doExport,
+						0);
 			// TODO Inform user about success
 #endif
 			break;
@@ -3038,37 +3038,37 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		case LFUN_BUFFER_UPDATE: {
 			d.asyncBufferProcessing(argument,
-			                        doc_buffer,
-			                        _("Exporting ..."),
-			                        &GuiViewPrivate::compileAndDestroy,
-			                        &Buffer::doExport,
-			                        0);
+						doc_buffer,
+						_("Exporting ..."),
+						&GuiViewPrivate::compileAndDestroy,
+						&Buffer::doExport,
+						0);
 			break;
 		}
 		case LFUN_BUFFER_VIEW: {
 			d.asyncBufferProcessing(argument,
-			                        doc_buffer,
-			                        _("Previewing ..."),
-			                        &GuiViewPrivate::previewAndDestroy,
-			                        0,
-			                        &Buffer::preview);
+						doc_buffer,
+						_("Previewing ..."),
+						&GuiViewPrivate::previewAndDestroy,
+						0,
+						&Buffer::preview);
 			break;
 		}
 		case LFUN_MASTER_BUFFER_UPDATE: {
 			d.asyncBufferProcessing(argument,
-			                        (doc_buffer ? doc_buffer->masterBuffer() : 0),
-			                        docstring(),
-			                        &GuiViewPrivate::compileAndDestroy,
-			                        &Buffer::doExport,
-			                        0);
+						(doc_buffer ? doc_buffer->masterBuffer() : 0),
+						docstring(),
+						&GuiViewPrivate::compileAndDestroy,
+						&Buffer::doExport,
+						0);
 			break;
 		}
 		case LFUN_MASTER_BUFFER_VIEW: {
 			d.asyncBufferProcessing(argument,
-			                        (doc_buffer ? doc_buffer->masterBuffer() : 0),
-			                        docstring(),
-			                        &GuiViewPrivate::previewAndDestroy,
-			                        0, &Buffer::preview);
+						(doc_buffer ? doc_buffer->masterBuffer() : 0),
+						docstring(),
+						&GuiViewPrivate::previewAndDestroy,
+						0, &Buffer::preview);
 			break;
 		}
 		case LFUN_BUFFER_SWITCH: {
@@ -3158,7 +3158,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 			int ret = 0;
 			if (!doc_buffer->isClean()) {
-				docstring const file = 
+				docstring const file =
 					makeDisplayPath(doc_buffer->absFileName(), 20);
 				docstring text = bformat(_("Any changes will be lost. "
 					"Are you sure you want to revert to the saved version "
@@ -3234,7 +3234,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 					//FIXME: pass DispatchResult here?
 					inset->dispatch(currentBufferView()->cursor(), fr);
 				}
-			} 
+			}
 			break;
 		}
 
@@ -3837,8 +3837,6 @@ Dialog * GuiView::build(string const & name)
 		return createGuiSearchAdv(*this);
 	if (name == "graphics")
 		return createGuiGraphics(*this);
-	if (name == "href")
-		return createGuiHyperlink(*this);
 	if (name == "include")
 		return createGuiInclude(*this);
 	if (name == "index")

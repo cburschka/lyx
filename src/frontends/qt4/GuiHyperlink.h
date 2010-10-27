@@ -13,46 +13,29 @@
 #ifndef GUIHYPERLINK_H
 #define GUIHYPERLINK_H
 
-#include "GuiDialog.h"
+#include "InsetParamsWidget.h"
 #include "ui_HyperlinkUi.h"
-
-#include "insets/InsetCommandParams.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiHyperlink : public GuiDialog, public Ui::HyperlinkUi
+class GuiHyperlink : public InsetParamsWidget, public Ui::HyperlinkUi
 {
 	Q_OBJECT
 
 public:
-	/// Constructor
-	GuiHyperlink(GuiView & lv);
-
-public Q_SLOTS:
-	void changed_adaptor();
+	///
+	GuiHyperlink(QWidget * parent = 0);
 
 private:
-	///
-	bool isValid();
-	/// apply dialog
-	void applyView();
-	/// update dialog
-	void updateContents() {}
-	///
-	bool initialiseParams(std::string const & data);
-	///
-	void paramsToDialog(InsetCommandParams const & icp);
-	/// clean-up on hide.
-	void clearParams() { params_.clear(); }
-	/// clean-up on hide.
-	void dispatchParams();
-	///
-	bool isBufferDependent() const { return true; }
-
-private:
-	///
-	InsetCommandParams params_;
+	/// \name InsetParamsWidget inherited methods
+	//@{
+	InsetCode insetCode() const { return HYPERLINK_CODE; }
+	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
+	void paramsToDialog(Inset const *);
+	docstring dialogToParams() const;
+	bool checkWidgets() const;
+	//@}
 };
 
 } // namespace frontend

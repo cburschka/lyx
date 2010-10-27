@@ -14,19 +14,15 @@
 #include "GuiHyperlink.h"
 
 #include "qt_helpers.h"
-#include "FuncRequest.h"
-#include "insets/InsetCommand.h"
 
-#include <QCheckBox>
-#include <QLineEdit>
-#include <QPushButton>
+#include "insets/InsetHyperlink.h"
 
 #if defined(LYX_MERGE_FILES) && !defined(Q_CC_MSVC)
 // GCC couldn't find operator==
 namespace lyx {
 	bool operator==(lyx::docstring const & d, char const * c);
 	namespace frontend {
-		bool operator==(lyx::docstring const & d, char const * c) 
+		bool operator==(lyx::docstring const & d, char const * c)
 		  { return lyx::operator ==(d, c); }
 	}
 }
@@ -36,97 +32,66 @@ namespace lyx {
 namespace lyx {
 namespace frontend {
 
-GuiHyperlink::GuiHyperlink(GuiView & lv)
-	: GuiDialog(lv, "href", qt_("Hyperlink")),
-    params_(insetCode("href"))
+GuiHyperlink::GuiHyperlink(QWidget * parent) : InsetParamsWidget(parent)
 {
 	setupUi(this);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(targetED, SIGNAL(textChanged(const QString &)),
-		this, SLOT(changed_adaptor()));
+		this, SIGNAL(changed()));
 	connect(nameED, SIGNAL(textChanged(const QString &)),
-		this, SLOT(changed_adaptor()));
+		this, SIGNAL(changed()));
 	connect(webRB, SIGNAL(clicked()),
-		this, SLOT(changed_adaptor()));
+		this, SIGNAL(changed()));
 	connect(emailRB, SIGNAL(clicked()),
-		this, SLOT(changed_adaptor()));
+		this, SIGNAL(changed()));
 	connect(fileRB, SIGNAL(clicked()),
-		this, SLOT(changed_adaptor()));
+		this, SIGNAL(changed()));
 
 	setFocusProxy(targetED);
-
-	bc().setPolicy(ButtonPolicy::OkCancelReadOnlyPolicy);
-
-	bc().setOK(okPB);
-	bc().setCancel(closePB);
-	bc().addReadOnly(targetED);
-	bc().addReadOnly(nameED);
-	bc().addReadOnly(webRB);
-	bc().addReadOnly(emailRB);
-	bc().addReadOnly(fileRB);
 }
 
 
-void GuiHyperlink::changed_adaptor()
+void GuiHyperlink::paramsToDialog(Inset const * inset)
 {
-	changed();
-}
+	InsetHyperlink const * hlink = static_cast<InsetHyperlink const *>(inset);
+	InsetCommandParams const & params = hlink->params();
 
-
-void GuiHyperlink::paramsToDialog(InsetCommandParams const & /*icp*/)
-{
-	targetED->setText(toqstr(params_["target"]));
-	nameED->setText(toqstr(params_["name"]));
-	if (params_["type"] == "")
+	targetED->setText(toqstr(params["target"]));
+	nameED->setText(toqstr(params["name"]));
+	docstring const & type = params["type"];
+	if (type.empty())
 		webRB->setChecked(true);
-	else if (params_["type"] == "mailto:")
+	else if (type == "mailto:")
 		emailRB->setChecked(true);
-	else if (params_["type"] == "file:")
+	else if (type == "file:")
 		fileRB->setChecked(true);
-	bc().setValid(isValid());
 }
 
 
-void GuiHyperlink::applyView()
+docstring GuiHyperlink::dialogToParams() const
 {
-	params_["target"] = qstring_to_ucs4(targetED->text());
-	params_["name"] = qstring_to_ucs4(nameED->text());
+	InsetCommandParams params(insetCode());
+
+	params["target"] = qstring_to_ucs4(targetED->text());
+	params["name"] = qstring_to_ucs4(nameED->text());
 	if (webRB->isChecked())
-		params_["type"] = qstring_to_ucs4("");
+		params["type"] = qstring_to_ucs4("");
 	else if (emailRB->isChecked())
-		params_["type"] = qstring_to_ucs4("mailto:");
+		params["type"] = qstring_to_ucs4("mailto:");
 	else if (fileRB->isChecked())
-		params_["type"] = qstring_to_ucs4("file:");
-	params_.setCmdName("href");
+		params["type"] = qstring_to_ucs4("file:");
+	params.setCmdName("href");
+
+	return from_ascii(InsetHyperlink::params2string("href", params));
 }
 
 
-bool GuiHyperlink::isValid()
+bool GuiHyperlink::checkWidgets() const
 {
+	if (!InsetParamsWidget::checkWidgets())
+		return false;
 	return !targetED->text().isEmpty() || !nameED->text().isEmpty();
 }
-
-
-bool GuiHyperlink::initialiseParams(std::string const & data)
-{
-	// The name passed with LFUN_INSET_APPLY is also the name
-	// used to identify the mailer.
-	InsetCommand::string2params("href", data, params_);
-	paramsToDialog(params_);
-	return true;
-}
-
-
-void GuiHyperlink::dispatchParams()
-{
-	std::string const lfun = InsetCommand::params2string("href", params_);
-	dispatch(FuncRequest(getLfun(), lfun));
-}
-
-
-Dialog * createGuiHyperlink(GuiView & lv) { return new GuiHyperlink(lv); }
 
 
 } // namespace frontend
