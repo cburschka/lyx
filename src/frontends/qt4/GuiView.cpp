@@ -3771,7 +3771,6 @@ Dialog * createGuiExternal(GuiView & lv);
 Dialog * createGuiGraphics(GuiView & lv);
 Dialog * createGuiInclude(GuiView & lv);
 Dialog * createGuiIndex(GuiView & lv);
-Dialog * createGuiLabel(GuiView & lv);
 Dialog * createGuiListings(GuiView & lv);
 Dialog * createGuiLog(GuiView & lv);
 Dialog * createGuiMathMatrix(GuiView & lv);
@@ -3794,7 +3793,6 @@ Dialog * createGuiTabularCreate(GuiView & lv);
 Dialog * createGuiTexInfo(GuiView & lv);
 Dialog * createGuiToc(GuiView & lv);
 Dialog * createGuiThesaurus(GuiView & lv);
-Dialog * createGuiHyperlink(GuiView & lv);
 Dialog * createGuiViewSource(GuiView & lv);
 Dialog * createGuiWrap(GuiView & lv);
 Dialog * createGuiProgressView(GuiView & lv);
@@ -3843,8 +3841,6 @@ Dialog * GuiView::build(string const & name)
 		return createGuiIndex(*this);
 	if (name == "index_print")
 		return createGuiPrintindex(*this);
-	if (name == "label")
-		return createGuiLabel(*this);
 	if (name == "listings")
 		return createGuiListings(*this);
 	if (name == "log")

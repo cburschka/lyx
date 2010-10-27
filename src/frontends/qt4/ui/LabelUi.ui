@@ -1,101 +1,50 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>LabelUi</class>
- <widget class="QDialog" name="LabelUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="LabelUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>300</width>
-    <height>82</height>
+    <height>71</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <property name="sizeGripEnabled" >
-   <bool>true</bool>
-  </property>
-  <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>11</number>
-   </property>
-   <property name="spacing" >
+  <layout class="QVBoxLayout">
+   <property name="spacing">
     <number>6</number>
    </property>
+   <property name="margin">
+    <number>11</number>
+   </property>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>6</number>
      </property>
-     <item>
-      <widget class="QLabel" name="keywordLA" >
-       <property name="toolTip" >
-        <string/>
-       </property>
-       <property name="text" >
-        <string>&amp;Label:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>keywordED</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="keywordED" >
-       <property name="toolTip" >
-        <string/>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
+     <property name="margin">
       <number>0</number>
      </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
      <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
+      <widget class="QLabel" name="keywordLA">
+       <property name="toolTip">
+	<string/>
        </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
+       <property name="text">
+	<string>&amp;Label:</string>
        </property>
-       <property name="sizeHint" >
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="okPB" >
-       <property name="text" >
-        <string>&amp;OK</string>
-       </property>
-       <property name="default" >
-        <bool>true</bool>
+       <property name="buddy">
+	<cstring>keywordED</cstring>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="closePB" >
-       <property name="text" >
-        <string>Cancel</string>
-       </property>
-       <property name="autoDefault" >
-        <bool>false</bool>
-       </property>
-       <property name="default" >
-        <bool>false</bool>
+      <widget class="QLineEdit" name="keywordED">
+       <property name="toolTip">
+	<string/>
        </property>
       </widget>
      </item>
@@ -104,7 +53,7 @@
   </layout>
  </widget>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>

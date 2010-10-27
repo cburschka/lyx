@@ -12,11 +12,9 @@
 
 #include "GuiLabel.h"
 
-#include "FuncRequest.h"
 #include "qt_helpers.h"
 
-#include "support/debug.h"
-#include "insets/InsetCommand.h"
+#include "insets/InsetLabel.h"
 
 #include <QLabel>
 #include <QPushButton>
@@ -33,81 +31,39 @@ namespace frontend {
 //
 /////////////////////////////////////////////////////////////////
 
-GuiLabel::GuiLabel(GuiView & lv)
-	: GuiDialog(lv, "label", qt_("Label")),
-	  params_(insetCode("label"))
+GuiLabel::GuiLabel(QWidget * parent) : InsetParamsWidget(parent)
 {
 	setupUi(this);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(keywordED, SIGNAL(textChanged(const QString &)),
-		this, SLOT(change_adaptor()));
+		this, SIGNAL(changed()));
 
 	setFocusProxy(keywordED);
-
-	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
-	bc().setOK(okPB);
-	bc().setCancel(closePB);
-	bc().addReadOnly(keywordED);
 }
 
 
-void GuiLabel::change_adaptor()
+void GuiLabel::paramsToDialog(Inset const * inset)
 {
-	changed();
+	InsetLabel const * label = static_cast<InsetLabel const *>(inset);
+	InsetCommandParams const & params = label->params();
+	keywordED->setText(toqstr(params["name"]));
 }
 
 
-void GuiLabel::reject()
+docstring GuiLabel::dialogToParams() const
 {
-	slotClose();
+	InsetCommandParams params(insetCode());
+	params["name"] = qstring_to_ucs4(keywordED->text());
+	return from_ascii(InsetLabel::params2string("label", params));
 }
 
 
-void GuiLabel::updateContents()
+bool GuiLabel::checkWidgets() const
 {
-	docstring const contents = params_["name"];
-	keywordED->setText(toqstr(contents));
-	bc().setValid(!contents.empty());
-}
-
-
-void GuiLabel::applyView()
-{
-	params_["name"] = qstring_to_ucs4(keywordED->text());
-}
-
-
-
-void GuiLabel::enableView(bool enable)
-{
-	keywordED->setEnabled(enable);
-}
-
-
-bool GuiLabel::isValid()
-{
+	if (!InsetParamsWidget::checkWidgets())
+		return false;
 	return !keywordED->text().isEmpty();
 }
-
-
-bool GuiLabel::initialiseParams(std::string const & data)
-{
-	InsetCommand::string2params("label", data, params_);
-	return true;
-}
-
-
-void GuiLabel::dispatchParams()
-{
-	std::string const lfun = InsetCommand::params2string("label", params_);
-	dispatch(FuncRequest(getLfun(), lfun));
-}
-
-
-Dialog * createGuiLabel(GuiView & lv) { return new GuiLabel(lv); }
-
 
 } // namespace frontend
 } // namespace lyx

@@ -18,6 +18,7 @@
 #include "GuiERT.h"
 #include "GuiHyperlink.h"
 #include "GuiInfo.h"
+#include "GuiLabel.h"
 #include "GuiLine.h"
 #include "GuiHSpace.h"
 #include "GuiTabular.h"
@@ -238,6 +239,9 @@ Dialog * createDialog(GuiView & lv, InsetCode code)
 		break;
 	case INFO_CODE:
 		widget = new GuiInfo;
+		break;
+	case LABEL_CODE:
+		widget = new GuiLabel;
 		break;
 	case LINE_CODE:
 		widget = new GuiLine;
