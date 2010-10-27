@@ -107,10 +107,7 @@ T * getInsetByCode(Cursor const & cur, InsetCode code)
 	return 0;
 }
 
-
-bool findInset(DocIterator & dit, vector<InsetCode> const & codes,
-	bool same_content);
-
+/// Note that comparing contents can only be used for InsetCommand
 bool findNextInset(DocIterator & dit, vector<InsetCode> const & codes,
 	docstring const & contents)
 {
@@ -118,15 +115,17 @@ bool findNextInset(DocIterator & dit, vector<InsetCode> const & codes,
 
 	while (tmpdit) {
 		Inset const * inset = tmpdit.nextInset();
-		if (inset
-		    && std::find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()
-		    && (contents.empty() ||
-			//FIXME: This static_cast seems very dangerous. Does this
-			// mean that if contents is not empty, we must only be
-			// looking for InsetCommand's ??
-		    static_cast<InsetCommand const *>(inset)->getFirstNonOptParam() == contents)) {
-			dit = tmpdit;
-			return true;
+		if (inset) {
+			bool const valid_code = std::find(codes.begin(), codes.end(), 
+				inset->lyxCode()) != codes.end();
+			InsetCommand const * ic = inset->asInsetCommand();
+			bool const same_or_no_contents =  contents.empty()
+				|| (ic && (ic->getFirstNonOptParam() == contents));
+			
+			if (valid_code && same_or_no_contents) {
+				dit = tmpdit;
+				return true;
+			}
 		}
 		tmpdit.forwardInset();
 	}
@@ -136,6 +135,7 @@ bool findNextInset(DocIterator & dit, vector<InsetCode> const & codes,
 
 
 /// Looks for next inset with one of the given codes.
+/// Note that same_content can only be used for InsetCommand
 bool findInset(DocIterator & dit, vector<InsetCode> const & codes,
 	bool same_content)
 {
@@ -145,14 +145,14 @@ bool findInset(DocIterator & dit, vector<InsetCode> const & codes,
 	if (!tmpdit)
 		return false;
 
-	if (same_content) {
-		Inset const * inset = tmpdit.nextInset();
-		if (inset
-		    && std::find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()) {
-			//FIXME: This static_cast seems very dangerous. Does this
-			// mean that if contents is not empty, we must only be
-			// looking for InsetCommand's ??
-			contents = static_cast<InsetCommand const *>(inset)->getFirstNonOptParam();
+	Inset const * inset = tmpdit.nextInset();
+	if (same_content && inset) {
+		InsetCommand const * ic = inset->asInsetCommand();
+		if (ic) {
+			bool const valid_code = std::find(codes.begin(), codes.end(),
+				ic->lyxCode()) != codes.end();
+			if (valid_code)
+				contents = ic->getFirstNonOptParam();
 		}
 	}
 
