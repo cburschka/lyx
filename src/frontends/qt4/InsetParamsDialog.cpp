@@ -21,7 +21,7 @@
 #include "GuiInfo.h"
 #include "GuiLabel.h"
 #include "GuiLine.h"
-#include "GuiNomencl.h"
+#include "GuiNomenclature.h"
 #include "GuiTabular.h"
 #include "GuiVSpace.h"
 #include "FloatPlacement.h"

@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "GuiNomencl.h"
+#include "GuiNomenclature.h"
 
 #include "qt_helpers.h"
 
