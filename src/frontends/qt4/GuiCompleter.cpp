@@ -162,7 +162,7 @@ GuiCompleter::GuiCompleter(GuiWorkArea * gui, QObject * parent)
 	model_ = new GuiCompletionModel(this, 0);
 	setModel(model_);
 	setCompletionMode(QCompleter::PopupCompletion);
-	setCaseSensitivity(Qt::CaseInsensitive);
+	setCaseSensitivity(Qt::CaseSensitive);
 	setWidget(gui_);
 	
 	// create the popup
