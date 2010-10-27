@@ -67,6 +67,8 @@ public:
 	void updateBuffer(ParIterator const & it, UpdateType);
 	///
 	void addToToc(DocIterator const &);
+	///
+	bool forceLTR() const { return true; }
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes
@@ -97,10 +99,6 @@ private:
 	Inset * clone() const { return new InsetRef(*this); }
 	//@}
 
-	///
-	bool isLatex;
-	/// Force inset into LTR environment if surroundings are RTL
-	bool forceLTR() const { return true; }
 	///
 	mutable docstring screen_label_;
 	///

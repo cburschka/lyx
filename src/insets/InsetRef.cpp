@@ -35,12 +35,12 @@ namespace lyx {
 
 
 InsetRef::InsetRef(Buffer * buf, InsetCommandParams const & p)
-	: InsetCommand(buf, p, "ref"), isLatex(buf->isLatex())
+	: InsetCommand(buf, p, "ref")
 {}
 
 
 InsetRef::InsetRef(InsetRef const & ir)
-	: InsetCommand(ir), isLatex(ir.isLatex)
+	: InsetCommand(ir)
 {}
 
 
@@ -192,8 +192,8 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType)
 		}
 	}
 	label += ref;
-
-	if (!isLatex && !getParam("name").empty()) {
+	
+	if (!buffer().isLatex() && !getParam("name").empty()) {
 		label += "||";
 		label += getParam("name");
 	}
