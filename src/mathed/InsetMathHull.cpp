@@ -865,8 +865,7 @@ void InsetMathHull::glueall(HullType type)
 		}
 	}
 	*this = InsetMathHull(buffer_, hullSimple);
-	if (label)
-		label_[0] = label;
+	label_[0] = label;
 	cell(0) = ar;
 	setDefaults();
 }
@@ -977,6 +976,7 @@ void InsetMathHull::mutate(HullType newtype)
 			numbered(0, false);
 		} else {
 			setType(hullEquation);
+			numbered(0, label_[0] ? true : false);
 			mutate(newtype);
 		}
 	}
