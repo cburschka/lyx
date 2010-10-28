@@ -258,7 +258,7 @@ static docstring const ogonek_def = from_ascii(
 
 static docstring const lyxref_def = from_ascii(
 		"\\makeatletter\n"
-		"\\RS@ifundefined{\thmref}\n"
+		"\\RS@ifundefined{thmref}\n"
 		"  {\\def\\RSthmtxt{theorem~}\\newref{thm}{name = \\RSthmtxt}}\n" 
 		"  {}\n"
 		"\\makeatother\n");
