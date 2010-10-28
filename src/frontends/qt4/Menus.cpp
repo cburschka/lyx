@@ -879,8 +879,8 @@ void MenuDefinition::expandLastfiles()
 
 void MenuDefinition::expandDocuments()
 {
-	MenuItem item(MenuItem::Submenu, qt_("Invisible"));
-	item.setSubmenu(MenuDefinition(qt_("Invisible")));
+	MenuItem item(MenuItem::Submenu, qt_("Hidden|H"));
+	item.setSubmenu(MenuDefinition(qt_("Hidden|H")));
 
 	Buffer * first = theBufferList().first();
 	if (first) {
