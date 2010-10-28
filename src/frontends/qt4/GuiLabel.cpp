@@ -58,6 +58,16 @@ docstring GuiLabel::dialogToParams() const
 }
 
 
+bool GuiLabel::initialiseParams(std::string const & data)
+{
+	InsetCommandParams p(insetCode());
+	if (!InsetCommand::string2params("label", data, p))
+		return false;
+	keywordED->setText(toqstr(p["name"]));
+	return true;
+}
+
+
 bool GuiLabel::checkWidgets() const
 {
 	if (!InsetParamsWidget::checkWidgets())

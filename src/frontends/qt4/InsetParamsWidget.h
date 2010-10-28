@@ -65,6 +65,9 @@ public:
 	virtual void paramsToDialog(Inset const *) = 0;
 	///
 	virtual docstring dialogToParams() const = 0;
+	///
+	virtual bool initialiseParams(std::string const & /* data */) 
+		{ return false; }
 
 	/// \return true if all CheckedWidgets are in a valid state.
 	virtual bool checkWidgets() const;
