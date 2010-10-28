@@ -2009,7 +2009,7 @@ void GuiDocument::updateModuleInfo()
 		pkgdesc = formatStrVec(reqdescs, _("or"));
 		if (!desc.empty())
 			desc += "\n";
-		desc += bformat(_("Module required: %1$s."), pkgdesc);
+		desc += bformat(_("Modules required: %1$s."), pkgdesc);
 	}
 
 	pkglist = getExcludedList(modName);
