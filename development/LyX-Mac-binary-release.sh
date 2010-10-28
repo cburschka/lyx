@@ -23,7 +23,7 @@
 #   - hunspell: the dictionary files in the sibling directory Dictionaries/dict
 #   - mythes:   the data and idx files in the sibling directory Dictionaries/thes
 
-LyXConfigureOptions="--enable-warnings --enable-optimization=-Os --with-included-gettext --with-libiconv-prefix=/usr"
+LyXConfigureOptions="--enable-warnings --enable-optimization=-Os --with-included-gettext --with-x=no"
 AspellConfigureOptions="--enable-warnings --enable-optimization=-O0 --enable-debug --disable-nls --enable-compile-in-filters --disable-pspell-compatibility"
 HunspellConfigureOptions="--with-warnings --disable-nls --with-included-gettext --disable-static"
 Qt4ConfigureOptions="-opensource -silent -shared -release -fast -no-exceptions"
@@ -47,6 +47,7 @@ usage() {
 	echo
 	echo Optional arguments:
 	echo " --aspell-deployment=yes|no ." default yes
+	echo " --with-qt4-frameworks=yes|no" default no
 	echo " --qt4-deployment=yes|no ...." default yes
 	echo " --with-macosx-target=TARGET " default 10.4 "(Tiger)"
 	echo " --with-sdkroot=SDKROOT ....." default 10.5 "(Leopard)"
@@ -62,6 +63,14 @@ usage() {
 
 while [ $# -gt 0 ]; do
 	case "${1}" in
+	--with-qt4-frameworks=*)
+		configure_qt4_frameworks=`echo ${1}|cut -d= -f2`
+		if [ "$configure_qt4_frameworks" = "yes" ]; then
+			unset QTDIR
+			qt4_deployment="no"
+		fi
+		shift
+		;;
 	--with-qt4-dir=*)
 		QTDIR=`echo ${1}|cut -d= -f2`
 		shift
@@ -75,6 +84,9 @@ while [ $# -gt 0 ]; do
 		case "${SDKROOT}" in
 		10.4)
 			SDKROOT="/Developer/SDKs/MacOSX10.4u.sdk"
+			export CC=gcc-4.0
+			export OBJC=gcc-4.0
+			export CXX=g++-4.0
 			;;
 		10.5|10.6)
 			SDKROOT="/Developer/SDKs/MacOSX${SDKROOT}.sdk"
@@ -146,7 +158,9 @@ done
 #     (to define the location assign ASpellSourceDir instead)
 # (4) the list of architectures to build for
 
-QtInstallDir=${QTDIR:-"/opt/qt4"}
+if [ "${configure_qt4_frameworks}" != "yes" ]; then
+	QtInstallDir=${QTDIR:-"/opt/qt4"}
+fi
 QtFrameworkVersion="4"
 ASpellSourceVersion="aspell-0.60.6"
 HunSpellSourceVersion="hunspell-1.2.9"
@@ -329,7 +343,7 @@ updateDictionaries() {
 	rm -rf "$TMP_DIR"
 }
 
-if [ -d "${Qt4SourceDir}" -a ! -d "${Qt4BuildDir}" ]; then
+if [ "${configure_qt4_frameworks}" != "yes" -a -d "${Qt4SourceDir}" -a ! -d "${Qt4BuildDir}" ]; then
 	echo Build Qt4 library ${Qt4SourceDir}
 
 	(
@@ -491,6 +505,14 @@ framework_name() {
 
 if [ ! -f "${LyxSourceDir}"/configure -o "${LyxSourceDir}"/configure -ot "${LyxSourceDir}"/configure.ac ]; then
 	( cd "${LyxSourceDir}" && sh autogen.sh )
+else
+	find "${LyxSourceDir}" -name Makefile.am -print | while read file ; do
+		dname=`dirname "$file"`
+		if [ "$dname/Makefile.in" -ot "$file" ]; then
+			( cd "${LyxSourceDir}" && sh autogen.sh )
+			break
+		fi
+	done
 fi
 
 FILE_LIST="lyx lyxclient tex2lyx"
@@ -528,13 +550,26 @@ build_lyx() {
 		if [ -d "${LyxBuildDir}" ];  then rm -r "${LyxBuildDir}"; fi
 		mkdir "${LyxBuildDir}" && cd "${LyxBuildDir}"
 
-		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export CPPFLAGS
-		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export LDFLAGS
+		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"
+		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"
 		HOSTSYSTEM=`eval "echo \\$HostSystem_$arch"`
 
+		if [ "$configure_qt4_frameworks" = "yes" ]; then
+			export QT4_CORE_CFLAGS="-FQtCore"
+			export QT4_CORE_LIBS="-framework QtCore"
+			export QT4_FRONTEND_CFLAGS="-FQtGui"
+			export QT4_FRONTEND_LIBS="-framework QtGui"
+			export PKG_CONFIG=""
+			CPPFLAGS="${CPPFLAGS} -I${SDKROOT}/Library/Frameworks/QtCore.framework/Headers"
+			CPPFLAGS="${CPPFLAGS} -I${SDKROOT}/Library/Frameworks/QtGui.framework/Headers"
+		fi
+		LDFLAGS="${LDFLAGS} -framework Carbon -framework AppKit"
+
 		echo LDFLAGS="${LDFLAGS}"
+		export LDFLAGS
 		echo CPPFLAGS="${CPPFLAGS}"
-		echo CONFIGURE_OPTIONS="${LyXConfigureOptions}"
+		export CPPFLAGS
+		echo CONFIGURE_OPTIONS="${LyXConfigureOptions}" ${QtInstallDir:+"--with-qt4-dir=${QtInstallDir}"}
 		"${LyxSourceDir}/configure"\
 			--prefix="${LyxAppPrefix}" --with-version-suffix="-${LyXVersionSuffix}"\
 			${QtInstallDir:+"--with-qt4-dir=${QtInstallDir}"} \
