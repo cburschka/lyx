@@ -256,6 +256,14 @@ static docstring const ogonek_def = from_ascii(
 	"  \\mathchar\"0\\hexnumber@\\symtipasymb0C}{#2}}\n"
 	"\\newcommand{\\ogonek}[1]{\\mathpalette\\doogonek{#1}}\n");
 
+static docstring const lyxref_def = from_ascii(
+		"\\makeatletter\n"
+		"\\RS@ifundefined{\thmref}\n"
+		"  {\\def\\RSthmtxt{theorem~}\\newref{thm}{name = \\RSthmtxt}}\n" 
+		"  {}\n"
+		"\\makeatother\n");
+
+
 /////////////////////////////////////////////////////////////////////
 //
 // LaTeXFeatures
@@ -902,10 +910,13 @@ docstring const LaTeXFeatures::getMacros() const
 	// floats
 	getFloatDefinitions(macros);
 	
+	if (mustProvide("refstyle")) 
+		macros << lyxref_def << '\n';	
+	
 	// change tracking
 	if (mustProvide("ct-dvipost"))
 		macros << changetracking_dvipost_def;
-
+	
 	if (mustProvide("ct-xcolor-ulem")) {
 		int const prec = macros.precision(2);
 	
