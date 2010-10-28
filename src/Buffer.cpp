@@ -889,6 +889,7 @@ Buffer::ReadStatus Buffer::readFile(FileName const & fn)
 	lyxvc().file_found_hook(fn);
 	d->read_only = !fname.isWritable();
 	params().compressed = fname.isZippedFile();
+	saveCheckSum();
 	return ReadSuccess;
 }
 
@@ -1071,7 +1072,7 @@ bool Buffer::writeFile(FileName const & fname) const
 	// see bug 6587
 	// removeAutosaveFile();
 
-	saveCheckSum(d->filename);
+	saveCheckSum();
 	message(str + _(" done."));
 
 	return true;
@@ -2369,8 +2370,9 @@ bool Buffer::isExternallyModified(CheckMethod method) const
 }
 
 
-void Buffer::saveCheckSum(FileName const & file) const
+void Buffer::saveCheckSum() const
 {
+	FileName const & file = d->filename;
 	if (file.exists()) {
 		d->timestamp_ = file.lastModified();
 		d->checksum_ = file.checksum();
@@ -3635,7 +3637,6 @@ Buffer::ReadStatus Buffer::loadEmergency(FileName const & fn)
 		ReadStatus const ret_llf = loadThisLyXFile(emergencyFile);
 		bool const success = (ret_llf == ReadSuccess);
 		if (success) {
-			saveCheckSum(fn);
 			markDirty();
 			str = _("Document was successfully recovered.");
 		} else
@@ -3692,7 +3693,6 @@ Buffer::ReadStatus Buffer::loadAutosave(FileName const & fn)
 		// the file is not saved if we load the autosave file.
 		if (ret_llf == ReadSuccess) {
 			markDirty();
-			saveCheckSum(fn);
 			return ReadSuccess;
 		}
 		return ReadAutosaveFailure;
@@ -4111,7 +4111,7 @@ bool Buffer::reload()
 		changed(true);
 		updateTitles();
 		markClean();
-		saveCheckSum(d->filename);
+		saveCheckSum();
 		message(bformat(_("Document %1$s reloaded."), disp_fn));
 	} else {
 		message(bformat(_("Could not reload document %1$s."), disp_fn));
