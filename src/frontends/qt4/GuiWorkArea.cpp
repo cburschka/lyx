@@ -443,6 +443,7 @@ void GuiWorkArea::redraw(bool update_metrics)
 	if (update_metrics || lyx_view_ != guiApp->currentView()
 		|| lyx_view_->currentWorkArea() != this) {
 		// FIXME: it would be nice to optimize for the off-screen case.
+		buffer_view_->cursor().fixIfBroken();
 		buffer_view_->updateMetrics();
 		buffer_view_->cursor().fixIfBroken();
 	}
