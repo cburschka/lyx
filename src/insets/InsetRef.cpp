@@ -24,6 +24,7 @@
 #include "sgml.h"
 #include "TocBackend.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -69,33 +70,63 @@ ParamInfo const & InsetRef::findInfo(string const & /* cmdName */)
 }
 
 
-int InsetRef::latex(odocstream & os, OutputParams const & runparams) const
+// for refstyle, given pfx:suffix, we want to return "\\pfxcmd"
+// and put "suffix" into label
+docstring InsetRef::getFormattedCmd(
+		docstring const & ref, docstring & label) const
+{
+	static docstring const defcmd = from_ascii("\\ref");
+	if (!buffer().params().use_refstyle) 
+		return from_ascii("\\prettyref");
+
+	docstring prefix;
+	label = split(ref, prefix, ':');
+	if (prefix.empty()) {
+		LYXERR0("Label `" << label << "' contains no prefix.");
+		return defcmd;
+	}
+	
+	// make sure the prefix is legal for a latex command
+	int const len = prefix.size();
+	for (int i = 0; i < len; i++) {
+		if (!isalpha(prefix[i])) {
+			LYXERR0("Prefix `" << prefix << "' contains non-letters.");
+			// restore the label
+			label = ref;
+			return defcmd;
+		}
+	}
+	return from_ascii("\\") + prefix + from_ascii("ref");
+}
+
+
+docstring InsetRef::getEscapedLabel(OutputParams const & rp) const
+{
+	InsetCommandParams const & p = params();
+	ParamInfo const & pi = p.info();
+	ParamInfo::ParamData const & pd = pi["reference"];
+	return p.prepareCommand(rp, getParam("reference"), pd.handling());		
+}
+
+
+int InsetRef::latex(odocstream & os, OutputParams const & rp) const
 {
 	string const cmd = getCmdName();
-	docstring const ref = getParam("reference");
 	if (cmd != "formatted") {
 		// We don't want to output p_["name"], since that is only used 
 		// in docbook. So we construct new params, without it, and use that.
 		InsetCommandParams p(REF_CODE, cmd);
+		docstring const ref = getParam("reference");
 		p["reference"] = ref;
-		os << p.getCommand(runparams);
+		os << p.getCommand(rp);
 		return 0;
 	} 
 	
 	// so we're doing a formatted reference.
-	// the command may need to be escaped.
-	InsetCommandParams const & p = params();
-	ParamInfo const & pi = p.info();
-	ParamInfo::ParamData const & pd = pi["reference"];
-	docstring const data = 
-			p.prepareCommand(runparams, ref, pd.handling());
-
-	if  (!buffer().params().use_refstyle) {
-		os << "\\prettyref{" << data << '}';
-		return 0;
-	}
-	
-	os << "\\lyxref{" << data << '}';
+	docstring const data = getEscapedLabel(rp);
+	docstring label;
+	docstring const fcmd = getFormattedCmd(data, label);
+	os << fcmd << '{' << label << '}';
 	return 0;
 }
 
@@ -235,7 +266,13 @@ void InsetRef::validate(LaTeXFeatures & features) const
 	else if (getCmdName() == "formatted") {
 		if (buffer().params().use_refstyle) {
 			features.require("refstyle");
-			features.require("ifthen");
+			docstring const data = getEscapedLabel(features.runparams());
+			docstring label;
+			string const fcmd = to_utf8(getFormattedCmd(data, label));
+			if (fcmd != "\\ref") {
+				string lcmd = "\\providecommand" + fcmd + "[1]{\\ref{#1}}";
+				features.addPreambleSnippet(lcmd);
+			}
 		} else
 			features.require("prettyref");
 	} else if (getCmdName() == "eqref" && !buffer().params().use_refstyle)

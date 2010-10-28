@@ -17,7 +17,6 @@
 
 namespace lyx {
 
-
 /// The reference inset
 class InsetRef : public InsetCommand {
 public:
@@ -98,6 +97,12 @@ private:
 	///
 	Inset * clone() const { return new InsetRef(*this); }
 	//@}
+	
+	/// \return the label with things that need to be escaped escaped
+	docstring getEscapedLabel(OutputParams const &) const;
+	/// \return the command for a formatted reference to ref
+	/// \param label gets what follows the prefix, for refstyle
+	docstring getFormattedCmd(docstring const & ref, docstring & label) const;
 
 	///
 	mutable docstring screen_label_;
