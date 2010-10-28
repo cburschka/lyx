@@ -223,20 +223,20 @@ bool InsetCommand::showInsetDialog(BufferView * bv) const
 
 
 // FIXME This could take an InsetCode instead of a string
-bool InsetCommand::string2params(string const & name, string const & in,
+bool InsetCommand::string2params(string const & name, string const & data,
 	InsetCommandParams & params)
 {
 	params.clear();
-	if (in.empty())
+	if (data.empty())
 		return false;
 	// This happens when inset-insert is called without argument except for the
 	// inset type; ex:
 	// "inset-insert toc"
-	if (in == name)
+	if (data == name)
 		return true;
-	istringstream data(in);
+	istringstream dstream(data);
 	Lexer lex;
-	lex.setStream(data);
+	lex.setStream(dstream);
 	lex.setContext("InsetCommand::string2params");
 	lex >> name.c_str(); // check for name
 	lex >> "CommandInset";
