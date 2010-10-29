@@ -150,7 +150,7 @@ void InsetBibtex::editDatabases() const
 	vector<docstring>::const_iterator it = bibfilelist.begin();
 	vector<docstring>::const_iterator en = bibfilelist.end();
 	for (; it != en; ++it) {
-		FileName bibfile = getBibTeXPath(*it, buffer());
+		FileName const bibfile = getBibTeXPath(*it, buffer());
 		formats.edit(buffer(), bibfile,
 		     formats.getFormatFromFile(bibfile));
 	}
