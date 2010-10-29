@@ -414,9 +414,8 @@ Buffer::~Buffer()
 			from_utf8(d->temppath.absFileName())));
 	}
 
-	// Remove any previewed LaTeX snippets associated with this buffer.
 	if (!isClone())
-		thePreviews().removeLoader(*this);
+		removePreviews();
 
 	delete d;
 }
@@ -903,6 +902,19 @@ bool Buffer::isFullyLoaded() const
 void Buffer::setFullyLoaded(bool value)
 {
 	d->file_fully_loaded = value;
+}
+
+
+void Buffer::updatePreviews() const
+{
+	if (graphics::Previews::status() != LyXRC::PREVIEW_OFF)
+		thePreviews().generateBufferPreviews(*this);
+}
+
+
+void Buffer::removePreviews() const
+{
+	thePreviews().removeLoader(*this);
 }
 
 
@@ -4117,9 +4129,8 @@ Buffer::ReadStatus Buffer::reload()
 		message(bformat(_("Could not reload document %1$s."), disp_fn));
 	}	
 	setBusy(false);
-	thePreviews().removeLoader(*this);
-	if (graphics::Previews::status() != LyXRC::PREVIEW_OFF)
-		thePreviews().generateBufferPreviews(*this);
+	removePreviews();
+	updatePreviews();
 	errors("Parse");
 	return status;
 }

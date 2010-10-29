@@ -514,6 +514,11 @@ public:
 	/// Set by buffer_funcs' newFile.
 	void setFullyLoaded(bool);
 
+	/// Update the LaTeX preview snippets associated with this buffer
+	void updatePreviews() const;
+	/// Remove any previewed LaTeX snippets associated with this buffer
+	void removePreviews() const;
+
 	/// Our main text (inside the top InsetText)
 	Text & text() const;
 
