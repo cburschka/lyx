@@ -71,18 +71,24 @@ ParamInfo const & InsetRef::findInfo(string const & /* cmdName */)
 
 
 // for refstyle, given pfx:suffix, we want to return "\\pfxcmd"
-// and put "suffix" into label
+// and put "suffix" into label.
+// otherwise, we put the reference into label.
 docstring InsetRef::getFormattedCmd(
 		docstring const & ref, docstring & label) const
 {
 	static docstring const defcmd = from_ascii("\\ref");
-	if (!buffer().params().use_refstyle) 
+	// default is that label is data
+	// we'll change it if need be
+	if (!buffer().params().use_refstyle) {
+		label = ref;
 		return from_ascii("\\prettyref");
+	}
 
 	docstring prefix;
 	label = split(ref, prefix, ':');
 	if (prefix.empty()) {
 		LYXERR0("Label `" << label << "' contains no prefix.");
+		label = ref;
 		return defcmd;
 	}
 	
