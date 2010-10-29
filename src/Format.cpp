@@ -258,28 +258,27 @@ void Formats::setEditor(string const & name, string const & command)
 		it->setEditor(command);
 }
 
-bool Formats::viewURL(string const &url){
+
+bool Formats::viewURL(docstring const & url) {
 	Format const * format = getFormat("html");
+	if (!format)
+		return false;
+
 	string command = libScriptSearch(format->viewer());
 
 	if (!contains(command, token_from_format))
 		command += ' ' + token_from_format;
-	command = subst(command, token_from_format, quoteName(url));
+	command = subst(command, token_from_format, quoteName(to_utf8(url)));
 
 	LYXERR(Debug::FILES, "Executing command: " << command);
-	//buffer.message(_("Executing command: ") + from_utf8(command));
 
 	Systemcall one;
-	int const res = one.startscript(Systemcall::DontWait, command);
+	one.startscript(Systemcall::DontWait, command);
 
-	if (res) {
-		Alert::error(_("Cannot view URL"),
-			     bformat(_("An error occurred whilst running %1$s"),
-			       makeDisplayPath(command, 50)));
-		return false;
-	}
+	// we can't report any sort of error, since we aren't waiting
 	return true;
 }
+
 
 bool Formats::view(Buffer const & buffer, FileName const & filename,
 		   string const & format_name) const
@@ -340,14 +339,9 @@ bool Formats::view(Buffer const & buffer, FileName const & filename,
 	buffer.message(_("Executing command: ") + from_utf8(command));
 
 	Systemcall one;
-	int const res = one.startscript(Systemcall::DontWait, command);
+	one.startscript(Systemcall::DontWait, command);
 
-	if (res) {
-		Alert::error(_("Cannot view file"),
-			     bformat(_("An error occurred whilst running %1$s"),
-			       makeDisplayPath(command, 50)));
-		return false;
-	}
+	// we can't report any sort of error, since we aren't waiting
 	return true;
 }
 
@@ -412,14 +406,9 @@ bool Formats::edit(Buffer const & buffer, FileName const & filename,
 	buffer.message(_("Executing command: ") + from_utf8(command));
 
 	Systemcall one;
-	int const res = one.startscript(Systemcall::DontWait, command);
+	one.startscript(Systemcall::DontWait, command);
 
-	if (res) {
-		Alert::error(_("Cannot edit file"),
-			     bformat(_("An error occurred whilst running %1$s"),
-			       makeDisplayPath(command, 50)));
-		return false;
-	}
+	// we can't report any sort of error, since we aren't waiting
 	return true;
 }
 

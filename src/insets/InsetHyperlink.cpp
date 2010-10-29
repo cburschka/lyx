@@ -101,11 +101,11 @@ bool InsetHyperlink::getStatus(Cursor & cur, FuncRequest const & cmd,
 void InsetHyperlink::viewTarget() const
 {
 	if (getParam("type").empty()) 
-		formats.viewURL(to_ascii(getParam("target")));
+		formats.viewURL(getParam("target"));
 
 	else if (getParam("type") == "file:") {
 		FileName url = makeAbsPath(to_utf8(getParam("target")), buffer().filePath());
-		string format = formats.getFormatFromFile(url);
+		string const format = formats.getFormatFromFile(url);
 		formats.view(buffer(), url, format);
 	}
 }
