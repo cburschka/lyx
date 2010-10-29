@@ -187,13 +187,13 @@ void InsetMathRef::updateBuffer(ParIterator const & it, UpdateType /*utype*/)
 }
 
 
-string const InsetMathRef::createDialogStr(string const & name) const
+string const InsetMathRef::createDialogStr(string const & /*name*/) const
 {
 	InsetCommandParams icp(REF_CODE, to_ascii(commandname()));
 	icp["reference"] = asString(cell(0));
 	if (!cell(1).empty())
 		icp["name"] = asString(cell(1));
-	return InsetCommand::params2string(name, icp);
+	return InsetCommand::params2string(icp);
 }
 
 
@@ -212,7 +212,7 @@ void InsetMathRef::changeTarget(docstring const & target)
 	MathData ar;
 	Buffer & buf = buffer();
 	if (createInsetMath_fromDialogStr(
-	    from_utf8(InsetCommand::params2string("ref", icp)), ar)) {
+	    from_utf8(InsetCommand::params2string(icp)), ar)) {
 		*this = *ar[0].nucleus()->asRefInset();
 		// FIXME audit setBuffer calls
 		setBuffer(buf);

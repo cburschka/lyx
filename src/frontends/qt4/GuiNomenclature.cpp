@@ -56,7 +56,7 @@ docstring GuiNomenclature::dialogToParams() const
 	QString description = descriptionTE->toPlainText();
 	description.replace('\n',"\\\\");
 	params["description"] = qstring_to_ucs4(description);
-	return from_ascii(InsetNomencl::params2string("nomenclature", params));
+	return from_ascii(InsetNomencl::params2string(params));
 }
 
 

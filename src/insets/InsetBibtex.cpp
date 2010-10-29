@@ -88,8 +88,7 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p(BIBTEX_CODE);
 		try {
-			if (!InsetCommand::string2params("bibtex", 
-					to_utf8(cmd.argument()), p)) {
+			if (!InsetCommand::string2params(to_utf8(cmd.argument()), p)) {
 				cur.noScreenUpdate();
 				break;
 			}

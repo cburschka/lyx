@@ -169,8 +169,7 @@ void InsetPrintNomencl::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p(NOMENCL_PRINT_CODE);
 		// FIXME UNICODE
-		InsetCommand::string2params("nomencl_print",
-			to_utf8(cmd.argument()), p);
+		InsetCommand::string2params(to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty()) {
 			cur.noScreenUpdate();
 			break;

@@ -520,7 +520,7 @@ bool createInsetMath_fromDialogStr(docstring const & str, MathData & ar)
 	if (name == "ref") {
 		InsetCommandParams icp(REF_CODE);
 		// FIXME UNICODE
-		InsetCommand::string2params("ref", to_utf8(str), icp);
+		InsetCommand::string2params(to_utf8(str), icp);
 		Encoding const * const utf8 = encodings.fromLyXName("utf8");
 		OutputParams op(utf8);
 		mathed_parse_cell(ar, icp.getCommand(op));

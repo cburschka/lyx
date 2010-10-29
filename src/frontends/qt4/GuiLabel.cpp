@@ -54,14 +54,14 @@ docstring GuiLabel::dialogToParams() const
 {
 	InsetCommandParams params(insetCode());
 	params["name"] = qstring_to_ucs4(keywordED->text());
-	return from_ascii(InsetLabel::params2string("label", params));
+	return from_ascii(InsetLabel::params2string(params));
 }
 
 
 bool GuiLabel::initialiseParams(std::string const & data)
 {
 	InsetCommandParams p(insetCode());
-	if (!InsetCommand::string2params("label", data, p))
+	if (!InsetCommand::string2params(data, p))
 		return false;
 	keywordED->setText(toqstr(p["name"]));
 	return true;

@@ -46,14 +46,11 @@ public:
 	///
 	InsetCommand const * asInsetCommand() const { return this; }
 
-
 	/// \return true if params are successfully read
-	static bool string2params(std::string const & name, 
-					std::string const & data,
+	static bool string2params(std::string const & data,
 				  InsetCommandParams &);
 	///
-	static std::string params2string(std::string const & name,
-					       InsetCommandParams const &);
+	static std::string params2string(InsetCommandParams const &);
 	///
 	InsetCommandParams const & params() const { return p_; }
 	///

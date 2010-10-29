@@ -113,7 +113,7 @@ bool GuiPrintindex::initialiseParams(string const & data)
 {
 	// The name passed with LFUN_INSET_APPLY is also the name
 	// used to identify the mailer.
-	InsetCommand::string2params("index_print", data, params_);
+	InsetCommand::string2params(data, params_);
 	paramsToDialog(params_);
 	return true;
 }
@@ -121,7 +121,7 @@ bool GuiPrintindex::initialiseParams(string const & data)
 
 void GuiPrintindex::dispatchParams()
 {
-	std::string const lfun = InsetCommand::params2string("index_print", params_);
+	std::string const lfun = InsetCommand::params2string(params_);
 	dispatch(FuncRequest(getLfun(), lfun));
 }
 

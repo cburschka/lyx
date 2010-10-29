@@ -1389,7 +1389,7 @@ void MenuDefinition::expandIndicesContext(Buffer const * buf, bool listof)
 		if (listof) {
 			InsetCommandParams p(INDEX_PRINT_CODE);
 			p["type"] = cit->shortcut();
-			string const data = InsetCommand::params2string("index_print", p);
+			string const data = InsetCommand::params2string(p);
 			addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(cit->index()),
 					   FuncRequest(LFUN_INSET_MODIFY, data)));
 		} else {

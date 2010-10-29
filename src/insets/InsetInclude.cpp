@@ -245,7 +245,7 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 			InsetCommand::doDispatch(cur, cmd);
 			p = params();
 		} else
-			InsetCommand::string2params("include", to_utf8(cmd.argument()), p);
+			InsetCommand::string2params(to_utf8(cmd.argument()), p);
 		if (!p.getCmdName().empty()) {
 			if (isListings(p)){
 				InsetListingsParams new_params(to_utf8(p["lstparams"]));

@@ -152,7 +152,7 @@ void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		}
 		InsetCommandParams p(p_.code());
-		InsetCommand::string2params(mailer_name_, to_utf8(cmd.argument()), p);
+		InsetCommand::string2params(to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty())
 			cur.noScreenUpdate();
 		else
@@ -166,7 +166,7 @@ void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_DIALOG_UPDATE: {
 		string const name = to_utf8(cmd.argument());
-		cur.bv().updateDialog(name, params2string(name, params()));
+		cur.bv().updateDialog(name, params2string(params()));
 		break;
 	}
 
@@ -216,14 +216,13 @@ docstring InsetCommand::contextMenu(BufferView const &, int, int) const
 bool InsetCommand::showInsetDialog(BufferView * bv) const
 {
 	if (!mailer_name_.empty())
-		bv->showDialog(mailer_name_, params2string(mailer_name_, p_),
+		bv->showDialog(mailer_name_, params2string(p_),
 			const_cast<InsetCommand *>(this));
 	return true;
 }
 
 
-// FIXME This could take an InsetCode instead of a string
-bool InsetCommand::string2params(string const & name, string const & data,
+bool InsetCommand::string2params(string const & data,
 	InsetCommandParams & params)
 {
 	params.clear();
@@ -232,6 +231,7 @@ bool InsetCommand::string2params(string const & name, string const & data,
 	// This happens when inset-insert is called without argument except for the
 	// inset type; ex:
 	// "inset-insert toc"
+	string const name = insetName(params.code());
 	if (data == name)
 		return true;
 	istringstream dstream(data);
@@ -245,12 +245,10 @@ bool InsetCommand::string2params(string const & name, string const & data,
 }
 
 
-// FIXME This could take an InsetCode instead of a string
-string InsetCommand::params2string(string const & name,
-				  InsetCommandParams const & params)
+string InsetCommand::params2string(InsetCommandParams const & params)
 {
 	ostringstream data;
-	data << name << ' ';
+	data << insetName(params.code()) << ' ';
 	params.write(data);
 	data << "\\end_inset\n";
 	return data.str();
@@ -273,7 +271,7 @@ bool decodeInsetParam(string const & name, string & data,
 	case TOC_CODE:
 	case HYPERLINK_CODE: {
 		InsetCommandParams p(code);
-		data = InsetCommand::params2string(name, p);
+		data = InsetCommand::params2string(p);
 		break;
 	}
 	case INCLUDE_CODE: {
@@ -283,7 +281,7 @@ bool decodeInsetParam(string const & name, string & data,
 			// default type is requested
 			data = "include";
 		InsetCommandParams p(INCLUDE_CODE, data);
-		data = InsetCommand::params2string("include", p);
+		data = InsetCommand::params2string(p);
 		break;
 	}
 	case BOX_CODE: {
@@ -299,7 +297,7 @@ bool decodeInsetParam(string const & name, string & data,
 	}
 	case CITE_CODE: {
 		InsetCommandParams p(CITE_CODE);
-		data = InsetCommand::params2string(name, p);
+		data = InsetCommand::params2string(p);
 		break;
 	}
 	case ERT_CODE: {

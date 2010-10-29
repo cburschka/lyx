@@ -116,7 +116,7 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p(BIBITEM_CODE);
-		InsetCommand::string2params("bibitem", to_utf8(cmd.argument()), p);
+		InsetCommand::string2params(to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty()) {
 			cur.noScreenUpdate();
 			break;

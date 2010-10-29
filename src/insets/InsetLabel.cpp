@@ -192,7 +192,7 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p(LABEL_CODE);
 		// FIXME UNICODE
-		InsetCommand::string2params("label", to_utf8(cmd.argument()), p);
+		InsetCommand::string2params(to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty()) {
 			cur.noScreenUpdate();
 			break;
@@ -214,7 +214,7 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_LABEL_INSERT_AS_REF: {
 		InsetCommandParams p(REF_CODE, "ref");
 		p["reference"] = getParam("name");
-		string const data = InsetCommand::params2string("ref", p);
+		string const data = InsetCommand::params2string(p);
 		lyx::dispatch(FuncRequest(LFUN_INSET_INSERT, data));
 		break;
 	}

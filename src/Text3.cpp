@@ -1560,7 +1560,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		p["target"] = (cmd.argument().empty()) ?
 			content : cmd.argument();
-		string const data = InsetCommand::params2string("href", p);
+		string const data = InsetCommand::params2string(p);
 		if (p["target"].empty()) {
 			bv->showDialog("href", data);
 		} else {
@@ -1576,7 +1576,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		p["name"] = (cmd.argument().empty()) ?
 			cur.getPossibleLabel() :
 			cmd.argument();
-		string const data = InsetCommand::params2string("label", p);
+		string const data = InsetCommand::params2string(p);
 
 		if (cmd.argument().empty()) {
 			bv->showDialog("label", data);
@@ -1692,7 +1692,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			p["symbol"] = bv->cursor().innerText()->getStringToIndex(bv->cursor());
 		else
 			p["symbol"] = cmd.argument();
-		string const data = InsetCommand::params2string("nomenclature", p);
+		string const data = InsetCommand::params2string(p);
 		bv->showDialog("nomenclature", data);
 		break;
 	}
@@ -1703,7 +1703,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			p["type"] = from_ascii("idx");
 		else
 			p["type"] = cmd.argument();
-		string const data = InsetCommand::params2string("index_print", p);
+		string const data = InsetCommand::params2string(p);
 		FuncRequest fr(LFUN_INSET_INSERT, data);
 		dispatch(cur, fr);
 		break;

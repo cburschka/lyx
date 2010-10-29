@@ -219,19 +219,19 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			
 			case BIBITEM_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetBibitem(buf, icp);
 			}
 			
 			case BIBTEX_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetBibtex(buf, icp);
 			}
 			
 			case CITE_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetCitation(buf, icp);
 			}
 			
@@ -259,13 +259,13 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			
 			case HYPERLINK_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetHyperlink(buf, icp);
 			}
 			
 			case INCLUDE_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetInclude(buf, icp);
 			}
 			
@@ -276,19 +276,19 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			
 			case INDEX_PRINT_CODE:  {
 				InsetCommandParams icp(code);
-				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetPrintIndex(buf, icp);
 			}
 			
 			case LABEL_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetLabel(buf, icp);
 			}
 			
 			case LINE_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetLine(buf, icp);
 			}
 				
@@ -300,13 +300,13 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			
 			case NOMENCL_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetNomencl(buf, icp);
 			}
 			
 			case REF_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetRef(buf, icp);
 			}
 
@@ -318,7 +318,7 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			
 			case TOC_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetTOC(buf, icp);
 			}
 			

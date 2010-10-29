@@ -335,7 +335,7 @@ QString GuiInclude::browse(QString const & in_name, Type in_type) const
 
 bool GuiInclude::initialiseParams(std::string const & data)
 {
-	InsetCommand::string2params("include", data, params_);
+	InsetCommand::string2params(data, params_);
 	paramsToDialog(params_);
 	return true;
 }
@@ -343,7 +343,7 @@ bool GuiInclude::initialiseParams(std::string const & data)
 
 void GuiInclude::dispatchParams()
 {
-	std::string const lfun = InsetCommand::params2string("include", params_);
+	std::string const lfun = InsetCommand::params2string(params_);
 	dispatch(FuncRequest(getLfun(), lfun));
 }
 

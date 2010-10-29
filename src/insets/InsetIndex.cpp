@@ -493,8 +493,7 @@ void InsetPrintIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		InsetCommandParams p(INDEX_PRINT_CODE);
 		// FIXME UNICODE
-		InsetCommand::string2params("index_print",
-			to_utf8(cmd.argument()), p);
+		InsetCommand::string2params(to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty()) {
 			cur.noScreenUpdate();
 			break;
@@ -527,8 +526,7 @@ bool InsetPrintIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 		} if (cmd.getArg(0) == "index_print"
 		    && cmd.getArg(1) == "CommandInset") {
 			InsetCommandParams p(INDEX_PRINT_CODE);
-			InsetCommand::string2params("index_print",
-				to_utf8(cmd.argument()), p);
+			InsetCommand::string2params(to_utf8(cmd.argument()), p);
 			if (suffixIs(p.getCmdName(), '*')) {
 				status.setEnabled(true);
 				status.setOnOff(false);

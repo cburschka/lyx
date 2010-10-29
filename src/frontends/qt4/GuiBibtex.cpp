@@ -547,14 +547,14 @@ QString GuiBibtex::styleFile() const
 
 bool GuiBibtex::initialiseParams(std::string const & data)
 {
-	InsetCommand::string2params("bibtex", data, params_);
+	InsetCommand::string2params(data, params_);
 	return true;
 }
 
 
 void GuiBibtex::dispatchParams()
 {
-	std::string const lfun = InsetCommand::params2string("bibtex", params_);
+	std::string const lfun = InsetCommand::params2string(params_);
 	dispatch(FuncRequest(getLfun(), lfun));
 }
 

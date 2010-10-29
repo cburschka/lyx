@@ -49,7 +49,7 @@ docstring GuiBibitem::dialogToParams() const
 	InsetCommandParams params(insetCode());
 	params["key"] = qstring_to_ucs4(keyED->text());
 	params["label"] = qstring_to_ucs4(labelED->text());
-	return from_utf8(InsetCommand::params2string("bibitem", params));
+	return from_utf8(InsetCommand::params2string(params));
 }
 
 

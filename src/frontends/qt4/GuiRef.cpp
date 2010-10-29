@@ -496,14 +496,14 @@ void GuiRef::filterLabels()
 
 bool GuiRef::initialiseParams(std::string const & data)
 {
-	InsetCommand::string2params("ref", data, params_);
+	InsetCommand::string2params(data, params_);
 	return true;
 }
 
 
 void GuiRef::dispatchParams()
 {
-	std::string const lfun = InsetCommand::params2string("ref", params_);
+	std::string const lfun = InsetCommand::params2string(params_);
 	dispatch(FuncRequest(getLfun(), lfun));
 }
 

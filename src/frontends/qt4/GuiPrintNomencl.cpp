@@ -138,7 +138,7 @@ bool GuiPrintNomencl::isValid() const
 
 bool GuiPrintNomencl::initialiseParams(std::string const & data)
 {
-	InsetCommand::string2params("nomencl_print", data, params_);
+	InsetCommand::string2params(data, params_);
 	paramsToDialog(params_);
 	return true;
 }
@@ -146,7 +146,7 @@ bool GuiPrintNomencl::initialiseParams(std::string const & data)
 
 void GuiPrintNomencl::dispatchParams()
 {
-	std::string const lfun = InsetCommand::params2string("nomencl_print", params_);
+	std::string const lfun = InsetCommand::params2string(params_);
 	dispatch(FuncRequest(getLfun(), lfun));
 }
 

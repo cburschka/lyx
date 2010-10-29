@@ -622,7 +622,7 @@ void GuiCitation::setCitedKeys()
 
 bool GuiCitation::initialiseParams(string const & data)
 {
-	InsetCommand::string2params("citation", data, params_);
+	InsetCommand::string2params(data, params_);
 	CiteEngine const engine = buffer().params().citeEngine();
 	citeStyles_ = citeStyles(engine);
 	init();
@@ -748,7 +748,7 @@ vector<docstring> GuiCitation::searchKeys(BiblioInfo const & bi,
 
 void GuiCitation::dispatchParams()
 {
-	std::string const lfun = InsetCommand::params2string("citation", params_);
+	std::string const lfun = InsetCommand::params2string(params_);
 	dispatch(FuncRequest(getLfun(), lfun));
 }
 

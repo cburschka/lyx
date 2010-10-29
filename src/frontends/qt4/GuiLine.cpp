@@ -77,7 +77,7 @@ docstring GuiLine::dialogToParams() const
 	params["width"] = from_utf8(widgetsToLength(WidthLE, WidthUnitCO));
 	params["height"] = from_utf8(widgetsToLength(HeightLE, HeightUnitCO));
 	params.setCmdName("rule");
-	return from_ascii(InsetLine::params2string("line", params));
+	return from_ascii(InsetLine::params2string(params));
 }
 
 
