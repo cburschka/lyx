@@ -5388,7 +5388,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		cur.pit() = 0;
 		cur.pos() = 0;
 		cur.setSelection(false);
-		// When a row is set as caption, then also insert
+		// If a row is set as caption, then also insert
 		// a caption. Otherwise the LaTeX output is broken.
 		lyx::dispatch(FuncRequest(LFUN_INSET_SELECT_ALL));
 		lyx::dispatch(FuncRequest(LFUN_CAPTION_INSERT));
@@ -5407,21 +5407,10 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	}
 
 	case Tabular::TOGGLE_LTCAPTION: {
-		bool const set = !tabular.ltCaption(row);
-		cur.idx() = tabular.setLTCaption(row, set);
-		cur.pit() = 0;
-		cur.pos() = 0;
-		cur.setSelection(false);
-		if (set) {
-			// When a row is set as caption, then also insert
-			// a caption. Otherwise the LaTeX output is broken.
-			lyx::dispatch(FuncRequest(LFUN_INSET_SELECT_ALL));
-			lyx::dispatch(FuncRequest(LFUN_CAPTION_INSERT));
-		} else {
-			FuncRequest fr(LFUN_INSET_DISSOLVE, "caption");
-			if (lyx::getStatus(fr).enabled())
-				lyx::dispatch(fr);
-		}
+		if (tabular.ltCaption(row))
+			tabularFeatures(cur, Tabular::UNSET_LTCAPTION);
+		else
+			tabularFeatures(cur, Tabular::SET_LTCAPTION);
 		break;
 	}
 
