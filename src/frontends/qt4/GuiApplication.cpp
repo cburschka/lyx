@@ -1357,7 +1357,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (buf)
 			buf->setReadonly(true);
 #else
-		buf;
+		(void) buf;
 #endif
 		break;
 	}
