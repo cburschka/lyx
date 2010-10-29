@@ -276,7 +276,7 @@ void InsetRef::validate(LaTeXFeatures & features) const
 			docstring label;
 			string const fcmd = to_utf8(getFormattedCmd(data, label));
 			if (fcmd != "\\ref") {
-				string lcmd = "\\providecommand" + fcmd + "[1]{\\ref{#1}}";
+				string lcmd = "\\AtBeginDocument{\\providecommand" + fcmd + "[1]{\\ref{#1}}}";
 				features.addPreambleSnippet(lcmd);
 			}
 		} else
