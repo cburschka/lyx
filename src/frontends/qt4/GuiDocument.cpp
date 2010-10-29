@@ -1884,9 +1884,11 @@ void GuiDocument::bibtexChanged(int n)
 
 
 namespace {
+	// FIXME unicode 
+	// both of these should take a vector<docstring>
+	
 	// This is an insanely complicated attempt to make this sort of thing
 	// work with RTL languages.
-	//FIXME unicode (this should take a vector<docstring>)
 	docstring formatStrVec(vector<string> const & v, docstring const & s) 
 	{
 		//this mess formats the list as "v[0], v[1], ..., [s] v[n]"
@@ -1921,7 +1923,8 @@ namespace {
 		for (; it != end; ++it) {
 			LyXModule const * const mod = theModuleList[*it];
 			if (!mod)
-				retval.push_back(to_utf8(bformat(_("%1$s (unavailable)"), from_utf8(*it))));
+				retval.push_back(to_utf8(bformat(_("%1$s (unavailable)"), 
+						translateIfPossible(from_utf8(*it)))));
 			else
 				retval.push_back(mod->getName());
 		}
