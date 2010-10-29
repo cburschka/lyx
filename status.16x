@@ -183,6 +183,9 @@ What's new
 
 - Make the input completion case sensitive again (bug 6983).
 
+- Fix crash when editing a macro name under some circumstances (for example,
+  when the macro is followed by a script inset and another macro) (bug 6965).
+
 
 * DOCUMENTATION AND LOCALIZATION
 

@@ -639,6 +639,7 @@ bool MathMacro::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 			inset_cursor.cell().erase(inset_cursor.pos());
 			inset_cursor.cell().insert(inset_cursor.pos(),
 				createInsetMath(unfolded_name, &cur.buffer()));
+			cur.resetAnchor();
 			cur.updateFlags(cur.disp_.update() | Update::SinglePar);
 			return true;
 		}
