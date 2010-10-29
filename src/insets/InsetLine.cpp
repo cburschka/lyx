@@ -42,7 +42,7 @@ using frontend::Painter;
 
 
 InsetLine::InsetLine(Buffer * buf, InsetCommandParams const & p)
-	: InsetCommand(buf, p, "line")
+	: InsetCommand(buf, p)
 {}
 
 

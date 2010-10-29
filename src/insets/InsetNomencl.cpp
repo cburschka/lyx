@@ -49,7 +49,7 @@ namespace lyx {
 /////////////////////////////////////////////////////////////////////
 
 InsetNomencl::InsetNomencl(Buffer * buf, InsetCommandParams const & p)
-	: InsetCommand(buf, p, "nomenclature"),
+	: InsetCommand(buf, p),
 	  nomenclature_entry_id(sgml::uniqueID(from_ascii("nomen")))
 {}
 
@@ -135,7 +135,7 @@ void InsetNomencl::validate(LaTeXFeatures & features) const
 /////////////////////////////////////////////////////////////////////
 
 InsetPrintNomencl::InsetPrintNomencl(Buffer * buf, InsetCommandParams const & p)
-	: InsetCommand(buf, p, "nomencl_print")
+	: InsetCommand(buf, p)
 {}
 
 

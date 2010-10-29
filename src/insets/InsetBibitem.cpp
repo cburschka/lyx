@@ -52,7 +52,7 @@ docstring const key_prefix = from_ascii("key-");
 
 
 InsetBibitem::InsetBibitem(Buffer * buf, InsetCommandParams const & p)
-	: InsetCommand(buf, p, "bibitem")
+	: InsetCommand(buf, p)
 {
 	buffer().invalidateBibinfoCache();
 	if (getParam("key").empty())

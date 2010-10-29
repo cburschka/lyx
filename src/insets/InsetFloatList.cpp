@@ -38,12 +38,12 @@ namespace lyx {
 
 
 InsetFloatList::InsetFloatList(Buffer * buf)
-	: InsetCommand(buf, InsetCommandParams(FLOAT_LIST_CODE), "floatlist")
+	: InsetCommand(buf, InsetCommandParams(FLOAT_LIST_CODE))
 {}
 
 
 InsetFloatList::InsetFloatList(Buffer * buf, string const & type)
-	: InsetCommand(buf, InsetCommandParams(FLOAT_LIST_CODE), "floatlist")
+	: InsetCommand(buf, InsetCommandParams(FLOAT_LIST_CODE))
 {
 	setParam("type", from_ascii(type));
 }

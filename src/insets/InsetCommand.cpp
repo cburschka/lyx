@@ -52,23 +52,22 @@ namespace lyx {
 
 // FIXME Would it now be possible to use the InsetCode in 
 // place of the mailer name and recover that information?
-InsetCommand::InsetCommand(Buffer * buf, InsetCommandParams const & p,
-			   string const & mailer_name)
-	: Inset(buf), p_(p), mailer_name_(mailer_name)
+InsetCommand::InsetCommand(Buffer * buf, InsetCommandParams const & p)
+	: Inset(buf), p_(p)
 {}
 
 
 // The sole purpose of this copy constructor is to make sure
 // that the mouse_hover_ map is not copied and remains empty.
 InsetCommand::InsetCommand(InsetCommand const & rhs)
-	: Inset(rhs), p_(rhs.p_), mailer_name_(rhs.mailer_name_)
+	: Inset(rhs), p_(rhs.p_)
 {}
 
 
 InsetCommand::~InsetCommand()
 {
-	if (!mailer_name_.empty())
-		hideDialogs(mailer_name_, this);
+	if (p_.code() != NO_CODE)
+		hideDialogs(insetName(p_.code()), this);
 
 	map<BufferView const *, bool>::iterator it = mouse_hover_.begin();
 	map<BufferView const *, bool>::iterator end = mouse_hover_.end();
@@ -209,14 +208,14 @@ bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 docstring InsetCommand::contextMenu(BufferView const &, int, int) const
 {
-	return from_ascii("context-") + from_ascii(mailer_name_);
+	return from_ascii("context-") + from_ascii(insetName(p_.code()));
 }
 
 
 bool InsetCommand::showInsetDialog(BufferView * bv) const
 {
-	if (!mailer_name_.empty())
-		bv->showDialog(mailer_name_, params2string(p_),
+	if (p_.code() != NO_CODE)
+		bv->showDialog(insetName(p_.code()), params2string(p_),
 			const_cast<InsetCommand *>(this));
 	return true;
 }

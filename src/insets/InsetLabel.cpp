@@ -49,7 +49,7 @@ namespace lyx {
 
 
 InsetLabel::InsetLabel(Buffer * buf, InsetCommandParams const & p)
-	: InsetCommand(buf, p, "label")
+	: InsetCommand(buf, p)
 {}
 
 

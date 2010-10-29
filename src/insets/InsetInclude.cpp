@@ -160,7 +160,7 @@ InsetLabel * createLabel(Buffer * buf, docstring const & label_str)
 
 
 InsetInclude::InsetInclude(Buffer * buf, InsetCommandParams const & p)
-	: InsetCommand(buf, p, "include"), include_label(uniqueID()),
+	: InsetCommand(buf, p), include_label(uniqueID()),
 	  preview_(new RenderMonitoredPreview(this)), failedtoload_(false),
 	  set_label_(false), label_(0), child_buffer_(0)
 {

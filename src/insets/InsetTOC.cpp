@@ -35,7 +35,7 @@ namespace lyx {
 
 
 InsetTOC::InsetTOC(Buffer * buf, InsetCommandParams const & p)
-	: InsetCommand(buf, p, "toc")
+	: InsetCommand(buf, p)
 {}
 
 

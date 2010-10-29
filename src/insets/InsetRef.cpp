@@ -36,7 +36,7 @@ namespace lyx {
 
 
 InsetRef::InsetRef(Buffer * buf, InsetCommandParams const & p)
-	: InsetCommand(buf, p, "ref")
+	: InsetCommand(buf, p)
 {}
 
 

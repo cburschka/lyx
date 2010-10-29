@@ -35,7 +35,7 @@ namespace lyx {
 
 
 InsetHyperlink::InsetHyperlink(Buffer * buf, InsetCommandParams const & p)
-	: InsetCommand(buf, p, "href")
+	: InsetCommand(buf, p)
 {}
 
 

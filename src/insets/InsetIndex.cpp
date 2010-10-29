@@ -425,7 +425,7 @@ void InsetIndexParams::read(Lexer & lex)
 ///////////////////////////////////////////////////////////////////////
 
 InsetPrintIndex::InsetPrintIndex(Buffer * buf, InsetCommandParams const & p)
-	: InsetCommand(buf, p, "index_print")
+	: InsetCommand(buf, p)
 {}
 
 

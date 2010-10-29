@@ -40,7 +40,7 @@ ParamInfo InsetCitation::param_info_;
 
 
 InsetCitation::InsetCitation(Buffer * buf, InsetCommandParams const & p)
-	: InsetCommand(buf, p, "citation")
+	: InsetCommand(buf, p)
 {}
 
 

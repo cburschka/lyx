@@ -35,8 +35,7 @@ class InsetCommand : public Inset
 {
 public:
 	///
-	InsetCommand(Buffer *, InsetCommandParams const &,
-		std::string const & mailer_name);
+	InsetCommand(Buffer *, InsetCommandParams const &);
 	///
 	InsetCommand(InsetCommand const & rhs);
 	///
@@ -133,8 +132,6 @@ private:
 
 	///
 	InsetCommandParams p_;
-	///
-	std::string mailer_name_;
 	/// changes color when mouse enters/leaves this inset
 	mutable std::map<BufferView const *, bool> mouse_hover_;
 	///
