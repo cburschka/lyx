@@ -1352,13 +1352,10 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		current_view_->message(bformat(_("Opening help file %1$s..."),
 					       makeDisplayPath(fname.absFileName())));
 		Buffer * buf = current_view_->loadDocument(fname, false);
-		if (buf) {
-			current_view_->setBuffer(buf);
 #ifndef DEVEL_VERSION
+		if (buf)
 			buf->setReadonly(true);
 #endif
-			buf->errors("Parse");
-		}
 		break;
 	}
 

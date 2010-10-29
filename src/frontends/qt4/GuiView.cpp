@@ -1815,6 +1815,7 @@ Buffer * GuiView::loadDocument(FileName const & filename, bool tolastfiles)
 		return 0;
 	}
 
+	newBuffer->errors("Parse");
 	setBuffer(newBuffer);
 
 	if (tolastfiles)
@@ -1895,10 +1896,6 @@ void GuiView::openDocument(string const & fname)
 	docstring str2;
 	Buffer * buf = loadDocument(fullname);
 	if (buf) {
-		// I don't think this is needed, since it will be done in setBuffer().
-		// buf->updateBuffer();
-		setBuffer(buf);
-		buf->errors("Parse");
 		str2 = bformat(_("Document %1$s opened."), disp_fn);
 		if (buf->lyxvc().inUse())
 			str2 += " " + from_utf8(buf->lyxvc().versionString()) +
@@ -1945,10 +1942,6 @@ static bool import(GuiView * lv, FileName const & filename,
 		Buffer * buf = lv->loadDocument(lyxfile);
 		if (!buf)
 			return false;
-		// I don't think this is needed, since it will be done in setBuffer().
-		// buf->updateBuffer();
-		lv->setBuffer(buf);
-		buf->errors("Parse");
 	} else {
 		Buffer * const b = newFile(lyxfile.absFileName(), string(), true);
 		if (!b)
@@ -2804,29 +2797,19 @@ void GuiView::openChildDocument(string const & fname)
 	FileName const filename = support::makeAbsPath(fname, buffer.filePath());
 	documentBufferView()->saveBookmark(false);
 	Buffer * child = 0;
-	bool parsed = false;
 	if (theBufferList().exists(filename)) {
 		child = theBufferList().getBuffer(filename);
+		setBuffer(child);
 	} else {
 		message(bformat(_("Opening child document %1$s..."),
-		makeDisplayPath(filename.absFileName())));
+			makeDisplayPath(filename.absFileName())));
 		child = loadDocument(filename, false);
-		parsed = true;
 	}
-	if (!child)
-		return;
-
 	// Set the parent name of the child document.
 	// This makes insertion of citations and references in the child work,
 	// when the target is in the parent or another child document.
-	child->setParent(&buffer);
-
-	// I don't think this is needed, since it will be called in
-	// setBuffer().
-	//	child->masterBuffer()->updateBuffer();
-	setBuffer(child);
-	if (parsed)
-		child->errors("Parse");
+	if (child)
+		child->setParent(&buffer);
 }
 
 
@@ -2873,10 +2856,6 @@ bool GuiView::goToFileRow(string const & argument)
 			buf = loadDocument(s);
 			if (!buf)
 				return false;
-			// I don't think this is needed. loadDocument() calls
-			// setBuffer(), which calls updateBuffer().
-			// buf->updateBuffer();
-			buf->errors("Parse");
 		} else {
 			message(bformat(
 					_("File does not exist: %1$s"),
