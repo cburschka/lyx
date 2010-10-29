@@ -2528,7 +2528,6 @@ void BufferView::insertLyXFile(FileName const & fname)
 	buffer_.changed(true);
 	// emit message signal.
 	message(bformat(res, disp_fn));
-	buffer_.errors("Parse");
 }
 
 

@@ -2100,44 +2100,41 @@ void GuiView::insertLyXFile(docstring const & fname)
 
 	// FIXME UNICODE
 	FileName filename(to_utf8(fname));
-
-	if (!filename.empty()) {
-		bv->insertLyXFile(filename);
-		return;
-	}
-
-	// Launch a file browser
-	// FIXME UNICODE
-	string initpath = lyxrc.document_path;
-	string const trypath = bv->buffer().filePath();
-	// If directory is writeable, use this as default.
-	if (FileName(trypath).isDirWritable())
-		initpath = trypath;
-
-	// FIXME UNICODE
-	FileDialog dlg(qt_("Select LyX document to insert"), LFUN_FILE_INSERT);
-	dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
-	dlg.setButton2(qt_("Examples|#E#e"),
-		toqstr(addPath(package().system_support().absFileName(),
-		"examples")));
-
-	FileDialog::Result result = dlg.open(toqstr(initpath),
-				 QStringList(qt_("LyX Documents (*.lyx)")));
-
-	if (result.first == FileDialog::Later)
-		return;
-
-	// FIXME UNICODE
-	filename.set(fromqstr(result.second));
-
-	// check selected filename
 	if (filename.empty()) {
-		// emit message signal.
-		message(_("Canceled."));
-		return;
+		// Launch a file browser
+		// FIXME UNICODE
+		string initpath = lyxrc.document_path;
+		string const trypath = bv->buffer().filePath();
+		// If directory is writeable, use this as default.
+		if (FileName(trypath).isDirWritable())
+			initpath = trypath;
+
+		// FIXME UNICODE
+		FileDialog dlg(qt_("Select LyX document to insert"), LFUN_FILE_INSERT);
+		dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
+		dlg.setButton2(qt_("Examples|#E#e"),
+			toqstr(addPath(package().system_support().absFileName(),
+			"examples")));
+
+		FileDialog::Result result = dlg.open(toqstr(initpath),
+					 QStringList(qt_("LyX Documents (*.lyx)")));
+
+		if (result.first == FileDialog::Later)
+			return;
+
+		// FIXME UNICODE
+		filename.set(fromqstr(result.second));
+
+		// check selected filename
+		if (filename.empty()) {
+			// emit message signal.
+			message(_("Canceled."));
+			return;
+		}
 	}
 
 	bv->insertLyXFile(filename);
+	bv->buffer().errors("Parse");
 }
 
 
