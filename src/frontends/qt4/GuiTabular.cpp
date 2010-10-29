@@ -176,6 +176,8 @@ void GuiTabular::checkEnabled()
 	interlinespaceED->setEnabled(interlinespaceCO->currentIndex() == 2);
 	interlinespaceUnit->setEnabled(interlinespaceCO->currentIndex() == 2);
 
+	// setting as longtable is not allowed when table is inside a float
+	longTabularCB->setEnabled(funcEnabled(Tabular::SET_LONGTABULAR));
 	bool const longtabular = longTabularCB->isChecked();
 	longtableGB->setEnabled(true);
 	newpageCB->setEnabled(longtabular);

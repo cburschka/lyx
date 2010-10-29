@@ -4313,6 +4313,9 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::SET_LONGTABULAR:
+			// setting as longtable is not allowed when table is inside a float
+			if (cur.innerInsetOfType(FLOAT_CODE) != 0)
+				status.setEnabled(false);
 			status.setOnOff(tabular.is_long_tabular);
 			break;
 
