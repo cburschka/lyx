@@ -457,10 +457,14 @@ docstring GuiTabular::dialogToParams() const
 
 	//
 	if (multicolumnCB->isChecked())
-		setParam(param_str, Tabular::MULTICOLUMN);
+		setParam(param_str, Tabular::SET_MULTICOLUMN);
+	else
+		setParam(param_str, Tabular::UNSET_MULTICOLUMN);
 	//
 	if (multirowCB->isChecked())
-		setParam(param_str, Tabular::MULTIROW);
+		setParam(param_str, Tabular::SET_MULTIROW);
+	else
+		setParam(param_str, Tabular::UNSET_MULTIROW);
 	//
 	if (rotateTabularCB->isChecked())
 		setParam(param_str, Tabular::SET_ROTATE_TABULAR);
@@ -481,7 +485,9 @@ docstring GuiTabular::dialogToParams() const
 		setParam(param_str, Tabular::SET_LTNEWPAGE);
 	//
 	if (captionStatusCB->isChecked())
-		setParam(param_str, Tabular::TOGGLE_LTCAPTION);
+		setParam(param_str, Tabular::SET_LTCAPTION);
+	else
+		setParam(param_str, Tabular::UNSET_LTCAPTION);
 	//
 	if (headerStatusCB->isChecked())
 		setParam(param_str, Tabular::SET_LTHEAD, "none");

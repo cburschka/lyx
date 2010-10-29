@@ -136,7 +136,11 @@ TabularFeature tabularFeature[] =
 	{ Tabular::M_VALIGN_BOTTOM, "m-valign-bottom", false },
 	{ Tabular::M_VALIGN_MIDDLE, "m-valign-middle", false },
 	{ Tabular::MULTICOLUMN, "multicolumn", false },
+	{ Tabular::SET_MULTICOLUMN, "set-multicolumn", false },
+	{ Tabular::UNSET_MULTICOLUMN, "unset-multicolumn", false },
 	{ Tabular::MULTIROW, "multirow", false },
+	{ Tabular::SET_MULTIROW, "set-multirow", false },
+	{ Tabular::UNSET_MULTIROW, "unset-multirow", false },
 	{ Tabular::SET_ALL_LINES, "set-all-lines", false },
 	{ Tabular::UNSET_ALL_LINES, "unset-all-lines", false },
 	{ Tabular::SET_LONGTABULAR, "set-longtabular", false },
@@ -160,6 +164,8 @@ TabularFeature tabularFeature[] =
 	{ Tabular::UNSET_LTLASTFOOT, "unset-ltlastfoot", true },
 	{ Tabular::SET_LTNEWPAGE, "set-ltnewpage", false },
 	{ Tabular::TOGGLE_LTCAPTION, "toggle-ltcaption", false },
+	{ Tabular::SET_LTCAPTION, "set-ltcaption", false },
+	{ Tabular::UNSET_LTCAPTION, "unset-ltcaption", false },
 	{ Tabular::SET_SPECIAL_COLUMN, "set-special-column", true },
 	{ Tabular::SET_SPECIAL_MULTICOLUMN, "set-special-multicolumn", true },
 	{ Tabular::SET_SPECIAL_MULTIROW, "set-special-multirow", false },
@@ -4203,6 +4209,8 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 				tabular.getAlignment(cur.idx()) == LYX_ALIGN_DECIMAL);
 			break;
 
+		case Tabular::SET_MULTICOLUMN:
+		case Tabular::UNSET_MULTICOLUMN:
 		case Tabular::MULTICOLUMN:
 			// If a row is set as longtable caption, it must not be allowed
 			// to unset that this row is a multicolumn.
@@ -4211,6 +4219,8 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setOnOff(tabular.isMultiColumn(cur.idx()));
 			break;
 
+		case Tabular::SET_MULTIROW:
+		case Tabular::UNSET_MULTIROW:
 		case Tabular::MULTIROW:
 			// If a row is set as longtable caption, it must not be allowed
 			// to unset that this row is a multirow.
@@ -4317,6 +4327,8 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			if (cur.innerInsetOfType(FLOAT_CODE) != 0
 				|| cur.innerInsetOfType(WRAP_CODE) != 0)
 				status.setEnabled(false);
+			else
+				status.setEnabled(true);
 			status.setOnOff(tabular.is_long_tabular);
 			break;
 
@@ -4422,6 +4434,8 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 		// only one row can be the caption
 		// and a multirow cannot be set as caption
+		case Tabular::SET_LTCAPTION:
+		case Tabular::UNSET_LTCAPTION:
 		case Tabular::TOGGLE_LTCAPTION:
 			status.setEnabled(sel_row_start == sel_row_end
 				&& !tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)
@@ -5012,6 +5026,8 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	row_type const row = tabular.cellRow(cur.idx());
 	col_type const column = tabular.cellColumn(cur.idx());
 	bool flag = true;
+	bool set_multicolumn = false;
+	bool set_multirow = false;
 	Tabular::ltType ltt;
 
 	switch (feature) {
@@ -5149,11 +5165,20 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 				tabular.setVAlignment(tabular.cellIndex(r, c), setVAlign, flag);
 		break;
 
+	case Tabular::UNSET_MULTICOLUMN:
+		if (!cur.selection()) {
+			if (tabular.isMultiColumn(cur.idx()))
+				tabular.unsetMultiColumn(cur.idx());
+			break;
+		}
+
+	case Tabular::SET_MULTICOLUMN:
+		set_multicolumn = true;
 	case Tabular::MULTICOLUMN: {
 		if (!cur.selection()) {
 			// just multicol for one single cell
 			// check whether we are completely in a multicol
-			if (tabular.isMultiColumn(cur.idx()))
+			if (tabular.isMultiColumn(cur.idx()) && set_multicolumn == false)
 				tabular.unsetMultiColumn(cur.idx());
 			else
 				tabular.setMultiColumn(cur.idx(), 1);
@@ -5171,11 +5196,20 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		break;
 	}
 	
+	case Tabular::UNSET_MULTIROW:
+		if (!cur.selection()) {
+			if (tabular.isMultiRow(cur.idx()))
+				tabular.unsetMultiRow(cur.idx());
+			break;
+		}
+
+	case Tabular::SET_MULTIROW:
+		set_multirow = true;
 	case Tabular::MULTIROW: {
 		if (!cur.selection()) {
 			// just multirow for one single cell
 			// check whether we are completely in a multirow
-			if (tabular.isMultiRow(cur.idx()))
+			if (tabular.isMultiRow(cur.idx()) && set_multirow == false)
 				tabular.unsetMultiRow(cur.idx());
 			else
 				tabular.setMultiRow(cur.idx(), 1);
@@ -5341,13 +5375,35 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		tabular.setLTNewPage(row, !tabular.getLTNewPage(row));
 		break;
 
+	case Tabular::SET_LTCAPTION: {
+		cur.idx() = tabular.setLTCaption(row, true);
+		cur.pit() = 0;
+		cur.pos() = 0;
+		cur.setSelection(false);
+		// When a row is set as caption, then also insert
+		// a caption. Otherwise the LaTeX output is broken.
+		lyx::dispatch(FuncRequest(LFUN_INSET_SELECT_ALL));
+		lyx::dispatch(FuncRequest(LFUN_CAPTION_INSERT));
+		break;
+	}
+	
+	case Tabular::UNSET_LTCAPTION: {
+		cur.idx() = tabular.setLTCaption(row, false);
+		cur.pit() = 0;
+		cur.pos() = 0;
+		cur.setSelection(false);
+		FuncRequest fr(LFUN_INSET_DISSOLVE, "caption");
+		if (lyx::getStatus(fr).enabled())
+			lyx::dispatch(fr);
+		break;
+	}
+
 	case Tabular::TOGGLE_LTCAPTION: {
 		bool const set = !tabular.ltCaption(row);
 		cur.idx() = tabular.setLTCaption(row, set);
 		cur.pit() = 0;
 		cur.pos() = 0;
 		cur.setSelection(false);
-
 		if (set) {
 			// When a row is set as caption, then also insert
 			// a caption. Otherwise the LaTeX output is broken.

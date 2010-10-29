@@ -183,7 +183,15 @@ public:
 		///
 		MULTICOLUMN,
 		///
+		SET_MULTICOLUMN,
+		///
+		UNSET_MULTICOLUMN,
+		///
 		MULTIROW,
+		///
+		SET_MULTIROW,
+		///
+		UNSET_MULTIROW,
 		///
 		SET_ALL_LINES,
 		///
@@ -226,6 +234,10 @@ public:
 		SET_LTNEWPAGE,
 		///
 		TOGGLE_LTCAPTION,
+		///
+		SET_LTCAPTION,
+		///
+		UNSET_LTCAPTION,
 		///
 		SET_SPECIAL_COLUMN,
 		///
