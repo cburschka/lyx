@@ -1216,7 +1216,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		string data;
 		if (name == "ref") {
 			InsetMathRef tmp(buffer_, name);
-			data = tmp.createDialogStr(to_utf8(name));
+			data = tmp.createDialogStr();
 			cur.bv().showDialog(to_utf8(name), data);
 		} else if (name == "mathspace") {
 			cur.bv().showDialog(to_utf8(name));
