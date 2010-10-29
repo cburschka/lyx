@@ -404,7 +404,7 @@ private:
 	///
 	Dialog * build(std::string const & name);
 	///
-	bool reloadBuffer();
+	bool reloadBuffer(Buffer & buffer);
 	///
 	void dispatchVC(FuncRequest const & cmd, DispatchResult & dr);
 	///

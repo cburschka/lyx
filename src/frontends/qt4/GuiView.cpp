@@ -2522,7 +2522,7 @@ bool GuiView::saveBufferIfNeeded(Buffer & buf, bool hiding)
 		// buf.removeAutosaveFile();
 		if (hiding)
 			// revert all changes
-			buf.reload();
+			reloadBuffer(buf);
 		buf.markClean();
 		break;
 	case 2:
@@ -2616,14 +2616,10 @@ static bool ensureBufferClean(Buffer * buffer)
 }
 
 
-bool GuiView::reloadBuffer()
+bool GuiView::reloadBuffer(Buffer & buf)
 {
-	BufferView * view = documentBufferView();
-	if (view) {
-		Buffer::ReadStatus status = view->buffer().reload();
-		return status == Buffer::ReadSuccess;
-	}
-	return false;
+	Buffer::ReadStatus status = buf.reload();
+	return status == Buffer::ReadSuccess;
 }
 
 
@@ -2632,15 +2628,16 @@ void GuiView::checkExternallyModifiedBuffers()
 	BufferList::iterator bit = theBufferList().begin();
 	BufferList::iterator const bend = theBufferList().end();
 	for (; bit != bend; ++bit) {
-		if ((*bit)->fileName().exists()
-			&& (*bit)->isExternallyModified(Buffer::checksum_method)) {
+		Buffer * buf = *bit;
+		if (buf->fileName().exists()
+			&& buf->isExternallyModified(Buffer::checksum_method)) {
 			docstring text = bformat(_("Document \n%1$s\n has been externally modified."
 					" Reload now? Any local changes will be lost."),
-					from_utf8((*bit)->absFileName()));
+					from_utf8(buf->absFileName()));
 			int const ret = Alert::prompt(_("Reload externally changed document?"),
 						text, 0, 1, _("&Reload"), _("&Cancel"));
 			if (!ret)
-				(*bit)->reload();
+				reloadBuffer(*buf);
 		}
 	}
 }
@@ -2657,7 +2654,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 		if (!buffer->lyxvc().inUse()) {
 			if (buffer->lyxvc().registrer()) {
-				reloadBuffer();
+				reloadBuffer(*buffer);
 				dr.suppressMessageUpdate();
 			}
 		}
@@ -2669,7 +2666,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 		if (buffer->lyxvc().inUse() && !buffer->isReadonly()) {
 			dr.setMessage(buffer->lyxvc().checkIn());
 			if (!dr.message().empty())
-				reloadBuffer();
+				reloadBuffer(*buffer);
 		}
 		break;
 
@@ -2678,7 +2675,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 		if (buffer->lyxvc().inUse()) {
 			dr.setMessage(buffer->lyxvc().checkOut());
-			reloadBuffer();
+			reloadBuffer(*buffer);
 		}
 		break;
 
@@ -2693,7 +2690,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 				_("Error when setting the locking property."));
 			} else {
 				dr.setMessage(res);
-				reloadBuffer();
+				reloadBuffer(*buffer);
 			}
 		}
 		break;
@@ -2701,14 +2698,14 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_VC_REVERT:
 		LASSERT(buffer, return);
 		buffer->lyxvc().revert();
-		reloadBuffer();
+		reloadBuffer(*buffer);
 		dr.suppressMessageUpdate();
 		break;
 
 	case LFUN_VC_UNDO_LAST:
 		LASSERT(buffer, return);
 		buffer->lyxvc().undoLast();
-		reloadBuffer();
+		reloadBuffer(*buffer);
 		dr.suppressMessageUpdate();
 		break;
 
@@ -2757,7 +2754,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 		if (contains(flag, 'I'))
 			buffer->markDirty();
 		if (contains(flag, 'R'))
-			reloadBuffer();
+			reloadBuffer(*buffer);
 
 		break;
 		}
@@ -3167,7 +3164,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 			if (ret == 0) {
 				doc_buffer->markClean();
-				reloadBuffer();
+				reloadBuffer(*doc_buffer);
 				dr.forceBufferUpdate();
 			}
 			break;
