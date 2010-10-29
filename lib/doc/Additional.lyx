@@ -126,12 +126,13 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_be_strict true
 \author 1 "ab" 
 \author 2 "bbb" 
+\author 3 "Stephan Witt" 
 \end_header
 
 \begin_body
@@ -18866,8 +18867,15 @@ A friend of mine wanted to try LyX for a group project.
 \begin_layout Standard
 Before you begin to use the version control features in LyX, you should
  be familiar with RCS/CVS/SVN usage before start using it under LyX.
- Also note that CVS support was obsoloted by introducing subversion support
- so we advice using SVN instead.
+ Also note that CVS support 
+\change_deleted 3 1288125350
+was
+\change_inserted 3 1288125359
+is not as good as
+\change_deleted 3 1288125367
+ obsoloted by introducing
+\change_unchanged
+ subversion support so we advice using SVN instead.
  Good place to start with Subversion is SVN Book
 \begin_inset Foot
 status open
@@ -18910,7 +18918,12 @@ man rcsintro
 \begin_layout Standard
 The implementation in LyX assumes a recent version of the GNU RCS or CVS/SVN
  package—no guarantees are made for older versions.
- Most of the log messages are not currently displayed after operations -
+ Most of the log messages are not currently displayed after operations 
+\change_deleted 3 1288125419
+-
+\change_inserted 3 1288125419
+—
+\change_unchanged
  you can check them in Messages pane if unsure.
 \end_layout
 
@@ -19122,7 +19135,19 @@ CVS commands in LyX
 \end_layout
 
 \begin_layout Standard
-CVS is now partially supported by LyX.
+
+\change_inserted 3 1288247612
+A subset of 
+\change_unchanged
+CVS
+\change_inserted 3 1288247626
+ operations
+\change_unchanged
+ is 
+\change_deleted 3 1288243981
+now partially 
+\change_unchanged
+supported by LyX.
  You can find the commands in the 
 \family sans
 File\SpecialChar \menuseparator
@@ -19133,8 +19158,175 @@ Version
 Control
 \family default
  submenu.
- Focus of the development moved to SVN support, so please use it instead
- of CVS if possible.
+ 
+\change_inserted 3 1288244251
+The version control system SVN is more powerful
+\change_deleted 3 1288244024
+Focus of the development moved to SVN support
+\change_unchanged
+, so please use it instead of CVS if possible.
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 3 1288247508
+
+\family sans
+General CVS usage
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 3 1288250722
+If you start from scratch with CVS you have to create your repository and
+ checkout the working copy with external tools.
+ If you're using a client-server setup you may need to login before doing
+ the first repository checkout.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 3 1288334713
+If your documents are under revision control and others are using the same
+ repository problems arise when different changes to the same document at
+ the same location happen.
+ Standard CVS repositories doesn't operate with a file locking mechanism.
+ This may be surprising, but conflicts only occur if people disagree on
+ the proper content of the same part of a document.
+ So, if co-workers are used to communicate regularly, these conflicts occur
+ rarely.
+ If they don't communicate they have a fundamental problem anyway.
+ Nevertheless some people like to work with so called 
+\begin_inset Quotes eld
+\end_inset
+
+reserved checkouts
+\begin_inset Quotes erd
+\end_inset
+
+.
+ If they do so the working copy of all files is readonly when checked out
+ first and the user starts editing after using a special command to make
+ the working copy writable.
+ When the changes are checked in the working copy returns to readonly state.
+ With LyX one has to edit the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288249115
+.cvsrc
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ file and add the line 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288249133
+cvs -r
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ to work with reserved checkouts.
+ The benefit is the possibility to see who is using a writable copy of some
+ document.
+ It's not guaranteed only one user makes a copy writable.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 3 1288335184
+LyX tries to guess if you're using reserved or non-reserved checkouts.
+ If your working copy is readonly or it is writable and an additional copy
+ of your document exists in the CVS/Base sub-directory a reserved otherwise
+ a non-reserved checkout is assumed.
+ When a reserved checkout is detected you have to use 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288250009
+Check Out
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ to make your working copy writable if it's readonly.
+ After doing so the 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288250087
+Check In
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ operation is possible and that makes your working copy readonly again after
+ transferring your changes to the repository.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 3 1288334864
+More information about CVS can be found here 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288247651
+
+http://www.nongnu.org/cvs
+\end_layout
+
+\end_inset
+
+ and here 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288249216
+
+http://ximbiot.com/cvs
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 3 1288334912
+Read 
+\family typewriter
+man cvs
+\family default
+ to understand the sub-commands and the switches mentioned below.
 \end_layout
 
 \begin_layout Subsubsection
@@ -19158,47 +19350,136 @@ egister
 \end_layout
 
 \begin_layout Standard
-This command registers in CVS your document ONLY in case you have already
- the documents directory under CVS control (in particular 
+This command registers in CVS your document 
+\change_deleted 3 1288340087
+ONLY
+\change_inserted 3 1288340119
+
+\emph on
+
+\begin_inset Flex Strong
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288340119
+
+\emph on
+only
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\emph default
+ in case you have already the documents directory under CVS control (in
+ particular 
 \family typewriter
 CVS/Entries
 \family default
  file exists).
- This means you have to checkout the archive by yourself.
+ This means you have to 
+\change_inserted 3 1288244315
+create or 
+\change_unchanged
+checkout the archive by yourself
+\change_inserted 3 1288250891
+ using external tools
+\change_unchanged
+.
  
+\change_inserted 3 1288340303
+(In case you forget that step LyX registers the document with RCS.)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 Then you are asked interactively to supply an initial description of the
  document.
- Don't forget that registered file is not yet commited.
+ Don't forget that registered file is not yet 
+\change_deleted 3 1288335206
+commited
+\change_inserted 3 1288335207
+checked in
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Standard
 CVS command that is run: 
 \family typewriter
 cvs -q add -m
+\change_deleted 3 1288125821
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted 3 1288125838
+"
+\change_unchanged
 <entered message>" 
+\change_deleted 3 1288125821
+
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted 3 1288125844
+"
+\change_unchanged
 <file-name>
+\change_deleted 3 1288125847
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted 3 1288125847
+"
+\change_unchanged
 
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 3 1288334858
 Read 
 \family typewriter
 man svn
 \family default
  to understand the switches.
+\change_inserted 3 1288333847
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 3 1288334097
+The term 
+\family typewriter
+"<file-name>"
+\family default
+ above and for all other CVS commands is an abbreviation for 
+\begin_inset Quotes eld
+\end_inset
+
+change the current working directory to file location and use the file name
+ without path component as argument
+\begin_inset Quotes erd
+\end_inset
+
+.
+
+\change_deleted 3 1288333847
  
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -19209,14 +19490,135 @@ Check In Changes
 
 \begin_layout Standard
 When you are finished editing a file, you commit your changes.
- When you do this, you are asked for a description of the changes.
- After that changes are commited.
+ When you do this
+\change_inserted 3 1288250244
+ and you had changed the document
+\change_unchanged
+, you are asked for a description of the changes.
+ After that changes are 
+\change_deleted 3 1288335277
+commited
+\change_inserted 3 1288335294
+written to the repository
+\change_unchanged
+.
+
+\change_inserted 3 1288339925
+ In case you didn't change the document and a reserved checkout is detected
+ the reservation made on 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288250359
+Check Out
+\change_unchanged
+
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+ is undone.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted 3 1288250487
+CVS
+\begin_inset space ~
+\end_inset
+
+command: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288250469
+cvs 
+\family typewriter
+-q commit -m"<description>" "<file-name>"
+\end_layout
+
+\end_inset
+
+ or
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288250960
+cvs -q unedit 
+\family typewriter
+"<file-name>"
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted 3 1288250529
 CVS command: 
 \family typewriter
 cvs -q commit -m"<description>" "<file-name>"
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 3 1288246619
+
+\family sans
+Check Out Changes
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 3 1288249364
+When you are sharing a repository with others, you may have to incorporate
+ their changes into your working copy.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 3 1288250585
+CVS command: 
+\family typewriter
+cvs -q update "<file-name>"
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 3 1288334180
+If a readonly checkout is detected the working copy is made writable and
+ reserved.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 3 1288250685
+CVS command: 
+\family typewriter
+cvs -q edit "<file-name>"
 \end_layout
 
 \begin_layout Subsubsection
@@ -19235,15 +19637,238 @@ This will discard all changes made to the document since the last check
 \begin_layout Standard
 CVS command: 
 \family typewriter
-cvs update 
+cvs 
+\change_inserted 3 1288246762
+-q 
+\change_unchanged
+update 
+\change_deleted 3 1288125856
+
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted 3 1288125856
+"
+\change_unchanged
 <file-name>
+\change_deleted 3 1288125856
+
 \begin_inset Quotes erd
 \end_inset
 
 
+\change_inserted 3 1288251381
+"
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 3 1288334211
+If a reserved checkout is detected and the working copy has no changes only
+ the reservation is undone.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 3 1288251440
+CVS command: 
+\family typewriter
+cvs -q unedit "<file-name>"
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 3 1288126016
+Update of the local directory checkout from repository
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 3 1288339359
+Once your documents gets more complex, containing sub-documents and pictures,
+ including external 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288126016
+.tex
+\end_layout
+
+\end_inset
+
+ files and so on using version control becomes more complicated.
+ LyX supports updating the whole tree in which resides the document.
+ This become especially useful once you cooperate with people which neither
+ have detailed knowledge about CVS usage nor they have ambition to commit
+ additional material to the repository.
+ You have to organize the files structure so that all external files are
+ in the same directory or subdirectories of the document.
+ It's good practice anyway to store multipart documents in an extra directory.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 3 1288341358
+The 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288126016
+Update local directory from repository
+\end_layout
+
+\end_inset
+
+ command updates the whole directory.
+ If local changes are detected user is warned before update starts.
+ In case of merge conflicts both versions of the conflicting document parts
+ are placed in the final document.
+ You have to review and correct the result of the merge.
+ You'll find the conflicts enclosed in pairs of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288341002
+<<<<<<<
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288340987
+>>>>>>>
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ separated by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288341043
+=======
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+ The first part is your version as before the update operation with the
+ document name prepended.
+ The second one is the repository version with the version number after
+ the sequence of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288341281
+>
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ signs.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted 3 1288340598
+CVS
+\begin_inset space ~
+\end_inset
+
+commands: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288334066
+cd $path; cvs diff 
+\family typewriter
+"."
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ (Ask if changes are detected.)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288334063
+cd $path; cvs -q update 
+\family typewriter
+"."
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 3 1288126016
+where 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 3 1288126016
+$path
+\end_layout
+
+\end_inset
+
+ stands for the path to the document.
 \end_layout
 
 \begin_layout Subsubsection
@@ -19257,13 +19882,25 @@ This shows the complete history of the CVS document.
  The output of 
 \family typewriter
 cvs log 
+\change_deleted 3 1288125861
+
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted 3 1288125861
+"
+\change_unchanged
 <file-name>
+\change_deleted 3 1288125864
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted 3 1288125864
+"
+\change_unchanged
 
 \family default
  is shown in a browser.
@@ -20353,7 +20990,11 @@ Control
 \end_layout
 
 \begin_layout Subsubsection
-SSH tunel used with SVN under Windows
+SSH tu
+\change_inserted 3 1288376976
+n
+\change_unchanged
+nel used with SVN under Windows
 \end_layout
 
 \begin_layout Standard
