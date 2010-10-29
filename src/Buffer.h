@@ -200,11 +200,13 @@ public:
 	bool readString(std::string const &);
 	/// Reloads the LyX file
 	ReadStatus reload();
-//FIXME: The following function should be private
+//FIXME: The following two functions should be private
 //private:
 	/// read the header, returns number of unknown tokens
 	int readHeader(Lexer & lex);
-	
+	/// save timestamp and checksum of the given file.
+	void saveCheckSum() const;
+
 private:
 	/// read a new file
 	ReadStatus readFile(support::FileName const & fn);
@@ -327,9 +329,6 @@ public:
 
 	/// whether or not disk file has been externally modified
 	bool isExternallyModified(CheckMethod method) const;
-
-	/// save timestamp and checksum of the given file.
-	void saveCheckSum() const;
 
 	/// mark the main lyx file as not needing saving
 	void markClean() const;
