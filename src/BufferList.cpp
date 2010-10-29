@@ -140,9 +140,12 @@ FileNameList const & BufferList::fileNames() const
 {
 	static FileNameList nvec;
 	nvec.clear();
-	transform(bstore.begin(), bstore.end(),
-		  back_inserter(nvec),
-		  bind(&Buffer::fileName, _1));
+	BufferStorage::const_iterator it = bstore.begin();
+	BufferStorage::const_iterator end = bstore.end();
+	for (; it != end; ++it) {
+		Buffer * buf = *it;
+		nvec.push_back(buf->fileName());
+	}
 	return nvec;
 }
 
