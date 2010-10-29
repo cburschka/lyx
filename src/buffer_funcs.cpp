@@ -75,7 +75,7 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 		if (!Alert::prompt(_("Reload saved document?"),
 			  text, 0, 1,  _("&Reload"), _("&Keep Changes"))) {
 			// reload the document
-			if (!checkBuffer->reload())
+			if (checkBuffer->reload() != Buffer::ReadSuccess)
 				return 0;
 		}
 		return checkBuffer;

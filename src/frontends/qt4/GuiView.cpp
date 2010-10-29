@@ -2621,10 +2621,11 @@ static bool ensureBufferClean(Buffer * buffer)
 
 bool GuiView::reloadBuffer()
 {
-	Buffer * buffer = documentBufferView()
-		? &(documentBufferView()->buffer()) : 0;
-	if (buffer)
-		return buffer->reload();
+	BufferView * view = documentBufferView();
+	if (view) {
+		Buffer::ReadStatus status = view->buffer().reload();
+		return status == Buffer::ReadSuccess;
+	}
 	return false;
 }
 

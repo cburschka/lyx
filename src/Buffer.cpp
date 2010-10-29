@@ -4096,7 +4096,7 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 }
 
 
-bool Buffer::reload()
+Buffer::ReadStatus Buffer::reload()
 {
 	setBusy(true);
 	// c.f. bug 6587
@@ -4105,8 +4105,8 @@ bool Buffer::reload()
 	d->filename.refresh();
 	docstring const disp_fn = makeDisplayPath(d->filename.absFileName());
 
-	bool const success = (loadLyXFile(d->filename) == ReadSuccess);
-	if (success) {
+	ReadStatus const status = loadLyXFile(d->filename);
+	if (status == ReadSuccess) {
 		updateBuffer();
 		changed(true);
 		updateTitles();
@@ -4121,7 +4121,7 @@ bool Buffer::reload()
 	if (graphics::Previews::status() != LyXRC::PREVIEW_OFF)
 		thePreviews().generateBufferPreviews(*this);
 	errors("Parse");
-	return success;
+	return status;
 }
 
 
