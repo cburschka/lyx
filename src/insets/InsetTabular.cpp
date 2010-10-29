@@ -5026,8 +5026,6 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	row_type const row = tabular.cellRow(cur.idx());
 	col_type const column = tabular.cellColumn(cur.idx());
 	bool flag = true;
-	bool set_multicolumn = false;
-	bool set_multirow = false;
 	Tabular::ltType ltt;
 
 	switch (feature) {
@@ -5165,22 +5163,11 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 				tabular.setVAlignment(tabular.cellIndex(r, c), setVAlign, flag);
 		break;
 
-	case Tabular::UNSET_MULTICOLUMN:
-		if (!cur.selection()) {
-			if (tabular.isMultiColumn(cur.idx()))
-				tabular.unsetMultiColumn(cur.idx());
-			break;
-		}
-
-	case Tabular::SET_MULTICOLUMN:
-		set_multicolumn = true;
-	case Tabular::MULTICOLUMN: {
+	case Tabular::SET_MULTICOLUMN: {
 		if (!cur.selection()) {
 			// just multicol for one single cell
 			// check whether we are completely in a multicol
-			if (tabular.isMultiColumn(cur.idx()) && set_multicolumn == false)
-				tabular.unsetMultiColumn(cur.idx());
-			else
+			if (!tabular.isMultiColumn(cur.idx()))
 				tabular.setMultiColumn(cur.idx(), 1);
 			break;
 		}
@@ -5195,23 +5182,28 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		cur.setSelection(false);
 		break;
 	}
-	
-	case Tabular::UNSET_MULTIROW:
+
+	case Tabular::UNSET_MULTICOLUMN: {
 		if (!cur.selection()) {
-			if (tabular.isMultiRow(cur.idx()))
-				tabular.unsetMultiRow(cur.idx());
+			if (tabular.isMultiColumn(cur.idx()))
+				tabular.unsetMultiColumn(cur.idx());
 			break;
 		}
+	}
 
-	case Tabular::SET_MULTIROW:
-		set_multirow = true;
-	case Tabular::MULTIROW: {
+	case Tabular::MULTICOLUMN: {
+		if (tabular.isMultiColumn(cur.idx()))
+			tabularFeatures(cur, Tabular::UNSET_MULTICOLUMN);
+		else
+			tabularFeatures(cur, Tabular::SET_MULTICOLUMN);
+		break;
+	}
+
+	case Tabular::SET_MULTIROW: {
 		if (!cur.selection()) {
 			// just multirow for one single cell
 			// check whether we are completely in a multirow
-			if (tabular.isMultiRow(cur.idx()) && set_multirow == false)
-				tabular.unsetMultiRow(cur.idx());
-			else
+			if (!tabular.isMultiRow(cur.idx()))
 				tabular.setMultiRow(cur.idx(), 1);
 			break;
 		}
@@ -5224,6 +5216,22 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		cur.pit() = 0;
 		cur.pos() = 0;
 		cur.setSelection(false);
+		break;
+	}
+
+	case Tabular::UNSET_MULTIROW: {
+		if (!cur.selection()) {
+			if (tabular.isMultiRow(cur.idx()))
+				tabular.unsetMultiRow(cur.idx());
+			break;
+		}
+	}
+
+	case Tabular::MULTIROW: {
+		if (tabular.isMultiRow(cur.idx()))
+			tabularFeatures(cur, Tabular::UNSET_MULTIROW);
+		else
+			tabularFeatures(cur, Tabular::SET_MULTIROW);
 		break;
 	}
 
