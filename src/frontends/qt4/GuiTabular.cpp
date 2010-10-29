@@ -229,7 +229,8 @@ void GuiTabular::checkEnabled()
 	lastfooterBorderBelowCB->setEnabled(longtabular
 		&& lastfooterBorderAboveCB->isChecked());
 
-	captionStatusCB->setEnabled(funcEnabled(Tabular::TOGGLE_LTCAPTION));
+	captionStatusCB->setEnabled(funcEnabled(Tabular::TOGGLE_LTCAPTION)
+		&& longtabular);
 	
 	multicolumnCB->setEnabled(funcEnabled(Tabular::MULTICOLUMN));
 	multirowCB->setEnabled(funcEnabled(Tabular::MULTIROW));
