@@ -19,6 +19,7 @@
 
 namespace lyx {
 
+class Author;
 class Buffer;
 class OutputParams;
 
@@ -102,7 +103,7 @@ public:
 	/// \name Functions that just operate on all buffers
 	//@{
 	/// reset current author for all buffers
-	void setCurrentAuthor(docstring const & name, docstring const & email);
+	void recordCurrentAuthor(Author const & author);
 	/// Call changed() on all buffers, internal or not
 	void changed(bool update_metrics) const;
 	/// emergency save for all buffers

@@ -90,6 +90,13 @@ void AuthorList::record(int id, Author const & a)
 }
 
 
+void AuthorList::recordCurrentAuthor(Author const & a)
+{
+	// current author has id 0
+	record(0, a);
+}
+
+
 Author const & AuthorList::get(int id) const
 {
 	LASSERT(id < (int)authors_.size() , /**/);

@@ -295,12 +295,12 @@ Buffer * BufferList::getBufferFromTmp(string const & s)
 }
 
 
-void BufferList::setCurrentAuthor(docstring const & name, docstring const & email)
+void BufferList::recordCurrentAuthor(Author const & author)
 {
 	BufferStorage::iterator it = bstore.begin();
 	BufferStorage::iterator end = bstore.end();
 	for (; it != end; ++it)
-		(*it)->params().authors().record(0, Author(name, email));
+		(*it)->params().authors().recordCurrentAuthor(author);
 }
 
 

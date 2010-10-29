@@ -62,6 +62,8 @@ public:
 	///
 	void record(int id, Author const & a);
 	///
+	void recordCurrentAuthor(Author const & a);
+	///
 	Author const & get(int id) const;
 	///
 	typedef std::vector<Author> Authors;

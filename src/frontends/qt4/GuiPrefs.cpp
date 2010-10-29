@@ -21,6 +21,7 @@
 #include "GuiKeySymbol.h"
 #include "qt_helpers.h"
 
+#include "Author.h"
 #include "BufferList.h"
 #include "Color.h"
 #include "ColorSet.h"
@@ -3152,7 +3153,9 @@ void GuiPreferences::dispatchParams()
 	dispatch(FuncRequest(LFUN_LYXRC_APPLY, ss.str()));
 	// FIXME: these need lfuns
 	// FIXME UNICODE
-	theBufferList().setCurrentAuthor(from_utf8(rc_.user_name), from_utf8(rc_.user_email));
+	Author const & author = 
+		Author(from_utf8(rc_.user_name), from_utf8(rc_.user_email));
+	theBufferList().recordCurrentAuthor(author);
 
 	lyx::formats = formats_;
 
