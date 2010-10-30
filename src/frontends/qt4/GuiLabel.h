@@ -33,9 +33,9 @@ private:
 	InsetCode insetCode() const { return LABEL_CODE; }
 	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
 	void paramsToDialog(Inset const *);
+	void paramsToDialog(InsetCommandParams const & params);
 	docstring dialogToParams() const;
 	bool checkWidgets() const;
-	bool initialiseParams(std::string const &);
 	//@}
 };
 

@@ -13,6 +13,8 @@
 
 #include "InsetParamsWidget.h"
 
+#include "insets/InsetCommand.h"
+
 #include "qt_helpers.h"
 
 #include <QLineEdit>
@@ -56,6 +58,16 @@ bool InsetParamsWidget::checkWidgets() const
 	Q_FOREACH(CheckedWidget const & le, checked_widgets_)
 			valid &= le.check();
 	return valid;
+}
+
+
+bool InsetParamsWidget::initialiseParams(std::string const & data)
+{
+	InsetCommandParams p(insetCode());
+	if (!InsetCommand::string2params(data, p))
+		return false;
+	paramsToDialog(p);
+	return true;
 }
 
 } // namespace frontend
