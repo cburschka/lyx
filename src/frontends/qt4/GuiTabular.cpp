@@ -442,7 +442,8 @@ docstring GuiTabular::dialogToParams() const
 	if (multicolumnCB->isChecked())
 		setParam(param_str, Tabular::SET_SPECIAL_MULTICOLUMN, special);
 	else if (multirowCB->isChecked())
-		setParam(param_str, Tabular::SET_SPECIAL_MULTIROW, special);
+		//FIXME SET_SPECIAL_MULTIROW not implemented!
+		setParam(param_str, Tabular::SET_SPECIAL_MULTIROW);
 	else
 		setParam(param_str, Tabular::SET_SPECIAL_COLUMN, special);
 
