@@ -1338,7 +1338,7 @@ def revert_includeall(document):
 
 
 def revert_multirow(document):
-    " Revert multirow cells in tables "
+    " Revert multirow cells in tables to TeX-code"
     i = 0
     multirow = False
     while True:
