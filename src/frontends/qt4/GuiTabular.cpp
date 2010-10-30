@@ -622,9 +622,7 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 		special = getAlignSpecial(tabular, cell,
 			Tabular::SET_SPECIAL_MULTICOLUMN);
 		pwidth = getMColumnPWidth(tabular, cell);
-	} else if (multirow)
-		pwidth = getMColumnPWidth(tabular, cell);
-	else {
+	} else {
 		special = getAlignSpecial(tabular, cell,
 			Tabular::SET_SPECIAL_COLUMN);
 		pwidth = getColumnPWidth(tabular, cell);
