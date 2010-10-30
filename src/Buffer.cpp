@@ -3650,6 +3650,7 @@ Buffer::ReadStatus Buffer::loadEmergency(FileName const & fn)
 		bool const success = (ret_llf == ReadSuccess);
 		if (success) {
 			markDirty();
+			lyxvc().file_found_hook(fn);
 			str = _("Document was successfully recovered.");
 		} else
 			str = _("Document was NOT successfully recovered.");
@@ -3705,6 +3706,7 @@ Buffer::ReadStatus Buffer::loadAutosave(FileName const & fn)
 		// the file is not saved if we load the autosave file.
 		if (ret_llf == ReadSuccess) {
 			markDirty();
+			lyxvc().file_found_hook(fn);
 			return ReadSuccess;
 		}
 		return ReadAutosaveFailure;
