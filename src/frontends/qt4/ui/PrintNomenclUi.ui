@@ -1,19 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>PrintNomenclUi</class>
- <widget class="QDialog" name="PrintNomenclUi">
+ <widget class="QWidget" name="PrintNomenclUi">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>280</width>
-    <height>119</height>
+    <width>336</width>
+    <height>80</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string/>
-  </property>
-  <property name="sizeGripEnabled">
-   <bool>true</bool>
+   <string>&quot;Nomenclature settings&quot;</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0" colspan="2">
@@ -59,56 +57,6 @@
    <item row="1" column="3">
     <widget class="LengthCombo" name="unitLC"/>
    </item>
-   <item row="2" column="0">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>74</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="2" column="1" colspan="3">
-    <layout class="QHBoxLayout">
-     <item>
-      <widget class="QPushButton" name="okPB">
-       <property name="text">
-        <string>&amp;OK</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-       <property name="default">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="applyPB">
-       <property name="text">
-        <string>&amp;Apply</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB">
-       <property name="text">
-        <string>&amp;Close</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -120,9 +68,6 @@
  </customwidgets>
  <tabstops>
   <tabstop>valueLE</tabstop>
-  <tabstop>okPB</tabstop>
-  <tabstop>applyPB</tabstop>
-  <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
   <include location="local">qt_i18n.h</include>

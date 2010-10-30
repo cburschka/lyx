@@ -22,6 +22,7 @@
 #include "GuiLabel.h"
 #include "GuiLine.h"
 #include "GuiNomenclature.h"
+#include "GuiPrintNomencl.h"
 #include "GuiTabular.h"
 #include "GuiVSpace.h"
 #include "FloatPlacement.h"
@@ -254,6 +255,9 @@ Dialog * createDialog(GuiView & lv, InsetCode code)
 		break;
 	case NOMENCL_CODE:
 		widget = new GuiNomenclature;
+		break;
+	case NOMENCL_PRINT_CODE:
+		widget = new GuiPrintNomencl;
 		break;
 	case SPACE_CODE:
 		widget = new GuiHSpace(false);

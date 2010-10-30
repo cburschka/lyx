@@ -13,46 +13,32 @@
 #ifndef GUIPRINTNOMENCL_H
 #define GUIPRINTNOMENCL_H
 
-#include "GuiDialog.h"
+#include "InsetParamsWidget.h"
 #include "ui_PrintNomenclUi.h"
-
-#include "insets/InsetCommandParams.h"
-
 
 namespace lyx {
 namespace frontend {
 
-class GuiPrintNomencl : public GuiDialog, public Ui::PrintNomenclUi
+class GuiPrintNomencl : public InsetParamsWidget, public Ui::PrintNomenclUi
 {
 	Q_OBJECT
 
 public:
-	GuiPrintNomencl(GuiView & lv);
+	GuiPrintNomencl(QWidget * parent = 0);
 
 private Q_SLOTS:
-	void change_adaptor();
 	void on_setWidthCO_activated(int);
 
 private:
-	/// Apply changes
-	void applyView();
-	/// Update dialog before showing it
-	void updateContents();
-	///
-	bool initialiseParams(std::string const & data);
-	///
-	void paramsToDialog(InsetCommandParams const & icp);
-	///
-	void clearParams() { params_.clear(); }
-	///
-	void dispatchParams();
-	///
-	bool isBufferDependent() const { return true; }
-	///
-	bool isValid() const;
-
-	///
-	InsetCommandParams params_;
+	/// \name InsetParamsWidget inherited methods
+	//@{
+	InsetCode insetCode() const { return NOMENCL_PRINT_CODE; }
+	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
+	void paramsToDialog(Inset const *);
+	void paramsToDialog(InsetCommandParams const &);
+	docstring dialogToParams() const;
+	bool checkWidgets() const;
+	//@}
 };
 
 } // namespace frontend
