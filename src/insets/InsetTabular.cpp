@@ -849,14 +849,16 @@ void Tabular::updateIndexes()
 	idx_type i = 0;
 	for (row_type row = 0; row < nrows(); ++row)
 		for (col_type column = 0; column < ncols(); ++column) {
-			if (isPartOfMultiColumn(row, column)
-				|| isPartOfMultiRow(row, column))
+			if (isPartOfMultiColumn(row, column))
 				continue;
-			rowofcell[i] = row;
-			columnofcell[i] = column;
 			setFixedWidth(row, column);
 			cell_info[row][column].inset->setContentAlignment(
 				getAlignment(cellIndex(row, column)));
+			if (!isPartOfMultiRow(row, column)) {
+				columnofcell[i] = column;
+				rowofcell[i] = row;
+			} else
+				continue;
 			++i;
 		}
 }
