@@ -5383,6 +5383,8 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		break;
 
 	case Tabular::SET_LTCAPTION: {
+		if (tabular.ltCaption(row))
+			break;
 		cur.idx() = tabular.setLTCaption(row, true);
 		cur.pit() = 0;
 		cur.pos() = 0;
@@ -5395,6 +5397,8 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	}
 	
 	case Tabular::UNSET_LTCAPTION: {
+		if (!tabular.ltCaption(row))
+			break;
 		cur.idx() = tabular.setLTCaption(row, false);
 		cur.pit() = 0;
 		cur.pos() = 0;
