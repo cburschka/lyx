@@ -119,7 +119,7 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(checkEnabled()));
 	connect(lastfooterNoContentsCB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
-	connect(specialAlignmentED, SIGNAL(returnPressed()),
+	connect(specialAlignmentED, SIGNAL(textEdited(QString)),
 		this, SLOT(checkEnabled()));
 	connect(widthED, SIGNAL(textEdited(QString)),
 		this, SLOT(checkEnabled()));
