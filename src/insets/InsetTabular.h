@@ -243,8 +243,6 @@ public:
 		///
 		SET_SPECIAL_MULTICOLUMN,
 		///
-		SET_SPECIAL_MULTIROW,
-		///
 		SET_BOOKTABS,
 		///
 		UNSET_BOOKTABS,

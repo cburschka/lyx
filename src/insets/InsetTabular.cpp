@@ -168,7 +168,6 @@ TabularFeature tabularFeature[] =
 	{ Tabular::UNSET_LTCAPTION, "unset-ltcaption", false },
 	{ Tabular::SET_SPECIAL_COLUMN, "set-special-column", true },
 	{ Tabular::SET_SPECIAL_MULTICOLUMN, "set-special-multicolumn", true },
-	{ Tabular::SET_SPECIAL_MULTIROW, "set-special-multirow", false },
 	{ Tabular::SET_BOOKTABS, "set-booktabs", false },
 	{ Tabular::UNSET_BOOKTABS, "unset-booktabs", false },
 	{ Tabular::SET_TOP_SPACE, "set-top-space", true },
@@ -4191,7 +4190,6 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case Tabular::SET_MPWIDTH:
 		case Tabular::SET_SPECIAL_COLUMN:
 		case Tabular::SET_SPECIAL_MULTICOLUMN:
-		case Tabular::SET_SPECIAL_MULTIROW:
 		case Tabular::APPEND_ROW:
 		case Tabular::APPEND_COLUMN:
 		case Tabular::DELETE_ROW:
@@ -5048,10 +5046,6 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			tabular.setAlignSpecial(cur.idx(), docstring(), feature);
 		else
 			tabular.setAlignSpecial(cur.idx(), from_utf8(value), feature);
-		break;
-
-	case Tabular::SET_SPECIAL_MULTIROW:
-		// nothing to do
 		break;
 
 	case Tabular::APPEND_ROW:

@@ -441,9 +441,6 @@ docstring GuiTabular::dialogToParams() const
 		special = "none";
 	if (multicolumnCB->isChecked())
 		setParam(param_str, Tabular::SET_SPECIAL_MULTICOLUMN, special);
-	else if (multirowCB->isChecked())
-		//FIXME SET_SPECIAL_MULTIROW not implemented!
-		setParam(param_str, Tabular::SET_SPECIAL_MULTIROW);
 	else
 		setParam(param_str, Tabular::SET_SPECIAL_COLUMN, special);
 
@@ -576,8 +573,7 @@ static Length getMColumnPWidth(Tabular const & t, size_t cell)
 
 static docstring getAlignSpecial(Tabular const & t, size_t cell, int what)
 {
-	if (what == Tabular::SET_SPECIAL_MULTICOLUMN
-		|| what == Tabular::SET_SPECIAL_MULTIROW)
+	if (what == Tabular::SET_SPECIAL_MULTICOLUMN)
 		return t.cellInfo(cell).align_special;
 	return t.column_info[t.cellColumn(cell)].align_special;
 }
@@ -626,11 +622,9 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 		special = getAlignSpecial(tabular, cell,
 			Tabular::SET_SPECIAL_MULTICOLUMN);
 		pwidth = getMColumnPWidth(tabular, cell);
-	} else if (multirow) {
-		special = getAlignSpecial(tabular, cell,
-			Tabular::SET_SPECIAL_MULTIROW);
+	} else if (multirow)
 		pwidth = getMColumnPWidth(tabular, cell);
-	} else {
+	else {
 		special = getAlignSpecial(tabular, cell,
 			Tabular::SET_SPECIAL_COLUMN);
 		pwidth = getColumnPWidth(tabular, cell);
