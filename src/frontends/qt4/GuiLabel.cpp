@@ -46,12 +46,6 @@ void GuiLabel::paramsToDialog(Inset const * inset)
 {
 	InsetLabel const * label = static_cast<InsetLabel const *>(inset);
 	InsetCommandParams const & params = label->params();
-	paramsToDialog(params);
-}
-
-
-void GuiLabel::paramsToDialog(InsetCommandParams const & params)
-{
 	keywordED->setText(toqstr(params["name"]));
 }
 
@@ -61,6 +55,16 @@ docstring GuiLabel::dialogToParams() const
 	InsetCommandParams params(insetCode());
 	params["name"] = qstring_to_ucs4(keywordED->text());
 	return from_ascii(InsetLabel::params2string(params));
+}
+
+
+bool GuiLabel::initialiseParams(std::string const & data)
+{
+	InsetCommandParams p(insetCode());
+	if (!InsetCommand::string2params(data, p))
+		return false;
+	keywordED->setText(toqstr(p["name"]));
+	return true;
 }
 
 

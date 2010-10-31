@@ -17,6 +17,9 @@
 #include "ui_PrintNomenclUi.h"
 
 namespace lyx {
+
+class InsetCommandParams;
+
 namespace frontend {
 
 class GuiPrintNomencl : public InsetParamsWidget, public Ui::PrintNomenclUi
