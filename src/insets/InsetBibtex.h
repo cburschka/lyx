@@ -12,14 +12,16 @@
 #ifndef INSET_BIBTEX_H
 #define INSET_BIBTEX_H
 
-#include "BiblioInfo.h"
 #include "InsetCommand.h"
 
-#include "support/FileNameList.h"
-
-#include <map>
-
 namespace lyx {
+
+class BiblioInfo;
+
+namespace support {
+	class FileName;
+	class FileNameList;
+}
 
 /** Used to insert BibTeX's information
   */

@@ -15,22 +15,23 @@
 
 #include "InsetCommand.h"
 
-#include "BiblioInfo.h"
-#include "Counters.h"
-#include "InsetCommandParams.h"
 #include "RenderButton.h"
-
-#include "support/FileNameList.h"
 
 #include <boost/scoped_ptr.hpp>
 
 namespace lyx {
 
+class BiblioInfo;
 class Buffer;
 class Dimension;
+class InsetCommandParams;
 class InsetLabel;
 class LaTeXFeatures;
 class RenderMonitoredPreview;
+
+namespace support {
+	class FileNameList;
+}
 
 /// for including tex/lyx files
 class InsetInclude : public InsetCommand {

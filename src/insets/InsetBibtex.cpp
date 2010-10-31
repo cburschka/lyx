@@ -13,6 +13,7 @@
 
 #include "InsetBibtex.h"
 
+#include "BiblioInfo.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "DispatchResult.h"
@@ -33,6 +34,7 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/ExceptionMessage.h"
+#include "support/FileNameList.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
