@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: uk-163\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-10-22 11:29+0200\n"
-"PO-Revision-Date: 2010-10-31 16:40+0100\n"
+"PO-Revision-Date: 2010-10-31 16:47+0100\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "MIME-Version: 1.0\n"
@@ -2903,9 +2903,8 @@ msgid "Main file only"
 msgstr "Лише основний файл"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:128
-#, fuzzy
 msgid "All files"
-msgstr "Всі файли "
+msgstr "Всі файли"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:25
 msgid "&Working directory:"
@@ -6564,9 +6563,8 @@ msgid "Authors Block"
 msgstr "Блок авторів"
 
 #: lib/layouts/ectaart.layout:113
-#, fuzzy
 msgid "Authors Block:"
-msgstr "Автор"
+msgstr "Блок авторів:"
 
 #: lib/layouts/ectaart.layout:116
 #: lib/layouts/ectaart.layout:198
@@ -8063,9 +8061,8 @@ msgid "City:"
 msgstr "Місто:"
 
 #: lib/layouts/lettre.layout:260
-#, fuzzy
 msgid "Office:"
-msgstr "Вимкнено"
+msgstr "Квартира:"
 
 #: lib/layouts/lettre.layout:290
 msgid "Tel:"
@@ -8095,7 +8092,7 @@ msgstr "КінецьФайла."
 
 #: lib/layouts/lettre.layout:655
 msgid "P.S.:"
-msgstr ""
+msgstr "P.S.:"
 
 #: lib/layouts/llncs.layout:39
 #: lib/layouts/memoir.layout:56
@@ -8251,7 +8248,6 @@ msgstr "Епіграф"
 
 #: lib/layouts/memoir.layout:111
 #: lib/layouts/memoir.layout:167
-#, fuzzy
 msgid "Maintext"
 msgstr "ЗвичайнийТекст"
 
@@ -16165,7 +16161,7 @@ msgstr "HTML (MS Word)"
 
 #: lib/configure.py:432
 msgid "LyXBlogger"
-msgstr ""
+msgstr "LyX-блогер"
 
 #: src/BiblioInfo.cpp:243
 #: src/frontends/qt4/GuiDocument.cpp:1378
@@ -17347,7 +17343,6 @@ msgid "Overwrite file?"
 msgstr "Перезаписати файл?"
 
 #: src/Exporter.cpp:50
-#, fuzzy
 msgid "&Keep file"
 msgstr "&Не вилучати"
 
@@ -17712,7 +17707,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Встановити рівень у %1$s"
 
 #: src/LyX.cpp:976
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -17742,23 +17736,28 @@ msgid ""
 msgstr ""
 "Використання: lyx [ ключі командного рядка ] [ назва_файла.lyx ... ]\n"
 "Можливі ключі (будьте уважні до регістру літер):\n"
-"\t-help              поточна підказка\n"
+"\t-help              загальна довідка щодо використання LyX\n"
 "\t-userdir dir       зробити текою користувача dir\n"
 "\t-sysdir dir        зробити системною текою dir\n"
 "\t-geometry WxH+X+Y  встановити розмір головного вікна при запуску\n"
-"\t-dbg feature[,feature]...\n"
+"\t-dbg можливість[,можливість]...\n"
 "                  вибір режимів зневаджування\n"
-"                  Виконайте команду `lyx -dbg', щоб побачити список режимів\n"
+"                  Виконайте команду «lyx -dbg», щоб переглянути список режимів\n"
 "\t-x [--execute] команда\n"
 "                  виконати вказану команду lyx.\n"
 "\t-e [--export] формат\n"
-"                  експортувати файл у вказаний формат.\n"
-"                  Зверніться до пункту Інструменти->Налаштування->Формати файлів->Формат,\n"
+"                  експортувати файл у вказаному форматі.\n"
+"                  Зверніться до пункту Інструменти->Налаштувати->Формати файлів->Формат,\n"
 "                  щоб краще вивчити список можливих параметрів.\n"
 "\t-i [--import] формат файл.xxx\n"
-"                  імпортувати заданий файл.xxx у вказаному форматі\n"
+"                  імпортувати заданий файл.xxx у вказаному форматі.\n"
+"\t-f [--force-overwrite] що саме\n"
+"                  де «що саме» може приймати значення «all», «main» або «none»,\n"
+"                  що відповідає перезапису всіх файлів, лише основного файла або жодного\n"
+"                  з файлів під час пакетного експортування.\n"
+"                  Будь-яке інше значення буде еквівалентним до «all».\n"
 "\t-version        резюме відомостей про версію і збірку\n"
-"Докладніший опис командного рядка можна знайти в документації (man)."
+"Докладніший опис командного рядка можна знайти в документації LyX (man)."
 
 #: src/LyX.cpp:1021
 msgid "No system directory"
