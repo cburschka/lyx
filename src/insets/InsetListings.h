@@ -12,11 +12,12 @@
 #ifndef INSET_LISTINGS_H
 #define INSET_LISTINGS_H
 
-#include "LaTeXFeatures.h"
 #include "InsetListingsParams.h"
 
 
 namespace lyx {
+
+class LaTeXFeatures;
 
 /////////////////////////////////////////////////////////////////////////
 //

@@ -13,7 +13,6 @@
 #define INSETCAPTION_H
 
 #include "InsetText.h"
-#include "support/strfwd.h"
 
 namespace lyx {
 

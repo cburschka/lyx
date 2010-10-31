@@ -16,11 +16,11 @@
 #include "Inset.h"
 #include "InsetCommandParams.h"
 #include "RenderButton.h"
-#include "Cursor.h"
 
 
 namespace lyx {
 
+class Cursor;
 
 /////////////////////////////////////////////////////////////////////////
 //

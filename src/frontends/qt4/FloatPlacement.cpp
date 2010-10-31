@@ -17,6 +17,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "FloatList.h"
+#include "TextClass.h"
 
 #include "insets/InsetFloat.h"
 #include "support/lstrings.h"

@@ -26,6 +26,7 @@
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "TextClass.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"

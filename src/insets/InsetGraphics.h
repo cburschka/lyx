@@ -13,9 +13,10 @@
 #ifndef INSET_GRAPHICS_H
 #define INSET_GRAPHICS_H
 
-#include <set>
 #include "Inset.h"
 #include "InsetGraphicsParams.h"
+
+#include <set>
 
 namespace lyx {
 

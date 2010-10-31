@@ -16,6 +16,7 @@
 #include "InsetNote.h"
 
 #include "Buffer.h"
+#include "Cursor.h"
 #include "DispatchResult.h"
 #include "Font.h"
 #include "Encoding.h"

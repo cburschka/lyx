@@ -24,9 +24,11 @@
 #include "FuncStatus.h"
 #include "InsetCaption.h"
 #include "Language.h"
+#include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "output_latex.h"
 #include "output_xhtml.h"
+#include "OutputParams.h"
 #include "TextClass.h"
 
 #include "support/debug.h"

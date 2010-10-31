@@ -14,11 +14,11 @@
 #ifndef INSETCOLLAPSABLE_H
 #define INSETCOLLAPSABLE_H
 
-#include "Inset.h"
 #include "InsetText.h"
 
 #include "Box.h"
-#include "TextClass.h"
+
+#include <map>
 
 namespace lyx {
 

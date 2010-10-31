@@ -15,6 +15,7 @@
 
 #include "Buffer.h"
 #include "BufferView.h"
+#include "Cursor.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -28,7 +29,6 @@
 #include "insets/InsetExternal.h"
 #include "insets/InsetFloat.h"
 #include "insets/InsetGraphics.h"
-#include "insets/InsetInclude.h"
 #include "insets/InsetLine.h"
 #include "insets/InsetListings.h"
 #include "insets/InsetNote.h"

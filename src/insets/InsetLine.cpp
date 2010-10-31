@@ -15,6 +15,7 @@
 #include "InsetLine.h"
 
 #include "Buffer.h"
+#include "Cursor.h"
 #include "Dimension.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"

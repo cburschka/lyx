@@ -20,6 +20,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "Lexer.h"
+#include "TextClass.h"
 
 #include "support/gettext.h"
 

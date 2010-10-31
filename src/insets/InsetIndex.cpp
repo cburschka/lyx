@@ -16,6 +16,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "ColorSet.h"
+#include "Cursor.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
 #include "FuncRequest.h"
@@ -26,6 +27,7 @@
 #include "output_latex.h"
 #include "output_xhtml.h"
 #include "sgml.h"
+#include "TextClass.h"
 #include "TocBackend.h"
 
 #include "support/debug.h"

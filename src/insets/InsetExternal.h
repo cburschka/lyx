@@ -13,11 +13,10 @@
 #define INSET_EXTERNAL_H
 
 #include "Inset.h"
+
 #include "ExternalTemplate.h"
-#include "ExternalTransforms.h"
 
 #include "support/FileName.h"
-#include "support/Translator.h"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/trackable.hpp>

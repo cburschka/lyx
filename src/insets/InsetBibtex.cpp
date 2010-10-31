@@ -16,6 +16,7 @@
 #include "BiblioInfo.h"
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "Cursor.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
 #include "Format.h"

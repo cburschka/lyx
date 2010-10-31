@@ -17,6 +17,7 @@
 #include "DispatchResult.h"
 #include "Floating.h"
 #include "FloatList.h"
+#include "Font.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"

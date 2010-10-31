@@ -15,6 +15,7 @@
 
 #include "BiblioInfo.h"
 #include "Buffer.h"
+#include "Cursor.h"
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "BufferView.h"

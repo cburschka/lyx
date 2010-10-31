@@ -13,10 +13,10 @@
 #define INSET_INFO_H
 
 #include "InsetCollapsable.h"
-#include "Cursor.h"
 
-#include "support/gettext.h"
-#include "support/Translator.h"
+namespace lyx {
+
+class Cursor;
 
 /* InsetInfo displays shortcuts, lyxrc, package and textclass
 availability and menu information in a non-editable boxed InsetText.
@@ -75,8 +75,6 @@ An alternative method is to enter command "info-insert type arg" in
 the command buffer (view->Toolbar->Command Buffer).
 
 */
-
-namespace lyx {
 
 class InsetInfo : public InsetCollapsable {
 public:

@@ -12,11 +12,13 @@
 #ifndef INSET_BIBITEM_H
 #define INSET_BIBITEM_H
 
-#include "BiblioInfo.h"
+
 #include "InsetCommand.h"
 
 
 namespace lyx {
+
+class BiblioInfo;
 
 /////////////////////////////////////////////////////////////////////////
 //
