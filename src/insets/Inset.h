@@ -17,7 +17,7 @@
 
 #include "ColorCode.h"
 #include "InsetCode.h"
-#include "Layout.h"
+#include "LayoutEnums.h"
 #include "OutputEnums.h"
 
 #include "support/strfwd.h"

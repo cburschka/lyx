@@ -25,7 +25,6 @@
 
 #include "Inset.h"
 #include "InsetText.h"
-#include "Layout.h"
 #include "Length.h"
 
 #include "support/shared_ptr.h"

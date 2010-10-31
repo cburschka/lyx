@@ -19,6 +19,7 @@
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "RenderPreview.h"
 
 #include "frontends/Painter.h"
 

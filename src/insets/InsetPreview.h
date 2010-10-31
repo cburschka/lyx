@@ -15,13 +15,16 @@
 #include "InsetText.h"
 
 #include "Dimension.h"
-#include "RenderPreview.h"
-
-#include "graphics/PreviewLoader.h"
 
 #include <boost/scoped_ptr.hpp>
 
 namespace lyx {
+
+class RenderPreview;
+
+namespace graphics {
+	class PreviewLoader;
+}
 
 /// An inset with an instant preview
 class InsetPreview : public InsetText {
