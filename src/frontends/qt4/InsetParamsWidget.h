@@ -67,7 +67,7 @@ public:
 	///
 	virtual docstring dialogToParams() const = 0;
 	///
-	virtual void paramsToDialog(InsetCommandParams const & params) {}
+	virtual void paramsToDialog(InsetCommandParams const & /*params*/) {}
 	///
 	virtual bool initialiseParams(std::string const & data);
 
