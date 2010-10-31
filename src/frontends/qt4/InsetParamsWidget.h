@@ -25,7 +25,6 @@ class QLineEdit;
 namespace lyx {
 
 class Inset;
-class InsetCommandParams;
 
 namespace frontend {
 
@@ -67,9 +66,8 @@ public:
 	///
 	virtual docstring dialogToParams() const = 0;
 	///
-	virtual void paramsToDialog(InsetCommandParams const & /*params*/) {}
-	///
-	virtual bool initialiseParams(std::string const & data);
+	virtual bool initialiseParams(std::string const & /*data*/)
+		{ return false; }
 
 	/// \return true if all CheckedWidgets are in a valid state.
 	virtual bool checkWidgets() const;
