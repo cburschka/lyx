@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: uk-163\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-10-22 11:29+0200\n"
-"PO-Revision-Date: 2010-04-17 14:19+0300\n"
+"PO-Revision-Date: 2010-10-31 15:22+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -551,7 +551,7 @@ msgstr "Величезний"
 #: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:62
 #: src/frontends/qt4/GuiCharacter.cpp:64
 msgid "Huge"
-msgstr "Величезний"
+msgstr "Велетенський"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:116 src/Font.cpp:62
 #: src/frontends/qt4/GuiCharacter.cpp:65
@@ -1562,14 +1562,12 @@ msgstr ""
 "Увімкнути використання параметрів, які попередньо визначено у файлі формату"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:103
-#, fuzzy
 msgid "&Predefined:"
-msgstr "&Визначені:"
+msgstr "Попередньо &визначений:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:110
-#, fuzzy
 msgid "Cus&tom:"
-msgstr "&Нетипові:"
+msgstr "Нет&иповий:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:123
 msgid "&Graphics driver:"
@@ -2274,8 +2272,7 @@ msgstr "Автоматичне &завершення у рядку"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:88
 msgid "Show the popup after the set delay in text mode."
-msgstr ""
-"Показувати з встановленою затримкою вікно підказки у текстовому режимі."
+msgstr "Показувати з встановленою затримкою вікно підказки у текстовому режимі."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:91
 msgid "Automatic &popup"
@@ -2819,21 +2816,20 @@ msgid "&DVI viewer paper size options:"
 msgstr "Параметри розміру паперу пере&глядача DVI:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:96
-#, fuzzy
 msgid "&Overwrite on export:"
-msgstr "Перезаписати документ?"
+msgstr "&Перезапис при експортуванні:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:114
 msgid "What to do when existing files are going to be overwritten on export."
-msgstr ""
+msgstr "Що робити, якщо існуючі файли має бути перезаписано під час експорту."
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:118
 msgid "Ask permission"
-msgstr ""
+msgstr "Спитати дозволу"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:123
 msgid "Main file only"
-msgstr ""
+msgstr "Лише основний файл"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:128
 #, fuzzy
@@ -3132,8 +3128,7 @@ msgstr "&Інша мова:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:74
 msgid "The characters inserted here are ignored by the spellchecker"
-msgstr ""
-"Вказані тут символи буде проігноровано інструментом перевірки правопису"
+msgstr "Вказані тут символи буде проігноровано інструментом перевірки правопису"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:81
 msgid "Specify a personal dictionary file other than the default"
@@ -3422,8 +3417,7 @@ msgstr "Зворотній &пошук"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:42
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
-"Обробити перетворений файл за допомогою команди ($$FName = назва файла)"
+msgstr "Обробити перетворений файл за допомогою команди ($$FName = назва файла)"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:101
 msgid "&Export formats:"
@@ -4268,9 +4262,8 @@ msgid "Biography"
 msgstr "Біографія"
 
 #: lib/layouts/IEEEtran.layout:210
-#, fuzzy
 msgid "BiographyNoPhoto"
-msgstr "Біографія"
+msgstr "БіографіяБезФото"
 
 #: lib/layouts/IEEEtran.layout:217 lib/layouts/beamer.layout:1051
 #: lib/layouts/elsart.layout:285 lib/layouts/foils.layout:278
@@ -4780,24 +4773,20 @@ msgid "Acknowledgments"
 msgstr "Подяки"
 
 #: lib/layouts/agutex.layout:71
-#, fuzzy
 msgid "Authors"
-msgstr "Автор"
+msgstr "Автори"
 
 #: lib/layouts/agutex.layout:89 lib/layouts/agutex.layout:93
-#, fuzzy
 msgid "Affiliation Mark"
-msgstr "Місце роботи"
+msgstr "Позначка місця роботи"
 
 #: lib/layouts/agutex.layout:111
-#, fuzzy
 msgid "Author affiliation"
-msgstr "Додмісцероботи"
+msgstr "Місце роботи автора"
 
 #: lib/layouts/agutex.layout:121
-#, fuzzy
 msgid "Author affiliation:"
-msgstr "Місце роботи:"
+msgstr "Місце роботи автора:"
 
 #: lib/layouts/agutex.layout:141 lib/layouts/egs.layout:495
 #: lib/layouts/kluwer.layout:263 lib/layouts/llncs.layout:251
@@ -4815,7 +4804,6 @@ msgid "Notation"
 msgstr "Позначення"
 
 #: lib/layouts/agutex.layout:187
-#, fuzzy
 msgid "Acknowledgments."
 msgstr "Подяки."
 
@@ -5204,7 +5192,7 @@ msgstr "Заголовок (звичайна вставка)"
 #: lib/layouts/llncs.layout:211 lib/layouts/svmult.layout:47
 #: lib/layouts/svjour.inc:173
 msgid "Institute"
-msgstr "Інститут"
+msgstr "Установа"
 
 #: lib/layouts/beamer.layout:838
 msgid "InstituteMark"
@@ -5430,7 +5418,7 @@ msgstr "AT RISE:"
 
 #: lib/layouts/broadway.layout:121 lib/layouts/hollywood.layout:144
 msgid "Speaker"
-msgstr "Гучномовець"
+msgstr "Оповідач"
 
 #: lib/layouts/broadway.layout:134 lib/layouts/hollywood.layout:159
 msgid "Parenthetical"
@@ -5904,43 +5892,36 @@ msgid "Verteiler"
 msgstr "Verteiler"
 
 #: lib/layouts/ectaart.layout:21
-#, fuzzy
 msgid "RunTitle"
-msgstr "RunningTitle"
+msgstr "АльтНазва"
 
 #: lib/layouts/ectaart.layout:28
-#, fuzzy
 msgid "Running Title:"
 msgstr "Альтернативна назва:"
 
 #: lib/layouts/ectaart.layout:35
-#, fuzzy
 msgid "RunAuthor"
-msgstr "RunningAuthor"
+msgstr "АльтАвтор"
 
 #: lib/layouts/ectaart.layout:39
-#, fuzzy
 msgid "Running Author:"
-msgstr "Running author:"
+msgstr "Альтернативний запис автора:"
 
 #: lib/layouts/ectaart.layout:77 lib/layouts/latex8.layout:70
 msgid "E-mail:"
 msgstr "Ел. пошта:"
 
 #: lib/layouts/ectaart.layout:93
-#, fuzzy
 msgid "Web Address"
-msgstr "Адреса"
+msgstr "Веб-адреса"
 
 #: lib/layouts/ectaart.layout:96
-#, fuzzy
 msgid "Web address:"
-msgstr "Наступна Адреса:"
+msgstr "Веб-адреса:"
 
 #: lib/layouts/ectaart.layout:109
-#, fuzzy
 msgid "Authors Block"
-msgstr "Автор"
+msgstr "Блок авторів"
 
 #: lib/layouts/ectaart.layout:113
 #, fuzzy
@@ -5963,57 +5944,48 @@ msgid "Keywords:"
 msgstr "Ключові слова:"
 
 #: lib/layouts/ectaart.layout:126
-#, fuzzy
 msgid "Thanks Text"
-msgstr "Подяки"
+msgstr "Текст подяки"
 
 #: lib/layouts/ectaart.layout:133
 msgid "Thanks \\theThanks:"
-msgstr ""
+msgstr "Подяки \\theThanks:"
 
 #: lib/layouts/ectaart.layout:139
-#, fuzzy
 msgid "Emphasize"
-msgstr "Виокремлюваний|В"
+msgstr "Виокремлений"
 
 #: lib/layouts/ectaart.layout:152
-#, fuzzy
 msgid "Thanks Reference"
-msgstr "Посилання"
+msgstr "Посилання подяки"
 
 #: lib/layouts/ectaart.layout:158
-#, fuzzy
 msgid "Thanks Ref"
-msgstr "Подяки"
+msgstr "Посилання подяки"
 
 #: lib/layouts/ectaart.layout:164
-#, fuzzy
 msgid "Internet Address Reference"
-msgstr "Вставити перехресне посилання"
+msgstr "Посилання на адресу у інтернеті"
 
 #: lib/layouts/ectaart.layout:167
 msgid "Internet Addess Ref"
-msgstr ""
+msgstr "Посилання на інтернет-адресу"
 
 #: lib/layouts/ectaart.layout:170 lib/layouts/ectaart.layout:173
-#, fuzzy
 msgid "Corresponding Author"
 msgstr "Автор для листування"
 
 #: lib/layouts/ectaart.layout:184
-#, fuzzy
 msgid "Name (First Name)"
-msgstr "Ім'я"
+msgstr "Ім'я (Ім’я)"
 
 #: lib/layouts/ectaart.layout:187
-#, fuzzy
 msgid "First Name"
 msgstr "Ім'я"
 
 #: lib/layouts/ectaart.layout:191
-#, fuzzy
 msgid "Name (Surname)"
-msgstr "Прізвище"
+msgstr "Ім’я (Прізвище)"
 
 #: lib/layouts/ectaart.layout:194 lib/layouts/agu_stdclass.inc:65
 #: lib/layouts/db_stdcharstyles.inc:48 lib/layouts/db_stdtitle.inc:98
@@ -6022,12 +5994,11 @@ msgstr "Прізвище"
 
 #: lib/layouts/ectaart.layout:204
 msgid "By Same Author (bib)"
-msgstr ""
+msgstr "Того самого автора (bib)"
 
 #: lib/layouts/ectaart.layout:207
-#, fuzzy
 msgid "bysame"
-msgstr "Назва"
+msgstr "того самого автора"
 
 #: lib/layouts/egs.layout:141 lib/layouts/stdlists.inc:86
 msgid "00.00.0000"
@@ -7223,9 +7194,8 @@ msgid "Running author:"
 msgstr "Running author:"
 
 #: lib/layouts/lettre.layout:39 lib/layouts/lettre.layout:314
-#, fuzzy
 msgid "NoTelephone"
-msgstr "Телефон"
+msgstr "НемаєТелефону"
 
 #: lib/layouts/lettre.layout:41 lib/layouts/lettre.layout:340
 #: lib/layouts/scrlttr2.layout:189 lib/configure.py:352
@@ -7234,35 +7204,30 @@ msgstr "Факс"
 
 #: lib/layouts/lettre.layout:43 lib/layouts/lettre.layout:370
 #: lib/layouts/lettre.layout:378
-#, fuzzy
 msgid "NoFax"
-msgstr "Факс"
+msgstr "НемаєФаксу"
 
 #: lib/layouts/lettre.layout:49 lib/layouts/lettre.layout:185
 #: lib/layouts/lettre.layout:192
-#, fuzzy
 msgid "NoPlace"
-msgstr "Місце"
+msgstr "НемаєМісця"
 
 #: lib/layouts/lettre.layout:53 lib/layouts/lettre.layout:234
 #: lib/layouts/lettre.layout:242
-#, fuzzy
 msgid "NoDate"
-msgstr "Дата"
+msgstr "НемаєДати"
 
 #: lib/layouts/lettre.layout:73 lib/layouts/lettre.layout:647
-#, fuzzy
 msgid "Post Scriptum"
-msgstr "Post Scriptum:"
+msgstr "Постскриптум"
 
 #: lib/layouts/lettre.layout:75 lib/layouts/lettre.layout:513
 msgid "EndOfMessage"
-msgstr ""
+msgstr "КінецьПовідомлення"
 
 #: lib/layouts/lettre.layout:77 lib/layouts/lettre.layout:533
-#, fuzzy
 msgid "EndOfFile"
-msgstr "КінецьСлайда"
+msgstr "КінецьФайла"
 
 #: lib/layouts/lettre.layout:137 lib/layouts/lettre.layout:156
 #: lib/layouts/lettre.layout:186 lib/layouts/lettre.layout:212
@@ -7270,14 +7235,12 @@ msgstr "КінецьСлайда"
 #: lib/layouts/lettre.layout:285 lib/layouts/lettre.layout:315
 #: lib/layouts/lettre.layout:341 lib/layouts/lettre.layout:371
 #: lib/layouts/lettre.layout:397
-#, fuzzy
 msgid "Headings"
-msgstr "з заголовками"
+msgstr "Заголовки"
 
 #: lib/layouts/lettre.layout:167
-#, fuzzy
 msgid "City:"
-msgstr "Місто"
+msgstr "Місто:"
 
 #: lib/layouts/lettre.layout:260
 #, fuzzy
@@ -7285,34 +7248,29 @@ msgid "Office:"
 msgstr "Вимкнено"
 
 #: lib/layouts/lettre.layout:290
-#, fuzzy
 msgid "Tel:"
-msgstr "Телекс:"
+msgstr "Тел.:"
 
 #: lib/layouts/lettre.layout:322
-#, fuzzy
 msgid "NoTel"
-msgstr "Немає"
+msgstr "НомерТелефону"
 
 #: lib/layouts/lettre.layout:353
-#, fuzzy
 msgid "Fax:"
-msgstr "Факс"
+msgstr "Факс:"
 
 #: lib/layouts/lettre.layout:514 lib/layouts/lettre.layout:605
 #: lib/layouts/lettre.layout:648
-#, fuzzy
 msgid "Closings"
-msgstr "Епілог"
+msgstr "Завершення"
 
 #: lib/layouts/lettre.layout:523
 msgid "EndOfMessage."
-msgstr ""
+msgstr "КінецьПовідомлення."
 
 #: lib/layouts/lettre.layout:535
-#, fuzzy
 msgid "EndOfFile."
-msgstr "КінецьСлайда"
+msgstr "КінецьФайла."
 
 #: lib/layouts/lettre.layout:655
 msgid "P.S.:"
@@ -8097,7 +8055,7 @@ msgstr "Елемент:Abbrev"
 
 #: lib/layouts/agu_stdclass.inc:126
 msgid "Abbrev"
-msgstr "Abbrev"
+msgstr "Скорочення"
 
 #: lib/layouts/agu_stdclass.inc:135
 msgid "Element:Citation-number"
@@ -8413,7 +8371,7 @@ msgstr "Елемент:Orgdiv"
 
 #: lib/layouts/agu_stdtitle.inc:417
 msgid "Orgdiv"
-msgstr "Orgdiv"
+msgstr "Підрозділ установи"
 
 #: lib/layouts/agu_stdtitle.inc:426
 msgid "Element:Orgname"
@@ -8421,7 +8379,7 @@ msgstr "Елемент:Назва організації"
 
 #: lib/layouts/agu_stdtitle.inc:428
 msgid "Orgname"
-msgstr "Назва організації"
+msgstr "Назва установи"
 
 #: lib/layouts/agu_stdtitle.inc:437
 msgid "Element:Street"
@@ -8570,7 +8528,7 @@ msgstr "Елемент:KeyCap"
 
 #: lib/layouts/db_stdcharstyles.inc:101
 msgid "KeyCap"
-msgstr "KeyCap"
+msgstr "Клавіша"
 
 #: lib/layouts/db_stdcharstyles.inc:113
 msgid "Element:GuiMenu"
@@ -8578,7 +8536,7 @@ msgstr "Елемент:GuiMenu"
 
 #: lib/layouts/db_stdcharstyles.inc:115
 msgid "GuiMenu"
-msgstr "GuiMenu"
+msgstr "Меню"
 
 #: lib/layouts/db_stdcharstyles.inc:127
 msgid "Element:GuiMenuItem"
@@ -8586,7 +8544,7 @@ msgstr "Елемент:GuiMenuItem"
 
 #: lib/layouts/db_stdcharstyles.inc:129
 msgid "GuiMenuItem"
-msgstr "GuiMenuItem"
+msgstr "Пункт меню"
 
 #: lib/layouts/db_stdcharstyles.inc:141
 msgid "Element:GuiButton"
@@ -8594,7 +8552,7 @@ msgstr "Елемент:GuiButton"
 
 #: lib/layouts/db_stdcharstyles.inc:143
 msgid "GuiButton"
-msgstr "GuiButton"
+msgstr "Кнопка"
 
 #: lib/layouts/db_stdcharstyles.inc:155
 msgid "Element:MenuChoice"
@@ -8602,7 +8560,7 @@ msgstr "Елемент:MenuChoice"
 
 #: lib/layouts/db_stdcharstyles.inc:157
 msgid "MenuChoice"
-msgstr "MenuChoice"
+msgstr "Вибір у меню"
 
 #: lib/layouts/db_stdlayouts.inc:30
 msgid "SGML"
@@ -9219,7 +9177,7 @@ msgstr "СтильСимволів:Noun"
 
 #: lib/layouts/logicalmkup.module:12
 msgid "noun"
-msgstr "noun"
+msgstr "термін"
 
 #: lib/layouts/logicalmkup.module:22
 msgid "CharStyle:Emph"
@@ -9235,7 +9193,7 @@ msgstr "СтильСимволів:Strong"
 
 #: lib/layouts/logicalmkup.module:35
 msgid "strong"
-msgstr "strong"
+msgstr "стронґ"
 
 #: lib/layouts/logicalmkup.module:47
 msgid "CharStyle:Code"
@@ -11695,7 +11653,7 @@ msgstr "Математичний каліграфічний|к"
 
 #: lib/ui/stdmenus.inc:251
 msgid "Math Fraktur Family|F"
-msgstr "Математичний Фрактур|Ф"
+msgstr "Математичний фрактур|ф"
 
 #: lib/ui/stdmenus.inc:252
 msgid "Math Roman Family|R"
@@ -12625,15 +12583,15 @@ msgstr "log"
 
 #: lib/ui/stdtoolbars.inc:284
 msgid "max"
-msgstr "макс."
+msgstr "max"
 
 #: lib/ui/stdtoolbars.inc:285
 msgid "min"
-msgstr "хв"
+msgstr "min"
 
 #: lib/ui/stdtoolbars.inc:286
 msgid "sec"
-msgstr "с"
+msgstr "sec"
 
 #: lib/ui/stdtoolbars.inc:287
 msgid "sin"
@@ -17010,8 +16968,7 @@ msgstr ""
 "типово після зміни класу."
 
 #: src/LyXRC.cpp:2542
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Проміжок часу між автозбереженнями (в секундах). 0 означає не виконувати "
 "автозбереження."
@@ -17235,8 +17192,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2699
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr ""
-"Не позначайте, якщо ви не бажаєте щоб LyX гортав до збереженої позиції."
+msgstr "Не позначайте, якщо ви не бажаєте щоб LyX гортав до збереженої позиції."
 
 #: src/LyXRC.cpp:2703
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -17275,8 +17231,7 @@ msgstr "Позначте для показу підказки-доповненн
 #: src/LyXRC.cpp:2732
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
-msgstr ""
-"Показувати підказку без затримки після неоднозначної спроби доповнення."
+msgstr "Показувати підказку без затримки після неоднозначної спроби доповнення."
 
 #: src/LyXRC.cpp:2736
 msgid ""
@@ -17316,8 +17271,7 @@ msgstr ""
 "тому вигляді, як прийнято в вашій операційній системі."
 
 #: src/LyXRC.cpp:2768
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Вкажіть додатковий особистий словниковий файл. Наприклад, \".ispell_english"
 "\"."
@@ -17414,8 +17368,7 @@ msgstr "Параметр для зазначення програмі друку
 
 #: src/LyXRC.cpp:2844
 msgid "Option to pass to the print program to print on a specific printer."
-msgstr ""
-"Параметр для зазначення програмі друку друкувати на вказаному принтері."
+msgstr "Параметр для зазначення програмі друку друкувати на вказаному принтері."
 
 #: src/LyXRC.cpp:2848
 msgid ""
@@ -17931,8 +17884,7 @@ msgstr "&Зберегти зміни"
 #: src/buffer_funcs.cpp:89
 #, c-format
 msgid "The file %1$s exists but is not readable by the current user."
-msgstr ""
-"Файл %1$s існує, але він недоступний для читання поточним користувачем."
+msgstr "Файл %1$s існує, але він недоступний для читання поточним користувачем."
 
 #: src/buffer_funcs.cpp:92
 msgid "File not readable!"
@@ -18351,7 +18303,7 @@ msgstr "Підкресленний"
 
 #: src/frontends/qt4/GuiCharacter.cpp:79
 msgid "Noun"
-msgstr "Іменник"
+msgstr "Термін"
 
 #: src/frontends/qt4/GuiCharacter.cpp:89
 msgid "No color"
@@ -19093,8 +19045,7 @@ msgstr "Дочірній документ"
 #: src/frontends/qt4/GuiInclude.cpp:120 src/frontends/qt4/GuiInclude.cpp:182
 #: src/frontends/qt4/GuiListings.cpp:239 src/frontends/qt4/GuiListings.cpp:375
 #: src/frontends/qt4/GuiListings.cpp:450
-msgid ""
-"Input listing parameters on the right. Enter ? for a list of parameters."
+msgid "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "Введіть параметри текстів програм праворуч. Введіть «?», щоб переглянути "
 "список команд."
@@ -19347,12 +19298,12 @@ msgid "Format in use"
 msgstr "Формати"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1712
-#, fuzzy
 msgid ""
 "You cannot change a format's short name if the format is used by a "
 "converter. Please remove the converter first."
 msgstr ""
-"Неможливо вилучити формат, що використовується перетворювачем. Вилучіть "
+"Неможливо змінити скорочену назву формату, що використовується перетворювачем."
+" Вилучіть "
 "спочатку перетворювач."
 
 #: src/frontends/qt4/GuiPrefs.cpp:1779
