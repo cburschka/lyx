@@ -55,19 +55,19 @@ GuiTabular::GuiTabular(QWidget * parent)
 
 	widthUnitCB->setCurrentItem(Length::defaultUnit());
 
-	connect(topspaceED, SIGNAL(returnPressed()),
+	connect(topspaceED, SIGNAL(textEdited(QString)),
 		this, SLOT(checkEnabled()));
 	connect(topspaceUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
 	connect(topspaceCO, SIGNAL(activated(int)),
 		this, SLOT(checkEnabled()));
-	connect(bottomspaceED, SIGNAL(returnPressed()),
+	connect(bottomspaceED, SIGNAL(textEdited(QString)),
 		this, SLOT(checkEnabled()));
 	connect(bottomspaceUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
 	connect(bottomspaceCO, SIGNAL(activated(int)),
 		this, SLOT(checkEnabled()));
-	connect(interlinespaceED, SIGNAL(returnPressed()),
+	connect(interlinespaceED, SIGNAL(textEdited(QString)),
 		this, SLOT(checkEnabled()));
 	connect(interlinespaceUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
