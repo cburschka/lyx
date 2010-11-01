@@ -2935,6 +2935,7 @@ lib_scripts_files = Split('''
     fig2pdftex.py
     fig2pstex.py
     fig_copy.py
+    include_bib.py
     layout2layout.py
     legacy_lyxpreview2ppm.py
     listerrors
