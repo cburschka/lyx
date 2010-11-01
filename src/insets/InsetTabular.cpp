@@ -5183,7 +5183,6 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		if (!cur.selection()) {
 			if (tabular.isMultiColumn(cur.idx()))
 				tabular.unsetMultiColumn(cur.idx());
-			break;
 		}
 		break;
 	}
@@ -5220,7 +5219,6 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		if (!cur.selection()) {
 			if (tabular.isMultiRow(cur.idx()))
 				tabular.unsetMultiRow(cur.idx());
-			break;
 		}
 		break;
 	}
