@@ -147,6 +147,7 @@ void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		if (cmd.getArg(0) == "changetype") {
 			p_.setCmdName(cmd.getArg(1));
+			cur.forceBufferUpdate();
 			initView();
 			break;
 		}
