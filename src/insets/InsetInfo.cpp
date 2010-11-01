@@ -438,7 +438,7 @@ void InsetInfo::updateInfo()
 			itype = LyXVC::Date;
 		string binfo = buffer().lyxvc().revisionInfo(itype);
 		if (binfo.empty()) {
-			docstring fmt = _("%1$s unknown[[InsetNote]]");
+			docstring fmt = _("%1$s unknown[[InsetInfo]]");
 			setText(bformat(fmt, from_utf8(name_)));
 		} else
 			setText(from_utf8(binfo));
