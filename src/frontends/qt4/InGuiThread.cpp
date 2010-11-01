@@ -12,6 +12,8 @@
 
 #include "InGuiThread.h"
 
+#include "frontends/Application.h"
+
 #include <QThread>
 #include <QEventLoop>
 #include <QApplication>
@@ -29,11 +31,11 @@ IntoGuiThreadMover::IntoGuiThreadMover()
 
 void IntoGuiThreadMover::callInGuiThread()
 {
-	QThread* gui_thread = QApplication::instance()->thread();
-	if (QThread::currentThread() == gui_thread) {
+	if (!theApp() || !QApplication::instance() ||
+		QThread::currentThread() == QApplication::instance()->thread()) {
 		synchronousFunctionCall();
 	} else {
-		moveToThread(gui_thread);
+		moveToThread(QApplication::instance()->thread());
 		connect(this, SIGNAL(triggerFunctionCall()), 
 		        this, SLOT(doFunctionCall()), Qt::QueuedConnection);
 		QMutexLocker lock(&sync_mutex_);

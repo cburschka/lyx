@@ -16,7 +16,6 @@
 #include <QObject>
 #include <QWaitCondition>
 
-#include "frontends/Application.h"
 #include "support/bind.h"
 #include "support/functional.h"
 
@@ -59,10 +58,7 @@ public:
 	R call(F f)
 	{
 		func_ = f;
-		if (theApp() == 0)
-			synchronousFunctionCall();
-		else 
-			callInGuiThread();
+		callInGuiThread();
 		return return_value_;
 	}
 
@@ -125,10 +121,7 @@ public:
 	void call(F f)
 	{
 		func_ = f;
-		if (theApp() == 0)
-			synchronousFunctionCall();
-		else 
-			callInGuiThread();
+		callInGuiThread();
 	}
 
 	template<class F, class P1>
