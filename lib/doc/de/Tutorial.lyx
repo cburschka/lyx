@@ -3052,8 +3052,8 @@ Zumindest in den exakten Wissenschaften ist ein Literaturverzeichnis in
  des Dokumentes, auf die vom Dokument aus verwiesen werden kann.
  Wie auch bei den Kapitelüberschriften vereinfachen LyX und LaTeX die Arbeit
  mit Literaturverzeichnissen dadurch, dass die Einträge automatisch nummeriert
- werden und die Zitate entsprechend verändert werden, wenn sich die Nummerierung
- ändert.
+ werden und die Literaturverweise entsprechend verändert werden, wenn sich
+ die Nummerierung ändert.
 \end_layout
 
 \begin_layout Standard
@@ -3089,14 +3089,13 @@ lyxtutorium
 \end_layout
 
 \begin_layout Standard
-Gehen Sie nun an eine Stelle im Dokument, an der Sie ein Zitat einfügen
- wollen.
+Gehen Sie nun an eine Stelle im Dokument, an der Sie einen Literaturverweis
+ einfügen wollen.
  Tun Sie dies über den Menüpunkt 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Zitat
+Literaturverweis
 \family default
-\SpecialChar \ldots{}
  (
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_citation.png
@@ -3108,10 +3107,11 @@ Zitat
  ).
  Das Dialogfenster 
 \family sans
-Zitat
+Literaturverweis
 \family default
  wird geöffnet.
- Wenn Sie dann eins der verfügbaren Zitate auswählen und auf 
+ Wenn Sie dann einen der verfügbaren Literaturverweise auswählen und auf
+ 
 \family sans
 Hinzufügen
 \family default
@@ -3121,7 +3121,7 @@ Ausgewählte
 \begin_inset space \space{}
 \end_inset
 
-Zitate:
+Verweise:
 \family default
  geschrieben und mit 
 \family sans
@@ -3152,12 +3152,12 @@ lyxtutorium
 \family typewriter
 DVI
 \family default
--Vorschau zeigt Ihnen, dass das Zitat in eckigen Klammern erscheint und
- auf den Eintrag in der Bibliographie am Textende verweist.
+-Vorschau zeigt Ihnen, dass der Literaturverweis in eckigen Klammern erscheint
+ und auf den Eintrag in der Bibliographie am Textende verweist.
 \end_layout
 
 \begin_layout Standard
-Und die anderen Felder in den Dialogfenstern? Mit dem Eintrag 
+Mit dem Eintrag 
 \family sans
 Text
 \begin_inset space \space{}
@@ -3167,14 +3167,14 @@ danach
 \family default
  im Dialog 
 \family sans
-Zitat
+Literaturverweis
 \family default
  können Sie eine zusätzliche Bemerkung, wie etwa einen Hinweis auf eine
  besondere Seite im referenzierten Dokument, angeben.
  Diese wird, durch ein Komma getrennt, nach der eigentlichen Referenz innerhalb
  der Klammern eingefügt.
- Wenn Sie Ihre Zitate in einer anderen Form anstelle der Nummern haben wollen
- (einige Journale verwenden etwa 
+ Wenn Sie Ihre Literaturverweise in einer anderen Form anstelle der Nummern
+ haben wollen (einige Journale verwenden etwa 
 \begin_inset Quotes gld
 \end_inset
 
@@ -3204,7 +3204,8 @@ Benutzerhandbuch
 \series bold
 Übung:
 \series default
- Korrigieren Sie Literaturverzeichnis und Zitate in der Datei 
+ Korrigieren Sie Literaturverzeichnis und Literaturverweise in der Datei
+ 
 \family typewriter
 bei\SpecialChar \-
 spiel_roh.lyx
