@@ -1327,7 +1327,7 @@ Tabular::col_type Tabular::cellColumn(idx_type cell) const
 	if (cell >= numberofcells)
 		return ncols() - 1;
 	if (cell == npos)
-		return 0;	
+		return 0;
 	return columnofcell[cell];
 }
 
