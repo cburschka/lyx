@@ -1216,23 +1216,17 @@ void GuiView::setCurrentWorkArea(GuiWorkArea * wa)
 
 	theGuiApp()->setCurrentView(this);
 	d.current_work_area_ = wa;
-	
-	// We need to reset this now, because it will need to be
-	// right if the tabWorkArea gets reset in the for loop. We
-	// will change it back if we aren't in that case.
-	GuiWorkArea * const old_cmwa = d.current_main_work_area_;
-	d.current_main_work_area_ = wa;
-
 	for (int i = 0; i != d.splitter_->count(); ++i) {
 		if (d.tabWorkArea(i)->setCurrentWorkArea(wa)) {
-			LYXERR(Debug::DEBUG, "Current wa: " << currentWorkArea() 
-				<< ", Current main wa: " << currentMainWorkArea());
+			//if (d.current_main_work_area_)
+			//	d.current_main_work_area_->setFrameStyle(QFrame::NoFrame);
+			d.current_main_work_area_ = wa;
+			//d.current_main_work_area_->setFrameStyle(QFrame::Box | QFrame::Plain);
+			//d.current_main_work_area_->setLineWidth(2);
+			LYXERR(Debug::DEBUG, "Current wa: " << currentWorkArea() << ", Current main wa: " << currentMainWorkArea());
 			return;
 		}
 	}
-	
-	d.current_main_work_area_ = old_cmwa;
-	
 	LYXERR(Debug::DEBUG, "This is not a tabbed wa");
 	on_currentWorkAreaChanged(wa);
 	BufferView & bv = wa->bufferView();
@@ -1400,7 +1394,6 @@ void GuiView::updateTocItem(string const & type, DocIterator const & dit)
 void GuiView::structureChanged()
 {
 	d.toc_models_.reset(documentBufferView());
-	LYXERR0(documentBufferView());
 	// Navigator needs more than a simple update in this case. It needs to be
 	// rebuilt.
 	updateDialog("toc", "");
