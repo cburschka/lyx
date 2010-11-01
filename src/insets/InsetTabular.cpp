@@ -4278,10 +4278,10 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setOnOff(tabular.rightLine(cur.idx()));
 			break;
 
+		// multirow cells are alwas left aligned
 		case Tabular::M_ALIGN_LEFT:
 			flag = false;
 		case Tabular::ALIGN_LEFT:
-			status.setEnabled(!tabular.isMultiRow(cur.idx()));
 			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_LEFT);
 			break;
 
@@ -4295,6 +4295,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case Tabular::M_ALIGN_CENTER:
 			flag = false;
 		case Tabular::ALIGN_CENTER:
+			status.setEnabled(!tabular.isMultiRow(cur.idx()));
 			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_CENTER);
 			break;
 
