@@ -106,6 +106,8 @@ struct TabularFeature {
 
 TabularFeature tabularFeature[] =
 {
+	// the SET/UNSET actions are used by the table dialog,
+	// the TOGGLE actions by the table toolbar buttons
 	{ Tabular::APPEND_ROW, "append-row", false },
 	{ Tabular::APPEND_COLUMN, "append-column", false },
 	{ Tabular::DELETE_ROW, "delete-row", false },
@@ -116,7 +118,6 @@ TabularFeature tabularFeature[] =
 	{ Tabular::SET_LINE_BOTTOM, "set-line-bottom", true },
 	{ Tabular::SET_LINE_LEFT, "set-line-left", true },
 	{ Tabular::SET_LINE_RIGHT, "set-line-right", true },
-	//FIXME: get rid of those 4 TOGGLE actions in favor of the 4 above.
 	{ Tabular::TOGGLE_LINE_TOP, "toggle-line-top", false },
 	{ Tabular::TOGGLE_LINE_BOTTOM, "toggle-line-bottom", false },
 	{ Tabular::TOGGLE_LINE_LEFT, "toggle-line-left", false },
@@ -851,13 +852,14 @@ void Tabular::updateIndexes()
 		for (col_type column = 0; column < ncols(); ++column) {
 			if (isPartOfMultiColumn(row, column))
 				continue;
-			setFixedWidth(row, column);
-			cell_info[row][column].inset->setContentAlignment(
-				getAlignment(cellIndex(row, column)));
 			if (!isPartOfMultiRow(row, column)) {
 				columnofcell[i] = column;
 				rowofcell[i] = row;
-			} else
+			}
+			setFixedWidth(row, column);
+			cell_info[row][column].inset->setContentAlignment(
+				getAlignment(cellIndex(row, column)));
+			if (isPartOfMultiRow(row, column))
 				continue;
 			++i;
 		}
