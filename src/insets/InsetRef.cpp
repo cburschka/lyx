@@ -77,21 +77,24 @@ docstring InsetRef::getFormattedCmd(
 		docstring const & ref, docstring & label) const
 {
 	static docstring const defcmd = from_ascii("\\ref");
-	// default is that label is data
-	// we'll change it if need be
-	if (!buffer().params().use_refstyle) {
-		label = ref;
-		return from_ascii("\\prettyref");
-	}
-
+	static docstring const prtcmd = from_ascii("\\prettyref");
+	
 	docstring prefix;
 	label = split(ref, prefix, ':');
+
+	// we have to have xxx:xxxxx...
 	if (prefix.empty()) {
 		LYXERR0("Label `" << label << "' contains no prefix.");
 		label = ref;
 		return defcmd;
 	}
 	
+	if (!buffer().params().use_refstyle) {
+		// \prettyref uses the whole label
+		label = ref;
+		return prtcmd;
+	}
+
 	// make sure the prefix is legal for a latex command
 	int const len = prefix.size();
 	for (int i = 0; i < len; i++) {
