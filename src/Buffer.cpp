@@ -875,6 +875,9 @@ Buffer::ReadStatus Buffer::readFile(FileName const & fn)
 		return readFile(tmpFile);
 	}
 
+	// InsetInfo needs to know if file is under VCS
+	lyxvc().file_found_hook(fn);
+
 	if (readDocument(lex)) {
 		Alert::error(_("Document format failure"),
 			bformat(_("%1$s ended unexpectedly, which means"
@@ -884,8 +887,6 @@ Buffer::ReadStatus Buffer::readFile(FileName const & fn)
 	}
 
 	d->file_fully_loaded = true;
-	// InsetInfo needs to know if file is under VCS
-	lyxvc().file_found_hook(fn);
 	d->read_only = !fname.isWritable();
 	params().compressed = fname.isZippedFile();
 	saveCheckSum();
