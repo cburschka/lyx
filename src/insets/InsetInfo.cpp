@@ -437,10 +437,9 @@ void InsetInfo::updateInfo()
 		else if (name_ == "vcs-date")
 			itype = LyXVC::Date;
 		string binfo = buffer().lyxvc().revisionInfo(itype);
-		if (binfo.empty()) {
-			docstring fmt = _("%1$s unknown[[InsetInfo]]");
-			setText(bformat(fmt, from_utf8(name_)));
-		} else
+		if (binfo.empty())
+			setText(bformat(_("%1$s unknown"), from_ascii(name_)));
+		else
 			setText(from_utf8(binfo));
 		break;
 	}
