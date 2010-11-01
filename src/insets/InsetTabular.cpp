@@ -854,7 +854,7 @@ void Tabular::updateIndexes()
 		for (col_type column = 0; column < ncols(); ++column) {
 			if (isPartOfMultiColumn(row, column))
 				continue;
-			// columnofcell nneds to be called before setting width and aligment
+			// columnofcell needs to be called before setting width and aligment
 			// multirow cells inherit the width from the column width
 			if (!isPartOfMultiRow(row, column)) {
 				columnofcell[i] = column;
