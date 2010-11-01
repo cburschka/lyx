@@ -1598,15 +1598,16 @@ Tabular::idx_type Tabular::setMultiRow(idx_type cell, idx_type number)
 	for (idx_type i = 0; i < number; ++i)
 		unsetMultiColumn(cellIndex(row + i, col));
 
-	// unsetting of multicol may have invalidated cell index
+	// unsetting of multirow may have invalidated cell index
 	cell = cellIndex(row, col);
 	CellData & cs = cellInfo(cell);
 	cs.multirow = CELL_BEGIN_OF_MULTIROW;
 	cs.valignment = LYX_VALIGN_MIDDLE;
-	// FIXME: the horizontal alignment of multirow cells can only
-	// be changed for the whole table,
-	// support for this needs to be implemented but us a fileformat
-	// change (assigning this to uwestoehr)
+	// the horizontal alignment of multirow cells can only
+	// be changed for the whole table row,
+	// support changing this only for the multirow cell can be done via
+	// \multirowsetup
+	// this feature would be a fileformat change
 	// until LyX supports this, use the deault alignment of multirow
 	// cells: left
 	cs.alignment = LYX_ALIGN_CENTER; 
@@ -5184,6 +5185,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 				tabular.unsetMultiColumn(cur.idx());
 			break;
 		}
+		break;
 	}
 
 	case Tabular::MULTICOLUMN: {
@@ -5220,6 +5222,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 				tabular.unsetMultiRow(cur.idx());
 			break;
 		}
+		break;
 	}
 
 	case Tabular::MULTIROW: {
