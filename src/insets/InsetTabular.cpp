@@ -834,6 +834,7 @@ void Tabular::updateIndexes()
 {
 	setBuffer(buffer());
 	numberofcells = 0;
+	// reset cell number
 	for (row_type row = 0; row < nrows(); ++row)
 		for (col_type column = 0; column < ncols(); ++column) {
 			if (!isPartOfMultiColumn(row, column)
@@ -848,19 +849,22 @@ void Tabular::updateIndexes()
 	rowofcell.resize(numberofcells);
 	columnofcell.resize(numberofcells);
 	idx_type i = 0;
+	// reset column and row of cells and update their width and alignment
 	for (row_type row = 0; row < nrows(); ++row)
 		for (col_type column = 0; column < ncols(); ++column) {
 			if (isPartOfMultiColumn(row, column))
 				continue;
+			// columnofcell nneds to be called before setting width and aligment
+			// multirow cells inherit the width from the column width
 			if (!isPartOfMultiRow(row, column)) {
 				columnofcell[i] = column;
 				rowofcell[i] = row;
 			}
 			setFixedWidth(row, column);
-			cell_info[row][column].inset->setContentAlignment(
-				getAlignment(cellIndex(row, column)));
 			if (isPartOfMultiRow(row, column))
 				continue;
+			cell_info[row][column].inset->setContentAlignment(
+				getAlignment(cellIndex(row, column)));
 			++i;
 		}
 }
@@ -1612,7 +1616,7 @@ Tabular::idx_type Tabular::setMultiRow(idx_type cell, idx_type number)
 	// this feature would be a fileformat change
 	// until LyX supports this, use the deault alignment of multirow
 	// cells: left
-	cs.alignment = LYX_ALIGN_CENTER; 
+	cs.alignment = LYX_ALIGN_LEFT; 
 
 	// set the bottom row of the last selected cell
 	setBottomLine(cell, bottomLine(cell + (number - 1)*ncols()));
