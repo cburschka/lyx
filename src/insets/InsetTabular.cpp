@@ -1657,8 +1657,17 @@ void Tabular::unsetMultiColumn(idx_type cell)
 	row_type const row = cellRow(cell);
 	col_type const col = cellColumn(cell);
 	row_type const span = columnSpan(cell);
-	for (col_type c = 0; c < span; ++c)
+	for (col_type c = 0; c < span; ++c) {
+		// in the table dialog the lines are set in every case
+		// when unsetting a multicolumn this leads to an additional right
+		// line for every cell that was part of the former multicolumn cell,
+		// except if the cell is in the last column
+		// therefore remove this line
+		if (cell_info[row][col + c].multicolumn = CELL_BEGIN_OF_MULTICOLUMN
+			&& (col + c) < (col + span - 1))
+			cell_info[row][col + c].right_line = false;
 		cell_info[row][col + c].multicolumn = CELL_NORMAL;
+	}
 	updateIndexes();
 }
 
