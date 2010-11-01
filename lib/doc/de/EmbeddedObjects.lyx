@@ -29451,10 +29451,8 @@ paragraph box
 \end_inset
 
 , was Absatzbox bedeutet.
- Weil Parbox ein LaTeX-Befehl ist, Minipage aber eine LaTeX-Umgebung, besitzen
- Parboxen einige Einschränkungen.
- Zum Beispiel werden keine Fußnoten, die in einer Parbox definiert werden,
- gedruckt:
+ Parbox ist sehr ähnlich zu Minipage mit der Einschränkung, dass Fußnoten
+ in Parboxen nicht ausgegeben werden:
 \end_layout
 
 \begin_layout Standard
@@ -29493,11 +29491,6 @@ Diese Fußnote ist in einer Parbox und wird deshalb nicht gedruckt.
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Und außerdem dürfen Parboxen keine Textausrichtungen, Listen, Aufzählungen
- und Theoreme enthalten.
 \end_layout
 
 \begin_layout Section
