@@ -852,6 +852,8 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 		lastfooterBorderBelowCB->setChecked(false);
 	}
 	newpageCB->setChecked(tabular.getLTNewPage(row));
+
+	// after setting the features, check if they are enabled
 	checkEnabled();
 }
 
