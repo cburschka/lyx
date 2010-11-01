@@ -1663,7 +1663,7 @@ void Tabular::unsetMultiColumn(idx_type cell)
 		// line for every cell that was part of the former multicolumn cell,
 		// except if the cell is in the last column
 		// therefore remove this line
-		if (cell_info[row][col + c].multicolumn = CELL_BEGIN_OF_MULTICOLUMN
+		if (cell_info[row][col + c].multicolumn == CELL_BEGIN_OF_MULTICOLUMN
 			&& (col + c) < (col + span - 1))
 			cell_info[row][col + c].right_line = false;
 		cell_info[row][col + c].multicolumn = CELL_NORMAL;
