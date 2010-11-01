@@ -226,7 +226,7 @@ int Systemcall::startscript(Starttype how, string const & what, bool process_eve
 	}
 
 	if (!d.waitWhile(SystemcallPrivate::Running, process_events, 180000)) {
-		LYXERR0("Systemcall: '" << cmd << "' did not finished!");
+		LYXERR0("Systemcall: '" << cmd << "' did not finish!");
 		LYXERR0("error " << d.errorMessage());
 		LYXERR0("status " << d.exitStatusMessage());
 		return 20;
