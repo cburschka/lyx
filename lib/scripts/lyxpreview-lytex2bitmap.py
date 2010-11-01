@@ -184,7 +184,7 @@ def main(argv):
     shutil.copyfile(latex_file, lytex_file)
 
     # Preprocess the latex file through lilypond-book.
-    lytex_call = '%s --latex-program=%s "%s"' % (lilypond_book, latex, lytex_file)
+    lytex_call = '%s --safe --latex-program=%s "%s"' % (lilypond_book, latex, lytex_file)
     lytex_status, lytex_stdout = run_command(lytex_call)
     if lytex_status != None:
         warning("%s failed to compile %s" \

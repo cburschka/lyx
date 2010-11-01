@@ -805,15 +805,15 @@ def checkConverterEntries():
             version_number = match.groups()[0]
             version = version_number.split('.')
             if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 11):
-                addToRC(r'''\converter lilypond   eps        "lilypond -dbackend=eps --ps $$i"	""
-\converter lilypond   png        "lilypond -dbackend=eps --png $$i"	""''')
-                addToRC(r'\converter lilypond   pdf        "lilypond -dbackend=eps --pdf $$i"	""')
+                addToRC(r'''\converter lilypond   eps        "lilypond -dbackend=eps -dsafe --ps $$i"	""
+\converter lilypond   png        "lilypond -dbackend=eps -dsafe --png $$i"	""''')
+                addToRC(r'\converter lilypond   pdf        "lilypond -dbackend=eps -dsafe --pdf $$i"	""')
                 logger.info('+  found LilyPond version %s.' % version_number)
             elif int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 6):
-                addToRC(r'''\converter lilypond   eps        "lilypond -b eps --ps $$i"	""
+                addToRC(r'''\converter lilypond   eps        "lilypond -b eps --ps --safe $$i"	""
 \converter lilypond   png        "lilypond -b eps --png $$i"	""''')
                 if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 9):
-                    addToRC(r'\converter lilypond   pdf        "lilypond -b eps --pdf $$i"	""')
+                    addToRC(r'\converter lilypond   pdf        "lilypond -b eps --pdf --safe $$i"	""')
                 logger.info('+  found LilyPond version %s.' % version_number)
             else:
                 logger.info('+  found LilyPond, but version %s is too old.' % version_number)
@@ -827,13 +827,12 @@ def checkConverterEntries():
         if match:
             version_number = match.groups()[0]
             version = version_number.split('.')
-            if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 1):
+            if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 13):
                 addToRC(r'\converter lyxpreview-lytex ppm "python -tt $$s/scripts/lyxpreview-lytex2bitmap.py" ""')
                 if dvipng == "dvipng":
                     addToRC(r'\converter lyxpreview-lytex png "python -tt $$s/scripts/lyxpreview-lytex2bitmap.py" ""')
                 else:
                     addToRC(r'\converter lyxpreview-lytex png "" ""')
-            if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 11):
                 # Note: The --lily-output-dir flag is required because lilypond-book
                 #       does not process input again unless the input has changed,
                 #       even if the output format being requested is different. So
@@ -841,11 +840,8 @@ def checkConverterEntries():
                 #       even when requested with --pdf. This is a problem if a user
                 #       clicks View PDF after having done a View DVI. To circumvent
                 #       this, use different output folders for eps and pdf outputs.
-                addToRC(r'\converter lilypond-book latex    "lilypond-book --lily-output-dir=ly-eps $$i"                                ""')
-                addToRC(r'\converter lilypond-book pdflatex "lilypond-book --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$i" ""')
-                logger.info('+  found LilyPond-book version %s.' % version_number)
-            elif int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 1):
-                addToRC(r'\converter lilypond-book latex  "lilypond-book $$i"                                ""')
+                addToRC(r'\converter lilypond-book latex    "lilypond-book --safe --lily-output-dir=ly-eps $$i"                                ""')
+                addToRC(r'\converter lilypond-book pdflatex "lilypond-book --safe --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$i" ""')
                 logger.info('+  found LilyPond-book version %s.' % version_number)
             else:
                 logger.info('+  found LilyPond-book, but version %s is too old.' % version_number)
