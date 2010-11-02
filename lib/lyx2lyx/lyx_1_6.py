@@ -472,6 +472,7 @@ def revert_ltcaption(document):
         j = find_end_of_inset(document.body, i + 1)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of tabular.")
+            i += 1
             continue
 
         m = i + 1
