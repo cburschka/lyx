@@ -1358,16 +1358,16 @@ void MenuDefinition::expandIndices(Buffer const * buf, bool listof)
 	IndicesList::const_iterator end = params.indiceslist().end();
 
 	for (int ii = 1; cit != end; ++cit, ++ii) {
-		if (listof)
-			addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(cit->index()),
-					   FuncRequest(LFUN_INDEX_PRINT,
-						  cit->shortcut())));
-		else {
-			docstring label = _("Index Entry");
-			label += " (" + cit->index() + ")";
+		if (listof) {
+			docstring const label = 
+				bformat(_("Index: %1$s"), cit->index());
 			addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
-					   FuncRequest(LFUN_INDEX_INSERT,
-						  cit->shortcut())));
+					   FuncRequest(LFUN_INDEX_PRINT, cit->shortcut())));
+		} else {
+			docstring const label = 
+				bformat(_("Index Entry (%1$s)"), cit->index());
+			addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
+					   FuncRequest(LFUN_INDEX_INSERT, cit->shortcut())));
 		}
 	}
 }
