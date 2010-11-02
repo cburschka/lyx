@@ -53,6 +53,10 @@ private:
 	void setWidthAndAlignment();
 	///
 	bool funcEnabled(Tabular::Feature f) const;
+	///
+	bool firstheader_suppressable_;
+	///
+	bool lastfooter_suppressable_;
 };
 
 } // namespace frontend

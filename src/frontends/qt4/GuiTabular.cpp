@@ -79,7 +79,7 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(checkEnabled()));
 	connect(borderSetPB, SIGNAL(clicked()),
 		this, SLOT(borderSet_clicked()));
-	connect(borderUnsetPB, SIGNAL(clicked()), 
+	connect(borderUnsetPB, SIGNAL(clicked()),
 		this, SLOT(borderUnset_clicked()));
 	connect(hAlignCB, SIGNAL(activated(int)),
 		this, SLOT(checkEnabled()));
@@ -149,8 +149,8 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(checkEnabled()));
 	connect(rightRB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
-		
-	
+
+
 	// initialize the length validator
 	addCheckedWidget(widthED, fixedWidthColLA);
 	addCheckedWidget(topspaceED, topspaceLA);
@@ -168,7 +168,7 @@ void GuiTabular::checkEnabled()
 	decimalPointLE->setEnabled(dalign);
 	decimalL->setEnabled(dalign);
 
-	vAlignCB->setEnabled(!multirowCB->isChecked() 
+	vAlignCB->setEnabled(!multirowCB->isChecked()
 		&& !widgetsToLength(widthED, widthUnitCB).empty());
 
 	topspaceED->setEnabled(topspaceCO->currentIndex() == 2);
@@ -197,10 +197,7 @@ void GuiTabular::checkEnabled()
 	headerBorderBelowCB->setEnabled(longtabular
 		&& headerStatusCB->isChecked());
 
-	// first header can only be suppressed when there is a header
-	// FIXME: old code also checked for
-	//  tabular.haveLTHead() && !tabular.haveLTFirstHead());
-	firstheaderNoContentsCB->setEnabled(longtabular);
+	firstheaderNoContentsCB->setEnabled(longtabular && firstheader_suppressable_);
 	// check if setting a first header is allowed
 	// additionally check firstheaderNoContentsCB because when this is
 	// the case a first header makes no sense
@@ -217,10 +214,7 @@ void GuiTabular::checkEnabled()
 	footerBorderBelowCB->setEnabled(longtabular
 		&& footerBorderAboveCB->isChecked());
 
-	// last footer can only be suppressed when there is a footer
-	// FIXME: old code also checked for
-	//   tabular.haveLTFoot() && !tabular.haveLTLastFoot());
-	lastfooterNoContentsCB->setEnabled(longtabular);
+	lastfooterNoContentsCB->setEnabled(longtabular && lastfooter_suppressable_);
 	// check if setting a last footer is allowed
 	// additionally check lastfooterNoContentsCB because when this is
 	// the case a last footer makes no sense
@@ -233,7 +227,7 @@ void GuiTabular::checkEnabled()
 
 	captionStatusCB->setEnabled(funcEnabled(Tabular::TOGGLE_LTCAPTION)
 		&& longtabular);
-	
+
 	multicolumnCB->setEnabled(funcEnabled(Tabular::MULTICOLUMN));
 	multirowCB->setEnabled(funcEnabled(Tabular::MULTIROW));
 
@@ -276,7 +270,7 @@ void GuiTabular::setHAlign(string & param_str) const
 {
 	Tabular::Feature num = Tabular::ALIGN_LEFT;
 	Tabular::Feature multi_num = Tabular::M_ALIGN_LEFT;
-	string const align = 
+	string const align =
 		fromqstr(hAlignCB->itemData(hAlignCB->currentIndex()).toString());
 	if (align == "left") {
 		num = Tabular::ALIGN_LEFT;
@@ -854,6 +848,13 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 		lastfooterBorderBelowCB->setChecked(false);
 	}
 	newpageCB->setChecked(tabular.getLTNewPage(row));
+
+	// first header can only be suppressed when there is a header
+	firstheader_suppressable_ = tabular.haveLTHead()
+			&& !tabular.haveLTFirstHead();
+	// last footer can only be suppressed when there is a footer
+	lastfooter_suppressable_ = tabular.haveLTFoot()
+			&& !tabular.haveLTLastFoot();
 
 	// after setting the features, check if they are enabled
 	checkEnabled();
