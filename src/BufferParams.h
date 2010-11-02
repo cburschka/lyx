@@ -385,7 +385,7 @@ public:
 	PDFOptions const & pdfoptions() const;
 
 	enum MathOutput {
-		MathML,
+		MathML = 0,
 		HTML,
 		Images,
 		LaTeX
