@@ -2918,6 +2918,7 @@ lib_layouts_module_files = Split('''
     theorems-bytype.module
     theorems-chap-bytype.module
     theorems-chap.module
+    theorems-named.module
     theorems-sec-bytype.module
     theorems-sec.module
     theorems-starred.module
