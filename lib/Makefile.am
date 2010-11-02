@@ -1183,12 +1183,13 @@ dist_layouts_DATA =\
 	layouts/theorems-bytype.inc \
 	layouts/theorems-bytype.module \
 	layouts/theorems-chap-bytype.module \
-	layouts/theorems-sec-bytype.module \
+	layouts/theorems-named.module \
 	layouts/theorems-order.inc \
 	layouts/theorems-proof.inc \
 	layouts/theorems-proof-std.inc \
 	layouts/theorems-refprefix.inc \
 	layouts/theorems-sec.module \
+	layouts/theorems-sec-bytype.module \
 	layouts/theorems-starred-equivalents.inc \
 	layouts/theorems-starred.inc \
 	layouts/theorems-starred.module \

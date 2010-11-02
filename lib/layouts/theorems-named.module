@@ -1,0 +1,29 @@
+#% Do not delete the line below; configure depends on this
+#\DeclareLyXModule{Named Theorems}
+#DescriptionBegin
+# Facilitates the use of named theorems. The name of the theorem
+# goes into the "Short Title" inset.
+#DescriptionEnd
+#Requires: theorems-ams | theorems-starred
+#Original Author: John Perry
+
+Style "Named Theorem"
+  CopyStyle Theorem*
+  Category Theorem
+  LabelString "Named Theorem."
+  LatexName namedthm
+  Preamble
+    \newcommand\thmsname{Theorem}
+    \newcommand\nm@thmtype{theorem}
+    \theoremstyle{plain}
+    \newtheorem*{namedtheorem}{\thmsname}
+    \newenvironment{namedthm}[1][Undefined Theorem Name]{
+      \ifx{#1}{Undefined Theorem Name}\renewcommand\nm@thmtype{theorem*}
+      \else\renewcommand\thmsname{#1}\renewcommand\nm@thmtype{namedtheorem}
+      \fi
+      \begin{\nm@thmtype}}
+      {\end{\nm@thmtype}}
+    \makeatother
+  EndPreamble
+End
+
