@@ -59,9 +59,9 @@ BrandingText "LyXWinInstaller v4.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
 !if ${INSTALLER_VERSION} == "Complete"
  !define GSviewInstall "external\gsv49w32.exe"
  !define JabRefInstall "external\JabRef-2.6-setup.exe"
- !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.8.3761.exe"
+ !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.3927.exe"
  !define JabRefVersion "2.6"
- !define MiKTeXDeliveredVersion "2.8"
+ !define MiKTeXDeliveredVersion "2.9"
 !endif
 
 !define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
