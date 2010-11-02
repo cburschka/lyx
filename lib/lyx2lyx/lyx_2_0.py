@@ -1386,12 +1386,14 @@ def convert_math_output(document):
         return
     rgx = re.compile(r'\\html_use_mathml\s+(\w+)')
     m = rgx.match(document.header[i])
-    if rgx:
-        newval = "0" # MathML
-        val = m.group(1)
-        if val != "true":
-            newval = "2" # Images
-        document.header[i] = "\\html_math_output " + newval
+    newval = "0" # MathML
+    if m:
+      val = m.group(1)
+      if val != "true":
+        newval = "2" # Images
+    else:
+      document.warning("Can't match " + document.header[i])
+    document.header[i] = "\\html_math_output " + newval
 
 
 def revert_math_output(document):
