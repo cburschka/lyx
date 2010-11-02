@@ -572,9 +572,10 @@ def revert_tablines(document):
         i = find_token(document.body, "\\begin_inset Tabular", i)
         if i == -1:
             return
-        j = find_end_of_inset(document.body, i + 1)
+        j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of tabular.")
+            i += 1
             continue
 
         m = i + 1
