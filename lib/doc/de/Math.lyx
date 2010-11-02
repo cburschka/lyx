@@ -69,14 +69,13 @@
 % provides caption formatting
 \setkomafont{captionlabel}{\bfseries}
 
-% benutzt in Kap. 22.6
+% benutzt in Kap. 23.6
 \usepackage[samesize]{cancel}
 
 % enables calculation of values,
 \usepackage{calc}
 
-% für Mehrfachzeilen und -spalten
-\usepackage{multirow}
+% für Mehrfachzeilen, benutzt in Kap. 23.7
 \usepackage{multicol}
 
 % benutzt in Kap. 19.4
@@ -84,9 +83,6 @@
 
 % für das Fourier-Transformationssymbol
 \usepackage{mathrsfs}
-
-%Mehrfachzeilen zentriert ausrichten (z.B. in Kap. 13.3)
-\renewcommand{\multirowsetup}{\centering}
 
 % Farbdefinition aus Kap. 9.3
 \definecolor{dunkelgruen}{cmyk}{0.5, 0, 1, 0.5}
@@ -287,7 +283,7 @@ braket, cancel, eurosym,
 \series default
  
 \series bold
-mhchem, multirow
+mhchem
 \series default
  und 
 \series bold

@@ -69,14 +69,13 @@
 % provides caption formatting
 \setkomafont{captionlabel}{\bfseries}
 
-% used in Kap. 22.6
+% used in sec. 23.6
 \usepackage[samesize]{cancel}
 
 % enables calculation of values,
 \usepackage{calc}
 
-% for multiple table row and column cells
-\usepackage{multirow}
+% for multiple columns used in sec. 23.7
 \usepackage{multicol}
 
 % needed in sec. 19.4
@@ -84,9 +83,6 @@
 
 % for the Fourier transformation symbol
 \usepackage{mathrsfs}
-
-% center multirows (e.g. in sec. 13.3)
-\renewcommand{\multirowsetup}{\centering}
 
 % define a color, used in sec.9.3
 \definecolor{darkgreen}{cmyk}{0.5, 0, 1, 0.5}
@@ -278,7 +274,7 @@ braket, cancel, eurosym,
 \series default
  
 \series bold
-mhchem, multirow
+mhchem
 \series default
  and 
 \series bold
