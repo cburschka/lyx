@@ -1393,8 +1393,8 @@ void MenuDefinition::expandIndicesContext(Buffer const * buf, bool listof)
 			addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(cit->index()),
 					   FuncRequest(LFUN_INSET_MODIFY, data)));
 		} else {
-			docstring label = _("Index Entry");
-			label += " (" + cit->index() + ")";
+			docstring const label = 
+					bformat(_("Index Entry (%1$s)"), cit->index());
 			addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
 					   FuncRequest(LFUN_INSET_MODIFY,
 						  from_ascii("changetype ") + cit->shortcut())));
