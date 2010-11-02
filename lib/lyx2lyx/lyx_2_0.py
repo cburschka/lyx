@@ -2353,32 +2353,69 @@ def revert_diagram(document):
     return
 
 
-def convert_bibtexClearpage(document):
+def convert_bibtex_clearpage(document):
   " insert a clear(double)page bibliographystyle if bibtotoc option is used "
+
+  i = find_token(document.header, '\\papersides', 0)
+  if i == -1:
+    document.warning("Malformed LyX document: Can't find papersides definition.")
+    return
+  sides = int(document.header[i][12])
+
+  j = 0
   while True:
-    i = find_token(document.header, '\\papersides', 0)
-    if i == -1:
-      document.warning("Malformed LyX document: Can't find papersides definition.")
-      return
-    else:
-      sides = int(document.header[i][12])
-    # only act of there is the option "bibtotoc"
-    j = find_token(document.body, 'options "bibtotoc', 0)
+    j = find_token(document.body, "\\begin_inset CommandInset bibtex", j)
     if j == -1:
       return
+
+    k = find_end_of_inset(document.body, j)
+    if k == -1:
+      document.warning("Can't find end of Bibliography inset at line " + str(j))
+      j += 1
+      continue
+
+    # only act if there is the option "bibtotoc"
+    m = find_token(document.body, 'options', j)
+    if m == -1 or m > k:
+      document.warning("Can't find options for bibliography inset at line " + str(j))
+      j = k
+      continue
+    
+    optline = document.body[m]
+    idx = optline.find("bibtotoc")
+    if idx == -1:
+      j = k
+      continue
+    
+    # so we want to insert a new page right before the paragraph that
+    # this bibliography thing is in. we'll look for it backwards.
+    lay = j - 1
+    while lay >= 0:
+      if document.body[lay].startswith("\\begin_layout"):
+        break
+      lay -= 1
+
+    if lay < 0:
+      document.warning("Can't find layout containing bibliography inset at line " + str(j))
+      j = k
+      continue
+
     subst1 = '\\begin_layout Standard\n' \
       + '\\begin_inset Newpage clearpage\n' \
-      + '\end_inset\n\n\n' \
-      + '\end_layout\n'
+      + '\\end_inset\n\n\n' \
+      + '\\end_layout\n'
     subst2 = '\\begin_layout Standard\n' \
       + '\\begin_inset Newpage cleardoublepage\n' \
-      + '\end_inset\n\n\n' \
-      + '\end_layout\n'
+      + '\\end_inset\n\n\n' \
+      + '\\end_layout\n'
     if sides == 1:
-      document.body.insert(j -5, subst1)
+      document.body.insert(lay, subst1)
+      document.warning(subst1)
     else:
-      document.body.insert(j -5, subst2)
-    return
+      document.body.insert(lay, subst2)
+      document.warning(subst2)
+
+    j = k
 
 
 ##
@@ -2442,7 +2479,7 @@ convert = [[346, []],
            [399, [convert_mathdots]],
            [400, [convert_rule]],
            [401, []],
-           [402, [convert_bibtexClearpage]],
+           [402, [convert_bibtex_clearpage]],
            [403, [convert_flexnames]],
            [404, [convert_prettyref]]
 ]
