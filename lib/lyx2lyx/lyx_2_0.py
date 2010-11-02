@@ -1402,7 +1402,7 @@ def revert_math_output(document):
     rgx = re.compile(r'\\html_math_output\s+(\d)')
     m = rgx.match(document.header[i])
     newval = "true"
-    if rgx:
+    if m:
         val = m.group(1)
         if val == "1" or val == "2":
             newval = "false"
