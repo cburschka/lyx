@@ -232,6 +232,9 @@ bool RCS::repoUpdateEnabled()
 
 string RCS::lockingToggle()
 {
+	//FIXME this might be actually possible, study rcs -U, rcs -L.
+	//State should be easy to get inside scanMaster.
+	//It would fix #4370 and make rcs/svn usage even more closer.
 	lyxerr << "Sorry, not implemented." << endl;
 	return string();
 }
