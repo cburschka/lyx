@@ -384,11 +384,12 @@ public:
 	PDFOptions & pdfoptions();
 	PDFOptions const & pdfoptions() const;
 
+	// do not change these values. we rely upon them.
 	enum MathOutput {
 		MathML = 0,
-		HTML,
-		Images,
-		LaTeX
+		HTML = 1,
+		Images = 2,
+		LaTeX = 3
 	};
 	/// what to use for math output. present choices are above
 	MathOutput html_math_output;
