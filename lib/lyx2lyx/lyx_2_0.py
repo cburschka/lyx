@@ -310,6 +310,11 @@ def latex_length(string):
     else:
         return "True," + string
 
+###############################################################################
+###
+### Conversion and reversion routines
+###
+###############################################################################
 
 def revert_flex_inset(document, name, LaTeXname, position):
   " Convert flex insets to TeX code "
