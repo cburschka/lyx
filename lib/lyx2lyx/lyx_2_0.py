@@ -438,62 +438,62 @@ def revert_tabularvalign(document):
    " Revert the tabular valign option "
    i = 0
    while True:
-       i = find_token(document.body, "\\begin_inset Tabular", i)
-       if i == -1:
-           return
-       j = find_token(document.body, "</cell>", i)
-       if j == -1:
-           document.warning("Malformed LyX document: Could not find end of tabular cell.")
-           i += 1
-           continue
-       # don't set a box for longtables, only delete tabularvalignment
-       # the alignment is 2 lines below \\begin_inset Tabular
-       p = document.body[i + 2].find("islongtable")
-       if p > -1:
-           q = document.body[i + 2].find("tabularvalignment")
-           if q > -1:
-               document.body[i + 2] = document.body[i + 2][:q - 1]
-               document.body[i + 2] = document.body[i + 2] + '>'
-           i = i + 1
+      i = find_token(document.body, "\\begin_inset Tabular", i)
+      if i == -1:
+          return
+      j = find_token(document.body, "</cell>", i)
+      if j == -1:
+          document.warning("Malformed LyX document: Could not find end of tabular cell.")
+          i += 1
+          continue
+      # don't set a box for longtables, only delete tabularvalignment
+      # the alignment is 2 lines below \\begin_inset Tabular
+      p = document.body[i + 2].find("islongtable")
+      if p > -1:
+          q = document.body[i + 2].find("tabularvalignment")
+          if q > -1:
+              document.body[i + 2] = document.body[i + 2][:q - 1]
+              document.body[i + 2] = document.body[i + 2] + '>'
+          i = i + 1
+          continue
 
-       # when no longtable
-       if p == -1:
-         tabularvalignment = 'c'
-         # which valignment is specified?
-         m = document.body[i + 2].find('tabularvalignment="top"')
-         if m > -1:
-             tabularvalignment = 't'
-         m = document.body[ i+ 2].find('tabularvalignment="bottom"')
-         if m > -1:
-             tabularvalignment = 'b'
-         # delete tabularvalignment
-         q = document.body[i + 2].find("tabularvalignment")
-         if q > -1:
-             document.body[i + 2] = document.body[i + 2][:q - 1]
-             document.body[i + 2] = document.body[i + 2] + '>'
+       # no longtable
+      tabularvalignment = 'c'
+      # which valignment is specified?
+      m = document.body[i + 2].find('tabularvalignment="top"')
+      if m > -1:
+          tabularvalignment = 't'
+      m = document.body[i + 2].find('tabularvalignment="bottom"')
+      if m > -1:
+          tabularvalignment = 'b'
+      # delete tabularvalignment
+      q = document.body[i + 2].find("tabularvalignment")
+      if q > -1:
+          document.body[i + 2] = document.body[i + 2][:q - 1]
+          document.body[i + 2] = document.body[i + 2] + '>'
 
-         # don't add a box when centered
-         if tabularvalignment == 'c':
-             i = j
-             continue
-         subst = ['\\end_layout', '\\end_inset']
-         document.body[j:j] = subst # just inserts those lines
-         subst = ['\\begin_inset Box Frameless',
-             'position "' + tabularvalignment +'"',
-             'hor_pos "c"',
-             'has_inner_box 1',
-             'inner_pos "c"',
-             'use_parbox 0',
-             # we don't know the width, assume 50%
-             'width "50col%"',
-             'special "none"',
-             'height "1in"',
-             'height_special "totalheight"',
-             'status open',
-             '',
-             '\\begin_layout Plain Layout']
-         document.body[i:i] = subst # this just inserts the array at i
-         i += len(subst) + 2 # adjust i to save a few cycles
+      # don't add a box when centered
+      if tabularvalignment == 'c':
+          i = j
+          continue
+      subst = ['\\end_layout', '\\end_inset']
+      document.body[j:j] = subst # just inserts those lines
+      subst = ['\\begin_inset Box Frameless',
+          'position "' + tabularvalignment +'"',
+          'hor_pos "c"',
+          'has_inner_box 1',
+          'inner_pos "c"',
+          'use_parbox 0',
+          # we don't know the width, assume 50%
+          'width "50col%"',
+          'special "none"',
+          'height "1in"',
+          'height_special "totalheight"',
+          'status open',
+          '',
+          '\\begin_layout Plain Layout']
+      document.body[i:i] = subst # this just inserts the array at i
+      i += len(subst) + 2 # adjust i to save a few cycles
 
 
 def revert_phantom(document):
