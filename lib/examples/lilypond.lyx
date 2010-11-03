@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 401
+\lyxformat 404
 \begin_document
 \begin_header
 \textclass article
@@ -12,7 +12,7 @@ lilypond
 \end_modules
 \maintain_unincluded_children false
 \language english
-\inputencoding utf8
+\inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -29,7 +29,7 @@ lilypond
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize 12
+\paperfontsize default
 \spacing single
 \use_hyperref false
 \papersize default
@@ -43,6 +43,7 @@ lilypond
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \index Index
 \shortcut idx
 \color #008000
@@ -97,22 +98,8 @@ Support for LilyPond constructs (LilyPond code) within LyX is enabled by
 Requirements
 \end_layout
 
-\begin_layout List
-\labelwidthstring 00.00.0000
-LaTeX
-\begin_inset space ~
-\end_inset
-
-support: LilyPond-book version 2.1
-\end_layout
-
-\begin_layout List
-\labelwidthstring 00.00.0000
-PDFLaTeX
-\begin_inset space ~
-\end_inset
-
-support: LilyPond-book version 2.11
+\begin_layout Itemize
+LilyPond-book version 2.13
 \end_layout
 
 \begin_layout Paragraph
@@ -121,20 +108,16 @@ Notes:
 
 \begin_layout Standard
 LilyPond-book supports LaTeX output since version 2.1.
- PDFLaTeX requires LilyPond-book version 2.9 or older, but there are bugs
- in those early versions.
- We require version 2.11 and older because we use the -
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
--lily-output-dir flag.
+ However, some features used by LyX are available only in recent versions:
+ PDFLaTeX support (version 2.9), the 
+\family typewriter
+--lily-output-dir
+\family default
+ flag (version 2.11) and especially the 
+\family typewriter
+--safe
+\family default
+ flag (version 2.13).
 \end_layout
 
 \begin_layout Subsection
@@ -384,6 +367,65 @@ score given
 
 \end_layout
 
+\begin_layout Standard
+Another gotcha is with subsequent lilypond snippets with 
+\family typewriter
+
+\backslash
+fret-diagram
+\family default
+ markup commands:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin{lilypond}
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+markup{ 
+\backslash
+fret-diagram-terse #"x;3;2;o;1;o;" }
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+end{lilypond}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin{lilypond}
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+markup{ 
+\backslash
+fret-diagram-terse #"x;x;o;2;3;2;" }
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+end{lilypond}
+\end_layout
+
+\begin_layout Standard
+For some reason LilyPond-book version 2.13 barks on this when run in safe
+ mode (which you always should use, unless you know what you are doing).
+\end_layout
+
 \begin_layout Section
 LilyPond examples
 \end_layout
@@ -396,25 +438,16 @@ reference "sub:Editorial-headword"
 
 \end_inset
 
- shows that any valid LilyPond construct can be handled, no matter how complicat
-ed.
+ shows a complex example using many LilyPond constructs; some inline scheme
+ code has been removed to be able to run in safe mode.
  Example 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Positioning-of-markup"
-
-\end_inset
-
- shows how you can mix LilyPond code with tables to display the fingering
- of guitar chords.
- And Example 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Tablatures-template"
 
 \end_inset
 
- shows yet another LilyPond output for guitarists.
+ shows another LilyPond output which should be interesting to guitarists.
 \end_layout
 
 \begin_layout Subsection
@@ -492,14 +525,14 @@ time 2/4
 
 \begin_layout Plain Layout
 
-    
+    %
 \backslash
 set Staff.fingeringOrientations = #'(up)
 \end_layout
 
 \begin_layout Plain Layout
 
-    
+    %
 \backslash
 set Score.currentBarNumber = #9
 \end_layout
@@ -525,7 +558,7 @@ staccato
 
 \begin_layout Plain Layout
 
-    
+    %
 \backslash
 set doubleSlurs = ##t
 \end_layout
@@ -611,7 +644,7 @@ staccato
 
 \begin_layout Plain Layout
 
-    
+    %
 \backslash
 once 
 \backslash
@@ -725,14 +758,14 @@ clef treble
 
 \begin_layout Plain Layout
 
-    
+    %
 \backslash
 override Fingering #'direction = #down
 \end_layout
 
 \begin_layout Plain Layout
 
-    
+    %
 \backslash
 set Staff.fingeringOrientations = #'(down)
 \end_layout
@@ -753,7 +786,7 @@ staccato
 
 \begin_layout Plain Layout
 
-    
+    %
 \backslash
 set doubleSlurs = ##t
 \end_layout
@@ -798,7 +831,7 @@ staccato
 
 \begin_layout Plain Layout
 
-    
+    %
 \backslash
 set doubleSlurs = ##f
 \end_layout
@@ -945,897 +978,7 @@ http://lsr.dsi.unimi.it/LSR/Item?id=627
 
 \end_inset
 
-]
-\end_layout
-
-\begin_layout Subsection
-Positioning of markup elements
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Positioning-of-markup"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Tabular arrangement of elements
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="middle" width="20col%">
-<column alignment="center" valignment="middle" width="20col%">
-<column alignment="center" valignment="middle" width="20col%">
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ignatzek
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Alternative
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Diagram
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-C
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-C
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Preview
-
-\begin_layout Standard
-\begin_inset Flex LilyPond
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-markup { 
-\backslash
-fret-diagram #"6-x;5-3-3;4-2-2;3-o;2-1-1;1-o;" }
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Cm
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Preview
-
-\begin_layout Standard
-\begin_inset Flex LilyPond
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-markup { 
-\backslash
-concat { C 
-\backslash
-super { 
-\backslash
-flat 5 } } }
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Preview
-
-\begin_layout Standard
-\begin_inset Flex LilyPond
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-markup { 
-\backslash
-fret-diagram #"6-x;5-1-1;4-3-3;3-3-4;2-2-2;1-1-1;c:5-1-1;" }
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-C+
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Preview
-
-\begin_layout Standard
-\begin_inset Flex LilyPond
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-markup { 
-\backslash
-concat { C 
-\backslash
-super { 
-\backslash
-sharp 5 } } }
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Preview
-
-\begin_layout Standard
-\begin_inset Flex LilyPond
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-markup { 
-\backslash
-fret-diagram #"6-x;5-x;4-2-2;3-1-1;2-1-1;1-4-4;c:2-3-1;" }
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Musical notation with each element placed by hand
-\end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset Preview
-
-\begin_layout Standard
-\begin_inset Flex LilyPond
-status open
-
-\begin_layout Plain Layout
-
-%{
-\end_layout
-
-\begin_layout Plain Layout
-
-Snippet for overlay markup command - absolute positioning of items
-\end_layout
-
-\begin_layout Plain Layout
-
-Defines a new markup command 
-\backslash
-overlay which takes a list of markup elements and positions them all at
- the same point.
-\end_layout
-
-\begin_layout Plain Layout
-
-        By translating each markup element, you can gain control of the
- absolute position of each.
-\end_layout
-
-\begin_layout Plain Layout
-
-%}
-\end_layout
-
-\begin_layout Plain Layout
-
-#(define-public (stack-stencil-overlay stencils)
-\end_layout
-
-\begin_layout Plain Layout
-
-  "Recursive function to add stencils together"
-\end_layout
-
-\begin_layout Plain Layout
-
-  (if (and (pair? stencils)
-\end_layout
-
-\begin_layout Plain Layout
-
-           (ly:stencil? (car stencils)))
-\end_layout
-
-\begin_layout Plain Layout
-
-      
-\end_layout
-
-\begin_layout Plain Layout
-
-      (if (and (pair? (cdr stencils))
-\end_layout
-
-\begin_layout Plain Layout
-
-               (ly:stencil? (cadr stencils)))
-\end_layout
-
-\begin_layout Plain Layout
-
-          (let ((tail (stack-stencil-overlay (cdr stencils)))
-\end_layout
-
-\begin_layout Plain Layout
-
-                (head (car stencils)))
-\end_layout
-
-\begin_layout Plain Layout
-
-               (ly:stencil-add head tail))
-\end_layout
-
-\begin_layout Plain Layout
-
-          (car stencils))
-\end_layout
-
-\begin_layout Plain Layout
-
-      point-stencil))
-\end_layout
-
-\begin_layout Plain Layout
-
-#(define-markup-command (overlay layout props args)
-\end_layout
-
-\begin_layout Plain Layout
-
-  (markup-list?)
-\end_layout
-
-\begin_layout Plain Layout
-
-  "Overlay arguments one on top of the next"
-\end_layout
-
-\begin_layout Plain Layout
-
-  (let ((stencils (interpret-markup-list layout props args)))
-\end_layout
-
-\begin_layout Plain Layout
-
-       (stack-stencil-overlay
-\end_layout
-
-\begin_layout Plain Layout
-
-         (remove ly:stencil-empty? stencils))))
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-markup {
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-overlay {
-\end_layout
-
-\begin_layout Plain Layout
-
-%    
-\backslash
-translate #'(0 .
- 7)
-\end_layout
-
-\begin_layout Plain Layout
-
-%    
-\backslash
-justify-string #"Musical notation with each element placed by hand"
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(0 .
- -3) 
-\backslash
-fontsize #2 "1"
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-postscript #"
-\end_layout
-
-\begin_layout Plain Layout
-
-      0.15 setlinewidth
-\end_layout
-
-\begin_layout Plain Layout
-
-      4  0 moveto 74  0 lineto stroke
-\end_layout
-
-\begin_layout Plain Layout
-
-      4 -1 moveto 74 -1 lineto stroke
-\end_layout
-
-\begin_layout Plain Layout
-
-      4 -2 moveto 74 -2 lineto stroke
-\end_layout
-
-\begin_layout Plain Layout
-
-      4 -3 moveto 74 -3 lineto stroke
-\end_layout
-
-\begin_layout Plain Layout
-
-      4 -4 moveto 74 -4 lineto stroke
-\end_layout
-
-\begin_layout Plain Layout
-
-      11.6 -5 moveto 13.6 -5 lineto stroke
-\end_layout
-
-\begin_layout Plain Layout
-
-      42.6 -5 moveto 44.6 -5 lineto stroke
-\end_layout
-
-\begin_layout Plain Layout
-
-      17.6 -5 moveto 0 0 2 -1 7 -1 9 0 rcurveto stroke
-\end_layout
-
-\begin_layout Plain Layout
-
-      48.6 -5 moveto 0 0 2 -1 7 -1 9 0 rcurveto stroke
-\end_layout
-
-\begin_layout Plain Layout
-
-      0.3 setlinewidth
-\end_layout
-
-\begin_layout Plain Layout
-
-      73.85 0 moveto 73.85 -4 lineto stroke
-\end_layout
-
-\begin_layout Plain Layout
-
-      "
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(4 .
- 2) "Präludium"
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(5 .
- -3)   
-\backslash
-musicglyph #"clefs.G_change"
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(8 .
- -2) 
-\backslash
-musicglyph #"timesig.C44"
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(12 .
- -5) 
-\backslash
-note-by-number #1 #0 #DOWN
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(12 .
- -2) 
-\backslash
-musicglyph #"rests.4"
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(12 .
- 0) 
-\backslash
-musicglyph #"rests.3"
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(16 .
- -4) 
-\backslash
-note-by-number #3 #0 #DOWN
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(17.4 .
- -4.4) 
-\backslash
-musicglyph #"dots.dot"
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(19 .
- -3) 
-\backslash
-note-by-number #2 #0 #UP
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(23 .
- -1.5) 
-\backslash
-note-by-number #2 #0 #1.2
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(20.25 .
- 0) 
-\backslash
-beam #4 #0.5 #0.40
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(20.25 .
- -1) 
-\backslash
-beam #4 #0.5 #0.40
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(27 .
- -4) 
-\backslash
-note-by-number #2 #0 #DOWN
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(27 .
- -0.5) 
-\backslash
-note-by-number #2 #0 #UP
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(31 .
- -3) 
-\backslash
-note-by-number #2 #0 #1.7
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(35 .
- -1.5) 
-\backslash
-note-by-number #2 #0 #1.3
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(39 .
- -0.5) 
-\backslash
-note-by-number #2 #0 #UP
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(28.25 .
- 2.25) 
-\backslash
-beam #12 #0 #0.4
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(28.25 .
- 1.35) 
-\backslash
-beam #12 #0 #0.4
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(43 .
- -5) 
-\backslash
-note-by-number #1 #0 #DOWN
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(43 .
- -2) 
-\backslash
-musicglyph #"rests.4"
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(43 .
- 0) 
-\backslash
-musicglyph #"rests.3"
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(47 .
- -4) 
-\backslash
-note-by-number #3 #0 #DOWN
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(48.4 .
- -4.4) 
-\backslash
-musicglyph #"dots.dot"
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(50 .
- -3) 
-\backslash
-note-by-number #2 #0 #UP
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(54 .
- -1.5) 
-\backslash
-note-by-number #2 #0 #1.2
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(51.25 .
- 0) 
-\backslash
-beam #4 #0.5 #0.40
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(51.25 .
- -1) 
-\backslash
-beam #4 #0.5 #0.40
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(58 .
- -4) 
-\backslash
-note-by-number #2 #0 #DOWN
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(58 .
- -0.5) 
-\backslash
-note-by-number #2 #0 #UP
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(62 .
- -3) 
-\backslash
-note-by-number #2 #0 #1.7
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(66 .
- -1.5) 
-\backslash
-note-by-number #2 #0 #1.3
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(70 .
- -0.5) 
-\backslash
-note-by-number #2 #0 #UP
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(59.25 .
- 2.25) 
-\backslash
-beam #12 #0 #0.40
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-translate #'(59.25 .
- 1.35) 
-\backslash
-beam #12 #0 #0.40
-\end_layout
-
-\begin_layout Plain Layout
-
-  }
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-[adapted from 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://lsr.dsi.unimi.it/LSR/Item?id=628
-\end_layout
-
-\end_inset
-
-]
+; inline scheme code removed, centering applied through the paragraph settings]
 \end_layout
 
 \begin_layout Subsection
@@ -1956,7 +1099,7 @@ new TabStaff = "tab" <<
 \backslash
 context TabVoice = "upper tab" { 
 \backslash
-clef "moderntab" 
+clef "tab" 
 \backslash
 voiceOne 
 \backslash
@@ -1969,7 +1112,7 @@ upper }
 \backslash
 context TabVoice = "lower tab" { 
 \backslash
-clef "moderntab" 
+clef "tab" 
 \backslash
 voiceTwo 
 \backslash
