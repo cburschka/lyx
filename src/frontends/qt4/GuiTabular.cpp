@@ -197,6 +197,8 @@ void GuiTabular::checkEnabled()
 	headerBorderBelowCB->setEnabled(longtabular
 		&& headerStatusCB->isChecked());
 
+	// first header can only be suppressed when there is a header
+	// firstheader_suppressable_ is set in paramsToDialog
 	firstheaderNoContentsCB->setEnabled(longtabular && firstheader_suppressable_);
 	// check if setting a first header is allowed
 	// additionally check firstheaderNoContentsCB because when this is
@@ -214,6 +216,8 @@ void GuiTabular::checkEnabled()
 	footerBorderBelowCB->setEnabled(longtabular
 		&& footerBorderAboveCB->isChecked());
 
+	// last footer can only be suppressed when there is a footer
+	// lastfooter_suppressable_ is set in paramsToDialog
 	lastfooterNoContentsCB->setEnabled(longtabular && lastfooter_suppressable_);
 	// check if setting a last footer is allowed
 	// additionally check lastfooterNoContentsCB because when this is
