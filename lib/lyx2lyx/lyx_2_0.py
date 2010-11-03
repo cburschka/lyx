@@ -444,7 +444,7 @@ def revert_tabularvalign(document):
        j = find_token(document.body, "</cell>", i)
        if j == -1:
            document.warning("Malformed LyX document: Could not find end of tabular cell.")
-           i = j
+           i += 1
            continue
        # don't set a box for longtables, only delete tabularvalignment
        # the alignment is 2 lines below \\begin_inset Tabular
