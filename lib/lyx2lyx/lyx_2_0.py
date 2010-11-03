@@ -330,38 +330,38 @@ def revert_flex_inset(document, name, LaTeXname, position):
     # remove the \end_inset
     document.body[z - 2:z + 1] = put_cmd_in_ert("}")
     # we need to reset character layouts if necessary
-    j = find_token(document.body, '\\emph on', i)
-    k = find_token(document.body, '\\noun on', i)
-    l = find_token(document.body, '\\series', i)
-    m = find_token(document.body, '\\family', i)
-    n = find_token(document.body, '\\shape', i)
-    o = find_token(document.body, '\\color', i)
-    p = find_token(document.body, '\\size', i)
-    q = find_token(document.body, '\\bar under', i)
-    r = find_token(document.body, '\\uuline on', i)
-    s = find_token(document.body, '\\uwave on', i)
-    t = find_token(document.body, '\\strikeout on', i)
-    if j != -1 and j < z:
+    j = find_token(document.body, '\\emph on', i, z)
+    k = find_token(document.body, '\\noun on', i, z)
+    l = find_token(document.body, '\\series', i, z)
+    m = find_token(document.body, '\\family', i, z)
+    n = find_token(document.body, '\\shape', i, z)
+    o = find_token(document.body, '\\color', i, z)
+    p = find_token(document.body, '\\size', i, z)
+    q = find_token(document.body, '\\bar under', i, z)
+    r = find_token(document.body, '\\uuline on', i, z)
+    s = find_token(document.body, '\\uwave on', i, z)
+    t = find_token(document.body, '\\strikeout on', i, z)
+    if j != -1:
       document.body.insert(z - 2, "\\emph default")
-    if k != -1 and k < z:
+    if k != -1:
       document.body.insert(z - 2, "\\noun default")
-    if l != -1 and l < z:
+    if l != -1:
       document.body.insert(z - 2, "\\series default")
-    if m != -1 and m < z:
+    if m != -1:
       document.body.insert(z - 2, "\\family default")
-    if n != -1 and n < z:
+    if n != -1:
       document.body.insert(z - 2, "\\shape default")
-    if o != -1 and o < z:
+    if o != -1:
       document.body.insert(z - 2, "\\color inherit")
-    if p != -1 and p < z:
+    if p != -1:
       document.body.insert(z - 2, "\\size default")
-    if q != -1 and q < z:
+    if q != -1:
       document.body.insert(z - 2, "\\bar default")
-    if r != -1 and r < z:
+    if r != -1:
       document.body.insert(z - 2, "\\uuline default")
-    if s != -1 and s < z:
+    if s != -1:
       document.body.insert(z - 2, "\\uwave default")
-    if t != -1 and t < z:
+    if t != -1:
       document.body.insert(z - 2, "\\strikeout default")
     document.body[i:i + 4] = put_cmd_in_ert(LaTeXname + "{")
     i += 1
