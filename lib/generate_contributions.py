@@ -745,12 +745,12 @@ contributers = [
                  u"Norwegian documentation and localization"),
 
      contributer(u"Richard Heck",
-                 "rgheck () brown ! edu",
+                 "rgheck () comcast ! net",
                  "GPL",
                  "GPL Statement",
                  "m=117501689204059",
                  "27 March 2007",
-                 u"Bug fixes, layout modules, BibTeX code"),
+                 u"Bug fixes, layout modules, BibTeX code, XHTML export"),
 
      contributer(u"Bennett Helm",
                  "bennett.helm () fandm ! edu",
@@ -1167,6 +1167,14 @@ contributers = [
                  "m=112681895510418",
                  "15 September 2005",
                  u"Conversion of all shell scripts to Python, shortcuts dialog, session, view-source, auto-view, embedding features and scons build system."),
+
+     contributer(u'John Perry',
+                 "john.perry () usm ! edu",
+                 "GPL",
+                 "Contributions",
+                 "m=128874016511551",
+                 "2 November 2010",
+                 u"Named theorems module."),
 
      contributer(u"Joacim Persson",
                  "sp2joap1 () ida ! his ! se",
