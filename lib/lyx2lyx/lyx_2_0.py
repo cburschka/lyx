@@ -2254,44 +2254,44 @@ def convert_rule(document):
     i = 0
     while True:
       i = find_token(document.body, "\\lyxline" , i)
-      if i != -1:
-        j = find_token(document.body, "\\color" , i - 2)
-        if j == i - 2:
-          color = document.body[j] + '\n'
-        else:
-          color = ''
-        k = find_token(document.body, "\\begin_layout Standard" , i - 4)
-        # we need to handle the case that \lyxline is in a separate paragraph and that it is colored
-        # the result is then an extra empty paragraph which we get by adding an empty ERT inset
-        if k == i - 4 and j == i - 2 and document.body[i - 1] == '':
-          layout = '\\begin_inset ERT\nstatus collapsed\n\n\\begin_layout Plain Layout\n\n\n\\end_layout\n\n\\end_inset\n' \
-            + '\\end_layout\n\n' \
-            + '\\begin_layout Standard\n'
-        elif k == i - 2 and document.body[i - 1] == '':
-          layout = ''
-        else:
-          layout = '\\end_layout\n\n' \
-            + '\\begin_layout Standard\n'
-        l = find_token(document.body, "\\begin_layout Standard" , i + 4)
-        if l == i + 4 and document.body[i + 1] == '':
-          layout2 = ''
-        else:
-          layout2 = '\\end_layout\n' \
-            + '\n\\begin_layout Standard\n'
-        subst = layout \
-          + '\\noindent\n\n' \
-          + color \
-          + '\\begin_inset CommandInset line\n' \
-          + 'LatexCommand rule\n' \
-          + 'offset "0.5ex"\n' \
-          + 'width "100line%"\n' \
-          + 'height "1pt"\n' \
-          + '\n\\end_inset\n\n\n' \
-          + layout2
-        document.body[i] = subst
-        i += 1
-      else:
+      if i == -1:
         return
+        
+      j = find_token(document.body, "\\color" , i - 2)
+      if j == i - 2:
+        color = document.body[j] + '\n'
+      else:
+        color = ''
+      k = find_token(document.body, "\\begin_layout Standard" , i - 4)
+      # we need to handle the case that \lyxline is in a separate paragraph and that it is colored
+      # the result is then an extra empty paragraph which we get by adding an empty ERT inset
+      if k == i - 4 and j == i - 2 and document.body[i - 1] == '':
+        layout = '\\begin_inset ERT\nstatus collapsed\n\n\\begin_layout Plain Layout\n\n\n\\end_layout\n\n\\end_inset\n' \
+          + '\\end_layout\n\n' \
+          + '\\begin_layout Standard\n'
+      elif k == i - 2 and document.body[i - 1] == '':
+        layout = ''
+      else:
+        layout = '\\end_layout\n\n' \
+          + '\\begin_layout Standard\n'
+      l = find_token(document.body, "\\begin_layout Standard" , i + 4)
+      if l == i + 4 and document.body[i + 1] == '':
+        layout2 = ''
+      else:
+        layout2 = '\\end_layout\n' \
+          + '\n\\begin_layout Standard\n'
+      subst = layout \
+        + '\\noindent\n\n' \
+        + color \
+        + '\\begin_inset CommandInset line\n' \
+        + 'LatexCommand rule\n' \
+        + 'offset "0.5ex"\n' \
+        + 'width "100line%"\n' \
+        + 'height "1pt"\n' \
+        + '\n\\end_inset\n\n\n' \
+        + layout2
+      document.body[i] = subst
+      i += 1
 
 
 def revert_rule(document):
