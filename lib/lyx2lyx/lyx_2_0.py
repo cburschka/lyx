@@ -441,43 +441,50 @@ def revert_tabularvalign(document):
       i = find_token(document.body, "\\begin_inset Tabular", i)
       if i == -1:
           return
-      j = find_token(document.body, "</cell>", i)
-      if j == -1:
-          document.warning("Malformed LyX document: Could not find end of tabular cell.")
-          i += 1
+      end = find_end_of_inset(document.body, i)
+      if end == -1:
+          document.warning("Can't find end of inset at line " + str(i))
+          i = j
           continue
-      # don't set a box for longtables, only delete tabularvalignment
-      # the alignment is 2 lines below \\begin_inset Tabular
-      p = document.body[i + 2].find("islongtable")
-      if p > -1:
-          q = document.body[i + 2].find("tabularvalignment")
-          if q > -1:
-              document.body[i + 2] = document.body[i + 2][:q - 1]
-              document.body[i + 2] = document.body[i + 2] + '>'
-          i = i + 1
+      fline = find_token(document.body, "<features", i, end)
+      if fline == -1:
+          document.warning("Can't find features for inset at line " + str(i))
+          i = end
+          continue
+      p = document.body[fline].find("islongtable")
+      if p != -1:
+          q = document.body[fline].find("tabularvalignment")
+          if q != -1:
+              # FIXME
+              # This seems wrong: It removes everything after 
+              # tabularvalignment, too.
+              document.body[fline] = document.body[fline][:q - 1] + '>'
+          i = end
           continue
 
        # no longtable
       tabularvalignment = 'c'
       # which valignment is specified?
-      m = document.body[i + 2].find('tabularvalignment="top"')
-      if m > -1:
+      m = document.body[fline].find('tabularvalignment="top"')
+      if m != -1:
           tabularvalignment = 't'
-      m = document.body[i + 2].find('tabularvalignment="bottom"')
-      if m > -1:
+      m = document.body[fline].find('tabularvalignment="bottom"')
+      if m != -1:
           tabularvalignment = 'b'
       # delete tabularvalignment
-      q = document.body[i + 2].find("tabularvalignment")
-      if q > -1:
-          document.body[i + 2] = document.body[i + 2][:q - 1]
-          document.body[i + 2] = document.body[i + 2] + '>'
+      q = document.body[fline].find("tabularvalignment")
+      if q != -1:
+          # FIXME
+          # This seems wrong: It removes everything after 
+          # tabularvalignment, too.
+          document.body[fline] = document.body[fline][:q - 1] + '>'
 
       # don't add a box when centered
       if tabularvalignment == 'c':
-          i = j
+          i = end
           continue
       subst = ['\\end_layout', '\\end_inset']
-      document.body[j:j] = subst # just inserts those lines
+      document.body[end:end] = subst # just inserts those lines
       subst = ['\\begin_inset Box Frameless',
           'position "' + tabularvalignment +'"',
           'hor_pos "c"',
@@ -493,7 +500,7 @@ def revert_tabularvalign(document):
           '',
           '\\begin_layout Plain Layout']
       document.body[i:i] = subst # this just inserts the array at i
-      i += len(subst) + 2 # adjust i to save a few cycles
+      i = end + len(subst) # adjust i to save a few cycles
 
 
 def revert_phantom(document):
