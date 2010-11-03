@@ -310,11 +310,6 @@ def latex_length(string):
     else:
         return "True," + string
 
-###############################################################################
-###
-### Conversion and reversion routines
-###
-###############################################################################
 
 def revert_flex_inset(document, name, LaTeXname, position):
   " Convert flex insets to TeX code "
@@ -416,8 +411,11 @@ def revert_layout_command(document, name, LaTeXname, position):
     i += 1
 
 
-####################################################################
-
+###############################################################################
+###
+### Conversion and reversion routines
+###
+###############################################################################
 
 def revert_swiss(document):
     " Set language german-ch to ngerman "
