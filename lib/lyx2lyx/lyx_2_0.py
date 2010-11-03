@@ -503,11 +503,11 @@ def revert_tabularvalign(document):
       i = end + len(subst) # adjust i to save a few cycles
 
 
-def revert_phantom(document):
+def revert_phantom_types(document, ptype, cmd):
     " Reverts phantom to ERT "
     i = 0
     while True:
-      i = find_token(document.body, "\\begin_inset Phantom Phantom", i)
+      i = find_token(document.body, "\\begin_inset Phantom " + ptype, i)
       if i == -1:
           return
       end = find_end_of_inset(document.body, i)
@@ -527,7 +527,7 @@ def revert_phantom(document):
           continue
       substi = ["\\begin_inset ERT", "status collapsed", "",
                 "\\begin_layout Plain Layout", "", "", "\\backslash", 
-                "phantom{", "\\end_layout", "", "\\end_inset"]
+                cmd + "{", "\\end_layout", "", "\\end_inset"]
       substj = ["\\size default", "", "\\begin_inset ERT", "status collapsed", "",
                 "\\begin_layout Plain Layout", "", "}", "\\end_layout", "", "\\end_inset"]
       # do the later one first so as not to mess up the numbering
@@ -536,60 +536,14 @@ def revert_phantom(document):
       i = end + len(substi) + len(substj) - (end - bend) - (blay - i) - 2
 
 
+def revert_phantom(document):
+    revert_phantom_types(document, "Phantom", "phantom")
+    
 def revert_hphantom(document):
-    " Reverts hphantom to ERT "
-    i = 0
-    j = 0
-    while True:
-      i = find_token(document.body, "\\begin_inset Phantom HPhantom", i)
-      if i == -1:
-          return
-      substi = document.body[i].replace('\\begin_inset Phantom HPhantom', \
-                '\\begin_inset ERT\nstatus collapsed\n\n' \
-                '\\begin_layout Plain Layout\n\n\n\\backslash\n' \
-                'hphantom{\n\\end_layout\n\n\\end_inset\n')
-      substi = substi.split('\n')
-      document.body[i:i + 4] = substi
-      i += len(substi)
-      j = find_token(document.body, "\\end_layout", i)
-      if j == -1:
-          document.warning("Malformed LyX document: Could not find end of HPhantom inset.")
-          return
-      substj = document.body[j].replace('\\end_layout', \
-                '\\size default\n\n\\begin_inset ERT\nstatus collapsed\n\n' \
-                '\\begin_layout Plain Layout\n\n' \
-                '}\n\\end_layout\n\n\\end_inset\n')
-      substj = substj.split('\n')
-      document.body[j:j + 4] = substj
-      i += len(substj)
-
+    revert_phantom_types(document, "HPhantom", "hphantom")
 
 def revert_vphantom(document):
-    " Reverts vphantom to ERT "
-    i = 0
-    j = 0
-    while True:
-      i = find_token(document.body, "\\begin_inset Phantom VPhantom", i)
-      if i == -1:
-          return
-      substi = document.body[i].replace('\\begin_inset Phantom VPhantom', \
-                '\\begin_inset ERT\nstatus collapsed\n\n' \
-                '\\begin_layout Plain Layout\n\n\n\\backslash\n' \
-                'vphantom{\n\\end_layout\n\n\\end_inset\n')
-      substi = substi.split('\n')
-      document.body[i:i + 4] = substi
-      i += len(substi)
-      j = find_token(document.body, "\\end_layout", i)
-      if j == -1:
-          document.warning("Malformed LyX document: Could not find end of VPhantom inset.")
-          return
-      substj = document.body[j].replace('\\end_layout', \
-                '\\size default\n\n\\begin_inset ERT\nstatus collapsed\n\n' \
-                '\\begin_layout Plain Layout\n\n' \
-                '}\n\\end_layout\n\n\\end_inset\n')
-      substj = substj.split('\n')
-      document.body[j:j + 4] = substj
-      i += len(substj)
+    revert_phantom_types(document, "VPhantom", "vphantom")
 
 
 def revert_xetex(document):
