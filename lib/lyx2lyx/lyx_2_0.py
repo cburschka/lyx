@@ -658,7 +658,7 @@ def revert_backgroundcolor(document):
     i = find_token(document.header, "\\backgroundcolor", 0)
     if i == -1:
         return
-    colorcode = get_value(document.header, '\\backgroundcolor', 0)
+    colorcode = get_value(document.header, '\\backgroundcolor', i)
     del document.header[i]
     # don't clutter the preamble if backgroundcolor is not set
     if colorcode == "#ffffff":
