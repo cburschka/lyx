@@ -534,6 +534,8 @@ VSpace const & BufferParams::getDefSkip() const
 
 void BufferParams::setDefSkip(VSpace const & vs)
 {
+	// DEFSKIP will cause an infinite loop
+	LASSERT(vs.kind() != VSpace::DEFSKIP, return);
 	pimpl_->defskip = vs;
 }
 
