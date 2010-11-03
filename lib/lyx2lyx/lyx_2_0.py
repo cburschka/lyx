@@ -646,42 +646,32 @@ def revert_outputformat(document):
     del document.header[i]
 
 
+def hex2ratio(s):
+    val = string.atoi(s, 16)
+    if val != 0:
+      val += 1
+    return str(val / 256.0)
+
+
 def revert_backgroundcolor(document):
     " Reverts background color to preamble code "
-    i = 0
-    colorcode = ""
-    while True:
-      i = find_token(document.header, "\\backgroundcolor", i)
-      if i == -1:
-          return
-      colorcode = get_value(document.header, '\\backgroundcolor', 0)
-      del document.header[i]
-      # don't clutter the preamble if backgroundcolor is not set
-      if colorcode == "#ffffff":
-          continue
-      # the color code is in the form #rrggbb where every character denotes a hex number
-      # convert the string to an int
-      red = string.atoi(colorcode[1:3],16)
-      # we want the output "0.5" for the value "127" therefore add here
-      if red != 0:
-          red = red + 1
-      redout = float(red) / 256
-      green = string.atoi(colorcode[3:5],16)
-      if green != 0:
-          green = green + 1
-      greenout = float(green) / 256
-      blue = string.atoi(colorcode[5:7],16)
-      if blue != 0:
-          blue = blue + 1
-      blueout = float(blue) / 256
-      # write the preamble
-      insert_to_preamble(0, document,
-                           '% Commands inserted by lyx2lyx to set the background color\n'
-                           + '\\@ifundefined{definecolor}{\\usepackage{color}}{}\n'
-                           + '\\definecolor{page_backgroundcolor}{rgb}{'
-                           + str(redout) + ', ' + str(greenout)
-                           + ', ' + str(blueout) + '}\n'
-                           + '\\pagecolor{page_backgroundcolor}\n')
+    i = find_token(document.header, "\\backgroundcolor", 0)
+    if i == -1:
+        return
+    colorcode = get_value(document.header, '\\backgroundcolor', 0)
+    del document.header[i]
+    # don't clutter the preamble if backgroundcolor is not set
+    if colorcode == "#ffffff":
+        return
+    red   = hex2ratio(colorcode[1:3])
+    green = hex2ratio(colorcode[3:5])
+    blue  = hex2ratio(colorcode[5:7])
+    insert_to_preamble(0, document,
+                          '% Commands inserted by lyx2lyx to set the background color\n'
+                          + '\\@ifundefined{definecolor}{\\usepackage{color}}{}\n'
+                          + '\\definecolor{page_backgroundcolor}{rgb}{'
+                          + red + ',' + green + ',' + blue + '}\n'
+                          + '\\pagecolor{page_backgroundcolor}\n')
 
 
 def revert_splitindex(document):
