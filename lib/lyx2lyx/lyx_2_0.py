@@ -2299,38 +2299,39 @@ def revert_rule(document):
     i = 0
     while 1:
       i = find_token(document.body, "\\begin_inset CommandInset line" , i)
-      if i != -1:
-        # find end of inset
-        j = find_token(document.body, "\\end_inset" , i)
-        # assure we found the end_inset of the current inset
-        if j > i + 6 or j == -1:
-          document.warning("Malformed LyX document: Can't find end of line inset.")
-          return
-        # determine the optional offset
-        k = find_token(document.body, 'offset', i)
-        if k != -1 and k < j:
-          offset = document.body[k][8:]
-        else:
-          offset = '0"'
-        # determine the width
-        l = find_token(document.body, 'width', k + 1)
-        width = document.body[l][7:]
-        # determine the height
-        m = find_token(document.body, 'height', l + 1)
-        height = document.body[m][8:]
-        # remove trailing '"'
-        offset = offset[:-1]
-        width = width[:-1]
-        height = height[:-1]
-        # output the \rule command
-        if offset <> "0":
-          subst = "\\rule[" + offset + "]{" + width + "}{" + height + "}"
-        else:
-          subst = "\\rule{" + width + "}{" + height + "}"
-        document.body[i:j + 1] = put_cmd_in_ert(subst)
-        i += 1
-      else:
+      if i == -1:
         return
+      # find end of inset
+      j = find_token(document.body, "\\end_inset" , i)
+      # assure we found the end_inset of the current inset
+      if j > i + 6 or j == -1:
+        document.warning("Malformed LyX document: Can't find end of line inset.")
+        return
+      # determine the optional offset
+      k = find_token(document.body, 'offset', i, j)
+      if k != -1:
+        offset = document.body[k][8:-1]
+      else:
+        offset = ""
+      # determine the width
+      l = find_token(document.body, 'width', i, j)
+      if l != -1:
+        width = document.body[l][7:-1]
+      else:
+        width = "100col%"
+      # determine the height
+      m = find_token(document.body, 'height', i, j)
+      if m != -1:
+        height = document.body[m][8:-1]
+      else:
+        height = "1pt"
+      # output the \rule command
+      if offset:
+        subst = "\\rule[" + offset + "]{" + width + "}{" + height + "}"
+      else:
+        subst = "\\rule{" + width + "}{" + height + "}"
+      document.body[i:j + 1] = put_cmd_in_ert(subst)
+      i += 1
 
 
 def revert_diagram(document):
@@ -2377,8 +2378,8 @@ def convert_bibtex_clearpage(document):
       continue
 
     # only act if there is the option "bibtotoc"
-    m = find_token(document.body, 'options', j)
-    if m == -1 or m > k:
+    m = find_token(document.body, 'options', j, k)
+    if m == -1:
       document.warning("Can't find options for bibliography inset at line " + str(j))
       j = k
       continue
