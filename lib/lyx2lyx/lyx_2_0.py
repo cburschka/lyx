@@ -506,29 +506,34 @@ def revert_tabularvalign(document):
 def revert_phantom(document):
     " Reverts phantom to ERT "
     i = 0
-    j = 0
     while True:
       i = find_token(document.body, "\\begin_inset Phantom Phantom", i)
       if i == -1:
           return
-      substi = document.body[i].replace('\\begin_inset Phantom Phantom', \
-                '\\begin_inset ERT\nstatus collapsed\n\n' \
-                '\\begin_layout Plain Layout\n\n\n\\backslash\n' \
-                'phantom{\n\\end_layout\n\n\\end_inset\n')
-      substi = substi.split('\n')
-      document.body[i:i + 4] = substi
-      i += len(substi)
-      j = find_token(document.body, "\\end_layout", i)
-      if j == -1:
-          document.warning("Malformed LyX document: Could not find end of Phantom inset.")
-          return
-      substj = document.body[j].replace('\\end_layout', \
-                '\\size default\n\n\\begin_inset ERT\nstatus collapsed\n\n' \
-                '\\begin_layout Plain Layout\n\n' \
-                '}\n\\end_layout\n\n\\end_inset\n')
-      substj = substj.split('\n')
-      document.body[j:j + 4] = substj
-      i += len(substj)
+      end = find_end_of_inset(document.body, i)
+      if end == -1:
+          document.warning("Can't find end of inset at line " + str(i))
+          i += 1
+          continue
+      blay = find_token(document.body, "\\begin_layout Plain Layout", i, end)
+      if blay == -1:
+          document.warning("Can't find layout for inset at line " + str(i))
+          i = end
+          continue
+      bend = find_token(document.body, "\\end_layout", blay, end)
+      if bend == -1:
+          document.warning("Malformed LyX document: Could not find end of Phantom inset's layout.")
+          i = end
+          continue
+      substi = ["\\begin_inset ERT", "status collapsed", "",
+                "\\begin_layout Plain Layout", "", "", "\\backslash", 
+                "phantom{", "\\end_layout", "", "\\end_inset"]
+      substj = ["\\size default", "", "\\begin_inset ERT", "status collapsed", "",
+                "\\begin_layout Plain Layout", "", "}", "\\end_layout", "", "\\end_inset"]
+      # do the later one first so as not to mess up the numbering
+      document.body[bend:end + 1] = substj
+      document.body[i:blay + 1] = substi
+      i = end + len(substi) + len(substj) - (end - bend) - (blay - i) - 2
 
 
 def revert_hphantom(document):
