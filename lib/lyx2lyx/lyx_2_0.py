@@ -911,14 +911,14 @@ def revert_nomencl_cwidth(document):
       j = find_end_of_inset(document.body, i)
       l = find_token(document.body, "width", i, j)
       if l == -1:
-            #Can't find width option for nomencl_print
-            i = j
-            continue
+        document.warning("Can't find width option for nomencl_print!")
+        i = j
+        continue
       width = get_value(document.body, "width", i, j).strip('"')
       del document.body[l]
       add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
       add_to_preamble(document, ["\\setlength{\\nomlabelwidth}{" + width + "}"])
-      i = i + 1
+      i = j - 1
 
 
 def revert_applemac(document):
