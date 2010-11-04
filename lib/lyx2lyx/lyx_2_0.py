@@ -1112,9 +1112,7 @@ def convert_author_id(document):
         m = re_author.match(document.header[i])
         if m:
             name = m.group(2)
-            email = ''
-            if m.lastindex == 3:
-                email = m.group(3)
+            email = m.group(3)
             document.header[i] = "\\author %i %s %s" % (anum, name, email)
         # FIXME Should this really be incremented if we didn't match?
         anum += 1
@@ -1137,40 +1135,37 @@ def convert_author_id(document):
 def revert_author_id(document):
     " Remove the author_id from the \\author definition "
     i = 0
-    j = 0
+    anum = 0
+    rx = re.compile(r'(\\author)\s+(\d+)\s+(\".*\")\s*(.*)$')
     idmap = dict()
+
     while True:
         i = find_token(document.header, "\\author", i)
         if i == -1:
             break
-        
-        r = re.compile(r'(\\author) (\d+) (\".*\")\s?(.*)$')
-        m = r.match(document.header[i])
-        if m != None:
+        m = rx.match(document.header[i])
+        if m:
             author_id = int(m.group(2))
-            idmap[author_id] = j
+            idmap[author_id] = anum
             name = m.group(3)
-            
-            email = ''
-            if m.lastindex == 4:
-                email = m.group(4)
+            email = m.group(4)
             document.header[i] = "\\author %s %s" % (name, email)
-        i = i + 1
-        j = j + 1
+        i += 1
+        # FIXME Should this be incremented if we didn't match?
+        anum += 1
 
-    k = 0
+    i = 0
     while True:
-        k = find_token(document.body, "\\change_", k)
-        if k == -1:
+        i = find_token(document.body, "\\change_", i)
+        if i == -1:
             break
-
-        change = document.body[k].split(' ');
+        change = document.body[i].split(' ');
         if len(change) == 3:
             type = change[0]
             author_id = int(change[1])
             time = change[2]
-            document.body[k] = "%s %i %s" % (type, idmap[author_id], time)
-        k = k + 1
+            document.body[i] = "%s %i %s" % (type, idmap[author_id], time)
+        i += 1
 
 
 def revert_suppress_date(document):
