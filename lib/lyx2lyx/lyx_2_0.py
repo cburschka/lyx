@@ -445,12 +445,12 @@ def revert_tabularvalign(document):
       end = find_end_of_inset(document.body, i)
       if end == -1:
           document.warning("Can't find end of inset at line " + str(i))
-          i = j
+          i += 1
           continue
       fline = find_token(document.body, "<features", i, end)
       if fline == -1:
           document.warning("Can't find features for inset at line " + str(i))
-          i = end
+          i += 1
           continue
       p = document.body[fline].find("islongtable")
       if p != -1:
@@ -460,7 +460,7 @@ def revert_tabularvalign(document):
               # This seems wrong: It removes everything after 
               # tabularvalignment, too.
               document.body[fline] = document.body[fline][:q - 1] + '>'
-          i = end
+          i += 1
           continue
 
        # no longtable
@@ -501,7 +501,9 @@ def revert_tabularvalign(document):
           '',
           '\\begin_layout Plain Layout']
       document.body[i:i] = subst # this just inserts the array at i
-      i = end + len(subst) # adjust i to save a few cycles
+      # since there could be a tabular inside a tabular, we cannot
+      # jump to end
+      i += len(subst)
 
 
 def revert_phantom_types(document, ptype, cmd):
@@ -934,18 +936,30 @@ def revert_applemac(document):
 def revert_longtable_align(document):
     " Remove longtable alignment setting "
     i = 0
-    j = 0
     while True:
       i = find_token(document.body, "\\begin_inset Tabular", i)
       if i == -1:
           break
-      # the alignment is 2 lines below \\begin_inset Tabular
-      j = document.body[i + 2].find("longtabularalignment")
+      end = find_end_of_inset(document.body, i)
+      if end == -1:
+          document.warning("Can't find end of inset at line " + str(i))
+          i += 1
+          continue
+      fline = find_token(document.body, "<features", i, end)
+      if fline == -1:
+          document.warning("Can't find features for inset at line " + str(i))
+          i += 1
+          continue
+      j = document.body[fline].find("longtabularalignment")
       if j == -1:
-          break
-      document.body[i + 2] = document.body[i + 2][:j - 1]
-      document.body[i + 2] = document.body[i + 2] + '>'
-      i = i + 1
+          i += 1
+          continue
+      # FIXME Is this correct? It wipes out everything after the 
+      # one we found.
+      document.body[fline] = document.body[fline][:j - 1] + '>'
+      # since there could be a tabular inside this one, we 
+      # cannot jump to end.
+      i += 1
 
 
 def revert_branch_filename(document):
