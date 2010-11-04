@@ -1537,8 +1537,8 @@ def convert_prettyref(document):
 			document.warning("Malformed LyX document: No end of InsetRef!")
 			i += 1
 			continue
-		k = find_token(document.body, "LatexCommand prettyref", i)
-		if k != -1 and k < j:
+		k = find_token(document.body, "LatexCommand prettyref", i, j)
+		if k != -1:
 			document.body[k] = "LatexCommand formatted"
 		i = j + 1
 	document.header.insert(-1, "\\use_refstyle 0")
@@ -1559,8 +1559,8 @@ def revert_refstyle(document):
 			document.warning("Malformed LyX document: No end of InsetRef")
 			i += 1
 			continue
-		k = find_token(document.body, "LatexCommand formatted", i)
-		if k != -1 and k < j:
+		k = find_token(document.body, "LatexCommand formatted", i, j)
+		if k != -1:
 			document.body[k] = "LatexCommand prettyref"
 		i = j + 1
 	i = find_token(document.header, "\\use_refstyle", 0)
