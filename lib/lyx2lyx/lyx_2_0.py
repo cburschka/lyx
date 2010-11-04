@@ -923,12 +923,12 @@ def revert_nomencl_cwidth(document):
 
 def revert_applemac(document):
     " Revert applemac encoding to auto "
-    i = 0
-    if document.encoding == "applemac":
-        document.encoding = "auto"
-        i = find_token(document.header, "\\encoding", 0)
-        if i != -1:
-            document.header[i] = "\\encoding auto"
+    if document.encoding != "applemac":
+      return
+    document.encoding = "auto"
+    i = find_token(document.header, "\\encoding", 0)
+    if i != -1:
+        document.header[i] = "\\encoding auto"
 
 
 def revert_longtable_align(document):
