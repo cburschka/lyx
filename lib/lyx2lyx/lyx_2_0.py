@@ -1294,7 +1294,7 @@ def revert_includeonly(document):
             return
         j = find_end_of(document.header, i, "\\begin_includeonly", "\\end_includeonly")
         if j == -1:
-            # this should not happen
+            document.warning("Unable to find end of includeonly section!!")
             break
         document.header[i : j + 1] = []
 
