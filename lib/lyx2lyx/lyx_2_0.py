@@ -259,11 +259,11 @@ def lyx2latex(document, lines):
     return content
 
 
-def latex_length(string):
+def latex_length(slen):
     'Convert lengths to their LaTeX representation.'
     i = 0
     percent = False
-    # the string has the form
+    # the slen has the form
     # ValueUnit+ValueUnit-ValueUnit or
     # ValueUnit+-ValueUnit
     # the + and - (glue lengths) are optional
@@ -274,41 +274,42 @@ def latex_length(string):
              "page%":"\\paperwidth", "line%":"\\linewidth",
              "theight%":"\\textheight", "pheight%":"\\paperheight"}
     for unit in units.keys():
-        i = string.find(unit)
+        i = slen.find(unit)
         if i == -1:
-            percent = True
-            minus = string.rfind("-", 1, i)
-            plus = string.rfind("+", 0, i)
-            latex_unit = units[unit]
-            if plus == -1 and minus == -1:
-                value = string[:i]
-                value = str(float(value)/100)
-                end = string[i + len(unit):]
-                string = value + latex_unit + end
-            if plus > minus:
-                value = string[plus + 1:i]
-                value = str(float(value)/100)
-                begin = string[:plus + 1]
-                end = string[i+len(unit):]
-                string = begin + value + latex_unit + end
-            if plus < minus:
-                value = string[minus + 1:i]
-                value = str(float(value)/100)
-                begin = string[:minus + 1]
-                string = begin + value + latex_unit
+            continue
+        percent = True
+        minus = slen.rfind("-", 1, i)
+        plus = slen.rfind("+", 0, i)
+        latex_unit = units[unit]
+        if plus == -1 and minus == -1:
+            value = slen[:i]
+            value = str(float(value)/100)
+            end = slen[i + len(unit):]
+            slen = value + latex_unit + end
+        if plus > minus:
+            value = slen[plus + 1:i]
+            value = str(float(value)/100)
+            begin = slen[:plus + 1]
+            end = slen[i+len(unit):]
+            slen = begin + value + latex_unit + end
+        if plus < minus:
+            value = slen[minus + 1:i]
+            value = str(float(value)/100)
+            begin = slen[:minus + 1]
+            slen = begin + value + latex_unit
 
     # replace + and -, but only if the - is not the first character
-    string = string[0] + string[1:].replace("+", " plus ").replace("-", " minus ")
+    slen = slen[0] + slen[1:].replace("+", " plus ").replace("-", " minus ")
     # handle the case where "+-1mm" was used, because LaTeX only understands
     # "plus 1mm minus 1mm"
-    if string.find("plus  minus"):
-        lastvaluepos = string.rfind(" ")
-        lastvalue = string[lastvaluepos:]
-        string = string.replace("  ", lastvalue + " ")
+    if slen.find("plus  minus"):
+        lastvaluepos = slen.rfind(" ")
+        lastvalue = slen[lastvaluepos:]
+        slen = slen.replace("  ", lastvalue + " ")
     if percent ==  False:
-        return "False," + string
+        return "False," + slen
     else:
-        return "True," + string
+        return "True," + slen
 
 
 def revert_flex_inset(document, name, LaTeXname, position):
