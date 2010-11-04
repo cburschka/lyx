@@ -1170,19 +1170,16 @@ def revert_author_id(document):
 
 def revert_suppress_date(document):
     " Revert suppressing of default document date to preamble code "
-    i = 0
-    while True:
-      i = find_token(document.header, "\\suppress_date", i)
-      if i == -1:
-          break
-      # remove the preamble line and write to the preamble
-      # when suppress_date was true
-      date = get_value(document.header, "\\suppress_date", i)
-      if date == "true":
-          add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
-          add_to_preamble(document, ["\\date{}"])
-      del document.header[i]
-      i = i + 1
+    i = find_token(document.header, "\\suppress_date", 0)
+    if i == -1:
+        return
+    # remove the preamble line and write to the preamble
+    # when suppress_date was true
+    date = get_value(document.header, "\\suppress_date", i)
+    if date == "true":
+        add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
+        add_to_preamble(document, ["\\date{}"])
+    del document.header[i]
 
 
 def revert_mhchem(document):
