@@ -1654,66 +1654,66 @@ def convert_flexnames(document):
       i += 1
 
 
-flex_insets = [
-  ["Alert", "CharStyle:Alert"],
-  ["Code", "CharStyle:Code"],
-  ["Concepts", "CharStyle:Concepts"],
-  ["E-Mail", "CharStyle:E-Mail"],
-  ["Emph", "CharStyle:Emph"],
-  ["Expression", "CharStyle:Expression"],
-  ["Initial", "CharStyle:Initial"],
-  ["Institute", "CharStyle:Institute"],
-  ["Meaning", "CharStyle:Meaning"],
-  ["Noun", "CharStyle:Noun"],
-  ["Strong", "CharStyle:Strong"],
-  ["Structure", "CharStyle:Structure"],
-  ["ArticleMode", "Custom:ArticleMode"],
-  ["Endnote", "Custom:Endnote"],
-  ["Glosse", "Custom:Glosse"],
-  ["PresentationMode", "Custom:PresentationMode"],
-  ["Tri-Glosse", "Custom:Tri-Glosse"]
-]
+flex_insets = {
+  "Alert" : "CharStyle:Alert",
+  "Code" : "CharStyle:Code",
+  "Concepts" : "CharStyle:Concepts",
+  "E-Mail" : "CharStyle:E-Mail",
+  "Emph" : "CharStyle:Emph",
+  "Expression" : "CharStyle:Expression",
+  "Initial" : "CharStyle:Initial",
+  "Institute" : "CharStyle:Institute",
+  "Meaning" : "CharStyle:Meaning",
+  "Noun" : "CharStyle:Noun",
+  "Strong" : "CharStyle:Strong",
+  "Structure" : "CharStyle:Structure",
+  "ArticleMode" : "Custom:ArticleMode",
+  "Endnote" : "Custom:Endnote",
+  "Glosse" : "Custom:Glosse",
+  "PresentationMode" : "Custom:PresentationMode",
+  "Tri-Glosse" : "Custom:Tri-Glosse"
+}
 
-flex_elements = [
-  ["Abbrev", "Element:Abbrev"],
-  ["CCC-Code", "Element:CCC-Code"],
-  ["Citation-number", "Element:Citation-number"],
-  ["City", "Element:City"],
-  ["Code", "Element:Code"],
-  ["CODEN", "Element:CODEN"],
-  ["Country", "Element:Country"],
-  ["Day", "Element:Day"],
-  ["Directory", "Element:Directory"],
-  ["Dscr", "Element:Dscr"],
-  ["Email", "Element:Email"],
-  ["Emph", "Element:Emph"],
-  ["Filename", "Element:Filename"],
-  ["Firstname", "Element:Firstname"],
-  ["Fname", "Element:Fname"],
-  ["GuiButton", "Element:GuiButton"],
-  ["GuiMenu", "Element:GuiMenu"],
-  ["GuiMenuItem", "Element:GuiMenuItem"],
-  ["ISSN", "Element:ISSN"],
-  ["Issue-day", "Element:Issue-day"],
-  ["Issue-months", "Element:Issue-months"],
-  ["Issue-number", "Element:Issue-number"],
-  ["KeyCap", "Element:KeyCap"],
-  ["KeyCombo", "Element:KeyCombo"],
-  ["Keyword", "Element:Keyword"],
-  ["Literal", "Element:Literal"],
-  ["MenuChoice", "Element:MenuChoice"],
-  ["Month", "Element:Month"],
-  ["Orgdiv", "Element:Orgdiv"],
-  ["Orgname", "Element:Orgname"],
-  ["Postcode", "Element:Postcode"],
-  ["SS-Code", "Element:SS-Code"],
-  ["SS-Title", "Element:SS-Title"],
-  ["State", "Element:State"],
-  ["Street", "Element:Street"],
-  ["Surname", "Element:Surname"],
-  ["Volume", "Element:Volume"],
-  ["Year", "Element:Year"]
-]
+flex_elements = {
+  "Abbrev" : "Element:Abbrev",
+  "CCC-Code" : "Element:CCC-Code",
+  "Citation-number" : "Element:Citation-number",
+  "City" : "Element:City",
+  "Code" : "Element:Code",
+  "CODEN" : "Element:CODEN",
+  "Country" : "Element:Country",
+  "Day" : "Element:Day",
+  "Directory" : "Element:Directory",
+  "Dscr" : "Element:Dscr",
+  "Email" : "Element:Email",
+  "Emph" : "Element:Emph",
+  "Filename" : "Element:Filename",
+  "Firstname" : "Element:Firstname",
+  "Fname" : "Element:Fname",
+  "GuiButton" : "Element:GuiButton",
+  "GuiMenu" : "Element:GuiMenu",
+  "GuiMenuItem" : "Element:GuiMenuItem",
+  "ISSN" : "Element:ISSN",
+  "Issue-day" : "Element:Issue-day",
+  "Issue-months" : "Element:Issue-months",
+  "Issue-number" : "Element:Issue-number",
+  "KeyCap" : "Element:KeyCap",
+  "KeyCombo" : "Element:KeyCombo",
+  "Keyword" : "Element:Keyword",
+  "Literal" : "Element:Literal",
+  "MenuChoice" : "Element:MenuChoice",
+  "Month" : "Element:Month",
+  "Orgdiv" : "Element:Orgdiv",
+  "Orgname" : "Element:Orgname",
+  "Postcode" : "Element:Postcode",
+  "SS-Code" : "Element:SS-Code",
+  "SS-Title" : "Element:SS-Title",
+  "State" : "Element:State",
+  "Street" : "Element:Street",
+  "Surname" : "Element:Surname",
+  "Volume" : "Element:Volume",
+  "Year" : "Element:Year"
+}
 
 
 def revert_flexnames(document):
@@ -1733,13 +1733,9 @@ def revert_flexnames(document):
       document.warning("Illegal flex inset: " + document.body[i])
       i += 1
       continue
-    
     style = m.group(1)
-    for f in flexlist:
-      if f[0] == style:
-        document.body[i] = "\\begin_inset Flex " + f[1]
-        break
-
+    if style in flexlist:
+      document.body[i] = "\\begin_inset Flex " + flexlist[style]
     i += 1
 
 
