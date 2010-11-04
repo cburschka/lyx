@@ -1463,16 +1463,29 @@ def convert_use_makebox(document):
   " Adds use_makebox option for boxes "
   i = 0
   while 1:
-    # remove the option use_makebox
     i = find_token(document.body, '\\begin_inset Box', i)
     if i == -1:
       return
-    k = find_token(document.body, 'use_parbox', i)
+    # all of this is to make sure we actually find the use_parbox
+    # that is an option for this box, not some text elsewhere.
+    z = find_end_of_inset(document.body, i)
+    if z == -1:
+      document.warning("Can't find end of box inset!!")
+      i += 1
+      continue
+    blay = find_token(document.body, "\\begin_layout", i, z)
+    if blay == -1:
+      document.warning("Can't find layout in box inset!!")
+      i = z
+      continue
+    # so now we are looking for use_parbox before the box's layout
+    k = find_token(document.body, 'use_parbox', i, blay)
     if k == -1:
       document.warning("Malformed LyX document: Can't find use_parbox statement in box.")
-      return
+      i = z
+      continue
     document.body.insert(k + 1, "use_makebox 0")
-    i = k + 1
+    i = z + 1
 
 
 def revert_IEEEtran(document):
