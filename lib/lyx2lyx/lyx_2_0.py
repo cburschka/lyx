@@ -1020,28 +1020,29 @@ def revert_percent_vspace_lengths(document):
           break
       # only revert if a custom length was set and if
       # it used a percent length
-      line = document.body[i]
       r = re.compile(r'\\begin_inset VSpace (.*)$')
-      m = r.match(line)
+      m = r.match(document.body[i])
       length = m.group(1)
-      if length not in ('defskip', 'smallskip', 'medskip', 'bigskip', 'vfill'):
-          # check if the space has a star (protected space)
-          protected = (document.body[i].rfind("*") != -1)
+      if length in ('defskip', 'smallskip', 'medskip', 'bigskip', 'vfill'):
+         i += 1
+         continue
+      # check if the space has a star (protected space)
+      protected = (document.body[i].rfind("*") != -1)
+      if protected:
+          length = length.rstrip('*')
+      # handle percent lengths
+      length = latex_length(length)
+      # latex_length returns "bool,length"
+      percent = length.split(",")[0]
+      length = length.split(",")[1]
+      # revert the VSpace inset to ERT
+      if percent == "True":
           if protected:
-              length = length.rstrip('*')
-          # handle percent lengths
-          length = latex_length(length)
-          # latex_length returns "bool,length"
-          percent = length.split(",")[0]
-          length = length.split(",")[1]
-          # revert the VSpace inset to ERT
-          if percent == "True":
-              if protected:
-                  subst = [old_put_cmd_in_ert("\\vspace*{" + length + "}")]
-              else:
-                  subst = [old_put_cmd_in_ert("\\vspace{" + length + "}")]
-              document.body[i:i + 2] = subst
-      i = i + 1
+              subst = put_cmd_in_ert("\\vspace*{" + length + "}")
+          else:
+              subst = put_cmd_in_ert("\\vspace{" + length + "}")
+          document.body[i:i + 2] = subst
+      i += 1
 
 
 def revert_percent_hspace_lengths(document):
