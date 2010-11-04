@@ -898,7 +898,7 @@ def revert_nomencl_width(document):
             i = j
             continue
       del document.body[l]
-      i = i + 1
+      i = j - 1
 
 
 def revert_nomencl_cwidth(document):
