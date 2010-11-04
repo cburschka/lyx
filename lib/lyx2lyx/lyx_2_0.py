@@ -1741,11 +1741,9 @@ def revert_flexnames(document):
 
 def convert_mathdots(document):
     " Load mathdots automatically "
-    while True:
-      i = find_token(document.header, "\\use_esint" , 0)
-      if i != -1:
-        document.header.insert(i + 1, "\\use_mathdots 1")
-      break
+    i = find_token(document.header, "\\use_esint" , 0)
+    if i != -1:
+      document.header.insert(i + 1, "\\use_mathdots 1")
 
 
 def revert_mathdots(document):
