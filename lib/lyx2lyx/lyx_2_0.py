@@ -29,11 +29,14 @@ from parser_tools import find_token, find_end_of, find_tokens, get_value, get_va
 # Private helper functions
 
 def remove_option(document, m, option):
+    ''' removes option from line m. returns whether we did anything '''
     l = document.body[m].find(option)
-    if l != -1:
-        val = document.body[m][l:].split('"')[1]
-        document.body[m] = document.body[m][:l - 1] + document.body[m][l+len(option + '="' + val + '"'):]
-    return l
+    if l == -1:
+        return False
+    val = document.body[m][l:].split('"')[1]
+    document.body[m] = document.body[m][:l - 1] + document.body[m][l+len(option + '="' + val + '"'):]
+    return True
+
 
 def find_end_of_inset(lines, i):
     " Find end of inset, where lines[i] is included."
