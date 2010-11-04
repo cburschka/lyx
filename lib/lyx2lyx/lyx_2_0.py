@@ -275,7 +275,7 @@ def latex_length(string):
              "theight%":"\\textheight", "pheight%":"\\paperheight"}
     for unit in units.keys():
         i = string.find(unit)
-        if i != -1:
+        if i == -1:
             percent = True
             minus = string.rfind("-", 1, i)
             plus = string.rfind("+", 0, i)
@@ -990,26 +990,24 @@ def revert_paragraph_indentation(document):
 
 def revert_percent_skip_lengths(document):
     " Revert relative lengths for paragraph skip separation to preamble code "
-    i = 0
-    while True:
-      i = find_token(document.header, "\\defskip", i)
-      if i == -1:
-          break
-      length = get_value(document.header, "\\defskip", i)
-      # only revert when a custom length was set and when
-      # it used a percent length
-      if length not in ('smallskip', 'medskip', 'bigskip'):
-          # handle percent lengths
-          length = latex_length(length)
-          # latex_length returns "bool,length"
-          percent = length.split(",")[0]
-          length = length.split(",")[1]
-          if percent == "True":
-              add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
-              add_to_preamble(document, ["\\setlength{\\parskip}{" + length + "}"])
-              # set defskip to medskip as default
-              document.header[i] = "\\defskip medskip"
-      i = i + 1
+    i = find_token(document.header, "\\defskip", i)
+    if i == -1:
+        return
+    length = get_value(document.header, "\\defskip", i)
+    # only revert when a custom length was set and when
+    # it used a percent length
+    if length in ('smallskip', 'medskip', 'bigskip'):
+        return
+    # handle percent lengths
+    length = latex_length(length)
+    # latex_length returns "bool,length"
+    percent = length.split(",")[0]
+    length = length.split(",")[1]
+    if percent == "True":
+        add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
+        add_to_preamble(document, ["\\setlength{\\parskip}{" + length + "}"])
+        # set defskip to medskip as default
+        document.header[i] = "\\defskip medskip"
 
 
 def revert_percent_vspace_lengths(document):
