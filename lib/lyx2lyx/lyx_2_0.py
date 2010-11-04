@@ -40,6 +40,11 @@ def find_end_of_inset(lines, i):
     return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
 
 
+def find_end_of_layout(lines, i):
+    " Find end of layout, where lines[i] is included."
+    return find_end_of(lines, i, "\\begin_layout", "\\end_layout")
+
+
 # Note that text can be either a list of lines or a single line.
 def add_to_preamble(document, text):
     """ Add text to the preamble if it is not already there.
@@ -1319,33 +1324,54 @@ def revert_multirow(document):
       multirow = True
       # remove the multirow tag, set the valignment to top
       # and remove the bottom line
+      # FIXME Are we sure these always have space around them?
       document.body[i] = document.body[i].replace(' multirow="3" ', ' ')
       document.body[i] = document.body[i].replace('valignment="middle"', 'valignment="top"')
       document.body[i] = document.body[i].replace(' bottomline="true" ', ' ')
       # write ERT to create the multirow cell
       # use 2 rows and 2cm as default with because the multirow span
       # and the column width is only hardly accessible
-      subst = [old_put_cmd_in_ert("\\multirow{2}{2cm}{")]
-      document.body[i + 4:i + 4] = subst
-      i = find_token(document.body, "</cell>", i)
-      if i == -1:
-           document.warning("Malformed LyX document: Could not find end of tabular cell.")
-           break
-      subst = [old_put_cmd_in_ert("}")]
-      document.body[i - 3:i - 3] = subst
-      # cell type 4 is multirow part cell
-      i = find_token(document.body, '<cell multirow="4"', i)
-      if i == -1:
-          break
-      # remove the multirow tag, set the valignment to top
-      # and remove the top line
-      document.body[i] = document.body[i].replace(' multirow="4" ', ' ')
-      document.body[i] = document.body[i].replace('valignment="middle"', 'valignment="top"')
-      document.body[i] = document.body[i].replace(' topline="true" ', ' ')
-      i = i + 1
+      cend = find_token(document.body, "</cell>", i)
+      if cend == -1:
+          document.warning("Malformed LyX document: Could not find end of tabular cell.")
+          i += 1
+          continue
+      blay = find_token(document.body, "\\begin_layout", i, cend)
+      if blay == -1:
+          document.warning("Can't find layout for cell!")
+          i = j
+          continue
+      bend = find_end_of_layout(document.body, blay)
+      if blay == -1:
+          document.warning("Can't find end of layout for cell!")
+          i = cend
+          continue
+
+      # do the later one first, so as not to mess up the numbering
+      # we are wrapping the whole cell in this ert
+      # so before the end of the layout...
+      document.body[bend:bend] = put_cmd_in_ert("}")
+      # ...and after the beginning
+      document.body[blay+1:blay+1] = put_cmd_in_ert("\\multirow{2}{2cm}{")
+
+      while True:
+          # cell type 4 is multirow part cell
+          k = find_token(document.body, '<cell multirow="4"', cend)
+          if k == -1:
+              break
+          # remove the multirow tag, set the valignment to top
+          # and remove the top line
+          # FIXME Are we sure these always have space around them?
+          document.body[k] = document.body[k].replace(' multirow="4" ', ' ')
+          document.body[k] = document.body[k].replace('valignment="middle"', 'valignment="top"')
+          document.body[k] = document.body[k].replace(' topline="true" ', ' ')
+          k += 1
+      # this will always be ok
+      i = cend
+
     if multirow == True:
-        add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
-        add_to_preamble(document, ["\\usepackage{multirow}"])
+        add_to_preamble(document, 
+          ["% lyx2lyx multirow additions ", "\\usepackage{multirow}"])
 
 
 def convert_math_output(document):
