@@ -23,7 +23,8 @@ import re, string
 import unicodedata
 import sys, os
 
-from parser_tools import find_token, find_end_of, find_tokens, get_value, get_value_string
+from parser_tools import find_token, find_end_of, find_tokens, \
+  find_end_of_inset, find_end_of_layout, get_value, get_value_string
 
 ####################################################################
 # Private helper functions
@@ -36,16 +37,6 @@ def remove_option(document, m, option):
     val = document.body[m][l:].split('"')[1]
     document.body[m] = document.body[m][:l - 1] + document.body[m][l+len(option + '="' + val + '"'):]
     return True
-
-
-def find_end_of_inset(lines, i):
-    " Find end of inset, where lines[i] is included."
-    return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
-
-
-def find_end_of_layout(lines, i):
-    " Find end of layout, where lines[i] is included."
-    return find_end_of(lines, i, "\\begin_layout", "\\end_layout")
 
 
 # Note that text can be either a list of lines or a single line.

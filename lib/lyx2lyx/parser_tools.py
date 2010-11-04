@@ -231,3 +231,13 @@ def find_nonempty_line(lines, start, end = 0):
         if is_nonempty_line(lines[i]):
             return i
     return -1
+
+
+def find_end_of_inset(lines, i):
+    " Find end of inset, where lines[i] is included."
+    return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
+
+
+def find_end_of_layout(lines, i):
+    " Find end of layout, where lines[i] is included."
+    return find_end_of(lines, i, "\\begin_layout", "\\end_layout")
