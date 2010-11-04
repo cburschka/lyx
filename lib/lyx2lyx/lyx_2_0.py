@@ -1052,14 +1052,19 @@ def revert_percent_hspace_lengths(document):
       i = find_token(document.body, "\\begin_inset space \\hspace", i)
       if i == -1:
           break
-      protected = (document.body[i].find("\\hspace*{}") != -1)
-      # only revert if a custom length was set and if
-      # it used a percent length
-      length = get_value(document.body, '\\length', i + 1)
+      j = find_end_of_inset(document.body, i)
+      if j == -1:
+          document.warning("Can't find end of inset at line " + str(i))
+          i += 1
+          continue
+      # only revert if a custom length was set...
+      length = get_value(document.body, '\\length', i + 1, j)
       if length == '':
           document.warning("Malformed lyx document: Missing '\\length' in Space inset.")
-          return
-      # handle percent lengths
+          i = j
+          continue
+      protected = (document.body[i].find("\\hspace*{}") != -1)
+      # ...and if it used a percent length
       length = latex_length(length)
       # latex_length returns "bool,length"
       percent = length.split(",")[0]
@@ -1067,11 +1072,12 @@ def revert_percent_hspace_lengths(document):
       # revert the HSpace inset to ERT
       if percent == "True":
           if protected:
-              subst = [old_put_cmd_in_ert("\\hspace*{" + length + "}")]
+              subst = put_cmd_in_ert("\\hspace*{" + length + "}")
           else:
-              subst = [old_put_cmd_in_ert("\\hspace{" + length + "}")]
-          document.body[i:i + 3] = subst
-      i = i + 2
+              subst = put_cmd_in_ert("\\hspace{" + length + "}")
+          document.body[i:j + 1] = subst
+      # if we did a substitution, this will still be ok
+      i = j
 
 
 def revert_hspace_glue_lengths(document):
