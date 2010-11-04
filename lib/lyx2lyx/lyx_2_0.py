@@ -1507,7 +1507,7 @@ def revert_IEEEtran(document):
         i = find_token(document.body, '\\begin_layout ' + layout, i)
         if i == -1:
           break
-        j = find_end_of(document.body, i, '\\begin_layout', '\\end_layout')
+        j = find_end_of_layout(document.body, i)
         if j == -1:
           document.warning("Malformed LyX document: Can't find end of " + layout + " layout.")
           i += 1
@@ -1515,10 +1515,11 @@ def revert_IEEEtran(document):
         if layout in obsoletedby:
           document.body[i] = "\\begin_layout " + obsoletedby[layout]
           i = j
-        else:
-          content = lyx2latex(document, document.body[i:j + 1])
-          add_to_preamble(document, [latexcmd[layout] + "{" + content + "}"])
-          del document.body[i:j + 1]
+          continue
+        content = lyx2latex(document, document.body[i:j + 1])
+        add_to_preamble(document, [latexcmd[layout] + "{" + content + "}"])
+        del document.body[i:j + 1]
+        # no need to reset i
 
 
 def convert_prettyref(document):
