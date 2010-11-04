@@ -785,6 +785,7 @@ def revert_subindex(document):
         document.warning("Malformed LyX document: Missing \\use_indices.")
         return
     indices = get_value(document.header, "\\use_indices", i)
+    useindices = (indices == "true")
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset CommandInset index_print", i)
@@ -793,13 +794,13 @@ def revert_subindex(document):
         k = find_end_of_inset(document.body, i)
         ctype = get_value(document.body, 'LatexCommand', i, k)
         if ctype != "printsubindex":
-            i = i + 1
+            i = k + 1
             continue
         ptype = get_value(document.body, 'type', i, k).strip('"')
-        if indices == "false":
+        if not useindices:
             del document.body[i:k + 1]
         else:
-            subst = [old_put_cmd_in_ert("\\printsubindex[" + ptype + "]{}")]
+            subst = put_cmd_in_ert("\\printsubindex[" + ptype + "]{}")
             document.body[i:k + 1] = subst
         i = i + 1
 
@@ -811,6 +812,7 @@ def revert_printindexall(document):
         document.warning("Malformed LyX document: Missing \\use_indices.")
         return
     indices = get_value(document.header, "\\use_indices", i)
+    useindices = (indices == "true")
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset CommandInset index_print", i)
@@ -819,12 +821,12 @@ def revert_printindexall(document):
         k = find_end_of_inset(document.body, i)
         ctype = get_value(document.body, 'LatexCommand', i, k)
         if ctype != "printindex*" and ctype != "printsubindex*":
-            i = i + 1
+            i = k
             continue
-        if indices == "false":
+        if not useindices:
             del document.body[i:k + 1]
         else:
-            subst = [old_put_cmd_in_ert("\\" + ctype + "{}")]
+            subst = put_cmd_in_ert("\\" + ctype + "{}")
             document.body[i:k + 1] = subst
         i = i + 1
 
