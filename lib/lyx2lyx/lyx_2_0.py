@@ -1479,19 +1479,19 @@ def revert_inset_preview(document):
 def revert_equalspacing_xymatrix(document):
     " Revert a Formula with xymatrix@! to an ERT inset "
     i = 0
-    j = 0
     has_preamble = False
     has_equal_spacing = False
+
     while True:
-      found = -1
       i = find_token(document.body, "\\begin_inset Formula", i)
       if i == -1:
           break
       j = find_end_of_inset(document.body, i)
       if j == -1:
           document.warning("Malformed LyX document: Could not find end of Formula inset.")
-          break
-          
+          i += 1
+          continue
+      
       for curline in range(i,j):
           found = document.body[curline].find("\\xymatrix@!")
           if found != -1:
@@ -1503,7 +1503,7 @@ def revert_equalspacing_xymatrix(document):
           content += document.body[i + 1:j]
           subst = put_cmd_in_ert(content)
           document.body[i:j + 1] = subst
-          i += len(subst)
+          i += len(subst) - (j - i) + 1
       else:
           for curline in range(i,j):
               l = document.body[curline].find("\\xymatrix")
@@ -1511,8 +1511,9 @@ def revert_equalspacing_xymatrix(document):
                   has_preamble = True;
                   break;
           i = j + 1
+  
     if has_equal_spacing and not has_preamble:
-        add_to_preamble(document, ['\\usepackage[all]{xy}'])
+        add_to_preamble(document, ['% lyx2lyx xymatrix addition', '\\usepackage[all]{xy}'])
 
 
 def revert_notefontcolor(document):
