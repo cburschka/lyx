@@ -352,8 +352,11 @@ def revert_layout_command(document, name, LaTeXname, position):
 
 
 def hex2ratio(s):
-    val = string.atoi(s, 16)
-    if val != 0:
-      val += 1
-    return str(val / 256.0)
+  try:
+    val = int(s, 16)
+  except:
+    val = 0
+  if val != 0:
+    val += 1
+  return str(val / 256.0)
 
