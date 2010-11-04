@@ -210,7 +210,7 @@ def lyx2latex(document, lines):
       elif hspace != "":
           # The LyX length is in line[8:], after the \length keyword
           # latex_length returns "bool,length"
-          length = latex_length(line[8:]).split(",")[1]
+          length = latex_length(line[8:])[1]
           line = hspace + "{" + length + "}"
           hspace = ""
       elif line.isspace() or \
@@ -260,7 +260,11 @@ def lyx2latex(document, lines):
 
 
 def latex_length(slen):
-    'Convert lengths to their LaTeX representation.'
+    ''' 
+    Convert lengths to their LaTeX representation. Returns (bool, length),
+    where the bool tells us if it was a percentage, and the length is the
+    LaTeX representation.
+    '''
     i = 0
     percent = False
     # the slen has the form
@@ -306,10 +310,7 @@ def latex_length(slen):
         lastvaluepos = slen.rfind(" ")
         lastvalue = slen[lastvaluepos:]
         slen = slen.replace("  ", lastvalue + " ")
-    if percent ==  False:
-        return "False," + slen
-    else:
-        return "True," + slen
+    return (percent, slen)
 
 
 def revert_flex_inset(document, name, LaTeXname, position):
@@ -982,8 +983,7 @@ def revert_paragraph_indentation(document):
     # we need only remove the line if indentation is default
     if length != "default":
       # handle percent lengths
-      # latex_length returns "bool,length"
-      length = latex_length(length).split(",")[1]
+      length = latex_length(length)[1]
       add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
       add_to_preamble(document, ["\\setlength{\\parindent}{" + length + "}"])
     del document.header[i]
@@ -1000,10 +1000,7 @@ def revert_percent_skip_lengths(document):
     if length in ('smallskip', 'medskip', 'bigskip'):
         return
     # handle percent lengths
-    length = latex_length(length)
-    # latex_length returns "bool,length"
-    percent = length.split(",")[0]
-    length = length.split(",")[1]
+    percent, length = latex_length(length)
     if percent == "True":
         add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
         add_to_preamble(document, ["\\setlength{\\parskip}{" + length + "}"])
@@ -1031,10 +1028,7 @@ def revert_percent_vspace_lengths(document):
       if protected:
           length = length.rstrip('*')
       # handle percent lengths
-      length = latex_length(length)
-      # latex_length returns "bool,length"
-      percent = length.split(",")[0]
-      length = length.split(",")[1]
+      percent, length = latex_length(length)
       # revert the VSpace inset to ERT
       if percent == "True":
           if protected:
@@ -1065,10 +1059,7 @@ def revert_percent_hspace_lengths(document):
           continue
       protected = (document.body[i].find("\\hspace*{}") != -1)
       # ...and if it used a percent length
-      length = latex_length(length)
-      # latex_length returns "bool,length"
-      percent = length.split(",")[0]
-      length = length.split(",")[1]
+      percent, length = latex_length(length)
       # revert the HSpace inset to ERT
       if percent == "True":
           if protected:
@@ -1096,8 +1087,7 @@ def revert_hspace_glue_lengths(document):
       glue  = re.compile(r'.+[\+-]')
       if glue.search(length):
           # handle percent lengths
-          # latex_length returns "bool,length"
-          length = latex_length(length).split(",")[1]
+          length = latex_length(length)[1]
           # revert the HSpace inset to ERT
           if protected:
               subst = [old_put_cmd_in_ert("\\hspace*{" + length + "}")]
@@ -1877,8 +1867,7 @@ def revert_makebox(document):
       length = document.body[l][7:]
       # remove trailing '"'
       length = length[:-1]
-      # latex_length returns "bool,length"
-      length = latex_length(length).split(",")[1]
+      length = latex_length(length)[1]
       subst = "\\makebox[" + length + "][" \
         + align + "]{"
       document.body[i:y + 1] = put_cmd_in_ert(subst)
