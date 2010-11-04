@@ -634,7 +634,7 @@ def revert_percent_skip_lengths(document):
         return
     # handle percent lengths
     percent, length = latex_length(length)
-    if percent == "True":
+    if percent:
         add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
         add_to_preamble(document, ["\\setlength{\\parskip}{" + length + "}"])
         # set defskip to medskip as default
@@ -663,7 +663,7 @@ def revert_percent_vspace_lengths(document):
       # handle percent lengths
       percent, length = latex_length(length)
       # revert the VSpace inset to ERT
-      if percent == "True":
+      if percent:
           if protected:
               subst = put_cmd_in_ert("\\vspace*{" + length + "}")
           else:
@@ -696,7 +696,7 @@ def revert_percent_hspace_lengths(document):
       # ...and if it used a percent length
       percent, length = latex_length(length)
       # revert the HSpace inset to ERT
-      if percent == "True":
+      if percent:
           subst = put_cmd_in_ert("\\hspace" + protected + "{" + length + "}")
           document.body[i:j + 1] = subst
       # if we did a substitution, this will still be ok
