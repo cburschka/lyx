@@ -257,14 +257,12 @@ static docstring const ogonek_def = from_ascii(
 	"\\newcommand{\\ogonek}[1]{\\mathpalette\\doogonek{#1}}\n");
 
 static docstring const lyxref_def = from_ascii(
-		"\\makeatletter\n"
 		"\\RS@ifundefined{thmref}\n"
 		"  {\\def\\RSthmtxt{theorem~}\\newref{thm}{name = \\RSthmtxt}}\n" 
 		"  {}\n"
 		"\\RS@ifundefined{lemref}\n"
 		"  {\\def\\RSlemtxt{lemma~}\\newref{lem}{name = \\RSlemtxt}}\n" 
-		"  {}\n"
-		"\\makeatother\n");
+		"  {}\n");
 
 
 /////////////////////////////////////////////////////////////////////
