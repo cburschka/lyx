@@ -34,13 +34,13 @@ from lyx2lyx_tools import add_to_preamble, insert_to_preamble, \
 ####################################################################
 # Private helper functions
 
-def remove_option(document, m, option):
+def remove_option(lines, m, option):
     ''' removes option from line m. returns whether we did anything '''
-    l = document.body[m].find(option)
+    l = lines[m].find(option)
     if l == -1:
         return False
-    val = document.body[m][l:].split('"')[1]
-    document.body[m] = document.body[m][:l - 1] + document.body[m][l+len(option + '="' + val + '"'):]
+    val = lines[m][l:].split('"')[1]
+    lines[m] = lines[m][:l - 1] + lines[m][l+len(option + '="' + val + '"'):]
     return True
 
 
@@ -1380,15 +1380,34 @@ def revert_output_sync(document):
     del document.header[i]
 
 
-# FIXME This doesn't do anything!!
 def revert_align_decimal(document):
-  l = 0
+  i = 0
   while True:
-    l = document.body[l].find('alignment=decimal')
-    if l == -1:
-        break
-    remove_option(document, l, 'decimal_point')
-    document.body[l].replace('decimal', 'center')
+    i = find_token(document.body, "\\begin_inset Tabular", i)
+    if i == -1:
+      return
+    j = find_end_of_inset(document.body, i)
+    if j == -1:
+      document.warning("Unable to find end of Tabular inset at line " + str(i))
+      i += 1
+      continue
+    cell = find_token(document.body, "<cell", i, j)
+    if cell == -1:
+      document.warning("Can't find any cells in Tabular inset at line " + str(i))
+      i = j
+      continue
+    k = i + 1
+    while True:
+      k = find_token(document.body, "<column", k, cell)
+      if k == -1:
+        return
+      if document.body[k].find('alignment="decimal"') == -1:
+        k += 1
+        continue
+      remove_option(document.body, k, 'decimal_point')
+      document.body[k] = \
+        document.body[k].replace('alignment="decimal"', 'alignment="center"')
+      k += 1
 
 
 def convert_optarg(document):
