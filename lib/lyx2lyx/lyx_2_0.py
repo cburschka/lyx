@@ -1175,9 +1175,7 @@ def revert_notefontcolor(document):
       ['% Commands inserted by lyx2lyx to set the font color',
         '% for greyed-out notes',
         '\\@ifundefined{definecolor}{\\usepackage{color}}{}'
-        '\\definecolor{note_fontcolor}{rgb}{'
-          + str(red) + ', ' + str(green)
-          + ', ' + str(blue) + '}',
+        '\\definecolor{note_fontcolor}{rgb}{%s,%s,%s}' % (red, green, blue),
         '\\renewenvironment{lyxgreyedout}',
         ' {\\textcolor{note_fontcolor}\\bgroup}{\\egroup}'])
 
@@ -1218,8 +1216,7 @@ def revert_fontcolor(document):
     insert_to_preamble(0, document,
       ['% Commands inserted by lyx2lyx to set the font color',
       '\\@ifundefined{definecolor}{\\usepackage{color}}{}',
-      '\\definecolor{document_fontcolor}{rgb}{'
-       + str(red) + ', ' + str(green) + ', ' + str(blue) + '}',
+      '\\definecolor{document_fontcolor}{rgb}{%s,%s,%s}' % (red, green, blue),
       '\\color{document_fontcolor}'])
 
 
