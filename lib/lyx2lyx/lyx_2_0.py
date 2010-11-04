@@ -1767,34 +1767,45 @@ def convert_mathdots(document):
 
 def revert_mathdots(document):
     " Load mathdots if used in the document "
-    i = 0
-    ddots = re.compile(r'\\begin_inset Formula .*\\ddots', re.DOTALL)
-    vdots = re.compile(r'\\begin_inset Formula .*\\vdots', re.DOTALL)
-    iddots = re.compile(r'\\begin_inset Formula .*\\iddots', re.DOTALL)
+
     mathdots = find_token(document.header, "\\use_mathdots" , 0)
-    no = find_token(document.header, "\\use_mathdots 0" , 0)
-    auto = find_token(document.header, "\\use_mathdots 1" , 0)
-    yes = find_token(document.header, "\\use_mathdots 2" , 0)
-    if mathdots != -1:
+    usedots = 1
+    if mathdots == -1:
+      document.warning("No \\usemathdots line. Assuming auto.")
+    else:
       del document.header[mathdots]
+      val = get_value(document.header, "\\use_mathdots", mathdots)
+      try:
+        usedots = int(val)
+      except:
+        document.warning("Invalid \\use_mathdots value: " + val)
+
+    if mathdots == 0:
+      # do not load case
+      return
+  
+    if mathdots == 2:
+      # force load case
+      add_to_preamble(["% lyx2lyx mathdots addition", "\\usepackage{mathdots}"])
+      return
+    
+    # so we are in the auto case. we want to load mathdots if \iddots is used.
+    i = 0
     while True:
       i = find_token(document.body, '\\begin_inset Formula', i)
       if i == -1:
         return
       j = find_end_of_inset(document.body, i)
       if j == -1:
-        document.warning("Malformed LyX document: Can't find end of Formula inset.")
-        return 
-      k = ddots.search("\n".join(document.body[i:j]))
-      l = vdots.search("\n".join(document.body[i:j]))
-      m = iddots.search("\n".join(document.body[i:j]))
-      if (yes == -1) and ((no != -1) or (not k and not l and not m) or (auto != -1 and not m)):
+        document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(i))
         i += 1
         continue
-      # use \@ifundefined to catch also the "auto" case
-      add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
-      add_to_preamble(document, ["\\@ifundefined{iddots}{\\usepackage{mathdots}}\n"])
-      return
+      code = "\n".join(document.body[i:j])
+      if code.find("\\iddots") != -1:
+        add_to_preamble(document, ["% lyx2lyx mathdots addition", 
+        "\\@ifundefined{iddots}{\\usepackage{mathdots}}"])
+        return
+      i = j
 
 
 def convert_rule(document):
