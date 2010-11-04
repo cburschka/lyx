@@ -1769,7 +1769,6 @@ def revert_mathdots(document):
     " Load mathdots if used in the document "
 
     mathdots = find_token(document.header, "\\use_mathdots" , 0)
-    usedots = 1
     if mathdots == -1:
       document.warning("No \\usemathdots line. Assuming auto.")
     else:
@@ -1778,18 +1777,17 @@ def revert_mathdots(document):
       try:
         usedots = int(val)
       except:
-        document.warning("Invalid \\use_mathdots value: " + val)
+        document.warning("Invalid \\use_mathdots value: " + val + ". Assuming auto.")
         # probably usedots has not been changed, but be safe.
         usedots = 1
 
-    if usedots == 0:
-      # do not load case
-      return
-  
-    if usedots == 2:
-      # force load case
-      add_to_preamble(["% lyx2lyx mathdots addition", "\\usepackage{mathdots}"])
-      return
+      if usedots == 0:
+        # do not load case
+        return
+      if usedots == 2:
+        # force load case
+        add_to_preamble(["% lyx2lyx mathdots addition", "\\usepackage{mathdots}"])
+        return
     
     # so we are in the auto case. we want to load mathdots if \iddots is used.
     i = 0
