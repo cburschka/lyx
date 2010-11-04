@@ -1102,37 +1102,37 @@ def revert_hspace_glue_lengths(document):
 def convert_author_id(document):
     " Add the author_id to the \\author definition and make sure 0 is not used"
     i = 0
-    j = 1
+    anum = 1
+    re_author = re.compile(r'(\\author) (\".*\")\s*(.*)$')
+    
     while True:
         i = find_token(document.header, "\\author", i)
         if i == -1:
             break
-        
-        r = re.compile(r'(\\author) (\".*\")\s?(.*)$')
-        m = r.match(document.header[i])
-        if m != None:
+        m = re_author.match(document.header[i])
+        if m:
             name = m.group(2)
-            
             email = ''
             if m.lastindex == 3:
                 email = m.group(3)
-            document.header[i] = "\\author %i %s %s" % (j, name, email)
-        j = j + 1
-        i = i + 1
+            document.header[i] = "\\author %i %s %s" % (anum, name, email)
+        # FIXME Should this really be incremented if we didn't match?
+        anum += 1
+        i += 1
         
-    k = 0
+    i = 0
     while True:
-        k = find_token(document.body, "\\change_", k)
-        if k == -1:
+        i = find_token(document.body, "\\change_", i)
+        if i == -1:
             break
-
-        change = document.body[k].split(' ');
+        change = document.body[i].split(' ');
         if len(change) == 3:
             type = change[0]
             author_id = int(change[1])
             time = change[2]
-            document.body[k] = "%s %i %s" % (type, author_id + 1, time)
-        k = k + 1
+            document.body[i] = "%s %i %s" % (type, author_id + 1, time)
+        i += 1
+
 
 def revert_author_id(document):
     " Remove the author_id from the \\author definition "
