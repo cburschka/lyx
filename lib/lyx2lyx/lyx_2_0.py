@@ -974,25 +974,18 @@ def revert_branch_filename(document):
 
 def revert_paragraph_indentation(document):
     " Revert custom paragraph indentation to preamble code "
-    i = 0
-    while True:
-      i = find_token(document.header, "\\paragraph_indentation", i)
-      if i == -1:
-          break
-      # only remove the preamble line if default
-      # otherwise also write the value to the preamble
-      length = get_value(document.header, "\\paragraph_indentation", i)
-      if length == "default":
-          del document.header[i]
-          break
-      else:
-          # handle percent lengths
-          # latex_length returns "bool,length"
-          length = latex_length(length).split(",")[1]
-          add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
-          add_to_preamble(document, ["\\setlength{\\parindent}{" + length + "}"])
-          del document.header[i]
-      i = i + 1
+    i = find_token(document.header, "\\paragraph_indentation", i)
+    if i == -1:
+      return
+    length = get_value(document.header, "\\paragraph_indentation", i)
+    # we need only remove the line if indentation is default
+    if length != "default":
+      # handle percent lengths
+      # latex_length returns "bool,length"
+      length = latex_length(length).split(",")[1]
+      add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
+      add_to_preamble(document, ["\\setlength{\\parindent}{" + length + "}"])
+    del document.header[i]
 
 
 def revert_percent_skip_lengths(document):
