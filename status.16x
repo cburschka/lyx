@@ -52,8 +52,6 @@ What's new
 
 - Add support for the math command \ddddot (part of bug 6872).
 
-- Fix crash due to unrecognized \defskip (bug 7014).
-
 
 * USER INTERFACE
 
@@ -96,6 +94,8 @@ What's new
 * DOCUMENT INPUT/OUTPUT
 
 - Fix a crash when dropping multiple files onto LyX (bug 6944).
+
+- Fix a crash due to unrecognized \defskip (bug 7014).
 
 - Assure that Japanese LaTeX (pLaTeX) is in fact only used for Japanese
   documents. This fixes major configuration problems with TeXLive 2010.
