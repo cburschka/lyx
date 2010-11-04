@@ -1177,19 +1177,20 @@ def revert_notefontcolor(document):
 
 def revert_turkmen(document):
     "Set language Turkmen to English" 
-    i = 0 
+
     if document.language == "turkmen": 
         document.language = "english" 
         i = find_token(document.header, "\\language", 0) 
         if i != -1: 
             document.header[i] = "\\language english" 
+
     j = 0 
     while True: 
         j = find_token(document.body, "\\lang turkmen", j) 
         if j == -1: 
             return 
         document.body[j] = document.body[j].replace("\\lang turkmen", "\\lang english") 
-        j = j + 1 
+        j += 1 
 
 
 def revert_fontcolor(document):
