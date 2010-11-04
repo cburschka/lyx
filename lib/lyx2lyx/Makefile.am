@@ -13,6 +13,8 @@ dist_lyx2lyx_PYTHON = \
 	lyx2lyx_lang.py \
 	generate_encoding_info.py \
 	parser_tools.py \
+	lyx2lyx_tools.py \
+	unicode_symbols.py \
 	LyX.py \
 	lyx_0_06.py \
 	lyx_0_08.py \
