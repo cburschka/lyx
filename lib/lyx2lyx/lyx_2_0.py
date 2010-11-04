@@ -1254,8 +1254,10 @@ def revert_lyx_version(document):
             return
         j = find_end_of_inset(document.body, i + 1)
         if j == -1:
-            # should not happen
             document.warning("Malformed LyX document: Could not find end of Info inset.")
+            i += 1
+            continue
+
         # We expect:
         # \begin_inset Info
         # type  "lyxinfo"
