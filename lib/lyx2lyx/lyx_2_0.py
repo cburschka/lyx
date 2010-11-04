@@ -62,10 +62,18 @@ def add_to_preamble(document, text):
     document.preamble.extend(text)
 
 
+# Note that text can be either a list of lines or a single line.
+# It should really be a list.
 def insert_to_preamble(index, document, text):
     """ Insert text to the preamble at a given line"""
+    
+    if not type(text) is list:
+      # split on \n just in case
+      # it'll give us the one element list we want
+      # if there's no \n, too
+      text = text.split('\n')
 
-    document.preamble.insert(index, text)
+    document.preamble[index:index] = text
 
 
 def read_unicodesymbols():
@@ -418,6 +426,13 @@ def revert_layout_command(document, name, LaTeXname, position):
     i += 1
 
 
+def hex2ratio(s):
+    val = string.atoi(s, 16)
+    if val != 0:
+      val += 1
+    return str(val / 256.0)
+
+
 ###############################################################################
 ###
 ### Conversion and reversion routines
@@ -653,13 +668,6 @@ def revert_outputformat(document):
         document.warning("Malformed LyX document: Missing \\default_output_format.")
         return
     del document.header[i]
-
-
-def hex2ratio(s):
-    val = string.atoi(s, 16)
-    if val != 0:
-      val += 1
-    return str(val / 256.0)
 
 
 def revert_backgroundcolor(document):
@@ -1524,39 +1532,26 @@ def revert_equalspacing_xymatrix(document):
 
 def revert_notefontcolor(document):
     " Reverts greyed-out note font color to preamble code "
-    i = 0
-    colorcode = ""
-    while True:
-      i = find_token(document.header, "\\notefontcolor", i)
-      if i == -1:
-          return
-      colorcode = get_value(document.header, '\\notefontcolor', 0)
-      del document.header[i]
-      # the color code is in the form #rrggbb where every character denotes a hex number
-      # convert the string to an int
-      red = string.atoi(colorcode[1:3],16)
-      # we want the output "0.5" for the value "127" therefore increment here
-      if red != 0:
-          red = red + 1
-      redout = float(red) / 256
-      green = string.atoi(colorcode[3:5],16)
-      if green != 0:
-          green = green + 1
-      greenout = float(green) / 256
-      blue = string.atoi(colorcode[5:7],16)
-      if blue != 0:
-          blue = blue + 1
-      blueout = float(blue) / 256
-      # write the preamble
-      insert_to_preamble(0, document,
-                           '% Commands inserted by lyx2lyx to set the font color\n'
-                           '% for greyed-out notes\n'
-                           + '\\@ifundefined{definecolor}{\\usepackage{color}}{}\n'
-                           + '\\definecolor{note_fontcolor}{rgb}{'
-                           + str(redout) + ', ' + str(greenout)
-                           + ', ' + str(blueout) + '}\n'
-                           + '\\renewenvironment{lyxgreyedout}\n'
-                           + ' {\\textcolor{note_fontcolor}\\bgroup}{\\egroup}\n')
+
+    i = find_token(document.header, "\\notefontcolor", 0)
+    if i == -1:
+        return
+    colorcode = get_value(document.header, '\\notefontcolor', i)
+    del document.header[i]
+    # the color code is in the form #rrggbb where every character denotes a hex number
+    red = hex2ratio(colorcode[1:3])
+    green = hex2ratio(colorcode[3:5])
+    blue = hex2ratio(colorcode[5:7])
+    # write the preamble
+    insert_to_preamble(0, document,
+      ['% Commands inserted by lyx2lyx to set the font color',
+        '% for greyed-out notes',
+        '\\@ifundefined{definecolor}{\\usepackage{color}}{}'
+        '\\definecolor{note_fontcolor}{rgb}{'
+          + str(red) + ', ' + str(green)
+          + ', ' + str(blue) + '}',
+        '\\renewenvironment{lyxgreyedout}',
+        ' {\\textcolor{note_fontcolor}\\bgroup}{\\egroup}'])
 
 
 def revert_turkmen(document):
