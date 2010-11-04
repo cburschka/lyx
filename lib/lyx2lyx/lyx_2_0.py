@@ -682,9 +682,12 @@ def revert_splitindex(document):
         return
     indices = get_value(document.header, "\\use_indices", i)
     preamble = ""
-    if indices == "true":
+    useindices = (indices == "true")
+    if useindices:
          preamble += "\\usepackage{splitidx}\n"
     del document.header[i]
+    
+    # deal with index declarations in the preamble
     i = 0
     while True:
         i = find_token(document.header, "\\index", i)
@@ -694,17 +697,20 @@ def revert_splitindex(document):
         if k == -1:
             document.warning("Malformed LyX document: Missing \\end_index.")
             return
-        line = document.header[i]
-        l = re.compile(r'\\index (.*)$')
-        m = l.match(line)
-        iname = m.group(1)
-        ishortcut = get_value(document.header, '\\shortcut', i, k)
-        if ishortcut != "" and indices == "true":
-            preamble += "\\newindex[" + iname + "]{" + ishortcut + "}\n"
+        if useindices:    
+          line = document.header[i]
+          l = re.compile(r'\\index (.*)$')
+          m = l.match(line)
+          iname = m.group(1)
+          ishortcut = get_value(document.header, '\\shortcut', i, k)
+          if ishortcut != "":
+              preamble += "\\newindex[" + iname + "]{" + ishortcut + "}\n"
         del document.header[i:k + 1]
-        i = 0
     if preamble != "":
         insert_to_preamble(0, document, preamble)
+        
+    # deal with index insets
+    # these need to have the argument removed
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset Index", i)
@@ -719,13 +725,17 @@ def revert_splitindex(document):
         else:
             k = find_end_of_inset(document.body, i)
             if k == -1:
-                 return
+                document.warning("Can't find end of index inset!")
+                i += 1
+                continue
             content = lyx2latex(document, document.body[i:k])
             # escape quotes
             content = content.replace('"', r'\"')
-            subst = [old_put_cmd_in_ert("\\sindex[" + itype + "]{" + content + "}")]
+            subst = put_cmd_in_ert("\\sindex[" + itype + "]{" + content + "}")
             document.body[i:k + 1] = subst
         i = i + 1
+        
+    # deal with index_print insets
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset CommandInset index_print", i)
@@ -736,10 +746,10 @@ def revert_splitindex(document):
         if ptype == "idx":
             j = find_token(document.body, "type", i, k)
             del document.body[j]
-        elif indices == "false":
+        elif not useindices:
             del document.body[i:k + 1]
         else:
-            subst = [old_put_cmd_in_ert("\\printindex[" + ptype + "]{}")]
+            subst = put_cmd_in_ert("\\printindex[" + ptype + "]{}")
             document.body[i:k + 1] = subst
         i = i + 1
 
