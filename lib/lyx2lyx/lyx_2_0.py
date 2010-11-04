@@ -1633,16 +1633,10 @@ def remove_Nameref(document):
 def revert_mathrsfs(document):
     " Load mathrsfs if \mathrsfs us use in the document "
     i = 0
-    end = len(document.body) - 1
-    while True:
-      j = document.body[i].find("\\mathscr{")
-      if j != -1:
-        add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
-        add_to_preamble(document, ["\\usepackage{mathrsfs}"])
-        break
-      if i == end:
-        break
-      i += 1
+    for line in document.body:
+      if line.find("\\mathscr{") != -1:
+        add_to_preamble(document, ["% lyx2lyx mathrsfs addition", "\\usepackage{mathrsfs}"])
+        return
 
 
 def convert_flexnames(document):
