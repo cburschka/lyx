@@ -833,7 +833,7 @@ def revert_printindexall(document):
 
 
 def revert_strikeout(document):
-  " Reverts \\strikeout character style "
+  " Reverts \\strikeout font attribute "
   changed = revert_font_attrs(document, "\\uuline", "\\uuline")
   changed = revert_font_attrs(document, "\\uwave", "\\uwave") or changed
   changed = revert_font_attrs(document, "\\strikeout", "\\sout")  or changed
@@ -845,7 +845,7 @@ def revert_strikeout(document):
 
 
 def revert_ulinelatex(document):
-    " Reverts \\uline character style "
+    " Reverts \\uline font attribute "
     i = find_token(document.body, '\\bar under', 0)
     if i == -1:
         return
