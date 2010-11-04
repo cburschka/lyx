@@ -833,6 +833,10 @@ def revert_mhchem(document):
             mhchem = "on"
         del document.header[i]
 
+    if mhchem == "off":
+      # don't load case
+      return 
+
     if mhchem == "auto":
         i = 0
         while True:
@@ -840,7 +844,7 @@ def revert_mhchem(document):
             if i == -1:
                break
             line = document.body[i]
-            if line.find("\\ce{") != -1 or line.find("\\cf{") != 1:
+            if line.find("\\ce{") != -1 or line.find("\\cf{") != -1:
               mhchem = "on"
               break
             i += 1
@@ -1772,8 +1776,8 @@ def revert_mathdots(document):
     if mathdots == -1:
       document.warning("No \\usemathdots line. Assuming auto.")
     else:
-      del document.header[mathdots]
       val = get_value(document.header, "\\use_mathdots", mathdots)
+      del document.header[mathdots]
       try:
         usedots = int(val)
       except:
