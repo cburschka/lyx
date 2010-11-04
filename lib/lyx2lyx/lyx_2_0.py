@@ -362,7 +362,7 @@ def revert_flex_inset(document, name, LaTeXname, position):
     i += 1
 
 
-def revert_charstyles(document, name, LaTeXname, changed):
+def revert_font_attrs(document, name, LaTeXname, changed):
   " Reverts character styles to TeX code "
   i = 0
   while True:
@@ -834,9 +834,9 @@ def revert_printindexall(document):
 def revert_strikeout(document):
   " Reverts \\strikeout character style "
   changed = False
-  changed = revert_charstyles(document, "\\uuline", "\\uuline", changed)
-  changed = revert_charstyles(document, "\\uwave", "\\uwave", changed)
-  changed = revert_charstyles(document, "\\strikeout", "\\sout", changed)
+  changed = revert_font_attrs(document, "\\uuline", "\\uuline", changed)
+  changed = revert_font_attrs(document, "\\uwave", "\\uwave", changed)
+  changed = revert_font_attrs(document, "\\strikeout", "\\sout", changed)
   if changed == True:
     insert_to_preamble(0, document,
         '% Commands inserted by lyx2lyx for proper underlining\n'
