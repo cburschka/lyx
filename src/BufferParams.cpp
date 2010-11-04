@@ -453,6 +453,8 @@ VSpace const & BufferParams::getDefSkip() const
 
 void BufferParams::setDefSkip(VSpace const & vs)
 {
+	// DEFSKIP will cause an infinite loop
+	LASSERT(vs.kind() != VSpace::DEFSKIP, return);
 	pimpl_->defskip = vs;
 }
 
@@ -532,11 +534,11 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		paragraph_separation = parseptranslator().find(parsep);
 	} else if (token == "\\defskip") {
 		lex.next();
-		string defskip = lex.getString();
-		if (defskip == "defskip")
-			// this is invalid
-			defskip = "medskip";
+		string const defskip = lex.getString();
 		pimpl_->defskip = VSpace(defskip);
+		if (pimpl_->defskip.kind() == VSpace::DEFSKIP)
+			// that is invalid
+			pimpl_->defskip = VSpace(VSpace::MEDSKIP);
 	} else if (token == "\\quotes_language") {
 		string quotes_lang;
 		lex >> quotes_lang;
