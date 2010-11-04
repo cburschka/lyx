@@ -242,3 +242,18 @@ def find_end_of_inset(lines, i):
 def find_end_of_layout(lines, i):
     " Find end of layout, where lines[i] is included."
     return find_end_of(lines, i, "\\begin_layout", "\\end_layout")
+
+
+# checks if line i is in the inset e.g., "\\begin_inset CommandInset ref"
+# if so, returns starting and ending lines
+# otherwise, returns (-1, -1)
+def get_containing_inset(lines, i, inset):
+    defval = (-1, -1)
+    stins = find_token_backwards(lines, inset, i)
+    if stins == -1:
+      return defval
+    endins = find_end_of_inset(lines, stins)
+    # note that this includes the notfound case.
+    if endins < i:
+      return defval
+    return (stins, endins)
