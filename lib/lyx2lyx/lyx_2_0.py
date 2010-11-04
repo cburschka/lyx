@@ -1207,10 +1207,13 @@ def revert_mhchem(document):
         i = 0
         while True:
             i = find_token(document.body, "\\begin_inset Formula", i)
+            if i == -1:
+               break
             line = document.body[i]
             if line.find("\\ce{") != -1 or line.find("\\cf{") != 1:
               mhchem = "on"
               break
+            i += 1
 
     if mhchem == "on":
         pre = ["% lyx2lyx mhchem commands", 
