@@ -1184,34 +1184,34 @@ def revert_suppress_date(document):
 
 def revert_mhchem(document):
     "Revert mhchem loading to preamble code"
-    i = 0
-    j = 0
-    k = 0
+
     mhchem = "off"
-    i = find_token(document.header, "\\use_mhchem 1", 0)
-    if i != -1:
+    i = find_token(document.header, "\\use_mhchem", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Could not find mhchem setting.")
         mhchem = "auto"
     else:
-        i = find_token(document.header, "\\use_mhchem 2", 0)
-        if i != -1:
+        val = get_value(document.header, "\\use_mhchem", i)
+        if val == "1":
+            mhchem = "auto"
+        elif val == "2":
             mhchem = "on"
+        del document.header[i]
+
     if mhchem == "auto":
-        j = find_token(document.body, "\\cf{", 0)
-        if j != -1:
-            mhchem = "on"
-        else:
-            j = find_token(document.body, "\\ce{", 0)
-            if j != -1:
-                mhchem = "on"
+        i = 0
+        while True:
+            i = find_token(document.body, "\\begin_inset Formula", i)
+            line = document.body[i]
+            if line.find("\\ce{") != -1 or line.find("\\cf{") != 1:
+              mhchem = "on"
+              break
+
     if mhchem == "on":
-        add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
-        add_to_preamble(document, ["\\PassOptionsToPackage{version=3}{mhchem}"])
-        add_to_preamble(document, ["\\usepackage{mhchem}"])
-    k = find_token(document.header, "\\use_mhchem", 0)
-    if k == -1:
-        document.warning("Malformed LyX document: Could not find mhchem setting.")
-        return
-    del document.header[k]
+        pre = ["% lyx2lyx mhchem commands", 
+          "\\PassOptionsToPackage{version=3}{mhchem}", 
+          "\\usepackage{mhchem}"]
+        add_to_preamble(document, pre) 
 
 
 def revert_fontenc(document):
