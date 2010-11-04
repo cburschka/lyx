@@ -1379,6 +1379,7 @@ def revert_output_sync(document):
     del document.header[i]
 
 
+# FIXME This doesn't do anything!!
 def revert_align_decimal(document):
   l = 0
   while True:
