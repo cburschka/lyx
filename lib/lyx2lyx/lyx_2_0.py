@@ -1425,54 +1425,60 @@ def revert_inset_preview(document):
           i += 1
           continue
       
-      del document.body[iend]
-      del document.body[i]
+      # This has several issues.
+      # We need to do something about the layouts inside InsetPreview.
+      # If we just leave the first one, then we have something like:
+      # \begin_layout Standard
+      # ...
+      # \begin_layout Standard
+      # and we get a "no \end_layout" error. So something has to be done.
+      # Ideally, we would check if it is the same as the layout we are in.
+      # If so, we just remove it; if not, we end the active one. But it is 
+      # not easy to know what layout we are in, due to depth changes, etc,
+      # and it is not clear to me how much work it is worth doing. In most
+      # cases, the layout will probably be the same.
+      # 
+      # For the same reason, we have to remove the \end_layout tag at the
+      # end of the last layout in the inset. Again, that will sometimes be
+      # wrong, but it will usually be right. To know what to do, we would
+      # again have to know what layout the inset is in.
       
-      # This does not work. The problem is that the last layout may not be 
-      # standard, in which case the material following the preview, which 
-      # might be in this same paragraph, will now be in whatever that was. 
-      # Moreover, the right action might depend upon what layout we are in, 
-      # and that is not easy to find out. It is much harder to fix that kind
-      # of problem than to remove a paragraph break.
-      # So I am disabling all of this for now, at least. If someone wants to 
-      # fix it, then feel free.
-      
-      ## If the first layout is Standard we need to remove it, otherwise there
-      ## will be paragraph breaks that shouldn't be there.
-      #blay = find_token(document.body, "\\begin_layout", i, iend)
-      #if blay == -1:
-          #document.warning("Can't find layout for preview inset!")
-          ## always do the later one first...
-          #del document.body[iend]
-          #del document.body[i]
-          ## deletions mean we do not need to reset i
-          #continue
-      #lay = document.body[blay].split(None, 1)[1]
-      #if lay != "Standard":
-          #del document.body[iend]
-          #del document.body[i]
-          ## deletions mean we do not need to reset i
-          #continue
+      blay = find_token(document.body, "\\begin_layout", i, iend)
+      if blay == -1:
+          document.warning("Can't find layout for preview inset!")
+          # always do the later one first...
+          del document.body[iend]
+          del document.body[i]
+          # deletions mean we do not need to reset i
+          continue
+
+      # This is where we would check what layout we are in.
+      # The check for Standard is definitely wrong.
+      # 
+      # lay = document.body[blay].split(None, 1)[1]
+      # if lay != oldlayout:
+      #     # record a boolean to tell us what to do later....
+      #     # better to do it later, since (a) it won't mess up
+      #     # the numbering and (b) we only modify at the end.
         
-      ## we want to delete the last \\end_layout in this inset, too.
-      ## note that this may not be the \\end_layout that goes with blay!!
-      #bend = find_end_of_layout(document.body, blay)
-      ##while True:
-          ##tmp = find_token(document.body, "\\end_layout", bend + 1, iend)
-          ##if tmp == -1:
-              ##break
-          ##bend = tmp
-      ##if bend == blay:
-      #if bend == -1:
-          #document.warning("Unable to find last layout in preview inset!")
-          #del document.body[iend]
-          #del document.body[i]
-          ## deletions mean we do not need to reset i
-          #continue
-      ## always do the later one first...
-      #del [iend]
-      #del document.body[bend]
-      #del document.body[i:blay + 1]
+      # we want to delete the last \\end_layout in this inset, too.
+      # note that this may not be the \\end_layout that goes with blay!!
+      bend = find_end_of_layout(document.body, blay)
+      while True:
+          tmp = find_token(document.body, "\\end_layout", bend + 1, iend)
+          if tmp == -1:
+              break
+          bend = tmp
+      if bend == blay:
+          document.warning("Unable to find last layout in preview inset!")
+          del document.body[iend]
+          del document.body[i]
+          # deletions mean we do not need to reset i
+          continue
+      # always do the later one first...
+      del document.body[iend]
+      del document.body[bend]
+      del document.body[i:blay + 1]
       # we do not need to reset i
                 
 
