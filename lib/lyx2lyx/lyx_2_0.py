@@ -24,7 +24,8 @@ import unicodedata
 import sys, os
 
 from parser_tools import find_token, find_end_of, find_tokens, \
-  find_end_of_inset, find_end_of_layout, get_value, get_value_string
+  find_end_of_inset, find_end_of_layout, find_token_backwards, \
+  get_value, get_value_string
   
 from lyx2lyx_tools import add_to_preamble, insert_to_preamble, \
   put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
@@ -1585,14 +1586,12 @@ def revert_nameref(document):
       cmdloc = i
       i += 1
       # Make sure it is actually in an inset!
+      # A normal line could begin with "LatexCommand nameref"!
       # We could just check document.lines[i-1], but that relies
       # upon something that might easily change.
-      # We'll look back a few lines.
-      stins = cmdloc - 10
-      if stins < 0:
-        stins = 0
-      stins = find_token(document.body, "\\begin_inset CommandInset ref", stins)
-      if stins == -1 or stins > cmdloc:
+      # So let's see if we're in a ref inset...
+      stins = find_token_backwards(document.body, "\\begin_inset CommandInset ref", cmdloc)
+      if stins == -1:
         continue
       endins = find_end_of_inset(document.body, stins)
       if endins == -1:
@@ -1600,8 +1599,10 @@ def revert_nameref(document):
         continue
       if endins < cmdloc:
         continue
-      refline = find_token(document.body, "reference", stins)
-      if refline == -1 or refline > endins:
+
+      # ok, so it is in an InsetRef
+      refline = find_token(document.body, "reference", stins, endins)
+      if refline == -1:
         document.warning("Can't find reference for inset at line " + stinst + "!!")
         continue
       m = rx.match(document.body[refline])
@@ -1610,10 +1611,9 @@ def revert_nameref(document):
         continue
       foundone = True
       ref = m.group(1)
-      newcontent = ['\\begin_inset ERT', 'status collapsed', '', \
-        '\\begin_layout Plain Layout', '', '\\backslash', \
-        cmd + '{' + ref + '}', '\\end_layout', '', '\\end_inset']
+      newcontent = put_cmd_in_ert('\\' + cmd + '{' + ref + '}')
       document.body[stins:endins + 1] = newcontent
+
   if foundone:
     add_to_preamble(document, "\usepackage{nameref}")
 
