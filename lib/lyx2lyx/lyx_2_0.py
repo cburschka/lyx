@@ -864,13 +864,13 @@ def revert_custom_processors(document):
     i = find_token(document.header, '\\bibtex_command', 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\bibtex_command.")
-        return
-    del document.header[i]
+    else:
+        del document.header[i]
     i = find_token(document.header, '\\index_command', 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\index_command.")
-        return
-    del document.header[i]
+    else:
+        del document.header[i]
 
 
 def convert_nomencl_width(document):
