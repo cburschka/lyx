@@ -1779,12 +1779,14 @@ def revert_mathdots(document):
         usedots = int(val)
       except:
         document.warning("Invalid \\use_mathdots value: " + val)
+        # probably usedots has not been changed, but be safe.
+        usedots = 1
 
-    if mathdots == 0:
+    if usedots == 0:
       # do not load case
       return
   
-    if mathdots == 2:
+    if usedots == 2:
       # force load case
       add_to_preamble(["% lyx2lyx mathdots addition", "\\usepackage{mathdots}"])
       return
