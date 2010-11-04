@@ -1300,7 +1300,6 @@ def revert_math_scale(document):
 
 
 def revert_pagesizes(document):
-  i = 0
   " Revert page sizes to default "
   i = find_token(document.header, '\\papersize', 0)
   if i != -1:
@@ -1314,7 +1313,6 @@ def revert_pagesizes(document):
 
 
 def revert_DIN_C_pagesizes(document):
-  i = 0
   " Revert DIN C page sizes to default "
   i = find_token(document.header, '\\papersize', 0)
   if i != -1:
@@ -1333,7 +1331,7 @@ def convert_html_quotes(document):
     line = document.header[i]
     l = re.compile(r'\\html_latex_start\s+"(.*)"')
     m = l.match(line)
-    if m != None:
+    if m:
       document.header[i] = "\\html_latex_start " + m.group(1)
       
   i = find_token(document.header, '\\html_latex_end', 0)
@@ -1341,7 +1339,7 @@ def convert_html_quotes(document):
     line = document.header[i]
     l = re.compile(r'\\html_latex_end\s+"(.*)"')
     m = l.match(line)
-    if m != None:
+    if m:
       document.header[i] = "\\html_latex_end " + m.group(1)
       
 
@@ -1353,14 +1351,22 @@ def revert_html_quotes(document):
     line = document.header[i]
     l = re.compile(r'\\html_latex_start\s+(.*)')
     m = l.match(line)
-    document.header[i] = "\\html_latex_start \"" + m.group(1) + "\""
+    if not m:
+        document.warning("Weird html_latex_start line: " + line)
+        del document.header[i]
+    else:
+        document.header[i] = "\\html_latex_start \"" + m.group(1) + "\""
       
   i = find_token(document.header, '\\html_latex_end', 0)
   if i != -1:
     line = document.header[i]
     l = re.compile(r'\\html_latex_end\s+(.*)')
     m = l.match(line)
-    document.header[i] = "\\html_latex_end \"" + m.group(1) + "\""
+    if not m:
+        document.warning("Weird html_latex_end line: " + line)
+        del document.header[i]
+    else:
+        document.header[i] = "\\html_latex_end \"" + m.group(1) + "\""
 
 
 def revert_output_sync(document):
