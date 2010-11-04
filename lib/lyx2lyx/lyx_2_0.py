@@ -209,7 +209,6 @@ def lyx2latex(document, lines):
               line = "\\,"
       elif hspace != "":
           # The LyX length is in line[8:], after the \length keyword
-          # latex_length returns "bool,length"
           length = latex_length(line[8:])[1]
           line = hspace + "{" + length + "}"
           hspace = ""
