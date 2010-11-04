@@ -1419,47 +1419,44 @@ def revert_makebox(document):
     # only revert frameless boxes without an inner box
     i = find_token(document.body, '\\begin_inset Box Frameless', i)
     if i == -1:
-      # remove the option use_makebox
-      revert_use_makebox(document)
       return
     z = find_end_of_inset(document.body, i)
     if z == -1:
       document.warning("Malformed LyX document: Can't find end of box inset.")
-      return
-    j = find_token(document.body, 'use_makebox 1', i)
-    # assure we found the makebox of the current box
-    if j < z and j != -1:
-      y = find_token(document.body, "\\begin_layout", i)
-      if y > z or y == -1:
-        document.warning("Malformed LyX document: Can't find layout in box.")
-        return
-      # remove the \end_layout \end_inset pair
-      document.body[z - 2:z + 1] = put_cmd_in_ert("}")
-      # determine the alignment
-      k = find_token(document.body, 'hor_pos', j - 4)
-      align = document.body[k][9]
-      # determine the width
-      l = find_token(document.body, 'width "', j + 1)
-      length = document.body[l][7:]
-      # remove trailing '"'
-      length = length[:-1]
-      length = latex_length(length)[1]
-      subst = "\\makebox[" + length + "][" \
-        + align + "]{"
-      document.body[i:y + 1] = put_cmd_in_ert(subst)
+      i += 1
+      continue
+    blay = find_token(document.body, "\\begin_layout", i, z)
+    if blay == -1:
+      document.warning("Malformed LyX document: Can't find layout in box.")
+      i = z
+      continue
+    # by looking before the layout we make sure we're actually finding
+    # an option, not text.
+    j = find_token(document.body, 'use_makebox', i, blay)
+    if j == -1:
+        i = z
+        continue
+    val = get_value(document.body, 'use_makebox', j)
+    if val != "1":
+        del document.body[j]
+        i = z
+        continue
+    bend = find_end_of_layout(document.body, blay)
+    if bend == -1 or bend > z:
+        document.warning("Malformed LyX document: Can't find end of layout in box.")
+        i = z
+        continue
+    # determine the alignment
+    align = get_value(document.body, 'hor_pos', i, blay, "c").strip('"')
+    # determine the width
+    length = get_value(document.body, 'width', i, blay, "50col%").strip('"')
+    length = latex_length(length)[1]
+    # remove the \end_layout \end_inset pair
+    document.body[bend:z + 1] = put_cmd_in_ert("}")
+    subst = "\\makebox[" + length + "][" \
+      + align + "]{"
+    document.body[i:blay + 1] = put_cmd_in_ert(subst)
     i += 1
-
-
-def revert_use_makebox(document):
-  " Deletes use_makebox option of boxes "
-  h = 0
-  while 1:
-    # remove the option use_makebox
-    h = find_token(document.body, 'use_makebox', 0)
-    if h == -1:
-      return
-    del document.body[h]
-    h += 1
 
 
 def convert_use_makebox(document):
