@@ -42,7 +42,7 @@ class Toolbars;
 /// The Qt main application class
 /**
 There should be only one instance of this class. No Qt object
-initialisation should be done before the instanciation of this class.
+initialisation should be done before the instantiation of this class.
 */
 class GuiApplication : public QApplication, public Application
 {
