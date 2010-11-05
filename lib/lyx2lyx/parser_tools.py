@@ -128,7 +128,7 @@ def find_tokens(lines, tokens, start, end = 0, exact = False):
     the first element, in lines[start, end].
 
     Return -1 on failure."""
-    if end == 0:
+    if end == 0 or end > len(lines):
         end = len(lines)
 
     for i in xrange(start, end):
@@ -158,7 +158,7 @@ def find_re(lines, rexp, start, end = 0):
 
     Return -1 on failure."""
 
-    if end == 0:
+    if end == 0 or end > len(lines):
         end = len(lines)
     for i in xrange(start, end):
         if rexp.match(lines[i]):
