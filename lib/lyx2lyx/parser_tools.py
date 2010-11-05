@@ -143,18 +143,20 @@ def find_tokens_backwards(lines, tokens, start):
 
 
 def get_value(lines, token, start, end = 0, default = ""):
-    """ get_value(lines, token, start[[, end], default]) -> list of strings
+    """ get_value(lines, token, start[[, end], default]) -> string
 
-    Return tokens after token for the first line, in lines, where
-    token is the first element."""
+    Find the next line that looks like:
+      token followed by other stuff
+    Returns "followed by other stuff".
+    """
 
     i = find_token_exact(lines, token, start, end)
     if i == -1:
         return default
-    if len(lines[i].split()) > 1:
-        return lines[i].split()[1]
-    else:
-        return default
+    l = lines[i].split(None, 1)
+    if len(l) > 1:
+        return l[1]
+    return default
 
 
 def get_value_string(lines, token, start, end = 0, trim = False, default = ""):
@@ -170,7 +172,7 @@ def get_value_string(lines, token, start, end = 0, trim = False, default = ""):
     if len(lines[i].split()) > 1:
         for k in range (0, len(lines[i])):
             if lines[i][k] == ' ':
-                if trim ==False:
+                if trim == False:
                     return lines[i][k+1:len(lines[i])]
                 else:
                     return lines[i][k+2:len(lines[i])-1]
