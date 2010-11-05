@@ -1813,48 +1813,58 @@ def revert_mathdots(document):
 
 
 def convert_rule(document):
-    " Convert \\lyxline to CommandInset line "
+    " Convert \\lyxline to CommandInset line. "
     i = 0
+    
+    inset = ['\\begin_inset CommandInset line',
+      'LatexCommand rule',
+      'offset "0.5ex"',
+      'width "100line%"',
+      'height "1pt"', '',
+      '\\end_inset', '', '']
+
+    # if paragraphs are indented, we may have to unindent to get the
+    # line to be full-width.
+    indent = get_value(document.header, "\\paragraph_separation", 0)
+    have_indent = (indent == "indent")
+
     while True:
       i = find_token(document.body, "\\lyxline" , i)
       if i == -1:
         return
-        
-      j = find_token(document.body, "\\color" , i - 2)
-      if j == i - 2:
-        color = document.body[j] + '\n'
+
+      # we need to find out if this line follows other content
+      # in its paragraph. find its layout....
+      lastlay = find_token_backwards(document.body, "\\begin_layout", i)
+      if lastlay == -1:
+        document.warning("Can't find layout for line at " + str(i))
+        # do the best we can.
+        document.body[i:i+1] = inset
+        i += len(inset)
+        continue
+
+      # ...and look for other content before it.
+      lineisfirst = True
+      for line in document.body[lastlay + 1:i]:
+        # is it empty or a paragraph option?
+        if not line or line[0] == '\\':
+          continue
+        lineisfirst = False
+        break
+
+      if lineisfirst:
+        document.body[i:i+1] = inset
+        if indent:
+          # we need to unindent, lest the line be too long
+          document.body.insert(lastlay + 1, "\\noindent")
+        i += len(inset)
       else:
-        color = ''
-      k = find_token(document.body, "\\begin_layout Standard" , i - 4)
-      # we need to handle the case that \lyxline is in a separate paragraph and that it is colored
-      # the result is then an extra empty paragraph which we get by adding an empty ERT inset
-      if k == i - 4 and j == i - 2 and document.body[i - 1] == '':
-        layout = '\\begin_inset ERT\nstatus collapsed\n\n\\begin_layout Plain Layout\n\n\n\\end_layout\n\n\\end_inset\n' \
-          + '\\end_layout\n\n' \
-          + '\\begin_layout Standard\n'
-      elif k == i - 2 and document.body[i - 1] == '':
-        layout = ''
-      else:
-        layout = '\\end_layout\n\n' \
-          + '\\begin_layout Standard\n'
-      l = find_token(document.body, "\\begin_layout Standard" , i + 4)
-      if l == i + 4 and document.body[i + 1] == '':
-        layout2 = ''
-      else:
-        layout2 = '\\end_layout\n' \
-          + '\n\\begin_layout Standard\n'
-      subst = layout \
-        + '\\noindent\n\n' \
-        + color \
-        + '\\begin_inset CommandInset line\n' \
-        + 'LatexCommand rule\n' \
-        + 'offset "0.5ex"\n' \
-        + 'width "100line%"\n' \
-        + 'height "1pt"\n' \
-        + '\n\\end_inset\n\n\n' \
-        + layout2
-      document.body[i] = subst
-      i += 1
+        # so our line is in the middle of a paragraph
+        # we need to add a new line, lest this line follow the
+        # other content on that line and run off the side of the page
+        document.body[i:i+1] = inset
+        document.body[i:i] = ["\\begin_inset Newline newline", "\\end_inset", ""]
+      i += len(inset)
 
 
 def revert_rule(document):
