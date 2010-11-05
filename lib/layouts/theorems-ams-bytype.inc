@@ -47,8 +47,6 @@ End
 Counter claim
 End
 
-Format 11
-
 Style Theorem
 	Category              Theorem
 	Margin                First_Dynamic
