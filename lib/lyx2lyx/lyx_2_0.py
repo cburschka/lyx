@@ -29,7 +29,7 @@ from parser_tools import find_token, find_end_of, find_tokens, \
   
 from lyx2lyx_tools import add_to_preamble, insert_to_preamble, \
   put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
-  revert_font_attrs, revert_layout_command, hex2ratio
+  revert_font_attrs, revert_layout_command, hex2ratio, str2bool
 
 ####################################################################
 # Private helper functions
@@ -194,93 +194,110 @@ def revert_vphantom(document):
 
 def revert_xetex(document):
     " Reverts documents that use XeTeX "
+
     i = find_token(document.header, '\\use_xetex', 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\use_xetex.")
         return
-    if get_value(document.header, "\\use_xetex", i) == 'false':
+    if not str2bool(get_value(document.header, "\\use_xetex", i)):
         del document.header[i]
         return
     del document.header[i]
+
     # 1.) set doc encoding to utf8-plain
     i = find_token(document.header, "\\inputencoding", 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\inputencoding.")
-    document.header[i] = "\\inputencoding utf8-plain"
+    else:
+        document.header[i] = "\\inputencoding utf8-plain"
+
     # 2.) check font settings
-    l = find_token(document.header, "\\font_roman", 0)
-    if l == -1:
-        document.warning("Malformed LyX document: Missing \\font_roman.")
-    line = document.header[l]
-    l = re.compile(r'\\font_roman (.*)$')
-    m = l.match(line)
-    roman = m.group(1)
-    l = find_token(document.header, "\\font_sans", 0)
-    if l == -1:
-        document.warning("Malformed LyX document: Missing \\font_sans.")
-    line = document.header[l]
-    l = re.compile(r'\\font_sans (.*)$')
-    m = l.match(line)
-    sans = m.group(1)
-    l = find_token(document.header, "\\font_typewriter", 0)
-    if l == -1:
-        document.warning("Malformed LyX document: Missing \\font_typewriter.")
-    line = document.header[l]
-    l = re.compile(r'\\font_typewriter (.*)$')
-    m = l.match(line)
-    typewriter = m.group(1)
-    osf = get_value(document.header, '\\font_osf', 0) == "true"
-    sf_scale = float(get_value(document.header, '\\font_sf_scale', 0))
-    tt_scale = float(get_value(document.header, '\\font_tt_scale', 0))
-    # 3.) set preamble stuff
-    pretext = '%% This document must be processed with xelatex!\n'
-    pretext += '\\usepackage{fontspec}\n'
-    if roman != "default":
-        pretext += '\\setmainfont[Mapping=tex-text]{' + roman + '}\n'
-    if sans != "default":
-        pretext += '\\setsansfont['
-        if sf_scale != 100:
-            pretext += 'Scale=' + str(sf_scale / 100) + ','
-        pretext += 'Mapping=tex-text]{' + sans + '}\n'
-    if typewriter != "default":
-        pretext += '\\setmonofont'
-        if tt_scale != 100:
-            pretext += '[Scale=' + str(tt_scale / 100) + ']'
-        pretext += '{' + typewriter + '}\n'
-    if osf:
-        pretext += '\\defaultfontfeatures{Numbers=OldStyle}\n'
-    pretext += '\usepackage{xunicode}\n'
-    pretext += '\usepackage{xltxtra}\n'
-    insert_to_preamble(0, document, pretext)
-    # 4.) reset font settings
+    # defaults
+    roman = sans = typew = default
+    osf = False
+    sf_scale = tt_scale = 100.0
+    
     i = find_token(document.header, "\\font_roman", 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\font_roman.")
-    document.header[i] = "\\font_roman default"
+    else:
+        roman = get_value(document.header, "\\font_roman", i)
+        document.header[i] = "\\font_roman default"
+
     i = find_token(document.header, "\\font_sans", 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\font_sans.")
-    document.header[i] = "\\font_sans default"
+    else:
+        sans = get_value(document.header, "\\font_sans", i)
+        document.header[i] = "\\font_sans default"
+    
     i = find_token(document.header, "\\font_typewriter", 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\font_typewriter.")
-    document.header[i] = "\\font_typewriter default"
+    else:
+        typew = get_value(document.header, "\\font_typewriter", i)
+        document.header[i] = "\\font_typewriter default"
+
     i = find_token(document.header, "\\font_osf", 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\font_osf.")
-    document.header[i] = "\\font_osf false"
+    else:
+        osf = str2bool(get_value(document.header, "\\font_osf", i))
+        document.header[i] = "\\font_osf false"
+
     i = find_token(document.header, "\\font_sc", 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\font_sc.")
-    document.header[i] = "\\font_sc false"
+    else:
+        # FIXME Do we want this value? and want to do something with it?
+        document.header[i] = "\\font_sc false"
+    
     i = find_token(document.header, "\\font_sf_scale", 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\font_sf_scale.")
-    document.header[i] = "\\font_sf_scale 100"
+    else:
+      val = get_value(document.header, '\\font_sf_scale', i)
+      try:
+        # float() can throw
+        sf_scale = float(val)
+      except:
+        document.warning("Invalid font_sf_scale value: " + val)
+      document.header[i] = "\\font_sf_scale 100"
+
     i = find_token(document.header, "\\font_tt_scale", 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\font_tt_scale.")
-    document.header[i] = "\\font_tt_scale 100"
+    else:
+        val = get_value(document.header, '\\font_tt_scale', i)
+        try:
+          # float() can throw
+          tt_scale = float(val)
+        except:
+          document.warning("Invalid font_tt_scale value: " + val)
+        document.header[i] = "\\font_tt_scale 100"
+
+    # 3.) set preamble stuff
+    pretext = ['%% This document must be processed with xelatex!']
+    pretext.append('\\usepackage{fontspec}')
+    if roman != "default":
+        pretext.append('\\setmainfont[Mapping=tex-text]{' + roman + '}')
+    if sans != "default":
+        sf = '\\setsansfont['
+        if sf_scale != 100.0:
+            sf += 'Scale=' + str(sf_scale / 100.0) + ','
+        sf += 'Mapping=tex-text]{' + sans + '}'
+        pretext.append(sf)
+    if typewriter != "default":
+        tw = '\\setmonofont'
+        if tt_scale != 100.0:
+            tw += '[Scale=' + str(tt_scale / 100.0) + ']'
+        tw += '{' + typewriter + '}'
+        pretext.append(tw)
+    if osf:
+        pretext.append('\\defaultfontfeatures{Numbers=OldStyle}')
+    pretext.append('\usepackage{xunicode}')
+    pretext.append('\usepackage{xltxtra}')
+    insert_to_preamble(0, document, pretext)
 
 
 def revert_outputformat(document):
