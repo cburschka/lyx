@@ -22,10 +22,26 @@ import re
 import unicodedata
 import sys, os
 
-from parser_tools import find_token, find_end_of, find_tokens, get_value, get_value_string
+from parser_tools import find_token, find_end_of, find_tokens, get_value
 
 ####################################################################
 # Private helper functions
+
+
+def get_value_string(lines, token, start, end = 0, trim = False, default = ""):
+    """ get_value_string(lines, token, start[[, end], trim, default]) -> string
+
+    Return tokens after token as string, in lines, where
+    token is the first element. When trim is used, the first and last character
+    of the string is trimmed."""
+
+    val = get_value(lines, token, start, end, "")
+    if not val:
+      return default
+    if trim:
+      return val[1:-1]
+    return val
+
 
 def find_end_of_inset(lines, i):
     " Find end of inset, where lines[i] is included."

@@ -25,7 +25,7 @@ import sys, os
 
 from parser_tools import find_token, find_end_of, find_tokens, \
   find_end_of_inset, find_end_of_layout, find_token_backwards, \
-  get_containing_inset, get_value, get_value_string
+  get_containing_inset, get_value
   
 from lyx2lyx_tools import add_to_preamble, insert_to_preamble, \
   put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
