@@ -160,6 +160,23 @@ def get_value(lines, token, start, end = 0, default = ""):
     return default
 
 
+def get_quoted_value(lines, token, start, end = 0, default = ""):
+    """ get_quoted_value(lines, token, start[[, end], default]) -> string
+
+    Find the next line that looks like:
+      token "followed by other stuff"
+    Returns "followed by other stuff" with leading and trailing
+    whitespace and quotes removed. If there are no quotes, that is OK too.
+    So use get_value to preserve possible quotes, this one to remove them,
+    if they are there.
+    Note that we will NOT strip quotes from default!
+    """
+    val = get_value(lines, token, start, end, "")
+    if not val:
+      return default
+    return val.strip('"')
+
+
 def del_token(lines, token, start, end):
     """ del_token(lines, token, start, end) -> int
 
