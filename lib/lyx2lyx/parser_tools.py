@@ -68,6 +68,69 @@ get_quoted_value(lines, token, start[, end[, default]):
 del_token(lines, token, start[, end]):
   Like find_token, but deletes the line if it finds one.
   Returns True if a line got deleted, otherwise False.
+
+find_beginning_of(lines, i, start_token, end_token):
+  Here, start_token and end_token are meant to be a matching 
+  pair, like "\begin_layout" and "\end_layout". We look for 
+  the start_token that pairs with the end_token that occurs
+  on or after line i. Returns -1 if not found.
+  So, in the layout case, this would find the \begin_layout 
+  for the layout line i is in. 
+  Example:
+    ec = find_token(document.body, "</cell", i)
+    bc = find_beginning_of(document.body, ec, \
+        "<cell", "</cell")
+  Now, assuming no -1s, bc-ec wraps the cell for line i.
+
+find_end_of(lines, i, start_token, end_token):
+  Like find_beginning_of, but looking for the matching 
+  end_token. This might look like:
+    bc = find_token_(document.body, "<cell", i)
+    ec = find_end_of(document.body, bc,  "<cell", "</cell")
+  Now, assuming no -1s, bc-ec wrap the next cell.
+
+find_end_of_inset(lines, i):
+  Specialization of find_end_of for insets.
+
+find_end_of_layout(lines, i):
+  Specialization of find_end_of for layouts.
+
+is_in_inset(lines, i, inset):
+  Checks if line i is in an inset of the given type.
+  If so, returns starting and ending lines. Otherwise, 
+  returns False.
+  Example:
+    is_in_inset(document.body, i, "\\begin_inset Tabular")
+  returns False unless i is within a table. If it is, then
+  it returns the line on which the table begins and the one
+  on which it ends. Note that this pair will evaulate to
+  boolean True, so
+    if is_in_inset(...):
+  will do what you expect.
+
+get_containing_inset(lines, i):
+  Finds out what kind of inset line i is within. Returns a 
+  list containing what follows \begin_inset on the the line 
+  on which the inset begins, plus the starting and ending line.
+  Returns False on any kind of error or if it isn't in an inset.
+  So get_containing_inset(document.body, i) might return:
+    ("CommandInset ref", 300, 306)
+  if i is within an InsetRef beginning on line 300 and ending
+  on line 306.
+
+get_containing_layout(lines, i):
+  As get_containing_inset, but for layout.
+
+
+find_nonempty_line(lines, start[, end):
+  Finds the next non-empty line.
+
+check_token(line, token):
+  Does line begin with token?
+
+is_nonempty_line(line):
+  Does line contain something besides whitespace?
+
 '''
 
 # Utilities for one line
