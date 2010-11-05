@@ -352,6 +352,7 @@ def revert_layout_command(document, name, LaTeXname, position):
 
 
 def hex2ratio(s):
+  " Converts an RRGGBB-type hexadecimal string to a float in [0.0,1.0] "
   try:
     val = int(s, 16)
   except:
@@ -360,3 +361,9 @@ def hex2ratio(s):
     val += 1
   return str(val / 256.0)
 
+
+def str2bool(s):
+  "'true' goes to True, case-insensitively, and we strip whitespace."
+  s = s.strip().lower()
+  return s == "true"
+    
