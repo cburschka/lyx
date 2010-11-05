@@ -25,7 +25,7 @@ import sys, os
 
 from parser_tools import find_token, find_end_of, find_tokens, \
   find_end_of_inset, find_end_of_layout, find_token_backwards, \
-  get_containing_inset, get_value
+  get_containing_inset, get_value, get_quoted_value
   
 from lyx2lyx_tools import add_to_preamble, insert_to_preamble, \
   put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
@@ -397,7 +397,7 @@ def revert_splitindex(document):
         if i == -1:
             return
         k = find_end_of_inset(document.body, i)
-        ptype = get_value(document.body, 'type', i, k).strip('"')
+        ptype = get_quoted_value(document.body, 'type', i, k)
         if ptype == "idx":
             j = find_token(document.body, "type", i, k)
             del document.body[j]
@@ -450,7 +450,7 @@ def revert_subindex(document):
         if ctype != "printsubindex":
             i = k + 1
             continue
-        ptype = get_value(document.body, 'type', i, k).strip('"')
+        ptype = get_quoted_value(document.body, 'type', i, k)
         if not useindices:
             del document.body[i:k + 1]
         else:
@@ -566,7 +566,7 @@ def revert_nomencl_cwidth(document):
         document.warning("Can't find width option for nomencl_print!")
         i = j
         continue
-      width = get_value(document.body, "width", i, j).strip('"')
+      width = get_quoted_value(document.body, "width", i, j)
       del document.body[l]
       add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
       add_to_preamble(document, ["\\setlength{\\nomlabelwidth}{" + width + "}"])
@@ -1485,9 +1485,9 @@ def revert_makebox(document):
         i = z
         continue
     # determine the alignment
-    align = get_value(document.body, 'hor_pos', i, blay, "c").strip('"')
+    align = get_quoted_value(document.body, 'hor_pos', i, blay, "c")
     # determine the width
-    length = get_value(document.body, 'width', i, blay, "50col%").strip('"')
+    length = get_quoted_value(document.body, 'width', i, blay, "50col%")
     length = latex_length(length)[1]
     # remove the \end_layout \end_inset pair
     document.body[bend:z + 1] = put_cmd_in_ert("}")
@@ -1894,14 +1894,14 @@ def revert_rule(document):
         document.warning("Malformed LyX document: Can't find end of line inset.")
         return
       # determine the optional offset
-      offset = get_value(document.body, 'offset', i, j).strip('"')
+      offset = get_quoted_value(document.body, 'offset', i, j)
       if offset:
         offset = '[' + offset + ']'
       # determine the width
-      width = get_value(document.body, 'width', i, j, "100col%").strip('"')
+      width = get_quoted_value(document.body, 'width', i, j, "100col%")
       width = latex_length(width)[1]
       # determine the height
-      height = get_value(document.body, 'height', i, j, "1pt").strip('"')
+      height = get_quoted_value(document.body, 'height', i, j, "1pt")
       height = latex_length(height)[1]
       # output the \rule command
       subst = "\\rule[" + offset + "]{" + width + "}{" + height + "}"
