@@ -17,7 +17,55 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-" This modules offer several free functions to help parse lines. "
+
+''' 
+This modules offer several free functions to help parse lines.
+More documentaton is below, but here is a quick guide to what 
+they do. Optional arguments are marked by brackets.
+
+find_token(lines, token, start[, end[, exact]]):
+  Returns the first line i, start <= i < end, on which
+  token is found at the beginning. Returns -1 if not 
+  found. If exact is (given and) True, then differences
+  in whitespace do not count.
+
+find_token_exact(lines, token, start[, end]):
+  Badly named. As find_token, but with ignorews True.
+
+find_tokens(lines, tokens, start[, end[, ignorews]]):
+  Returns the first line i, start <= i < end, on which
+  oen of the tokens in tokens is found at the beginning. 
+  Returns -1 if not found. If ignorews is (given and) True, 
+  then differences in whitespace do not count.
+
+find_tokens_exact(lines, token, start[, end]):
+  Badly named. As find_tokens, but with ignorews True.
+  
+find_token_backwards(lines, token, start):
+find_tokens_backwards(lines, tokens, start):
+  As before, but look backwards.
+
+find_re(lines, rexp, start[, end]):
+  As find_token, but rexp is a regular expression object,
+  so it has to be passed as e.g.: re.compile(r'...').
+
+get_value(lines, token, start[, end[, default]):
+  Similar to find_token, but it returns what follows the 
+  token on the found line. Example:
+    get_value(document.header, "\use_xetex", 0)
+  will find a line like:
+    \use_xetex true
+  and, in that case, return "true". (Note that whitespace
+  is stripped.) The final argument, default, defaults to "", 
+  and is what is returned if we do not find anything. So you
+  can use that to set a default.
+  
+get_quoted_value(lines, token, start[, end[, default]):
+  Similar to get_value, but it will strip quotes off the
+  value, if they are present. So use this one for cases
+  where the value is normally quoted.
+
+'''
 
 # Utilities for one line
 def check_token(line, token):
