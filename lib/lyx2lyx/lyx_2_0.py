@@ -1919,10 +1919,21 @@ def convert_bibtex_clearpage(document):
   " insert a clear(double)page bibliographystyle if bibtotoc option is used "
 
   i = find_token(document.header, '\\papersides', 0)
+  sides = 0
   if i == -1:
     document.warning("Malformed LyX document: Can't find papersides definition.")
-    return
-  sides = int(document.header[i][12])
+    document.warning("Assuming single sided.")
+    sides = 1
+  else:
+    val = get_value(document.header, "\\papersides", i)
+    try:
+      sides = int(val)
+    except:
+      pass
+    if sides != 1 and sides != 2:
+      document.warning("Invalid papersides value: " + val)
+      document.warning("Assuming single sided.")
+      sides = 1
 
   j = 0
   while True:
@@ -1937,47 +1948,34 @@ def convert_bibtex_clearpage(document):
       continue
 
     # only act if there is the option "bibtotoc"
-    m = find_token(document.body, 'options', j, k)
-    if m == -1:
+    val = get_value(document.body, 'options', j, k)
+    if not val:
       document.warning("Can't find options for bibliography inset at line " + str(j))
       j = k
       continue
     
-    optline = document.body[m]
-    idx = optline.find("bibtotoc")
-    if idx == -1:
+    if val.find("bibtotoc") == -1:
       j = k
       continue
     
     # so we want to insert a new page right before the paragraph that
-    # this bibliography thing is in. we'll look for it backwards.
-    lay = j - 1
-    while lay >= 0:
-      if document.body[lay].startswith("\\begin_layout"):
-        break
-      lay -= 1
-
-    if lay < 0:
+    # this bibliography thing is in. 
+    lay = find_token_backwards(document.body, "\\begin_layout", j)
+    if lay == -1:
       document.warning("Can't find layout containing bibliography inset at line " + str(j))
       j = k
       continue
 
-    subst1 = '\\begin_layout Standard\n' \
-      + '\\begin_inset Newpage clearpage\n' \
-      + '\\end_inset\n\n\n' \
-      + '\\end_layout\n'
-    subst2 = '\\begin_layout Standard\n' \
-      + '\\begin_inset Newpage cleardoublepage\n' \
-      + '\\end_inset\n\n\n' \
-      + '\\end_layout\n'
     if sides == 1:
-      document.body.insert(lay, subst1)
-      document.warning(subst1)
+      cmd = "clearpage"
     else:
-      document.body.insert(lay, subst2)
-      document.warning(subst2)
-
-    j = k
+      cmd = "cleardoublepage"
+    subst = ['\\begin_layout Standard',
+        '\\begin_inset Newpage ' + cmd,
+        '\\end_inset', '', '',
+        '\\end_layout', '']
+    document.body[lay:lay] = subst
+    j = k + len(subst)
 
 
 ##
