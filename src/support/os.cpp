@@ -18,6 +18,15 @@
 #include "support/os_unix.cpp"
 #endif
 
+// Static assert to break compilation on platforms where
+// int/unsigned int is not 4 bytes. Added to make sure that
+// e.g., the author hash is always 32-bit.
+template<bool Condition> struct static_assert_helper;
+template <> struct static_assert_helper<true> {};
+enum { 
+	dummy = sizeof(static_assert_helper<sizeof(int) == 4>)
+};
+
 namespace lyx {
 namespace support {
 namespace os {
