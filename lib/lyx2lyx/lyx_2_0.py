@@ -1152,14 +1152,15 @@ def revert_notefontcolor(document):
     if i == -1:
         return
 
-    # are there any grey notes?
-    if find_token(document.body, "\\begin_inset Note Greyedout", 0) == -1:
-        # no need to do anything, and \renewcommand will throw an error
-        # since lyxgreyedout will not exist.
-        return
-
     colorcode = get_value(document.header, '\\notefontcolor', i)
     del document.header[i]
+
+    # are there any grey notes?
+    if find_token(document.body, "\\begin_inset Note Greyedout", 0) == -1:
+        # no need to do anything else, and \renewcommand will throw 
+        # an error since lyxgreyedout will not exist.
+        return
+
     # the color code is in the form #rrggbb where every character denotes a hex number
     red = hex2ratio(colorcode[1:3])
     green = hex2ratio(colorcode[3:5])
