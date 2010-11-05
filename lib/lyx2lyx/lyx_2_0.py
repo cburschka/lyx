@@ -25,7 +25,8 @@ import sys, os
 
 from parser_tools import find_token, find_end_of, find_tokens, \
   find_end_of_inset, find_end_of_layout, find_token_backwards, \
-  is_in_inset, get_value, get_quoted_value, del_token
+  is_in_inset, get_value, get_quoted_value, del_token, \
+  check_token
   
 from lyx2lyx_tools import add_to_preamble, insert_to_preamble, \
   put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
@@ -1412,10 +1413,9 @@ def revert_makebox(document):
   " Convert \\makebox to TeX code "
   i = 0
   while 1:
-    # only revert frameless boxes without an inner box
-    i = find_token(document.body, '\\begin_inset Box Frameless', i)
+    i = find_token(document.body, '\\begin_inset Box', i)
     if i == -1:
-      return
+      break
     z = find_end_of_inset(document.body, i)
     if z == -1:
       document.warning("Malformed LyX document: Can't find end of box inset.")
@@ -1432,8 +1432,9 @@ def revert_makebox(document):
     if j == -1:
         i = z
         continue
-    val = get_value(document.body, 'use_makebox', j)
-    if val != "1":
+    
+    if not check_token(document.body[i], "\\begin_inset Box Frameless") \
+      or get_value(document.body, 'use_makebox', j) != 1:
         del document.body[j]
         i = z
         continue
