@@ -24,9 +24,9 @@ import unicodedata
 import sys, os
 
 from parser_tools import find_token, find_end_of, find_tokens, \
-  find_end_of_inset, find_end_of_layout, find_token_backwards, \
-  is_in_inset, get_value, get_quoted_value, del_token, \
-  check_token
+  find_token_exact, find_end_of_inset, find_end_of_layout, \
+  find_token_backwards, is_in_inset, get_value, get_quoted_value, \
+  del_token, check_token
   
 from lyx2lyx_tools import add_to_preamble, insert_to_preamble, \
   put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
@@ -678,7 +678,7 @@ def revert_percent_hspace_lengths(document):
     " Revert relative HSpace lengths to ERT "
     i = 0
     while True:
-      i = find_token(document.body, "\\begin_inset space \\hspace", i)
+      i = find_token_exact(document.body, "\\begin_inset space \\hspace", i)
       if i == -1:
           break
       j = find_end_of_inset(document.body, i)
@@ -709,7 +709,7 @@ def revert_hspace_glue_lengths(document):
     " Revert HSpace glue lengths to ERT "
     i = 0
     while True:
-      i = find_token(document.body, "\\begin_inset space \\hspace", i)
+      i = find_token_exact(document.body, "\\begin_inset space \\hspace", i)
       if i == -1:
           break
       j = find_end_of_inset(document.body, i)
@@ -772,7 +772,7 @@ def revert_author_id(document):
     " Remove the author_id from the \\author definition "
     i = 0
     anum = 0
-    rx = re.compile(r'(\\author)\s+([-\d]+)\s+(\".*\")\s*(.*)$')
+    rx = re.compile(r'(\\author)\s+(\d+)\s+(\".*\")\s*(.*)$')
     idmap = dict()
 
     while True:
@@ -2014,12 +2014,10 @@ convert = [[346, []],
            [401, []],
            [402, [convert_bibtex_clearpage]],
            [403, [convert_flexnames]],
-           [404, [convert_prettyref]],
-           [405, []]
+           [404, [convert_prettyref]]
 ]
 
-revert =  [[404, []],
-           [403, [revert_refstyle]],
+revert =  [[403, [revert_refstyle]],
            [402, [revert_flexnames]],
            [401, []],
            [400, [revert_diagram]],
