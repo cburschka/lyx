@@ -65,6 +65,9 @@ get_quoted_value(lines, token, start[, end[, default]):
   value, if they are present. So use this one for cases
   where the value is normally quoted.
 
+del_token(lines, token, start, end):
+  Like find_token, but deletes the line if it finds one.
+  Returns True if a line got deleted, otherwise False.
 '''
 
 # Utilities for one line
@@ -231,17 +234,15 @@ def get_quoted_value(lines, token, start, end = 0, default = ""):
 def del_token(lines, token, start, end):
     """ del_token(lines, token, start, end) -> int
 
-    Find the lower line in lines where token is the first element and
-    delete that line.
-
-    Returns the number of lines remaining."""
+    Find the first line in lines where token is the first element 
+    and delete that line. Returns True if we deleted a line, False
+    if we did not."""
 
     k = find_token_exact(lines, token, start, end)
     if k == -1:
-        return end
-    else:
-        del lines[k]
-        return end - 1
+        return False
+    del lines[k]
+    return True
 
 
 def find_beginning_of(lines, i, start_token, end_token):
