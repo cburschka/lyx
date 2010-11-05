@@ -25,7 +25,7 @@ import sys, os
 
 from parser_tools import find_token, find_end_of, find_tokens, \
   find_end_of_inset, find_end_of_layout, find_token_backwards, \
-  is_in_inset, get_value, get_quoted_value
+  is_in_inset, get_value, get_quoted_value, del_token
   
 from lyx2lyx_tools import add_to_preamble, insert_to_preamble, \
   put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
@@ -302,11 +302,9 @@ def revert_xetex(document):
 
 def revert_outputformat(document):
     " Remove default output format param "
-    i = find_token(document.header, '\\default_output_format', 0)
-    if i == -1:
+    
+    if not del_token(document.header, '\\default_output_format', 0):
         document.warning("Malformed LyX document: Missing \\default_output_format.")
-        return
-    del document.header[i]
 
 
 def revert_backgroundcolor(document):
@@ -513,16 +511,12 @@ def revert_ulinelatex(document):
 
 def revert_custom_processors(document):
     " Remove bibtex_command and index_command params "
-    i = find_token(document.header, '\\bibtex_command', 0)
-    if i == -1:
+    
+    if not del_token(document.header, '\\bibtex_command', 0):
         document.warning("Malformed LyX document: Missing \\bibtex_command.")
-    else:
-        del document.header[i]
-    i = find_token(document.header, '\\index_command', 0)
-    if i == -1:
+    
+    if not del_token(document.header, '\\index_command', 0):
         document.warning("Malformed LyX document: Missing \\index_command.")
-    else:
-        del document.header[i]
 
 
 def convert_nomencl_width(document):
@@ -544,13 +538,9 @@ def revert_nomencl_width(document):
       if i == -1:
         break
       j = find_end_of_inset(document.body, i)
-      l = find_token(document.body, "set_width", i, j)
-      if l == -1:
+      if not del_token(document.body, "set_width", i, j):
             document.warning("Can't find set_width option for nomencl_print!")
-            i = j
-            continue
-      del document.body[l]
-      i = j - 1
+      i = j
 
 
 def revert_nomencl_cwidth(document):
@@ -872,11 +862,8 @@ def revert_mhchem(document):
 
 def revert_fontenc(document):
     " Remove fontencoding param "
-    i = find_token(document.header, '\\fontencoding', 0)
-    if i == -1:
+    if not del_token(document.header, '\\fontencoding', 0):
         document.warning("Malformed LyX document: Missing \\fontencoding.")
-        return
-    del document.header[i]
 
 
 def merge_gbrief(document):
@@ -934,12 +921,8 @@ def revert_gbrief(document):
 
 def revert_html_options(document):
     " Remove html options "
-    i = find_token(document.header, '\\html_use_mathml', 0)
-    if i != -1:
-        del document.header[i]
-    i = find_token(document.header, '\\html_be_strict', 0)
-    if i != -1:
-        del document.header[i]
+    del_token(document.header, '\\html_use_mathml', 0)
+    del_token(document.header, '\\html_be_strict', 0)
 
 
 def revert_includeonly(document):
@@ -957,9 +940,7 @@ def revert_includeonly(document):
 
 def revert_includeall(document):
     " Remove maintain_unincluded_children param "
-    i = find_token(document.header, '\\maintain_unincluded_children', 0)
-    if i != -1:
-        del document.header[i]
+    del_token(document.header, '\\maintain_unincluded_children', 0)
 
 
 def revert_multirow(document):
@@ -1302,15 +1283,9 @@ def revert_lyx_version(document):
 
 def revert_math_scale(document):
   " Remove math scaling and LaTeX options "
-  i = find_token(document.header, '\\html_math_img_scale', 0)
-  if i != -1:
-    del document.header[i]
-  i = find_token(document.header, '\\html_latex_start', 0)
-  if i != -1:
-    del document.header[i]
-  i = find_token(document.header, '\\html_latex_end', 0)
-  if i != -1:
-    del document.header[i]
+  del_token(document.header, '\\html_math_img_scale', 0)
+  del_token(document.header, '\\html_latex_start', 0)
+  del_token(document.header, '\\html_latex_end', 0)
 
 
 def revert_pagesizes(document):
@@ -1385,12 +1360,8 @@ def revert_html_quotes(document):
 
 def revert_output_sync(document):
   " Remove forward search options "
-  i = find_token(document.header, '\\output_sync_macro', 0)
-  if i != -1:
-    del document.header[i]
-  i = find_token(document.header, '\\output_sync', 0)
-  if i != -1:
-    del document.header[i]
+  del_token(document.header, '\\output_sync_macro', 0)
+  del_token(document.header, '\\output_sync', 0)
 
 
 def revert_align_decimal(document):

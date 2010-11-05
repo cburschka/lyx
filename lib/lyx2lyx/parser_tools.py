@@ -65,7 +65,7 @@ get_quoted_value(lines, token, start[, end[, default]):
   value, if they are present. So use this one for cases
   where the value is normally quoted.
 
-del_token(lines, token, start, end):
+del_token(lines, token, start[, end]):
   Like find_token, but deletes the line if it finds one.
   Returns True if a line got deleted, otherwise False.
 '''
@@ -231,7 +231,7 @@ def get_quoted_value(lines, token, start, end = 0, default = ""):
     return val.strip('"')
 
 
-def del_token(lines, token, start, end):
+def del_token(lines, token, start, end = 0):
     """ del_token(lines, token, start, end) -> int
 
     Find the first line in lines where token is the first element 
