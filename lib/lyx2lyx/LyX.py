@@ -628,65 +628,65 @@ class LyX_base:
         return mode, steps
 
 
-    def get_toc(self, depth = 4):
-        " Returns the TOC of this LyX document."
-        paragraphs_filter = {'Title' : 0,'Chapter' : 1, 'Section' : 2,
-                             'Subsection' : 3, 'Subsubsection': 4}
-        allowed_insets = ['Quotes']
-        allowed_parameters = ('\\paragraph_spacing', '\\noindent',
-                              '\\align', '\\labelwidthstring',
-                              "\\start_of_appendix", "\\leftindent")
-        sections = []
-        for section in paragraphs_filter.keys():
-            sections.append('\\begin_layout %s' % section)
+#    def get_toc(self, depth = 4):
+#        " Returns the TOC of this LyX document."
+#        paragraphs_filter = {'Title' : 0,'Chapter' : 1, 'Section' : 2,
+#                             'Subsection' : 3, 'Subsubsection': 4}
+#        allowed_insets = ['Quotes']
+#        allowed_parameters = ('\\paragraph_spacing', '\\noindent',
+#                              '\\align', '\\labelwidthstring',
+#                              "\\start_of_appendix", "\\leftindent")
+#        sections = []
+#        for section in paragraphs_filter.keys():
+#            sections.append('\\begin_layout %s' % section)
 
-        toc_par = []
-        i = 0
-        while 1:
-            i = find_tokens(self.body, sections, i)
-            if i == -1:
-                break
+#        toc_par = []
+#        i = 0
+#        while 1:
+#            i = find_tokens(self.body, sections, i)
+#            if i == -1:
+#                break
 
-            j = find_end_of(self.body,  i + 1, '\\begin_layout', '\\end_layout')
-            if j == -1:
-                self.warning('Incomplete file.', 0)
-                break
+#            j = find_end_of(self.body,  i + 1, '\\begin_layout', '\\end_layout')
+#            if j == -1:
+#                self.warning('Incomplete file.', 0)
+#                break
 
-            section = self.body[i].split()[1]
-            if section[-1] == '*':
-                section = section[:-1]
+#            section = self.body[i].split()[1]
+#            if section[-1] == '*':
+#                section = section[:-1]
 
-            par = []
+#            par = []
 
-            k = i + 1
-            # skip paragraph parameters
-            while not self.body[k].strip() or self.body[k].split()[0] \
-                      in allowed_parameters:
-                k += 1
+#            k = i + 1
+#            # skip paragraph parameters
+#            while not self.body[k].strip() or self.body[k].split()[0] \
+#                      in allowed_parameters:
+#                k += 1
 
-            while k < j:
-                if check_token(self.body[k], '\\begin_inset'):
-                    inset = self.body[k].split()[1]
-                    end = find_end_of_inset(self.body, k)
-                    if end == -1 or end > j:
-                        self.warning('Malformed file.', 0)
+#            while k < j:
+#                if check_token(self.body[k], '\\begin_inset'):
+#                    inset = self.body[k].split()[1]
+#                    end = find_end_of_inset(self.body, k)
+#                    if end == -1 or end > j:
+#                        self.warning('Malformed file.', 0)
 
-                    if inset in allowed_insets:
-                        par.extend(self.body[k: end+1])
-                    k = end + 1
-                else:
-                    par.append(self.body[k])
-                    k += 1
+#                    if inset in allowed_insets:
+#                        par.extend(self.body[k: end+1])
+#                    k = end + 1
+#                else:
+#                    par.append(self.body[k])
+#                    k += 1
 
-            # trim empty lines in the end.
-            while par and par[-1].strip() == '':
-                par.pop()
+#            # trim empty lines in the end.
+#            while par and par[-1].strip() == '':
+#                par.pop()
 
-            toc_par.append(Paragraph(section, par))
+#            toc_par.append(Paragraph(section, par))
 
-            i = j + 1
+#            i = j + 1
 
-        return toc_par
+#        return toc_par
 
 
 class File(LyX_base):
@@ -700,91 +700,91 @@ class File(LyX_base):
         self.read()
 
 
-class NewFile(LyX_base):
-    " This class is to create new LyX files."
-    def set_header(self, **params):
-        # set default values
-        self.header.extend([
-            "#LyX xxxx created this file."
-            "For more info see http://www.lyx.org/",
-            "\\lyxformat xxx",
-            "\\begin_document",
-            "\\begin_header",
-            "\\textclass article",
-            "\\language english",
-            "\\inputencoding auto",
-            "\\font_roman default",
-            "\\font_sans default",
-            "\\font_typewriter default",
-            "\\font_default_family default",
-            "\\font_sc false",
-            "\\font_osf false",
-            "\\font_sf_scale 100",
-            "\\font_tt_scale 100",
-            "\\graphics default",
-            "\\paperfontsize default",
-            "\\papersize default",
-            "\\use_geometry false",
-            "\\use_amsmath 1",
-            "\\cite_engine basic",
-            "\\use_bibtopic false",
-            "\\paperorientation portrait",
-            "\\secnumdepth 3",
-            "\\tocdepth 3",
-            "\\paragraph_separation indent",
-            "\\defskip medskip",
-            "\\quotes_language english",
-            "\\papercolumns 1",
-            "\\papersides 1",
-            "\\paperpagestyle default",
-            "\\tracking_changes false",
-            "\\end_header"])
+#class NewFile(LyX_base):
+#    " This class is to create new LyX files."
+#    def set_header(self, **params):
+#        # set default values
+#        self.header.extend([
+#            "#LyX xxxx created this file."
+#            "For more info see http://www.lyx.org/",
+#            "\\lyxformat xxx",
+#            "\\begin_document",
+#            "\\begin_header",
+#            "\\textclass article",
+#            "\\language english",
+#            "\\inputencoding auto",
+#            "\\font_roman default",
+#            "\\font_sans default",
+#            "\\font_typewriter default",
+#            "\\font_default_family default",
+#            "\\font_sc false",
+#            "\\font_osf false",
+#            "\\font_sf_scale 100",
+#            "\\font_tt_scale 100",
+#            "\\graphics default",
+#            "\\paperfontsize default",
+#            "\\papersize default",
+#            "\\use_geometry false",
+#            "\\use_amsmath 1",
+#            "\\cite_engine basic",
+#            "\\use_bibtopic false",
+#            "\\paperorientation portrait",
+#            "\\secnumdepth 3",
+#            "\\tocdepth 3",
+#            "\\paragraph_separation indent",
+#            "\\defskip medskip",
+#            "\\quotes_language english",
+#            "\\papercolumns 1",
+#            "\\papersides 1",
+#            "\\paperpagestyle default",
+#            "\\tracking_changes false",
+#            "\\end_header"])
 
-        self.format = get_end_format()
-        for param in params:
-            self.set_parameter(param, params[param])
-
-
-    def set_body(self, paragraphs):
-        self.body.extend(['\\begin_body',''])
-
-        for par in paragraphs:
-            self.body.extend(par.asLines())
-
-        self.body.extend(['','\\end_body', '\\end_document'])
+#        self.format = get_end_format()
+#        for param in params:
+#            self.set_parameter(param, params[param])
 
 
-class Paragraph:
-    # unfinished implementation, it is missing the Text and Insets
-    # representation.
-    " This class represents the LyX paragraphs."
-    def __init__(self, name, body=[], settings = [], child = []):
-        """ Parameters:
-        name: paragraph name.
-        body: list of lines of body text.
-        child: list of paragraphs that descend from this paragraph.
-        """
-        self.name = name
-        self.body = body
-        self.settings = settings
-        self.child = child
+#    def set_body(self, paragraphs):
+#        self.body.extend(['\\begin_body',''])
 
-    def asLines(self):
-        """ Converts the paragraph to a list of strings, representing
-        it in the LyX file."""
+#        for par in paragraphs:
+#            self.body.extend(par.asLines())
 
-        result = ['','\\begin_layout %s' % self.name]
-        result.extend(self.settings)
-        result.append('')
-        result.extend(self.body)
-        result.append('\\end_layout')
+#        self.body.extend(['','\\end_body', '\\end_document'])
 
-        if not self.child:
-            return result
 
-        result.append('\\begin_deeper')
-        for node in self.child:
-            result.extend(node.asLines())
-        result.append('\\end_deeper')
+#class Paragraph:
+#    # unfinished implementation, it is missing the Text and Insets
+#    # representation.
+#    " This class represents the LyX paragraphs."
+#    def __init__(self, name, body=[], settings = [], child = []):
+#        """ Parameters:
+#        name: paragraph name.
+#        body: list of lines of body text.
+#        child: list of paragraphs that descend from this paragraph.
+#        """
+#        self.name = name
+#        self.body = body
+#        self.settings = settings
+#        self.child = child
 
-        return result
+#    def asLines(self):
+#        """ Converts the paragraph to a list of strings, representing
+#        it in the LyX file."""
+
+#        result = ['','\\begin_layout %s' % self.name]
+#        result.extend(self.settings)
+#        result.append('')
+#        result.extend(self.body)
+#        result.append('\\end_layout')
+
+#        if not self.child:
+#            return result
+
+#        result.append('\\begin_deeper')
+#        for node in self.child:
+#            result.extend(node.asLines())
+#        result.append('\\end_deeper')
+
+#        return result
