@@ -22,12 +22,12 @@ import string
 from parser_tools import find_token
 from unicode_symbols import unicode_reps
 
+
 # This will accept either a list of lines or a single line.
-# But it is bad practice to pass something with embedded
-# newlines, though we will handle that.
+# It is bad practice to pass something with embedded newlines, 
+# though we will handle that.
 def add_to_preamble(document, text):
-    """ Add text to the preamble if it is not already there.
-    Only the first line is checked!"""
+    " Add text to the preamble if it is not already there. "
 
     if not type(text) is list:
       # split on \n just in case
@@ -35,7 +35,20 @@ def add_to_preamble(document, text):
       # if there's no \n, too
       text = text.split('\n')
 
-    if find_token(document.preamble, text[0], 0) != -1:
+    i = 0
+    prelen = len(document.preamble)
+    while True:
+      i = find_token(document.preamble, text[0], i)
+      if i == -1:
+        break
+      # we need a perfect match
+      matched = True
+      for line in text:
+        if i >= prelen or line != document.preamble[i]:
+          matched = False
+          break
+        i += 1
+      if matched:
         return
 
     document.preamble.extend(text)
