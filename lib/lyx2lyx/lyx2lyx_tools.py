@@ -92,7 +92,7 @@ def add_to_preamble(document, text):
       if matched:
         return
 
-    document.preamble.extend("% Added by lyx2lyx")
+    document.preamble.extend(["% Added by lyx2lyx"])
     document.preamble.extend(text)
 
 
