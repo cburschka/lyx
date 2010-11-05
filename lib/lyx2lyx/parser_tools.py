@@ -46,7 +46,7 @@ def find_token(lines, token, start, end = 0, exact = False):
 
     Return -1 on failure."""
 
-    if end == 0:
+    if end == 0 or end > len(lines):
         end = len(lines)
     m = len(token)
     for i in xrange(start, end):
