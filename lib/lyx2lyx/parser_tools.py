@@ -23,10 +23,10 @@ This modules offer several free functions to help parse lines.
 More documentaton is below, but here is a quick guide to what 
 they do. Optional arguments are marked by brackets.
 
-find_token(lines, token, start[, end[, exact]]):
+find_token(lines, token, start[, end[, ignorews]]):
   Returns the first line i, start <= i < end, on which
   token is found at the beginning. Returns -1 if not 
-  found. If exact is (given and) True, then differences
+  found. If ignorews is (given and) True, then differences
   in whitespace do not count.
 
 find_token_exact(lines, token, start[, end]):
@@ -152,13 +152,13 @@ def is_nonempty_line(line):
 
 
 # Utilities for a list of lines
-def find_token(lines, token, start, end = 0, exact = False):
-    """ find_token(lines, token, start[[, end], exact]) -> int
+def find_token(lines, token, start, end = 0, ignorews = False):
+    """ find_token(lines, token, start[[, end], ignorews]) -> int
 
     Return the lowest line where token is found, and is the first
     element, in lines[start, end].
     
-    If exact is True (default is False), then differences in
+    If ignorews is True (default is False), then differences in
     whitespace are ignored.
 
     Return -1 on failure."""
@@ -167,7 +167,7 @@ def find_token(lines, token, start, end = 0, exact = False):
         end = len(lines)
     m = len(token)
     for i in xrange(start, end):
-        if exact:
+        if ignorews:
             x = lines[i].split()
             y = token.split()
             if len(x) < len(y):
@@ -184,8 +184,8 @@ def find_token_exact(lines, token, start, end = 0):
     return find_token(lines, token, start, end, True)
 
 
-def find_tokens(lines, tokens, start, end = 0, exact = False):
-    """ find_tokens(lines, tokens, start[[, end], exact]) -> int
+def find_tokens(lines, tokens, start, end = 0, ignorews = False):
+    """ find_tokens(lines, tokens, start[[, end], ignorews]) -> int
 
     Return the lowest line where one token in tokens is found, and is
     the first element, in lines[start, end].
@@ -196,7 +196,7 @@ def find_tokens(lines, tokens, start, end = 0, exact = False):
 
     for i in xrange(start, end):
         for token in tokens:
-            if exact:
+            if ignorews:
                 x = lines[i].split()
                 y = token.split()
                 if len(x) < len(y):
