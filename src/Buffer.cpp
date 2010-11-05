@@ -875,7 +875,8 @@ Buffer::ReadStatus Buffer::readFile(FileName const & fn)
 		return readFile(tmpFile);
 	}
 
-	// InsetInfo needs to know if file is under VCS
+	// FIXME: InsetInfo needs to know whether the file is under VCS 
+	// during the parse process, so this has to be done before.
 	lyxvc().file_found_hook(d->filename);
 
 	if (readDocument(lex)) {
