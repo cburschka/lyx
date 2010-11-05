@@ -28,6 +28,7 @@ def add_to_preamble(document, text):
     Only the first line is checked!"""
 
     if not type(text) is list:
+      document.warning("You should pass a list to add_to_preamble!")
       # split on \n just in case
       # it'll give us the one element list we want
       # if there's no \n, too
@@ -45,6 +46,7 @@ def insert_to_preamble(index, document, text):
     """ Insert text to the preamble at a given line"""
     
     if not type(text) is list:
+      document.warning("You should pass a list to insert_to_preamble!")
       # split on \n just in case
       # it'll give us the one element list we want
       # if there's no \n, too
@@ -366,4 +368,3 @@ def str2bool(s):
   "'true' goes to True, case-insensitively, and we strip whitespace."
   s = s.strip().lower()
   return s == "true"
-    
