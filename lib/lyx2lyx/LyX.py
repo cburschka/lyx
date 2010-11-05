@@ -628,6 +628,8 @@ class LyX_base:
         return mode, steps
 
 
+# Part of an unfinished attempt to make lyx2lyx gave a more
+# structured view of the document.
 #    def get_toc(self, depth = 4):
 #        " Returns the TOC of this LyX document."
 #        paragraphs_filter = {'Title' : 0,'Chapter' : 1, 'Section' : 2,
@@ -754,6 +756,8 @@ class File(LyX_base):
 #        self.body.extend(['','\\end_body', '\\end_document'])
 
 
+# Part of an unfinished attempt to make lyx2lyx gave a more
+# structured view of the document.
 #class Paragraph:
 #    # unfinished implementation, it is missing the Text and Insets
 #    # representation.
