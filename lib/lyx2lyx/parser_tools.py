@@ -147,7 +147,8 @@ def get_value(lines, token, start, end = 0, default = ""):
 
     Find the next line that looks like:
       token followed by other stuff
-    Returns "followed by other stuff".
+    Returns "followed by other stuff" with leading and trailing
+    whitespace removed.
     """
 
     i = find_token_exact(lines, token, start, end)
@@ -155,7 +156,7 @@ def get_value(lines, token, start, end = 0, default = ""):
         return default
     l = lines[i].split(None, 1)
     if len(l) > 1:
-        return l[1]
+        return l[1].strip()
     return default
 
 
@@ -166,18 +167,12 @@ def get_value_string(lines, token, start, end = 0, trim = False, default = ""):
     token is the first element. When trim is used, the first and last character
     of the string is trimmed."""
 
-    i = find_token_exact(lines, token, start, end)
-    if i == -1:
-        return default
-    if len(lines[i].split()) > 1:
-        for k in range (0, len(lines[i])):
-            if lines[i][k] == ' ':
-                if trim == False:
-                    return lines[i][k+1:len(lines[i])]
-                else:
-                    return lines[i][k+2:len(lines[i])-1]
-    else:
-        return default
+    val = get_value(lines, token, start, end, "")
+    if not val:
+      return default
+    if trim:
+      return val[1:-1]
+    return val
 
 
 def del_token(lines, token, start, end):
