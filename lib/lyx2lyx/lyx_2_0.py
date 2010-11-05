@@ -167,7 +167,7 @@ def revert_phantom_types(document, ptype, cmd):
           document.warning("Can't find layout for inset at line " + str(i))
           i = end
           continue
-      bend = find_token(document.body, "\\end_layout", blay, end)
+      bend = find_end_of_layout(document.body, blay)
       if bend == -1:
           document.warning("Malformed LyX document: Could not find end of Phantom inset's layout.")
           i = end
