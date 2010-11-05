@@ -320,12 +320,11 @@ def revert_backgroundcolor(document):
     red   = hex2ratio(colorcode[1:3])
     green = hex2ratio(colorcode[3:5])
     blue  = hex2ratio(colorcode[5:7])
-    insert_to_preamble(0, document,
-                          '% Commands inserted by lyx2lyx to set the background color\n'
-                          + '\\@ifundefined{definecolor}{\\usepackage{color}}{}\n'
-                          + '\\definecolor{page_backgroundcolor}{rgb}{'
-                          + red + ',' + green + ',' + blue + '}\n'
-                          + '\\pagecolor{page_backgroundcolor}\n')
+    insert_to_preamble(0, document, \
+        ['% Commands inserted by lyx2lyx to set the background color',
+        '\\@ifundefined{definecolor}{\\usepackage{color}}{}',
+        '\\definecolor{page_backgroundcolor}{rgb}{' + red + ',' + green + ',' + blue + '}',
+        '\\pagecolor{page_backgroundcolor}'])
 
 
 def revert_splitindex(document):
@@ -488,10 +487,10 @@ def revert_strikeout(document):
   changed = revert_font_attrs(document.body, "\\uwave", "\\uwave") or changed
   changed = revert_font_attrs(document.body, "\\strikeout", "\\sout")  or changed
   if changed == True:
-    insert_to_preamble(0, document,
-        '% Commands inserted by lyx2lyx for proper underlining\n'
-        + '\\PassOptionsToPackage{normalem}{ulem}\n'
-        + '\\usepackage{ulem}\n')
+    insert_to_preamble(0, document, \
+        ['% Commands inserted by lyx2lyx for proper underlining',
+        '\\PassOptionsToPackage{normalem}{ulem}',
+        '\\usepackage{ulem}'])
 
 
 def revert_ulinelatex(document):
@@ -499,14 +498,14 @@ def revert_ulinelatex(document):
     i = find_token(document.body, '\\bar under', 0)
     if i == -1:
         return
-    insert_to_preamble(0, document,
-            '% Commands inserted by lyx2lyx for proper underlining\n'
-            + '\\PassOptionsToPackage{normalem}{ulem}\n'
-            + '\\usepackage{ulem}\n'
-            + '\\let\\cite@rig\\cite\n'
-            + '\\newcommand{\\b@xcite}[2][\\%]{\\def\\def@pt{\\%}\\def\\pas@pt{#1}\n'
-            + '  \\mbox{\\ifx\\def@pt\\pas@pt\\cite@rig{#2}\\else\\cite@rig[#1]{#2}\\fi}}\n'
-            + '\\renewcommand{\\underbar}[1]{{\\let\\cite\\b@xcite\\uline{#1}}}\n')
+    insert_to_preamble(0, document,\
+            ['% Commands inserted by lyx2lyx for proper underlining',
+            '\\PassOptionsToPackage{normalem}{ulem}',
+            '\\usepackage{ulem}',
+            '\\let\\cite@rig\\cite',
+            '\\newcommand{\\b@xcite}[2][\\%]{\\def\\def@pt{\\%}\\def\\pas@pt{#1}',
+            '  \\mbox{\\ifx\\def@pt\\pas@pt\\cite@rig{#2}\\else\\cite@rig[#1]{#2}\\fi}}',
+            '\\renewcommand{\\underbar}[1]{{\\let\\cite\\b@xcite\\uline{#1}}}'])
 
 
 def revert_custom_processors(document):
