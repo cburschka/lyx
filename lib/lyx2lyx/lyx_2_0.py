@@ -1898,7 +1898,6 @@ def revert_rule(document):
 def revert_diagram(document):
   " Add the feyn package if \\Diagram is used in math "
   i = 0
-  re_diagram = re.compile(r'\\begin_inset Formula .*\\Diagram', re.DOTALL)
   while True:
     i = find_token(document.body, '\\begin_inset Formula', i)
     if i == -1:
@@ -1907,12 +1906,11 @@ def revert_diagram(document):
     if j == -1:
         document.warning("Malformed LyX document: Can't find end of Formula inset.")
         return 
-    m = re_diagram.search("\n".join(document.body[i:j]))
-    if not m:
-      i += 1
+    lines = "\n".join(document.body[i:j])
+    if lines.find("\\Diagram") == -1:
+      i = j
       continue
-    add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
-    add_to_preamble(document, "\\usepackage{feyn}")
+    add_to_preamble(document, ["% lyx2lyx feyn package insertion ", "\\usepackage{feyn}"])
     # only need to do it once!
     return
 
