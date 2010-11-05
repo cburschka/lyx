@@ -29,7 +29,7 @@ from parser_tools import find_token, find_end_of, find_tokens, \
   
 from lyx2lyx_tools import add_to_preamble, insert_to_preamble, \
   put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
-  revert_font_attrs, revert_layout_command, hex2ratio, str2bool
+  revert_font_attrs, hex2ratio, str2bool
 
 ####################################################################
 # Private helper functions
@@ -484,9 +484,9 @@ def revert_printindexall(document):
 
 def revert_strikeout(document):
   " Reverts \\strikeout font attribute "
-  changed = revert_font_attrs(document, "\\uuline", "\\uuline")
-  changed = revert_font_attrs(document, "\\uwave", "\\uwave") or changed
-  changed = revert_font_attrs(document, "\\strikeout", "\\sout")  or changed
+  changed = revert_font_attrs(document.body, "\\uuline", "\\uuline")
+  changed = revert_font_attrs(document.body, "\\uwave", "\\uwave") or changed
+  changed = revert_font_attrs(document.body, "\\strikeout", "\\sout")  or changed
   if changed == True:
     insert_to_preamble(0, document,
         '% Commands inserted by lyx2lyx for proper underlining\n'
@@ -1496,8 +1496,8 @@ def revert_IEEEtran(document):
   " Convert IEEEtran layouts and styles to TeX code "
   if document.textclass != "IEEEtran":
     return
-  revert_flex_inset(document, "IEEE membership", "\\IEEEmembership", 0)
-  revert_flex_inset(document, "Lowercase", "\\MakeLowercase", 0)
+  revert_flex_inset(document.body, "IEEE membership", "\\IEEEmembership")
+  revert_flex_inset(document.body, "Lowercase", "\\MakeLowercase")
   layouts = ("Special Paper Notice", "After Title Text", "Publication ID",
              "Page headings", "Biography without photo")
   latexcmd = {"Special Paper Notice": "\\IEEEspecialpapernotice",

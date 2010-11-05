@@ -283,104 +283,105 @@ def latex_length(slen):
     return (percent, slen)
 
 
-def revert_flex_inset(document, name, LaTeXname, position):
+def revert_flex_inset(lines, name, LaTeXname):
   " Convert flex insets to TeX code "
-  i = position
+  i = 0
   while True:
-    i = find_token(document.body, '\\begin_inset Flex ' + name, i)
+    i = find_token(lines, '\\begin_inset Flex ' + name, i)
     if i == -1:
       return
-    z = find_end_of_inset(document.body, i)
+    z = find_end_of_inset(lines, i)
     if z == -1:
-      document.warning("Malformed LyX document: Can't find end of Flex " + name + " inset.")
-      return
+      document.warning("Can't find end of Flex " + name + " inset.")
+      i += 1
+      continue
     # remove the \end_inset
-    document.body[z - 2:z + 1] = put_cmd_in_ert("}")
+    lines[z - 2:z + 1] = put_cmd_in_ert("}")
     # we need to reset character layouts if necessary
-    j = find_token(document.body, '\\emph on', i, z)
-    k = find_token(document.body, '\\noun on', i, z)
-    l = find_token(document.body, '\\series', i, z)
-    m = find_token(document.body, '\\family', i, z)
-    n = find_token(document.body, '\\shape', i, z)
-    o = find_token(document.body, '\\color', i, z)
-    p = find_token(document.body, '\\size', i, z)
-    q = find_token(document.body, '\\bar under', i, z)
-    r = find_token(document.body, '\\uuline on', i, z)
-    s = find_token(document.body, '\\uwave on', i, z)
-    t = find_token(document.body, '\\strikeout on', i, z)
+    j = find_token(lines, '\\emph on', i, z)
+    k = find_token(lines, '\\noun on', i, z)
+    l = find_token(lines, '\\series', i, z)
+    m = find_token(lines, '\\family', i, z)
+    n = find_token(lines, '\\shape', i, z)
+    o = find_token(lines, '\\color', i, z)
+    p = find_token(lines, '\\size', i, z)
+    q = find_token(lines, '\\bar under', i, z)
+    r = find_token(lines, '\\uuline on', i, z)
+    s = find_token(lines, '\\uwave on', i, z)
+    t = find_token(lines, '\\strikeout on', i, z)
     if j != -1:
-      document.body.insert(z - 2, "\\emph default")
+      lines.insert(z - 2, "\\emph default")
     if k != -1:
-      document.body.insert(z - 2, "\\noun default")
+      lines.insert(z - 2, "\\noun default")
     if l != -1:
-      document.body.insert(z - 2, "\\series default")
+      lines.insert(z - 2, "\\series default")
     if m != -1:
-      document.body.insert(z - 2, "\\family default")
+      lines.insert(z - 2, "\\family default")
     if n != -1:
-      document.body.insert(z - 2, "\\shape default")
+      lines.insert(z - 2, "\\shape default")
     if o != -1:
-      document.body.insert(z - 2, "\\color inherit")
+      lines.insert(z - 2, "\\color inherit")
     if p != -1:
-      document.body.insert(z - 2, "\\size default")
+      lines.insert(z - 2, "\\size default")
     if q != -1:
-      document.body.insert(z - 2, "\\bar default")
+      lines.insert(z - 2, "\\bar default")
     if r != -1:
-      document.body.insert(z - 2, "\\uuline default")
+      lines.insert(z - 2, "\\uuline default")
     if s != -1:
-      document.body.insert(z - 2, "\\uwave default")
+      lines.insert(z - 2, "\\uwave default")
     if t != -1:
-      document.body.insert(z - 2, "\\strikeout default")
-    document.body[i:i + 4] = put_cmd_in_ert(LaTeXname + "{")
+      lines.insert(z - 2, "\\strikeout default")
+    lines[i:i + 4] = put_cmd_in_ert(LaTeXname + "{")
     i += 1
 
 
-def revert_font_attrs(document, name, LaTeXname):
+def revert_font_attrs(lines, name, LaTeXname):
   " Reverts font changes to TeX code "
   i = 0
   changed = False
   while True:
-    i = find_token(document.body, name + ' on', i)
+    i = find_token(lines, name + ' on', i)
     if i == -1:
       return changed
-    j = find_token(document.body, name + ' default', i)
-    k = find_token(document.body, name + ' on', i + 1)
+    j = find_token(lines, name + ' default', i)
+    k = find_token(lines, name + ' on', i + 1)
     # if there is no default set, the style ends with the layout
     # assure hereby that we found the correct layout end
     if j != -1 and (j < k or k == -1):
-      document.body[j:j + 1] = put_cmd_in_ert("}")
+      lines[j:j + 1] = put_cmd_in_ert("}")
     else:
-      j = find_token(document.body, '\\end_layout', i)
-      document.body[j:j] = put_cmd_in_ert("}")
-    document.body[i:i + 1] = put_cmd_in_ert(LaTeXname + "{")
+      j = find_token(lines, '\\end_layout', i)
+      lines[j:j] = put_cmd_in_ert("}")
+    lines[i:i + 1] = put_cmd_in_ert(LaTeXname + "{")
     changed = True
     i += 1
 
 
-def revert_layout_command(document, name, LaTeXname, position):
+def revert_layout_command(lines, name, LaTeXname):
   " Reverts a command from a layout to TeX code "
-  i = position
+  i = 0
   while True:
-    i = find_token(document.body, '\\begin_layout ' + name, i)
+    i = find_token(lines, '\\begin_layout ' + name, i)
     if i == -1:
       return
     k = -1
     # find the next layout
     j = i + 1
     while k == -1:
-      j = find_token(document.body, '\\begin_layout', j)
-      l = len(document.body)
+      j = find_token(lines, '\\begin_layout', j)
+      l = len(lines)
       # if nothing was found it was the last layout of the document
       if j == -1:
-        document.body[l - 4:l - 4] = put_cmd_in_ert("}")
+        lines[l - 4:l - 4] = put_cmd_in_ert("}")
         k = 0
       # exclude plain layout because this can be TeX code or another inset
-      elif document.body[j] != '\\begin_layout Plain Layout':
-        document.body[j - 2:j - 2] = put_cmd_in_ert("}")
+      elif lines[j] != '\\begin_layout Plain Layout':
+        lines[j - 2:j - 2] = put_cmd_in_ert("}")
         k = 0
       else:
         j += 1
-    document.body[i] = '\\begin_layout Standard'
-    document.body[i + 1:i + 1] = put_cmd_in_ert(LaTeXname + "{")
+    lines[i] = '\\begin_layout Standard'
+    lines[i + 1:i + 1] = put_cmd_in_ert(LaTeXname + "{")
     i += 1
 
 
