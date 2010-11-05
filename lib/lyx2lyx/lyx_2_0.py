@@ -297,7 +297,7 @@ def revert_xetex(document):
         pretext.append('\\defaultfontfeatures{Numbers=OldStyle}')
     pretext.append('\usepackage{xunicode}')
     pretext.append('\usepackage{xltxtra}')
-    insert_to_preamble(0, document, pretext)
+    insert_to_preamble(document, pretext)
 
 
 def revert_outputformat(document):
@@ -320,8 +320,8 @@ def revert_backgroundcolor(document):
     red   = hex2ratio(colorcode[1:3])
     green = hex2ratio(colorcode[3:5])
     blue  = hex2ratio(colorcode[5:7])
-    insert_to_preamble(0, document, \
-        ['% Commands inserted by lyx2lyx to set the background color',
+    insert_to_preamble(document, \
+        ['% To set the background color',
         '\\@ifundefined{definecolor}{\\usepackage{color}}{}',
         '\\definecolor{page_backgroundcolor}{rgb}{' + red + ',' + green + ',' + blue + '}',
         '\\pagecolor{page_backgroundcolor}'])
@@ -359,7 +359,7 @@ def revert_splitindex(document):
               preamble.append("\\newindex[" + iname + "]{" + ishortcut + "}")
         del document.header[i:k + 1]
     if preamble:
-        insert_to_preamble(0, document, preamble)
+        insert_to_preamble(document, preamble)
         
     # deal with index insets
     # these need to have the argument removed
@@ -487,8 +487,8 @@ def revert_strikeout(document):
   changed = revert_font_attrs(document.body, "\\uwave", "\\uwave") or changed
   changed = revert_font_attrs(document.body, "\\strikeout", "\\sout")  or changed
   if changed == True:
-    insert_to_preamble(0, document, \
-        ['% Commands inserted by lyx2lyx for proper underlining',
+    insert_to_preamble(document, \
+        ['%  for proper underlining',
         '\\PassOptionsToPackage{normalem}{ulem}',
         '\\usepackage{ulem}'])
 
@@ -498,8 +498,8 @@ def revert_ulinelatex(document):
     i = find_token(document.body, '\\bar under', 0)
     if i == -1:
         return
-    insert_to_preamble(0, document,\
-            ['% Commands inserted by lyx2lyx for proper underlining',
+    insert_to_preamble(document,\
+            ['%  for proper underlining',
             '\\PassOptionsToPackage{normalem}{ulem}',
             '\\usepackage{ulem}',
             '\\let\\cite@rig\\cite',
@@ -557,8 +557,7 @@ def revert_nomencl_cwidth(document):
         continue
       width = get_quoted_value(document.body, "width", i, j)
       del document.body[l]
-      add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
-      add_to_preamble(document, ["\\setlength{\\nomlabelwidth}{" + width + "}"])
+      insert_to_preamble(document, ["\\setlength{\\nomlabelwidth}{" + width + "}"])
       i = j - 1
 
 
@@ -621,8 +620,7 @@ def revert_paragraph_indentation(document):
     if length != "default":
       # handle percent lengths
       length = latex_length(length)[1]
-      add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
-      add_to_preamble(document, ["\\setlength{\\parindent}{" + length + "}"])
+      insert_to_preamble(document, ["\\setlength{\\parindent}{" + length + "}"])
     del document.header[i]
 
 
@@ -639,8 +637,7 @@ def revert_percent_skip_lengths(document):
     # handle percent lengths
     percent, length = latex_length(length)
     if percent:
-        add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
-        add_to_preamble(document, ["\\setlength{\\parskip}{" + length + "}"])
+        insert_to_preamble(document, ["\\setlength{\\parskip}{" + length + "}"])
         # set defskip to medskip as default
         document.header[i] = "\\defskip medskip"
 
@@ -815,7 +812,6 @@ def revert_suppress_date(document):
     # when suppress_date was true
     date = str2bool(get_value(document.header, "\\suppress_date", i))
     if date:
-        add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
         add_to_preamble(document, ["\\date{}"])
     del document.header[i]
 
@@ -853,10 +849,9 @@ def revert_mhchem(document):
             i += 1
 
     if mhchem == "on":
-        pre = ["% lyx2lyx mhchem commands", 
-          "\\PassOptionsToPackage{version=3}{mhchem}", 
+        pre = ["\\PassOptionsToPackage{version=3}{mhchem}", 
           "\\usepackage{mhchem}"]
-        add_to_preamble(document, pre) 
+        insert_to_preamble(document, pre) 
 
 
 def revert_fontenc(document):
@@ -1001,8 +996,7 @@ def revert_multirow(document):
       i = cend
 
     if multirow == True:
-        add_to_preamble(document, 
-          ["% lyx2lyx multirow additions ", "\\usepackage{multirow}"])
+        add_to_preamble(document, ["\\usepackage{multirow}"])
 
 
 def convert_math_output(document):
@@ -1147,7 +1141,7 @@ def revert_equalspacing_xymatrix(document):
           i = j + 1
   
     if has_equal_spacing and not has_preamble:
-        add_to_preamble(document, ['% lyx2lyx xymatrix addition', '\\usepackage[all]{xy}'])
+        add_to_preamble(document, ['\\usepackage[all]{xy}'])
 
 
 def revert_notefontcolor(document):
@@ -1170,9 +1164,8 @@ def revert_notefontcolor(document):
     green = hex2ratio(colorcode[3:5])
     blue = hex2ratio(colorcode[5:7])
     # write the preamble
-    insert_to_preamble(0, document,
-      ['% Commands inserted by lyx2lyx to set the font color',
-        '% for greyed-out notes',
+    insert_to_preamble(document,
+      [ '%  for greyed-out notes',
         '\\@ifundefined{definecolor}{\\usepackage{color}}{}'
         '\\definecolor{note_fontcolor}{rgb}{%s,%s,%s}' % (red, green, blue),
         '\\renewenvironment{lyxgreyedout}',
@@ -1212,8 +1205,8 @@ def revert_fontcolor(document):
     green = hex2ratio(colorcode[3:5])
     blue = hex2ratio(colorcode[5:7])
     # write the preamble
-    insert_to_preamble(0, document,
-      ['% Commands inserted by lyx2lyx to set the font color',
+    insert_to_preamble(document,
+      ['%  Set the font color',
       '\\@ifundefined{definecolor}{\\usepackage{color}}{}',
       '\\definecolor{document_fontcolor}{rgb}{%s,%s,%s}' % (red, green, blue),
       '\\color{document_fontcolor}'])
@@ -1231,8 +1224,8 @@ def revert_shadedboxcolor(document):
     green = hex2ratio(colorcode[3:5])
     blue = hex2ratio(colorcode[5:7])
     # write the preamble
-    insert_to_preamble(0, document,
-      ['% Commands inserted by lyx2lyx to set the color of boxes with shaded background',
+    insert_to_preamble(document,
+      ['%  Set the color of boxes with shaded background',
       '\\@ifundefined{definecolor}{\\usepackage{color}}{}',
       "\\definecolor{shadecolor}{rgb}{%s,%s,%s}" % (red, green, blue)])
 
@@ -1610,7 +1603,7 @@ def revert_nameref(document):
       document.body[stins:endins + 1] = newcontent
 
   if foundone:
-    add_to_preamble(document, "\usepackage{nameref}")
+    add_to_preamble(document, ["\usepackage{nameref}"])
 
 
 def remove_Nameref(document):
@@ -1638,7 +1631,7 @@ def revert_mathrsfs(document):
     i = 0
     for line in document.body:
       if line.find("\\mathscr{") != -1:
-        add_to_preamble(document, ["% lyx2lyx mathrsfs addition", "\\usepackage{mathrsfs}"])
+        add_to_preamble(document, ["\\usepackage{mathrsfs}"])
         return
 
 
@@ -1770,7 +1763,7 @@ def revert_mathdots(document):
         return
       if usedots == 2:
         # force load case
-        add_to_preamble(["% lyx2lyx mathdots addition", "\\usepackage{mathdots}"])
+        add_to_preamble(["\\usepackage{mathdots}"])
         return
     
     # so we are in the auto case. we want to load mathdots if \iddots is used.
@@ -1786,8 +1779,7 @@ def revert_mathdots(document):
         continue
       code = "\n".join(document.body[i:j])
       if code.find("\\iddots") != -1:
-        add_to_preamble(document, ["% lyx2lyx mathdots addition", 
-        "\\@ifundefined{iddots}{\\usepackage{mathdots}}"])
+        add_to_preamble(document, ["\\@ifundefined{iddots}{\\usepackage{mathdots}}"])
         return
       i = j
 
@@ -1890,7 +1882,7 @@ def revert_diagram(document):
     if lines.find("\\Diagram") == -1:
       i = j
       continue
-    add_to_preamble(document, ["% lyx2lyx feyn package insertion ", "\\usepackage{feyn}"])
+    add_to_preamble(document, ["\\usepackage{feyn}"])
     # only need to do it once!
     return
 

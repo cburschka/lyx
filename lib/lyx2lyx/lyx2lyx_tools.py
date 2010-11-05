@@ -27,12 +27,15 @@ add_to_preamble(document, text):
   we will handle that properly.
   The routine checks to see whether the provided material is
   already in the preamble. If not, it adds it.
+  Prepends a comment "% Added by lyx2lyx" to text.
 
-insert_to_preamble(index, document, text):
+insert_to_preamble(document, text[, index]):
   Here, text can be either a single line or a list of lines. It
   is bad practice to pass something with embedded newlines, but
   we will handle that properly.
-  The routine inserts text at document.preamble[index].
+  The routine inserts text at document.preamble[index], where by
+  default index is 0, so the material is inserted at the beginning.
+  Prepends a comment "% Added by lyx2lyx" to text.
 
 put_cmd_in_ert(arg):
   Here arg should be a list of strings (lines), which we want to
@@ -89,12 +92,13 @@ def add_to_preamble(document, text):
       if matched:
         return
 
+    document.preamble.extend("% Added by lyx2lyx")
     document.preamble.extend(text)
 
 
 # Note that text can be either a list of lines or a single line.
 # It should really be a list.
-def insert_to_preamble(index, document, text):
+def insert_to_preamble(document, text, index = 0):
     """ Insert text to the preamble at a given line"""
     
     if not type(text) is list:
@@ -102,7 +106,8 @@ def insert_to_preamble(index, document, text):
       # it'll give us the one element list we want
       # if there's no \n, too
       text = text.split('\n')
-
+    
+    text.insert(0, "% Added by lyx2lyx")
     document.preamble[index:index] = text
 
 
