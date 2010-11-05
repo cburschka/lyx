@@ -43,6 +43,9 @@ def find_token(lines, token, start, end = 0, exact = False):
 
     Return the lowest line where token is found, and is the first
     element, in lines[start, end].
+    
+    If exact is True (default is False), then differences in
+    whitespace are ignored.
 
     Return -1 on failure."""
 
@@ -243,13 +246,20 @@ def find_end_of_layout(lines, i):
     return find_end_of(lines, i, "\\begin_layout", "\\end_layout")
 
 
-# checks if line i is in the given inset
-# if so, returns starting and ending lines
-# otherwise, returns False
-# Example:
-#  is_in_inset(document.body, i, "\\begin_inset Tabular")
-# returns False unless i is within a table.
 def is_in_inset(lines, i, inset):
+    '''
+    Checks if line i is in an inset of the given type.
+    If so, returns starting and ending lines.
+    Otherwise, returns False.
+    Example:
+      is_in_inset(document.body, i, "\\begin_inset Tabular")
+    returns False unless i is within a table. If it is, then
+    it returns the line on which the table begins and the one
+    on which it ends. Note that this pair will evaulate to
+    boolean True, so
+      if is_in_inset(...):
+    will do what you expect.
+    '''
     defval = (-1, -1)
     stins = find_token_backwards(lines, inset, i)
     if stins == -1:
@@ -259,3 +269,43 @@ def is_in_inset(lines, i, inset):
     if endins < i:
       return defval
     return (stins, endins)
+
+
+def get_containing_inset(lines, i):
+  ''' 
+  Finds out what kind of inset line i is within. Returns a 
+  list containing (i) what follows \begin_inset on the the line 
+  on which the inset begins, plus the starting and ending line.
+  Returns False on any kind of error or if it isn't in an inset.
+  '''
+  stins = find_token_backwards(lines, i, "\\begin_inset")
+  if stins == -1:
+      return False
+  endins = find_end_of_inset(lines, stins)
+  if endins < i:
+      return False
+  inset = get_value(lines, "\\begin_inset", stins)
+  if inset == "":
+      # shouldn't happen
+      return False
+  return (inset, stins, endins)
+
+
+def get_containing_layout(lines, i):
+  ''' 
+  Finds out what kind of layout line i is within. Returns a 
+  list containing (i) what follows \begin_layout on the the line 
+  on which the layout begins, plus the starting and ending line.
+  Returns False on any kind of error.
+  '''
+  stins = find_token_backwards(lines, i, "\\begin_layout")
+  if stins == -1:
+      return False
+  endins = find_end_of_layout(lines, stins)
+  if endins < i:
+      return False
+  lay = get_value(lines, "\\begin_layout", stins)
+  if lay == "":
+      # shouldn't happen
+      return False
+  return (lay, stins, endins)
