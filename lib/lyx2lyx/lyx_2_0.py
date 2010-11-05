@@ -25,7 +25,7 @@ import sys, os
 
 from parser_tools import find_token, find_end_of, find_tokens, \
   find_end_of_inset, find_end_of_layout, find_token_backwards, \
-  get_containing_inset, get_value, get_quoted_value
+  is_in_inset, get_value, get_quoted_value
   
 from lyx2lyx_tools import add_to_preamble, insert_to_preamble, \
   put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
@@ -1619,10 +1619,11 @@ def revert_nameref(document):
       i += 1
       # Make sure it is actually in an inset!
       # A normal line could begin with "LatexCommand nameref"!
-      stins, endins = get_containing_inset(document.body, cmdloc, \
+      val = is_in_inset(document.body, cmdloc, \
           "\\begin_inset CommandInset ref")
-      if stins == -1:
-        continue
+      if not val:
+          continue
+      stins, endins = val
 
       # ok, so it is in an InsetRef
       refline = find_token(document.body, "reference", stins, endins)
@@ -1655,9 +1656,9 @@ def remove_Nameref(document):
     i += 1
     
     # Make sure it is actually in an inset!
-    stins, endins = get_containing_inset(document.body, \
-        cmdloc, "\\begin_inset CommandInset ref")
-    if stins == -1:
+    val = is_in_inset(document.body, cmdloc, \
+        "\\begin_inset CommandInset ref")
+    if not val:
       continue
     document.body[cmdloc] = "LatexCommand nameref"
 

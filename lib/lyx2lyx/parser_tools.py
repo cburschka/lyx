@@ -245,11 +245,11 @@ def find_end_of_layout(lines, i):
 
 # checks if line i is in the given inset
 # if so, returns starting and ending lines
-# otherwise, returns (-1, -1)
+# otherwise, returns False
 # Example:
-#  get_containing_inset(document.body, i, "\\begin_inset Tabular")
-# returns (-1, -1) unless i is within a table.
-def get_containing_inset(lines, i, inset):
+#  is_in_inset(document.body, i, "\\begin_inset Tabular")
+# returns False unless i is within a table.
+def is_in_inset(lines, i, inset):
     defval = (-1, -1)
     stins = find_token_backwards(lines, inset, i)
     if stins == -1:
