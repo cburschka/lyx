@@ -185,13 +185,13 @@ public:
 
 	/// \name Functions involved in reading files/strings.
 	//@{
-	/// Loads a LyX file \c fn into the buffer. This function
+	/// Loads the LyX file into the buffer. This function
 	/// tries to extract the file from version control if it
 	/// cannot be found. If it can be found, it will try to
 	/// read an emergency save file or an autosave file.
 	/// \sa loadThisLyXFile
-	ReadStatus loadLyXFile(support::FileName const & fn);
-	/// Loads a LyX file \c fn into the buffer. If you want
+	ReadStatus loadLyXFile();
+	/// Loads the LyX file \c fn into the buffer. If you want
 	/// to check for files in a version control container,
 	/// emergency or autosave files, one should use \c loadLyXFile.
 	/// /sa loadLyXFile
@@ -218,7 +218,7 @@ private:
 	/// before reading if the file cannot be found. This is only
 	/// implemented for RCS.
 	/// \sa LyXVC::file_not_found_hook
-	ReadStatus extractFromVC(support::FileName const & fn);
+	ReadStatus extractFromVC();
 	/// Reads the first tag of a LyX File and 
 	/// returns the file format number.
 	ReadStatus parseLyXFormat(Lexer & lex, support::FileName const & fn,
@@ -250,18 +250,11 @@ public:
 	
 private:
 	/// Try to load an autosave file associated to \c fn.
-	ReadStatus loadAutosave(support::FileName const & fn);
-	/// Get the filename of the autosave file associated with \c fn
-	support::FileName getAutosaveFileNameFor(support::FileName const & fn)
-		const;
-
+	ReadStatus loadAutosave();
 	/// Try to load an emergency file associated to \c fn. 
-	ReadStatus loadEmergency(support::FileName const & fn);
+	ReadStatus loadEmergency();
 	/// Get the filename of the emergency file associated with the Buffer
 	support::FileName getEmergencyFileName() const;
-	/// Get the filename of the emergency file associated with \c fn
-	support::FileName getEmergencyFileNameFor(support::FileName const & fn)
-		const;
 	//@}
 
 public:

@@ -94,7 +94,7 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 			// Buffer creation is not possible.
 			return 0;
 		}
-		if (b->loadLyXFile(filename) != Buffer::ReadSuccess) {
+		if (b->loadLyXFile() != Buffer::ReadSuccess) {
 			// do not save an emergency file when releasing the buffer
 			b->markClean();
 			theBufferList().release(b);
@@ -268,7 +268,7 @@ Buffer * loadIfNeeded(FileName const & fname)
 			// Buffer creation is not possible.
 			return 0;
 
-		if (buffer->loadLyXFile(fname) != Buffer::ReadSuccess) {
+		if (buffer->loadLyXFile() != Buffer::ReadSuccess) {
 			//close the buffer we just opened
 			theBufferList().release(buffer);
 			return 0;

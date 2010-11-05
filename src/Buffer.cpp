@@ -876,7 +876,7 @@ Buffer::ReadStatus Buffer::readFile(FileName const & fn)
 	}
 
 	// InsetInfo needs to know if file is under VCS
-	lyxvc().file_found_hook(fn);
+	lyxvc().file_found_hook(d->filename);
 
 	if (readDocument(lex)) {
 		Alert::error(_("Document format failure"),
@@ -3229,13 +3229,7 @@ int AutoSaveBuffer::generateChild()
 
 FileName Buffer::getEmergencyFileName() const
 {
-	return getEmergencyFileNameFor(d->filename);
-}
-
-
-FileName Buffer::getEmergencyFileNameFor(FileName const & fn) const
-{
-	return FileName(fn.absFileName() + ".emergency");
+	return FileName(d->filename.absFileName() + ".emergency");
 }
 
 
@@ -3251,15 +3245,9 @@ FileName Buffer::getAutosaveFileName() const
 	if (!isUnnamed() || fpath.empty() || !FileName(fpath).exists())
 		fpath = filePath();
 
-	string const fname = d->filename.onlyFileName();
-	return getAutosaveFileNameFor(makeAbsPath(fname, fpath));
-}
+	string const fname = "#" + d->filename.onlyFileName() + "#";
 
-
-FileName Buffer::getAutosaveFileNameFor(FileName const & fn) const
-{
-	string const fname = "#" + onlyFileName(fn.absFileName()) + "#";
-	return FileName(onlyPath(fn.absFileName()) + fname);
+	return makeAbsPath(fname, fpath);
 }
 
 
@@ -3618,25 +3606,25 @@ vector<string> Buffer::backends() const
 }
 
 
-Buffer::ReadStatus Buffer::extractFromVC(FileName const & fn)
+Buffer::ReadStatus Buffer::extractFromVC()
 {
-	bool const found = LyXVC::file_not_found_hook(fn);
+	bool const found = LyXVC::file_not_found_hook(d->filename);
 	if (!found)
 		return ReadFileNotFound;
-	if (!fn.isReadableFile())
+	if (!d->filename.isReadableFile())
 		return ReadVCError;
 	return ReadSuccess;
 }
 
 
-Buffer::ReadStatus Buffer::loadEmergency(FileName const & fn)
+Buffer::ReadStatus Buffer::loadEmergency()
 {
-	FileName const emergencyFile = getEmergencyFileNameFor(fn);
+	FileName const emergencyFile = getEmergencyFileName();
 	if (!emergencyFile.exists() 
-		  || emergencyFile.lastModified() <= fn.lastModified())
+		  || emergencyFile.lastModified() <= d->filename.lastModified())
 		return ReadFileNotFound;
 
-	docstring const file = makeDisplayPath(fn.absFileName(), 20);
+	docstring const file = makeDisplayPath(d->filename.absFileName(), 20);
 	docstring const text = bformat(_("An emergency save of the document "
 		"%1$s exists.\n\nRecover emergency save?"), file);
 	
@@ -3651,12 +3639,11 @@ Buffer::ReadStatus Buffer::loadEmergency(FileName const & fn)
 		bool const success = (ret_llf == ReadSuccess);
 		if (success) {
 			markDirty();
-			lyxvc().file_found_hook(fn);
 			str = _("Document was successfully recovered.");
 		} else
 			str = _("Document was NOT successfully recovered.");
 		str += "\n\n" + bformat(_("Remove emergency file now?\n(%1$s)"),
-					makeDisplayPath(emergencyFile.absFileName()));
+			makeDisplayPath(emergencyFile.absFileName()));
 
 		int const del_emerg = 
 			Alert::prompt(_("Delete emergency file?"), str, 1, 1,
@@ -3686,15 +3673,15 @@ Buffer::ReadStatus Buffer::loadEmergency(FileName const & fn)
 }
 
 
-Buffer::ReadStatus Buffer::loadAutosave(FileName const & fn)
+Buffer::ReadStatus Buffer::loadAutosave()
 {
 	// Now check if autosave file is newer.
-	FileName const autosaveFile = getAutosaveFileNameFor(fn);
+	FileName const autosaveFile = getAutosaveFileName();
 	if (!autosaveFile.exists() 
-		  || autosaveFile.lastModified() <= fn.lastModified()) 
+		  || autosaveFile.lastModified() <= d->filename.lastModified()) 
 		return ReadFileNotFound;
 
-	docstring const file = makeDisplayPath(fn.absFileName(), 20);
+	docstring const file = makeDisplayPath(d->filename.absFileName(), 20);
 	docstring const text = bformat(_("The backup of the document %1$s " 
 		"is newer.\n\nLoad the backup instead?"), file);
 	int const ret = Alert::prompt(_("Load backup?"), text, 0, 2,
@@ -3707,7 +3694,6 @@ Buffer::ReadStatus Buffer::loadAutosave(FileName const & fn)
 		// the file is not saved if we load the autosave file.
 		if (ret_llf == ReadSuccess) {
 			markDirty();
-			lyxvc().file_found_hook(fn);
 			return ReadSuccess;
 		}
 		return ReadAutosaveFailure;
@@ -3723,23 +3709,23 @@ Buffer::ReadStatus Buffer::loadAutosave(FileName const & fn)
 }
 
 
-Buffer::ReadStatus Buffer::loadLyXFile(FileName const & fn)
+Buffer::ReadStatus Buffer::loadLyXFile()
 {
-	if (!fn.isReadableFile()) {
-		ReadStatus const ret_rvc = extractFromVC(fn);
+	if (!d->filename.isReadableFile()) {
+		ReadStatus const ret_rvc = extractFromVC();
 		if (ret_rvc != ReadSuccess)
 			return ret_rvc;
 	}
 
-	ReadStatus const ret_re = loadEmergency(fn);
+	ReadStatus const ret_re = loadEmergency();
 	if (ret_re == ReadSuccess || ret_re == ReadCancel)
 		return ret_re;
 	
-	ReadStatus const ret_ra = loadAutosave(fn);
+	ReadStatus const ret_ra = loadAutosave();
 	if (ret_ra == ReadSuccess || ret_ra == ReadCancel)
 		return ret_ra;
 
-	return loadThisLyXFile(fn);
+	return loadThisLyXFile(d->filename);
 }
 
 
@@ -4120,7 +4106,7 @@ Buffer::ReadStatus Buffer::reload()
 	d->filename.refresh();
 	docstring const disp_fn = makeDisplayPath(d->filename.absFileName());
 
-	ReadStatus const status = loadLyXFile(d->filename);
+	ReadStatus const status = loadLyXFile();
 	if (status == ReadSuccess) {
 		updateBuffer();
 		changed(true);

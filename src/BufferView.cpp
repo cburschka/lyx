@@ -2511,8 +2511,8 @@ void BufferView::insertLyXFile(FileName const & fname)
 	message(bformat(_("Inserting document %1$s..."), disp_fn));
 
 	docstring res;
-	Buffer buf("", false);
-	if (buf.loadLyXFile(filename) == Buffer::ReadSuccess) {
+	Buffer buf(filename.absFileName(), false);
+	if (buf.loadLyXFile() == Buffer::ReadSuccess) {
 		ErrorList & el = buffer_.errorList("Parse");
 		// Copy the inserted document error list into the current buffer one.
 		el = buf.errorList("Parse");

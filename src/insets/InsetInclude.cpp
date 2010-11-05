@@ -440,7 +440,7 @@ Buffer * InsetInclude::loadIfNeeded() const
 			// Buffer creation is not possible.
 			return 0;
 
-		if (child->loadLyXFile(included_file) != Buffer::ReadSuccess) {
+		if (child->loadLyXFile() != Buffer::ReadSuccess) {
 			failedtoload_ = true;
 			//close the buffer we just opened
 			theBufferList().release(child);
