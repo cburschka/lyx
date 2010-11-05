@@ -439,8 +439,7 @@ def revert_subindex(document):
     if i == -1:
         document.warning("Malformed LyX document: Missing \\use_indices.")
         return
-    indices = get_value(document.header, "\\use_indices", i)
-    useindices = (indices == "true")
+    useindices = str2bool(get_value(document.header, "\\use_indices", i))
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset CommandInset index_print", i)
@@ -466,8 +465,7 @@ def revert_printindexall(document):
     if i == -1:
         document.warning("Malformed LyX document: Missing \\use_indices.")
         return
-    indices = get_value(document.header, "\\use_indices", i)
-    useindices = (indices == "true")
+    useindices = str2bool(get_value(document.header, "\\use_indices", i))
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset CommandInset index_print", i)
@@ -826,8 +824,8 @@ def revert_suppress_date(document):
         return
     # remove the preamble line and write to the preamble
     # when suppress_date was true
-    date = get_value(document.header, "\\suppress_date", i)
-    if date == "true":
+    date = str2bool(get_value(document.header, "\\suppress_date", i))
+    if date:
         add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
         add_to_preamble(document, ["\\date{}"])
     del document.header[i]
@@ -1036,8 +1034,8 @@ def convert_math_output(document):
     m = rgx.match(document.header[i])
     newval = "0" # MathML
     if m:
-      val = m.group(1)
-      if val != "true":
+      val = str2bool(m.group(1))
+      if not val:
         newval = "2" # Images
     else:
       document.warning("Can't match " + document.header[i])
