@@ -249,7 +249,7 @@ def revert_xetex(document):
     if i == -1:
         document.warning("Malformed LyX document: Missing \\font_sc.")
     else:
-        # FIXME Do we want this value? and want to do something with it?
+        # we do not need this value.
         document.header[i] = "\\font_sc false"
     
     i = find_token(document.header, "\\font_sf_scale", 0)
