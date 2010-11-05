@@ -1876,35 +1876,23 @@ def revert_rule(document):
         return
       # find end of inset
       j = find_token(document.body, "\\end_inset" , i)
-      # assure we found the end_inset of the current inset
-      if j > i + 6 or j == -1:
+      if j == -1:
         document.warning("Malformed LyX document: Can't find end of line inset.")
         return
       # determine the optional offset
-      k = find_token(document.body, 'offset', i, j)
-      if k != -1:
-        offset = document.body[k][8:-1]
-      else:
-        offset = ""
-      # determine the width
-      l = find_token(document.body, 'width', i, j)
-      if l != -1:
-        width = document.body[l][7:-1]
-      else:
-        width = "100col%"
-      # determine the height
-      m = find_token(document.body, 'height', i, j)
-      if m != -1:
-        height = document.body[m][8:-1]
-      else:
-        height = "1pt"
-      # output the \rule command
+      offset = get_value(document.body, 'offset', i, j).strip('"')
       if offset:
-        subst = "\\rule[" + offset + "]{" + width + "}{" + height + "}"
-      else:
-        subst = "\\rule{" + width + "}{" + height + "}"
+        offset = '[' + offset + ']'
+      # determine the width
+      width = get_value(document.body, 'width', i, j, "100col%").strip('"')
+      width = latex_length(width)[1]
+      # determine the height
+      height = get_value(document.body, 'height', i, j, "1pt").strip('"')
+      height = latex_length(height)[1]
+      # output the \rule command
+      subst = "\\rule[" + offset + "]{" + width + "}{" + height + "}"
       document.body[i:j + 1] = put_cmd_in_ert(subst)
-      i += 1
+      i += len(subst) - (j - i)
 
 
 def revert_diagram(document):
