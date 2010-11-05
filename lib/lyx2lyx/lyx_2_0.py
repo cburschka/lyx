@@ -539,7 +539,7 @@ def revert_nomencl_width(document):
         break
       j = find_end_of_inset(document.body, i)
       if not del_token(document.body, "set_width", i, j):
-            document.warning("Can't find set_width option for nomencl_print!")
+        document.warning("Can't find set_width option for nomencl_print!")
       i = j
 
 
