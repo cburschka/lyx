@@ -16,7 +16,45 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-" This modules offer several free functions to help with lyx2lyx'ing. "
+'''
+This modules offer several free functions to help with lyx2lyx'ing. 
+More documentaton is below, but here is a quick guide to what 
+they do. Optional arguments are marked by brackets.
+
+add_to_preamble(document, text):
+  Here, text can be either a single line or a list of lines. It
+  is bad practice to pass something with embedded newlines, but
+  we will handle that properly.
+  The routine checks to see whether the provided material is
+  already in the preamble. If not, it adds it.
+
+insert_to_preamble(index, document, text):
+  Here, text can be either a single line or a list of lines. It
+  is bad practice to pass something with embedded newlines, but
+  we will handle that properly.
+  The routine inserts text at document.preamble[index].
+
+put_cmd_in_ert(arg):
+  Here arg should be a list of strings (lines), which we want to
+  wrap in ERT. Returns a list of strings so wrapped.
+  A call to this routine will often go something like this:
+    i = find_token('\\begin_inset FunkyInset', ...)
+    j = find_end_of_inset(document.body, i)
+    content = lyx2latex(document[i:j + 1])
+    ert = put_cmd_in_ert(content)
+    document.body[i:j+1] = ert
+
+lyx2latex(document, lines):
+  Here, lines is a list of lines of LyX material we want to convert 
+  to LaTeX. We do the best we can and return a string containing
+  the translated material.
+
+latex_length(slen):
+    Convert lengths (in LyX form) to their LaTeX representation. Returns 
+    (bool, length), where the bool tells us if it was a percentage, and 
+    the length is the LaTeX representation.
+
+'''
 
 import string
 from parser_tools import find_token
@@ -68,35 +106,15 @@ def insert_to_preamble(index, document, text):
     document.preamble[index:index] = text
 
 
-# This routine wraps some content in an ERT inset. 
-#
-# NOTE: The function accepts either a single string or a LIST of strings as
-# argument. But it returns a LIST of strings, split on \n, so that it does 
-# not have embedded newlines.
-# 
-# This is how lyx2lyx represents a LyX document: as a list of strings, 
-# each representing a line of a LyX file. Embedded newlines confuse 
-# lyx2lyx very much.
-#
-# A call to this routine will often go something like this:
-#   i = find_token('\\begin_inset FunkyInset', ...)
-#   ...
-#   j = find_end_of_inset(document.body, i)
-#   content = ...extract content from insets
-#   # that could be as simple as: 
-#   # content = lyx2latex(document[i:j + 1])
-#   ert = put_cmd_in_ert(content)
-#   document.body[i:j] = ert
-# Now, before we continue, we need to reset i appropriately. Normally,
-# this would be: 
-#   i += len(ert)
-# That puts us right after the ERT we just inserted.
-#
 def put_cmd_in_ert(arg):
+    '''
+    arg should be a list of lines we want to wrap in ERT.
+    Returns a list of strings, with the lines so wrapped.
+    '''
+    
     ret = ["\\begin_inset ERT", "status collapsed", "\\begin_layout Plain Layout", ""]
-    # Despite the warnings just given, it will be faster for us to work
-    # with a single string internally. That way, we only go through the
-    # unicode_reps loop once.
+    # It will be faster for us to work with a single string internally. 
+    # That way, we only go through the unicode_reps loop once.
     if type(arg) is list:
       s = "\n".join(arg)
     else:
@@ -111,7 +129,7 @@ def put_cmd_in_ert(arg):
             
 def lyx2latex(document, lines):
     'Convert some LyX stuff into corresponding LaTeX stuff, as best we can.'
-    # clean up multiline stuff
+
     content = ""
     ert_end = 0
     note_end = 0
