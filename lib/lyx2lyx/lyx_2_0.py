@@ -336,12 +336,11 @@ def revert_splitindex(document):
     if i == -1:
         document.warning("Malformed LyX document: Missing \\use_indices.")
         return
-    indices = get_value(document.header, "\\use_indices", i)
-    preamble = ""
-    useindices = (indices == "true")
-    if useindices:
-         preamble += "\\usepackage{splitidx}\n"
+    useindices = str2bool(get_value(document.header, "\\use_indices", i))
     del document.header[i]
+    preamble = []
+    if useindices:
+         preamble.append("\\usepackage{splitidx})")
     
     # deal with index declarations in the preamble
     i = 0
@@ -360,9 +359,9 @@ def revert_splitindex(document):
           iname = m.group(1)
           ishortcut = get_value(document.header, '\\shortcut', i, k)
           if ishortcut != "":
-              preamble += "\\newindex[" + iname + "]{" + ishortcut + "}\n"
+              preamble.append("\\newindex[" + iname + "]{" + ishortcut + "}")
         del document.header[i:k + 1]
-    if preamble != "":
+    if preamble:
         insert_to_preamble(0, document, preamble)
         
     # deal with index insets
