@@ -1282,13 +1282,8 @@ def revert_lyx_version(document):
         # type  "lyxinfo"
         # arg   "version"
         # \end_inset
-        # but we shall try to be forgiving.
-        arg = typ = ""
-        for k in range(i, j):
-            if document.body[k].startswith("arg"):
-                arg = document.body[k][3:].strip().strip('"')
-            if document.body[k].startswith("type"):
-                typ = document.body[k][4:].strip().strip('"')
+        typ = get_quoted_value(document.body, "type", i, j)
+        arg = get_quoted_value(document.body, "arg", i, j)
         if arg != "version" or typ != "lyxinfo":
             i = j + 1
             continue
