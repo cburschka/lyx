@@ -416,7 +416,10 @@ private:
 	/// flag to avoid two concurrent close events.
 	bool closing_;
 	/// if the view is busy the cursor shouldn't blink for instance.
-	bool busy_;
+	/// This counts the number of times more often we called
+	/// setBusy(true) compared to setBusy(false), so we can nest
+	/// functions that call setBusy;
+	int busy_;
 
 };
 

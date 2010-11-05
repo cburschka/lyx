@@ -397,7 +397,7 @@ QSet<Buffer const *> GuiView::GuiViewPrivate::busyBuffers;
 
 
 GuiView::GuiView(int id)
-	: d(*new GuiViewPrivate(this)), id_(id), closing_(false)
+	: d(*new GuiViewPrivate(this)), id_(id), closing_(false), busy_(0)
 {
 	// GuiToolbars *must* be initialised before the menu bar.
 	normalSizedIcons(); // at least on Mac the default is 32 otherwise, which is huge
@@ -1111,13 +1111,18 @@ bool GuiView::focusNextPrevChild(bool /*next*/)
 
 bool GuiView::busy() const
 {
-	return busy_;
+	return busy_ > 0;
 }
 
 
 void GuiView::setBusy(bool busy)
 {
-	busy_ = busy;
+	bool const busy_before = busy_ > 0;
+	busy ? ++busy_ : --busy_;
+	if ((busy_ > 0) == busy_before)
+		// busy state didn't change
+		return;
+
 	if (d.current_work_area_) {
 		d.current_work_area_->setUpdatesEnabled(!busy);
 		if (busy)
