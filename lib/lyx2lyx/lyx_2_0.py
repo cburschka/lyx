@@ -771,7 +771,7 @@ def revert_author_id(document):
     " Remove the author_id from the \\author definition "
     i = 0
     anum = 0
-    rx = re.compile(r'(\\author)\s+(\d+)\s+(\".*\")\s*(.*)$')
+    rx = re.compile(r'(\\author)\s+([-\d]+)\s+(\".*\")\s*(.*)$')
     idmap = dict()
 
     while True:
@@ -2013,10 +2013,12 @@ convert = [[346, []],
            [401, []],
            [402, [convert_bibtex_clearpage]],
            [403, [convert_flexnames]],
-           [404, [convert_prettyref]]
+           [404, [convert_prettyref]],
+           [405, []]
 ]
 
-revert =  [[403, [revert_refstyle]],
+revert =  [[404, []],
+           [403, [revert_refstyle]],
            [402, [revert_flexnames]],
            [401, []],
            [400, [revert_diagram]],

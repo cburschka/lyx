@@ -12,9 +12,8 @@
 
 #include "Author.h"
 
-#include "support/lstrings.h"
-
 #include "support/lassert.h"
+#include "support/lstrings.h"
 
 #include <algorithm>
 #include <istream>
@@ -23,6 +22,24 @@ using namespace std;
 using namespace lyx::support;
 
 namespace lyx {
+
+static int computeHash(docstring const & name,
+	docstring const & email)
+{
+	string const full_author_string = to_ascii(name + email);
+	// Bernstein's hash function
+	unsigned int hash = 5381;
+	for (unsigned int i = 0; i < full_author_string.length(); ++i)
+		hash = ((hash << 5) + hash) + unsigned int(full_author_string[i]);
+	return int(hash);
+}
+
+
+Author::Author(docstring const & name, docstring const & email)
+	: name_(name), email_(email), used_(true)
+{
+	buffer_id_ = computeHash(name_, email_);
+}
 
 
 bool operator==(Author const & l, Author const & r)
@@ -65,17 +82,17 @@ AuthorList::AuthorList()
 
 int AuthorList::record(Author const & a)
 {
+	// If we record an author which equals the current
+	// author, we copy the buffer_id, so that it will
+	// keep the same id in the file.
+	if (authors_.size() > 0 && a == authors_[0])
+		authors_[0].setBufferId(a.buffer_id());
+
 	Authors::const_iterator it(authors_.begin());
 	Authors::const_iterator itend(authors_.end());
-
 	for (int i = 0;  it != itend; ++it, ++i) {
-		if (*it == a) {
-			if (it->buffer_id() == 0)
-				// The current author is internally represented as 
-				// author 0, but it appears he has already an id.
-				it->setBufferId(a.buffer_id());
+		if (*it == a)
 			return i;
-		}
 	}
 	authors_.push_back(a);
 	return last_id_++;
@@ -128,24 +145,6 @@ ostream & operator<<(ostream & os, AuthorList const & a) {
 
 	AuthorList::Authors::const_iterator a_it = sorted.begin();
 	AuthorList::Authors::const_iterator a_end = sorted.end();
-
-	// Find the buffer id for the current author (internal id 0),
-	// if he doesn't have a buffer_id yet.
-	if (sorted.get(0).buffer_id() == 0) {
-		unsigned int cur_id = 1;
-		for (; a_it != a_end; ++a_it) {
-			if (a_it->buffer_id() == cur_id)
-				++cur_id;
-			else if (a_it->buffer_id() > cur_id) {
-				break;
-			}
-		}
-		// Set the id in both the original authorlist, 
-		// as in the copy.
-		a.get(0).setBufferId(cur_id);
-		sorted.get(0).setBufferId(cur_id);
-		sorted.sort();
-	}
 	
 	for (a_it = sorted.begin(); a_it != a_end; ++a_it) {
 		if (a_it->used())

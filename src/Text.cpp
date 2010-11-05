@@ -456,10 +456,10 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 	} else if (token == "\\change_inserted" || token == "\\change_deleted") {
 		lex.eatLine();
 		istringstream is(lex.getString());
-		unsigned int aid;
+		int aid;
 		time_t ct;
 		is >> aid >> ct;
-		map<unsigned int, int> const & am = bp.author_map;
+		BufferParams::AuthorMap const & am = bp.author_map;
 		if (am.find(aid) == am.end()) {
 			errorList.push_back(ErrorItem(_("Change tracking error"),
 					    bformat(_("Unknown author index for change: %1$d\n"), aid),

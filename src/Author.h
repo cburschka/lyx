@@ -24,16 +24,15 @@ public:
 	///
 	Author() {}
 	///
-	Author(docstring const & name, docstring const & email)
-		: name_(name), email_(email), used_(true), buffer_id_(0) {}
+	Author(docstring const & name, docstring const & email);
 	///
 	docstring name() const { return name_; }
 	///
 	docstring email() const { return email_; }
 	///
-	unsigned int buffer_id() const { return buffer_id_; }
+	int buffer_id() const { return buffer_id_; }
 	///
-	void setBufferId(unsigned int buffer_id) const { buffer_id_ = buffer_id; }
+	void setBufferId(int buffer_id) const { buffer_id_ = buffer_id; }
 	///
 	void setUsed(bool u) const { used_ = u; }
 	///
@@ -49,7 +48,7 @@ private:
 	///
 	mutable bool used_;
 	/// The id of the author in the lyx-file
-	mutable unsigned int buffer_id_;
+	mutable int buffer_id_;
 };
 
 

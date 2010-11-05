@@ -340,7 +340,8 @@ public:
 	AuthorList const & authors() const;
 
 	/// map of the file's author IDs to AuthorList indexes
-	std::map<unsigned int, int> author_map;
+	typedef std::map<int, int> AuthorMap;
+	AuthorMap author_map;
 	/// the buffer's font encoding
 	std::string const font_encoding() const;
 	///

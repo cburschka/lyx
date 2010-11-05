@@ -6,6 +6,13 @@ changes happened in particular if possible.
 The good example would be 2010-01-10 entry.
 
 -----------------------
+2010-10-23 Vincent van Ravesteijn <vfr@lyx.org>
+	* Format incremented to 405: author hash numbers
+	  The authors that are used in change tracking are
+	  now identified in the file by a number that represents
+	  the hash value of the name and email. In this way
+	  collaboration using version control leads to way less
+	  merge conflicts.
 
 2010-10-13 Richard Heck <rgheck@comcast.net>
 	* Format incremented to 404: refstyle support
