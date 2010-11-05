@@ -26,20 +26,24 @@ they do. Optional arguments are marked by brackets.
 find_token(lines, token, start[, end[, ignorews]]):
   Returns the first line i, start <= i < end, on which
   token is found at the beginning. Returns -1 if not 
-  found. If ignorews is (given and) True, then differences
-  in whitespace do not count.
+  found. 
+  If ignorews is (given and) True, then differences
+  in whitespace do not count, except that there must be no 
+  extra whitespace following token itself.
 
 find_token_exact(lines, token, start[, end]):
-  Badly named. As find_token, but with ignorews True.
+  As find_token, but with ignorews True.
 
 find_tokens(lines, tokens, start[, end[, ignorews]]):
   Returns the first line i, start <= i < end, on which
   oen of the tokens in tokens is found at the beginning. 
-  Returns -1 if not found. If ignorews is (given and) True, 
-  then differences in whitespace do not count.
+  Returns -1 if not found. 
+  If ignorews is (given and) True, then differences
+  in whitespace do not count, except that there must be no 
+  extra whitespace following token itself.
 
 find_tokens_exact(lines, token, start[, end]):
-  Badly named. As find_tokens, but with ignorews True.
+  As find_tokens, but with ignorews True.
   
 find_token_backwards(lines, token, start):
 find_tokens_backwards(lines, tokens, start):
@@ -159,7 +163,8 @@ def find_token(lines, token, start, end = 0, ignorews = False):
     element, in lines[start, end].
     
     If ignorews is True (default is False), then differences in
-    whitespace are ignored.
+    whitespace are ignored, except that there must be no extra
+    whitespace following token itself.
 
     Return -1 on failure."""
 
