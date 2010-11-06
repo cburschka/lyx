@@ -213,7 +213,10 @@ bool RCS::isCheckInWithConfirmation()
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		FileName(owner_->filePath()));
 
-	if (tmpf.fileContents("UTF-8").empty())
+	docstring diff = tmpf.fileContents("UTF-8");
+	tmpf.erase();
+
+	if (diff.empty())
 		return false;
 
 	return true;
@@ -1070,7 +1073,24 @@ bool SVN::checkInEnabled()
 
 bool SVN::isCheckInWithConfirmation()
 {
-	//FIXME diff
+	// FIXME one day common getDiff and perhaps OpMode for all backends
+
+	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return true;
+	}
+
+	doVCCommandCall("svn diff " + quoteName(owner_->absFileName())
+		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
+		FileName(owner_->filePath()));
+
+	docstring diff = tmpf.fileContents("UTF-8");
+	tmpf.erase();
+
+	if (diff.empty())
+		return false;
+
 	return true;
 }
 
