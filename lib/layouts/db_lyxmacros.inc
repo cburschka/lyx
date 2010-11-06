@@ -13,6 +13,7 @@ Style Code
 	LatexType             Environment
 	LatexName             screen
 	PassThru              1
+	ParbreakIsNewline     1
 End
 
 Style LyX-Code

@@ -171,6 +171,7 @@ End
 Style AltAffiliation
 	CopyStyle             Affiliation
 	PassThru              1
+	ParbreakIsNewline     1
 	LatexName             altaffiliation
 	OptionalArgs          1
 	LabelString           "AltAffiliation"
@@ -196,6 +197,7 @@ End
 Style Author_Email
 	CopyStyle             Affiliation
 	PassThru              1
+	ParbreakIsNewline     1
 	LatexName             email
 	OptionalArgs          1
 	LabelString           "Electronic Address:"
@@ -211,6 +213,7 @@ End
 Style Author_URL
 	CopyStyle             Author_Email
 	PassThru              1
+	ParbreakIsNewline     1
 	LatexName             homepage
 	OptionalArgs          1
 	LabelString           "URL:"

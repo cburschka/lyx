@@ -12,6 +12,7 @@ Style Literal
 	LatexType             Environment
 	LatexName             literallayout
 	PassThru              1
+	ParbreakIsNewline     1
 End
 
 

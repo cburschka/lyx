@@ -75,6 +75,7 @@ InsetLayout Flex:Glosse
 	CustomPars            false
 	ForcePlain            true
 	PassThru              true
+	ParbreakIsNewline     true
 	FreeSpacing           true
 	ForceLTR              true
 	Requires	      covington
@@ -103,6 +104,7 @@ InsetLayout Flex:Tri-Glosse
 	CustomPars            false
 	ForcePlain            true
 	PassThru              true
+	ParbreakIsNewline     true
 	FreeSpacing           true
 	ForceLTR              true
 	InToc                 true

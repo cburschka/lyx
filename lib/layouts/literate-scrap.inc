@@ -13,14 +13,10 @@ Style Scrap
 	Margin                First_Dynamic
 	LatexType             Paragraph
 	LatexName             dummy
-	NewLine               0
 	LeftMargin            MMM
-	ParSep                0.4
-	TopSep                0.4
-	BottomSep             0.4
-	ItemSep               0.4
 	Align                 Left
 	AlignPossible         Block,Left
+	NewLine               0
 	FreeSpacing           1
 	PassThru              1
 	ParbreakIsNewline     1

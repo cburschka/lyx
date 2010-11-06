@@ -374,18 +374,44 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 		open_encoding_ = none;
 	}
 
-	if (runparams.pass_thru) {
+	if (text.inset().getLayout().isPassThru()) {
 		int const dist = distance(paragraphs.begin(), pit);
 		Font const outerfont = text.outerFont(dist);
 
-		// No newline if only one paragraph in this lyxtext
+		// No newline before first paragraph in this lyxtext
 		if (dist > 0) {
 			os << '\n';
 			texrow.newline();
+			if (!text.inset().getLayout().parbreakIsNewline()) {
+				os << '\n';
+				texrow.newline();
+			}
 		}
 
 		pit->latex(bparams, outerfont, os, texrow,
 		           runparams, start_pos, end_pos);
+		return nextpit;
+	}
+
+	if (style.pass_thru) {
+		int const dist = distance(paragraphs.begin(), pit);
+		Font const outerfont = text.outerFont(dist);
+		pit->latex(bparams, outerfont, os, texrow,
+		           runparams, start_pos, end_pos);
+		os << '\n';
+		texrow.newline();
+		if (!style.parbreak_is_newline) {
+			os << '\n';
+			texrow.newline();
+		} else if (nextpit != paragraphs.end()) {
+			Layout const nextstyle = text.inset().forcePlainLayout() ?
+				bparams.documentClass().plainLayout() : nextpit->layout();
+			if (nextstyle.name() != style.name()) {
+				os << '\n';
+				texrow.newline();
+			}
+		}
+
 		return nextpit;
 	}
 

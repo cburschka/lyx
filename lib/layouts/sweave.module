@@ -22,10 +22,6 @@ Style Chunk
 	LatexType             Paragraph
 	LatexName             dummy
 	Margin                static
-	ParSep                0.4
-	TopSep                0.4
-	BottomSep             0.4
-	ItemSep               0.4
 	Align                 Left
 	AlignPossible         Block, Left, Right, Center
 	NewLine               0
@@ -59,7 +55,8 @@ InsetLayout "Sweave Options"
 	  Size                Small
 	EndFont
 	MultiPar              false
-	PassThru              true
+	PassThru              1
+	ParbreakIsNewline     1
 	FreeSpacing           true
 	ForceLTR              true
 End
@@ -79,7 +76,8 @@ InsetLayout "S/R expression"
 	  Size                Small
 	EndFont
 	MultiPar              false
-	PassThru              true
+	PassThru              1
+	ParbreakIsNewline     1
 	FreeSpacing           true
 	ForceLTR              true
 End
@@ -99,7 +97,8 @@ InsetLayout "Sweave Input File"
 	  Size                Small
 	EndFont
 	MultiPar              false
-	PassThru              true
+	PassThru              1
+	ParbreakIsNewline     1
 	FreeSpacing           true
 	ForceLTR              true
 End

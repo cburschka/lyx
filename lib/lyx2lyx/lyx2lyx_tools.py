@@ -65,7 +65,7 @@ from unicode_symbols import unicode_reps
 
 
 # This will accept either a list of lines or a single line.
-# It is bad practice to pass something with embedded newlines, 
+# It is bad practice to pass something with embedded newlines,
 # though we will handle that.
 def add_to_preamble(document, text):
     " Add text to the preamble if it is not already there. "

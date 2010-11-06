@@ -599,7 +599,6 @@ static void breakParagraph(Text & text, pit_type par_offset, pos_type pos,
 	// end of a paragraph
 	tmp->setPlainOrDefaultLayout(bparams.documentClass());
 
-	// layout stays the same with latex-environments
 	if (keep_layout) {
 		tmp->setLayout(par.layout());
 		tmp->setLabelWidthString(par.params().labelWidthString());
@@ -665,7 +664,6 @@ static void breakParagraph(Text & text, pit_type par_offset, pos_type pos,
 		par.setPlainOrDefaultLayout(bparams.documentClass());
 	}
 
-	// layout stays the same with latex-environments
 	if (keep_layout) {
 		par.setLayout(tmp->layout());
 		par.setLabelWidthString(tmp->params().labelWidthString());
@@ -701,9 +699,10 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 		cpar.eraseChar(cur.pos(), cur.buffer()->params().trackChanges);
 
 	// What should the layout for the new paragraph be?
-	bool keep_layout = inverse_logic ? 
-		!layout.isEnvironment() 
-		: layout.isEnvironment();
+	bool keep_layout = layout.isEnvironment() 
+		|| (layout.isParagraph() && layout.parbreak_is_newline);
+	if (inverse_logic)
+		keep_layout = !keep_layout;
 
 	// We need to remember this before we break the paragraph, because
 	// that invalidates the layout variable

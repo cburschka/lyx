@@ -124,10 +124,9 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	// Now remove all out of the pars which is NOT allowed in the
 	// new environment and set also another font if that is required.
 
-	// Convert newline to paragraph break in ERT inset.
-	// This should not be here!
-	InsetCode const code = target_inset->lyxCode();
-	if (code == ERT_CODE || code == LISTINGS_CODE) {
+	// Convert newline to paragraph break in ParbreakIsNewline
+	if (target_inset->getLayout().parbreakIsNewline()
+	    || pars[pit].layout().parbreak_is_newline) {
 		for (size_t i = 0; i != insertion.size(); ++i) {
 			for (pos_type j = 0; j != insertion[i].size(); ++j) {
 				if (insertion[i].isNewline(j)) {

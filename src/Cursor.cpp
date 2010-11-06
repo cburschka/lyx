@@ -26,6 +26,7 @@
 #include "FuncCode.h"
 #include "FuncRequest.h"
 #include "Language.h"
+#include "Layout.h"
 #include "LyXAction.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
@@ -2016,14 +2017,17 @@ void Cursor::errorMessage(docstring const & msg) const
 }
 
 
-static docstring parbreak(InsetCode code)
+namespace {
+docstring parbreak(Cursor const * cur)
 {
 	odocstringstream os;
 	os << '\n';
-	// only add blank line if we're not in an ERT or Listings inset
-	if (code != ERT_CODE && code != LISTINGS_CODE)
+	// only add blank line if we're not in a ParbreakIsNewline situation
+	if (!cur->inset().getLayout().parbreakIsNewline() 
+	    && !cur->paragraph().layout().parbreak_is_newline)
 		os << '\n';
 	return os.str();
+}
 }
 
 
@@ -2060,13 +2064,13 @@ docstring Cursor::selectionAsString(bool with_label) const
 	// First paragraph in selection
 	docstring result = pars[startpit].
 		asString(startpos, pars[startpit].size(), label)
-		+ parbreak(inset().lyxCode());
+		+ parbreak(this);
 
 	// The paragraphs in between (if any)
 	for (pit_type pit = startpit + 1; pit != endpit; ++pit) {
 		Paragraph const & par = pars[pit];
 		result += par.asString(0, par.size(), label)
-			+ parbreak(inset().lyxCode());
+			+ parbreak(this);
 	}
 
 	// Last paragraph in selection

@@ -1952,6 +1952,142 @@ def convert_bibtex_clearpage(document):
     j = k + len(subst)
 
 
+def check_passthru(document):
+  tc = document.textclass
+  ok = (tc == "literate-article" or tc == "literate-book" or tc == "literate-report")
+  if not ok:
+    mods = document.get_module_list()
+    for mod in mods:
+      if mod == "sweave" or mod == "noweb":
+        ok = True
+        break
+  return ok
+
+
+def convert_passthru(document):
+    " http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg161298.html "
+    if not check_passthru:
+      return
+    
+    rx = re.compile("\\\\begin_layout \s*(\w+)")
+    beg = 0
+    for lay in ["Chunk", "Scrap"]:
+      while True:
+        beg = find_token(document.body, "\\begin_layout " + lay, beg)
+        if beg == -1:
+          break
+        end = find_end_of_layout(document.body, beg)
+        if end == -1:
+          document.warning("Can't find end of layout at line " + str(beg))
+          beg += 1
+          continue
+        # we are now going to replace newline insets within this layout
+        # by new instances of this layout. so we have repeated layouts
+        # instead of newlines.
+        ns = beg
+        while True:
+          ns = find_token(document.body, "\\begin_inset Newline newline", ns, end)
+          if ns == -1:
+            break
+          ne = find_end_of_inset(document.body, ns)
+          if ne == -1 or ne > end:
+            document.warning("Can't find end of inset at line " + str(nb))
+            ns += 1
+            continue
+          if document.body[ne + 1] == "":
+            ne += 1
+          subst = ["\\end_layout", "", "\\begin_layout " + lay]
+          document.body[ns:ne + 1] = subst
+          # now we need to adjust end, in particular, but might as well
+          # do ns properly, too
+          newlines = (ne - ns) - len(subst)
+          ns += newlines + 2
+          end += newlines + 1
+        # ok, we now want to find out if the next layout is the
+        # same as this one. if so, we will insert an extra copy of it
+        didit = False
+        next = find_token(document.body, "\\begin_layout", end)
+        if next != -1:
+          m = rx.match(document.body[next])
+          if m:
+            nextlay = m.group(1)
+            if nextlay == lay:
+              subst = ["\\begin_layout " + lay, "", "\\end_layout", ""]
+              document.body[next:next] = subst
+              didit = True
+        beg = end + 1
+        if didit:
+          beg += 4 # for the extra layout
+    
+
+def revert_passthru(document):
+    " http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg161298.html "
+    if not check_passthru:
+      return
+    rx = re.compile("\\\\begin_layout \s*(\w+)")
+    beg = 0
+    for lay in ["Chunk", "Scrap"]:
+      while True:
+        beg = find_token(document.body, "\\begin_layout " + lay, beg)
+        if beg == -1:
+          break
+        end = find_end_of_layout(document.body, beg)
+        if end == -1:
+          document.warning("Can't find end of layout at line " + str(beg))
+          beg += 1
+          continue
+        
+        # we now want to find out if the next layout is the
+        # same as this one. but we will need to do this over and
+        # over again.
+        while True:
+          next = find_token(document.body, "\\begin_layout", end)
+          if next == -1:
+            break
+          m = rx.match(document.body[next])
+          if not m:
+            break
+          nextlay = m.group(1)
+          if nextlay != lay:
+            break
+          # so it is the same layout again. we now want to know if it is empty.
+          # but first let's check and make sure there is no content between the
+          # two layouts. i'm not sure if that can happen or not.
+          for l in range(end + 1, next):
+            document.warning("c'" + document.body[l] + "'")
+            if document.body[l] != "":
+              document.warning("Found content between adjacent " + lay + " layouts!")
+              break
+          nextend = find_end_of_layout(document.body, next)
+          if nextend == -1:
+            document.warning("Can't find end of layout at line " + str(next))
+            break
+          empty = True
+          for l in range(next + 1, nextend):
+            document.warning("e'" + document.body[l] + "'")
+            if document.body[l] != "":
+              empty = False
+              break
+          if empty:
+            # empty layouts just get removed
+            # should we check if it's before yet another such layout?
+            del document.body[next : nextend + 1]
+            # and we do not want to check again. we know the next layout
+            # should be another Chunk and should be left as is.
+            break
+          else:
+            # if it's not empty, then we want to insert a newline in place
+            # of the layout switch
+            subst = ["\\begin_inset Newline newline", "\\end_inset", ""]
+            document.body[end : next + 1] = subst
+            # and now we have to find the end of the new, larger layout
+            newend = find_end_of_layout(document.body, beg)
+            if newend == -1:
+              document.warning("Can't find end of new layout at line " + str(beg))
+              break
+            end = newend
+        beg = end + 1
+
 ##
 # Conversion hub
 #
@@ -2016,10 +2152,12 @@ convert = [[346, []],
            [402, [convert_bibtex_clearpage]],
            [403, [convert_flexnames]],
            [404, [convert_prettyref]],
-           [405, []]
+           [405, []],
+           [406, [convert_passthru]]
 ]
 
-revert =  [[404, []],
+revert =  [[405, [revert_passthru]],
+           [404, []],
            [403, [revert_refstyle]],
            [402, [revert_flexnames]],
            [401, []],

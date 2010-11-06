@@ -149,6 +149,7 @@ Style Author_Email
 	LatexType             Command
 	InTitle               1
 	PassThru              1
+	ParbreakIsNewline     1
 	LatexName             ead
 	Align                 Center
 	Labeltype             Static
@@ -169,6 +170,7 @@ Style Author_URL
 	LatexType             Command
 	InTitle               1
 	PassThru              1
+	ParbreakIsNewline     1
 	LatexName             ead
 	LatexParam            "[url]"
 	Align                 Center
