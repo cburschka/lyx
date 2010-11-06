@@ -1,0 +1,1483 @@
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 404
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\begin_modules
+logicalmkup
+\end_modules
+\maintain_unincluded_children false
+\language english
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_xetex false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Programming lyx2lyx
+\end_layout
+
+\begin_layout Author
+Richard Heck
+\end_layout
+
+\begin_layout Standard
+Contained herein are some observations and suggestions about how to write
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyx2lyx
+\end_layout
+
+\end_inset
+
+ routines, including some thoughts about common pitfalls.
+\end_layout
+
+\begin_layout Section*
+The LyX_base Class
+\end_layout
+
+\begin_layout Standard
+Conversion and reversion routines will always be defined as functions that
+ take an object of type 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LyX_base
+\end_layout
+
+\end_inset
+
+ as argument.
+ This argument, conventionally called 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+document
+\end_layout
+
+\end_inset
+
+, represents the LyX document being converted.
+ The 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LyX_base
+\end_layout
+
+\end_inset
+
+ class is defined in the file 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LyX.py
+\end_layout
+
+\end_inset
+
+, and it has several properties and a number of methods.
+ 
+\end_layout
+
+\begin_layout Standard
+Some of the most important properties are:
+\end_layout
+
+\begin_layout Description
+backend Either 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+linuxdoc
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+docbook
+\end_layout
+
+\end_inset
+
+, or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+latex
+\end_layout
+
+\end_inset
+
+, depending upon the document class
+\end_layout
+
+\begin_layout Description
+textclass The layout file for this document, e.g., 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+article
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+default_layout The default layout style for the class.
+\begin_inset Newline newline
+\end_inset
+
+Note that this is all 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyx2lyx
+\end_layout
+
+\end_inset
+
+ knows about the layout.
+ It does not know what paragraph styles are available, for example, let
+ alone what their properties might be.
+ 
+\end_layout
+
+\begin_layout Description
+encoding The document encoding.
+\end_layout
+
+\begin_layout Description
+language The document language.
+\end_layout
+
+\begin_layout Standard
+These three represent the content of the document.
+ 
+\end_layout
+
+\begin_layout Description
+header The document header, meaning the lines that come before 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin_body
+\end_layout
+
+\end_inset
+
+, 
+\emph on
+except
+\emph default
+ for the LaTeX preamble.
+\end_layout
+
+\begin_layout Description
+preamble The LaTeX preamble.
+\end_layout
+
+\begin_layout Description
+body The document body.
+\end_layout
+
+\begin_layout Standard
+All three of these are lists of strings.
+ The importance of this point will be discussed later.
+\end_layout
+
+\begin_layout Standard
+Important methods include:
+\end_layout
+
+\begin_layout Description
+warning Writes its argument to the console as a warning.
+ (Also takes an optional argument, the debug level, which can be used to
+ suppress output below a certain debug level, but this is rarely used.)
+\end_layout
+
+\begin_layout Description
+error Writes the warning and exits, unless we are in try_hard mode, which
+ is set with a command-line option.
+ Rarely used in converter code, but I shall mention times it might be used
+ below.
+\end_layout
+
+\begin_layout Description
+set_parameter Sets the value of a header parameter.
+ This needs to be a parameter already present in the header or nothing will
+ happen.
+\end_layout
+
+\begin_layout Description
+set_textclass This writes the value of the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+textclass
+\end_layout
+
+\end_inset
+
+ member variable to the header.
+ So, for example, one might have something like this in a reversion routine:
+\end_layout
+
+\begin_layout LyX-Code
+if document.textclass = 'fancy_new_class':
+\end_layout
+
+\begin_layout LyX-Code
+  document.textclass = 'old_class'
+\end_layout
+
+\begin_layout LyX-Code
+  document.setclass()
+\end_layout
+
+\begin_layout Description
+add_module Adds a LyX module to the list of modules to be loaded with the
+ document.
+\end_layout
+
+\begin_layout Description
+get_module_list Returns the list of modules to be loaded.
+\end_layout
+
+\begin_layout Description
+set_module_list Takes a list as argument and replaces the existing list
+ of modules.
+\end_layout
+
+\begin_layout Standard
+There are some other methods, too, such as 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+read()
+\end_layout
+
+\end_inset
+
+, but those are more for `internal' use.
+\end_layout
+
+\begin_layout Standard
+It is extremely important to understand that 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyx2lyx
+\end_layout
+
+\end_inset
+
+ is 
+\emph on
+line-oriented
+\emph default
+.
+ That is, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyx2lyx
+\end_layout
+
+\end_inset
+
+ represents the content of a LyX file---the header, preamble, and body---as
+ lists of lines.
+ It is critical that one maintain this structure when modifying the document.
+ Since Python is not type-safe, one can easily fail to do so if one is not
+ careful, and this will cause problems.
+\end_layout
+
+\begin_layout Standard
+For example, one must absolutely never do anything like this:
+\end_layout
+
+\begin_layout LyX-Code
+newstuff = '
+\backslash
+
+\backslash
+begin_inset ERT
+\backslash
+n, status collapsed
+\backslash
+n
+\backslash
+
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+
+\backslash
+begin_layout Plain Layout
+\backslash
+n
+\backslash
+nI am in ERT
+\backslash
+n
+\backslash
+
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+
+\backslash
+end_layout
+\backslash
+n
+\backslash
+n
+\backslash
+
+\backslash
+end_inset
+\backslash
+n
+\backslash
+n'
+\end_layout
+
+\begin_layout LyX-Code
+document.body[i:i] = newstuff
+\end_layout
+
+\begin_layout Standard
+This is supposed to insert an InsetERT at line i of the document, and in
+ a sense it will.
+ But it has the potential to confuse 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyx2lyx
+\end_layout
+
+\end_inset
+
+ very badly.
+ Suppose at some later point in the conversion we want to change 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin_layout Plain Layout
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin_layout PlainLayout
+\end_layout
+
+\end_inset
+
+.
+ (In fact, this is actually done.) Then we are going to have code that looks
+ like:
+\end_layout
+
+\begin_layout LyX-Code
+i = find_token(document.body, '
+\backslash
+
+\backslash
+begin_layout Plain Layout', i)
+\end_layout
+
+\begin_layout Standard
+This will not find the occurence of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin_layout Plain Layout
+\end_layout
+
+\end_inset
+
+ that we just inserted.
+ This is because 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+find_token
+\end_layout
+
+\end_inset
+
+ looks for things at the beginning of lines, and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin_layout Plain Layout
+\end_layout
+
+\end_inset
+
+ is not at the beginning of the long string 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+newstuff
+\end_layout
+
+\end_inset
+
+.
+ It follows a newline, to be sure, but that is different.
+ So what one should do instead is:
+\end_layout
+
+\begin_layout LyX-Code
+newstuff = ['
+\backslash
+
+\backslash
+begin_inset ERT', 'status collapsed',
+\end_layout
+
+\begin_layout LyX-Code
+  '
+\backslash
+
+\backslash
+begin_layout Plain Layout', '', 'I am in ERT',
+\end_layout
+
+\begin_layout LyX-Code
+  '
+\backslash
+
+\backslash
+end_layout', '', '
+\backslash
+
+\backslash
+end_inset', '']
+\end_layout
+
+\begin_layout LyX-Code
+document.body[i:i] = newstuff
+\end_layout
+
+\begin_layout Standard
+That inserts a bunch of lines.
+\end_layout
+
+\begin_layout Section*
+Utility Functions
+\end_layout
+
+\begin_layout Standard
+There are two Python modules that provide commonly used functions for parsing
+ the file and modifying it.
+ The parsing functions are in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+parser_tools
+\end_layout
+
+\end_inset
+
+ and the modifying functions are in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyx2lyx_tools
+\end_layout
+
+\end_inset
+
+.
+ Both of these files have extensive documentation at the beginning that
+ lists the functions that are available and explains what they do.
+ Those writing 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyx2lyx
+\end_layout
+
+\end_inset
+
+ code should familiarize themselves with these functions.
+\end_layout
+
+\begin_layout Section*
+Common Code Structures and Pitfalls
+\end_layout
+
+\begin_layout Standard
+Now, as said, reversion routines receive an argument of type 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LyX_base
+\end_layout
+
+\end_inset
+
+, and they almost always have one of two sorts of structure, depending upon
+ whether it is the header or the body that one is modifying.
+ 
+\end_layout
+
+\begin_layout Standard
+If it is the body, then the routine usually has this sort of structure:
+\end_layout
+
+\begin_layout LyX-Code
+def revert_something(document):
+\end_layout
+
+\begin_layout LyX-Code
+  i = 0 
+\end_layout
+
+\begin_layout LyX-Code
+  while True:
+\end_layout
+
+\begin_layout LyX-Code
+    i = find_token(document.body, '
+\backslash
+begin_inset FunkyInset', i)
+\end_layout
+
+\begin_layout LyX-Code
+    if i == -1:
+\end_layout
+
+\begin_layout LyX-Code
+      break
+\end_layout
+
+\begin_layout LyX-Code
+    # do something ...
+\end_layout
+
+\begin_layout LyX-Code
+    i += 1 # or other appropriate reset
+\end_layout
+
+\begin_layout Standard
+Now, in the course of doing something, one will often want to look for content
+ in the inset or layout, or whatever, that one has found.
+ Suppose, for example, that one is trying to remove the new option 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+newoption
+\end_layout
+
+\end_inset
+
+ from Funky insets.
+ Then one might think to use code like this:
+\end_layout
+
+\begin_layout LyX-Code
+    j = find_token(document.body, 'newoption', i)
+\end_layout
+
+\begin_layout LyX-Code
+    if j == -1:
+\end_layout
+
+\begin_layout LyX-Code
+      document.warning('Unable to find newoption in Funky inset!')
+\end_layout
+
+\begin_layout LyX-Code
+      break
+\end_layout
+
+\begin_layout LyX-Code
+    del document.body[j]
+\end_layout
+
+\begin_layout Standard
+This is terrible code, for several reasons.
+\end_layout
+
+\begin_layout Standard
+First, it is wrong to break on the error here.
+ The LyX file is corrupted, yes.
+ But that does not necessarily mean that it is unusable---LyX is pretty
+ forgiving---and just because we have failed to find this one option does
+ not mean we should give up so soon.
+ We need at least to try to remove the option from other Funky insets.
+ So the right think to do here is instead:
+\end_layout
+
+\begin_layout LyX-Code
+    j = find_token(document.body, 'newoption', i)
+\end_layout
+
+\begin_layout LyX-Code
+    if j == -1:
+\end_layout
+
+\begin_layout LyX-Code
+      document.warning('Unable to find newoption in Funky inset!')
+\end_layout
+
+\begin_layout LyX-Code
+      i += 1
+\end_layout
+
+\begin_layout LyX-Code
+      continue
+\end_layout
+
+\begin_layout LyX-Code
+    del document.body[j]
+\end_layout
+
+\begin_layout Standard
+The second problem is that we have no way of knowing that the line we find
+ here is actually a line containing an option for the Funky inset on line
+ i.
+ Suppose this one is missing its 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+newoption
+\end_layout
+
+\end_inset
+
+.
+ There might be a later one that has a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+newoption
+\end_layout
+
+\end_inset
+
+.
+ Then 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+find_token
+\end_layout
+
+\end_inset
+
+ will find the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+newoption
+\end_layout
+
+\end_inset
+
+ for the later one.
+ If we're just removing it, that might not be so bad.
+ But if we were doing something more extensive, it could be.
+ So, at the very least, we need to find the end of this inset and make sure
+ the option comes before that:
+\end_layout
+
+\begin_layout LyX-Code
+    k = find_end_of_inset(document.body, i)
+\end_layout
+
+\begin_layout LyX-Code
+    if k == -1:
+\end_layout
+
+\begin_layout LyX-Code
+      document.warning('Unable to find end of inset at line ' + str(i))
+\end_layout
+
+\begin_layout LyX-Code
+      i += 1
+\end_layout
+
+\begin_layout LyX-Code
+      continue
+\end_layout
+
+\begin_layout LyX-Code
+    j = find_token(document.body, 'newoption', i, k)
+\end_layout
+
+\begin_layout LyX-Code
+    if j == -1:
+\end_layout
+
+\begin_layout LyX-Code
+      document.warning('Unable to find newoption in Funky inset!')
+\end_layout
+
+\begin_layout LyX-Code
+      i = k
+\end_layout
+
+\begin_layout LyX-Code
+      continue
+\end_layout
+
+\begin_layout LyX-Code
+    del document.body[j]
+\end_layout
+
+\begin_layout Standard
+Note that we can reset 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+i
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+k
+\end_layout
+
+\end_inset
+
+ here only if we know that no Funky inset can occur inside a Funky inset.
+ Otherwise, it should have been 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+i += 1
+\end_layout
+
+\end_inset
+
+, again.
+\end_layout
+
+\begin_layout Standard
+Although it is not often done, there are definitely cases where we should
+ use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+document.error()
+\end_layout
+
+\end_inset
+
+ rather than 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+document.warning()
+\end_layout
+
+\end_inset
+
+ here.
+ In particular, suppose that we are actually planning to remove Funky insets
+ altogether, or to replace them with ERT.
+ Then, if the file is so corrupt that we cannot find the end of the inset,
+ we cannot do this work, so we know we cannot produce a LyX file an older
+ version will be able to load.
+ In that case, it seems right just to abort, and if the user wants to 
+\begin_inset Quotes eld
+\end_inset
+
+try hard
+\begin_inset Quotes erd
+\end_inset
+
+, she can run 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyx2lyx
+\end_layout
+
+\end_inset
+
+ from the command line and pass the appropriate opttion.
+\end_layout
+
+\begin_layout Standard
+The routine above may still fail to do the right thing, however.
+ Suppose again that 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+newoption
+\end_layout
+
+\end_inset
+
+ is missing, but due to a strange typo, one of the lines of text in the
+ inset happens to begin with 
+\begin_inset Quotes eld
+\end_inset
+
+newoption
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Then find_token will find that line and we will remove text from the document.
+ This will not generally happen with command insets, but it can easily happen
+ with text insets.
+ In that case, one has to make sure the option comes before the content
+ of the inset, and to do that, we must find the first layout in the inset,
+ thus:
+\end_layout
+
+\begin_layout LyX-Code
+    k = find_end_of_inset(document.body, i)
+\end_layout
+
+\begin_layout LyX-Code
+    if k == -1:
+\end_layout
+
+\begin_layout LyX-Code
+      document.warning('Unable to find end of inset at line ' + str(i))
+\end_layout
+
+\begin_layout LyX-Code
+      i += 1
+\end_layout
+
+\begin_layout LyX-Code
+      continue
+\end_layout
+
+\begin_layout LyX-Code
+    m = find_token(document.body, '
+\backslash
+
+\backslash
+begin_layout', i, k)
+\end_layout
+
+\begin_layout LyX-Code
+    if m == -1:
+\end_layout
+
+\begin_layout LyX-Code
+      document.warning('Unable to find layout for inset at line ' 
+\backslash
+
+\end_layout
+
+\begin_layout LyX-Code
+       + str(i) + '.
+ Hoping for the best.')
+\end_layout
+
+\begin_layout LyX-Code
+      m = k
+\end_layout
+
+\begin_layout LyX-Code
+    j = find_token(document.body, 'newoption', i, m)
+\end_layout
+
+\begin_layout LyX-Code
+    if j == -1:
+\end_layout
+
+\begin_layout LyX-Code
+      document.warning('Unable to find newoption in Funky inset!')
+\end_layout
+
+\begin_layout LyX-Code
+      i = k
+\end_layout
+
+\begin_layout LyX-Code
+      continue
+\end_layout
+
+\begin_layout LyX-Code
+    del document.body[j]
+\end_layout
+
+\begin_layout Standard
+The last problem, though it would be unlikely in this case, is that we might
+ find not 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+newoption
+\end_layout
+
+\end_inset
+
+ but 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+newoptions
+\end_layout
+
+\end_inset
+
+, because 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+find_token
+\end_layout
+
+\end_inset
+
+ only looks to see if the beginning of the line matches.
+ Typically, then, what one really wants is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+find_token_exact
+\end_layout
+
+\end_inset
+
+, which makes sure that we are finding a complete token.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In the current implementation, this function also ignores other differences
+ in whitespace.
+ This needs to be fixed.
+\end_layout
+
+\end_inset
+
+ So what we really want, for the entire function, is:
+\end_layout
+
+\begin_layout LyX-Code
+ def revert_something(document):
+\end_layout
+
+\begin_layout LyX-Code
+  i = 0 
+\end_layout
+
+\begin_layout LyX-Code
+  while True:
+\end_layout
+
+\begin_layout LyX-Code
+    i = find_token(document.body, '
+\backslash
+begin_inset FunkyInset', i)
+\end_layout
+
+\begin_layout LyX-Code
+    if i == -1:
+\end_layout
+
+\begin_layout LyX-Code
+      break
+\end_layout
+
+\begin_layout LyX-Code
+    k = find_end_of_inset(document.body, i)
+\end_layout
+
+\begin_layout LyX-Code
+    if k == -1:
+\end_layout
+
+\begin_layout LyX-Code
+      document.warning('Unable to find end of inset at line ' + str(i))
+\end_layout
+
+\begin_layout LyX-Code
+      i += 1
+\end_layout
+
+\begin_layout LyX-Code
+      continue
+\end_layout
+
+\begin_layout LyX-Code
+    m = find_token(document.body, '
+\backslash
+
+\backslash
+begin_layout', i, k)
+\end_layout
+
+\begin_layout LyX-Code
+    if m == -1:
+\end_layout
+
+\begin_layout LyX-Code
+      document.warning('Unable to find layout for inset at line ' 
+\backslash
+
+\end_layout
+
+\begin_layout LyX-Code
+       + str(i) + '.
+ Hoping for the best.')
+\end_layout
+
+\begin_layout LyX-Code
+      m = k
+\end_layout
+
+\begin_layout LyX-Code
+    j = find_token(document.body, 'newoption', i, m)
+\end_layout
+
+\begin_layout LyX-Code
+    if j == -1:
+\end_layout
+
+\begin_layout LyX-Code
+      document.warning('Unable to find newoption in Funky inset!')
+\end_layout
+
+\begin_layout LyX-Code
+      i = k
+\end_layout
+
+\begin_layout LyX-Code
+      continue
+\end_layout
+
+\begin_layout LyX-Code
+    del document.body[j]
+\end_layout
+
+\begin_layout LyX-Code
+    i += 1
+\end_layout
+
+\begin_layout Standard
+This is much more complicated than what we had before, but it is much more
+ reliable.
+ (Probably, much of this logic should be wrapped in a function.)
+\end_layout
+
+\begin_layout Standard
+Another common error is relying too much on assumptions about the structure
+ of a valid LyX file.
+ Here is an example.
+ Suppose we want to add a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+ flag to the first paragraph of any Funky inset.
+ Then it is tempting to do something like this:
+\end_layout
+
+\begin_layout LyX-Code
+def add_noindent(document):
+\end_layout
+
+\begin_layout LyX-Code
+  i = 0 
+\end_layout
+
+\begin_layout LyX-Code
+  while True:
+\end_layout
+
+\begin_layout LyX-Code
+    i = find_token(document.body, '
+\backslash
+begin_inset FunkyInset', i)
+\end_layout
+
+\begin_layout LyX-Code
+    if i == -1:
+\end_layout
+
+\begin_layout LyX-Code
+      break
+\end_layout
+
+\begin_layout LyX-Code
+    document.body.insert(i+4, '
+\backslash
+
+\backslash
+noindent')
+\end_layout
+
+\begin_layout Standard
+Experienced programmers will know that this is bad.
+ Where does the magic number 4 come from? The answer is that it comes from
+ examining the LyX file.
+ One looks a typical file containing a Funky inset and sees:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin_inset Funky
+\end_layout
+
+\begin_layout LyX-Code
+status collapsed
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin_layout Standard
+\end_layout
+
+\begin_layout LyX-Code
+here is some content
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+end_layout
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+end_inset
+\end_layout
+
+\begin_layout Standard
+So 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+ goes three lines after the inset.
+\end_layout
+
+\begin_layout Standard
+Most of the time, perhaps, but there is no guarantee that this will be correct,
+ and the same goes for any assumption of this sort.
+ That is so even if one has carefully studied the LyX source code and made
+ very sure about the output routine.
+ In particular, the empty line before 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin_layout
+\end_layout
+
+\end_inset
+
+ could easily disappear, without any change to the semantics.
+ Or another one could appear.
+ There are several reasons for this.
+\end_layout
+
+\begin_layout Standard
+First, looking at the source code of the current version of LyX tells you
+ nothing about how the file might have been created by some other version.
+ Maybe we get tired of blank lines.
+\end_layout
+
+\begin_layout Standard
+Second, LyX files are not always produced by LyX.
+ Some of them are produced by external scripts (sed, perl, etc) that people
+ write to do search and replace operations that are not possible inside
+ LyX.
+ Such files may end up having slightly different structures.
+\end_layout
+
+\begin_layout Standard
+Third, and most importantly, the file you are modifying has almost certainly
+ already been through several other conversion routines.
+ It is very, very difficult to make sure one gets all the blank lines in
+ the right places, and people rarely check for this: They check to make
+ sure the file opens correctly and that its output is right, but who cares
+ how many blank lines there are? Again, it is the semantics that matters,
+ not the fine details of file structure.
+\end_layout
+
+\begin_layout Standard
+Or consider this possibility: Someone else wrote a routine to remove 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+newoption
+\end_layout
+
+\end_inset
+
+, but, since they failed to read this document, their routine has all the
+ bugs we discussed before.
+ As a result, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+newoption
+\end_layout
+
+\end_inset
+
+ is still there in several of the Funky insets in the document, how that
+ it has gotten to your routine.
+ So what you actually have is:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin_inset Funky
+\end_layout
+
+\begin_layout LyX-Code
+status collapsed
+\end_layout
+
+\begin_layout LyX-Code
+newoption false
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin_layout Standard
+\end_layout
+
+\begin_layout LyX-Code
+here is some content
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+end_layout
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+end_inset
+\end_layout
+
+\begin_layout Standard
+This is not a valid LyX document of the format on which you are operating.
+ But surely you do not really want to produce this:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin_inset Funky
+\end_layout
+
+\begin_layout LyX-Code
+status collapsed
+\end_layout
+
+\begin_layout LyX-Code
+newoption false
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+noindent
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin_layout Standard
+\end_layout
+
+\begin_layout LyX-Code
+here is some content
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+end_layout
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+end_inset
+\end_layout
+
+\begin_layout Standard
+Then you will have made matters worse, and also failed to unindent the paragraph.
+\end_layout
+
+\end_body
+\end_document
