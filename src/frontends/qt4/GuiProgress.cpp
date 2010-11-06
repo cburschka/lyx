@@ -116,13 +116,13 @@ void GuiProgress::updateWithLyXErr()
 
 void GuiProgress::lyxerrConnect()
 {
-	lyxerr.setSecond(&lyxerr_stream_);
+	lyxerr.setSecondStream(&lyxerr_stream_);
 }
 
 
 void GuiProgress::lyxerrDisconnect()
 {
-	lyxerr.setSecond(0);
+	lyxerr.setSecondStream(0);
 }
 
 
