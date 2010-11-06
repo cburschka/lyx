@@ -644,8 +644,8 @@ void InsetMathGrid::updateBuffer(ParIterator const & it, UpdateType utype)
 }
 
 
-docstring InsetMathGrid::eolString(row_type row, bool fragile, bool latex,
-		bool last_eoln) const
+docstring InsetMathGrid::eolString(row_type row, bool fragile,
+		bool /*latex*/, bool last_eoln) const
 {
 	docstring eol;
 
