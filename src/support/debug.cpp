@@ -143,10 +143,10 @@ Debug::Type Debug::value(string const & val)
 void Debug::showLevel(ostream & os, Debug::Type level)
 {
 	// Show what features are traced
-	for (int i = 0; i != numErrorTags; ++i) {
+	for (int i = 0; i < numErrorTags; ++i) {
 		if (errorTags[i].level != Debug::ANY
-		    && errorTags[i].level != Debug::NONE
-		    && errorTags[i].level & level) {
+		      && errorTags[i].level != Debug::NONE
+		      && errorTags[i].level & level) {
 			// avoid to_utf8(_(...)) re-entrance problem
 			docstring const s = _(errorTags[i].desc);
 			os << to_utf8(bformat(_("Debugging `%1$s' (%2$s)"),
@@ -182,7 +182,7 @@ void LyXErr::enable()
 
 bool LyXErr::debugging(Debug::Type t) const
 {
-	return (dt & t);
+	return (dt_ & t);
 }
 
 
@@ -190,8 +190,8 @@ void LyXErr::endl()
 {
 	if (enabled_) {
 		stream() << std::endl;
-		if (second_used_)
-			second() << std::endl;
+		if (second_enabled_)
+			secondStream() << std::endl;
 	}
 }
 
@@ -202,8 +202,8 @@ LyXErr & toStream(LyXErr & l, T t)
 {
 	if (l.enabled()){
 		l.stream() << t;
-                if (l.second_used()) {
-			l.second() << t;
+                if (l.secondEnabled()) {
+			l.secondStream() << t;
 			ProgressInterface::instance()->lyxerrFlush();
 		}
 	}
