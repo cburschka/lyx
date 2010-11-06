@@ -65,6 +65,40 @@ int VCS::doVCCommand(string const & cmd, FileName const & path, bool reportError
 }
 
 
+bool VCS::makeRCSRevision(string const &version, string &revis) const
+{
+	string rev = revis;
+	
+	if (isStrInt(rev)) {
+		int back = convert<int>(rev);
+		// if positive use as the last number in the whole revision string
+		if (back > 0) {
+			string base;
+			rsplit(version, base , '.' );
+			rev = base + "." + rev;
+		}
+		if (back == 0)
+			rev = version;
+		// we care about the last number from revision string
+		// in case of backward indexing
+		if (back < 0) {
+			string cur, base;
+			cur = rsplit(version, base , '.' );
+			if (!isStrInt(cur))
+				return false;
+			int want = convert<int>(cur) + back;
+			if (want <= 0)
+				return false;
+			
+			rev = base + "." + convert<string>(want);
+		}
+	}
+
+	revis = rev;
+	return true;
+}
+	
+	
 /////////////////////////////////////////////////////////////////////
 //
 // RCS
@@ -329,31 +363,8 @@ string RCS::revisionInfo(LyXVC::RevisionInfo const info)
 bool RCS::prepareFileRevision(string const &revis, string & f)
 {
 	string rev = revis;
-
-	if (isStrInt(rev)) {
-		int back = convert<int>(rev);
-		// if positive use as the last number in the whole revision string
-		if (back > 0) {
-			string base;
-			rsplit(version_, base , '.' );
-			rev = base + "." + rev;
-		}
-		if (back == 0)
-			rev = version_;
-		// we care about the last number from revision string
-		// in case of backward indexing
-		if (back < 0) {
-			string cur, base;
-			cur = rsplit(version_, base , '.' );
-			if (!isStrInt(cur))
-				return false;
-			int want = convert<int>(cur) + back;
-			if (want <= 0)
-				return false;
-
-			rev = base + "." + convert<string>(want);
-		}
-	}
+	if (!VCS::makeRCSRevision(version_, rev))
+		return false;
 
 	FileName tmpf = FileName::tempName("lyxvcrev_" + rev + "_");
 	if (tmpf.empty()) {
@@ -922,15 +933,32 @@ string CVS::revisionInfo(LyXVC::RevisionInfo const info)
 }
 
 
-bool CVS::prepareFileRevision(string const &, string &)
+bool CVS::prepareFileRevision(string const & revis, string & f)
 {
-	return false;
+	string rev = revis;
+	if (!VCS::makeRCSRevision(version_, rev))
+		return false;
+
+	FileName tmpf = FileName::tempName("lyxvcrev_" + rev + "_");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return false;
+	}
+
+	doVCCommandWithOutput("cvs update -p -r" + rev + " "
+		+ getTarget(File),
+		FileName(owner_->filePath()), tmpf);
+	if (tmpf.isFileEmpty())
+		return false;
+
+	f = tmpf.absFileName();
+	return true;
 }
 
 
 bool CVS::prepareFileRevisionEnabled()
 {
-	return false;
+	return true;
 }
 
 
@@ -1478,7 +1506,7 @@ bool SVN::prepareFileRevision(string const & revis, string & f)
 	FileName tmpf = FileName::tempName("lyxvcrev_" + revname + "_");
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
-		return N_("Error: Could not generate logfile.");
+		return false;
 	}
 
 	doVCCommand("svn cat -r " + revname + " "

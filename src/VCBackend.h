@@ -91,6 +91,10 @@ protected:
 	/// parse information from the version file
 	virtual void scanMaster() = 0;
 
+	/// make a relative version identifier
+	/// suitable for RCS and CVS
+	bool makeRCSRevision(std::string const &version, std::string &revis) const;
+	
 	// GUI container for doVCCommandCall
 	int doVCCommand(std::string const & cmd, support::FileName const & path, bool reportError = true);
 	/**
