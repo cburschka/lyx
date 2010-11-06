@@ -750,7 +750,6 @@ def convert_author_id(document):
             name = m.group(2)
             email = m.group(3)
             document.header[i] = "\\author %i %s %s" % (anum, name, email)
-        # FIXME Should this really be incremented if we didn't match?
         anum += 1
         i += 1
         
@@ -995,7 +994,6 @@ def revert_multirow(document):
       i = cend
 
     if multirow == True:
-        add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
         add_to_preamble(document, ["\\usepackage{multirow}"])
 
 
