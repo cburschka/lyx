@@ -951,7 +951,6 @@ def revert_multirow(document):
       multirow = True
       # remove the multirow tag, set the valignment to top
       # and remove the bottom line
-      # FIXME Are we sure these always have space around them?
       document.body[i] = document.body[i].replace(' multirow="3" ', ' ')
       document.body[i] = document.body[i].replace('valignment="middle"', 'valignment="top"')
       document.body[i] = document.body[i].replace(' bottomline="true" ', ' ')
@@ -988,7 +987,6 @@ def revert_multirow(document):
               break
           # remove the multirow tag, set the valignment to top
           # and remove the top line
-          # FIXME Are we sure these always have space around them?
           document.body[k] = document.body[k].replace(' multirow="4" ', ' ')
           document.body[k] = document.body[k].replace('valignment="middle"', 'valignment="top"')
           document.body[k] = document.body[k].replace(' topline="true" ', ' ')
@@ -997,6 +995,7 @@ def revert_multirow(document):
       i = cend
 
     if multirow == True:
+        add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
         add_to_preamble(document, ["\\usepackage{multirow}"])
 
 
