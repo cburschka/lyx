@@ -634,7 +634,8 @@ void InsetMathGrid::drawT(TextPainter & /*pain*/, int /*x*/, int /*y*/) const
 }
 
 
-docstring InsetMathGrid::eolString(row_type row, bool fragile, bool last_eoln) const
+docstring InsetMathGrid::eolString(row_type row, bool fragile, bool /*latex*/,
+		bool last_eoln) const
 {
 	docstring eol;
 
@@ -1006,7 +1007,7 @@ void InsetMathGrid::write(WriteStream & os) const
 				ModeSpecifier specifier(os, TEXT_MODE);
 			os << eocString(col, lastcol);
 		}
-		eol = eolString(row, os.fragile(), last_eoln);
+		eol = eolString(row, os.fragile(), os.latex(), last_eoln);
 		os << eol;
 		// append newline only if line wasn't completely empty
 		// and this was not the last line in the grid
