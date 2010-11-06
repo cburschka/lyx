@@ -195,9 +195,27 @@ bool RCS::checkInEnabled()
 	return owner_ && !owner_->isReadonly();
 }
 
+
 bool RCS::isCheckInWithConfirmation()
 {
-	//FIXME diff
+	// FIXME one day common getDiff for all backends
+	// docstring diff;
+	// if (getDiff(file, diff) && diff.empty())
+	//	return false;
+
+	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return true;
+	}
+
+	doVCCommandCall("rcsdiff " + quoteName(owner_->absFileName())
+		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
+		FileName(owner_->filePath()));
+
+	if (tmpf.fileContents("UTF-8").empty())
+		return false;
+
 	return true;
 }
 
