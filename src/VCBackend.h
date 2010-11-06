@@ -91,8 +91,8 @@ protected:
 	/// parse information from the version file
 	virtual void scanMaster() = 0;
 
-	/// make a relative version identifier
-	/// suitable for RCS and CVS
+	/// Prepare a version identifier suitable for RCS and CVS.
+	/// If needed converts last or relative number to the absolute revision.
 	bool makeRCSRevision(std::string const &version, std::string &revis) const;
 	
 	// GUI container for doVCCommandCall
