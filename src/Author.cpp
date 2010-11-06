@@ -30,7 +30,7 @@ static int computeHash(docstring const & name,
 	// Bernstein's hash function
 	unsigned int hash = 5381;
 	for (unsigned int i = 0; i < full_author_string.length(); ++i)
-		hash = ((hash << 5) + hash) + unsigned int(full_author_string[i]);
+		hash = ((hash << 5) + hash) + (unsigned int)(full_author_string[i]);
 	return int(hash);
 }
 
