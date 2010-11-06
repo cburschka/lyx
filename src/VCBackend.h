@@ -261,6 +261,24 @@ private:
 	// revision number from scanMaster
 	std::string version_;
 
+	/**
+	 * doVCCommandWithOutput
+	 * - call out to the version control utility
+	 * - it is able to collect output in a file
+	 * @param cmd the command to execute
+	 * @param path the path from which to execute
+	 * @param output the path where to store output
+	 * @param reportError display of low level error message dialog
+	 * @return exit status
+	 */
+	int doVCCommandWithOutput(std::string const & cmd,
+			support::FileName const & path,
+			support::FileName const & output,
+			bool reportError = true);
+	static int doVCCommandCallWithOutput(std::string const & cmd,
+			support::FileName const & path,
+			support::FileName const & output);
+						
 	/// return the quoted pathname if Directory or filename if File
 	virtual std::string const getTarget(OperationMode opmode) const;
 	/// collect the diff of file or directory against repository
@@ -280,6 +298,15 @@ private:
 	virtual CvsStatus getStatus();
 	/// convert enum to string
 	virtual docstring toString(CvsStatus status) const;
+
+	/// cache the info values of current file revision
+	/// author, date and time of commit
+	std::string rev_author_cache_;
+	std::string rev_date_cache_;
+	std::string rev_time_cache_;
+	/// fills the cache values, returns true if successfull.
+	void getRevisionInfo();
+	bool have_rev_info_;
 };
 
 

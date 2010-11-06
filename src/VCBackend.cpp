@@ -366,6 +366,7 @@ CVS::CVS(FileName const & m, FileName const & f)
 {
 	master_ = m;
 	file_ = f;
+	have_rev_info_ = false;
 	scanMaster();
 }
 
@@ -478,6 +479,23 @@ docstring CVS::toString(CvsStatus status) const
 }
 
 
+int CVS::doVCCommandWithOutput(string const & cmd, FileName const & path,
+	FileName const & output, bool reportError)
+{
+	string redirection = output.empty() ? "" : " > " + quoteName(output.toFilesystemEncoding());
+	return doVCCommand(cmd + redirection, path, reportError);
+}
+
+
+int CVS::doVCCommandCallWithOutput(std::string const & cmd,
+	support::FileName const & path,
+	support::FileName const & output)
+{
+	string redirection = output.empty() ? "" : " > " + quoteName(output.toFilesystemEncoding());
+	return doVCCommandCall(cmd + redirection, path);
+}
+
+
 CVS::CvsStatus CVS::getStatus()
 {
 	FileName tmpf = FileName::tempName("lyxvcout");
@@ -486,9 +504,8 @@ CVS::CvsStatus CVS::getStatus()
 		return StatusError;
 	}
 
-	if (doVCCommand("cvs status " + getTarget(File)
-		+ " > " + quoteName(tmpf.toFilesystemEncoding()),
-		FileName(owner_->filePath()))) {
+	if (doVCCommandCallWithOutput("cvs status " + getTarget(File),
+		FileName(owner_->filePath()), tmpf)) {
 		tmpf.removeFile();
 		return StatusError;
 	}
@@ -517,6 +534,51 @@ CVS::CvsStatus CVS::getStatus()
 	return status;
 }
 
+void CVS::getRevisionInfo()
+{
+	if (have_rev_info_)
+		return;
+	have_rev_info_ = true;
+	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return;
+	}
+	
+	int rc = doVCCommandCallWithOutput("cvs log -r" + version_ 
+		+ " " + getTarget(File),
+		FileName(owner_->filePath()), tmpf);
+	if (rc) {
+		tmpf.removeFile();
+		LYXERR(Debug::LYXVC, "cvs log failed with exit code " << rc);
+		return;
+	}
+	
+	ifstream ifs(tmpf.toFilesystemEncoding().c_str());
+	static regex const reg("date: (.*) (.*) (.*);  author: (.*);  state: (.*);(.*)");
+
+	while (ifs) {
+		string line;
+		getline(ifs, line);
+		LYXERR(Debug::LYXVC, line << "\n");
+		if (prefixIs(line, "date:")) {
+			smatch sm;
+			regex_match(line, sm, reg);
+			//sm[0]; // whole matched string
+			rev_date_cache_ = sm[1];
+			rev_time_cache_ = sm[2];
+			//sm[3]; // GMT offset
+			rev_author_cache_ = sm[4];
+			break;
+		}
+	}
+	tmpf.removeFile();
+	if (rev_author_cache_.empty())
+		LYXERR(Debug::LYXVC,
+		   "Could not retrieve revision info for " << version_ <<
+		   " of " << getTarget(File));
+}
+
 
 void CVS::registrer(string const & msg)
 {
@@ -528,9 +590,8 @@ void CVS::registrer(string const & msg)
 
 void CVS::getDiff(OperationMode opmode, FileName const & tmpf)
 {
-	doVCCommand("cvs diff " + getTarget(opmode)
-		+ " > " + quoteName(tmpf.toFilesystemEncoding()),
-		FileName(owner_->filePath()), false);
+	doVCCommandWithOutput("cvs diff " + getTarget(opmode),
+		FileName(owner_->filePath()), tmpf, false);
 }
 
 
@@ -552,12 +613,9 @@ int CVS::unedit()
 
 int CVS::update(OperationMode opmode, FileName const & tmpf)
 {
-	string const redirection = tmpf.empty() ? ""
-		: " > " + quoteName(tmpf.toFilesystemEncoding());
-
-	return doVCCommand("cvs -q update "
-		+ getTarget(opmode) + redirection,
-		FileName(owner_->filePath()));
+	return doVCCommandWithOutput("cvs -q update "
+		+ getTarget(opmode),
+		FileName(owner_->filePath()), tmpf, false);
 }
 
 
@@ -650,12 +708,14 @@ string CVS::checkOut()
 	int rc = update(File, tmpf);
 	string log;
 	string const res = scanLogFile(tmpf, log);
-	if (!res.empty())
+	if (!res.empty()) {
 		frontend::Alert::error(_("Revision control error."),
 			bformat(_("Error when updating from repository.\n"
 				"You have to manually resolve the conflicts NOW!\n'%1$s'.\n\n"
 				"After pressing OK, LyX will try to reopen the resolved document."),
 				from_local8bit(res)));
+		rc = 0;
+	}
 	
 	tmpf.erase();
 	return rc ? string() : log.empty() ? "CVS: Proceeded" : "CVS: " + log;
@@ -704,10 +764,23 @@ string CVS::repoUpdate()
 
 	int rc = update(Directory, tmpf);
 	res += "Update log:\n" + tmpf.fileContents("UTF-8");
+	LYXERR(Debug::LYXVC, res);
+
+	string log;
+	string sres = scanLogFile(tmpf, log);
+	if (!sres.empty()) {
+		docstring const file = owner_->fileName().displayName(20);
+		frontend::Alert::error(_("Revision control error."),
+			bformat(_("Error when updating document %1$s from repository.\n"
+					  "You have to manually resolve the conflicts NOW!\n'%2$s'.\n\n"
+					  "After pressing OK, LyX will try to reopen the resolved document."),
+				file, from_local8bit(sres)));
+		rc = 0;
+	}
+	
 	tmpf.removeFile();
 
-	LYXERR(Debug::LYXVC, res);
-	return rc ? string() : "CVS: Proceeded" ;
+	return rc ? string() : log.empty() ? "CVS: Proceeded" : "CVS: " + log;
 }
 
 
@@ -793,9 +866,9 @@ bool CVS::undoLastEnabled()
 
 void CVS::getLog(FileName const & tmpf)
 {
-	doVCCommand("cvs log " + getTarget(File)
-		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
-		    FileName(owner_->filePath()));
+	doVCCommandWithOutput("cvs log " + getTarget(File),
+		FileName(owner_->filePath()),
+		tmpf);
 }
 
 
@@ -807,8 +880,20 @@ bool CVS::toggleReadOnlyEnabled()
 
 string CVS::revisionInfo(LyXVC::RevisionInfo const info)
 {
-	if (info == LyXVC::File)
-		return version_;
+	if (!version_.empty()) {
+		getRevisionInfo();
+		switch (info) {
+		case LyXVC::File:
+			return version_;
+		case LyXVC::Author:
+			return rev_author_cache_;
+		case LyXVC::Date:
+			return rev_date_cache_;
+		case LyXVC::Time:
+			return rev_time_cache_;
+		default: ;
+		}
+	}
 	return string();
 }
 
