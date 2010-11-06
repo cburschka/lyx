@@ -85,7 +85,7 @@ The two following programs should be available at configuration time:
 
   o Python 2.3 or newer installed to be able to import older LyX files
     with the lyx2lyx script (this script is called automatically when
-    opening a file).
+    opening a file). Python 3.0 or later is not supported.
 
 
 Creating the Makefile
