@@ -644,7 +644,8 @@ void InsetMathGrid::updateBuffer(ParIterator const & it, UpdateType utype)
 }
 
 
-docstring InsetMathGrid::eolString(row_type row, bool fragile, bool last_eoln) const
+docstring InsetMathGrid::eolString(row_type row, bool fragile, bool latex,
+		bool last_eoln) const
 {
 	docstring eol;
 
@@ -1061,7 +1062,7 @@ void InsetMathGrid::write(WriteStream & os,
 				ModeSpecifier specifier(os, TEXT_MODE);
 			os << eocString(col, lastcol);
 		}
-		eol = eolString(row, os.fragile(), last_eoln);
+		eol = eolString(row, os.fragile(), os.latex(), last_eoln);
 		os << eol;
 		// append newline only if line wasn't completely empty
 		// and the formula is not written on a single line

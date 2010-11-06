@@ -1120,19 +1120,23 @@ void InsetMathHull::mutate(HullType newtype)
 }
 
 
-docstring InsetMathHull::eolString(row_type row, bool fragile, bool last_eoln) const
+docstring InsetMathHull::eolString(row_type row, bool fragile, bool latex,
+		bool last_eoln) const
 {
 	docstring res;
 	if (numberedType()) {
-		if (label_[row] && numbered_[row])
-			res += "\\label{" +
-			    escape(label_[row]->getParam("name")) + '}';
+		if (label_[row] && numbered_[row]) {
+			docstring const name =
+				latex ? escape(label_[row]->getParam("name"))
+				      : label_[row]->getParam("name");
+			res += "\\label{" + name + '}';
+		}
 		if (!numbered_[row] && (type_ != hullMultline))
 			res += "\\nonumber ";
 	}
 	// Never add \\ on the last empty line of eqnarray and friends
 	last_eoln = false;
-	return res + InsetMathGrid::eolString(row, fragile, last_eoln);
+	return res + InsetMathGrid::eolString(row, fragile, latex, last_eoln);
 }
 
 
