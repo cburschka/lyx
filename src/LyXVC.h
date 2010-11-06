@@ -98,7 +98,7 @@ public:
 	bool lockingToggleEnabled() const;
 
 	/// Revert to last version
-	void revert();
+	bool revert();
 
 	/// Undo last check-in.
 	void undoLast();

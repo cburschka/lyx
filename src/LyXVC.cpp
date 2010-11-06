@@ -208,7 +208,7 @@ string LyXVC::lockingToggle()
 }
 
 
-void LyXVC::revert()
+bool LyXVC::revert()
 {
 	LYXERR(Debug::LYXVC, "LyXVC: revert");
 
@@ -221,8 +221,7 @@ void LyXVC::revert()
 		ret = Alert::prompt(_("Revert to stored version of document?"),
 			text, 0, 1, _("&Revert"), _("&Cancel"));
 
-	if (ret == 0)
-		vcs->revert();
+	return ret == 0 && vcs->revert();
 }
 
 

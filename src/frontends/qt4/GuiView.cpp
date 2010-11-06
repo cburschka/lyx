@@ -2701,9 +2701,10 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_VC_REVERT:
 		LASSERT(buffer, return);
-		buffer->lyxvc().revert();
-		reloadBuffer(*buffer);
-		dr.suppressMessageUpdate();
+		if (buffer->lyxvc().revert()) {
+			reloadBuffer(*buffer);
+			dr.suppressMessageUpdate();
+		}
 		break;
 
 	case LFUN_VC_UNDO_LAST:

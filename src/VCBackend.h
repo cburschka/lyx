@@ -57,7 +57,7 @@ public:
 	// can be this operation processed in the current RCS?
 	virtual bool lockingToggleEnabled() = 0;
 	/// revert current edits
-	virtual void revert() = 0;
+	virtual bool revert() = 0;
 	// should a confirmation before revert requested?
 	virtual bool isRevertWithConfirmation() = 0;
 	/// FIXME
@@ -147,7 +147,7 @@ public:
 
 	virtual bool lockingToggleEnabled();
 
-	virtual void revert();
+	virtual bool revert();
 
 	virtual bool isRevertWithConfirmation();
 
@@ -214,7 +214,7 @@ public:
 
 	virtual bool isRevertWithConfirmation();
 
-	virtual void revert();
+	virtual bool revert();
 
 	virtual void undoLast();
 
@@ -340,7 +340,7 @@ public:
 
 	virtual bool lockingToggleEnabled();
 
-	virtual void revert();
+	virtual bool revert();
 
 	virtual bool isRevertWithConfirmation();
 

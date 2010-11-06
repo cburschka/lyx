@@ -267,13 +267,15 @@ bool RCS::lockingToggleEnabled()
 }
 
 
-void RCS::revert()
+bool RCS::revert()
 {
-	doVCCommand("co -f -u" + version_ + " "
+	if (doVCCommand("co -f -u" + version_ + " "
 		    + quoteName(onlyFileName(owner_->absFileName())),
-		    FileName(owner_->filePath()));
+		    FileName(owner_->filePath())))
+		return false;
 	// We ignore changes and just reload!
 	owner_->markClean();
+	return true;
 }
 
 
@@ -831,7 +833,7 @@ bool CVS::isRevertWithConfirmation()
 }
 
 
-void CVS::revert()
+bool CVS::revert()
 {
 	// Reverts to the version in CVS repository and
 	// gets the updated version from the repository.
@@ -839,7 +841,7 @@ void CVS::revert()
 	switch (status) {
 	case UpToDate:
 		if (vcstatus != NOLOCKING)
-			unedit();
+			return 0 == unedit();
 		break;
 	case NeedsMerge:
 	case NeedsCheckout:
@@ -856,7 +858,7 @@ void CVS::revert()
 			bformat(_("The document %1$s is not in repository.\n"
 			          "You have to check in the first revision before you can revert."),
 				file)) ;
-		break;
+		return false;
 	}
 	default: {
 		docstring const file = owner_->fileName().displayName(20);
@@ -864,9 +866,10 @@ void CVS::revert()
 			bformat(_("Cannot revert document %1$s to repository version.\n"
 			          "The status '%2$s' is unexpected."),
 				file, toString(status)));
-		break;
+		return false;
 		}
 	}
+	return true;
 }
 
 
@@ -1294,15 +1297,17 @@ bool SVN::lockingToggleEnabled()
 }
 
 
-void SVN::revert()
+bool SVN::revert()
 {
 	// Reverts to the version in SVN repository and
 	// gets the updated version from the repository.
 	string const fil = quoteName(onlyFileName(owner_->absFileName()));
 
-	doVCCommand("svn revert -q " + fil,
-		    FileName(owner_->filePath()));
+	if (doVCCommand("svn revert -q " + fil,
+		    FileName(owner_->filePath())))
+		return false;
 	owner_->markClean();
+	return true;
 }
 
 
