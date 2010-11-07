@@ -74,7 +74,7 @@ and install automake using
      sudo port install automake
 
 
-3. [Needed only for developmental builds:] gettext version >= 0.12
+3. [Needed only for developmental builds:] gettext version >= 0.18
 (check with gettext --version). If the installed version is
 insufficient the easiest way to obtain a later version is to use
 MacPorts (from http://www.macports.org/) and install gettext
