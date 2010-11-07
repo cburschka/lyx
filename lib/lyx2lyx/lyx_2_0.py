@@ -2085,6 +2085,70 @@ def revert_passthru(document):
             end = newend
         beg = end + 1
 
+
+def revert_multirowOffset(document):
+    " Revert multirow cells with offset in tables to TeX-code"
+    i = 0
+    multirowOffset = False
+    while True:
+      # cell type 3 is multirow begin cell
+      i = find_token(document.body, '<cell multirow="3" mroffset=', i)
+      if i == -1:
+          break
+      # a multirow cell with offset was found
+      multirowOffset = True
+      # remove the multirow tag, set the valignment to top
+      # the the bottom line and offset
+      document.body[i] = document.body[i].replace(' multirow="3" ', ' ')
+      document.body[i] = document.body[i].replace('valignment="middle"', 'valignment="top"')
+      document.body[i] = document.body[i].replace(' bottomline="true" ', ' ')
+      document.body[i] = document.body[i].replace(' mroffset=', '')
+      # store the offset and remove it
+      begin = document.body[i].find('"')
+      end = document.body[i].find('" ', begin)
+      offset = document.body[i][begin + 1:end]
+      document.body[i] = document.body[i].replace(document.body[i][begin:end + 1], '')
+      # write ERT to create the multirow cell
+      # use 2 rows and 2cm as default with because the multirow span
+      # and the column width is only hardly accessible
+      cend = find_token(document.body, "</cell>", i)
+      if cend == -1:
+          document.warning("Malformed LyX document: Could not find end of tabular cell.")
+          i += 1
+          continue
+      blay = find_token(document.body, "\\begin_layout", i, cend)
+      if blay == -1:
+          document.warning("Can't find layout for cell!")
+          i = j
+          continue
+      bend = find_end_of_layout(document.body, blay)
+      if blay == -1:
+          document.warning("Can't find end of layout for cell!")
+          i = cend
+          continue
+      # do the later one first, so as not to mess up the numbering
+      # we are wrapping the whole cell in this ert
+      # so before the end of the layout...
+      document.body[bend:bend] = put_cmd_in_ert("}")
+      # ...and after the beginning
+      document.body[blay+1:blay+1] = put_cmd_in_ert("\\multirow{2}{2cm}[" + offset + "]{")
+      while True:
+          # cell type 4 is multirow part cell
+          k = find_token(document.body, '<cell multirow="4"', cend)
+          if k == -1:
+              break
+          # remove the multirow tag, set the valignment to top
+          # and remove the top line
+          document.body[k] = document.body[k].replace(' multirow="4" ', ' ')
+          document.body[k] = document.body[k].replace('valignment="middle"', 'valignment="top"')
+          document.body[k] = document.body[k].replace(' topline="true" ', ' ')
+          k += 1
+      # this will always be ok
+      i = cend
+    if multirowOffset == True:
+        add_to_preamble(document, ["\\usepackage{multirow}"])
+
+
 ##
 # Conversion hub
 #
@@ -2150,10 +2214,12 @@ convert = [[346, []],
            [403, [convert_flexnames]],
            [404, [convert_prettyref]],
            [405, []],
-           [406, [convert_passthru]]
+           [406, [convert_passthru]],
+           [407, []]
 ]
 
-revert =  [[405, [revert_passthru]],
+revert =  [[406, [revert_multirowOffset]],
+           [405, [revert_passthru]],
            [404, []],
            [403, [revert_refstyle]],
            [402, [revert_flexnames]],

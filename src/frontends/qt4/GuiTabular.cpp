@@ -49,11 +49,13 @@ GuiTabular::GuiTabular(QWidget * parent)
 	setupUi(this);
 
 	widthED->setValidator(unsignedLengthValidator(widthED));
+	multirowOffsetED->setValidator(new LengthValidator(multirowOffsetED));
 	topspaceED->setValidator(new LengthValidator(topspaceED));
 	bottomspaceED->setValidator(new LengthValidator(bottomspaceED));
 	interlinespaceED->setValidator(new LengthValidator(interlinespaceED));
 
 	widthUnitCB->setCurrentItem(Length::defaultUnit());
+	multirowOffsetUnitCB->setCurrentItem(Length::defaultUnit());
 	topspaceUnitCB->setCurrentItem(Length::defaultUnit());
 	bottomspaceUnitCB->setCurrentItem(Length::defaultUnit());
 	interlinespaceUnitCB->setCurrentItem(Length::defaultUnit());
@@ -91,6 +93,10 @@ GuiTabular::GuiTabular(QWidget * parent)
 	connect(multicolumnCB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
 	connect(multirowCB, SIGNAL(clicked()),
+		this, SLOT(checkEnabled()));
+	connect(multirowOffsetED, SIGNAL(textEdited(QString)),
+		this, SLOT(checkEnabled()));
+	connect(multirowOffsetUnitCB, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
 	connect(newpageCB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
@@ -156,6 +162,7 @@ GuiTabular::GuiTabular(QWidget * parent)
 
 	// initialize the length validator
 	addCheckedWidget(widthED, fixedWidthColLA);
+	addCheckedWidget(multirowOffsetED, multirowOffsetLA);
 	addCheckedWidget(topspaceED, topspaceLA);
 	addCheckedWidget(bottomspaceED, bottomspaceLA);
 	addCheckedWidget(interlinespaceED, interlinespaceLA);
@@ -237,6 +244,8 @@ void GuiTabular::checkEnabled()
 
 	multicolumnCB->setEnabled(funcEnabled(Tabular::MULTICOLUMN));
 	multirowCB->setEnabled(funcEnabled(Tabular::MULTIROW));
+	multirowOffsetED->setEnabled(multirowCB->isChecked());
+	multirowOffsetUnitCB->setEnabled(multirowCB->isChecked());
 
 	changed();
 }
@@ -461,6 +470,13 @@ docstring GuiTabular::dialogToParams() const
 		setParam(param_str, Tabular::SET_MULTICOLUMN);
 	else
 		setParam(param_str, Tabular::UNSET_MULTICOLUMN);
+
+	// apply the multirow offset
+	string mroffset = widgetsToLength(multirowOffsetED, multirowOffsetUnitCB);
+	if (mroffset.empty())
+		mroffset = "0pt";
+	if (multirowCB->isChecked())
+		setParam(param_str, Tabular::SET_MROFFSET, mroffset);
 	//
 	if (multirowCB->isChecked())
 		setParam(param_str, Tabular::SET_MULTIROW);
@@ -574,6 +590,14 @@ static Length getMColumnPWidth(Tabular const & t, size_t cell)
 }
 
 
+static Length getMROffset(Tabular const & t, size_t cell)
+{
+	if (t.isMultiRow(cell))
+		return t.cellInfo(cell).mroffset;
+	return Length();
+}
+
+
 static docstring getAlignSpecial(Tabular const & t, size_t cell, int what)
 {
 	if (what == Tabular::SET_SPECIAL_MULTICOLUMN)
@@ -637,6 +661,17 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 		colwidth = pwidth.asString();
 		lengthToWidgets(widthED, widthUnitCB,
 			colwidth, default_unit);
+	}
+	Length mroffset;
+	if (multirow)
+		mroffset = getMROffset(tabular, cell);
+	string offset;
+	if (mroffset.zero())
+		multirowOffsetED->clear();
+	else {
+		offset = mroffset.asString();
+		lengthToWidgets(multirowOffsetED, multirowOffsetUnitCB,
+			offset, default_unit);
 	}
 	specialAlignmentED->setText(toqstr(special));
 	///////////////////////////////////

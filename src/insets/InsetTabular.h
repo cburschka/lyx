@@ -192,6 +192,8 @@ public:
 		///
 		UNSET_MULTIROW,
 		///
+		SET_MROFFSET,
+		///
 		SET_ALL_LINES,
 		///
 		UNSET_ALL_LINES,
@@ -404,6 +406,8 @@ public:
 	///
 	bool setMColumnPWidth(Cursor &, idx_type, Length const &);
 	///
+	bool setMROffset(Cursor &, idx_type, Length const &);
+	///
 	void setAlignSpecial(idx_type cell, docstring const & special,
 			     Feature what);
 	///
@@ -414,6 +418,8 @@ public:
 				 bool onlycolumn = false) const;
 	///
 	Length const getPWidth(idx_type cell) const;
+	///
+	Length const getMROffset(idx_type cell) const;
 	///
 	int textHOffset(idx_type cell) const;
 	///
@@ -560,6 +566,8 @@ public:
 		int multicolumn;
 		///
 		int multirow;
+		///
+		Length mroffset;
 		///
 		LyXAlignment alignment;
 		///

@@ -142,6 +142,7 @@ TabularFeature tabularFeature[] =
 	{ Tabular::MULTIROW, "multirow", false },
 	{ Tabular::SET_MULTIROW, "set-multirow", false },
 	{ Tabular::UNSET_MULTIROW, "unset-multirow", false },
+	{ Tabular::SET_MROFFSET, "set-mroffset", true },
 	{ Tabular::SET_ALL_LINES, "set-all-lines", false },
 	{ Tabular::UNSET_ALL_LINES, "unset-all-lines", false },
 	{ Tabular::SET_LONGTABULAR, "set-longtabular", false },
@@ -573,6 +574,7 @@ Tabular::CellData::CellData(CellData const & cs)
 	  width(cs.width),
 	  multicolumn(cs.multicolumn),
 	  multirow(cs.multirow),
+	  mroffset(cs.mroffset),
 	  alignment(cs.alignment),
 	  valignment(cs.valignment),
 	  decimal_hoffset(cs.decimal_hoffset),
@@ -602,6 +604,7 @@ void Tabular::CellData::swap(CellData & rhs)
 	std::swap(width, rhs.width);
 	std::swap(multicolumn, rhs.multicolumn);
 	std::swap(multirow, rhs.multirow);
+	std::swap(mroffset, rhs.mroffset);
 	std::swap(alignment, rhs.alignment);
 	std::swap(valignment, rhs.valignment);
 	std::swap(decimal_hoffset, rhs.decimal_hoffset);
@@ -1130,6 +1133,14 @@ bool Tabular::setMColumnPWidth(Cursor & cur, idx_type cell,
 }
 
 
+bool Tabular::setMROffset(Cursor & cur, idx_type cell,
+		Length const & mroffset)
+{
+	cellInfo(cell).mroffset = mroffset;
+	return true;
+}
+
+
 void Tabular::setAlignSpecial(idx_type cell, docstring const & special,
 				 Tabular::Feature what)
 {
@@ -1246,6 +1257,12 @@ Length const Tabular::getPWidth(idx_type cell) const
 	if (isMultiColumn(cell))
 		return cellInfo(cell).p_width;
 	return column_info[cellColumn(cell)].p_width;
+}
+
+
+Length const Tabular::getMROffset(idx_type cell) const
+{
+	return cellInfo(cell).mroffset;
 }
 
 
@@ -1404,6 +1421,7 @@ void Tabular::write(ostream & os) const
 			os << "<cell"
 			   << write_attribute("multicolumn", cell_info[r][c].multicolumn)
 			   << write_attribute("multirow", cell_info[r][c].multirow)
+			   << write_attribute("mroffset", cell_info[r][c].mroffset)
 			   << write_attribute("alignment", cell_info[r][c].alignment)
 			   << write_attribute("valignment", cell_info[r][c].valignment)
 			   << write_attribute("topline", cell_info[r][c].top_line)
@@ -1513,6 +1531,7 @@ void Tabular::read(Lexer & lex)
 			}
 			getTokenValue(line, "multicolumn", cell_info[i][j].multicolumn);
 			getTokenValue(line, "multirow", cell_info[i][j].multirow);
+			getTokenValue(line, "mroffset", cell_info[i][j].mroffset);
 			getTokenValue(line, "alignment", cell_info[i][j].alignment);
 			getTokenValue(line, "valignment", cell_info[i][j].valignment);
 			getTokenValue(line, "topline", cell_info[i][j].top_line);
@@ -2225,7 +2244,10 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell,
 		else
 			// we need to set a default value
 			os << "*";
-		os << "}{";
+		os << "}";
+		if (!getMROffset(cell).zero())
+			os << "[" << from_ascii(getMROffset(cell).asLatexString()) << "]";
+		os << "{";
 	} // end if ismultirow
 
 	if (getRotateCell(cell)) {
@@ -5057,6 +5079,10 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::SET_MPWIDTH:
 		tabular.setMColumnPWidth(cur, cur.idx(), Length(value));
+		break;
+
+	case Tabular::SET_MROFFSET:
+		tabular.setMROffset(cur, cur.idx(), Length(value));
 		break;
 
 	case Tabular::SET_SPECIAL_COLUMN:
