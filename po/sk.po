@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-11-07 01:51+0100\n"
-"PO-Revision-Date: 2010-10-20 07:24+0200\n"
+"PO-Revision-Date: 2010-11-07 13:28+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
-"Language-Team: Slovenčina <lyx-docs@lists.lyx.org>\n"
+"Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
@@ -2002,7 +2002,6 @@ msgid "Enable to use the options that are predefined in the layout file"
 msgstr "Umožni voľby preddefinované v súbore pre schéma."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:66
-#, fuzzy
 msgid "&Predefined:"
 msgstr "P&reddefinované:"
 
@@ -2015,9 +2014,8 @@ msgstr ""
 "aktiváciu/deaktiváciu."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:83
-#, fuzzy
 msgid "Cus&tom:"
-msgstr "Glosse"
+msgstr "Vlastné:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:99
 msgid "&Graphics driver:"
@@ -2040,12 +2038,10 @@ msgid "Enter the name of the default master document"
 msgstr "Udajte meno hlavného dokumentu"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:186
-#, fuzzy
 msgid "&Suppress default date on front page"
 msgstr "Potlačiť štandardný dátum na titulnej stránke"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:206
-#, fuzzy
 msgid "&Use refstyle (not prettyref) for cross-references"
 msgstr "Používajte refstyle (nie prettyref) pre krížové referencie"
 
@@ -4034,9 +4030,8 @@ msgid "&Save"
 msgstr "Uložiť"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:13
-#, fuzzy
 msgid "&quot;Nomenclature settings&quot;"
-msgstr "Nastavenia pre nomenklatúru"
+msgstr "&quot;Nastavenia pre nomenklatúru&quot;"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:19
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:32
@@ -10185,7 +10180,6 @@ msgid "Custom Header/Footerlines"
 msgstr "Vlastné riadky pre Hlavičku/Pätu"
 
 #: lib/layouts/customHeadersFooters.module:7
-#, fuzzy
 msgid ""
 "Adds environments to define header and footer lines NOTE: To use this module "
 "you must set the Headings style in the menu Document Settings -> Page Layout "
@@ -10866,25 +10860,23 @@ msgstr ""
 "dokumentov, ktorá podporuje prostredie kapitoly."
 
 #: lib/layouts/theorems-named.module:3
-#, fuzzy
 msgid "Named Theorems"
-msgstr "Teorémy"
+msgstr "Menované Teorémy"
 
 #: lib/layouts/theorems-named.module:7
 msgid ""
 "Facilitates the use of named theorems. The name of the theorem goes into the "
 "Short Title inset."
 msgstr ""
+"Umožní používanie menovaných teorém. Meno teorému ide do vložky Krátky Titul."
 
 #: lib/layouts/theorems-named.module:10
-#, fuzzy
 msgid "Named Theorem"
-msgstr "Teoréma"
+msgstr "Menovaný Teorém"
 
 #: lib/layouts/theorems-named.module:13
-#, fuzzy
 msgid "Named Theorem."
-msgstr "Teoréma."
+msgstr "Menovaný Teorém."
 
 #: lib/layouts/theorems-sec-bytype.module:2
 msgid "Theorems (Numbered by Type within Sections)"
@@ -16954,12 +16946,12 @@ msgstr ""
 "%1$s je zo staršej verzie LyX-u, ale skript lyx2lyx zlyhal pri konverzii."
 
 #: src/Buffer.cpp:996
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from an newer version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
-"%1$s je zo staršej verzie LyX-u, ale skript lyx2lyx zlyhal pri konverzii."
+"%1$s je z novšej verzie LyX-u, ale skript lyx2lyx zlyhal pri konverzii."
 
 #: src/Buffer.cpp:1013
 #, c-format
@@ -17255,7 +17247,6 @@ msgid "Delete emergency file?"
 msgstr "Zmazať núdzový súbor?"
 
 #: src/Buffer.cpp:3651 src/Buffer.cpp:3664
-#, fuzzy
 msgid "&Keep"
 msgstr "Držať"
 
@@ -19412,42 +19403,40 @@ msgid "Error: Could not generate logfile."
 msgstr "Chyba: Nemôžem generovať protokolový súbor."
 
 #: src/VCBackend.cpp:498
-#, fuzzy
 msgid "Up-to-date"
-msgstr "Aktualizovať"
+msgstr "Aktuálne"
 
 #: src/VCBackend.cpp:500
-#, fuzzy
 msgid "Locally Modified"
-msgstr "Lokálny súbor schém"
+msgstr "Lokálne Modifikované"
 
 #: src/VCBackend.cpp:502
-#, fuzzy
 msgid "Locally Added"
-msgstr "Lokálny súbor schém"
+msgstr "Lokálne Pridané"
 
 #: src/VCBackend.cpp:504
 msgid "Needs Merge"
-msgstr ""
+msgstr "Potrebuje Zlúčenie"
 
 #: src/VCBackend.cpp:506
 msgid "Needs Checkout"
-msgstr ""
+msgstr "Potrebuje Prevziať na Úpravu"
 
 #: src/VCBackend.cpp:508
-#, fuzzy
 msgid "No CVS file"
-msgstr "Do sú&boru:"
+msgstr "Bez CVS-súboru"
 
 #: src/VCBackend.cpp:510
 msgid "Cannot retrieve CVS status"
-msgstr ""
+msgstr "Nemôžem obnoviť stav CVS"
 
 #: src/VCBackend.cpp:694
 msgid ""
 "The repository version is newer then the current check out.\n"
 "You have to update from repository first or revert your changes."
 msgstr ""
+"Verzia v repozitáre je novšia ako súčasne stiahnutá.\n"
+"Musíte najprv obnoviť z repozitáru alebo odhodiť vaše zmeny."
 
 #: src/VCBackend.cpp:699
 #, c-format
@@ -19457,6 +19446,10 @@ msgid ""
 "'%1$s'\n"
 "\n"
 msgstr ""
+"Zlý stav pri odosielaní vašich zmien.\n"
+"\n"
+"'%1$s'\n"
+"\n"
 
 #: src/VCBackend.cpp:747 src/VCBackend.cpp:1205
 #, c-format
@@ -19474,7 +19467,7 @@ msgstr ""
 "Po stisnutí tlačidla OK sa LyX pokúsi opravený dokument znovu otvoriť."
 
 #: src/VCBackend.cpp:781
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
 "%1$s\n"
@@ -19485,9 +19478,8 @@ msgstr ""
 "Zbadané zmeny v pracovnom adresári:\n"
 "%1$s\n"
 "\n"
-"Prednosť pri sporných častí dostane verzia v lokálnom adresáre.\n"
-"\n"
-"Pokračovať?"
+"Konflikty treba riešiť alebo manuálne, alebo pozdejšie vrátiť na repozitárnu "
+"verziu."
 
 #: src/VCBackend.cpp:785 src/VCBackend.cpp:789 src/VCBackend.cpp:1246
 #: src/VCBackend.cpp:1250
@@ -19495,16 +19487,15 @@ msgid "Changes detected"
 msgstr "Našli sa zmeny"
 
 #: src/VCBackend.cpp:786 src/VCBackend.cpp:790
-#, fuzzy
 msgid "&Abort"
-msgstr "Zrušené"
+msgstr "Zrušiť"
 
 #: src/VCBackend.cpp:786 src/VCBackend.cpp:1247
 msgid "View &Log ..."
 msgstr "Prehliadnuť zápisný súbor..."
 
 #: src/VCBackend.cpp:808
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error when updating document %1$s from repository.\n"
 "You have to manually resolve the conflicts NOW!\n"
@@ -19512,9 +19503,9 @@ msgid ""
 "\n"
 "After pressing OK, LyX will try to reopen the resolved document."
 msgstr ""
-"Chyba pri aktualizácii z repozitára.\n"
-"Treba opraviť konflikty TERAZ!\n"
-"'%1$s'.\n"
+"Chyba pri aktualizácii %1$s z repozitára.\n"
+"Treba opraviť konflikty manuálne TERAZ!\n"
+"'%2$s'.\n"
 "\n"
 "Po stisnutí tlačidla OK sa LyX pokúsi opravený dokument znovu otvoriť."
 
@@ -19524,6 +19515,8 @@ msgid ""
 "The document %1$s is not in repository.\n"
 "You have to check in the first revision before you can revert."
 msgstr ""
+"Dokument %1$s nie je v repozitáre.\n"
+"Musíte prvú verziu najprv odoslať keď chcete niečo vrátiť."
 
 #: src/VCBackend.cpp:877
 #, c-format
@@ -19531,6 +19524,8 @@ msgid ""
 "Cannot revert document %1$s to repository version.\n"
 "The status '%2$s' is unexpected."
 msgstr ""
+"Nemôžem vrátiť dokument %1$s na repozitárnu verziu.\n"
+"Neočakávaný stav '%2$s'."
 
 #: src/VCBackend.cpp:1085
 msgid ""
@@ -20851,7 +20846,7 @@ msgid "or"
 msgstr "alebo"
 
 #: src/frontends/qt4/GuiDocument.cpp:2018
-#, fuzzy, c-format
+#, c-format
 msgid "Modules required: %1$s."
 msgstr "Vyžadované moduly: %1$s."
 
@@ -22300,12 +22295,11 @@ msgstr "Otváram dokument potomku %1$s..."
 
 #: src/frontends/qt4/GuiView.cpp:2895
 msgid "Successful "
-msgstr ""
+msgstr "Úspešne "
 
 #: src/frontends/qt4/GuiView.cpp:2896
-#, fuzzy
 msgid "Error "
-msgstr "Chyba"
+msgstr "Chyba "
 
 #: src/frontends/qt4/GuiView.cpp:3016 src/frontends/qt4/GuiView.cpp:3028
 msgid "Exporting ..."
@@ -22445,7 +22439,7 @@ msgstr "Viac Jazykov ..."
 
 #: src/frontends/qt4/Menus.cpp:882 src/frontends/qt4/Menus.cpp:883
 msgid "Hidden|H"
-msgstr ""
+msgstr "Skryté"
 
 #: src/frontends/qt4/Menus.cpp:915
 msgid "<No Documents Open>"
@@ -22510,14 +22504,14 @@ msgid "Index Entry|d"
 msgstr "Heslo Indexu"
 
 #: src/frontends/qt4/Menus.cpp:1363
-#, fuzzy, c-format
+#, c-format
 msgid "Index: %1$s"
-msgstr "Písmo: %1$s"
+msgstr "Index: %1$s"
 
 #: src/frontends/qt4/Menus.cpp:1368 src/frontends/qt4/Menus.cpp:1397
-#, fuzzy, c-format
+#, c-format
 msgid "Index Entry (%1$s)"
-msgstr "Heslo Indexu"
+msgstr "Heslo Indexu (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:1414
 msgid "No Citation in Scope!"
@@ -23079,9 +23073,9 @@ msgid "No version control"
 msgstr "Bez kontroly verzií"
 
 #: src/insets/InsetInfo.cpp:441
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s unknown"
-msgstr "[[%1$s neznámy]]"
+msgstr "%1$s neznámy"
 
 #: src/insets/InsetLabel.cpp:74
 msgid "Label names must be unique!"
