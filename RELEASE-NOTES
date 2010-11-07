@@ -167,16 +167,17 @@ particularly applies to spell checking and the thesaurus.
 * Support for the aspell command line program has been dropped. Note that
   the aspell library (aspell 0.60.x) is still supported.
   
-* Next to aspell (library), LyX now also supports hunspell (the spell
+* As well as the aspell library, LyX now also supports hunspell (the spell
   checker used by OpenOffice and Firefox) and enchant, a wrapper that
   provides automatic access to many spell checking libraries (ispell,
   aspell, hspell, hunspell, etc.).
 
-* On Mac Apples Spell Server is preconfigured as "native" spell checker.
+* On Mac OSX, Apple's Spell Server is preconfigured as the "native" spell 
+  checker.
 
-LyX 2.0 is configured for any and multiple of these three possibilities,
-given that they are installed on the machine where LyX is configured on.
-The actual spell checker can be selected in Tools > Preferences.
+LyX 2.0 is configured for any and all of these three possibilities,
+given that the various libraries are installed on the machine where LyX is 
+configured. The actual spell checker can be selected in Tools > Preferences.
 Packagers are advised to pre-select whatever is most common on their
 platform/distribution.
 
@@ -185,17 +186,17 @@ platform/distribution.
 * Support for the aiksaurus library has been dropped in favour of the
   MyThes thesaurus library (the thesaurus library used by OpenOffice).
   
-* LyX ships the MyThes library itself, so contrary to LyX 1.6.x, no
-  extra thesaurus library needs to be installed. However, LyX does not
-  ship any thesaurus dictionary.
+* LyX ships the MyThes library itself, so unlike in LyX 1.6.x, no extra 
+  thesaurus library needs to be installed. However, LyX does not ship any 
+  thesaurus dictionaries, and those do have to be installed separately.
 
 * The OpenOffice thesaurus dictionaries can be used, but the path to those
-  dictionary needs to be set in Tools > Preferences. Please refer to the
+  dictionaries needs to be set in Tools > Preferences. Please refer to the
   UserGuide, sec. 6.13, for further instructions.
 
 Packagers are advised to preset the thesaurus for their distribution/
 platform. Packagers of installation bundles (on Windows and the Mac)
-are advised to provide automatic installation of thesaurus disctionaries
+are advised to provide automatic installation of thesaurus dictionaries
 in the installation process (analoguous to the spellchecker installation).
 
 3.) LILYPOND:
