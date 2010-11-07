@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+\lyxformat 407
 \begin_document
 \begin_header
 \textclass scrbook
@@ -4463,7 +4463,7 @@ MathML is a dialect of XML designed specifically for mathematics on the
 \begin_inset Newline newline
 \end_inset
 
-If Lyx is unable to render a formula as MathML---for example, if the formula
+If LyX is unable to render a formula as MathML---for example, if the formula
  uses the 
 \begin_inset Flex Code
 status collapsed
@@ -4474,7 +4474,13 @@ xymatrix
 
 \end_inset
 
- package or ERT---then it will instead output the formula as an image.
+ package or 
+\change_deleted 1 1289155717
+ERT
+\change_inserted 1 1289155720
+TeX code
+\change_unchanged
+---then it will instead output the formula as an image.
  
 \end_layout
 
@@ -4532,7 +4538,13 @@ xymatrix
 
 \end_inset
 
- package or ERT---then it will instead output the formula as an image.
+ package or 
+\change_deleted 1 1289155751
+ERT
+\change_inserted 1 1289155754
+Tex code
+\change_unchanged
+---then it will instead output the formula as an image.
  
 \end_layout
 
@@ -4688,9 +4700,19 @@ Eventually, LyX will offer the user the option to select an alternate output
 status collapsed
 
 \begin_layout Plain Layout
-That said, since LyX falls back to images if the inset contains ERT, then
- one can force output as an image by putting some harmless ERT into the
- math, for example: 
+That said, since LyX falls back to images if the inset contains 
+\change_deleted 1 1289155760
+ERT
+\change_inserted 1 1289155765
+TeX code
+\change_unchanged
+, then one can force output as an image by putting some harmless 
+\change_deleted 1 1289155770
+ERT
+\change_inserted 1 1289155774
+TeX code
+\change_unchanged
+ into the math, for example: 
 \begin_inset Formula $a=b\relax$
 \end_inset
 
@@ -20747,7 +20769,7 @@ http://svnbook.red-bean.com/en/1.4/svn.advanced.props.special.keywords.html
 \family sans
 svn propset svn:keywords 'Rev' file.lyx
 \family default
-) and then paste keyword ERT
+) and then paste keyword TeX code
 \begin_inset Foot
 status collapsed
 
