@@ -2,22 +2,29 @@ LyX file-format changes
 -----------------------
 
 Please keep the entries informative enough, i.e. try to indicate what
-changes happened in particular if possible.
-The good example would be 2010-01-10 entry.
+changes happened in particular if possible. A good example would be 
+2010-01-10 entry. 
+
+Please also indicate the revision at which your change was committed. 
+This will help later people understand what you did, especially as 
+adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
 2010-11-07 Uwe Stöhr <uwestoehr@web.de>
-	* Format incremented to 407: support for vertical offset of
-	  multirow cells
-	  new tag "mroffset" for multirow cells with an offset
+	* Format incremented to 407 (r36182)
+	  Support for vertical offset of multirow cells.
+	  New tag "mroffset" for multirow cells with an offset.
 
-2010-11-06 Richard Heck <rgheck@comcast.net> and
-	  Jean-Marc Lasgouttes <lasgouttes@lyx.org>
-	* Format incremented to 406: ??
+2010-11-06 Jean-Marc Lasgouttes <lasgouttes@lyx.org>
+	* Format incremented to 406 (r36163)
+	  Proper ERT behaviour for normal layouts. Paragraph breaks 
+	  generate single \n in latex output when ParbreakIsNewline
+	  is true.
 
 2010-10-23 Vincent van Ravesteijn <vfr@lyx.org>
-	* Format incremented to 405: author hash numbers
+	* Format incremented to 405 (r36134)
+		Author hash numbers.
 	  The authors that are used in change tracking are
 	  now identified in the file by a number that represents
 	  the hash value of the name and email. In this way
@@ -25,42 +32,46 @@ The good example would be 2010-01-10 entry.
 	  merge conflicts.
 
 2010-10-13 Richard Heck <rgheck@comcast.net>
-	* Format incremented to 404: refstyle support
+	* Format incremented to 404 (r35623)
+	  Support for refstyle package.
 	  Changed the LaTeXCommand for InsetRef from "prettyref"
 	  to "formatted", where "formatted" is now interprted
 	  differently, depending upon whether the new buffer param
 	  use_refstyle is true or false.
 
 2010-10-12 Richard Heck <rgheck@comcast.net>
-	* Format incremented to 403: renaming of flex insets
-	  changed 
+	* Format incremented to 403 (r35608)
+	  Renaming of flex insets.
+	  Changed 
 	    \begin_inset Flex TAG:Style 
 	  to
 	    \begin_inset Flex Style
 	  where TAG is Custom, CharStyle, or Element
 
 2010-10-11 Uwe Stöhr <uwestoehr@web.de>
-	* Format incremented to 402: fix for bug 1881
-	  no new or removed parameter, used to insert a
-	  clear(double)page before BibTeX inset
+	* Format incremented to 402 (r35590)
+	  No new or removed parameter, used to insert a
+	  clear(double)page before BibTeX inset.
 
 2010-09-19 Ronen Abravanel <ronena@gmail.com>
-	* Format incremented to 401: support for Feynman diagrams
-	  new math command \Diagram
+	* Format incremented to 401 (r35455)
+	  Support for Feynman diagrams
+	  New math command \Diagram
 
 2010-09-07 Uwe Stöhr <uwestoehr@web.de>
-	* Format incremented to 400: support for the LaTeX-command
-	  \rule;
-	  new CommandInset "line"
+	* Format incremented to 400 (r35299)
+	  Support for the LaTeX-command \rule.
+	  New CommandInset "line".
 
 2010-08-31 Uwe Stöhr <uwestoehr@web.de>
-	* Format incremented to 399: support for the LaTeX-package
-	  mathdots;
-	  new parameter \use_mathdots
+	* Format incremented to 399 (r35241)
+	  Support for the LaTeX-package mathdots.
+	  New parameter \use_mathdots.
 
 2010-07-17 Uwe Stöhr <uwestoehr@web.de>
-	* Format incremented to 398: support \mathscr;
-	  no new parameter but the mathrsfs package will be loaded
+	* Format incremented to 398 (r34941)
+	  Support \mathscr.
+	  No new parameter but the mathrsfs package will be loaded.
 
 2010-07-16 Richard Heck <rgheck@comcast.net>
 	* Format incremented to 397 (r34920)
@@ -72,12 +83,14 @@ The good example would be 2010-01-10 entry.
 		new commands nameref and Nameref for InsetRef
 
 2010-07-13 Uwe Stöhr <uwestoehr@web.de>
-	* Format incremented to 395: support for ISO C-series paper format;
-	  new parameter \papersize cxpaper with (x = 0 - 6)
+	* Format incremented to 395 (r34883) 
+	  Support for ISO C-series paper format.
+	  New parameter \papersize cxpaper with (x = 0 - 6).
 
 2010-07-03 Uwe Stöhr <uwestoehr@web.de>
-	* Format incremented to 394: support for makebox;
-	  new box parameter \use_makebox
+	* Format incremented to 394 (r34748)
+	  Support for makebox.
+	  New box parameter \use_makebox.
 
 2010-06-07 Richard Heck <rgheck@comcast.net>
 	* Format incremented to 393 (r34619)
