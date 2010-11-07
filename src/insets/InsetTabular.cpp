@@ -1133,8 +1133,7 @@ bool Tabular::setMColumnPWidth(Cursor & cur, idx_type cell,
 }
 
 
-bool Tabular::setMROffset(Cursor & cur, idx_type cell,
-		Length const & mroffset)
+bool Tabular::setMROffset(Cursor &, idx_type cell, Length const & mroffset)
 {
 	cellInfo(cell).mroffset = mroffset;
 	return true;
