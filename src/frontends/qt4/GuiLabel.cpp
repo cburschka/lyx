@@ -54,7 +54,7 @@ docstring GuiLabel::dialogToParams() const
 {
 	InsetCommandParams params(insetCode());
 	params["name"] = qstring_to_ucs4(keywordED->text());
-	return from_ascii(InsetLabel::params2string(params));
+	return from_utf8(InsetLabel::params2string(params));
 }
 
 

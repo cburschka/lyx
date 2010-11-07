@@ -81,7 +81,7 @@ docstring GuiHyperlink::dialogToParams() const
 	else if (fileRB->isChecked())
 		params["type"] = qstring_to_ucs4("file:");
 	params.setCmdName("href");
-	return from_ascii(InsetHyperlink::params2string(params));
+	return from_utf8(InsetHyperlink::params2string(params));
 }
 
 
