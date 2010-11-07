@@ -78,11 +78,10 @@ msgid "&Default (numerical)"
 msgstr "&Standard (numerický)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:38
-#, fuzzy
 msgid ""
 "Use the natbib styles for natural sciences and arts. Set additional "
 "parameters in document class options."
-msgstr "Pou¾ít natbib styly pro pøírodní vìdy a umìlecké obory"
+msgstr "Pou¾ít natbib styly pro pøírodní vìdy a umìlecké obory. Dal¹í parametry jsou v nastaveních dokumentu."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:41
 msgid "&Natbib"
@@ -111,24 +110,21 @@ msgstr "&Bibliografie (sekce)"
 #: src/frontends/qt4/ui/BiblioUi.ui:120
 msgid ""
 "Here you can define an alternative program to or specific options of BibTeX."
-msgstr ""
+msgstr "Zde lze definovat alternativní program a volby pro BibTeX."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:123
 #: src/frontends/qt4/ui/PrefLatexUi.ui:127
-#, fuzzy
 msgid "Bibliography generation"
-msgstr "Bibliography heading"
+msgstr "Generování bibliografie"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
-#, fuzzy
 msgid "&Processor:"
-msgstr "&Pokraèovat"
+msgstr "&Program:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
-#, fuzzy
 msgid "Select a processor"
-msgstr "Vybrat soubor"
+msgstr "Vybrat program"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:733
@@ -139,7 +135,7 @@ msgstr "&Mo¾nosti:"
 #: src/frontends/qt4/ui/BiblioUi.ui:178
 msgid ""
 "Define options such as --min-crossrefs (see the documentation of BibTeX)"
-msgstr ""
+msgstr "Definice voleb typu --min-crossrefs (viz dokumentace BibTeXu)"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:21
 msgid "LyX: Add BibTeX Database"
@@ -442,21 +438,19 @@ msgstr "&Nová:"
 msgid ""
 "Append the name of this branch to the output filename, given the branch is "
 "active."
-msgstr ""
+msgstr "Pøipojit jméno vìtve ke jménu výstupního souboru v pøípadì, ¾e je daná vìtev aktivní."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:38
-#, fuzzy
 msgid "Filename &Suffix"
-msgstr "Jméno souboru"
+msgstr "&Pøípona souboru"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
 msgid "Show undefined branches used in this document."
-msgstr ""
+msgstr "Zobrazit nedefinované vìtve pou¾ité v tomto dokumentu."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
-#, fuzzy
 msgid "&Undefined Branches"
-msgstr "Nedefinovaný styl znaku"
+msgstr "&Nedefinované vìtve"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:84
 msgid "A&vailable Branches:"
@@ -494,33 +488,28 @@ msgid "&Remove"
 msgstr "&Smazat"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:140
-#, fuzzy
 msgid "Change the name of the selected branch"
-msgstr "Smazat vybranou vìtev"
+msgstr "Zmìnit jméno vybrané vìtve"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:143
-#, fuzzy
 msgid "Re&name..."
-msgstr "Pøe&jmenovat"
+msgstr "Pøe&jmenovat..."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:25
-#, fuzzy
 msgid "Add the selected branches to the list."
-msgstr "Pøidat novou vìtev do seznamu"
+msgstr "Pøidat vybrané vìtve do seznamu."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:28
-#, fuzzy
 msgid "&Add Selected"
-msgstr "&Vybrané:"
+msgstr "&Pøidat Vybrané:"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:35
-#, fuzzy
 msgid "Add all unknown branches to the list."
-msgstr "Pøidat novou vìtev do seznamu"
+msgstr "Pøidat v¹echny neznámé vìtve do seznamu."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:38
 msgid "Add A&ll"
-msgstr ""
+msgstr "Pøidat &v¹echny"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:58
 #: src/frontends/qt4/ui/CitationUi.ui:220
@@ -544,12 +533,11 @@ msgstr "&Zru¹it"
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
 msgid "Undefined branches used in this document."
-msgstr ""
+msgstr "Nedefinované vìtve pou¾ité v tomto dokumentu."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:68
-#, fuzzy
 msgid "&Undefined Branches:"
-msgstr "Nedefinovaný styl znaku"
+msgstr "&Nedefinované vìtve:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:34
 msgid "&Font:"
@@ -767,9 +755,8 @@ msgid "Apply each change automatically"
 msgstr "Pou¾ít ka¾dou zmìnu automaticky"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:308
-#, fuzzy
 msgid "Apply changes &immediately"
-msgstr "Okam¾itì pou¾ít zmìny"
+msgstr "&Okam¾itì pou¾ít zmìny"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:367
 #: src/frontends/qt4/ui/DocumentUi.ui:77
@@ -800,25 +787,22 @@ msgid "A&vailable Citations:"
 msgstr "&Dostupné citace:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:53
-#, fuzzy
 msgid "S&elected Citations:"
 msgstr "&Vybrané citace:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:72
 msgid "Click or press Enter to add the selected citation to the list"
-msgstr ""
+msgstr "Stisknìte Enter pro pøidání citace do seznamu"
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "Click or press Delete to delete the selected citation from the list"
-msgstr ""
+msgstr "Stisknìte Delete pro smazání citace ze seznamu"
 
 #: src/frontends/qt4/ui/CitationUi.ui:124
-#, fuzzy
 msgid "Move the selected citation up (Ctrl-Up)"
 msgstr "Pøesun oznaèené citace nahoru (Ctrl+nahoru)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:148
-#, fuzzy
 msgid "Move the selected citation down (Ctrl-Down)"
 msgstr "Pøesun oznaèené citace dolù (Ctrl+dolù)"
 
