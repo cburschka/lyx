@@ -1263,6 +1263,7 @@ po_extra_files = Split('''
     Rules-quot
     sk.po
     sl.po
+    sr.po
     sv.po
     tr.po
     uk.po
