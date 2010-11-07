@@ -5,7 +5,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>433</width>
+    <width>439</width>
     <height>376</height>
    </rect>
   </property>
@@ -975,7 +975,7 @@
            <widget class="QLineEdit" name="topspaceED"/>
           </item>
           <item row="0" column="3">
-           <widget class="LengthCombo" name="topspaceUnit"/>
+           <widget class="LengthCombo" name="topspaceUnitCB"/>
           </item>
           <item row="0" column="1">
            <widget class="QComboBox" name="topspaceCO">
@@ -1016,7 +1016,7 @@
            </widget>
           </item>
           <item row="1" column="3">
-           <widget class="LengthCombo" name="bottomspaceUnit"/>
+           <widget class="LengthCombo" name="bottomspaceUnitCB"/>
           </item>
           <item row="1" column="2">
            <widget class="QLineEdit" name="bottomspaceED"/>
@@ -1064,7 +1064,7 @@
            </widget>
           </item>
           <item row="2" column="3">
-           <widget class="LengthCombo" name="interlinespaceUnit"/>
+           <widget class="LengthCombo" name="interlinespaceUnitCB"/>
           </item>
          </layout>
         </widget>
@@ -1473,15 +1473,15 @@
   <tabstop>borderDefaultRB</tabstop>
   <tabstop>booktabsRB</tabstop>
   <tabstop>topspaceCO</tabstop>
-  <tabstop>bottomspaceUnit</tabstop>
+  <tabstop>bottomspaceUnitCB</tabstop>
   <tabstop>topspaceED</tabstop>
-  <tabstop>topspaceUnit</tabstop>
+  <tabstop>topspaceUnitCB</tabstop>
   <tabstop>bottomspaceCO</tabstop>
   <tabstop>bottomspaceED</tabstop>
   <tabstop>interlinespaceED</tabstop>
   <tabstop>interlinespaceCO</tabstop>
   <tabstop>longTabularCB</tabstop>
-  <tabstop>interlinespaceUnit</tabstop>
+  <tabstop>interlinespaceUnitCB</tabstop>
   <tabstop>headerStatusCB</tabstop>
   <tabstop>firstheaderNoContentsCB</tabstop>
   <tabstop>headerBorderAboveCB</tabstop>

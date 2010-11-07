@@ -54,22 +54,25 @@ GuiTabular::GuiTabular(QWidget * parent)
 	interlinespaceED->setValidator(new LengthValidator(interlinespaceED));
 
 	widthUnitCB->setCurrentItem(Length::defaultUnit());
+	topspaceUnitCB->setCurrentItem(Length::defaultUnit());
+	bottomspaceUnitCB->setCurrentItem(Length::defaultUnit());
+	interlinespaceUnitCB->setCurrentItem(Length::defaultUnit());
 
 	connect(topspaceED, SIGNAL(textEdited(QString)),
 		this, SLOT(checkEnabled()));
-	connect(topspaceUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+	connect(topspaceUnitCB, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
 	connect(topspaceCO, SIGNAL(activated(int)),
 		this, SLOT(checkEnabled()));
 	connect(bottomspaceED, SIGNAL(textEdited(QString)),
 		this, SLOT(checkEnabled()));
-	connect(bottomspaceUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+	connect(bottomspaceUnitCB, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
 	connect(bottomspaceCO, SIGNAL(activated(int)),
 		this, SLOT(checkEnabled()));
 	connect(interlinespaceED, SIGNAL(textEdited(QString)),
 		this, SLOT(checkEnabled()));
-	connect(interlinespaceUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+	connect(interlinespaceUnitCB, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
 	connect(interlinespaceCO, SIGNAL(activated(int)),
 		this, SLOT(checkEnabled()));
@@ -172,11 +175,11 @@ void GuiTabular::checkEnabled()
 		&& !widgetsToLength(widthED, widthUnitCB).empty());
 
 	topspaceED->setEnabled(topspaceCO->currentIndex() == 2);
-	topspaceUnit->setEnabled(topspaceCO->currentIndex() == 2);
+	topspaceUnitCB->setEnabled(topspaceCO->currentIndex() == 2);
 	bottomspaceED->setEnabled(bottomspaceCO->currentIndex() == 2);
-	bottomspaceUnit->setEnabled(bottomspaceCO->currentIndex() == 2);
+	bottomspaceUnitCB->setEnabled(bottomspaceCO->currentIndex() == 2);
 	interlinespaceED->setEnabled(interlinespaceCO->currentIndex() == 2);
-	interlinespaceUnit->setEnabled(interlinespaceCO->currentIndex() == 2);
+	interlinespaceUnitCB->setEnabled(interlinespaceCO->currentIndex() == 2);
 
 	// setting as longtable is not allowed when table is inside a float
 	longTabularCB->setEnabled(funcEnabled(Tabular::SET_LONGTABULAR));
@@ -381,7 +384,7 @@ docstring GuiTabular::dialogToParams() const
 		case 2:
 			if (!topspaceED->text().isEmpty())
 				setParam(param_str, Tabular::SET_TOP_SPACE,
-					 widgetsToLength(topspaceED, topspaceUnit));
+					 widgetsToLength(topspaceED, topspaceUnitCB));
 			break;
 	}
 
@@ -397,7 +400,7 @@ docstring GuiTabular::dialogToParams() const
 			if (!bottomspaceED->text().isEmpty())
 				setParam(param_str, Tabular::SET_BOTTOM_SPACE,
 					widgetsToLength(bottomspaceED,
-							bottomspaceUnit));
+							bottomspaceUnitCB));
 			break;
 	}
 
@@ -413,7 +416,7 @@ docstring GuiTabular::dialogToParams() const
 			if (!interlinespaceED->text().isEmpty())
 				setParam(param_str, Tabular::SET_INTERLINE_SPACE,
 					widgetsToLength(interlinespaceED,
-							interlinespaceUnit));
+							interlinespaceUnitCB));
 			break;
 	}
 
@@ -650,7 +653,7 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	} else {
 		topspaceCO->setCurrentIndex(2);
 		lengthToWidgets(topspaceED,
-				topspaceUnit,
+				topspaceUnitCB,
 				tabular.row_info[row].top_space.asString(),
 				default_unit);
 	}
@@ -663,7 +666,7 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	} else {
 		bottomspaceCO->setCurrentIndex(2);
 		lengthToWidgets(bottomspaceED,
-				bottomspaceUnit,
+				bottomspaceUnitCB,
 				tabular.row_info[row].bottom_space.asString(),
 				default_unit);
 	}
@@ -676,7 +679,7 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	} else {
 		interlinespaceCO->setCurrentIndex(2);
 		lengthToWidgets(interlinespaceED,
-				interlinespaceUnit,
+				interlinespaceUnitCB,
 				tabular.row_info[row].interline_space.asString(),
 				default_unit);
 	}
