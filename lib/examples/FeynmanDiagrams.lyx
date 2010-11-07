@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 401
+\lyxformat 407
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -84,6 +84,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \index Index
 \shortcut idx
 \color #008000
@@ -142,7 +143,11 @@ particles
 \begin_inset Quotes eld
 \end_inset
 
-propagators, for example:
+propagators
+\begin_inset Quotes erd
+\end_inset
+
+, for example:
 \end_layout
 
 \begin_layout Standard
@@ -684,8 +689,7 @@ vertexlabel{p}{text}
 \begin_layout Plain Layout
 \noindent
 \align left
-A vertex label.
- 
+A vertex label 
 \emph on
 p
 \emph default
