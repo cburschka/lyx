@@ -2240,50 +2240,30 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 		}
 	}
 
-	FileName oldauto = b.getAutosaveFileName();
-
-	// Ok, change the name of the buffer
-	b.setFileName(fname.absFileName());
-	b.markDirty();
-	bool unnamed = b.isUnnamed();
-	b.setUnnamed(false);
-	b.saveCheckSum();
-
-	// bring the autosave file with us, just in case.
-	b.moveAutosaveFile(oldauto);
-
-	if (!saveBuffer(b)) {
-		oldauto = b.getAutosaveFileName();
-		b.setFileName(oldname.absFileName());
-		b.setUnnamed(unnamed);
-		b.saveCheckSum();
-		b.moveAutosaveFile(oldauto);
-		return false;
-	}
-
-	// validate version control data and
-	// correct buffer title
-	b.lyxvc().file_found_hook(b.fileName());
-	b.updateTitles();
-
-	// the file has now been saved to the new location.
-	// we need to check that the locations of child buffers
-	// are still valid.
-	b.checkChildBuffers();
-
-	return true;
+	return saveBuffer(b, fname);
 }
 
 
-bool GuiView::saveBuffer(Buffer & b)
+bool GuiView::saveBuffer(Buffer & b) {
+	return saveBuffer(b, FileName());
+}
+
+
+bool GuiView::saveBuffer(Buffer & b, FileName const & fn)
 {
 	if (workArea(b) && workArea(b)->inDialogMode())
 		return true;
 
-	if (b.isUnnamed())
-		return renameBuffer(b, docstring());
+	if (fn.empty() && b.isUnnamed())
+			return renameBuffer(b, docstring());
 
-	if (b.save()) {
+	bool success;
+	if (fn.empty())
+		success = b.save();
+	else
+		success = b.saveAs(fn);
+	
+	if (success) {
 		theSession().lastFiles().add(b.fileName());
 		return true;
 	}

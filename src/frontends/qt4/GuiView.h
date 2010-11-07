@@ -370,6 +370,8 @@ private:
 	bool renameBuffer(Buffer & b, docstring const & newname);
 	///
 	bool saveBuffer(Buffer & b);
+	///
+	bool saveBuffer(Buffer & b, support::FileName const & fn);
 	/// closes a workarea, if close_buffer is true the buffer will
 	/// also be released, otherwise the buffer will be hidden.
 	bool closeWorkArea(GuiWorkArea * wa, bool close_buffer);

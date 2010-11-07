@@ -4125,6 +4125,39 @@ Buffer::ReadStatus Buffer::reload()
 }
 
 
+bool Buffer::saveAs(FileName const & fn)
+{
+	FileName const old_name = fileName();
+	FileName const old_auto = getAutosaveFileName();
+	bool const old_unnamed = isUnnamed();
+
+	setFileName(fn.absFileName());
+	markDirty();
+	setUnnamed(false);
+
+	if (save()) {
+		// bring the autosave file with us, just in case.
+		moveAutosaveFile(old_auto);
+		// validate version control data and
+		// correct buffer title
+		lyxvc().file_found_hook(fileName());
+		updateTitles();
+		// the file has now been saved to the new location.
+		// we need to check that the locations of child buffers
+		// are still valid.
+		checkChildBuffers();
+		return true;
+	} else {
+		// save failed
+		// reset the old filename and unnamed state
+		setFileName(old_name.absFileName());
+		setUnnamed(old_unnamed);
+		saveCheckSum();
+		return false;
+	}
+}
+
+
 // FIXME We could do better here, but it is complicated. What would be
 // nice is to offer either (a) to save the child buffer to an appropriate
 // location, so that it would "move with the master", or else (b) to update

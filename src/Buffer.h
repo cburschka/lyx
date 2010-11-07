@@ -177,6 +177,8 @@ public:
 	    Returns \c true if the save is successful, \c false otherwise.
 	*/
 	bool save() const;
+	/// Renames and saves the buffer
+	bool saveAs(support::FileName const & fn);
 
 	/// Write document to stream. Returns \c false if unsuccesful.
 	bool write(std::ostream &) const;
