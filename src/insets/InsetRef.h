@@ -101,8 +101,11 @@ private:
 	/// \return the label with things that need to be escaped escaped
 	docstring getEscapedLabel(OutputParams const &) const;
 	/// \return the command for a formatted reference to ref
-	/// \param label gets what follows the prefix, for refstyle
-	docstring getFormattedCmd(docstring const & ref, docstring & label) const;
+	/// \param label we're cross-referencing
+	/// \param argument for reference command
+	/// \param prefix of the label (before :)
+	docstring getFormattedCmd(docstring const & ref, docstring & label,
+			docstring & prefix) const;
 
 	///
 	mutable docstring screen_label_;

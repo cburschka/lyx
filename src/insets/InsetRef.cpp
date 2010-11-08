@@ -70,16 +70,25 @@ ParamInfo const & InsetRef::findInfo(string const & /* cmdName */)
 }
 
 
-// for refstyle, given pfx:suffix, we want to return "\\pfxcmd"
-// and put "suffix" into label.
-// otherwise, we put the reference into label.
-docstring InsetRef::getFormattedCmd(
-		docstring const & ref, docstring & label) const
+// the ref argument is the label name we are referencing.
+// we expect ref to be in the form: pfx:suffix.
+//
+// if it isn't, then we can't produce a formatted reference, 
+// so we return "\ref" and put ref into label.
+//
+// for refstyle, we return "\pfxcmd", and put suffix into 
+// label and pfx into prefix. this is because refstyle expects
+// the command: \pfxcmd{suffix}.
+// 
+// for prettyref, we return "\prettyref" and put ref into label
+// and pfx into prefix. this is because prettyref 
+//
+docstring InsetRef::getFormattedCmd(docstring const & ref, 
+	docstring & label, docstring & prefix) const
 {
 	static docstring const defcmd = from_ascii("\\ref");
 	static docstring const prtcmd = from_ascii("\\prettyref");
 	
-	docstring prefix;
 	label = split(ref, prefix, ':');
 
 	// we have to have xxx:xxxxx...
@@ -134,7 +143,8 @@ int InsetRef::latex(odocstream & os, OutputParams const & rp) const
 	// so we're doing a formatted reference.
 	docstring const data = getEscapedLabel(rp);
 	docstring label;
-	docstring const fcmd = getFormattedCmd(data, label);
+	docstring prefix;
+	docstring const fcmd = getFormattedCmd(data, label, prefix);
 	os << fcmd << '{' << label << '}';
 	return 0;
 }
@@ -277,9 +287,11 @@ void InsetRef::validate(LaTeXFeatures & features) const
 			features.require("refstyle");
 			docstring const data = getEscapedLabel(features.runparams());
 			docstring label;
-			string const fcmd = to_utf8(getFormattedCmd(data, label));
-			if (fcmd != "\\ref") {
-				string lcmd = "\\AtBeginDocument{\\providecommand" + fcmd + "[1]{\\ref{#1}}}";
+			docstring prefix;
+			string const fcmd = to_utf8(getFormattedCmd(data, label, prefix));
+			if (!prefix.empty()) {
+				string lcmd = "\\AtBeginDocument{\\providecommand" + 
+						fcmd + "[1]{\\ref{" + to_utf8(prefix) + ":#1}}}";
 				features.addPreambleSnippet(lcmd);
 			}
 		} else
