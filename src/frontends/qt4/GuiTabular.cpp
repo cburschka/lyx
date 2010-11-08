@@ -60,19 +60,19 @@ GuiTabular::GuiTabular(QWidget * parent)
 	bottomspaceUnitCB->setCurrentItem(Length::defaultUnit());
 	interlinespaceUnitCB->setCurrentItem(Length::defaultUnit());
 
-	connect(topspaceED, SIGNAL(textEdited(QString)),
+	connect(topspaceED, SIGNAL(editingFinished()),
 		this, SLOT(checkEnabled()));
 	connect(topspaceUnitCB, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
 	connect(topspaceCO, SIGNAL(activated(int)),
 		this, SLOT(checkEnabled()));
-	connect(bottomspaceED, SIGNAL(textEdited(QString)),
+	connect(bottomspaceED, SIGNAL(editingFinished()),
 		this, SLOT(checkEnabled()));
 	connect(bottomspaceUnitCB, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
 	connect(bottomspaceCO, SIGNAL(activated(int)),
 		this, SLOT(checkEnabled()));
-	connect(interlinespaceED, SIGNAL(textEdited(QString)),
+	connect(interlinespaceED, SIGNAL(editingFinished()),
 		this, SLOT(checkEnabled()));
 	connect(interlinespaceUnitCB, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
@@ -94,7 +94,7 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(checkEnabled()));
 	connect(multirowCB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
-	connect(multirowOffsetED, SIGNAL(textEdited(QString)),
+	connect(multirowOffsetED, SIGNAL(editingFinished()),
 		this, SLOT(checkEnabled()));
 	connect(multirowOffsetUnitCB, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
@@ -132,7 +132,7 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(checkEnabled()));
 	connect(specialAlignmentED, SIGNAL(textEdited(QString)),
 		this, SLOT(checkEnabled()));
-	connect(widthED, SIGNAL(textEdited(QString)),
+	connect(widthED, SIGNAL(editingFinished()),
 		this, SLOT(checkEnabled()));
 	connect(widthUnitCB, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
