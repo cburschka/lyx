@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-10-22 11:29+0200\n"
-"PO-Revision-Date: 2010-11-07 16:49+0100\n"
+"PO-Revision-Date: 2010-11-08 13:19+0100\n"
 "Last-Translator: Zoran T. Filipović <zoran.filipovic@yahoo.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr "Verzija"
 
 #: src/frontends/qt4/ui/AboutUi.ui:50
 msgid "Version goes here"
-msgstr ""
+msgstr "Verzija ide ovde"
 
 #: src/frontends/qt4/ui/AboutUi.ui:64
 msgid "Credits"
@@ -156,7 +156,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:40
 msgid "&Jurabib"
-msgstr ""
+msgstr "&Jurabib"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:47
 msgid "Use the natbib styles for natural sciences and arts"
@@ -1057,23 +1057,23 @@ msgstr ""
 #: src/frontends/qt4/ui/ExternalUi.ui:193
 #: src/frontends/qt4/ui/GraphicsUi.ui:448
 msgid "LaTe&X and LyX options"
-msgstr ""
+msgstr "LaTe&X i LyX opcije"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:199
 msgid "LaTeX Options"
-msgstr ""
+msgstr "LaTeX Opcije"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:217
 msgid "O&ption:"
-msgstr ""
+msgstr "O&pcija:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:230
 msgid "Forma&t:"
-msgstr ""
+msgstr "Forma&t:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:254
 msgid "&Show in LyX"
-msgstr ""
+msgstr "&Prikaži u LyX-u"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:266
 #: src/frontends/qt4/ui/ExternalUi.ui:290
@@ -1229,7 +1229,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:13
 msgid "FontUi"
-msgstr ""
+msgstr "FontUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:41
 msgid "C&JK:"
@@ -1237,7 +1237,7 @@ msgstr "C&JK:"
 
 #: src/frontends/qt4/ui/FontUi.ui:51
 msgid "Input the font to be used for Chinese, Japanese or Korean (CJK) script"
-msgstr ""
+msgstr "Unesite slova koji se koristi za kineski, japanski ili korejski (CJK) skript"
 
 #: src/frontends/qt4/ui/FontUi.ui:71
 msgid "Use old style instead of lining figures"
@@ -1433,11 +1433,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:670
 msgid "Draft mode"
-msgstr ""
+msgstr "Draft mode"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:673
 msgid "&Draft mode"
-msgstr ""
+msgstr "&Draft mode"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
 msgid "Select a fill pattern style for HFills"
@@ -2142,43 +2142,43 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:121
 msgid "Header Information"
-msgstr ""
+msgstr "Informacije zaglavlja"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:133
 msgid "&Title:"
-msgstr ""
+msgstr "&Naslov:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:146
 msgid "&Author:"
-msgstr ""
+msgstr "&Autor:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:159
 msgid "&Subject:"
-msgstr ""
+msgstr "&Osnova:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:172
 msgid "&Keywords:"
-msgstr ""
+msgstr "&Ključne reči:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:189
 msgid "H&yperlinks"
-msgstr ""
+msgstr "Hi&perveze"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:222
 msgid "Allows link text to break across lines."
-msgstr ""
+msgstr "Omogućava tekstu veze da se prelomi kroz redove."
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:225
 msgid "B&reak links over lines"
-msgstr ""
+msgstr "Pr&ekini vezu preko linija"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:232
 msgid "No &frames around links"
-msgstr ""
+msgstr "Bez &rama oko veze"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:242
 msgid "C&olor links"
-msgstr ""
+msgstr "Bo&ja veze:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:249
 msgid "Bibliographical backreferences"
@@ -2202,103 +2202,103 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:339
 msgid "Number of levels"
-msgstr ""
+msgstr "Broj nivoa"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:348
 msgid "&Open bookmarks"
-msgstr ""
+msgstr "&Otvori Bookmarks"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:388
 msgid "Additional o&ptions"
-msgstr ""
+msgstr "Dodatne o&pcije"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:417
 msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
-msgstr ""
+msgstr "npr: pdfstartviev = XYZ, plainpages = False, pdfpagelabels"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:33
 #: src/frontends/qt4/GuiDocument.cpp:985
 msgid "Page Layout"
-msgstr ""
+msgstr "Forma strane"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:68
 msgid "Paper Format"
-msgstr ""
+msgstr "Format papira"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:103
 msgid "Choose a particular paper size, or set your own with \"Custom\""
-msgstr ""
+msgstr "Odaberite određenu veličinu papira, ili podesite sopstvenu veličinu sa \"Uobičajeno\""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:121
 msgid "Style used for the page header and footer"
-msgstr ""
+msgstr "Stil koji se koristi za zaglavlje i podnožje"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:128
 msgid "Headings &style:"
-msgstr ""
+msgstr "Stil &zaglavlja"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:138
 msgid "&Landscape"
-msgstr ""
+msgstr "&Široko"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:145
 msgid "&Portrait"
-msgstr ""
+msgstr "&Uspravno"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:191
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:92
 #: src/frontends/qt4/ui/RefUi.ui:138
 msgid "&Format:"
-msgstr ""
+msgstr "&Format:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:227
 msgid "&Orientation:"
-msgstr ""
+msgstr "&Orijentacija:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:253
 msgid "Lay out the page for double-sided printing"
-msgstr ""
+msgstr "Forma stranice za dvostrano štampanje"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:256
 msgid "&Two-sided document"
-msgstr ""
+msgstr "&Dvostrani dokument"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:44
 msgid "I&mmediate Apply"
-msgstr ""
+msgstr "N&eposredno primeni"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:54
 msgid "Label Width"
-msgstr ""
+msgstr "Širina oznake"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:69
 #: src/frontends/qt4/ui/ParagraphUi.ui:82
 msgid "This text defines the width of the paragraph label"
-msgstr ""
+msgstr "Ovaj tekst definiše širinu oznake pasusa"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:72
 msgid "Lo&ngest label"
-msgstr ""
+msgstr "Na&jduža oznaka"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:92
 msgid "Line &spacing"
-msgstr ""
+msgstr "Prored"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:120
 #: src/Text.cpp:1424
 #: src/frontends/qt4/GuiDocument.cpp:572
 msgid "Single"
-msgstr ""
+msgstr "Jednostruki"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:125
 msgid "1.5"
-msgstr ""
+msgstr "1.5"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:130
 #: src/Text.cpp:1430
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
-msgstr ""
+msgstr "Dvostruki"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:135
 #: src/frontends/qt4/ui/TabularUi.ui:913
@@ -2311,51 +2311,51 @@ msgstr ""
 #: src/frontends/qt4/GuiHSpace.cpp:150
 #: src/frontends/qt4/GuiHSpace.cpp:161
 msgid "Custom"
-msgstr ""
+msgstr "Uobičajeno"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:146
 msgid "&Indent Paragraph"
-msgstr ""
+msgstr "&Uvlačenje pasusa"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:168
 msgid "&Justified"
-msgstr ""
+msgstr "&Poravnanje"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:175
 msgid "&Left"
-msgstr ""
+msgstr "&Levo"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:182
 msgid "C&enter"
-msgstr ""
+msgstr "C&entar"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:189
 msgid "Ri&ght"
-msgstr ""
+msgstr "De&sno"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:196
 msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr ""
+msgstr "Koristi podrazumevano poravnanje za ovaj pasus, šta god da je."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:199
 msgid "Paragraph's &Default"
-msgstr ""
+msgstr "Podrazumevani &pasus"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "A&lter..."
-msgstr ""
+msgstr "Iz&meni..."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:25
 msgid "In Math"
-msgstr ""
+msgstr "Iz matematike"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:40
 msgid "Show the grey inline completion behind the cursor in math mode after the delay."
-msgstr ""
+msgstr "Prikaži sivi linijski završetak iza kursora u matematičkom režim nakon odlaganja."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:43
 msgid "Automatic in&line completion"
-msgstr ""
+msgstr "Automatski ne&posredno kompletiranje"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:50
 msgid "Show the popup in math mode after the delay."
@@ -2465,81 +2465,81 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:252
 msgid "Converter File Cache"
-msgstr ""
+msgstr "Converter File Cache"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:272
 msgid "&Enabled"
-msgstr ""
+msgstr "&Omogućeno"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
 msgid "Maximum A&ge (in days):"
-msgstr ""
+msgstr "Maksimalno t&rajanje (u danima):"
 
 #: src/frontends/qt4/ui/PrefDateUi.ui:33
 #: src/frontends/qt4/ui/PrefOutputUi.ui:61
 msgid "&Date format:"
-msgstr ""
+msgstr "&Format datuma:"
 
 #: src/frontends/qt4/ui/PrefDateUi.ui:43
 #: src/frontends/qt4/ui/PrefOutputUi.ui:71
 msgid "Date format for strftime output"
-msgstr ""
+msgstr "Format datuma za strftime izlaz"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:25
 msgid "Display &Graphics"
-msgstr ""
+msgstr "Prikaz &grafike"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:45
 msgid "Instant &Preview:"
-msgstr ""
+msgstr "Brzi &pregled:"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:56
 #: src/Font.cpp:66
 #: src/frontends/qt4/GuiDocument.cpp:146
 msgid "Off"
-msgstr ""
+msgstr "Isključen"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:61
 msgid "No math"
-msgstr ""
+msgstr "Bez matematike"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:66
 #: src/Font.cpp:66
 msgid "On"
-msgstr ""
+msgstr "Uključen"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:74
 msgid "Preview Si&ze:"
-msgstr ""
+msgstr "Veličina pr&egleda:"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:92
 msgid "Factor for the preview size"
-msgstr ""
+msgstr "Faktor za veličinu pregleda"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:114
 msgid "Mark end of paragraphs on screen with a pilcrow character."
-msgstr ""
+msgstr "Obeleži kraj pasusa na ekranu sa pilcrow karakterom."
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:117
 msgid "&Mark end of paragraphs"
-msgstr ""
+msgstr "&Obeleži kraj pasusa"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:33
 #: src/frontends/qt4/GuiPrefs.cpp:226
 msgid "Editing"
-msgstr ""
+msgstr "Korekcija"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:51
 msgid "Cursor &follows scrollbar"
-msgstr ""
+msgstr "Kursor &sledi scrollbar"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:58
 msgid "Sort &environments alphabetically"
-msgstr ""
+msgstr "Sortiranje &okruženja  po abecednom redu "
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:65
 msgid "&Group environments by their category"
-msgstr ""
+msgstr "&Grupa okruženja po njihovim kategorijama"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:73
 msgid "Edit Math Macros inline with a box around"
@@ -2555,241 +2555,241 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:94
 msgid "Fullscreen"
-msgstr ""
+msgstr "Fullscreen"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:112
 msgid "&Limit text width"
-msgstr ""
+msgstr "&Ograničenje teksta po širini"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:143
 msgid "Screen used (&pixels):"
-msgstr ""
+msgstr "Ekran se koristi (&piksela):"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:169
 msgid "Hide &tabbar"
-msgstr ""
+msgstr "Sakrij &tabbar"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:176
 msgid "Hide scr&ollbar"
-msgstr ""
+msgstr "Sakrij traku za po&meranje"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:191
 msgid "&Hide toolbars"
-msgstr ""
+msgstr "&Sakrij traku sa alatima"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:31
 msgid "&New..."
-msgstr ""
+msgstr "&Novi"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:38
 msgid "Re&move"
-msgstr ""
+msgstr "Uk&loni"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:51
 msgid "S&hort Name:"
-msgstr ""
+msgstr "K&ratki naziv"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:85
 msgid "Vector &graphics format"
-msgstr ""
+msgstr "Vektorsko &grafički format"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:102
 msgid "&Document format"
-msgstr ""
+msgstr "&Format dokumenta"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:109
 msgid "&Viewer:"
-msgstr ""
+msgstr "&Pregledač:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:122
 msgid "Ed&itor:"
-msgstr ""
+msgstr "Ur&ednik:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
 msgid "Shortc&ut:"
-msgstr ""
+msgstr "Pre&čica:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:142
 msgid "E&xtension:"
-msgstr ""
+msgstr "Oz&naka tipa datoteke:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:168
 msgid "Co&pier:"
-msgstr ""
+msgstr "Ko&pir:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
-msgstr ""
+msgstr "&E-mail:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:43
 msgid "Your name"
-msgstr ""
+msgstr "Vaše ime"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:60
 msgid "Your E-mail address"
-msgstr ""
+msgstr "Vaša E-mail adresa"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:25
 msgid "Keyboard"
-msgstr ""
+msgstr "Tastatura"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:43
 msgid "Use &keyboard map"
-msgstr ""
+msgstr "Korišćenje &mape za  tastaturu"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:56
 msgid "&First:"
-msgstr ""
+msgstr "&Prva:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:76
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:83
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:57
 msgid "Br&owse..."
-msgstr ""
+msgstr "Pr&egledaj..."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:89
 msgid "S&econd:"
-msgstr ""
+msgstr "D&ruga:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:122
 msgid "Mouse"
-msgstr ""
+msgstr "Miš"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:140
 msgid "&Wheel scrolling speed:"
-msgstr ""
+msgstr "&Brzina pomeranja točkića:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:150
 msgid "1.0 is the standard scrolling speed with the mouse wheel. Higher values will speed it up, low values slow it down."
-msgstr ""
+msgstr "1.0 je standardna brzina pomeranja točkića miša. Veće vrednosti će ga ubrzati, niže vrednosti ga usporavaju."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:25
 msgid "User &interface language:"
-msgstr ""
+msgstr "Jezik &korisničkog interfejsa:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:35
 msgid "Select the language of the user interface (menus, dialogs, etc.)"
-msgstr ""
+msgstr "Izaberite jezik korisničkog interfejsa (menije, dijaloge, itd)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:45
 msgid "&Default language:"
-msgstr ""
+msgstr "&Podrazumevani jezik:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:55
 msgid "Select the default language of your documents"
-msgstr ""
+msgstr "Izaberite podrazumevani jezik svojih dokumenata"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:65
 msgid "Language pac&kage:"
-msgstr ""
+msgstr "Jezički pa&ket:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:75
 msgid "Enter the command to load the language package (default: babel)"
-msgstr ""
+msgstr "Unesite komandu za učitavanje jezičkog paketa (podrazumevano: babel)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:82
 msgid "Command s&tart:"
-msgstr ""
+msgstr "Komanda St&art:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:92
 msgid "The LaTeX command that starts a switch to a foreign language"
-msgstr ""
+msgstr "LaTeX komanda kojom počinje prebacivanje na drugi jezik"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:99
 msgid "Command e&nd:"
-msgstr ""
+msgstr "Komanda k&raj:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:109
 msgid "The LaTeX command that ends a switch to a foreign language"
-msgstr ""
+msgstr "LaTeX komanda kojom se završava prebacivanje na drugi jezik"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:116
 msgid "Use the babel package for multilingual support"
-msgstr ""
+msgstr "Koristite paket babel za višejezičku podršku"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:119
 msgid "&Use babel"
-msgstr ""
+msgstr "&Koristi babel"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:126
 msgid "Check to pass the language globally (to the document class), not locally (to the language package)"
-msgstr ""
+msgstr "Proverite da li jezik prolazi globalno (za klasu dokumenta), a ne lokalno (za jezik paketa)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:129
 msgid "&Global"
-msgstr ""
+msgstr "&Globalno"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:136
 msgid "If checked, the document language is not explicitly set by a language switch command"
-msgstr ""
+msgstr "Ako je potvrđen izbor, jezik dokumenta izričito ne određuje komandu promene jezika"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:139
 msgid "Auto &begin"
-msgstr ""
+msgstr "Automatski &početak"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:146
 msgid "If checked, the document language is not explicitly closed by a language switch command"
-msgstr ""
+msgstr "Ako je potvrđen izbor, jezik dokumenta se izričito ne zatvara komandom promene jezika"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:149
 msgid "Auto &end"
-msgstr ""
+msgstr "Automatski &kraj"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:156
 msgid "Check to highlight foreign languages visually in the work area"
-msgstr ""
+msgstr "Proverite da li su strani jezici istaknuti vizuelno u području rada"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:159
 msgid "Mark &foreign languages"
-msgstr ""
+msgstr "Beleženje &stranih jezika"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:185
 msgid "Right-to-left language support"
-msgstr ""
+msgstr "Jezička podrška za pisanje zdesna-nalevo"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:203
 #: src/LyXRC.cpp:2856
 msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr ""
+msgstr "Izaberite da biste omogućili jezičku podršku za pisanje zdesna-nalevo (npr. hebrejski, arapski)."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:206
 msgid "Enable RTL su&pport"
-msgstr ""
+msgstr "Omogućavanje RTL podrške "
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:234
 msgid "Cursor movement:"
-msgstr ""
+msgstr "Kretanje kursora:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:244
 msgid "&Logical"
-msgstr ""
+msgstr "&Logično"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:254
 msgid "&Visual"
-msgstr ""
+msgstr "&Vizuelno"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:41
 msgid "Set class options to default on class change"
-msgstr ""
+msgstr "Podesite opcije sa podrazumevane klase na promenjenu klasu "
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:44
 msgid "R&eset class options when document class changes"
-msgstr ""
+msgstr "R&esetuj opcije klase kada je klasa dokumenta promenjena"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:57
 #: src/frontends/qt4/GuiDocument.cpp:682
 msgid "US letter"
-msgstr ""
+msgstr "US pismo"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:62
 #: src/frontends/qt4/GuiDocument.cpp:683
 msgid "US legal"
-msgstr ""
+msgstr "US pravni"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:67
 #: src/frontends/qt4/GuiDocument.cpp:684
 msgid "US executive"
-msgstr ""
+msgstr "US izvršni"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:72
 #: src/frontends/qt4/GuiDocument.cpp:685
@@ -2813,71 +2813,71 @@ msgstr "B5"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:114
 msgid "Chec&kTeX command:"
-msgstr ""
+msgstr "Proveri&TeX komandu:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:124
 msgid "CheckTeX start options and flags"
-msgstr ""
+msgstr "ProveriTeX opcije za pokretanje i zastave"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:131
 msgid "Te&X encoding:"
-msgstr ""
+msgstr "Te&X kod:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:141
 msgid "Default paper si&ze:"
-msgstr ""
+msgstr "Podrazumevana veličina papira:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:151
 msgid "BibTeX command and options"
-msgstr ""
+msgstr "BibTeX komande i opcije"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:158
 msgid "&BibTeX command:"
-msgstr ""
+msgstr "&BibTeX komande:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:168
 msgid "&Nomenclature command:"
-msgstr ""
+msgstr "&Nomenklaturna komanda:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:184
 msgid "Select if LyX should output Windows-style paths rather than Posix-style paths to LaTeX files. Useful if you're using the native Windows MikTeX rather than the Cygwin teTeX."
-msgstr ""
+msgstr "Izaberite da li bi izlaz LyX trebao pre ići preko Windows-stil putanju nego preko Posix-stilu putanje za LaTeX fajlovima. Korisno je ako koristite Windows u maternjem MikTeX okruženju nego Cygwin teTeX."
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:190
 msgid "&Use Windows-style paths in LaTeX files"
-msgstr ""
+msgstr "&Koristite Windows-stilu putanju u LaTeX fajlovima"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:197
 msgid "Command and options for nomencl (usually makeindex)"
-msgstr ""
+msgstr "Komande i opcije za nomencl (obično makeindex)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:204
 msgid "Index command and options (makeindex, xindy)"
-msgstr ""
+msgstr "Index komande i opcije (makeindex, xindy)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:211
 msgid "&Index command:"
-msgstr ""
+msgstr "&Index komanda:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:221
 msgid "Specific index command and options for pLaTeX (Japanese)"
-msgstr ""
+msgstr "Posebne index komande i opcije za pLaTeX (Japanski)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:228
 msgid "Specific BibTeX command and options for pLaTeX (Japanese)"
-msgstr ""
+msgstr "Posebne BibTeX komande i opcije za pLaTeX (Japanski)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:235
 msgid "BibTeX command (&Japanese):"
-msgstr ""
+msgstr "BibTeX komanda (&Japanski):"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:245
 msgid "Index command (Ja&panese):"
-msgstr ""
+msgstr "Index komanda (Ja&panski):"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:255
 msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr ""
+msgstr "Opcione veličine papira (-papir) za neka DVI gledišta"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:262
 msgid "&DVI viewer paper size options:"
@@ -2889,23 +2889,23 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:114
 msgid "What to do when existing files are going to be overwritten on export."
-msgstr ""
+msgstr "Šta da uradite kada će postojeće datoteke biti prepisane prilikom izvoza dokumenta."
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:118
 msgid "Ask permission"
-msgstr ""
+msgstr "Pitaj za dozvolu"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:123
 msgid "Main file only"
-msgstr ""
+msgstr "Samo glavni fajl"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:128
 msgid "All files"
-msgstr ""
+msgstr "Sve datoteke"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:25
 msgid "&Working directory:"
-msgstr ""
+msgstr "&Radni direktorijum:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:38
 #: src/frontends/qt4/ui/PrefPathsUi.ui:61
@@ -2914,31 +2914,31 @@ msgstr ""
 #: src/frontends/qt4/ui/PrefPathsUi.ui:130
 #: src/frontends/qt4/ui/PrefPathsUi.ui:153
 msgid "Browse..."
-msgstr ""
+msgstr "Pregledaj..."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:48
 msgid "&Document templates:"
-msgstr ""
+msgstr "&Dokument šablona:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:71
 msgid "&Example files:"
-msgstr ""
+msgstr "&Primer datoteka:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:94
 msgid "&Backup directory:"
-msgstr ""
+msgstr "&Backup direktorijumu:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:117
 msgid "Ly&XServer pipe:"
-msgstr ""
+msgstr "Ly&XServer pipe:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:140
 msgid "&Temporary directory:"
-msgstr ""
+msgstr "&Privremenom direktorijumu:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:163
 msgid "&PATH prefix:"
-msgstr ""
+msgstr "&PATH prefix:"
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:57
 #: src/LyXRC.cpp:2530
@@ -3015,15 +3015,15 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:182
 msgid "&Number of copies:"
-msgstr ""
+msgstr "&Broj kopija:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:192
 msgid "Option used to set number of copies."
-msgstr ""
+msgstr "Opcija se koristi za setovanje broja kopija."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:199
 msgid "Option used to print a range of pages."
-msgstr ""
+msgstr "Opcija se koristi za štampanje opsega stranice."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:206
 msgid "Co&llated:"
@@ -3035,39 +3035,39 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:226
 msgid "Option used to collate multiple copies."
-msgstr ""
+msgstr "Opcija se koristi za pregled više kopija."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:233
 msgid "&Odd pages:"
-msgstr ""
+msgstr "&Neparne stranice:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:246
 msgid "&Even pages:"
-msgstr ""
+msgstr "&Parne stranice:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:256
 msgid "Paper t&ype:"
-msgstr ""
+msgstr "Vrsta pa&pira:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:266
 msgid "Paper si&ze:"
-msgstr ""
+msgstr "Veličina pa&pira:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:279
 msgid "Any other options you'd like to use with the printer command."
-msgstr ""
+msgstr "Bilo koje druge opcije koje želite da koristite sa komandom štampač."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:282
 msgid "E&xtra options:"
-msgstr ""
+msgstr "D&odatne opcije:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:298
 msgid "Customizes output to a given printer. Expert option."
-msgstr ""
+msgstr "Prilagodite izlaz na dati štampač. Stručna opcija."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:301
 msgid "Normally, this needs to be checked only if you are using dvips as your printer command and you have config.<printer> files installed for all your printers."
-msgstr ""
+msgstr "Normalno, ovo mora da se proveri samo ako koristite dvips kao štampač komandom i imate config.<printer> datoteke instalirane za sve štampače."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:304
 msgid "Adapt &output to printer"
@@ -3075,11 +3075,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:311
 msgid "Name of the default printer"
-msgstr ""
+msgstr "Naziv podrazumevanog štampača"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:318
 msgid "Default &printer:"
-msgstr ""
+msgstr "Podrazumevani &štampač:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:331
 msgid "Printer co&mmand:"
@@ -3087,79 +3087,79 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:69
 msgid "Sans Seri&f:"
-msgstr ""
+msgstr "Sans Seri&f:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:107
 msgid "T&ypewriter:"
-msgstr ""
+msgstr "T&ypewriter:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:117
 msgid "R&oman:"
-msgstr ""
+msgstr "R&oman:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:169
 msgid "Screen &DPI:"
-msgstr ""
+msgstr "Ekran &DPI:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:186
 msgid "&Zoom %:"
-msgstr ""
+msgstr "&Zoom %:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:223
 msgid "Font Sizes"
-msgstr ""
+msgstr "Veličina fonta"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:262
 msgid "&Large:"
-msgstr ""
+msgstr "&Veliki:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:272
 msgid "&Larger:"
-msgstr ""
+msgstr "&Veći:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:282
 msgid "&Largest:"
-msgstr ""
+msgstr "&Najveći:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:295
 msgid "&Huge:"
-msgstr ""
+msgstr "&Ogromni:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:305
 msgid "&Hugest:"
-msgstr ""
+msgstr "&Preveliki:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:315
 msgid "S&mallest:"
-msgstr ""
+msgstr "N&ajmanji:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:325
 msgid "S&maller:"
-msgstr ""
+msgstr "M&anji:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:335
 msgid "S&mall:"
-msgstr ""
+msgstr "M&ali:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:345
 msgid "&Normal:"
-msgstr ""
+msgstr "&Normalni:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:355
 msgid "&Tiny:"
-msgstr ""
+msgstr "&Sitan:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:368
 msgid "Checking this improves performance, but might decrease the on-screen quality of fonts"
-msgstr ""
+msgstr "Ova provera poboljšava performanse, ali može da smanji na ekranu kvalitet fontova"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:371
 msgid "&Use pixmap cache to speed up font rendering"
-msgstr ""
+msgstr "&Koristite pixmap cache da ubrzate rendering fontova"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:90
 msgid "&Bind file:"
-msgstr ""
+msgstr "&Bind datoteka:"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:108
 msgid "Show ke&y-bindings containing:"
@@ -3167,19 +3167,19 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
 msgid "Al&ternative language:"
-msgstr ""
+msgstr "Al&ternativni jezik:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:74
 msgid "The characters inserted here are ignored by the spellchecker"
-msgstr ""
+msgstr "Karakteri koji su ubačeni ovde ignorišu se prilikom provere pravopisa"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:81
 msgid "Specify a personal dictionary file other than the default"
-msgstr ""
+msgstr "Osim podrazumevanog rečnika odredite datoteku za lični rečnik "
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:91
 msgid "Personal &dictionary:"
-msgstr ""
+msgstr "Lični &rečnik:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:101
 msgid "&Escape characters:"
@@ -3187,15 +3187,15 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:111
 msgid "Spellchec&ker executable:"
-msgstr ""
+msgstr "Pravo&pis izvršnim:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:121
 msgid "Override the language used for the spellchecker"
-msgstr ""
+msgstr "Poništavanje jezika koji se koristi za proveru pravopisa"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:128
 msgid "Use input encod&ing"
-msgstr ""
+msgstr "Koristi ulazno kod&iranje"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:135
 msgid "Accept words such as \"diskdrive\""
@@ -3945,7 +3945,7 @@ msgstr ""
 #: src/frontends/qt4/ui/TocUi.ui:221
 #: src/frontends/qt4/ui/TocUi.ui:241
 msgid "..."
-msgstr "..."
+msgstr ""
 
 #: src/frontends/qt4/ui/TocUi.ui:178
 msgid "Decrease nesting depth of selected item"
@@ -4152,7 +4152,7 @@ msgstr ""
 #: lib/layouts/stdtitle.inc:12
 #: lib/layouts/svjour.inc:123
 msgid "Title"
-msgstr ""
+msgstr "Naslov"
 
 #: lib/layouts/IEEEtran.layout:66
 #: lib/layouts/IEEEtran.layout:85
@@ -4210,7 +4210,7 @@ msgstr ""
 #: lib/layouts/stdtitle.inc:34
 #: lib/layouts/stdtitle.inc:53
 msgid "FrontMatter"
-msgstr ""
+msgstr "Prednja sadržina"
 
 #: lib/layouts/IEEEtran.layout:82
 #: lib/layouts/aa.layout:70
@@ -4253,11 +4253,11 @@ msgstr ""
 #: lib/layouts/stdtitle.inc:31
 #: lib/layouts/svjour.inc:155
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #: lib/layouts/IEEEtran.layout:102
 msgid "MarkBoth"
-msgstr ""
+msgstr "Obeleži obe"
 
 #: lib/layouts/IEEEtran.layout:120
 #: lib/layouts/aa.layout:85
@@ -4316,11 +4316,11 @@ msgstr ""
 #: lib/layouts/svjour.inc:208
 #: src/output_plaintext.cpp:133
 msgid "Abstract"
-msgstr ""
+msgstr "Sažetak"
 
 #: lib/layouts/IEEEtran.layout:129
 msgid "Abstract---"
-msgstr ""
+msgstr "Sažetak---"
 
 #: lib/layouts/IEEEtran.layout:142
 #: lib/layouts/aa.layout:342
@@ -4344,7 +4344,7 @@ msgstr ""
 #: lib/layouts/amsdefs.inc:166
 #: lib/layouts/svjour.inc:229
 msgid "Keywords"
-msgstr ""
+msgstr "Ključne reči"
 
 #: lib/layouts/IEEEtran.layout:145
 msgid "Index Terms---"
@@ -4353,7 +4353,7 @@ msgstr ""
 #: lib/layouts/IEEEtran.layout:149
 #: lib/layouts/IEEEtran.layout:159
 msgid "Appendices"
-msgstr ""
+msgstr "Prilozi"
 
 #: lib/layouts/IEEEtran.layout:153
 #: lib/layouts/IEEEtran.layout:178
@@ -4377,7 +4377,7 @@ msgstr ""
 #: lib/layouts/stdstruct.inc:43
 #: lib/layouts/svjour.inc:286
 msgid "BackMatter"
-msgstr ""
+msgstr "Zadnja sadržina"
 
 #: lib/layouts/IEEEtran.layout:166
 #: lib/layouts/IEEEtran.layout:169
@@ -4389,7 +4389,7 @@ msgstr ""
 #: lib/layouts/kluwer.layout:326
 #: src/rowpainter.cpp:472
 msgid "Appendix"
-msgstr ""
+msgstr "Dodatak"
 
 #: lib/layouts/IEEEtran.layout:174
 #: lib/layouts/aa.layout:91
@@ -4437,7 +4437,7 @@ msgstr ""
 #: lib/layouts/svjour.inc:282
 #: src/frontends/qt4/GuiDocument.cpp:989
 msgid "Bibliography"
-msgstr ""
+msgstr "Bibliografija"
 
 #: lib/layouts/IEEEtran.layout:189
 #: lib/layouts/aastex.layout:121
@@ -4461,11 +4461,11 @@ msgstr ""
 #: lib/layouts/svjour.inc:297
 #: src/output_plaintext.cpp:145
 msgid "References"
-msgstr ""
+msgstr "Reference"
 
 #: lib/layouts/IEEEtran.layout:198
 msgid "Biography"
-msgstr ""
+msgstr "Biografija"
 
 #: lib/layouts/IEEEtran.layout:210
 msgid "BiographyNoPhoto"
@@ -4520,7 +4520,7 @@ msgstr ""
 #: lib/layouts/theorems-sec-bytype.module:54
 #: lib/layouts/theorems-sec.module:18
 msgid "Theorem"
-msgstr ""
+msgstr "Teorema"
 
 #: lib/layouts/IEEEtran.layout:234
 #: lib/layouts/beamer.layout:1054
@@ -4584,7 +4584,7 @@ msgstr ""
 #: lib/layouts/svjour.inc:56
 #: src/frontends/qt4/GuiDocument.cpp:146
 msgid "Section"
-msgstr ""
+msgstr "Poglavlje"
 
 #: lib/layouts/aa.layout:45
 #: lib/layouts/aa.layout:232
@@ -4620,7 +4620,7 @@ msgstr ""
 #: lib/layouts/stdsections.inc:85
 #: lib/layouts/svjour.inc:65
 msgid "Subsection"
-msgstr ""
+msgstr "Podpoglavlje"
 
 #: lib/layouts/aa.layout:48
 #: lib/layouts/aa.layout:244
@@ -4650,7 +4650,7 @@ msgstr ""
 #: lib/layouts/stdsections.inc:100
 #: lib/layouts/svjour.inc:74
 msgid "Subsubsection"
-msgstr ""
+msgstr "Podpodpoglavlje"
 
 #: lib/layouts/aa.layout:51
 #: lib/layouts/aapaper.layout:48
@@ -4664,7 +4664,7 @@ msgstr ""
 #: lib/layouts/db_stdlists.inc:12
 #: lib/layouts/stdlists.inc:11
 msgid "Itemize"
-msgstr ""
+msgstr "Unesi po stavkama"
 
 #: lib/layouts/aa.layout:54
 #: lib/layouts/aapaper.layout:51
@@ -4677,7 +4677,7 @@ msgstr ""
 #: lib/layouts/db_stdlists.inc:19
 #: lib/layouts/stdlists.inc:30
 msgid "Enumerate"
-msgstr ""
+msgstr "Nabrajati"
 
 #: lib/layouts/aa.layout:57
 #: lib/layouts/aapaper.layout:54
@@ -4694,7 +4694,7 @@ msgstr ""
 #: lib/layouts/stdlists.inc:49
 #: lib/ui/stdtoolbars.inc:102
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 #: lib/layouts/aa.layout:60
 #: lib/layouts/aapaper.layout:57
@@ -4713,7 +4713,7 @@ msgstr ""
 #: lib/layouts/stdlists.inc:73
 #: lib/ui/stdtoolbars.inc:101
 msgid "List"
-msgstr ""
+msgstr "Lista"
 
 #: lib/layouts/aa.layout:67
 #: lib/layouts/aa.layout:112
@@ -4727,7 +4727,7 @@ msgstr ""
 #: lib/layouts/scrclass.inc:155
 #: lib/layouts/svjour.inc:135
 msgid "Subtitle"
-msgstr ""
+msgstr "Podnaslov"
 
 #: lib/layouts/aa.layout:73
 #: lib/layouts/aa.layout:134
@@ -4753,7 +4753,7 @@ msgstr ""
 #: lib/layouts/amsdefs.inc:123
 #: lib/layouts/lyxmacros.inc:44
 msgid "Address"
-msgstr ""
+msgstr "Adresa"
 
 #: lib/layouts/aa.layout:76
 #: lib/layouts/aa.layout:152
@@ -4766,7 +4766,7 @@ msgstr ""
 #: lib/layouts/aa.layout:175
 #: lib/layouts/svjour.inc:192
 msgid "Mail"
-msgstr ""
+msgstr "Pošta"
 
 #: lib/layouts/aa.layout:82
 #: lib/layouts/aa.layout:277
@@ -4801,7 +4801,7 @@ msgstr ""
 #: lib/external_templates:302
 #: lib/external_templates:306
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: lib/layouts/aa.layout:88
 #: lib/layouts/aa.layout:198
@@ -4867,11 +4867,11 @@ msgstr ""
 #: lib/layouts/amsdefs.inc:150
 #: lib/layouts/db_stdcharstyles.inc:73
 msgid "Email"
-msgstr ""
+msgstr "Elektronska pošta"
 
 #: lib/layouts/aa.layout:404
 msgid "email"
-msgstr ""
+msgstr "email"
 
 #: lib/layouts/aapaper.layout:61
 #: lib/layouts/egs.layout:612
@@ -4879,7 +4879,7 @@ msgstr ""
 #: src/frontends/qt4/GuiErrorList.cpp:47
 #: src/frontends/qt4/GuiPrefs.cpp:616
 msgid "LaTeX"
-msgstr ""
+msgstr "LaTeX"
 
 #: lib/layouts/aapaper.layout:91
 #: lib/layouts/aapaper.inc:103
@@ -4908,7 +4908,7 @@ msgstr ""
 #: lib/layouts/stdsections.inc:114
 #: lib/layouts/svjour.inc:83
 msgid "Paragraph"
-msgstr ""
+msgstr "Pasus"
 
 #: lib/layouts/aastex.layout:97
 #: lib/layouts/aastex.layout:262
@@ -5413,7 +5413,7 @@ msgstr ""
 #: lib/layouts/simplecv.layout:91
 #: lib/layouts/stdlists.inc:26
 msgid "*"
-msgstr "*"
+msgstr ""
 
 #: lib/layouts/apa.layout:390
 msgid "Seriate"
@@ -5423,7 +5423,7 @@ msgstr ""
 #: lib/layouts/apa.layout:407
 #: src/buffer_funcs.cpp:425
 msgid "(\\alph{enumii})"
-msgstr "(\\alph{enumii})"
+msgstr ""
 
 #: lib/layouts/armenian-article.layout:9
 msgid "LatinOn"
@@ -5479,7 +5479,7 @@ msgstr ""
 #: lib/layouts/egs.layout:196
 #: lib/layouts/stdlists.inc:65
 msgid "MM"
-msgstr "MM"
+msgstr ""
 
 #: lib/layouts/beamer.layout:154
 msgid "Section \\arabic{section}"
@@ -5533,7 +5533,7 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:363
 msgid "________________________________"
-msgstr "________________________________"
+msgstr ""
 
 #: lib/layouts/beamer.layout:378
 msgid "FrameSubtitle"
@@ -5586,7 +5586,7 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:534
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
-msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
+msgstr ""
 
 #: lib/layouts/beamer.layout:544
 #: lib/layouts/beamer.layout:555
@@ -5825,7 +5825,7 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:1079
 msgid "___"
-msgstr "___"
+msgstr ""
 
 #: lib/layouts/beamer.layout:1089
 #: lib/layouts/egs.layout:630
@@ -5954,12 +5954,12 @@ msgstr ""
 #: lib/layouts/broadway.layout:145
 #: lib/layouts/hollywood.layout:170
 msgid "("
-msgstr "("
+msgstr ""
 
 #: lib/layouts/broadway.layout:147
 #: lib/layouts/hollywood.layout:172
 msgid ")"
-msgstr ")"
+msgstr ""
 
 #: lib/layouts/broadway.layout:158
 #: lib/layouts/broadway.layout:168
@@ -6749,7 +6749,7 @@ msgstr ""
 #: lib/layouts/revtex4.layout:212
 #: lib/layouts/amsdefs.inc:162
 msgid "URL:"
-msgstr "URL:"
+msgstr ""
 
 #: lib/layouts/elsart.layout:188
 #: lib/layouts/revtex4.layout:185
@@ -7111,7 +7111,7 @@ msgstr ""
 
 #: lib/layouts/foils.layout:97
 msgid "_/"
-msgstr "_/"
+msgstr ""
 
 #: lib/layouts/foils.layout:101
 msgid "CrossList"
@@ -7119,7 +7119,7 @@ msgstr ""
 
 #: lib/layouts/foils.layout:116
 msgid "><"
-msgstr "><"
+msgstr ""
 
 #: lib/layouts/foils.layout:160
 msgid "My Logo"
@@ -7362,12 +7362,12 @@ msgstr ""
 #: lib/layouts/g-brief-de.layout:145
 #: lib/layouts/g-brief-en.layout:145
 msgid "HTTP"
-msgstr "HTTP"
+msgstr ""
 
 #: lib/layouts/g-brief-de.layout:148
 #: lib/layouts/g-brief-en.layout:148
 msgid "HTTP:"
-msgstr "HTTP:"
+msgstr ""
 
 #: lib/layouts/g-brief-de.layout:152
 #: lib/layouts/g-brief-en.layout:152
@@ -7383,7 +7383,7 @@ msgstr ""
 
 #: lib/layouts/g-brief-de.layout:159
 msgid "BLZ"
-msgstr "BLZ"
+msgstr ""
 
 #: lib/layouts/g-brief-de.layout:162
 #: lib/layouts/g-brief-en.layout:162
@@ -8245,8 +8245,9 @@ msgstr ""
 
 #: lib/layouts/memoir.layout:111
 #: lib/layouts/memoir.layout:167
+#, fuzzy
 msgid "Maintext"
-msgstr ""
+msgstr "“text”"
 
 #: lib/layouts/memoir.layout:123
 msgid "Poemtitle"
@@ -8329,7 +8330,7 @@ msgstr ""
 
 #: lib/layouts/powerdot.layout:134
 msgid "    "
-msgstr "    "
+msgstr ""
 
 #: lib/layouts/powerdot.layout:144
 msgid "EndSlide"
@@ -8337,7 +8338,7 @@ msgstr ""
 
 #: lib/layouts/powerdot.layout:158
 msgid "~=~"
-msgstr "~=~"
+msgstr ""
 
 #: lib/layouts/powerdot.layout:171
 msgid "WideSlide"
@@ -8372,7 +8373,7 @@ msgstr ""
 #: lib/layouts/recipebook.layout:42
 #: lib/layouts/scrbook.layout:17
 msgid "\\thechapter"
-msgstr "\\thechapter"
+msgstr ""
 
 #: lib/layouts/recipebook.layout:77
 msgid "Recipe"
@@ -8424,11 +8425,11 @@ msgstr ""
 
 #: lib/layouts/scrlettr.layout:50
 msgid "L"
-msgstr "L"
+msgstr ""
 
 #: lib/layouts/scrlettr.layout:63
 msgid "O"
-msgstr "O"
+msgstr ""
 
 #: lib/layouts/scrlettr.layout:105
 #: lib/layouts/scrlttr2.layout:136
@@ -8613,7 +8614,7 @@ msgstr ""
 
 #: lib/layouts/siamltex.layout:131
 msgid "AMS"
-msgstr "AMS"
+msgstr ""
 
 #: lib/layouts/siamltex.layout:305
 #: lib/layouts/amsdefs.inc:194
@@ -8662,7 +8663,7 @@ msgstr ""
 
 #: lib/layouts/simplecv.layout:69
 msgid "MMMMM"
-msgstr "MMMMM"
+msgstr ""
 
 #: lib/layouts/slides.layout:105
 msgid "New Slide:"
@@ -9468,7 +9469,7 @@ msgstr ""
 
 #: lib/layouts/db_stdlayouts.inc:30
 msgid "SGML"
-msgstr "SGML"
+msgstr ""
 
 #: lib/layouts/db_stdstarsections.inc:84
 #: lib/layouts/stdstarsections.inc:78
@@ -9617,7 +9618,7 @@ msgstr ""
 
 #: lib/layouts/stdcounters.inc:9
 msgid "\\Roman{part}"
-msgstr "\\Roman{part}"
+msgstr ""
 
 #: lib/layouts/stdinsets.inc:60
 msgid "Marginal"
@@ -9666,7 +9667,7 @@ msgstr ""
 #: src/insets/InsetERT.cpp:187
 #: src/insets/InsetERT.cpp:189
 msgid "ERT"
-msgstr "ERT"
+msgstr ""
 
 #: lib/layouts/stdinsets.inc:146
 #: lib/layouts/stdinsets.inc:147
@@ -10397,7 +10398,7 @@ msgstr ""
 #: src/Font.cpp:63
 #: src/Font.cpp:66
 msgid "Ignore"
-msgstr ""
+msgstr "Ignoriši"
 
 #: lib/languages:6
 msgid "Afrikaans"
@@ -10695,7 +10696,7 @@ msgstr ""
 
 #: lib/encodings:14
 msgid "Unicode (utf8)"
-msgstr "Unicode (utf8)"
+msgstr ""
 
 #: lib/encodings:19
 msgid "Unicode (ucs-extended) (utf8x)"
@@ -10875,11 +10876,11 @@ msgstr ""
 
 #: lib/encodings:193
 msgid "Unicode (XeTeX) (utf8)"
-msgstr "Unicode (XeTeX) (utf8)"
+msgstr ""
 
 #: lib/encodings:197
 msgid "ASCII"
-msgstr "ASCII"
+msgstr ""
 
 #: lib/ui/classic.ui:32
 #: lib/ui/stdmenus.inc:28
@@ -12817,7 +12818,7 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:352
 msgid "URL|U"
-msgstr "URL|U"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:353
 msgid "Hyperlink...|k"
@@ -13527,135 +13528,135 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:260
 msgid "arccos"
-msgstr "arccos"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:261
 msgid "arcsin"
-msgstr "arcsin"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:262
 msgid "arctan"
-msgstr "arctan"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:263
 msgid "arg"
-msgstr "arg"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:264
 msgid "bmod"
-msgstr "bmod"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:265
 msgid "cos"
-msgstr "cos"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:266
 msgid "cosh"
-msgstr "cosh"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:267
 msgid "cot"
-msgstr "cot"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:268
 msgid "coth"
-msgstr "coth"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:269
 msgid "csc"
-msgstr "csc"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:270
 msgid "deg"
-msgstr "deg"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:271
 msgid "det"
-msgstr "det"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:272
 msgid "dim"
-msgstr "dim"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:273
 msgid "exp"
-msgstr "exp"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:274
 msgid "gcd"
-msgstr "gcd"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:275
 msgid "hom"
-msgstr "hom"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:276
 msgid "inf"
-msgstr "inf"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:277
 msgid "ker"
-msgstr "ker"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:278
 msgid "lg"
-msgstr "lg"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:279
 msgid "lim"
-msgstr "lim"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:280
 msgid "liminf"
-msgstr "liminf"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:281
 msgid "limsup"
-msgstr "limsup"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:282
 msgid "ln"
-msgstr "ln"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:283
 msgid "log"
-msgstr "log"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:284
 msgid "max"
-msgstr "max"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:285
 msgid "min"
-msgstr "min"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:286
 msgid "sec"
-msgstr "sec"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:287
 msgid "sin"
-msgstr "sin"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:288
 msgid "sinh"
-msgstr "sinh"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:289
 msgid "sup"
-msgstr "sup"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:290
 msgid "tan"
-msgstr "tan"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:291
 msgid "tanh"
-msgstr "tanh"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:292
 msgid "Pr"
-msgstr "Pr"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:295
 msgid "Spacings"
@@ -13829,19 +13830,19 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:351
 msgid "ldots"
-msgstr "ldots"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:352
 msgid "cdots"
-msgstr "cdots"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:353
 msgid "vdots"
-msgstr "vdots"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:354
 msgid "ddots"
-msgstr "ddots"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:357
 msgid "Frame Decorations"
@@ -13849,835 +13850,835 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:358
 msgid "hat"
-msgstr "hat"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:359
 msgid "tilde"
-msgstr "tilde"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:360
 msgid "bar"
-msgstr "bar"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:361
 msgid "grave"
-msgstr "grave"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:362
 msgid "dot"
-msgstr "dot"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:363
 msgid "check"
-msgstr "check"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:364
 msgid "widehat"
-msgstr "widehat"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:365
 msgid "widetilde"
-msgstr "widetilde"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:366
 msgid "vec"
-msgstr "vec"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:367
 msgid "acute"
-msgstr "acute"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:368
 msgid "ddot"
-msgstr "ddot"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:369
 msgid "dddot"
-msgstr "dddot"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:370
 msgid "ddddot"
-msgstr "ddddot"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:371
 msgid "breve"
-msgstr "breve"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:372
 msgid "overline"
-msgstr "overline"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:373
 msgid "overbrace"
-msgstr "overbrace"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:374
 msgid "overleftarrow"
-msgstr "overleftarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:375
 msgid "overrightarrow"
-msgstr "overrightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:376
 msgid "overleftrightarrow"
-msgstr "overleftrightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:377
 msgid "overset"
-msgstr "overset"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:378
 msgid "underline"
-msgstr "underline"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:379
 msgid "underbrace"
-msgstr "underbrace"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:380
 msgid "underleftarrow"
-msgstr "underleftarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:381
 msgid "underrightarrow"
-msgstr "underrightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:382
 msgid "underleftrightarrow"
-msgstr "underleftrightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:383
 msgid "underset"
-msgstr "underset"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:387
 msgid "leftarrow"
-msgstr "leftarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:388
 msgid "rightarrow"
-msgstr "rightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:389
 msgid "downarrow"
-msgstr "downarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:390
 msgid "uparrow"
-msgstr "uparrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:391
 msgid "updownarrow"
-msgstr "updownarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:392
 msgid "leftrightarrow"
-msgstr "leftrightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:393
 msgid "Leftarrow"
-msgstr "Leftarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:394
 msgid "Rightarrow"
-msgstr "Rightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:395
 msgid "Downarrow"
-msgstr "Downarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:396
 msgid "Uparrow"
-msgstr "Uparrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:397
 msgid "Updownarrow"
-msgstr "Updownarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:398
 msgid "Leftrightarrow"
-msgstr "Leftrightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:399
 msgid "Longleftrightarrow"
-msgstr "Longleftrightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:400
 msgid "Longleftarrow"
-msgstr "Longleftarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:401
 msgid "Longrightarrow"
-msgstr "Longrightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:402
 msgid "longleftrightarrow"
-msgstr "longleftrightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:403
 msgid "longleftarrow"
-msgstr "longleftarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:404
 msgid "longrightarrow"
-msgstr "longrightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:405
 msgid "leftharpoondown"
-msgstr "leftharpoondown"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:406
 msgid "rightharpoondown"
-msgstr "rightharpoondown"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:407
 msgid "mapsto"
-msgstr "mapsto"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:408
 msgid "longmapsto"
-msgstr "longmapsto"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:409
 msgid "nwarrow"
-msgstr "nwarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:410
 msgid "nearrow"
-msgstr "nearrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:411
 msgid "leftharpoonup"
-msgstr "leftharpoonup"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:412
 msgid "rightharpoonup"
-msgstr "rightharpoonup"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:413
 msgid "hookleftarrow"
-msgstr "hookleftarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:414
 msgid "hookrightarrow"
-msgstr "hookrightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:415
 msgid "swarrow"
-msgstr "swarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:416
 msgid "searrow"
-msgstr "searrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:417
 #: lib/ui/stdtoolbars.inc:692
 msgid "rightleftharpoons"
-msgstr "rightleftharpoons"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:421
 msgid "pm"
-msgstr "pm"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:422
 msgid "cap"
-msgstr "cap"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:423
 msgid "diamond"
-msgstr "diamond"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:424
 msgid "oplus"
-msgstr "oplus"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:425
 msgid "mp"
-msgstr "mp"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:426
 msgid "cup"
-msgstr "cup"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:427
 msgid "bigtriangleup"
-msgstr "bigtriangleup"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:428
 msgid "ominus"
-msgstr "ominus"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:429
 msgid "times"
-msgstr "times"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:430
 msgid "uplus"
-msgstr "uplus"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:431
 msgid "bigtriangledown"
-msgstr "bigtriangledown"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:432
 msgid "otimes"
-msgstr "otimes"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:433
 msgid "div"
-msgstr "div"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:434
 msgid "sqcap"
-msgstr "sqcap"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:435
 msgid "triangleright"
-msgstr "triangleright"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:436
 msgid "oslash"
-msgstr "oslash"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:437
 msgid "cdot"
-msgstr "cdot"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:438
 msgid "sqcup"
-msgstr "sqcup"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:439
 msgid "triangleleft"
-msgstr "triangleleft"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:440
 msgid "odot"
-msgstr "odot"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:441
 msgid "star"
-msgstr "star"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:442
 msgid "vee"
-msgstr "vee"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:443
 msgid "amalg"
-msgstr "amalg"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:444
 msgid "bigcirc"
-msgstr "bigcirc"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:445
 msgid "setminus"
-msgstr "setminus"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:446
 msgid "wedge"
-msgstr "wedge"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:447
 msgid "dagger"
-msgstr "dagger"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:448
 msgid "circ"
-msgstr "circ"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:449
 msgid "bullet"
-msgstr "bullet"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:450
 msgid "wr"
-msgstr "wr"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:451
 msgid "ddagger"
-msgstr "ddagger"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:455
 msgid "leq"
-msgstr "leq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:456
 msgid "geq"
-msgstr "geq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:457
 msgid "equiv"
-msgstr "equiv"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:458
 msgid "models"
-msgstr "models"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:459
 msgid "prec"
-msgstr "prec"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:460
 msgid "succ"
-msgstr "succ"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:461
 msgid "sim"
-msgstr "sim"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:462
 msgid "perp"
-msgstr "perp"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:463
 msgid "preceq"
-msgstr "preceq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:464
 msgid "succeq"
-msgstr "succeq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:465
 msgid "simeq"
-msgstr "simeq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:466
 msgid "mid"
-msgstr "mid"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:467
 msgid "ll"
-msgstr "ll"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:468
 msgid "gg"
-msgstr "gg"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:469
 msgid "asymp"
-msgstr "asymp"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:470
 msgid "parallel"
-msgstr "parallel"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:471
 msgid "subset"
-msgstr "subset"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:472
 msgid "supset"
-msgstr "supset"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:473
 msgid "approx"
-msgstr "approx"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:474
 msgid "smile"
-msgstr "smile"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:475
 msgid "subseteq"
-msgstr "subseteq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:476
 msgid "supseteq"
-msgstr "supseteq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:477
 msgid "cong"
-msgstr "cong"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:478
 msgid "frown"
-msgstr "frown"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:479
 msgid "sqsubseteq"
-msgstr "sqsubseteq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:480
 msgid "sqsupseteq"
-msgstr "sqsupseteq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:481
 msgid "doteq"
-msgstr "doteq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:482
 msgid "neq"
-msgstr "neq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:483
 #: src/lengthcommon.cpp:38
 msgid "in"
-msgstr "in"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:484
 msgid "ni"
-msgstr "ni"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:485
 msgid "propto"
-msgstr "propto"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:486
 msgid "notin"
-msgstr "notin"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:487
 msgid "vdash"
-msgstr "vdash"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:488
 msgid "dashv"
-msgstr "dashv"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:489
 msgid "bowtie"
-msgstr "bowtie"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:493
 msgid "alpha"
-msgstr "alpha"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:494
 msgid "beta"
-msgstr "beta"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:495
 msgid "gamma"
-msgstr "gamma"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:496
 msgid "delta"
-msgstr "delta"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:497
 msgid "epsilon"
-msgstr "epsilon"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:498
 msgid "varepsilon"
-msgstr "varepsilon"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:499
 msgid "zeta"
-msgstr "zeta"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:500
 msgid "eta"
-msgstr "eta"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:501
 msgid "theta"
-msgstr "theta"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:502
 msgid "vartheta"
-msgstr "vartheta"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:503
 msgid "iota"
-msgstr "iota"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:504
 msgid "kappa"
-msgstr "kappa"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:505
 msgid "lambda"
-msgstr "lambda"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:506
 msgid "mu"
-msgstr "mu"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:507
 msgid "nu"
-msgstr "nu"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:508
 msgid "xi"
-msgstr "xi"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:509
 msgid "pi"
-msgstr "pi"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:510
 msgid "varpi"
-msgstr "varpi"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:511
 msgid "rho"
-msgstr "rho"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:512
 msgid "varrho"
-msgstr "varrho"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:513
 msgid "sigma"
-msgstr "sigma"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:514
 msgid "varsigma"
-msgstr "varsigma"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:515
 msgid "tau"
-msgstr "tau"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:516
 msgid "upsilon"
-msgstr "upsilon"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:517
 msgid "phi"
-msgstr "phi"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:518
 msgid "varphi"
-msgstr "varphi"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:519
 msgid "chi"
-msgstr "chi"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:520
 msgid "psi"
-msgstr "psi"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:521
 msgid "omega"
-msgstr "omega"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:522
 msgid "Gamma"
-msgstr "Gamma"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:523
 msgid "Delta"
-msgstr "Delta"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:524
 msgid "Theta"
-msgstr "Theta"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:525
 msgid "Lambda"
-msgstr "Lambda"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:526
 msgid "Xi"
-msgstr "Xi"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:527
 msgid "Pi"
-msgstr "Pi"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:528
 msgid "Sigma"
-msgstr "Sigma"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:529
 msgid "Upsilon"
-msgstr "Upsilon"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:530
 msgid "Phi"
-msgstr "Phi"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:531
 msgid "Psi"
-msgstr "Psi"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:532
 msgid "Omega"
-msgstr "Omega"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:536
 msgid "nabla"
-msgstr "nabla"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:537
 msgid "partial"
-msgstr "partial"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:538
 msgid "infty"
-msgstr "infty"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:539
 msgid "prime"
-msgstr "prime"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:540
 msgid "ell"
-msgstr "ell"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:541
 msgid "emptyset"
-msgstr "emptyset"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:542
 msgid "exists"
-msgstr "exists"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:543
 msgid "forall"
-msgstr "forall"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:544
 msgid "imath"
-msgstr "imath"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:545
 msgid "jmath"
-msgstr "jmath"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:546
 msgid "Re"
-msgstr "Re"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:547
 msgid "Im"
-msgstr "Im"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:548
 msgid "aleph"
-msgstr "aleph"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:549
 msgid "wp"
-msgstr "wp"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:550
 #: lib/ui/stdtoolbars.inc:635
 msgid "hbar"
-msgstr "hbar"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:551
 #: lib/ui/stdtoolbars.inc:642
 msgid "angle"
-msgstr "angle"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:552
 msgid "top"
-msgstr "top"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:553
 msgid "bot"
-msgstr "bot"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:554
 msgid "Vert"
-msgstr "Vert"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:555
 msgid "neg"
-msgstr "neg"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:556
 msgid "flat"
-msgstr "flat"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:557
 msgid "natural"
-msgstr "natural"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:558
 msgid "sharp"
-msgstr "sharp"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:559
 msgid "surd"
-msgstr "surd"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:560
 msgid "triangle"
-msgstr "triangle"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:561
 msgid "diamondsuit"
-msgstr "diamondsuit"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:562
 msgid "heartsuit"
-msgstr "heartsuit"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:563
 msgid "clubsuit"
-msgstr "clubsuit"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:564
 msgid "spadesuit"
-msgstr "spadesuit"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:565
 msgid "textrm \\AA"
-msgstr "textrm \\AA"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:566
 msgid "textrm \\O"
-msgstr "textrm \\O"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:567
 msgid "mathcircumflex"
-msgstr "mathcircumflex"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:568
 msgid "_"
-msgstr "_"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:569
 msgid "mathrm T"
-msgstr "mathrm T"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:570
 msgid "mathbb N"
-msgstr "mathbb N"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:571
 msgid "mathbb Z"
-msgstr "mathbb Z"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:572
 msgid "mathbb Q"
-msgstr "mathbb Q"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:573
 msgid "mathbb R"
-msgstr "mathbb R"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:574
 msgid "mathbb C"
-msgstr "mathbb C"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:575
 msgid "mathbb H"
-msgstr "mathbb H"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:576
 msgid "mathcal F"
-msgstr "mathcal F"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:577
 msgid "mathcal L"
-msgstr "mathcal L"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:578
 msgid "mathcal H"
-msgstr "mathcal H"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:579
 msgid "mathcal O"
-msgstr "mathcal O"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:582
 msgid "Big Operators"
@@ -14685,163 +14686,163 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:583
 msgid "intop"
-msgstr "intop"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:584
 msgid "int"
-msgstr "int"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:585
 msgid "iint"
-msgstr "iint"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:586
 msgid "iintop"
-msgstr "iintop"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:587
 msgid "iiint"
-msgstr "iiint"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:588
 msgid "iiintop"
-msgstr "iiintop"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:589
 msgid "iiiint"
-msgstr "iiiint"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:590
 msgid "iiiintop"
-msgstr "iiiintop"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:591
 msgid "dotsint"
-msgstr "dotsint"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:592
 msgid "dotsintop"
-msgstr "dotsintop"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:593
 msgid "oint"
-msgstr "oint"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:594
 msgid "ointop"
-msgstr "ointop"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:595
 msgid "oiint"
-msgstr "oiint"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:596
 msgid "oiintop"
-msgstr "oiintop"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:597
 msgid "ointctrclockwiseop"
-msgstr "ointctrclockwiseop"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:598
 msgid "ointctrclockwise"
-msgstr "ointctrclockwise"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:599
 msgid "ointclockwiseop"
-msgstr "ointclockwiseop"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:600
 msgid "ointclockwise"
-msgstr "ointclockwise"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:601
 msgid "sqint"
-msgstr "sqint"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:602
 msgid "sqintop"
-msgstr "sqintop"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:603
 msgid "sqiint"
-msgstr "sqiint"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:604
 msgid "sqiintop"
-msgstr "sqiintop"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:605
 msgid "fint"
-msgstr "fint"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:606
 msgid "fintop"
-msgstr "fintop"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:607
 msgid "landupint"
-msgstr "landupint"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:608
 msgid "landupintop"
-msgstr "landupintop"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:609
 msgid "landdownint"
-msgstr "landdownint"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:610
 msgid "landdownintop"
-msgstr "landdownintop"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:611
 msgid "sum"
-msgstr "sum"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:612
 msgid "prod"
-msgstr "prod"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:613
 msgid "coprod"
-msgstr "coprod"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:614
 msgid "bigsqcup"
-msgstr "bigsqcup"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:615
 msgid "bigotimes"
-msgstr "bigotimes"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:616
 msgid "bigodot"
-msgstr "bigodot"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:617
 msgid "bigoplus"
-msgstr "bigoplus"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:618
 msgid "bigcap"
-msgstr "bigcap"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:619
 msgid "bigcup"
-msgstr "bigcup"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:620
 msgid "biguplus"
-msgstr "biguplus"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:621
 msgid "bigvee"
-msgstr "bigvee"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:622
 msgid "bigwedge"
-msgstr "bigwedge"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:625
 msgid "AMS Miscellaneous"
@@ -14849,139 +14850,139 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:626
 msgid "digamma"
-msgstr "digamma"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:627
 msgid "varkappa"
-msgstr "varkappa"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:628
 msgid "beth"
-msgstr "beth"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:629
 msgid "daleth"
-msgstr "daleth"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:630
 msgid "gimel"
-msgstr "gimel"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:631
 msgid "ulcorner"
-msgstr "ulcorner"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:632
 msgid "urcorner"
-msgstr "urcorner"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:633
 msgid "llcorner"
-msgstr "llcorner"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:634
 msgid "lrcorner"
-msgstr "lrcorner"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:636
 msgid "hslash"
-msgstr "hslash"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:637
 msgid "vartriangle"
-msgstr "vartriangle"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:638
 msgid "triangledown"
-msgstr "triangledown"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:639
 msgid "square"
-msgstr "square"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:640
 msgid "lozenge"
-msgstr "lozenge"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:641
 msgid "circledS"
-msgstr "circledS"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:643
 msgid "measuredangle"
-msgstr "measuredangle"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:644
 msgid "nexists"
-msgstr "nexists"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:645
 msgid "mho"
-msgstr "mho"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:646
 msgid "Finv"
-msgstr "Finv"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:647
 msgid "Game"
-msgstr "Game"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:648
 msgid "Bbbk"
-msgstr "Bbbk"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:649
 msgid "backprime"
-msgstr "backprime"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:650
 msgid "varnothing"
-msgstr "varnothing"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:651
 msgid "Diamond"
-msgstr "Diamond"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:652
 msgid "blacktriangle"
-msgstr "blacktriangle"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:653
 msgid "blacktriangledown"
-msgstr "blacktriangledown"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:654
 msgid "blacksquare"
-msgstr "blacksquare"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:655
 msgid "blacklozenge"
-msgstr "blacklozenge"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:656
 msgid "bigstar"
-msgstr "bigstar"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:657
 msgid "sphericalangle"
-msgstr "sphericalangle"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:658
 msgid "complement"
-msgstr "complement"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:659
 msgid "eth"
-msgstr "eth"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:660
 msgid "diagup"
-msgstr "diagup"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:661
 msgid "diagdown"
-msgstr "diagdown"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:664
 msgid "AMS Arrows"
@@ -14989,147 +14990,147 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:665
 msgid "dashleftarrow"
-msgstr "dashleftarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:666
 msgid "dashrightarrow"
-msgstr "dashrightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:667
 msgid "leftleftarrows"
-msgstr "leftleftarrows"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:668
 msgid "leftrightarrows"
-msgstr "leftrightarrows"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:669
 msgid "rightrightarrows"
-msgstr "rightrightarrows"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:670
 msgid "rightleftarrows"
-msgstr "rightleftarrows"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:671
 msgid "Lleftarrow"
-msgstr "Lleftarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:672
 msgid "Rrightarrow"
-msgstr "Rrightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:673
 msgid "twoheadleftarrow"
-msgstr "twoheadleftarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:674
 msgid "twoheadrightarrow"
-msgstr "twoheadrightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:675
 msgid "leftarrowtail"
-msgstr "leftarrowtail"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:676
 msgid "rightarrowtail"
-msgstr "rightarrowtail"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:677
 msgid "looparrowleft"
-msgstr "looparrowleft"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:678
 msgid "looparrowright"
-msgstr "looparrowright"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:679
 msgid "curvearrowleft"
-msgstr "curvearrowleft"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:680
 msgid "curvearrowright"
-msgstr "curvearrowright"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:681
 msgid "circlearrowleft"
-msgstr "circlearrowleft"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:682
 msgid "circlearrowright"
-msgstr "circlearrowright"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:683
 msgid "Lsh"
-msgstr "Lsh"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:684
 msgid "Rsh"
-msgstr "Rsh"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:685
 msgid "upuparrows"
-msgstr "upuparrows"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:686
 msgid "downdownarrows"
-msgstr "downdownarrows"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:687
 msgid "upharpoonleft"
-msgstr "upharpoonleft"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:688
 msgid "upharpoonright"
-msgstr "upharpoonright"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:689
 msgid "downharpoonleft"
-msgstr "downharpoonleft"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:690
 msgid "downharpoonright"
-msgstr "downharpoonright"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:691
 msgid "leftrightharpoons"
-msgstr "leftrightharpoons"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:693
 msgid "rightsquigarrow"
-msgstr "rightsquigarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:694
 msgid "leftrightsquigarrow"
-msgstr "leftrightsquigarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:695
 msgid "nleftarrow"
-msgstr "nleftarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:696
 msgid "nrightarrow"
-msgstr "nrightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:697
 msgid "nleftrightarrow"
-msgstr "nleftrightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:698
 msgid "nLeftarrow"
-msgstr "nLeftarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:699
 msgid "nRightarrow"
-msgstr "nRightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:700
 msgid "nLeftrightarrow"
-msgstr "nLeftrightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:701
 msgid "multimap"
-msgstr "multimap"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:704
 msgid "AMS Relations"
@@ -15137,267 +15138,267 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:705
 msgid "leqq"
-msgstr "leqq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:706
 msgid "geqq"
-msgstr "geqq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:707
 msgid "leqslant"
-msgstr "leqslant"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:708
 msgid "geqslant"
-msgstr "geqslant"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:709
 msgid "eqslantless"
-msgstr "eqslantless"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:710
 msgid "eqslantgtr"
-msgstr "eqslantgtr"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:711
 msgid "lesssim"
-msgstr "lesssim"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:712
 msgid "gtrsim"
-msgstr "gtrsim"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:713
 msgid "lessapprox"
-msgstr "lessapprox"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:714
 msgid "gtrapprox"
-msgstr "gtrapprox"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:715
 msgid "approxeq"
-msgstr "approxeq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:716
 msgid "triangleq"
-msgstr "triangleq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:717
 msgid "lessdot"
-msgstr "lessdot"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:718
 msgid "gtrdot"
-msgstr "gtrdot"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:719
 msgid "lll"
-msgstr "lll"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:720
 msgid "ggg"
-msgstr "ggg"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:721
 msgid "lessgtr"
-msgstr "lessgtr"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:722
 msgid "gtrless"
-msgstr "gtrless"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:723
 msgid "lesseqgtr"
-msgstr "lesseqgtr"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:724
 msgid "gtreqless"
-msgstr "gtreqless"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:725
 msgid "lesseqqgtr"
-msgstr "lesseqqgtr"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:726
 msgid "gtreqqless"
-msgstr "gtreqqless"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:727
 msgid "eqcirc"
-msgstr "eqcirc"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:728
 msgid "circeq"
-msgstr "circeq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:729
 msgid "thicksim"
-msgstr "thicksim"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:730
 msgid "thickapprox"
-msgstr "thickapprox"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:731
 msgid "backsim"
-msgstr "backsim"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:732
 msgid "backsimeq"
-msgstr "backsimeq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:733
 msgid "subseteqq"
-msgstr "subseteqq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:734
 msgid "supseteqq"
-msgstr "supseteqq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:735
 msgid "Subset"
-msgstr "Subset"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:736
 msgid "Supset"
-msgstr "Supset"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:737
 msgid "sqsubset"
-msgstr "sqsubset"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:738
 msgid "sqsupset"
-msgstr "sqsupset"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:739
 msgid "preccurlyeq"
-msgstr "preccurlyeq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:740
 msgid "succcurlyeq"
-msgstr "succcurlyeq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:741
 msgid "curlyeqprec"
-msgstr "curlyeqprec"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:742
 msgid "curlyeqsucc"
-msgstr "curlyeqsucc"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:743
 msgid "precsim"
-msgstr "precsim"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:744
 msgid "succsim"
-msgstr "succsim"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:745
 msgid "precapprox"
-msgstr "precapprox"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:746
 msgid "succapprox"
-msgstr "succapprox"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:747
 msgid "vartriangleleft"
-msgstr "vartriangleleft"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:748
 msgid "vartriangleright"
-msgstr "vartriangleright"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:749
 msgid "trianglelefteq"
-msgstr "trianglelefteq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:750
 msgid "trianglerighteq"
-msgstr "trianglerighteq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:751
 msgid "bumpeq"
-msgstr "bumpeq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:752
 msgid "Bumpeq"
-msgstr "Bumpeq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:753
 msgid "doteqdot"
-msgstr "doteqdot"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:754
 msgid "risingdotseq"
-msgstr "risingdotseq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:755
 msgid "fallingdotseq"
-msgstr "fallingdotseq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:756
 msgid "vDash"
-msgstr "vDash"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:757
 msgid "Vvdash"
-msgstr "Vvdash"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:758
 msgid "Vdash"
-msgstr "Vdash"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:759
 msgid "shortmid"
-msgstr "shortmid"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:760
 msgid "shortparallel"
-msgstr "shortparallel"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:761
 msgid "smallsmile"
-msgstr "smallsmile"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:762
 msgid "smallfrown"
-msgstr "smallfrown"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:763
 msgid "blacktriangleleft"
-msgstr "blacktriangleleft"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:764
 msgid "blacktriangleright"
-msgstr "blacktriangleright"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:765
 msgid "because"
-msgstr "because"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:766
 msgid "therefore"
-msgstr "therefore"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:767
 msgid "backepsilon"
-msgstr "backepsilon"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:768
 msgid "varpropto"
-msgstr "varpropto"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:769
 msgid "between"
-msgstr "between"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:770
 msgid "pitchfork"
-msgstr "pitchfork"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:773
 msgid "AMS Negative Relations"
@@ -15405,203 +15406,203 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:774
 msgid "nless"
-msgstr "nless"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:775
 msgid "ngtr"
-msgstr "ngtr"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:776
 msgid "nleq"
-msgstr "nleq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:777
 msgid "ngeq"
-msgstr "ngeq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:778
 msgid "nleqslant"
-msgstr "nleqslant"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:779
 msgid "ngeqslant"
-msgstr "ngeqslant"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:780
 msgid "nleqq"
-msgstr "nleqq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:781
 msgid "ngeqq"
-msgstr "ngeqq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:782
 msgid "lneq"
-msgstr "lneq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:783
 msgid "gneq"
-msgstr "gneq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:784
 msgid "lneqq"
-msgstr "lneqq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:785
 msgid "gneqq"
-msgstr "gneqq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:786
 msgid "lvertneqq"
-msgstr "lvertneqq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:787
 msgid "gvertneqq"
-msgstr "gvertneqq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:788
 msgid "lnsim"
-msgstr "lnsim"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:789
 msgid "gnsim"
-msgstr "gnsim"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:790
 msgid "lnapprox"
-msgstr "lnapprox"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:791
 msgid "gnapprox"
-msgstr "gnapprox"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:792
 msgid "nprec"
-msgstr "nprec"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:793
 msgid "nsucc"
-msgstr "nsucc"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:794
 msgid "npreceq"
-msgstr "npreceq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:795
 msgid "nsucceq"
-msgstr "nsucceq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:796
 msgid "precnsim"
-msgstr "precnsim"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:797
 msgid "succnsim"
-msgstr "succnsim"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:798
 msgid "precnapprox"
-msgstr "precnapprox"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:799
 msgid "succnapprox"
-msgstr "succnapprox"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:800
 msgid "subsetneq"
-msgstr "subsetneq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:801
 msgid "supsetneq"
-msgstr "supsetneq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:802
 msgid "subsetneqq"
-msgstr "subsetneqq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:803
 msgid "supsetneqq"
-msgstr "supsetneqq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:804
 msgid "nsubseteq"
-msgstr "nsubseteq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:805
 msgid "nsupseteq"
-msgstr "nsupseteq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:806
 msgid "nsupseteqq"
-msgstr "nsupseteqq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:807
 msgid "nvdash"
-msgstr "nvdash"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:808
 msgid "nvDash"
-msgstr "nvDash"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:809
 msgid "nVDash"
-msgstr "nVDash"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:810
 msgid "varsubsetneq"
-msgstr "varsubsetneq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:811
 msgid "varsupsetneq"
-msgstr "varsupsetneq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:812
 msgid "varsubsetneqq"
-msgstr "varsubsetneqq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:813
 msgid "varsupsetneqq"
-msgstr "varsupsetneqq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:814
 msgid "ntriangleleft"
-msgstr "ntriangleleft"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:815
 msgid "ntriangleright"
-msgstr "ntriangleright"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:816
 msgid "ntrianglelefteq"
-msgstr "ntrianglelefteq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:817
 msgid "ntrianglerighteq"
-msgstr "ntrianglerighteq"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:818
 msgid "ncong"
-msgstr "ncong"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:819
 msgid "nsim"
-msgstr "nsim"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:820
 msgid "nmid"
-msgstr "nmid"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:821
 msgid "nshortmid"
-msgstr "nshortmid"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:822
 msgid "nparallel"
-msgstr "nparallel"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:823
 msgid "nshortparallel"
-msgstr "nshortparallel"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:826
 msgid "AMS Operators"
@@ -15609,95 +15610,95 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:827
 msgid "dotplus"
-msgstr "dotplus"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:828
 msgid "smallsetminus"
-msgstr "smallsetminus"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:829
 msgid "Cap"
-msgstr "Cap"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:830
 msgid "Cup"
-msgstr "Cup"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:831
 msgid "barwedge"
-msgstr "barwedge"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:832
 msgid "veebar"
-msgstr "veebar"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:833
 msgid "doublebarwedge"
-msgstr "doublebarwedge"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:834
 msgid "boxminus"
-msgstr "boxminus"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:835
 msgid "boxtimes"
-msgstr "boxtimes"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:836
 msgid "boxdot"
-msgstr "boxdot"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:837
 msgid "boxplus"
-msgstr "boxplus"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:838
 msgid "divideontimes"
-msgstr "divideontimes"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:839
 msgid "ltimes"
-msgstr "ltimes"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:840
 msgid "rtimes"
-msgstr "rtimes"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:841
 msgid "leftthreetimes"
-msgstr "leftthreetimes"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:842
 msgid "rightthreetimes"
-msgstr "rightthreetimes"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:843
 msgid "curlywedge"
-msgstr "curlywedge"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:844
 msgid "curlyvee"
-msgstr "curlyvee"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:845
 msgid "circleddash"
-msgstr "circleddash"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:846
 msgid "circledast"
-msgstr "circledast"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:847
 msgid "circledcirc"
-msgstr "circledcirc"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:848
 msgid "centerdot"
-msgstr "centerdot"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:849
 msgid "intercal"
-msgstr "intercal"
+msgstr ""
 
 #: lib/external_templates:37
 msgid "RasterImage"
@@ -15714,12 +15715,12 @@ msgstr ""
 
 #: lib/external_templates:109
 msgid "XFig"
-msgstr "XFig"
+msgstr ""
 
 #: lib/external_templates:110
 #: lib/external_templates:113
 msgid "Xfig: $$AbsOrRelPathParent$$Basename"
-msgstr "Xfig: $$AbsOrRelPathParent$$Basename"
+msgstr ""
 
 #: lib/external_templates:112
 msgid "An Xfig figure.\n"
@@ -15757,7 +15758,7 @@ msgstr ""
 
 #: lib/external_templates:212
 msgid "LilyPond"
-msgstr "LilyPond"
+msgstr ""
 
 #: lib/external_templates:213
 #: lib/external_templates:219
@@ -15802,12 +15803,12 @@ msgstr ""
 
 #: lib/external_templates:333
 msgid "Dia"
-msgstr "Dia"
+msgstr ""
 
 #: lib/external_templates:334
 #: lib/external_templates:337
 msgid "Dia: $$AbsOrRelPathParent$$Basename"
-msgstr "Dia: $$AbsOrRelPathParent$$Basename"
+msgstr ""
 
 #: lib/external_templates:336
 msgid "Dia diagram.\n"
@@ -15815,69 +15816,69 @@ msgstr ""
 
 #: lib/configure.py:264
 msgid "Tgif"
-msgstr "Tgif"
+msgstr ""
 
 #: lib/configure.py:267
 msgid "FIG"
-msgstr "FIG"
+msgstr ""
 
 #: lib/configure.py:270
 msgid "DIA"
-msgstr "DIA"
+msgstr ""
 
 #: lib/configure.py:273
 msgid "Grace"
-msgstr "Grace"
+msgstr ""
 
 #: lib/configure.py:276
 msgid "FEN"
-msgstr "FEN"
+msgstr ""
 
 #: lib/configure.py:279
 msgid "SVG"
-msgstr "SVG"
+msgstr ""
 
 #: lib/configure.py:283
 msgid "BMP"
-msgstr "BMP"
+msgstr ""
 
 #: lib/configure.py:284
 msgid "GIF"
-msgstr "GIF"
+msgstr ""
 
 #: lib/configure.py:285
 #: src/frontends/qt4/GuiClipboard.cpp:138
 msgid "JPEG"
-msgstr "JPEG"
+msgstr ""
 
 #: lib/configure.py:286
 msgid "PBM"
-msgstr "PBM"
+msgstr ""
 
 #: lib/configure.py:287
 msgid "PGM"
-msgstr "PGM"
+msgstr ""
 
 #: lib/configure.py:288
 #: src/frontends/qt4/GuiClipboard.cpp:137
 msgid "PNG"
-msgstr "PNG"
+msgstr ""
 
 #: lib/configure.py:289
 msgid "PPM"
-msgstr "PPM"
+msgstr ""
 
 #: lib/configure.py:290
 msgid "TIFF"
-msgstr "TIFF"
+msgstr ""
 
 #: lib/configure.py:291
 msgid "XBM"
-msgstr "XBM"
+msgstr ""
 
 #: lib/configure.py:292
 msgid "XPM"
-msgstr "XPM"
+msgstr ""
 
 #: lib/configure.py:297
 msgid "Plain text (chess output)"
@@ -15898,31 +15899,31 @@ msgstr ""
 #: lib/configure.py:301
 #: src/frontends/qt4/GuiErrorList.cpp:41
 msgid "DocBook"
-msgstr "DocBook"
+msgstr ""
 
 #: lib/configure.py:301
 msgid "DocBook|B"
-msgstr "DocBook|B"
+msgstr ""
 
 #: lib/configure.py:302
 msgid "Docbook (XML)"
-msgstr "Docbook (XML)"
+msgstr ""
 
 #: lib/configure.py:303
 msgid "Graphviz Dot"
-msgstr "Graphviz Dot"
+msgstr ""
 
 #: lib/configure.py:304
 msgid "LaTeX (pLaTeX)"
-msgstr "LaTeX (pLaTeX)"
+msgstr ""
 
 #: lib/configure.py:305
 msgid "NoWeb"
-msgstr "NoWeb"
+msgstr ""
 
 #: lib/configure.py:305
 msgid "NoWeb|N"
-msgstr "NoWeb|N"
+msgstr ""
 
 #: lib/configure.py:306
 msgid "LilyPond music"
@@ -15938,7 +15939,7 @@ msgstr ""
 
 #: lib/configure.py:308
 msgid "LaTeX (pdflatex)"
-msgstr "LaTeX (pdflatex)"
+msgstr ""
 
 #: lib/configure.py:309
 #: src/frontends/qt4/GuiPrefs.cpp:335
@@ -15967,51 +15968,51 @@ msgstr ""
 
 #: lib/configure.py:320
 msgid "BibTeX"
-msgstr "BibTeX"
+msgstr ""
 
 #: lib/configure.py:325
 msgid "EPS"
-msgstr "EPS"
+msgstr ""
 
 #: lib/configure.py:326
 msgid "Postscript"
-msgstr "Postscript"
+msgstr ""
 
 #: lib/configure.py:326
 msgid "Postscript|t"
-msgstr "Postscript|t"
+msgstr ""
 
 #: lib/configure.py:330
 msgid "PDF (ps2pdf)"
-msgstr "PDF (ps2pdf)"
+msgstr ""
 
 #: lib/configure.py:330
 msgid "PDF (ps2pdf)|P"
-msgstr "PDF (ps2pdf)|P"
+msgstr ""
 
 #: lib/configure.py:331
 msgid "PDF (pdflatex)"
-msgstr "PDF (pdflatex)"
+msgstr ""
 
 #: lib/configure.py:331
 msgid "PDF (pdflatex)|F"
-msgstr "PDF (pdflatex)|F"
+msgstr ""
 
 #: lib/configure.py:332
 msgid "PDF (dvipdfm)"
-msgstr "PDF (dvipdfm)"
+msgstr ""
 
 #: lib/configure.py:332
 msgid "PDF (dvipdfm)|m"
-msgstr "PDF (dvipdfm)|m"
+msgstr ""
 
 #: lib/configure.py:335
 msgid "DVI"
-msgstr "DVI"
+msgstr ""
 
 #: lib/configure.py:335
 msgid "DVI|D"
-msgstr "DVI|D"
+msgstr ""
 
 #: lib/configure.py:338
 msgid "DraftDVI"
@@ -16019,11 +16020,11 @@ msgstr ""
 
 #: lib/configure.py:341
 msgid "HTML"
-msgstr "HTML"
+msgstr ""
 
 #: lib/configure.py:341
 msgid "HTML|H"
-msgstr "HTML|H"
+msgstr ""
 
 #: lib/configure.py:344
 msgid "Noteedit"
@@ -16046,31 +16047,31 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:919
 #: src/mathed/MathMacroTemplate.cpp:542
 msgid "LyX"
-msgstr "LyX"
+msgstr ""
 
 #: lib/configure.py:354
 msgid "LyX 1.3.x"
-msgstr "LyX 1.3.x"
+msgstr ""
 
 #: lib/configure.py:355
 msgid "LyX 1.4.x"
-msgstr "LyX 1.4.x"
+msgstr ""
 
 #: lib/configure.py:356
 msgid "LyX 1.5.x"
-msgstr "LyX 1.5.x"
+msgstr ""
 
 #: lib/configure.py:357
 msgid "CJK LyX 1.4.x (big5)"
-msgstr "CJK LyX 1.4.x (big5)"
+msgstr ""
 
 #: lib/configure.py:358
 msgid "CJK LyX 1.4.x (euc-jp)"
-msgstr "CJK LyX 1.4.x (euc-jp)"
+msgstr ""
 
 #: lib/configure.py:359
 msgid "CJK LyX 1.4.x (euc-kr)"
-msgstr "CJK LyX 1.4.x (euc-kr)"
+msgstr ""
 
 #: lib/configure.py:360
 msgid "LyX Preview"
@@ -16082,7 +16083,7 @@ msgstr ""
 
 #: lib/configure.py:362
 msgid "PDFTEX"
-msgstr "PDFTEX"
+msgstr ""
 
 #: lib/configure.py:363
 msgid "Program"
@@ -16090,7 +16091,7 @@ msgstr ""
 
 #: lib/configure.py:364
 msgid "PSTEX"
-msgstr "PSTEX"
+msgstr ""
 
 #: lib/configure.py:365
 msgid "Rich Text Format"
@@ -16098,7 +16099,7 @@ msgstr ""
 
 #: lib/configure.py:366
 msgid "OpenOffice.Org (sxw)"
-msgstr "OpenOffice.Org (sxw)"
+msgstr ""
 
 #: lib/configure.py:367
 #: src/frontends/qt4/GuiClipboard.cpp:134
@@ -16112,15 +16113,15 @@ msgstr ""
 
 #: lib/configure.py:369
 msgid "MS Word"
-msgstr "MS Word"
+msgstr ""
 
 #: lib/configure.py:369
 msgid "MS Word|W"
-msgstr "MS Word|W"
+msgstr ""
 
 #: lib/configure.py:370
 msgid "HTML (MS Word)"
-msgstr "HTML (MS Word)"
+msgstr ""
 
 #: lib/configure.py:432
 msgid "LyXBlogger"
@@ -16865,8 +16866,9 @@ msgid "background"
 msgstr ""
 
 #: src/Color.cpp:146
+#, fuzzy
 msgid "text"
-msgstr ""
+msgstr "“text”"
 
 #: src/Color.cpp:147
 msgid "selection"
@@ -17542,7 +17544,7 @@ msgstr ""
 #: src/LyX.cpp:652
 #: src/frontends/qt4/GuiView.cpp:750
 msgid "LyX: "
-msgstr "LyX: "
+msgstr ""
 
 #: src/LyX.cpp:788
 msgid "Could not create temporary directory"
@@ -18619,15 +18621,15 @@ msgstr ""
 
 #: src/buffer_funcs.cpp:422
 msgid "\\arabic{enumi}."
-msgstr "\\arabic{enumi}."
+msgstr ""
 
 #: src/buffer_funcs.cpp:428
 msgid "\\roman{enumiii}."
-msgstr "\\roman{enumiii}."
+msgstr ""
 
 #: src/buffer_funcs.cpp:431
 msgid "\\Alph{enumiv}."
-msgstr "\\Alph{enumiv}."
+msgstr ""
 
 #: src/buffer_funcs.cpp:448
 #: src/insets/InsetCaption.cpp:294
@@ -19020,7 +19022,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiClipboard.cpp:136
 msgid "PDF"
-msgstr "PDF"
+msgstr ""
 
 #: src/frontends/qt4/GuiClipboard.cpp:147
 msgid "pasted"
@@ -19413,7 +19415,7 @@ msgstr ""
 #: src/frontends/qt4/GuiDocument.cpp:1384
 #, c-format
 msgid "%1$s, %2$s"
-msgstr "%1$s, %2$s"
+msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1389
 #, c-format
@@ -20081,11 +20083,11 @@ msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:2865
 msgid "*.pws"
-msgstr "*.pws"
+msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:2865
 msgid "*.ispell"
-msgstr "*.ispell"
+msgstr ""
 
 #: src/frontends/qt4/GuiPrint.cpp:43
 msgid "Print Document"
@@ -21104,12 +21106,12 @@ msgstr ""
 #: src/insets/InsetBox.cpp:164
 #, c-format
 msgid "%1$s (%2$s)"
-msgstr "%1$s (%2$s)"
+msgstr ""
 
 #: src/insets/InsetBox.cpp:167
 #, c-format
 msgid "%1$s (%2$s, %3$s)"
-msgstr "%1$s (%2$s, %3$s)"
+msgstr ""
 
 #: src/insets/InsetBranch.cpp:61
 msgid "Opened Branch Inset"
@@ -21828,7 +21830,7 @@ msgstr "pc"
 
 #: src/lengthcommon.cpp:38
 msgid "cc[[unit of measure]]"
-msgstr ""
+msgstr "cc"
 
 #: src/lengthcommon.cpp:38
 msgid "cm"
@@ -21844,35 +21846,35 @@ msgstr "em"
 
 #: src/lengthcommon.cpp:39
 msgid "mu[[unit of measure]]"
-msgstr ""
+msgstr "mu"
 
 #: src/lengthcommon.cpp:39
 msgid "Text Width %"
-msgstr ""
+msgstr "Širina teksta %"
 
 #: src/lengthcommon.cpp:40
 msgid "Column Width %"
-msgstr ""
+msgstr "Širina kolone %"
 
 #: src/lengthcommon.cpp:40
 msgid "Page Width %"
-msgstr ""
+msgstr "Širina stranice %"
 
 #: src/lengthcommon.cpp:40
 msgid "Line Width %"
-msgstr ""
+msgstr "Širina linije %"
 
 #: src/lengthcommon.cpp:41
 msgid "Text Height %"
-msgstr ""
+msgstr "Visina teksta %"
 
 #: src/lengthcommon.cpp:41
 msgid "Page Height %"
-msgstr ""
+msgstr "Visina stranice %"
 
 #: src/lyxfind.cpp:123
 msgid "Search error"
-msgstr ""
+msgstr "Traži greške"
 
 #: src/lyxfind.cpp:123
 msgid "Search string is empty"
@@ -21880,11 +21882,11 @@ msgstr ""
 
 #: src/lyxfind.cpp:307
 msgid "String has been replaced."
-msgstr ""
+msgstr "String je zamenjen."
 
 #: src/lyxfind.cpp:310
 msgid " strings have been replaced."
-msgstr ""
+msgstr "stringovi su zamenjeni."
 
 #: src/mathed/InsetFormulaMacro.cpp:120
 #, c-format
@@ -21911,19 +21913,19 @@ msgstr ""
 
 #: src/mathed/InsetMathGrid.cpp:1379
 msgid "Only one row"
-msgstr ""
+msgstr "Samo jedan red"
 
 #: src/mathed/InsetMathGrid.cpp:1385
 msgid "Only one column"
-msgstr ""
+msgstr "Samo jedna kolona"
 
 #: src/mathed/InsetMathGrid.cpp:1393
 msgid "No hline to delete"
-msgstr ""
+msgstr "Nema hline za brisanje"
 
 #: src/mathed/InsetMathGrid.cpp:1402
 msgid "No vline to delete"
-msgstr ""
+msgstr "Nema vline za brisanje"
 
 #: src/mathed/InsetMathGrid.cpp:1431
 #, c-format
@@ -21988,23 +21990,23 @@ msgstr ""
 
 #: src/output_plaintext.cpp:136
 msgid "Abstract: "
-msgstr ""
+msgstr "Sažetak:"
 
 #: src/output_plaintext.cpp:148
 msgid "References: "
-msgstr ""
+msgstr "Reference:"
 
 #: src/support/debug.cpp:38
 msgid "No debugging message"
-msgstr ""
+msgstr "Nema poruka o greškama"
 
 #: src/support/debug.cpp:39
 msgid "General information"
-msgstr ""
+msgstr "Opšte informacije"
 
 #: src/support/debug.cpp:40
 msgid "Program initialisation"
-msgstr ""
+msgstr "Inicijalizacija programa"
 
 #: src/support/debug.cpp:41
 msgid "Keyboard events handling"
@@ -22108,15 +22110,15 @@ msgstr ""
 
 #: src/support/debug.cpp:66
 msgid "RTL/Bidi"
-msgstr ""
+msgstr "RTL/Bidi"
 
 #: src/support/debug.cpp:67
 msgid "Locale/Internationalisation"
-msgstr ""
+msgstr "Lokalno/Internacionalizacija"
 
 #: src/support/debug.cpp:68
 msgid "Selection copy/paste mechanism"
-msgstr ""
+msgstr "Izbor copy/paste mehanizma"
 
 #: src/support/debug.cpp:69
 msgid "Developers' general debug messages"
@@ -22124,38 +22126,42 @@ msgstr ""
 
 #: src/support/debug.cpp:70
 msgid "All debugging messages"
-msgstr ""
+msgstr "Sve poruke za otklanjanje grešaka"
 
 #: src/support/debug.cpp:115
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
-msgstr ""
+msgstr "Otklanjanje grešaka `%1$s' (%2$s)"
 
 #: src/support/filetools.cpp:250
 msgid "[[Replace with the code of your language]]"
-msgstr ""
+msgstr "sr"
 
 #: src/support/os_win32.cpp:439
 msgid "System file not found"
-msgstr ""
+msgstr "Sistemska datoteka nije pronađena"
 
 #: src/support/os_win32.cpp:440
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
 msgstr ""
+"Nije moguće učitati shfolder.dll\n"
+"Molimo vas da ga instalirate."
 
 #: src/support/os_win32.cpp:445
 msgid "System function not found"
-msgstr ""
+msgstr "Funkcija sistema nije pronađena"
 
 #: src/support/os_win32.cpp:446
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."
 msgstr ""
+"Nije moguće pronaći SHGetFolderPathA u shfolder.dll\n"
+"Ne znam kako da nastavite. Izvinite."
 
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
-msgstr ""
+msgstr "Nepoznati korisnik"
 
