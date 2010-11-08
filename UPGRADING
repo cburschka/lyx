@@ -126,6 +126,37 @@ Furthermore, LyX uses a converter layout2layout.py, also written in python
 that will convert old layout files on the fly. You can also call it manually
 on your layout files if you want to convert them to 2.0.x format permanently.
 
+* Formatted references
+
+Before version 2.0, LyX used the LaTeX package "prettyref" to produce 
+"formatted references", such as "Section 2.1". This package has several 
+shortcomings when used in a non-English environment, not least of which is 
+that it has no mechanism for internationalization. (See bug #6421 and those
+it references.) 
+
+As of LyX 2.0, users can choose whether to use prettyref or, alternatively,
+the "refstyle" package. The current version of refstyle, v0.5, ships with 
+translations for several languages and provides an easy mechanism for users
+to translate the references it produces into still other languages. It also 
+defines many more commands than prettyref does, including, for example, ones
+to produce "ranges", such as "Sections 2.1 to 2.3". Some LyX developers are 
+already working with the refstyle maintainer, Danie Els, to make it work more 
+easily  with LyX and to extend the translations it provides. (You are invited 
+to contribute translations, too!)
+
+Because many LyX users already have customized prettyref for their purposes,
+LyX 1.6.x files opened in LyX 2.0 will continue to use prettref by default.
+New LyX 2.0 files will use refstyle by default. Both can of course be changed 
+in Document>Settings. Please be advised, however, that prettyref support is to
+be considered deprecated: It may well be removed in LyX 2.1, and all users are
+encouraged to adapt their layout files, etc, to refstyle.
+
+Doing so is fairly simple. With prettyref, one has declarations such as:
+    \newrefformat{for}(Formula \ref{#1}}
+The refstyle equivalent is:
+    \newref{for}{refcmd={Formula \ref{#1}}}
+The translation is obviously trivial.
+
 * Preparing for Unicode:
 
 As of version 1.5.0, LyX uses Unicode internally. This is a major change that
@@ -134,8 +165,8 @@ transition as smooth as possible for you. However, there are some caveats:
 
 - User layout files must be converted to UTF-8
 
-  In previous versions, layout styles were allowed to use non-ASCII names
-  using the local encodings. LyX-1.5 now assumes that all layout files are
+  In versions prior to 1.5.0, layout styles were allowed to use non-ASCII names
+  using the local encodings. LyX-1.5 and later assume that all layout files are
   UTF-8 encoded. This means that non-ASCII style names are still allowed
   but they must be valid UTF-8 strings. One way of doing the conversion
   is to use iconv. Using bash, the script below should work:
