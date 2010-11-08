@@ -2951,13 +2951,15 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 	// We are asynchronous, so we don't know here anything about the success
 	return true;
 #else
-	bool const update_unincluded =
-		used_buffer->params().maintain_unincluded_children &&
-		!used_buffer->params().getIncludedChildren().empty();
 	if (syncFunc) {
+		// TODO check here if it breaks exporting with Qt < 4.4
+		bool const update_unincluded =
+				used_buffer->params().maintain_unincluded_children &&
+				!used_buffer->params().getIncludedChildren().empty();
 		return (used_buffer->*syncFunc)(format, true, update_unincluded);
 	} else if (previewFunc) {
-		return (used_buffer->*previewFunc)(format, update_unincluded);
+    // TODO includeall must be false or we get a 100% busy thread, a bug?
+		return (used_buffer->*previewFunc)(format, false);
 	}
 	(void) asyncFunc;
 	return false;
