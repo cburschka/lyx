@@ -129,6 +129,7 @@
 # include <unistd.h>
 #endif
 
+
 using namespace std;
 using namespace lyx::support;
 
@@ -2886,7 +2887,6 @@ docstring GuiView::GuiViewPrivate::exportAndDestroy(Buffer const * orig, Buffer 
 {
 	bool (Buffer::* mem_func)(std::string const &, bool, bool) const = &Buffer::doExport;
 	return runAndDestroy(bind(mem_func, buffer, _1, false, _2), orig, buffer, format, "export");
-
 }
 
 docstring GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
@@ -2894,6 +2894,26 @@ docstring GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer
 	bool(Buffer::* mem_func)(std::string const &, bool) const = &Buffer::preview;
 	return runAndDestroy(bind(mem_func, buffer, _1, _2), orig, buffer, format, "preview");
 }
+
+#else
+
+// not used, but the linker needs them
+
+docstring GuiView::GuiViewPrivate::compileAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
+{
+	return docstring();
+}
+
+docstring GuiView::GuiViewPrivate::exportAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
+{
+	return docstring();
+}
+
+docstring GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
+{
+	return docstring();
+}
+
 #endif
 
 
