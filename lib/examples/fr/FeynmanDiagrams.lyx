@@ -40,7 +40,7 @@
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language french
 \inputencoding auto
 \fontencoding global
 \font_roman default
@@ -93,7 +93,7 @@
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -106,48 +106,56 @@
 \begin_body
 
 \begin_layout Title
-Feynman Diagrams
+Diagrammes de Feynman
+\end_layout
+
+\begin_layout Date
+
 \end_layout
 
 \begin_layout Standard
-To be able to use 
+Pour pouvoir utiliser les diagrammes de 
 \noun on
 Feynman
 \noun default
- diagrams, the LaTeX-package 
+, le paquetage
+\noun on
+ 
 \series bold
+\noun default
 feyn
 \series default
- must be installed.
- A Feynman diagram is created by inserting the command 
+ doit être installé.
+ La création d'un diagramme de Feynman se fait en insérant la commande 
 \series bold
 
 \backslash
 Diagram
 \series default
- in a formula.
- Then you are able to add new matrix columns and rows like a normal matrices.
- 
+ dans une formule.
+ Ensuite on peut ajouter de nouvelles lignes et colonnes comme dans une
+ matrice habituelle.
 \end_layout
 
 \begin_layout Standard
-As matrix entry, one can enter commands that act as 
-\begin_inset Quotes eld
+Les éléments matriciels sont créés par des commandes agissant commes des
+ 
+\begin_inset Quotes fld
 \end_inset
 
-particles
-\begin_inset Quotes erd
+particules
+\begin_inset Quotes frd
 \end_inset
 
- or 
-\begin_inset Quotes eld
+ ou des 
+\begin_inset Quotes fld
 \end_inset
 
-propagators
-\begin_inset Quotes erd
+propagateurs
+\begin_inset Quotes frd
 \end_inset
 
-, for example:
+, par exemple:
 \end_layout
 
 \begin_layout Standard
@@ -164,7 +172,7 @@ propagators
 \begin_inset Text
 
 \begin_layout Plain Layout
-Commands
+Commandes
 \end_layout
 
 \end_inset
@@ -182,7 +190,7 @@ Description
 \begin_inset Text
 
 \begin_layout Plain Layout
-Example
+Exemple
 \end_layout
 
 \end_inset
@@ -191,7 +199,7 @@ Example
 \begin_inset Text
 
 \begin_layout Plain Layout
-Result
+Resultat
 \end_layout
 
 \end_inset
@@ -213,7 +221,7 @@ f,g,h
 \begin_layout Plain Layout
 \noindent
 \align left
-fermion, photon or ghost propagator.
+fermion, photon ou propagateur fantôme.
 \end_layout
 
 \end_inset
@@ -296,7 +304,7 @@ fu,fd,fv (gu,gd,gv)
 \begin_layout Plain Layout
 \noindent
 \align left
-fermion/photon, going up/down/vertical
+fermion/photon, direvtions haut/bas/vertical
 \end_layout
 
 \end_inset
@@ -410,7 +418,7 @@ fA,fV
 \begin_layout Plain Layout
 \noindent
 \align left
-A and V are modifiers to produce arrow going left/up or right/down
+A et V sont les modificateursproduisant les flèches gauche/haut ou droite/bas
 \end_layout
 
 \end_inset
@@ -640,7 +648,7 @@ momentum{ch}{text}
 \begin_layout Plain Layout
 \noindent
 \align left
-particle-momentum specification
+spécification des moments particulaires
 \end_layout
 
 \end_inset
@@ -689,11 +697,11 @@ vertexlabel{p}{text}
 \begin_layout Plain Layout
 \noindent
 \align left
-A vertex label 
+Une étiquette de sommet
 \emph on
-p
+ p
 \emph default
- is ^ or _ for labeling above or below vertex
+ est ^ ou _ pour marquer au-dessus ou au-dessus du sommet
 \end_layout
 
 \end_inset
@@ -767,12 +775,11 @@ $
 \end_layout
 
 \begin_layout Standard
-These are just some of the options in the 
+Ce ne sont que quelques options du paquetage 
 \series bold
 feyn
 \series default
- package.
- Its user manual can be found in 
+, voir le manuel d'utilisation
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Feyn"
@@ -798,7 +805,7 @@ target "http://mirror.ctan.org/fonts/feyn/feyn.pdf"
 
 \end_inset
 
- of the LaTeX-Package 
+ du paquetage LaTeX 
 \series bold
 feyn
 \end_layout

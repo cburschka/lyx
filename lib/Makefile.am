@@ -133,6 +133,7 @@ dist_frexamples_DATA = \
 	examples/fr/exemple_brut.lyx \
 	examples/fr/exemple_lyxifie.lyx \
 	examples/fr/exemple-powerdot.lyx \
+	examples/fr/FeynmanDiagrams.lyx \
 	examples/fr/Foils.lyx \
 	examples/fr/linguistics.lyx \
 	examples/fr/ListesPuces.lyx \
