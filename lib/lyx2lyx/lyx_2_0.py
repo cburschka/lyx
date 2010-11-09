@@ -940,58 +940,131 @@ def revert_includeall(document):
 def revert_multirow(document):
     " Revert multirow cells in tables to TeX-code"
     i = 0
+    begin_table = 0
+    bottom_index = 0
     multirow = False
+    # cell type 3 is multirow begin cell
+    i = find_token(document.body, '<cell multirow="3"', i)
+    if i == -1:
+      return
+    # a multirow cell was found
+    multirow = True
     while True:
-      # cell type 3 is multirow begin cell
-      i = find_token(document.body, '<cell multirow="3"', i)
-      if i == -1:
+      # find begin/end of table
+      begin_table = find_token(document.body, '<lyxtabular version=', begin_table)
+      if begin_table == -1:
           break
-      # a multirow cell was found
-      multirow = True
-      # remove the multirow tag, set the valignment to top
-      # and remove the bottom line
-      document.body[i] = document.body[i].replace(' multirow="3" ', ' ')
-      document.body[i] = document.body[i].replace('valignment="middle"', 'valignment="top"')
-      document.body[i] = document.body[i].replace(' bottomline="true" ', ' ')
-      # write ERT to create the multirow cell
-      # use 2 rows and 2cm as default with because the multirow span
-      # and the column width is only hardly accessible
-      cend = find_token(document.body, "</cell>", i)
-      if cend == -1:
-          document.warning("Malformed LyX document: Could not find end of tabular cell.")
-          i += 1
-          continue
-      blay = find_token(document.body, "\\begin_layout", i, cend)
-      if blay == -1:
-          document.warning("Can't find layout for cell!")
-          i = j
-          continue
-      bend = find_end_of_layout(document.body, blay)
-      if blay == -1:
-          document.warning("Can't find end of layout for cell!")
-          i = cend
-          continue
+      end_table = find_token(document.body, '</lyxtabular>', begin_table)
+      if end_table == -1:
+          document.warning("Malformed LyX document: Could not find end of table.")
+          break
+      # store the number of rows
+      begin = document.body[begin_table].find('rows="')
+      end = document.body[begin_table].find('" ', begin)
+      rows = document.body[begin_table][begin + 6:end]
+      # store the number of columns
+      begin = document.body[begin_table].find('columns="')
+      end = document.body[begin_table].find('">', begin)
+      columns = document.body[begin_table][begin + 9:end]
+      # find column number of the multirows
+      begin_row = begin_table
+      for row in range(int(rows)):
+        begin_row = find_token(document.body, '<row>', begin_row)
+        begin_cell = begin_row
+        for column in range(int(columns)):            
+          begin_cell = find_token(document.body, '<cell ', begin_cell)
+          i = document.body[begin_cell].find('multirow="3"')
+          if i <> -1:
+            # we found a multirow in column number column - 1
+            # store column width
+            begin = document.body[begin_table + 2 + column].find('width="')
+            end = document.body[begin_table + 2 + column].find('">', begin)
+            col_width = document.body[begin_table + 2 + column][begin + 7:end]
+            # "0pt" means that no width is specified
+            if col_width == "0pt":
+              col_width = "*"
+            # determine the number of cells that are part of the multirow
+            begin_row2 = begin_table
+            # we have the multirow begin cell as minimal span
+            span = 1
+            # go one row behind the row where we found the multirow begin
+            row2 = -1
+            while row2 < row:
+              begin_row2 = find_token(document.body, '<row>', begin_row2)
+              row2 += 1
+              begin_row2 += 1
+            # step now through all rows until we reach the last table row
+            rows2 = row
+            while row2 < rows:
+              begin_row2 = find_token(document.body, '<row>', begin_row2)
+              begin_cell2 = begin_row2
+              # look now for the column-th cell in the row
+              column2 = 0
+              while column2 < column:
+                begin_cell2 = find_token(document.body, '<cell ', begin_cell2)
+                column2 += 1
+                begin_cell2 += 1
+              # cell type 4 is multirow-part cell
+              begin_cell2 = find_token(document.body, '<cell ', begin_cell2)
+              j = document.body[begin_cell2].find('multirow="4"')
+              #document.warning("j: " + str(j))
+              if j <> -1:
+                span += 1
+                # remove bottom line of previous multirow-part cell
+                if span > 1:
+                  document.body[bottom_index] = document.body[bottom_index].replace(' bottomline="true" ', ' ')
+                # save index to be later able to remove bottom line
+                bottom_index = begin_cell2
+              else:
+                break
+              begin_row2 = find_token(document.body, '</row>', begin_row2)
+            # remove the multirow tag, set the valignment to top
+            # and remove the bottom line
+            document.body[begin_cell] = document.body[begin_cell].replace(' multirow="3" ', ' ')
+            document.body[begin_cell] = document.body[begin_cell].replace('valignment="middle"', 'valignment="top"')
+            # only remove the bottom line if it is not a single cell as multirow 
+            if span > 1:
+              document.body[begin_cell] = document.body[begin_cell].replace(' bottomline="true" ', ' ')
+            # write ERT to create the multirow cell
+            cend = find_token(document.body, "</cell>", begin_cell)
+            if cend == -1:
+              document.warning("Malformed LyX document: Could not find end of tabular cell.")
+              i += 1
+              continue
+            blay = find_token(document.body, "\\begin_layout", begin_cell, cend)
+            if blay == -1:
+              document.warning("Can't find layout for cell!")
+              i = j
+              continue
+            bend = find_end_of_layout(document.body, blay)
+            if bend == -1:
+              document.warning("Can't find end of layout for cell!")
+              i = cend
+              continue
+            # do the later one first, so as not to mess up the numbering
+            # we are wrapping the whole cell in this ert
+            # so before the end of the layout...
+            document.body[bend:bend] = put_cmd_in_ert("}")
+            # ...and after the beginning
+            document.body[blay+1:blay+1] = put_cmd_in_ert("\\multirow{" + str(span) + "}{" + col_width + "}{")
+          # set index to end of current cell (that is now much bigger due to the ERT addition)
+          begin_cell = find_token(document.body, '</cell>', begin_cell) + 1
+        begin_row = find_token(document.body, '</row>', begin_row) + 1
 
-      # do the later one first, so as not to mess up the numbering
-      # we are wrapping the whole cell in this ert
-      # so before the end of the layout...
-      document.body[bend:bend] = put_cmd_in_ert("}")
-      # ...and after the beginning
-      document.body[blay+1:blay+1] = put_cmd_in_ert("\\multirow{2}{2cm}{")
-
+      # revert now all multirow part cells
       while True:
-          # cell type 4 is multirow part cell
-          k = find_token(document.body, '<cell multirow="4"', cend)
-          if k == -1:
-              break
-          # remove the multirow tag, set the valignment to top
-          # and remove the top line
-          document.body[k] = document.body[k].replace(' multirow="4" ', ' ')
-          document.body[k] = document.body[k].replace('valignment="middle"', 'valignment="top"')
-          document.body[k] = document.body[k].replace(' topline="true" ', ' ')
-          k += 1
-      # this will always be ok
-      i = cend
+        # cell type 4 is multirow part cell
+        k = find_token(document.body, '<cell multirow="4"', begin_table)
+        if k == -1:
+          break
+        # remove the multirow tag, set the valignment to top
+        # and remove the top line
+        document.body[k] = document.body[k].replace(' multirow="4" ', ' ')
+        document.body[k] = document.body[k].replace('valignment="middle"', 'valignment="top"')
+        document.body[k] = document.body[k].replace(' topline="true" ', ' ')
+        k += 1
+      # go to the next table
+      begin_table = end_table + 1
 
     if multirow == True:
         add_to_preamble(document, ["\\usepackage{multirow}"])
