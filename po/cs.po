@@ -872,142 +872,118 @@ msgid "Search Citation"
 msgstr "Hledat citaci"
 
 #: src/frontends/qt4/ui/CitationUi.ui:363
-#, fuzzy
 msgid "Searc&h:"
-msgstr "Kde vyhledávat:"
+msgstr "&Hledat:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:376
 msgid ""
 "Enter the text to search for and press Enter or click the button to search"
-msgstr ""
+msgstr "Vlo¾te text a stisknìte enter"
 
 #: src/frontends/qt4/ui/CitationUi.ui:389
-#, fuzzy
 msgid "Click or press Enter in the search box to search"
 msgstr "Mù¾ete také pou¾ít enter ve vyhledávacím poli"
 
 #: src/frontends/qt4/ui/CitationUi.ui:392
-#, fuzzy
 msgid "&Search"
-msgstr "Chyba vyhledávání"
+msgstr "&Vyhledat"
 
 #: src/frontends/qt4/ui/CitationUi.ui:402
-#, fuzzy
 msgid "Search field:"
 msgstr "Kde vyhledávat:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:422
 #: src/frontends/qt4/GuiCitation.cpp:320
-#, fuzzy
 msgid "All fields"
-msgstr "V¹echna políèka"
+msgstr "V¹echna pole"
 
 #: src/frontends/qt4/ui/CitationUi.ui:443
-#, fuzzy
 msgid "Regular e&xpression"
 msgstr "&Regulární výraz"
 
 #: src/frontends/qt4/ui/CitationUi.ui:450
-#, fuzzy
 msgid "Case se&nsitive"
 msgstr "Velikost &písmen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:457
-#, fuzzy
 msgid "Entry types:"
 msgstr "Typy záznamù:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:474
 #: src/frontends/qt4/GuiCitation.cpp:335
-#, fuzzy
 msgid "All entry types"
 msgstr "V¹echny typy záznamù"
 
 #: src/frontends/qt4/ui/CitationUi.ui:495
-#, fuzzy
 msgid "Search as you &type"
 msgstr "&Vyhledávat pøi zadávání"
 
 #: src/frontends/qt4/ui/ColorUi.ui:25
-#, fuzzy
 msgid "Font colors"
 msgstr "Barva písma"
 
 #: src/frontends/qt4/ui/ColorUi.ui:40
-#, fuzzy
 msgid "Main text:"
-msgstr "Maintext"
+msgstr "Hlavní text:"
 
 #: src/frontends/qt4/ui/ColorUi.ui:64 src/frontends/qt4/ui/ColorUi.ui:135
 #: src/frontends/qt4/ui/ColorUi.ui:218 src/frontends/qt4/ui/ColorUi.ui:289
-#, fuzzy
 msgid "Click to change the color"
-msgstr "Kliknìte pro odpojení"
+msgstr "Kliknìte pro zmìnu barvy"
 
 #: src/frontends/qt4/ui/ColorUi.ui:67 src/frontends/qt4/ui/ColorUi.ui:221
-#, fuzzy
 msgid "Default..."
-msgstr "Standardní"
+msgstr "Standardní..."
 
 #: src/frontends/qt4/ui/ColorUi.ui:80 src/frontends/qt4/ui/ColorUi.ui:151
 #: src/frontends/qt4/ui/ColorUi.ui:234 src/frontends/qt4/ui/ColorUi.ui:305
 msgid "Revert the color to the default"
-msgstr ""
+msgstr "Vrátit barvu na standardní"
 
 #: src/frontends/qt4/ui/ColorUi.ui:83 src/frontends/qt4/ui/ColorUi.ui:154
 #: src/frontends/qt4/ui/ColorUi.ui:237 src/frontends/qt4/ui/ColorUi.ui:308
-#, fuzzy
 msgid "R&eset"
-msgstr "Vynulovat"
+msgstr "V&ynulovat"
 
 #: src/frontends/qt4/ui/ColorUi.ui:111
-#, fuzzy
 msgid "Greyed-out notes:"
-msgstr "Za¹edlé"
+msgstr "Za¹edlé poznámky"
 
 #: src/frontends/qt4/ui/ColorUi.ui:138 src/frontends/qt4/ui/ColorUi.ui:292
-#, fuzzy
 msgid "&Change..."
-msgstr "Zmìnit:"
+msgstr "&Zmìnit..."
 
 #: src/frontends/qt4/ui/ColorUi.ui:185
-#, fuzzy
 msgid "Background colors"
-msgstr "pozadí"
+msgstr "Barvy pozadí"
 
 #: src/frontends/qt4/ui/ColorUi.ui:194
-#, fuzzy
 msgid "Page:"
-msgstr "Stránka: "
+msgstr "Stránka:"
 
 #: src/frontends/qt4/ui/ColorUi.ui:265
-#, fuzzy
 msgid "Shaded boxes:"
-msgstr "stínovaný rámeèek"
+msgstr "Stínované rámeèky:"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:22
-#, fuzzy
 msgid "Compare Revisions"
-msgstr "Revision"
+msgstr "Porovnat revize"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:30
-#, fuzzy
 msgid "&Revisions back"
-msgstr "Revision"
+msgstr "&Revizí nazpìt"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:83
-#, fuzzy
 msgid "&Between revisions"
-msgstr "&Mezi øádky:"
+msgstr "&Mezi revizemi:"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:96
 msgid "Old:"
-msgstr ""
+msgstr "Stará:"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:131
-#, fuzzy
 msgid "New:"
-msgstr "&Nová:"
+msgstr "Nová:"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:183
 #, fuzzy
@@ -1015,43 +991,38 @@ msgid "&Ok"
 msgstr "&OK"
 
 #: src/frontends/qt4/ui/CompareUi.ui:19
-#, fuzzy
 msgid "&New Document:"
-msgstr "Nový dokument"
+msgstr "&Nový dokument:"
 
 #: src/frontends/qt4/ui/CompareUi.ui:52
-#, fuzzy
 msgid "&Old Document:"
-msgstr "Dokument potomka"
+msgstr "&Starý dokument:"
 
 #: src/frontends/qt4/ui/CompareUi.ui:75 src/frontends/qt4/ui/PrefUi.ui:38
 msgid "Bro&wse..."
 msgstr "P&rocházet..."
 
 #: src/frontends/qt4/ui/CompareUi.ui:91
-#, fuzzy
 msgid "Copy Document Settings from:"
-msgstr "Nastavení dokumentu"
+msgstr "Nastavení dokumentu vzít z:"
 
 #: src/frontends/qt4/ui/CompareUi.ui:97
-#, fuzzy
 msgid "N&ew Document"
-msgstr "Nový dokument"
+msgstr "N&ový dokument"
 
 #: src/frontends/qt4/ui/CompareUi.ui:104
-#, fuzzy
 msgid "Ol&d Document"
-msgstr "Dokument potomka"
+msgstr "S&tarý dokument"
 
 #: src/frontends/qt4/ui/CompareUi.ui:173
 msgid ""
 "Turns on the change tracking and showing changes in LaTeX output for the "
 "resulting document"
-msgstr ""
+msgstr "Zapne kontrolu revizí a zobrazí zmìny ve výstupním LaTeX-ovém souboru"
 
 #: src/frontends/qt4/ui/CompareUi.ui:176
 msgid "Enable &change tracking features in the output"
-msgstr ""
+msgstr "Zapnout kontrolu revizí na výstupu"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:143
 #: src/frontends/qt4/GuiDelimiter.cpp:278
@@ -1116,9 +1087,8 @@ msgid "O&pen"
 msgstr "O&tevøít"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:36
-#, fuzzy
 msgid "For more information, refer to the complete log."
-msgstr "®ádná informace pro export formátu %1$s."
+msgstr "Pro více informací se podívejte do kompletního logu."
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:43
 msgid "&Errors:"
@@ -1130,12 +1100,11 @@ msgstr "Popis:"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:83
 msgid "Open the LaTeX Log File dialog"
-msgstr ""
+msgstr "Otevøít log LaTeX-u"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:86
-#, fuzzy
 msgid "View Complete &Log..."
-msgstr "Zobraz &Log ..."
+msgstr "Zobraz úplný &log ..."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:35
 msgid "F&ile"
@@ -1299,11 +1268,11 @@ msgstr "y"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:13
 msgid "TabWidget"
-msgstr ""
+msgstr "TabWidget"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:20
 msgid "Basi&c"
-msgstr ""
+msgstr "Zák&ladní"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:26
 #: src/frontends/qt4/ui/LogUi.ui:28 src/frontends/qt4/ui/SearchUi.ui:28
@@ -1317,7 +1286,7 @@ msgstr "N&ahradit èím:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:72
 msgid "Perform a case-sensitive search"
-msgstr ""
+msgstr "Respektovat velikost písma"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:75
 #: src/frontends/qt4/ui/SearchUi.ui:101
@@ -1326,7 +1295,7 @@ msgstr "Velikost pís&men"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:91
 msgid "Find next occurrence [Enter]"
-msgstr ""
+msgstr "Nalézt dal¹í výskyt [Enter]"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:94
 #: src/frontends/qt4/ui/SearchUi.ui:166
@@ -1334,18 +1303,16 @@ msgid "Find &Next"
 msgstr "Najdi &dal¹í"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:107
-#, fuzzy
 msgid "Restrict search to whole words only"
-msgstr "&Hledat pouze celá slova"
+msgstr "Hledat pouze celá slova"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:110
-#, fuzzy
 msgid "W&hole words"
-msgstr "Key words."
+msgstr "&Celá slova"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:126
 msgid "Replace and find next occurrence [Enter]"
-msgstr ""
+msgstr "Nahradit a pøejít na dal¹í výskyt [Enter]"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:129
 #: src/frontends/qt4/ui/SearchUi.ui:179
@@ -1360,9 +1327,8 @@ msgid "Search &backwards"
 msgstr "Hledat na&zpìt"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:152
-#, fuzzy
 msgid "Replace all occurences at once"
-msgstr "Nahradit slovo aktuálnì vybraným"
+msgstr "Nahradit v¹echny výskyty najednou"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:155
 #: src/frontends/qt4/ui/SearchUi.ui:189
@@ -1377,11 +1343,11 @@ msgstr "Roz¹íøené vol&by"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:178
 msgid "The scope to which the search horizon is restricted"
-msgstr ""
+msgstr "Rozsah na kterém je hledání provádìno"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:184
 msgid "Sco&pe"
-msgstr ""
+msgstr "Rozsa&h"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:196
 #, fuzzy
@@ -1394,55 +1360,50 @@ msgid "Current &paragraph"
 msgstr "Ods&adit odstavec"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:212
-#, fuzzy
 msgid "Current &document"
-msgstr "Vytisknout dokument"
+msgstr "Aktuální &dokument"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:231
 msgid ""
 "Current document and all related documents belonging to the same master "
 "document"
-msgstr ""
+msgstr "Aktuální dokument a v¹echny pøíbuzné dokumenty nále¾ející tému¾ hlavnímu souboru"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:234
-#, fuzzy
 msgid "&Master document"
-msgstr "Hlavní dokument"
+msgstr "Hla&vní dokument"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:244
-#, fuzzy
 msgid "All open documents"
-msgstr "Otevøít dokument"
+msgstr "V¹echny otevøené dokumenty"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:247
-#, fuzzy
 msgid "&Open documents"
-msgstr "Otevøít dokument"
+msgstr "&Otevøené dokumenty"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:257
 msgid "All ma&nuals"
-msgstr ""
+msgstr "V¹echny &manuály"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:270
 msgid ""
 "If unchecked, the search will be limited to occurrences of the selected text "
 "and paragraph style"
-msgstr ""
+msgstr "Pokud neza¹krtnuto, hledání bude limitováno pouze na výskyty vybraného textu ve zvoleném stylu"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:273
-#, fuzzy
 msgid "Ignore &format"
-msgstr "D&o formátu:"
+msgstr "Ignorovat &formát"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:283
 msgid ""
 "Keep the case of the replacement's first letter as in each matching text "
 "first letter"
-msgstr ""
+msgstr "Zachovat velikost prvního písmene pøi nahrazování"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:286
 msgid "&Preserve first case on replace"
-msgstr ""
+msgstr "Zachovat velikost prvního"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:296
 #, fuzzy
