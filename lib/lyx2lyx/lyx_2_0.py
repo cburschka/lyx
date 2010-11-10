@@ -949,7 +949,6 @@ def revert_multirow(document):
     add_to_preamble(document, ["\\usepackage{multirow}"])
 
     begin_table = 0
-    mrstarts = []
     while True:
         # find begin/end of table
         begin_table = find_token(document.body, '<lyxtabular version=', begin_table)
@@ -977,7 +976,8 @@ def revert_multirow(document):
           document.warning("Unable to determine rows and columns!")
           begin_table = end_table
           continue
-        
+
+        mrstarts = []
         multirows = []
         # collect info on rows and columns of this table.
         begin_row = begin_table
@@ -1014,55 +1014,56 @@ def revert_multirow(document):
                   multirows[row][column][2] = 4 # in multirow
                 begin_cell = end_cell
             begin_row = end_row
-            # end for loops
-        begin_table = end_table
+        # end of table info collection
 
-    # work from the back to avoid messing up numbering
-    mrstarts.reverse()
-    for m in mrstarts:
-        row = m[0]
-        col = m[1]
-        # get column width
-        col_width = get_option_value(document.body[begin_table + 2 + col], "width")
-        # "0pt" means that no width is specified
-        if not col_width or col_width == "0pt":
-          col_width = "*"
-        # determine the number of cells that are part of the multirow
-        nummrs = 1
-        for r in range(row + 1, numrows):
-            if multirows[r][col][2] != 4:
-              break
-            nummrs += 1
-            # take the opportunity to revert this line
-            lineno = multirows[r][col][0]
-            document.body[lineno] = document.body[lineno].\
-              replace(' multirow="4" ', ' ').\
-              replace('valignment="middle"', 'valignment="top"').\
-              replace(' topline="true" ', ' ')
-            # remove bottom line of previous multirow-part cell
-            lineno = multirows[r-1][col][0]
-            document.body[lineno] = document.body[lineno].replace(' bottomline="true" ', ' ')
-        # revert beginning cell
-        bcell = multirows[row][col][0]
-        ecell = multirows[row][col][1]
-        document.body[bcell] = document.body[bcell].\
-          replace(' multirow="3" ', ' ').\
-          replace('valignment="middle"', 'valignment="top"')
-        blay = find_token(document.body, "\\begin_layout", bcell, ecell)
-        if blay == -1:
-          document.warning("Can't find layout for cell!")
-          continue
-        bend = find_end_of_layout(document.body, blay)
-        if bend == -1:
-          document.warning("Can't find end of layout for cell!")
-          continue
-        # do the later one first, so as not to mess up the numbering
-        # we are wrapping the whole cell in this ert
-        # so before the end of the layout...
-        document.body[bend:bend] = put_cmd_in_ert("}")
-        # ...and after the beginning
-        document.body[blay + 1:blay + 1] = \
-          put_cmd_in_ert("\\multirow{" + str(nummrs) + "}{" + col_width + "}{")
+        # work from the back to avoid messing up numbering
+        mrstarts.reverse()
+        for m in mrstarts:
+            row = m[0]
+            col = m[1]
+            # get column width
+            col_width = get_option_value(document.body[begin_table + 2 + col], "width")
+            # "0pt" means that no width is specified
+            if not col_width or col_width == "0pt":
+              col_width = "*"
+            # determine the number of cells that are part of the multirow
+            nummrs = 1
+            for r in range(row + 1, numrows):
+                if multirows[r][col][2] != 4:
+                  break
+                nummrs += 1
+                # take the opportunity to revert this line
+                lineno = multirows[r][col][0]
+                document.body[lineno] = document.body[lineno].\
+                  replace(' multirow="4" ', ' ').\
+                  replace('valignment="middle"', 'valignment="top"').\
+                  replace(' topline="true" ', ' ')
+                # remove bottom line of previous multirow-part cell
+                lineno = multirows[r-1][col][0]
+                document.body[lineno] = document.body[lineno].replace(' bottomline="true" ', ' ')
+            # revert beginning cell
+            bcell = multirows[row][col][0]
+            ecell = multirows[row][col][1]
+            document.body[bcell] = document.body[bcell].\
+              replace(' multirow="3" ', ' ').\
+              replace('valignment="middle"', 'valignment="top"')
+            blay = find_token(document.body, "\\begin_layout", bcell, ecell)
+            if blay == -1:
+              document.warning("Can't find layout for cell!")
+              continue
+            bend = find_end_of_layout(document.body, blay)
+            if bend == -1:
+              document.warning("Can't find end of layout for cell!")
+              continue
+            # do the later one first, so as not to mess up the numbering
+            # we are wrapping the whole cell in this ert
+            # so before the end of the layout...
+            document.body[bend:bend] = put_cmd_in_ert("}")
+            # ...and after the beginning
+            document.body[blay + 1:blay + 1] = \
+              put_cmd_in_ert("\\multirow{" + str(nummrs) + "}{" + col_width + "}{")
+
+        begin_table = end_table
 
 
 def convert_math_output(document):
