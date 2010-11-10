@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-11-07 01:51+0100\n"
+"POT-Creation-Date: 2010-11-10 01:15+0100\n"
 "PO-Revision-Date: 2010-10-28 01:31+0100\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: \n"
@@ -229,6 +229,7 @@ msgstr "&Masukkan bibliografi dalam Daftar Isi"
 #: src/frontends/qt4/ui/BibtexUi.ui:200
 #: src/frontends/qt4/ui/CharacterUi.ui:357
 #: src/frontends/qt4/ui/CitationUi.ui:197
+#: src/frontends/qt4/ui/CompareHistoryUi.ui:183
 #: src/frontends/qt4/ui/CompareUi.ui:145 src/frontends/qt4/ui/DocumentUi.ui:67
 #: src/frontends/qt4/ui/ExternalUi.ui:599
 #: src/frontends/qt4/ui/GraphicsUi.ui:721
@@ -306,23 +307,23 @@ msgid "Horizontal alignment of the content inside the box"
 msgstr "Pengaturan horisontal kandungan dalam boks"
 
 #: src/frontends/qt4/ui/BoxUi.ui:63 src/frontends/qt4/ui/ListingsUi.ui:103
-#: src/frontends/qt4/ui/TabularUi.ui:66 src/frontends/qt4/ui/TabularUi.ui:1334
+#: src/frontends/qt4/ui/TabularUi.ui:66 src/frontends/qt4/ui/TabularUi.ui:1367
 #: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiParagraph.cpp:109
-#: src/frontends/qt4/GuiTabular.cpp:685
+#: src/frontends/qt4/GuiTabular.cpp:723
 msgid "Left"
 msgstr "Kiri"
 
 #: src/frontends/qt4/ui/BoxUi.ui:68 src/frontends/qt4/ui/TabularUi.ui:71
-#: src/frontends/qt4/ui/TabularUi.ui:1341 src/frontends/qt4/GuiExternal.cpp:77
+#: src/frontends/qt4/ui/TabularUi.ui:1374 src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:72 src/frontends/qt4/GuiParagraph.cpp:111
-#: src/frontends/qt4/GuiTabular.cpp:686
+#: src/frontends/qt4/GuiTabular.cpp:724
 msgid "Center"
 msgstr "Tengah"
 
 #: src/frontends/qt4/ui/BoxUi.ui:73 src/frontends/qt4/ui/ListingsUi.ui:108
-#: src/frontends/qt4/ui/TabularUi.ui:76 src/frontends/qt4/ui/TabularUi.ui:1351
+#: src/frontends/qt4/ui/TabularUi.ui:76 src/frontends/qt4/ui/TabularUi.ui:1384
 #: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiParagraph.cpp:110
-#: src/frontends/qt4/GuiTabular.cpp:687
+#: src/frontends/qt4/GuiTabular.cpp:725
 msgid "Right"
 msgstr "Kanan"
 
@@ -336,19 +337,19 @@ msgstr "Pengaturan vertikal di dalam kotak"
 
 #: src/frontends/qt4/ui/BoxUi.ui:96 src/frontends/qt4/ui/BoxUi.ui:123
 #: src/frontends/qt4/ui/MathMatrixUi.ui:167
-#: src/frontends/qt4/ui/TabularUi.ui:190 src/frontends/qt4/ui/TabularUi.ui:301
+#: src/frontends/qt4/ui/TabularUi.ui:190 src/frontends/qt4/ui/TabularUi.ui:334
 msgid "Top"
 msgstr "Atas"
 
 #: src/frontends/qt4/ui/BoxUi.ui:101 src/frontends/qt4/ui/BoxUi.ui:128
 #: src/frontends/qt4/ui/MathMatrixUi.ui:172
-#: src/frontends/qt4/ui/TabularUi.ui:195 src/frontends/qt4/ui/TabularUi.ui:306
+#: src/frontends/qt4/ui/TabularUi.ui:195 src/frontends/qt4/ui/TabularUi.ui:339
 msgid "Middle"
 msgstr "Tengah"
 
 #: src/frontends/qt4/ui/BoxUi.ui:106 src/frontends/qt4/ui/BoxUi.ui:133
 #: src/frontends/qt4/ui/MathMatrixUi.ui:177
-#: src/frontends/qt4/ui/TabularUi.ui:200 src/frontends/qt4/ui/TabularUi.ui:311
+#: src/frontends/qt4/ui/TabularUi.ui:200 src/frontends/qt4/ui/TabularUi.ui:344
 msgid "Bottom"
 msgstr "Bawah"
 
@@ -406,9 +407,9 @@ msgstr "Box dalam -- diperlukan untuk fixed width & line breaks"
 #: src/frontends/qt4/ui/BoxUi.ui:273 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98
 #: src/frontends/qt4/ui/MathMatrixUi.ui:247
-#: src/frontends/qt4/ui/TabularUi.ui:984
-#: src/frontends/qt4/ui/TabularUi.ui:1003
-#: src/frontends/qt4/ui/TabularUi.ui:1051 src/frontends/qt4/GuiBox.cpp:193
+#: src/frontends/qt4/ui/TabularUi.ui:1017
+#: src/frontends/qt4/ui/TabularUi.ui:1036
+#: src/frontends/qt4/ui/TabularUi.ui:1084 src/frontends/qt4/GuiBox.cpp:193
 #: src/frontends/qt4/GuiBox.cpp:311 src/frontends/qt4/GuiBox.cpp:388
 #: src/frontends/qt4/GuiDocument.cpp:113 src/frontends/qt4/GuiGraphics.cpp:579
 #: src/frontends/qt4/GuiPrefs.cpp:2041 src/frontends/qt4/GuiPrefs.cpp:2064
@@ -536,11 +537,11 @@ msgstr ""
 #: src/frontends/qt4/GuiClipboard.cpp:240
 #: src/frontends/qt4/GuiDocument.cpp:1774
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2046
-#: src/frontends/qt4/GuiView.cpp:2235 src/frontends/qt4/GuiView.cpp:2300
-#: src/frontends/qt4/GuiView.cpp:2506 src/frontends/qt4/GuiView.cpp:2513
-#: src/frontends/qt4/GuiView.cpp:2614 src/frontends/qt4/GuiView.cpp:2642
-#: src/frontends/qt4/GuiView.cpp:3153 src/insets/InsetBibtex.cpp:147
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2047
+#: src/frontends/qt4/GuiView.cpp:2236 src/frontends/qt4/GuiView.cpp:2281
+#: src/frontends/qt4/GuiView.cpp:2487 src/frontends/qt4/GuiView.cpp:2494
+#: src/frontends/qt4/GuiView.cpp:2595 src/frontends/qt4/GuiView.cpp:2623
+#: src/frontends/qt4/GuiView.cpp:3155 src/insets/InsetBibtex.cpp:147
 msgid "&Cancel"
 msgstr "&Kembali"
 
@@ -566,9 +567,9 @@ msgstr "Uku&ran:"
 #: src/frontends/qt4/ui/BulletsUi.ui:66
 #: src/frontends/qt4/ui/ParagraphUi.ui:115
 #: src/frontends/qt4/ui/PrefLatexUi.ui:52
-#: src/frontends/qt4/ui/TabularUi.ui:989
-#: src/frontends/qt4/ui/TabularUi.ui:1008
-#: src/frontends/qt4/ui/TabularUi.ui:1056 lib/ui/stdtoolbars.inc:110
+#: src/frontends/qt4/ui/TabularUi.ui:1022
+#: src/frontends/qt4/ui/TabularUi.ui:1041
+#: src/frontends/qt4/ui/TabularUi.ui:1089 lib/ui/stdtoolbars.inc:110
 #: src/Font.cpp:178 src/HSpace.cpp:117 src/frontends/qt4/GuiDocument.cpp:109
 #: src/frontends/qt4/GuiDocument.cpp:127 src/frontends/qt4/GuiDocument.cpp:143
 #: src/frontends/qt4/GuiDocument.cpp:156 src/frontends/qt4/GuiDocument.cpp:685
@@ -1027,11 +1028,6 @@ msgstr ""
 #, fuzzy
 msgid "New:"
 msgstr "&Baru:"
-
-#: src/frontends/qt4/ui/CompareHistoryUi.ui:183
-#, fuzzy
-msgid "&Ok"
-msgstr "&Setuju"
 
 #: src/frontends/qt4/ui/CompareUi.ui:19
 #, fuzzy
@@ -2213,7 +2209,7 @@ msgid "Choose the font size for line numbers"
 msgstr "Pilih ukuran huruf untuk nomor baris"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:188
-#: src/frontends/qt4/ui/TabularUi.ui:913
+#: src/frontends/qt4/ui/TabularUi.ui:946
 msgid "Style"
 msgstr "Corak"
 
@@ -2963,9 +2959,9 @@ msgid "Double"
 msgstr "Dua"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:135
-#: src/frontends/qt4/ui/TabularUi.ui:994
-#: src/frontends/qt4/ui/TabularUi.ui:1013
-#: src/frontends/qt4/ui/TabularUi.ui:1061 src/frontends/qt4/ui/VSpaceUi.ui:107
+#: src/frontends/qt4/ui/TabularUi.ui:1027
+#: src/frontends/qt4/ui/TabularUi.ui:1046
+#: src/frontends/qt4/ui/TabularUi.ui:1094 src/frontends/qt4/ui/VSpaceUi.ui:107
 #: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:686
 #: src/frontends/qt4/GuiDocument.cpp:690 src/frontends/qt4/GuiDocument.cpp:698
 #: src/frontends/qt4/GuiDocument.cpp:794 src/frontends/qt4/GuiDocument.cpp:841
@@ -4129,8 +4125,8 @@ msgstr ""
 msgid "&Single close-tab button"
 msgstr "&Satu tombol penutup tab"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/frontends/qt4/GuiView.cpp:2506
-#: src/frontends/qt4/GuiView.cpp:2513 src/frontends/qt4/GuiView.cpp:2614
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/frontends/qt4/GuiView.cpp:2487
+#: src/frontends/qt4/GuiView.cpp:2494 src/frontends/qt4/GuiView.cpp:2595
 msgid "&Save"
 msgstr "&Simpan"
 
@@ -4456,7 +4452,7 @@ msgid "Clear current shortcut"
 msgstr "Hapus cara pintas yang sekarang"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:100
-#: src/frontends/qt4/ui/TabularUi.ui:903
+#: src/frontends/qt4/ui/TabularUi.ui:936
 msgid "C&lear"
 msgstr "&Bersihkan"
 
@@ -4575,11 +4571,11 @@ msgid "Horizontal alignment in column"
 msgstr "Pengaturan horisontal dalam kolom"
 
 #: src/frontends/qt4/ui/TabularUi.ui:61 src/frontends/qt4/GuiParagraph.cpp:108
-#: src/frontends/qt4/GuiTabular.cpp:689
+#: src/frontends/qt4/GuiTabular.cpp:727
 msgid "Justified"
 msgstr "Rata kiri kanan"
 
-#: src/frontends/qt4/ui/TabularUi.ui:81 src/frontends/qt4/GuiTabular.cpp:691
+#: src/frontends/qt4/ui/TabularUi.ui:81 src/frontends/qt4/GuiTabular.cpp:729
 #, fuzzy
 msgid "At Decimal Separator"
 msgstr "Pemisah"
@@ -4623,243 +4619,257 @@ msgstr ""
 msgid "M&ultirow"
 msgstr ""
 
-#: src/frontends/qt4/ui/TabularUi.ui:256
+#: src/frontends/qt4/ui/TabularUi.ui:255
+msgid "optional vertical offset"
+msgstr ""
+
+#: src/frontends/qt4/ui/TabularUi.ui:258
+#, fuzzy
+msgid "&Vertical Offset:"
+msgstr "Spasi &Vertikal"
+
+#: src/frontends/qt4/ui/TabularUi.ui:271
+#, fuzzy
+msgid "value of the optional vertical offset"
+msgstr "Spasi &Vertikal"
+
+#: src/frontends/qt4/ui/TabularUi.ui:289
 #, fuzzy
 msgid "Cell setting"
 msgstr "Pengaturan Nota"
 
-#: src/frontends/qt4/ui/TabularUi.ui:262
+#: src/frontends/qt4/ui/TabularUi.ui:295
 msgid "Rotate this cell by 90 degrees"
 msgstr "Putar sel 90 derajat"
 
-#: src/frontends/qt4/ui/TabularUi.ui:265
+#: src/frontends/qt4/ui/TabularUi.ui:298
 msgid "Rotate &cell 90 degrees"
 msgstr "Putar sel 90 &derajat"
 
-#: src/frontends/qt4/ui/TabularUi.ui:278
+#: src/frontends/qt4/ui/TabularUi.ui:311
 #, fuzzy
 msgid "Table-wide settings"
 msgstr "Pengaturan Tabel"
 
-#: src/frontends/qt4/ui/TabularUi.ui:284
+#: src/frontends/qt4/ui/TabularUi.ui:317
 #, fuzzy
 msgid "Verti&cal alignment:"
 msgstr "Pelurusan vertikal"
 
-#: src/frontends/qt4/ui/TabularUi.ui:294
+#: src/frontends/qt4/ui/TabularUi.ui:327
 #, fuzzy
 msgid "Vertical alignment of the table"
 msgstr "Pelurusan vertikal"
 
-#: src/frontends/qt4/ui/TabularUi.ui:338
+#: src/frontends/qt4/ui/TabularUi.ui:371
 msgid "Rotate the table by 90 degrees"
 msgstr "Putar tabel 90 derajat"
 
-#: src/frontends/qt4/ui/TabularUi.ui:341
+#: src/frontends/qt4/ui/TabularUi.ui:374
 msgid "&Rotate table 90 degrees"
 msgstr "&Putar tabel 90 derajat"
 
-#: src/frontends/qt4/ui/TabularUi.ui:351
+#: src/frontends/qt4/ui/TabularUi.ui:384
 msgid "LaTe&X argument:"
 msgstr "LaTe&X argumen:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:361
+#: src/frontends/qt4/ui/TabularUi.ui:394
 msgid "Custom column format (LaTeX)"
 msgstr "Pengaturan format kolom dalam LaTeX"
 
-#: src/frontends/qt4/ui/TabularUi.ui:369
+#: src/frontends/qt4/ui/TabularUi.ui:402
 msgid "&Borders"
 msgstr "&Garis Batas"
 
-#: src/frontends/qt4/ui/TabularUi.ui:375
+#: src/frontends/qt4/ui/TabularUi.ui:408
 msgid "Set Borders"
 msgstr "Rancang Batas"
 
-#: src/frontends/qt4/ui/TabularUi.ui:871
+#: src/frontends/qt4/ui/TabularUi.ui:904
 msgid "Set borders of the current (selected) cell(s)"
 msgstr "Membuat garis batas untuk sel-sel yang dipilih"
 
-#: src/frontends/qt4/ui/TabularUi.ui:884
+#: src/frontends/qt4/ui/TabularUi.ui:917
 msgid "All Borders"
 msgstr "Batas keliling"
 
-#: src/frontends/qt4/ui/TabularUi.ui:890
+#: src/frontends/qt4/ui/TabularUi.ui:923
 msgid "Set all borders of the current (selected) cell(s)"
 msgstr "Buat garis keliling di sel yang sudah dipilih"
 
-#: src/frontends/qt4/ui/TabularUi.ui:893
+#: src/frontends/qt4/ui/TabularUi.ui:926
 msgid "&Set"
 msgstr "&Buat garis"
 
-#: src/frontends/qt4/ui/TabularUi.ui:900
+#: src/frontends/qt4/ui/TabularUi.ui:933
 msgid "Unset all borders of the current (selected) cell(s)"
 msgstr "Menghiangkan semua garis batas keliling"
 
-#: src/frontends/qt4/ui/TabularUi.ui:919
+#: src/frontends/qt4/ui/TabularUi.ui:952
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
 msgstr "Gunakan gaya penggunaan garis formal (tanpa garis batas vertikal)"
 
-#: src/frontends/qt4/ui/TabularUi.ui:922
+#: src/frontends/qt4/ui/TabularUi.ui:955
 msgid "Fo&rmal"
 msgstr "Fo&rmal"
 
-#: src/frontends/qt4/ui/TabularUi.ui:932
+#: src/frontends/qt4/ui/TabularUi.ui:965
 msgid "Use default (grid-like) border style"
 msgstr "Menggunakan garis default yaitu model garis grid"
 
-#: src/frontends/qt4/ui/TabularUi.ui:935
+#: src/frontends/qt4/ui/TabularUi.ui:968
 msgid "De&fault"
 msgstr "De&fault"
 
-#: src/frontends/qt4/ui/TabularUi.ui:961
+#: src/frontends/qt4/ui/TabularUi.ui:994
 msgid "Additional Space"
 msgstr "Spasi Tambahan"
 
-#: src/frontends/qt4/ui/TabularUi.ui:967
+#: src/frontends/qt4/ui/TabularUi.ui:1000
 msgid "T&op of row:"
 msgstr "&Atas baris:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1027
+#: src/frontends/qt4/ui/TabularUi.ui:1060
 msgid "Botto&m of row:"
 msgstr "Ba&wah baris:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1040
+#: src/frontends/qt4/ui/TabularUi.ui:1073
 msgid "Bet&ween rows:"
 msgstr "A&ntara baris:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1089
+#: src/frontends/qt4/ui/TabularUi.ui:1122
 msgid "&Longtable"
 msgstr "&Tabel Panjang"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1095
+#: src/frontends/qt4/ui/TabularUi.ui:1128
 msgid "Select for tables that span multiple pages"
 msgstr "Pilih tabel yang terbentang pada beberapa halaman"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1098
+#: src/frontends/qt4/ui/TabularUi.ui:1131
 msgid "&Use long table"
 msgstr "&Gunakan Tabel Panjang"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1108
+#: src/frontends/qt4/ui/TabularUi.ui:1141
 #, fuzzy
 msgid "Row settings"
 msgstr "Pengaturan Kotak"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1114
+#: src/frontends/qt4/ui/TabularUi.ui:1147
 msgid "Status"
 msgstr "Status Aktif"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1121
+#: src/frontends/qt4/ui/TabularUi.ui:1154
 msgid "Border above"
 msgstr "Garis atas"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1128
+#: src/frontends/qt4/ui/TabularUi.ui:1161
 msgid "Border below"
 msgstr "Garis bawah"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1135
+#: src/frontends/qt4/ui/TabularUi.ui:1168
 msgid "Contents"
 msgstr "Isi"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1142
+#: src/frontends/qt4/ui/TabularUi.ui:1175
 msgid "Header:"
 msgstr "Header:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1149
+#: src/frontends/qt4/ui/TabularUi.ui:1182
 msgid "Repeat this row as header on every (except the first) page"
 msgstr ""
 "Munculkan baris ini sebagai header di setiap halaman (kecuali halaman "
 "pertama)"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1152
-#: src/frontends/qt4/ui/TabularUi.ui:1189
-#: src/frontends/qt4/ui/TabularUi.ui:1230
-#: src/frontends/qt4/ui/TabularUi.ui:1261
-#: src/frontends/qt4/ui/TabularUi.ui:1299 src/frontends/qt4/GuiToolbar.cpp:350
+#: src/frontends/qt4/ui/TabularUi.ui:1185
+#: src/frontends/qt4/ui/TabularUi.ui:1222
+#: src/frontends/qt4/ui/TabularUi.ui:1263
+#: src/frontends/qt4/ui/TabularUi.ui:1294
+#: src/frontends/qt4/ui/TabularUi.ui:1332 src/frontends/qt4/GuiToolbar.cpp:350
 #: src/frontends/qt4/GuiToolbar.cpp:359
 msgid "on"
 msgstr "ya"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1162
-#: src/frontends/qt4/ui/TabularUi.ui:1169
-#: src/frontends/qt4/ui/TabularUi.ui:1196
-#: src/frontends/qt4/ui/TabularUi.ui:1203
-#: src/frontends/qt4/ui/TabularUi.ui:1237
-#: src/frontends/qt4/ui/TabularUi.ui:1244
-#: src/frontends/qt4/ui/TabularUi.ui:1268
-#: src/frontends/qt4/ui/TabularUi.ui:1275
+#: src/frontends/qt4/ui/TabularUi.ui:1195
+#: src/frontends/qt4/ui/TabularUi.ui:1202
+#: src/frontends/qt4/ui/TabularUi.ui:1229
+#: src/frontends/qt4/ui/TabularUi.ui:1236
+#: src/frontends/qt4/ui/TabularUi.ui:1270
+#: src/frontends/qt4/ui/TabularUi.ui:1277
+#: src/frontends/qt4/ui/TabularUi.ui:1301
+#: src/frontends/qt4/ui/TabularUi.ui:1308
 msgid "double"
 msgstr "ganda"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1176
+#: src/frontends/qt4/ui/TabularUi.ui:1209
 msgid "First header:"
 msgstr "Header pertama:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1183
+#: src/frontends/qt4/ui/TabularUi.ui:1216
 msgid "This row is the header of the first page"
 msgstr "Baris ini adalah header untuk halaman pertama saja"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1210
+#: src/frontends/qt4/ui/TabularUi.ui:1243
 msgid "Don't output the first header"
 msgstr "Jangan munculkan header pertama"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1213
-#: src/frontends/qt4/ui/TabularUi.ui:1285
+#: src/frontends/qt4/ui/TabularUi.ui:1246
+#: src/frontends/qt4/ui/TabularUi.ui:1318
 msgid "is empty"
 msgstr "kosong"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1220
+#: src/frontends/qt4/ui/TabularUi.ui:1253
 msgid "Footer:"
 msgstr "Footer:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1227
+#: src/frontends/qt4/ui/TabularUi.ui:1260
 msgid "Repeat this row as footer on every (except the last) page"
 msgstr ""
 "Munculkan baris ini sebagai footer di semua halaman (kecuali di halaman "
 "terakhir)"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1251
+#: src/frontends/qt4/ui/TabularUi.ui:1284
 msgid "Last footer:"
 msgstr "Footer terakhir:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1258
+#: src/frontends/qt4/ui/TabularUi.ui:1291
 msgid "This row is the footer of the last page"
 msgstr "Baris ini sebagai footer di halaman terakhir"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1282
+#: src/frontends/qt4/ui/TabularUi.ui:1315
 msgid "Don't output the last footer"
 msgstr "Jangan tampilkan footer terakhir"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1292
+#: src/frontends/qt4/ui/TabularUi.ui:1325
 msgid "Caption:"
 msgstr "Caption:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1309
+#: src/frontends/qt4/ui/TabularUi.ui:1342
 msgid "Set a page break on the current row"
 msgstr "Membuat pemisah halaman pada baris yang sekarang"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1312
+#: src/frontends/qt4/ui/TabularUi.ui:1345
 msgid "Page &break on current row"
 msgstr "Pemisah halaman pada &baris"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1325
+#: src/frontends/qt4/ui/TabularUi.ui:1358
 #, fuzzy
 msgid "Horizontal alignment of the longtable"
 msgstr "Pengaturan horisontal kandungan dalam boks"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1328
+#: src/frontends/qt4/ui/TabularUi.ui:1361
 #, fuzzy
 msgid "Longtable alignment"
 msgstr "Posisi &horisontal:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1380
+#: src/frontends/qt4/ui/TabularUi.ui:1413
 msgid "Current cell:"
 msgstr "Posisi sel sekarang:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1402
+#: src/frontends/qt4/ui/TabularUi.ui:1435
 msgid "Current row position"
 msgstr "Lokasi sel sekarang berada pada baris ke"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1424
+#: src/frontends/qt4/ui/TabularUi.ui:1457
 msgid "Current column position"
 msgstr "Lokasi sel sekarang berada pada kolom ke"
 
@@ -5617,7 +5627,7 @@ msgstr "Proof"
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
-#: lib/ui/stdtoolbars.inc:67 src/insets/InsetRef.cpp:296
+#: lib/ui/stdtoolbars.inc:67 src/insets/InsetRef.cpp:308
 msgid "Standard"
 msgstr "Standar"
 
@@ -10132,10 +10142,14 @@ msgstr "Nota:Tanda-abu-abu"
 msgid "greyedout"
 msgstr "Tanda-abu-abu"
 
-#: lib/layouts/stdinsets.inc:133 lib/layouts/stdinsets.inc:134
-#: src/insets/InsetERT.cpp:143 src/insets/InsetERT.cpp:145
+#: lib/layouts/stdinsets.inc:133
 msgid "ERT"
 msgstr "ERT"
+
+#: lib/layouts/stdinsets.inc:134 src/insets/InsetERT.cpp:143
+#: src/insets/InsetERT.cpp:145 src/mathed/MathMacroTemplate.cpp:537
+msgid "TeX"
+msgstr "TeX"
 
 #: lib/layouts/stdinsets.inc:155 lib/ui/stdcontext.inc:194
 #: lib/ui/stdmenus.inc:397 lib/ui/stdmenus.inc:470
@@ -17036,8 +17050,8 @@ msgstr "Perintah tanggal"
 msgid "Table (CSV)"
 msgstr "Tabel (CSV)"
 
-#: lib/configure.py:567 src/frontends/qt4/GuiView.cpp:1101
-#: src/frontends/qt4/GuiView.cpp:1102 src/mathed/MathMacroTemplate.cpp:542
+#: lib/configure.py:567 src/frontends/qt4/GuiView.cpp:1102
+#: src/frontends/qt4/GuiView.cpp:1103 src/mathed/MathMacroTemplate.cpp:542
 msgid "LyX"
 msgstr "LyX"
 
@@ -17312,8 +17326,8 @@ msgid "Overwrite modified file?"
 msgstr "Tindih berkas yang diubah?"
 
 #: src/Buffer.cpp:1016 src/Buffer.cpp:2222 src/Exporter.cpp:50
-#: src/frontends/qt4/GuiClipboard.cpp:240 src/frontends/qt4/GuiView.cpp:2046
-#: src/frontends/qt4/GuiView.cpp:2235
+#: src/frontends/qt4/GuiClipboard.cpp:240 src/frontends/qt4/GuiView.cpp:2047
+#: src/frontends/qt4/GuiView.cpp:2236
 msgid "&Overwrite"
 msgstr "&Tindih"
 
@@ -17443,7 +17457,7 @@ msgstr "Tidak sukses menjalankan chktex"
 msgid "Don't know how to export to format: %1$s"
 msgstr "Tidak ada informasi untuk ekspor format %1$s."
 
-#: src/Buffer.cpp:1967 src/frontends/qt4/GuiView.cpp:3008
+#: src/Buffer.cpp:1967 src/frontends/qt4/GuiView.cpp:3010
 #, fuzzy, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Tidak ada informasi untuk ekspor format %1$s."
@@ -17649,12 +17663,12 @@ msgstr "Dokumen %1$s dimuat ulang."
 msgid "Could not reload document %1$s."
 msgstr "Tidak bisa memuat ulang dokumen %1$s"
 
-#: src/Buffer.cpp:4152
+#: src/Buffer.cpp:4185
 #, fuzzy
 msgid "Included File Invalid"
 msgstr "Berkas Ikutan...|a"
 
-#: src/Buffer.cpp:4153
+#: src/Buffer.cpp:4186
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -18508,7 +18522,7 @@ msgstr "  Angka %1$s"
 msgid "Cannot view file"
 msgstr "Tidak bisa menampilkan berkas"
 
-#: src/Format.cpp:288 src/Format.cpp:354 src/frontends/qt4/GuiView.cpp:2873
+#: src/Format.cpp:288 src/Format.cpp:354 src/frontends/qt4/GuiView.cpp:2854
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Berkas tidak ada: %1$s"
@@ -18701,7 +18715,7 @@ msgstr ""
 msgid "LyX crashed!"
 msgstr ""
 
-#: src/LyX.cpp:697 src/frontends/qt4/GuiView.cpp:940
+#: src/LyX.cpp:697 src/frontends/qt4/GuiView.cpp:941
 msgid "LyX: "
 msgstr "LyX: "
 
@@ -19485,7 +19499,7 @@ msgstr "(tidak ada deskripsi awal)"
 msgid "(no log message)"
 msgstr "(tidak ada catatan log)"
 
-#: src/LyXVC.cpp:170 src/frontends/qt4/GuiView.cpp:2731
+#: src/LyXVC.cpp:170 src/frontends/qt4/GuiView.cpp:2712
 msgid "LyX VC: Log Message"
 msgstr "LyX KV: Catatan Pesan"
 
@@ -19506,7 +19520,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Memanggil versi yang disimpan dari dokumen?"
 
-#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3153
+#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3155
 msgid "&Revert"
 msgstr "&Kembalikan"
 
@@ -19743,7 +19757,7 @@ msgstr ""
 #: src/VCBackend.cpp:746 src/VCBackend.cpp:807 src/VCBackend.cpp:868
 #: src/VCBackend.cpp:876 src/VCBackend.cpp:1084 src/VCBackend.cpp:1177
 #: src/VCBackend.cpp:1183 src/VCBackend.cpp:1204
-#: src/frontends/qt4/GuiView.cpp:2693
+#: src/frontends/qt4/GuiView.cpp:2674
 msgid "Revision control error."
 msgstr "Kesalahan Kontrol Revisi"
 
@@ -19998,7 +20012,7 @@ msgstr ""
 msgid "Reload saved document?"
 msgstr "Muat ulang dokumen yang disimpan?"
 
-#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2642
+#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2623
 msgid "&Reload"
 msgstr "&Muat Ulang"
 
@@ -20392,9 +20406,9 @@ msgstr "Bibliografi BibTeX"
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
 #: src/frontends/qt4/GuiDocument.cpp:1816
 #: src/frontends/qt4/GuiExternal.cpp:639 src/frontends/qt4/GuiGraphics.cpp:799
-#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1797
-#: src/frontends/qt4/GuiView.cpp:1855 src/frontends/qt4/GuiView.cpp:1996
-#: src/frontends/qt4/GuiView.cpp:2118 src/frontends/qt4/GuiView.cpp:2204
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1798
+#: src/frontends/qt4/GuiView.cpp:1856 src/frontends/qt4/GuiView.cpp:1997
+#: src/frontends/qt4/GuiView.cpp:2119 src/frontends/qt4/GuiView.cpp:2205
 msgid "Documents|#o#O"
 msgstr "Dokumen|#o#O"
 
@@ -20646,10 +20660,10 @@ msgid "Choose a filename to save the pasted graphic as"
 msgstr ""
 "Pilih nama berkas untuk menyimpan gambar yang ditempel dengan nama lain"
 
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1874
-#: src/frontends/qt4/GuiView.cpp:2016 src/frontends/qt4/GuiView.cpp:2032
-#: src/frontends/qt4/GuiView.cpp:2049 src/frontends/qt4/GuiView.cpp:2135
-#: src/frontends/qt4/GuiView.cpp:2180
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1875
+#: src/frontends/qt4/GuiView.cpp:2017 src/frontends/qt4/GuiView.cpp:2033
+#: src/frontends/qt4/GuiView.cpp:2050 src/frontends/qt4/GuiView.cpp:2136
+#: src/frontends/qt4/GuiView.cpp:2181
 msgid "Canceled."
 msgstr "Dibatalkan."
 
@@ -20679,9 +20693,9 @@ msgstr ""
 msgid "Select document"
 msgstr "Pilih dokumen master"
 
-#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1801
-#: src/frontends/qt4/GuiView.cpp:1859 src/frontends/qt4/GuiView.cpp:2124
-#: src/frontends/qt4/GuiView.cpp:2212
+#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1802
+#: src/frontends/qt4/GuiView.cpp:1860 src/frontends/qt4/GuiView.cpp:2125
+#: src/frontends/qt4/GuiView.cpp:2213
 msgid "LyX Documents (*.lyx)"
 msgstr "Dokumen LyX (*.lyx)"
 
@@ -22407,102 +22421,102 @@ msgstr "mati"
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "Kotakbantuan \"%1$s\" di set ke %2$s"
 
-#: src/frontends/qt4/GuiView.cpp:150
+#: src/frontends/qt4/GuiView.cpp:151
 msgid "version "
 msgstr "Versi Indonesia "
 
-#: src/frontends/qt4/GuiView.cpp:150
+#: src/frontends/qt4/GuiView.cpp:151
 msgid "unknown version"
 msgstr "versi tak dikenal"
 
-#: src/frontends/qt4/GuiView.cpp:248
+#: src/frontends/qt4/GuiView.cpp:249
 msgid "Small-sized icons"
 msgstr "Ikon ukuran kecil"
 
-#: src/frontends/qt4/GuiView.cpp:255
+#: src/frontends/qt4/GuiView.cpp:256
 msgid "Normal-sized icons"
 msgstr "Ikon ukuran normal"
 
-#: src/frontends/qt4/GuiView.cpp:262
+#: src/frontends/qt4/GuiView.cpp:263
 msgid "Big-sized icons"
 msgstr "Ikon ukuran besar"
 
-#: src/frontends/qt4/GuiView.cpp:767
+#: src/frontends/qt4/GuiView.cpp:768
 #, fuzzy
 msgid "Exit LyX"
 msgstr "K&eluar LyX"
 
-#: src/frontends/qt4/GuiView.cpp:767
+#: src/frontends/qt4/GuiView.cpp:768
 msgid "LyX could not be closed because documents are processed by LyX."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1021
+#: src/frontends/qt4/GuiView.cpp:1022
 msgid "Welcome to LyX!"
 msgstr "Selamat Datang di LyX!"
 
-#: src/frontends/qt4/GuiView.cpp:1473
+#: src/frontends/qt4/GuiView.cpp:1474
 #, fuzzy
 msgid "Automatic save failed!"
 msgstr "Simpan otomatis gagal !"
 
-#: src/frontends/qt4/GuiView.cpp:1474
+#: src/frontends/qt4/GuiView.cpp:1475
 #, fuzzy
 msgid "Automatic save done."
 msgstr "Otomatis diperbarui"
 
-#: src/frontends/qt4/GuiView.cpp:1517
+#: src/frontends/qt4/GuiView.cpp:1518
 msgid "Command not allowed without any document open"
 msgstr "Perintah tidak diijinkan tanpa salah satu dokumen dibuka"
 
-#: src/frontends/qt4/GuiView.cpp:1619
+#: src/frontends/qt4/GuiView.cpp:1620
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Kotak bantuan tidak dikenal \"%1$s\""
 
-#: src/frontends/qt4/GuiView.cpp:1796
+#: src/frontends/qt4/GuiView.cpp:1797
 msgid "Select template file"
 msgstr "Pilih berkas templet"
 
-#: src/frontends/qt4/GuiView.cpp:1798 src/frontends/qt4/GuiView.cpp:2205
+#: src/frontends/qt4/GuiView.cpp:1799 src/frontends/qt4/GuiView.cpp:2206
 msgid "Templates|#T#t"
 msgstr "Templet|#T#t"
 
-#: src/frontends/qt4/GuiView.cpp:1824
+#: src/frontends/qt4/GuiView.cpp:1825
 msgid "Document not loaded."
 msgstr "Dokumen belum diunduh"
 
-#: src/frontends/qt4/GuiView.cpp:1854
+#: src/frontends/qt4/GuiView.cpp:1855
 msgid "Select document to open"
 msgstr "Pilih dokumen yang akan dibuka"
 
-#: src/frontends/qt4/GuiView.cpp:1856 src/frontends/qt4/GuiView.cpp:1997
-#: src/frontends/qt4/GuiView.cpp:2119
+#: src/frontends/qt4/GuiView.cpp:1857 src/frontends/qt4/GuiView.cpp:1998
+#: src/frontends/qt4/GuiView.cpp:2120
 msgid "Examples|#E#e"
 msgstr "Contoh|#E#e"
 
-#: src/frontends/qt4/GuiView.cpp:1860
+#: src/frontends/qt4/GuiView.cpp:1861
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "LyX-1.3.x Dokumen (*.lyx13)"
 
-#: src/frontends/qt4/GuiView.cpp:1861
+#: src/frontends/qt4/GuiView.cpp:1862
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "LyX-1.4.x Dokumen (*.lyx14)"
 
-#: src/frontends/qt4/GuiView.cpp:1862
+#: src/frontends/qt4/GuiView.cpp:1863
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "LyX-1.5.x Dokumen (*.lyx15)"
 
-#: src/frontends/qt4/GuiView.cpp:1863
+#: src/frontends/qt4/GuiView.cpp:1864
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "LyX-1.6.x Dokumen (*.lyx16)"
 
-#: src/frontends/qt4/GuiView.cpp:1888 src/frontends/qt4/Validator.cpp:188
+#: src/frontends/qt4/GuiView.cpp:1889 src/frontends/qt4/Validator.cpp:188
 #: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:289
 #: src/insets/InsetGraphics.cpp:594 src/insets/InsetInclude.cpp:512
 msgid "Invalid filename"
 msgstr "Nama berkas tidak valid"
 
-#: src/frontends/qt4/GuiView.cpp:1889
+#: src/frontends/qt4/GuiView.cpp:1890
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -22513,40 +22527,40 @@ msgstr ""
 "%1$s\n"
 "tidak ada."
 
-#: src/frontends/qt4/GuiView.cpp:1905
+#: src/frontends/qt4/GuiView.cpp:1906
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Sedang membuka dokumen %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1910
+#: src/frontends/qt4/GuiView.cpp:1911
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokumen %1$s sudah dibuka."
 
-#: src/frontends/qt4/GuiView.cpp:1913
+#: src/frontends/qt4/GuiView.cpp:1914
 msgid "Version control detected."
 msgstr "Kontrol versi terdeteksi."
 
-#: src/frontends/qt4/GuiView.cpp:1915
+#: src/frontends/qt4/GuiView.cpp:1916
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Tidak bisa membuka dokumen %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1944
+#: src/frontends/qt4/GuiView.cpp:1945
 msgid "Couldn't import file"
 msgstr "Berkas tidak bisa di impor"
 
-#: src/frontends/qt4/GuiView.cpp:1945
+#: src/frontends/qt4/GuiView.cpp:1946
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Tidak ada informasi untuk mengimpor format %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:1992
+#: src/frontends/qt4/GuiView.cpp:1993
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Pilih berkas %1$s yang di impor"
 
-#: src/frontends/qt4/GuiView.cpp:2043 src/frontends/qt4/GuiView.cpp:2230
+#: src/frontends/qt4/GuiView.cpp:2044 src/frontends/qt4/GuiView.cpp:2231
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -22557,53 +22571,53 @@ msgstr ""
 "\n"
 "Apakah dokumen yang ada akan ditindih?"
 
-#: src/frontends/qt4/GuiView.cpp:2045 src/frontends/qt4/GuiView.cpp:2234
+#: src/frontends/qt4/GuiView.cpp:2046 src/frontends/qt4/GuiView.cpp:2235
 msgid "Overwrite document?"
 msgstr "Dokumen akan ditindih?"
 
-#: src/frontends/qt4/GuiView.cpp:2054
+#: src/frontends/qt4/GuiView.cpp:2055
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Sedang mengImpor %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2057
+#: src/frontends/qt4/GuiView.cpp:2058
 msgid "imported."
 msgstr "Selesai mengimpor."
 
-#: src/frontends/qt4/GuiView.cpp:2059
+#: src/frontends/qt4/GuiView.cpp:2060
 msgid "file not imported!"
 msgstr "Berkas tidak diimpor!"
 
-#: src/frontends/qt4/GuiView.cpp:2084
+#: src/frontends/qt4/GuiView.cpp:2085
 #, fuzzy
 msgid "newfile"
 msgstr "Panggil berkas anak dokumen"
 
-#: src/frontends/qt4/GuiView.cpp:2117
+#: src/frontends/qt4/GuiView.cpp:2118
 msgid "Select LyX document to insert"
 msgstr "Pilih dokumen LyX yang akan disisipkan"
 
-#: src/frontends/qt4/GuiView.cpp:2153 src/frontends/qt4/GuiView.cpp:3064
+#: src/frontends/qt4/GuiView.cpp:2154 src/frontends/qt4/GuiView.cpp:3066
 msgid "Absolute filename expected."
 msgstr "Diperlukan nama berkas absolut."
 
-#: src/frontends/qt4/GuiView.cpp:2165
+#: src/frontends/qt4/GuiView.cpp:2166
 msgid "Select file to insert"
 msgstr "Pilih berkas yang akan disisipkan"
 
-#: src/frontends/qt4/GuiView.cpp:2169
+#: src/frontends/qt4/GuiView.cpp:2170
 msgid "All Files (*)"
 msgstr "Semua berkas (*)"
 
-#: src/frontends/qt4/GuiView.cpp:2202
+#: src/frontends/qt4/GuiView.cpp:2203
 msgid "Choose a filename to save document as"
 msgstr "Pilih lokasi penyimpanan dan tuliskan nama berkas"
 
-#: src/frontends/qt4/GuiView.cpp:2235 src/frontends/qt4/GuiView.cpp:2300
+#: src/frontends/qt4/GuiView.cpp:2236 src/frontends/qt4/GuiView.cpp:2281
 msgid "&Rename"
 msgstr "&Nama Lain"
 
-#: src/frontends/qt4/GuiView.cpp:2296
+#: src/frontends/qt4/GuiView.cpp:2277
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -22614,24 +22628,24 @@ msgstr ""
 "\n"
 "Apakah dokumen akan diberi nama lain kemudian dicoba lagi?"
 
-#: src/frontends/qt4/GuiView.cpp:2299
+#: src/frontends/qt4/GuiView.cpp:2280
 msgid "Rename and save?"
 msgstr "Ganti nama dan disimpan?"
 
-#: src/frontends/qt4/GuiView.cpp:2300
+#: src/frontends/qt4/GuiView.cpp:2281
 msgid "&Retry"
 msgstr "&Coba Lagi"
 
-#: src/frontends/qt4/GuiView.cpp:2406
+#: src/frontends/qt4/GuiView.cpp:2387
 #, fuzzy
 msgid "Close document "
 msgstr "Dokumen Baru"
 
-#: src/frontends/qt4/GuiView.cpp:2406
+#: src/frontends/qt4/GuiView.cpp:2387
 msgid "Document could not be closed because it is processed by LyX."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2502 src/frontends/qt4/GuiView.cpp:2609
+#: src/frontends/qt4/GuiView.cpp:2483 src/frontends/qt4/GuiView.cpp:2590
 #, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -22642,11 +22656,11 @@ msgstr ""
 "\n"
 "Apakah ingin menyimpan terlebih dahulu?"
 
-#: src/frontends/qt4/GuiView.cpp:2505 src/frontends/qt4/GuiView.cpp:2612
+#: src/frontends/qt4/GuiView.cpp:2486 src/frontends/qt4/GuiView.cpp:2593
 msgid "Save new document?"
 msgstr "Perubahan dokumen disimpan?"
 
-#: src/frontends/qt4/GuiView.cpp:2510
+#: src/frontends/qt4/GuiView.cpp:2491
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -22657,15 +22671,15 @@ msgstr ""
 "\n"
 "Apakah perubahan disimpan dahulu atau tidak perlu?"
 
-#: src/frontends/qt4/GuiView.cpp:2512 src/frontends/qt4/GuiView.cpp:2606
+#: src/frontends/qt4/GuiView.cpp:2493 src/frontends/qt4/GuiView.cpp:2587
 msgid "Save changed document?"
 msgstr "Perubahan dokumen disimpan?"
 
-#: src/frontends/qt4/GuiView.cpp:2513
+#: src/frontends/qt4/GuiView.cpp:2494
 msgid "&Discard"
 msgstr "&Tidak Perlu"
 
-#: src/frontends/qt4/GuiView.cpp:2603
+#: src/frontends/qt4/GuiView.cpp:2584
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -22676,7 +22690,7 @@ msgstr ""
 "\n"
 "Apakah ingin menyimpan terlebih dahulu?"
 
-#: src/frontends/qt4/GuiView.cpp:2638
+#: src/frontends/qt4/GuiView.cpp:2619
 #, c-format
 msgid ""
 "Document \n"
@@ -22688,47 +22702,47 @@ msgstr ""
 " telah dimodifikasi dengan program luar. Apakah dokumen ini akan ditindih? "
 "Perubahan lokal akan dihapus."
 
-#: src/frontends/qt4/GuiView.cpp:2641
+#: src/frontends/qt4/GuiView.cpp:2622
 msgid "Reload externally changed document?"
 msgstr "Memuat ulang dokumen yang sudah diubah program luar?"
 
-#: src/frontends/qt4/GuiView.cpp:2694
+#: src/frontends/qt4/GuiView.cpp:2675
 msgid "Error when setting the locking property."
 msgstr "Ada kesalahan ketika mengatur properti pengunci."
 
-#: src/frontends/qt4/GuiView.cpp:2740
+#: src/frontends/qt4/GuiView.cpp:2721
 msgid "Directory is not accessible."
 msgstr "Direktori ditak bisa diakses"
 
-#: src/frontends/qt4/GuiView.cpp:2816
+#: src/frontends/qt4/GuiView.cpp:2797
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Membuka anak dokumen  %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2895
+#: src/frontends/qt4/GuiView.cpp:2876
 msgid "Successful "
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2896
+#: src/frontends/qt4/GuiView.cpp:2877
 #, fuzzy
 msgid "Error "
 msgstr "kesalahan"
 
-#: src/frontends/qt4/GuiView.cpp:3016 src/frontends/qt4/GuiView.cpp:3028
+#: src/frontends/qt4/GuiView.cpp:3018 src/frontends/qt4/GuiView.cpp:3030
 #, fuzzy
 msgid "Exporting ..."
 msgstr "Sedang mengImpor %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:3037
+#: src/frontends/qt4/GuiView.cpp:3039
 #, fuzzy
 msgid "Previewing ..."
 msgstr "Memuat pra tampilan"
 
-#: src/frontends/qt4/GuiView.cpp:3071
+#: src/frontends/qt4/GuiView.cpp:3073
 msgid "Document not loaded"
 msgstr "Dokumen belum diunduh"
 
-#: src/frontends/qt4/GuiView.cpp:3149
+#: src/frontends/qt4/GuiView.cpp:3151
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -22737,29 +22751,29 @@ msgstr ""
 "Semua peruubahan akan hilang. Apakah anda yakin untuk mengembalikan ke versi "
 "dokumen yang disimpan sebelumnya %1$s?"
 
-#: src/frontends/qt4/GuiView.cpp:3152
+#: src/frontends/qt4/GuiView.cpp:3154
 msgid "Revert to saved document?"
 msgstr "Mengembalikan ke dokumen yang disimpan"
 
-#: src/frontends/qt4/GuiView.cpp:3178
+#: src/frontends/qt4/GuiView.cpp:3180
 msgid "Saving all documents..."
 msgstr "Sedang menyimpan semua dokumen..."
 
-#: src/frontends/qt4/GuiView.cpp:3188
+#: src/frontends/qt4/GuiView.cpp:3190
 msgid "All documents saved."
 msgstr "Semua dokumen sudah tersimpan."
 
-#: src/frontends/qt4/GuiView.cpp:3289
+#: src/frontends/qt4/GuiView.cpp:3291
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s perintah tidak dikenal!"
 
-#: src/frontends/qt4/GuiView.cpp:3396
+#: src/frontends/qt4/GuiView.cpp:3398
 #, fuzzy
 msgid "Please, preview the document first."
 msgstr "Bagian ini dari dokumen dihapus."
 
-#: src/frontends/qt4/GuiView.cpp:3411
+#: src/frontends/qt4/GuiView.cpp:3413
 #, fuzzy
 msgid "Couldn't proceed."
 msgstr "Tidak bisa ekspor berkas"
@@ -23782,66 +23796,66 @@ msgstr ""
 msgid "vphantom"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:193
+#: src/insets/InsetRef.cpp:203
 msgid "elsewhere"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:264
+#: src/insets/InsetRef.cpp:274
 msgid "BROKEN: "
 msgstr "RUSAK: "
 
-#: src/insets/InsetRef.cpp:296 src/mathed/InsetMathRef.cpp:224
+#: src/insets/InsetRef.cpp:308 src/mathed/InsetMathRef.cpp:224
 msgid "Ref: "
 msgstr "Ref: "
 
-#: src/insets/InsetRef.cpp:297 src/mathed/InsetMathRef.cpp:225
+#: src/insets/InsetRef.cpp:309 src/mathed/InsetMathRef.cpp:225
 msgid "Equation"
 msgstr "Persamaan"
 
-#: src/insets/InsetRef.cpp:297 src/mathed/InsetMathRef.cpp:225
+#: src/insets/InsetRef.cpp:309 src/mathed/InsetMathRef.cpp:225
 msgid "EqRef: "
 msgstr "PersRef: "
 
-#: src/insets/InsetRef.cpp:298 src/mathed/InsetMathRef.cpp:226
+#: src/insets/InsetRef.cpp:310 src/mathed/InsetMathRef.cpp:226
 msgid "Page Number"
 msgstr "Nomor Halaman"
 
-#: src/insets/InsetRef.cpp:298 src/mathed/InsetMathRef.cpp:226
+#: src/insets/InsetRef.cpp:310 src/mathed/InsetMathRef.cpp:226
 msgid "Page: "
 msgstr "Halaman: "
 
-#: src/insets/InsetRef.cpp:299 src/mathed/InsetMathRef.cpp:227
+#: src/insets/InsetRef.cpp:311 src/mathed/InsetMathRef.cpp:227
 msgid "Textual Page Number"
 msgstr "Nomor Halaman Tekstual"
 
-#: src/insets/InsetRef.cpp:299 src/mathed/InsetMathRef.cpp:227
+#: src/insets/InsetRef.cpp:311 src/mathed/InsetMathRef.cpp:227
 msgid "TextPage: "
 msgstr "HalamanTeks: "
 
-#: src/insets/InsetRef.cpp:300 src/mathed/InsetMathRef.cpp:228
+#: src/insets/InsetRef.cpp:312 src/mathed/InsetMathRef.cpp:228
 msgid "Standard+Textual Page"
 msgstr "Standar+Halaman Tekstual"
 
-#: src/insets/InsetRef.cpp:300 src/mathed/InsetMathRef.cpp:228
+#: src/insets/InsetRef.cpp:312 src/mathed/InsetMathRef.cpp:228
 msgid "Ref+Text: "
 msgstr "Ref+Teks: "
 
-#: src/insets/InsetRef.cpp:301
+#: src/insets/InsetRef.cpp:313
 #, fuzzy
 msgid "Formatted"
 msgstr "Pemformatan"
 
-#: src/insets/InsetRef.cpp:301
+#: src/insets/InsetRef.cpp:313
 #, fuzzy
 msgid "Format: "
 msgstr "&Format:"
 
-#: src/insets/InsetRef.cpp:302
+#: src/insets/InsetRef.cpp:314
 #, fuzzy
 msgid "Reference to Name"
 msgstr "Referensi"
 
-#: src/insets/InsetRef.cpp:302
+#: src/insets/InsetRef.cpp:314
 #, fuzzy
 msgid "NameRef:"
 msgstr "Nama:"
@@ -23909,7 +23923,7 @@ msgstr "Spasi Horizontal Protected (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Tipe Daftar Isi tidak dikenal"
 
-#: src/insets/InsetTabular.cpp:4541
+#: src/insets/InsetTabular.cpp:4562
 msgid "Selection size should match clipboard content."
 msgstr "Ukuran pilihan harus sesuai dengan isi dari klipboard."
 
@@ -24182,10 +24196,6 @@ msgstr "FormatRef: "
 msgid "optional"
 msgstr "tambahan"
 
-#: src/mathed/MathMacroTemplate.cpp:537
-msgid "TeX"
-msgstr "TeX"
-
 #: src/mathed/MathMacroTemplate.cpp:1244
 msgid "math macro"
 msgstr "makro matematika"
@@ -24383,6 +24393,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Pemakai tidak dikenal"
+
+#, fuzzy
+#~ msgid "&Ok"
+#~ msgstr "&Setuju"
 
 #~ msgid "&Dummy"
 #~ msgstr "&Dummy"
