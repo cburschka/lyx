@@ -92,8 +92,15 @@ docstring InsetRef::getFormattedCmd(docstring const & ref,
 	label = split(ref, prefix, ':');
 
 	// we have to have xxx:xxxxx...
+	if (label.empty()) {
+		LYXERR0("Label `" << ref << "' contains no prefix.");
+		label = ref;
+		prefix = from_ascii("");
+		return defcmd;
+	}
+
 	if (prefix.empty()) {
-		LYXERR0("Label `" << label << "' contains no prefix.");
+		// we have ":xxxx"
 		label = ref;
 		return defcmd;
 	}
@@ -283,19 +290,25 @@ void InsetRef::validate(LaTeXFeatures & features) const
 	if (cmd == "vref" || cmd == "vpageref")
 		features.require("varioref");
 	else if (getCmdName() == "formatted") {
+		docstring const data = getEscapedLabel(features.runparams());
+		docstring label;
+		docstring prefix;
 		if (buffer().params().use_refstyle) {
 			features.require("refstyle");
-			docstring const data = getEscapedLabel(features.runparams());
-			docstring label;
-			docstring prefix;
 			string const fcmd = to_utf8(getFormattedCmd(data, label, prefix));
 			if (!prefix.empty()) {
 				string lcmd = "\\AtBeginDocument{\\providecommand" + 
 						fcmd + "[1]{\\ref{" + to_utf8(prefix) + ":#1}}}";
 				features.addPreambleSnippet(lcmd);
-			}
-		} else
+			} else if (prefix == "cha")
+				features.addPreambleSnippet("\\let\\charef=\\chapref");
+		} else {
 			features.require("prettyref");
+			// prettyref uses "cha" for chapters, so we provide a kind of
+			// translation.
+			if (prefix == "chap")
+				features.addPreambleSnippet("\\let\\pr@chap=\\pr@cha");
+		}
 	} else if (getCmdName() == "eqref" && !buffer().params().use_refstyle)
 		// refstyle defines its own version
 		features.require("amsmath");
