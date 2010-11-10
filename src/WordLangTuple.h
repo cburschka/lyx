@@ -27,7 +27,7 @@ namespace lyx {
  */
 class WordLangTuple {
 public:
-	WordLangTuple() {}
+	WordLangTuple() : lang_(0) {}
 
 	WordLangTuple(docstring const & w, Language * l)
 		: word_(w), lang_(l)
