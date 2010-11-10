@@ -497,6 +497,7 @@ QVector<GuiWorkArea*> GuiView::GuiViewPrivate::guiWorkAreas()
 }
 
 
+#if QT_VERSION >= 0x040400
 void GuiView::setCursorShapes(Qt::CursorShape shape)
 {
 	QVector<GuiWorkArea*> areas = d.guiWorkAreas();
@@ -549,7 +550,6 @@ void GuiView::processingThreadStarted()
 
 void GuiView::processingThreadFinished()
 {
-#if (QT_VERSION >= 0x040400)
 	QFutureWatcher<docstring> const * watcher =
 		static_cast<QFutureWatcher<docstring> const *>(sender());
 	message(watcher->result());
@@ -558,8 +558,39 @@ void GuiView::processingThreadFinished()
 	d.processing_cursor_timer_.stop();
 	restoreCursorShapes();
 	d.indicates_processing_ = false;
-#endif
 }
+
+#else
+
+void GuiView::setCursorShapes(Qt::CursorShape)
+{
+}
+
+
+void GuiView::restoreCursorShapes()
+{
+}
+
+
+void GuiView::saveCursorShapes()
+{
+}
+
+
+void GuiView::indicateProcessing()
+{
+}
+
+
+void GuiView::processingThreadStarted()
+{
+}
+
+
+void GuiView::processingThreadFinished()
+{
+}
+#endif
 
 
 void GuiView::saveLayout() const
@@ -2942,12 +2973,12 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 	if (!used_buffer)
 		return false;
 
-	gv_->processingThreadStarted();
 	string format = argument;
 	if (format.empty())
 		format = used_buffer->getDefaultOutputFormat();
 
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
+	gv_->processingThreadStarted();
 	if (!msg.empty()) {
 		progress_->clearMessages();
 		gv_->message(msg);
@@ -2972,7 +3003,6 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 				!used_buffer->params().getIncludedChildren().empty();
 		return (used_buffer->*syncFunc)(format, true, update_unincluded);
 	} else if (previewFunc) {
-    // TODO includeall must be false or we get a 100% busy thread, a bug?
 		return (used_buffer->*previewFunc)(format, false);
 	}
 	(void) asyncFunc;
