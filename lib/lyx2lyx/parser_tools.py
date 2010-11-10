@@ -69,6 +69,11 @@ get_quoted_value(lines, token, start[, end[, default]):
   value, if they are present. So use this one for cases
   where the value is normally quoted.
 
+get_option_value(line, option):
+  This assumes we have a line with something like:
+      option="value"
+  and returns value. Returns "" if not found.
+
 del_token(lines, token, start[, end]):
   Like find_token, but deletes the line if it finds one.
   Returns True if a line got deleted, otherwise False.
@@ -136,6 +141,8 @@ is_nonempty_line(line):
   Does line contain something besides whitespace?
 
 '''
+
+import re
 
 # Utilities for one line
 def check_token(line, token):
@@ -297,6 +304,15 @@ def get_quoted_value(lines, token, start, end = 0, default = ""):
     if not val:
       return default
     return val.strip('"')
+
+
+def get_option_value(line, option):
+    rx = option + '\s*=\s*"([^"+])"'
+    rx = re.compile(rx)
+    m = rx.search(line)
+    if not m:
+      return ""
+    return m.group(1)
 
 
 def del_token(lines, token, start, end = 0):
