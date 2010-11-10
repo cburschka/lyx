@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-10-22 11:29+0200\n"
-"PO-Revision-Date: 2010-07-04 23:34+0900\n"
+"PO-Revision-Date: 2010-11-09 18:23+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
-"Language-Team: Japanese <>\n"
+"Language-Team: 日本語 <lyx-doc@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
@@ -1555,14 +1555,12 @@ msgstr ""
 "ださい。"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:103
-#, fuzzy
 msgid "&Predefined:"
-msgstr "事前定義(&R):"
+msgstr "事前定義(&P):"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:110
-#, fuzzy
 msgid "Cus&tom:"
-msgstr "任意設定(&O):"
+msgstr "任意設定(&T):"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:123
 msgid "&Graphics driver:"
@@ -2286,8 +2284,7 @@ msgstr "一般"
 msgid ""
 "After the cursor has not moved for this time, the inline completion is shown "
 "if it is available."
-msgstr ""
-"これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
+msgstr "これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:147
 msgid "s inline completion dela&y"
@@ -2309,8 +2306,7 @@ msgstr "秒のポップアップ遅延(&E)"
 msgid ""
 "When the TAB completion is not unique, there won't be a delay of the popup. "
 "It will be shown right away."
-msgstr ""
-"タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
+msgstr "タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:221
 msgid "Sho&w popup without delay for non-unique completions"
@@ -2620,9 +2616,7 @@ msgstr "大域的(&G)"
 msgid ""
 "If checked, the document language is not explicitly set by a language switch "
 "command"
-msgstr ""
-"有効にすると、文書言語については、言語切替コマンドで明示的に設定することをし"
-"ません。"
+msgstr "これを有効にすると、言語切替コマンドを使用した際、文書言語の場合は明示的に設定することをしません"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:139
 msgid "Auto &begin"
@@ -2632,9 +2626,7 @@ msgstr "自動開始(&B)"
 msgid ""
 "If checked, the document language is not explicitly closed by a language "
 "switch command"
-msgstr ""
-"チェックすると、文書言語については、言語切替コマンドで明示的に閉じることをし"
-"ません"
+msgstr "これを有効にすると、文書言語については、言語切替コマンドで明示的に閉じることをしません"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:149
 msgid "Auto &end"
@@ -2802,8 +2794,7 @@ msgstr "書き出し時の上書き(&O):"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:114
 msgid "What to do when existing files are going to be overwritten on export."
-msgstr ""
-"書き出し時に、既存のファイルが上書きされようとしているときにどうするか。"
+msgstr "書き出し時に、既存のファイルが上書きされようとしているときにどうするか。"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:118
 msgid "Ask permission"
@@ -3907,8 +3898,7 @@ msgstr "選択した項目を1つ上げる"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:44
 msgid "If you check this, LyX will not warn you again in the given case."
-msgstr ""
-"これを有効にすると、LyXは当該ケースについて今後警告することはなくなります。"
+msgstr "これを有効にすると、LyXは当該ケースについて今後警告することはなくなります。"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:47
 msgid "&Do not show this warning again!"
@@ -4740,24 +4730,20 @@ msgid "Acknowledgments"
 msgstr "謝辞"
 
 #: lib/layouts/agutex.layout:71
-#, fuzzy
 msgid "Authors"
 msgstr "著者"
 
 #: lib/layouts/agutex.layout:89 lib/layouts/agutex.layout:93
-#, fuzzy
 msgid "Affiliation Mark"
-msgstr "所属"
+msgstr "所属マーク"
 
 #: lib/layouts/agutex.layout:111
-#, fuzzy
 msgid "Author affiliation"
-msgstr "第二所属"
+msgstr "著者の所属"
 
 #: lib/layouts/agutex.layout:121
-#, fuzzy
 msgid "Author affiliation:"
-msgstr "所属:"
+msgstr "著者の所属:"
 
 #: lib/layouts/agutex.layout:141 lib/layouts/egs.layout:495
 #: lib/layouts/kluwer.layout:263 lib/layouts/llncs.layout:251
@@ -4775,7 +4761,6 @@ msgid "Notation"
 msgstr "記法"
 
 #: lib/layouts/agutex.layout:187
-#, fuzzy
 msgid "Acknowledgments."
 msgstr "謝辞."
 
@@ -5864,22 +5849,18 @@ msgid "Verteiler"
 msgstr "Verteiler"
 
 #: lib/layouts/ectaart.layout:21
-#, fuzzy
 msgid "RunTitle"
 msgstr "ヘッダ用タイトル"
 
 #: lib/layouts/ectaart.layout:28
-#, fuzzy
 msgid "Running Title:"
 msgstr "ヘッダ用タイトル:"
 
 #: lib/layouts/ectaart.layout:35
-#, fuzzy
 msgid "RunAuthor"
 msgstr "ヘッダ用著者名"
 
 #: lib/layouts/ectaart.layout:39
-#, fuzzy
 msgid "Running Author:"
 msgstr "ヘッダ用著者名:"
 
@@ -5888,24 +5869,20 @@ msgid "E-mail:"
 msgstr "電子メール:"
 
 #: lib/layouts/ectaart.layout:93
-#, fuzzy
 msgid "Web Address"
-msgstr "住所"
+msgstr "ウェブアドレス"
 
 #: lib/layouts/ectaart.layout:96
-#, fuzzy
 msgid "Web address:"
-msgstr "次の住所:"
+msgstr "ウェブアドレス:"
 
 #: lib/layouts/ectaart.layout:109
-#, fuzzy
 msgid "Authors Block"
-msgstr "著者"
+msgstr "著者ブロック"
 
 #: lib/layouts/ectaart.layout:113
-#, fuzzy
 msgid "Authors Block:"
-msgstr "著者"
+msgstr "著者ブロック:"
 
 #: lib/layouts/ectaart.layout:116 lib/layouts/ectaart.layout:198
 #: lib/layouts/ectaart.layout:201 lib/layouts/entcs.layout:99
@@ -5923,55 +5900,46 @@ msgid "Keywords:"
 msgstr "キーワード:"
 
 #: lib/layouts/ectaart.layout:126
-#, fuzzy
 msgid "Thanks Text"
 msgstr "謝辞"
 
 #: lib/layouts/ectaart.layout:133
 msgid "Thanks \\theThanks:"
-msgstr ""
+msgstr "謝辞 \\theThanks:"
 
 #: lib/layouts/ectaart.layout:139
-#, fuzzy
 msgid "Emphasize"
-msgstr "強調様式(E)|E"
+msgstr "強調"
 
 #: lib/layouts/ectaart.layout:152
-#, fuzzy
 msgid "Thanks Reference"
-msgstr "Reference"
+msgstr "謝辞参照"
 
 #: lib/layouts/ectaart.layout:158
-#, fuzzy
 msgid "Thanks Ref"
-msgstr "謝辞"
+msgstr "謝辞参照"
 
 #: lib/layouts/ectaart.layout:164
-#, fuzzy
 msgid "Internet Address Reference"
-msgstr "相互参照を挿入"
+msgstr "インターネットアドレス参照"
 
 #: lib/layouts/ectaart.layout:167
 msgid "Internet Addess Ref"
-msgstr ""
+msgstr "インターネットアドレス参照"
 
 #: lib/layouts/ectaart.layout:170 lib/layouts/ectaart.layout:173
-#, fuzzy
 msgid "Corresponding Author"
 msgstr "連絡担当著者"
 
 #: lib/layouts/ectaart.layout:184
-#, fuzzy
 msgid "Name (First Name)"
 msgstr "名"
 
 #: lib/layouts/ectaart.layout:187
-#, fuzzy
 msgid "First Name"
 msgstr "名"
 
 #: lib/layouts/ectaart.layout:191
-#, fuzzy
 msgid "Name (Surname)"
 msgstr "姓"
 
@@ -5982,12 +5950,11 @@ msgstr "姓"
 
 #: lib/layouts/ectaart.layout:204
 msgid "By Same Author (bib)"
-msgstr ""
+msgstr "同著者 (bib)"
 
 #: lib/layouts/ectaart.layout:207
-#, fuzzy
 msgid "bysame"
-msgstr "名前"
+msgstr "同上"
 
 #: lib/layouts/egs.layout:141 lib/layouts/stdlists.inc:86
 msgid "00.00.0000"
@@ -6069,7 +6036,7 @@ msgstr "著者の住所"
 
 #: lib/layouts/elsart.layout:146 lib/layouts/revtex4.layout:192
 msgid "Author Email"
-msgstr "著者の電子メール"
+msgstr "著者電子メール"
 
 #: lib/layouts/elsart.layout:155 lib/layouts/lettre.layout:402
 #: lib/layouts/llncs.layout:233
@@ -6078,7 +6045,7 @@ msgstr "電子メール:"
 
 #: lib/layouts/elsart.layout:166 lib/layouts/revtex4.layout:207
 msgid "Author URL"
-msgstr "著者の著者"
+msgstr "著者URL"
 
 #: lib/layouts/elsart.layout:176 lib/layouts/revtex4.layout:212
 #: lib/layouts/amsdefs.inc:162
@@ -6088,7 +6055,7 @@ msgstr "URL:"
 #: lib/layouts/elsart.layout:188 lib/layouts/revtex4.layout:185
 #: lib/layouts/amsdefs.inc:173
 msgid "Thanks"
-msgstr "謝辞"
+msgstr "感謝"
 
 #: lib/layouts/elsart.layout:272
 msgid "Theorem \\arabic{theorem}"
@@ -7183,9 +7150,8 @@ msgid "Running author:"
 msgstr "ヘッダ用著者名:"
 
 #: lib/layouts/lettre.layout:39 lib/layouts/lettre.layout:314
-#, fuzzy
 msgid "NoTelephone"
-msgstr "電話"
+msgstr "電話なし"
 
 #: lib/layouts/lettre.layout:41 lib/layouts/lettre.layout:340
 #: lib/layouts/scrlttr2.layout:189 lib/configure.py:352
@@ -7194,35 +7160,30 @@ msgstr "ファックス"
 
 #: lib/layouts/lettre.layout:43 lib/layouts/lettre.layout:370
 #: lib/layouts/lettre.layout:378
-#, fuzzy
 msgid "NoFax"
-msgstr "ファックス"
+msgstr "ファックスなし"
 
 #: lib/layouts/lettre.layout:49 lib/layouts/lettre.layout:185
 #: lib/layouts/lettre.layout:192
-#, fuzzy
 msgid "NoPlace"
-msgstr "場所(Place)"
+msgstr "場所(Place)なし"
 
 #: lib/layouts/lettre.layout:53 lib/layouts/lettre.layout:234
 #: lib/layouts/lettre.layout:242
-#, fuzzy
 msgid "NoDate"
-msgstr "日付"
+msgstr "日付なし"
 
 #: lib/layouts/lettre.layout:73 lib/layouts/lettre.layout:647
-#, fuzzy
 msgid "Post Scriptum"
-msgstr "追伸:"
+msgstr "追伸"
 
 #: lib/layouts/lettre.layout:75 lib/layouts/lettre.layout:513
 msgid "EndOfMessage"
-msgstr ""
+msgstr "メッセージ末尾"
 
 #: lib/layouts/lettre.layout:77 lib/layouts/lettre.layout:533
-#, fuzzy
 msgid "EndOfFile"
-msgstr "スライドの終わり"
+msgstr "ファイル末尾"
 
 #: lib/layouts/lettre.layout:137 lib/layouts/lettre.layout:156
 #: lib/layouts/lettre.layout:186 lib/layouts/lettre.layout:212
@@ -7230,52 +7191,43 @@ msgstr "スライドの終わり"
 #: lib/layouts/lettre.layout:285 lib/layouts/lettre.layout:315
 #: lib/layouts/lettre.layout:341 lib/layouts/lettre.layout:371
 #: lib/layouts/lettre.layout:397
-#, fuzzy
 msgid "Headings"
-msgstr "設定（headings）"
+msgstr "ヘディング"
 
 #: lib/layouts/lettre.layout:167
-#, fuzzy
 msgid "City:"
-msgstr "市"
+msgstr "市:"
 
 #: lib/layouts/lettre.layout:260
-#, fuzzy
 msgid "Office:"
-msgstr "無効"
+msgstr "オフィス:"
 
 #: lib/layouts/lettre.layout:290
-#, fuzzy
 msgid "Tel:"
-msgstr "テレックス:"
+msgstr "Tel:"
 
 #: lib/layouts/lettre.layout:322
-#, fuzzy
 msgid "NoTel"
-msgstr "なし"
+msgstr "Telなし"
 
 #: lib/layouts/lettre.layout:353
-#, fuzzy
 msgid "Fax:"
-msgstr "ファックス"
+msgstr "ファックス:"
 
 #: lib/layouts/lettre.layout:514 lib/layouts/lettre.layout:605
 #: lib/layouts/lettre.layout:648
-#, fuzzy
 msgid "Closings"
 msgstr "結語"
 
 #: lib/layouts/lettre.layout:523
 msgid "EndOfMessage."
-msgstr ""
+msgstr "メッセージ末尾"
 
 #: lib/layouts/lettre.layout:535
-#, fuzzy
 msgid "EndOfFile."
-msgstr "スライドの終わり"
+msgstr "ファイル末尾."
 
 #: lib/layouts/lettre.layout:655
-#, fuzzy
 msgid "P.S.:"
 msgstr "PS:"
 
@@ -7399,7 +7351,6 @@ msgid "Epigraph"
 msgstr "題辞"
 
 #: lib/layouts/memoir.layout:111 lib/layouts/memoir.layout:167
-#, fuzzy
 msgid "Maintext"
 msgstr "本文"
 
@@ -7550,7 +7501,7 @@ msgstr "副所属"
 
 #: lib/layouts/revtex4.layout:188 lib/layouts/amsdefs.inc:176
 msgid "Thanks:"
-msgstr "謝辞:"
+msgstr "感謝:"
 
 #: lib/layouts/revtex4.layout:197
 msgid "Electronic Address:"
@@ -9480,7 +9431,7 @@ msgid ""
 msgstr ""
 "拡張AMS機構を使う定理環境と証明環境を定義します。連番付きと連番なしの両方の型"
 "が提供されます。既定では、定理は文書を通じて連番が付されます。これは、「定理"
-"(…毎…連番)」モジュールのうちの一つを読み込むことによって変更することができま"
+"(…連番)」モジュールのうちの一つを読み込むことによって変更することができま"
 "す。"
 
 #: lib/layouts/theorems-bytype.module:2
@@ -12837,14 +12788,12 @@ msgid "ddot"
 msgstr "ddot"
 
 #: lib/ui/stdtoolbars.inc:369
-#, fuzzy
 msgid "dddot"
-msgstr "ddot"
+msgstr "dddot"
 
 #: lib/ui/stdtoolbars.inc:370
-#, fuzzy
 msgid "ddddot"
-msgstr "ddot"
+msgstr "ddddot"
 
 #: lib/ui/stdtoolbars.inc:371
 msgid "breve"
@@ -16619,7 +16568,6 @@ msgid "Setting debug level to %1$s"
 msgstr "デバッグレベルを%1$sに設定します"
 
 #: src/LyX.cpp:976
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -16669,10 +16617,9 @@ msgstr ""
 "                  fmtは読み込みの型、file.xxxは\n"
 "                  読み込むファイルと指定します。\n"
 "\t-f [--force-overwrite] what\n"
-"                  whatは「all」か「main」の値を取り得ます。\n"
-"                  「all」を使用すると、書き出しバッチのあいだ、全てのファイル"
-"を\n"
-"                  上書きし、「main」ならば主幹ファイルのみを上書きします。\n"
+"                  whatは「all」か「main」か「none」の値を取り得ます。 それぞれ、\n"
+"                 書き出しバッチのあいだ、全てのファイルを上書きするか、主幹\n"
+"                  ファイルのみを上書きするか、まったく上書きしないかを指定します。\n"
 "                  その他の値は全て「all」に等しいですが、推奨されません。\n"
 "\t-version        バージョンとビルド情報を表示\n"
 "詳細は LyX man ページを見て下さい。"
@@ -16978,8 +16925,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2557
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
-msgstr ""
-"pLaTeX(日本語LaTeX)用のbibtexプログラムのオプションを定義してください。"
+msgstr "pLaTeX(日本語LaTeX)用のbibtexプログラムのオプションを定義してください。"
 
 #: src/LyXRC.cpp:2561
 msgid ""
@@ -16991,8 +16937,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2565
 msgid "Select to check whether the lastfiles still exist."
-msgstr ""
-"最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
+msgstr "最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
 
 #: src/LyXRC.cpp:2569
 msgid ""
@@ -17018,8 +16963,7 @@ msgstr "単語間のカーソル移動にMac OS X式の方法を使う。"
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
-msgstr ""
-"カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
+msgstr "カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
 
 #: src/LyXRC.cpp:2598
 #, no-c-format
@@ -17062,8 +17006,7 @@ msgstr "LyX が画像をどのように表示するかを選びます。"
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
-msgstr ""
-"文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
+msgstr "文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
 
 #: src/LyXRC.cpp:2627
 msgid "Specify additional chars that can be part of a word."
@@ -17174,8 +17117,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2699
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr ""
-"LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
+msgstr "LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
 
 #: src/LyXRC.cpp:2703
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -17222,8 +17164,7 @@ msgstr "複数の補完候補がある際、遅延なしに補完ポップアッ
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
-msgstr ""
-"補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
+msgstr "補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
 
 #: src/LyXRC.cpp:2740
 msgid "The inline completion delay."
@@ -17244,8 +17185,7 @@ msgstr "長い補完を短縮するのに\"...\"を使用する。"
 #: src/LyXRC.cpp:2756
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr ""
-"最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
+msgstr "最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
 
 #: src/LyXRC.cpp:2761
 msgid ""
@@ -17575,8 +17515,7 @@ msgstr "未知のトークン"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr ""
-"空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
+msgstr "空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
 
 #: src/Text.cpp:535
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -17700,8 +17639,7 @@ msgstr "破損ファイル"
 
 #: src/TextClass.cpp:668
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
-msgstr ""
-"stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
+msgstr "stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
 
 #: src/Thesaurus.cpp:60
 msgid "Thesaurus failure"
@@ -19282,19 +19220,14 @@ msgid "Format in use"
 msgstr "使われる書式"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1712
-#, fuzzy
 msgid ""
 "You cannot change a format's short name if the format is used by a "
 "converter. Please remove the converter first."
-msgstr ""
-"変換子が使用しているフォーマットを削除することができませんでした。変換プログ"
-"ラムを先に削除してください。"
+msgstr "変換子が書式を使用している場合、書式の短縮名を変更することはできません。変換子を先に削除してください。"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1779
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
-"変換子が使用しているフォーマットを削除することができませんでした。変換プログ"
-"ラムを先に削除してください。"
+msgstr "変換子が使用している書式を削除することができませんでした。変換子を先に削除してください。"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1853
 msgid "LyX needs to be restarted!"
@@ -21535,10 +21468,6 @@ msgstr ""
 msgid "Unknown user"
 msgstr "未知の"
 
-#, fuzzy
-#~ msgid "Glossary term"
-#~ msgstr "語句注解"
-
 #~ msgid "TheoremTemplate"
 #~ msgstr "定理ひな型"
 
@@ -21607,6 +21536,10 @@ msgstr "未知の"
 
 #~ msgid "Absender:"
 #~ msgstr "Absender:"
+
+#, fuzzy
+#~ msgid "Postvermerk:"
+#~ msgstr "Postvermerk"
 
 #~ msgid "Zusatz:"
 #~ msgstr "Zusatz:"
