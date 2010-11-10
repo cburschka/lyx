@@ -3003,8 +3003,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				dispatch(FuncRequest(LFUN_DIALOG_SHOW, "sendto"), dr);
 				break;
 			}
-#if 0
-			// TODO Remove if we could export asynchronous
+#if QT_VERSION < 0x040400
 			if (!doc_buffer->doExport(argument, false)) {
 				dr.setError(true);
 				dr.setMessage(bformat(_("Error exporting to format: %1$s."),
