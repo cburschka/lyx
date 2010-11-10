@@ -496,6 +496,7 @@ QVector<GuiWorkArea*> GuiView::GuiViewPrivate::guiWorkAreas()
 	return areas;
 }
 
+
 void GuiView::setCursorShapes(Qt::CursorShape shape)
 {
 	QVector<GuiWorkArea*> areas = d.guiWorkAreas();
@@ -503,6 +504,7 @@ void GuiView::setCursorShapes(Qt::CursorShape shape)
 		wa->setCursorShape(shape);
 	}
 }
+
 
 void GuiView::restoreCursorShapes()
 {
@@ -514,6 +516,7 @@ void GuiView::restoreCursorShapes()
 	}
 }
 
+
 void GuiView::saveCursorShapes()
 {
 	d.orig_cursors_.clear();
@@ -522,6 +525,7 @@ void GuiView::saveCursorShapes()
 		d.orig_cursors_[wa] = wa->cursorShape();
 	}
 }
+
 
 void GuiView::indicateProcessing()
 {
@@ -533,6 +537,7 @@ void GuiView::indicateProcessing()
 	d.indicates_processing_ = !d.indicates_processing_;
 }
 
+
 void GuiView::processingThreadStarted()
 {
 	saveCursorShapes();
@@ -540,6 +545,7 @@ void GuiView::processingThreadStarted()
 	indicateProcessing();
 	d.processing_cursor_timer_.start();
 }
+
 
 void GuiView::processingThreadFinished()
 {
@@ -2877,17 +2883,20 @@ docstring GuiView::GuiViewPrivate::runAndDestroy(const T& func, Buffer const * o
 		: bformat(_("Error " + msg + " format: %1$s"), from_utf8(format));
 }
 
+
 docstring GuiView::GuiViewPrivate::compileAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
 {
 	bool (Buffer::* mem_func)(std::string const &, bool, bool) const = &Buffer::doExport;
 	return runAndDestroy(bind(mem_func, buffer, _1, true, _2), orig, buffer, format, "export");
 }
 
+
 docstring GuiView::GuiViewPrivate::exportAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
 {
 	bool (Buffer::* mem_func)(std::string const &, bool, bool) const = &Buffer::doExport;
 	return runAndDestroy(bind(mem_func, buffer, _1, false, _2), orig, buffer, format, "export");
 }
+
 
 docstring GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
 {
@@ -2899,17 +2908,22 @@ docstring GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer
 
 // not used, but the linker needs them
 
-docstring GuiView::GuiViewPrivate::compileAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
+docstring GuiView::GuiViewPrivate::compileAndDestroy(
+		Buffer const *, Buffer *, string const &)
 {
 	return docstring();
 }
 
-docstring GuiView::GuiViewPrivate::exportAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
+
+docstring GuiView::GuiViewPrivate::exportAndDestroy(
+		Buffer const *, Buffer *, string const &)
 {
 	return docstring();
 }
 
-docstring GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
+
+docstring GuiView::GuiViewPrivate::previewAndDestroy(
+		Buffer const *, Buffer *, string const &)
 {
 	return docstring();
 }
@@ -2925,14 +2939,14 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 			   bool (Buffer::*syncFunc)(string const &, bool, bool) const,
 			   bool (Buffer::*previewFunc)(string const &, bool) const)
 {
-	if (!used_buffer) {
+	if (!used_buffer)
 		return false;
-	}
+
 	gv_->processingThreadStarted();
 	string format = argument;
-	if (format.empty()) {
+	if (format.empty())
 		format = used_buffer->getDefaultOutputFormat();
-	}
+
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
 	if (!msg.empty()) {
 		progress_->clearMessages();
