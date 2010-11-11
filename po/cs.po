@@ -1350,9 +1350,8 @@ msgid "Sco&pe"
 msgstr "Rozsa&h"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:196
-#, fuzzy
 msgid "Current paragraph"
-msgstr "Ods&adit odstavec"
+msgstr "Souèasný odstavec"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:199
 #, fuzzy
@@ -1421,9 +1420,8 @@ msgid "Form"
 msgstr "Form"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:19
-#, fuzzy
 msgid "Float Type:"
-msgstr "Typ informace:"
+msgstr "Typ plovoucího objektu:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:42
 msgid "Use &default placement"
@@ -1487,13 +1485,12 @@ msgstr ""
 "velikost:"
 
 #: src/frontends/qt4/ui/FontUi.ui:53
-#, fuzzy
 msgid "LaTe&X font encoding:"
-msgstr "Kódování Te&X-u:"
+msgstr "Kódování LaTe&X-ového fontu:"
 
 #: src/frontends/qt4/ui/FontUi.ui:66 src/frontends/qt4/ui/PrefLatexUi.ui:34
 msgid "Specify the font encoding (e.g., T1)."
-msgstr ""
+msgstr "Urèit kódování fontu (napø. T1)."
 
 #: src/frontends/qt4/ui/FontUi.ui:73
 msgid "&Roman:"
@@ -1746,7 +1743,6 @@ msgid "&Value:"
 msgstr "&Hodnota:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:100 src/frontends/qt4/ui/VSpaceUi.ui:61
-#, fuzzy
 msgid "Custom value. Needs spacing type &quot;Custom&quot;."
 msgstr "Vlastní hodnota. Nastavte typ mezery na \"Vlastní\"."
 
@@ -1897,77 +1893,68 @@ msgid "&Edit"
 msgstr "&Editace"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59
-#, fuzzy
 msgid "A&vailable indices:"
-msgstr "Dostupné &vìtve:"
+msgstr "Dostupné &rejstøíky:"
 
 #: src/frontends/qt4/ui/IndexUi.ui:69
 msgid "Select the index this entry should be listed in."
-msgstr ""
+msgstr "Zvolit rejstøík ve kterém má být tato polo¾ka vypsána."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid ""
 "Here you can define an alternative index processor and specify its options."
-msgstr ""
+msgstr "Zde lze nastavit alternativní procesor rejstøíku a urèit jeho volby."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
-#, fuzzy
 msgid "Index generation"
-msgstr "&Odsazení"
+msgstr "Generování rejstøíku"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
-msgstr ""
+msgstr "Definovat volby zvoleného procesoru."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
-msgstr ""
+msgstr "Za¹krtnìte pokud potøebujete vícenásobný rejstøík (napø. rejstøík jmen)"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:92
 msgid "&Use multiple indexes"
-msgstr ""
+msgstr "&Vícenásobný rejstøík"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
-msgstr ""
+msgstr "Vlo¾te pojmenování rejstøíku (napø. \"Rejstøík jmen\") a stisknìte \"Pøidat\")"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:131
-#, fuzzy
 msgid "Add a new index to the list"
-msgstr "Pøidat novou vìtev do seznamu"
+msgstr "Pøidat nový rejstøík do seznamu"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:143
-#, fuzzy
 msgid "A&vailable Indexes:"
-msgstr "Dostupné &vìtve:"
+msgstr "Dostupné &rejstøíky:"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
-#, fuzzy
 msgid "1"
-msgstr "10"
+msgstr "1"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:162
-#, fuzzy
 msgid "Remove the selected index"
-msgstr "Smazat vybrané databáze"
+msgstr "Smazat vybraný rejstøík"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:172
-#, fuzzy
 msgid "Rename the selected index"
-msgstr "Smazat vybrané databáze"
+msgstr "Pøejmenovat vybraný rejstøík"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:175
-#, fuzzy
 msgid "R&ename..."
-msgstr "Pøe&jmenovat"
+msgstr "Pøe&jmenovat..."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:182
-#, fuzzy
 msgid "Define or change button color"
-msgstr "Definovat nebo zmìnit barvu pozadí"
+msgstr "Zmìnit barvu tlaèítka"
 
 #: src/frontends/qt4/ui/InfoUi.ui:24
 msgid "Information Type:"
@@ -1978,9 +1965,8 @@ msgid "Information Name:"
 msgstr "Jméno informace:"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:16
-#, fuzzy
 msgid "Inset Parameter Configuration"
-msgstr "Vlo¾it standardní zlomek"
+msgstr "Konfigurace parametrù vlo¾ky"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:47
 #: src/frontends/qt4/ui/ParagraphUi.ui:44
@@ -1988,9 +1974,8 @@ msgid "I&mmediate Apply"
 msgstr "O&kam¾itì pou¾ít"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:72
-#, fuzzy
 msgid "New Inset"
-msgstr "Otevøi vlo¾ku|O"
+msgstr "Novou vlo¾ku"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:19
 msgid "Document &class"
@@ -2146,7 +2131,7 @@ msgstr "&Umístìní:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:68
 msgid "Specify placement (htbp) for floating listings"
-msgstr "Urèi umístìní (htpb) pro plovoucí výpisy"
+msgstr "Urèit umístìní (htpb) pro plovoucí výpisy"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:78
 msgid "Line numbering"
