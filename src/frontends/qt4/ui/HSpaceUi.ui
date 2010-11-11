@@ -1,138 +1,138 @@
-<ui version="4.0">
+<ui version="4.0" >
  <class>HSpaceUi</class>
- <widget class="QWidget" name="HSpaceUi">
-  <property name="geometry">
+ <widget class="QWidget" name="HSpaceUi" >
+  <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
     <width>239</width>
-    <height>109</height>
+    <height>110</height>
    </rect>
   </property>
-  <property name="windowTitle">
+  <property name="windowTitle" >
    <string/>
   </property>
-  <property name="sizeGripEnabled" stdset="0">
+  <property name="sizeGripEnabled" stdset="0" >
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout">
-   <property name="margin">
+  <layout class="QGridLayout" >
+   <property name="margin" >
     <number>9</number>
    </property>
-   <property name="spacing">
+   <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="2" column="1">
-    <widget class="QComboBox" name="fillPatternCO">
-     <property name="toolTip">
+   <item row="2" column="1" >
+    <widget class="QComboBox" name="fillPatternCO" >
+     <property name="toolTip" >
       <string>Select a fill pattern style for HFills</string>
      </property>
      <item>
-      <property name="text">
+      <property name="text" >
        <string>None</string>
       </property>
      </item>
      <item>
-      <property name="text">
+      <property name="text" >
        <string>...............</string>
       </property>
      </item>
      <item>
-      <property name="text">
+      <property name="text" >
        <string>________</string>
       </property>
      </item>
      <item>
-      <property name="text">
+      <property name="text" >
        <string>&lt;-----------</string>
       </property>
      </item>
      <item>
-      <property name="text">
-       <string>-----------&gt;</string>
+      <property name="text" >
+       <string>-----------></string>
       </property>
      </item>
      <item>
-      <property name="text">
+      <property name="text" >
        <string>\-----v-----/</string>
       </property>
      </item>
      <item>
-      <property name="text">
+      <property name="text" >
        <string>/-----^-----\</string>
       </property>
      </item>
     </widget>
    </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="spacingL">
-     <property name="text">
+   <item row="0" column="0" >
+    <widget class="QLabel" name="spacingL" >
+     <property name="text" >
       <string>&amp;Spacing:</string>
      </property>
-     <property name="buddy">
+     <property name="buddy" >
       <cstring>spacingCO</cstring>
      </property>
     </widget>
    </item>
-   <item row="0" column="1" colspan="2">
-    <widget class="QComboBox" name="spacingCO">
-     <property name="toolTip">
+   <item row="0" column="1" colspan="2" >
+    <widget class="QComboBox" name="spacingCO" >
+     <property name="toolTip" >
       <string>Supported spacing types</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="valueL">
-     <property name="text">
+   <item row="1" column="0" >
+    <widget class="QLabel" name="valueL" >
+     <property name="text" >
       <string>&amp;Value:</string>
      </property>
-     <property name="buddy">
+     <property name="buddy" >
       <cstring>valueLE</cstring>
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QLineEdit" name="valueLE">
-     <property name="enabled">
+   <item row="1" column="1" >
+    <widget class="QLineEdit" name="valueLE" >
+     <property name="enabled" >
       <bool>false</bool>
      </property>
-     <property name="toolTip">
-      <string>Custom value. Needs spacing type &quot;Custom&quot;.</string>
+     <property name="toolTip" >
+      <string>Custom value. Needs spacing type "Custom".</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="2">
-    <widget class="LengthCombo" name="unitCO"/>
+   <item row="1" column="2" >
+    <widget class="LengthCombo" name="unitCO" />
    </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="fillPatternL">
-     <property name="text">
+   <item row="2" column="0" >
+    <widget class="QLabel" name="fillPatternL" >
+     <property name="text" >
       <string>&amp;Fill Pattern:</string>
      </property>
-     <property name="buddy">
+     <property name="buddy" >
       <cstring>fillPatternCO</cstring>
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="keepL">
-     <property name="toolTip">
+   <item row="3" column="0" >
+    <widget class="QLabel" name="keepL" >
+     <property name="toolTip" >
       <string/>
      </property>
-     <property name="text">
+     <property name="text" >
       <string>&amp;Protect:</string>
      </property>
-     <property name="buddy">
+     <property name="buddy" >
       <cstring>keepCB</cstring>
      </property>
     </widget>
    </item>
-   <item row="3" column="1" colspan="2">
-    <widget class="QCheckBox" name="keepCB">
-     <property name="toolTip">
+   <item row="3" column="1" colspan="2" >
+    <widget class="QCheckBox" name="keepCB" >
+     <property name="toolTip" >
       <string>Insert the spacing even after a line break</string>
      </property>
-     <property name="text">
+     <property name="text" >
       <string/>
      </property>
     </widget>
@@ -152,7 +152,7 @@
   <tabstop>keepCB</tabstop>
  </tabstops>
  <includes>
-  <include location="local">qt_i18n.h</include>
+  <include location="local" >qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>
