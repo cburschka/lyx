@@ -1,19 +1,21 @@
-Public release of LyX version 1.6.7
+Public release of LyX version 1.6.8
 ===================================
 
-We are pleased to announce the release of LyX 1.6.7. This is the eighth
+We are pleased to announce the release of LyX 1.6.8. This is the 9th
 maintenance release in the 1.6.x series.
 
-From the list of fixes and improvements, we'd like to highlight
-particularly that this release irons out all known stability problems with
-Qt 4.6. LyX 1.6.7 is our first release that is supposed to run smoothly
-with Qt 4.6, so we urge all distributors who use that version to upgrade
-LyX as well.
+LyX 1.6.8 is the result of our ongoing efforts to make our stable version
+even more reliable and stable. We have fixed crashes that have been
+reported to us, ironed out many small glitches, further polished the user
+interface, updated the documentation and added some new layouts.
 
 A detailed list of changes is appended below, remaining known problems
 are listed in the file RELEASE-NOTES.
 
-All users are encouraged to upgrade to this version.
+While our next major release, LyX 2.0, has just reached beta status and
+already can be tried out by the curious and brave, LyX 1.6.8 is the
+release for everyone who is relying on a solid and polished application.
+We thus encourage all users to upgrade to this version.
 
 In case you are wondering what LyX is, here is what
 http://www.lyx.org/ has to say on the subject:
@@ -39,36 +41,36 @@ http://www.lyx.org/ has to say on the subject:
    internationalized application running natively on Unix/Linux, the
    Macintosh and modern Windows platforms.
 
-You can download LyX 1.6.7 here (the .bz2 are compressed with bzip2,
+You can download LyX 1.6.8 here (the .bz2 are compressed with bzip2,
 which yields smaller files):
 
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.7.tar.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.7.tar.bz2
-	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.6.7.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.6.7.tar.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.8.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.8.tar.bz2
+	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.6.8.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.6.8.tar.bz2
 
 and it should propagate shortly to the following mirrors (which will
 also host the .bz2 versions):
 
-	ftp://ftp.lip6.fr/pub/lyx/stable/1.6.x/lyx-1.6.7.tar.gz
-	http://lyx.cybermirror.org/stable/1.6.x/lyx-1.6.7.tar.gz
-	ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/1.6.x/lyx-1.6.7.tar.gz
-	ftp://ftp.ntua.gr/pub/X11/LyX/stable/1.6.x/lyx-1.6.7.tar.gz
-	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/1.6.x/lyx-1.6.7.tar.gz
-	http://lyx.mirror.fr/stable/1.6.x/lyx-1.6.7.tar.gz
+	ftp://ftp.lip6.fr/pub/lyx/stable/1.6.x/lyx-1.6.8.tar.gz
+	http://lyx.cybermirror.org/stable/1.6.x/lyx-1.6.8.tar.gz
+	ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/1.6.x/lyx-1.6.8.tar.gz
+	ftp://ftp.ntua.gr/pub/X11/LyX/stable/1.6.x/lyx-1.6.8.tar.gz
+	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/1.6.x/lyx-1.6.8.tar.gz
+	http://lyx.mirror.fr/stable/1.6.x/lyx-1.6.8.tar.gz
 
 Prebuilt binaries (rpms for Linux distributions, Mac OS X and Windows
 installers) should soon be available at:
 
-	ftp://ftp.lyx.org/pub/lyx/bin/1.6.7/
+	ftp://ftp.lyx.org/pub/lyx/bin/1.6.8/
 
-If you already have the sources of the previous release (1.6.6.1), you may
+If you already have the sources of the previous release (1.6.7), you may
 want to apply one of the following patches instead:
 
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.7.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.7.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.8.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.8.bz2
 
-If you find what you think is a bug in LyX 1.6.7, you may either
+If you find what you think is a bug in LyX 1.6.8, you may either
 e-mail the LyX developers' mailing list (lyx-devel <at> lists.lyx.org),
 or open a bug report at http://www.lyx.org/trac/
 
@@ -81,185 +83,6 @@ Enjoy!
 The LyX team.
 
 
-What's new in version 1.6.7?
+What's new in version 1.6.8?
 ----------------------------
-
-** Updates:
-***********
-
-* DOCUMENT INPUT/OUTPUT
-
-- New -f [--force-overwrite] command line flag. Without any argument (or
-  with 'all' as argument) all files are silently overwritten on export
-  from the command line. Using 'main' as argument, only the main file will
-  be overwritten.
-
-- New preference setting for selecting what to do when existing files are
-  going to be overwritten on export from the GUI.
-
-- Detect LyXBlogger, a LyX to WordPress Blog Publishing Tool, if installed
-  (bug 6658). See http://wiki.lyx.org/Tools/LyXBlogger.
-
-
-* USER INTERFACE
-
-- Layout and template file for document class "article (IEEEtran)" were
-  updated for IEEEtran 1.7a.
-
-- Do not unnecessarily truncate the text of notes, footnotes and marginals
-  (bug 6672, part 1).
-
-- Tooltips are added to the outliner (bug 6672, part 2).
-
-- Add GUI support for big delimiters variants without 'l', 'm' or 'r'
-  endings and for '<' and '>' with all variants.
-
-
-* DOCUMENTATION AND LOCALIZATION
-
-- New Greek translation of the Intro manual.
-
-- Updated Basque, Czech, French, German, Greek, Indonesian, Italian,
-  Japanese and Slovak user interace localizations.
-
-- Major update of the Basque User's Guide, Tutorial and Intro.
-
-- Updated Japanese Additional LyX Features manual.
-
-- Updated French User's Guide, Additional LyX Features, Embedded Objects
-  and Math manual as well as the French LaTeX Configuration overview.
-
-- Updated LaTeX Configuration overview.
-
-
-* BUILD/INSTALLATION
-
-- On cygwin, install lyxprofile and lyxrc.dist by default. This avoids the
-  use of post-install scripts for this task.
-
-
-** Bug fixes:
-*************
-
-* DOCUMENT INPUT/OUTPUT
-
-- Fix a crash when reopening a hidden buffer in another window (bug 6791).
-
-- Fix an assertion when using an empty user macro taking an argument as
-  the base of script inset (bug 6739).
-
-- Fix reverse search when the document name contains a character that is
-  forbidden in LaTeX filenames (such as spaces).
-
-- Improve reverse search for documents containing index insets (bug 6649).
-
-- Honour physical paper size settings on output (bug 5247).
-
-- Fix compilation error in documents containing passages in Arabic and
-  Farsi (bug 6714).
-
-- Fix direction of references to section numbers in documents with
-  right-to-left-languages (bug 6711).
-
-- Safer creation of backup files on ext4 (part of bug 6587).
-
-- Simplify definition of \greektext (bug 6456 and 6458).
-
-- Don't overwrite child .tex documents on latex export (bug 2434).
-
-- Don't allow the creation multiple buffers with same name (bug 6645).
-
-- Don't automatically overwrite files on export from command line,
-  unless the newly introduced -f flag is used (bug 2762).
-
-- Allow to overwrite files without dialog popup on export from GUI
-  (bug 2844).
-
-- Correct the LaTeX output of framed boxes (bug 4776).
-
-- Correctly parse math formulas having a backslash as last character on a
-  line (bug 6756).
-
-- Only use the page margins if the option "Default margins" is not checked
-  (bug 6699).
-
-- Load the package "amsmath" when using cfrac (bug 6787).
-
-- Fix chapter and section label declaration in the Tufte book class.
-
-- Do not swallow an empty last line in matrix or eqnarray types of
-  environments (bug 6595).
-  
-- Rerun Latex if Biblatex requests for it.
-
-  
-* USER INTERFACE
-
-- Fix a warning and an incidental crash when using the outliner (bug
-  6680).
-
-- Fix an assertion when copying insets from a deleted range of text
-  deleted by a different author (bug 6744).  
-
-- Correctly restore a dissolved macro inset on undo (bug 6678).
-
-- Fix cursor positioning in ERT insets with leading blanks (bug 6746).
-
-- Correctly handle empty custom line spacing in settings (bug 6649).
-
-- Correctly display color changes in math formulas (bug 4071).
-
-- Make sure that the '|'-character in headings does not confuse the TOC
-  list in navigate menu (bug 2009).
-
-- Do not report the word count by the spellchecker twice (bug 6254).
-
-- Fix the display of the "Address" environment in LyX when using the 
-  elsart layout (bug 3930). (Note: elsart.layout is obsolete, please use
-  elsarticle.layout instead).
-
-- Clear an existing selection when using "Navigate Back" (bug 6686).
-
-- Correctly paint the button for external material when the "Preview"
-  attribute is not defined (bug 6677).
-
-- Box dialog: horizontal box alignment is only possible with a simple
-  frame and without an inner box
-
-- Box dialog: without an inner box the specification of the width is only
-  possible with a simple frame (bug 6721).
-
-- Use correct fonts for rendering the \underbar and \ensuremath macros in
-  math when they are nested in certain environments (bug 6729 and 6745).
-
-- Use display-formatted file name when asking about removing an emergency
-  file.
-
-- Do not open buffers in tabs when calling buffer-switch while the option
-  to open buffers in tabs is turned off (bug 5942).
-
-
-* DOCUMENTATION AND LOCALIZATION
-
-- Adapt the tufte example documents to the requirements of recent releases
-  of the tufte-handout and tufte-book classes.
-
-- Correct typos and font styles in the LaTeXConfig.lyx document.
-
-- Add wasysym to LaTeXConfig.lyx (bug 6752).
-
-
-* BUILD/INSTALLATION
-
-- Fix building with Fedora 13 and potentially other recent linux
-  distributions.
-
-- CMake: Install all but the binaries into the 'Resource' folder.
-
-- Several fixes to the cmake build procedure.
-
-- When compiling using automake >= 1.11, use the nicer `silent rules'
-  output format.
-
-- Check whether the wasysym package is installed (bug 6752).
 

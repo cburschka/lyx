@@ -129,7 +129,7 @@ What's new
 - Fix crash when mutating eqnarray-like environments with labeled lines
   to display equations (bug 6858).
 
-- Disable cut and paste inside the Math Delimters dialog. This was of no
+- Disable cut and paste inside the Math Delimiters dialog. This was of no
   use and could trigger a crash (bug 6942).
 
 - Fix a crash when editing a macro name under some circumstances (for
