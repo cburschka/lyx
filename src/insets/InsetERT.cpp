@@ -140,9 +140,9 @@ bool InsetERT::getStatus(Cursor & cur, FuncRequest const & cmd,
 docstring const InsetERT::buttonLabel(BufferView const & bv) const
 {
 	if (decoration() == InsetLayout::CLASSIC)
-		return isOpen(bv) ? _("TeX") : getNewLabel(_("TeX"));
+		return isOpen(bv) ? _("ERT") : getNewLabel(_("ERT"));
 	else
-		return getNewLabel(_("TeX"));
+		return getNewLabel(_("ERT"));
 }
 
 

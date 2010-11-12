@@ -131,7 +131,7 @@ InsetLayout Note:Greyedout
 End
 
 InsetLayout ERT
-	LabelString           TeX
+	LabelString           ERT
 	LatexType             none
 	Decoration            minimalistic
 	Font
