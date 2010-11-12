@@ -1777,7 +1777,7 @@ def revert_module_names(document):
     return
   newmodlist = []
   for mod in modlist:
-    if modulemap.has_key(mod):
+    if mod in modulemap:
       newmodlist.append(modulemap[mod])
     else:
       document.warning("Can't find module %s in the module map!" % mod)
