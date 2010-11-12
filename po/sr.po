@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-10-22 11:29+0200\n"
-"PO-Revision-Date: 2010-11-11 13:31+0100\n"
+"PO-Revision-Date: 2010-11-12 08:35+0100\n"
 "Last-Translator: Zoran T. Filipović <zoran.filipovic@yahoo.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1005,15 +1005,15 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ERTUi.ui:53
 msgid "Show ERT contents"
-msgstr ""
+msgstr "Prikaži ERT sadržaj"
 
 #: src/frontends/qt4/ui/ERTUi.ui:56
 msgid "O&pen"
-msgstr ""
+msgstr "O&tvori"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:22
 msgid "&Errors:"
-msgstr ""
+msgstr "&Greške"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:40
 msgid "Description:"
@@ -1021,38 +1021,38 @@ msgstr "Opis:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:94
 msgid "F&ile"
-msgstr ""
+msgstr "D&atoteka"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:106
 #: src/frontends/qt4/ui/ExternalUi.ui:113
 #: lib/layouts/agu_stdclass.inc:80
 #: lib/layouts/db_stdcharstyles.inc:8
 msgid "Filename"
-msgstr ""
+msgstr "Ime datoteke"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:116
 #: src/frontends/qt4/ui/GraphicsUi.ui:266
 #: src/frontends/qt4/ui/IncludeUi.ui:265
 #: src/frontends/qt4/ui/PrintUi.ui:293
 msgid "&File:"
-msgstr ""
+msgstr "&Datoteka:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:126
 #: src/frontends/qt4/ui/IncludeUi.ui:332
 msgid "Select a file"
-msgstr ""
+msgstr "Izaberite datoteku"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:136
 msgid "&Draft"
-msgstr ""
+msgstr "&Nacrt"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:143
 msgid "&Template"
-msgstr ""
+msgstr "&Šablon"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:182
 msgid "Available templates"
-msgstr ""
+msgstr "Dostupni šabloni"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:193
 #: src/frontends/qt4/ui/GraphicsUi.ui:448
@@ -1089,56 +1089,56 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:327
 msgid "Si&ze and Rotation"
-msgstr ""
+msgstr "V&eličine i rotacija"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:339
 msgid "Rotate"
-msgstr ""
+msgstr "Rotacija"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:386
 #: src/frontends/qt4/ui/ExternalUi.ui:416
 #: src/frontends/qt4/ui/GraphicsUi.ui:240
 #: src/frontends/qt4/ui/GraphicsUi.ui:247
 msgid "Angle to rotate image by"
-msgstr ""
+msgstr "Ugao za koji ćete rotirati sliku"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:396
 #: src/frontends/qt4/ui/ExternalUi.ui:409
 #: src/frontends/qt4/ui/GraphicsUi.ui:212
 #: src/frontends/qt4/ui/GraphicsUi.ui:219
 msgid "The origin of the rotation"
-msgstr ""
+msgstr "Početak rotacije"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:399
 msgid "Ori&gin:"
-msgstr ""
+msgstr "Po&četak:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:419
 msgid "A&ngle:"
-msgstr ""
+msgstr "U&gao:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:434
 msgid "Scale"
-msgstr ""
+msgstr "Skala"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:458
 #: src/frontends/qt4/ui/GraphicsUi.ui:131
 msgid "Height of image in output"
-msgstr ""
+msgstr "Izlazna visina slike "
 
 #: src/frontends/qt4/ui/ExternalUi.ui:468
 #: src/frontends/qt4/ui/GraphicsUi.ui:97
 msgid "Width of image in output"
-msgstr ""
+msgstr "Izlazna širina slike"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:491
 msgid "Maintain aspect ratio with largest dimension"
-msgstr ""
+msgstr "Održavati razmeru u skladu sa najvećom dimenzijom"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:494
 #: src/frontends/qt4/ui/GraphicsUi.ui:177
 msgid "&Maintain aspect ratio"
-msgstr ""
+msgstr "&Održavajte odnos"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:517
 msgid "Crop"
@@ -1197,7 +1197,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:44
 msgid "&Top of page"
-msgstr ""
+msgstr "&Vrh stranice"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:51
 msgid "&Ignore LaTeX rules"
@@ -1217,7 +1217,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:79
 msgid "&Bottom of page"
-msgstr ""
+msgstr "&Dno stranice"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:102
 msgid "&Span columns"
@@ -1384,7 +1384,7 @@ msgstr "x:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:460
 msgid "Don't uncompress image before exporting to LaTeX"
-msgstr ""
+msgstr "Ne raspakujte sliku pre izvoza u LaTeX"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:463
 msgid "Don't un&zip on export"
@@ -1504,7 +1504,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:28
 msgid "Specify the link target"
-msgstr ""
+msgstr "Navedite odredišnu vezu"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:31
 msgid "Link type"
@@ -1512,7 +1512,7 @@ msgstr "Tip veze"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:43
 msgid "Link to the web or to every other target"
-msgstr ""
+msgstr "Veza za web ili za bilo koje drugo odredište"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:46
 msgid "&Web"
@@ -1552,13 +1552,13 @@ msgstr "Ime u vezi sa URL adresom"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:93
 msgid "&Target:"
-msgstr ""
+msgstr "&Odredište (cilj)"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:106
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50
 #: src/frontends/qt4/ui/RefUi.ui:125
 msgid "&Name:"
-msgstr ""
+msgstr "&Ime"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
 msgid "Listing Parameters"
@@ -3087,15 +3087,15 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:69
 msgid "Sans Seri&f:"
-msgstr ""
+msgstr "Sans Seri&f:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:107
 msgid "T&ypewriter:"
-msgstr ""
+msgstr "T&ypewriter:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:117
 msgid "R&oman:"
-msgstr ""
+msgstr "R&oman:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:169
 msgid "Screen &DPI:"
@@ -3350,23 +3350,23 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrintUi.ui:230
 msgid "&Print"
-msgstr ""
+msgstr "&Štampaj"
 
 #: src/frontends/qt4/ui/PrintUi.ui:258
 msgid "Print Destination"
-msgstr ""
+msgstr "Odredište štampanja"
 
 #: src/frontends/qt4/ui/PrintUi.ui:270
 msgid "Send output to the printer"
-msgstr ""
+msgstr "Pošalji izlaz na štampač"
 
 #: src/frontends/qt4/ui/PrintUi.ui:273
 msgid "P&rinter:"
-msgstr ""
+msgstr "Š&tampač:"
 
 #: src/frontends/qt4/ui/PrintUi.ui:283
 msgid "Send output to the given printer"
-msgstr ""
+msgstr "Pošalji izlaz na zadati štampač"
 
 #: src/frontends/qt4/ui/PrintUi.ui:290
 #: src/frontends/qt4/ui/PrintUi.ui:303
@@ -3383,27 +3383,27 @@ msgstr ""
 
 #: src/frontends/qt4/ui/RefUi.ui:176
 msgid "<reference>"
-msgstr ""
+msgstr "<referenca>"
 
 #: src/frontends/qt4/ui/RefUi.ui:181
 msgid "(<reference>)"
-msgstr ""
+msgstr "(<referenca>)"
 
 #: src/frontends/qt4/ui/RefUi.ui:186
 msgid "<page>"
-msgstr ""
+msgstr "<strana>"
 
 #: src/frontends/qt4/ui/RefUi.ui:191
 msgid "on page <page>"
-msgstr ""
+msgstr "na strani <strana>"
 
 #: src/frontends/qt4/ui/RefUi.ui:196
 msgid "<reference> on page <page>"
-msgstr ""
+msgstr "<referenca> na strani <strana>"
 
 #: src/frontends/qt4/ui/RefUi.ui:201
 msgid "Formatted reference"
-msgstr ""
+msgstr "Formatiraj reference"
 
 #: src/frontends/qt4/ui/RefUi.ui:212
 msgid "Sort labels in alphabetical order"
@@ -3440,21 +3440,21 @@ msgstr ""
 
 #: src/frontends/qt4/ui/SearchUi.ui:170
 msgid "Find &Next"
-msgstr ""
+msgstr "Pronađi &sledeću"
 
 #: src/frontends/qt4/ui/SearchUi.ui:183
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:48
 #: src/frontends/qt4/ui/ThesaurusUi.ui:108
 msgid "&Replace"
-msgstr ""
+msgstr "&Zameni"
 
 #: src/frontends/qt4/ui/SearchUi.ui:193
 msgid "Replace &All"
-msgstr ""
+msgstr "Zameni &sve"
 
 #: src/frontends/qt4/ui/SearchUi.ui:200
 msgid "Search &backwards"
-msgstr ""
+msgstr "Traži &unazad"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:42
 msgid "Process the converted file with this command ($$FName = file name)"
@@ -3470,7 +3470,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:13
 msgid "Edit shortcut"
-msgstr ""
+msgstr "Uređivanje prečice"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:77
 msgid "Enter LyX function or command sequence"
@@ -3486,16 +3486,16 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:97
 msgid "Clear current shortcut"
-msgstr ""
+msgstr "Izbriši trenutnu prečicu"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:100
 #: src/frontends/qt4/ui/TabularUi.ui:272
 msgid "C&lear"
-msgstr ""
+msgstr "I&zbriši"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:107
 msgid "&Shortcut:"
-msgstr ""
+msgstr "&Prečica:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:117
 msgid "&Function:"
@@ -3507,63 +3507,63 @@ msgstr ""
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:35
 msgid "Su&ggestions:"
-msgstr ""
+msgstr "Su&gestija:"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:45
 msgid "Replace word with current choice"
-msgstr ""
+msgstr "Zameni reč sa trenutnim izborom"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:55
 msgid "Add the word to your personal dictionary"
-msgstr ""
+msgstr "Dodajte reč u vaš lični rečnik"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:65
 msgid "Ignore this word"
-msgstr ""
+msgstr "Ignoriši ove reči"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:68
 msgid "&Ignore"
-msgstr ""
+msgstr "&Ignoriši"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:75
 msgid "Ignore this word throughout this session"
-msgstr ""
+msgstr "Ignoriši ove reči tokom ove sesije"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:78
 msgid "I&gnore All"
-msgstr ""
+msgstr "I&gnoriši sve"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:101
 msgid "Re&placement:"
-msgstr ""
+msgstr "Za&mena:"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:111
 msgid "Current word"
-msgstr ""
+msgstr "Trenutna reč"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:118
 msgid "Unknown word:"
-msgstr ""
+msgstr "Nepoznata reč:"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:139
 msgid "Replace with selected word"
-msgstr ""
+msgstr "Zameni izabrane reči"
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:83
 msgid "Available categories depend on the document encoding. Select UTF-8 for the full range."
-msgstr ""
+msgstr "Dostupne kategorije zavise od kodiranja dokumenta. Izaberite UTF-8 za kompletan asortiman."
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:86
 msgid "Ca&tegory:"
-msgstr ""
+msgstr "Ka&tegorija:"
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:116
 msgid "Select this to display all available characters at once"
-msgstr ""
+msgstr "Izaberite ovo da prikazuje sve dostupne karaktere odjednom"
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:119
 msgid "&Display all"
-msgstr ""
+msgstr "&Prikaži sve"
 
 #: src/frontends/qt4/ui/TabularUi.ui:38
 msgid "&Table Settings"
@@ -3597,27 +3597,27 @@ msgstr ""
 #: src/frontends/qt4/GuiParagraph.cpp:108
 #: src/frontends/qt4/GuiTabular.cpp:747
 msgid "Justified"
-msgstr ""
+msgstr "Poravnanje "
 
 #: src/frontends/qt4/ui/TabularUi.ui:179
 msgid "Rotate the table by 90 degrees"
-msgstr ""
+msgstr "Rotiranje tabele za 90 stepeni"
 
 #: src/frontends/qt4/ui/TabularUi.ui:182
 msgid "&Rotate table 90 degrees"
-msgstr ""
+msgstr "&Rotiraj tabelu 90 stepeni"
 
 #: src/frontends/qt4/ui/TabularUi.ui:189
 msgid "Rotate this cell by 90 degrees"
-msgstr ""
+msgstr "Rotiraj ovu ćeliju za 90 stepeni"
 
 #: src/frontends/qt4/ui/TabularUi.ui:192
 msgid "Rotate &cell 90 degrees"
-msgstr ""
+msgstr "&Rotiraj ćeliju 90 stepeni"
 
 #: src/frontends/qt4/ui/TabularUi.ui:199
 msgid "Merge cells"
-msgstr ""
+msgstr "Objedinjavanje ćelija"
 
 #: src/frontends/qt4/ui/TabularUi.ui:202
 msgid "&Multicolumn"
@@ -4004,19 +4004,19 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:43
 msgid "Automatic update"
-msgstr ""
+msgstr "Automatsko ažuriranje "
 
 #: src/frontends/qt4/ui/WrapUi.ui:45
 msgid "Unit of width value"
-msgstr ""
+msgstr "Jedinica vrednosti širine "
 
 #: src/frontends/qt4/ui/WrapUi.ui:68
 msgid "number of needed lines"
-msgstr ""
+msgstr "broj potrebnih linija"
 
 #: src/frontends/qt4/ui/WrapUi.ui:75
 msgid "use number of lines"
-msgstr ""
+msgstr "uzmi broj linija"
 
 #: src/frontends/qt4/ui/WrapUi.ui:78
 msgid "&Line span:"
@@ -4486,7 +4486,7 @@ msgstr ""
 #: lib/layouts/theorems-bytype.module:46
 #: lib/layouts/theorems-std.module:20
 msgid "Proof"
-msgstr ""
+msgstr "Dokaz"
 
 #: lib/layouts/IEEEtran.layout:218
 #: lib/layouts/beamer.layout:1057
@@ -4532,7 +4532,7 @@ msgstr "Teorema"
 #: lib/layouts/svjour.inc:397
 #: lib/layouts/theorems-proof.inc:30
 msgid "Proof."
-msgstr ""
+msgstr "Dokaz"
 
 #: lib/layouts/aa.layout:42
 #: lib/layouts/aa.layout:222
@@ -4813,7 +4813,7 @@ msgstr "Datum"
 #: lib/layouts/theorems-ams-extended-bytype.module:220
 #: lib/layouts/theorems-ams-extended.module:189
 msgid "Acknowledgement"
-msgstr ""
+msgstr "Zahvalnost"
 
 #: lib/layouts/aa.layout:161
 #: lib/layouts/aapaper.inc:71
@@ -4822,25 +4822,25 @@ msgstr ""
 
 #: lib/layouts/aa.layout:184
 msgid "Correspondence to:"
-msgstr ""
+msgstr "Prepiska sa:"
 
 #: lib/layouts/aa.layout:210
 #: lib/layouts/egs.layout:516
 #: lib/layouts/svjour.inc:264
 msgid "Acknowledgements."
-msgstr ""
+msgstr "Zahvalnost."
 
 #: lib/layouts/aa.layout:289
 msgid "institutemark"
-msgstr ""
+msgstr "oznaka instituta"
 
 #: lib/layouts/aa.layout:293
 msgid "institute mark"
-msgstr ""
+msgstr "oznaka instituta"
 
 #: lib/layouts/aa.layout:357
 msgid "Key words."
-msgstr ""
+msgstr "Ključne reči."
 
 #: lib/layouts/aa.layout:379
 msgid "CharStyle:Institute"
@@ -4886,7 +4886,7 @@ msgstr "LaTeX"
 #: lib/ui/stdtoolbars.inc:125
 #: src/frontends/qt4/GuiThesaurus.cpp:36
 msgid "Thesaurus"
-msgstr ""
+msgstr "Rečnik sinonima"
 
 #: lib/layouts/aastex.layout:76
 #: lib/layouts/agutex.layout:148
@@ -4918,12 +4918,12 @@ msgstr "Pasus"
 #: lib/layouts/agu_stdtitle.inc:128
 #: lib/layouts/aguplus.inc:60
 msgid "Affiliation"
-msgstr ""
+msgstr "Pripadnost"
 
 #: lib/layouts/aastex.layout:103
 #: lib/layouts/aastex.layout:383
 msgid "And"
-msgstr ""
+msgstr "I"
 
 #: lib/layouts/aastex.layout:115
 #: lib/layouts/aastex.layout:363
@@ -4938,7 +4938,7 @@ msgstr ""
 #: lib/layouts/aapaper.inc:91
 #: lib/layouts/svjour.inc:250
 msgid "Acknowledgements"
-msgstr ""
+msgstr "Zahvalnost"
 
 #: lib/layouts/aastex.layout:124
 #: lib/layouts/aastex.layout:403
@@ -5007,7 +5007,7 @@ msgstr ""
 
 #: lib/layouts/aastex.layout:373
 msgid "[Acknowledgements]"
-msgstr ""
+msgstr "[Zahvalnost]"
 
 #: lib/layouts/aastex.layout:394
 #: src/frontends/qt4/GuiDocument.cpp:1379
@@ -5015,7 +5015,7 @@ msgstr ""
 #: src/frontends/qt4/GuiDocument.cpp:1477
 #: src/frontends/qt4/GuiDocument.cpp:1496
 msgid "and"
-msgstr ""
+msgstr "i"
 
 #: lib/layouts/aastex.layout:414
 msgid "Place Figure here:"
@@ -5209,7 +5209,7 @@ msgstr ""
 
 #: lib/layouts/agutex.layout:187
 msgid "Acknowledgments."
-msgstr ""
+msgstr "Zahvalnost."
 
 #: lib/layouts/amsart.layout:28
 #: lib/layouts/amsbook.layout:29
@@ -5232,7 +5232,7 @@ msgstr ""
 #: lib/layouts/stdlayouts.inc:68
 #: lib/layouts/svjour.inc:309
 msgid "MainText"
-msgstr ""
+msgstr "Glavni tekst"
 
 #: lib/layouts/amsart.layout:70
 #: lib/layouts/amsbook.layout:79
@@ -5246,7 +5246,7 @@ msgstr ""
 #: lib/layouts/db_stdstarsections.inc:36
 #: lib/layouts/stdstarsections.inc:34
 msgid "Section*"
-msgstr ""
+msgstr "Odeljak*"
 
 #: lib/layouts/amsart.layout:80
 msgid "SpecialSection"
@@ -5306,27 +5306,27 @@ msgstr ""
 
 #: lib/layouts/apa.layout:82
 msgid "Abstract:"
-msgstr ""
+msgstr "Sažetak:"
 
 #: lib/layouts/apa.layout:91
 msgid "ShortTitle"
-msgstr ""
+msgstr "Kratak naslov"
 
 #: lib/layouts/apa.layout:99
 msgid "Short title:"
-msgstr ""
+msgstr "Kratak naslov:"
 
 #: lib/layouts/apa.layout:128
 msgid "TwoAuthors"
-msgstr ""
+msgstr "Dva autora"
 
 #: lib/layouts/apa.layout:135
 msgid "ThreeAuthors"
-msgstr ""
+msgstr "Tri autora"
 
 #: lib/layouts/apa.layout:142
 msgid "FourAuthors"
-msgstr ""
+msgstr "Četiri autora"
 
 #: lib/layouts/apa.layout:161
 #: lib/layouts/revtex4.layout:159
@@ -5349,7 +5349,7 @@ msgstr ""
 #: lib/layouts/apa.layout:191
 #: lib/layouts/egs.layout:332
 msgid "Journal"
-msgstr ""
+msgstr "Magazin"
 
 #: lib/layouts/apa.layout:205
 msgid "CopNum"
@@ -5369,7 +5369,7 @@ msgstr ""
 
 #: lib/layouts/apa.layout:233
 msgid "Acknowledgements:"
-msgstr ""
+msgstr "Zahvalnost:"
 
 #: lib/layouts/apa.layout:247
 msgid "ThickLine"
@@ -5427,19 +5427,19 @@ msgstr "(\\alph{enumii})"
 
 #: lib/layouts/armenian-article.layout:9
 msgid "LatinOn"
-msgstr ""
+msgstr "Latinski uključen"
 
 #: lib/layouts/armenian-article.layout:18
 msgid "Latin on"
-msgstr ""
+msgstr "Latinski uključen"
 
 #: lib/layouts/armenian-article.layout:25
 msgid "LatinOff"
-msgstr ""
+msgstr "Latinski isključen"
 
 #: lib/layouts/armenian-article.layout:34
 msgid "Latin off"
-msgstr ""
+msgstr "Latinski isključen"
 
 #: lib/layouts/article-beamer.layout:26
 #: lib/layouts/beamer.layout:224
@@ -11979,22 +11979,22 @@ msgstr ""
 #: lib/ui/stdcontext.inc:68
 #: lib/ui/stdmenus.inc:221
 msgid "Add Line to Left"
-msgstr ""
+msgstr "Dodaj liniju na levo"
 
 #: lib/ui/stdcontext.inc:69
 #: lib/ui/stdmenus.inc:222
 msgid "Add Line to Right"
-msgstr ""
+msgstr "Dodaj liniju na desno"
 
 #: lib/ui/stdcontext.inc:70
 #: lib/ui/stdmenus.inc:223
 msgid "Delete Line to Left"
-msgstr ""
+msgstr "Izbriši liniju na levo"
 
 #: lib/ui/stdcontext.inc:71
 #: lib/ui/stdmenus.inc:224
 msgid "Delete Line to Right"
-msgstr ""
+msgstr "Izbriši liniju na desno"
 
 #: lib/ui/stdcontext.inc:73
 msgid "Show Math Toolbar"
@@ -12326,7 +12326,7 @@ msgstr ""
 #: src/Text3.cpp:1116
 #: src/mathed/InsetMathNest.cpp:553
 msgid "Cut"
-msgstr ""
+msgstr "Iseci"
 
 #: lib/ui/stdcontext.inc:282
 #: lib/ui/stdcontext.inc:328
@@ -12335,7 +12335,7 @@ msgstr ""
 #: src/Text3.cpp:1121
 #: src/mathed/InsetMathNest.cpp:561
 msgid "Copy"
-msgstr ""
+msgstr "Kopiraj "
 
 #: lib/ui/stdcontext.inc:283
 #: lib/ui/stdcontext.inc:329
@@ -12345,7 +12345,7 @@ msgstr ""
 #: src/mathed/InsetMathGrid.cpp:1263
 #: src/mathed/InsetMathNest.cpp:533
 msgid "Paste"
-msgstr ""
+msgstr "Nalepi"
 
 #: lib/ui/stdcontext.inc:284
 #: lib/ui/stdcontext.inc:330
@@ -12489,11 +12489,11 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:33
 msgid "Document|D"
-msgstr ""
+msgstr "Dokument|D"
 
 #: lib/ui/stdmenus.inc:34
 msgid "Tools|T"
-msgstr ""
+msgstr "Alati|T"
 
 #: lib/ui/stdmenus.inc:44
 msgid "New from Template...|m"
@@ -12501,15 +12501,15 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:46
 msgid "Open Recent|t"
-msgstr ""
+msgstr "Otvori nedavni|t"
 
 #: lib/ui/stdmenus.inc:49
 msgid "Close All"
-msgstr ""
+msgstr "Zatvori sve "
 
 #: lib/ui/stdmenus.inc:52
 msgid "Save All|l"
-msgstr ""
+msgstr "Sačuvaj sve|l"
 
 #: lib/ui/stdmenus.inc:53
 msgid "Revert to Saved|R"
@@ -12517,15 +12517,15 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:61
 msgid "New Window|W"
-msgstr ""
+msgstr "Novi prozor|W"
 
 #: lib/ui/stdmenus.inc:62
 msgid "Close Window|d"
-msgstr ""
+msgstr "Zatvori prozor|d"
 
 #: lib/ui/stdmenus.inc:75
 msgid "Update local directory from repository|d"
-msgstr ""
+msgstr "Ažurirajte lokalni direktorijum iz riznice|D"
 
 #: lib/ui/stdmenus.inc:79
 msgid "Use Locking Property|L"
@@ -12757,7 +12757,7 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:312
 msgid "Fullscreen|l"
-msgstr ""
+msgstr "Ceo ekran|l"
 
 #: lib/ui/stdmenus.inc:313
 msgid "Toolbars|b"
@@ -12805,15 +12805,15 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:347
 msgid "Index Entry|d"
-msgstr ""
+msgstr "Unos indeksa|d"
 
 #: lib/ui/stdmenus.inc:348
 msgid "Nomenclature Entry...|y"
-msgstr ""
+msgstr "Unos nomenklature...|y"
 
 #: lib/ui/stdmenus.inc:350
 msgid "Table...|T"
-msgstr ""
+msgstr "Tabela...|T"
 
 #: lib/ui/stdmenus.inc:352
 msgid "URL|U"
@@ -12821,11 +12821,11 @@ msgstr "URL|U"
 
 #: lib/ui/stdmenus.inc:353
 msgid "Hyperlink...|k"
-msgstr ""
+msgstr "Hiperlink...|k"
 
 #: lib/ui/stdmenus.inc:356
 msgid "Short Title|S"
-msgstr ""
+msgstr "Kratak nasloc|S"
 
 #: lib/ui/stdmenus.inc:357
 msgid "TeX Code|X"
@@ -12985,37 +12985,37 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:69
 msgid "New document"
-msgstr ""
+msgstr "Novi dokument"
 
 #: lib/ui/stdtoolbars.inc:70
 msgid "Open document"
-msgstr ""
+msgstr "Otvori dokument"
 
 #: lib/ui/stdtoolbars.inc:71
 msgid "Save document"
-msgstr ""
+msgstr "Sačuvaj dokument"
 
 #: lib/ui/stdtoolbars.inc:72
 msgid "Print document"
-msgstr ""
+msgstr "Štampaj dokument"
 
 #: lib/ui/stdtoolbars.inc:74
 msgid "Check spelling"
-msgstr ""
+msgstr "Provera pravopisa"
 
 #: lib/ui/stdtoolbars.inc:76
 #: src/BufferView.cpp:1094
 msgid "Undo"
-msgstr ""
+msgstr "Poništi"
 
 #: lib/ui/stdtoolbars.inc:77
 #: src/BufferView.cpp:1103
 msgid "Redo"
-msgstr ""
+msgstr "Ponovo uradi"
 
 #: lib/ui/stdtoolbars.inc:81
 msgid "Find and replace"
-msgstr ""
+msgstr "Pronađi i zameni"
 
 #: lib/ui/stdtoolbars.inc:82
 msgid "Navigate back"
@@ -13149,22 +13149,22 @@ msgstr ""
 #: lib/ui/stdtoolbars.inc:129
 #: lib/ui/stdtoolbars.inc:174
 msgid "Add row"
-msgstr ""
+msgstr "Dodaj red"
 
 #: lib/ui/stdtoolbars.inc:130
 #: lib/ui/stdtoolbars.inc:175
 msgid "Add column"
-msgstr ""
+msgstr "Dodaj kolonu"
 
 #: lib/ui/stdtoolbars.inc:131
 #: lib/ui/stdtoolbars.inc:176
 msgid "Delete row"
-msgstr ""
+msgstr "Izbriši red"
 
 #: lib/ui/stdtoolbars.inc:132
 #: lib/ui/stdtoolbars.inc:177
 msgid "Delete column"
-msgstr ""
+msgstr "Izbriši kolonu"
 
 #: lib/ui/stdtoolbars.inc:134
 msgid "Set top line"
@@ -13240,47 +13240,47 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:158
 msgid "Subscript"
-msgstr ""
+msgstr "Znak u indeksu"
 
 #: lib/ui/stdtoolbars.inc:159
 msgid "Superscript"
-msgstr ""
+msgstr "Znak u eksponentu "
 
 #: lib/ui/stdtoolbars.inc:160
 msgid "Insert square root"
-msgstr ""
+msgstr "Umetanje kvadratnog korena"
 
 #: lib/ui/stdtoolbars.inc:161
 msgid "Insert root"
-msgstr ""
+msgstr "Umetanje korena"
 
 #: lib/ui/stdtoolbars.inc:162
 msgid "Insert standard fraction"
-msgstr ""
+msgstr "Umetanje standardnog razlomka "
 
 #: lib/ui/stdtoolbars.inc:163
 msgid "Insert sum"
-msgstr ""
+msgstr "Umetanje zbira"
 
 #: lib/ui/stdtoolbars.inc:164
 msgid "Insert integral"
-msgstr ""
+msgstr "Umetanje integrala "
 
 #: lib/ui/stdtoolbars.inc:165
 msgid "Insert product"
-msgstr ""
+msgstr "Umetanje dela "
 
 #: lib/ui/stdtoolbars.inc:167
 msgid "Insert ( )"
-msgstr ""
+msgstr "Umetni ( )"
 
 #: lib/ui/stdtoolbars.inc:168
 msgid "Insert [ ]"
-msgstr ""
+msgstr "Umetni [ ]"
 
 #: lib/ui/stdtoolbars.inc:169
 msgid "Insert { }"
-msgstr ""
+msgstr "Umetni { }"
 
 #: lib/ui/stdtoolbars.inc:170
 msgid "Insert delimiters"
@@ -13288,7 +13288,7 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:172
 msgid "Insert matrix"
-msgstr ""
+msgstr "Umetanje matrica"
 
 #: lib/ui/stdtoolbars.inc:173
 msgid "Insert cases environment"
@@ -13372,11 +13372,11 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:210
 msgid "Accept all changes"
-msgstr ""
+msgstr "Prihvati sve promene "
 
 #: lib/ui/stdtoolbars.inc:211
 msgid "Reject all changes"
-msgstr ""
+msgstr "Odbaci sve promene "
 
 #: lib/ui/stdtoolbars.inc:214
 msgid "Next note"
@@ -13741,23 +13741,23 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:323
 msgid "Unit (km)\t\\unit"
-msgstr ""
+msgstr "Jedinica (km)\t\\unit"
 
 #: lib/ui/stdtoolbars.inc:324
 msgid "Unit (864 m)\t\\unit"
-msgstr ""
+msgstr "Jedinica (864 m)\t\\unit"
 
 #: lib/ui/stdtoolbars.inc:325
 msgid "Unit fraction (km/h)\t\\unitfrac"
-msgstr ""
+msgstr "Jedinica razlomka (km/h)\t\\unitfrac"
 
 #: lib/ui/stdtoolbars.inc:326
 msgid "Unit fraction (20 km/h)\t\\unitfrac"
-msgstr ""
+msgstr "Jedinica razlomka (20 km/h)\t\\unitfrac"
 
 #: lib/ui/stdtoolbars.inc:327
 msgid "Text fraction\t\\tfrac"
-msgstr ""
+msgstr "Razlomak u obliku teksta\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:328
 msgid "Display fraction\t\\dfrac"
@@ -13765,23 +13765,23 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:329
 msgid "Continued fraction\t\\cfrac"
-msgstr ""
+msgstr "Nastavljen razlomak\t\\cfrac"
 
 #: lib/ui/stdtoolbars.inc:330
 msgid "Continued fraction (left)\t\\cfrac"
-msgstr ""
+msgstr "Nastavljen razlomak (levo)\t\\cfrac"
 
 #: lib/ui/stdtoolbars.inc:331
 msgid "Continued fraction (right)\t\\cfrac"
-msgstr ""
+msgstr "Nastavljen razlomak (desno)\t\\cfrac"
 
 #: lib/ui/stdtoolbars.inc:332
 msgid "Binomial\t\\binom"
-msgstr ""
+msgstr "Binom\t\\binom"
 
 #: lib/ui/stdtoolbars.inc:333
 msgid "Text binomial\t\\tbinom"
-msgstr ""
+msgstr "Tekst binoma\t\\tbinom"
 
 #: lib/ui/stdtoolbars.inc:334
 msgid "Display binomial\t\\dbinom"
@@ -15774,7 +15774,7 @@ msgstr ""
 
 #: lib/external_templates:261
 msgid "PDFPages"
-msgstr ""
+msgstr "PDF strane"
 
 #: lib/external_templates:262
 #: lib/external_templates:273
@@ -16076,11 +16076,11 @@ msgstr "CJK LyX 1.4.x (euc-kr)"
 
 #: lib/configure.py:360
 msgid "LyX Preview"
-msgstr ""
+msgstr "LyX pregled"
 
 #: lib/configure.py:361
 msgid "LyX Preview (pLaTeX)"
-msgstr ""
+msgstr "LyX pregled (pLaTeX)"
 
 #: lib/configure.py:362
 msgid "PDFTEX"
@@ -16088,7 +16088,7 @@ msgstr "PDFTEX"
 
 #: lib/configure.py:363
 msgid "Program"
-msgstr ""
+msgstr "Program"
 
 #: lib/configure.py:364
 msgid "PSTEX"
@@ -16132,12 +16132,12 @@ msgstr ""
 #: src/frontends/qt4/GuiDocument.cpp:1378
 #, c-format
 msgid "%1$s and %2$s"
-msgstr ""
+msgstr "%1$s i %2$s"
 
 #: src/BiblioInfo.cpp:247
 #, c-format
 msgid "%1$s et al."
-msgstr ""
+msgstr "%1$s i dr."
 
 #: src/BiblioInfo.cpp:307
 msgid "Ch. "
@@ -16150,16 +16150,16 @@ msgstr ""
 #: src/BiblioInfo.cpp:448
 #: src/BiblioInfo.cpp:451
 msgid "No year"
-msgstr ""
+msgstr "Nema godine"
 
 #: src/BiblioInfo.cpp:520
 #: src/BiblioInfo.cpp:580
 msgid "Add to bibliography only."
-msgstr ""
+msgstr "Dodaj samo u bibliografiju."
 
 #: src/BiblioInfo.cpp:576
 msgid "before"
-msgstr ""
+msgstr "pre"
 
 #: src/Buffer.cpp:254
 msgid "Disk Error: "
@@ -16168,7 +16168,7 @@ msgstr ""
 #: src/Buffer.cpp:255
 #, c-format
 msgid "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
-msgstr ""
+msgstr "LyX ne može da napravi privremeni direktorijum '%1$s' (disk je možda pun?)"
 
 #: src/Buffer.cpp:313
 msgid "LyX attempted to close a document that had unsaved changes!\n"
@@ -16180,16 +16180,16 @@ msgstr ""
 
 #: src/Buffer.cpp:323
 msgid "Could not remove temporary directory"
-msgstr ""
+msgstr "Nije moguće ukloniti privremeni direktorijum"
 
 #: src/Buffer.cpp:324
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
-msgstr ""
+msgstr "Nije moguće ukloniti privremeni direktorijum %1$s"
 
 #: src/Buffer.cpp:539
 msgid "Unknown document class"
-msgstr ""
+msgstr "Nepoznata klasa dokumenta"
 
 #: src/Buffer.cpp:540
 #, c-format
@@ -16523,7 +16523,7 @@ msgstr ""
 
 #: src/Buffer.cpp:2777
 msgid "Do not forget to save your file now!"
-msgstr ""
+msgstr "Ne zaboravite da datoteku sačuvate odmah!"
 
 #: src/Buffer.cpp:2783
 msgid "Remove emergency file now?"
@@ -16547,20 +16547,20 @@ msgstr ""
 
 #: src/Buffer.cpp:2802
 msgid "Load &original"
-msgstr ""
+msgstr "Učitaj &original"
 
 #: src/Buffer.cpp:2835
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
-msgstr ""
+msgstr "Da li želite da preuzmete dokument %1$s iz kontrolne verzije?"
 
 #: src/Buffer.cpp:2837
 msgid "Retrieve from version control?"
-msgstr ""
+msgstr "Preuzeti iz kontrolne verzije?"
 
 #: src/Buffer.cpp:2838
 msgid "&Retrieve"
-msgstr ""
+msgstr "&Preuzmi"
 
 #: src/BufferParams.cpp:480
 #, c-format
@@ -16575,7 +16575,7 @@ msgstr ""
 
 #: src/BufferParams.cpp:486
 msgid "Document class not available"
-msgstr ""
+msgstr "Dokument klasa nije dostupna"
 
 #: src/BufferParams.cpp:487
 msgid "LyX will not be able to produce output."
@@ -16588,18 +16588,18 @@ msgstr ""
 
 #: src/BufferParams.cpp:1665
 msgid "Document class not found"
-msgstr ""
+msgstr "Dokument klasa nije pronađena"
 
 #: src/BufferParams.cpp:1672
 #: src/LyXFunc.cpp:752
 #, c-format
 msgid "The document class %1$s could not be loaded."
-msgstr ""
+msgstr "Document klasa %1$s nemože da bide učitana."
 
 #: src/BufferParams.cpp:1674
 #: src/LyXFunc.cpp:754
 msgid "Could not load class"
-msgstr ""
+msgstr "Nije moguće učitati klasu"
 
 #: src/BufferParams.cpp:1736
 #, c-format
@@ -16628,7 +16628,7 @@ msgstr ""
 
 #: src/BufferParams.cpp:1751
 msgid "Package not available"
-msgstr ""
+msgstr "Paket nije dostupna"
 
 #: src/BufferParams.cpp:1756
 #, c-format
@@ -16944,7 +16944,7 @@ msgstr ""
 
 #: src/Color.cpp:168
 msgid "URL label"
-msgstr ""
+msgstr "URL oznaka"
 
 #: src/Color.cpp:169
 msgid "URL text"
@@ -16972,11 +16972,11 @@ msgstr ""
 
 #: src/Color.cpp:175
 msgid "special character"
-msgstr ""
+msgstr "specijalni karakteri"
 
 #: src/Color.cpp:176
 msgid "math"
-msgstr ""
+msgstr "matematika"
 
 #: src/Color.cpp:177
 msgid "math background"
@@ -17049,7 +17049,7 @@ msgstr ""
 
 #: src/Color.cpp:195
 msgid "LaTeX error"
-msgstr ""
+msgstr "LaTeX greška"
 
 #: src/Color.cpp:196
 msgid "end-of-line marker"
@@ -17065,31 +17065,31 @@ msgstr ""
 
 #: src/Color.cpp:199
 msgid "deleted text"
-msgstr ""
+msgstr "izbrisan tekst"
 
 #: src/Color.cpp:200
 msgid "added text"
-msgstr ""
+msgstr "dodati tekst"
 
 #: src/Color.cpp:201
 msgid "changed text 1st author"
-msgstr ""
+msgstr "promena teksta prvog autora"
 
 #: src/Color.cpp:202
 msgid "changed text 2nd author"
-msgstr ""
+msgstr "promena teksta drugog autora"
 
 #: src/Color.cpp:203
 msgid "changed text 3rd author"
-msgstr ""
+msgstr "promena teksta trećeg autora"
 
 #: src/Color.cpp:204
 msgid "changed text 4th author"
-msgstr ""
+msgstr "promena teksta četvrtog autora"
 
 #: src/Color.cpp:205
 msgid "changed text 5th author"
-msgstr ""
+msgstr "promena teksta petog autora"
 
 #: src/Color.cpp:206
 msgid "deleted text modifier"
@@ -17199,16 +17199,16 @@ msgstr ""
 
 #: src/Converter.cpp:579
 msgid "Running LaTeX..."
-msgstr ""
+msgstr "Pokrećem LaTeX..."
 
 #: src/Converter.cpp:597
 #, c-format
 msgid "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX log %1$s."
-msgstr ""
+msgstr "LaTeX nije uspešno pokrenut. Pored toga, LyX nije mogao da pronađe LaTeX registar %1$s."
 
 #: src/Converter.cpp:600
 msgid "LaTeX failed"
-msgstr ""
+msgstr "LaTeX nije uspeo"
 
 #: src/Converter.cpp:602
 msgid "Output is empty"
@@ -17262,28 +17262,28 @@ msgstr ""
 #: src/Exporter.cpp:97
 #, c-format
 msgid "Copying %1$s to %2$s failed."
-msgstr ""
+msgstr "Kopiranje %1$s na %2$s nije uspelo."
 
 #: src/Font.cpp:49
 #: src/frontends/qt4/GuiCharacter.cpp:118
 #: src/frontends/qt4/GuiDocument.cpp:2275
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
-msgstr ""
+msgstr "Roman"
 
 #: src/Font.cpp:49
 #: src/frontends/qt4/GuiCharacter.cpp:119
 #: src/frontends/qt4/GuiDocument.cpp:2275
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
-msgstr ""
+msgstr "Sans Serif"
 
 #: src/Font.cpp:49
 #: src/frontends/qt4/GuiCharacter.cpp:120
 #: src/frontends/qt4/GuiDocument.cpp:2275
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
-msgstr ""
+msgstr "Typewriter"
 
 #: src/Font.cpp:49
 msgid "Symbol"
@@ -17300,31 +17300,31 @@ msgstr ""
 #: src/Font.cpp:54
 #: src/frontends/qt4/GuiCharacter.cpp:107
 msgid "Medium"
-msgstr ""
+msgstr "Medium"
 
 #: src/Font.cpp:54
 #: src/frontends/qt4/GuiCharacter.cpp:108
 msgid "Bold"
-msgstr ""
+msgstr "Bold"
 
 #: src/Font.cpp:57
 #: src/frontends/qt4/GuiCharacter.cpp:43
 msgid "Upright"
-msgstr ""
+msgstr "Upright"
 
 #: src/Font.cpp:57
 #: src/frontends/qt4/GuiCharacter.cpp:44
 msgid "Italic"
-msgstr ""
+msgstr "Italic"
 
 #: src/Font.cpp:57
 #: src/frontends/qt4/GuiCharacter.cpp:45
 msgid "Slanted"
-msgstr ""
+msgstr "Slanted"
 
 #: src/Font.cpp:57
 msgid "Smallcaps"
-msgstr ""
+msgstr "Smallcaps"
 
 #: src/Font.cpp:62
 #: src/frontends/qt4/GuiCharacter.cpp:66
@@ -17466,16 +17466,16 @@ msgstr ""
 #: src/LaTeX.cpp:264
 #: src/LaTeX.cpp:353
 msgid "Running Index Processor."
-msgstr ""
+msgstr "Pokreanje Indeks procesora."
 
 #: src/LaTeX.cpp:284
 #: src/LaTeX.cpp:336
 msgid "Running BibTeX."
-msgstr ""
+msgstr "Pokretanje BibTeX-a."
 
 #: src/LaTeX.cpp:434
 msgid "Running MakeIndex for nomencl."
-msgstr ""
+msgstr "Pokretanje MakeIndex za nomencl."
 
 #: src/LyX.cpp:110
 msgid "Could not read configuration file"
@@ -17495,7 +17495,7 @@ msgstr ""
 
 #: src/LyX.cpp:124
 msgid "Done!"
-msgstr ""
+msgstr "Gotovo!"
 
 #: src/LyX.cpp:386
 #, c-format
@@ -17534,12 +17534,12 @@ msgstr ""
 
 #: src/LyX.cpp:505
 msgid "&Use Default"
-msgstr ""
+msgstr "&Koristi podrazumevano"
 
 #: src/LyX.cpp:506
 #: src/LyX.cpp:879
 msgid "&Exit LyX"
-msgstr ""
+msgstr "&Izađi iz LyX-a"
 
 #: src/LyX.cpp:652
 #: src/frontends/qt4/GuiView.cpp:750
@@ -17548,7 +17548,7 @@ msgstr "LyX: "
 
 #: src/LyX.cpp:788
 msgid "Could not create temporary directory"
-msgstr ""
+msgstr "Ne mogu da napravim privremeni direktorijum"
 
 #: src/LyX.cpp:789
 #, c-format
@@ -17571,7 +17571,7 @@ msgstr ""
 
 #: src/LyX.cpp:878
 msgid "&Create directory"
-msgstr ""
+msgstr "&Kreiraj direktorijum"
 
 #: src/LyX.cpp:880
 msgid "No user LyX directory. Exiting."
@@ -17626,11 +17626,11 @@ msgstr ""
 
 #: src/LyX.cpp:1021
 msgid "No system directory"
-msgstr ""
+msgstr "Nema sistemskog direktorijuma"
 
 #: src/LyX.cpp:1022
 msgid "Missing directory for -sysdir switch"
-msgstr ""
+msgstr "Nedostaje direktorijum za -sysdir promenu"
 
 #: src/LyX.cpp:1033
 msgid "No user directory"
@@ -17638,11 +17638,11 @@ msgstr ""
 
 #: src/LyX.cpp:1034
 msgid "Missing directory for -userdir switch"
-msgstr ""
+msgstr "Nedostaje direktorijum za -userdir promenu"
 
 #: src/LyX.cpp:1045
 msgid "Incomplete command"
-msgstr ""
+msgstr "Nepotpuna komanda"
 
 #: src/LyX.cpp:1046
 msgid "Missing command string after --execute switch"
@@ -17650,11 +17650,11 @@ msgstr ""
 
 #: src/LyX.cpp:1057
 msgid "Missing file type [eg latex, ps...] after --export switch"
-msgstr ""
+msgstr "Nedostaje tip datoteke [npr: latex, ps...] posle -export za promenu"
 
 #: src/LyX.cpp:1070
 msgid "Missing file type [eg latex, ps...] after --import switch"
-msgstr ""
+msgstr "Nedostaje tip datoteke [npr: latex, ps...] posle -import za promenu"
 
 #: src/LyX.cpp:1075
 msgid "Missing filename for --import"
@@ -17692,15 +17692,15 @@ msgstr ""
 
 #: src/LyXFunc.cpp:374
 msgid "Unknown function."
-msgstr ""
+msgstr "Nepoznata funkcija."
 
 #: src/LyXFunc.cpp:403
 msgid "Nothing to do"
-msgstr ""
+msgstr "Ništa da se uradi"
 
 #: src/LyXFunc.cpp:422
 msgid "Unknown action"
-msgstr ""
+msgstr "Nepoznata radnja"
 
 #: src/LyXFunc.cpp:428
 #: src/LyXFunc.cpp:694
@@ -17709,11 +17709,11 @@ msgstr ""
 
 #: src/LyXFunc.cpp:435
 msgid "Command not allowed without any document open"
-msgstr ""
+msgstr "Naredba nije dozvoljena bez otvaranja dokumenta"
 
 #: src/LyXFunc.cpp:679
 msgid "Document is read-only"
-msgstr ""
+msgstr "Dokument je samo za čitanje"
 
 #: src/LyXFunc.cpp:688
 msgid "This portion of the document is deleted."
@@ -17730,7 +17730,7 @@ msgstr ""
 #: src/LyXFunc.cpp:713
 #: src/frontends/qt4/GuiView.cpp:1930
 msgid "Save changed document?"
-msgstr ""
+msgstr "Da li želite da sačuvate promenjen dokument?"
 
 #: src/LyXFunc.cpp:716
 #, c-format
@@ -17742,7 +17742,7 @@ msgstr ""
 
 #: src/LyXFunc.cpp:719
 msgid "Save new document?"
-msgstr ""
+msgstr "Sačuvaj novi dokument?"
 
 #: src/LyXFunc.cpp:734
 #, c-format
@@ -17840,7 +17840,7 @@ msgstr ""
 #: src/LyXFunc.cpp:1926
 #: src/buffer_funcs.cpp:77
 msgid "&Reload"
-msgstr ""
+msgstr "&Učitaj ponovo"
 
 #: src/LyXFunc.cpp:1969
 msgid "Welcome to LyX!"
@@ -17848,7 +17848,7 @@ msgstr "Dobrodošli u LyX!"
 
 #: src/LyXFunc.cpp:1990
 msgid "Converting document to new document class..."
-msgstr ""
+msgstr "Konvertovanje dokumenta u novu dokument klasu..."
 
 #: src/LyXRC.cpp:2517
 msgid "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as legal words?"
@@ -17904,7 +17904,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2583
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
-msgstr ""
+msgstr "Koristite Mac OS X konvencije za kratko kretanje kursora"
 
 #: src/LyXRC.cpp:2587
 msgid "Show a small box around a Math Macro with the macro name when the cursor is inside."
@@ -17921,11 +17921,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:2606
 msgid "New documents will be assigned this language."
-msgstr ""
+msgstr "Novom dokumentu će biti dodeljen ovaj jezik."
 
 #: src/LyXRC.cpp:2610
 msgid "Specify the default paper size."
-msgstr ""
+msgstr "Navedite podrazumevanu veličinu papira."
 
 #: src/LyXRC.cpp:2614
 msgid "Iconify the dialogs when the main window is iconified. (Affects only dialogs shown after the change has been made.)"
@@ -17933,7 +17933,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2618
 msgid "Select how LyX will display any graphics."
-msgstr ""
+msgstr "Izaberite kako će LyX prikazati sve grafike."
 
 #: src/LyXRC.cpp:2622
 msgid "The default path for your documents. An empty value selects the directory LyX was started from."
@@ -18021,7 +18021,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2715
 msgid "The scrolling speed of the mouse wheel."
-msgstr ""
+msgstr "Brzina pomeranja točkića miša."
 
 #: src/LyXRC.cpp:2720
 msgid "The completion popup delay."
@@ -18090,7 +18090,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2788
 msgid "The option for specifying the number of copies to print."
-msgstr ""
+msgstr "Opcija za specifikaciju broja primeraka za štampanje."
 
 #: src/LyXRC.cpp:2792
 msgid "The default printer to print on. If none is specified, LyX will use the environment variable PRINTER."
@@ -18098,7 +18098,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2796
 msgid "The option to print only even pages."
-msgstr ""
+msgstr "Opcija da odštampate samo parne stranice."
 
 #: src/LyXRC.cpp:2800
 msgid "Extra options to pass to printing program after everything else, but before the filename of the DVI file to be printed."
@@ -18110,11 +18110,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:2808
 msgid "The option to print out in landscape."
-msgstr ""
+msgstr "Opcija za štampanje u pejzažu."
 
 #: src/LyXRC.cpp:2812
 msgid "The option to print only odd pages."
-msgstr ""
+msgstr "Opcija da odštampate samo neparne stranice."
 
 #: src/LyXRC.cpp:2816
 msgid "The option for specifying a comma-separated list of pages to print."
@@ -18162,7 +18162,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2864
 msgid "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes wrong, override the setting here."
-msgstr ""
+msgstr "DPI (tačaka po inču), na monitoru LyX auto-detektuje. Ako to nije u redu, zamenite postavku ovde."
 
 #: src/LyXRC.cpp:2870
 msgid "The screen fonts used to display the text while editing."
@@ -18195,7 +18195,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2907
 msgid "What command runs the spellchecker?"
-msgstr ""
+msgstr "Koja komanda pokreće proveru pravopisa?"
 
 #: src/LyXRC.cpp:2911
 msgid "LyX will place its temporary directories in this path. They will be deleted when you quit LyX."
@@ -18235,16 +18235,16 @@ msgstr ""
 
 #: src/LyXVC.cpp:133
 msgid "LyX VC: Initial description"
-msgstr ""
+msgstr "LyX VC: Inicijalni opis"
 
 #: src/LyXVC.cpp:134
 #: src/LyXVC.cpp:140
 msgid "(no initial description)"
-msgstr ""
+msgstr "(bez inicijalnog opisa)"
 
 #: src/LyXVC.cpp:154
 msgid "(no log message)"
-msgstr ""
+msgstr "(bez poruke o registru)"
 
 #: src/LyXVC.cpp:192
 #, c-format
@@ -18515,12 +18515,12 @@ msgstr ""
 #: src/VCBackend.cpp:732
 #: src/VCBackend.cpp:736
 msgid "&Yes"
-msgstr ""
+msgstr "&Da"
 
 #: src/VCBackend.cpp:732
 #: src/VCBackend.cpp:736
 msgid "&No"
-msgstr ""
+msgstr "&Ne"
 
 #: src/VCBackend.cpp:732
 msgid "View &Log ..."
@@ -18642,39 +18642,39 @@ msgstr ""
 
 #: src/frontends/qt4/BulletsModule.cpp:42
 msgid "Maths"
-msgstr ""
+msgstr "Matematika"
 
 #: src/frontends/qt4/BulletsModule.cpp:43
 msgid "Dings 1"
-msgstr ""
+msgstr "Dings 1"
 
 #: src/frontends/qt4/BulletsModule.cpp:44
 msgid "Dings 2"
-msgstr ""
+msgstr "Dings 2"
 
 #: src/frontends/qt4/BulletsModule.cpp:45
 msgid "Dings 3"
-msgstr ""
+msgstr "Dings 3"
 
 #: src/frontends/qt4/BulletsModule.cpp:46
 msgid "Dings 4"
-msgstr ""
+msgstr "Dings 4"
 
 #: src/frontends/qt4/FileDialog.cpp:181
 msgid "Directories"
-msgstr ""
+msgstr "Direktorijumi"
 
 #: src/frontends/qt4/GuiAbout.cpp:49
 msgid "ERROR: LyX wasn't able to read CREDITS file\n"
-msgstr ""
+msgstr "GREŠKA: LyX nije bio u stanju da čita datoteke KREDITI\n"
 
 #: src/frontends/qt4/GuiAbout.cpp:50
 msgid "Please install correctly to estimate the great\n"
-msgstr ""
+msgstr "Molimo Vas da instalirate pravilno da bi cenili veliku\n"
 
 #: src/frontends/qt4/GuiAbout.cpp:51
 msgid "amount of work other people have done for the LyX project."
-msgstr ""
+msgstr "količinu rada ljudi koji su radili za LyX projekat."
 
 #: src/frontends/qt4/GuiAbout.cpp:82
 #, c-format
@@ -18682,10 +18682,12 @@ msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995--%1$s LyX Team"
 msgstr ""
+"LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
+"1995--%1$s LyX Team"
 
 #: src/frontends/qt4/GuiAbout.cpp:90
 msgid "This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."
-msgstr ""
+msgstr "Ovaj program je slobodan softver; možete ga raspodeliti i/ili menjati pod uslovima GNU Opšte javne licence koju je objavila Zadužbina za slobodni softver, bilo verzije 2 Licence, ili (po vašem izboru) bilo koje novije verzije."
 
 #: src/frontends/qt4/GuiAbout.cpp:96
 msgid ""
@@ -18693,10 +18695,13 @@ msgid ""
 "See the GNU General Public License for more details.\n"
 "You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 msgstr ""
+"LyX se distribuira u nadi da će biti koristan, ali BEZ IKAKVE GARANCIJE, bez čak i implicitne garancije KOMERCIJALNE VREDNOSTI ili POGODNOSTI ZA ODREĐENE POTREBE.\n"
+"Pogledajte GNU-ovu opštu javnu licencu za više detalja.\n"
+"Trebalo bi da primite primerak GNU-ove opšte javne licence zajedno sa ovim programom, ako ne, pišite na: Free Softvare Foundation, Inc, 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 
 #: src/frontends/qt4/GuiAbout.cpp:109
 msgid "not released yet"
-msgstr ""
+msgstr "još nije objavljen "
 
 #: src/frontends/qt4/GuiAbout.cpp:114
 #, c-format
@@ -18704,14 +18709,16 @@ msgid ""
 "LyX Version %1$s\n"
 "(%2$s)"
 msgstr ""
+"LyX verzija %1$s\n"
+"(%2$s)"
 
 #: src/frontends/qt4/GuiAbout.cpp:120
 msgid "Library directory: "
-msgstr ""
+msgstr "Direktorijum biblioteke:"
 
 #: src/frontends/qt4/GuiAbout.cpp:123
 msgid "User directory: "
-msgstr ""
+msgstr "Korisnički direktorijum:"
 
 #: src/frontends/qt4/GuiAlert.cpp:165
 #: src/frontends/qt4/GuiAlert.cpp:208
@@ -18720,7 +18727,7 @@ msgstr ""
 #: src/frontends/qt4/GuiAlert.cpp:302
 #, c-format
 msgid "LyX: %1$s"
-msgstr ""
+msgstr "LyX: %1$s"
 
 #: src/frontends/qt4/GuiApplication.cpp:441
 msgid "About %1"
@@ -18754,7 +18761,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiApplication.cpp:1321
 msgid "The current document was closed."
-msgstr ""
+msgstr "Trenutni dokument je zatvoren."
 
 #: src/frontends/qt4/GuiApplication.cpp:1331
 msgid ""
@@ -18775,7 +18782,7 @@ msgstr ""
 #: src/frontends/qt4/GuiApplication.cpp:1501
 #: src/frontends/qt4/GuiApplication.cpp:1506
 msgid "Could not find UI definition file"
-msgstr ""
+msgstr "Nije moguće pronaći UI datoteku definicije"
 
 #: src/frontends/qt4/GuiApplication.cpp:1502
 #, c-format
@@ -18811,7 +18818,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiBibtex.cpp:53
 msgid "BibTeX Bibliography"
-msgstr ""
+msgstr "BibTeX bibliografija"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435
 #: src/frontends/qt4/GuiBibtex.cpp:445
@@ -18825,23 +18832,23 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:1704
 #: src/frontends/qt4/GuiView.cpp:1788
 msgid "Documents|#o#O"
-msgstr ""
+msgstr "Documenta|#o#O"
 
 #: src/frontends/qt4/GuiBibtex.cpp:437
 msgid "BibTeX Databases (*.bib)"
-msgstr ""
+msgstr "BibTeX baze podataka (*.bib)"
 
 #: src/frontends/qt4/GuiBibtex.cpp:439
 msgid "Select a BibTeX database to add"
-msgstr ""
+msgstr "Izaberi BibTeX bazu podataka za dodavanje"
 
 #: src/frontends/qt4/GuiBibtex.cpp:447
 msgid "BibTeX Styles (*.bst)"
-msgstr ""
+msgstr "BibTeX stilovi (*.bst)"
 
 #: src/frontends/qt4/GuiBibtex.cpp:449
 msgid "Select a BibTeX style"
-msgstr ""
+msgstr "Izaberi BibTeX stil"
 
 #: src/frontends/qt4/GuiBox.cpp:56
 msgid "No frame"
@@ -18875,13 +18882,13 @@ msgstr ""
 #: src/frontends/qt4/GuiBox.cpp:356
 #: src/frontends/qt4/GuiBox.cpp:391
 msgid "Height"
-msgstr ""
+msgstr "Visina"
 
 #: src/frontends/qt4/GuiBox.cpp:72
 #: src/frontends/qt4/GuiBox.cpp:359
 #: src/frontends/qt4/GuiBox.cpp:394
 msgid "Depth"
-msgstr ""
+msgstr "Dubina"
 
 #: src/frontends/qt4/GuiBox.cpp:73
 #: src/frontends/qt4/GuiBox.cpp:216
@@ -18889,13 +18896,13 @@ msgstr ""
 #: src/frontends/qt4/GuiBox.cpp:397
 #: src/frontends/qt4/GuiBox.cpp:440
 msgid "Total Height"
-msgstr ""
+msgstr "Ukupna visina"
 
 #: src/frontends/qt4/GuiBox.cpp:73
 #: src/frontends/qt4/GuiBox.cpp:365
 #: src/frontends/qt4/GuiBox.cpp:400
 msgid "Width"
-msgstr ""
+msgstr "Širina"
 
 #: src/frontends/qt4/GuiBox.cpp:78
 msgid "Box Settings"
@@ -18911,18 +18918,18 @@ msgstr ""
 
 #: src/frontends/qt4/GuiBranches.cpp:44
 msgid "Color"
-msgstr ""
+msgstr "Boja "
 
 #: src/frontends/qt4/GuiBranches.cpp:72
 #: src/frontends/qt4/GuiBranches.cpp:146
 #: src/frontends/qt4/GuiDocument.cpp:1522
 msgid "Yes"
-msgstr ""
+msgstr "Da"
 
 #: src/frontends/qt4/GuiBranches.cpp:72
 #: src/frontends/qt4/GuiDocument.cpp:1521
 msgid "No"
-msgstr ""
+msgstr "Ne"
 
 #: src/frontends/qt4/GuiChanges.cpp:40
 msgid "Merge Changes"
@@ -18978,23 +18985,23 @@ msgstr ""
 
 #: src/frontends/qt4/GuiCharacter.cpp:90
 msgid "Black"
-msgstr ""
+msgstr "Crna "
 
 #: src/frontends/qt4/GuiCharacter.cpp:91
 msgid "White"
-msgstr ""
+msgstr "Bela"
 
 #: src/frontends/qt4/GuiCharacter.cpp:92
 msgid "Red"
-msgstr ""
+msgstr "Crvena"
 
 #: src/frontends/qt4/GuiCharacter.cpp:93
 msgid "Green"
-msgstr ""
+msgstr "Zelena"
 
 #: src/frontends/qt4/GuiCharacter.cpp:94
 msgid "Blue"
-msgstr ""
+msgstr "Plava"
 
 #: src/frontends/qt4/GuiCharacter.cpp:95
 msgid "Cyan"
@@ -19006,7 +19013,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiCharacter.cpp:97
 msgid "Yellow"
-msgstr ""
+msgstr "Žuta"
 
 #: src/frontends/qt4/GuiCharacter.cpp:159
 msgid "Text Style"
@@ -19254,7 +19261,7 @@ msgstr "B4"
 
 #: src/frontends/qt4/GuiDocument.cpp:792
 msgid "Language Default (no inputenc)"
-msgstr ""
+msgstr "Podrazumevani jezik (bez inputenc)"
 
 #: src/frontends/qt4/GuiDocument.cpp:801
 msgid "``text''"
@@ -19324,7 +19331,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:990
 msgid "PDF Properties"
-msgstr ""
+msgstr "PDF osobine"
 
 #: src/frontends/qt4/GuiDocument.cpp:991
 msgid "Math Options"
@@ -19376,7 +19383,7 @@ msgstr ""
 #: src/frontends/qt4/GuiDocument.cpp:1350
 #: src/frontends/qt4/GuiDocument.cpp:2242
 msgid "Error"
-msgstr ""
+msgstr "Greška"
 
 #: src/frontends/qt4/GuiDocument.cpp:1276
 msgid "Unable to read local layout file."
@@ -19384,11 +19391,11 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1298
 msgid "Select master document"
-msgstr ""
+msgstr "Izaberite glavni dokument"
 
 #: src/frontends/qt4/GuiDocument.cpp:1302
 msgid "LyX Files (*.lyx)"
-msgstr ""
+msgstr "LyX datoteke (*.lyx)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1335
 #: src/frontends/qt4/GuiDocument.cpp:2231
@@ -19429,11 +19436,11 @@ msgstr ""
 #: src/frontends/qt4/GuiDocument.cpp:1481
 #, c-format
 msgid "Package(s) required: %1$s."
-msgstr ""
+msgstr "Zahtevani paket(i): %1$s."
 
 #: src/frontends/qt4/GuiDocument.cpp:1487
 msgid "or"
-msgstr ""
+msgstr "ili"
 
 #: src/frontends/qt4/GuiDocument.cpp:1490
 #, c-format
@@ -19499,7 +19506,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiErrorList.cpp:45
 msgid "pLaTeX"
-msgstr ""
+msgstr "pLaTeX"
 
 #: src/frontends/qt4/GuiErrorList.cpp:57
 msgid "Error List"
@@ -19649,47 +19656,47 @@ msgstr ""
 #: src/frontends/qt4/GuiHSpace.cpp:141
 #: src/frontends/qt4/GuiHSpace.cpp:155
 msgid "Thin space"
-msgstr ""
+msgstr "Mali razmak"
 
 #: src/frontends/qt4/GuiHSpace.cpp:142
 msgid "Medium space"
-msgstr ""
+msgstr "Srednji razmak"
 
 #: src/frontends/qt4/GuiHSpace.cpp:143
 msgid "Thick space"
-msgstr ""
+msgstr "Debeli razmak"
 
 #: src/frontends/qt4/GuiHSpace.cpp:144
 #: src/frontends/qt4/GuiHSpace.cpp:156
 msgid "Negative thin space"
-msgstr ""
+msgstr "Negativni tanki razmak"
 
 #: src/frontends/qt4/GuiHSpace.cpp:145
 msgid "Negative medium space"
-msgstr ""
+msgstr "Negativni srednji razmak"
 
 #: src/frontends/qt4/GuiHSpace.cpp:146
 msgid "Negative thick space"
-msgstr ""
+msgstr "Negativni debeli razmak"
 
 #: src/frontends/qt4/GuiHSpace.cpp:147
 #: src/frontends/qt4/GuiHSpace.cpp:157
 msgid "Half Quad (0.5 em)"
-msgstr ""
+msgstr "Pola kvadrata (0.5 em)"
 
 #: src/frontends/qt4/GuiHSpace.cpp:148
 #: src/frontends/qt4/GuiHSpace.cpp:158
 msgid "Quad (1 em)"
-msgstr ""
+msgstr "Kvadrat (1 em)"
 
 #: src/frontends/qt4/GuiHSpace.cpp:149
 #: src/frontends/qt4/GuiHSpace.cpp:159
 msgid "Double Quad (2 em)"
-msgstr ""
+msgstr "Dupli kvadrat (2 em)"
 
 #: src/frontends/qt4/GuiHSpace.cpp:154
 msgid "Inter-word space"
-msgstr ""
+msgstr "Razmak između reči "
 
 #: src/frontends/qt4/GuiHSpace.cpp:160
 #: src/insets/InsetSpace.cpp:109
@@ -19698,7 +19705,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiHyperlink.cpp:39
 msgid "Hyperlink"
-msgstr ""
+msgstr "Hiperlink"
 
 #: src/frontends/qt4/GuiInclude.cpp:48
 #: src/frontends/qt4/Menus.cpp:1098
@@ -19719,19 +19726,19 @@ msgstr ""
 
 #: src/frontends/qt4/GuiInclude.cpp:322
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
-msgstr ""
+msgstr "LaTeX/LyX dokumenta (*.tex *.lyx)"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "unknown"
-msgstr ""
+msgstr "nepoznato"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "shortcut"
-msgstr ""
+msgstr "prečica"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "shortcuts"
-msgstr ""
+msgstr "prečice"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "lyxrc"
@@ -19739,7 +19746,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "package"
-msgstr ""
+msgstr "paket"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "textclass"
@@ -19779,7 +19786,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiListings.cpp:60
 msgid "No language"
-msgstr ""
+msgstr "Bez jezika"
 
 #: src/frontends/qt4/GuiListings.cpp:164
 msgid "Program Listing Settings"
@@ -19787,12 +19794,12 @@ msgstr ""
 
 #: src/frontends/qt4/GuiListings.cpp:414
 msgid "No dialect"
-msgstr ""
+msgstr "Bez dijalekta"
 
 #: src/frontends/qt4/GuiLog.cpp:111
 #: src/frontends/qt4/GuiLog.cpp:226
 msgid "LaTeX Log"
-msgstr ""
+msgstr "LaTeX registar"
 
 #: src/frontends/qt4/GuiLog.cpp:228
 msgid "Literate Programming Build Log"
@@ -19800,7 +19807,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiLog.cpp:230
 msgid "lyx2lyx Error Log"
-msgstr ""
+msgstr "lyx2lyx registrator grešaka"
 
 #: src/frontends/qt4/GuiLog.cpp:232
 msgid "Version Control Log"
@@ -19829,7 +19836,7 @@ msgstr ""
 #: src/frontends/qt4/GuiNomencl.cpp:32
 #: src/insets/InsetNomencl.cpp:135
 msgid "Nomenclature"
-msgstr ""
+msgstr "Nomenklaura"
 
 #: src/frontends/qt4/GuiNote.cpp:26
 msgid "Note Settings"
@@ -19860,7 +19867,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:227
 msgid "Language Settings"
-msgstr ""
+msgstr "Jezičke postavke"
 
 #: src/frontends/qt4/GuiPrefs.cpp:228
 msgid "Output"
@@ -19880,19 +19887,19 @@ msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:693
 msgid "Screen fonts"
-msgstr ""
+msgstr "Fontovi na ekranu"
 
 #: src/frontends/qt4/GuiPrefs.cpp:868
 msgid "Colors"
-msgstr ""
+msgstr "Boje"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1040
 msgid "Paths"
-msgstr ""
+msgstr "Putanje"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1095
 msgid "Select directory for example files"
-msgstr ""
+msgstr "Izaberite direktorijum, na primer: files"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1104
 msgid "Select a document templates directory"
@@ -19900,15 +19907,15 @@ msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:1113
 msgid "Select a temporary directory"
-msgstr ""
+msgstr "Izaberite privremeni direktorijum"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1122
 msgid "Select a backups directory"
-msgstr ""
+msgstr "Izaberite direktorijum backup"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1131
 msgid "Select a document directory"
-msgstr ""
+msgstr "Izaberite direktorijum za dokumenta"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1140
 msgid "Give a filename for the LyX server pipe"
@@ -19917,31 +19924,31 @@ msgstr ""
 #: src/frontends/qt4/GuiPrefs.cpp:1153
 #: src/frontends/qt4/GuiSpellchecker.cpp:60
 msgid "Spellchecker"
-msgstr ""
+msgstr "Kontrola pravopisa"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1175
 msgid "ispell"
-msgstr ""
+msgstr "ispell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1176
 msgid "aspell"
-msgstr ""
+msgstr "aspell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1177
 msgid "hspell"
-msgstr ""
+msgstr "hspell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1179
 msgid "enchant"
-msgstr ""
+msgstr "enchant"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1182
 msgid "pspell (library)"
-msgstr ""
+msgstr "pspell (library)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1185
 msgid "aspell (library)"
-msgstr ""
+msgstr "aspell (library)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1266
 msgid "Converters"
@@ -19966,7 +19973,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:1853
 msgid "LyX needs to be restarted!"
-msgstr ""
+msgstr "LyX treba da se restartuje!"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1854
 msgid "The change of user interface language will be fully effective only after a restart."
@@ -19974,28 +19981,28 @@ msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:1912
 msgid "Printer"
-msgstr ""
+msgstr "Štampač"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2010
 #: src/frontends/qt4/GuiPrefs.cpp:2719
 msgid "User interface"
-msgstr ""
+msgstr "Korisnički interfejs"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2111
 msgid "Control"
-msgstr ""
+msgstr "Kontrola"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2183
 msgid "Shortcuts"
-msgstr ""
+msgstr "Prečice"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2188
 msgid "Function"
-msgstr ""
+msgstr "Funkcija"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2189
 msgid "Shortcut"
-msgstr ""
+msgstr "Prečica"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2268
 msgid "Cursor, Mouse and Editing functions"
@@ -20003,7 +20010,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:2272
 msgid "Mathematical Symbols"
-msgstr ""
+msgstr "Matematički simboli "
 
 #: src/frontends/qt4/GuiPrefs.cpp:2276
 msgid "Document and Window"
@@ -20015,7 +20022,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:2284
 msgid "System and Miscellaneous"
-msgstr ""
+msgstr "Sistem i ostalo"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2411
 #: src/frontends/qt4/GuiPrefs.cpp:2457
@@ -20153,7 +20160,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:441
 msgid "The spellchecker has failed"
-msgstr ""
+msgstr "Provera pravopisa nije uspela"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:455
 #, c-format
@@ -20162,11 +20169,11 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:457
 msgid "One word checked."
-msgstr ""
+msgstr "Proverena je jedna reč."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:460
 msgid "Spelling check completed"
-msgstr ""
+msgstr "Provera pravopisa je završena"
 
 #: src/frontends/qt4/GuiSymbols.cpp:54
 msgid "Basic Latin"
@@ -20326,19 +20333,19 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:98
 msgid "Miscellaneous Symbols"
-msgstr ""
+msgstr "Ostali simboli"
 
 #: src/frontends/qt4/GuiSymbols.cpp:99
 msgid "Dingbats"
-msgstr ""
+msgstr "Dingbats"
 
 #: src/frontends/qt4/GuiSymbols.cpp:100
 msgid "Miscellaneous Mathematical Symbols-A"
-msgstr ""
+msgstr "Ostali matematički simboli-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:101
 msgid "CJK Symbols and Punctuation"
-msgstr ""
+msgstr "CJK simboli i znakovi interpunkcije"
 
 #: src/frontends/qt4/GuiSymbols.cpp:102
 msgid "Hiragana"
@@ -20366,11 +20373,11 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:108
 msgid "CJK Compatibility"
-msgstr ""
+msgstr "CJK lompatibilnost"
 
 #: src/frontends/qt4/GuiSymbols.cpp:109
 msgid "CJK Unified Ideographs"
-msgstr ""
+msgstr "CJK objedinjeni ideogrami"
 
 #: src/frontends/qt4/GuiSymbols.cpp:110
 msgid "Hangul Syllables"
@@ -20394,15 +20401,15 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:115
 msgid "CJK Compatibility Ideographs"
-msgstr ""
+msgstr "CJK kompatibilni ideogrami"
 
 #: src/frontends/qt4/GuiSymbols.cpp:116
 msgid "Alphabetic Presentation Forms"
-msgstr ""
+msgstr "Alfabetski prezentacija obrasca"
 
 #: src/frontends/qt4/GuiSymbols.cpp:117
 msgid "Arabic Presentation Forms-A"
-msgstr ""
+msgstr "Arapski prezentacija obrasca-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:118
 msgid "Combining Half Marks"
@@ -20410,7 +20417,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:119
 msgid "CJK Compatibility Forms"
-msgstr ""
+msgstr "CJK kompaktibilni obrazac"
 
 #: src/frontends/qt4/GuiSymbols.cpp:120
 msgid "Small Form Variants"
@@ -20434,7 +20441,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:125
 msgid "Linear B Ideograms"
-msgstr ""
+msgstr "Linear B ideogrami"
 
 #: src/frontends/qt4/GuiSymbols.cpp:126
 msgid "Aegean Numbers"
@@ -20442,7 +20449,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:127
 msgid "Ancient Greek Numbers"
-msgstr ""
+msgstr "Antički grčki brojevi"
 
 #: src/frontends/qt4/GuiSymbols.cpp:128
 msgid "Old Italic"
@@ -20478,15 +20485,15 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:136
 msgid "Kharoshthi"
-msgstr ""
+msgstr "Kharoshthi"
 
 #: src/frontends/qt4/GuiSymbols.cpp:137
 msgid "Byzantine Musical Symbols"
-msgstr ""
+msgstr "Vizantijski muzički simboli"
 
 #: src/frontends/qt4/GuiSymbols.cpp:138
 msgid "Musical Symbols"
-msgstr ""
+msgstr "Muzički simboli"
 
 #: src/frontends/qt4/GuiSymbols.cpp:139
 msgid "Ancient Greek Musical Notation"
@@ -20494,11 +20501,11 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:140
 msgid "Tai Xuan Jing Symbols"
-msgstr ""
+msgstr "Tai Xuan Jing simboli"
 
 #: src/frontends/qt4/GuiSymbols.cpp:141
 msgid "Mathematical Alphanumeric Symbols"
-msgstr ""
+msgstr "Maematički alfanumerički simboli"
 
 #: src/frontends/qt4/GuiSymbols.cpp:142
 msgid "CJK Unified Ideographs Extension B"
@@ -20912,11 +20919,11 @@ msgstr ""
 
 #: src/frontends/qt4/Validator.cpp:183
 msgid "LyX does not provide LaTeX support for file names containing any of these characters:\n"
-msgstr ""
+msgstr "Lyx ne pruža podršku za LaTeX imena datoteka koja sadrže bilo koji od ovih znakova:\n"
 
 #: src/frontends/qt4/qt_helpers.cpp:180
 msgid "Could not update TeX information"
-msgstr ""
+msgstr "Nije moguće ažurirati informacije o TeX-u"
 
 #: src/frontends/qt4/qt_helpers.cpp:181
 #, c-format
@@ -20925,12 +20932,12 @@ msgstr ""
 
 #: src/frontends/qt4/qt_helpers.cpp:433
 msgid "All Files "
-msgstr ""
+msgstr "Sve datoteke"
 
 #: src/frontends/qt4/qt_helpers.cpp:506
 #: src/insets/InsetTOC.cpp:49
 msgid "Table of Contents"
-msgstr ""
+msgstr "Sadržaj"
 
 #: src/frontends/qt4/qt_helpers.cpp:508
 msgid "Child Documents"
@@ -20938,15 +20945,15 @@ msgstr ""
 
 #: src/frontends/qt4/qt_helpers.cpp:510
 msgid "List of Graphics"
-msgstr ""
+msgstr "Spisak grafika"
 
 #: src/frontends/qt4/qt_helpers.cpp:512
 msgid "List of Equations"
-msgstr ""
+msgstr "Spisak jednačina"
 
 #: src/frontends/qt4/qt_helpers.cpp:514
 msgid "List of Footnotes"
-msgstr ""
+msgstr "Spisak fusnota"
 
 #: src/frontends/qt4/qt_helpers.cpp:516
 msgid "List of Listings"
@@ -20954,15 +20961,15 @@ msgstr ""
 
 #: src/frontends/qt4/qt_helpers.cpp:518
 msgid "List of Indexes"
-msgstr ""
+msgstr "Spisak indeksa"
 
 #: src/frontends/qt4/qt_helpers.cpp:520
 msgid "List of Marginal notes"
-msgstr ""
+msgstr "Spisak beležaka sa  margina"
 
 #: src/frontends/qt4/qt_helpers.cpp:522
 msgid "List of Notes"
-msgstr ""
+msgstr "Spisak napomena"
 
 #: src/frontends/qt4/qt_helpers.cpp:524
 msgid "List of Citations"
@@ -20978,7 +20985,7 @@ msgstr ""
 
 #: src/frontends/qt4/qt_helpers.cpp:530
 msgid "List of Changes"
-msgstr ""
+msgstr "Spisak promena"
 
 #: src/insets/ExternalSupport.cpp:368
 #: src/insets/InsetBibtex.cpp:288
