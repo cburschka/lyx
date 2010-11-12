@@ -455,7 +455,7 @@ docstring InsetPrintIndex::screenLabel() const
 	Index const * index = indiceslist.findShortcut(getParam("type"));
 	if (!index && !printall)
 		return _("Unknown index type!");
-	docstring res = printall ? _("All indices") : index->index();
+	docstring res = printall ? _("All indexes") : index->index();
 	if (!multind)
 		res += " (" + _("non-active") + ")";
 	else if (contains(getCmdName(), "printsubindex"))
