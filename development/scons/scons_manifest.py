@@ -2605,6 +2605,11 @@ lib_examples_sl_files = Split('''
 ''')
 
 
+lib_examples_sr_files = Split('''
+    splash.lyx
+''')
+
+
 lib_examples_uk_files = Split('''
     splash.lyx
 ''')

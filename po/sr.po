@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-10-22 11:29+0200\n"
-"PO-Revision-Date: 2010-11-11 03:03+0100\n"
+"PO-Revision-Date: 2010-11-11 13:31+0100\n"
 "Last-Translator: Zoran T. Filipović <zoran.filipovic@yahoo.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -5984,7 +5984,7 @@ msgstr ""
 
 #: lib/layouts/chess.layout:60
 msgid "Variation"
-msgstr ""
+msgstr "Varijacija"
 
 #: lib/layouts/chess.layout:64
 msgid "Variation:"
@@ -6569,7 +6569,7 @@ msgstr ""
 #: lib/layouts/entcs.layout:99
 #: lib/layouts/agu_stdtitle.inc:405
 msgid "Keyword"
-msgstr ""
+msgstr "Ključna reč"
 
 #: lib/layouts/ectaart.layout:120
 #: lib/layouts/elsarticle.layout:262
@@ -6583,19 +6583,19 @@ msgstr ""
 #: lib/layouts/spie.layout:46
 #: lib/layouts/agu_stdtitle.inc:123
 msgid "Keywords:"
-msgstr ""
+msgstr "Ključna reč:"
 
 #: lib/layouts/ectaart.layout:126
 msgid "Thanks Text"
-msgstr ""
+msgstr "Tekst zahvalnosti"
 
 #: lib/layouts/ectaart.layout:133
 msgid "Thanks \\theThanks:"
-msgstr ""
+msgstr "Hvala \\theThanks:"
 
 #: lib/layouts/ectaart.layout:139
 msgid "Emphasize"
-msgstr ""
+msgstr "Naglasiti"
 
 #: lib/layouts/ectaart.layout:152
 msgid "Thanks Reference"
@@ -6620,26 +6620,26 @@ msgstr ""
 
 #: lib/layouts/ectaart.layout:184
 msgid "Name (First Name)"
-msgstr ""
+msgstr "Ime "
 
 #: lib/layouts/ectaart.layout:187
 msgid "First Name"
-msgstr ""
+msgstr "Ime"
 
 #: lib/layouts/ectaart.layout:191
 msgid "Name (Surname)"
-msgstr ""
+msgstr "Prezime"
 
 #: lib/layouts/ectaart.layout:194
 #: lib/layouts/agu_stdclass.inc:65
 #: lib/layouts/db_stdcharstyles.inc:48
 #: lib/layouts/db_stdtitle.inc:98
 msgid "Surname"
-msgstr ""
+msgstr "Prezime"
 
 #: lib/layouts/ectaart.layout:204
 msgid "By Same Author (bib)"
-msgstr ""
+msgstr "Do istog autora (bib)"
 
 #: lib/layouts/ectaart.layout:207
 msgid "bysame"
@@ -6648,15 +6648,15 @@ msgstr ""
 #: lib/layouts/egs.layout:141
 #: lib/layouts/stdlists.inc:86
 msgid "00.00.0000"
-msgstr ""
+msgstr "00.00.0000"
 
 #: lib/layouts/egs.layout:268
 msgid "LaTeX Title"
-msgstr ""
+msgstr "LaTeX naslov"
 
 #: lib/layouts/egs.layout:301
 msgid "Author:"
-msgstr ""
+msgstr "Autor:"
 
 #: lib/layouts/egs.layout:310
 msgid "Affil"
@@ -6668,7 +6668,7 @@ msgstr ""
 
 #: lib/layouts/egs.layout:345
 msgid "Journal:"
-msgstr ""
+msgstr "Žurnal:"
 
 #: lib/layouts/egs.layout:354
 msgid "msnumber"
@@ -6680,35 +6680,35 @@ msgstr ""
 
 #: lib/layouts/egs.layout:378
 msgid "FirstAuthor"
-msgstr ""
+msgstr "Prvi autor"
 
 #: lib/layouts/egs.layout:391
 msgid "1st_author_surname:"
-msgstr ""
+msgstr "Prezime prvog autora:"
 
 #: lib/layouts/egs.layout:400
 #: lib/layouts/agu_stdtitle.inc:198
 #: lib/layouts/aguplus.inc:106
 msgid "Received"
-msgstr ""
+msgstr "Primljeno"
 
 #: lib/layouts/egs.layout:413
 #: lib/layouts/agu_stdtitle.inc:201
 #: lib/layouts/aguplus.inc:110
 msgid "Received:"
-msgstr ""
+msgstr "Primljeno:"
 
 #: lib/layouts/egs.layout:422
 #: lib/layouts/agu_stdtitle.inc:214
 #: lib/layouts/aguplus.inc:122
 msgid "Accepted"
-msgstr ""
+msgstr "Prihvaćeno"
 
 #: lib/layouts/egs.layout:435
 #: lib/layouts/agu_stdtitle.inc:217
 #: lib/layouts/aguplus.inc:126
 msgid "Accepted:"
-msgstr ""
+msgstr "Prihvaćeno:"
 
 #: lib/layouts/egs.layout:444
 msgid "Offsets"
@@ -6723,27 +6723,27 @@ msgstr ""
 #: lib/layouts/theorems-ams-extended-bytype.module:235
 #: lib/layouts/theorems-ams-extended.module:203
 msgid "Acknowledgement."
-msgstr ""
+msgstr "Priznanje."
 
 #: lib/layouts/elsart.layout:130
 msgid "Author Address"
-msgstr ""
+msgstr "Adresa autora"
 
 #: lib/layouts/elsart.layout:146
 #: lib/layouts/revtex4.layout:192
 msgid "Author Email"
-msgstr ""
+msgstr "Email autora"
 
 #: lib/layouts/elsart.layout:155
 #: lib/layouts/lettre.layout:402
 #: lib/layouts/llncs.layout:233
 msgid "Email:"
-msgstr ""
+msgstr "Elektronska pošta:"
 
 #: lib/layouts/elsart.layout:166
 #: lib/layouts/revtex4.layout:207
 msgid "Author URL"
-msgstr ""
+msgstr "Autorov URL"
 
 #: lib/layouts/elsart.layout:176
 #: lib/layouts/revtex4.layout:212
@@ -6755,15 +6755,15 @@ msgstr "URL:"
 #: lib/layouts/revtex4.layout:185
 #: lib/layouts/amsdefs.inc:173
 msgid "Thanks"
-msgstr ""
+msgstr "Hvala"
 
 #: lib/layouts/elsart.layout:272
 msgid "Theorem \\arabic{theorem}"
-msgstr ""
+msgstr "Teorema \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:301
 msgid "PROOF."
-msgstr ""
+msgstr "DOKAZ."
 
 #: lib/layouts/elsart.layout:312
 #: lib/layouts/foils.layout:243
@@ -6790,7 +6790,7 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:322
 msgid "Corollary \\arabic{theorem}"
-msgstr ""
+msgstr "Posledica \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:326
 #: lib/layouts/foils.layout:257
@@ -6808,11 +6808,11 @@ msgstr ""
 #: lib/layouts/theorems-chap-bytype.module:90
 #: lib/layouts/theorems-sec-bytype.module:78
 msgid "Proposition"
-msgstr ""
+msgstr "Predlog"
 
 #: lib/layouts/elsart.layout:329
 msgid "Proposition \\arabic{theorem}"
-msgstr ""
+msgstr "Predlog \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:333
 #: lib/layouts/theorems-ams-extended-bytype.module:60
@@ -6831,15 +6831,15 @@ msgstr ""
 #: lib/layouts/theorems-ams-extended-bytype.module:82
 #: lib/layouts/theorems-ams-extended.module:55
 msgid "Algorithm"
-msgstr ""
+msgstr "Algoritam"
 
 #: lib/layouts/elsart.layout:343
 msgid "Algorithm \\arabic{theorem}"
-msgstr ""
+msgstr "Algoritam \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:350
 msgid "Definition \\arabic{theorem}"
-msgstr ""
+msgstr "Definicija \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:361
 #: lib/layouts/ijmpc.layout:283
@@ -6856,15 +6856,15 @@ msgstr ""
 #: lib/layouts/theorems-chap-bytype.module:102
 #: lib/layouts/theorems-sec-bytype.module:86
 msgid "Conjecture"
-msgstr ""
+msgstr "Pretpostavka"
 
 #: lib/layouts/elsart.layout:364
 msgid "Conjecture \\arabic{theorem}"
-msgstr ""
+msgstr "Pretpostavka \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:371
 msgid "Example \\arabic{theorem}"
-msgstr ""
+msgstr "Primer \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:375
 #: lib/layouts/llncs.layout:364
@@ -6879,11 +6879,11 @@ msgstr ""
 #: lib/layouts/theorems-chap-bytype.module:150
 #: lib/layouts/theorems-sec-bytype.module:118
 msgid "Problem"
-msgstr ""
+msgstr "Problem"
 
 #: lib/layouts/elsart.layout:378
 msgid "Problem \\arabic{theorem}"
-msgstr ""
+msgstr "Problem \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:382
 #: lib/layouts/ijmpc.layout:172
@@ -6899,11 +6899,11 @@ msgstr ""
 #: lib/layouts/theorems-chap-bytype.module:174
 #: lib/layouts/theorems-sec-bytype.module:134
 msgid "Remark"
-msgstr ""
+msgstr "Napomena"
 
 #: lib/layouts/elsart.layout:385
 msgid "Remark \\arabic{theorem}"
-msgstr ""
+msgstr "Napomena \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:392
 msgid "Note \\arabic{theorem}"
@@ -6924,21 +6924,21 @@ msgstr ""
 #: lib/layouts/theorems-chap-bytype.module:186
 #: lib/layouts/theorems-sec-bytype.module:142
 msgid "Claim"
-msgstr ""
+msgstr "Tvrdnja"
 
 #: lib/layouts/elsart.layout:399
 msgid "Claim \\arabic{theorem}"
-msgstr ""
+msgstr "Tvrdnja \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:403
 #: lib/layouts/theorems-ams-extended-bytype.module:197
 #: lib/layouts/theorems-ams-extended.module:167
 msgid "Summary"
-msgstr ""
+msgstr "Rezime"
 
 #: lib/layouts/elsart.layout:407
 msgid "Summary \\arabic{summ}"
-msgstr ""
+msgstr "Rezime \\arabic{summ}"
 
 #: lib/layouts/elsart.layout:411
 #: lib/layouts/llncs.layout:281
@@ -7008,17 +7008,17 @@ msgstr ""
 #: lib/layouts/siamltex.layout:301
 #: lib/layouts/svjour.inc:243
 msgid "Key words:"
-msgstr ""
+msgstr "Ključne reči:"
 
 #: lib/layouts/europecv.layout:49
 #: lib/layouts/moderncv.layout:80
 msgid "Item"
-msgstr ""
+msgstr "Stavka"
 
 #: lib/layouts/europecv.layout:58
 #: lib/layouts/moderncv.layout:89
 msgid "Item:"
-msgstr ""
+msgstr "Stavka:"
 
 #: lib/layouts/europecv.layout:65
 msgid "BulletedItem"
@@ -7030,64 +7030,64 @@ msgstr ""
 
 #: lib/layouts/europecv.layout:71
 msgid "Begin"
-msgstr ""
+msgstr "Početak"
 
 #: lib/layouts/europecv.layout:81
 msgid "Begin of CV"
-msgstr ""
+msgstr "Početak CV"
 
 #: lib/layouts/europecv.layout:88
 msgid "PersonalInfo"
-msgstr ""
+msgstr "Lične informacije"
 
 #: lib/layouts/europecv.layout:92
 msgid "Personal Info"
-msgstr ""
+msgstr "Lične informacije"
 
 #: lib/layouts/europecv.layout:95
 msgid "MotherTongue"
-msgstr ""
+msgstr "Maternji jezik"
 
 #: lib/layouts/europecv.layout:104
 msgid "Mother Tongue:"
-msgstr ""
+msgstr "Maternji jezik:"
 
 #: lib/layouts/europecv.layout:111
 msgid "LangHeader"
-msgstr ""
+msgstr "Jezik zaglavlja"
 
 #: lib/layouts/europecv.layout:115
 msgid "Language Header:"
-msgstr ""
+msgstr "Jezik zaglavlja:"
 
 #: lib/layouts/europecv.layout:121
 #: lib/layouts/moderncv.layout:117
 msgid "Language:"
-msgstr ""
+msgstr "Jezik:"
 
 #: lib/layouts/europecv.layout:124
 msgid "LastLanguage"
-msgstr ""
+msgstr "Zadnji jezik"
 
 #: lib/layouts/europecv.layout:127
 msgid "Last Language:"
-msgstr ""
+msgstr "Zadnji jezik:"
 
 #: lib/layouts/europecv.layout:130
 msgid "LangFooter"
-msgstr ""
+msgstr "Jezik podnožja"
 
 #: lib/layouts/europecv.layout:134
 msgid "Language Footer:"
-msgstr ""
+msgstr "Jezik podnožja:"
 
 #: lib/layouts/europecv.layout:137
 msgid "End"
-msgstr ""
+msgstr "Kraj "
 
 #: lib/layouts/europecv.layout:147
 msgid "End of CV"
-msgstr ""
+msgstr "Kraj CV "
 
 #: lib/layouts/foils.layout:42
 msgid "Foilhead"
@@ -7123,56 +7123,56 @@ msgstr "><"
 
 #: lib/layouts/foils.layout:160
 msgid "My Logo"
-msgstr ""
+msgstr "Moj znak"
 
 #: lib/layouts/foils.layout:168
 msgid "My Logo:"
-msgstr ""
+msgstr "Moj znak:"
 
 #: lib/layouts/foils.layout:177
 msgid "Restriction"
-msgstr ""
+msgstr "Ograničenje"
 
 #: lib/layouts/foils.layout:181
 msgid "Restriction:"
-msgstr ""
+msgstr "Ograničenje:"
 
 #: lib/layouts/foils.layout:185
 #: lib/layouts/simplecv.layout:95
 #: lib/layouts/aguplus.inc:75
 msgid "Left Header"
-msgstr ""
+msgstr "Levo zaglavlje"
 
 #: lib/layouts/foils.layout:189
 #: lib/layouts/aguplus.inc:88
 msgid "Left Header:"
-msgstr ""
+msgstr "Levo zaglavlje:"
 
 #: lib/layouts/foils.layout:193
 #: lib/layouts/simplecv.layout:112
 #: lib/layouts/aguplus.inc:98
 msgid "Right Header"
-msgstr ""
+msgstr "Desno zaglavlja"
 
 #: lib/layouts/foils.layout:197
 #: lib/layouts/aguplus.inc:102
 msgid "Right Header:"
-msgstr ""
+msgstr "Desno zaglavlja:"
 
 #: lib/layouts/foils.layout:201
 msgid "Right Footer"
-msgstr ""
+msgstr "Desno podnožje"
 
 #: lib/layouts/foils.layout:205
 msgid "Right Footer:"
-msgstr ""
+msgstr "Desno podnožje:"
 
 #: lib/layouts/foils.layout:232
 #: lib/layouts/heb-article.layout:33
 #: lib/layouts/llncs.layout:415
 #: lib/layouts/svjour.inc:439
 msgid "Theorem #."
-msgstr ""
+msgstr "Teorema #."
 
 #: lib/layouts/foils.layout:246
 #: lib/layouts/heb-article.layout:48
@@ -7186,27 +7186,27 @@ msgstr ""
 #: lib/layouts/llncs.layout:319
 #: lib/layouts/svjour.inc:337
 msgid "Corollary #."
-msgstr ""
+msgstr "Posledica #."
 
 #: lib/layouts/foils.layout:260
 #: lib/layouts/llncs.layout:388
 #: lib/layouts/svjour.inc:411
 msgid "Proposition #."
-msgstr ""
+msgstr "Predlog #."
 
 #: lib/layouts/foils.layout:267
 #: lib/layouts/heb-article.layout:78
 #: lib/layouts/llncs.layout:333
 #: lib/layouts/svjour.inc:351
 msgid "Definition #."
-msgstr ""
+msgstr "Definicija #."
 
 #: lib/layouts/foils.layout:292
 #: lib/layouts/siamltex.layout:68
 #: lib/layouts/theorems-order.inc:10
 #: lib/layouts/theorems-starred.inc:23
 msgid "Theorem*"
-msgstr ""
+msgstr "Theorema*"
 
 #: lib/layouts/foils.layout:299
 #: lib/layouts/siamltex.layout:88
@@ -7225,26 +7225,26 @@ msgstr ""
 #: lib/layouts/theorems-order.inc:16
 #: lib/layouts/theorems-starred.inc:57
 msgid "Corollary*"
-msgstr ""
+msgstr "Posledica*"
 
 #: lib/layouts/foils.layout:313
 #: lib/layouts/siamltex.layout:98
 #: lib/layouts/theorems-order.inc:28
 #: lib/layouts/theorems-starred.inc:81
 msgid "Proposition*"
-msgstr ""
+msgstr "Predlog*"
 
 #: lib/layouts/foils.layout:316
 #: lib/layouts/theorems-starred.inc:84
 msgid "Proposition."
-msgstr ""
+msgstr "Predlog."
 
 #: lib/layouts/foils.layout:320
 #: lib/layouts/siamltex.layout:127
 #: lib/layouts/theorems-order.inc:40
 #: lib/layouts/theorems-starred.inc:117
 msgid "Definition*"
-msgstr ""
+msgstr "Definicija*"
 
 #: lib/layouts/g-brief-de.layout:26
 #: lib/layouts/g-brief-en.layout:26
@@ -7282,7 +7282,7 @@ msgstr "Ulica:"
 #: lib/layouts/g-brief-de.layout:71
 #: lib/layouts/g-brief-en.layout:71
 msgid "Addition:"
-msgstr ""
+msgstr "Dodatak:"
 
 #: lib/layouts/g-brief-de.layout:78
 #: lib/layouts/g-brief-en.layout:78
@@ -7379,7 +7379,7 @@ msgstr ""
 #: lib/layouts/g-brief-en.layout:155
 #: lib/layouts/scrlttr2.layout:217
 msgid "Bank:"
-msgstr ""
+msgstr "Banka:"
 
 #: lib/layouts/g-brief-de.layout:159
 msgid "BLZ"
@@ -7409,27 +7409,27 @@ msgstr ""
 #: lib/layouts/g-brief-en.layout:201
 #: lib/layouts/g-brief2.layout:833
 msgid "Reference:"
-msgstr ""
+msgstr "Referenca:"
 
 #: lib/layouts/g-brief-de.layout:218
 #: lib/layouts/g-brief-en.layout:218
 #: lib/layouts/g-brief2.layout:923
 msgid "Encl.:"
-msgstr ""
+msgstr "Encl.:"
 
 #: lib/layouts/g-brief-en.layout:61
 #: lib/layouts/agu_stdtitle.inc:439
 msgid "Street"
-msgstr ""
+msgstr "Ulica"
 
 #: lib/layouts/g-brief-en.layout:68
 msgid "Addition"
-msgstr ""
+msgstr "Dodatak"
 
 #: lib/layouts/g-brief-en.layout:82
 #: lib/layouts/agu_stdtitle.inc:461
 msgid "State"
-msgstr ""
+msgstr "Država"
 
 #: lib/layouts/g-brief-en.layout:89
 #: lib/layouts/g-brief2.layout:675
@@ -7738,11 +7738,11 @@ msgstr ""
 
 #: lib/layouts/hollywood.layout:185
 msgid "Continuing"
-msgstr ""
+msgstr "Nastavak"
 
 #: lib/layouts/hollywood.layout:196
 msgid "(continuing)"
-msgstr ""
+msgstr "(nastavak)"
 
 #: lib/layouts/hollywood.layout:222
 msgid "Transition"
@@ -8609,7 +8609,7 @@ msgstr ""
 #: lib/layouts/theorems-ams-extended-bytype.module:94
 #: lib/layouts/theorems-ams-extended.module:67
 msgid "Algorithm*"
-msgstr ""
+msgstr "Algoritam*"
 
 #: lib/layouts/siamltex.layout:131
 msgid "AMS"
@@ -8622,31 +8622,31 @@ msgstr ""
 
 #: lib/layouts/siamltex.layout:308
 msgid "AMS subject classifications:"
-msgstr ""
+msgstr "AMS predmet klasifikacije:"
 
 #: lib/layouts/sigplanconf.layout:64
 msgid "Conference"
-msgstr ""
+msgstr "Konferencija"
 
 #: lib/layouts/sigplanconf.layout:75
 msgid "Conference:"
-msgstr ""
+msgstr "Konferencija:"
 
 #: lib/layouts/sigplanconf.layout:83
 msgid "CopyrightYear"
-msgstr ""
+msgstr "Godina proizvodnje autorskih prava"
 
 #: lib/layouts/sigplanconf.layout:86
 msgid "Copyright year:"
-msgstr ""
+msgstr "Godina proizvodnje autorskih prava:"
 
 #: lib/layouts/sigplanconf.layout:90
 msgid "Copyrightdata"
-msgstr ""
+msgstr "Podaci o autorskim pravima"
 
 #: lib/layouts/sigplanconf.layout:93
 msgid "Copyright data:"
-msgstr ""
+msgstr "Podaci o autorskim pravima:"
 
 #: lib/layouts/sigplanconf.layout:136
 msgid "Terms"
@@ -8725,94 +8725,94 @@ msgstr ""
 #: lib/layouts/svmono.layout:28
 #: lib/layouts/svmult.layout:171
 msgid "Front Matter"
-msgstr ""
+msgstr "Prednja materija"
 
 #: lib/layouts/svmono.layout:44
 #: lib/layouts/svmult.layout:187
 msgid "--- Front Matter ---"
-msgstr ""
+msgstr "---Prednja materija ---"
 
 #: lib/layouts/svmono.layout:54
 #: lib/layouts/svmult.layout:196
 msgid "Main Matter"
-msgstr ""
+msgstr "Glavna materija"
 
 #: lib/layouts/svmono.layout:58
 #: lib/layouts/svmult.layout:200
 msgid "--- Main Matter ---"
-msgstr ""
+msgstr "---Glavna materija ---"
 
 #: lib/layouts/svmono.layout:61
 #: lib/layouts/svmult.layout:203
 msgid "Back Matter"
-msgstr ""
+msgstr "Zadnja materija"
 
 #: lib/layouts/svmono.layout:65
 #: lib/layouts/svmult.layout:207
 msgid "--- Back Matter ---"
-msgstr ""
+msgstr "--- Zadnja materija ---"
 
 #: lib/layouts/svmono.layout:71
 #: lib/layouts/svmult.layout:213
 #: lib/layouts/stdsections.inc:14
 msgid "Part \\thepart"
-msgstr ""
+msgstr "Deo \\thepart"
 
 #: lib/layouts/svmono.layout:104
 #: lib/layouts/svmult.layout:246
 #: lib/layouts/stdsections.inc:39
 msgid "Chapter \\thechapter"
-msgstr ""
+msgstr "Glava \\thechapter"
 
 #: lib/layouts/svmono.layout:105
 #: lib/layouts/svmult.layout:247
 #: lib/layouts/stdsections.inc:40
 msgid "Appendix \\thechapter"
-msgstr ""
+msgstr "Dodatak \\thechapter"
 
 #: lib/layouts/svmono.layout:135
 #: lib/layouts/svmult.layout:118
 msgid "Preface"
-msgstr ""
+msgstr "Predgovor"
 
 #: lib/layouts/svmono.layout:145
 #: lib/layouts/svmult.layout:128
 msgid "Preface:"
-msgstr ""
+msgstr "Predgovor:"
 
 #: lib/layouts/svmono.layout:174
 #: lib/layouts/svmult.layout:99
 msgid "Proof(QED)"
-msgstr ""
+msgstr "Dokaz (QED)"
 
 #: lib/layouts/svmono.layout:183
 #: lib/layouts/svmult.layout:108
 msgid "Proof(smartQED)"
-msgstr ""
+msgstr "Dokaz (smartQED)"
 
 #: lib/layouts/svmult.layout:24
 msgid "Contributor \\Roman{svmultlsti}:"
-msgstr ""
+msgstr "Saradnik \\Roman{svmultlsti}:"
 
 #: lib/layouts/svmult.layout:28
 msgid "Title*"
-msgstr ""
+msgstr "Naslov*"
 
 #: lib/layouts/svmult.layout:55
 msgid "Institute and e-mail: "
-msgstr ""
+msgstr "Institut i e-mail:"
 
 #: lib/layouts/svmult.layout:62
 msgid "MiniTOC"
-msgstr ""
+msgstr "MiniTOC"
 
 #: lib/layouts/svmult.layout:67
 msgid "TOC depth (provide a number):"
-msgstr ""
+msgstr "TOC dubina (data brojem):"
 
 #: lib/layouts/svmult.layout:73
 msgid "List of Abbreviations & Symbols"
-msgstr ""
+msgstr "Spisak skraćenica i simbola"
 
 #: lib/layouts/svmult.layout:120
 #: lib/layouts/svmult.layout:138
@@ -8828,15 +8828,15 @@ msgstr ""
 
 #: lib/layouts/svmult.layout:137
 msgid "List of Contributors"
-msgstr ""
+msgstr "Spisak saradnika"
 
 #: lib/layouts/svmult.layout:277
 msgid "Inst"
-msgstr ""
+msgstr "Inst"
 
 #: lib/layouts/svmult.layout:279
 msgid "Institute #"
-msgstr ""
+msgstr "Institut #"
 
 #: lib/layouts/tufte-book.layout:100
 msgid "Sidenote"
@@ -8848,11 +8848,11 @@ msgstr ""
 
 #: lib/layouts/tufte-book.layout:119
 msgid "Marginnote"
-msgstr ""
+msgstr "Beleška na margini"
 
 #: lib/layouts/tufte-book.layout:123
 msgid "marginnote"
-msgstr ""
+msgstr "beleška na margini"
 
 #: lib/layouts/tufte-book.layout:132
 msgid "NewThought"
@@ -8892,7 +8892,7 @@ msgstr ""
 
 #: lib/layouts/aapaper.inc:54
 msgid "email:"
-msgstr ""
+msgstr "email:"
 
 #: lib/layouts/aapaper.inc:114
 msgid "Thesaurus not supported in recent A&A:"
@@ -8901,12 +8901,12 @@ msgstr ""
 #: lib/layouts/agu_stdclass.inc:34
 #: lib/layouts/db_stdcharstyles.inc:35
 msgid "Element:Firstname"
-msgstr ""
+msgstr "Element: Ime"
 
 #: lib/layouts/agu_stdclass.inc:36
 #: lib/layouts/db_stdcharstyles.inc:37
 msgid "Firstname"
-msgstr ""
+msgstr "Ime"
 
 #: lib/layouts/agu_stdclass.inc:48
 msgid "Element:Fname"
@@ -8919,7 +8919,7 @@ msgstr ""
 #: lib/layouts/agu_stdclass.inc:63
 #: lib/layouts/db_stdcharstyles.inc:46
 msgid "Element:Surname"
-msgstr ""
+msgstr "Element: Prezime"
 
 #: lib/layouts/agu_stdclass.inc:78
 #: lib/layouts/db_stdcharstyles.inc:6
@@ -8929,22 +8929,22 @@ msgstr ""
 #: lib/layouts/agu_stdclass.inc:93
 #: lib/layouts/db_stdcharstyles.inc:57
 msgid "Element:Literal"
-msgstr ""
+msgstr "Element: Doslovno"
 
 #: lib/layouts/agu_stdclass.inc:95
 #: lib/layouts/db_stdcharstyles.inc:59
 #: lib/layouts/db_stdlayouts.inc:11
 msgid "Literal"
-msgstr ""
+msgstr "Doslovno"
 
 #: lib/layouts/agu_stdclass.inc:108
 msgid "Element:Emph"
-msgstr ""
+msgstr "Element: Naglasiti"
 
 #: lib/layouts/agu_stdclass.inc:110
 #: src/frontends/qt4/GuiCharacter.cpp:77
 msgid "Emph"
-msgstr ""
+msgstr "Naglasiti"
 
 #: lib/layouts/agu_stdclass.inc:124
 msgid "Element:Abbrev"
@@ -8965,55 +8965,55 @@ msgstr ""
 
 #: lib/layouts/agu_stdclass.inc:146
 msgid "Element:Volume"
-msgstr ""
+msgstr "Element: Tom"
 
 #: lib/layouts/agu_stdclass.inc:148
 msgid "Volume"
-msgstr ""
+msgstr "Tom"
 
 #: lib/layouts/agu_stdclass.inc:157
 msgid "Element:Day"
-msgstr ""
+msgstr "Element: Dan"
 
 #: lib/layouts/agu_stdclass.inc:159
 msgid "Day"
-msgstr ""
+msgstr "Dan"
 
 #: lib/layouts/agu_stdclass.inc:168
 msgid "Element:Month"
-msgstr ""
+msgstr "Element: Mesec"
 
 #: lib/layouts/agu_stdclass.inc:170
 msgid "Month"
-msgstr ""
+msgstr "Mesec"
 
 #: lib/layouts/agu_stdclass.inc:179
 msgid "Element:Year"
-msgstr ""
+msgstr "Element: Godina"
 
 #: lib/layouts/agu_stdclass.inc:181
 msgid "Year"
-msgstr ""
+msgstr "Godina"
 
 #: lib/layouts/agu_stdclass.inc:190
 msgid "Element:Issue-number"
-msgstr ""
+msgstr "Element: Problem-broj"
 
 #: lib/layouts/agu_stdclass.inc:192
 msgid "Issue-number"
-msgstr ""
+msgstr "Problem-broj"
 
 #: lib/layouts/agu_stdclass.inc:201
 msgid "Element:Issue-day"
-msgstr ""
+msgstr "Element: Tema dana"
 
 #: lib/layouts/agu_stdclass.inc:203
 msgid "Issue-day"
-msgstr ""
+msgstr "Tema dana"
 
 #: lib/layouts/agu_stdclass.inc:212
 msgid "Element:Issue-months"
-msgstr ""
+msgstr "Element:"
 
 #: lib/layouts/agu_stdclass.inc:214
 msgid "Issue-months"
@@ -9041,11 +9041,11 @@ msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:47
 msgid "AGU-journal"
-msgstr ""
+msgstr "AGU-časopis"
 
 #: lib/layouts/agu_stdtitle.inc:51
 msgid "AGU-journal:"
-msgstr ""
+msgstr "AGU-časopis:"
 
 #: lib/layouts/agu_stdtitle.inc:59
 msgid "Citation-number:"
@@ -9053,11 +9053,11 @@ msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:65
 msgid "AGU-volume"
-msgstr ""
+msgstr "AGU-tom"
 
 #: lib/layouts/agu_stdtitle.inc:68
 msgid "AGU-volume:"
-msgstr ""
+msgstr "AGU-tom:"
 
 #: lib/layouts/agu_stdtitle.inc:73
 msgid "AGU-issue"
@@ -9069,7 +9069,7 @@ msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:84
 msgid "Copyright:"
-msgstr ""
+msgstr "Autorska prava:"
 
 #: lib/layouts/agu_stdtitle.inc:89
 msgid "Index-terms"
@@ -9168,35 +9168,35 @@ msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:279
 msgid "AGU-pages"
-msgstr ""
+msgstr "AGU-strane"
 
 #: lib/layouts/agu_stdtitle.inc:282
 msgid "AGU-pages:"
-msgstr ""
+msgstr "AGU-strane:"
 
 #: lib/layouts/agu_stdtitle.inc:287
 msgid "Words"
-msgstr ""
+msgstr "Reči"
 
 #: lib/layouts/agu_stdtitle.inc:290
 msgid "Words:"
-msgstr ""
+msgstr "Reči:"
 
 #: lib/layouts/agu_stdtitle.inc:295
 msgid "Figures"
-msgstr ""
+msgstr "Brojke"
 
 #: lib/layouts/agu_stdtitle.inc:298
 msgid "Figures:"
-msgstr ""
+msgstr "Brojke:"
 
 #: lib/layouts/agu_stdtitle.inc:303
 msgid "Tables"
-msgstr ""
+msgstr "Tabele"
 
 #: lib/layouts/agu_stdtitle.inc:306
 msgid "Tables:"
-msgstr ""
+msgstr "Tabele:"
 
 #: lib/layouts/agu_stdtitle.inc:311
 msgid "Datasets"
@@ -9208,64 +9208,64 @@ msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:321
 msgid "Element:ISSN"
-msgstr ""
+msgstr "Element: ISSN"
 
 #: lib/layouts/agu_stdtitle.inc:323
 msgid "ISSN"
-msgstr ""
+msgstr "ISSN"
 
 #: lib/layouts/agu_stdtitle.inc:332
 msgid "Element:CODEN"
-msgstr ""
+msgstr "Element: CODEN"
 
 #: lib/layouts/agu_stdtitle.inc:334
 msgid "CODEN"
-msgstr ""
+msgstr "CODEN"
 
 #: lib/layouts/agu_stdtitle.inc:344
 msgid "Element:SS-Code"
-msgstr ""
+msgstr "Element:SS-oznaka"
 
 #: lib/layouts/agu_stdtitle.inc:346
 msgid "SS-Code"
-msgstr ""
+msgstr "SS-oznaka"
 
 #: lib/layouts/agu_stdtitle.inc:355
 msgid "Element:SS-Title"
-msgstr ""
+msgstr "Element:SS-Naslov"
 
 #: lib/layouts/agu_stdtitle.inc:357
 msgid "SS-Title"
-msgstr ""
+msgstr "SS-Naslov"
 
 #: lib/layouts/agu_stdtitle.inc:367
 msgid "Element:CCC-Code"
-msgstr ""
+msgstr "Element:CCC-oznaka"
 
 #: lib/layouts/agu_stdtitle.inc:369
 msgid "CCC-Code"
-msgstr ""
+msgstr "CCC-oznaka"
 
 #: lib/layouts/agu_stdtitle.inc:380
 msgid "Element:Code"
-msgstr ""
+msgstr "Element: Oznaka"
 
 #: lib/layouts/agu_stdtitle.inc:382
 #: lib/layouts/db_lyxmacros.inc:11
 msgid "Code"
-msgstr ""
+msgstr "Oznaka"
 
 #: lib/layouts/agu_stdtitle.inc:391
 msgid "Element:Dscr"
-msgstr ""
+msgstr "Element:Dscr"
 
 #: lib/layouts/agu_stdtitle.inc:393
 msgid "Dscr"
-msgstr ""
+msgstr "Dscr"
 
 #: lib/layouts/agu_stdtitle.inc:403
 msgid "Element:Keyword"
-msgstr ""
+msgstr "Element: Ključna reč"
 
 #: lib/layouts/agu_stdtitle.inc:415
 msgid "Element:Orgdiv"
@@ -9285,27 +9285,27 @@ msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:437
 msgid "Element:Street"
-msgstr ""
+msgstr "Element: Ulica"
 
 #: lib/layouts/agu_stdtitle.inc:448
 msgid "Element:City"
-msgstr ""
+msgstr "Element: Grad"
 
 #: lib/layouts/agu_stdtitle.inc:450
 msgid "City"
-msgstr ""
+msgstr "Grad"
 
 #: lib/layouts/agu_stdtitle.inc:459
 msgid "Element:State"
-msgstr ""
+msgstr "Element: Država"
 
 #: lib/layouts/agu_stdtitle.inc:470
 msgid "Element:Postcode"
-msgstr ""
+msgstr "Element: Poštanski broj"
 
 #: lib/layouts/agu_stdtitle.inc:472
 msgid "Postcode"
-msgstr ""
+msgstr "Poštanski broj"
 
 #: lib/layouts/agu_stdtitle.inc:481
 msgid "Element:Country"
@@ -9323,11 +9323,11 @@ msgstr ""
 
 #: lib/layouts/aguplus.inc:130
 msgid "CCC"
-msgstr ""
+msgstr "CCC"
 
 #: lib/layouts/aguplus.inc:134
 msgid "CCC code:"
-msgstr ""
+msgstr "CCC oznaka:"
 
 #: lib/layouts/aguplus.inc:143
 msgid "PaperId"
@@ -9371,36 +9371,36 @@ msgstr ""
 
 #: lib/layouts/amsdefs.inc:143
 msgid "Current Address"
-msgstr ""
+msgstr "Trenutna adresa"
 
 #: lib/layouts/amsdefs.inc:146
 msgid "Current address:"
-msgstr ""
+msgstr "Trenutna adresa:"
 
 #: lib/layouts/amsdefs.inc:154
 msgid "E-mail address:"
-msgstr ""
+msgstr "E-mail adresa:"
 
 #: lib/layouts/amsdefs.inc:169
 msgid "Key words and phrases:"
-msgstr ""
+msgstr "Ključne reči i fraze:"
 
 #: lib/layouts/amsdefs.inc:180
 msgid "Dedicatory"
-msgstr ""
+msgstr "Posvećeno"
 
 #: lib/layouts/amsdefs.inc:183
 #: lib/layouts/svjour.inc:119
 msgid "Dedication:"
-msgstr ""
+msgstr "Posveta:"
 
 #: lib/layouts/amsdefs.inc:187
 msgid "Translator"
-msgstr ""
+msgstr "Prevodilac"
 
 #: lib/layouts/amsdefs.inc:190
 msgid "Translator:"
-msgstr ""
+msgstr "Prevodilac:"
 
 #: lib/layouts/amsdefs.inc:197
 msgid "2000 Mathematics Subject Classification:"
@@ -9408,15 +9408,15 @@ msgstr ""
 
 #: lib/layouts/db_stdcharstyles.inc:20
 msgid "Element:Directory"
-msgstr ""
+msgstr "Element: Direktorijum"
 
 #: lib/layouts/db_stdcharstyles.inc:22
 msgid "Directory"
-msgstr ""
+msgstr "Direktorijum"
 
 #: lib/layouts/db_stdcharstyles.inc:71
 msgid "Element:Email"
-msgstr ""
+msgstr "Element: Elektronska pošta"
 
 #: lib/layouts/db_stdcharstyles.inc:85
 msgid "Element:KeyCombo"
@@ -9505,44 +9505,44 @@ msgstr ""
 
 #: lib/layouts/numreport.inc:12
 msgid "\\arabic{chapter}"
-msgstr ""
+msgstr "\\arabic{chapter}"
 
 #: lib/layouts/numreport.inc:13
 msgid "\\Alph{chapter}"
-msgstr ""
+msgstr "\\Alph{chapter}"
 
 #: lib/layouts/numreport.inc:44
 msgid "\\arabic{footnote}"
-msgstr ""
+msgstr "\\arabic{footnote}"
 
 #: lib/layouts/numrevtex.inc:9
 msgid "\\Roman{section}."
-msgstr ""
+msgstr "\\Roman{section}."
 
 #: lib/layouts/numrevtex.inc:10
 msgid "Appendix \\Alph{section}:"
-msgstr ""
+msgstr "Dodatak \\Alph{section}:"
 
 #: lib/layouts/numrevtex.inc:18
 msgid "\\Alph{subsection}."
-msgstr ""
+msgstr "\\Alph{subsection}."
 
 #: lib/layouts/numrevtex.inc:19
 msgid "\\arabic{subsection}."
-msgstr ""
+msgstr "\\arabic{subsection}."
 
 #: lib/layouts/numrevtex.inc:27
 msgid "\\arabic{subsubsection}."
-msgstr ""
+msgstr "\\arabic{subsubsection}."
 
 #: lib/layouts/numrevtex.inc:28
 msgid "\\alph{subsubsection}."
-msgstr ""
+msgstr "\\alph{subsubsection}."
 
 #: lib/layouts/numrevtex.inc:36
 #: lib/layouts/numrevtex.inc:37
 msgid "\\alph{paragraph}."
-msgstr ""
+msgstr "\\alph{paragraph}."
 
 #: lib/layouts/scrclass.inc:99
 msgid "Addpart"
@@ -9570,12 +9570,12 @@ msgstr ""
 
 #: lib/layouts/scrclass.inc:184
 msgid "Publishers"
-msgstr ""
+msgstr "Izdavač"
 
 #: lib/layouts/scrclass.inc:190
 #: lib/layouts/svjour.inc:115
 msgid "Dedication"
-msgstr ""
+msgstr "Posveta"
 
 #: lib/layouts/scrclass.inc:196
 msgid "Titlehead"
@@ -9613,7 +9613,7 @@ msgstr ""
 #: lib/layouts/stdcustom.inc:10
 #: src/insets/InsetCollapsable.cpp:156
 msgid "UNDEFINED"
-msgstr ""
+msgstr "NEDEFINISANO"
 
 #: lib/layouts/stdcounters.inc:9
 msgid "\\Roman{part}"
@@ -9626,7 +9626,7 @@ msgstr ""
 #: lib/layouts/stdinsets.inc:61
 #: src/insets/InsetMarginal.cpp:53
 msgid "margin"
-msgstr ""
+msgstr "margina"
 
 #: lib/layouts/stdinsets.inc:74
 msgid "Foot"
@@ -9683,7 +9683,7 @@ msgstr ""
 #: lib/layouts/minimalistic.module:8
 #: src/insets/InsetIndex.cpp:207
 msgid "Index"
-msgstr ""
+msgstr "Indeks"
 
 #: lib/layouts/stdinsets.inc:176
 msgid "Idx"
@@ -9733,11 +9733,11 @@ msgstr ""
 
 #: lib/layouts/stdlayouts.inc:67
 msgid "--Separator--"
-msgstr ""
+msgstr "--Separator--"
 
 #: lib/layouts/stdlayouts.inc:76
 msgid "--- Separate Environment ---"
-msgstr ""
+msgstr "--- Ambijent separatora ---"
 
 #: lib/layouts/svjour.inc:92
 msgid "Headnote"
@@ -9876,56 +9876,56 @@ msgstr "Napomena."
 
 #: lib/layouts/braille.module:2
 msgid "Braille"
-msgstr ""
+msgstr "Brajeva azbuka"
 
 #: lib/layouts/braille.module:6
 msgid "Defines an environment to typeset Braille. For more details see Braille.lyx in examples."
-msgstr ""
+msgstr "Definiše ambijent za kucanje u Brajevom pismu. Za više detalja vidi Braille.lyx u primerima."
 
 #: lib/layouts/braille.module:22
 msgid "Braille (default)"
-msgstr ""
+msgstr "Brajeva azbuka (default)"
 
 #: lib/layouts/braille.module:36
 #: lib/layouts/braille.module:59
 msgid "Braille:"
-msgstr ""
+msgstr "Brajeva azbuka:"
 
 #: lib/layouts/braille.module:45
 msgid "Braille (textsize)"
-msgstr ""
+msgstr "Brajeva azbuka (textsize)"
 
 #: lib/layouts/braille.module:68
 msgid "Braille (dots on)"
-msgstr ""
+msgstr "Brajeva azbuka (dots on)"
 
 #: lib/layouts/braille.module:83
 msgid "Braille_dots_on"
-msgstr ""
+msgstr "Brajeva azbuka_dots_on"
 
 #: lib/layouts/braille.module:92
 msgid "Braille (dots off)"
-msgstr ""
+msgstr "Brajeva azbuka (dots off)"
 
 #: lib/layouts/braille.module:107
 msgid "Braille_dots_off"
-msgstr ""
+msgstr "Brajeva azbuka_dots_off"
 
 #: lib/layouts/braille.module:116
 msgid "Braille (mirror on)"
-msgstr ""
+msgstr "Brajeva azbuka (mirror on)"
 
 #: lib/layouts/braille.module:131
 msgid "Braille_mirror_on"
-msgstr ""
+msgstr "Brajeva azbuka_mirror_on"
 
 #: lib/layouts/braille.module:140
 msgid "Braille (mirror off)"
-msgstr ""
+msgstr "Brajeva azbuka (mirror off)"
 
 #: lib/layouts/braille.module:155
 msgid "Braille_mirror_off"
-msgstr ""
+msgstr "Brajeva azbuka_mirror_off"
 
 #: lib/layouts/braille.module:163
 msgid "Braillebox"
@@ -9953,7 +9953,7 @@ msgstr ""
 
 #: lib/layouts/eqs-within-sections.module:2
 msgid "Number Equations by Section"
-msgstr ""
+msgstr "Broj jednačine po odeljku "
 
 #: lib/layouts/eqs-within-sections.module:6
 msgid "Resets the equation number at section start and prepends the section number to the equation number, as in '(2.1)'."
@@ -9978,43 +9978,43 @@ msgstr ""
 #: lib/layouts/hanging.module:2
 #: lib/layouts/hanging.module:16
 msgid "Hanging"
-msgstr ""
+msgstr "Viseći stav"
 
 #: lib/layouts/hanging.module:6
 msgid "Adds an environment for hanging paragraphs. Hanging paragraph is a paragraph in which the first line is set to the left margin, but all subsequent lines are indented."
-msgstr ""
+msgstr "Dodaje ambijent za viseći stav. Viseći stav je stav u kome je prvi red postavljen na levu marginu, dok su sve kasnije linije uvučene."
 
 #: lib/layouts/linguistics.module:2
 msgid "Linguistics"
-msgstr ""
+msgstr "Lingvistika"
 
 #: lib/layouts/linguistics.module:7
 msgid "Defines some special environments useful for linguistics (numbered examples, glosses, semantic markup, tableau floats). See linguistics.lyx file in examples."
-msgstr ""
+msgstr "Definiše neka posebna okruženj korisna za lingvistiku (numerisanje primera, rečnik manje poznatih reči, semantičko označavanje, plutajuće  tabele). Vidi linguistics.lyx fajl u primerima."
 
 #: lib/layouts/linguistics.module:13
 msgid "Numbered Example (multiline)"
-msgstr ""
+msgstr "Primer numerisanih (višelinijski)"
 
 #: lib/layouts/linguistics.module:27
 msgid "Example:"
-msgstr ""
+msgstr "Primer:"
 
 #: lib/layouts/linguistics.module:37
 msgid "Numbered Examples (consecutive)"
-msgstr ""
+msgstr "Primer numerisanih (uzastopno)"
 
 #: lib/layouts/linguistics.module:41
 msgid "Examples:"
-msgstr ""
+msgstr "Primer:"
 
 #: lib/layouts/linguistics.module:46
 msgid "Subexample"
-msgstr ""
+msgstr "Pod primer"
 
 #: lib/layouts/linguistics.module:50
 msgid "Subexample:"
-msgstr ""
+msgstr "Pod primer:"
 
 #: lib/layouts/linguistics.module:65
 msgid "Custom:Glosse"
@@ -10122,7 +10122,7 @@ msgstr ""
 
 #: lib/layouts/theorems-ams-bytype.module:2
 msgid "Theorems (AMS, Numbered by Type)"
-msgstr ""
+msgstr "Teoreme (AMS, numerisane po tipu)"
 
 #: lib/layouts/theorems-ams-bytype.module:11
 msgid "Defines theorem environments and the proof environment using the extended AMS machinery. Both numbered and unnumbered types are provided. Contrary to the plain AMS Theorem module, the different theorem types provided here each have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, proposition 4, ...). The numbering's scope is the whole document. For chapter- and section-wide numbering, use one of the 'within Sections'/'within Chapters' modules, respectively."
@@ -10610,7 +10610,7 @@ msgstr "Mongolski"
 
 #: lib/languages:67
 msgid "Norsk"
-msgstr ""
+msgstr "Norveški"
 
 #: lib/languages:68
 msgid "Nynorsk"
@@ -11091,7 +11091,7 @@ msgstr ""
 
 #: lib/ui/classic.ui:115
 msgid "Selection as Lines|L"
-msgstr ""
+msgstr "Izbor kao linije|L"
 
 #: lib/ui/classic.ui:116
 msgid "Selection as Paragraphs|P"
@@ -11101,7 +11101,7 @@ msgstr "Odaberi kao pasus|P"
 #: lib/ui/stdcontext.inc:367
 #: lib/ui/stdmenus.inc:173
 msgid "Multicolumn|M"
-msgstr ""
+msgstr "Više kolona|M"
 
 #: lib/ui/classic.ui:122
 msgid "Line Top|T"
@@ -11215,12 +11215,12 @@ msgstr ""
 #: lib/ui/classic.ui:164
 #: lib/ui/stdmenus.inc:208
 msgid "Change Formula Type|F"
-msgstr ""
+msgstr "Promenite tip formule|F"
 
 #: lib/ui/classic.ui:166
 #: lib/ui/stdmenus.inc:212
 msgid "Use Computer Algebra System|S"
-msgstr ""
+msgstr "Koristite računarski algebra sistem|S"
 
 #: lib/ui/classic.ui:168
 msgid "Alignment|A"
@@ -11254,7 +11254,7 @@ msgstr "Podrazumevano|t"
 #: lib/ui/classic.ui:183
 #: lib/ui/stdmenus.inc:243
 msgid "Display|D"
-msgstr ""
+msgstr "Prikaz|D"
 
 #: lib/ui/classic.ui:184
 #: lib/ui/stdmenus.inc:244
@@ -11271,7 +11271,7 @@ msgstr ""
 
 #: lib/ui/classic.ui:190
 msgid "Mathematica"
-msgstr ""
+msgstr "Matematika"
 
 #: lib/ui/classic.ui:192
 msgid "Maple, simplify"
@@ -11301,15 +11301,15 @@ msgstr ""
 #: lib/ui/stdcontext.inc:50
 #: lib/ui/stdmenus.inc:285
 msgid "Displayed Formula|D"
-msgstr ""
+msgstr "Uočljiva formula|D"
 
 #: lib/ui/classic.ui:201
 msgid "Eqnarray Environment|q"
-msgstr ""
+msgstr "Ambijent za grupne jednačine|q"
 
 #: lib/ui/classic.ui:202
 msgid "Align Environment|A"
-msgstr ""
+msgstr "Ambijent za poravnanje|A"
 
 #: lib/ui/classic.ui:203
 msgid "AlignAt Environment"
@@ -11325,16 +11325,16 @@ msgstr ""
 
 #: lib/ui/classic.ui:208
 msgid "Multline Environment"
-msgstr ""
+msgstr "Višelinijski ambijent"
 
 #: lib/ui/classic.ui:214
 #: lib/ui/stdmenus.inc:332
 msgid "Math|h"
-msgstr ""
+msgstr "Matematika|h"
 
 #: lib/ui/classic.ui:216
 msgid "Special Character|S"
-msgstr ""
+msgstr "Specijalni karakteri|S"
 
 #: lib/ui/classic.ui:217
 #: lib/ui/stdmenus.inc:343
@@ -11348,7 +11348,7 @@ msgstr ""
 #: lib/ui/classic.ui:219
 #: lib/ui/stdmenus.inc:345
 msgid "Label...|L"
-msgstr ""
+msgstr "Oznaka...|L"
 
 #: lib/ui/classic.ui:220
 #: lib/ui/stdmenus.inc:354
@@ -11358,19 +11358,19 @@ msgstr "Fusnota|F"
 #: lib/ui/classic.ui:221
 #: lib/ui/stdmenus.inc:355
 msgid "Marginal Note|M"
-msgstr ""
+msgstr "Beleška na marginama|M"
 
 #: lib/ui/classic.ui:222
 msgid "Short Title"
-msgstr ""
+msgstr "Kratak naslov"
 
 #: lib/ui/classic.ui:223
 msgid "Index Entry|I"
-msgstr ""
+msgstr "Unos indeksa|I"
 
 #: lib/ui/classic.ui:224
 msgid "Nomenclature Entry"
-msgstr ""
+msgstr "Unos nomenklature"
 
 #: lib/ui/classic.ui:225
 msgid "URL...|U"
@@ -11387,16 +11387,16 @@ msgstr ""
 
 #: lib/ui/classic.ui:229
 msgid "TeX Code|T"
-msgstr ""
+msgstr "TeX oznaka|T"
 
 #: lib/ui/classic.ui:230
 msgid "Minipage|p"
-msgstr ""
+msgstr "Mini strana|P"
 
 #: lib/ui/classic.ui:231
 #: lib/ui/stdmenus.inc:351
 msgid "Graphics...|G"
-msgstr ""
+msgstr "Grafike...|G"
 
 #: lib/ui/classic.ui:232
 msgid "Tabular Material...|b"
@@ -11421,21 +11421,21 @@ msgstr ""
 #: lib/ui/classic.ui:241
 #: lib/ui/stdmenus.inc:363
 msgid "Symbols...|b"
-msgstr ""
+msgstr "Simboli...|b"
 
 #: lib/ui/classic.ui:242
 #: lib/ui/stdmenus.inc:375
 msgid "Superscript|S"
-msgstr ""
+msgstr "Eksponent|S"
 
 #: lib/ui/classic.ui:243
 #: lib/ui/stdmenus.inc:376
 msgid "Subscript|u"
-msgstr ""
+msgstr "Indeks|u"
 
 #: lib/ui/classic.ui:244
 msgid "Hyphenation Point|P"
-msgstr ""
+msgstr "Mesto na kome se reč rastavlja na slogove|P"
 
 #: lib/ui/classic.ui:245
 #: lib/ui/stdmenus.inc:368
@@ -11454,23 +11454,23 @@ msgstr ""
 #: lib/ui/classic.ui:248
 #: lib/ui/stdmenus.inc:379
 msgid "Inter-word Space|w"
-msgstr ""
+msgstr "Razmak između reči|w"
 
 #: lib/ui/classic.ui:249
 #: lib/ui/stdcontext.inc:193
 #: lib/ui/stdcontext.inc:216
 #: lib/ui/stdmenus.inc:380
 msgid "Thin Space|T"
-msgstr ""
+msgstr "Mali razmak|T"
 
 #: lib/ui/classic.ui:250
 #: lib/ui/stdmenus.inc:381
 msgid "Horizontal Space...|o"
-msgstr ""
+msgstr "Horizontalni razmak...|o"
 
 #: lib/ui/classic.ui:251
 msgid "Vertical Space..."
-msgstr ""
+msgstr "Vertikalni razmak..."
 
 #: lib/ui/classic.ui:252
 msgid "Line Break|L"
@@ -11479,16 +11479,16 @@ msgstr ""
 #: lib/ui/classic.ui:253
 #: lib/ui/stdmenus.inc:364
 msgid "Ellipsis|i"
-msgstr ""
+msgstr "Znak da je nešto izostavljeno|i"
 
 #: lib/ui/classic.ui:254
 #: lib/ui/stdmenus.inc:365
 msgid "End of Sentence|E"
-msgstr ""
+msgstr "Kraj izreke|E"
 
 #: lib/ui/classic.ui:255
 msgid "Protected Dash|D"
-msgstr ""
+msgstr "Zaštićena crtica|D"
 
 #: lib/ui/classic.ui:256
 #: lib/ui/stdmenus.inc:369
@@ -11497,11 +11497,11 @@ msgstr ""
 
 #: lib/ui/classic.ui:257
 msgid "Single Quote|Q"
-msgstr ""
+msgstr "Jedan znak navoda|Q"
 
 #: lib/ui/classic.ui:258
 msgid "Ordinary Quote|O"
-msgstr ""
+msgstr "Uobičajeni znak navoda|O"
 
 #: lib/ui/classic.ui:259
 #: lib/ui/stdmenus.inc:370
@@ -11520,21 +11520,21 @@ msgstr ""
 #: lib/ui/classic.ui:266
 #: lib/ui/stdmenus.inc:398
 msgid "Display Formula|D"
-msgstr ""
+msgstr "Prikaz formula|D"
 
 #: lib/ui/classic.ui:267
 #: lib/ui/stdcontext.inc:51
 #: lib/ui/stdmenus.inc:286
 #: lib/ui/stdmenus.inc:400
 msgid "Eqnarray Environment|E"
-msgstr ""
+msgstr "Ambijent za grupu jednačina|E"
 
 #: lib/ui/classic.ui:268
 #: lib/ui/stdcontext.inc:41
 #: lib/ui/stdmenus.inc:287
 #: lib/ui/stdmenus.inc:401
 msgid "AMS align Environment|a"
-msgstr ""
+msgstr "AMS ambijent za poravnavanje|a"
 
 #: lib/ui/classic.ui:269
 #: lib/ui/stdcontext.inc:42
@@ -11562,13 +11562,13 @@ msgstr ""
 #: lib/ui/stdmenus.inc:291
 #: lib/ui/stdmenus.inc:405
 msgid "AMS multline Environment|m"
-msgstr ""
+msgstr "AMS višelinijski ambijent|m"
 
 #: lib/ui/classic.ui:276
 #: lib/ui/stdcontext.inc:28
 #: lib/ui/stdmenus.inc:407
 msgid "Array Environment|y"
-msgstr ""
+msgstr "Grupni ambijent|y"
 
 #: lib/ui/classic.ui:277
 #: lib/ui/stdcontext.inc:29
@@ -11584,80 +11584,80 @@ msgstr ""
 
 #: lib/ui/classic.ui:280
 msgid "Font Change|o"
-msgstr ""
+msgstr "Promena fonta|o"
 
 #: lib/ui/classic.ui:284
 msgid "Math Normal Font"
-msgstr ""
+msgstr "Normalna matematička slova"
 
 #: lib/ui/classic.ui:286
 msgid "Math Calligraphic Family"
-msgstr ""
+msgstr "Kaligrafska matematička porodica slova"
 
 #: lib/ui/classic.ui:287
 msgid "Math Fraktur Family"
-msgstr ""
+msgstr "Fraktur matematička porodica slova"
 
 #: lib/ui/classic.ui:288
 msgid "Math Roman Family"
-msgstr ""
+msgstr "Rimska matematička porodica slova"
 
 #: lib/ui/classic.ui:289
 msgid "Math Sans Serif Family"
-msgstr ""
+msgstr "Bezserifna matematička porodica slova "
 
 #: lib/ui/classic.ui:291
 msgid "Math Bold Series"
-msgstr ""
+msgstr "Serija podebljanih matematičkih slova"
 
 #: lib/ui/classic.ui:293
 msgid "Text Normal Font"
-msgstr ""
+msgstr "Normalna teksualna slova"
 
 #: lib/ui/classic.ui:295
 #: lib/ui/stdmenus.inc:259
 msgid "Text Roman Family"
-msgstr ""
+msgstr "Rimska tekstualna porodica slova"
 
 #: lib/ui/classic.ui:296
 #: lib/ui/stdmenus.inc:260
 msgid "Text Sans Serif Family"
-msgstr ""
+msgstr "Bezserifna tekstualna porodica slova"
 
 #: lib/ui/classic.ui:297
 #: lib/ui/stdmenus.inc:261
 msgid "Text Typewriter Family"
-msgstr ""
+msgstr "Daktilografska tekstualna porodica slova"
 
 #: lib/ui/classic.ui:299
 #: lib/ui/stdmenus.inc:263
 msgid "Text Bold Series"
-msgstr ""
+msgstr "Serija podebljanih tekstualnih slova"
 
 #: lib/ui/classic.ui:300
 #: lib/ui/stdmenus.inc:264
 msgid "Text Medium Series"
-msgstr ""
+msgstr "Serija srednjih tekstualnih slova"
 
 #: lib/ui/classic.ui:302
 #: lib/ui/stdmenus.inc:266
 msgid "Text Italic Shape"
-msgstr ""
+msgstr "Kurzivni oblik teksta"
 
 #: lib/ui/classic.ui:303
 #: lib/ui/stdmenus.inc:267
 msgid "Text Small Caps Shape"
-msgstr ""
+msgstr "Small Caps oblik teksta"
 
 #: lib/ui/classic.ui:304
 #: lib/ui/stdmenus.inc:268
 msgid "Text Slanted Shape"
-msgstr ""
+msgstr "Kosi oblik teksta"
 
 #: lib/ui/classic.ui:305
 #: lib/ui/stdmenus.inc:269
 msgid "Text Upright Shape"
-msgstr ""
+msgstr "Uspravni oblika teksta"
 
 #: lib/ui/classic.ui:310
 msgid "Floatflt Figure"
@@ -11666,27 +11666,27 @@ msgstr ""
 #: lib/ui/classic.ui:314
 #: lib/ui/stdmenus.inc:427
 msgid "Table of Contents|C"
-msgstr ""
+msgstr "Sadržaj|C"
 
 #: lib/ui/classic.ui:316
 #: lib/ui/stdmenus.inc:429
 msgid "Index List|I"
-msgstr ""
+msgstr "Indeks lista|I"
 
 #: lib/ui/classic.ui:317
 #: lib/ui/stdmenus.inc:430
 msgid "Nomenclature|N"
-msgstr ""
+msgstr "Nomenklatura|N"
 
 #: lib/ui/classic.ui:318
 #: lib/ui/stdmenus.inc:431
 msgid "BibTeX Bibliography...|B"
-msgstr ""
+msgstr "BibTeX bibliografija...|B"
 
 #: lib/ui/classic.ui:322
 #: lib/ui/stdmenus.inc:435
 msgid "LyX Document...|X"
-msgstr ""
+msgstr "LyX dokument...|X"
 
 #: lib/ui/classic.ui:323
 #: lib/ui/stdmenus.inc:436
@@ -11710,28 +11710,28 @@ msgstr ""
 
 #: lib/ui/classic.ui:330
 msgid "Accept All Changes|A"
-msgstr ""
+msgstr "Prihvati sve promene|A"
 
 #: lib/ui/classic.ui:331
 msgid "Reject All Changes|R"
-msgstr ""
+msgstr "Odbaci sve promene|R"
 
 #: lib/ui/classic.ui:332
 #: lib/ui/stdmenus.inc:480
 msgid "Show Changes in Output|S"
-msgstr ""
+msgstr "Prikaži promene u izlazu|S"
 
 #: lib/ui/classic.ui:339
 msgid "Character...|C"
-msgstr ""
+msgstr "Karakter...|C"
 
 #: lib/ui/classic.ui:340
 msgid "Paragraph...|P"
-msgstr ""
+msgstr "Pasus...|P"
 
 #: lib/ui/classic.ui:341
 msgid "Document...|D"
-msgstr ""
+msgstr "Dokument...|D"
 
 #: lib/ui/classic.ui:342
 msgid "Tabular...|T"
@@ -11739,7 +11739,7 @@ msgstr ""
 
 #: lib/ui/classic.ui:344
 msgid "Emphasize Style|E"
-msgstr ""
+msgstr "Naglašen stil|e"
 
 #: lib/ui/classic.ui:345
 msgid "Noun Style|N"
@@ -11759,7 +11759,7 @@ msgstr ""
 
 #: lib/ui/classic.ui:351
 msgid "Start Appendix Here|S"
-msgstr ""
+msgstr "Odavde počinje prilog|S"
 
 #: lib/ui/classic.ui:360
 #: lib/ui/stdmenus.inc:463
@@ -11769,12 +11769,12 @@ msgstr ""
 #: lib/ui/classic.ui:361
 #: lib/ui/stdmenus.inc:306
 msgid "Update|U"
-msgstr ""
+msgstr "Ažurirajte|U"
 
 #: lib/ui/classic.ui:363
 #: lib/ui/stdmenus.inc:464
 msgid "LaTeX Log|L"
-msgstr ""
+msgstr "LaTeX registar|L"
 
 #: lib/ui/classic.ui:364
 #: lib/ui/stdmenus.inc:465
@@ -11783,7 +11783,7 @@ msgstr ""
 
 #: lib/ui/classic.ui:365
 msgid "TeX Information|X"
-msgstr ""
+msgstr "Informacije o TeX-u|X"
 
 #: lib/ui/classic.ui:378
 #: lib/ui/stdmenus.inc:488
@@ -11798,67 +11798,67 @@ msgstr ""
 #: lib/ui/classic.ui:380
 #: lib/ui/stdmenus.inc:487
 msgid "Bookmarks|B"
-msgstr ""
+msgstr "Markeri|B"
 
 #: lib/ui/classic.ui:384
 #: lib/ui/stdmenus.inc:497
 msgid "Save Bookmark 1|S"
-msgstr ""
+msgstr "Sačuvaj marker 1|S"
 
 #: lib/ui/classic.ui:385
 #: lib/ui/stdmenus.inc:498
 msgid "Save Bookmark 2"
-msgstr ""
+msgstr "Sačuvaj marker 2"
 
 #: lib/ui/classic.ui:386
 #: lib/ui/stdmenus.inc:499
 msgid "Save Bookmark 3"
-msgstr ""
+msgstr "Sačuvaj marker 3"
 
 #: lib/ui/classic.ui:387
 #: lib/ui/stdmenus.inc:500
 msgid "Save Bookmark 4"
-msgstr ""
+msgstr "Sačuvaj marker 4"
 
 #: lib/ui/classic.ui:388
 #: lib/ui/stdmenus.inc:501
 msgid "Save Bookmark 5"
-msgstr ""
+msgstr "Sačuvaj marker 5"
 
 #: lib/ui/classic.ui:390
 msgid "Go to Bookmark 1|1"
-msgstr ""
+msgstr "Idi na Bookmark oznaku 1|1"
 
 #: lib/ui/classic.ui:391
 msgid "Go to Bookmark 2|2"
-msgstr ""
+msgstr "Idi na Bookmark oznaku  2|2"
 
 #: lib/ui/classic.ui:392
 msgid "Go to Bookmark 3|3"
-msgstr ""
+msgstr "Idi na Bookmark oznaku 3|3"
 
 #: lib/ui/classic.ui:393
 msgid "Go to Bookmark 4|4"
-msgstr ""
+msgstr "Idi na Bookmark oznaku 4|4"
 
 #: lib/ui/classic.ui:394
 msgid "Go to Bookmark 5|5"
-msgstr ""
+msgstr "Idi na Bookmark oznaku 5|5"
 
 #: lib/ui/classic.ui:409
 #: lib/ui/stdmenus.inc:530
 msgid "Introduction|I"
-msgstr ""
+msgstr "Uvod|I"
 
 #: lib/ui/classic.ui:410
 #: lib/ui/stdmenus.inc:531
 msgid "Tutorial|T"
-msgstr ""
+msgstr "Vodič|T"
 
 #: lib/ui/classic.ui:411
 #: lib/ui/stdmenus.inc:532
 msgid "User's Guide|U"
-msgstr ""
+msgstr "Priručnik|U"
 
 #: lib/ui/classic.ui:412
 msgid "Extended Features|E"
@@ -11876,25 +11876,25 @@ msgstr ""
 #: lib/ui/classic.ui:415
 #: lib/ui/stdmenus.inc:539
 msgid "LaTeX Configuration|L"
-msgstr ""
+msgstr "Konfiguracija LaTeX-a|L"
 
 #: lib/ui/classic.ui:417
 #: lib/ui/stdmenus.inc:542
 msgid "About LyX|X"
-msgstr ""
+msgstr "O LyX-u|X"
 
 #: lib/ui/classic.ui:425
 #: src/frontends/qt4/GuiAbout.cpp:130
 msgid "About LyX"
-msgstr ""
+msgstr "O LyX-u"
 
 #: lib/ui/classic.ui:426
 msgid "Preferences..."
-msgstr ""
+msgstr "Podešavanja ..."
 
 #: lib/ui/classic.ui:427
 msgid "Quit LyX"
-msgstr ""
+msgstr "Napusti Lyx"
 
 #: lib/ui/stdcontext.inc:30
 #: lib/ui/stdmenus.inc:409
@@ -11924,11 +11924,11 @@ msgstr ""
 #: lib/ui/stdcontext.inc:37
 #: lib/ui/stdmenus.inc:416
 msgid "Macro|o"
-msgstr ""
+msgstr "Makro|o"
 
 #: lib/ui/stdcontext.inc:52
 msgid "AMS Environment|A"
-msgstr ""
+msgstr "AMS ambijent|A"
 
 #: lib/ui/stdcontext.inc:54
 msgid "Equation Label|L"
@@ -11951,7 +11951,7 @@ msgstr ""
 #: lib/ui/stdcontext.inc:59
 #: lib/ui/stdmenus.inc:214
 msgid "Split Cell|C"
-msgstr ""
+msgstr "Deoba ćelije|C"
 
 #: lib/ui/stdcontext.inc:61
 msgid "Insert|n"
@@ -15800,7 +15800,7 @@ msgid ""
 "Read 'info date' for more information.\n"
 msgstr ""
 "Današnji datum.\n"
-"Pročitajte 'info dan'  za više informacija."
+"Pročitajte 'info dan'  za više informacija.\n"
 
 #: lib/external_templates:333
 msgid "Dia"
@@ -19735,7 +19735,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "lyxrc"
-msgstr "lyxrc"
+msgstr ""
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "package"
