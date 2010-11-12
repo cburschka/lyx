@@ -23343,7 +23343,7 @@ msgstr "Modul nenalezen"
 
 #: src/insets/InsetInclude.cpp:693
 msgid "Unsupported Inclusion"
-msgstr ""
+msgstr "Nepodporované vlo¾ení"
 
 #: src/insets/InsetInclude.cpp:694
 #, c-format
@@ -23375,24 +23375,20 @@ msgid "Index Entry"
 msgstr "Heslo rejstøíku"
 
 #: src/insets/InsetIndex.cpp:285 src/insets/InsetIndex.cpp:310
-#, fuzzy
 msgid "unknown type!"
-msgstr "Neznámý typ Obsahu"
+msgstr "neznámý typ!"
 
 #: src/insets/InsetIndex.cpp:457
-#, fuzzy
 msgid "Unknown index type!"
-msgstr "Neznámý typ Obsahu"
+msgstr "Neznámý typ rejstøíku"
 
 #: src/insets/InsetIndex.cpp:458
-#, fuzzy
-msgid "All indices"
-msgstr "V¹echny soubory "
+msgid "All indexes"
+msgstr "V¹echny rejstøíky"
 
 #: src/insets/InsetIndex.cpp:462
-#, fuzzy
 msgid "subindex"
-msgstr "Index"
+msgstr "podrejstøík"
 
 #: src/insets/InsetInfo.cpp:117
 #, c-format
@@ -23417,14 +23413,13 @@ msgid "no"
 msgstr "ne"
 
 #: src/insets/InsetInfo.cpp:425
-#, fuzzy
 msgid "No version control"
-msgstr " (správa verzí)"
+msgstr "Bez správy verzí"
 
 #: src/insets/InsetInfo.cpp:441
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s unknown"
-msgstr "neznámý"
+msgstr "%1$s neznámý"
 
 #: src/insets/InsetLabel.cpp:74
 msgid "Label names must be unique!"
@@ -23444,9 +23439,8 @@ msgid "DUPLICATE: "
 msgstr "DUPLIKÁT: "
 
 #: src/insets/InsetLine.cpp:64
-#, fuzzy
 msgid "Horizontal line"
-msgstr "Horizontální linka|o"
+msgstr "Horizontální linka"
 
 #: src/insets/InsetListings.cpp:216
 msgid "no more lstline delimiters available"
@@ -23668,14 +23662,12 @@ msgid "Greyed out"
 msgstr "Za¹edlé"
 
 #: src/insets/InsetPhantom.cpp:66
-#, fuzzy
 msgid "HPhantom"
-msgstr "phantom"
+msgstr "HPhantom"
 
 #: src/insets/InsetPhantom.cpp:67
-#, fuzzy
 msgid "VPhantom"
-msgstr "phantom"
+msgstr "VPhantom"
 
 #: src/insets/InsetPhantom.cpp:332
 msgid "phantom"
@@ -23691,7 +23683,7 @@ msgstr "vphantom"
 
 #: src/insets/InsetRef.cpp:203
 msgid "elsewhere"
-msgstr ""
+msgstr "elsewhere"
 
 #: src/insets/InsetRef.cpp:274
 msgid "BROKEN: "
@@ -23734,24 +23726,20 @@ msgid "Ref+Text: "
 msgstr "Ref+Text: "
 
 #: src/insets/InsetRef.cpp:313
-#, fuzzy
 msgid "Formatted"
-msgstr "Formátování"
+msgstr "Formátovaný"
 
 #: src/insets/InsetRef.cpp:313
-#, fuzzy
 msgid "Format: "
-msgstr "&Formát:"
+msgstr "Formát:"
 
 #: src/insets/InsetRef.cpp:314
-#, fuzzy
 msgid "Reference to Name"
-msgstr "Reference"
+msgstr "Odkaz na jméno"
 
 #: src/insets/InsetRef.cpp:314
-#, fuzzy
 msgid "NameRef:"
-msgstr "Name:"
+msgstr "NameRef:"
 
 #: src/insets/InsetSpace.cpp:71
 msgid "Protected Space"
@@ -23762,9 +23750,8 @@ msgid "Quad Space"
 msgstr "Ètverèík"
 
 #: src/insets/InsetSpace.cpp:86
-#, fuzzy
 msgid "Double Quad Space"
-msgstr "Dva ètverèíky (2 em)|D"
+msgstr "Dva ètverèíky (2 em)"
 
 #: src/insets/InsetSpace.cpp:89
 msgid "Enspace"
@@ -23949,38 +23936,33 @@ msgid "Search string is empty"
 msgstr "Hledaný øetìzec je prázdný"
 
 #: src/lyxfind.cpp:366
-#, fuzzy
 msgid "String found."
-msgstr "Øetìzec nenalezen!"
+msgstr "Øetìzec nenalezen."
 
 #: src/lyxfind.cpp:368
 msgid "String has been replaced."
 msgstr "Øetìzec byl nahrazen."
 
 #: src/lyxfind.cpp:371
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d strings have been replaced."
-msgstr " øetìzcù bylo nahrazeno."
+msgstr "%1$d øetìzcù bylo nahrazeno."
 
 #: src/lyxfind.cpp:1233
-#, fuzzy
 msgid "Search text is empty!"
-msgstr "Hledaný øetìzec je prázdný"
+msgstr "Hledaný øetìzec je prázdný!"
 
 #: src/lyxfind.cpp:1247
-#, fuzzy
 msgid "Invalid regular expression!"
-msgstr "Neplatná délka."
+msgstr "Neplatný regulární výraz!"
 
 #: src/lyxfind.cpp:1252
-#, fuzzy
 msgid "Match not found!"
 msgstr "Øetìzec nenalezen!"
 
 #: src/lyxfind.cpp:1256
-#, fuzzy
 msgid "Match found!"
-msgstr "Modul nenalezen!"
+msgstr "Øetìzec nalezen!"
 
 #: src/mathed/InsetFormulaMacro.cpp:120
 #, c-format
@@ -24004,9 +23986,8 @@ msgid "Changing number of columns not allowed in 'cases': feature %1$s"
 msgstr "Nelze zmìnit poèet sloupcù v prostøedí 'cases': vlastnost '%1$s'"
 
 #: src/mathed/InsetMathGrid.cpp:1453
-#, fuzzy
 msgid "Cursor not in table"
-msgstr " (není instalován)"
+msgstr "Kurzor není v tabulce"
 
 #: src/mathed/InsetMathGrid.cpp:1459
 msgid "Only one row"
@@ -24061,17 +24042,16 @@ msgid "entered math text mode (textrm)"
 msgstr "vstup do text. prostøedí uvnitø matem. (textrm)"
 
 #: src/mathed/InsetMathNest.cpp:1029
-#, fuzzy
 msgid "Regular expression editor mode"
-msgstr "&Regulární výraz"
+msgstr "Editace v módu regulárních výrazù"
 
 #: src/mathed/InsetMathNest.cpp:1620 src/mathed/InsetMathNest.cpp:1740
 msgid "Autocorrect Off ('!' to enter)"
-msgstr ""
+msgstr "Autoopravy vypnuty ('!' pro zapnutí)"
 
 #: src/mathed/InsetMathNest.cpp:1625 src/mathed/InsetMathNest.cpp:1742
 msgid "Autocorrect On (<space> to exit)"
-msgstr ""
+msgstr "Autoopravy zapnuty (<mezerník> k ukonèení)"
 
 #: src/mathed/InsetMathRef.cpp:224
 msgid "Standard[[mathref]]"
@@ -24112,7 +24092,6 @@ msgid "References: "
 msgstr "Reference: "
 
 #: src/support/debug.cpp:40
-#, fuzzy
 msgid "No debugging messages"
 msgstr "®ádné ladící výpisy"
 
@@ -24177,9 +24156,8 @@ msgid "User commands"
 msgstr "U¾ivatelské pøíkazy"
 
 #: src/support/debug.cpp:56
-#, fuzzy
 msgid "The LyX Lexer"
-msgstr "LyX Lexxer"
+msgstr "LyX Lexer"
 
 #: src/support/debug.cpp:57
 msgid "Dependency information"
@@ -24218,13 +24196,12 @@ msgid "RowPainter profiling"
 msgstr "Profilování RowPainter-u"
 
 #: src/support/debug.cpp:66
-#, fuzzy
 msgid "Scrolling debugging"
-msgstr "ladìní posouvání textu"
+msgstr "Ladìní posouvání textu"
 
 #: src/support/debug.cpp:67
 msgid "Math macros"
-msgstr "mat. makra"
+msgstr "Mat. makra"
 
 #: src/support/debug.cpp:68
 msgid "RTL/Bidi"
@@ -24239,9 +24216,8 @@ msgid "Selection copy/paste mechanism"
 msgstr "Mechanismus kopírovaní a vkládání z/do schránky"
 
 #: src/support/debug.cpp:71
-#, fuzzy
 msgid "Find and replace mechanism"
-msgstr "Najít a zamìnit"
+msgstr "Mechanismus vyhledávání"
 
 #: src/support/debug.cpp:72
 msgid "Developers' general debug messages"
