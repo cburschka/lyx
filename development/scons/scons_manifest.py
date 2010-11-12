@@ -2688,6 +2688,11 @@ lib_examples_ru_files = Split('''
 ''')
 
 
+lib_examples_sk_files = Split('''
+    splash.lyx
+''')
+
+
 lib_examples_sl_files = Split('''
     primer_lyxan.lyx
     primer_surov.lyx
@@ -2695,7 +2700,7 @@ lib_examples_sl_files = Split('''
 ''')
 
 
-lib_examples_sk_files = Split('''
+lib_examples_sr_files = Split('''
     splash.lyx
 ''')
 

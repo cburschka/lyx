@@ -214,6 +214,10 @@ skexamplesdir = $(pkgdatadir)/examples/sk
 dist_skexamples_DATA = \
 	examples/sk/splash.lyx
 
+srexamplesdir = $(pkgdatadir)/examples/sr
+dist_srexamples_DATA = \
+	examples/sr/splash.lyx
+
 ukexamplesdir = $(pkgdatadir)/examples/uk
 dist_ukexamples_DATA = \
 	examples/uk/splash.lyx
