@@ -26,7 +26,7 @@ namespace lyx {
 static int computeHash(docstring const & name,
 	docstring const & email)
 {
-	string const full_author_string = to_ascii(name + email);
+	string const full_author_string = to_utf8(name + email);
 	// Bernstein's hash function
 	unsigned int hash = 5381;
 	for (unsigned int i = 0; i < full_author_string.length(); ++i)
