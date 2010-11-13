@@ -105,6 +105,12 @@ void GuiMathMatrix::slotOK()
 	if (decorationCO->currentIndex() != 0) {
 		int const deco = decorationCO->currentIndex();
 		QString deco_name;
+		// FIXME This is very dangerous way of coding.
+		// The order is defined in .ui file and anybody who will touch it
+		// will destroy the whole math decorations machinery.
+		// For better way look on MathDelimiter Size-combo solution and biggui[] array.
+		// Similarly for the v_align_c stuff -- at least we should push it into
+		// constructor and have it in one file...
 		switch (deco) {
 			case 1: deco_name = "bmatrix";
 				break;
