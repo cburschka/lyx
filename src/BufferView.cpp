@@ -1541,6 +1541,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		iss >> opt;
 		if (findAdv(this, opt))
 			dr.screenUpdate(Update::Force | Update::FitCursor);
+		else
+			dispatched = false;
 		break;
 	}
 
