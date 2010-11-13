@@ -2070,7 +2070,7 @@ msgid "Value of the line width."
 msgstr "Hodnota ¹íøky linky."
 
 #: src/frontends/qt4/ui/LineUi.ui:91
-msgid "Thickness:"
+msgid "&Thickness:"
 msgstr "&Tlou¹»ka:"
 
 #: src/frontends/qt4/ui/LineUi.ui:101
@@ -2426,9 +2426,8 @@ msgid "&Horizontal:"
 msgstr "&Horizontálnì:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:224
-#, fuzzy
 msgid "Decoration"
-msgstr "&Dekorace:"
+msgstr "Dekorace"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:230
 msgid "&Type:"
@@ -2436,7 +2435,7 @@ msgstr "&Typ:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:243
 msgid "decoration type / matrix border"
-msgstr ""
+msgstr "typ dekorace / okraj matice"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:252
 msgid "[x]"
@@ -2483,7 +2482,7 @@ msgid ""
 "The LaTeX package esint is only used if special integral symbols are "
 "inserted into formulas"
 msgstr ""
-"LaTeX-ový balíèek esint je pou¾it pouze pokud jsou do formulí vlo¾eny "
+"LaTeX-ový balíèek esint je pou¾it pouze pokud jsou do mat. formulí vlo¾eny "
 "speciální symboly pro integrál."
 
 #: src/frontends/qt4/ui/MathsUi.ui:45
@@ -2499,52 +2498,42 @@ msgid "Use &esint package"
 msgstr "Pou¾ít e&sint balíèek"
 
 #: src/frontends/qt4/ui/MathsUi.ui:65
-#, fuzzy
 msgid ""
 "The LaTeX package mathdots is only used if the command \\iddots is inserted "
 "into formulas"
 msgstr ""
-"LaTeX-ový balíèek esint je pou¾it pouze pokud jsou do formulí vlo¾eny "
-"speciální symboly pro integrál."
+"LaTeX-ový balíèek mathdots je pou¾it pouze pokud je vlo¾eno makro \\iddots do mat. formulí"
 
 #: src/frontends/qt4/ui/MathsUi.ui:68
-#, fuzzy
 msgid "Use math&dots package automatically"
-msgstr "&Automaticky pou¾ívat balíèek AMS math"
+msgstr "Automaticky pou¾ívat balíèek math&dots"
 
 #: src/frontends/qt4/ui/MathsUi.ui:75
-#, fuzzy
 msgid "The LaTeX package mathdots is used"
-msgstr "LaTeX-ový balíèek esint je pou¾it v¾dy"
+msgstr "LaTeX-ový balíèek mathdots je pou¾it"
 
 #: src/frontends/qt4/ui/MathsUi.ui:78
-#, fuzzy
-msgid "Use math&dots package"
-msgstr "P&ou¾ít AMS math balíèek"
+msgid "Use mathdo&ts package"
+msgstr "Pou¾ít mathdo&ts balíèek"
 
 #: src/frontends/qt4/ui/MathsUi.ui:85
-#, fuzzy
 msgid ""
 "The LaTeX package mhchem is only used if either the command \\ce or \\cf is "
 "inserted into formulas"
 msgstr ""
-"LaTeX-ový balíèek esint je pou¾it pouze pokud jsou do formulí vlo¾eny "
-"speciální symboly pro integrál."
+"LaTeX-ový balíèek mchem je pou¾it pouze pokud jsou do mat. formulí vlo¾eny makra \\ce nebo \\cg"
 
 #: src/frontends/qt4/ui/MathsUi.ui:88
-#, fuzzy
 msgid "Use mhchem &package automatically"
-msgstr "Automaticky pou¾ívat balíèek &esint"
+msgstr "Automaticky pou¾ívat balíèek m&chem"
 
 #: src/frontends/qt4/ui/MathsUi.ui:98
-#, fuzzy
 msgid "The LaTeX package mhchem is always used"
-msgstr "LaTeX-ový balíèek esint je pou¾it v¾dy"
+msgstr "LaTeX-ový balíèek mchem je pou¾it v¾dy"
 
 #: src/frontends/qt4/ui/MathsUi.ui:101
-#, fuzzy
 msgid "Use mh&chem package"
-msgstr "Pou¾ít e&sint balíèek"
+msgstr "Pou¾ít mc&hem balíèek"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:60
 msgid "A&vailable:"
