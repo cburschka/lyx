@@ -1539,10 +1539,14 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		FindAndReplaceOptions opt;
 		istringstream iss(to_utf8(cmd.argument()));
 		iss >> opt;
-		if (findAdv(this, opt))
+		if (findAdv(this, opt)) {
 			dr.screenUpdate(Update::Force | Update::FitCursor);
-		else
+			cur.dispatched();
+			dispatched = true;
+		} else {
+			cur.undispatched();
 			dispatched = false;
+		}
 		break;
 	}
 
