@@ -1409,9 +1409,8 @@ msgid "&Preserve first case on replace"
 msgstr "Zachovat velikost prvního"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:296
-#, fuzzy
 msgid "&Expand macros"
-msgstr "mat. makra"
+msgstr "Rozvinout &makra"
 
 # TODO
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
@@ -2036,11 +2035,11 @@ msgstr "Jméno implicitního hlavního dokumentu"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:186
 msgid "&Suppress default date on front page"
-msgstr ""
+msgstr "Potlaèit standardní &datum na pøední stranì"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:206
 msgid "&Use refstyle (not prettyref) for cross-references"
-msgstr ""
+msgstr "&Pou¾ít refstyle (ne prettyref) pro køí¾ové odkazy"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:25
 msgid "Encoding"
@@ -2059,37 +2058,32 @@ msgid "&Quote Style:"
 msgstr "&Typ uvozovek:"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
-#, fuzzy
-msgid "Offset:"
-msgstr "Offsets"
+msgid "Of&fset:"
+msgstr "&Posun:"
 
 #: src/frontends/qt4/ui/LineUi.ui:32
 msgid "Value of the vertical line offset."
-msgstr ""
+msgstr "Hodnota posunu vertikální linky."
 
 #: src/frontends/qt4/ui/LineUi.ui:55
-#, fuzzy
-msgid "Width:"
+msgid "&Width:"
 msgstr "©íø&ka:"
 
 #: src/frontends/qt4/ui/LineUi.ui:68
-#, fuzzy
 msgid "Value of the line width."
-msgstr "Zalomovat øádky pøesahující standardní délku øádku"
+msgstr "Hodnota ¹íøky linky."
 
 #: src/frontends/qt4/ui/LineUi.ui:91
-#, fuzzy
 msgid "Thickness:"
-msgstr "ThickLine"
+msgstr "&Tlou¹»ka:"
 
 #: src/frontends/qt4/ui/LineUi.ui:101
 msgid "Value of the line thickness."
-msgstr ""
+msgstr "Hodnota tlou¹»ky linky."
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:49
-#, fuzzy
 msgid "Input here the listings parameters"
-msgstr "Neplatné (prázdné) jméno parametru výpisu."
+msgstr "Zde vyplòte parametry výpisu"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:67
 #: src/frontends/qt4/ui/ListingsUi.ui:477
@@ -2264,32 +2258,29 @@ msgstr ""
 "Zde vkládejte dal¹í parametry výpisu. Pro seznam parametrù vlo¾te znak '?'"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:19
-#, fuzzy
 msgid "Document-specific layout information"
-msgstr "Chyba pøi ètení informací o rozvr¾ení"
+msgstr "Pro dokument specifické volby rozvr¾ení"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:35
 msgid "Errors reported in terminal."
-msgstr ""
+msgstr "Chyby vypsány na terminál."
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:38
 #: src/frontends/qt4/GuiDocument.cpp:567
 msgid "Press button to check validity..."
-msgstr ""
+msgstr "Stisknìte tlaèítko pro kontrolu správnosti..."
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:51
-#, fuzzy
 msgid "&Validate"
-msgstr "&Hodnota:"
+msgstr "Ovìøit &správnost"
 
 #: src/frontends/qt4/ui/LogUi.ui:38
 msgid "Hit Enter to search, or click Go!"
 msgstr "Stisknìte enter nebo tlaèítko pro vyhledání"
 
 #: src/frontends/qt4/ui/LogUi.ui:45
-#, fuzzy
 msgid "Log &Type:"
-msgstr "&Typ:"
+msgstr "&Typ logu:"
 
 #: src/frontends/qt4/ui/LogUi.ui:74
 msgid "Update the display"
@@ -2365,37 +2356,34 @@ msgid "&Column Sep:"
 msgstr "&Vzdálenost sloupcù:"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:25
-#, fuzzy
 msgid "Master Document Output"
-msgstr "Hlavní dokument"
+msgstr "Výstup hlavního dokumentu"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:40
 msgid "Include only the selected subdocuments in the output"
-msgstr ""
+msgstr "Zahrnout pouze vybrané poddokumenty ve výstupu"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:43
 msgid "Include only &selected children"
-msgstr ""
+msgstr "Zahrnout pouze vybrané &potomky"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:50
 msgid ""
 "Assure counters and references are as in the complete document (prolonges "
 "compilation)"
-msgstr ""
+msgstr "Zajistit aby v¹echno oèíslování a reference byly shodné s verzí kompletního dokumentu (prodlu¾uje kompilaci)"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:53
-#, fuzzy
 msgid "&Maintain counters and references"
-msgstr "v¹echny necitované reference"
+msgstr "Udr¾ovat èíslování a reference"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:63
 msgid "Include all subdocuments in the output"
-msgstr ""
+msgstr "Zahrnout v¹echny poddokumenty ve výstupu"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:66
-#, fuzzy
 msgid "&Include all children"
-msgstr "Zahrnout soubor"
+msgstr "Zahrnout &v¹echny potomky"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:30
 #: src/frontends/qt4/ui/MathMatrixUi.ui:43
