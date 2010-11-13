@@ -2573,7 +2573,6 @@ lib_examples_el_files = Split('''
 
 
 lib_examples_es_files = Split('''
-    beamer-conference-ornate20min.lyx
     Braille.lyx
     ejemplo_con_lyx.lyx
     ejemplo_sin_lyx.lyx
