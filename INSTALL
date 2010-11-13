@@ -69,6 +69,11 @@ at the console. Most recent distributions are known to use fontconfig.
 If, however, your version of Qt does not use fontconfig, then TeX
 fonts should be added to the font path. 'man xset' is your friend.
 
+To build LyX with spell checking capabilities included you have to
+install at least one of the development packages of the spell checker
+libraries. See the RELEASE-NOTES for details.
+
+
 * Other things to note
 
 If you make modifications to files in src/ (for example by applying a
