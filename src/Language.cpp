@@ -37,20 +37,105 @@ Language const * latex_language = &latex_lang;
 Language const * reset_language = 0;
 
 
+bool Language::readLanguage(Lexer & lex)
+{
+	enum LanguageTags {
+		LA_BABELNAME = 1,
+		LA_ENCODING,
+		LA_END,
+		LA_GUINAME,
+		LA_INTERNAL_ENC,
+		LA_LANG_CODE,
+		LA_LANG_VARIETY,
+		LA_POSTBABELPREAMBLE,
+		LA_RTL
+	};
+
+	// Keep these sorted alphabetically!
+	LexerKeyword languageTags[] = {
+		{ "babelname",            LA_BABELNAME },
+		{ "encoding",             LA_ENCODING },
+		{ "end",                  LA_END },
+		{ "guiname",              LA_GUINAME },
+		{ "internalencoding",     LA_INTERNAL_ENC },
+		{ "langcode",             LA_LANG_CODE },
+		{ "langvariety",          LA_LANG_VARIETY },
+		{ "postbabelpreamble",    LA_POSTBABELPREAMBLE },
+		{ "rtl",                  LA_RTL }
+	};
+
+	bool error = false;
+	bool finished = false;
+	lex.pushTable(languageTags);
+	// parse style section
+	while (!finished && lex.isOK() && !error) {
+		int le = lex.lex();
+		// See comment in LyXRC.cpp.
+		switch (le) {
+		case Lexer::LEX_FEOF:
+			continue;
+
+		case Lexer::LEX_UNDEF: // parse error
+			lex.printError("Unknown language tag `$$Token'");
+			error = true;
+			continue;
+
+		default: 
+			break;
+		}
+		switch (static_cast<LanguageTags>(le)) {
+		case LA_END: // end of structure
+			finished = true;
+			break;
+		case LA_BABELNAME:
+			lex >> babel_;
+			break;
+		case LA_ENCODING:
+			lex >> encodingStr_;
+			break;
+		case LA_GUINAME:
+			lex >> display_;
+			break;
+		case LA_INTERNAL_ENC:
+			lex >> internal_enc_;
+			break;
+		case LA_LANG_CODE:
+			lex >> code_;
+			break;
+		case LA_LANG_VARIETY:
+			lex >> variety_;
+			break;
+		case LA_POSTBABELPREAMBLE:
+			babel_postsettings_ =
+				lex.getLongString("EndPostBabelPreamble");
+			break;
+		case LA_RTL:
+			lex >> rightToLeft_;
+			break;
+		}
+	}
+	lex.popTable();
+	return finished && !error;
+}
+
+
 bool Language::read(Lexer & lex)
 {
 	encoding_ = 0;
-	lex >> lang_;
-	lex >> babel_;
-	lex >> display_;
-	lex >> rightToLeft_;
-	lex >> encodingStr_;
-	lex >> codeStr_;
-	lex >> latex_options_;
-	if (!lex)
-		return false;
+	internal_enc_ = 0;
+	rightToLeft_ = 0;
 
-	variety_ = split(codeStr_, code_, '-');
+	if (!lex.next()) {
+		lex.printError("No name given for language: `$$Token'.");
+		return false;
+	}
+
+	lang_ = lex.getString();
+	LYXERR(Debug::INFO, "Reading language " << lang_);
+	if (!readLanguage(lex)) {
+		LYXERR0("Error parsing language `" << lang_ << '\'');
+		return false;
+	}
 
 	encoding_ = encodings.fromLyXName(encodingStr_);
 	if (!encoding_ && !encodingStr_.empty()) {
@@ -60,28 +145,28 @@ bool Language::read(Lexer & lex)
 	return true;
 }
 
-bool Language::internalFontEncoding() const
-{
-	// FIXME: list incomplete
-	// FIXME: instead of hardcoding, this
-	// should go to the languages file
-	return lang_ == "hebrew"
-		|| lang_ == "greek"
-		|| lang_ == "polutonikogreek";
-}
-
-
 void Languages::read(FileName const & filename)
 {
 	Lexer lex;
 	lex.setFile(filename);
 	lex.setContext("Languages::read");
-	while (1) {
+	while (lex.isOK()) {
+		int le = lex.lex();
+		switch (le) {
+		case Lexer::LEX_FEOF:
+			continue;
+
+		default:
+			break;
+		}
+		if (lex.getString() != "Language") {
+			lex.printError("Unknown Language tag `$$Token'");
+			continue;
+		}
 		Language l;
 		l.read(lex);
 		if (!lex)
 			break;
-		LYXERR(Debug::INFO, "Reading language " << l.lang());
 		if (l.lang() == "latex")
 			latex_lang = l;
 		else if (l.lang() == "ignore")

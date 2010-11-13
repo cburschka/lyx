@@ -212,6 +212,11 @@ Known issues in version 2.0.0
 Caveats when upgrading from earlier versions to 2.0.x
 -------------------------------------------------------
 
+- The syntax of the languages file has been changed. If you use a modified
+  languages file, you will need to adapt it to the new syntax, as LyX 2.0
+  is not able to read old languages file anymore.
+  Please refer to the beginning of the languages file for an explanation
+  of the new syntax.
 
 
 

@@ -53,7 +53,7 @@ public:
 	/// The macros definitions needed by the document
 	docstring const getMacros() const;
 	///
-	std::string const getBabelOptions() const;
+	std::string const getBabelPostsettings() const;
 	/// The definitions needed by the document's textclass
 	docstring const getTClassPreamble() const;
 	/// The language dependent definitions needed by the document's textclass

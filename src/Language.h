@@ -52,11 +52,13 @@ public:
 	/// set variety (needed for rc.spellchecker_alt_lang)
 	void setVariety(std::string const v) { variety_ = v; }
 	///
-	std::string const & latex_options() const { return latex_options_; }
+	std::string const & babel_postsettings() const { return babel_postsettings_; }
 	///
-	bool internalFontEncoding() const;
+	bool internalFontEncoding() const { return internal_enc_; }
 	///
 	bool read(Lexer & lex);
+	///
+	bool readLanguage(Lexer & lex);
 	// for the use in std::map
 	friend bool operator<(Language const & p, Language const & q);
 private:
@@ -73,13 +75,13 @@ private:
 	///
 	Encoding const * encoding_;
 	///
-	std::string codeStr_;
-	///
 	std::string code_;
 	///
 	std::string variety_;
 	///
-	std::string latex_options_;
+	std::string babel_postsettings_;
+	///
+	bool internal_enc_;
 };
 
 

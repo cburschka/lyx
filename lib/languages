@@ -1,89 +1,604 @@
-# name      babel name	GUI name	RTL?   encoding	  code	latex options
-# LyX internal languages
-ignore      ignore	"Ignore"	false  iso8859-1  ignore	 ""
-latex       ""		"LaTeX"		false  iso8859-1  latex	 ""
-# Real languages now
-afrikaans   afrikaans	"Afrikaans"	false  iso8859-15 af_ZA	 ""
-albanian    albanian	"Albanian"	false  iso8859-2  sq_AL	 ""
-american    american	"English (USA)"	false  iso8859-15 en_US	 ""
-# FIXME: dummy babel language for arabic_arabtex to be able to switch the language the way of the ArabTeX-package
-arabic_arabtex arabtex	"Arabic (ArabTeX)" true  cp1256   ar_SA	 ""
-arabic_arabi arabic	"Arabic (Arabi)"   true  cp1256   ar_SA	 ""
-armenian    ""		"Armenian"	false  armscii8   hy_AM	 ""
-austrian    austrian	"German (Austria, old spelling)"	false  iso8859-15 de_AT	 ""
-naustrian   naustrian	"German (Austria)"	false  iso8859-15  de_AT	 ""
-bahasa      bahasa	"Indonesian"	false  iso8859-15 id_ID	 ""
-bahasam     bahasam	"Malay"		false  iso8859-15 ms_MY	 ""
-basque      basque	"Basque"	false  iso8859-15 eu_ES	 ""
-belarusian  belarusian	"Belarusian"	false  cp1251     be_BY	 ""
-brazilian   brazil	"Portuguese (Brazil)"	false  iso8859-15  pt_BR	 ""
-breton      breton	"Breton"	false  iso8859-15 br_FR	 ""
-british     british	"English (UK)"	false  iso8859-15 en_GB	 ""
-bulgarian   bulgarian	"Bulgarian"	false  cp1251     bg_BG	 ""
-canadian    canadian	"English (Canada)"	false  iso8859-15 en_CA	 ""
-canadien    canadien	"French (Canada)"	false  iso8859-15  fr_CA	 ""
-catalan     catalan 	"Catalan"	false  iso8859-15 ca_ES	 ""
-chinese-simplified ""	"Chinese (simplified)"	false  euc-cn zh_CN	 ""
-chinese-traditional ""	"Chinese (traditional)"	false  utf8-cjk zh_CN	 ""
-croatian    croatian	"Croatian"	false  iso8859-2  hr_HR	 ""
-czech       czech	"Czech"		false  iso8859-2  cs_CZ	 ""
-danish      danish	"Danish"	false  iso8859-15 da_DK	 ""
-dutch       dutch	"Dutch"		false  iso8859-15 nl_NL	 ""
-english     english	"English"	false  iso8859-15 en_US	 ""
+########################################################################
+#
+# Languages supported by LyX.
+#
+# Syntax:
+#
+# Language <lyxname>
+#	GuiName            "<Gui Name>"
+#	BabelName          <babelname>
+#	Encoding           <encoding>
+#	InternalEncoding   <true|false>
+#	RTL                <true|false>
+#	LangCode           <language_code>
+#	LangVariety        <language_variety>
+#	PostBabelPreamble
+#	  <extra latex code inserted after babel>
+#	EndPostBabelPreamble
+# End
+#
+# Omitted elements will be treated as empty
+# (omitted RTL and InternalEncoding as "false")
+#
+########################################################################
+
+#
+# LyX-internal languages
+#
+
+Language ignore
+	GuiName         "Ignore"
+	BabelName       ignore
+	Encoding        iso8859-1
+	LangCode        ignore
+End
+
+Language latex
+	GuiName         "LaTeX"
+	Encoding        iso8859-1
+	LangCode        latex
+End
+
+#
+# Real languages
+#
+
+Language afrikaans
+	GuiName         "Afrikaans"
+	BabelName       afrikaans
+	Encoding        iso8859-15
+	LangCode        af_ZA
+End
+
+Language albanian
+	GuiName         "Albanian"
+	BabelName       albanian
+	Encoding        iso8859-2
+	LangCode        sq_AL
+End
+
+Language american
+	GuiName         "English (USA)"
+	BabelName       american
+	Encoding        iso8859-15
+	LangCode        en_US
+End
+
+# FIXME: dummy babel language for arabic_arabtex to be able
+# to switch the language the way of the ArabTeX-package
+Language arabic_arabtex
+	GuiName         "Arabic (ArabTeX)"
+	BabelName       arabtex
+	Encoding        cp1256
+	RTL             true
+	LangCode        ar_SA
+End
+
+Language arabic_arabi
+	GuiName         "Arabic (Arabi)"
+	BabelName       arabic
+	Encoding        cp1256
+	RTL             true
+	LangCode        ar_SA
+End
+
+Language armenian
+	GuiName         "Armenian"
+	Encoding        armscii8
+	LangCode        hy_AM
+End
+
+Language austrian
+	GuiName         "German (Austria, old spelling)"
+	BabelName       austrian
+	Encoding        iso8859-15
+	LangCode        de_AT
+End
+
+Language naustrian
+	GuiName         "German (Austria)"
+	BabelName       naustrian
+	Encoding        iso8859-15
+	LangCode        de_AT
+End
+
+Language bahasa
+	GuiName         "Indonesian"
+	BabelName       bahasa
+	Encoding        iso8859-15
+	LangCode        id_ID
+End
+
+Language bahasam
+	GuiName         "Malay"
+	BabelName       bahasam
+	Encoding        iso8859-15
+	LangCode        ms_MY
+End
+
+Language basque
+	GuiName         "Basque"
+	BabelName       basque
+	Encoding        iso8859-15
+	LangCode        eu_ES
+End
+
+Language belarusian
+	GuiName         "Belarusian"
+	BabelName       belarusian
+	Encoding        cp1251
+	LangCode        be_BY
+End
+
+Language brazilian
+	GuiName         "Portuguese (Brazil)"
+	BabelName       brazil
+	Encoding        iso8859-15
+	LangCode        pt_BR
+End
+
+Language breton
+	GuiName         "Breton"
+	BabelName       breton
+	Encoding        iso8859-15
+	LangCode        br_FR
+End
+
+Language british
+	GuiName         "English (UK)"
+	BabelName       british
+	Encoding        iso8859-15
+	LangCode        en_GB
+End
+
+Language bulgarian
+	GuiName         "Bulgarian"
+	BabelName       bulgarian
+	Encoding        cp1251
+	LangCode        bg_BG
+End
+
+Language canadian
+	GuiName         "English (Canada)"
+	BabelName       canadian
+	Encoding        iso8859-15
+	LangCode        en_CA
+End
+
+Language canadien
+	GuiName         "French (Canada)"
+	BabelName       canadien
+	Encoding        iso8859-15
+	LangCode        fr_CA
+End
+
+Language catalan
+	GuiName         "Catalan"
+	BabelName       catalan
+	Encoding        iso8859-15
+	LangCode        ca_ES
+End
+
+Language chinese-simplified
+	GuiName         "Chinese (simplified)"
+	Encoding        euc-cn
+	LangCode        zh_CN
+End
+
+Language chinese-traditional
+	GuiName         "Chinese (traditional)"
+	Encoding        utf8-cjk
+	LangCode        zh_CN
+End
+
+Language croatian
+	GuiName         "Croatian"
+	BabelName       croatian
+	Encoding        iso8859-2
+	LangCode        hr_HR
+End
+
+Language czech
+	GuiName         "Czech"
+	BabelName       czech
+	Encoding        iso8859-2
+	LangCode        cs_CZ
+End
+
+Language danish
+	GuiName         "Danish"
+	BabelName       danish
+	Encoding        iso8859-15
+	LangCode        da_DK
+End
+
+Language dutch
+	GuiName         "Dutch"
+	BabelName       dutch
+	Encoding        iso8859-15
+	LangCode        nl_NL
+End
+
+Language english
+	GuiName         "English"
+	BabelName       english
+	Encoding        iso8859-15
+	LangCode        en_US
+End
+
 # Esperanto has no country code because it is an auxiliary language
-esperanto   esperanto	"Esperanto"	false  iso8859-3  eo	 ""
-estonian    estonian	"Estonian"	false  iso8859-15 et_EE	 ""
-# the definitions are only used due to bugs in the arabi-package - remove them if they become unnecessary!
-farsi       farsi	"Farsi"		true   utf8       fa_IR	 "\DeclareTextSymbol{\guillemotright}{LFE}{62}\DeclareTextSymbol{\guillemotleft}{LFE}{60}"
-finnish     finnish	"Finnish"	false  iso8859-15 fi_FI	 ""
+Language esperanto
+	GuiName         "Esperanto"
+	BabelName       esperanto
+	Encoding        iso8859-3
+	LangCode        eo
+End
+
+Language estonian
+	GuiName         "Estonian"
+	BabelName       estonian
+	Encoding        iso8859-15
+	LangCode        et_EE
+End
+
+# the preamble definitions are only used due to bugs in the
+# arabi-package -- remove them if they become unnecessary!
+Language farsi
+	GuiName         "Farsi"
+	BabelName       farsi
+	Encoding        utf8
+	RTL             true
+	LangCode        fa_IR
+	PostBabelPreamble
+	  \DeclareTextSymbol{\guillemotright}{LFE}{62}
+	  \DeclareTextSymbol{\guillemotleft}{LFE}{60}
+	EndPostBabelPreamble
+End
+
+Language finnish
+	GuiName         "Finnish"
+	BabelName       finnish
+	Encoding        iso8859-15
+	LangCode        fi_FI
+End
+
 # We redefine \og and \fg (guillemets) for older french language definitions
-french      french 	"French"	false  iso8859-15 fr_FR	 "\addto\extrasfrench{\providecommand{\og}{\leavevmode\flqq~}\providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}}"
-galician    galician	"Galician"	false  iso8859-15 gl_ES	 ""
-german      german	"German (old spelling)"	false  iso8859-15 de-alt	 ""
-ngerman     ngerman	"German"	false  iso8859-15 de_DE	 ""
-german-ch   ngerman	"German (Switzerland)"	false  iso8859-15 de_CH	 ""
-greek       greek	"Greek"		false  iso8859-7  el_GR	 ""
-polutonikogreek polutonikogreek	"Greek (polytonic)"	false  iso8859-7  el_GR	 ""
-hebrew      hebrew	"Hebrew"	true   cp1255     he_IL	 ""
+Language french
+	GuiName         "French"
+	BabelName       french
+	Encoding        iso8859-15
+	LangCode        fr_FR
+	PostBabelPreamble
+	  \addto\extrasfrench{%
+	       \providecommand{\og}{\leavevmode\flqq~}
+	       \providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}
+	  }
+	EndPostBabelPreamble
+End
+
+Language galician
+	GuiName         "Galician"
+	BabelName       galician
+	Encoding        iso8859-15
+	LangCode        gl_ES
+End
+
+# german does not use a country code (due to the variety)
+Language german
+	GuiName         "German (old spelling)"
+	BabelName       german
+	Encoding        iso8859-15
+	LangCode        de
+	LangVariety     alt
+End
+
+Language ngerman
+	GuiName         "German"
+	BabelName       ngerman
+	Encoding        iso8859-15
+	LangCode        de_DE
+End
+
+Language german-ch
+	GuiName         "German (Switzerland)"
+	BabelName       ngerman
+	Encoding        iso8859-15
+	LangCode        de_CH
+End
+
+Language greek
+	GuiName          "Greek"
+	BabelName        greek
+	Encoding         iso8859-7
+	InternalEncoding true
+	LangCode         el_GR
+End
+
+Language polutonikogreek
+	GuiName          "Greek (polytonic)"
+	BabelName        polutonikogreek
+	Encoding         iso8859-7
+	InternalEncoding true
+	LangCode         el_GR
+End
+
+Language hebrew
+	GuiName          "Hebrew"
+	BabelName        hebrew
+	Encoding         cp1255
+	InternalEncoding true
+	RTL              true
+	LangCode         he_IL
+End
+
 # "hungarian" is a synonym for the "magyar" babel language option
-# "hungarian" might be used for special purposes, see http://www.math.bme.hu/latex/magyar_pre_tug2004.pdf
-#hungarian   hungarian	"Hungarian"	false  iso8859-2  hu_HU	 ""
-icelandic   icelandic	"Icelandic"	false  iso8859-15 is_IS	 ""
+# "hungarian" might be used for special purposes,
+# see http://www.math.bme.hu/latex/magyar_pre_tug2004.pdf
+#Language hungarian
+#	GuiName         "Hungarian"
+#	BabelName       hungarian
+#	Encoding        iso8859-2
+##	LangCode        hu_HU
+#End
+
+Language icelandic
+	GuiName         "Icelandic"
+	BabelName       icelandic
+	Encoding        iso8859-15
+	LangCode        is_IS
+End
+
 # Interlingua has no country code because it is an auxiliary language
-interlingua   interlingua	"Interlingua"	false  iso8859-15 ia	 ""
-irish       irish	"Irish"		false  iso8859-15 ga_IE	 ""
-italian     italian	"Italian"	false  iso8859-15 it_IT	 ""
-japanese    japanese	"Japanese"	false  jis-plain     ja_JP	 ""
-japanese-cjk ""		"Japanese (CJK)"	false  euc-jp     ja_JP	 ""
-kazakh	    kazakh	"Kazakh"	false  pt154      kk_KZ	 ""
+Language interlingua
+	GuiName         "Interlingua"
+	BabelName       interlingua
+	Encoding        iso8859-15
+	LangCode        ia
+End
+
+Language irish
+	GuiName         "Irish"
+	BabelName       irish
+	Encoding        iso8859-15
+	LangCode        ga_IE
+End
+
+Language italian
+	GuiName         "Italian"
+	BabelName       italian
+	Encoding        iso8859-15
+	LangCode        it_IT
+End
+
+Language japanese
+	GuiName         "Japanese"
+	BabelName       japanese
+	Encoding        jis-plain
+	LangCode        ja_JP
+End
+
+Language japanese-cjk
+	GuiName         "Japanese (CJK)"
+	Encoding        euc-jp
+	LangCode        ja_JP
+End
+
+Language kazakh
+	GuiName         "Kazakh"
+	BabelName       kazakh
+	Encoding        pt154
+	LangCode        kk_KZ
+End
+
 # there is no country code for Korean because ko_KR is the same as ko_KI
-korean      ""		"Korean"	false  euc-kr     ko	 ""
+Language korean
+	GuiName         "Korean"
+	Encoding        euc-kr
+	LangCode        ko
+End
+
 # there is no country code for Latin because it is a dead language
-latin       latin	"Latin"		false  iso8859-15 la	 ""
-latvian     latvian	"Latvian"	false  iso8859-4  lv_LV	 ""
-lithuanian  lithuanian	"Lithuanian"	false  iso8859-13 lt_LT	 ""
-lowersorbian    lowersorbian	"Lower Sorbian"	false  iso8859-2  dsb_DE	 ""
-magyar      magyar	"Hungarian"	false  iso8859-2  hu_HU	 ""
-mongolian   mongolian	"Mongolian"	false  utf8       mn_MN	 ""
-norsk       norsk	"Norsk"		false  iso8859-15 nb_NO	 ""
-nynorsk     nynorsk	"Nynorsk"	false  iso8859-15 nn_NO	 ""
-polish      polish	"Polish"	false  iso8859-2  pl_PL	 ""
-portuguese  portuges	"Portuguese"	false  iso8859-15 pt_PT	 ""
-romanian    romanian	"Romanian"	false  iso8859-2  ro_RO	 ""
-russian     russian	"Russian"	false  koi8       ru_RU	 ""
-samin       samin	"North Sami"	false  iso8859-15 se_NO	 ""
-scottish    scottish	"Scottish"	false  iso8859-15 gd_GB	 ""
-serbian     serbian	"Serbian"	false  iso8859-5  sr_RS	 ""
-serbian-latin     serbian	"Serbian (Latin)"	false  iso8859-2  sr_RS	 ""
-slovak      slovak	"Slovak"	false  iso8859-2  sk_SK	 ""
-slovene     slovene	"Slovene"	false  iso8859-2  sl_SI	 ""
-spanish     spanish	"Spanish"	false  iso8859-15 es_ES	 "\addto\shorthandsspanish{\spanishdeactivate{~<>}}"
-spanish-mexico     spanish	"Spanish (Mexico)"	false  iso8859-15 es_MX	 "\addto\shorthandsspanish{\spanishdeactivate{~<>.}}"
-swedish     swedish	"Swedish"	false  iso8859-15 sv_SE	 ""
-thai        thai	"Thai"		false  tis620-0   th_TH	 "\usepackage{thswitch}"
-turkish     turkish	"Turkish"	false  iso8859-9  tr_TR	 ""
-turkmen     turkmen	"Turkmen"	false  utf8       tk_TM	 ""
-ukrainian   ukrainian	"Ukrainian"	false  koi8-u     uk_UA	 ""
-uppersorbian    uppersorbian	"Upper Sorbian"	false  iso8859-2  hsb_DE	 ""
-vietnamese  vietnam	"Vietnamese"	false  utf8       vi_VN	 ""
-welsh       welsh	"Welsh"		false  iso8859-15 cy_GB	 ""
+Language latin
+	GuiName         "Latin"
+	BabelName       latin
+	Encoding        iso8859-15
+	LangCode        la
+End
+
+Language latvian
+	GuiName         "Latvian"
+	BabelName       latvian
+	Encoding        iso8859-4
+	LangCode        lv_LV
+End
+
+Language lithuanian
+	GuiName         "Lithuanian"
+	BabelName       lithuanian
+	Encoding        iso8859-13
+	LangCode        lt_LT
+End
+
+Language lowersorbian
+	GuiName         "Lower Sorbian"
+	BabelName       lowersorbian
+	Encoding        iso8859-2
+	LangCode        dsb_DE
+End
+
+Language magyar
+	GuiName         "Hungarian"
+	BabelName       magyar
+	Encoding        iso8859-2
+	LangCode        hu_HU
+End
+
+Language mongolian
+	GuiName         "Mongolian"
+	BabelName       mongolian
+	Encoding        utf8
+	LangCode        mn_MN
+End
+
+Language norsk
+	GuiName         "Norsk"
+	BabelName       norsk
+	Encoding        iso8859-15
+	LangCode        nb_NO
+End
+
+Language nynorsk
+	GuiName         "Nynorsk"
+	BabelName       nynorsk
+	Encoding        iso8859-15
+	LangCode        nn_NO
+End
+
+Language polish
+	GuiName         "Polish"
+	BabelName       polish
+	Encoding        iso8859-2
+	LangCode        pl_PL
+End
+
+Language portuguese
+	GuiName         "Portuguese"
+	BabelName       portuges
+	Encoding        iso8859-15
+	LangCode        pt_PT
+End
+
+Language romanian
+	GuiName         "Romanian"
+	BabelName       romanian
+	Encoding        iso8859-2
+	LangCode        ro_RO
+End
+
+Language russian
+	GuiName         "Russian"
+	BabelName       russian
+	Encoding        koi8
+	LangCode        ru_RU
+End
+
+Language samin
+	GuiName         "North Sami"
+	BabelName       samin
+	Encoding        iso8859-15
+	LangCode        se_NO
+End
+
+Language scottish
+	GuiName         "Scottish"
+	BabelName       scottish
+	Encoding        iso8859-15
+	LangCode        gd_GB
+End
+
+Language serbian
+	GuiName         "Serbian"
+	BabelName       serbian
+	Encoding        iso8859-5
+	LangCode        sr_RS
+End
+
+Language serbian-latin
+	GuiName         "Serbian (Latin)"
+	BabelName       serbian
+	Encoding        iso8859-2
+	LangCode        sr_RS
+End
+
+Language slovak
+	GuiName         "Slovak"
+	BabelName       slovak
+	Encoding        iso8859-2
+	LangCode        sk_SK
+End
+
+Language slovene
+	GuiName         "Slovene"
+	BabelName       slovene
+	Encoding        iso8859-2
+	LangCode        sl_SI
+End
+
+Language spanish
+	GuiName         "Spanish"
+	BabelName       spanish
+	Encoding        iso8859-15
+	LangCode        es_ES
+	PostBabelPreamble
+	  \addto\shorthandsspanish{\spanishdeactivate{~<>}}
+	EndPostBabelPreamble
+End
+
+Language spanish-mexico
+	GuiName         "Spanish (Mexico)"
+	BabelName       spanish
+	Encoding        iso8859-15
+	LangCode        es_MX
+	PostBabelPreamble
+	  \addto\shorthandsspanish{\spanishdeactivate{~<>.}}
+	EndPostBabelPreamble
+End
+
+Language swedish
+	GuiName         "Swedish"
+	BabelName       swedish
+	Encoding        iso8859-15
+	LangCode        sv_SE
+End
+
+Language thai
+	GuiName         "Thai"
+	BabelName       thai
+	Encoding        tis620-0
+	LangCode        th_TH
+	PostBabelPreamble
+	  \usepackage{thswitch}
+	EndPostBabelPreamble
+End
+
+Language turkish
+	GuiName         "Turkish"
+	BabelName       turkish
+	Encoding        iso8859-9
+	LangCode        tr_TR
+End
+
+Language turkmen
+	GuiName         "Turkmen"
+	BabelName       turkmen
+	Encoding        utf8
+	LangCode        tk_TM
+End
+
+Language ukrainian
+	GuiName         "Ukrainian"
+	BabelName       ukrainian
+	Encoding        koi8-u
+	LangCode        uk_UA
+End
+
+Language uppersorbian
+	GuiName         "Upper Sorbian"
+	BabelName       uppersorbian
+	Encoding        iso8859-2
+	LangCode        hsb_DE
+End
+
+Language vietnamese
+	GuiName         "Vietnamese"
+	BabelName       vietnam
+	Encoding        utf8
+	LangCode        vi_VN
+End
+
+Language welsh
+	GuiName         "Welsh"
+	BabelName       welsh
+	Encoding        iso8859-15
+	LangCode        cy_GB
+End

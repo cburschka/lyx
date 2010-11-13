@@ -230,30 +230,23 @@ def qt4_l10n(input_files, output, base):
 
 
 def languages_l10n(input_files, output, base):
-    '''Generate pot file from lib/language'''
-    output = open(output, 'w')
-    # assuming only one language file
-    reg = re.compile('[\w-]+\s+[\w"]+\s+"([\w \-\(\),]+)"\s+(true|false)\s+[\w-]+\s+[\w\-]+\s+"[^"]*"')
-    input = open(input_files[0])
-    for lineno, line in enumerate(input.readlines()):
-        if line[0] == '#':
-            continue
-        # From:
-        #   afrikaans   afrikaans	"Afrikaans"	false  iso8859-15 af_ZA	 ""
-        # To:
-        #   #: lib/languages:2
-        #   msgid "Afrikaans"
-        #   msgstr ""
-        if reg.match(line):
-            print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
-                (relativePath(input_files[0], base), lineno+1, reg.match(line).groups()[0])
-        else:
-            print "Error: Unable to handle line:"
-            print line
-            # No need to abort if the parsing fails (e.g. "ignore" language has no encoding)
-            # sys.exit(1)
-    input.close()
-    output.close()
+    '''Generate pot file from lib/languages'''
+    out = open(output, 'w')
+    GuiName = re.compile(r'^[^#]*GuiName\s+(.*)')
+    
+    for src in input_files:
+        descStartLine = -1
+        descLines = []
+        lineno = 0
+        for line in open(src).readlines():
+            lineno += 1
+            res = GuiName.search(line)
+            if res != None:
+                string = res.group(1)
+                writeString(out, src, base, lineno, string)
+                continue
+               
+    out.close()
 
 
 def external_l10n(input_files, output, base):

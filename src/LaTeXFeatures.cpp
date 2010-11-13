@@ -947,17 +947,17 @@ docstring const LaTeXFeatures::getMacros() const
 }
 
 
-string const LaTeXFeatures::getBabelOptions() const
+string const LaTeXFeatures::getBabelPostsettings() const
 {
 	ostringstream tmp;
 
 	LanguageList::const_iterator it  = UsedLanguages_.begin();
 	LanguageList::const_iterator end =  UsedLanguages_.end();
 	for (; it != end; ++it)
-		if (!(*it)->latex_options().empty())
-			tmp << (*it)->latex_options() << '\n';
-	if (!params_.language->latex_options().empty())
-		tmp << params_.language->latex_options() << '\n';
+		if (!(*it)->babel_postsettings().empty())
+			tmp << (*it)->babel_postsettings() << '\n';
+	if (!params_.language->babel_postsettings().empty())
+		tmp << params_.language->babel_postsettings() << '\n';
 
 	return tmp.str();
 }
