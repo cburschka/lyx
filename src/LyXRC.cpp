@@ -179,6 +179,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\set_color", LyXRC::RC_SET_COLOR },
 	{ "\\show_banner", LyXRC::RC_SHOW_BANNER },
 	{ "\\single_close_tab_button", LyXRC::RC_SINGLE_CLOSE_TAB_BUTTON },
+	{ "\\single_instance", LyXRC::RC_SINGLE_INSTANCE },
 	{ "\\sort_layouts", LyXRC::RC_SORT_LAYOUTS },
 	{ "\\spell_command", LyXRC::RC_SPELL_COMMAND },
 	{ "\\spellcheck_continuously", LyXRC::RC_SPELLCHECK_CONTINUOUSLY },
@@ -341,6 +342,7 @@ void LyXRC::setDefaults()
 	user_email = to_utf8(support::user_email());
 	open_buffers_in_tabs = true;
 	single_close_tab_button = false;
+	single_instance = true;
 	forward_search_dvi = string();
 	forward_search_pdf = string();
 	export_overwrite = NO_FILES;
@@ -1185,6 +1187,11 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_SINGLE_CLOSE_TAB_BUTTON:
 			lexrc >> single_close_tab_button;
 			break;
+		case RC_SINGLE_INSTANCE:
+			lexrc >> single_instance;
+			if (run_mode == PREFERRED)
+				run_mode = single_instance ? USE_REMOTE : NEW_INSTANCE;
+			break;
 		case RC_FORWARD_SEARCH_DVI:
 			if (lexrc.next(true)) 
 				forward_search_dvi = lexrc.getString();
@@ -1947,6 +1954,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    single_close_tab_button != system_lyxrc.single_close_tab_button) {
 			os << "\\single_close_tab_button "
 			   << convert<string>(single_close_tab_button)
+			   << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_SINGLE_INSTANCE:
+		if (ignore_system_lyxrc ||
+		    single_instance != system_lyxrc.single_instance) {
+			os << "\\single_instance "
+			   << convert<string>(single_instance)
 			   << '\n';
 		}
 		if (tag != RC_LAST)
@@ -2968,6 +2984,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_USE_SPELL_LIB:
 	case LyXRC::RC_VIEWDVI_PAPEROPTION:
 	case LyXRC::RC_SINGLE_CLOSE_TAB_BUTTON:
+	case LyXRC::RC_SINGLE_INSTANCE:
 	case LyXRC::RC_SORT_LAYOUTS:
 	case LyXRC::RC_FULL_SCREEN_LIMIT:
 	case LyXRC::RC_FULL_SCREEN_SCROLLBAR:

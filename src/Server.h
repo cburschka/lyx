@@ -101,6 +101,9 @@ public:
 	void read_ready(DWORD);
 #endif
 
+	/// Tell whether we asked another instance of LyX to open the files
+	bool deferredLoading() { return deferred_loading_; }
+
 private:
 	/// the filename of the in pipe
 	std::string const inPipeName() const;
@@ -113,6 +116,9 @@ private:
 
 	/// Close pipes
 	void closeConnection();
+
+	/// Load files in another running instance of LyX
+	bool loadFilesInOtherInstance();
 
 #ifndef _WIN32
 	/// start a pipe
@@ -178,6 +184,9 @@ private:
 
 	/// The client callback function
 	ClientCallbackfct clientcb_;
+
+	/// Did we defer loading of files to another instance?
+	bool deferred_loading_;
 };
 
 
@@ -197,6 +206,8 @@ public:
 	~Server();
 	///
 	void notifyClient(std::string const &);
+	///
+	bool deferredLoadingToOtherInstance() { return pipes_.deferredLoading(); }
 
 	/// whilst crashing etc.
 	void emergencyCleanup() { pipes_.emergencyCleanup(); }
@@ -220,6 +231,9 @@ private:
 
 /// Implementation is in LyX.cpp
 Server & theServer();
+
+/// Implementation is in LyX.cpp
+extern std::vector<std::string> & theFilesToLoad();
 
 
 } // namespace lyx

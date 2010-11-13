@@ -90,6 +90,13 @@ namespace os = support::os;
 bool use_gui = true;
 
 
+// We default to open documents in an already running instance, provided that
+// the lyxpipe has been setup. This can be overridden either on the command
+// line or through preference settings.
+
+RunMode run_mode = PREFERRED;
+
+
 // Tell what files can be silently overwritten during batch export.
 // Possible values are: NO_FILES, MAIN_FILE, ALL_FILES, UNSPECIFIED.
 // Unless specified on command line (through the -f switch) or through the
@@ -366,12 +373,19 @@ int LyX::exec(int & argc, char * argv[])
 		return exit_status;
 	}
 
+	// If not otherwise specified by a command line option or
+	// by preferences, we default to reuse a running instance.
+	if (run_mode == PREFERRED)
+		run_mode = USE_REMOTE;
+
 	// FIXME
 	/* Create a CoreApplication class that will provide the main event loop
 	* and the socket callback registering. With Qt4, only QtCore
 	* library would be needed.
 	* When this is done, a server_mode could be created and the following two
 	* line would be moved out from here.
+	* However, note that the first of the two lines below triggers the
+	* "single instance" behavior, which should occur right at this point.
 	*/
 	// Note: socket callback must be registered after init(argc, argv)
 	// such that package().temp_dir() is properly initialized.
@@ -380,7 +394,15 @@ int LyX::exec(int & argc, char * argv[])
 			FileName(package().temp_dir().absFileName() + "/lyxsocket")));
 
 	// Start the real execution loop.
-	exit_status = pimpl_->application_->exec();
+	if (!theServer().deferredLoadingToOtherInstance())
+		exit_status = pimpl_->application_->exec();
+	else if (!pimpl_->files_to_load_.empty()) {
+		vector<string>::const_iterator it = pimpl_->files_to_load_.begin();
+		vector<string>::const_iterator end = pimpl_->files_to_load_.end();
+		lyxerr << _("The following files could not be loaded:") << endl;
+		for (; it != end; ++it)
+			lyxerr << *it << endl;
+	}
 
 	prepareExit();
 
@@ -1040,8 +1062,13 @@ int parse_help(string const &, string const &, string &)
 		  "                  specifying whether all files, main file only, or no files,\n"
 		  "                  respectively, are to be overwritten during a batch export.\n"
 		  "                  Anything else is equivalent to `all', but is not consumed.\n"
-		  "\t-batch          execute commands without launching GUI and exit.\n"
-		  "\t-version        summarize version and build info\n"
+		  "\t-n [--no-remote]\n"
+		  "                  open documents in a new instance\n"
+		  "\t-r [--remote]\n"
+		  "                  open documents in an already running instance\n"
+		  "                  (a working lyxpipe is needed)\n"
+		  "\t-batch    execute commands without launching GUI and exit.\n"
+		  "\t-version  summarize version and build info\n"
 			       "Check the LyX man page for more details.")) << endl;
 	exit(0);
 	return 0;
@@ -1142,6 +1169,20 @@ int parse_batch(string const &, string const &, string &)
 }
 
 
+int parse_noremote(string const &, string const &, string &)
+{
+	run_mode = NEW_INSTANCE;
+	return 0;
+}
+
+
+int parse_remote(string const &, string const &, string &)
+{
+	run_mode = USE_REMOTE;
+	return 0;
+}
+
+
 int parse_force(string const & arg, string const &, string &)
 {
 	if (arg == "all") {
@@ -1183,6 +1224,10 @@ void LyX::easyParse(int & argc, char * argv[])
 	cmdmap["-batch"] = parse_batch;
 	cmdmap["-f"] = parse_force;
 	cmdmap["--force-overwrite"] = parse_force;
+	cmdmap["-n"] = parse_noremote;
+	cmdmap["--no-remote"] = parse_noremote;
+	cmdmap["-r"] = parse_remote;
+	cmdmap["--remote"] = parse_remote;
 
 	for (int i = 1; i < argc; ++i) {
 		map<string, cmd_helper>::const_iterator it
@@ -1233,6 +1278,13 @@ void dispatch(FuncRequest const & action, DispatchResult & dr)
 {
 	LASSERT(theApp(), /**/);
 	return theApp()->dispatch(action, dr);
+}
+
+
+vector<string> & theFilesToLoad()
+{
+	LASSERT(singleton_, /**/);
+	return singleton_->pimpl_->files_to_load_;
 }
 
 

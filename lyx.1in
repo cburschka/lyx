@@ -83,6 +83,15 @@ else other than "\fBall\fR", "\fBmain\fR" or "\fBnone\fR", the behavior is as
 if "\fBall\fR" was specified, but what follows is left on the command line for
 further processing.
 .TP
+\fB \-n [\-\-no\-remote]\fP
+open documents passed as arguments in a new instance, even if another
+instance of LyX is already running.
+.TP
+\fB \-r [\-\-remote]\fP
+by using the lyxpipe, ask an already running instance of LyX to open the
+documents passed as arguments and then exit. If the lyxpipe is not set up or
+is not working, a new instance is created and execution continues normally.
+.TP
 .BI -batch
 causes LyX to run the given commands without opening a GUI window.
 Thus, something like:

@@ -16,6 +16,8 @@
 
 #include "support/strfwd.h"
 
+#include <vector>
+
 namespace lyx {
 
 class BufferList;
@@ -34,6 +36,12 @@ class ServerSocket;
 class Session;
 class SpellChecker;
 
+enum RunMode {
+	NEW_INSTANCE,
+	USE_REMOTE,
+	PREFERRED
+};
+
 enum OverwriteFiles {
 	NO_FILES,
 	MAIN_FILE,
@@ -42,6 +50,7 @@ enum OverwriteFiles {
 };
 
 extern bool use_gui;
+extern RunMode run_mode;
 extern OverwriteFiles force_overwrite;
 
 namespace frontend {
@@ -126,6 +135,7 @@ private:
 	friend FuncStatus getStatus(FuncRequest const & action);
 	friend void dispatch(FuncRequest const & action);
 	friend void dispatch(FuncRequest const & action, DispatchResult & dr);
+	friend std::vector<std::string> & theFilesToLoad();
 	friend BufferList & theBufferList();
 	friend Server & theServer();
 	friend ServerSocket & theServerSocket();

@@ -240,6 +240,16 @@
        </widget>
       </item>
       <item row="5" column="0" colspan="2">
+       <widget class="QCheckBox" name="singleInstanceCB">
+        <property name="toolTip">
+         <string>Whether to open documents in an already running instance of LyX.</string>
+        </property>
+        <property name="text">
+         <string>S&amp;ingle instance</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0" colspan="2">
        <widget class="QCheckBox" name="singleCloseTabButtonCB">
         <property name="toolTip">
          <string>Whether to place close button on each tab or only one in the top left.</string>

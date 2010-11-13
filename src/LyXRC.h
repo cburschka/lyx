@@ -162,6 +162,7 @@ public:
 		RC_SET_COLOR,
 		RC_SHOW_BANNER,
 		RC_SINGLE_CLOSE_TAB_BUTTON,
+		RC_SINGLE_INSTANCE,
 		RC_SORT_LAYOUTS,
 		RC_SPELL_COMMAND,
 		RC_SPELLCHECK_CONTINUOUSLY,
@@ -501,6 +502,8 @@ public:
 	bool open_buffers_in_tabs;
 	///
 	bool single_close_tab_button;
+	///
+	bool single_instance;
 	///
 	std::string forward_search_dvi;
 	///
