@@ -2909,9 +2909,14 @@ docstring GuiView::GuiViewPrivate::runAndDestroy(const T& func, Buffer const * o
 	bool const success = func(format, update_unincluded);
 	delete buffer;
 	busyBuffers.remove(orig);
+	if (msg == "preview") {
+		return success
+			? bformat(_("Successful preview of format: %1$s"), from_utf8(format))
+			: bformat(_("Error while previewing format: %1$s"), from_utf8(format));
+	}
 	return success
-		? bformat(_("Successful " + msg + " to format: %1$s"), from_utf8(format))
-		: bformat(_("Error " + msg + " format: %1$s"), from_utf8(format));
+		? bformat(_("Successful export to format: %1$s"), from_utf8(format))
+		: bformat(_("Error while exporting format: %1$s"), from_utf8(format));
 }
 
 
