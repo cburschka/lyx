@@ -86,3 +86,178 @@ The LyX team.
 What's new in version 1.6.8?
 ----------------------------
 
+** Updates:
+***********
+
+* DOCUMENT INPUT/OUTPUT
+
+- Add support for pBibTeX (formerly known as jBibTeX), a specific Japanese
+  BibTeX variant (bug 6808).
+
+- New environment variable LYX_FORCE_OVERWRITE allows changing default
+  behavior when exporting from command line. Now LyX overwrites the main
+  file by default, but not the ancillary files. Set this variable to
+  "all" for letting LyX behave as in 1.6.6 and previous versions; set it
+  to "none" for mimicking the 1.6.7 behavior of not overwriting any file.
+
+- New layout and template file for submissions to journals published by
+  the American Geophysical Union (AGU).
+
+- New layout and template file for submissions to journals published by
+  the Econometric Society (bug 6761).
+
+- New layout and template file for the document class frletter that is
+  used to write letters in French (bug 6915).
+
+- New layout and template file for the document class lettre, another
+  French letter class.
+
+- Add support for subtitles in the KOMA classes.
+
+- Add support for lists and quotes in the g-brief2 letter class
+  (bug 6857).
+
+- Add support for the math command \ddddot (part of bug 6872).
+
+
+* USER INTERFACE
+
+- Improve the detection of LaTeX warnings in the Log dialog.
+
+- Citations in the outline now display the key (bug 6837).
+
+
+* DOCUMENTATION AND LOCALIZATION
+
+- Introducing Serbian (Latin) localization of LyX: A large part of the
+  user interface has been translated already.
+
+- New Serbian (Latin) translation of the Splash document.
+
+- Revised section 4.2 "Footnotes" of the EmbeddedObjects manual.
+
+- Revised section 5.1 "Installing a new LaTeX package" of the
+  Customization manual.
+
+- Describe how to use formulas in program listings in sec. 7 of the
+  EmbeddedObjects manual.
+
+- Updated LaTeXConfig file.
+
+- Updated English and German Linguistics manual.
+
+- Updated French beamer template fr_beamer-conference-ornate-20min.
+
+- Updated French, German, Hungarian, Indonesian, Italian, Japanese,
+  Portuguese, Spanish, Slovak and Ukrainian User Interface localizations.
+
+
+* BUILD/INSTALLATION
+
+- Allow autoconf 2.67.
+
+
+** Bug fixes:
+*************
+
+* DOCUMENT INPUT/OUTPUT
+
+- Fix a crash when dropping multiple files onto LyX (bug 6944).
+
+- Fix a crash due to unrecognized \defskip (bug 7014).
+
+- Assure that Japanese LaTeX (pLaTeX) is in fact only used for Japanese
+  documents. This fixes major configuration problems with TeXLive 2010.
+
+- Fix the output of glyph 0x02e0 (MODIFIER LETTER SMALL GAMMA) (bug 6817).
+
+- Load the amsmath LaTeX-package when the math command \dddot is used to
+  avoid LaTeX errors (bug 6872).
+
+- Do not popup "invalid path" warning when using View > Source (bug 6904).
+
+- Small tweaks to the memoir text class.
+
+- Allow pathnames with commas for BibTeX files (bug 6914).
+
+- Set correct anchor for the link to the bibliography in the table
+  of contents if hyperref is used (bug 6470).
+
+- Save the path of pasted images as a relative path (part of bug 5561).
+
+- Don't escape math labels when saving (bug 7019).
+
+
+* USER INTERFACE
+
+- Do not allow to rename a format's short name if the format is used by a
+  converter. This prevents a crash (bug 6815).
+
+- Fix crash when mutating eqnarray-like environments with labeled lines
+  to display equations (bug 6858).
+
+- Disable cut and paste inside the Math Delimiters dialog. This was of no
+  use and could trigger a crash (bug 6942).
+
+- Fix a crash when editing a macro name under some circumstances (for
+  example, when the macro is followed by a script inset and another
+  macro) (bug 6965).
+
+- Fix an assertion when unindenting empty lines in a listings inset
+  (bug 6869).
+
+- Box dialog: only shaded boxes can have multiple paragraphs if there
+  is no inner box (fixes also bug 6992).
+
+- Fix mouse wheel scrolling on Mac OS 10.6 (bug 6775).
+
+- Fix tab-switching keyboard shortcut (bug 5970).
+
+- Fix parsing of inline math environments nested in (unknown to LyX)
+  text-mode user macros (bug 1337).
+
+- When undo returns to a state where the file was saved, make sure to
+  reset the (changed) status (bug 3733).
+
+- Don't allow to insert margin notes and floats into tables because this
+  would lead to LaTeX errors (bug 6844).
+
+- Don't allow to insert margin notes and footnotes into captions because
+  this would lead to LaTeX errors.
+
+- Fix handling of commands containing a straight quote (") in shortcut
+  editor (bug 6786).
+
+- Use correct mode and screen fonts for old-style font changing macros
+  (\bf, \cal, \it, \rm, and \tt) in math (bug 6851).
+
+- Retain the first non-empty label when mutating eqnarray-like environments
+  to a display equation (bug 6793).
+
+- Load files in correct order when passed as arguments via the command
+  line (bug 6848).
+
+- Fix parsing of commands sent through the lyxserver, such that they don't
+  need to be terminated by a newline character (bug 6868).
+
+- Don't try to blindly execute the latex command if no latex binary is
+  available (bug 6873).
+
+- Fix button link assignment in "Select from Template" dialog.
+
+- Don't mark document as changed when navigating with cell-forward
+  or cell-backward.
+
+- Correct check for enable condition of VC repository update.
+
+- Correct enabled check for LFUN_MATH_NUMBER_TOGGLE.
+  Avoid implicit conversion of enum to bool.
+
+- Fix some accelerator conflicts in Document Class dialog (bug 6963).
+
+- Do not warn any changes will be lost when reverting to the
+  saved file if the document is clean (bug 6550).
+
+- Restore the cursor position when showing hidden documents (bug 5878).
+
+- Make the input completion case sensitive again (bug 6983).
