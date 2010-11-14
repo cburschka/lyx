@@ -236,7 +236,7 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 		// empty search string
 		if (!cur.inTexted())
 			// bail in math
-			return pair<int, bool>(0, false);
+			return pair<bool, int>(false, 0);
 		// select current word and treat it as the search string
 		cur.innerText()->selectWord(cur, WHOLE_WORD);
 		searchstr = cur.selectionAsString(false);
