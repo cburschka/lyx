@@ -59,6 +59,7 @@
 #include "support/bind.h"
 
 #ifdef _WIN32
+#include <io.h>
 #include <QCoreApplication>
 #endif
 #include <QThread>
