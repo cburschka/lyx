@@ -374,6 +374,9 @@ Language italian
 	LangCode        it_IT
 End
 
+# japanese must be loaded locally with babel options,
+# not globally via class options
+# http://www.lyx.org/trac/ticket/4597#c4
 Language japanese
 	GuiName         "Japanese"
 	BabelName       japanese
@@ -410,6 +413,8 @@ Language latin
 	LangCode        la
 End
 
+# latvian must be loaded locally with babel options,
+# not globally via class options
 Language latvian
 	GuiName         "Latvian"
 	BabelName       latvian
@@ -418,6 +423,8 @@ Language latvian
 	AsBabelOptions  true
 End
 
+# lithuanian must be loaded locally with babel options,
+# not globally via class options
 Language lithuanian
 	GuiName         "Lithuanian"
 	BabelName       lithuanian
@@ -440,6 +447,8 @@ Language magyar
 	LangCode        hu_HU
 End
 
+# mongolian must be loaded locally with babel options,
+# not globally via class options
 Language mongolian
 	GuiName         "Mongolian"
 	BabelName       mongolian
@@ -576,6 +585,8 @@ Language turkish
 	LangCode        tr_TR
 End
 
+# turkmen must be loaded locally with babel options,
+# not globally via class options
 Language turkmen
 	GuiName         "Turkmen"
 	BabelName       turkmen
@@ -598,6 +609,9 @@ Language uppersorbian
 	LangCode        hsb_DE
 End
 
+# vietnam must be loaded locally with babel options,
+# not globally via class options, see
+# http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129417.html
 Language vietnamese
 	GuiName         "Vietnamese"
 	BabelName       vietnam
