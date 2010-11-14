@@ -5,6 +5,7 @@
  *
  * \author Lars Gullik Bjønnes
  * \author Jean-Marc Lasgouttes
+ * \author Jürgen Spitzmüller
  * \author Dekel Tsur
  *
  * Full author contact details are available in file CREDITS.
@@ -48,6 +49,7 @@ bool Language::readLanguage(Lexer & lex)
 		LA_LANG_CODE,
 		LA_LANG_VARIETY,
 		LA_POSTBABELPREAMBLE,
+		LA_PREBABELPREAMBLE,
 		LA_RTL
 	};
 
@@ -61,6 +63,7 @@ bool Language::readLanguage(Lexer & lex)
 		{ "langcode",             LA_LANG_CODE },
 		{ "langvariety",          LA_LANG_VARIETY },
 		{ "postbabelpreamble",    LA_POSTBABELPREAMBLE },
+		{ "prebabelpreamble",     LA_PREBABELPREAMBLE },
 		{ "rtl",                  LA_RTL }
 	};
 
@@ -108,6 +111,10 @@ bool Language::readLanguage(Lexer & lex)
 		case LA_POSTBABELPREAMBLE:
 			babel_postsettings_ =
 				lex.getLongString("EndPostBabelPreamble");
+			break;
+		case LA_PREBABELPREAMBLE:
+			babel_presettings_ =
+				lex.getLongString("EndPreBabelPreamble");
 			break;
 		case LA_RTL:
 			lex >> rightToLeft_;

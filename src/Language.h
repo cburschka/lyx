@@ -54,6 +54,8 @@ public:
 	///
 	std::string const & babel_postsettings() const { return babel_postsettings_; }
 	///
+	std::string const & babel_presettings() const { return babel_presettings_; }
+	///
 	bool internalFontEncoding() const { return internal_enc_; }
 	///
 	bool read(Lexer & lex);
@@ -80,6 +82,8 @@ private:
 	std::string variety_;
 	///
 	std::string babel_postsettings_;
+	///
+	std::string babel_presettings_;
 	///
 	bool internal_enc_;
 };

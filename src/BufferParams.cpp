@@ -1743,8 +1743,9 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			|| features.isRequired("vietnamese")
 			|| features.isRequired("japanese") ) ) {
 				// FIXME UNICODE
+				lyxpreamble += from_utf8(features.getBabelPresettings());
 				lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
-				lyxpreamble += from_utf8(features.getBabelPostsettings()) + '\n';
+				lyxpreamble += from_utf8(features.getBabelPostsettings());
 	}
 
 	// The optional packages;
@@ -1886,8 +1887,9 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	    && !features.isRequired("vietnamese")
 	    && !features.isRequired("japanese")) {
 		// FIXME UNICODE
+		lyxpreamble += from_utf8(features.getBabelPresettings());
 		lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
-		lyxpreamble += from_utf8(features.getBabelPostsettings()) + '\n';
+		lyxpreamble += from_utf8(features.getBabelPostsettings());
 	}
 
 	docstring const i18npreamble = features.getTClassI18nPreamble(use_babel);

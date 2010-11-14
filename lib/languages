@@ -12,6 +12,9 @@
 #	RTL                <true|false>
 #	LangCode           <language_code>
 #	LangVariety        <language_variety>
+#	PreBabelPreamble
+#	  <extra latex code inserted before babel>
+#	EndPreBabelPreamble
 #	PostBabelPreamble
 #	  <extra latex code inserted after babel>
 #	EndPostBabelPreamble
@@ -250,8 +253,8 @@ Language farsi
 	RTL             true
 	LangCode        fa_IR
 	PostBabelPreamble
-	  \DeclareTextSymbol{\guillemotright}{LFE}{62}
-	  \DeclareTextSymbol{\guillemotleft}{LFE}{60}
+	\DeclareTextSymbol{\guillemotright}{LFE}{62}
+	\DeclareTextSymbol{\guillemotleft}{LFE}{60}
 	EndPostBabelPreamble
 End
 
@@ -269,10 +272,10 @@ Language french
 	Encoding        iso8859-15
 	LangCode        fr_FR
 	PostBabelPreamble
-	  \addto\extrasfrench{%
-	       \providecommand{\og}{\leavevmode\flqq~}
-	       \providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}
-	  }
+	\addto\extrasfrench{%
+	   \providecommand{\og}{\leavevmode\flqq~}
+	   \providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}
+	}
 	EndPostBabelPreamble
 End
 
@@ -530,7 +533,7 @@ Language spanish
 	Encoding        iso8859-15
 	LangCode        es_ES
 	PostBabelPreamble
-	  \addto\shorthandsspanish{\spanishdeactivate{~<>}}
+	\addto\shorthandsspanish{\spanishdeactivate{~<>}}
 	EndPostBabelPreamble
 End
 
@@ -540,7 +543,7 @@ Language spanish-mexico
 	Encoding        iso8859-15
 	LangCode        es_MX
 	PostBabelPreamble
-	  \addto\shorthandsspanish{\spanishdeactivate{~<>.}}
+	\addto\shorthandsspanish{\spanishdeactivate{~<>.}}
 	EndPostBabelPreamble
 End
 
@@ -557,7 +560,7 @@ Language thai
 	Encoding        tis620-0
 	LangCode        th_TH
 	PostBabelPreamble
-	  \usepackage{thswitch}
+	\usepackage{thswitch}
 	EndPostBabelPreamble
 End
 

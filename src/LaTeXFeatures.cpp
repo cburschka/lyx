@@ -947,6 +947,22 @@ docstring const LaTeXFeatures::getMacros() const
 }
 
 
+string const LaTeXFeatures::getBabelPresettings() const
+{
+	ostringstream tmp;
+
+	LanguageList::const_iterator it  = UsedLanguages_.begin();
+	LanguageList::const_iterator end =  UsedLanguages_.end();
+	for (; it != end; ++it)
+		if (!(*it)->babel_presettings().empty())
+			tmp << (*it)->babel_presettings() << '\n';
+	if (!params_.language->babel_presettings().empty())
+		tmp << params_.language->babel_presettings() << '\n';
+
+	return tmp.str();
+}
+
+
 string const LaTeXFeatures::getBabelPostsettings() const
 {
 	ostringstream tmp;

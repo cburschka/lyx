@@ -52,7 +52,9 @@ public:
 	std::string const getPackages() const;
 	/// The macros definitions needed by the document
 	docstring const getMacros() const;
-	///
+	/// Extra preamble code before babel is called
+	std::string const getBabelPresettings() const;
+	/// Extra preamble code after babel is called
 	std::string const getBabelPostsettings() const;
 	/// The definitions needed by the document's textclass
 	docstring const getTClassPreamble() const;
