@@ -55,8 +55,10 @@ public:
 	std::string const & babel_postsettings() const { return babel_postsettings_; }
 	///
 	std::string const & babel_presettings() const { return babel_presettings_; }
-	///
+	/// This language internally sets a font encoding
 	bool internalFontEncoding() const { return internal_enc_; }
+	/// This language needs to be passed to babel itself (not the class)
+	bool asBabelOptions() const { return as_babel_options_; }
 	///
 	bool read(Lexer & lex);
 	///
@@ -86,6 +88,8 @@ private:
 	std::string babel_presettings_;
 	///
 	bool internal_enc_;
+	///
+	bool as_babel_options_;
 };
 
 

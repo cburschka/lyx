@@ -56,6 +56,8 @@ public:
 	std::string const getBabelPresettings() const;
 	/// Extra preamble code after babel is called
 	std::string const getBabelPostsettings() const;
+	/// Do we need to pass the languages to babel directly? 
+	bool needBabelLangOptions() const;
 	/// The definitions needed by the document's textclass
 	docstring const getTClassPreamble() const;
 	/// The language dependent definitions needed by the document's textclass

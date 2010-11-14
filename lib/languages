@@ -10,6 +10,7 @@
 #	Encoding           <encoding>
 #	InternalEncoding   <true|false>
 #	RTL                <true|false>
+#	AsBabelOptions     <true|false>
 #	LangCode           <language_code>
 #	LangVariety        <language_variety>
 #	PreBabelPreamble
@@ -21,7 +22,7 @@
 # End
 #
 # Omitted elements will be treated as empty
-# (omitted RTL and InternalEncoding as "false")
+# (omitted AsBabelOptions, RTL and InternalEncoding as "false")
 #
 ########################################################################
 
@@ -378,6 +379,7 @@ Language japanese
 	BabelName       japanese
 	Encoding        jis-plain
 	LangCode        ja_JP
+	AsBabelOptions  true
 End
 
 Language japanese-cjk
@@ -413,6 +415,7 @@ Language latvian
 	BabelName       latvian
 	Encoding        iso8859-4
 	LangCode        lv_LV
+	AsBabelOptions  true
 End
 
 Language lithuanian
@@ -420,6 +423,7 @@ Language lithuanian
 	BabelName       lithuanian
 	Encoding        iso8859-13
 	LangCode        lt_LT
+	AsBabelOptions  true
 End
 
 Language lowersorbian
@@ -441,6 +445,7 @@ Language mongolian
 	BabelName       mongolian
 	Encoding        utf8
 	LangCode        mn_MN
+	AsBabelOptions  true
 End
 
 Language norsk
@@ -576,6 +581,7 @@ Language turkmen
 	BabelName       turkmen
 	Encoding        utf8
 	LangCode        tk_TM
+	AsBabelOptions  true
 End
 
 Language ukrainian
@@ -597,6 +603,7 @@ Language vietnamese
 	BabelName       vietnam
 	Encoding        utf8
 	LangCode        vi_VN
+	AsBabelOptions  true
 End
 
 Language welsh

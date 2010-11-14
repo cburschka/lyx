@@ -952,7 +952,7 @@ string const LaTeXFeatures::getBabelPresettings() const
 	ostringstream tmp;
 
 	LanguageList::const_iterator it  = UsedLanguages_.begin();
-	LanguageList::const_iterator end =  UsedLanguages_.end();
+	LanguageList::const_iterator end = UsedLanguages_.end();
 	for (; it != end; ++it)
 		if (!(*it)->babel_presettings().empty())
 			tmp << (*it)->babel_presettings() << '\n';
@@ -968,7 +968,7 @@ string const LaTeXFeatures::getBabelPostsettings() const
 	ostringstream tmp;
 
 	LanguageList::const_iterator it  = UsedLanguages_.begin();
-	LanguageList::const_iterator end =  UsedLanguages_.end();
+	LanguageList::const_iterator end = UsedLanguages_.end();
 	for (; it != end; ++it)
 		if (!(*it)->babel_postsettings().empty())
 			tmp << (*it)->babel_postsettings() << '\n';
@@ -976,6 +976,21 @@ string const LaTeXFeatures::getBabelPostsettings() const
 		tmp << params_.language->babel_postsettings() << '\n';
 
 	return tmp.str();
+}
+
+
+bool LaTeXFeatures::needBabelLangOptions() const
+{
+	if (!lyxrc.language_global_options || params_.language->asBabelOptions())
+		return true;
+
+	LanguageList::const_iterator it  = UsedLanguages_.begin();
+	LanguageList::const_iterator end = UsedLanguages_.end();
+	for (; it != end; ++it)
+		if ((*it)->asBabelOptions())
+			return true;
+
+	return false;
 }
 
 

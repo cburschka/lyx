@@ -1310,27 +1310,8 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 				language_options << ',';
 			language_options << language->babel();
 		}
-		// if Vietnamese is used, babel must directly be loaded
-		// with language options, not in the class options, see
-		// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129417.html
-		size_t viet = language_options.str().find("vietnam");
-		// viet = string::npos when not found
-		// the same is for all other languages that are not directly supported by
-		// babel, but where LaTeX-packages add babel support.
-		// this is currently the case for Latvian, Lithuanian, Mongolian
-		// and Turkmen
-		size_t latvian = language_options.str().find("latvian");
-		size_t lithu = language_options.str().find("lithuanian");
-		size_t mongo = language_options.str().find("mongolian");
-		size_t turkmen = language_options.str().find("turkmen");
-		// if Japanese is used, babel must directly be loaded
-		// with language options, not in the class options, see
-		// http://www.lyx.org/trac/ticket/4597#c4
-		size_t japan = language_options.str().find("japanese");
-		if (lyxrc.language_global_options && !language_options.str().empty()
-			&& viet == string::npos && japan == string::npos
-			&& latvian == string::npos && lithu == string::npos
-			&& mongo == string::npos && turkmen == string::npos)
+		if (lyxrc.language_global_options
+		    && !features.needBabelLangOptions())
 			clsoptions << language_options.str() << ',';
 	}
 
@@ -1744,7 +1725,8 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			|| features.isRequired("japanese") ) ) {
 				// FIXME UNICODE
 				lyxpreamble += from_utf8(features.getBabelPresettings());
-				lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
+				lyxpreamble += from_utf8(babelCall(language_options.str(),
+								   features.needBabelLangOptions())) + '\n';
 				lyxpreamble += from_utf8(features.getBabelPostsettings());
 	}
 
@@ -1888,7 +1870,8 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	    && !features.isRequired("japanese")) {
 		// FIXME UNICODE
 		lyxpreamble += from_utf8(features.getBabelPresettings());
-		lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
+		lyxpreamble += from_utf8(babelCall(language_options.str(),
+						   features.needBabelLangOptions())) + '\n';
 		lyxpreamble += from_utf8(features.getBabelPostsettings());
 	}
 
@@ -2407,37 +2390,20 @@ string const BufferParams::font_encoding() const
 }
 
 
-string BufferParams::babelCall(string const & lang_opts) const
+string BufferParams::babelCall(string const & lang_opts, bool const langoptions) const
 {
 	string lang_pack = lyxrc.language_package;
 	if (lang_pack != "\\usepackage{babel}")
 		return lang_pack;
-	// suppress the babel call when there is no babel language defined
+	// suppress the babel call if there is no BabelName defined
 	// for the document language in the lib/languages file and if no
 	// other languages are used (lang_opts is then empty)
 	if (lang_opts.empty())
 		return string();
-	// If Vietnamese is used, babel must directly be loaded with the
-	// language options, see
-	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129417.html
-	size_t viet = lang_opts.find("vietnam");
-	// viet = string::npos when not found
-	// the same is for all other languages that are not directly supported by
-	// babel, but where LaTeX-packages add babel support.
-	// this is currently the case for Latvian, Lithuanian, Mongolian
-	// and Turkmen
-	size_t latvian = lang_opts.find("latvian");
-	size_t lithu = lang_opts.find("lithuanian");
-	size_t mongo = lang_opts.find("mongolian");
-	size_t turkmen = lang_opts.find("turkmen");
-	// If Japanese is used, babel must directly be loaded with the
-	// language options, see
-	// http://www.lyx.org/trac/ticket/4597#c4
-	size_t japan = lang_opts.find("japanese");
-	if (!lyxrc.language_global_options || viet != string::npos
-		|| japan != string::npos || latvian != string::npos
-		|| lithu != string::npos || mongo != string::npos
-		|| turkmen != string::npos)
+	// either a specific language (AsBabelOptions setting in
+	// lib/languages) or the prefs require the languages to
+	// be submitted to babel itself (not the class).
+	if (langoptions)
 		return "\\usepackage[" + lang_opts + "]{babel}";
 	return lang_pack;
 }
