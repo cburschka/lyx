@@ -2,14 +2,15 @@
 # Copyright (C) 2003, 2006
 # Zdenko Podobný <zdpo@mailbox.sk>
 #
-# Kornel Benko <Kornel.Benko@berlin.de>, 2009.
+# Kornel Benko <Kornel.Benko@berlin.de>, 2009, 2010.
 # Kornel Benko <kornel@lyx.org>, 2009, 2010.
+# Kornel Benko <Kornel@lyx.org>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-11-10 01:15+0100\n"
-"PO-Revision-Date: 2010-11-07 13:28+0100\n"
+"PO-Revision-Date: 2010-11-14 13:03+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -4494,19 +4495,16 @@ msgid "M&ultirow"
 msgstr "Viacriadková"
 
 #: src/frontends/qt4/ui/TabularUi.ui:255
-#, fuzzy
 msgid "optional vertical offset"
-msgstr "Veľkosť vertikálneho vyrovnania riadku."
+msgstr "Vertikálne vyrovnanie(nepovinné)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:258
-#, fuzzy
 msgid "&Vertical Offset:"
-msgstr "Vertikálna medzera"
+msgstr "Vertikálne vyrovnanie:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:271
-#, fuzzy
 msgid "value of the optional vertical offset"
-msgstr "Veľkosť vertikálneho vyrovnania riadku."
+msgstr "Veľkosť nepovinného vertikálneho vyrovnania"
 
 #: src/frontends/qt4/ui/TabularUi.ui:289
 msgid "Cell setting"
