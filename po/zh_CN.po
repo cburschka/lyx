@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zh_CN\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-10-22 11:29+0200\n"
+"POT-Creation-Date: 2010-11-14 11:53+0100\n"
 "PO-Revision-Date: 2009-10-18 22:58+0000\n"
 "Last-Translator: mgc <mgcgogo@gmail.com>\n"
 "Language-Team: 简体中文 <lyx-docs@lists.lyx.org>\n"
@@ -90,14 +90,14 @@ msgstr "确认(&O)"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:862
 #: src/Buffer.cpp:2757 src/Buffer.cpp:2803 src/Buffer.cpp:2838
-#: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
-#: src/LyXFunc.cpp:1926 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:721 src/LyXFunc.cpp:871 src/LyXFunc.cpp:1048
+#: src/LyXFunc.cpp:1932 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1262
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1626
-#: src/frontends/qt4/GuiView.cpp:1818 src/frontends/qt4/GuiView.cpp:1870
-#: src/frontends/qt4/GuiView.cpp:1931 src/insets/InsetBibtex.cpp:144
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1625
+#: src/frontends/qt4/GuiView.cpp:1817 src/frontends/qt4/GuiView.cpp:1869
+#: src/frontends/qt4/GuiView.cpp:1930 src/insets/InsetBibtex.cpp:144
 msgid "&Cancel"
 msgstr "取消(&C)"
 
@@ -2356,16 +2356,6 @@ msgstr "启用(&E)"
 msgid "Maximum A&ge (in days):"
 msgstr "最大年纪(天)(&M)"
 
-#: src/frontends/qt4/ui/PrefDateUi.ui:33
-#: src/frontends/qt4/ui/PrefOutputUi.ui:61
-msgid "&Date format:"
-msgstr "日期格式(&D)"
-
-#: src/frontends/qt4/ui/PrefDateUi.ui:43
-#: src/frontends/qt4/ui/PrefOutputUi.ui:71
-msgid "Date format for strftime output"
-msgstr "strftime输出的日期格式"
-
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:25
 msgid "Display &Graphics"
 msgstr "显示图形(&G)"
@@ -2779,6 +2769,14 @@ msgstr "可选纸张大小选项(-paper)"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:262
 msgid "&DVI viewer paper size options:"
 msgstr "DVI预览纸张大小选项(&D)："
+
+#: src/frontends/qt4/ui/PrefOutputUi.ui:61
+msgid "&Date format:"
+msgstr "日期格式(&D)"
+
+#: src/frontends/qt4/ui/PrefOutputUi.ui:71
+msgid "Date format for strftime output"
+msgstr "strftime输出的日期格式"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:96
 #, fuzzy
@@ -3209,7 +3207,7 @@ msgid "&User interface file:"
 msgstr "用户界面文件(&U):"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:721
-#: src/frontends/qt4/GuiView.cpp:1931
+#: src/frontends/qt4/GuiView.cpp:1930
 msgid "&Save"
 msgstr "保存(&S)"
 
@@ -11627,7 +11625,7 @@ msgstr "复制"
 
 #: lib/ui/stdcontext.inc:283 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:101
 #: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1069
-#: src/mathed/InsetMathGrid.cpp:1263 src/mathed/InsetMathNest.cpp:533
+#: src/mathed/InsetMathGrid.cpp:1264 src/mathed/InsetMathNest.cpp:533
 msgid "Paste"
 msgstr "粘贴"
 
@@ -15666,9 +15664,9 @@ msgstr "文件 %1$s 已被其它程序修改，您要覆盖它吗？"
 msgid "Overwrite modified file?"
 msgstr "覆盖文件吗？"
 
-#: src/Buffer.cpp:862 src/Exporter.cpp:50 src/LyXFunc.cpp:1042
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1626
-#: src/frontends/qt4/GuiView.cpp:1818
+#: src/Buffer.cpp:862 src/Exporter.cpp:50 src/LyXFunc.cpp:1048
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1625
+#: src/frontends/qt4/GuiView.cpp:1817
 msgid "&Overwrite"
 msgstr "覆盖(&O)"
 
@@ -15953,7 +15951,7 @@ msgstr "从版本控制程序中读取文档?"
 msgid "&Retrieve"
 msgstr "获取(&R)"
 
-#: src/BufferParams.cpp:480
+#: src/BufferParams.cpp:482
 #, c-format
 msgid ""
 "The layout file requested by this document,\n"
@@ -15970,15 +15968,15 @@ msgstr ""
 "available. See the Customization documentation\n"
 "for more information.\n"
 
-#: src/BufferParams.cpp:486
+#: src/BufferParams.cpp:488
 msgid "Document class not available"
 msgstr "未知文档类"
 
-#: src/BufferParams.cpp:487
+#: src/BufferParams.cpp:489
 msgid "LyX will not be able to produce output."
 msgstr "LyX将不能产生输出"
 
-#: src/BufferParams.cpp:1660
+#: src/BufferParams.cpp:1662
 #, c-format
 msgid ""
 "The document class %1$s could not be found. A default textclass with default "
@@ -15988,20 +15986,20 @@ msgstr ""
 "未发现文档类 %1$s，将使用缺省值。在文档设置对话框中设置正确的文档类之前，LyX"
 "将不能产生输出。"
 
-#: src/BufferParams.cpp:1665
+#: src/BufferParams.cpp:1667
 msgid "Document class not found"
 msgstr "未知文档类"
 
-#: src/BufferParams.cpp:1672 src/LyXFunc.cpp:752
+#: src/BufferParams.cpp:1674 src/LyXFunc.cpp:752
 #, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "无法载入文档类 %1$s。"
 
-#: src/BufferParams.cpp:1674 src/LyXFunc.cpp:754
+#: src/BufferParams.cpp:1676 src/LyXFunc.cpp:754
 msgid "Could not load class"
 msgstr "无法载入类"
 
-#: src/BufferParams.cpp:1736
+#: src/BufferParams.cpp:1738
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -16010,16 +16008,16 @@ msgid ""
 "probably need to reconfigure LyX.\n"
 msgstr "未找到模块 %1$s，请安装它。如果你已经安装，请重新配置 LyX。\n"
 
-#: src/BufferParams.cpp:1740
+#: src/BufferParams.cpp:1742
 msgid "Module not available"
 msgstr "模块未找到"
 
-#: src/BufferParams.cpp:1741
+#: src/BufferParams.cpp:1743
 #, fuzzy
 msgid "Some layouts may not be available."
 msgstr "未知文档类"
 
-#: src/BufferParams.cpp:1748
+#: src/BufferParams.cpp:1750
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -16027,20 +16025,20 @@ msgid ""
 "may not be possible.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1751
+#: src/BufferParams.cpp:1753
 msgid "Package not available"
 msgstr "包未找到"
 
-#: src/BufferParams.cpp:1756
+#: src/BufferParams.cpp:1758
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "读取模块 %1$s 错误\n"
 
-#: src/BufferParams.cpp:1757 src/BufferParams.cpp:1763
+#: src/BufferParams.cpp:1759 src/BufferParams.cpp:1765
 msgid "Read Error"
 msgstr "读取出错"
 
-#: src/BufferParams.cpp:1762
+#: src/BufferParams.cpp:1764
 msgid "Error reading internal layout information"
 msgstr "读取内部 layout 信息出错。"
 
@@ -16648,7 +16646,7 @@ msgstr ""
 msgid "Undefined flex inset"
 msgstr "打开的文本嵌入项"
 
-#: src/Exporter.cpp:45 src/LyXFunc.cpp:1038
+#: src/Exporter.cpp:45 src/LyXFunc.cpp:1044
 #, fuzzy, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -16658,7 +16656,7 @@ msgstr ""
 "文件 %1 已经存在\n"
 "您要覆盖它吗？"
 
-#: src/Exporter.cpp:48 src/LyXFunc.cpp:1041
+#: src/Exporter.cpp:48 src/LyXFunc.cpp:1047
 msgid "Overwrite file?"
 msgstr "覆盖文件吗？"
 
@@ -16776,7 +16774,7 @@ msgstr " 编号 %1$s"
 msgid "Cannot view file"
 msgstr "无法预览文件"
 
-#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1222
+#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1228
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "文件不存在:  %1$s"
@@ -17171,7 +17169,7 @@ msgstr ""
 "\n"
 "您希望保存文档吗?"
 
-#: src/LyXFunc.cpp:713 src/frontends/qt4/GuiView.cpp:1930
+#: src/LyXFunc.cpp:713 src/frontends/qt4/GuiView.cpp:1929
 msgid "Save changed document?"
 msgstr "保存改变的文档?"
 
@@ -17204,74 +17202,74 @@ msgstr ""
 msgid "Print document failed"
 msgstr "打印文件失败"
 
-#: src/LyXFunc.cpp:863
+#: src/LyXFunc.cpp:867
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr "任何改变将被遗失. 您确定希望恢复 文件 %1$s 到磁盘上保存的版本吗?"
 
-#: src/LyXFunc.cpp:865
+#: src/LyXFunc.cpp:870
 msgid "Revert to saved document?"
 msgstr "使用磁盘上文档?"
 
-#: src/LyXFunc.cpp:866 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:871 src/LyXVC.cpp:196
 msgid "&Revert"
 msgstr "还原(&R)"
 
-#: src/LyXFunc.cpp:1079 src/Text3.cpp:1628
+#: src/LyXFunc.cpp:1085 src/Text3.cpp:1628
 msgid "Missing argument"
 msgstr "缺失参数"
 
-#: src/LyXFunc.cpp:1091
+#: src/LyXFunc.cpp:1097
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "打开帮助文件 %1$s..."
 
-#: src/LyXFunc.cpp:1143 src/VCBackend.cpp:61 src/VCBackend.cpp:595
+#: src/LyXFunc.cpp:1149 src/VCBackend.cpp:61 src/VCBackend.cpp:595
 #: src/VCBackend.cpp:662 src/VCBackend.cpp:668 src/VCBackend.cpp:689
 #, fuzzy
 msgid "Revision control error."
 msgstr "版本控制"
 
-#: src/LyXFunc.cpp:1144
+#: src/LyXFunc.cpp:1150
 msgid "Error when setting the locking property."
 msgstr ""
 
-#: src/LyXFunc.cpp:1375
+#: src/LyXFunc.cpp:1381
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "打开子文档 %1$s..."
 
-#: src/LyXFunc.cpp:1537
+#: src/LyXFunc.cpp:1543
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "文档缺省设置保存至 %1$s"
 
-#: src/LyXFunc.cpp:1540
+#: src/LyXFunc.cpp:1546
 msgid "Unable to save document defaults"
 msgstr "无法保存文档缺省设置"
 
-#: src/LyXFunc.cpp:1696 src/LyXVC.cpp:151
+#: src/LyXFunc.cpp:1702 src/LyXVC.cpp:151
 msgid "LyX VC: Log Message"
 msgstr "LyX VC: 记录消息"
 
-#: src/LyXFunc.cpp:1705
+#: src/LyXFunc.cpp:1711
 #, fuzzy
 msgid "Directory is not accessible."
 msgstr "无法读取 %1$s"
 
-#: src/LyXFunc.cpp:1907
+#: src/LyXFunc.cpp:1913
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "文档 %1$s 已打开"
 
-#: src/LyXFunc.cpp:1909
+#: src/LyXFunc.cpp:1915
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "无法读取文档"
 
-#: src/LyXFunc.cpp:1922
+#: src/LyXFunc.cpp:1928
 #, fuzzy, c-format
 msgid ""
 "Document \n"
@@ -17279,21 +17277,21 @@ msgid ""
 " has been externally modified. Reload now? Any local changes will be lost."
 msgstr "文件 %1$s 已被其它程序修改，您要覆盖它吗？"
 
-#: src/LyXFunc.cpp:1925
+#: src/LyXFunc.cpp:1931
 #, fuzzy
 msgid "Reload externally changed document?"
 msgstr "保存改变的文档?"
 
-#: src/LyXFunc.cpp:1926 src/buffer_funcs.cpp:77
+#: src/LyXFunc.cpp:1932 src/buffer_funcs.cpp:77
 #, fuzzy
 msgid "&Reload"
 msgstr "替换(&R)"
 
-#: src/LyXFunc.cpp:1969
+#: src/LyXFunc.cpp:1975
 msgid "Welcome to LyX!"
 msgstr "欢迎使用LyX!"
 
-#: src/LyXFunc.cpp:1990
+#: src/LyXFunc.cpp:1996
 msgid "Converting document to new document class..."
 msgstr "转换文档至新文档类..."
 
@@ -18026,7 +18024,7 @@ msgstr "无索引项!"
 msgid "Cannot index more than one paragraph!"
 msgstr "无法索引多于一段落"
 
-#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1567
+#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1571
 msgid "Math editor mode"
 msgstr "Math editor mode"
 
@@ -18425,12 +18423,12 @@ msgstr "语法: set-color <lyx_name> <x11_name>"
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr "设置颜色 \"%1$s\" 失败 - 未定义或不能重定义颜色"
 
-#: src/frontends/qt4/GuiApplication.cpp:1321
+#: src/frontends/qt4/GuiApplication.cpp:1322
 #, fuzzy
 msgid "The current document was closed."
 msgstr "打印文件失败"
 
-#: src/frontends/qt4/GuiApplication.cpp:1331
+#: src/frontends/qt4/GuiApplication.cpp:1332
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -18438,24 +18436,24 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1335
-#: src/frontends/qt4/GuiApplication.cpp:1341
+#: src/frontends/qt4/GuiApplication.cpp:1336
+#: src/frontends/qt4/GuiApplication.cpp:1342
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1339
+#: src/frontends/qt4/GuiApplication.cpp:1340
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1501
-#: src/frontends/qt4/GuiApplication.cpp:1506
+#: src/frontends/qt4/GuiApplication.cpp:1502
+#: src/frontends/qt4/GuiApplication.cpp:1507
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "无法读取配置文件"
 
-#: src/frontends/qt4/GuiApplication.cpp:1502
+#: src/frontends/qt4/GuiApplication.cpp:1503
 #, fuzzy, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -18466,7 +18464,7 @@ msgstr ""
 "%1$s.\n"
 "请检查您的安装过程."
 
-#: src/frontends/qt4/GuiApplication.cpp:1507
+#: src/frontends/qt4/GuiApplication.cpp:1508
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -18476,12 +18474,12 @@ msgid ""
 "check which user interface file you are using."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1515
+#: src/frontends/qt4/GuiApplication.cpp:1516
 #, fuzzy
 msgid "Could not find default UI file"
 msgstr "无法读取配置文件"
 
-#: src/frontends/qt4/GuiApplication.cpp:1516
+#: src/frontends/qt4/GuiApplication.cpp:1517
 #, fuzzy
 msgid ""
 "LyX could not find the default UI file!\n"
@@ -18502,9 +18500,9 @@ msgstr "BibTeX文献"
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiDocument.cpp:1304
 #: src/frontends/qt4/GuiExternal.cpp:672 src/frontends/qt4/GuiGraphics.cpp:849
-#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1370
-#: src/frontends/qt4/GuiView.cpp:1428 src/frontends/qt4/GuiView.cpp:1576
-#: src/frontends/qt4/GuiView.cpp:1704 src/frontends/qt4/GuiView.cpp:1788
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1376
+#: src/frontends/qt4/GuiView.cpp:1427 src/frontends/qt4/GuiView.cpp:1575
+#: src/frontends/qt4/GuiView.cpp:1703 src/frontends/qt4/GuiView.cpp:1787
 msgid "Documents|#o#O"
 msgstr "文档|#o#O"
 
@@ -18719,10 +18717,10 @@ msgstr "%1$s 和 %2$s"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "选择另存为文件名"
 
-#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1447
-#: src/frontends/qt4/GuiView.cpp:1596 src/frontends/qt4/GuiView.cpp:1612
-#: src/frontends/qt4/GuiView.cpp:1629 src/frontends/qt4/GuiView.cpp:1721
-#: src/frontends/qt4/GuiView.cpp:1764
+#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1446
+#: src/frontends/qt4/GuiView.cpp:1595 src/frontends/qt4/GuiView.cpp:1611
+#: src/frontends/qt4/GuiView.cpp:1628 src/frontends/qt4/GuiView.cpp:1720
+#: src/frontends/qt4/GuiView.cpp:1763
 msgid "Canceled."
 msgstr "已取消。"
 
@@ -20402,59 +20400,59 @@ msgstr "大图标"
 msgid "Unknown toolbar \"%1$s\""
 msgstr "未知工具条 \"%1$s\""
 
-#: src/frontends/qt4/GuiView.cpp:1369
+#: src/frontends/qt4/GuiView.cpp:1375
 msgid "Select template file"
 msgstr "选择模板文件"
 
-#: src/frontends/qt4/GuiView.cpp:1371 src/frontends/qt4/GuiView.cpp:1789
+#: src/frontends/qt4/GuiView.cpp:1377 src/frontends/qt4/GuiView.cpp:1788
 msgid "Templates|#T#t"
 msgstr "模板|#T#t"
 
-#: src/frontends/qt4/GuiView.cpp:1374 src/frontends/qt4/GuiView.cpp:1432
-#: src/frontends/qt4/GuiView.cpp:1710 src/frontends/qt4/GuiView.cpp:1796
+#: src/frontends/qt4/GuiView.cpp:1380 src/frontends/qt4/GuiView.cpp:1431
+#: src/frontends/qt4/GuiView.cpp:1709 src/frontends/qt4/GuiView.cpp:1795
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX 文档 (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1391
+#: src/frontends/qt4/GuiView.cpp:1397
 msgid "Document not loaded."
 msgstr "文档未读入"
 
-#: src/frontends/qt4/GuiView.cpp:1427
+#: src/frontends/qt4/GuiView.cpp:1426
 msgid "Select document to open"
 msgstr "选择要打开的文档"
 
-#: src/frontends/qt4/GuiView.cpp:1429 src/frontends/qt4/GuiView.cpp:1577
-#: src/frontends/qt4/GuiView.cpp:1705
+#: src/frontends/qt4/GuiView.cpp:1428 src/frontends/qt4/GuiView.cpp:1576
+#: src/frontends/qt4/GuiView.cpp:1704
 msgid "Examples|#E#e"
 msgstr "示例|#E#e"
 
-#: src/frontends/qt4/GuiView.cpp:1433
+#: src/frontends/qt4/GuiView.cpp:1432
 #, fuzzy
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "LyX 文档 (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1434
+#: src/frontends/qt4/GuiView.cpp:1433
 #, fuzzy
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "LyX 文档 (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1435
+#: src/frontends/qt4/GuiView.cpp:1434
 #, fuzzy
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "LyX 文档 (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1436
+#: src/frontends/qt4/GuiView.cpp:1435
 #, fuzzy
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "LyX 文档 (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1461 src/frontends/qt4/Validator.cpp:182
+#: src/frontends/qt4/GuiView.cpp:1460 src/frontends/qt4/Validator.cpp:182
 #: src/insets/ExternalSupport.cpp:367 src/insets/InsetBibtex.cpp:287
 #: src/insets/InsetGraphics.cpp:598 src/insets/InsetInclude.cpp:477
 msgid "Invalid filename"
 msgstr "无效文件名"
 
-#: src/frontends/qt4/GuiView.cpp:1462
+#: src/frontends/qt4/GuiView.cpp:1461
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -20462,41 +20460,41 @@ msgid ""
 "does not exist."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1477
+#: src/frontends/qt4/GuiView.cpp:1476
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "打开文档 %1$s ..."
 
-#: src/frontends/qt4/GuiView.cpp:1486
+#: src/frontends/qt4/GuiView.cpp:1485
 #, c-format
 msgid "Document %1$s opened."
 msgstr "文档 %1$s 已打开"
 
-#: src/frontends/qt4/GuiView.cpp:1489
+#: src/frontends/qt4/GuiView.cpp:1488
 #, fuzzy
 msgid "Version control detected."
 msgstr "版本控制"
 
-#: src/frontends/qt4/GuiView.cpp:1491
+#: src/frontends/qt4/GuiView.cpp:1490
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "无法打开文档 %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1520
+#: src/frontends/qt4/GuiView.cpp:1519
 msgid "Couldn't import file"
 msgstr "无法导入文件"
 
-#: src/frontends/qt4/GuiView.cpp:1521
+#: src/frontends/qt4/GuiView.cpp:1520
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "无格式 %1$s 的导入信息."
 
-#: src/frontends/qt4/GuiView.cpp:1572
+#: src/frontends/qt4/GuiView.cpp:1571
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "选择导入文件 %1$s "
 
-#: src/frontends/qt4/GuiView.cpp:1623 src/frontends/qt4/GuiView.cpp:1813
+#: src/frontends/qt4/GuiView.cpp:1622 src/frontends/qt4/GuiView.cpp:1812
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -20506,51 +20504,51 @@ msgstr ""
 "文件 %1 已经存在\n"
 "您要覆盖它吗？"
 
-#: src/frontends/qt4/GuiView.cpp:1625 src/frontends/qt4/GuiView.cpp:1817
+#: src/frontends/qt4/GuiView.cpp:1624 src/frontends/qt4/GuiView.cpp:1816
 msgid "Overwrite document?"
 msgstr "覆盖文件?"
 
-#: src/frontends/qt4/GuiView.cpp:1634
+#: src/frontends/qt4/GuiView.cpp:1633
 #, c-format
 msgid "Importing %1$s..."
 msgstr "导入 %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1637
+#: src/frontends/qt4/GuiView.cpp:1636
 msgid "imported."
 msgstr "导入的。"
 
-#: src/frontends/qt4/GuiView.cpp:1639
+#: src/frontends/qt4/GuiView.cpp:1638
 #, fuzzy
 msgid "file not imported!"
 msgstr "文件没有找到"
 
-#: src/frontends/qt4/GuiView.cpp:1703
+#: src/frontends/qt4/GuiView.cpp:1702
 msgid "Select LyX document to insert"
 msgstr "选择插入的LyX文档"
 
-#: src/frontends/qt4/GuiView.cpp:1737
+#: src/frontends/qt4/GuiView.cpp:1736
 #, fuzzy
 msgid "Absolute filename expected."
 msgstr "需要一个参数"
 
-#: src/frontends/qt4/GuiView.cpp:1749
+#: src/frontends/qt4/GuiView.cpp:1748
 msgid "Select file to insert"
 msgstr "选择插入文件"
 
-#: src/frontends/qt4/GuiView.cpp:1753
+#: src/frontends/qt4/GuiView.cpp:1752
 #, fuzzy
 msgid "All Files (*)"
 msgstr "所有文件 (*)"
 
-#: src/frontends/qt4/GuiView.cpp:1786
+#: src/frontends/qt4/GuiView.cpp:1785
 msgid "Choose a filename to save document as"
 msgstr "选择另存为文件名"
 
-#: src/frontends/qt4/GuiView.cpp:1818 src/frontends/qt4/GuiView.cpp:1870
+#: src/frontends/qt4/GuiView.cpp:1817 src/frontends/qt4/GuiView.cpp:1869
 msgid "&Rename"
 msgstr "重命名(&R)"
 
-#: src/frontends/qt4/GuiView.cpp:1866
+#: src/frontends/qt4/GuiView.cpp:1865
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -20561,16 +20559,16 @@ msgstr ""
 "\n"
 "Do you want to rename the document and try again?"
 
-#: src/frontends/qt4/GuiView.cpp:1869
+#: src/frontends/qt4/GuiView.cpp:1868
 msgid "Rename and save?"
 msgstr "改名并保存?"
 
-#: src/frontends/qt4/GuiView.cpp:1870
+#: src/frontends/qt4/GuiView.cpp:1869
 #, fuzzy
 msgid "&Retry"
 msgstr "恢复(&R)"
 
-#: src/frontends/qt4/GuiView.cpp:1928
+#: src/frontends/qt4/GuiView.cpp:1927
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -20581,26 +20579,26 @@ msgstr ""
 "\n"
 "您希望保存或取消这些变化?"
 
-#: src/frontends/qt4/GuiView.cpp:1931
+#: src/frontends/qt4/GuiView.cpp:1930
 msgid "&Discard"
 msgstr "放弃(&D)"
 
-#: src/frontends/qt4/GuiView.cpp:2005
+#: src/frontends/qt4/GuiView.cpp:2004
 #, fuzzy
 msgid "Document not loaded"
 msgstr "文档未读入"
 
-#: src/frontends/qt4/GuiView.cpp:2090
+#: src/frontends/qt4/GuiView.cpp:2089
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "保存文件 %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2100
+#: src/frontends/qt4/GuiView.cpp:2099
 #, fuzzy
 msgid "All documents saved."
 msgstr "未保存文档"
 
-#: src/frontends/qt4/GuiView.cpp:2347
+#: src/frontends/qt4/GuiView.cpp:2346
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
@@ -21780,7 +21778,7 @@ msgstr "词语已被更新。"
 msgid " Macro: %1$s: "
 msgstr "宏：%1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1475
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1479
 #: src/mathed/InsetMathSplit.cpp:75 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -21796,46 +21794,46 @@ msgstr "'%1$s' 中无竖向网格"
 msgid "Changing number of columns not allowed in 'cases': feature %1$s"
 msgstr "无法改变列数至 '%1$s'"
 
-#: src/mathed/InsetMathGrid.cpp:1379
+#: src/mathed/InsetMathGrid.cpp:1380
 msgid "Only one row"
 msgstr "仅一行"
 
-#: src/mathed/InsetMathGrid.cpp:1385
+#: src/mathed/InsetMathGrid.cpp:1386
 msgid "Only one column"
 msgstr "单列"
 
-#: src/mathed/InsetMathGrid.cpp:1393
+#: src/mathed/InsetMathGrid.cpp:1394
 msgid "No hline to delete"
 msgstr "没有hline"
 
-#: src/mathed/InsetMathGrid.cpp:1402
+#: src/mathed/InsetMathGrid.cpp:1403
 msgid "No vline to delete"
 msgstr "没有vline"
 
-#: src/mathed/InsetMathGrid.cpp:1431
+#: src/mathed/InsetMathGrid.cpp:1432
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "未知表格功能 '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1243 src/mathed/InsetMathHull.cpp:1251
+#: src/mathed/InsetMathHull.cpp:1247 src/mathed/InsetMathHull.cpp:1255
 msgid "No number"
 msgstr "无编号"
 
-#: src/mathed/InsetMathHull.cpp:1243 src/mathed/InsetMathHull.cpp:1251
+#: src/mathed/InsetMathHull.cpp:1247 src/mathed/InsetMathHull.cpp:1255
 msgid "Number"
 msgstr "编号"
 
-#: src/mathed/InsetMathHull.cpp:1448
+#: src/mathed/InsetMathHull.cpp:1452
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "无法改变行数至 '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1458
+#: src/mathed/InsetMathHull.cpp:1462
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "无法改变列数至 '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1468
+#: src/mathed/InsetMathHull.cpp:1472
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "无法向 '%1$s'添加水平网格线"

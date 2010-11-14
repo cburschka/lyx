@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-10-22 11:29+0200\n"
+"POT-Creation-Date: 2010-11-14 11:53+0100\n"
 "PO-Revision-Date: 2010-07-07 02:31+0100\n"
 "Last-Translator: Οδυσσέας Δαγκλής <o2d@freemail.gr>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -85,14 +85,14 @@ msgstr ""
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:862
 #: src/Buffer.cpp:2757 src/Buffer.cpp:2803 src/Buffer.cpp:2838
-#: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
-#: src/LyXFunc.cpp:1926 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:721 src/LyXFunc.cpp:871 src/LyXFunc.cpp:1048
+#: src/LyXFunc.cpp:1932 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1262
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1626
-#: src/frontends/qt4/GuiView.cpp:1818 src/frontends/qt4/GuiView.cpp:1870
-#: src/frontends/qt4/GuiView.cpp:1931 src/insets/InsetBibtex.cpp:144
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1625
+#: src/frontends/qt4/GuiView.cpp:1817 src/frontends/qt4/GuiView.cpp:1869
+#: src/frontends/qt4/GuiView.cpp:1930 src/insets/InsetBibtex.cpp:144
 msgid "&Cancel"
 msgstr "&Ακύρωση"
 
@@ -2399,16 +2399,6 @@ msgstr "&Ενεργοποιημένη"
 msgid "Maximum A&ge (in days):"
 msgstr "Μέ&γιστη Ηλικία (σε ημέρες):"
 
-#: src/frontends/qt4/ui/PrefDateUi.ui:33
-#: src/frontends/qt4/ui/PrefOutputUi.ui:61
-msgid "&Date format:"
-msgstr "&Μορφή ημερομηνίας:"
-
-#: src/frontends/qt4/ui/PrefDateUi.ui:43
-#: src/frontends/qt4/ui/PrefOutputUi.ui:71
-msgid "Date format for strftime output"
-msgstr "Μορφή ημερομηνίας για την έξοδο strftime"
-
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:25
 msgid "Display &Graphics"
 msgstr "Εμφάνιση &Γραφικών"
@@ -2833,6 +2823,14 @@ msgstr ""
 #: src/frontends/qt4/ui/PrefLatexUi.ui:262
 msgid "&DVI viewer paper size options:"
 msgstr "Επιλογές &μεγέθους σελίδας για προβολέα DVI"
+
+#: src/frontends/qt4/ui/PrefOutputUi.ui:61
+msgid "&Date format:"
+msgstr "&Μορφή ημερομηνίας:"
+
+#: src/frontends/qt4/ui/PrefOutputUi.ui:71
+msgid "Date format for strftime output"
+msgstr "Μορφή ημερομηνίας για την έξοδο strftime"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:96
 #, fuzzy
@@ -3266,7 +3264,7 @@ msgid "&User interface file:"
 msgstr "Αρχείο &διεπαφής χρήστη:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:721
-#: src/frontends/qt4/GuiView.cpp:1931
+#: src/frontends/qt4/GuiView.cpp:1930
 msgid "&Save"
 msgstr "Α&ποθήκευση"
 
@@ -11355,7 +11353,7 @@ msgstr "Αντιγραφή"
 
 #: lib/ui/stdcontext.inc:283 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:101
 #: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1069
-#: src/mathed/InsetMathGrid.cpp:1263 src/mathed/InsetMathNest.cpp:533
+#: src/mathed/InsetMathGrid.cpp:1264 src/mathed/InsetMathNest.cpp:533
 msgid "Paste"
 msgstr "Επικόλληση"
 
@@ -15271,9 +15269,9 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Αντικατάσταση τροποποιημένου αρχείου;"
 
-#: src/Buffer.cpp:862 src/Exporter.cpp:50 src/LyXFunc.cpp:1042
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1626
-#: src/frontends/qt4/GuiView.cpp:1818
+#: src/Buffer.cpp:862 src/Exporter.cpp:50 src/LyXFunc.cpp:1048
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1625
+#: src/frontends/qt4/GuiView.cpp:1817
 msgid "&Overwrite"
 msgstr "&Αντικατάσταση"
 
@@ -15560,7 +15558,7 @@ msgstr "Ανάκτηση από τον έλεγχο έκδοσης;"
 msgid "&Retrieve"
 msgstr "Α&νάκτηση"
 
-#: src/BufferParams.cpp:480
+#: src/BufferParams.cpp:482
 #, c-format
 msgid ""
 "The layout file requested by this document,\n"
@@ -15576,15 +15574,15 @@ msgstr ""
 "αδιαθεσιμότητα ενός αρχείου κλάσης ή διάταξης του LaTeX.\n"
 "Περισσότερες πληροφορίες στο έγγραφο Προσαρμογής.\n"
 
-#: src/BufferParams.cpp:486
+#: src/BufferParams.cpp:488
 msgid "Document class not available"
 msgstr "Η κλάση εγγράφου δεν είναι διαθέσιμη"
 
-#: src/BufferParams.cpp:487
+#: src/BufferParams.cpp:489
 msgid "LyX will not be able to produce output."
 msgstr "Το LyX δεν θα μπορέσει να παράγει έξοδο."
 
-#: src/BufferParams.cpp:1660
+#: src/BufferParams.cpp:1662
 #, c-format
 msgid ""
 "The document class %1$s could not be found. A default textclass with default "
@@ -15596,20 +15594,20 @@ msgstr ""
 "παράγει έξοδο εκτός αν επιλεγεί μια σωστή textclass από τον διάλογο "
 "ρυθμίσεων εγγράφου."
 
-#: src/BufferParams.cpp:1665
+#: src/BufferParams.cpp:1667
 msgid "Document class not found"
 msgstr "Η κλάση εγγράφων δεν βρέθηκε"
 
-#: src/BufferParams.cpp:1672 src/LyXFunc.cpp:752
+#: src/BufferParams.cpp:1674 src/LyXFunc.cpp:752
 #, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "Δεν ήταν δυνατή η φόρτωση της κλάσης εγγράφων %1$s."
 
-#: src/BufferParams.cpp:1674 src/LyXFunc.cpp:754
+#: src/BufferParams.cpp:1676 src/LyXFunc.cpp:754
 msgid "Could not load class"
 msgstr "Δεν ήταν δυνατή η φόρτωση της κλάσης"
 
-#: src/BufferParams.cpp:1736
+#: src/BufferParams.cpp:1738
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -15622,15 +15620,15 @@ msgstr ""
 "διαθέσιμων μονάδων. Εάν την εγκαταστήσατε\n"
 "πρόσφατα, επαναρυθμίστε το LyX.\n"
 
-#: src/BufferParams.cpp:1740
+#: src/BufferParams.cpp:1742
 msgid "Module not available"
 msgstr "Η μονάδα δεν είναι διαθέσιμη"
 
-#: src/BufferParams.cpp:1741
+#: src/BufferParams.cpp:1743
 msgid "Some layouts may not be available."
 msgstr "Κάποιες διατάξεις πιθανόν να μην είναι διαθέσιμες."
 
-#: src/BufferParams.cpp:1748
+#: src/BufferParams.cpp:1750
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -15641,20 +15639,20 @@ msgstr ""
 "είναι διαθέσιμο στην εγκατάσταση του LyX.\n"
 "H έξοδος LaTeX ίσως να μην είναι εφικτή.\n"
 
-#: src/BufferParams.cpp:1751
+#: src/BufferParams.cpp:1753
 msgid "Package not available"
 msgstr "Πακέτο μη διαθέσιμο"
 
-#: src/BufferParams.cpp:1756
+#: src/BufferParams.cpp:1758
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "Σφάλμα ανάγνωσης μονάδας %1$s\n"
 
-#: src/BufferParams.cpp:1757 src/BufferParams.cpp:1763
+#: src/BufferParams.cpp:1759 src/BufferParams.cpp:1765
 msgid "Read Error"
 msgstr "Σφάλμα Ανάγνωσης"
 
-#: src/BufferParams.cpp:1762
+#: src/BufferParams.cpp:1764
 msgid "Error reading internal layout information"
 msgstr "Σφάλμα ανάγνωσης εσωτερικής πληροφορίας διάταξης"
 
@@ -16251,7 +16249,7 @@ msgstr ""
 msgid "Undefined flex inset"
 msgstr "Μη ορισμένο ένθεμα flex"
 
-#: src/Exporter.cpp:45 src/LyXFunc.cpp:1038
+#: src/Exporter.cpp:45 src/LyXFunc.cpp:1044
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -16262,7 +16260,7 @@ msgstr ""
 "\n"
 "Θέλετε να το αντικαταστήσετε;"
 
-#: src/Exporter.cpp:48 src/LyXFunc.cpp:1041
+#: src/Exporter.cpp:48 src/LyXFunc.cpp:1047
 msgid "Overwrite file?"
 msgstr "Αντικατάσταση αρχείου;"
 
@@ -16384,7 +16382,7 @@ msgstr "  Αριθμός %1$s"
 msgid "Cannot view file"
 msgstr "Δεν είναι δυνατή η προβολή του αρχείου"
 
-#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1222
+#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1228
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Το αρχείο δεν υπάρχει: %1$s"
@@ -16793,7 +16791,7 @@ msgstr ""
 "\n"
 "Θέλετε να αποθηκεύσετε το έγγραφο;"
 
-#: src/LyXFunc.cpp:713 src/frontends/qt4/GuiView.cpp:1930
+#: src/LyXFunc.cpp:713 src/frontends/qt4/GuiView.cpp:1929
 msgid "Save changed document?"
 msgstr "Αποθήκευση τροποποιημένου εγγράφου;"
 
@@ -16825,7 +16823,7 @@ msgstr ""
 msgid "Print document failed"
 msgstr "Η εκτύπωση του εγγράφου απέτυχε"
 
-#: src/LyXFunc.cpp:863
+#: src/LyXFunc.cpp:867
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -16834,65 +16832,65 @@ msgstr ""
 "Οποιαδήποτε τροποποίηση θα χαθεί. Θέλετε σίγουρα να επαναφέρετε την "
 "αποθηκευμένη έκδοση του εγγράφου %1$s;"
 
-#: src/LyXFunc.cpp:865
+#: src/LyXFunc.cpp:870
 msgid "Revert to saved document?"
 msgstr "Επαναφορά στο αποθηκευμένο αρχείο;"
 
-#: src/LyXFunc.cpp:866 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:871 src/LyXVC.cpp:196
 msgid "&Revert"
 msgstr "&Επαναφορά"
 
-#: src/LyXFunc.cpp:1079 src/Text3.cpp:1628
+#: src/LyXFunc.cpp:1085 src/Text3.cpp:1628
 msgid "Missing argument"
 msgstr "Λείπει όρισμα"
 
-#: src/LyXFunc.cpp:1091
+#: src/LyXFunc.cpp:1097
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Άνοιγμα αρχείου βοήθειας %1$s..."
 
-#: src/LyXFunc.cpp:1143 src/VCBackend.cpp:61 src/VCBackend.cpp:595
+#: src/LyXFunc.cpp:1149 src/VCBackend.cpp:61 src/VCBackend.cpp:595
 #: src/VCBackend.cpp:662 src/VCBackend.cpp:668 src/VCBackend.cpp:689
 msgid "Revision control error."
 msgstr "Σφάλμα ελέγχου αναθεώρησης."
 
-#: src/LyXFunc.cpp:1144
+#: src/LyXFunc.cpp:1150
 msgid "Error when setting the locking property."
 msgstr "Σφάλμα κατά τη θέση της ιδιότητας κλειδώματος."
 
-#: src/LyXFunc.cpp:1375
+#: src/LyXFunc.cpp:1381
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Άνοιγμα εγγράφου παιδιού %1$s..."
 
-#: src/LyXFunc.cpp:1537
+#: src/LyXFunc.cpp:1543
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Οι προεπιλογές του εγγράφου αποθηκεύτηκαν στο %1$s"
 
-#: src/LyXFunc.cpp:1540
+#: src/LyXFunc.cpp:1546
 msgid "Unable to save document defaults"
 msgstr "Αδυναμία αποθήκευσης των προεπιλεγμένων ρυθμίσεων του εγγράφου"
 
-#: src/LyXFunc.cpp:1696 src/LyXVC.cpp:151
+#: src/LyXFunc.cpp:1702 src/LyXVC.cpp:151
 msgid "LyX VC: Log Message"
 msgstr "LyX Έλεγχος Έκδοσης: Μήνυμα Ημερολογίου"
 
-#: src/LyXFunc.cpp:1705
+#: src/LyXFunc.cpp:1711
 msgid "Directory is not accessible."
 msgstr "Ο φάκελος δεν είναι προσβάσιμος."
 
-#: src/LyXFunc.cpp:1907
+#: src/LyXFunc.cpp:1913
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Το έγγραφο %1$s επαναφορτώθηκε."
 
-#: src/LyXFunc.cpp:1909
+#: src/LyXFunc.cpp:1915
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "Δεν ήταν δυνατή η επαναφόρτωση του εγγράφου %1$s."
 
-#: src/LyXFunc.cpp:1922
+#: src/LyXFunc.cpp:1928
 #, c-format
 msgid ""
 "Document \n"
@@ -16903,19 +16901,19 @@ msgstr ""
 "%1$s\n"
 " έχει τροποποιηθεί εξωτερικά. Επαναφόρτωση τώρα; Κάθε τοπική αλλαγή θα χαθεί."
 
-#: src/LyXFunc.cpp:1925
+#: src/LyXFunc.cpp:1931
 msgid "Reload externally changed document?"
 msgstr "Επαναφόρτωση εξωτερικά τροποποιημένου εγγράφου;"
 
-#: src/LyXFunc.cpp:1926 src/buffer_funcs.cpp:77
+#: src/LyXFunc.cpp:1932 src/buffer_funcs.cpp:77
 msgid "&Reload"
 msgstr "&Επαναφόρτωση"
 
-#: src/LyXFunc.cpp:1969
+#: src/LyXFunc.cpp:1975
 msgid "Welcome to LyX!"
 msgstr "Καλωσήρθατε στο LyX!"
 
-#: src/LyXFunc.cpp:1990
+#: src/LyXFunc.cpp:1996
 msgid "Converting document to new document class..."
 msgstr "Μετατροπή εγγράφου σε νέα κλάση εγγράφου..."
 
@@ -17689,7 +17687,7 @@ msgstr "Δεν υπάρχει τίποτα για το ευρετήριο!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Δεν είναι δυνατή η δεικτοδότηση περισσότερων από μία παραγράφων!"
 
-#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1567
+#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1571
 msgid "Math editor mode"
 msgstr "Κατάσταση λειτουργίας επεξεργαστή μαθηματικών"
 
@@ -18085,11 +18083,11 @@ msgstr ""
 "Η set-color \"%1$s\" απέτυχε - το χρώμα δεν έχει οριστεί ή δεν μπορεί να "
 "επαναοριστεί"
 
-#: src/frontends/qt4/GuiApplication.cpp:1321
+#: src/frontends/qt4/GuiApplication.cpp:1322
 msgid "The current document was closed."
 msgstr "Το τρέχον έγγραφο έκλεισε."
 
-#: src/frontends/qt4/GuiApplication.cpp:1331
+#: src/frontends/qt4/GuiApplication.cpp:1332
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -18101,12 +18099,12 @@ msgstr ""
 "\n"
 "Εξαίρεση:"
 
-#: src/frontends/qt4/GuiApplication.cpp:1335
-#: src/frontends/qt4/GuiApplication.cpp:1341
+#: src/frontends/qt4/GuiApplication.cpp:1336
+#: src/frontends/qt4/GuiApplication.cpp:1342
 msgid "Software exception Detected"
 msgstr "Ανιχνεύθηκε εξαίρεση λογισμικού"
 
-#: src/frontends/qt4/GuiApplication.cpp:1339
+#: src/frontends/qt4/GuiApplication.cpp:1340
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -18114,12 +18112,12 @@ msgstr ""
 "Το LyX εντόπισε μια αξιοπερίεργη εξαίρεση, θα επιχειρήσει τώρα να "
 "αποθηκεύσει όλα τα μη αποθηκευμένα έγγραφα και να τερματιστεί."
 
-#: src/frontends/qt4/GuiApplication.cpp:1501
-#: src/frontends/qt4/GuiApplication.cpp:1506
+#: src/frontends/qt4/GuiApplication.cpp:1502
+#: src/frontends/qt4/GuiApplication.cpp:1507
 msgid "Could not find UI definition file"
 msgstr "Δεν βρέθηκε το αρχείο ορισμού διεπαφής χρήστη"
 
-#: src/frontends/qt4/GuiApplication.cpp:1502
+#: src/frontends/qt4/GuiApplication.cpp:1503
 #, fuzzy, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -18130,7 +18128,7 @@ msgstr ""
 "%1$s.\n"
 "Παρακαλούμε ελέγξτε την εγκατάστασή σας."
 
-#: src/frontends/qt4/GuiApplication.cpp:1507
+#: src/frontends/qt4/GuiApplication.cpp:1508
 #, fuzzy, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -18145,11 +18143,11 @@ msgstr ""
 "Κοιτάξτε στο Εργαλεία>Προτιμήσεις>Διεπαφή Χρήστη και\n"
 "ελέγξτε ποιό αρχείο διεπαφής χρήστη χρησιμοποιείτε."
 
-#: src/frontends/qt4/GuiApplication.cpp:1515
+#: src/frontends/qt4/GuiApplication.cpp:1516
 msgid "Could not find default UI file"
 msgstr "Δεν ήταν δυνατή η εύρεση του προκαθορισμένου αρχείου διεπαφής χρήστη"
 
-#: src/frontends/qt4/GuiApplication.cpp:1516
+#: src/frontends/qt4/GuiApplication.cpp:1517
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -18169,9 +18167,9 @@ msgstr "Βιβλιογραφία BibTeX"
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiDocument.cpp:1304
 #: src/frontends/qt4/GuiExternal.cpp:672 src/frontends/qt4/GuiGraphics.cpp:849
-#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1370
-#: src/frontends/qt4/GuiView.cpp:1428 src/frontends/qt4/GuiView.cpp:1576
-#: src/frontends/qt4/GuiView.cpp:1704 src/frontends/qt4/GuiView.cpp:1788
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1376
+#: src/frontends/qt4/GuiView.cpp:1427 src/frontends/qt4/GuiView.cpp:1575
+#: src/frontends/qt4/GuiView.cpp:1703 src/frontends/qt4/GuiView.cpp:1787
 msgid "Documents|#o#O"
 msgstr "Έγγραφα|#o#O"
 
@@ -18379,10 +18377,10 @@ msgstr "%1$s Αρχεία"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Επιλέξτε ένα όνομα αρχείου για να αποθηκεύσετε το επικολλημένο γραφικό"
 
-#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1447
-#: src/frontends/qt4/GuiView.cpp:1596 src/frontends/qt4/GuiView.cpp:1612
-#: src/frontends/qt4/GuiView.cpp:1629 src/frontends/qt4/GuiView.cpp:1721
-#: src/frontends/qt4/GuiView.cpp:1764
+#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1446
+#: src/frontends/qt4/GuiView.cpp:1595 src/frontends/qt4/GuiView.cpp:1611
+#: src/frontends/qt4/GuiView.cpp:1628 src/frontends/qt4/GuiView.cpp:1720
+#: src/frontends/qt4/GuiView.cpp:1763
 msgid "Canceled."
 msgstr "Ακυρώθηκε."
 
@@ -20003,55 +20001,55 @@ msgstr "Μεγάλα εικονίδια"
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Άγνωστη γραμμή εργαλείων \"%1$s\""
 
-#: src/frontends/qt4/GuiView.cpp:1369
+#: src/frontends/qt4/GuiView.cpp:1375
 msgid "Select template file"
 msgstr "Επιλογή αρχείου προτύπου"
 
-#: src/frontends/qt4/GuiView.cpp:1371 src/frontends/qt4/GuiView.cpp:1789
+#: src/frontends/qt4/GuiView.cpp:1377 src/frontends/qt4/GuiView.cpp:1788
 msgid "Templates|#T#t"
 msgstr "Πρότυπα|#T#t"
 
-#: src/frontends/qt4/GuiView.cpp:1374 src/frontends/qt4/GuiView.cpp:1432
-#: src/frontends/qt4/GuiView.cpp:1710 src/frontends/qt4/GuiView.cpp:1796
+#: src/frontends/qt4/GuiView.cpp:1380 src/frontends/qt4/GuiView.cpp:1431
+#: src/frontends/qt4/GuiView.cpp:1709 src/frontends/qt4/GuiView.cpp:1795
 msgid "LyX Documents (*.lyx)"
 msgstr "Έγγραφα LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1391
+#: src/frontends/qt4/GuiView.cpp:1397
 msgid "Document not loaded."
 msgstr "Το έγγραφο δεν φορτώθηκε."
 
-#: src/frontends/qt4/GuiView.cpp:1427
+#: src/frontends/qt4/GuiView.cpp:1426
 msgid "Select document to open"
 msgstr "Επιλογή εγγράφου για άνοιγμα"
 
-#: src/frontends/qt4/GuiView.cpp:1429 src/frontends/qt4/GuiView.cpp:1577
-#: src/frontends/qt4/GuiView.cpp:1705
+#: src/frontends/qt4/GuiView.cpp:1428 src/frontends/qt4/GuiView.cpp:1576
+#: src/frontends/qt4/GuiView.cpp:1704
 msgid "Examples|#E#e"
 msgstr "Παραδείγματα|#E#e"
 
-#: src/frontends/qt4/GuiView.cpp:1433
+#: src/frontends/qt4/GuiView.cpp:1432
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "Έγγραφα LyX-1.3.x (*.lyx13)"
 
-#: src/frontends/qt4/GuiView.cpp:1434
+#: src/frontends/qt4/GuiView.cpp:1433
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "Έγγραφα LyX-1.4.x (*.lyx14)"
 
-#: src/frontends/qt4/GuiView.cpp:1435
+#: src/frontends/qt4/GuiView.cpp:1434
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "Έγγραφα LyX-1.5.x (*.lyx15)"
 
-#: src/frontends/qt4/GuiView.cpp:1436
+#: src/frontends/qt4/GuiView.cpp:1435
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "Έγγραφα LyX-1.6.x (*.lyx16)"
 
-#: src/frontends/qt4/GuiView.cpp:1461 src/frontends/qt4/Validator.cpp:182
+#: src/frontends/qt4/GuiView.cpp:1460 src/frontends/qt4/Validator.cpp:182
 #: src/insets/ExternalSupport.cpp:367 src/insets/InsetBibtex.cpp:287
 #: src/insets/InsetGraphics.cpp:598 src/insets/InsetInclude.cpp:477
 msgid "Invalid filename"
 msgstr "Άκυρο όνομα αρχείου"
 
-#: src/frontends/qt4/GuiView.cpp:1462
+#: src/frontends/qt4/GuiView.cpp:1461
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -20062,40 +20060,40 @@ msgstr ""
 "%1$s\n"
 "δεν υπάρχει."
 
-#: src/frontends/qt4/GuiView.cpp:1477
+#: src/frontends/qt4/GuiView.cpp:1476
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Άνοιγμα εγγράφου %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1486
+#: src/frontends/qt4/GuiView.cpp:1485
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Το έγγραφο %1$s έχει ανοιχτεί."
 
-#: src/frontends/qt4/GuiView.cpp:1489
+#: src/frontends/qt4/GuiView.cpp:1488
 msgid "Version control detected."
 msgstr "Εντοπίστηκε έλεγχος έκδοσης."
 
-#: src/frontends/qt4/GuiView.cpp:1491
+#: src/frontends/qt4/GuiView.cpp:1490
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Δεν ήταν δυνατό το άνοιγμα του εγγράφου %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1520
+#: src/frontends/qt4/GuiView.cpp:1519
 msgid "Couldn't import file"
 msgstr "Δεν ήταν δυνατή η εισαγωγή του αρχείου"
 
-#: src/frontends/qt4/GuiView.cpp:1521
+#: src/frontends/qt4/GuiView.cpp:1520
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Καμιά πληροφορία για την εισαγωγή του τύπου %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:1572
+#: src/frontends/qt4/GuiView.cpp:1571
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Επιλογή %1$s αρχείου για εισαγωγή"
 
-#: src/frontends/qt4/GuiView.cpp:1623 src/frontends/qt4/GuiView.cpp:1813
+#: src/frontends/qt4/GuiView.cpp:1622 src/frontends/qt4/GuiView.cpp:1812
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -20106,49 +20104,49 @@ msgstr ""
 "\n"
 "Θέλετε να το αντικαταστήσετε;"
 
-#: src/frontends/qt4/GuiView.cpp:1625 src/frontends/qt4/GuiView.cpp:1817
+#: src/frontends/qt4/GuiView.cpp:1624 src/frontends/qt4/GuiView.cpp:1816
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "Εκτύπωση εγγράφου"
 
-#: src/frontends/qt4/GuiView.cpp:1634
+#: src/frontends/qt4/GuiView.cpp:1633
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Εισαγωγή του %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1637
+#: src/frontends/qt4/GuiView.cpp:1636
 msgid "imported."
 msgstr "εισήχθη."
 
-#: src/frontends/qt4/GuiView.cpp:1639
+#: src/frontends/qt4/GuiView.cpp:1638
 msgid "file not imported!"
 msgstr "το αρχείο δεν εισήχθη!"
 
-#: src/frontends/qt4/GuiView.cpp:1703
+#: src/frontends/qt4/GuiView.cpp:1702
 msgid "Select LyX document to insert"
 msgstr "Επιλέξτε έγγραφο LyX προς εισαγωγή"
 
-#: src/frontends/qt4/GuiView.cpp:1737
+#: src/frontends/qt4/GuiView.cpp:1736
 msgid "Absolute filename expected."
 msgstr "Αναμένεται απόλυτο όνομα αρχείου."
 
-#: src/frontends/qt4/GuiView.cpp:1749
+#: src/frontends/qt4/GuiView.cpp:1748
 msgid "Select file to insert"
 msgstr "Επιλέξτε αρχείο προς εισαγωγή"
 
-#: src/frontends/qt4/GuiView.cpp:1753
+#: src/frontends/qt4/GuiView.cpp:1752
 msgid "All Files (*)"
 msgstr "Όλα τα Αρχεία (*)"
 
-#: src/frontends/qt4/GuiView.cpp:1786
+#: src/frontends/qt4/GuiView.cpp:1785
 msgid "Choose a filename to save document as"
 msgstr "Επιλέξτε ένα όνομα αρχείου για αποθήκευση του εγγράφου"
 
-#: src/frontends/qt4/GuiView.cpp:1818 src/frontends/qt4/GuiView.cpp:1870
+#: src/frontends/qt4/GuiView.cpp:1817 src/frontends/qt4/GuiView.cpp:1869
 msgid "&Rename"
 msgstr "&Μετονομασία"
 
-#: src/frontends/qt4/GuiView.cpp:1866
+#: src/frontends/qt4/GuiView.cpp:1865
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -20159,15 +20157,15 @@ msgstr ""
 "\n"
 "Θέλετε να μετονομάσετε το έγγραφο και να προσπαθήσετε ξανά;"
 
-#: src/frontends/qt4/GuiView.cpp:1869
+#: src/frontends/qt4/GuiView.cpp:1868
 msgid "Rename and save?"
 msgstr "Μετονομασία και αποθήκευση;"
 
-#: src/frontends/qt4/GuiView.cpp:1870
+#: src/frontends/qt4/GuiView.cpp:1869
 msgid "&Retry"
 msgstr "Δοκιμή &Ξανά"
 
-#: src/frontends/qt4/GuiView.cpp:1928
+#: src/frontends/qt4/GuiView.cpp:1927
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -20178,23 +20176,23 @@ msgstr ""
 "\n"
 "Θέλετε να αποθηκεύσετε το έγγραφο ή να απορρίψετε τις αλλαγές;"
 
-#: src/frontends/qt4/GuiView.cpp:1931
+#: src/frontends/qt4/GuiView.cpp:1930
 msgid "&Discard"
 msgstr "&Απόρριψη"
 
-#: src/frontends/qt4/GuiView.cpp:2005
+#: src/frontends/qt4/GuiView.cpp:2004
 msgid "Document not loaded"
 msgstr "Το έγγραφο δεν φορτώθηκε"
 
-#: src/frontends/qt4/GuiView.cpp:2090
+#: src/frontends/qt4/GuiView.cpp:2089
 msgid "Saving all documents..."
 msgstr "Αποθήκευση όλων των εγγράφων..."
 
-#: src/frontends/qt4/GuiView.cpp:2100
+#: src/frontends/qt4/GuiView.cpp:2099
 msgid "All documents saved."
 msgstr "Όλα τα έγγραφα αποθηκεύτηκαν."
 
-#: src/frontends/qt4/GuiView.cpp:2347
+#: src/frontends/qt4/GuiView.cpp:2346
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s άγνωστη εντολή!"
@@ -21322,7 +21320,7 @@ msgstr " συμβολοσειρές έχουν αντικατασταθεί."
 msgid " Macro: %1$s: "
 msgstr " Μακροεντολή: %1$s:"
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1475
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1479
 #: src/mathed/InsetMathSplit.cpp:75 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -21338,46 +21336,46 @@ msgstr "Δεν είναι δυνατή η προσθήκη κατακόρυφω�
 msgid "Changing number of columns not allowed in 'cases': feature %1$s"
 msgstr "Δεν είναι δυνατή η αλλαγή αριθμού στηλών στο '%1$s'"
 
-#: src/mathed/InsetMathGrid.cpp:1379
+#: src/mathed/InsetMathGrid.cpp:1380
 msgid "Only one row"
 msgstr "Μόνο μία γραμμή"
 
-#: src/mathed/InsetMathGrid.cpp:1385
+#: src/mathed/InsetMathGrid.cpp:1386
 msgid "Only one column"
 msgstr "Μόνο μία στήλη"
 
-#: src/mathed/InsetMathGrid.cpp:1393
+#: src/mathed/InsetMathGrid.cpp:1394
 msgid "No hline to delete"
 msgstr "Δεν υπάρχει hline για διαγραφή"
 
-#: src/mathed/InsetMathGrid.cpp:1402
+#: src/mathed/InsetMathGrid.cpp:1403
 msgid "No vline to delete"
 msgstr "Δεν υπάρχει vline για διαγραφή"
 
-#: src/mathed/InsetMathGrid.cpp:1431
+#: src/mathed/InsetMathGrid.cpp:1432
 #, fuzzy, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Άγνωστη γραμμή εργαλείων \"%1$s\""
 
-#: src/mathed/InsetMathHull.cpp:1243 src/mathed/InsetMathHull.cpp:1251
+#: src/mathed/InsetMathHull.cpp:1247 src/mathed/InsetMathHull.cpp:1255
 msgid "No number"
 msgstr "Κανένας αριθμός"
 
-#: src/mathed/InsetMathHull.cpp:1243 src/mathed/InsetMathHull.cpp:1251
+#: src/mathed/InsetMathHull.cpp:1247 src/mathed/InsetMathHull.cpp:1255
 msgid "Number"
 msgstr "Αριθμός"
 
-#: src/mathed/InsetMathHull.cpp:1448
+#: src/mathed/InsetMathHull.cpp:1452
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Δεν είναι δυνατή η αλλαγή αριθμού γραμμών στο '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1458
+#: src/mathed/InsetMathHull.cpp:1462
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Δεν είναι δυνατή η αλλαγή αριθμού στηλών στο '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1468
+#: src/mathed/InsetMathHull.cpp:1472
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Δεν είναι δυνατή η προσθήκη οριζόντιων γραμμών πλέγματος στο '%1$s'"

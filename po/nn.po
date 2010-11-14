@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-10-26 15:24+0200\n"
+"POT-Creation-Date: 2010-11-14 11:53+0100\n"
 "PO-Revision-Date: 2007-06-26 17:52+0100\n"
 "Last-Translator: Ingar Pareliussen <ingarp_ved@samfundet.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -11838,7 +11838,7 @@ msgstr "Kopier"
 
 #: lib/ui/stdcontext.inc:283 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:101
 #: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1069
-#: src/mathed/InsetMathGrid.cpp:1263 src/mathed/InsetMathNest.cpp:533
+#: src/mathed/InsetMathGrid.cpp:1264 src/mathed/InsetMathNest.cpp:533
 msgid "Paste"
 msgstr "Lim inn"
 
@@ -16152,7 +16152,7 @@ msgstr "Vil du laste inn frå versjonkontroll?"
 msgid "&Retrieve"
 msgstr "&Hent inn"
 
-#: src/BufferParams.cpp:480
+#: src/BufferParams.cpp:482
 #, c-format
 msgid ""
 "The layout file requested by this document,\n"
@@ -16169,15 +16169,15 @@ msgstr ""
 "ikkje er tilgjengeleg. Sjå i Tilpassing under\n"
 "hjelp menyen for meir informasjon.\n"
 
-#: src/BufferParams.cpp:486
+#: src/BufferParams.cpp:488
 msgid "Document class not available"
 msgstr "Dokumentklassa er ikkje tilgjengeleg"
 
-#: src/BufferParams.cpp:487
+#: src/BufferParams.cpp:489
 msgid "LyX will not be able to produce output."
 msgstr "LyX kan ikkje lage eit korrekt resultat."
 
-#: src/BufferParams.cpp:1660
+#: src/BufferParams.cpp:1662
 #, c-format
 msgid ""
 "The document class %1$s could not be found. A default textclass with default "
@@ -16185,12 +16185,12 @@ msgid ""
 "correct textclass is selected from the document settings dialog."
 msgstr ""
 
-#: src/BufferParams.cpp:1665
+#: src/BufferParams.cpp:1667
 #, fuzzy
 msgid "Document class not found"
 msgstr "Dokumentklassa er ikkje tilgjengeleg"
 
-#: src/BufferParams.cpp:1672 src/LyXFunc.cpp:752
+#: src/BufferParams.cpp:1674 src/LyXFunc.cpp:752
 #, fuzzy, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr ""
@@ -16198,12 +16198,12 @@ msgstr ""
 "%1$s\n"
 "kunne ikkje bli lest."
 
-#: src/BufferParams.cpp:1674 src/LyXFunc.cpp:754
+#: src/BufferParams.cpp:1676 src/LyXFunc.cpp:754
 #, fuzzy
 msgid "Could not load class"
 msgstr "Kan ikkje endra klassa"
 
-#: src/BufferParams.cpp:1736
+#: src/BufferParams.cpp:1738
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -16212,17 +16212,17 @@ msgid ""
 "probably need to reconfigure LyX.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1740
+#: src/BufferParams.cpp:1742
 #, fuzzy
 msgid "Module not available"
 msgstr "Dokumentklassa er ikkje tilgjengeleg"
 
-#: src/BufferParams.cpp:1741
+#: src/BufferParams.cpp:1743
 #, fuzzy
 msgid "Some layouts may not be available."
 msgstr "Dokumentklassa er ikkje tilgjengeleg"
 
-#: src/BufferParams.cpp:1748
+#: src/BufferParams.cpp:1750
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -16230,22 +16230,22 @@ msgid ""
 "may not be possible.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1751
+#: src/BufferParams.cpp:1753
 #, fuzzy
 msgid "Package not available"
 msgstr "Dokumentklassa er ikkje tilgjengeleg"
 
-#: src/BufferParams.cpp:1756
+#: src/BufferParams.cpp:1758
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1757 src/BufferParams.cpp:1763
+#: src/BufferParams.cpp:1759 src/BufferParams.cpp:1765
 #, fuzzy
 msgid "Read Error"
 msgstr "Søk feil"
 
-#: src/BufferParams.cpp:1762
+#: src/BufferParams.cpp:1764
 #, fuzzy
 msgid "Error reading internal layout information"
 msgstr "Generell informasjon"
@@ -18242,7 +18242,7 @@ msgstr "Ingenting å lage indeks av!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan ikkje lage indeks av meir enn eit avsnitt!"
 
-#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1567
+#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1571
 msgid "Math editor mode"
 msgstr "Mattemodus"
 
@@ -22010,7 +22010,7 @@ msgstr " tekstane har blitt bytta ut."
 msgid " Macro: %1$s: "
 msgstr "Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1475
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1479
 #: src/mathed/InsetMathSplit.cpp:75 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -22026,46 +22026,46 @@ msgstr "Ingen loddrette linjer i rutenettet '%1$s'"
 msgid "Changing number of columns not allowed in 'cases': feature %1$s"
 msgstr "Kan ikkje endre talet på kolonner i '%1$s'"
 
-#: src/mathed/InsetMathGrid.cpp:1379
+#: src/mathed/InsetMathGrid.cpp:1380
 msgid "Only one row"
 msgstr "Berre ei rad"
 
-#: src/mathed/InsetMathGrid.cpp:1385
+#: src/mathed/InsetMathGrid.cpp:1386
 msgid "Only one column"
 msgstr "Berre ei kolonne"
 
-#: src/mathed/InsetMathGrid.cpp:1393
+#: src/mathed/InsetMathGrid.cpp:1394
 msgid "No hline to delete"
 msgstr "Har inga vassrettlinje å slette"
 
-#: src/mathed/InsetMathGrid.cpp:1402
+#: src/mathed/InsetMathGrid.cpp:1403
 msgid "No vline to delete"
 msgstr "Har inga loddrettlinje å slette"
 
-#: src/mathed/InsetMathGrid.cpp:1431
+#: src/mathed/InsetMathGrid.cpp:1432
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Ukjent tabellval '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1243 src/mathed/InsetMathHull.cpp:1251
+#: src/mathed/InsetMathHull.cpp:1247 src/mathed/InsetMathHull.cpp:1255
 msgid "No number"
 msgstr "Ingen nummer"
 
-#: src/mathed/InsetMathHull.cpp:1243 src/mathed/InsetMathHull.cpp:1251
+#: src/mathed/InsetMathHull.cpp:1247 src/mathed/InsetMathHull.cpp:1255
 msgid "Number"
 msgstr "Nummer"
 
-#: src/mathed/InsetMathHull.cpp:1448
+#: src/mathed/InsetMathHull.cpp:1452
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Kan ikkje endre talet på radar i '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1458
+#: src/mathed/InsetMathHull.cpp:1462
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Kan ikkje endre talet på kolonner i '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1468
+#: src/mathed/InsetMathHull.cpp:1472
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Kan ikkje leggje til fleire vassrette linjer i rutenettet '%1$s'"
