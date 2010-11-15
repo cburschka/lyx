@@ -2606,82 +2606,73 @@ msgid "&Numbering"
 msgstr "Èí&slování"
 
 #: src/frontends/qt4/ui/OutputUi.ui:19
-#, fuzzy
 msgid "Output Format"
-msgstr "Výstup je prázdný"
+msgstr "Výstupní formát"
 
 #: src/frontends/qt4/ui/OutputUi.ui:42 src/frontends/qt4/ui/OutputUi.ui:55
-#, fuzzy
 msgid "Specify the default output format (for view/update)"
-msgstr "Nastavení standardní velikosti papíru."
+msgstr "Nastavit standardní výstupní formát (pro prohlí¾ení a aktualizaci výstupu)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:45
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:177
-#, fuzzy
 msgid "De&fault Output Format:"
-msgstr "&Standarní tiskárna:"
+msgstr "&Standarní výstupní formát:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:64
 msgid "Use the XeTeX processing engine"
-msgstr ""
+msgstr "Pro kompilaci pou¾ít XeTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:67
 msgid "Use &XeTeX"
-msgstr ""
+msgstr "Pou¾ít &XeTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:77
 msgid "Enable forward/reverse search (e.g., SyncTeX)"
-msgstr ""
+msgstr "Umo¾nit zpìtné/dopøedné vyhledávání mezi editorem a výstupem (napø. SyncTeX)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:80
 msgid "S&ynchronize with Output"
-msgstr ""
+msgstr "S&ynchronizovat s výstupem"
 
 #: src/frontends/qt4/ui/OutputUi.ui:97
-#, fuzzy
 msgid "C&ustom Macro:"
-msgstr "Customer no.:"
+msgstr "&Vlastní makro:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:107
-#, fuzzy
 msgid "Custom LaTeX preamble macro"
-msgstr "Preambule LaTeXu"
+msgstr "Vlastní makro do preambule LaTeX-u"
 
 #: src/frontends/qt4/ui/OutputUi.ui:122
-#, fuzzy
 msgid "XHTML Output Options"
-msgstr "Nastavení Matematiky"
+msgstr "Volby pro XHTML výstup"
 
 #: src/frontends/qt4/ui/OutputUi.ui:131
 msgid "Whether to comply strictly with XHTML 1.1."
-msgstr ""
+msgstr "Za¹krtnìte pro striktní dodr¾ování standardu XHTML 1.1."
 
 #: src/frontends/qt4/ui/OutputUi.ui:134
 msgid "&Strict XHTML 1.1"
-msgstr ""
+msgstr "&Striktní XHTML 1.1"
 
 #: src/frontends/qt4/ui/OutputUi.ui:147
-#, fuzzy
 msgid "&Math Output:"
-msgstr "Nastavení Matematiky"
+msgstr "&Výtup vzorcù:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:163
 msgid "Format to use for math output."
-msgstr ""
+msgstr "Jaký formát pou¾ít pro zobrazení matematických vzorcù"
 
 #: src/frontends/qt4/ui/OutputUi.ui:167
-#, fuzzy
 msgid "MathML"
-msgstr "Matematika|M"
+msgstr "MathML"
 
 #: src/frontends/qt4/ui/OutputUi.ui:172 lib/configure.py:550
 msgid "HTML"
 msgstr "HTML"
 
 #: src/frontends/qt4/ui/OutputUi.ui:177
-#, fuzzy
 msgid "Images"
-msgstr "Stránky"
+msgstr "Obrázky"
 
 #: src/frontends/qt4/ui/OutputUi.ui:182 lib/layouts/aapaper.layout:61
 #: lib/layouts/egs.layout:619 lib/languages:4
@@ -2691,13 +2682,12 @@ msgid "LaTeX"
 msgstr "LaTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:196
-#, fuzzy
 msgid "Math &Image Scaling:"
-msgstr "Mat. mezery"
+msgstr "&Mìøítko obrázkù:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:212
 msgid "Scaling factor for images used for math output."
-msgstr ""
+msgstr "Mìøítko pro zvìt¹ení obrázkù pou¾itých pro výstup vzorcù"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:28
 msgid "&Use hyperref support"
