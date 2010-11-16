@@ -130,9 +130,6 @@ End
 \output_changes false
 \html_math_output 0
 \html_be_strict true
-\author 1 "ab" 
-\author 2 "bbb" 
-\author 3 "Stephan Witt" 
 \end_header
 
 \begin_body
@@ -4474,13 +4471,7 @@ xymatrix
 
 \end_inset
 
- package or 
-\change_deleted 1 1289155717
-ERT
-\change_inserted 1 1289155720
-TeX code
-\change_unchanged
----then it will instead output the formula as an image.
+ package or ERT---then it will instead output the formula as an image.
  
 \end_layout
 
@@ -4538,13 +4529,7 @@ xymatrix
 
 \end_inset
 
- package or 
-\change_deleted 1 1289155751
-ERT
-\change_inserted 1 1289155754
-Tex code
-\change_unchanged
----then it will instead output the formula as an image.
+ package or ERT---then it will instead output the formula as an image.
  
 \end_layout
 
@@ -4700,19 +4685,9 @@ Eventually, LyX will offer the user the option to select an alternate output
 status collapsed
 
 \begin_layout Plain Layout
-That said, since LyX falls back to images if the inset contains 
-\change_deleted 1 1289155760
-ERT
-\change_inserted 1 1289155765
-TeX code
-\change_unchanged
-, then one can force output as an image by putting some harmless 
-\change_deleted 1 1289155770
-ERT
-\change_inserted 1 1289155774
-TeX code
-\change_unchanged
- into the math, for example: 
+That said, since LyX falls back to images if the inset contains ERT, then
+ one can force output as an image by putting some harmless ERT into the
+ math, for example: 
 \begin_inset Formula $a=b\relax$
 \end_inset
 
@@ -5510,8 +5485,6 @@ lyxclient
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 2 1274788899
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:rev-search"
@@ -5522,15 +5495,11 @@ Automatical enabling
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2 1274789582
 In most cases LyX will do the work for you by enabling 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1274789026
 Document\SpecialChar \menuseparator
 Output\SpecialChar \menuseparator
 Output Sync
@@ -5546,11 +5515,7 @@ Output Sync
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1274789582
 View/update
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -5559,18 +5524,12 @@ View/update
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2 1274789534
 Plase note that including 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1274789498
 srcltx
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -5580,37 +5539,23 @@ srcltx
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1274789484
 src-specials
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
  sometimes have an impact on the typeset and you should switch them off
  for the final typesets.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2 1274789340
 You can also define custom macro in preferences and in case you need some
  special tweaks read the next section about manual enabling.
  
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 2 1274788680
 Manual enabling
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -5630,8 +5575,6 @@ latex/pdflatex
  a given method (the built-in methods are rather new) and whether your viewer
  can cope with it.
  The available methods are described in the following.
-\change_inserted 2 1274788557
-
 \end_layout
 
 \begin_layout Subsubsection*
@@ -6749,19 +6692,13 @@ lyxpipe
 
 \begin_layout Standard
 Reverse search is triggered by double-click.
-\change_inserted 1 1271453423
-
 \end_layout
 
 \begin_layout Section
-
-\change_inserted 1 1271453442
 Forward search
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1 1271454338
 To make forward search possible you need to provide generated output PDF/DVI
  file with additional information about TeX sources.
  This can be done via the methods described in the section 
@@ -6775,15 +6712,11 @@ reference "sub:rev-search"
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1 1271454479
 Secondly you need to configure LyX for using your viewers in 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1271453866
 Preferences\SpecialChar \menuseparator
 Output\SpecialChar \menuseparator
 General
@@ -6798,12 +6731,8 @@ General
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1271454273
 For Sumatra CMCDDE is needed --- downloadable from http://www.istri.fr/zip/CMCDDE.z
 ip
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -6813,8 +6742,6 @@ ip
  page of the file --- Evince or xpdf --- for these cases you can use external
  call of synctex.
  Please study the prepared examples in the Preferences dialog.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Chapter
@@ -18889,15 +18816,8 @@ A friend of mine wanted to try LyX for a group project.
 \begin_layout Standard
 Before you begin to use the version control features in LyX, you should
  be familiar with RCS/CVS/SVN usage before start using it under LyX.
- Also note that CVS support 
-\change_deleted 3 1288125350
-was
-\change_inserted 3 1288125359
-is not as good as
-\change_deleted 3 1288125367
- obsoloted by introducing
-\change_unchanged
- subversion support so we advice using SVN instead.
+ Also note that CVS support is not as good as subversion support so we advice
+ using SVN instead.
  Good place to start with Subversion is SVN Book
 \begin_inset Foot
 status open
@@ -18940,12 +18860,7 @@ man rcsintro
 \begin_layout Standard
 The implementation in LyX assumes a recent version of the GNU RCS or CVS/SVN
  package—no guarantees are made for older versions.
- Most of the log messages are not currently displayed after operations 
-\change_deleted 3 1288125419
--
-\change_inserted 3 1288125419
-—
-\change_unchanged
+ Most of the log messages are not currently displayed after operations —
  you can check them in Messages pane if unsure.
 \end_layout
 
@@ -19157,19 +19072,7 @@ CVS commands in LyX
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 3 1288247612
-A subset of 
-\change_unchanged
-CVS
-\change_inserted 3 1288247626
- operations
-\change_unchanged
- is 
-\change_deleted 3 1288243981
-now partially 
-\change_unchanged
-supported by LyX.
+A subset of CVS operations is supported by LyX.
  You can find the commands in the 
 \family sans
 File\SpecialChar \menuseparator
@@ -19180,26 +19083,17 @@ Version
 Control
 \family default
  submenu.
- 
-\change_inserted 3 1288244251
-The version control system SVN is more powerful
-\change_deleted 3 1288244024
-Focus of the development moved to SVN support
-\change_unchanged
-, so please use it instead of CVS if possible.
+ The version control system SVN is more powerful, so please use it instead
+ of CVS if possible.
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted 3 1288247508
 
 \family sans
 General CVS usage
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 3 1288250722
 If you start from scratch with CVS you have to create your repository and
  checkout the working copy with external tools.
  If you're using a client-server setup you may need to login before doing
@@ -19207,8 +19101,6 @@ If you start from scratch with CVS you have to create your repository and
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 3 1288334713
 If your documents are under revision control and others are using the same
  repository problems arise when different changes to the same document at
  the same location happen.
@@ -19236,11 +19128,7 @@ reserved checkouts
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 3 1288249115
 .cvsrc
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -19250,11 +19138,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 3 1288249133
 cvs -r
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -19266,8 +19150,6 @@ cvs -r
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 3 1288335184
 LyX tries to guess if you're using reserved or non-reserved checkouts.
  If your working copy is readonly or it is writable and an additional copy
  of your document exists in the CVS/Base sub-directory a reserved otherwise
@@ -19277,11 +19159,7 @@ LyX tries to guess if you're using reserved or non-reserved checkouts.
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 3 1288250009
 Check Out
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -19292,31 +19170,21 @@ Check Out
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 3 1288250087
 Check In
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
  operation is possible and that makes your working copy readonly again after
  transferring your changes to the repository.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 3 1288334864
 More information about CVS can be found here 
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 3 1288247651
 
 http://www.nongnu.org/cvs
 \end_layout
@@ -19329,11 +19197,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 3 1288249216
-
 http://ximbiot.com/cvs
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -19342,8 +19206,6 @@ http://ximbiot.com/cvs
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 3 1288334912
 Read 
 \family typewriter
 man cvs
@@ -19373,10 +19235,6 @@ egister
 
 \begin_layout Standard
 This command registers in CVS your document 
-\change_deleted 3 1288340087
-ONLY
-\change_inserted 3 1288340119
-
 \emph on
 
 \begin_inset Flex Strong
@@ -19384,18 +19242,12 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 3 1288340119
-
 \emph on
 only
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \emph default
  in case you have already the documents directory under CVS control (in
@@ -19404,85 +19256,24 @@ only
 CVS/Entries
 \family default
  file exists).
- This means you have to 
-\change_inserted 3 1288244315
-create or 
-\change_unchanged
-checkout the archive by yourself
-\change_inserted 3 1288250891
- using external tools
-\change_unchanged
-.
- 
-\change_inserted 3 1288340303
-(In case you forget that step LyX registers the document with RCS.)
-\change_unchanged
-
+ This means you have to create or checkout the archive by yourself using
+ external tools.
+ (In case you forget that step LyX registers the document with RCS.)
 \end_layout
 
 \begin_layout Standard
 Then you are asked interactively to supply an initial description of the
  document.
- Don't forget that registered file is not yet 
-\change_deleted 3 1288335206
-commited
-\change_inserted 3 1288335207
-checked in
-\change_unchanged
-.
+ Don't forget that registered file is not yet checked in.
 \end_layout
 
 \begin_layout Standard
 CVS command that is run: 
 \family typewriter
-cvs -q add -m
-\change_deleted 3 1288125821
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted 3 1288125838
-"
-\change_unchanged
-<entered message>" 
-\change_deleted 3 1288125821
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 3 1288125844
-"
-\change_unchanged
-<file-name>
-\change_deleted 3 1288125847
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted 3 1288125847
-"
-\change_unchanged
-
+cvs -q add -m"<entered message>" "<file-name>"
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 3 1288334858
-Read 
-\family typewriter
-man svn
-\family default
- to understand the switches.
-\change_inserted 3 1288333847
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 3 1288334097
 The term 
 \family typewriter
 "<file-name>"
@@ -19497,11 +19288,6 @@ change the current working directory to file location and use the file name
 \end_inset
 
 .
-
-\change_deleted 3 1288333847
- 
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -19512,44 +19298,25 @@ Check In Changes
 
 \begin_layout Standard
 When you are finished editing a file, you commit your changes.
- When you do this
-\change_inserted 3 1288250244
- and you had changed the document
-\change_unchanged
-, you are asked for a description of the changes.
- After that changes are 
-\change_deleted 3 1288335277
-commited
-\change_inserted 3 1288335294
-written to the repository
-\change_unchanged
-.
-
-\change_inserted 3 1288339925
+ When you do this and you had changed the document, you are asked for a
+ description of the changes.
+ After that changes are written to the repository.
  In case you didn't change the document and a reserved checkout is detected
  the reservation made on 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 3 1288250359
 Check Out
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
  is undone.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\change_inserted 3 1288250487
 CVS
 \begin_inset space ~
 \end_inset
@@ -19567,8 +19334,6 @@ command:
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 3 1288250469
 cvs 
 \family typewriter
 -q commit -m"<description>" "<file-name>"
@@ -19585,59 +19350,39 @@ cvs
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 3 1288250960
 cvs -q unedit 
 \family typewriter
 "<file-name>"
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
 
-\change_deleted 3 1288250529
-CVS command: 
-\family typewriter
-cvs -q commit -m"<description>" "<file-name>"
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted 3 1288246619
 
 \family sans
 Check Out Changes
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 3 1288249364
 When you are sharing a repository with others, you may have to incorporate
  their changes into your working copy.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 3 1288250585
 CVS command: 
 \family typewriter
 cvs -q update "<file-name>"
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 3 1288334180
 If a readonly checkout is detected the working copy is made writable and
  reserved.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 3 1288250685
 CVS command: 
 \family typewriter
 cvs -q edit "<file-name>"
@@ -19659,65 +19404,31 @@ This will discard all changes made to the document since the last check
 \begin_layout Standard
 CVS command: 
 \family typewriter
-cvs 
-\change_inserted 3 1288246762
--q 
-\change_unchanged
-update 
-\change_deleted 3 1288125856
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 3 1288125856
-"
-\change_unchanged
-<file-name>
-\change_deleted 3 1288125856
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted 3 1288251381
-"
+cvs -q update "<file-name>"
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 3 1288334211
 If a reserved checkout is detected and the working copy has no changes only
  the reservation is undone.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 3 1288251440
 CVS command: 
 \family typewriter
 cvs -q unedit "<file-name>"
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted 3 1288126016
 Update of the local directory checkout from repository
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 3 1288339359
 Once your documents gets more complex, containing sub-documents and pictures,
  including external 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 3 1288126016
 .tex
 \end_layout
 
@@ -19731,20 +19442,14 @@ status collapsed
  You have to organize the files structure so that all external files are
  in the same directory or subdirectories of the document.
  It's good practice anyway to store multipart documents in an extra directory.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 3 1288341358
 The 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 3 1288126016
 Update local directory from repository
 \end_layout
 
@@ -19760,11 +19465,7 @@ Update local directory from repository
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 3 1288341002
 <<<<<<<
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -19774,11 +19475,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 3 1288340987
 >>>>>>>
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -19788,11 +19485,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 3 1288341043
 =======
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -19806,24 +19499,16 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 3 1288341281
 >
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
  signs.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\change_inserted 3 1288340598
 CVS
 \begin_inset space ~
 \end_inset
@@ -19841,13 +19526,9 @@ commands:
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 3 1288334066
 cd $path; cvs diff 
 \family typewriter
 "."
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -19861,13 +19542,9 @@ cd $path; cvs diff
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 3 1288334063
 cd $path; cvs -q update 
 \family typewriter
 "."
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -19876,15 +19553,11 @@ cd $path; cvs -q update
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 3 1288126016
 where 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 3 1288126016
 $path
 \end_layout
 
@@ -19903,27 +19576,7 @@ Show History
 This shows the complete history of the CVS document.
  The output of 
 \family typewriter
-cvs log 
-\change_deleted 3 1288125861
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 3 1288125861
-"
-\change_unchanged
-<file-name>
-\change_deleted 3 1288125864
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted 3 1288125864
-"
-\change_unchanged
-
+cvs log "<file-name>"
 \family default
  is shown in a browser.
 \end_layout
@@ -21012,11 +20665,7 @@ Control
 \end_layout
 
 \begin_layout Subsubsection
-SSH tu
-\change_inserted 3 1288376976
-n
-\change_unchanged
-nel used with SVN under Windows
+SSH tunnel used with SVN under Windows
 \end_layout
 
 \begin_layout Standard
