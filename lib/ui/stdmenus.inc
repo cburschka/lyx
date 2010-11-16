@@ -394,7 +394,7 @@ Menuset
 		Item "Horizontal Space...|o" "dialog-show-new-inset space"
 		Item "Horizontal Line...|L" "dialog-show-new-inset line"
 		Item "Vertical Space...|V" "dialog-show-new-inset vspace"
-		Submenu "Phantom" "insert_phantom"
+		Submenu "Phantom|a" "insert_phantom"
 		Separator
 		Item "Hyphenation Point|H" "specialchar-insert hyphenation"
 		Item "Ligature Break|k" "specialchar-insert ligature-break"
@@ -467,9 +467,9 @@ Menuset
 	End
 	
 	Menu "insert_phantom"
-		Item "Phantom" "phantom-insert Phantom"
-		Item "Horizontal Phantom" "phantom-insert HPhantom"
-		Item "Vertical Phantom" "phantom-insert VPhantom"
+		Item "Phantom|P" "phantom-insert Phantom"
+		Item "Horizontal Phantom|H" "phantom-insert HPhantom"
+		Item "Vertical Phantom|V" "phantom-insert VPhantom"
 	End
 
 	Menu "insert_custom"
