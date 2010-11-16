@@ -158,8 +158,7 @@ void InsetLabel::addToToc(DocIterator const & cpit)
 		DocIterator const ref_pit(it->second);
 		if (it->first->lyxCode() == MATH_REF_CODE)
 			toc.push_back(TocItem(ref_pit, 1,
-				it->first->asInsetMath()->asHullInset()->asRefInset()
-					->screenLabel()));
+				it->first->asInsetMath()->asRefInset()->screenLabel()));
 		else
 			toc.push_back(TocItem(ref_pit, 1,
 				static_cast<InsetRef *>(it->first)->screenLabel()));
