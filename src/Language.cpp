@@ -49,6 +49,8 @@ bool Language::readLanguage(Lexer & lex)
 		LA_INTERNAL_ENC,
 		LA_LANG_CODE,
 		LA_LANG_VARIETY,
+		LA_POLYGLOSSIANAME,
+		LA_POLYGLOSSIAOPTS,
 		LA_POSTBABELPREAMBLE,
 		LA_PREBABELPREAMBLE,
 		LA_RTL
@@ -64,6 +66,8 @@ bool Language::readLanguage(Lexer & lex)
 		{ "internalencoding",     LA_INTERNAL_ENC },
 		{ "langcode",             LA_LANG_CODE },
 		{ "langvariety",          LA_LANG_VARIETY },
+		{ "polyglossianame",      LA_POLYGLOSSIANAME },
+		{ "polyglossiaopts",      LA_POLYGLOSSIAOPTS },
 		{ "postbabelpreamble",    LA_POSTBABELPREAMBLE },
 		{ "prebabelpreamble",     LA_PREBABELPREAMBLE },
 		{ "rtl",                  LA_RTL }
@@ -97,6 +101,12 @@ bool Language::readLanguage(Lexer & lex)
 			break;
 		case LA_BABELNAME:
 			lex >> babel_;
+			break;
+		case LA_POLYGLOSSIANAME:
+			lex >> polyglossia_name_;
+			break;
+		case LA_POLYGLOSSIAOPTS:
+			lex >> polyglossia_opts_;
 			break;
 		case LA_ENCODING:
 			lex >> encodingStr_;

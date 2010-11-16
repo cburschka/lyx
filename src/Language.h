@@ -31,29 +31,33 @@ class Language {
 public:
 	///
 	Language() : rightToLeft_(false) {}
-	///
+	/// LyX language name
 	std::string const & lang() const { return lang_; }
-	///
+	/// Babel language name
 	std::string const & babel() const { return babel_; }
-	///
+	/// polyglossia language name
+	std::string const & polyglossia() const { return polyglossia_name_; }
+	/// polyglossia language options
+	std::string const & polyglossiaOpts() const { return polyglossia_opts_; }
+	/// translatable GUI name
 	std::string const & display() const { return display_; }
-	///
+	/// is this a RTL language?
 	bool rightToLeft() const { return rightToLeft_; }
-	///
+	/// default encoding
 	Encoding const * encoding() const { return encoding_; }
 	///
 	std::string const & encodingStr() const { return encodingStr_; }
-	///
+	/// language code
 	std::string const & code() const { return code_; }
 	/// set code (needed for rc.spellchecker_alt_lang)
 	void setCode(std::string const c) { code_ = c; }
-	///
+	/// language variety (needed by aspell checker)
 	std::string const & variety() const { return variety_; }
 	/// set variety (needed for rc.spellchecker_alt_lang)
 	void setVariety(std::string const v) { variety_ = v; }
-	///
+	/// preamble settings after babel was called
 	std::string const & babel_postsettings() const { return babel_postsettings_; }
-	///
+	/// preamble settings before babel is called
 	std::string const & babel_presettings() const { return babel_presettings_; }
 	/// This language internally sets a font encoding
 	bool internalFontEncoding() const { return internal_enc_; }
@@ -70,6 +74,10 @@ private:
 	std::string lang_;
 	///
 	std::string babel_;
+	///
+	std::string polyglossia_name_;
+	///
+	std::string polyglossia_opts_;
 	///
 	std::string display_;
 	///
