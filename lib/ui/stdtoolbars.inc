@@ -331,9 +331,9 @@ ToolbarSet
 		Item "Quadratin space	\\quad" "math-insert \quad"
 		Item "Double quadratin space	\\qquad" "math-insert \qquad"
 		Item "Negative space	\\!" "math-insert \!"
-		Item "Placeholder	\\phantom" "math-insert \phantom"
-		Item "Horizontal placeholder	\\hphantom" "math-insert \hphantom"
-		Item "Vertical placeholder	\\vphantom" "math-insert \vphantom"
+		Item "Phantom	\\phantom" "math-insert \phantom"
+		Item "Horizontal phantom	\\hphantom" "math-insert \hphantom"
+		Item "Vertical phantom	\\vphantom" "math-insert \vphantom"
 	End
 
 	Toolbar "sqrt-square" "Roots"
