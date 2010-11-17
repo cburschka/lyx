@@ -8,7 +8,7 @@ Function LaTeXActions
   Call LaTeXCheck # sets the path to the latex.exe to $LatexPath # Function from LyXUtils.nsh
   
   ${if} $LatexPath != ""
-   # check if MiKTeX 2.6 or newer is installed
+   # check if MiKTeX 2.7 or newer is installed
    StrCpy $0 0
    loopA:
     EnumRegKey $1 HKLM "SOFTWARE\MiKTeX.org\MiKTeX" $0 # check the last subkey
@@ -17,10 +17,6 @@ Function LaTeXActions
     IntOp $0 $0 + 1
     Goto loopA
    doneA:
-   ${if} $String == "2.6"
-    StrCpy $MiKTeXVersion "2.6"
-    StrCpy $LaTeXName "MiKTeX 2.6"
-   ${endif}
    ${if} $String == "2.7"
     StrCpy $MiKTeXVersion "2.7"
     StrCpy $LaTeXName "MiKTeX 2.7"
@@ -28,6 +24,10 @@ Function LaTeXActions
    ${if} $String == "2.8"
     StrCpy $MiKTeXVersion "2.8"
     StrCpy $LaTeXName "MiKTeX 2.8"
+   ${endif}
+   ${if} $String == "2.9"
+    StrCpy $MiKTeXVersion "2.9"
+    StrCpy $LaTeXName "MiKTeX 2.9"
    ${endif}
   ${endif}
   
@@ -48,10 +48,6 @@ Function LaTeXActions
     IntOp $0 $0 + 1
     Goto loopB
    doneB:
-   ${if} $String == "2.6"
-    StrCpy $MiKTeXVersion "2.6"
-    StrCpy $LaTeXName "MiKTeX 2.6"
-   ${endif}
    ${if} $String == "2.7"
     StrCpy $MiKTeXVersion "2.7"
     StrCpy $LaTeXName "MiKTeX 2.7"
@@ -59,6 +55,10 @@ Function LaTeXActions
    ${if} $String == "2.8"
     StrCpy $MiKTeXVersion "2.8"
     StrCpy $LaTeXName "MiKTeX 2.8"
+   ${endif}
+   ${if} $String == "2.9"
+    StrCpy $MiKTeXVersion "2.9"
+    StrCpy $LaTeXName "MiKTeX 2.9"
    ${endif}
   ${endif}
     
@@ -94,9 +94,9 @@ Function LaTeXActions
    ${endif}
   ${endif}
   ${if} $LatexPath != ""
-  ${andif} $LaTeXName != "MiKTeX 2.6"
   ${andif} $LaTeXName != "MiKTeX 2.7"
   ${andif} $LaTeXName != "MiKTeX 2.8"
+  ${andif} $LaTeXName != "MiKTeX 2.9"
    StrCpy $LaTeXName "TeXLive"
   ${endif}
   
@@ -221,10 +221,8 @@ Function UpdateMiKTeX
    MessageBox MB_YESNO|MB_ICONINFORMATION "$(MiKTeXInfo)" IDYES UpdateNow IDNO UpdateLater
    UpdateNow:
     StrCpy $0 $LaTeXPath -4 # remove "\bin"
-    # the update wizard is either started by the copystart.exe or the copystart_admin.exe
-    # (the latter replaces copystart.exe since miktex-2.6.2742) or the miktex-update.exe
-    # (since MiKTeX 2.8)
-    ExecWait '"$LaTeXPath\copystart.exe" "$0\config\update.dat"' # run MiKTeX's update wizard
+    # the update wizard is either started by the copystart_admin.exe
+    # or the miktex-update.exe (since MiKTeX 2.8)
     ExecWait '"$LaTeXPath\copystart_admin.exe" "$0\config\update.dat"' # run MiKTeX's update wizard
     ${if} $MiKTeXUser != "HKCU" # call the admin version when the user is admin
      ExecWait '"$LaTeXPath\internal\miktex-update_admin.exe"' # run MiKTeX's update wizard

@@ -92,6 +92,9 @@ Function MissingPrograms
    ReadRegStr $PythonPath HKLM "Software\Python\PythonCore\2.6\InstallPath" ""
   ${endif}
   ${if} $PythonPath == ""
+   ReadRegStr $PythonPath HKLM "Software\Python\PythonCore\2.7\InstallPath" ""
+  ${endif}
+  ${if} $PythonPath == ""
    ReadRegStr $PythonPath HKLM "Software\Python\PythonCore\3.0\InstallPath" ""
   ${endif}
   ${if} $PythonPath == ""
