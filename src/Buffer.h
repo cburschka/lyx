@@ -241,14 +241,12 @@ public:
 	/// \return a status message towards the user.
 	docstring emergencyWrite();
 
-//FIXME:The following three functions should be private
+//FIXME:The following two functions should be private
 //private:
 	///
 	void removeAutosaveFile() const;
 	///
 	void moveAutosaveFile(support::FileName const & old) const;
-	/// Get the filename of the autosave file associated with the Buffer
-	support::FileName getAutosaveFileName() const;
 	
 private:
 	/// Try to load an autosave file associated to \c fn.
@@ -257,6 +255,8 @@ private:
 	ReadStatus loadEmergency();
 	/// Get the filename of the emergency file associated with the Buffer
 	support::FileName getEmergencyFileName() const;
+	/// Get the filename of the autosave file associated with the Buffer
+	support::FileName getAutosaveFileName() const;
 	//@}
 
 public:
