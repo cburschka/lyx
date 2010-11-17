@@ -922,7 +922,7 @@ docstring const LaTeXFeatures::getMacros() const
 		macros << changetracking_dvipost_def;
 	
 	if (mustProvide("ct-xcolor-ulem")) {
-		int const prec = macros.precision(2);
+		streamsize const prec = macros.precision(2);
 	
 		RGBColor cadd = rgbFromHexName(lcolor.getX11Name(Color_addedtext));
 		macros << "\\providecolor{lyxadded}{rgb}{"

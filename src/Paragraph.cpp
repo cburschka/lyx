@@ -1111,7 +1111,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 		texrow.start(owner_->id(), i + 1);
 		column = 0;
 	} else {
-		column += os.tellp() - len;
+		column += (unsigned int)(os.tellp() - len);
 	}
 
 	if (owner_->isDeleted(i))
