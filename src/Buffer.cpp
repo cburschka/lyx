@@ -4115,7 +4115,7 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 Buffer::ReadStatus Buffer::reload()
 {
 	setBusy(true);
-	// c.f. bug 6587
+	// c.f. bug http://www.lyx.org/trac/ticket/6587
 	removeAutosaveFile();
 	// e.g., read-only status could have changed due to version control
 	d->filename.refresh();

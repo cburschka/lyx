@@ -2530,10 +2530,10 @@ bool GuiView::saveBufferIfNeeded(Buffer & buf, bool hiding)
 			return false;
 		break;
 	case 1:
-		// if we crash after this we could
-		// have no autosave file but I guess
-		// this is really improbable (Jug)
-		// Sometime improbable things happen, bug 6857 (ps)
+		// If we crash after this we could have no autosave file
+		// but I guess this is really improbable (Jug).
+		// Sometimes improbable things happen:
+		// - see bug http://www.lyx.org/trac/ticket/6587 (ps)
 		// buf.removeAutosaveFile();
 		if (hiding)
 			// revert all changes
