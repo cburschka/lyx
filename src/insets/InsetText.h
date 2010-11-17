@@ -193,7 +193,7 @@ public:
 	/// returns the text to be used as tooltip
 	/// \param prefix: a string that will preced the tooltip,
 	/// e.g., "Index: ".
-	docstring toolTipText(docstring prefix = from_ascii("")) const;
+	docstring toolTipText(docstring prefix = empty_docstring()) const;
 
 	///
 	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
