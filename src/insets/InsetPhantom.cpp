@@ -299,13 +299,10 @@ bool InsetPhantom::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 docstring InsetPhantom::toolTip(BufferView const &, int, int) const
 {
-	OutputParams rp(&buffer().params().encoding());
-	odocstringstream ods;
-	InsetCollapsable::plaintext(ods, rp);
-	docstring content_tip = support::wrapParas(ods.str());
+	docstring const tip = InsetText::toolTipText();
 	docstring res = phantomtranslator_loc().find(params_.type);
-	if (!content_tip.empty())
-		res += from_ascii(": ") + "\n" + content_tip;
+	if (!tip.empty())
+		res += from_ascii(": ") + "\n" + tip;
 	return res;
 }
 

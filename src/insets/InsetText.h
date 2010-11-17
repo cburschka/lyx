@@ -191,7 +191,9 @@ public:
 	///
 	void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const;
 	/// returns the text to be used as tooltip
-	docstring toolTipText() const;
+	/// \param prefix: a string that will preced the tooltip,
+	/// e.g., "Index: ".
+	docstring toolTipText(docstring prefix = from_ascii("")) const;
 
 	///
 	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;

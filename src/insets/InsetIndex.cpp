@@ -288,11 +288,7 @@ docstring InsetIndex::toolTip(BufferView const &, int, int) const
 		tip += ")";
 	}
 	tip += ": ";
-	OutputParams rp(&buffer().params().encoding());
-	odocstringstream ods;
-	InsetText::plaintext(ods, rp);
-	tip += ods.str();
-	return wrapParas(tip);
+	return InsetText::toolTipText(tip);
 }
 
 

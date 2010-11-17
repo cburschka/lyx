@@ -820,11 +820,12 @@ docstring InsetText::contextMenu(BufferView const &, int, int) const
 }
 
 
-docstring InsetText::toolTipText() const
+docstring InsetText::toolTipText(docstring prefix) const
 {
 	static unsigned int max_length = 400; // five 80 column lines
 	OutputParams rp(&buffer().params().encoding());
 	odocstringstream oss;
+	oss << prefix;
 
 	ParagraphList::const_iterator beg = paragraphs().begin();
 	ParagraphList::const_iterator end = paragraphs().end();
