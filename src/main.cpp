@@ -14,7 +14,6 @@
 #include "LyX.h"
 
 #include "support/debug.h"
-#include "support/gettext.h"
 #include "support/os.h"
 
 #include <iostream>
