@@ -822,13 +822,25 @@ docstring InsetText::contextMenu(BufferView const &, int, int) const
 
 docstring InsetText::toolTipText() const
 {
+	static unsigned int max_length = 400; // five 80 column lines
 	OutputParams rp(&buffer().params().encoding());
-	odocstringstream ods;
-	// do not remove InsetText::, otherwise there
-	// will be no tooltip text for InsetNotes
-	InsetText::plaintext(ods, rp);
-	docstring const content_tip = ods.str();
-	return support::wrapParas(content_tip, 4);
+	odocstringstream oss;
+
+	ParagraphList::const_iterator beg = paragraphs().begin();
+	ParagraphList::const_iterator end = paragraphs().end();
+	ParagraphList::const_iterator it = beg;
+	bool ref_printed = false;
+	docstring str;
+
+	for (; it != end; ++it) {
+		if (it != beg)
+			oss << '\n';
+		writePlaintextParagraph(buffer(), *it, oss, rp, ref_printed);
+		str = oss.str();
+		if (str.length() > max_length)
+			break;
+	}
+	return support::wrapParas(str, 4, 80, 5);
 }
 
 
