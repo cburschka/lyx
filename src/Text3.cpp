@@ -1012,7 +1012,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			singleParUpdate = false;
 		}
 		moveCursor(cur, false);
-		cur.forceBufferUpdate();
 		break;
 
 	case LFUN_CHAR_DELETE_BACKWARD:
@@ -1030,7 +1029,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cutSelection(cur, true, false);
 			singleParUpdate = false;
 		}
-		cur.forceBufferUpdate();
 		break;
 
 	case LFUN_BREAK_PARAGRAPH:
