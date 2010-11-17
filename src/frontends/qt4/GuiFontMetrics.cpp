@@ -27,26 +27,27 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
+namespace {
 /**
  * Convert a UCS4 character into a QChar.
  * This is a hack (it does only make sense for the common part of the UCS4
  * and UTF16 encodings) and should not be used.
  * This does only exist because of performance reasons (a real conversion
  * using iconv is too slow on windows).
- */
-static inline QChar const ucs4_to_qchar(char_type const ucs4)
+ *
+ * This is no real conversion but a simple cast in reality. This is the reason
+ * why this works well for symbol fonts used in mathed too, even though
+ * these are not real ucs4 characters. These are codepoints in the
+ * modern fonts used, nothing unicode related.
+ * See comment in QLPainter::text() for more explanation.
+ **/	
+inline QChar const ucs4_to_qchar(char_type const ucs4)
 {
 	LASSERT(is_utf16(ucs4), /**/);
 	return QChar(static_cast<unsigned short>(ucs4));
 }
+} // anon namespace
 
-
-// Caution: When using ucs4_to_qchar() in these methods, this is no
-// real conversion but a simple cast in reality. This is the reason
-// why this works well for symbol fonts used in mathed too, even though
-// these are not real ucs4 characters. These are codepoints in the
-// modern fonts used, nothing unicode related.
-// See comment in QLPainter::text() for more explanation.
 
 GuiFontMetrics::GuiFontMetrics(QFont const & font)
 : metrics_(font), smallcaps_metrics_(font), smallcaps_shape_(false)

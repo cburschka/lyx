@@ -47,6 +47,7 @@ string const & empty_string()
 	return s;
 }
 
+namespace {
 /**
  * Convert a QChar into a UCS4 character.
  * This is a hack (it does only make sense for the common part of the UCS4
@@ -54,12 +55,11 @@ string const & empty_string()
  * This does only exist because of performance reasons (a real conversion
  * using iconv is too slow on windows).
  */
-static inline char_type qchar_to_ucs4(QChar const & qchar)
+inline char_type qchar_to_ucs4(QChar const & qchar)
 {
 	LASSERT(is_utf16(static_cast<char_type>(qchar.unicode())), /**/);
 	return static_cast<char_type>(qchar.unicode());
 }
-
 
 /**
  * Convert a UCS4 character into a QChar.
@@ -68,17 +68,15 @@ static inline char_type qchar_to_ucs4(QChar const & qchar)
  * This does only exist because of performance reasons (a real conversion
  * using iconv is too slow on windows).
  */
-static inline QChar const ucs4_to_qchar(char_type const ucs4)
+inline QChar const ucs4_to_qchar(char_type const ucs4)
 {
 	LASSERT(is_utf16(ucs4), /**/);
 	return QChar(static_cast<unsigned short>(ucs4));
 }
 
-
-namespace {
-	/// Maximum valid UCS4 code point
-	char_type const ucs4_max = 0x10ffff;
-}
+/// Maximum valid UCS4 code point
+char_type const ucs4_max = 0x10ffff;
+} // anon namespace
 
 
 bool isLetterChar(char_type c)
