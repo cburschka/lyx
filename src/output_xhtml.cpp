@@ -32,6 +32,7 @@
 #include "support/debug.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
+#include "support/textutils.h"
 
 #include <vector>
 
@@ -130,8 +131,7 @@ docstring cleanAttr(docstring const & str)
 	docstring::const_iterator en = str.end();
 	for (; it != en; ++it) {
 		char_type const c = *it;
-		bool const is_alnum = c < 0x80 && isalnum(c);
-		newname += is_alnum ? c : char_type('_');
+		newname += isAlnumASCII(c) ? c : char_type('_');
 	}
 	return newname;	
 }

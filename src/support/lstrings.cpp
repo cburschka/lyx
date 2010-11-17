@@ -161,6 +161,14 @@ bool isDigitASCII(char_type c)
 	return '0' <= c && c <= '9';
 }
 
+
+bool isAlnumASCII(char_type c)
+{
+	return ('0' <= c && c <= '9')
+		|| ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
+}
+
+
 namespace support {
 
 int compare_no_case(docstring const & s, docstring const & s2)

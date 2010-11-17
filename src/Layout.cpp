@@ -23,8 +23,9 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/Messages.h"
-
 #include "support/regex.h"
+#include "support/textutils.h"
+
 
 using namespace std;
 using namespace lyx::support;
@@ -997,7 +998,7 @@ string Layout::defaultCSSClass() const
 	docstring::const_iterator en = name().end();
 	for (; it != en; ++it) {
 		char_type const c = *it;
-		if (c >= 0x80 || !isalnum(c)) {
+		if (!isAlphaASCII(c)) {
 			if (d.empty())
 				// make sure we don't start with an underscore,
 				// as that sometimes causes problems.
