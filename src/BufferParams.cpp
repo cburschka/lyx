@@ -757,7 +757,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		istringstream ss(lex.getString());
 		Author a;
 		ss >> a;
-		author_map[a.buffer_id()] = pimpl_->authorlist.record(a);
+		author_map[a.bufferId()] = pimpl_->authorlist.record(a);
 	} else if (token == "\\paperorientation") {
 		string orient;
 		lex >> orient;
