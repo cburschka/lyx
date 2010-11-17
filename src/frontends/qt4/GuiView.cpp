@@ -375,7 +375,7 @@ public:
 	static docstring previewAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
 	static docstring exportAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
 	static docstring compileAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
-	static docstring autosaveAndDestroy(Buffer const * orig, Buffer * buffer, FileName const & fname);
+	static docstring autosaveAndDestroy(Buffer const * orig, Buffer * buffer);
 
 	template<class T>
 	static docstring runAndDestroy(const T& func, Buffer const * orig, Buffer * buffer, string const & format, string const & msg);
@@ -1493,23 +1493,15 @@ BufferView const * GuiView::currentBufferView() const
 
 
 #if (QT_VERSION >= 0x040400)
-docstring GuiView::GuiViewPrivate::autosaveAndDestroy(Buffer const * orig, Buffer * buffer, FileName const & fname)
+docstring GuiView::GuiViewPrivate::autosaveAndDestroy(
+	Buffer const * orig, Buffer * buffer)
 {
-	bool failed = true;
-	FileName const tmp_ret = FileName::tempName("lyxauto");
-	if (!tmp_ret.empty()) {
-		if (buffer->writeFile(tmp_ret))
-			failed = !tmp_ret.moveTo(fname);
-	}
-	if (failed) {
-		// failed to write/rename tmp_ret so try writing direct
-		failed = buffer->writeFile(fname);
-	}
+	bool const success = buffer->autoSave();
 	delete buffer;
 	busyBuffers.remove(orig);
-	return failed
-		? _("Automatic save failed!")
-		: _("Automatic save done.");
+	return success
+		? _("Automatic save done.")
+		: _("Automatic save failed!");
 }
 #endif
 
@@ -1526,7 +1518,7 @@ void GuiView::autoSave()
 #if (QT_VERSION >= 0x040400)
 	GuiViewPrivate::busyBuffers.insert(buffer);
 	QFuture<docstring> f = QtConcurrent::run(GuiViewPrivate::autosaveAndDestroy,
-		buffer, buffer->clone(), buffer->getAutosaveFileName());
+		buffer, buffer->clone());
 	d.autosave_watcher_.setFuture(f);
 #else
 	buffer->autoSave();
