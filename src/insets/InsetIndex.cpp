@@ -288,7 +288,7 @@ docstring InsetIndex::toolTip(BufferView const &, int, int) const
 		tip += ")";
 	}
 	tip += ": ";
-	return InsetText::toolTipText(tip);
+	return toolTipText(tip);
 }
 
 

@@ -130,7 +130,7 @@ InsetCollapsable::Geometry InsetCollapsable::geometry() const
 
 docstring InsetCollapsable::toolTip(BufferView const & bv, int x, int y) const
 {
-	Dimension dim = dimensionCollapsed(bv);
+	Dimension const dim = dimensionCollapsed(bv);
 	if (geometry(bv) == NoButton)
 		return translateIfPossible(getLayout().labelstring());
 	if (x > xo(bv) + dim.wid || y > yo(bv) + dim.des || isOpen(bv))

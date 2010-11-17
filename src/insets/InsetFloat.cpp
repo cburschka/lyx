@@ -127,8 +127,8 @@ docstring InsetFloat::name() const
 
 docstring InsetFloat::toolTip(BufferView const & bv, int x, int y) const
 {
-	if (InsetCollapsable::toolTip(bv, x, y).empty() || isOpen(bv))
-		return docstring();
+	if (isOpen(bv))
+		return InsetCollapsable::toolTip(bv, x, y);
 
 	OutputParams rp(&buffer().params().encoding());
 	return getCaptionText(rp);

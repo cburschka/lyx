@@ -299,11 +299,8 @@ bool InsetPhantom::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 docstring InsetPhantom::toolTip(BufferView const &, int, int) const
 {
-	docstring const tip = InsetText::toolTipText();
-	docstring res = phantomtranslator_loc().find(params_.type);
-	if (!tip.empty())
-		res += from_ascii(": ") + "\n" + tip;
-	return res;
+	docstring const res = phantomtranslator_loc().find(params_.type);
+	return toolTipText(res + from_ascii(": "));
 }
 
 
