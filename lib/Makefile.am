@@ -1077,6 +1077,7 @@ dist_layouts_DATA =\
 	layouts/elsarticle.layout \
 	layouts/endnotes.module \
 	layouts/entcs.layout \
+	layouts/enumitem.module \
 	layouts/eqs-within-sections.module \
 	layouts/europecv.layout \
 	layouts/extarticle.layout \
