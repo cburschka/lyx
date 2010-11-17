@@ -22696,74 +22696,65 @@ msgstr "®ádná skupina"
 
 #: src/frontends/qt4/Menus.cpp:747 src/frontends/qt4/Menus.cpp:748
 msgid "More Spelling Suggestions"
-msgstr ""
+msgstr "Více pravopisných návrhù"
 
 #: src/frontends/qt4/Menus.cpp:764
-#, fuzzy
 msgid "Add to personal dictionary|n"
-msgstr "Vybrat vlastní slovník"
+msgstr "Pøidat k vlastnímu slovníku|p"
 
 #: src/frontends/qt4/Menus.cpp:766
-#, fuzzy
 msgid "Ignore all|I"
-msgstr "I&gnorovat v¹echna"
+msgstr "Ignorovat v¹echna|I"
 
 #: src/frontends/qt4/Menus.cpp:773
-#, fuzzy
 msgid "Remove from personal dictionary|r"
-msgstr "Vybrat vlastní slovník"
+msgstr "Smazat vlastní slovník|S"
 
 #: src/frontends/qt4/Menus.cpp:811
-#, fuzzy
 msgid "Language|L"
-msgstr "Jazyk"
+msgstr "Jazyk|J"
 
 #: src/frontends/qt4/Menus.cpp:813
-#, fuzzy
 msgid "More Languages ...|M"
-msgstr "Slouèit revize...|S"
+msgstr "Více jazykù...|V"
 
 #: src/frontends/qt4/Menus.cpp:882 src/frontends/qt4/Menus.cpp:883
 msgid "Hidden|H"
-msgstr ""
+msgstr "Skryté|S"
 
 #: src/frontends/qt4/Menus.cpp:915
-#, fuzzy
 msgid "<No Documents Open>"
-msgstr "®ádné otevøené dokumenty !"
+msgstr "<®ádné otevøené dokumenty>"
 
 #: src/frontends/qt4/Menus.cpp:935
 msgid "<No Bookmarks Saved Yet>"
-msgstr ""
+msgstr "<®ádné ulo¾ené zálo¾ky>"
 
 #: src/frontends/qt4/Menus.cpp:973
 msgid "View (Other Formats)|F"
-msgstr ""
+msgstr "Prohlí¾et (ostatní formáty)|o"
 
 #: src/frontends/qt4/Menus.cpp:974
-#, fuzzy
 msgid "Update (Other Formats)|p"
-msgstr "Aktualizuj zobrazení"
+msgstr "Aktualizuj (ostatní formáty)|j"
 
 #: src/frontends/qt4/Menus.cpp:1007
-#, fuzzy, c-format
+#, c-format
 msgid "View [%1$s]|V"
-msgstr "Prohlí¾et|r"
+msgstr "Prohlí¾et [%1$s]|r"
 
 #: src/frontends/qt4/Menus.cpp:1008
-#, fuzzy, c-format
+#, c-format
 msgid "Update [%1$s]|U"
-msgstr "Aktualizovat|A"
+msgstr "Aktualizovat [%1$s]|A"
 
 #: src/frontends/qt4/Menus.cpp:1104
-#, fuzzy
 msgid "No Custom Insets Defined!"
 msgstr "®ádné vlastní vlo¾ky definovány!"
 
 #: src/frontends/qt4/Menus.cpp:1176
-#, fuzzy
 msgid "<No Document Open>"
-msgstr "®ádné otevøené dokumenty !"
+msgstr "<®ádné otevøené dokumenty>"
 
 #: src/frontends/qt4/Menus.cpp:1186
 msgid "Master Document"
@@ -22778,61 +22769,58 @@ msgid "Other Lists"
 msgstr "Dal¹í seznamy"
 
 #: src/frontends/qt4/Menus.cpp:1237
-#, fuzzy
 msgid "<Empty Table of Contents>"
-msgstr "Obsah"
+msgstr "<Prázdný obsah>"
 
 #: src/frontends/qt4/Menus.cpp:1272
 msgid "Other Toolbars"
 msgstr "Jiné panely nástrojù"
 
 #: src/frontends/qt4/Menus.cpp:1287
-#, fuzzy
 msgid "No Branches Set for Document!"
-msgstr "Dokument neobsahuje vìtvení!"
+msgstr "Pro dokument nejsou zvoleny ¾ádné vìtve!"
 
 #: src/frontends/qt4/Menus.cpp:1348
 msgid "Index Entry|d"
 msgstr "Heslo rejstøíku|H"
 
 #: src/frontends/qt4/Menus.cpp:1363
-#, fuzzy, c-format
+#, c-format
 msgid "Index: %1$s"
-msgstr "Font: %1$s"
+msgstr "Index: %1$s"
 
 #: src/frontends/qt4/Menus.cpp:1368 src/frontends/qt4/Menus.cpp:1397
-#, fuzzy, c-format
+#, c-format
 msgid "Index Entry (%1$s)"
-msgstr "Heslo rejstøíku"
+msgstr "Heslo rejstøíku (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:1414
 msgid "No Citation in Scope!"
 msgstr "®ádná citace v dosahu!"
 
 #: src/frontends/qt4/Menus.cpp:1979
-#, fuzzy
 msgid "No Action Defined!"
 msgstr "®ádná akce není definována!"
 
 #: src/frontends/qt4/Toolbars.cpp:217
-#, fuzzy, c-format
+#, c-format
 msgid "Export %1$s"
-msgstr "Font: %1$s"
+msgstr "Exportovat %1$s"
 
 #: src/frontends/qt4/Toolbars.cpp:221
-#, fuzzy, c-format
+#, c-format
 msgid "Import %1$s"
-msgstr "Importování %1$s..."
+msgstr "Importovat %1$s"
 
 #: src/frontends/qt4/Toolbars.cpp:225
-#, fuzzy, c-format
+#, c-format
 msgid "Update %1$s"
-msgstr "Aktualizovat DVI"
+msgstr "Aktualizovat %1$s"
 
 #: src/frontends/qt4/Toolbars.cpp:229
 #, c-format
 msgid "View %1$s"
-msgstr ""
+msgstr "Prohlí¾et %1$s"
 
 #: src/frontends/qt4/Validator.cpp:161
 msgid "space"
@@ -22910,7 +22898,6 @@ msgstr "Seznam Zmìn"
 
 #: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:290
 #: src/insets/InsetGraphics.cpp:595 src/insets/InsetInclude.cpp:513
-#, fuzzy
 msgid ""
 "The following filename will cause troubles when running the exported file "
 "through LaTeX: "
@@ -22921,41 +22908,36 @@ msgstr ""
 #: src/insets/ExternalSupport.cpp:374 src/insets/InsetBibtex.cpp:295
 #: src/insets/InsetGraphics.cpp:602 src/insets/InsetInclude.cpp:518
 msgid "Problematic filename for DVI"
-msgstr ""
+msgstr "Problémové pojmenování souboru pro DVI"
 
 #: src/insets/ExternalSupport.cpp:375 src/insets/InsetBibtex.cpp:296
 #: src/insets/InsetGraphics.cpp:603 src/insets/InsetInclude.cpp:519
-#, fuzzy
 msgid ""
 "The following filename can cause troubles when running the exported file "
 "through LaTeX and opening the resulting DVI: "
 msgstr ""
 "Následující jméno souboru pravdìpodobnì zpùsobí problémy pøi pøekladu "
-"exportovaného souboru LaTeX-em: "
+"exportovaného souboru LaTeX-em a následném prohlí¾ení DVI: "
 
 #: src/insets/Inset.cpp:88
-#, fuzzy
 msgid "Bibliography Entry"
-msgstr "Nastavení hesla bibliografie"
+msgstr "Heslo bibliografie"
 
 #: src/insets/Inset.cpp:91
-#, fuzzy
 msgid "TeX Code"
-msgstr "Kód TeX-u:"
+msgstr "Kód TeX-u"
 
 #: src/insets/Inset.cpp:111
-#, fuzzy
 msgid "Horizontal Space"
-msgstr "Horizontální mezera...|i"
+msgstr "Horizontální mezera"
 
 #: src/insets/Inset.cpp:112 src/insets/InsetVSpace.cpp:111
 msgid "Vertical Space"
 msgstr "Vertikální mezera"
 
 #: src/insets/Inset.cpp:157
-#, fuzzy
 msgid "Horizontal Math Space"
-msgstr "Horizontální mezera...|i"
+msgstr "Horizontální mat. mezera"
 
 #: src/insets/InsetBibitem.cpp:92
 msgid "Keys must be unique!"
@@ -23091,9 +23073,8 @@ msgid "Branch (child only): "
 msgstr "Vìtev (pouze potomek): "
 
 #: src/insets/InsetBranch.cpp:88
-#, fuzzy
 msgid "Branch (undefined): "
-msgstr "Vìtev (pouze potomek): "
+msgstr "Vìtev (nedefinována): "
 
 #: src/insets/InsetBranch.cpp:93
 msgid "Undef: "
@@ -23146,25 +23127,23 @@ msgid "Unknown parameter name: "
 msgstr "Neznámé jméno parametru: "
 
 #: src/insets/InsetCommandParams.cpp:313
-#, fuzzy
 msgid "Missing \\end_inset at this point: "
-msgstr "V tomto místì postrádám \\end_inset ."
+msgstr "Postrádám \\end_inset v tomto místì: "
 
 #: src/insets/InsetCommandParams.cpp:401
-#, fuzzy
 msgid "Uncodable characters"
-msgstr "nekódovatelný znak"
+msgstr "Nekódovatelné znaky"
 
 #: src/insets/InsetCommandParams.cpp:402
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters that are used in the inset %1$s are not\n"
 "representable in the current encoding and therefore have been omitted:\n"
 "%2$s."
 msgstr ""
-"Následující znaky ve výpisech zdrojových kódù nejsou reprezentovatelné\n"
+"Následující znaky pou¾ité ve vlo¾ce %1$s nejsou reprezentovatelné\n"
 "ve zvoleném kódování a byly vynechány:\n"
-"%1$s."
+"%2$s."
 
 #: src/insets/InsetExternal.cpp:501
 #, c-format
@@ -23176,9 +23155,9 @@ msgid "float: "
 msgstr "plovoucí objekt: "
 
 #: src/insets/InsetFloat.cpp:276
-#, fuzzy, c-format
+#, c-format
 msgid "ERROR: Unknown float type: %1$s"
-msgstr "CHYBA: Neexistující typ plovoucího objektu!"
+msgstr "CHYBA: Neznámý typ plovoucího objektu: %1$s"
 
 #: src/insets/InsetFloat.cpp:397
 msgid "float"
@@ -23233,17 +23212,16 @@ msgstr "Soubor s obrázkem: %1$s"
 
 #: src/insets/InsetHyperlink.cpp:252
 msgid "www"
-msgstr ""
+msgstr "www"
 
 #: src/insets/InsetHyperlink.cpp:256
-#, fuzzy
 msgid "file"
-msgstr "V¹echny soubory "
+msgstr "soubor"
 
 #: src/insets/InsetHyperlink.cpp:257
-#, fuzzy, c-format
+#, c-format
 msgid "Hyperlink (%1$s) to %2$s"
-msgstr "Vìtev (%1$s): %2$s"
+msgstr "Odkaz (hyperlink) (%1$s) na %2$s"
 
 #: src/insets/InsetInclude.cpp:368
 msgid "Verbatim Input"
@@ -23254,9 +23232,8 @@ msgid "Verbatim Input*"
 msgstr "Vstup-doslovnì*"
 
 #: src/insets/InsetInclude.cpp:377
-#, fuzzy
 msgid "Include (excluded)"
-msgstr "Zahrnout soubor"
+msgstr "Zahrnout (vyjmutý)"
 
 #: src/insets/InsetInclude.cpp:478 src/insets/InsetInclude.cpp:705
 #: src/insets/InsetInclude.cpp:750
