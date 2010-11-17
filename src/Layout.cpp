@@ -996,14 +996,20 @@ string Layout::defaultCSSClass() const
 	docstring::const_iterator it = name().begin();
 	docstring::const_iterator en = name().end();
 	for (; it != en; ++it) {
-		if (!isalpha(*it))
-			continue;
-		if (islower(*it))
-			d += *it;
-		else 
-			d += lowercase(*it);
+		char_type const c = *it;
+		if (c >= 0x80 || !isalnum(c)) {
+			if (d.empty())
+				// make sure we don't start with an underscore,
+				// as that sometimes causes problems.
+				d = from_ascii("lyx_");
+			else
+				d += '_';
+		} else if (islower(c))
+			d += c;
+		else
+			// this is slow, so do it only if necessary
+			d += lowercase(c);
 	}
-	// are there other characters we need to remove?
 	defaultcssclass_ = to_utf8(d);
 	return defaultcssclass_;
 }
