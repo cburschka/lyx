@@ -128,11 +128,11 @@ docstring cleanAttr(docstring const & str)
 	docstring newname;
 	docstring::const_iterator it = str.begin();
 	docstring::const_iterator en = str.end();
-	for (; it != en; ++it)
-		if (isalnum(*it))
-			newname += *it;
-		else
-			newname += '_';
+	for (; it != en; ++it) {
+		char_type const c = *it;
+		bool const is_alnum = c < 0x80 && isalnum(c);
+		newname += is_alnum ? c : char_type('_');
+	}
 	return newname;	
 }
 

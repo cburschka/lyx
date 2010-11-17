@@ -114,8 +114,9 @@ docstring InsetRef::getFormattedCmd(docstring const & ref,
 	// make sure the prefix is legal for a latex command
 	int const len = prefix.size();
 	for (int i = 0; i < len; i++) {
-		if (!isalpha(prefix[i])) {
-			LYXERR0("Prefix `" << prefix << "' contains non-letters.");
+		char_type c = prefix[i];
+		if (c >= 0x80 || !isalpha(prefix[i])) {
+			LYXERR0("Prefix `" << prefix << "' is invalid for LaTeX.");
 			// restore the label
 			label = ref;
 			return defcmd;
