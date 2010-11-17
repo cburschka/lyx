@@ -30,7 +30,7 @@ public:
 	///
 	docstring email() const { return email_; }
 	///
-	int buffer_id() const { return buffer_id_; }
+	int bufferId() const { return buffer_id_; }
 	///
 	void setBufferId(int buffer_id) const { buffer_id_ = buffer_id; }
 	///
@@ -39,6 +39,8 @@ public:
 	bool used() const { return used_; }
 	///
 	friend std::istream & operator>>(std::istream & os, Author & a);
+	///
+	friend std::ostream & operator<<(std::ostream & os, Author const & a);
 
 private:
 	/// The author's name

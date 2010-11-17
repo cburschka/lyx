@@ -51,8 +51,8 @@ bool operator==(Author const & l, Author const & r)
 ostream & operator<<(ostream & os, Author const & a)
 {
 	// FIXME UNICODE
-	os << a.buffer_id() << " \"" << to_utf8(a.name())
-			<< "\" " << to_utf8(a.email());
+	os << a.buffer_id_ << " \"" << to_utf8(a.name_)
+			<< "\" " << to_utf8(a.email_);
 		
 	return os;
 }
@@ -70,7 +70,7 @@ istream & operator>>(istream & is, Author & a)
 
 
 bool author_smaller(Author const & lhs, Author const & rhs) {
-	return lhs.buffer_id() < rhs.buffer_id();
+	return lhs.bufferId() < rhs.bufferId();
 }
 
 
@@ -86,7 +86,7 @@ int AuthorList::record(Author const & a)
 	// author, we copy the buffer_id, so that it will
 	// keep the same id in the file.
 	if (authors_.size() > 0 && a == authors_[0])
-		authors_[0].setBufferId(a.buffer_id());
+		authors_[0].setBufferId(a.bufferId());
 
 	Authors::const_iterator it(authors_.begin());
 	Authors::const_iterator itend(authors_.end());
