@@ -1530,6 +1530,7 @@ void GuiView::autoSave()
 	d.autosave_watcher_.setFuture(f);
 #else
 	buffer->autoSave();
+	resetAutosaveTimers();
 #endif
 }
 

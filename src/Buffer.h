@@ -235,8 +235,8 @@ private:
 public:
 	/// \name Functions involved in autosave and emergency files.
 	//@{
-	///
-	void autoSave() const;
+	/// Save an autosave file to #filename.lyx#
+	bool autoSave() const;	
 	/// save emergency file
 	/// \return a status message towards the user.
 	docstring emergencyWrite();

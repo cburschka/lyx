@@ -2025,6 +2025,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 
 	case LFUN_BUFFER_AUTO_SAVE:
 		autoSave();
+		resetAutosaveTimers();
 		break;
 
 	case LFUN_BRANCH_ADD: {
@@ -3270,23 +3271,36 @@ void Buffer::moveAutosaveFile(support::FileName const & oldauto) const
 }
 
 
-// Perfect target for a thread...
-void Buffer::autoSave() const
+bool Buffer::autoSave() const 
 {
-	if (d->bak_clean || isReadonly()) {
-		// We don't save now, but we'll try again later
-		resetAutosaveTimers();
-		return;
-	}
+	Buffer const * buf = d->cloned_buffer_ ? d->cloned_buffer_ : this;
+	if (buf->d->bak_clean || isReadonly())
+		return true;
 
-	// emit message signal.
 	message(_("Autosaving current document..."));
-	AutoSaveBuffer autosave(*this, getAutosaveFileName());
-	autosave.start();
-
-	d->bak_clean = true;
-
-	resetAutosaveTimers();
+	buf->d->bak_clean = true;
+	
+	FileName const fname = getAutosaveFileName();
+	if (d->cloned_buffer_) {
+		// If this buffer is cloned, we assume that
+		// we are running in a separate thread already.
+		FileName const tmp_ret = FileName::tempName("lyxauto");
+		if (!tmp_ret.empty()) {
+			writeFile(tmp_ret);
+			// assume successful write of tmp_ret
+			if (tmp_ret.moveTo(fname))
+				return true;
+		}
+		// failed to write/rename tmp_ret so try writing direct
+		return writeFile(fname);
+	} else {	
+		/// This function is deprecated as the frontend needs to take care
+		/// of cloning the buffer and autosaving it in another thread. It
+		/// is still here to allow (QT_VERSION < 0x040400).
+		AutoSaveBuffer autosave(*this, fname);
+		autosave.start();
+		return true;
+	}
 }
 
 
