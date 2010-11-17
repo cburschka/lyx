@@ -2700,6 +2700,7 @@ lib_examples_sl_files = Split('''
 
 
 lib_examples_sr_files = Split('''
+    Braille.lyx
     splash.lyx
 ''')
 

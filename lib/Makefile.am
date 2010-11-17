@@ -215,6 +215,7 @@ dist_skexamples_DATA = \
 
 srexamplesdir = $(pkgdatadir)/examples/sr
 dist_srexamples_DATA = \
+	examples/sr/Braille.lyx \
 	examples/sr/splash.lyx
 
 ukexamplesdir = $(pkgdatadir)/examples/uk
