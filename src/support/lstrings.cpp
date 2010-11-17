@@ -449,19 +449,13 @@ namespace {
 
 struct local_lowercase {
 	char_type operator()(char_type c) const {
-		if (!is_utf16(c))
-			// We don't know how to lowercase a non-utf16 char
-			return c;
-		return qchar_to_ucs4(ucs4_to_qchar(c).toLower());
+		return lowercase(c);
 	}
 };
 
 struct local_uppercase {
 	char_type operator()(char_type c) const {
-		if (!is_utf16(c))
-			// We don't know how to uppercase a non-utf16 char
-			return c;
-		return qchar_to_ucs4(ucs4_to_qchar(c).toUpper());
+		return uppercase(c);
 	}
 };
 
@@ -470,6 +464,7 @@ template<typename Char> struct local_ascii_lowercase {
 };
 
 } // end of anon namespace
+
 
 docstring const lowercase(docstring const & a)
 {
