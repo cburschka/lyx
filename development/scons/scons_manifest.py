@@ -2779,7 +2779,7 @@ lib_layouts_files = Split('''
     elsart.layout
     elsarticle.layout
     entcs.layout
-    enumitem.layout
+    enumitem.module
     europecv.layout
     extarticle.layout
     extbook.layout
