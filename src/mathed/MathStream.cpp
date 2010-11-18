@@ -222,10 +222,9 @@ WriteStream & operator<<(WriteStream & ws, char c)
 		ws.pendingSpace(false);
 	}
 	ws.os() << c;
-	if (c == '\n') {
+	if (c == '\n')
 		ws.addlines(1);
-		ws.canBreakLine(false);
-	}
+	ws.canBreakLine(c != '\n');
 	return ws;
 }
 
