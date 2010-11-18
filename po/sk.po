@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-11-18 06:02+0100\n"
-"PO-Revision-Date: 2010-11-14 13:03+0100\n"
+"PO-Revision-Date: 2010-11-18 12:15+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1737,9 +1737,8 @@ msgid "&Value:"
 msgstr "&Hodnota:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:100
-#, fuzzy
 msgid "Custom value. Needs spacing type \"Custom\"."
-msgstr "Vlastná hodnota. Nastavte typ rozstupu na  &quot;Vlastný&quot;."
+msgstr "Vlastná hodnota. Potrebuje typ rozstupu  &quot;Vlastný&quot;."
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:110
 msgid "&Fill Pattern:"
@@ -2048,7 +2047,6 @@ msgid "&Quote Style:"
 msgstr "Typ úvodzoviek:"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
-#, fuzzy
 msgid "Of&fset:"
 msgstr "Vyrovnanie:"
 
@@ -2061,7 +2059,6 @@ msgid "Value of the line width."
 msgstr "Hodnota šírky riadku."
 
 #: src/frontends/qt4/ui/LineUi.ui:94
-#, fuzzy
 msgid "&Thickness:"
 msgstr "Hrúbka:"
 
@@ -2508,9 +2505,8 @@ msgid "The LaTeX package mathdots is used"
 msgstr "LaTeX balík mathdots je používaný"
 
 #: src/frontends/qt4/ui/MathsUi.ui:78
-#, fuzzy
 msgid "Use mathdo&ts package"
-msgstr "Použiť mat. balík dots"
+msgstr "Použiť mat. balík mathdots"
 
 #: src/frontends/qt4/ui/MathsUi.ui:85
 msgid ""
@@ -2624,9 +2620,8 @@ msgid "Use &XeTeX"
 msgstr "Použi XeTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:77
-#, fuzzy
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
-msgstr "Umožniť dopredu/zvratne hľadať (napr., SyncTeX)"
+msgstr "Umožniť dopredu/zvratne hľadať a tlačiť(napr., SyncTeX)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:80
 msgid "S&ynchronize with Output"
@@ -2698,7 +2693,6 @@ msgid "&Format:"
 msgstr "&Formát:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:44
-#, fuzzy
 msgid "Choose a particular paper size, or set your own with \"Custom\""
 msgstr ""
 "Zvoľte si konkrétnu veľkosť stránky, alebo nastavte si svoju vo \"Vlastné\""
@@ -2926,7 +2920,6 @@ msgid "Horizontal space of the phantom content"
 msgstr "Horizontálny priestor obsahu phantom"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:73
-#, fuzzy
 msgid "&Horizontal Phantom"
 msgstr "Horizontálny Phantom"
 
@@ -2935,7 +2928,6 @@ msgid "Vertical space of the phantom content"
 msgstr "Vertikálny priestor obsahu phantom"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:83
-#, fuzzy
 msgid "&Vertical Phantom"
 msgstr "Vertikálny Phantom"
 
@@ -4007,12 +3999,11 @@ msgstr "Otvoriť dokumenty v paneloch"
 
 #: src/frontends/qt4/ui/PrefUi.ui:245
 msgid "Whether to open documents in an already running instance of LyX."
-msgstr ""
+msgstr "Či otvoriť dokumenty v už spustenej inštancii LyX-a."
 
 #: src/frontends/qt4/ui/PrefUi.ui:248
-#, fuzzy
 msgid "S&ingle instance"
-msgstr "Jednoduchá úvodzovka"
+msgstr "Jednoduchá inštancia"
 
 #: src/frontends/qt4/ui/PrefUi.ui:255
 msgid "Whether to place close button on each tab or only one in the top left."
@@ -7533,7 +7524,7 @@ msgstr "Heslá:"
 
 #: lib/layouts/enumitem.module:2
 msgid "Customisable Lists (enumitem)"
-msgstr ""
+msgstr "Prispôsobilé listiny (enumitem)"
 
 #: lib/layouts/enumitem.module:7
 msgid ""
@@ -7541,6 +7532,10 @@ msgid ""
 "argument. See http://dante.ctan.org/CTAN/macros/latex/contrib/enumitem/"
 "enumitem.pdf"
 msgstr ""
+"Kontroluje schéma pre  enumerate, itemize a description s nepovinným "
+"argumentom. Pozrite si http://dante.ctan."
+"org/CTAN/macros/latex/contrib/enumitem/"
+"enumitem.pdf"
 
 #: lib/layouts/enumitem.module:73 lib/layouts/scrlettr.layout:24
 #: lib/layouts/scrlttr2.layout:26 lib/layouts/scrclass.inc:40
@@ -7548,9 +7543,8 @@ msgid "Labeling"
 msgstr "Označovanie"
 
 #: lib/layouts/enumitem.module:112
-#, fuzzy
 msgid "Enumerate-Resume"
-msgstr "Výpočet"
+msgstr "Výpočet-Pokračovať"
 
 #: lib/layouts/europecv.layout:50 lib/layouts/moderncv.layout:82
 msgid "Item"
@@ -12567,17 +12561,14 @@ msgid "Close All Notes|l"
 msgstr "Zavri všetky poznámky|o"
 
 #: lib/ui/stdcontext.inc:194 lib/ui/stdmenus.inc:470
-#, fuzzy
 msgid "Phantom|P"
 msgstr "Phantom"
 
 #: lib/ui/stdcontext.inc:195 lib/ui/stdmenus.inc:471
-#, fuzzy
 msgid "Horizontal Phantom|H"
 msgstr "Horizontálny Phantom"
 
 #: lib/ui/stdcontext.inc:196 lib/ui/stdmenus.inc:472
-#, fuzzy
 msgid "Vertical Phantom|V"
 msgstr "Vertikálny Phantom"
 
@@ -13469,7 +13460,6 @@ msgid "Vertical Space...|V"
 msgstr "Vertikálna medzera...|V"
 
 #: lib/ui/stdmenus.inc:397
-#, fuzzy
 msgid "Phantom|m"
 msgstr "Phantom"
 
@@ -14328,19 +14318,16 @@ msgid "Negative space\t\\!"
 msgstr "Záporná medzera\t\\!"
 
 #: lib/ui/stdtoolbars.inc:334
-#, fuzzy
 msgid "Phantom\t\\phantom"
-msgstr "Miesto\t\\phantom"
+msgstr "Phantom\t\\phantom"
 
 #: lib/ui/stdtoolbars.inc:335
-#, fuzzy
 msgid "Horizontal phantom\t\\hphantom"
-msgstr "Horizontálne miesto\t\\hphantom"
+msgstr "Horizontálny phantom\t\\hphantom"
 
 #: lib/ui/stdtoolbars.inc:336
-#, fuzzy
 msgid "Vertical phantom\t\\vphantom"
-msgstr "Vertikálne miesto\t\\vphantom"
+msgstr "Vertikálny phantom\t\\vphantom"
 
 #: lib/ui/stdtoolbars.inc:339
 msgid "Roots"
@@ -18320,9 +18307,8 @@ msgid "Done!"
 msgstr "Hotovo!"
 
 #: src/LyX.cpp:402
-#, fuzzy
 msgid "The following files could not be loaded:"
-msgstr "Dokument nie je možné uložiť!"
+msgstr "Nasledovné súbory sa nedali nahrať:"
 
 #: src/LyX.cpp:439
 #, c-format
@@ -18470,7 +18456,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Nastavenie úrovne ladenia na %1$s"
 
 #: src/LyX.cpp:1041
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -18536,6 +18521,9 @@ msgstr ""
 "                  Keď `main' bude prepísaný len hlavný súbor.\n"
 "                  Keď `none' nebude nič prepísané.                  Všetko "
 "iné je rovnocenné k `all', len že nie je skonzumované.\n"
+"\t-r [--remote]\n"
+"                  otvorí dokumenty v už spustenej inštancii\n"
+"                  (pracujúca lyx-pipa je potrebná)\n"
 "\t--batch    spusti príkazy bez GUI a skonč.\n"
 "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu."
@@ -22346,9 +22334,9 @@ msgid "Successful preview of format: %1$s"
 msgstr "Úspešné prehliadnutie formátu: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2908
-#, fuzzy, c-format
+#, c-format
 msgid "Error while previewing format: %1$s"
-msgstr "Chyba pri zobrazovaní formátu: %1$s"
+msgstr "Chyba pri prehliadaní formátu: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2911
 #, c-format
@@ -22356,7 +22344,7 @@ msgid "Successful export to format: %1$s"
 msgstr "Úspešný export do formátu: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2912
-#, fuzzy, c-format
+#, c-format
 msgid "Error while exporting format: %1$s"
 msgstr "Chyba pri exporte na formát: %1$s"
 
@@ -23098,9 +23086,8 @@ msgid "Unknown index type!"
 msgstr "Neznámy typ indexu!"
 
 #: src/insets/InsetIndex.cpp:454
-#, fuzzy
 msgid "All indexes"
-msgstr "<Všetky indexy>"
+msgstr "Všetky indexy"
 
 #: src/insets/InsetIndex.cpp:458
 msgid "subindex"
