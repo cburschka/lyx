@@ -69,8 +69,8 @@
      <widget class="QPushButton" name="findNextPB">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>100</horstretch>
-        <verstretch>32</verstretch>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
        </sizepolicy>
       </property>
       <property name="toolTip">
@@ -117,8 +117,8 @@
      <widget class="QPushButton" name="replacePB">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>100</horstretch>
-        <verstretch>32</verstretch>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
        </sizepolicy>
       </property>
       <property name="toolTip">
@@ -131,12 +131,6 @@
     </item>
     <item row="6" column="0">
      <widget class="QLabel" name="TextLabel2">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
       <property name="text">
        <string>S&amp;uggestions:</string>
       </property>
@@ -149,8 +143,8 @@
      <widget class="QPushButton" name="replaceAllPB">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>100</horstretch>
-        <verstretch>32</verstretch>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
        </sizepolicy>
       </property>
       <property name="toolTip">
@@ -167,9 +161,9 @@
     <item row="7" column="1">
      <widget class="QPushButton" name="ignorePB">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-        <horstretch>100</horstretch>
-        <verstretch>32</verstretch>
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
        </sizepolicy>
       </property>
       <property name="toolTip">
@@ -183,9 +177,9 @@
     <item row="8" column="1">
      <widget class="QPushButton" name="ignoreAllPB">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-        <horstretch>100</horstretch>
-        <verstretch>32</verstretch>
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
        </sizepolicy>
       </property>
       <property name="toolTip">
@@ -199,9 +193,9 @@
     <item row="9" column="1">
      <widget class="QPushButton" name="addPB">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-        <horstretch>100</horstretch>
-        <verstretch>32</verstretch>
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
        </sizepolicy>
       </property>
       <property name="toolTip">
@@ -242,8 +236,8 @@
      <widget class="QPushButton" name="closePB">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>100</horstretch>
-        <verstretch>32</verstretch>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
        </sizepolicy>
       </property>
       <property name="text">
