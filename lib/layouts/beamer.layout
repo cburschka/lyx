@@ -300,12 +300,10 @@ Style BeginPlainFrame
   EndFont
 
   Preamble
-    \makeatletter
     \long\def\lyxplainframe#1{\@lyxplainframe#1\@lyxframestop}%
     \def\@lyxplainframe{\@ifnextchar<{\@@lyxplainframe}{\@@lyxplainframe<*>}}%
     \long\def\@@lyxplainframe<#1>#2\@lyxframestop#3\lyxframeend{%
       \frame<#1>[plain]{\frametitle{#2}#3}}
-    \makeatother
   EndPreamble
 End
 
@@ -340,13 +338,11 @@ Style AgainFrame
   EndFont
 
   Preamble
-    \makeatletter
     \long\def\lyxagainframe#1{\@lyxagainframe#1\@lyxframestop}%
     \def\@lyxagainframe{\@ifnextchar<{\@@lyxagainframe}{\@@lyxagainframe<*>}}%
     \def\@@lyxagainframe<#1>{\@ifnextchar[{\@@@lyxagainframe<#1>}{\@@@lyxagainframe<#1>[]}}
     \long\def\@@@lyxagainframe<#1>[#2]#3\@lyxframestop{%
       \againframe<#1>[#2]{#3}}
-    \makeatother
   EndPreamble
 End
 
