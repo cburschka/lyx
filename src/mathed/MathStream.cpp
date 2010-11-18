@@ -107,7 +107,7 @@ WriteStream & operator<<(WriteStream & ws, docstring const & s)
 	}
 	ws.os() << s.substr(first);
 	int lf = 0;
-	char_type lastchar;
+	char_type lastchar(0);
 	docstring::const_iterator dit = s.begin() + first;
 	docstring::const_iterator end = s.end();
 	for (; dit != end; ++dit) {
