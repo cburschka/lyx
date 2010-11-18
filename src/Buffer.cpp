@@ -646,6 +646,7 @@ void Buffer::setFileName(FileName const & fname)
 {
 	d->filename = fname;
 	setReadonly(d->filename.isReadOnly());
+	saveCheckSum();
 	updateTitles();
 }
 
@@ -4166,7 +4167,6 @@ bool Buffer::saveAs(FileName const & fn)
 		// reset the old filename and unnamed state
 		setFileName(old_name);
 		setUnnamed(old_unnamed);
-		saveCheckSum();
 		return false;
 	}
 }
