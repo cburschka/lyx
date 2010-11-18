@@ -206,10 +206,10 @@ public:
 //private:
 	/// read the header, returns number of unknown tokens
 	int readHeader(Lexer & lex);
-	/// save timestamp and checksum of the given file.
-	void saveCheckSum() const;
 
 private:
+	/// save timestamp and checksum of the given file.
+	void saveCheckSum() const;	
 	/// read a new file
 	ReadStatus readFile(support::FileName const & fn);
 	/// Reads a file without header.
