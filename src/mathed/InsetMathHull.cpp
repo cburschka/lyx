@@ -737,7 +737,7 @@ void InsetMathHull::header_write(WriteStream & os) const
 		break;
 
 	default:
-		os << "\\begin{unknown" << star(n) << '}';
+		os << "\\begin{unknown" << star(n) << "}\n";
 		break;
 	}
 }
@@ -758,9 +758,9 @@ void InsetMathHull::footer_write(WriteStream & os) const
 
 	case hullEquation:
 		if (n)
-			os << "\\end{equation" << star(n) << "}\n";
+			os << "\n\\end{equation" << star(n) << "}\n";
 		else
-			os << "\\]\n";
+			os << "\n\\]\n";
 		break;
 
 	case hullEqnArray:
@@ -770,11 +770,11 @@ void InsetMathHull::footer_write(WriteStream & os) const
 	case hullXAlignAt:
 	case hullGather:
 	case hullMultline:
-		os << "\\end{" << hullName(type_) << star(n) << "}\n";
+		os << "\n\\end{" << hullName(type_) << star(n) << "}\n";
 		break;
 
 	case hullXXAlignAt:
-		os << "\\end{" << hullName(type_) << "}\n";
+		os << "\n\\end{" << hullName(type_) << "}\n";
 		break;
 
 	case hullRegexp:
@@ -782,7 +782,7 @@ void InsetMathHull::footer_write(WriteStream & os) const
 		break;
 
 	default:
-		os << "\\end{unknown" << star(n) << '}';
+		os << "\n\\end{unknown" << star(n) << "}\n";
 		break;
 	}
 }
