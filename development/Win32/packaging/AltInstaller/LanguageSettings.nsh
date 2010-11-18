@@ -399,8 +399,9 @@
   ${endif}  
 
   ${if} ${LangISOCode} = 2074
+   StrCpy ${LangNme} "Srpski (Latinica)"
    StrCpy ${LangCdeSys} "sr"
-   StrCpy ${LangNmeSys} "Srpski"
+   StrCpy ${LangNmeSys} "Srpski (Latinica)"
    StrCpy ${LangSysEnc} "1250"
   ${endif}
 
@@ -678,6 +679,12 @@
    StrCpy ${LangCde} "ru_RU"
    StrCpy ${LangNmeLyX} "russian"
    StrCpy ${LangEnc} "cp-1251"
+  ${endif}
+
+  ${if} ${Name} == "Srpski (Latinica)"
+   StrCpy ${LangCde} "sr_RS"
+   StrCpy ${LangNmeLyX} "serbian-latin"
+   StrCpy ${LangEnc} "cp-1250"
   ${endif}
 
   ${if} ${Name} == "Slovenský"

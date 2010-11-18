@@ -3,7 +3,7 @@ Description
 This is the readme of the variant "update" of the LyXWinInstaller. Please read
 this file carefully to prevent troubles with the installer.
 The LyXWinInstaller installs the wordprocessor "LyX" (www.lyx.org) and some
-needed programs on Windows 2000/XP/XPx64/Vista.
+needed programs on Windows 2000/XP/XPx64/Vista/7.
 ! Win95, Win98, and WinME are NOT supported. !
 
 ---
