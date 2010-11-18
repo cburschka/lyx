@@ -1299,9 +1299,10 @@ DocumentClass & DocumentClassBundle::makeDocumentClass(
 		}
 		if (!lm->isAvailable()) {
 			docstring const msg =
-						bformat(_("The module %1$s requires a package that is\n"
-						"not available in your LaTeX installation. LaTeX output\n"
-						"may not be possible.\n"), from_utf8(modName));
+				bformat(_("The module %1$s requires a package that is\n"
+				"not available in your LaTeX installation, or a converter\n"
+				"you have not installed. LaTeX output may not be possible.\n"), 
+				from_utf8(modName));
 			frontend::Alert::warning(_("Package not available"), msg);
 		}
 		FileName layout_file = libFileSearch("layouts", lm->getFilename());
