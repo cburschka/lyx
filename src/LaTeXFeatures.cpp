@@ -556,7 +556,8 @@ char const * simplefeatures[] = {
 	"pdfpages",
 	"amscd",
 	"slashed",
-	"multirow"
+	"multirow",
+	"tfrupee"
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
