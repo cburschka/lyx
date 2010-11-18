@@ -116,7 +116,7 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 
 // FIXME newFile() should probably be a member method of Application...
 Buffer * newFile(string const & filename, string const & templatename,
-		 bool const isNamed)
+		 bool is_named)
 {
 	// get a free buffer
 	Buffer * b = theBufferList().newBuffer(filename);
@@ -143,13 +143,12 @@ Buffer * newFile(string const & filename, string const & templatename,
 		}
 	}
 
-	if (!isNamed) {
-		b->setUnnamed();
-		b->setFileName(filename);
-	} else
-		// in this case, the user chose the filename, so we assume that she
-		// really does want this file.
+	if (is_named)
+		// in this case, the user chose the filename, so we
+		// assume that she really does want this file.
 		b->markDirty();
+	else
+		b->setUnnamed();
 
 	b->setReadonly(false);
 	b->setFullyLoaded(true);
