@@ -189,7 +189,7 @@ public:
 	/// is autosave needed?
 	mutable bool bak_clean;
 
-	/// is this a unnamed file (New...)?
+	/// is this an unnamed file (New...)?
 	bool unnamed;
 
 	/// buffer is r/o
@@ -642,9 +642,9 @@ void Buffer::setReadonly(bool const flag)
 }
 
 
-void Buffer::setFileName(string const & newfile)
+void Buffer::setFileName(FileName const & fname)
 {
-	d->filename = makeAbsPath(newfile);
+	d->filename = fname;
 	setReadonly(d->filename.isReadOnly());
 	updateTitles();
 }
@@ -4145,7 +4145,7 @@ bool Buffer::saveAs(FileName const & fn)
 	FileName const old_auto = getAutosaveFileName();
 	bool const old_unnamed = isUnnamed();
 
-	setFileName(fn.absFileName());
+	setFileName(fn);
 	markDirty();
 	setUnnamed(false);
 
@@ -4164,7 +4164,7 @@ bool Buffer::saveAs(FileName const & fn)
 	} else {
 		// save failed
 		// reset the old filename and unnamed state
-		setFileName(old_name.absFileName());
+		setFileName(old_name);
 		setUnnamed(old_unnamed);
 		saveCheckSum();
 		return false;

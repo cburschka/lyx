@@ -365,9 +365,6 @@ public:
 	/// Get the name and type of the log.
 	std::string logName(LogType * type = 0) const;
 
-	/// Change name of buffer. Updates "read-only" flag.
-	void setFileName(std::string const & newfile);
-
 	/// Set document's parent Buffer.
 	void setParent(Buffer const *);
 	Buffer const * parent() const;
@@ -657,6 +654,8 @@ public:
 	void checkChildBuffers();
 
 private:
+	/// Change name of buffer. Updates "read-only" flag.
+	void setFileName(support::FileName const & fname);
 	///
 	std::vector<std::string> backends() const;
 	///
