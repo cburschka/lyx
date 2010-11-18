@@ -259,7 +259,6 @@ Style BeginFrame
   EndFont
 
   Preamble
-    \makeatletter
     \long\def\lyxframe#1{\@lyxframe#1\@lyxframestop}%
     \def\@lyxframe{\@ifnextchar<{\@@lyxframe}{\@@lyxframe<*>}}%
     \def\@@lyxframe<#1>{\@ifnextchar[{\@@@lyxframe<#1>}{\@@@lyxframe<#1>[]}}
@@ -267,7 +266,6 @@ Style BeginFrame
     \def\@@@@@lyxframe<#1>[#2]{\@ifnextchar[{\@@@@lyxframe<#1>[#2]}{\@@@@lyxframe<#1>[#2][]}}
     \long\def\@@@@lyxframe<#1>[#2][#3]#4\@lyxframestop#5\lyxframeend{%
       \frame<#1>[#2][#3]{\frametitle{#4}#5}}
-    \makeatother
   EndPreamble
 End
 
