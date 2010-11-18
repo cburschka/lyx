@@ -125,7 +125,7 @@ WriteStream::WriteStream(odocstream & os, bool fragile, bool latex, OutputType o
 			Encoding const * encoding)
 	: os_(os), fragile_(fragile), firstitem_(false), latex_(latex),
 	  output_(output), pendingspace_(false), pendingbrace_(false),
-	  canbreakline_(true), textmode_(false), locked_(0), ascii_(0),
+	  textmode_(false), locked_(0), ascii_(0), canbreakline_(true),
 	  line_(0), encoding_(encoding)
 {}
 
@@ -133,7 +133,7 @@ WriteStream::WriteStream(odocstream & os, bool fragile, bool latex, OutputType o
 WriteStream::WriteStream(odocstream & os)
 	: os_(os), fragile_(false), firstitem_(false), latex_(false),
 	  output_(wsDefault), pendingspace_(false), pendingbrace_(false),
-	  canbreakline_(true), textmode_(false), locked_(0), ascii_(0),
+	  textmode_(false), locked_(0), ascii_(0), canbreakline_(true),
 	  line_(0), encoding_(0)
 {}
 
