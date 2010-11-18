@@ -85,26 +85,38 @@ NormalStream & operator<<(NormalStream & ns, int i)
 
 WriteStream & operator<<(WriteStream & ws, docstring const & s)
 {
+	// Skip leading '\n' if we had already output a newline char
+	size_t const first =
+		(s.length() > 0 && (s[0] != '\n' || ws.canBreakLine())) ? 0 : 1;
+
+	// Check whether there's something to output
+	if (s.length() <= first)
+		return ws;
+
 	if (ws.pendingBrace()) {
 		ws.os() << '}';
 		ws.pendingBrace(false);
 		ws.pendingSpace(false);
 		ws.textMode(true);
-	} else if (ws.pendingSpace() && s.length() > 0) {
-		if (isAlphaASCII(s[0]))
+	} else if (ws.pendingSpace()) {
+		if (isAlphaASCII(s[first]))
 			ws.os() << ' ';
-		else if (s[0] == ' ' && ws.textMode())
+		else if (s[first] == ' ' && ws.textMode())
 			ws.os() << '\\';
 		ws.pendingSpace(false);
 	}
-	ws.os() << s;
+	ws.os() << s.substr(first);
 	int lf = 0;
-	docstring::const_iterator dit = s.begin();
+	char_type lastchar;
+	docstring::const_iterator dit = s.begin() + first;
 	docstring::const_iterator end = s.end();
-	for (; dit != end; ++dit)
-		if ((*dit) == '\n')
+	for (; dit != end; ++dit) {
+		lastchar = *dit;
+		if (lastchar == '\n')
 			++lf;
+	}
 	ws.addlines(lf);
+	ws.canBreakLine(lastchar != '\n');
 	return ws;
 }
 
@@ -113,14 +125,16 @@ WriteStream::WriteStream(odocstream & os, bool fragile, bool latex, OutputType o
 			Encoding const * encoding)
 	: os_(os), fragile_(fragile), firstitem_(false), latex_(latex),
 	  output_(output), pendingspace_(false), pendingbrace_(false),
-	  textmode_(false), locked_(0), ascii_(0), line_(0), encoding_(encoding)
+	  canbreakline_(true), textmode_(false), locked_(0), ascii_(0),
+	  line_(0), encoding_(encoding)
 {}
 
 
 WriteStream::WriteStream(odocstream & os)
 	: os_(os), fragile_(false), firstitem_(false), latex_(false),
 	  output_(wsDefault), pendingspace_(false), pendingbrace_(false),
-	  textmode_(false), locked_(0), ascii_(0), line_(0), encoding_(0)
+	  canbreakline_(true), textmode_(false), locked_(0), ascii_(0),
+	  line_(0), encoding_(0)
 {}
 
 
@@ -185,26 +199,16 @@ WriteStream & operator<<(WriteStream & ws, MathData const & ar)
 
 WriteStream & operator<<(WriteStream & ws, char const * s)
 {
-	if (ws.pendingBrace()) {
-		ws.os() << '}';
-		ws.pendingBrace(false);
-		ws.pendingSpace(false);
-		ws.textMode(true);
-	} else if (ws.pendingSpace() && strlen(s) > 0) {
-		if (isAlphaASCII(s[0]))
-			ws.os() << ' ';
-		else if (s[0] == ' ' && ws.textMode())
-			ws.os() << '\\';
-		ws.pendingSpace(false);
-	}
-	ws.os() << s;
-	ws.addlines(int(count(s, s + strlen(s), '\n')));
+	ws << from_utf8(s);
 	return ws;
 }
 
 
 WriteStream & operator<<(WriteStream & ws, char c)
 {
+	if (c == '\n' && !ws.canBreakLine())
+		return ws;
+
 	if (ws.pendingBrace()) {
 		ws.os() << '}';
 		ws.pendingBrace(false);
@@ -218,8 +222,10 @@ WriteStream & operator<<(WriteStream & ws, char c)
 		ws.pendingSpace(false);
 	}
 	ws.os() << c;
-	if (c == '\n')
+	if (c == '\n') {
 		ws.addlines(1);
+		ws.canBreakLine(false);
+	}
 	return ws;
 }
 
@@ -232,6 +238,7 @@ WriteStream & operator<<(WriteStream & ws, int i)
 		ws.textMode(true);
 	}
 	ws.os() << i;
+	ws.canBreakLine(true);
 	return ws;
 }
 
@@ -244,6 +251,7 @@ WriteStream & operator<<(WriteStream & ws, unsigned int i)
 		ws.textMode(true);
 	}
 	ws.os() << i;
+	ws.canBreakLine(true);
 	return ws;
 }
 

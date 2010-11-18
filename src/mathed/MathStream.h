@@ -59,6 +59,10 @@ public:
 	bool & firstitem() { return firstitem_; }
 	///
 	void addlines(unsigned int);
+	/// record whether we can write an immediately following newline char
+	void canBreakLine(bool breakline) { canbreakline_ = breakline; }
+	/// tell whether we can write an immediately following newline char
+	bool canBreakLine() const { return canbreakline_; }
 	/// writes space if next thing is isalpha()
 	void pendingSpace(bool how);
 	/// writes space if next thing is isalpha()
@@ -102,6 +106,8 @@ private:
 	bool locked_;
 	/// should we use only ascii chars when producing latex code?
 	bool ascii_;
+	/// are we allowed to output an immediately following newline?
+	bool canbreakline_;
 	///
 	int line_;
 	///
