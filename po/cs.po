@@ -13168,13 +13168,12 @@ msgid "Insert Reference at Cursor Position|I"
 msgstr ""
 
 #: lib/ui/stdcontext.inc:583
-#, fuzzy
 msgid "All Indexes|A"
-msgstr "Otevøi v¹echny vlo¾ky|O"
+msgstr "V¹echna hesla rejstøíku|r"
 
 #: lib/ui/stdcontext.inc:586
 msgid "Subindex|b"
-msgstr ""
+msgstr "Podrejstøík|P"
 
 #: lib/ui/stdcontext.inc:614 lib/ui/stdmenus.inc:499
 msgid "Reject Change|R"
@@ -21826,32 +21825,28 @@ msgid "PostScript files (*.ps)"
 msgstr "Soubory PostScript-u (*.ps)"
 
 #: src/frontends/qt4/GuiPrintNomencl.cpp:49
-#, fuzzy
 msgid "Longest label width"
-msgstr "&Nejdel¹í znaèka"
+msgstr "Nejdel¹í ¹íøka znaèky"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:37
-#, fuzzy
 msgid "Index Settings"
-msgstr "Nastevení rámeèku"
+msgstr "Nastevení rejstøíku"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:69
-#, fuzzy
 msgid "<All indexes>"
-msgstr "V¹echny soubory "
+msgstr "<V¹echna hesla rejstøíku>"
 
 #: src/frontends/qt4/GuiProgressView.cpp:52
 msgid "Progress/Debug Messages"
-msgstr ""
+msgstr "Informace o bìhu / ladící výpisy"
 
 #: src/frontends/qt4/GuiProgressView.cpp:82
 msgid "Debug Level"
-msgstr ""
+msgstr "Úroveò ladìní"
 
 #: src/frontends/qt4/GuiProgressView.cpp:83
-#, fuzzy
 msgid "Set"
-msgstr "&Nastavit"
+msgstr "Nastaveno"
 
 #: src/frontends/qt4/GuiRef.cpp:44
 msgid "Cross-reference"
@@ -22323,25 +22318,22 @@ msgid "Big-sized icons"
 msgstr "Velké ikony"
 
 #: src/frontends/qt4/GuiView.cpp:805
-#, fuzzy
 msgid "Exit LyX"
-msgstr "&Ukonèit LyX"
+msgstr "Ukonèit LyX"
 
 #: src/frontends/qt4/GuiView.cpp:805
 msgid "LyX could not be closed because documents are processed by LyX."
-msgstr ""
+msgstr "LyX nelze ukonèit, proto¾e nìkteré dokumenty jsou právì zpracovávány."
 
 #: src/frontends/qt4/GuiView.cpp:1059
 msgid "Welcome to LyX!"
 msgstr "Vítejte v LyXu!"
 
 #: src/frontends/qt4/GuiView.cpp:1503
-#, fuzzy
 msgid "Automatic save done."
-msgstr "Automatická aktualizace"
+msgstr "Provedeno automatické ulo¾ení"
 
 #: src/frontends/qt4/GuiView.cpp:1504
-#, fuzzy
 msgid "Automatic save failed!"
 msgstr "Automatické ulo¾ení selhalo!"
 
@@ -22470,9 +22462,8 @@ msgid "file not imported!"
 msgstr "soubor nebyl importován!"
 
 #: src/frontends/qt4/GuiView.cpp:2115
-#, fuzzy
 msgid "newfile"
-msgstr "Zahrnout soubor"
+msgstr "newfile"
 
 #: src/frontends/qt4/GuiView.cpp:2148
 msgid "Select LyX document to insert"
@@ -22518,13 +22509,12 @@ msgid "&Retry"
 msgstr "&Opakovat"
 
 #: src/frontends/qt4/GuiView.cpp:2417
-#, fuzzy
-msgid "Close document "
+msgid "Close document"
 msgstr "Nový dokument"
 
 #: src/frontends/qt4/GuiView.cpp:2417
 msgid "Document could not be closed because it is processed by LyX."
-msgstr ""
+msgstr "Dokument nelze uzavøít, jeliko¾ je právì zpracováván."
 
 #: src/frontends/qt4/GuiView.cpp:2513 src/frontends/qt4/GuiView.cpp:2620
 #, c-format
@@ -22603,32 +22593,30 @@ msgstr "Otvírání dokumentu potomka %1$s..."
 #: src/frontends/qt4/GuiView.cpp:2907
 #, c-format
 msgid "Successful preview of format: %1$s"
-msgstr ""
+msgstr "Úspì¹né prohlí¾ení formátu: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2908
-#, fuzzy, c-format
+#, c-format
 msgid "Error while previewing format: %1$s"
-msgstr "®ádná informace pro export formátu %1$s."
+msgstr "Chyba pøi prohlí¾ení formátu: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2911
-#, fuzzy, c-format
+#, c-format
 msgid "Successful export to format: %1$s"
-msgstr "®ádná informace pro export formátu %1$s."
+msgstr "Úspì¹ný export do formátu: %1$s."
 
 #: src/frontends/qt4/GuiView.cpp:2912
-#, fuzzy, c-format
+#, c-format
 msgid "Error while exporting format: %1$s"
-msgstr "®ádná informace pro export formátu %1$s."
+msgstr "Chyba pøi exportování formátu: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:3059 src/frontends/qt4/GuiView.cpp:3071
-#, fuzzy
 msgid "Exporting ..."
-msgstr "Importování %1$s..."
+msgstr "Exportování..."
 
 #: src/frontends/qt4/GuiView.cpp:3080
-#, fuzzy
 msgid "Previewing ..."
-msgstr "Naèítání náhledu"
+msgstr "Náhled..."
 
 #: src/frontends/qt4/GuiView.cpp:3114
 msgid "Document not loaded"
@@ -22661,14 +22649,12 @@ msgid "%1$s unknown command!"
 msgstr "%1$s neznámý pøíkaz!"
 
 #: src/frontends/qt4/GuiView.cpp:3439
-#, fuzzy
 msgid "Please, preview the document first."
-msgstr "Tato èást dokumentu je vymazána."
+msgstr "Prosím nejprve zobrazte výstupní dokument."
 
 #: src/frontends/qt4/GuiView.cpp:3454
-#, fuzzy
 msgid "Couldn't proceed."
-msgstr "Nelze exportovat soubor"
+msgstr "Nebylo mo¾né postupovat dále."
 
 #: src/frontends/qt4/GuiViewSource.cpp:160
 #: src/frontends/qt4/GuiViewSource.cpp:202
@@ -23362,7 +23348,7 @@ msgstr "Neznámý typ rejstøíku"
 
 #: src/insets/InsetIndex.cpp:454
 msgid "All indexes"
-msgstr "V¹echny rejstøíky"
+msgstr "V¹echna hesla rejstøíku"
 
 #: src/insets/InsetIndex.cpp:458
 msgid "subindex"
@@ -24095,9 +24081,8 @@ msgstr ""
 "%2$s do systémového adresáøe LyX-u obsahujícího soubor `chkconfig.ltx'."
 
 #: src/support/Package.cpp:620 src/support/Package.cpp:647
-#, fuzzy
 msgid "File not found"
-msgstr "Modul nenalezen"
+msgstr "Soubor nenalezen"
 
 #: src/support/Package.cpp:621
 #, c-format
