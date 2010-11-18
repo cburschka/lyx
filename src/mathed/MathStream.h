@@ -303,8 +303,6 @@ private:
 	///
 	int line_;
 	///
-	char lastchar_;
-	///
 	bool in_text_;
 	///
 	odocstringstream deferred_;
@@ -392,8 +390,6 @@ private:
 	int tab_;
 	///
 	int line_;
-	///
-	char lastchar_;
 	///
 	bool in_text_;
 	///

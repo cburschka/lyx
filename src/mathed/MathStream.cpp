@@ -252,7 +252,7 @@ WriteStream & operator<<(WriteStream & ws, unsigned int i)
 
 
 MathStream::MathStream(odocstream & os)
-	: os_(os), tab_(0), line_(0), lastchar_(0), in_text_(false)
+	: os_(os), tab_(0), line_(0), in_text_(false)
 {}
 
 
@@ -350,7 +350,7 @@ MathStream & operator<<(MathStream & ms, docstring const & s)
 
 
 HtmlStream::HtmlStream(odocstream & os)
-	: os_(os), tab_(0), line_(0), lastchar_(0), in_text_(false)
+	: os_(os), tab_(0), line_(0), in_text_(false)
 {}
 
 
