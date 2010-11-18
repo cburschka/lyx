@@ -547,7 +547,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex.next();
 		string const classname = lex.getString();
 		// if there exists a local layout file, ignore the system one
-		// NOTE: in this case, the textclass (.cls file) is assumed to be available.
+		// NOTE: in this case, the textclass (.cls file) is assumed to 
+		// be available.
 		string tcp;
 		LayoutFileList & bcl = LayoutFileList::get();
 		if (tcp.empty() && !filepath.empty())
@@ -556,12 +557,13 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 			setBaseClass(tcp);
 		else
 			setBaseClass(classname);
-		// We assume that a tex class exists for local or unknown layouts so this warning
-		// will only be given for system layouts.
+		// We assume that a tex class exists for local or unknown 
+		// layouts so this warning, will only be given for system layouts.
 		if (!baseClass()->isTeXClassAvailable()) {
 			docstring const desc = 
 				translateIfPossible(from_utf8(baseClass()->description()));
-			docstring const prereqs = from_utf8(baseClass()->prerequisites());
+			docstring const prereqs = 
+				from_utf8(baseClass()->prerequisites());
 			docstring const msg =
 				bformat(_("The selected document class\n"
 						 "\t%1$s\n"
