@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0.0beta1 created this file. For more info see http://www.lyx.org/
+\lyxformat 407
 \begin_document
 \begin_header
 \textclass scrbook
@@ -12364,7 +12364,7 @@ Mehrfachzeile
 \end_layout
 
 \begin_layout Standard
-Dies ist eine Beispieltabelle mit einer Mehrfachzeile in der ersten Spalte:
+Hier ist eine Beispieltabelle mit einer Mehrfachzeile in der ersten Spalte:
 \end_layout
 
 \begin_layout Standard
@@ -12376,11 +12376,11 @@ Dies ist eine Beispieltabelle mit einer Mehrfachzeile in der ersten Spalte:
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-a
+ein langer Eintrag
 \end_layout
 
 \end_inset
@@ -12405,11 +12405,11 @@ c
 </cell>
 </row>
 <row>
-<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-mehrzeiliger Text
+Mehrfachzeile
 \end_layout
 
 \end_inset
@@ -12434,7 +12434,7 @@ f
 </cell>
 </row>
 <row>
-<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12470,8 +12470,246 @@ i
 \end_layout
 
 \begin_layout Standard
-Die Breite und Ausrichtung einer Mehrfachzeile wird durch Setzen der Breite
- und Ausrichtung für die komplette Spalte festgelegt.
+Die Breite einer Mehrfachzeile wird durch Setzen der Breite für die komplette
+ Spalte festgelegt.
+ Der 
+\family sans
+Vertikale Versatz
+\family default
+ verschiebt den Inhalt der Mehrfachzeile nach oben/unten wenn der Versatz
+ positiv/negativ ist.
+\end_layout
+
+\begin_layout Standard
+Wenn die Spalte der Mehrfachzeile keine explizite Breite hat, übernimmt
+ die Mehrfachzeile die Ausrichtung der Spalte.
+ Ansonsten ist sie standardmäßig links ausgerichtet.
+ Um die Ausrichtung zu ändern, erneuern Sie den Befehl 
+\series bold
+
+\backslash
+multirowsetup
+\series default
+ mit dem Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+multirowsetup}{
+\backslash
+centering}
+\end_layout
+
+\begin_layout Standard
+im LaTeX-Vorspann.
+ Es werden dann die Inhalte aller Mehrfachzeilen-Zellen des Dokuments zentriert.
+ Wenn diese Ausrichtung nur für einige Tabellen gelten soll, kann der Befehl
+ auch mittels TeX-Code vor der jeweiligen Tabelle, statt im LaTeX-Vorspann,
+ erneuert werden.
+ Für rechtsbündigen Text ersetzt man 
+\series bold
+
+\backslash
+centering
+\series default
+ durch 
+\series bold
+
+\backslash
+raggedleft
+\series default
+.
+ Um zur linksbündigen Ausrichtung zurückzukehren, wird 
+\series bold
+
+\backslash
+raggedright
+\series default
+ verwendet.
+\end_layout
+
+\begin_layout Standard
+Dies ist eine Beispieltabelle mit einer rechts ausgerichteten Mehrfachzeile
+ die -4
+\begin_inset space \thinspace{}
+\end_inset
+
+mm vertikalen Versatz hat und sich in einer 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm breiten Spalte befindet:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+multirowsetup}{
+\backslash
+raggedleft}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="3cm">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ein langer Eintrag
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+c
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+t
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+n
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+m
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" mroffset="-4mm" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mehrfachzeile
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+f
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+h
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+i
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+multirowsetup}{
+\backslash
+raggedright}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

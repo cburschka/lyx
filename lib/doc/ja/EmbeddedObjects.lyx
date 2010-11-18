@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0.0beta1 created this file. For more info see http://www.lyx.org/
+\lyxformat 407
 \begin_document
 \begin_header
 \textclass jbook
@@ -11553,6 +11553,8 @@ Here is an example table with a multirow in the first column:
 
 \begin_layout Standard
 \align center
+
+\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
@@ -11560,11 +11562,13 @@ Here is an example table with a multirow in the first column:
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-い
+
+\lang english
+a long cell entry
 \end_layout
 
 \end_inset
@@ -11573,7 +11577,9 @@ Here is an example table with a multirow in the first column:
 \begin_inset Text
 
 \begin_layout Plain Layout
-ろ
+
+\lang english
+b
 \end_layout
 
 \end_inset
@@ -11582,18 +11588,22 @@ Here is an example table with a multirow in the first column:
 \begin_inset Text
 
 \begin_layout Plain Layout
-は
+
+\lang english
+c
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-連結行の項目
+
+\lang english
+multirow
 \end_layout
 
 \end_inset
@@ -11602,7 +11612,9 @@ Here is an example table with a multirow in the first column:
 \begin_inset Text
 
 \begin_layout Plain Layout
-ほ
+
+\lang english
+e
 \end_layout
 
 \end_inset
@@ -11611,14 +11623,16 @@ Here is an example table with a multirow in the first column:
 \begin_inset Text
 
 \begin_layout Plain Layout
-へ
+
+\lang english
+f
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11631,7 +11645,9 @@ Here is an example table with a multirow in the first column:
 \begin_inset Text
 
 \begin_layout Plain Layout
-ち
+
+\lang english
+h
 \end_layout
 
 \end_inset
@@ -11640,7 +11656,9 @@ Here is an example table with a multirow in the first column:
 \begin_inset Text
 
 \begin_layout Plain Layout
-り
+
+\lang english
+i
 \end_layout
 
 \end_inset
@@ -11656,8 +11674,250 @@ Here is an example table with a multirow in the first column:
 \begin_layout Standard
 
 \lang english
-The width and alignment of multirow cells is set by setting the width and
- alignment for the whole column.
+The width of multirow cells is set by setting the width and alignment for
+ the whole column.
+ The 
+\family sans
+Vertical Offset
+\family default
+ shifts the content of the multirow up/down if the offset is positive/negative.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If the column of a multirow cell has no explicit width, the multirow cell
+ inherits the alignment of the column.
+ Otherwise it is by default left-aligned.
+ To override the default, renew the command 
+\series bold
+
+\backslash
+multirowsetup
+\series default
+ with the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+multirowsetup}{
+\backslash
+centering}
+\end_layout
+
+\begin_layout Standard
+というコマンドを使用して、コマンド
+\series bold
+
+\backslash
+multirowsetup
+\series default
+を書き換えて下さい。すると、文書中の連結行の中身が、すべて中央揃えになります。もしいくつかの表だけ中央揃えにしたいのであれば、プリアンブルではなく表の直前にTe
+Xコードボックスを入れて、このコマンドを書き換えれば済みます。文章を右揃えにしたい場合には、
+\series bold
+
+\backslash
+centering
+\series default
+の代わりに
+\series bold
+
+\backslash
+raggedleft
+\series default
+を使用して下さい。左揃えに戻すには、
+\series bold
+
+\backslash
+raggedright
+\series default
+とします。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This is an example table with a right-aligned multirow cell that has a vertical
+ offset of -4
+\begin_inset space \thinspace{}
+\end_inset
+
+mm and is in a 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm wide column:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+multirowsetup}{
+\backslash
+raggedleft}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="3cm">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a long cell entry
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+c
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+t
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+n
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+m
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" mroffset="-4mm" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+multirow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+f
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+h
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+i
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+multirowsetup}{
+\backslash
+raggedright}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0.0beta1 created this file. For more info see http://www.lyx.org/
+\lyxformat 407
 \begin_document
 \begin_header
 \textclass scrbook
@@ -12235,11 +12235,11 @@ Here is an example table with a multirow in the first column:
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-a
+a long cell entry
 \end_layout
 
 \end_inset
@@ -12264,11 +12264,11 @@ c
 </cell>
 </row>
 <row>
-<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-multirow entry
+multirow
 \end_layout
 
 \end_inset
@@ -12293,7 +12293,7 @@ f
 </cell>
 </row>
 <row>
-<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12329,8 +12329,244 @@ i
 \end_layout
 
 \begin_layout Standard
-The width and alignment of multirow cells is set by setting the width and
- alignment for the whole column.
+The width of multirow cells is set by setting the width and alignment for
+ the whole column.
+ The 
+\family sans
+Vertical Offset
+\family default
+ shifts the content of the multirow up/down if the offset is positive/negative.
+\end_layout
+
+\begin_layout Standard
+If the column of a multirow cell has no explicit width, the multirow cell
+ inherits the alignment of the column.
+ Otherwise it is by default left-aligned.
+ To override the default, renew the command 
+\series bold
+
+\backslash
+multirowsetup
+\series default
+ with the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+multirowsetup}{
+\backslash
+centering}
+\end_layout
+
+\begin_layout Standard
+in the document preamble.
+ Then all entries of multirow cells in the document are centered.
+ If centering is only needed for several tables, you can renew the command
+ in a TeX-Code box just before the table instead of the preamble.
+ If the text should be right-aligned, replace 
+\series bold
+
+\backslash
+centering
+\series default
+ by 
+\series bold
+
+\backslash
+raggedleft
+\series default
+.
+ To return to left-alignment 
+\series bold
+
+\backslash
+raggedright
+\series default
+ is used.
+\end_layout
+
+\begin_layout Standard
+This is an example table with a right-aligned multirow cell that has a vertical
+ offset of -4
+\begin_inset space \thinspace{}
+\end_inset
+
+mm and is in a 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm wide column:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+multirowsetup}{
+\backslash
+raggedleft}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="3cm">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a long cell entry
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+c
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+t
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+n
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+m
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" mroffset="-4mm" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+multirow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+f
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+h
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+i
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+multirowsetup}{
+\backslash
+raggedright}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

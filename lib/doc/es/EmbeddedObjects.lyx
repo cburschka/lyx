@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0.0beta1 created this file. For more info see http://www.lyx.org/
+\lyxformat 407
 \begin_document
 \begin_header
 \textclass scrbook
@@ -12102,6 +12102,8 @@ Here is an example table with a multirow in the first column:
 
 \begin_layout Standard
 \align center
+
+\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
@@ -12109,11 +12111,230 @@ Here is an example table with a multirow in the first column:
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+a long cell entry
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+c
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+multifila
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+f
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-a
+
+\lang english
+h
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+i
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The width of multirow cells is set by setting the width and alignment for
+ the whole column.
+ The 
+\family sans
+Vertical Offset
+\family default
+ shifts the content of the multirow up/down if the offset is positive/negative.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If the column of a multirow cell has no explicit width, the multirow cell
+ inherits the alignment of the column.
+ Otherwise it is by default left-aligned.
+
+\lang spanish
+ Para cambiarlo renombra el comando 
+\series bold
+
+\backslash
+multirowsetup
+\series default
+ con el comando
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+multirowsetup}{
+\backslash
+centering}
+\end_layout
+
+\begin_layout Standard
+en el preámbulo del documento.
+ Entonces se centran todas las entradas de celdas multifila en el documento.
+ Si sólo queremos centrar en algunas tablas, se puede renombrar el comando
+ en código TeX justo antes de la tabla en lugar de en el preámbulo.
+ Si el texto debe estar alineado a la derecha, reemplaza 
+\series bold
+
+\backslash
+centering
+\series default
+ por 
+\series bold
+
+\backslash
+raggedleft
+\series default
+.
+ Para volver a alineado a la izquierda usa 
+\series bold
+
+\backslash
+raggedright
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This is an example table with a right-aligned multirow cell that has a vertical
+ offset of -4
+\begin_inset space \thinspace{}
+\end_inset
+
+mm and is in a 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm wide column:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+multirowsetup}{
+\backslash
+raggedleft}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="3cm">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a long cell entry
 \end_layout
 
 \end_inset
@@ -12138,11 +12359,40 @@ c
 </cell>
 </row>
 <row>
-<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-entrada multifila
+t
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+n
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+m
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" mroffset="-4mm" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+multifila
 \end_layout
 
 \end_inset
@@ -12167,7 +12417,7 @@ f
 </cell>
 </row>
 <row>
-<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12200,13 +12450,23 @@ i
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+multirowsetup}{
+\backslash
+raggedright}
 \end_layout
 
-\begin_layout Standard
+\end_inset
 
-\lang english
-The width and alignment of multirow cells is set by setting the width and
- alignment for the whole column.
+
 \end_layout
 
 \begin_layout Section
