@@ -1032,9 +1032,14 @@ void Tabular::setAlignment(idx_type cell, LyXAlignment align,
 		docstring & dpoint = column_info[col].decimal_point;
 		if (align == LYX_ALIGN_DECIMAL && dpoint.empty())
 			dpoint = from_utf8(lyxrc.default_decimal_point);
-	} else {
-		cellInfo(cell).alignment = align;
-		cellInset(cell).get()->setContentAlignment(align);
+	}
+	if (!onlycolumn) {
+		for (row_type r = 0; r < nrows(); ++r) {
+			if (!isMultiRow(cellIndex(r, col))) {
+				cell_info[r][col].alignment = align;
+				cell_info[r][col].inset->setContentAlignment(align);
+			}
+		}
 	}
 }
 
