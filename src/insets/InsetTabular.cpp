@@ -1027,19 +1027,22 @@ void Tabular::setAlignment(idx_type cell, LyXAlignment align,
 			      bool onlycolumn)
 {
 	col_type const col = cellColumn(cell);
+	// set alignment for the whole row of the selection is only
+	// withing one column and it is no multicolumn cell
 	if (onlycolumn || !isMultiColumn(cell)) {
-		column_info[col].alignment = align;
-		docstring & dpoint = column_info[col].decimal_point;
-		if (align == LYX_ALIGN_DECIMAL && dpoint.empty())
-			dpoint = from_utf8(lyxrc.default_decimal_point);
-	}
-	if (!onlycolumn) {
 		for (row_type r = 0; r < nrows(); ++r) {
 			if (!isMultiRow(cellIndex(r, col))) {
 				cell_info[r][col].alignment = align;
 				cell_info[r][col].inset->setContentAlignment(align);
 			}
 		}
+		column_info[col].alignment = align;
+		docstring & dpoint = column_info[col].decimal_point;
+		if (align == LYX_ALIGN_DECIMAL && dpoint.empty())
+			dpoint = from_utf8(lyxrc.default_decimal_point);
+	} else { 
+		cellInfo(cell).alignment = align; 
+		cellInset(cell).get()->setContentAlignment(align); 
 	}
 }
 
