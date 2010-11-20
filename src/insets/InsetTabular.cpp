@@ -1027,11 +1027,12 @@ void Tabular::setAlignment(idx_type cell, LyXAlignment align,
 			      bool onlycolumn)
 {
 	col_type const col = cellColumn(cell);
-	// set alignment for the whole row of the selection is only
-	// withing one column and it is no multicolumn cell
-	if (onlycolumn || !isMultiColumn(cell)) {
+	// set alignment for the whole row of if we are not in a multicolumn cell
+	// exclude possible multicolumn cells in the row
+	if (!isMultiColumn(cell)) {
 		for (row_type r = 0; r < nrows(); ++r) {
-			if (!isMultiRow(cellIndex(r, col))) {
+			if (!isMultiRow(cellIndex(r, col))
+				&& !isMultiColumn(cellIndex(r, col))) {
 				cell_info[r][col].alignment = align;
 				cell_info[r][col].inset->setContentAlignment(align);
 			}
@@ -1040,7 +1041,7 @@ void Tabular::setAlignment(idx_type cell, LyXAlignment align,
 		docstring & dpoint = column_info[col].decimal_point;
 		if (align == LYX_ALIGN_DECIMAL && dpoint.empty())
 			dpoint = from_utf8(lyxrc.default_decimal_point);
-	} else { 
+	} else {
 		cellInfo(cell).alignment = align; 
 		cellInset(cell).get()->setContentAlignment(align); 
 	}
@@ -5185,7 +5186,6 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::M_ALIGN_LEFT:
 	case Tabular::M_ALIGN_RIGHT:
 	case Tabular::M_ALIGN_CENTER:
-		flag = false;
 	case Tabular::ALIGN_LEFT:
 	case Tabular::ALIGN_RIGHT:
 	case Tabular::ALIGN_CENTER:
@@ -5193,7 +5193,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::ALIGN_DECIMAL:
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
 			for (col_type c = sel_col_start; c <= sel_col_end; ++c)
-				tabular.setAlignment(tabular.cellIndex(r, c), setAlign, flag);
+				tabular.setAlignment(tabular.cellIndex(r, c), setAlign);
 		break;
 
 	case Tabular::M_VALIGN_TOP:
