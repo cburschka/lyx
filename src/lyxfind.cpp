@@ -766,7 +766,9 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 	string str = normalize(docstr);
 	LYXERR(Debug::FIND, "After normalization: '" << str << "'");
 	if (! opt.regexp) {
+		LYXERR(Debug::FIND, "Searching in normal mode: par_as_string='" << par_as_string << "', str='" << str << "'");
 		if (at_begin) {
+			LYXERR(Debug::FIND, "size=" << par_as_string.size() << ", substr='" << str.substr(0, par_as_string.size()) << "'");
 			if (str.substr(0, par_as_string.size()) == par_as_string)
 				return par_as_string.size();
 		} else {
@@ -775,6 +777,7 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 				return par_as_string.size();
 		}
 	} else {
+		LYXERR(Debug::FIND, "Searching in regexp mode");
 		// Try all possible regexp matches, 
 		//until one that verifies the braces match test is found
 		regex const *p_regexp = at_begin ? &regexp : &regexp2;
