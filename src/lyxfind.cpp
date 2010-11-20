@@ -776,7 +776,7 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 			while (regex_replace(t, t, "\\\\(emph|textbf|subsubsection|subsection|section|subparagraph|paragraph|part)\\{", "")
 			       || regex_replace(t, t, "^\\$", "")
 			       || regex_replace(t, t, "^\\\\\\[ ", ""))
-				LYXERR(Debug::FIND, "  after removing leading $, \[ , \\emph{, \\textbf{, etc.: " << t);
+				LYXERR(Debug::FIND, "  after removing leading $, \\[ , \\emph{, \\textbf{, etc.: " << t);
 			size_t pos = str.find(t);
 			if (pos != string::npos)
 				return par_as_string.size();
@@ -792,11 +792,11 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 			match_results<string::const_iterator> const & m = *re_it;
 			// Check braces on the segment that matched the entire regexp expression,
 			// plus the last subexpression, if a (.*?) was inserted in the constructor.
-			if (! braces_match(m[0].first, m[0].second, open_braces))
+			if (!braces_match(m[0].first, m[0].second, open_braces))
 				return 0;
 			// Check braces on segments that matched all (.*?) subexpressions.
 			for (size_t i = 1; i < m.size(); ++i)
-				if (! braces_match(m[i].first, m[i].second))
+				if (!braces_match(m[i].first, m[i].second))
 					return false;
 			// Exclude from the returned match length any length 
 			// due to close wildcards added at end of regexp
