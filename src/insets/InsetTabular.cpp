@@ -1024,17 +1024,24 @@ int Tabular::width() const
 
 
 void Tabular::setAlignment(idx_type cell, LyXAlignment align,
-			      bool onlycolumn)
+			      bool has_width)
 {
 	col_type const col = cellColumn(cell);
 	// set alignment for the whole row of if we are not in a multicolumn cell
 	// exclude possible multicolumn cells in the row
 	if (!isMultiColumn(cell)) {
 		for (row_type r = 0; r < nrows(); ++r) {
-			if (!isMultiRow(cellIndex(r, col))
+			// only if the column has no width the multirow inherits the
+			// alignment of the column, otherwise it is left aligned
+			if (!(isMultiRow(cellIndex(r, col)) && has_width)
 				&& !isMultiColumn(cellIndex(r, col))) {
 				cell_info[r][col].alignment = align;
 				cell_info[r][col].inset->setContentAlignment(align);
+			}
+			if ((isMultiRow(cellIndex(r, col)) && has_width)
+				&& !isMultiColumn(cellIndex(r, col))) {
+				cell_info[r][col].alignment = LYX_ALIGN_LEFT;
+				cell_info[r][col].inset->setContentAlignment(LYX_ALIGN_LEFT);
 			}
 		}
 		column_info[col].alignment = align;
@@ -4308,7 +4315,9 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setOnOff(tabular.rightLine(cur.idx()));
 			break;
 
-		// multirow cells are alwas left aligned
+		// multirow cells only inherit the alignment of the column if the column has
+		// no width, otherwise they are left-aligned
+		// therefore allow always left but right and center only if there is no width
 		case Tabular::M_ALIGN_LEFT:
 			flag = false;
 		case Tabular::ALIGN_LEFT:
@@ -4318,14 +4327,16 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case Tabular::M_ALIGN_RIGHT:
 			flag = false;
 		case Tabular::ALIGN_RIGHT:
-			status.setEnabled(!tabular.isMultiRow(cur.idx()));
+			status.setEnabled(!(tabular.isMultiRow(cur.idx()) 
+				&& !tabular.getPWidth(cur.idx()).zero()));
 			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_RIGHT);
 			break;
 
 		case Tabular::M_ALIGN_CENTER:
 			flag = false;
 		case Tabular::ALIGN_CENTER:
-			status.setEnabled(!tabular.isMultiRow(cur.idx()));
+			status.setEnabled(!(tabular.isMultiRow(cur.idx()) 
+				&& !tabular.getPWidth(cur.idx()).zero()));
 			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_CENTER);
 			break;
 
@@ -5193,7 +5204,8 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::ALIGN_DECIMAL:
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
 			for (col_type c = sel_col_start; c <= sel_col_end; ++c)
-				tabular.setAlignment(tabular.cellIndex(r, c), setAlign);
+				tabular.setAlignment(tabular.cellIndex(r, c), setAlign,
+				!tabular.getPWidth(c).zero());
 		break;
 
 	case Tabular::M_VALIGN_TOP:

@@ -171,8 +171,10 @@ GuiTabular::GuiTabular(QWidget * parent)
 
 void GuiTabular::checkEnabled()
 {
-	// multirows don't have their own alignment
-	hAlignCB->setEnabled(!multirowCB->isChecked());
+	// if the column has a width, multirows are always left-aligned
+	// therefore disable hAlignCB in this case
+	hAlignCB->setEnabled(!(multirowCB->isChecked()
+		&& !widgetsToLength(widthED, widthUnitCB).empty()));
 	bool dalign =
 		hAlignCB->itemData(hAlignCB->currentIndex()).toString() == QString("decimal");
 	decimalPointLE->setEnabled(dalign);
@@ -366,6 +368,19 @@ docstring GuiTabular::dialogToParams() const
 {
 	// FIXME: We should use Tabular directly.
 	string param_str = "tabular";
+
+	// apply the fixed width values
+	// this must be done before applying the column alignment
+	// because its value influences the alignment of multirow cells
+	string width = widgetsToLength(widthED, widthUnitCB);
+	if (width.empty())
+		width = "0pt";
+	if (multicolumnCB->isChecked())
+		setParam(param_str, Tabular::SET_MPWIDTH, width);
+	else
+		setParam(param_str, Tabular::SET_PWIDTH, width);
+
+	// apply the column alignment
 	setHAlign(param_str);
 
 	// SET_DECIMAL_POINT must come after setHAlign() (ALIGN_DECIMAL)
@@ -455,15 +470,6 @@ docstring GuiTabular::dialogToParams() const
 		setParam(param_str, Tabular::SET_SPECIAL_MULTICOLUMN, special);
 	else
 		setParam(param_str, Tabular::SET_SPECIAL_COLUMN, special);
-
-	// apply the fixed width values
-	string width = widgetsToLength(widthED, widthUnitCB);
-	if (width.empty())
-		width = "0pt";
-	if (multicolumnCB->isChecked())
-		setParam(param_str, Tabular::SET_MPWIDTH, width);
-	else
-		setParam(param_str, Tabular::SET_PWIDTH, width);
 
 	//
 	if (multicolumnCB->isChecked())
