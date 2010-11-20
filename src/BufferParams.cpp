@@ -2547,9 +2547,12 @@ string const BufferParams::loadFonts(string const & rm,
 	ostringstream os;
 
 	if (xetex) {
-		if (rm != "default")
-			os << "\\setmainfont[Mapping=tex-text]{"
-			   << parseFontName(rm) << "}\n";
+		if (rm != "default") {
+			os << "\\setmainfont[Mapping=tex-text";
+			if (osf)
+				os << ",Numbers=OldStyle";
+			os << "]{" << parseFontName(rm) << "}\n";
+		}
 		if (sf != "default") {
 			string const sans = parseFontName(sf);
 			if (sfscale != 100)
@@ -2572,8 +2575,6 @@ string const BufferParams::loadFonts(string const & rm,
 				os << "\\setmonofont[Mapping=tex-text]{"
 				   << mono << "}\n";
 		}
-		if (osf)
-			os << "\\defaultfontfeatures{Numbers=OldStyle}\n";
 		return os.str();
 	}
 
