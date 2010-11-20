@@ -772,7 +772,12 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 			if (str.substr(0, par_as_string.size()) == par_as_string)
 				return par_as_string.size();
 		} else {
-			size_t pos = str.find(par_as_string);
+			string t = par_as_string;
+			while (regex_replace(t, t, "\\\\(emph|textbf|subsubsection|subsection|section|subparagraph|paragraph|part)\\{", "")
+			       || regex_replace(t, t, "^\\$", "")
+			       || regex_replace(t, t, "^\\\\\\[ ", ""))
+				LYXERR(Debug::FIND, "  after removing leading $, \[ , \\emph{, \\textbf{, etc.: " << t);
+			size_t pos = str.find(t);
 			if (pos != string::npos)
 				return par_as_string.size();
 		}
@@ -844,7 +849,7 @@ string MatchStringAdv::normalize(docstring const & s) const
 		t.replace(pos, 1, " ");
 	// Remove stale empty \emph{}, \textbf{} and similar blocks from latexify
 	LYXERR(Debug::FIND, "Removing stale empty \\emph{}, \\textbf{}, \\*section{} macros from: " << t);
-	while (regex_replace(t, t, "\\\\(emph|textbf|subsubsection|subsection|section|subparagraph|paragraph)(\\{\\})+", ""))
+	while (regex_replace(t, t, "\\\\(emph|textbf|subsubsection|subsection|section|subparagraph|paragraph|part)(\\{\\})+", ""))
 		LYXERR(Debug::FIND, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
 	return t;
 }
