@@ -126,8 +126,10 @@ Preamble
     \fi		% if needSendFax
   }	%findemessage
 
-% to get the specified pagesize (workaround for a lettre problem)
-\input pdftexconfig.tex
+% to get the specified pagesize 
+% (workaround for an a4paper/lettre problem in pdf mode)
+\@ifpackageloaded{ifpdf}{}{\usepackage{ifpdf}}
+\ifpdf\input pdftexconfig.tex\fi
 
 EndPreamble
 
