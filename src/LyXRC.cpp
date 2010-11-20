@@ -122,9 +122,9 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\language_command_begin", LyXRC::RC_LANGUAGE_COMMAND_BEGIN },
 	{ "\\language_command_end", LyXRC::RC_LANGUAGE_COMMAND_END },
 	{ "\\language_command_local", LyXRC::RC_LANGUAGE_COMMAND_LOCAL },
+	{ "\\language_custom_package", LyXRC::RC_LANGUAGE_CUSTOM_PACKAGE },
 	{ "\\language_global_options", LyXRC::RC_LANGUAGE_GLOBAL_OPTIONS },
-	{ "\\language_package", LyXRC::RC_LANGUAGE_PACKAGE },
-	{ "\\language_use_babel", LyXRC::RC_LANGUAGE_USE_BABEL },
+	{ "\\language_package_selection", LyXRC::RC_LANGUAGE_PACKAGE_SELECTION },
 	{ "\\load_session", LyXRC::RC_LOADSESSION },
 	{ "\\mac_dontswap_ctrl_meta", LyXRC::RC_MAC_DONTSWAP_CTRL_META },
 	{ "\\mac_like_word_movement", LyXRC::RC_MAC_LIKE_WORD_MOVEMENT },
@@ -310,8 +310,8 @@ void LyXRC::setDefaults()
 	language_auto_begin = true;
 	language_auto_end = true;
 	language_global_options = true;
-	language_use_babel = true;
-	language_package = "\\usepackage{babel}";
+	language_package_selection = LP_AUTO;
+	language_custom_package = "\\usepackage{babel}";
 	language_command_begin = "\\selectlanguage{$$lang}";
 	language_command_local = "\\foreignlanguage{$$lang}{";
 	sort_layouts = false;
@@ -966,8 +966,8 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_DATE_INSERT_FORMAT:
 			lexrc >> date_insert_format;
 			break;
-		case RC_LANGUAGE_PACKAGE:
-			lexrc >> language_package;
+		case RC_LANGUAGE_CUSTOM_PACKAGE:
+			lexrc >> language_custom_package;
 			break;
 		case RC_LANGUAGE_AUTO_BEGIN:
 			lexrc >> language_auto_begin;
@@ -978,8 +978,23 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_LANGUAGE_GLOBAL_OPTIONS:
 			lexrc >> language_global_options;
 			break;
-		case RC_LANGUAGE_USE_BABEL:
-			lexrc >> language_use_babel;
+		case RC_LANGUAGE_PACKAGE_SELECTION:
+			if (lexrc.next()) {
+				switch (lexrc.getInteger()) {
+				case 0:
+					language_package_selection = LP_AUTO;
+					break;
+				case 1:
+					language_package_selection = LP_BABEL;
+					break;
+				case 2:
+					language_package_selection = LP_CUSTOM;
+					break;
+				case 3:
+					language_package_selection = LP_NONE;
+					break;
+				}
+			}
 			break;
 		case RC_LANGUAGE_COMMAND_BEGIN:
 			lexrc >> language_command_begin;
@@ -2508,10 +2523,10 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-	case RC_LANGUAGE_PACKAGE:
+	case RC_LANGUAGE_CUSTOM_PACKAGE:
 		if (ignore_system_lyxrc ||
-		    language_package != system_lyxrc.language_package) {
-			os << "\\language_package \"" << language_package
+		    language_custom_package != system_lyxrc.language_custom_package) {
+			os << "\\language_custom_package \"" << language_custom_package
 			   << "\"\n";
 		}
 		if (tag != RC_LAST)
@@ -2526,12 +2541,24 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-	case RC_LANGUAGE_USE_BABEL:
+	case RC_LANGUAGE_PACKAGE_SELECTION:
 		if (ignore_system_lyxrc ||
-		    language_use_babel != system_lyxrc.language_use_babel) {
-			os << "\\language_use_babel \""
-			   << convert<string>(language_use_babel)
-			   << "\"\n";
+		    language_package_selection != system_lyxrc.language_package_selection) {
+			os << "\\language_package_selection ";
+			switch (language_package_selection) {
+			case LP_AUTO: 
+				os << "0\n";
+				break;
+			case LP_BABEL:
+				os << "1\n";
+				break;
+			case LP_CUSTOM:
+				os << "2\n";
+				break;
+			case LP_NONE:
+				os << "3\n";
+				break;
+			}
 		}
 		if (tag != RC_LAST)
 			break;
@@ -2903,8 +2930,8 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_LANGUAGE_COMMAND_END:
 	case LyXRC::RC_LANGUAGE_COMMAND_LOCAL:
 	case LyXRC::RC_LANGUAGE_GLOBAL_OPTIONS:
-	case LyXRC::RC_LANGUAGE_PACKAGE:
-	case LyXRC::RC_LANGUAGE_USE_BABEL:
+	case LyXRC::RC_LANGUAGE_CUSTOM_PACKAGE:
+	case LyXRC::RC_LANGUAGE_PACKAGE_SELECTION:
 	case LyXRC::RC_MAC_DONTSWAP_CTRL_META:
 	case LyXRC::RC_MAC_LIKE_WORD_MOVEMENT:
 	case LyXRC::RC_MACRO_EDIT_STYLE:
@@ -3188,11 +3215,11 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		str = _("De-select if you don't want the language(s) used as an argument to \\documentclass.");
 		break;
 
-	case RC_LANGUAGE_PACKAGE:
+	case RC_LANGUAGE_CUSTOM_PACKAGE:
 		str = _("The LaTeX command for loading the language package. E.g. \"\\usepackage{babel}\", \"\\usepackage{omega}\".");
 		break;
 
-	case RC_LANGUAGE_USE_BABEL:
+	case RC_LANGUAGE_PACKAGE_SELECTION:
 		str = _("De-select if you don't want babel to be used when the language of the document is the default language.");
 		break;
 

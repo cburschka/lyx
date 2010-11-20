@@ -285,10 +285,10 @@ LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p,
 
 bool LaTeXFeatures::useBabel() const
 {
-	return lyxrc.language_use_babel ||
-		(bufferParams().language->lang() != lyxrc.default_language &&
+	return (lyxrc.language_package_selection != LyXRC::LP_NONE) &&
+		((bufferParams().language->lang() != lyxrc.default_language &&
 		 !bufferParams().language->babel().empty()) ||
-		this->hasLanguages();
+		this->hasLanguages());
 }
 
 

@@ -2157,11 +2157,11 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(autoEndCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(useBabelCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(globalCB, SIGNAL(clicked()),
+	connect(languagePackageCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
 	connect(languagePackageED, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
+	connect(globalCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(startCommandED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
@@ -2199,6 +2199,12 @@ void PrefLanguage::on_uiLanguageCO_currentIndexChanged(int)
 }
 
 
+void PrefLanguage::on_languagePackageCO_currentIndexChanged(int i)
+{
+	 languagePackageED->setEnabled(i == 2);
+}
+
+
 void PrefLanguage::apply(LyXRC & rc) const
 {
 	// FIXME: remove rtl_support bool
@@ -2207,9 +2213,17 @@ void PrefLanguage::apply(LyXRC & rc) const
 	rc.mark_foreign_language = markForeignCB->isChecked();
 	rc.language_auto_begin = autoBeginCB->isChecked();
 	rc.language_auto_end = autoEndCB->isChecked();
-	rc.language_use_babel = useBabelCB->isChecked();
+	int const p = languagePackageCO->currentIndex();
+	if (p == 0)
+		rc.language_package_selection = LyXRC::LP_AUTO;
+	else if (p == 1)
+		rc.language_package_selection = LyXRC::LP_BABEL;
+	else if (p == 2)
+		rc.language_package_selection = LyXRC::LP_CUSTOM;
+	else if (p == 3)
+		rc.language_package_selection = LyXRC::LP_NONE;
+	rc.language_custom_package = fromqstr(languagePackageED->text());
 	rc.language_global_options = globalCB->isChecked();
-	rc.language_package = fromqstr(languagePackageED->text());
 	rc.language_command_begin = fromqstr(startCommandED->text());
 	rc.language_command_end = fromqstr(endCommandED->text());
 	rc.gui_language = fromqstr(
@@ -2229,9 +2243,10 @@ void PrefLanguage::update(LyXRC const & rc)
 	markForeignCB->setChecked(rc.mark_foreign_language);
 	autoBeginCB->setChecked(rc.language_auto_begin);
 	autoEndCB->setChecked(rc.language_auto_end);
-	useBabelCB->setChecked(rc.language_use_babel);
+	languagePackageCO->setCurrentIndex(rc.language_package_selection);
+	languagePackageED->setText(toqstr(rc.language_custom_package));
+	languagePackageED->setEnabled(languagePackageCO->currentIndex() == 2);
 	globalCB->setChecked(rc.language_global_options);
-	languagePackageED->setText(toqstr(rc.language_package));
 	startCommandED->setText(toqstr(rc.language_command_begin));
 	endCommandED->setText(toqstr(rc.language_command_end));
 	defaultDecimalPointLE->setText(toqstr(rc.default_decimal_point));

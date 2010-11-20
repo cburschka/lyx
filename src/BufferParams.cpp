@@ -2394,9 +2394,8 @@ string const BufferParams::font_encoding() const
 
 string BufferParams::babelCall(string const & lang_opts, bool const langoptions) const
 {
-	string lang_pack = lyxrc.language_package;
-	if (lang_pack != "\\usepackage{babel}")
-		return lang_pack;
+	if (lyxrc.language_package_selection == LyXRC::LP_CUSTOM)
+		return lyxrc.language_custom_package;
 	// suppress the babel call if there is no BabelName defined
 	// for the document language in the lib/languages file and if no
 	// other languages are used (lang_opts is then empty)
@@ -2407,7 +2406,7 @@ string BufferParams::babelCall(string const & lang_opts, bool const langoptions)
 	// be submitted to babel itself (not the class).
 	if (langoptions)
 		return "\\usepackage[" + lang_opts + "]{babel}";
-	return lang_pack;
+	return "\\usepackage{babel}";
 }
 
 

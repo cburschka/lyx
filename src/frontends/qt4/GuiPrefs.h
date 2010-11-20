@@ -392,6 +392,7 @@ public:
 
 private Q_SLOTS:
 	void on_uiLanguageCO_currentIndexChanged(int);
+	void on_languagePackageCO_currentIndexChanged(int);
 };
 
 

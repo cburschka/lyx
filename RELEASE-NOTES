@@ -19,7 +19,19 @@ be more eventually.
 
 Bash completion script was added to the tarball.
 
-The following variables are obsoleted in 2.0
+The following pref variables were changed in 2.0:
+
+- \language_package was renamed to \language_custom_package
+
+- \language_use_babel (bool) has been replaced by 
+  \language_package_selection, which can be
+  0 (automatic selection)
+  1 (always use babel)
+  2 custom (use the custom package defined by
+    \language_custom_package)
+  3 none (equivalent to former \language_use_babel false)
+
+The following pref variables are obsoleted in 2.0:
 
 - \plaintext_roff_command (was not used anymore)
 

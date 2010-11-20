@@ -106,8 +106,8 @@ public:
 		RC_LANGUAGE_COMMAND_END,
 		RC_LANGUAGE_COMMAND_LOCAL,
 		RC_LANGUAGE_GLOBAL_OPTIONS,
-		RC_LANGUAGE_PACKAGE,
-		RC_LANGUAGE_USE_BABEL,
+		RC_LANGUAGE_CUSTOM_PACKAGE,
+		RC_LANGUAGE_PACKAGE_SELECTION,
 		RC_LOADSESSION,
 		RC_MACRO_EDIT_STYLE,
 		RC_MAC_DONTSWAP_CTRL_META,
@@ -379,7 +379,7 @@ public:
 	///
 	std::string date_insert_format;
 	///
-	std::string language_package;
+	std::string language_custom_package;
 	///
 	bool language_auto_begin;
 	///
@@ -393,7 +393,14 @@ public:
 	///
 	bool language_global_options;
 	///
-	bool language_use_babel;
+	enum LangPackageSelection {
+		LP_AUTO = 0,
+		LP_BABEL,
+		LP_CUSTOM,
+		LP_NONE
+	};
+	///
+	LangPackageSelection language_package_selection;
 	///
 	bool rtl_support;
 	/// bidi cursor movement: true = visual, false = logical
