@@ -1223,6 +1223,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 	bv->buffer().markDirty();
 	cur.pos() -= repl_buffer.paragraphs().begin()->size();
 	bv->putSelectionAt(DocIterator(cur), repl_buffer.paragraphs().begin()->size(), !opt.forward);
+	bv->processUpdateFlags(Update::Force);
 }
 
 
