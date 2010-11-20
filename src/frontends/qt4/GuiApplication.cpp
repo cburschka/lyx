@@ -2268,9 +2268,8 @@ void GuiApplication::commitData(QSessionManager & sm)
 	/// interaction.
 	/// We are changing that to close all wiew one by one.
 	/// FIXME: verify if the default implementation is enough now.
-
 	#ifdef QT_NO_SESSIONMANAGER
-		#error Qt is compiled without session manager
+		#warning Qt is compiled without session manager
 		(void) sm;
 	#else
 		if (sm.allowsInteraction() && !closeAllViews())
