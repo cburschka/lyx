@@ -454,6 +454,12 @@ void FindAndReplaceWidget::findAndReplace(bool backwards, bool replace)
 		view_.message(_("No open document(s) in which to search"));
 		return;
 	}
+	// Finalize macros that are being typed, both in main document and in search or replacement WAs
+	if (view_.currentWorkArea()->bufferView().cursor().macroModeClose())
+		view_.currentWorkArea()->bufferView().processUpdateFlags(Update::Force);
+	if (view_.currentMainWorkArea()->bufferView().cursor().macroModeClose())
+		view_.currentMainWorkArea()->bufferView().processUpdateFlags(Update::Force);
+
 	// FIXME: create a Dialog::returnFocus()
 	// or something instead of this:
 	view_.setCurrentWorkArea(view_.currentMainWorkArea());
