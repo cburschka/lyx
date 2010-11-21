@@ -73,8 +73,6 @@ public:
 		ColInfo();
 		/// currently possible: 'l', 'c', 'r'
 		char align_;
-		/// cache for drawing
-		int h_offset;
 		/// cached width
 		mutable int width_;
 		/// cached offset

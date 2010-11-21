@@ -1614,7 +1614,7 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 
 		os << "\n<!-- Text Class Preamble -->\n"
 		   << features.getTClassHTMLPreamble()
-		   << "\n<!-- Premable Snippets -->\n"
+		   << "\n<!-- Preamble Snippets -->\n"
 		   << from_utf8(features.getPreambleSnippets());
 
 		os << "\n<!-- Layout-provided Styles -->\n";

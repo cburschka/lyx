@@ -184,7 +184,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "htmllabel",      LT_HTMLLABEL },
 		{ "htmllabelattr",  LT_HTMLLABELATTR },
 		{ "htmllabelfirst", LT_HTMLLABELFIRST },
-		{ "htmlpremable",   LT_HTMLPREAMBLE },
+		{ "htmlpreamble",   LT_HTMLPREAMBLE },
 		{ "htmlstyle",      LT_HTMLSTYLE },
 		{ "htmltag",        LT_HTMLTAG },
 		{ "htmltitle",      LT_HTMLTITLE },

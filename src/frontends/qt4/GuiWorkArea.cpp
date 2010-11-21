@@ -140,7 +140,7 @@ public:
 		int r = rect_.right() - x_;
 		int bot = rect_.bottom();
 
-		// draw vertica linel
+		// draw vertical line
 		painter.fillRect(x_, y, CursorWidth, rect_.height(), color_);
 
 		// draw RTL/LTR indication

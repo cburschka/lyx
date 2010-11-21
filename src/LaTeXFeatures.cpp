@@ -634,7 +634,7 @@ string const LaTeXFeatures::getPackages() const
 	// FIXME: currently, we can only load packages and macros known
 	// to LyX.
 	// However, with the Require tag of layouts/custom insets,
-	// also inknown packages can be requested. They are silently
+	// also unknown packages can be requested. They are silently
 	// swallowed now. We should change this eventually.
 
 	//
@@ -768,8 +768,9 @@ string const LaTeXFeatures::getPackages() const
 		packages << "\\PassOptionsToPackage{normalem}{ulem}\n"
 			    "\\usepackage{ulem}\n";
 
-	if (mustProvide("mhchem") &&
-		params_.use_mhchem != BufferParams::package_off)
+	if (params_.use_mhchem == BufferParams::package_on ||
+	    (mustProvide("mhchem") &&
+	     params_.use_mhchem != BufferParams::package_off))
 		packages << "\\PassOptionsToPackage{version=3}{mhchem}\n"
 			    "\\usepackage{mhchem}\n";
 

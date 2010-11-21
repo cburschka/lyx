@@ -25,7 +25,7 @@ class VCS;
 class Buffer;
 
 /** Version Control for LyX.
-    This is the class giving the verison control features to LyX. It is
+    This is the class giving the version control features to LyX. It is
     intended to support different kinds of version control.
     The support in LyX is based loosely upon the version control in GNU Emacs,
     but is not as extensive as that one. See Extended Manual for a simple
