@@ -1027,7 +1027,7 @@ void Tabular::setAlignment(idx_type cell, LyXAlignment align,
 			      bool has_width)
 {
 	col_type const col = cellColumn(cell);
-	// set alignment for the whole row of if we are not in a multicolumn cell
+	// set alignment for the whole row if we are not in a multicolumn cell,
 	// exclude possible multicolumn cells in the row
 	if (!isMultiColumn(cell)) {
 		for (row_type r = 0; r < nrows(); ++r) {
