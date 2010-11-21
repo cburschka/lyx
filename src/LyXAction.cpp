@@ -1594,7 +1594,7 @@ void LyXAction::init()
 		{ LFUN_MATH_SUBSCRIPT, "math-subscript", Noop, Math },
 /*!
  * \var lyx::FuncCode lyx::LFUN_MATH_SUPERSCRIPT
- * \li Action: Enters subscript expression in math expression.
+ * \li Action: Enters superscript expression in math expression.
  * \li Syntax: math-superscript
  * \li Origin: vermeer, 12 Dec 2001
  * \endvar
@@ -2297,7 +2297,7 @@ void LyXAction::init()
  * \li Action: Insert new inset (type given by the parameters).
  * \li Syntax: inset-insert <INSET> <ARGS>
  * \li Params: <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics|tabular|
-                         hyperlink|include|index|label|line|nomencl|vspace|ref|toc>\n
+                         hyperlink|include|index|label|line|nomencl|vspace|ref|toc|script>\n
                <ARGS>: depends on the given inset. Use "lyx -dbg action" to explore.
  * \li Sample: inset-insert ref LatexCommand <Format> reference "<label name>"\end_inset \n
                where <label name> is the name of the referenced label and

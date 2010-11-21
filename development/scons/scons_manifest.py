@@ -1057,6 +1057,7 @@ src_insets_header_files = Split('''
     InsetPreview.h
     InsetQuotes.h
     InsetRef.h
+    InsetScript.h
     InsetSpace.h
     InsetSpecialChar.h
     InsetTOC.h
@@ -1113,6 +1114,7 @@ src_insets_files = Split('''
     InsetPreview.cpp
     InsetQuotes.cpp
     InsetRef.cpp
+    InsetScript.cpp
     InsetSpace.cpp
     InsetSpecialChar.cpp
     InsetTOC.cpp
@@ -1499,6 +1501,8 @@ lib_images_files = Split('''
     href-insert.png
     hidetab.png
     index-insert.png
+    inset-insert_script_script_subscript.png
+    inset-insert_script_script_superscript.png
     info-insert_buffer_vcs-revision.png
     label-insert.png
     layout-document.png

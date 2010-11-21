@@ -537,6 +537,7 @@ char const * simplefeatures[] = {
 	"framed",
 	"soul",
 	"textcomp",
+	"subscript",
 	"pmboxdraw",
 	"bbding",
 	"ifsym",

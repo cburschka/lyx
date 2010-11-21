@@ -49,14 +49,14 @@
 0x00af "\\textasciimacron"        "textcomp" "" # MACRON
 0x00b0 "\\textdegree"             "textcomp" "force" # DEGREE SIGN # the force flag is only needed due to a bug in teTeX 3 / TeXLive 2005
 0x00b1 "\\textpm"                 "textcomp" "force" "\pm" # ± PLUS-MINUS SIGN
-0x00b2 "\\texttwosuperior"        "textcomp" "force" # ² SUPERSCRIPT TWO
-0x00b3 "\\textthreesuperior"      "textcomp" "force" # ³ SUPERSCRIPT THREE
+0x00b2 "\\texttwosuperior"        "textcomp" "force" "{{}^2}" "" # ² SUPERSCRIPT TWO
+0x00b3 "\\textthreesuperior"      "textcomp" "force" "{{}^3}" "" # ³ SUPERSCRIPT THREE
 0x00b4 "\\textasciiacute"         "textcomp" "" # ACUTE ACCENT
 0x00b5 "\\textmu"                 "textcomp" "force" # µ MICRO SIGN
 0x00b6 "\\textparagraph"          "textcomp" "" # PILCROW SIGN # not equal to \textpilcrow
 0x00b7 "\\textperiodcentered"     "" "" "\cdot" # MIDDLE DOT
 0x00b8 "\\c\\ "                   "" "" # CEDILLA (command from latin1.def)
-0x00b9 "\\textonesuperior"        "textcomp" "force" # ¹ SUPERSCRIPT ONE
+0x00b9 "\\textonesuperior"        "textcomp" "force" "{{}^1}" "" # ¹ SUPERSCRIPT ONE
 0x00ba "\\textordmasculine"       "textcomp" "" # MASCULINE ORDINAL INDICATOR
 0x00bb "\\guillemotright"         "" "" # RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
 0x00bc "\\textonequarter"         "textcomp" "" # 1/4 FRACTION
@@ -958,7 +958,7 @@
 0x1d2d "\\textsuperscript{\\AE}"   "" "" # MODIFIER LETTER CAPITAL AE
 0x1d2e "\\textsuperscript{B}"      "" "" # MODIFIER LETTER CAPITAL B
 #0x1d2f ""                         "" "" # MODIFIER LETTER CAPITAL BARRED B
-0x1d30 "\\textsuperscript{B}"      "" "" # MODIFIER LETTER CAPITAL D
+0x1d30 "\\textsuperscript{D}"      "" "" # MODIFIER LETTER CAPITAL D
 0x1d31 "\\textsuperscript{E}"      "" "" # MODIFIER LETTER CAPITAL E
 #0x1d32 ""                         "" "" # MODIFIER LETTER CAPITAL REVERSED E
 0x1d33 "\\textsuperscript{G}"      "" "" # MODIFIER LETTER CAPITAL G
@@ -1008,15 +1008,15 @@
 0x1d5f "\\textsuperscript{\\textgreek{d}}" "textgreek""" # MODIFIER LETTER SMALL DELTA
 0x1d60 "\\textsuperscript{\\textgreek{f}}" "textgreek""" # MODIFIER LETTER SMALL GREEK PHI
 0x1d61 "\\textsuperscript{\\textgreek{q}}" "textgreek""" # MODIFIER LETTER SMALL CHI
-#0x1d62 ""                         "" "" # LATIN SUBSCRIPT SMALL LETTER I
-#0x1d63 ""                         "" "" # LATIN SUBSCRIPT SMALL LETTER R
-#0x1d64 ""                         "" "" # LATIN SUBSCRIPT SMALL LETTER U
-#0x1d65 ""                         "" "" # LATIN SUBSCRIPT SMALL LETTER V
-#0x1d66 ""                         "" "" # GREEK SUBSCRIPT SMALL LETTER BETA
-#0x1d67 ""                         "" "" # GREEK SUBSCRIPT SMALL LETTER GAMMA
-#0x1d68 ""                         "" "" # GREEK SUBSCRIPT SMALL LETTER RHO
-#0x1d69 ""                         "" "" # GREEK SUBSCRIPT SMALL LETTER PHI
-#0x1d6a ""                         "" "" # GREEK SUBSCRIPT SMALL LETTER CHI
+0x1d62 "\\textsubscript{i}"       "subscript" "" "{{}_i}" "" # LATIN SUBSCRIPT SMALL LETTER I
+0x1d63 "\\textsubscript{r}"       "subscript" "" "{{}_r}" "" # LATIN SUBSCRIPT SMALL LETTER R
+0x1d64 "\\textsubscript{u}"       "subscript" "" "{{}_u}" "" # LATIN SUBSCRIPT SMALL LETTER U
+0x1d65 "\\textsubscript{v}"       "subscript" "" "{{}_v}" "" # LATIN SUBSCRIPT SMALL LETTER V
+0x1d66 "\\textsubscript{\\textgreek{b}}" "subscript" "" "{{}_\\beta}" "" # GREEK SUBSCRIPT SMALL LETTER BETA
+0x1d67 "\\textsubscript{\\textgreek{g}}" "subscript" "" "{{}_\\gamma}" "" # GREEK SUBSCRIPT SMALL LETTER GAMMA
+0x1d68 "\\textsubscript{\\textgreek{r}}" "subscript" "" "{{}_\\rho}" "" # GREEK SUBSCRIPT SMALL LETTER RHO
+0x1d69 "\\textsubscript{\\textgreek{f}}" "subscript" "" "{{}_\\phi}" "" # GREEK SUBSCRIPT SMALL LETTER PHI
+0x1d6a "\\textsubscript{\\textgreek{q}}" "subscript" "" "{{}_\\chi}" "" # GREEK SUBSCRIPT SMALL LETTER CHI
 #0x1d6b ""                         "" "" # LATIN SMALL LETTER UE
 #0x1d6c ""                         "" "" # LATIN SMALL LETTER B WITH MIDDLE TILDE
 0x1d6d "\\textsuperimposetilde{d}" "tipa" "force" # LATIN SMALL LETTER D WITH MIDDLE TILDE
@@ -1575,6 +1575,42 @@
 0x2049 "!?"                       "" "" # EXCLAMATION QUESTION MARK
 0x2052 "\\textdiscount"           "textcomp" "" # COMMERCIAL MINUS SIGN
 0x205d "\\vdots"                  "" "" # TRICOLON # ≈ VERTICAL ELLIPSIS
+#0x205e ""                         "" "" "" "" # VERTICAL FOUR DOTS
+0x205f ""                         "" "" "\\:" "" # MEDIUM MATHEMATICAL SPACE
+0x2070 "\\textsuperscript{0}"     "" "" "{{}^0}" "" # SUPERSCRIPT ZERO
+0x2071 "\\textsuperscript{i}"     "" "" "{{}^i}" "" # SUPERSCRIPT LATIN SMALL LETTER I
+0x2074 "\\textsuperscript{4}"     "" "" "{{}^4}" "" # SUPERSCRIPT FOUR
+0x2075 "\\textsuperscript{5}"     "" "" "{{}^5}" "" # SUPERSCRIPT FIVE
+0x2076 "\\textsuperscript{6}"     "" "" "{{}^6}" "" # SUPERSCRIPT SIX
+0x2077 "\\textsuperscript{7}"     "" "" "{{}^7}" "" # SUPERSCRIPT SEVEN
+0x2078 "\\textsuperscript{8}"     "" "" "{{}^8}" "" # SUPERSCRIPT EIGHT
+0x2079 "\\textsuperscript{9}"     "" "" "{{}^9}" "" # SUPERSCRIPT NINE
+0x207a "\\textsuperscript{+}"     "" "" "{{}^+}" "" # SUPERSCRIPT PLUS SIGN
+0x207b "\\textsuperscript{-}"     "" "" "{{}^-}" "" # SUPERSCRIPT MINUS
+0x207c "\\textsuperscript{=}"     "" "" "{{}^=}" "" # SUPERSCRIPT EQUALS SIGN
+0x207d "\\textsuperscript{(}"     "" "" "{{}^(}" "" # SUPERSCRIPT LEFT PARENTHESIS
+0x207e "\\textsuperscript{)}"     "" "" "{{}^)}" "" # SUPERSCRIPT RIGHT PARENTHESIS
+0x207f "\\textsuperscript{n}"     "" "" "{{}^n}" "" # SUPERSCRIPT LATIN SMALL LETTER N
+0x2080 "\\textsubscript{0}"       "subscript" "" "{{}_0}" "" # SUBSCRIPT ZERO
+0x2081 "\\textsubscript{1}"       "subscript" "" "{{}_1}" "" # SUBSCRIPT ONE
+0x2082 "\\textsubscript{2}"       "subscript" "" "{{}_2}" "" # SUBSCRIPT TWO
+0x2083 "\\textsubscript{3}"       "subscript" "" "{{}_3}" "" # SUBSCRIPT THREE
+0x2084 "\\textsubscript{4}"       "subscript" "" "{{}_4}" "" # SUBSCRIPT FOUR
+0x2085 "\\textsubscript{5}"       "subscript" "" "{{}_5}" "" # SUBSCRIPT FIVE
+0x2086 "\\textsubscript{6}"       "subscript" "" "{{}_6}" "" # SUBSCRIPT SIX
+0x2087 "\\textsubscript{7}"       "subscript" "" "{{}_7}" "" # SUBSCRIPT SEVEN
+0x2088 "\\textsubscript{8}"       "subscript" "" "{{}_8}" "" # SUBSCRIPT EIGHT
+0x2089 "\\textsubscript{9}"       "subscript" "" "{{}_9}" "" # SUBSCRIPT NINE
+0x208a "\\textsubscript{+}"       "subscript" "" "{{}_+}" "" # SUBSCRIPT PLUS SIGN
+0x208b "\\textsubscript{-}"       "subscript" "" "{{}_-}" "" # SUBSCRIPT MINUS
+0x208c "\\textsubscript{=}"       "subscript" "" "{{}_=}" "" # SUBSCRIPT EQUALS SIGN
+0x208d "\\textsubscript{(}"       "subscript" "" "{{}_(}" "" # SUBSCRIPT LEFT PARENTHESIS
+0x208e "\\textsubscript{)}"       "subscript" "" "{{}_)}" "" # SUBSCRIPT RIGHT PARENTHESIS
+0x2090 "\\textsubscript{a}"       "subscript" "" "{{}_a}" "" # LATIN SUBSCRIPT SMALL LETTER A
+0x2091 "\\textsubscript{e}"       "subscript" "" "{{}_e}" "" # LATIN SUBSCRIPT SMALL LETTER E
+0x2092 "\\textsubscript{o}"       "subscript" "" "{{}_o}" "" # LATIN SUBSCRIPT SMALL LETTER O
+0x2093 "\\textsubscript{x}"       "subscript" "" "{{}_x}" "" # LATIN SUBSCRIPT SMALL LETTER X
+0x2094 "\\textsubscript{\\textschwa}" "subscript" "" "{{}_\\textschwa}" "tipa" # LATIN SUBSCRIPT SMALL LETTER SCHWA
 #
 # currency symbols
 #
@@ -1620,7 +1656,7 @@
 # Weierstrass elliptic function, actually this has the form of a 
 # lowercase calligraphic p, despite its name  (Maybe use Zapf chancery?)
 #0x2118 ""                         "" "" "\\mathscr{P}" "mathrsfs" # SCRIPT CAPITAL P
-0x2119 ""                         "" "" "\\mathbb{P}" "amssymb"# DOUBLE-STUCK CAPITAL P
+0x2119 ""                         "" "" "\\mathbb{P}" "amssymb" # DOUBLE-STUCK CAPITAL P
 0x211a ""                         "" "" "\\mathbb{Q}" "amssymb" # DOUBLE-STUCK CAPITAL Q
 0x211b ""                         "" "" "\\mathscr{R}" "mathrsfs" # SCRIPT CAPITAL R
 0x211c ""                         "" "" "\\mathfrak{R}" "amssymb" # BLACK-LETTER CAPITAL R

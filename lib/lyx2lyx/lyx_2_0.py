@@ -2293,6 +2293,50 @@ def revert_multirowOffset(document):
         begin_table = end_table
 
 
+def revert_script(document):
+    " Convert subscript/superscript inset to TeX code "
+    i = 0
+    foundsubscript = False
+    while 1:
+        i = find_token(document.body, '\\begin_inset script', i)
+        if i == -1:
+            break
+        z = find_end_of_inset(document.body, i)
+        if z == -1:
+            document.warning("Malformed LyX document: Can't find end of script inset.")
+            i += 1
+            continue
+        blay = find_token(document.body, "\\begin_layout", i, z)
+        if blay == -1:
+            document.warning("Malformed LyX document: Can't find layout in script inset.")
+            i = z
+            continue
+
+        if check_token(document.body[i], "\\begin_inset script subscript"):
+            subst = '\\textsubscript{'
+            foundsubscript = True
+        elif check_token(document.body[i], "\\begin_inset script superscript"):
+            subst = '\\textsuperscript{'
+        else:
+            document.warning("Malformed LyX document: Unknown type of script inset.")
+            i = z
+            continue
+        bend = find_end_of_layout(document.body, blay)
+        if bend == -1 or bend > z:
+            document.warning("Malformed LyX document: Can't find end of layout in script inset.")
+            i = z
+            continue
+        # remove the \end_layout \end_inset pair
+        document.body[bend:z + 1] = put_cmd_in_ert("}")
+        document.body[i:blay + 1] = put_cmd_in_ert(subst)
+        i += 1
+    # these classes provide a \textsubscript command:
+    # FIXME: Would be nice if we could use the information of the .layout file here
+    classes = ["memoir", "scrartcl", "scrbook", "scrlttr2", "scrreprt"]
+    if foundsubscript and find_token_exact(classes, document.textclass, 0) == -1:
+        add_to_preamble(document, ['\\usepackage{subscript}'])
+
+
 ##
 # Conversion hub
 #
@@ -2359,10 +2403,12 @@ convert = [[346, []],
            [404, [convert_prettyref]],
            [405, []],
            [406, [convert_passthru]],
-           [407, []]
+           [407, []],
+           [408, []]
 ]
 
-revert =  [[406, [revert_multirowOffset]],
+revert =  [[407, [revert_script]],
+           [406, [revert_multirowOffset]],
            [405, [revert_passthru]],
            [404, []],
            [403, [revert_refstyle]],

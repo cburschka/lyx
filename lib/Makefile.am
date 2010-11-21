@@ -381,6 +381,8 @@ dist_images_DATA = \
 	images/hidetab.png \
 	images/index-insert.png \
 	images/info-insert_buffer_vcs-revision.png \
+	images/inset-insert_script_script_subscript.png \
+	images/inset-insert_script_script_superscript.png \
 	images/label-insert.png \
 	images/layout.png \
 	images/layout-document.png \

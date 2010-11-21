@@ -11,6 +11,7 @@ Format 30
 SecNumDepth             2
 TocDepth                2
 DefaultStyle            Standard
+Provides                subscript 1
 
 Style Standard
 	LatexName             dummy

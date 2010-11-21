@@ -1465,7 +1465,6 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_DOWN:
 	case LFUN_NEWLINE_INSERT:
 	case LFUN_MATH_EXTERN:
-	case LFUN_MATH_DISPLAY:
 		// we handle these
 		status.setEnabled(true);
 		return true;
@@ -1473,7 +1472,16 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_MUTATE: {
 		HullType ht = hullType(cmd.argument());
 		status.setOnOff(type_ == ht);
-		status.setEnabled(true);
+		// fall through
+	}
+	case LFUN_MATH_DISPLAY: {
+		bool enable = true;
+		if (cur.depth() > 1) {
+			Inset const & in = cur[cur.depth()-2].inset();
+			if (in.lyxCode() == SCRIPT_CODE)
+				enable = display() != Inline;
+		}
+		status.setEnabled(enable);
 		return true;
 	}
 

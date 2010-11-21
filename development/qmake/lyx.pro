@@ -189,6 +189,7 @@ SOURCES += \
 ../../src/insets/InsetPhantom.cpp \
 ../../src/insets/InsetQuotes.cpp \
 ../../src/insets/InsetRef.cpp \
+../../src/insets/InsetScript.cpp \
 ../../src/insets/InsetSpace.cpp \
 ../../src/insets/InsetSpecialChar.cpp \
 ../../src/insets/InsetTabular.cpp \
@@ -531,6 +532,7 @@ HEADERS += \
 ../../src/insets/InsetQuotes.h \
 ../../src/insets/InsetPhantom.h \
 ../../src/insets/InsetRef.h \
+../../src/insets/InsetScript.h \
 ../../src/insets/InsetSpace.h \
 ../../src/insets/InsetSpecialChar.h \
 ../../src/insets/InsetTOC.h \

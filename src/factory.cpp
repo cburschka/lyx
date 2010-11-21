@@ -49,6 +49,7 @@
 #include "insets/InsetPhantom.h"
 #include "insets/InsetPreview.h"
 #include "insets/InsetRef.h"
+#include "insets/InsetScript.h"
 #include "insets/InsetSpace.h"
 #include "insets/InsetTabular.h"
 #include "insets/InsetTOC.h"
@@ -310,6 +311,12 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 				return new InsetRef(buf, icp);
 			}
 
+			case SCRIPT_CODE: {
+				InsetScriptParams isp;
+				InsetScript::string2params(to_utf8(cmd.argument()), isp);
+				return new InsetScript(buf, isp);
+			}
+
 			case SPACE_CODE: {
 				InsetSpaceParams isp;
 				InsetSpace::string2params(to_utf8(cmd.argument()), isp);
@@ -549,6 +556,8 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 			inset.reset(new InsetERT(buf));
 		} else if (tmptok == "listings") {
 			inset.reset(new InsetListings(buf));
+		} else if (tmptok == "script") {
+			inset.reset(new InsetScript(buf));
 		} else if (tmptok == "space") {
 			inset.reset(new InsetSpace);
 		} else if (tmptok == "Tabular") {

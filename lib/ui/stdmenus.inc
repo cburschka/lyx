@@ -385,8 +385,8 @@ Menuset
 	End
 
 	Menu "insert_formatting"
-		Item "Superscript|S" "command-sequence math-mode on; math-superscript; math-insert \text;"
-		Item "Subscript|u" "command-sequence math-mode on; math-subscript; math-insert \text;"
+		Item "Superscript|S" "inset-insert script script superscript"
+		Item "Subscript|u" "inset-insert script script subscript"
 		Separator
 		Item "Protected Space|P" "space-insert protected"
 		Item "Interword Space|w" "space-insert normal"

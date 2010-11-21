@@ -558,6 +558,7 @@ SOURCEFILESINSETS = \
 	insets/InsetPreview.cpp \
 	insets/InsetQuotes.cpp \
 	insets/InsetRef.cpp \
+	insets/InsetScript.cpp \
 	insets/InsetSpace.cpp \
 	insets/InsetSpecialChar.cpp \
 	insets/InsetTabular.cpp \
@@ -613,6 +614,7 @@ HEADERFILESINSETS = \
 	insets/InsetPhantom.h \
 	insets/InsetQuotes.h \
 	insets/InsetRef.h \
+	insets/InsetScript.h \
 	insets/InsetSpace.h \
 	insets/InsetSpecialChar.h \
 	insets/InsetTabular.h \

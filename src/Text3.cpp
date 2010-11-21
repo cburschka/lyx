@@ -1073,7 +1073,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			if (cur.selection())
 				cutSelection(cur, true, false);
 			cur.insert(inset);
-			cur.posForward();
+			if (inset->editable() && inset->asInsetText())
+				inset->edit(cur, true);
+			else
+				cur.posForward();
 
 			// trigger InstantPreview now
 			if (inset->lyxCode() == EXTERNAL_CODE) {

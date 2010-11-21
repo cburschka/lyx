@@ -101,6 +101,14 @@ docstring const lowercase(docstring const & s);
 /// Does not depend on the locale.
 docstring const uppercase(docstring const & s);
 
+/// Returns the superscript of \p c or \p c if no superscript exists.
+/// Does not depend on the locale.
+char_type superscript(char_type c);
+
+/// Returns the subscript of \p c or \p c if no subscript exists.
+/// Does not depend on the locale.
+char_type subscript(char_type c);
+
 /// Does str start with c?
 bool prefixIs(docstring const & str, char_type c);
 

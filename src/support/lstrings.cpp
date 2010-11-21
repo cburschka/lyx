@@ -506,6 +506,132 @@ docstring const ascii_lowercase(docstring const & a)
 }
 
 
+char_type superscript(char_type c)
+{
+	switch (c) {
+		case    '2': return 0x00b2;
+		case    '3': return 0x00b3;
+		case    '1': return 0x00b9;
+		case    '0': return 0x2070;
+		case    'i': return 0x2071;
+		case    '4': return 0x2074;
+		case    '5': return 0x2075;
+		case    '6': return 0x2076;
+		case    '7': return 0x2077;
+		case    '8': return 0x2078;
+		case    '9': return 0x2079;
+		case    '+': return 0x207a;
+		case    '-': return 0x207b;
+		case    '=': return 0x207c;
+		case    '(': return 0x207d;
+		case    ')': return 0x207e;
+		case    'n': return 0x207f;
+		case    'h': return 0x02b0;
+		case 0x0266: return 0x02b1; // LATIN SMALL LETTER H WITH HOOK
+		case    'j': return 0x02b2;
+		case    'r': return 0x02b3;
+		case 0x0279: return 0x02b4; // LATIN SMALL LETTER TURNED R
+		case 0x027b: return 0x02b5; // LATIN SMALL LETTER TURNED R WITH HOOK
+		case 0x0281: return 0x02b6; // LATIN SMALL LETTER CAPITAL INVERTED R
+		case    'w': return 0x02b7;
+		case    'y': return 0x02b8;
+//		case 0x0294: return 0x02c0; // LATIN LETTER GLOTTAL STOP)
+//		case 0x0295: return 0x02c1; // LATIN LETTER PHARYNGEAL VOICED FRICATIVE
+		                            // (= LATIN LETTER REVERSED GLOTTAL STOP)
+		case    'l': return 0x02e1;
+		case    's': return 0x02e2;
+		case    'x': return 0x02e3;
+//		case 0x0295: return 0x02e4; // LATIN SMALL LETTER REVERSED GLOTTAL STOP
+		case    'A': return 0x1d2c;
+		case 0x00c6: return 0x1d2d; // LATIN CAPITAL LETTER AE
+		case    'B': return 0x1d2e;
+		case    'D': return 0x1d30;
+		case    'E': return 0x1d31;
+		case    'G': return 0x1d33;
+		case    'H': return 0x1d34;
+		case    'I': return 0x1d35;
+		case    'J': return 0x1d36;
+		case    'K': return 0x1d37;
+		case    'L': return 0x1d38;
+		case    'M': return 0x1d39;
+		case    'N': return 0x1d3a;
+		case    'O': return 0x1d3c;
+		case    'P': return 0x1d3e;
+		case    'R': return 0x1d3f;
+		case    'T': return 0x1d40;
+		case    'U': return 0x1d41;
+		case    'W': return 0x1d42;
+		case    'a': return 0x1d43;
+		case 0x0250: return 0x1d44; // LATIN SMALL LETTER TURNED A
+		case 0x0251: return 0x1d45; // LATIN SMALL LETTER ALPHA
+		case    'b': return 0x1d47;
+		case    'd': return 0x1d48;
+		case    'e': return 0x1d49;
+		case 0x0259: return 0x1d4a; // LATIN SMALL LETTER SCHWA
+		case 0x025b: return 0x1d4b; // LATIN SMALL LETTER OPEN E
+		case 0x1d08: return 0x1d4c; // LATIN SMALL LETTER TURNED OPEN E
+		case    'g': return 0x1d4d;
+		case 0x1d09: return 0x1d4e; // LATIN SMALL LETTER TURNED I
+		case    'k': return 0x1d4f;
+		case    'm': return 0x1d50;
+		case 0x014b: return 0x1d51; // LATIN SMALL LETTER ENG
+		case    'o': return 0x1d52;
+		case 0x0254: return 0x1d53; // LATIN SMALL LETTER OPEN O
+		case 0x1d16: return 0x1d54; // LATIN SMALL LETTER TOP HALF O
+		case 0x1d17: return 0x1d55; // LATIN SMALL LETTER BOTTOM HALF O
+		case    'p': return 0x1d56;
+		case    't': return 0x1d57;
+		case    'u': return 0x1d58;
+		case 0x1d1d: return 0x1d59; // LATIN SMALL LETTER SIDEWAYS U
+		case 0x1d1f: return 0x1d5a; // LATIN SMALL LETTER SIDEWAYS TURNED M
+		case    'v': return 0x1d5b;
+		case 0x03b2: return 0x1d5d; // GREEK SMALL LETTER BETA
+		case 0x03b3: return 0x1d5e; // GREEK SMALL LETTER GAMMA
+		case 0x03b4: return 0x1d5f; // GREEK SMALL LETTER DELTA
+		case 0x03c6: return 0x1d60; // GREEK SMALL LETTER PHI
+		case 0x03c7: return 0x1d61; // GREEK SMALL LETTER CHI
+	}
+	return c;
+}
+
+
+char_type subscript(char_type c)
+{
+	switch (c) {
+		case    'i': return 0x1d62;
+		case    'r': return 0x1d63;
+		case    'u': return 0x1d64;
+		case    'v': return 0x1d65;
+		case 0x03b2: return 0x1d66; // GREEK SMALL LETTER BETA
+		case 0x03b3: return 0x1d67; // GREEK SMALL LETTER GAMMA
+		case 0x03c1: return 0x1d68; // GREEK SMALL LETTER RHO
+		case 0x03c6: return 0x1d69; // GREEK SMALL LETTER PHI
+		case 0x03c7: return 0x1d6a; // GREEK SMALL LETTER CHI
+		case    '0': return 0x2080;
+		case    '1': return 0x2081;
+		case    '2': return 0x2082;
+		case    '3': return 0x2083;
+		case    '4': return 0x2084;
+		case    '5': return 0x2085;
+		case    '6': return 0x2086;
+		case    '7': return 0x2087;
+		case    '8': return 0x2088;
+		case    '9': return 0x2089;
+		case    '+': return 0x208a;
+		case    '-': return 0x208b;
+		case    '=': return 0x208c;
+		case    '(': return 0x208d;
+		case    ')': return 0x208e;
+		case    'a': return 0x2090;
+		case    'e': return 0x2091;
+		case    'o': return 0x2092;
+		case    'x': return 0x2093;
+		case 0x0259: return 0x2093; // LATIN SMALL LETTER SCHWA
+	}
+	return c;
+}
+
+
 bool prefixIs(docstring const & a, char_type c)
 {
 	if (a.empty())
