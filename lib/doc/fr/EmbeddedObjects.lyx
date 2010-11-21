@@ -1,5 +1,5 @@
 #LyX 2.0.0beta1 created this file. For more info see http://www.lyx.org/
-\lyxformat 407
+\lyxformat 408
 \begin_document
 \begin_header
 \textclass scrbook
@@ -2180,8 +2180,31 @@ Vous pouvez agir sur un tableau en cliquant dessus avec le bouton droit
 contenu 
 \emph default
 d'une cellule et sélectionner la cellule elle-même.
- Vous pouvez utiliser les onglets suivants de la fenêtre de dialogue de
- tableaux :
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+With the dialog option 
+\family sans
+Immediate
+\begin_inset space ~
+\end_inset
+
+Apply
+\family default
+ every change you make in the dialog is directly applied.
+ If you move the cursor to another table cell the dialog will then also
+ be updated with the parameters of the new cell.
+ If you change length values in the dialog you must press return to get
+ the change applied.
+\lang french
+
+\begin_inset Newline newline
+\end_inset
+
+Vous pouvez utiliser les onglets suivants de la fenêtre de dialogue de tableaux
+ :
 \end_layout
 
 \begin_layout Description
@@ -2331,13 +2354,175 @@ pas
 \end_inset
 
 
-\lang english
-
 \begin_inset Newline newline
 \end_inset
 
 
+\lang english
+The table-wide vertical alignment is used for tables within text lines
 \lang french
+ :
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+A line with tables with different alignments:
+\lang french
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="bottom">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
 On peut aussi entrer des paramètres LaTeX pour obtenir des mise en formes
  spéciales pour le tableau, voir les sections
 \begin_inset space ~
@@ -2448,12 +2633,6 @@ reference "sec:Questions-sur-tableaux-longs"
 \end_inset
 
  décrivent ces tableaux longs plus en détail.
-\end_layout
-
-\begin_layout Standard
-Quand la barre d'outils tableau est activée, vous pouvez déplacer le curseur
- de cellule en cellule avec les touches de déplacement et voir s'afficher
- les propriétés de la cellule courante dans la fenêtre de dialogue.
 \end_layout
 
 \begin_layout Section
@@ -12290,7 +12469,8 @@ n
 
 :
 \begin_inset Formula \begin{equation}
-W_{g\, n}=(W_{g\,\mathrm{multicolonne}}+(1-n)\cdot(12.4\,\mathrm{pt}))/n\label{eq:Wgn}\end{equation}
+W_{g\, n}=(W_{g\,\mathrm{multicolonne}}+(1-n)\cdot(12.4\,\mathrm{pt}))/n\label{eq:Wgn}
+\end{equation}
 
 \end_inset
 
@@ -12319,7 +12499,8 @@ reference "eq:Wgn"
 
  devient
 \begin_inset Formula \begin{equation}
-W_{g\,2}=1.25\,\mathrm{cm}-6.2\,\mathrm{pt}\end{equation}
+W_{g\,2}=1.25\,\mathrm{cm}-6.2\,\mathrm{pt}
+\end{equation}
 
 \end_inset
 
@@ -35573,7 +35754,8 @@ n
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-W_{\mathrm{tot}\, n}=n\cdot(W_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}\end{equation}
+W_{\mathrm{tot}\, n}=n\cdot(W_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}
+\end{equation}
 
 \end_inset
 
@@ -35632,7 +35814,8 @@ reference "eq:Wtot_n"
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-W_{\mathrm{tot\, mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}\end{equation}
+W_{\mathrm{tot\, mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}
+\end{equation}
 
 \end_inset
 
@@ -35676,7 +35859,8 @@ n
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-W_{g\, n}=(W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}))/n\end{equation}
+W_{g\, n}=(W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}))/n
+\end{equation}
 
 \end_inset
 
