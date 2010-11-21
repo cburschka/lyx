@@ -1,4 +1,4 @@
-#\DeclareLyXModule[enumitem.sty]{Customisable Lists (enumitem)}
+#\DeclareLyXModule[enumitem.sty]{Customizable Lists (enumitem)}
 #DescriptionBegin
 # Control the layout of enumerate, itemize and description
 # with an optional argument.
@@ -46,7 +46,7 @@ AddToPreamble
 	\newlength{\lyxlabelwidth}      % auxiliary length 
 EndPreamble
 
-# Customisable Basic Lists
+# Customizable Basic Lists
 # ------------------------
 
 # With enumitem, the three standard list environments take an optional
@@ -67,7 +67,7 @@ Style Description
 	Requires	enumitem
 End
 
-# Customisable LyX List
+# Customizable LyX List
 # ---------------------
 
 Style Labeling
