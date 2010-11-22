@@ -816,6 +816,28 @@ def revert_suppress_date(document):
     del document.header[i]
 
 
+def convert_mhchem(document):
+    "Set mhchem to off for versions older than 1.6.x"
+    if document.start < 277:
+        # LyX 1.5.x and older did never load mhchem.
+        # Therefore we must switch it off: Documents that use mhchem have
+        # a manual \usepackage anyway, and documents not using mhchem but
+        # custom macros with the same names as mhchem commands might get
+        # corrupted if mhchem is automatically loaded.
+        mhchem = 0 # off
+    else:
+        # LyX 1.6.x did always load mhchem automatically.
+        mhchem = 1 # auto
+    i = find_token(document.header, "\\use_esint", 0)
+    if i == -1:
+        # pre-1.5.x document
+        i = find_token(document.header, "\\use_amsmath", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Could not find amsmath os esint setting.")
+        return
+    document.header.insert(i + 1, "\\use_mhchem %d" % mhchem)
+
+
 def revert_mhchem(document):
     "Revert mhchem loading to preamble code"
 
@@ -1805,7 +1827,9 @@ def revert_flexnames(document):
 
 def convert_mathdots(document):
     " Load mathdots automatically "
-    i = find_token(document.header, "\\use_esint" , 0)
+    i = find_token(document.header, "\\use_mhchem" , 0)
+    if i == -1:
+      i = find_token(document.header, "\\use_esint" , 0)
     if i != -1:
       document.header.insert(i + 1, "\\use_mathdots 1")
 
@@ -2367,7 +2391,7 @@ convert = [[346, []],
            [368, []],
            [369, [convert_author_id]],
            [370, []],
-           [371, []],
+           [371, [convert_mhchem]],
            [372, []],
            [373, [merge_gbrief]],
            [374, []],
