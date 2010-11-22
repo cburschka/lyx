@@ -67,7 +67,7 @@ bool parse_bool(docstring & howto)
 }
 
 
-class MatchString : public binary_function<Paragraph, pos_type, bool>
+class MatchString : public binary_function<Paragraph, pos_type, int>
 {
 public:
 	MatchString(docstring const & str, bool cs, bool mw)
@@ -76,7 +76,7 @@ public:
 
 	// returns true if the specified string is at the specified position
 	// del specifies whether deleted strings in ct mode will be considered
-	bool operator()(Paragraph const & par, pos_type pos, bool del = true) const
+	int operator()(Paragraph const & par, pos_type pos, bool del = true) const
 	{
 		return par.find(str, case_sens, whole_words, pos, del);
 	}
@@ -91,27 +91,31 @@ private:
 };
 
 
-bool findForward(DocIterator & cur, MatchString const & match,
+int findForward(DocIterator & cur, MatchString const & match,
 		 bool find_del = true)
 {
 	for (; cur; cur.forwardChar())
-		if (cur.inTexted() &&
-		    match(cur.paragraph(), cur.pos(), find_del))
-			return true;
-	return false;
+		if (cur.inTexted()) {
+			int len = match(cur.paragraph(), cur.pos(), find_del);
+			if (len > 0)
+				return len;
+		}
+	return 0;
 }
 
 
-bool findBackwards(DocIterator & cur, MatchString const & match,
+int findBackwards(DocIterator & cur, MatchString const & match,
 		 bool find_del = true)
 {
 	while (cur) {
 		cur.backwardChar();
-		if (cur.inTexted() &&
-		    match(cur.paragraph(), cur.pos(), find_del))
-			return true;
+		if (cur.inTexted()) {
+			int len = match(cur.paragraph(), cur.pos(), find_del);
+			if (len > 0)
+				return len;
+		}
 	}
-	return false;
+	return 0;
 }
 
 
@@ -152,13 +156,13 @@ bool findOne(BufferView * bv, docstring const & searchstr,
 
 	MatchString const match(searchstr, case_sens, whole);
 
-	bool found = forward ? findForward(cur, match, find_del) :
+	int match_len = forward ? findForward(cur, match, find_del) :
 			  findBackwards(cur, match, find_del);
 
-	if (found)
-		bv->putSelectionAt(cur, searchstr.length(), !forward);
+	if (match_len > 0)
+		bv->putSelectionAt(cur, match_len, !forward);
 
-	return found;
+	return match_len > 0;
 }
 
 
@@ -181,12 +185,13 @@ int replaceAll(BufferView * bv,
 
 	Cursor cur(*bv);
 	cur.setCursor(doc_iterator_begin(&buf));
-	while (findForward(cur, match, false)) {
+	int match_len = findForward(cur, match, false);
+	while (match_len > 0) {
 		// Backup current cursor position and font.
 		pos_type const pos = cur.pos();
 		Font const font = cur.paragraph().getFontSettings(buf.params(), pos);
 		cur.recordUndo();
-		int striked = ssize - cur.paragraph().eraseChars(pos, pos + ssize,
+		int striked = ssize - cur.paragraph().eraseChars(pos, pos + match_len,
 							    buf.params().trackChanges);
 		cur.paragraph().insert(pos, replacestr, font,
 				       Change(buf.params().trackChanges ?
@@ -194,6 +199,7 @@ int replaceAll(BufferView * bv,
 		for (int i = 0; i < rsize + striked; ++i)
 			cur.forwardChar();
 		++num;
+		match_len = findForward(cur, match, false);
 	}
 
 	bv->putSelectionAt(doc_iterator_begin(&buf), 0, false);

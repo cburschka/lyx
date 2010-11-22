@@ -51,6 +51,7 @@
 
 #include "insets/InsetBibitem.h"
 #include "insets/InsetLabel.h"
+#include "insets/InsetSpecialChar.h"
 
 #include "support/debug.h"
 #include "support/docstring_list.h"
@@ -3258,36 +3259,44 @@ void Paragraph::changeCase(BufferParams const & bparams, pos_type pos,
 }
 
 
-bool Paragraph::find(docstring const & str, bool cs, bool mw,
-		pos_type pos, bool del) const
+int Paragraph::find(docstring const & str, bool cs, bool mw,
+		pos_type start_pos, bool del) const
 {
+	pos_type pos = start_pos;
 	int const strsize = str.length();
 	int i = 0;
 	pos_type const parsize = d->text_.size();
-	for (i = 0; pos + i < parsize; ++i) {
-		if (i >= strsize)
+	for (i = 0; i < strsize && pos < parsize; ++i, ++pos) {
+		// Ignore ligature break and hyphenation chars while searching
+		while (pos < parsize - 1 && isInset(pos)) {
+			const InsetSpecialChar *isc = dynamic_cast<const InsetSpecialChar*>(getInset(pos));
+			if (isc == 0
+			    || (isc->kind() != InsetSpecialChar::HYPHENATION
+				&& isc->kind() != InsetSpecialChar::LIGATURE_BREAK))
+				break;
+			pos++;
+		}
+		if (cs && str[i] != d->text_[pos])
 			break;
-		if (cs && str[i] != d->text_[pos + i])
+		if (!cs && uppercase(str[i]) != uppercase(d->text_[pos]))
 			break;
-		if (!cs && uppercase(str[i]) != uppercase(d->text_[pos + i]))
-			break;
-		if (!del && isDeleted(pos + i))
+		if (!del && isDeleted(pos))
 			break;
 	}
 
 	if (i != strsize)
-		return false;
+		return 0;
 
 	// if necessary, check whether string matches word
 	if (mw) {
-		if (pos > 0 && !isWordSeparator(pos - 1))
-			return false;
-		if (pos + strsize < parsize
-			&& !isWordSeparator(pos + strsize))
-			return false;
+		if (start_pos > 0 && !isWordSeparator(start_pos - 1))
+			return 0;
+		if (pos < parsize
+			&& !isWordSeparator(pos))
+			return 0;
 	}
 
-	return true;
+	return pos - start_pos;
 }
 
 

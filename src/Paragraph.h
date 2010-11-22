@@ -424,9 +424,10 @@ public:
 		pos_type & right, TextCase action);
 
 	/// find \param str string inside Paragraph.
-	/// \return true if the specified string is at the specified position
+	/// \return non-zero if the specified string is at the specified
+	///	position; returned value is the actual match length in positions
 	/// \param del specifies whether deleted strings in ct mode will be considered
-	bool find(
+	int find(
 		docstring const & str, ///< string to search
 		bool cs, ///<
 		bool mw, ///<
