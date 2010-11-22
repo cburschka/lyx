@@ -235,7 +235,7 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	bool const spell_state =
 		lyxrc.spellcheck_continuously && par_.isMisspelled(pos);
 
-	char_type prev_char = ' ';
+	char_type prev_char = 0;
 	// collect as much similar chars as we can
 	for (++vpos ; vpos < end ; ++vpos) {
 		pos = bidi_.vis2log(vpos);
@@ -260,10 +260,8 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 
 		char_type c = par_.getChar(pos);
 
-		if (c == '\t' || prev_char == '\t') {
-			prev_char = c;
+		if (c == '\t')
 			break;
-		}
 
 		if (!isPrintableNonspace(c))
 			break;
@@ -316,6 +314,7 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 		}
 
 		str.push_back(c);
+		prev_char = c;
 	}
 
 	docstring s(&str[0], str.size());
