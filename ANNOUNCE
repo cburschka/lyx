@@ -1,15 +1,15 @@
-Pre-release of LyX version 2.0.0 (beta 1)
+Pre-release of LyX version 2.0.0 (beta 2)
 ==========================================
 
-We are pleased to announce the first public pre-release of LyX 2.0.0.
-Development moved to the beta phase which basically means we will no more
-include new features and focus on polishing the current ones.
-We are thus grateful for any feedback you sent us regarding the bugs you
-encounter while testing the beta release. Except trying new features
-this is also good time to check that your favorite old files works with
-the new release as expected.
+We are pleased to announce the second public pre-release of LyX 2.0.0.
 
-Please note that this release is for testing purposes only, users are
+Due to the many reports we received, support for polyglossia, XeTeX's new
+language interface and babel replacement, has been added. Apart from this
+better support for sub/superscript has been added and externally launched
+documents are now possible to load in an already running LyX instance.
+
+Please report the problems and bugs at our lists or bug tracker and
+also note that this release is for testing purposes only. Users are
 encouraged to use current 1.6 stable release for any serious work.
 
 Tarballs and binaries can be found at ftp://ftp.lyx.org/pub/lyx/devel/
