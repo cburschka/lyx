@@ -268,6 +268,17 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 		if (!isPrintableNonspace(c))
 			break;
 
+		// Work-around bug #6920
+		// The bug can be reproduced with DejaVu font under Linux.
+		// The issue is that we compute the metrics character by character
+		// in ParagraphMetrics::singleWidth(); but we paint word by word
+		// for performance reason.
+		// Maybe a more general fix would be draw character by character
+		// for some predefined fonts on some patform. In arabic and
+		// Hebrew we already do paint this way.
+		if (prev_char == 'f')
+			break;
+
 		/* Because we do our own bidi, at this point the strings are
 		 * already in visual order. However, Qt also applies its own
 		 * bidi algorithm to strings that it paints to the screen.
