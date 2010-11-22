@@ -316,7 +316,7 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 		x_ += pi_.pain.text(int(x_), yo_, s, font);
 		return;
 	}
-	
+
 	FontInfo copy = font;
 	if (change_running.changed())
 		copy.setPaintColor(change_running.color());
@@ -346,7 +346,7 @@ void RowPainter::paintMisspelledMark(double orig_x, int desc, bool changed)
 {
 	// derive the offset from zoom factor specified by user in percent
 	// if changed the misspelled marker gets placed slightly lower than normal
-	// to avoid drawing at the same vertical offset 
+	// to avoid drawing at the same vertical offset
 	int const offset = int(1.5 * lyxrc.zoom / 100.0); // [percent]
 	int const y = yo_ + desc + (changed ? offset : 0);
 	pi_.pain.line(int(orig_x), y, int(x_), y, Color_red, Painter::line_onoffdash, 1.0);
@@ -365,13 +365,13 @@ void RowPainter::paintFromPos(pos_type & vpos, bool changed)
 	// special case languages
 	string const & lang = orig_font.language()->lang();
 	bool const hebrew = lang == "hebrew";
-	bool const arabic = lang == "arabic_arabtex" || lang == "arabic_arabi" || 
+	bool const arabic = lang == "arabic_arabtex" || lang == "arabic_arabi" ||
 						lang == "farsi";
 
 	// spelling correct?
 	bool const misspelled_ =
 		lyxrc.spellcheck_continuously && par_.isMisspelled(pos);
-	
+
 	// draw as many chars as we can
 	if ((!hebrew && !arabic)
 		|| (hebrew && !Encodings::isHebrewComposeChar(c))
@@ -731,16 +731,16 @@ void RowPainter::paintOnlyInsets()
 		Inset const * inset = par_.getInset(pos);
 		if (!inset)
 			continue;
-		if (x_ > pi_.base.bv->workWidth() 
+		if (x_ > pi_.base.bv->workWidth()
 		    || !cache.getInsets().has(inset))
 			continue;
 		x_ = cache.getInsets().x(inset);
 
 		bool const pi_selected = pi_.selected;
 		Cursor const & cur = pi_.base.bv->cursor();
-		if (cur.selection() && cur.text() == &text_ 
+		if (cur.selection() && cur.text() == &text_
 			  && cur.normalAnchor().text() == &text_)
-			pi_.selected = row_.sel_beg <= pos && row_.sel_end > pos; 
+			pi_.selected = row_.sel_beg <= pos && row_.sel_end > pos;
 		paintInset(inset, pos);
 		pi_.selected = pi_selected;
 	}
@@ -750,7 +750,7 @@ void RowPainter::paintOnlyInsets()
 void RowPainter::paintText()
 {
 	pos_type const end = row_.endpos();
-	// Spaces at logical line breaks in bidi text must be skipped during 
+	// Spaces at logical line breaks in bidi text must be skipped during
 	// painting. However, they may appear visually in the middle
 	// of a row; they must be skipped, wherever they are...
 	// * logically "abc_[HEBREW_\nHEBREW]"
@@ -859,7 +859,7 @@ void RowPainter::paintText()
 
 			x_ += row_.label_hfill + lwidth - width_pos;
 		}
-		
+
 		// Is the inline completion in front of character?
 		if (font.isRightToLeft() && vpos == inlineCompletionVPos)
 			paintInlineCompletion(font);
@@ -876,12 +876,12 @@ void RowPainter::paintText()
 		} else if (inset) {
 			// If outer row has changed, nested insets are repaint completely.
 			pi_.base.bv->coordCache().insets().add(inset, int(x_), yo_);
-			
+
 			bool const pi_selected = pi_.selected;
 			Cursor const & cur = pi_.base.bv->cursor();
-			if (cur.selection() && cur.text() == &text_ 
+			if (cur.selection() && cur.text() == &text_
 				  && cur.normalAnchor().text() == &text_)
-				pi_.selected = row_.sel_beg <= pos && row_.sel_end > pos; 
+				pi_.selected = row_.sel_beg <= pos && row_.sel_end > pos;
 			paintInset(inset, pos);
 			pi_.selected = pi_selected;
 			++vpos;
@@ -914,7 +914,7 @@ void RowPainter::paintInlineCompletion(Font const & font)
 	docstring completion = pi_.base.bv->inlineCompletion();
 	FontInfo f = font.fontInfo();
 	bool rtl = font.isRightToLeft();
-	
+
 	// draw the unique and the non-unique completion part
 	// Note: this is not time-critical as it is
 	// only done once per screen.
@@ -923,7 +923,7 @@ void RowPainter::paintInlineCompletion(Font const & font)
 	docstring s2 = completion.substr(uniqueTo);
 	ColorCode c1 = Color_inlinecompletion;
 	ColorCode c2 = Color_nonunique_inlinecompletion;
-	
+
 	// right to left?
 	if (rtl) {
 		swap(s1, s2);
@@ -935,7 +935,7 @@ void RowPainter::paintInlineCompletion(Font const & font)
 		pi_.pain.text(int(x_), yo_, s1, f);
 		x_ += theFontMetrics(font).width(s1);
 	}
-	
+
 	if (s2.size() > 0) {
 		f.setColor(c2);
 		pi_.pain.text(int(x_), yo_, s2, f);
