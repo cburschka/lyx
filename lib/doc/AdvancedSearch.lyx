@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 376
+\lyxformat 408
 \begin_document
 \begin_header
 \textclass amsart
@@ -25,6 +25,7 @@ figs-within-sections
 
 \graphics default
 \default_output_format default
+\output_sync 0
 \bibtex_command default
 \index_command default
 \paperfontsize default
@@ -35,11 +36,13 @@ figs-within-sections
 \use_amsmath 1
 \use_esint 1
 \use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \index Index
 \shortcut idx
 \color #008000
@@ -54,7 +57,7 @@ figs-within-sections
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\html_use_mathml true
+\html_math_output 0
 \html_be_strict true
 \end_header
 
@@ -237,6 +240,7 @@ status open
 \begin_inset Graphics
 	filename clipart/AdvancedFindAndReplace.png
 	lyxscale 60
+	width 4cm
 
 \end_inset
 
@@ -419,7 +423,8 @@ Find...
  LyX mini-editor some mathematics in centered line math (C-S-m) mode, like
  this 
 \begin_inset Formula \[
-x^{2}\]
+x^{2}
+\]
 
 \end_inset
 
