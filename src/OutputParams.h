@@ -136,6 +136,10 @@ public:
 	*/
 	bool use_babel;
 
+	/** Do we use polyglossia (instead of babel)?
+	*/
+	bool use_polyglossia;
+
 	/** Are we generating multiple indices?
 	*/
 	bool use_indices;

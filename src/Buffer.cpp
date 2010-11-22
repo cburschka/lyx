@@ -1386,6 +1386,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		MacroSet parentMacros;
 		listParentMacros(parentMacros, features);
 
+		runparams.use_polyglossia = features.usePolyglossia();
 		// Write the preamble
 		runparams.use_babel = params().writeLaTeX(os, features,
 							  d->texrow,

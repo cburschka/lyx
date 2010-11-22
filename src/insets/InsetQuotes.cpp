@@ -267,18 +267,20 @@ int InsetQuotes::latex(odocstream & os, OutputParams const & runparams) const
 	string qstr;
 
 	if (language_ == FrenchQuotes && times_ == DoubleQuotes
-	    && prefixIs(runparams.local_font->language()->code(), "fr")) {
+	    && prefixIs(runparams.local_font->language()->code(), "fr")
+	    && !runparams.use_polyglossia) {
 		if (side_ == LeftQuote)
 			qstr = "\\og "; //the spaces are important here
 		else
 			qstr = " \\fg{}"; //and here
-	} else if (lyxrc.fontenc == "T1") {
+	} else if (lyxrc.fontenc == "T1" && !runparams.use_polyglossia) {
 		qstr = latex_quote_t1[times_][quoteind];
 #ifdef DO_USE_DEFAULT_LANGUAGE
 	} else if (doclang == "default") {
 #else
 	} else if (!runparams.use_babel) {
 #endif
+		// these are also used by polyglossia
 		qstr = latex_quote_ot1[times_][quoteind];
 	} else {
 		qstr = latex_quote_babel[times_][quoteind];

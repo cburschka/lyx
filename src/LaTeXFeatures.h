@@ -101,8 +101,12 @@ public:
 	void useLanguage(Language const *);
 	///
 	bool hasLanguages() const;
+	/// check if all used languages are supported by polyglossia
+	bool hasPolyglossiaLanguages() const;
 	///
 	std::string getLanguages() const;
+	///
+	std::map<std::string, std::string> getPolyglossiaLanguages() const;
 	///
 	std::set<std::string> getEncodingSet(std::string const & doc_encoding) const;
 	///
@@ -117,6 +121,8 @@ public:
 	BufferParams const & bufferParams() const;
 	/// the return value is dependent upon both LyXRC and LaTeXFeatures.
 	bool useBabel() const;
+	///
+	bool usePolyglossia() const;
 	/// are we in a float?
 	bool inFloat() const { return in_float_; }
 	/// are we in a float?

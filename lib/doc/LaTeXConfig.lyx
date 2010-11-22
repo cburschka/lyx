@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 401
+\lyxformat 408
 \begin_document
 \begin_header
 \textclass article
@@ -37,6 +37,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \index Index
 \shortcut idx
 \color #008000
@@ -4274,6 +4275,48 @@ mongolian-babel
 \family default
  is needed by LyX to be able to output documents with the document language
  Mongolian.
+\end_layout
+
+\begin_layout Subsection
+polyglossia
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "polyglossia"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/xetex/latex/polyglossia/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+polyglossia
+\family default
+ provides a language interface specifically for XeTeX.
+ It aims to supersede the 
+\family sans
+babel
+\family default
+ package by using XeTeX's mutlilingual and multiscript facilities.
+ If installed, 
+\family sans
+polyglossia
+\family default
+ will by used for language handling instead of 
+\family sans
+babel
+\family default
+ when XeTeX is used as output format.
 \end_layout
 
 \begin_layout Subsection

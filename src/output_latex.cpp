@@ -97,6 +97,16 @@ TeXDeeper(Buffer const & buf,
 }
 
 
+string const getPolyglossiaEnvName(Language const * lang)
+{
+	string result = lang->polyglossia();
+	if (result == "arabic")
+		// exceptional spelling; see polyglossia docs.
+		result = "Arabic";
+	return result;
+}
+
+
 ParagraphList::const_iterator
 TeXEnvironment(Buffer const & buf,
 	       Text const & text,
@@ -131,29 +141,47 @@ TeXEnvironment(Buffer const & buf,
 		? (use_prev_env_language ? prev_env_language_
 					 : priorpit->getParLanguage(bparams))
 		: doc_language;
-	if (par_language->babel() != prev_par_language->babel()) {
+	string par_lang = par_language->babel();
+	string prev_par_lang = prev_par_language->babel();
+	string doc_lang = doc_language->babel();
+	string lang_begin_command = lyxrc.language_command_begin;
+	string lang_end_command = lyxrc.language_command_end;
 
-		if (!lyxrc.language_command_end.empty() &&
-		    prev_par_language->babel() != doc_language->babel() &&
-		    !prev_par_language->babel().empty()) {
+	if (runparams.use_polyglossia) {
+		par_lang = getPolyglossiaEnvName(par_language);
+		prev_par_lang = getPolyglossiaEnvName(prev_par_language);
+		doc_lang = getPolyglossiaEnvName(doc_language);
+		lang_begin_command = "\\begin{$$lang}";
+		lang_end_command = "\\end{$$lang}";
+	}
+
+	if (par_lang != prev_par_lang) {
+		if (!lang_end_command.empty() &&
+		    prev_par_lang != doc_lang &&
+		    !prev_par_lang.empty()) {
 			os << from_ascii(subst(
-				lyxrc.language_command_end,
+				lang_end_command,
 				"$$lang",
-				prev_par_language->babel()))
-			   // the '%' is necessary to prevent unwanted whitespace
-			   << "%\n";
+				prev_par_lang))
+			  // the '%' is necessary to prevent unwanted whitespace
+			  << "%\n";
 			texrow.newline();
 		}
 
 		if ((lyxrc.language_command_end.empty() ||
-		     par_language->babel() != doc_language->babel()) &&
-		    !par_language->babel().empty()) {
+		    par_lang != doc_lang) &&
+		    !par_lang.empty()) {
 			os << from_ascii(subst(
-				lyxrc.language_command_begin,
+				lang_begin_command,
 				"$$lang",
-				par_language->babel()))
-			   // the '%' is necessary to prevent unwanted whitespace
-			   << "%\n";
+				par_lang));
+			if (runparams.use_polyglossia
+			    && !par_language->polyglossiaOpts().empty())
+					os << "["
+					   << from_ascii(par_language->polyglossiaOpts())
+					   << "]";
+			  // the '%' is necessary to prevent unwanted whitespace
+			os << "%\n";
 			texrow.newline();
 		}
 	}
@@ -441,7 +469,22 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 					 : priorpit->getParLanguage(bparams))
 		: outer_language;
 
-	if (par_language->babel() != prev_language->babel()
+	string par_lang = par_language->babel();
+	string prev_lang = prev_language->babel();
+	string doc_lang = doc_language->babel();
+	string outer_lang = outer_language->babel();
+	string lang_begin_command = lyxrc.language_command_begin;
+	string lang_end_command = lyxrc.language_command_end;
+
+	if (runparams.use_polyglossia) {
+		par_lang = getPolyglossiaEnvName(par_language);
+		prev_lang = getPolyglossiaEnvName(prev_language);
+		doc_lang = getPolyglossiaEnvName(doc_language);
+		outer_lang = getPolyglossiaEnvName(outer_language);
+		lang_begin_command = "\\begin{$$lang}";
+		lang_end_command = "\\end{$$lang}";
+	}
+	if (par_lang != prev_lang
 	    // check if we already put language command in TeXEnvironment()
 	    && !(style.isEnvironment()
 		 && (pit == paragraphs.begin() ||
@@ -449,13 +492,13 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 		      priorpit->getDepth() <= pit->getDepth())
 		     || priorpit->getDepth() < pit->getDepth())))
 	{
-		if (!lyxrc.language_command_end.empty() &&
-		    prev_language->babel() != outer_language->babel() &&
-		    !prev_language->babel().empty())
+		if (!lang_end_command.empty() &&
+		    prev_lang != outer_lang &&
+		    !prev_lang.empty())
 		{
-			os << from_ascii(subst(lyxrc.language_command_end,
+			os << from_ascii(subst(lang_end_command,
 				"$$lang",
-				prev_language->babel()))
+				prev_lang))
 			   // the '%' is necessary to prevent unwanted whitespace
 			   << "%\n";
 			texrow.newline();
@@ -466,29 +509,30 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 		// the previous one, if the current language is different than the
 		// outer_language (which is currently in effect once the previous one
 		// is closed).
-		if ((lyxrc.language_command_end.empty() ||
-		     par_language->babel() != outer_language->babel()) &&
-		    !par_language->babel().empty()) {
+		if ((lang_end_command.empty() ||
+		     par_lang != outer_lang) &&
+		    !par_lang.empty()) {
 			// If we're inside an inset, and that inset is within an \L or \R
 			// (or equivalents), then within the inset, too, any opposite
 			// language paragraph should appear within an \L or \R (in addition
 			// to, outside of, the normal language switch commands).
 			// This behavior is not correct for ArabTeX, though.
-			if (	// not for ArabTeX
-					(par_language->lang() != "arabic_arabtex" &&
-					 outer_language->lang() != "arabic_arabtex") &&
-					// are we in an inset?
-					runparams.local_font != 0 &&
-					// is the inset within an \L or \R?
-					//
-					// FIXME: currently, we don't check this; this means that
-					// we'll have unnnecessary \L and \R commands, but that
-					// doesn't seem to hurt (though latex will complain)
-					//
-					// is this paragraph in the opposite direction?
-					runparams.local_font->isRightToLeft() !=
-						par_language->rightToLeft()
-				) {
+			if (!runparams.use_polyglossia &&
+			    // not for ArabTeX
+			    (par_language->lang() != "arabic_arabtex" &&
+			     outer_language->lang() != "arabic_arabtex") &&
+			    // are we in an inset?
+			    runparams.local_font != 0 &&
+			    // is the inset within an \L or \R?
+			    //
+			    // FIXME: currently, we don't check this; this means that
+			    // we'll have unnnecessary \L and \R commands, but that
+			    // doesn't seem to hurt (though latex will complain)
+			    //
+			    // is this paragraph in the opposite direction?
+			    runparams.local_font->isRightToLeft() !=
+				  par_language->rightToLeft()
+			    ) {
 				// FIXME: I don't have a working copy of the Arabi package, so
 				// I'm not sure if the farsi and arabic_arabi stuff is correct
 				// or not...
@@ -509,11 +553,16 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 			// With CJK, the CJK tag has to be closed first (see below)
 			if (runparams.encoding->package() != Encoding::CJK) {
 				os << from_ascii(subst(
-					lyxrc.language_command_begin,
+					lang_begin_command,
 					"$$lang",
-					par_language->babel()))
+					par_lang));
+				if (runparams.use_polyglossia
+				    && !par_language->polyglossiaOpts().empty())
+						os << "["
+						  << from_ascii(par_language->polyglossiaOpts())
+						  << "]";
 				   // the '%' is necessary to prevent unwanted whitespace
-				   << "%\n";
+				os << "%\n";
 				texrow.newline();
 			}
 		}
@@ -566,9 +615,9 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 					// With CJK, the CJK tag had to be closed first (see above)
 					if (runparams.encoding->package() == Encoding::CJK) {
 						os << from_ascii(subst(
-							lyxrc.language_command_begin,
+							lang_begin_command,
 							"$$lang",
-							par_language->babel()))
+							par_lang))
 						// the '%' is necessary to prevent unwanted whitespace
 						<< "%\n";
 						texrow.newline();
@@ -709,6 +758,7 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 	// needed if we're within an \L or \R that we may have opened above (not
 	// necessarily in this paragraph) and are about to close.
 	bool closing_rtl_ltr_environment =
+		!runparams.use_polyglossia &&
 		// not for ArabTeX
 		(par_language->lang() != "arabic_arabtex" &&
 		 outer_language->lang() != "arabic_arabtex") &&
@@ -734,7 +784,7 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 		}
 		// when the paragraph uses CJK, the language has to be closed earlier
 		if (font.language()->encoding()->package() != Encoding::CJK) {
-			if (lyxrc.language_command_end.empty()) {
+			if (lang_end_command.empty()) {
 				// If this is a child, we should restore the
 				// master language after the last paragraph.
 				Language const * const current_language =
@@ -742,18 +792,21 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 					&& runparams.master_language)
 						? runparams.master_language
 						: outer_language;
-				if (!current_language->babel().empty()) {
+				string const current_lang = runparams.use_polyglossia ?
+					getPolyglossiaEnvName(current_language)
+					: current_language->babel();
+				if (!current_lang.empty()) {
 					os << from_ascii(subst(
-						lyxrc.language_command_begin,
+						lang_begin_command,
 						"$$lang",
-						current_language->babel()));
+						current_lang));
 					pending_newline = true;
 				}
-			} else if (!par_language->babel().empty()) {
+			} else if (!par_lang.empty()) {
 				os << from_ascii(subst(
-					lyxrc.language_command_end,
+					lang_end_command,
 					"$$lang",
-					par_language->babel()));
+					par_lang));
 				pending_newline = true;
 			}
 		}
@@ -895,14 +948,25 @@ void latexParagraphs(Buffer const & buf,
 	}
 	// if "auto begin" is switched off, explicitly switch the
 	// language on at start
+	string const mainlang = runparams.use_polyglossia ?
+		getPolyglossiaEnvName(bparams.language)
+		: bparams.language->babel();
+	string const lang_begin_command = runparams.use_polyglossia ?
+		"\\begin{$$lang}" : lyxrc.language_command_begin;
+
 	if (maintext && !lyxrc.language_auto_begin &&
-	    !bparams.language->babel().empty()) {
+	    !mainlang.empty()) {
 		// FIXME UNICODE
-		os << from_utf8(subst(lyxrc.language_command_begin,
+		os << from_utf8(subst(lang_begin_command,
 					"$$lang",
-					bparams.language->babel()))
-			<< '\n';
-	texrow.newline();
+					mainlang));
+		if (runparams.use_polyglossia
+		    && !bparams.language->polyglossiaOpts().empty())
+			os << "["
+			    << from_ascii(bparams.language->polyglossiaOpts())
+			    << "]";
+		os << '\n';
+		texrow.newline();
 	}
 
 	ParagraphList::const_iterator lastpar;
@@ -969,11 +1033,13 @@ void latexParagraphs(Buffer const & buf,
 
 	// if "auto end" is switched off, explicitly close the language at the end
 	// but only if the last par is in a babel language
-	if (maintext && !lyxrc.language_auto_end && !bparams.language->babel().empty() &&
+	string const lang_end_command = runparams.use_polyglossia ?
+		"\\end{$$lang}" : lyxrc.language_command_end;
+	if (maintext && !lyxrc.language_auto_end && !mainlang.empty() &&
 		lastpar->getParLanguage(bparams)->encoding()->package() != Encoding::CJK) {
-		os << from_utf8(subst(lyxrc.language_command_end,
+		os << from_utf8(subst(lang_end_command,
 					"$$lang",
-					bparams.language->babel()))
+					mainlang))
 			<< '\n';
 		texrow.newline();
 	}

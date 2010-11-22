@@ -285,10 +285,23 @@ LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p,
 
 bool LaTeXFeatures::useBabel() const
 {
-	return (lyxrc.language_package_selection != LyXRC::LP_NONE) &&
-		((bufferParams().language->lang() != lyxrc.default_language &&
-		 !bufferParams().language->babel().empty()) ||
-		this->hasLanguages());
+	return (lyxrc.language_package_selection != LyXRC::LP_NONE)
+	        && !usePolyglossia()
+	        && ((bufferParams().language->lang() != lyxrc.default_language
+	            && !bufferParams().language->babel().empty())
+	            || this->hasLanguages());
+}
+
+
+bool LaTeXFeatures::usePolyglossia() const
+{
+	return (lyxrc.language_package_selection == LyXRC::LP_AUTO)
+	        && isRequired("xetex")
+	        && isAvailable("polyglossia")
+	        && ((bufferParams().language->lang() != lyxrc.default_language
+	             && !bufferParams().language->polyglossia().empty())
+	            || this->hasLanguages())
+	        && this->hasPolyglossiaLanguages();
 }
 
 
@@ -474,6 +487,19 @@ bool LaTeXFeatures::hasLanguages() const
 }
 
 
+bool LaTeXFeatures::hasPolyglossiaLanguages() const
+{
+	LanguageList::const_iterator const begin = UsedLanguages_.begin();
+	for (LanguageList::const_iterator cit = begin;
+	     cit != UsedLanguages_.end();
+	     ++cit) {
+		if ((*cit)->polyglossia().empty())
+			return false;
+	}
+	return true;
+}
+
+
 string LaTeXFeatures::getLanguages() const
 {
 	ostringstream languages;
@@ -487,6 +513,20 @@ string LaTeXFeatures::getLanguages() const
 		languages << (*cit)->babel();
 	}
 	return languages.str();
+}
+
+
+std::map<std::string, std::string> LaTeXFeatures::getPolyglossiaLanguages() const
+{
+	std::map<std::string, std::string> languages;
+
+	LanguageList::const_iterator const begin = UsedLanguages_.begin();
+	for (LanguageList::const_iterator cit = begin;
+	     cit != UsedLanguages_.end();
+	     ++cit) {
+		languages[(*cit)->polyglossia()] = (*cit)->polyglossiaOpts();
+	}
+	return languages;
 }
 
 
@@ -825,7 +865,7 @@ docstring const LaTeXFeatures::getMacros() const
 	if (mustProvide("lyxarrow"))
 		macros << lyxarrow_def << '\n';
 
-	if (mustProvide("textgreek")) {
+	if (!usePolyglossia() && mustProvide("textgreek")) {
 		// Avoid a LaTeX error if times fonts are used and the grtimes
 		// package is installed but actual fonts are not (bug 6469).
 		if (params_.fontsRoman == "times")
@@ -839,7 +879,7 @@ docstring const LaTeXFeatures::getMacros() const
 			macros << textgreek_def << '\n';
 	}
 
-	if (mustProvide("textcyr"))
+	if (!usePolyglossia() && mustProvide("textcyr"))
 		macros << textcyr_def << '\n';
 
 	if (mustProvide("lyxmathsym"))

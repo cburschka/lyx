@@ -234,7 +234,7 @@ int ParagraphMetrics::singleWidth(pos_type pos, Font const & font) const
 				c = par_->transformChar(c, pos);
 		} else if (language->lang() == "hebrew" &&
 				Encodings::isHebrewComposeChar(c)) {
-			return 0;	
+			return 0;
 		}
 	}
 	return theFontMetrics(font).width(c);

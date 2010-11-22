@@ -1305,15 +1305,16 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	ostringstream language_options;
 	bool const use_babel = features.useBabel() && !tclass.provides("babel");
-	if (use_babel) {
+	bool const use_polyglossia = features.usePolyglossia();
+	bool const global = lyxrc.language_global_options;
+	if (use_babel || (use_polyglossia && global)) {
 		language_options << features.getLanguages();
 		if (!language->babel().empty()) {
 			if (!language_options.str().empty())
 				language_options << ',';
 			language_options << language->babel();
 		}
-		if (lyxrc.language_global_options
-		    && !features.needBabelLangOptions())
+		if (global && !features.needBabelLangOptions())
 			clsoptions << language_options.str() << ',';
 	}
 
@@ -1721,15 +1722,15 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	
 	// If we use hyperref, jurabib, japanese, or vietnamese, we have to call babel before them.
 	if (use_babel
-		&& (features.isRequired("jurabib")
-			|| features.isRequired("hyperref")
-			|| features.isRequired("vietnamese")
-			|| features.isRequired("japanese") ) ) {
-				// FIXME UNICODE
-				lyxpreamble += from_utf8(features.getBabelPresettings());
-				lyxpreamble += from_utf8(babelCall(language_options.str(),
-								   features.needBabelLangOptions())) + '\n';
-				lyxpreamble += from_utf8(features.getBabelPostsettings());
+	    && (features.isRequired("jurabib")
+		|| features.isRequired("hyperref")
+		|| features.isRequired("vietnamese")
+		|| features.isRequired("japanese"))) {
+			// FIXME UNICODE
+			lyxpreamble += from_utf8(features.getBabelPresettings());
+			lyxpreamble += from_utf8(babelCall(language_options.str(),
+							   features.needBabelLangOptions())) + '\n';
+			lyxpreamble += from_utf8(features.getBabelPostsettings());
 	}
 
 	// The optional packages;
@@ -1877,6 +1878,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		lyxpreamble += from_utf8(features.getBabelPostsettings());
 	}
 
+	// FIXME Polyglossia?
 	docstring const i18npreamble = features.getTClassI18nPreamble(use_babel);
 	if (!i18npreamble.empty())
 		lyxpreamble += i18npreamble + '\n';
@@ -1895,6 +1897,29 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		texrow.newline();
 		os << "\\usepackage{xltxtra}\n";
 		texrow.newline();
+	}
+	// Polyglossia must be loaded after xltxtra
+	if (use_polyglossia) {
+		// call the package
+		os << "\\usepackage{polyglossia}\n";
+		texrow.newline();
+		// set the main language
+		os << "\\setdefaultlanguage";
+		if (!language->polyglossiaOpts().empty())
+			os << "[" << from_ascii(language->polyglossiaOpts()) << "]";
+		os << "{" + from_ascii(language->polyglossia()) + "}\n";
+		texrow.newline();
+		// now setup the other languages
+		std::map<std::string, std::string> const polylangs = 
+			features.getPolyglossiaLanguages();
+		for (std::map<std::string, std::string>::const_iterator mit = polylangs.begin();
+		     mit != polylangs.end() ; ++mit) {
+			os << "\\setotherlanguage";
+			if (!mit->second.empty())
+				os << "[" << from_ascii(mit->second) << "]";
+			os << "{" << from_ascii(mit->first) << "}\n";
+			texrow.newline();
+		}
 	}
 	return use_babel;
 }

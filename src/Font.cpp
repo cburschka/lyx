@@ -272,7 +272,18 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 	bool env = false;
 
 	int count = 0;
-	if (language()->babel() != base.language()->babel() &&
+
+	// polyglossia or babel?
+	if (runparams.use_polyglossia) {
+		if (!language()->polyglossia().empty()) {
+			string tmp = "\\text" + language()->polyglossia();
+			if (!language()->polyglossiaOpts().empty())
+				tmp += "[" + language()->polyglossiaOpts() + "]";
+			tmp += "{";
+			os << from_ascii(tmp);
+			count += tmp.length();
+		}
+	} else if (language()->babel() != base.language()->babel() &&
 	    language() != prev.language()) {
 		if (language()->lang() == "farsi") {
 			os << "\\textFR{";

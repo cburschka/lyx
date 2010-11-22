@@ -2369,12 +2369,16 @@ void Paragraph::latex(BufferParams const & bparams,
 			open_font = false;
 		}
 
+		string const running_lang = runparams.use_polyglossia ?
+			running_font.language()->polyglossia() : running_font.language()->babel();
 		// close babel's font environment before opening CJK.
-		if (!running_font.language()->babel().empty() &&
+		string const lang_end_command = runparams.use_polyglossia ?
+			"\\end{$$lang}" : lyxrc.language_command_end;
+		if (!running_lang.empty() &&
 		    font.language()->encoding()->package() == Encoding::CJK) {
-				string end_tag = subst(lyxrc.language_command_end,
+				string end_tag = subst(lang_end_command,
 							"$$lang",
-							running_font.language()->babel());
+							running_lang);
 				os << from_ascii(end_tag);
 				column += end_tag.length();
 		}
