@@ -272,7 +272,7 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 		// in ParagraphMetrics::singleWidth(); but we paint word by word
 		// for performance reason.
 		// Maybe a more general fix would be draw character by character
-		// for some predefined fonts on some patform. In arabic and
+		// for some predefined fonts on some platform. In arabic and
 		// Hebrew we already do paint this way.
 		if (prev_char == 'f')
 			break;
