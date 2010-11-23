@@ -600,7 +600,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	   << int(font_scaling_factor) << ' '
 	   << theApp()->hexName(fg) << ' '
 	   << theApp()->hexName(bg);
-	if (buffer_.params().useXetex)
+	if (buffer_.bufferFormat() == "xetex")
 		cs << " xelatex";
 
 	string const command = libScriptSearch(cs.str());
