@@ -10418,7 +10418,6 @@ msgid "Foot to End"
 msgstr "Patièky na konec"
 
 #: lib/layouts/foottoend.module:6
-#, fuzzy
 msgid ""
 "Sets all footnotes as endnotes. You will need to add \\theendnotes in TeX-"
 "code where you want the endnotes to appear."
@@ -10443,13 +10442,13 @@ msgstr ""
 
 #: lib/layouts/initials.module:2
 msgid "Initials"
-msgstr ""
+msgstr "Iniciálky"
 
 #: lib/layouts/initials.module:6
 msgid ""
 "Define character style for initials. Hint: try to use math and its artistic "
 "font styles like Fractur or the Calligraphic one."
-msgstr ""
+msgstr "Definuje styl znakù pro iniciálky. Nápovìda: pou¾ijte matematický mód a jeho umìlecké fonty jako Fraktur nebo Kaligrafie pro poèáteèní písmeno."
 
 #: lib/layouts/initials.module:6 lib/layouts/logicalmkup.module:5
 #, fuzzy
@@ -10458,22 +10457,21 @@ msgstr "Styl znaku"
 
 #: lib/layouts/initials.module:10
 msgid "Flex:Initial"
-msgstr ""
+msgstr "Flex:Iniciálkq"
 
 #: lib/layouts/initials.module:10 lib/layouts/initials.module:12
 msgid "Initial"
-msgstr ""
+msgstr "Iniciálka"
 
 #: lib/layouts/lilypond.module:2
-#, fuzzy
 msgid "LilyPond Book"
-msgstr "LilyPond"
+msgstr "LilyPond Book"
 
 #: lib/layouts/lilypond.module:6
 msgid ""
 "This module adds an inset to enter LilyPond code directly into LyX. It will "
 "be processed in the output. See the lilypond.lyx example file."
-msgstr ""
+msgstr "Tento modul pøidává vlo¾ku pro vkládání kódu LilyPond uvnitø LyX-u (bude automaticky pøelo¾en pøi exportu). Viz lilypond.lyx v pøíkladech."
 
 #: lib/layouts/lilypond.module:12 lib/layouts/lilypond.module:13
 #: lib/external_templates:212
@@ -10519,60 +10517,52 @@ msgid "Subexample:"
 msgstr "Podpøíklad:"
 
 #: lib/layouts/linguistics.module:65
-#, fuzzy
 msgid "Flex:Glosse"
-msgstr "Glosa"
+msgstr "Flex:Glosa"
 
 #: lib/layouts/linguistics.module:65 lib/layouts/linguistics.module:67
 msgid "Glosse"
 msgstr "Glosa"
 
 #: lib/layouts/linguistics.module:94
-#, fuzzy
 msgid "Flex:Tri-Glosse"
-msgstr "Tri-Glosa"
+msgstr "Flex:Tri-Glosa"
 
 #: lib/layouts/linguistics.module:94 lib/layouts/linguistics.module:96
 msgid "Tri-Glosse"
 msgstr "Tri-Glosa"
 
 #: lib/layouts/linguistics.module:122
-#, fuzzy
 msgid "Flex:Expression"
-msgstr "Styl znaku: Výraz"
+msgstr "Flex:Styl znaku - Výraz"
 
 #: lib/layouts/linguistics.module:122
-#, fuzzy
 msgid "Expression"
-msgstr "Relace"
+msgstr "Výraz"
 
 #: lib/layouts/linguistics.module:124
 msgid "expr."
 msgstr "výraz"
 
 #: lib/layouts/linguistics.module:137
-#, fuzzy
 msgid "Flex:Concepts"
-msgstr "Styl znaku: Koncept"
+msgstr "Flex:Styl znaku - Koncept"
 
 #: lib/layouts/linguistics.module:137
-#, fuzzy
 msgid "Concepts"
-msgstr "koncept"
+msgstr "Koncept"
 
 #: lib/layouts/linguistics.module:139
 msgid "concept"
 msgstr "koncept"
 
 #: lib/layouts/linguistics.module:152
-#, fuzzy
 msgid "Flex:Meaning"
-msgstr "Styl znaku: Význam"
+msgstr "Flex:Styl znaku - Význam"
 
 #: lib/layouts/linguistics.module:152
-#, fuzzy
 msgid "Meaning"
-msgstr "význam"
+msgstr "Význam"
 
 #: lib/layouts/linguistics.module:154
 msgid "meaning"
@@ -10599,9 +10589,8 @@ msgstr ""
 "(emph), (silný dùraz) strong, kód (code)."
 
 #: lib/layouts/logicalmkup.module:11
-#, fuzzy
 msgid "Flex:Noun"
-msgstr "Jméno"
+msgstr "Flex:Jméno"
 
 #: lib/layouts/logicalmkup.module:11 src/frontends/qt4/GuiCharacter.cpp:82
 msgid "Noun"
@@ -10616,14 +10605,12 @@ msgid "emph"
 msgstr "dùraz"
 
 #: lib/layouts/logicalmkup.module:44
-#, fuzzy
 msgid "Flex:Strong"
-msgstr "Styl znaku: Silný dùraz"
+msgstr "Flex:Styl znaku - Silný dùraz"
 
 #: lib/layouts/logicalmkup.module:44
-#, fuzzy
 msgid "Strong"
-msgstr "silný dùraz"
+msgstr "Silný dùraz"
 
 #: lib/layouts/logicalmkup.module:46
 msgid "strong"
