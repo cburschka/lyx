@@ -275,7 +275,7 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 
 	// polyglossia or babel?
 	if (runparams.use_polyglossia
-	    && language()->polyglossia() != base.language()->polyglossia()
+	    && language()->lang() != base.language()->lang()
 	    && language() != prev.language()) {
 		if (!language()->polyglossia().empty()) {
 			string tmp = "\\text" + language()->polyglossia();
