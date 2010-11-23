@@ -1218,8 +1218,6 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 			   bool output_preamble, bool output_body) const
 {
 	OutputParams runparams = runparams_in;
-	if (params().useXetex)
-		runparams.flavor = OutputParams::XETEX;
 
 	string const encoding = runparams.encoding->iconvName();
 	LYXERR(Debug::LATEX, "makeLaTeXFile encoding: " << encoding << "...");
@@ -3408,6 +3406,8 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		// FIXME: Don't hardcode format names here, but use a flag
 		if (backend_format == "pdflatex")
 			runparams.flavor = OutputParams::PDFLATEX;
+		else if (backend_format == "xetex")
+			runparams.flavor = OutputParams::XETEX;
 	}
 
 	string filename = latexName(false);
