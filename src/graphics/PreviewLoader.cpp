@@ -600,6 +600,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	   << int(font_scaling_factor) << ' '
 	   << theApp()->hexName(fg) << ' '
 	   << theApp()->hexName(bg);
+	// FIXME what about LuaTeX?
 	if (buffer_.bufferFormat() == "xetex")
 		cs << " xelatex";
 
