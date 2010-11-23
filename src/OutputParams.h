@@ -29,6 +29,7 @@ class OutputParams {
 public:
 	enum FLAVOR {
 		LATEX,
+		LUATEX,
 		PDFLATEX,
 		XETEX,
 		XML,

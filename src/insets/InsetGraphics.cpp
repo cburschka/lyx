@@ -102,9 +102,10 @@ namespace {
 /// Note that \p format may be unknown (i. e. an empty string)
 string findTargetFormat(string const & format, OutputParams const & runparams)
 {
-	// Are we using latex or XeTeX/pdflatex?
+	// Are we using latex or XeTeX/LuaTeX/pdflatex?
 	if (runparams.flavor == OutputParams::PDFLATEX
-	    || runparams.flavor == OutputParams::XETEX) {
+	    || runparams.flavor == OutputParams::XETEX
+	    || runparams.flavor == OutputParams::LUATEX) {
 		LYXERR(Debug::GRAPHICS, "findTargetFormat: PDF mode");
 		Format const * const f = formats.getFormat(format);
 		// Convert vector graphics to pdf

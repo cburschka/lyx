@@ -257,6 +257,8 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path)
 		if (conv.latex)
 			if (contains(conv.from, "xetex"))
 				return OutputParams::XETEX;
+			if (contains(conv.from, "luatex"))
+				return OutputParams::LUATEX;
 			if (contains(conv.to, "pdf"))
 				return OutputParams::PDFLATEX;
 		if (conv.xml)
@@ -747,6 +749,7 @@ vector<string> Converters::savers() const
 	v.push_back("docbook");
 	v.push_back("latex");
 	v.push_back("literate");
+	v.push_back("luatex");
 	v.push_back("lyx");
 	v.push_back("xhtml");
 	v.push_back("pdflatex");

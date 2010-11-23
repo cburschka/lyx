@@ -1120,6 +1120,7 @@ void BufferParams::validate(LaTeXFeatures & features) const
 				features.require("ct-none");
 			}
 			break;
+		case OutputParams::LUATEX:
 		case OutputParams::PDFLATEX:
 		case OutputParams::XETEX:
 			if (xcolorulem) {
@@ -1359,7 +1360,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// set font encoding
 	// for arabic_arabi and farsi we also need to load the LAE and
 	// LFE encoding
-	// XeTeX (isFullUnicode() flavor) works without fontenc
+	// XeTeX and LuaTeX (isFullUnicode() flavor) work without fontenc
 	if (font_encoding() != "default" && language->lang() != "japanese"
 	    && !features.runparams().isFullUnicode() && !tclass.provides("fontenc")) {
 		size_t fars = language_options.str().find("farsi");

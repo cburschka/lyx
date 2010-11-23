@@ -45,13 +45,14 @@ OutputParams::~OutputParams()
 
 bool OutputParams::isLaTeX() const
 {
-	return flavor == LATEX || flavor == PDFLATEX || flavor == XETEX; 
+	return flavor == LATEX || flavor == LUATEX 
+		|| flavor == PDFLATEX || flavor == XETEX; 
 }
 
 
 bool OutputParams::isFullUnicode() const
 {
-	return flavor == XETEX; 
+	return flavor == LUATEX || flavor == XETEX; 
 }
 
 } // namespace lyx

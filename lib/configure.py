@@ -507,6 +507,7 @@ def checkFormatEntries(dtl_tools):
 \Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"
 \Format lilypond-book    lytex "LilyPond book (LaTeX)"   "" ""	"%%"	"document"
 \Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document"
+\Format luatex     tex    "LaTeX (LuaTeX)"        "" ""	"%%"	"document"
 \Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"	"document"
 \Format xetex      tex    "LaTeX (XeTeX)"         "" ""	"%%"	"document"
 \Format text       txt    "Plain text"            a  ""	"%%"	"document"
@@ -538,10 +539,12 @@ def checkFormatEntries(dtl_tools):
         rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document,vector"
 \Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"document,vector"
 \Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"document,vector"
-\Format pdf4       pdf    "PDF (XeTeX)"           X  "%%"	""	"document,vector"'''])
+\Format pdf4       pdf    "PDF (XeTeX)"           X  "%%"	""	"document,vector"
+\Format pdf5       pdf    "PDF (LuaTeX)"          u  "%%"	""	"document,vector"'''])
     #
     checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular', 'yap', 'dviout -Set=!m'],
-        rc_entry = [r'\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector"'])
+        rc_entry = [r'''\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector"
+\Format dvi3       dvi     "DVI (LuaTeX)"          D  "%%"	""	"document,vector"'''])
     if dtl_tools:
         # Windows only: DraftDVI
         addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	""	"vector"')
@@ -591,6 +594,12 @@ def checkConverterEntries():
 
     checkProg('XeTeX', ['xelatex $$i'],
         rc_entry = [ r'\converter xetex      pdf4       "%%"	"latex"' ])
+
+    checkProg('LuaTeX', ['lualatex $$i'],
+        rc_entry = [ r'\converter luatex      pdf5       "%%"	"latex"' ])
+
+    checkProg('LuaTeX (DVI)', ['dvilualatex $$i'],
+        rc_entry = [ r'\converter luatex      dvi3        "%%"	"latex"' ])
     
     ''' If we're running LyX in-place then tex2lyx will be found in
             ../src/tex2lyx. Add this directory to the PATH temporarily and

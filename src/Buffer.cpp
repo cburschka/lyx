@@ -3406,6 +3406,8 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		// FIXME: Don't hardcode format names here, but use a flag
 		if (backend_format == "pdflatex")
 			runparams.flavor = OutputParams::PDFLATEX;
+		else if (backend_format == "luatex")
+			runparams.flavor = OutputParams::LUATEX;
 		else if (backend_format == "xetex")
 			runparams.flavor = OutputParams::XETEX;
 	}
@@ -3616,6 +3618,8 @@ vector<string> Buffer::backends() const
 	// FIXME: Don't hardcode format names here, but use a flag
 	if (v.back() == "latex")
 		v.push_back("pdflatex");
+	else if (v.back() == "xetex")
+		v.push_back("luatex");
 	v.push_back("xhtml");
 	v.push_back("text");
 	v.push_back("lyx");
