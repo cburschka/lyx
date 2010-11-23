@@ -2516,7 +2516,7 @@ void Paragraph::latex(BufferParams const & bparams,
 	if (allowcust && d->endTeXParParams(bparams, os, texrow, runparams)
 	    && runparams.encoding != prev_encoding) {
 		runparams.encoding = prev_encoding;
-		if (!bparams.useXetex)
+		if (!runparams.isFullUnicode())
 			os << setEncoding(prev_encoding->iconvName());
 	}
 

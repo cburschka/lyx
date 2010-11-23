@@ -143,11 +143,12 @@ int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 	bool encoding_switched = false;
 	Encoding const * const save_enc = runparams.encoding;
 
-	if (runparams.flavor != OutputParams::XETEX
+	if (!runparams.isFullUnicode()
 	    && !runparams.encoding->hasFixedWidth()) {
 		// We need to switch to a singlebyte encoding, since the
 		// listings package cannot deal with multi-byte-encoded
-		// glyphs (not needed with XeTeX).
+		// glyphs (not needed with full-unicode aware backends
+		// such as XeTeX).
 		Language const * const outer_language =
 			(runparams.local_font != 0) ?
 				runparams.local_font->language()

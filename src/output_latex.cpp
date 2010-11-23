@@ -283,7 +283,7 @@ TeXEnvironment(Buffer const & buf,
 		prev_env_language_ = par_language;
 		if (runparams.encoding != prev_encoding) {
 			runparams.encoding = prev_encoding;
-			if (!bparams.useXetex)
+			if (!runparams.isFullUnicode())
 				os << setEncoding(prev_encoding->iconvName());
 		}
 	}
@@ -294,7 +294,7 @@ TeXEnvironment(Buffer const & buf,
 		prev_env_language_ = par_language;
 		if (runparams.encoding != prev_encoding) {
 			runparams.encoding = prev_encoding;
-			if (!bparams.useXetex)
+			if (!runparams.isFullUnicode())
 				os << setEncoding(prev_encoding->iconvName());
 		}
 	}
@@ -712,7 +712,7 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 		os << '}';
 		if (runparams.encoding != prev_encoding) {
 			runparams.encoding = prev_encoding;
-			if (!bparams.useXetex)
+			if (!runparams.isFullUnicode())
 				os << setEncoding(prev_encoding->iconvName());
 		}
 	}
@@ -865,11 +865,12 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 	// If this is the last paragraph, and a local_font was set upon entering
 	// the inset, and we're using "auto" or "default" encoding, the encoding
 	// should be set back to that local_font's encoding.
-	// However, do not change the encoding when XeTeX is used.
+	// However, do not change the encoding when a fully unicode aware backend
+	// such as XeTeX is used.
 	if (nextpit == paragraphs.end() && runparams_in.local_font != 0
 	    && runparams_in.encoding != runparams_in.local_font->language()->encoding()
 	    && (bparams.inputenc == "auto" || bparams.inputenc == "default")
-	    && (!bparams.useXetex)) {
+	    && (!runparams.isFullUnicode())) {
 		runparams_in.encoding = runparams_in.local_font->language()->encoding();
 		os << setEncoding(runparams_in.encoding->iconvName());
 	}

@@ -1359,9 +1359,9 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// set font encoding
 	// for arabic_arabi and farsi we also need to load the LAE and
 	// LFE encoding
-	// XeTeX works without fontenc
+	// XeTeX (isFullUnicode() flavor) works without fontenc
 	if (font_encoding() != "default" && language->lang() != "japanese"
-	    && !useXetex && !tclass.provides("fontenc")) {
+	    && !features.runparams().isFullUnicode() && !tclass.provides("fontenc")) {
 		size_t fars = language_options.str().find("farsi");
 		size_t arab = language_options.str().find("arabic");
 		if (language->lang() == "arabic_arabi"
@@ -1892,7 +1892,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// these packages (xunicode, for that matter) need to be loaded at least
 	// after amsmath, amssymb, esint and the other packages that provide 
 	// special glyphs
-	if (useXetex) {
+	if (features.runparams().flavor == OutputParams::XETEX) {
 		os << "\\usepackage{xunicode}\n";
 		texrow.newline();
 		os << "\\usepackage{xltxtra}\n";
@@ -2456,7 +2456,8 @@ docstring BufferParams::getGraphicsDriver(string const & package) const
 void BufferParams::writeEncodingPreamble(odocstream & os,
 		LaTeXFeatures & features, TexRow & texrow) const
 {
-	if (useXetex)
+	// fully unicode-aware backends (such as XeTeX) do not need this
+	if (features.runparams().isFullUnicode())
 		return;
 	if (inputenc == "auto") {
 		string const doc_encoding =

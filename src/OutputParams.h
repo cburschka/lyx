@@ -65,6 +65,8 @@ public:
 	FLAVOR flavor;
 	/// is it some flavor of LaTeX?
 	bool isLaTeX() const;
+	/// does this flavour support full unicode?
+	bool isFullUnicode() const;
 	
 	/// Same, but for math output, which only matter is XHTML output.
 	MathFlavor math_flavor;
