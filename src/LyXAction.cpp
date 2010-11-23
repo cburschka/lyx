@@ -507,7 +507,7 @@ void LyXAction::init()
  * \li Action: Inserts a subscript or superscript inset.
  * \li Syntax: script-insert <TYPE>
  * \li Params: <TYPE>: subscript|superscript
- * \li Origin: gb, 23 Nov 2010
+ * \li Origin: Georg, 23 Nov 2010
  * \endvar
  */
 		{ LFUN_SCRIPT_INSERT, "script-insert", Noop, Edit },
@@ -1185,7 +1185,7 @@ void LyXAction::init()
  * \li Action: Pastes text from the active clipboard.
  * \li Syntax: clipboard-paste [<ARG>]
  * \li Params: <ARG>: "paragraph" will cause pasting as one paragraph, i.e. "Join lines".
- * \li Origin: baum, 10 Jul 2006
+ * \li Origin: Georg, 10 Jul 2006
  * \endvar
  */
 		{ LFUN_CLIPBOARD_PASTE, "clipboard-paste", Noop, Edit },
