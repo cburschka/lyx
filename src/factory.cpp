@@ -210,6 +210,12 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 		case LFUN_PREVIEW_INSERT:
 			return new InsetPreview(buf);
 
+		case LFUN_SCRIPT_INSERT: {
+			InsetScriptParams isp;
+			InsetScript::string2params("script script " + to_utf8(cmd.argument()), isp);
+			return new InsetScript(buf, isp);
+		}
+
 		case LFUN_INSET_INSERT: {
 			string const name = cmd.getArg(0);
 			InsetCode code = insetCode(name);

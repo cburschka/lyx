@@ -1619,6 +1619,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_ARGUMENT_INSERT:
 	case LFUN_INDEX_INSERT:
 	case LFUN_PREVIEW_INSERT:
+	case LFUN_SCRIPT_INSERT:
 		// Open the inset, and move the current selection
 		// inside it.
 		doInsertInset(cur, this, cmd, true, true);
@@ -2452,6 +2453,9 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_PREVIEW_INSERT:
 		code = PREVIEW_CODE;
+		break;
+	case LFUN_SCRIPT_INSERT:
+		code = SCRIPT_CODE;
 		break;
 
 	case LFUN_MATH_INSERT:

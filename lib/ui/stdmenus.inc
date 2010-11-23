@@ -385,8 +385,8 @@ Menuset
 	End
 
 	Menu "insert_formatting"
-		Item "Superscript|S" "inset-insert script script superscript"
-		Item "Subscript|u" "inset-insert script script subscript"
+		Item "Superscript|S" "script-insert superscript"
+		Item "Subscript|u" "script-insert subscript"
 		Separator
 		Item "Protected Space|P" "space-insert protected"
 		Item "Interword Space|w" "space-insert normal"

@@ -1384,6 +1384,7 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 
 	case LFUN_SPECIALCHAR_INSERT:
+	case LFUN_SCRIPT_INSERT:
 		// FIXME: These would probably make sense in math-text mode
 		flag.setEnabled(false);
 		break;

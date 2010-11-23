@@ -447,6 +447,8 @@ enum FuncCode
 	LFUN_SPELLING_REMOVE,           // switt 20100728
 	LFUN_PREVIEW_INSERT,            // vfr, 20100328
 	LFUN_FORWARD_SEARCH,
+	LFUN_SCRIPT_INSERT,             // gb, 20101123
+	// 350
 
 	LFUN_LASTACTION                 // end of the table
 };

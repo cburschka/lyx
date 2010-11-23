@@ -503,6 +503,15 @@ void LyXAction::init()
  */
 		{ LFUN_SPECIALCHAR_INSERT, "specialchar-insert", Noop, Edit },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_SCRIPT_INSERT
+ * \li Action: Inserts a subscript or superscript inset.
+ * \li Syntax: script-insert <TYPE>
+ * \li Params: <TYPE>: subscript|superscript
+ * \li Origin: gb, 23 Nov 2010
+ * \endvar
+ */
+		{ LFUN_SCRIPT_INSERT, "script-insert", Noop, Edit },
+/*!
  * \var lyx::FuncCode lyx::LFUN_APPENDIX
  * \li Action: Start (or remove) Appendix on the given cursor position.
  * \li Syntax: appendix

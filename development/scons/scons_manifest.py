@@ -1501,8 +1501,6 @@ lib_images_files = Split('''
     href-insert.png
     hidetab.png
     index-insert.png
-    inset-insert_script_script_subscript.png
-    inset-insert_script_script_superscript.png
     info-insert_buffer_vcs-revision.png
     label-insert.png
     layout-document.png
@@ -1546,6 +1544,8 @@ lib_images_files = Split('''
     psnfss4.png
     redo.png
     reload.png
+    script-insert_subscript.png
+    script-insert_superscript.png
     split-view_horizontal.png
     split-view_vertical.png
     standard.png
