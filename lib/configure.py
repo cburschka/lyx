@@ -516,9 +516,9 @@ def checkFormatEntries(dtl_tools):
 \Format textparagraph txt "Plain Text, Join Lines" "" ""	"%%"	"document"''' ])
  #
     path, xhtmlview = checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
-        rc_entry = [r'\Format xhtml      xhtml   "LyXHTML"              X "%%" ""    "document"'])
+        rc_entry = [r'\Format xhtml      xhtml   "LyXHTML"              y "%%" ""    "document"'])
     if xhtmlview == "":
-        addToRC(r'\Format xhtml      xhtml   "LyXHTML"              X "" ""  "document"')
+        addToRC(r'\Format xhtml      xhtml   "LyXHTML"              y "" ""  "document"')
  #
     checkEditor('a BibTeX editor', ['sensible-editor', 'jabref', 'JabRef', \
         'pybliographic', 'bibdesk', 'gbib', 'kbib', \
