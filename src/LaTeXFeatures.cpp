@@ -296,7 +296,7 @@ bool LaTeXFeatures::useBabel() const
 bool LaTeXFeatures::usePolyglossia() const
 {
 	return (lyxrc.language_package_selection == LyXRC::LP_AUTO)
-	        && isRequired("xetex")
+	        && isRequired("polyglossia")
 	        && isAvailable("polyglossia")
 	        && ((bufferParams().language->lang() != lyxrc.default_language
 	             && !bufferParams().language->polyglossia().empty())

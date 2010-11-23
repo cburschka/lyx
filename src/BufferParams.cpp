@@ -1188,7 +1188,7 @@ void BufferParams::validate(LaTeXFeatures & features) const
 	}
 
 	if (useXetex)
-		features.require("xetex");
+		features.require("polyglossia");
 
 	if (language->lang() == "vietnamese")
 		features.require("vietnamese");
