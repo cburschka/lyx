@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-11-14 11:53+0100\n"
+"POT-Creation-Date: 2010-11-24 22:04+0100\n"
 "PO-Revision-Date: 2010-03-21 22:45+0200\n"
 "Last-Translator: Mohamed Magdy <theblackdragon_100@hotmail.com>\n"
 "Language-Team: LyX team <theblackdragon_100@hotmail.com>\n"
@@ -4396,7 +4396,7 @@ msgstr "البريد"
 #: lib/layouts/egs.layout:466 lib/layouts/foils.layout:140
 #: lib/layouts/frletter.layout:21 lib/layouts/g-brief-en.layout:189
 #: lib/layouts/g-brief2.layout:801 lib/layouts/kluwer.layout:141
-#: lib/layouts/lettre.layout:51 lib/layouts/lettre.layout:211
+#: lib/layouts/lettre.layout:51 lib/layouts/lettre.layout:213
 #: lib/layouts/powerdot.layout:86 lib/layouts/revtex.layout:106
 #: lib/layouts/revtex4.layout:137 lib/layouts/scrlettr.layout:160
 #: lib/layouts/scrlttr2.layout:237 lib/layouts/siamltex.layout:223
@@ -4454,7 +4454,7 @@ msgstr ""
 #: lib/layouts/aastex.layout:100 lib/layouts/aastex.layout:344
 #: lib/layouts/ectaart.layout:69 lib/layouts/elsarticle.layout:210
 #: lib/layouts/iopart.layout:158 lib/layouts/latex8.layout:57
-#: lib/layouts/lettre.layout:45 lib/layouts/lettre.layout:396
+#: lib/layouts/lettre.layout:45 lib/layouts/lettre.layout:398
 #: lib/layouts/llncs.layout:229 lib/layouts/svglobal3.layout:33
 #: lib/layouts/svglobal3.layout:37 lib/layouts/aapaper.inc:46
 #: lib/layouts/amsdefs.inc:150 lib/layouts/db_stdcharstyles.inc:73
@@ -5512,7 +5512,7 @@ msgstr ""
 
 #: lib/layouts/dinbrief.layout:47 lib/layouts/frletter.layout:16
 #: lib/layouts/heb-letter.layout:15 lib/layouts/lettre.layout:55
-#: lib/layouts/lettre.layout:479 lib/layouts/stdletter.inc:35
+#: lib/layouts/lettre.layout:481 lib/layouts/stdletter.inc:35
 msgid "Send To Address"
 msgstr "ارسال للعنوان"
 
@@ -5527,7 +5527,7 @@ msgstr "العنوان:"
 
 #: lib/layouts/dinbrief.layout:61 lib/layouts/frletter.layout:12
 #: lib/layouts/heb-letter.layout:10 lib/layouts/lettre.layout:33
-#: lib/layouts/lettre.layout:135 lib/layouts/stdletter.inc:24
+#: lib/layouts/lettre.layout:137 lib/layouts/stdletter.inc:24
 msgid "My Address"
 msgstr "عنواني"
 
@@ -5564,7 +5564,7 @@ msgstr "معالجة:"
 
 #: lib/layouts/dinbrief.layout:94 lib/layouts/g-brief-en.layout:103
 #: lib/layouts/g-brief2.layout:758 lib/layouts/lettre.layout:59
-#: lib/layouts/lettre.layout:448
+#: lib/layouts/lettre.layout:450
 msgid "YourRef"
 msgstr ""
 
@@ -5575,7 +5575,7 @@ msgstr ""
 
 #: lib/layouts/dinbrief.layout:100 lib/layouts/g-brief-en.layout:96
 #: lib/layouts/g-brief2.layout:737 lib/layouts/lettre.layout:61
-#: lib/layouts/lettre.layout:464
+#: lib/layouts/lettre.layout:466
 msgid "MyRef"
 msgstr ""
 
@@ -5594,7 +5594,7 @@ msgstr "محرر:"
 
 #: lib/layouts/dinbrief.layout:112 lib/layouts/frletter.layout:40
 #: lib/layouts/g-brief-en.layout:54 lib/layouts/g-brief2.layout:892
-#: lib/layouts/lettre.layout:67 lib/layouts/lettre.layout:566
+#: lib/layouts/lettre.layout:67 lib/layouts/lettre.layout:568
 #: lib/layouts/scrlettr.layout:132 lib/layouts/scrlttr2.layout:165
 #: lib/layouts/stdletter.inc:71
 msgid "Signature"
@@ -5602,7 +5602,7 @@ msgstr "التوقيع"
 
 #: lib/layouts/dinbrief.layout:114 lib/layouts/g-brief-de.layout:57
 #: lib/layouts/g-brief-en.layout:57 lib/layouts/g-brief2.layout:902
-#: lib/layouts/lettre.layout:569 lib/layouts/scrlettr.layout:135
+#: lib/layouts/lettre.layout:571 lib/layouts/scrlettr.layout:135
 #: lib/layouts/scrlttr2.layout:169 lib/layouts/stdletter.inc:83
 msgid "Signature:"
 msgstr "التوقيع:"
@@ -5624,7 +5624,7 @@ msgid "Area Code:"
 msgstr "كود منطقة:"
 
 #: lib/layouts/dinbrief.layout:135 lib/layouts/lettre.layout:37
-#: lib/layouts/lettre.layout:284 lib/layouts/scrlettr.layout:146
+#: lib/layouts/lettre.layout:286 lib/layouts/scrlettr.layout:146
 #: lib/layouts/scrlttr2.layout:181 lib/layouts/stdletter.inc:126
 msgid "Telephone"
 msgstr "الهاتف"
@@ -5635,7 +5635,7 @@ msgid "Telephone:"
 msgstr "الهاتف:"
 
 #: lib/layouts/dinbrief.layout:142 lib/layouts/lettre.layout:35
-#: lib/layouts/lettre.layout:254 lib/layouts/scrlettr.layout:181
+#: lib/layouts/lettre.layout:256 lib/layouts/scrlettr.layout:181
 #: lib/layouts/scrlttr2.layout:261 lib/layouts/stdletter.inc:119
 msgid "Location"
 msgstr "موقع"
@@ -5647,7 +5647,7 @@ msgstr "الموقع:"
 
 #: lib/layouts/dinbrief.layout:154 lib/layouts/g-brief-de.layout:192
 #: lib/layouts/g-brief-en.layout:192 lib/layouts/g-brief2.layout:811
-#: lib/layouts/lettre.layout:224 lib/layouts/revtex.layout:108
+#: lib/layouts/lettre.layout:226 lib/layouts/revtex.layout:108
 #: lib/layouts/revtex4.layout:139 lib/layouts/scrlettr.layout:163
 #: lib/layouts/scrlttr2.layout:241 lib/layouts/siamltex.layout:235
 #: lib/layouts/amsdefs.inc:85
@@ -5655,19 +5655,19 @@ msgid "Date:"
 msgstr "التاريخ:"
 
 #: lib/layouts/dinbrief.layout:159 lib/layouts/lettre.layout:57
-#: lib/layouts/lettre.layout:426 lib/layouts/scrlettr.layout:195
+#: lib/layouts/lettre.layout:428 lib/layouts/scrlettr.layout:195
 #: lib/layouts/scrlttr2.layout:277 lib/layouts/scrclass.inc:178
 msgid "Subject"
 msgstr "الموضوع"
 
-#: lib/layouts/dinbrief.layout:161 lib/layouts/lettre.layout:431
+#: lib/layouts/dinbrief.layout:161 lib/layouts/lettre.layout:433
 #: lib/layouts/scrlettr.layout:198 lib/layouts/scrlttr2.layout:281
 msgid "Subject:"
 msgstr "الموضوع:"
 
 #: lib/layouts/dinbrief.layout:175 lib/layouts/frletter.layout:36
 #: lib/layouts/g-brief-en.layout:205 lib/layouts/g-brief2.layout:844
-#: lib/layouts/lettre.layout:63 lib/layouts/lettre.layout:539
+#: lib/layouts/lettre.layout:63 lib/layouts/lettre.layout:541
 #: lib/layouts/scrlettr.layout:60 lib/layouts/scrlttr2.layout:92
 #: lib/layouts/stdletter.inc:49
 msgid "Opening"
@@ -5675,14 +5675,14 @@ msgstr "فتح"
 
 #: lib/layouts/dinbrief.layout:179 lib/layouts/g-brief-de.layout:210
 #: lib/layouts/g-brief-en.layout:210 lib/layouts/g-brief2.layout:856
-#: lib/layouts/lettre.layout:543 lib/layouts/scrlttr2.layout:103
+#: lib/layouts/lettre.layout:545 lib/layouts/scrlttr2.layout:103
 #: lib/layouts/stdletter.inc:62
 msgid "Opening:"
 msgstr "فتح:"
 
 #: lib/layouts/dinbrief.layout:191 lib/layouts/frletter.layout:44
 #: lib/layouts/g-brief-en.layout:231 lib/layouts/g-brief2.layout:866
-#: lib/layouts/lettre.layout:65 lib/layouts/lettre.layout:553
+#: lib/layouts/lettre.layout:65 lib/layouts/lettre.layout:555
 #: lib/layouts/scrlettr.layout:70 lib/layouts/scrlttr2.layout:112
 #: lib/layouts/stdletter.inc:92
 msgid "Closing"
@@ -5690,17 +5690,17 @@ msgstr "إغلاق"
 
 #: lib/layouts/dinbrief.layout:193 lib/layouts/g-brief-de.layout:236
 #: lib/layouts/g-brief-en.layout:236 lib/layouts/g-brief2.layout:877
-#: lib/layouts/lettre.layout:557 lib/layouts/scrlttr2.layout:116
+#: lib/layouts/lettre.layout:559 lib/layouts/scrlttr2.layout:116
 #: lib/layouts/stdletter.inc:95
 msgid "Closing:"
 msgstr "إغلاق:"
 
 #: lib/layouts/dinbrief.layout:199 lib/layouts/lettre.layout:69
-#: lib/layouts/lettre.layout:603 lib/layouts/stdletter.inc:111
+#: lib/layouts/lettre.layout:605 lib/layouts/stdletter.inc:111
 msgid "encl"
 msgstr "encl"
 
-#: lib/layouts/dinbrief.layout:201 lib/layouts/lettre.layout:608
+#: lib/layouts/dinbrief.layout:201 lib/layouts/lettre.layout:610
 #: lib/layouts/scrlettr.layout:108 lib/layouts/scrlttr2.layout:139
 #: lib/layouts/stdletter.inc:114
 msgid "encl:"
@@ -5708,13 +5708,13 @@ msgstr ""
 
 #: lib/layouts/dinbrief.layout:214 lib/layouts/g-brief-en.layout:222
 #: lib/layouts/g-brief2.layout:933 lib/layouts/lettre.layout:71
-#: lib/layouts/lettre.layout:626 lib/layouts/stdletter.inc:99
+#: lib/layouts/lettre.layout:628 lib/layouts/stdletter.inc:99
 msgid "cc"
 msgstr "cc"
 
 #: lib/layouts/dinbrief.layout:216 lib/layouts/g-brief-de.layout:227
 #: lib/layouts/g-brief-en.layout:227 lib/layouts/g-brief2.layout:944
-#: lib/layouts/lettre.layout:630 lib/layouts/scrlettr.layout:101
+#: lib/layouts/lettre.layout:632 lib/layouts/scrlettr.layout:101
 #: lib/layouts/scrlttr2.layout:132 lib/layouts/stdletter.inc:102
 msgid "cc:"
 msgstr "cc:"
@@ -5783,7 +5783,7 @@ msgid "Telefon"
 msgstr ""
 
 #: lib/layouts/dinbrief.layout:305 lib/layouts/lettre.layout:47
-#: lib/layouts/lettre.layout:155 lib/layouts/scrlettr.layout:153
+#: lib/layouts/lettre.layout:157 lib/layouts/scrlettr.layout:153
 #: lib/layouts/scrlttr2.layout:229
 msgid "Place"
 msgstr "مكان"
@@ -6061,7 +6061,7 @@ msgstr "عنوان المؤلف"
 msgid "Author Email"
 msgstr "بريد الكتروني المؤلف"
 
-#: lib/layouts/elsart.layout:155 lib/layouts/lettre.layout:402
+#: lib/layouts/elsart.layout:155 lib/layouts/lettre.layout:404
 #: lib/layouts/llncs.layout:233
 msgid "Email:"
 msgstr "البريد الالكتروني:"
@@ -6553,12 +6553,12 @@ msgid "ReturnAddress:"
 msgstr ""
 
 #: lib/layouts/g-brief-de.layout:99 lib/layouts/g-brief-en.layout:99
-#: lib/layouts/g-brief2.layout:748 lib/layouts/lettre.layout:470
+#: lib/layouts/g-brief2.layout:748 lib/layouts/lettre.layout:472
 msgid "MyRef:"
 msgstr "المرجع الخاص بي:"
 
 #: lib/layouts/g-brief-de.layout:106 lib/layouts/g-brief-en.layout:106
-#: lib/layouts/g-brief2.layout:769 lib/layouts/lettre.layout:454
+#: lib/layouts/g-brief2.layout:769 lib/layouts/lettre.layout:456
 msgid "YourRef:"
 msgstr "المرجع الخاص بك:"
 
@@ -7178,99 +7178,99 @@ msgstr ""
 msgid "Running author:"
 msgstr ""
 
-#: lib/layouts/lettre.layout:39 lib/layouts/lettre.layout:314
+#: lib/layouts/lettre.layout:39 lib/layouts/lettre.layout:316
 #, fuzzy
 msgid "NoTelephone"
 msgstr "الهاتف"
 
-#: lib/layouts/lettre.layout:41 lib/layouts/lettre.layout:340
+#: lib/layouts/lettre.layout:41 lib/layouts/lettre.layout:342
 #: lib/layouts/scrlttr2.layout:189 lib/configure.py:352
 msgid "Fax"
 msgstr "الناسوخ"
 
-#: lib/layouts/lettre.layout:43 lib/layouts/lettre.layout:370
-#: lib/layouts/lettre.layout:378
+#: lib/layouts/lettre.layout:43 lib/layouts/lettre.layout:372
+#: lib/layouts/lettre.layout:380
 #, fuzzy
 msgid "NoFax"
 msgstr "الناسوخ"
 
-#: lib/layouts/lettre.layout:49 lib/layouts/lettre.layout:185
-#: lib/layouts/lettre.layout:192
+#: lib/layouts/lettre.layout:49 lib/layouts/lettre.layout:187
+#: lib/layouts/lettre.layout:194
 #, fuzzy
 msgid "NoPlace"
 msgstr "مكان"
 
-#: lib/layouts/lettre.layout:53 lib/layouts/lettre.layout:234
-#: lib/layouts/lettre.layout:242
+#: lib/layouts/lettre.layout:53 lib/layouts/lettre.layout:236
+#: lib/layouts/lettre.layout:244
 #, fuzzy
 msgid "NoDate"
 msgstr "التاريخ"
 
-#: lib/layouts/lettre.layout:73 lib/layouts/lettre.layout:647
+#: lib/layouts/lettre.layout:73 lib/layouts/lettre.layout:649
 #, fuzzy
 msgid "Post Scriptum"
 msgstr "بوستكربت"
 
-#: lib/layouts/lettre.layout:75 lib/layouts/lettre.layout:513
+#: lib/layouts/lettre.layout:75 lib/layouts/lettre.layout:515
 msgid "EndOfMessage"
 msgstr ""
 
-#: lib/layouts/lettre.layout:77 lib/layouts/lettre.layout:533
+#: lib/layouts/lettre.layout:77 lib/layouts/lettre.layout:535
 #, fuzzy
 msgid "EndOfFile"
 msgstr "نهاية شريحة"
 
-#: lib/layouts/lettre.layout:137 lib/layouts/lettre.layout:156
-#: lib/layouts/lettre.layout:186 lib/layouts/lettre.layout:212
-#: lib/layouts/lettre.layout:235 lib/layouts/lettre.layout:255
-#: lib/layouts/lettre.layout:285 lib/layouts/lettre.layout:315
-#: lib/layouts/lettre.layout:341 lib/layouts/lettre.layout:371
-#: lib/layouts/lettre.layout:397
+#: lib/layouts/lettre.layout:139 lib/layouts/lettre.layout:158
+#: lib/layouts/lettre.layout:188 lib/layouts/lettre.layout:214
+#: lib/layouts/lettre.layout:237 lib/layouts/lettre.layout:257
+#: lib/layouts/lettre.layout:287 lib/layouts/lettre.layout:317
+#: lib/layouts/lettre.layout:343 lib/layouts/lettre.layout:373
+#: lib/layouts/lettre.layout:399
 #, fuzzy
 msgid "Headings"
 msgstr "عناوين رأس الموضوع"
 
-#: lib/layouts/lettre.layout:167
+#: lib/layouts/lettre.layout:169
 #, fuzzy
 msgid "City:"
 msgstr "المدينة"
 
-#: lib/layouts/lettre.layout:260
+#: lib/layouts/lettre.layout:262
 #, fuzzy
 msgid "Office:"
 msgstr "ايقاف"
 
-#: lib/layouts/lettre.layout:290
+#: lib/layouts/lettre.layout:292
 #, fuzzy
 msgid "Tel:"
 msgstr "المبرق:"
 
-#: lib/layouts/lettre.layout:322
+#: lib/layouts/lettre.layout:324
 #, fuzzy
 msgid "NoTel"
 msgstr "بلا"
 
-#: lib/layouts/lettre.layout:353
+#: lib/layouts/lettre.layout:355
 #, fuzzy
 msgid "Fax:"
 msgstr "الناسوخ"
 
-#: lib/layouts/lettre.layout:514 lib/layouts/lettre.layout:605
-#: lib/layouts/lettre.layout:648
+#: lib/layouts/lettre.layout:516 lib/layouts/lettre.layout:607
+#: lib/layouts/lettre.layout:650
 #, fuzzy
 msgid "Closings"
 msgstr "إغلاق"
 
-#: lib/layouts/lettre.layout:523
+#: lib/layouts/lettre.layout:525
 msgid "EndOfMessage."
 msgstr ""
 
-#: lib/layouts/lettre.layout:535
+#: lib/layouts/lettre.layout:537
 #, fuzzy
 msgid "EndOfFile."
 msgstr "نهاية شريحة"
 
-#: lib/layouts/lettre.layout:655
+#: lib/layouts/lettre.layout:657
 #, fuzzy
 msgid "P.S.:"
 msgstr "PS:"
@@ -16783,8 +16783,10 @@ msgstr "صنع قائمة البارامترات"
 msgid "Opening help file %1$s..."
 msgstr "فتح ملف المساعدة %1$s..."
 
-#: src/LyXFunc.cpp:1149 src/VCBackend.cpp:61 src/VCBackend.cpp:595
-#: src/VCBackend.cpp:662 src/VCBackend.cpp:668 src/VCBackend.cpp:689
+#: src/LyXFunc.cpp:1149 src/VCBackend.cpp:61 src/VCBackend.cpp:520
+#: src/VCBackend.cpp:525 src/VCBackend.cpp:566 src/VCBackend.cpp:666
+#: src/VCBackend.cpp:674 src/VCBackend.cpp:834 src/VCBackend.cpp:901
+#: src/VCBackend.cpp:907 src/VCBackend.cpp:928
 msgid "Revision control error."
 msgstr "خطأ مراجعة التحكم."
 
@@ -17608,12 +17610,122 @@ msgid ""
 "'%1$s'."
 msgstr "حدث خطا أثناء تشغيل %1$s"
 
-#: src/VCBackend.cpp:537 src/VCBackend.cpp:584 src/VCBackend.cpp:679
-#: src/VCBackend.cpp:716 src/VCBackend.cpp:772
+#: src/VCBackend.cpp:382
+#, fuzzy
+msgid "Up-to-date"
+msgstr "&تحديث"
+
+#: src/VCBackend.cpp:384
+#, fuzzy
+msgid "Locally Modified"
+msgstr "ملف النسق المحلي"
+
+#: src/VCBackend.cpp:386
+#, fuzzy
+msgid "Locally Added"
+msgstr "ملف النسق المحلي"
+
+#: src/VCBackend.cpp:388
+msgid "Needs Merge"
+msgstr ""
+
+#: src/VCBackend.cpp:390
+msgid "Needs Checkout"
+msgstr ""
+
+#: src/VCBackend.cpp:392
+msgid "No CVS file"
+msgstr ""
+
+#: src/VCBackend.cpp:394
+msgid "Cannot retrieve CVS status"
+msgstr ""
+
+#: src/VCBackend.cpp:521
+msgid ""
+"The repository version is newer then the current check out.\n"
+"You have to update from repository first or revert your changes."
+msgstr ""
+
+#: src/VCBackend.cpp:526
+#, c-format
+msgid ""
+"Bad status when checking in changes.\n"
+"\n"
+"'%1$s'\n"
+"\n"
+msgstr ""
+
+#: src/VCBackend.cpp:567
+#, fuzzy, c-format
+msgid ""
+"Error when updating from repository.\n"
+"You have to manually resolve the conflicts NOW!\n"
+"'%1$s'.\n"
+"\n"
+"After pressing OK, LyX will try to reopen the resolved document."
+msgstr ""
+"خطأ أثناء التحديث من المستودع.\n"
+"يجب ان تتدخل لحل هذا التضارب يدوياً الآن!\n"
+"'%1$s'.\n"
+"\n"
+"بعد الضغط على موافق،سيحاول LyX اعادة فتح المستند."
+
+#: src/VCBackend.cpp:599
+#, fuzzy, c-format
+msgid ""
+"There were detected changes in the working directory:\n"
+"%1$s\n"
+"\n"
+"In case of file conflict you have to resolve them manually or revert to "
+"repository version later."
+msgstr ""
+"تم رصد تغييرات في مجلد العمل :\n"
+"%1$s\n"
+"\n"
+"في حالة ملف متعارض اصدار ملفات المجلد المحلي سيتم تفضيلها.\n"
+"\n"
+"استمرار؟"
+
+#: src/VCBackend.cpp:603 src/VCBackend.cpp:607 src/VCBackend.cpp:970
+#: src/VCBackend.cpp:974
+msgid "Changes detected"
+msgstr "تم رصد تغييرات"
+
+#: src/VCBackend.cpp:604 src/VCBackend.cpp:608
+#, fuzzy
+msgid "&Continue"
+msgstr "الإستمرار"
+
+#: src/VCBackend.cpp:604 src/VCBackend.cpp:608
+#, fuzzy
+msgid "&Abort"
+msgstr "&صنف"
+
+#: src/VCBackend.cpp:604 src/VCBackend.cpp:971
+msgid "View &Log ..."
+msgstr ""
+
+#: src/VCBackend.cpp:667
+#, c-format
+msgid ""
+"The document %1$s is not in repository.\n"
+"You have to check in the first revision before you can revert."
+msgstr ""
+
+#: src/VCBackend.cpp:675
+#, c-format
+msgid ""
+"Cannot revert document %1$s to repository version.\n"
+"The status '%2$s' is unexpected."
+msgstr ""
+
+#: src/VCBackend.cpp:776 src/VCBackend.cpp:823 src/VCBackend.cpp:918
+#: src/VCBackend.cpp:955 src/VCBackend.cpp:1011
 msgid "Error: Could not generate logfile."
 msgstr "خطأ:لم يتمكن من انشاء ملف السجل."
 
-#: src/VCBackend.cpp:596
+#: src/VCBackend.cpp:835
 #, fuzzy
 msgid ""
 "Error when committing to repository.\n"
@@ -17626,7 +17738,7 @@ msgstr ""
 "\n"
 "بعد الضغط على موافق،سيحاول LyX اعادة فتح المستند."
 
-#: src/VCBackend.cpp:663
+#: src/VCBackend.cpp:902
 msgid ""
 "Error when acquiring write lock.\n"
 "Most probably another user is editing\n"
@@ -17634,13 +17746,13 @@ msgid ""
 "Also check the access to the repository."
 msgstr ""
 
-#: src/VCBackend.cpp:669
+#: src/VCBackend.cpp:908
 msgid ""
 "Error when releasing write lock.\n"
 "Check the access to the repository."
 msgstr ""
 
-#: src/VCBackend.cpp:690
+#: src/VCBackend.cpp:929
 #, c-format
 msgid ""
 "Error when updating from repository.\n"
@@ -17655,7 +17767,7 @@ msgstr ""
 "\n"
 "بعد الضغط على موافق،سيحاول LyX اعادة فتح المستند."
 
-#: src/VCBackend.cpp:726
+#: src/VCBackend.cpp:965
 #, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
@@ -17673,35 +17785,27 @@ msgstr ""
 "\n"
 "استمرار؟"
 
-#: src/VCBackend.cpp:731 src/VCBackend.cpp:735
-msgid "Changes detected"
-msgstr "تم رصد تغييرات"
-
-#: src/VCBackend.cpp:732 src/VCBackend.cpp:736
+#: src/VCBackend.cpp:971 src/VCBackend.cpp:975
 msgid "&Yes"
 msgstr "&نعم"
 
-#: src/VCBackend.cpp:732 src/VCBackend.cpp:736
+#: src/VCBackend.cpp:971 src/VCBackend.cpp:975
 msgid "&No"
 msgstr "&لا"
 
-#: src/VCBackend.cpp:732
-msgid "View &Log ..."
-msgstr ""
-
-#: src/VCBackend.cpp:798
+#: src/VCBackend.cpp:1037
 msgid "VCN File Locking"
 msgstr ""
 
-#: src/VCBackend.cpp:799
+#: src/VCBackend.cpp:1038
 msgid "Locking property unset."
 msgstr ""
 
-#: src/VCBackend.cpp:799 src/VCBackend.cpp:803
+#: src/VCBackend.cpp:1038 src/VCBackend.cpp:1042
 msgid "Locking property set."
 msgstr ""
 
-#: src/VCBackend.cpp:800
+#: src/VCBackend.cpp:1039
 msgid "Do not forget to commit the locking property into the repository."
 msgstr ""
 
