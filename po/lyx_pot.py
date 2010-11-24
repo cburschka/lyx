@@ -172,7 +172,8 @@ def layouts_l10n(input_files, output, base):
             if res != None:
                 string = res.group(1)
                 string = string.replace('_', ' ')
-                writeString(out, src, base, lineno, string)
+                #Flex:xxx is not used in translation
+                #writeString(out, src, base, lineno, string)
                 m = FlexCheck.search(string)
                 if m:
                   writeString(out, src, base, lineno, m.group(1))
