@@ -48,7 +48,7 @@ int VCS::doVCCommandCall(string const & cmd, FileName const & path)
 }
 
 
-int VCS::doVCCommand(string const & cmd, FileName const & path)
+int VCS::doVCCommand(string const & cmd, FileName const & path, bool reportError)
 {
 	if (owner_)
 		owner_->setBusy(true);
@@ -57,7 +57,7 @@ int VCS::doVCCommand(string const & cmd, FileName const & path)
 
 	if (owner_)
 		owner_->setBusy(false);
-	if (ret)
+	if (ret && reportError)
 		frontend::Alert::error(_("Revision control error."),
 			bformat(_("Some problem occured while running the command:\n"
 				  "'%1$s'."),
@@ -320,7 +320,8 @@ void CVS::scanMaster()
 	LYXERR(Debug::LYXVC, "LyXVC::CVS: scanMaster. \n     Checking: " << master_);
 	// Ok now we do the real scan...
 	ifstream ifs(master_.toFilesystemEncoding().c_str());
-	string tmpf = '/' + onlyFilename(file_.absFilename()) + '/';
+	string name = onlyFilename(file_.absFilename());
+	string tmpf = '/' + name + '/';
 	LYXERR(Debug::LYXVC, "\tlooking for `" << tmpf << '\'');
 	string line;
 	static regex const reg("/(.*)/(.*)/(.*)/(.*)/(.*)");
@@ -339,21 +340,22 @@ void CVS::scanMaster()
 
 			//sm[4]; // options
 			//sm[5]; // tag or tagdate
-			// FIXME: must double check file is stattable/existing
+			if (file_.isReadableFile()) {
 			time_t mod = file_.lastModified();
 			string mod_date = rtrim(asctime(gmtime(&mod)), "\n");
 			LYXERR(Debug::LYXVC, "Date in Entries: `" << file_date
 				<< "'\nModification date of file: `" << mod_date << '\'');
-			//FIXME this whole locking bussiness is not working under cvs and the machinery
-			// conforms to the ci usage, not cvs.
-			if (file_date == mod_date) {
-				locker_ = "Unlocked";
+				if (file_.isReadOnly()) {
+					// readonly checkout is unlocked
 				vcstatus = UNLOCKED;
 			} else {
-				// Here we should also to some more checking
-				// to see if there are conflicts or not.
-				locker_ = "Locked";
-				vcstatus = LOCKED;
+					FileName bdir(addPath(master_.onlyPath().absFilename(),"Base"));
+					FileName base(addName(bdir.absFilename(),name));
+					// if base version is existent "cvs edit" was used to lock
+					vcstatus = base.isReadableFile() ? LOCKED : NOLOCKING;
+				}
+			} else {
+				vcstatus = NOLOCKING;
 			}
 			break;
 		}
@@ -361,55 +363,269 @@ void CVS::scanMaster()
 }
 
 
+string const CVS::getTarget(OperationMode opmode) const
+{
+	switch(opmode) {
+	case Directory:
+		return ".";
+	case File:
+		return quoteName(onlyFilename(owner_->absFileName()));
+	}
+	return string();
+}
+
+
+docstring CVS::toString(CvsStatus status) const
+{
+	switch (status) {
+	case UpToDate:
+		return _("Up-to-date");
+	case LocallyModified:
+		return _("Locally Modified");
+	case LocallyAdded:
+		return _("Locally Added");
+	case NeedsMerge:
+		return _("Needs Merge");
+	case NeedsCheckout:
+		return _("Needs Checkout");
+	case NoCvsFile:
+		return _("No CVS file");
+	case StatusError:
+		return _("Cannot retrieve CVS status");
+	}
+	return 0;
+}
+
+
+CVS::CvsStatus CVS::getStatus()
+{
+	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return StatusError;
+	}
+
+	if (doVCCommand("cvs status " + getTarget(File)
+		+ " > " + quoteName(tmpf.toFilesystemEncoding()),
+		FileName(owner_->filePath()))) {
+		tmpf.removeFile();
+		return StatusError;
+	}
+
+	ifstream ifs(tmpf.toFilesystemEncoding().c_str());
+	CvsStatus status = NoCvsFile;
+
+	while (ifs) {
+		string line;
+		getline(ifs, line);
+		LYXERR(Debug::LYXVC, line << "\n");
+		if (prefixIs(line, "File:")) {
+			if (contains(line, "Up-to-date"))
+				status = UpToDate;
+			else if (contains(line, "Locally Modified"))
+				status = LocallyModified;
+			else if (contains(line, "Locally Added"))
+				status = LocallyAdded;
+			else if (contains(line, "Needs Merge"))
+				status = NeedsMerge;
+			else if (contains(line, "Needs Checkout"))
+				status = NeedsCheckout;
+		}
+	}
+	tmpf.removeFile();
+	return status;
+}
+
+
 void CVS::registrer(string const & msg)
 {
 	doVCCommand("cvs -q add -m \"" + msg + "\" "
-		    + quoteName(onlyFilename(owner_->absFileName())),
+		+ getTarget(File),
 		    FileName(owner_->filePath()));
 }
 
 
+void CVS::getDiff(OperationMode opmode, FileName const & tmpf)
+{
+	doVCCommand("cvs diff " + getTarget(opmode)
+		+ " > " + quoteName(tmpf.toFilesystemEncoding()),
+		FileName(owner_->filePath()), false);
+}
+
+
+int CVS::edit()
+{
+	vcstatus = LOCKED;
+	return doVCCommand("cvs -q edit " + getTarget(File),
+		FileName(owner_->filePath()));
+}
+
+
+int CVS::unedit()
+{
+	vcstatus = UNLOCKED;
+	return doVCCommand("cvs -q unedit " + getTarget(File),
+		FileName(owner_->filePath()));
+}
+
+
+int CVS::update(OperationMode opmode, FileName const & tmpf)
+{
+	string const redirection = tmpf.empty() ? ""
+		: " > " + quoteName(tmpf.toFilesystemEncoding());
+
+	return doVCCommand("cvs -q update "
+		+ getTarget(opmode) + redirection,
+		FileName(owner_->filePath()));
+}
+
+
+string CVS::scanLogFile(FileName const & f, string & status)
+{
+	ifstream ifs(f.toFilesystemEncoding().c_str());
+
+	while (ifs) {
+		string line;
+		getline(ifs, line);
+		LYXERR(Debug::LYXVC, line << "\n");
+		if (!line.empty())
+			status += line + "; ";
+		if (prefixIs(line, "C ")) {
+			ifs.close();
+			return line;
+		}
+	}
+	ifs.close();
+	return string();
+}
+	
+	
 string CVS::checkIn(string const & msg)
 {
-	int ret = doVCCommand("cvs -q commit -m \"" + msg + "\" "
-		    + quoteName(onlyFilename(owner_->absFileName())),
+	CvsStatus status = getStatus();
+	switch (status) {
+	case UpToDate:
+		if (vcstatus != NOLOCKING)
+			unedit();
+		return "CVS: Proceeded";
+	case LocallyModified:
+	case LocallyAdded: {
+		int rc = doVCCommand("cvs -q commit -m \"" + msg + "\" "
+			+ getTarget(File),
 		    FileName(owner_->filePath()));
-	return ret ? string() : "CVS: Proceeded";
+		return rc ? string() : "CVS: Proceeded";
+	}
+	case NeedsMerge:
+	case NeedsCheckout:
+		frontend::Alert::error(_("Revision control error."),
+			_("The repository version is newer then the current check out.\n"
+			  "You have to update from repository first or revert your changes.")) ;
+		break;
+	default:
+		frontend::Alert::error(_("Revision control error."),
+			bformat(_("Bad status when checking in changes.\n"
+					  "\n'%1$s'\n\n"),
+				toString(status)));
+		break;
+	}
+	return string();
+}
+
+
+bool CVS::isLocked() const
+{
+	FileName fn(owner_->absFileName());
+	fn.refresh();
+	return !fn.isReadOnly();
 }
 
 
 bool CVS::checkInEnabled()
 {
+	if (vcstatus != NOLOCKING)
+		return isLocked();
+	else
 	return true;
 }
 
 
 string CVS::checkOut()
 {
-	// cvs update or perhaps for cvs this should be a noop
-	// we need to detect conflict (eg "C" in output)
-	// before we can do this.
-	lyxerr << "Sorry, not implemented." << endl;
+	if (vcstatus != NOLOCKING && edit())
 	return string();
+	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return string();
+	}
+	
+	int rc = update(File, tmpf);
+	string log;
+	string const res = scanLogFile(tmpf, log);
+	if (!res.empty())
+		frontend::Alert::error(_("Revision control error."),
+			bformat(_("Error when updating from repository.\n"
+				"You have to manually resolve the conflicts NOW!\n'%1$s'.\n\n"
+				"After pressing OK, LyX will try to reopen the resolved document."),
+				from_local8bit(res)));
+	
+	tmpf.erase();
+	return rc ? string() : log.empty() ? "CVS: Proceeded" : "CVS: " + log;
 }
 
 
 bool CVS::checkOutEnabled()
 {
-	return false;
+	if (vcstatus != NOLOCKING)
+		return !isLocked();
+	else
+		return true;
 }
 
 
 string CVS::repoUpdate()
 {
-	lyxerr << "Sorry, not implemented." << endl;
-	return string();
+	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return string();
+	}
+	
+	getDiff(Directory, tmpf);
+	docstring res = tmpf.fileContents("UTF-8");
+	if (!res.empty()) {
+		LYXERR(Debug::LYXVC, "Diff detected:\n" << res);
+		docstring const file = from_utf8(owner_->filePath());
+		docstring text = bformat(_("There were detected changes "
+				"in the working directory:\n%1$s\n\n"
+				"In case of file conflict you have to resolve them "
+				"manually or revert to repository version later."), file);
+		int ret = frontend::Alert::prompt(_("Changes detected"),
+				text, 0, 1, _("&Continue"), _("&Abort"), _("View &Log ..."));
+		if (ret == 2 ) {
+			dispatch(FuncRequest(LFUN_DIALOG_SHOW, "file " + tmpf.absFilename()));
+			ret = frontend::Alert::prompt(_("Changes detected"),
+				text, 0, 1, _("&Continue"), _("&Abort"));
+			hideDialogs("file", 0);
+		}
+		if (ret == 1 ) {
+			tmpf.removeFile();
+			return string();
+		}
+	}
+
+	int rc = update(Directory, tmpf);
+	res += "Update log:\n" + tmpf.fileContents("UTF-8");
+	tmpf.removeFile();
+
+	LYXERR(Debug::LYXVC, res);
+	return rc ? string() : "CVS: Proceeded" ;
 }
 
 
 bool CVS::repoUpdateEnabled()
 {
-	return false;
+	return true;
 }
 
 
@@ -430,16 +646,38 @@ void CVS::revert()
 {
 	// Reverts to the version in CVS repository and
 	// gets the updated version from the repository.
-	string const fil = quoteName(onlyFilename(owner_->absFileName()));
-	// This is sensitive operation, so at lest some check about
-	// existence of cvs program and its file
-	if (doVCCommand("cvs log "+ fil, FileName(owner_->filePath())))
-		return;
-	FileName f(owner_->absFileName());
-	f.removeFile();
-	doVCCommand("cvs update " + fil,
-		    FileName(owner_->filePath()));
-	owner_->markClean();
+	CvsStatus status = getStatus();
+	switch (status) {
+	case UpToDate:
+		if (vcstatus != NOLOCKING)
+			unedit();
+		break;
+	case NeedsMerge:
+	case NeedsCheckout:
+	case LocallyModified: {
+		FileName f(owner_->absFileName());
+		f.removeFile();
+		update(File, FileName());
+		owner_->markClean();
+		break;
+	}
+	case LocallyAdded: {
+		docstring const file = owner_->fileName().displayName(20);
+		frontend::Alert::error(_("Revision control error."),
+			bformat(_("The document %1$s is not in repository.\n"
+			          "You have to check in the first revision before you can revert."),
+				file)) ;
+		break;
+	}
+	default: {
+		docstring const file = owner_->fileName().displayName(20);
+		frontend::Alert::error(_("Revision control error."),
+			bformat(_("Cannot revert document %1$s to repository version.\n"
+			          "The status '%2$s' is unexpected."),
+				file, toString(status)));
+		break;
+		}
+	}
 }
 
 
@@ -460,7 +698,7 @@ bool CVS::undoLastEnabled()
 
 void CVS::getLog(FileName const & tmpf)
 {
-	doVCCommand("cvs log " + quoteName(onlyFilename(owner_->absFileName()))
+	doVCCommand("cvs log " + getTarget(File)
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 }
@@ -470,6 +708,7 @@ bool CVS::toggleReadOnlyEnabled()
 {
 	return false;
 }
+
 
 /////////////////////////////////////////////////////////////////////
 //

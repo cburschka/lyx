@@ -29,7 +29,11 @@ What's new
 
 * USER INTERFACE
 
-
+- CVS support:
+  + Synchronization for the whole directories (bug 6255).
+  + Add implementation of checkOut operation.
+  + Utilize read-only checkouts with "cvs edit".
+  + Check for conflicts when doing checkIn/checkOut operation.
 
 
 * DOCUMENTATION AND LOCALIZATION
