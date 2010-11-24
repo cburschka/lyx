@@ -207,7 +207,8 @@ inline docstring wrapCitation(docstring const & key,
 		return content;
 	// we have to do the escaping here, because we will ultimately
 	// write this as a raw string, so as not to escape the tags.
-	return "<a href='#" + key + "'>" + html::htmlize(content) + "</a>";
+	return "<a href='#" + key + "'>" +
+			html::htmlize(content, XHTMLStream::ESCAPE_ALL) + "</a>";
 }
 
 } // anonymous namespace
@@ -533,7 +534,7 @@ docstring InsetCitation::xhtml(XHTMLStream & xs, OutputParams const &) const
 		return docstring();
 
 	// have to output this raw, because generateLabel() will include tags
-	xs << XHTMLStream::NextRaw() << generateLabel(true);
+	xs << XHTMLStream::ESCAPE_NONE << generateLabel(true);
 
 	return docstring();
 }

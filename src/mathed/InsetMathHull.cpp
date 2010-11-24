@@ -1889,8 +1889,8 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 							"xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
 			else 
 				xs << html::StartTag("math", 
-							"display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
-			xs << XHTMLStream::NextRaw() 
+				      "display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
+			xs << XHTMLStream::ESCAPE_NONE
 				 << os.str()
 				 << html::EndTag("math");
 		}
@@ -1904,9 +1904,9 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		if (success) {
 			string const tag = (getType() == hullSimple) ? "span" : "div";
 			xs << html::StartTag(tag, "class='formula'", true)
-				 << XHTMLStream::NextRaw()
-				 << os.str()
-				 << html::EndTag(tag);
+			   << XHTMLStream::ESCAPE_NONE
+			   << os.str()
+			   << html::EndTag(tag);
 		}
 	}
 	

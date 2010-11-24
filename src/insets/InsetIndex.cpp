@@ -792,7 +792,7 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 			if (level == 3) {
 				// another subsubentry
 				xs << html::StartTag("li", "class='subsubentry'") 
-				   << XHTMLStream::NextRaw() << subsub;
+				   << XHTMLStream::ESCAPE_NONE << subsub;
 			} else if (level == 2) {
 				// there are two ways we can be here: 
 				// (i) we can actually be inside a sub-entry already and be about
@@ -806,13 +806,13 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 				// have a sub-sub-entry.
 				if (eit->sub != last.sub)
 					xs << html::StartTag("li", "class='subentry'") 
-					   << XHTMLStream::NextRaw() << sub;
+					   << XHTMLStream::ESCAPE_NONE << sub;
 				if (!subsub.empty()) {
 					// it's actually a subsubentry, so we need to start that list
 					xs.cr();
 					xs << html::StartTag("ul", "class='subsubentry'") 
 					   << html::StartTag("li", "class='subsubentry'") 
-					   << XHTMLStream::NextRaw() << subsub;
+					   << XHTMLStream::ESCAPE_NONE << subsub;
 					level = 3;
 				} 
 			} else {
@@ -833,14 +833,14 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 					xs.cr();
 					xs << html::StartTag("ul", "class='subentry'") 
 					   << html::StartTag("li", "class='subentry'") 
-					   << XHTMLStream::NextRaw() << sub;
+					   << XHTMLStream::ESCAPE_NONE << sub;
 					level = 2;
 					if (!subsub.empty()) {
 						// and a sub-sub-entry
 						xs.cr();
 						xs << html::StartTag("ul", "class='subsubentry'") 
 						   << html::StartTag("li", "class='subsubentry'") 
-						   << XHTMLStream::NextRaw() << subsub;
+						   << XHTMLStream::ESCAPE_NONE << subsub;
 						level = 3;
 					}
 				} 

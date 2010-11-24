@@ -720,7 +720,7 @@ docstring InsetSpace::xhtml(XHTMLStream & xs, OutputParams const &) const
 		break;
 	}
 	// don't escape the entities!
-	xs << XHTMLStream::NextRaw() << from_ascii(output);
+	xs << XHTMLStream::ESCAPE_NONE << from_ascii(output);
 	return docstring();
 }
 

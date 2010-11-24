@@ -161,7 +161,7 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 		// FIXME XHTML 
 		// There ought to be a simple way to customize this.
 		// Maybe if we had an InsetLayout for TOC...
-		xs << XHTMLStream::NextRaw() << "&gt;";
+		xs << XHTMLStream::ESCAPE_NONE << "&gt;";
 		xs << html::EndTag("a");		
 	}
 	for (int i = lastdepth; i > 0; --i) 

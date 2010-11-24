@@ -302,13 +302,13 @@ docstring InsetSpecialChar::xhtml(XHTMLStream & xs, OutputParams const &) const
 		xs << '.';
 		break;
 	case LDOTS:
-		xs << XHTMLStream::NextRaw() << "&hellip;";
+		xs << XHTMLStream::ESCAPE_NONE << "&hellip;";
 		break;
 	case MENU_SEPARATOR:
-		xs << XHTMLStream::NextRaw() << "&rArr;";
+		xs << XHTMLStream::ESCAPE_NONE << "&rArr;";
 		break;
 	case SLASH:
-		xs << XHTMLStream::NextRaw() << "&frasl;";
+		xs << XHTMLStream::ESCAPE_NONE << "&frasl;";
 		break;
 	case NOBREAKDASH:
 		xs << '-';

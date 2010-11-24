@@ -319,7 +319,7 @@ docstring InsetFloat::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 		// we can write to the stream.
 		// Note that things will already have been escaped, so we do not 
 		// want to escape them again.
-		xs << XHTMLStream::NextRaw() << ods.str();
+		xs << XHTMLStream::ESCAPE_NONE << ods.str();
 	return deferred;
 }
 

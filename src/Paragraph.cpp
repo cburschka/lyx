@@ -2759,7 +2759,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 				// We don't want to escape the entities. Note that
 				// it is safe to do this, since str can otherwise
 				// only be "-". E.g., it can't be "<".
-				xs << XHTMLStream::NextRaw() << str;
+				xs << XHTMLStream::ESCAPE_NONE << str;
 			} else
 				xs << c;
 		}

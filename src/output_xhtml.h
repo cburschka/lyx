@@ -117,12 +117,15 @@ public:
 	XHTMLStream & operator<<(html::EndTag const &);
 	///
 	XHTMLStream & operator<<(html::CompTag const &);
-	/// A trivial struct that functions as a stream modifier.
-	/// << NextRaw() causes the next string-like thing sent to the
-	/// stream not to be escaped.
-	struct NextRaw {};
 	///
-	XHTMLStream & operator<<(NextRaw const &);
+	enum EscapeSettings {
+		ESCAPE_NONE,
+		ESCAPE_AND, // meaning &
+		ESCAPE_ALL  // meaning <, >, &, at present
+	};
+	/// Sets what we are going to escape on the NEXT write.
+	/// Everything is reset for the next time.
+	XHTMLStream & operator<<(EscapeSettings);
 private:
 	///
 	void clearTagDeque();
@@ -143,7 +146,7 @@ private:
 	/// remembers the history, so we can make sure we nest properly.
 	TagStack tag_stack_;
 	/// 
-	bool nextraw_;
+	EscapeSettings escape_;
 };
 
 ///
@@ -158,16 +161,16 @@ std::string alignmentToCSS(LyXAlignment align);
 
 namespace html {
 ///
-docstring escapeChar(char_type c);
+docstring escapeChar(char_type c, XHTMLStream::EscapeSettings e);
 /// converts a string to a form safe for links, etc
-docstring htmlize(docstring const & str);
+docstring htmlize(docstring const & str, XHTMLStream::EscapeSettings e);
 /// cleans \param str for use as an atttribute by replacing
 /// all non-alnum by "_"
 docstring cleanAttr(docstring const & str);
 ///
-std::string escapeChar(char c);
+std::string escapeChar(char c, XHTMLStream::EscapeSettings e);
 /// 
-std::string htmlize(std::string const & str);
+std::string htmlize(std::string const & str, XHTMLStream::EscapeSettings e);
 /// 
 std::string cleanAttr(std::string const & str);
 

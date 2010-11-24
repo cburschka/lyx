@@ -43,24 +43,27 @@ namespace lyx {
 
 namespace html {
 
-docstring escapeChar(char_type c)
+docstring escapeChar(char_type c, XHTMLStream::EscapeSettings e)
 {
 	docstring str;
-	switch (c) {
-	case ' ':
-		str += " ";
-		break;
-	case '&':
-		str += "&amp;";
-		break;
-	case '<':
-		str += "&lt;";
-		break;
-	case '>':
-		str += "&gt;";
-		break;
-	default:
+	switch (e) {
+	case XHTMLStream::ESCAPE_NONE:
 		str += c;
+		break;
+	case XHTMLStream::ESCAPE_ALL:
+		if (c == '<') {
+			str += "&lt;";
+			break;
+		} else if (c == '>') {
+			str += "&gt;";
+			break;
+		}
+	// fall through
+	case XHTMLStream::ESCAPE_AND:
+		if (c == '&')
+			str += "&amp;";
+		else
+			str	+=c ;
 		break;
 	}
 	return str;
@@ -68,34 +71,37 @@ docstring escapeChar(char_type c)
 
 
 // escape what needs escaping
-docstring htmlize(docstring const & str) {
+docstring htmlize(docstring const & str, XHTMLStream::EscapeSettings e) {
 	odocstringstream d;
 	docstring::const_iterator it = str.begin();
 	docstring::const_iterator en = str.end();
 	for (; it != en; ++it)
-		d << escapeChar(*it);
+		d << escapeChar(*it, e);
 	return d.str();
 }
 
 
-string escapeChar(char c)
+string escapeChar(char c, XHTMLStream::EscapeSettings e)
 {
 	string str;
-	switch (c) {
-	case ' ':
-		str += " ";
-		break;
-	case '&':
-		str += "&amp;";
-		break;
-	case '<':
-		str += "&lt;";
-		break;
-	case '>':
-		str += "&gt;";
-		break;
-	default:
+	switch (e) {
+	case XHTMLStream::ESCAPE_NONE:
 		str += c;
+		break;
+	case XHTMLStream::ESCAPE_ALL:
+		if (c == '<') {
+			str += "&lt;";
+			break;
+		} else if (c == '>') {
+			str += "&gt;";
+			break;
+		}
+	// fall through
+	case XHTMLStream::ESCAPE_AND:
+		if (c == '&')
+			str += "&amp;";
+		else
+			str	+=c ;
 		break;
 	}
 	return str;
@@ -103,12 +109,12 @@ string escapeChar(char c)
 
 
 // escape what needs escaping
-string htmlize(string const & str) {
+string htmlize(string const & str, XHTMLStream::EscapeSettings e) {
 	ostringstream d;
 	string::const_iterator it = str.begin();
 	string::const_iterator en = str.end();
 	for (; it != en; ++it)
-		d << escapeChar(*it);
+		d << escapeChar(*it, e);
 	return d.str();
 }
 
@@ -147,7 +153,7 @@ docstring StartTag::asTag() const
 {
 	string output = "<" + tag_;
 	if (!attr_.empty())
-		output += " " + html::htmlize(attr_);
+		output += " " + html::htmlize(attr_, XHTMLStream::ESCAPE_NONE);
 	output += ">";
 	return from_utf8(output);
 }
@@ -171,7 +177,7 @@ docstring CompTag::asTag() const
 {
 	string output = "<" + tag_;
 	if (!attr_.empty())
-		output += " " + html::htmlize(attr_);
+		output += " " + html::htmlize(attr_, XHTMLStream::ESCAPE_NONE);
 	output += " />";
 	return from_utf8(output);
 }
@@ -187,7 +193,7 @@ docstring CompTag::asTag() const
 ////////////////////////////////////////////////////////////////
 
 XHTMLStream::XHTMLStream(odocstream & os) 
-		: os_(os), nextraw_(false)
+		: os_(os), escape_(ESCAPE_ALL)
 {}
 
 
@@ -252,11 +258,8 @@ void XHTMLStream::clearTagDeque()
 XHTMLStream & XHTMLStream::operator<<(docstring const & d)
 {
 	clearTagDeque();
-	if (nextraw_) {
-		os_ << d;
-		nextraw_ = false;
-	} else
-		os_ << html::htmlize(d);
+	os_ << html::htmlize(d, escape_);
+	escape_ = ESCAPE_ALL;
 	return *this;
 }
 
@@ -265,11 +268,8 @@ XHTMLStream & XHTMLStream::operator<<(const char * s)
 {
 	clearTagDeque();
 	docstring const d = from_ascii(s);
-	if (nextraw_) {
-		os_ << d;
-		nextraw_ = false;
-	} else
-		os_ << html::htmlize(d);
+	os_ << html::htmlize(d, escape_);
+	escape_ = ESCAPE_ALL;
 	return *this;
 }
 
@@ -277,11 +277,8 @@ XHTMLStream & XHTMLStream::operator<<(const char * s)
 XHTMLStream & XHTMLStream::operator<<(char_type c)
 {
 	clearTagDeque();
-	if (nextraw_) {
-		os_ << c;
-		nextraw_ = false;
-	} else
-		os_ << html::escapeChar(c);
+	os_ << html::escapeChar(c, escape_);
+	escape_ = ESCAPE_ALL;
 	return *this;
 }
 
@@ -289,13 +286,8 @@ XHTMLStream & XHTMLStream::operator<<(char_type c)
 XHTMLStream & XHTMLStream::operator<<(char c)
 {
 	clearTagDeque();
-	if (nextraw_) {
-		os_ << c;
-		nextraw_ = false;
-	} else {
-		string const d = html::escapeChar(c);
-		os_ << from_ascii(d);
-	}
+	string const d = html::escapeChar(c, escape_);
+	escape_ = ESCAPE_ALL;
 	return *this;
 }
 
@@ -304,14 +296,14 @@ XHTMLStream & XHTMLStream::operator<<(int i)
 {
 	clearTagDeque();
 	os_ << i;
-	nextraw_ = false;
+	escape_ = ESCAPE_ALL;
 	return *this;
 }
 
 
-XHTMLStream & XHTMLStream::operator<<(NextRaw const &) 
+XHTMLStream & XHTMLStream::operator<<(EscapeSettings e)
 { 
-	nextraw_ = true; 
+	escape_ = e;
 	return *this;
 }
 
@@ -648,7 +640,7 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 			xs.cr();
 		}
 		if (!deferred.empty()) {
-			xs << XHTMLStream::NextRaw() << deferred;
+			xs << XHTMLStream::ESCAPE_NONE << deferred;
 			xs.cr();
 		}
 	}

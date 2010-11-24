@@ -886,7 +886,7 @@ docstring InsetText::getCaptionHTML(OutputParams const & runparams) const
 	docstring def = ins->getCaptionAsHTML(xs, runparams);
 	if (!def.empty())
 		// should already have been escaped
-		xs << XHTMLStream::NextRaw() << def << '\n';
+		xs << XHTMLStream::ESCAPE_NONE << def << '\n';
 	return ods.str();
 }
 

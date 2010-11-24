@@ -235,7 +235,7 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const &) const {
 		   << html::StartTag("a", parattr)
 		   // FIXME XHTML 
 		   // There ought to be a simple way to customize this.
-		   << XHTMLStream::NextRaw() << "&gt;"
+		   << XHTMLStream::ESCAPE_NONE << "&gt;"
 		   << html::EndTag("a");
 		xs << html::EndTag("div");
 	}

@@ -298,7 +298,7 @@ docstring InsetListings::xhtml(XHTMLStream & os, OutputParams const & rp) const
 	if (isInline) {
 		out << html::CompTag("br");
 		// escaping will already have been done
-		os << XHTMLStream::NextRaw() << ods.str();
+		os << XHTMLStream::ESCAPE_NONE << ods.str();
 	} else {
 		out << html::EndTag("div");
 		// In this case, this needs to be deferred, but we'll put it
