@@ -2094,7 +2094,7 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_VC_REGISTER
- * \li Action: Register the document as an file inside version control system (RCS, CVS).
+ * \li Action: Register the document as an file inside version control system.
  * \li Notion: File is registered inside cvs, svn or rcs repository acording to the existence
                of cvs/svn/rcs entries in the document's directory. \n
                See LyX Additional Features Manual (Version Control Chapter) for additional
@@ -2115,8 +2115,7 @@ void LyXAction::init()
 		{ LFUN_VC_CHECK_IN, "vc-check-in", ReadOnly, System },
 /*!
  * \var lyx::FuncCode lyx::LFUN_VC_CHECK_OUT
- * \li Action: Checks-out the document for edit (and locks it for RCS).
- * \li Notion: This is implemented only for RCS and SVN, not CVS.
+ * \li Action: Checks-out the document for edit (and locks it in some cases).
  * \li Syntax: vc-check-out
  * \li Origin: Lgb, 1 Jul 1997
  * \endvar
@@ -2171,7 +2170,6 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_VC_REPO_UPDATE
  * \li Action: Update the local archive directory in which resides
                the current document with the remote repository.
- * \li Notion: This is currently implemented only for SVN.
  * \li Syntax: vc-repo-update
  * \li Origin: sanda, 16 Oct 2009
  * \endvar
@@ -2180,7 +2178,6 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_VC_COMPARE
  * \li Action: Compares two revisions of the same file under version control.
- * \li Notion: This is currently implemented only for SVN and RCS.
  * \li Syntax: vc-compare [<REV1>] [<REV2>]
  * \li Params: Revision number either points directly to commit in history
                or if negative number -x it points to (last commit - x).\n
