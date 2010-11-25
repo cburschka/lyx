@@ -995,7 +995,7 @@ Buffer::ReadStatus Buffer::convertLyXFormat(FileName const & fn,
 		} else {
 			Alert::error(_("Conversion script failed"),
 				bformat(_("%1$s is from an newer version"
-					" of LyX, but the lyx2lyx script"
+					" of LyX and the lyx2lyx script"
 					" failed to convert it."),
 					from_utf8(fn.absFileName())));
 			return LyX2LyXNewerFormat;
