@@ -9,13 +9,13 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-11-24 22:04+0100\n"
-"PO-Revision-Date: 2010-10-22 12:03+0200\n"
+"PO-Revision-Date: 2010-11-25 12:51+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
-"Language-Team: Slovenčina <lyx-docs@lists.lyx.org>\n"
+"Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
@@ -17685,42 +17685,40 @@ msgstr ""
 "'%1$s'."
 
 #: src/VCBackend.cpp:382
-#, fuzzy
 msgid "Up-to-date"
-msgstr "&Aktualizovať"
+msgstr "Aktuálne"
 
 #: src/VCBackend.cpp:384
-#, fuzzy
 msgid "Locally Modified"
-msgstr "Lokálny súbor formátov"
+msgstr "Lokálne Modifikované"
 
 #: src/VCBackend.cpp:386
-#, fuzzy
 msgid "Locally Added"
-msgstr "Lokálny súbor formátov"
+msgstr "Lokálne Pridané"
 
 #: src/VCBackend.cpp:388
 msgid "Needs Merge"
-msgstr ""
+msgstr "Potrebuje Zlúčenie"
 
 #: src/VCBackend.cpp:390
 msgid "Needs Checkout"
-msgstr ""
+msgstr "Potrebuje Prevziať na Úpravu"
 
 #: src/VCBackend.cpp:392
-#, fuzzy
 msgid "No CVS file"
-msgstr "Do sú&boru:"
+msgstr "Bez CVS-súboru"
 
 #: src/VCBackend.cpp:394
 msgid "Cannot retrieve CVS status"
-msgstr ""
+msgstr "Nemôžem obnoviť stav CVS"
 
 #: src/VCBackend.cpp:521
 msgid ""
 "The repository version is newer then the current check out.\n"
 "You have to update from repository first or revert your changes."
 msgstr ""
+"Verzia v repozitáre je novšia ako súčasne stiahnutá.\n"
+"Musíte najprv obnoviť z repozitáru alebo odhodiť vaše zmeny."
 
 #: src/VCBackend.cpp:526
 #, c-format
@@ -17730,9 +17728,13 @@ msgid ""
 "'%1$s'\n"
 "\n"
 msgstr ""
+"Zlý stav pri odosielaní vašich zmien.\n"
+"\n"
+"'%1$s'\n"
+"\n"
 
 #: src/VCBackend.cpp:567
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error when updating from repository.\n"
 "You have to manually resolve the conflicts NOW!\n"
@@ -17747,7 +17749,7 @@ msgstr ""
 "Po stisnutí tlačidla OK sa LyX pokúsi opravený dokument znovu otvoriť."
 
 #: src/VCBackend.cpp:599
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
 "%1$s\n"
@@ -17758,9 +17760,8 @@ msgstr ""
 "Zbadané zmeny v pracovnom adresári:\n"
 "%1$s\n"
 "\n"
-"Prednosť pri sporných častí dostane verzia v lokálnom adresáre.\n"
-"\n"
-"Pokračovať?"
+"V prípade sporných častí musíte ich manuálne riešiť alebo sa neskôr "
+"vrátiť na repozitárnu verziu."
 
 #: src/VCBackend.cpp:603 src/VCBackend.cpp:607 src/VCBackend.cpp:970
 #: src/VCBackend.cpp:974
@@ -17768,14 +17769,12 @@ msgid "Changes detected"
 msgstr "Našli sa zmeny"
 
 #: src/VCBackend.cpp:604 src/VCBackend.cpp:608
-#, fuzzy
 msgid "&Continue"
-msgstr "Pokračovanie"
+msgstr "Pokračovať"
 
 #: src/VCBackend.cpp:604 src/VCBackend.cpp:608
-#, fuzzy
 msgid "&Abort"
-msgstr "Triedenie"
+msgstr "Zrušiť"
 
 #: src/VCBackend.cpp:604 src/VCBackend.cpp:971
 msgid "View &Log ..."
@@ -17787,6 +17786,8 @@ msgid ""
 "The document %1$s is not in repository.\n"
 "You have to check in the first revision before you can revert."
 msgstr ""
+"Dokument %1$s nie je v repozitáre.\n"
+"Musíte prvú verziu najprv odoslať keď chcete niečo vrátiť."
 
 #: src/VCBackend.cpp:675
 #, c-format
@@ -17794,6 +17795,8 @@ msgid ""
 "Cannot revert document %1$s to repository version.\n"
 "The status '%2$s' is unexpected."
 msgstr ""
+"Nemôžem vrátiť dokument %1$s na repozitárnu verziu.\n"
+"Neočakávaný stav '%2$s'."
 
 #: src/VCBackend.cpp:776 src/VCBackend.cpp:823 src/VCBackend.cpp:918
 #: src/VCBackend.cpp:955 src/VCBackend.cpp:1011
