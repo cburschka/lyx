@@ -3602,11 +3602,14 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 				     + tabular.interRowSpace(r + 1);
 		}
 
-	} else {
-		x += cellXPos(cur.idx());
-		x += tabular.textHOffset(cur.idx());
-		cell(cur.idx())->drawSelection(pi, x, 0 /* ignored */);
-	}
+	} 
+	// FIXME: This code has no effect because InsetTableCell does not handle
+	// drawSelection other than the trivial implementation in Inset.
+	//else {
+	//	x += cellXPos(cur.idx());
+	//	x += tabular.textHOffset(cur.idx());
+	//	cell(cur.idx())->drawSelection(pi, x, 0 /* ignored */);
+	//}
 }
 
 
