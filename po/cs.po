@@ -10150,9 +10150,8 @@ msgid "Wrap"
 msgstr "Obtékání"
 
 #: lib/layouts/stdinsets.inc:290
-#, fuzzy
 msgid "Argument"
-msgstr "Zarovnání"
+msgstr "Argument"
 
 #: lib/layouts/stdinsets.inc:291
 msgid "opt"
@@ -14243,14 +14242,12 @@ msgid "Next note"
 msgstr "Dal¹í poznámka"
 
 #: lib/ui/stdtoolbars.inc:231
-#, fuzzy
 msgid "View Other Formats"
-msgstr "Dal¹í plovoucí objekty: "
+msgstr "Prohlí¾et ostatní formáty"
 
 #: lib/ui/stdtoolbars.inc:235
-#, fuzzy
 msgid "Update Other Formats"
-msgstr "Aktualizuj seznam znaèek"
+msgstr "Aktualizovat ostatní formát"
 
 #: lib/ui/stdtoolbars.inc:255 src/frontends/qt4/GuiLog.cpp:243
 msgid "Version Control"
@@ -14278,16 +14275,15 @@ msgstr "Návrat k poslední verzi v repozitáøi"
 
 #: lib/ui/stdtoolbars.inc:261
 msgid "Compare with older revision"
-msgstr ""
+msgstr "Porovnat se star¹í revizí"
 
 #: lib/ui/stdtoolbars.inc:262
 msgid "Compare with last revision"
-msgstr ""
+msgstr "Porovnat s poslední revizí"
 
 #: lib/ui/stdtoolbars.inc:263
-#, fuzzy
 msgid "Insert Version Info"
-msgstr "Vlo¾it poznámku na okraj"
+msgstr "Vlo¾it informaci o verzi"
 
 #: lib/ui/stdtoolbars.inc:265
 msgid "Use SVN file locking property"
@@ -16978,9 +16974,8 @@ msgid "LyX Preview"
 msgstr "LyX Náhled"
 
 #: lib/configure.py:576
-#, fuzzy
 msgid "LyX Preview (LilyPond book)"
-msgstr "LyX Náhled (pLaTeX)"
+msgstr "LyX Náhled (LilyPond book)"
 
 #: lib/configure.py:577
 msgid "LyX Preview (pLaTeX)"
@@ -17011,7 +17006,6 @@ msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
 #: lib/configure.py:655
-#, fuzzy
 msgid "LyxBlogger"
 msgstr "LyXBlogger"
 
@@ -17181,18 +17175,18 @@ msgid "Conversion script failed"
 msgstr "Konverzní skript selhal"
 
 #: src/Buffer.cpp:989
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from an older version of LyX, but the lyx2lyx script failed to "
 "convert it."
-msgstr "%1$s je z odli¹né verze LyX-u, ale skript lyx2lyx selhal pøi konverzi."
+msgstr "%1$s je ze star¹í verze LyX-u, ale skript lyx2lyx selhal pøi konverzi."
 
 #: src/Buffer.cpp:996
-#, fuzzy, c-format
+#, c-format
 msgid ""
-"%1$s is from an newer version of LyX, but the lyx2lyx script failed to "
+"%1$s is from an newer version of LyX and the lyx2lyx script failed to "
 "convert it."
-msgstr "%1$s je z odli¹né verze LyX-u, ale skript lyx2lyx selhal pøi konverzi."
+msgstr "%1$s je z novìj¹í verze LyX-u a skript lyx2lyx selhal pøi konverzi."
 
 #: src/Buffer.cpp:1013
 #, c-format
@@ -17297,12 +17291,11 @@ msgid "conversion failed"
 msgstr "konverze se nezdaøila"
 
 #: src/Buffer.cpp:1364
-#, fuzzy
 msgid "Uncodable character in file path"
-msgstr "Nekódovatelné znaky v cestì"
+msgstr "Nekódovatelný znaky v cestì k souboru"
 
 #: src/Buffer.cpp:1365
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The path of your document\n"
 "(%1$s)\n"
@@ -17318,7 +17311,7 @@ msgstr ""
 "obsahuje znaky, které nejsou pou¾itelné v\n"
 "v aktuálním kódování dokumentu (jmenovitì %2$s).\n"
 "\n"
-"To pravdìpodobnì zpùsobí problémy pøi sazbì dokumentu.\n"
+"To pravdìpodobnì zpùsobí neúplný výstup pøi sazbì dokumentu.\n"
 "\n"
 "Vyberte vhodné kódování dokumentu (napø. utf8)\n"
 "nebo zmìnte cestu k souboru."
@@ -17336,39 +17329,38 @@ msgid "Could not run chktex successfully."
 msgstr "chktex nelze úspì¹nì spustit."
 
 #: src/Buffer.cpp:1895
-#, fuzzy, c-format
+#, c-format
 msgid "Don't know how to export to format: %1$s"
-msgstr "®ádná informace pro export formátu %1$s."
+msgstr "Nedostatek informace pro export do formátu %1$s."
 
 #: src/Buffer.cpp:1967 src/frontends/qt4/GuiView.cpp:3051
-#, fuzzy, c-format
+#, c-format
 msgid "Error exporting to format: %1$s."
-msgstr "®ádná informace pro export formátu %1$s."
+msgstr "Chyba pøi exportu do formátu %1$s."
 
 #: src/Buffer.cpp:2050
-#, fuzzy, c-format
+#, c-format
 msgid "Branch \"%1$s\" already exists."
-msgstr "Skupina obrázkù se jménem '%1$s' ji¾ existuje."
+msgstr "Vìtev \"%1$s\" ji¾ existuje."
 
 #: src/Buffer.cpp:2080
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
-msgstr ""
+msgstr "Vìtev \"%1$s\" neexistuje."
 
 #: src/Buffer.cpp:2140
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to parse \"%1$s\""
-msgstr "Neznámý panel nástrojù \"%1$s\""
+msgstr "Nelze správnì dekódovat \"%1$s\""
 
 #: src/Buffer.cpp:2147
-#, fuzzy, c-format
+#, c-format
 msgid "Unrecognized target \"%1$s\""
-msgstr "Neznámý panel nástrojù \"%1$s\""
+msgstr "Neznámý cíl \"%1$s\""
 
 #: src/Buffer.cpp:2157
-#, fuzzy
 msgid "Error exporting to DVI."
-msgstr "Chyba generování pixmapy"
+msgstr "Chyba pøi exportu do DVI."
 
 #: src/Buffer.cpp:2219 src/Exporter.cpp:45
 #, c-format
@@ -17386,9 +17378,8 @@ msgid "Overwrite file?"
 msgstr "Pøepsat soubor?"
 
 #: src/Buffer.cpp:2239
-#, fuzzy
 msgid "Error running external commands."
-msgstr "Chyba pøi ètení informací o rozvr¾ení"
+msgstr "Chyba pøi bìhu externích pøíkazù."
 
 #: src/Buffer.cpp:3039
 msgid "Preview source code"
