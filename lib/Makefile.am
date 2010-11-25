@@ -942,19 +942,19 @@ dist_imagesmath_DATA = \
 	images/math/upsilon2.png \
 	images/math/upuparrows.png \
 	images/math/urcorner.png \
-	images/math/vardelta.png \
+	images/math/varDelta.png \
 	images/math/varepsilon.png \
-	images/math/vargamma.png \
+	images/math/varGamma.png \
 	images/math/varkappa.png \
-	images/math/varlambda.png \
+	images/math/varLambda.png \
 	images/math/varnothing.png \
-	images/math/varomega.png \
+	images/math/varOmega.png \
 	images/math/varphi.png \
 	images/math/varphi2.png \
 	images/math/varpi.png \
 	images/math/varpi2.png \
 	images/math/varpropto.png \
-	images/math/varpsi.png \
+	images/math/varPsi.png \
 	images/math/varrho.png \
 	images/math/varsigma.png \
 	images/math/varsigma2.png \
@@ -967,8 +967,8 @@ dist_imagesmath_DATA = \
 	images/math/vartriangle.png \
 	images/math/vartriangleleft.png \
 	images/math/vartriangleright.png \
-	images/math/varupsilon.png \
-	images/math/varxi.png \
+	images/math/varUpsilon.png \
+	images/math/varXi.png \
 	images/math/vdash.png \
 	images/math/vdash2.png \
 	images/math/vdash3.png \
