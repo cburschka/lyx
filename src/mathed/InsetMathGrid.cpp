@@ -381,8 +381,8 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 	// compute vertical offsets
 	rowinfo_[0].offset_ = 0;
 	for (row_type row = 1; row <= nrows(); ++row) {
-		rowinfo_[row].offset_  =
-			rowinfo_[row - 1].offset_  +
+		rowinfo_[row].offset_ =
+			rowinfo_[row - 1].offset_ +
 			rowinfo_[row - 1].descent_ +
 			rowinfo_[row - 1].skipPixels(mi) +
 			rowsep() +
@@ -427,20 +427,20 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 
 
-	dim.wid   =   colinfo_[ncols() - 1].offset_
-		       + colinfo_[ncols() - 1].width_
-		 + vlinesep() * colinfo_[ncols()].lines_
-		       + border();
+	dim.wid = colinfo_[ncols() - 1].offset_
+		+ colinfo_[ncols() - 1].width_
+		+ vlinesep() * colinfo_[ncols()].lines_
+		+ border();
 
-	dim.asc  = - rowinfo_[0].offset_
-		       + rowinfo_[0].ascent_
-		 + hlinesep() * rowinfo_[0].lines_
-		       + border();
+	dim.asc = - rowinfo_[0].offset_
+		+ rowinfo_[0].ascent_
+		+ hlinesep() * rowinfo_[0].lines_
+		+ border();
 
-	dim.des =   rowinfo_[nrows() - 1].offset_
-		       + rowinfo_[nrows() - 1].descent_
-		 + hlinesep() * rowinfo_[nrows()].lines_
-		       + border();
+	dim.des = rowinfo_[nrows() - 1].offset_
+		+ rowinfo_[nrows() - 1].descent_
+		+ hlinesep() * rowinfo_[nrows()].lines_
+		+ border();
 
 
 /*
