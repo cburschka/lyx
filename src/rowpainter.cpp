@@ -114,6 +114,8 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 	int const x1 = int(x_);
 	pi_.base.bv->coordCache().insets().add(inset, x1, yo_);
 	// insets are painted completely. Recursive
+	// FIXME: it is wrong to completely paint the background
+	// if we want to do single row painting.
 	inset->drawBackground(pi_, x1, yo_);
 	inset->drawSelection(pi_, x1, yo_);
 	inset->draw(pi_, x1, yo_);

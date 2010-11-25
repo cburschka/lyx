@@ -783,6 +783,8 @@ public:
 	///
 	void drawSelection(PainterInfo & pi, int x, int y) const;
 	///
+	void drawBackground(PainterInfo & pi, int x, int y) const;
+	///
 	bool editable() const { return true; }
 	///
 	bool hasSettings() const { return true; }
