@@ -9880,7 +9880,7 @@ msgstr "FirstName"
 #: lib/layouts/literate-scrap.inc:12 lib/layouts/noweb.module:11
 #: lib/layouts/sweave.module:39
 msgid "Scrap"
-msgstr "Scrap"
+msgstr "Útr¾ek"
 
 #: lib/layouts/numreport.inc:12
 msgid "\\arabic{chapter}"
@@ -10629,18 +10629,16 @@ msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
 msgstr "Pøedefinovat nìkteré z vlo¾ek jako minimalistické (Index, Vìtev, URL)."
 
 #: lib/layouts/noweb.module:2
-#, fuzzy
 msgid "Noweb literate programming"
-msgstr "Log z \"Literate Programming\" sestavování nenalezen."
+msgstr "Noweb dokumentované programování"
 
 #: lib/layouts/noweb.module:5
 msgid "Allows to use Noweb as a literate programming tool."
-msgstr ""
+msgstr "Povolit Noweb jako¾to nástroj pro dokumentované programování (literate programming)."
 
 #: lib/layouts/noweb.module:5 lib/layouts/sweave.module:5
-#, fuzzy
 msgid "literate"
-msgstr "Literate"
+msgstr "dokumentované"
 
 #: lib/layouts/sweave.module:2 lib/layouts/sweave.module:21
 #: lib/configure.py:506
@@ -10650,34 +10648,31 @@ msgstr "Sweave"
 #: lib/layouts/sweave.module:5
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool."
-msgstr ""
+msgstr "Povoluje statistický programovací jazyk S/R jako¾to nástroj pro dokumentované programování"
 
 #: lib/layouts/sweave.module:20
 msgid "Chunk"
-msgstr ""
+msgstr "Útr¾ek"
 
 #: lib/layouts/sweave.module:43
-#, fuzzy
 msgid "Sweave Options"
-msgstr "Parametry pro LaTeX"
+msgstr "Parametry pro Sweave"
 
 #: lib/layouts/sweave.module:44
 msgid "Sweave opts"
-msgstr ""
+msgstr "Sweave par."
 
 #: lib/layouts/sweave.module:64
-#, fuzzy
 msgid "S/R expression"
-msgstr "&Regulární výraz"
+msgstr "S/R výraz"
 
 #: lib/layouts/sweave.module:65
-#, fuzzy
 msgid "S/R expr"
-msgstr "výraz"
+msgstr "S/R výraz"
 
 #: lib/layouts/sweave.module:85 lib/layouts/sweave.module:86
 msgid "Sweave Input File"
-msgstr ""
+msgstr "Vstupní soubor pro Sweave"
 
 #: lib/layouts/tabs-within-sections.module:2
 msgid "Number Tables by Section"
@@ -21170,7 +21165,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiErrorList.cpp:44 src/frontends/qt4/GuiLog.cpp:237
 msgid "Literate"
-msgstr "Literate"
+msgstr "Dokumentované programování"
 
 #: src/frontends/qt4/GuiErrorList.cpp:46
 msgid "pLaTeX"
@@ -21499,7 +21494,7 @@ msgstr "LyX2LyX"
 
 #: src/frontends/qt4/GuiLog.cpp:267
 msgid "Literate Programming Build Log"
-msgstr "Log z \"Literate Programming\" sestavování"
+msgstr "Log z dokumentovaného programování"
 
 #: src/frontends/qt4/GuiLog.cpp:269
 msgid "lyx2lyx Error Log"
@@ -21510,13 +21505,12 @@ msgid "Version Control Log"
 msgstr "Log ze správy verzí"
 
 #: src/frontends/qt4/GuiLog.cpp:297
-#, fuzzy
 msgid "Log file not found."
-msgstr "Soubor nenalezen"
+msgstr "Soubor pro log nenalezen"
 
 #: src/frontends/qt4/GuiLog.cpp:300
 msgid "No literate programming build log file found."
-msgstr "Log z \"Literate Programming\" sestavování nenalezen."
+msgstr "Soubor s logem dokumentovaného programování nenalezen."
 
 #: src/frontends/qt4/GuiLog.cpp:303
 msgid "No lyx2lyx error log file found."
@@ -22654,7 +22648,7 @@ msgstr "Zdrojový soubor DocBook-u"
 
 #: src/frontends/qt4/GuiViewSource.cpp:206
 msgid "Literate Source"
-msgstr "Zdrojový kód (literate programming)"
+msgstr "Zdrojový kód dokumentovaného programování"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1285
 msgid " (version control, locking)"
