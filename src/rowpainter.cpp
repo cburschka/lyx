@@ -921,6 +921,104 @@ void RowPainter::paintText()
 }
 
 
+void RowPainter::paintSelection()
+{
+	if (!row_.selection())
+		return;
+	Cursor const & curs = pi_.base.bv->cursor();
+	DocIterator beg = curs.selectionBegin();
+	beg.pit() = pit_;
+	beg.pos() = row_.sel_beg;
+
+	DocIterator end = curs.selectionEnd();
+	end.pit() = pit_;
+	end.pos() = row_.sel_end;
+
+	bool const begin_boundary = beg.pos() >= row_.endpos();
+	bool const end_boundary = row_.sel_end == row_.endpos();
+
+	DocIterator cur = beg;
+	cur.boundary(begin_boundary);
+	int x1 = text_metrics_.cursorX(beg.top(), begin_boundary);
+	int x2 = text_metrics_.cursorX(end.top(), end_boundary);
+	int const y1 = yo_ - row_.ascent();
+	int const y2 = y1 + row_.height();
+
+	int const rm = text_.isMainText() ? pi_.base.bv->rightMargin() : 0;
+	int const lm = text_.isMainText() ? pi_.base.bv->leftMargin() : 0;
+
+	// draw the margins
+	if (row_.begin_margin_sel) {
+		if (text_.isRTL(beg.paragraph())) {
+			pi_.pain.fillRectangle(xo_ + x1, y1, text_metrics_.width() - rm - x1, y2 - y1,
+				Color_selection);
+		} else {
+			pi_.pain.fillRectangle(xo_ + lm, y1, x1 - lm, y2 - y1,
+				Color_selection);
+		}
+	}
+
+	if (row_.end_margin_sel) {
+		if (text_.isRTL(beg.paragraph())) {
+			pi_.pain.fillRectangle(xo_ + lm, y1, x2 - lm, y2 - y1,
+				Color_selection);
+		} else {
+			pi_.pain.fillRectangle(xo_ + x2, y1, text_metrics_.width() - rm - x2, y2 - y1,
+				Color_selection);
+		}
+	}
+
+	// if we are on a boundary from the beginning, it's probably
+	// a RTL boundary and we jump to the other side directly as this
+	// segement is 0-size and confuses the logic below
+	if (cur.boundary())
+		cur.boundary(false);
+
+	// go through row and draw from RTL boundary to RTL boundary
+	while (cur < end) {
+		bool draw_now = false;
+
+		// simplified cursorForward code below which does not
+		// descend into insets and which does not go into the
+		// next line. Compare the logic with the original cursorForward
+
+		// if left of boundary -> just jump to right side, but
+		// for RTL boundaries don't, because: abc|DDEEFFghi -> abcDDEEF|Fghi
+		if (cur.boundary()) {
+			cur.boundary(false);
+		}	else if (text_metrics_.isRTLBoundary(cur.pit(), cur.pos() + 1)) {
+			// in front of RTL boundary -> Stay on this side of the boundary
+			// because:  ab|cDDEEFFghi -> abc|DDEEFFghi
+			++cur.pos();
+			cur.boundary(true);
+			draw_now = true;
+		} else {
+			// move right
+			++cur.pos();
+
+			// line end?
+			if (cur.pos() == row_.endpos())
+				cur.boundary(true);
+		}
+
+		if (x1 == -1) {
+			// the previous segment was just drawn, now the next starts
+			x1 = text_metrics_.cursorX(cur.top(), cur.boundary());
+		}
+
+		if (!(cur < end) || draw_now) {
+			x2 = text_metrics_.cursorX(cur.top(), cur.boundary());
+			pi_.pain.fillRectangle(xo_ + min(x1,x2), y1, abs(x2 - x1), y2 - y1,
+				Color_selection);
+
+			// reset x1, so it is set again next round (which will be on the
+			// right side of a boundary or at the selection end)
+			x1 = -1;
+		}
+	}
+}
+
+
 void RowPainter::paintInlineCompletion(Font const & font)
 {
 	docstring completion = pi_.base.bv->inlineCompletion();

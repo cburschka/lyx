@@ -2152,9 +2152,6 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 				width(), row.height(), pi.background_color);
 		}
 		
-		if (row.selection())
-			drawRowSelection(pi, x, row, cur, pit);
-
 		// Instrumentation for testing row cache (see also
 		// 12 lines lower):
 		if (lyxerr.debugging(Debug::PAINTING) && inside
@@ -2171,6 +2168,8 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		// for inner insets as the Row has been cleared out.
 		bool tmp = pi.full_repaint;
 		pi.full_repaint = true;
+
+		rp.paintSelection();
 		rp.paintAppendix();
 		rp.paintDepthBar();
 		rp.paintChangeBar();
@@ -2185,6 +2184,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		if (i == 0 && is_rtl)
 			rp.paintFirst();
 		y += row.descent();
+
 		// Restore full_repaint status.
 		pi.full_repaint = tmp;
 	}
@@ -2192,102 +2192,6 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 	pi.pain.setDrawingEnabled(original_drawing_state);
 
 	//LYXERR(Debug::PAINTING, ".");
-}
-
-
-void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
-		Cursor const & curs, pit_type pit) const
-{
-	DocIterator beg = curs.selectionBegin();
-	beg.pit() = pit;
-	beg.pos() = row.sel_beg;
-
-	DocIterator end = curs.selectionEnd();
-	end.pit() = pit;
-	end.pos() = row.sel_end;
-
-	bool const begin_boundary = beg.pos() >= row.endpos();
-	bool const end_boundary = row.sel_end == row.endpos();
-
-	DocIterator cur = beg;
-	cur.boundary(begin_boundary);
-	int x1 = cursorX(beg.top(), begin_boundary);
-	int x2 = cursorX(end.top(), end_boundary);
-	int const y1 = bv_->getPos(cur).y_ - row.ascent();
-	int const y2 = y1 + row.height();
-
-	int const rm = text_->isMainText() ? bv_->rightMargin() : 0;
-	int const lm = text_->isMainText() ? bv_->leftMargin() : 0;
-
-	// draw the margins
-	if (row.begin_margin_sel) {
-		if (text_->isRTL(beg.paragraph())) {
-			pi.pain.fillRectangle(x + x1, y1,  width() - rm - x1, y2 - y1,
-				Color_selection);
-		} else {
-			pi.pain.fillRectangle(x + lm, y1, x1 - lm, y2 - y1,
-				Color_selection);
-		}
-	}
-
-	if (row.end_margin_sel) {
-		if (text_->isRTL(beg.paragraph())) {
-			pi.pain.fillRectangle(x + lm, y1, x2 - lm, y2 - y1,
-				Color_selection);
-		} else {
-			pi.pain.fillRectangle(x + x2, y1, width() - rm - x2, y2 - y1,
-				Color_selection);
-		}
-	}
-
-	// if we are on a boundary from the beginning, it's probably
-	// a RTL boundary and we jump to the other side directly as this
-	// segement is 0-size and confuses the logic below
-	if (cur.boundary())
-		cur.boundary(false);
-
-	// go through row and draw from RTL boundary to RTL boundary
-	while (cur < end) {
-		bool draw_now = false;
-
-		// simplified cursorForward code below which does not
-		// descend into insets and which does not go into the
-		// next line. Compare the logic with the original cursorForward
-
-		// if left of boundary -> just jump to right side, but
-		// for RTL boundaries don't, because: abc|DDEEFFghi -> abcDDEEF|Fghi
-		if (cur.boundary()) {
-			cur.boundary(false);
-		}	else if (isRTLBoundary(cur.pit(), cur.pos() + 1)) {
-			// in front of RTL boundary -> Stay on this side of the boundary
-			// because:  ab|cDDEEFFghi -> abc|DDEEFFghi
-			++cur.pos();
-			cur.boundary(true);
-			draw_now = true;
-		} else {
-			// move right
-			++cur.pos();
-
-			// line end?
-			if (cur.pos() == row.endpos())
-				cur.boundary(true);
-		}
-
-		if (x1 == -1) {
-			// the previous segment was just drawn, now the next starts
-			x1 = cursorX(cur.top(), cur.boundary());
-		}
-
-		if (!(cur < end) || draw_now) {
-			x2 = cursorX(cur.top(), cur.boundary());
-			pi.pain.fillRectangle(x + min(x1,x2), y1, abs(x2 - x1), y2 - y1,
-				Color_selection);
-
-			// reset x1, so it is set again next round (which will be on the
-			// right side of a boundary or at the selection end)
-			x1 = -1;
-		}
-	}
 }
 
 

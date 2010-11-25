@@ -55,6 +55,7 @@ public:
 	void paintLast();
 	void paintText();
 	void paintOnlyInsets();
+	void paintSelection();
 
 private:
 	void paintForeignMark(double orig_x, Language const * lang, int desc = 0);
