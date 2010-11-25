@@ -465,7 +465,7 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
 		end_inset(os);
 		eat_whitespace(p, os, context, false);
-		optargs++;
+		++optargs;
 	}
 #if 0
 	// This is the code needed to parse required arguments, but 
@@ -482,7 +482,7 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
 		end_inset(os);
 		eat_whitespace(p, os, context, false);
-		reqargs++;
+		++reqargs;
 	}
 #endif
 	parse_text(p, os, FLAG_ITEM, outer, context);

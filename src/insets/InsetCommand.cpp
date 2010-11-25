@@ -99,13 +99,13 @@ void InsetCommand::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetCommand::setParam(std::string const & name, docstring const & value)
+void InsetCommand::setParam(string const & name, docstring const & value)
 {
 	p_[name] = value;
 }
 
 
-docstring const & InsetCommand::getParam(std::string const & name) const
+docstring const & InsetCommand::getParam(string const & name) const
 {
 	return p_[name];
 }

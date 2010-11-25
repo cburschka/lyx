@@ -167,7 +167,7 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.des = dim1.height() - 5;
 		} else {
 			if (kind_ == CFRAC || kind_ == CFRACLEFT
-			|| kind_ == CFRACRIGHT || kind_ == DFRAC) {
+				  || kind_ == CFRACRIGHT || kind_ == DFRAC) {
 				// \cfrac and \dfrac are always in display size
 				StyleChanger dummy2(mi.base, LM_ST_DISPLAY);
 				cell(0).metrics(mi, dim0);
@@ -407,7 +407,7 @@ void InsetMathFrac::validate(LaTeXFeatures & features) const
 	if (kind_ == NICEFRAC || kind_ == UNITFRAC || kind_ == UNIT)
 		features.require("units");
 	if (kind_ == CFRAC || kind_ == CFRACLEFT || kind_ == CFRACRIGHT
-		|| kind_ == DFRAC || kind_ == TFRAC)
+		  || kind_ == DFRAC || kind_ == TFRAC)
 		features.require("amsmath");
 	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		// CSS adapted from eLyXer

@@ -85,6 +85,11 @@ public:
 	bool setMouseHover(BufferView const * bv, bool mouse_hover) const;
 	///
 	bool clickable(int, int) const { return hasSettings(); }
+	//@}
+
+protected:
+	/// \name Methods relaying to the InsetCommandParams p_
+	//@{
 	///
 	docstring contextMenu(BufferView const & bv, int x, int y) const;
 	///

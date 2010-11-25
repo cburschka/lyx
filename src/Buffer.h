@@ -202,7 +202,7 @@ public:
 	bool readString(std::string const &);
 	/// Reloads the LyX file
 	ReadStatus reload();
-//FIXME: The following two functions should be private
+//FIXME: The following function should be private
 //private:
 	/// read the header, returns number of unknown tokens
 	int readHeader(Lexer & lex);

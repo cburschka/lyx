@@ -13,8 +13,7 @@
 namespace lyx {
 
 /// Names of colors, including all logical colors
-enum ColorCode
-{
+enum ColorCode {
 	/// No particular color---clear or default
 	Color_none,
 	/// The different text colors

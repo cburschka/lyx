@@ -370,7 +370,8 @@ private:
 	bool renameBuffer(Buffer & b, docstring const & newname);
 	///
 	bool saveBuffer(Buffer & b);
-	///
+	/// save and rename buffer to fn. If fn is empty, the buffer
+	/// is just saved as the filename it already has.
 	bool saveBuffer(Buffer & b, support::FileName const & fn);
 	/// closes a workarea, if close_buffer is true the buffer will
 	/// also be released, otherwise the buffer will be hidden.

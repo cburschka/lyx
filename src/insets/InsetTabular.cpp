@@ -3361,7 +3361,7 @@ int InsetTabular::rowFromY(Cursor & cur, int y) const
 	row_type r = 0;
 	for (; r < tabular.nrows() && y > h; ++r)
 		h += tabular.rowAscent(r) + tabular.rowDescent(r)
-		+ tabular.interRowSpace(r);
+			+ tabular.interRowSpace(r);
 
 	return r - 1;
 }
