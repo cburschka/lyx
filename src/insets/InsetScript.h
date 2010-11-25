@@ -59,7 +59,9 @@ public:
 	static void string2params(std::string const &, InsetScriptParams &);
 	///
 	InsetScriptParams const & params() const { return params_; }
-private:
+
+	/// \name Public functions inherited from Inset class
+	//@{
 	///
 	InsetCode lyxCode() const { return SCRIPT_CODE; }
 	///
@@ -71,7 +73,7 @@ private:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	virtual void cursorPos(BufferView const & bv,
+	void cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const;
 	///
 	void write(std::ostream &) const;
@@ -80,11 +82,9 @@ private:
 	///
 	bool neverIndent() const { return true; }
 	///
-	virtual bool forcePlainLayout(idx_type = 0) const { return true; }
+	bool forcePlainLayout(idx_type = 0) const { return true; }
 	///
-	virtual bool allowMultiPar() const { return false; }
-	///
-	virtual bool allowParagraphCustomization(idx_type = 0) const { return false; }
+	bool allowParagraphCustomization(idx_type = 0) const { return false; }
 	///
 	virtual void validate(LaTeXFeatures &) const;
 	///
@@ -101,22 +101,35 @@ private:
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
 	///
-	virtual bool insetAllowed(InsetCode code) const;
+	bool insetAllowed(InsetCode code) const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
-	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
 	Inset * clone() const { return new InsetScript(*this); }
+	///
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
+	//@}
+
+	/// \name Public functions inherited from InsetText class
+	//@{
+	///
+	bool allowMultiPar() const { return false; }
+	//@}
+
+protected:
+	/// \name Protected functions inherited from Inset class
+	//@{
+	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	//@}
+
+private:
 	/// used by the constructors
 	void init();
 	///
-	docstring contextMenu(BufferView const & bv, int x, int y) const;
-	///
 	friend class InsetScriptParams;
-
 	///
 	InsetScriptParams params_;
 };
