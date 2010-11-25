@@ -4720,21 +4720,13 @@ void InsetTabular::cursorPos(BufferView const & bv,
 {
 	cell(sl.idx())->cursorPos(bv, sl, boundary, x, y);
 
-	int const row = tabular.cellRow(sl.idx());
-	int const col = tabular.cellColumn(sl.idx());
-
 	// y offset	correction
-	for (int r = 0;	r < row; ++r)
-		y += tabular.rowDescent(r) + tabular.rowAscent(r + 1) 
-			+ tabular.interRowSpace(r + 1);
-
+	y += cellYPos(sl.idx());
 	y += tabular.textVOffset(sl.idx());
 	y += offset_valign_;
 
 	// x offset correction
-	for (int c = 0; c < col; ++c)
-		x += tabular.column_info[c].width;
-	
+	x += cellXPos(sl.idx());
 	x += tabular.textHOffset(sl.idx());
 	x += ADD_TO_TABULAR_WIDTH;
 	x += scx_;
@@ -4807,13 +4799,23 @@ InsetTabular::idx_type InsetTabular::getNearestCell(BufferView & bv, int x, int 
 }
 
 
+int InsetTabular::cellYPos(idx_type const cell) const
+{
+	row_type row = tabular.cellRow(cell);
+	int ly = 0;
+	for (row_type r = 0; r < row; ++r)
+		ly += tabular.rowDescent(r) + tabular.rowAscent(r + 1) 
+			+ tabular.interRowSpace(r + 1);
+	return ly;
+}
+
+
 int InsetTabular::cellXPos(idx_type const cell) const
 {
 	col_type col = tabular.cellColumn(cell);
 	int lx = 0;
 	for (col_type c = 0; c < col; ++c)
 		lx += tabular.column_info[c].width;
-
 	return lx;
 }
 

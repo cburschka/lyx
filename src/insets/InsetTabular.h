@@ -928,6 +928,8 @@ private:
 	///
 	int cellXPos(idx_type cell) const;
 	///
+	int cellYPos(idx_type cell) const;
+	///
 	void resetPos(Cursor & cur) const;
 	///
 	bool copySelection(Cursor & cur);
