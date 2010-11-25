@@ -115,8 +115,6 @@ enum InsetCode {
 	///
 	PHANTOM_CODE,
 	///
-	SCRIPT_CODE,
-	///
 	MATH_AMSARRAY_CODE,
 	///
 	MATH_ARRAY_CODE,
@@ -226,6 +224,8 @@ enum InsetCode {
 	PREVIEW_CODE,
 	///
 	MATH_DIAGRAM_CODE, 
+	///
+	SCRIPT_CODE,
 	///
 	INSET_CODE_SIZE,
 };
