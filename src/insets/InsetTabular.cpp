@@ -88,7 +88,7 @@ namespace Alert = frontend::Alert;
 namespace {
 
 int const ADD_TO_HEIGHT = 2; // in cell
-int const ADD_TO_TABULAR_WIDTH = 6; // horiz space before and after the table
+int const ADD_TO_TABULAR_WIDTH = 6; // horizontal space before and after the table
 int const default_line_space = 10; // ?
 int const WIDTH_OF_LINE = 5; // space between double lines
 
@@ -3411,7 +3411,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			TextMetrics const & tm = 
 				mi.base.bv->textMetrics(tabular.cellInset(cell)->getText(0));
 
-			// determine horiz offset because of decimal align (if necessary)
+			// determine horizontal offset because of decimal align (if necessary)
 			int decimal_hoffset = 0;
 			int decimal_width = 0;
 			if (tabular.getAlignment(cell) == LYX_ALIGN_DECIMAL) {
