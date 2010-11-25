@@ -57,7 +57,7 @@
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 2010-11-02
+LFUNs documentation automatically generated 2010-11-25
 \end_layout
 
 \begin_layout Standard
@@ -690,6 +690,22 @@ Params <CHAR>: hyphenation, ligature-break, slash, nobreakdash, dots, end-of-sen
 \end_layout
 \begin_layout Description
 Origin JSpitzm, 6 Dec 2007
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SCRIPT_INSERT
+\end_layout
+\begin_layout Description
+Action Inserts a subscript or superscript inset.
+\end_layout
+\begin_layout Description
+Syntax script-insert <TYPE>
+\end_layout
+\begin_layout Description
+Params <TYPE>: subscript|superscript
+\end_layout
+\begin_layout Description
+Origin Georg, 23 Nov 2010
 \end_layout
 
 \begin_layout Subsection*
@@ -1639,7 +1655,7 @@ Syntax clipboard-paste [<ARG>]
 Params <ARG>: "paragraph" will cause pasting as one paragraph, i.e. "Join lines".
 \end_layout
 \begin_layout Description
-Origin baum, 10 Jul 2006
+Origin Georg, 10 Jul 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -2283,7 +2299,7 @@ Origin vermeer, 12 Dec 2001
 LFUN_MATH_SUPERSCRIPT
 \end_layout
 \begin_layout Description
-Action Enters subscript expression in math expression.
+Action Enters superscript expression in math expression.
 \end_layout
 \begin_layout Description
 Syntax math-superscript
@@ -3471,7 +3487,7 @@ Action Insert new inset (type given by the parameters).
 Syntax inset-insert <INSET> <ARGS>
 \end_layout
 \begin_layout Description
-Params <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics|tabular| hyperlink|include|index|label|line|nomencl|vspace|ref|toc>
+Params <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics|tabular| hyperlink|include|index|label|line|nomencl|vspace|ref|toc|script>
 \begin_inset Newline newline
 \end_inset
 
