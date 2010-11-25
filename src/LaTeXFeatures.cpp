@@ -285,22 +285,20 @@ LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p,
 
 bool LaTeXFeatures::useBabel() const
 {
-	return (lyxrc.language_package_selection != LyXRC::LP_NONE)
-	        && !usePolyglossia()
-	        && ((bufferParams().language->lang() != lyxrc.default_language
+	if (usePolyglossia())
+		return false;
+	return lyxrc.language_package_selection != LyXRC::LP_NONE
+	        || (bufferParams().language->lang() != lyxrc.default_language
 	            && !bufferParams().language->babel().empty())
-	            || this->hasLanguages());
+	        || this->hasLanguages();
 }
 
 
 bool LaTeXFeatures::usePolyglossia() const
 {
-	return (lyxrc.language_package_selection == LyXRC::LP_AUTO)
+	return lyxrc.language_package_selection == LyXRC::LP_AUTO
 	        && isRequired("polyglossia")
 	        && isAvailable("polyglossia")
-	        && ((bufferParams().language->lang() != lyxrc.default_language
-	             && !bufferParams().language->polyglossia().empty())
-	            || this->hasLanguages())
 	        && this->hasPolyglossiaLanguages();
 }
 
