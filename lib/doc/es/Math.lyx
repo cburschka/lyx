@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0.0beta1 created this file. For more info see http://www.lyx.org/
+\lyxformat 408
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -2225,7 +2225,8 @@ frac
 \series default
 :
 \begin_inset Formula \[
-\cfrac{A}{B+\cfrac{C+\frac{E}{F}}{D}}\]
+\cfrac{A}{B+\cfrac{C+\frac{E}{F}}{D}}
+\]
 
 \end_inset
 
@@ -4999,7 +5000,8 @@ dots
 A & B & C & D\\
 \hdotsfor[2]{4}\\
 q & w & e & r
-\end{array}\right)\]
+\end{array}\right)
+\]
 
 \end_inset
 
@@ -6757,7 +6759,8 @@ bigg>
 \backslash
 Bigg)^0,5
 \begin_inset Formula \[
-\Bigg(\exp\bigg<\Big[\big\{\ln(3x)\big\}^{2}\sen(x)\Big]^{A}\bigg>\Bigg)^{0,5}\]
+\Bigg(\exp\bigg<\Big[\big\{\ln(3x)\big\}^{2}\sen(x)\Big]^{A}\bigg>\Bigg)^{0,5}
+\]
 
 \end_inset
 
@@ -7204,7 +7207,8 @@ spce
 \series default
  genera
 \begin_inset Formula \[
-\ln(\frac{A}{C})\]
+\ln(\frac{A}{C})
+\]
 
 \end_inset
 
@@ -7266,7 +7270,8 @@ right)
 \series default
  genera
 \begin_inset Formula \[
-\ln\left(\frac{A}{C}\right)\]
+\ln\left(\frac{A}{C}\right)
+\]
 
 \end_inset
 
@@ -7383,7 +7388,8 @@ right}
 \series default
  da lugar a:
 \begin_inset Formula \[
-\left.\frac{A}{B}\right\} \]
+\left.\frac{A}{B}\right\} 
+\]
 
 \end_inset
 
@@ -7440,7 +7446,8 @@ middle
 
 e., para vectores físicos: 
 \begin_inset Formula \[
-\left\langle \phi\;\middle|\; J=\frac{3}{2}\,,\, M_{J}\right\rangle \]
+\left\langle \phi\;\middle|\; J=\frac{3}{2}\,,\, M_{J}\right\rangle 
+\]
 
 \end_inset
 
@@ -10615,7 +10622,8 @@ n
 \series default
  genera:
 \begin_inset Formula \[
-\sideset{}{'}\sum_{k=1}^{n}\]
+\sideset{}{'}\sum_{k=1}^{n}
+\]
 
 \end_inset
 
@@ -10667,7 +10675,8 @@ a
 \series default
  genera:
 \begin_inset Formula \[
-\overset{a}{\maltese}\]
+\overset{a}{\maltese}
+\]
 
 \end_inset
 
@@ -11145,7 +11154,8 @@ widehat
  sólo pueden abarcar tres caracteres en la salida, como se muestra en este
  ejemplo:
 \begin_inset Formula \[
-\widetilde{A+B=C-D}\]
+\widetilde{A+B=C-D}
+\]
 
 \end_inset
 
@@ -11216,7 +11226,8 @@ A=B
 \series default
  da:
 \begin_inset Formula \[
-\underset{***}{A=B}\]
+\underset{***}{A=B}
+\]
 
 \end_inset
 
@@ -13251,7 +13262,8 @@ fboxsep 3mm
 
 
 \begin_inset Formula \[
-\boxed{A+B=C}\]
+\boxed{A+B=C}
+\]
 
 \end_inset
 
@@ -14107,7 +14119,8 @@ Un ejemplo:
 \color red
 
 \begin_inset Formula \begin{equation}
-{\color{red}\int A=B}\label{eq:rojo}\end{equation}
+{\color{red}\int A=B}\label{eq:rojo}
+\end{equation}
 
 \end_inset
 
@@ -14115,7 +14128,8 @@ Un ejemplo:
 \color green
 
 \begin_inset Formula \begin{equation}
-{\color{green}{\color{red}\int A=B}}\label{eq:rojoverde}\end{equation}
+{\color{green}{\color{red}\int A=B}}\label{eq:rojoverde}
+\end{equation}
 
 \end_inset
 
@@ -14233,7 +14247,8 @@ fboxsep 1mm
 
 
 \begin_inset Formula \[
-\fcolorbox{cyan}{magenta}{A=B}\]
+\fcolorbox{cyan}{magenta}{A=B}
+\]
 
 \end_inset
 
@@ -14394,7 +14409,8 @@ verdeoscuro
 \color black
 
 \begin_inset Formula \begin{equation}
-\colorbox{verdeoscuro}{\color{yellow}\boxed{\int A\,\mathrm{d}x=\frac{\sqrt[3]{B}}{\ln\left(\frac{1}{3}\right)}}}\end{equation}
+\colorbox{verdeoscuro}{\color{yellow}\boxed{\int A\,\mathrm{d}x=\frac{\sqrt[3]{B}}{\ln\left(\frac{1}{3}\right)}}}
+\end{equation}
 
 \end_inset
 
@@ -14829,7 +14845,8 @@ fboxrule}{
 
 
 \begin_inset Formula \begin{equation}
-\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}\end{equation}
+\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}
+\end{equation}
 
 \end_inset
 
@@ -15077,7 +15094,8 @@ comentado
 
  usando el modo texto matemático:
 \begin_inset Formula \[
-5x-7b=3b\textrm{ Esto es una descripción. No está separada de la ecuación...}\]
+5x-7b=3b\textrm{ Esto es una descripción. No está separada de la ecuación...}
+\]
 
 \end_inset
 
@@ -16325,7 +16343,8 @@ L
 \begin_layout Standard
 El tipo de límites por omisión es:
 \begin_inset Formula \[
-\sum_{x=0}^{\infty}\frac{1}{x^{2}}\]
+\sum_{x=0}^{\infty}\frac{1}{x^{2}}
+\]
 
 \end_inset
 
@@ -16339,7 +16358,8 @@ Alineado
 \series default
 :
 \begin_inset Formula \[
-\sum\nolimits _{x=0}^{\infty}\frac{1}{x^{2}}\]
+\sum\nolimits _{x=0}^{\infty}\frac{1}{x^{2}}
+\]
 
 \end_inset
 
@@ -16372,7 +16392,8 @@ Presentado
 \series default
  para poner el límite debajo:
 \begin_inset Formula \begin{equation}
-\iiint\limits _{V}X\,\mathrm{d}V=U\label{eq:IntVol}\end{equation}
+\iiint\limits _{V}X\,\mathrm{d}V=U\label{eq:IntVol}
+\end{equation}
 
 \end_inset
 
@@ -16423,7 +16444,8 @@ substack
 0<k<1000\\
 \\
 k\,\in\,\mathbb{N}
-\end{subarray}}^{n}k^{-2}\label{eq:substack}\end{equation}
+\end{subarray}}^{n}k^{-2}\label{eq:substack}
+\end{equation}
 
 \end_inset
 
@@ -16686,7 +16708,8 @@ para componer el límite inferior.
 \\
 k\,\in\,\mathbb{N}
 }
-}}^{n}k^{-2}\]
+}}^{n}k^{-2}
+\]
 
 \end_inset
 
@@ -17944,7 +17967,8 @@ reference "sub:Símbolos-misceláneos"
 
 .
 \begin_inset Formula \[
-\Lozenge_{n=1}^{\infty}\]
+\Lozenge_{n=1}^{\infty}
+\]
 
 \end_inset
 
@@ -18045,7 +18069,8 @@ mathop
 \series default
  se puede usar, p.e., para poner un límite a varios operadores:
 \begin_inset Formula \[
-\mathop{\sum\negmedspace\sum}_{i,j=1}^{N}\]
+\mathop{\sum\negmedspace\sum}_{i,j=1}^{N}
+\]
 
 \end_inset
 
@@ -18809,7 +18834,8 @@ mathnormal
 \begin_layout Standard
 Los comandos de estilo funcionan también en estructuras matemáticas:
 \begin_inset Formula \[
-\mathfrak{A=\frac{b}{C}}\]
+\mathfrak{A=\frac{b}{C}}
+\]
 
 \end_inset
 
@@ -18895,7 +18921,8 @@ mathbf
 , porque no funciona con minúsculas griegas.
  Además, siempre imprime en redonda las letras latinas, como en la ecuación:
 \begin_inset Formula \[
-\mathbf{\int_{n}^{2}f(\theta)=\Gamma}\qquad\textrm{ecuación con \textbackslash mathbf}\]
+\mathbf{\int_{n}^{2}f(\theta)=\Gamma}\qquad\textrm{ecuación con \textbackslash mathbf}
+\]
 
 \end_inset
 
@@ -18909,7 +18936,8 @@ boldsymbol
 \series default
 :
 \begin_inset Formula \[
-\boldsymbol{\int_{n}^{2}f(\theta)=\Gamma}\qquad\textrm{ecuación con \textbackslash boldsymbol}\]
+\boldsymbol{\int_{n}^{2}f(\theta)=\Gamma}\qquad\textrm{ecuación con \textbackslash boldsymbol}
+\]
 
 \end_inset
 
@@ -18973,7 +19001,8 @@ boldmath
 
 
 \begin_inset Formula \[
-\int_{n}^{2}f(\theta)=\Gamma\qquad\textrm{ecuación en un entorno boldmath}\]
+\int_{n}^{2}f(\theta)=\Gamma\qquad\textrm{ecuación en un entorno boldmath}
+\]
 
 \end_inset
 
@@ -19019,7 +19048,8 @@ Estilo del texto
 .
  Aquí hay una ecuación en magenta:
 \begin_inset Formula \[
-{\color{magenta}\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}\]
+{\color{magenta}\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}
+\]
 
 \end_inset
 
@@ -19091,7 +19121,8 @@ textcolor{verdeoscuro}{
 
 
 \begin_inset Formula \[
-\int A\,\mathrm{d}x=\frac{{\color{red}\sqrt[5]{B}}}{\ln\left(\frac{1}{3}\right)}\]
+\int A\,\mathrm{d}x=\frac{{\color{red}\sqrt[5]{B}}}{\ln\left(\frac{1}{3}\right)}
+\]
 
 \end_inset
 
@@ -19473,13 +19504,15 @@ huge
 
 
 \begin_inset Formula \[
-A=\frac{B}{c}\cdot\maltese\]
+A=\frac{B}{c}\cdot\maltese
+\]
 
 \end_inset
 
 
 \begin_inset Formula \[
-\maltese A\textrm{\Large\maltese\textit{A}}\textrm{\tiny\maltese\textit{A}}\]
+\maltese A\textrm{\Large\maltese\textit{A}}\textrm{\tiny\maltese\textit{A}}
+\]
 
 \end_inset
 
@@ -19665,7 +19698,7 @@ Letras griegas
 \end_layout
 
 \begin_layout Standard
-Todas las letras griegas se pueden insertar además mediante el botón 
+Las letras griegas se pueden insertar además mediante el botón 
 \begin_inset Graphics
 	filename ../../images/math/alpha.png
 	scale 85
@@ -19673,6 +19706,12 @@ Todas las letras griegas se pueden insertar además mediante el botón
 \end_inset
 
  de la barra de ecuaciones.
+ 
+\lang english
+All international typesetting norms purport that Greek letters in math have
+ to be typeset italic/slanted.
+ In some languages, like French or Russian, they are nevertheless sometimes
+ typeset upright.
 \end_layout
 
 \begin_layout Subsection
@@ -20579,7 +20618,11 @@ omega
 \end_layout
 
 \begin_layout Standard
-Cómo escribir letras griegas en redonda se explica en 
+Cómo escribir 
+\lang english
+special
+\lang spanish
+ letras griegas en redonda se explica en 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Griegas-en-redonda"
@@ -20974,11 +21017,86 @@ var
 \backslash
 varGamma
 \series default
- genera: 
+ genera 
 \begin_inset Formula $\varGamma$
 \end_inset
 
+.
+ 
+\lang english
+Another way is to load the package 
+\series bold
+\lang spanish
+fixmath
+\series default
 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+fixmath
+\series default
+ forma parte del paquete LaTeX 
+\series bold
+was
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetes ! was
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetes ! fixmath
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+with the LaTeX-preamble line
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+usepackage{fixmath}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Then all big Greek letters in a document will automatically be typeset upright.
 \end_layout
 
 \begin_layout Subsection
@@ -23237,13 +23355,6 @@ status collapsed
 fi
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
@@ -26277,7 +26388,8 @@ x=B
 \begin_layout Standard
 En una ecuación presentada el límite se imprime debajo, como es habitual:
 \begin_inset Formula \[
-\lim\limits _{x\rightarrow A}=B\]
+\lim\limits _{x\rightarrow A}=B
+\]
 
 \end_inset
 
@@ -29607,7 +29719,8 @@ reference "eq:IntVol"
 
 :
 \begin_inset Formula \begin{flalign}
-\hspace{30pt}\iiint_{V}X\mbox{d}V & =U & {}\end{flalign}
+\hspace{30pt}\iiint_{V}X\mbox{d}V & =U & {}
+\end{flalign}
 
 \end_inset
 
@@ -29975,7 +30088,8 @@ Los tres primeros tienen las mismas propiedades que los correspondientes
 \left.\begin{aligned}\Delta x\Delta p & \ge\frac{\hbar}{2}\\
 \Delta E\Delta t & \ge\frac{\hbar}{2}
 \end{aligned}
-\right\} \mbox{Relaciones de incertidumbre}\]
+\right\} \mbox{Relaciones de incertidumbre}
+\]
 
 \end_inset
 
@@ -30558,7 +30672,8 @@ end{subequations}
 \begin_layout Standard
 Ejemplo:
 \begin_inset Formula \begin{equation}
-A=C-B\label{eq:a}\end{equation}
+A=C-B\label{eq:a}
+\end{equation}
 
 \end_inset
 
@@ -30594,13 +30709,15 @@ begin{subequations}
 
 
 \begin_inset Formula \begin{equation}
-B=C-A\label{eq:b}\end{equation}
+B=C-A\label{eq:b}
+\end{equation}
 
 \end_inset
 
 
 \begin_inset Formula \begin{equation}
-C=A+B\label{eq:c}\end{equation}
+C=A+B\label{eq:c}
+\end{equation}
 
 \end_inset
 
@@ -30927,7 +31044,8 @@ tag
 \series default
 :
 \begin_inset Formula \begin{equation}
-A+B=C\tag{algo}\label{eq:tag}\end{equation}
+A+B=C\tag{algo}\label{eq:tag}
+\end{equation}
 
 \end_inset
 
@@ -30975,7 +31093,8 @@ algo
 \series default
  no se imprimen los paréntesis:
 \begin_inset Formula \[
-A+B=C\tag*{algo}\]
+A+B=C\tag*{algo}
+\]
 
 \end_inset
 
@@ -31379,7 +31498,8 @@ numberwithin{equation}{section}
 
 
 \begin_inset Formula \begin{equation}
-A+B=C\end{equation}
+A+B=C
+\end{equation}
 
 \end_inset
 
@@ -31829,7 +31949,8 @@ roman{equation}}
 
 
 \begin_inset Formula \begin{equation}
-A=\textrm{romanos en minúscula}\end{equation}
+A=\textrm{romanos en minúscula}
+\end{equation}
 
 \end_inset
 
@@ -31852,7 +31973,8 @@ Roman{equation}}
 
 
 \begin_inset Formula \begin{equation}
-B=\textrm{romanos en mayúscula}\label{eq:Rom}\end{equation}
+B=\textrm{romanos en mayúscula}\label{eq:Rom}
+\end{equation}
 
 \end_inset
 
@@ -31875,7 +31997,8 @@ alph{equation}}
 
 
 \begin_inset Formula \begin{equation}
-C=\textrm{latinas en minúscula}\end{equation}
+C=\textrm{latinas en minúscula}
+\end{equation}
 
 \end_inset
 
@@ -31898,7 +32021,8 @@ Alph{equation}}
 
 
 \begin_inset Formula \begin{equation}
-D=\textrm{latinas en mayúscula}\label{eq:Lat}\end{equation}
+D=\textrm{latinas en mayúscula}\label{eq:Lat}
+\end{equation}
 
 \end_inset
 
@@ -31952,7 +32076,8 @@ arabic{equation}}
 
 
 \begin_inset Formula \begin{equation}
-E=\mbox{arábigos}\end{equation}
+E=\mbox{arábigos}
+\end{equation}
 
 \end_inset
 
@@ -32124,7 +32249,8 @@ El ión
 .
  La ecuación química es:
 \begin_inset Formula \begin{equation}
-\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:reaccion-quimica}\end{equation}
+\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:reaccion-quimica}
+\end{equation}
 
 \end_inset
 
@@ -32992,7 +33118,8 @@ Los diagramas de este tipo visualizan relaciones mediante líneas o flechas
 \begin{CD}A@)))B@)))C\\
 @AAA@.@VVV\\
 F@(((E@(((D
-\end{CD}\]
+\end{CD}
+\]
 
 \end_inset
 
@@ -33183,7 +33310,8 @@ Como ejemplo un diagrama con todas las relaciones posibles:
 \begin{CD}A@)j))B@))k)C@=F\\
 @AmAA@.@VV{V}V@|\\
 D@((j\,(E@)k))F@=C
-\end{CD}\]
+\end{CD}
+\]
 
 \end_inset
 
@@ -34097,13 +34225,15 @@ Los comandos definidos por el usuario son especialmente convenientes para
  el mismo tipo de solución se repite varias veces.
  La forma general de una ecuación de segundo grado es:
 \begin_inset Formula \[
-0=\lambda^{2}+p\lambda+q\]
+0=\lambda^{2}+p\lambda+q
+\]
 
 \end_inset
 
 La forma general de la solución es:
 \begin_inset Formula \[
-\lambda_{1,2}=-\frac{p}{2}\pm\sqrt{\frac{p²}{4}-q}\]
+\lambda_{1,2}=-\frac{p}{2}\pm\sqrt{\frac{p²}{4}-q}
+\]
 
 \end_inset
 
@@ -34423,7 +34553,8 @@ Aquí tenemos nuestro ejemplo de macro con los argumentos
 
 \begin_layout Standard
 \begin_inset Formula \[
-\qG x{\ln(x)}B\]
+\qG x{\ln(x)}B
+\]
 
 \end_inset
 
@@ -35407,7 +35538,8 @@ Braket
  asegura que todas las barras verticales tienen el tamaño de los delimitadores
  circundantes:
 \begin_inset Formula \[
-\Braket{\phi|J=\frac{3}{2}\,,\, M_{J}}\]
+\Braket{\phi|J=\frac{3}{2}\,,\, M_{J}}
+\]
 
 \end_inset
 
@@ -36098,7 +36230,8 @@ cancelto
  es especialmente apropiada para visualizar la simplificación de fracciones
  en una ecuación:
 \begin_inset Formula \[
-\frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}\]
+\frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}
+\]
 
 \end_inset
 
@@ -36620,7 +36753,8 @@ end{multicols}
 
 
 \begin_inset Formula \begin{equation}
-S(t)=S_{0}(t)\int_{-\infty}^{\infty}P(\phi,t)\mathrm{e}^{\mathrm{i}\phi}\,\mathrm{d}\phi\end{equation}
+S(t)=S_{0}(t)\int_{-\infty}^{\infty}P(\phi,t)\mathrm{e}^{\mathrm{i}\phi}\,\mathrm{d}\phi
+\end{equation}
 
 \end_inset
 
@@ -36847,7 +36981,8 @@ reference "eq:within"
 \rho & \mbox{densidad}\\
 V & \mbox{volumen}\\
 g & \mbox{aceleración gravitatoria}
-\end{array} &  & {}\label{eq:within}\end{flalign}
+\end{array} &  & {}\label{eq:within}
+\end{flalign}
 
 \end_inset
 
@@ -36996,7 +37131,8 @@ uptau
 \begin_layout Standard
 Con estos comandos se pueden escribir reacciones entre partículas elementales:
 \begin_inset Formula \[
-\uppi^{+}\rightarrow\upmu^{+}+\upnu_{\upmu}\]
+\uppi^{+}\rightarrow\upmu^{+}+\upnu_{\upmu}
+\]
 
 \end_inset
 

@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0.0beta1 created this file. For more info see http://www.lyx.org/
+\lyxformat 408
 \begin_document
 \begin_header
 \textclass jarticle
@@ -2052,7 +2052,8 @@ frac
 \series default
 を組み合わせて使うと便利です。
 \begin_inset Formula \[
-\cfrac{A}{B+\cfrac{C+\frac{E}{F}}{D}}\]
+\cfrac{A}{B+\cfrac{C+\frac{E}{F}}{D}}
+\]
 
 \end_inset
 
@@ -4889,7 +4890,8 @@ dots
 A & B & C & D\\
 \hdotsfor[2]{4}\\
 q & w & e & r
-\end{array}\right)\]
+\end{array}\right)
+\]
 
 \end_inset
 
@@ -7032,7 +7034,8 @@ spce
 \series default
 というコマンドは
 \begin_inset Formula \[
-\ln(\frac{A}{C})\]
+\ln(\frac{A}{C})
+\]
 
 \end_inset
 
@@ -7085,7 +7088,8 @@ right)
 \series default
 というコマンドは
 \begin_inset Formula \[
-\ln\left(\frac{A}{C}\right)\]
+\ln\left(\frac{A}{C}\right)
+\]
 
 \end_inset
 
@@ -7194,7 +7198,8 @@ right}
 \series bold
 
 \begin_inset Formula \[
-\left.\frac{A}{B}\right\} \]
+\left.\frac{A}{B}\right\} 
+\]
 
 \end_inset
 
@@ -7275,7 +7280,8 @@ biggm
 
 。このコマンドでは、物理ベクトル
 \begin_inset Formula \[
-\left\langle \phi\:\biggm|\: J=\frac{3}{2}\,,\, M_{J}\right\rangle \]
+\left\langle \phi\:\biggm|\: J=\frac{3}{2}\,,\, M_{J}\right\rangle 
+\]
 
 \end_inset
 
@@ -10321,7 +10327,8 @@ n
 \series default
 というコマンドを入力すると、
 \begin_inset Formula \[
-\sideset{}{'}\sum_{k=1}^{n}\]
+\sideset{}{'}\sum_{k=1}^{n}
+\]
 
 \end_inset
 
@@ -10373,7 +10380,8 @@ a
 \series default
 というコマンドならば、
 \begin_inset Formula \[
-\overset{a}{\maltese}\]
+\overset{a}{\maltese}
+\]
 
 \end_inset
 
@@ -10825,7 +10833,8 @@ widehat
 \series default
 のアクセントは、以下の例のように、出力では3文字分の長さにしかなりません。
 \begin_inset Formula \[
-\widetilde{A+B=C-D}\]
+\widetilde{A+B=C-D}
+\]
 
 \end_inset
 
@@ -10894,7 +10903,8 @@ A=B
 \series default
 というコマンドは、
 \begin_inset Formula \[
-\underset{***}{A=B}\]
+\underset{***}{A=B}
+\]
 
 \end_inset
 
@@ -12838,7 +12848,8 @@ fboxsep 3mm
 
 
 \begin_inset Formula \[
-\boxed{A+B=C}\]
+\boxed{A+B=C}
+\]
 
 \end_inset
 
@@ -13673,7 +13684,8 @@ colorbox
 
 \color red
 \begin_inset Formula \begin{equation}
-\int A=B\label{eq:red}\end{equation}
+\int A=B\label{eq:red}
+\end{equation}
 
 \end_inset
 
@@ -13681,7 +13693,8 @@ colorbox
 \color green
 
 \begin_inset Formula \begin{equation}
-\textcolor{red}{\int A=B}\label{eq:redgreen}\end{equation}
+\textcolor{red}{\int A=B}\label{eq:redgreen}
+\end{equation}
 
 \end_inset
 
@@ -13787,7 +13800,8 @@ fboxsep 1mm
 
 
 \begin_inset Formula \[
-\fcolorbox{cyan}{magenta}{A=B}\]
+\fcolorbox{cyan}{magenta}{A=B}
+\]
 
 \end_inset
 
@@ -13959,7 +13973,8 @@ darkgreen
 \series default
 という色を持つ縁付きボックスを挙げておきます。
 \begin_inset Formula \begin{equation}
-\colorbox{darkgreen}{\color{yellow}\boxed{\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}}\end{equation}
+\colorbox{darkgreen}{\color{yellow}\boxed{\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}}
+\end{equation}
 
 \end_inset
 
@@ -14379,7 +14394,8 @@ fboxrule}{
 
 
 \begin_inset Formula \begin{equation}
-\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}\end{equation}
+\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}
+\end{equation}
 
 \end_inset
 
@@ -14600,7 +14616,8 @@ parbox
 \series default
 を使う利点は、数式テキストモードを使用して「コメントを付けた」以下の例と比較すると、よくわかるでしょう。
 \begin_inset Formula \[
-5x-7b=3b\textrm{これは説明です。数式本体から離れていません...}\]
+5x-7b=3b\textrm{これは説明です。数式本体から離れていません...}
+\]
 
 \end_inset
 
@@ -15728,7 +15745,8 @@ arg   "math-limits"
 \begin_layout Standard
 既定の範囲形式は、以下のようになっています。
 \begin_inset Formula \[
-\sum_{x=0}^{\infty}\frac{1}{x^{2}}\]
+\sum_{x=0}^{\infty}\frac{1}{x^{2}}
+\]
 
 \end_inset
 
@@ -15740,7 +15758,8 @@ arg   "math-limits"
 \series default
 に変更したときの表示です。
 \begin_inset Formula \[
-\sum\nolimits _{x=0}^{\infty}\frac{1}{x^{2}}\]
+\sum\nolimits _{x=0}^{\infty}\frac{1}{x^{2}}
+\]
 
 \end_inset
 
@@ -15767,7 +15786,8 @@ op
 \series default
 にして積分記号の下に置くようにしています。
 \begin_inset Formula \begin{equation}
-\iiint\limits _{V}X\,\mathrm{d}V=U\label{eq:VolInt}\end{equation}
+\iiint\limits _{V}X\,\mathrm{d}V=U\label{eq:VolInt}
+\end{equation}
 
 \end_inset
 
@@ -15820,7 +15840,8 @@ substack
 0<k<1000\\
 \\
 k\,\in\,\mathbb{N}
-\end{subarray}}^{n}k^{-2}\label{eq:substack}\end{equation}
+\end{subarray}}^{n}k^{-2}\label{eq:substack}
+\end{equation}
 
 \end_inset
 
@@ -16098,7 +16119,8 @@ k
 \\
 k\,\in\,\mathbb{N}
 }
-}}^{n}k^{-2}\]
+}}^{n}k^{-2}
+\]
 
 \end_inset
 
@@ -17353,7 +17375,8 @@ Lozenge
 \series default
 を定義します。
 \begin_inset Formula \[
-\Lozenge_{n=1}^{\infty}\]
+\Lozenge_{n=1}^{\infty}
+\]
 
 \end_inset
 
@@ -17461,7 +17484,8 @@ mathop
 
 \begin_layout Standard
 \begin_inset Formula \[
-\mathop{\sum\negmedspace\sum}_{i,j=1}^{N}\]
+\mathop{\sum\negmedspace\sum}_{i,j=1}^{N}
+\]
 
 \end_inset
 
@@ -18276,7 +18300,8 @@ mathnormal
 \begin_layout Standard
 書体様式コマンドは、以下のように数式構成要素内の文字に対しても機能します。
 \begin_inset Formula \[
-\mathfrak{A=\frac{b}{C}}\]
+\mathfrak{A=\frac{b}{C}}
+\]
 
 \end_inset
 
@@ -18361,7 +18386,8 @@ mathbf
 
 \begin_layout Standard
 \begin_inset Formula \[
-\mathbf{\int_{n}^{2}f(\theta)=\Gamma}\qquad\textrm{\textbackslash mathbfを使用した数式}\]
+\mathbf{\int_{n}^{2}f(\theta)=\Gamma}\qquad\textrm{\textbackslash mathbfを使用した数式}
+\]
 
 \end_inset
 
@@ -18377,7 +18403,8 @@ boldsymbol
 \series default
 コマンドを使用します。
 \begin_inset Formula \[
-\boldsymbol{\int_{n}^{2}f(\theta)=\Gamma\qquad\textrm{\textbackslash boldsymbolを使用した数式}}\]
+\boldsymbol{\int_{n}^{2}f(\theta)=\Gamma\qquad\textrm{\textbackslash boldsymbolを使用した数式}}
+\]
 
 \end_inset
 
@@ -18436,7 +18463,8 @@ boldmath
 
 
 \begin_inset Formula \[
-\int_{n}^{2}f(\theta)=\Gamma\qquad\textrm{boldmath環境に置いた数式}\]
+\int_{n}^{2}f(\theta)=\Gamma\qquad\textrm{boldmath環境に置いた数式}
+\]
 
 \end_inset
 
@@ -18473,7 +18501,8 @@ status collapsed
 \begin_layout Standard
 数式も、通常の本文と同様、色を付けることができます。数式あるいは数式の一部を選択して、文字様式ダイアログを使用して下さい。下記は、マゼンタ色にした数式です。
 \begin_inset Formula \[
-{\color{magenta}\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}\]
+{\color{magenta}\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}
+\]
 
 \end_inset
 
@@ -18536,7 +18565,8 @@ textcolor{darkgreen}{
 
 
 \begin_inset Formula \[
-\int A\,\mathrm{d}x=\frac{{\color{red}\sqrt[5]{B}}}{\ln\left(\frac{1}{3}\right)}\]
+\int A\,\mathrm{d}x=\frac{{\color{red}\sqrt[5]{B}}}{\ln\left(\frac{1}{3}\right)}
+\]
 
 \end_inset
 
@@ -18910,13 +18940,15 @@ huge
 
 
 \begin_inset Formula \[
-A=\frac{B}{c}\cdot\maltese\]
+A=\frac{B}{c}\cdot\maltese
+\]
 
 \end_inset
 
 
 \begin_inset Formula \[
-\maltese A\textrm{\Large\maltese\textit{A}}\textrm{\tiny\maltese\textit{A}}\]
+\maltese A\textrm{\Large\maltese\textit{A}}\textrm{\tiny\maltese\textit{A}}
+\]
 
 \end_inset
 
@@ -19117,7 +19149,12 @@ status collapsed
 
 \end_inset
 
-からでも挿入することができます。
+からでも挿入することができます。 
+\lang english
+All international typesetting norms purport that Greek letters in math have
+ to be typeset italic/slanted.
+ In some languages, like French or Russian, they are nevertheless sometimes
+ typeset upright.
 \end_layout
 
 \begin_layout Subsection
@@ -20453,7 +20490,82 @@ varGamma
 \begin_inset Formula $\varGamma$
 \end_inset
 
-を生成します。
+を生成します。 
+\lang english
+Another way is to load the package
+\lang japanese
+ 
+\series bold
+fixmath
+\series default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+fixmath
+\series default
+は、LaTeXパッケージ
+\series bold
+was
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ぱっけーじ@パッケージ ! was
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+に含まれています。
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ぱっけーじ@パッケージ ! fixmath
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+with the LaTeX-preamble line
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+usepackage{fixmath}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Then all big Greek letters in a document will automatically be typeset upright.
 \end_layout
 
 \begin_layout Subsection
@@ -25458,7 +25570,8 @@ x=B
 \begin_layout Standard
 別行建て数式では、極限は、以下のように通常どおり下に置かれます。
 \begin_inset Formula \[
-\lim_{x\to A}x=B\]
+\lim_{x\to A}x=B
+\]
 
 \end_inset
 
@@ -28728,7 +28841,8 @@ reference "eq:VolInt"
 
 式を行頭下げにしたものです。
 \begin_inset Formula \begin{flalign}
-\hspace{30pt}\iiint\limits _{V}X\,\mathrm{d}V & =U & {}\end{flalign}
+\hspace{30pt}\iiint\limits _{V}X\,\mathrm{d}V & =U & {}
+\end{flalign}
 
 \end_inset
 
@@ -29061,7 +29175,8 @@ ed
 \left.\begin{aligned}\Delta x\Delta p & \ge\frac{\hbar}{2}\\
 \Delta E\Delta t & \ge\frac{\hbar}{2}
 \end{aligned}
-\right\} \textrm{不確定性原理}\]
+\right\} \textrm{不確定性原理}
+\]
 
 \end_inset
 
@@ -29562,7 +29677,8 @@ end{subequations}
 \begin_layout Standard
 たとえば、
 \begin_inset Formula \begin{equation}
-A=C-B\label{eq:a}\end{equation}
+A=C-B\label{eq:a}
+\end{equation}
 
 \end_inset
 
@@ -29598,13 +29714,15 @@ begin{subequations}
 
 
 \begin_inset Formula \begin{equation}
-B=C-A\label{eq:b}\end{equation}
+B=C-A\label{eq:b}
+\end{equation}
 
 \end_inset
 
 
 \begin_inset Formula \begin{equation}
-C=A+B\label{eq:c}\end{equation}
+C=A+B\label{eq:c}
+\end{equation}
 
 \end_inset
 
@@ -29950,7 +30068,8 @@ tag
 
 コマンドを使います。
 \begin_inset Formula \begin{equation}
-A+B=C\tag{何とかかんとか}\label{eq:tag}\end{equation}
+A+B=C\tag{何とかかんとか}\label{eq:tag}
+\end{equation}
 
 \end_inset
 
@@ -29998,7 +30117,8 @@ spce
 \series default
 というコマンドを使うと、星印は表現の周りの括弧を抑制するので、以下のようになります。
 \begin_inset Formula \[
-A+B=C\tag*{something}\]
+A+B=C\tag*{something}
+\]
 
 \end_inset
 
@@ -30375,7 +30495,8 @@ numberwithin{equation}{section}
 
 
 \begin_inset Formula \begin{equation}
-A+B=C\end{equation}
+A+B=C
+\end{equation}
 
 \end_inset
 
@@ -30760,7 +30881,8 @@ roman{equation}}
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-A=\textrm{小文字ローマ数字}\end{equation}
+A=\textrm{小文字ローマ数字}
+\end{equation}
 
 \end_inset
 
@@ -30783,7 +30905,8 @@ Roman{equation}}
 
 
 \begin_inset Formula \begin{equation}
-B=\textrm{大文字ローマ数字}\label{eq:Rom}\end{equation}
+B=\textrm{大文字ローマ数字}\label{eq:Rom}
+\end{equation}
 
 \end_inset
 
@@ -30806,7 +30929,8 @@ alph{equation}}
 
 
 \begin_inset Formula \begin{equation}
-C=\textrm{小文字ラテン文字}\end{equation}
+C=\textrm{小文字ラテン文字}
+\end{equation}
 
 \end_inset
 
@@ -30829,7 +30953,8 @@ Alph{equation}}
 
 
 \begin_inset Formula \begin{equation}
-D=\textrm{大文字ラテン文字}\label{eq:Lat}\end{equation}
+D=\textrm{大文字ラテン文字}\label{eq:Lat}
+\end{equation}
 
 \end_inset
 
@@ -30883,7 +31008,8 @@ arabic{equation}}
 
 
 \begin_inset Formula \begin{equation}
-E=\textrm{アラビア数字}\end{equation}
+E=\textrm{アラビア数字}
+\end{equation}
 
 \end_inset
 
@@ -30965,7 +31091,8 @@ status collapsed
 
 を形成します。この化学式は以下のようになります。
 \begin_inset Formula \begin{equation}
-\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:chem-reaction}\end{equation}
+\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:chem-reaction}
+\end{equation}
 
 \end_inset
 
@@ -31827,7 +31954,8 @@ status collapsed
 \begin{CD}A@>>>B@>>>C\\
 @AAA@.@VVV\\
 F@<<<E@<<<D
-\end{CD}\]
+\end{CD}
+\]
 
 \end_inset
 
@@ -31943,7 +32071,8 @@ arg   "newline-insert newline"
 \begin{CD}A@>j>>B@>>k>C@=F\\
 @AmAA@.@VV{V}V@|\\
 D@<<j<E@>k>>F@=C
-\end{CD}\]
+\end{CD}
+\]
 
 \end_inset
 
@@ -32867,13 +32996,15 @@ status collapsed
 ユーザー定義コマンドは、複雑な表現を使うときに特に便利です。たとえば、文書中で二次方程式を扱っているとすると、同じような解の形が何度も出てきます。二次方程式の一
 般型は、
 \begin_inset Formula \[
-0=\lambda^{2}+p\lambda+q\]
+0=\lambda^{2}+p\lambda+q
+\]
 
 \end_inset
 
 であり、その解の一般型は
 \begin_inset Formula \[
-\lambda_{1,2}=-\frac{p}{2}\pm\sqrt{\frac{p²}{4}-q}\]
+\lambda_{1,2}=-\frac{p}{2}\pm\sqrt{\frac{p²}{4}-q}
+\]
 
 \end_inset
 
@@ -33155,7 +33286,8 @@ qG
 
 \begin_layout Standard
 \begin_inset Formula \[
-\qG x{\ln(x)}B\]
+\qG x{\ln(x)}B
+\]
 
 \end_inset
 
@@ -34164,7 +34296,8 @@ Braket
 \series default
 コマンドを使うと、以下のように、すべての縦棒がそれを囲む括弧と同じ大きさに設定されます。
 \begin_inset Formula \[
-\Braket{\phi|J=\frac{3}{2}\,,\, M_{J}}\]
+\Braket{\phi|J=\frac{3}{2}\,,\, M_{J}}
+\]
 
 \end_inset
 
@@ -34838,7 +34971,8 @@ cancelto
 \series default
 は、以下のように、とくに数式中の分数を約分を表示するのに適しています。
 \begin_inset Formula \[
-\frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}\]
+\frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}
+\]
 
 \end_inset
 
@@ -35287,7 +35421,8 @@ end{multicols}
 
 
 \begin_inset Formula \begin{equation}
-S(t)=S_{0}(t)\int_{-\infty}^{\infty}P(\phi,t)\mathrm{e}^{\mathrm{i}\phi}\,\mathrm{d}\phi\end{equation}
+S(t)=S_{0}(t)\int_{-\infty}^{\infty}P(\phi,t)\mathrm{e}^{\mathrm{i}\phi}\,\mathrm{d}\phi
+\end{equation}
 
 \end_inset
 
@@ -35513,7 +35648,8 @@ reference "eq:within"
 \rho & \textrm{density}\\
 V & \textrm{volume}\\
 g & \textrm{gravitational acceleration}
-\end{array} &  & {}\label{eq:within}\end{flalign}
+\end{array} &  & {}\label{eq:within}
+\end{flalign}
 
 \end_inset
 
@@ -35660,7 +35796,8 @@ uptau
 \begin_layout Standard
 これらのコマンドを使えば、以下のような素粒子の反応を組版することができるようになります。
 \begin_inset Formula \[
-\uppi^{+}\to\upmu^{+}+\upnu_{\upmu}\]
+\uppi^{+}\to\upmu^{+}+\upnu_{\upmu}
+\]
 
 \end_inset
 
