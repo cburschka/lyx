@@ -3463,16 +3463,19 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			tabular.row_info[r].bottom_space.inPixels(mi.base.textwidth);
 		tabular.setRowDescent(r, maxdes + ADD_TO_HEIGHT + bottom_space);
 	}
-	
+
+	// for top-alignment the first horizontal table line must be exactly at
+	// the position of the base line of the surrounding text line
+	// for bottom alignment, the same is for the last table line
 	switch (tabular.tabular_valignment) {
 	case Tabular::LYX_VALIGN_BOTTOM:
 		offset_valign_ = tabular.rowAscent(0) - tabular.height();
 		break;
 	case Tabular::LYX_VALIGN_MIDDLE:
-		offset_valign_ = (tabular.rowAscent(0) - tabular.height()) / 2;
+		offset_valign_ = (- tabular.height()) / 2 + tabular.rowAscent(0);
 		break;
 	case Tabular::LYX_VALIGN_TOP:
-		offset_valign_ = 0;
+		offset_valign_ = tabular.rowAscent(0);
 		break;
 	}
 
