@@ -988,13 +988,13 @@ Buffer::ReadStatus Buffer::convertLyXFormat(FileName const & fn,
 		if (from_format < LYX_FORMAT) {
 			Alert::error(_("Conversion script failed"),
 				bformat(_("%1$s is from an older version"
-					" of LyX, but the lyx2lyx script"
+					" of LyX and the lyx2lyx script"
 					" failed to convert it."),
 					from_utf8(fn.absFileName())));
 			return LyX2LyXOlderFormat;
 		} else {
 			Alert::error(_("Conversion script failed"),
-				bformat(_("%1$s is from an newer version"
+				bformat(_("%1$s is from a newer version"
 					" of LyX and the lyx2lyx script"
 					" failed to convert it."),
 					from_utf8(fn.absFileName())));
