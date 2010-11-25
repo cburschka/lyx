@@ -942,22 +942,33 @@ dist_imagesmath_DATA = \
 	images/math/upsilon2.png \
 	images/math/upuparrows.png \
 	images/math/urcorner.png \
+	images/math/vardelta.png \
 	images/math/varepsilon.png \
+	images/math/vargamma.png \
 	images/math/varkappa.png \
+	images/math/varlambda.png \
 	images/math/varnothing.png \
+	images/math/varomega.png \
 	images/math/varphi.png \
+	images/math/varphi2.png \
 	images/math/varpi.png \
+	images/math/varpi2.png \
 	images/math/varpropto.png \
+	images/math/varpsi.png \
 	images/math/varrho.png \
 	images/math/varsigma.png \
+	images/math/varsigma2.png \
 	images/math/varsubsetneq.png \
 	images/math/varsubsetneqq.png \
 	images/math/varsupsetneq.png \
 	images/math/varsupsetneqq.png \
 	images/math/vartheta.png \
+	images/math/vartheta2.png \
 	images/math/vartriangle.png \
 	images/math/vartriangleleft.png \
 	images/math/vartriangleright.png \
+	images/math/varupsilon.png \
+	images/math/varxi.png \
 	images/math/vdash.png \
 	images/math/vdash2.png \
 	images/math/vdash3.png \

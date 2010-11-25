@@ -267,7 +267,11 @@ PngMap sorted_png_map[] = {
 	{ "nvDash", "nvdash2" },
 	{ "textrm \\AA", "textrm_AA"},
 	{ "textrm \\O", "textrm_O"},
-	{ "vDash", "vdash2" }
+	{ "vDash", "vdash2" },
+	{ "varPhi", "varphi2" },
+	{ "varPi", "varpi2" },
+	{ "varSigma", "varsigma2" },
+	{ "varTheta", "vartheta2" }
 };
 
 size_t const nr_sorted_png_map = sizeof(sorted_png_map) / sizeof(PngMap);
