@@ -65,7 +65,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QTreeView" name="availableLV" />
+        <widget class="QTreeView" name="availableLV" >
+         <property name="rootIsDecorated" >
+          <bool>false</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
