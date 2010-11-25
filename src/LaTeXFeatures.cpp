@@ -287,7 +287,7 @@ bool LaTeXFeatures::useBabel() const
 {
 	if (usePolyglossia())
 		return false;
-	return lyxrc.language_package_selection != LyXRC::LP_NONE
+	return (lyxrc.language_package_selection != LyXRC::LP_NONE)
 	        || (bufferParams().language->lang() != lyxrc.default_language
 	            && !bufferParams().language->babel().empty())
 	        || this->hasLanguages();
