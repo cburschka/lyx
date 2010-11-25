@@ -954,6 +954,9 @@ private:
 	mutable idx_type first_visible_cell;
 	///
 	mutable int scx_;
+	/// The vertical offset of the table due to the vertical
+	/// alignment with respect to the baseline.
+	mutable int offset_valign_;
 	/// true when selecting rows with the mouse
 	bool rowselect_;
 	/// true when selecting columns with the mouse

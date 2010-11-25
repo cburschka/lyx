@@ -3357,7 +3357,7 @@ void InsetTabular::read(Lexer & lex)
 int InsetTabular::rowFromY(Cursor & cur, int y) const
 {
 	// top y coordinate of tabular
-	int h = yo(cur.bv()) - tabular.rowAscent(0);
+	int h = yo(cur.bv()) - tabular.rowAscent(0) + offset_valign_;
 	row_type r = 0;
 	for (; r < tabular.nrows() && y > h; ++r)
 		h += tabular.rowAscent(r) + tabular.rowDescent(r)
@@ -3463,8 +3463,21 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			tabular.row_info[r].bottom_space.inPixels(mi.base.textwidth);
 		tabular.setRowDescent(r, maxdes + ADD_TO_HEIGHT + bottom_space);
 	}
+	
+	switch (tabular.tabular_valignment) {
+	case Tabular::LYX_VALIGN_BOTTOM:
+		offset_valign_ = tabular.rowAscent(0) - tabular.height();
+		break;
+	case Tabular::LYX_VALIGN_MIDDLE:
+		offset_valign_ = (tabular.rowAscent(0) - tabular.height()) / 2;
+		break;
+	case Tabular::LYX_VALIGN_TOP:
+		offset_valign_ = 0;
+		break;
+	}
+
 	tabular.updateColumnWidths();
-	dim.asc = tabular.rowAscent(0);
+	dim.asc = tabular.rowAscent(0) - offset_valign_;	
 	dim.des = tabular.height() - dim.asc;
 	dim.wid = tabular.width() + 2 * ADD_TO_TABULAR_WIDTH;
 }
@@ -3517,6 +3530,8 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 
 	idx_type idx = 0;
 	first_visible_cell = Tabular::npos;
+
+	int yy = y + offset_valign_;
 	for (row_type r = 0; r < tabular.nrows(); ++r) {
 		int nx = x;
 		for (col_type c = 0; c < tabular.ncols(); ++c) {
@@ -3535,17 +3550,17 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 
 			pi.selected |= isCellSelected(cur, r, c);
 			int const cx = nx + tabular.textHOffset(idx);
-			int const cy = y  + tabular.textVOffset(idx);
+			int const cy = yy + tabular.textVOffset(idx);
 			// Cache the Inset position.
 			bv->coordCache().insets().add(cell(idx).get(), cx, cy);
 			cell(idx)->draw(pi, cx, cy);
-			drawCellLines(pi, nx, y, r, idx);
+			drawCellLines(pi, nx, yy, r, idx);
 			nx += tabular.cellWidth(idx);
 			pi.selected = original_selection_state;
 		}
 
 		if (r + 1 < tabular.nrows())
-			y += tabular.rowDescent(r) + tabular.rowAscent(r + 1) 
+			yy += tabular.rowDescent(r) + tabular.rowAscent(r + 1) 
 				+ tabular.interRowSpace(r + 1);
 	}
 }
@@ -3554,7 +3569,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 void InsetTabular::drawBackground(PainterInfo & pi, int x, int y) const
 {
 	x += scx_ + ADD_TO_TABULAR_WIDTH;
-	y -= tabular.rowAscent(0);
+	y += offset_valign_ - tabular.rowAscent(0);
 	pi.pain.fillRectangle(x, y, tabular.width(), tabular.height(),
 		pi.backgroundColor(this));
 }
@@ -3592,7 +3607,7 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 				}
 				int const w = tabular.cellWidth(cell);
 				int const h = tabular.cellHeight(cell);
-				int const yy = y - tabular.rowAscent(r);
+				int const yy = y - tabular.rowAscent(r) + offset_valign_;
 				if (isCellSelected(cur, r, c))
 					pi.pain.fillRectangle(xx, yy, w, h, Color_selection);
 				xx += w;
@@ -3740,7 +3755,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		}
 		// select column
-		int const y0 = yo(cur.bv()) - tabular.rowAscent(0);
+		int const y0 = yo(cur.bv()) - tabular.rowAscent(0) + offset_valign_;
 		if (cmd.y() < y0 + ADD_TO_TABULAR_WIDTH 
 			|| cmd.y() > y0 + tabular.height()) {
 			col_type c = columnFromX(cur, cmd.x());
@@ -4714,6 +4729,7 @@ void InsetTabular::cursorPos(BufferView const & bv,
 			+ tabular.interRowSpace(r + 1);
 
 	y += tabular.textVOffset(sl.idx());
+	y += offset_valign_;
 
 	// x offset correction
 	for (int c = 0; c < col; ++c)
