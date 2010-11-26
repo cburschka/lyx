@@ -2409,9 +2409,9 @@ void GuiDocument::applyView()
 	// fonts
 	if (nontexfonts) {
 		if (fontModule->fontsRomanCO->currentIndex() == 0)
-			bp_.fontsRoman = "default";
+			bp_.fonts_roman = "default";
 		else
-			bp_.fontsRoman =
+			bp_.fonts_roman =
 				fromqstr(fontModule->fontsRomanCO->currentText());
 	
 		if (fontModule->fontsSansCO->currentIndex() == 0)
@@ -2426,7 +2426,7 @@ void GuiDocument::applyView()
 			bp_.fontsTypewriter =
 				fromqstr(fontModule->fontsTypewriterCO->currentText());
 	} else {
-		bp_.fontsRoman =
+		bp_.fonts_roman =
 			tex_fonts_roman[fontModule->fontsRomanCO->currentIndex()];
 	
 		bp_.fontsSans =
@@ -2847,7 +2847,7 @@ void GuiDocument::paramsToDialog()
 		fontModule->fontencCO->setEnabled(false);
 		fontModule->fontencLE->setEnabled(false);
 		for (int i = 0; i < fontModule->fontsRomanCO->count(); ++i) {
-			if (fontModule->fontsRomanCO->itemText(i) == toqstr(bp_.fontsRoman)) {
+			if (fontModule->fontsRomanCO->itemText(i) == toqstr(bp_.fonts_roman)) {
 				fontModule->fontsRomanCO->setCurrentIndex(i);
 				return;
 			}
@@ -2870,7 +2870,7 @@ void GuiDocument::paramsToDialog()
 		fontModule->fontencLA->setEnabled(true);
 		fontModule->fontencCO->setEnabled(true);
 		fontModule->fontencLE->setEnabled(true);
-		int n = findToken(tex_fonts_roman, bp_.fontsRoman);
+		int n = findToken(tex_fonts_roman, bp_.fonts_roman);
 		if (n >= 0) {
 			fontModule->fontsRomanCO->setCurrentIndex(n);
 			romanChanged(n);

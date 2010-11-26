@@ -866,7 +866,7 @@ docstring const LaTeXFeatures::getMacros() const
 	if (!usePolyglossia() && mustProvide("textgreek")) {
 		// Avoid a LaTeX error if times fonts are used and the grtimes
 		// package is installed but actual fonts are not (bug 6469).
-		if (params_.fontsRoman == "times")
+		if (params_.fonts_roman == "times")
 			macros << subst(textgreek_def,
 					from_ascii("\\greektext #1"),
 					from_ascii("%\n  \\IfFileExists"

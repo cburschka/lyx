@@ -375,7 +375,7 @@ BufferParams::BufferParams()
 	tocdepth = 3;
 	language = default_language;
 	fontenc = "global";
-	fontsRoman = "default";
+	fonts_roman = "default";
 	fontsSans = "default";
 	fontsTypewriter = "default";
 	fontsDefaultFamily = "default";
@@ -618,7 +618,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		fontenc = lex.getString();
 	} else if (token == "\\font_roman") {
 		lex.eatLine();
-		fontsRoman = lex.getString();
+		fonts_roman = lex.getString();
 	} else if (token == "\\font_sans") {
 		lex.eatLine();
 		fontsSans = lex.getString();
@@ -947,7 +947,7 @@ void BufferParams::writeFile(ostream & os) const
 		os << "\\language " << language->lang() << '\n';
 	os << "\\inputencoding " << inputenc
 	   << "\n\\fontencoding " << fontenc
-	   << "\n\\font_roman " << fontsRoman
+	   << "\n\\font_roman " << fonts_roman
 	   << "\n\\font_sans " << fontsSans
 	   << "\n\\font_typewriter " << fontsTypewriter
 	   << "\n\\font_default_family " << fontsDefaultFamily
@@ -1346,7 +1346,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	// font selection must be done before loading fontenc.sty
 	string const fonts =
-		loadFonts(fontsRoman, fontsSans,
+		loadFonts(fonts_roman, fontsSans,
 			  fontsTypewriter, fontsSC, fontsOSF,
 			  fontsSansScale, fontsTypewriterScale, useNonTeXFonts);
 	if (!fonts.empty()) {

@@ -208,7 +208,7 @@ public:
 	/// font encoding
 	std::string fontenc;
 	/// the rm font
-	std::string fontsRoman;
+	std::string fonts_roman;
 	/// the sf font
 	std::string fontsSans;
 	/// the tt font
