@@ -119,10 +119,7 @@ public:
 	/**
 	  * This is typically used after this inset is created interactively.
 	  * Intented purpose is to sanitize internal state with regard to current
-	  * Buffer. The default implementation calls buffer().updateBuffer() if
-	  * the inset is labeled.
-	  *
-	  * \sa isLabeled()
+	  * Buffer. 
 	  **/
 	virtual void initView() {};
 	/// \return true if this inset is labeled.
