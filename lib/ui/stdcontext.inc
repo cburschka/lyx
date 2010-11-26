@@ -371,9 +371,9 @@ Menuset
 		Item "Left Line|L" "tabular-feature toggle-line-left"
 		Item "Right Line|R" "tabular-feature toggle-line-right"
 		Separator
-		Item "Left|L" "tabular-feature align-left"
-		Item "Center|C" "tabular-feature align-center"
-		Item "Right|R" "tabular-feature align-right"
+		Item "Left|L" "command-alternatives tabular-feature m-align-left;tabular-feature align-left"
+		Item "Center|C" "command-alternatives tabular-feature m-align-center;tabular-feature align-center"
+		Item "Right|R" "command-alternatives tabular-feature m-align-right;tabular-feature align-right"
 		Separator
 		Item "Top|T" "tabular-feature valign-top"
 		Item "Middle|M" "tabular-feature valign-middle"
