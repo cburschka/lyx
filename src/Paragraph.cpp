@@ -3075,7 +3075,7 @@ int Paragraph::checkBiblio(Buffer const & buffer)
 {
 	// FIXME From JS:
 	// This is getting more and more a mess. ...We really should clean
-	// up this bibitem issue for 1.6. See also bug 2743.
+	// up this bibitem issue for 1.6.
 
 	// Add bibitem insets if necessary
 	if (d->layout_->labeltype != LABEL_BIBLIO)
