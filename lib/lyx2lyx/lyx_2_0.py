@@ -2367,9 +2367,10 @@ def convert_use_xetex(document):
     i = find_token(document.header, "\\use_xetex", 0)
     if i == -1:
         document.warning("Malformed document. No \\use_xetex param!")
-    else:
-        val = get_value(document.header, "\\use_xetex", 0)
-        document.header[i] = "\\use_non_tex_fonts " + val
+        return
+    
+    val = get_value(document.header, "\\use_xetex", 0)
+    document.header[i] = "\\use_non_tex_fonts " + val
 
 
 def revert_use_xetex(document):
@@ -2378,9 +2379,10 @@ def revert_use_xetex(document):
     i = find_token(document.header, "\\use_non_tex_fonts", 0)
     if i == -1:
         document.warning("Malformed document. No \\use_non_tex_fonts param!")
-    else:
-        val = get_value(document.header, "\\use_non_tex_fonts", 0)
-        document.header[i] = "\\use_xetex " + val
+        return
+
+    val = get_value(document.header, "\\use_non_tex_fonts", 0)
+    document.header[i] = "\\use_xetex " + val
 
 
 ##
