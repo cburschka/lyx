@@ -889,8 +889,8 @@ Buffer::ReadStatus Buffer::readFile(FileName const & fn)
 	}
 
 	d->file_fully_loaded = true;
-	d->read_only = !fname.isWritable();
-	params().compressed = fname.isZippedFile();
+	d->read_only = !d->filename.isWritable();
+	params().compressed = d->filename.isZippedFile();
 	saveCheckSum();
 	return ReadSuccess;
 }
@@ -3659,6 +3659,13 @@ Buffer::ReadStatus Buffer::loadEmergency()
 		ReadStatus const ret_llf = loadThisLyXFile(emergencyFile);
 		bool const success = (ret_llf == ReadSuccess);
 		if (success) {
+			if (isReadonly()) {
+				Alert::warning(_("File is read-only"),
+					bformat(_("An emergency file is succesfully loaded, "
+					"but the original file %1$s is marked read-only. "
+					"Please make sure to save the document as a different "
+					"file."), from_utf8(d->filename.absFileName())));
+			}
 			markDirty();
 			str = _("Document was successfully recovered.");
 		} else
@@ -3714,6 +3721,14 @@ Buffer::ReadStatus Buffer::loadAutosave()
 		ReadStatus const ret_llf = loadThisLyXFile(autosaveFile);
 		// the file is not saved if we load the autosave file.
 		if (ret_llf == ReadSuccess) {
+			if (isReadonly()) {
+				Alert::warning(_("File is read-only"),
+					bformat(_("A backup file is succesfully loaded,  "
+					"but the original file %1$s is marked read-only. "
+					"Please make sure to save the document as a "
+					"different file."), 
+					from_utf8(d->filename.absFileName())));
+			}
 			markDirty();
 			return ReadSuccess;
 		}
