@@ -115,7 +115,7 @@ private Q_SLOTS:
 	void deleteNoteFontColor();
 	void changeBoxBackgroundColor();
 	void deleteBoxBackgroundColor();
-	void xetexChanged(bool);
+	void osFontsChanged(bool);
 	void branchesRename(docstring const &, docstring const &);
 private:
 	/// validate listings parameters and return an error message, if any

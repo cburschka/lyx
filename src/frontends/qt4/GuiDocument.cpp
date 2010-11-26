@@ -726,10 +726,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 	// output
 	outputModule = new UiWidget<Ui::OutputUi>;
 
-	connect(outputModule->xetexCB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
-	connect(outputModule->xetexCB, SIGNAL(toggled(bool)),
-		this, SLOT(xetexChanged(bool)));
 	connect(outputModule->defaultFormatCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(outputModule->mathimgSB, SIGNAL(valueChanged(double)),
@@ -750,6 +746,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	// fonts
 	fontModule = new UiWidget<Ui::FontUi>;
+	connect(fontModule->osFontsCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(fontModule->osFontsCB, SIGNAL(toggled(bool)),
+		this, SLOT(osFontsChanged(bool)));
 	connect(fontModule->fontsRomanCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(fontModule->fontsRomanCO, SIGNAL(activated(int)),
@@ -1585,38 +1585,39 @@ void GuiDocument::deleteBoxBackgroundColor()
 }
 
 
-void GuiDocument::xetexChanged(bool xetex)
+void GuiDocument::osFontsChanged(bool nontexfonts)
 {
+	bool const tex_fonts = !nontexfonts;
 	updateFontlist();
 	updateDefaultFormat();
-	langModule->encodingCO->setEnabled(!xetex &&
+	langModule->encodingCO->setEnabled(tex_fonts &&
 		!langModule->defaultencodingRB->isChecked());
-	langModule->defaultencodingRB->setEnabled(!xetex);
-	langModule->otherencodingRB->setEnabled(!xetex);
+	langModule->defaultencodingRB->setEnabled(tex_fonts);
+	langModule->otherencodingRB->setEnabled(tex_fonts);
 
-	fontModule->fontsDefaultCO->setEnabled(!xetex);
-	fontModule->fontsDefaultLA->setEnabled(!xetex);
-	fontModule->cjkFontLE->setEnabled(!xetex);
-	fontModule->cjkFontLA->setEnabled(!xetex);
+	fontModule->fontsDefaultCO->setEnabled(tex_fonts);
+	fontModule->fontsDefaultLA->setEnabled(tex_fonts);
+	fontModule->cjkFontLE->setEnabled(tex_fonts);
+	fontModule->cjkFontLA->setEnabled(tex_fonts);
 	string font;
-	if (!xetex)
+	if (tex_fonts)
 		font = tex_fonts_sans[fontModule->fontsSansCO->currentIndex()];
 	bool scaleable = providesScale(font);
 	fontModule->scaleSansSB->setEnabled(scaleable);
 	fontModule->scaleSansLA->setEnabled(scaleable);
-	if (!xetex)
+	if (tex_fonts)
 		font = tex_fonts_monospaced[fontModule->fontsTypewriterCO->currentIndex()];
 	scaleable = providesScale(font);
 	fontModule->scaleTypewriterSB->setEnabled(scaleable);
 	fontModule->scaleTypewriterLA->setEnabled(scaleable);
-	if (!xetex)
+	if (tex_fonts)
 		font = tex_fonts_roman[fontModule->fontsRomanCO->currentIndex()];
 	fontModule->fontScCB->setEnabled(providesSC(font));
 	fontModule->fontOsfCB->setEnabled(providesOSF(font));
 	
-	fontModule->fontencLA->setEnabled(!xetex);
-	fontModule->fontencCO->setEnabled(!xetex);
-	if (xetex)
+	fontModule->fontencLA->setEnabled(tex_fonts);
+	fontModule->fontencCO->setEnabled(tex_fonts);
+	if (!tex_fonts)
 		fontModule->fontencLE->setEnabled(false);
 	else
 		fontencChanged(fontModule->fontencCO->currentIndex());
@@ -1648,7 +1649,7 @@ void GuiDocument::updateFontlist()
 	fontModule->fontsTypewriterCO->clear();
 
 	// With XeTeX, we have access to all system fonts, but not the LaTeX fonts
-	if (outputModule->xetexCB->isChecked()) {
+	if (fontModule->osFontsCB->isChecked()) {
 		fontModule->fontsRomanCO->addItem(qt_("Default"));
 		fontModule->fontsSansCO->addItem(qt_("Default"));
 		fontModule->fontsTypewriterCO->addItem(qt_("Default"));
@@ -1692,7 +1693,7 @@ void GuiDocument::fontencChanged(int item)
 
 void GuiDocument::romanChanged(int item)
 {
-	if (outputModule->xetexCB->isChecked())
+	if (fontModule->osFontsCB->isChecked())
 		return;
 	string const font = tex_fonts_roman[item];
 	fontModule->fontScCB->setEnabled(providesSC(font));
@@ -1702,7 +1703,7 @@ void GuiDocument::romanChanged(int item)
 
 void GuiDocument::sansChanged(int item)
 {
-	if (outputModule->xetexCB->isChecked())
+	if (fontModule->osFontsCB->isChecked())
 		return;
 	string const font = tex_fonts_sans[item];
 	bool scaleable = providesScale(font);
@@ -1713,7 +1714,7 @@ void GuiDocument::sansChanged(int item)
 
 void GuiDocument::ttChanged(int item)
 {
-	if (outputModule->xetexCB->isChecked())
+	if (fontModule->osFontsCB->isChecked())
 		return;
 	string const font = tex_fonts_monospaced[item];
 	bool scaleable = providesScale(font);
@@ -2073,7 +2074,8 @@ void GuiDocument::updateDefaultFormat()
 		return;
 	// make a copy in order to consider unapplied changes
 	Buffer * tmpbuf = buffer().clone();
-	tmpbuf->params().useXetex = outputModule->xetexCB->isChecked();
+	tmpbuf->params().useNonTeXFonts =
+		fontModule->osFontsCB->isChecked();
 	int idx = latexModule->classCO->currentIndex();
 	if (idx >= 0) {
 		string const classname = classes_model_.getIDString(idx);
@@ -2389,8 +2391,8 @@ void GuiDocument::applyView()
 	bp_.defaultOutputFormat = fromqstr(outputModule->defaultFormatCO->itemData(
 		outputModule->defaultFormatCO->currentIndex()).toString());
 
-	bool const xetex = outputModule->xetexCB->isChecked();
-	bp_.useXetex = xetex;
+	bool const nontexfonts = fontModule->osFontsCB->isChecked();
+	bp_.useNonTeXFonts = nontexfonts;
 
 	bp_.output_sync = outputModule->outputsyncCB->isChecked();
 	bp_.output_sync_macro = fromqstr(outputModule->synccustomCB->currentText());
@@ -2405,7 +2407,7 @@ void GuiDocument::applyView()
 	bp_.html_math_img_scale = outputModule->mathimgSB->value();
 
 	// fonts
-	if (xetex) {
+	if (nontexfonts) {
 		if (fontModule->fontsRomanCO->currentIndex() == 0)
 			bp_.fontsRoman = "default";
 		else
@@ -2452,7 +2454,7 @@ void GuiDocument::applyView()
 
 	bp_.fontsOSF = fontModule->fontOsfCB->isChecked();
 
-	if (xetex)
+	if (nontexfonts)
 		bp_.fontsDefaultFamily = "default";
 	else
 		bp_.fontsDefaultFamily = GuiDocument::fontfamilies[
@@ -2825,9 +2827,9 @@ void GuiDocument::paramsToDialog()
 	if (index == -1)
 		index = 0;
 	outputModule->defaultFormatCO->setCurrentIndex(index);
-	outputModule->xetexCB->setEnabled(bp_.baseClass()->outputType() == lyx::LATEX);
-	outputModule->xetexCB->setChecked(
-		bp_.baseClass()->outputType() == lyx::LATEX && bp_.useXetex);
+	fontModule->osFontsCB->setEnabled(bp_.baseClass()->outputType() == lyx::LATEX);
+	fontModule->osFontsCB->setChecked(
+		bp_.baseClass()->outputType() == lyx::LATEX && bp_.useNonTeXFonts);
 
 	outputModule->outputsyncCB->setChecked(bp_.output_sync);
 	outputModule->synccustomCB->setEditText(toqstr(bp_.output_sync_macro));
@@ -2840,7 +2842,7 @@ void GuiDocument::paramsToDialog()
 	updateFontsize(documentClass().opt_fontsize(),
 			bp_.fontsize);
 
-	if (bp_.useXetex) {
+	if (bp_.useNonTeXFonts) {
 		fontModule->fontencLA->setEnabled(false);
 		fontModule->fontencCO->setEnabled(false);
 		fontModule->fontencLE->setEnabled(false);
@@ -3366,7 +3368,7 @@ bool GuiDocument::isFontAvailable(string const & font) const
 
 bool GuiDocument::providesOSF(string const & font) const
 {
-	if (outputModule->xetexCB->isChecked())
+	if (fontModule->osFontsCB->isChecked())
 		// FIXME: we should check if the fonts really
 		// have OSF support. But how?
 		return true;
@@ -3380,7 +3382,7 @@ bool GuiDocument::providesOSF(string const & font) const
 
 bool GuiDocument::providesSC(string const & font) const
 {
-	if (outputModule->xetexCB->isChecked())
+	if (fontModule->osFontsCB->isChecked())
 		return false;
 	if (font == "palatino")
 		return isFontAvailable("mathpazo");
@@ -3392,7 +3394,7 @@ bool GuiDocument::providesSC(string const & font) const
 
 bool GuiDocument::providesScale(string const & font) const
 {
-	if (outputModule->xetexCB->isChecked())
+	if (fontModule->osFontsCB->isChecked())
 		return true;
 	return font == "helvet" || font == "luximono"
 		|| font == "berasans"  || font == "beramono";

@@ -1,7 +1,7 @@
-<ui version="4.0" >
+<ui version="4.0">
  <class>OutputUi</class>
- <widget class="QWidget" name="OutputUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="OutputUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,104 +9,94 @@
     <height>334</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" >
-   <item>
-    <widget class="QGroupBox" name="outputFormatGB" >
-     <property name="title" >
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="outputFormatGB">
+     <property name="title">
       <string>Output Format</string>
      </property>
-     <property name="flat" >
+     <property name="flat">
       <bool>true</bool>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
+     <layout class="QGridLayout">
+      <property name="margin">
        <number>9</number>
       </property>
-      <property name="spacing" >
+      <property name="spacing">
        <number>6</number>
       </property>
-      <item row="1" column="0" >
-       <layout class="QHBoxLayout" >
-        <property name="spacing" >
+      <item row="0" column="0">
+       <layout class="QHBoxLayout">
+        <property name="spacing">
          <number>6</number>
         </property>
-        <property name="margin" >
+        <property name="margin">
          <number>0</number>
         </property>
         <item>
-         <widget class="QLabel" name="defaultFormatLA" >
-          <property name="toolTip" >
+         <widget class="QLabel" name="defaultFormatLA">
+          <property name="toolTip">
            <string>Specify the default output format (for view/update)</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string>De&amp;fault Output Format:</string>
           </property>
-          <property name="buddy" >
+          <property name="buddy">
            <cstring>defaultFormatCO</cstring>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="defaultFormatCO" >
-          <property name="toolTip" >
+         <widget class="QComboBox" name="defaultFormatCO">
+          <property name="toolTip">
            <string>Specify the default output format (for view/update)</string>
           </property>
          </widget>
         </item>
        </layout>
       </item>
-      <item row="0" column="0" >
-       <widget class="QCheckBox" name="xetexCB" >
-        <property name="toolTip" >
-         <string>Use the XeTeX processing engine</string>
-        </property>
-        <property name="text" >
-         <string>Use &amp;XeTeX</string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </widget>
    </item>
-   <item>
-    <widget class="QGroupBox" name="outputsyncCB" >
-     <property name="toolTip" >
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="outputsyncCB">
+     <property name="toolTip">
       <string>Enable forward/reverse search between editor and output (e.g., SyncTeX)</string>
      </property>
-     <property name="title" >
+     <property name="title">
       <string>S&amp;ynchronize with Output</string>
      </property>
-     <property name="flat" >
+     <property name="flat">
       <bool>true</bool>
      </property>
-     <property name="checkable" >
+     <property name="checkable">
       <bool>true</bool>
      </property>
-     <property name="checked" >
+     <property name="checked">
       <bool>false</bool>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2" >
+     <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout" >
+       <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QLabel" name="label" >
-          <property name="text" >
+         <widget class="QLabel" name="label">
+          <property name="text">
            <string>C&amp;ustom Macro:</string>
           </property>
-          <property name="buddy" >
+          <property name="buddy">
            <cstring>synccustomCB</cstring>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="synccustomCB" >
-          <property name="toolTip" >
+         <widget class="QComboBox" name="synccustomCB">
+          <property name="toolTip">
            <string>Custom LaTeX preamble macro</string>
           </property>
-          <property name="editable" >
+          <property name="editable">
            <bool>true</bool>
           </property>
          </widget>
@@ -116,111 +106,111 @@
      </layout>
     </widget>
    </item>
-   <item>
-    <widget class="QGroupBox" name="xhtmlGB" >
-     <property name="title" >
+   <item row="2" column="0">
+    <widget class="QGroupBox" name="xhtmlGB">
+     <property name="title">
       <string>XHTML Output Options</string>
      </property>
-     <property name="flat" >
+     <property name="flat">
       <bool>true</bool>
      </property>
-     <layout class="QGridLayout" name="outGridLayout" >
-      <item row="0" column="0" colspan="2" >
-       <widget class="QCheckBox" name="strictCB" >
-        <property name="toolTip" >
+     <layout class="QGridLayout" name="outGridLayout">
+      <item row="0" column="0" colspan="2">
+       <widget class="QCheckBox" name="strictCB">
+        <property name="toolTip">
          <string>Whether to comply strictly with XHTML 1.1.</string>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>&amp;Strict XHTML 1.1</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="mathoutLA" >
-        <property name="font" >
+      <item row="1" column="0">
+       <widget class="QLabel" name="mathoutLA">
+        <property name="font">
          <font>
           <weight>50</weight>
           <bold>false</bold>
          </font>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>&amp;Math Output:</string>
         </property>
-        <property name="buddy" >
-           <cstring>mathoutCB</cstring>
+        <property name="buddy">
+         <cstring>mathoutCB</cstring>
         </property>
        </widget>
       </item>
-      <item row="1" column="1" >
-       <widget class="QComboBox" name="mathoutCB" >
-        <property name="font" >
+      <item row="1" column="1">
+       <widget class="QComboBox" name="mathoutCB">
+        <property name="font">
          <font>
           <weight>50</weight>
           <bold>false</bold>
          </font>
         </property>
-        <property name="toolTip" >
+        <property name="toolTip">
          <string>Format to use for math output.</string>
         </property>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>MathML</string>
          </property>
         </item>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>HTML</string>
          </property>
         </item>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>Images</string>
          </property>
         </item>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>LaTeX</string>
          </property>
         </item>
        </widget>
       </item>
-      <item row="2" column="0" >
-       <widget class="QLabel" name="mathimgLA" >
-        <property name="font" >
+      <item row="2" column="0">
+       <widget class="QLabel" name="mathimgLA">
+        <property name="font">
          <font>
           <weight>50</weight>
           <bold>false</bold>
          </font>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>Math &amp;Image Scaling:</string>
         </property>
-        <property name="buddy" >
-           <cstring>mathimgSB</cstring>
-          </property>
+        <property name="buddy">
+         <cstring>mathimgSB</cstring>
+        </property>
        </widget>
       </item>
-      <item row="2" column="1" >
-       <widget class="QDoubleSpinBox" name="mathimgSB" >
-        <property name="font" >
+      <item row="2" column="1">
+       <widget class="QDoubleSpinBox" name="mathimgSB">
+        <property name="font">
          <font>
           <weight>50</weight>
           <bold>false</bold>
          </font>
         </property>
-        <property name="toolTip" >
+        <property name="toolTip">
          <string>Scaling factor for images used for math output.</string>
         </property>
-        <property name="minimum" >
+        <property name="minimum">
          <double>0.100000000000000</double>
         </property>
-        <property name="maximum" >
+        <property name="maximum">
          <double>10.000000000000000</double>
         </property>
-        <property name="singleStep" >
+        <property name="singleStep">
          <double>0.100000000000000</double>
         </property>
-        <property name="value" >
+        <property name="value">
          <double>1.000000000000000</double>
         </property>
        </widget>
@@ -228,12 +218,12 @@
      </layout>
     </widget>
    </item>
-   <item>
-    <spacer name="verticalSpacer" >
-     <property name="orientation" >
+   <item row="3" column="0">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeHint" stdset="0" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
        <height>40</height>
@@ -244,7 +234,7 @@
   </layout>
  </widget>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>

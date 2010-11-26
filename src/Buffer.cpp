@@ -128,7 +128,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 408; // gb add script inset
+int const LYX_FORMAT = 409; // spitz use_xetex -> use_non_tex_fonts
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
@@ -3043,7 +3043,7 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 {
 	OutputParams runparams(&params().encoding());
 	runparams.nice = true;
-	runparams.flavor = params().useXetex ? 
+	runparams.flavor = params().useNonTeXFonts ? 
 		OutputParams::XETEX : OutputParams::LATEX;
 	runparams.linelen = lyxrc.plaintext_linelen;
 	// No side effect of file copying and image conversion
@@ -3322,7 +3322,7 @@ string Buffer::bufferFormat() const
 {
 	string format = params().documentClass().outputFormat();
 	if (format == "latex") {
-		if (params().useXetex)
+		if (params().useNonTeXFonts)
 			return "xetex";
 		if (params().encoding().package() == Encoding::japanese)
 			return "platex";
@@ -3340,7 +3340,7 @@ string Buffer::getDefaultOutputFormat() const
 	Formats formats = exportableFormats(true);
 	if (isDocBook()
 	    || isLiterate()
-	    || params().useXetex
+	    || params().useNonTeXFonts
 	    || params().encoding().package() == Encoding::japanese) {
 		if (formats.empty())
 			return string();

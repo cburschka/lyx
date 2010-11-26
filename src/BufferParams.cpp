@@ -379,7 +379,7 @@ BufferParams::BufferParams()
 	fontsSans = "default";
 	fontsTypewriter = "default";
 	fontsDefaultFamily = "default";
-	useXetex = false;
+	useNonTeXFonts = false;
 	fontsSC = false;
 	fontsOSF = false;
 	fontsSansScale = 100;
@@ -627,8 +627,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		fontsTypewriter = lex.getString();
 	} else if (token == "\\font_default_family") {
 		lex >> fontsDefaultFamily;
-	} else if (token == "\\use_xetex") {
-		lex >> useXetex;
+	} else if (token == "\\use_non_tex_fonts") {
+		lex >> useNonTeXFonts;
 	} else if (token == "\\font_sc") {
 		lex >> fontsSC;
 	} else if (token == "\\font_osf") {
@@ -951,7 +951,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\font_sans " << fontsSans
 	   << "\n\\font_typewriter " << fontsTypewriter
 	   << "\n\\font_default_family " << fontsDefaultFamily
-	   << "\n\\use_xetex " << convert<string>(useXetex)
+	   << "\n\\use_non_tex_fonts " << convert<string>(useNonTeXFonts)
 	   << "\n\\font_sc " << convert<string>(fontsSC)
 	   << "\n\\font_osf " << convert<string>(fontsOSF)
 	   << "\n\\font_sf_scale " << fontsSansScale
@@ -1339,7 +1339,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	texrow.newline();
 	// end of \documentclass defs
 
-	if (useXetex) {
+	if (useNonTeXFonts) {
 		os << "\\usepackage{fontspec}\n";
 		texrow.newline();
 	}
@@ -1348,7 +1348,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	string const fonts =
 		loadFonts(fontsRoman, fontsSans,
 			  fontsTypewriter, fontsSC, fontsOSF,
-			  fontsSansScale, fontsTypewriterScale, useXetex);
+			  fontsSansScale, fontsTypewriterScale, useNonTeXFonts);
 	if (!fonts.empty()) {
 		os << from_ascii(fonts);
 		texrow.newline();
@@ -2553,7 +2553,7 @@ string const BufferParams::loadFonts(string const & rm,
 				     string const & sf, string const & tt,
 				     bool const & sc, bool const & osf,
 				     int const & sfscale, int const & ttscale,
-				     bool const & xetex) const
+				     bool const & use_systemfonts) const
 {
 	/* The LaTeX font world is in a flux. In the PSNFSS font interface,
 	   several packages have been replaced by others, that might not
@@ -2573,7 +2573,7 @@ string const BufferParams::loadFonts(string const & rm,
 
 	ostringstream os;
 
-	if (xetex) {
+	if (use_systemfonts) {
 		if (rm != "default") {
 			os << "\\setmainfont[Mapping=tex-text";
 			if (osf)
@@ -2721,7 +2721,11 @@ string const BufferParams::loadFonts(string const & rm,
 
 Encoding const & BufferParams::encoding() const
 {
-	if (useXetex)
+	// FIXME: actually, we should check for the flavor
+	// or runparams.isFullyUnicode() here.
+	// useNonTeXFonts happens to match the flavors, but
+	// this may well likely change!
+	if (useNonTeXFonts)
 		return *(encodings.fromLaTeXName("utf8-plain"));
 	if (inputenc == "auto" || inputenc == "default")
 		return *language->encoding();

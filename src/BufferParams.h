@@ -215,8 +215,8 @@ public:
 	std::string fontsTypewriter;
 	/// the default family (rm, sf, tt)
 	std::string fontsDefaultFamily;
-	/// use the XeTeX processor
-	bool useXetex;
+	/// use the fonts of the OS (OpenType, True Type) directly
+	bool useNonTeXFonts;
 	/// use expert Small Caps
 	bool fontsSC;
 	/// use Old Style Figures
@@ -374,7 +374,7 @@ public:
 				     std::string const & sf, std::string const & tt,
 				     bool const & sc, bool const & osf,
 				     int const & sfscale, int const & ttscale,
-				     bool const & xetex) const;
+				     bool const & use_nonlatexfonts) const;
 
 	/// get the appropriate cite engine (natbib handling)
 	CiteEngine citeEngine() const;

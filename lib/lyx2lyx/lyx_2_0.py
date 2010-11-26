@@ -2361,6 +2361,28 @@ def revert_script(document):
         add_to_preamble(document, ['\\usepackage{subscript}'])
 
 
+def convert_use_xetex(document):
+    " convert \\use_xetex to \\use_non_tex_fonts "
+    i = 0
+    i = find_token(document.header, "\\use_xetex", 0)
+    if i == -1:
+        document.warning("Malformed document. No \\use_xetex param!")
+    else:
+        val = get_value(document.header, "\\use_xetex", 0)
+        document.header[i] = "\\use_non_tex_fonts " + val
+
+
+def revert_use_xetex(document):
+    " revert \\use_non_tex_fonts to \\use_xetex "
+    i = 0
+    i = find_token(document.header, "\\use_non_tex_fonts", 0)
+    if i == -1:
+        document.warning("Malformed document. No \\use_non_tex_fonts param!")
+    else:
+        val = get_value(document.header, "\\use_non_tex_fonts", 0)
+        document.header[i] = "\\use_xetex " + val
+
+
 ##
 # Conversion hub
 #
@@ -2428,10 +2450,12 @@ convert = [[346, []],
            [405, []],
            [406, [convert_passthru]],
            [407, []],
-           [408, []]
+           [408, []],
+           [409, [convert_use_xetex]]
 ]
 
-revert =  [[407, [revert_script]],
+revert =  [[408, [revert_use_xetex]],
+           [407, [revert_script]],
            [406, [revert_multirowOffset]],
            [405, [revert_passthru]],
            [404, []],
