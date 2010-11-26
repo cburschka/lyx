@@ -1008,11 +1008,25 @@ Buffer::ReadStatus Buffer::convertLyXFormat(FileName const & fn,
 // Should probably be moved to somewhere else: BufferView? GuiView?
 bool Buffer::save() const
 {
+	docstring const file = makeDisplayPath(absFileName(), 20);
+	d->filename.refresh();
+
+	// check the read-only status before moving the file as a backup
+	if (d->filename.exists()) {
+		bool const read_only = !d->filename.isWritable();
+		if (read_only) {
+			Alert::warning(_("File is read-only"),
+				bformat(_("The file %1$s cannot be written because it "
+				"is marked as read-only."), file));
+			return false;
+		}
+	}
+
 	// ask if the disk file has been externally modified (use checksum method)
 	if (fileName().exists() && isExternallyModified(checksum_method)) {
-		docstring const file = makeDisplayPath(absFileName(), 20);
-		docstring text = bformat(_("Document %1$s has been externally modified. Are you sure "
-							     "you want to overwrite this file?"), file);
+		docstring text = 
+			bformat(_("Document %1$s has been externally modified. "
+				"Are you sure you want to overwrite this file?"), file);
 		int const ret = Alert::prompt(_("Overwrite modified file?"),
 			text, 1, 1, _("&Overwrite"), _("&Cancel"));
 		if (ret == 1)
