@@ -1300,6 +1300,15 @@ void Cursor::niceInsert(MathAtom const & t)
 		MathData ar(&buffer());
 		asArray(safe, ar);
 		insert(ar);
+	} else if (t->asMacro() && !safe.empty()) {
+		MathData ar(&buffer());
+		asArray(safe, ar);
+		docstring const name = t->asMacro()->name();
+		MacroData const * data = buffer().getMacro(name);
+		if (data && data->numargs() - data->optionals() > 0) {
+			plainInsert(MathAtom(new InsetMathBrace(ar)));
+			posBackward();
+		}
 	}
 }
 

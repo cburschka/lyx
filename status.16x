@@ -56,6 +56,9 @@ What's new
 
 * USER INTERFACE
 
+- Fix insertion of a user math macro trough the math-insert lfun when a
+  selection is present (bug 6939).
+
 - Make the modules description in Document > Settings fully translatable
   (bug 6987).
 
