@@ -53,6 +53,7 @@
 #include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"
 
+#include "frontends/alert.h"
 #include "frontends/Painter.h"
 
 #include "support/lassert.h"
@@ -1145,6 +1146,15 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 	//	insert(pipeThroughExtern(lang, extra, ar));
 	//	return;
 	//}
+
+	// only inline, display or eqnarray math is allowed
+	if (getType() > hullEqnArray) {
+		frontend::Alert::warning(_("Bad math environment"),
+				_("Computation cannot be performed for AMS "
+				  "math environments.\nChange the math "
+				  "formula type and try again."));
+		return;
+	}
 
 	MathData eq;
 	eq.push_back(MathAtom(new InsetMathChar('=')));

@@ -56,6 +56,9 @@ What's new
 
 * USER INTERFACE
 
+- Fix crash when using a computer algebra system from within AMS math
+  environments (bug 7058).
+
 - Fix insertion of a user math macro trough the math-insert lfun when a
   selection is present (bug 6939).
 
