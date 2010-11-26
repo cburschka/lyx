@@ -85,7 +85,7 @@ Style Description
 End
 
 
-Style List
+Style Labeling
 	Category              List
 	Margin                Manual
 	LatexType             List_Environment
@@ -125,4 +125,9 @@ Style List
 			margin-right: 3em;
 		}
 	EndHTMLStyle
+End
+
+
+Style List
+  Obsoletedby           Labeling
 End

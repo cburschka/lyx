@@ -4,7 +4,8 @@
 # Update for Koma Script Release >=2.8q
 # Juergen Spitzmueller <j.spitzmueller@gmx.de>, 2003/2/08.
 # Mapped List to Labeling
-# Guenter Milde <g.milde web.de>
+# Guenter Milde <milde users.berlios.de>, 2009-02-02
+# Labeling is now used also in non-KOMA classes
 
 
 Format 30
@@ -39,15 +40,10 @@ Style Description
 End
 
 Style Labeling
-	CopyStyle             List
 	LatexName             labeling
 	# overwrite the preamble code definition
 	Preamble
 	EndPreamble
-End
-
-Style List
-	Obsoletedby           Labeling
 End
 
 Input stdsections.inc

@@ -2385,6 +2385,17 @@ def revert_use_xetex(document):
     document.header[i] = "\\use_xetex " + val
 
 
+def revert_labeling(document):
+    koma = ("scrartcl", "scrarticle-beamer", "scrbook", "scrlettr",
+        "scrlttr2", "scrreprt")
+    if document.textclass in koma:
+        return
+    i = 0
+    while True:
+        i = find_token_exact(document.body, "\\begin_layout Labeling", i)
+        document.body[i] = "\\begin_layout List"
+
+
 ##
 # Conversion hub
 #
@@ -2453,10 +2464,12 @@ convert = [[346, []],
            [406, [convert_passthru]],
            [407, []],
            [408, []],
-           [409, [convert_use_xetex]]
+           [409, [convert_use_xetex]],
+           [410, []]
 ]
 
-revert =  [[408, [revert_use_xetex]],
+revert =  [[409, [revert_labeling]],
+           [408, [revert_use_xetex]],
            [407, [revert_script]],
            [406, [revert_multirowOffset]],
            [405, [revert_passthru]],
