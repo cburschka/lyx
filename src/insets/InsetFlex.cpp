@@ -45,6 +45,9 @@ InsetFlex::InsetFlex(InsetFlex const & in)
 
 InsetLayout const & InsetFlex::getLayout() const
 {
+	if (!buffer_)
+		return DocumentClass::plainInsetLayout();
+
 	DocumentClass const & dc = buffer().params().documentClass();
 	docstring const dname = from_utf8(name_); 
 	if (dc.hasInsetLayout(dname))
