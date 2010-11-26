@@ -17484,9 +17484,8 @@ msgid "Delete emergency file?"
 msgstr "Smazat nouzové ulo¾ení ?"
 
 #: src/Buffer.cpp:3665 src/Buffer.cpp:3678
-#, fuzzy
 msgid "&Keep"
-msgstr "Dr¾et"
+msgstr "&Ponechat"
 
 #: src/Buffer.cpp:3669
 msgid "Emergency file deleted"
@@ -17533,14 +17532,13 @@ msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s znovunaèten."
 
 #: src/Buffer.cpp:4132
-#, fuzzy, c-format
+#, c-format
 msgid "Could not reload document %1$s."
 msgstr "Nelze znovunaèíst dokument %1$s"
 
 #: src/Buffer.cpp:4199
-#, fuzzy
 msgid "Included File Invalid"
-msgstr "Zahrnout soubor...|s"
+msgstr "Neplatný soubor k zahrnutí"
 
 #: src/Buffer.cpp:4200
 #, c-format
@@ -17569,7 +17567,7 @@ msgid "Document class not available"
 msgstr "Tøída dokumentu není dostupná"
 
 #: src/BufferParams.cpp:1955
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The layout file:\n"
 "%1$s\n"
@@ -17577,16 +17575,16 @@ msgid ""
 "layouts will be used. LyX will not be able to produce\n"
 "correct output."
 msgstr ""
-"Tøída dokumentu %1$s nenalezena. Bude pou¾ita standardní tøída a rozvr¾ení."
-"LyX mo¾ná nebude schopen vyrobit výstup dokud nezvolíte správnou tøídu v "
-"nastaveních dokumentu."
+"Nelze nalézt soubor s rozvr¾ením:\n"
+"%1$s\n"
+"Bude pou¾ita tøída se standardním rozvr¾ením.\nLyX nebude schopen vytvoøit korektní výstup."
 
 #: src/BufferParams.cpp:1961
 msgid "Document class not found"
 msgstr "Tøída dokumentu nenalezena"
 
 #: src/BufferParams.cpp:1968
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
 "%1$s\n"
@@ -17594,9 +17592,9 @@ msgid ""
 "layouts will be used. LyX will not be able to produce\n"
 "correct output."
 msgstr ""
-"Tøída dokumentu %1$s nenalezena. Bude pou¾ita standardní tøída a rozvr¾ení."
-"LyX mo¾ná nebude schopen vyrobit výstup dokud nezvolíte správnou tøídu v "
-"nastaveních dokumentu."
+"Nelze naèíst soubor s rozvr¾ením kvùli chybì v nìm obsa¾ené:\n"
+"%1$s\n"
+"Bude pou¾ita tøída se standardním rozvr¾ením.\nLyX nebude schopen vytvoøit korektní výstup."
 
 #: src/BufferParams.cpp:1974 src/BufferView.cpp:1262 src/BufferView.cpp:1294
 msgid "Could not load class"
@@ -17631,9 +17629,9 @@ msgid "This portion of the document is deleted."
 msgstr "Tato èást dokumentu je vymazána."
 
 #: src/BufferView.cpp:1260 src/BufferView.cpp:1292
-#, fuzzy, c-format
+#, c-format
 msgid "The document class `%1$s' could not be loaded."
-msgstr "Tøídu dokumentu (%1$s) se nepodaøilo naèíst."
+msgstr "Tøídu dokumentu `%1$s' se nepodaøilo naèíst."
 
 #: src/BufferView.cpp:1315
 msgid "No further undo information"
@@ -17714,13 +17712,12 @@ msgid "Applied \"%1$s\" to %2$d insets"
 msgstr ""
 
 #: src/BufferView.cpp:1787
-#, fuzzy
 msgid "Branch name"
-msgstr "Vìtve"
+msgstr "Jméno vìtve"
 
 #: src/BufferView.cpp:1794 src/frontends/qt4/GuiBranches.cpp:176
 msgid "Branch already exists"
-msgstr ""
+msgstr "Vìtev ji¾ existuje"
 
 #: src/BufferView.cpp:2517
 #, c-format
@@ -17803,7 +17800,7 @@ msgid "Uncodable character in author name"
 msgstr "Nekódovatelné znaky ve jménu autora"
 
 #: src/Changes.cpp:380
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The author name '%1$s',\n"
 "used for change tracking, contains glyphs that cannot be\n"
@@ -18150,18 +18147,16 @@ msgid "paragraph marker"
 msgstr "znaèka odstavce"
 
 #: src/Color.cpp:243
-#, fuzzy
 msgid "preview frame"
-msgstr "Náhled selhal"
+msgstr "rámeèek náhledu"
 
 #: src/Color.cpp:244
 msgid "inherit"
 msgstr "dìdit barvu okolí"
 
 #: src/Color.cpp:245
-#, fuzzy
 msgid "regexp frame"
-msgstr "vlo¾ka - rám"
+msgstr "rámeèek regulárního výrazu"
 
 #: src/Color.cpp:246
 msgid "ignore"
@@ -18243,18 +18238,16 @@ msgid ""
 "The pasted branch \"%1$s\" is undefined.\n"
 "Do you want to add it to the document's branch list?"
 msgstr ""
-"Dokument %1$s obsahuje neulo¾ené zmìny.\n"
-"\n"
-"Chcete jej ulo¾it ?"
+"Vkládaná vìtev \"%1$s\" není definována.\n"
+"Chcete ji pøidat do seznamu vìtví v aktuálním dokumentu?"
 
 #: src/CutAndPaste.cpp:349
-#, fuzzy
 msgid "Unknown branch"
-msgstr "Neznámá akce"
+msgstr "Neznámá vìtev"
 
 #: src/CutAndPaste.cpp:350
 msgid "&Don't Add"
-msgstr ""
+msgstr "&Nepøidávat"
 
 #: src/CutAndPaste.cpp:677
 #, c-format
