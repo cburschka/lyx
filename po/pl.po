@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-11-24 22:04+0100\n"
+"POT-Creation-Date: 2010-11-26 17:04+0100\n"
 "PO-Revision-Date: 2009-08-13 17:52+0100\n"
 "Last-Translator: Michał Fita <michal.fita@gmail.com>\n"
 "Language-Team: Polski <pl@li.org>\n"
@@ -390,7 +390,7 @@ msgstr "&Przywróć"
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/VSpaceUi.ui:49
 #: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1338
-#: src/frontends/qt4/GuiDocument.cpp:2234
+#: src/frontends/qt4/GuiDocument.cpp:2240
 msgid "&Apply"
 msgstr "&Zastosuj"
 
@@ -515,7 +515,7 @@ msgstr "&Wielkość:"
 #: src/frontends/qt4/GuiDocument.cpp:668 src/frontends/qt4/GuiDocument.cpp:680
 #: src/frontends/qt4/GuiDocument.cpp:1172
 #: src/frontends/qt4/GuiDocument.cpp:1217
-#: src/frontends/qt4/GuiDocument.cpp:2275 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiDocument.cpp:2281 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiListings.cpp:152
 #: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1841
 msgid "Default"
@@ -4761,10 +4761,10 @@ msgstr "Nagłówki tematu:"
 msgid "[Acknowledgements]"
 msgstr "[Podziękowania]"
 
-#: lib/layouts/aastex.layout:394 src/frontends/qt4/GuiDocument.cpp:1379
-#: src/frontends/qt4/GuiDocument.cpp:1390
-#: src/frontends/qt4/GuiDocument.cpp:1477
-#: src/frontends/qt4/GuiDocument.cpp:1496
+#: lib/layouts/aastex.layout:394 src/frontends/qt4/GuiDocument.cpp:1382
+#: src/frontends/qt4/GuiDocument.cpp:1394
+#: src/frontends/qt4/GuiDocument.cpp:1483
+#: src/frontends/qt4/GuiDocument.cpp:1502
 msgid "and"
 msgstr "i"
 
@@ -10211,12 +10211,12 @@ msgid "Mongolian"
 msgstr "Mongolski"
 
 #: lib/languages:67
-msgid "Norsk"
-msgstr "Norweski"
+msgid "Norwegian (Bokmaal)"
+msgstr ""
 
 #: lib/languages:68
-msgid "Nynorsk"
-msgstr "Norweski (Nynorsk)"
+msgid "Norwegian (Nynorsk)"
+msgstr ""
 
 #: lib/languages:69
 msgid "Polish"
@@ -15628,7 +15628,7 @@ msgstr "HTML (MS Word)"
 msgid "LyXBlogger"
 msgstr ""
 
-#: src/BiblioInfo.cpp:243 src/frontends/qt4/GuiDocument.cpp:1378
+#: src/BiblioInfo.cpp:243 src/frontends/qt4/GuiDocument.cpp:1381
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s i %2$s"
@@ -16834,19 +16834,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "Nieudane kopoowanie %1$s do %2$s."
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:118
-#: src/frontends/qt4/GuiDocument.cpp:2275
+#: src/frontends/qt4/GuiDocument.cpp:2281
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr "Szeryfowa"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:119
-#: src/frontends/qt4/GuiDocument.cpp:2275
+#: src/frontends/qt4/GuiDocument.cpp:2281
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr "Bezszeryfowa"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:120
-#: src/frontends/qt4/GuiDocument.cpp:2275
+#: src/frontends/qt4/GuiDocument.cpp:2281
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr "Maszynowa"
@@ -18897,11 +18897,11 @@ msgid "Color"
 msgstr "W kolorze"
 
 #: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiBranches.cpp:146
-#: src/frontends/qt4/GuiDocument.cpp:1522
+#: src/frontends/qt4/GuiDocument.cpp:1528
 msgid "Yes"
 msgstr "Tak"
 
-#: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiDocument.cpp:1521
+#: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiDocument.cpp:1527
 msgid "No"
 msgstr "Nie"
 
@@ -19359,7 +19359,7 @@ msgstr "Układ tekstu"
 
 #: src/frontends/qt4/GuiDocument.cpp:1275
 #: src/frontends/qt4/GuiDocument.cpp:1350
-#: src/frontends/qt4/GuiDocument.cpp:2242
+#: src/frontends/qt4/GuiDocument.cpp:2248
 #, fuzzy
 msgid "Error"
 msgstr "Strzałka"
@@ -19378,12 +19378,12 @@ msgid "LyX Files (*.lyx)"
 msgstr "Dokumenty LyX'a (*.lyx)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1335
-#: src/frontends/qt4/GuiDocument.cpp:2231
+#: src/frontends/qt4/GuiDocument.cpp:2237
 msgid "Unapplied changes"
 msgstr "Niezatwierdzone zmiany"
 
 #: src/frontends/qt4/GuiDocument.cpp:1336
-#: src/frontends/qt4/GuiDocument.cpp:2232
+#: src/frontends/qt4/GuiDocument.cpp:2238
 #, fuzzy
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
@@ -19393,80 +19393,85 @@ msgstr ""
 "teraz, zostaną utracone w następstwie podejmowanego działania."
 
 #: src/frontends/qt4/GuiDocument.cpp:1338
-#: src/frontends/qt4/GuiDocument.cpp:2234
+#: src/frontends/qt4/GuiDocument.cpp:2240
 msgid "&Dismiss"
 msgstr "O&drzuć"
 
 #: src/frontends/qt4/GuiDocument.cpp:1350
-#: src/frontends/qt4/GuiDocument.cpp:2242
+#: src/frontends/qt4/GuiDocument.cpp:2248
 #, fuzzy
 msgid "Unable to set document class."
 msgstr "Nie można zapisać ustawień domyślnych"
 
-#: src/frontends/qt4/GuiDocument.cpp:1384
+#: src/frontends/qt4/GuiDocument.cpp:1388
 #, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1389
+#: src/frontends/qt4/GuiDocument.cpp:1393
 #, fuzzy, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s i %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1473
+#: src/frontends/qt4/GuiDocument.cpp:1407
+#, c-format
+msgid "%1$s (unavailable)"
+msgstr ""
+
+#: src/frontends/qt4/GuiDocument.cpp:1479
 #, fuzzy
 msgid "Module provided by document class."
 msgstr "Nie można zapisać ustawień domyślnych"
 
-#: src/frontends/qt4/GuiDocument.cpp:1481
+#: src/frontends/qt4/GuiDocument.cpp:1487
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr "Pakiet(y) wymagane: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:1487
+#: src/frontends/qt4/GuiDocument.cpp:1493
 #, fuzzy
 msgid "or"
 msgstr "Więcej"
 
-#: src/frontends/qt4/GuiDocument.cpp:1490
+#: src/frontends/qt4/GuiDocument.cpp:1496
 #, c-format
 msgid "Module required: %1$s."
 msgstr "Wymagany moduł: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:1499
+#: src/frontends/qt4/GuiDocument.cpp:1505
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr "Moduły wykluczone: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:1505
+#: src/frontends/qt4/GuiDocument.cpp:1511
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "OSTRZEŻENIE: Niektóre wymagane pakiety nie są dostępne!"
 
-#: src/frontends/qt4/GuiDocument.cpp:2043
+#: src/frontends/qt4/GuiDocument.cpp:2049
 #, fuzzy
 msgid "[No options predefined]"
 msgstr "Nie zdefiniowana zmiana czcionki."
 
-#: src/frontends/qt4/GuiDocument.cpp:2254
+#: src/frontends/qt4/GuiDocument.cpp:2260
 #, fuzzy
 msgid "Can't set layout!"
 msgstr "Zmieniono układ strony"
 
-#: src/frontends/qt4/GuiDocument.cpp:2255
+#: src/frontends/qt4/GuiDocument.cpp:2261
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Nie można ustawić układu dla ID: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2332
+#: src/frontends/qt4/GuiDocument.cpp:2338
 #, fuzzy
 msgid "Not Found"
 msgstr "Nie wyświetlone."
 
-#: src/frontends/qt4/GuiDocument.cpp:2386
+#: src/frontends/qt4/GuiDocument.cpp:2392
 msgid "Assigned master does not include this file"
 msgstr "Przypisany nadrzędny nie zawiera tego pliku"
 
-#: src/frontends/qt4/GuiDocument.cpp:2387
+#: src/frontends/qt4/GuiDocument.cpp:2393
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -19477,12 +19482,12 @@ msgstr ""
 "'%1$s' by móc użyć fukcjonalności dokumentu\n"
 "nadrzędnego."
 
-#: src/frontends/qt4/GuiDocument.cpp:2391
+#: src/frontends/qt4/GuiDocument.cpp:2397
 #, fuzzy
 msgid "Could not load master"
 msgstr "Nie można zmienić klasy"
 
-#: src/frontends/qt4/GuiDocument.cpp:2392
+#: src/frontends/qt4/GuiDocument.cpp:2398
 #, fuzzy, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -22290,6 +22295,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Nieznany użytkownik"
+
+#~ msgid "Norsk"
+#~ msgstr "Norweski"
+
+#~ msgid "Nynorsk"
+#~ msgstr "Norweski (Nynorsk)"
 
 #, fuzzy
 #~ msgid "Glossary term"
