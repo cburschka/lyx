@@ -1104,9 +1104,24 @@ void GuiApplication::dispatch(FuncRequest const & cmd)
 
 	BufferView * bv = current_view_->currentBufferView();
 	if (bv) {
-		if (dr.needBufferUpdate()) {
-			bv->cursor().clearBufferUpdate();
-			bv->buffer().updateBuffer();
+		Cursor & cursor = bv->cursor();
+		Buffer & buf = bv->buffer();
+
+		// FIXME
+		// This check out to be done somewhere else. It got moved here
+		// from TextMetrics.cpp, where it definitely didn't need to be.
+		// Actually, this test ought not to be done at all, since the
+		// whole InsetBibitem business is a mess. But that is a different
+		// story.
+		int const moveCursor = cursor.paragraph().checkBiblio(buf);
+		if (moveCursor > 0)
+			cursor.posForward();
+		else if (moveCursor < 0 && cursor.pos() >= -moveCursor)
+			cursor.posBackward();
+
+		if (moveCursor != 0 || dr.needBufferUpdate()) {
+			cursor.clearBufferUpdate();
+			buf.updateBuffer();
 		}
 		// BufferView::update() updates the ViewMetricsInfo and
 		// also initializes the position cache for all insets in
