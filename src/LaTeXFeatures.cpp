@@ -616,12 +616,12 @@ string const LaTeXFeatures::getColorOptions() const
 	if (mustProvide("color") || mustProvide("xcolor")) {
 		string const package =
 			(mustProvide("xcolor") ? "xcolor" : "color");
-		if (params_.graphicsDriver == "default"
-			|| params_.graphicsDriver == "none")
+		if (params_.graphics_driver == "default"
+			|| params_.graphics_driver == "none")
 			colors << "\\usepackage{" << package << "}\n";
 		else
 			colors << "\\usepackage["
-				 << params_.graphicsDriver
+				 << params_.graphics_driver
 				 << "]{" << package << "}\n";
 	}
 
@@ -742,12 +742,12 @@ string const LaTeXFeatures::getPackages() const
 	}
 
 	// graphicx.sty
-	if (mustProvide("graphicx") && params_.graphicsDriver != "none") {
-		if (params_.graphicsDriver == "default")
+	if (mustProvide("graphicx") && params_.graphics_driver != "none") {
+		if (params_.graphics_driver == "default")
 			packages << "\\usepackage{graphicx}\n";
 		else
 			packages << "\\usepackage["
-				 << params_.graphicsDriver
+				 << params_.graphics_driver
 				 << "]{graphicx}\n";
 	}
 	

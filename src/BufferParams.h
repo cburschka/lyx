@@ -132,10 +132,10 @@ public:
 	/// but it seems to be needed by CutAndPaste::putClipboard().
 	void setDocumentClass(DocumentClass const * const);
 	/// List of modules in use
-	LayoutModuleList const & getModules() const { return layoutModules_; }
+	LayoutModuleList const & getModules() const { return layout_modules_; }
 	/// List of default modules the user has removed
 	std::list<std::string> const & getRemovedModules() const 
-			{ return removedModules_; }
+			{ return removed_modules_; }
 	///
 	/// Add a module to the list of modules in use. This checks only that the
 	/// module is not already in the list, so use moduleIsCompatible first if
@@ -147,20 +147,20 @@ public:
 	bool moduleCanBeAdded(std::string const & modName) const;
 	///
 	void addRemovedModule(std::string const & modName) 
-			{ removedModules_.push_back(modName); }
+			{ removed_modules_.push_back(modName); }
 	/// Clear the list
-	void clearLayoutModules() { layoutModules_.clear(); }
+	void clearLayoutModules() { layout_modules_.clear(); }
 	/// Clear the removed module list
-	void clearRemovedModules() { removedModules_.clear(); }
+	void clearRemovedModules() { removed_modules_.clear(); }
 
 	/// List of included children (for includeonly)
 	std::list<std::string> const & getIncludedChildren() const 
-			{ return includedChildren_; }
+			{ return included_children_; }
 	///
 	void addIncludedChildren(std::string const & child) 
-			{ includedChildren_.push_back(child); }
+			{ included_children_.push_back(child); }
 	/// Clear the list of included children
-	void clearIncludedChildren() { includedChildren_.clear(); }
+	void clearIncludedChildren() { included_children_.clear(); }
 
 	/// update aux files of unincluded children (with \includeonly)
 	bool maintain_unincluded_children;
@@ -198,9 +198,9 @@ public:
 
 	/* some LaTeX options */
 	/// The graphics driver
-	std::string graphicsDriver;
+	std::string graphics_driver;
 	/// The default output format
-	std::string defaultOutputFormat;
+	std::string default_output_format;
 	/// customized bibliography processor
 	std::string bibtex_command;
 	/// customized index processor
@@ -434,13 +434,13 @@ private:
 	///
 	DocumentClass * doc_class_;
 	/// 
-	LayoutModuleList layoutModules_;
+	LayoutModuleList layout_modules_;
 	/// this is for modules that are required by the document class but that
 	/// the user has chosen not to use
-	std::list<std::string> removedModules_;
+	std::list<std::string> removed_modules_;
 
 	/// the list of included children (for includeonly)
-	std::list<std::string> includedChildren_;
+	std::list<std::string> included_children_;
 
 	/** Use the Pimpl idiom to hide those member variables that would otherwise
 	 *  drag in other header files.

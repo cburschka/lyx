@@ -2224,7 +2224,7 @@ void GuiDocument::applyView()
 	bp_.user_defined_bullet(3) = bulletsModule->bullet(3);
 
 	// packages
-	bp_.graphicsDriver =
+	bp_.graphics_driver =
 		tex_graphics[latexModule->psdriverCO->currentIndex()];
 	
 	// text layout
@@ -2388,7 +2388,7 @@ void GuiDocument::applyView()
 		InsetListingsParams(fromqstr(listingsModule->listingsED->toPlainText())).params();
 
 	// output
-	bp_.defaultOutputFormat = fromqstr(outputModule->defaultFormatCO->itemData(
+	bp_.default_output_format = fromqstr(outputModule->defaultFormatCO->itemData(
 		outputModule->defaultFormatCO->currentIndex()).toString());
 
 	bool const nontexfonts = fontModule->osFontsCB->isChecked();
@@ -2662,7 +2662,7 @@ void GuiDocument::paramsToDialog()
 	bulletsModule->init();
 
 	// packages
-	int nitem = findToken(tex_graphics, bp_.graphicsDriver);
+	int nitem = findToken(tex_graphics, bp_.graphics_driver);
 	if (nitem >= 0)
 		latexModule->psdriverCO->setCurrentIndex(nitem);
 	updateModuleInfo();
@@ -2822,7 +2822,7 @@ void GuiDocument::paramsToDialog()
 	// update combobox with formats
 	updateDefaultFormat();
 	int index = outputModule->defaultFormatCO->findData(toqstr(
-		bp_.defaultOutputFormat));
+		bp_.default_output_format));
 	// set to default if format is not found 
 	if (index == -1)
 		index = 0;

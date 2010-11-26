@@ -385,8 +385,8 @@ BufferParams::BufferParams()
 	fonts_sans_scale = 100;
 	fonts_typewriter_scale = 100;
 	inputenc = "auto";
-	graphicsDriver = "default";
-	defaultOutputFormat = "default";
+	graphics_driver = "default";
+	default_output_format = "default";
 	bibtex_command = "default";
 	index_command = "default";
 	sides = OneSide;
@@ -606,7 +606,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\graphics") {
 		readGraphicsDriver(lex);
 	} else if (token == "\\default_output_format") {
-		lex >> defaultOutputFormat;
+		lex >> default_output_format;
 	} else if (token == "\\bibtex_command") {
 		lex.eatLine();
 		bibtex_command = lex.getString();
@@ -902,30 +902,30 @@ void BufferParams::writeFile(ostream & os) const
 	}
 	
 	// removed modules
-	if (!removedModules_.empty()) {
+	if (!removed_modules_.empty()) {
 		os << "\\begin_removed_modules" << '\n';
-		list<string>::const_iterator it = removedModules_.begin();
-		list<string>::const_iterator en = removedModules_.end();
+		list<string>::const_iterator it = removed_modules_.begin();
+		list<string>::const_iterator en = removed_modules_.end();
 		for (; it != en; it++)
 			os << *it << '\n';
 		os << "\\end_removed_modules" << '\n';
 	}
 
 	// the modules
-	if (!layoutModules_.empty()) {
+	if (!layout_modules_.empty()) {
 		os << "\\begin_modules" << '\n';
-		LayoutModuleList::const_iterator it = layoutModules_.begin();
-		LayoutModuleList::const_iterator en = layoutModules_.end();
+		LayoutModuleList::const_iterator it = layout_modules_.begin();
+		LayoutModuleList::const_iterator en = layout_modules_.end();
 		for (; it != en; it++)
 			os << *it << '\n';
 		os << "\\end_modules" << '\n';
 	}
 
 	// includeonly
-	if (!includedChildren_.empty()) {
+	if (!included_children_.empty()) {
 		os << "\\begin_includeonly" << '\n';
-		list<string>::const_iterator it = includedChildren_.begin();
-		list<string>::const_iterator en = includedChildren_.end();
+		list<string>::const_iterator it = included_children_.begin();
+		list<string>::const_iterator en = included_children_.end();
 		for (; it != en; it++)
 			os << *it << '\n';
 		os << "\\end_includeonly" << '\n';
@@ -960,8 +960,8 @@ void BufferParams::writeFile(ostream & os) const
 	if (!fonts_cjk.empty()) {
 		os << "\\font_cjk " << fonts_cjk << '\n';
 	}
-	os << "\n\\graphics " << graphicsDriver << '\n';
-	os << "\\default_output_format " << defaultOutputFormat << '\n';
+	os << "\n\\graphics " << graphics_driver << '\n';
+	os << "\\default_output_format " << default_output_format << '\n';
 	os << "\\output_sync " << output_sync << '\n';
 	if (!output_sync_macro.empty())
 		os << "\\output_sync_macro \"" << output_sync_macro << "\"\n";
@@ -1382,11 +1382,12 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	writeEncodingPreamble(os, features, texrow);
 
 	// includeonly
-	if (!features.runparams().includeall && !includedChildren_.empty()) {
+	if (!features.runparams().includeall && !included_children_.empty()) {
 		os << "\\includeonly{";
-		list<string>::const_iterator it = includedChildren_.begin();
+		list<string>::const_iterator it = included_children_.begin();
+		list<string>::const_iterator en = included_children_.end();
 		bool first = true;
-		for (; it != includedChildren_.end() ; ++it) {
+		for (; it != en; ++it) {
 			string incfile = *it;
 			FileName inc = makeAbsPath(incfile, filepath.absFileName());
 			string mangled = DocFileName(changeExtension(inc.absFileName(), ".tex")).
@@ -2004,7 +2005,7 @@ bool BufferParams::setBaseClass(string const & classname)
 	}
 
 	pimpl_->baseClass_ = classname;
-	layoutModules_.adaptToBaseClass(baseClass(), removedModules_);
+	layout_modules_.adaptToBaseClass(baseClass(), removed_modules_);
 	return true;
 }
 
@@ -2029,7 +2030,7 @@ void BufferParams::makeDocumentClass()
 	if (!baseClass())
 		return;
 
-	doc_class_ = &(DocumentClassBundle::get().makeDocumentClass(*baseClass(), layoutModules_));
+	doc_class_ = &(DocumentClassBundle::get().makeDocumentClass(*baseClass(), layout_modules_));
 
 	if (!local_layout.empty()) {
 		if (!doc_class_->read(local_layout, TextClass::MODULE)) {
@@ -2042,18 +2043,18 @@ void BufferParams::makeDocumentClass()
 
 bool BufferParams::moduleCanBeAdded(string const & modName) const
 {
-	return layoutModules_.moduleCanBeAdded(modName, baseClass());
+	return layout_modules_.moduleCanBeAdded(modName, baseClass());
 }
 
 
 bool BufferParams::addLayoutModule(string const & modName)
 {
-	LayoutModuleList::const_iterator it = layoutModules_.begin();
-	LayoutModuleList::const_iterator end = layoutModules_.end();
+	LayoutModuleList::const_iterator it = layout_modules_.begin();
+	LayoutModuleList::const_iterator end = layout_modules_.end();
 	for (; it != end; it++)
 		if (*it == modName) 
 			return false;
-	layoutModules_.push_back(modName);
+	layout_modules_.push_back(modName);
 	return true;
 }
 
@@ -2121,14 +2122,14 @@ void BufferParams::readGraphicsDriver(Lexer & lex)
 		string const test = tex_graphics[n++];
 
 		if (test == tmptok) {
-			graphicsDriver = tmptok;
+			graphics_driver = tmptok;
 			break;
 		}
 		if (test.empty()) {
 			lex.printError(
 				"Warning: graphics driver `$$Token' not recognized!\n"
 				"         Setting graphics driver to `default'.\n");
-			graphicsDriver = "default";
+			graphics_driver = "default";
 			break;
 		}
 	}
@@ -2196,22 +2197,22 @@ void BufferParams::readRemovedModules(Lexer & lex)
 		string mod = lex.getString();
 		if (mod == "\\end_removed_modules")
 			break;
-		removedModules_.push_back(mod);
+		removed_modules_.push_back(mod);
 		lex.eatLine();
 	}
 	// now we want to remove any removed modules that were previously 
 	// added. normally, that will be because default modules were added in 
 	// setBaseClass(), which gets called when \textclass is read at the 
 	// start of the read.
-	list<string>::const_iterator rit = removedModules_.begin();
-	list<string>::const_iterator const ren = removedModules_.end();
+	list<string>::const_iterator rit = removed_modules_.begin();
+	list<string>::const_iterator const ren = removed_modules_.end();
 	for (; rit != ren; rit++) {
-		LayoutModuleList::iterator const mit = layoutModules_.begin();
-		LayoutModuleList::iterator const men = layoutModules_.end();
+		LayoutModuleList::iterator const mit = layout_modules_.begin();
+		LayoutModuleList::iterator const men = layout_modules_.end();
 		LayoutModuleList::iterator found = find(mit, men, *rit);
 		if (found == men)
 			continue;
-		layoutModules_.erase(found);
+		layout_modules_.erase(found);
 	}
 }
 
@@ -2227,7 +2228,7 @@ void BufferParams::readIncludeonly(Lexer & lex)
 		string child = lex.getString();
 		if (child == "\\end_includeonly")
 			break;
-		includedChildren_.push_back(child);
+		included_children_.push_back(child);
 		lex.eatLine();
 	}
 }
@@ -2441,12 +2442,12 @@ docstring BufferParams::getGraphicsDriver(string const & package) const
 	docstring result;
 
 	if (package == "geometry") {
-		if (graphicsDriver == "dvips"
-		    || graphicsDriver == "dvipdfm"
-		    || graphicsDriver == "pdftex"
-		    || graphicsDriver == "vtex")
-			result = from_ascii(graphicsDriver);
-		else if (graphicsDriver == "dvipdfmx")
+		if (graphics_driver == "dvips"
+		    || graphics_driver == "dvipdfm"
+		    || graphics_driver == "pdftex"
+		    || graphics_driver == "vtex")
+			result = from_ascii(graphics_driver);
+		else if (graphics_driver == "dvipdfmx")
 			result = from_ascii("dvipdfm");
 	}
 
