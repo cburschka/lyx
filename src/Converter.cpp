@@ -472,8 +472,8 @@ bool Converters::convert(Buffer const * buffer,
 // FIXME: this should go out of here. For example, here we cannot say if
 // it is a document (.lyx) or something else. Same goes for elsewhere.
 					Alert::error(_("Cannot convert file"),
-						bformat(_("An error occurred whilst running %1$s"),
-						from_utf8(command.substr(0, 50))));
+						bformat(_("An error occurred while running:\n%1$s"),
+						wrapParas(from_utf8(command))));
 				}
 				return false;
 			}
