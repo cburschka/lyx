@@ -407,9 +407,10 @@ Menuset
 		Item "Left Line|L" "inset-modify tabular toggle-line-left"
 		Item "Right Line|R" "inset-modify tabular toggle-line-right"
 		Separator
-		Item "Left|f" "inset-modify tabular align-left"
-		Item "Center|C" "inset-modify tabular align-center"
-		Item "Right|h" "inset-modify tabular align-right"
+		Item "Left|f" "command-alternatives inset-modify tabular m-align-left;inset-modify tabular align-left"
+		Item "Center|C" "command-alternatives inset-modify tabular m-align-center;inset-modify tabular align-center"
+		Item "Right|h" "command-alternatives inset-modify tabular m-align-right;inset-modify tabular align-right"
+		Item "Decimal" "inset-modify tabular align-decimal"
 		Separator
 		Item "Top|T" "inset-modify tabular valign-top"
 		Item "Middle|M" "inset-modify tabular valign-middle"
