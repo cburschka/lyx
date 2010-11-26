@@ -319,6 +319,10 @@ public:
 	/// normal stream, and which will in fact be written after the current
 	/// paragraph closes. this is appropriate e.g. for floats.
 	virtual docstring xhtml(XHTMLStream & xs, OutputParams const &) const;
+
+	// FIXME This method is used for things other than generating strings
+	// for the TOC. E.g., it is called by Paragraph::asString() to get the
+	// contents of the inset. These two functions should be disentangled.
 	/// the string that is passed to the TOC
 	virtual void tocString(odocstream &) const {}
 
