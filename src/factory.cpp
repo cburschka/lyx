@@ -145,11 +145,28 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 		case LFUN_ARGUMENT_INSERT:
 			return new InsetArgument(buf);
 
-		case LFUN_FLOAT_INSERT:
-			return new InsetFloat(buf, to_utf8(cmd.argument()));
+		case LFUN_FLOAT_INSERT: {
+			string argument = to_utf8(cmd.argument());
+			if (!argument.empty()) {
+				if (!contains(argument, "sideways")) {
+					if (!contains(argument, "wide"))
+						argument += "\nwide false";
+					argument += "\nsideways false";
+				}
+			}
+			return new InsetFloat(buf, argument);
+		}
 
 		case LFUN_FLOAT_WIDE_INSERT: {
-			InsetFloat * fl = new InsetFloat(buf, to_utf8(cmd.argument()));
+			string argument = to_utf8(cmd.argument());
+			if (!argument.empty()) {
+				if (!contains(argument, "sideways")) {
+					if (!contains(argument, "wide"))
+						argument += "\nwide true";
+					argument += "\nsideways false";
+				}
+			}
+			InsetFloat * fl = new InsetFloat(buf, argument);
 			fl->setWide(true);
 			return fl;
 		}
