@@ -226,7 +226,7 @@ TeXEnvironment(Buffer const & buf,
 	    open_encoding_ != CJK && pit->isMultiLingual(bparams)) {
 		if (prev_par_language->encoding()->package() == Encoding::CJK)
 			os << "\\begin{CJK}{" << from_ascii(par_language->encoding()->latexName())
-			   << "}{" << from_ascii(bparams.fontsCJK) << "}%\n";
+			   << "}{" << from_ascii(bparams.fonts_cjk) << "}%\n";
 		open_encoding_ = CJK;
 		cjk_nested = true;
 		texrow.newline();
@@ -602,7 +602,7 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 				if (par_language->encoding()->package() == Encoding::CJK &&
 				    open_encoding_ != CJK && cjk_inherited_ == 0) {
 					os << "\\begin{CJK}{" << from_ascii(par_language->encoding()->latexName())
-					   << "}{" << from_ascii(bparams.fontsCJK) << "}%\n";
+					   << "}{" << from_ascii(bparams.fonts_cjk) << "}%\n";
 					open_encoding_ = CJK;
 					texrow.newline();
 				}
@@ -943,7 +943,7 @@ void latexParagraphs(Buffer const & buf,
 	if (maintext && !is_child
 	    && bparams.encoding().package() == Encoding::CJK) {
 		os << "\\begin{CJK}{" << from_ascii(bparams.encoding().latexName())
-		<< "}{" << from_ascii(bparams.fontsCJK) << "}%\n";
+		<< "}{" << from_ascii(bparams.fonts_cjk) << "}%\n";
 		texrow.newline();
 		open_encoding_ = CJK;
 	}
@@ -1139,7 +1139,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 				count += 7;
 			}
 			os << "\\begin{CJK}{" << inputenc_arg << "}{"
-			   << from_ascii(bparams.fontsCJK) << "}";
+			   << from_ascii(bparams.fonts_cjk) << "}";
 			open_encoding_ = CJK;
 			return make_pair(true, count + 15);
 		}

@@ -2415,24 +2415,24 @@ void GuiDocument::applyView()
 				fromqstr(fontModule->fontsRomanCO->currentText());
 	
 		if (fontModule->fontsSansCO->currentIndex() == 0)
-			bp_.fontsSans = "default";
+			bp_.fonts_sans = "default";
 		else
-			bp_.fontsSans =
+			bp_.fonts_sans =
 				fromqstr(fontModule->fontsSansCO->currentText());
 	
 		if (fontModule->fontsTypewriterCO->currentIndex() == 0)
-			bp_.fontsTypewriter = "default";
+			bp_.fonts_typewriter = "default";
 		else
-			bp_.fontsTypewriter =
+			bp_.fonts_typewriter =
 				fromqstr(fontModule->fontsTypewriterCO->currentText());
 	} else {
 		bp_.fonts_roman =
 			tex_fonts_roman[fontModule->fontsRomanCO->currentIndex()];
 	
-		bp_.fontsSans =
+		bp_.fonts_sans =
 			tex_fonts_sans[fontModule->fontsSansCO->currentIndex()];
 	
-		bp_.fontsTypewriter =
+		bp_.fonts_typewriter =
 			tex_fonts_monospaced[fontModule->fontsTypewriterCO->currentIndex()];
 	}
 
@@ -2443,21 +2443,21 @@ void GuiDocument::applyView()
 	else if (fontModule->fontencCO->currentIndex() == 2)
 		bp_.fontenc = "default";
 
-	bp_.fontsCJK =
+	bp_.fonts_cjk =
 		fromqstr(fontModule->cjkFontLE->text());
 
-	bp_.fontsSansScale = fontModule->scaleSansSB->value();
+	bp_.fonts_sans_scale = fontModule->scaleSansSB->value();
 
-	bp_.fontsTypewriterScale = fontModule->scaleTypewriterSB->value();
+	bp_.fonts_typewriter_scale = fontModule->scaleTypewriterSB->value();
 
-	bp_.fontsSC = fontModule->fontScCB->isChecked();
+	bp_.fonts_expert_sc = fontModule->fontScCB->isChecked();
 
-	bp_.fontsOSF = fontModule->fontOsfCB->isChecked();
+	bp_.fonts_old_figures = fontModule->fontOsfCB->isChecked();
 
 	if (nontexfonts)
-		bp_.fontsDefaultFamily = "default";
+		bp_.fonts_default_family = "default";
 	else
-		bp_.fontsDefaultFamily = GuiDocument::fontfamilies[
+		bp_.fonts_default_family = GuiDocument::fontfamilies[
 			fontModule->fontsDefaultCO->currentIndex()];
 
 	if (fontModule->fontsizeCO->currentIndex() == 0)
@@ -2854,14 +2854,14 @@ void GuiDocument::paramsToDialog()
 		}
 		
 		for (int i = 0; i < fontModule->fontsSansCO->count(); ++i) {
-			if (fontModule->fontsSansCO->itemText(i) == toqstr(bp_.fontsSans)) {
+			if (fontModule->fontsSansCO->itemText(i) == toqstr(bp_.fonts_sans)) {
 				fontModule->fontsSansCO->setCurrentIndex(i);
 				return;
 			}
 		}
 		for (int i = 0; i < fontModule->fontsTypewriterCO->count(); ++i) {
 			if (fontModule->fontsTypewriterCO->itemText(i) == 
-				toqstr(bp_.fontsTypewriter)) {
+				toqstr(bp_.fonts_typewriter)) {
 				fontModule->fontsTypewriterCO->setCurrentIndex(i);
 				return;
 			}
@@ -2876,31 +2876,31 @@ void GuiDocument::paramsToDialog()
 			romanChanged(n);
 		}
 	
-		n = findToken(tex_fonts_sans, bp_.fontsSans);
+		n = findToken(tex_fonts_sans, bp_.fonts_sans);
 		if (n >= 0) {
 			fontModule->fontsSansCO->setCurrentIndex(n);
 			sansChanged(n);
 		}
 	
-		n = findToken(tex_fonts_monospaced, bp_.fontsTypewriter);
+		n = findToken(tex_fonts_monospaced, bp_.fonts_typewriter);
 		if (n >= 0) {
 			fontModule->fontsTypewriterCO->setCurrentIndex(n);
 			ttChanged(n);
 		}
 	}
 
-	if (!bp_.fontsCJK.empty())
+	if (!bp_.fonts_cjk.empty())
 		fontModule->cjkFontLE->setText(
-			toqstr(bp_.fontsCJK));
+			toqstr(bp_.fonts_cjk));
 	else
 		fontModule->cjkFontLE->setText(QString());
 
-	fontModule->fontScCB->setChecked(bp_.fontsSC);
-	fontModule->fontOsfCB->setChecked(bp_.fontsOSF);
-	fontModule->scaleSansSB->setValue(bp_.fontsSansScale);
-	fontModule->scaleTypewriterSB->setValue(bp_.fontsTypewriterScale);
+	fontModule->fontScCB->setChecked(bp_.fonts_expert_sc);
+	fontModule->fontOsfCB->setChecked(bp_.fonts_old_figures);
+	fontModule->scaleSansSB->setValue(bp_.fonts_sans_scale);
+	fontModule->scaleTypewriterSB->setValue(bp_.fonts_typewriter_scale);
 	
-	int nn = findToken(GuiDocument::fontfamilies, bp_.fontsDefaultFamily);
+	int nn = findToken(GuiDocument::fontfamilies, bp_.fonts_default_family);
 	if (nn >= 0)
 		fontModule->fontsDefaultCO->setCurrentIndex(nn);
 

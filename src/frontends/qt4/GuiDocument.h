@@ -181,7 +181,7 @@ private:
 	/// return false if validate_listings_params returns error
 	bool isValid();
 
-	/// font family names for BufferParams::fontsDefaultFamily
+	/// font family names for BufferParams::fonts_default_family
 	static char const * const fontfamilies[5];
 	/// GUI names corresponding fontfamilies
 	static char const * fontfamilies_gui[5];

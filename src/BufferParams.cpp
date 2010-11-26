@@ -376,14 +376,14 @@ BufferParams::BufferParams()
 	language = default_language;
 	fontenc = "global";
 	fonts_roman = "default";
-	fontsSans = "default";
-	fontsTypewriter = "default";
-	fontsDefaultFamily = "default";
+	fonts_sans = "default";
+	fonts_typewriter = "default";
+	fonts_default_family = "default";
 	useNonTeXFonts = false;
-	fontsSC = false;
-	fontsOSF = false;
-	fontsSansScale = 100;
-	fontsTypewriterScale = 100;
+	fonts_expert_sc = false;
+	fonts_old_figures = false;
+	fonts_sans_scale = 100;
+	fonts_typewriter_scale = 100;
 	inputenc = "auto";
 	graphicsDriver = "default";
 	defaultOutputFormat = "default";
@@ -621,24 +621,24 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		fonts_roman = lex.getString();
 	} else if (token == "\\font_sans") {
 		lex.eatLine();
-		fontsSans = lex.getString();
+		fonts_sans = lex.getString();
 	} else if (token == "\\font_typewriter") {
 		lex.eatLine();
-		fontsTypewriter = lex.getString();
+		fonts_typewriter = lex.getString();
 	} else if (token == "\\font_default_family") {
-		lex >> fontsDefaultFamily;
+		lex >> fonts_default_family;
 	} else if (token == "\\use_non_tex_fonts") {
 		lex >> useNonTeXFonts;
 	} else if (token == "\\font_sc") {
-		lex >> fontsSC;
+		lex >> fonts_expert_sc;
 	} else if (token == "\\font_osf") {
-		lex >> fontsOSF;
+		lex >> fonts_old_figures;
 	} else if (token == "\\font_sf_scale") {
-		lex >> fontsSansScale;
+		lex >> fonts_sans_scale;
 	} else if (token == "\\font_tt_scale") {
-		lex >> fontsTypewriterScale;
+		lex >> fonts_typewriter_scale;
 	} else if (token == "\\font_cjk") {
-		lex >> fontsCJK;
+		lex >> fonts_cjk;
 	} else if (token == "\\paragraph_separation") {
 		string parsep;
 		lex >> parsep;
@@ -948,17 +948,17 @@ void BufferParams::writeFile(ostream & os) const
 	os << "\\inputencoding " << inputenc
 	   << "\n\\fontencoding " << fontenc
 	   << "\n\\font_roman " << fonts_roman
-	   << "\n\\font_sans " << fontsSans
-	   << "\n\\font_typewriter " << fontsTypewriter
-	   << "\n\\font_default_family " << fontsDefaultFamily
+	   << "\n\\font_sans " << fonts_sans
+	   << "\n\\font_typewriter " << fonts_typewriter
+	   << "\n\\font_default_family " << fonts_default_family
 	   << "\n\\use_non_tex_fonts " << convert<string>(useNonTeXFonts)
-	   << "\n\\font_sc " << convert<string>(fontsSC)
-	   << "\n\\font_osf " << convert<string>(fontsOSF)
-	   << "\n\\font_sf_scale " << fontsSansScale
-	   << "\n\\font_tt_scale " << fontsTypewriterScale
+	   << "\n\\font_sc " << convert<string>(fonts_expert_sc)
+	   << "\n\\font_osf " << convert<string>(fonts_old_figures)
+	   << "\n\\font_sf_scale " << fonts_sans_scale
+	   << "\n\\font_tt_scale " << fonts_typewriter_scale
 	   << '\n';
-	if (!fontsCJK.empty()) {
-		os << "\\font_cjk " << fontsCJK << '\n';
+	if (!fonts_cjk.empty()) {
+		os << "\\font_cjk " << fonts_cjk << '\n';
 	}
 	os << "\n\\graphics " << graphicsDriver << '\n';
 	os << "\\default_output_format " << defaultOutputFormat << '\n';
@@ -1346,16 +1346,16 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	// font selection must be done before loading fontenc.sty
 	string const fonts =
-		loadFonts(fonts_roman, fontsSans,
-			  fontsTypewriter, fontsSC, fontsOSF,
-			  fontsSansScale, fontsTypewriterScale, useNonTeXFonts);
+		loadFonts(fonts_roman, fonts_sans,
+			  fonts_typewriter, fonts_expert_sc, fonts_old_figures,
+			  fonts_sans_scale, fonts_typewriter_scale, useNonTeXFonts);
 	if (!fonts.empty()) {
 		os << from_ascii(fonts);
 		texrow.newline();
 	}
-	if (fontsDefaultFamily != "default")
+	if (fonts_default_family != "default")
 		os << "\\renewcommand{\\familydefault}{\\"
-		   << from_ascii(fontsDefaultFamily) << "}\n";
+		   << from_ascii(fonts_default_family) << "}\n";
 
 	// set font encoding
 	// for arabic_arabi and farsi we also need to load the LAE and
@@ -2061,11 +2061,11 @@ bool BufferParams::addLayoutModule(string const & modName)
 Font const BufferParams::getFont() const
 {
 	FontInfo f = documentClass().defaultfont();
-	if (fontsDefaultFamily == "rmdefault")
+	if (fonts_default_family == "rmdefault")
 		f.setFamily(ROMAN_FAMILY);
-	else if (fontsDefaultFamily == "sfdefault")
+	else if (fonts_default_family == "sfdefault")
 		f.setFamily(SANS_FAMILY);
-	else if (fontsDefaultFamily == "ttdefault")
+	else if (fonts_default_family == "ttdefault")
 		f.setFamily(TYPEWRITER_FAMILY);
 	return Font(f, language);
 }

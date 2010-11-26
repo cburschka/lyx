@@ -210,23 +210,23 @@ public:
 	/// the rm font
 	std::string fonts_roman;
 	/// the sf font
-	std::string fontsSans;
+	std::string fonts_sans;
 	/// the tt font
-	std::string fontsTypewriter;
+	std::string fonts_typewriter;
 	/// the default family (rm, sf, tt)
-	std::string fontsDefaultFamily;
+	std::string fonts_default_family;
 	/// use the fonts of the OS (OpenType, True Type) directly
 	bool useNonTeXFonts;
 	/// use expert Small Caps
-	bool fontsSC;
+	bool fonts_expert_sc;
 	/// use Old Style Figures
-	bool fontsOSF;
+	bool fonts_old_figures;
 	/// the scale factor of the sf font
-	int fontsSansScale;
+	int fonts_sans_scale;
 	/// the scale factor of the tt font
-	int fontsTypewriterScale;
+	int fonts_typewriter_scale;
 	/// the font used by the CJK command
-	std::string fontsCJK;
+	std::string fonts_cjk;
 	///
 	Spacing & spacing();
 	Spacing const & spacing() const;
