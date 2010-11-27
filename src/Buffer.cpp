@@ -3630,9 +3630,11 @@ vector<string> Buffer::backends() const
 	vector<string> v;
 	v.push_back(bufferFormat());
 	// FIXME: Don't hardcode format names here, but use a flag
-	if (v.back() == "latex")
+	if (v.back() == "latex") {
 		v.push_back("pdflatex");
-	else if (v.back() == "xetex")
+		v.push_back("luatex");
+		v.push_back("xetex");
+	} else if (v.back() == "xetex")
 		v.push_back("luatex");
 	v.push_back("xhtml");
 	v.push_back("text");

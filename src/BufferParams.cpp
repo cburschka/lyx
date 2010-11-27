@@ -1339,7 +1339,11 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	texrow.newline();
 	// end of \documentclass defs
 
-	if (useNonTeXFonts) {
+	// Fontspec must also be loaded if XeTeX is used with tex fonts
+	// (in order to prevent later loading which overrides the tex
+	// fonts)
+	if (features.runparams().flavor == OutputParams::XETEX
+	    || useNonTeXFonts) {
 		os << "\\usepackage{fontspec}\n";
 		texrow.newline();
 	}
@@ -1360,9 +1364,9 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// set font encoding
 	// for arabic_arabi and farsi we also need to load the LAE and
 	// LFE encoding
-	// XeTeX and LuaTeX (isFullUnicode() flavor) work without fontenc
+	// XeTeX and LuaTeX (with OS fonts) work without fontenc
 	if (font_encoding() != "default" && language->lang() != "japanese"
-	    && !features.runparams().isFullUnicode() && !tclass.provides("fontenc")) {
+	    && !useNonTeXFonts && !tclass.provides("fontenc")) {
 		size_t fars = language_options.str().find("farsi");
 		size_t arab = language_options.str().find("arabic");
 		if (language->lang() == "arabic_arabi"
@@ -1891,16 +1895,13 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	os << lyxpreamble;
 
-	// these packages (xunicode, for that matter) need to be loaded at least
-	// after amsmath, amssymb, esint and the other packages that provide 
-	// special glyphs
+	// xunicode needs to be loaded at least after amsmath, amssymb,
+	// esint and the other packages that provide special glyphs
 	if (features.runparams().flavor == OutputParams::XETEX) {
 		os << "\\usepackage{xunicode}\n";
 		texrow.newline();
-		os << "\\usepackage{xltxtra}\n";
-		texrow.newline();
 	}
-	// Polyglossia must be loaded after xltxtra
+	// Polyglossia must be loaded last
 	if (use_polyglossia) {
 		// call the package
 		os << "\\usepackage{polyglossia}\n";
