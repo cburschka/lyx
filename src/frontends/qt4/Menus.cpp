@@ -744,6 +744,7 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 		if (lyxrc.spellcheck_continuously) {
 			LYXERR(Debug::GUI, "Misspelled Word! Suggested Words = ");
 			size_t i = 0;
+			size_t m = 10; // first submenu index
 			MenuItem item(MenuItem::Submenu, qt_("More Spelling Suggestions"));
 			item.setSubmenu(MenuDefinition(qt_("More Spelling Suggestions")));
 			for (; i != suggestions.size(); ++i) {
@@ -751,12 +752,12 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 				LYXERR(Debug::GUI, suggestion);
 				MenuItem w(MenuItem::Command, toqstr(suggestion),
 					FuncRequest(LFUN_WORD_REPLACE, suggestion));
-				if (i < 10)
+				if (i < m)
 					add(w);
 				else
 					item.submenu().add(w);
 			}
-			if (i >= 10)
+			if (i > m)
 				add(item);
 			if (i > 0)
 				add(MenuItem(MenuItem::Separator));
