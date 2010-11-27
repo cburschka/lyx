@@ -17239,20 +17239,20 @@ msgstr "LyX: Pokus o ulo¾ení dokumentu %1$s\n"
 
 #: src/Buffer.cpp:1115 src/Buffer.cpp:1128 src/Buffer.cpp:1142
 #, c-format
-msgid "  Saved to %1$s. Phew.\n"
-msgstr " Úspì¹nì ulo¾eno do %1$s.\n"
+msgid "Saved to %1$s. Phew.\n"
+msgstr "Úspì¹nì ulo¾eno do %1$s.\n"
 
 #: src/Buffer.cpp:1118
-msgid "  Save failed! Trying again...\n"
-msgstr " Ulo¾ení se nepovedlo! Nový pokus...\n"
+msgid "Save failed! Trying again...\n"
+msgstr "Ulo¾ení se nepovedlo! Nový pokus...\n"
 
 #: src/Buffer.cpp:1132
-msgid "  Save failed! Trying yet again...\n"
-msgstr " Ulo¾ení se nepovedlo! Dal¹í pokus...\n"
+msgid "Save failed! Trying yet again...\n"
+msgstr "Ulo¾ení se nepovedlo! Dal¹í pokus...\n"
 
 #: src/Buffer.cpp:1146
-msgid "  Save failed! Bummer. Document is lost."
-msgstr " Ulo¾ení se nepovedlo! Dokument je ztracen."
+msgid "Save failed! Bummer. Document is lost."
+msgstr "Ulo¾ení se nepovedlo! Dokument je ztracen."
 
 #: src/Buffer.cpp:1230
 msgid "Iconv software exception Detected"
@@ -18383,8 +18383,8 @@ msgstr "Jazyk: %1$s, "
 
 #: src/Font.cpp:192
 #, c-format
-msgid "  Number %1$s"
-msgstr "  Èíslo %1$s"
+msgid "Number %1$s"
+msgstr "Èíslo %1$s"
 
 #: src/Format.cpp:287 src/Format.cpp:300 src/Format.cpp:310
 msgid "Cannot view file"
@@ -18649,7 +18649,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Ladící úroveò nastavena na %1$s"
 
 #: src/LyX.cpp:1041
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -19949,21 +19948,20 @@ msgid "Directories"
 msgstr "Adresáøe"
 
 #: src/frontends/qt4/FindAndReplace.cpp:275
-msgid "file[[scope]]"
-msgstr ""
+msgid "File"
+msgstr "Soubor"
 
 #: src/frontends/qt4/FindAndReplace.cpp:278
-#, fuzzy
-msgid "master document[[scope]]"
+msgid "Master document"
 msgstr "Hlavní dokument"
 
 #: src/frontends/qt4/FindAndReplace.cpp:281
-msgid "open files[[scope]]"
-msgstr ""
+msgid "Open files"
+msgstr "Otevøené soubory"
 
 #: src/frontends/qt4/FindAndReplace.cpp:284
-msgid "manuals[[scope]]"
-msgstr ""
+msgid "Manuals"
+msgstr "Manuály"
 
 #: src/frontends/qt4/FindAndReplace.cpp:288
 #, c-format
@@ -19984,19 +19982,16 @@ msgid "Wrap search?"
 msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:403
-#, fuzzy
 msgid "Nothing to search"
-msgstr "Nic k vykonání"
+msgstr "Nic k vyhledávání"
 
 #: src/frontends/qt4/FindAndReplace.cpp:454
-#, fuzzy
 msgid "No open document(s) in which to search"
-msgstr "Otevírat dokumenty v &panelech"
+msgstr "®ádné otevøené dokumenty pro vyhledávání"
 
 #: src/frontends/qt4/FindAndReplace.cpp:523
-#, fuzzy
 msgid "Advanced Find and Replace"
-msgstr "Najít a zamìnit"
+msgstr "Pokroèilé vyhledávání"
 
 #: src/frontends/qt4/GuiAbout.cpp:51
 msgid "ERROR: LyX wasn't able to read CREDITS file\n"
@@ -20102,9 +20097,8 @@ msgid "Unknown action"
 msgstr "Neznámá akce"
 
 #: src/frontends/qt4/GuiApplication.cpp:916
-#, fuzzy
 msgid "Command not handled"
-msgstr "Pøíkaz vypnut"
+msgstr "Pøíkaz nelze obslou¾it"
 
 #: src/frontends/qt4/GuiApplication.cpp:922
 msgid "Command disabled"
@@ -20214,14 +20208,14 @@ msgid "Could not find UI definition file"
 msgstr "Nelze pøeèíst definièní soubor u¾ivatelského rozhraní"
 
 #: src/frontends/qt4/GuiApplication.cpp:2357
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error while reading the included file\n"
 "%1$s\n"
 "Please check your installation."
 msgstr ""
-"Chyba pøi ètení souboru\n"
-"%1$s.\n"
+"Chyba pøi ètení zahrnutého souboru\n"
+"%1$s\n"
 "Zkontrolujte prosím va¹i instalaci."
 
 #: src/frontends/qt4/GuiApplication.cpp:2363
@@ -20237,7 +20231,7 @@ msgstr ""
 "Zkontrolujte prosím va¹i instalaci."
 
 #: src/frontends/qt4/GuiApplication.cpp:2369
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error while reading the configuration file\n"
 "%1$s\n"
@@ -20245,8 +20239,9 @@ msgid ""
 "Please look under Tools>Preferences>User Interface and\n"
 "check which User Interface file you are using."
 msgstr ""
-"Chyba pøi ètení konfigureèního souboru\n"
-"%1$s.\n"
+"Chyba pøi ètení konfiguraèního souboru\n"
+"%1$s\n"
+"Návrat ke standardnímu nastavení."
 "Zkontrolujte prosím jaký soubor u¾ivatelského nastavení pou¾ívate\n"
 "v Nástroje>Nastavení>U¾ivatelské rozhraní."
 
@@ -20535,9 +20530,8 @@ msgid "Compare LyX files"
 msgstr ""
 
 #: src/frontends/qt4/GuiCompare.cpp:154
-#, fuzzy
 msgid "Select document"
-msgstr "Vybrat hlavní dokument"
+msgstr "Vybrat dokument"
 
 #: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1832
 #: src/frontends/qt4/GuiView.cpp:1890 src/frontends/qt4/GuiView.cpp:2155
@@ -20714,13 +20708,12 @@ msgid "Module not found!"
 msgstr "Modul nenalezen!"
 
 #: src/frontends/qt4/GuiDocument.cpp:577
-#, fuzzy
 msgid "Layout is valid!"
-msgstr "Rozvr¾ení "
+msgstr "Rozvr¾ení je platné."
 
 #: src/frontends/qt4/GuiDocument.cpp:581
 msgid "Layout is invalid!"
-msgstr ""
+msgstr "Rozvr¾ení je neplatné."
 
 #: src/frontends/qt4/GuiDocument.cpp:613
 msgid "Document Settings"
@@ -20732,9 +20725,8 @@ msgid "Child Document"
 msgstr "Dokument potomka"
 
 #: src/frontends/qt4/GuiDocument.cpp:721
-#, fuzzy
 msgid "Include to Output"
-msgstr "datum (výstup)"
+msgstr "Zahrnout ve výstupu"
 
 #: src/frontends/qt4/GuiDocument.cpp:789
 msgid "10"
