@@ -18553,26 +18553,24 @@ msgid "&Reconfigure"
 msgstr "&Rekonfigurovat"
 
 #: src/LyX.cpp:558
-#, fuzzy
 msgid "&Use Defaults"
 msgstr "Pou¾ij &Standardní"
 
 #: src/LyX.cpp:559 src/VCBackend.cpp:786 src/VCBackend.cpp:790
-#, fuzzy
 msgid "&Continue"
-msgstr "Continuing"
+msgstr "&Pokraèovat"
 
 #: src/LyX.cpp:662
 msgid ""
 "SIGHUP signal caught!\n"
 "Bye."
-msgstr ""
+msgstr "Zachycen signál SIGHUP!\nSbohem."
 
 #: src/LyX.cpp:666
 msgid ""
 "SIGFPE signal caught!\n"
 "Bye."
-msgstr ""
+msgstr "Zachycen signál SIGPE!\nSbohem."
 
 #: src/LyX.cpp:669
 msgid ""
@@ -18581,11 +18579,12 @@ msgid ""
 "Please read the bug-reporting instructions in 'Help->Introduction' and send "
 "us a bug report, if necessary. Thanks !\n"
 "Bye."
-msgstr ""
+msgstr "Zachycen signál SIGSEGV!\nOmlouváme se, na¹li jste chybu v LyX-u.\n"
+"Zva¾te pøípadné nahlá¹ení chyby na na¹em webu nebo do mailing listu, díky."
 
 #: src/LyX.cpp:685
 msgid "LyX crashed!"
-msgstr ""
+msgstr "LyX zhavaroval!"
 
 #: src/LyX.cpp:719 src/frontends/qt4/GuiView.cpp:978
 msgid "LyX: "
@@ -18698,11 +18697,12 @@ msgstr ""
 "                  vyber patøiènou èást k ladìní.\n"
 "                  Pøíkaz `lyx -dbg' vypí¹e seznam laditelných èástí\n"
 "\t-x [--execute] command\n"
-"                  spustí pøíkaz command LyX-u.\n"
+"                  spustí pøíkaz LyX-u.\n"
 "\t-e [--export] fmt\n"
 "                  kde fmt je vybraný exportní formát.\n"
 "                  Pro seznam formátù se podívejte do sekce\n"
 "                  Nástroje->Nastavení->Formáty souborù.\n"
+"                  Pozor na poøadí pøepínaèù -x a -e."
 "\t-i [--import] fmt soubor.xxx\n"
 "                  kde fmt vybraný formát k importu\n"
 "                  a soubor.xxx je soubor urèený k importu.\n"
@@ -18715,7 +18715,13 @@ msgstr ""
 "                  soubor, v pøípadì 'none' ¾ádný. Ostatní øetìzce jsou "
 "interpretovány\n"
 "                 jako 'all'.\n"
-"\t-version        shrnout verzi a informace o sestavení\n"
+"\t-n [--no-remote]\n"
+"                  otevøít dokument v nové instanci.\n"
+"\t-r [--remote]\n"
+"                  otevøít dokument v ji¾ bì¾ící instanci\n"
+"                  (musí fungovat \"lyxpipe\").\n"
+"\t-batch          spustí pouze pøíkazy z øádky bez spou¹tìní GUI.\n"
+"\t-version        shrnout verzi a informace o sestavení.\n"
 "Prohlédnìte manuálovou stránku LyX-u pro detailnìj¹í informace."
 
 #: src/LyX.cpp:1093 src/support/Package.cpp:538
@@ -18849,18 +18855,17 @@ msgstr ""
 "Nastavte true pokud chcete mít kurzor v¾dy na obrazovce."
 
 #: src/LyXRC.cpp:3082
-#, fuzzy
 msgid ""
 "LyX normally doesn't allow the user to scroll further than the bottom of the "
 "document. Set to true if you prefer to scroll the bottom of the document to "
 "the top of the screen"
 msgstr ""
-"LyX za normální situace nemìní pozici kurzoru pøi pohybu posuvníkem. "
-"Nastavte true pokud chcete mít kurzor v¾dy na obrazovce."
+"LyX za normální situace nedovolí rolovat pøi pohybu posuvníkem dále ne¾ na spodek dokumentu. "
+"Nastavte true pokud chcete rolovat spodek dokumentu a¾ do horní èásti obrazovky."
 
 #: src/LyXRC.cpp:3086
 msgid "Make Apple key act as Meta and Control key as Ctrl."
-msgstr ""
+msgstr "Nastavte pro zmìnu kláves na Applu: Apple key -> Meta, Control -> Ctrl."
 
 #: src/LyXRC.cpp:3090
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
@@ -19413,9 +19418,9 @@ msgid "Change tracking error"
 msgstr "Chyba pøi zmìnì revize"
 
 #: src/Text.cpp:465
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown author index for change: %1$d\n"
-msgstr "Neznámý index autora pro vlo¾ení: %1$d\n"
+msgstr "Neznámý index autora pro zmìnu: %1$d\n"
 
 #: src/Text.cpp:476
 msgid "Unknown token"
@@ -19513,14 +19518,12 @@ msgid "No valid math formula"
 msgstr "®ádný platný matematický vzorec"
 
 #: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1018
-#, fuzzy
 msgid "Already in regular expression mode"
-msgstr "&Regulární výraz"
+msgstr "Ji¾ jste v módu regulárních výrazù"
 
 #: src/Text3.cpp:216
-#, fuzzy
 msgid "Regexp editor mode"
-msgstr "Mód matematického editoru"
+msgstr "Mód regulárních výrazù"
 
 #: src/Text3.cpp:1281
 msgid "Layout "
@@ -20335,9 +20338,8 @@ msgid "Color"
 msgstr "Barevnì"
 
 #: src/frontends/qt4/GuiBranches.cpp:52
-#, fuzzy
 msgid "Filename Suffix"
-msgstr "Jméno souboru"
+msgstr "Pøípona souboru"
 
 #: src/frontends/qt4/GuiBranches.cpp:99 src/frontends/qt4/GuiBranches.cpp:107
 #: src/frontends/qt4/GuiDocument.cpp:2050
@@ -20358,33 +20360,29 @@ msgid "No"
 msgstr "Ne"
 
 #: src/frontends/qt4/GuiBranches.cpp:168
-#, fuzzy
 msgid "Enter new branch name"
-msgstr "Vlo¾te unikátní jméno skupiny:"
+msgstr "Vlo¾te nové jméno vìtve:"
 
 #: src/frontends/qt4/GuiBranches.cpp:173
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "A branch with the name \"%1$s\" already exists.\n"
 "Do you want to merge branch \"%2$s\" with that one?"
 msgstr ""
-"Soubor %1$s ji¾ existuje.\n"
-"\n"
-"Chcete tento soubor pøepsat?"
+"Vìtev se jménem \"%1$s\" ji¾ existuje.\n"
+"Chcete slouèit vìtev \"%2$s\" s danou vìtví?"
 
 #: src/frontends/qt4/GuiBranches.cpp:177
 msgid "&Merge"
-msgstr ""
+msgstr "S&louèit"
 
 #: src/frontends/qt4/GuiBranches.cpp:185 src/frontends/qt4/GuiIndices.cpp:214
-#, fuzzy
 msgid "Renaming failed"
-msgstr "Tøídìní rejstøíku se nezdaøilo"
+msgstr "Pøejmenování se nezdaøilo"
 
 #: src/frontends/qt4/GuiBranches.cpp:186
-#, fuzzy
 msgid "The branch could not be renamed."
-msgstr "%1$s nemù¾e být pøeèten."
+msgstr "Vìtev nemù¾e být pøejmenována."
 
 #: src/frontends/qt4/GuiChanges.cpp:39
 msgid "Merge Changes"
