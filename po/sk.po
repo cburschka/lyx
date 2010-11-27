@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-11-27 11:13+0100\n"
-"PO-Revision-Date: 2010-11-26 17:42+0100\n"
+"PO-Revision-Date: 2010-11-27 15:16+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -21366,15 +21366,16 @@ msgid "Unknown tabular feature '%1$s'"
 msgstr "Neznáme vlastnosti tabuľky '%1$s'"
 
 #: src/mathed/InsetMathHull.cpp:1152
-#, fuzzy
 msgid "Bad math environment"
-msgstr "Gather prostredie"
+msgstr "Nesprávne mat. prostredie"
 
 #: src/mathed/InsetMathHull.cpp:1153
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
 msgstr ""
+"Výpočet je nemožný pre mat. prostredie AMS.\n"
+"Zmeň typ matematickej formuly a skús znovu."
 
 #: src/mathed/InsetMathHull.cpp:1257 src/mathed/InsetMathHull.cpp:1265
 msgid "No number"
