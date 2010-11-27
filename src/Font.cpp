@@ -189,7 +189,7 @@ docstring const Font::stateText(BufferParams * params) const
 		os << bformat(_("Language: %1$s, "),
 			      _(language()->display()));
 	if (bits_.number() != FONT_OFF)
-		os << bformat(_("  Number %1$s"),
+		os << "  " << bformat(_("Number %1$s"),
 			      _(GUIMiscNames[bits_.number()]));
 	return rtrim(os.str(), ", ");
 }

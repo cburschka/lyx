@@ -1127,10 +1127,10 @@ docstring Buffer::emergencyWrite()
 		LYXERR0("  " << s);
 		if (writeFile(FileName(s))) {
 			markClean();
-			user_message += bformat(_("  Saved to %1$s. Phew.\n"), from_utf8(s));
+			user_message += "  " + bformat(_("Saved to %1$s. Phew.\n"), from_utf8(s));
 			return user_message;
 		} else {
-			user_message += _("  Save failed! Trying again...\n");
+			user_message += "  " + _("Save failed! Trying again...\n");
 		}
 	}
 
@@ -1140,11 +1140,11 @@ docstring Buffer::emergencyWrite()
 	lyxerr << ' ' << s << endl;
 	if (writeFile(FileName(s))) {
 		markClean();
-		user_message += bformat(_("  Saved to %1$s. Phew.\n"), from_utf8(s));
+		user_message += "  " + bformat(_("Saved to %1$s. Phew.\n"), from_utf8(s));
 		return user_message;
 	}
 
-	user_message += _("  Save failed! Trying yet again...\n");
+	user_message += "  " + _("Save failed! Trying yet again...\n");
 
 	// 3) In "/tmp" directory.
 	// MakeAbsPath to prepend the current
@@ -1154,11 +1154,11 @@ docstring Buffer::emergencyWrite()
 	lyxerr << ' ' << s << endl;
 	if (writeFile(FileName(s))) {
 		markClean();
-		user_message += bformat(_("  Saved to %1$s. Phew.\n"), from_utf8(s));
+		user_message += "  " + bformat(_("Saved to %1$s. Phew.\n"), from_utf8(s));
 		return user_message;
 	}
 
-	user_message += _("  Save failed! Bummer. Document is lost.");
+	user_message += "  " + _("Save failed! Bummer. Document is lost.");
 	// Don't try again.
 	markClean();
 	return user_message;
