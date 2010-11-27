@@ -272,23 +272,23 @@ docstring getQuestionString(FindAndReplaceOptions const & opt)
 	docstring scope;
 	switch (opt.scope) {
 	case FindAndReplaceOptions::S_BUFFER:
-		scope = _("file[[scope]]");
+		scope = _("File");
 		break;
 	case FindAndReplaceOptions::S_DOCUMENT:
-		scope = _("master document[[scope]]");
+		scope = _("Master document");
 		break;
 	case FindAndReplaceOptions::S_OPEN_BUFFERS:
-		scope = _("open files[[scope]]");
+		scope = _("Open files");
 		break;
 	case FindAndReplaceOptions::S_ALL_MANUALS:
-		scope = _("manuals[[scope]]");
+		scope = _("Manuals");
 		break;
 	}
 	docstring message = opt.forward ?
-		bformat(_("End of %1$s reached while searching forward.\n"
+		bformat(_("%1$s: the end was reached while searching forward.\n"
 			  "Continue searching from the beginning?"),
 			scope) : 
-		bformat(_("Beginning of %1$s reached while searching backward.\n"
+		bformat(_("%1$s: the beginning was reached while searching backward.\n"
 			  "Continue searching from the end?"),
 			scope);
 
