@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-11-26 17:04+0100\n"
+"POT-Creation-Date: 2010-11-27 11:13+0100\n"
 "PO-Revision-Date: 2007-07-11 18:31+0100\n"
 "Last-Translator: Ramon Flores <fa2ramon@usc.es>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -18270,7 +18270,7 @@ msgstr "Nada que indexar!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Non se pode indexar máis dun parágrafo!"
 
-#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1571
+#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1581
 msgid "Math editor mode"
 msgstr "Modo do editor matemático"
 
@@ -22133,7 +22133,7 @@ msgstr " cadeas foron substituidas."
 msgid " Macro: %1$s: "
 msgstr " Macro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1479
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1489
 #: src/mathed/InsetMathSplit.cpp:75 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -22170,25 +22170,36 @@ msgstr "Nengunha vline a eliminar"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Característica de táboa descoñecida '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1247 src/mathed/InsetMathHull.cpp:1255
+#: src/mathed/InsetMathHull.cpp:1152
+#, fuzzy
+msgid "Bad math environment"
+msgstr "Entorno Gather|G"
+
+#: src/mathed/InsetMathHull.cpp:1153
+msgid ""
+"Computation cannot be performed for AMS math environments.\n"
+"Change the math formula type and try again."
+msgstr ""
+
+#: src/mathed/InsetMathHull.cpp:1257 src/mathed/InsetMathHull.cpp:1265
 msgid "No number"
 msgstr "Nengun número"
 
-#: src/mathed/InsetMathHull.cpp:1247 src/mathed/InsetMathHull.cpp:1255
+#: src/mathed/InsetMathHull.cpp:1257 src/mathed/InsetMathHull.cpp:1265
 msgid "Number"
 msgstr "Número"
 
-#: src/mathed/InsetMathHull.cpp:1452
+#: src/mathed/InsetMathHull.cpp:1462
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Non é posíbel trocar o número de filas en '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1462
+#: src/mathed/InsetMathHull.cpp:1472
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Non é posíbel trocar o número de colunas en '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1472
+#: src/mathed/InsetMathHull.cpp:1482
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Non é posíbel engadir liñas de cuadrícula horizontal en '%1$s'"

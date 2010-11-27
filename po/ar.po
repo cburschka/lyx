@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-11-26 17:04+0100\n"
+"POT-Creation-Date: 2010-11-27 11:13+0100\n"
 "PO-Revision-Date: 2010-03-21 22:45+0200\n"
 "Last-Translator: Mohamed Magdy <theblackdragon_100@hotmail.com>\n"
 "Language-Team: LyX team <theblackdragon_100@hotmail.com>\n"
@@ -17537,7 +17537,7 @@ msgstr "لا شئ للفهرسة!"
 msgid "Cannot index more than one paragraph!"
 msgstr ""
 
-#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1571
+#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1581
 msgid "Math editor mode"
 msgstr "نظام تحرير الرياضيات"
 
@@ -21259,7 +21259,7 @@ msgstr ""
 msgid " Macro: %1$s: "
 msgstr "مختصر : %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1479
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1489
 #: src/mathed/InsetMathSplit.cpp:75 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -21296,25 +21296,36 @@ msgstr "لا خط رأسي لحذفه"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "خاصية جدولة مجهولة '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1247 src/mathed/InsetMathHull.cpp:1255
+#: src/mathed/InsetMathHull.cpp:1152
+#, fuzzy
+msgid "Bad math environment"
+msgstr "تجميع الوحدات"
+
+#: src/mathed/InsetMathHull.cpp:1153
+msgid ""
+"Computation cannot be performed for AMS math environments.\n"
+"Change the math formula type and try again."
+msgstr ""
+
+#: src/mathed/InsetMathHull.cpp:1257 src/mathed/InsetMathHull.cpp:1265
 msgid "No number"
 msgstr "لا رقم"
 
-#: src/mathed/InsetMathHull.cpp:1247 src/mathed/InsetMathHull.cpp:1255
+#: src/mathed/InsetMathHull.cpp:1257 src/mathed/InsetMathHull.cpp:1265
 msgid "Number"
 msgstr "رقم"
 
-#: src/mathed/InsetMathHull.cpp:1452
+#: src/mathed/InsetMathHull.cpp:1462
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "لم يتم تغيير رقم الصف في '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1462
+#: src/mathed/InsetMathHull.cpp:1472
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "لم يتم تغيير رقم العمود في '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1472
+#: src/mathed/InsetMathHull.cpp:1482
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "تعذر اضافة خطوط أفقية للشبكة في '%1$s'"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.xsvn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-11-26 17:04+0100\n"
+"POT-Creation-Date: 2010-11-27 11:13+0100\n"
 "PO-Revision-Date: 2010-11-08 19:40+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -17649,7 +17649,7 @@ msgstr "Nincs mit a szójegyzékbe rakni!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Nem tudok szójegyzékbe rakni többet, mint egy bekezdés!"
 
-#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1571
+#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1581
 msgid "Math editor mode"
 msgstr "Képletszerkesztő mód"
 
@@ -21372,7 +21372,7 @@ msgstr " szöveget cseréltem ki."
 msgid " Macro: %1$s: "
 msgstr " Makró: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1479
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1489
 #: src/mathed/InsetMathSplit.cpp:75 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -21409,25 +21409,36 @@ msgstr "Nincs törlendő függőleges vonal"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Ismeretlen táblázat jellemző '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1247 src/mathed/InsetMathHull.cpp:1255
+#: src/mathed/InsetMathHull.cpp:1152
+#, fuzzy
+msgid "Bad math environment"
+msgstr "Gather környezet"
+
+#: src/mathed/InsetMathHull.cpp:1153
+msgid ""
+"Computation cannot be performed for AMS math environments.\n"
+"Change the math formula type and try again."
+msgstr ""
+
+#: src/mathed/InsetMathHull.cpp:1257 src/mathed/InsetMathHull.cpp:1265
 msgid "No number"
 msgstr "Nem szám"
 
-#: src/mathed/InsetMathHull.cpp:1247 src/mathed/InsetMathHull.cpp:1255
+#: src/mathed/InsetMathHull.cpp:1257 src/mathed/InsetMathHull.cpp:1265
 msgid "Number"
 msgstr "Szám"
 
-#: src/mathed/InsetMathHull.cpp:1452
+#: src/mathed/InsetMathHull.cpp:1462
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "A sorok száma itt: '%1$s' nem változtatható"
 
-#: src/mathed/InsetMathHull.cpp:1462
+#: src/mathed/InsetMathHull.cpp:1472
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Az oszlopok száma itt: '%1$s' nem változtatható"
 
-#: src/mathed/InsetMathHull.cpp:1472
+#: src/mathed/InsetMathHull.cpp:1482
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nem tudok vízszintes rácsvonalat adni '%1$s'-hoz"
