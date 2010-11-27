@@ -3507,11 +3507,9 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_COPY_AS
- * \li Action: Copies the inset to the clipboard as a certain type
- * \li Syntax: inset-copy-as [<TYPE>]
- * \li Params: <TYPE>: The type as which the inset is copied. This 
-                       can vary from inset to inset.
- * \li Sample: InsetInfo is copied as text
+ * \li Action: Copies the inset to the clipboard as a certain type.
+ * \li Notion: Currently used only for InsetInfo where its content is copied as a text.
+ * \li Syntax: inset-copy-as
  * \li Origin: vfr, 18 Apr 2010
  * \endvar
  */
