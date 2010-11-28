@@ -1233,6 +1233,11 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 {
 	OutputParams runparams = runparams_in;
 
+	// This is necessary for LuaTeX/XeTeX with tex fonts.
+	// See FIXME in BufferParams::encoding()
+	if (runparams.isFullUnicode())
+		runparams.encoding = encodings.fromLyXName("utf8-plain");
+
 	string const encoding = runparams.encoding->iconvName();
 	LYXERR(Debug::LATEX, "makeLaTeXFile encoding: " << encoding << "...");
 
