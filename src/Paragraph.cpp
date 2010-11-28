@@ -1328,6 +1328,7 @@ bool Paragraph::Private::latexSpecialPhrase(odocstream & os, pos_type & i,
 void Paragraph::Private::validate(LaTeXFeatures & features) const
 {
 	if (layout_->inpreamble && inset_owner_) {
+		bool const is_command = layout_->latextype == LATEX_COMMAND;
 		Buffer const & buf = inset_owner_->buffer();
 		BufferParams const & bp = buf.params();
 		Font f;
@@ -1337,20 +1338,23 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 		// output is wrong if this paragraph contains content
 		// that needs to switch encoding.
 		odocstringstream ods;
-		ods << '\\' << from_ascii(layout_->latexname());
-		// we have to provide all the optional arguments here, even though
-		// the last one is the only one we care about.
-		// Separate handling of optional argument inset.
-		if (layout_->optargs != 0 || layout_->reqargs != 0)
-			latexArgInsets(*owner_, ods, features.runparams(),
-			               layout_->reqargs, layout_->optargs);
-		else
-			ods << from_ascii(layout_->latexparam());
+		if (is_command) {
+			ods << '\\' << from_ascii(layout_->latexname());
+			// we have to provide all the optional arguments here, even though
+			// the last one is the only one we care about.
+			// Separate handling of optional argument inset.
+			if (layout_->optargs != 0 || layout_->reqargs != 0)
+				latexArgInsets(*owner_, ods, features.runparams(),
+											 layout_->reqargs, layout_->optargs);
+			else
+				ods << from_ascii(layout_->latexparam());
+		}
 		docstring::size_type const length = ods.str().length();
 		// this will output "{" at the beginning, but not at the end
 		owner_->latex(bp, f, ods, tr, features.runparams(), 0, -1, true);
 		if (ods.str().length() > length) {
-			ods << '}';
+			if (is_command)
+				ods << '}';
 			string const snippet = to_utf8(ods.str());
 			features.addPreambleSnippet(snippet);
 		}
