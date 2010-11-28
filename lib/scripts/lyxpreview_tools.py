@@ -60,19 +60,20 @@ def make_texcolor(hexcolor, graphics):
 
 
 def find_exe(candidates, path):
+    extlist = ['']
+    if os.environ.has_key("PATHEXT"):
+        extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
+
     for prog in candidates:
         for directory in path:
-            if os.name == "nt":
-                full_path = os.path.join(directory, prog + ".exe")
-            else:
-                full_path = os.path.join(directory, prog)
-
-            if os.access(full_path, os.X_OK):
-                # The thing is in the PATH already (or we wouldn't
-                # have found it). Return just the basename to avoid
-                # problems when the path to the executable contains
-                # spaces.
-                return os.path.basename(full_path)
+            for ext in extlist:
+                full_path = os.path.join(directory, prog + ext)
+                if os.access(full_path, os.X_OK):
+                    # The thing is in the PATH already (or we wouldn't
+                    # have found it). Return just the basename to avoid
+                    # problems when the path to the executable contains
+                    # spaces.
+                    return os.path.basename(full_path)
 
     return None
 
