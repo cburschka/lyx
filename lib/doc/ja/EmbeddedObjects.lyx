@@ -1,5 +1,5 @@
 #LyX 2.0.0beta1 created this file. For more info see http://www.lyx.org/
-\lyxformat 408
+\lyxformat 410
 \begin_document
 \begin_header
 \textclass jbook
@@ -173,7 +173,7 @@
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -2015,6 +2015,7 @@ status collapsed
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-row.png
 	scaleBeforeRotation
@@ -2025,6 +2026,7 @@ status collapsed
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-column.png
 	scaleBeforeRotation
@@ -2035,6 +2037,7 @@ status collapsed
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-row.png
 	scaleBeforeRotation
@@ -2045,6 +2048,7 @@ status collapsed
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-column.png
 	scaleBeforeRotation
@@ -2055,6 +2059,7 @@ status collapsed
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-top.png
 	scaleBeforeRotation
@@ -2065,6 +2070,7 @@ status collapsed
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-bottom.png
 	scaleBeforeRotation
@@ -2075,6 +2081,7 @@ status collapsed
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-left.png
 	scaleBeforeRotation
@@ -2085,6 +2092,7 @@ status collapsed
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-right.png
 	scaleBeforeRotation
@@ -2095,6 +2103,7 @@ status collapsed
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-all-lines.png
 	scaleBeforeRotation
@@ -2105,6 +2114,7 @@ status collapsed
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_unset-all-lines.png
 	scaleBeforeRotation
@@ -2115,6 +2125,7 @@ status collapsed
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_m-align-left.png
 	scaleBeforeRotation
@@ -2125,6 +2136,7 @@ status collapsed
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_m-align-center.png
 	scaleBeforeRotation
@@ -2135,6 +2147,7 @@ status collapsed
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_m-align-right.png
 	scaleBeforeRotation
@@ -2145,6 +2158,7 @@ status collapsed
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-decimal.png
 	scaleBeforeRotation
@@ -2157,6 +2171,7 @@ aligns the content of the current column at a character
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_m-valign-top.png
 	scaleBeforeRotation
@@ -2167,6 +2182,7 @@ aligns the content of the current column at a character
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_m-valign-middle.png
 	scaleBeforeRotation
@@ -2177,6 +2193,7 @@ aligns the content of the current column at a character
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_m-valign-bottom.png
 	scaleBeforeRotation
@@ -2187,6 +2204,7 @@ aligns the content of the current column at a character
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-rotate-cell.png
 	scaleBeforeRotation
@@ -2197,6 +2215,7 @@ aligns the content of the current column at a character
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-rotate-tabular.png
 	scaleBeforeRotation
@@ -2207,6 +2226,7 @@ aligns the content of the current column at a character
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_multicolumn.png
 	scaleBeforeRotation
@@ -2217,6 +2237,7 @@ aligns the content of the current column at a character
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_multirow.png
 	scaleBeforeRotation
@@ -14441,6 +14462,7 @@ definecolor{色彩名}{色彩モデル}{色彩値}
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 cmyk：シアン（
 \bar under
 c
@@ -14461,6 +14483,7 @@ k
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 rgb：赤（
 \bar under
 r
@@ -14477,6 +14500,7 @@ lue）
 \end_layout
 
 \begin_layout Labeling
+\labelwidthstring 00.00.0000
 gray：グレー
 \end_layout
 
@@ -16262,11 +16286,8 @@ reference "tab:表セル"
 
 の小数点のように、同一列の各セルの内容が、特定の文字で揃えられた方が見栄えの良いことがあります。 
 \lang english
-This alignment is achieved by highlighting the last 3
-\begin_inset space ~
-\end_inset
-
-cells of the column and then either pressing the toolbar button
+This alignment is achieved by setting the cursor into the column and then
+ either pressing the toolbar button
 \lang japanese
  
 \begin_inset Graphics
@@ -20218,7 +20239,7 @@ LaTeXは、
 既定では、各オプションはそれぞれ以下の規則を持っています。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -20233,7 +20254,7 @@ topfraction
 ）。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -20248,7 +20269,7 @@ bottomfraction
 ）。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans

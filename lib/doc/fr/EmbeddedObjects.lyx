@@ -1,5 +1,5 @@
 #LyX 2.0.0beta1 created this file. For more info see http://www.lyx.org/
-\lyxformat 408
+\lyxformat 410
 \begin_document
 \begin_header
 \textclass scrbook
@@ -163,7 +163,7 @@
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -17516,11 +17516,8 @@ reference "tab:Tableau-centré-sur-séparateur-1"
 .
  
 \lang english
-This alignment is achieved by highlighting the last 3
-\begin_inset space ~
-\end_inset
-
-cells of the column and then either pressing the toolbar button
+This alignment is achieved by setting the cursor into the column and then
+ either pressing the toolbar button
 \lang french
  
 \begin_inset Graphics

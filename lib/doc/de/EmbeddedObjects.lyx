@@ -1,5 +1,5 @@
 #LyX 2.0.0beta1 created this file. For more info see http://www.lyx.org/
-\lyxformat 408
+\lyxformat 410
 \begin_document
 \begin_header
 \textclass scrbook
@@ -161,7 +161,7 @@
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -17334,12 +17334,8 @@ reference "tab:Tabellenzellen-sind-auf"
 \end_inset
 
 .
- Diese Ausrichtung erhält man, indem die 3
-\begin_inset space ~
-\end_inset
-
-letzten Zellen der Spalte markiert und man dann entweder den Werkzeugleistenknop
-f 
+ Diese Ausrichtung erhält man, indem den Cursor in die Spalte setzt und
+ dann entweder den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-decimal.png
 	scale 85
@@ -17347,7 +17343,7 @@ f
 
 \end_inset
 
- drücken oder in den Tabelleneinstellungen die Ausrichtung auf 
+ drückt oder in den Tabelleneinstellungen die Ausrichtung auf 
 \family sans
 Am
 \begin_inset space ~
@@ -17355,7 +17351,7 @@ Am
 
 Dezimaltrenner
 \family default
- setzen.
+ setzt.
  Das Zeichen, auf das ausgerichtet wird, kann man in den Tabelleneinstellungen
  frei wählen.
 \end_layout
