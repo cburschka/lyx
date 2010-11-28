@@ -1113,15 +1113,17 @@ void GuiApplication::dispatch(FuncRequest const & cmd)
 		// Actually, this test ought not to be done at all, since the
 		// whole InsetBibitem business is a mess. But that is a different
 		// story.
-		int const moveCursor = cursor.paragraph().checkBiblio(buf);
-		if (moveCursor > 0)
-			cursor.posForward();
-		else if (moveCursor < 0 && cursor.pos() >= -moveCursor)
-			cursor.posBackward();
+		if (cursor.inTexted()) {
+			int const moveCursor = cursor.paragraph().checkBiblio(buf);
+			if (moveCursor > 0)
+				cursor.posForward();
+			else if (moveCursor < 0 && cursor.pos() >= -moveCursor)
+				cursor.posBackward();
 
-		if (moveCursor != 0 || dr.needBufferUpdate()) {
-			cursor.clearBufferUpdate();
-			buf.updateBuffer();
+			if (moveCursor != 0 || dr.needBufferUpdate()) {
+				cursor.clearBufferUpdate();
+				buf.updateBuffer();
+			}
 		}
 		// BufferView::update() updates the ViewMetricsInfo and
 		// also initializes the position cache for all insets in
