@@ -20,6 +20,7 @@
 #include "BufferView.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
+#include "Encoding.h"
 #include "ErrorList.h"
 #include "Exporter.h"
 #include "Format.h"
@@ -579,7 +580,11 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		// and language.
 		Encoding const * const oldEnc = runparams.encoding;
 		Language const * const oldLang = runparams.master_language;
-		runparams.encoding = &tmp->params().encoding();
+		// If the master has full unicode flavor (XeTeX, LuaTeX),
+		// the children must be encoded in plain utf8!
+		runparams.encoding = runparams.isFullUnicode() ?
+			encodings.fromLyXName("utf8-plain")
+			: &tmp->params().encoding();
 		runparams.master_language = buffer().params().language;
 		tmp->makeLaTeXFile(writefile,
 				   masterFileName(buffer()).onlyPath().absFileName(),
