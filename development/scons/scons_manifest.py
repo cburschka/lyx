@@ -1433,11 +1433,13 @@ lib_images_files = Split('''
     buffer-close.png
     buffer-export.png
     buffer-export_dvi.png
+    buffer-export_dvi3.png
     buffer-export_latex.png
     buffer-export_pdf.png
     buffer-export_pdf2.png
     buffer-export_pdf3.png
     buffer-export_pdf4.png
+    buffer-export_pdf5.png
     buffer-export_ps.png
     buffer-export_text.png
     buffer-new.png
@@ -1445,17 +1447,21 @@ lib_images_files = Split('''
     buffer-toggle-output-sync.png
     buffer-update.png
     buffer-update_dvi.png
+    buffer-update_dvi3.png
     buffer-update_pdf.png
     buffer-update_pdf2.png
     buffer-update_pdf3.png
     buffer-update_pdf4.png
+    buffer-update_pdf5.png
     buffer-update_ps.png
     buffer-view.png
     buffer-view_dvi.png
+    buffer-view_dvi3.png
     buffer-view_pdf.png
     buffer-view_pdf2.png
     buffer-view_pdf3.png
     buffer-view_pdf4.png
+    buffer-view_pdf5.png
     buffer-view_ps.png
     buffer-write-as.png
     buffer-write.png
