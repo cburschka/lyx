@@ -230,6 +230,38 @@ Caveats when upgrading from earlier versions to 2.0.x
   Please refer to the beginning of the languages file for an explanation
   of the new syntax.
 
+- There has been a large change in how Flex insets are named. Previously,
+  they tended to have names like "CharStyle:Noun". Now, they just have
+  names like "Flex:Noun" (where "Flex" is a namespace that is optional).
+  When LyX 2.0 reads older files, it silently converts the old-style names
+  to new-style names; this direction works perfectly. It will also silently
+  revert new-style names to old-style names, when exporting to 1.6.x format,
+  but only for the pre-defined LyX insets. This means that user-defined flex
+  insets will not be properly reverted.
+  To solve this problem, you can modify the file $LYXDIR/lyx2lyx/lyx_2_0.py.
+  In that file, you will find the following:
+    flex_insets = {
+      "Alert" : "CharStyle:Alert",
+      "Code" : "CharStyle:Code",
+      "Concepts" : "CharStyle:Concepts",
+      "E-Mail" : "CharStyle:E-Mail",
+      "Emph" : "CharStyle:Emph",
+      "Expression" : "CharStyle:Expression",
+      "Initial" : "CharStyle:Initial",
+      "Institute" : "CharStyle:Institute",
+      "Meaning" : "CharStyle:Meaning",
+      "Noun" : "CharStyle:Noun",
+      "Strong" : "CharStyle:Strong",
+      "Structure" : "CharStyle:Structure",
+      "ArticleMode" : "Custom:ArticleMode",
+      "Endnote" : "Custom:Endnote",
+      "Glosse" : "Custom:Glosse",
+      "PresentationMode" : "Custom:PresentationMode",
+      "Tri-Glosse" : "Custom:Tri-Glosse"
+    }
+  This is a map form new-style names (minux "Flex") to old-style names (and
+  there is a similar for DocBook elements). To get a user-defined CharStyle
+  to revert properly, it simply needs to be added to this list.
 
 
 Note: There may later be an updated list of known issues online at
