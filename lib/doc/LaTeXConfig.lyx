@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 408
+\lyxformat 410
 \begin_document
 \begin_header
 \textclass article
@@ -12,7 +12,7 @@
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -4822,6 +4822,36 @@ listings
  is used by LyX to display program listings (source code snippets).
  It supports many program languages, syntax highlighting, line numbers,
  etc.
+\end_layout
+
+\begin_layout Subsection
+luainputenc
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "luainputenc"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/luatex/latex/luainputenc/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+luainputenc
+\family default
+\color none
+ reimplements input encoding features for LuaTeX.
+ It is needed if LuaTeX is used as output format with tex fonts.
 \end_layout
 
 \begin_layout Subsection

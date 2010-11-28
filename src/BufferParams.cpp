@@ -2459,9 +2459,18 @@ docstring BufferParams::getGraphicsDriver(string const & package) const
 void BufferParams::writeEncodingPreamble(odocstream & os,
 		LaTeXFeatures & features, TexRow & texrow) const
 {
-	// fully unicode-aware backends (such as XeTeX) do not need this
-	if (features.runparams().isFullUnicode())
+	// XeTeX does not need this
+	if (features.runparams().flavor == OutputParams::XETEX)
 		return;
+	// LuaTeX neither, but with tex fonts, we need to load
+	// the luainputenc package.
+	if (features.runparams().flavor == OutputParams::LUATEX) {
+		if (!useNonTeXFonts) {
+			os << "\\usepackage[utf8]{luainputenc}\n";
+			texrow.newline();
+		}
+		return;
+	}
 	if (inputenc == "auto") {
 		string const doc_encoding =
 			language->encoding()->latexName();
@@ -2724,9 +2733,9 @@ string const BufferParams::loadFonts(string const & rm,
 Encoding const & BufferParams::encoding() const
 {
 	// FIXME: actually, we should check for the flavor
-	// or runparams.isFullyUnicode() here.
-	// useNonTeXFonts happens to match the flavors, but
-	// this may well likely change!
+	// or runparams.isFullyUnicode() here:
+	// This check will not work with XeTeX/LuaTeX and tex fonts.
+	// Thus we have to reset the encoding in Buffer::makeLaTeXFile.
 	if (useNonTeXFonts)
 		return *(encodings.fromLaTeXName("utf8-plain"));
 	if (inputenc == "auto" || inputenc == "default")
