@@ -1,5 +1,5 @@
 #LyX 2.0.0beta1 created this file. For more info see http://www.lyx.org/
-\lyxformat 408
+\lyxformat 410
 \begin_document
 \begin_header
 \textclass scrbook
@@ -167,7 +167,7 @@
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -1881,23 +1881,15 @@ contenido
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-With the dialog option 
+Con la opción del diálogo 
 \family sans
-Immediate
-\begin_inset space ~
-\end_inset
-
-Apply
+Aplicar inmediatamente
 \family default
- every change you make in the dialog is directly applied.
- If you move the cursor to another table cell the dialog will then also
- be updated with the parameters of the new cell.
- If you change length values in the dialog you must press return to get
- the change applied.
-\lang spanish
-
+ cada cambio que hagas se aplica directamente.
+ Si mueves el cursor a otra celda el diálogo también se actualizará con
+ los parámetros de la nueva celda.
+ Si cambias valores de longitud debes pulsar la tecla entrar para aplicar
+ los cambios.
 \begin_inset Newline newline
 \end_inset
 
@@ -1925,20 +1917,9 @@ tabla
  actual.
  La alineación 
 \family sans
-\lang english
-At
-\begin_inset space ~
-\end_inset
-
-Decimal
-\begin_inset space ~
-\end_inset
-
-Separator
+Al separador decimal
 \family default
- is described in
-\lang spanish
- sección
+ se describe en la sección
 \begin_inset space ~
 \end_inset
 
@@ -1969,7 +1950,7 @@ reference "sub:Líneas-Múltiples-en"
 \begin_inset Newline newline
 \end_inset
 
-Además, puedes marcar una o más celdas de una fila como una celda multicolumna,
+Además, puedes marcar una o más celdas de una fila como celda multicolumna,
  véase sección
 \begin_inset space ~
 \end_inset
@@ -1981,11 +1962,7 @@ reference "sub:Multicolumnas"
 
 \end_inset
 
- 
-\lang english
-or the cells of one column as multirow cell
-\lang spanish
-, véase sección
+, o las celdas de una columna como celda multifila, véase sección
 \begin_inset space ~
 \end_inset
 
@@ -2024,15 +2001,12 @@ Nota:
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-The table-wide vertical alignment is used for tables within text lines:
+La alineación vertical de tabla completa se usa para tablas en líneas de
+ texto:
 \begin_inset Newline newline
 \end_inset
 
-A line with tables with different alignments
-\lang spanish
-: 
+Línea con tablas con diferentes alineaciones: 
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features tabularvalignment="top">
@@ -2454,9 +2428,7 @@ La barra de herramientas tiene los siguientes iconos:
 
 \end_inset
 
- alinea el contenido de la celda/columna 
-\lang english
-at a character
+ alinea el contenido de la celda/columna a un carácter
 \end_layout
 
 \begin_layout Labeling
@@ -2527,9 +2499,7 @@ at a character
 
 \end_inset
 
- establece la celda actual o selección como 
-\lang english
-multirow
+ establece la celda actual o selección como multifila
 \end_layout
 
 \begin_layout Standard
@@ -2873,7 +2843,7 @@ El flotante se muestra como un cuadro desplegable con la etiqueta «Tabla
  Para insertar una tabla en el flotante se sitúa el cursor al final del
  texto del encabezado y se pulsa 
 \family sans
-Retorno
+Entrar
 \family default
 .
  La leyenda se imprime encima de la tabla.
@@ -5431,15 +5401,11 @@ Tablas largas ! Alineación
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The horizontal alignment of longtables can be set in the table settings
- dialog.
- For left- and right-alignment the table will be directly at the page border.
- To add space between the table and the border one has to set the alignment
- to center
-\lang spanish
- y cambiar el valor de las longitudes 
+La alineación horizontal de tablas largas se puede establecer en el diálogo
+ de configuración de tablas.
+ Para las alineaciones izquierda y derecha la tabla irá al borde de la página.
+ Para poner espacio entre la tabla y el borde hay que poner la alineación
+ al centro y cambiar el valor de las longitudes 
 \series bold
 
 \backslash
@@ -5502,21 +5468,13 @@ fill
 \end_layout
 
 \begin_layout Standard
-La siguiente tabla larga se ha alineado 
-\lang english
-centered
-\lang spanish
- y 
+La siguiente tabla larga se ha alineado centrada y 
 \series bold
 
 \backslash
 LTleft
 \series default
- 
-\lang english
-set to
-\lang spanish
- 
+ establecido en 
 \family sans
 0.1
 \backslash
@@ -11171,7 +11129,7 @@ cm y escoge centro en alineación vertical y horizontal.
 cm, sólo aparece una línea.
  Para poner dos añadimos un salto de línea justificado, (atajo 
 \family sans
-Ctrl+Mayúsculas+Retorno
+Ctrl+Mayúsculas+Entrar
 \family default
 ).
  Si el texto es más ancho que la celda será automáticamente dividido en
@@ -12268,7 +12226,7 @@ Editar\SpecialChar \menuseparator
 Tabla\SpecialChar \menuseparator
 Multifila
 \family default
-, o clic derecho sobre las celdas marcadas y elige 
+, o haz clic derecho sobre las celdas marcadas y elige 
 \family sans
 Multifila 
 \family default
@@ -12276,15 +12234,11 @@ en el menú contextual.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is an example table with a multirow in the first column:
+Aquí hay un ejemplo de tabla con una multifila en la primera columna:
 \end_layout
 
 \begin_layout Standard
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
@@ -12296,9 +12250,7 @@ Here is an example table with a multirow in the first column:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-a long cell entry
+entrada en una celda larga
 \end_layout
 
 \end_inset
@@ -12307,8 +12259,6 @@ a long cell entry
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 b
 \end_layout
 
@@ -12318,8 +12268,6 @@ b
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 c
 \end_layout
 
@@ -12331,8 +12279,6 @@ c
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 multifila
 \end_layout
 
@@ -12342,8 +12288,6 @@ multifila
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 e
 \end_layout
 
@@ -12353,8 +12297,6 @@ e
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 f
 \end_layout
 
@@ -12375,8 +12317,6 @@ f
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 h
 \end_layout
 
@@ -12386,8 +12326,6 @@ h
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 i
 \end_layout
 
@@ -12402,26 +12340,21 @@ i
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The width of multirow cells is set by setting the width and alignment for
- the whole column.
- The 
+La anchura de las celdas multifila se establece poniendo la anchura y la
+ alineación para toda la columna.
+ El 
 \family sans
-Vertical Offset
+Desplazamiento vertical
 \family default
- shifts the content of the multirow up/down if the offset is positive/negative.
+ cambia el contenido de la multifila arriba/abajo según su valor sea positivo/ne
+gativo.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If the column of a multirow cell has no explicit width, the multirow cell
- inherits the alignment of the column.
- Otherwise it is by default left-aligned.
-
-\lang spanish
- Para cambiarlo renombra el comando 
+Si la columna de una celda multifila no tiene anchura explícita, la celda
+ multifila hereda el alineamiento de la columna.
+ Por otra parte, se alinea a la izquierda por omisión.
+ Para cambiar esto renombra el comando 
 \series bold
 
 \backslash
@@ -12470,18 +12403,16 @@ raggedright
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This is an example table with a right-aligned multirow cell that has a vertical
- offset of -4
+Este es un ejemplo de tabla con una celda multifila alineada a la derecha
+ que tiene un desplazamiento vertical de -4
 \begin_inset space \thinspace{}
 \end_inset
 
-mm and is in a 3
+mm y está en una columna de 3
 \begin_inset space \thinspace{}
 \end_inset
 
-cm wide column:
+cm de ancho:
 \end_layout
 
 \begin_layout Standard
@@ -12515,7 +12446,7 @@ raggedleft}
 \begin_inset Text
 
 \begin_layout Plain Layout
-a long cell entry
+entrada en una celda larga
 \end_layout
 
 \end_inset
@@ -17067,20 +16998,16 @@ el separador decimal, como en la tabla
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-cells-align"
+reference "tab:Table-celdas-alineadas"
 
 \end_inset
 
 .
- 
+ Esta alineación se obtiene resaltando 
 \lang english
-This alignment is achieved by highlighting the last 3
-\begin_inset space ~
-\end_inset
-
-cells of the column and then either pressing the toolbar button
+by setting the cursor into
 \lang spanish
- 
+ la columna y pulsando el botón 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-decimal.png
 	scale 85
@@ -17088,23 +17015,13 @@ cells of the column and then either pressing the toolbar button
 
 \end_inset
 
- 
-\lang english
-or setting the alignment in the table settings to 
+ de la barra de herramientas o eligiendo la alineación 
 \family sans
-At
-\begin_inset space ~
-\end_inset
-
-Decimal
-\begin_inset space ~
-\end_inset
-
-Separator
+Al separador decimal
 \family default
-.
- The alignment character can be a character of your choice and is specified
- in the table settings.
+ en la configuración de la tabla.
+ El carácter para la alineación puede escogerse, se especifica en la configuraci
+ón de la tabla.
 \end_layout
 
 \begin_layout Standard
@@ -17119,13 +17036,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-cells-align"
+name "tab:Table-celdas-alineadas"
 
 \end_inset
 
-Ta
-\lang english
-ble cells of a column aligned with the decimal separator.
+Tabla con celdas alineadas al separador decimal.
 \end_layout
 
 \end_inset
@@ -17211,11 +17126,7 @@ name "tab:Tabla-con-celdas-de"
 
 \end_inset
 
-Tabla con celdas alineadas con 
-\lang english
-the operators
-\lang spanish
-.
+Tabla con celdas alineadas a los operadores.
 \end_layout
 
 \end_inset
@@ -17341,13 +17252,9 @@ leyenda
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For alignments at characters in formulas this method does not work because
- the field to specify the alignment character does not allow formulas.
- In this case one need to use the method from 
-\lang spanish
-tabla
+Para alinear con caracteres en ecuaciones este método no funciona porque
+ el campo para especificar el carácter no permite ecuaciones.
+ En este caso hay que usar el método de la tabla
 \begin_inset space ~
 \end_inset
 
@@ -17359,16 +17266,13 @@ reference "tab:Tabla-con-celdas-de"
 \end_inset
 
 .
- Esta es una tabla 4×2.
+ Es una tabla 4×2.
  La leyenda es una multicolumna centrada.
- La primera columna está alineada a la derecha y contiene el 
-\lang english
-first part including the operator.
- The second column is left aligned and contains the rest.
- A small space was added at the beginning of each cell of the second column
- to get the space that is usually around operators.
-
-\lang spanish
+ La primera columna está alineada a la derecha y contiene la primera parte
+ incluyendo el operador.
+ La segunda columna está alineada a la izquierda y contiene la parte restante.
+ Se ha añadido un pequeño espacio al comienzo de cada celda de la segunda
+ columna para mantener el espacio habitual alrededor de los operadores.
  Para omitir el espacio que hay normalmente entre dos columnas se ha usado
  el siguiente argumento LaTeX para la segunda columna:
 \end_layout
@@ -17392,11 +17296,8 @@ reference "tab:Varias-alineaciones"
 \end_inset
 
  muestra varios ejemplos de alineación.
- Para alinear con el signo de relación 
-\lang english
-a small space was added like for the second column of
-\lang spanish
- tabla
+ Para alinear al signo de relación se ha añadido un pequeño espacio como
+ en la segunda columna de la tabla
 \begin_inset space ~
 \end_inset
 
@@ -20562,37 +20463,33 @@ LaTeX-paquetes ! refstyle
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-You can select which LaTeX-package should be used for this feature by setting
- the option 
+Se puede seleccionar el paquete LaTeX a usar con esta característica marcando
+ la opción 
 \family sans
-Use refstyle (not prettyref) for cross-references
+Usar refstyle (no prettyref) para las referencias cruzadas
 \family default
- in the menu 
+ en el menú 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Document Class
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Clase de documento
 \family default
 .
- The format is specified by adding the command 
+ El formato se especifica añadiendo el comando 
 \series bold
 
 \backslash
 newrefformat
 \series default
- (prettyref) or 
+ (prettyref) o 
 \series bold
 
 \backslash
 newref
 \series default
- (refstyle) to the preamble of the document.
- For example redefining all references to figures (which have the label
- shortcut
-\lang spanish
- 
+ (refstyle) en el preámbulo del documento.
+ Por ejemplo, para redefinir todas las referencias a figuras (que tienen
+ la etiqueta 
 \begin_inset Quotes fld
 \end_inset
 
@@ -20604,11 +20501,7 @@ fig
 \begin_inset Quotes frd
 \end_inset
 
-) 
-\lang english
-can be done with this command
-\lang spanish
-
+) se usa el comando
 \begin_inset Newline newline
 \end_inset
 
@@ -20616,11 +20509,7 @@ can be done with this command
 \series bold
 
 \backslash
-newref{fig}{refcmd={
-\lang english
-Image on page
-\lang spanish
- 
+newref{fig}{refcmd={Imagen en la página 
 \backslash
 pageref{#1}}}
 \series default
@@ -20628,11 +20517,12 @@ pageref{#1}}}
 \begin_inset Newline newline
 \end_inset
 
+Para más información sobre este formato echa un vistazo a la documentación
+ de
+\begin_inset space ~
+\end_inset
 
-\lang english
-For more information about the format, have a look at the package documentations
-\lang spanish
-, 
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "prettyref,refstyle"
@@ -20643,15 +20533,11 @@ key "prettyref,refstyle"
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Textual
+Referencia
 \begin_inset space ~
 \end_inset
 
-reference: prints the caption of the reference
-\lang spanish
-: 
+textual: imprime la leyenda de la referencia: 
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "fig:Dos-imágenes-distorsionadas"
@@ -20721,13 +20607,9 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Nota:
+Nota: 
 \series default
- 
-\lang english
-It is recommended to use
-\lang spanish
- el paquete LaTeX 
+Se recomienda usar el paquete LaTeX 
 \series bold
 refstyle
 \series default
@@ -20741,11 +20623,7 @@ LaTeX-paquetes ! refstyle
 
 \end_inset
 
- 
-\lang english
-because
-\lang spanish
- 
+ porque 
 \series bold
 prettyref
 \series default
@@ -27238,15 +27116,19 @@ Cuadro
 \family sans
 interior
 \family default
- permite escoger los tipos 
+ permite escoger los tipos
 \family sans
-Párrafo
+ Minipágina
+\family default
+, 
+\family sans
+Cuadro de párrafo
 \family default
  y 
 \family sans
-Minipágina
+Cuadro de 
 \family default
-.
+línea.
  
 \family sans
 Minipágina
@@ -27279,10 +27161,8 @@ reference "sec:Cuadros-de-Párrafo"
 
  y el tipo 
 \family sans
-\lang english
-Makebox
+Cuadro de línea
 \family default
-\lang spanish
  se describe en la sección
 \begin_inset space ~
 \end_inset
@@ -27994,9 +27874,7 @@ Sin
 \begin_inset space ~
 \end_inset
 
-marco 
-\lang english
-Nothing is drawn.
+marco No se dibuja ninguno.
 \end_layout
 
 \begin_layout Description
@@ -29494,14 +29372,11 @@ Cuadros ! para evitar la partición de palabras
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can use the box type 
+El cuadro tipo 
 \family sans
-Makebox
+Cuadro de línea
 \family default
-\lang spanish
- para impedir que una palabra sea partida con guión.
+ sirve para evitar que una palabra sea partida con guión.
 \begin_inset Newline newline
 \end_inset
 
@@ -29514,33 +29389,24 @@ palabra».
 \end_layout
 
 \begin_layout Standard
-Para evitar su división 
-\lang english
-of the word 
-\begin_inset Quotes eld
-\end_inset
-
-veryverylongword
-\begin_inset Quotes erd
-\end_inset
-
-, put the word into a box, set the 
+Para evitar la división de la palabra «estalarguísimapalabra», ponla en
+ un cuadro, establece el 
 \family sans
-Inner
-\begin_inset space ~
-\end_inset
-
-box
+Cuadro interior
 \family default
- to 
+ en 
 \family sans
-Makebox
+Cuadro de línea
 \family default
- and its width to 1
+ y el ancho en 
+\family sans
+1
 \begin_inset space \thinspace{}
 \end_inset
 
-Width.
+Ancho
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -29616,7 +29482,7 @@ de
 \family default
 línea (atajo 
 \family sans
-Ctrl+Retorno
+Ctrl+Entrar
 \family default
 ), un salto de línea antes de la palabra:
 \end_layout
