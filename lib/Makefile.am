@@ -1098,6 +1098,7 @@ dist_layouts_DATA =\
 	layouts/extletter.layout \
 	layouts/extreport.layout \
 	layouts/figs-within-sections.module \
+	layouts/fixltx2e.module \
 	layouts/foils.layout \
 	layouts/foottoend.module \
 	layouts/frletter.layout \

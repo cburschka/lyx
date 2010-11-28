@@ -575,7 +575,7 @@ char const * simplefeatures[] = {
 	"framed",
 	"soul",
 	"textcomp",
-	"subscript",
+	"fixltx2e",
 	"pmboxdraw",
 	"bbding",
 	"ifsym",
@@ -822,6 +822,10 @@ string const LaTeXFeatures::getPackages() const
 			    "\\providecommand{\\makenomenclature}{\\makeglossary}\n"
 			    "\\makenomenclature\n";
 	}
+
+	// fixltx2e provides subscript
+	if (mustProvide("subscript") && !isRequired("fixltx2e"))
+		packages << "\\usepackage{subscript}\n";
 
 	return packages.str();
 }
