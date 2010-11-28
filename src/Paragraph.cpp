@@ -1332,16 +1332,27 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 		BufferParams const & bp = buf.params();
 		Font f;
 		TexRow tr;
+		// Using a string stream here circumvents the encoding
+		// switching machinery of odocstream. Therefore the
+		// output is wrong if this paragraph contains content
+		// that needs to switch encoding.
 		odocstringstream ods;
+		ods << '\\' << from_ascii(layout_->latexname());
 		// we have to provide all the optional arguments here, even though
 		// the last one is the only one we care about.
+		// Separate handling of optional argument inset.
+		if (layout_->optargs != 0 || layout_->reqargs != 0)
+			latexArgInsets(*owner_, ods, features.runparams(),
+			               layout_->reqargs, layout_->optargs);
+		else
+			ods << from_ascii(layout_->latexparam());
+		docstring::size_type const length = ods.str().length();
+		// this will output "{" at the beginning, but not at the end
 		owner_->latex(bp, f, ods, tr, features.runparams(), 0, -1, true);
-		docstring const d = ods.str();
-		if (!d.empty()) {
-			// this will have "{" at the beginning, but not at the end
-			string const content = to_utf8(d);
-			string const cmd = layout_->latexname();
-			features.addPreambleSnippet("\\" + cmd + content + "}");
+		if (ods.str().length() > length) {
+			ods << '}';
+			string const snippet = to_utf8(ods.str());
+			features.addPreambleSnippet(snippet);
 		}
 	}
 
