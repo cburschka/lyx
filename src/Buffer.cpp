@@ -3454,11 +3454,10 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 			break;
 		case BufferParams::LaTeX:
 			runparams.math_flavor = OutputParams::MathAsLaTeX; 
-			break;											
+			break;
 		}
-		
 		makeLyXHTMLFile(FileName(filename), runparams);
-	}	else if (backend_format == "lyx")
+	} else if (backend_format == "lyx")
 		writeFile(FileName(filename));
 	// Docbook backend
 	else if (isDocBook()) {
