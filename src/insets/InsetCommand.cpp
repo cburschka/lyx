@@ -208,7 +208,7 @@ bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-docstring InsetCommand::contextMenu(BufferView const &, int, int) const
+docstring InsetCommand::contextMenuName() const
 {
 	return from_ascii("context-") + from_ascii(insetName(p_.code()));
 }

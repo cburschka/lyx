@@ -59,7 +59,7 @@ public:
 	///
 	void addToToc(DocIterator const &);
 	///
-	docstring contextMenu(BufferView const & bv, int x, int y) const;
+	docstring contextMenuName() const;
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes

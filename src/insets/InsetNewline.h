@@ -77,7 +77,7 @@ private:
 	///
 	ColorCode ColorName() const;
 	///
-	docstring contextMenu(BufferView const & bv, int x, int y) const;
+	docstring contextMenuName() const;
 	///
 	Inset * clone() const { return new InsetNewline(*this); }
 	///

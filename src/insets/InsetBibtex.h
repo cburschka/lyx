@@ -58,7 +58,7 @@ public:
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
-	docstring contextMenu(BufferView const &, int, int) const;
+	docstring contextMenuName() const;
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes

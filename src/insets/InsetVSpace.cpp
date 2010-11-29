@@ -233,7 +233,7 @@ docstring InsetVSpace::xhtml(XHTMLStream &, OutputParams const &) const
 }
 
 
-docstring InsetVSpace::contextMenu(BufferView const &, int, int) const
+docstring InsetVSpace::contextMenuName() const
 {
 	return from_ascii("context-vspace");
 }

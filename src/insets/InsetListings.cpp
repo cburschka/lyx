@@ -309,7 +309,7 @@ docstring InsetListings::xhtml(XHTMLStream & os, OutputParams const & rp) const
 }
 
 
-docstring InsetListings::contextMenu(BufferView const &, int, int) const
+docstring InsetListings::contextMenuName() const
 {
 	return from_ascii("context-listings");
 }

@@ -38,7 +38,7 @@ public:
 	///
 	static std::string params2string(CollapseStatus);
 
-	docstring contextMenu(BufferView const &, int, int) const
+	docstring contextMenuName() const
 		{ return from_ascii("context-ert"); }
 private:
 	///

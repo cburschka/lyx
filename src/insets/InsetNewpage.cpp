@@ -257,7 +257,7 @@ docstring InsetNewpage::xhtml(XHTMLStream & xs, OutputParams const &) const
 }
 
 
-docstring InsetNewpage::contextMenu(BufferView const &, int, int) const
+docstring InsetNewpage::contextMenuName() const
 {
 	return from_ascii("context-newpage");
 }

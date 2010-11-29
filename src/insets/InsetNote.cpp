@@ -350,7 +350,7 @@ void InsetNote::validate(LaTeXFeatures & features) const
 }
 
 
-docstring InsetNote::contextMenu(BufferView const &, int, int) const
+docstring InsetNote::contextMenuName() const
 {
 	return from_ascii("context-note");
 }

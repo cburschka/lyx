@@ -249,7 +249,7 @@ void InsetBranch::validate(LaTeXFeatures & features) const
 }
 
 
-docstring InsetBranch::contextMenu(BufferView const &, int, int) const
+docstring InsetBranch::contextMenuName() const
 {
 	return from_ascii("context-branch");
 }

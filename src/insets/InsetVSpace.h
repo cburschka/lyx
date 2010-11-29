@@ -32,7 +32,7 @@ public:
 	///
 	bool hasSettings() const { return true; }
 	///
-	docstring contextMenu(BufferView const & bv, int x, int y) const;
+	docstring contextMenuName() const;
 	///
 	static void string2params(std::string const &, VSpace &);
 	///

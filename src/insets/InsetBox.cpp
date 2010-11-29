@@ -529,7 +529,7 @@ void InsetBox::validate(LaTeXFeatures & features) const
 }
 
 
-docstring InsetBox::contextMenu(BufferView const &, int, int) const
+docstring InsetBox::contextMenuName() const
 {
 	return from_ascii("context-box");
 }

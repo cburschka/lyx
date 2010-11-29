@@ -333,7 +333,7 @@ InsetCode InsetPrintNomencl::lyxCode() const
 }
 
 
-docstring InsetPrintNomencl::contextMenu(BufferView const &, int, int) const
+docstring InsetPrintNomencl::contextMenuName() const
 {
 	return from_ascii("context-nomenclprint");
 }

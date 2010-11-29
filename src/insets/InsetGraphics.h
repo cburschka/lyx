@@ -98,7 +98,7 @@ private:
 	///
 	void addToToc(DocIterator const &);
 	///
-	docstring contextMenu(BufferView const & bv, int x, int y) const;
+	docstring contextMenuName() const;
 	/// Force inset into LTR environment if surroundings are RTL
 	bool forceLTR() const { return true; }
 	///

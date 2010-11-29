@@ -987,7 +987,7 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 }
 
 
-docstring InsetBibtex::contextMenu(BufferView const &, int, int) const
+docstring InsetBibtex::contextMenuName() const
 {
 	return from_ascii("context-bibtex");
 }

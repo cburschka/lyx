@@ -196,7 +196,7 @@ public:
 	docstring toolTipText(docstring prefix = empty_docstring()) const;
 
 	///
-	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
+	docstring contextMenuName() const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 protected:

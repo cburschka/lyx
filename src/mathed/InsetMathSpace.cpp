@@ -268,7 +268,7 @@ InsetSpaceParams InsetMathSpace::params() const
 }
 
 
-docstring InsetMathSpace::contextMenu(BufferView const &, int, int) const
+docstring InsetMathSpace::contextMenuName() const
 {
 	return from_ascii("context-mathspace");
 }

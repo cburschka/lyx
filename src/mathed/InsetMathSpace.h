@@ -61,7 +61,7 @@ public:
 	///
 	bool hasSettings() const { return true; }
 	///
-	docstring contextMenu(BufferView const &, int, int) const;
+	docstring contextMenuName() const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///

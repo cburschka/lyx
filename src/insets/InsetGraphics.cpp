@@ -1040,7 +1040,7 @@ void InsetGraphics::addToToc(DocIterator const & cpit)
 }
 
 
-docstring InsetGraphics::contextMenu(BufferView const &, int, int) const
+docstring InsetGraphics::contextMenuName() const
 {
 	return from_ascii("context-graphics");
 }

@@ -423,7 +423,7 @@ docstring InsetScript::xhtml(XHTMLStream & xs, OutputParams const & runparams) c
 }
 
 
-docstring InsetScript::contextMenu(BufferView const &, int, int) const
+docstring InsetScript::contextMenuName() const
 {
 	return from_ascii("context-script");
 }

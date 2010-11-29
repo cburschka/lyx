@@ -94,7 +94,7 @@ private:
 	/// used by the constructors
 	void init();
 	///
-	docstring contextMenu(BufferView const & bv, int x, int y) const;
+	docstring contextMenuName() const;
 	///
 	friend class InsetPhantomParams;
 

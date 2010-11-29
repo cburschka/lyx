@@ -1353,7 +1353,7 @@ void MathMacroTemplate::infoize(odocstream & os) const
 }
 
 
-docstring MathMacroTemplate::contextMenu(BufferView const &, int, int) const
+docstring MathMacroTemplate::contextMenuName() const
 {
 	return from_ascii("context-math-macro-definition");
 }

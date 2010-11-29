@@ -256,6 +256,12 @@ docstring Inset::toolTip(BufferView const &, int, int) const
 
 docstring Inset::contextMenu(BufferView const &, int, int) const
 {
+	return contextMenuName();
+}
+
+
+docstring Inset::contextMenuName() const
+{
 	return docstring();
 }
 

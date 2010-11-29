@@ -376,7 +376,7 @@ void InsetIndex::validate(LaTeXFeatures & features) const
 }
 
 
-docstring InsetIndex::contextMenu(BufferView const &, int, int) const
+docstring InsetIndex::contextMenuName() const
 {
 	return from_ascii("context-index");
 }
@@ -576,7 +576,7 @@ void InsetPrintIndex::validate(LaTeXFeatures & features) const
 }
 
 
-docstring InsetPrintIndex::contextMenu(BufferView const &, int, int) const
+docstring InsetPrintIndex::contextMenuName() const
 {
 	return buffer().masterBuffer()->params().use_indices ?
 		from_ascii("context-indexprint") : docstring();

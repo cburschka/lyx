@@ -261,7 +261,7 @@ void InsetNewline::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-docstring InsetNewline::contextMenu(BufferView const &, int, int) const
+docstring InsetNewline::contextMenuName() const
 {
 	return from_ascii("context-newline");
 }

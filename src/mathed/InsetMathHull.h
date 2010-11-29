@@ -154,7 +154,7 @@ public:
 	void recordLocation(DocIterator const & di);
 
 	///
-	virtual docstring contextMenu(BufferView const &, int, int) const;
+	docstring contextMenuName() const;
 	///
 	InsetCode lyxCode() const { return MATH_HULL_CODE; }
 

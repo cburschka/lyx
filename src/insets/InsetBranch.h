@@ -77,7 +77,7 @@ private:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	docstring contextMenu(BufferView const &, int, int) const;
+	docstring contextMenuName() const;
 	///
 	void addToToc(DocIterator const &);
 	///

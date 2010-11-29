@@ -1968,7 +1968,7 @@ void InsetMathHull::tocString(odocstream & os) const
 }
 
 
-docstring InsetMathHull::contextMenu(BufferView const &, int, int) const
+docstring InsetMathHull::contextMenuName() const
 {
 	return from_ascii("context-math");
 }

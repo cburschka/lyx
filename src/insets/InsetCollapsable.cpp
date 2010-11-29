@@ -622,16 +622,25 @@ docstring InsetCollapsable::contextMenu(BufferView const & bv, int x,
 	int y) const
 {
 	if (decoration() == InsetLayout::CONGLOMERATE)
-		return from_ascii("context-conglomerate");
+		return contextMenuName();
 
 	if (geometry(bv) == NoButton)
-		return from_ascii("context-collapsable");
+		return contextMenuName();
 
 	Dimension dim = dimensionCollapsed(bv);
 	if (x < xo(bv) + dim.wid && y < yo(bv) + dim.des)
-		return from_ascii("context-collapsable");
+		return contextMenuName();
 
-	return InsetText::contextMenu(bv, x, y);
+	return InsetText::contextMenuName();
+}
+
+
+docstring InsetCollapsable::contextMenuName() const
+{
+	if (decoration() == InsetLayout::CONGLOMERATE)
+		return from_ascii("context-conglomerate");
+	else
+		return from_ascii("context-collapsable");
 }
 
 } // namespace lyx

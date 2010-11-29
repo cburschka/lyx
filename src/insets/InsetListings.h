@@ -67,7 +67,7 @@ private:
 	///
 	InsetListingsParams & params() { return params_; }
 	///
-	docstring contextMenu(BufferView const & bv, int x, int y) const;
+	docstring contextMenuName() const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///

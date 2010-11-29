@@ -452,7 +452,7 @@ void InsetInfo::updateInfo()
 }
 
 
-docstring InsetInfo::contextMenu(BufferView const &, int, int) const
+docstring InsetInfo::contextMenuName() const
 {
 	return from_ascii("context-info");
 }

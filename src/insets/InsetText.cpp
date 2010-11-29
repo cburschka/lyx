@@ -813,7 +813,7 @@ void InsetText::completionPosAndDim(Cursor const & cur, int & x, int & y,
 }
 
 
-docstring InsetText::contextMenu(BufferView const &, int, int) const
+docstring InsetText::contextMenuName() const
 {
 	return from_ascii("context-edit");
 }

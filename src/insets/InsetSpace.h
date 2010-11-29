@@ -146,7 +146,7 @@ public:
 	// a line separator)?
 	bool isSpace() const { return true; }
 	///
-	docstring contextMenu(BufferView const & bv, int x, int y) const;
+	docstring contextMenuName() const;
 	///
 	bool clickable(int /* x */, int /* y */) const { return true; }
 protected:

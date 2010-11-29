@@ -109,7 +109,7 @@ public:
 	///
 	Inset * clone() const { return new InsetScript(*this); }
 	///
-	docstring contextMenu(BufferView const & bv, int x, int y) const;
+	docstring contextMenuName() const;
 	//@}
 
 	/// \name Public functions inherited from InsetText class

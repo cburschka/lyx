@@ -141,7 +141,9 @@ public:
 	///
 	virtual bool usePlainLayout() const { return true; }
 	///
-	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
+	///
+	docstring contextMenuName() const;
 	///
 	docstring floatName(std::string const & type) const;
 protected:

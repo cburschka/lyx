@@ -400,9 +400,14 @@ public:
 	/// This default implementation returns an empty string.
 	virtual docstring toolTip(BufferView const & bv, int x, int y) const;
 	
+	/// \return Context menu identifier. This function determines
+	/// whose Inset's menu should be shown for the given position.
+	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
+
 	/// \return Context menu identifier for this inset.
 	/// This default implementation returns an empty string.
-	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
+	virtual docstring contextMenuName() const;
+
 
 	// FIXME This should really disappear in favor of 
 	//	docstring name() const { return from_ascii(insetName(lyxCode()))); }

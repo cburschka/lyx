@@ -789,7 +789,7 @@ void InsetExternal::addPreview(DocIterator const & /*inset_pos*/,
 }
 
 
-docstring InsetExternal::contextMenu(BufferView const &, int, int) const
+docstring InsetExternal::contextMenuName() const
 {
 	return from_ascii("context-external");
 }

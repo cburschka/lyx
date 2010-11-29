@@ -599,7 +599,7 @@ void InsetCitation::validate(LaTeXFeatures & features) const
 }
 
 
-docstring InsetCitation::contextMenu(BufferView const &, int, int) const
+docstring InsetCitation::contextMenuName() const
 {
 	return from_ascii("context-citation");
 }

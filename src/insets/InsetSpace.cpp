@@ -753,7 +753,7 @@ bool InsetSpace::isStretchableSpace() const
 }
 
 
-docstring InsetSpace::contextMenu(BufferView const &, int, int) const
+docstring InsetSpace::contextMenuName() const
 {
 	return from_ascii("context-space");
 }
