@@ -2366,7 +2366,6 @@ def convert_use_xetex(document):
     i = 0
     i = find_token(document.header, "\\use_xetex", 0)
     if i == -1:
-        document.warning("Malformed document. No \\use_xetex param!")
         return
     
     val = get_value(document.header, "\\use_xetex", 0)
