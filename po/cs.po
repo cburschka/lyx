@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-11-29 18:24+0100\n"
+"POT-Creation-Date: 2010-11-29 18:26+0100\n"
 "PO-Revision-Date: 2010-11-18 05:50+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -10228,9 +10228,8 @@ msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
 msgstr "Pøedefinovat nìkteré z vlo¾ek jako minimalistické (Index, Vìtev, URL)."
 
 #: lib/layouts/noweb.module:2
-#, fuzzy
 msgid "Noweb"
-msgstr "NoWeb"
+msgstr "Noweb"
 
 #: lib/layouts/noweb.module:5
 msgid "Allows to use Noweb as a literate programming tool."
@@ -12661,9 +12660,8 @@ msgid "Right|h"
 msgstr "Napravo|r"
 
 #: lib/ui/stdcontext.inc:413
-#, fuzzy
 msgid "Decimal"
-msgstr "email"
+msgstr ""
 
 #: lib/ui/stdcontext.inc:419
 #, fuzzy
@@ -14919,14 +14917,12 @@ msgid "varLambda"
 msgstr "Lambda"
 
 #: lib/ui/stdtoolbars.inc:560
-#, fuzzy
 msgid "varXi"
-msgstr "varpi"
+msgstr "varXi"
 
 #: lib/ui/stdtoolbars.inc:561
-#, fuzzy
 msgid "varPi"
-msgstr "varpi"
+msgstr "varPi"
 
 #: lib/ui/stdtoolbars.inc:562
 #, fuzzy
@@ -14939,14 +14935,12 @@ msgid "varUpsilon"
 msgstr "varepsilon"
 
 #: lib/ui/stdtoolbars.inc:564
-#, fuzzy
 msgid "varPhi"
-msgstr "varphi"
+msgstr "varPhi"
 
 #: lib/ui/stdtoolbars.inc:565
-#, fuzzy
 msgid "varPsi"
-msgstr "Per¹tina"
+msgstr "varPsi"
 
 #: lib/ui/stdtoolbars.inc:566
 #, fuzzy
@@ -16460,9 +16454,8 @@ msgid "LaTeX (plain)|L"
 msgstr "LaTeX (prostý)|L"
 
 #: lib/configure.py:510
-#, fuzzy
 msgid "LaTeX (LuaTeX)"
-msgstr "LaTeX (pLaTeX)"
+msgstr "LaTeX (LuaTeX)"
 
 #: lib/configure.py:511
 msgid "LaTeX (pdflatex)"
@@ -16572,14 +16565,12 @@ msgid "DVI|D"
 msgstr "DVI|D"
 
 #: lib/configure.py:547
-#, fuzzy
 msgid "DVI (LuaTeX)"
-msgstr "LaTeX (pLaTeX)"
+msgstr "DVI (LuaTeX)"
 
 #: lib/configure.py:547
-#, fuzzy
 msgid "DVI (LuaTeX)|V"
-msgstr "LaTeX (pLaTeX)"
+msgstr "DVI (LuaTeX)|V"
 
 #: lib/configure.py:550
 msgid "DraftDVI"
@@ -19362,40 +19353,39 @@ msgstr "Chyba: Nepodaøilo se zalo¾it soubor pro log."
 #: src/VCBackend.cpp:498
 #, fuzzy
 msgid "Up-to-date"
-msgstr "&Aktualizace"
+msgstr "Aktualizováno"
 
 #: src/VCBackend.cpp:500
-#, fuzzy
 msgid "Locally Modified"
-msgstr "Lokální soubor s rozvr¾ením"
+msgstr "Lokálnì modifikováno"
 
 #: src/VCBackend.cpp:502
-#, fuzzy
 msgid "Locally Added"
-msgstr "Lokální soubor s rozvr¾ením"
+msgstr "Lokálnì pøidáno"
 
 #: src/VCBackend.cpp:504
 msgid "Needs Merge"
-msgstr ""
+msgstr "Je potøeba slouèit (merge)"
 
 #: src/VCBackend.cpp:506
 msgid "Needs Checkout"
-msgstr ""
+msgstr "Je potøeba naèíst z repozitáøe"
 
 #: src/VCBackend.cpp:508
-#, fuzzy
 msgid "No CVS file"
-msgstr "&Do souboru:"
+msgstr "®ádný CVS soubor"
 
 #: src/VCBackend.cpp:510
 msgid "Cannot retrieve CVS status"
-msgstr ""
+msgstr "Nelze obdr¾et CVS status"
 
 #: src/VCBackend.cpp:694
 msgid ""
 "The repository version is newer then the current check out.\n"
 "You have to update from repository first or revert your changes."
 msgstr ""
+"Verze v repozitáøi je novìj¹í ne¾ souèasná pracovní verze.\n"
+"Nejprve aktualizujte z repozitáøe nebo revertujte va¹e zmìny."
 
 #: src/VCBackend.cpp:699
 #, c-format
@@ -19481,7 +19471,6 @@ msgid ""
 msgstr ""
 
 #: src/VCBackend.cpp:1085
-#, fuzzy
 msgid ""
 "Error when committing to repository.\n"
 "You have to manually resolve the problem.\n"
@@ -19489,10 +19478,9 @@ msgid ""
 msgstr ""
 "Chyba pøi ukládání do repositáøe.\n"
 "Tento problém musíte vyøe¹it ruènì.\n"
-"Po stisknutí OK, LyX znovunaète dokument."
+"Po stisknutí OK LyX znovunaète dokument."
 
 #: src/VCBackend.cpp:1178
-#, fuzzy
 msgid ""
 "Error while acquiring write lock.\n"
 "Another user is most probably editing\n"
@@ -19505,7 +19493,6 @@ msgstr ""
 "Zkontrolujte rovnì¾ pøístup k repozitáøi."
 
 #: src/VCBackend.cpp:1184
-#, fuzzy
 msgid ""
 "Error while releasing write lock.\n"
 "Check the access to the repository."
@@ -23967,54 +23954,6 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
 
-#~ msgid "LyX binary not found"
-#~ msgstr "Nenalezen spustitelný soubor LyX-u"
-
-#~ msgid ""
-#~ "Unable to determine the path to the LyX binary from the command line %1$s"
-#~ msgstr ""
-#~ "Nepodaøilo se urèit cestu ke spustitelnému souboru LyX-u z pøíkazové "
-#~ "øádky %1$s"
-
-#~ msgid ""
-#~ "Unable to determine the system directory having searched\n"
-#~ "\t%1$s\n"
-#~ "Use the '-sysdir' command line parameter or set the environment variable\n"
-#~ "%2$s to the LyX system directory containing the file `chkconfig.ltx'."
-#~ msgstr ""
-#~ "Nepodaøilo se zjitit systémový adresáø, pøi prohledávání\n"
-#~ "\t%1$s\n"
-#~ "Pou¾ijte parametr pøíkazové øádky '-sysdir' nebo nastavte promìnnou "
-#~ "prostøedí\n"
-#~ "%2$s do systémového adresáøe LyX-u obsahujícího soubor `chkconfig.ltx'."
-
-#~ msgid "File not found"
-#~ msgstr "Soubor nenalezen"
-
-#~ msgid ""
-#~ "Invalid %1$s switch.\n"
-#~ "Directory %2$s does not contain %3$s."
-#~ msgstr ""
-#~ "Neplatný pøepínaè %1$s.\n"
-#~ "Adresáø %2$s neobsahuje %3$s."
-
-#~ msgid ""
-#~ "Invalid %1$s environment variable.\n"
-#~ "Directory %2$s does not contain %3$s."
-#~ msgstr ""
-#~ "Neplatná promìnná prostøedí %1$s.\n"
-#~ "Adresáø %2$s neobsahuje %3$s."
-
-#~ msgid ""
-#~ "Invalid %1$s environment variable.\n"
-#~ "%2$s is not a directory."
-#~ msgstr ""
-#~ "Neplatná promìnná prostøedí %1$s.\n"
-#~ "%2$s není adresáø."
-
-#~ msgid "Directory not found"
-#~ msgstr "Adresáø nenalezen"
-
 #~ msgid "Use the XeTeX processing engine"
 #~ msgstr "Pro kompilaci pou¾ít XeTeX"
 
@@ -24365,6 +24304,54 @@ msgstr "Neznámý u¾ivatel"
 #~ "convert it."
 #~ msgstr ""
 #~ "%1$s je ze star¹í verze LyX-u, ale skript lyx2lyx selhal pøi konverzi."
+
+#~ msgid "LyX binary not found"
+#~ msgstr "Nenalezen spustitelný soubor LyX-u"
+
+#~ msgid ""
+#~ "Unable to determine the path to the LyX binary from the command line %1$s"
+#~ msgstr ""
+#~ "Nepodaøilo se urèit cestu ke spustitelnému souboru LyX-u z pøíkazové "
+#~ "øádky %1$s"
+
+#~ msgid ""
+#~ "Unable to determine the system directory having searched\n"
+#~ "\t%1$s\n"
+#~ "Use the '-sysdir' command line parameter or set the environment variable\n"
+#~ "%2$s to the LyX system directory containing the file `chkconfig.ltx'."
+#~ msgstr ""
+#~ "Nepodaøilo se zjitit systémový adresáø, pøi prohledávání\n"
+#~ "\t%1$s\n"
+#~ "Pou¾ijte parametr pøíkazové øádky '-sysdir' nebo nastavte promìnnou "
+#~ "prostøedí\n"
+#~ "%2$s do systémového adresáøe LyX-u obsahujícího soubor `chkconfig.ltx'."
+
+#~ msgid "File not found"
+#~ msgstr "Soubor nenalezen"
+
+#~ msgid ""
+#~ "Invalid %1$s switch.\n"
+#~ "Directory %2$s does not contain %3$s."
+#~ msgstr ""
+#~ "Neplatný pøepínaè %1$s.\n"
+#~ "Adresáø %2$s neobsahuje %3$s."
+
+#~ msgid ""
+#~ "Invalid %1$s environment variable.\n"
+#~ "Directory %2$s does not contain %3$s."
+#~ msgstr ""
+#~ "Neplatná promìnná prostøedí %1$s.\n"
+#~ "Adresáø %2$s neobsahuje %3$s."
+
+#~ msgid ""
+#~ "Invalid %1$s environment variable.\n"
+#~ "%2$s is not a directory."
+#~ msgstr ""
+#~ "Neplatná promìnná prostøedí %1$s.\n"
+#~ "%2$s není adresáø."
+
+#~ msgid "Directory not found"
+#~ msgstr "Adresáø nenalezen"
 
 #, fuzzy
 #~ msgid "Keywordsr"
