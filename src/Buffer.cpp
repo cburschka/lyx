@@ -3978,11 +3978,11 @@ void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 	switch(layout.labeltype) {
 	case LABEL_COUNTER:
 		if (layout.toclevel <= bp.secnumdepth
-		    && (layout.latextype != LATEX_ENVIRONMENT
-			|| it.text()->isFirstInSequence(it.pit()))) {
-			counters.step(layout.counter, utype);
-			par.params().labelString(
-				par.expandLabel(layout, bp));
+		      && (layout.latextype != LATEX_ENVIRONMENT
+			  || it.text()->isFirstInSequence(it.pit()))) {
+			if (counters.hasCounter(layout.counter))
+				counters.step(layout.counter, utype);
+			par.params().labelString(par.expandLabel(layout, bp));
 		} else
 			par.params().labelString(docstring());
 		break;

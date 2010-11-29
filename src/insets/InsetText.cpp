@@ -659,6 +659,7 @@ void InsetText::updateBuffer(ParIterator const & it, UpdateType utype)
 		//	tclass.counters().clearLastLayout()
 		// since we are saving and restoring the existing counters, etc.
 		Counters const savecnt = tclass.counters();
+		tclass.counters() = Counters();
 		buffer().updateBuffer(it2, utype);
 		tclass.counters() = savecnt;
 	}

@@ -135,8 +135,8 @@ void InsetLabel::updateBuffer(ParIterator const & par, UpdateType utype)
 			counter_value_ = cnts.theCounter(active_counter_, lang->code());
 			pretty_counter_ = cnts.prettyCounter(active_counter_, lang->code());
 		} else {
-			counter_value_ = from_ascii("??");
-			pretty_counter_ = from_ascii("??");
+			counter_value_ = from_ascii("#");
+			pretty_counter_ = from_ascii("#");
 		}
 	}
 }

@@ -436,7 +436,7 @@ docstring Counters::theCounter(docstring const & counter,
 {
 	CounterList::const_iterator it = counterList_.find(counter); 
 	if (it == counterList_.end())
-		return from_ascii("??");
+		return from_ascii("#");
 	Counter const & ctr = it->second;
 	Counter::StringMap & sm = ctr.flatLabelStrings(appendix());
 	Counter::StringMap::iterator smit = sm.find(lang);
@@ -468,7 +468,7 @@ docstring Counters::flattenLabelString(docstring const & counter,
 		
 	CounterList::const_iterator it = counterList_.find(counter); 
 	if (it == counterList_.end())
-		return from_ascii("??");
+		return from_ascii("#");
 	Counter const & c = it->second;
 
 	docstring ls = translateIfPossible(c.labelString(in_appendix), lang);
@@ -550,7 +550,7 @@ docstring Counters::prettyCounter(docstring const & name,
 {
 	CounterList::const_iterator it = counterList_.find(name); 
 	if (it == counterList_.end())
-		return from_ascii("??");
+		return from_ascii("#");
 	Counter const & ctr = it->second;
 
 	docstring const value = theCounter(name, lang);

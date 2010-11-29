@@ -45,13 +45,15 @@ void InsetFoot::updateBuffer(ParIterator const & it, UpdateType utype)
 		cnts.saveLastCounter();
 	}
 	Paragraph const & outer = it.paragraph();
-	InsetLayout const & il = getLayout();
-	docstring const & count = il.counter();
-	if (!outer.layout().intitle && cnts.hasCounter(count)) {
-		cnts.step(count, utype);
-		custom_label_= translateIfPossible(il.labelstring()) 
-			+ ' ' + cnts.theCounter(count, outer.getParLanguage(bp)->code());
-		setLabel(custom_label_);	
+	if (!outer.layout().intitle) {
+		InsetLayout const & il = getLayout();
+		docstring const & count = il.counter();
+		custom_label_ = translateIfPossible(il.labelstring()) + ' ';
+		if (cnts.hasCounter(count))
+			cnts.step(count, utype);
+		custom_label_ += 
+			cnts.theCounter(count, outer.getParLanguage(bp)->code());
+		setLabel(custom_label_);
 	}
 	InsetCollapsable::updateBuffer(it, utype);
 	if (utype == OutputUpdate)
