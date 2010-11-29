@@ -66,7 +66,6 @@
 #include "WordLangTuple.h"
 #include "WordList.h"
 
-#include "insets/InsetBibitem.h"
 #include "insets/InsetBibtex.h"
 #include "insets/InsetBranch.h"
 #include "insets/InsetInclude.h"
