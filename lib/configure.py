@@ -544,7 +544,7 @@ def checkFormatEntries(dtl_tools):
     #
     checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular', 'yap', 'dviout -Set=!m'],
         rc_entry = [r'''\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector"
-\Format dvi3       dvi     "DVI (LuaTeX)"          D  "%%"	""	"document,vector"'''])
+\Format dvi3       dvi     "DVI (LuaTeX)"          V  "%%"	""	"document,vector"'''])
     if dtl_tools:
         # Windows only: DraftDVI
         addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	""	"vector"')
