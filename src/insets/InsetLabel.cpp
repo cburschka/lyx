@@ -125,7 +125,7 @@ void InsetLabel::updateBuffer(ParIterator const & par, UpdateType utype)
 	buffer().setInsetLabel(label, this);
 	screen_label_ = label;
 
-	if (utype) {
+	if (utype == OutputUpdate) {
 		// save info on the active counter
 		Counters const & cnts = 
 			buffer().masterBuffer()->params().documentClass().counters();
