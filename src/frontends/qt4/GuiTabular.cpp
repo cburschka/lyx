@@ -130,7 +130,7 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(checkEnabled()));
 	connect(captionStatusCB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
-	connect(specialAlignmentED, SIGNAL(textEdited(QString)),
+	connect(specialAlignmentED, SIGNAL(editingFinished()),
 		this, SLOT(checkEnabled()));
 	connect(widthED, SIGNAL(editingFinished()),
 		this, SLOT(checkEnabled()));
@@ -159,7 +159,6 @@ GuiTabular::GuiTabular(QWidget * parent)
 	connect(rightRB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
 
-
 	// initialize the length validator
 	addCheckedWidget(widthED, fixedWidthColLA);
 	addCheckedWidget(multirowOffsetED, multirowOffsetLA);
@@ -171,17 +170,22 @@ GuiTabular::GuiTabular(QWidget * parent)
 
 void GuiTabular::checkEnabled()
 {
+	// if there is a LaTeX argument, the width and alignment will be overwrtitten
+	// therefore disable them in this case
+	widthED->setEnabled(specialAlignmentED->text().isEmpty());
 	// if the column has a width, multirows are always left-aligned
 	// therefore disable hAlignCB in this case
 	hAlignCB->setEnabled(!(multirowCB->isChecked()
-		&& !widgetsToLength(widthED, widthUnitCB).empty()));
+		&& !widgetsToLength(widthED, widthUnitCB).empty())
+		&& specialAlignmentED->text().isEmpty());
 	bool dalign =
 		hAlignCB->itemData(hAlignCB->currentIndex()).toString() == QString("decimal");
 	decimalPointLE->setEnabled(dalign);
 	decimalL->setEnabled(dalign);
 
 	vAlignCB->setEnabled(!multirowCB->isChecked()
-		&& !widgetsToLength(widthED, widthUnitCB).empty());
+		&& !widgetsToLength(widthED, widthUnitCB).empty()
+		&& specialAlignmentED->text().isEmpty());
 
 	topspaceED->setEnabled(topspaceCO->currentIndex() == 2);
 	topspaceUnitCB->setEnabled(topspaceCO->currentIndex() == 2);
