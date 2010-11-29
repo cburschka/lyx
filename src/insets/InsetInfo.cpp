@@ -14,6 +14,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "CutAndPaste.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetGraphics.h"
@@ -90,14 +91,6 @@ InsetInfo::InsetInfo(Buffer const & buf, string const & name)
 	status_ = Collapsed;
 }
 
-
-Inset * InsetInfo::editXY(Cursor & cur, int x, int y)
-{
-	cur.push(*this);
-	return InsetCollapsable::editXY(cur, x, y);
-}
-
-
 string InsetInfo::infoType() const
 {
 	return nameTranslator().find(type_);
@@ -114,6 +107,12 @@ docstring InsetInfo::toolTip(BufferView const &, int, int) const
 {
 	return bformat(_("Information regarding %1$s '%2$s'"),
 			_(infoType()), from_utf8(name_));
+}
+
+
+void InsetInfo::edit(Cursor & cur, bool, EntryDirection)
+{
+	showInsetDialog(&cur.bv());
 }
 
 
@@ -200,6 +199,7 @@ bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_SETTINGS:
 		return InsetCollapsable::getStatus(cur, cmd, flag);
 
+	case LFUN_INSET_COPY_AS:
 	case LFUN_INSET_MODIFY:
 		flag.setEnabled(true);
 		break;
@@ -213,24 +213,41 @@ bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetInfo::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	// allow selection, copy but not cut, delete etc
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
-	case LFUN_MOUSE_RELEASE:
 	case LFUN_MOUSE_MOTION:
 	case LFUN_MOUSE_DOUBLE:
 	case LFUN_MOUSE_TRIPLE:
-	case LFUN_COPY:
-	case LFUN_INSET_SETTINGS:
-		InsetCollapsable::doDispatch(cur, cmd);
+		cur.undispatched();
+		break; 
+
+	case LFUN_MOUSE_RELEASE: {
+		if (!cur.selection() && cmd.button() != mouse_button::button3)
+			edit(cur, true);
 		break;
+	}
 
 	case LFUN_INSET_MODIFY:
 		setInfo(to_utf8(cmd.argument()));
 		cur.pos() = 0;
 		break;
 
+	case LFUN_INSET_COPY_AS: {
+		cap::clearSelection();
+		Cursor copy(cur);
+		copy.pushBackward(*this);
+		copy.pit() = 0;
+		copy.pos() = 0;
+		copy.resetAnchor();
+		copy.pit() = copy.lastpit();
+		copy.pos() = copy.lastpos();
+		copy.setSelection();
+		cap::copySelection(copy);
+		break;
+	}
+
 	default:
+		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 	}
 }

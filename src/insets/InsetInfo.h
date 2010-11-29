@@ -98,7 +98,8 @@ public:
 	///
 	docstring name() const;
 	///
-	Inset * editXY(Cursor & cur, int x, int y);
+	void edit(Cursor & cur, bool front,
+		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
 	///
 	EDITABLE editable() const { return NOT_EDITABLE; }
 	///

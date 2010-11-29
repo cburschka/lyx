@@ -398,6 +398,7 @@ Menuset
 #
 
 	Menu "context-info"
+		Item "Copy Text|o" "inset-copy-as" 
 		Item "Settings...|S" "inset-settings info"
 	End
 
