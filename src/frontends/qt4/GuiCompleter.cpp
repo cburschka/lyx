@@ -683,6 +683,7 @@ void GuiCompleter::tab()
 	}
 	
 	// Make undo possible
+	cur.beginUndoGroup();
 	cur.recordUndo();
 
 	// If completion is active, at least complete by one character
@@ -696,11 +697,14 @@ void GuiCompleter::tab()
 		hidePopup(cur);
 		hideInline(cur);
 		updateVisibility(false, false);
+		cur.endUndoGroup();
 		return;
 	}
 	docstring nextchar = completion.substr(prefix.size(), 1);
-	if (!cur.inset().insertCompletion(cur, nextchar, false))
+	if (!cur.inset().insertCompletion(cur, nextchar, false)) {
+		cur.endUndoGroup();
 		return;
+	}
 	updatePrefix(cur);
 
 	// try to complete as far as it is unique
@@ -720,6 +724,7 @@ void GuiCompleter::tab()
 	// redraw if needed
 	if (cur.result().screenUpdate())
 		gui_->bufferView().processUpdateFlags(cur.result().screenUpdate());
+	cur.endUndoGroup();
 }
 
 
@@ -875,7 +880,8 @@ void GuiCompleter::popupActivated(const QString & completion)
 {
 	Cursor cur = gui_->bufferView().cursor();
 	cur.screenUpdateFlags(Update::None);
-	
+
+	cur.beginUndoGroup();
 	cur.recordUndo();
 
 	docstring prefix = cur.inset().completionPrefix(cur);
@@ -886,6 +892,7 @@ void GuiCompleter::popupActivated(const QString & completion)
 	
 	if (cur.result().screenUpdate())
 		gui_->bufferView().processUpdateFlags(cur.result().screenUpdate());
+	cur.endUndoGroup();
 }
 
 
