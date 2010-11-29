@@ -537,11 +537,9 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 		else if (cmd.argument() == "close")
 			setStatus(cur, Collapsed);
 		else if (cmd.argument() == "toggle" || cmd.argument().empty())
-			if (status_ == Open) {
+			if (status_ == Open)
 				setStatus(cur, Collapsed);
-				if (geometry(cur.bv()) == ButtonOnly)
-					cur.top().forwardPos();
-			} else
+			else
 				setStatus(cur, Open);
 		else // if assign or anything else
 			cur.undispatched();
