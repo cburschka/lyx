@@ -648,6 +648,9 @@ void GuiTabular::updateContents()
 	rotateCellCB->setChecked(tabular_.getRotateCell(cell));
 	rotateTabularCB->setChecked(tabular_.rotate);
 
+	// setting as longtable is not allowed when table is inside a float
+	longTabularCB->setEnabled(funcEnabled(Tabular::SET_LONGTABULAR)); 
+
 	longTabularCB->setChecked(tabular_.is_long_tabular);
 
 	update_borders();

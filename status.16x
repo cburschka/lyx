@@ -66,10 +66,13 @@ What's new
 - Make the modules description in Document > Settings fully translatable
   (bug 6987).
 
-- Fix table line bug when unsetting a multicolumn cell via the table dialog
-  (bug 7000). 
+- Fix table line bug when unsetting a multicolumn cell via the table
+  dialog (bug 7000). 
 
 - Fix the display of table cell alignment in the context menu (bug 7053).
+
+- Don't allow to make tables within in floats longtables as this could
+  lead to LaTeX-errors (bug 6585).
 
 - Correct the Denomination of norsk and nynorsk languages.
 
