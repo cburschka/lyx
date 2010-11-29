@@ -2480,6 +2480,8 @@ PrefEdit::PrefEdit(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(scrollBelowCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
+	connect(macLikeWordMovementCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 	connect(sortEnvironmentsCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(groupEnvironmentsCB, SIGNAL(clicked()),
@@ -2505,6 +2507,7 @@ void PrefEdit::apply(LyXRC & rc) const
 {
 	rc.cursor_follows_scrollbar = cursorFollowsCB->isChecked();
 	rc.scroll_below_document = scrollBelowCB->isChecked();
+	rc.mac_like_word_movement = macLikeWordMovementCB->isChecked();
 	rc.sort_layouts = sortEnvironmentsCB->isChecked();
 	rc.group_layouts = groupEnvironmentsCB->isChecked();
 	switch (macroEditStyleCO->currentIndex()) {
@@ -2525,6 +2528,7 @@ void PrefEdit::update(LyXRC const & rc)
 {
 	cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar);
 	scrollBelowCB->setChecked(rc.scroll_below_document);
+	macLikeWordMovementCB->setChecked(rc.mac_like_word_movement);
 	sortEnvironmentsCB->setChecked(rc.sort_layouts);
 	groupEnvironmentsCB->setChecked(rc.group_layouts);
 	macroEditStyleCO->setCurrentIndex(rc.macro_edit_style);
