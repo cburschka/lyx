@@ -1647,11 +1647,14 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		bv->cursor().dispatch(cmd);
 	
 		// notify insets we just left
+		// FIXME: move this code to Cursor::dispatch
 		if (bv->cursor() != old) {
+			old.beginUndoGroup();
 			old.fixIfBroken();
 			bool badcursor = notifyCursorLeavesOrEnters(old, bv->cursor());
 			if (badcursor)
 				bv->cursor().fixIfBroken();
+			old.endUndoGroup();
 		}
 	
 		// update completion. We do it here and not in
