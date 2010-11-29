@@ -298,6 +298,8 @@ public:
 	const_iterator begin() const { return items_.begin(); }
 	///
 	const_iterator end() const { return items_.end(); }
+	///
+	void cat(MenuDefinition const & other);
 	
 	// search for func in this menu iteratively, and put menu
 	// names in a stack.
@@ -638,6 +640,14 @@ bool MenuDefinition::hasFunc(FuncRequest const & func) const
 		if (it->func() == func)
 			return true;
 	return false;
+}
+
+
+void MenuDefinition::cat(MenuDefinition const & other)
+{
+	const_iterator et = other.end();
+	for (const_iterator it = other.begin(); it != et; ++it)
+		add(*it);
 }
 
 
@@ -1976,14 +1986,27 @@ void Menus::updateMenu(Menu * qmenu)
 	if (qmenu->d->name.isEmpty())
 		return;
 
-	if (!d->hasMenu(qmenu->d->name)) {
+	docstring identifier = qstring_to_ucs4(qmenu->d->name);
+	MenuDefinition fromLyxMenu(qmenu->d->name);
+	while (!identifier.empty()) {
+		docstring menu_name;
+		identifier = split(identifier, menu_name, ';');
+
+		if (!d->hasMenu(toqstr(menu_name))) {
+			LYXERR(Debug::GUI, "\tWARNING: non existing menu: "
+				<< menu_name);
+			continue;
+		}
+
+		fromLyxMenu.cat(d->getMenu(toqstr(menu_name)));
+		fromLyxMenu.add(MenuItem(MenuItem::Separator));
+	}
+
+	if (fromLyxMenu.empty()) {
 		qmenu->addAction(qt_("No Action Defined!"));
-		LYXERR(Debug::GUI, "\tWARNING: non existing menu: "
-			<< qmenu->d->name);
 		return;
 	}
 
-	MenuDefinition const & fromLyxMenu = d->getMenu(qmenu->d->name);
 	BufferView * bv = 0;
 	if (qmenu->d->view)
 		bv = qmenu->d->view->currentBufferView();
