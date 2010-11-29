@@ -220,6 +220,10 @@ least version 2.14 for proper work.
 Known issues in version 2.0.0
 -----------------------------
 
+- LyX needs to be run under Python 2 and will not work properly on systems
+  where Python 3 is the default binary. See bug #7030 to know how to fix
+  this properly, since simple sheebang conversion in *.py files will not
+  be enough.
 
 Caveats when upgrading from earlier versions to 2.0.x
 -------------------------------------------------------
