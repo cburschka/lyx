@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-11-29 05:24+0100\n"
-"PO-Revision-Date: 2010-11-18 12:15+0100\n"
+"PO-Revision-Date: 2010-11-29 15:40+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1469,10 +1469,11 @@ msgstr "FontUi"
 #: src/frontends/qt4/ui/FontUi.ui:19
 msgid "Use OpenType- and TrueType fonts directly (requires XeTeX or LuaTeX)"
 msgstr ""
+"Použiť  OpenType- a TrueType fonty priamo (potrebné XeTeX alebo LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:22
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
-msgstr ""
+msgstr "Použiť nie-TeX fonty (cez XeTeX/LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:42
 msgid "&Default Family:"
@@ -3332,17 +3333,15 @@ msgstr "Jazykový balí&k:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:51
 msgid "Select which language package LyX should use"
-msgstr ""
+msgstr "Vyberte ktorý jazykový balík by mal LyX použiť"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:55
-#, fuzzy
 msgid "Automatic"
-msgstr "Automatická nápoveda"
+msgstr "Automaticky"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:60
-#, fuzzy
 msgid "Always Babel"
-msgstr "Vždy prepnuté"
+msgstr "Vždy Babel"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:78
 msgid "Enter the command to load the language package (default: babel)"
@@ -3383,7 +3382,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:163
 msgid "Set languages &globally"
-msgstr ""
+msgstr "Nastaviť jazyky globálne"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:170
 msgid ""
@@ -7429,19 +7428,17 @@ msgid "Key words:"
 msgstr "Heslá:"
 
 #: lib/layouts/enumitem.module:2
-#, fuzzy
 msgid "Customizable Lists (enumitem)"
-msgstr "Prispôsobilé listiny (enumitem)"
+msgstr "Prispôsobilé Listiny (enumitem)"
 
 #: lib/layouts/enumitem.module:7
-#, fuzzy
 msgid ""
 "Controls the layout of enumerate, itemize and description with an optional "
 "argument. See http://mirror.ctan.org/macros/latex/contrib/enumitem/enumitem."
 "pdf"
 msgstr ""
 "Kontroluje schéma pre  enumerate, itemize a description s nepovinným "
-"argumentom. Pozrite si http://dante.ctan.org/CTAN/macros/latex/contrib/"
+"argumentom. Pozrite si http://mirror.ctan.org/macros/latex/contrib/"
 "enumitem/enumitem.pdf"
 
 #: lib/layouts/enumitem.module:73 lib/layouts/scrlettr.layout:24
@@ -9924,9 +9921,8 @@ msgstr ""
 "pri 'Obrázok 2.1'."
 
 #: lib/layouts/fixltx2e.module:2
-#, fuzzy
 msgid "Fix LaTeX"
-msgstr "LaTeX"
+msgstr "Upraviť LaTeX"
 
 #: lib/layouts/fixltx2e.module:9
 msgid ""
@@ -9936,6 +9932,12 @@ msgid ""
 "different when you process it with future LaTeX versions, because fixltx2e "
 "may provide more bugfixes in future versions."
 msgstr ""
+"Nahrá LaTeXovský balík fixltx2e ktorý obsahuje pár korektúr pre LaTeX. "
+"Tieto korektúry nie sú časťou LaTeXovho jadra kvôli spätnej kompatibilite. "
+"Použitím tohto modulu môžu vaše vytlačené dokumenty vyzerať ináč pri "
+"spracovaní "
+"s budúcimi verziami LaTeXu, lebo fixltx2e vtedy môže poskytovať aj viac "
+"korektúr."
 
 #: lib/layouts/foottoend.module:2
 msgid "Foot to End"
@@ -10123,9 +10125,8 @@ msgstr ""
 "Predefinovať niektoré z vložiek ako minimalistické (Index, Vetva, URL)."
 
 #: lib/layouts/noweb.module:2
-#, fuzzy
 msgid "Noweb"
-msgstr "NoWeb"
+msgstr "Noweb"
 
 #: lib/layouts/noweb.module:5
 msgid "Allows to use Noweb as a literate programming tool."
@@ -10141,12 +10142,12 @@ msgid "Sweave"
 msgstr "Sweave"
 
 #: lib/layouts/sweave.module:5
-#, fuzzy
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
 "via Sweave package."
 msgstr ""
-"Umožní použiť štatistický jazyk S/R ako nástroj pre \"literate programming\"."
+"Umožní použiť štatistický jazyk S/R ako nástroj pre \"literate programming\" "
+"cez balík Sweave."
 
 #: lib/layouts/sweave.module:20
 msgid "Chunk"
@@ -10788,11 +10789,11 @@ msgstr "Mongolsky"
 
 #: lib/languages:591
 msgid "Norwegian (Bokmaal)"
-msgstr ""
+msgstr "Norsky (Bolmål)"
 
 #: lib/languages:599
 msgid "Norwegian (Nynorsk)"
-msgstr ""
+msgstr "Nórsky (Nynorsk)"
 
 #: lib/languages:624
 msgid "Polish"
@@ -14704,59 +14705,48 @@ msgid "omega"
 msgstr "omega"
 
 #: lib/ui/stdtoolbars.inc:556
-#, fuzzy
 msgid "varGamma"
-msgstr "Gamma"
+msgstr "varGamma"
 
 #: lib/ui/stdtoolbars.inc:557
-#, fuzzy
 msgid "varDelta"
-msgstr "Delta"
+msgstr "varDelta"
 
 #: lib/ui/stdtoolbars.inc:558
-#, fuzzy
 msgid "varTheta"
-msgstr "vartheta"
+msgstr "varTheta"
 
 #: lib/ui/stdtoolbars.inc:559
-#, fuzzy
 msgid "varLambda"
-msgstr "Lambda"
+msgstr "varLambda"
 
 #: lib/ui/stdtoolbars.inc:560
-#, fuzzy
 msgid "varXi"
-msgstr "varpi"
+msgstr "varXi"
 
 #: lib/ui/stdtoolbars.inc:561
-#, fuzzy
 msgid "varPi"
-msgstr "varpi"
+msgstr "varPi"
 
 #: lib/ui/stdtoolbars.inc:562
-#, fuzzy
 msgid "varSigma"
-msgstr "varsigma"
+msgstr "varSigma"
 
 #: lib/ui/stdtoolbars.inc:563
-#, fuzzy
 msgid "varUpsilon"
-msgstr "varepsilon"
+msgstr "varUpsilon"
 
 #: lib/ui/stdtoolbars.inc:564
-#, fuzzy
 msgid "varPhi"
-msgstr "varphi"
+msgstr "varPhi"
 
 #: lib/ui/stdtoolbars.inc:565
-#, fuzzy
 msgid "varPsi"
-msgstr "Persky"
+msgstr "varPsi"
 
 #: lib/ui/stdtoolbars.inc:566
-#, fuzzy
 msgid "varOmega"
-msgstr "Omega"
+msgstr "varOmega"
 
 #: lib/ui/stdtoolbars.inc:567
 msgid "Gamma"
@@ -16265,9 +16255,8 @@ msgid "LaTeX (plain)|L"
 msgstr "LaTeX (prostý)"
 
 #: lib/configure.py:510
-#, fuzzy
 msgid "LaTeX (LuaTeX)"
-msgstr "LaTeX (pLaTeX)"
+msgstr "LaTeX (LuaTeX)"
 
 #: lib/configure.py:511
 msgid "LaTeX (pdflatex)"
@@ -16306,9 +16295,8 @@ msgid "LyXHTML"
 msgstr "LyXHTML"
 
 #: lib/configure.py:520 lib/configure.py:522
-#, fuzzy
 msgid "LyXHTML|y"
-msgstr "LyXHTML|X"
+msgstr "LyXHTML"
 
 #: lib/configure.py:529 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
@@ -16359,14 +16347,12 @@ msgid "PDF (XeTeX)|X"
 msgstr "PDF (XeTeX)|X"
 
 #: lib/configure.py:543
-#, fuzzy
 msgid "PDF (LuaTeX)"
-msgstr "PDF (XeTeX)"
+msgstr "PDF (LuaTeX)"
 
 #: lib/configure.py:543
-#, fuzzy
 msgid "PDF (LuaTeX)|u"
-msgstr "PDF (XeTeX)|X"
+msgstr "PDF (LuaTeX)|u"
 
 #: lib/configure.py:546
 msgid "DVI"
@@ -16377,14 +16363,12 @@ msgid "DVI|D"
 msgstr "DVI"
 
 #: lib/configure.py:547
-#, fuzzy
 msgid "DVI (LuaTeX)"
-msgstr "LaTeX (pLaTeX)"
+msgstr "DVI (LuaTeX)"
 
 #: lib/configure.py:547
-#, fuzzy
 msgid "DVI (LuaTeX)|V"
-msgstr "LaTeX (pLaTeX)"
+msgstr "DVI (LuaTeX)|V"
 
 #: lib/configure.py:550
 msgid "DraftDVI"
@@ -16670,30 +16654,28 @@ msgid "Conversion script failed"
 msgstr "Konverzný skript zlyhal"
 
 #: src/Buffer.cpp:990
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
 "convert it."
 msgstr ""
-"%1$s je zo staršej verzie LyX-u, ale skript lyx2lyx zlyhal pri konverzii."
+"%1$s je zo staršej verzie LyX-u, a skript lyx2lyx zlyhal pri konverzii."
 
 #: src/Buffer.cpp:997
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
 "it."
-msgstr ""
-"%1$s je z novšej verzie LyX-u, ale skript lyx2lyx zlyhal pri konverzii."
+msgstr "%1$s je z novšej verzie LyX-u, a skript lyx2lyx zlyhal pri konverzii."
 
 #: src/Buffer.cpp:1018 src/Buffer.cpp:3683 src/Buffer.cpp:3745
-#, fuzzy
 msgid "File is read-only"
 msgstr "Dokument je iba na čítanie"
 
 #: src/Buffer.cpp:1019
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
-msgstr ""
+msgstr "Súbor %1$s je neuložiteĺný lebo je označený ako len na čítanie."
 
 #: src/Buffer.cpp:1028
 #, c-format
@@ -16744,24 +16726,21 @@ msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Pokúšam sa uložiť dokument %1$s\n"
 
 #: src/Buffer.cpp:1130 src/Buffer.cpp:1143 src/Buffer.cpp:1157
-#, fuzzy, c-format
+#, c-format
 msgid "Saved to %1$s. Phew.\n"
-msgstr "  Úspešne uložené do súboru %1$s. Uf.\n"
+msgstr "Úspešne uložené do súboru %1$s. Uf.\n"
 
 #: src/Buffer.cpp:1133
-#, fuzzy
 msgid "Save failed! Trying again...\n"
-msgstr "  Uloženie zlyhalo! Skúšam ešte raz...\n"
+msgstr "Uloženie zlyhalo! Skúšam ešte raz...\n"
 
 #: src/Buffer.cpp:1147
-#, fuzzy
 msgid "Save failed! Trying yet again...\n"
-msgstr "  Uloženie zlyhalo! Skúšam zatiaľ ešte raz...\n"
+msgstr "Uloženie zlyhalo! Skúšam zatiaľ ešte raz...\n"
 
 #: src/Buffer.cpp:1161
-#, fuzzy
 msgid "Save failed! Bummer. Document is lost."
-msgstr "  Uloženie zlyhalo! Och. Dokument je stratený."
+msgstr "Uloženie zlyhalo! Och. Dokument je stratený."
 
 #: src/Buffer.cpp:1248
 msgid "Iconv software exception Detected"
@@ -16976,6 +16955,8 @@ msgid ""
 "An emergency file is succesfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
+"Bezpečnostný súbor úspešne načítaný, ale originálny súbor %1$s ja "
+"označený len na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
 #: src/Buffer.cpp:3690
 msgid "Document was successfully recovered."
@@ -17043,6 +17024,8 @@ msgid ""
 "A backup file is succesfully loaded,  but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
+"Zálohový súbor úspešne načítaný, ale originálny súbor %1$s ja "
+"označený len na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
 #: src/Buffer.cpp:4050 src/insets/InsetCaption.cpp:327
 msgid "Senseless!!! "
@@ -17725,11 +17708,13 @@ msgid "There were errors during the build process."
 msgstr "Počas spracovania sa vyskytli chyby."
 
 #: src/Converter.cpp:475
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An error occurred while running:\n"
 "%1$s"
-msgstr "Chyba pri spracovaní %1$s."
+msgstr ""
+"Chyba pri spracovaní:\n"
+"%1$s"
 
 #: src/Converter.cpp:498
 #, c-format
@@ -17921,9 +17906,9 @@ msgid "Language: %1$s, "
 msgstr "Jazyk: %1$s, "
 
 #: src/Font.cpp:192
-#, fuzzy, c-format
+#, c-format
 msgid "Number %1$s"
-msgstr "  Číslo %1$s"
+msgstr "Číslo %1$s"
 
 #: src/Format.cpp:287 src/Format.cpp:300 src/Format.cpp:310
 msgid "Cannot view file"
@@ -19124,14 +19109,15 @@ msgid "Module not available"
 msgstr "Modul nie je dostupný"
 
 #: src/TextClass.cpp:1302
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
 "not available in your LaTeX installation, or a converter\n"
 "you have not installed. LaTeX output may not be possible.\n"
 msgstr ""
 "Modul %1$s vyžaduje balík, ktorý je nedostupný vo vašej\n"
-"LaTeX-ovej inštalácii. Nezaistený výstup z LaTeXa.\n"
+"LaTeX-ovej inštalácii, alebo vyžaduje konvertor\n"
+"ktorý nemáte inštalovaný. Nezaistený výstup z LaTeXa.\n"
 
 #: src/TextClass.cpp:1306
 msgid "Package not available"
@@ -19491,41 +19477,37 @@ msgid "Directories"
 msgstr "Adresári"
 
 #: src/frontends/qt4/FindAndReplace.cpp:275
-#, fuzzy
 msgid "File"
-msgstr "S&úbor"
+msgstr "Súbor"
 
 #: src/frontends/qt4/FindAndReplace.cpp:278
-#, fuzzy
 msgid "Master document"
 msgstr "Hlavný dokument"
 
 #: src/frontends/qt4/FindAndReplace.cpp:281
-#, fuzzy
 msgid "Open files"
-msgstr "Príkladné súbory:"
+msgstr "Otvorené súbory"
 
 #: src/frontends/qt4/FindAndReplace.cpp:284
-#, fuzzy
 msgid "Manuals"
-msgstr "Okrajné"
+msgstr "Manuály"
 
 #: src/frontends/qt4/FindAndReplace.cpp:288
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s: the end was reached while searching forward.\n"
 "Continue searching from the beginning?"
 msgstr ""
-"Dosiahol som koniec %1$s hľadajúc dopredu.\n"
+"%1$s: dosiahol som koniec hľadajúc dopredu.\n"
 "Pokračovať hľadaním od začiatku?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:291
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s: the beginning was reached while searching backward.\n"
 "Continue searching from the end?"
 msgstr ""
-"Dosiahol som začiatok %1$s hľadajúc spätne.\n"
+"%1$s: Dosiahol som začiatok hľadajúc spätne.\n"
 "Pokračovať hľadaním od konca?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:346
@@ -21808,7 +21790,6 @@ msgid "Exit LyX"
 msgstr "Skončiť LyX"
 
 #: src/frontends/qt4/GuiView.cpp:806
-#, fuzzy
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr "Nemohol som zavrieť LyX, lebo LyX ešte spracováva dokumenty."
 
@@ -21996,12 +21977,10 @@ msgid "&Retry"
 msgstr "Zopakuj"
 
 #: src/frontends/qt4/GuiView.cpp:2418
-#, fuzzy
 msgid "Close document"
 msgstr "Zavrieť dokument"
 
 #: src/frontends/qt4/GuiView.cpp:2419
-#, fuzzy
 msgid "Document could not be closed because it is being processed by LyX."
 msgstr "Dokument sa nedal zavrieť, lebo ho LyX ešte spracováva."
 
@@ -23210,14 +23189,12 @@ msgid "NameRef:"
 msgstr "NameRef:"
 
 #: src/insets/InsetScript.cpp:367
-#, fuzzy
 msgid "subscript"
-msgstr "Dolný index"
+msgstr "dolný index"
 
 #: src/insets/InsetScript.cpp:377
-#, fuzzy
 msgid "superscript"
-msgstr "Horný index"
+msgstr "horný index"
 
 #: src/insets/InsetSpace.cpp:71
 msgid "Protected Space"
@@ -23484,15 +23461,16 @@ msgid "Unknown tabular feature '%1$s'"
 msgstr "Neznáme vlastnosti tabuľky '%1$s'"
 
 #: src/mathed/InsetMathHull.cpp:1201
-#, fuzzy
 msgid "Bad math environment"
-msgstr "Gather prostredie"
+msgstr "Zlé mat. prostredie"
 
 #: src/mathed/InsetMathHull.cpp:1202
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
 msgstr ""
+"Výpočet sa pre mat. prostredie AMS nedá previezť.\n"
+"Zmeňte typ mat. formuly a skúste to ešte raz."
 
 #: src/mathed/InsetMathHull.cpp:1308 src/mathed/InsetMathHull.cpp:1317
 msgid "No number"
@@ -23550,9 +23528,9 @@ msgid "FormatRef: "
 msgstr "FormatRef: "
 
 #: src/mathed/InsetMathSubstack.cpp:85
-#, fuzzy, c-format
+#, c-format
 msgid "Can't change horizontal alignment in '%1$s'"
-msgstr "Nedajú sa pridať horizontálne linky mriežky '%1$s'"
+msgstr "Nedá sa zmeniť horizontálna adjustácia v '%1$s'"
 
 #: src/mathed/MathMacroTemplate.cpp:494
 msgid "optional"
