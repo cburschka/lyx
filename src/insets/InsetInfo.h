@@ -127,6 +127,8 @@ public:
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
 	docstring contextMenuName() const;
+	///
+	docstring contextMenuName() const;
 	/// should paragraph indendation be ommitted in any case?
 	bool neverIndent() const { return true; }
 

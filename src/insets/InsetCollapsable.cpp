@@ -622,10 +622,10 @@ docstring InsetCollapsable::contextMenu(BufferView const & bv, int x,
 	int y) const
 {
 	if (decoration() == InsetLayout::CONGLOMERATE)
-		return contextMenuName();
+		return contextMenuName() + ";" + InsetText::contextMenuName();
 
 	if (geometry(bv) == NoButton)
-		return contextMenuName();
+		return contextMenuName() + ";" + InsetText::contextMenuName();
 
 	Dimension dim = dimensionCollapsed(bv);
 	if (x < xo(bv) + dim.wid && y < yo(bv) + dim.des)

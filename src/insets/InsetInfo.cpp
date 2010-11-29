@@ -454,6 +454,14 @@ void InsetInfo::updateInfo()
 
 docstring InsetInfo::contextMenuName() const
 {
+	//FIXME: We override the implementation of InsetCollapsable,
+	//because this inset is not a collapsable inset.
+	return contextMenuName();
+}
+
+
+docstring InsetInfo::contextMenuName() const
+{
 	return from_ascii("context-info");
 }
 

@@ -3329,7 +3329,14 @@ void InsetTabular::write(ostream & os) const
 
 docstring InsetTabular::contextMenuName() const
 {
-	// FIXME: depending on the selection state, we could offer a different menu.
+	// FIXME: depending on the selection state,
+	// we could offer a different menu.
+	return cell(0)->contextMenuName() + ";" + contextMenuName();
+}
+
+
+docstring InsetTabular::contextMenuName() const
+{
 	return from_ascii("context-tabular");
 }
 

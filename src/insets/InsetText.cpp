@@ -815,6 +815,15 @@ void InsetText::completionPosAndDim(Cursor const & cur, int & x, int & y,
 
 docstring InsetText::contextMenuName() const
 {
+	docstring context_menu = contextMenuName();
+	if (context_menu != InsetText::contextMenuName())
+		context_menu += ";" + InsetText::contextMenuName(); 
+	return context_menu;
+}
+
+
+docstring InsetText::contextMenuName() const
+{
 	return from_ascii("context-edit");
 }
 

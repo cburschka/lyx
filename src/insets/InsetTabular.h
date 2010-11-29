@@ -813,6 +813,8 @@ public:
 	///
 	InsetCode lyxCode() const { return TABULAR_CODE; }
 	///
+	docstring contextMenu(BufferView const &, int, int) const;
+	///
 	docstring contextMenuName() const;
 	/// get offset of this cursor slice relative to our upper left corner
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
