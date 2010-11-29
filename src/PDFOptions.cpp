@@ -177,7 +177,8 @@ int PDFOptions::writeLaTeX(OutputParams & runparams, odocstream & os,
 	lines = int(count(opt.begin(), opt.end(), '\n'));
 
 	// hyperref expects utf8!
-	if (need_unicode && enc && enc->iconvName() != "UTF-8") {
+	if (need_unicode && enc && enc->iconvName() != "UTF-8"
+	    &&!runparams.isFullUnicode()) {
 		os << "\\inputencoding{utf8}\n"
 		   << setEncoding("UTF-8");
 		++lines;
@@ -187,7 +188,8 @@ int PDFOptions::writeLaTeX(OutputParams & runparams, odocstream & os,
 	if (!(hyperref_already_provided && hyperset.empty()))
 		os << from_utf8(opt);
 
-	if (need_unicode && enc && enc->iconvName() != "UTF-8") {
+	if (need_unicode && enc && enc->iconvName() != "UTF-8"
+	    &&!runparams.isFullUnicode()) {
 		os << setEncoding(enc->iconvName())
 		   << "\\inputencoding{" << from_ascii(enc->latexName()) << "}\n";
 		++lines;
