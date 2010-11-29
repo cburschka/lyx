@@ -946,11 +946,22 @@ void Tabular::setCellWidth(idx_type cell, int new_width)
 void Tabular::setAlignment(idx_type cell, LyXAlignment align,
 			      bool onlycolumn)
 {
-	if (!isMultiColumn(cell) || onlycolumn)
-		column_info[cellColumn(cell)].alignment = align;
-	if (!onlycolumn)
+	col_type const col = cellColumn(cell);
+	row_type const nrows = row_info.size();
+	// set alignment for the whole row if we are not in a multicolumn cell 
+	// exclude possible multicolumn cells in the row
+	if (!isMultiColumn(cell)) { 
+		for (row_type r = 0; r < nrows; ++r) { 
+			if (!isMultiColumn(cellIndex(r, col))) {
+				cell_info[r][col].alignment = align;
+				cell_info[r][col].inset->setContentAlignment(align); 
+			}
+		}
+		column_info[col].alignment = align;
+	} else {
 		cellInfo(cell).alignment = align;
-	cellInset(cell).get()->setContentAlignment(align);
+		cellInset(cell).get()->setContentAlignment(align);
+	}
 }
 
 
@@ -4594,14 +4605,13 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::M_ALIGN_LEFT:
 	case Tabular::M_ALIGN_RIGHT:
 	case Tabular::M_ALIGN_CENTER:
-		flag = false;
 	case Tabular::ALIGN_LEFT:
 	case Tabular::ALIGN_RIGHT:
 	case Tabular::ALIGN_CENTER:
 	case Tabular::ALIGN_BLOCK:
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
-				tabular.setAlignment(tabular.cellIndex(i, j), setAlign, flag);
+				tabular.setAlignment(tabular.cellIndex(i, j), setAlign);
 		break;
 
 	case Tabular::M_VALIGN_TOP:
