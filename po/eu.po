@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.xsvn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-11-27 11:13+0100\n"
+"POT-Creation-Date: 2010-11-29 08:10+0100\n"
 "PO-Revision-Date: 2010-06-08 03:03+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Euskara <dooteo@euskalgnu.org>\n"
@@ -299,19 +299,19 @@ msgstr "Kutxako edukiaren lerrokadura horizontala"
 
 #: src/frontends/qt4/ui/BoxUi.ui:65 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:209
-#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:743
+#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:746
 msgid "Left"
 msgstr "Ezkerrean"
 
 #: src/frontends/qt4/ui/BoxUi.ui:70 src/frontends/qt4/ui/TabularUi.ui:147
 #: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
-#: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:744
+#: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:747
 msgid "Center"
 msgstr "Erdian"
 
 #: src/frontends/qt4/ui/BoxUi.ui:75 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:152 src/frontends/qt4/ui/WrapUi.ui:214
-#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:745
+#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:748
 msgid "Right"
 msgstr "Eskuinean"
 
@@ -3558,7 +3558,7 @@ msgid "Horizontal alignment in column"
 msgstr "Lerrokatu horizontalki zutabean"
 
 #: src/frontends/qt4/ui/TabularUi.ui:137
-#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:747
+#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:750
 msgid "Justified"
 msgstr "Justifikatua"
 
@@ -10292,7 +10292,7 @@ msgstr "Hautapena lerro gisa|L"
 msgid "Selection as Paragraphs|P"
 msgstr "Hautapena paragrafo gisa|P"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:173
+#: lib/ui/classic.ui:120 lib/ui/stdmenus.inc:173
 msgid "Multicolumn|M"
 msgstr "Zutabe anitza|Z"
 
@@ -10332,7 +10332,7 @@ msgstr "Kopiatu errenkada"
 msgid "Swap Rows"
 msgstr "Trukatu errenkadak"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:196
+#: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:196
 msgid "Add Column|u"
 msgstr "Gehitu zutabea|z"
 
@@ -10348,7 +10348,7 @@ msgstr "Kopiatu zutabea"
 msgid "Swap Columns"
 msgstr "Trukatu zutabeak"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:374 lib/ui/stdmenus.inc:183
+#: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:183
 msgid "Left|L"
 msgstr "Ezkerrean|z"
 
@@ -10356,7 +10356,7 @@ msgstr "Ezkerrean|z"
 msgid "Center|C"
 msgstr "Erdian|r"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:185
 msgid "Right|R"
 msgstr "Eskuinean|s"
 
@@ -11110,8 +11110,7 @@ msgstr "Formatudun erreferentzia|t"
 #: lib/ui/stdcontext.inc:165 lib/ui/stdcontext.inc:209
 #: lib/ui/stdcontext.inc:227 lib/ui/stdcontext.inc:254
 #: lib/ui/stdcontext.inc:336 lib/ui/stdcontext.inc:344
-#: lib/ui/stdcontext.inc:357 lib/ui/stdcontext.inc:392
-#: lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:470
+#: lib/ui/stdcontext.inc:357 lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:470
 msgid "Settings...|S"
 msgstr "Ezarpenak...|E"
 
@@ -11469,12 +11468,19 @@ msgstr "Birkargatu|B"
 msgid "Edit Externally...|x"
 msgstr "Editatu kanpoan...|k"
 
-#: lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:175
-msgid "Top Line|T"
+#: lib/ui/stdcontext.inc:367
+#, fuzzy
+msgid "Multicolumn|u"
+msgstr "Zutabe anitza|Z"
+
+#: lib/ui/stdcontext.inc:369
+#, fuzzy
+msgid "Top Line|n"
 msgstr "Goiko marra|G"
 
-#: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:176
-msgid "Bottom Line|B"
+#: lib/ui/stdcontext.inc:370
+#, fuzzy
+msgid "Bottom Line|i"
 msgstr "Beheko marra|B"
 
 #: lib/ui/stdcontext.inc:371 lib/ui/stdmenus.inc:177
@@ -11485,13 +11491,34 @@ msgstr "Ezkerreko marra|z"
 msgid "Right Line|R"
 msgstr "Eskuineko marra|s"
 
+#: lib/ui/stdcontext.inc:374
+#, fuzzy
+msgid "Left|f"
+msgstr "Ezkerrean|z"
+
+#: lib/ui/stdcontext.inc:376
+#, fuzzy
+msgid "Right|h"
+msgstr "Eskuinean|s"
+
 #: lib/ui/stdcontext.inc:384 lib/ui/stdmenus.inc:193
 msgid "Copy Row|o"
 msgstr "Kopiatu errenkada|e"
 
-#: lib/ui/stdcontext.inc:389 lib/ui/stdmenus.inc:198
-msgid "Copy Column|p"
+#: lib/ui/stdcontext.inc:387
+#, fuzzy
+msgid "Add Column|p"
+msgstr "Gehitu zutabea|z"
+
+#: lib/ui/stdcontext.inc:389
+#, fuzzy
+msgid "Copy Column|y"
 msgstr "Kopiatu zutabea|z"
+
+#: lib/ui/stdcontext.inc:392
+#, fuzzy
+msgid "Settings...|g"
+msgstr "Ezarpenak...|E"
 
 #: lib/ui/stdmenus.inc:33
 msgid "Document|D"
@@ -11652,6 +11679,18 @@ msgstr "Maiuskulak|i"
 #: lib/ui/stdmenus.inc:168
 msgid "Lowercase|L"
 msgstr "Minuskulak|n"
+
+#: lib/ui/stdmenus.inc:175
+msgid "Top Line|T"
+msgstr "Goiko marra|G"
+
+#: lib/ui/stdmenus.inc:176
+msgid "Bottom Line|B"
+msgstr "Beheko marra|B"
+
+#: lib/ui/stdmenus.inc:198
+msgid "Copy Column|p"
+msgstr "Kopiatu zutabea|z"
 
 #: lib/ui/stdmenus.inc:206
 msgid "Macro Definition"
@@ -21261,11 +21300,11 @@ msgstr "Babestutako tarte horizontala (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Aurkibide mota ezezaguna"
 
-#: src/insets/InsetTabular.cpp:3224
+#: src/insets/InsetTabular.cpp:3225
 msgid "Opened table"
 msgstr "Taula irekita"
 
-#: src/insets/InsetTabular.cpp:4052
+#: src/insets/InsetTabular.cpp:4059
 msgid "Selection size should match clipboard content."
 msgstr "Hautapenaren tamainak bat etorri behar du arbeleko edukiarekin."
 

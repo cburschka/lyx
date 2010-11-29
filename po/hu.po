@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.xsvn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-11-27 11:13+0100\n"
+"POT-Creation-Date: 2010-11-29 08:10+0100\n"
 "PO-Revision-Date: 2010-11-08 19:40+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -296,19 +296,19 @@ msgstr "A doboz tartalmának vízszintes igazítása"
 
 #: src/frontends/qt4/ui/BoxUi.ui:65 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:209
-#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:743
+#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:746
 msgid "Left"
 msgstr "Balra"
 
 #: src/frontends/qt4/ui/BoxUi.ui:70 src/frontends/qt4/ui/TabularUi.ui:147
 #: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
-#: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:744
+#: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:747
 msgid "Center"
 msgstr "Középre"
 
 #: src/frontends/qt4/ui/BoxUi.ui:75 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:152 src/frontends/qt4/ui/WrapUi.ui:214
-#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:745
+#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:748
 msgid "Right"
 msgstr "Jobbra"
 
@@ -3546,7 +3546,7 @@ msgid "Horizontal alignment in column"
 msgstr "Oszlop vízszintes igazítása"
 
 #: src/frontends/qt4/ui/TabularUi.ui:137
-#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:747
+#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:750
 msgid "Justified"
 msgstr "Sorkizárt"
 
@@ -10238,7 +10238,7 @@ msgstr "Kijelölés sorokként|K"
 msgid "Selection as Paragraphs|P"
 msgstr "Kijelölés bekezdésekként|b"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:173
+#: lib/ui/classic.ui:120 lib/ui/stdmenus.inc:173
 msgid "Multicolumn|M"
 msgstr "Cellaegyesítés|C"
 
@@ -10278,7 +10278,7 @@ msgstr "Sor másolása"
 msgid "Swap Rows"
 msgstr "Sorok cseréje"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:196
+#: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:196
 msgid "Add Column|u"
 msgstr "Oszlop hozzáadása|h"
 
@@ -10294,7 +10294,7 @@ msgstr "Oszlop másolása"
 msgid "Swap Columns"
 msgstr "Oszlopok cseréje"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:374 lib/ui/stdmenus.inc:183
+#: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:183
 msgid "Left|L"
 msgstr "Balra|r"
 
@@ -10302,7 +10302,7 @@ msgstr "Balra|r"
 msgid "Center|C"
 msgstr "Középre|K"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:185
 msgid "Right|R"
 msgstr "Jobbra|J"
 
@@ -11056,8 +11056,7 @@ msgstr "Formázott hivatkozás|t"
 #: lib/ui/stdcontext.inc:165 lib/ui/stdcontext.inc:209
 #: lib/ui/stdcontext.inc:227 lib/ui/stdcontext.inc:254
 #: lib/ui/stdcontext.inc:336 lib/ui/stdcontext.inc:344
-#: lib/ui/stdcontext.inc:357 lib/ui/stdcontext.inc:392
-#: lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:470
+#: lib/ui/stdcontext.inc:357 lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:470
 msgid "Settings...|S"
 msgstr "Beállítások...|B"
 
@@ -11415,12 +11414,19 @@ msgstr "Újratöltés|Ú"
 msgid "Edit Externally...|x"
 msgstr "Szerkesztés külsőleg...|z"
 
-#: lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:175
-msgid "Top Line|T"
+#: lib/ui/stdcontext.inc:367
+#, fuzzy
+msgid "Multicolumn|u"
+msgstr "Cellaegyesítés|C"
+
+#: lib/ui/stdcontext.inc:369
+#, fuzzy
+msgid "Top Line|n"
 msgstr "Felső vonal|e"
 
-#: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:176
-msgid "Bottom Line|B"
+#: lib/ui/stdcontext.inc:370
+#, fuzzy
+msgid "Bottom Line|i"
 msgstr "Alsó vonal|A"
 
 #: lib/ui/stdcontext.inc:371 lib/ui/stdmenus.inc:177
@@ -11431,13 +11437,34 @@ msgstr "Bal vonal|v"
 msgid "Right Line|R"
 msgstr "Jobb vonal|n"
 
+#: lib/ui/stdcontext.inc:374
+#, fuzzy
+msgid "Left|f"
+msgstr "Balra|r"
+
+#: lib/ui/stdcontext.inc:376
+#, fuzzy
+msgid "Right|h"
+msgstr "Jobbra|J"
+
 #: lib/ui/stdcontext.inc:384 lib/ui/stdmenus.inc:193
 msgid "Copy Row|o"
 msgstr "Sor másolása|S"
 
-#: lib/ui/stdcontext.inc:389 lib/ui/stdmenus.inc:198
-msgid "Copy Column|p"
+#: lib/ui/stdcontext.inc:387
+#, fuzzy
+msgid "Add Column|p"
+msgstr "Oszlop hozzáadása|h"
+
+#: lib/ui/stdcontext.inc:389
+#, fuzzy
+msgid "Copy Column|y"
 msgstr "Oszlop másolása|O"
+
+#: lib/ui/stdcontext.inc:392
+#, fuzzy
+msgid "Settings...|g"
+msgstr "Beállítások...|B"
 
 #: lib/ui/stdmenus.inc:33
 msgid "Document|D"
@@ -11598,6 +11625,18 @@ msgstr "Nagybetű|N"
 #: lib/ui/stdmenus.inc:168
 msgid "Lowercase|L"
 msgstr "Kisbetű|K"
+
+#: lib/ui/stdmenus.inc:175
+msgid "Top Line|T"
+msgstr "Felső vonal|e"
+
+#: lib/ui/stdmenus.inc:176
+msgid "Bottom Line|B"
+msgstr "Alsó vonal|A"
+
+#: lib/ui/stdmenus.inc:198
+msgid "Copy Column|p"
+msgstr "Oszlop másolása|O"
 
 #: lib/ui/stdmenus.inc:206
 msgid "Macro Definition"
@@ -21199,11 +21238,11 @@ msgstr "Védett vízszintes kitöltés (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Ismeretlen Tartalomjegyz. típus"
 
-#: src/insets/InsetTabular.cpp:3224
+#: src/insets/InsetTabular.cpp:3225
 msgid "Opened table"
 msgstr "Táblázat megnyitása"
 
-#: src/insets/InsetTabular.cpp:4052
+#: src/insets/InsetTabular.cpp:4059
 msgid "Selection size should match clipboard content."
 msgstr "A kijelölés méretének egyeznie kell a vágólap tartalmával."
 

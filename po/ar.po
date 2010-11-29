@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-11-27 11:13+0100\n"
+"POT-Creation-Date: 2010-11-29 08:10+0100\n"
 "PO-Revision-Date: 2010-03-21 22:45+0200\n"
 "Last-Translator: Mohamed Magdy <theblackdragon_100@hotmail.com>\n"
 "Language-Team: LyX team <theblackdragon_100@hotmail.com>\n"
@@ -299,19 +299,19 @@ msgstr "محاذاة افقية للمحتوى داخل الصندوق"
 
 #: src/frontends/qt4/ui/BoxUi.ui:65 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:209
-#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:743
+#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:746
 msgid "Left"
 msgstr "يسار"
 
 #: src/frontends/qt4/ui/BoxUi.ui:70 src/frontends/qt4/ui/TabularUi.ui:147
 #: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
-#: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:744
+#: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:747
 msgid "Center"
 msgstr "توسيط"
 
 #: src/frontends/qt4/ui/BoxUi.ui:75 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:152 src/frontends/qt4/ui/WrapUi.ui:214
-#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:745
+#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:748
 msgid "Right"
 msgstr "يمين"
 
@@ -3516,7 +3516,7 @@ msgid "Horizontal alignment in column"
 msgstr "محاذاة افقية داخل العمود"
 
 #: src/frontends/qt4/ui/TabularUi.ui:137
-#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:747
+#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:750
 msgid "Justified"
 msgstr "تمدد"
 
@@ -10262,7 +10262,7 @@ msgstr "أسطر محددة|أ"
 msgid "Selection as Paragraphs|P"
 msgstr "فقرات محددة|ف"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:173
+#: lib/ui/classic.ui:120 lib/ui/stdmenus.inc:173
 msgid "Multicolumn|M"
 msgstr "اعمدة متعددة|أ"
 
@@ -10302,7 +10302,7 @@ msgstr "نسخ صف"
 msgid "Swap Rows"
 msgstr ""
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:196
+#: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:196
 msgid "Add Column|u"
 msgstr "اضافة عمود|ا"
 
@@ -10318,7 +10318,7 @@ msgstr "نسخ عمود|ن"
 msgid "Swap Columns"
 msgstr ""
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:374 lib/ui/stdmenus.inc:183
+#: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:183
 msgid "Left|L"
 msgstr "يسار|ي"
 
@@ -10326,7 +10326,7 @@ msgstr "يسار|ي"
 msgid "Center|C"
 msgstr "توسيط|ت"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:185
 msgid "Right|R"
 msgstr "يمين|ي"
 
@@ -11080,8 +11080,7 @@ msgstr "مرجع مهيئ|t"
 #: lib/ui/stdcontext.inc:165 lib/ui/stdcontext.inc:209
 #: lib/ui/stdcontext.inc:227 lib/ui/stdcontext.inc:254
 #: lib/ui/stdcontext.inc:336 lib/ui/stdcontext.inc:344
-#: lib/ui/stdcontext.inc:357 lib/ui/stdcontext.inc:392
-#: lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:470
+#: lib/ui/stdcontext.inc:357 lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:470
 msgid "Settings...|S"
 msgstr "اعدادات..."
 
@@ -11443,12 +11442,19 @@ msgstr "|Rاعادة تحميل"
 msgid "Edit Externally...|x"
 msgstr "تم التعديل خارجياً...|م"
 
-#: lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:175
-msgid "Top Line|T"
+#: lib/ui/stdcontext.inc:367
+#, fuzzy
+msgid "Multicolumn|u"
+msgstr "اعمدة متعددة|أ"
+
+#: lib/ui/stdcontext.inc:369
+#, fuzzy
+msgid "Top Line|n"
 msgstr "خط اعلى"
 
-#: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:176
-msgid "Bottom Line|B"
+#: lib/ui/stdcontext.inc:370
+#, fuzzy
+msgid "Bottom Line|i"
 msgstr "خط  اسفل"
 
 #: lib/ui/stdcontext.inc:371 lib/ui/stdmenus.inc:177
@@ -11459,13 +11465,34 @@ msgstr "خط ايسر"
 msgid "Right Line|R"
 msgstr "خط ايمن"
 
+#: lib/ui/stdcontext.inc:374
+#, fuzzy
+msgid "Left|f"
+msgstr "يسار|ي"
+
+#: lib/ui/stdcontext.inc:376
+#, fuzzy
+msgid "Right|h"
+msgstr "يمين|ي"
+
 #: lib/ui/stdcontext.inc:384 lib/ui/stdmenus.inc:193
 msgid "Copy Row|o"
 msgstr "نسخ صف"
 
-#: lib/ui/stdcontext.inc:389 lib/ui/stdmenus.inc:198
-msgid "Copy Column|p"
+#: lib/ui/stdcontext.inc:387
+#, fuzzy
+msgid "Add Column|p"
+msgstr "اضافة عمود|ا"
+
+#: lib/ui/stdcontext.inc:389
+#, fuzzy
+msgid "Copy Column|y"
 msgstr "نسخ عمود"
+
+#: lib/ui/stdcontext.inc:392
+#, fuzzy
+msgid "Settings...|g"
+msgstr "اعدادات..."
 
 #: lib/ui/stdmenus.inc:33
 msgid "Document|D"
@@ -11626,6 +11653,18 @@ msgstr "حروف كبيرة"
 #: lib/ui/stdmenus.inc:168
 msgid "Lowercase|L"
 msgstr "حروف صغيرة"
+
+#: lib/ui/stdmenus.inc:175
+msgid "Top Line|T"
+msgstr "خط اعلى"
+
+#: lib/ui/stdmenus.inc:176
+msgid "Bottom Line|B"
+msgstr "خط  اسفل"
+
+#: lib/ui/stdmenus.inc:198
+msgid "Copy Column|p"
+msgstr "نسخ عمود"
 
 #: lib/ui/stdmenus.inc:206
 msgid "Macro Definition"
@@ -21082,11 +21121,11 @@ msgstr "مباعدة محمية"
 msgid "Unknown TOC type"
 msgstr "مستخدم مجهول"
 
-#: src/insets/InsetTabular.cpp:3224
+#: src/insets/InsetTabular.cpp:3225
 msgid "Opened table"
 msgstr "فتح جدول"
 
-#: src/insets/InsetTabular.cpp:4052
+#: src/insets/InsetTabular.cpp:4059
 msgid "Selection size should match clipboard content."
 msgstr ""
 

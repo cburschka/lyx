@@ -96,8 +96,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-11-27 11:13+0100\n"
-"PO-Revision-Date: 2010-11-27 11:17+0100\n"
+"POT-Creation-Date: 2010-11-29 08:10+0100\n"
+"PO-Revision-Date: 2010-11-29 08:11+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -390,19 +390,19 @@ msgstr "Horizontale Ausrichtung des Inhalts innerhalb der Box"
 
 #: src/frontends/qt4/ui/BoxUi.ui:65 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:209
-#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:743
+#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:746
 msgid "Left"
 msgstr "Links"
 
 #: src/frontends/qt4/ui/BoxUi.ui:70 src/frontends/qt4/ui/TabularUi.ui:147
 #: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
-#: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:744
+#: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:747
 msgid "Center"
 msgstr "Zentriert"
 
 #: src/frontends/qt4/ui/BoxUi.ui:75 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:152 src/frontends/qt4/ui/WrapUi.ui:214
-#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:745
+#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:748
 msgid "Right"
 msgstr "Rechts"
 
@@ -3671,7 +3671,7 @@ msgid "Horizontal alignment in column"
 msgstr "Horizontale Ausrichtung in der Spalte"
 
 #: src/frontends/qt4/ui/TabularUi.ui:137
-#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:747
+#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:750
 msgid "Justified"
 msgstr "Blocksatz"
 
@@ -10368,7 +10368,7 @@ msgstr "Auswahl als Zeilen|e"
 msgid "Selection as Paragraphs|P"
 msgstr "Auswahl als Absätze|b"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:173
+#: lib/ui/classic.ui:120 lib/ui/stdmenus.inc:173
 msgid "Multicolumn|M"
 msgstr "Mehrfachspalte|h"
 
@@ -10408,7 +10408,7 @@ msgstr "Zeile kopieren"
 msgid "Swap Rows"
 msgstr "Zeilen vertauschen"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:196
+#: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:196
 msgid "Add Column|u"
 msgstr "Spalte anfügen|S"
 
@@ -10424,7 +10424,7 @@ msgstr "Spalte kopieren"
 msgid "Swap Columns"
 msgstr "Spalten vertauschen"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:374 lib/ui/stdmenus.inc:183
+#: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:183
 msgid "Left|L"
 msgstr "Links|L"
 
@@ -10432,7 +10432,7 @@ msgstr "Links|L"
 msgid "Center|C"
 msgstr "Zentriert|Z"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:185
 msgid "Right|R"
 msgstr "Rechts|R"
 
@@ -11188,8 +11188,7 @@ msgstr "Formatierter Querverweis|t"
 #: lib/ui/stdcontext.inc:165 lib/ui/stdcontext.inc:209
 #: lib/ui/stdcontext.inc:227 lib/ui/stdcontext.inc:254
 #: lib/ui/stdcontext.inc:336 lib/ui/stdcontext.inc:344
-#: lib/ui/stdcontext.inc:357 lib/ui/stdcontext.inc:392
-#: lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:470
+#: lib/ui/stdcontext.inc:357 lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:470
 msgid "Settings...|S"
 msgstr "Einstellungen...|n"
 
@@ -11547,12 +11546,16 @@ msgstr "Neu laden|l"
 msgid "Edit Externally...|x"
 msgstr "Datei extern bearbeiten|x"
 
-#: lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:175
-msgid "Top Line|T"
+#: lib/ui/stdcontext.inc:367
+msgid "Multicolumn|u"
+msgstr "Mehrfachspalte|h"
+
+#: lib/ui/stdcontext.inc:369
+msgid "Top Line|n"
 msgstr "Obere Linie|b"
 
-#: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:176
-msgid "Bottom Line|B"
+#: lib/ui/stdcontext.inc:370
+msgid "Bottom Line|i"
 msgstr "Untere Linie|e"
 
 #: lib/ui/stdcontext.inc:371 lib/ui/stdmenus.inc:177
@@ -11563,13 +11566,29 @@ msgstr "Linke Linie|i"
 msgid "Right Line|R"
 msgstr "Rechte Linie|c"
 
+#: lib/ui/stdcontext.inc:374
+msgid "Left|f"
+msgstr "Links|L"
+
+#: lib/ui/stdcontext.inc:376
+msgid "Right|h"
+msgstr "Rechts|R"
+
 #: lib/ui/stdcontext.inc:384 lib/ui/stdmenus.inc:193
 msgid "Copy Row|o"
 msgstr "Zeile kopieren|k"
 
-#: lib/ui/stdcontext.inc:389 lib/ui/stdmenus.inc:198
-msgid "Copy Column|p"
+#: lib/ui/stdcontext.inc:387
+msgid "Add Column|p"
+msgstr "Spalte anfügen|S"
+
+#: lib/ui/stdcontext.inc:389
+msgid "Copy Column|y"
 msgstr "Spalte kopieren|t"
+
+#: lib/ui/stdcontext.inc:392
+msgid "Settings...|g"
+msgstr "Einstellungen...|n"
 
 #: lib/ui/stdmenus.inc:33
 msgid "Document|D"
@@ -11730,6 +11749,18 @@ msgstr "Großbuchstaben|G"
 #: lib/ui/stdmenus.inc:168
 msgid "Lowercase|L"
 msgstr "Kleinbuchstaben|K"
+
+#: lib/ui/stdmenus.inc:175
+msgid "Top Line|T"
+msgstr "Obere Linie|b"
+
+#: lib/ui/stdmenus.inc:176
+msgid "Bottom Line|B"
+msgstr "Untere Linie|e"
+
+#: lib/ui/stdmenus.inc:198
+msgid "Copy Column|p"
+msgstr "Spalte kopieren|t"
 
 #: lib/ui/stdmenus.inc:206
 msgid "Macro Definition"
@@ -21419,11 +21450,11 @@ msgstr "Geschützter horizontaler Abstand (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Unbekannter Inhaltsverzeichnis-Typ"
 
-#: src/insets/InsetTabular.cpp:3224
+#: src/insets/InsetTabular.cpp:3225
 msgid "Opened table"
 msgstr "Tabelle geöffnet"
 
-#: src/insets/InsetTabular.cpp:4052
+#: src/insets/InsetTabular.cpp:4059
 msgid "Selection size should match clipboard content."
 msgstr ""
 "Die Anzahl der ausgewählten Zellen stimmt nicht mit dem Inhalt der "
