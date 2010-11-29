@@ -128,9 +128,12 @@ bool InsetERT::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY:
-		status.setEnabled(true);
-		return true;
-		
+		if (cmd.getArg(0) == "ert") {
+			status.setEnabled(true);
+			return true;
+		}
+		//fall through
+
 	default:
 		return InsetCollapsable::getStatus(cur, cmd, status);
 	}
