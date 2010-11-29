@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.xsvn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-11-29 08:10+0100\n"
+"POT-Creation-Date: 2010-11-29 14:02+0100\n"
 "PO-Revision-Date: 2010-11-08 19:40+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -11056,7 +11056,7 @@ msgstr "Formázott hivatkozás|t"
 #: lib/ui/stdcontext.inc:165 lib/ui/stdcontext.inc:209
 #: lib/ui/stdcontext.inc:227 lib/ui/stdcontext.inc:254
 #: lib/ui/stdcontext.inc:336 lib/ui/stdcontext.inc:344
-#: lib/ui/stdcontext.inc:357 lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:470
+#: lib/ui/stdcontext.inc:357 lib/ui/stdcontext.inc:402 lib/ui/stdmenus.inc:470
 msgid "Settings...|S"
 msgstr "Beállítások...|B"
 
@@ -11465,6 +11465,11 @@ msgstr "Oszlop másolása|O"
 #, fuzzy
 msgid "Settings...|g"
 msgstr "Beállítások...|B"
+
+#: lib/ui/stdcontext.inc:401
+#, fuzzy
+msgid "Copy Text|o"
+msgstr "Másolás|o"
 
 #: lib/ui/stdmenus.inc:33
 msgid "Document|D"
@@ -11994,11 +11999,11 @@ msgstr "Dokumentum nyomtatása"
 msgid "Check spelling"
 msgstr "Helyesírás-ellenőrzés"
 
-#: lib/ui/stdtoolbars.inc:76 src/BufferView.cpp:1094
+#: lib/ui/stdtoolbars.inc:76 src/BufferView.cpp:1096
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: lib/ui/stdtoolbars.inc:77 src/BufferView.cpp:1103
+#: lib/ui/stdtoolbars.inc:77 src/BufferView.cpp:1105
 msgid "Redo"
 msgstr "Mégis"
 
@@ -15202,12 +15207,12 @@ msgstr "\\begin_header hiányzik"
 msgid "\\begin_document is missing"
 msgstr "\\begin_document hiányzik"
 
-#: src/Buffer.cpp:590 src/Buffer.cpp:596 src/BufferView.cpp:1213
-#: src/BufferView.cpp:1219
+#: src/Buffer.cpp:590 src/Buffer.cpp:596 src/BufferView.cpp:1215
+#: src/BufferView.cpp:1221
 msgid "Changes not shown in LaTeX output"
 msgstr "A változások nincsenek megjelenítve a LaTeX kimenetben"
 
-#: src/Buffer.cpp:591 src/BufferView.cpp:1214
+#: src/Buffer.cpp:591 src/BufferView.cpp:1216
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -15219,7 +15224,7 @@ msgstr ""
 "Kérem telepítse fel ezeket a csomagokat vagy a LaTeX preambulumban "
 "definiálja újra a \\lyxadded és \\lyxdeleted parancsokat."
 
-#: src/Buffer.cpp:597 src/BufferView.cpp:1220
+#: src/Buffer.cpp:597 src/BufferView.cpp:1222
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -15697,89 +15702,89 @@ msgstr "Nincs több betét"
 msgid "Save bookmark"
 msgstr "Könyvjelző mentése"
 
-#: src/BufferView.cpp:1097
+#: src/BufferView.cpp:1099
 msgid "No further undo information"
 msgstr "Nincs több visszavonás"
 
-#: src/BufferView.cpp:1106
+#: src/BufferView.cpp:1108
 msgid "No further redo information"
 msgstr "Minden visszavonás semlegesítve"
 
-#: src/BufferView.cpp:1281 src/lyxfind.cpp:303 src/lyxfind.cpp:321
+#: src/BufferView.cpp:1283 src/lyxfind.cpp:303 src/lyxfind.cpp:321
 msgid "String not found!"
 msgstr "Nem találtam meg a szöveget!"
 
-#: src/BufferView.cpp:1306
+#: src/BufferView.cpp:1308
 msgid "Mark off"
 msgstr "Jel ki"
 
-#: src/BufferView.cpp:1313
+#: src/BufferView.cpp:1315
 msgid "Mark on"
 msgstr "Jel be"
 
-#: src/BufferView.cpp:1320
+#: src/BufferView.cpp:1322
 msgid "Mark removed"
 msgstr "Jel eltávolítva"
 
-#: src/BufferView.cpp:1323
+#: src/BufferView.cpp:1325
 msgid "Mark set"
 msgstr "Jel beállítva"
 
-#: src/BufferView.cpp:1374
+#: src/BufferView.cpp:1376
 msgid "Statistics for the selection:"
 msgstr "Statisztika a kijelölésre:"
 
-#: src/BufferView.cpp:1376
+#: src/BufferView.cpp:1378
 msgid "Statistics for the document:"
 msgstr "A dokumentum statisztikája: "
 
-#: src/BufferView.cpp:1379
+#: src/BufferView.cpp:1381
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d szó"
 
-#: src/BufferView.cpp:1381
+#: src/BufferView.cpp:1383
 msgid "One word"
 msgstr "Egy szó"
 
-#: src/BufferView.cpp:1384
+#: src/BufferView.cpp:1386
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d karakter (szóközökkel)"
 
-#: src/BufferView.cpp:1387
+#: src/BufferView.cpp:1389
 msgid "One character (including blanks)"
 msgstr "Egy karakter (szóközökkel)"
 
-#: src/BufferView.cpp:1390
+#: src/BufferView.cpp:1392
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d karakter (szóközök nélkül)"
 
-#: src/BufferView.cpp:1393
+#: src/BufferView.cpp:1395
 msgid "One character (excluding blanks)"
 msgstr "Egy karakter (szóközök nélkül)"
 
-#: src/BufferView.cpp:1395
+#: src/BufferView.cpp:1397
 msgid "Statistics"
 msgstr "Statisztika"
 
-#: src/BufferView.cpp:2192
+#: src/BufferView.cpp:2195
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Dokumentum beszúrása %1$s..."
 
-#: src/BufferView.cpp:2203
+#: src/BufferView.cpp:2206
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumentum: %1$s beszúrása megtörtént."
 
-#: src/BufferView.cpp:2205
+#: src/BufferView.cpp:2208
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nem tudom beszúrni a dokumentumot %1$s"
 
-#: src/BufferView.cpp:2467
+#: src/BufferView.cpp:2470
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15790,11 +15795,11 @@ msgstr ""
 "nem olvasható,\n"
 "%2$s hiba miatt"
 
-#: src/BufferView.cpp:2469
+#: src/BufferView.cpp:2472
 msgid "Could not read file"
 msgstr "A fájl nem olvasható"
 
-#: src/BufferView.cpp:2476
+#: src/BufferView.cpp:2479
 #, c-format
 msgid ""
 "%1$s\n"
@@ -15803,15 +15808,15 @@ msgstr ""
 "%1$s\n"
 " nem olvasható.."
 
-#: src/BufferView.cpp:2477 src/output.cpp:39
+#: src/BufferView.cpp:2480 src/output.cpp:39
 msgid "Could not open file"
 msgstr "A fájl nem nyitható meg"
 
-#: src/BufferView.cpp:2484
+#: src/BufferView.cpp:2487
 msgid "Reading not UTF-8 encoded file"
 msgstr "Nem UTF-8 kódolású fájl olvasása"
 
-#: src/BufferView.cpp:2485
+#: src/BufferView.cpp:2488
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -20685,7 +20690,7 @@ msgstr "Betét parancs paraméterek: "
 msgid "Unknown parameter name: "
 msgstr "Ismeretlen paraméter név: "
 
-#: src/insets/InsetCommandParams.cpp:298 src/insets/InsetInfo.cpp:139
+#: src/insets/InsetCommandParams.cpp:298 src/insets/InsetInfo.cpp:138
 msgid "Missing \\end_inset at this point."
 msgstr "Hiányzó \\end_inset ennél a pontnál."
 
@@ -20824,25 +20829,25 @@ msgstr ""
 "Kérem adja meg kézzel, hogyan rendezzük ezt a bejegyzést,\n"
 "ahogy az le van írva a felhasználói kézikönyvben."
 
-#: src/insets/InsetInfo.cpp:115
+#: src/insets/InsetInfo.cpp:108
 #, c-format
 msgid "Information regarding %1$s '%2$s'"
 msgstr "Információ %1$s erről: '%2$s'"
 
-#: src/insets/InsetInfo.cpp:283 src/insets/InsetInfo.cpp:295
-#: src/insets/InsetInfo.cpp:301 src/insets/InsetInfo.cpp:308
+#: src/insets/InsetInfo.cpp:300 src/insets/InsetInfo.cpp:312
+#: src/insets/InsetInfo.cpp:318 src/insets/InsetInfo.cpp:325
 msgid "undefined"
 msgstr "definiálatlan"
 
-#: src/insets/InsetInfo.cpp:322 src/insets/InsetInfo.cpp:331
+#: src/insets/InsetInfo.cpp:339 src/insets/InsetInfo.cpp:348
 msgid "yes"
 msgstr "igen"
 
-#: src/insets/InsetInfo.cpp:322 src/insets/InsetInfo.cpp:331
+#: src/insets/InsetInfo.cpp:339 src/insets/InsetInfo.cpp:348
 msgid "no"
 msgstr "nem"
 
-#: src/insets/InsetInfo.cpp:398
+#: src/insets/InsetInfo.cpp:415
 msgid "Unknown buffer info"
 msgstr "Ismeretlen puffer információ"
 

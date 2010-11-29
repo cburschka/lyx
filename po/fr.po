@@ -247,7 +247,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-11-29 08:10+0100\n"
+"POT-Creation-Date: 2010-11-29 14:02+0100\n"
 "PO-Revision-Date: 2010-10-29 18:17+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
@@ -11370,7 +11370,7 @@ msgstr "Référence mise en forme|o"
 #: lib/ui/stdcontext.inc:165 lib/ui/stdcontext.inc:209
 #: lib/ui/stdcontext.inc:227 lib/ui/stdcontext.inc:254
 #: lib/ui/stdcontext.inc:336 lib/ui/stdcontext.inc:344
-#: lib/ui/stdcontext.inc:357 lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:470
+#: lib/ui/stdcontext.inc:357 lib/ui/stdcontext.inc:402 lib/ui/stdmenus.inc:470
 msgid "Settings...|S"
 msgstr "Paramètres...|m"
 
@@ -11782,6 +11782,11 @@ msgstr "Copier la colonne|i"
 #, fuzzy
 msgid "Settings...|g"
 msgstr "Paramètres...|m"
+
+#: lib/ui/stdcontext.inc:401
+#, fuzzy
+msgid "Copy Text|o"
+msgstr "Copier|C"
 
 #: lib/ui/stdmenus.inc:33
 msgid "Document|D"
@@ -12315,11 +12320,11 @@ msgstr "Imprimer le document"
 msgid "Check spelling"
 msgstr "Correction orthographique"
 
-#: lib/ui/stdtoolbars.inc:76 src/BufferView.cpp:1094
+#: lib/ui/stdtoolbars.inc:76 src/BufferView.cpp:1096
 msgid "Undo"
 msgstr "Annuler"
 
-#: lib/ui/stdtoolbars.inc:77 src/BufferView.cpp:1103
+#: lib/ui/stdtoolbars.inc:77 src/BufferView.cpp:1105
 msgid "Redo"
 msgstr "Refaire"
 
@@ -15517,12 +15522,12 @@ msgstr "il manque \\begin_header"
 msgid "\\begin_document is missing"
 msgstr "il manque \\begin_document"
 
-#: src/Buffer.cpp:590 src/Buffer.cpp:596 src/BufferView.cpp:1213
-#: src/BufferView.cpp:1219
+#: src/Buffer.cpp:590 src/Buffer.cpp:596 src/BufferView.cpp:1215
+#: src/BufferView.cpp:1221
 msgid "Changes not shown in LaTeX output"
 msgstr "Modifications non affichées dans la sortie"
 
-#: src/Buffer.cpp:591 src/BufferView.cpp:1214
+#: src/Buffer.cpp:591 src/BufferView.cpp:1216
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -15534,7 +15539,7 @@ msgstr ""
 "Installer ces paquetages ou redéfinir \\lyxadded et \\lyxdeleted dans le "
 "préambule LaTeX."
 
-#: src/Buffer.cpp:597 src/BufferView.cpp:1220
+#: src/Buffer.cpp:597 src/BufferView.cpp:1222
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -16017,89 +16022,89 @@ msgstr "Pas d'autre insert"
 msgid "Save bookmark"
 msgstr "Enregistrer le signet"
 
-#: src/BufferView.cpp:1097
+#: src/BufferView.cpp:1099
 msgid "No further undo information"
 msgstr "Pas d'information pour Annuler"
 
-#: src/BufferView.cpp:1106
+#: src/BufferView.cpp:1108
 msgid "No further redo information"
 msgstr "Pas d'information pour Refaire"
 
-#: src/BufferView.cpp:1281 src/lyxfind.cpp:303 src/lyxfind.cpp:321
+#: src/BufferView.cpp:1283 src/lyxfind.cpp:303 src/lyxfind.cpp:321
 msgid "String not found!"
 msgstr "Chaîne de caractères introuvable !"
 
-#: src/BufferView.cpp:1306
+#: src/BufferView.cpp:1308
 msgid "Mark off"
 msgstr "Marque désactivée"
 
-#: src/BufferView.cpp:1313
+#: src/BufferView.cpp:1315
 msgid "Mark on"
 msgstr "Marque activée"
 
-#: src/BufferView.cpp:1320
+#: src/BufferView.cpp:1322
 msgid "Mark removed"
 msgstr "Marque enlevée"
 
-#: src/BufferView.cpp:1323
+#: src/BufferView.cpp:1325
 msgid "Mark set"
 msgstr "Marque posée"
 
-#: src/BufferView.cpp:1374
+#: src/BufferView.cpp:1376
 msgid "Statistics for the selection:"
 msgstr "Statistiques pour la sélection :"
 
-#: src/BufferView.cpp:1376
+#: src/BufferView.cpp:1378
 msgid "Statistics for the document:"
 msgstr "Statistiques pour le document :"
 
-#: src/BufferView.cpp:1379
+#: src/BufferView.cpp:1381
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d mots"
 
-#: src/BufferView.cpp:1381
+#: src/BufferView.cpp:1383
 msgid "One word"
 msgstr "Un mot"
 
-#: src/BufferView.cpp:1384
+#: src/BufferView.cpp:1386
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d caractères (espaces inclus)"
 
-#: src/BufferView.cpp:1387
+#: src/BufferView.cpp:1389
 msgid "One character (including blanks)"
 msgstr "Un caractère (espaces inclus)"
 
-#: src/BufferView.cpp:1390
+#: src/BufferView.cpp:1392
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d caractères (espaces exclus)"
 
-#: src/BufferView.cpp:1393
+#: src/BufferView.cpp:1395
 msgid "One character (excluding blanks)"
 msgstr "Un caractère (espaces exclus)"
 
-#: src/BufferView.cpp:1395
+#: src/BufferView.cpp:1397
 msgid "Statistics"
 msgstr "Statistiques"
 
-#: src/BufferView.cpp:2192
+#: src/BufferView.cpp:2195
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Insertion du document %1$s..."
 
-#: src/BufferView.cpp:2203
+#: src/BufferView.cpp:2206
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Document %1$s inséré."
 
-#: src/BufferView.cpp:2205
+#: src/BufferView.cpp:2208
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Impossible d'insérer le document %1$s"
 
-#: src/BufferView.cpp:2467
+#: src/BufferView.cpp:2470
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -16110,11 +16115,11 @@ msgstr ""
 "%1$s\n"
 "à cause de l'erreur : %2$s"
 
-#: src/BufferView.cpp:2469
+#: src/BufferView.cpp:2472
 msgid "Could not read file"
 msgstr "Lecture du fichier impossible"
 
-#: src/BufferView.cpp:2476
+#: src/BufferView.cpp:2479
 #, c-format
 msgid ""
 "%1$s\n"
@@ -16123,15 +16128,15 @@ msgstr ""
 "%1$s\n"
 "est illisible."
 
-#: src/BufferView.cpp:2477 src/output.cpp:39
+#: src/BufferView.cpp:2480 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Ouverture du fichier impossible"
 
-#: src/BufferView.cpp:2484
+#: src/BufferView.cpp:2487
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lecture d'un fichier non encodé en UTF-8"
 
-#: src/BufferView.cpp:2485
+#: src/BufferView.cpp:2488
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -21048,7 +21053,7 @@ msgstr "Paramètres de commande d'insert : "
 msgid "Unknown parameter name: "
 msgstr "Nom de paramètre inconnu : "
 
-#: src/insets/InsetCommandParams.cpp:298 src/insets/InsetInfo.cpp:139
+#: src/insets/InsetCommandParams.cpp:298 src/insets/InsetInfo.cpp:138
 msgid "Missing \\end_inset at this point."
 msgstr "Il manque un \\end_inset à cet endroit."
 
@@ -21190,25 +21195,25 @@ msgstr ""
 "Merci de préciser la position de tri de cette entrée manuellement,\n"
 "comme expliqué dans le Guide d'utilisation."
 
-#: src/insets/InsetInfo.cpp:115
+#: src/insets/InsetInfo.cpp:108
 #, c-format
 msgid "Information regarding %1$s '%2$s'"
 msgstr "Information concernant %1$s '%2$s'"
 
-#: src/insets/InsetInfo.cpp:283 src/insets/InsetInfo.cpp:295
-#: src/insets/InsetInfo.cpp:301 src/insets/InsetInfo.cpp:308
+#: src/insets/InsetInfo.cpp:300 src/insets/InsetInfo.cpp:312
+#: src/insets/InsetInfo.cpp:318 src/insets/InsetInfo.cpp:325
 msgid "undefined"
 msgstr "indéfini"
 
-#: src/insets/InsetInfo.cpp:322 src/insets/InsetInfo.cpp:331
+#: src/insets/InsetInfo.cpp:339 src/insets/InsetInfo.cpp:348
 msgid "yes"
 msgstr "oui"
 
-#: src/insets/InsetInfo.cpp:322 src/insets/InsetInfo.cpp:331
+#: src/insets/InsetInfo.cpp:339 src/insets/InsetInfo.cpp:348
 msgid "no"
 msgstr "non"
 
-#: src/insets/InsetInfo.cpp:398
+#: src/insets/InsetInfo.cpp:415
 msgid "Unknown buffer info"
 msgstr "Information sur le tampon inconnue"
 

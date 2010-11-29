@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-11-29 08:10+0100\n"
+"POT-Creation-Date: 2010-11-29 14:02+0100\n"
 "PO-Revision-Date: 2010-07-07 02:31+0100\n"
 "Last-Translator: Οδυσσέας Δαγκλής <o2d@freemail.gr>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -11094,7 +11094,7 @@ msgstr "Μορφοποιημένη Αναφορά|Μ"
 #: lib/ui/stdcontext.inc:165 lib/ui/stdcontext.inc:209
 #: lib/ui/stdcontext.inc:227 lib/ui/stdcontext.inc:254
 #: lib/ui/stdcontext.inc:336 lib/ui/stdcontext.inc:344
-#: lib/ui/stdcontext.inc:357 lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:470
+#: lib/ui/stdcontext.inc:357 lib/ui/stdcontext.inc:402 lib/ui/stdmenus.inc:470
 msgid "Settings...|S"
 msgstr "Ρυθμίσεις...|Ρ"
 
@@ -11503,6 +11503,11 @@ msgstr "Αντιγραφή Στήλης|λ"
 #, fuzzy
 msgid "Settings...|g"
 msgstr "Ρυθμίσεις...|Ρ"
+
+#: lib/ui/stdcontext.inc:401
+#, fuzzy
+msgid "Copy Text|o"
+msgstr "Αντιγραφή|ν"
 
 #: lib/ui/stdmenus.inc:33
 msgid "Document|D"
@@ -12035,11 +12040,11 @@ msgstr "Εκτύπωση εγγράφου"
 msgid "Check spelling"
 msgstr "Έλεγχος ορθογραφίας"
 
-#: lib/ui/stdtoolbars.inc:76 src/BufferView.cpp:1094
+#: lib/ui/stdtoolbars.inc:76 src/BufferView.cpp:1096
 msgid "Undo"
 msgstr "Αναίρεση"
 
-#: lib/ui/stdtoolbars.inc:77 src/BufferView.cpp:1103
+#: lib/ui/stdtoolbars.inc:77 src/BufferView.cpp:1105
 msgid "Redo"
 msgstr "Επανάληψη"
 
@@ -15212,12 +15217,12 @@ msgstr "\\λείπει το begin_header"
 msgid "\\begin_document is missing"
 msgstr "\\λείπει το begin_document"
 
-#: src/Buffer.cpp:590 src/Buffer.cpp:596 src/BufferView.cpp:1213
-#: src/BufferView.cpp:1219
+#: src/Buffer.cpp:590 src/Buffer.cpp:596 src/BufferView.cpp:1215
+#: src/BufferView.cpp:1221
 msgid "Changes not shown in LaTeX output"
 msgstr "Οι αλλαγές δεν εμφανίζονται στην έξοδο LaTeX"
 
-#: src/Buffer.cpp:591 src/BufferView.cpp:1214
+#: src/Buffer.cpp:591 src/BufferView.cpp:1216
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -15229,7 +15234,7 @@ msgstr ""
 "Εγκαταστείστε αυτά τα πακέτα ή ορίστε ξανά τα \\lyxadded και \\lyxdeleted "
 "στο προοίμιο LaTeX."
 
-#: src/Buffer.cpp:597 src/BufferView.cpp:1220
+#: src/Buffer.cpp:597 src/BufferView.cpp:1222
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -15703,89 +15708,89 @@ msgstr "Όχι άλλα ενθέματα"
 msgid "Save bookmark"
 msgstr "Αποθήκευση στηλοθέτη"
 
-#: src/BufferView.cpp:1097
+#: src/BufferView.cpp:1099
 msgid "No further undo information"
 msgstr "Όχι άλλες πληροφορίες αναίρεσης"
 
-#: src/BufferView.cpp:1106
+#: src/BufferView.cpp:1108
 msgid "No further redo information"
 msgstr "Όχι άλλες πληροφορίες επανάληψης"
 
-#: src/BufferView.cpp:1281 src/lyxfind.cpp:303 src/lyxfind.cpp:321
+#: src/BufferView.cpp:1283 src/lyxfind.cpp:303 src/lyxfind.cpp:321
 msgid "String not found!"
 msgstr "Η συμβολοσειρά δε βρέθηκε!"
 
-#: src/BufferView.cpp:1306
+#: src/BufferView.cpp:1308
 msgid "Mark off"
 msgstr "Σημάδι ενεργοποιημένο"
 
-#: src/BufferView.cpp:1313
+#: src/BufferView.cpp:1315
 msgid "Mark on"
 msgstr "Σημάδι απενεργοποιημένο"
 
-#: src/BufferView.cpp:1320
+#: src/BufferView.cpp:1322
 msgid "Mark removed"
 msgstr "Το σημάδι αφαιρέθηκε"
 
-#: src/BufferView.cpp:1323
+#: src/BufferView.cpp:1325
 msgid "Mark set"
 msgstr "Το σημάδι τοποθετήθηκε"
 
-#: src/BufferView.cpp:1374
+#: src/BufferView.cpp:1376
 msgid "Statistics for the selection:"
 msgstr "Στατιστικά για την επιλογή:"
 
-#: src/BufferView.cpp:1376
+#: src/BufferView.cpp:1378
 msgid "Statistics for the document:"
 msgstr "Στατιστικά για το έγγραφο:"
 
-#: src/BufferView.cpp:1379
+#: src/BufferView.cpp:1381
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d λέξεις"
 
-#: src/BufferView.cpp:1381
+#: src/BufferView.cpp:1383
 msgid "One word"
 msgstr "Μία λέξη"
 
-#: src/BufferView.cpp:1384
+#: src/BufferView.cpp:1386
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d χαρακτήρες (μαζί με κενά)"
 
-#: src/BufferView.cpp:1387
+#: src/BufferView.cpp:1389
 msgid "One character (including blanks)"
 msgstr "Ένας χαρακτήρας (μαζί με κενά)"
 
-#: src/BufferView.cpp:1390
+#: src/BufferView.cpp:1392
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d χαρακτήρες (χωρίς κενά)"
 
-#: src/BufferView.cpp:1393
+#: src/BufferView.cpp:1395
 msgid "One character (excluding blanks)"
 msgstr "Ένας χαρακτήρας (χωρίς κενά)"
 
-#: src/BufferView.cpp:1395
+#: src/BufferView.cpp:1397
 msgid "Statistics"
 msgstr "Στατιστικά"
 
-#: src/BufferView.cpp:2192
+#: src/BufferView.cpp:2195
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Εισαγωγή εγγράφου %1$s..."
 
-#: src/BufferView.cpp:2203
+#: src/BufferView.cpp:2206
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Το έγγραφο %1$s εισήχθη."
 
-#: src/BufferView.cpp:2205
+#: src/BufferView.cpp:2208
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Δεν ήταν δυνατή η εισαγωγή του εγγράφου %1$s"
 
-#: src/BufferView.cpp:2467
+#: src/BufferView.cpp:2470
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15796,11 +15801,11 @@ msgstr ""
 "%1$s\n"
 "λόγω του σφάλματος: %2$s"
 
-#: src/BufferView.cpp:2469
+#: src/BufferView.cpp:2472
 msgid "Could not read file"
 msgstr "Δεν ήταν δυνατή η ανάγνωση του αρχείου"
 
-#: src/BufferView.cpp:2476
+#: src/BufferView.cpp:2479
 #, c-format
 msgid ""
 "%1$s\n"
@@ -15809,15 +15814,15 @@ msgstr ""
 "Το %1$s\n"
 "δεν είναι αναγνώσιμο."
 
-#: src/BufferView.cpp:2477 src/output.cpp:39
+#: src/BufferView.cpp:2480 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Δεν ήταν δυνατό το άνοιγμα του αρχείου"
 
-#: src/BufferView.cpp:2484
+#: src/BufferView.cpp:2487
 msgid "Reading not UTF-8 encoded file"
 msgstr "Ανάγνωση μη-UTF-8 κωδικοποιημένου αρχείου"
 
-#: src/BufferView.cpp:2485
+#: src/BufferView.cpp:2488
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -20740,7 +20745,7 @@ msgstr ""
 msgid "Unknown parameter name: "
 msgstr "Άγνωστο όνομα παραμέτρου:"
 
-#: src/insets/InsetCommandParams.cpp:298 src/insets/InsetInfo.cpp:139
+#: src/insets/InsetCommandParams.cpp:298 src/insets/InsetInfo.cpp:138
 msgid "Missing \\end_inset at this point."
 msgstr "Λείπει \\end_inset σε αυτό το σημείο."
 
@@ -20876,25 +20881,25 @@ msgstr ""
 "Ορίστε χειροκίνητα τη θέση αυτής της καταχώρησης, όπως\n"
 "περιγράφεται στον Οδηγό Χρήστη."
 
-#: src/insets/InsetInfo.cpp:115
+#: src/insets/InsetInfo.cpp:108
 #, c-format
 msgid "Information regarding %1$s '%2$s'"
 msgstr "Πληροφορία σχετικά με %1$s '%2$s'"
 
-#: src/insets/InsetInfo.cpp:283 src/insets/InsetInfo.cpp:295
-#: src/insets/InsetInfo.cpp:301 src/insets/InsetInfo.cpp:308
+#: src/insets/InsetInfo.cpp:300 src/insets/InsetInfo.cpp:312
+#: src/insets/InsetInfo.cpp:318 src/insets/InsetInfo.cpp:325
 msgid "undefined"
 msgstr "μη ορισμένο"
 
-#: src/insets/InsetInfo.cpp:322 src/insets/InsetInfo.cpp:331
+#: src/insets/InsetInfo.cpp:339 src/insets/InsetInfo.cpp:348
 msgid "yes"
 msgstr "ναι"
 
-#: src/insets/InsetInfo.cpp:322 src/insets/InsetInfo.cpp:331
+#: src/insets/InsetInfo.cpp:339 src/insets/InsetInfo.cpp:348
 msgid "no"
 msgstr "όχι"
 
-#: src/insets/InsetInfo.cpp:398
+#: src/insets/InsetInfo.cpp:415
 msgid "Unknown buffer info"
 msgstr "Άγνωστη πληροφορία buffer"
 
