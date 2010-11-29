@@ -144,6 +144,7 @@ void InsetSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY:
+		cur.recordUndo();
 		string2params(to_utf8(cmd.argument()), params_);
 		break;
 

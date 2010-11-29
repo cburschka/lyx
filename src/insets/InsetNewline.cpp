@@ -13,6 +13,7 @@
 
 #include "InsetNewline.h"
 
+#include "Cursor.h"
 #include "Dimension.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -94,6 +95,7 @@ void InsetNewline::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetNewlineParams params;
+		cur.recordUndo();
 		string2params(to_utf8(cmd.argument()), params);
 		params_.kind = params.kind;
 		break;

@@ -207,6 +207,7 @@ void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		if (cmd.getArg(0) == "changetype") {
+			cur.recordUndoInset(ATOMIC_UNDO, this);
 			params_.index = from_utf8(cmd.getArg(1));
 			break;
 		}
@@ -478,6 +479,7 @@ void InsetPrintIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 				cmd = subst(cmd, "printindex", "printsubindex");
 			else
 				cmd = subst(cmd, "printsubindex", "printindex");
+			cur.recordUndo();
 			setCmdName(cmd);
 			break;
 		} else if (cmd.argument() == from_ascii("check-printindex*")) {
@@ -485,6 +487,7 @@ void InsetPrintIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 			if (suffixIs(cmd, '*'))
 				break;
 			cmd += '*';
+			cur.recordUndo();
 			setParam("type", docstring());
 			setCmdName(cmd);
 			break;

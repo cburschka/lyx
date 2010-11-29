@@ -13,6 +13,7 @@
 
 #include "InsetNewpage.h"
 
+#include "Cursor.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "Lexer.h"
@@ -141,6 +142,7 @@ void InsetNewpage::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetNewpageParams params;
+		cur.recordUndo();
 		string2params(to_utf8(cmd.argument()), params);
 		params_.kind = params.kind;
 		break;

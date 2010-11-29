@@ -503,11 +503,18 @@ void Undo::recordUndo(DocIterator const & cur, UndoKind kind)
 }
 
 
-void Undo::recordUndoInset(DocIterator const & cur, UndoKind kind)
+void Undo::recordUndoInset(DocIterator const & cur, UndoKind kind,
+			   Inset const * inset)
 {
-	DocIterator c = cur;
-	c.pop_back();
-	d->doRecordUndo(kind, c, c.pit(), c.pit(), cur, false, d->undostack_);
+	if (!inset || inset == &cur.inset()) {
+		DocIterator c = cur;
+		c.pop_back();
+		d->doRecordUndo(kind, c, c.pit(), c.pit(),
+				cur, false, d->undostack_);
+	} else if (inset == cur.nextInset())
+		recordUndo(cur, kind);
+	else
+		LYXERR0("Inset not found, no undo stack added.");
 }
 
 

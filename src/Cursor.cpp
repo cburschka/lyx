@@ -336,7 +336,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	disp_ = DispatchResult();
 
 	buffer()->undo().beginUndoGroup();
-	
+
 	// Is this a function that acts on inset at point?
 	if (lyxaction.funcHasFlag(cmd.action(), LyXAction::AtPoint)
 	    && nextInset()) {
@@ -2358,9 +2358,9 @@ void Cursor::recordUndo(UndoKind kind) const
 }
 
 
-void Cursor::recordUndoInset(UndoKind kind) const
+void Cursor::recordUndoInset(UndoKind kind, Inset const * inset) const
 {
-	buffer()->undo().recordUndoInset(*this, kind);
+	buffer()->undo().recordUndoInset(*this, kind, inset);
 }
 
 

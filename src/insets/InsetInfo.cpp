@@ -208,19 +208,19 @@ bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 	switch (cmd.action()) {
 	case LFUN_INSET_SETTINGS:
 		return InsetCollapsable::getStatus(cur, cmd, flag);
-		
+
 	case LFUN_INSET_DIALOG_UPDATE:
 	case LFUN_INSET_COPY_AS:
 		flag.setEnabled(true);
 		return true;
-		
+
 	case LFUN_INSET_MODIFY:
 		if (validateModifyArgument(cmd.argument())) {
 			flag.setEnabled(true);
 			return true;
 		}
 		//fall through
-		
+
 	default:
 		return false;
 	}
@@ -231,6 +231,7 @@ void InsetInfo::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY:
+		cur.recordUndo();
 		setInfo(to_utf8(cmd.argument()));
 		break;
 

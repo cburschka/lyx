@@ -243,6 +243,7 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// child_buffer_ = 0;
 		InsetCommandParams p(INCLUDE_CODE);
 		if (cmd.getArg(0) == "changetype") {
+			cur.recordUndo();
 			InsetCommand::doDispatch(cur, cmd);
 			p = params();
 		} else

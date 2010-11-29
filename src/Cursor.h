@@ -280,7 +280,8 @@ public:
 	void recordUndo(UndoKind kind = ATOMIC_UNDO) const;
 
 	/// Convenience: prepare undo for the inset containing the cursor
-	void recordUndoInset(UndoKind kind = ATOMIC_UNDO) const;
+	void recordUndoInset(UndoKind kind = ATOMIC_UNDO,
+			     Inset const * inset = 0) const;
 
 	/// Convenience: prepare undo for the whole buffer
 	void recordUndoFullDocument() const;

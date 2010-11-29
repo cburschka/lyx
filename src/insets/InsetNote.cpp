@@ -174,6 +174,7 @@ void InsetNote::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY:
+		cur.recordUndoInset(ATOMIC_UNDO, this);
 		string2params(to_utf8(cmd.argument()), params_);
 		setButtonLabel();
 		// what we really want here is a TOC update, but that means

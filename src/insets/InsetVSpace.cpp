@@ -58,6 +58,7 @@ void InsetVSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY: {
+		cur.recordUndo();
 		InsetVSpace::string2params(to_utf8(cmd.argument()), space_);
 		break;
 	}

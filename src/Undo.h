@@ -24,6 +24,7 @@ namespace lyx {
 class Buffer;
 class BufferParams;
 class DocIterator;
+class Inset;
 class MathData;
 class ParagraphList;
 
@@ -101,8 +102,9 @@ public:
 
 	/// Convenience: record undo information for the inset
 	/// containing the cursor.
-	void recordUndoInset(DocIterator const & cur, 
-			     UndoKind kind = ATOMIC_UNDO);
+	void recordUndoInset(DocIterator const & cur,
+			     UndoKind kind = ATOMIC_UNDO,
+			     Inset const * inset = 0);
 
 	/// Convenience: prepare undo for the whole buffer
 	void recordUndoFullDocument(DocIterator const & cur);

@@ -300,6 +300,7 @@ void InsetMathSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (cmd.getArg(0) == "mathspace") {
 			MathData ar;
 			if (createInsetMath_fromDialogStr(cmd.argument(), ar)) {
+				cur.recordUndo();
 				*this = *ar[0].nucleus()->asSpaceInset();
 				break;
 			}

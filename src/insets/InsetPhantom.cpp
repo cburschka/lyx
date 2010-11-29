@@ -259,6 +259,7 @@ void InsetPhantom::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY:
+		cur.recordUndoInset(ATOMIC_UNDO, this);
 		string2params(to_utf8(cmd.argument()), params_);
 		break;
 
