@@ -134,7 +134,11 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 			if (!our_branch)
 				break;
 		}
-		our_branch->setSelected(cmd.action() == LFUN_BRANCH_ACTIVATE);
+		bool const activate = (cmd.action() == LFUN_BRANCH_ACTIVATE);
+		if (our_branch->isSelected() != activate) {
+			our_branch->setSelected(activate);
+			cur.forceBufferUpdate();
+		}
 		break;
 	}
 	case LFUN_INSET_TOGGLE:
