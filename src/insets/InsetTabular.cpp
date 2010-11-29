@@ -3327,7 +3327,7 @@ void InsetTabular::write(ostream & os) const
 }
 
 
-docstring InsetTabular::contextMenuName() const
+docstring InsetTabular::contextMenu(BufferView const &, int, int) const
 {
 	// FIXME: depending on the selection state,
 	// we could offer a different menu.

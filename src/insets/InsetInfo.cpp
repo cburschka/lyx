@@ -452,7 +452,7 @@ void InsetInfo::updateInfo()
 }
 
 
-docstring InsetInfo::contextMenuName() const
+docstring InsetInfo::contextMenu(BufferView const &, int, int) const
 {
 	//FIXME: We override the implementation of InsetCollapsable,
 	//because this inset is not a collapsable inset.

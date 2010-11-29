@@ -813,7 +813,7 @@ void InsetText::completionPosAndDim(Cursor const & cur, int & x, int & y,
 }
 
 
-docstring InsetText::contextMenuName() const
+docstring InsetText::contextMenu(BufferView const &, int, int) const
 {
 	docstring context_menu = contextMenuName();
 	if (context_menu != InsetText::contextMenuName())
