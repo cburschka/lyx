@@ -364,16 +364,16 @@ Menuset
 #
 
 	Menu "context-tabular"
-		Item "Multicolumn|M" "tabular-feature multicolumn"
+		Item "Multicolumn|u" "tabular-feature multicolumn"
 		Separator
-		Item "Top Line|T" "tabular-feature toggle-line-top"
-		Item "Bottom Line|B" "tabular-feature toggle-line-bottom"
+		Item "Top Line|n" "tabular-feature toggle-line-top"
+		Item "Bottom Line|i" "tabular-feature toggle-line-bottom"
 		Item "Left Line|L" "tabular-feature toggle-line-left"
 		Item "Right Line|R" "tabular-feature toggle-line-right"
 		Separator
-		Item "Left|L" "command-alternatives tabular-feature m-align-left;tabular-feature align-left"
+		Item "Left|f" "command-alternatives tabular-feature m-align-left;tabular-feature align-left"
 		Item "Center|C" "command-alternatives tabular-feature m-align-center;tabular-feature align-center"
-		Item "Right|R" "command-alternatives tabular-feature m-align-right;tabular-feature align-right"
+		Item "Right|h" "command-alternatives tabular-feature m-align-right;tabular-feature align-right"
 		Separator
 		Item "Top|T" "tabular-feature valign-top"
 		Item "Middle|M" "tabular-feature valign-middle"
@@ -384,12 +384,12 @@ Menuset
 		Item "Copy Row|o" "tabular-feature copy-row"
 		# Item "Swap Rows|S" "tabular-feature swap-row" # currently broken
 		Separator
-		Item "Add Column|u" "tabular-feature append-column"
+		Item "Add Column|p" "tabular-feature append-column"
 		Item "Delete Column|e" "tabular-feature delete-column"
-		Item "Copy Column|p" "tabular-feature copy-column"
+		Item "Copy Column|y" "tabular-feature copy-column"
 		# Item "Swap Columns|w" "tabular-feature swap-column" # currently broken
 		Separator
-		Item "Settings...|S" "inset-settings tabular"
+		Item "Settings...|g" "inset-settings tabular"
 	End
 
 
