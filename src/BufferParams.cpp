@@ -1188,7 +1188,8 @@ void BufferParams::validate(LaTeXFeatures & features) const
 			features.require("color");
 	}
 
-	if (features.runparams().flavor == OutputParams::XETEX)
+	if (features.runparams().flavor == OutputParams::XETEX
+	    && useNonTeXFonts)
 		features.require("polyglossia");
 
 	if (language->lang() == "vietnamese")
@@ -1339,11 +1340,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	texrow.newline();
 	// end of \documentclass defs
 
-	// Fontspec must also be loaded if XeTeX is used with tex fonts
-	// (in order to prevent later loading which overrides the tex
-	// fonts)
-	if (features.runparams().flavor == OutputParams::XETEX
-	    || useNonTeXFonts) {
+	if (useNonTeXFonts) {
 		os << "\\usepackage{fontspec}\n";
 		texrow.newline();
 	}
