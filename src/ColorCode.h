@@ -189,6 +189,8 @@ enum ColorCode {
 	Color_paragraphmarker,
 	/// Preview frame color
 	Color_previewframe,
+	/// The color of the misspelled marking
+	Color_misspelled,
 
 	// Logical attributes
 
