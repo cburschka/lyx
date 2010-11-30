@@ -1652,8 +1652,10 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			old.beginUndoGroup();
 			old.fixIfBroken();
 			bool badcursor = notifyCursorLeavesOrEnters(old, bv->cursor());
-			if (badcursor)
+			if (badcursor) {
 				bv->cursor().fixIfBroken();
+				bv->fixInlineCompletionPos();
+			}
 			old.endUndoGroup();
 		}
 	

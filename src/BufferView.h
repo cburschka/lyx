@@ -190,6 +190,8 @@ public:
 	size_t const & inlineCompletionUniqueChars() const;
 	/// return the position in the buffer of the inline completion postfix.
 	DocIterator const & inlineCompletionPos() const;
+	/// make sure inline completion position is OK
+	bool fixInlineCompletionPos();
 	/// set the inline completion postfix and its position in the buffer.
 	/// Updates the updateFlags in \c cur.
 	void setInlineCompletion(Cursor & cur, DocIterator const & pos,
