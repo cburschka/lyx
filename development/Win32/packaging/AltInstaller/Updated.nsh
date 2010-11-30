@@ -28,8 +28,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  #SetOutPath "$INSTDIR\Resources\templates"
  #File "${PRODUCT_SOURCEDIR}\Resources\templates\agutex.lyx"
- #SetOutPath "$INSTDIR\Resources\ui"
- #File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
+ SetOutPath "$INSTDIR\Resources\ui"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdcontext.inc"
 
 FunctionEnd
 
