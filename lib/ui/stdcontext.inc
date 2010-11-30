@@ -359,11 +359,6 @@ Menuset
 #
 
 	Menu "context-listings"
-		Item "Cut" "cut"
-		Item "Copy" "copy"
-		Item "Paste" "paste"
-		Submenu "Paste Recent|e" "edit_pasterecent"
-		Separator
 		OptItem "Open Inset|O" "inset-toggle open"
 		OptItem "Close Inset|C" "inset-toggle close"
 		Separator
