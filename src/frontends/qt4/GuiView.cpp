@@ -1177,6 +1177,15 @@ void GuiView::setBusy(bool busy)
 }
 
 
+GuiWorkArea * GuiView::workArea(int index)
+{
+	if (TabWorkArea * twa = d.currentTabWorkArea())
+		if (index < twa->count())
+			return dynamic_cast<GuiWorkArea *>(twa->widget(index));
+	return 0;
+}
+
+
 GuiWorkArea * GuiView::workArea(Buffer & buffer)
 {
 	if (currentWorkArea()
@@ -2581,24 +2590,24 @@ bool GuiView::inMultiViews(GuiWorkArea * wa)
 
 void GuiView::gotoNextOrPreviousBuffer(NextOrPrevious np)
 {
-	Buffer * const curbuf = documentBufferView()
-		? &documentBufferView()->buffer() : 0;
-	Buffer * nextbuf = curbuf;
-	while (true) {
-		if (np == NEXTBUFFER)
-			nextbuf = theBufferList().next(nextbuf);
-		else
-			nextbuf = theBufferList().previous(nextbuf);
-		if (nextbuf == curbuf)
-			break;
-		if (nextbuf == 0) {
-			nextbuf = curbuf;
-			break;
+	if (!documentBufferView())
+		return;
+	
+	if (TabWorkArea * twa = d.currentTabWorkArea()) {
+		Buffer * const curbuf = &documentBufferView()->buffer();
+		int nwa = twa->count();
+		for (int i = 0; i < nwa; ++i) {
+			if (&workArea(i)->bufferView().buffer() == curbuf) {
+				int next_index;
+				if (np == NEXTBUFFER)
+					next_index = (i == nwa - 1 ? 0 : i + 1);
+				else
+					next_index = (i == 0 ? nwa - 1 : i - 1);
+				setBuffer(&workArea(next_index)->bufferView().buffer());
+				break;
+			}
 		}
-		if (workArea(*nextbuf))
-			break;
 	}
-	setBuffer(nextbuf);
 }
 
 

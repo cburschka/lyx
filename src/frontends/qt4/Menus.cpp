@@ -21,6 +21,7 @@
 #include "Action.h"
 #include "GuiApplication.h"
 #include "GuiView.h"
+#include "GuiWorkArea.h"
 #include "qt_helpers.h"
 
 #include "BiblioInfo.h"
@@ -894,36 +895,49 @@ void MenuDefinition::expandDocuments()
 	item.setSubmenu(MenuDefinition(qt_("Hidden|H")));
 
 	Buffer * first = theBufferList().first();
-	if (first) {
-		Buffer * b = first;
-		int vis = 1;
-		int invis = 1;
-		
-		// We cannot use a for loop as the buffer list cycles.
-		do {
+	if (!first) {
+		add(MenuItem(MenuItem::Info, qt_("<No Documents Open>")));
+		return;
+	}
+
+	int i = 0;
+	while (true) {
+		GuiWorkArea * wa = guiApp->currentView()->workArea(i);
+		if (!wa)
+			break;
+		Buffer const & b = wa->bufferView().buffer();
+		QString label = toqstr(b.fileName().displayName(20));
+		if (!b.isClean())
+			label += "*";
+		if (i < 10)
+			label = QString::number(i) + ". " + label + '|' + QString::number(i);
+		add(MenuItem(MenuItem::Command, label,
+			FuncRequest(LFUN_BUFFER_SWITCH, b.absFileName())));
+		++i;
+	}
+
+
+	i = 0;
+	Buffer * b = first;
+	// We cannot use a for loop as the buffer list cycles.
+	do {
+		bool const shown = guiApp->currentView()
+			? guiApp->currentView()->workArea(*b) : false;
+		if (!shown) {
 			QString label = toqstr(b->fileName().displayName(20));
 			if (!b->isClean())
 				label += "*";
-			bool const shown = guiApp->currentView()
-					   ? guiApp->currentView()->workArea(*b) : false;
-			int ii = shown ? vis : invis;
-			if (ii < 10)
-				label = QString::number(ii) + ". " + label + '|' + QString::number(ii);
-			if (shown) {
-				add(MenuItem(MenuItem::Command, label,
-					FuncRequest(LFUN_BUFFER_SWITCH, b->absFileName())));
-				++vis;
-			} else {
-				item.submenu().add(MenuItem(MenuItem::Command, label,
-					FuncRequest(LFUN_BUFFER_SWITCH, b->absFileName())));
-				++invis;
-			}
-			b = theBufferList().next(b);
-		} while (b != first); 
-		if (!item.submenu().empty())
-			add(item);
-	} else
-		add(MenuItem(MenuItem::Info, qt_("<No Documents Open>")));
+			if (i < 10)
+				label = QString::number(i) + ". " + label + '|' + QString::number(i);
+			item.submenu().add(MenuItem(MenuItem::Command, label,
+				FuncRequest(LFUN_BUFFER_SWITCH, b->absFileName())));
+			++i;
+		}
+		b = theBufferList().next(b);
+	} while (b != first); 
+	
+	if (!item.submenu().empty())
+		add(item);
 }
 
 

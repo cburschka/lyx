@@ -184,6 +184,8 @@ public:
 	/// \return the \c Workarea associated to \p  Buffer
 	/// \retval 0 if no \c WorkArea is found.
 	GuiWorkArea * workArea(Buffer & buffer);
+	/// \return the \c Workarea at index \c index
+	GuiWorkArea * workArea(int index);
 
 	/// Add a \c WorkArea 
 	/// \return the \c Workarea associated to \p  Buffer
