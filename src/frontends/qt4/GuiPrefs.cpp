@@ -2177,6 +2177,8 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 	QAbstractItemModel * language_model = guiApp->languageModel();
 	// FIXME: it would be nice if sorting was enabled/disabled via a checkbox.
 	language_model->sort(0);
+	defaultDecimalPointLE->setInputMask("X; ");
+	defaultDecimalPointLE->setMaxLength(1);
 
 	// FIXME: This is wrong, we need filter this list based on the available
 	// translation.
