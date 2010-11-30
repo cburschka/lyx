@@ -112,14 +112,17 @@ int InsetERT::docbook(odocstream & os, OutputParams const &) const
 void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action()) {
-	case LFUN_INSET_MODIFY: {
-		setStatus(cur, string2params(to_utf8(cmd.argument())));
-		break;
-	}
+	case LFUN_INSET_MODIFY:
+		if (cmd.getArg(0) == "ert") {
+			setStatus(cur, string2params(to_utf8(cmd.argument())));
+			break;
+		}
+		//fall-through
 	default:
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 	}
+
 }
 
 
