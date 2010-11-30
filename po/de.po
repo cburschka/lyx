@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-11-30 08:41+0100\n"
+"POT-Creation-Date: 2010-11-30 09:08+0100\n"
 "PO-Revision-Date: 2010-11-30 09:00+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
@@ -497,7 +497,6 @@ msgstr "Innere Box -- benötigt für feste Breite & Zeilenumbrüche"
 #: src/frontends/qt4/ui/BoxUi.ui:273 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98
 #: src/frontends/qt4/ui/MathMatrixUi.ui:247
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:70
 #: src/frontends/qt4/ui/TabularUi.ui:1034
 #: src/frontends/qt4/ui/TabularUi.ui:1053
 #: src/frontends/qt4/ui/TabularUi.ui:1101 src/frontends/qt4/GuiBox.cpp:193
@@ -583,8 +582,8 @@ msgid "Remove the selected branch"
 msgstr "Den ausgewählten Zweig entfernen"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3697
-#: src/Buffer.cpp:3710
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3722
+#: src/Buffer.cpp:3735
 msgid "&Remove"
 msgstr "&Entfernen"
 
@@ -618,7 +617,7 @@ msgstr "A&lle hinzufügen"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1030
-#: src/Buffer.cpp:2241 src/Buffer.cpp:3672 src/Buffer.cpp:3735
+#: src/Buffer.cpp:2241 src/Buffer.cpp:3697 src/Buffer.cpp:3760
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:222 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:240
 #: src/frontends/qt4/GuiDocument.cpp:1775
@@ -3471,6 +3470,10 @@ msgstr "Automatisch"
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:60
 msgid "Always Babel"
 msgstr "Immer Babel"
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:70
+msgid "None[[language package]]"
+msgstr "Keines"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:78
 msgid "Enter the command to load the language package (default: babel)"
@@ -16847,7 +16850,7 @@ msgstr ""
 "%1$s stammt von einer neueren LyX-Version, aber das lyx2lyx-Skript konnte "
 "das Dokument nicht konvertieren."
 
-#: src/Buffer.cpp:1017 src/Buffer.cpp:3682 src/Buffer.cpp:3744
+#: src/Buffer.cpp:1017 src/Buffer.cpp:3707 src/Buffer.cpp:3769
 msgid "File is read-only"
 msgstr "Datei ist schreibgeschützt"
 
@@ -17052,65 +17055,65 @@ msgstr "Datei überschreiben?"
 msgid "Error running external commands."
 msgstr "Fehler beim Ausführen externer Befehle."
 
-#: src/Buffer.cpp:3057
+#: src/Buffer.cpp:3077
 msgid "Preview source code"
 msgstr "Quellcode vorschauen"
 
-#: src/Buffer.cpp:3071
+#: src/Buffer.cpp:3093
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Quellcode für Absatz %1$d vorschauen"
 
-#: src/Buffer.cpp:3075
+#: src/Buffer.cpp:3097
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Quellcode von Absatz %1$s bis %2$s vorschauen"
 
-#: src/Buffer.cpp:3183
+#: src/Buffer.cpp:3208
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatische Speicherung von %1$s"
 
-#: src/Buffer.cpp:3237
+#: src/Buffer.cpp:3262
 msgid "Autosave failed!"
 msgstr "Die automatische Speicherung ist fehlgeschlagen!"
 
-#: src/Buffer.cpp:3298
+#: src/Buffer.cpp:3323
 msgid "Autosaving current document..."
 msgstr "Automatisches Speichern des aktuellen Dokuments..."
 
-#: src/Buffer.cpp:3414
+#: src/Buffer.cpp:3439
 msgid "Couldn't export file"
 msgstr "Die Datei konnte nicht exportiert werden"
 
-#: src/Buffer.cpp:3415
+#: src/Buffer.cpp:3440
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Keine Informationen vorhanden, um das Format %1$s zu exportieren."
 
-#: src/Buffer.cpp:3478
+#: src/Buffer.cpp:3503
 msgid "File name error"
 msgstr "Fehler im Dateinamen"
 
-#: src/Buffer.cpp:3479
+#: src/Buffer.cpp:3504
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Der Verzeichnispfad zum Dokument darf keine Leerzeichen enthalten."
 
-#: src/Buffer.cpp:3555
+#: src/Buffer.cpp:3580
 msgid "Document export cancelled."
 msgstr "Der Export des Dokuments wurde abgebrochen."
 
-#: src/Buffer.cpp:3565
+#: src/Buffer.cpp:3590
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument als %1$s in die Datei `%2$s' exportiert"
 
-#: src/Buffer.cpp:3571
+#: src/Buffer.cpp:3596
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument als %1$s exportiert"
 
-#: src/Buffer.cpp:3668
+#: src/Buffer.cpp:3693
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17121,19 +17124,19 @@ msgstr ""
 "\n"
 "Soll die Notspeicherung wiederhergestellt werden?"
 
-#: src/Buffer.cpp:3671
+#: src/Buffer.cpp:3696
 msgid "Load emergency save?"
 msgstr "Notspeicherung laden?"
 
-#: src/Buffer.cpp:3672
+#: src/Buffer.cpp:3697
 msgid "&Recover"
 msgstr "&Wiederherstellen"
 
-#: src/Buffer.cpp:3672
+#: src/Buffer.cpp:3697
 msgid "&Load Original"
 msgstr "&Original laden"
 
-#: src/Buffer.cpp:3683
+#: src/Buffer.cpp:3708
 #, c-format
 msgid ""
 "An emergency file is succesfully loaded, but the original file %1$s is "
@@ -17143,15 +17146,15 @@ msgstr ""
 "$s is schreibgeschützt.\n"
 "Bitte speichern Sie die Datei unter einem neuen Namen."
 
-#: src/Buffer.cpp:3689
+#: src/Buffer.cpp:3714
 msgid "Document was successfully recovered."
 msgstr "Dokument wurde erfolgreich wiederhergestellt."
 
-#: src/Buffer.cpp:3691
+#: src/Buffer.cpp:3716
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument wurde NICHT erfolgreich wiederhergestellt."
 
-#: src/Buffer.cpp:3692
+#: src/Buffer.cpp:3717
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17161,27 +17164,27 @@ msgstr ""
 "%1$s\n"
 "jetzt löschen?"
 
-#: src/Buffer.cpp:3696 src/Buffer.cpp:3708
+#: src/Buffer.cpp:3721 src/Buffer.cpp:3733
 msgid "Delete emergency file?"
 msgstr "Notspeicherung löschen?"
 
-#: src/Buffer.cpp:3697 src/Buffer.cpp:3710
+#: src/Buffer.cpp:3722 src/Buffer.cpp:3735
 msgid "&Keep"
 msgstr "&Behalten"
 
-#: src/Buffer.cpp:3701
+#: src/Buffer.cpp:3726
 msgid "Emergency file deleted"
 msgstr "Notspeicherung gelöscht"
 
-#: src/Buffer.cpp:3702
+#: src/Buffer.cpp:3727
 msgid "Do not forget to save your file now!"
 msgstr "Vergessen Sie nicht, ihre Datei jetzt zu speichern!"
 
-#: src/Buffer.cpp:3709
+#: src/Buffer.cpp:3734
 msgid "Remove emergency file now?"
 msgstr "Notspeicherungsdatei jetzt löschen?"
 
-#: src/Buffer.cpp:3732
+#: src/Buffer.cpp:3757
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17192,19 +17195,19 @@ msgstr ""
 "\n"
 "Stattdessen die Sicherung laden?"
 
-#: src/Buffer.cpp:3734
+#: src/Buffer.cpp:3759
 msgid "Load backup?"
 msgstr "Sicherung laden?"
 
-#: src/Buffer.cpp:3735
+#: src/Buffer.cpp:3760
 msgid "&Load backup"
 msgstr "&Sicherung laden"
 
-#: src/Buffer.cpp:3735
+#: src/Buffer.cpp:3760
 msgid "Load &original"
 msgstr "&Original laden"
 
-#: src/Buffer.cpp:3745
+#: src/Buffer.cpp:3770
 #, c-format
 msgid ""
 "A backup file is succesfully loaded,  but the original file %1$s is marked "
@@ -17214,25 +17217,25 @@ msgstr ""
 "1$s is schreibgeschützt.\n"
 "Bitte speichern Sie die Datei unter einem neuen Namen."
 
-#: src/Buffer.cpp:4049 src/insets/InsetCaption.cpp:327
+#: src/Buffer.cpp:4074 src/insets/InsetCaption.cpp:327
 msgid "Senseless!!! "
 msgstr "Sinnlos!!! "
 
-#: src/Buffer.cpp:4170
+#: src/Buffer.cpp:4195
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s neu geladen."
 
-#: src/Buffer.cpp:4172
+#: src/Buffer.cpp:4197
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Kann Dokument %1$s nicht neu laden."
 
-#: src/Buffer.cpp:4238
+#: src/Buffer.cpp:4263
 msgid "Included File Invalid"
 msgstr "Eingebundene Datei ungültig"
 
-#: src/Buffer.cpp:4239
+#: src/Buffer.cpp:4264
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17873,12 +17876,12 @@ msgstr "Rechtschreibfehler"
 msgid "ignore"
 msgstr "ignorieren"
 
-#: src/Converter.cpp:319 src/Converter.cpp:474 src/Converter.cpp:497
-#: src/Converter.cpp:540
+#: src/Converter.cpp:320 src/Converter.cpp:475 src/Converter.cpp:498
+#: src/Converter.cpp:541
 msgid "Cannot convert file"
 msgstr "Die Datei kann nicht konvertiert werden"
 
-#: src/Converter.cpp:320
+#: src/Converter.cpp:321
 #, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
@@ -17888,19 +17891,19 @@ msgstr ""
 "konvertieren.\n"
 "Definieren Sie einen Konverter in den Einstellungen."
 
-#: src/Converter.cpp:429 src/Format.cpp:339 src/Format.cpp:406
+#: src/Converter.cpp:430 src/Format.cpp:339 src/Format.cpp:406
 msgid "Executing command: "
 msgstr "Befehl wird ausgeführt: "
 
-#: src/Converter.cpp:469
+#: src/Converter.cpp:470
 msgid "Build errors"
 msgstr "Fehler bei der Erstellung"
 
-#: src/Converter.cpp:470
+#: src/Converter.cpp:471
 msgid "There were errors during the build process."
 msgstr "Während des Erstellungsprozesses sind Fehler aufgetreten."
 
-#: src/Converter.cpp:475
+#: src/Converter.cpp:476
 #, c-format
 msgid ""
 "An error occurred while running:\n"
@@ -17910,28 +17913,28 @@ msgstr ""
 "%1$s\n"
 "ist ein Fehler aufgetreten"
 
-#: src/Converter.cpp:498
+#: src/Converter.cpp:499
 #, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr ""
 "Ein temporäres Verzeichnis konnte nicht von %1$s nach %2$s verschoben werden."
 
-#: src/Converter.cpp:542
+#: src/Converter.cpp:543
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Eine temporäre Datei konnte nicht von %1$s nach %2$s kopiert werden."
 
-#: src/Converter.cpp:543
+#: src/Converter.cpp:544
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr ""
 "Eine temporäre Datei konnte nicht von %1$s nach %2$s verschoben werden."
 
-#: src/Converter.cpp:599
+#: src/Converter.cpp:600
 msgid "Running LaTeX..."
 msgstr "LaTeX wird ausgeführt..."
 
-#: src/Converter.cpp:617
+#: src/Converter.cpp:618
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -17940,15 +17943,15 @@ msgstr ""
 "LaTeX wurde nicht erfolgreich ausgeführt. Außerdem konnte LyX die LaTeX-"
 "Protokolldatei %1$s nicht finden."
 
-#: src/Converter.cpp:620
+#: src/Converter.cpp:621
 msgid "LaTeX failed"
 msgstr "LaTeX ist fehlgeschlagen"
 
-#: src/Converter.cpp:622
+#: src/Converter.cpp:623
 msgid "Output is empty"
 msgstr "Die Ausgabe ist leer"
 
-#: src/Converter.cpp:623
+#: src/Converter.cpp:624
 msgid "An empty output file was generated."
 msgstr "Eine leere Ausgabedatei wurde erzeugt."
 
