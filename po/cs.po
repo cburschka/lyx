@@ -123,12 +123,12 @@ msgstr "Generování bibliografie"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
 #: src/frontends/qt4/ui_IndicesUi.h:193
 msgid "&Processor:"
-msgstr "&Program:"
+msgstr "&Generátor:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
 #: src/frontends/qt4/ui_IndicesUi.h:195
 msgid "Select a processor"
-msgstr "Vybrat program"
+msgstr "Vybrat generátor"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:733
@@ -1907,7 +1907,7 @@ msgstr "Zvolit rejstøík ve kterém má být tato polo¾ka vypsána."
 #: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
 msgid ""
 "Here you can define an alternative index processor and specify its options."
-msgstr "Zde lze nastavit alternativní procesor rejstøíku a urèit jeho volby."
+msgstr "Zde lze nastavit alternativní generátor rejstøíku a urèit jeho volby."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
@@ -1917,7 +1917,7 @@ msgstr "Generování rejstøíku"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
 msgid "Define program options of the selected processor."
-msgstr "Definovat volby zvoleného procesoru."
+msgstr "Definovat volby zvoleného generátoru."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
@@ -3300,11 +3300,11 @@ msgstr "&Druhá:"
 msgid ""
 "Mac OS X specific setting for use with emacs bindings. Takes effect next "
 "time LyX is launched."
-msgstr ""
+msgstr "Nastavení specifické pro Mac OS X zejména v emacs módu klávesových zkratek. LyX musí být restartován pro tuto volbu."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:123
 msgid "Do not swap Apple and Control keys"
-msgstr ""
+msgstr "Neprohazovat klávesy Apple a Control"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:136
 msgid "Mouse"
@@ -3322,26 +3322,23 @@ msgstr "1.0 je standardní rychlost. Vy¹¹í hodnoty zrychlí, ni¾¹í zpomalí."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:202
 msgid "Scroll wheel zoom"
-msgstr ""
+msgstr "Lupa pomocí koleèka my¹i"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:235
-#, fuzzy
 msgid "Enable"
-msgstr "&Zapnuto"
+msgstr "Zapnuto"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:249
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:254
-#, fuzzy
 msgid "Shift"
-msgstr "Shift-"
+msgstr "Shift"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:259
-#, fuzzy
 msgid "Alt"
-msgstr "Alert"
+msgstr "Alt"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:19
 msgid "User &interface language:"
@@ -3357,17 +3354,15 @@ msgstr "Jazykový &balíèek:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:51
 msgid "Select which language package LyX should use"
-msgstr ""
+msgstr "Vybrat jazykový balíèek, který má LyX pou¾ívat"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:55
-#, fuzzy
 msgid "Automatic"
-msgstr "Automatická nápovìda"
+msgstr "Automaticky"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:60
-#, fuzzy
 msgid "Always Babel"
-msgstr "V¾dy pøepínáno pøi pou¾ití"
+msgstr "V¾dy Babel"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:78
 msgid "Enter the command to load the language package (default: babel)"
@@ -3390,9 +3385,8 @@ msgid "The LaTeX command that ends a switch to a foreign language"
 msgstr "Pøíkaz LaTeX-u, který ukonèuje pøepnutí zmìny jazyka."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:134
-#, fuzzy
 msgid "Default Decimal &Point:"
-msgstr "&Standarní tiskárna:"
+msgstr "Standardní znak &desetiné èárky"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:150
 #: src/frontends/qt4/ui/TabularUi.ui:132
@@ -3409,7 +3403,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:163
 msgid "Set languages &globally"
-msgstr ""
+msgstr "Nastavit jazyky &globálnì"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:170
 msgid ""
@@ -3471,12 +3465,11 @@ msgstr "&Visuální"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:24
 msgid ""
 "Enable if a specific font encoding (such as T1) should be used (via fontenc)"
-msgstr ""
+msgstr "Zapnout, pokud se má pou¾ít specifické kódování fontu pomocí fontenc (napø. T1)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:27
-#, fuzzy
 msgid "Use LaTe&X font encoding:"
-msgstr "Kódování Te&X-u:"
+msgstr "Kódování fontu v LaTe&X-u:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:41
 msgid "Default paper si&ze:"
@@ -3532,7 +3525,7 @@ msgstr "Pøíkaz a nastavení pro BibTeX"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:182
 #: src/frontends/qt4/ui/PrefLatexUi.ui:257
 msgid "Processor for &Japanese:"
-msgstr ""
+msgstr "Generátor pro &japon¹tinu"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:192
 msgid "Specific BibTeX command and options for pLaTeX (Japanese)"
@@ -3540,11 +3533,10 @@ msgstr "Vlastní pøíkaz pro BibTeX a nastavení pro PLaTeX (Japon¹tina)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:214
 msgid "Pr&ocessor:"
-msgstr ""
+msgstr "&Generátor:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:240 src/frontends/qt4/GuiPrefs.cpp:758
 #: src/frontends/qt4/GuiPrefs.cpp:855
-#, fuzzy
 msgid "Op&tions:"
 msgstr "&Mo¾nosti:"
 
@@ -18173,7 +18165,7 @@ msgstr "Èekání na bìh LaTeX-u èíslo %1$d"
 
 #: src/LaTeX.cpp:260 src/LaTeX.cpp:349
 msgid "Running Index Processor."
-msgstr "Spou¹tím procesor rejstøíku."
+msgstr "Spou¹tím generátor rejstøíku."
 
 #: src/LaTeX.cpp:280 src/LaTeX.cpp:332
 msgid "Running BibTeX."
