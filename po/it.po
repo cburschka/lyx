@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-11-29 05:24+0100\n"
-"PO-Revision-Date: 2010-11-30 12:39+0100\n"
+"PO-Revision-Date: 2010-11-30 16:17+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -12242,36 +12242,36 @@ msgstr "Scambia colonne"
 #: lib/ui/classic.ui:141
 #: lib/ui/stdmenus.inc:194
 msgid "Left|L"
-msgstr "Sinistra|S"
+msgstr "Allinea a sinistra|s"
 
 #: lib/ui/classic.ui:142
 #: lib/ui/stdcontext.inc:411
 #: lib/ui/stdmenus.inc:195
 msgid "Center|C"
-msgstr "Centrato|C"
+msgstr "Allinea al centro|c"
 
 #: lib/ui/classic.ui:143
 #: lib/ui/stdmenus.inc:196
 msgid "Right|R"
-msgstr "Destra|D"
+msgstr "Allinea a destra|d"
 
 #: lib/ui/classic.ui:145
 #: lib/ui/stdcontext.inc:415
 #: lib/ui/stdmenus.inc:198
 msgid "Top|T"
-msgstr "Superiore|u"
+msgstr "Allinea in alto|a"
 
 #: lib/ui/classic.ui:146
 #: lib/ui/stdcontext.inc:416
 #: lib/ui/stdmenus.inc:199
 msgid "Middle|M"
-msgstr "Centrale|a"
+msgstr "Allinea in mezzo|e"
 
 #: lib/ui/classic.ui:147
 #: lib/ui/stdcontext.inc:417
 #: lib/ui/stdmenus.inc:200
 msgid "Bottom|B"
-msgstr "Inferiore|f"
+msgstr "Allinea in basso|b"
 
 #: lib/ui/classic.ui:159
 msgid "Toggle Numbering|N"
@@ -12318,7 +12318,7 @@ msgstr "Aggiungi colonna|o"
 #: lib/ui/stdcontext.inc:425
 #: lib/ui/stdmenus.inc:208
 msgid "Delete Column|e"
-msgstr "Elimina colonna|E"
+msgstr "Elimina colonna|m"
 
 #: lib/ui/classic.ui:182
 #: lib/ui/stdmenus.inc:253
@@ -13474,26 +13474,26 @@ msgstr "Incolla"
 #: lib/ui/stdcontext.inc:365
 #: lib/ui/stdmenus.inc:103
 msgid "Paste Recent|e"
-msgstr "Incolla recenti|e"
+msgstr "Incolla recenti"
 
 #: lib/ui/stdcontext.inc:302
 msgid "Jump Back to Saved Bookmark|B"
-msgstr "Vai al segnalibro memorizzato|b"
+msgstr "Vai al segnalibro memorizzato|V"
 
 #: lib/ui/stdcontext.inc:303
 #: lib/ui/stdmenus.inc:514
 msgid "Forward search|F"
-msgstr "Ricerca diretta|d"
+msgstr "Ricerca diretta"
 
 #: lib/ui/stdcontext.inc:305
 #: lib/ui/stdmenus.inc:111
 msgid "Move Paragraph Up|o"
-msgstr "Sposta paragrafo su|o"
+msgstr "Sposta paragrafo su"
 
 #: lib/ui/stdcontext.inc:306
 #: lib/ui/stdmenus.inc:112
 msgid "Move Paragraph Down|v"
-msgstr "Sposta paragrafo giù|f"
+msgstr "Sposta paragrafo giù"
 
 #: lib/ui/stdcontext.inc:308
 msgid "Promote Section|r"
@@ -13527,7 +13527,7 @@ msgstr "Rifiuta modifica|R"
 
 #: lib/ui/stdcontext.inc:318
 msgid "Apply Last Text Style|A"
-msgstr "Applica l'ultimo stile di testo|A"
+msgstr "Applica ultimo stile testo|u"
 
 #: lib/ui/stdcontext.inc:319
 #: lib/ui/stdmenus.inc:114
@@ -13618,41 +13618,41 @@ msgstr "Modifica esternamente...|e"
 
 #: lib/ui/stdcontext.inc:402
 msgid "Multicolumn|u"
-msgstr "Multicolonna|M"
+msgstr "Multicolonna"
 
 #: lib/ui/stdcontext.inc:403
 msgid "Multirow|w"
-msgstr "Multiriga|i"
+msgstr "Multiriga"
 
 #: lib/ui/stdcontext.inc:405
 msgid "Top Line|n"
-msgstr "Linea superiore|p"
+msgstr "Linea superiore|i"
 
 #: lib/ui/stdcontext.inc:406
 msgid "Bottom Line|i"
-msgstr "Linea inferiore|n"
+msgstr "Linea inferiore|f"
 
 #: lib/ui/stdcontext.inc:407
 #: lib/ui/stdmenus.inc:185
 msgid "Left Line|L"
-msgstr "Linea sinistra|L"
+msgstr "Linea sinistra|t"
 
 #: lib/ui/stdcontext.inc:408
 #: lib/ui/stdmenus.inc:186
 msgid "Right Line|R"
-msgstr "Linea destra|t"
+msgstr "Linea destra|n"
 
 #: lib/ui/stdcontext.inc:410
 msgid "Left|f"
-msgstr "Sinistra|S"
+msgstr "Allinea a sinistra|s"
 
 #: lib/ui/stdcontext.inc:412
 msgid "Right|h"
-msgstr "Destra|D"
+msgstr "Allinea a destra|d"
 
 #: lib/ui/stdcontext.inc:413
 msgid "Decimal"
-msgstr "Ai decimali"
+msgstr "Allinea ai decimali"
 
 #: lib/ui/stdcontext.inc:419
 msgid "Append Row|A"
@@ -13828,11 +13828,11 @@ msgstr "Seleziona tutto"
 
 #: lib/ui/stdmenus.inc:108
 msgid "Find & Replace (Quick)...|F"
-msgstr "Trova e sostituisci (veloce)...|T"
+msgstr "Trova e sostituisci (veloce)...|v"
 
 #: lib/ui/stdmenus.inc:109
 msgid "Find & Replace (Advanced)..."
-msgstr "Trova e sostituisci (avanzato)...|z"
+msgstr "Trova e sostituisci (avanzato)...|T"
 
 #: lib/ui/stdmenus.inc:119
 msgid "Table|T"
@@ -13964,19 +13964,19 @@ msgstr "Linea superiore|p"
 
 #: lib/ui/stdmenus.inc:184
 msgid "Bottom Line|B"
-msgstr "Linea inferiore|n"
+msgstr "Linea inferiore|f"
 
 #: lib/ui/stdmenus.inc:188
 msgid "Top|p"
-msgstr "Superiore|u"
+msgstr "Allinea in alto|a"
 
 #: lib/ui/stdmenus.inc:189
 msgid "Middle|i"
-msgstr "Centrale|a"
+msgstr "Allinea in mezzo|e"
 
 #: lib/ui/stdmenus.inc:190
 msgid "Bottom|o"
-msgstr "Inferiore|f"
+msgstr "Allinea in basso|b"
 
 #: lib/ui/stdmenus.inc:209
 msgid "Copy Column|p"
@@ -17483,7 +17483,7 @@ msgstr "LyXHTML"
 #: lib/configure.py:520
 #: lib/configure.py:522
 msgid "LyXHTML|y"
-msgstr "LyXHTML|X"
+msgstr "LyXHTML|y"
 
 #: lib/configure.py:529
 #: src/frontends/qt4/GuiLog.cpp:230
