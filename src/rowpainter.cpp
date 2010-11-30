@@ -211,9 +211,10 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	// This method takes up 70% of time when typing
 	pos_type pos = bidi_.vis2log(vpos);
 	// first character
+	char_type prev_char = par_.getChar(pos);
 	vector<char_type> str;
 	str.reserve(100);
-	str.push_back(par_.getChar(pos));
+	str.push_back(prev_char);
 
 	if (arabic) {
 		char_type c = str[0];
@@ -237,9 +238,19 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	bool const spell_state =
 		lyxrc.spellcheck_continuously && par_.isMisspelled(pos);
 
-	char_type prev_char = 0;
 	// collect as much similar chars as we can
 	for (++vpos ; vpos < end ; ++vpos) {
+		// Work-around bug #6920
+		// The bug can be reproduced with DejaVu font under Linux.
+		// The issue is that we compute the metrics character by character
+		// in ParagraphMetrics::singleWidth(); but we paint word by word
+		// for performance reason.
+		// Maybe a more general fix would be draw character by character
+		// for some predefined fonts on some platform. In arabic and
+		// Hebrew we already do paint this way.
+		if (prev_char == 'f')
+			break;
+		
 		pos = bidi_.vis2log(vpos);
 		if (pos < font_span.first || pos > font_span.last)
 			break;
@@ -266,17 +277,6 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 			break;
 
 		if (!isPrintableNonspace(c))
-			break;
-
-		// Work-around bug #6920
-		// The bug can be reproduced with DejaVu font under Linux.
-		// The issue is that we compute the metrics character by character
-		// in ParagraphMetrics::singleWidth(); but we paint word by word
-		// for performance reason.
-		// Maybe a more general fix would be draw character by character
-		// for some predefined fonts on some platform. In arabic and
-		// Hebrew we already do paint this way.
-		if (prev_char == 'f')
 			break;
 
 		/* Because we do our own bidi, at this point the strings are
