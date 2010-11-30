@@ -1378,7 +1378,7 @@ Layout const & DocumentClass::htmlTOCLayout() const
 
 string const & DocumentClass::getCiteFormat(string const & entry_type) const
 {
-	static string default_format = N_("{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]][[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}.");
+	static string default_format = "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]][[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}.";
 	
 	map<string, string>::const_iterator it = cite_formats_.find(entry_type);
 	if (it != cite_formats_.end())
