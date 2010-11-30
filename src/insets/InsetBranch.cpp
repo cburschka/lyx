@@ -176,6 +176,7 @@ bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 			flag.setEnabled(true);
 		else
 			return InsetCollapsable::getStatus(cur, cmd, flag);	
+		break;
 
 	default:
 		return InsetCollapsable::getStatus(cur, cmd, flag);
