@@ -52,7 +52,7 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix DVI output of lettre class.
+- Fix DVI output of the document class "letter (lettre)".
 
 
 * USER INTERFACE
@@ -60,11 +60,11 @@ What's new
 - Fix crash when using a computer algebra system from within AMS math
   environments (bug 7058).
 
-- Fix insertion of a user math macro trough the math-insert lfun when a
+- Fix insertion of a user math macro through the math-insert lfun when a
   selection is present (bug 6939).
 
-- Make the modules description in Document > Settings fully translatable
-  (bug 6987).
+- Make the modules description in the menu Document -> Settings fully
+  translatable (bug 6987).
 
 - Fix table line bug when unsetting a multicolumn cell via the table
   dialog (bug 7000). 
@@ -74,7 +74,7 @@ What's new
 - Don't allow to make tables within in floats longtables as this could
   lead to LaTeX-errors (bug 6585).
 
-- Correct the Denomination of norsk and nynorsk languages.
+- Correct the denomination of norsk and nynorsk languages.
 
 - Do not allow to put the cursor in an InsetInfo. Instead, a context
   menu item is added to facilitate copying of the contents (bug 5446).
