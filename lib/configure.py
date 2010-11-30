@@ -391,7 +391,7 @@ def checkLatex(dtl_tools):
         # run platex on chklatex.ltx and check result
         if cmdOutput(PLATEX + ' chklatex.ltx').find('pLaTeX2e') != -1:
             # We have the Japanese pLaTeX2e
-            addToRC(r'\converter platex   dvi       "%s"   "latex"' % PLATEX)
+            addToRC(r'\converter platex   dvi       "%s"   "latex=platex"' % PLATEX)
         else:
             PLATEX = ''
             removeFiles(['chklatex.ltx', 'chklatex.log'])
@@ -590,16 +590,16 @@ def checkFormatEntries(dtl_tools):
 def checkConverterEntries():
     ''' Check all converters (\converter entries) '''
     checkProg('the pdflatex program', ['pdflatex $$i'],
-        rc_entry = [ r'\converter pdflatex   pdf2       "%%"	"latex"' ])
+        rc_entry = [ r'\converter pdflatex   pdf2       "%%"	"latex=pdflatex"' ])
 
     checkProg('XeTeX', ['xelatex $$i'],
-        rc_entry = [ r'\converter xetex      pdf4       "%%"	"latex"' ])
+        rc_entry = [ r'\converter xetex      pdf4       "%%"	"latex=xelatex"' ])
 
     checkProg('LuaTeX', ['lualatex $$i'],
-        rc_entry = [ r'\converter luatex      pdf5       "%%"	"latex"' ])
+        rc_entry = [ r'\converter luatex      pdf5       "%%"	"latex=lualatex"' ])
 
     checkProg('LuaTeX (DVI)', ['dvilualatex $$i'],
-        rc_entry = [ r'\converter luatex      dvi3        "%%"	"latex"' ])
+        rc_entry = [ r'\converter luatex      dvi3        "%%"	"latex=lualatex"' ])
     
     ''' If we're running LyX in-place then tex2lyx will be found in
             ../src/tex2lyx. Add this directory to the PATH temporarily and

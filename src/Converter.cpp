@@ -108,9 +108,11 @@ void Converter::readFlags()
 		string flag_name, flag_value;
 		flag_list = split(flag_list, flag_value, ',');
 		flag_value = split(flag_value, flag_name, '=');
-		if (flag_name == "latex")
+		if (flag_name == "latex") {
 			latex = true;
-		else if (flag_name == "xml")
+			latex_flavor = flag_value.empty() ?
+				"latex" : flag_value;
+		} else if (flag_name == "xml")
 			xml = true;
 		else if (flag_name == "needaux")
 			need_aux = true;
@@ -186,11 +188,12 @@ void Converters::add(string const & from, string const & to,
 	}
 	converter.readFlags();
 
-	if (converter.latex && (latex_command_.empty() || to == "dvi"))
-		latex_command_ = subst(command, token_from, "");
 	// If we have both latex & pdflatex, we set latex_command to latex.
 	// The latex_command is used to update the .aux file when running
 	// a converter that uses it.
+	if (converter.latex
+	    && (latex_command_.empty() || converter.latex_flavor == "latex"))
+		latex_command_ = subst(command, token_from, "");
 
 	if (it == converterlist_.end()) {
 		converterlist_.push_back(converter);
@@ -255,11 +258,11 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path)
 	     cit != path.end(); ++cit) {
 		Converter const & conv = converterlist_[*cit];
 		if (conv.latex)
-			if (contains(conv.from, "xetex"))
+			if (conv.latex_flavor == "xelatex")
 				return OutputParams::XETEX;
-			if (contains(conv.from, "luatex"))
+			if (conv.latex_flavor == "lualatex")
 				return OutputParams::LUATEX;
-			if (contains(conv.to, "pdf"))
+			if (conv.latex_flavor == "pdflatex")
 				return OutputParams::PDFLATEX;
 		if (conv.xml)
 			return OutputParams::XML;

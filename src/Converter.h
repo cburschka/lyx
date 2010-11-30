@@ -53,6 +53,8 @@ public:
 
 	/// The converter is latex or its derivatives
 	bool latex;
+	/// The latex derivate
+	std::string latex_flavor;
 	/// The converter is xml
 	bool xml;
 	/// This converter needs the .aux files
