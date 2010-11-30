@@ -621,17 +621,23 @@ InsetLayout::InsetDecoration InsetCollapsable::decoration() const
 docstring InsetCollapsable::contextMenu(BufferView const & bv, int x,
 	int y) const
 {
+	docstring context_menu = contextMenuName();
+	docstring const it_context_menu = InsetText::contextMenuName();
 	if (decoration() == InsetLayout::CONGLOMERATE)
-		return contextMenuName() + ";" + InsetText::contextMenuName();
+		return context_menu + ";" + it_context_menu;
+
+	docstring const ic_context_menu = InsetCollapsable::contextMenuName();
+	if (ic_context_menu != context_menu)
+		context_menu += ";" + ic_context_menu;
 
 	if (geometry(bv) == NoButton)
-		return contextMenuName() + ";" + InsetText::contextMenuName();
+		return context_menu + ";" + it_context_menu;
 
 	Dimension dim = dimensionCollapsed(bv);
 	if (x < xo(bv) + dim.wid && y < yo(bv) + dim.des)
-		return contextMenuName();
+		return context_menu;
 
-	return InsetText::contextMenuName();
+	return it_context_menu;
 }
 
 

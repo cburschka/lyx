@@ -160,12 +160,6 @@ Menuset
 		Item "Drop Shadow|w" "inset-modify changetype Shadowbox"
 		Item "Shaded Background|B" "inset-modify changetype Shaded"
 		Item "Double Frame|u" "inset-modify changetype Doublebox"
-		Separator
-		OptItem "Open Inset|O" "inset-toggle open"
-		OptItem "Close Inset|C" "inset-toggle close"
-		Separator
-		Item "Dissolve Inset|D" "inset-dissolve"
-		Item "Settings...|S" "inset-settings box"
 	End
 
 #
@@ -177,13 +171,8 @@ Menuset
 		Item "Comment|m" "inset-modify note Note Comment"
 		Item "Greyed Out|G" "inset-modify note Note Greyedout"
 		Separator
-		OptItem "Open Inset|O" "inset-toggle open"
-		OptItem "Close Inset|C" "inset-toggle close"
-		Separator
 		Item "Open All Notes|A" "inset-forall Note inset-toggle open"
 		Item "Close All Notes|l" "inset-forall Note inset-toggle close"
-		Separator
-		Item "Dissolve Inset|D" "inset-dissolve"
 	End
 
 #
@@ -355,18 +344,6 @@ Menuset
 	End
 
 #
-# InsetListing context menu
-#
-
-	Menu "context-listings"
-		OptItem "Open Inset|O" "inset-toggle open"
-		OptItem "Close Inset|C" "inset-toggle close"
-		Separator
-		Item "Dissolve Inset|D" "inset-dissolve"
-		Item "Settings...|S" "inset-settings listings"
-	End
-
-#
 # InsetGraphics context menu
 #
 
@@ -442,11 +419,6 @@ Menuset
 		Item "LyX Version|X" "inset-modify lyxinfo version"
 	End
 
-
-#
-# InsetInfo context menu
-#
-
 	Menu "context-info"
 		Submenu "Document Info|D" "buffer-info"
 		Separator
@@ -459,14 +431,8 @@ Menuset
 #
 
 	Menu "context-branch"
-		OptItem "Open Inset|O" "inset-toggle open"
-		OptItem "Close Inset|C" "inset-toggle close"
-		Separator
 		OptItem "Activate Branch|A" "branch-activate"
 		OptItem "Deactivate Branch|e" "branch-deactivate"
-		Separator
-		Item "Dissolve Inset|D" "inset-dissolve"
-		OptItem "Settings...|S" "inset-settings"
 	End
 
 #
@@ -562,13 +528,6 @@ Menuset
 
 	Menu "context-index"
 		IndicesContext
-		Separator
-		OptItem "Open Inset|O" "inset-toggle open"
-		OptItem "Close Inset|C" "inset-toggle close"
-		Separator
-		Item "Dissolve Inset|D" "inset-dissolve"
-		Separator
-		OptItem "Settings...|S" "inset-settings"
 	End
 
 #
@@ -627,13 +586,7 @@ Menuset
 # InsetERT context menu
 #
 	Menu "context-ert"
-		OptItem "Open Inset|O" "inset-toggle open"
-		OptItem "Close Inset|C" "inset-toggle close"
-		Separator
 		Item "Wrap by Preview|P" "command-sequence inset-begin;char-backward;char-forward-select;preview-insert"
-		Separator
-		Item "Dissolve Inset|D" "inset-dissolve"
-		OptItem "Settings...|S" "inset-settings"
 	End
 
 #
