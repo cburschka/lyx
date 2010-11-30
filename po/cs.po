@@ -5627,9 +5627,8 @@ msgid "After Title Text"
 msgstr "After Title Text"
 
 #: lib/layouts/IEEEtran.layout:154
-#, fuzzy
 msgid "Page headings"
-msgstr "nadpisy(headings)"
+msgstr "Page headings"
 
 #: lib/layouts/IEEEtran.layout:172
 msgid "MarkBoth"
@@ -6533,27 +6532,24 @@ msgid "Blocks"
 msgstr "Blocks"
 
 #: lib/layouts/beamer.layout:661
-#, fuzzy
 msgid "Block:"
-msgstr "Blok"
+msgstr "Block:"
 
 #: lib/layouts/beamer.layout:676
 msgid "ExampleBlock"
 msgstr "ExampleBlock"
 
 #: lib/layouts/beamer.layout:687
-#, fuzzy
 msgid "Example Block:"
-msgstr "ExampleBlock"
+msgstr "Example Block:"
 
 #: lib/layouts/beamer.layout:706
 msgid "AlertBlock"
 msgstr "AlertBlock"
 
 #: lib/layouts/beamer.layout:717
-#, fuzzy
 msgid "Alert Block:"
-msgstr "AlertBlock"
+msgstr "Alert Block:"
 
 #: lib/layouts/beamer.layout:739 lib/layouts/beamer.layout:771
 #: lib/layouts/beamer.layout:796 lib/layouts/beamer.layout:818
@@ -6674,18 +6670,16 @@ msgid "Structure"
 msgstr "Structure"
 
 #: lib/layouts/beamer.layout:1177
-#, fuzzy
 msgid "ArticleMode"
-msgstr "Article"
+msgstr "ArticleMode"
 
 #: lib/layouts/beamer.layout:1182
 msgid "Article"
 msgstr "Article"
 
 #: lib/layouts/beamer.layout:1187
-#, fuzzy
 msgid "PresentationMode"
-msgstr "Presentation"
+msgstr "PresentationMode"
 
 #: lib/layouts/beamer.layout:1192
 msgid "Presentation"
@@ -9633,28 +9627,25 @@ msgid "UNDEFINED"
 msgstr "NEDEFINOVÁNO"
 
 #: lib/layouts/stdciteformats.inc:9
-#, fuzzy
 msgid "pp."
 msgstr "str. "
 
 #: lib/layouts/stdciteformats.inc:10
-#, fuzzy
 msgid "ed."
-msgstr "èervená"
+msgstr "ed."
 
 #: lib/layouts/stdciteformats.inc:11
 msgid "vol."
-msgstr ""
+msgstr "svaz."
 
 #: lib/layouts/stdciteformats.inc:12
-#, fuzzy
 msgid "no."
-msgstr "ne"
+msgstr "è."
 
 #: lib/layouts/stdciteformats.inc:13 lib/ui/stdtoolbars.inc:517
 #: src/frontends/qt4/GuiGraphics.cpp:475 src/lengthcommon.cpp:38
 msgid "in"
-msgstr "in"
+msgstr "v"
 
 #: lib/layouts/stdcounters.inc:9
 msgid "\\Roman{part}"
@@ -19302,13 +19293,13 @@ msgid "Module not available"
 msgstr "Modul není dostupný"
 
 #: src/TextClass.cpp:1302
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
 "not available in your LaTeX installation, or a converter\n"
 "you have not installed. LaTeX output may not be possible.\n"
 msgstr ""
-"Modul %1$s obsahuje balíèek, který není dostupný ve va¹í\n"
+"Modul %1$s obsahuje konvertor nebo balíèek, který není dostupný ve va¹í\n"
 "LaTeX-ové instalaci. Výstup do LaTeXu nemusí být umo¾nìn.\n"
 
 #: src/TextClass.cpp:1306
@@ -19351,7 +19342,6 @@ msgid "Error: Could not generate logfile."
 msgstr "Chyba: Nepodaøilo se zalo¾it soubor pro log."
 
 #: src/VCBackend.cpp:498
-#, fuzzy
 msgid "Up-to-date"
 msgstr "Aktualizováno"
 
@@ -19395,9 +19385,13 @@ msgid ""
 "'%1$s'\n"
 "\n"
 msgstr ""
+"Chybný stav pøi ukládání zmìn do repozitáøe.\n"
+"\n"
+"'%1$s'\n"
+"\n"
 
 #: src/VCBackend.cpp:747 src/VCBackend.cpp:1205
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error when updating from repository.\n"
 "You have to manually resolve the conflicts NOW!\n"
@@ -19412,7 +19406,7 @@ msgstr ""
 "Po stisknutí tlaèítka OK se LyX pokusí znovu naèíst opravený dokument."
 
 #: src/VCBackend.cpp:781
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
 "%1$s\n"
@@ -19420,13 +19414,6 @@ msgid ""
 "In case of file conflict you have to resolve them manually or revert to "
 "repository version later."
 msgstr ""
-"Byly detekovány zmìny v pracovním adresáøi:\n"
-"%1$s\n"
-"\n"
-"V pøípadì konfliktu pøi aktualizaci bude preferována verze souboru z "
-"pracovního adresáøe.\n"
-"\n"
-"Pokraèovat?"
 
 #: src/VCBackend.cpp:785 src/VCBackend.cpp:789 src/VCBackend.cpp:1246
 #: src/VCBackend.cpp:1250
@@ -19435,14 +19422,14 @@ msgstr "Detekovány zmìny"
 
 #: src/VCBackend.cpp:786 src/VCBackend.cpp:790
 msgid "&Abort"
-msgstr ""
+msgstr "&Pø&eru¹it"
 
 #: src/VCBackend.cpp:786 src/VCBackend.cpp:1247
 msgid "View &Log ..."
 msgstr "Zobraz &Log ..."
 
 #: src/VCBackend.cpp:808
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error when updating document %1$s from repository.\n"
 "You have to manually resolve the conflicts NOW!\n"
@@ -19450,9 +19437,9 @@ msgid ""
 "\n"
 "After pressing OK, LyX will try to reopen the resolved document."
 msgstr ""
-"Chyba pøi provádìní aktualizace z repositáøe.\n"
+"Chyba pøi provádìní aktualizace dokumentu %1$s z repositáøe.\n"
 "Musíte opravit konflikty NYNÍ!\n"
-"'%1$s'.\n"
+"'%2$s'.\n"
 "\n"
 "Po stisknutí tlaèítka OK se LyX pokusí znovu naèíst opravený dokument."
 
@@ -19462,6 +19449,8 @@ msgid ""
 "The document %1$s is not in repository.\n"
 "You have to check in the first revision before you can revert."
 msgstr ""
+"Dokument %1$s není v repozitáøi.\n"
+"Musíte ulo¾it první zmìnu do repozitáøe pøed pokusem o návrat k poslední verzi."
 
 #: src/VCBackend.cpp:877
 #, c-format
@@ -19469,6 +19458,8 @@ msgid ""
 "Cannot revert document %1$s to repository version.\n"
 "The status '%2$s' is unexpected."
 msgstr ""
+"Nelze se navrátit k poslední verzi dokumentu %1$s."
+"Status '%2$s' není oèekávaný."
 
 #: src/VCBackend.cpp:1085
 msgid ""
