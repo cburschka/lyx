@@ -780,8 +780,8 @@ string CVS::repoUpdate()
 		docstring const file = from_utf8(owner_->filePath());
 		docstring text = bformat(_("There were detected changes "
 				"in the working directory:\n%1$s\n\n"
-				"In case of file conflict you have to resolve them "
-				"manually or revert to repository version later."), file);
+				"Possible file conflicts must be then resolved manually "
+				"or you will need to revert back to the repository version."), file);
 		int ret = frontend::Alert::prompt(_("Changes detected"),
 				text, 0, 1, _("&Continue"), _("&Abort"), _("View &Log ..."));
 		if (ret == 2 ) {
