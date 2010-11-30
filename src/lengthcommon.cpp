@@ -35,7 +35,7 @@ int const num_units = int(sizeof(unit_name) / sizeof(unit_name[0]) - 1);
 // the LyX gui units
 char const * const unit_name_gui[] = {
 	N_("bp"), N_("cc[[unit of measure]]"), N_("cm"), N_("dd"), N_("em"),
-	N_("ex"), N_("in"), N_("mm"), N_("mu[[unit of measure]]"), N_("pc"),
+	N_("ex"), N_("in[[unit of measure]]"), N_("mm"), N_("mu[[unit of measure]]"), N_("pc"),
 	N_("pt"), N_("sp"), N_("Text Width %"),
 	N_("Column Width %"), N_("Page Width %"), N_("Line Width %"),
 	N_("Text Height %"), N_("Page Height %"), "" };

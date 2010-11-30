@@ -514,7 +514,7 @@ ToolbarSet
 		Item "sqsupseteq" "math-insert \sqsupseteq"
 		Item "doteq" "math-insert \doteq"
 		Item "neq" "math-insert \neq"
-		Item "in" "math-insert \in"
+		Item "in[[math relation]]" "math-insert \in"
 		Item "ni" "math-insert \ni"
 		Item "propto" "math-insert \propto"
 		Item "notin" "math-insert \notin"

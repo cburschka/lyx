@@ -472,7 +472,7 @@ void GuiGraphics::on_angle_textChanged(const QString & filename)
 void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 {
 	static char const * const bb_units[] = { "bp", "cm", "mm", "in" };
-	static char const * const bb_units_gui[] = { N_("bp"), N_("cm"), N_("mm"), N_("in") };
+	static char const * const bb_units_gui[] = { N_("bp"), N_("cm"), N_("mm"), N_("in[[unit of measure]]") };
 	size_t const bb_size = sizeof(bb_units) / sizeof(bb_units[0]);
 
 	lbXunit->clear();
