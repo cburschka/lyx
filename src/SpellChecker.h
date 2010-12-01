@@ -50,9 +50,9 @@ public:
 
 	/// does the spell check failed
 	static bool misspelled(Result res) {
-		return res != SpellChecker::WORD_OK
-			&& res != SpellChecker::IGNORED_WORD
-			&& res != SpellChecker::LEARNED_WORD; }
+		return res != WORD_OK
+			&& res != IGNORED_WORD
+			&& res != LEARNED_WORD; }
 
 	/// check the given word of the given lang code and return the result
 	virtual enum Result check(WordLangTuple const &) = 0;
@@ -90,14 +90,14 @@ public:
 
 	/// give an error message on messy exit
 	virtual docstring const error() = 0;
-	
+
 	/// spell checker state versioning support
 	typedef unsigned long int ChangeNumber ;
 	ChangeNumber changeNumber() const { return change_number_; }
 	void changeNumber(ChangeNumber value) { change_number_ = value; }
 	void nextChangeNumber() { ++change_number_; }
 	virtual void advanceChangeNumber() = 0;
-	
+
 private:
 	ChangeNumber change_number_;
 };
