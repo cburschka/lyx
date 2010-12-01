@@ -902,6 +902,8 @@ void MenuDefinition::expandDocuments()
 
 	int i = 0;
 	while (true) {
+		if (!guiApp->currentView())
+			break;
 		GuiWorkArea * wa = guiApp->currentView()->workArea(i);
 		if (!wa)
 			break;
