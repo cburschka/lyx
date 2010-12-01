@@ -146,7 +146,7 @@ void InsetCaption::drawBackground(PainterInfo & pi, int x, int y) const
 	TextMetrics & tm = pi.base.bv->textMetrics(&text());
 	int const h = tm.height() + 2 * TEXT_TO_INSET_OFFSET;
 	int const yy = y - TEXT_TO_INSET_OFFSET - tm.ascent();
-	pi.pain.fillRectangle(x, yy, labelwidth_, h, Color_red);
+	pi.pain.fillRectangle(x, yy, labelwidth_, h, pi.backgroundColor(this));
 }
 
 
