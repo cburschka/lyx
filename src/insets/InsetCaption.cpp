@@ -32,6 +32,7 @@
 #include "OutputParams.h"
 #include "Paragraph.h"
 #include "TextClass.h"
+#include "TextMetrics.h"
 #include "TocBackend.h"
 
 #include "frontends/FontMetrics.h"
@@ -140,6 +141,15 @@ void InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
+void InsetCaption::drawBackground(PainterInfo & pi, int x, int y) const
+{
+	TextMetrics & tm = pi.base.bv->textMetrics(&text());
+	int const h = tm.height() + 2 * TEXT_TO_INSET_OFFSET;
+	int const yy = y - TEXT_TO_INSET_OFFSET - tm.ascent();
+	pi.pain.fillRectangle(x, yy, labelwidth_, h, Color_red);
+}
+
+
 void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 {
 	// We must draw the label, we should get the label string
@@ -153,7 +163,8 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 	FontInfo tmpfont = pi.base.font;
 	pi.base.font = pi.base.bv->buffer().params().getFont().fontInfo();
 	pi.base.font.setColor(pi.textColor(pi.base.font.color()).baseColor);
-	pi.pain.text(x, y, full_label_, pi.base.font);
+	int const xx = x + TEXT_TO_INSET_OFFSET;
+	pi.pain.text(xx, y, full_label_, pi.base.font);
 	InsetText::draw(pi, x + labelwidth_, y);
 	pi.base.font = tmpfont;
 }
