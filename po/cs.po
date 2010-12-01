@@ -1745,7 +1745,6 @@ msgid "&Value:"
 msgstr "&Hodnota:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:100
-#, fuzzy
 msgid "Custom value. Needs spacing type \"Custom\"."
 msgstr "Vlastní hodnota. Nastavte typ mezery na \"Vlastní\"."
 
@@ -2630,7 +2629,6 @@ msgid "De&fault Output Format:"
 msgstr "&Standarní výstupní formát:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:67
-#, fuzzy
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
 msgstr ""
 "Umo¾nit zpìtné/dopøedné vyhledávání mezi editorem a výstupem (napø. SyncTeX)"
@@ -2921,7 +2919,7 @@ msgstr "Standardní &zarovnání"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:60
 msgid "Horizontal and vertical space of the phantom content"
-msgstr ""
+msgstr "Horizontální a vertikální velikost pro kontext fantómu"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:63
 msgid "&Phantom"
@@ -2929,17 +2927,15 @@ msgstr "&Fantóm"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:70
 msgid "Horizontal space of the phantom content"
-msgstr ""
+msgstr "Horizontální velikost pro kontext fantómu"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:73
-#, fuzzy
 msgid "&Horizontal Phantom"
-msgstr "Horizontální linka|o"
+msgstr "&Horizontální Fantóm"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:80
-#, fuzzy
 msgid "Vertical space of the phantom content"
-msgstr "Vertikální místo\t\\vphantom"
+msgstr "Vertikální velikost pro kontext fantómu"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:83
 msgid "&Vertical Phantom"
@@ -2950,9 +2946,8 @@ msgid "A&lter..."
 msgstr "Z&mìnit..."
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:62
-#, fuzzy
-msgid "Use system colors"
-msgstr "®ádný systémový adresáø"
+msgid "&Use system colors"
+msgstr "Pou¾ívat &sytémové barvy"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:25
 msgid "In Math"
@@ -3152,9 +3147,8 @@ msgid "Cursor &follows scrollbar"
 msgstr "&Kurzor následuje posuvník"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:44
-#, fuzzy
 msgid "Scroll &below end of document"
-msgstr "Nelze pøeèíst dokument"
+msgstr "Posuvníkem za k&onec dokumentu"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:51
 msgid "Sort &environments alphabetically"
@@ -3178,11 +3172,11 @@ msgstr "Editace mat. maker se seznamem parametrù (jako v LyXu < 1.6)"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:97
 msgid "Skip trailing non-word characters"
-msgstr ""
+msgstr "Pøeskakovat speciální znaky"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:100
 msgid "Use Mac-style for cursor moving between &words"
-msgstr ""
+msgstr "&Skok kurzoru mezi slovy jako na Mac-u"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:110
 msgid "Fullscreen"
@@ -3201,9 +3195,8 @@ msgid "Hide &tabbar"
 msgstr "&Skrýt li¹tu s dokumenty"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:149
-#, fuzzy
 msgid "Hide &menubar"
-msgstr "&Skrýt li¹tu s dokumenty"
+msgstr "Skrýt &menu"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:156
 msgid "&Limit text width"
@@ -3254,14 +3247,12 @@ msgid "Co&pier:"
 msgstr "&Kopír.skript:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:165
-#, fuzzy
 msgid "Specify the default output format when using (PDF)LaTeX"
-msgstr "Nastavení standardní velikosti papíru."
+msgstr "Nastavit standardní výstupní formát pøi pou¾ití (PDF)LaTeX-u"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:168
-#, fuzzy
 msgid "Default Format"
-msgstr "Formát datumu"
+msgstr "Standardní formát"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -3634,14 +3625,12 @@ msgid "Forward search"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:171
-#, fuzzy
 msgid "DV&I command:"
-msgstr "Pøíkaz &rejstøíku:"
+msgstr "DV&I pøíkaz:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:207
-#, fuzzy
 msgid "&PDF command:"
-msgstr "&roff pøíkaz:"
+msgstr "PD&F pøíkaz:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:41
 msgid "&PATH prefix:"
@@ -3659,9 +3648,8 @@ msgid "Browse..."
 msgstr "Procházet..."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:64
-#, fuzzy
 msgid "T&hesaurus dictionaries:"
-msgstr "Chyba tezauru"
+msgstr "Adresáøe te&zauru:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:90
 msgid "&Temporary directory:"
@@ -3688,9 +3676,8 @@ msgid "&Working directory:"
 msgstr "Pra&covní adresáø:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:215
-#, fuzzy
-msgid "Hunspell dictionaries:"
-msgstr "&Vlastní slovník:"
+msgid "H&unspell dictionaries:"
+msgstr "Adresáøe pro H&unspell:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:41
 msgid "Printer Command Options"
@@ -19009,7 +18996,7 @@ msgstr ""
 msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
-msgstr ""
+msgstr "Pou¾ít systémové barvy pro pozadí hlavního okna, výbìr apod."
 
 #: src/LyXRC.cpp:3469
 msgid "Enable the automatic appearance of tool tips in the work area."
@@ -20247,24 +20234,20 @@ msgid "Error"
 msgstr "Chyba"
 
 #: src/frontends/qt4/GuiCompare.cpp:198
-#, fuzzy
 msgid "Error while comparing documents."
-msgstr "Formátování dokumentu..."
+msgstr "Chyba pøi porovnávání dokumentù."
 
 #: src/frontends/qt4/GuiCompare.cpp:217
-#, fuzzy
 msgid "Aborted"
-msgstr "importováno."
+msgstr "Pøeru¹eno"
 
 #: src/frontends/qt4/GuiCompare.cpp:229
-#, fuzzy
 msgid "Finished"
-msgstr "Fin¹tina"
+msgstr "Provedeno"
 
 #: src/frontends/qt4/GuiCompare.cpp:263
-#, fuzzy
 msgid "Aborting process..."
-msgstr "Formátování dokumentu..."
+msgstr "Pøeru¹ování procesu..."
 
 #: src/frontends/qt4/GuiCompare.cpp:299
 #, fuzzy
@@ -20273,7 +20256,7 @@ msgstr "Reference"
 
 #: src/frontends/qt4/GuiCompareHistory.cpp:35
 msgid "Compare different revisions"
-msgstr ""
+msgstr "Porovnat rozdílné revize"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:57
 msgid "big[[delimiter size]]"
