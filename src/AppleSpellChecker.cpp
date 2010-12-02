@@ -119,6 +119,7 @@ void AppleSpellChecker::accept(WordLangTuple const & word)
 {
 	string const word_str = to_utf8(word.word());
 	AppleSpeller_ignore(d->speller, word_str.c_str());
+	LYXERR(Debug::GUI, "ignore word: \"" << word.word() << "\"") ;
 	advanceChangeNumber();
 }
 
