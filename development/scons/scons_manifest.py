@@ -116,6 +116,7 @@ src_header_files = Split('''
     ParagraphMetrics.h
     ParagraphParameters.h
     PDFOptions.h
+    PersonalWordList.h
     PrinterParams.h
     Row.h
     rowpainter.h
@@ -213,6 +214,7 @@ src_pre_files = Split('''
     Paragraph.cpp
     ParagraphMetrics.cpp
     ParagraphParameters.cpp
+    PersonalWordList.cpp
     Row.cpp
     rowpainter.cpp
     Server.cpp
