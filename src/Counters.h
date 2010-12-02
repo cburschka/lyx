@@ -21,7 +21,6 @@
 
 #include <map>
 #include <deque>
-#include <vector>
 
 
 namespace lyx {
@@ -189,7 +188,7 @@ private:
 	 */
 	docstring flattenLabelString(docstring const & counter, bool in_appendix,
 				     std::string const &lang,
-				     std::vector<docstring> & callers) const;
+				     std::deque<docstring> & callers) const;
 	/// Returns the value of the counter according to the
 	/// numbering scheme numbertype.
 	/** Available numbering schemes are arabic (1, 2,...), roman
