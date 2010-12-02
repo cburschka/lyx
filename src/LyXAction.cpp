@@ -2818,7 +2818,7 @@ void LyXAction::init()
                        If the file is located inside LyX temporary directory it will be
                        mapped back into the appropriate opened buffer (e.g. for the case
                        of generated .tex file).
-                 .ext: extensions will be automatically replaced by .lyx.
+                 .ext: extensions will be automatically replaced by .lyx.\n
                  <ROW_NUMBER> The row number of the LaTeX file to which to go.
  * \li Origin: Edmar, 23 Dec 1998
  * \endvar
