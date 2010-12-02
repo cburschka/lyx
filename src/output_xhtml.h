@@ -17,7 +17,6 @@
 #include "support/strfwd.h"
 
 #include <deque>
-#include <vector>
 
 namespace lyx {
 
@@ -136,13 +135,9 @@ private:
 	///
 	odocstream & os_;
 	///
-	// int tab_;
-	///
-	typedef std::deque<html::StartTag> TagDeque;
-	///
-	typedef std::vector<html::StartTag> TagStack;
+	typedef std::deque<html::StartTag> TagStack;
 	/// holds start tags until we know there is content in them.
-	TagDeque pending_tags_;
+	TagStack pending_tags_;
 	/// remembers the history, so we can make sure we nest properly.
 	TagStack tag_stack_;
 	/// 
