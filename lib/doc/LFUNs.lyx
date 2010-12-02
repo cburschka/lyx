@@ -57,7 +57,7 @@
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 2010-11-25
+LFUNs documentation automatically generated 2010-12-02
 \end_layout
 
 \begin_layout Standard
@@ -2568,7 +2568,11 @@ Action Changes the text style used in math.
 Syntax math-font-style <STYLE>
 \end_layout
 \begin_layout Description
-Params <STYLE>: mathnormal|mathcal|mathfrak|mathrm|mathsf|mathbf |textnormal|textrm|textsf|texttt|textbf|textmd|textit |textsc|textsl|textup
+Params <STYLE>: mathnormal|mathcal|mathfrak|mathrm|mathsf|mathbf|textnormal
+\begin_inset Newline newline
+\end_inset
+
+|textrm|textsf|texttt|textbf|textmd|textit|textsc|textsl|textup
 \end_layout
 \begin_layout Description
 Origin vfr, 9 jan 2009
@@ -3115,7 +3119,7 @@ Origin Ale, 15 May 1997
 LFUN_VC_REGISTER
 \end_layout
 \begin_layout Description
-Action Register the document as an file inside version control system (RCS, CVS).
+Action Register the document as an file inside version control system.
 \end_layout
 \begin_layout Description
 Notion File is registered inside cvs, svn or rcs repository acording to the existence of cvs/svn/rcs entries in the document's directory.
@@ -3151,10 +3155,7 @@ Origin Lgb, 1 Jul 1997
 LFUN_VC_CHECK_OUT
 \end_layout
 \begin_layout Description
-Action Checks-out the document for edit (and locks it for RCS).
-\end_layout
-\begin_layout Description
-Notion This is implemented only for RCS and SVN, not CVS.
+Action Checks-out the document for edit (and locks it in some cases).
 \end_layout
 \begin_layout Description
 Syntax vc-check-out
@@ -3262,9 +3263,6 @@ LFUN_VC_REPO_UPDATE
 Action Update the local archive directory in which resides the current document with the remote repository.
 \end_layout
 \begin_layout Description
-Notion This is currently implemented only for SVN.
-\end_layout
-\begin_layout Description
 Syntax vc-repo-update
 \end_layout
 \begin_layout Description
@@ -3276,9 +3274,6 @@ LFUN_VC_COMPARE
 \end_layout
 \begin_layout Description
 Action Compares two revisions of the same file under version control.
-\end_layout
-\begin_layout Description
-Notion This is currently implemented only for SVN and RCS.
 \end_layout
 \begin_layout Description
 Syntax vc-compare [<REV1>] [<REV2>]
@@ -3307,15 +3302,23 @@ Sample Compare current document against last commit
 \begin_inset Newline newline
 \end_inset
 
-vc-compare 0Compare current document against current revision - 5 commits
+	       vc-compare 0
 \begin_inset Newline newline
 \end_inset
 
-vc-compare -5Compare revisions 120 and 155
+Compare current document against current revision - 5 commits
 \begin_inset Newline newline
 \end_inset
 
-vc-compare 120 155
+	       vc-compare -5
+\begin_inset Newline newline
+\end_inset
+
+Compare revisions 120 and 155
+\begin_inset Newline newline
+\end_inset
+
+	       vc-compare 120 155
 \end_layout
 \begin_layout Description
 Origin sanda, 12 Feb 2010
@@ -3487,7 +3490,11 @@ Action Insert new inset (type given by the parameters).
 Syntax inset-insert <INSET> <ARGS>
 \end_layout
 \begin_layout Description
-Params <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics|tabular| hyperlink|include|index|label|line|nomencl|vspace|ref|toc|script>
+Params <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics|tabular|
+\begin_inset Newline newline
+\end_inset
+
+	                 hyperlink|include|index|label|line|nomencl|vspace|ref|toc|script>
 \begin_inset Newline newline
 \end_inset
 
@@ -3555,7 +3562,11 @@ In case that <INSET> is "tabular" various math-environment features are handled 
 <ARG>: additional argument for some commands, use debug mode to explore its values.
 \end_layout
 \begin_layout Description
-Sample inset-modify note Note Commentinset-modify changetype Ovalbox
+Sample inset-modify note Note Comment
+\begin_inset Newline newline
+\end_inset
+
+	       inset-modify changetype Ovalbox
 \end_layout
 
 \begin_layout Subsection*
@@ -3587,7 +3598,11 @@ Notion Used for bibitem, bibtex, box, branch, citation, ert, external, float, gr
 Syntax inset-settings <INSET>
 \end_layout
 \begin_layout Description
-Params <INSET>: <bibitem|bibtex|box|branch|citation|ert|external|float| graphics|href|include|index|index_print|label|line| listings|note|phantom|ref|space|tabular|vspace|wrap>.
+Params <INSET>: <bibitem|bibtex|box|branch|citation|ert|external|float|
+\begin_inset Newline newline
+\end_inset
+
+graphics|href|include|index|index_print|label|line| listings|note|phantom|ref|space|tabular|vspace|wrap>.
 \end_layout
 
 \begin_layout Subsection*
@@ -3651,7 +3666,7 @@ Transform all yellow notes to comments
 \begin_inset Newline newline
 \end_inset
 
-inset-forall Note:Note inset-modify note Note Comment
+	           inset-forall Note:Note inset-modify note Note Comment
 \begin_inset Newline newline
 \end_inset
 
@@ -3897,7 +3912,11 @@ Notion Skipping "auto" when allowauto is false.
 Syntax toolbar-toggle <NAME> [allowauto]
 \end_layout
 \begin_layout Description
-Params <NAME>: standard|extra|table|math|mathmacrotemplate| minibuffer|review|view/update|math_panels|vcs| view-others|update-others
+Params <NAME>: standard|extra|table|math|mathmacrotemplate|
+\begin_inset Newline newline
+\end_inset
+
+minibuffer|review|view/update|math_panels|vcs| view-others|update-others
 \end_layout
 \begin_layout Description
 Origin Edwin, 21 May 2007
@@ -4292,7 +4311,7 @@ Syntax server-get-filename
 LFUN_SERVER_GOTO_FILE_ROW
 \end_layout
 \begin_layout Description
-Action Sets the cursor position based on the row number of generated TeX file.
+Action Sets the cursor position in LyX based on the row number of generated TeX file.
 \end_layout
 \begin_layout Description
 Notion This can be useful for DVI inverse-search or detection of the problematic line from LaTeX compilation. Note that before this function can be used export to LaTeX output must occur (in order to map the row numbers).
@@ -4301,11 +4320,26 @@ Notion This can be useful for DVI inverse-search or detection of the problematic
 Syntax server-goto-file-row <FILE[.ext]> <ROW_NUMBER>
 \end_layout
 \begin_layout Description
-Params <FILE>: the filename. Environment variables are expanded in the path. In case this LFUN does not work make sure you are giving correct path to the file.
+Params <FILE>: the path and filename. Environment variables are expanded in the path. In case this LFUN does not work make sure you are giving correct path to the file.
 \begin_inset Newline newline
 \end_inset
 
-If the file is located inside LyX temporary directory it will be mapped back into the appropriate opened buffer (e.g. for the case of generated .tex file). .ext: extensions will be automatically replaced by .lyx. <ROW_NUMBER> The row number of the LaTeX file to which to go.
+If the file is located inside LyX temporary directory it will be mapped back into the appropriate opened buffer (e.g. for the case of generated .tex file).
+\begin_inset Newline newline
+\end_inset
+
+.ext: extensions will be automatically replaced by .lyx.
+\begin_inset Newline newline
+\end_inset
+
+<ROW_NUMBER> The row number of the LaTeX file to which to go.
+\end_layout
+\begin_layout Description
+Sample server-goto-file-row /home/user/example.lyx 41
+\begin_inset Newline newline
+\end_inset
+
+server-goto-file-row /tmp/lyx_tmpdir.XM3088/lyx_tmpbuf0/example.tex 41
 \end_layout
 \begin_layout Description
 Origin Edmar, 23 Dec 1998
@@ -4315,22 +4349,10 @@ Origin Edmar, 23 Dec 1998
 LFUN_FORWARD_SEARCH
 \end_layout
 \begin_layout Description
-Action Sets the cursor position in the previewed (e.g. dvi) file based on the row number in LyX window.
+Action Sets the cursor position in the previewed (dvi/pdf) file based on the row number in LyX window.
 \end_layout
 \begin_layout Description
-Notion The external program used for forward search call can be specified in 
-\backslash
-forward_search_dvi and 
-\backslash
-forward_search_pdf RC settings. By default, the value for pdf is empty, while for dvi it is
-\begin_inset Newline newline
-\end_inset
-
-"xdvi -sourceposition $$n:$$t $$o"
-\begin_inset Newline newline
-\end_inset
-
-The values replaced in the call: $$n for row number, $$t for exported temporary .tex file, $$o exported output file, either dvi or pdf, depending on which one exists in the temp dir (preferred is dvi).
+Notion The external program used for forward search call can be specified in LyX Output preferences. See Additional manual for details of these 	       settings.
 \end_layout
 \begin_layout Description
 Syntax forward-search
@@ -5367,16 +5389,13 @@ Origin vfr, 30 Mar 2009
 LFUN_INSET_COPY_AS
 \end_layout
 \begin_layout Description
-Action Copies the inset to the clipboard as a certain type
+Action Copies the inset to the clipboard as a certain type.
 \end_layout
 \begin_layout Description
-Syntax inset-copy-as [<TYPE>]
+Notion Currently used only for InsetInfo where its content is copied as a text.
 \end_layout
 \begin_layout Description
-Params <TYPE>: The type as which the inset is copied. This can vary from inset to inset.
-\end_layout
-\begin_layout Description
-Sample InsetInfo is copied as text
+Syntax inset-copy-as
 \end_layout
 \begin_layout Description
 Origin vfr, 18 Apr 2010
