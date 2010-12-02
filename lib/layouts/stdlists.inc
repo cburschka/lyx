@@ -121,8 +121,12 @@ Style Labeling
 		ol.lyxlist {
 			list-style-type: none;
 		}
+		li.labeling_item {
+			text-indent: -5em;
+			margin-left: 5em;
+		}
 		span.lyxlist {
-			margin-right: 3em;
+			margin-right: 1em;
 		}
 	EndHTMLStyle
 End
