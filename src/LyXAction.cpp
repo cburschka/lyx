@@ -1749,9 +1749,8 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_MATH_FONT_STYLE
  * \li Action: Changes the text style used in math.
  * \li Syntax: math-font-style <STYLE>
- * \li Params: <STYLE>: mathnormal|mathcal|mathfrak|mathrm|mathsf|mathbf
-               |textnormal|textrm|textsf|texttt|textbf|textmd|textit
-               |textsc|textsl|textup
+ * \li Params: <STYLE>: mathnormal|mathcal|mathfrak|mathrm|mathsf|mathbf|textnormal\n
+               |textrm|textsf|texttt|textbf|textmd|textit|textsc|textsl|textup
  * \li Origin: vfr, 9 jan 2009
  * \endvar
  */
@@ -2302,8 +2301,8 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_INSET_INSERT
  * \li Action: Insert new inset (type given by the parameters).
  * \li Syntax: inset-insert <INSET> <ARGS>
- * \li Params: <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics|tabular|
-                         hyperlink|include|index|label|line|nomencl|vspace|ref|toc|script>\n
+ * \li Params: <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics|tabular|\n
+	                 hyperlink|include|index|label|line|nomencl|vspace|ref|toc|script>\n
                <ARGS>: depends on the given inset. Use "lyx -dbg action" to explore.
  * \li Sample: inset-insert ref LatexCommand <Format> reference "<label name>"\end_inset \n
                where <label name> is the name of the referenced label and
@@ -2368,7 +2367,7 @@ void LyXAction::init()
                float, graphics, href, include, index, index_print, label, line,
                listings, note, phantom, ref, space, tabular, vspace, wrap insets.
  * \li Syntax: inset-settings <INSET>
- * \li Params: <INSET>: <bibitem|bibtex|box|branch|citation|ert|external|float|
+ * \li Params: <INSET>: <bibitem|bibtex|box|branch|citation|ert|external|float|\n
                          graphics|href|include|index|index_print|label|line|
                          listings|note|phantom|ref|space|tabular|vspace|wrap>.
  * \endvar
@@ -2409,7 +2408,7 @@ void LyXAction::init()
                Close all Notes (also works for a particular branch, for example): \n
 	           inset-forall Note inset-toggle close \n
                Transform all yellow notes to comments \n
-                   inset-forall Note:Note inset-modify note Note Comment \n
+	           inset-forall Note:Note inset-modify note Note Comment \n
                Try to put LyX in an infinite loop if there is at least a Note: \n
 	           inset-forall Note char-backward
  * \li Origin: lasgouttes, 27 Nov 2009
@@ -2571,7 +2570,7 @@ void LyXAction::init()
  * \li Action: Toggles visibility of a given toolbar between on/off/auto.
  * \li Notion: Skipping "auto" when allowauto is false.
  * \li Syntax: toolbar-toggle <NAME> [allowauto]
- * \li Params: <NAME>: standard|extra|table|math|mathmacrotemplate|
+ * \li Params: <NAME>: standard|extra|table|math|mathmacrotemplate|\n
                        minibuffer|review|view/update|math_panels|vcs|
                        view-others|update-others
  * \li Origin: Edwin, 21 May 2007
@@ -2820,7 +2819,7 @@ void LyXAction::init()
                        of generated .tex file).\n
                  .ext: extensions will be automatically replaced by .lyx.\n
                  <ROW_NUMBER> The row number of the LaTeX file to which to go.
- * \li Sample: server-goto-file-row /home/user/example.lyx 41
+ * \li Sample: server-goto-file-row /home/user/example.lyx 41\n
  * \li Sample: server-goto-file-row /tmp/lyx_tmpdir.XM3088/lyx_tmpbuf0/example.tex 41
  * \li Origin: Edmar, 23 Dec 1998
  * \endvar
