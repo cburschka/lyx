@@ -20591,10 +20591,9 @@ msgstr "Nedostupné: %1$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:1244
 #: src/frontends/qt4/GuiDocument.cpp:1345
-#, fuzzy
 msgid "Input listings parameters below. Enter ? for a list of parameters."
 msgstr ""
-"Zde vkládejte dal¹í parametry výpisu. Pro seznam parametrù vlo¾te znak '?'"
+"Zde vkládejte parametry výpisu. Pro seznam parametrù vlo¾te znak '?'"
 
 #: src/frontends/qt4/GuiDocument.cpp:1248
 #: src/frontends/qt4/GuiDocument.cpp:1269
@@ -20614,9 +20613,8 @@ msgid "Modules"
 msgstr "Moduly"
 
 #: src/frontends/qt4/GuiDocument.cpp:1251
-#, fuzzy
 msgid "Local Layout"
-msgstr "&Lokální rozvr¾ení..."
+msgstr "Lokální rozvr¾ení"
 
 #: src/frontends/qt4/GuiDocument.cpp:1253
 msgid "Text Layout"
@@ -20764,9 +20762,9 @@ msgid "or"
 msgstr "nebo"
 
 #: src/frontends/qt4/GuiDocument.cpp:2019
-#, fuzzy, c-format
+#, c-format
 msgid "Modules required: %1$s."
-msgstr "Vy¾adované moduly: %1$s."
+msgstr "Po¾adované moduly: %1$s."
 
 #: src/frontends/qt4/GuiDocument.cpp:2028
 #, c-format
@@ -20887,9 +20885,8 @@ msgid "Select external file"
 msgstr "Vybrat externí soubor"
 
 #: src/frontends/qt4/GuiGraphics.cpp:77
-#, fuzzy
 msgid "automatically"
-msgstr "Automatická nápovìda"
+msgstr "automaticky"
 
 #: src/frontends/qt4/GuiGraphics.cpp:112
 msgid "Graphics"
@@ -21205,9 +21202,8 @@ msgstr ""
 "znaèkaze v¹ech pou¾itých polo¾ek."
 
 #: src/frontends/qt4/GuiPhantom.cpp:25
-#, fuzzy
 msgid "Phantom Settings"
-msgstr "&Hlavní nastavení"
+msgstr "Nastavení fantómu"
 
 #: src/frontends/qt4/GuiPrefs.cpp:139
 msgid "System files|#S#s"
@@ -21239,12 +21235,10 @@ msgstr "Doplòování"
 
 #: src/frontends/qt4/GuiPrefs.cpp:717 src/frontends/qt4/GuiPrefs.cpp:742
 #: src/frontends/qt4/GuiPrefs.cpp:832 src/frontends/qt4/GuiPrefs.cpp:859
-#, fuzzy
 msgid "Co&mmand:"
 msgstr "&Pøíkaz:"
 
 #: src/frontends/qt4/GuiPrefs.cpp:891
-#, fuzzy
 msgid "Screen Fonts"
 msgstr "Fonty na obrazovce"
 
@@ -21274,12 +21268,11 @@ msgstr "Vybrat adresáø pro dokumenty"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1378
 msgid "Set the path to the thesaurus dictionaries"
-msgstr ""
+msgstr "Nastavit cestu ke slovníkùm tezauru"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1387
-#, fuzzy
 msgid "Set the path to the Hunspell dictionaries"
-msgstr "Nastavit hloubku stromu"
+msgstr "Nastavit cesta ke slovníkùm pro Hunspell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1396
 msgid "Give a filename for the LyX server pipe"
@@ -21291,9 +21284,8 @@ msgid "Spellchecker"
 msgstr "Kontrola pravopisu"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1415
-#, fuzzy
 msgid "Native"
-msgstr "aktivní"
+msgstr "Nativní"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1421
 #, fuzzy
@@ -21315,7 +21307,6 @@ msgid "Converters"
 msgstr "Konvertory"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1801
-#, fuzzy
 msgid "File Formats"
 msgstr "Formáty souborù"
 
@@ -21350,7 +21341,6 @@ msgid "Printer"
 msgstr "Tiskárna"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2366 src/frontends/qt4/GuiPrefs.cpp:3095
-#, fuzzy
 msgid "User Interface"
 msgstr "U¾ivatelské rozhraní"
 
@@ -21371,7 +21361,6 @@ msgid "Shortcut"
 msgstr "Zkratka"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2644
-#, fuzzy
 msgid "Cursor, Mouse and Editing Functions"
 msgstr "Kurzor, my¹, editaèní funkce"
 
@@ -21961,7 +21950,6 @@ msgid "Exit LyX"
 msgstr "Ukonèit LyX"
 
 #: src/frontends/qt4/GuiView.cpp:806
-#, fuzzy
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr "LyX nelze ukonèit, proto¾e nìkteré dokumenty jsou právì zpracovávány."
 
@@ -22153,7 +22141,6 @@ msgid "Close document"
 msgstr "Nový dokument"
 
 #: src/frontends/qt4/GuiView.cpp:2419
-#, fuzzy
 msgid "Document could not be closed because it is being processed by LyX."
 msgstr "Dokument nelze uzavøít, jeliko¾ je právì zpracováván."
 
@@ -23283,9 +23270,8 @@ msgid "Greyed out"
 msgstr "Za¹edlé"
 
 #: src/insets/InsetPhantom.cpp:65
-#, fuzzy
 msgid "Phantom"
-msgstr "phantom"
+msgstr "Phantom"
 
 #: src/insets/InsetPhantom.cpp:66
 msgid "HPhantom"
@@ -23647,15 +23633,14 @@ msgid "Unknown tabular feature '%1$s'"
 msgstr "Neznámá vlastnost tabulky '%1$s'"
 
 #: src/mathed/InsetMathHull.cpp:1201
-#, fuzzy
 msgid "Bad math environment"
-msgstr "Gather prostøedí"
+msgstr "Vadné matematické prostøedí"
 
 #: src/mathed/InsetMathHull.cpp:1202
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
-msgstr ""
+msgstr "Výpoèet nemù¾e být proveden pro AMS matematické prostøedí.\nZmìòte typ mat. vzorce a zkuste znovu."
 
 #: src/mathed/InsetMathHull.cpp:1308 src/mathed/InsetMathHull.cpp:1317
 msgid "No number"
@@ -23714,9 +23699,9 @@ msgid "FormatRef: "
 msgstr "FormatRef: "
 
 #: src/mathed/InsetMathSubstack.cpp:85
-#, fuzzy, c-format
+#, c-format
 msgid "Can't change horizontal alignment in '%1$s'"
-msgstr "Nelze pøidat horizontální linky møí¾ky v '%1$s'"
+msgstr "Nelze zmìnit horizontální zarovnání v '%1$s'"
 
 #: src/mathed/MathMacroTemplate.cpp:494
 msgid "optional"
