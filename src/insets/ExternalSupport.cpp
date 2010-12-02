@@ -381,6 +381,17 @@ int writeExternal(InsetExternalParams const & params,
 
 	str = substituteCommands(params, str, format);
 	str = substituteOptions(params, str, format);
+	// If the template is a date, we must remove the newline at the end to
+	// avoid LaTeX errors like the one described in bug #4398
+	if (params.templatename() == "Date") {
+		// depending on the OS we have either \r\n or only \n
+		size_t pos = str.rfind('\r');
+		if (pos != string::npos)
+			str.erase(pos);
+		pos = str.rfind('\n');
+		if (pos != string::npos)
+			str.erase(pos);
+	}
 	// FIXME UNICODE
 	os << from_utf8(str);
 	return int(count(str.begin(), str.end(),'\n'));
