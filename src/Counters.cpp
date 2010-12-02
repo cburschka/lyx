@@ -157,6 +157,13 @@ Counter::StringMap & Counter::flatLabelStrings(bool in_appendix) const
 }
 
 
+Counters::Counters() : appendix_(false), subfloat_(false)
+{
+	layout_stack_.push_back(0);
+	counter_stack_.push_back(0);
+}
+
+
 void Counters::newCounter(docstring const & newc,
 			  docstring const & masterc, 
 			  docstring const & ls,
@@ -269,6 +276,7 @@ void Counters::reset()
 		it->second.reset();
 	counter_stack_.clear();
 	counter_stack_.push_back(from_ascii(""));
+	layout_stack_.clear();
 	layout_stack_.push_back(0);
 }
 
@@ -598,14 +606,7 @@ void Counters::setActiveLayout(Layout const & lay)
 
 void Counters::beginEnvironment()
 {
-	docstring cnt = counter_stack_.back();
-	counter_stack_.push_back(cnt);
-	deque<docstring>::const_iterator it = counter_stack_.begin();
-	deque<docstring>::const_iterator en = counter_stack_.end();
-//	docstring d;
-//	for (; it != en; ++it)
-//		d += " --> " + *it;
-//	LYXERR0(counter_stack_.size() << ": " << d);
+	counter_stack_.push_back(counter_stack_.back());
 }
 
 
@@ -613,12 +614,6 @@ void Counters::endEnvironment()
 {
 	LASSERT(!counter_stack_.empty(), return);
 	counter_stack_.pop_back();
-	deque<docstring>::const_iterator it = counter_stack_.begin();
-	deque<docstring>::const_iterator en = counter_stack_.end();
-//	docstring d;
-//	for (; it != en; ++it)
-//		d += " --> " + *it;
-//	LYXERR0(counter_stack_.size() << ": " << d);
 }
 
 

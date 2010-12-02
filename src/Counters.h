@@ -99,7 +99,7 @@ private:
 class Counters {
 public:
 	///
-	Counters() : appendix_(false), subfloat_(false) {}
+	Counters();
 	/// Add new counter newc having masterc as its master, 
 	/// ls as its label, and lsa as its appendix label.
 	void newCounter(docstring const & newc,
@@ -174,7 +174,7 @@ public:
 	/// Call this when entering things like footnotes, where there is now
 	/// no "last layout" and we want to restore the "last layout" on exit.
 	void clearLastLayout() { layout_stack_.push_back(0); }
-	/// Call then when existing things like footnotes.
+	/// Call this when existing things like footnotes.
 	void restoreLastLayout() { layout_stack_.pop_back(); }
 	/// 
 	void saveLastCounter()
