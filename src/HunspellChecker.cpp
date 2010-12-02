@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "HunspellChecker.h"
+#include "PersonalWordList.h"
 
 #include "LyXRC.h"
 #include "WordLangTuple.h"
@@ -42,6 +43,8 @@ namespace lyx {
 namespace {
 
 typedef map<std::string, Hunspell *> Spellers;
+typedef map<std::string, PersonalWordList *> LangPersonalWordList;
+
 typedef vector<WordLangTuple> IgnoreList;
 
 } // anon namespace
@@ -49,8 +52,7 @@ typedef vector<WordLangTuple> IgnoreList;
 
 struct HunspellChecker::Private
 {
-	Private() {}
-
+	Private();
 	~Private();
 
 	const string dictPath(int selector);
@@ -58,21 +60,31 @@ struct HunspellChecker::Private
 	bool haveDictionary(string const & lang, string & hpath);
 	bool haveDictionary(string const & lang);
 	Hunspell * addSpeller(string const & lang, string & hpath);
-	Hunspell * addSpeller(string const & lang);
-	Hunspell * speller(string const & lang);
+	Hunspell * addSpeller(Language const * lang);
+	Hunspell * speller(Language const * lang);
 	/// ignored words
 	bool isIgnored(WordLangTuple const & wl) const;
-
+	/// personal word list interface
+	void remove(WordLangTuple const & wl);
+	void insert(WordLangTuple const & wl);
+	bool learned(WordLangTuple const & wl);
 	/// the spellers
 	Spellers spellers_;
 	///
 	IgnoreList ignored_;
+	///
+	LangPersonalWordList personal_;
 
 	/// the location below system/user directory
 	/// there the aff+dic files lookup will happen
 	const string dictDirectory(void) const { return "dict"; }
 	int maxLookupSelector(void) const { return 3; }
 };
+
+
+HunspellChecker::Private::Private()
+{
+}
 
 
 HunspellChecker::Private::~Private()
@@ -82,6 +94,17 @@ HunspellChecker::Private::~Private()
 
 	for (; it != end; ++it) {
 		if ( 0 != it->second) delete it->second;
+	}
+
+	LangPersonalWordList::const_iterator pdit = personal_.begin();
+	LangPersonalWordList::const_iterator pdet = personal_.end();
+
+	for (; pdit != pdet; ++pdit) {
+		if ( 0 == pdit->second)
+			continue;
+		PersonalWordList * pd = pdit->second;
+		pd->save();
+		delete pd;
 	}
 }
 
@@ -98,10 +121,10 @@ const string HunspellChecker::Private::dictPath(int selector)
 {
 	switch (selector) {
 	case 2:
-		return addName(lyx::support::package().system_support().absFileName(),dictDirectory());
+		return addName(package().system_support().absFileName(),dictDirectory());
 		break;
 	case 1:
-		return addName(lyx::support::package().user_support().absFileName(),dictDirectory());
+		return addName(package().user_support().absFileName(),dictDirectory());
 		break;
 	default:
 		return lyxrc.hunspelldir_path;
@@ -143,12 +166,12 @@ bool HunspellChecker::Private::haveDictionary(string const & lang)
 }
 
 
-Hunspell * HunspellChecker::Private::speller(string const & lang)
+Hunspell * HunspellChecker::Private::speller(Language const * lang)
 {
-	Spellers::iterator it = spellers_.find(lang);
+	Spellers::iterator it = spellers_.find(lang->code());
 	if (it != spellers_.end())
 		return it->second;
-	
+
 	return addSpeller(lang);
 }
 
@@ -169,12 +192,24 @@ Hunspell * HunspellChecker::Private::addSpeller(string const & lang,string & pat
 }
 
 
-Hunspell * HunspellChecker::Private::addSpeller(string const & lang)
+Hunspell * HunspellChecker::Private::addSpeller(Language const * lang)
 {
 	Hunspell * h = 0;
 	for ( int p = 0; p < maxLookupSelector() && 0 == h; p++ ) {
 		string lpath = dictPath(p);
-		h = addSpeller(lang, lpath);
+		h = addSpeller(lang->code(), lpath);
+	}
+	if (0 != h) {
+		string const encoding = h->get_dic_encoding();
+		PersonalWordList * pd = new PersonalWordList(lang->lang());
+		pd->load();
+		personal_[lang->lang()] = pd;
+		docstring_list::const_iterator it = pd->begin();
+		docstring_list::const_iterator et = pd->end();
+		for (; it != et; ++it) {
+			string const word_to_add = to_iconv_encoding(*it, encoding);
+			h->add(word_to_add.c_str());
+		}
 	}
 	return h;
 }
@@ -190,6 +225,45 @@ bool HunspellChecker::Private::isIgnored(WordLangTuple const & wl) const
 			return true;
 	}
 	return false;
+}
+
+/// personal word list interface
+void HunspellChecker::Private::remove(WordLangTuple const & wl)
+{
+	Hunspell * h = speller(wl.lang());
+	if (!h)
+		return;
+	string const encoding = h->get_dic_encoding();
+	string const word_to_check = to_iconv_encoding(wl.word(), encoding);
+	h->remove(word_to_check.c_str());
+	PersonalWordList * pd = personal_[wl.lang()->lang()];
+	if (!pd)
+		return;
+	pd->remove(wl.word());
+}
+
+
+void HunspellChecker::Private::insert(WordLangTuple const & wl)
+{
+	Hunspell * h = speller(wl.lang());
+	if (!h)
+		return;
+	string const encoding = h->get_dic_encoding();
+	string const word_to_check = to_iconv_encoding(wl.word(), encoding);
+	h->add(word_to_check.c_str());
+	PersonalWordList * pd = personal_[wl.lang()->lang()];
+	if (!pd)
+		return;
+	pd->insert(wl.word());
+}
+
+
+bool HunspellChecker::Private::learned(WordLangTuple const & wl)
+{
+	PersonalWordList * pd = personal_[wl.lang()->lang()];
+	if (!pd)
+		return false;
+	return pd->exists(wl.word());
 }
 
 
@@ -209,23 +283,23 @@ SpellChecker::Result HunspellChecker::check(WordLangTuple const & wl)
 	if (d->isIgnored(wl))
 		return WORD_OK;
 
-	Hunspell * h = d->speller(wl.lang()->code());
+	Hunspell * h = d->speller(wl.lang());
 	if (!h)
 		return WORD_OK;
 	int info;
 
 	string const encoding = h->get_dic_encoding();
 	string const word_to_check = to_iconv_encoding(wl.word(), encoding);
-	
+
 	if (h->spell(word_to_check.c_str(), &info))
-		return WORD_OK;
+		return d->learned(wl) ? LEARNED_WORD : WORD_OK;
 
 	if (info & SPELL_COMPOUND) {
 		// FIXME: What to do with that?
 		LYXERR(Debug::FILES, "Hunspell compound word found " << word_to_check);
 	}
 	if (info & SPELL_FORBIDDEN) {
-		// FIXME: What to do with that?
+		// This was removed from personal dictionary
 		LYXERR(Debug::FILES, "Hunspell explicit forbidden word found " << word_to_check);
 	}
 
@@ -241,11 +315,16 @@ void HunspellChecker::advanceChangeNumber()
 
 void HunspellChecker::insert(WordLangTuple const & wl)
 {
-	string const word_to_check = to_utf8(wl.word());
-	Hunspell * h = d->speller(wl.lang()->code());
-	if (!h)
-		return;
-	h->add(word_to_check.c_str());
+	d->insert(wl);
+	LYXERR(Debug::GUI, "learn word: \"" << wl.word() << "\"") ;
+	advanceChangeNumber();
+}
+
+
+void HunspellChecker::remove(WordLangTuple const & wl)
+{
+	d->remove(wl);
+	LYXERR(Debug::GUI, "unlearn word: \"" << wl.word() << "\"") ;
 	advanceChangeNumber();
 }
 
@@ -253,6 +332,7 @@ void HunspellChecker::insert(WordLangTuple const & wl)
 void HunspellChecker::accept(WordLangTuple const & wl)
 {
 	d->ignored_.push_back(wl);
+	LYXERR(Debug::GUI, "ignore word: \"" << wl.word() << "\"") ;
 	advanceChangeNumber();
 }
 
@@ -261,7 +341,7 @@ void HunspellChecker::suggest(WordLangTuple const & wl,
 	docstring_list & suggestions)
 {
 	suggestions.clear();
-	Hunspell * h = d->speller(wl.lang()->code());
+	Hunspell * h = d->speller(wl.lang());
 	if (!h)
 		return;
 	string const encoding = h->get_dic_encoding();

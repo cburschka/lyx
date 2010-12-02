@@ -1552,10 +1552,13 @@ Alias('tex2lyx', tex2lyx)
 #
 if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
     src_post_files.append('AspellChecker.cpp')
+    src_post_files.append('PersonalWordList.cpp')
 elif env.has_key('USE_ENCHANT') and env['USE_ENCHANT']:
     src_post_files.append('EnchantChecker.cpp')
+    src_post_files.append('PersonalWordList.cpp')
 elif env.has_key('USE_HUNSPELL') and env['USE_HUNSPELL']:
     src_post_files.append('HunspellChecker.cpp')
+    src_post_files.append('PersonalWordList.cpp')
 
 # tells scons how to get these moced files, although not all moced files are needed
 # (or are actually generated).

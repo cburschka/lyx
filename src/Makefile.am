@@ -49,14 +49,17 @@ endif
 
 if USE_ASPELL
 ASPELL = AspellChecker.cpp AspellChecker.h
+PWL = PersonalWordList.cpp PersonalWordList.h
 endif
 
 if USE_ENCHANT
 ENCHANT = EnchantChecker.cpp EnchantChecker.h
+PWL = PersonalWordList.cpp PersonalWordList.h
 endif
 
 if USE_HUNSPELL
 HUNSPELL = HunspellChecker.cpp HunspellChecker.h
+PWL = PersonalWordList.cpp PersonalWordList.h
 endif
 
 # These four objects are linked as object files as they are not
@@ -77,6 +80,7 @@ lyx_SOURCES = \
 	Dimension.h \
 	$(ENCHANT) \
 	$(HUNSPELL) \
+	$(PWL) \
 	PrinterParams.cpp \
 	PrinterParams.h \
 	Thesaurus.cpp \
