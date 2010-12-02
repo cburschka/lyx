@@ -2807,19 +2807,21 @@ void LyXAction::init()
 		{ LFUN_SERVER_GET_FILENAME, "server-get-filename", ReadOnly, System },
 /*!
  * \var lyx::FuncCode lyx::LFUN_SERVER_GOTO_FILE_ROW
- * \li Action: Sets the cursor position based on the row number of generated TeX file.
+ * \li Action: Sets the cursor position in LyX based on the row number of generated TeX file.
  * \li Notion: This can be useful for DVI inverse-search or detection of the problematic
                line from LaTeX compilation. Note that before this function can be used
                export to LaTeX output must occur (in order to map the row numbers).
  * \li Syntax: server-goto-file-row <FILE[.ext]> <ROW_NUMBER>
- * \li Params: <FILE>: the filename. Environment variables are expanded in the path.
+ * \li Params: <FILE>: the path and filename. Environment variables are expanded in the path.
                        In case this LFUN does not work make sure you are giving correct
                        path to the file.\n
                        If the file is located inside LyX temporary directory it will be
                        mapped back into the appropriate opened buffer (e.g. for the case
-                       of generated .tex file).
+                       of generated .tex file).\n
                  .ext: extensions will be automatically replaced by .lyx.\n
                  <ROW_NUMBER> The row number of the LaTeX file to which to go.
+ * \li Sample: server-goto-file-row /home/user/example.lyx 41
+ * \li Sample: server-goto-file-row /tmp/lyx_tmpdir.XM3088/lyx_tmpbuf0/example.tex 41
  * \li Origin: Edmar, 23 Dec 1998
  * \endvar
  */
