@@ -94,55 +94,55 @@ int PDFOptions::writeLaTeX(OutputParams & runparams, odocstream & os,
 	int lines = 0;
 	// FIXME Unicode
 	string opt;
+	string hyperset;
 	
 	// since LyX uses unicode, also set the PDF strings to unicode strings with the
 	// hyperref option "unicode"
-	opt += "unicode=true, ";
-	
-	// try to extract author and title from document when none is
-	// explicitely given
-	if (pdfusetitle && title.empty() && author.empty())
-		opt += "pdfusetitle,";
-	opt += "\n ";
+	opt += "unicode=true,";
 
-	opt += "bookmarks=" + convert<string>(bookmarks) + ',';
-	if (bookmarks) {
-		opt += "bookmarksnumbered=" + convert<string>(bookmarksnumbered) + ',';
-		opt += "bookmarksopen=" + convert<string>(bookmarksopen) + ',';
-		if (bookmarksopen)
-			opt += "bookmarksopenlevel="
-			    + convert<string>(bookmarksopenlevel) + ',';
+	// only use the hyperref settings if hyperref is enabled by the user
+	// see bug #7052
+	if(use_hyperref) {
+		// try to extract author and title from document when none is
+		// explicitly given
+		if (pdfusetitle && title.empty() && author.empty())
+			opt += "pdfusetitle,";
+		opt += "\n ";
+		opt += "bookmarks=" + convert<string>(bookmarks) + ',';
+		if (bookmarks) {
+			opt += "bookmarksnumbered=" + convert<string>(bookmarksnumbered) + ',';
+			opt += "bookmarksopen=" + convert<string>(bookmarksopen) + ',';
+			if (bookmarksopen)
+				opt += "bookmarksopenlevel="
+				+ convert<string>(bookmarksopenlevel) + ',';
+		}
+		opt += "\n ";
+		opt += "breaklinks=" + convert<string>(breaklinks) + ',';
+		opt += "pdfborder={0 0 ";
+		opt += (pdfborder ? '0' : '1');
+		opt += "},";
+		opt += "backref=" + backref + ',';
+		opt += "colorlinks=" + convert<string>(colorlinks) + ',';
+		if (!pagemode.empty())
+			opt += "pdfpagemode=" + pagemode + ',';
+
+		// load the pdftitle etc. as hypersetup, otherwise you'll get
+		// LaTeX-errors when using non-latin characters
+		if (!title.empty())
+			hyperset += "pdftitle={" + title + "},";
+		if (!author.empty())			
+			hyperset += "\n pdfauthor={" + author + "},";
+		if (!subject.empty())
+			hyperset += "\n pdfsubject={" + subject + "},";
+		if (!keywords.empty())
+			hyperset += "\n pdfkeywords={" + keywords + "},";
+		if (!quoted_options.empty()){
+			hyperset += "\n ";
+			hyperset += quoted_options;
+		}
+		hyperset = rtrim(hyperset,",");
+
 	}
-	opt += "\n ";
-	opt += "breaklinks=" + convert<string>(breaklinks) + ',';
-
-	opt += "pdfborder={0 0 ";
-	opt += (pdfborder ? '0' : '1');
-	opt += "},";
-
-	opt += "backref=" + backref + ',';
-	opt += "colorlinks=" + convert<string>(colorlinks) + ',';
-	if (!pagemode.empty())
-		opt += "pdfpagemode=" + pagemode + ',';
-	
-
-
-	// load the pdftitle etc. as hypersetup, otherwise you'll get
-	// LaTeX-errors when using non-latin characters
-	string hyperset;
-	if (!title.empty())
-		hyperset += "pdftitle={" + title + "},";
-	if (!author.empty())
-		hyperset += "\n pdfauthor={" + author + "},";
-	if (!subject.empty())
-		hyperset += "\n pdfsubject={" + subject + "},";
-	if (!keywords.empty())
-		hyperset += "\n pdfkeywords={" + keywords + "},";
-	if (!quoted_options.empty()){
-		hyperset += "\n ";
-		hyperset += quoted_options;
-	}
-	hyperset = rtrim(hyperset,",");
 
 	// check if the hyperref settings use an encoding that exceeds
 	// ours. If so, we have to switch to utf8.
