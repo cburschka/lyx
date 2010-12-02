@@ -2186,11 +2186,11 @@ void LyXAction::init()
 	       <REV2>: Newer file. Used only if REV1 > 0.\n
                If no parameter is given, interactive dialog will be shown.
  * \li Sample: Compare current document against last commit\n
-               vc-compare 0
- * \li Sample: Compare current document against current revision - 5 commits\n
-               vc-compare -5
- * \li Sample: Compare revisions 120 and 155\n
-               vc-compare 120 155
+	       vc-compare 0\n
+               Compare current document against current revision - 5 commits\n
+	       vc-compare -5\n
+               Compare revisions 120 and 155\n
+	       vc-compare 120 155
  * \li Origin: sanda, 12 Feb 2010
  * \endvar
  */
@@ -2345,8 +2345,8 @@ void LyXAction::init()
                        set-interline-space|set-border-lines|tabular-valign-top|
                        tabular-valign-middle|tabular-valign-bottom \n
                <ARG>: additional argument for some commands, use debug mode to explore its values.
- * \li Sample: inset-modify note Note Comment
- * \li Sample: inset-modify changetype Ovalbox
+ * \li Sample: inset-modify note Note Comment \n
+	       inset-modify changetype Ovalbox
  * \endvar
  */
 		{ LFUN_INSET_MODIFY, "inset-modify", AtPoint, Edit },
@@ -2820,7 +2820,7 @@ void LyXAction::init()
                  .ext: extensions will be automatically replaced by .lyx.\n
                  <ROW_NUMBER> The row number of the LaTeX file to which to go.
  * \li Sample: server-goto-file-row /home/user/example.lyx 41\n
- * \li Sample: server-goto-file-row /tmp/lyx_tmpdir.XM3088/lyx_tmpbuf0/example.tex 41
+               server-goto-file-row /tmp/lyx_tmpdir.XM3088/lyx_tmpbuf0/example.tex 41
  * \li Origin: Edmar, 23 Dec 1998
  * \endvar
  */
