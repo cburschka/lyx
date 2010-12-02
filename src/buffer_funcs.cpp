@@ -184,6 +184,7 @@ int countWords(DocIterator const & from, DocIterator const & to)
 {
 	int count = 0;
 	bool inword = false;
+	
 	for (DocIterator dit = from ; dit != to ; ) {
 		if (!dit.inTexted()) {
 			dit.forwardPos();
@@ -192,9 +193,11 @@ int countWords(DocIterator const & from, DocIterator const & to)
 		
 		Paragraph const & par = dit.paragraph();
 		pos_type const pos = dit.pos();
-		
+
 		// Copied and adapted from isWordSeparator() in Paragraph
-		if (pos != dit.lastpos() && !par.isDeleted(pos)) {
+		if (pos == dit.lastpos()) {
+			inword = false;
+		} else if (!par.isDeleted(pos)) {
 			Inset const * ins = par.getInset(pos);
 			if (ins && !ins->producesOutput()) {
 				//skip this inset
