@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 407
+\lyxformat 410
 \begin_document
 \begin_header
 \textclass scrbook
@@ -74,7 +74,7 @@ End
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -6742,6 +6742,46 @@ ip
  page of the file --- Evince or xpdf --- for these cases you can use external
  call of synctex.
  Please study the prepared examples in the Preferences dialog.
+ The values replaced in the setting: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$n
+\end_layout
+
+\end_inset
+
+ for row number, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$t
+\end_layout
+
+\end_inset
+
+ for exported temporary .tex file, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$o
+\end_layout
+
+\end_inset
+
+ exported output file (either dvi or pdf, depending on which one exists
+ in the temp dir).
+ 
+\end_layout
+
+\begin_layout Standard
+When viewing, LyX dynamically choose proper preview format based on the
+ presence of .dvi or .pdf file in the temporary directory (i.e.
+ what format have you used for viewing this particular document).
+ 
 \end_layout
 
 \begin_layout Chapter
