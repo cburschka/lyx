@@ -154,7 +154,7 @@ void InsetPhantom::draw(PainterInfo & pi, int x, int y) const
 	ColorCode const origcol = pi.base.font.color();
 	pi.base.font.setColor(Color_special);
 	pi.base.font.setColor(origcol);
-	Dimension const dim = dimension(*pi.base.bv);
+	Dimension const dim = Inset::dimension(*pi.base.bv);
 
 	if (params_.type == InsetPhantomParams::Phantom ||
 		params_.type == InsetPhantomParams::VPhantom) {
@@ -261,6 +261,8 @@ void InsetPhantom::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY:
 		cur.recordUndoInset(ATOMIC_UNDO, this);
 		string2params(to_utf8(cmd.argument()), params_);
+		setButtonLabel();
+		cur.forceBufferUpdate();
 		break;
 
 	case LFUN_INSET_DIALOG_UPDATE:
