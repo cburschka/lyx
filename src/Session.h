@@ -16,10 +16,10 @@
 #include "support/FileName.h"
 #include "support/types.h"
 
-#include <string>
 #include <deque>
-#include <vector>
 #include <map>
+#include <string>
+#include <vector>
 
 /** This session file maintains
   1. the latest documents loaded (lastfiles)
