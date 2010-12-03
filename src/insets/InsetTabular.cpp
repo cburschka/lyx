@@ -3226,7 +3226,7 @@ bool InsetTableCell::allowParagraphCustomization(idx_type) const
 bool InsetTableCell::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
-	bool enabled;
+	bool enabled = true;
 	switch (cmd.action()) {
 	case LFUN_LAYOUT:
 		enabled = !forcePlainLayout();
@@ -3234,6 +3234,12 @@ bool InsetTableCell::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_LAYOUT_PARAGRAPH:
 		enabled = allowParagraphCustomization();
 		break;
+
+	case LFUN_MATH_DISPLAY:
+		if (!hasFixedWidth()) {
+			enabled = false;
+			break;
+		} //fall-through
 	default:
 		return InsetText::getStatus(cur, cmd, status);
 	}

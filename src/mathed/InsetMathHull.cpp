@@ -1480,9 +1480,25 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_MATH_MUTATE: {
-		HullType ht = hullType(cmd.argument());
+		HullType const ht = hullType(cmd.argument());
 		status.setOnOff(type_ == ht);
-		// fall through
+		status.setEnabled(true);
+
+		if (ht != hullSimple) {
+			Cursor tmpcur = cur;
+			while (!tmpcur.empty()) {
+				InsetCode code = tmpcur.inset().lyxCode();
+				if (code == BOX_CODE) {
+					return true;
+				} else if (code == TABULAR_CODE) {
+					FuncRequest tmpcmd(LFUN_MATH_DISPLAY);
+					if (tmpcur.getStatus(tmpcmd, status) && !status.enabled())
+						return true;
+				}
+				tmpcur.pop_back();
+			}
+		}
+		return true;
 	}
 	case LFUN_MATH_DISPLAY: {
 		bool enable = true;
