@@ -1624,7 +1624,7 @@ contributers = [
                  "22 February 2005",
                  u"Bug fixes, feedback on LyX behaviour on the Mac, and improvements to DocBook export"),
 
-     contributer(u"venoom00",
+     contributer(u"venom00",
                  "venom00 () arcadiaclub ! com",
                  "GPL",
                  "I love GPL, what about you?",
