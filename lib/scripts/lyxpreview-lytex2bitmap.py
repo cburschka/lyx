@@ -222,8 +222,25 @@ def main(argv):
         # FIXME: skip unnecessary dvips trial in legacy_conversion_step2
         return legacy_conversion_step2(latex_file, dpi, output_format)
 
-    # Run the dvi file through dvipng.
+    # The dvi output file name
     dvi_file = latex_file_re.sub(".dvi", latex_file)
+    
+    # Check for PostScript specials in the dvi, badly supported by dvipng
+    # This is required for correct rendering of PSTricks and TikZ
+    dv2dt = find_exe_or_terminate(["dv2dt"], path)
+    dv2dt_call = '%s %s' % (dv2dt, dvi_file)
+ 
+    # The output from dv2dt goes to stdout
+    dv2dt_status, dv2dt_output = run_command(dv2dt_call)
+    psliteral_re = re.compile("^special[1-4] [0-9]+ '(\"|ps:)")
+    for dtl_line in dv2dt_output.split("\n"):
+        if psliteral_re.match(dtl_line) != None:
+            # Literal PostScript special detected!
+            # Fallback to legacy conversion
+            vec = [argv[0], argv[2], argv[3], argv[1], argv[4], argv[5], latex]
+            return legacy_conversion(vec)
+
+    # Run the dvi file through dvipng.
     dvipng_call = '%s -Ttight -depth -height -D %d -fg "%s" -bg "%s" "%s"' \
                   % (dvipng, dpi, fg_color, bg_color, dvi_file)
 
