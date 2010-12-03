@@ -63,6 +63,9 @@ What's new
 - Fix crash when using a computer algebra system from within AMS math
   environments (bug 7058).
 
+- Fix crash when pressing up or down arrow while editing a macro name and
+  an inline completion is suggested (bug 7068).
+
 - Fix insertion of a user math macro through the math-insert lfun when a
   selection is present (bug 6939).
 

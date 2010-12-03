@@ -2535,6 +2535,12 @@ DocIterator const & BufferView::inlineCompletionPos() const
 }
 
 
+bool BufferView::fixInlineCompletionPos()
+{
+	return d->inlineCompletionPos_.fixIfBroken();
+}
+
+
 bool samePar(DocIterator const & a, DocIterator const & b)
 {
 	if (a.empty() && b.empty())
