@@ -372,8 +372,8 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 		// to close. 
 		// is this tag itself pending?
 		// non-const iterators because we may call erase().
-		TagDeque::iterator dit = pending_tags_.begin();
-		TagDeque::iterator const den = pending_tags_.end();
+		TagStack::iterator dit = pending_tags_.begin();
+		TagStack::iterator const den = pending_tags_.end();
 		for (; dit != den; ++dit) {
 			if (dit->tag_ == etag.tag_) {
 				// it was pending, so we just erase it
