@@ -451,7 +451,7 @@ docstring Counters::theCounter(docstring const & counter,
 	if (smit != sm.end())
 		return counterLabel(smit->second, lang);
 
-	deque<docstring> callers;
+	vector<docstring> callers;
 	docstring const & fls = flattenLabelString(counter, appendix(),
 						   lang, callers);
 	sm[lang] = fls;
@@ -462,7 +462,7 @@ docstring Counters::theCounter(docstring const & counter,
 docstring Counters::flattenLabelString(docstring const & counter, 
 				       bool in_appendix,
 				       string const & lang,
-				       deque<docstring> & callers) const
+				       vector<docstring> & callers) const
 {
 	docstring label;
 
