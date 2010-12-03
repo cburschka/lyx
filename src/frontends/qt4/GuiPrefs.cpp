@@ -1418,13 +1418,13 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 #undef CONNECT_APPLESPELL
 #endif
 #if defined(USE_ASPELL)
-	spellcheckerCB->addItem("Aspell", QString("aspell"));
+	spellcheckerCB->addItem(qt_("Aspell"), QString("aspell"));
 #endif
 #if defined(USE_ENCHANT)
-	spellcheckerCB->addItem("Enchant", QString("enchant"));
+	spellcheckerCB->addItem(qt_("Enchant"), QString("enchant"));
 #endif
 #if defined(USE_HUNSPELL)
-	spellcheckerCB->addItem("Hunspell", QString("hunspell"));
+	spellcheckerCB->addItem(qt_("Hunspell"), QString("hunspell"));
 #endif
 
 	#if defined(CONNECT_APPLESPELL) || defined(USE_ASPELL) || defined(USE_ENCHANT) || defined(USE_HUNSPELL)
