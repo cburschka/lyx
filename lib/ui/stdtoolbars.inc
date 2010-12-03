@@ -384,8 +384,7 @@ ToolbarSet
 		Item "cdots" "math-insert \cdots"
 		Item "vdots" "math-insert \vdots"
 		Item "ddots" "math-insert \ddots"
-# Do not show it as long as it does not load mathdots automatically
-#		Item "iddots" "math-insert \iddots"
+		Item "iddots" "math-insert \iddots"
 	End
 
 	Toolbar "latex_deco" "Frame Decorations"
