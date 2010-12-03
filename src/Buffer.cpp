@@ -3013,22 +3013,23 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 {
 	//FIXME: This does not work for child documents yet.
 	LASSERT(code == CITE_CODE, /**/);
+
 	// Check if the label 'from' appears more than once
-	vector<docstring> labels;
-	string paramName;
 	checkBibInfoCache();
+
 	BiblioInfo const & keys = masterBibInfo();
 	BiblioInfo::const_iterator bit  = keys.begin();
 	BiblioInfo::const_iterator bend = keys.end();
+	vector<docstring> labels;
 
 	for (; bit != bend; ++bit)
 		// FIXME UNICODE
 		labels.push_back(bit->first);
-	paramName = "key";
 
 	if (count(labels.begin(), labels.end(), from) > 1)
 		return;
 
+	string const paramName = "key";
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		if (it->lyxCode() == code) {
 			InsetCommand * inset = it->asInsetCommand();
