@@ -239,8 +239,8 @@ Menuset
 
 	Menu "insert_special"
 		Item "Symbols...|b" "dialog-show symbols"
-		Item "Superscript|S" "command-sequence math-mode on; math-superscript; math-insert \text;"
-		Item "Subscript|u" "command-sequence math-mode on; math-subscript; math-insert \text;"
+		Item "Superscript|S" "script-insert superscript"
+		Item "Subscript|u" "script-insert subscript"
 		Item "Hyphenation Point|P" "hyphenation-point-insert"
 		Item "Protected Hyphen|y" "specialchar-insert nobreakdash"
 		Item "Ligature Break|k" "specialchar-insert ligature-break"
