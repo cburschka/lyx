@@ -50,6 +50,8 @@ private:
 	bool descendable(BufferView const &) const { return true; }
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///	
+	void drawBackground(PainterInfo & pi, int x, int y) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
