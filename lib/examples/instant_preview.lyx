@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 385
+\lyxformat 410
 \begin_document
 \begin_header
 \textclass article
@@ -8,6 +8,11 @@
 \xyoption{arc} 
 \usepackage{qtree}
 \usepackage{tipa}
+\usepackage{pstricks}
+\usepackage{pst-plot}
+\usepackage{rotating}
+\usepackage{tikz}
+\usetikzlibrary{scopes}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -18,7 +23,7 @@
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -26,6 +31,7 @@
 
 \graphics default
 \default_output_format default
+\output_sync 0
 \bibtex_command default
 \index_command default
 \paperfontsize default
@@ -36,11 +42,13 @@
 \use_amsmath 1
 \use_esint 1
 \use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \index Index
 \shortcut idx
 \color #008000
@@ -66,12 +74,27 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-The following packages are needed to be installed at your computer in order
- to typeset the document properly and have instant preview working:
+In order to properly typeset the document and have instant preview working,
+ the following packages have to be installed:
 \end_layout
 
 \begin_layout LyX-Code
-xy.sty, qtree.sty, tipa.sty
+xy, qtree, tipa, pstricks, pst-plot, rotating, tikz, pgf
+\end_layout
+
+\begin_layout Standard
+Due to the use of postscript specials, only the Postscript or PDF (ps2pdf)
+ output formats will correctly render the included images.
+ However, the PDF (XeTeX) output seems to also work, while trying to typeset
+ the document with 
+\family typewriter
+pdflatex
+\family default
+ or 
+\family typewriter
+pdflualatex
+\family default
+ will generate errors.
 \end_layout
 
 \begin_layout Section
@@ -1604,6 +1627,832 @@ sigma$ $
 mu$ $
 \backslash
 mu$ ]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+PSTricks
+\end_layout
+
+\begin_layout Standard
+Some simple graphing examples.
+\end_layout
+
+\begin_layout Subsection
+Function plotting
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pspicture*}(-1,-3.5)(10.5,3.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+psaxes{->}(0,0)(0,-3)(10,3)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+uput[-90](10,0){$x$}
+\backslash
+uput[0](0,3){$f(x)$}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+psplot[linecolor=red,linewidth=1pt]{0.1}{10}{ x ln }
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pspicture*}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Inline data plotting
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Preview
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pspicture*}(-1.5,-1.5)(11,5)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+psaxes{->}(0,0)(0,0)(10,5)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+psset{linewidth=2.5pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+rput(5.0,-1.0){Speed [MPH]}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+rput(-1.0,1.0){
+\backslash
+begin{rotate}{90}Cost [Dollars]
+\backslash
+end{rotate}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+savedata{
+\backslash
+mydata}[{{0,0},{1.3,0.32},{5.5,1.1},{6.5,1.15},{8.1,1.28},{10,4}}]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dataplot[plotstyle=curve,showpoints=true,dotstyle=triangle,linecolor=blue]{
+\backslash
+mydata} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pspicture*}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lissajous curves
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pspicture*}(-1.1,-1.1)(1.1,1.1)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+parametricplot[plotstyle=line,plotpoints=50,linecolor=red]{0}{8}{50 t mul
+ cos 100 t mul sin}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pspicture*}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pspicture*}(-1.1,-1.1)(1.1,1.1)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+parametricplot[plotstyle=line,plotpoints=100,linecolor=red]{0}{8}{150 t
+ mul cos 100 t mul sin}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pspicture*}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pspicture*}(-1.1,-1.1)(1.1,1.1)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+parametricplot[plotstyle=line,plotpoints=150,linecolor=red]{0}{8}{150 t
+ mul cos 200 t mul sin}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pspicture*}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pspicture*}(-1.1,-1.1)(1.1,1.1)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+parametricplot[plotstyle=line,plotpoints=200,linecolor=red]{0}{8}{250 t
+ mul cos 200 t mul sin}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pspicture*}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+TikZ
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://media.texample.net/tikz/examples/TEX/free-body-diagrams.tex
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+iangle{35} % Angle of the inclined plane
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+down{-90}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+arcr{0.5cm} % Radius of the arc used to indicate angles
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[
+\end_layout
+
+\begin_layout Plain Layout
+
+    force/.style={>=latex,draw=blue,fill=blue},
+\end_layout
+
+\begin_layout Plain Layout
+
+    axis/.style={densely dashed,gray,font=
+\backslash
+small},
+\end_layout
+
+\begin_layout Plain Layout
+
+    M/.style={rectangle,draw,fill=lightgray,minimum size=0.5cm,thin},
+\end_layout
+
+\begin_layout Plain Layout
+
+    m/.style={rectangle,draw=black,fill=lightgray,minimum size=0.3cm,thin},
+\end_layout
+
+\begin_layout Plain Layout
+
+    plane/.style={draw=black,fill=blue!10},
+\end_layout
+
+\begin_layout Plain Layout
+
+    string/.style={draw=red, thick},
+\end_layout
+
+\begin_layout Plain Layout
+
+    pulley/.style={thick},
+\end_layout
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+matrix[column sep=1cm] {
+\end_layout
+
+\begin_layout Plain Layout
+
+    %% Sketch
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[plane] (0,-1) coordinate (base)
+\end_layout
+
+\begin_layout Plain Layout
+
+                     -- coordinate[pos=0.5] (mid) ++(
+\backslash
+iangle:3) coordinate (top)
+\end_layout
+
+\begin_layout Plain Layout
+
+                     |- (base) -- cycle;
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+path (mid) node[M,rotate=
+\backslash
+iangle,yshift=0.25cm] (M) {};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[pulley] (top) -- ++(
+\backslash
+iangle:0.25) circle (0.25cm)
+\end_layout
+
+\begin_layout Plain Layout
+
+                   ++ (90-
+\backslash
+iangle:0.5) coordinate (pulley);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[string] (M.east) -- ++(
+\backslash
+iangle:1.5cm) arc (90+
+\backslash
+iangle:0:0.25)
+\end_layout
+
+\begin_layout Plain Layout
+
+                  -- ++(0,-1) node[m] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[->] (base)++(
+\backslash
+arcr,0) arc (0:
+\backslash
+iangle:
+\backslash
+arcr);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+path (base)++(
+\backslash
+iangle*0.5:
+\backslash
+arcr+5pt) node {$
+\backslash
+alpha$};
+\end_layout
+
+\begin_layout Plain Layout
+
+    %%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+&
+\end_layout
+
+\begin_layout Plain Layout
+
+    %% Free body diagram of M
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+begin{scope}[rotate=
+\backslash
+iangle]
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+node[M,transform shape] (M) {};
+\end_layout
+
+\begin_layout Plain Layout
+
+        % Draw axes and help lines
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        {[axis,->]
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\backslash
+draw (0,-1) -- (0,2) node[right] {$+y$};
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\backslash
+draw (M) -- ++(2,0) node[right] {$+x$};
+\end_layout
+
+\begin_layout Plain Layout
+
+            % Indicate angle.
+ The code is a bit awkward.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\backslash
+draw[solid,shorten >=0.5pt] (
+\backslash
+down-
+\backslash
+iangle:
+\backslash
+arcr)
+\end_layout
+
+\begin_layout Plain Layout
+
+                arc(
+\backslash
+down-
+\backslash
+iangle:
+\backslash
+down:
+\backslash
+arcr);
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\backslash
+node at (
+\backslash
+down-0.5*
+\backslash
+iangle:1.3*
+\backslash
+arcr) {$
+\backslash
+alpha$};
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        % Forces
+\end_layout
+
+\begin_layout Plain Layout
+
+        {[force,->]
+\end_layout
+
+\begin_layout Plain Layout
+
+            % Assuming that Mg = 1.
+ The normal force will therefore be cos(alpha)
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\backslash
+draw (M.center) -- ++(0,{cos(
+\backslash
+iangle)}) node[above right] {$N$};
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\backslash
+draw (M.west) -- ++(-1,0) node[left] {$f_R$};
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\backslash
+draw (M.east) -- ++(1,0) node[above] {$T$};
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+end{scope}
+\end_layout
+
+\begin_layout Plain Layout
+
+    % Draw gravity force.
+ The code is put outside the rotated
+\end_layout
+
+\begin_layout Plain Layout
+
+    % scope for simplicity.
+ No need to do any angle calculations.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[force,->] (M.center) -- ++(0,-1) node[below] {$Mg$};
+\end_layout
+
+\begin_layout Plain Layout
+
+    %%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+&
+\end_layout
+
+\begin_layout Plain Layout
+
+    %%%
+\end_layout
+
+\begin_layout Plain Layout
+
+    % Free body diagram of m
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[m] (m) {};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[axis,->] (m) -- ++(0,-2) node[left] {$+$};
+\end_layout
+
+\begin_layout Plain Layout
+
+    {[force,->]
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+draw (m.north) -- ++(0,1) node[above] {$T'$};
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+draw (m.south) -- ++(0,-1) node[right] {$mg$};
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
