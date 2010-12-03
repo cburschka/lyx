@@ -133,7 +133,7 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_be_strict true
@@ -14399,9 +14399,9 @@ HTML*
 \end_inset
 
  These tags control XHTML output.
- See 
+ See section 
 \begin_inset CommandInset ref
-LatexCommand formatted
+LatexCommand ref
 reference "sec:Tags-for-XHTML"
 
 \end_inset
