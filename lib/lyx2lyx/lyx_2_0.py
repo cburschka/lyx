@@ -2392,6 +2392,8 @@ def revert_labeling(document):
     i = 0
     while True:
         i = find_token_exact(document.body, "\\begin_layout Labeling", i)
+        if i == -1:
+            return
         document.body[i] = "\\begin_layout List"
 
 
