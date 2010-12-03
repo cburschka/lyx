@@ -14,6 +14,7 @@
 #include "support/debug.h"
 #include "support/docstring.h"
 #include "support/environment.h"
+#include "support/lstrings.h"
 #include "support/Package.h"
 #include "support/unicode.h"
 
@@ -118,6 +119,14 @@ void Messages::init()
 
 	// Reset default language;
 	setDefaultLanguage();
+}
+
+
+bool Messages::available() const
+{
+	string const test = languageTestString();
+	string const trans = to_utf8(get(test));
+	return !trans.empty() && trans != test;
 }
 
 

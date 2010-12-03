@@ -30,7 +30,7 @@ class Lexer;
 class Language {
 public:
 	///
-	Language() : rightToLeft_(false) {}
+	Language() : rightToLeft_(false), translated_(false) {}
 	/// LyX language name
 	std::string const & lang() const { return lang_; }
 	/// Babel language name
@@ -43,6 +43,8 @@ public:
 	std::string const & display() const { return display_; }
 	/// is this a RTL language?
 	bool rightToLeft() const { return rightToLeft_; }
+	/// Is an (at least partial) translation of this language available?
+	bool translated() const { return translated_; }
 	/// default encoding
 	Encoding const * encoding() const { return encoding_; }
 	///
@@ -98,6 +100,8 @@ private:
 	bool internal_enc_;
 	///
 	bool as_babel_options_;
+	///
+	bool translated_;
 };
 
 

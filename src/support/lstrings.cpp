@@ -15,6 +15,7 @@
 #include "support/lstrings.h"
 
 #include "support/convert.h"
+#include "support/gettext.h"
 #include "support/qstring_helpers.h"
 #include "support/textutils.h"
 
@@ -1280,6 +1281,12 @@ int findToken(char const * const str[], string const & search_token)
 	if (!str[i][0])
 		i = -1;
 	return i;
+}
+
+
+string const languageTestString()
+{
+	return N_("[[Replace with the code of your language]]");
 }
 
 

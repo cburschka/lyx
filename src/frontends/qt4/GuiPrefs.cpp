@@ -2180,12 +2180,20 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 	defaultDecimalPointLE->setInputMask("X; ");
 	defaultDecimalPointLE->setMaxLength(1);
 
-	// FIXME: This is wrong, we need filter this list based on the available
-	// translation.
+	set<string> added;
 	uiLanguageCO->blockSignals(true);
 	uiLanguageCO->addItem(qt_("Default"), toqstr("auto"));
 	for (int i = 0; i != language_model->rowCount(); ++i) {
 		QModelIndex index = language_model->index(i, 0);
+		// Filter the list based on the available translation and add
+		// each language code only once
+		string const name = fromqstr(index.data(Qt::UserRole).toString());
+		Language const * lang = languages.getLanguage(name);
+		// never remove the currently selected language
+		if (lang && name != form->rc().gui_language && name != lyxrc.gui_language)
+			if (!lang->translated() || added.find(lang->code()) != added.end())
+				continue;
+		added.insert(lang->code());
 		uiLanguageCO->addItem(index.data(Qt::DisplayRole).toString(),
 			index.data(Qt::UserRole).toString());
 	}

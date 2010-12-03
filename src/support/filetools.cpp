@@ -268,7 +268,7 @@ FileName const i18nLibFileSearch(string const & dir, string const & name,
 	   each po file is able to tell us its name. (JMarc)
 	*/
 
-	string lang = to_ascii(_("[[Replace with the code of your language]]"));
+	string lang = to_ascii(_(languageTestString()));
 	string const language = getEnv("LANGUAGE");
 	if (!lang.empty() && !language.empty())
 		lang = language;

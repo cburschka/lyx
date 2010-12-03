@@ -26,6 +26,8 @@ public:
 	Messages(std::string const & l = std::string());
 	///
 	docstring const get(std::string const & msg) const;
+	/// Is an (at least partial) translation of this language available?
+	bool available() const;
 	///
 	static void init();
 	///

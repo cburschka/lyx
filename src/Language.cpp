@@ -22,6 +22,7 @@
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/lstrings.h"
+#include "support/Messages.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -165,6 +166,10 @@ bool Language::read(Lexer & lex)
 		encoding_ = encodings.fromLyXName("iso8859-1");
 		LYXERR0("Unknown encoding " << encodingStr_);
 	}
+	// cache translation status. Calling getMessages() directly in
+	// PrefLanguage::PrefLanguage() did only work if the gui language
+	// was set to auto (otherwise all languages would be marked as available).
+	translated_ = getMessages(code()).available();
 	return true;
 }
 
