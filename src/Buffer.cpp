@@ -3911,6 +3911,7 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 		// TocBackend update will be done later.
 		return;
 
+	d->bibinfo_cache_valid_ = true;
 	cbuf.tocBackend().update();
 	if (scope == UpdateMaster)
 		cbuf.structureChanged();
