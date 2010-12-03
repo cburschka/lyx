@@ -159,6 +159,7 @@ InsetLayout Phantom
 	EndFont
 	CustomPars            false
 	ForcePlain            true
+	MultiPar              false
 End
 
 InsetLayout Listings
