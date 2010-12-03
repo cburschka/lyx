@@ -51,8 +51,9 @@ void InsetFoot::updateLabels(ParIterator const & it)
 	Counters & cnts = tclass.counters();
 	docstring const foot = from_ascii("footnote");
 	Paragraph const & outer =  it.paragraph();
-	if (!outer.layout().intitle && cnts.hasCounter(foot)) {
-		cnts.step(foot);
+	if (!outer.layout().intitle) {
+		if (cnts.hasCounter(foot))
+			cnts.step(foot);
 		// FIXME: the counter should format itself.
 		custom_label_= support::bformat(from_utf8("%1$s %2$s"),
 					  translateIfPossible(getLayout(buffer().params()).labelstring()),

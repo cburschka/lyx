@@ -425,7 +425,7 @@ docstring Counters::theCounter(docstring const & counter,
                                std::set<docstring> & callers)
 {
 	if (!hasCounter(counter))
-		return from_ascii("??");
+		return from_ascii("#");
 
 	docstring label;
 

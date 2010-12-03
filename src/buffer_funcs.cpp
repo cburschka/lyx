@@ -355,10 +355,10 @@ void setLabel(Buffer const & buf, ParIterator & it)
 	case LABEL_COUNTER:
 		if (layout.toclevel <= bp.secnumdepth
 		    && (layout.latextype != LATEX_ENVIRONMENT
-			|| isFirstInSequence(it.pit(), it.plist()))) {
-			counters.step(layout.counter);
-			par.params().labelString(
-				par.expandLabel(layout, bp));
+			  || isFirstInSequence(it.pit(), it.plist()))) {
+			if (counters.hasCounter(layout.counter))
+				counters.step(layout.counter);
+			par.params().labelString(par.expandLabel(layout, bp));
 		} else
 			par.params().labelString(docstring());
 		break;

@@ -483,6 +483,7 @@ void InsetText::updateLabels(ParIterator const & it)
 	else {
 		DocumentClass const & tclass = buffer().masterBuffer()->params().documentClass();
 		Counters const savecnt = tclass.counters();
+		tclass.counters() = Counters();
 		lyx::updateLabels(buffer(), it2);
 		tclass.counters() = savecnt;
 	}

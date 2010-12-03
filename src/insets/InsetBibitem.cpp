@@ -310,8 +310,9 @@ void InsetBibitem::updateLabels(ParIterator const &)
 {
 	Counters & counters = buffer().masterBuffer()->params().documentClass().counters();
 	docstring const bibitem = from_ascii("bibitem");
-	if (counters.hasCounter(bibitem) && getParam("label").empty()) {
-		counters.step(bibitem);
+	if (getParam("label").empty()) {
+		if (counters.hasCounter(bibitem)) 
+			counters.step(bibitem);
 		autolabel_ = counters.theCounter(bibitem);
 	} else {
 		autolabel_ = from_ascii("??");
