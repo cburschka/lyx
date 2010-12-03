@@ -308,7 +308,7 @@ docstring bibitemWidest(Buffer const & buffer, OutputParams const & runparams)
 }
 
 
-void InsetBibitem::fillWithBibKeys(BiblioInfo & keys, InsetIterator const & it) const
+void InsetBibitem::collectBibKeys(InsetIterator const & it) const
 {
 	docstring const key = getParam("key");
 	BibTeXInfo keyvalmap(false);
@@ -316,7 +316,7 @@ void InsetBibitem::fillWithBibKeys(BiblioInfo & keys, InsetIterator const & it) 
 	DocIterator doc_it(it); 
 	doc_it.forwardPos();
 	keyvalmap[from_ascii("ref")] = doc_it.paragraph().asString();
-	keys[key] = keyvalmap;
+	buffer().addBibTeXInfo(key, keyvalmap);
 }
 
 
@@ -335,12 +335,11 @@ void InsetBibitem::updateBuffer(ParIterator const & it, UpdateType utype)
 		autolabel_ = from_ascii("??");
 	}
 	if (!buffer().isBibInfoCacheValid()) {
-		BiblioInfo bi = buffer().masterBibInfo();
 		docstring const key = getParam("key");
 		BibTeXInfo keyvalmap(false);
 		keyvalmap.label(bibLabel());
 		keyvalmap[from_ascii("ref")] = it.paragraph().asString();
-		bi[key] = keyvalmap;
+		buffer().addBibTeXInfo(key, keyvalmap);
 	}
 }
 

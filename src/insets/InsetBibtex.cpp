@@ -238,8 +238,7 @@ void InsetBibtex::updateBuffer(ParIterator const &, UpdateType)
 {
 	if (buffer().isBibInfoCacheValid())
 		return;
-	BiblioInfo & bi = buffer().masterBibInfo();
-	fillWithBibKeys(bi);
+	parseBibTeXFiles();
 }
 
 
@@ -678,14 +677,13 @@ namespace {
 }
 
 
-void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
-	InsetIterator const & /*di*/) const
+void InsetBibtex::collectBibKeys(InsetIterator const & /*di*/) const
 {
-	fillWithBibKeys(keylist);
+	parseBibTeXFiles();
 }
 
 
-void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist) const
+void InsetBibtex::parseBibTeXFiles() const
 {
 	// This bibtex parser is a first step to parse bibtex files
 	// more precisely.
@@ -705,6 +703,9 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist) const
 	// We don't restrict keys to ASCII in LyX, since our own
 	// InsetBibitem can generate non-ASCII keys, and nonstandard
 	// 8bit clean bibtex forks exist.
+
+	BiblioInfo keylist;
+
 	support::FileNameList const files = getBibFiles();
 	support::FileNameList::const_iterator it = files.begin();
 	support::FileNameList::const_iterator en = files.end();
@@ -870,6 +871,8 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist) const
 			} //< else (citation entry)
 		} //< searching '@'
 	} //< for loop over files
+
+	buffer().addBiblioInfo(keylist);
 }
 
 

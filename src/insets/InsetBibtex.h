@@ -54,7 +54,7 @@ public:
 	///
 	void updateBuffer(ParIterator const &, UpdateType);
 	///
-	void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
+	void collectBibKeys(InsetIterator const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///
@@ -81,7 +81,7 @@ private:
 	///
 	void editDatabases() const;
 	///
-	void fillWithBibKeys(BiblioInfo &) const;
+	void parseBibTeXFiles() const;
 
 	/// \name Private functions inherited from Inset class
 	//@{

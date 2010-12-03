@@ -844,13 +844,12 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetInclude::fillWithBibKeys(BiblioInfo & keys,
-	InsetIterator const & /*di*/) const
+void InsetInclude::collectBibKeys(InsetIterator const & /*di*/) const
 {
 	Buffer * child = loadIfNeeded();
 	if (!child)
 		return;
-	child->fillWithBibKeys(keys);
+	child->collectBibKeys();
 }
 
 

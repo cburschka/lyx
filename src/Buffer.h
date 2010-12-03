@@ -28,6 +28,7 @@
 namespace lyx {
 
 class BiblioInfo;
+class BibTeXInfo;
 class BufferParams;
 class DispatchResult;
 class DocIterator;
@@ -454,9 +455,12 @@ public:
 	/// \return the bibliography information for this buffer's master,
 	/// or just for it, if it isn't a child.
 	BiblioInfo const & masterBibInfo() const;
-	BiblioInfo & masterBibInfo();
-	///
-	void fillWithBibKeys(BiblioInfo & keys) const;
+	/// collect bibliography info from the various insets in this buffer.
+	void collectBibKeys() const;
+	/// add some BiblioInfo to our cache
+	void addBiblioInfo(BiblioInfo const & bi) const;
+	/// add a single piece of bibliography info to our cache
+	void addBibTeXInfo(docstring const & key, BibTeXInfo const & bi) const;
 	///
 	void getLabelList(std::vector<docstring> &) const;
 

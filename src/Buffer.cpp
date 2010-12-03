@@ -1809,15 +1809,6 @@ BiblioInfo const & Buffer::masterBibInfo() const
 }
 
 
-BiblioInfo & Buffer::masterBibInfo()
-{
-	Buffer * tmp = const_cast<Buffer *>(masterBuffer());
-	if (tmp != this)
-		return tmp->masterBibInfo();
-	return d->bibinfo_;
-}
-
-
 bool Buffer::isBibInfoCacheValid() const
 {
 	// use the master's cache
@@ -1866,15 +1857,33 @@ void Buffer::reloadBibInfoCache() const
 		return;
 
 	d->bibinfo_.clear();
-	fillWithBibKeys(d->bibinfo_);
+	collectBibKeys();
 	d->bibinfo_cache_valid_ = true;
 }
 
 
-void Buffer::fillWithBibKeys(BiblioInfo & keys) const
+void Buffer::collectBibKeys() const
 {
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it)
-		it->fillWithBibKeys(keys, it);
+		it->collectBibKeys(it);
+}
+
+
+void Buffer::addBiblioInfo(BiblioInfo const & bi) const
+{
+	Buffer const * tmp = masterBuffer();
+	BiblioInfo & masterbi = (tmp == this) ?
+		d->bibinfo_ : tmp->d->bibinfo_;
+	masterbi.mergeBiblioInfo(bi);
+}
+
+
+void Buffer::addBibTeXInfo(docstring const & key, BibTeXInfo const & bi) const
+{
+	Buffer const * tmp = masterBuffer();
+	BiblioInfo & masterbi = (tmp == this) ?
+		d->bibinfo_ : tmp->d->bibinfo_;
+	masterbi[key] = bi;
 }
 
 

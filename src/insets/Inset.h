@@ -489,8 +489,8 @@ public:
 	/// Add an entry to the TocList
 	/// pit is the ParConstIterator of the paragraph containing the inset
 	virtual void addToToc(DocIterator const &) {}
-	/// Fill keys with BibTeX information
-	virtual void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const {}
+	/// Collect BibTeX information
+	virtual void collectBibKeys(InsetIterator const &) const {}
 	/// Update the counters of this inset and of its contents.
 	/// The boolean indicates whether we are preparing for output, e.g.,
 	/// of XHTML.

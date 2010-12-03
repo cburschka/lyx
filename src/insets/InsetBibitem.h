@@ -59,7 +59,7 @@ public:
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
-	void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
+	void collectBibKeys(InsetIterator const &) const;
 	/// update the counter of this inset
 	void updateBuffer(ParIterator const &, UpdateType);
 	///@}
