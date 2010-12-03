@@ -7,8 +7,8 @@
 # modified by Stephan Witt
 # Last modified: 9 July 2010
 
-#Qt4SourceVersion="qt-everywhere-opensource-src-4.7.0-beta1"
-#Qt4Build="qt4.7-beta"
+Qt4SourceVersion="qt-everywhere-opensource-src-4.7.1"
+Qt4BuildSubDir="qt-4.7.1-build"
 
 # Prerequisite:
 # * a decent checkout of LyX sources (probably you have it already)
@@ -163,8 +163,7 @@ if [ "${configure_qt4_frameworks}" != "yes" ]; then
 fi
 QtFrameworkVersion="4"
 ASpellSourceVersion="aspell-0.60.6"
-HunSpellSourceVersion="hunspell-1.2.9"
-Qt4SourceVersion=${Qt4SourceVersion:-"qt-everywhere-opensource-src-4.6.3"}
+HunSpellSourceVersion="hunspell-1.2.12"
 
 ARCH_LIST=${ARCH_LIST:-"ppc i386"}
 
@@ -200,7 +199,7 @@ ASpellInstallDir=${ASpellInstallDir:-"${LyxBuildDir}"/SpellChecker.lib}
 HunSpellSourceDir=${HUNSPELLDIR:-`dirname "${LyxSourceDir}"`/${HunSpellSourceVersion}}
 HunSpellInstallDir=${HunSpellInstallDir:-"${LyxBuildDir}"/SpellChecker.lib}
 Qt4SourceDir=${QT4SOURCEDIR:-`dirname "${LyxSourceDir}"`/${Qt4SourceVersion}}
-Qt4BuildDir=${Qt4BuildDir:-"${LyxBuildDir}"/${Qt4Build:-"qt4-build"}}
+Qt4BuildDir=${Qt4BuildDir:-"${LyxBuildDir}"/${Qt4BuildSubDir:-"qt4-build"}}
 DictionarySourceDir=${DICTIONARYDIR:-`dirname "${LyxSourceDir}"`/Dictionaries}
 
 ASpellInstallHdr="${ASpellInstallDir}/include/aspell.h"
@@ -345,7 +344,11 @@ updateDictionaries() {
 
 if [ "${configure_qt4_frameworks}" != "yes" -a -d "${Qt4SourceDir}" -a ! -d "${Qt4BuildDir}" ]; then
 	echo Build Qt4 library ${Qt4SourceDir}
-
+	if [ "${QtInstallDir}" = "${Qt4BuildDir}" ]; then
+		echo Bad install directory for Qt.
+		echo Must be different from build directory "${Qt4BuildDir}".
+		exit 1
+	fi
 	(
 		mkdir -p "${Qt4BuildDir}" && cd "${Qt4BuildDir}"
 		for arch in ${ARCH_LIST} ; do
@@ -353,7 +356,6 @@ if [ "${configure_qt4_frameworks}" != "yes" -a -d "${Qt4SourceDir}" -a ! -d "${Q
 		done
 		echo configure options:
 		echo ${Qt4ConfigureOptions} ${ARCHS} -prefix "${QtInstallDir}"
-
 		echo yes | "${Qt4SourceDir}"/configure ${Qt4ConfigureOptions} ${ARCHS} -prefix "${QtInstallDir}"
 		make && make install
 	)
