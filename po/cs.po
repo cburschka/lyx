@@ -14867,24 +14867,20 @@ msgid "omega"
 msgstr "omega"
 
 #: lib/ui/stdtoolbars.inc:556
-#, fuzzy
 msgid "varGamma"
-msgstr "Gamma"
+msgstr "varGamma"
 
 #: lib/ui/stdtoolbars.inc:557
-#, fuzzy
 msgid "varDelta"
-msgstr "Delta"
+msgstr "varDelta"
 
 #: lib/ui/stdtoolbars.inc:558
-#, fuzzy
 msgid "varTheta"
-msgstr "vartheta"
+msgstr "varTheta"
 
 #: lib/ui/stdtoolbars.inc:559
-#, fuzzy
 msgid "varLambda"
-msgstr "Lambda"
+msgstr "varLambda"
 
 #: lib/ui/stdtoolbars.inc:560
 msgid "varXi"
@@ -14895,14 +14891,12 @@ msgid "varPi"
 msgstr "varPi"
 
 #: lib/ui/stdtoolbars.inc:562
-#, fuzzy
 msgid "varSigma"
-msgstr "varsigma"
+msgstr "varSigma"
 
 #: lib/ui/stdtoolbars.inc:563
-#, fuzzy
 msgid "varUpsilon"
-msgstr "varepsilon"
+msgstr "varUpsilon"
 
 #: lib/ui/stdtoolbars.inc:564
 msgid "varPhi"
@@ -14913,9 +14907,8 @@ msgid "varPsi"
 msgstr "varPsi"
 
 #: lib/ui/stdtoolbars.inc:566
-#, fuzzy
 msgid "varOmega"
-msgstr "Omega"
+msgstr "varOmega"
 
 #: lib/ui/stdtoolbars.inc:567
 msgid "Gamma"
@@ -16464,9 +16457,8 @@ msgid "LyXHTML"
 msgstr "LyXHTML"
 
 #: lib/configure.py:520 lib/configure.py:522
-#, fuzzy
 msgid "LyXHTML|y"
-msgstr "LyXHTML|X"
+msgstr "LyXHTML|y"
 
 #: lib/configure.py:529 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
@@ -16517,14 +16509,12 @@ msgid "PDF (XeTeX)|X"
 msgstr "PDF (XeTeX)|X"
 
 #: lib/configure.py:543
-#, fuzzy
 msgid "PDF (LuaTeX)"
-msgstr "PDF (XeTeX)"
+msgstr "PDF (LuaTeX)"
 
 #: lib/configure.py:543
-#, fuzzy
 msgid "PDF (LuaTeX)|u"
-msgstr "PDF (XeTeX)|X"
+msgstr "PDF (LuaTeX)|u"
 
 #: lib/configure.py:546
 msgid "DVI"
@@ -16841,14 +16831,13 @@ msgid ""
 msgstr "%1$s je z novìj¹í verze LyX-u a skript lyx2lyx selhal pøi konverzi."
 
 #: src/Buffer.cpp:1018 src/Buffer.cpp:3683 src/Buffer.cpp:3745
-#, fuzzy
 msgid "File is read-only"
 msgstr "Dokument je jen ke ètení"
 
 #: src/Buffer.cpp:1019
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
-msgstr ""
+msgstr "Soubor %1$s nelze zapsat, proto¾e je nastaven pouze pro ètení."
 
 #: src/Buffer.cpp:1028
 #, c-format
@@ -17382,12 +17371,12 @@ msgstr "Statistika"
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
-msgstr ""
+msgstr "`inset-forall' pøeru¹en proto¾e poèet akcí je vy¹¹í ne¾li %1$d"
 
 #: src/BufferView.cpp:1779
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
-msgstr ""
+msgstr "\"%1$s\" aplikováno na %2$d vlo¾ek"
 
 #: src/BufferView.cpp:1787
 msgid "Branch name"
@@ -17867,11 +17856,11 @@ msgid "There were errors during the build process."
 msgstr "Nastaly chyby bìhem procesu sestavování."
 
 #: src/Converter.cpp:475
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An error occurred while running:\n"
 "%1$s"
-msgstr "Chyba pøi bìhu %1$s"
+msgstr "Chyba pøi bìhu:\n%1$s"
 
 #: src/Converter.cpp:498
 #, c-format
@@ -17913,7 +17902,7 @@ msgid "An empty output file was generated."
 msgstr "Byl vygenerován prázdný výstupní soubor."
 
 #: src/CutAndPaste.cpp:346
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The pasted branch \"%1$s\" is undefined.\n"
 "Do you want to add it to the document's branch list?"
@@ -18104,12 +18093,11 @@ msgid "Auto-edit file %1$s failed"
 msgstr "Automatická editace souboru %1$s selhala"
 
 #: src/KeyMap.cpp:221 src/KeyMap.cpp:236
-#, fuzzy
 msgid "Could not find bind file"
-msgstr "Nelze nalézt standardní soubor u¾ivatelského rozhraní"
+msgstr "Nelze nalézt soubor klávesových zkratek"
 
 #: src/KeyMap.cpp:222
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Unable to find the bind file\n"
 "%1$s.\n"
@@ -18120,17 +18108,15 @@ msgstr ""
 "Zkontrolujte prosím va¹i instalaci."
 
 #: src/KeyMap.cpp:229
-#, fuzzy
 msgid "Could not find `cua.bind' file"
-msgstr "Nelze nalézt standardní soubor u¾ivatelského rozhraní"
+msgstr "Nelze nalézt soubor `cua.bind'"
 
 #: src/KeyMap.cpp:230
-#, fuzzy
 msgid ""
 "Unable to find the default bind file `cua.bind'.\n"
 "Please check your installation."
 msgstr ""
-"LyX nena¹el standardní soubor u¾ivatelského rozhraní (.ui)!\n"
+"LyX nena¹el standardní soubor klávesových zkratek `cua.bind'.\n"
 "Zkontrolujte prosím va¹i instalaci."
 
 #: src/KeyMap.cpp:237
@@ -18140,6 +18126,9 @@ msgid ""
 "%1$s.\n"
 "Falling back to default."
 msgstr ""
+"Nepodaøilo se nalézt soubor klávesových zkratek\n"
+"%1$s.\n"
+"Bude pou¾ito standardní nastavení."
 
 #: src/KeySequence.cpp:166
 msgid "   options: "
@@ -18186,9 +18175,8 @@ msgid "Done!"
 msgstr "Hotovo!"
 
 #: src/LyX.cpp:402
-#, fuzzy
 msgid "The following files could not be loaded:"
-msgstr "Tøída dokumentu %1$s nemù¾e být naètena."
+msgstr "Následující soubory nebylo mo¾né naèíst:"
 
 #: src/LyX.cpp:439
 #, c-format
@@ -18218,15 +18206,14 @@ msgid "No textclass is found"
 msgstr "Nebyly nalezeny soubory tøíd (textclass)"
 
 #: src/LyX.cpp:553
-#, fuzzy
 msgid ""
 "LyX will only have minimal functionality because no textclasses have been "
 "found. You can either try to reconfigure LyX normally, try to reconfigure "
 "using only the defaults, or continue."
 msgstr ""
-"LyX nemù¾e pokraèovat, proto¾e nebyly nalezeny potøebné soubory tøíd "
+"LyX bude mít pouze minimální funkcionalitu, proto¾e nebyly nalezeny potøebné soubory tøíd "
 "(textclass). Buïto mù¾ete pou¾ít normální rekonfiguraci nebo ji zavolat za "
-"pou¾ití standarních tøíd."
+"pou¾ití standarních tøíd nebo pokraèovat."
 
 #: src/LyX.cpp:557
 msgid "&Reconfigure"
@@ -21288,19 +21275,16 @@ msgid "Native"
 msgstr "Nativní"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1421
-#, fuzzy
 msgid "Aspell"
-msgstr "ispell"
+msgstr "Aspell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1424
-#, fuzzy
 msgid "Enchant"
-msgstr "enchant"
+msgstr "Enchant"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1427
-#, fuzzy
 msgid "Hunspell"
-msgstr "ispell"
+msgstr "Hunspell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1495
 msgid "Converters"
