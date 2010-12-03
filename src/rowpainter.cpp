@@ -951,21 +951,21 @@ void RowPainter::paintSelection()
 	// draw the margins
 	if (row_.begin_margin_sel) {
 		if (text_.isRTL(beg.paragraph())) {
-			pi_.pain.fillRectangle(xo_ + x1, y1, text_metrics_.width() - rm - x1, y2 - y1,
-				Color_selection);
+			pi_.pain.fillRectangle(int(xo_ + x1), y1,
+				text_metrics_.width() - rm - x1, y2 - y1, Color_selection);
 		} else {
-			pi_.pain.fillRectangle(xo_ + lm, y1, x1 - lm, y2 - y1,
+			pi_.pain.fillRectangle(int(xo_ + lm), y1, x1 - lm, y2 - y1,
 				Color_selection);
 		}
 	}
 
 	if (row_.end_margin_sel) {
 		if (text_.isRTL(beg.paragraph())) {
-			pi_.pain.fillRectangle(xo_ + lm, y1, x2 - lm, y2 - y1,
+			pi_.pain.fillRectangle(int(xo_ + lm), y1, x2 - lm, y2 - y1,
 				Color_selection);
 		} else {
-			pi_.pain.fillRectangle(xo_ + x2, y1, text_metrics_.width() - rm - x2, y2 - y1,
-				Color_selection);
+			pi_.pain.fillRectangle(int(xo_ + x2), y1, text_metrics_.width() - rm - x2,
+				y2 - y1, Color_selection);
 		}
 	}
 
@@ -1009,8 +1009,8 @@ void RowPainter::paintSelection()
 
 		if (!(cur < end) || draw_now) {
 			x2 = text_metrics_.cursorX(cur.top(), cur.boundary());
-			pi_.pain.fillRectangle(xo_ + min(x1,x2), y1, abs(x2 - x1), y2 - y1,
-				Color_selection);
+			pi_.pain.fillRectangle(int(xo_ + min(x1, x2)), y1, abs(x2 - x1),
+				y2 - y1, Color_selection);
 
 			// reset x1, so it is set again next round (which will be on the
 			// right side of a boundary or at the selection end)
