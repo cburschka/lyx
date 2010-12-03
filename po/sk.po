@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-12-01 13:59+0100\n"
-"PO-Revision-Date: 2010-12-01 14:29+0100\n"
+"POT-Creation-Date: 2010-12-03 12:51+0100\n"
+"PO-Revision-Date: 2010-12-03 13:05+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -2938,7 +2938,7 @@ msgid "A&lter..."
 msgstr "Zmeniť..."
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:62
-msgid "Use system colors"
+msgid "&Use system colors"
 msgstr "Použiť farby systému"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:25
@@ -3675,8 +3675,8 @@ msgid "&Working directory:"
 msgstr "P&racovný adresár:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:215
-msgid "Hunspell dictionaries:"
-msgstr "Knižnice hunspell:"
+msgid "H&unspell dictionaries:"
+msgstr "Knižnice pre hunspell:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:41
 msgid "Printer Command Options"
@@ -5767,7 +5767,7 @@ msgstr "Popis"
 #: lib/layouts/egs.layout:132 lib/layouts/scrlettr.layout:32
 #: lib/layouts/scrlttr2.layout:37 lib/layouts/stdlists.inc:13
 #: lib/layouts/stdlists.inc:35 lib/layouts/stdlists.inc:58
-#: lib/layouts/stdlists.inc:89 lib/layouts/stdlists.inc:131
+#: lib/layouts/stdlists.inc:89 lib/layouts/stdlists.inc:135
 #: lib/layouts/enumitem.module:77 lib/ui/stdtoolbars.inc:113
 msgid "List"
 msgstr "Listina"
@@ -21132,18 +21132,6 @@ msgstr "Kontrola pravopisu"
 msgid "Native"
 msgstr "Apple-Spell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1421
-msgid "Aspell"
-msgstr "Aspell"
-
-#: src/frontends/qt4/GuiPrefs.cpp:1424
-msgid "Enchant"
-msgstr "Enchant"
-
-#: src/frontends/qt4/GuiPrefs.cpp:1427
-msgid "Hunspell"
-msgstr "Hunspell"
-
 #: src/frontends/qt4/GuiPrefs.cpp:1495
 msgid "Converters"
 msgstr "Konvertory"
@@ -23117,15 +23105,15 @@ msgstr "HPhantom"
 msgid "VPhantom"
 msgstr "VPhantom"
 
-#: src/insets/InsetPhantom.cpp:327
+#: src/insets/InsetPhantom.cpp:329
 msgid "phantom"
 msgstr "phantom"
 
-#: src/insets/InsetPhantom.cpp:329
+#: src/insets/InsetPhantom.cpp:331
 msgid "hphantom"
 msgstr "hphantom"
 
-#: src/insets/InsetPhantom.cpp:331
+#: src/insets/InsetPhantom.cpp:333
 msgid "vphantom"
 msgstr "vphantom"
 
@@ -23259,7 +23247,7 @@ msgstr "Chránená horizontálna medzera (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Neznámy typ obsahu"
 
-#: src/insets/InsetTabular.cpp:4610
+#: src/insets/InsetTabular.cpp:4616
 msgid "Selection size should match clipboard content."
 msgstr "Veľkosť výberu by mala zodpovedať obsahu klipsovej dosky."
 
@@ -23425,7 +23413,7 @@ msgstr "Vhodný výraz nájdený!"
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1590
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1606
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23486,17 +23474,17 @@ msgstr "Bez čísla"
 msgid "Number"
 msgstr "Číslo"
 
-#: src/mathed/InsetMathHull.cpp:1563
+#: src/mathed/InsetMathHull.cpp:1579
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Nedá sa zmeniť počet riadkov v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1573
+#: src/mathed/InsetMathHull.cpp:1589
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Počet stĺpcov sa nedá zmeniť v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1583
+#: src/mathed/InsetMathHull.cpp:1599
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nedajú sa pridať horizontálne linky mriežky '%1$s'"
@@ -23739,6 +23727,15 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Aspell"
+#~ msgstr "Aspell"
+
+#~ msgid "Enchant"
+#~ msgstr "Enchant"
+
+#~ msgid "Hunspell"
+#~ msgstr "Hunspell"
 
 #~ msgid ""
 #~ "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%"
