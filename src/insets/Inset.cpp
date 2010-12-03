@@ -619,7 +619,7 @@ void Inset::setDimCache(MetricsInfo const & mi, Dimension const & dim) const
 Buffer const * Inset::updateFrontend() const
 {
 	//FIXME (Abdel 03/12/10): see bugs #6814 and #6949
-	// If we Buffer is null and we end up here it is most probably because we
+	// If the Buffer is null and we end up here this is most probably because we
 	// are in the CutAndPaste stack. See InsetGraphics, RenderGraphics and
 	// RenderPreview.
 	if (!buffer_)
