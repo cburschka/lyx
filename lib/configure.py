@@ -657,12 +657,11 @@ def checkConverterEntries():
       else:
         addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py $$i $$o"''')
 
-    # Check if LyxBlogger is installed.
-    path, lyxblogger = checkProg('A LyX to WordPress Blog Publishing Tool',
-      ['lyxblogger $$i'], rc_entry = [])
-    if lyxblogger.find('lyxblogger') >= 0:
-      addToRC(r'\Format    blog       blog       "LyxBlogger"           "" "" ""  "document"')
-      addToRC(r'\converter xhtml      blog       "lyxblogger $$i"       ""')
+    # Check if LyXBlogger is installed
+    lyxblogger_found = checkModule('lyxblogger')
+    if lyxblogger_found:
+      addToRC(r'\Format    blog       blog       "LyXBlogger"           "" "" ""  "document"')
+      addToRC(r'\converter xhtml      blog       "python -m lyxblogger $$i"       ""')
 
     if elyxerfound:
       addToRC(r'''\converter lyx      wordhtml       "python -m elyxer --html --directory $$r $$i $$o"	""''')
