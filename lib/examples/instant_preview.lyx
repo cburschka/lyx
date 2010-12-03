@@ -83,8 +83,15 @@ xy, qtree, tipa, pstricks, pst-plot, rotating, tikz, pgf
 \end_layout
 
 \begin_layout Standard
-Due to the use of postscript specials, only the Postscript or PDF (ps2pdf)
- output formats will correctly render the included images.
+Due to the use of postscript specials in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:PSTricks"
+
+\end_inset
+
+, only the Postscript or PDF (ps2pdf) output formats will correctly render
+ the included images.
  However, the PDF (XeTeX) output seems to also work, while trying to typeset
  the document with 
 \family typewriter
@@ -1641,6 +1648,13 @@ mu$ ]
 
 \begin_layout Section
 PSTricks
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:PSTricks"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
