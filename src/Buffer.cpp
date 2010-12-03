@@ -1809,21 +1809,25 @@ BiblioInfo const & Buffer::masterBibInfo() const
 }
 
 
-void Buffer::checkBibInfoCache() const 
+bool Buffer::isBibInfoCacheValid() const
+{
+	return d->bibinfo_cache_valid_;
+}
+
+
+void Buffer::checkIfBibInfoCacheIsValid() const
 {
 	// use the master's cache
 	Buffer const * const tmp = masterBuffer();
 	if (tmp != this) {
-		tmp->checkBibInfoCache();
+		tmp->checkIfBibInfoCacheIsValid();
 		return;
 	}
 
-	// this will also reload the cache if it is invalid 
-	support::FileNameList const & bibfiles_cache = getBibfilesCache();
-	
 	// compare the cached timestamps with the actual ones.
-	support::FileNameList::const_iterator ei = bibfiles_cache.begin();
-	support::FileNameList::const_iterator en = bibfiles_cache.end();
+	FileNameList const & bibfiles_cache = getBibfilesCache();
+	FileNameList::const_iterator ei = bibfiles_cache.begin();
+	FileNameList::const_iterator en = bibfiles_cache.end();
 	for (; ei != en; ++ ei) {
 		time_t lastw = ei->lastModified();
 		time_t prevw = d->bibfile_status_[*ei];
@@ -1832,13 +1836,25 @@ void Buffer::checkBibInfoCache() const
 			d->bibfile_status_[*ei] = lastw;
 		}
 	}
-	
-	// if not valid, then reload the info
-	if (!d->bibinfo_cache_valid_) {
-		d->bibinfo_.clear();
-		fillWithBibKeys(d->bibinfo_);
-		d->bibinfo_cache_valid_ = true;
+}
+
+
+void Buffer::reloadBibInfoCache() const
+{
+	// use the master's cache
+	Buffer const * const tmp = masterBuffer();
+	if (tmp != this) {
+		tmp->reloadBibInfoCache();
+		return;
 	}
+
+	checkIfBibInfoCacheIsValid();
+	if (d->bibinfo_cache_valid_)
+		return;
+
+	d->bibinfo_.clear();
+	fillWithBibKeys(d->bibinfo_);
+	d->bibinfo_cache_valid_ = true;
 }
 
 
@@ -3014,9 +3030,9 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 	//FIXME: This does not work for child documents yet.
 	LASSERT(code == CITE_CODE, /**/);
 
-	// Check if the label 'from' appears more than once
-	checkBibInfoCache();
+	reloadBibInfoCache();
 
+	// Check if the label 'from' appears more than once
 	BiblioInfo const & keys = masterBibInfo();
 	BiblioInfo::const_iterator bit  = keys.begin();
 	BiblioInfo::const_iterator bend = keys.end();
@@ -3829,7 +3845,7 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 	
 	// do this only if we are the top-level Buffer
 	if (master == this)
-		checkBibInfoCache();
+		reloadBibInfoCache();
 
 	// keep the buffers to be children in this set. If the call from the
 	// master comes back we can see which of them were actually seen (i.e.

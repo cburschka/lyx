@@ -757,8 +757,9 @@ void GuiCitation::dispatchParams()
 
 BiblioInfo const & GuiCitation::bibInfo() const
 {
-	buffer().checkBibInfoCache();
-	return buffer().masterBibInfo();
+	Buffer const & buf = buffer();
+	buf.reloadBibInfoCache();
+	return buf.masterBibInfo();
 }
 
 

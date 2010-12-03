@@ -441,12 +441,13 @@ public:
 	void invalidateBibinfoCache() const;
 	/// This invalidates the cache of files we need to check.
 	void invalidateBibfileCache() const;
-	/// Updates the cached bibliography information.
-	/// Note that you MUST call this method to update the cache. It will
-	/// not happen otherwise. (Currently, it is called at the start of
-	/// updateBuffer() and from GuiCitation.)
+	/// Updates the cached bibliography information, checking first to see
+	/// whether the cache is valid. If so, we do nothing. If not, then we
+	/// reload all the BibTeX info.
 	/// Note that this operates on the master document.
-	void checkBibInfoCache() const;
+	void reloadBibInfoCache() const;
+	/// Was the cache valid the last time we checked?
+	bool isBibInfoCacheValid() const;
 	/// \return the bibliography information for this buffer's master,
 	/// or just for it, if it isn't a child.
 	BiblioInfo const & masterBibInfo() const;
@@ -660,6 +661,10 @@ private:
 	std::vector<std::string> backends() const;
 	///
 	void getLanguages(std::set<Language const *> &) const;
+	/// Checks whether any of the referenced bibfiles have changed since the
+	/// last time we loaded the cache. Note that this does NOT update the
+	/// cached information.
+	void checkIfBibInfoCacheIsValid() const;
 	/// Update the list of all bibfiles in use (including bibfiles
 	/// of loaded child documents).
 	void updateBibfilesCache(UpdateScope scope = UpdateMaster) const;
