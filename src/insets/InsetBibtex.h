@@ -52,6 +52,8 @@ public:
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
+	void updateBuffer(ParIterator const &, UpdateType);
+	///
 	void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
@@ -78,6 +80,8 @@ private:
 		getBibTeXPath(docstring const & filename, Buffer const & buf);
 	///
 	void editDatabases() const;
+	///
+	void fillWithBibKeys(BiblioInfo &) const;
 
 	/// \name Private functions inherited from Inset class
 	//@{

@@ -334,6 +334,14 @@ void InsetBibitem::updateBuffer(ParIterator const & it, UpdateType utype)
 	} else {
 		autolabel_ = from_ascii("??");
 	}
+	if (!buffer().isBibInfoCacheValid()) {
+		BiblioInfo bi = buffer().masterBibInfo();
+		docstring const key = getParam("key");
+		BibTeXInfo keyvalmap(false);
+		keyvalmap.label(bibLabel());
+		keyvalmap[from_ascii("ref")] = it.paragraph().asString();
+		bi[key] = keyvalmap;
+	}
 }
 
 

@@ -234,6 +234,15 @@ static string normalizeName(Buffer const & buffer,
 }
 
 
+void InsetBibtex::updateBuffer(ParIterator const &, UpdateType)
+{
+	if (buffer().isBibInfoCacheValid())
+		return;
+	BiblioInfo & bi = buffer().masterBibInfo();
+	fillWithBibKeys(bi);
+}
+
+
 int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 {
 	// the sequence of the commands:
@@ -669,9 +678,14 @@ namespace {
 }
 
 
-// This method returns a comma separated list of Bibtex entries
 void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 	InsetIterator const & /*di*/) const
+{
+	fillWithBibKeys(keylist);
+}
+
+
+void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist) const
 {
 	// This bibtex parser is a first step to parse bibtex files
 	// more precisely.
