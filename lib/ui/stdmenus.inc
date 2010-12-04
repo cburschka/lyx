@@ -381,7 +381,7 @@ Menuset
 		Item "Protected Hyphen|y" "specialchar-insert nobreakdash"
 		Item "Breakable Slash|a" "specialchar-insert slash"
 		Item "Menu Separator|M" "specialchar-insert menu-separator"
-		Item "Phonetic Symbols|P" "command-sequence math-mode on; math-insert \text\textipa ; char-forward ;"
+		Item "Phonetic Symbols|P" "command-sequence math-insert \text\textipa ; char-forward ;"
 	End
 
 	Menu "insert_formatting"
@@ -408,8 +408,9 @@ Menuset
 	End
 
 	Menu "insert_math"
-		Item "Inline Formula|I" "math-mode"
-		Item "Display Formula|D" "math-display"
+# Always use "math-mode on" instead of "math-display" etc. because this disables the commands in math mode
+		Item "Inline Formula|I" "math-mode on"
+		Item "Display Formula|D" "command-sequence math-mode on; math-mutate equation"
 		Item "Numbered Formula|N" "command-sequence math-mode on; math-mutate equation; math-number-toggle;"
 		Item "Eqnarray Environment|E" "command-sequence math-mode on; math-mutate eqnarray;"
 		Item "AMS align Environment|a" "command-sequence math-mode on; math-mutate align;"
@@ -418,12 +419,13 @@ Menuset
 		Item "AMS gather Environment|g" "command-sequence math-mode on; math-mutate gather;"
 		Item "AMS multline Environment|m" "command-sequence math-mode on; math-mutate multline;"
 		Separator
+# "math-matrix" and "math-insert" create an inline formula first if called from text mode
 		Item "Array Environment|y" "math-matrix 2 2"
-		Item "Cases Environment|C" "command-sequence math-mode on; math-insert \cases"
-		Item "Aligned Environment|l" "command-sequence math-mode on; math-insert \aligned; inset-modify tabular append-column"
-		Item "AlignedAt Environment|v" "command-sequence math-mode on; math-insert \alignedat; inset-modify tabular append-column"
-		Item "Gathered Environment|h" "command-sequence math-mode on; math-insert \gathered"
-		Item "Split Environment|S" "command-sequence math-mode on; math-insert \split; inset-modify tabular append-column"
+		Item "Cases Environment|C" "math-insert \cases"
+		Item "Aligned Environment|l" "command-sequence math-insert \aligned; inset-modify tabular append-column"
+		Item "AlignedAt Environment|v" "command-sequence math-insert \alignedat; inset-modify tabular append-column"
+		Item "Gathered Environment|h" "math-insert \gathered"
+		Item "Split Environment|S" "command-sequence math-insert \split; inset-modify tabular append-column"
 		Separator
 		Item "Delimiters...|r" "dialog-show mathdelimiter"
 		Item "Matrix...|x" "dialog-show mathmatrix"

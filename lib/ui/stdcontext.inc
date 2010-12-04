@@ -26,11 +26,11 @@ Menuset
 #
 	Menu "insert_math_context"
 		Item "Array Environment|y" "math-matrix 2 2"
-		Item "Cases Environment|C" "command-sequence math-mode on; math-insert \cases"
-		Item "Aligned Environment|l" "command-sequence math-mode on; math-insert \aligned; inset-modify tabular append-column"
-		Item "AlignedAt Environment|v" "command-sequence math-mode on; math-insert \alignedat; inset-modify tabular append-column"
-		Item "Gathered Environment|h" "command-sequence math-mode on; math-insert \gathered"
-		Item "Split Environment|S" "command-sequence math-mode on; math-insert \split; inset-modify tabular append-column"
+		Item "Cases Environment|C" "math-insert \cases"
+		Item "Aligned Environment|l" "command-sequence math-insert \aligned; inset-modify tabular append-column"
+		Item "AlignedAt Environment|v" "command-sequence math-insert \alignedat; inset-modify tabular append-column"
+		Item "Gathered Environment|h" "math-insert \gathered"
+		Item "Split Environment|S" "command-sequence math-insert \split; inset-modify tabular append-column"
 		Separator
 		Item "Delimiters...|r" "dialog-show mathdelimiter"
 		Item "Matrix...|x" "dialog-show mathmatrix"

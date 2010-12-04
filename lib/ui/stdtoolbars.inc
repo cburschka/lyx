@@ -86,7 +86,7 @@ ToolbarSet
 		Item "Toggle noun" "font-noun"
 		Item "Apply last" "textstyle-apply"
 		Separator
-		Item "Insert math" "math-mode"
+		Item "Insert math" "math-mode on"
 		Item "Insert graphics" "dialog-show-new-inset graphics"
 		TableInsert "Insert table"
 		Separator

@@ -1737,6 +1737,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_MODE:
 		if (cmd.argument() == "on")
 			// don't pass "on" as argument
+			// (it would appear literally in the first cell)
 			mathDispatch(cur, FuncRequest(LFUN_MATH_MODE), false);
 		else
 			mathDispatch(cur, cmd, false);
