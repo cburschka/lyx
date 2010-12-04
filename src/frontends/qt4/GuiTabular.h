@@ -33,6 +33,9 @@ private Q_SLOTS:
 	void checkEnabled();
 	void borderSet_clicked();
 	void borderUnset_clicked();
+	void on_topspaceCO_activated(int index);
+	void on_bottomspaceCO_activated(int index);
+	void on_interlinespaceCO_activated(int index);
 
 private:
 	/// \name InsetParamsWidget inherited methods

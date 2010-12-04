@@ -64,19 +64,13 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(checkEnabled()));
 	connect(topspaceUnitCB, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
-	connect(topspaceCO, SIGNAL(activated(int)),
-		this, SLOT(checkEnabled()));
 	connect(bottomspaceED, SIGNAL(editingFinished()),
 		this, SLOT(checkEnabled()));
 	connect(bottomspaceUnitCB, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
-	connect(bottomspaceCO, SIGNAL(activated(int)),
-		this, SLOT(checkEnabled()));
 	connect(interlinespaceED, SIGNAL(editingFinished()),
 		this, SLOT(checkEnabled()));
 	connect(interlinespaceUnitCB, SIGNAL(selectionChanged(lyx::Length::UNIT)),
-		this, SLOT(checkEnabled()));
-	connect(interlinespaceCO, SIGNAL(activated(int)),
 		this, SLOT(checkEnabled()));
 	connect(booktabsRB, SIGNAL(clicked(bool)),
 		this, SLOT(checkEnabled()));
@@ -165,6 +159,30 @@ GuiTabular::GuiTabular(QWidget * parent)
 	addCheckedWidget(topspaceED, topspaceLA);
 	addCheckedWidget(bottomspaceED, bottomspaceLA);
 	addCheckedWidget(interlinespaceED, interlinespaceLA);
+}
+
+
+void GuiTabular::on_topspaceCO_activated(int index)
+{
+	bool const enable = (index == 2);
+	topspaceED->setEnabled(enable);
+	topspaceUnitCB->setEnabled(enable);
+}
+
+
+void GuiTabular::on_bottomspaceCO_activated(int index)
+{
+	bool const enable = (index == 2);
+	bottomspaceED->setEnabled(enable);
+	bottomspaceUnitCB->setEnabled(enable);
+}
+
+
+void GuiTabular::on_interlinespaceCO_activated(int index)
+{
+	bool const enable = (index == 2);
+	interlinespaceED->setEnabled(enable);
+	interlinespaceUnitCB->setEnabled(enable);
 }
 
 
