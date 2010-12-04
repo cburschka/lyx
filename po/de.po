@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-12-04 15:29+0100\n"
+"POT-Creation-Date: 2010-12-04 17:29+0100\n"
 "PO-Revision-Date: 2010-12-04 15:37+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
@@ -24029,6 +24029,10 @@ msgstr "Alle Testmeldungen"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Testen von `%1$s' (%2$s)"
 
+#: src/support/lstrings.cpp:1289
+msgid "[[Replace with the code of your language]]"
+msgstr "de"
+
 #: src/support/os_win32.cpp:444
 msgid "System file not found"
 msgstr "Systemdatei nicht gefunden"
@@ -24067,9 +24071,6 @@ msgstr "Unbekannter Benutzer"
 #~ "Journal%[[, {!<i>!}%Journal%{!</i>!}]][[{%Herausgeber%[[, %Herausgeber%]]"
 #~ "[[{%Institution%[[, %Institution%]]}]]}]]}{%Jahr%[[ (%Jahr%)]]}{%Seiten%"
 #~ "[[, %Seiten%]]}."
-
-#~ msgid "[[Replace with the code of your language]]"
-#~ msgstr "de"
 
 #~ msgid "LyX binary not found"
 #~ msgstr "LyX binär nicht gefunden"
