@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-11-29 05:24+0100\n"
-"PO-Revision-Date: 2010-12-03 22:00+0730\n"
+"PO-Revision-Date: 2010-12-04 22:06+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -99,7 +99,7 @@ msgstr "&Natbib"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:59
 msgid "Natbib &style:"
-msgstr "Natbib &style:"
+msgstr "&Corak Natbib:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:97
 msgid "Use the jurabib styles for law and humanities"
@@ -123,29 +123,25 @@ msgstr "Disini anda dapat mendefinisikan program alternatif untuk BibTeX atau op
 
 #: src/frontends/qt4/ui/BiblioUi.ui:123
 #: src/frontends/qt4/ui/PrefLatexUi.ui:127
-#, fuzzy
 msgid "Bibliography generation"
-msgstr "Bibliography heading"
+msgstr "Pembuat Bibliografi"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134
 #: src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
-#, fuzzy
 msgid "&Processor:"
-msgstr "Ter&uskan"
+msgstr "&Pemroses:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144
 #: src/frontends/qt4/ui/IndicesUi.ui:43
-#, fuzzy
 msgid "Select a processor"
-msgstr "Pilih satu berkas"
+msgstr "Pilih program pemroses yang dinginkan"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168
 #: src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152
 #: src/frontends/qt4/GuiPrefs.cpp:733
 #: src/frontends/qt4/GuiPrefs.cpp:828
-#, fuzzy
 msgid "&Options:"
 msgstr "O&psi:"
 
@@ -746,12 +742,12 @@ msgstr "Paling Besar"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:144
 msgid "&Custom Bullet:"
-msgstr "&Pilihan Bullet:"
+msgstr "Simbol &Lain:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:174
 #: src/frontends/qt4/ui/PDFSupportUi.ui:329
 msgid "&Level:"
-msgstr "&Level:"
+msgstr "&Aras:"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:31
 msgid "Change:"
@@ -918,11 +914,11 @@ msgstr "A&cuan yang Dipilih:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:72
 msgid "Click or press Enter to add the selected citation to the list"
-msgstr ""
+msgstr "Klik atau tekan Enter untuk menambah acuan yang dipilih pada daftar"
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "Click or press Delete to delete the selected citation from the list"
-msgstr ""
+msgstr "Klik atau tekan Enter untuk menghapus acuan yang dipilih dari daftar"
 
 #: src/frontends/qt4/ui/CitationUi.ui:124
 #, fuzzy
@@ -1006,7 +1002,7 @@ msgstr "Pencarian:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:376
 msgid "Enter the text to search for and press Enter or click the button to search"
-msgstr ""
+msgstr "Tuliskan teks yang dicari kemudian tekan Enter atau tekan tombol pencarian"
 
 #: src/frontends/qt4/ui/CitationUi.ui:389
 #, fuzzy
@@ -1072,7 +1068,7 @@ msgstr "Bawaan..."
 #: src/frontends/qt4/ui/ColorUi.ui:234
 #: src/frontends/qt4/ui/ColorUi.ui:305
 msgid "Revert the color to the default"
-msgstr ""
+msgstr "Mengembalikan warna ke warna bawaan"
 
 #: src/frontends/qt4/ui/ColorUi.ui:83
 #: src/frontends/qt4/ui/ColorUi.ui:154
@@ -1099,9 +1095,8 @@ msgid "Page:"
 msgstr "Halaman: "
 
 #: src/frontends/qt4/ui/ColorUi.ui:265
-#, fuzzy
 msgid "Shaded boxes:"
-msgstr "kotak shaded"
+msgstr "Kotak berlatar:"
 
 #: src/frontends/qt4/ui/CompareUi.ui:19
 msgid "&New Document:"
@@ -1186,7 +1181,7 @@ msgstr "&Sisipkan"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:112
 msgid "Reset to the default settings for the document class"
-msgstr "Mengembalikan ke setting awal dari class dokumen"
+msgstr "Mengembalikan ke aturan awal dari kelas dokumen"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:115
 msgid "Use Class Defaults"
@@ -1236,7 +1231,7 @@ msgstr "Deskripsi:"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:83
 msgid "Open the LaTeX Log File dialog"
-msgstr ""
+msgstr "Membuka dialog berkas catatan LaTeX"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:86
 msgid "View Complete &Log..."
@@ -1591,11 +1586,11 @@ msgstr "HurufUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:19
 msgid "Use OpenType- and TrueType fonts directly (requires XeTeX or LuaTeX)"
-msgstr ""
+msgstr "Langsung menggunakan huruf OpenType- dan TrueType  (memerlukan eTeX atau LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:22
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
-msgstr ""
+msgstr "&Gunakan huruf bukan-TeX (melalui XeTeX/LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:42
 msgid "&Default Family:"
@@ -1610,14 +1605,13 @@ msgid "&Base Size:"
 msgstr "&Ukuran:"
 
 #: src/frontends/qt4/ui/FontUi.ui:76
-#, fuzzy
 msgid "LaTe&X font encoding:"
-msgstr "Te&X encoding:"
+msgstr "Enkoding huruf LaTe&X:"
 
 #: src/frontends/qt4/ui/FontUi.ui:89
 #: src/frontends/qt4/ui/PrefLatexUi.ui:34
 msgid "Specify the font encoding (e.g., T1)."
-msgstr ""
+msgstr "Nyatakan enkoding huruf (misalnya, T1)."
 
 #: src/frontends/qt4/ui/FontUi.ui:96
 msgid "&Roman:"
@@ -2016,9 +2010,8 @@ msgstr "Suntin&g"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59
 #: src/frontends/qt4/ui/IndicesUi.ui:143
-#, fuzzy
 msgid "A&vailable Indexes:"
-msgstr "Bra&nch yang tersedia:"
+msgstr "Inde&ks yang tersedia:"
 
 #: src/frontends/qt4/ui/IndexUi.ui:69
 msgid "Select the index this entry should be listed in."
@@ -2026,34 +2019,32 @@ msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid "Here you can define an alternative index processor and specify its options."
-msgstr ""
+msgstr "Anda bisa mendefinisikan pemroses alternatif pembuat indeks dan menyatakan argumen opsi."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
-#, fuzzy
 msgid "Index generation"
-msgstr "&Indentasi"
+msgstr "Pembuat Indeks"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
-msgstr ""
+msgstr "Definisikan program opsi untuk pemroses yang anda pilih."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
-msgstr ""
+msgstr "Aktifkan jika anda ingin menggunakan indeks ganda (misalnya, Indeks Penulis)"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:92
 msgid "&Use multiple indexes"
-msgstr ""
+msgstr "&Gunakan indeks ganda"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
-msgstr ""
+msgstr "Tuliskan nama dari indeks yang diinginkan (misal, \"Indeks Penulis\") dan tekan \"Gabung\""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:131
-#, fuzzy
 msgid "Add a new index to the list"
-msgstr "Tambah branch baru dalam daftar"
+msgstr "Tambah indeks baru dalam daftar"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
@@ -2061,17 +2052,14 @@ msgid "1"
 msgstr "1"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:162
-#, fuzzy
 msgid "Remove the selected index"
-msgstr "Hapus pangkalan data yang dipilih"
+msgstr "Hapus indeks yang dipilih"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:172
-#, fuzzy
 msgid "Rename the selected index"
-msgstr "Hapus pangkalan data yang dipilih"
+msgstr "Ganti nama indeks yang dipilih"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:175
-#, fuzzy
 msgid "R&ename..."
 msgstr "&Nama Lain"
 
@@ -2104,7 +2092,7 @@ msgstr "Sisipan Baru"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:19
 msgid "Document &class"
-msgstr "&Class Dokumen"
+msgstr "&Kelas Dokumen"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:44
 msgid "Click to select a local document class definition file"
@@ -2116,7 +2104,7 @@ msgstr "&Layout lokal..."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:57
 msgid "Class options"
-msgstr "Opsi Class"
+msgstr "Opsi Kelas"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:63
 msgid "Enable to use the options that are predefined in the layout file"
@@ -2148,7 +2136,7 @@ msgstr "Pilih dokumen induk bawaan"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:150
 msgid "&Master:"
-msgstr "&Master:"
+msgstr "&Induk:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:167
 msgid "Enter the name of the default master document"
@@ -2156,11 +2144,11 @@ msgstr "Tuliskan nama dokumen induk bawaan"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:186
 msgid "&Suppress default date on front page"
-msgstr ""
+msgstr "&Hilangkan menulis tanggal di halaman depan"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:206
 msgid "&Use refstyle (not prettyref) for cross-references"
-msgstr ""
+msgstr "G&unakan refstyle (bukan prettyref) untuk referensi-silang"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:25
 msgid "Encoding"
@@ -2223,11 +2211,11 @@ msgstr "&Inline listing"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:45
 msgid "Check for floating listings"
-msgstr "Pilih untuk penempatan float"
+msgstr "Pilih untuk penempatan ambangan"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:48
 msgid "&Float"
-msgstr "&Float"
+msgstr "&Ambangan"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:55
 #: src/frontends/qt4/ui/WrapUi.ui:185
@@ -2384,12 +2372,12 @@ msgstr "Ada kesalahan membaca informasi layout internal"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:35
 msgid "Errors reported in terminal."
-msgstr ""
+msgstr "Kesalahan dilaporkan di terminal."
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:38
 #: src/frontends/qt4/GuiDocument.cpp:567
 msgid "Press button to check validity..."
-msgstr ""
+msgstr "Tekan tombol untuk memeriksa validitas..."
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:51
 #, fuzzy
@@ -2479,9 +2467,8 @@ msgid "&Column Sep:"
 msgstr "&Jarak antara kolom:"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:25
-#, fuzzy
 msgid "Master Document Output"
-msgstr "Dokumen Utama"
+msgstr "Keluaran Dokumen Induk"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:40
 msgid "Include only the selected subdocuments in the output"
@@ -2564,7 +2551,7 @@ msgstr "Tipe:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:243
 msgid "decoration type / matrix border"
-msgstr ""
+msgstr "Tipe dekorasi / garis batas matriks"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:252
 msgid "[x]"
@@ -2616,47 +2603,39 @@ msgstr "Paket LaTeX esint selalu digunakan"
 
 #: src/frontends/qt4/ui/MathsUi.ui:58
 msgid "Use &esint package"
-msgstr "Gunakan paket &esint"
+msgstr "Gunakan paket es&int"
 
 #: src/frontends/qt4/ui/MathsUi.ui:65
-#, fuzzy
 msgid "The LaTeX package mathdots is only used if the command \\iddots is inserted into formulas"
-msgstr "Paket LaTeX esint hanya digunakan jika simbol khusus integral  disisipkan dalam rumus"
+msgstr "Paket LaTeX mathdots hanya digunakan jika perintah \\iddots disisipkan dalam rumus"
 
 #: src/frontends/qt4/ui/MathsUi.ui:68
-#, fuzzy
 msgid "Use math&dots package automatically"
-msgstr "G&unakan paket matematika AMS secara otomatis"
+msgstr "Gunakan paket math&dots secara otomatis"
 
 #: src/frontends/qt4/ui/MathsUi.ui:75
-#, fuzzy
 msgid "The LaTeX package mathdots is used"
-msgstr "Paket LaTeX esint selalu digunakan"
+msgstr "Paket LaTeX mathdots selalu digunakan"
 
 #: src/frontends/qt4/ui/MathsUi.ui:78
-#, fuzzy
 msgid "Use mathdo&ts package"
-msgstr "Gunakan paket AMS &matematika"
+msgstr "Gunakan paket mat&hdots"
 
 #: src/frontends/qt4/ui/MathsUi.ui:85
-#, fuzzy
 msgid "The LaTeX package mhchem is only used if either the command \\ce or \\cf is inserted into formulas"
-msgstr "Paket LaTeX esint hanya digunakan jika simbol khusus integral  disisipkan dalam rumus"
+msgstr "Paket LaTeX mhchem hanya digunakan jika perintah \\ce atau \\cf disisipkan dalam rumus"
 
 #: src/frontends/qt4/ui/MathsUi.ui:88
-#, fuzzy
 msgid "Use mhchem &package automatically"
-msgstr "gun&akan paket esint secara otomatis"
+msgstr "Gunakan paket mhch&em secara otomatis"
 
 #: src/frontends/qt4/ui/MathsUi.ui:98
-#, fuzzy
 msgid "The LaTeX package mhchem is always used"
-msgstr "Paket LaTeX esint selalu digunakan"
+msgstr "Paket LaTeX mhchem selalu digunakan"
 
 #: src/frontends/qt4/ui/MathsUi.ui:101
-#, fuzzy
 msgid "Use mh&chem package"
-msgstr "Gunakan paket &esint"
+msgstr "Gunakan paket mh&chem"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:60
 msgid "A&vailable:"
@@ -2731,9 +2710,8 @@ msgid "&Numbering"
 msgstr "Pe&nomoran"
 
 #: src/frontends/qt4/ui/OutputUi.ui:19
-#, fuzzy
 msgid "Output Format"
-msgstr "Output kosong"
+msgstr "Format Hasil"
 
 #: src/frontends/qt4/ui/OutputUi.ui:42
 #: src/frontends/qt4/ui/OutputUi.ui:55
@@ -2747,47 +2725,43 @@ msgstr "Format Keluaran Bawaan:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:67
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
-msgstr ""
+msgstr "Mengkatifkan pencarian maju/mundur antara penyunting dan keluaran (misal, SyncTeX)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:70
 msgid "S&ynchronize with Output"
-msgstr ""
+msgstr "Sesuaikan dengan keluaran"
 
 #: src/frontends/qt4/ui/OutputUi.ui:87
-#, fuzzy
 msgid "C&ustom Macro:"
-msgstr "Pelanggan no.:"
+msgstr "Makro S&uaian:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:97
-#, fuzzy
 msgid "Custom LaTeX preamble macro"
-msgstr "LaTeX Preamble"
+msgstr "Suaian makro LaTeX preamble"
 
 #: src/frontends/qt4/ui/OutputUi.ui:112
-#, fuzzy
 msgid "XHTML Output Options"
-msgstr "Pilihan Matematika"
+msgstr "Opsi Keluaran XHTML"
 
 #: src/frontends/qt4/ui/OutputUi.ui:121
 msgid "Whether to comply strictly with XHTML 1.1."
-msgstr ""
+msgstr "Harus sesuai sepenuhnya dengan XHTML 1.1."
 
 #: src/frontends/qt4/ui/OutputUi.ui:124
 msgid "&Strict XHTML 1.1"
-msgstr ""
+msgstr "&Harus XHTML 1.1"
 
 #: src/frontends/qt4/ui/OutputUi.ui:137
-#, fuzzy
 msgid "&Math Output:"
-msgstr "Pilihan Matematika"
+msgstr "Keluaran &Matematika:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:153
 msgid "Format to use for math output."
-msgstr ""
+msgstr "Format yang digunakan untuk hasil rumus matematika."
 
 #: src/frontends/qt4/ui/OutputUi.ui:157
 msgid "MathML"
-msgstr "Rumus Matematika|M"
+msgstr "MathML"
 
 #: src/frontends/qt4/ui/OutputUi.ui:162
 #: lib/configure.py:553
@@ -2795,9 +2769,8 @@ msgid "HTML"
 msgstr "HTML"
 
 #: src/frontends/qt4/ui/OutputUi.ui:167
-#, fuzzy
 msgid "Images"
-msgstr "Halaman"
+msgstr "Gambar"
 
 #: src/frontends/qt4/ui/OutputUi.ui:172
 #: lib/layouts/aapaper.layout:61
@@ -2810,13 +2783,12 @@ msgid "LaTeX"
 msgstr "LaTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:186
-#, fuzzy
 msgid "Math &Image Scaling:"
-msgstr "Spasi matematika"
+msgstr "Skala Gambar Rumus Matematika:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:202
 msgid "Scaling factor for images used for math output."
-msgstr ""
+msgstr "Faktor skala gambar yang digunakan untuk hasil rumus matematika."
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:19
 msgid "Paper Format"
@@ -2839,7 +2811,7 @@ msgstr "&Orientasi:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:135
 msgid "&Portrait"
-msgstr "&Potret"
+msgstr "Pot&ret"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:145
 msgid "&Landscape"
@@ -2852,11 +2824,11 @@ msgstr "Tataletak Halaman"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:170
 msgid "Headings &style:"
-msgstr "Model &Heading:"
+msgstr "Model &Kepala/Kaki:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:186
 msgid "Style used for the page header and footer"
-msgstr "Model yang digunakan untuk header dan footer halaman"
+msgstr "Model halaman yang digunakan untuk kepala dan kaki"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:206
 msgid "Lay out the page for double-sided printing"
@@ -3054,7 +3026,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:63
 msgid "&Phantom"
-msgstr ""
+msgstr "&Phantom"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:70
 #, fuzzy
@@ -3081,9 +3053,8 @@ msgid "A&lter..."
 msgstr "&Alternatif..."
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:62
-#, fuzzy
 msgid "Use system colors"
-msgstr "Direktori sistem tidak ada"
+msgstr "Gunakan warna sistem"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:25
 msgid "In Math"
@@ -3091,24 +3062,23 @@ msgstr "Pada Rumus Matematika"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:40
 msgid "Show the grey inline completion behind the cursor in math mode after the delay."
-msgstr "Tampilkan tanda pengisian kelabu di belakang kursor pada mode rumus matematika setelah jeda."
+msgstr "Tampilkan tanda melengkapi kelabu di belakang kursor pada mode rumus matematika setelah jeda."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:43
 msgid "Automatic in&line completion"
-msgstr "Pengisian otomatis in&line"
+msgstr "Melengkapi otomatis pada baris"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:50
 msgid "Show the popup in math mode after the delay."
-msgstr "Tampilkan popup pada mode matematika setelah jeda waktu"
+msgstr "Tampilkan jendela pilihan pada mode matematika setelah jeda waktu"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:53
 msgid "Automatic p&opup"
-msgstr "P&opup otomatis"
+msgstr "Menampilkan jedela pilihan otomatis"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:60
-#, fuzzy
 msgid "Autoco&rrection"
-msgstr "&Otomatis memulai"
+msgstr "Ko&reksi otomatis"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:70
 msgid "In Text"
@@ -3116,65 +3086,65 @@ msgstr "Pada Teks"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:85
 msgid "Show the grey inline completion behind the cursor in text mode after the delay."
-msgstr "Tampilkan tanda pengisian kelabu di belakang kursor pada mode teks setelah jeda waktu."
+msgstr "Tampilkan tanda melengkapi kelabu di belakang kursor pada mode teks setelah jeda waktu."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:88
 msgid "Automatic &inline completion"
-msgstr "Pengisian otomatis in&line"
+msgstr "Melengkapi kata otomatis pada baris"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:95
 msgid "Show the popup after the set delay in text mode."
-msgstr "Tampilkan popup pada mode teks setelah jeda waktu"
+msgstr "Tampilkan jendela pilihan pada mode teks setelah jeda waktu"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:98
 msgid "Automatic &popup"
-msgstr "Pop&up otomatis"
+msgstr "Menampilkan jendela pilihan otomatis"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:105
 msgid "Show a small triangle on the cursor if a completion is available in text mode."
-msgstr "Tampilkan segitiga kecil pada kursor apabila pengisian tersedia di mode teks."
+msgstr "Tampilkan segitiga kecil pada kursor apabila kata tersedia di mode teks."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:108
 msgid "Cursor i&ndicator"
-msgstr "I&ndicator kursor"
+msgstr "I&ndikator kursor"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:118
 #: lib/layouts/hollywood.layout:280
 #: src/frontends/qt4/GuiPrefs.cpp:365
 msgid "General"
-msgstr "General"
+msgstr "Hal Umum"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:141
 msgid "After the cursor has not moved for this time, the inline completion is shown if it is available."
-msgstr "Setelah kursor tidak bergerak, pengisian inline akan dimunculkan apabila tersedia."
+msgstr "Setelah kursor tidak bergerak, kata pilihan akan dimunculkan apabila tersedia."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:154
 msgid "s inline completion dela&y"
-msgstr "detik jeda &waktu pengisian inline"
+msgstr "detik jeda &waktu melengkapi kata"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:187
 msgid "After the cursor has not moved for this time, the completion popup is shown if it is available."
-msgstr "Setelah kursor tidak bergerak, pengisian popup akan dimunculkan apabila tersedia."
+msgstr "Setelah kursor tidak bergerak, jendela pilihan kata akan dimunculkan apabila tersedia."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:200
 msgid "s popup d&elay"
-msgstr "detik &jeda waktu popup"
+msgstr "detik &jeda waktu menampilkan jendela pilihan kata"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:225
 msgid "When the TAB completion is not unique, there won't be a delay of the popup. It will be shown right away."
-msgstr "Ketika pengisian TAB not-unique, tidak akan ada jeda waktu popup, tapi akan ditampilkan segera."
+msgstr "Jika ada beberapa kata pilihan, tidak akan ada jeda menampilkan kata, tapi akan ditampilkan segera."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:228
 msgid "Sho&w popup without delay for non-unique completions"
-msgstr "Tampilkan popup tanpa jeda waktu untuk pengisian non-uni&que"
+msgstr "Tampilkan jendela pilihan tanpa jeda jika ada beberapa kata"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:235
 msgid "Long completions are cut-off and shown with \"...\"."
-msgstr "Pengisian yang terlalu panjang akan dipotong dan ditandai denga \"...\"."
+msgstr "Kata pilihan yang terlalu panjang akan dipotong dan ditandai denga \"...\"."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:238
 msgid "&Use \"...\" to shorten long completions"
-msgstr "&Gunakan \"...\" untuk memendekkan pengisian yang panjang."
+msgstr "&Gunakan \"...\" untuk memotong kata pilihan yang panjang"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:81
 msgid "C&onverter:"
@@ -3266,12 +3236,11 @@ msgstr "Penyuntingan"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:37
 msgid "Cursor &follows scrollbar"
-msgstr "Kursor mengikuti s&crollbar"
+msgstr "Kursor mengikuti kotak &gulungan"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:44
-#, fuzzy
 msgid "Scroll &below end of document"
-msgstr "Tidak bisa membaca dokumen"
+msgstr "Menggulung dibawa&h akhir dokumen"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:51
 msgid "Sort &environments alphabetically"
@@ -3303,16 +3272,15 @@ msgstr "Semb&unyikan kotakbantuan"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:125
 msgid "Hide scr&ollbar"
-msgstr "Sembun&yikan scrollbar"
+msgstr "Sembun&yikan kotak gulungan"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:132
 msgid "Hide &tabbar"
 msgstr "Sembunyikan t&ab"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:139
-#, fuzzy
 msgid "Hide &menubar"
-msgstr "Sembunyikan t&ab"
+msgstr "Sembunyikan kotak &menu"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:146
 msgid "&Limit text width"
@@ -3367,9 +3335,8 @@ msgid "Specify the default output format when using (PDF)LaTeX"
 msgstr "Nyatakan format keluaran bawaan ketika menggunakan (PDF)LaTeX"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:168
-#, fuzzy
 msgid "Default Format"
-msgstr "Format hari"
+msgstr "Format Bawaan"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -3410,7 +3377,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:123
 msgid "Do not swap Apple and Control keys"
-msgstr ""
+msgstr "Jangan menukar tombol ketik Apple dan Control"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:136
 msgid "Mouse"
@@ -3422,16 +3389,15 @@ msgstr "Kecepatan gulungan &roda:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:158
 msgid "1.0 is the standard scrolling speed with the mouse wheel. Higher values will speed it up, low values slow it down."
-msgstr "1.0 adalah kecepatan scrolling yang normal untuk tetikus beroda. Angka yang lebih tinggi akan mempercepat, dan angka rendah memperlambat."
+msgstr "1.0 adalah kecepatan gulungan normal untuk tetikus. Makin besar angka makin cepat."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:202
 msgid "Scroll wheel zoom"
-msgstr ""
+msgstr "Menggulung roda untuk pembesaran"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:235
-#, fuzzy
 msgid "Enable"
-msgstr "Di&bolehkan"
+msgstr "Diaktifkan"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:249
 msgid "Ctrl"
@@ -3439,11 +3405,11 @@ msgstr "Ctrl"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:254
 msgid "Shift"
-msgstr "Shift-"
+msgstr "Shift"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:259
 msgid "Alt"
-msgstr "Perhatian"
+msgstr "Alt"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:19
 msgid "User &interface language:"
@@ -3459,12 +3425,11 @@ msgstr "Pa&ket bahasa:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:51
 msgid "Select which language package LyX should use"
-msgstr ""
+msgstr "Pilih paket bahasa yang akan digunakan LyX"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:55
-#, fuzzy
 msgid "Automatic"
-msgstr "Bantuan Otomatis"
+msgstr "Otomatis"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:60
 msgid "Always Babel"
@@ -3492,7 +3457,7 @@ msgstr "Perintah LaTeX yang mengakhiri perubahan ke satu bahasa asing"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:134
 msgid "Default Decimal &Point:"
-msgstr "Jumlah Desimal Bawwan:"
+msgstr "Simbol Desimal:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:150
 #: src/frontends/qt4/ui/TabularUi.ui:132
@@ -3501,11 +3466,11 @@ msgstr "X; "
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:160
 msgid "Check to pass the language globally (to the document class), not locally (to the language package)"
-msgstr "Pilih ini untuk mengikuti bahasa secara global (ke class dokumen), tidak secara lokal (hanya ke paket bahasa)"
+msgstr "Pilih ini untuk menerapkan bahasa secara global (ke kelas dokumen), tidak secara lokal (hanya ke paket bahasa)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:163
 msgid "Set languages &globally"
-msgstr ""
+msgstr "Terapkan bahasa untuk penggunaan global"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:170
 msgid "If checked, the document language is not explicitly set by a language switch command"
@@ -3550,7 +3515,7 @@ msgstr "Gerakan kursor:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:243
 msgid "&Logical"
-msgstr "&Logical"
+msgstr "&Logika"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:253
 msgid "&Visual"
@@ -3558,12 +3523,11 @@ msgstr "&Visual"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:24
 msgid "Enable if a specific font encoding (such as T1) should be used (via fontenc)"
-msgstr ""
+msgstr "Aktif jika enkoding huruf (misalnya T1) harus digunakan (melalui fontenc)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:27
-#, fuzzy
 msgid "Use LaTe&X font encoding:"
-msgstr "Te&X encoding:"
+msgstr "Gunakan enkoding huruf LaTe&X:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:41
 msgid "Default paper si&ze:"
@@ -3619,7 +3583,7 @@ msgstr "Perintah utama dan tambahan untuk BibTeX"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:182
 #: src/frontends/qt4/ui/PrefLatexUi.ui:257
 msgid "Processor for &Japanese:"
-msgstr ""
+msgstr "Pemroses untuk &Jepang:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:192
 msgid "Specific BibTeX command and options for pLaTeX (Japanese)"
@@ -3627,7 +3591,7 @@ msgstr "Perintah spesifik BiBTeX dan pilihan untuk pLaTeX (Jepang)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:214
 msgid "Pr&ocessor:"
-msgstr ""
+msgstr "Pe&mroses:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:240
 #: src/frontends/qt4/GuiPrefs.cpp:758
@@ -3714,17 +3678,15 @@ msgstr "Apa yang dikerjakan ketika berkas yang sudah ada akan ditindi ketika pro
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:151
 msgid "Forward search"
-msgstr ""
+msgstr "Pencarian"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:171
-#, fuzzy
 msgid "DV&I command:"
-msgstr "Perintah &Indeks:"
+msgstr "Perintah DV&I:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:207
-#, fuzzy
 msgid "&PDF command:"
-msgstr "Perintah &roff:"
+msgstr "Perintah &PDF:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:41
 msgid "&PATH prefix:"
@@ -3742,13 +3704,12 @@ msgid "Browse..."
 msgstr "Cari..."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:64
-#, fuzzy
 msgid "T&hesaurus dictionaries:"
-msgstr "Padanan Kata gagal"
+msgstr "Kamus Sin&onim:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:90
 msgid "&Temporary directory:"
-msgstr "Direktori sementa&ra:"
+msgstr "Lokasi sementa&ra:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:113
 msgid "Ly&XServer pipe:"
@@ -3756,24 +3717,23 @@ msgstr "Pipa Ly&X Server:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:136
 msgid "&Backup directory:"
-msgstr "Direktori back&up:"
+msgstr "Lokasi cadan&gan:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:159
 msgid "&Example files:"
-msgstr "B&erkas Contoh:"
+msgstr "Lokasi Conto&h:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:182
 msgid "&Document templates:"
-msgstr "Te&mplate Dokumen:"
+msgstr "Lokasi Te&mplet:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:205
 msgid "&Working directory:"
-msgstr "Direktori &Kerja:"
+msgstr "Lokasi &Kerja:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:215
-#, fuzzy
 msgid "Hunspell dictionaries:"
-msgstr "&Kamus pribadi:"
+msgstr "Kamus Hunspell:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:41
 msgid "Printer Command Options"
@@ -3985,7 +3945,7 @@ msgstr "Tampilkan ke&y-bindings mengandung:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:41
 msgid "If unchecked, notes and comments will be excluded from spell checking"
-msgstr ""
+msgstr "Apabila tidak dipilih, nota dan komentar tidak akan diperhitungkan oleh pemeriksa ejaan"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:44
 msgid "Spellcheck &notes and comments"
@@ -4005,20 +3965,19 @@ msgstr "Mengenal kata &gabungan"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:74
 msgid "Mark misspelled words with a wavy underline."
-msgstr ""
+msgstr "Tandai salah ejaan dengan garis bawah berwarna merah."
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:77
 msgid "S&pellcheck continuously"
 msgstr "Selalu periksa &ejaan ketika mengetik"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:100
-#, fuzzy
 msgid "The characters inserted here are ignored by the spellchecker. "
-msgstr "Karakter yang disisipkan disini diabaikan oleh pemeriksa ejaan"
+msgstr "Kata yang dituliskan disini diabaikan oleh pemeriksa ejaan."
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:107
 msgid "&Escape characters:"
-msgstr "Ka&rakter escape:"
+msgstr "Tidak dipe&riksa:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:117
 msgid "Override the language used for the spellchecker"
@@ -4098,12 +4057,11 @@ msgstr "Buka dokumen dalam ta&b"
 
 #: src/frontends/qt4/ui/PrefUi.ui:245
 msgid "Whether to open documents in an already running instance of LyX."
-msgstr ""
+msgstr "Apakah akan membuka dokumen dalam LyX yan sudah dibuka."
 
 #: src/frontends/qt4/ui/PrefUi.ui:248
-#, fuzzy
 msgid "S&ingle instance"
-msgstr "Tanda Petik Tunggal|T"
+msgstr "Men&jadi satu"
 
 #: src/frontends/qt4/ui/PrefUi.ui:255
 msgid "Whether to place close button on each tab or only one in the top left."
@@ -4267,47 +4225,40 @@ msgid "Automatic cleanup of the window before LaTeX compilation proceeds"
 msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
-#, fuzzy
 msgid "&Clear automatically"
-msgstr "Gunakan setiap perubahan secara otomatis"
+msgstr "Be&rsihkan otomatis"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
-#, fuzzy
 msgid "Debug messages"
-msgstr "Semua pesan debugging"
+msgstr "Pesan Awakutu"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:203
-#, fuzzy
 msgid "Display no debug messages"
-msgstr "Semua pesan debugging"
+msgstr "Tidak menampilkan pesan awakutu"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:206
-#, fuzzy
 msgid "&None"
-msgstr "Kosong"
+msgstr "Tidak ta&mpil"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:213
 msgid "Display the debug messages selected to the right"
 msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:216
-#, fuzzy
 msgid "S&elected"
 msgstr "Yang d&ipilih:"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:223
-#, fuzzy
 msgid "Display all debug messages"
-msgstr "Semua pesan debugging"
+msgstr "Tampilkan semua pesan awakutu"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
 msgid "Display statusbar messages?"
 msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:239
-#, fuzzy
 msgid "&Statusbar messages"
-msgstr "Pesan-pesan sisipan teks/tabular"
+msgstr "Kotak status pesan"
 
 #: src/frontends/qt4/ui/RefUi.ui:36
 msgid "Fil&ter:"
@@ -4433,7 +4384,7 @@ msgstr "Hapus cara pintas yang sekarang"
 #: src/frontends/qt4/ui/ShortcutUi.ui:100
 #: src/frontends/qt4/ui/TabularUi.ui:953
 msgid "C&lear"
-msgstr "&Bersihkan"
+msgstr "Bersihkan"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:107
 msgid "&Shortcut:"
@@ -4526,9 +4477,8 @@ msgid "&Table Settings"
 msgstr "Pengaturan &Umum"
 
 #: src/frontends/qt4/ui/TabularUi.ui:41
-#, fuzzy
 msgid "Column settings"
-msgstr "Pengaturan Dokumen"
+msgstr "Pengaturan Kolom"
 
 #: src/frontends/qt4/ui/TabularUi.ui:47
 msgid "&Horizontal alignment:"
@@ -4546,13 +4496,12 @@ msgstr "Rata kiri kanan"
 
 #: src/frontends/qt4/ui/TabularUi.ui:81
 #: src/frontends/qt4/GuiTabular.cpp:739
-#, fuzzy
 msgid "At Decimal Separator"
-msgstr "Pemisah"
+msgstr "Rata desimal"
 
 #: src/frontends/qt4/ui/TabularUi.ui:107
 msgid "&Decimal separator:"
-msgstr ""
+msgstr "Tanda desimal:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:165
 msgid "Fixed width of the column"
@@ -4568,43 +4517,39 @@ msgstr "Nyatakan posisi vertikal dalam sel."
 
 #: src/frontends/qt4/ui/TabularUi.ui:241
 msgid "Merge cells of different columns"
-msgstr ""
+msgstr "Penggabungan beberapa sel horisontal"
 
 #: src/frontends/qt4/ui/TabularUi.ui:244
 msgid "&Multicolumn"
 msgstr "&Gabung sel horisontal"
 
 #: src/frontends/qt4/ui/TabularUi.ui:254
-#, fuzzy
 msgid "Row setting"
-msgstr "Pengaturan Kotak"
+msgstr "Pengaturan Baris"
 
 #: src/frontends/qt4/ui/TabularUi.ui:260
 msgid "Merge cells of different rows"
-msgstr ""
+msgstr "Penggabungan beberapa sel vertikal"
 
 #: src/frontends/qt4/ui/TabularUi.ui:263
 msgid "M&ultirow"
-msgstr ""
+msgstr "Gabung sel verti&kal"
 
 #: src/frontends/qt4/ui/TabularUi.ui:272
 msgid "optional vertical offset"
-msgstr ""
+msgstr "Spasi vertikal tambahan"
 
 #: src/frontends/qt4/ui/TabularUi.ui:275
-#, fuzzy
 msgid "&Vertical Offset:"
-msgstr "Spasi &Vertikal"
+msgstr "Jarak &Vertikal:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:288
-#, fuzzy
 msgid "value of the optional vertical offset"
-msgstr "Spasi &Vertikal"
+msgstr "Ukuran jarak vertikal"
 
 #: src/frontends/qt4/ui/TabularUi.ui:306
-#, fuzzy
 msgid "Cell setting"
-msgstr "Pengaturan Nota"
+msgstr "Pengaturan Sel"
 
 #: src/frontends/qt4/ui/TabularUi.ui:312
 msgid "Rotate this cell by 90 degrees"
@@ -4615,19 +4560,16 @@ msgid "Rotate &cell 90 degrees"
 msgstr "Putar sel 90 &derajat"
 
 #: src/frontends/qt4/ui/TabularUi.ui:328
-#, fuzzy
 msgid "Table-wide settings"
-msgstr "Pengaturan Tabel"
+msgstr "Pengaturan Perataan Tabel"
 
 #: src/frontends/qt4/ui/TabularUi.ui:334
-#, fuzzy
 msgid "Verti&cal alignment:"
-msgstr "Pelurusan vertikal"
+msgstr "Perataan v&ertikal"
 
 #: src/frontends/qt4/ui/TabularUi.ui:344
-#, fuzzy
 msgid "Vertical alignment of the table"
-msgstr "Pelurusan vertikal"
+msgstr "Perataan vertikal pada tabel"
 
 #: src/frontends/qt4/ui/TabularUi.ui:388
 msgid "Rotate the table by 90 degrees"
@@ -4687,7 +4629,7 @@ msgstr "Menggunakan garis bawaan yaitu model garis grid"
 
 #: src/frontends/qt4/ui/TabularUi.ui:985
 msgid "De&fault"
-msgstr "De&fault"
+msgstr "Bawaa&n"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1011
 msgid "Additional Space"
@@ -4715,12 +4657,11 @@ msgstr "Pilih tabel yang terbentang pada beberapa halaman"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1148
 msgid "&Use long table"
-msgstr "&Gunakan Tabel Panjang"
+msgstr "Gunakan Tabel Pan&jang"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1158
-#, fuzzy
 msgid "Row settings"
-msgstr "Pengaturan Kotak"
+msgstr "Pengaturan baris"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1164
 msgid "Status"
@@ -4740,11 +4681,11 @@ msgstr "Isi"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1192
 msgid "Header:"
-msgstr "Header:"
+msgstr "Kepala:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1199
 msgid "Repeat this row as header on every (except the first) page"
-msgstr "Munculkan baris ini sebagai header di setiap halaman (kecuali halaman pertama)"
+msgstr "Munculkan baris ini sebagai kepala di setiap halaman (kecuali halaman pertama)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1202
 #: src/frontends/qt4/ui/TabularUi.ui:1239
@@ -4769,11 +4710,11 @@ msgstr "ganda"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1226
 msgid "First header:"
-msgstr "Header pertama:"
+msgstr "Kepala hal. pertama:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1233
 msgid "This row is the header of the first page"
-msgstr "Baris ini adalah header untuk halaman pertama saja"
+msgstr "Baris ini adalah kepala untuk halaman pertama saja"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1260
 msgid "Don't output the first header"
@@ -4786,23 +4727,23 @@ msgstr "kosong"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1270
 msgid "Footer:"
-msgstr "Footer:"
+msgstr "Kaki:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1277
 msgid "Repeat this row as footer on every (except the last) page"
-msgstr "Munculkan baris ini sebagai footer di semua halaman (kecuali di halaman terakhir)"
+msgstr "Munculkan baris ini sebagai kaki di semua halaman (kecuali di halaman terakhir)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1301
 msgid "Last footer:"
-msgstr "Footer terakhir:"
+msgstr "Kaki hal. terakhir:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1308
 msgid "This row is the footer of the last page"
-msgstr "Baris ini sebagai footer di halaman terakhir"
+msgstr "Baris ini sebagai kaki di halaman terakhir"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1332
 msgid "Don't output the last footer"
-msgstr "Jangan tampilkan footer terakhir"
+msgstr "Jangan tampilkan kaki terakhir"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1342
 msgid "Caption:"
@@ -4817,14 +4758,12 @@ msgid "Page &break on current row"
 msgstr "Pemisah halaman pada &baris"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1375
-#, fuzzy
 msgid "Horizontal alignment of the longtable"
-msgstr "Pengaturan horisontal kandungan dalam boks"
+msgstr "Pengaturan perataan horisontal dalam tabel panjang"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1378
-#, fuzzy
 msgid "Longtable alignment"
-msgstr "Posisi &horisontal:"
+msgstr "Perataan tabel panjang"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1430
 msgid "Current cell:"
@@ -4913,9 +4852,8 @@ msgid "&Line spacing:"
 msgstr "&Ukuran Spasi:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:218
-#, fuzzy
 msgid "Spacing type"
-msgstr "Pengaturan Spasi"
+msgstr "Tipe Spasi"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:231
 #, fuzzy
@@ -4970,9 +4908,8 @@ msgid "Click to select a proposal, double click to look it up."
 msgstr "Klik disini untuk memilih berkas dokumen class"
 
 #: src/frontends/qt4/ui/TocUi.ui:36
-#, fuzzy
 msgid "Filter:"
-msgstr "Footer:"
+msgstr "Penapis:"
 
 #: src/frontends/qt4/ui/TocUi.ui:46
 #, fuzzy
@@ -7460,77 +7397,71 @@ msgstr "KnightMove:"
 
 #: lib/layouts/customHeadersFooters.module:2
 msgid "Custom Header/Footerlines"
-msgstr ""
+msgstr "Tambahan lingkungan kepala/kaki"
 
 #: lib/layouts/customHeadersFooters.module:7
 msgid "Adds environments to define header and footer lines NOTE: To use this module you must set the Headings style in the menu Document Settings -> Page Layout to fancy!"
-msgstr ""
+msgstr "Menambah lingkungan tambahan untuk kepala dan kaki CATATAN: Anda harus menggunakan pengaturan Tataletak Halaman dari menu Dokumen->Pengaturan. Pilihlah fancy!"
 
 #: lib/layouts/customHeadersFooters.module:10
 #: lib/layouts/foils.layout:185
 #: lib/layouts/simplecv.layout:97
 #: lib/layouts/aguplus.inc:78
 msgid "Left Header"
-msgstr "Header Kiri"
+msgstr "Kepala Kiri"
 
 #: lib/layouts/customHeadersFooters.module:17
 #: lib/layouts/foils.layout:189
 #: lib/layouts/aguplus.inc:91
 msgid "Left Header:"
-msgstr "Header Kiri:"
+msgstr "Kepala Kiri:"
 
 #: lib/layouts/customHeadersFooters.module:29
-#, fuzzy
 msgid "Center Header"
-msgstr "Header Kiri"
+msgstr "Kepala Tengah"
 
 #: lib/layouts/customHeadersFooters.module:32
-#, fuzzy
 msgid "Center Header:"
-msgstr "Header Kiri:"
+msgstr "Kepala Tengah:"
 
 #: lib/layouts/customHeadersFooters.module:36
 #: lib/layouts/foils.layout:193
 #: lib/layouts/simplecv.layout:114
 #: lib/layouts/aguplus.inc:101
 msgid "Right Header"
-msgstr "Header Kanan"
+msgstr "Kepala Kanan"
 
 #: lib/layouts/customHeadersFooters.module:39
 #: lib/layouts/foils.layout:197
 #: lib/layouts/aguplus.inc:105
 msgid "Right Header:"
-msgstr "Header Kanan:"
+msgstr "Kepala Kanan:"
 
 #: lib/layouts/customHeadersFooters.module:43
-#, fuzzy
 msgid "Left Footer"
-msgstr "Footer Kanan"
+msgstr "Kaki Kiri"
 
 #: lib/layouts/customHeadersFooters.module:46
-#, fuzzy
 msgid "Left Footer:"
-msgstr "Footer terakhir:"
+msgstr "Kaki Kiri:"
 
 #: lib/layouts/customHeadersFooters.module:50
-#, fuzzy
 msgid "Center Footer"
-msgstr "Footer Kanan"
+msgstr "Kaki Tengah"
 
 #: lib/layouts/customHeadersFooters.module:53
-#, fuzzy
 msgid "Center Footer:"
-msgstr "Footer Bahasa:"
+msgstr "Kaki Tengah:"
 
 #: lib/layouts/customHeadersFooters.module:57
 #: lib/layouts/foils.layout:201
 msgid "Right Footer"
-msgstr "Footer Kanan"
+msgstr "Kaki Kanan"
 
 #: lib/layouts/customHeadersFooters.module:60
 #: lib/layouts/foils.layout:205
 msgid "Right Footer:"
-msgstr "Footer Kanan:"
+msgstr "Kaki Kanan:"
 
 #: lib/layouts/dinbrief.layout:28
 msgid "DinBrief"
@@ -8271,11 +8202,11 @@ msgstr "Kata kunci:"
 
 #: lib/layouts/enumitem.module:2
 msgid "Customizable Lists (enumitem)"
-msgstr ""
+msgstr "Daftar Lain Model (enumitem)"
 
 #: lib/layouts/enumitem.module:7
 msgid "Controls the layout of enumerate, itemize and description with an optional argument. See http://mirror.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf"
-msgstr ""
+msgstr "Mengkontrol tataletak daftar bernomor,  bersimbol, dan Deskripsi dengan opsi argumen. Lihat http://mirror.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf"
 
 #: lib/layouts/enumitem.module:73
 #: lib/layouts/scrlettr.layout:24
@@ -8971,9 +8902,8 @@ msgid "MarkBoth"
 msgstr "MarkBoth"
 
 #: lib/layouts/IEEEtran.layout:177
-#, fuzzy
 msgid "Publication ID"
-msgstr "Penerbit"
+msgstr "ID Publikasi"
 
 #: lib/layouts/IEEEtran.layout:196
 msgid "Abstract---"
@@ -8993,9 +8923,8 @@ msgid "Biography"
 msgstr "Biografi"
 
 #: lib/layouts/IEEEtran.layout:277
-#, fuzzy
 msgid "Biography without photo"
-msgstr "BiographyNoPhoto"
+msgstr "Biografi tanpa foto"
 
 #: lib/layouts/IEEEtran.layout:283
 msgid "BiographyNoPhoto"
@@ -10964,7 +10893,6 @@ msgid "Endnote"
 msgstr "Endnote"
 
 #: lib/layouts/endnotes.module:6
-#, fuzzy
 msgid "Adds an endnote inset, in addition to footnotes. You will need to add \\theendnotes in TeX-code where you want the endnotes to appear."
 msgstr "Menambahkan sisipan endnote, sebagai tambahan catatan kaki. Anda perlu menambahkan \\theendnotes dalam ERT pada tempat dimana endnote akan dimunculkan."
 
@@ -10989,22 +10917,20 @@ msgid "Resets the figure number at section start and prepends the section number
 msgstr "Atur ulang nomor gambar di permulaan  SubBab dan meletakkan di depan nomor gambar sebelumnya, seperti 'gbr.2.1'."
 
 #: lib/layouts/fixltx2e.module:2
-#, fuzzy
 msgid "Fix LaTeX"
-msgstr "LaTeX"
+msgstr "Fix LaTeX"
 
 #: lib/layouts/fixltx2e.module:9
 msgid "Loads the LaTeX package fixltx2e which contains some bug fixes for LaTeX. Those fixes are not part of the LaTeX kernel because of backward compatibility. If you use this module your typeset document may look different when you process it with future LaTeX versions, because fixltx2e may provide more bugfixes in future versions."
-msgstr ""
+msgstr "Memuat paket LaTeX fixltx2e untuk menghilangkan berbagai kutu LaTeX. Obat kutu ini belum masuk dalam LaTeX kernel karena kompatibilitas mundur. Apabila anda menggunakan modul ini, pengaturan dokumen mungkin agak berbeda jika memeroses dengan versi LaTeX terbaru karena fixltx2e menghilangkan kutu untuk versi yang baru."
 
 #: lib/layouts/foottoend.module:2
 msgid "Foot to End"
 msgstr "Catatan kaki menjadi endnote"
 
 #: lib/layouts/foottoend.module:6
-#, fuzzy
 msgid "Sets all footnotes as endnotes. You will need to add \\theendnotes in TeX-code where you want the endnotes to appear."
-msgstr "Merubah semua catatan kaki menjadi endnote. Anda perlu menambahkan \\theendnotes dalam ERT pada tempat-tempat yang diinginkan muncul endnote."
+msgstr "Merubah semua catatan kaki menjadi endnote. Anda perlu menambahkan \\theendnotes dalam kode TeX pada tempat-tempat yang diinginkan muncul endnote."
 
 #: lib/layouts/hanging.module:2
 #: lib/layouts/hanging.module:16
@@ -11017,11 +10943,11 @@ msgstr "Menambahkan paragraf menggantung pada lingkungan. Paragraf menggantung a
 
 #: lib/layouts/initials.module:2
 msgid "Initials"
-msgstr ""
+msgstr "Inisial"
 
 #: lib/layouts/initials.module:6
 msgid "Define character style for initials. Hint: try to use math and its artistic font styles like Fractur or the Calligraphic one."
-msgstr ""
+msgstr "Mendefinisikan corak karakter untuk inisial. Saran: gunakan huruf matematika dan artistik seperti Fractur atau dari Calligraphic."
 
 #: lib/layouts/initials.module:6
 #: lib/layouts/logicalmkup.module:5
@@ -11032,16 +10958,15 @@ msgstr "CorakHuruf"
 #: lib/layouts/initials.module:10
 #: lib/layouts/initials.module:12
 msgid "Initial"
-msgstr ""
+msgstr "Inisial"
 
 #: lib/layouts/lilypond.module:2
-#, fuzzy
 msgid "LilyPond Book"
-msgstr "LilyPond"
+msgstr "Buku LilyPond"
 
 #: lib/layouts/lilypond.module:6
 msgid "This module adds an inset to enter LilyPond code directly into LyX. It will be processed in the output. See the lilypond.lyx example file."
-msgstr ""
+msgstr "Modul ini menambahkan sisipan untuk memasukkan kode LilyPond langsung di LyX. Kode akan diproses untuk memberi keluaran. Silahkan lihat berkas contoh lilypond.lyx ."
 
 #: lib/layouts/lilypond.module:13
 #: lib/external_templates:212
@@ -11091,27 +11016,24 @@ msgid "Tri-Glosse"
 msgstr "Tri-Glosse"
 
 #: lib/layouts/linguistics.module:122
-#, fuzzy
 msgid "Expression"
-msgstr "Sesi Kerja"
+msgstr "Ekspresi"
 
 #: lib/layouts/linguistics.module:124
 msgid "expr."
 msgstr "ekspr."
 
 #: lib/layouts/linguistics.module:137
-#, fuzzy
 msgid "Concepts"
-msgstr "konsep"
+msgstr "Konsep"
 
 #: lib/layouts/linguistics.module:139
 msgid "concept"
 msgstr "konsep"
 
 #: lib/layouts/linguistics.module:152
-#, fuzzy
 msgid "Meaning"
-msgstr "arti"
+msgstr "Arti"
 
 #: lib/layouts/linguistics.module:154
 msgid "meaning"
@@ -11147,9 +11069,8 @@ msgid "emph"
 msgstr "condong"
 
 #: lib/layouts/logicalmkup.module:44
-#, fuzzy
 msgid "Strong"
-msgstr "kuat"
+msgstr "Kuat"
 
 #: lib/layouts/logicalmkup.module:46
 msgid "strong"
@@ -11168,29 +11089,27 @@ msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
 msgstr "Mendefinisikan ulang beberapa sisipan (Indeks, Branch, URL) dalam corak yang minimal."
 
 #: lib/layouts/noweb.module:2
-#, fuzzy
 msgid "Noweb"
-msgstr "NoWeb"
+msgstr "Noweb"
 
 #: lib/layouts/noweb.module:5
 msgid "Allows to use Noweb as a literate programming tool."
-msgstr ""
+msgstr "Memungkinkan mengunakan Noweb sebagai piranti menulis kode program."
 
 #: lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:5
-#, fuzzy
 msgid "literate"
-msgstr "Literal"
+msgstr "literal"
 
 #: lib/layouts/sweave.module:2
 #: lib/layouts/sweave.module:21
 #: lib/configure.py:506
 msgid "Sweave"
-msgstr ""
+msgstr "Sweave"
 
 #: lib/layouts/sweave.module:5
 msgid "Allows to use the statistical language S/R as a literate programming tool via Sweave package."
-msgstr ""
+msgstr "Memungkinkan menggunakan  bahasa program statistika S/R melalui paket Sweave."
 
 #: lib/layouts/sweave.module:20
 msgid "Chunk"
@@ -11211,7 +11130,7 @@ msgstr ""
 
 #: lib/layouts/tabs-within-sections.module:2
 msgid "Number Tables by Section"
-msgstr "Jumlah Tebel menurut SubBab"
+msgstr "Jumlah Tabel menurut SubBab"
 
 #: lib/layouts/tabs-within-sections.module:6
 msgid "Resets the table number at section start and prepends the section number to the table number, as in 'Table 2.1'."
@@ -11240,9 +11159,8 @@ msgstr "Mendefinisikan beberapa lingkungan teorema tambahan untuk digunakan dala
 #: lib/layouts/theorems-sec.module:8
 #: lib/layouts/theorems-starred.module:7
 #: lib/layouts/theorems-std.module:8
-#, fuzzy
 msgid "theorems"
-msgstr "Teorema"
+msgstr "teorema"
 
 #: lib/layouts/theorems-ams-extended.module:40
 msgid "Criterion \\thetheorem."
@@ -11389,14 +11307,12 @@ msgid "Question \\thetheorem."
 msgstr "Definisi \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:395
-#, fuzzy
 msgid "Question*"
-msgstr "Pertanyaan"
+msgstr "Pertanyaan*"
 
 #: lib/layouts/theorems-ams-extended.module:398
-#, fuzzy
 msgid "Question."
-msgstr "Pertanyaan"
+msgstr "Pertanyaan."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
 msgid "Theorems (AMS-Extended, Numbered by Type)"
@@ -11475,23 +11391,20 @@ msgid "Numbers theorems and the like by chapter (i.e., the counter is reset at e
 msgstr "Nomor Teorema menurut Bab (yaitu, urutan diulang setiap bab baru). Gunakan modul ini dengan layout yang menyediakan lingkungan Bab (Chapter)."
 
 #: lib/layouts/theorems-named.module:3
-#, fuzzy
 msgid "Named Theorems"
-msgstr "Teorema"
+msgstr "Teorema Bernama"
 
 #: lib/layouts/theorems-named.module:7
 msgid "Facilitates the use of named theorems. The name of the theorem goes into the Short Title inset."
-msgstr ""
+msgstr "Memfasilitasi penggunaan teorema bernama. Nama dari teorema ditulis dalam sisipan Judul Singkat."
 
 #: lib/layouts/theorems-named.module:11
-#, fuzzy
 msgid "Named Theorem"
-msgstr "Teorema"
+msgstr "Teorema Bernama"
 
 #: lib/layouts/theorems-named.module:14
-#, fuzzy
 msgid "Named Theorem."
-msgstr "Teorema."
+msgstr "Teorema Bernama."
 
 #: lib/layouts/theorems-sec-bytype.module:2
 msgid "Theorems (Numbered by Type within Sections)"
@@ -11609,7 +11522,7 @@ msgstr "Catalan"
 
 #: lib/languages:246
 msgid "Chinese (simplified)"
-msgstr "Cina (simplified)"
+msgstr "Cina (ringkas)"
 
 #: lib/languages:253
 msgid "Chinese (traditional)"
@@ -11668,9 +11581,8 @@ msgid "German"
 msgstr "Jerman"
 
 #: lib/languages:399
-#, fuzzy
 msgid "German (Switzerland)"
-msgstr "Jerman (Austria)"
+msgstr "Jerman (Swiss)"
 
 #: lib/languages:408
 #: lib/ui/stdtoolbars.inc:279
@@ -12315,7 +12227,7 @@ msgstr "Rata kiri|r"
 #: lib/ui/stdcontext.inc:411
 #: lib/ui/stdmenus.inc:195
 msgid "Center|C"
-msgstr "Tengah Antara|T"
+msgstr "Tengah|T"
 
 #: lib/ui/classic.ui:143
 #: lib/ui/stdmenus.inc:196
@@ -12338,7 +12250,7 @@ msgstr "Tengah Garis"
 #: lib/ui/stdcontext.inc:417
 #: lib/ui/stdmenus.inc:200
 msgid "Bottom|B"
-msgstr "Rata Bawah|w"
+msgstr "Rata Bawah"
 
 #: lib/ui/classic.ui:159
 msgid "Toggle Numbering|N"
@@ -12361,7 +12273,7 @@ msgstr "Ubah Tipe Rumus|R"
 #: lib/ui/classic.ui:166
 #: lib/ui/stdmenus.inc:223
 msgid "Use Computer Algebra System|S"
-msgstr "Gunakan Sistem Komputer Aljabar|S"
+msgstr "Gunakan Sistem Komputer Aljabar|j"
 
 #: lib/ui/classic.ui:168
 msgid "Alignment|A"
@@ -12803,7 +12715,7 @@ msgstr "Teks Tegak"
 
 #: lib/ui/classic.ui:310
 msgid "Floatflt Figure"
-msgstr "Obyek Float"
+msgstr "Obyek Ambangan"
 
 #: lib/ui/classic.ui:314
 #: lib/ui/stdmenus.inc:441
@@ -13095,7 +13007,6 @@ msgid "Split Cell|C"
 msgstr "Memisah Sel|h"
 
 #: lib/ui/stdcontext.inc:61
-#, fuzzy
 msgid "Insert|s"
 msgstr "Sisipan|S"
 
@@ -13109,12 +13020,10 @@ msgid "Add Line Below|B"
 msgstr "Tambah Garis Dibawah|b"
 
 #: lib/ui/stdcontext.inc:65
-#, fuzzy
 msgid "Delete Line Above|v"
 msgstr "Hapus Garis Diatas|D"
 
 #: lib/ui/stdcontext.inc:66
-#, fuzzy
 msgid "Delete Line Below|w"
 msgstr "Hapus Garis Dibawah|w"
 
@@ -13151,9 +13060,8 @@ msgid "Show Table Toolbar"
 msgstr "Tampilkan Kotak Bantuan Tabel"
 
 #: lib/ui/stdcontext.inc:77
-#, fuzzy
 msgid "Use Computer Algebra System|m"
-msgstr "Gunakan Sistem Komputer Aljabar|S"
+msgstr "Gunakan Sistem Komputer Aljabar|j"
 
 #: lib/ui/stdcontext.inc:85
 #: lib/ui/stdcontext.inc:103
@@ -13189,9 +13097,8 @@ msgid "Formatted Reference|t"
 msgstr "Referensi Format Lain|t"
 
 #: lib/ui/stdcontext.inc:94
-#, fuzzy
 msgid "Textual Reference|x"
-msgstr "Referensi Terimakasih"
+msgstr "Referensi Tekstual"
 
 #: lib/ui/stdcontext.inc:96
 #: lib/ui/stdcontext.inc:108
@@ -13563,7 +13470,7 @@ msgstr ""
 #: lib/ui/stdcontext.inc:305
 #: lib/ui/stdmenus.inc:111
 msgid "Move Paragraph Up|o"
-msgstr "Pindah Paragraf ke Atas|A"
+msgstr "Pindah Paragraf ke Atas"
 
 #: lib/ui/stdcontext.inc:306
 #: lib/ui/stdmenus.inc:112
@@ -13593,12 +13500,10 @@ msgstr "Sisipkan Judul Singkat|J"
 
 #: lib/ui/stdcontext.inc:315
 #: lib/ui/stdcontext.inc:614
-#, fuzzy
 msgid "Accept Change|c"
 msgstr "Terima Perubahan|T"
 
 #: lib/ui/stdcontext.inc:316
-#, fuzzy
 msgid "Reject Change|j"
 msgstr "Tolak Perubahan|l"
 
@@ -13698,29 +13603,25 @@ msgid "Edit Externally...|x"
 msgstr "Buka Dengan Program Lain...|B"
 
 #: lib/ui/stdcontext.inc:402
-#, fuzzy
 msgid "Multicolumn|u"
-msgstr "Multikolom|M"
+msgstr "Gabung kolom"
 
 #: lib/ui/stdcontext.inc:403
-#, fuzzy
 msgid "Multirow|w"
-msgstr "Multikolom|M"
+msgstr "Gabung baris"
 
 #: lib/ui/stdcontext.inc:405
-#, fuzzy
 msgid "Top Line|n"
 msgstr "Garis Atas"
 
 #: lib/ui/stdcontext.inc:406
-#, fuzzy
 msgid "Bottom Line|i"
-msgstr "Garis Bawah|B"
+msgstr "Garis Bawah"
 
 #: lib/ui/stdcontext.inc:407
 #: lib/ui/stdmenus.inc:185
 msgid "Left Line|L"
-msgstr "Garis Kiri|i"
+msgstr "Garis Kiri"
 
 #: lib/ui/stdcontext.inc:408
 #: lib/ui/stdmenus.inc:186
@@ -13728,22 +13629,18 @@ msgid "Right Line|R"
 msgstr "Garis Kanan"
 
 #: lib/ui/stdcontext.inc:410
-#, fuzzy
 msgid "Left|f"
 msgstr "Rata kiri|r"
 
 #: lib/ui/stdcontext.inc:412
-#, fuzzy
 msgid "Right|h"
-msgstr "Kanan|K"
+msgstr "Rata Kanan|K"
 
 #: lib/ui/stdcontext.inc:413
-#, fuzzy
 msgid "Decimal"
-msgstr "email"
+msgstr "Rata Desimal"
 
 #: lib/ui/stdcontext.inc:419
-#, fuzzy
 msgid "Append Row|A"
 msgstr "Tambah Baris|s"
 
@@ -13753,17 +13650,14 @@ msgid "Copy Row|o"
 msgstr "Salin Baris"
 
 #: lib/ui/stdcontext.inc:424
-#, fuzzy
 msgid "Append Column|p"
 msgstr "Tambah Kolom|l"
 
 #: lib/ui/stdcontext.inc:426
-#, fuzzy
 msgid "Copy Column|y"
-msgstr "Salin kolom|o"
+msgstr "Salin Kolom|o"
 
 #: lib/ui/stdcontext.inc:429
-#, fuzzy
 msgid "Settings...|g"
 msgstr "Pengaturan...|a"
 
@@ -13802,19 +13696,16 @@ msgid "Revision Time|i"
 msgstr "Perubahan"
 
 #: lib/ui/stdcontext.inc:447
-#, fuzzy
 msgid "LyX Version|X"
-msgstr "Versi"
+msgstr "Versi LyX|X"
 
 #: lib/ui/stdcontext.inc:456
-#, fuzzy
 msgid "Document Info|D"
-msgstr "Dokumen|D"
+msgstr "Info Dokumen|D"
 
 #: lib/ui/stdcontext.inc:458
-#, fuzzy
 msgid "Copy Text|o"
-msgstr "Salin|S"
+msgstr "Salin Teks|S"
 
 #: lib/ui/stdcontext.inc:470
 #: lib/ui/stdcontext.inc:493
@@ -13972,7 +13863,7 @@ msgstr "Pengaturan Kode TeX...|X"
 
 #: lib/ui/stdmenus.inc:133
 msgid "Float Settings...|a"
-msgstr "Pengaturan Float..."
+msgstr "Pengaturan Ambangan..."
 
 #: lib/ui/stdmenus.inc:134
 msgid "Text Wrap Settings...|W"
@@ -14080,7 +13971,7 @@ msgstr "Garis Atas"
 
 #: lib/ui/stdmenus.inc:184
 msgid "Bottom Line|B"
-msgstr "Garis Bawah|B"
+msgstr "Garis Bawah"
 
 #: lib/ui/stdmenus.inc:188
 msgid "Top|p"
@@ -14467,7 +14358,7 @@ msgstr "Petunjuk Penggunaan Multikolom|M"
 
 #: lib/ui/stdmenus.inc:574
 msgid "Feynman-diagram Manual|F"
-msgstr ""
+msgstr "Petunjuk Penggunaan diagram Feynman|F"
 
 #: lib/ui/stdtoolbars.inc:69
 msgid "New document"
@@ -14601,11 +14492,11 @@ msgstr "Kurang kekiri sedikit"
 
 #: lib/ui/stdtoolbars.inc:118
 msgid "Insert figure float"
-msgstr "Sisipkan float gambar"
+msgstr "Sisipkan ambangan gambar"
 
 #: lib/ui/stdtoolbars.inc:119
 msgid "Insert table float"
-msgstr "Sisipkan float tabel"
+msgstr "Sisipkan ambangan tabel"
 
 #: lib/ui/stdtoolbars.inc:120
 msgid "Insert label"
@@ -14730,7 +14621,7 @@ msgstr "Rata kanan"
 
 #: lib/ui/stdtoolbars.inc:157
 msgid "Align on decimal"
-msgstr ""
+msgstr "Perataan pada desimal"
 
 #: lib/ui/stdtoolbars.inc:159
 msgid "Align top"
@@ -14950,11 +14841,11 @@ msgstr "Kembalikan semula sebelum perubahan"
 
 #: lib/ui/stdtoolbars.inc:261
 msgid "Compare with older revision"
-msgstr ""
+msgstr "Membandingkan dengan revisi yang lama"
 
 #: lib/ui/stdtoolbars.inc:262
 msgid "Compare with last revision"
-msgstr ""
+msgstr "Membandingkan dengan revisi terakhir"
 
 #: lib/ui/stdtoolbars.inc:263
 #, fuzzy
@@ -17874,7 +17765,7 @@ msgstr "Tidak bisa menghapus direktori sementara %1$s"
 
 #: src/Buffer.cpp:723
 msgid "Unknown document class"
-msgstr "Class dokumen tidak dikenal"
+msgstr "Kelas dokumen tidak dikenal"
 
 #: src/Buffer.cpp:724
 #, c-format
@@ -17992,7 +17883,7 @@ msgstr "Dokumen hanya boleh dibaca"
 #: src/Buffer.cpp:1019
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
-msgstr ""
+msgstr "Berkas %1$s tidak bisa ditulis karena ditandai sebagai dibaca saja."
 
 #: src/Buffer.cpp:1028
 #, c-format
@@ -18440,7 +18331,7 @@ msgstr "Simpan batas buku"
 
 #: src/BufferView.cpp:937
 msgid "Converting document to new document class..."
-msgstr "Mengkonversi dokumen ke class dokumen baru..."
+msgstr "Mengkonversi dokumen ke kelas dokumen baru..."
 
 #: src/BufferView.cpp:980
 msgid "Document is read-only"
@@ -20311,9 +20202,8 @@ msgid "Error: Could not generate logfile."
 msgstr "Kesalahan: Tidak bisa membuat berkas log."
 
 #: src/VCBackend.cpp:498
-#, fuzzy
 msgid "Up-to-date"
-msgstr "Perbar&ui"
+msgstr "Paling baru"
 
 #: src/VCBackend.cpp:500
 #, fuzzy
@@ -20809,7 +20699,7 @@ msgid ""
 "updated document class specifications."
 msgstr ""
 "Sistem sudah di konfigurasi ulang.\n"
-"Anda perlu retart LyX agar class dokumen\n"
+"Anda perlu jalankan ulang LyX agar kelas dokumen\n"
 "dapat berfungsi seperti yang diharapkan."
 
 #: src/frontends/qt4/GuiApplication.cpp:1294
@@ -21110,18 +21000,16 @@ msgid "Underbar"
 msgstr "Garis bawah"
 
 #: src/frontends/qt4/GuiCharacter.cpp:79
-#, fuzzy
 msgid "Double underbar"
-msgstr "Bingkai Dua Garis|s"
+msgstr "Garis bawah ganda"
 
 #: src/frontends/qt4/GuiCharacter.cpp:80
-#, fuzzy
 msgid "Wavy underbar"
-msgstr "Garis bawah"
+msgstr "Garis bawah gelombang"
 
 #: src/frontends/qt4/GuiCharacter.cpp:81
 msgid "Strikeout"
-msgstr ""
+msgstr "Coret tengah"
 
 #: src/frontends/qt4/GuiCharacter.cpp:92
 msgid "No color"
@@ -21161,7 +21049,7 @@ msgstr "Kuning"
 
 #: src/frontends/qt4/GuiCharacter.cpp:162
 msgid "Text Style"
-msgstr "Teks Style"
+msgstr "Corak dan gaya teks"
 
 #: src/frontends/qt4/GuiCitation.cpp:323
 msgid "Keys"
@@ -21220,9 +21108,8 @@ msgid "Compare LyX files"
 msgstr "Membandingkan Berkas LyX"
 
 #: src/frontends/qt4/GuiCompare.cpp:154
-#, fuzzy
 msgid "Select document"
-msgstr "Pilih dokumen master"
+msgstr "Pilih dokumen"
 
 #: src/frontends/qt4/GuiCompare.cpp:156
 #: src/frontends/qt4/GuiView.cpp:1833
@@ -21244,24 +21131,20 @@ msgid "Error while comparing documents."
 msgstr "Ada kesalahan ketika membandingkan berkas."
 
 #: src/frontends/qt4/GuiCompare.cpp:217
-#, fuzzy
 msgid "Aborted"
-msgstr "Selesai mengimpor."
+msgstr "Dibatalkan"
 
 #: src/frontends/qt4/GuiCompare.cpp:229
-#, fuzzy
 msgid "Finished"
-msgstr "Finlandia"
+msgstr "Selesai"
 
 #: src/frontends/qt4/GuiCompare.cpp:263
-#, fuzzy
 msgid "Aborting process..."
-msgstr "Sedang mengImpor %1$s..."
+msgstr "Proses pembatalan..."
 
 #: src/frontends/qt4/GuiCompare.cpp:299
-#, fuzzy
 msgid "differences"
-msgstr "Referensi"
+msgstr "perbedaan"
 
 #: src/frontends/qt4/GuiCompareHistory.cpp:35
 msgid "Compare different revisions"
@@ -21401,9 +21284,8 @@ msgid "Module not found!"
 msgstr "Module not found!"
 
 #: src/frontends/qt4/GuiDocument.cpp:577
-#, fuzzy
 msgid "Layout is valid!"
-msgstr "Layout "
+msgstr "Layout tidak valid!"
 
 #: src/frontends/qt4/GuiDocument.cpp:581
 msgid "Layout is invalid!"
@@ -21590,7 +21472,7 @@ msgstr "Muncul di Daftar Isi"
 
 #: src/frontends/qt4/GuiDocument.cpp:1049
 msgid "Author-year"
-msgstr "Pengarang-tahun"
+msgstr "Penulis-tahun"
 
 #: src/frontends/qt4/GuiDocument.cpp:1050
 msgid "Numerical"
@@ -21603,7 +21485,6 @@ msgstr "Tidak tersedia:  %1$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:1244
 #: src/frontends/qt4/GuiDocument.cpp:1345
-#, fuzzy
 msgid "Input listings parameters below. Enter ? for a list of parameters."
 msgstr "Input berbagai parameter listing akan muncul disini. Ketik ? untuk memunculkan daftar semua parameter"
 
@@ -21611,7 +21492,7 @@ msgstr "Input berbagai parameter listing akan muncul disini. Ketik ? untuk memun
 #: src/frontends/qt4/GuiDocument.cpp:1269
 #: src/frontends/qt4/GuiDocument.cpp:2802
 msgid "Document Class"
-msgstr "Class Dokumen"
+msgstr "Kelas Dokumen"
 
 #: src/frontends/qt4/GuiDocument.cpp:1249
 #: src/frontends/qt4/GuiDocument.cpp:2800
@@ -21626,9 +21507,8 @@ msgid "Modules"
 msgstr "Modul"
 
 #: src/frontends/qt4/GuiDocument.cpp:1251
-#, fuzzy
 msgid "Local Layout"
-msgstr "&Layout lokal..."
+msgstr "Layout lokal"
 
 #: src/frontends/qt4/GuiDocument.cpp:1253
 msgid "Text Layout"
@@ -21648,7 +21528,6 @@ msgid "Numbering & TOC"
 msgstr "Penomoran & Daftar Isi"
 
 #: src/frontends/qt4/GuiDocument.cpp:1260
-#, fuzzy
 msgid "Indexes"
 msgstr "Indeks"
 
@@ -21662,7 +21541,7 @@ msgstr "Pilihan Matematika"
 
 #: src/frontends/qt4/GuiDocument.cpp:1263
 msgid "Float Placement"
-msgstr "Penempatan Float"
+msgstr "Penempatan Ambangan"
 
 #: src/frontends/qt4/GuiDocument.cpp:1265
 msgid "Bullets"
@@ -21776,9 +21655,9 @@ msgid "or"
 msgstr "atau"
 
 #: src/frontends/qt4/GuiDocument.cpp:2019
-#, fuzzy, c-format
+#, c-format
 msgid "Modules required: %1$s."
-msgstr "Modul yang diperlukan: %1$s."
+msgstr "Modul diperlukan: %1$s."
 
 #: src/frontends/qt4/GuiDocument.cpp:2028
 #, c-format
@@ -22282,7 +22161,6 @@ msgid "Co&mmand:"
 msgstr "&Perintah:"
 
 #: src/frontends/qt4/GuiPrefs.cpp:891
-#, fuzzy
 msgid "Screen Fonts"
 msgstr "Huruf di layar"
 
@@ -22315,9 +22193,8 @@ msgid "Set the path to the thesaurus dictionaries"
 msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:1387
-#, fuzzy
 msgid "Set the path to the Hunspell dictionaries"
-msgstr "Pengaturan detail navigasi tampilan isi"
+msgstr "Nyatakan lokasi kamus Hunspell disimpan"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1396
 msgid "Give a filename for the LyX server pipe"
@@ -22334,9 +22211,8 @@ msgid "Native"
 msgstr "aktif"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1421
-#, fuzzy
 msgid "Aspell"
-msgstr "ispell"
+msgstr "Aspell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1424
 #, fuzzy
@@ -22344,18 +22220,16 @@ msgid "Enchant"
 msgstr "enchant"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1427
-#, fuzzy
 msgid "Hunspell"
-msgstr "ispell"
+msgstr "Hunspell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1495
 msgid "Converters"
 msgstr "Pengkonversi"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1801
-#, fuzzy
 msgid "File Formats"
-msgstr "Berbagai format berkas"
+msgstr "Format Berkas"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1971
 #: src/frontends/qt4/GuiPrefs.cpp:2123
@@ -22510,17 +22384,16 @@ msgid "Index Settings"
 msgstr "Pengaturan Kotak"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:69
-#, fuzzy
 msgid "<All indexes>"
-msgstr "Semua Berkas "
+msgstr "<Semua indeks>"
 
 #: src/frontends/qt4/GuiProgressView.cpp:52
 msgid "Progress/Debug Messages"
-msgstr ""
+msgstr "Pesan Perkembangan/Awakutu"
 
 #: src/frontends/qt4/GuiProgressView.cpp:82
 msgid "Debug Level"
-msgstr ""
+msgstr "Pilihan Awakutu"
 
 #: src/frontends/qt4/GuiProgressView.cpp:83
 #, fuzzy
@@ -22997,9 +22870,8 @@ msgid "Big-sized icons"
 msgstr "Ikon ukuran besar"
 
 #: src/frontends/qt4/GuiView.cpp:805
-#, fuzzy
 msgid "Exit LyX"
-msgstr "K&eluar LyX"
+msgstr "Keluar LyX"
 
 #: src/frontends/qt4/GuiView.cpp:806
 msgid "LyX could not be closed because documents are being processed by LyX."
@@ -23307,9 +23179,8 @@ msgstr "Tidak ada informasi untuk ekspor format %1$s."
 
 #: src/frontends/qt4/GuiView.cpp:3061
 #: src/frontends/qt4/GuiView.cpp:3073
-#, fuzzy
 msgid "Exporting ..."
-msgstr "Sedang mengImpor %1$s..."
+msgstr "Sedang mengekspor..."
 
 #: src/frontends/qt4/GuiView.cpp:3082
 #, fuzzy
@@ -23395,7 +23266,7 @@ msgstr "Tutup Tab"
 
 #: src/frontends/qt4/GuiWrap.cpp:32
 msgid "Wrap Float Settings"
-msgstr "Pengaturan Wrap Float"
+msgstr "Pengaturan Ambangan Lipat"
 
 #: src/frontends/qt4/IconPalette.cpp:39
 msgid "Click to detach"
@@ -23422,7 +23293,7 @@ msgstr "Tidak Ada Grup"
 #: src/frontends/qt4/Menus.cpp:748
 #: src/frontends/qt4/Menus.cpp:749
 msgid "More Spelling Suggestions"
-msgstr ""
+msgstr "Saran Ejaan Lain"
 
 #: src/frontends/qt4/Menus.cpp:765
 #, fuzzy
@@ -23430,9 +23301,8 @@ msgid "Add to personal dictionary|n"
 msgstr "Pilihlah kamus pribadi"
 
 #: src/frontends/qt4/Menus.cpp:767
-#, fuzzy
 msgid "Ignore all|I"
-msgstr "Lewat &Semua"
+msgstr "Abaikan &Semua"
 
 #: src/frontends/qt4/Menus.cpp:774
 #, fuzzy
@@ -23440,7 +23310,6 @@ msgid "Remove from personal dictionary|r"
 msgstr "Pilihlah kamus pribadi"
 
 #: src/frontends/qt4/Menus.cpp:812
-#, fuzzy
 msgid "Language|L"
 msgstr "Bahasa"
 
@@ -23539,19 +23408,19 @@ msgid "No Action Defined!"
 msgstr "Tidak ada pengaturan disini!"
 
 #: src/frontends/qt4/Toolbars.cpp:217
-#, fuzzy, c-format
+#, c-format
 msgid "Export %1$s"
-msgstr "Huruf: %1$s"
+msgstr "Ekspor %1$s"
 
 #: src/frontends/qt4/Toolbars.cpp:221
-#, fuzzy, c-format
+#, c-format
 msgid "Import %1$s"
-msgstr "Sedang mengImpor %1$s..."
+msgstr "Impor %1$s"
 
 #: src/frontends/qt4/Toolbars.cpp:225
-#, fuzzy, c-format
+#, c-format
 msgid "Update %1$s"
-msgstr "Perbarui tampilan DVI"
+msgstr "Perbarui %1$s"
 
 #: src/frontends/qt4/Toolbars.cpp:229
 #, c-format
@@ -23658,13 +23527,12 @@ msgid "Bibliography Entry"
 msgstr "Pengaturan Entry Bibliografi"
 
 #: src/insets/Inset.cpp:91
-#, fuzzy
 msgid "TeX Code"
-msgstr "Kode TeX: "
+msgstr "TeX Code"
 
 #: src/insets/Inset.cpp:94
 msgid "Float"
-msgstr "Float"
+msgstr "Ambangan"
 
 #: src/insets/Inset.cpp:109
 #: src/insets/InsetBox.cpp:133
@@ -23672,9 +23540,8 @@ msgid "Box"
 msgstr "Kotak"
 
 #: src/insets/Inset.cpp:111
-#, fuzzy
 msgid "Horizontal Space"
-msgstr "Spasi Horisontal...|H"
+msgstr "Spasi Horisontal"
 
 #: src/insets/Inset.cpp:112
 #: src/insets/InsetVSpace.cpp:111
@@ -23911,20 +23778,20 @@ msgstr "Eksternal templet %1$s belum diinstal"
 #: src/insets/InsetFloat.cpp:274
 #: src/insets/InsetFloat.cpp:459
 msgid "float: "
-msgstr "float: "
+msgstr "ambangan: "
 
 #: src/insets/InsetFloat.cpp:276
-#, fuzzy, c-format
+#, c-format
 msgid "ERROR: Unknown float type: %1$s"
-msgstr "KESALAHAN: tipe float tidak ada!"
+msgstr "KESALAHAN: Tipe ambangan tidak dikenal: %1$s"
 
 #: src/insets/InsetFloat.cpp:397
 msgid "float"
-msgstr "float"
+msgstr "ambangan"
 
 #: src/insets/InsetFloat.cpp:462
 msgid "subfloat: "
-msgstr "subfloat: "
+msgstr "anak-ambangan: "
 
 #: src/insets/InsetFloat.cpp:470
 msgid " (sideways)"
@@ -23932,7 +23799,7 @@ msgstr " (kesamping)"
 
 #: src/insets/InsetFloatList.cpp:78
 msgid "ERROR: Nonexistent float type!"
-msgstr "KESALAHAN: tipe float tidak ada!"
+msgstr "KESALAHAN: tipe ambangan tidak ada!"
 
 #: src/insets/InsetFloatList.cpp:131
 #, c-format
@@ -23976,9 +23843,8 @@ msgid "www"
 msgstr "www"
 
 #: src/insets/InsetHyperlink.cpp:256
-#, fuzzy
 msgid "file"
-msgstr "Semua Berkas "
+msgstr "berkas "
 
 #: src/insets/InsetHyperlink.cpp:257
 #, fuzzy, c-format
@@ -24363,9 +24229,8 @@ msgid "VPhantom"
 msgstr "VPhantom"
 
 #: src/insets/InsetPhantom.cpp:326
-#, fuzzy
 msgid "phantom"
-msgstr "Esperanto"
+msgstr "phantom"
 
 #: src/insets/InsetPhantom.cpp:328
 msgid "hphantom"
@@ -24434,9 +24299,8 @@ msgid "Formatted"
 msgstr "Pemformatan"
 
 #: src/insets/InsetRef.cpp:328
-#, fuzzy
 msgid "Format: "
-msgstr "&Format:"
+msgstr "Format: "
 
 #: src/insets/InsetRef.cpp:329
 #, fuzzy
@@ -24449,14 +24313,12 @@ msgid "NameRef:"
 msgstr "Nama:"
 
 #: src/insets/InsetScript.cpp:367
-#, fuzzy
 msgid "subscript"
-msgstr "Sisipan bawah garis"
+msgstr "subscript"
 
 #: src/insets/InsetScript.cpp:377
-#, fuzzy
 msgid "superscript"
-msgstr "Sisipan atas garis"
+msgstr "superscript"
 
 #: src/insets/InsetSpace.cpp:71
 msgid "Protected Space"
@@ -24708,9 +24570,8 @@ msgid "Changing number of columns not allowed in 'cases': feature %1$s"
 msgstr "Merubah nomor kolom tidak diijinkan dalam  'cases': fitur %1$s"
 
 #: src/mathed/InsetMathGrid.cpp:1453
-#, fuzzy
 msgid "Cursor not in table"
-msgstr "(belum di install)"
+msgstr "Kursor tidak dalam tabel"
 
 #: src/mathed/InsetMathGrid.cpp:1459
 msgid "Only one row"
