@@ -231,7 +231,7 @@ docstring const Messages::get(string const & m) const
 
 bool Messages::available() const
 {
-	return true;
+	return false;
 }
 
 } // namespace lyx
