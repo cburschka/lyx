@@ -552,7 +552,7 @@ void LyX::execCommands()
 			_("No textclass is found"),
 			_("LyX will only have minimal functionality because no textclasses "
 				"have been found. You can either try to reconfigure LyX normally, "
-				"try to reconfigure using only the defaults, or continue."),
+				"try to reconfigure without checking your LaTeX installation, or continue."),
 			0, 2,
 			_("&Reconfigure"),
 			_("&Use Defaults"),
