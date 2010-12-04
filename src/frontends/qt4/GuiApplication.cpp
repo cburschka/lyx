@@ -1604,83 +1604,13 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 
 	default:
-		// Everything below is only for active window
-		if (current_view_ == 0)
-			break;
-	
-		// Let the current GuiView dispatch its own actions.
-		current_view_->dispatch(cmd, dr);
-
-		if (dr.dispatched())
-			break;
-
-		BufferView * bv = current_view_->currentBufferView();
-		LASSERT(bv, /**/);
-	
-		// Avoid a screen redraw in the middle of a dispatch operation just
-		// because a warning or an error was displayed.
-		current_view_->setBusy(true);
-
-		// Let the current BufferView dispatch its own actions.
-		bv->dispatch(cmd, dr);
-		if (dr.dispatched())
-			break;
-	
-		BufferView * doc_bv = current_view_->documentBufferView();
-		// Try with the document BufferView dispatch if any.
-		if (doc_bv) {
-			doc_bv->dispatch(cmd, dr);
-			if (dr.dispatched())
-				break;
-		}
-	
-		// OK, so try the current Buffer itself...
-		bv->buffer().dispatch(cmd, dr);
-		if (dr.dispatched())
-			break;
-	
-		// and with the document Buffer.
-		if (doc_bv) {
-			doc_bv->buffer().dispatch(cmd, dr);
-			if (dr.dispatched())
-				break;
-		}
-	
-		// Let the current Cursor dispatch its own actions.
-		Cursor old = bv->cursor();
-		bv->cursor().dispatch(cmd);
-	
-		// notify insets we just left
-		// FIXME: move this code to Cursor::dispatch
-		if (bv->cursor() != old) {
-			old.beginUndoGroup();
-			old.fixIfBroken();
-			bool badcursor = notifyCursorLeavesOrEnters(old, bv->cursor());
-			if (badcursor) {
-				bv->cursor().fixIfBroken();
-				bv->fixInlineCompletionPos();
-			}
-			old.endUndoGroup();
-		}
-	
-		// update completion. We do it here and not in
-		// processKeySym to avoid another redraw just for a
-		// changed inline completion
-		if (cmd.origin() == FuncRequest::KEYBOARD) {
-			if (cmd.action() == LFUN_SELF_INSERT
-					|| (cmd.action() == LFUN_ERT_INSERT && bv->cursor().inMathed()))
-				current_view_->updateCompletion(bv->cursor(), true, true);
-			else if (cmd.action() == LFUN_CHAR_DELETE_BACKWARD)
-				current_view_->updateCompletion(bv->cursor(), false, true);
-			else
-				current_view_->updateCompletion(bv->cursor(), false, false);
-		}
-	
-		dr = bv->cursor().result();
-
-		current_view_->setBusy(false);
+		// The LFUN must be for one of GuiView, BufferView, Buffer or Cursor;
+		// let's try that:
+		if (current_view_)
+			current_view_->dispatch(cmd, dr);
+		break;
 	}
-	
+
 	// if we executed a mutating lfun, mark the buffer as dirty
 	Buffer * doc_buffer = (current_view_ && current_view_->documentBufferView())
 		      ? &(current_view_->documentBufferView()->buffer()) : 0;

@@ -413,6 +413,8 @@ private:
 	///
 	void dispatchVC(FuncRequest const & cmd, DispatchResult & dr);
 	///
+	void dispatchToBufferView(FuncRequest const & cmd, DispatchResult & dr);
+	///
 	void showMessage();
 
 	/// This view ID.
