@@ -784,9 +784,11 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 
 		// need a valid cursor. (Lgb)
 		cur.clearSelection();
-		// After a cut operation, we need to make sure that the Buffer is updated
-		// because some further operation will need updated label information for
+
+		// After a cut operation, we must make sure that the Buffer is updated
+		// because some further operation might need updated label information for
 		// example. So we cannot just use "cur.forceBufferUpdate()" here.
+		// This fixes #7071.
 		cur.buffer()->updateBuffer();
 
 		// tell tabular that a recent copy happened
