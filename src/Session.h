@@ -16,7 +16,6 @@
 #include "support/FileName.h"
 #include "support/types.h"
 
-#include <deque>
 #include <map>
 #include <string>
 #include <vector>
@@ -58,7 +57,7 @@ class LastFilesSection : SessionSection
 {
 public:
 	///
-	typedef std::deque<support::FileName> LastFiles;
+	typedef std::vector<support::FileName> LastFiles;
 
 public:
 	///
@@ -70,10 +69,10 @@ public:
 	///
 	void write(std::ostream & os) const;
 
-	/// Return lastfiles container (deque)
+	/// Return lastfiles container (vector)
 	LastFiles const lastFiles() const { return lastfiles; }
 
-	/** Insert #file# into the lastfile dequeue.
+	/** Insert #file# into the lastfile vector.
 	    This funtion inserts #file# into the last files list. If the file
 	    already exists it is moved to the top of the list, else exist it
 	    is placed on the top of the list. If the list is full the last
