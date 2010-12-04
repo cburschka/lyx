@@ -3024,10 +3024,6 @@ void GuiView::dispatchToBufferView(FuncRequest const & cmd, DispatchResult & dr)
 	BufferView * bv = currentBufferView();
 	LASSERT(bv, /**/);
 
-	// Avoid a screen redraw in the middle of a dispatch operation just
-	// because a warning or an error was displayed.
-	setBusy(true);
-
 	// Let the current BufferView dispatch its own actions.
 	bv->dispatch(cmd, dr);
 
@@ -3077,8 +3073,6 @@ void GuiView::dispatchToBufferView(FuncRequest const & cmd, DispatchResult & dr)
 
 		dr = bv->cursor().result();
 	}
-
-	setBusy(false);
 }
 
 
