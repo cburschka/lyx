@@ -1809,16 +1809,6 @@ BiblioInfo const & Buffer::masterBibInfo() const
 }
 
 
-bool Buffer::isBibInfoCacheValid() const
-{
-	// use the master's cache
-	Buffer const * const tmp = masterBuffer();
-	if (tmp != this)
-		return tmp->isBibInfoCacheValid();
-	return d->bibinfo_cache_valid_;
-}
-
-
 void Buffer::checkIfBibInfoCacheIsValid() const
 {
 	// use the master's cache
@@ -3867,7 +3857,7 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 	
 	// do this only if we are the top-level Buffer
 	if (master == this)
-		checkIfBibInfoCacheIsValid();
+		reloadBibInfoCache();
 
 	// keep the buffers to be children in this set. If the call from the
 	// master comes back we can see which of them were actually seen (i.e.

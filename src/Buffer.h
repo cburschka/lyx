@@ -446,12 +446,7 @@ public:
 	/// whether the cache is valid. If so, we do nothing. If not, then we
 	/// reload all the BibTeX info.
 	/// Note that this operates on the master document.
-	/// Normally, this is done (more cheaply) in updateBuffer(), but there are
-	/// times when we need to force it to be done and don't need a full buffer
-	/// update. This is in GuiCitation and in changeRefsIfUnique() now.
 	void reloadBibInfoCache() const;
-	/// Was the cache valid the last time we checked?
-	bool isBibInfoCacheValid() const;
 	/// \return the bibliography information for this buffer's master,
 	/// or just for it, if it isn't a child.
 	BiblioInfo const & masterBibInfo() const;

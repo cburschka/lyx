@@ -234,14 +234,6 @@ static string normalizeName(Buffer const & buffer,
 }
 
 
-void InsetBibtex::updateBuffer(ParIterator const &, UpdateType)
-{
-	if (buffer().isBibInfoCacheValid())
-		return;
-	parseBibTeXFiles();
-}
-
-
 int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 {
 	// the sequence of the commands:

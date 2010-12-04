@@ -52,8 +52,6 @@ public:
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
-	void updateBuffer(ParIterator const &, UpdateType);
-	///
 	void collectBibKeys(InsetIterator const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
