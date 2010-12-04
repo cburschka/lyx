@@ -99,6 +99,9 @@ What's new
 - Fix the painting of non-InsetText insets with a transparent
   background as well as the description of an InsetCaption (bug 4889).
 
+- Fix unexpected behavior when inserting big math delimiters around a matrix
+  (bug 7088).
+
 
 * DOCUMENTATION AND LOCALIZATION
 

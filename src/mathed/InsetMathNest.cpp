@@ -1040,10 +1040,14 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 			if (have_l)
 				cur.insert(MathAtom(new InsetMathBig(lname,
 								ldelim)));
-			cur.niceInsert(selection);
-			if (have_r)
+			// first insert the right delimiter and then go back
+			// and re-insert the selection (bug 7088)
+			if (have_r) {
 				cur.insert(MathAtom(new InsetMathBig(rname,
 								rdelim)));
+				cur.posBackward();
+			}
+			cur.niceInsert(selection);
 		}
 		// Don't call cur.undispatched() if we did nothing, this would
 		// lead to infinite recursion via Text::dispatch().
