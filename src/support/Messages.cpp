@@ -228,6 +228,12 @@ docstring const Messages::get(string const & m) const
 	return trans;
 }
 
+
+bool Messages::available() const
+{
+	return true;
+}
+
 } // namespace lyx
 
 #endif
