@@ -1617,6 +1617,10 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		BufferView * bv = current_view_->currentBufferView();
 		LASSERT(bv, /**/);
 	
+		// Avoid a screen redraw in the middle of a dispatch operation just
+		// because a warning or an error was displayed.
+		current_view_->setBusy(true);
+
 		// Let the current BufferView dispatch its own actions.
 		bv->dispatch(cmd, dr);
 		if (dr.dispatched())
@@ -1673,6 +1677,8 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 	
 		dr = bv->cursor().result();
+
+		current_view_->setBusy(false);
 	}
 	
 	// if we executed a mutating lfun, mark the buffer as dirty
