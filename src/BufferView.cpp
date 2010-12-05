@@ -1879,13 +1879,14 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	default:
-		dispatched = false;
+		// OK, so try the Buffer itself...
+		buffer_.dispatch(cmd, dr);
+		dispatched = dr.dispatched();
 		break;
 	}
 
 	buffer_.undo().endUndoGroup();
 	dr.dispatched(dispatched);
-	return;
 }
 
 

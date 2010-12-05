@@ -3037,18 +3037,6 @@ void GuiView::dispatchToBufferView(FuncRequest const & cmd, DispatchResult & dr)
 			return;
 	}
 
-	// OK, so try the current Buffer itself...
-	bv->buffer().dispatch(cmd, dr);
-	if (dr.dispatched())
-		return;
-
-	// and with the document Buffer.
-	if (doc_bv) {
-		doc_bv->buffer().dispatch(cmd, dr);
-		if (dr.dispatched())
-			return;
-	}
-
 	// Then let the current Cursor dispatch its own actions.
 	bv->cursor().dispatch(cmd);
 
