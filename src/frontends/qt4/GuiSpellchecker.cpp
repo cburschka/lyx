@@ -57,7 +57,7 @@ namespace frontend {
 
 struct GuiSpellchecker::Private
 {
-	Private() : progress_(0), count_(0) {}
+	Private() : progress_(0), count_(0), stuck_(false) {}
 	Ui::SpellcheckerUi ui;
 	/// current word being checked and lang code
 	WordLangTuple word_;
@@ -66,6 +66,8 @@ struct GuiSpellchecker::Private
 	int progress_;
 	/// word count
 	int count_;
+	/// flag for last move forward success
+	bool stuck_;
 };
 
 
@@ -152,15 +154,18 @@ void GuiSpellchecker::on_replaceCO_highlighted(const QString & str)
 
 void GuiSpellchecker::updateView()
 {
-	if (hasFocus())
+	if (hasFocus() && d->count_ == 0)
 		check();
 }
 
 
 void GuiSpellchecker::forward()
 {
+	DocIterator from = bufferview()->cursor();
+
 	dispatch(FuncRequest(LFUN_ESCAPE));
 	dispatch(FuncRequest(LFUN_CHAR_FORWARD));
+	d->stuck_ = from == bufferview()->cursor();
 }
 	
 	
@@ -214,20 +219,13 @@ void GuiSpellchecker::on_findNextPB_clicked()
 void GuiSpellchecker::on_replacePB_clicked()
 {
 	docstring const replacement = qstring_to_ucs4(d->ui.replaceCO->currentText());
+	docstring const data = replace2string(
+		replacement, qstring_to_ucs4(d->ui.wordED->text()),
+		true, true, false, false);
 
 	LYXERR(Debug::GUI, "Replace (" << replacement << ")");
-	/*
-	  Slight hack ahead: we want to use the dispatch machinery
-	  (see bug #6217), but self-insert honors the ``auto region
-	  delete'' setting, which is not wanted here. Creating a new
-	  ad-hoc LFUN seems overkill, but it could be an option (JMarc).
-	*/
-	bool const ard = lyxrc.auto_region_delete;
-	lyxrc.auto_region_delete = true;
-	dispatch(FuncRequest(LFUN_SELF_INSERT, replacement));
-	lyxrc.auto_region_delete = ard;
-	// fix up the count
-	--d->count_;
+	dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
+	forward();
 	check();
 }
 
@@ -239,6 +237,7 @@ void GuiSpellchecker::on_replaceAllPB_clicked()
 		qstring_to_ucs4(d->ui.wordED->text()),
 		true, true, true, true);
 	dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
+	forward();
 	check(); // continue spellchecking
 }
 
@@ -280,8 +279,15 @@ bool GuiSpellchecker::initialiseParams(string const &)
 
 void GuiSpellchecker::check()
 {
-	LYXERR(Debug::GUI, "Check the spelling of a word");
+	LYXERR(Debug::GUI, "Check the spelling of the words starting at " << d->progress_);
 
+	// last move forward failed
+	if (d->stuck_) {
+		d->stuck_ = false;
+		showSummary();
+		return;
+	}
+	
 	DocIterator from = bufferview()->cursor();
 	DocIterator to;
 	WordLangTuple word_lang;
@@ -298,15 +304,21 @@ void GuiSpellchecker::check()
 		}
 		throw message;
 	}
-	LYXERR(Debug::GUI, "Found word \"" << word_lang.word() << "\"");
 	d->count_ += progress;
 	d->progress_ += progress;
+	LYXERR(Debug::GUI, "Found word \"" << word_lang.word() << "\"" <<
+		   " at position " << d->progress_);
 
 	// end of document
 	if (from == doc_iterator_end(&buffer())) {
 		showSummary();
 		return;
 	}
+
+	// current misspelled word has to be counted too.
+	++d->count_;
+	++d->progress_;
+
 	if (!isVisible())
 		show();
 
@@ -314,7 +326,8 @@ void GuiSpellchecker::check()
 
 	int const progress_bar = d->total_
 		? int(100.0 * float(d->progress_)/d->total_) : 100;
-	LYXERR(Debug::GUI, "Updating spell progress.");
+	LYXERR(Debug::GUI, "Updating spell progress." <<
+		   " Now we have " << progress_bar << " percent.");
 	// set progress bar
 	d->ui.spellcheckPR->setValue(progress_bar);
 	// set suggestions
