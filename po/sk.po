@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-12-05 00:11+0100\n"
-"PO-Revision-Date: 2010-12-04 12:47+0100\n"
+"POT-Creation-Date: 2010-12-05 14:12+0100\n"
+"PO-Revision-Date: 2010-12-05 14:18+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -536,7 +536,7 @@ msgstr "Pridaj Všetko"
 #: src/frontends/qt4/GuiView.cpp:2276 src/frontends/qt4/GuiView.cpp:2321
 #: src/frontends/qt4/GuiView.cpp:2528 src/frontends/qt4/GuiView.cpp:2535
 #: src/frontends/qt4/GuiView.cpp:2636 src/frontends/qt4/GuiView.cpp:2664
-#: src/frontends/qt4/GuiView.cpp:3270 src/insets/InsetBibtex.cpp:147
+#: src/frontends/qt4/GuiView.cpp:3245 src/insets/InsetBibtex.cpp:147
 msgid "&Cancel"
 msgstr "Z&rušiť"
 
@@ -16827,7 +16827,7 @@ msgstr "Nemôžem spustiť chktex úspešne."
 msgid "Don't know how to export to format: %1$s"
 msgstr "Žiadne informácie pre export formátu: %1$s"
 
-#: src/Buffer.cpp:2013 src/frontends/qt4/GuiView.cpp:3125
+#: src/Buffer.cpp:2013 src/frontends/qt4/GuiView.cpp:3100
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Chyba pri exporte na formát: %1$s."
@@ -17247,22 +17247,22 @@ msgstr "Meno vetvy"
 msgid "Branch already exists"
 msgstr "Vetva už existuje"
 
-#: src/BufferView.cpp:2517
+#: src/BufferView.cpp:2518
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vkladám dokument %1$s..."
 
-#: src/BufferView.cpp:2528
+#: src/BufferView.cpp:2529
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s bol vložený."
 
-#: src/BufferView.cpp:2530
+#: src/BufferView.cpp:2531
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nie je možné vložiť dokument %1$s"
 
-#: src/BufferView.cpp:2795
+#: src/BufferView.cpp:2796
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17273,11 +17273,11 @@ msgstr ""
 "%1$s\n"
 "sa kvôli chybe: %2$s nedá čítať"
 
-#: src/BufferView.cpp:2797
+#: src/BufferView.cpp:2798
 msgid "Could not read file"
 msgstr "Nemôžem čítať súbor"
 
-#: src/BufferView.cpp:2804
+#: src/BufferView.cpp:2805
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17286,15 +17286,15 @@ msgstr ""
 "%1$s\n"
 "je nečitateľné."
 
-#: src/BufferView.cpp:2805 src/output.cpp:39
+#: src/BufferView.cpp:2806 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Nemôžem otvoriť súbor"
 
-#: src/BufferView.cpp:2812
+#: src/BufferView.cpp:2813
 msgid "Reading not UTF-8 encoded file"
 msgstr "Čítaný súbor nie je kódovaný v UTF-8"
 
-#: src/BufferView.cpp:2813
+#: src/BufferView.cpp:2814
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -18068,15 +18068,14 @@ msgid "No textclass is found"
 msgstr "Nenašiel sa žiadny súbor tried (textclass)"
 
 #: src/LyX.cpp:553
-#, fuzzy
 msgid ""
 "LyX will only have minimal functionality because no textclasses have been "
 "found. You can either try to reconfigure LyX normally, try to reconfigure "
 "without checking your LaTeX installation, or continue."
 msgstr ""
 "LyX bude mať len minimálnu funkčnosť lebo sa nenašli žiadne súbory tried. "
-"Môžte skúsiť normálnu rekonfiguráciu, alebo rekonfigurovať použitím "
-"štandardných tried, alebo pokračovať."
+"Môžte skúsiť normálnu rekonfiguráciu, alebo rekonfigurovať bez kontrolovania "
+"vašej LaTeX-inštalácie, alebo pokračovať."
 
 #: src/LyX.cpp:557
 msgid "&Reconfigure"
@@ -18915,7 +18914,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Vrátiť sa k uloženej verzii dokumentu?"
 
-#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3270
+#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3245
 msgid "&Revert"
 msgstr "Vrátiť"
 
@@ -21125,7 +21124,7 @@ msgid "Give a filename for the LyX server pipe"
 msgstr "Zadajte meno pre dátovod LyX serveru"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1409
-#: src/frontends/qt4/GuiSpellchecker.cpp:73
+#: src/frontends/qt4/GuiSpellchecker.cpp:75
 msgid "Spellchecker"
 msgstr "Kontrola pravopisu"
 
@@ -21357,16 +21356,16 @@ msgstr "Zobraziť súbor"
 msgid "Error -> Cannot load file!"
 msgstr "Chyba -> Nemôžem nahrať súbor!"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:346
+#: src/frontends/qt4/GuiSpellchecker.cpp:359
 #, c-format
 msgid "%1$d words checked."
 msgstr "%1$d slov skontrolované."
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:348
+#: src/frontends/qt4/GuiSpellchecker.cpp:361
 msgid "One word checked."
 msgstr "Jedno slovo skontrolované."
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:351
+#: src/frontends/qt4/GuiSpellchecker.cpp:364
 msgid "Spelling check completed"
 msgstr "Kontrola pravopisu je dokončená"
 
@@ -21939,7 +21938,7 @@ msgstr "novýsúbor"
 msgid "Select LyX document to insert"
 msgstr "Vyberte LyX dokument na vloženie"
 
-#: src/frontends/qt4/GuiView.cpp:2194 src/frontends/qt4/GuiView.cpp:3181
+#: src/frontends/qt4/GuiView.cpp:2194 src/frontends/qt4/GuiView.cpp:3156
 msgid "Absolute filename expected."
 msgstr "Očakáva sa absolútna cesta súboru."
 
@@ -22078,19 +22077,19 @@ msgstr "Úspešný export do formátu: %1$s"
 msgid "Error while exporting format: %1$s"
 msgstr "Chyba pri exporte na formát: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:3133 src/frontends/qt4/GuiView.cpp:3145
+#: src/frontends/qt4/GuiView.cpp:3108 src/frontends/qt4/GuiView.cpp:3120
 msgid "Exporting ..."
 msgstr "Exportujem ..."
 
-#: src/frontends/qt4/GuiView.cpp:3154
+#: src/frontends/qt4/GuiView.cpp:3129
 msgid "Previewing ..."
 msgstr "Predbežný náhľad ..."
 
-#: src/frontends/qt4/GuiView.cpp:3188
+#: src/frontends/qt4/GuiView.cpp:3163
 msgid "Document not loaded"
 msgstr "Dokument nie je nahraný"
 
-#: src/frontends/qt4/GuiView.cpp:3266
+#: src/frontends/qt4/GuiView.cpp:3241
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -22099,28 +22098,28 @@ msgstr ""
 "Všetky zmeny sa stratia. Naozaj sa chcete vrátiť k pôvodnej verzii dokumentu "
 "%1$s ?"
 
-#: src/frontends/qt4/GuiView.cpp:3269
+#: src/frontends/qt4/GuiView.cpp:3244
 msgid "Revert to saved document?"
 msgstr "Vrátiť sa k uloženej verzii?"
 
-#: src/frontends/qt4/GuiView.cpp:3295
+#: src/frontends/qt4/GuiView.cpp:3270
 msgid "Saving all documents..."
 msgstr "Ukladám všetky dokumenty..."
 
-#: src/frontends/qt4/GuiView.cpp:3305
+#: src/frontends/qt4/GuiView.cpp:3280
 msgid "All documents saved."
 msgstr "Všetky dokumenty uložené."
 
-#: src/frontends/qt4/GuiView.cpp:3406
+#: src/frontends/qt4/GuiView.cpp:3381
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s neznámy príkaz!"
 
-#: src/frontends/qt4/GuiView.cpp:3513
+#: src/frontends/qt4/GuiView.cpp:3488
 msgid "Please, preview the document first."
 msgstr "Prehliadnite najprv dokument  prosím."
 
-#: src/frontends/qt4/GuiView.cpp:3528
+#: src/frontends/qt4/GuiView.cpp:3503
 msgid "Couldn't proceed."
 msgstr "Nemôžem postupovať."
 
