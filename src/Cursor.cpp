@@ -333,6 +333,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	fixIfBroken();
 	FuncRequest cmd = cmd0;
 	Cursor safe = *this;
+	Cursor old = *this;
 	disp_ = DispatchResult();
 
 	buffer()->undo().beginUndoGroup();
@@ -393,6 +394,18 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 		beforeDispatchCursor_ = safe.beforeDispatchCursor_;
 	}
 	buffer()->undo().endUndoGroup();
+
+	// notify insets we just left
+	if (*this != old) {
+		old.beginUndoGroup();
+		old.fixIfBroken();
+		bool badcursor = notifyCursorLeavesOrEnters(old, *this);
+		if (badcursor) {
+			fixIfBroken();
+			bv().fixInlineCompletionPos();
+		}
+		old.endUndoGroup();
+	}
 }
 
 

@@ -3026,53 +3026,46 @@ void GuiView::dispatchToBufferView(FuncRequest const & cmd, DispatchResult & dr)
 
 	// Let the current BufferView dispatch its own actions.
 	bv->dispatch(cmd, dr);
+	if (dr.dispatched())
+		return;
 
 	// Try with the document BufferView dispatch if any.
 	BufferView * doc_bv = documentBufferView();
-	if (doc_bv && !dr.dispatched())
-			doc_bv->dispatch(cmd, dr);
+	if (doc_bv) {
+		doc_bv->dispatch(cmd, dr);
+		if (dr.dispatched())
+			return;
+	}
 
 	// OK, so try the current Buffer itself...
-	if (!dr.dispatched())
-		bv->buffer().dispatch(cmd, dr);
+	bv->buffer().dispatch(cmd, dr);
+	if (dr.dispatched())
+		return;
 
 	// and with the document Buffer.
-	if (doc_bv && !dr.dispatched())
+	if (doc_bv) {
 		doc_bv->buffer().dispatch(cmd, dr);
+		if (dr.dispatched())
+			return;
+	}
 
 	// Then let the current Cursor dispatch its own actions.
-	if (!dr.dispatched()) {
-		Cursor old = bv->cursor();
-		bv->cursor().dispatch(cmd);
+	bv->cursor().dispatch(cmd);
 
-		// notify insets we just left
-		// FIXME: move this code to Cursor::dispatch
-		if (bv->cursor() != old) {
-			old.beginUndoGroup();
-			old.fixIfBroken();
-			bool badcursor = notifyCursorLeavesOrEnters(old, bv->cursor());
-			if (badcursor) {
-				bv->cursor().fixIfBroken();
-				bv->fixInlineCompletionPos();
-			}
-			old.endUndoGroup();
-		}
-
-		// update completion. We do it here and not in
-		// processKeySym to avoid another redraw just for a
-		// changed inline completion
-		if (cmd.origin() == FuncRequest::KEYBOARD) {
-			if (cmd.action() == LFUN_SELF_INSERT
-				|| (cmd.action() == LFUN_ERT_INSERT && bv->cursor().inMathed()))
-				updateCompletion(bv->cursor(), true, true);
-			else if (cmd.action() == LFUN_CHAR_DELETE_BACKWARD)
-				updateCompletion(bv->cursor(), false, true);
-			else
-				updateCompletion(bv->cursor(), false, false);
-		}
-
-		dr = bv->cursor().result();
+	// update completion. We do it here and not in
+	// processKeySym to avoid another redraw just for a
+	// changed inline completion
+	if (cmd.origin() == FuncRequest::KEYBOARD) {
+		if (cmd.action() == LFUN_SELF_INSERT
+			|| (cmd.action() == LFUN_ERT_INSERT && bv->cursor().inMathed()))
+			updateCompletion(bv->cursor(), true, true);
+		else if (cmd.action() == LFUN_CHAR_DELETE_BACKWARD)
+			updateCompletion(bv->cursor(), false, true);
+		else
+			updateCompletion(bv->cursor(), false, false);
 	}
+
+	dr = bv->cursor().result();
 }
 
 
