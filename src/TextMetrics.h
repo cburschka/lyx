@@ -155,10 +155,6 @@ private:
 		pos_type const end
 		) const;
 
-	/// draw selection for a single row
-	void drawRowSelection(PainterInfo & pi, int x, Row const & row,
-		Cursor const & cur, pit_type const pit) const;
-
 // Temporary public:
 public:
 	/// returns the column near the specified x-coordinate of the row.
