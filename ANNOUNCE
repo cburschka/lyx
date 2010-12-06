@@ -7,9 +7,12 @@ Due to the many reports we received, support for polyglossia, XeTeX's new
 language interface and babel replacement, has been added. In the same vein
 we added basic and experimental support for LuaTeX as well.
 
-Apart from these better support for sub/superscript has been added and
-externally launched documents are now possible to load in an already
-running LyX instance. Next changes has been done in context menu handling.
+Smaller changes to be highlighted are:
+* better support for sub/superscripts
+* externally launched documents are now possible to load in an already
+  running LyX instance
+* TikZ and PSTricks support in instant preview insets
+* context menu handling.
 
 Please report the problems and bugs at our lists or bug tracker and
 also note that this release is for testing purposes only. Users are
