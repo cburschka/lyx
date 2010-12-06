@@ -850,7 +850,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 		static docstring const number_seperators = from_ascii(".,:");
 
 		if (cur.current_font.fontInfo().number() == FONT_ON) {
-			if (!isDigit(c) && !contains(number_operators, c) &&
+			if (!isDigitASCII(c) && !contains(number_operators, c) &&
 			    !(contains(number_seperators, c) &&
 			      cur.pos() != 0 &&
 			      cur.pos() != cur.lastpos() &&
@@ -858,7 +858,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 			      tm.displayFont(pit, cur.pos() - 1).fontInfo().number() == FONT_ON)
 			   )
 				number(cur); // Set current_font.number to OFF
-		} else if (isDigit(c) &&
+		} else if (isDigitASCII(c) &&
 			   cur.real_current_font.isVisibleRightToLeft()) {
 			number(cur); // Set current_font.number to ON
 
