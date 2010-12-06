@@ -4156,9 +4156,8 @@ msgid "&Subindex"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:79
-#, fuzzy
 msgid "A&vailable indexes:"
-msgstr "Dostupné &vìtve:"
+msgstr "Dostupné &rejstøíky:"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:89
 #, fuzzy
@@ -4183,47 +4182,40 @@ msgid "Automatic cleanup of the window before LaTeX compilation proceeds"
 msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
-#, fuzzy
 msgid "&Clear automatically"
-msgstr "Pou¾ít ka¾dou zmìnu automaticky"
+msgstr "&Automaticky mazat"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
-#, fuzzy
 msgid "Debug messages"
-msgstr "V¹echny ladící výpisy"
+msgstr "Ladící výpisy"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:203
-#, fuzzy
 msgid "Display no debug messages"
-msgstr "V¹echny ladící výpisy"
+msgstr "Nezobrazovat ladící výpisy"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:206
-#, fuzzy
 msgid "&None"
-msgstr "®ádné"
+msgstr "®á&dné"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:213
 msgid "Display the debug messages selected to the right"
-msgstr ""
+msgstr "Zobrazovat ladící výpisy vybrané v pravém sloupci"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:216
-#, fuzzy
 msgid "S&elected"
-msgstr "&Vybrané:"
+msgstr "&Vybrané"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:223
-#, fuzzy
 msgid "Display all debug messages"
-msgstr "V¹echny ladící výpisy"
+msgstr "Zobrazovat v¹echny ladící výpisy"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
 msgid "Display statusbar messages?"
-msgstr ""
+msgstr "Zobrazovat zprávy ze stavového øádku?"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:239
-#, fuzzy
 msgid "&Statusbar messages"
-msgstr "Zprávy z tabulek/vlo¾ek textu"
+msgstr "Zprávy ze &stavového øádku"
 
 #: src/frontends/qt4/ui/RefUi.ui:36
 #, fuzzy
@@ -12686,27 +12678,25 @@ msgid "Document Info|D"
 msgstr "Dokument|D"
 
 #: lib/ui/stdcontext.inc:425
-#, fuzzy
 msgid "Copy Text|o"
-msgstr "Zkopírovat|k"
+msgstr "Zkopírovat text|k"
 
 #: lib/ui/stdcontext.inc:434 lib/ui/stdcontext.inc:454
-#, fuzzy
 msgid "Activate Branch|A"
-msgstr "Aktivována"
+msgstr "Aktivovat vìtev|A"
 
 #: lib/ui/stdcontext.inc:435 lib/ui/stdcontext.inc:455
-#, fuzzy
 msgid "Deactivate Branch|e"
-msgstr "(&De)/Aktivovat"
+msgstr "Deaktivovat vìtev|v"
 
 #: lib/ui/stdcontext.inc:444
+#, fuzzy
 msgid "Insert Reference at Cursor Position|I"
-msgstr ""
+msgstr "Vlo¾it køí¾ový odkaz na pozici kurzoru|k"
 
 #: lib/ui/stdcontext.inc:538
 msgid "All Indexes|A"
-msgstr "V¹echna hesla rejstøíku|r"
+msgstr "V¹echny rejstøíky|r"
 
 #: lib/ui/stdcontext.inc:541
 msgid "Subindex|b"
@@ -12717,34 +12707,28 @@ msgid "Reject Change|R"
 msgstr "Odmítnout zmìnu|m"
 
 #: lib/ui/stdcontext.inc:577
-#, fuzzy
 msgid "Promote Section|P"
 msgstr "Zvý¹it úroveò sekce|Z"
 
 #: lib/ui/stdcontext.inc:578
-#, fuzzy
 msgid "Demote Section|D"
 msgstr "Sní¾it úroveò sekce|S"
 
 #: lib/ui/stdcontext.inc:580
-#, fuzzy
 msgid "Move Section Down|w"
 msgstr "Pøesunout sekci dolù|d"
 
 #: lib/ui/stdcontext.inc:582
-#, fuzzy
 msgid "Select Section|S"
-msgstr "Výbìr|V"
+msgstr "Vybrat sekce|e"
 
 #: lib/ui/stdcontext.inc:589
-#, fuzzy
 msgid "Wrap by Preview|P"
-msgstr "LyX Náhled"
+msgstr "Obalit náhledem (preview)"
 
 #: lib/ui/stdcontext.inc:598
-#, fuzzy
 msgid "Open Target...|O"
-msgstr "Otevøít...|O"
+msgstr "Otevøít cíl...|O"
 
 #: lib/ui/stdmenus.inc:33
 msgid "Document|D"
@@ -19030,7 +19014,7 @@ msgstr "(bez poèáteèního popisku)"
 
 #: src/LyXVC.cpp:165
 msgid "(no log message)"
-msgstr "(¾ádná zpráva logu)"
+msgstr "(no log message)"
 
 #: src/LyXVC.cpp:170 src/frontends/qt4/GuiView.cpp:2753
 msgid "LyX VC: Log Message"
@@ -20617,9 +20601,8 @@ msgid "Numbering & TOC"
 msgstr "Èíslování & Obsah"
 
 #: src/frontends/qt4/GuiDocument.cpp:1260
-#, fuzzy
 msgid "Indexes"
-msgstr "Index"
+msgstr "Rejstøíky"
 
 #: src/frontends/qt4/GuiDocument.cpp:1261
 msgid "PDF Properties"
@@ -21448,7 +21431,7 @@ msgstr "Nastevení rejstøíku"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:69
 msgid "<All indexes>"
-msgstr "<V¹echna hesla rejstøíku>"
+msgstr "<V¹echny rejstøíky>"
 
 #: src/frontends/qt4/GuiProgressView.cpp:52
 msgid "Progress/Debug Messages"
@@ -22512,7 +22495,7 @@ msgstr "Seznam výpisù"
 
 #: src/frontends/qt4/qt_helpers.cpp:553
 msgid "List of Indexes"
-msgstr "Hesla rejstøíku"
+msgstr "Seznam rejstøíkù"
 
 #: src/frontends/qt4/qt_helpers.cpp:555
 msgid "List of Marginal notes"
@@ -22974,7 +22957,7 @@ msgstr "Neznámý typ rejstøíku"
 
 #: src/insets/InsetIndex.cpp:455
 msgid "All indexes"
-msgstr "V¹echna hesla rejstøíku"
+msgstr "V¹echny rejstøíky"
 
 #: src/insets/InsetIndex.cpp:459
 msgid "subindex"
