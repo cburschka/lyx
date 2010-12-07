@@ -232,9 +232,9 @@ private Q_SLOTS:
 
 	/// For completion of autosave or export threads.
 	void processingThreadStarted();
-  void processingThreadFinished(bool show_errors);
+	void processingThreadFinished(bool show_errors);
 	void processingThreadFinished();
-  void autoSaveThreadFinished();
+	void autoSaveThreadFinished();
 	void indicateProcessing();
 
 	/// must be called in GUI thread
