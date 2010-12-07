@@ -47,6 +47,8 @@ bool isStrDbl(std::string const & str);
 /// does the string contain a digit?
 bool hasDigitASCII(docstring const & str);
 
+bool isHexChar(char_type);
+
 bool isHex(docstring const & str);
 
 int hexToInt(docstring const & str);

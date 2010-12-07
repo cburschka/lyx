@@ -25,6 +25,7 @@
 
 using namespace std;
 
+using lyx::support::isHexChar;
 
 namespace lyx {
 

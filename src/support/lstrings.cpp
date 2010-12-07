@@ -332,7 +332,7 @@ bool hasDigitASCII(docstring const & str)
 }
 
 
-static bool isHexChar(char_type c)
+bool isHexChar(char_type c)
 {
 	return c == '0' ||
 		c == '1' ||
