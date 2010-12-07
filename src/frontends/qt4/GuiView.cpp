@@ -446,7 +446,7 @@ GuiView::GuiView(int id)
 
 #if (QT_VERSION >= 0x040400)
 	connect(&d.autosave_watcher_, SIGNAL(finished()), this,
-		SLOT(processingThreadFinished()));
+		SLOT(autoSaveThreadFinished()));
 	connect(&d.processing_thread_watcher_, SIGNAL(finished()), this,
 		SLOT(processingThreadFinished()));
 
@@ -548,16 +548,28 @@ void GuiView::processingThreadStarted()
 }
 
 
-void GuiView::processingThreadFinished()
+void GuiView::processingThreadFinished(bool show_errors)
 {
 	QFutureWatcher<docstring> const * watcher =
 		static_cast<QFutureWatcher<docstring> const *>(sender());
 	message(watcher->result());
 	updateToolbars();
-	errors(d.last_export_format);
+	if (show_errors) {
+		errors(d.last_export_format);
+ 	}
 	d.processing_cursor_timer_.stop();
 	restoreCursorShapes();
 	d.indicates_processing_ = false;
+}
+
+void GuiView::processingThreadFinished()
+{
+	processingThreadFinished(true);
+}
+
+void GuiView::autoSaveThreadFinished()
+{
+	processingThreadFinished(false);
 }
 
 #else
@@ -587,7 +599,17 @@ void GuiView::processingThreadStarted()
 }
 
 
+void GuiView::processingThreadFinished(bool)
+{
+}
+
+
 void GuiView::processingThreadFinished()
+{
+}
+
+
+void GuiView::autoSaveThreadFinished()
 {
 }
 #endif
