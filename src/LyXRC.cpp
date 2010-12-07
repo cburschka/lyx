@@ -2225,6 +2225,8 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			   << convert<string>(use_tooltip)
 			   << '\n';
 		}
+		if (tag != RC_LAST)
+			break;
 	case RC_USE_PIXMAP_CACHE:
 		if (ignore_system_lyxrc ||
 		    use_pixmap_cache != system_lyxrc.use_pixmap_cache) {
@@ -2232,8 +2234,11 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			   << convert<string>(use_pixmap_cache)
 			   << '\n';
 		}
+		if (tag != RC_LAST)
+			break;
 	case RC_PERS_DICT:
-		if (isp_pers_dict != system_lyxrc.isp_pers_dict) {
+		if (ignore_system_lyxrc ||
+		    isp_pers_dict != system_lyxrc.isp_pers_dict) {
 			string const path = os::external_path(isp_pers_dict);
 			os << "\\personal_dictionary \"" << path << "\"\n";
 		}
