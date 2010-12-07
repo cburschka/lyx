@@ -2497,6 +2497,11 @@ bool GuiView::closeBuffer(Buffer & buf)
 		theBufferList().release(&buf);
 		return true;
 	}
+	// open all children again to avoid a crash (bug 6603)
+	// FIXME updateMacros() does more than needed
+	buf.updateMacros();
+	// get rid of dangling inset pointers in TOC (bug 6603)
+	buf.tocBackend().update();
 	return false;
 }
 
