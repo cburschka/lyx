@@ -555,13 +555,13 @@ namespace {
 				return false;
 
 			// check for field type
-			if (isDigitASCII(ch)) {
+			if (isDigit(ch)) {
 
 				// read integer value
 				do {
 					val += ch;
 					ifs.get(ch);
-				} while (ifs && isDigitASCII(ch));
+				} while (ifs && isDigit(ch));
 
 				if (!ifs)
 					return false;

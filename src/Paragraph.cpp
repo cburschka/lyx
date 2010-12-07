@@ -358,8 +358,6 @@ public:
 		return speller_change_number > speller_state_.currentChangeNumber();
 	}
 
-	bool ignoreWord(docstring const & word) const ;
-	
 	void setMisspelled(pos_type from, pos_type to, SpellChecker::Result state)
 	{
 		pos_type textsize = owner_->size();
@@ -2820,7 +2818,7 @@ bool Paragraph::isWordSeparator(pos_type pos) const
 	char_type const c = d->text_[pos];
 	// We want to pass the ' and escape chars to the spellchecker
 	static docstring const quote = from_utf8(lyxrc.spellchecker_esc_chars + '\'');
-	return (!isLetterChar(c) && !isDigitASCII(c) && !contains(quote, c))
+	return (!isLetterChar(c) && !isDigit(c) && !contains(quote, c))
 		|| pos == size();
 }
 
@@ -2830,7 +2828,7 @@ bool Paragraph::isChar(pos_type pos) const
 	if (Inset const * inset = getInset(pos))
 		return inset->isChar();
 	char_type const c = d->text_[pos];
-	return !isLetterChar(c) && !isDigitASCII(c) && !lyx::isSpace(c);
+	return !isLetterChar(c) && !isDigit(c) && !lyx::isSpace(c);
 }
 
 
@@ -3547,21 +3545,6 @@ bool Paragraph::needsSpellCheck() const
 }
 
 
-bool Paragraph::Private::ignoreWord(docstring const & word) const
-{
-	// Ignore words with digits
-	// FIXME: make this customizable
-	// (note that some checkers ignore words with digits by default)
-	docstring::const_iterator cit = word.begin();
-	docstring::const_iterator const end = word.end();
-	for (; cit != end; ++cit) {
-		if (isNumber((*cit)))
-			return true;
-	}
-	return false;
-}
-
-
 SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 	WordLangTuple & wl, docstring_list & suggestions,
 	bool do_suggestion, bool check_learned) const
@@ -3587,7 +3570,10 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 		return result;
 
 	if (needsSpellCheck() || check_learned) {
-		if (!d->ignoreWord(word)) {
+		// Ignore words with digits
+		// FIXME: make this customizable
+		// (note that some checkers ignore words with digits by default)
+		if (!hasDigit(word)) {
 			bool const trailing_dot = to < size() && d->text_[to] == '.';
 			result = speller->check(wl);
 			if (SpellChecker::misspelled(result) && trailing_dot) {

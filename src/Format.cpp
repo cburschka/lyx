@@ -24,7 +24,6 @@
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Systemcall.h"
-#include "support/textutils.h"
 
 #include <algorithm>
 
@@ -103,7 +102,7 @@ bool Format::isChildFormat() const
 {
 	if (name_.empty())
 		return false;
-	return isDigitASCII(name_[name_.length() - 1]);
+	return isdigit(name_[name_.length() - 1]);
 }
 
 

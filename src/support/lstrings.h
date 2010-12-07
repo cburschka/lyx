@@ -45,7 +45,7 @@ bool isStrUnsignedInt(std::string const & str);
 bool isStrDbl(std::string const & str);
 
 /// does the string contain a digit?
-bool hasDigitASCII(docstring const & str);
+bool hasDigit(docstring const & str);
 
 bool isHex(docstring const & str);
 

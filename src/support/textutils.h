@@ -41,8 +41,8 @@ bool isPrintableNonspace(char_type c);
 /// return true if a unicode char is a space.
 bool isSpace(char_type c);
 
-/// return true if a unicode char is a numeral.
-bool isNumber(char_type c);
+/// return true if a unicode char is a digit.
+bool isDigit(char_type c);
 
 /// return whether \p c is a digit in the ASCII range
 bool isDigitASCII(char_type c);

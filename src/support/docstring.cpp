@@ -753,9 +753,9 @@ private:
 	bool isNumpunct(lyx::char_type const c) const
 	{
 		/// Only account for the standard numpunct "C" locale facet.
-		return c == '-' || c == '+'
-			|| c == 'x' || c == 'X'
-			|| isHexChar(c);
+		return c < 0x80 && (c == '-' || c == '+' || isdigit(c)
+			|| ('a' <= c && c <= 'f') || ('A' <= c && c <= 'F')
+			|| c == 'x' || c == 'X');
 	}
 
 	template <typename ValueType>

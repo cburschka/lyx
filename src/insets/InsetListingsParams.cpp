@@ -768,7 +768,7 @@ void InsetListingsParams::addParam(string const & key,
 	else {
 		bool has_special_char = false;
 		for (size_t i = 0; i < value.size(); ++i)
-			if (!isAlnumASCII(value[i])) {
+			if (!isAlphaASCII(value[i]) && !isDigit(value[i])) {
 				has_special_char = true;
 				break;
 			}
