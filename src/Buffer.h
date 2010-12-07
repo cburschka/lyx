@@ -13,12 +13,14 @@
 #define BUFFER_H
 
 #include "OutputEnums.h"
+#include "OutputParams.h"
 
 #include "insets/InsetCode.h"
 
 #include "support/strfwd.h"
 #include "support/types.h"
 
+#include <map>
 #include <list>
 #include <set>
 #include <string>
@@ -552,7 +554,7 @@ public:
 	/// get source code (latex/docbook) for some paragraphs, or all paragraphs
 	/// including preamble
 	void getSourceCode(odocstream & os, pit_type par_begin, pit_type par_end,
-		bool full_source) const;
+		bool full_source);
 
 	/// Access to error list.
 	/// This method is used only for GUI visualisation of Buffer related
@@ -600,6 +602,8 @@ public:
 	std::string bufferFormat() const;
 	/// return the default output format of the current backend
 	std::string getDefaultOutputFormat() const;
+	/// return the default output flavor
+	OutputParams::FLAVOR getDefaultOutputFlavor();
 
 	///
 	bool doExport(std::string const & format, bool put_in_tempdir,
@@ -662,6 +666,10 @@ private:
 	void setFileName(support::FileName const & fname);
 	///
 	std::vector<std::string> backends() const;
+	/// A cache for the default flavors
+	typedef std::map<std::string, OutputParams::FLAVOR> DefaultFlavorCache;
+	///
+	DefaultFlavorCache default_flavors_;
 	///
 	void getLanguages(std::set<Language const *> &) const;
 	/// Checks whether any of the referenced bibfiles have changed since the

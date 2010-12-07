@@ -102,7 +102,8 @@ static bool getContent(BufferView const * view, bool fullSource, QString & qstr)
 	if (par_begin > par_end)
 		swap(par_begin, par_end);
 	odocstringstream ostr;
-	view->buffer().getSourceCode(ostr, par_begin, par_end + 1, fullSource);
+	const_cast<BufferView *>(view)->buffer().getSourceCode(
+		ostr, par_begin, par_end + 1, fullSource);
 	docstring s = ostr.str();
 	static size_t crc = 0;
 	size_t newcrc = crcCheck(s);

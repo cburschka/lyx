@@ -3072,12 +3072,11 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 
 
 void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
-	pit_type par_end, bool full_source) const
+	pit_type par_end, bool full_source)
 {
 	OutputParams runparams(&params().encoding());
 	runparams.nice = true;
-	runparams.flavor = params().useNonTeXFonts ? 
-		OutputParams::XETEX : OutputParams::LATEX;
+	runparams.flavor = getDefaultOutputFlavor();
 	runparams.linelen = lyxrc.plaintext_linelen;
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
@@ -3089,6 +3088,8 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 		d->texrow.newline();
 		if (isDocBook())
 			writeDocBookSource(os, absFileName(), runparams, false);
+		else if (runparams.flavor == OutputParams::HTML)
+			writeLyXHTMLSource(os, runparams, false);
 		else
 			// latex or literate
 			writeLaTeXSource(os, string(), runparams, true, true);
@@ -3113,7 +3114,10 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 		// output paragraphs
 		if (isDocBook())
 			docbookParagraphs(text(), *this, os, runparams);
-		else 
+		else if (runparams.flavor == OutputParams::HTML) {
+			XHTMLStream xs(os);
+			xhtmlParagraphs(text(), *this, xs, runparams);
+		} else 
 			// latex or literate
 			latexParagraphs(*this, text(), os, texrow, runparams);
 	}
@@ -3381,6 +3385,42 @@ string Buffer::getDefaultOutputFormat() const
 		return formats.front()->name();
 	}
 	return lyxrc.default_view_format;
+}
+
+
+OutputParams::FLAVOR Buffer::getDefaultOutputFlavor()
+{
+	string const dformat = getDefaultOutputFormat();
+	DefaultFlavorCache::const_iterator it =
+		default_flavors_.find(dformat);
+
+	if (it != default_flavors_.end())
+		return it->second;
+
+	OutputParams::FLAVOR result = OutputParams::LATEX;
+	
+	if (dformat == "xhtml")
+		result = OutputParams::HTML;
+	else {
+		// Try to determine flavor of default output format
+		vector<string> backs = backends();
+		if (find(backs.begin(), backs.end(), dformat) == backs.end()) {
+			// Get shortest path to format
+			Graph::EdgePath path;
+			for (vector<string>::const_iterator it = backs.begin();
+			    it != backs.end(); ++it) {
+				Graph::EdgePath p = theConverters().getPath(*it, dformat);
+				if (!p.empty() && (path.empty() || p.size() < path.size())) {
+					path = p;
+				}
+			}
+			if (!path.empty())
+				result = theConverters().getFlavor(path);
+		}
+	}
+	// cache this flavor
+	default_flavors_[dformat] = result;
+	return result;
 }
 
 
