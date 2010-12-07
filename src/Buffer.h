@@ -554,7 +554,7 @@ public:
 	/// get source code (latex/docbook) for some paragraphs, or all paragraphs
 	/// including preamble
 	void getSourceCode(odocstream & os, pit_type par_begin, pit_type par_end,
-		bool full_source);
+		bool full_source) const;
 
 	/// Access to error list.
 	/// This method is used only for GUI visualisation of Buffer related
@@ -603,7 +603,7 @@ public:
 	/// return the default output format of the current backend
 	std::string getDefaultOutputFormat() const;
 	/// return the default output flavor
-	OutputParams::FLAVOR getDefaultOutputFlavor();
+	OutputParams::FLAVOR getDefaultOutputFlavor() const;
 
 	///
 	bool doExport(std::string const & format, bool put_in_tempdir,
@@ -669,7 +669,7 @@ private:
 	/// A cache for the default flavors
 	typedef std::map<std::string, OutputParams::FLAVOR> DefaultFlavorCache;
 	///
-	DefaultFlavorCache default_flavors_;
+	mutable DefaultFlavorCache default_flavors_;
 	///
 	void getLanguages(std::set<Language const *> &) const;
 	/// Checks whether any of the referenced bibfiles have changed since the
