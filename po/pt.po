@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-12-05 00:11+0100\n"
+"POT-Creation-Date: 2010-12-07 00:34+0100\n"
 "PO-Revision-Date: 2010-11-18 05:48+0100\n"
 "Last-Translator: susana barbosa <sabarbosa@fc.ul.pt>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -544,7 +544,7 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2276 src/frontends/qt4/GuiView.cpp:2321
 #: src/frontends/qt4/GuiView.cpp:2528 src/frontends/qt4/GuiView.cpp:2535
 #: src/frontends/qt4/GuiView.cpp:2636 src/frontends/qt4/GuiView.cpp:2664
-#: src/frontends/qt4/GuiView.cpp:3270 src/insets/InsetBibtex.cpp:147
+#: src/frontends/qt4/GuiView.cpp:3245 src/insets/InsetBibtex.cpp:147
 msgid "&Cancel"
 msgstr "&Cancelar"
 
@@ -17290,7 +17290,7 @@ msgstr "Não é possível correr o chktex com sucesso."
 msgid "Don't know how to export to format: %1$s"
 msgstr "Não existe informação para exportar o formato %1$s."
 
-#: src/Buffer.cpp:2013 src/frontends/qt4/GuiView.cpp:3125
+#: src/Buffer.cpp:2013 src/frontends/qt4/GuiView.cpp:3100
 #, fuzzy, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Não existe informação para exportar o formato %1$s."
@@ -17697,22 +17697,22 @@ msgstr "Ramos"
 msgid "Branch already exists"
 msgstr ""
 
-#: src/BufferView.cpp:2517
+#: src/BufferView.cpp:2518
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "A inserir documento %1$s..."
 
-#: src/BufferView.cpp:2528
+#: src/BufferView.cpp:2529
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Documento %1$s inserido."
 
-#: src/BufferView.cpp:2530
+#: src/BufferView.cpp:2531
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Não é possível inserir documento %1$s"
 
-#: src/BufferView.cpp:2795
+#: src/BufferView.cpp:2796
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17723,11 +17723,11 @@ msgstr ""
 "%1$s\n"
 "devido ao erro: %2$s"
 
-#: src/BufferView.cpp:2797
+#: src/BufferView.cpp:2798
 msgid "Could not read file"
 msgstr "Não foi possível ler ficheiro"
 
-#: src/BufferView.cpp:2804
+#: src/BufferView.cpp:2805
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17736,15 +17736,15 @@ msgstr ""
 "%1$s\n"
 "não é legível."
 
-#: src/BufferView.cpp:2805 src/output.cpp:39
+#: src/BufferView.cpp:2806 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Não foi possível abrir ficheiro"
 
-#: src/BufferView.cpp:2812
+#: src/BufferView.cpp:2813
 msgid "Reading not UTF-8 encoded file"
 msgstr "A ler ficheiro sem codificação UTF-8"
 
-#: src/BufferView.cpp:2813
+#: src/BufferView.cpp:2814
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -19384,7 +19384,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Reverter para a versão armazenada do documento?"
 
-#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3270
+#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3245
 msgid "&Revert"
 msgstr "&Reverter"
 
@@ -21619,7 +21619,7 @@ msgid "Give a filename for the LyX server pipe"
 msgstr "Dar um nome de ficheiro para o canal do servidor LyX"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1409
-#: src/frontends/qt4/GuiSpellchecker.cpp:73
+#: src/frontends/qt4/GuiSpellchecker.cpp:75
 msgid "Spellchecker"
 msgstr "Verificador ortográfico"
 
@@ -21865,16 +21865,16 @@ msgstr "Mostrar Ficheiro"
 msgid "Error -> Cannot load file!"
 msgstr "Erro -> Não é possível carregar ficheiro!"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:346
+#: src/frontends/qt4/GuiSpellchecker.cpp:359
 #, c-format
 msgid "%1$d words checked."
 msgstr "%1$d palavras verificadas."
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:348
+#: src/frontends/qt4/GuiSpellchecker.cpp:361
 msgid "One word checked."
 msgstr "Uma palavra verificada."
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:351
+#: src/frontends/qt4/GuiSpellchecker.cpp:364
 msgid "Spelling check completed"
 msgstr "Verificação ortográfica completa"
 
@@ -22451,7 +22451,7 @@ msgstr "Incluir ficheiro"
 msgid "Select LyX document to insert"
 msgstr "Selecionar documento LyX a inserir"
 
-#: src/frontends/qt4/GuiView.cpp:2194 src/frontends/qt4/GuiView.cpp:3181
+#: src/frontends/qt4/GuiView.cpp:2194 src/frontends/qt4/GuiView.cpp:3156
 msgid "Absolute filename expected."
 msgstr "Nome de ficheiro absoluto esperado."
 
@@ -22592,21 +22592,21 @@ msgstr "Não existe informação para exportar o formato %1$s."
 msgid "Error while exporting format: %1$s"
 msgstr "Não existe informação para exportar o formato %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:3133 src/frontends/qt4/GuiView.cpp:3145
+#: src/frontends/qt4/GuiView.cpp:3108 src/frontends/qt4/GuiView.cpp:3120
 #, fuzzy
 msgid "Exporting ..."
 msgstr "A importar %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:3154
+#: src/frontends/qt4/GuiView.cpp:3129
 #, fuzzy
 msgid "Previewing ..."
 msgstr "Pré-visualizar carregamento"
 
-#: src/frontends/qt4/GuiView.cpp:3188
+#: src/frontends/qt4/GuiView.cpp:3163
 msgid "Document not loaded"
 msgstr "Documento não carregado"
 
-#: src/frontends/qt4/GuiView.cpp:3266
+#: src/frontends/qt4/GuiView.cpp:3241
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -22615,29 +22615,29 @@ msgstr ""
 "Quaisquer alterações serão perdidas. Tem a certeza de que quer voltar à "
 "versão guardada do documento %1$s?"
 
-#: src/frontends/qt4/GuiView.cpp:3269
+#: src/frontends/qt4/GuiView.cpp:3244
 msgid "Revert to saved document?"
 msgstr "Reverter para o documento guardado?"
 
-#: src/frontends/qt4/GuiView.cpp:3295
+#: src/frontends/qt4/GuiView.cpp:3270
 msgid "Saving all documents..."
 msgstr "A guardar todos os documentos..."
 
-#: src/frontends/qt4/GuiView.cpp:3305
+#: src/frontends/qt4/GuiView.cpp:3280
 msgid "All documents saved."
 msgstr "Todos os documentos guardados."
 
-#: src/frontends/qt4/GuiView.cpp:3406
+#: src/frontends/qt4/GuiView.cpp:3381
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s comando desconhecido!"
 
-#: src/frontends/qt4/GuiView.cpp:3513
+#: src/frontends/qt4/GuiView.cpp:3488
 #, fuzzy
 msgid "Please, preview the document first."
 msgstr "Esta parte do documento é apagada."
 
-#: src/frontends/qt4/GuiView.cpp:3528
+#: src/frontends/qt4/GuiView.cpp:3503
 #, fuzzy
 msgid "Couldn't proceed."
 msgstr "Não é possível exportar ficheiro"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-12-05 00:11+0100\n"
+"POT-Creation-Date: 2010-12-07 00:34+0100\n"
 "PO-Revision-Date: 2007-06-26 17:10+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -544,7 +544,7 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2276 src/frontends/qt4/GuiView.cpp:2321
 #: src/frontends/qt4/GuiView.cpp:2528 src/frontends/qt4/GuiView.cpp:2535
 #: src/frontends/qt4/GuiView.cpp:2636 src/frontends/qt4/GuiView.cpp:2664
-#: src/frontends/qt4/GuiView.cpp:3270 src/insets/InsetBibtex.cpp:147
+#: src/frontends/qt4/GuiView.cpp:3245 src/insets/InsetBibtex.cpp:147
 msgid "&Cancel"
 msgstr "取消(&C)"
 
@@ -17614,7 +17614,7 @@ msgstr "無法成功運行 chktex。"
 msgid "Don't know how to export to format: %1$s"
 msgstr "沒有資訊用於匯出格式 %1$s。"
 
-#: src/Buffer.cpp:2013 src/frontends/qt4/GuiView.cpp:3125
+#: src/Buffer.cpp:2013 src/frontends/qt4/GuiView.cpp:3100
 #, fuzzy, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "沒有資訊用於匯出格式 %1$s。"
@@ -18024,22 +18024,22 @@ msgstr "分支"
 msgid "Branch already exists"
 msgstr ""
 
-#: src/BufferView.cpp:2517
+#: src/BufferView.cpp:2518
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "插入文件 %1$s…"
 
-#: src/BufferView.cpp:2528
+#: src/BufferView.cpp:2529
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文件 %1$s 已插入。"
 
-#: src/BufferView.cpp:2530
+#: src/BufferView.cpp:2531
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "無法插入文件 %1$s"
 
-#: src/BufferView.cpp:2795
+#: src/BufferView.cpp:2796
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -18050,26 +18050,26 @@ msgstr ""
 "%1$s\n"
 "由於錯誤：%2$s"
 
-#: src/BufferView.cpp:2797
+#: src/BufferView.cpp:2798
 msgid "Could not read file"
 msgstr "無法讀取檔案"
 
-#: src/BufferView.cpp:2804
+#: src/BufferView.cpp:2805
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s 無法讀取。"
 
-#: src/BufferView.cpp:2805 src/output.cpp:39
+#: src/BufferView.cpp:2806 src/output.cpp:39
 msgid "Could not open file"
 msgstr "無法開啟檔案"
 
-#: src/BufferView.cpp:2812
+#: src/BufferView.cpp:2813
 msgid "Reading not UTF-8 encoded file"
 msgstr "讀取非 UTF-8 編碼的檔案"
 
-#: src/BufferView.cpp:2813
+#: src/BufferView.cpp:2814
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -19657,7 +19657,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "還原成文件的已儲存版本？"
 
-#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3270
+#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3245
 msgid "&Revert"
 msgstr "回復(&R)"
 
@@ -21902,7 +21902,7 @@ msgid "Give a filename for the LyX server pipe"
 msgstr "給出用於 LyX 伺服器管道的檔名"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1409
-#: src/frontends/qt4/GuiSpellchecker.cpp:73
+#: src/frontends/qt4/GuiSpellchecker.cpp:75
 msgid "Spellchecker"
 msgstr "拼寫檢查器"
 
@@ -22150,16 +22150,16 @@ msgstr "顯示檔案"
 msgid "Error -> Cannot load file!"
 msgstr "無法編輯檔案"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:346
+#: src/frontends/qt4/GuiSpellchecker.cpp:359
 #, c-format
 msgid "%1$d words checked."
 msgstr "%1$d 個字詞已勾選。"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:348
+#: src/frontends/qt4/GuiSpellchecker.cpp:361
 msgid "One word checked."
 msgstr "一個字詞已勾選。"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:351
+#: src/frontends/qt4/GuiSpellchecker.cpp:364
 msgid "Spelling check completed"
 msgstr "拼寫檢查已完成"
 
@@ -22788,7 +22788,7 @@ msgstr "包含檔"
 msgid "Select LyX document to insert"
 msgstr "選取要插入的 LyX 文件"
 
-#: src/frontends/qt4/GuiView.cpp:2194 src/frontends/qt4/GuiView.cpp:3181
+#: src/frontends/qt4/GuiView.cpp:2194 src/frontends/qt4/GuiView.cpp:3156
 #, fuzzy
 msgid "Absolute filename expected."
 msgstr "預期一個值。"
@@ -22932,51 +22932,51 @@ msgstr "沒有資訊用於匯出格式 %1$s。"
 msgid "Error while exporting format: %1$s"
 msgstr "沒有資訊用於匯出格式 %1$s。"
 
-#: src/frontends/qt4/GuiView.cpp:3133 src/frontends/qt4/GuiView.cpp:3145
+#: src/frontends/qt4/GuiView.cpp:3108 src/frontends/qt4/GuiView.cpp:3120
 #, fuzzy
 msgid "Exporting ..."
 msgstr "匯入 %1$s…"
 
-#: src/frontends/qt4/GuiView.cpp:3154
+#: src/frontends/qt4/GuiView.cpp:3129
 #, fuzzy
 msgid "Previewing ..."
 msgstr "載入預覽中"
 
-#: src/frontends/qt4/GuiView.cpp:3188
+#: src/frontends/qt4/GuiView.cpp:3163
 #, fuzzy
 msgid "Document not loaded"
 msgstr "文件尚未載入"
 
-#: src/frontends/qt4/GuiView.cpp:3266
+#: src/frontends/qt4/GuiView.cpp:3241
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr "任何變更將會失去。確定要還原成儲存的文件版本 %1$s？"
 
-#: src/frontends/qt4/GuiView.cpp:3269
+#: src/frontends/qt4/GuiView.cpp:3244
 msgid "Revert to saved document?"
 msgstr "恢復原儲存文件？"
 
-#: src/frontends/qt4/GuiView.cpp:3295
+#: src/frontends/qt4/GuiView.cpp:3270
 msgid "Saving all documents..."
 msgstr "正在儲存全部文件…"
 
-#: src/frontends/qt4/GuiView.cpp:3305
+#: src/frontends/qt4/GuiView.cpp:3280
 msgid "All documents saved."
 msgstr "所有文件已儲存"
 
-#: src/frontends/qt4/GuiView.cpp:3406
+#: src/frontends/qt4/GuiView.cpp:3381
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3513
+#: src/frontends/qt4/GuiView.cpp:3488
 #, fuzzy
 msgid "Please, preview the document first."
 msgstr "此部份的文件已刪除。"
 
-#: src/frontends/qt4/GuiView.cpp:3528
+#: src/frontends/qt4/GuiView.cpp:3503
 #, fuzzy
 msgid "Couldn't proceed."
 msgstr "無法匯出檔案"

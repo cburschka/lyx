@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-12-05 00:11+0100\n"
+"POT-Creation-Date: 2010-12-07 00:34+0100\n"
 "PO-Revision-Date: 2005-12-18 15:04+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -608,7 +608,7 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2276 src/frontends/qt4/GuiView.cpp:2321
 #: src/frontends/qt4/GuiView.cpp:2528 src/frontends/qt4/GuiView.cpp:2535
 #: src/frontends/qt4/GuiView.cpp:2636 src/frontends/qt4/GuiView.cpp:2664
-#: src/frontends/qt4/GuiView.cpp:3270 src/insets/InsetBibtex.cpp:147
+#: src/frontends/qt4/GuiView.cpp:3245 src/insets/InsetBibtex.cpp:147
 #, fuzzy
 msgid "&Cancel"
 msgstr "Rinoncî"
@@ -18653,7 +18653,7 @@ msgstr "Chktex n' a pont trové di måcules"
 msgid "Don't know how to export to format: %1$s"
 msgstr ""
 
-#: src/Buffer.cpp:2013 src/frontends/qt4/GuiView.cpp:3125
+#: src/Buffer.cpp:2013 src/frontends/qt4/GuiView.cpp:3100
 #, fuzzy, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Dj' a aroké come dji sayîve do lere "
@@ -19063,22 +19063,22 @@ msgstr "Intreye bibiografike"
 msgid "Branch already exists"
 msgstr ""
 
-#: src/BufferView.cpp:2517
+#: src/BufferView.cpp:2518
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Dji stitche li documint"
 
-#: src/BufferView.cpp:2528
+#: src/BufferView.cpp:2529
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Documint rlomé ("
 
-#: src/BufferView.cpp:2530
+#: src/BufferView.cpp:2531
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Dji n' sai stitchî li documint"
 
-#: src/BufferView.cpp:2795
+#: src/BufferView.cpp:2796
 #, fuzzy, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -19086,28 +19086,28 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Dji n' sai drovi li documint"
 
-#: src/BufferView.cpp:2797
+#: src/BufferView.cpp:2798
 #, fuzzy
 msgid "Could not read file"
 msgstr "Dji n' a nén parvinu a-z enonder ci fitchî ci:"
 
-#: src/BufferView.cpp:2804
+#: src/BufferView.cpp:2805
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr " hagnons n' ont nén stî ratoûrnés"
 
-#: src/BufferView.cpp:2805 src/output.cpp:39
+#: src/BufferView.cpp:2806 src/output.cpp:39
 #, fuzzy
 msgid "Could not open file"
 msgstr "Dji n' sai scrîre li fitchî"
 
-#: src/BufferView.cpp:2812
+#: src/BufferView.cpp:2813
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/BufferView.cpp:2813
+#: src/BufferView.cpp:2814
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -20670,7 +20670,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Tchwezi djusk' al difén do documint"
 
-#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3270
+#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3245
 #, fuzzy
 msgid "&Revert"
 msgstr "Schaper"
@@ -23007,7 +23007,7 @@ msgid "Give a filename for the LyX server pipe"
 msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:1409
-#: src/frontends/qt4/GuiSpellchecker.cpp:73
+#: src/frontends/qt4/GuiSpellchecker.cpp:75
 #, fuzzy
 msgid "Spellchecker"
 msgstr "Coridjeu di scrîjhaedje"
@@ -23272,17 +23272,17 @@ msgstr "Fitchî"
 msgid "Error -> Cannot load file!"
 msgstr "Dji n' sai scrîre li fitchî"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:346
+#: src/frontends/qt4/GuiSpellchecker.cpp:359
 #, fuzzy, c-format
 msgid "%1$d words checked."
 msgstr "Dj' a trové ene måcule"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:348
+#: src/frontends/qt4/GuiSpellchecker.cpp:361
 #, fuzzy
 msgid "One word checked."
 msgstr "Dj' a trové ene måcule"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:351
+#: src/frontends/qt4/GuiSpellchecker.cpp:364
 #, fuzzy
 msgid "Spelling check completed"
 msgstr "Dj' a tot fwait di coridjî !"
@@ -23901,7 +23901,7 @@ msgstr "Prinde avou"
 msgid "Select LyX document to insert"
 msgstr "Tchwezixhoz on documint po stitchî"
 
-#: src/frontends/qt4/GuiView.cpp:2194 src/frontends/qt4/GuiView.cpp:3181
+#: src/frontends/qt4/GuiView.cpp:2194 src/frontends/qt4/GuiView.cpp:3156
 msgid "Absolute filename expected."
 msgstr ""
 
@@ -24035,54 +24035,54 @@ msgstr "Dj' a aroké come dji sayîve do lere "
 msgid "Error while exporting format: %1$s"
 msgstr "Dj' a aroké come dji sayîve do lere "
 
-#: src/frontends/qt4/GuiView.cpp:3133 src/frontends/qt4/GuiView.cpp:3145
+#: src/frontends/qt4/GuiView.cpp:3108 src/frontends/qt4/GuiView.cpp:3120
 #, fuzzy
 msgid "Exporting ..."
 msgstr "Abaguer%m"
 
-#: src/frontends/qt4/GuiView.cpp:3154
+#: src/frontends/qt4/GuiView.cpp:3129
 #, fuzzy
 msgid "Previewing ..."
 msgstr "Comincî pal difén|#R"
 
-#: src/frontends/qt4/GuiView.cpp:3188
+#: src/frontends/qt4/GuiView.cpp:3163
 #, fuzzy
 msgid "Document not loaded"
 msgstr "L'adjinçmint do documint est metu"
 
-#: src/frontends/qt4/GuiView.cpp:3266
+#: src/frontends/qt4/GuiView.cpp:3241
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3269
+#: src/frontends/qt4/GuiView.cpp:3244
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Rivni å doc. come il esteut li dierin côp k' il a stî schapé"
 
-#: src/frontends/qt4/GuiView.cpp:3295
+#: src/frontends/qt4/GuiView.cpp:3270
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "Dji schape li documint"
 
-#: src/frontends/qt4/GuiView.cpp:3305
+#: src/frontends/qt4/GuiView.cpp:3280
 #, fuzzy
 msgid "All documents saved."
 msgstr "L'adjinçmint do documint est metu"
 
-#: src/frontends/qt4/GuiView.cpp:3406
+#: src/frontends/qt4/GuiView.cpp:3381
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3513
+#: src/frontends/qt4/GuiView.cpp:3488
 #, fuzzy
 msgid "Please, preview the document first."
 msgstr "Ké papî"
 
-#: src/frontends/qt4/GuiView.cpp:3528
+#: src/frontends/qt4/GuiView.cpp:3503
 #, fuzzy
 msgid "Couldn't proceed."
 msgstr "Dji n' sai scrîre li fitchî"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-12-05 00:11+0100\n"
+"POT-Creation-Date: 2010-12-07 00:34+0100\n"
 "PO-Revision-Date: 2005-12-18 15:13+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -564,7 +564,7 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2276 src/frontends/qt4/GuiView.cpp:2321
 #: src/frontends/qt4/GuiView.cpp:2528 src/frontends/qt4/GuiView.cpp:2535
 #: src/frontends/qt4/GuiView.cpp:2636 src/frontends/qt4/GuiView.cpp:2664
-#: src/frontends/qt4/GuiView.cpp:3270 src/insets/InsetBibtex.cpp:147
+#: src/frontends/qt4/GuiView.cpp:3245 src/insets/InsetBibtex.cpp:147
 msgid "&Cancel"
 msgstr "&Anullér"
 
@@ -18154,7 +18154,7 @@ msgstr "Kunne ikke køre chktex."
 msgid "Don't know how to export to format: %1$s"
 msgstr "Ingen oplysninger om eksport i formatet %1$s"
 
-#: src/Buffer.cpp:2013 src/frontends/qt4/GuiView.cpp:3125
+#: src/Buffer.cpp:2013 src/frontends/qt4/GuiView.cpp:3100
 #, fuzzy, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Ingen oplysninger om eksport i formatet %1$s"
@@ -18568,22 +18568,22 @@ msgstr "Grene"
 msgid "Branch already exists"
 msgstr ""
 
-#: src/BufferView.cpp:2517
+#: src/BufferView.cpp:2518
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Indsætter dokumentet %1$s..."
 
-#: src/BufferView.cpp:2528
+#: src/BufferView.cpp:2529
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumentet %1$s blev indsat."
 
-#: src/BufferView.cpp:2530
+#: src/BufferView.cpp:2531
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikke indsætte dokumentet %1$s"
 
-#: src/BufferView.cpp:2795
+#: src/BufferView.cpp:2796
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -18594,26 +18594,26 @@ msgstr ""
 "%1$s\n"
 "på grund af fejl: %2$s"
 
-#: src/BufferView.cpp:2797
+#: src/BufferView.cpp:2798
 msgid "Could not read file"
 msgstr "Kunne ikke læse fil"
 
-#: src/BufferView.cpp:2804
+#: src/BufferView.cpp:2805
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s kunne ikke læses."
 
-#: src/BufferView.cpp:2805 src/output.cpp:39
+#: src/BufferView.cpp:2806 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Kunne ikke åbne fil"
 
-#: src/BufferView.cpp:2812
+#: src/BufferView.cpp:2813
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/BufferView.cpp:2813
+#: src/BufferView.cpp:2814
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -20240,7 +20240,7 @@ msgid "Revert to stored version of document?"
 msgstr "Gendan den gemte udgave af dokumentet?"
 
 # , c-format
-#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3270
+#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3245
 msgid "&Revert"
 msgstr "&Gendan"
 
@@ -22539,7 +22539,7 @@ msgid "Give a filename for the LyX server pipe"
 msgstr "Angiv filnavn for LyX-serverrør"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1409
-#: src/frontends/qt4/GuiSpellchecker.cpp:73
+#: src/frontends/qt4/GuiSpellchecker.cpp:75
 msgid "Spellchecker"
 msgstr "Stavekontrol"
 
@@ -22796,16 +22796,16 @@ msgstr "Vis fil"
 msgid "Error -> Cannot load file!"
 msgstr "Kan ikke skrive fil"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:346
+#: src/frontends/qt4/GuiSpellchecker.cpp:359
 #, fuzzy, c-format
 msgid "%1$d words checked."
 msgstr "%1$s ord tjekket."
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:348
+#: src/frontends/qt4/GuiSpellchecker.cpp:361
 msgid "One word checked."
 msgstr "Èt ord tjekket."
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:351
+#: src/frontends/qt4/GuiSpellchecker.cpp:364
 #, fuzzy
 msgid "Spelling check completed"
 msgstr "Stavekontrol fuldført"
@@ -23429,7 +23429,7 @@ msgstr "Inkludér fil"
 msgid "Select LyX document to insert"
 msgstr "Vælg LyX-dokument at indsætte"
 
-#: src/frontends/qt4/GuiView.cpp:2194 src/frontends/qt4/GuiView.cpp:3181
+#: src/frontends/qt4/GuiView.cpp:2194 src/frontends/qt4/GuiView.cpp:3156
 msgid "Absolute filename expected."
 msgstr ""
 
@@ -23575,22 +23575,22 @@ msgid "Error while exporting format: %1$s"
 msgstr "Ingen oplysninger om eksport i formatet %1$s"
 
 # , c-format
-#: src/frontends/qt4/GuiView.cpp:3133 src/frontends/qt4/GuiView.cpp:3145
+#: src/frontends/qt4/GuiView.cpp:3108 src/frontends/qt4/GuiView.cpp:3120
 #, fuzzy
 msgid "Exporting ..."
 msgstr "Importerer %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:3154
+#: src/frontends/qt4/GuiView.cpp:3129
 #, fuzzy
 msgid "Previewing ..."
 msgstr "Indlæser smugkig"
 
-#: src/frontends/qt4/GuiView.cpp:3188
+#: src/frontends/qt4/GuiView.cpp:3163
 #, fuzzy
 msgid "Document not loaded"
 msgstr "Dokument ikke gemt"
 
-#: src/frontends/qt4/GuiView.cpp:3266
+#: src/frontends/qt4/GuiView.cpp:3241
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -23599,31 +23599,31 @@ msgstr ""
 "Alle ændringer vil gå tabt. Er du sikker på at du vil gendanne den gemte "
 "udgave af dokumentet %1$s?"
 
-#: src/frontends/qt4/GuiView.cpp:3269
+#: src/frontends/qt4/GuiView.cpp:3244
 msgid "Revert to saved document?"
 msgstr "Gendan gemte dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:3295
+#: src/frontends/qt4/GuiView.cpp:3270
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "Gemmer dokumentet %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:3305
+#: src/frontends/qt4/GuiView.cpp:3280
 #, fuzzy
 msgid "All documents saved."
 msgstr "Dokument ikke gemt"
 
-#: src/frontends/qt4/GuiView.cpp:3406
+#: src/frontends/qt4/GuiView.cpp:3381
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3513
+#: src/frontends/qt4/GuiView.cpp:3488
 #, fuzzy
 msgid "Please, preview the document first."
 msgstr "Gem som dokumentstandarder"
 
-#: src/frontends/qt4/GuiView.cpp:3528
+#: src/frontends/qt4/GuiView.cpp:3503
 #, fuzzy
 msgid "Couldn't proceed."
 msgstr "Kunne ikke eksportere fil"
