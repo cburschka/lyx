@@ -147,13 +147,13 @@ bool isSpace(char_type c)
 }
 
 
-bool isDigit(char_type c)
+bool isNumber(char_type c)
 {
 	if (!is_utf16(c))
-		// assume that no non-utf16 character is a digit
+		// assume that no non-utf16 character is a numeral
 		// c outside the UCS4 range is catched as well
 		return false;
-	return ucs4_to_qchar(c).isDigit();
+	return ucs4_to_qchar(c).isNumber();
 }
 
 
@@ -165,8 +165,7 @@ bool isDigitASCII(char_type c)
 
 bool isAlnumASCII(char_type c)
 {
-	return ('0' <= c && c <= '9')
-		|| ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
+	return isAlphaASCII(c) || isDigitASCII(c);
 }
 
 
@@ -266,7 +265,7 @@ bool isStrInt(string const & str)
 
 	string::const_iterator end = tmpstr.end();
 	for (; cit != end; ++cit)
-		if (!isdigit((*cit)))
+		if (!isDigitASCII(*cit))
 			return false;
 
 	return true;
@@ -286,7 +285,7 @@ bool isStrUnsignedInt(string const & str)
 	string::const_iterator cit = tmpstr.begin();
 	string::const_iterator end = tmpstr.end();
 	for (; cit != end; ++cit)
-		if (!isdigit((*cit)))
+		if (!isDigitASCII(*cit))
 			return false;
 
 	return true;
@@ -310,7 +309,7 @@ bool isStrDbl(string const & str)
 		++cit;
 	string::const_iterator end = tmpstr.end();
 	for (; cit != end; ++cit) {
-		if (!isdigit(*cit) && *cit != '.')
+		if (!isDigitASCII(*cit) && *cit != '.')
 			return false;
 		if ('.' == (*cit)) {
 			if (found_dot)
@@ -322,19 +321,13 @@ bool isStrDbl(string const & str)
 }
 
 
-bool hasDigit(docstring const & str)
+bool hasDigitASCII(docstring const & str)
 {
-	if (str.empty())
-		return false;
-
 	docstring::const_iterator cit = str.begin();
 	docstring::const_iterator const end = str.end();
-	for (; cit != end; ++cit) {
-		if (*cit == ' ')
-			continue;
-		if (isdigit((*cit)))
+	for (; cit != end; ++cit)
+		if (isDigitASCII(*cit))
 			return true;
-	}
 	return false;
 }
 
