@@ -58,6 +58,8 @@ public:
 	std::string const getBabelPostsettings() const;
 	/// Do we need to pass the languages to babel directly? 
 	bool needBabelLangOptions() const;
+	/// Load AMS packages when appropriate
+	std::string const loadAMSPackages() const;
 	/// The definitions needed by the document's textclass
 	docstring const getTClassPreamble() const;
 	/// The language dependent definitions needed by the document's textclass

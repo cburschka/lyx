@@ -1340,6 +1340,15 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	texrow.newline();
 	// end of \documentclass defs
 
+	int nlines;
+	// if we use fontspec, we have to load the AMS packages here
+	string const ams = features.loadAMSPackages();
+	if (useNonTeXFonts && !ams.empty()) {
+		os << from_ascii(ams);
+		nlines = int(count(ams.begin(), ams.end(), '\n'));
+		texrow.newlines(nlines);
+	}
+
 	if (useNonTeXFonts) {
 		os << "\\usepackage{fontspec}\n";
 		texrow.newline();
@@ -1352,7 +1361,9 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			  fonts_sans_scale, fonts_typewriter_scale, useNonTeXFonts);
 	if (!fonts.empty()) {
 		os << from_ascii(fonts);
-		texrow.newline();
+		nlines =
+			int(count(fonts.begin(), fonts.end(), '\n'));
+		texrow.newlines(nlines);
 	}
 	if (fonts_default_family != "default")
 		os << "\\renewcommand{\\familydefault}{\\"
@@ -1912,8 +1923,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	if (!i18npreamble.empty())
 		lyxpreamble += i18npreamble + '\n';
 
-	int const nlines =
-		int(count(lyxpreamble.begin(), lyxpreamble.end(), '\n'));
+	nlines = int(count(lyxpreamble.begin(), lyxpreamble.end(), '\n'));
 	texrow.newlines(nlines);
 
 	os << lyxpreamble;

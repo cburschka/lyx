@@ -589,7 +589,6 @@ char const * simplefeatures[] = {
 	"enumitem",
 	"endnotes",
 	"ifthen",
-	"amsthm",
 	// listings is handled in BufferParams.cpp
 	"bm",
 	"pdfpages",
@@ -690,21 +689,11 @@ string const LaTeXFeatures::getPackages() const
 	// than those above.
 	//
 
-	// esint is preferred for esintoramsmath
-	if ((mustProvide("amsmath")
-	     && params_.use_amsmath != BufferParams::package_off)
-	    || (mustProvide("esintoramsmath")
-	        && params_.use_esint == BufferParams::package_off
-	        && params_.use_amsmath != BufferParams::package_off)) {
-		packages << "\\usepackage{amsmath}\n";
-	} else {
-		// amsbsy and amstext are already provided by amsmath
-		if (mustProvide("amsbsy"))
-			packages << "\\usepackage{amsbsy}\n";
-		if (mustProvide("amstext"))
-			packages << "\\usepackage{amstext}\n";
-	}
-	
+	// if fontspec is used, AMS packages have to be loaded before
+	// fontspec (in BufferParams)
+	if (!params_.useNonTeXFonts && !loadAMSPackages().empty())
+		packages << loadAMSPackages();
+
 	// wasysym is a simple feature, but it must be after amsmath if both
 	// are used
 	// wasysym redefines some integrals (e.g. iint) from amsmath. That
@@ -758,11 +747,6 @@ string const LaTeXFeatures::getPackages() const
 	// setspace.sty
 	if (mustProvide("setspace") && !tclass.provides("SetSpace"))
 		packages << "\\usepackage{setspace}\n";
-
-	// amssymb.sty
-	if (mustProvide("amssymb")
-	    || params_.use_amsmath == BufferParams::package_on)
-		packages << "\\usepackage{amssymb}\n";
 
 	// esint must be after amsmath and wasysym, since it will redeclare
 	// inconsistent integral symbols
@@ -1036,6 +1020,35 @@ bool LaTeXFeatures::needBabelLangOptions() const
 			return true;
 
 	return false;
+}
+
+
+string const LaTeXFeatures::loadAMSPackages() const
+{
+	ostringstream tmp;
+	if (mustProvide("amsthm"))
+		tmp << "\\usepackage{amsthm}\n";
+
+	// esint is preferred for esintoramsmath
+	if ((mustProvide("amsmath")
+	     && params_.use_amsmath != BufferParams::package_off)
+	    || (mustProvide("esintoramsmath")
+	        && params_.use_esint == BufferParams::package_off
+	        && params_.use_amsmath != BufferParams::package_off)) {
+		tmp << "\\usepackage{amsmath}\n";
+	} else {
+		// amsbsy and amstext are already provided by amsmath
+		if (mustProvide("amsbsy"))
+			tmp << "\\usepackage{amsbsy}\n";
+		if (mustProvide("amstext"))
+			tmp << "\\usepackage{amstext}\n";
+	}
+	
+	if (mustProvide("amssymb")
+	    || params_.use_amsmath == BufferParams::package_on)
+		tmp << "\\usepackage{amssymb}\n";
+
+	return tmp.str();
 }
 
 
