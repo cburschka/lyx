@@ -877,12 +877,14 @@ void Layout::readSpacing(Lexer & lex)
 
 namespace {
 
-docstring const i18npreamble(Language const * lang, docstring const & templ)
+docstring const i18npreamble(Language const * lang, docstring const & templ, bool const polyglossia)
 {
 	if (templ.empty())
 		return templ;
 
-	string preamble = subst(to_utf8(templ), "$$lang", lang->babel());
+	string preamble = polyglossia ?
+		subst(to_utf8(templ), "$$lang", lang->polyglossia()) :
+		subst(to_utf8(templ), "$$lang", lang->babel());
 
 #ifdef TEX2LYX
 	// tex2lyx does not have getMessages()
@@ -912,15 +914,15 @@ docstring const i18npreamble(Language const * lang, docstring const & templ)
 }
 
 
-docstring const Layout::langpreamble(Language const * lang) const
+docstring const Layout::langpreamble(Language const * lang, bool const polyglossia) const
 {
-	return i18npreamble(lang, langpreamble_);
+	return i18npreamble(lang, langpreamble_, polyglossia);
 }
 
 
-docstring const Layout::babelpreamble(Language const * lang) const
+docstring const Layout::babelpreamble(Language const * lang, bool const polyglossia) const
 {
-	return i18npreamble(lang, babelpreamble_);
+	return i18npreamble(lang, babelpreamble_, polyglossia);
 }
 
 

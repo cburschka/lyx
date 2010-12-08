@@ -1126,7 +1126,7 @@ docstring const getFloatI18nPreamble(docstring const & type, docstring const & n
 }
 
 
-docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel) const
+docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel, bool use_polyglossia) const
 {
 	DocumentClass const & tclass = params_.documentClass();
 	// collect preamble snippets in a set to prevent multiple identical
@@ -1139,15 +1139,17 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel) const
 	list<docstring>::const_iterator end = usedLayouts_.end();
 	for (; cit != end; ++cit) {
 		// language dependent commands (once per document)
-		snippets.insert(tclass[*cit].langpreamble(buffer().language()));
+		snippets.insert(tclass[*cit].langpreamble(buffer().language(),
+							  use_polyglossia));
 		// commands for language changing (for multilanguage documents)
-		if (use_babel && !UsedLanguages_.empty()) {
-			snippets.insert(tclass[*cit].babelpreamble(buffer().language()));
+		if ((use_babel || use_polyglossia) && !UsedLanguages_.empty()) {
+			snippets.insert(tclass[*cit].babelpreamble(buffer().language(),
+								   use_polyglossia));
 			for (lang_it lit = lbeg; lit != lend; ++lit)
-				snippets.insert(tclass[*cit].babelpreamble(*lit));
+				snippets.insert(tclass[*cit].babelpreamble(*lit, use_polyglossia));
 		}
 	}
-	if (use_babel && !UsedLanguages_.empty()) {
+	if ((use_babel || use_polyglossia) && !UsedLanguages_.empty()) {
 		FloatList const & floats = params_.documentClass().floats();
 		UsedFloats::const_iterator fit = usedFloats_.begin();
 		UsedFloats::const_iterator fend = usedFloats_.end();
@@ -1157,15 +1159,25 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel) const
 			docstring const flname = from_utf8(fl.name());
 			docstring name = translateIfPossible(flname,
 				buffer().language()->code());
-			snippets.insert(getFloatI18nPreamble(
-				type, name,
-				from_ascii(buffer().language()->babel())));
+			if (use_polyglossia)
+				snippets.insert(getFloatI18nPreamble(
+					type, name,
+					from_ascii(buffer().language()->polyglossia())));
+			else
+				snippets.insert(getFloatI18nPreamble(
+					type, name,
+					from_ascii(buffer().language()->babel())));
 			for (lang_it lit = lbeg; lit != lend; ++lit) {
 				name = translateIfPossible(flname,
 					(*lit)->code());
-				snippets.insert(getFloatI18nPreamble(
-					type, name,
-					from_ascii((*lit)->babel())));
+				if (use_polyglossia)
+					snippets.insert(getFloatI18nPreamble(
+						type, name,
+						from_ascii((*lit)->polyglossia())));
+				else
+					snippets.insert(getFloatI18nPreamble(
+						type, name,
+						from_ascii((*lit)->babel())));
 			}
 		}
 	}

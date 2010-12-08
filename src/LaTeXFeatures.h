@@ -61,7 +61,7 @@ public:
 	/// The definitions needed by the document's textclass
 	docstring const getTClassPreamble() const;
 	/// The language dependent definitions needed by the document's textclass
-	docstring const getTClassI18nPreamble(bool use_babel) const;
+	docstring const getTClassI18nPreamble(bool use_babel, bool use_polyglossia) const;
 	///
 	docstring const getTClassHTMLStyles() const;
 	///

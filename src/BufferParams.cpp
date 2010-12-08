@@ -1881,8 +1881,34 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		lyxpreamble += from_utf8(features.getBabelPostsettings());
 	}
 
-	// FIXME Polyglossia?
-	docstring const i18npreamble = features.getTClassI18nPreamble(use_babel);
+	// xunicode needs to be loaded at least after amsmath, amssymb,
+	// esint and the other packages that provide special glyphs
+	if (features.runparams().flavor == OutputParams::XETEX)
+		lyxpreamble += "\\usepackage{xunicode}\n";
+
+	// Polyglossia must be loaded last
+	if (use_polyglossia) {
+		// call the package
+		lyxpreamble += "\\usepackage{polyglossia}\n";
+		// set the main language
+		lyxpreamble += "\\setdefaultlanguage";
+		if (!language->polyglossiaOpts().empty())
+			lyxpreamble += "[" + from_ascii(language->polyglossiaOpts()) + "]";
+		lyxpreamble += "{" + from_ascii(language->polyglossia()) + "}\n";
+		// now setup the other languages
+		std::map<std::string, std::string> const polylangs = 
+			features.getPolyglossiaLanguages();
+		for (std::map<std::string, std::string>::const_iterator mit = polylangs.begin();
+		     mit != polylangs.end() ; ++mit) {
+			lyxpreamble += "\\setotherlanguage";
+			if (!mit->second.empty())
+				lyxpreamble += "[" + from_ascii(mit->second) + "]";
+			lyxpreamble += "{" + from_ascii(mit->first) + "}\n";
+		}
+	}
+
+	docstring const i18npreamble =
+		features.getTClassI18nPreamble(use_babel, use_polyglossia);
 	if (!i18npreamble.empty())
 		lyxpreamble += i18npreamble + '\n';
 
@@ -1892,35 +1918,6 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	os << lyxpreamble;
 
-	// xunicode needs to be loaded at least after amsmath, amssymb,
-	// esint and the other packages that provide special glyphs
-	if (features.runparams().flavor == OutputParams::XETEX) {
-		os << "\\usepackage{xunicode}\n";
-		texrow.newline();
-	}
-	// Polyglossia must be loaded last
-	if (use_polyglossia) {
-		// call the package
-		os << "\\usepackage{polyglossia}\n";
-		texrow.newline();
-		// set the main language
-		os << "\\setdefaultlanguage";
-		if (!language->polyglossiaOpts().empty())
-			os << "[" << from_ascii(language->polyglossiaOpts()) << "]";
-		os << "{" + from_ascii(language->polyglossia()) + "}\n";
-		texrow.newline();
-		// now setup the other languages
-		std::map<std::string, std::string> const polylangs = 
-			features.getPolyglossiaLanguages();
-		for (std::map<std::string, std::string>::const_iterator mit = polylangs.begin();
-		     mit != polylangs.end() ; ++mit) {
-			os << "\\setotherlanguage";
-			if (!mit->second.empty())
-				os << "[" << from_ascii(mit->second) << "]";
-			os << "{" << from_ascii(mit->first) << "}\n";
-			texrow.newline();
-		}
-	}
 	return use_babel;
 }
 
