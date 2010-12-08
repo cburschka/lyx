@@ -1,5 +1,5 @@
-#LyX 2.0.0beta1 created this file. For more info see http://www.lyx.org/
-\lyxformat 408
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 410
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -41,11 +41,13 @@
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
 \newlength{\abc}
 \settowidth{\abc}{\space}
+\AtBeginDocument{%
 \addto\extrasngerman{
  \renewcommand{\equationautorefname}{\hspace{-\abc}}
  \renewcommand{\sectionautorefname}{Kap.\negthinspace}
  \renewcommand{\subsectionautorefname}{Kap.\negthinspace}
  \renewcommand{\subsubsectionautorefname}{Kap.\negthinspace}}
+}
 
 % Makros damit Pakete nicht doppelt geladen werden.
 % siehe erste Fußnote in Kap. 9.3
@@ -161,7 +163,7 @@
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100

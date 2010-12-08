@@ -1,5 +1,5 @@
-#LyX 2.0.0beta1 created this file. For more info see http://www.lyx.org/
-\lyxformat 408
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 410
 \begin_document
 \begin_header
 \textclass jarticle
@@ -44,11 +44,13 @@
 %\AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
 \newlength{\abc}
 \settowidth{\abc}{\space}
+\AtBeginDocument{%
 \addto\extrasenglish{
  \renewcommand{\equationautorefname}{\hspace{-\abc}}
  \renewcommand{\sectionautorefname}{sec.\negthinspace}
  \renewcommand{\subsectionautorefname}{sec.\negthinspace}
  \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}}
+}
 
 % don't load packages twice
 % see first footnote in sec. 9.3
@@ -150,7 +152,7 @@
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100

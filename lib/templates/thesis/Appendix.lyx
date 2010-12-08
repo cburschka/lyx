@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 401
+\lyxformat 410
 \begin_document
 \begin_header
 \textclass scrbook
@@ -8,6 +8,7 @@
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
 \newlength{\abc}
 \settowidth{\abc}{\space}
+\AtBeginDocument{%
 \addto\extrasngerman{
  \renewcommand{\equationautorefname}{\hspace{-\abc}}
  \renewcommand{\sectionautorefname}{Kap.\negthinspace}
@@ -15,6 +16,7 @@
  \renewcommand{\subsubsectionautorefname}{Kap.\negthinspace}
  \renewcommand{\figureautorefname}{Abb.\negthinspace}
  \renewcommand{\tableautorefname}{Tab.\negthinspace}
+}
 }
 
 % für den Fall, dass jemand die Bezeichnung "Gleichung" haben will
@@ -64,7 +66,7 @@ customHeadersFooters
 \font_sans lmss
 \font_typewriter lmtt
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -102,6 +104,7 @@ customHeadersFooters
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \branch NoChildDocument
 \selected 0
 \filename_suffix 0
@@ -316,7 +319,7 @@ The next section
 
 \begin_layout Standard
 \begin_inset Branch NoChildDocument
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset CommandInset bibtex
