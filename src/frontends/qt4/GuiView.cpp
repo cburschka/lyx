@@ -1455,14 +1455,20 @@ void GuiView::disconnectBufferView()
 
 void GuiView::errors(string const & error_type, bool from_master)
 {
+	BufferView const * const bv = currentBufferView();
+	if (!bv)
+		LASSERT(false, return);
+
 	ErrorList & el = from_master ?
-		currentBufferView()->buffer().masterBuffer()->errorList(error_type)
-		: currentBufferView()->buffer().errorList(error_type);
+		bv->buffer().masterBuffer()->errorList(error_type) :
+		bv->buffer().errorList(error_type);
+	if (el.empty())
+		return;
+
 	string data = error_type;
 	if (from_master)
 		data = "from_master|" + error_type;
-	if (!el.empty())
-		showDialog("errorlist", data);
+	showDialog("errorlist", data);
 }
 
 
