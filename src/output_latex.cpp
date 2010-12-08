@@ -168,7 +168,7 @@ TeXEnvironment(Buffer const & buf,
 			texrow.newline();
 		}
 
-		if ((lyxrc.language_command_end.empty() ||
+		if ((lang_end_command.empty() ||
 		    par_lang != doc_lang) &&
 		    !par_lang.empty()) {
 			os << from_ascii(subst(
