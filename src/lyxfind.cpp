@@ -203,8 +203,6 @@ int replaceAll(BufferView * bv,
 	}
 
 	bv->putSelectionAt(doc_iterator_begin(&buf), 0, false);
-	if (num)
-		buf.markDirty();
 
 	cur_orig.fixIfBroken();
 	bv->setCursor(cur_orig);
@@ -272,7 +270,6 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 		return pair<bool, int>(false, 0);
 
 	cap::replaceSelectionWithString(cur, replacestr, forward);
-	bv->buffer().markDirty();
 	findOne(bv, searchstr, case_sens, whole, forward, false);
 
 	return pair<bool, int>(true, 1);
@@ -1231,7 +1228,6 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 		LYXERR(Debug::FIND, "Replacing by niceInsert()ing latex: '" << repl_latex << "'");
 		cur.niceInsert(repl_latex);
 	}
-	bv->buffer().markDirty();
 	cur.pos() -= repl_buffer.paragraphs().begin()->size();
 	bv->putSelectionAt(DocIterator(cur), repl_buffer.paragraphs().begin()->size(), !opt.forward);
 	bv->processUpdateFlags(Update::Force);

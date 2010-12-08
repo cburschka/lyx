@@ -1610,15 +1610,6 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			current_view_->dispatch(cmd, dr);
 		break;
 	}
-
-	// if we executed a mutating lfun, mark the buffer as dirty
-	Buffer * doc_buffer = (current_view_ && current_view_->documentBufferView())
-		      ? &(current_view_->documentBufferView()->buffer()) : 0;
-	if (doc_buffer && theBufferList().isLoaded(doc_buffer)
-		&& flag.enabled()
-		&& !lyxaction.funcHasFlag(action, LyXAction::NoBuffer)
-		&& !lyxaction.funcHasFlag(action, LyXAction::ReadOnly))
-		current_view_->currentBufferView()->buffer().markDirty();
 }
 
 

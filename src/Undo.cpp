@@ -352,6 +352,9 @@ void Undo::Private::recordUndo(UndoKind kind,
 	// next time we'll try again to combine entries if possible
 	undo_finished_ = false;
 
+	// If we ran recordUndo, it means that we plan to change the buffer
+	buffer_.markDirty();
+
 	redostack_.clear();
 	//lyxerr << "undostack:\n";
 	//for (size_t i = 0, n = buf.undostack().size(); i != n && i < 6; ++i)
@@ -499,7 +502,9 @@ void Undo::endUndoGroup()
 	}
 }
 
-
+// FIXME: remove these convenience functions and make
+// Private::recordUndo public as sole interface. The code in the
+// convenience functions can move to Cursor.cpp.
 
 void Undo::recordUndo(DocIterator const & cur, UndoKind kind)
 {
