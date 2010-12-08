@@ -1457,7 +1457,7 @@ void GuiView::errors(string const & error_type, bool from_master)
 {
 	BufferView const * const bv = currentBufferView();
 	if (!bv)
-		LASSERT(false, return);
+		return;
 
 	ErrorList & el = from_master ?
 		bv->buffer().masterBuffer()->errorList(error_type) :
