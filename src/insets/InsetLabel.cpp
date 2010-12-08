@@ -196,8 +196,10 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.noScreenUpdate();
 			break;
 		}
-		if (p["name"] != params()["name"])
+		if (p["name"] != params()["name"]) {
+			// undo is handled in updateCommand
 			updateCommand(p["name"]);
+		}
 		cur.forceBufferUpdate();
 		break;
 	}

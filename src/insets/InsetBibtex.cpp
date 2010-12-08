@@ -103,7 +103,8 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 				throw message;
 			break;
 		}
-		//
+
+		cur.recordUndo();
 		setParams(p);
 		buffer().invalidateBibfileCache();
 		cur.forceBufferUpdate();

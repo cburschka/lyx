@@ -142,6 +142,7 @@ void InsetFloat::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		InsetFloatParams params;
 		string2params(to_utf8(cmd.argument()), params);
+		cur.recordUndoInset(ATOMIC_UNDO, this);
 
 		// placement, wide and sideways are not used for subfloats
 		if (!params_.subfloat) {

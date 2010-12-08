@@ -213,6 +213,7 @@ void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		InsetIndexParams params;
 		InsetIndex::string2params(to_utf8(cmd.argument()), params);
+		cur.recordUndoInset(ATOMIC_UNDO, this);
 		params_.index = params.index;
 		// what we really want here is a TOC update, but that means
 		// a full buffer update

@@ -192,8 +192,8 @@ void InsetBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		//lyxerr << "InsetBox::dispatch MODIFY" << endl;
+		cur.recordUndoInset(ATOMIC_UNDO, this);
 		if (cmd.getArg(0) == "changetype") {
-			cur.recordUndoInset(ATOMIC_UNDO, this);
 			params_.type = cmd.getArg(1);
 		} else
 			string2params(to_utf8(cmd.argument()), params_);

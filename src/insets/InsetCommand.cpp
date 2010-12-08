@@ -156,8 +156,10 @@ void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetCommand::string2params(to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty())
 			cur.noScreenUpdate();
-		else
+		else {
+			cur.recordUndo();
 			setParams(p);
+		}
 		// FIXME We might also want to check here if this one is in the TOC.
 		// But I think most of those are labeled.
 		if (isLabeled())

@@ -116,6 +116,8 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		InsetBranchParams params;
 		InsetBranch::string2params(to_utf8(cmd.argument()), params);
+
+		cur.recordUndoInset(ATOMIC_UNDO, this);
 		params_.branch = params.branch;
 		// what we really want here is a TOC update, but that means
 		// a full buffer update

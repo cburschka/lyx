@@ -5114,7 +5114,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		break;
 	}
 
-	cur.recordUndoInset(ATOMIC_UNDO);
+	cur.recordUndoInset(ATOMIC_UNDO, this);
 
 	getSelection(cur, sel_row_start, sel_row_end, sel_col_start, sel_col_end);
 	row_type const row = tabular.cellRow(cur.idx());

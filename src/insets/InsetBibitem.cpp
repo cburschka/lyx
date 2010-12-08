@@ -122,6 +122,9 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.noScreenUpdate();
 			break;
 		}
+
+		cur.recordUndo();
+
 		docstring const & old_key = params()["key"];
 		docstring const & old_label = params()["label"];
 		docstring label = p["label"];

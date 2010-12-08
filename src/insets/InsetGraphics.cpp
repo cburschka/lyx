@@ -210,6 +210,7 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		}
 
+		cur.recordUndo();
 		setParams(p);
 		// if the inset is part of a graphics group, all the
 		// other members should be updated too.

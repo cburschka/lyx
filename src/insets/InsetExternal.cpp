@@ -420,6 +420,7 @@ void InsetExternal::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		InsetExternalParams p;
 		string2params(to_utf8(cmd.argument()), buffer(), p);
+		cur.recordUndo();
 		setParams(p);
 		break;
 	}

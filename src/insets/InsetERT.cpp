@@ -114,6 +114,7 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "ert") {
+			cur.recordUndoInset(ATOMIC_UNDO, this);
 			setStatus(cur, string2params(to_utf8(cmd.argument())));
 			break;
 		}

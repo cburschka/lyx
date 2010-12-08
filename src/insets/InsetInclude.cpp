@@ -277,6 +277,7 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 					}
 				}
 			}
+			cur.recordUndo();
 			setParams(p);
 			cur.forceBufferUpdate();
 		} else
