@@ -586,7 +586,7 @@ Menuset
 # InsetERT context menu
 #
 	Menu "context-ert"
-		Item "Wrap by Preview|P" "command-sequence inset-begin;char-backward;char-forward-select;preview-insert"
+		Item "Wrap by Preview|P" "command-sequence inset-toggle;char-forward;char-backward;char-forward-select;preview-insert;char-backward;char-backward;inset-toggle"
 	End
 
 #
