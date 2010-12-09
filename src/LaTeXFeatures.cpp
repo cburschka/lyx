@@ -299,6 +299,7 @@ bool LaTeXFeatures::usePolyglossia() const
 	return (lyxrc.language_package_selection == LyXRC::LP_AUTO)
 	        && isRequired("polyglossia")
 	        && isAvailable("polyglossia")
+	        && !params_.documentClass().provides("babel")
 	        && this->hasPolyglossiaLanguages();
 }
 
