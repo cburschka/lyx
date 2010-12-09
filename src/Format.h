@@ -143,8 +143,6 @@ public:
 	void setViewer(std::string const & name, std::string const & command);
 	///
 	void setEditor(std::string const & name, std::string const & command);
-	/// Currently used by hyperlink insets and GuiCitation
-	bool viewURL(docstring const & url);
 	/// View the given file. Buffer used for DVI's paper orientation.
 	bool view(Buffer const & buffer, support::FileName const & filename,
 		  std::string const & format_name) const;

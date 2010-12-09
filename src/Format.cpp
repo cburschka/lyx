@@ -260,27 +260,6 @@ void Formats::setEditor(string const & name, string const & command)
 }
 
 
-bool Formats::viewURL(docstring const & url) {
-	Format const * format = getFormat("html");
-	if (!format)
-		return false;
-
-	string command = libScriptSearch(format->viewer());
-
-	if (!contains(command, token_from_format))
-		command += ' ' + token_from_format;
-	command = subst(command, token_from_format, quoteName(to_utf8(url)));
-
-	LYXERR(Debug::FILES, "Executing command: " << command);
-
-	Systemcall one;
-	one.startscript(Systemcall::DontWait, command);
-
-	// we can't report any sort of error, since we aren't waiting
-	return true;
-}
-
-
 bool Formats::view(Buffer const & buffer, FileName const & filename,
 		   string const & format_name) const
 {
