@@ -97,7 +97,10 @@ private:
 /// Every instantiation is an array of counters of type Counter.
 class Counters {
 public:
-	///
+	/// NOTE Do not call this in an attempt to clear the counters.
+	/// That will wipe out all the information we have about them
+	/// from the document class (e.g., which ones are defined).
+	/// Instead, call Counters::reset().
 	Counters();
 	/// Add new counter newc having masterc as its master, 
 	/// ls as its label, and lsa as its appendix label.
@@ -124,7 +127,8 @@ public:
 	/// step 0->1. Seems to be sufficient.
 	/// \param utype determines whether we track the counters.
 	void step(docstring const & ctr, UpdateType utype);
-	/// Reset all counters.
+	/// Reset all counters, and all the internal data structures
+	/// used for keeping track of their values.
 	void reset();
 	/// Reset counters matched by match string.
 	void reset(docstring const & match);
