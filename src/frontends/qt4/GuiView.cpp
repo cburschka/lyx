@@ -2529,7 +2529,7 @@ bool GuiView::closeTabWorkArea(TabWorkArea * twa)
 		// in another view, and if this is not a child and if we are closing
 		// a view (not a tabgroup).
 		bool const close_buffer =
-			!inMultiViews(wa) && !b.parent() && closing_;
+			!inOtherView(b) && !b.parent() && closing_;
 
 		if (!closeWorkArea(wa, close_buffer))
 			return false;
@@ -2605,17 +2605,15 @@ bool GuiView::inMultiTabs(GuiWorkArea * wa)
 		if (wa_ && wa_ != wa)
 			return true;
 	}
-	return inMultiViews(wa);
+	return inOtherView(buf);
 }
 
 
-bool GuiView::inMultiViews(GuiWorkArea * wa)
+bool GuiView::inOtherView(Buffer & buf)
 {
 	QList<int> const ids = guiApp->viewIds();
-	Buffer & buf = wa->bufferView().buffer();
 
-	int found_twa = 0;
-	for (int i = 0; i != ids.size() && found_twa <= 1; ++i) {
+	for (int i = 0; i != ids.size(); ++i) {
 		if (id_ == ids[i])
 			continue;
 

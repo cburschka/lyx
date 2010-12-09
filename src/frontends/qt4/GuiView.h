@@ -394,8 +394,8 @@ private:
 	/// is the buffer in this workarea also shown in another tab ?
 	/// This tab can either be in the same view or in another one.
 	bool inMultiTabs(GuiWorkArea * wa);
-	/// is the buffer in this workarea also shown in another view ?
-	bool inMultiViews(GuiWorkArea * wa);
+	/// is the buffer shown in some other view ?
+	bool inOtherView(Buffer & buf);
 	///
 	enum NextOrPrevious {
 		NEXTBUFFER,
