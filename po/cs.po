@@ -3350,9 +3350,8 @@ msgid "Always Babel"
 msgstr "V¾dy Babel"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:70
-#, fuzzy
 msgid "None[[language package]]"
-msgstr "Jazykový &balíèek:"
+msgstr "®ádný"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:78
 msgid "Enter the command to load the language package (default: babel)"
@@ -3900,16 +3899,15 @@ msgstr "&Zobrazit zkratky obsahující:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:41
 msgid "If unchecked, notes and comments will be excluded from spell checking"
-msgstr ""
+msgstr "Kontrolovat poznámky a komentáøe pro pravopis"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:44
 msgid "Spellcheck &notes and comments"
-msgstr ""
+msgstr "Kontrolovat po&známky a komentáøe"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:51
-#, fuzzy
 msgid "&Spellchecker engine:"
-msgstr "Kontrola pravopisu"
+msgstr "Program pro &kontrolu pravopisu:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
 msgid "Accept words such as \"diskdrive\""
@@ -3920,21 +3918,20 @@ msgid "Accept compound &words"
 msgstr "Akceptovat &slo¾eniny"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:74
-msgid "Mark misspelled words with a wavy underline."
-msgstr ""
+msgid "Mark misspelled words with a underline."
+msgstr "Podrtáhavat slova pøi kontrole pravopisu"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:77
 msgid "S&pellcheck continuously"
-msgstr ""
+msgstr "&Nepøet¾itá kontrola pravopisu"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:100
-#, fuzzy
 msgid "The characters inserted here are ignored by the spellchecker. "
-msgstr "Kontrola pravopisu ignoruje znaky vlo¾ené do tohoto pole"
+msgstr "Kontrola pravopisu ignoruje znaky vlo¾ené do tohoto pole."
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:107
 msgid "&Escape characters:"
-msgstr "&Escape znaky:"
+msgstr "&Vypustit znaky:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:117
 msgid "Override the language used for the spellchecker"
@@ -4003,9 +4000,8 @@ msgid "minutes"
 msgstr "minut"
 
 #: src/frontends/qt4/ui/PrefUi.ui:201
-#, fuzzy
 msgid "&Save documents compressed by default"
-msgstr "Ulo¾it jako standardní nastavení dokumentu"
+msgstr "Standardnì &ukládat dokumenty komprimované"
 
 #: src/frontends/qt4/ui/PrefUi.ui:208
 msgid "&Maximum last files:"
@@ -4017,12 +4013,11 @@ msgstr "Otevírat dokumenty v &panelech"
 
 #: src/frontends/qt4/ui/PrefUi.ui:245
 msgid "Whether to open documents in an already running instance of LyX."
-msgstr ""
+msgstr "Otevírat dokumenty v ji¾ bì¾ící instanci LyX-u."
 
 #: src/frontends/qt4/ui/PrefUi.ui:248
-#, fuzzy
 msgid "S&ingle instance"
-msgstr "Jednoduchá uvozovka|J"
+msgstr "Jediná &instance"
 
 #: src/frontends/qt4/ui/PrefUi.ui:255
 msgid "Whether to place close button on each tab or only one in the top left."
@@ -4149,20 +4144,19 @@ msgstr "Poslat výstup do souboru"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:61
 msgid "Check if this index should be part (e.g., a section) of the former one."
-msgstr ""
+msgstr "Za¹krtnìte pokud má být tento rejstøík souèástí (napø. sekcí) pøedchozího."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:64
 msgid "&Subindex"
-msgstr ""
+msgstr "&Podrejstøík"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:79
 msgid "A&vailable indexes:"
 msgstr "Dostupné &rejstøíky:"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:89
-#, fuzzy
 msgid "Select the index that shall be printed at this place of the document."
-msgstr "Nastavit standardní rodinu písma pro dokument"
+msgstr "Nastavit rejstøík, který má být vyti¹tìn na tomto místì dokumentu."
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
 #: src/frontends/qt4/GuiDocument.cpp:1267 src/frontends/qt4/GuiPrefs.cpp:230
@@ -4175,11 +4169,11 @@ msgstr "Nastavení"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:145
 msgid "Select the debug messages that should be displayed"
-msgstr ""
+msgstr "Nastavit ladící výpisy, které mají být zobrazeny"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:173
 msgid "Automatic cleanup of the window before LaTeX compilation proceeds"
-msgstr ""
+msgstr "Automaticky mazat výpisy v oknì pøed kompilací LaTeX-u."
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
 msgid "&Clear automatically"
@@ -12763,14 +12757,12 @@ msgid "Select All"
 msgstr "Vybrat v¹e"
 
 #: lib/ui/stdmenus.inc:108
-#, fuzzy
 msgid "Find & Replace (Quick)...|F"
 msgstr "Najít & Zamìnit...|j"
 
 #: lib/ui/stdmenus.inc:109
-#, fuzzy
 msgid "Find & Replace (Advanced)..."
-msgstr "Najít & Zamìnit...|j"
+msgstr "Najít & Zamìnit (pokroèilé)...|i"
 
 #: lib/ui/stdmenus.inc:119
 msgid "Table|T"
