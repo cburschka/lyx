@@ -153,6 +153,9 @@ GuiTabular::GuiTabular(QWidget * parent)
 	connect(rightRB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
 
+	decimalPointLE->setInputMask("X; ");
+	decimalPointLE->setMaxLength(1);
+
 	// initialize the length validator
 	addCheckedWidget(widthED, fixedWidthColLA);
 	addCheckedWidget(multirowOffsetED, multirowOffsetLA);
