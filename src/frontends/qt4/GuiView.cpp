@@ -2508,11 +2508,9 @@ bool GuiView::closeBuffer(Buffer & buf)
 			return true;
 		}
 	}
-	// open all children again to avoid a crash (bug 6603)
-	// FIXME updateMacros() does more than needed
-	buf.updateMacros();
-	// get rid of dangling inset pointers in TOC (bug 6603)
-	buf.tocBackend().update();
+	// open all children again to avoid a crash because of dangling
+	// pointers (bug 6603)
+	buf.updateBuffer();
 	return false;
 }
 
