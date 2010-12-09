@@ -349,8 +349,8 @@ Menuset
 		Submenu "Branch|B" "insert_branches"
 		Submenu "Custom Insets" "insert_custom"
 		Submenu "File|e" "insert_file"
+		Submenu "Box[[Menu]]" "insert_box"
 		OptSubMenu "Insert Regular Expression" "context-edit-regexp"
-		Item "Box[[Menu]]" "box-insert Frameless"
 		Separator
 		Item "Citation...|C" "dialog-show-new-inset citation"
 		Item "Cross-Reference...|R" "dialog-show-new-inset ref"
@@ -454,6 +454,17 @@ Menuset
 		Separator
 		Item "External Material...|M" "dialog-show-new-inset external"
 		Item "Child Document...|d" "dialog-show-new-inset include"
+	End
+
+	Menu "insert_box"
+		Item "Frameless|l" "box-insert Frameless"
+		Item "Simple Frame|F" "box-insert Boxed"
+		Item "Simple Frame, Page Breaks|P" "box-insert Framed"
+		Item "Oval, Thin|a" "box-insert ovalbox"
+		Item "Oval, Thick|v" "box-insert Ovalbox"
+		Item "Drop Shadow|w" "box-insert Shadowbox"
+		Item "Shaded Background|B" "box-insert Shaded"
+		Item "Double Frame|u" "box-insert Doublebox"
 	End
 
 	Menu "insert_note"
