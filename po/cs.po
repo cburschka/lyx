@@ -4212,22 +4212,18 @@ msgid "&Statusbar messages"
 msgstr "Zprávy ze &stavového øádku"
 
 #: src/frontends/qt4/ui/RefUi.ui:36
-#, fuzzy
 msgid "Fil&ter:"
-msgstr "V&nìj¹í:"
+msgstr "Fil&tr:"
 
 #: src/frontends/qt4/ui/RefUi.ui:49
-#, fuzzy
 msgid "Enter string to filter the label list"
-msgstr "Zadejte znaky pro zmen¹ení seznamu."
+msgstr "Zadejte øetìzec pro filtrování seznamu znaèek"
 
 #: src/frontends/qt4/ui/RefUi.ui:59
-#, fuzzy
 msgid "Filter case-sensitively"
-msgstr "Velikost pís&men"
+msgstr "Rozli¹ovat velikost pís&men pøi filtrování"
 
 #: src/frontends/qt4/ui/RefUi.ui:62
-#, fuzzy
 msgid "Case-sensiti&ve"
 msgstr "Velikost pís&men"
 
@@ -4239,30 +4235,27 @@ msgstr "Aktualizuj seznam znaèek"
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
-msgstr ""
+msgstr "Tøídit znaèky v abecedním poøadí"
 
 #: src/frontends/qt4/ui/RefUi.ui:168
 msgid "&Sort"
 msgstr "&Setøídit"
 
 #: src/frontends/qt4/ui/RefUi.ui:178
-#, fuzzy
 msgid "Sort labels case-sensitively in alphabetical order"
-msgstr "Setøídit znaèky v abecedním poøádku"
+msgstr "Rozli¹ovat velikost písmen pøi tøídìní znaèek v abecedním poøádku"
 
 #: src/frontends/qt4/ui/RefUi.ui:181
-#, fuzzy
 msgid "Cas&e-sensitive"
-msgstr "Velikost pís&men"
+msgstr "Velikost písm&en"
 
 #: src/frontends/qt4/ui/RefUi.ui:188
-msgid "Group labels by prefix (e.g. &quot;sec:&quot;)"
-msgstr ""
+msgid "Group labels by prefix (e.g. \"sec:\")"
+msgstr "Seskupit znaèky dle prefixu (napø. \"sec:\")"
 
 #: src/frontends/qt4/ui/RefUi.ui:191
-#, fuzzy
 msgid "Grou&p"
-msgstr "®ádná skupina"
+msgstr "&Seskupit"
 
 #: src/frontends/qt4/ui/RefUi.ui:219 src/frontends/qt4/GuiRef.cpp:314
 msgid "&Go to Label"
@@ -4301,12 +4294,10 @@ msgid "Formatted reference"
 msgstr "Formátovaná reference"
 
 #: src/frontends/qt4/ui/RefUi.ui:324
-#, fuzzy
 msgid "Textual reference"
-msgstr "v¹echny reference"
+msgstr "Doslovná reference"
 
 #: src/frontends/qt4/ui/SearchUi.ui:108
-#, fuzzy
 msgid "Match w&hole words only"
 msgstr "&Hledat pouze celá slova"
 
@@ -4387,7 +4378,6 @@ msgid "Replace word with current choice"
 msgstr "Nahradit slovo aktuálnì vybraným"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:80
-#, fuzzy
 msgid "&Find Next"
 msgstr "Najdi &dal¹í"
 
@@ -4400,7 +4390,6 @@ msgid "Replace with selected word"
 msgstr "Nahraï oznaèeným slovem"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:141
-#, fuzzy
 msgid "S&uggestions:"
 msgstr "Návr&hy:"
 
@@ -4449,9 +4438,8 @@ msgid "&Table Settings"
 msgstr "Nastavení &Tabulky"
 
 #: src/frontends/qt4/ui/TabularUi.ui:41
-#, fuzzy
 msgid "Column settings"
-msgstr "Nastavení dokumentu"
+msgstr "Nastavení sloupce"
 
 #: src/frontends/qt4/ui/TabularUi.ui:47
 msgid "&Horizontal alignment:"
@@ -4467,13 +4455,12 @@ msgid "Justified"
 msgstr "Do bloku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:81 src/frontends/qt4/GuiTabular.cpp:757
-#, fuzzy
 msgid "At Decimal Separator"
-msgstr "Separator"
+msgstr "Na desetinné èárce"
 
 #: src/frontends/qt4/ui/TabularUi.ui:107
 msgid "&Decimal separator:"
-msgstr ""
+msgstr "&Znak desetinné èárky"
 
 #: src/frontends/qt4/ui/TabularUi.ui:132
 msgid "X; "
@@ -4495,7 +4482,7 @@ msgstr "Udává vertikální zarovnání této buòky vzhledem k základní lince øádku."
 
 #: src/frontends/qt4/ui/TabularUi.ui:241
 msgid "Merge cells of different columns"
-msgstr ""
+msgstr "Slouèit buòky odli¹ných sloupcù"
 
 #: src/frontends/qt4/ui/TabularUi.ui:244
 msgid "&Multicolumn"
