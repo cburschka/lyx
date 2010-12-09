@@ -1270,6 +1270,12 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	}
 
+	case LFUN_MATH_MODE:
+		// forbid "math-mode on" in math mode to prevent irritating
+		// behaviour of menu entries (bug 6709)
+		flag.setEnabled(currentMode() == TEXT_MODE || arg != "on");
+		break;
+
 	case LFUN_MATH_INSERT:
 		flag.setEnabled(currentMode() != TEXT_MODE);
 		break;
