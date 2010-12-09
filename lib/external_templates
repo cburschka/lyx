@@ -33,6 +33,45 @@ PreambleDef InputOrWarn
 	        \IfFileExists{#1}{\input{#1}}{\warnNotFound{#1}}}
 PreambleDefEnd
 
+Template GnumericSpreadsheet
+	GuiName "Spreadsheet"
+	HelpText
+		A spreadsheet made with gnumeric, openoffice or excel.
+		It imports as a long table, so any length
+		is ok. Excessive width could be a problem.
+		The gnumeric software is necessary for conversion,
+		both for gnumeric and excel files.
+	HelpTextEnd
+	InputFormat "gnumeric"
+	FileFilter "*.{gnumeric,ods,xls}"
+	AutomaticProduction true
+	Format LaTeX
+		Product "\\def\\inputGnumericTable{}\\input{$$AbsOrRelPathMaster$$Basename.tex}"
+		UpdateFormat latex
+		UpdateResult "$$AbsPath$$Basename.tex"
+		Requirement "color"
+		Requirement "array"
+		Requirement "longtable"
+		Requirement "calc"
+		Requirement "multirow"
+		Requirement "hhline"
+		Requirement "ifthen"
+		ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.tex"
+		FormatEnd
+	Format PDFLaTeX
+		Product "\\def\\inputGnumericTable{}\\input{$$AbsOrRelPathMaster$$Basename.tex}"
+		UpdateFormat latex
+		UpdateResult "$$AbsPath$$Basename.tex"
+		Requirement "color"
+		Requirement "array"
+		Requirement "longtable"
+		Requirement "calc"
+		Requirement "multirow"
+		Requirement "hhline"
+		Requirement "ifthen"
+		ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.tex"
+	FormatEnd
+TemplateEnd
 
 Template RasterImage
 	# By default, InsetExternal is displayed as a grey button

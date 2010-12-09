@@ -515,6 +515,11 @@ def checkFormatEntries(dtl_tools):
 \Format text3      txt    "Plain text (ps2ascii)" "" ""	"%%"	"document"
 \Format text4      txt    "Plain text (catdvi)"   "" ""	"%%"	"document"
 \Format textparagraph txt "Plain Text, Join Lines" "" ""	"%%"	"document"''' ])
+   #Spreadsheets using ssconvert from gnumeric
+    checkViewer('gnumeric spreadsheet software', ['gnumeric'], 
+      rc_entry = [r'''\Format gnumeric gnumeric "Gnumeric spreadsheet" "" ""    "%%"   "document" 
+\Format excel      xls    "Excel spreadsheet"      "" "" "%%"    "document" 
+\Format oocalc     ods    "OpenOffice spreadsheet" "" "" "%%"    "document"''']) 
  #
     path, xhtmlview = checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
         rc_entry = [r'\Format xhtml      xhtml   "LyXHTML"              y "%%" ""    "document"'])
@@ -805,6 +810,13 @@ def checkConverterEntries():
         rc_entry = [ r'\converter svg        png        "%%"	""'])
     
     #
+    # gnumeric/xls/ods to tex
+    checkProg('a spreadsheet -> latex converter', ['ssconvert'], 
+       rc_entry = [ r'''\converter gnumeric latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" "" 
+\converter ods latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" "" 
+\converter xls latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" ""''', 
+'']) 
+
     path, lilypond = checkProg('a LilyPond -> EPS/PDF/PNG converter', ['lilypond'])
     if (lilypond != ''):
         version_string = cmdOutput("lilypond --version")
