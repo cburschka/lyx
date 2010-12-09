@@ -2475,6 +2475,7 @@ bool GuiView::closeBuffer(Buffer & buf)
 	// so no need to do it here. This will ensure that the children end up
 	// in the session file in the correct order. If we close the master
 	// buffer, we can close or release the child buffers here too.
+	bool success = true;
 	if (!closing_) {
 		ListOfBuffers clist = buf.getChildren();
 		ListOfBuffers::const_iterator it = clist.begin();
@@ -2486,22 +2487,26 @@ bool GuiView::closeBuffer(Buffer & buf)
 			Buffer * child_buf = *it;
 			GuiWorkArea * child_wa = workArea(*child_buf);
 			if (child_wa) {
-				if (!closeWorkArea(child_wa, true))
-					return false;
+				if (!closeWorkArea(child_wa, true)) {
+					success = false;
+					break;
+				}
 			} else
 				theBufferList().releaseChild(&buf, child_buf);
 		}
 	}
-	// goto bookmark to update bookmark pit.
-	//FIXME: we should update only the bookmarks related to this buffer!
-	LYXERR(Debug::DEBUG, "GuiView::closeBuffer()");
-	for (size_t i = 0; i < theSession().bookmarks().size(); ++i)
-		guiApp->gotoBookmark(i+1, false, false);
+	if (success) {
+		// goto bookmark to update bookmark pit.
+		//FIXME: we should update only the bookmarks related to this buffer!
+		LYXERR(Debug::DEBUG, "GuiView::closeBuffer()");
+		for (size_t i = 0; i < theSession().bookmarks().size(); ++i)
+			guiApp->gotoBookmark(i+1, false, false);
 
-	if (saveBufferIfNeeded(buf, false)) {
-		buf.removeAutosaveFile();
-		theBufferList().release(&buf);
-		return true;
+		if (saveBufferIfNeeded(buf, false)) {
+			buf.removeAutosaveFile();
+			theBufferList().release(&buf);
+			return true;
+		}
 	}
 	// open all children again to avoid a crash (bug 6603)
 	// FIXME updateMacros() does more than needed
