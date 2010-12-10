@@ -191,7 +191,7 @@ void GuiTabular::on_interlinespaceCO_activated(int index)
 
 void GuiTabular::checkEnabled()
 {
-	// if there is a LaTeX argument, the width and alignment will be overwrtitten
+	// if there is a LaTeX argument, the width and alignment will be overwritten
 	// therefore disable them in this case
 	widthED->setEnabled(specialAlignmentED->text().isEmpty());
 	// if the column has a width, multirows are always left-aligned
