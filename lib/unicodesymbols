@@ -690,7 +690,7 @@
 #0x033f ""                         "" "combining,force" # COMBINING DOUBLE OVERLINE
 #0x0340 ""                         "" "combining,force" # COMBINING GRAVE TONE MARK
 #0x0341 ""                         "" "combining,force" # COMBINING ACUTE TONE MARK
-#0x0342 ""                         "" "combining,force" # COMBINING GREEK PERISPOMENI
+0x0342 "\\~" 			   "textgreek" "combining,force" # COMBINING GREEK PERISPOMENI 
 #0x0343 ""                         "" "combining,force" # COMBINING GREEK KORONIS
 #0x0344 ""                         "" "combining,force" # COMBINING GREEK DIALYTIKA TONOS
 #0x0345 ""                         "" "combining,force" # COMBINING GREEK YPOGEGRAMMENI
