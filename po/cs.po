@@ -4489,26 +4489,24 @@ msgid "&Multicolumn"
 msgstr "&Vícesloupcová"
 
 #: src/frontends/qt4/ui/TabularUi.ui:254
-#, fuzzy
 msgid "Row setting"
-msgstr "Nastevení rámeèku"
+msgstr "Nastavení øádku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:260
 msgid "Merge cells of different rows"
-msgstr ""
+msgstr "Slouèit buòky odli¹ných øádkù"
 
 #: src/frontends/qt4/ui/TabularUi.ui:263
 msgid "M&ultirow"
-msgstr ""
+msgstr "Víceøá&dkový"
 
 #: src/frontends/qt4/ui/TabularUi.ui:272
-msgid "optional vertical offset"
-msgstr ""
+msgid "Optional vertical offset"
+msgstr "Volitelný vertikální posun"
 
 #: src/frontends/qt4/ui/TabularUi.ui:275
-#, fuzzy
 msgid "&Vertical Offset:"
-msgstr "&Vertikální mezera"
+msgstr "&Vertikální posun:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:288
 #, fuzzy
@@ -4516,9 +4514,8 @@ msgid "value of the optional vertical offset"
 msgstr "&Vertikální mezera"
 
 #: src/frontends/qt4/ui/TabularUi.ui:306
-#, fuzzy
 msgid "Cell setting"
-msgstr "Nastavení poznámky"
+msgstr "Nastavení buòky"
 
 #: src/frontends/qt4/ui/TabularUi.ui:312
 msgid "Rotate this cell by 90 degrees"
@@ -4529,19 +4526,16 @@ msgid "Rotate &cell 90 degrees"
 msgstr "Otoè &buòku o 90 stupòù"
 
 #: src/frontends/qt4/ui/TabularUi.ui:328
-#, fuzzy
 msgid "Table-wide settings"
-msgstr "Nastavení tabulky"
+msgstr "Celotabulkové nastavení"
 
 #: src/frontends/qt4/ui/TabularUi.ui:334
-#, fuzzy
 msgid "Verti&cal alignment:"
-msgstr "Vertikální zarovnání"
+msgstr "Vertiká&lní zarovnání:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:344
-#, fuzzy
 msgid "Vertical alignment of the table"
-msgstr "Vertikální zarovnání"
+msgstr "Vertikální zarovnání tabulky"
 
 #: src/frontends/qt4/ui/TabularUi.ui:388
 msgid "Rotate the table by 90 degrees"
@@ -4632,9 +4626,8 @@ msgid "&Use long table"
 msgstr "Pou¾ít &dlouhou tabulku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1158
-#, fuzzy
 msgid "Row settings"
-msgstr "Nastevení rámeèku"
+msgstr "Nastavení øádku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1164
 msgid "Status"
@@ -4730,14 +4723,12 @@ msgid "Page &break on current row"
 msgstr "Zalo&m stranu na aktuálním øádku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1375
-#, fuzzy
 msgid "Horizontal alignment of the longtable"
-msgstr "Horizontální uspoøádání obsahu uvnitø rámeèku"
+msgstr "Horizontální zarovnání pro dlouhou tabulku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1378
-#, fuzzy
 msgid "Longtable alignment"
-msgstr "&Horizontální zarovnání:"
+msgstr "Zarovnání dlouhé tabulky"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1430
 msgid "Current cell:"
@@ -4846,9 +4837,8 @@ msgid "Two-&column document"
 msgstr "&Dvousloupcový dokument"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:32
-#, fuzzy
 msgid "Language of the thesaurus"
-msgstr "Language Footer:"
+msgstr "Jazyk tezauru"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:39
 msgid "Index entry"
@@ -4860,11 +4850,11 @@ msgstr "&Hledané slovo:"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:52
 msgid "Word to look up"
-msgstr ""
+msgstr "Slovo k vyhledání"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:65
 msgid "L&ookup"
-msgstr ""
+msgstr "&Vyhledat"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:72
 #: src/frontends/qt4/ui/ThesaurusUi.ui:85
@@ -4880,19 +4870,16 @@ msgid "Replace the entry with the selection"
 msgstr "Zamìò heslo s vybraným"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:102
-#, fuzzy
 msgid "Click to select a proposal, double click to look it up."
-msgstr "Nastavit lokální definièní soubor tøídy dokumentu"
+msgstr "Klik pro výbìr návrhu, dvojitý klik pro vyhledání."
 
 #: src/frontends/qt4/ui/TocUi.ui:36
-#, fuzzy
 msgid "Filter:"
-msgstr "Patièka:"
+msgstr "Filtr:"
 
 #: src/frontends/qt4/ui/TocUi.ui:46
-#, fuzzy
 msgid "Enter string to filter contents"
-msgstr "Zadejte znaky pro zmen¹ení seznamu."
+msgstr "Zadejte øetìzec pro filtrování obsahu"
 
 #: src/frontends/qt4/ui/TocUi.ui:63
 msgid ""
@@ -5077,44 +5064,36 @@ msgid "FrontMatter"
 msgstr "FrontMatter"
 
 #: lib/layouts/AEA.layout:60
-#, fuzzy
 msgid "Publication Month"
-msgstr "Publication ID"
+msgstr "Publication Month"
 
 #: lib/layouts/AEA.layout:66
-#, fuzzy
 msgid "Publication Month:"
-msgstr "Publication ID"
+msgstr "Publication Month:"
 
 #: lib/layouts/AEA.layout:73
-#, fuzzy
 msgid "Publication Year"
-msgstr "Publication ID"
+msgstr "Publication Year"
 
 #: lib/layouts/AEA.layout:76
-#, fuzzy
 msgid "Publication Year:"
-msgstr "Publication ID"
+msgstr "Publication Year:"
 
 #: lib/layouts/AEA.layout:79
-#, fuzzy
 msgid "Publication Volume"
-msgstr "Publication ID"
+msgstr "Publication Volume"
 
 #: lib/layouts/AEA.layout:82
-#, fuzzy
 msgid "Publication Volume:"
-msgstr "Publication ID"
+msgstr "Publication Volume:"
 
 #: lib/layouts/AEA.layout:85
-#, fuzzy
 msgid "Publication Issue"
-msgstr "Publication ID"
+msgstr "Publication Issue"
 
 #: lib/layouts/AEA.layout:88
-#, fuzzy
 msgid "Publication Issue:"
-msgstr "Publication ID"
+msgstr "Publication Issue:"
 
 #: lib/layouts/AEA.layout:91 lib/layouts/IEEEtran.layout:187
 #: lib/layouts/aa.layout:88 lib/layouts/aa.layout:318
@@ -5227,9 +5206,8 @@ msgid "Case"
 msgstr "Case"
 
 #: lib/layouts/AEA.layout:127
-#, fuzzy
 msgid "Case \\thecase."
-msgstr "Case \\arabic{case}."
+msgstr "Case \\thecase."
 
 #: lib/layouts/AEA.layout:133 lib/layouts/elsart.layout:399
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:278
@@ -21377,7 +21355,7 @@ msgstr "Nejdel¹í ¹íøka znaèky"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:37
 msgid "Index Settings"
-msgstr "Nastevení rejstøíku"
+msgstr "Nastavení rejstøíku"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:69
 msgid "<All indexes>"
