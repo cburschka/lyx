@@ -1,4 +1,4 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+#LyX 2.0.0beta2 created this file. For more info see http://www.lyx.org/
 \lyxformat 410
 \begin_document
 \begin_header
@@ -3171,7 +3171,7 @@ spce
 
 
 \family sans
-Ctrl+Retorno
+Ctrl+Entrar
 \end_layout
 
 \end_inset
@@ -3215,7 +3215,7 @@ cases
 
  de la barra de ecuaciones puedes añadir líneas nuevas con el atajo 
 \family sans
-Ctrl+Retorno
+Ctrl+Entrar
 \family default
  o con el botón
 \family sans
@@ -4044,22 +4044,18 @@ reference "sub:Delimitadores-multilínea"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Placeholders can also be used for text when it is inserted via the menu
- 
+Los espacios reservados también se pueden usar para un texto cuando se insertan
+ mediante el menú 
 \family sans
-Insert\SpecialChar \menuseparator
-Formatting\SpecialChar \menuseparator
-Phantom
+Insertar\SpecialChar \menuseparator
+Formato\SpecialChar \menuseparator
+Fantasma
 \family default
 :
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This is a sentence.
+Esto es una frase.
 \begin_inset Newline newline
 \end_inset
 
@@ -4068,14 +4064,12 @@ This is a sentence.
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-This
+Esto
 \end_layout
 
 \end_inset
 
- is a sentence.
+ es una frase.
 \end_layout
 
 \begin_layout Subsection
@@ -4420,25 +4414,18 @@ Esto es una frase
 \backslash
 rule
 \series default
- también se puede usar para texto si 
-\lang english
-a line is inserted via the menu 
+ también se puede usar para texto insertando una línea mediante el menú
+ 
 \family sans
-Insert\SpecialChar \menuseparator
-Formatting\SpecialChar \menuseparator
-Horizontal
-\begin_inset space ~
-\end_inset
-
-Line
+Insertar\SpecialChar \menuseparator
+Formato\SpecialChar \menuseparator
+Línea horizontal
 \family default
 :
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This is a sentence 
+Esto es una frase 
 \begin_inset CommandInset line
 LatexCommand rule
 offset "0.5ex"
@@ -4447,7 +4434,7 @@ height "1pt"
 
 \end_inset
 
- with one line.
+ con una línea insertada.
 \end_layout
 
 \begin_layout Subsection
@@ -4912,35 +4899,33 @@ ldots
 \end_inset
 
 
-\lang english
-To use 
+\end_layout
+
+\begin_layout Standard
+Para usar 
 \series bold
 
 \backslash
 iddots
 \series default
-, one of the options 
+, hay que marcar una de las opciones 
 \family sans
-Use mathdots package (automatically)
+Usar paquete mathdots (automáticamente)
 \family default
- must be set in the document settings under 
+ en las 
 \family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Options
+Opciones de ecuación
 \family default
-.
+ de la configuración del documento.
 \begin_inset Newline newline
 \end_inset
 
-Using the option 
+La opción 
 \family sans
-Use mathdots package
+Usar paquete mathdots
 \family default
- will improve the appearance of all dots in the documents if their font
- style or size is not the default.
+ mejorará el aspecto de todos los puntos en los documentos si su estilo
+ o tamaño de fuente no son los predeterminados.
 \end_layout
 
 \begin_layout Standard
@@ -5308,7 +5293,7 @@ Filas y columnas
 .
  También se pueden añadir filas nuevas con 
 \family sans
-Ctrl+Retorno
+Ctrl+Entrar
 \family default
 .
 \end_layout
@@ -5318,15 +5303,15 @@ Ctrl+Retorno
 \end_inset
 
 
-\lang english
-The 
+\end_layout
+
+\begin_layout Standard
+La 
 \family sans
-Decoration
+Decoración
 \family default
- adds parentheses in the selected style around the matrix.
- Alternatively,
-\lang spanish
- se pueden generar paréntesis con los comandos 
+ añade paréntesis en el estilo seleccionado alrededor de la matriz.
+ Alternativamente, se pueden generar paréntesis con los comandos 
 \series bold
 
 \backslash
@@ -5811,12 +5796,8 @@ vmatrix
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-Note that decorated matrices ignore the vertical alignment.
-\end_layout
-
-\begin_layout Standard
+Hay que tener en cuenta que las matrices decoradas ignoran el alineaiento
+ vertical.
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -16500,16 +16481,16 @@ spce
  distintas.
  Cada línea nueva se crea con un salto de línea (
 \family sans
-Ctrl+Retorno
+Ctrl+Entrar
 \family default
 ).
- Si ahora se escribe en ella
+ Si ahora se teclea en ella
 \begin_inset Newline newline
 \end_inset
 
 
 \series bold
-0<k<1000 Ctrl+Retorno
+0<k<1000 Ctrl+Entrar
 \begin_inset Newline newline
 \end_inset
 
@@ -16699,7 +16680,7 @@ spce
 
 \end_inset
 
-0<k<1000 Ctrl+Retorno
+0<k<1000 Ctrl+Entrar
 \end_layout
 
 \begin_layout Standard
@@ -19708,12 +19689,22 @@ Las letras griegas se pueden insertar además mediante el botón
 \end_inset
 
  de la barra de ecuaciones.
- 
-\lang english
-All international typesetting norms purport that Greek letters in math have
- to be typeset italic/slanted.
- In some languages, like French or Russian, they are nevertheless sometimes
- typeset upright.
+ Las normas internacionales de tipografía proponen que las letras griegas
+ en ecuaciones deben escribirse en cursiva/inclinada.
+ No obstante, en algunos idiomas, como francés o ruso, a veces se escriben
+ en redonda.
+ Para las normas en español, véase
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bezos"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -20620,11 +20611,7 @@ omega
 \end_layout
 
 \begin_layout Standard
-Cómo escribir 
-\lang english
-special
-\lang spanish
- letras griegas en redonda se explica en 
+Cómo escribir letras griegas especiales en redonda se explica en 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Griegas-en-redonda"
@@ -21024,11 +21011,8 @@ varGamma
 \end_inset
 
 .
- 
-\lang english
-Another way is to load the package 
+ Otra forma es cargar el paquete 
 \series bold
-\lang spanish
 fixmath
 \series default
 
@@ -21082,9 +21066,7 @@ Paquetes ! fixmath
 
 \end_inset
 
- 
-\lang english
-with the LaTeX-preamble line
+ con la línea siguiente en el preámbulo LaTeX
 \end_layout
 
 \begin_layout Standard
@@ -21096,9 +21078,8 @@ usepackage{fixmath}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Then all big Greek letters in a document will automatically be typeset upright.
+Entonces, todas las mayúsculas griegas en el documento se imprimirán automáticam
+ente en cursiva.
 \end_layout
 
 \begin_layout Subsection
@@ -28534,7 +28515,7 @@ General
 En LyX se generan nuevas líneas en una ecuación con 
 \family sans
 \series bold
-Ctrl+Retorno
+Ctrl+Entrar
 \family default
 \series default
 .
@@ -28616,7 +28597,7 @@ Ecuación
 \begin_layout Standard
 En todos los entornos de ecuación multilínea la combinación 
 \family sans
-Ctrl+Retorno
+Ctrl+Entrar
 \family default
  genera una línea nueva.
  Para añadir o quitar líneas se pueden usar los botones 
@@ -29548,7 +29529,7 @@ Ecuación ! multilínea ! entorno align
 \begin_layout Standard
 Este entorno align se crea pulsando 
 \family sans
-Ctrl+Retorno
+Ctrl+Entrar
 \family default
  en una ecuación o con el menú 
 \family sans
@@ -33148,7 +33129,7 @@ CD
  continuación comandos.
  Con 
 \family sans
-Ctrl+Retorno
+Ctrl+Entrar
 \family default
  se inicia una nueva línea.
  En las líneas impares se insertan relaciones horizontales, en las pares
@@ -33338,7 +33319,7 @@ spce
 
 \end_inset
 
-A@>j>>B@>>k>C@=F Ctrl+Retorno
+A@>j>>B@>>k>C@=F Ctrl+Entrar
 \begin_inset Newline newline
 \end_inset
 
@@ -33379,7 +33360,7 @@ spce
 
 
 \series bold
-V@| Ctrl+Retorno
+V@| Ctrl+Entrar
 \begin_inset Newline newline
 \end_inset
 
@@ -33498,7 +33479,7 @@ Para usar diagramas
 \noun on
 Feynman
 \noun default
- estar instalado el paquete LaTeX 
+ debe estar instalado el paquete LaTeX 
 \series bold
 feyn
 \series default
@@ -33530,18 +33511,11 @@ reference "sec:Matrices"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Examples how to create 
-\noun on
-Feynman-
-\noun default
-diagrams in LyX is given in the 
+En el 
 \emph on
-Feynman-diagram manual
+Manual de diagramas Feynman
 \emph default
-\lang spanish
- que se encuentra en el menú 
+, disponible en 
 \family sans
 Ayuda\SpecialChar \menuseparator
 Manuales
@@ -33550,7 +33524,7 @@ Manuales
 
 específicos
 \family default
-.
+, hay ejemplos de diagramas de este tipo.
 \end_layout
 
 \begin_layout Section

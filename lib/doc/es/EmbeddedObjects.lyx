@@ -1,4 +1,4 @@
-#LyX 2.0.0beta1 created this file. For more info see http://www.lyx.org/
+#LyX 2.0.0beta2 created this file. For more info see http://www.lyx.org/
 \lyxformat 410
 \begin_document
 \begin_header
@@ -1888,8 +1888,11 @@ Aplicar inmediatamente
  cada cambio que hagas se aplica directamente.
  Si mueves el cursor a otra celda el diálogo también se actualizará con
  los parámetros de la nueva celda.
- Si cambias valores de longitud debes pulsar la tecla entrar para aplicar
- los cambios.
+ Si cambias valores de longitud debes pulsar la tecla 
+\family sans
+Entrar
+\family default
+ para aplicar los cambios.
 \begin_inset Newline newline
 \end_inset
 
@@ -2335,7 +2338,7 @@ La barra de herramientas tiene los siguientes iconos:
 
 \end_inset
 
- añade una línea sobre la celda/fila actual o la selección
+ añade un borde superior en la celda/fila actual o la selección
 \end_layout
 
 \begin_layout Labeling
@@ -2345,7 +2348,7 @@ La barra de herramientas tiene los siguientes iconos:
 
 \end_inset
 
- añade una línea bajo la celda/fila actual o la selección
+ añade un borde inferior en la celda/fila actual o la selección
 \end_layout
 
 \begin_layout Labeling
@@ -2355,7 +2358,7 @@ La barra de herramientas tiene los siguientes iconos:
 
 \end_inset
 
- añade una línea a la izquierda de la celda/fila actual o la selección
+ añade un borde a la izquierda en la celda/fila actual o la selección
 \end_layout
 
 \begin_layout Labeling
@@ -2365,7 +2368,7 @@ La barra de herramientas tiene los siguientes iconos:
 
 \end_inset
 
- añade una línea a la derecha de la celda/fila actual o la selección
+ añade un borde a la derecha en la celda/fila actual o la selección
 \end_layout
 
 \begin_layout Labeling
@@ -2375,8 +2378,8 @@ La barra de herramientas tiene los siguientes iconos:
 
 \end_inset
 
- añade líneas alrededor de la celda actual o seleccionadas (si la celda
- actual no es multicolumna esto afecta también a la fila y a la columna)
+ añade bordes en la celda actual o en las seleccionadas (si la celda actual
+ no es multicolumna esto afecta también a la fila y a la columna)
 \end_layout
 
 \begin_layout Labeling
@@ -2386,7 +2389,7 @@ La barra de herramientas tiene los siguientes iconos:
 
 \end_inset
 
- borra todas las líneas de la celda o celdas seleccionadas (si la celda
+ quita todos los bordes de la celda o celdas seleccionadas (si la celda
  actual no es multicolumna esto afecta también a la fila y a la columna)
 \end_layout
 
@@ -17003,11 +17006,8 @@ reference "tab:Table-celdas-alineadas"
 \end_inset
 
 .
- Esta alineación se obtiene resaltando 
-\lang english
-by setting the cursor into
-\lang spanish
- la columna y pulsando el botón 
+ Esta alineación se obtiene poniendo el cursor en la columna y pulsando
+ el botón 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-decimal.png
 	scale 85
@@ -17020,8 +17020,7 @@ by setting the cursor into
 Al separador decimal
 \family default
  en la configuración de la tabla.
- El carácter para la alineación puede escogerse, se especifica en la configuraci
-ón de la tabla.
+ Ahí se puede especificar también el carácter deseado para la alineación.
 \end_layout
 
 \begin_layout Standard
@@ -20602,7 +20601,7 @@ Formato
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -20656,6 +20655,41 @@ fig:
 \end_inset
 
  posibles en LyX y no está internacionalizado.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Nota:
+\series default
+ Debido a un fallo en el paquete LaTeX 
+\series bold
+varioref
+\series default
+ versión 1.4w, algunos formatos de las referencias cruzadas provocarán errores
+ de LaTeX en documentos cuyo idioma haga activo el carácter punto (como
+ el francés).
+ Para una solución provisional, véase 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+target "http://wiki.lyx.org/LaTeX/LatexBugs#toc5"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -27146,7 +27180,7 @@ reference "sec:Minipáginas"
 
 ; el tipo 
 \family sans
-Párrafo
+Cuadro de párrafo
 \family default
  se describe en la sección
 \begin_inset space ~
@@ -33141,19 +33175,12 @@ frac{1}{x^{2}}$
 \end_layout
 
 \begin_layout Standard
-Las preferencias globales se pueden establecer en el diálogo 
+Los parámetros globales para listados de programa se pueden establecer en
+ el diálogo 
 \family sans
 Documento\SpecialChar \menuseparator
 Configuración\SpecialChar \menuseparator
-Diseño
-\begin_inset space ~
-\end_inset
-
-del
-\begin_inset space ~
-\end_inset
-
-texto.
+Listados.
  
 \family default
 Para ver ahí una lista de las opciones disponibles, escribe una interrogación
