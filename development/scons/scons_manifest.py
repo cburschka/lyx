@@ -2374,6 +2374,7 @@ lib_doc_hu_files = Split('''
 lib_doc_id_files = Split('''
     Intro.lyx
     Tutorial.lyx
+    UserGuide.lyx
 ''')
 
 

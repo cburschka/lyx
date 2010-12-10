@@ -183,7 +183,8 @@ dist_hudoc_DATA = \
 iddocdir = $(docdir)/id
 dist_iddoc_DATA = \
 	id/Intro.lyx \
-	id/Tutorial.lyx
+	id/Tutorial.lyx \
+	id/UserGuide.lyx
 
 idclipartdocdir = $(iddocdir)/clipart
 dist_idclipartdoc_DATA = \
