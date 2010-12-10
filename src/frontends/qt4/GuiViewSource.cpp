@@ -20,6 +20,7 @@
 #include "BufferView.h"
 #include "Buffer.h"
 #include "Cursor.h"
+#include "Format.h"
 #include "Paragraph.h"
 #include "TexRow.h"
 
@@ -54,6 +55,8 @@ ViewSourceWidget::ViewSourceWidget()
 		this, SLOT(updateView()));
 	connect(updatePB, SIGNAL(clicked()),
 		this, SLOT(updateView()));
+	connect(outputFormatCO, SIGNAL(activated(int)),
+		this, SLOT(updateView()));
 
 	// setting a document at this point trigger an assertion in Qt
 	// so we disable the signals here:
@@ -85,7 +88,8 @@ static size_t crcCheck(docstring const & s)
 	\param fullSource get full source code
 	\return true if the content has changed since last call.
  */
-static bool getContent(BufferView const * view, bool fullSource, QString & qstr)
+static bool getContent(BufferView const * view, bool fullSource,
+		       QString & qstr, string const format)
 {
 	// get the *top* level paragraphs that contain the cursor,
 	// or the selected text
@@ -102,7 +106,7 @@ static bool getContent(BufferView const * view, bool fullSource, QString & qstr)
 	if (par_begin > par_end)
 		swap(par_begin, par_end);
 	odocstringstream ostr;
-	view->buffer().getSourceCode(ostr, par_begin, par_end + 1, fullSource);
+	view->buffer().getSourceCode(ostr, format, par_begin, par_end + 1, fullSource);
 	docstring s = ostr.str();
 	static size_t crc = 0;
 	size_t newcrc = crcCheck(s);
@@ -128,11 +132,14 @@ void ViewSourceWidget::updateView()
 		setEnabled(false);
 		return;
 	}
-	
+
 	setEnabled(true);
 
+	string const format = fromqstr(outputFormatCO->itemData(
+		outputFormatCO->currentIndex()).toString());
+
 	QString content;
-	if (getContent(bv_, viewFullSourceCB->isChecked(), content))
+	if (getContent(bv_, viewFullSourceCB->isChecked(), content, format))
 		document_->setPlainText(content);
 
 	CursorSlice beg = bv_->cursor().selectionBegin().bottom();
@@ -152,6 +159,26 @@ void ViewSourceWidget::updateView()
 	c.movePosition(QTextCursor::NextBlock, QTextCursor::KeepAnchor,
 		endrow - begrow + 1);
 	viewSourceTV->setTextCursor(c);
+}
+
+
+void ViewSourceWidget::updateDefaultFormat()
+{
+	if (!bv_)
+		return;
+
+	outputFormatCO->blockSignals(true);
+	outputFormatCO->clear();
+	outputFormatCO->addItem(qt_("Default"),
+				QVariant(QString("default")));
+	typedef vector<Format const *> Formats;
+	Formats formats = bv_->buffer().exportableFormats(true);
+	Formats::const_iterator cit = formats.begin();
+	Formats::const_iterator end = formats.end();
+	for (; cit != end; ++cit)
+		outputFormatCO->addItem(qt_((*cit)->prettyname()),
+				QVariant(toqstr((*cit)->name())));
+	outputFormatCO->blockSignals(false);
 }
 
 
@@ -182,6 +209,7 @@ void GuiViewSource::updateView()
 void GuiViewSource::enableView(bool enable)
 {
 	widget_->setBufferView(bufferview());
+	widget_->updateDefaultFormat();
 	if (!enable)
 		// In the opposite case, updateView() will be called anyway.
 		widget_->updateView();

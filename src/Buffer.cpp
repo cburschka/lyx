@@ -3071,12 +3071,13 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 }
 
 
-void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
-	pit_type par_end, bool full_source) const
+void Buffer::getSourceCode(odocstream & os, string const format,
+			   pit_type par_begin, pit_type par_end,
+			   bool full_source) const
 {
 	OutputParams runparams(&params().encoding());
 	runparams.nice = true;
-	runparams.flavor = getDefaultOutputFlavor();
+	runparams.flavor = getOutputFlavor(format);
 	runparams.linelen = lyxrc.plaintext_linelen;
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
@@ -3388,9 +3389,10 @@ string Buffer::getDefaultOutputFormat() const
 }
 
 
-OutputParams::FLAVOR Buffer::getDefaultOutputFlavor() const
+OutputParams::FLAVOR Buffer::getOutputFlavor(string const format) const
 {
-	string const dformat = getDefaultOutputFormat();
+	string const dformat = (format.empty() || format == "default") ?
+		getDefaultOutputFormat() : format;
 	DefaultFlavorCache::const_iterator it =
 		default_flavors_.find(dformat);
 

@@ -44,6 +44,8 @@ public:
 public Q_SLOTS:
 	// update content
 	void updateView();
+	///
+	void updateDefaultFormat();
 
 private:
 	///

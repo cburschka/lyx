@@ -553,8 +553,8 @@ public:
 
 	/// get source code (latex/docbook) for some paragraphs, or all paragraphs
 	/// including preamble
-	void getSourceCode(odocstream & os, pit_type par_begin, pit_type par_end,
-		bool full_source) const;
+	void getSourceCode(odocstream & os, std::string const format,
+			   pit_type par_begin, pit_type par_end, bool full_source) const;
 
 	/// Access to error list.
 	/// This method is used only for GUI visualisation of Buffer related
@@ -602,8 +602,9 @@ public:
 	std::string bufferFormat() const;
 	/// return the default output format of the current backend
 	std::string getDefaultOutputFormat() const;
-	/// return the default output flavor
-	OutputParams::FLAVOR getDefaultOutputFlavor() const;
+	/// return the output flavor of \p format or the default
+	OutputParams::FLAVOR getOutputFlavor(
+		  std::string const format = std::string()) const;
 
 	///
 	bool doExport(std::string const & format, bool put_in_tempdir,
