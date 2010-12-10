@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0.0beta2 created this file. For more info see http://www.lyx.org/
+\lyxformat 410
 \begin_document
 \begin_header
 \textclass jbook
@@ -73,7 +73,7 @@
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -2167,7 +2167,7 @@ Down
 のようないくつかのキーは、予想どおりの動作をしますが、そうでないキーもあります。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -2286,7 +2286,7 @@ reference "sec:箇条書き"
 』を参照してください。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -2312,7 +2312,7 @@ description "エスケープキー"
 これは「取り消しキー」です。これは、一般的に、操作を取り消す場合に使います。詳しくは、この取扱説明書の他の場所で説明されます。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -2348,7 +2348,7 @@ End
 これらはカーソルを行の先頭または最後に移動させます。ただし、Emacsキーバインドを使っている場合には、文章の先頭または最後にカーソルを移動させます。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family roman
@@ -2362,7 +2362,7 @@ End
 修飾キーは3つあります。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -2507,7 +2507,7 @@ End
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -2551,7 +2551,7 @@ description "シフトキー"
 で表されます。）これをどの移動キーと一緒に使っても、前のカーソルの位置と新しいカーソルの位置の間のテキストを選択できます。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4498,7 +4498,7 @@ status collapsed
 以下の5つの選択肢があります。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4516,7 +4516,7 @@ status collapsed
 現在のクラスの既定のページ形式を使います。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4534,7 +4534,7 @@ status collapsed
 ページ番号もヘッダーもつけません。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4552,7 +4552,7 @@ status collapsed
 ページ番号だけつけます。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4588,7 +4588,7 @@ status collapsed
 に依存します。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4735,7 +4735,7 @@ status collapsed
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4799,7 +4799,7 @@ USエグゼクティブ
 任意設定
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4853,7 +4853,7 @@ USエグゼクティブ
 に印刷するかを選ぶ2つの切替ボタンです。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -9331,7 +9331,7 @@ name "sec:LyXリスト"
 環境と他の3つの環境の違いを説明しましょう。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 項目ラベル 
 \family roman
@@ -9360,7 +9360,7 @@ LyXは項目の最初の「単語」をラベルに使います。最初の行�
 を使って下さい。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family roman
@@ -9391,7 +9391,7 @@ LyXは項目の最初の「単語」をラベルに使います。最初の行�
 のになっています。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family roman
@@ -9422,7 +9422,7 @@ LyXは項目の最初の「単語」をラベルに使います。最初の行�
 行目はそれ以降の行と異なる左余白になります。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family roman
@@ -9733,7 +9733,7 @@ reference "sub:水平方向の空白"
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family roman
@@ -9781,7 +9781,7 @@ reference "sub:水平方向の空白"
 項目のラベルです。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset space \hfill{}
 \end_inset
@@ -9832,7 +9832,7 @@ reference "sub:水平方向の空白"
 を一つ入れると右揃えになります。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset space \hfill{}
 \end_inset
@@ -12990,7 +12990,7 @@ status collapsed
 例1： 6段階の入れ子と異なった環境の入れ子
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 #1-a 
 \family roman
@@ -13023,7 +13023,7 @@ status collapsed
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 #2-a 
 \family roman
@@ -13086,7 +13086,7 @@ arg   "depth-increment"
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 #3-a 
 \family roman
@@ -13371,7 +13371,7 @@ arg   "break-paragraph inverse"
 を押して作りました。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 #4-a 
 \family roman
@@ -13467,7 +13467,7 @@ arg   "break-paragraph inverse"
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 #5-a 
 \family roman
@@ -13492,7 +13492,7 @@ arg   "break-paragraph inverse"
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 #6-a \SpecialChar \ldots{}
 
@@ -13508,7 +13508,7 @@ arg   "break-paragraph inverse"
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 #5-b 
 \family roman
@@ -13553,7 +13553,7 @@ arg   "depth-decrement"
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 #4-b 
 \family roman
@@ -13598,7 +13598,7 @@ arg   "depth-decrement"
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 #3
 \family roman
@@ -13633,7 +13633,7 @@ arg   "depth-decrement"
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 #2-b 
 \family roman
@@ -13648,7 +13648,7 @@ arg   "depth-decrement"
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 #1-b 
 \family roman
@@ -17195,6 +17195,112 @@ PDF文書でどのフォントが用いられているかを確かめるため�
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
+LaTeX font support
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:LaTeX-font-support"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Traditionally, LaTeX uses its own fonts.
+ That is to say, you cannot directly access the fonts installed on your
+ operating system, but you have to use specific fonts provided by your LaTeX
+ distribution.
+ The reason is that LaTeX needs some extra information about the fonts,
+ which have to be provided by additional files and packages.
+ The downside of this is that your font choice is somewhat limited, compared
+ to usual word processors.
+ On the other hand this comes with the advantage that the provided fonts
+ are generally of very good quality, and that LaTeX files are very portable
+ across different machines.
+ Also, the range of fonts supported by traditional LaTeX was increased a
+ lot meanwhile so that you can find packages for many free and commercial
+ fonts.
+ In LyX, only a subset of these are directly selectable via the user interface
+ (see section
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:文書フォント"
+
+\end_inset
+
+
+\lang english
+ for details).
+ However, all others are available if you enter the respective LaTeX code
+ in the document preamble (please refer to the documentation of your desired
+ font).
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Furthermore, recent developments brought some new LaTeX engines that are
+ also able to directly access fonts that are installed for your operating
+ system (OS), namely XeTeX and LuaTeX.
+ Both engines are now supported by LyX.
+ By using them, you can use theoretically any OpenType or TrueType font
+ that is installed on your system (note though, that ).
+ The next section describes how to use these OS fonts.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ In practice, some fonts might fail due to bad metrics and other font deficienci
+es; so you might have to experiment.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ XeTeX and especially LuaTeX, are still rather new and thus not as mature
+ as traditional LaTeX or PDFLaTeX.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 文書フォントとフォント寸法
 \begin_inset CommandInset label
 LatexCommand label
@@ -17232,15 +17338,125 @@ status collapsed
 \end_inset
 
 ダイアログで設定することができます。
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-ここで、ローマン（セリフ）体・サンセリフ体・タイプライタ体の3つのフォント体に使用するフォントと、その伸縮設定を指定することができます。
+\lang english
+In the 
+\family sans
+Fonts
+\family default
+ section of the dialog, you can specify which font should be used for the
+ three different font shapes — roman (serif), 
+\family sans
+sans
+\begin_inset space ~
+\end_inset
+
+serif
+\family default
+ and 
+\family typewriter
+typewriter
+\family default
+ (monospaced) — you can specify the base font size and scaling factors for
+ (some) sans serif and typewriter fonts if this is necessary to fit with
+ the roman font.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you select 
+\family sans
+Use non-T
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX fonts
+\family default
+, you will have access to the fonts installed on your operating system.
+ This requires that you use 
+\family sans
+PDF (XeT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX)
+\family default
+, 
+\family sans
+PDF (LuaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX)
+\family default
+ or 
+\family sans
+DVI (LuaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX)
+\family default
+ as output format, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+you will have to have either XeTeX or LuaTeX installed (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-font-support"
+
+\end_inset
+
+).
+ You will then not have access to TeX's own fonts (the selection described
+ below).
+ Note that LyX lists all available fonts in either of the three lists (roman,
+ sans
+\begin_inset space ~
+\end_inset
+
+serif, and typewriter), since LyX cannot determine the family.
+ Also note that the output might fail with some of the listed fonts, due
+ to the encoding of the fonts and\SpecialChar \slash{}
+or font failures.
+ Again, LyX cannot determine this in advance, so you might need to experiment.
 \end_layout
 
 \begin_layout Standard
@@ -17382,11 +17598,69 @@ ec
 \end_layout
 
 \begin_layout Itemize
+もっともよい方法は、
+\family typewriter
+Latin Modern (lm)
+\family default
+フォントを使うことです。このフォントは、LaTeXコミュニティにおいて、
+\family typewriter
+cm
+\family default
+に代わる既定フォントとして開発されたもので、ほとんどの場合
+\family typewriter
+cm
+\family default
+と同じに見えますが
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+ひとつの違いは、lmフォントでは合字が改善されていることです。
+\end_layout
+
+\end_inset
+
+、
+\family typewriter
+lm
+\family default
+は
+\family typewriter
+cm
+\family default
+と
+\family typewriter
+ec
+\family default
+の2つのファミリよりも広い範囲の文字を収録しています。
+\end_layout
+
+\begin_layout Itemize
 一つの方法は、
 \family typewriter
 AE
 \family default
-フォントを使うことです。
+ (
+\family typewriter
+Almost European
+\family default
+) 
+\lang english
+in (the rare) case that 
+\family typewriter
+Latin Modern
+\family default
+ is not available to you or does not work, and you still want to emulate
+ the look of 
+\family typewriter
+cm
+\family default
+/
+\family typewriter
+ec
+\family default
+\lang japanese
+。
 \family typewriter
 AE
 \family default
@@ -17449,64 +17723,87 @@ AE
 \end_layout
 
 \begin_layout Itemize
-もう一つの方法は、以下の3つの各輪郭フォントを使用する
+
+\lang english
+If you do not like the look of 
+\family typewriter
+cm
+\family default
+/
+\family typewriter
+ec
+\family default
+, you can of course select one of the other provided vector fonts, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+
+\family sans
+Times Roman
+\family default
+ or
+\family typewriter
+ 
+\family sans
+Palatino
+\family default
+.
+ Most roman vector fonts will automatically select matching sans
+\begin_inset space ~
+\end_inset
+
+serif and typewriter fonts
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 
+\lang english
+These are sometimes just matching other fonts (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., 
+\family sans
+Times Roman
+\family default
+ selects 
+\family sans
+Helvetiva
+\family default
+ for sans serif text), and sometimes, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ with 
 \family typewriter
 Latin Modern
 \family default
-や
+ or 
 \family typewriter
 Computer Modern
 \family default
-のような他のフォントでは、これらの3つの主要フォント体、
-\family sans
-サンセリフ
-\family default
-・
-\family sans
-タイプライタ
-\family default
-・
-\family sans
-セリフ
-\family default
-は、一つのフォントの中に含まれています。
+, different shapes of the same font, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+ a real font 
+\emph on
+family
+\emph default
+.
 \end_layout
 
 \end_inset
 
-方法です。まず
-\family sans
-Times
-\begin_inset space ~
-\end_inset
-
-Roman
-\family default
-フォントをローマン体フォントとし、92
-\begin_inset space \thinspace{}
-\end_inset
-
-%から95
-\begin_inset space \thinspace{}
-\end_inset
-
-%に縮小した
-\family sans
-Helvetica
-\family default
-フォントをサンセリフ体フォント、
-\family sans
-Courier
-\family default
-フォントをタイプライタ体フォントとして指定します。
-\begin_inset Newline newline
-\end_inset
-
+, but you can also select your own.
+\lang japanese
 ローマン体・
 \family sans
 サンセリフ
@@ -17543,44 +17840,6 @@ Times
 Roman
 \family default
 は書籍のような大規模な文書には適していません。
-\end_layout
-
-\begin_layout Itemize
-もっともよい方法は、
-\family typewriter
-Latin Modern (lm)
-\family default
-フォントを使うことです。このフォントは、LaTeXコミュニティにおいて、
-\family typewriter
-cm
-\family default
-に代わる既定フォントとして開発されたもので、ほとんどの場合
-\family typewriter
-cm
-\family default
-と同じに見えますが
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-ひとつの違いは、lmフォントでは合字が改善されていることです。
-\end_layout
-
-\end_inset
-
-、
-\family typewriter
-lm
-\family default
-は
-\family typewriter
-cm
-\family default
-と
-\family typewriter
-ec
-\family default
-の2つのファミリよりも広い範囲の文字を収録しています。
 \end_layout
 
 \begin_layout Standard
@@ -17670,7 +17929,34 @@ ec
 \bar no
 \noun off
 \color none
-の4つの値を選ぶことができます。
+。
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+Some classes provide additional sizes.
+ The size of 
+\family sans
+Default
+\family default
+ depends on the class you are using.
+ In the standard classes it is equal to the font size 10.
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang japanese
+ の4つの値を選ぶことができます。
 \family sans
 \series default
 \shape default
@@ -17745,6 +18031,107 @@ reference "sub:文字微調整"
 \end_inset
 
 節に述べてあります。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The 
+\family sans
+Default Family
+\family default
+ selection lets you specify whether the base font of your document should
+ be roman, sans
+\begin_inset space ~
+\end_inset
+
+serif or typewriter.
+ The 
+\family sans
+Default
+\family default
+ selection uses what is preset by the class, the other selections override
+ this.
+ In most cases, 
+\family sans
+Default
+\family default
+ is equal to 
+\family sans
+roman
+\family default
+, but some classes (such as presentation classes) also use other defaults.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The
+\family typewriter
+ 
+\family sans
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X font encoding
+\family default
+ selection is an expert setting which lets you change the value passed to
+ the LaTeX-package
+\emph on
+fontenc
+\emph default
+.
+ Normally, you do not need to change (or even understand) this.
+ Unless you have specific reasons use 
+\family sans
+Default
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With some fonts, the checkboxes 
+\family sans
+Use Old Style Figures
+\family default
+ and 
+\family sans
+Use True Small Caps
+\family default
+ are enabled.
+ These are extra features some fonts provide.
+ If 
+\family sans
+Use Old Style Figures
+\family default
+ is checked, the font uses old style (also known as medieval or text) figures,
+ i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+figures with varying height that fit nicely with lower letters.
+ 
+\family sans
+Use True Small Caps
+\family default
+ determines that real small caps are used instead of faked small caps made
+ of scaled capitals.
+ Real small caps are often part of expert font sets; they generally look
+ better than faked small caps but might have to be purchased separately.
 \end_layout
 
 \begin_layout Standard
@@ -18600,7 +18987,7 @@ status collapsed
 以外の）選択肢は以下の通りです。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18619,7 +19006,7 @@ status collapsed
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18635,7 +19022,7 @@ arg   "font-roman"
 ）
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18655,7 +19042,7 @@ arg   "font-sans"
 ）
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18676,7 +19063,7 @@ arg   "font-typewriter"
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18695,7 +19082,7 @@ arg   "font-typewriter"
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18714,7 +19101,7 @@ arg   "font-typewriter"
  これがミディアム体の太さです。これが既定の太さです。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18735,7 +19122,7 @@ arg   "font-bold"
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18754,7 +19141,7 @@ arg   "font-bold"
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18764,7 +19151,7 @@ arg   "font-bold"
  これがアップライト体の字形です。またこれが既定の字形になっています。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18785,7 +19172,7 @@ s the Italic font shape
  これがイタリック体の字形です。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18801,7 +19188,7 @@ This is the Slanted font shape.
 これが斜体の字形です。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18816,7 +19203,7 @@ This is the Small caps font shape
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18836,7 +19223,7 @@ yXに詳細な指定をわたすようにはなっておらず、何をしたい
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18869,7 +19256,7 @@ arg   "font-size tiny"
 ）
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18902,7 +19289,7 @@ arg   "font-size scriptsize"
 ）
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18935,7 +19322,7 @@ arg   "font-size footnotesize"
 ）
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18968,7 +19355,7 @@ arg   "font-size small"
 ）
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19001,7 +19388,7 @@ arg   "font-size normal"
 ）
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19034,7 +19421,7 @@ arg   "font-size large"
 ）
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19069,7 +19456,7 @@ arg   "font-size larger"
 ）
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19104,7 +19491,7 @@ arg   "font-size largest"
 ）
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19139,7 +19526,7 @@ arg   "font-size huge"
 ）
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19193,7 +19580,7 @@ arg   "font-size giant"
 ようにしてください。この機能は、微調整のためだけにあるにすぎません。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19212,7 +19599,7 @@ arg   "font-size giant"
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19269,7 +19656,7 @@ This is text with emphasize on —これは強調された文章です—。
 。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19311,7 +19698,7 @@ arg   "font-underline"
 しれないからです。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19355,7 +19742,7 @@ This is text with Noun on（これは名詞体の文章です）。
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19456,7 +19843,7 @@ status collapsed
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19888,7 +20275,11 @@ name "sub:出力ファイル形式"
 \end_layout
 
 \begin_layout Subsubsection
-ASCII
+
+\lang english
+Simple text
+\lang japanese
+ (ASCII)
 \begin_inset Index idx
 status collapsed
 
@@ -19916,7 +20307,25 @@ status collapsed
 エクスポート\SpecialChar \menuseparator
 平文
 \family default
-を用います。
+を用います 
+\lang english
+or 
+\family sans
+File\SpecialChar \menuseparator
+Export\SpecialChar \menuseparator
+Simple
+\begin_inset space ~
+\end_inset
+
+text
+\begin_inset space ~
+\end_inset
+
+(ps2ascii)
+\family default
+.
+ The latter will first internally export to PostScript and then do the conversio
+n to ASCII.
 \end_layout
 
 \begin_layout Subsubsection
@@ -20017,7 +20426,57 @@ DVIをスクロールする際には、DVIビューアは、画像を表示す�
 エクスポート\SpecialChar \menuseparator
 DVI
 \family default
-を使用します。
+を使用します 
+\lang english
+or
+\lang japanese
+ 
+\family sans
+ファイル\SpecialChar \menuseparator
+エクスポート\SpecialChar \menuseparator
+DVI
+\begin_inset space ~
+\end_inset
+
+(LuaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X)
+\family default
+。
+\lang english
+ The latter option uses the program 
+\family typewriter
+LuaTeX
+\family default
+.
+ 
+\family typewriter
+LuaTeX
+\family default
+ is an engine that provides direct Unicode support and support for direct
+ font access (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-font-support"
+
+\end_inset
+
+).
+ LuaTeX is still work in progress, but it might develop into the next standard
+ TeX processor.
 \end_layout
 
 \begin_layout Subsubsection
@@ -20198,6 +20657,97 @@ pdftex
 プログラムが、直接お使いのファイルをPDFに変換します。
 \end_layout
 
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(XeTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X) 
+\lang english
+This uses the program 
+\family typewriter
+XeTeX
+\family default
+ that converts your file directly to PDF.
+ 
+\family typewriter
+XeTeX
+\family default
+ is a new engine that provides direct Unicode support and support for direct
+ font access (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-font-support"
+
+\end_inset
+
+).
+ It is particularly good at typesetting different scripts.
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(LuaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X) 
+\lang english
+This uses the program 
+\family typewriter
+LuaTeX
+\family default
+ that converts your file directly to PDF.
+ 
+\family typewriter
+LuaTeX
+\family default
+ is an even newer engine, derived from 
+\family typewriter
+pdflatex
+\family default
+, that also provides direct Unicode support and support for direct font
+ access (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-font-support"
+
+\end_inset
+
+).
+ LuaTeX is still work in progress, but it might develop into the next standard
+ tex processor.
+\end_layout
+
 \begin_layout Standard
 
 \family typewriter
@@ -20232,8 +20782,8 @@ PDF
 \bar no
 \noun off
 \color none
-を使用することをおすすめします。
-\family typewriter
+を使用することをおすすめします。 
+\family default
 \series default
 \shape default
 \size default
@@ -20241,16 +20791,53 @@ PDF
 \bar default
 \noun default
 \color inherit
-dvipdfm
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-プログラムは、すでに開発を終了しており、若干時代遅れとなっています。
+\lang english
+If you rely on multiscript support and\SpecialChar \slash{}
+or specific OpenType fonts, you might
+ want to try out 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(XeTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X)
+\family default
+ or 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(LuaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X)
+\family default
+ instead, bearing in mind that these two programs are not yet as mature
+ as 
+\family typewriter
+pdflatex
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -20493,7 +21080,7 @@ Ghostscript
 ボックスのパラメータを以下のように設定することができます。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -20570,7 +21157,7 @@ reference "sub:プリンタ"
 。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -21732,7 +22319,7 @@ LyX
 つです。
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -21792,7 +22379,7 @@ single
 という引用符を用います
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -21820,7 +22407,7 @@ this
 という引用符を用います
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -21852,7 +22439,7 @@ this
 という引用符を用います
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -21884,7 +22471,7 @@ this
 という引用符を用います
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -21944,7 +22531,7 @@ this
 という引用符を用います
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -28214,7 +28801,8 @@ status collapsed
 \begin_layout Standard
 もう一つの別行建て数式は、本文の外側に単独の段落であるかのように表現されるもので、以下のようにみえます：
 \begin_inset Formula \[
-A=B\]
+A=B
+\]
 
 \end_inset
 
@@ -28590,7 +29178,8 @@ spce
 \lambda_{1}\\
  & \ddots\\
  &  & \lambda_{n}
-\end{array}\right)\]
+\end{array}\right)
+\]
 
 \end_inset
 
@@ -29076,7 +29665,8 @@ frac
 \left[\frac{1}{\left(\begin{array}{cc}
 2 & 3\\
 4 & 5
-\end{array}\right)}\right]\]
+\end{array}\right)}\right]
+\]
 
 \end_inset
 
@@ -29251,7 +29841,8 @@ name "sub:範囲付き演算子"
 \color inherit
 表記され、別行建て数式では
 \begin_inset Formula \[
-\sum_{n=1}^{\infty}\frac{1}{n!}=e\]
+\sum_{n=1}^{\infty}\frac{1}{n!}=e
+\]
 
 \end_inset
 
@@ -29357,7 +29948,8 @@ status collapsed
 
 
 \begin_inset Formula \[
-\lim_{x\rightarrow\infty}f(x),\]
+\lim_{x\rightarrow\infty}f(x),
+\]
 
 \end_inset
 
@@ -30670,7 +31262,8 @@ LyXで使える括弧には、いくつかのものがあります。ほとん�
 \left[\begin{array}{cc}
 1 & 2\\
 3 & 4
-\end{array}\right]\]
+\end{array}\right]
+\]
 
 \end_inset
 
@@ -30694,7 +31287,8 @@ LyXで使える括弧には、いくつかのものがあります。ほとん�
 \color inherit
 
 \begin_inset Formula \[
-\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\]
+\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}
+\]
 
 \end_inset
 
@@ -30835,7 +31429,8 @@ LyXでは、行列は数式パネルの行列ボタン
 1 & 2 & 3\\
 4 & 5 & 6\\
 7 & 8 & 9
-\end{array}\right)\]
+\end{array}\right)
+\]
 
 \end_inset
 
@@ -30895,7 +31490,8 @@ lrc
 \mbox{この} & \mbox{この} & \mbox{この}\\
 \mbox{列は} & \mbox{列は} & \mbox{列は}\\
 \mbox{左揃えです} & \mbox{中央揃えです} & \mbox{右揃えです}
-\end{array}\]
+\end{array}
+\]
 
 \end_inset
 
@@ -30954,7 +31550,8 @@ f(x)=\begin{cases}
 -1 & x<0\\
 0 & x=0\\
 1 & x>0
-\end{cases}\]
+\end{cases}
+\]
 
 \end_inset
 
@@ -31048,7 +31645,8 @@ Ctrl+Tab
 \color inherit
 注意してください。
 \begin_inset Formula \begin{eqnarray*}
-\frac{A}{B} & \frac{A}{B} & \frac{A}{B}\end{eqnarray*}
+\frac{A}{B} & \frac{A}{B} & \frac{A}{B}
+\end{eqnarray*}
 
 \end_inset
 
@@ -31179,7 +31777,8 @@ arg   "math-number-toggle"
 \color inherit
 
 \begin_inset Formula \begin{equation}
-1+1=2.\end{equation}
+1+1=2.
+\end{equation}
 
 \end_inset
 
@@ -31915,7 +32514,8 @@ Blackboard体
 \color none
 の「N」が使用されている例です。
 \begin_inset Formula \[
-f(x)=\sqrt{x}\;;\; x\in\mathbb{N}\]
+f(x)=\sqrt{x}\;;\; x\in\mathbb{N}
+\]
 
 \end_inset
 
@@ -32019,7 +32619,8 @@ M
 f(x)=\begin{cases}
 x & \mbox{もし私がそう言った場合}\\
 -x & \textrm{unter Umständen（場合によっては）}
-\end{cases}\]
+\end{cases}
+\]
 
 \end_inset
 
@@ -35671,7 +36272,8 @@ question
 \series default
 部分のみが現れます。
 \begin_inset Formula \[
-x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer{-\sqrt{3}}\]
+x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer{-\sqrt{3}}
+\]
 
 \end_inset
 
@@ -44321,28 +44923,8 @@ status collapsed
 \family default
 オプションを選択すると、本文の言語から本文部分の文字コードを決定します。このとき、文書が二つ以上の言語を含んでいると、LaTeXファイルに二つ以上の文字コードを
 含ませることになるかもしれません。このオプションを使用しないときには、文書全体はつねに一つの文字コードだけを使用することになります。
-\family sans
-XeTeX
-\family default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-XeTeXは、LaTeXに代わるTeX植字エンジンです。XeTeXはネイティブにUnicodeをサポートし、インプットファイルはUTF-8文字コードであるものと
-仮定します。LyXをXeTeXとともに使う詳しい方法は、
-\begin_inset CommandInset citation
-LatexCommand cite
-key "XeTeX"
-
-\end_inset
-
-に記載があります。
-\end_layout
-
-\end_inset
-
-を使っているとき以外は、このオプションを有効にすることが推奨されます（以下参照）。
+\lang english
+Checking this option is the preferred setting.
 \end_layout
 
 \begin_layout Standard
@@ -44354,6 +44936,72 @@ XのUnicodeサポートははなはだ不完全であるため、たくさんの
 \family default
 の文字コードで動くものの（このとき、LyXは既知のLaTeXコマンド一覧を使用します）、utf8文字コード固定では動かないということは、珍しいことではありません
 （このとき、LyXは既知のLaTeXコマンド一覧を使用しません。なぜならUnicode記号はすべてutf8でコード化できるからです）。
+\lang english
+The situation is much better with XeTeX and LuaTeX, two new alternative
+ engines to standard LaTeX.
+ Both engines support Unicode natively.
+ LyX now also supports these two engines (via the output formats 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(XeTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X)
+\family default
+, 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(LuaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X)
+\family default
+ and 
+\family sans
+DVI
+\begin_inset space ~
+\end_inset
+
+(LuaTeX)
+\family default
+; see section
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:出力ファイル形式"
+
+\end_inset
+
+
+\lang english
+), so if the above options fail, you might try out one of these new engines.
 \end_layout
 
 \begin_layout Standard
@@ -44519,28 +45167,23 @@ Latexぱっけーじ@LaTeXパッケージ ! CJK
 \family sans
 XeTeX
 \family default
-とともに使用することを意図したUnicode utf8。
+ 
+\lang english
+and
+\lang japanese
+ 
+\family sans
+LuaTeX
+\family default
+ とともに使用することを意図したUnicode utf8。
 \series bold
 inputenc
 \series default
- LaTeXパッケージの助けを借りずにUnicodeを直接使用します 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-LyXをXeTeXと使う方法に関しては、
-\begin_inset CommandInset citation
-LatexCommand cite
-key "XeTeX"
-
-\end_inset
-
-に記載があります。
-\end_layout
-
-\end_inset
-
-。
+ LaTeXパッケージの助けを借りずにUnicodeを直接使用します 。
+\lang english
+LyX automatically selects this encoding if you export or preview XeTeX or
+ LuaTeX.
+ Normally you do not need to set this encoding manually.
 \end_layout
 
 \begin_layout Description
@@ -48043,40 +48686,6 @@ status collapsed
 \begin_layout Plain Layout
 
 ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.sty
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\labelwidthstring 参考文献
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "XeTeX"
-
-\end_inset
-
-LyXをXeTeXで使う方法を述べた
-\begin_inset CommandInset href
-LatexCommand href
-name "Wikiページ"
-target "http://wiki.lyx.org/LyX/XeTeX"
-
-\end_inset
-
-:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/LyX/XeTeX
 \end_layout
 
 \end_inset

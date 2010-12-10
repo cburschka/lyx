@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0.0beta2 created this file. For more info see http://www.lyx.org/
+\lyxformat 410
 \begin_document
 \begin_header
 \textclass scrbook
@@ -63,7 +63,7 @@
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -1051,6 +1051,9 @@ Coller
 \end_inset
 
 Spécial
+\family default
+\lang english
+LaTeX font support
 \end_layout
 
 \begin_layout Itemize
@@ -11588,6 +11591,108 @@ texte mis en évidence
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
+LaTeX font support
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:LaTeX-font-support"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Traditionally, LaTeX uses its own fonts.
+ That is to say, you cannot directly access the fonts installed on your
+ operating system, but you have to use specific fonts provided by your LaTeX
+ distribution.
+ The reason is that LaTeX needs some extra information about the fonts,
+ which have to be provided by additional files and packages.
+ The downside of this is that your font choice is somewhat limited, compared
+ to usual word processors.
+ On the other hand this comes with the advantage that the provided fonts
+ are generally of very good quality, and that LaTeX files are very portable
+ across different machines.
+ Also, the range of fonts supported by traditional LaTeX was increased a
+ lot meanwhile so that you can find packages for many free and commercial
+ fonts.
+ In LyX, only a subset of these are directly selectable via the user interface
+ (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Document-Polices"
+
+\end_inset
+
+ for details).
+ However, all others are available if you enter the respective LaTeX code
+ in the document preamble (please refer to the documentation of your desired
+ font).
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Furthermore, recent developments brought some new LaTeX engines that are
+ also able to directly access fonts that are installed for your operating
+ system (OS), namely XeTeX and LuaTeX.
+ Both engines are now supported by LyX.
+ By using them, you can use theoretically any OpenType or TrueType font
+ that is installed on your system (note though, that ).
+ The next section describes how to use these OS fonts.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ In practice, some fonts might fail due to bad metrics and other font deficienci
+es; so you might have to experiment.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ XeTeX and especially LuaTeX, are still rather new and thus not as mature
+ as traditional LaTeX or PDFLaTeX.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Les Polices du Document et les Tailles de Polices
 \begin_inset CommandInset label
 LatexCommand label
@@ -11636,28 +11741,134 @@ Document ! Paramètres
 \end_inset
 
 .
- Vous pouvez y définir quelle police utiliser pour les trois familles de
- caractères: Romain, 
+ 
+\lang english
+In the 
 \family sans
-Sans
+Fonts
+\family default
+ section of the dialog, you can specify which font should be used for the
+ three different font shapes — roman (serif), 
+\family sans
+sans
 \begin_inset space ~
 \end_inset
 
-Serif
+serif
 \family default
-, et 
+ and 
 \family typewriter
-Chasse
-\begin_inset space ~
-\end_inset
-
-Fixe
+typewriter
 \family default
- et leurs tailles.
+ (monospaced) — you can specify the base font size and scaling factors for
+ (some) sans serif and typewriter fonts if this is necessary to fit with
+ the roman font.
 \end_layout
 
 \begin_layout Standard
-Les options pour le choix des polices sont 
+
+\lang english
+If you select 
+\family sans
+Use non-T
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX fonts
+\family default
+, you will have access to the fonts installed on your operating system.
+ This requires that you use 
+\family sans
+PDF (XeT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX)
+\family default
+, 
+\family sans
+PDF (LuaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX)
+\family default
+ or 
+\family sans
+DVI (LuaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX)
+\family default
+ as output format, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+you will have to have either XeTeX or LuaTeX installed (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-font-support"
+
+\end_inset
+
+).
+ You will then not have access to TeX's own fonts (the selection described
+ below).
+ Note that LyX lists all available fonts in either of the three lists (roman,
+ sans
+\begin_inset space ~
+\end_inset
+
+serif, and typewriter), since LyX cannot determine the family.
+ Also note that the output might fail with some of the listed fonts, due
+ to the encoding of the fonts and\SpecialChar \slash{}
+or font failures.
+ Again, LyX cannot determine this in advance, so you might need to experiment.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you use TeX fonts (which is the default), 
+\lang french
+les options pour le choix des polices sont 
 \family sans
 défaut
 \family default
@@ -11744,11 +11955,86 @@ Reader
 \end_layout
 
 \begin_layout Itemize
-Un moyen est d'utiliser des polices 
+Utiliser les polices 
+\family typewriter
+Latin Modern
+\family default
+ (
+\family typewriter
+lm
+\family default
+).
+ Ces polices ont été développées à la demande de la communauté LaTeX pour
+ remplacer les polices 
+\family typewriter
+cm
+\family default
+ comme polices implicites.
+ Dans la plupart des cas elles ressemblent aux polices 
+\family typewriter
+cm
+\family default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Une différence est un crénage amélioré avec les polices 
+\family typewriter
+lm
+\family default
+.
+\end_layout
+
+\end_inset
+
+, mais 
+\family typewriter
+lm
+\family default
+ couvre un grand nombre de caractères issus des deux familles 
+\family typewriter
+cm
+\family default
+ et 
+\family typewriter
+ec
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+Utiliser des polices 
+\family typewriter
+AE 
+\family default
+(
+\family typewriter
+Almost European
+\family default
+) 
+\lang english
+in (the rare) case that 
+\family typewriter
+Latin Modern
+\family default
+ is not available to you or does not work, and you still want to emulate
+ the look of 
+\family typewriter
+cm
+\family default
+/
+\family typewriter
+ec
+\family default
+.
+
+\lang french
+ 
 \family typewriter
 AE
 \family default
- qui sont des polices virtuelles.
+ sont des polices virtuelles.
  Virtuelle signifie qu'elle 
 \begin_inset Quotes eld
 \end_inset
@@ -11862,67 +12148,88 @@ brève
 \end_layout
 
 \begin_layout Itemize
-Une autre possibilité est d'utiliser trois polices contour
+
+\lang english
+If you do not like the look of 
+\family typewriter
+cm
+\family default
+/
+\family typewriter
+ec
+\family default
+, you can of course select one of the other provided vector fonts, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+
+\family sans
+Times Roman
+\family default
+ or
+\family typewriter
+ 
+\family sans
+Palatino
+\family default
+.
+ Most roman vector fonts will automatically select matching sans
+\begin_inset space ~
+\end_inset
+
+serif and typewriter fonts
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Les autres polices comme 
+
+\lang english
+These are sometimes just matching other fonts (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., 
+\family sans
+Times Roman
+\family default
+ selects 
+\family sans
+Helvetiva
+\family default
+ for sans serif text), and sometimes, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ with 
 \family typewriter
 Latin Modern
 \family default
- ou 
+ or 
 \family typewriter
 Computer Modern
 \family default
-, consistent en ces trois types de polices principaux 
-\family sans
-sans
-\begin_inset space ~
+, different shapes of the same font, i.
+\begin_inset space \thinspace{}
 \end_inset
 
-serif
-\family default
-, 
-\family sans
-chasse
-\begin_inset space ~
-\end_inset
-
-fixe
-\family default
-, et 
-\family sans
-serif
-\family default
+e.
+ a real font 
+\emph on
+family
+\emph default
 .
 \end_layout
 
 \end_inset
 
-: 
-\family typewriter
-Times Roman
-\family default
- comme police romane,
-\family sans
- 
-\family typewriter
-Helvetica
-\family default
- réduite à 92 ou 95
-\begin_inset space \thinspace{}
-\end_inset
+, but you can also select your own.
+\lang french
 
-% comme police
-\begin_inset space ~
-\end_inset
-
-serif font, et enfin 
-\family typewriter
-courier
-\family default
- comme police à chasse fixe.
 \begin_inset Newline newline
 \end_inset
 
@@ -11972,55 +12279,6 @@ Times Roman
  livres.
 \end_layout
 
-\begin_layout Itemize
-La meilleure solution est d'utiliser les polices 
-\family typewriter
-Latin Modern
-\family default
- (
-\family typewriter
-lm
-\family default
-).
- Ces polices ont été développées à la demande de la communauté LaTeX pour
- remplacer les polices 
-\family typewriter
-cm
-\family default
- comme polices implicites.
- Dans la plupart des cas elles ressemblent aux polices 
-\family typewriter
-cm
-\family default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Une différence est un crénage amélioré avec les polices 
-\family typewriter
-lm
-\family default
-.
-\end_layout
-
-\end_inset
-
-, mais 
-\family typewriter
-lm
-\family default
- couvre un grand nombre de caractères issus des deux familles 
-\family typewriter
-cm
-\family default
- et 
-\family typewriter
-ec
-\family default
-.
-\end_layout
-
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
@@ -12038,12 +12296,21 @@ défaut, 10
 12
 \family default
 .
- la taille 
+ 
+\lang english
+Some classes provide additional sizes.
+
+\lang french
+ La taille 
 \family sans
 défaut
 \family default
- dépend de votre système LaTeX mais elle est en principe égale à la taille
- 10.
+ dépend de 
+\lang english
+the class you are using.
+ In the standard classes
+\lang french
+ elle est égale à la taille 10.
 \end_layout
 
 \begin_layout Standard
@@ -12085,6 +12352,107 @@ reference "sub:Réglage-fin-avec"
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+The 
+\family sans
+Default Family
+\family default
+ selection lets you specify whether the base font of your document should
+ be roman, sans
+\begin_inset space ~
+\end_inset
+
+serif or typewriter.
+ The 
+\family sans
+Default
+\family default
+ selection uses what is preset by the class, the other selections override
+ this.
+ In most cases, 
+\family sans
+Default
+\family default
+ is equal to 
+\family sans
+roman
+\family default
+, but some classes (such as presentation classes) also use other defaults.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The
+\family typewriter
+ 
+\family sans
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X font encoding
+\family default
+ selection is an expert setting which lets you change the value passed to
+ the LaTeX-package
+\emph on
+fontenc
+\emph default
+.
+ Normally, you do not need to change (or even understand) this.
+ Unless you have specific reasons use 
+\family sans
+Default
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With some fonts, the checkboxes 
+\family sans
+Use Old Style Figures
+\family default
+ and 
+\family sans
+Use True Small Caps
+\family default
+ are enabled.
+ These are extra features some fonts provide.
+ If 
+\family sans
+Use Old Style Figures
+\family default
+ is checked, the font uses old style (also known as medieval or text) figures,
+ i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+figures with varying height that fit nicely with lower letters.
+ 
+\family sans
+Use True Small Caps
+\family default
+ determines that real small caps are used instead of faked small caps made
+ of scaled capitals.
+ Real small caps are often part of expert font sets; they generally look
+ better than faked small caps but might have to be purchased separately.
+\end_layout
+
+\begin_layout Standard
 Le champ 
 \family sans
 CJK
@@ -12100,7 +12468,7 @@ script characters
 
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 La police sera l'argument des commandes du paquetage LaTeX 
@@ -13672,12 +14040,8 @@ simple
 
 (ps2ascii) 
 \family default
-ce dernier faisant d'abord une conversion en PostScript avant d'utiliser
- 
-\series bold
-ps2ascii
-\series default
- pour le transformer en texte simple.
+ce dernier faisant d'abord une conversion en PostScript avant le transformation
+ en texte simple.
 \end_layout
 
 \begin_layout Subsubsection
@@ -13803,7 +14167,56 @@ Vous pouvez exporter votre document comme un fichier DVI en utilisant le
 \family sans
 Fichier\SpecialChar \menuseparator
 Exporter\SpecialChar \menuseparator
-DVI.
+DVI 
+\family default
+ou 
+\family sans
+Fichier\SpecialChar \menuseparator
+Exporter\SpecialChar \menuseparator
+DVI
+\begin_inset space ~
+\end_inset
+
+(LuaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X).
+
+\family default
+ 
+\lang english
+The latter option uses the program 
+\family typewriter
+LuaTeX
+\family default
+.
+ 
+\family typewriter
+LuaTeX
+\family default
+ is an engine that provides direct Unicode support and support for direct
+ font access (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-font-support"
+
+\end_inset
+
+).
+ LuaTeX is still work in progress, but it might develop into the next standard
+ TeX processor.
 \end_layout
 
 \begin_layout Subsubsection
@@ -14078,6 +14491,97 @@ pdftex
  qui convertit directement votre fichier en PDF.
 \end_layout
 
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(XeTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X) 
+\lang english
+This uses the program 
+\family typewriter
+XeTeX
+\family default
+ that converts your file directly to PDF.
+ 
+\family typewriter
+XeTeX
+\family default
+ is a new engine that provides direct Unicode support and support for direct
+ font access (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-font-support"
+
+\end_inset
+
+).
+ It is particularly good at typesetting different scripts.
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(LuaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X) 
+\lang english
+This uses the program 
+\family typewriter
+LuaTeX
+\family default
+ that converts your file directly to PDF.
+ 
+\family typewriter
+LuaTeX
+\family default
+ is an even newer engine, derived from 
+\family typewriter
+pdflatex
+\family default
+, that also provides direct Unicode support and support for direct font
+ access (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-font-support"
+
+\end_inset
+
+).
+ LuaTeX is still work in progress, but it might develop into the next standard
+ tex processor.
+\end_layout
+
 \begin_layout Standard
 Nous recommandons d'utiliser l'option 
 \family sans
@@ -14093,11 +14597,54 @@ pdftex
 \family default
  accepte toutes les fonctionnalités des versions actuelles de PDF.
  Il est en plus rapide et stable.
- Le programme 
-\family typewriter
-dvipdfm
+ 
+\lang english
+If you rely on multiscript support and\SpecialChar \slash{}
+or specific OpenType fonts, you might
+ want to try out 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(XeTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X)
 \family default
- n'est plus développé est est donc un peu dépassé.
+ or 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(LuaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X)
+\family default
+ instead, bearing in mind that these two programs are not yet as mature
+ as 
+\family typewriter
+pdflatex
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -22243,7 +22790,8 @@ Les formules Hors-Ligne apparaissent séparées du corps du texte, comme si
 
 \begin_layout Standard
 \begin_inset Formula \[
-A=B\]
+A=B
+\]
 
 \end_inset
 
@@ -22478,7 +23026,8 @@ Vous pouvez laisser beaucoup de structures partiellement remplies dans une
 \lambda_{1}\\
  & \ddots\\
  &  & \lambda_{n}
-\end{array}\right)\]
+\end{array}\right)
+\]
 
 \end_inset
 
@@ -22711,7 +23260,8 @@ Haut
 \left[\frac{1}{\left(\begin{array}{cc}
 2 & 3\\
 4 & 5
-\end{array}\right)}\right]\]
+\end{array}\right)}\right]
+\]
 
 \end_inset
 
@@ -22847,7 +23397,8 @@ Les signes somme (
 
 \begin_layout Standard
 \begin_inset Formula \[
-\sum_{n=1}^{\infty}\frac{x^{n}}{n}=\ln\left(\frac{1}{1-x}\right)\]
+\sum_{n=1}^{\infty}\frac{x^{n}}{n}=\ln\left(\frac{1}{1-x}\right)
+\]
 
 \end_inset
 
@@ -22861,7 +23412,8 @@ En revanche, les signes intégrale décalent toujours les bornes sur le côté,
 
 \begin_layout Standard
 \begin_inset Formula \[
-\int_{-\infty}^{\infty}\frac{dx}{1+x^{2}}=\pi\]
+\int_{-\infty}^{\infty}\frac{dx}{1+x^{2}}=\pi
+\]
 
 \end_inset
 
@@ -22918,7 +23470,8 @@ Math ! Limites
 
 \begin_layout Standard
 \begin_inset Formula \[
-\lim_{x\rightarrow\infty}f(x)\]
+\lim_{x\rightarrow\infty}f(x)
+\]
 
 \end_inset
 
@@ -23792,7 +24345,8 @@ Il y a plusieurs délimiteurs disponibles avec LyX.
 \left[\begin{array}{cc}
 1 & 2\\
 3 & 4
-\end{array}\right]\]
+\end{array}\right]
+\]
 
 \end_inset
 
@@ -23805,7 +24359,8 @@ et pour rendre plus le parenthésage plus lisible dans une abomination comme
 
 \begin_layout Standard
 \begin_inset Formula \[
-\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\]
+\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}
+\]
 
 \end_inset
 
@@ -23814,7 +24369,8 @@ ou :
 
 \begin_layout Standard
 \begin_inset Formula \[
-f\left(g\left(h\left(k\left(l\left(x\right)\right)\right)\right)\right)\]
+f\left(g\left(h\left(k\left(l\left(x\right)\right)\right)\right)\right)
+\]
 
 \end_inset
 
@@ -23924,7 +24480,8 @@ Matrice
 1 & 2 & 3\\
 4 & 5 & 6\\
 7 & 8 & 9
-\end{array}\right)\]
+\end{array}\right)
+\]
 
 \end_inset
 
@@ -24037,7 +24594,8 @@ right
 \textrm{cette} & \textrm{cette colonne} & \textrm{cette colonne}\\
 \textrm{colonne} & \textrm{est} & \textrm{est alignée}\\
 \textrm{est alignée à gauche} & \textrm{centrée} & \textrm{à droite}
-\end{array}\]
+\end{array}
+\]
 
 \end_inset
 
@@ -24097,7 +24655,8 @@ f(x)=\begin{cases}
 -1 & x<0\\
 0 & x=0\\
 1 & x>0
-\end{cases}\]
+\end{cases}
+\]
 
 \end_inset
 
@@ -24175,7 +24734,8 @@ Ctrl-Tab
 
 \begin_layout Standard
 \begin_inset Formula \begin{eqnarray*}
-\frac{A}{B} & \frac{A}{B} & \frac{A}{B}\end{eqnarray*}
+\frac{A}{B} & \frac{A}{B} & \frac{A}{B}
+\end{eqnarray*}
 
 \end_inset
 
@@ -24291,7 +24851,8 @@ arg   "math-number-toggle"
  Dans ce document les numéros sont en principe imprimés avec le numéro du
  chapitre, séparés par un point:
 \begin_inset Formula \begin{equation}
-1+1=2\end{equation}
+1+1=2
+\end{equation}
 
 \end_inset
 
@@ -24901,7 +25462,8 @@ Blackbold
 \family default
  représente l'ensemble des entiers naturels :
 \begin_inset Formula \[
-f(x)=\sqrt{x}\:;\: x\in\mathbb{N}\]
+f(x)=\sqrt{x}\:;\: x\in\mathbb{N}
+\]
 
 \end_inset
 
@@ -25111,7 +25673,8 @@ M
 f(x)=\begin{cases}
 x & \textrm{dans ce cas là}\\
 -x & \textrm{dans l'autre cas}
-\end{cases}\]
+\end{cases}
+\]
 
 \end_inset
 
@@ -29270,7 +29833,8 @@ question
 \series default
  apparaît:
 \begin_inset Formula \[
-x^{2}-2x-2\Rightarrow\question{x_{1}}\reponse{x_{2}}=1\question{+\sqrt{3}}\reponse{-\sqrt{3}}.\]
+x^{2}-2x-2\Rightarrow\question{x_{1}}\reponse{x_{2}}=1\question{+\sqrt{3}}\reponse{-\sqrt{3}}.
+\]
 
 \end_inset
 
@@ -39596,44 +40160,7 @@ langue implicite
  d'un encodage dans le fichier LaTeX.
  Si vous n'utilisez pas cette option, alors tout le document utilisera toujours
  un seul encodage.
- Activer cette option est le meilleur choix, à moins que vous n'utilisiez
- 
-\family sans
-XeTeX
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\family sans
-XeTeX 
-\family default
-est un programme de mise en forme
-\family sans
- TeX, 
-\family default
-une alternative à
-\family sans
- LaTeX.
- 
-\family default
-Il gère de façon native Unicode et ses fichiers d'entrée sont supposés être
- en encodage UTF-8.
- On trouvera plus d'information au sujet de LyX et XeTeX dans 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "XeTeX"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\family default
- (voir plus bas).
+ Activer cette option est le meilleur choix.
 \end_layout
 
 \begin_layout Standard
@@ -39652,6 +40179,69 @@ Langue implicite
  marche pas avec un encodage utf8 fixé (quand la liste de commandes LaTeX
  connues n'est pas utilisée, puisque tous les symboles Unicode peuvent être
  encodés en utf8).
+ 
+\lang english
+The situation is much better with XeTeX and LuaTeX, two new alternative
+ engines to standard LaTeX.
+ Both engines support Unicode natively.
+ LyX now also supports these two engines (via the output formats 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(XeTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X)
+\family default
+, 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(LuaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X)
+\family default
+ and 
+\family sans
+DVI
+\begin_inset space ~
+\end_inset
+
+(LuaTeX)
+\family default
+; see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formats-des-fichiers-en-sortie"
+
+\end_inset
+
+), so if the above options fail, you might try out one of these new engines.
 \end_layout
 
 \begin_layout Standard
@@ -40261,28 +40851,20 @@ Unicode
 \family sans
 XeTeX 
 \family default
-qui utilise Unicode directement, sans l'aide du paquetage LaTeX 
+et 
+\family sans
+LuaTeX
+\family default
+ qui utilisent Unicode directement, sans l'aide du paquetage LaTeX 
 \series bold
 inputenc
 \series default
- 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Plus d'information pour utiliser LyX avec XeTeX dans 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "XeTeX"
-
-\end_inset
-
 .
-\end_layout
-
-\end_inset
-
-
+ 
+\lang english
+LyX automatically selects this encoding if you export or preview XeTeX or
+ LuaTeX.
+ Normally you do not need to set this encoding manually.
 \end_layout
 
 \begin_layout Description
@@ -44385,40 +44967,6 @@ status collapsed
 \begin_layout Plain Layout
 
 ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.sty
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\labelwidthstring Bibliographie
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "XeTeX"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "page Wiki"
-target "http://wiki.lyx.org/LyX/XeTeX"
-
-\end_inset
-
- comment utiliser LyX avec XeTeX:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/LyX/XeTeX
 \end_layout
 
 \end_inset
