@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-12-10 17:35+0100\n"
-"PO-Revision-Date: 2010-12-05 14:18+0100\n"
+"PO-Revision-Date: 2010-12-10 17:55+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -3918,9 +3918,8 @@ msgid "Accept compound &words"
 msgstr "Akceptovať zložené slová"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:74
-#, fuzzy
 msgid "Mark misspelled words with a underline."
-msgstr "Podčiarkni vlnovkou nesprávne písané slová."
+msgstr "Podčiarkni nesprávne písané slová."
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:77
 msgid "S&pellcheck continuously"
@@ -4035,7 +4034,6 @@ msgid "&Save"
 msgstr "Uložiť"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:13
-#, fuzzy
 msgid "\"Nomenclature settings\""
 msgstr "&quot;Nastavenia pre nomenklatúru&quot;"
 
@@ -4053,11 +4051,10 @@ msgid "Custom &Width:"
 msgstr "Vlastná Šírka:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
-#, fuzzy
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
 msgstr ""
 "Vlastná hodnota. &quot;Odsadzovanie Zoznamov&quot; je treba nastaviť na "
-"&quot;Vlastná&quot;."
+"&quot;Vlastné&quot;."
 
 #: src/frontends/qt4/ui/PrintUi.ui:28
 msgid "Pages"
@@ -4506,7 +4503,6 @@ msgid "&Vertical Offset:"
 msgstr "Vertikálne vyrovnanie:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:288
-#, fuzzy
 msgid "Optional vertical offset"
 msgstr "Vertikálne vyrovnanie(nepovinné)"
 
@@ -4965,14 +4961,12 @@ msgid "VFill"
 msgstr "Výplň (VFILL)"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:34
-#, fuzzy
 msgid "&Output Format:"
-msgstr "Výstupný formát"
+msgstr "Výstupný Formát:"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:44
-#, fuzzy
 msgid "Select the output format"
-msgstr "Štandardný Výstupný Formát:"
+msgstr "Vyberte výstupný formát"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:54
 msgid "Complete source"
@@ -15999,11 +15993,11 @@ msgstr "intercal"
 
 #: lib/external_templates:36
 msgid "GnumericSpreadsheet"
-msgstr ""
+msgstr "GnumericTabuľkovýProcesor"
 
 #: lib/external_templates:37 lib/external_templates:44
 msgid "Spreadsheet"
-msgstr ""
+msgstr "Tabuľkový procesor"
 
 #: lib/external_templates:39
 msgid ""
@@ -16013,6 +16007,11 @@ msgid ""
 "The gnumeric software is necessary for conversion,\n"
 "both for gnumeric and excel files.\n"
 msgstr ""
+"Tabuľkový procesor zrobený s gnumeric, openoffice alebo excel.\n"
+"Importuje dlhú tabuľku, čiže každá dľžka je v poriadku.\n"
+"Prehnaná šírka by mohla mať problém.\n"
+"Softvér gnumeric je nutná pre konverziu\n"
+"excel i gnumeric súborov.\n"
 
 #: lib/external_templates:76
 msgid "RasterImage"
@@ -16318,15 +16317,15 @@ msgstr "Prostý text, riadky spojiť"
 
 #: lib/configure.py:520
 msgid "Gnumeric spreadsheet"
-msgstr ""
+msgstr " Tabuľkový procesor Gnumeric"
 
 #: lib/configure.py:521
 msgid "Excel spreadsheet"
-msgstr ""
+msgstr "Tabuľkový procesor Excel"
 
 #: lib/configure.py:522
 msgid "OpenOffice spreadsheet"
-msgstr ""
+msgstr " Tabuľkový procesor OpenOffice"
 
 #: lib/configure.py:525 lib/configure.py:527
 msgid "LyXHTML"
