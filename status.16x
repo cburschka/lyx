@@ -99,12 +99,16 @@ What's new
 - Fix the painting of non-InsetText insets with a transparent
   background as well as the description of an InsetCaption (bug 4889).
 
-- Fix unexpected behavior when inserting big math delimiters around a matrix
-  (bug 7088).
+- Fix unexpected behavior when inserting big math delimiters around a
+  matrix (bug 7088).
 
-- Fix save of personal dictionary path to preferences. (bug 6688)
+- Fix save of personal dictionary path to preferences (bug 6688).
 
-- Fix unexpected behavior of some "insert math" menu/toolbar entries. (bug 6709)
+- Fix unexpected behavior of some "insert math" menu/toolbar entries
+  (bug 6709).
+
+- In the table dialog, disable the column width and column alignment when
+  there is a LaTeX argument (bug 3517).
 
 
 * DOCUMENTATION AND LOCALIZATION

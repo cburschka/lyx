@@ -739,8 +739,10 @@ void GuiTabular::updateContents()
 		lengthToWidgets(widthED, widthUnit, colwidth, default_unit);
 	}
 
-	widthED->setEnabled(!isReadonly);
-	widthUnit->setEnabled(!isReadonly);
+	// if there is a LaTeX argument, the width and alignment will be overwritten
+	// therefore disable them in this case
+	widthED->setEnabled(!isReadonly && specialAlignmentED->text().isEmpty());
+	widthUnit->setEnabled(!isReadonly && specialAlignmentED->text().isEmpty());
 
 	hAlignCB->clear();
 	hAlignCB->addItem(qt_("Left"));
@@ -791,8 +793,9 @@ void GuiTabular::updateContents()
 		valign = 0;
 	vAlignCB->setCurrentIndex(valign);
 
-	hAlignCB->setEnabled(true);
-	vAlignCB->setEnabled(!pwidth.zero());
+	hAlignCB->setEnabled(specialAlignmentED->text().isEmpty());
+	vAlignCB->setEnabled(!pwidth.zero()
+		&& specialAlignmentED->text().isEmpty());
 
 	if (!tabular_.is_long_tabular) {
 		headerStatusCB->setChecked(false);
