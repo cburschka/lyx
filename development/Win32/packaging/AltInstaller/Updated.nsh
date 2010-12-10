@@ -29,7 +29,10 @@ Function UpdateModifiedFiles
  #SetOutPath "$INSTDIR\Resources\templates"
  #File "${PRODUCT_SOURCEDIR}\Resources\templates\agutex.lyx"
  SetOutPath "$INSTDIR\Resources\ui"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\classic.ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdcontext.inc"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
 
 FunctionEnd
 
