@@ -69,7 +69,7 @@ What's new
 - Fix insertion of a user math macro through the math-insert lfun when a
   selection is present (bug 6939).
 
-- Make the modules description in the menu Document -> Settings fully
+- Make the modules description in the menu "Document -> Settings" fully
   translatable (bug 6987).
 
 - Fix table line bug when unsetting a multicolumn cell via the table
@@ -80,21 +80,21 @@ What's new
 - Don't allow to make tables within in floats longtables as this could
   lead to LaTeX-errors (bug 6585).
 
-- Correct the denomination of norsk and nynorsk languages.
+- Correct the denomination of the languages Norsk and Nynorsk.
 
 - Do not allow to put the cursor in an InsetInfo. Instead, a context
   menu item is added to facilitate copying of the contents (bug 5446).
 
 - Fix the display of the horizontal alignment of table cells (bug 7007).
 
-- Numbered items in insets that do not produce any output (e.g., Notes)
+- Numbered items in insets that do not produce any output (e.g. Notes)
   no longer have a number associated with them (bug 6315).
 
 - Update the status of the button in the Text Style dialog when the
   cursor is moved (bug 6952).
 
-- Correctly toggle the numbering of an equation when issuing the
-  "Insert->Numbered equation" on a displayed equation (bug 6709).
+- Correctly toggle the numbering of an equation when issuing the menu
+  "Insert -> Numbered equation" on a displayed equation (bug 6709).
   
 - Fix the painting of non-InsetText insets with a transparent
   background as well as the description of an InsetCaption (bug 4889).
