@@ -2412,7 +2412,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			    && p.next_token().asInput() == "*")
 				name += p.get_token().asInput();
 			context.check_layout(os);
-			begin_inset(os, "Include ");
 			string filename(normalize_filename(p.getArg('{', '}')));
 			string const path = getMasterFilePath();
 			// We want to preserve relative / absolute filenames,
@@ -2427,27 +2426,53 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				if (!tex_name.empty())
 					filename = tex_name;
 			}
+			bool xfig = false;
+			string outname;
 			if (makeAbsPath(filename, path).exists()) {
 				string const abstexname =
 					makeAbsPath(filename, path).absFileName();
 				string const abslyxname =
 					changeExtension(abstexname, ".lyx");
+				string const absfigname =
+					changeExtension(abstexname, ".fig");
 				fix_relative_filename(filename);
 				string const lyxname =
 					changeExtension(filename, ".lyx");
-				if (t.cs() != "verbatiminput" &&
+				if (t.cs() == "input" && FileName(absfigname).exists()) {
+					FileName const absepsname(
+						changeExtension(abstexname, ".eps"));
+					FileName const abspdfname(
+						changeExtension(abstexname, ".pdf"));
+					string const ext = getExtension(abstexname);
+					bool const xfigpdf =
+						abspdfname.exists() && ext == "pdftex_t";
+					bool const xfigeps  =
+						absepsname.exists() && ext == "pstex_t";
+					xfig = xfigpdf || xfigeps;
+				}
+				if (xfig) {
+					outname = changeExtension(filename, ".fig");
+				} else if (t.cs() != "verbatiminput" &&
 				    tex2lyx(abstexname, FileName(abslyxname),
 					    p.getEncoding())) {
-					os << name << '{' << lyxname << "}\n";
+					outname = lyxname;
 				} else {
-					os << name << '{' << filename << "}\n";
+					outname = filename;
 				}
 			} else {
 				cerr << "Warning: Could not find included file '"
 				     << filename << "'." << endl;
-				os << name << '{' << filename << "}\n";
+				outname = filename;
 			}
-			os << "preview false\n";
+			if (xfig) {
+				begin_inset(os, "External\n");
+				os << "\ttemplate XFig\n"
+				   << "\tfilename " << outname << '\n';
+			} else {
+				begin_inset(os, "Include ");
+				os << name << '{' << outname
+				   << "}\npreview false\n";
+			}
 			end_inset(os);
 		}
 
