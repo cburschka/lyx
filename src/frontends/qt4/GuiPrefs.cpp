@@ -2455,7 +2455,8 @@ void PrefUserInterface::update(LyXRC const & rc)
 	lastfilesSB->setValue(rc.num_lastfiles);
 	tooltipCB->setChecked(rc.use_tooltip);
 	openDocumentsInTabsCB->setChecked(rc.open_buffers_in_tabs);
-	singleInstanceCB->setChecked(rc.single_instance);
+	singleInstanceCB->setChecked(rc.single_instance && !rc.lyxpipes.empty());
+	singleInstanceCB->setEnabled(!rc.lyxpipes.empty());
 	singleCloseTabButtonCB->setChecked(rc.single_close_tab_button);
 }
 
