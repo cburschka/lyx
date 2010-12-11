@@ -721,11 +721,11 @@ void MathMacroTemplate::changeArity(Cursor & cur,
 {
 	// remove parameter which do not appear anymore in the definition
 	for (int i = numargs_; i > newNumArg; --i)
-		removeParameter(cur, inset_pos, numargs_ - 1, false);
+		removeParameter(cur, inset_pos, numargs_ - 1, true);
 	
 	// add missing parameter
 	for (int i = numargs_; i < newNumArg; ++i)
-		insertParameter(cur, inset_pos, numargs_, false, false);
+		insertParameter(cur, inset_pos, numargs_, true, false);
 }
 
 
