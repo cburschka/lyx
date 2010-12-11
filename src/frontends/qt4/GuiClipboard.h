@@ -20,6 +20,8 @@
 #include <QObject>
 #include <QStringList>
 
+#include <boost/cstdint.hpp>
+
 namespace lyx {
 namespace frontend {
 
@@ -90,6 +92,8 @@ private:
 	/// the cached mime data used to describe the information
 	/// that can be stored in the clipboard
 	CacheMimeData cache_;
+	/// checksum for internal clipboard data (used on Mac) 
+	boost::uint32_t checksum;
 };
 
 QString const lyxMimeType();

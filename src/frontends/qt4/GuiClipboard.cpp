@@ -45,6 +45,8 @@
 #include <QString>
 #include <QStringList>
 
+#include <boost/crc.hpp>
+
 #include <memory>
 #include <map>
 #include <iostream>
@@ -349,6 +351,13 @@ void GuiClipboard::put(string const & lyx, docstring const & text)
 	if (!lyx.empty()) {
 		QByteArray const qlyx(lyx.c_str(), lyx.size());
 		data->setData(lyxMimeType(), qlyx);
+		// If the OS has not the concept of clipboard ownership,
+		// we recognize internal data through its checksum.
+		if (!hasInternal()) {
+			boost::crc_32_type crc32;
+			crc32.process_bytes(lyx.c_str(), lyx.size());
+			checksum = crc32.checksum();
+		}
 	}
 	// Don't test for text.empty() since we want to be able to clear the
 	// clipboard.
@@ -414,11 +423,22 @@ bool GuiClipboard::hasGraphicsContents(Clipboard::GraphicsType type) const
 
 bool GuiClipboard::isInternal() const
 {
+	if (!hasLyXContents())
+		return false;
+
 	// ownsClipboard() is also true for stuff coming from dialogs, e.g.
-	// the preamble dialog
-	// FIXME: This does only work on X11, since ownsClipboard() is
-	// hardwired to return false on Windows and OS X.
-	return qApp->clipboard()->ownsClipboard() && hasLyXContents();
+	// the preamble dialog. This does only work on X11 and Windows, since
+	// ownsClipboard() is hardwired to return false on OS X.
+	if (hasInternal())
+		return qApp->clipboard()->ownsClipboard();
+
+	// We are running on OS X: Check whether clipboard data is from
+	// ourself by comparing its checksum with the stored one.
+	QByteArray const ar = cache_.data(lyxMimeType());
+	string const data(ar.data(), ar.count());
+	boost::crc_32_type crc32;
+	crc32.process_bytes(data.c_str(), data.size());
+	return checksum == crc32.checksum();
 }
 
 
@@ -426,8 +446,10 @@ bool GuiClipboard::hasInternal() const
 {
 	// Windows and Mac OS X does not have the concept of ownership;
 	// the clipboard is a fully global resource so all applications 
-	// are notified of changes.
-#if (defined(Q_WS_X11))
+	// are notified of changes. However, on Windows ownership is
+	// emulated by Qt through the OleIsCurrentClipboard() API, while
+	// on Mac OS X we deal with this issue by ourself.
+#if (defined(Q_WS_X11) || defined(Q_WS_WIN))
 	return true;
 #else
 	return false;
