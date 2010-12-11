@@ -44,6 +44,7 @@
 #include "LyXAction.h"
 #include "LyX.h"
 #include "LyXRC.h"
+#include "lyxfind.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
 #include "Session.h"
@@ -748,35 +749,41 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 	docstring_list suggestions;
 	pos_type from = bv->cursor().pos();
 	pos_type to = from;
-	Paragraph const & par = bv->cursor().paragraph();
+	Cursor const & cur = bv->cursor();
+	Paragraph const & par = cur.paragraph();
 	SpellChecker::Result res = par.spellCheck(from, to, wl, suggestions, true, true);
 	switch (res) {
 	case SpellChecker::UNKNOWN_WORD:
 		if (lyxrc.spellcheck_continuously) {
 			LYXERR(Debug::GUI, "Misspelled Word! Suggested Words = ");
-			size_t i = 0;
-			size_t m = 10; // first submenu index
-			MenuItem item(MenuItem::Submenu, qt_("More Spelling Suggestions"));
-			item.setSubmenu(MenuDefinition(qt_("More Spelling Suggestions")));
-			for (; i != suggestions.size(); ++i) {
-				docstring const & suggestion = suggestions[i];
-				LYXERR(Debug::GUI, suggestion);
-				MenuItem w(MenuItem::Command, toqstr(suggestion),
-					FuncRequest(LFUN_WORD_REPLACE, suggestion));
-				if (i < m)
-					add(w);
-				else
-					item.submenu().add(w);
+			docstring const & selection = cur.selectionAsString(false);
+			if (!cur.selection() || selection == wl.word()) {
+				size_t i = 0;
+				size_t m = 10; // first submenu index
+				MenuItem item(MenuItem::Submenu, qt_("More Spelling Suggestions"));
+				item.setSubmenu(MenuDefinition(qt_("More Spelling Suggestions")));
+				for (; i != suggestions.size(); ++i) {
+					docstring const & suggestion = suggestions[i];
+					LYXERR(Debug::GUI, suggestion);
+					MenuItem w(MenuItem::Command, toqstr(suggestion),
+						FuncRequest(LFUN_WORD_REPLACE, 
+							replace2string(suggestion,selection,
+								true, true, false, false)));
+					if (i < m)
+						add(w);
+					else
+						item.submenu().add(w);
+				}
+				if (i > m)
+					add(item);
+				if (i > 0)
+					add(MenuItem(MenuItem::Separator));
+				docstring const arg = wl.word() + " " + from_ascii(wl.lang()->lang());
+				add(MenuItem(MenuItem::Command, qt_("Add to personal dictionary|n"),
+						FuncRequest(LFUN_SPELLING_ADD, arg)));
+				add(MenuItem(MenuItem::Command, qt_("Ignore all|I"),
+						FuncRequest(LFUN_SPELLING_IGNORE, arg)));
 			}
-			if (i > m)
-				add(item);
-			if (i > 0)
-				add(MenuItem(MenuItem::Separator));
-			docstring const arg = wl.word() + " " + from_ascii(wl.lang()->lang());
-			add(MenuItem(MenuItem::Command, qt_("Add to personal dictionary|n"),
-					FuncRequest(LFUN_SPELLING_ADD, arg)));
-			add(MenuItem(MenuItem::Command, qt_("Ignore all|I"),
-					FuncRequest(LFUN_SPELLING_IGNORE, arg)));
 		}
 		break;
 	case SpellChecker::LEARNED_WORD: {
