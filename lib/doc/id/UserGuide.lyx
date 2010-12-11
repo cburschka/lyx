@@ -1,5 +1,5 @@
-#LyX 2.0.0beta1 created this file. For more info see http://www.lyx.org/
-\lyxformat 407
+#LyX 2.0.0beta2 created this file. For more info see http://www.lyx.org/
+\lyxformat 410
 \begin_document
 \begin_header
 \textclass scrbook
@@ -51,6 +51,7 @@
 %\renewcommand*{\index}[1]{\OrgIndex{#1}}
 
 % the following added in Bahasa Indonesia Version
+% to follow the most common style (centered chapters) in Indonesia
 \addtokomafont{chapterentry}{\centering}
 \addtokomafont{chapter}{\centering}
 \end_preamble
@@ -64,7 +65,7 @@
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -142,7 +143,7 @@ Petunjuk Penggunaan LyX
 \begin_layout Author
 oleh Tim LyX
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -180,7 +181,7 @@ type "mailto:"
 
 Versi 2.0.x
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Versi PDF terkini dapat diperoleh disini:
@@ -415,7 +416,7 @@ Preferensi
 \family default
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Preferensi
@@ -435,7 +436,7 @@ Konfigurasi Ulang
 \family default
 .
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Konfigurasi Ulang LyX
@@ -576,7 +577,7 @@ Bagaimana Menggunakan LyX
 \begin_layout Section
 Dasar Penggunaan Berkas
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Penggunaan Berkas
@@ -838,7 +839,7 @@ anda dapat mendaftarkan catatan perubahan pada dokumen sehingga orang lain
 \begin_layout Section
 Dasar Fitur Penyuntingan
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Penyuntingan
@@ -857,29 +858,30 @@ name "sec:Basic-Editing-Features"
 \end_layout
 
 \begin_layout Standard
-Like most modern word processors, LyX can perform cut and paste operations
- on blocks of text, can move by character, word, or page of text, and can
- delete whole words as well as individual characters.
- The next four sections cover the basic LyX editing features and how to
- access them.
- We'll start with cut and paste.
+Seperti pengolah kata modern lainnya, operasi penyuntingan dengan potong
+ dan tempel dalam LyX dapat dipraktekkan untuk teks, berupa karakter, kata,
+ maupun keseluruhan halaman atau bahkan lebih dari satu halaman.
+ Pada empat subbab berikut akan menjelaskan fitur penyuntingan yang ada
+ dalam LyX dan bagaimana memanfaatkannya.
+ Kita akan memulai dari potong dan tempel.
 \end_layout
 
 \begin_layout Standard
-As you might expect, the 
+Seperti yang anda perkirakan, menu 
 \family sans
-Edit
+Suntingan
 \family default
- menu and the standard toolbar has the cut and paste commands, along with
- various other editing features.
- Some of these are special and covered in later sections.
- The basic ones are:
+ dan kotak bantuan standar menyediakan perintah potong dan tempelkan serta
+ fitur suntingan lainnya.
+ Beberapa perintah suntingan perlu pembahasan khusus sehingga dikelompokkan
+ dalam pembahasan subbab berikutnya.
+ Perintah suntingan utama adalah:
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Cut 
+Potong 
 \family default
 
 \begin_inset Graphics
@@ -894,7 +896,7 @@ Cut
 \begin_layout Itemize
 
 \family sans
-Copy 
+Salin 
 \family default
 
 \begin_inset Graphics
@@ -909,7 +911,7 @@ Copy
 \begin_layout Itemize
 
 \family sans
-Paste 
+Tempelkan 
 \family default
 
 \begin_inset Graphics
@@ -924,35 +926,39 @@ Paste
 \begin_layout Itemize
 
 \family sans
-Paste
-\begin_inset space ~
+Tempelkan
+\begin_inset space \thinspace{}
 \end_inset
 
-Recent
+yg
+\begin_inset space \thinspace{}
+\end_inset
+
+terkini
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Paste
-\begin_inset space ~
+Tempelkan
+\begin_inset space \thinspace{}
 \end_inset
 
-Special
+Spesial
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Find
-\begin_inset space ~
+Cari
+\begin_inset space \thinspace{}
 \end_inset
 
 &
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
-Replace 
+Ganti 
 \family default
 
 \begin_inset Graphics
@@ -966,29 +972,32 @@ Replace
 \end_layout
 
 \begin_layout Standard
-The first three are self-explanatory.
- One thing to note: whenever you delete a block of text that you've selected,
- it's automatically placed in the clipboard.
- That is, the 
+Tiga perintah suntingan yang pertama dapat dipahami dari nama perintahnya
+ sendiri.
+ Hanya ada beberapa catatan: apabila anda memilih dan menandai teks di dokumen
+ anda, maka secara otomatis akan tersimpam di papan klip.
+ Tombol 
 \family sans
 Delete
 \family default
- and 
+ dan 
 \family sans
 Backspace
 \family default
- keys also function as the 
+ juga berfungsi sebagai perintah 
 \family sans
-Cut
+Potong
 \family default
- command.
- Also, if you've selected text, be careful: If you hit a key, LyX will completel
-y delete the selected text and replace it with what you just typed.
- You'll have to do an 
+.
+ Selain itu yang paling penting, jika anda memilih dan menandai teks, harap
+ hati-hati: jika anda menekan salah satu tombol, maka LyX akan menghapus
+ teks yang anda pilih tadi dan mengganti dengan dengan huruf atau karakter
+ yang anda tekan.
+ Untuk mengembalikannya, anda perlu melakukan perintah 
 \family sans
-Undo
+Batalkan
 \family default
- to get back the lost text.
+ agar teks dikembalikan seperti semula.
 \end_layout
 
 \begin_layout Standard
@@ -996,59 +1005,79 @@ Undo
 status collapsed
 
 \begin_layout Plain Layout
-Paste
+Tempelkan
 \end_layout
 
 \end_inset
 
-You can also copy text between LyX and other programs by cut, copy and paste.
- The submenu of 
+Anda dapat dapat menyalin teks di LyX juga dari program lainnya menggunakan
+ 
 \family sans
-Paste
-\begin_inset space ~
+Potong
+\family default
+, 
+\family sans
+Salin
+\family default
+ dan 
+\family sans
+Tempelkan
+\family default
+.
+ Anak menu 
+\family sans
+Tempelkan
+\family default
+
+\begin_inset space \thinspace{}
 \end_inset
 
-Recent
+
+\family sans
+yg
 \family default
- shows you a list with the last strings you have pasted.
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\family sans
+terkini
+\family default
+ akan menampilkan daftar teks yang terakhir anda tempelkan.
 \end_layout
 
 \begin_layout Standard
-The menu 
+Dari menu Suntingan
 \family sans
-Edit\SpecialChar \menuseparator
-Paste
-\begin_inset space ~
+\SpecialChar \menuseparator
+Tempelkan
+\begin_inset space \thinspace{}
 \end_inset
 
-Special\SpecialChar \menuseparator
-Plain
-\begin_inset space ~
+spesial, Teks
+\begin_inset space \thinspace{}
 \end_inset
 
-Text, Join
-\begin_inset space ~
+biasa,
+\begin_inset space \thinspace{}
 \end_inset
 
-Lines
+Disambungkan 
 \family default
- will insert the text in the clipboard so that the whole text is inserted
- as 
+akan menyisipkan teks yang tersimpan di papan klip sedemikian sehingga teks
+ yang disisipkan dalam 
 \emph on
-one
+satu
 \emph default
- paragraph.
- A new paragraph is started when there is a blank line in the file.
- Without 
+ paragraf.
+ Paragraf baru akan dimulai apabila ada baris kosong.
+ Tanpa pilihan 
 \family sans
-Join
-\begin_inset space ~
-\end_inset
-
-Lines
+Disambungkan
 \family default
-, the text is inserted as Paragraphs, where the line breaks of the text
- will start a new paragraph.
+, teks disisipkan sebagai paragraf baru, dimana setiap ganti baris menjadi
+ awal paragraf.
 \end_layout
 
 \begin_layout Standard
@@ -1056,7 +1085,7 @@ Lines
 status collapsed
 
 \begin_layout Plain Layout
-Replace
+Ganti
 \end_layout
 
 \end_inset
@@ -1066,80 +1095,140 @@ Replace
 status collapsed
 
 \begin_layout Plain Layout
-Find
+Cari
 \end_layout
 
 \end_inset
 
-The 
+Menu 
 \family sans
-Edit\SpecialChar \menuseparator
-Find
-\begin_inset space ~
+Suntingan\SpecialChar \menuseparator
+Cari
+\begin_inset space \thinspace{}
 \end_inset
 
 &
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
-Replace
+Ganti
 \family default
- item opens the 
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
-Find
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
-Replace
+(Cepat)
 \family default
- dialog.
- Once you have found a word or expression, LyX selects it.
- Hitting the 
+ akan membuka jendela dialog 
 \family sans
-Replace
-\family default
- button replaces the selected text with the contents of the 
-\family sans
-Replace
-\begin_inset space ~
+Cari
+\begin_inset space \thinspace{}
 \end_inset
 
-with
-\family default
- field.
- You can click the 
-\family sans
-Find
-\begin_inset space ~
+&
+\begin_inset space \thinspace{}
 \end_inset
 
-Next
+Ganti
 \family default
- button to skip the current word.
- Hit 
+.
+ Apabila anda sudah menemukan kata atau ekspresi yang anda cari, LyX akan
+ menandainya.
+ Dengan menekan tombol 
 \family sans
-Replace
-\begin_inset space ~
+Ganti
+\family default
+, kata yang ditemukan tadi akan digantikan dengan teks yang ada di area
+ 
+\family sans
+Ganti
+\family default
+
+\begin_inset space \thinspace{}
 \end_inset
 
-All
-\family default
- to replace all occurrences of the text in the document automatically.
- The 
+
 \family sans
-Case
-\begin_inset space ~
+dengan
+\family default
+.
+ Anda bisa meneruskan pencarian dengan menekan tombol Berikutnya.
+ Jika anda menekan tombol 
+\family sans
+Ganti
+\family default
+
+\begin_inset space \thinspace{}
 \end_inset
 
-sensitive
+
+\family sans
+Semua
 \family default
- option can be used if you want the search to consider the case of the search
- word.
- If the toggle is set, searching for 
+ maka semua kata yang ada di dokumen akan diganti seketika secara otomatis.
+ 
+\end_layout
+
+\begin_layout Standard
+Apabila anda ingin mempertimbangkan huruf besar/kecil, anda perlu menggunakan
+ menu 
+\family sans
+Suntingan\SpecialChar \menuseparator
+Cari
+\begin_inset space \thinspace{}
+\end_inset
+
+&
+\begin_inset space \thinspace{}
+\end_inset
+
+Ganti
+\family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\family sans
+(Lengkap)
+\family default
+.
+ Pada dialog 
+\family sans
+Cari
+\begin_inset space \thinspace{}
+\end_inset
+
+&
+\begin_inset space \thinspace{}
+\end_inset
+
+Ganti
+\family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\family sans
+(Lengkap) 
+\family default
+anda bisa mengatur pencarian yang anda inginkan.
+ Apabila anda mengkatifkan pilihan 
+\family sans
+Pertimbangkan
+\begin_inset space \thinspace{}
+\end_inset
+
+huruf
+\begin_inset space \thinspace{}
+\end_inset
+
+besar/kecil
+\family default
+ , maka pencarian kata 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1151,7 +1240,7 @@ Test
 \begin_inset Quotes erd
 \end_inset
 
- will not match the word 
+ akan berbeda dengan 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1164,15 +1253,15 @@ test
 \end_inset
 
 .
- The 
+ Pilihan 
 \family sans
-Match whole words only
-\family default
- option can be used to force LyX to only find complete words, i.
+Seluruh
 \begin_inset space \thinspace{}
 \end_inset
 
-g., searching for 
+kata
+\family default
+ akan memaksa LyX hanya mencari kata tersebut, misalnya pencarian 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1184,7 +1273,7 @@ star
 \begin_inset Quotes erd
 \end_inset
 
- will not match 
+ tidak akan menemukan 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1200,15 +1289,17 @@ starlet
 \end_layout
 
 \begin_layout Standard
-Things like notes, floats, etc., the so called insets can be dissolved.
- This means that the inset is deleted and its content is left as normal
- text.
- Dissolving an inset is done by setting the cursor to the beginning of an
- inset and pressing 
+Beberapa sisipan tambahan berformat, seperti nota, ambangan, dll., dapat
+ diuraikan.
+ Maknanya apabila tanda sisipan dihilangkan, maka isinya akan berubah menjadi
+ teks normal.
+ Cara menguraikan sisipan tambahan adalah dengan meletakkan kursor di lokasi
+ paling depan dalam kotak sisipan kemudian menekan tombol ketik 
 \family sans
 Backspace
 \family default
- or by setting the cursor to the end and pressing 
+ atau meletakkan kursor di bagian akhir dalam kotak sisipan kemudian menekan
+ tombol ketik 
 \family sans
 Delete
 \family default
@@ -1216,22 +1307,22 @@ Delete
 \end_layout
 
 \begin_layout Section
-Undo and Redo
+Batalkan dan Kembalikan
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Redo
+Kembalikan
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Undo
+Batalkan
 \end_layout
 
 \end_inset
@@ -1247,87 +1338,90 @@ name "sec:Undo-and-Redo"
 \end_layout
 
 \begin_layout Standard
-If you make a mistake, you can easily recover from it.
- LyX has a large-capacity undo/redo buffer.
- Select 
+Jika anda membuat kesalahan anda dapat dengan mudah membatalkannya.
+ Anda perlu ke menu Suntingan
 \family sans
-Edit\SpecialChar \menuseparator
-Undo
+\SpecialChar \menuseparator
+Batalkan 
 \family default
- or the toolbar button 
+atau dari tombol bantuan
+\family sans
+ 
+\family default
+
 \begin_inset Graphics
 	filename ../../images/undo.png
 	scale 55
 
 \end_inset
 
- to undo some mistake.
- If you accidentally undo too much, use 
+ untuk membatalkan apa yang baru saja anda lakukan.
+ LyX mempunyai kemampunyan menyimpan dalam kapasitas yang besar untuk membatalka
+n/mengembalikan.
+ Saat ini mekanisme simpanan maksimum adalah sampai 100
+\begin_inset space \thinspace{}
+\end_inset
+
+kali.
+ Apabila secara tidak sengaja anda melakukan proses pembatalan yang terlebih,
+ anda bisa mengembalikannya dari menu 
 \family sans
-Edit\SpecialChar \menuseparator
-Redo
+Suntingan\SpecialChar \menuseparator
+Kembalikan
 \family default
- or the toolbar button 
+ atau dengan menekan tombol 
 \begin_inset Graphics
 	filename ../../images/redo.png
 	scale 55
 
 \end_inset
 
- to 
-\begin_inset Quotes eld
-\end_inset
-
-undo the undo.
-\begin_inset Quotes erd
-\end_inset
-
- The undo mechanism is currently limited to 100
-\begin_inset space \thinspace{}
-\end_inset
-
-steps to minimize memory overhead.
+ .
 \end_layout
 
 \begin_layout Standard
-Note that if you revert back all changes to arrive to the document as it
- was last saved, the 
+Apabila anda mengembalikan perubahan sampai ke kondisi dokumen saat terakhir
+ disimpan, status dokumen 
 \begin_inset Quotes eld
 \end_inset
 
-changed
+ada perubahan
 \begin_inset Quotes erd
 \end_inset
 
- status of the document is unfortunately not reset.
- This is a consequence of the 100
-\begin_inset space \thinspace{}
-\end_inset
-
-step undo limit, above.
+ tidak akan menjadi normal kembali seperti tidak ada perubahan.
+ Hal ini karena anda sebenarnya melakukan perubahan pada dokumen.
 \end_layout
 
 \begin_layout Standard
-
+Proses 
 \family sans
-Undo
+Batalkan
 \family default
- and 
+ dan 
 \family sans
-Redo
+Kembalikan
 \family default
- work on almost everything in LyX.
- But they won't undo or redo text character by character, but by blocks
- of text.
+ dapat dilakukan untuk apa saja di LyX.
+ Namun demikian proses 
+\family sans
+Batalkan
+\family default
+ dan 
+\family sans
+Kembalikan
+\family default
+ pada teks tidak dilakukan untuk setiap karakter, tetapi berlaku untuk kumpulan
+ teks.
 \end_layout
 
 \begin_layout Section
-Mouse Operations
+Penggunaan Tetikus
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Mouse Operations
+Penggunaan Tetikus
 \end_layout
 
 \end_inset
@@ -1336,82 +1430,89 @@ Mouse Operations
 \end_layout
 
 \begin_layout Standard
-These are the most basic mouse operations.
+Berikut ini adalah dasar pengunaan tetikus.
 \end_layout
 
 \begin_layout Enumerate
-Motion
+Memindah Kursor
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Click the 
+Tekan atau klik 
 \emph on
-left mouse button
+tombol tetikus kiri
 \emph default
- once anywhere in the edit window.
- The cursor moves to the text under the mouse.
+ sekali di daerah jendela kerja LyX.
+ Kursor akan mengikuti dan berkedip tepat di tempat anda menekan tombol
+ kiri tetikus.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Selecting Text
+Memilih dan Menandai Teks
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Hold down the 
+Tekan dan tahan 
 \emph on
-left mouse button
+tombol kiri tetikus
 \emph default
- and drag the mouse.
- LyX marks the text between the old and new mouse positions.
- Use 
+ kemudian seret tetikus.
+ LyX akan menandai teks mulai dari awal kursor sebelum diseret sampai ke
+ tempat posisi kursor setelah diseret.
+ Gunakan 
 \family sans
-Edit\SpecialChar \menuseparator
-Copy
+Suntingan\SpecialChar \menuseparator
+Salin
 \family default
- to create a copy of the text in LyX's buffer (and the clipboard).
+ untuk membuat salinan teks dalam simpanan LyX (dan papan klip).
 \end_layout
 
 \begin_layout Itemize
-Re-position the cursor and then paste the text back into LyX using 
+Pindahkan kursor ke tempat lain kemudian tempelkan teks yang disimpan ke
+ lokasi baru, menggunakan 
 \family sans
-Edit\SpecialChar \menuseparator
-Paste
+Suntingan\SpecialChar \menuseparator
+
 \family default
-.
+Tempelkan.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Insets (Footnotes, Notes, Floats, etc.)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Right-click on them to set their properties.
- Also check the appropriate section of this manual for more details.
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Tables
+Sisipan Tambahan (Catatan kaki, Nota, Ambangan, etc.)
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 
 \emph on
-Single click
+Klik-kanan
 \emph default
- the right mouse button to open a dialog that will allow you to manipulate
- the table.
+ pada sisipan tambahan untuk melihat propertinya.
+ Anda perlu membaca pada bab tertentu di buku panduan ini untuk penjelasan
+ lebin terperinci.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Tabel
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+Klik-kanan
+\emph default
+ pada sel tabel akan membuka dialog pengaturan lanjut pada tabel.
 \end_layout
 
 \end_deeper
 \begin_layout Section
-Navigating
+Navigasi
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Navigating"
@@ -1420,10 +1521,10 @@ name "sec:Navigating"
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Navigating
+Navigasi
 \end_layout
 
 \end_inset
@@ -1432,27 +1533,32 @@ Navigating
 \end_layout
 
 \begin_layout Standard
-LyX offers you two ways to navigate in documents:
+LyX menyediakan dua cara navigasi dalam dokumen:
 \end_layout
 
 \begin_layout Itemize
-The menu 
+Menu 
 \family sans
-Navigate
+Navigasi
 \family default
- lists all sections of the document as submenu entries that you can click
- to jump to the corresponding document part.
+ memaparkan semua bagian yang ada dalam dokumen yang bisa anda klik untuk
+ melihat bagian dokumen tersebut.
 \end_layout
 
 \begin_layout Itemize
-The menu 
+Menu 
 \family sans
-Document\SpecialChar \menuseparator
-Outline
+Dokumen\SpecialChar \menuseparator
+Paparan
+\begin_inset space \thinspace{}
+\end_inset
+
+Isi
 \family default
- or the toolbar button 
+ atau dari tombol bantuan 
 \begin_inset Graphics
 	filename ../../images/dialog-toggle_toc.png
+	scale 55
 
 \end_inset
 
@@ -1460,8 +1566,8 @@ Outline
 \end_layout
 
 \begin_layout Standard
-The outline window shows you the content of the document's table of contents
- (TOC) that is described in section
+Jendela paparan menampilkan kandungan dokumen berupa daftar isi (TOC) seperti
+ yang dikemukakan pada subbab
 \begin_inset space ~
 \end_inset
 
@@ -1473,11 +1579,12 @@ reference "sub:Table-of-Contents"
 \end_inset
 
 .
- You can click there on entries to jump to the corresponding document part.
- In the pull-down box at the top of the outline window, you can choose between
- different lists of document objects, like the list of footnotes.
- Some of them, the list of tables, figures, and algorithms can also be added
- to the document, see section
+ Anda dapat memilih dan jika anda klik, anda akan dibawa ke bagian dokumen
+ yang anda klik tadi.
+ Pada bagian atas jendela paparan, ada kotak pilihan tarik yang berisi pilihan
+ berbagai daftar obyek, seperti Daftar Catatan Kaki.
+ Beberapa daftar lainnya, misalnya Daftar Tabel, Daftar Gambar, Daftar Algoritma
+ bisa juga ditambahkan dalam dokumen, lihat di subbab
 \begin_inset space ~
 \end_inset
 
@@ -1489,49 +1596,45 @@ reference "sub:List-of-Figures"
 \end_inset
 
 .
- The 
+ Pilihan 
 \family sans
-Sort
+Urutkan
 \family default
- option sorts the current list, and the 
-\family sans
-Keep
-\family default
- option keeps it in the current view state.
- Keeping means that when you have e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-the subsections of section
-\begin_inset space ~
-\end_inset
-
-2 and 4 shown and click on section
-\begin_inset space ~
-\end_inset
-
-3, the subsections of section
-\begin_inset space ~
-\end_inset
-
-2 and 4 will still be shown.
- Without the 
-\family sans
-Keep
-\family default
- option they will be hidden to highlight the clicked section
-\begin_inset space ~
-\end_inset
-
-3.
+ akan mengurutkan semua yang ada dalam jendela paparan, sedangkan pilihan
+ Tetap akan mempertahankan tampilan paparan.
 \end_layout
 
 \begin_layout Standard
-With the buttons 
+Pilihan 
+\family sans
+Urutkan
+\family default
+ seperti namanya, akan mengurutkan yang ada di jendela paparan.
+ Sedangkan pilihan 
+\family sans
+Tetap
+\family default
+ akan mempertahankan tampilan seperti kondisi terakhir.
+ 
+\family sans
+Tetap
+\family default
+ disini berarti anda mempertahankan yang sudah dibuka.
+ Misalnya anda sudah membuka di aras sub-subbab, misalnya di sub-subbab
+\begin_inset space ~
+\end_inset
+
+2 juga 4, kemudian anda berpindah ke subbab
+\begin_inset space ~
+\end_inset
+
+3, maka sub-subbab yang sudah dibuka tidak akan ditutup.
+ Tanpa pilihan Tetap, ketika anda berpindah dari sub-subbab ke subbab, maka
+ sub-subbab akan ditutup dan kembali ke aras subbab.
+\end_layout
+
+\begin_layout Standard
+Dengan menggunakan tombol 
 \begin_inset space \space{}
 \end_inset
 
@@ -1541,12 +1644,7 @@ With the buttons
 
 \end_inset
 
-
-\begin_inset space \hspace{}
-\length -3mm
-\end_inset
-
- and 
+ dan 
 \begin_inset space \space{}
 \end_inset
 
@@ -1556,53 +1654,64 @@ With the buttons
 
 \end_inset
 
-
-\begin_inset space \hspace{}
-\length -3mm
+ yang berada di bagian bawah jendela paparan, anda dapat merubah posisi
+ bagian dokumen keatas atau kebawah.
+ Misalnya, dengan menggunakan tombol 
+\begin_inset space \space{}
 \end_inset
 
- at the bottom of the outline window you can change the position of sections
- in your document.
- So you can for example move section
+
+\begin_inset Graphics
+	filename ../../images/up.png
+
+\end_inset
+
+ anda dapat merubah subbab
 \begin_inset space ~
 \end_inset
 
-2.5 before section
+2.5 menjadi subbab
 \begin_inset space ~
 \end_inset
 
 2.4.
- LyX will then automatically renumber the sections to the new order.
- With the buttons 
+ LyX secara otomatis akan merubah nomor sesuai dengan posisi yang baru.
+\end_layout
+
+\begin_layout Standard
+Dengan menggunakan Tombol 
 \begin_inset Graphics
 	filename ../../images/promote.png
+	scale 55
 
 \end_inset
 
- and 
+ (tombol
+\family sans
+ Tab)
+\family default
+ dan 
 \begin_inset Graphics
 	filename ../../images/demote.png
+	scale 55
 
 \end_inset
 
- or the corresponding key bindings 
-\family sans
-Tab
-\family default
- and 
+ (tombol 
 \family sans
 Shift-Tab
 \family default
- you can change the sectioning level of sections.
- So you can for example make section
+), anda dapat merubah posisi bagian dokumen pada aras kedalamannya, misalnya
+ dari sub-subbab menjadi subbab atau sebaliknya dari subbab menjadi subsubbab.
+ Dengan mengunakan fitur ini, anda dapat merubah dari subbab
 \begin_inset space ~
 \end_inset
 
-2.5 to chapter
+2.5 menjadi bab
 \begin_inset space ~
 \end_inset
 
-3 or to subsection
+3 atau sub-subbab
 \begin_inset space ~
 \end_inset
 
@@ -1610,21 +1719,24 @@ Shift-Tab
 \end_layout
 
 \begin_layout Standard
-The toolbar button 
+Kotak bantuan 
 \begin_inset Graphics
 	filename ../../images/bookmark-goto_0.png
+	scale 55
 	rotateOrigin center
 
 \end_inset
 
- jumps to the position in the document where you recently changed something.
- This is for example useful when you have a large document and navigated
- or scrolled to another document part to look for something, and want to
- go back to your last editing position.
+ membantu anda untuk melompat ke posisi dokumen yang terakhir anda ubah.
+ Ini sangat bermanfaat jika anda bekerja dalam dokumen yang panjang; misalnya
+ anda merubah teks kemudian melihat ke bagian lain dan ingin kembali ke
+ tempat semula saat anda melakukan perubahan.
+ Dengan sekali tekan tombol bantuan ini, anda akan kembali ke posisi semula.
+ 
 \end_layout
 
 \begin_layout Section
-Input / Word Completion
+Masukan / Melengkapi Kata
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Input-Completion"
@@ -1633,20 +1745,20 @@ name "sec:Input-Completion"
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Input completion
+Masukan kata
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Word completion|see
+Melengkapi kata|see
 \begin_inset ERT
 status collapsed
 
@@ -1657,7 +1769,7 @@ status collapsed
 
 \end_inset
 
-Input completion
+Masukan kata
 \begin_inset ERT
 status collapsed
 
@@ -1677,62 +1789,71 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-LyX provides completion of words by scanning all documents that are currently
- opened.
- Every word that appears in these documents is added to a database that
- is used to propose completions.
+LyX menyediakan data kata-kata untuk mempercepat proses penyuntingan dari
+ hasil memindai kata-kata dalam dokumen yang sedang dibuka.
+ Semua kata-kata yang ada dalam dokumen disimpan dalam basis data untuk
+ digunakan melengkapi kata saat proses penyuntingan.
 \end_layout
 
 \begin_layout Standard
-By default LyX shows a small triangle behind the cursor as indicator that
- there are completions available.
- You can then press the 
+Pengaturan bawaan LyX untuk melengkapi kata adalah dalam bentuk yang paling
+ sederhana yaitu menggunakan tampilan kursor segitiga sebagai tanda bahwa
+ sudah ada kata tersedia.
+ Anda tinggal menggunakan tombol 
 \family sans
 Tab
 \family default
- key to use this completion.
- When several completions are possible, a popup is opened showing them.
- You can select a completion in the popup using the mouse or the arrow keys,
- and accept the chosen completion be pressing 
+ untuk melengkapi kata.
+ Apabila ada beberapa pilihan kata tersedia, jendela kecil akan muncul dan
+ menampilkan kata-kata tersebut.
+ Anda dapat memilih dengan menggunakan tetikus atau tombol panah, kemudian
+ menetapkan pilihan dengan menekan tombol 
 \family sans
-Return
+Enter
 \family default
 .
+ 
 \end_layout
 
 \begin_layout Standard
-In the preferences dialog, which is opened with the menu 
+Untuk menghilangkan tanda melengkapi segitiga, anda perlu mengubah pengaturan
+ bawaan dari menu 
 \family sans
-Tools\SpecialChar \menuseparator
-Preferences
+AlatBantuan\SpecialChar \menuseparator
+Preferensi
 \family default
-, the cursor completion indicator can be turned off in the section 
+ kemudian dari seksi Penyuntingan
 \family sans
-Editing\SpecialChar \menuseparator
-Input Completion
+\SpecialChar \menuseparator
+Cara
+\begin_inset space \thinspace{}
+\end_inset
+
+Melengkapi 
 \family default
- by deselecting the option 
+anda perlu melepaskan pilihan
 \family sans
-Cursor indicator
+ Indikator kursor
 \family default
 .
- With the option 
+ Sedangkan pengaturan 
 \family sans
-Automatic inline completion
+Melengkapi kata otomatis pada baris
 \family default
- the proposed completion is shown directly behind the cursor position.
- To accept this proposal, use the 
+, pilihan kata akan ditampilkan pada baris dibelakang posisi kursor.
+ Untuk menerima saran kata yang muncul pada baris, anda cukup menekan tombol
+ 
 \family sans
 Tab
 \family default
- key.
- With the option 
+.
+ Apabila menggunakan pengaturan 
 \family sans
-Automatic popup
+Menampilkan jendela pilihan otomatis
 \family default
- the completions are always shown in a popup.
- LyX offers some more completion settings for experts that are described
- in sec.
+, maka jendela pilihan kata akan selalu ditampilkan.
+ LyX mempunyai berbagai pengaturan melengkapi kata untuk yang sudah mahir.
+ Pengaturan lanjut akan dapat ditemui di subbab.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1747,22 +1868,22 @@ reference "sub:Input-Completion-Appendix"
 \end_layout
 
 \begin_layout Section
-Basic Key Bindings
+Gabungan tombol ketik
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Key Bindings
+Gabungan tombol ketik
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Bindings|see
+Gabungan tombol|see
 \begin_inset ERT
 status collapsed
 
@@ -1773,7 +1894,7 @@ status collapsed
 
 \end_inset
 
-Key Bindings
+Gabungan tombol ketik
 \begin_inset ERT
 status collapsed
 
@@ -1791,10 +1912,10 @@ status collapsed
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Shortcuts|see
+Pintasan|see
 \begin_inset ERT
 status collapsed
 
@@ -1805,7 +1926,7 @@ status collapsed
 
 \end_inset
 
-Key Bindings
+Gabungan tombol
 \begin_inset ERT
 status collapsed
 
@@ -1825,12 +1946,12 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-There are at least two different primary binding maps: CUA and Emacs.
- LyX's default is CUA.
+Ada dua peta utama untuk gabungan tombol ketik: CUA dan Emacs.
+ Bawaan LyX menggunakan CUA.
 \end_layout
 
 \begin_layout Standard
-Some keys, like 
+Beberapa tombol ketik, seperti 
 \family sans
 Page
 \begin_inset space ~
@@ -1858,12 +1979,12 @@ Right
 \family sans
 Up
 \family default
-, and 
+, dan 
 \family sans
 Down
 \family default
-, do exactly what you expect them to do.
- Other keys don't:
+, sudah dapat berfungsi seperti yang anda harapkan.
+ Namun demikian beberapa tombol ketik mungkin perlu dipahami fungsinya.
 \end_layout
 
 \begin_layout Labeling
@@ -1874,14 +1995,15 @@ Tab
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "Tab"
-description "Tabulator key"
+description "Tombol ketik Tabulator"
 
 \end_inset
 
 
 \family default
- There is no such thing as a tab stop in LyX.
- If you don't understand this, go read sections
+ LyC tidak memfungsikan tombol ini sebagai hentian tab.
+ Apabila anda belum memahaminya anda silahkan sekarang membaca terlebih
+ dahulu subbab
 \begin_inset space ~
 \end_inset
 
@@ -1892,14 +2014,14 @@ reference "sec:Par-indent-intro"
 
 \end_inset
 
- and 
+ dan 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Paragraph-Environments"
 
 \end_inset
 
-, especially section
+, juga subbab
 \begin_inset space ~
 \end_inset
 
@@ -1910,9 +2032,10 @@ reference "sub:Lists"
 
 \end_inset
 
-, right now.
- Yes, right now.
- If you're still confused, look in the 
+.
+ Ya, sekarang juga.
+ Apabila anda masih merasa belum mengerti juga, mungkin anda perlu membaca
+ dan mengikuti 
 \emph on
 Tutorial
 \emph default
@@ -1927,22 +2050,22 @@ Esc
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "Esc"
-description "Escape key"
+description "Tombol ketik Escape"
 
 \end_inset
 
 
 \family default
- This is the 
+ Tombol ini digunakan sebagai 
 \begin_inset Quotes eld
 \end_inset
 
-cancel key.
+tombol pembatalan.
 \begin_inset Quotes erd
 \end_inset
 
- It's used, generically, to cancel operations.
- Other parts of the manual will go into greater detail about this.
+ Secara umum tombol ini memang digunakan untuk membatalkan penyuntingan.
+ Buku petunjuk ini juga akan membahas lebih terperinci tentang pemanfaatannya.
 \end_layout
 
 \begin_layout Labeling
@@ -1955,7 +2078,7 @@ Home
 \begin_inset space ~
 \end_inset
 
-and
+dan
 \begin_inset space ~
 \end_inset
 
@@ -1963,13 +2086,28 @@ and
 \family sans
 End
 \family default
- These move the cursor, respectively, to the beginning and end of a line,
- unless you are using the Emacs bindings where they jump to the beginning
- or end of the file.
+ Tombol 
+\family sans
+Home
+\family default
+ akan memindahkan kursor ke bagian awal dari baris dan tombol 
+\family sans
+End
+\family default
+ memindah kursor ke bagian akhir baris.
+ Jika anda menggunakan peta Emacs, 
+\family sans
+Home
+\family default
+ memindah ke bagian awal berkas sementara 
+\family sans
+End
+\family default
+ memindah kursor ke bagian akhir berkas.
 \end_layout
 
 \begin_layout Standard
-There are three modifier keys:
+Ada tiga tombol ketik pengubah:
 \end_layout
 
 \begin_layout Labeling
@@ -1978,7 +2116,7 @@ There are three modifier keys:
 \family sans
 Control
 \family default
- (Denoted by 
+ (Diseluruh buku petunjuk Disingkat dengan 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1994,49 +2132,49 @@ Ctrl
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "Ctrl"
-description "Control key"
+description "Tombol ketik Control"
 
 \end_inset
 
- in the documentation files) This has a couple of different uses, depending
- on which keys it's used in combination with:
+) Tombol ini mempunyai beberapa fungsi, tergantung dengan tombol ketik lain
+ yang dikombinasikan:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-With 
+Dengan 
 \family sans
 Backspace
 \family default
- or 
+ atau 
 \family sans
 Delete
 \family default
-, it deletes an entire word instead of a single character.
+, akan menghapus seluruh kata bukan hanya satu karakter.
 \end_layout
 
 \begin_layout Itemize
-With 
+Dengan 
 \family sans
 Left
 \family default
- and 
+ atau 
 \family sans
 Right
 \family default
-, it moves by words instead of characters.
+, akan menggerakkan kursor satu kata kekiri atau kekanan.
 \end_layout
 
 \begin_layout Itemize
-With 
+Dengan 
 \family sans
 Home
 \family default
- and 
+ atau 
 \family sans
 End
 \family default
-, it moves to the beginning and the end of the document, respectively.
+, akan memindah kursor ke bagian awal dokumen atau ke bagian akhir dokumen.
 \end_layout
 
 \end_deeper
@@ -2046,7 +2184,7 @@ End
 \family sans
 Shift
 \family default
- (Denoted by 
+ (Dalam buku petunjuk disebut dengan 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2062,12 +2200,12 @@ Shift
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "Shift"
-description "Shift key"
+description "Tombol ketik Shift"
 
 \end_inset
 
- in the documentation files) Use this with any of the motion keys to select
- the text between the old and new cursor positions.
+) Tombol ini digunakan untuk menandai teks dengan tombol panah, dimulai
+ dari posisi awal ke sampai berhenti menggerakkan.
 \end_layout
 
 \begin_layout Labeling
@@ -2076,7 +2214,7 @@ description "Shift key"
 \family sans
 Alt
 \family default
- (Denoted by 
+ (Dalam buku petunjuk disebut dengan 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2092,30 +2230,30 @@ Alt
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "Alt"
-description "Alt or Meta key"
+description "Tombol ketik Alt atau tombol ketik Meta"
 
 \end_inset
 
- in the documentation files) This is the Alt key on many keyboards, unless
- your keyboard has a distinct Meta key.
- If you have both keys, you will need to try out which one actually performs
- the 
+) Sebagian besar papan ketik mempunyai tombol Alt, hanya beberapa papan
+ ketik yang menggunakan tombol Meta.
+ Jika anda memiliki keduanya, anda harus mencoba untuk memastikan tombol
+ yang benar-benar aktif sebagai
 \family sans
-Alt+
+ Alt+
 \family default
- function.
- This key does many different things, but it also activates the 
+ fungsi.
+ Tombol ini memiliki berbagai kegunaan selain berfungsi sebagai tombol 
 \emph on
-menu accelerator keys
+pemercepat menu
 \emph default
 .
- If you use this in combination with any of the underlined letters in a
- menu or menu item, it selects that menu item.
+ Apabila anda menggunakan dengan kombinasi huruf dibawah menu, berarti and
+ memilih menu tersebut.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-For example, the sequence 
+Misalnya, urutan menekan tombol 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2125,34 +2263,30 @@ Alt
 \begin_inset space ~
 \end_inset
 
-e
+u
 \begin_inset space ~
 \end_inset
 
-s
+
 \family default
-
-\begin_inset space ~
-\end_inset
-
-
-\family sans
 c
-\family default
+\begin_inset space ~
+\end_inset
 
+p
 \begin_inset Quotes erd
 \end_inset
 
- brings up the 
+ akan membawa anda ke dialog 
 \begin_inset Quotes eld
 \end_inset
 
-Text Style
+Corak dan Gaya Teks
 \begin_inset Quotes erd
 \end_inset
 
- menu.
- Typing 
+.
+ Menekan tombol 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2162,41 +2296,42 @@ Alt
 \begin_inset space ~
 \end_inset
 
-f
-\family default
 
+\family default
+e
 \begin_inset Quotes erd
 \end_inset
 
- opens the 
+ akan membuka menu 
 \family sans
-File
+Berkas
 \family default
- menu.
+.
 \end_layout
 
 \begin_layout Standard
-The 
+Buku petunjuk 
 \emph on
-Shortcuts
+Pintasan
 \emph default
- manual lists all other things bound to the 
+ memberikan daftar berbagai kombinasi perintah yang dinyatakan dengan tombol
+ ketik
 \family sans
-Alt
+ Alt
 \family default
- key.
+.
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-You'll learn more and more keybindings and short-cut keys as you use LyX,
- because most actions will prompt a small message in the status bar at the
- bottom of LyX's main window which describe the name of the action, you've
- just triggered, and any existing keybindings for that action.
- The LyX menus also list the defined keybindings.
- The notation for the keybindings is very similar to the notation used in
- this documentation, so you should not have any problems understanding it.
- However, notice that Shift-modifiers are explicitly mentioned, so 
+Anda akan banyak menemukan berbagai gabungan tombol ketik serta pintasan
+ yang digunakan di LyX, karena setiap perintah gabungan akan menampilkan
+ aksi yang anda lakukan serta pilihan gabungan tombol ketik lain yang bisa
+ anda pilih di jendela status bawah.
+ Notasi gabungan tombol ketik yang muncul akan mirip dengan yang digunakan
+ di buku petunjuk, sehingga tidak membingungkan anda.
+ Namun demikian untuk tombol Shift akan dinyatakan secara eksplisit, sehingga
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2208,11 +2343,11 @@ Alt+P Shift-A
 \begin_inset Quotes erd
 \end_inset
 
- means 
+ berarti 
 \family sans
 Alt+P
 \family default
- followed by a capital 
+ diikuti dengan menulis huruf besar 
 \family sans
 A
 \family default
@@ -2220,17 +2355,21 @@ A
 \end_layout
 
 \begin_layout Standard
-You can list or change the keybindings in the menu 
+Anda bisa melihat berbagai perintah gabungan melalui menu 
 \family sans
-Tools\SpecialChar \menuseparator
-Preferences
+AlatBantuan\SpecialChar \menuseparator
+Preferensi
 \family default
- under 
+ kemudian dari 
 \family sans
-Editing\SpecialChar \menuseparator
-Shortcuts
+Penyuntingan\SpecialChar \menuseparator
+Cara
+\begin_inset space \thinspace{}
+\end_inset
+
+pintas
 \family default
- as explained in sec.
+ seperti dijelaskan di subbab
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -2245,12 +2384,12 @@ reference "sub:Editing-Shortcuts"
 \end_layout
 
 \begin_layout Chapter
-LyX Basics
+LyX Dasar
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-LyX ! Basics
+LyX ! Dasar
 \end_layout
 
 \end_inset
@@ -2259,12 +2398,12 @@ LyX ! Basics
 \end_layout
 
 \begin_layout Section
-Document Types
+Tipe Dokumen
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Document ! Types
+Dokumen ! Tipe
 \end_layout
 
 \end_inset
@@ -2273,7 +2412,7 @@ Document ! Types
 \end_layout
 
 \begin_layout Subsection
-Introduction
+Pendahuluan
 \end_layout
 
 \begin_layout Standard
@@ -2732,7 +2871,7 @@ Customization
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -4073,7 +4212,7 @@ nest
 \begin_layout Standard
 To choose a new paragraph environment, use the pull-down box 
 \begin_inset Graphics
-	filename ../../doc/clipart/ToolbarEnvBox.png
+	filename ../clipart/ToolbarEnvBox.png
 	scale 70
 	clip
 
@@ -4525,7 +4664,7 @@ s
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -5788,7 +5927,7 @@ List
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -5964,7 +6103,7 @@ The predefined default width is the length of
 
 
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -6435,12 +6574,12 @@ Abstract
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../doc/clipart/Abstract.pdf
+	filename ../clipart/Abstract.pdf
 
 \end_inset
 
@@ -7253,7 +7392,7 @@ Address
 \end_deeper
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -7325,7 +7464,7 @@ figures
 \begin_layout Standard
 (
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -9397,7 +9536,7 @@ reference "tab:Width-of-the"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -9824,7 +9963,7 @@ Down brace:
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -9898,7 +10037,7 @@ Edge would have been jumps the gun.
 
 
 \begin_inset Phantom HPhantom
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Mr.
@@ -9913,7 +10052,7 @@ has to be jumped
 
 
 \begin_inset Phantom HPhantom
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Mr.
@@ -10162,7 +10301,7 @@ reference "cha:Units-available-in"
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -10666,7 +10805,7 @@ Symbols
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -11353,7 +11492,7 @@ CJK
 
 
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -12470,7 +12609,7 @@ m
 
 
 \begin_inset Phantom HPhantom
-status open
+status collapsed
 
 \begin_layout Plain Layout
 no 
@@ -14851,7 +14990,7 @@ in section headings, you can insert two empty braces in TeX Code in the
  word.
  This will look in LyX like: 
 \begin_inset Graphics
-	filename ../../doc/clipart/LaTeX.png
+	filename ../clipart/LaTeX.png
 	scale 80
 
 \end_inset
@@ -15121,7 +15260,7 @@ Note This note type is for internal notes that won't appear in the output.
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 This is text in a note box that doesn't appear in the output.
@@ -15146,7 +15285,7 @@ LaTeX (pdflatex) / (plain)
 
 
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 This is text in a note box that only appears as comment in LaTeX-files.
@@ -15172,7 +15311,7 @@ Out This note will appear in the output as grey text.
 
 
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 This is text
@@ -15270,7 +15409,7 @@ you'll see
 \bar default
  the following box: 
 \begin_inset Graphics
-	filename ../../doc/clipart/footnoteQt4.png
+	filename ../clipart/footnoteQt4.png
 	scale 80
 
 \end_inset
@@ -15349,7 +15488,7 @@ Here's an example footnote:
 \bar no
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 To close a footnote, click on the footnote box label.
@@ -15456,7 +15595,7 @@ At the side is an example marginal note.
 \series medium
 
 \begin_inset Marginal
-status open
+status collapsed
 
 \begin_layout Plain Layout
 This is a marginal note.
@@ -15645,7 +15784,7 @@ The graphics dialog can be called at any time by clicking on an image.
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../../doc/clipart/mobius.eps
+	filename ../clipart/mobius.eps
 	scale 70
 	rotateOrigin center
 
@@ -16606,7 +16745,7 @@ degrees counterclockwise.
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -19238,7 +19377,7 @@ This is a multi-line entry in a table.
 Cutting and pasting between tables and table cells works reasonably well.
  You can cut and paste even more than one row.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Note, that you cannot paste into a multicell selection because it would
@@ -19373,7 +19512,7 @@ Floats ! Captions
  by left-clicking on the box label.
  A closed float box looks like this: 
 \begin_inset Graphics
-	filename ../../doc/clipart/floatQt4.png
+	filename ../clipart/floatQt4.png
 	scale 80
 
 \end_inset
@@ -19469,12 +19608,12 @@ reference "cap:Escher"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../doc/clipart/platypus.eps
+	filename ../clipart/platypus.eps
 	width 50col%
 	rotateOrigin center
 
@@ -19510,7 +19649,7 @@ A severely distorted platypus in a float.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -19534,7 +19673,7 @@ M.C.
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../doc/clipart/escher-lsd.eps
+	filename ../clipart/escher-lsd.eps
 	scale 80
 	rotateOrigin center
 
@@ -19637,7 +19776,7 @@ reference "fig:Platypus"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset space \hfill{}
@@ -19647,7 +19786,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -19669,7 +19808,7 @@ Undefinable
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../doc/clipart/escher-lsd.eps
+	filename ../clipart/escher-lsd.eps
 	width 45col%
 
 \end_inset
@@ -19687,7 +19826,7 @@ Undefinable
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -19709,7 +19848,7 @@ Platypus
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../doc/clipart/platypus.eps
+	filename ../clipart/platypus.eps
 	lyxscale 60
 	width 45col%
 
@@ -19819,7 +19958,7 @@ reference "cap:Table-float"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -20082,7 +20221,7 @@ reference "sub:LyX-Code"
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -20160,11 +20299,11 @@ lines 0
 placement l
 overhang 0in
 width "40col%"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../doc/clipart/mobius.eps
+	filename ../clipart/mobius.eps
 	width 40col%
 	rotateOrigin center
 
@@ -20293,7 +20432,7 @@ ng text.
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -20412,7 +20551,7 @@ reference "cap:Rotated-table"
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -20431,7 +20570,7 @@ Note:
 \begin_inset Float table
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -20865,7 +21004,7 @@ width "30col%"
 special "none"
 height "1pt"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -20924,7 +21063,7 @@ width "1.5in"
 special "none"
 height "1pt"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 This is a minipage with some stupid dummy text.
@@ -20949,7 +21088,7 @@ width "1.5in"
 special "none"
 height "1pt"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 This is a minipage with some stupid dummy text.
@@ -21108,7 +21247,8 @@ This is a line with an inline formula
 Displayed formulas appear outside the text like if they were in an own paragraph
 , like this one:
 \begin_inset Formula \[
-A=B\]
+A=B
+\]
 
 \end_inset
 
@@ -21329,7 +21469,8 @@ You can leave many parts of a formula, like this matrix, partially filled
 \lambda_{1}\\
  & \ddots\\
  &  & \lambda_{n}
-\end{array}\right)\]
+\end{array}\right)
+\]
 
 \end_inset
 
@@ -21560,7 +21701,8 @@ Up
 \left[\frac{1}{\left(\begin{array}{cc}
 2 & 3\\
 4 & 5
-\end{array}\right)}\right]\]
+\end{array}\right)}\right]
+\]
 
 \end_inset
 
@@ -21683,7 +21825,8 @@ limits
 
 , versus
 \begin_inset Formula \[
-\sum_{n=0}^{\infty}\frac{1}{n!}=e\]
+\sum_{n=0}^{\infty}\frac{1}{n!}=e
+\]
 
 \end_inset
 
@@ -21739,7 +21882,8 @@ Math ! Limits
 
 
 \begin_inset Formula \[
-\lim_{x\rightarrow\infty}f(x),\]
+\lim_{x\rightarrow\infty}f(x),
+\]
 
 \end_inset
 
@@ -21892,7 +22036,7 @@ a Ctrl+Space b
 
  appears in LyX as 
 \begin_inset Graphics
-	filename ../../doc/clipart/SpaceMarker.png
+	filename ../clipart/SpaceMarker.png
 
 \end_inset
 
@@ -22103,7 +22247,7 @@ reference "cap:Accent-names-and"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -22784,13 +22928,15 @@ There are several brackets available through LyX.
 \left[\begin{array}{cc}
 1 & 2\\
 3 & 4
-\end{array}\right]\]
+\end{array}\right]
+\]
 
 \end_inset
 
 and to make it easier to see the layers of parentheses as in: 
 \begin_inset Formula \[
-\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\]
+\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}
+\]
 
 \end_inset
 
@@ -22888,7 +23034,8 @@ Panel
 1 & 2 & 3\\
 4 & 5 & 6\\
 7 & 8 & 9
-\end{array}\right)\]
+\end{array}\right)
+\]
 
 \end_inset
 
@@ -22981,7 +23128,8 @@ lcr
 this & this\, column & this\, column\\
 column & has & has\, right\\
 has\, left\, alignment & center\, alignment & alignment
-\end{array}.\]
+\end{array}.
+\]
 
 \end_inset
 
@@ -23029,7 +23177,8 @@ f(x)=\begin{cases}
 -1 & x<0\\
 0 & x=0\\
 1 & x>0
-\end{cases}\]
+\end{cases}
+\]
 
 \end_inset
 
@@ -23092,7 +23241,8 @@ Ctrl-Tab.
  Note that the middle column is designed for relation signs, structures
  within this column will be printed in a smaller size:
 \begin_inset Formula \begin{eqnarray*}
-\frac{A}{B} & \frac{A}{B} & \frac{A}{B}\end{eqnarray*}
+\frac{A}{B} & \frac{A}{B} & \frac{A}{B}
+\end{eqnarray*}
 
 \end_inset
 
@@ -23203,7 +23353,8 @@ arg   "math-number-toggle"
  In this document the number is printed together with the chapter number,
  separated by a dot:
 \begin_inset Formula \begin{equation}
-1+1=2\end{equation}
+1+1=2
+\end{equation}
 
 \end_inset
 
@@ -23455,7 +23606,7 @@ reference "cap:Typefaces-and-the"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -23751,7 +23902,7 @@ mathsf
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -23797,7 +23948,8 @@ Blackboard
 \family default
  denotes the set of numbers:
 \begin_inset Formula \[
-f(x)=\sqrt{x}\:;\: x\in\mathbb{N}\]
+f(x)=\sqrt{x}\:;\: x\in\mathbb{N}
+\]
 
 \end_inset
 
@@ -23937,7 +24089,8 @@ arg   "font-default"
 f(x)=\begin{cases}
 x & \textrm{if I say so}\\
 -x & \textrm{unter Umständen}
-\end{cases}\]
+\end{cases}
+\]
 
 \end_inset
 
@@ -24299,7 +24452,7 @@ Label
 .
  A grey label box like this: 
 \begin_inset Graphics
-	filename ../../doc/clipart/labelQt4.png
+	filename ../clipart/labelQt4.png
 	scale 85
 
 \end_inset
@@ -24379,7 +24532,7 @@ Cross-Reference
 .
  A grey cross-reference box like this: 
 \begin_inset Graphics
-	filename ../../doc/clipart/referenceQt4.png
+	filename ../clipart/referenceQt4.png
 	scale 85
 
 \end_inset
@@ -24568,7 +24721,7 @@ reference: prints a self defined cross-reference format.
 
 
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -24959,7 +25112,7 @@ URL
 \begin_layout Standard
 Here is an example URL: LyX's homepage: 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -24984,7 +25137,7 @@ Typewriter
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -26163,7 +26316,7 @@ maître
 
 .
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dummy entries ! maïs
@@ -26173,7 +26326,7 @@ Dummy entries ! maïs
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dummy entries ! maître
@@ -26183,7 +26336,7 @@ Dummy entries ! maître
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dummy entries ! maïs@maison
@@ -26338,7 +26491,7 @@ Index ! Entry layout
 \begin_layout Standard
 You can change the appearance of index entries via the text style dialog.
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dummy entries ! 
@@ -26369,7 +26522,7 @@ italic page number:|textit
 \begin_layout Standard
 to get the page number in italic.
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dummy entries ! italic page number:|textit
@@ -26417,7 +26570,7 @@ reference "sub:LaTeX-Syntax"
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -26497,7 +26650,7 @@ my entry|IndexDef
 \begin_layout Standard
 in the index entry.
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dummy entries ! my entry|IndexDef
@@ -26923,7 +27076,7 @@ A nomenclature entry consists of two main entries.
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -27822,7 +27975,7 @@ status open
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -27858,7 +28011,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -27912,7 +28065,8 @@ question
 \series default
  part appears:
 \begin_inset Formula \[
-x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer{-\sqrt{3}}.\]
+x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer{-\sqrt{3}}.
+\]
 
 \end_inset
 
@@ -28161,7 +28315,7 @@ fbox{
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename ../../doc/clipart/ERT.png
+	filename ../clipart/ERT.png
 	scale 89
 
 \end_inset
@@ -28203,7 +28357,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -29291,7 +29445,7 @@ Toolbar ! Review
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename ../../doc/clipart/ChangesToolbar.png
+	filename ../clipart/ChangesToolbar.png
 
 \end_inset
 
@@ -29989,7 +30143,7 @@ T1
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -35759,7 +35913,7 @@ Symbols Inserts any character that can be output by your LaTeX system.
 
  
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -35941,7 +36095,7 @@ key "tipa"
 
 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -37330,7 +37484,7 @@ Toolbar ! Standard
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename ../../doc/clipart/StandardToolbar.png
+	filename ../clipart/StandardToolbar.png
 	width 100col%
 
 \end_inset
@@ -37399,7 +37553,7 @@ Embedded Objects
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../doc/clipart/ToolbarEnvBox.png
+	filename ../clipart/ToolbarEnvBox.png
 	clip
 
 \end_inset
@@ -38086,7 +38240,7 @@ Toolbar ! Extra
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename ../../doc/clipart/ExtraToolbar.png
+	filename ../clipart/ExtraToolbar.png
 	width 100col%
 
 \end_inset
@@ -38902,7 +39056,7 @@ Toolbar ! View / Update
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename ../../doc/clipart/ViewToolbar.png
+	filename ../clipart/ViewToolbar.png
 
 \end_inset
 
@@ -40487,7 +40641,7 @@ Customization ! of menus
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -40809,7 +40963,7 @@ These fonts are used to display your documents on the screen.
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -41395,7 +41549,7 @@ romanian.kmap
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -41558,7 +41712,7 @@ Open
 
 
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -41642,7 +41796,7 @@ XServer-Pipe Here you can enter the name of a Unix-pipe.
 
 
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -42061,7 +42215,7 @@ Printer command
 
 
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -42806,7 +42960,7 @@ reference "cap:Units"
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
