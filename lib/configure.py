@@ -565,10 +565,10 @@ def checkFormatEntries(dtl_tools):
 \Format sxw        sxw    "OpenOffice.Org (sxw)"  "" ""	""	"document,vector"'''])
     # 
     checkViewerEditor('a Rich Text and Word viewer', ['swriter', 'oowriter', 'abiword'],
-        rc_entry = [r'''\Format rtf        rtf    "Rich Text Format"      "" ""	""	"document,vector"
-\Format word       doc    "MS Word"               W  ""	""	"document,vector"'''])
+        rc_entry = [r'''\Format rtf        rtf    "Rich Text Format"      "" "%%"	"%%"	"document,vector"
+\Format word       doc    "MS Word"               W  "%%"	"%%"	"document,vector"'''])
     #
-    # entried that do not need checkProg
+    # entries that do not need checkProg
     addToRC(r'''\Format date       ""     "date command"          "" ""	""	""
 \Format csv        csv    "Table (CSV)"  "" ""	""	"document"
 \Format fax        ""      Fax                    "" ""	""	"document"
