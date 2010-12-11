@@ -2610,7 +2610,7 @@ string const BufferParams::loadFonts(string const & rm,
 			string const mono = parseFontName(tt);
 			if (ttscale != 100)
 				os << "\\setmonofont[Scale=" 
-				   << float(sfscale) / 100 
+				   << float(ttscale) / 100 
 				   << "]{"
 				   << mono << "}\n";
 			else
