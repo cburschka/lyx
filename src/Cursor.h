@@ -111,7 +111,7 @@ public:
 	 */
 	bool selHandle(bool selecting);
 	///
-	docstring selectionAsString(bool label) const;
+	docstring selectionAsString(bool with_label) const;
 	///
 	docstring currentState() const;
 
