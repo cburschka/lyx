@@ -2849,21 +2849,21 @@ void GuiDocument::paramsToDialog()
 		for (int i = 0; i < fontModule->fontsRomanCO->count(); ++i) {
 			if (fontModule->fontsRomanCO->itemText(i) == toqstr(bp_.fonts_roman)) {
 				fontModule->fontsRomanCO->setCurrentIndex(i);
-				return;
+				break;
 			}
 		}
 		
 		for (int i = 0; i < fontModule->fontsSansCO->count(); ++i) {
 			if (fontModule->fontsSansCO->itemText(i) == toqstr(bp_.fonts_sans)) {
 				fontModule->fontsSansCO->setCurrentIndex(i);
-				return;
+				break;
 			}
 		}
 		for (int i = 0; i < fontModule->fontsTypewriterCO->count(); ++i) {
 			if (fontModule->fontsTypewriterCO->itemText(i) == 
 				toqstr(bp_.fonts_typewriter)) {
 				fontModule->fontsTypewriterCO->setCurrentIndex(i);
-				return;
+				break;
 			}
 		}
 	} else {
