@@ -750,12 +750,13 @@ def checkConverterEntries():
     checkProg('a fax program', ['kdeprintfax $$i', 'ksendfax $$i', 'hylapex $$i'],
         rc_entry = [ r'\converter ps         fax        "%%"	""'])
     #
-    checkProg('a FIG -> EPS/PPM converter', ['fig2dev'],
-        rc_entry = [
-            r'''\converter fig        eps        "fig2dev -L eps $$i $$o"	""
+    path, fig2dev = checkProg('a FIG -> Image converter', ['fig2dev'])
+    if fig2dev == "fig2dev":
+        addToRC(r'''\converter fig        eps        "fig2dev -L eps $$i $$o"	""
 \converter fig        ppm        "fig2dev -L ppm $$i $$o"	""
-\converter fig        png        "fig2dev -L png $$i $$o"	""''',
-            ''])
+\converter fig        png        "fig2dev -L png $$i $$o"	""
+\converter fig        pdftex     "python -tt $$s/scripts/fig2pdftex.py $$i $$o"	""
+\converter fig        pstex      "python -tt $$s/scripts/fig2pstex.py $$i $$o"	""''')
     #
     checkProg('a TIFF -> PS converter', ['tiff2ps $$i > $$o'],
         rc_entry = [ r'\converter tiff       eps        "%%"	""', ''])
@@ -881,8 +882,6 @@ def checkConverterEntries():
 \converter date       dateout    "python -tt $$s/scripts/date.py %d-%m-%Y > $$o"	""
 \converter docbook    docbook-xml "cp $$i $$o"	"xml"
 \converter fen        asciichess "python -tt $$s/scripts/fen2ascii.py $$i $$o"	""
-\converter fig        pdftex     "python -tt $$s/scripts/fig2pdftex.py $$i $$o"	""
-\converter fig        pstex      "python -tt $$s/scripts/fig2pstex.py $$i $$o"	""
 \converter lyx        lyx13x     "python -tt $$s/lyx2lyx/lyx2lyx -t 221 $$i > $$o"	""
 \converter lyx        lyx14x     "python -tt $$s/lyx2lyx/lyx2lyx -t 245 $$i > $$o"	""
 \converter lyx        lyx15x     "python -tt $$s/lyx2lyx/lyx2lyx -t 276 $$i > $$o"	""
