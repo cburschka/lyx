@@ -345,8 +345,12 @@ def checkFormatEntries(dtl_tools):
     #
     checkViewer('an OpenDocument viewer', ['swriter', 'oowriter'],
         rc_entry = [r'\Format odt        odt     OpenDocument           "" "%%"	"%%"	"document,vector"'])
+    # 
+    checkViewer('a Rich Text and Word viewer', ['swriter', 'oowriter', 'abiword'],
+        rc_entry = [r'''\Format rtf        rtf    "Rich Text Format"      "" "%%"	"%%"	"document,vector"
+\Format word       doc    "MS Word"               W  "%%"	"%%"	"document,vector"'''])
     #
-    # entried that do not need checkProg
+    # entries that do not need checkProg
     addToRC(r'''\Format date       ""     "date command"          "" ""	""	""
 \Format csv        csv    "Table (CSV)"  "" ""	""	"document"
 \Format fax        ""      Fax                    "" ""	""	"document"
@@ -362,11 +366,9 @@ def checkFormatEntries(dtl_tools):
 \Format pdftex     pdftex_t PDFTEX                "" ""	""	""
 \Format program    ""      Program                "" ""	""	""
 \Format pstex      pstex_t PSTEX                  "" ""	""	""
-\Format rtf        rtf    "Rich Text Format"      "" ""	""	"document,vector"
 \Format sxw        sxw    "OpenOffice.Org (sxw)"  ""  ""	""	"document,vector"
 \Format wmf        wmf    "Windows Metafile"      "" ""	""	"vector"
 \Format emf        emf    "Enhanced Metafile"     "" ""	""	"vector"
-\Format word       doc    "MS Word"               W  ""	""	"document,vector"
 \Format wordhtml   html   "HTML (MS Word)"        "" ""        ""	"document"
 ''')
 
