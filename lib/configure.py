@@ -626,7 +626,7 @@ def checkConverterEntries():
         rc_entry = [r'''\converter literate   latex      "%%"	""
 \converter literate   pdflatex      "%%"	""'''])
     #
-    checkProg('a Sweave -> LaTeX converter', ['Rscript --vanilla $$s/scripts/lyxsweave.R $$i $$e'],
+    checkProg('a Sweave -> LaTeX converter', ['Rscript --no-save --no-restore $$s/scripts/lyxsweave.R $$i $$e $$r'],
         rc_entry = [r'''\converter sweave   latex      "%%"	""
 \converter sweave   pdflatex      "%%"	""'''])
     #
