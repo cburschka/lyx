@@ -203,7 +203,8 @@ char const HLINE = '\004';
 /*!
  * Move the information in leftlines, rightlines, align and valign to the
  * special field. This is necessary if the special field is not empty,
- * because LyX ignores leftlines, rightlines, align and valign in this case.
+ * because LyX ignores leftlines > 1, rightlines > 1, align and valign in
+ * this case.
  */
 void ci2special(ColInfo & ci)
 {
@@ -235,12 +236,13 @@ void ci2special(ColInfo & ci)
 	} else
 		ci.special += ci.align;
 
-	for (int i = 0; i < ci.leftlines; ++i)
+	// LyX can only have one left and one right line.
+	for (int i = 1; i < ci.leftlines; ++i)
 		ci.special.insert(0, "|");
-	for (int i = 0; i < ci.rightlines; ++i)
+	for (int i = 1; i < ci.rightlines; ++i)
 		ci.special += '|';
-	ci.leftlines = 0;
-	ci.rightlines = 0;
+	ci.leftlines = min(ci.leftlines, 1);
+	ci.rightlines = min(ci.rightlines, 1);
 	ci.align = 'n';
 	ci.valign = 'n';
 }
