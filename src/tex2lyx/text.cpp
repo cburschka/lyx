@@ -2330,6 +2330,17 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p);
 		}
 
+		else if (LYX_FORMAT >= 307 && t.cs() == "slash") {
+			context.check_layout(os);
+			os << "\\SpecialChar \\slash{}\n";
+			skip_braces(p);
+		}
+
+		else if (LYX_FORMAT >= 307 && t.cs() == "nobreakdash") {
+			context.check_layout(os);
+			os << "\\SpecialChar \\nobreakdash\n";
+		}
+
 		else if (t.cs() == "textquotedbl") {
 			context.check_layout(os);
 			os << "\"";
@@ -2695,8 +2706,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else {
 			// try to see whether the string is in unicodesymbols
+			// Only use text mode commands, since we are in text mode here,
+			// and math commands may be invalid (bug 6797)
 			docstring rem;
-			docstring s = encodings.fromLaTeXCommand(from_utf8(t.asInput()), rem);
+			docstring s = encodings.fromLaTeXCommand(from_utf8(t.asInput()),
+			                                         rem, Encodings::TEXT_CMD);
 			if (!s.empty()) {
 				if (!rem.empty())
 					cerr << "When parsing " << t.cs() 
