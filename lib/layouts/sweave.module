@@ -17,6 +17,13 @@ ClassOptions
 	Other          "noae"
 End
 
+Preamble
+	<<echo=F>>=
+	  if(exists("ls.dir")) setwd(ls.dir)
+	  if(exists("ls.enc")) options(encoding=ls.enc)
+	@
+EndPreamble
+
 Style Chunk
 	Category              Sweave
 	LatexType             Paragraph
