@@ -3469,6 +3469,7 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	vector<string> backs = backends();
 	if (find(backs.begin(), backs.end(), format) == backs.end()) {
 		// Get shortest path to format
+		theConverters().buildGraph();
 		Graph::EdgePath path;
 		for (vector<string>::const_iterator it = backs.begin();
 		     it != backs.end(); ++it) {
