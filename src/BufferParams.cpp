@@ -2588,9 +2588,19 @@ string const BufferParams::loadFonts(string const & rm,
 
 	ostringstream os;
 
+	/* Fontspec (XeTeX, LuaTeX): we provide GUI support for oldstyle
+	 * numbers (Numbers=OldStyle) and sf/tt scaling. The Ligatures=TeX
+	 * option assures TeX ligatures (such as "--") are resolved.
+	 * Note that tt does not use these ligatures.
+	 * TODO:
+	 *    -- add more GUI options?
+	 *    -- add more fonts (fonts for other scripts)
+	 *    -- if there's a way to find out if a font really supports
+	 *       OldStyle, enable/disable the widget accordingly. 
+	*/
 	if (use_systemfonts) {
 		if (rm != "default") {
-			os << "\\setmainfont[Mapping=tex-text";
+			os << "\\setmainfont[Ligatures=TeX";
 			if (osf)
 				os << ",Numbers=OldStyle";
 			os << "]{" << parseFontName(rm) << "}\n";
@@ -2600,10 +2610,10 @@ string const BufferParams::loadFonts(string const & rm,
 			if (sfscale != 100)
 				os << "\\setsansfont[Scale=" 
 				   << float(sfscale) / 100 
-				   << ",Mapping=tex-text]{"
+				   << ",Ligatures=TeX]{"
 				   << sans << "}\n";
 			else
-				os << "\\setsansfont[Mapping=tex-text]{"
+				os << "\\setsansfont[Ligatures=TeX]{"
 				   << sans << "}\n";
 		}
 		if (tt != "default") {
@@ -2614,7 +2624,7 @@ string const BufferParams::loadFonts(string const & rm,
 				   << "]{"
 				   << mono << "}\n";
 			else
-				os << "\\setmonofont[Mapping=tex-text]{"
+				os << "\\setmonofont{"
 				   << mono << "}\n";
 		}
 		return os.str();
