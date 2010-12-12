@@ -715,7 +715,7 @@ void parse_unknown_environment(Parser & p, string const & name, ostream & os,
 
 
 void parse_environment(Parser & p, ostream & os, bool outer,
-		       Context & parent_context)
+                       string & last_env, Context & parent_context)
 {
 	Layout const * newlayout;
 	string const name = p.getArg('{', '}');
@@ -862,6 +862,28 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			context.need_end_deeper = true;
 		}
 		parent_context.check_end_layout(os);
+		if (last_env == name) {
+			// we need to output a separator since LyX would export
+			// the two environments as one otherwise (bug 5716)
+			docstring const sep = from_ascii("--Separator--");
+			TeX2LyXDocClass const & textclass(parent_context.textclass);
+			if (LYX_FORMAT >= 273 && textclass.hasLayout(sep)) {
+				Context newcontext(parent_context);
+				newcontext.layout = &(textclass[sep]);
+				newcontext.check_layout(os);
+				newcontext.check_end_layout(os);
+			} else {
+				parent_context.check_layout(os);
+				begin_inset(os, "Note Note\n");
+				os << "status closed\n";
+				Context newcontext(true, textclass,
+						&(textclass.defaultLayout()));
+				newcontext.check_layout(os);
+				newcontext.check_end_layout(os);
+				end_inset(os);
+				parent_context.check_end_layout(os);
+			}
+		}
 		switch (context.layout->latextype) {
 		case  LATEX_LIST_ENVIRONMENT:
 			context.add_par_extra_stuff("\\labelwidthstring "
@@ -936,6 +958,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		parse_unknown_environment(p, name, os, FLAG_END, outer,
 					  parent_context);
 
+	last_env = name;
 	active_environments.pop_back();
 }
 
@@ -1145,6 +1168,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 	string bibliographystyle;
 	bool const use_natbib = used_packages.find("natbib") != used_packages.end();
 	bool const use_jurabib = used_packages.find("jurabib") != used_packages.end();
+	string last_env;
 	while (p.good()) {
 		Token const & t = p.get_token();
 
@@ -1172,6 +1196,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			return;
 		if (t.character() == '}' && (flags & FLAG_BRACE_LAST))
 			return;
+
+		// If there is anything between \end{env} and \begin{env} we
+		// don't need to output a separator.
+		if (t.cat() != catSpace && t.cat() != catNewline &&
+		    t.asInput() != "\\begin")
+			last_env = "";
 
 		//
 		// cat codes
@@ -1417,7 +1447,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "begin")
-			parse_environment(p, os, outer, context);
+			parse_environment(p, os, outer, last_env, context);
 
 		else if (t.cs() == "end") {
 			if (flags & FLAG_END) {

@@ -113,6 +113,8 @@ extern CommandMap known_environments;
 extern CommandMap known_math_environments;
 ///
 extern bool noweb_mode;
+/// LyX format that is created by tex2lyx
+int const LYX_FORMAT = 264;
 
 /// path of the master .tex file
 extern std::string getMasterFilePath();

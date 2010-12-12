@@ -489,7 +489,7 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 
 	// output the LyX file settings
 	os << "#LyX file created by tex2lyx " << PACKAGE_VERSION << "\n"
-	   << "\\lyxformat 264\n"
+	   << "\\lyxformat " << LYX_FORMAT << '\n'
 	   << "\\begin_document\n"
 	   << "\\begin_header\n"
 	   << "\\textclass " << h_textclass << "\n";
