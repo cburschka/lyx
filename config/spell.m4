@@ -17,9 +17,6 @@ AC_DEFUN([CHECK_WITH_ASPELL],
 		AC_MSG_RESULT(yes)
 		AC_DEFINE(USE_ASPELL, 1, [Define as 1 to use the aspell library])
 		lyx_flags="$lyx_flags use-aspell"
-		### Check for aspell framework name
-		LYX_WITH_DIR([aspell-framework], [name of aspell framework],aspell_framework, [])
-		AC_DEFINE_UNQUOTED([ASPELL_FRAMEWORK], "${lyx_cv_aspell_framework}", [Define as name of aspell framework])
 	else
 		AC_MSG_RESULT(no)
 	fi
