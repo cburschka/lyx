@@ -85,14 +85,15 @@ public:
 };
 
 
+/// the numeric values are part of the file format!
 enum Multicolumn {
 	/// A normal cell
 	CELL_NORMAL = 0,
 	/// A multicolumn cell. The number of columns is <tt>1 + number
 	/// of CELL_PART_OF_MULTICOLUMN cells</tt> that follow directly
-	CELL_BEGIN_OF_MULTICOLUMN,
+	CELL_BEGIN_OF_MULTICOLUMN = 1,
 	/// This is a dummy cell (part of a multicolumn cell)
-	CELL_PART_OF_MULTICOLUMN
+	CELL_PART_OF_MULTICOLUMN = 2
 };
 
 
