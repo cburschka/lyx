@@ -2162,6 +2162,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 		}
 
+		else if (LYX_FORMAT >= 408 &&
+		         (t.cs() == "textsuperscript" || t.cs() == "textsubscript")) {
+			context.check_layout(os);
+			begin_inset(os, "script ");
+			os << t.cs().substr(4) << '\n';
+			parse_text_in_inset(p, os, FLAG_ITEM, false, context);
+			end_inset(os);
+		}
+
 		else if (is_known(t.cs(), known_quotes)) {
 			char const * const * where = is_known(t.cs(), known_quotes);
 			context.check_layout(os);

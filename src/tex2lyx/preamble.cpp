@@ -377,6 +377,9 @@ void handle_package(Parser &p, string const & name, string const & opts,
 	else if (name == "url")
 		; // ignore this
 
+	else if (LYX_FORMAT >= 408 && name == "subscript")
+		; // ignore this
+
 	else if (name == "color") {
 		// with the following command this package is only loaded when needed for
 		// undefined colors, since we only support the predefined colors
