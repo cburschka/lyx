@@ -50,14 +50,19 @@ bool one_language = true;
 
 namespace {
 
+//add this to known_languages when updating to lyxformat 266:
+// "armenian"
 //add these to known_languages when updating to lyxformat 268:
 //"chinese-simplified", "chinese-traditional", "japanese", "korean"
+// Both changes require first that support for non-babel languages (CJK,
+// armtex) is added.
 const char * const known_languages[] = { "afrikaans", "american", "arabic",
-"austrian", "bahasa", "basque", "belarusian", "brazil", "brazilian", "breton",
-"british", "bulgarian", "canadian", "canadien", "catalan", "croatian", "czech",
-"danish", "dutch", "english", "esperanto", "estonian", "finnish", "francais",
-"french", "frenchb", "frenchle", "frenchpro", "galician", "german", "germanb",
-"greek", "hebrew", "icelandic", "irish", "italian", "kazakh", "lsorbian", "magyar",
+"arabtex", "austrian", "bahasa", "basque", "belarusian", "brazil", "brazilian",
+"breton", "british", "bulgarian", "canadian", "canadien", "catalan",
+"croatian", "czech", "danish", "dutch", "english", "esperanto", "estonian",
+"finnish", "francais", "french", "frenchb", "frenchle", "frenchpro",
+"galician", "german", "germanb", "greek", "hebrew", "icelandic", "irish",
+"italian", "kazakh", "latvian", "lithuanian", "lsorbian", "magyar",
 "naustrian", "ngerman", "ngermanb", "norsk", "nynorsk", "polish", "portuges",
 "portuguese", "romanian", "russian", "russianb", "scottish", "serbian", "slovak",
 "slovene", "spanish", "swedish", "thai", "turkish", "ukraineb", "ukrainian",
@@ -77,6 +82,7 @@ const char * const known_ukrainian_languages[] = {"ukrainian", "ukraineb", 0};
 
 //add these to known_english_quotes_languages when updating to lyxformat 268:
 //"chinese-simplified", "korean"
+// This requires first that support for non-babel languages (CJK) is added.
 const char * const known_english_quotes_languages[] = {"american", "canadian",
 "english", "esperanto", "hebrew", "irish", "scottish", "thai", 0};
 
@@ -157,6 +163,18 @@ string h_paperpagestyle          = "default";
 string h_tracking_changes        = "false";
 string h_output_changes          = "false";
 string h_margins                 = "";
+
+
+/// translates a babel language name to a LyX language name
+string babel2lyx(string language)
+{
+	if (language == "arabtex")
+		return "arabic_arabtex";
+	if (language == "arabic")
+		return "arabic_arabi";
+	return language;
+}
+
 
 // returns true if at least one of the options in what has been found
 bool handle_opt(vector<string> & opts, char const * const * what, string & target)
@@ -489,6 +507,8 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 		|| is_known(h_language, known_brazilian_languages)
 		|| is_known(h_language, known_portuguese_languages))
 		h_quotes_language = "english";
+
+	h_language = babel2lyx(h_language);
 
 	// output the LyX file settings
 	os << "#LyX file created by tex2lyx " << PACKAGE_VERSION << "\n"
