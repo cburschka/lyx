@@ -199,19 +199,20 @@ char const * const known_coded_spaces[] = { "space{}", "space{}",
 "negthinspace{}", 0};
 
 
-/// splits "x=z, y=b" into a map
-map<string, string> split_map(string const & s)
+/// splits "x=z, y=b" into a map and an ordered keyword vector
+void split_map(string const & s, map<string, string> & res, vector<string> & keys)
 {
-	map<string, string> res;
 	vector<string> v;
 	split(s, v);
+	res.clear();
+	keys.resize(v.size());
 	for (size_t i = 0; i < v.size(); ++i) {
 		size_t const pos   = v[i].find('=');
-		string const index = v[i].substr(0, pos);
-		string const value = v[i].substr(pos + 1, string::npos);
-		res[trim(index)] = trim(value);
+		string const index = trim(v[i].substr(0, pos));
+		string const value = trim(v[i].substr(pos + 1, string::npos));
+		res[index] = value;
+		keys[i] = index;
 	}
-	return res;
 }
 
 
@@ -1655,7 +1656,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			bool const clip = p.next_token().asInput() == "*";
 			if (clip)
 				p.get_token();
-			map<string, string> opts = split_map(p.getArg('[', ']'));
+			string const arg = p.getArg('[', ']');
+			map<string, string> opts;
+			vector<string> keys;
+			split_map(arg, opts, keys);
 			if (clip)
 				opts["clip"] = string();
 			string name = normalize_filename(p.verbatim_item());
@@ -1715,9 +1719,20 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				val = val*100;
 				os << "\tscale " << val << '\n';
 			}
-			if (opts.find("angle") != opts.end())
+			if (opts.find("angle") != opts.end()) {
 				os << "\trotateAngle "
 				   << opts["angle"] << '\n';
+				vector<string>::const_iterator a =
+					find(keys.begin(), keys.end(), "angle");
+				vector<string>::const_iterator s =
+					find(keys.begin(), keys.end(), "width");
+				if (s == keys.end())
+					s = find(keys.begin(), keys.end(), "height");
+				if (s == keys.end())
+					s = find(keys.begin(), keys.end(), "scale");
+				if (s != keys.end() && distance(s, a) > 0)
+					os << "\tscaleBeforeRotation\n";
+			}
 			if (opts.find("origin") != opts.end()) {
 				ostringstream ss;
 				string const opt = opts["origin"];
