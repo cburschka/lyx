@@ -3416,7 +3416,15 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_RIGHT_SELECT:
 	case LFUN_CHAR_RIGHT:
 	case LFUN_CHAR_LEFT_SELECT:
-	case LFUN_CHAR_LEFT: {
+	case LFUN_CHAR_LEFT: 
+	case LFUN_WORD_FORWARD:
+	case LFUN_WORD_FORWARD_SELECT:
+	case LFUN_WORD_BACKWARD:
+	case LFUN_WORD_BACKWARD_SELECT:
+	case LFUN_WORD_RIGHT:
+	case LFUN_WORD_RIGHT_SELECT:
+	case LFUN_WORD_LEFT:
+	case LFUN_WORD_LEFT_SELECT: {
 		// determine whether we move to next or previous cell, where to enter 
 		// the new cell from, and which command to "finish" (i.e., exit the
 		// inset) with:
@@ -3425,21 +3433,27 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		FuncCode finish_lfun;
 
 		if (cmd.action == LFUN_CHAR_FORWARD 
-				|| cmd.action == LFUN_CHAR_FORWARD_SELECT) {
+				|| cmd.action == LFUN_CHAR_FORWARD_SELECT
+				|| cmd.action == LFUN_WORD_FORWARD
+				|| cmd.action == LFUN_WORD_FORWARD_SELECT) {
 			next_cell = true;
 			finish_lfun = LFUN_FINISHED_FORWARD;
 		}
 		else if (cmd.action == LFUN_CHAR_BACKWARD
-				|| cmd.action == LFUN_CHAR_BACKWARD_SELECT) {
+				|| cmd.action == LFUN_CHAR_BACKWARD_SELECT
+				|| cmd.action == LFUN_WORD_BACKWARD
+				|| cmd.action == LFUN_WORD_BACKWARD_SELECT) {
 			next_cell = false;
 			finish_lfun = LFUN_FINISHED_BACKWARD;
 		}
 		// LEFT or RIGHT commands --- the interpretation will depend on the 
 		// table's direction.
 		else {
-			bool right = (cmd.action == LFUN_CHAR_RIGHT
-							|| cmd.action == LFUN_CHAR_RIGHT_SELECT);
-			next_cell = (isRightToLeft(cur) != right);
+			bool const right = cmd.action == LFUN_CHAR_RIGHT
+				|| cmd.action == LFUN_CHAR_RIGHT_SELECT
+				|| cmd.action == LFUN_WORD_RIGHT
+				|| cmd.action == LFUN_WORD_RIGHT_SELECT;
+			next_cell = isRightToLeft(cur) != right;
 			
 			if (lyxrc.visual_cursor) {
 				entry_from = right ? ENTRY_DIRECTION_LEFT:ENTRY_DIRECTION_RIGHT;
@@ -3451,10 +3465,14 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				finish_lfun = LFUN_FINISHED_LEFT;
 		}
 
-		bool const select = cmd.action == LFUN_CHAR_FORWARD_SELECT ||
-		    cmd.action == LFUN_CHAR_BACKWARD_SELECT ||
-		    cmd.action == LFUN_CHAR_RIGHT_SELECT ||
-		    cmd.action == LFUN_CHAR_LEFT_SELECT;
+		bool const select =	cmd.action == LFUN_CHAR_FORWARD_SELECT 
+		    || cmd.action == LFUN_CHAR_BACKWARD_SELECT
+		    || cmd.action == LFUN_CHAR_RIGHT_SELECT
+		    || cmd.action == LFUN_CHAR_LEFT_SELECT
+			|| cmd.action == LFUN_WORD_FORWARD_SELECT
+			|| cmd.action == LFUN_WORD_RIGHT_SELECT
+			|| cmd.action == LFUN_WORD_BACKWARD_SELECT
+			|| cmd.action == LFUN_WORD_LEFT_SELECT;
 
 		// If we have a multicell selection or we're 
 		// not doing some LFUN_*_SELECT thing anyway...
