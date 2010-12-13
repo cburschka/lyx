@@ -47,6 +47,7 @@
 #include "support/docstream.h"
 #include "support/lstrings.h"
 
+#include <set>
 #include <sstream>
 
 using namespace std;
@@ -736,13 +737,14 @@ public:
 	///
 	AddRemoveMacroInstanceFix(int n, bool insert) : n_(n), insert_(insert) {}
 	///
-	void operator()(MathMacro * macro) {
+	bool operator()(MathMacro * macro) {
 		if (macro->folded()) {
 			if (insert_)
 				macro->insertArgument(n_);
 			else
 				macro->removeArgument(n_);
 		}
+		return true;
 	}
 
 private:
@@ -760,8 +762,9 @@ public:
 	///
 	OptionalsMacroInstanceFix(int optionals) : optionals_(optionals) {}
 	///
-	void operator()(MathMacro * macro) {
+	bool operator()(MathMacro * macro) {
 		macro->setOptionals(optionals_);
+		return true;
 	}
 
 private:
@@ -775,7 +778,7 @@ class NullMacroInstanceFix
 {
 public:
 	///
-	void operator()(MathMacro * ) {}
+	bool operator()(MathMacro * ) { return false; }
 };
 
 
@@ -791,18 +794,15 @@ void fixMacroInstances(Cursor & cur, DocIterator const & inset_pos,
 	// remember hull to trigger preview reload
 	DocIterator hull(dit.buffer());
 	bool preview_reload_needed = false;
+	set<DocIterator> preview_hulls;
 
 	// iterate over all positions until macro is redefined
 	for (; dit; dit.forwardPos()) {
 		// left the outer hull?
 		if (!hull.empty() && dit.depth() == hull.depth()) {
-			// reload the preview if necessary 
+			// schedule reload of the preview if necessary 
 			if (preview_reload_needed) {
-				InsetMathHull * inset_hull =
-					hull.nextInset()->asInsetMath()->asHullInset();
-				LASSERT(inset_hull, /**/);
-				inset_hull->reloadPreview(hull);
-				cur.screenUpdateFlags(Update::Force);
+				preview_hulls.insert(hull);
 				preview_reload_needed = false;
 			}
 			hull.clear();
@@ -833,10 +833,22 @@ void fixMacroInstances(Cursor & cur, DocIterator const & inset_pos,
 
 		MathMacro * macro = insetMath->asMacro();
 		if (macro && macro->name() == name && macro->folded()) {
-			fix(macro);
-			if (RenderPreview::status() == LyXRC::PREVIEW_ON)
+			if (fix(macro) && RenderPreview::status() == LyXRC::PREVIEW_ON)
 				preview_reload_needed = true;
 		}
+	}
+
+	if (!preview_hulls.empty()) {
+		// reload the scheduled previews
+		set<DocIterator>::const_iterator sit = preview_hulls.begin();
+		set<DocIterator>::const_iterator end = preview_hulls.end();
+		for (; sit != end; ++sit) {
+			InsetMathHull * inset_hull =
+				sit->nextInset()->asInsetMath()->asHullInset();
+			LASSERT(inset_hull, /**/);
+			inset_hull->reloadPreview(*sit);
+		}
+		cur.screenUpdateFlags(Update::Force);
 	}
 }
 
@@ -1079,6 +1091,7 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 			flag.setEnabled(numargs_ < 9);
 			break;
 
+		case LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM:
 		case LFUN_MATH_MACRO_REMOVE_PARAM: {
 			int num = numargs_;
 			if (arg.size() != 0)
