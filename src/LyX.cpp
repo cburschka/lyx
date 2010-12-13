@@ -555,7 +555,7 @@ void LyX::execCommands()
 				"try to reconfigure without checking your LaTeX installation, or continue."),
 			0, 2,
 			_("&Reconfigure"),
-			_("&Use Defaults"),
+			_("&Without LaTeX"),
 			_("&Continue")))
 		{
 		case 0:
