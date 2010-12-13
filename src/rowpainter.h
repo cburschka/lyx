@@ -59,7 +59,7 @@ public:
 
 private:
 	void paintForeignMark(double orig_x, Language const * lang, int desc = 0);
-	void paintMisspelledMark(double orig_x, int desc, bool changed);
+	void paintMisspelledMark(double orig_x, bool changed);
 	void paintHebrewComposeChar(pos_type & vpos, FontInfo const & font);
 	void paintArabicComposeChar(pos_type & vpos, FontInfo const & font);
 	void paintChars(pos_type & vpos, FontInfo const & font,
@@ -68,7 +68,7 @@ private:
 	void paintFromPos(pos_type & vpos, bool changed);
 	void paintInset(Inset const * inset, pos_type const pos);
 	void paintInlineCompletion(Font const & font);
-	
+
 	/// return left margin
 	int leftMargin() const;
 
@@ -104,6 +104,8 @@ private:
 	int const yo_;    // current baseline
 	double x_;
 	int width_;
+	int line_thickness_;
+	int line_offset_;
 };
 
 } // namespace lyx

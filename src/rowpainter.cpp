@@ -62,7 +62,15 @@ RowPainter::RowPainter(PainterInfo & pi,
 	  bidi_(bidi), change_(pi_.change_),
 	  xo_(x), yo_(y), width_(text_metrics_.width())
 {
+	// derive the line thickness from zoom factor
+	// the zoom is given in percent
+	double const scale_ = lyxrc.zoom / 100.0;
+
 	bidi_.computeTables(par_, pi_.base.bv->buffer(), row_);
+	// (increase thickness at 150%, 250% etc.)
+	line_thickness_ = scale_ < 1.0 ? 1.0 : int(scale_ + 0.5);
+	line_offset_ = int(1.5 * line_thickness_) + (scale_ < 1.0 ? 1 : 2);
+
 	x_ = row_.x + xo_;
 
 	//lyxerr << "RowPainter: x: " << x_ << " xo: " << xo_ << " yo: " << yo_ << endl;
@@ -349,20 +357,19 @@ void RowPainter::paintForeignMark(double orig_x, Language const * lang,
 	if (lang == pi_.base.bv->buffer().params().language)
 		return;
 
-	int const y = yo_ + 1 + desc;
-	pi_.pain.line(int(orig_x), y, int(x_), y, Color_language);
+	int const y = yo_ + 1 + desc + int(line_thickness_/2);
+	pi_.pain.line(int(orig_x), y, int(x_), y, Color_language,
+		Painter::line_solid, line_thickness_);
 }
 
 
-void RowPainter::paintMisspelledMark(double orig_x, int desc, bool changed)
+void RowPainter::paintMisspelledMark(double orig_x, bool changed)
 {
-	// derive the offset from zoom factor specified by user in percent
 	// if changed the misspelled marker gets placed slightly lower than normal
 	// to avoid drawing at the same vertical offset
-	int const offset = int(1.5 * lyxrc.zoom / 100.0); // [percent]
-	int const y = yo_ + desc + (changed ? offset : 0) + 1;
+	int const y = yo_ + (changed ? line_thickness_ + 1 : 0) + line_offset_;
 	pi_.pain.line(int(orig_x), y, int(x_), y, Color_error,
-		Painter::line_onoffdash, 2.0);
+		Painter::line_onoffdash, line_thickness_);
 }
 
 
@@ -399,7 +406,7 @@ void RowPainter::paintFromPos(pos_type & vpos, bool changed)
 	paintForeignMark(orig_x, orig_font.language());
 
 	if (lyxrc.spellcheck_continuously && misspelled_) {
-		paintMisspelledMark(orig_x, 2, changed);
+		paintMisspelledMark(orig_x, changed);
 	}
 }
 
@@ -856,9 +863,9 @@ void RowPainter::paintText()
 			FontMetrics const & fm
 				= theFontMetrics(pi_.base.bv->buffer().params().getFont());
 			int const y_bar = change_running.deleted() ?
-				yo_ - fm.maxAscent() / 3 : yo_ + fm.maxAscent() / 6;
+				yo_ - fm.maxAscent() / 3 : yo_ + line_offset_;
 			pi_.pain.line(change_last_x, y_bar, int(x_), y_bar,
-				change_running.color(), Painter::line_solid, 0.5);
+				change_running.color(), Painter::line_solid, line_thickness_);
 
 			// Change might continue with a different author or type
 			if (change.changed() && !highly_editable_inset) {
@@ -916,9 +923,9 @@ void RowPainter::paintText()
 		FontMetrics const & fm
 			= theFontMetrics(pi_.base.bv->buffer().params().getFont());
 		int const y_bar = change_running.deleted() ?
-				yo_ - fm.maxAscent() / 3 : yo_ + fm.maxAscent() / 6;
+				yo_ - fm.maxAscent() / 3 : yo_ + line_offset_;
 		pi_.pain.line(change_last_x, y_bar, int(x_), y_bar,
-			change_running.color(), Painter::line_solid, 0.5);
+			change_running.color(), Painter::line_solid, line_thickness_);
 		change_running.setUnchanged();
 	}
 }
