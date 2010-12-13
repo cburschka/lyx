@@ -6,6 +6,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\elyxer.py" # always here
  File "${PRODUCT_SOURCEDIR}\bin\lyx.css" # always here
+ File "${PRODUCT_SOURCEDIR}\bin\math.css" # always here
  File "${PRODUCT_SOURCEDIR}\bin\setup.py" # always here
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
