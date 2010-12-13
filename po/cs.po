@@ -13221,9 +13221,8 @@ msgid "TeX Information|I"
 msgstr "Informace TeX-u|I"
 
 #: lib/ui/stdmenus.inc:543
-#, fuzzy
 msgid "Compare...|C"
-msgstr "Vlastní...|V"
+msgstr "Porovnat...|V"
 
 #: lib/ui/stdmenus.inc:559
 msgid "Additional Features|F"
@@ -17934,19 +17933,19 @@ msgid "Underline %1$s, "
 msgstr "Podtr¾ení %1$s, "
 
 #: src/Font.cpp:166
-#, fuzzy, c-format
+#, c-format
 msgid "Strikeout %1$s, "
-msgstr "Jméno %1$s, "
+msgstr "Pøe¹krtnutí %1$s, "
 
 #: src/Font.cpp:169
-#, fuzzy, c-format
+#, c-format
 msgid "Double underline %1$s, "
-msgstr "Podtr¾ení %1$s, "
+msgstr "Dvojité podtr¾ení %1$s, "
 
 #: src/Font.cpp:172
-#, fuzzy, c-format
+#, c-format
 msgid "Wavy underline %1$s, "
-msgstr "Podtr¾ení %1$s, "
+msgstr "Vlnité podtr¾ení %1$s, "
 
 #: src/Font.cpp:175
 #, c-format
@@ -18114,15 +18113,14 @@ msgid "No textclass is found"
 msgstr "Nebyly nalezeny soubory tøíd (textclass)"
 
 #: src/LyX.cpp:553
-#, fuzzy
 msgid ""
 "LyX will only have minimal functionality because no textclasses have been "
 "found. You can either try to reconfigure LyX normally, try to reconfigure "
 "without checking your LaTeX installation, or continue."
 msgstr ""
 "LyX bude mít pouze minimální funkcionalitu, proto¾e nebyly nalezeny potøebné "
-"soubory tøíd (textclass). Buïto mù¾ete pou¾ít normální rekonfiguraci nebo ji "
-"zavolat za pou¾ití standarních tøíd nebo pokraèovat."
+"soubory tøíd (textclass). Buïto mù¾ete pou¾ít normální rekonfiguraci nebo rekonfigurovat "
+"bez kontroly LaTeX-ové instalace anebo pokraèovat."
 
 #: src/LyX.cpp:557
 msgid "&Reconfigure"
@@ -19274,7 +19272,7 @@ msgstr ""
 "Po stisknutí tlaèítka OK se LyX pokusí znovu naèíst opravený dokument."
 
 #: src/VCBackend.cpp:781
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
 "%1$s\n"
@@ -19285,8 +19283,7 @@ msgstr ""
 "Byly detekovány zmìny v pracovním adresáøi:\n"
 "%1$s\n"
 "\n"
-"V pøípadì konfliktu pøi aktualizaci bude preferována verze souboru z "
-"pracovního adresáøe.\n"
+"Pøípadné konflikty musí být vyøe¹eny ruènì nebo budete muset revertovat zpìt k verzi z repozitáøe.\n"
 "\n"
 "Pokraèovat?"
 
@@ -20008,18 +20005,16 @@ msgid "Underbar"
 msgstr "Podtr¾ený"
 
 #: src/frontends/qt4/GuiCharacter.cpp:79
-#, fuzzy
 msgid "Double underbar"
-msgstr "Dvojitý rám"
+msgstr "Dvojitì podtr¾ený"
 
 #: src/frontends/qt4/GuiCharacter.cpp:80
-#, fuzzy
 msgid "Wavy underbar"
-msgstr "Podtr¾ený"
+msgstr "Vlnitì podtr¾ený"
 
 #: src/frontends/qt4/GuiCharacter.cpp:81
 msgid "Strikeout"
-msgstr ""
+msgstr "Pøe¹krtnutý"
 
 #: src/frontends/qt4/GuiCharacter.cpp:92
 msgid "No color"
@@ -20147,9 +20142,8 @@ msgid "Aborting process..."
 msgstr "Pøeru¹ování procesu..."
 
 #: src/frontends/qt4/GuiCompare.cpp:299
-#, fuzzy
 msgid "differences"
-msgstr "Reference"
+msgstr "differences"
 
 #: src/frontends/qt4/GuiCompareHistory.cpp:35
 msgid "Compare different revisions"
@@ -20858,9 +20852,8 @@ msgid "mm"
 msgstr "mm"
 
 #: src/frontends/qt4/GuiGraphics.cpp:475 src/lengthcommon.cpp:38
-#, fuzzy
 msgid "in[[unit of measure]]"
-msgstr "cc"
+msgstr "in"
 
 #: src/frontends/qt4/GuiGraphics.cpp:786
 msgid "Select graphics file"
@@ -20943,33 +20936,28 @@ msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "LaTeX/LyX dokumenty (*.tex *.lyx)"
 
 #: src/frontends/qt4/GuiIndex.cpp:34
-#, fuzzy
 msgid "Index Entry Settings"
-msgstr "Heslo rejstøíku"
+msgstr "Nastavení hesla rejstøíku"
 
 #: src/frontends/qt4/GuiIndices.cpp:52
-#, fuzzy
 msgid "Label Color"
-msgstr "Barevnì"
+msgstr "Barva ¹títku"
 
 #: src/frontends/qt4/GuiIndices.cpp:186
-#, fuzzy
 msgid "Cannot remove standard index"
-msgstr "Nelze smazat pomocný adresáø"
+msgstr "Nelze smazat standardní rejstøík"
 
 #: src/frontends/qt4/GuiIndices.cpp:187
-#, fuzzy
 msgid "The default index cannot be removed."
-msgstr "Poslední øádek výpisu"
+msgstr "Standardní rej¹tøík nemù¾e být smazán."
 
 #: src/frontends/qt4/GuiIndices.cpp:207
-#, fuzzy
 msgid "Enter new index name"
-msgstr "Vlo¾it jméno BibTeX-ové databáze"
+msgstr "Vlo¾it nové jméno rejstøíku"
 
 #: src/frontends/qt4/GuiIndices.cpp:215
 msgid "The index could not be renamed. Check if the new name already exists."
-msgstr ""
+msgstr "Rejstøík nemohl být pøejmenován. Zkontrolujte zda-li zadané jméno ji¾ neexistuje."
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "unknown"
@@ -23247,14 +23235,12 @@ msgid "NameRef:"
 msgstr "NameRef:"
 
 #: src/insets/InsetScript.cpp:368
-#, fuzzy
 msgid "subscript"
-msgstr "Index dole"
+msgstr "dolní index"
 
 #: src/insets/InsetScript.cpp:378
-#, fuzzy
 msgid "superscript"
-msgstr "Index nahoøe"
+msgstr "horní index"
 
 #: src/insets/InsetSpace.cpp:71
 msgid "Protected Space"
