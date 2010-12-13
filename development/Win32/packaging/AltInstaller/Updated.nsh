@@ -10,9 +10,9 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  #File "${PRODUCT_SOURCEDIR}\Resources\chkconfig.ltx"
- #File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  #File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
- #File "${PRODUCT_SOURCEDIR}\Resources\symbols"
+ File "${PRODUCT_SOURCEDIR}\Resources\languages"
  #File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  #SetOutPath "$INSTDIR\Resources\doc"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Customization.lyx"
