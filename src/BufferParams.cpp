@@ -1344,6 +1344,10 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		texrow.newlines(lines);
 		// set back for the rest
 		lyxpreamble.clear();
+		// correctly break URLs with hyperref and dvi output
+		if (features.runparams().flavor == OutputParams::LATEX
+		    && features.isAvailable("breakurl"))
+			lyxpreamble += "\\usepackage{breakurl}\n";
 	}
 
 	// Will be surrounded by \makeatletter and \makeatother when not empty

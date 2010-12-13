@@ -52,6 +52,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Correctly break URLs at the end of lines in DVI output when hyperref
+  is used (bug 7033).
+
 - Fix DVI output of the document class "letter (lettre)".
 
 - Do not output PDF settings if these are disabled in the document
