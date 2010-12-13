@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-12-07 00:34+0100\n"
-"PO-Revision-Date: 2010-12-11 20:31+0730\n"
+"PO-Revision-Date: 2010-12-13 20:29+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
 "Language: id\n"
@@ -1134,7 +1134,7 @@ msgstr "Dokumen &lama"
 
 #: src/frontends/qt4/ui/CompareUi.ui:173
 msgid "Turns on the change tracking and showing changes in LaTeX output for the resulting document"
-msgstr ""
+msgstr "Mengaktifkan lacak perubahan dan menampilkan perubahan di keluaran LaTeX untuk hasil dokumen"
 
 #: src/frontends/qt4/ui/CompareUi.ui:176
 msgid "Enable &change tracking features in the output"
@@ -2001,7 +2001,7 @@ msgstr "Inde&ks yang tersedia:"
 
 #: src/frontends/qt4/ui/IndexUi.ui:69
 msgid "Select the index this entry should be listed in."
-msgstr ""
+msgstr "Pilih daftar indeks untuk entri yang ini"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid "Here you can define an alternative index processor and specify its options."
@@ -2457,15 +2457,15 @@ msgstr "Keluaran Dokumen Induk"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:40
 msgid "Include only the selected subdocuments in the output"
-msgstr ""
+msgstr "Ikutkan di keluaran hanya anak dokumen yang dipilih "
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:43
 msgid "Include only &selected children"
-msgstr ""
+msgstr "Ikutkan anak dok&umen pilihan"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:50
 msgid "Assure counters and references are as in the complete document (prolonges compilation)"
-msgstr ""
+msgstr "Memastikan penghitung dan referensi seperti di dokumen lengkap"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:53
 #, fuzzy
@@ -2474,7 +2474,7 @@ msgstr "semua referensi yang tidak diacu"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:63
 msgid "Include all subdocuments in the output"
-msgstr ""
+msgstr "Ikutkan semua anak dokumen pada keluaran"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:66
 #, fuzzy
@@ -3006,31 +3006,27 @@ msgstr "Paragraf Ba&waan"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:60
 msgid "Horizontal and vertical space of the phantom content"
-msgstr ""
+msgstr "Spasi horisontal dan vertikal menggunakan phantom"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:63
 msgid "&Phantom"
 msgstr "&Phantom"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:70
-#, fuzzy
 msgid "Horizontal space of the phantom content"
-msgstr "Spasi phantom horisontal\t\\hphantom"
+msgstr "Spasi horisontal menggunakan phantom"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:73
-#, fuzzy
 msgid "&Horizontal Phantom"
-msgstr "Garis Horisontal"
+msgstr "Phantom &Horisontal"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:80
-#, fuzzy
 msgid "Vertical space of the phantom content"
-msgstr "Spasi phantom vertikal\t\\vphantom"
+msgstr "Spasi vertikal menggunakan phantom"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:83
-#, fuzzy
 msgid "&Vertical Phantom"
-msgstr "Pelurusan vertikal"
+msgstr "Phantom &Vertikal"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:42
 msgid "A&lter..."
@@ -3365,7 +3361,7 @@ msgstr "Ke&dua:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:120
 msgid "Mac OS X specific setting for use with emacs bindings. Takes effect next time LyX is launched."
-msgstr ""
+msgstr "Pengaturan Mac OS X untuk digunakan oleh emacs. Akan mempunyai efek ketika menjalankan ulang LyX."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:123
 msgid "Do not swap Apple and Control keys"
@@ -4072,12 +4068,12 @@ msgstr "&Simpan"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:13
 msgid "&quot;Nomenclature settings&quot;"
-msgstr ""
+msgstr "&quot;Pengaturan Nomeklatur&quot;"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:19
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:32
 msgid "Define hanging indentation/label length for the nomenclature list."
-msgstr ""
+msgstr "Definisi ukuran masuk paragraf untuk daftar nomenklatur"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:22
 #, fuzzy
@@ -4091,7 +4087,7 @@ msgstr "Lebar kolom"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
 msgid "Custom value. &quot;List Indentation&quot; needs to be set to &quot;Custom&quot;."
-msgstr ""
+msgstr "Angka AturSendiri. &quot;Daftar Indentasi&quot; perlu diatur &quot;AturSendiri&quot;."
 
 #: src/frontends/qt4/ui/PrintUi.ui:28
 msgid "Pages"
@@ -4182,11 +4178,11 @@ msgstr "Kirim output ke satu berkas"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:61
 msgid "Check if this index should be part (e.g., a section) of the former one."
-msgstr ""
+msgstr "Pilih jika indeks harus masuk bagian (misal, subbab) dari sebelumnya."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:64
 msgid "&Subindex"
-msgstr ""
+msgstr "Anak Indeks"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:79
 msgid "A&vailable indexes:"
@@ -4289,7 +4285,7 @@ msgstr "Cermati &huruf besar/kecil"
 
 #: src/frontends/qt4/ui/RefUi.ui:188
 msgid "Group labels by prefix (e.g. &quot;sec:&quot;)"
-msgstr ""
+msgstr "Grup label menurut awalan (misal, &quot;sec:&quot;)"
 
 #: src/frontends/qt4/ui/RefUi.ui:191
 msgid "Grou&p"
@@ -4391,11 +4387,11 @@ msgstr "Ketik cara pintas setelah klik kotak ini. Anda bisa menghapus dengan men
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:13
 msgid "DockWidget"
-msgstr ""
+msgstr "DockWidget"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:38
 msgid "The checked language. Switching this alters the language of the checked word."
-msgstr ""
+msgstr "Bahasa yang dipilih. Merubah ini berarti merubah bahasa kata yang sudah diperiksa."
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:54
 msgid "Unknown word:"
@@ -4516,7 +4512,7 @@ msgstr "Penggabungan beberapa sel horisontal"
 
 #: src/frontends/qt4/ui/TabularUi.ui:244
 msgid "&Multicolumn"
-msgstr "Gabung sel h&orisontal"
+msgstr "Gabung kolo&m"
 
 #: src/frontends/qt4/ui/TabularUi.ui:254
 msgid "Row setting"
@@ -4528,7 +4524,7 @@ msgstr "Penggabungan beberapa sel vertikal"
 
 #: src/frontends/qt4/ui/TabularUi.ui:263
 msgid "M&ultirow"
-msgstr "Gabung sel verti&kal"
+msgstr "Gabung baris"
 
 #: src/frontends/qt4/ui/TabularUi.ui:272
 msgid "optional vertical offset"
@@ -4825,9 +4821,8 @@ msgid "&Indentation"
 msgstr "&Indentasi"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:47
-#, fuzzy
 msgid "Size of the indentation"
-msgstr "Ukuran dan &Rotasi"
+msgstr "Ukuran masuk paragraf"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:115
 msgid "&Vertical space"
@@ -4850,9 +4845,8 @@ msgid "Spacing type"
 msgstr "Tipe Spasi"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:231
-#, fuzzy
 msgid "Number of lines"
-msgstr "Jumlah Level"
+msgstr "Jumlah baris"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:251
 msgid "Format text into two columns"
@@ -4863,9 +4857,8 @@ msgid "Two-&column document"
 msgstr "Dokumen dua kolom"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:32
-#, fuzzy
 msgid "Language of the thesaurus"
-msgstr "Footer Bahasa:"
+msgstr "Bahasa Padanan Kata"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:39
 msgid "Index entry"
@@ -11097,7 +11090,7 @@ msgstr "Memungkinkan menggunakan  bahasa program statistika S/R melalui paket Sw
 
 #: lib/layouts/sweave.module:20
 msgid "Chunk"
-msgstr ""
+msgstr "Chunk"
 
 #: lib/layouts/sweave.module:44
 msgid "Sweave opts"
@@ -12143,7 +12136,7 @@ msgstr "Sebagai Paragraf|P"
 #: lib/ui/classic.ui:120
 #: lib/ui/stdmenus.inc:180
 msgid "Multicolumn|M"
-msgstr "Multikolom|M"
+msgstr "Gabung kolom|u"
 
 #: lib/ui/classic.ui:122
 msgid "Line Top|T"
@@ -13139,7 +13132,7 @@ msgstr "Tutup sisipan|u"
 #: lib/ui/stdcontext.inc:187
 #: lib/ui/stdcontext.inc:559
 msgid "Dissolve Inset|D"
-msgstr "Hapus sisipan|H"
+msgstr "Hapus sisipan"
 
 #: lib/ui/stdcontext.inc:144
 msgid "Show Label|L"
@@ -13201,21 +13194,18 @@ msgstr "Tutup Semua Nota|T"
 
 #: lib/ui/stdcontext.inc:183
 #: lib/ui/stdmenus.inc:472
-#, fuzzy
 msgid "Phantom|P"
-msgstr "Esperanto"
+msgstr "Phantom|P"
 
 #: lib/ui/stdcontext.inc:184
 #: lib/ui/stdmenus.inc:473
-#, fuzzy
 msgid "Horizontal Phantom|H"
-msgstr "Garis Horisontal"
+msgstr "Phantom Horisontal|H"
 
 #: lib/ui/stdcontext.inc:185
 #: lib/ui/stdmenus.inc:474
-#, fuzzy
 msgid "Vertical Phantom|V"
-msgstr "Pelurusan vertikal"
+msgstr "Phantom Vertikal|V"
 
 #: lib/ui/stdcontext.inc:195
 msgid "Protected Space|o"
@@ -13490,7 +13480,7 @@ msgstr "varnothing"
 
 #: lib/ui/stdcontext.inc:321
 msgid "Anything Non-Empty|o"
-msgstr ""
+msgstr "Apapun Tidak Kosong|o"
 
 #: lib/ui/stdcontext.inc:322
 #, fuzzy
@@ -13626,7 +13616,7 @@ msgstr "Direktori dan Folder"
 
 #: lib/ui/stdcontext.inc:411
 msgid "Class|C"
-msgstr ""
+msgstr "Kelas|e"
 
 #: lib/ui/stdcontext.inc:413
 #, fuzzy
@@ -13644,14 +13634,12 @@ msgid "Revision Author|A"
 msgstr "Riwayat Perubahan"
 
 #: lib/ui/stdcontext.inc:416
-#, fuzzy
 msgid "Revision Date|D"
-msgstr "Perubahan"
+msgstr "Tanggal Perubahan|T"
 
 #: lib/ui/stdcontext.inc:417
-#, fuzzy
 msgid "Revision Time|i"
-msgstr "Perubahan"
+msgstr "Waktu Perubahan|W"
 
 #: lib/ui/stdcontext.inc:419
 msgid "LyX Version|X"
@@ -13677,7 +13665,7 @@ msgstr "&Non-aktifkan Cabang"
 
 #: lib/ui/stdcontext.inc:444
 msgid "Insert Reference at Cursor Position|I"
-msgstr ""
+msgstr "Sisipkan Referensi di Posisi Kursor|R"
 
 #: lib/ui/stdcontext.inc:538
 #, fuzzy
@@ -13686,7 +13674,7 @@ msgstr "Buka Semua Sisipan|B"
 
 #: lib/ui/stdcontext.inc:541
 msgid "Subindex|b"
-msgstr ""
+msgstr "Anak Indeks|d"
 
 #: lib/ui/stdcontext.inc:569
 #: lib/ui/stdmenus.inc:501
@@ -13763,7 +13751,7 @@ msgstr "Perbarui direktori lokal dari repositori|d"
 
 #: lib/ui/stdmenus.inc:78
 msgid "Compare with Older Revision...|C"
-msgstr ""
+msgstr "Bandingkan dengan Revisi Lama...|R"
 
 #: lib/ui/stdmenus.inc:80
 msgid "Use Locking Property|L"
@@ -13806,9 +13794,8 @@ msgid "Decrease List Depth|D"
 msgstr "Decrease List Depth|D"
 
 #: lib/ui/stdmenus.inc:130
-#, fuzzy
 msgid "Dissolve Inset"
-msgstr "Hapus sisipan|H"
+msgstr "Hapus sisipan"
 
 #: lib/ui/stdmenus.inc:131
 msgid "TeX Code Settings...|C"
@@ -13914,9 +13901,8 @@ msgid "Lowercase|L"
 msgstr "Hurufkecil semua|l"
 
 #: lib/ui/stdmenus.inc:181
-#, fuzzy
 msgid "Multirow|u"
-msgstr "&Gabung sel horisontal"
+msgstr "Gabung baris|G"
 
 #: lib/ui/stdmenus.inc:183
 msgid "Top Line|T"
@@ -14413,7 +14399,7 @@ msgstr "Perbarui dokumen induk"
 
 #: lib/ui/stdtoolbars.inc:103
 msgid "Enable Forward/Reverse Search"
-msgstr ""
+msgstr "Aktifkan Pencarian Maju/Mundur"
 
 #: lib/ui/stdtoolbars.inc:105
 msgid "View other formats"
@@ -14598,12 +14584,11 @@ msgstr "Putar tabel"
 
 #: lib/ui/stdtoolbars.inc:165
 msgid "Set multi-column"
-msgstr "Gabungkan sel horisontal"
+msgstr "Gabungkan sel horisontal (Gabung kolom)"
 
 #: lib/ui/stdtoolbars.inc:166
-#, fuzzy
 msgid "Set multi-row"
-msgstr "Gabungkan sel horisontal"
+msgstr "Gabungkan sel vertikal (Gabung baris)"
 
 #: lib/ui/stdtoolbars.inc:169
 msgid "Math"
@@ -15057,17 +15042,14 @@ msgid "Negative space\t\\!"
 msgstr "Spasi negatif\t\\!"
 
 #: lib/ui/stdtoolbars.inc:334
-#, fuzzy
 msgid "Phantom\t\\phantom"
-msgstr "Spasi phantom\t\\phantom"
+msgstr "Spasi Phantom\t\\phantom"
 
 #: lib/ui/stdtoolbars.inc:335
-#, fuzzy
 msgid "Horizontal phantom\t\\hphantom"
 msgstr "Spasi phantom horisontal\t\\hphantom"
 
 #: lib/ui/stdtoolbars.inc:336
-#, fuzzy
 msgid "Vertical phantom\t\\vphantom"
 msgstr "Spasi phantom vertikal\t\\vphantom"
 
@@ -15197,7 +15179,7 @@ msgstr "Kaligrafi\t\\mathcal"
 
 #: lib/ui/stdtoolbars.inc:378
 msgid "Formal Script\t\\mathscr"
-msgstr ""
+msgstr "Skrip Formal\t\\mathscr"
 
 #: lib/ui/stdtoolbars.inc:379
 msgid "Normal text mode\t\\textrm"
@@ -15695,7 +15677,7 @@ msgstr "neq"
 
 #: lib/ui/stdtoolbars.inc:516
 msgid "in[[math relation]]"
-msgstr ""
+msgstr "di"
 
 #: lib/ui/stdtoolbars.inc:517
 msgid "ni"
@@ -17991,9 +17973,9 @@ msgid "Error exporting to format: %1$s."
 msgstr "Ada kesalahan mengekspor ke format %1$s."
 
 #: src/Buffer.cpp:2096
-#, fuzzy, c-format
+#, c-format
 msgid "Branch \"%1$s\" already exists."
-msgstr "Grup gambar dengan nama '%1$s' sudah ada."
+msgstr "Cabang \"%1$s\" sudah ada."
 
 #: src/Buffer.cpp:2126
 #, c-format
@@ -18119,7 +18101,7 @@ msgstr "&Muat Aslinya"
 #: src/Buffer.cpp:3712
 #, c-format
 msgid "An emergency file is succesfully loaded, but the original file %1$s is marked read-only. Please make sure to save the document as a different file."
-msgstr ""
+msgstr "Berkas darurat berhasil dimuat, tetapi berkas asli %1$s ditandai sebagai hanya bisa dibaca. Pastikan simpan dokumen dengan nama berbeda."
 
 #: src/Buffer.cpp:3718
 msgid "Document was successfully recovered."
@@ -18187,7 +18169,7 @@ msgstr "Muat &Aslinya"
 #: src/Buffer.cpp:3774
 #, c-format
 msgid "A backup file is succesfully loaded,  but the original file %1$s is marked read-only. Please make sure to save the document as a different file."
-msgstr ""
+msgstr "Berkas cadangan berhasil dimuat, tetapi berkas asli %1$s ditandai sebagai hanya bisa dibaca. Pastikan simpan dokumen dengan nama berbeda."
 
 #: src/Buffer.cpp:4079
 #: src/insets/InsetCaption.cpp:338
@@ -18215,6 +18197,9 @@ msgid ""
 "  %1$s\n"
 "inaccessible. You will need to update the included filename."
 msgstr ""
+"Menyimpan dokumen ini ke lokasi baru menyebabkan berkas:\n"
+"  %1$s\n"
+"tidak bisa di akses. Anda perlu memperbarui nama berkas ikutannya."
 
 #: src/BufferParams.cpp:568
 #, c-format
@@ -18229,6 +18214,15 @@ msgid ""
 "See section 3.1.2.2 of the User's Guide for\n"
 "more information."
 msgstr ""
+"Kelas dokumen yang dipilih\n"
+"\t%1$s\n"
+"memerlukan berkas eksternal yang belum ada.\n"
+"Kelas dokumen bisa digunakan, namun\n"
+"dokumen tidak bisa di kompail, kecuali\n"
+"berkas yang diperlukan dipasang:\n"
+"\t%2$s\n"
+"Lihat subbab 3.1.2.2 di buku panduan pengguna\n"
+"untuk penjelasan lengkap."
 
 #: src/BufferParams.cpp:577
 msgid "Document class not available"
@@ -18295,9 +18289,9 @@ msgstr "Bagian ini dari dokumen dihapus."
 
 #: src/BufferView.cpp:1260
 #: src/BufferView.cpp:1292
-#, fuzzy, c-format
+#, c-format
 msgid "The document class `%1$s' could not be loaded."
-msgstr "Dokumen class  %1$s tidak bisa dimuat."
+msgstr "Kelas dokumen '%1$s' tidak bisa dimuat."
 
 #: src/BufferView.cpp:1315
 msgid "No further undo information"
@@ -18371,12 +18365,12 @@ msgstr "Statistik"
 #: src/BufferView.cpp:1777
 #, c-format
 msgid "`inset-forall' interrupted because number of actions is larger than %1$d"
-msgstr ""
+msgstr "`inset-forall' dihentikan karena jumlah aksi lebih besar dari %1$d"
 
 #: src/BufferView.cpp:1779
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
-msgstr ""
+msgstr "Terapkan sisipan \"%1$s\" ke %2$d"
 
 #: src/BufferView.cpp:1787
 msgid "Branch name"
@@ -18609,9 +18603,8 @@ msgid "greyedout inset background"
 msgstr "latarbelakang sisipan kelabu"
 
 #: src/Color.cpp:187
-#, fuzzy
 msgid "phantom inset text"
-msgstr "sisipan teks yang bisa dilipat"
+msgstr "sisipan phantom teks"
 
 #: src/Color.cpp:188
 msgid "shaded box"
@@ -18936,7 +18929,7 @@ msgstr "Aksi yang tidak dikenal"
 
 #: src/CutAndPaste.cpp:350
 msgid "&Don't Add"
-msgstr ""
+msgstr "Jangan Tambahkan"
 
 #: src/CutAndPaste.cpp:677
 #, c-format
@@ -19167,6 +19160,9 @@ msgid ""
 "%1$s.\n"
 "Falling back to default."
 msgstr ""
+"Tidak bisa menemukan berkas penggabung\n"
+"%1$s.\n"
+"Dikembalikan ke bawaan."
 
 #: src/KeySequence.cpp:166
 msgid "   options: "
@@ -19270,12 +19266,16 @@ msgid ""
 "SIGHUP signal caught!\n"
 "Bye."
 msgstr ""
+"Sinyal SIGHUP tertangkap!\n"
+"Bye."
 
 #: src/LyX.cpp:666
 msgid ""
 "SIGFPE signal caught!\n"
 "Bye."
 msgstr ""
+"Sinyal SIGFPE tertangkap!\n"
+"Bye."
 
 #: src/LyX.cpp:669
 msgid ""
@@ -19284,6 +19284,9 @@ msgid ""
 "Please read the bug-reporting instructions in 'Help->Introduction' and send us a bug report, if necessary. Thanks !\n"
 "Bye."
 msgstr ""
+"Sinyal SIGSEGV tertangkap!\n"
+"Maaf, anda menemukan kutu di LyX, semoga data anda tidak hilang.\n"
+"Silahkan membaca bagaimana melaporkan kutu, dari 'Bantuan->Pengantar' dan kirimkan pada kami, jika diperlukan. Terima kasih !"
 
 #: src/LyX.cpp:685
 msgid "LyX crashed!"
@@ -19509,7 +19512,7 @@ msgstr "LyX normalnya tidak memperbarui posisi kursor apabila anda mengubah scro
 
 #: src/LyXRC.cpp:3113
 msgid "Make Apple key act as Meta and Control key as Ctrl."
-msgstr ""
+msgstr "Membuat tombol ketik Apple seperti tombol Meta dan Control sebagai Ctrl."
 
 #: src/LyXRC.cpp:3117
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
@@ -19530,7 +19533,7 @@ msgstr "Berkas definisi perintah. Dapat menggunakan path absolut atau LyX akan m
 
 #: src/LyXRC.cpp:3134
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
-msgstr ""
+msgstr "Format bawaan digunakan dengan LFUN_BUFFER_[VIEW|UPDATE]."
 
 #: src/LyXRC.cpp:3138
 msgid "New documents will be assigned this language."
@@ -19670,7 +19673,7 @@ msgstr "Gunakan \"...\"  untuk menyingkat completion yang panjang."
 
 #: src/LyXRC.cpp:3284
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
-msgstr ""
+msgstr "Mengijinkan singkatan TeXMacs, seperti => menggantikan \\Rightarrow."
 
 #: src/LyXRC.cpp:3288
 #, c-format
@@ -19808,7 +19811,7 @@ msgstr "LyX akan menempatkan direktori sementara di lokasi path ini. Berkas yang
 
 #: src/LyXRC.cpp:3438
 msgid "This is the place where the files of the thesaurus library reside."
-msgstr ""
+msgstr "Inilah lokasi dimana berkas pustaka padanan kata disimpan."
 
 #: src/LyXRC.cpp:3442
 msgid "The path that LyX will set when offering to choose a template. An empty value selects the directory LyX was started from."
@@ -19820,7 +19823,7 @@ msgstr "Berkas antarmuka pengguna (UI). Dapat dinyatakan menurut lokasi path abs
 
 #: src/LyXRC.cpp:3465
 msgid "Enable use the system colors for some things like main window background and selection."
-msgstr ""
+msgstr "Menggunakan warna sistem untuk berbagai warna seperti layar jendela serta pilihan."
 
 #: src/LyXRC.cpp:3469
 msgid "Enable the automatic appearance of tool tips in the work area."
@@ -20028,9 +20031,8 @@ msgid "Already in regular expression mode"
 msgstr "Pernyataan &Reguler"
 
 #: src/Text3.cpp:216
-#, fuzzy
 msgid "Regexp editor mode"
-msgstr "Penyuntingan mode matematika"
+msgstr "Mode penyunting Regexp"
 
 #: src/Text3.cpp:1284
 msgid "Layout "
@@ -20493,6 +20495,8 @@ msgid ""
 "%1$s: the end was reached while searching forward.\n"
 "Continue searching from the beginning?"
 msgstr ""
+"%1$s: sudah sampai akhir ketika pencarian maju.\n"
+"Meneruskan pencarian dari depan?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:291
 #, c-format
@@ -20500,10 +20504,12 @@ msgid ""
 "%1$s: the beginning was reached while searching backward.\n"
 "Continue searching from the end?"
 msgstr ""
+"%1$s: sudah sampai ke depan ketika pencarian mundur.\n"
+"Meneruskan dari bagian akhir?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:346
 msgid "Wrap search?"
-msgstr ""
+msgstr "Melipat pencarian?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:403
 msgid "Nothing to search"
@@ -20713,7 +20719,7 @@ msgid "Could not find UI definition file"
 msgstr "Tidak bisa menemukan berkas definisi UI"
 
 #: src/frontends/qt4/GuiApplication.cpp:2324
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error while reading the included file\n"
 "%1$s\n"
@@ -20834,7 +20840,7 @@ msgstr "Lebar"
 #: src/frontends/qt4/GuiBox.cpp:390
 #: src/insets/InsetBox.cpp:140
 msgid "Makebox"
-msgstr ""
+msgstr "Makebox"
 
 #: src/frontends/qt4/GuiBranches.cpp:49
 #: src/insets/Inset.cpp:108
@@ -20888,7 +20894,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiBranches.cpp:177
 msgid "&Merge"
-msgstr ""
+msgstr "&Gabung"
 
 #: src/frontends/qt4/GuiBranches.cpp:185
 #: src/frontends/qt4/GuiIndices.cpp:214
@@ -21913,32 +21919,28 @@ msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "Dokumen LaTeX/LyX (*.tex *.lyx)"
 
 #: src/frontends/qt4/GuiIndex.cpp:34
-#, fuzzy
 msgid "Index Entry Settings"
-msgstr "Catatkan Indeks|I"
+msgstr "Pengaturan Entri Indeks"
 
 #: src/frontends/qt4/GuiIndices.cpp:52
 msgid "Label Color"
 msgstr "Warna Label"
 
 #: src/frontends/qt4/GuiIndices.cpp:186
-#, fuzzy
 msgid "Cannot remove standard index"
-msgstr "Tidak bisa menghapus direktori sementara"
+msgstr "Tidak bisa menghapus indeks standar"
 
 #: src/frontends/qt4/GuiIndices.cpp:187
-#, fuzzy
 msgid "The default index cannot be removed."
-msgstr "Baris terakhir yang ditampilkan"
+msgstr "Indeks bawaan tidak bisa dihapus"
 
 #: src/frontends/qt4/GuiIndices.cpp:207
-#, fuzzy
 msgid "Enter new index name"
-msgstr "Tuliskan nama berkas pangkalan data BibTeX"
+msgstr "Tuliskan nama indeks baru"
 
 #: src/frontends/qt4/GuiIndices.cpp:215
 msgid "The index could not be renamed. Check if the new name already exists."
-msgstr ""
+msgstr "Indeks tidak bisa diganti nama. Periksa jika nama baru sudah dipakai."
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "unknown"
@@ -22068,9 +22070,8 @@ msgstr ""
 " Biasanya, anda tidak perlu mengatur, karena label terlebar sudah dipakai untuk tiap-tiap item dalam lingkungan Daftar."
 
 #: src/frontends/qt4/GuiPhantom.cpp:25
-#, fuzzy
 msgid "Phantom Settings"
-msgstr "Pengaturan &Umum"
+msgstr "Phantom"
 
 #: src/frontends/qt4/GuiPrefs.cpp:139
 msgid "System files|#S#s"
@@ -22137,7 +22138,7 @@ msgstr "Pilih direktori untuk menyimpan dokumen"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1378
 msgid "Set the path to the thesaurus dictionaries"
-msgstr ""
+msgstr "Tetapkan lokasi kamus padanan kata"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1387
 msgid "Set the path to the Hunspell dictionaries"
@@ -22153,9 +22154,8 @@ msgid "Spellchecker"
 msgstr "Koreksi ejaan"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1415
-#, fuzzy
 msgid "Native"
-msgstr "aktif"
+msgstr "Asli"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1421
 msgid "Aspell"
@@ -22319,14 +22319,12 @@ msgid "PostScript files (*.ps)"
 msgstr "Berkas PostScript (*.ps)"
 
 #: src/frontends/qt4/GuiPrintNomencl.cpp:49
-#, fuzzy
 msgid "Longest label width"
 msgstr "&Label terpanjang"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:37
-#, fuzzy
 msgid "Index Settings"
-msgstr "Pengaturan Kotak"
+msgstr "Pengaturan Indeks"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:69
 msgid "<All indexes>"
@@ -22364,7 +22362,7 @@ msgstr "Lompat ke label"
 #: src/frontends/qt4/GuiRef.cpp:371
 #: src/frontends/qt4/GuiRef.cpp:390
 msgid "<No prefix>"
-msgstr ""
+msgstr "<Tanpa awalan>"
 
 #: src/frontends/qt4/GuiSearch.cpp:41
 msgid "Find and Replace"
@@ -23109,14 +23107,14 @@ msgid "Error while previewing format: %1$s"
 msgstr "Ada kesalahan ketika menampilkan format: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2922
-#, fuzzy, c-format
+#, c-format
 msgid "Successful export to format: %1$s"
-msgstr "Tidak ada informasi untuk ekspor format %1$s."
+msgstr "Berhasil ekspor ke format: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2923
-#, fuzzy, c-format
+#, c-format
 msgid "Error while exporting format: %1$s"
-msgstr "Tidak ada informasi untuk ekspor format %1$s."
+msgstr "Kesalahan ketika ekspor ke format: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:3108
 #: src/frontends/qt4/GuiView.cpp:3120
@@ -23124,9 +23122,8 @@ msgid "Exporting ..."
 msgstr "Sedang mengekspor..."
 
 #: src/frontends/qt4/GuiView.cpp:3129
-#, fuzzy
 msgid "Previewing ..."
-msgstr "Memuat pra tampilan"
+msgstr "Pra tampilan ..."
 
 #: src/frontends/qt4/GuiView.cpp:3163
 msgid "Document not loaded"
@@ -23155,14 +23152,12 @@ msgid "%1$s unknown command!"
 msgstr "%1$s perintah tidak dikenal!"
 
 #: src/frontends/qt4/GuiView.cpp:3488
-#, fuzzy
 msgid "Please, preview the document first."
-msgstr "Bagian ini dari dokumen dihapus."
+msgstr "Mohon dilihat hasil pra tampilan dahulu."
 
 #: src/frontends/qt4/GuiView.cpp:3503
-#, fuzzy
 msgid "Couldn't proceed."
-msgstr "Tidak bisa ekspor berkas"
+msgstr "Tidak bisa melanjutkan."
 
 #: src/frontends/qt4/GuiViewSource.cpp:160
 #: src/frontends/qt4/GuiViewSource.cpp:202
@@ -23237,18 +23232,16 @@ msgid "More Spelling Suggestions"
 msgstr "Saran Ejaan Lain"
 
 #: src/frontends/qt4/Menus.cpp:776
-#, fuzzy
 msgid "Add to personal dictionary|n"
-msgstr "Pilihlah kamus pribadi"
+msgstr "Tambah ke kamus pribadi"
 
 #: src/frontends/qt4/Menus.cpp:778
 msgid "Ignore all|I"
-msgstr "Abaikan &Semua"
+msgstr "Abaikan semua|s"
 
 #: src/frontends/qt4/Menus.cpp:785
-#, fuzzy
 msgid "Remove from personal dictionary|r"
-msgstr "Pilihlah kamus pribadi"
+msgstr "Hapus kamus pribadi|r"
 
 #: src/frontends/qt4/Menus.cpp:823
 msgid "Language|L"
@@ -23262,7 +23255,7 @@ msgstr "Gabung Perubahan...|G"
 #: src/frontends/qt4/Menus.cpp:894
 #: src/frontends/qt4/Menus.cpp:895
 msgid "Hidden|H"
-msgstr ""
+msgstr "Sembunyikan|y"
 
 #: src/frontends/qt4/Menus.cpp:899
 msgid "<No Documents Open>"
@@ -23334,9 +23327,9 @@ msgstr "Indeks: %1$s"
 
 #: src/frontends/qt4/Menus.cpp:1395
 #: src/frontends/qt4/Menus.cpp:1424
-#, fuzzy, c-format
+#, c-format
 msgid "Index Entry (%1$s)"
-msgstr "Catatkan Indeks|I"
+msgstr "Entri Indeks (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:1441
 msgid "No Citation in Scope!"
@@ -23462,9 +23455,8 @@ msgid "The following filename can cause troubles when running the exported file 
 msgstr "Berkas nama berikut sangat mungkin menyebabkan masalah ketika akan mengekspor melalui LaTeX: "
 
 #: src/insets/Inset.cpp:88
-#, fuzzy
 msgid "Bibliography Entry"
-msgstr "Pengaturan Entry Bibliografi"
+msgstr "Entri Bibliografi"
 
 #: src/insets/Inset.cpp:91
 msgid "TeX Code"
@@ -23486,7 +23478,7 @@ msgstr "Spasi Horisontal"
 #: src/insets/Inset.cpp:112
 #: src/insets/InsetVSpace.cpp:112
 msgid "Vertical Space"
-msgstr "Spasi Vertical"
+msgstr "Spasi Vertikal"
 
 #: src/insets/Inset.cpp:115
 msgid "Info"
@@ -23689,9 +23681,8 @@ msgid "Unknown parameter name: "
 msgstr "Nama parameter tidak dikenal: "
 
 #: src/insets/InsetCommandParams.cpp:313
-#, fuzzy
 msgid "Missing \\end_inset at this point: "
-msgstr "Ada perintah tidak lengkap \\end_inset sampai tahap ini."
+msgstr "Ada perintah tidak lengkap \\end_inset pada tahap ini."
 
 #: src/insets/InsetCommandParams.cpp:401
 #, fuzzy
@@ -23848,7 +23839,7 @@ msgstr "Modul tidak ditemukan"
 
 #: src/insets/InsetInclude.cpp:699
 msgid "Unsupported Inclusion"
-msgstr ""
+msgstr "Ikutan tidak didukung"
 
 #: src/insets/InsetInclude.cpp:700
 #, c-format
@@ -23856,6 +23847,8 @@ msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. Offending file:\n"
 "%1$s"
 msgstr ""
+"LyX tidak tahu bagaimana mengikutkan berkas bukan LyX ketika membuat HTML. Berkas yang tidak dikenal:\n"
+"%1$s"
 
 #: src/insets/InsetIndex.cpp:147
 msgid "Index sorting failed"
@@ -24584,12 +24577,12 @@ msgstr "Pernyataan &Reguler"
 #: src/mathed/InsetMathNest.cpp:1631
 #: src/mathed/InsetMathNest.cpp:1751
 msgid "Autocorrect Off ('!' to enter)"
-msgstr ""
+msgstr "Otomatis koreksi mati ('!' untuk menuliskan)"
 
 #: src/mathed/InsetMathNest.cpp:1636
 #: src/mathed/InsetMathNest.cpp:1753
 msgid "Autocorrect On (<space> to exit)"
-msgstr ""
+msgstr "Otomatis koreksi hidup (<spasi> untuk keluar)"
 
 #: src/mathed/InsetMathRef.cpp:224
 msgid "Standard[[mathref]]"
