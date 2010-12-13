@@ -737,14 +737,14 @@ public:
 	///
 	AddRemoveMacroInstanceFix(int n, bool insert) : n_(n), insert_(insert) {}
 	///
-	bool operator()(MathMacro * macro) {
+	void operator()(MathMacro * macro)
+	{
 		if (macro->folded()) {
 			if (insert_)
 				macro->insertArgument(n_);
 			else
 				macro->removeArgument(n_);
 		}
-		return true;
 	}
 
 private:
@@ -762,9 +762,9 @@ public:
 	///
 	OptionalsMacroInstanceFix(int optionals) : optionals_(optionals) {}
 	///
-	bool operator()(MathMacro * macro) {
+	void operator()(MathMacro * macro)
+	{
 		macro->setOptionals(optionals_);
-		return true;
 	}
 
 private:
@@ -778,7 +778,7 @@ class NullMacroInstanceFix
 {
 public:
 	///
-	bool operator()(MathMacro * ) { return false; }
+	void operator()(MathMacro * ) {}
 };
 
 
@@ -833,7 +833,8 @@ void fixMacroInstances(Cursor & cur, DocIterator const & inset_pos,
 
 		MathMacro * macro = insetMath->asMacro();
 		if (macro && macro->name() == name && macro->folded()) {
-			if (fix(macro) && RenderPreview::status() == LyXRC::PREVIEW_ON)
+			fix(macro);
+			if (RenderPreview::status() == LyXRC::PREVIEW_ON)
 				preview_reload_needed = true;
 		}
 	}
