@@ -1455,7 +1455,7 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 
 	case LFUN_CELL_SPLIT:
-		status.setEnabled(true);
+		status.setEnabled(cur.idx() != cur.lastidx());
 		return true;
 
 	case LFUN_CELL_BACKWARD:
