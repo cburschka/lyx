@@ -48,6 +48,7 @@
 #include "support/docstream.h"
 #include "support/lstrings.h"
 
+#include <set>
 #include <sstream>
 
 using namespace std;
@@ -718,11 +719,11 @@ void MathMacroTemplate::changeArity(Cursor & cur,
 {
 	// remove parameter which do not appear anymore in the definition
 	for (int i = numargs_; i > newNumArg; --i)
-		removeParameter(cur, inset_pos, numargs_ - 1, false);
+		removeParameter(cur, inset_pos, numargs_ - 1, true);
 	
 	// add missing parameter
 	for (int i = numargs_; i < newNumArg; ++i)
-		insertParameter(cur, inset_pos, numargs_, false, false);
+		insertParameter(cur, inset_pos, numargs_, true, false);
 }
 
 
@@ -788,18 +789,15 @@ void fixMacroInstances(Cursor & cur, DocIterator const & inset_pos,
 	// remember hull to trigger preview reload
 	DocIterator hull(dit);
 	bool preview_reload_needed = false;
+	set<DocIterator> preview_hulls;
 
 	// iterate over all positions until macro is redefined
 	for (; dit; dit.forwardPos()) {
 		// left the outer hull?
 		if (!hull.empty() && dit.depth() == hull.depth()) {
-			// reload the preview if necessary 
+			// schedule reload of the preview if necessary
 			if (preview_reload_needed) {
-				InsetMathHull * inset_hull =
-					hull.nextInset()->asInsetMath()->asHullInset();
-				LASSERT(inset_hull, /**/);
-				inset_hull->reloadPreview(hull, cur.buffer());
-				cur.updateFlags(Update::Force);
+				preview_hulls.insert(hull);
 				preview_reload_needed = false;
 			}
 			hull.clear();
@@ -834,6 +832,19 @@ void fixMacroInstances(Cursor & cur, DocIterator const & inset_pos,
 			if (RenderPreview::status() == LyXRC::PREVIEW_ON)
 				preview_reload_needed = true;
 		}
+	}
+
+	if (!preview_hulls.empty()) {
+		// reload the scheduled previews
+		set<DocIterator>::const_iterator sit = preview_hulls.begin();
+		set<DocIterator>::const_iterator end = preview_hulls.end();
+		for (; sit != end; ++sit) {
+			InsetMathHull * inset_hull =
+				sit->nextInset()->asInsetMath()->asHullInset();
+			LASSERT(inset_hull, /**/);
+			inset_hull->reloadPreview(*sit, cur.buffer());
+		}
+		cur.updateFlags(Update::Force);
 	}
 }
 
@@ -1076,6 +1087,7 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 			flag.setEnabled(numargs_ < 9);
 			break;
 
+		case LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM:
 		case LFUN_MATH_MACRO_REMOVE_PARAM: {
 			int num = numargs_;
 			if (arg.size() != 0)

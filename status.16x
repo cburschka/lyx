@@ -73,6 +73,9 @@ What's new
 - Fix crash when pressing up or down arrow while editing a macro name and
   an inline completion is suggested (bug 7068).
 
+- Fix crash when removing a math macro argument while instant preview
+  is active (bug 7090).
+
 - Fix insertion of a user math macro through the math-insert lfun when a
   selection is present (bug 6939).
 
