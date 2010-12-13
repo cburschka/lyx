@@ -1391,7 +1391,13 @@ Buffer * GuiView::loadDocument(FileName const & filename, bool tolastfiles)
 {
 	setBusy(true);
 
-	Buffer * newBuffer = checkAndLoadLyXFile(filename);
+	Buffer * newBuffer = 0;
+	try {
+		newBuffer = checkAndLoadLyXFile(filename);
+	} catch (ExceptionMessage const & e) {
+		setBusy(false);
+		throw(e);
+	}
 
 	if (!newBuffer) {
 		message(_("Document not loaded."));
