@@ -329,13 +329,14 @@ End
 
 # the preamble definitions are only used due to bugs in the
 # arabi-package -- remove them if they become unnecessary!
+# The country code is omitted because of the aspell dic naming.
 Language farsi
 	GuiName          "Farsi"
 	BabelName        farsi
 	PolyglossiaName  farsi
 	Encoding         utf8
 	RTL              true
-	LangCode         fa_IR
+	LangCode         fa
 	PostBabelPreamble
 	\DeclareTextSymbol{\guillemotright}{LFE}{62}
 	\DeclareTextSymbol{\guillemotleft}{LFE}{60}
