@@ -437,6 +437,8 @@ ParValidator::ParValidator()
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_["breaklines"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["breakatwhitespace"] =
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_["prebreak"] =
 		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_["postbreak"] =
