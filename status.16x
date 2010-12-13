@@ -30,7 +30,7 @@ What's new
 * USER INTERFACE
 
 - CVS support:
-  + Synchronization for the whole directories (bug 6255).
+  + Synchronization of whole directories (bug 6255).
   + Add implementation of checkOut operation.
   + Utilize read-only checkouts with "cvs edit".
   + Check for conflicts when doing checkIn/checkOut operation.
@@ -40,7 +40,7 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Updated French, German, Indonesian, Italian, Norwegian (Nynorsk),
+- Updated Czech, French, German, Indonesian, Italian, Norwegian (Nynorsk),
   Serbian (Latin) and Slovak User Interface localizations.
 
 
@@ -84,8 +84,8 @@ What's new
 
 - Fix the display of table cell alignment in the context menu (bug 7053).
 
-- Don't allow to make tables within in floats longtables as this could
-  lead to LaTeX-errors (bug 6585).
+- Don't allow to make tables within floats "long" as this could lead to
+  LaTeX errors (bug 6585).
 
 - Correct the denomination of the languages Norsk and Nynorsk.
 
@@ -97,24 +97,25 @@ What's new
 - Numbered items in insets that do not produce any output (e.g. Notes)
   no longer have a number associated with them (bug 6315).
 
-- Update the status of the button in the Text Style dialog when the
+- Update the status of the buttons in the Text Style dialog when the
   cursor is moved (bug 6952).
 
-- Correctly toggle the numbering of an equation when issuing the menu
+- Correctly toggle the numbering of an equation when issueing the menu
   "Insert -> Numbered equation" on a displayed equation (bug 6709).
   
-- Fix the painting of non-InsetText insets with a transparent
-  background as well as the description of an InsetCaption (bug 4889).
+- Fix the painting of non-text insets with a transparent background
+  (such as quotation marks) as well as the description of a caption
+  (bug 4889).
 
 - Fix unexpected behavior when inserting big math delimiters around a
   matrix (bug 7088).
 
-- Fix save of personal dictionary path to preferences (bug 6688).
+- Fix saving of personal dictionary path to preferences (bug 6688).
 
 - Fix unexpected behavior of some "insert math" menu/toolbar entries
   (bug 6709).
 
-- In the table dialog, disable the column width and column alignment when
+- In the table dialog, disable the column width and column alignment if
   there is a LaTeX argument (bug 3517).
   
 - Fix aspell spellchecking with Farsi (bug 7171).
