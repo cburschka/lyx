@@ -1479,6 +1479,11 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		status.setEnabled(true);
 		return true;
 
+	// we never allow this in math, and we want to bind enter
+	// to another actions in command-alternatives
+	case LFUN_BREAK_PARAGRAPH:
+		status.setEnabled(false);
+		return true;
 	case LFUN_MATH_MUTATE: {
 		HullType const ht = hullType(cmd.argument());
 		status.setOnOff(type_ == ht);
