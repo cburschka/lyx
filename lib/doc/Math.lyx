@@ -1,4 +1,4 @@
-#LyX 2.0.0beta2 created this file. For more info see http://www.lyx.org/
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 410
 \begin_document
 \begin_header
@@ -34477,6 +34477,106 @@ Eating From The Right
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Computer Algebra Systems
+\end_layout
+
+\begin_layout Standard
+LyX offers exchange between mathematical expressions written in LyX's math
+ editor and external applications or user defined scripts.
+ Currently offered backends are Octave, Maxima, Maple and Mathematica.
+ Note, however, that the set of supported mathematical constructs is limited
+ only to very simple cases.
+\end_layout
+
+\begin_layout Subsection
+Usage
+\end_layout
+
+\begin_layout Standard
+Start with entering math mode, write some expression, go to the 
+\family sans
+Edit\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Use Computer Algebra System
+\family default
+ menu and choose the application you have installed on the computer.
+ After the execution the result of computation should show on the right
+ side of the expression together with 
+\begin_inset Formula $=$
+\end_inset
+
+ operator.
+\end_layout
+
+\begin_layout Standard
+Here are few simple examples (results given by Maxima) to give an idea of
+ computations which can be requested:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{37}{3}*2-\sum_{i=1}^{3}i^{i}=-\frac{22}{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{37.0}{3}=12.33333333333333$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\int_{1}^{2}\sin(x)dx=\cos1-\cos2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\det\left[\begin{array}{ccc}
+1 & 6 & 7\\
+2 & 5 & 8\\
+3 & 4 & 17
+\end{array}\right]=-56$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\lim_{x\rightarrow0}\left(\frac{\sin(x)}{x}\right)=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Tip for the Key Binding
+\end_layout
+
+\begin_layout Standard
+Currently there is no keyboard binding for calling the algebra applications.
+ One can easily bind a shortcut to 
+\family sans
+math-extern
+\family default
+ LyX function (see 
+\family sans
+LyX Functions
+\family default
+ manual).
+ One could bind also currently unused Enter key inside math editor, but
+ for this more complicated binding is needed, the particular Maxima case
+ would look like: 
+\end_layout
+
+\begin_layout LyX-Code
+command-alternatives break-paragraph;math-extern maxima
 \end_layout
 
 \begin_layout Section
