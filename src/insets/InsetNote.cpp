@@ -156,7 +156,11 @@ void InsetNote::read(Lexer & lex)
 
 void InsetNote::setButtonLabel()
 {
-	docstring const label = notetranslator_loc().find(params_.type);
+	docstring label = getLayout().labelstring();
+	if (label.empty())
+		label = notetranslator_loc().find(params_.type);
+	else
+		label = translateIfPossible(label);
 	setLabel(label);
 }
 

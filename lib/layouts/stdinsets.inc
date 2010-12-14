@@ -77,7 +77,7 @@ InsetLayout Foot
 End
 
 InsetLayout Note:Comment
-	LabelString           comment
+	LabelString           Comment
 	LatexType             environment
 	LatexName             comment
 	BgColor               commentbg
@@ -92,7 +92,7 @@ End
 
 
 InsetLayout Note:Note
-	LabelString           note
+	LabelString           Note
 	LatexType             command
 	LatexName             note
 	BgColor               notebg
@@ -107,7 +107,7 @@ End
 
 
 InsetLayout Note:Greyedout
-	LabelString           greyedout
+	LabelString           Greyedout
 	LatexType             environment
 	LatexName             lyxgreyedout
 	BgColor               greyedoutbg
