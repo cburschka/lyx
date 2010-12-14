@@ -3669,6 +3669,34 @@ booktabs
 \end_layout
 
 \begin_layout Subsection
+calc
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "calc"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/required/tools/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+calc
+\family default
+ is needed by LyX to process lengths and counters.
+\end_layout
+
+\begin_layout Subsection
 color
 \end_layout
 
@@ -3774,6 +3802,35 @@ ghostscript
 \family default
 \size default
  to see them on screen.
+\end_layout
+
+\begin_layout Subsection
+hhline
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "hhline"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/required/tools/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+hhline
+\family default
+ improves horizontal lines in tables and arrays.
+ This is necessary for the spreadsheet external inset.
 \end_layout
 
 \begin_layout Subsection
@@ -4986,6 +5043,35 @@ mhchem
 \family default
  is needed by LyX to produce chemical formulas and reaction equations in
  math.
+\end_layout
+
+\begin_layout Subsection
+multirow
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "multirow"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/multirow/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+multirow
+\family default
+ is needed by LyX to merge table cells over several rows, as well as supporting
+ the spreadsheet external inset.
 \end_layout
 
 \begin_layout Subsection
