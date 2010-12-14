@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-12-07 00:34+0100\n"
-"PO-Revision-Date: 2010-12-13 20:29+0730\n"
+"PO-Revision-Date: 2010-12-14 03:36+0100\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
 "Language: id\n"
@@ -15202,9 +15202,8 @@ msgid "ddots"
 msgstr "ddots"
 
 #: lib/ui/stdtoolbars.inc:387
-#, fuzzy
 msgid "iddots"
-msgstr "ddots"
+msgstr "iddots"
 
 #: lib/ui/stdtoolbars.inc:390
 msgid "Frame Decorations"
@@ -17377,9 +17376,8 @@ msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
 #: lib/configure.py:506
-#, fuzzy
 msgid "Sweave|S"
-msgstr "Simpan|S"
+msgstr "Sweave|S"
 
 #: lib/configure.py:507
 msgid "LilyPond music"
@@ -21823,9 +21821,8 @@ msgstr "mm"
 
 #: src/frontends/qt4/GuiGraphics.cpp:475
 #: src/lengthcommon.cpp:38
-#, fuzzy
 msgid "in[[unit of measure]]"
-msgstr "cc[[ukuran]]"
+msgstr "in[[ukuran]]"
 
 #: src/frontends/qt4/GuiGraphics.cpp:786
 msgid "Select graphics file"
@@ -24805,18 +24802,23 @@ msgstr "Pemakai tidak dikenal"
 
 #~ msgid "LyX binary not found"
 #~ msgstr "Program biner LyX tidak ditemukan"
+
 #~ msgid "File not found"
 #~ msgstr "Berkas tidak ditemukan"
+
 #~ msgid "Directory not found"
 #~ msgstr "Direktori tidak ditemukan!"
 
 #, fuzzy
 #~ msgid "Use the babel package for multilingual support"
 #~ msgstr "Gunakan paket babel untuk mendukung multibahasa"
+
 #~ msgid "&Use babel"
 #~ msgstr "Gunakan b&abel"
+
 #~ msgid "&Global"
 #~ msgstr "&Global"
+
 #~ msgid "institutemark"
 #~ msgstr "institutemark"
 
@@ -24827,22 +24829,31 @@ msgstr "Pemakai tidak dikenal"
 #, fuzzy
 #~ msgid "Flex:E-Mail"
 #~ msgstr "E-Mail"
+
 #~ msgid "altaffilmark"
 #~ msgstr "altaffilmark"
+
 #~ msgid "tablenotemark"
 #~ msgstr "tandanotatabel"
+
 #~ msgid "scheme"
 #~ msgstr "skema"
+
 #~ msgid "chart"
 #~ msgstr "diagram"
+
 #~ msgid "graph"
 #~ msgstr "grafik"
+
 #~ msgid "Bibnote"
 #~ msgstr "Bibnote"
+
 #~ msgid "Chemistry"
 #~ msgstr "Kimia"
+
 #~ msgid "CRcat"
 #~ msgstr "CRcat"
+
 #~ msgid "InstituteMark"
 #~ msgstr "InstituteMark"
 
@@ -24861,36 +24872,50 @@ msgstr "Pemakai tidak dikenal"
 #, fuzzy
 #~ msgid "Flex:PresentationMode"
 #~ msgstr "Custom:PresentationMode"
+
 #~ msgid "Thanks Reference"
 #~ msgstr "Referensi Terimakasih"
+
 #~ msgid "Internet Address Reference"
 #~ msgstr "Referensi Alamat Internet"
+
 #~ msgid "Name (First Name)"
 #~ msgstr "Nama (Nama Depan)"
+
 #~ msgid "Name (Surname)"
 #~ msgstr "Nama (Nama keluarga)"
+
 #~ msgid "By Same Author (bib)"
 #~ msgstr "Berdasar Penulis Sama (bib)"
+
 #~ msgid "Titlenotemark"
 #~ msgstr "TandaJudulNota"
+
 #~ msgid "Authormark"
 #~ msgstr "TandaPenulis"
+
 #~ msgid "CorAuthormark"
 #~ msgstr "TandaPenulisKontak"
 
 #, fuzzy
 #~ msgid "Lowercase"
 #~ msgstr "Hurufkecil semua|l"
+
 #~ msgid "Inst"
 #~ msgstr "Inst"
+
 #~ msgid "Sidenote"
 #~ msgstr "Nota samping"
+
 #~ msgid "Marginnote"
 #~ msgstr "Nota tepi"
+
 #~ msgid "NewThought"
 #~ msgstr "PemikiranBaru"
+
 #~ msgid "AllCaps"
 #~ msgstr "SemuaHurufBesar"
+
 #~ msgid "SmallCaps"
 #~ msgstr "HurufBesarKecil"
 
@@ -25045,28 +25070,38 @@ msgstr "Pemakai tidak dikenal"
 #, fuzzy
 #~ msgid "Flex:MenuChoice"
 #~ msgstr "PilihanMenu"
+
 #~ msgid "Foot"
 #~ msgstr "kaki"
+
 #~ msgid "Note:Comment"
 #~ msgstr "Nota:Komentar"
+
 #~ msgid "Note:Note"
 #~ msgstr "Nota:Nota"
+
 #~ msgid "Note:Greyedout"
 #~ msgstr "Nota:Tanda-abu-abu"
+
 #~ msgid "Box:Shaded"
 #~ msgstr "Kotak:Digelapkan"
+
 #~ msgid "Wrap"
 #~ msgstr "Lipat"
 
 #, fuzzy
 #~ msgid "Argument"
 #~ msgstr "Pengaturan kerataan"
+
 #~ msgid "Info:menu"
 #~ msgstr "Info:menu"
+
 #~ msgid "Info:shortcut"
 #~ msgstr "Info:cara pintas"
+
 #~ msgid "Info:shortcuts"
 #~ msgstr "Info:cara pintas"
+
 #~ msgid "Braillebox"
 #~ msgstr "Braillebox"
 
@@ -25113,8 +25148,10 @@ msgstr "Pemakai tidak dikenal"
 #, fuzzy
 #~ msgid "S/R expression"
 #~ msgstr "Pernyataan &Reguler"
+
 #~ msgid "Norsk"
 #~ msgstr "Norsk"
+
 #~ msgid "Nynorsk"
 #~ msgstr "Nynorsk"
 
@@ -25153,156 +25190,232 @@ msgstr "Pemakai tidak dikenal"
 #, fuzzy
 #~ msgid "&Ok"
 #~ msgstr "&Setuju"
+
 #~ msgid "&Dummy"
 #~ msgstr "&Dummy"
+
 #~ msgid "F&ind:"
 #~ msgstr "Car&i:"
+
 #~ msgid "The Enter key works, too"
 #~ msgstr "Acuan yang dipilih"
+
 #~ msgid "The delete key works, too"
 #~ msgstr "Hapus pilihan"
+
 #~ msgid "D&elete"
 #~ msgstr "&Hapus"
+
 #~ msgid "&Default language:"
 #~ msgstr "Bahasa &Default:"
+
 #~ msgid "Select the default language of your documents"
 #~ msgstr "Pilih bahasa default untuk dokumen anda"
+
 #~ msgid "&BibTeX command:"
 #~ msgstr "Perintah &BibTeX:"
+
 #~ msgid "BibTeX command (&Japanese):"
 #~ msgstr "Perintah BibTeX (&Jepang):"
+
 #~ msgid "Index command (Ja&panese):"
 #~ msgstr "Perintah Indeks (Je&pang):"
+
 #~ msgid "External app for formating tables in plain text output"
 #~ msgstr "Perintah eksternal untuk mengatur tabel di output teks."
+
 #~ msgid "Screen &DPI:"
 #~ msgstr "Layar &DPI:"
+
 #~ msgid "Specify a personal dictionary file other than the default"
 #~ msgstr "Gunakan berkas kamus pribadi"
+
 #~ msgid "Spellchec&ker executable:"
 #~ msgstr "Program pemeriksa &ejaan:"
+
 #~ msgid "Use input encod&ing"
 #~ msgstr "Gunakan input encod&ing"
+
 #~ msgid "Jump to the label"
 #~ msgstr "Lompat ke label"
+
 #~ msgid "Merge cells"
 #~ msgstr "Gabungkan sel"
+
 #~ msgid "Listing settings"
 #~ msgstr "Pengaturan Listing"
+
 #~ msgid "CharStyle:Institute"
 #~ msgstr "CharStyle:Institute"
+
 #~ msgid "CharStyle:E-Mail"
 #~ msgstr "CharStyle:E-Mail"
+
 #~ msgid "Block ( ERT[{title}] body ):"
 #~ msgstr "Blok ( ERT[{title}] body ):"
+
 #~ msgid "Block ( ERT[{title}] example text ):"
 #~ msgstr "Block ( ERT[{title}] example text ):"
+
 #~ msgid "Block ( ERT[{title}] alert text ):"
 #~ msgstr "Block ( ERT[{title}] alert text ):"
+
 #~ msgid "CharStyle:Alert"
 #~ msgstr "CharStyle:Alert"
+
 #~ msgid "CharStyle:Structure"
 #~ msgstr "CharStyle:Structure"
+
 #~ msgid "LangHeader"
 #~ msgstr "HeaderBhs"
+
 #~ msgid "Language Header:"
 #~ msgstr "Header Bahasa:"
+
 #~ msgid "Language:"
 #~ msgstr "Bahasa:"
+
 #~ msgid "LastLanguage"
 #~ msgstr "BahasaTerakhir"
+
 #~ msgid "Last Language:"
 #~ msgstr "Bahasa Terakhir:"
+
 #~ msgid "LangFooter"
 #~ msgstr "FooterBahasa"
+
 #~ msgid "End"
 #~ msgstr "End"
+
 #~ msgid "End of CV"
 #~ msgstr "End of CV"
+
 #~ msgid "Strasse"
 #~ msgstr "Strasse"
+
 #~ msgid "Land"
 #~ msgstr "Land"
+
 #~ msgid "BLZ"
 #~ msgstr "BLZ"
+
 #~ msgid "Konto"
 #~ msgstr "Konto"
+
 #~ msgid "Computer"
 #~ msgstr "Komputer"
+
 #~ msgid "Computer:"
 #~ msgstr "Komputer:"
+
 #~ msgid "EmptySection"
 #~ msgstr "SeksyenKosong"
+
 #~ msgid "Empty Section"
 #~ msgstr "SubBabKosong"
+
 #~ msgid "CloseSection"
 #~ msgstr "Tutup Seksyen"
+
 #~ msgid "Close Section"
 #~ msgstr "Tutup SubBab"
+
 #~ msgid "Element:Firstname"
 #~ msgstr "Elemen:Namadepan"
+
 #~ msgid "Element:Fname"
 #~ msgstr "Elemen:Fname"
+
 #~ msgid "Element:Filename"
 #~ msgstr "Elemen:Nama berkas"
+
 #~ msgid "Element:Citation-number"
 #~ msgstr "Elemen:Nomor-acuan"
+
 #~ msgid "Element:Issue-number"
 #~ msgstr "Elemen:Nomor-Isu"
+
 #~ msgid "Element:Issue-day"
 #~ msgstr "Elemen:Hari-Isu"
+
 #~ msgid "Element:Issue-months"
 #~ msgstr "Elemen:Bulan-Isu"
+
 #~ msgid "Element:SS-Title"
 #~ msgstr "Elemen:SS-Judul"
+
 #~ msgid "Element:CCC-Code"
 #~ msgstr "Elemen:CCC-Kode"
+
 #~ msgid "Element:Postcode"
 #~ msgstr "Elemen:Kodepos"
+
 #~ msgid "Element:Directory"
 #~ msgstr "Elemen:Petunjuk"
+
 #~ msgid "Element:KeyCombo"
 #~ msgstr "Elemen:KunciCombo"
+
 #~ msgid "Element:GuiMenuItem"
 #~ msgstr "Elemen:MenuItemGui"
+
 #~ msgid "Element:GuiButton"
 #~ msgstr "Elemen:TombolGui"
+
 #~ msgid "Element:MenuChoice"
 #~ msgstr "Elemen:PilihanMenu"
+
 #~ msgid "OptArg"
 #~ msgstr "OptArg"
+
 #~ msgid "Custom:Endnote"
 #~ msgstr "AturSendiri:Endnote"
+
 #~ msgid "Custom:Glosse"
 #~ msgstr "Custom:Glosse"
+
 #~ msgid "Custom:Tri-Glosse"
 #~ msgstr "Custom:Tri-Glosse"
+
 #~ msgid "CharStyle:Noun"
 #~ msgstr "CharStyle:Noun"
+
 #~ msgid "CharStyle:Emph"
 #~ msgstr "CharStyle:Emph"
+
 #~ msgid "CharStyle:Code"
 #~ msgstr "CorakKarakter:Kode"
+
 #~ msgid "Inter-word Space|w"
 #~ msgstr "Spasi Antara Kata|p"
+
 #~ msgid "Insert|n"
 #~ msgstr "Sisipan|n"
+
 #~ msgid "Dissolve Inset|l"
 #~ msgstr "Hilangkan Sisipan|l"
+
 #~ msgid "View DVI"
 #~ msgstr "Tampilan DVI"
+
 #~ msgid "View PDF (pdflatex)"
 #~ msgstr "Tampilan PDF (pdflatex)"
+
 #~ msgid "Update PDF (pdflatex)"
 #~ msgstr "Perbarui tampilan PDF (pdflatex)"
+
 #~ msgid "View PostScript"
 #~ msgstr "Tampilan PostScript"
+
 #~ msgid "Update PostScript"
 #~ msgstr "Perbaiki tampilan PostScript"
+
 #~ msgid "No horizontal line\t\\atop"
 #~ msgstr "Tanpa garis pembagi\t\\atop"
+
 #~ msgid "Ch. "
 #~ msgstr "Ch. "
+
 #~ msgid ""
 #~ "The specified document\n"
 #~ "%1$s\n"
@@ -25311,8 +25424,10 @@ msgstr "Pemakai tidak dikenal"
 #~ "Dokumen yang dipiliht\n"
 #~ "%1$s\n"
 #~ "tidak bisa dibaca."
+
 #~ msgid "&Keep it"
 #~ msgstr "Abai&kan saja"
+
 #~ msgid ""
 #~ "The layout file requested by this document,\n"
 #~ "%1$s.layout,\n"
@@ -25327,59 +25442,75 @@ msgstr "Pemakai tidak dikenal"
 #~ "class atau style yang diperlukan tidak\n"
 #~ "tersedia. Lihat buku panduan Perubahan dan Pengaturan\n"
 #~ "untuk memperoleh penjelasan terperinci.\n"
+
 #~ msgid "LyX will not be able to produce output."
 #~ msgstr "LyX tidak bisa menghasilkan output."
+
 #~ msgid "Some layouts may not be available."
 #~ msgstr "Beberapa layout mungkin tidak tersedia."
+
 #~ msgid "caption frame"
 #~ msgstr "bingkai caption"
+
 #~ msgid "top/bottom line"
 #~ msgstr "garis atas/bawah"
+
 #~ msgid "Can't create pipe for spellchecker."
 #~ msgstr "Tidak dapat membuat pipa untuk pemeriksa ejaan."
+
 #~ msgid "Can't open pipe for spellchecker."
 #~ msgstr "Tidak dapat membuka pipa untuk pemeriksa ejaan."
+
 #~ msgid ""
 #~ "Could not create an ispell process.\n"
 #~ "You may not have the right languages installed."
 #~ msgstr ""
 #~ "Tidak bisa membuat proses untuk ispell.\n"
 #~ "Mungkin anda tidak menginstal fasilitas bahasa yang diperlukan."
+
 #~ msgid ""
 #~ "The ispell process returned an error.\n"
 #~ "Perhaps it has been configured wrongly ?"
 #~ msgstr ""
 #~ "Proses ispell mengirim pesan kesalahan.\n"
 #~ "Kemungkinan tidak konfigurasi tidak tepat ?"
+
 #~ msgid ""
 #~ "Could not check word `%1$s' because it could not be converted to encoding "
 #~ "`%2$s'."
 #~ msgstr ""
 #~ "Tidak bisa memeriksa kata `%1$s'  karena tidak bisa dikonversi untuk "
 #~ "encoding `%2$s'."
+
 #~ msgid "Could not communicate with the ispell spellchecker process."
 #~ msgstr "Tidak bisa berkomunikasi dengan proses pemeriksa ejaan ispell."
+
 #~ msgid ""
 #~ "Could not insert word `%1$s' because it could not be converted to "
 #~ "encoding `%2$s'."
 #~ msgstr ""
 #~ "Tidak bisa menyisipkan kata`%1$s' karena tidak bisa dikonversi ke "
 #~ "encoding `%2$s'."
+
 #~ msgid ""
 #~ "Could not accept word `%1$s' because it could not be converted to "
 #~ "encoding `%2$s'."
 #~ msgstr ""
 #~ "Tidak bisa mengenal kata `%1$s' karena tidak bisa dikonversi untuk "
 #~ "encoding `%2$s'."
+
 #~ msgid "Maximum number of words in the initialization string for a new label"
 #~ msgstr ""
 #~ "Jumlah maksimum dari kata-kata dalam inisialisasi string untuk label baru"
+
 #~ msgid ""
 #~ "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 #~ msgstr ""
 #~ "Nyatakan berkas kamus pribadi alternatif. Misal.  \".ispell_english\"."
+
 #~ msgid "What command runs the spellchecker?"
 #~ msgstr "Apakah perintah menjalankan pemeriksa ejaan."
+
 #~ msgid ""
 #~ "Specify whether to pass the -T input encoding option to ispell. Enable "
 #~ "this if you cannot check the spelling of words containing accented "
@@ -25388,12 +25519,16 @@ msgstr "Pemakai tidak dikenal"
 #~ "Nyatakan apakah akan mengirim opsi encoding -T input ke ispell. Aktifkan "
 #~ "ini apabila anda tidak bisa memeriksa kata yang mengandung huruf "
 #~ "beraksen. Hal ini tidak akan berlaku di semua kamus."
+
 #~ msgid "Native OS API not yet supported."
 #~ msgstr "Sistem operasi API belum dapat didukung."
+
 #~ msgid "Unknown author index for deletion: %1$d\n"
 #~ msgstr "Indeks pengarang yang ingin dihapus tidak dikenal: %1$d\n"
+
 #~ msgid "Unknown spacing argument: "
 #~ msgstr "Argumen spasi tidak dikenal: "
+
 #~ msgid ""
 #~ "Aiksaurus returned the following error:\n"
 #~ "\n"
@@ -25402,73 +25537,104 @@ msgstr "Pemakai tidak dikenal"
 #~ "Aiksaurus mengeluarkan pesan kesalahan berikut:\n"
 #~ "\n"
 #~ "%1$s."
+
 #~ msgid "Branch Settings"
 #~ msgstr "Pengaturan Branch"
+
 #~ msgid ""
 #~ "Input listings parameters on the right. Enter ? for a list of parameters."
 #~ msgstr ""
 #~ "Parameter dari berbagai Input Listing. Dikotak sebelah kanan ini, ketik ? "
 #~ "untuk memunculkan berbagai parameter."
+
 #~ msgid "Length"
 #~ msgstr "Ukuran Lompatan"
+
 #~ msgid "TeX Code Settings"
 #~ msgstr "Pengaturan program TeX"
+
 #~ msgid "Float Settings"
 #~ msgstr "Pengaturan Float"
+
 #~ msgid "Horizontal Space Settings"
 #~ msgstr "Spasi Horisontal"
+
 #~ msgid "Thin space"
 #~ msgstr "Spasi tipis"
+
 #~ msgid "Medium space"
 #~ msgstr "Spasi sedang"
+
 #~ msgid "Thick space"
 #~ msgstr "Spasi tebal"
+
 #~ msgid "Negative thin space"
 #~ msgstr "Spasi tipis negatif"
+
 #~ msgid "Negative medium space"
 #~ msgstr "Spasi sedang negatif"
+
 #~ msgid "Negative thick space"
 #~ msgstr "Spasi tebal negatif"
+
 #~ msgid "Inter-word space"
 #~ msgstr "Spasi antara kata"
+
 #~ msgid "Hyperlink"
 #~ msgstr "Hyperlink"
+
 #~ msgid "Label"
 #~ msgstr "Label"
+
 #~ msgid "No LaTeX log file found."
 #~ msgstr "Catatan berkas proses LaTeX tidak ditemukan."
+
 #~ msgid "aspell"
 #~ msgstr "aspell"
+
 #~ msgid "hspell"
 #~ msgstr "hspell"
+
 #~ msgid "pspell (library)"
 #~ msgstr "pspell (perpustakaan)"
+
 #~ msgid "aspell (library)"
 #~ msgstr "aspell (perpustakaan)"
+
 #~ msgid "*.pws"
 #~ msgstr "*.pws"
+
 #~ msgid "*.ispell"
 #~ msgstr "*.ispell"
+
 #~ msgid "Spellchecker error"
 #~ msgstr "Kesalahan Pengecek Ejaan"
+
 #~ msgid ""
 #~ "The spellchecker has died for some reason.\n"
 #~ "Maybe it has been killed."
 #~ msgstr ""
 #~ "Pengecek ejaan tidak berfungsi karena sesuatu hal.\n"
 #~ "Mungkin telah dimatikan"
+
 #~ msgid "The spellchecker has failed.\n"
 #~ msgstr "Pengecek ejaan gagal.\n"
+
 #~ msgid "The spellchecker has failed"
 #~ msgstr "Pengecek ejaan gagal"
+
 #~ msgid "Vertical Space Settings"
 #~ msgstr "Spasi Vertikal"
+
 #~ msgid "No Table of contents"
 #~ msgstr "Tidak ada Daftar Isi"
+
 #~ msgid "Opened inset"
 #~ msgstr "Sisipan Dibuka"
+
 #~ msgid "Uncodable characters in bibliography item"
 #~ msgstr "Ada karakter tidak dikenal pada bibliografi"
+
 #~ msgid ""
 #~ "The following characters in one of the bibliography items are\n"
 #~ "not representable in the current encoding and have been omitted:\n"
@@ -25477,170 +25643,248 @@ msgstr "Pemakai tidak dikenal"
 #~ "Karakter berikut di salah satu masukan bibliografi\n"
 #~ "tidak bisa dikenal pada enkoding sekarang dan sudahdiabaikan:\n"
 #~ "%1$s."
+
 #~ msgid "Opened Box Inset"
 #~ msgstr "Sisipan Kotak dibuka"
+
 #~ msgid "Opened Caption Inset"
 #~ msgstr "Inset Nama Gambar/Tabel dibuka"
+
 #~ msgid "Opened ERT Inset"
 #~ msgstr "Buka Inset ERT"
+
 #~ msgid "Opened Flex Inset"
 #~ msgstr "Sisipan Flex Dibuka"
+
 #~ msgid "Opened Float Inset"
 #~ msgstr "Sisipan Float Dibuka"
+
 #~ msgid "Opened Footnote Inset"
 #~ msgstr "Sisipan catatan kaki dibuka"
+
 #~ msgid "Unknown buffer info"
 #~ msgstr "Info buffer tidak dikenal"
+
 #~ msgid "Opened Listing Inset"
 #~ msgstr "Sisipan Pemrograman DIbuka"
+
 #~ msgid "Opened Marginal Note Inset"
 #~ msgstr "Sisipan Nota Tepi Dibuka"
+
 #~ msgid "Opened Note Inset"
 #~ msgstr "Sisipan Nota Dibuka"
+
 #~ msgid "Opened Optional Argument Inset"
 #~ msgstr "Sisipan Argumen Tambahan Dibuka"
+
 #~ msgid "QQuad Space"
 #~ msgstr "Spasi Duakali Quad"
+
 #~ msgid "Opened table"
 #~ msgstr "Tabel dibuka"
+
 #~ msgid "Opened Text Inset"
 #~ msgstr "Sisipan Teks Dibuka"
+
 #~ msgid "Opened Wrap Inset"
 #~ msgstr "Sisipan Wrap Dibuka"
 
 #, fuzzy
 #~ msgid "Glossary term"
 #~ msgstr "Glosse"
+
 #~ msgid "TheoremTemplate"
 #~ msgstr "TheoremTemplate"
+
 #~ msgid "Theorem #:"
 #~ msgstr "Teorema #:"
+
 #~ msgid "Lemma #:"
 #~ msgstr "Lemma #:"
+
 #~ msgid "Corollary #:"
 #~ msgstr "Corollary #:"
+
 #~ msgid "Proposition #:"
 #~ msgstr "Rencana #:"
+
 #~ msgid "Conjecture #:"
 #~ msgstr "Dugaan #:"
+
 #~ msgid "Criterion #:"
 #~ msgstr "Kriteria #:"
+
 #~ msgid "Fact #:"
 #~ msgstr "Fakta #:"
+
 #~ msgid "Axiom #:"
 #~ msgstr "Axiom #:"
+
 #~ msgid "Definition #:"
 #~ msgstr "Definisi #:"
+
 #~ msgid "Example #:"
 #~ msgstr "Contoh #:"
+
 #~ msgid "Condition #:"
 #~ msgstr "Kondisi #:"
+
 #~ msgid "Problem #:"
 #~ msgstr "Masalah #:"
+
 #~ msgid "Exercise #:"
 #~ msgstr "Latihan #:"
+
 #~ msgid "Remark #:"
 #~ msgstr "Catatan #:"
+
 #~ msgid "Claim #:"
 #~ msgstr "Klaim #:"
+
 #~ msgid "Note #:"
 #~ msgstr "Nota #:"
+
 #~ msgid "Notation #:"
 #~ msgstr "Notasi #:"
+
 #~ msgid "Case #:"
 #~ msgstr "Kasus #:"
+
 #~ msgid "Footernote"
 #~ msgstr "Footernote"
+
 #~ msgid ""
 #~ "Shortcut `%1$s' is already bound to:\n"
 #~ "%2$s"
 #~ msgstr ""
 #~ "Cara pintas `%1$s' sudah digunakan untuk:\n"
 #~ "%2$s"
+
 #~ msgid "Anschrift:"
 #~ msgstr "Anschrift:"
+
 #~ msgid "Briefkopf:"
 #~ msgstr "Briefkopf:"
+
 #~ msgid "Absender:"
 #~ msgstr "Absender:"
+
 #~ msgid "Zusatz:"
 #~ msgstr "Zusatz:"
+
 #~ msgid "Ihre Zeichen:"
 #~ msgstr "Ihre Zeichen:"
+
 #~ msgid "Unsere Zeichen:"
 #~ msgstr "Unsere Zeichen:"
+
 #~ msgid "Sachbearbeiter:"
 #~ msgstr "Sachbearbeiter:"
+
 #~ msgid "Unterschrift:"
 #~ msgstr "Unterschrift:"
+
 #~ msgid "Fusszeile(n):"
 #~ msgstr "Fusszeile(n):"
+
 #~ msgid "Vorwahl:"
 #~ msgstr "Vorwahl:"
+
 #~ msgid "Telefon:"
 #~ msgstr "Telepon:"
+
 #~ msgid "Ort:"
 #~ msgstr "Ort:"
+
 #~ msgid "Datum:"
 #~ msgstr "Datum:"
+
 #~ msgid "Betreff:"
 #~ msgstr "Betreff:"
+
 #~ msgid "Anrede:"
 #~ msgstr "Anrede:"
+
 #~ msgid "Gruss:"
 #~ msgstr "Gruss:"
+
 #~ msgid "Anlage(n):"
 #~ msgstr "Anlage(n):"
+
 #~ msgid "Verteiler:"
 #~ msgstr "Verteiler:"
+
 #~ msgid "Text:"
 #~ msgstr "Text:"
+
 #~ msgid "Strasse:"
 #~ msgstr "Strasse:"
+
 #~ msgid "Land:"
 #~ msgstr "Land:"
+
 #~ msgid "RetourAdresse:"
 #~ msgstr "RetourAdresse:"
+
 #~ msgid "MeinZeichen:"
 #~ msgstr "MeinZeichen:"
+
 #~ msgid "IhrZeichen:"
 #~ msgstr "IhrZeichen:"
+
 #~ msgid "IhrSchreiben:"
 #~ msgstr "IhrSchreiben:"
+
 #~ msgid "BLZ:"
 #~ msgstr "BLZ:"
+
 #~ msgid "Konto:"
 #~ msgstr "Konto:"
+
 #~ msgid "Adresse:"
 #~ msgstr "Pengirim:"
+
 #~ msgid "Anlagen:"
 #~ msgstr "Anlagen:"
+
 #~ msgid "Numbers theorems and the like by section."
 #~ msgstr "Nomor yang ada di modul-modul teorema menurut bagian."
+
 #~ msgid "Latex"
 #~ msgstr "Latex"
+
 #~ msgid "Close Tab Group|G"
 #~ msgstr "Tutup Grup Tab|G"
+
 #~ msgid "No file open!"
 #~ msgstr "Tidak ada berkas dibuka!"
+
 #~ msgid "You cannot paste into a multicell selection."
 #~ msgstr "Anda tidak bisa menempelkan dalam seleksi multisel"
+
 #~ msgid "Check in Changes...|I"
 #~ msgstr "Masukkan Perubahan...|n"
+
 #~ msgid "Check out for Edit|O"
 #~ msgstr "Keluar Untuk Sunting|u"
+
 #~ msgid "Toggle Labeling/Numbering|T"
 #~ msgstr "Pilihan Label/Nomor|o"
+
 #~ msgid "Toggle Label|L"
 #~ msgstr "Pilih Label|L"
+
 #~ msgid "B&rowse..."
 #~ msgstr "C&ari..."
+
 #~ msgid "Number of Co&pies:"
 #~ msgstr "&Jumlah salinan:"
+
 #~ msgid "Sa&ns Serif:"
 #~ msgstr "Sa&ns Serif:"
+
 #~ msgid "Ne&w"
 #~ msgstr "Bar&u"
+
 #~ msgid "Add row "
 #~ msgstr "Sisipkan Baris"
-
