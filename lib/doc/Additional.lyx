@@ -126,7 +126,7 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_be_strict true
@@ -4258,8 +4258,19 @@ eLyXer
 
 \end_inset
 
- solves some of these problems.
- In particular, its rendering of math tends to look better than 
+ (
+\begin_inset CommandInset href
+LatexCommand href
+name "http://elyxer.nongnu.org/"
+target "http://elyxer.nongnu.org/"
+
+\end_inset
+
+) solves some of these problems.
+ In particular, the formulae it produces scale perfectly, since it renders
+ math using a combination of HTML and CSS rather than converting the formulae
+ to images.
+ But even moderately complex formula are rendered less well than with 
 \begin_inset Flex Code
 status collapsed
 
@@ -4269,20 +4280,12 @@ htlatex
 
 \end_inset
 
-'s, at least in simpler cases, since it renders math using a combination
- of HTML and CSS rather than converting the formulae to images.
- But more complex formula tend to be rendered less well than with 
-\begin_inset Flex Code
+; this reflects the limitations of HTML.
+\begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-htlatex
-\end_layout
-
-\end_inset
-
-, since there is no reasonable way of scaling parentheses in HTML, for example.
- More importantly (as of version 0.39, at least), 
+That said, 
 \begin_inset Flex Code
 status collapsed
 
@@ -4292,9 +4295,25 @@ eLyXer
 
 \end_inset
 
- has no support for math macros, for user-defined paragraph or character
- styles, or for tables of contents and figures, and its treatment of cross-refer
-ences is minimal.
+ can also use jsMath and MathJax for equations, but this setting is only
+ available globally and requires one to have access to a server that runs
+ the backend.
+\end_layout
+
+\end_inset
+
+ More importantly (as of version 1.1.1, at least), 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+eLyXer
+\end_layout
+
+\end_inset
+
+ has limited support for math macros and no support for user-defined paragraph
+ or character styles.
  These limitations make 
 \begin_inset Flex Code
 status collapsed
@@ -4305,11 +4324,11 @@ eLyXer
 
 \end_inset
 
- unsuitable for many of the documents more advanced LyX users would produce.
- In principle, of course, all of these problems could be solved, but the
- LyX developers have decided to follow a different path and have made LyX
- itself capable of writing XHTML, just as it is capable of writing LaTeX,
- DocBook, and plaintext.
+ unsuitable for many of the documents LyX users produce.
+ In principle, of course, these problems could be solved, but the LyX developers
+ have decided to follow a different path and have made LyX itself capable
+ of writing XHTML, just as it is capable of writing LaTeX, DocBook, and
+ plaintext.
 \end_layout
 
 \begin_layout Standard
@@ -4346,6 +4365,15 @@ target "http://www.lyx.org/trac/browser/lyx-devel/trunk/development/HTML/HTML.no
 \end_inset
 
 , usually contains up-to-date information about the state of XHTML output.
+ See also the list of XHTML bugs on 
+\begin_inset CommandInset href
+LatexCommand href
+name "the bug tracker"
+target "http://www.lyx.org/trac/query?status=reopened&status=assigned&status=new&max=0&component=xhtml+export&order=id&col=id&col=summary&col=reporter&col=keywords&keywords=%21%7Efixedintrunk&desc=1"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -4362,7 +4390,7 @@ These advantages are primarily due to the fact that the XHTML output routines,
 status collapsed
 
 \begin_layout Plain Layout
-Another advantege is that, since these routines are internal to LyX, they
+Another advantage is that, since these routines are internal to LyX, they
  are immune to changes in LyX's file format, or to changes in the semantics
  of existing insets.
 \end_layout
@@ -4398,7 +4426,7 @@ Kapitel
 \end_layout
 
 \begin_layout Standard
-Quite generally, the output routines know everything LyX knows about document
+Quite generally, the output routines know what LyX knows about document
  layout, that is, about how the document is to be rendered on screen.
  We use this information when we output the document as XHTML.
  In particular, LyX 
@@ -4421,10 +4449,7 @@ automatically
 \end_layout
 
 \begin_layout Standard
-The result is that XHTML output can be customized and extended in 
-\emph on
-exactly
-\emph default
+The result is that XHTML output can be customized and extended in exactly
  the same way LaTeX output can be customized and extended: through layout
  files and modules.
  See chapter five of the 
@@ -4518,7 +4543,7 @@ elyxer
 \begin_inset Newline newline
 \end_inset
 
-If Lyx is unable to render a formula as MathML---for example, if the formula
+If Lyx is unable to render a formula as HTML---for example, if the formula
  uses the 
 \begin_inset Flex Code
 status collapsed
@@ -4567,6 +4592,16 @@ have to be on for images to be output, however.
  LaTeX, so they are very accurate.
  The disadvantage, as mentioned earlier, is that these are bitmapped images,
  so they do not scale terribly well, and one cannot copy them, etc.
+ (As of this writing, there are also problems about equation numbering.
+ See 
+\begin_inset CommandInset href
+LatexCommand href
+name "bug 6894"
+target "http://www.lyx.org/trac/ticket/6894"
+
+\end_inset
+
+.)
 \begin_inset Newline newline
 \end_inset
 
@@ -4890,6 +4925,7 @@ Nomenclature and Glossary
 
 \begin_layout Standard
 There is at present no support for glossaries.
+ Adding it would be fairly trivial, and welcome.
 \end_layout
 
 \begin_layout Chapter
