@@ -78,8 +78,6 @@ private:
 	void write(std::ostream &) const;
 	///
 	void read(Lexer & lex);
-	///
-	void setButtonLabel();
 	/// show the note dialog
 	bool showInsetDialog(BufferView * bv) const;
 	///

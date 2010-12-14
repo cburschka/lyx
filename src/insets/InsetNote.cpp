@@ -154,17 +154,6 @@ void InsetNote::read(Lexer & lex)
 }
 
 
-void InsetNote::setButtonLabel()
-{
-	docstring label = getLayout().labelstring();
-	if (label.empty())
-		label = notetranslator_loc().find(params_.type);
-	else
-		label = translateIfPossible(label);
-	setLabel(label);
-}
-
-
 bool InsetNote::showInsetDialog(BufferView * bv) const
 {
 	bv->showDialog("note", params2string(params()),
