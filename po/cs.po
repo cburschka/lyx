@@ -12551,7 +12551,7 @@ msgstr "Napravo|r"
 
 #: lib/ui/stdcontext.inc:385
 msgid "Decimal"
-msgstr "Dle desetinné teèky|y"
+msgstr "Dle desetinné èárky|y"
 
 #: lib/ui/stdcontext.inc:391
 msgid "Append Row|A"
@@ -12984,14 +12984,12 @@ msgid "Close All Insets|C"
 msgstr "Zavøi v¹echny vlo¾ky|Z"
 
 #: lib/ui/stdmenus.inc:314
-#, fuzzy
 msgid "Unfold Math Macro|n"
-msgstr "Rozbalit matematické makro"
+msgstr "Rozbalit matematické makro|r"
 
 #: lib/ui/stdmenus.inc:315
-#, fuzzy
 msgid "Fold Math Macro|d"
-msgstr "Zabalit matematické makro"
+msgstr "Zabalit matematické makro|Z"
 
 #: lib/ui/stdmenus.inc:317
 msgid "View Source|S"
@@ -12999,24 +12997,21 @@ msgstr "Zdrojový text pro LaTeX|x"
 
 #: lib/ui/stdmenus.inc:318
 msgid "View Messages|g"
-msgstr ""
+msgstr "Prohlí¾et výpisy|P"
 
 #: lib/ui/stdmenus.inc:321
-#, fuzzy
 msgid "View Master Document|M"
-msgstr "Hlavní dokument"
+msgstr "Prohlí¾et hlavní dokument|h"
 
 #: lib/ui/stdmenus.inc:322
-#, fuzzy
 msgid "Update Master Document|a"
-msgstr "Hlavní dokument"
+msgstr "Aktualizovat hlavní dokument|A"
 
 #: lib/ui/stdmenus.inc:324
 msgid "Split View Into Left and Right Half|i"
 msgstr "Vertikální rozdìlení|V"
 
 #: lib/ui/stdmenus.inc:325
-#, fuzzy
 msgid "Split View Into Upper and Lower Half|e"
 msgstr "Horizontální rozdìlení|r"
 
@@ -13098,9 +13093,8 @@ msgid "Program Listing[[Menu]]"
 msgstr "Výpis zdrojového kódu|i"
 
 #: lib/ui/stdmenus.inc:372
-#, fuzzy
 msgid "Preview|w"
-msgstr "Náhled"
+msgstr "Náhled|d"
 
 #: lib/ui/stdmenus.inc:379
 msgid "Ordinary Quote|Q"
@@ -13119,18 +13113,16 @@ msgid "Protected Space|P"
 msgstr "Chránìná mezera|r"
 
 #: lib/ui/stdmenus.inc:395
-#, fuzzy
 msgid "Horizontal Line...|L"
-msgstr "Horizontální linka|o"
+msgstr "Horizontální linka...|o"
 
 #: lib/ui/stdmenus.inc:396
 msgid "Vertical Space...|V"
 msgstr "Vertikální mezera...|V"
 
 #: lib/ui/stdmenus.inc:397
-#, fuzzy
 msgid "Phantom|m"
-msgstr "phantom"
+msgstr "Fantóm|F"
 
 #: lib/ui/stdmenus.inc:399
 msgid "Hyphenation Point|H"
@@ -13297,9 +13289,8 @@ msgid "Find and replace"
 msgstr "Najít a zamìnit"
 
 #: lib/ui/stdtoolbars.inc:82
-#, fuzzy
 msgid "Find and replace (advanced)"
-msgstr "Najít a zamìnit"
+msgstr "Najít a zamìnit (pokroèilé)"
 
 #: lib/ui/stdtoolbars.inc:83
 msgid "Navigate back"
@@ -13346,38 +13337,32 @@ msgid "View/Update"
 msgstr "Prohlí¾ení/Aktualizace"
 
 #: lib/ui/stdtoolbars.inc:99
-#, fuzzy
 msgid "View"
-msgstr "&Prohlédnout"
+msgstr "Prohlédnout"
 
 #: lib/ui/stdtoolbars.inc:100
-#, fuzzy
 msgid "Update"
-msgstr "&Aktualizace"
+msgstr "Aktualizace"
 
 #: lib/ui/stdtoolbars.inc:101
-#, fuzzy
 msgid "View master document"
-msgstr "Vybrat hlavní dokument"
+msgstr "Prohlédnout hlavní dokument"
 
 #: lib/ui/stdtoolbars.inc:102
-#, fuzzy
 msgid "Update master document"
-msgstr "Vybrat hlavní dokument"
+msgstr "Aktualizovat hlavní dokument"
 
 #: lib/ui/stdtoolbars.inc:103
 msgid "Enable Forward/Reverse Search"
-msgstr ""
+msgstr "Zapnout dopøedné a zpìtné hledání"
 
 #: lib/ui/stdtoolbars.inc:105
-#, fuzzy
 msgid "View other formats"
-msgstr "Formáty souborù"
+msgstr "Prohlédnout v ostatních formátech"
 
 #: lib/ui/stdtoolbars.inc:106
-#, fuzzy
 msgid "Update other formats"
-msgstr "Formát datumu"
+msgstr "Aktualizovat v ostatních formátech"
 
 #: lib/ui/stdtoolbars.inc:109
 msgid "Extra"
@@ -13525,7 +13510,7 @@ msgstr "Zarovnání vpravo"
 
 #: lib/ui/stdtoolbars.inc:157
 msgid "Align on decimal"
-msgstr ""
+msgstr "Zarovnat na desetinné èárce"
 
 #: lib/ui/stdtoolbars.inc:159
 msgid "Align top"
@@ -13552,9 +13537,8 @@ msgid "Set multi-column"
 msgstr "Nastavit vícesloupovou"
 
 #: lib/ui/stdtoolbars.inc:166
-#, fuzzy
 msgid "Set multi-row"
-msgstr "Nastavit vícesloupovou"
+msgstr "Nastavit víceøádkovou"
 
 #: lib/ui/stdtoolbars.inc:169
 msgid "Math"
@@ -17493,18 +17477,16 @@ msgid "greyedout inset label"
 msgstr "znaèka vlo¾ky za¹ednutí"
 
 #: src/Color.cpp:185
-#, fuzzy
 msgid "greyedout inset text"
-msgstr "znaèka vlo¾ky za¹ednutí"
+msgstr "za¹edlá vlo¾ka textu"
 
 #: src/Color.cpp:186
 msgid "greyedout inset background"
 msgstr "pozadí vlo¾ky za¹ednutí"
 
 #: src/Color.cpp:187
-#, fuzzy
 msgid "phantom inset text"
-msgstr "sbalitelná vlo¾ka textu"
+msgstr "text fantómu"
 
 #: src/Color.cpp:188
 msgid "shaded box"
