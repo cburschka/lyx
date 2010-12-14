@@ -61,15 +61,6 @@ NoteTranslator const init_notetranslator()
 }
 
 
-NoteTranslatorLoc const init_notetranslator_loc()
-{
-	NoteTranslatorLoc translator(_("Note[[InsetNote]]"), InsetNoteParams::Note);
-	translator.addPair(_("Comment"), InsetNoteParams::Comment);
-	translator.addPair(_("Greyed out"), InsetNoteParams::Greyedout);
-	return translator;
-}
-
-
 NoteTranslator const & notetranslator()
 {
 	static NoteTranslator translator = init_notetranslator();
@@ -77,15 +68,7 @@ NoteTranslator const & notetranslator()
 }
 
 
-NoteTranslatorLoc const & notetranslator_loc()
-{
-	static NoteTranslatorLoc translator = init_notetranslator_loc();
-	return translator;
-}
-
 } // anon
-
-
 
 
 InsetNoteParams::InsetNoteParams()
@@ -218,9 +201,9 @@ void InsetNote::addToToc(DocIterator const & cpit)
 	pit.push_back(CursorSlice(*this));
 
 	Toc & toc = buffer().tocBackend().toc("note");
-	docstring str;
-	str = notetranslator_loc().find(params_.type) + from_ascii(": ")
-		+ text().getPar(0).asString();
+	InsetLayout const & il = getLayout();
+	docstring const label = translateIfPossible(il.labelstring());
+	docstring const str = label + from_ascii(": ") + text().getPar(0).asString();
 	toc.push_back(TocItem(pit, 0, str, toolTipText()));
 	// Proceed with the rest of the inset.
 	InsetCollapsable::addToToc(cpit);
