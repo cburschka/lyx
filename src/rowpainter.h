@@ -104,7 +104,7 @@ private:
 	int const yo_;    // current baseline
 	double x_;
 	int width_;
-	int line_thickness_;
+	float line_thickness_;
 	int line_offset_;
 };
 

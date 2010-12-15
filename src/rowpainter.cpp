@@ -60,16 +60,19 @@ RowPainter::RowPainter(PainterInfo & pi,
 	  row_(row), pit_(pit), par_(text.paragraphs()[pit]),
 	  pm_(text_metrics_.parMetrics(pit)),
 	  bidi_(bidi), change_(pi_.change_),
-	  xo_(x), yo_(y), width_(text_metrics_.width())
+	  xo_(x), yo_(y), width_(text_metrics_.width()),
+	  line_thickness_(1.0), line_offset_(2)
 {
-	// derive the line thickness from zoom factor
-	// the zoom is given in percent
-	double const scale_ = lyxrc.zoom / 100.0;
-
 	bidi_.computeTables(par_, pi_.base.bv->buffer(), row_);
-	// (increase thickness at 150%, 250% etc.)
-	line_thickness_ = scale_ < 1.0 ? 1.0 : int(scale_ + 0.5);
-	line_offset_ = int(1.5 * line_thickness_) + (scale_ < 1.0 ? 1 : 2);
+
+	if (lyxrc.zoom >= 100) {
+		// derive the line thickness from zoom factor
+		// the zoom is given in percent
+		// (increase thickness at 150%, 250% etc.)
+		line_thickness_ = (float)(int((lyxrc.zoom + 50) / 100.0));
+		// adjust line_offset_ too
+		line_offset_ = int(2 * line_thickness_) + 1;
+	}
 
 	x_ = row_.x + xo_;
 
@@ -367,7 +370,7 @@ void RowPainter::paintMisspelledMark(double orig_x, bool changed)
 {
 	// if changed the misspelled marker gets placed slightly lower than normal
 	// to avoid drawing at the same vertical offset
-	int const y = yo_ + (changed ? line_thickness_ + 1 : 0) + line_offset_;
+	int const y = yo_ + (changed ? int(line_thickness_ + 1.0) : 0) + line_offset_;
 	pi_.pain.line(int(orig_x), y, int(x_), y, Color_error,
 		Painter::line_onoffdash, line_thickness_);
 }
