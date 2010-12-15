@@ -242,8 +242,7 @@ TeXEnvironment(Buffer const & buf,
 	       Text const & text,
 	       ParagraphList::const_iterator pit,
 	       odocstream & os, TexRow & texrow,
-	       OutputParams const & runparams,
-		   TeXEnvironementData const & data)
+	       OutputParams const & runparams)
 {
 	LYXERR(Debug::LATEX, "TeXEnvironment...     " << &*pit);
 	ParagraphList const & paragraphs = text.paragraphs();
@@ -292,12 +291,11 @@ TeXEnvironment(Buffer const & buf,
 				Layout const & style = force_plain_layout
 					? buf.params().documentClass().plainLayout() : par->layout();
 				if (style.isEnvironment()) {
-					TeXEnvironementData const inner_data = prepareEnvironement(buf,
+					TeXEnvironementData const data = prepareEnvironement(buf,
 						text, par, os, texrow, runparams);
 					// Recursive call to TeXEnvironment!
-					par = TeXEnvironment(buf, text, par, os, texrow, runparams,
-						inner_data);
-					finishEnvironement(os, texrow, runparams, inner_data);
+					par = TeXEnvironment(buf, text, par, os, texrow, runparams);
+					finishEnvironement(os, texrow, runparams, data);
 				} else {
 					TeXOnePar(buf, text, par, os, texrow, runparams);
 					if (par != text.paragraphs().end())
@@ -1023,7 +1021,7 @@ void latexParagraphs(Buffer const & buf,
 					!par->params().leftIndent().zero()) {
 			TeXEnvironementData const data = prepareEnvironement(buf, text,
 				par, os, texrow, runparams);
-			par = TeXEnvironment(buf, text, par, os, texrow, runparams, data);
+			par = TeXEnvironment(buf, text, par, os, texrow, runparams);
 			finishEnvironement(os, texrow, runparams, data);
 		} else {
 			TeXOnePar(buf, text, par, os, texrow, runparams, everypar);
