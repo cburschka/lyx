@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-12-14 11:24+0100\n"
-"PO-Revision-Date: 2010-12-14 11:30+0100\n"
+"POT-Creation-Date: 2010-12-15 20:03+0100\n"
+"PO-Revision-Date: 2010-12-15 20:09+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -5601,7 +5601,7 @@ msgstr "BackMatter"
 #: lib/layouts/aastex.layout:122 lib/layouts/aastex.layout:450
 #: lib/layouts/ijmpc.layout:313 lib/layouts/ijmpd.layout:324
 #: lib/layouts/kluwer.layout:319 lib/layouts/kluwer.layout:332
-#: src/rowpainter.cpp:505
+#: src/rowpainter.cpp:508
 msgid "Appendix"
 msgstr "Príloha"
 
@@ -6213,7 +6213,7 @@ msgstr "CopNum"
 #: lib/layouts/apa.layout:213 lib/layouts/elsart.layout:392
 #: lib/layouts/iopart.layout:94 lib/layouts/llncs.layout:364
 #: lib/layouts/powerdot.layout:200 lib/layouts/slides.layout:167
-#: lib/layouts/svjour.inc:384
+#: lib/layouts/stdinsets.inc:95 lib/layouts/svjour.inc:384
 #: lib/layouts/theorems-ams-extended-bytype.module:151
 #: lib/layouts/theorems-ams-extended.module:174
 #: lib/layouts/theorems-ams-extended.module:183
@@ -8156,7 +8156,7 @@ msgstr "Recenzia"
 msgid "Topical"
 msgstr "Tematicky"
 
-#: lib/layouts/iopart.layout:88 src/insets/InsetNote.cpp:67
+#: lib/layouts/iopart.layout:88 lib/layouts/stdinsets.inc:80
 msgid "Comment"
 msgstr "Komentár"
 
@@ -9615,17 +9615,9 @@ msgstr "okraje"
 msgid "foot"
 msgstr "päta"
 
-#: lib/layouts/stdinsets.inc:80
-msgid "comment"
-msgstr "komentár"
-
-#: lib/layouts/stdinsets.inc:95 src/insets/InsetNote.cpp:295
-msgid "note"
-msgstr "poznámka"
-
 #: lib/layouts/stdinsets.inc:110
-msgid "greyedout"
-msgstr "zosivelé"
+msgid "Greyedout"
+msgstr "Zosivelé"
 
 #: lib/layouts/stdinsets.inc:134 src/insets/InsetERT.cpp:150
 #: src/insets/InsetERT.cpp:152
@@ -23123,13 +23115,9 @@ msgstr "Popis: "
 msgid "Sorting: "
 msgstr "Triedenie: "
 
-#: src/insets/InsetNote.cpp:66
-msgid "Note[[InsetNote]]"
-msgstr "Poznámka"
-
-#: src/insets/InsetNote.cpp:68
-msgid "Greyed out"
-msgstr "Zosivelé"
+#: src/insets/InsetNote.cpp:271
+msgid "note"
+msgstr "poznámka"
 
 #: src/insets/InsetPhantom.cpp:65
 msgid "Phantom"
@@ -23451,7 +23439,7 @@ msgstr "Vhodný výraz nájdený!"
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1606
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1611
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23512,17 +23500,17 @@ msgstr "Bez čísla"
 msgid "Number"
 msgstr "Číslo"
 
-#: src/mathed/InsetMathHull.cpp:1579
+#: src/mathed/InsetMathHull.cpp:1584
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Nedá sa zmeniť počet riadkov v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1589
+#: src/mathed/InsetMathHull.cpp:1594
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Počet stĺpcov sa nedá zmeniť v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1599
+#: src/mathed/InsetMathHull.cpp:1604
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nedajú sa pridať horizontálne linky mriežky '%1$s'"
@@ -23765,6 +23753,15 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "comment"
+#~ msgstr "komentár"
+
+#~ msgid "greyedout"
+#~ msgstr "zosivelé"
+
+#~ msgid "Note[[InsetNote]]"
+#~ msgstr "Poznámka"
 
 #~ msgid "&Use Defaults"
 #~ msgstr "Použiť Štandardy"
