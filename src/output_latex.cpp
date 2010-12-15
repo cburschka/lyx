@@ -56,49 +56,6 @@ static int cjk_inherited_ = 0;
 Language const * prev_env_language_ = 0;
 
 
-ParagraphList::const_iterator
-TeXEnvironment(Buffer const & buf,
-	       Text const & text,
-	       ParagraphList::const_iterator pit,
-	       odocstream & os, TexRow & texrow,
-	       OutputParams const & runparams);
-
-
-ParagraphList::const_iterator
-TeXDeeper(Buffer const & buf,
-	  Text const & text,
-	  ParagraphList::const_iterator pit,
-	  odocstream & os, TexRow & texrow,
-	  OutputParams const & runparams)
-{
-	LYXERR(Debug::LATEX, "TeXDeeper...     " << &*pit);
-	ParagraphList::const_iterator par = pit;
-
-	ParagraphList const & paragraphs = text.paragraphs();
-
-	bool const force_plain_layout = text.inset().forcePlainLayout();
-	depth_type const max_depth = pit->params().depth();
-	// FIXME: move that to a for loop!
-	while (par != paragraphs.end() && par->params().depth() == max_depth) {
-		// FIXME This test should not be necessary.
-		// We should perhaps issue an error if it is.
-		Layout const & style = force_plain_layout
-			? buf.params().documentClass().plainLayout() : par->layout();
-		if (style.isEnvironment()) {
-			par = TeXEnvironment(buf, text, par,
-					     os, texrow, runparams);
-		} else {
-			TeXOnePar(buf, text, par, os, texrow, runparams);
-			if (par != text.paragraphs().end())
-				par++;
-		}
-	}
-	LYXERR(Debug::LATEX, "TeXDeeper...done ");
-
-	return par;
-}
-
-
 string const getPolyglossiaEnvName(Language const * lang)
 {
 	string result = lang->polyglossia();
@@ -265,9 +222,30 @@ TeXEnvironment(Buffer const & buf,
 				os << '\n';
 				texrow.newline();
 			}
-			par = TeXDeeper(buf, text, par, os, texrow,
-					runparams);
+
+			LYXERR(Debug::LATEX, "TeXDeeper...     " << &*par);
+			bool const force_plain_layout = text.inset().forcePlainLayout();
+			depth_type const max_depth = par->params().depth();
+
+			// FIXME: move that to a for loop!
+			while (par != paragraphs.end()
+				&& par->params().depth() == max_depth) {
+				// FIXME This test should not be necessary.
+				// We should perhaps issue an error if it is.
+				Layout const & style = force_plain_layout
+					? buf.params().documentClass().plainLayout() : par->layout();
+				if (style.isEnvironment()) {
+					// Recursive call to TeXEnvironment!
+					par = TeXEnvironment(buf, text, par, os, texrow, runparams);
+				} else {
+					TeXOnePar(buf, text, par, os, texrow, runparams);
+					if (par != text.paragraphs().end())
+						par++;
+				}
+			}
+			LYXERR(Debug::LATEX, "TeXDeeper...done ");
 		}
+
 	} while (par != paragraphs.end()
 		 && par->layout() == pit->layout()
 		 && par->params().depth() == pit->params().depth()
