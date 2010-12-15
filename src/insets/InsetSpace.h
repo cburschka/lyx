@@ -129,8 +129,8 @@ public:
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
-	/// the string that is passed to the TOC
-	void tocString(odocstream &) const;
+	///
+	void toString(odocstream &) const;
 	///
 	bool hasSettings() const { return true; }
 	///

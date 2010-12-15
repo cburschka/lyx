@@ -236,7 +236,7 @@ docstring InsetHyperlink::xhtml(XHTMLStream & xs, OutputParams const &) const
 }
 
 
-void InsetHyperlink::tocString(odocstream & os) const
+void InsetHyperlink::toString(odocstream & os) const
 {
 	plaintext(os, OutputParams(0));
 }

@@ -666,7 +666,7 @@ void InsetText::updateBuffer(ParIterator const & it, UpdateType utype)
 }
 
 
-void InsetText::tocString(odocstream & os) const
+void InsetText::toString(odocstream & os) const
 {
 	os << text().asString(0, 1, AS_STR_LABEL | AS_STR_INSETS);
 }

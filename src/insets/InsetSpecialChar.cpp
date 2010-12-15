@@ -318,7 +318,7 @@ docstring InsetSpecialChar::xhtml(XHTMLStream & xs, OutputParams const &) const
 }
 
 
-void InsetSpecialChar::tocString(odocstream & os) const
+void InsetSpecialChar::toString(odocstream & os) const
 {
 	plaintext(os, OutputParams(0));
 }

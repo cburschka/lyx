@@ -238,10 +238,10 @@ docstring InsetBranch::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 }
 
 
-void InsetBranch::tocString(odocstream & os) const
+void InsetBranch::toString(odocstream & os) const
 {
 	if (isBranchSelected())
-		InsetCollapsable::tocString(os);
+		InsetCollapsable::toString(os);
 }
 
 

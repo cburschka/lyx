@@ -163,8 +163,8 @@ public:
 
 	/// Update the counters of this inset and of its contents
 	virtual void updateBuffer(ParIterator const &, UpdateType);
-	/// the string that is passed to the TOC
-	void tocString(odocstream &) const;
+	/// 
+	void toString(odocstream &) const;
 	///
 	void addToToc(DocIterator const &);
 	///

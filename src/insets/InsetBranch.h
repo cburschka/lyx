@@ -73,7 +73,7 @@ private:
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
-	void tocString(odocstream &) const;
+	void toString(odocstream &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///

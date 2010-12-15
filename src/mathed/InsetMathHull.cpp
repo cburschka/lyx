@@ -1983,7 +1983,7 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 }
 
 
-void InsetMathHull::tocString(odocstream & os) const
+void InsetMathHull::toString(odocstream & os) const
 {
 	plaintext(os, OutputParams(0));
 }

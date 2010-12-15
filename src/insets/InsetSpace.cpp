@@ -734,7 +734,7 @@ void InsetSpace::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetSpace::tocString(odocstream & os) const
+void InsetSpace::toString(odocstream & os) const
 {
 	plaintext(os, OutputParams(0));
 }

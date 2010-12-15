@@ -231,7 +231,7 @@ docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const &) const
 }
 
 
-void InsetRef::tocString(odocstream & os) const
+void InsetRef::toString(odocstream & os) const
 {
 	plaintext(os, OutputParams(0));
 }

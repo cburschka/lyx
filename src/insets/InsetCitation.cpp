@@ -540,7 +540,7 @@ docstring InsetCitation::xhtml(XHTMLStream & xs, OutputParams const &) const
 }
 
 
-void InsetCitation::tocString(odocstream & os) const
+void InsetCitation::toString(odocstream & os) const
 {
 	plaintext(os, OutputParams(0));
 }

@@ -86,8 +86,8 @@ public:
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 
-	/// the string that is passed to the TOC
-	void tocString(odocstream &) const;
+	/// 
+	void toString(odocstream &) const;
 
 	///
 	void validate(LaTeXFeatures &) const;

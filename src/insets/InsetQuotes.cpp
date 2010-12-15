@@ -327,7 +327,7 @@ docstring InsetQuotes::xhtml(XHTMLStream & xs, OutputParams const & op) const
 }
 
 
-void InsetQuotes::tocString(odocstream & os) const
+void InsetQuotes::toString(odocstream & os) const
 {
 	os << displayString();
 }

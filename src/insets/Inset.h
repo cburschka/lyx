@@ -323,8 +323,8 @@ public:
 	// FIXME This method is used for things other than generating strings
 	// for the TOC. E.g., it is called by Paragraph::asString() to get the
 	// contents of the inset. These two functions should be disentangled.
-	/// the string that is passed to the TOC
-	virtual void tocString(odocstream &) const {}
+	/// 
+	virtual void toString(odocstream &) const {}
 
 	/// can the contents of the inset be edited on screen ?
 	// true for InsetCollapsables (not ButtonOnly) (not InsetInfo), InsetText

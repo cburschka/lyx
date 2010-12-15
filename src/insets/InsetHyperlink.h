@@ -36,7 +36,7 @@ public:
 	///
 	bool isInToc() const { return true; }
 	///
-	void tocString(odocstream &) const;
+	void toString(odocstream &) const;
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///

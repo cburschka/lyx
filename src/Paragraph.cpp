@@ -2928,7 +2928,7 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options) const
 		    || (c == '\n' && (options & AS_STR_NEWLINES)))
 			os.put(c);
 		else if (c == META_INSET && (options & AS_STR_INSETS)) {
-			getInset(i)->tocString(os);
+			getInset(i)->toString(os);
 			if (getInset(i)->asInsetMath())
 				os << " ";
 		}
