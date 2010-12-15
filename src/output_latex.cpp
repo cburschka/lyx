@@ -66,14 +66,21 @@ string const getPolyglossiaEnvName(Language const * lang)
 }
 
 
-ParagraphList::const_iterator
-TeXEnvironment(Buffer const & buf,
-	       Text const & text,
-	       ParagraphList::const_iterator pit,
-	       odocstream & os, TexRow & texrow,
-	       OutputParams const & runparams)
+struct TeXEnvironementData
 {
-	LYXERR(Debug::LATEX, "TeXEnvironment...     " << &*pit);
+	bool cjk_nested;
+	Layout const * style;
+	Language const * par_language;
+	Encoding const * prev_encoding;
+	bool leftindent_open;
+};
+
+
+static TeXEnvironementData prepareEnvironement(Buffer const & buf, Text const & text,
+		ParagraphList::const_iterator pit, odocstream & os, TexRow & texrow,
+		OutputParams const & runparams)
+{
+	TeXEnvironementData data;
 
 	BufferParams const & bparams = buf.params();
 
@@ -92,22 +99,22 @@ TeXEnvironment(Buffer const & buf,
 			    || (priorpit->getDepth() == pit->getDepth()
 				&& priorpit->layout() != pit->layout()));
 
-	Encoding const * const prev_encoding = runparams.encoding;
-	Language const * const par_language = pit->getParLanguage(bparams);
+	data.prev_encoding = runparams.encoding;
+	data.par_language = pit->getParLanguage(bparams);
 	Language const * const doc_language = bparams.language;
 	Language const * const prev_par_language =
 		(pit != paragraphs.begin())
 		? (use_prev_env_language ? prev_env_language_
 					 : priorpit->getParLanguage(bparams))
 		: doc_language;
-	string par_lang = par_language->babel();
+	string par_lang = data.par_language->babel();
 	string prev_par_lang = prev_par_language->babel();
 	string doc_lang = doc_language->babel();
 	string lang_begin_command = lyxrc.language_command_begin;
 	string lang_end_command = lyxrc.language_command_end;
 
 	if (runparams.use_polyglossia) {
-		par_lang = getPolyglossiaEnvName(par_language);
+		par_lang = getPolyglossiaEnvName(data.par_language);
 		prev_par_lang = getPolyglossiaEnvName(prev_par_language);
 		doc_lang = getPolyglossiaEnvName(doc_language);
 		lang_begin_command = "\\begin{$$lang}";
@@ -135,9 +142,9 @@ TeXEnvironment(Buffer const & buf,
 				"$$lang",
 				par_lang));
 			if (runparams.use_polyglossia
-			    && !par_language->polyglossiaOpts().empty())
+			    && !data.par_language->polyglossiaOpts().empty())
 					os << "["
-					   << from_ascii(par_language->polyglossiaOpts())
+					   << from_ascii(data.par_language->polyglossiaOpts())
 					   << "]";
 			  // the '%' is necessary to prevent unwanted whitespace
 			os << "%\n";
@@ -145,13 +152,13 @@ TeXEnvironment(Buffer const & buf,
 		}
 	}
 
-	bool leftindent_open = false;
+	data.leftindent_open = false;
 	if (!pit->params().leftIndent().zero()) {
 		os << "\\begin{LyXParagraphLeftIndent}{"
 		   << from_ascii(pit->params().leftIndent().asLatexString())
 		   << "}\n";
 		texrow.newline();
-		leftindent_open = true;
+		data.leftindent_open = true;
 	}
 
 	if (style.isEnvironment()) {
@@ -178,18 +185,68 @@ TeXEnvironment(Buffer const & buf,
 			os << from_ascii(style.latexparam()) << '\n';
 		texrow.newline();
 	}
+	data.style = &style;
 
 	// in multilingual environments, the CJK tags have to be nested properly
-	bool cjk_nested = false;
-	if (par_language->encoding()->package() == Encoding::CJK &&
+	data.cjk_nested = false;
+	if (data.par_language->encoding()->package() == Encoding::CJK &&
 	    open_encoding_ != CJK && pit->isMultiLingual(bparams)) {
 		if (prev_par_language->encoding()->package() == Encoding::CJK)
-			os << "\\begin{CJK}{" << from_ascii(par_language->encoding()->latexName())
+			os << "\\begin{CJK}{" << from_ascii(data.par_language->encoding()->latexName())
 			   << "}{" << from_ascii(bparams.fonts_cjk) << "}%\n";
 		open_encoding_ = CJK;
-		cjk_nested = true;
+		data.cjk_nested = true;
 		texrow.newline();
 	}
+	return data;
+}
+
+
+static void finishEnvironement(odocstream & os, TexRow & texrow,
+		OutputParams const & runparams, TeXEnvironementData const & data)
+{
+	if (open_encoding_ == CJK && data.cjk_nested) {
+		// We need to close the encoding even if it does not change
+		// to do correct environment nesting
+		os << "\\end{CJK}\n";
+		texrow.newline();
+		open_encoding_ = none;
+	}
+
+	if (data.style->isEnvironment()) {
+		os << "\\end{" << from_ascii(data.style->latexname()) << "}\n";
+		texrow.newline();
+		prev_env_language_ = data.par_language;
+		if (runparams.encoding != data.prev_encoding) {
+			runparams.encoding = data.prev_encoding;
+			if (!runparams.isFullUnicode())
+				os << setEncoding(data.prev_encoding->iconvName());
+		}
+	}
+
+	if (data.leftindent_open) {
+		os << "\\end{LyXParagraphLeftIndent}\n";
+		texrow.newline();
+		prev_env_language_ = data.par_language;
+		if (runparams.encoding != data.prev_encoding) {
+			runparams.encoding = data.prev_encoding;
+			if (!runparams.isFullUnicode())
+				os << setEncoding(data.prev_encoding->iconvName());
+		}
+	}
+}
+
+
+ParagraphList::const_iterator
+TeXEnvironment(Buffer const & buf,
+	       Text const & text,
+	       ParagraphList::const_iterator pit,
+	       odocstream & os, TexRow & texrow,
+	       OutputParams const & runparams,
+		   TeXEnvironementData const & data)
+{
+	LYXERR(Debug::LATEX, "TeXEnvironment...     " << &*pit);
+	ParagraphList const & paragraphs = text.paragraphs();
 
 	ParagraphList::const_iterator par = pit;
 	do {
@@ -235,8 +292,12 @@ TeXEnvironment(Buffer const & buf,
 				Layout const & style = force_plain_layout
 					? buf.params().documentClass().plainLayout() : par->layout();
 				if (style.isEnvironment()) {
+					TeXEnvironementData const inner_data = prepareEnvironement(buf,
+						text, par, os, texrow, runparams);
 					// Recursive call to TeXEnvironment!
-					par = TeXEnvironment(buf, text, par, os, texrow, runparams);
+					par = TeXEnvironment(buf, text, par, os, texrow, runparams,
+						inner_data);
+					finishEnvironement(os, texrow, runparams, inner_data);
 				} else {
 					TeXOnePar(buf, text, par, os, texrow, runparams);
 					if (par != text.paragraphs().end())
@@ -245,41 +306,10 @@ TeXEnvironment(Buffer const & buf,
 			}
 			LYXERR(Debug::LATEX, "TeXDeeper...done ");
 		}
-
 	} while (par != paragraphs.end()
 		 && par->layout() == pit->layout()
 		 && par->params().depth() == pit->params().depth()
 		 && par->params().leftIndent() == pit->params().leftIndent());
-
-	if (open_encoding_ == CJK && cjk_nested) {
-		// We need to close the encoding even if it does not change
-		// to do correct environment nesting
-		os << "\\end{CJK}\n";
-		texrow.newline();
-		open_encoding_ = none;
-	}
-
-	if (style.isEnvironment()) {
-		os << "\\end{" << from_ascii(style.latexname()) << "}\n";
-		texrow.newline();
-		prev_env_language_ = par_language;
-		if (runparams.encoding != prev_encoding) {
-			runparams.encoding = prev_encoding;
-			if (!runparams.isFullUnicode())
-				os << setEncoding(prev_encoding->iconvName());
-		}
-	}
-
-	if (leftindent_open) {
-		os << "\\end{LyXParagraphLeftIndent}\n";
-		texrow.newline();
-		prev_env_language_ = par_language;
-		if (runparams.encoding != prev_encoding) {
-			runparams.encoding = prev_encoding;
-			if (!runparams.isFullUnicode())
-				os << setEncoding(prev_encoding->iconvName());
-		}
-	}
 
 	if (par != paragraphs.end())
 		LYXERR(Debug::LATEX, "TeXEnvironment...done " << &*par);
@@ -991,8 +1021,10 @@ void latexParagraphs(Buffer const & buf,
 
 		if (layout.isEnvironment() ||
 					!par->params().leftIndent().zero()) {
-			par = TeXEnvironment(buf, text, par, os,
-								texrow, runparams);
+			TeXEnvironementData const data = prepareEnvironement(buf, text,
+				par, os, texrow, runparams);
+			par = TeXEnvironment(buf, text, par, os, texrow, runparams, data);
+			finishEnvironement(os, texrow, runparams, data);
 		} else {
 			TeXOnePar(buf, text, par, os, texrow, runparams, everypar);
 			if (par != paragraphs.end())
