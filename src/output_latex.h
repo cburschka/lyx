@@ -61,13 +61,13 @@ std::pair<bool, int> switchEncoding(odocstream & os,
 		     bool force = false);
 
 /// FIXME: this should not be visible.
-ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
-	              Text const & text,
-	              ParagraphList::const_iterator pit,
-	              odocstream & os, TexRow & texrow,
-	              OutputParams const & runparams,
-	              std::string const & everypar = std::string(),
-	              int start_pos = -1, int end_pos = -1);
+void TeXOnePar(Buffer const & buf,
+	           Text const & text,
+	           ParagraphList::const_iterator pit,
+	           odocstream & os, TexRow & texrow,
+	           OutputParams const & runparams,
+	           std::string const & everypar = std::string(),
+	           int start_pos = -1, int end_pos = -1);
 
 } // namespace lyx
 

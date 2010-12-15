@@ -87,8 +87,9 @@ TeXDeeper(Buffer const & buf,
 			par = TeXEnvironment(buf, text, par,
 					     os, texrow, runparams);
 		} else {
-			par = TeXOnePar(buf, text, par,
-					     os, texrow, runparams);
+			TeXOnePar(buf, text, par, os, texrow, runparams);
+			if (par != text.paragraphs().end())
+				par++;
 		}
 	}
 	LYXERR(Debug::LATEX, "TeXDeeper...done ");
@@ -234,7 +235,9 @@ TeXEnvironment(Buffer const & buf,
 
 	ParagraphList::const_iterator par = pit;
 	do {
-		par = TeXOnePar(buf, text, par, os, texrow, runparams);
+		TeXOnePar(buf, text, par, os, texrow, runparams);
+		if (par != paragraphs.end())
+			par++;
 
 		if (par == paragraphs.end()) {
 			// Make sure that the last paragraph is
@@ -364,7 +367,7 @@ int latexArgInsets(Paragraph const & par, odocstream & os,
 
 
 // FIXME: this should be anonymous
-ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
+void TeXOnePar(Buffer const & buf,
 	  Text const & text,
 	  ParagraphList::const_iterator const pit,
 	  odocstream & os, TexRow & texrow,
@@ -388,7 +391,7 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 		pit == paragraphs.end() ? pit : boost::next(pit);
 
 	if (style.inpreamble)
-		return nextpit;
+		return;
 
 	OutputParams runparams = runparams_in;
 	runparams.isLastPar = nextpit == paragraphs.end();
@@ -418,7 +421,7 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 
 		pit->latex(bparams, outerfont, os, texrow,
 		           runparams, start_pos, end_pos);
-		return nextpit;
+		return;
 	}
 
 	if (style.pass_thru) {
@@ -440,7 +443,7 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 			}
 		}
 
-		return nextpit;
+		return;
 	}
 
 	// This paragraph's language
@@ -903,7 +906,7 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 	if (nextpit != paragraphs.end())
 		LYXERR(Debug::LATEX, "TeXOnePar...done " << &*nextpit);
 
-	return nextpit;
+	return;
 }
 
 
@@ -1012,8 +1015,9 @@ void latexParagraphs(Buffer const & buf,
 			par = TeXEnvironment(buf, text, par, os,
 								texrow, runparams);
 		} else {
-			par = TeXOnePar(buf, text, par, os, texrow,
-					runparams, everypar);
+			TeXOnePar(buf, text, par, os, texrow, runparams, everypar);
+			if (par != paragraphs.end())
+				par++;
 		}
 		if (distance(lastpar, par) >= distance(lastpar, endpar))
 			break;
