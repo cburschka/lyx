@@ -77,8 +77,9 @@ TeXDeeper(Buffer const & buf,
 	ParagraphList const & paragraphs = text.paragraphs();
 
 	bool const force_plain_layout = text.inset().forcePlainLayout();
-	while (par != paragraphs.end() &&
-					par->params().depth() == pit->params().depth()) {
+	depth_type const max_depth = pit->params().depth();
+	// FIXME: move that to a for loop!
+	while (par != paragraphs.end() && par->params().depth() == max_depth) {
 		// FIXME This test should not be necessary.
 		// We should perhaps issue an error if it is.
 		Layout const & style = force_plain_layout
