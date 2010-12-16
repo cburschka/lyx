@@ -115,7 +115,7 @@ SpellCheckResult AppleSpeller_check(AppleSpeller speller, const char * word, con
 					result = SPELL_CHECK_LEARNED;
 			}
 		} else {
-			int capacity = [speller->misspelled count] + 1;
+			NSUInteger capacity = [speller->misspelled count] + 1;
 			NSMutableArray * misspelled = [NSMutableArray arrayWithCapacity:capacity];
 			[misspelled addObjectsFromArray:speller->misspelled];
 			[misspelled addObject:[NSValue valueWithRange:match]];
@@ -233,7 +233,7 @@ int AppleSpeller_numMisspelledWords(AppleSpeller speller)
 
 void AppleSpeller_misspelledWord(AppleSpeller speller, int index, int * start, int * length)
 {
-	NSRange range = [[speller->misspelled objectAtIndex:index] rangeValue];
+	NSRange range = [[speller->misspelled objectAtIndex:(NSUInteger)index] rangeValue];
 	*start = range.location;
 	*length = range.length;
 }
