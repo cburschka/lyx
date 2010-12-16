@@ -103,7 +103,7 @@ NSString* LinkBackEditNoneMenuTitle()
 
 + (NSDictionary*)linkBackDataWithServerName:(NSString*)serverName appData:(id)appData 
 {
-	return [self linkBackDataWithServerName: serverName appData: appData actionName: nil suggestedRefreshRate: 0];
+	return [self linkBackDataWithServerName: serverName appData: appData actionName: nil suggestedRefreshRate: (float)0];
 }
 
 + (NSDictionary*)linkBackDataWithServerName:(NSString*)serverName appData:(id)appData suggestedRefreshRate:(NSTimeInterval)rate 
@@ -111,7 +111,7 @@ NSString* LinkBackEditNoneMenuTitle()
 	return [self linkBackDataWithServerName: serverName appData: appData actionName: LinkBackRefreshActionName suggestedRefreshRate: rate] ;
 }
 
-+ (NSDictionary*)linkBackDataWithServerName:(NSString*)serverName appData:(id)appData actionName:(NSString*)action suggestedRefreshRate:(NSTimeInterval)rate ;
++ (NSDictionary*)linkBackDataWithServerName:(NSString*)serverName appData:(id)appData actionName:(NSString*)action suggestedRefreshRate:(NSTimeInterval)rate
 {
 	NSDictionary* appInfo = [[NSBundle mainBundle] infoDictionary] ;
 
@@ -133,7 +133,7 @@ NSString* LinkBackEditNoneMenuTitle()
 	if (action) [ret setObject: action forKey: LinkBackServerActionKey] ;
 	if (appData) [ret setObject: appData forKey: LinkBackApplicationDataKey] ;
 	if (url) [ret setObject: url forKey: LinkBackApplicationURLKey] ;
-	[ret setObject: [NSNumber numberWithFloat: rate] forKey: LinkBackSuggestedRefreshKey] ;
+	[ret setObject: [NSNumber numberWithDouble: rate] forKey: LinkBackSuggestedRefreshKey] ;
 	
 	return [ret autorelease] ;
 }
@@ -236,7 +236,7 @@ NSMutableDictionary* keyedLinkBacks = nil ;
 	return self ;
 }
 
-- (id)initClientWithSourceName:(NSString*)aName delegate:(id<LinkBackClientDelegate>)aDel itemKey:(NSString*)aKey ;
+- (id)initClientWithSourceName:(NSString*)aName delegate:(id<LinkBackClientDelegate>)aDel itemKey:(NSString*)aKey
 {
 	if ((self = [super init])) {
 		isServer = NO ;

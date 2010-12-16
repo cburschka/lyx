@@ -72,7 +72,7 @@ NSMutableDictionary* LinkBackServers = nil ;
 BOOL LinkBackServerIsSupported(NSString* name, id supportedServers)
 {
 	BOOL ret = NO ;
-	int idx ;
+	NSUInteger idx ;
 	NSString* curServer = supportedServers ;
 	
 	// NOTE: supportedServers may be nil, an NSArray, or NSString.
@@ -99,15 +99,15 @@ NSString* FindLinkBackServer(NSString* bundleIdentifier, NSString* serverName, N
 #else
 	NSArray* contents = [fm directoryContentsAtPath: dir] ;
 #endif
-	int idx ;
-
-	NSLog(@"searching for %@ in folder: %@", serverName, dir) ;
+	NSUInteger idx ;
 	
 	// working info
 	NSString* cpath ;
 	NSBundle* cbundle ;
 	NSString* cbundleIdentifier ;
 	id supportedServers ;
+	
+	NSLog(@"searching for %@ in folder: %@", serverName, dir) ;
 
 	// resolve any symlinks, expand tildes.
 	dir = [dir stringByStandardizingPath] ;
@@ -173,7 +173,7 @@ void LinkBackRunAppNotFoundPanel(NSString* appName, NSURL* url)
 	}
 }
 
-+ (LinkBackServer*)LinkBackServerWithName:(NSString*)aName inApplication:(NSString*)bundleIdentifier launchIfNeeded:(BOOL)flag fallbackURL:(NSURL*)url appName:(NSString*)appName ;
++ (LinkBackServer*)LinkBackServerWithName:(NSString*)aName inApplication:(NSString*)bundleIdentifier launchIfNeeded:(BOOL)flag fallbackURL:(NSURL*)url appName:(NSString*)appName
 {
 	BOOL connect = YES ;
 	NSString* serverName = MakeLinkBackServerName(bundleIdentifier, aName) ;
