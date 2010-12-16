@@ -12031,12 +12031,10 @@ msgid "Add Line Below|B"
 msgstr "Pøidat linku pod|o"
 
 #: lib/ui/stdcontext.inc:65
-#, fuzzy
 msgid "Delete Line Above|v"
 msgstr "Smazat linku nad|d"
 
 #: lib/ui/stdcontext.inc:66
-#, fuzzy
 msgid "Delete Line Below|w"
 msgstr "Smazat linku pod|p"
 
@@ -12069,7 +12067,6 @@ msgid "Show Table Toolbar"
 msgstr "Zobrazit panel nástrojù pro tabulku"
 
 #: lib/ui/stdcontext.inc:77
-#, fuzzy
 msgid "Use Computer Algebra System|m"
 msgstr "Pou¾ít algebraické programy|a"
 
@@ -12746,7 +12743,6 @@ msgid "Decrease List Depth|D"
 msgstr "Zmen¹it hloubku seznamu|m"
 
 #: lib/ui/stdmenus.inc:130
-#, fuzzy
 msgid "Dissolve Inset"
 msgstr "Rozpustit vlo¾ku do textu|u"
 
@@ -12767,9 +12763,8 @@ msgid "Note Settings...|N"
 msgstr "Nastavení poznámky...|z"
 
 #: lib/ui/stdmenus.inc:136
-#, fuzzy
 msgid "Phantom Settings...|h"
-msgstr "Nastavení plovoucích objektù...|p"
+msgstr "Nastavení fantómu...|f"
 
 #: lib/ui/stdmenus.inc:137
 msgid "Branch Settings...|B"
@@ -12780,19 +12775,16 @@ msgid "Box Settings...|x"
 msgstr "Nastavení rámeèku...|r"
 
 #: lib/ui/stdmenus.inc:139
-#, fuzzy
 msgid "Index Entry Settings...|y"
-msgstr "Nastavení obtékání textu...|t"
+msgstr "Nastavení hesla rejstøíku...|t"
 
 #: lib/ui/stdmenus.inc:140
-#, fuzzy
 msgid "Index Settings...|x"
-msgstr "Nastavení rámeèku...|r"
+msgstr "Nastavení rejstøíku...|r"
 
 #: lib/ui/stdmenus.inc:141
-#, fuzzy
 msgid "Info Settings...|n"
-msgstr "Nastavení rámeèku...|r"
+msgstr "Nastavení vlo¾ky informací...|i"
 
 #: lib/ui/stdmenus.inc:142
 msgid "Listings Settings...|g"
@@ -12855,9 +12847,8 @@ msgid "Lowercase|L"
 msgstr "Malá písmena|M"
 
 #: lib/ui/stdmenus.inc:181
-#, fuzzy
 msgid "Multirow|u"
-msgstr "&Vícesloupcová"
+msgstr "Vícesloupcová|V"
 
 #: lib/ui/stdmenus.inc:183
 msgid "Top Line|T"
@@ -12868,17 +12859,14 @@ msgid "Bottom Line|B"
 msgstr "Linka dole|d"
 
 #: lib/ui/stdmenus.inc:188
-#, fuzzy
 msgid "Top|p"
 msgstr "Nahoru|N"
 
 #: lib/ui/stdmenus.inc:189
-#, fuzzy
 msgid "Middle|i"
 msgstr "Doprostøed|p"
 
 #: lib/ui/stdmenus.inc:190
-#, fuzzy
 msgid "Bottom|o"
 msgstr "Dolù|D"
 
@@ -12923,9 +12911,8 @@ msgid "Math Calligraphic Family|C"
 msgstr "Mat. kaligrafická rodina písma|k"
 
 #: lib/ui/stdmenus.inc:262
-#, fuzzy
 msgid "Math Formal Script Family|o"
-msgstr "Mat. rodina písma Fraktur|F"
+msgstr "Mat. rodina kaligrafického písma Formal|o"
 
 #: lib/ui/stdmenus.inc:263
 msgid "Math Fraktur Family|F"
@@ -13979,19 +13966,16 @@ msgid "Negative space\t\\!"
 msgstr "Záporná\t\\!"
 
 #: lib/ui/stdtoolbars.inc:334
-#, fuzzy
 msgid "Phantom\t\\phantom"
-msgstr "Místo\t\\phantom"
+msgstr "Fantóm\t\\phantom"
 
 #: lib/ui/stdtoolbars.inc:335
-#, fuzzy
 msgid "Horizontal phantom\t\\hphantom"
-msgstr "Horizontální místo\t\\hphantom"
+msgstr "Horizontální fantóm\t\\hphantom"
 
 #: lib/ui/stdtoolbars.inc:336
-#, fuzzy
 msgid "Vertical phantom\t\\vphantom"
-msgstr "Vertikální místo\t\\vphantom"
+msgstr "Vertikální fantóm\t\\vphantom"
 
 #: lib/ui/stdtoolbars.inc:339
 msgid "Roots"
@@ -14138,9 +14122,8 @@ msgid "ddots"
 msgstr "ddots"
 
 #: lib/ui/stdtoolbars.inc:387
-#, fuzzy
 msgid "iddots"
-msgstr "ddots"
+msgstr "iddots"
 
 #: lib/ui/stdtoolbars.inc:390
 msgid "Frame Decorations"
@@ -16530,7 +16513,6 @@ msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
 #: lib/configure.py:663
-#, fuzzy
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
 
@@ -16706,14 +16688,14 @@ msgid "Conversion script failed"
 msgstr "Konverzní skript selhal"
 
 #: src/Buffer.cpp:989
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
 "convert it."
-msgstr "%1$s je z novìj¹í verze LyX-u a skript lyx2lyx selhal pøi konverzi."
+msgstr "%1$s je ze star¹í verze LyX-u a skript lyx2lyx selhal pøi konverzi."
 
 #: src/Buffer.cpp:996
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
 "it."
