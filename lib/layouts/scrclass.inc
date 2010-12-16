@@ -110,18 +110,21 @@ Input stdstarsections.inc
 Style Addpart
 	CopyStyle             Part*
 	LatexName             addpart
+	OptionalArgs          1
 End
 
 
 Style Addchap
 	CopyStyle             Chapter*
 	LatexName             addchap
+	OptionalArgs          1
 End
 
 
 Style Addsec
 	CopyStyle             Section*
 	LatexName             addsec
+	OptionalArgs          1
 End
 
 
