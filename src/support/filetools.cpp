@@ -541,7 +541,7 @@ string const replaceEnvironmentPath(string const & path)
 	static string const envvar_br = "[$]\\{([A-Za-z_][A-Za-z_0-9]*)\\}";
 
 	// $VAR is defined as:
-	// $\{[A-Za-z_][A-Za-z_0-9]*\}
+	// $[A-Za-z_][A-Za-z_0-9]*
 	static string const envvar = "[$]([A-Za-z_][A-Za-z_0-9]*)";
 
 	static regex envvar_br_re("(.*)" + envvar_br + "(.*)");
