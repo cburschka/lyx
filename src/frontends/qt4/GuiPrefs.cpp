@@ -1833,7 +1833,7 @@ string const l10n_shortcut(string const prettyname, string const shortcut)
 	return split(l10n_format, '|');
 }
 
-}; // namespace anon
+} // namespace anon
 
 
 void PrefFileformats::apply(LyXRC & rc) const

@@ -27,6 +27,6 @@ time_t current_time();
  */
 std::string const formatted_time(time_t t, std::string const & fmt);
 
-}; // namespace lyx
+} // namespace lyx
 
 #endif // LYXTIME_H
