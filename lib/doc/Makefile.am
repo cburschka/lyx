@@ -183,6 +183,7 @@ dist_hudoc_DATA = \
 iddocdir = $(docdir)/id
 dist_iddoc_DATA = \
 	id/Intro.lyx \
+	id/Shortcuts.lyx \
 	id/Tutorial.lyx \
 	id/UserGuide.lyx
 
