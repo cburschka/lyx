@@ -1484,7 +1484,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:76
 msgid "LaTe&X font encoding:"
-msgstr "Kódování LaTe&X-ového fontu:"
+msgstr "Kódování\nLaTe&X-ového fontu:"
 
 #: src/frontends/qt4/ui/FontUi.ui:89 src/frontends/qt4/ui/PrefLatexUi.ui:34
 msgid "Specify the font encoding (e.g., T1)."
@@ -4042,14 +4042,12 @@ msgid "Define hanging indentation/label length for the nomenclature list."
 msgstr ""
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:22
-#, fuzzy
 msgid "&List Indentation:"
-msgstr "&Odsazení"
+msgstr "O&dsazení Seznamu:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:39
-#, fuzzy
 msgid "Custom &Width:"
-msgstr "©íøka sloupce"
+msgstr "&Vlastní ¹íøka:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
 msgid ""
@@ -4509,9 +4507,8 @@ msgid "&Vertical Offset:"
 msgstr "&Vertikální posun:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:288
-#, fuzzy
 msgid "value of the optional vertical offset"
-msgstr "&Vertikální mezera"
+msgstr "hodnota volitelného vertikálního posunu"
 
 #: src/frontends/qt4/ui/TabularUi.ui:306
 msgid "Cell setting"
@@ -4797,18 +4794,16 @@ msgid "&Indentation"
 msgstr "&Odsazení"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:47
-#, fuzzy
 msgid "Size of the indentation"
-msgstr "&Velikost a rotace"
+msgstr "Velikost indentace"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:115
 msgid "&Vertical space"
 msgstr "&Vertikální mezera"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:125
-#, fuzzy
 msgid "Size of the vertical space"
-msgstr "&Vertikální mezera"
+msgstr "Velikost vertikální mezery"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:190
 msgid "Spacing"
@@ -4819,14 +4814,12 @@ msgid "&Line spacing:"
 msgstr "Øád&kování:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:218
-#, fuzzy
 msgid "Spacing type"
-msgstr "Mezera"
+msgstr "Typ mezery"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:231
-#, fuzzy
 msgid "Number of lines"
-msgstr "Rozbalit do zadané úrovnì"
+msgstr "Poèet øádkù"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:251
 msgid "Format text into two columns"
@@ -5413,9 +5406,8 @@ msgid "Solution"
 msgstr "Solution"
 
 #: lib/layouts/AEA.layout:241
-#, fuzzy
 msgid "Solution \\thesolution."
-msgstr "Conclusion \\theconclusion."
+msgstr "Solution \\thesolution."
 
 #: lib/layouts/AEA.layout:247 lib/layouts/elsart.layout:406
 #: lib/layouts/theorems-ams-extended-bytype.module:197
@@ -5446,9 +5438,8 @@ msgid "MainText"
 msgstr "MainText"
 
 #: lib/layouts/AEA.layout:261
-#, fuzzy
 msgid "Caption: "
-msgstr "Popisek:"
+msgstr "Caption: "
 
 #: lib/layouts/AEA.layout:266 lib/layouts/IEEEtran.layout:288
 #: lib/layouts/beamer.layout:1051 lib/layouts/elsart.layout:288
@@ -9580,25 +9571,21 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
-#, fuzzy
 msgid "Part \\Roman{part}"
-msgstr "\\Roman{part}"
+msgstr "Èást \\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:14
-#, fuzzy
 msgid "Chapter ##"
-msgstr "Kapitola"
+msgstr "Kapitola ##"
 
 #: lib/layouts/stdcounters.inc:19 lib/layouts/stdcounters.inc:24
 #: lib/layouts/stdcounters.inc:29
-#, fuzzy
 msgid "Section ##"
-msgstr "Sekce"
+msgstr "Sekce ##"
 
 #: lib/layouts/stdcounters.inc:34 lib/layouts/stdcounters.inc:39
-#, fuzzy
 msgid "Paragraph ##"
-msgstr "Odstavec"
+msgstr "Odstavec ##"
 
 #: lib/layouts/stdcounters.inc:43
 msgid "\\arabic{enumi}."
@@ -9613,14 +9600,12 @@ msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
 #: lib/layouts/stdcounters.inc:68
-#, fuzzy
 msgid "Equation ##"
-msgstr "Rovnice"
+msgstr "Rovnice ##"
 
 #: lib/layouts/stdcounters.inc:72
-#, fuzzy
 msgid "Footnote ##"
-msgstr "Poznámka pod èarou|d"
+msgstr "Poznámka pod èarou ##"
 
 #: lib/layouts/stdinsets.inc:12 src/insets/InsetMarginal.cpp:35
 msgid "margin"
@@ -9947,9 +9932,8 @@ msgstr ""
 "napø. 'fig. 2.1'"
 
 #: lib/layouts/fixltx2e.module:2
-#, fuzzy
 msgid "Fix LaTeX"
-msgstr "LaTeX"
+msgstr "Opravy LaTeX-u"
 
 #: lib/layouts/fixltx2e.module:9
 msgid ""
@@ -9958,7 +9942,10 @@ msgid ""
 "compatibility. If you use this module your typeset document may look "
 "different when you process it with future LaTeX versions, because fixltx2e "
 "may provide more bugfixes in future versions."
-msgstr ""
+msgstr "Naèíst LaTeX-ový balíèek fixltx2e, který obsahuje opravy pro LaTeX. "
+"Tyto opravy nejsou souèástí jádra LaTeX-u kvùli dodr¾ení zpìtné kompatibility."
+"Pokud pou¾ijete tento balíèek, je mo¾né, ¾e vysázený dokument bude odli¹ný"
+"v budoucích verzích LaTeX-u díky dal¹ím opravám, které pøibudou do fixltx2e."
 
 #: lib/layouts/foottoend.module:2
 msgid "Foot to End"
