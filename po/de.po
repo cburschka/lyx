@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-12-13 17:07+0100\n"
-"PO-Revision-Date: 2010-12-13 17:14+0100\n"
+"POT-Creation-Date: 2010-12-17 18:55+0100\n"
+"PO-Revision-Date: 2010-12-17 18:56+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -5280,7 +5280,7 @@ msgstr "Ausgabe:"
 #: lib/layouts/svjog.layout:34 lib/layouts/tufte-handout.layout:44
 #: lib/layouts/tufte-handout.layout:59 lib/layouts/agu_stdtitle.inc:193
 #: lib/layouts/amsdefs.inc:97 lib/layouts/db_stdstruct.inc:11
-#: lib/layouts/scrclass.inc:235 lib/layouts/stdstruct.inc:12
+#: lib/layouts/scrclass.inc:238 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:212
 #: src/output_plaintext.cpp:133
 msgid "Abstract"
@@ -5668,7 +5668,7 @@ msgstr "Standard"
 #: lib/layouts/simplecv.layout:121 lib/layouts/svprobth.layout:35
 #: lib/layouts/tufte-book.layout:34 lib/layouts/agu_stdtitle.inc:246
 #: lib/layouts/amsdefs.inc:30 lib/layouts/db_stdtitle.inc:13
-#: lib/layouts/scrclass.inc:158 lib/layouts/stdtitle.inc:47
+#: lib/layouts/scrclass.inc:161 lib/layouts/stdtitle.inc:47
 #: lib/layouts/svjour.inc:127
 msgid "Title"
 msgstr "Titel"
@@ -5699,7 +5699,7 @@ msgstr "Kleinschreibung"
 #: lib/layouts/siamltex.layout:205 lib/layouts/sigplanconf.layout:117
 #: lib/layouts/svprobth.layout:52 lib/layouts/tufte-book.layout:38
 #: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:53
-#: lib/layouts/db_stdtitle.inc:21 lib/layouts/scrclass.inc:174
+#: lib/layouts/db_stdtitle.inc:21 lib/layouts/scrclass.inc:177
 #: lib/layouts/stdtitle.inc:68 lib/layouts/svjour.inc:159
 msgid "Author"
 msgstr "Autor"
@@ -5767,7 +5767,7 @@ msgstr "Nachspann"
 #: lib/layouts/aastex.layout:122 lib/layouts/aastex.layout:450
 #: lib/layouts/ijmpc.layout:313 lib/layouts/ijmpd.layout:324
 #: lib/layouts/kluwer.layout:319 lib/layouts/kluwer.layout:332
-#: src/rowpainter.cpp:498
+#: src/rowpainter.cpp:508
 msgid "Appendix"
 msgstr "Anhang"
 
@@ -5791,7 +5791,7 @@ msgstr "Anhang"
 #: lib/layouts/simplecv.layout:142 lib/layouts/tufte-book.layout:232
 #: lib/layouts/tufte-book.layout:234 lib/layouts/aguplus.inc:170
 #: lib/layouts/aguplus.inc:172 lib/layouts/amsdefs.inc:202
-#: lib/layouts/scrclass.inc:242 lib/layouts/stdstruct.inc:53
+#: lib/layouts/scrclass.inc:245 lib/layouts/stdstruct.inc:53
 #: lib/layouts/svjour.inc:286 src/frontends/qt4/GuiDocument.cpp:1259
 msgid "Bibliography"
 msgstr "Literaturverzeichnis"
@@ -5938,7 +5938,7 @@ msgstr "Liste"
 #: lib/layouts/aapaper.layout:79 lib/layouts/beamer.layout:770
 #: lib/layouts/kluwer.layout:127 lib/layouts/llncs.layout:130
 #: lib/layouts/sigplanconf.layout:107 lib/layouts/svprobth.layout:44
-#: lib/layouts/aapaper.inc:9 lib/layouts/scrclass.inc:165
+#: lib/layouts/aapaper.inc:9 lib/layouts/scrclass.inc:168
 #: lib/layouts/svjour.inc:139
 msgid "Subtitle"
 msgstr "Untertitel"
@@ -5981,7 +5981,7 @@ msgstr "Post"
 #: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:224
 #: lib/layouts/tufte-book.layout:42 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:73 lib/layouts/db_stdtitle.inc:35
-#: lib/layouts/scrclass.inc:181 lib/layouts/stdtitle.inc:87
+#: lib/layouts/scrclass.inc:184 lib/layouts/stdtitle.inc:87
 #: lib/layouts/svjour.inc:188 lib/ui/stdmenus.inc:371
 #: lib/external_templates:340 lib/external_templates:341
 #: lib/external_templates:345
@@ -6379,7 +6379,7 @@ msgstr "Laufende Nummer"
 #: lib/layouts/apa.layout:213 lib/layouts/elsart.layout:392
 #: lib/layouts/iopart.layout:94 lib/layouts/llncs.layout:364
 #: lib/layouts/powerdot.layout:200 lib/layouts/slides.layout:167
-#: lib/layouts/svjour.inc:384
+#: lib/layouts/stdinsets.inc:95 lib/layouts/svjour.inc:384
 #: lib/layouts/theorems-ams-extended-bytype.module:151
 #: lib/layouts/theorems-ams-extended.module:174
 #: lib/layouts/theorems-ams-extended.module:183
@@ -6401,8 +6401,8 @@ msgstr "Dicke Linie"
 msgid "CenteredCaption"
 msgstr "Zentrierte Legende"
 
-#: lib/layouts/apa.layout:268 lib/layouts/scrclass.inc:260
-#: lib/layouts/scrclass.inc:279
+#: lib/layouts/apa.layout:268 lib/layouts/scrclass.inc:263
+#: lib/layouts/scrclass.inc:282
 msgid "Senseless!"
 msgstr "Sinnlos!"
 
@@ -7103,7 +7103,7 @@ msgstr "Datum:"
 
 #: lib/layouts/dinbrief.layout:159 lib/layouts/lettre.layout:57
 #: lib/layouts/lettre.layout:428 lib/layouts/scrlettr.layout:196
-#: lib/layouts/scrlttr2.layout:280 lib/layouts/scrclass.inc:188
+#: lib/layouts/scrlttr2.layout:280 lib/layouts/scrclass.inc:191
 msgid "Subject"
 msgstr "Betreff"
 
@@ -8322,7 +8322,7 @@ msgstr "Überarbeitung"
 msgid "Topical"
 msgstr "Thematisch"
 
-#: lib/layouts/iopart.layout:88 src/insets/InsetNote.cpp:67
+#: lib/layouts/iopart.layout:88 lib/layouts/stdinsets.inc:80
 msgid "Comment"
 msgstr "Kommentar"
 
@@ -9652,59 +9652,59 @@ msgstr "\\alph{paragraph}."
 msgid "Addpart"
 msgstr "Teil (Inhaltsverz.)"
 
-#: lib/layouts/scrclass.inc:116
+#: lib/layouts/scrclass.inc:117
 msgid "Addchap"
 msgstr "Kapitel (Inhaltsverz.)"
 
-#: lib/layouts/scrclass.inc:122
+#: lib/layouts/scrclass.inc:124
 msgid "Addsec"
 msgstr "Abschnitt (Inhaltsverz.)"
 
-#: lib/layouts/scrclass.inc:128
+#: lib/layouts/scrclass.inc:131
 msgid "Addchap*"
 msgstr "Kapitel* (Inhaltsverz.)"
 
-#: lib/layouts/scrclass.inc:134
+#: lib/layouts/scrclass.inc:137
 msgid "Addsec*"
 msgstr "Abschnitt* (Inhaltsverz.)"
 
-#: lib/layouts/scrclass.inc:140
+#: lib/layouts/scrclass.inc:143
 msgid "Minisec"
 msgstr "Miniabschnitt"
 
-#: lib/layouts/scrclass.inc:194
+#: lib/layouts/scrclass.inc:197
 msgid "Publishers"
 msgstr "Verleger"
 
-#: lib/layouts/scrclass.inc:200 lib/layouts/svjour.inc:119
+#: lib/layouts/scrclass.inc:203 lib/layouts/svjour.inc:119
 msgid "Dedication"
 msgstr "Widmung"
 
-#: lib/layouts/scrclass.inc:206
+#: lib/layouts/scrclass.inc:209
 msgid "Titlehead"
 msgstr "Titelkopf"
 
-#: lib/layouts/scrclass.inc:216
+#: lib/layouts/scrclass.inc:219
 msgid "Uppertitleback"
 msgstr "Innenseite oben"
 
-#: lib/layouts/scrclass.inc:222
+#: lib/layouts/scrclass.inc:225
 msgid "Lowertitleback"
 msgstr "Innenseite unten"
 
-#: lib/layouts/scrclass.inc:228
+#: lib/layouts/scrclass.inc:231
 msgid "Extratitle"
 msgstr "Zusatztitel"
 
-#: lib/layouts/scrclass.inc:250
+#: lib/layouts/scrclass.inc:253
 msgid "Captionabove"
 msgstr "Legende oben"
 
-#: lib/layouts/scrclass.inc:269
+#: lib/layouts/scrclass.inc:272
 msgid "Captionbelow"
 msgstr "Legende unten"
 
-#: lib/layouts/scrclass.inc:288
+#: lib/layouts/scrclass.inc:291
 msgid "Dictum"
 msgstr "Diktum"
 
@@ -9781,16 +9781,8 @@ msgstr "Rand"
 msgid "foot"
 msgstr "Fußnote"
 
-#: lib/layouts/stdinsets.inc:80
-msgid "comment"
-msgstr "Kommentar"
-
-#: lib/layouts/stdinsets.inc:95 src/insets/InsetNote.cpp:295
-msgid "note"
-msgstr "Notiz"
-
 #: lib/layouts/stdinsets.inc:110
-msgid "greyedout"
+msgid "Greyedout"
 msgstr "Grauschrift"
 
 #: lib/layouts/stdinsets.inc:134 src/insets/InsetERT.cpp:150
@@ -22673,8 +22665,8 @@ msgstr "Das Skript `%1$s' ist fehlgeschlagen."
 msgid "All Files "
 msgstr "Alle Dateien "
 
-#: src/frontends/qt4/qt_helpers.cpp:541 src/insets/InsetTOC.cpp:56
-#: src/insets/InsetTOC.cpp:97
+#: src/frontends/qt4/qt_helpers.cpp:541 src/insets/InsetTOC.cpp:58
+#: src/insets/InsetTOC.cpp:114
 msgid "Table of Contents"
 msgstr "Inhaltsverzeichnis"
 
@@ -23433,13 +23425,9 @@ msgstr "Beschreibung: "
 msgid "Sorting: "
 msgstr "Sortierung: "
 
-#: src/insets/InsetNote.cpp:66
-msgid "Note[[InsetNote]]"
+#: src/insets/InsetNote.cpp:271
+msgid "note"
 msgstr "Notiz"
-
-#: src/insets/InsetNote.cpp:68
-msgid "Greyed out"
-msgstr "Grauschrift"
 
 #: src/insets/InsetPhantom.cpp:65
 msgid "Phantom"
@@ -23591,7 +23579,7 @@ msgstr "Horizontaler Abstand (%1$s)"
 msgid "Protected Horizontal Space (%1$s)"
 msgstr "Geschützter horizontaler Abstand (%1$s)"
 
-#: src/insets/InsetTOC.cpp:57
+#: src/insets/InsetTOC.cpp:59
 msgid "Unknown TOC type"
 msgstr "Unbekannter Inhaltsverzeichnis-Typ"
 
@@ -23763,7 +23751,7 @@ msgstr "Die Zeichenkette wurde gefunden!"
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1606
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1611
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23826,17 +23814,17 @@ msgstr "Keine Nummer"
 msgid "Number"
 msgstr "Nummer"
 
-#: src/mathed/InsetMathHull.cpp:1579
+#: src/mathed/InsetMathHull.cpp:1584
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Die Anzahl der Zeilen in '%1$s' kann nicht geändert werden"
 
-#: src/mathed/InsetMathHull.cpp:1589
+#: src/mathed/InsetMathHull.cpp:1594
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Die Anzahl der Spalten in '%1$s' kann nicht geändert werden"
 
-#: src/mathed/InsetMathHull.cpp:1599
+#: src/mathed/InsetMathHull.cpp:1604
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Es können keine horizontalen Gitterlinien in '%1$s' hinzugefügt werden"
@@ -23886,7 +23874,7 @@ msgstr "optional"
 msgid "TeX"
 msgstr "TeX"
 
-#: src/mathed/MathMacroTemplate.cpp:1257
+#: src/mathed/MathMacroTemplate.cpp:1258
 msgid "math macro"
 msgstr "Mathe-Makro"
 
@@ -24079,6 +24067,15 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "comment"
+#~ msgstr "Kommentar"
+
+#~ msgid "greyedout"
+#~ msgstr "Grauschrift"
+
+#~ msgid "Note[[InsetNote]]"
+#~ msgstr "Notiz"
 
 #~ msgid "Whether to open documents in an already running instance of LyX."
 #~ msgstr "Öffne Dokumente in einer bereits laufenden LyX-Instanz."
