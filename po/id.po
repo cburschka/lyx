@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-12-07 00:34+0100\n"
-"PO-Revision-Date: 2010-12-14 03:36+0100\n"
+"PO-Revision-Date: 2010-12-15 18:01+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
 "Language: id\n"
@@ -1090,14 +1090,12 @@ msgid "Compare Revisions"
 msgstr "Perbandingan Revisi"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:30
-#, fuzzy
 msgid "&Revisions back"
-msgstr "Perubahan"
+msgstr "Revisi balik"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:83
-#, fuzzy
 msgid "&Between revisions"
-msgstr "A&ntara baris:"
+msgstr "A&ntara revisi"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:96
 msgid "Old:"
@@ -1291,7 +1289,7 @@ msgstr "Presentasi skala di LyX"
 #: src/frontends/qt4/ui/ExternalUi.ui:222
 #: src/frontends/qt4/ui/GraphicsUi.ui:569
 msgid "Sca&le on Screen (%):"
-msgstr "Sca&la di Layar (%):"
+msgstr "Ska&la di Layar (%):"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:280
 msgid "Si&ze and Rotation"
@@ -1839,9 +1837,8 @@ msgid "&Value:"
 msgstr "&Nilai:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:100
-#, fuzzy
 msgid "Custom value. Needs spacing type \"Custom\"."
-msgstr "Isi dengan nilai. Tipe spasi \"Atur Sendiri\"."
+msgstr "Isi dengan angka. Memerlukan tipe spasi \"Atur Sendiri\"."
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:110
 msgid "&Fill Pattern:"
@@ -2062,9 +2059,8 @@ msgid "Information Name:"
 msgstr "Nama Informasi:"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:16
-#, fuzzy
 msgid "Inset Parameter Configuration"
-msgstr "Sisipan pembagian standar"
+msgstr "Konfigurasi Parameter Sisipan"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:47
 #: src/frontends/qt4/ui/ParagraphUi.ui:44
@@ -2085,7 +2081,7 @@ msgstr "Klik disini untuk memilih berkas dokumen class"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:47
 msgid "&Local Layout..."
-msgstr "&Layout lokal..."
+msgstr "&Tataletak lokal..."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:57
 msgid "Class options"
@@ -2093,7 +2089,7 @@ msgstr "Opsi Kelas"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:63
 msgid "Enable to use the options that are predefined in the layout file"
-msgstr "Membolehkan opsi yang sudah didefinisikan dalam berkas layout"
+msgstr "Membolehkan opsi yang sudah didefinisikan dalam berkas tataletak"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:66
 msgid "&Predefined:"
@@ -2101,7 +2097,7 @@ msgstr "De&finisi awal:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:73
 msgid "The options that are predefined in the layout file. Click to the left to select/deselect."
-msgstr "Opsi yang sudah didefinisikan awal dalam berkas layout.  Klik sebelah kiri untuk pilih/tidak pilih."
+msgstr "Opsi yang sudah didefinisikan awal dalam berkas tataletak.  Klik sebelah kiri untuk pilih/tidak pilih."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:83
 msgid "Cus&tom:"
@@ -2172,9 +2168,8 @@ msgid "Value of the line thickness."
 msgstr "Ukuran ketebalan garis horisontal."
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:49
-#, fuzzy
 msgid "Input here the listings parameters"
-msgstr "Nama parameter pemrograman tidak valid (kosong)."
+msgstr "Tulis parameter daftar disini"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:67
 #: src/frontends/qt4/ui/ListingsUi.ui:477
@@ -2351,9 +2346,8 @@ msgid "Input listing parameters here. Enter ? for a list of parameters."
 msgstr "Input berbagai parameter listing akan muncul disini. Ketik ? untuk memunculkan daftar semua parameter"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:19
-#, fuzzy
 msgid "Document-specific layout information"
-msgstr "Ada kesalahan membaca informasi layout internal"
+msgstr "Informasi tata letak dokumen tertentu"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:35
 msgid "Errors reported in terminal."
@@ -2365,9 +2359,8 @@ msgid "Press button to check validity..."
 msgstr "Tekan tombol untuk memeriksa validitas..."
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:51
-#, fuzzy
 msgid "&Validate"
-msgstr "&Nilai:"
+msgstr "&Validasi:"
 
 #: src/frontends/qt4/ui/LogUi.ui:38
 msgid "Hit Enter to search, or click Go!"
@@ -2468,18 +2461,16 @@ msgid "Assure counters and references are as in the complete document (prolonges
 msgstr "Memastikan penghitung dan referensi seperti di dokumen lengkap"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:53
-#, fuzzy
 msgid "&Maintain counters and references"
-msgstr "semua referensi yang tidak diacu"
+msgstr "Pertahankan penghitung dan referensi"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:63
 msgid "Include all subdocuments in the output"
 msgstr "Ikutkan semua anak dokumen pada keluaran"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:66
-#, fuzzy
 msgid "&Include all children"
-msgstr "Panggil berkas anak dokumen"
+msgstr "Ikutkan semua anak dokumen"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:30
 #: src/frontends/qt4/ui/MathMatrixUi.ui:43
@@ -3424,9 +3415,8 @@ msgid "Always Babel"
 msgstr "Selalu Babel"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:70
-#, fuzzy
 msgid "None[[language package]]"
-msgstr "Pa&ket bahasa:"
+msgstr "Kosong"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:78
 msgid "Enter the command to load the language package (default: babel)"
@@ -3925,11 +3915,11 @@ msgstr "&Baru"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:90
 msgid "&Bind file:"
-msgstr "Berkas &Bind:"
+msgstr "Berkas Definisi Penggabun&g:"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:108
 msgid "Show ke&y-bindings containing:"
-msgstr "Tampilkan ke&y-bindings mengandung:"
+msgstr "Tampilkan t&ombol gabungan mengandung:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:41
 msgid "If unchecked, notes and comments will be excluded from spell checking"
@@ -4076,14 +4066,12 @@ msgid "Define hanging indentation/label length for the nomenclature list."
 msgstr "Definisi ukuran masuk paragraf untuk daftar nomenklatur"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:22
-#, fuzzy
 msgid "&List Indentation:"
-msgstr "&Indentasi"
+msgstr "&Indentasi Daftar:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:39
-#, fuzzy
 msgid "Custom &Width:"
-msgstr "Lebar kolom"
+msgstr "Lebar AturSendiri:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
 msgid "Custom value. &quot;List Indentation&quot; needs to be set to &quot;Custom&quot;."
@@ -4189,9 +4177,8 @@ msgid "A&vailable indexes:"
 msgstr "Inde&x yang tersedia:"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:89
-#, fuzzy
 msgid "Select the index that shall be printed at this place of the document."
-msgstr "Pilih huruf utama yang digunakan dalam dokumen"
+msgstr "Pilih indeks yang akan dicetak di bagian dokumen ini."
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
 #: src/frontends/qt4/GuiDocument.cpp:1267
@@ -4890,18 +4877,16 @@ msgid "Replace the entry with the selection"
 msgstr "Ganti masukan kata dengan kata pilihan dari padana kata"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:102
-#, fuzzy
 msgid "Click to select a proposal, double click to look it up."
-msgstr "Klik disini untuk memilih berkas dokumen class"
+msgstr "Klik untuk membuka saran, klik ganda untuk memeriksa."
 
 #: src/frontends/qt4/ui/TocUi.ui:36
 msgid "Filter:"
 msgstr "Penapis:"
 
 #: src/frontends/qt4/ui/TocUi.ui:46
-#, fuzzy
 msgid "Enter string to filter contents"
-msgstr "tulis karakter untuk menapis daftar layout."
+msgstr "Tulis kata untuk menapis daftar isi."
 
 #: src/frontends/qt4/ui/TocUi.ui:63
 msgid "Switch between available lists (table of contents, list of figures, list of tables, and others)"
@@ -4968,9 +4953,8 @@ msgid "Insert the spacing even after a page break"
 msgstr "Sisipkan spasi merata setelah pemisah halaman"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:61
-#, fuzzy
 msgid "Custom value. Needs spacing type &quot;Custom&quot;."
-msgstr "Isi dengan nilai. Tipe spasi \"Atur Sendiri\"."
+msgstr "Angka atursendiri. Memerlukan tipe spasi &quot;AturSendiri&quot;."
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:82
 msgid "DefSkip"
@@ -5318,9 +5302,8 @@ msgid "Case"
 msgstr "Kasus"
 
 #: lib/layouts/AEA.layout:127
-#, fuzzy
 msgid "Case \\thecase."
-msgstr "Klaim \\theclaim."
+msgstr "Kasus \\thecase."
 
 #: lib/layouts/AEA.layout:133
 #: lib/layouts/elsart.layout:399
@@ -5626,9 +5609,8 @@ msgid "Solution"
 msgstr "Penyelesaian"
 
 #: lib/layouts/AEA.layout:241
-#, fuzzy
 msgid "Solution \\thesolution."
-msgstr "Kesimpulan \\theconclusion."
+msgstr "Penyelsaian \\thesolution."
 
 #: lib/layouts/AEA.layout:247
 #: lib/layouts/elsart.layout:406
@@ -10241,7 +10223,7 @@ msgstr "Negara"
 #: lib/layouts/db_stdstarsections.inc:72
 #: lib/layouts/stdstarsections.inc:67
 msgid "Paragraph*"
-msgstr "Paragraph*"
+msgstr "Paragraf*"
 
 #: lib/layouts/aguplus.inc:133
 msgid "CCC"
@@ -10534,9 +10516,8 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
-#, fuzzy
 msgid "Part \\Roman{part}"
-msgstr "\\Roman{part}"
+msgstr "Bagian \\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:14
 msgid "Chapter ##"
@@ -10823,9 +10804,8 @@ msgid "Custom Header/Footerlines"
 msgstr "Tambahan lingkungan kepala/kaki"
 
 #: lib/layouts/customHeadersFooters.module:7
-#, fuzzy
 msgid "Adds environments to define header and footer lines NOTE: To use this module you must set the 'Headings style' in the menu Document Settings -> Page Layout to 'fancy'!"
-msgstr "Menambah lingkungan tambahan untuk kepala dan kaki CATATAN: Anda harus menggunakan pengaturan Tataletak Halaman dari menu Dokumen->Pengaturan. Pilihlah fancy!"
+msgstr "Menambah lingkungan tambahan untuk kepala dan kaki CATATAN: Untuk menggunakan modul ini anda harus menggunakan pengaturan Tataletak Halaman dari menu Dokumen->Pengaturan. Pilihlah fancy!"
 
 #: lib/layouts/customHeadersFooters.module:29
 msgid "Center Header"
@@ -10873,9 +10853,8 @@ msgid "Controls the layout of enumerate, itemize and description with an optiona
 msgstr "Mengkontrol tataletak daftar bernomor,  bersimbol, dan Deskripsi dengan opsi argumen. Lihat http://mirror.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf"
 
 #: lib/layouts/enumitem.module:112
-#, fuzzy
 msgid "Enumerate-Resume"
-msgstr "Bernonor"
+msgstr "Daftar Bernonor-Resume"
 
 #: lib/layouts/eqs-within-sections.module:2
 msgid "Number Equations by Section"
@@ -10928,7 +10907,6 @@ msgstr "Mendefinisikan corak karakter untuk inisial. Saran: gunakan huruf matema
 
 #: lib/layouts/initials.module:6
 #: lib/layouts/logicalmkup.module:5
-#, fuzzy
 msgid "charstyles"
 msgstr "CorakHuruf"
 
@@ -11097,9 +11075,8 @@ msgid "Sweave opts"
 msgstr "Sweave opts"
 
 #: lib/layouts/sweave.module:65
-#, fuzzy
 msgid "S/R expr"
-msgstr "ekspr."
+msgstr "S/R expr"
 
 #: lib/layouts/sweave.module:86
 msgid "Sweave Input File"
@@ -11269,7 +11246,6 @@ msgid "Theorems (AMS-Extended)"
 msgstr "Theorema (AMS-Extended)"
 
 #: lib/layouts/theorems-ams-extended.module:9
-#, fuzzy
 msgid "Defines some additional theorem environments for use with the AMS theorems packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, Summary, Acknowledgement, Conclusion, Fact, Assumption, Case, and Question, in both numbered and non-numbered forms."
 msgstr "Mendefinisikan beberapa lingkungan teorema tambahan untuk digunakan dalam paket Teorema AMS. Paket AMS termasuk Criterion, Algorithm, Axiom, Condition, Note, Notation, Summary, Acknowledgement, Conclusion, Fact, Assumption, dan Case, baik dalam bentuk berbintang (starred) atau tanpa bintang (non-starred)"
 
@@ -11323,9 +11299,8 @@ msgid "Assumption \\thetheorem."
 msgstr "Asumsi \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:382
-#, fuzzy
 msgid "Question \\thetheorem."
-msgstr "Definisi \\thetheorem."
+msgstr "Pertanyaan \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:395
 msgid "Question*"
@@ -11341,7 +11316,7 @@ msgstr "Teorema (AMS)"
 
 #: lib/layouts/theorems-ams.module:8
 msgid "Defines theorem environments and the proof environment using the extended AMS machinery. Both numbered and unnumbered types are provided. By default, the theorems are numbered consecutively throughout the document. This can be changed by loading one of the 'Theorems (Numbered by ...)' modules."
-msgstr "Mendefinisikan lingkungan teorema and proof menggunakan alat dari AMS-extended. Bentuk bernomor dan tanpa nomor dapat digunakan. Bentuk default dari Teorema adalah bernomor secara urut di sepanjang dokumen. Hal ini dapat diubah dengan memuat salah satu modul Teorema (Nomor menurut ...)."
+msgstr "Mendefinisikan lingkungan teorema and proof menggunakan alat dari AMS-extended. Bentuk bernomor dan tanpa nomor dapat digunakan. Bentuk bawaan dari Teorema adalah bernomor secara urut di sepanjang dokumen. Hal ini dapat diubah dengan memuat salah satu modul Teorema (Nomor menurut ...)."
 
 #: lib/layouts/theorems-bytype.module:2
 msgid "Theorems (Numbered by Type)"
@@ -11365,16 +11340,15 @@ msgstr "Teorema (Bernomor menurut Bab)"
 
 #: lib/layouts/theorems-chap.module:7
 msgid "Numbers theorems and the like by chapter (i.e., the counter is reset at each chapter start). Use this module only with document classes that provide a chapter environment."
-msgstr "Nomor Teorema menurut Bab (yaitu, urutan diulang setiap bab baru). Gunakan modul ini dengan layout yang menyediakan lingkungan Bab (Chapter)."
+msgstr "Nomor Teorema menurut Bab (yaitu, urutan diulang setiap bab baru). Gunakan modul ini dengan tataletak yang menyediakan lingkungan Bab (Chapter)."
 
 #: lib/layouts/theorems-named.module:3
 msgid "Named Theorems"
 msgstr "Teorema Bernama"
 
 #: lib/layouts/theorems-named.module:7
-#, fuzzy
 msgid "Facilitates the use of named theorems. The name of the theorem goes into the 'Short Title' inset."
-msgstr "Memfasilitasi penggunaan teorema bernama. Nama dari teorema ditulis dalam sisipan Judul Singkat."
+msgstr "Memfasilitasi penggunaan teorema bernama. Nama dari teorema ditulis dalam sisipan 'Judul Singkat.'"
 
 #: lib/layouts/theorems-named.module:11
 msgid "Named Theorem"
@@ -11784,9 +11758,8 @@ msgid "South-Eastern European (ISO 8859-16)"
 msgstr "South-Eastern European (ISO 8859-16)"
 
 #: lib/encodings:64
-#, fuzzy
 msgid "Western European (Macintosh Roman)"
-msgstr "Western European (CP 850)"
+msgstr "Eropa Barat (Macintosh Roman)"
 
 #: lib/encodings:67
 msgid "DOS (CP 437)"
@@ -12035,7 +12008,6 @@ msgstr "Keluar untuk Edit|u"
 
 #: lib/ui/classic.ui:71
 #: lib/ui/stdmenus.inc:76
-#, fuzzy
 msgid "Revert to Repository Version|v"
 msgstr "Kembalikan ke Versi Repositori|R"
 
@@ -13474,28 +13446,24 @@ msgid "Fullscreen Mode"
 msgstr "Tampilan layar penuh"
 
 #: lib/ui/stdcontext.inc:320
-#, fuzzy
 msgid "Anything|A"
-msgstr "varnothing"
+msgstr "Apa saja|j"
 
 #: lib/ui/stdcontext.inc:321
 msgid "Anything Non-Empty|o"
 msgstr "Apapun Tidak Kosong|o"
 
 #: lib/ui/stdcontext.inc:322
-#, fuzzy
 msgid "Any Word|W"
-msgstr "MS Word|W"
+msgstr "Kata apa saja|t"
 
 #: lib/ui/stdcontext.inc:323
-#, fuzzy
 msgid "Any Number|N"
-msgstr "Aegean Numbers"
+msgstr "Angka apa saja|g"
 
 #: lib/ui/stdcontext.inc:324
-#, fuzzy
 msgid "User Defined|U"
-msgstr "Berkas pengguna|#U#u"
+msgstr "Menurut Pengguna|r"
 
 #: lib/ui/stdcontext.inc:333
 #: lib/ui/stdmenus.inc:239
@@ -13610,28 +13578,24 @@ msgid "Settings...|g"
 msgstr "Pengaturan...|a"
 
 #: lib/ui/stdcontext.inc:410
-#, fuzzy
 msgid "Path|P"
-msgstr "Direktori dan Folder"
+msgstr "Lokasi|L"
 
 #: lib/ui/stdcontext.inc:411
 msgid "Class|C"
 msgstr "Kelas|e"
 
 #: lib/ui/stdcontext.inc:413
-#, fuzzy
 msgid "File Revision|R"
-msgstr "Perubahan"
+msgstr "Perubahan Berkas|r"
 
 #: lib/ui/stdcontext.inc:414
-#, fuzzy
 msgid "Tree Revision|T"
-msgstr "Perubahan"
+msgstr "Perubahan Pohon|h"
 
 #: lib/ui/stdcontext.inc:415
-#, fuzzy
 msgid "Revision Author|A"
-msgstr "Riwayat Perubahan"
+msgstr "Perubahan Penulis|u"
 
 #: lib/ui/stdcontext.inc:416
 msgid "Revision Date|D"
@@ -13668,9 +13632,8 @@ msgid "Insert Reference at Cursor Position|I"
 msgstr "Sisipkan Referensi di Posisi Kursor|R"
 
 #: lib/ui/stdcontext.inc:538
-#, fuzzy
 msgid "All Indexes|A"
-msgstr "Buka Semua Sisipan|B"
+msgstr "Semua Indeks|k"
 
 #: lib/ui/stdcontext.inc:541
 msgid "Subindex|b"
@@ -13694,19 +13657,16 @@ msgid "Move Section Down|w"
 msgstr "Pindahkan SubBab Keatas|d"
 
 #: lib/ui/stdcontext.inc:582
-#, fuzzy
 msgid "Select Section|S"
-msgstr "Pilihan|P"
+msgstr "Pilih SubBab|S"
 
 #: lib/ui/stdcontext.inc:589
-#, fuzzy
 msgid "Wrap by Preview|P"
-msgstr "Pra Tampilan LyX"
+msgstr "Lipat menurut Pratampilan...|p"
 
 #: lib/ui/stdcontext.inc:598
-#, fuzzy
 msgid "Open Target...|O"
-msgstr "Buka berkas...|B"
+msgstr "Buka Target...|B"
 
 #: lib/ui/stdmenus.inc:33
 msgid "Document|D"
@@ -13745,9 +13705,8 @@ msgid "Close Window|d"
 msgstr "Tutup Jendela|p"
 
 #: lib/ui/stdmenus.inc:75
-#, fuzzy
 msgid "Update Local Directory From Repository|d"
-msgstr "Perbarui direktori lokal dari repositori|d"
+msgstr "Perbarui Direktori Lokal Dari Repositori|D"
 
 #: lib/ui/stdmenus.inc:78
 msgid "Compare with Older Revision...|C"
@@ -13826,19 +13785,16 @@ msgid "Box Settings...|x"
 msgstr "Pengaturan Box...|x"
 
 #: lib/ui/stdmenus.inc:139
-#, fuzzy
 msgid "Index Entry Settings...|y"
-msgstr "Pengaturan Wrap Teks...|W"
+msgstr "Pengaturan Entri Indeks...|e"
 
 #: lib/ui/stdmenus.inc:140
-#, fuzzy
 msgid "Index Settings...|x"
-msgstr "Pengaturan Box...|x"
+msgstr "Pengaturan Indeks...|I"
 
 #: lib/ui/stdmenus.inc:141
-#, fuzzy
 msgid "Info Settings...|n"
-msgstr "Pengaturan Box...|x"
+msgstr "Info Pengaturan...|n"
 
 #: lib/ui/stdmenus.inc:142
 msgid "Listings Settings...|g"
@@ -13965,9 +13921,8 @@ msgid "Math Calligraphic Family|C"
 msgstr "Matematika Kaligrafi|K"
 
 #: lib/ui/stdmenus.inc:262
-#, fuzzy
 msgid "Math Formal Script Family|o"
-msgstr "Matematika Fraktur|F"
+msgstr "Skrip Matematika Formal|o"
 
 #: lib/ui/stdmenus.inc:263
 msgid "Math Fraktur Family|F"
@@ -14042,14 +13997,12 @@ msgid "View Messages|g"
 msgstr "Tampilkan Pesan"
 
 #: lib/ui/stdmenus.inc:321
-#, fuzzy
 msgid "View Master Document|M"
-msgstr "Dokumen Utama"
+msgstr "Lihat Dokumen Induk|d"
 
 #: lib/ui/stdmenus.inc:322
-#, fuzzy
 msgid "Update Master Document|a"
-msgstr "Dokumen Utama"
+msgstr "Perbarui Dokumen Induk|b"
 
 #: lib/ui/stdmenus.inc:324
 msgid "Split View Into Left and Right Half|i"
@@ -14786,9 +14739,8 @@ msgid "Compare with last revision"
 msgstr "Membandingkan dengan revisi terakhir"
 
 #: lib/ui/stdtoolbars.inc:263
-#, fuzzy
 msgid "Insert Version Info"
-msgstr "Sisipkan catatan tepi"
+msgstr "Sisipkan Info Versi"
 
 #: lib/ui/stdtoolbars.inc:265
 msgid "Use SVN file locking property"
@@ -17927,7 +17879,7 @@ msgid "Uncodable character in file path"
 msgstr "Karakter ada yang tidak dikenal pada nama lokasi"
 
 #: src/Buffer.cpp:1382
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The path of your document\n"
 "(%1$s)\n"
@@ -17941,11 +17893,11 @@ msgstr ""
 "Nama lokasi pada dokumen anda\n"
 "(%1$s)\n"
 "mengandung glyphs yang tidak dikenal pada\n"
-"enkoding dokumen yang digunakan sekarang (namely %2$s).\n"
-"Hal ini akan menyebabkan keluaran yang tidak lengkap.\n"
+"enkoding dokumen yang sekarang (namanya %2$s).\n"
+"Hal ini akan menyebabkan keluaran tidak lengkap.\n"
 "\n"
-"Pilihlah enkoding dokumen yang sesuai (misalnya utf8)\n"
-"atau ubahlah nama lokasi."
+"Pilihl enkoding dokumen yang sesuai (misalnya utf8)\n"
+"atau ubah nama lokasi."
 
 #: src/Buffer.cpp:1667
 msgid "Running chktex..."
@@ -17960,9 +17912,9 @@ msgid "Could not run chktex successfully."
 msgstr "Tidak sukses menjalankan chktex"
 
 #: src/Buffer.cpp:1941
-#, fuzzy, c-format
+#, c-format
 msgid "Don't know how to export to format: %1$s"
-msgstr "Tidak ada informasi untuk ekspor format %1$s."
+msgstr "Tidak tahu bagaimana ekspor ke format: %1$s"
 
 #: src/Buffer.cpp:2013
 #: src/frontends/qt4/GuiView.cpp:3100
@@ -17981,14 +17933,14 @@ msgid "Branch \"%1$s\" does not exist."
 msgstr "Cabang \"%1$s\" tidak ditemukan."
 
 #: src/Buffer.cpp:2186
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to parse \"%1$s\""
-msgstr "Kotak bantuan tidak dikenal \"%1$s\""
+msgstr "Gagal menguraikan \"%1$s\""
 
 #: src/Buffer.cpp:2193
-#, fuzzy, c-format
+#, c-format
 msgid "Unrecognized target \"%1$s\""
-msgstr "Kotak bantuan tidak dikenal \"%1$s\""
+msgstr "Sasaran tidak dikenal \"%1$s\""
 
 #: src/Buffer.cpp:2203
 msgid "Error exporting to DVI."
@@ -18125,7 +18077,6 @@ msgstr "Hapus berkas darurat?"
 
 #: src/Buffer.cpp:3726
 #: src/Buffer.cpp:3739
-#, fuzzy
 msgid "&Keep"
 msgstr "Tetap"
 
@@ -18227,28 +18178,38 @@ msgid "Document class not available"
 msgstr "Dokumen class tidak tersedia"
 
 #: src/BufferParams.cpp:1982
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The layout file:\n"
 "%1$s\n"
 "could not be found. A default textclass with default\n"
 "layouts will be used. LyX will not be able to produce\n"
 "correct output."
-msgstr "Dokumen class %1$s tidak ditemukan. Class default akan digunakan. LyX tidak akan menghasilkan output kecuali class yang tepat dipilih dari dialog."
+msgstr ""
+"Berkas tata letak:\n"
+"%1$s\n"
+"Tidak ditemukan. Kelas bawaan dengan tata letak\n"
+"bawaan akan digunakan. LyX tidak bisa membuat\n"
+"keluaran yang diinginkan."
 
 #: src/BufferParams.cpp:1988
 msgid "Document class not found"
 msgstr "Dokumen class tidak ditemukan"
 
 #: src/BufferParams.cpp:1995
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
 "%1$s\n"
 "could not be loaded. A default textclass with default\n"
 "layouts will be used. LyX will not be able to produce\n"
 "correct output."
-msgstr "Dokumen class %1$s tidak ditemukan. Class default akan digunakan. LyX tidak akan menghasilkan output kecuali class yang tepat dipilih dari dialog."
+msgstr ""
+"Karena ada kesalahan, berkas tataletak:\n"
+"%1$s\n"
+"tidak bisa dimuat. Kelas bawaan dengan tataletak\n"
+"bawaan akan digunakan. LyX tidak bisa membuat\n"
+"keluaran yang diinginkan."
 
 #: src/BufferParams.cpp:2001
 #: src/BufferView.cpp:1262
@@ -18258,7 +18219,7 @@ msgstr "Tidak bisa memuat dokumen class"
 
 #: src/BufferParams.cpp:2035
 msgid "Error reading internal layout information"
-msgstr "Ada kesalahan membaca informasi layout internal"
+msgstr "Ada kesalahan membaca informasi tataletak internal"
 
 #: src/BufferParams.cpp:2036
 #: src/TextClass.cpp:1312
@@ -18470,7 +18431,7 @@ msgid "Uncodable character in author name"
 msgstr "Karakter huruf nama pengarang tidak dikenal"
 
 #: src/Changes.cpp:380
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The author name '%1$s',\n"
 "used for change tracking, contains glyphs that cannot be\n"
@@ -18592,9 +18553,8 @@ msgid "greyedout inset label"
 msgstr "label sisipan kelabu"
 
 #: src/Color.cpp:185
-#, fuzzy
 msgid "greyedout inset text"
-msgstr "label sisipan kelabu"
+msgstr "teks sisipan kelabu"
 
 #: src/Color.cpp:186
 msgid "greyedout inset background"
@@ -18818,18 +18778,16 @@ msgid "paragraph marker"
 msgstr "penanda paragraf"
 
 #: src/Color.cpp:243
-#, fuzzy
 msgid "preview frame"
-msgstr "Pra tampilan gagal"
+msgstr "bingkai pra tampilan"
 
 #: src/Color.cpp:244
 msgid "inherit"
 msgstr "inherit"
 
 #: src/Color.cpp:245
-#, fuzzy
 msgid "regexp frame"
-msgstr "sisipan bingkai"
+msgstr "bingkai regexp"
 
 #: src/Color.cpp:246
 msgid "ignore"
@@ -18911,19 +18869,17 @@ msgid "An empty output file was generated."
 msgstr "Menghasilkan berkas output yang kosong"
 
 #: src/CutAndPaste.cpp:346
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The pasted branch \"%1$s\" is undefined.\n"
 "Do you want to add it to the document's branch list?"
 msgstr ""
-"Dokumen %1$s ada perubahan.\n"
-"\n"
-"Apakah ingin menyimpan terlebih dahulu?"
+"Cabang yang ditempel \"%1$s\" belum didefinisikan.\n"
+"Apakah anda ingin menambah ke daftar cabang?"
 
 #: src/CutAndPaste.cpp:349
-#, fuzzy
 msgid "Unknown branch"
-msgstr "Aksi yang tidak dikenal"
+msgstr "Cabang tidak dikenal"
 
 #: src/CutAndPaste.cpp:350
 msgid "&Don't Add"
@@ -19129,15 +19085,15 @@ msgid "Could not find bind file"
 msgstr "Tidak bisa menemukan berkas bind"
 
 #: src/KeyMap.cpp:222
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Unable to find the bind file\n"
 "%1$s.\n"
 "Please check your installation."
 msgstr ""
-"Ada kesalahan ketika membaca berkas ikutan\n"
+"Tidak bisa menemukan berkas penggabung\n"
 "%1$s.\n"
-"Periksa kesempurnaan instalasi."
+"Periksa instalasi anda."
 
 #: src/KeyMap.cpp:229
 msgid "Could not find `cua.bind' file"
@@ -19240,9 +19196,8 @@ msgid "No textclass is found"
 msgstr "Tidak ada class teks yang bisa ditemukan"
 
 #: src/LyX.cpp:553
-#, fuzzy
 msgid "LyX will only have minimal functionality because no textclasses have been found. You can either try to reconfigure LyX normally, try to reconfigure without checking your LaTeX installation, or continue."
-msgstr "LyX tidak bisa melanjutkan karena textclass tidak ditemukan. Anda boleh konfigurasi ulang secara normal atau menggunakan textclass yang baku"
+msgstr "LyX hanya berfungsi minimal karena kelas dokumen tidak ditemukan. Anda bisa lakukan konfigurasi ulang LyX secara normal, atau konfigurasi ulang tanpa melihat instalasi LaTeX atau meneruskan."
 
 #: src/LyX.cpp:557
 msgid "&Reconfigure"
@@ -19255,9 +19210,8 @@ msgstr "G&unakan Bawaan"
 #: src/LyX.cpp:559
 #: src/VCBackend.cpp:786
 #: src/VCBackend.cpp:790
-#, fuzzy
 msgid "&Continue"
-msgstr "Continuing"
+msgstr "Lan&jutkan"
 
 #: src/LyX.cpp:662
 msgid ""
@@ -19354,7 +19308,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Mengatur tingkatan debug ke  %1$s"
 
 #: src/LyX.cpp:1041
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -19396,9 +19349,9 @@ msgstr ""
 "\t-sysdir dir        atur direktori sistem ke dir\n"
 "\t-geometry WxH+X+Y  atur ukuran jendela utama\n"
 "\t-dbg feature[,feature]...\n"
-"                  pilih fitur-fitur untuk debug.\n"
+"                  pilih fitur untuk awakutu.\n"
 "                  Ketik `lyx -dbg' untuk melihat daftar semua fitur\n"
-"\t-x [--execute] command\n"
+"\t-x [--execute] perintah\n"
 "                  dimana perintah adalah perintah LyX.\n"
 "\t-e [--export] fmt\n"
 "                  dimana fmt adalah format ekspor yang diinginkan.\n"
@@ -19412,6 +19365,12 @@ msgstr ""
 "                  menyatakan apakah semua berkas, utama, atau tanpa berkas,\n"
 "                                   akan ditindih selama proses ekspor.\n"
 "                  Selain itu dianggap sama dengan `all', tapi tidak dilakukan.\n"
+"\t-n [--no-remote]\n"
+"                  membuka dokumen baru di jendela baru\n"
+"\t-r [--remote]\n"
+"                  membuka dokumen di jendela yang sudah ada\n"
+"                  (pipa lyx diperluakn untuk ini)\n"
+"\t-batch    menjalankan perintah tanpa membuka GUI kemudaian keluar.\n"
 "\t-version        memberikan informasi versi dan build\n"
 "Silahkan lihat di manual LyX untuk informasi lebih detail."
 
@@ -19504,9 +19463,8 @@ msgid "LyX normally doesn't update the cursor position if you move the scrollbar
 msgstr "LyX normalnya tidak memperbarui posisi kursor apabila anda mengubah scrollbar. Pilih 'true' apabila ingin kursor selalu muncul pada layar."
 
 #: src/LyXRC.cpp:3109
-#, fuzzy
 msgid "LyX normally doesn't allow the user to scroll further than the bottom of the document. Set to true if you prefer to scroll the bottom of the document to the top of the screen"
-msgstr "LyX normalnya tidak memperbarui posisi kursor apabila anda mengubah scrollbar. Pilih 'true' apabila ingin kursor selalu muncul pada layar."
+msgstr "LyX tidak mengijinkan pengguna menggulung lebih dari akhir dokumen. Pilih true apabila anda ingin merubah dari akhir dokumen ke atas layar."
 
 #: src/LyXRC.cpp:3113
 msgid "Make Apple key act as Meta and Control key as Ctrl."
@@ -19539,7 +19497,7 @@ msgstr "Dokumen baru akan disesuaikan dengan bahasa ini."
 
 #: src/LyXRC.cpp:3142
 msgid "Specify the default paper size."
-msgstr "Pilih ukuran kertas default."
+msgstr "Pilih ukuran kertas bawaan."
 
 #: src/LyXRC.cpp:3146
 msgid "Iconify the dialogs when the main window is iconified. (Affects only dialogs shown after the change has been made.)"
@@ -19551,7 +19509,7 @@ msgstr "Pilih bagaimana LyX akan menampilkan gambar."
 
 #: src/LyXRC.cpp:3154
 msgid "The default path for your documents. An empty value selects the directory LyX was started from."
-msgstr "Path default dari dokumen anda. Disini menunjukkan direktori LyX akan dimulai."
+msgstr "Lokasi bawaan dari dokumen anda. Disini menunjukkan direktori LyX akan dimulai."
 
 #: src/LyXRC.cpp:3159
 msgid "Specify additional chars that can be part of a word."
@@ -19611,7 +19569,7 @@ msgstr "Perintah LaTeX untuk memuat paket bahasa. Misalnya \"\\usepackage{babel}
 
 #: src/LyXRC.cpp:3223
 msgid "De-select if you don't want babel to be used when the language of the document is the default language."
-msgstr "Lepaskan pilihan apabila anda tidak ingin babel digunakan ketika bahasa dokumen adalah bahasa default."
+msgstr "Lepaskan pilihan apabila anda tidak ingin babel digunakan ketika bahasa dokumen adalah bahasa bawwan."
 
 #: src/LyXRC.cpp:3227
 msgid "De-select if you do not want LyX to scroll to saved position."
@@ -19704,7 +19662,7 @@ msgstr "Opsi untuk menyatakan jumlah salinan yang akan dicetak."
 
 #: src/LyXRC.cpp:3319
 msgid "The default printer to print on. If none is specified, LyX will use the environment variable PRINTER."
-msgstr "Default mesin cetak yang digunakan untuk mencetak. Apabila tidak dinyatakan, LyX akan menggunakan variabel lingkungan PRINTER."
+msgstr "Mesin cetak bawaan yang digunakan untuk mencetak. Apabila tidak dinyatakan, LyX akan menggunakan variabel lingkungan PRINTER."
 
 #: src/LyXRC.cpp:3323
 msgid "The option to print only even pages."
@@ -19896,7 +19854,7 @@ msgstr "&Kembalikan"
 
 #: src/Paragraph.cpp:1922
 msgid "Senseless with this layout!"
-msgstr "Tidak memungkinkan pada layout ini!"
+msgstr "Tidak memungkinkan pada tataletak ini!"
 
 #: src/Paragraph.cpp:1984
 msgid "Alignment not permitted"
@@ -19907,8 +19865,8 @@ msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
-"Layout baru tidak mengijinkan untuk pelurusan dari yang digunakan sebelumnya.\n"
-"Pengaturan dikembalikan ke default."
+"Tata letak baru tidak mengijinkan untuk perataan dari yang digunakan sebelumnya.\n"
+"Pengaturan dikembalikan ke bawaan."
 
 #: src/Paragraph.cpp:3016
 msgid "Memory problem"
@@ -19927,9 +19885,9 @@ msgid "Change tracking error"
 msgstr "Kesalahan pelacakan perubahan"
 
 #: src/Text.cpp:465
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown author index for change: %1$d\n"
-msgstr "Sisipan untuk indeks pengarang tidak dikenal: %1$d\n"
+msgstr "Indeks penulis tidak diketahui: %1$d\n"
 
 #: src/Text.cpp:476
 msgid "Unknown token"
@@ -20024,9 +19982,8 @@ msgstr "Rumus matematika tidak valid"
 
 #: src/Text3.cpp:203
 #: src/mathed/InsetMathNest.cpp:1018
-#, fuzzy
 msgid "Already in regular expression mode"
-msgstr "Pernyataan &Reguler"
+msgstr "Sudah berada di mode ekspresi reguler"
 
 #: src/Text3.cpp:216
 msgid "Regexp editor mode"
@@ -20034,7 +19991,7 @@ msgstr "Mode penyunting Regexp"
 
 #: src/Text3.cpp:1284
 msgid "Layout "
-msgstr "Layout "
+msgstr "Tataletak "
 
 #: src/Text3.cpp:1285
 msgid " not known"
@@ -20053,11 +20010,11 @@ msgstr "Atur Karakter"
 #: src/Text3.cpp:2114
 #: src/Text3.cpp:2125
 msgid "Paragraph layout set"
-msgstr "Pengaturan layout paragraf"
+msgstr "Pengaturan tataletak paragraf"
 
 #: src/TextClass.cpp:155
 msgid "Plain Layout"
-msgstr "Layout Plain"
+msgstr "Tataletak Umum"
 
 #: src/TextClass.cpp:731
 msgid "Missing File"
@@ -20125,7 +20082,7 @@ msgstr "Ada kesalahan membaca modul %1$s\n"
 #: src/VCBackend.cpp:1204
 #: src/frontends/qt4/GuiView.cpp:2715
 msgid "Revision control error."
-msgstr "Kesalahan Kontrol Revisi"
+msgstr "Kesalahan Kontrol Revisi."
 
 #: src/VCBackend.cpp:61
 #, c-format
@@ -20243,7 +20200,7 @@ msgid "View &Log ..."
 msgstr "Lihat &Catatan ..."
 
 #: src/VCBackend.cpp:808
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error when updating document %1$s from repository.\n"
 "You have to manually resolve the conflicts NOW!\n"
@@ -20251,11 +20208,11 @@ msgid ""
 "\n"
 "After pressing OK, LyX will try to reopen the resolved document."
 msgstr ""
-"Kesalahan ketika memperbarui dari repositori.\n"
-"Anda harus menyelesaikan secara manual SEKARANG!\n"
-"'%1$s'.\n"
+"Ada kesalahan ketika memperbarui %1$s dari repositori.\n"
+"Anda harus menyelesaikan konflik SEKARANG!\n"
+"'%2$s'.\n"
 "\n"
-"Setelah menekan Setuju, LyX akan membuka kembali dokumen yang sudah diselesaikan masalahnya."
+"Setelah menekan Setuju, LyX akan mencoba membuka yang tidak konflik."
 
 #: src/VCBackend.cpp:869
 #, c-format
@@ -20276,18 +20233,16 @@ msgstr ""
 "Status '%2$s' tidak diharapkan."
 
 #: src/VCBackend.cpp:1085
-#, fuzzy
 msgid ""
 "Error when committing to repository.\n"
 "You have to manually resolve the problem.\n"
 "LyX will reopen the document after you press OK."
 msgstr ""
 "Kesalahan ketika menyimpan ke repositori.\n"
-"Anda harus secara manual menyelesaikan maslahan.\n"
+"Anda harus secara manual menyelesaikan masalah.\n"
 "Setelah menekan Setuju, LyX akan membuka dokumen lagi."
 
 #: src/VCBackend.cpp:1178
-#, fuzzy
 msgid ""
 "Error while acquiring write lock.\n"
 "Another user is most probably editing\n"
@@ -20297,10 +20252,9 @@ msgstr ""
 "Ada kesalahan untuk memperoleh hak akses menulis.\n"
 "Kemungkinan ada pengguna lain sedang melakukan penyuntingan\n"
 "dokumen yang terkini!\n"
-"Selain itu periksa akses ke repositori."
+"Selain itu periksalah akses ke repositori."
 
 #: src/VCBackend.cpp:1184
-#, fuzzy
 msgid ""
 "Error while releasing write lock.\n"
 "Check the access to the repository."
@@ -20514,9 +20468,8 @@ msgid "Nothing to search"
 msgstr "Tidak ada yang dicari"
 
 #: src/frontends/qt4/FindAndReplace.cpp:454
-#, fuzzy
 msgid "No open document(s) in which to search"
-msgstr "Buka dokumen dalam ta&b"
+msgstr "Tidak ada dokumen yang dipilih lokasi pencarian"
 
 #: src/frontends/qt4/FindAndReplace.cpp:529
 msgid "Advanced Find and Replace"
@@ -20613,9 +20566,8 @@ msgid "Unknown action"
 msgstr "Aksi yang tidak dikenal"
 
 #: src/frontends/qt4/GuiApplication.cpp:920
-#, fuzzy
 msgid "Command not handled"
-msgstr "Perintah dibekukan"
+msgstr "Perintah tidak dikerjakan"
 
 #: src/frontends/qt4/GuiApplication.cpp:926
 msgid "Command disabled"
@@ -20640,7 +20592,7 @@ msgid ""
 "Please reconfigure again if needed."
 msgstr ""
 "Konfigurasi ulang sistem tidak berhasil.\n"
-"Tetap menggunakan Default textclass tetapi LyX mungkin tidak bekerja dengan baik.\n"
+"Tetap menggunakan kelas dokumen bawaan tetapi LyX mungkin tidak bekerja dengan baik.\n"
 "Silahkan dicoba lagi konfigurasi ulang."
 
 #: src/frontends/qt4/GuiApplication.cpp:1238
@@ -20678,11 +20630,11 @@ msgstr "Set-color \"%1$s\" telah gagal- warna tidak terdefinisi atau sudah didef
 #: src/frontends/qt4/GuiApplication.cpp:1583
 #, c-format
 msgid "Document defaults saved in %1$s"
-msgstr "Default dokumen disimpan di %1$s"
+msgstr "Dokumen disimpan di %1$s"
 
 #: src/frontends/qt4/GuiApplication.cpp:1587
 msgid "Unable to save document defaults"
-msgstr "Tidak dapat menyimpan dokumen default"
+msgstr "Tidak dapat menyimpan dokumen bawaan"
 
 #: src/frontends/qt4/GuiApplication.cpp:1734
 msgid "Unknown function."
@@ -21235,7 +21187,7 @@ msgstr "Module not found!"
 
 #: src/frontends/qt4/GuiDocument.cpp:577
 msgid "Layout is valid!"
-msgstr "Layout tidak valid!"
+msgstr "Tataletak tidak sah!"
 
 #: src/frontends/qt4/GuiDocument.cpp:581
 msgid "Layout is invalid!"
@@ -21457,7 +21409,7 @@ msgstr "Modul"
 
 #: src/frontends/qt4/GuiDocument.cpp:1251
 msgid "Local Layout"
-msgstr "Layout lokal"
+msgstr "Tataletak Lokal"
 
 #: src/frontends/qt4/GuiDocument.cpp:1253
 msgid "Text Layout"
@@ -21512,16 +21464,16 @@ msgstr "(belum di install)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1757
 msgid "Layouts|#o#O"
-msgstr "Layouts|#o#O"
+msgstr "Tataletak|#o#O"
 
 #: src/frontends/qt4/GuiDocument.cpp:1759
 msgid "LyX Layout (*.layout)"
-msgstr "LyX Layout (*.layout)"
+msgstr "Tataletak LyX (*.layout)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1761
 #: src/frontends/qt4/GuiDocument.cpp:1770
 msgid "Local layout file"
-msgstr "Berkas layout lokal"
+msgstr "Berkas tataletak lokal"
 
 #: src/frontends/qt4/GuiDocument.cpp:1771
 msgid ""
@@ -21530,18 +21482,18 @@ msgid ""
 "document may not work with this layout if you do not\n"
 "keep the layout file in the document directory."
 msgstr ""
-"Layout yang anda pilih adalah berkas layout\n"
+"Tataletak yang anda pilih adalah berkas tataletak\n"
 "lokal, bukan salah satu dari sistem di direktori pengguna.\n"
 "Dokumen anda tidak akan dikenal apabila berkas\n"
-"layout tidak disimpan dalam satu direktori dengan dokumen."
+"tataletak tidak disimpan dalam satu direktori dengan dokumen."
 
 #: src/frontends/qt4/GuiDocument.cpp:1775
 msgid "&Set Layout"
-msgstr "&Set Layout"
+msgstr "Atur Tataletak"
 
 #: src/frontends/qt4/GuiDocument.cpp:1789
 msgid "Unable to read local layout file."
-msgstr "Tidak bisa membaca berkas lokal layout"
+msgstr "Tidak bisa membaca berkas tataletak lokal."
 
 #: src/frontends/qt4/GuiDocument.cpp:1811
 msgid "Select master document"
@@ -21623,12 +21575,12 @@ msgstr "[Belum ada opsi yang sudah didefinisikan]"
 
 #: src/frontends/qt4/GuiDocument.cpp:3125
 msgid "Can't set layout!"
-msgstr "Tidak bisa memilih layout!"
+msgstr "Tidak bisa memilih tataletak!"
 
 #: src/frontends/qt4/GuiDocument.cpp:3126
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
-msgstr "Tidak dapat mengatur layout untu ID: %1$s"
+msgstr "Tidak dapat mengatur tataletak untuk ID: %1$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:3219
 msgid "Not Found"
@@ -22234,7 +22186,7 @@ msgstr "Dokumen dan Jendela"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2666
 msgid "Font, Layouts and Textclasses"
-msgstr "Huruf, Layout dan Class Teks"
+msgstr "Huruf, Tataletak dan Kelas Dikumen"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2670
 msgid "System and Miscellaneous"
@@ -22336,9 +22288,8 @@ msgid "Debug Level"
 msgstr "Pilihan Awakutu"
 
 #: src/frontends/qt4/GuiProgressView.cpp:83
-#, fuzzy
 msgid "Set"
-msgstr "&Buat garis"
+msgstr "Atur"
 
 #: src/frontends/qt4/GuiRef.cpp:44
 msgid "Cross-reference"
@@ -23208,12 +23159,12 @@ msgstr "Klik untuk melepaskan"
 #: src/frontends/qt4/LayoutBox.cpp:389
 #, c-format
 msgid "Filtering layouts with \"%1$s\". Press ESC to remove filter."
-msgstr "Menapis Layout dengan \"%1$s\". Tekan ESC untuk menghilangkan tapis."
+msgstr "Menapis tataletak dengan \"%1$s\". Tekan ESC untuk menghilangkan tapis."
 
 #: src/frontends/qt4/LayoutBox.cpp:393
 #: src/frontends/qt4/LayoutBox.cpp:443
 msgid "Enter characters to filter the layout list."
-msgstr "tulis karakter untuk menapis daftar layout."
+msgstr "Tulis karakter untuk menapis daftar tataletak."
 
 #: src/frontends/qt4/LayoutBox.cpp:565
 msgid " (unknown)"
@@ -23245,9 +23196,8 @@ msgid "Language|L"
 msgstr "Bahasa"
 
 #: src/frontends/qt4/Menus.cpp:825
-#, fuzzy
 msgid "More Languages ...|M"
-msgstr "Gabung Perubahan...|G"
+msgstr "Bahasa Lainnya ...|y"
 
 #: src/frontends/qt4/Menus.cpp:894
 #: src/frontends/qt4/Menus.cpp:895
@@ -23281,7 +23231,6 @@ msgid "Update [%1$s]|U"
 msgstr "Perbarui [%1$s]|u"
 
 #: src/frontends/qt4/Menus.cpp:1131
-#, fuzzy
 msgid "No Custom Insets Defined!"
 msgstr "Tidak ada sisipan yang didefinisikan!"
 
@@ -23333,9 +23282,8 @@ msgid "No Citation in Scope!"
 msgstr "Tidak Ada Acuan di Scope!"
 
 #: src/frontends/qt4/Menus.cpp:2022
-#, fuzzy
 msgid "No Action Defined!"
-msgstr "Tidak ada pengaturan disini!"
+msgstr "Tidak ada aksi disini!"
 
 #: src/frontends/qt4/Toolbars.cpp:217
 #, c-format
@@ -23432,9 +23380,8 @@ msgstr "Daftar Perubahan"
 #: src/insets/InsetBibtex.cpp:290
 #: src/insets/InsetGraphics.cpp:596
 #: src/insets/InsetInclude.cpp:515
-#, fuzzy
 msgid "The following filename will cause troubles when running the exported file through LaTeX: "
-msgstr "Berkas nama berikut sangat mungkin menyebabkan masalah ketika akan mengekspor melalui LaTeX: "
+msgstr "Berkas berikut mungkin menyebabkan masalah ketika mengekspor melalui LaTeX: "
 
 #: src/insets/ExternalSupport.cpp:374
 #: src/insets/InsetBibtex.cpp:295
@@ -23447,9 +23394,8 @@ msgstr "Permasalahan dengan nama berkas untuk DVI"
 #: src/insets/InsetBibtex.cpp:296
 #: src/insets/InsetGraphics.cpp:604
 #: src/insets/InsetInclude.cpp:521
-#, fuzzy
 msgid "The following filename can cause troubles when running the exported file through LaTeX and opening the resulting DVI: "
-msgstr "Berkas nama berikut sangat mungkin menyebabkan masalah ketika akan mengekspor melalui LaTeX: "
+msgstr "Berkas berikut mungkin menyebabkan masalah ketika akan mengekspor melalui LaTeX dan membuka hasil DVI: "
 
 #: src/insets/Inset.cpp:88
 msgid "Bibliography Entry"
@@ -23482,9 +23428,8 @@ msgid "Info"
 msgstr "Info"
 
 #: src/insets/Inset.cpp:158
-#, fuzzy
 msgid "Horizontal Math Space"
-msgstr "Spasi Horisontal...|H"
+msgstr "Spasi Matematika Horisontal"
 
 #: src/insets/InsetBibitem.cpp:92
 msgid "Keys must be unique!"
@@ -23682,20 +23627,19 @@ msgid "Missing \\end_inset at this point: "
 msgstr "Ada perintah tidak lengkap \\end_inset pada tahap ini."
 
 #: src/insets/InsetCommandParams.cpp:401
-#, fuzzy
 msgid "Uncodable characters"
-msgstr "Karakter tidak bisa di encode"
+msgstr "Karakter tidak bisa di sandikan"
 
 #: src/insets/InsetCommandParams.cpp:402
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters that are used in the inset %1$s are not\n"
 "representable in the current encoding and therefore have been omitted:\n"
 "%2$s."
 msgstr ""
-"Karakter berikut di salah satu daftar pemrograman\n"
-"tidak terwakili di encoding sekarang sehingga tidak diperhitungkan:\n"
-"%1$s."
+"Karakter berikut yang digunakan di sisipan %1$s tidak dapat\n"
+"diwakili dengan enkoding sekarang sehingga akan diabaikan:\n"
+"%2$s."
 
 #: src/insets/InsetExternal.cpp:501
 #, c-format
@@ -23774,9 +23718,9 @@ msgid "file"
 msgstr "berkas "
 
 #: src/insets/InsetHyperlink.cpp:257
-#, fuzzy, c-format
+#, c-format
 msgid "Hyperlink (%1$s) to %2$s"
-msgstr "Branch (%1$s): %2$s"
+msgstr "Tautan (%1$s) ke %2$s"
 
 #: src/insets/InsetInclude.cpp:370
 msgid "Verbatim Input"
@@ -23787,9 +23731,8 @@ msgid "Verbatim Input*"
 msgstr "Verbatim Input*"
 
 #: src/insets/InsetInclude.cpp:379
-#, fuzzy
 msgid "Include (excluded)"
-msgstr "Panggil berkas anak dokumen"
+msgstr "Ikutan (dipisahkan)"
 
 #: src/insets/InsetInclude.cpp:480
 #: src/insets/InsetInclude.cpp:711
@@ -23865,9 +23808,8 @@ msgstr ""
 "dijelaskan pada buku Petunjuk Penggunaan."
 
 #: src/insets/InsetIndex.cpp:279
-#, fuzzy
 msgid "Index Entry"
-msgstr "Catatkan Indeks|I"
+msgstr "Entri Indeks"
 
 #: src/insets/InsetIndex.cpp:286
 #: src/insets/InsetIndex.cpp:307
@@ -23875,9 +23817,8 @@ msgid "unknown type!"
 msgstr "tipe tidak dikenal!"
 
 #: src/insets/InsetIndex.cpp:454
-#, fuzzy
 msgid "Unknown index type!"
-msgstr "Tipe Daftar Isi tidak dikenal"
+msgstr "Tipe indeks tidak dikenal!"
 
 #: src/insets/InsetIndex.cpp:455
 msgid "All indexes"
@@ -24226,14 +24167,12 @@ msgid "Format: "
 msgstr "Format: "
 
 #: src/insets/InsetRef.cpp:329
-#, fuzzy
 msgid "Reference to Name"
-msgstr "Referensi"
+msgstr "Referensi ke Nama"
 
 #: src/insets/InsetRef.cpp:329
-#, fuzzy
 msgid "NameRef:"
-msgstr "Nama:"
+msgstr "NameRef:"
 
 #: src/insets/InsetScript.cpp:368
 msgid "subscript"
@@ -24448,29 +24387,25 @@ msgid "String has been replaced."
 msgstr "String telah diganti"
 
 #: src/lyxfind.cpp:377
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d strings have been replaced."
-msgstr " Berbagai string sudah diganti."
+msgstr "%1$d kata sudah dirubah."
 
 #: src/lyxfind.cpp:1248
-#, fuzzy
 msgid "Search text is empty!"
-msgstr "Pencarian kata kosong"
+msgstr "Pencarian kata kosong!"
 
 #: src/lyxfind.cpp:1262
-#, fuzzy
 msgid "Invalid regular expression!"
-msgstr "Ekspresi panjang dari LaTeX tidak valid."
+msgstr "Ekspresi reguler tidak sah!"
 
 #: src/lyxfind.cpp:1267
-#, fuzzy
 msgid "Match not found!"
-msgstr "String tidak ditemukan!"
+msgstr "Tidak ditemukan yang sesuai!"
 
 #: src/lyxfind.cpp:1271
-#, fuzzy
 msgid "Match found!"
-msgstr "Module not found!"
+msgstr "Ditemukan yang sesuai!"
 
 #: src/mathed/InsetFormulaMacro.cpp:120
 #, c-format
@@ -24521,9 +24456,8 @@ msgid "Unknown tabular feature '%1$s'"
 msgstr "Fitur tabular  '%1$s' tidak dikenal"
 
 #: src/mathed/InsetMathHull.cpp:1201
-#, fuzzy
 msgid "Bad math environment"
-msgstr "Lingkungan Gather"
+msgstr "Lingkungan matematika salah"
 
 #: src/mathed/InsetMathHull.cpp:1202
 msgid ""
@@ -24567,9 +24501,8 @@ msgid "entered math text mode (textrm)"
 msgstr "Masuk dalam mode teks matematika (textrm)"
 
 #: src/mathed/InsetMathNest.cpp:1029
-#, fuzzy
 msgid "Regular expression editor mode"
-msgstr "Pernyataan &Reguler"
+msgstr "Mode penyunting ekspresi reguler"
 
 #: src/mathed/InsetMathNest.cpp:1631
 #: src/mathed/InsetMathNest.cpp:1751
@@ -24594,9 +24527,9 @@ msgid "FormatRef: "
 msgstr "FormatRef: "
 
 #: src/mathed/InsetMathSubstack.cpp:85
-#, fuzzy, c-format
+#, c-format
 msgid "Can't change horizontal alignment in '%1$s'"
-msgstr "Tidak bisa menambah garis grid horisontal di  '%1$s'"
+msgstr "Tidak bisa merubah perataan horisontal di  '%1$s'"
 
 #: src/mathed/MathMacroTemplate.cpp:494
 msgid "optional"
@@ -24802,23 +24735,18 @@ msgstr "Pemakai tidak dikenal"
 
 #~ msgid "LyX binary not found"
 #~ msgstr "Program biner LyX tidak ditemukan"
-
 #~ msgid "File not found"
 #~ msgstr "Berkas tidak ditemukan"
-
 #~ msgid "Directory not found"
 #~ msgstr "Direktori tidak ditemukan!"
 
 #, fuzzy
 #~ msgid "Use the babel package for multilingual support"
 #~ msgstr "Gunakan paket babel untuk mendukung multibahasa"
-
 #~ msgid "&Use babel"
 #~ msgstr "Gunakan b&abel"
-
 #~ msgid "&Global"
 #~ msgstr "&Global"
-
 #~ msgid "institutemark"
 #~ msgstr "institutemark"
 
@@ -24829,31 +24757,22 @@ msgstr "Pemakai tidak dikenal"
 #, fuzzy
 #~ msgid "Flex:E-Mail"
 #~ msgstr "E-Mail"
-
 #~ msgid "altaffilmark"
 #~ msgstr "altaffilmark"
-
 #~ msgid "tablenotemark"
 #~ msgstr "tandanotatabel"
-
 #~ msgid "scheme"
 #~ msgstr "skema"
-
 #~ msgid "chart"
 #~ msgstr "diagram"
-
 #~ msgid "graph"
 #~ msgstr "grafik"
-
 #~ msgid "Bibnote"
 #~ msgstr "Bibnote"
-
 #~ msgid "Chemistry"
 #~ msgstr "Kimia"
-
 #~ msgid "CRcat"
 #~ msgstr "CRcat"
-
 #~ msgid "InstituteMark"
 #~ msgstr "InstituteMark"
 
@@ -24872,50 +24791,36 @@ msgstr "Pemakai tidak dikenal"
 #, fuzzy
 #~ msgid "Flex:PresentationMode"
 #~ msgstr "Custom:PresentationMode"
-
 #~ msgid "Thanks Reference"
 #~ msgstr "Referensi Terimakasih"
-
 #~ msgid "Internet Address Reference"
 #~ msgstr "Referensi Alamat Internet"
-
 #~ msgid "Name (First Name)"
 #~ msgstr "Nama (Nama Depan)"
-
 #~ msgid "Name (Surname)"
 #~ msgstr "Nama (Nama keluarga)"
-
 #~ msgid "By Same Author (bib)"
 #~ msgstr "Berdasar Penulis Sama (bib)"
-
 #~ msgid "Titlenotemark"
 #~ msgstr "TandaJudulNota"
-
 #~ msgid "Authormark"
 #~ msgstr "TandaPenulis"
-
 #~ msgid "CorAuthormark"
 #~ msgstr "TandaPenulisKontak"
 
 #, fuzzy
 #~ msgid "Lowercase"
 #~ msgstr "Hurufkecil semua|l"
-
 #~ msgid "Inst"
 #~ msgstr "Inst"
-
 #~ msgid "Sidenote"
 #~ msgstr "Nota samping"
-
 #~ msgid "Marginnote"
 #~ msgstr "Nota tepi"
-
 #~ msgid "NewThought"
 #~ msgstr "PemikiranBaru"
-
 #~ msgid "AllCaps"
 #~ msgstr "SemuaHurufBesar"
-
 #~ msgid "SmallCaps"
 #~ msgstr "HurufBesarKecil"
 
@@ -25070,38 +24975,28 @@ msgstr "Pemakai tidak dikenal"
 #, fuzzy
 #~ msgid "Flex:MenuChoice"
 #~ msgstr "PilihanMenu"
-
 #~ msgid "Foot"
 #~ msgstr "kaki"
-
 #~ msgid "Note:Comment"
 #~ msgstr "Nota:Komentar"
-
 #~ msgid "Note:Note"
 #~ msgstr "Nota:Nota"
-
 #~ msgid "Note:Greyedout"
 #~ msgstr "Nota:Tanda-abu-abu"
-
 #~ msgid "Box:Shaded"
 #~ msgstr "Kotak:Digelapkan"
-
 #~ msgid "Wrap"
 #~ msgstr "Lipat"
 
 #, fuzzy
 #~ msgid "Argument"
 #~ msgstr "Pengaturan kerataan"
-
 #~ msgid "Info:menu"
 #~ msgstr "Info:menu"
-
 #~ msgid "Info:shortcut"
 #~ msgstr "Info:cara pintas"
-
 #~ msgid "Info:shortcuts"
 #~ msgstr "Info:cara pintas"
-
 #~ msgid "Braillebox"
 #~ msgstr "Braillebox"
 
@@ -25148,10 +25043,8 @@ msgstr "Pemakai tidak dikenal"
 #, fuzzy
 #~ msgid "S/R expression"
 #~ msgstr "Pernyataan &Reguler"
-
 #~ msgid "Norsk"
 #~ msgstr "Norsk"
-
 #~ msgid "Nynorsk"
 #~ msgstr "Nynorsk"
 
@@ -25190,232 +25083,156 @@ msgstr "Pemakai tidak dikenal"
 #, fuzzy
 #~ msgid "&Ok"
 #~ msgstr "&Setuju"
-
 #~ msgid "&Dummy"
 #~ msgstr "&Dummy"
-
 #~ msgid "F&ind:"
 #~ msgstr "Car&i:"
-
 #~ msgid "The Enter key works, too"
 #~ msgstr "Acuan yang dipilih"
-
 #~ msgid "The delete key works, too"
 #~ msgstr "Hapus pilihan"
-
 #~ msgid "D&elete"
 #~ msgstr "&Hapus"
-
 #~ msgid "&Default language:"
 #~ msgstr "Bahasa &Default:"
-
 #~ msgid "Select the default language of your documents"
 #~ msgstr "Pilih bahasa default untuk dokumen anda"
-
 #~ msgid "&BibTeX command:"
 #~ msgstr "Perintah &BibTeX:"
-
 #~ msgid "BibTeX command (&Japanese):"
 #~ msgstr "Perintah BibTeX (&Jepang):"
-
 #~ msgid "Index command (Ja&panese):"
 #~ msgstr "Perintah Indeks (Je&pang):"
-
 #~ msgid "External app for formating tables in plain text output"
 #~ msgstr "Perintah eksternal untuk mengatur tabel di output teks."
-
 #~ msgid "Screen &DPI:"
 #~ msgstr "Layar &DPI:"
-
 #~ msgid "Specify a personal dictionary file other than the default"
 #~ msgstr "Gunakan berkas kamus pribadi"
-
 #~ msgid "Spellchec&ker executable:"
 #~ msgstr "Program pemeriksa &ejaan:"
-
 #~ msgid "Use input encod&ing"
 #~ msgstr "Gunakan input encod&ing"
-
 #~ msgid "Jump to the label"
 #~ msgstr "Lompat ke label"
-
 #~ msgid "Merge cells"
 #~ msgstr "Gabungkan sel"
-
 #~ msgid "Listing settings"
 #~ msgstr "Pengaturan Listing"
-
 #~ msgid "CharStyle:Institute"
 #~ msgstr "CharStyle:Institute"
-
 #~ msgid "CharStyle:E-Mail"
 #~ msgstr "CharStyle:E-Mail"
-
 #~ msgid "Block ( ERT[{title}] body ):"
 #~ msgstr "Blok ( ERT[{title}] body ):"
-
 #~ msgid "Block ( ERT[{title}] example text ):"
 #~ msgstr "Block ( ERT[{title}] example text ):"
-
 #~ msgid "Block ( ERT[{title}] alert text ):"
 #~ msgstr "Block ( ERT[{title}] alert text ):"
-
 #~ msgid "CharStyle:Alert"
 #~ msgstr "CharStyle:Alert"
-
 #~ msgid "CharStyle:Structure"
 #~ msgstr "CharStyle:Structure"
-
 #~ msgid "LangHeader"
 #~ msgstr "HeaderBhs"
-
 #~ msgid "Language Header:"
 #~ msgstr "Header Bahasa:"
-
 #~ msgid "Language:"
 #~ msgstr "Bahasa:"
-
 #~ msgid "LastLanguage"
 #~ msgstr "BahasaTerakhir"
-
 #~ msgid "Last Language:"
 #~ msgstr "Bahasa Terakhir:"
-
 #~ msgid "LangFooter"
 #~ msgstr "FooterBahasa"
-
 #~ msgid "End"
 #~ msgstr "End"
-
 #~ msgid "End of CV"
 #~ msgstr "End of CV"
-
 #~ msgid "Strasse"
 #~ msgstr "Strasse"
-
 #~ msgid "Land"
 #~ msgstr "Land"
-
 #~ msgid "BLZ"
 #~ msgstr "BLZ"
-
 #~ msgid "Konto"
 #~ msgstr "Konto"
-
 #~ msgid "Computer"
 #~ msgstr "Komputer"
-
 #~ msgid "Computer:"
 #~ msgstr "Komputer:"
-
 #~ msgid "EmptySection"
 #~ msgstr "SeksyenKosong"
-
 #~ msgid "Empty Section"
 #~ msgstr "SubBabKosong"
-
 #~ msgid "CloseSection"
 #~ msgstr "Tutup Seksyen"
-
 #~ msgid "Close Section"
 #~ msgstr "Tutup SubBab"
-
 #~ msgid "Element:Firstname"
 #~ msgstr "Elemen:Namadepan"
-
 #~ msgid "Element:Fname"
 #~ msgstr "Elemen:Fname"
-
 #~ msgid "Element:Filename"
 #~ msgstr "Elemen:Nama berkas"
-
 #~ msgid "Element:Citation-number"
 #~ msgstr "Elemen:Nomor-acuan"
-
 #~ msgid "Element:Issue-number"
 #~ msgstr "Elemen:Nomor-Isu"
-
 #~ msgid "Element:Issue-day"
 #~ msgstr "Elemen:Hari-Isu"
-
 #~ msgid "Element:Issue-months"
 #~ msgstr "Elemen:Bulan-Isu"
-
 #~ msgid "Element:SS-Title"
 #~ msgstr "Elemen:SS-Judul"
-
 #~ msgid "Element:CCC-Code"
 #~ msgstr "Elemen:CCC-Kode"
-
 #~ msgid "Element:Postcode"
 #~ msgstr "Elemen:Kodepos"
-
 #~ msgid "Element:Directory"
 #~ msgstr "Elemen:Petunjuk"
-
 #~ msgid "Element:KeyCombo"
 #~ msgstr "Elemen:KunciCombo"
-
 #~ msgid "Element:GuiMenuItem"
 #~ msgstr "Elemen:MenuItemGui"
-
 #~ msgid "Element:GuiButton"
 #~ msgstr "Elemen:TombolGui"
-
 #~ msgid "Element:MenuChoice"
 #~ msgstr "Elemen:PilihanMenu"
-
 #~ msgid "OptArg"
 #~ msgstr "OptArg"
-
 #~ msgid "Custom:Endnote"
 #~ msgstr "AturSendiri:Endnote"
-
 #~ msgid "Custom:Glosse"
 #~ msgstr "Custom:Glosse"
-
 #~ msgid "Custom:Tri-Glosse"
 #~ msgstr "Custom:Tri-Glosse"
-
 #~ msgid "CharStyle:Noun"
 #~ msgstr "CharStyle:Noun"
-
 #~ msgid "CharStyle:Emph"
 #~ msgstr "CharStyle:Emph"
-
 #~ msgid "CharStyle:Code"
 #~ msgstr "CorakKarakter:Kode"
-
 #~ msgid "Inter-word Space|w"
 #~ msgstr "Spasi Antara Kata|p"
-
 #~ msgid "Insert|n"
 #~ msgstr "Sisipan|n"
-
 #~ msgid "Dissolve Inset|l"
 #~ msgstr "Hilangkan Sisipan|l"
-
 #~ msgid "View DVI"
 #~ msgstr "Tampilan DVI"
-
 #~ msgid "View PDF (pdflatex)"
 #~ msgstr "Tampilan PDF (pdflatex)"
-
 #~ msgid "Update PDF (pdflatex)"
 #~ msgstr "Perbarui tampilan PDF (pdflatex)"
-
 #~ msgid "View PostScript"
 #~ msgstr "Tampilan PostScript"
-
 #~ msgid "Update PostScript"
 #~ msgstr "Perbaiki tampilan PostScript"
-
 #~ msgid "No horizontal line\t\\atop"
 #~ msgstr "Tanpa garis pembagi\t\\atop"
-
 #~ msgid "Ch. "
 #~ msgstr "Ch. "
-
 #~ msgid ""
 #~ "The specified document\n"
 #~ "%1$s\n"
@@ -25424,10 +25241,8 @@ msgstr "Pemakai tidak dikenal"
 #~ "Dokumen yang dipiliht\n"
 #~ "%1$s\n"
 #~ "tidak bisa dibaca."
-
 #~ msgid "&Keep it"
 #~ msgstr "Abai&kan saja"
-
 #~ msgid ""
 #~ "The layout file requested by this document,\n"
 #~ "%1$s.layout,\n"
@@ -25442,75 +25257,59 @@ msgstr "Pemakai tidak dikenal"
 #~ "class atau style yang diperlukan tidak\n"
 #~ "tersedia. Lihat buku panduan Perubahan dan Pengaturan\n"
 #~ "untuk memperoleh penjelasan terperinci.\n"
-
 #~ msgid "LyX will not be able to produce output."
 #~ msgstr "LyX tidak bisa menghasilkan output."
-
 #~ msgid "Some layouts may not be available."
 #~ msgstr "Beberapa layout mungkin tidak tersedia."
-
 #~ msgid "caption frame"
 #~ msgstr "bingkai caption"
-
 #~ msgid "top/bottom line"
 #~ msgstr "garis atas/bawah"
-
 #~ msgid "Can't create pipe for spellchecker."
 #~ msgstr "Tidak dapat membuat pipa untuk pemeriksa ejaan."
-
 #~ msgid "Can't open pipe for spellchecker."
 #~ msgstr "Tidak dapat membuka pipa untuk pemeriksa ejaan."
-
 #~ msgid ""
 #~ "Could not create an ispell process.\n"
 #~ "You may not have the right languages installed."
 #~ msgstr ""
 #~ "Tidak bisa membuat proses untuk ispell.\n"
 #~ "Mungkin anda tidak menginstal fasilitas bahasa yang diperlukan."
-
 #~ msgid ""
 #~ "The ispell process returned an error.\n"
 #~ "Perhaps it has been configured wrongly ?"
 #~ msgstr ""
 #~ "Proses ispell mengirim pesan kesalahan.\n"
 #~ "Kemungkinan tidak konfigurasi tidak tepat ?"
-
 #~ msgid ""
 #~ "Could not check word `%1$s' because it could not be converted to encoding "
 #~ "`%2$s'."
 #~ msgstr ""
 #~ "Tidak bisa memeriksa kata `%1$s'  karena tidak bisa dikonversi untuk "
 #~ "encoding `%2$s'."
-
 #~ msgid "Could not communicate with the ispell spellchecker process."
 #~ msgstr "Tidak bisa berkomunikasi dengan proses pemeriksa ejaan ispell."
-
 #~ msgid ""
 #~ "Could not insert word `%1$s' because it could not be converted to "
 #~ "encoding `%2$s'."
 #~ msgstr ""
 #~ "Tidak bisa menyisipkan kata`%1$s' karena tidak bisa dikonversi ke "
 #~ "encoding `%2$s'."
-
 #~ msgid ""
 #~ "Could not accept word `%1$s' because it could not be converted to "
 #~ "encoding `%2$s'."
 #~ msgstr ""
 #~ "Tidak bisa mengenal kata `%1$s' karena tidak bisa dikonversi untuk "
 #~ "encoding `%2$s'."
-
 #~ msgid "Maximum number of words in the initialization string for a new label"
 #~ msgstr ""
 #~ "Jumlah maksimum dari kata-kata dalam inisialisasi string untuk label baru"
-
 #~ msgid ""
 #~ "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 #~ msgstr ""
 #~ "Nyatakan berkas kamus pribadi alternatif. Misal.  \".ispell_english\"."
-
 #~ msgid "What command runs the spellchecker?"
 #~ msgstr "Apakah perintah menjalankan pemeriksa ejaan."
-
 #~ msgid ""
 #~ "Specify whether to pass the -T input encoding option to ispell. Enable "
 #~ "this if you cannot check the spelling of words containing accented "
@@ -25519,16 +25318,12 @@ msgstr "Pemakai tidak dikenal"
 #~ "Nyatakan apakah akan mengirim opsi encoding -T input ke ispell. Aktifkan "
 #~ "ini apabila anda tidak bisa memeriksa kata yang mengandung huruf "
 #~ "beraksen. Hal ini tidak akan berlaku di semua kamus."
-
 #~ msgid "Native OS API not yet supported."
 #~ msgstr "Sistem operasi API belum dapat didukung."
-
 #~ msgid "Unknown author index for deletion: %1$d\n"
 #~ msgstr "Indeks pengarang yang ingin dihapus tidak dikenal: %1$d\n"
-
 #~ msgid "Unknown spacing argument: "
 #~ msgstr "Argumen spasi tidak dikenal: "
-
 #~ msgid ""
 #~ "Aiksaurus returned the following error:\n"
 #~ "\n"
@@ -25537,104 +25332,73 @@ msgstr "Pemakai tidak dikenal"
 #~ "Aiksaurus mengeluarkan pesan kesalahan berikut:\n"
 #~ "\n"
 #~ "%1$s."
-
 #~ msgid "Branch Settings"
 #~ msgstr "Pengaturan Branch"
-
 #~ msgid ""
 #~ "Input listings parameters on the right. Enter ? for a list of parameters."
 #~ msgstr ""
 #~ "Parameter dari berbagai Input Listing. Dikotak sebelah kanan ini, ketik ? "
 #~ "untuk memunculkan berbagai parameter."
-
 #~ msgid "Length"
 #~ msgstr "Ukuran Lompatan"
-
 #~ msgid "TeX Code Settings"
 #~ msgstr "Pengaturan program TeX"
-
 #~ msgid "Float Settings"
 #~ msgstr "Pengaturan Float"
-
 #~ msgid "Horizontal Space Settings"
 #~ msgstr "Spasi Horisontal"
-
 #~ msgid "Thin space"
 #~ msgstr "Spasi tipis"
-
 #~ msgid "Medium space"
 #~ msgstr "Spasi sedang"
-
 #~ msgid "Thick space"
 #~ msgstr "Spasi tebal"
-
 #~ msgid "Negative thin space"
 #~ msgstr "Spasi tipis negatif"
-
 #~ msgid "Negative medium space"
 #~ msgstr "Spasi sedang negatif"
-
 #~ msgid "Negative thick space"
 #~ msgstr "Spasi tebal negatif"
-
 #~ msgid "Inter-word space"
 #~ msgstr "Spasi antara kata"
-
 #~ msgid "Hyperlink"
 #~ msgstr "Hyperlink"
-
 #~ msgid "Label"
 #~ msgstr "Label"
-
 #~ msgid "No LaTeX log file found."
 #~ msgstr "Catatan berkas proses LaTeX tidak ditemukan."
-
 #~ msgid "aspell"
 #~ msgstr "aspell"
-
 #~ msgid "hspell"
 #~ msgstr "hspell"
-
 #~ msgid "pspell (library)"
 #~ msgstr "pspell (perpustakaan)"
-
 #~ msgid "aspell (library)"
 #~ msgstr "aspell (perpustakaan)"
-
 #~ msgid "*.pws"
 #~ msgstr "*.pws"
-
 #~ msgid "*.ispell"
 #~ msgstr "*.ispell"
-
 #~ msgid "Spellchecker error"
 #~ msgstr "Kesalahan Pengecek Ejaan"
-
 #~ msgid ""
 #~ "The spellchecker has died for some reason.\n"
 #~ "Maybe it has been killed."
 #~ msgstr ""
 #~ "Pengecek ejaan tidak berfungsi karena sesuatu hal.\n"
 #~ "Mungkin telah dimatikan"
-
 #~ msgid "The spellchecker has failed.\n"
 #~ msgstr "Pengecek ejaan gagal.\n"
-
 #~ msgid "The spellchecker has failed"
 #~ msgstr "Pengecek ejaan gagal"
-
 #~ msgid "Vertical Space Settings"
 #~ msgstr "Spasi Vertikal"
-
 #~ msgid "No Table of contents"
 #~ msgstr "Tidak ada Daftar Isi"
-
 #~ msgid "Opened inset"
 #~ msgstr "Sisipan Dibuka"
-
 #~ msgid "Uncodable characters in bibliography item"
 #~ msgstr "Ada karakter tidak dikenal pada bibliografi"
-
 #~ msgid ""
 #~ "The following characters in one of the bibliography items are\n"
 #~ "not representable in the current encoding and have been omitted:\n"
@@ -25643,248 +25407,170 @@ msgstr "Pemakai tidak dikenal"
 #~ "Karakter berikut di salah satu masukan bibliografi\n"
 #~ "tidak bisa dikenal pada enkoding sekarang dan sudahdiabaikan:\n"
 #~ "%1$s."
-
 #~ msgid "Opened Box Inset"
 #~ msgstr "Sisipan Kotak dibuka"
-
 #~ msgid "Opened Caption Inset"
 #~ msgstr "Inset Nama Gambar/Tabel dibuka"
-
 #~ msgid "Opened ERT Inset"
 #~ msgstr "Buka Inset ERT"
-
 #~ msgid "Opened Flex Inset"
 #~ msgstr "Sisipan Flex Dibuka"
-
 #~ msgid "Opened Float Inset"
 #~ msgstr "Sisipan Float Dibuka"
-
 #~ msgid "Opened Footnote Inset"
 #~ msgstr "Sisipan catatan kaki dibuka"
-
 #~ msgid "Unknown buffer info"
 #~ msgstr "Info buffer tidak dikenal"
-
 #~ msgid "Opened Listing Inset"
 #~ msgstr "Sisipan Pemrograman DIbuka"
-
 #~ msgid "Opened Marginal Note Inset"
 #~ msgstr "Sisipan Nota Tepi Dibuka"
-
 #~ msgid "Opened Note Inset"
 #~ msgstr "Sisipan Nota Dibuka"
-
 #~ msgid "Opened Optional Argument Inset"
 #~ msgstr "Sisipan Argumen Tambahan Dibuka"
-
 #~ msgid "QQuad Space"
 #~ msgstr "Spasi Duakali Quad"
-
 #~ msgid "Opened table"
 #~ msgstr "Tabel dibuka"
-
 #~ msgid "Opened Text Inset"
 #~ msgstr "Sisipan Teks Dibuka"
-
 #~ msgid "Opened Wrap Inset"
 #~ msgstr "Sisipan Wrap Dibuka"
 
 #, fuzzy
 #~ msgid "Glossary term"
 #~ msgstr "Glosse"
-
 #~ msgid "TheoremTemplate"
 #~ msgstr "TheoremTemplate"
-
 #~ msgid "Theorem #:"
 #~ msgstr "Teorema #:"
-
 #~ msgid "Lemma #:"
 #~ msgstr "Lemma #:"
-
 #~ msgid "Corollary #:"
 #~ msgstr "Corollary #:"
-
 #~ msgid "Proposition #:"
 #~ msgstr "Rencana #:"
-
 #~ msgid "Conjecture #:"
 #~ msgstr "Dugaan #:"
-
 #~ msgid "Criterion #:"
 #~ msgstr "Kriteria #:"
-
 #~ msgid "Fact #:"
 #~ msgstr "Fakta #:"
-
 #~ msgid "Axiom #:"
 #~ msgstr "Axiom #:"
-
 #~ msgid "Definition #:"
 #~ msgstr "Definisi #:"
-
 #~ msgid "Example #:"
 #~ msgstr "Contoh #:"
-
 #~ msgid "Condition #:"
 #~ msgstr "Kondisi #:"
-
 #~ msgid "Problem #:"
 #~ msgstr "Masalah #:"
-
 #~ msgid "Exercise #:"
 #~ msgstr "Latihan #:"
-
 #~ msgid "Remark #:"
 #~ msgstr "Catatan #:"
-
 #~ msgid "Claim #:"
 #~ msgstr "Klaim #:"
-
 #~ msgid "Note #:"
 #~ msgstr "Nota #:"
-
 #~ msgid "Notation #:"
 #~ msgstr "Notasi #:"
-
 #~ msgid "Case #:"
 #~ msgstr "Kasus #:"
-
 #~ msgid "Footernote"
 #~ msgstr "Footernote"
-
 #~ msgid ""
 #~ "Shortcut `%1$s' is already bound to:\n"
 #~ "%2$s"
 #~ msgstr ""
 #~ "Cara pintas `%1$s' sudah digunakan untuk:\n"
 #~ "%2$s"
-
 #~ msgid "Anschrift:"
 #~ msgstr "Anschrift:"
-
 #~ msgid "Briefkopf:"
 #~ msgstr "Briefkopf:"
-
 #~ msgid "Absender:"
 #~ msgstr "Absender:"
-
 #~ msgid "Zusatz:"
 #~ msgstr "Zusatz:"
-
 #~ msgid "Ihre Zeichen:"
 #~ msgstr "Ihre Zeichen:"
-
 #~ msgid "Unsere Zeichen:"
 #~ msgstr "Unsere Zeichen:"
-
 #~ msgid "Sachbearbeiter:"
 #~ msgstr "Sachbearbeiter:"
-
 #~ msgid "Unterschrift:"
 #~ msgstr "Unterschrift:"
-
 #~ msgid "Fusszeile(n):"
 #~ msgstr "Fusszeile(n):"
-
 #~ msgid "Vorwahl:"
 #~ msgstr "Vorwahl:"
-
 #~ msgid "Telefon:"
 #~ msgstr "Telepon:"
-
 #~ msgid "Ort:"
 #~ msgstr "Ort:"
-
 #~ msgid "Datum:"
 #~ msgstr "Datum:"
-
 #~ msgid "Betreff:"
 #~ msgstr "Betreff:"
-
 #~ msgid "Anrede:"
 #~ msgstr "Anrede:"
-
 #~ msgid "Gruss:"
 #~ msgstr "Gruss:"
-
 #~ msgid "Anlage(n):"
 #~ msgstr "Anlage(n):"
-
 #~ msgid "Verteiler:"
 #~ msgstr "Verteiler:"
-
 #~ msgid "Text:"
 #~ msgstr "Text:"
-
 #~ msgid "Strasse:"
 #~ msgstr "Strasse:"
-
 #~ msgid "Land:"
 #~ msgstr "Land:"
-
 #~ msgid "RetourAdresse:"
 #~ msgstr "RetourAdresse:"
-
 #~ msgid "MeinZeichen:"
 #~ msgstr "MeinZeichen:"
-
 #~ msgid "IhrZeichen:"
 #~ msgstr "IhrZeichen:"
-
 #~ msgid "IhrSchreiben:"
 #~ msgstr "IhrSchreiben:"
-
 #~ msgid "BLZ:"
 #~ msgstr "BLZ:"
-
 #~ msgid "Konto:"
 #~ msgstr "Konto:"
-
 #~ msgid "Adresse:"
 #~ msgstr "Pengirim:"
-
 #~ msgid "Anlagen:"
 #~ msgstr "Anlagen:"
-
 #~ msgid "Numbers theorems and the like by section."
 #~ msgstr "Nomor yang ada di modul-modul teorema menurut bagian."
-
 #~ msgid "Latex"
 #~ msgstr "Latex"
-
 #~ msgid "Close Tab Group|G"
 #~ msgstr "Tutup Grup Tab|G"
-
 #~ msgid "No file open!"
 #~ msgstr "Tidak ada berkas dibuka!"
-
 #~ msgid "You cannot paste into a multicell selection."
 #~ msgstr "Anda tidak bisa menempelkan dalam seleksi multisel"
-
 #~ msgid "Check in Changes...|I"
 #~ msgstr "Masukkan Perubahan...|n"
-
 #~ msgid "Check out for Edit|O"
 #~ msgstr "Keluar Untuk Sunting|u"
-
 #~ msgid "Toggle Labeling/Numbering|T"
 #~ msgstr "Pilihan Label/Nomor|o"
-
 #~ msgid "Toggle Label|L"
 #~ msgstr "Pilih Label|L"
-
 #~ msgid "B&rowse..."
 #~ msgstr "C&ari..."
-
 #~ msgid "Number of Co&pies:"
 #~ msgstr "&Jumlah salinan:"
-
 #~ msgid "Sa&ns Serif:"
 #~ msgstr "Sa&ns Serif:"
-
 #~ msgid "Ne&w"
 #~ msgstr "Bar&u"
-
 #~ msgid "Add row "
 #~ msgstr "Sisipkan Baris"
+
