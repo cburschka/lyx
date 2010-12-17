@@ -1,4 +1,4 @@
-#LyX 2.0.0beta2 created this file. For more info see http://www.lyx.org/
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 410
 \begin_document
 \begin_header
@@ -451,32 +451,23 @@ name "sec:Configuration-LaTeX"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can edit documents in LyX without having LaTeX installed, but you will
- not to able to create PDFs or print your documents unless you do have it
- installed.
- However, some LyX documents use DocBook as the `backend' that can produce
- PDFs and the like, and every LyX document can always be output as plain
- text or as XHTML.
+Vous pouvez éditer des document avec LyX sans avoir installé LaTeX, mais
+ vous ne pourrez créer des PDF ou imprimer votre document qu'en l'installant.
+ Cependant, certains documents utilisent DocBook comme processeur pour produire
+ des PDF et des choses de ce genre et en plus tout document LyX peut être
+ exporté sous forme de texte brut ou en XHTML.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Some document classes may depend upon specific LaTeX or DocBook classes
- or packages.
- Such document classes can be used even if you do not have the required
- files installed, but you will not be able to produce certain kinds of output.
+Certaines classes de documents peuvent dépendre de classes ou de paquetages
+ LaTeX ou DocBook spécifiques.
+ Vous pouvez utiliser ces classes de documents sans avoir installé les fichiers
+ nécessaires, mais vous ne pourrez pas produire certains types de sorties.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The LaTeX packages that LyX has found on your system are listed in a file
- you can view from
-\lang french
- le menu 
+Les paquetages LaTeX que LyX a trouvé sur votre système sont listés dans
+ un fichier que vous pouvez trouver dans le menu 
 \family sans
 Aide\SpecialChar \menuseparator
 Configuration
@@ -497,17 +488,13 @@ status collapsed
 eX
 \family default
 .
- 
-\lang english
-If you are missing packages you need, then you should install them and then
- reconfigure LyX (menu 
+ Si vous avez besoin de paquetages que vous ne possédez pas, vous devez
+ les installer et ensuite reconfigurer LyX (menu 
 \family sans
-Tools\SpecialChar \menuseparator
-Reconfigure
+Outils\SpecialChar \menuseparator
+Reconfigurer
 \family default
-)
-\lang french
-.
+).
 \begin_inset Note Note
 status collapsed
 
@@ -558,13 +545,11 @@ Reconfiguration de LyX
 
 \end_inset
 
- 
-\lang english
-See section 5.1 of the 
+ Voir la section 5.1 du manuel 
 \emph on
-Customization
+Personnalisation
 \emph default
- manual for more information on installing additional LaTeX packages.
+ pour plus d'information sur l'installation de paquetages LaTeX additionnels.
 \end_layout
 
 \begin_layout Chapter
@@ -1051,9 +1036,6 @@ Coller
 \end_inset
 
 Spécial
-\family default
-\lang english
-LaTeX font support
 \end_layout
 
 \begin_layout Itemize
@@ -2503,15 +2485,15 @@ A&A Articles de publications dans le style et le format utilisés par Astronomy
 \end_layout
 
 \begin_layout Description
-ACS 
+ACS Pour soumettre des articles à des publications de l' 
 \lang english
-For submissions to the journals published by the American Chemistry Society
+American Chemistry Society
 \end_layout
 
 \begin_layout Description
-AGU 
+AGU Pour soumettre des articles à des publications de l'
 \lang english
-For submissions to the journals published by the American Geophysical Union
+American Geophysical Union
 \end_layout
 
 \begin_layout Description
@@ -2557,9 +2539,7 @@ Broadway Disposition pour écrire des pièces de théatre.
 \end_layout
 
 \begin_layout Description
-Chess 
-\lang english
-Layout to write about chess games
+Chess Disposition pour écrire au sujet du jeu d'échecs.
 \end_layout
 
 \begin_layout Description
@@ -2607,9 +2587,7 @@ Kluwer Disposition pour les journaux publiés par le groupe Kluwer.
 KOMA-Script Remplacement pour les classes standard, offre de nombreuses
  fonctions intéressantes comme le formattage des légendes, le calcul automatique
  de la taille de la zone d'impression etc...
- 
-\lang english
-(Is used by this document.)
+ (c'est le format utilisé par ce document.)
 \end_layout
 
 \begin_layout Description
@@ -2675,22 +2653,21 @@ avancées
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Availability
+Disponibilité
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-New users are sometimes puzzled by the fact that many of the document classes
- listed under 
+Les nouveaux utilisateurs sont parfois surpris par le fait que de nombreuses
+ classes de documents listées dans 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Document Class
+Document \SpecialChar \menuseparator
+Paramètres \SpecialChar \menuseparator
+Classe
 \family default
-\lang french
+ 
+\family sans
+de document
+\family default
 
 \begin_inset Index idx
 status collapsed
@@ -2701,73 +2678,68 @@ Document ! Paramètres
 
 \end_inset
 
-
-\lang english
- are marked as 
-\begin_inset Quotes eld
+ sont marquées comme 
+\begin_inset Quotes fld
 \end_inset
 
-Unavailable
-\begin_inset Quotes erd
+indisponible
+\begin_inset Quotes frd
 \end_inset
 
 .
- Or they are surprised that, when they open e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
-\end_inset
-
-the 
+ Ils peuvent aussi être surpris quand, par exemple, en ouvrant le modèle
+ 
 \family sans
 iop-article
 \family default
- template, they receive a warning saying that the document requires files
- that are not installed to produce output.
- So it seems that something is wrong.
+, ils recoivent un avertissement disant que le document nécessite des fichiers
+ qui sont indisponibles pour produire une sortie.
+ Il semble donc que quelquechose ne marche pas.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-But nothing is wrong.
- LyX includes many more document classes than you will ever need to use,
- and some of them, like 
+En fait c'est normal.
+ LyX contient bien plus de classes de document que vous n'en utiliserez
+ jamais, et certaines, comme 
 \family sans
 IOP
 \family default
-, are highly specialized.LyX tries to support as many different types of
- documents as possible, and it includes almost one hundred different layout
- files, with a growing number.
- No LaTeX distribution will install by default all files that might be needed
- by some document class.
- There are just too many of them.
- That is why some of the document classes are unavailable.
+, sont très spécialisées.
+ LyX essaie de gérer le plus possible de types de documents différents,
+ et il contient plus d'une centaine de fichiers de format différents, ce
+ nombre étant en augmentation.
+ Aucune distribution LaTeX n'installera par défaut tous les fichiers qui
+ pourraient être utilisés par une classe de documents quelconque.
+ Il y en a tout simplement trop.
+ C'est pourquoi certaines classes de documents sont indisponibles.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If there is a document class you would like to use that is marked as `Unavailabl
-e', you need to install the appropriate package files.
- The easiest way to find out which files you need to install is to use that
- document class for a new file.
- LyX will display a dialog that will list the missing files.
- See section 
-\begin_inset Quotes eld
+Si une classe de documents que vous voulez utiliser est marquée 
+\begin_inset Quotes fld
 \end_inset
 
-Installing new LaTeX files
-\begin_inset Quotes erd
+indisponible
+\begin_inset Quotes frd
 \end_inset
 
- of the 
+, vous devrez installer les fichiers du paquetage approprié.
+ La méthode la plus simple pour savoir quels fichiers vous devez installer
+ est d'utiliser cette classe de document pour un nouveau fichier.
+ LyX affichera une fenêtre de dialogue avec la liste des fichiers manquants.
+ Voir la section 
+\begin_inset Quotes fld
+\end_inset
+
+Installer de nouveaux fichiers LaTeX
+\begin_inset Quotes frd
+\end_inset
+
+ du manuel 
 \emph on
-Customization
+Personnalisation
 \emph default
- manual for information on how to install them.
+ pour plus d'information sur la façon de les installer.
 \begin_inset VSpace medskip
 \end_inset
 
@@ -2775,26 +2747,25 @@ Customization
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Although LyX provides support for many different sorts of documents, it
- does not include support for every document class people might want to
- use.
- For example, many universities provide LaTeX class files to be used for
- dissertations submitted to those universities.
- The LyX team cannot write layout files to support every one of these.
- There are too many.
- Fortunately, users can write their own layout files, and many users have
- done so.
- Chapter
+Bien que LyX gère de nombreuses sortes de documents, il ne comprend pas
+ le support de toutes les classes de documents que les gens pourront vouloir
+ utiliser.
+ Par exemple, de nombreuses universités fournissent des fichiers LaTeX pour
+ les mémoires de thèse qui leur sont soumis.
+ L'équipe LyX ne peut écrire de fichiers de format pour chacun de ces modèles
+ de thèse.
+ Il y en a tout simplement trop.
+ Heureusement, les utilisateurs peuvent écrire leurs propres fichiers de
+ format, et ils sont nombreux à l'avoir déjà fait.
+ Le Chapitre
 \begin_inset space ~
 \end_inset
 
-5 of the 
+5 du manuel 
 \emph on
-Customization
+Personnalisation
 \emph default
- manual contains information on how to create layout files.
+ contient plus d'information sur la façon de créer ces fichiers de format.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2849,21 +2820,18 @@ e.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Some modules require LaTeX packages that are not always installed by default.
- LyX will warn you if you do not have the needed package.
- You can still use the module while editing your file, but you will not
- be able to export to PDF or print your document, since LyX will not be
- able to compile the LaTeX file without the missing package.
- If you want to be able to produce output, then you need to install the
- missing package and then reconfigure LyX by selecting 
+Certains modules ont besoin de paquetages LaTeX qui ne sont pas toujours
+ installés par défaut.
+ LyX vous préviendra si vous n'avez pas le paquetage nécessaire.
+ Vous pouvez quand même utiliser le module pour éditer votre document, mais
+ vous ne pourrez pas l'exporter en PDF ou l'imprimer, puisque LyX ne sera
+ pas en mesure de compiler le fichier LaTeX sans le paquetage manquant.
+ Si vous voulez pouvoir produire une sortie, vous devrez installer le paquetage
+ manquant et reconfigurer LyX en choisissant 
 \family sans
-Tools\SpecialChar \menuseparator
-Reconfigure
+Outils\SpecialChar \menuseparator
+Reconfigurer
 \family default
-.
-\lang french
 
 \begin_inset Index idx
 status collapsed
@@ -2874,21 +2842,20 @@ Reconfiguration de LyX
 
 \end_inset
 
-
-\lang english
- See section 
-\begin_inset Quotes eld
+.
+ Voir la section 
+\begin_inset Quotes fld
 \end_inset
 
-Installing new LaTeX files
-\begin_inset Quotes erd
+Installer de nouveaux fichiers LaTeX
+\begin_inset Quotes frd
 \end_inset
 
- of the 
+ du manuel 
 \emph on
-Customization
+Personnalisation
 \emph default
- manual for more information on installing needed packages.
+ pour plus d'information sur la façon d'installer les paquetages nécessaires.
 \end_layout
 
 \begin_layout Standard
@@ -3701,14 +3668,22 @@ tout
  Ceci inclut les environnements de paragraphe.
  Quelques-uns sont standard, et toutes les classes de document les possèdent.
  Cependant, certaines classes ont des environnements de paragraphe spéciaux.
- Si tel est le cas, et que vous changez de classe de document, 
-\lang english
-LyX will mark the paragraphs whose styles it no longer understands as “unknown”.
- The name of the style is retained, in case you should want to go back to
- the old class.
- But these paragraphs will be output with no special formatting, so you
- will either need to create a new style yourself or else to convert these
- paragraphs manually to a style present in your new document class.
+ Si tel est le cas, et que vous changez de classe de document, LyX va marquer
+ les paragraphes dont il ne comprend plus le style comme 
+\begin_inset Quotes fld
+\end_inset
+
+inconnu
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Le nom du style est conservé, au cas où vous voudriez revenir à l'ancienne
+ classe.
+ Mais ces paragraphes seront sortis sans formattage particulier, ce qui
+ fait que soit vous devrez créer un nouveau style vous-même ou convertir
+ manuellement ces paragraphes en un style qui soit présent dans votre nouvelle
+ classe de document.
 \end_layout
 
 \begin_layout Section
@@ -10530,18 +10505,17 @@ Edge
 \end_inset
 
 .
- Pour obtenir cet effet, vous pouvez utiliser 
-\lang english
-the phantom insets available via the menu 
+ Pour obtenir cet effet, vous pouvez utiliser l'insert fantôme qui est disponibl
+e via le menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Formatting\SpecialChar \menuseparator
-Phantom
+Insérer\SpecialChar \menuseparator
+Typographie spéciale\SpecialChar \menuseparator
+Fantôme
 \family default
 .
- In our case insert a horizontal phantom at the beginning of the last two
- lines and insert 
-\begin_inset Quotes eld
+ Dans notre cas, il faut insérer un fantôme horizontal au début des deux
+ lignes qui suivent et mettre 
+\begin_inset Quotes fld
 \end_inset
 
 Mr.
@@ -10553,12 +10527,10 @@ Edge
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes fld
 \end_inset
 
- into the phantom inset
-\lang french
- (noter l'espace après 
+dans l'insert fantôme (noter l'espace après 
 \begin_inset Quotes eld
 \end_inset
 
@@ -10567,21 +10539,20 @@ Edge
 \end_inset
 
 ).
- 
-\lang english
-A phantom insets prints only the space of its content (like a placeholder).
- That is why it is named 
-\begin_inset Quotes eld
+ Un insert fantôme imprime seulement l'espace correspondant à son contenu
+ (une sorte de réserve).
+ D'où son nom de 
+\begin_inset Quotes fld
 \end_inset
 
-phantom
-\begin_inset Quotes erd
+fantôme
+\begin_inset Quotes frd
 \end_inset
 
 .
- The normal phantom ouputs the width and heigth of the content as space,
- while the horizontal and vertical variant only outputs the corresponding
- dimension.
+ L'insert fantôme normal va produire un espace ayant la hauteur et la largeur
+ de son contenu, les fantômes horizontaux et verticaux ne conservent que
+ la dimension concernée.
 \end_layout
 
 \begin_layout Subsection
@@ -11253,7 +11224,11 @@ height "1pt"
 A partir du menu 
 \family sans
 Insérer\SpecialChar \menuseparator
-Formats\SpecialChar \menuseparator
+Typographie
+\begin_inset space ~
+\end_inset
+
+spéciale\SpecialChar \menuseparator
 Ligne
 \begin_inset space ~
 \end_inset
@@ -11261,10 +11236,8 @@ Ligne
 Horizontale 
 \family default
 vous pouvez insérer des lignes horizontales.
- 
-\lang english
-The line offset is the vertical distance between the line and the baseline
- of the current text line or paragraph.
+ L'offset de la ligne est la distance entre la ligne et la ligne de base
+ de la ligne de texte ou du paragraphe courant.
 \end_layout
 
 \begin_layout Standard
@@ -11591,9 +11564,7 @@ texte mis en évidence
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-LaTeX font support
+Gestion des polices de caractères par LaTeX
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:LaTeX-font-support"
@@ -11604,24 +11575,24 @@ name "sub:LaTeX-font-support"
 \end_layout
 
 \begin_layout Standard
-
+D'habitude, LaTeX utilise ses propres polices de caractères.
+ C'est-à-dire que vous ne pouvez pas accéder directement aux polices qui
+ sont installées sur votre système d'exploitation et que vous devez utiliser
+ les polices spécifiques fournies par votre distribution LaTeX.
+ La raison est que LaTeX a besoin d'information supplémentaire sur les polices
+ qui sont fournies par des fichiers ou des paquetages additionnels.
+ Le principal inconvénient est que le choix de police est limité, comparé
+ à celui proposé par les traitements de textes classiques.
+ D'un autre côté, on a l'avantage que les polices fournies sont généralement
+ de très bonne qualité et que les fichiers LaTeX sont très facilement portables
+ d'une machine à l'autre.
+ De plus, le nombre de polices acceptées par le LaTeX traditionnel a augmenté
+ de façon importante ce qui fait que vous pouvez trouver des paquetages
+ pour plusieurs polices libres et commerciales.
+ Du côté de LyX, seule une partie de ces dernières est direcement accessible
+ grâce à l'interface utilisateur ( voir la section
 \lang english
-Traditionally, LaTeX uses its own fonts.
- That is to say, you cannot directly access the fonts installed on your
- operating system, but you have to use specific fonts provided by your LaTeX
- distribution.
- The reason is that LaTeX needs some extra information about the fonts,
- which have to be provided by additional files and packages.
- The downside of this is that your font choice is somewhat limited, compared
- to usual word processors.
- On the other hand this comes with the advantage that the provided fonts
- are generally of very good quality, and that LaTeX files are very portable
- across different machines.
- Also, the range of fonts supported by traditional LaTeX was increased a
- lot meanwhile so that you can find packages for many free and commercial
- fonts.
- In LyX, only a subset of these are directly selectable via the user interface
- (see section
+
 \begin_inset space ~
 \end_inset
 
@@ -11632,22 +11603,23 @@ reference "sub:Document-Polices"
 
 \end_inset
 
- for details).
- However, all others are available if you enter the respective LaTeX code
- in the document preamble (please refer to the documentation of your desired
- font).
+
+\lang french
+ pour plus de détails ).
+ Toutes les autres polices sont néanmoins accessibles si vous entrez les
+ codes LaTeX correspondants dans le préambule du document ( veuillez voir
+ la documentation de la police que vous voulez utiliser ).
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Furthermore, recent developments brought some new LaTeX engines that are
- also able to directly access fonts that are installed for your operating
- system (OS), namely XeTeX and LuaTeX.
- Both engines are now supported by LyX.
- By using them, you can use theoretically any OpenType or TrueType font
- that is installed on your system (note though, that ).
- The next section describes how to use these OS fonts.
+En plus, des évolutions récentes on vu apparaître de nouveaux moteurs de
+ rendu LaTeX qui sont aussi capables d'accéder directement aux polices de
+ caractères qui sont installées sur votre système d'exploitation, ce sont
+ XeTeX et LuaTeX.
+ Ces deux moteurs sont maintenat acceptés par LyX.
+ En les utilisant, vous pouvez théoriquement utiliser n'importe quelle police
+ TruType ou OpenType qui serait installée sur votre système.
+ La section suivante décrit comment utiliser ces polices système.
 \end_layout
 
 \begin_layout Standard
@@ -11659,11 +11631,11 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Note:
 \series default
- In practice, some fonts might fail due to bad metrics and other font deficienci
-es; so you might have to experiment.
+ En pratique, certaines polices pourront ne pas fonctionner à cause de mauvaises
+ informations de métrique ou d'autres défauts ; vous devez donc expérimenter
+ un peu.
 \end_layout
 
 \end_inset
@@ -11680,11 +11652,10 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Note:
 \series default
- XeTeX and especially LuaTeX, are still rather new and thus not as mature
- as traditional LaTeX or PDFLaTeX.
+ XeTeX plus particulièrement LuaTeX, sont encore assez récents et donc pas
+ aussi mûrs que le LaTeX traditionnel ou que PDFLaTeX.
 \end_layout
 
 \end_inset
@@ -11741,50 +11712,40 @@ Document ! Paramètres
 \end_inset
 
 .
- 
-\lang english
-In the 
+ Dans la rubrique 
 \family sans
-Fonts
+Polices
 \family default
- section of the dialog, you can specify which font should be used for the
- three different font shapes — roman (serif), 
+ de la fenêtre de dialogue, vous pouvez choisir quelle police devra être
+ utilisée pour chacune des différentes familles de polices --- 
 \family sans
-sans
+Romain
+\family default
+ (sérif), 
+\family sans
+Sans
 \begin_inset space ~
 \end_inset
 
-serif
+empattement
 \family default
- and 
-\family typewriter
-typewriter
+ (sans sérif) et 
+\family sans
+Chasse
+\begin_inset space ~
+\end_inset
+
+fixe
 \family default
- (monospaced) — you can specify the base font size and scaling factors for
- (some) sans serif and typewriter fonts if this is necessary to fit with
- the roman font.
+ (machine à écrire) -- vous pouvez donner la taille de base de la police
+ et des facteurs d'échelle pour certaines polices sans sérif ou à chasse
+ fixe pour les faire correspondre à la police romaine.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you select 
-\family sans
-Use non-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX fonts
-\family default
-, you will have access to the fonts installed on your operating system.
- This requires that you use 
+Si vous cochez Utiliser des polices non-TeX, vous aurez accès aux polices
+ accessibles sur votre système d'exploitation.
+ Cela impliquera que vous utilisiez 
 \family sans
 PDF (XeT
 \begin_inset ERT
@@ -11814,7 +11775,7 @@ status collapsed
 
 eX)
 \family default
- or 
+ ou 
 \family sans
 DVI (LuaT
 \begin_inset ERT
@@ -11827,17 +11788,10 @@ status collapsed
 
 \end_inset
 
-eX)
+eX) 
 \family default
- as output format, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space ~
-\end_inset
-
-you will have to have either XeTeX or LuaTeX installed (see section
+comme formats de sortie, c'est-à-dire que vous ayez soit XeTeX, soit LuaTex
+ installé (voir la section
 \begin_inset space ~
 \end_inset
 
@@ -11849,33 +11803,35 @@ reference "sub:LaTeX-font-support"
 \end_inset
 
 ).
- You will then not have access to TeX's own fonts (the selection described
- below).
- Note that LyX lists all available fonts in either of the three lists (roman,
- sans
+ Vous n'aurez plus alors accès aux polices de TeX (la sélection décrite
+ plus loin).
+ Notez que LyX donne la liste de toutes les polices disponibles dans les
+ trois familles (romaine, sans
 \begin_inset space ~
 \end_inset
 
-serif, and typewriter), since LyX cannot determine the family.
- Also note that the output might fail with some of the listed fonts, due
- to the encoding of the fonts and\SpecialChar \slash{}
-or font failures.
- Again, LyX cannot determine this in advance, so you might need to experiment.
+empattement et à chasse
+\begin_inset space ~
+\end_inset
+
+fixe), puisque LyX ne peut pas déterminer la famille à laquelle appartient
+ une police donnée).
+ Notez que la sortie peut échouer pour certaine polices de la liste à cause
+ de l'encodage de la police ou d'un défaut.
+ Là encore, LyX ne peut pas anticiper cs problèmes, vous devez donc faire
+ des essais.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you use TeX fonts (which is the default), 
-\lang french
-les options pour le choix des polices sont 
+Si vous utilisez des polices propres à TeX (ce qui est le comportement implicite
+), les options pour le choix des polices sont 
 \family sans
-défaut
+implicite
 \family default
  et une liste de polices de caractères présentes sur votre système.
  
 \family sans
-défaut
+implicite
 \family default
  utilise les polices TeX standard, connues sous les noms de 
 \begin_inset Quotes eld
@@ -12012,14 +11968,12 @@ AE
 \family typewriter
 Almost European
 \family default
-) 
-\lang english
-in (the rare) case that 
+) dans les (rares) cas où 
 \family typewriter
 Latin Modern
 \family default
- is not available to you or does not work, and you still want to emulate
- the look of 
+ ne vous est pas accessible ou ne fonctionne pas et que vous voulez quand
+ même imiter l'aspect des policesi 
 \family typewriter
 cm
 \family default
@@ -12028,8 +11982,6 @@ cm
 ec
 \family default
 .
-
-\lang french
  
 \family typewriter
 AE
@@ -12136,7 +12088,11 @@ brève
 \begin_inset Quotes eld
 \end_inset
 
- e +
+ e
+\begin_inset space ~
+\end_inset
+
++
 \begin_inset space ~
 \end_inset
 
@@ -12148,9 +12104,7 @@ brève
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-If you do not like the look of 
+Si vous n'aimez pas l'aspect des polices 
 \family typewriter
 cm
 \family default
@@ -12158,82 +12112,56 @@ cm
 \family typewriter
 ec
 \family default
-, you can of course select one of the other provided vector fonts, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
-\end_inset
-
-
+, vous pouvez, bien sûr, chosir une autre police parmis les polices vectorielles
+ proposées, comme par exemple 
 \family sans
 Times Roman
 \family default
- or
+ ou
 \family typewriter
  
 \family sans
 Palatino
 \family default
 .
- Most roman vector fonts will automatically select matching sans
-\begin_inset space ~
-\end_inset
-
-serif and typewriter fonts
+ La plupart des police romaines vectorielles vont automatiquement sélectionner
+ les polices sans empattement et à chasse fixe correspondantes
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-These are sometimes just matching other fonts (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., 
+Ces dernières sont parfois seulement d'autres polices qui sont compatibles
+ (par exemple 
 \family sans
 Times Roman
 \family default
- selects 
+ sélectionne 
 \family sans
 Helvetiva
 \family default
- for sans serif text), and sometimes, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
- with 
+ comme police sans empattement), mais parfois, comme par exemple avec 
 \family typewriter
 Latin Modern
 \family default
- or 
+ ou 
 \family typewriter
 Computer Modern
 \family default
-, different shapes of the same font, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
- a real font 
+, on a les différentes formes d'une même police, c'est-à-dire une véritable
+ 
 \emph on
-family
+famille
 \emph default
-.
+ de polices.
 \end_layout
 
 \end_inset
 
-, but you can also select your own.
-\lang french
-
+, mais vous pouvez aussi faire votre propre choix.
 \begin_inset Newline newline
 \end_inset
 
-Les différences entre les polices roman, 
+Les différences entre les polices romaine, 
 \family sans
 sans
 \begin_inset space ~
@@ -12296,21 +12224,13 @@ défaut, 10
 12
 \family default
 .
- 
-\lang english
-Some classes provide additional sizes.
-
-\lang french
+ Certaines classes proposent des tailles supplémentaires.
  La taille 
 \family sans
-défaut
+implicite
 \family default
- dépend de 
-\lang english
-the class you are using.
- In the standard classes
-\lang french
- elle est égale à la taille 10.
+ dépend de la classe que vous utilisez.
+ Pour les classes standard elle est égale à la taille 10.
 \end_layout
 
 \begin_layout Standard
@@ -12320,8 +12240,16 @@ tailles de base
 \emph default
 .
  Cela signifie que LyX va mettre à l'échelle toutes les tailles de caractères
- qu'il utilise ( comme celle qu'il utilise pour les notes de bas de page,
- les indices et les exposants).
+ qu'il utilise (
+\begin_inset space ~
+\end_inset
+
+comme celle qu'il utilise pour les notes de bas de page, les indices et
+ les exposants
+\begin_inset space ~
+\end_inset
+
+).
  Vous pouvez effectuer des réglages fins pour la taille des caractères de
  certaines portions du texte avec la fenêtre de dialogue 
 \family sans
@@ -12352,43 +12280,38 @@ reference "sub:Réglage-fin-avec"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The 
+Le champ 
 \family sans
-Default Family
-\family default
- selection lets you specify whether the base font of your document should
- be roman, sans
+Famille
 \begin_inset space ~
 \end_inset
 
-serif or typewriter.
- The 
-\family sans
-Default
+implicite
 \family default
- selection uses what is preset by the class, the other selections override
- this.
- In most cases, 
+ vous permet de préciser si la police de base de votre document doit être
+ romaine, sans empattement ou à chasse fixe.
+ Le choix 
 \family sans
-Default
+Implicite
 \family default
- is equal to 
+ utilise ce qui est déterminé par votre classe de document, les autres choix
+ vont remplacer ces derniers.
+ Dans la plupart des cas, 
 \family sans
-roman
+Implicite
 \family default
-, but some classes (such as presentation classes) also use other defaults.
+ est équivallent à 
+\family sans
+Romain
+\family default
+, mais certaines classes ( comme les classes de présentations ) peuvent
+ utiliser d'autres sélections implicites.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The
-\family typewriter
- 
+Le champ 
 \family sans
-LaTe
+Encodage de police LaTe
 \begin_inset ERT
 status collapsed
 
@@ -12399,57 +12322,50 @@ status collapsed
 
 \end_inset
 
-X font encoding
+X
 \family default
- selection is an expert setting which lets you change the value passed to
- the LaTeX-package
+ est un réglage avancé qui permet de changer la valeur passée au paquetage
+ LaTeX 
 \emph on
 fontenc
 \emph default
 .
- Normally, you do not need to change (or even understand) this.
- Unless you have specific reasons use 
+ En principe, vous n'avez pas besoin de changer (ni même de comprendre)
+ ce paramètre.
+ Donc, sauf besoin précis, utilisez 
 \family sans
-Default
+Implicite
 \family default
 .
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-With some fonts, the checkboxes 
+Avec certaines polices, les cases à cocher 
 \family sans
-Use Old Style Figures
+Utiliser des vraies petites capitales
 \family default
- and 
+ et 
 \family sans
-Use True Small Caps
+Utiliser des chiffres à l'ancienne
 \family default
- are enabled.
- These are extra features some fonts provide.
- If 
+ sont activées.
+ Ce sont des propriétés supplémentaires que certaines polices possèdent.
+ Si vous cochez 
 \family sans
-Use Old Style Figures
+Utiliser des chiffres à l'ancienne
 \family default
- is checked, the font uses old style (also known as medieval or text) figures,
- i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space ~
-\end_inset
-
-figures with varying height that fit nicely with lower letters.
+, la police utilisera des chiffres à l'ancienne (aussi connus comme médiévaux
+ ou textuels), c'est à dire des chiffres ayant des hauteurs variables pour
+ mieux s'harmoniser avec les lettres minuscules.
  
 \family sans
-Use True Small Caps
+Utiliser des vraies petites capitales
 \family default
- determines that real small caps are used instead of faked small caps made
- of scaled capitals.
- Real small caps are often part of expert font sets; they generally look
- better than faked small caps but might have to be purchased separately.
+ fait que de vraies petites capitales sont utilisées à la place des approximatio
+ns obtenues en diminuant la taille des capitales normales.
+ Les vraies petites capitales font souvent partie de jeux de polices professionn
+elles ; leur apparence est souvent meilleure que celle des petites capitales
+ approchées, mais elles doivent souvent être achetées à part.
 \end_layout
 
 \begin_layout Standard
@@ -12476,7 +12392,7 @@ La police sera l'argument des commandes du paquetage LaTeX
 CJK
 \series default
 .
- Elle n'aura donc aucun effet sur un document en japonnais qui n'utiliserait
+ Elle n'aura donc aucun effet sur un document en japonais qui n'utiliserait
  pas 
 \series bold
 CJK
@@ -14189,11 +14105,9 @@ status collapsed
 \end_inset
 
 X).
-
-\family default
  
-\lang english
-The latter option uses the program 
+\family default
+Cette dernière option utilise le programme 
 \family typewriter
 LuaTeX
 \family default
@@ -14202,8 +14116,8 @@ LuaTeX
 \family typewriter
 LuaTeX
 \family default
- is an engine that provides direct Unicode support and support for direct
- font access (see section
+ est un moteur de rendu qui permet l'utilisation directe de Unicode et l'utilisa
+tion directe des polices de caractères (voir la section
 \begin_inset space ~
 \end_inset
 
@@ -14215,8 +14129,9 @@ reference "sub:LaTeX-font-support"
 \end_inset
 
 ).
- LuaTeX is still work in progress, but it might develop into the next standard
- TeX processor.
+ LuaTeX est encore actuellement en développement, mais il se pourrait qu'il
+ devienne le prochain standard de processeur TeX.
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -14507,19 +14422,18 @@ status collapsed
 
 \end_inset
 
-X) 
-\lang english
-This uses the program 
+X) Ceci utilise le programme 
 \family typewriter
 XeTeX
 \family default
- that converts your file directly to PDF.
+ qui convertit votre fichier directement en PDF.
  
 \family typewriter
 XeTeX
 \family default
- is a new engine that provides direct Unicode support and support for direct
- font access (see section
+ est un nouveau moteur de rendu qui permet une utilisation directe de Unicode
+ ainsi qu'un accès direct aux polices de caractères de votre système (voir
+ la section
 \begin_inset space ~
 \end_inset
 
@@ -14531,7 +14445,8 @@ reference "sub:LaTeX-font-support"
 \end_inset
 
 ).
- It is particularly good at typesetting different scripts.
+ Il est particulièrement adapté pour la mise en forme de documents contenant
+ plusieurs écritures différentes.
 \end_layout
 
 \begin_layout Description
@@ -14550,23 +14465,21 @@ status collapsed
 
 \end_inset
 
-X) 
-\lang english
-This uses the program 
+X) Ceci utilise le programme 
 \family typewriter
 LuaTeX
 \family default
- that converts your file directly to PDF.
+ qui convertit votre fichier directement en PDF.
  
 \family typewriter
 LuaTeX
 \family default
- is an even newer engine, derived from 
+ est un moteur de rendu encore plus récent, dérivé de 
 \family typewriter
 pdflatex
 \family default
-, that also provides direct Unicode support and support for direct font
- access (see section
+, qui permet aussi une utilisation directe de Unicode ainsi qu'un accès
+ direct aux polices de caractères de votre système (voir la section
 \begin_inset space ~
 \end_inset
 
@@ -14578,8 +14491,12 @@ reference "sub:LaTeX-font-support"
 \end_inset
 
 ).
- LuaTeX is still work in progress, but it might develop into the next standard
- tex processor.
+ 
+\family typewriter
+LuaTeX
+\family default
+ est encore en développement, mais il pourrait devenir le prochain processeur
+ TeX standard.
 \end_layout
 
 \begin_layout Standard
@@ -14597,11 +14514,8 @@ pdftex
 \family default
  accepte toutes les fonctionnalités des versions actuelles de PDF.
  Il est en plus rapide et stable.
- 
-\lang english
-If you rely on multiscript support and\SpecialChar \slash{}
-or specific OpenType fonts, you might
- want to try out 
+ Si vous avez besoin de plusieurs écritures différentes et/ou d'utiliser
+ une police OpenType précise, vous aurez envie d'essayer 
 \family sans
 PDF
 \begin_inset space ~
@@ -14620,7 +14534,7 @@ status collapsed
 
 X)
 \family default
- or 
+ ou 
 \family sans
 PDF
 \begin_inset space ~
@@ -14639,8 +14553,8 @@ status collapsed
 
 X)
 \family default
- instead, bearing in mind that these two programs are not yet as mature
- as 
+ à la place, en gardant à l'esprit que ces deux programmes ne sont pas encore
+ aussi mûrs que 
 \family typewriter
 pdflatex
 \family default
@@ -15421,11 +15335,12 @@ A-b c
 .
  LaTeX considère le tiret comme une possibilité de césure, or une césure
  à cet endroit serait peu judicieuse.
- Pour empêcher le raccourci d'être coupe en deux, 
-\lang english
-you can put it into a makebox as described in section
-\lang french
- 
+ Pour empêcher le raccourci d'être coupe en deux, vous pouvez le mettre
+ dans une 
+\emph on
+makebox
+\emph default
+ comme c'est décrit dans la section 
 \begin_inset Quotes fld
 \end_inset
 
@@ -15433,13 +15348,12 @@ Empêcher la Césure
 \begin_inset Quotes frd
 \end_inset
 
- 
-\lang english
-of the 
+ du manuel 
 \emph on
-EmbeddedObjects
+Objets insérés
 \emph default
- manual.
+.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -26462,15 +26376,11 @@ Paquetages LaTeX ! refstyle
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Textual
+Référence
 \begin_inset space ~
 \end_inset
 
-reference: prints the caption of the reference
-\lang french
-: 
+textuelle: imprime la légende de la référence: 
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "cap:Deux-images-déformées."
@@ -26510,11 +26420,10 @@ page
 \begin_inset space ~
 \end_inset
 
-<page>
+<page> 
 \family default
- 
-\lang english
-will not print anything about the page if the label is on the same page.
+n'imprimera rien concernant la page s'il se trouve sur la même page que
+ l'étiquette.
 \end_layout
 
 \begin_layout Standard
@@ -26559,12 +26468,9 @@ reference "sec:Numérotation-et-étiquetage"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Right-clicking on a cross-reference opens a context menu.
- The entry 
+Faire un clic droit sur une référence croisée ouvre un menu contextuel.
+ Le champ 
 \family sans
-\lang french
 Aller
 \begin_inset space ~
 \end_inset
@@ -26575,20 +26481,12 @@ Aller
 
 l'étiquette
 \family default
- 
-\lang english
-sets the the cursor before the referenced label.
- This entry will be renamed in the context menu of the label to
-\lang french
- 
+ positionne le curseur juste avant l'étiquette à laquelle on fait référence.
+ Ce champ change de nom dans le menu contextuel et devient 
 \family sans
 Revenir
 \family default
- 
-\lang english
-so that you can use it to set the cursor back to the cross-reference.
-
-\lang french
+ pour pouvoir être utilisé pour revenir à la référence croisée.
  Vous pouvez aussi revenir au point de départ avec le bouton 
 \begin_inset Graphics
 	filename ../../images/bookmark-goto_0.png
@@ -26611,15 +26509,7 @@ Si une référence croisée fait référence à une étiquette qui n'existe pas,
 \end_layout
 
 \begin_layout Standard
-Les références sont décrites en détail 
-\lang english
-in sec
-\lang french
-.
-\begin_inset space ~
-\end_inset
-
- 
+Les références sont décrites en détail dans la section 
 \begin_inset Quotes fld
 \end_inset
 
@@ -30476,9 +30366,7 @@ de
 
 l'aperçu
 \family default
- 
-\lang english
-is the multiplication factor for the size.
+ est une facteur multiplicatif pour la taille.
 \end_layout
 
 \begin_layout Standard
@@ -40179,12 +40067,10 @@ Langue implicite
  marche pas avec un encodage utf8 fixé (quand la liste de commandes LaTeX
  connues n'est pas utilisée, puisque tous les symboles Unicode peuvent être
  encodés en utf8).
- 
-\lang english
-The situation is much better with XeTeX and LuaTeX, two new alternative
- engines to standard LaTeX.
- Both engines support Unicode natively.
- LyX now also supports these two engines (via the output formats 
+ La situation est nettement améliorée avec XeTeX et LuaTeX, les deux nouvelles
+ possibilités de moteurs de rendu pour remplacer le LaTeX standard.
+ Ces deux moteurs acceptent Unicode de façon native.
+ LyX gère maintenant aussi ces deux moteurs( via les formats de sortie 
 \family sans
 PDF
 \begin_inset space ~
@@ -40222,7 +40108,7 @@ status collapsed
 
 X)
 \family default
- and 
+ et 
 \family sans
 DVI
 \begin_inset space ~
@@ -40230,7 +40116,7 @@ DVI
 
 (LuaTeX)
 \family default
-; see section
+; voir section
 \begin_inset space ~
 \end_inset
 
@@ -40241,11 +40127,16 @@ reference "sec:Formats-des-fichiers-en-sortie"
 
 \end_inset
 
-), so if the above options fail, you might try out one of these new engines.
+), donc si les options décrites plus haut échouent, vous pouvez toujours
+ essayer l'un de ces deux nouveux moteurs de rendu.
 \end_layout
 
 \begin_layout Standard
-Voici la liste avec les encodages les plus importants:
+Voici la liste avec les encodages les plus importants
+\begin_inset space ~
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Description
@@ -40860,11 +40751,9 @@ LuaTeX
 inputenc
 \series default
 .
- 
-\lang english
-LyX automatically selects this encoding if you export or preview XeTeX or
- LuaTeX.
- Normally you do not need to set this encoding manually.
+ Lyx va choisir automatiquement cet encodage si vous exportez ou prévisualisez
+ en utilisant XeTeX ou LuaTeX.
+ En principe, vous n'avez pas à sélectionner cet encodage vous-même manuellement.
 \end_layout
 
 \begin_layout Description
@@ -41374,18 +41263,15 @@ fonction LyX
 \begin_inset VSpace smallskip*
 \end_inset
 
-Toutes les fonctions de LyX sont listées dans le 
-\lang english
-menu 
+Toutes les fonctions de LyX sont listées dans le menu 
 \family sans
-Help\SpecialChar \menuseparator
-LyX
+Aide\SpecialChar \menuseparator
+Fonctions
 \begin_inset space ~
 \end_inset
 
-Functions
+LyX
 \family default
-\lang french
 .
 \end_layout
 
