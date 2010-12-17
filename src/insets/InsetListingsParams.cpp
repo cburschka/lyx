@@ -36,7 +36,7 @@ enum param_type {
 	INTEGER, // accept an integer
 	LENGTH,  // accept a latex length
 	ONEOF,  // accept one of a few values
-	SUBSETOF, // accept a string composed of given characters
+	SUBSETOF // accept a string composed of given characters
 };
 
 

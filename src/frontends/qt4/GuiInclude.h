@@ -66,7 +66,7 @@ private:
 		///
 		INCLUDE,
 		///
-		LISTINGS,
+		LISTINGS
 	};
 	///
 	void updateLists();

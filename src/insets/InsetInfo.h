@@ -88,7 +88,7 @@ public:
 		MENU_INFO,      // Which menu item is used for certain function
 		ICON_INFO,      // which toolbar icon is used for certain function
 		BUFFER_INFO,    // Buffer related information
-		LYX_INFO,       // LyX version information
+		LYX_INFO        // LyX version information
 	};
 
 	///

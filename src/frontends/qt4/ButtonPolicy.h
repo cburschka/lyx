@@ -161,7 +161,7 @@ public:
 			to minimise problems to users by supplying an anything-goes policy via a
 			preprocessor directive.
 		 */
-		IgnorantPolicy,
+		IgnorantPolicy
 	};
 
 	/// Constructor

@@ -1885,7 +1885,7 @@ void Menus::read(Lexer & lex)
 	enum {
 		md_menu,
 		md_menubar,
-		md_endmenuset,
+		md_endmenuset
 	};
 
 	LexerKeyword menutags[] = {

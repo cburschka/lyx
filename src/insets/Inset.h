@@ -82,7 +82,7 @@ public:
 	enum EntryDirection {
 		ENTRY_DIRECTION_IGNORE,
 		ENTRY_DIRECTION_RIGHT,
-		ENTRY_DIRECTION_LEFT,
+		ENTRY_DIRECTION_LEFT
 	};
 	///
 	typedef ptrdiff_t  difference_type;

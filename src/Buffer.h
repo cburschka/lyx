@@ -133,8 +133,8 @@ public:
 	 * FIXME: replace this method with support/FileMonitor.
 	 */
 	enum CheckMethod {
-		checksum_method,  ///< Use file checksum
-		timestamp_method, ///< Use timestamp, and checksum if timestamp has changed
+		checksum_method, ///< Use file checksum
+		timestamp_method ///< Use timestamp, and checksum if timestamp has changed
 	};
 
 	///

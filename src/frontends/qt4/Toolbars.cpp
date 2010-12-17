@@ -74,7 +74,7 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 		TO_EXPORTFORMATS,
 		TO_IMPORTFORMATS,
 		TO_UPDATEFORMATS,
-		TO_VIEWFORMATS,
+		TO_VIEWFORMATS
 	};
 
 	struct LexerKeyword toolTags[] = {
@@ -267,7 +267,7 @@ void Toolbars::readToolbars(Lexer & lex)
 {
 	enum {
 		TO_TOOLBAR = 1,
-		TO_ENDTOOLBARSET,
+		TO_ENDTOOLBARSET
 	};
 
 	struct LexerKeyword toolTags[] = {

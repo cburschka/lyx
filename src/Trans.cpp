@@ -170,7 +170,7 @@ enum {
 	KCOMB = 1,
 	KMOD,
 	KMAP,
-	KXMOD,
+	KXMOD
 };
 
 

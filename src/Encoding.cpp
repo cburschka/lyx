@@ -825,7 +825,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 	// Now read the encodings
 	enum {
 		et_encoding = 1,
-		et_end,
+		et_end
 	};
 
 	LexerKeyword encodingtags[] = {

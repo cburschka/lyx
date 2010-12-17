@@ -41,7 +41,7 @@ public:
 		/// breakable slash
 		SLASH,
 		/// protected dash
-		NOBREAKDASH,
+		NOBREAKDASH
 	};
 
 	///

@@ -227,7 +227,7 @@ enum InsetCode {
 	///
 	SCRIPT_CODE,
 	///
-	INSET_CODE_SIZE,
+	INSET_CODE_SIZE
 };
 
 } // namespace lyx

@@ -33,7 +33,7 @@ public:
 		/// Some formats are both (e.g. pdf), they have this flag set.
 		document = 1,
 		/// Set if this format can contain vector graphics.
-		vector = 2,
+		vector = 2
 	};
 	///
 	Format(std::string const & n, std::string const & e, std::string const & p,

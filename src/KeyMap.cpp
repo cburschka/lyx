@@ -247,7 +247,7 @@ bool KeyMap::read(FileName const & bind_file, KeyMap * unbind_map)
 	enum {
 		BN_BIND,
 		BN_BINDFILE,
-		BN_UNBIND,
+		BN_UNBIND
 	};
 
 	LexerKeyword bindTags[] = {
