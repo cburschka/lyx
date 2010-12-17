@@ -39,6 +39,8 @@ public:
 	int docbook(odocstream &, OutputParams const &) const;
 	///
 	docstring xhtml(XHTMLStream & xs, OutputParams const &) const;
+	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes

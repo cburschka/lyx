@@ -14,8 +14,10 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "Cursor.h"
 #include "DispatchResult.h"
 #include "Font.h"
+#include "FuncRequest.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "OutputParams.h"
@@ -55,6 +57,21 @@ docstring InsetTOC::screenLabel() const
 	if (getCmdName() == "tableofcontents")
 		return buffer().B_("Table of Contents");
 	return _("Unknown TOC type");
+}
+
+
+void InsetTOC::doDispatch(Cursor & cur, FuncRequest & cmd) {
+	switch (cmd.action()) {
+	case LFUN_MOUSE_RELEASE:
+		if (!cur.selection() && cmd.button() == mouse_button::button1) {
+			showInsetDialog(&cur.bv());
+			cur.dispatched();
+		}
+		break;
+	
+	default:
+		InsetCommand::doDispatch(cur, cmd);
+	}
 }
 
 
