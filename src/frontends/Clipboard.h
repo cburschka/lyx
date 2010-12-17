@@ -39,7 +39,7 @@ public:
 		LinkBackGraphicsType,
 		EmfGraphicsType,
 		WmfGraphicsType,
-		AnyGraphicsType,
+		AnyGraphicsType
 	};
 
 	/**
