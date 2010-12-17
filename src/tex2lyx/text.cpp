@@ -2545,8 +2545,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "bibliography") {
 			context.check_layout(os);
-			begin_command_inset(os, "bibliography", "bibliography");
-			os << "bibtex" << "\n";
+			begin_command_inset(os, "bibtex", "bibtex");
 			os << "bibfiles " << '"' << p.verbatim_item() << '"' << "\n";
 			// Do we have a bibliographystyle set?
 			if (!bibliographystyle.empty())
