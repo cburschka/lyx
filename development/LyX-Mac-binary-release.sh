@@ -530,11 +530,8 @@ build_lyx() {
 	# -------------------------------------
 
 	if [ -d "${ASpellInstallDir}" -a "yes" = "${aspell_deployment}" ]; then
-		ASpellFramework=`framework_name Aspell`
-		ASpellFramework=`basename "${ASpellFramework}"`
 		ConfigureExtraInc="--with-extra-inc=${ASpellInstallDir}/include"
 		ConfigureExtraLib="--with-extra-lib=${ASpellInstallDir}/lib"
-		LyXConfigureOptions="${LyXConfigureOptions} --with-aspell-framework=${ASpellFramework}"
 	fi
 
 	if [ -d "${HunSpellInstallDir}" -a "yes" = "${hunspell_deployment}" ]; then
