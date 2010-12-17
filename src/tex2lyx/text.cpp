@@ -95,7 +95,8 @@ char const * const known_ref_commands[] = { "ref", "pageref", "vref",
 
 /*!
  * natbib commands.
- * The starred forms are also known.
+ * The starred forms are also known except for "citefullauthor",
+ * "citeyear" and "citeyearpar".
  */
 char const * const known_natbib_commands[] = { "cite", "citet", "citep",
 "citealt", "citealp", "citeauthor", "citeyear", "citeyearpar",
@@ -111,7 +112,7 @@ char const * const known_jurabib_commands[] = { "cite", "citet", "citep",
 // "fullcite",
 // "footcite", "footcitet", "footcitep", "footcitealt", "footcitealp",
 // "footciteauthor", "footciteyear", "footciteyearpar",
-"citefield", "citetitle", "cite*", 0 };
+"citefield", "citetitle", 0 };
 
 /// LaTeX names for quotes
 char const * const known_quotes[] = { "dq", "guillemotleft", "flqq", "og",
@@ -355,13 +356,13 @@ void begin_inset(ostream & os, string const & name)
 	os << "\n\\begin_inset " << name;
 }
 
-/*// use this void when format 288 is supported
+
 void begin_command_inset(ostream & os, string const & name,
-						 string const & latexname)
+                         string const & latexname)
 {
-	os << "\n\\begin_inset CommandInset " << name;
-	os << "\nLatexCommand " << latexname << "\n";
-}*/
+	begin_inset(os, "CommandInset ");
+	os << name << "\nLatexCommand " << latexname << '\n';
+}
 
 
 void end_inset(ostream & os)
@@ -1502,8 +1503,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "bibitem") {
 			context.set_item();
 			context.check_layout(os);
-			begin_inset(os, "LatexCommand ");
-			os << t.cs() << "\n";
+			begin_command_inset(os, "bibitem", "bibitem");
 			os << "label \"" << p.getOptContent() << "\"\n";
 			os << "key \"" << p.verbatim_item() << "\"\n";
 			end_inset(os);
@@ -1857,8 +1857,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "tableofcontents") {
 			p.skip_spaces();
 			context.check_layout(os);
-			begin_inset(os, "LatexCommand ");
-			os << t.cs() << "\n";
+			begin_command_inset(os, "toc", "tableofcontents");
 			end_inset(os);
 			skip_braces(p); // swallow this
 		}
@@ -1996,8 +1995,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (is_known(t.cs(), known_ref_commands)) {
 			context.check_layout(os);
-			begin_inset(os, "LatexCommand ");
-			os << t.cs() << "\n";
+			begin_command_inset(os, "ref", t.cs());
 			// LyX cannot handle newlines in a latex command
 			// FIXME: Move the substitution into parser::getOpt()?
 			os << subst(p.getOpt(), "\n", " ");
@@ -2057,8 +2055,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// LyX cannot handle newlines in the parameter
 				before = subst(before, "\n", " ");
 			}
-			begin_inset(os, "LatexCommand ");
-			os << t.cs() << "\n";
+			begin_command_inset(os, "citation", command);
 			os << "after " << '"' << after << '"' << "\n";
 			os << "before " << '"' << before << '"' << "\n";
 			os << "key " << '"' << p.verbatim_item() << '"' << "\n";
@@ -2066,9 +2063,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (use_jurabib &&
-			 is_known(t.cs(), known_jurabib_commands)) {
+			 is_known(t.cs(), known_jurabib_commands) &&
+		         (t.cs() == "cite" || p.next_token().asInput() != "*")) {
 			context.check_layout(os);
-			string const command = t.cs();
+			string command = t.cs();
+			if (p.next_token().asInput() == "*") {
+				command += '*';
+				p.get_token();
+			}
 			char argumentOrder = '\0';
 			vector<string> const & options = used_packages["jurabib"];
 			if (find(options.begin(), options.end(),
@@ -2102,8 +2104,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				before.erase(0, 1);
 				before.erase(before.length() - 1, 1);
 			}
-			begin_inset(os, "LatexCommand ");
-			os << t.cs() << "\n";
+			begin_command_inset(os, "citation", command);
 			os << "after " << '"' << after << '"' << "\n";
 			os << "before " << '"' << before << '"' << "\n";
 			os << "key " << '"' << citation << '"' << "\n";
@@ -2114,8 +2115,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			// LyX cannot handle newlines in a latex command
 			string after = subst(p.getOptContent(), "\n", " ");
-			begin_inset(os, "LatexCommand ");
-			os << t.cs() << "\n";
+			begin_command_inset(os, "citation", "cite");
 			os << "after " << '"' << after << '"' << "\n";
 			os << "key " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
 			end_inset(os);
@@ -2123,8 +2123,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "index") {
 			context.check_layout(os);
-			begin_inset(os, "LatexCommand ");
-			os << t.cs() << "\n";
+			begin_command_inset(os, "index", "index");
 			// LyX cannot handle newlines in a latex command
 			os << "name " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
 			end_inset(os);
@@ -2132,8 +2131,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "nomenclature") {
 			context.check_layout(os);
-			begin_inset(os, "LatexCommand ");
-			os << t.cs() << "\n";
+			begin_command_inset(os, "nomenclature", "nomenclature");
 			// LyX cannot handle newlines in a latex command
 			string prefix = subst(p.getOptContent(), "\n", " ");
 			if (!prefix.empty())
@@ -2145,8 +2143,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		
 		else if (t.cs() == "label") {
 			context.check_layout(os);
-			begin_inset(os, "LatexCommand ");
-			os << t.cs() << "\n";
+			begin_command_inset(os, "label", "label");
 			// LyX cannot handle newlines in a latex command
 			os << "name " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
 			end_inset(os);
@@ -2154,24 +2151,21 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "printindex") {
 			context.check_layout(os);
-			begin_inset(os, "LatexCommand ");
-			os << t.cs() << "\n";
+			begin_command_inset(os, "index_print", "printindex");
 			end_inset(os);
 			skip_braces(p);
 		}
 
 		else if (t.cs() == "printnomenclature") {
 			context.check_layout(os);
-			begin_inset(os, "LatexCommand ");
-			os << t.cs() << "\n";
+			begin_command_inset(os, "nomencl_print", "printnomenclature");
 			end_inset(os);
 			skip_braces(p);
 		}
 
 		else if (t.cs() == "url") {
 			context.check_layout(os);
-			begin_inset(os, "LatexCommand ");
-			os << t.cs() << "\n";
+			begin_command_inset(os, "url", "url");
 			// LyX cannot handle newlines in a latex command
 			os << "target " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
 			end_inset(os);
@@ -2551,7 +2545,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "bibliography") {
 			context.check_layout(os);
-			begin_inset(os, "LatexCommand ");
+			begin_command_inset(os, "bibliography", "bibliography");
 			os << "bibtex" << "\n";
 			os << "bibfiles " << '"' << p.verbatim_item() << '"' << "\n";
 			// Do we have a bibliographystyle set?
