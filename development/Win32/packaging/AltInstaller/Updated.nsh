@@ -24,7 +24,9 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\examples\sr"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\sr\splash.lyx"
  SetOutPath "$INSTDIR\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\letter.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\lettre.layout"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\scrclass.inc"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  #SetOutPath "$INSTDIR\Resources\templates"
