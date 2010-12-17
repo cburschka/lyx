@@ -2123,9 +2123,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "index") {
 			context.check_layout(os);
-			begin_command_inset(os, "index", "index");
-			// LyX cannot handle newlines in a latex command
-			os << "name " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
+			begin_inset(os, "Index\n");
+			os << "status collapsed\n";
+			parse_text_in_inset(p, os, FLAG_ITEM, false, context);
 			end_inset(os);
 		}
 
