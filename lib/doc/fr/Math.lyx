@@ -1,4 +1,4 @@
-#LyX 2.0.0beta2 created this file. For more info see http://www.lyx.org/
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 410
 \begin_document
 \begin_header
@@ -4015,22 +4015,22 @@ reference "sub:Crochets-multilignes"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Placeholders can also be used for text when it is inserted via the menu
- 
+Les réserves peuvent aussi être utilisées avec du texte en les insérant
+ via le menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Formatting\SpecialChar \menuseparator
-Phantom
+Insérer\SpecialChar \menuseparator
+Typographie
+\begin_inset space ~
+\end_inset
+
+spéciale\SpecialChar \menuseparator
+Fantôme
 \family default
-:
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This is a sentence.
+Ceci est une phrase.
 \begin_inset Newline newline
 \end_inset
 
@@ -4039,14 +4039,12 @@ This is a sentence.
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-This
+Ceci
 \end_layout
 
 \end_inset
 
- is a sentence.
+ est aussi une phrase.
 \end_layout
 
 \begin_layout Subsection
@@ -4384,25 +4382,30 @@ Voici une phrase
 \backslash
 rule
 \series default
- peut aussi être utilisé avec du texte si 
-\lang english
-a line is inserted via the menu 
+ peut aussi être utilisé avec du texte si la ligne est insérée via le menu
+ 
 \family sans
-Insert\SpecialChar \menuseparator
-Formatting\SpecialChar \menuseparator
-Horizontal
+Insérer\SpecialChar \menuseparator
+Typographie
 \begin_inset space ~
 \end_inset
 
-Line
+spéciale\SpecialChar \menuseparator
+Ligne
+\begin_inset space ~
+\end_inset
+
+horizontale
 \family default
+
+\begin_inset space ~
+\end_inset
+
 :
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This is a sentence 
+Ceci est une phrase 
 \begin_inset CommandInset line
 LatexCommand rule
 offset "0.5ex"
@@ -4411,7 +4414,7 @@ height "1pt"
 
 \end_inset
 
- with one line.
+ avec une ligne.
 \end_layout
 
 \begin_layout Subsection
@@ -4881,35 +4884,37 @@ ldots
 \end_inset
 
 
-\lang english
-To use 
+\end_layout
+
+\begin_layout Standard
+Pour utiliser 
 \series bold
 
 \backslash
 iddots
 \series default
-, one of the options 
+, on doit utiliser une des options 
 \family sans
-Use mathdots package (automatically)
-\family default
- must be set in the document settings under 
-\family sans
-Math
+Utiliser
 \begin_inset space ~
 \end_inset
 
-Options
+(automatiquement) le paquetage mathdots 
+\family default
+dans les paramètres du document, rubrique 
+\family sans
+Options du mode math
 \family default
 .
 \begin_inset Newline newline
 \end_inset
 
-Using the option 
+L'utilisation de l'option 
 \family sans
-Use mathdots package
+Utiliser le paquetage mathdots
 \family default
- will improve the appearance of all dots in the documents if their font
- style or size is not the default.
+ améliorera l'apparence de tous les points du document si leur police ou
+ leur taille de caractère n'est pas le choix implicite.
 \end_layout
 
 \begin_layout Standard
@@ -5202,10 +5207,6 @@ lccr
 c
 \series default
 .
-\begin_inset Newpage pagebreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -5301,13 +5302,9 @@ La
 \family sans
 Décoration
 \family default
- 
-\lang english
-adds parentheses in the selected style around the matrix.
- Alternatively
-\lang french
-, on peut ajouter des parenthèses autour d'une matrice, soit avec les commandes
- 
+ permet d'ajouter des parenthèses du type choisi autour de la matrice.
+ Une autre façon d'ajouter des parenthèses autour d'une matrice, est soit
+ d'utiliser les commandes 
 \series bold
 
 \backslash
@@ -5358,7 +5355,7 @@ reference "sub:Taille-parenthèses-automatique"
 
 \end_inset
 
-, ou en utilisant les commandes suivantes:
+, soit d'utiliser les commandes suivantes:
 \begin_inset VSpace medskip
 \end_inset
 
@@ -5366,14 +5363,10 @@ reference "sub:Taille-parenthèses-automatique"
 \end_layout
 
 \begin_layout Standard
-\begin_inset space \hfill{}
-\end_inset
-
-
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -5720,10 +5713,6 @@ matrice
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -5741,9 +5730,7 @@ vmatrix,
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-Note that decorated matrices ignore the vertical alignment.
+Notez que les matrices décorées ignorent l'alignement vertical.
 \end_layout
 
 \begin_layout Standard
@@ -5944,13 +5931,9 @@ Accolades ! verticales
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset space \hfill{}
 \end_inset
 
-
-\lang french
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
@@ -6402,8 +6385,6 @@ rfloor
 \end_inset
 
 
-\lang english
-
 \begin_inset space \hfill{}
 \end_inset
 
@@ -6724,9 +6705,6 @@ Bigg)^0,5
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
 En plus des commandes 
 \series bold
 
@@ -19618,12 +19596,11 @@ On peut insérer toutes les lettres grecques avec le bouton
 \end_inset
 
  de la barre d'outils mathématiques.
+ Toutes les normes internationales de typographie indiquent que les lettres
+ grecques en mathématique doivent être écrites en italique.
+ Dans certaines langues comme le russe et le français, elles sont parfois
+ quand même en lettres droites.
  
-\lang english
-All international typesetting norms purport that Greek letters in math have
- to be typeset italic/slanted.
- In some languages, like French or Russian, they are nevertheless sometimes
- typeset upright.
 \end_layout
 
 \begin_layout Subsection
@@ -20928,11 +20905,7 @@ varGamma
 \end_inset
 
 .
- 
-\lang english
-Another way is to load the package
-\lang french
- 
+ Une autre méthode consiste à charger le paquetage 
 \series bold
 fixmath
 \series default
@@ -20987,9 +20960,7 @@ Paquetages ! fixmath
 
 \end_inset
 
- 
-\lang english
-with the LaTeX-preamble line
+ avec la ligne suivante dans le préambule LaTeX :
 \end_layout
 
 \begin_layout Standard
@@ -21001,9 +20972,7 @@ usepackage{fixmath}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Then all big Greek letters in a document will automatically be typeset italic.
+Toutes les majuscules grecques du document seront alors mises en italique.
 \end_layout
 
 \begin_layout Subsection
@@ -25980,7 +25949,7 @@ Dans une formule hors ligne la valeur de la limite est placée comme d'habitude,
 \end_layout
 
 \begin_layout Subsection
-Les fonctions modulo-
+Les fonctions modulo
 \begin_inset Index idx
 status collapsed
 
@@ -26579,6 +26548,13 @@ Les commandes
 \series default
 ` sont des exceptions puisqu'elles peuvent être insérées directement dans
  le texte dans LyX.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -31718,13 +31694,6 @@ ce
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
@@ -32840,17 +32809,14 @@ reference "sec:Matrices"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Examples how to create 
+On trouvera des exemples montrant comment créer des diagrammes de 
 \noun on
-Feynman-
+Feynman
 \noun default
-diagrams in LyX is given in the 
+ avec LyX dans le 
 \emph on
-Feynman-diagram manual
+Manuel des diagrammes de Feynman
 \emph default
-\lang french
  que vous trouverez dans le menu 
 \family sans
 Aide\SpecialChar \menuseparator
