@@ -915,14 +915,12 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 	runparams.dryrun = true;
 
 	if (cur.inTexted()) {
-			// @TODO what about searching beyond/across paragraph breaks ?
-			ParagraphList::const_iterator pit = cur.innerText()->paragraphs().begin();
-			for (int i = 0; i < cur.pit(); ++i)
-					++pit;
-		pos_type const endpos = (len == -1 || cur.pos() + len > int(pit->size()))
-			? pit->size() : cur.pos() + len;
-		TeXOnePar(buf, *cur.innerText(), pit, ods, texrow, runparams, string(),
-			cur.pos(), endpos);
+		// @TODO what about searching beyond/across paragraph breaks ?
+		pos_type endpos = cur.paragraph().size();
+		if (len != -1 && endpos > cur.pos() + len)
+			endpos = cur.pos() + len;
+		TeXOnePar(buf, *cur.innerText(), cur.pit(), ods, texrow, runparams,
+			string(), cur.pos(), endpos);
 		LYXERR(Debug::FIND, "Latexified text: '" << lyx::to_utf8(ods.str()) << "'");
 	} else if (cur.inMathed()) {
 		// Retrieve the math environment type, and add '$' or '$[' or others (\begin{equation}) accordingly
@@ -1216,8 +1214,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 		runparams.linelen = 8000; //lyxrc.plaintext_linelen;
 		runparams.dryrun = true;
 		TexRow texrow;
-		TeXOnePar(repl_buffer, repl_buffer.text(), 
-			  repl_buffer.paragraphs().begin(), ods, texrow, runparams);
+		TeXOnePar(repl_buffer, repl_buffer.text(), 0, ods, texrow, runparams);
 		//repl_buffer.getSourceCode(ods, 0, repl_buffer.paragraphs().size(), false);
 		docstring repl_latex = ods.str();
 		LYXERR(Debug::FIND, "Latexified replace_buffer: '" << repl_latex << "'");

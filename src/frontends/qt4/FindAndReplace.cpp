@@ -132,9 +132,8 @@ static docstring buffer_to_latex(Buffer & buffer)
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
 	buffer.texrow().reset();
-	ParagraphList::const_iterator pit = buffer.paragraphs().begin();
-	ParagraphList::const_iterator const end = buffer.paragraphs().end();
-	for (; pit != end; ++pit) {
+	pit_type const endpit = buffer.paragraphs().size();
+	for (pit_type pit = 0; pit != endpit; ++pit) {
 		TeXOnePar(buffer, buffer.text(),
 			  pit, os, buffer.texrow(), runparams);
 		LYXERR(Debug::FIND, "searchString up to here: "

@@ -63,7 +63,7 @@ std::pair<bool, int> switchEncoding(odocstream & os,
 /// FIXME: this should not be visible.
 void TeXOnePar(Buffer const & buf,
 	           Text const & text,
-	           ParagraphList::const_iterator pit,
+	           pit_type pit,
 	           odocstream & os, TexRow & texrow,
 	           OutputParams const & runparams,
 	           std::string const & everypar = std::string(),
