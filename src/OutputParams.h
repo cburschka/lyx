@@ -210,13 +210,13 @@ public:
 	/** allow output of only part of the top-level paragraphs
 	 *  par_begin: beginning paragraph
 	 */
-	pit_type par_begin;
+	mutable pit_type par_begin;
 
 	/** allow output of only part of the top-level paragraphs
 	 *  par_end: par_end-1 is the ending paragraph
 	 *  if par_begin=par_end, output all paragraphs
 	 */
-	pit_type par_end;
+	mutable pit_type par_end;
 
 	/// is this the last paragraph in the current buffer/inset?
 	bool isLastPar;

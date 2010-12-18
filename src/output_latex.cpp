@@ -237,82 +237,90 @@ static void finishEnvironement(odocstream & os, TexRow & texrow,
 }
 
 
-ParagraphList::const_iterator
-TeXEnvironment(Buffer const & buf,
-	       Text const & text,
-	       ParagraphList::const_iterator pit,
-	       odocstream & os, TexRow & texrow,
-	       OutputParams const & runparams)
+void TeXEnvironment(Buffer const & buf,
+	       Text const & text, OutputParams const & runparams,
+		   pit_type & pit, odocstream & os, TexRow & texrow)
 {
-	LYXERR(Debug::LATEX, "TeXEnvironment...     " << &*pit);
 	ParagraphList const & paragraphs = text.paragraphs();
+	ParagraphList::const_iterator par = paragraphs.constIterator(pit);
+	LYXERR(Debug::LATEX, "TeXEnvironment for paragraph " << pit);
 
-	ParagraphList::const_iterator par = pit;
-	do {
-		TeXOnePar(buf, text, par, os, texrow, runparams);
-		if (par != paragraphs.end())
-			par++;
+	Layout const & current_layout = par->layout();
+	depth_type const current_depth = par->params().depth();
+	Length const & current_left_indent = par->params().leftIndent();
 
-		if (par == paragraphs.end()) {
-			// Make sure that the last paragraph is
-			// correctly terminated (because TeXOnePar does
-			// not add a \n in this case)
+	// This is for debugging purpose at the end.
+	pit_type const par_begin = pit;
+	for (; pit < runparams.par_end; ++pit) {
+	
+		ParagraphList::const_iterator par = paragraphs.constIterator(pit);
+
+		// check first if this is an higher depth paragraph.
+		bool go_out = (par->params().depth() < current_depth);
+		if (par->params().depth() == current_depth) {
+			// This environment is finished.
+			go_out |= (par->layout() != current_layout);
+			go_out |= (par->params().leftIndent() != current_left_indent);
+		}
+		if (go_out) {
+			// nothing to do here, restore pit and go out.
+			pit--;
+			break;
+		}
+
+		if (par->layout() == current_layout
+			&& par->params().depth() == current_depth
+			&& par->params().leftIndent() == current_left_indent) {
+			// We are still in the same environment so TeXOnePar and continue;
+			TeXOnePar(buf, text, par, os, texrow, runparams);
+			continue;
+		}
+
+		// We are now in a deeper environment.
+		// Either par->layout() != current_layout
+		// Or     par->params().depth() > current_depth
+		// Or     par->params().leftIndent() != current_left_indent)
+
+		if (par->layout().isParagraph()) {
+			// FIXME (Lgb): How to handle this? 
+			//&& !suffixIs(os, "\n\n")
+
+			// (ARRae) There should be at least one '\n' already but we need there to
+			// be two for Standard paragraphs that are depth-increment'ed to be
+			// output correctly. However, tables can also be paragraphs so
+			// don't adjust them.
+			// 
+
+			// FIXME (Lgb): Will it ever harm to have one '\n' too
+			// many? i.e. that we sometimes will have
+			// three in a row.
 			os << '\n';
 			texrow.newline();
-		} else if (par->params().depth() > pit->params().depth()) {
-			if (par->layout().isParagraph()) {
-			  // Thinko!
-			  // How to handle this? (Lgb)
-			  //&& !suffixIs(os, "\n\n")
-
-				// There should be at least one '\n' already
-				// but we need there to be two for Standard
-				// paragraphs that are depth-increment'ed to be
-				// output correctly.  However, tables can
-				// also be paragraphs so don't adjust them.
-				// ARRae
-				// Thinkee:
-				// Will it ever harm to have one '\n' too
-				// many? i.e. that we sometimes will have
-				// three in a row. (Lgb)
-				os << '\n';
-				texrow.newline();
-			}
-
-			LYXERR(Debug::LATEX, "TeXDeeper...     " << &*par);
-			bool const force_plain_layout = text.inset().forcePlainLayout();
-			depth_type const max_depth = par->params().depth();
-
-			// FIXME: move that to a for loop!
-			while (par != paragraphs.end()
-				&& par->params().depth() == max_depth) {
-				// FIXME This test should not be necessary.
-				// We should perhaps issue an error if it is.
-				Layout const & style = force_plain_layout
-					? buf.params().documentClass().plainLayout() : par->layout();
-				if (style.isEnvironment()) {
-					TeXEnvironementData const data = prepareEnvironement(buf,
-						text, par, os, texrow, runparams);
-					// Recursive call to TeXEnvironment!
-					par = TeXEnvironment(buf, text, par, os, texrow, runparams);
-					finishEnvironement(os, texrow, runparams, data);
-				} else {
-					TeXOnePar(buf, text, par, os, texrow, runparams);
-					if (par != text.paragraphs().end())
-						par++;
-				}
-			}
-			LYXERR(Debug::LATEX, "TeXDeeper...done ");
 		}
-	} while (par != paragraphs.end()
-		 && par->layout() == pit->layout()
-		 && par->params().depth() == pit->params().depth()
-		 && par->params().leftIndent() == pit->params().leftIndent());
 
-	if (par != paragraphs.end())
-		LYXERR(Debug::LATEX, "TeXEnvironment...done " << &*par);
+		// FIXME This test should not be necessary.
+		// We should perhaps issue an error if it is.
+		bool const force_plain_layout = text.inset().forcePlainLayout();
+		Layout const & style = force_plain_layout
+			? buf.params().documentClass().plainLayout()
+			: par->layout();
 
-	return par;
+		if (!style.isEnvironment()) {
+			// This is a standard paragraph, no need to call TeXEnvironment.
+			TeXOnePar(buf, text, par, os, texrow, runparams);
+			continue;
+		}
+
+		// This is a new environment.
+		TeXEnvironementData const data = prepareEnvironement(buf, text, par,
+			os, texrow, runparams);
+		// Recursive call to TeXEnvironment!
+		TeXEnvironment(buf, text, runparams, pit, os, texrow);
+		finishEnvironement(os, texrow, runparams, data);
+	}
+
+	if (pit != runparams.par_end)
+		LYXERR(Debug::LATEX, "TeXEnvironment for paragraph " << par_begin << " done.");
 }
 
 } // namespace anon
@@ -382,8 +390,6 @@ void TeXOnePar(Buffer const & buf,
 	  string const & everypar,
 	  int start_pos, int end_pos)
 {
-	LYXERR(Debug::LATEX, "TeXOnePar...     " << &*pit << " '"
-		<< everypar << "'");
 
 	BufferParams const & bparams = buf.params();
 	// FIXME This check should not really be needed.
@@ -399,6 +405,10 @@ void TeXOnePar(Buffer const & buf,
 
 	if (style.inpreamble)
 		return;
+
+	size_t pos = paragraphs.position(pit);
+	LYXERR(Debug::LATEX, "TeXOnePar for paragraph " << pos << " ptr " << &*pit << " '"
+		<< everypar << "'");
 
 	OutputParams runparams = runparams_in;
 	runparams.isLastPar = nextpit == paragraphs.end();
@@ -911,7 +921,7 @@ void TeXOnePar(Buffer const & buf,
 	}
 
 	if (nextpit != paragraphs.end())
-		LYXERR(Debug::LATEX, "TeXOnePar...done " << &*nextpit);
+		LYXERR(Debug::LATEX, "TeXOnePar for paragraph " << pos << " done; ptr " << &*pit << " next " << &*nextpit);
 
 	return;
 }
@@ -965,19 +975,15 @@ void latexParagraphs(Buffer const & buf,
 
 	ParagraphList const & paragraphs = text.paragraphs();
 	LASSERT(runparams.par_begin <= runparams.par_end, /**/);
-	// if only part of the paragraphs will be outputed
-	bool const partial_export = (runparams.par_begin !=  runparams.par_end);
-	pit_type const par_begin = partial_export ? runparams.par_begin : 0;
-	pit_type const par_end = partial_export ? runparams.par_end : paragraphs.size();
 
-	if (partial_export) {
-		// runparams will be passed to nested paragraphs, so
-		// we have to reset the range parameters.
-		const_cast<OutputParams&>(runparams).par_begin = 0;
-		const_cast<OutputParams&>(runparams).par_end = 0;
+	if (runparams.par_begin == runparams.par_end) {
+		// The full doc will be exported but it is easier to just rely on
+		// runparams range parameters that will be passed TeXEnvironment.
+		runparams.par_begin = 0;
+		runparams.par_end = paragraphs.size();
 	}
 
-	pit_type pit = par_begin;
+	pit_type pit = runparams.par_begin;
 	// lastpit is for the language check after the loop.
 	pit_type lastpit;
 	// variables used in the loop:
@@ -985,7 +991,7 @@ void latexParagraphs(Buffer const & buf,
 	bool already_title = false;
 	DocumentClass const & tclass = bparams.documentClass();
 
-	for (; pit < par_end; ++pit) {
+	for (; pit < runparams.par_end; ++pit) {
 		lastpit = pit;
 		ParagraphList::const_iterator par = paragraphs.constIterator(pit);
 
@@ -996,9 +1002,9 @@ void latexParagraphs(Buffer const & buf,
 
 		if (layout.intitle) {
 			if (already_title) {
-				lyxerr << "Error in latexParagraphs: You"
+				LYXERR0("Error in latexParagraphs: You"
 					" should not mix title layouts"
-					" with normal ones." << endl;
+					" with normal ones.");
 			} else if (!was_title) {
 				was_title = true;
 				if (tclass.titletype() == TITLE_ENVIRONMENT) {
@@ -1022,19 +1028,26 @@ void latexParagraphs(Buffer const & buf,
 			was_title = false;
 		}
 
+
 		if (!layout.isEnvironment() && par->params().leftIndent().zero()) {
-			// Standard top level paragraph.
+			// This is a standard top level paragraph, TeX it and continue.
 			TeXOnePar(buf, text, par, os, texrow, runparams, everypar);
 			continue;
 		}
 		
 		TeXEnvironementData const data = prepareEnvironement(buf, text, par,
 			os, texrow, runparams);
-		par = TeXEnvironment(buf, text, par, os, texrow, runparams);
+		// pit can be changed in TeXEnvironment.
+		TeXEnvironment(buf, text, runparams, pit, os, texrow);
 		finishEnvironement(os, texrow, runparams, data);
-		pit = paragraphs.position(par);
-		//FIXME: TeXEnvironment() advances one par too much.
-		pit--;
+	}
+
+	if (pit == runparams.par_end) {
+			// Make sure that the last paragraph is
+			// correctly terminated (because TeXOnePar does
+			// not add a \n in this case)
+			//os << '\n';
+			//texrow.newline();
 	}
 
 	// It might be that we only have a title in this document

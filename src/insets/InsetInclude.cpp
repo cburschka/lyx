@@ -588,6 +588,8 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 			encodings.fromLyXName("utf8-plain")
 			: &tmp->params().encoding();
 		runparams.master_language = buffer().params().language;
+		runparams.par_begin = 0;
+		runparams.par_end = tmp->paragraphs().size();
 		tmp->makeLaTeXFile(writefile,
 				   masterFileName(buffer()).onlyPath().absFileName(),
 				   runparams, false);
