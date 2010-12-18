@@ -930,19 +930,6 @@ void latexParagraphs(Buffer const & buf,
 	BufferParams const & bparams = buf.params();
 	DocumentClass const & tclass = bparams.documentClass();
 	ParagraphList const & paragraphs = text.paragraphs();
-	ParagraphList::const_iterator par = paragraphs.begin();
-	ParagraphList::const_iterator endpar = paragraphs.end();
-
-	LASSERT(runparams.par_begin <= runparams.par_end, /**/);
-	// if only part of the paragraphs will be outputed
-	if (runparams.par_begin !=  runparams.par_end) {
-		par = boost::next(paragraphs.begin(), runparams.par_begin);
-		endpar = boost::next(paragraphs.begin(), runparams.par_end);
-		// runparams will be passed to nested paragraphs, so
-		// we have to reset the range parameters.
-		const_cast<OutputParams&>(runparams).par_begin = 0;
-		const_cast<OutputParams&>(runparams).par_end = 0;
-	}
 
 	bool const maintext = text.isMainText();
 	bool const is_child = buf.masterBuffer() != &buf;
@@ -980,10 +967,28 @@ void latexParagraphs(Buffer const & buf,
 		texrow.newline();
 	}
 
-	ParagraphList::const_iterator lastpar;
+	LASSERT(runparams.par_begin <= runparams.par_end, /**/);
+	// if only part of the paragraphs will be outputed
+	bool const partial_export = (runparams.par_begin !=  runparams.par_end);
+	pit_type const par_begin = partial_export ? runparams.par_begin : 0;
+	pit_type const par_end = partial_export ? runparams.par_end : paragraphs.size();
+
+	if (partial_export) {
+		// runparams will be passed to nested paragraphs, so
+		// we have to reset the range parameters.
+		const_cast<OutputParams&>(runparams).par_begin = 0;
+		const_cast<OutputParams&>(runparams).par_end = 0;
+	}
+
+	pit_type pit = par_begin;
+	// lastpit is for the language check after the loop.
+	pit_type lastpit;
+	ParagraphList::const_iterator par;
 	// if only_body
-	while (par != endpar) {
-		lastpar = par;
+	for (; pit < par_end; ++pit) {
+		lastpit = pit;
+		par = paragraphs.constIterator(pit);
+
 		// FIXME This check should not be needed. We should
 		// perhaps issue an error if it is.
 		Layout const & layout = text.inset().forcePlainLayout() ?
@@ -1017,19 +1022,19 @@ void latexParagraphs(Buffer const & buf,
 			was_title = false;
 		}
 
-		if (layout.isEnvironment() ||
-					!par->params().leftIndent().zero()) {
-			TeXEnvironementData const data = prepareEnvironement(buf, text,
-				par, os, texrow, runparams);
-			par = TeXEnvironment(buf, text, par, os, texrow, runparams);
-			finishEnvironement(os, texrow, runparams, data);
-		} else {
+		if (!layout.isEnvironment() && par->params().leftIndent().zero()) {
+			// Standard top level paragraph.
 			TeXOnePar(buf, text, par, os, texrow, runparams, everypar);
-			if (par != paragraphs.end())
-				par++;
+			continue;
 		}
-		if (distance(lastpar, par) >= distance(lastpar, endpar))
-			break;
+		
+		TeXEnvironementData const data = prepareEnvironement(buf, text, par,
+			os, texrow, runparams);
+		par = TeXEnvironment(buf, text, par, os, texrow, runparams);
+		finishEnvironement(os, texrow, runparams, data);
+		pit = paragraphs.position(par);
+		//FIXME: TeXEnvironment() advances one par too much.
+		pit--;
 	}
 
 	// It might be that we only have a title in this document
@@ -1050,7 +1055,7 @@ void latexParagraphs(Buffer const & buf,
 	string const lang_end_command = runparams.use_polyglossia ?
 		"\\end{$$lang}" : lyxrc.language_command_end;
 	if (maintext && !lyxrc.language_auto_end && !mainlang.empty() &&
-		lastpar->getParLanguage(bparams)->encoding()->package() != Encoding::CJK) {
+		paragraphs.at(lastpit).getParLanguage(bparams)->encoding()->package() != Encoding::CJK) {
 		os << from_utf8(subst(lang_end_command,
 					"$$lang",
 					mainlang))

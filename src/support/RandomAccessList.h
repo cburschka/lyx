@@ -293,6 +293,12 @@ public:
 		return s;
 	}
 
+
+	const_iterator constIterator(size_t i) const
+	{
+		return iterCont_[i];
+	}
+
 private:
 	void recreateVector()
 	{
