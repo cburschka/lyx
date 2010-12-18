@@ -1060,9 +1060,6 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			cell->push_back(MathAtom(new MathMacroTemplate(buf,
 				name, nargs, 0, MacroTypeDef,
 				vector<MathData>(), def, display)));
-
-			if (buf && (mode_ & Parse::TRACKMACRO))
-				buf->usermacros.insert(name);
 		}
 		
 		else if (t.cs() == "newcommand" ||
@@ -1108,9 +1105,6 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			cell->push_back(MathAtom(new MathMacroTemplate(buf,
 				name, nargs, optionals, MacroTypeNewcommand,
 				optionalValues, def, display)));
-
-			if (buf && (mode_ & Parse::TRACKMACRO))
-				buf->usermacros.insert(name);
 		}
 		
 		else if (t.cs() == "newcommandx" ||
@@ -1229,9 +1223,6 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			cell->push_back(MathAtom(new MathMacroTemplate(buf,
 				name, nargs, optionals, MacroTypeNewcommandx,
 				optionalValues, def, display)));
-
-			if (buf && (mode_ & Parse::TRACKMACRO))
-				buf->usermacros.insert(name);
 		}
 
 		else if (t.cs() == "(") {
@@ -1830,14 +1821,14 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 
 		else if (t.cs().size()) {
-			bool const no_mhchem =
-				(t.cs() == "ce" || t.cs() == "cf") && buf
-				&& buf->params().use_mhchem == BufferParams::package_off;
-			bool const is_user_macro = no_mhchem ||
-				(buf && (mode_ & Parse::TRACKMACRO
-					? buf->usermacros.count(t.cs()) != 0
-					: buf->getMacro(t.cs(), false) != 0));
 			latexkeys const * l = in_word_set(t.cs());
+
+			if (buf && (mode_ & Parse::TRACKMACRO) && l)
+				buf->updateMacros();
+
+			bool const is_user_macro =
+				(buf && buf->getMacro(t.cs(), false) != 0);
+
 			if (l && !is_user_macro) {
 				if (l->inset == "big") {
 					skipSpaces();
