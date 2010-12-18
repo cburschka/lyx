@@ -390,7 +390,6 @@ void TeXOnePar(Buffer const & buf,
 	  string const & everypar,
 	  int start_pos, int end_pos)
 {
-
 	BufferParams const & bparams = buf.params();
 	ParagraphList const & paragraphs = text.paragraphs();
 	Paragraph const & par = paragraphs.at(pit);
@@ -486,7 +485,7 @@ void TeXOnePar(Buffer const & buf,
 			&& priorpar->layout().isEnvironment()
 			&& (priorpar->getDepth() > par.getDepth()
 			    || (priorpar->getDepth() == par.getDepth()
-				&& priorpar->layout() != par.layout()));
+				    && priorpar->layout() != par.layout()));
 	Language const * const prev_language =
 		(pit != 0)
 		? (use_prev_env_language ? prev_env_language_
@@ -509,12 +508,11 @@ void TeXOnePar(Buffer const & buf,
 		lang_end_command = "\\end{$$lang}";
 	}
 	if (par_lang != prev_lang
-	    // check if we already put language command in TeXEnvironment()
-	    && !(style.isEnvironment()
-		 && (pit == 0 ||
-		     (priorpar->layout() != par.layout() &&
-		      priorpar->getDepth() <= par.getDepth())
-		     || priorpar->getDepth() < par.getDepth())))
+		// check if we already put language command in TeXEnvironment()
+		&& !(style.isEnvironment()
+		     && (pit == 0 || (priorpar->layout() != par.layout()
+			                  && priorpar->getDepth() <= par.getDepth())
+		                  || priorpar->getDepth() < par.getDepth())))
 	{
 		if (!lang_end_command.empty() &&
 		    prev_lang != outer_lang &&
@@ -533,20 +531,19 @@ void TeXOnePar(Buffer const & buf,
 		// the previous one, if the current language is different than the
 		// outer_language (which is currently in effect once the previous one
 		// is closed).
-		if ((lang_end_command.empty() ||
-		     par_lang != outer_lang) &&
-		    !par_lang.empty()) {
+		if ((lang_end_command.empty() || par_lang != outer_lang)
+			&& !par_lang.empty()) {
 			// If we're inside an inset, and that inset is within an \L or \R
 			// (or equivalents), then within the inset, too, any opposite
 			// language paragraph should appear within an \L or \R (in addition
 			// to, outside of, the normal language switch commands).
 			// This behavior is not correct for ArabTeX, though.
-			if (!runparams.use_polyglossia &&
+			if (!runparams.use_polyglossia
 			    // not for ArabTeX
-			    (par_language->lang() != "arabic_arabtex" &&
-			     outer_language->lang() != "arabic_arabtex") &&
+				&& par_language->lang() != "arabic_arabtex"
+				&& outer_language->lang() != "arabic_arabtex"
 			    // are we in an inset?
-			    runparams.local_font != 0 &&
+			    && runparams.local_font != 0
 			    // is the inset within an \L or \R?
 			    //
 			    // FIXME: currently, we don't check this; this means that
@@ -554,9 +551,7 @@ void TeXOnePar(Buffer const & buf,
 			    // doesn't seem to hurt (though latex will complain)
 			    //
 			    // is this paragraph in the opposite direction?
-			    runparams.local_font->isRightToLeft() !=
-				  par_language->rightToLeft()
-			    ) {
+			    && runparams.local_font->isRightToLeft() != par_language->rightToLeft()) {
 				// FIXME: I don't have a working copy of the Arabi package, so
 				// I'm not sure if the farsi and arabic_arabi stuff is correct
 				// or not...
@@ -749,8 +744,9 @@ void TeXOnePar(Buffer const & buf,
 	case LATEX_ENVIRONMENT: {
 		// if its the last paragraph of the current environment
 		// skip it otherwise fall through
-		if (nextpar && (nextpar->layout() != par.layout()
-		     || nextpar->params().depth() != par.params().depth()))
+		if (nextpar
+			&& (nextpar->layout() != par.layout()
+		        || nextpar->params().depth() != par.params().depth()))
 			break;
 	}
 
@@ -763,8 +759,7 @@ void TeXOnePar(Buffer const & buf,
 
 	if (par.allowParagraphCustomization()) {
 		if (!par.params().spacing().isDefault()
-			&& (runparams.isLastPar || !nextpar->hasSameLayout(par)))
-		{
+			&& (runparams.isLastPar || !nextpar->hasSameLayout(par))) {
 			if (pending_newline) {
 				os << '\n';
 				texrow.newline();
