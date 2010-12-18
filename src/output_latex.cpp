@@ -412,6 +412,11 @@ void TeXOnePar(Buffer const & buf,
 
 	OutputParams runparams = runparams_in;
 	runparams.isLastPar = nextpit == paragraphs.end();
+	// We reinitialze par begin and end to be on the safe side
+	// with embedded inset as we don't know if they set those
+	// value correctly.
+	runparams.par_begin = 0;
+	runparams.par_end = 0;
 
 	bool const maintext = text.isMainText();
 	// we are at the beginning of an inset and CJK is already open;
