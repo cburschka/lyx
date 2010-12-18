@@ -925,11 +925,7 @@ void latexParagraphs(Buffer const & buf,
 		     OutputParams const & runparams,
 		     string const & everypar)
 {
-	bool was_title = false;
-	bool already_title = false;
 	BufferParams const & bparams = buf.params();
-	DocumentClass const & tclass = bparams.documentClass();
-	ParagraphList const & paragraphs = text.paragraphs();
 
 	bool const maintext = text.isMainText();
 	bool const is_child = buf.masterBuffer() != &buf;
@@ -967,6 +963,7 @@ void latexParagraphs(Buffer const & buf,
 		texrow.newline();
 	}
 
+	ParagraphList const & paragraphs = text.paragraphs();
 	LASSERT(runparams.par_begin <= runparams.par_end, /**/);
 	// if only part of the paragraphs will be outputed
 	bool const partial_export = (runparams.par_begin !=  runparams.par_end);
@@ -983,11 +980,14 @@ void latexParagraphs(Buffer const & buf,
 	pit_type pit = par_begin;
 	// lastpit is for the language check after the loop.
 	pit_type lastpit;
-	ParagraphList::const_iterator par;
-	// if only_body
+	// variables used in the loop:
+	bool was_title = false;
+	bool already_title = false;
+	DocumentClass const & tclass = bparams.documentClass();
+
 	for (; pit < par_end; ++pit) {
 		lastpit = pit;
-		par = paragraphs.constIterator(pit);
+		ParagraphList::const_iterator par = paragraphs.constIterator(pit);
 
 		// FIXME This check should not be needed. We should
 		// perhaps issue an error if it is.
