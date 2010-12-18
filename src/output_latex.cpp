@@ -590,8 +590,8 @@ void TeXOnePar(Buffer const & buf,
 	// Switch file encoding if necessary; no need to do this for "default"
 	// encoding, since this only affects the position of the outputted
 	// \inputencoding command; the encoding switch will occur when necessary
-	if (bparams.inputenc == "auto" &&
-	    runparams.encoding->package() != Encoding::none) {
+	if (bparams.inputenc == "auto"
+		&& runparams.encoding->package() != Encoding::none) {
 		// Look ahead for future encoding changes.
 		// We try to output them at the beginning of the paragraph,
 		// since the \inputencoding command is not allowed e.g. in
@@ -602,9 +602,9 @@ void TeXOnePar(Buffer const & buf,
 			char_type const c = par.getChar(i);
 			Encoding const * const encoding =
 				par.getFontSettings(bparams, i).language()->encoding();
-			if (encoding->package() != Encoding::CJK &&
-			    runparams.encoding->package() == Encoding::inputenc &&
-			    c < 0x80)
+			if (encoding->package() != Encoding::CJK
+				&& runparams.encoding->package() == Encoding::inputenc
+				&& c < 0x80)
 				continue;
 			if (par.isInset(i))
 				break;
@@ -613,38 +613,39 @@ void TeXOnePar(Buffer const & buf,
 			// encoding to that required by the language of c.
 			// With CJK, only add switch if we have CJK content at the beginning
 			// of the paragraph
-			if (encoding->package() != Encoding::CJK || i == 0) {
-				pair<bool, int> enc_switch = switchEncoding(os, bparams, runparams,
-					*encoding);
-				// the following is necessary after a CJK environment in a multilingual
-				// context (nesting issue).
-				if (par_language->encoding()->package() == Encoding::CJK &&
-				    open_encoding_ != CJK && cjk_inherited_ == 0) {
-					os << "\\begin{CJK}{" << from_ascii(par_language->encoding()->latexName())
-					   << "}{" << from_ascii(bparams.fonts_cjk) << "}%\n";
-					open_encoding_ = CJK;
+			if (i != 0 && encoding->package() == Encoding::CJK)
+				continue;
+
+			pair<bool, int> enc_switch = switchEncoding(os, bparams, runparams,
+				*encoding);
+			// the following is necessary after a CJK environment in a multilingual
+			// context (nesting issue).
+			if (par_language->encoding()->package() == Encoding::CJK
+				&& open_encoding_ != CJK && cjk_inherited_ == 0) {
+				os << "\\begin{CJK}{" << from_ascii(par_language->encoding()->latexName())
+				   << "}{" << from_ascii(bparams.fonts_cjk) << "}%\n";
+				open_encoding_ = CJK;
+				texrow.newline();
+			}
+			if (encoding->package() != Encoding::none && enc_switch.first) {
+				if (enc_switch.second > 0) {
+					// the '%' is necessary to prevent unwanted whitespace
+					os << "%\n";
 					texrow.newline();
 				}
-				if (encoding->package() != Encoding::none && enc_switch.first) {
-					if (enc_switch.second > 0) {
-						// the '%' is necessary to prevent unwanted whitespace
-						os << "%\n";
-						texrow.newline();
-					}
-					// With CJK, the CJK tag had to be closed first (see above)
-					if (runparams.encoding->package() == Encoding::CJK) {
-						os << from_ascii(subst(
-							lang_begin_command,
-							"$$lang",
-							par_lang))
-						// the '%' is necessary to prevent unwanted whitespace
-						<< "%\n";
-						texrow.newline();
-					}
-					runparams.encoding = encoding;
+				// With CJK, the CJK tag had to be closed first (see above)
+				if (runparams.encoding->package() == Encoding::CJK) {
+					os << from_ascii(subst(
+						lang_begin_command,
+						"$$lang",
+						par_lang))
+					// the '%' is necessary to prevent unwanted whitespace
+					<< "%\n";
+					texrow.newline();
 				}
-				break;
+				runparams.encoding = encoding;
 			}
+			break;
 		}
 	}
 
