@@ -777,17 +777,16 @@ void TeXOnePar(Buffer const & buf,
 	// Closing the language is needed for the last paragraph; it is also
 	// needed if we're within an \L or \R that we may have opened above (not
 	// necessarily in this paragraph) and are about to close.
-	bool closing_rtl_ltr_environment =
-		!runparams.use_polyglossia &&
+	bool closing_rtl_ltr_environment = !runparams.use_polyglossia
 		// not for ArabTeX
-		(par_language->lang() != "arabic_arabtex" &&
-		 outer_language->lang() != "arabic_arabtex") &&
-		// have we opened and \L or \R environment?
-		runparams.local_font != 0 &&
-		runparams.local_font->isRightToLeft() != par_language->rightToLeft() &&
+		&& (par_language->lang() != "arabic_arabtex"
+		    && outer_language->lang() != "arabic_arabtex")
+		     // have we opened and \L or \R environment?
+		&& runparams.local_font != 0
+		&& runparams.local_font->isRightToLeft() != par_language->rightToLeft()
 		// are we about to close the language?
-		((nextpar && par_language->babel() != (nextpar->getParLanguage(bparams))->babel())
-		  || (runparams.isLastPar && par_language->babel() != outer_language->babel()));
+		&&((nextpar && par_language->babel() != (nextpar->getParLanguage(bparams))->babel())
+		   || (runparams.isLastPar && par_language->babel() != outer_language->babel()));
 
 	if (closing_rtl_ltr_environment
 		|| (runparams.isLastPar && par_language->babel() != outer_language->babel())) {
@@ -837,11 +836,12 @@ void TeXOnePar(Buffer const & buf,
 
 	// if this is a CJK-paragraph and the next isn't, close CJK
 	// also if the next paragraph is a multilingual environment (because of nesting)
-	if (nextpar && open_encoding_ == CJK &&
-	    (nextpar->getParLanguage(bparams)->encoding()->package() != Encoding::CJK ||
-	     (nextpar->layout().isEnvironment() && nextpar->isMultiLingual(bparams)))
-	     // inbetween environments, CJK has to be closed later (nesting!)
-	     && (!style.isEnvironment() || !nextpar->layout().isEnvironment())) {
+	if (nextpar
+		&& open_encoding_ == CJK
+		&& (nextpar->getParLanguage(bparams)->encoding()->package() != Encoding::CJK
+		   || (nextpar->layout().isEnvironment() && nextpar->isMultiLingual(bparams)))
+		// inbetween environments, CJK has to be closed later (nesting!)
+		&& (!style.isEnvironment() || !nextpar->layout().isEnvironment())) {
 		os << "\\end{CJK}\n";
 		open_encoding_ = none;
 	}
