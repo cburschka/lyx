@@ -273,6 +273,26 @@ public:
 		iterCont_.clear();
 	}
 
+	size_t position(iterator it) const
+	{
+		size_t const s = iterCont_.size();
+		for (size_t i = 0; it != s; ++i) {
+			if (iterCont_[i] == it)
+				return i;
+		}
+		return s;
+	}
+
+	size_t position(const_iterator it) const
+	{
+		size_t const s = iterCont_.size();
+		for (size_t i = 0; i != s; ++i) {
+			if (iterCont_[i] == it)
+				return i;
+		}
+		return s;
+	}
+
 private:
 	void recreateVector()
 	{

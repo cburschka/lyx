@@ -413,7 +413,7 @@ void TeXOnePar(Buffer const & buf,
 	}
 
 	if (text.inset().getLayout().isPassThru()) {
-		int const dist = distance(paragraphs.begin(), pit);
+		int const dist = paragraphs.position(pit);
 		Font const outerfont = text.outerFont(dist);
 
 		// No newline before first paragraph in this lyxtext
@@ -432,7 +432,7 @@ void TeXOnePar(Buffer const & buf,
 	}
 
 	if (style.pass_thru) {
-		int const dist = distance(paragraphs.begin(), pit);
+		int const dist = paragraphs.position(pit);
 		Font const outerfont = text.outerFont(dist);
 		pit->latex(bparams, outerfont, os, texrow,
 		           runparams, start_pos, end_pos);
@@ -690,7 +690,7 @@ void TeXOnePar(Buffer const & buf,
 		break;
 	}
 
-	Font const outerfont = text.outerFont(distance(paragraphs.begin(), pit));
+	Font const outerfont = text.outerFont(paragraphs.position(pit));
 
 	// FIXME UNICODE
 	os << from_utf8(everypar);
