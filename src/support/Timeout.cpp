@@ -17,6 +17,10 @@
 #include <QObject>
 #include <QTimerEvent>
 
+#include <ctime>
+#include <iomanip>
+#include <sstream>
+
 using namespace std;
 
 namespace lyx {
@@ -141,5 +145,84 @@ Timeout & Timeout::setTimeout(unsigned int msec)
 	return *this;
 }
 
+
+struct Timer::Private
+{
+	time_t start_time;
+};
+
+
+Timer::Timer() : d(new Private)
+{
+	restart();
+}
+
+
+void Timer::restart()
+{
+	time(&d->start_time);
+}
+
+
+int Timer::elapsed() const
+{
+	time_t end_time;
+	time(&end_time);
+	double diff = difftime(end_time, d->start_time);
+	return int(diff);
+}
+
+
+string Timer::timeStr(char separator) const
+{
+	tm * timeinfo = localtime(&d->start_time);
+	// With less flexibility we could also use:
+	//strftime(buffer, 10, "%X", timeinfo);
+	ostringstream out;
+	out << setw(2) << setfill('0');
+	if (separator) {
+		out << separator << setw(2) << setfill('0') << timeinfo->tm_hour
+		    << separator << setw(2) << setfill('0') << timeinfo->tm_min
+		    << separator << setw(2) << setfill('0') << timeinfo->tm_sec;
+	} else {
+		out << setw(2) << setfill('0') << timeinfo->tm_hour
+		    << setw(2) << setfill('0') << timeinfo->tm_min
+		    << setw(2) << setfill('0') << timeinfo->tm_sec;
+	}
+	return out.str();
+}
+
+
+string Timer::dateStr(char separator) const
+{
+	tm * timeinfo = localtime(&d->start_time);
+	// With less flexibility we could also use:
+	//res = strftime(buffer, 10, "%d%m%y", timeinfo);
+	ostringstream out;
+	out << setw(2) << setfill('0') << timeinfo->tm_mday;
+	if (separator)
+		out << separator;
+	out << setw(2) << setfill('0') << timeinfo->tm_mon;
+	if (separator)
+		out << separator;
+	out << setw(2) << setfill('0') << timeinfo->tm_year - 100;
+	return out.str();
+}
+
+
+string Timer::toStr() const
+{
+	tm * timeinfo = localtime(&d->start_time);
+	return asctime(timeinfo);
+}
+
+
+string Timer::currentToStr()
+{
+	time_t current_time;
+	time(&current_time);
+	tm * timeinfo = localtime(&current_time);
+	return asctime(timeinfo);
+}
 
 } // namespace lyx

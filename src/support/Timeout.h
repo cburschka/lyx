@@ -64,6 +64,27 @@ private:
 	unsigned int timeout_ms;
 };
 
+// Small Timer class useful for debugging and performance investigation.
+class Timer
+{
+public:
+	Timer();
+	///
+	void restart();
+	///
+	int elapsed() const;
+	///
+	std::string dateStr(char separator = 0) const;
+	///
+	std::string timeStr(char separator = 0) const;
+	///
+	std::string toStr() const;
+	///
+	static std::string currentToStr();
+private:
+	struct Private;
+	Private * d;
+};
 
 } // namespace lyx
 
