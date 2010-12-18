@@ -143,8 +143,26 @@ string h_font_osf                = "false";
 string h_font_sf_scale           = "100";
 string h_font_tt_scale           = "100";
 string h_graphics                = "default";
+string h_float_placement;
 string h_paperfontsize           = "default";
 string h_spacing                 = "single";
+string h_use_hyperref            = "0";
+string h_pdf_title;
+string h_pdf_author;
+string h_pdf_subject;
+string h_pdf_keywords;
+string h_pdf_bookmarks           = "1";
+string h_pdf_bookmarksnumbered   = "0";
+string h_pdf_bookmarksopen       = "0";
+string h_pdf_bookmarksopenlevel  = "1";
+string h_pdf_breaklinks          = "0";
+string h_pdf_pdfborder           = "0";
+string h_pdf_colorlinks          = "0";
+string h_pdf_backref             = "0";
+string h_pdf_pagebackref         = "0";
+string h_pdf_pdfusetitle         = "1";
+string h_pdf_pagemode;
+string h_pdf_quoted_options;
 string h_papersize               = "default";
 string h_use_geometry            = "false";
 string h_use_amsmath             = "1";
@@ -160,6 +178,7 @@ string h_quotes_language         = "english";
 string h_papercolumns            = "1";
 string h_papersides              = string();
 string h_paperpagestyle          = "default";
+string h_listings_params;
 string h_tracking_changes        = "false";
 string h_output_changes          = "false";
 string h_margins                 = "";
@@ -530,10 +549,37 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	   << "\\font_osf " << h_font_osf << "\n"
 	   << "\\font_sf_scale " << h_font_sf_scale << "\n"
 	   << "\\font_tt_scale " << h_font_tt_scale << "\n"
-	   << "\\graphics " << h_graphics << "\n"
-	   << "\\paperfontsize " << h_paperfontsize << "\n"
+	   << "\\graphics " << h_graphics << "\n";
+	if (!h_float_placement.empty())
+		os << "\\float_placement " << h_float_placement << "\n";
+	os << "\\paperfontsize " << h_paperfontsize << "\n"
 	   << "\\spacing " << h_spacing << "\n"
-	   << "\\papersize " << h_papersize << "\n"
+	   << "\\use_hyperref " << h_use_hyperref << '\n';
+	if (h_use_hyperref == "1") {
+		if (!h_pdf_title.empty())
+			os << "\\pdf_title \"" << h_pdf_title << "\"\n";
+		if (!h_pdf_author.empty())
+			os << "\\pdf_author \"" << h_pdf_author << "\"\n";
+		if (!h_pdf_subject.empty())
+			os << "\\pdf_subject \"" << h_pdf_subject << "\"\n";
+		if (!h_pdf_keywords.empty())
+			os << "\\pdf_keywords \"" << h_pdf_keywords << "\"\n";
+		os << "\\pdf_bookmarks " << h_pdf_bookmarks << "\n"
+		      "\\pdf_bookmarksnumbered " << h_pdf_bookmarksnumbered << "\n"
+		      "\\pdf_bookmarksopen " << h_pdf_bookmarksopen << "\n"
+		      "\\pdf_bookmarksopenlevel " << h_pdf_bookmarksopenlevel << "\n"
+		      "\\pdf_breaklinks " << h_pdf_breaklinks << "\n"
+		      "\\pdf_pdfborder " << h_pdf_pdfborder << "\n"
+		      "\\pdf_colorlinks " << h_pdf_colorlinks << "\n"
+		      "\\pdf_backref " << h_pdf_backref << "\n"
+		      "\\pdf_pagebackref " << h_pdf_pagebackref << "\n"
+		      "\\pdf_pdfusetitle " << h_pdf_pdfusetitle << '\n';
+		if (!h_pdf_pagemode.empty())
+			os << "\\pdf_pagemode " << h_pdf_pagemode << '\n';
+		if (!h_pdf_quoted_options.empty())
+			os << "\\pdf_quoted_options \"" << h_pdf_quoted_options << "\"\n";
+	}
+	os << "\\papersize " << h_papersize << "\n"
 	   << "\\use_geometry " << h_use_geometry << "\n"
 	   << "\\use_amsmath " << h_use_amsmath << "\n"
 	   << "\\use_esint " << h_use_esint << "\n"
@@ -548,8 +594,10 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	   << "\\quotes_language " << h_quotes_language << "\n"
 	   << "\\papercolumns " << h_papercolumns << "\n"
 	   << "\\papersides " << h_papersides << "\n"
-	   << "\\paperpagestyle " << h_paperpagestyle << "\n"
-	   << "\\tracking_changes " << h_tracking_changes << "\n"
+	   << "\\paperpagestyle " << h_paperpagestyle << "\n";
+	if (!h_listings_params.empty())
+		os << "\\listings_params " << h_listings_params << "\n";
+	os << "\\tracking_changes " << h_tracking_changes << "\n"
 	   << "\\output_changes " << h_output_changes << "\n"
 	   << "\\end_header\n\n"
 	   << "\\begin_body\n";
