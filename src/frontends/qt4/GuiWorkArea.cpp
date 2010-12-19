@@ -1278,7 +1278,7 @@ void GuiWorkArea::updateWindowTitle()
 	Buffer & buf = buffer_view_->buffer();
 	FileName const fileName = buf.fileName();
 	if (!fileName.empty()) {
-		maximize_title = fileName.displayName(30);
+		maximize_title = fileName.displayName(130);
 		minimize_title = from_utf8(fileName.onlyFileName());
 		if (buf.lyxvc().inUse()) {
 			if (buf.lyxvc().locking())
