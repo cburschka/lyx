@@ -1,3 +1,5 @@
+%% LyX trick_preamble_code_into_believing_that_this_was_created_by_lyx created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
 \documentclass[b4paper,twoside, twocolumn,12pt]{article}
 
 \usepackage[T1]{fontenc}
@@ -8,11 +10,21 @@
 
 \usepackage{amsmath}
 \usepackage{color}
+\definecolor{note_fontcolor}{rgb}{0, 0, 1}
+\definecolor{shadecolor}{rgb}{1, 0, 0}
+\usepackage{framed}
 
 \setlength{\parskip}{3mm}
 \setlength{\parindent}{0sp}
 \usepackage{setspace}
 \setstretch{1.2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+
+%% The greyedout annotation environment
+\newenvironment{lyxgreyedout}{\textcolor{note_fontcolor}\bgroup}{\egroup}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 
 \setlength{\fboxsep}{3mm}
 
@@ -104,6 +116,15 @@ Dies ist ein Beispieltext. %
 Dies ist ein Beispieltext.
 
 $\boxed{\int A=B}$
+
+\subsection{LyX Boxes}
+
+\begin{lyxgreyedout}
+\textbf{Note:} Not all DVI-viewers are able to display rotations.
+\end{lyxgreyedout}
+
+\begin{shaded}%
+Shaded background box\end{shaded}
 
 \section{Colors}
 

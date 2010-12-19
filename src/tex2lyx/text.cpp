@@ -817,21 +817,22 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		p.skip_spaces();
 	}
 
-	else if (name == "framed") {
+	else if (name == "framed" || name == "shaded") {
 		eat_whitespace(p, os, parent_context, false);
 		parent_context.check_layout(os);
-		begin_inset(os, "Note Framed\n");
-		os << "status open\n";
-		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
-		end_inset(os);
-		p.skip_spaces();
-	}
-
-	else if (name == "shaded") {
-		eat_whitespace(p, os, parent_context, false);
-		parent_context.check_layout(os);
-		begin_inset(os, "Note Shaded\n");
-		os << "status open\n";
+		if (name == "framed")
+			begin_inset(os, "Box Framed\n");
+		else
+			begin_inset(os, "Box Shaded\n");
+		os << "position \"t\"\n"
+		      "hor_pos \"c\"\n"
+		      "has_inner_box 0\n"
+		      "inner_pos \"t\"\n"
+		      "width \"100col%\"\n"
+		      "special \"none\"\n"
+		      "height \"1in\"\n"
+		      "height_special \"totalheight\"\n"
+		      "status open\n";
 		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
 		end_inset(os);
 		p.skip_spaces();
