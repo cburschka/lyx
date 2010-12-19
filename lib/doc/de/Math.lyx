@@ -1,4 +1,4 @@
-#LyX 2.0.0beta2 created this file. For more info see http://www.lyx.org/
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 410
 \begin_document
 \begin_header
@@ -34525,6 +34525,143 @@ hinzufügen
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Computeralgebrasysteme
+\end_layout
+
+\begin_layout Standard
+Mit LyX ist es möglich, mathematische Ausdrücke mit externen Anwendungen
+ oder benutzerdefinierten Skripten auszutauschen.
+ Momentan werden folgende Anwendungen unterstützt: 
+\family typewriter
+Maple
+\family default
+, 
+\family typewriter
+Mathematica
+\family default
+, 
+\family typewriter
+Maxima
+\family default
+ und 
+\family typewriter
+Octave
+\family default
+.
+ Beachten Sie aber, dass die unterstützten mathematischen Ausdrücke auf
+ sehr einfache Fälle beschränkt sind.
+\end_layout
+
+\begin_layout Subsection
+Verwendung
+\end_layout
+
+\begin_layout Standard
+Schreiben Sie einen Ausdruck in eine Formel, öffnen Sie das Menü 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Mathe\SpecialChar \menuseparator
+Computer-Algebra-System verwenden
+\family default
+ und wählen Sie die Anwendung, die Sie auf ihrem Computer installiert haben.
+ Danach sollte das Ergebnis der Berechnung auf der rechten Seite zusammen
+ mit dem 
+\begin_inset Quotes gld
+\end_inset
+
+=
+\begin_inset Quotes grd
+\end_inset
+
+ Operator erscheinen.
+\end_layout
+
+\begin_layout Standard
+Hier sind ein paar einfache Beispiele (mit Resultaten von 
+\family typewriter
+Maxima
+\family default
+) um zu zeigen, welche Berechnungen durchgeführt werden können:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{37}{3}*2-\sum_{i=1}^{3}i^{i}=-\frac{22}{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{37.0}{3}=12.33333333333333$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\int_{1}^{2}\sin(x)dx=\cos1-\cos2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\det\left[\begin{array}{ccc}
+1 & 6 & 7\\
+2 & 5 & 8\\
+3 & 4 & 17
+\end{array}\right]=-56$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\lim_{x\rightarrow0}\left(\frac{\sin(x)}{x}\right)=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Tastenkürzel
+\end_layout
+
+\begin_layout Standard
+Momentan gibt es kein Tastenkürzel um Computeralgebrasysteme aufzurufen.
+ Sie können aber einfach ein Tastenkürzel mit der LyX-Funktion 
+\family sans
+math-extern
+\family default
+ verknüpfen (siehe das 
+\emph on
+LyX-Funktionen
+\emph default
+ Handbuch).
+ Man kann z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ die 
+\family sans
+Enter
+\family default
+-Taste in Formeln verknüpfen.
+ Um sie mit 
+\family typewriter
+Maxima
+\family default
+ zu verknüpfen, würde man diesen Tastenkürzel-Definitionsbefehl verwenden:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+command-alternatives break-paragraph;math-extern maxima
 \end_layout
 
 \begin_layout Standard

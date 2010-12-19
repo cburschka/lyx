@@ -34472,23 +34472,32 @@ Eating From The Right
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Computer Algebra Systems
 \end_layout
 
 \begin_layout Standard
-LyX offers exchange between mathematical expressions written in LyX's math
- editor and external applications or user defined scripts.
- Currently offered backends are Octave, Maxima, Maple and Mathematica.
- Note, however, that the set of supported mathematical constructs is limited
- only to very simple cases.
+LyX offers the exchange between mathematical expressions written in LyX's
+ math editor and external applications or user defined scripts.
+ Currently supported applications are 
+\family sans
+Maple
+\family default
+, 
+\family sans
+Mathematica
+\family default
+, 
+\family sans
+Maxima
+\family default
+ and 
+\family sans
+Octave
+\family default
+.
+ Note that the set of supported mathematical constructs is limited only
+ to very simple cases.
 \end_layout
 
 \begin_layout Subsection
@@ -34496,24 +34505,31 @@ Usage
 \end_layout
 
 \begin_layout Standard
-Start with entering math mode, write some expression, go to the 
+Write some expression in a formula, go to the 
 \family sans
 Edit\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Use Computer Algebra System
 \family default
  menu and choose the application you have installed on the computer.
- After the execution the result of computation should show on the right
- side of the expression together with 
-\begin_inset Formula $=$
+ After that the result of computation should show on the right side of the
+ expression together with the 
+\begin_inset Quotes eld
+\end_inset
+
+=
+\begin_inset Quotes erd
 \end_inset
 
  operator.
 \end_layout
 
 \begin_layout Standard
-Here are few simple examples (results given by Maxima) to give an idea of
- computations which can be requested:
+Here are few simple examples (with results from 
+\family typewriter
+Maxima
+\family default
+) to show what kind of computations can be performed:
 \end_layout
 
 \begin_layout Itemize
@@ -34556,27 +34572,53 @@ Here are few simple examples (results given by Maxima) to give an idea of
 \end_layout
 
 \begin_layout Subsection
-Tip for the Key Binding
+Keyboard shortcut
 \end_layout
 
 \begin_layout Standard
-Currently there is no keyboard binding for calling the algebra applications.
- One can easily bind a shortcut to 
+Currently there is no keyboard shortcut for calling the algebra applications.
+ One can easily bind a shortcut to the 
 \family sans
 math-extern
 \family default
- LyX function (see 
+ LyX function (see the 
 \family sans
+\emph on
 LyX Functions
 \family default
+\emph default
  manual).
- One could bind also currently unused Enter key inside math editor, but
- for this more complicated binding is needed, the particular Maxima case
- would look like: 
+ One could e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+bind the 
+\family sans
+Return
+\family default
+ key inside the math editor.
+ To bind it to 
+\family typewriter
+Maxima
+\family default
+ one would use this shortcut definition command:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 command-alternatives break-paragraph;math-extern maxima
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
