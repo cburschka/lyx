@@ -1188,6 +1188,114 @@ void parse_noweb(Parser & p, ostream & os, Context & context)
 	newcontext.check_end_layout(os);
 }
 
+
+/// detects \\def, \\long\\def and \\global\\long\\def with ws and comments
+bool is_macro(Parser & p)
+{
+	Token first = p.curr_token();
+	if (first.cat() != catEscape || !p.good())
+		return false;
+	if (first.cs() == "def")
+		return true;
+	if (first.cs() != "global" && first.cs() != "long")
+		return false;
+	Token second = p.get_token();
+	int pos = 1;
+	while (p.good() && !p.isParagraph() && (second.cat() == catSpace ||
+	       second.cat() == catNewline || second.cat() == catComment)) {
+		second = p.get_token();
+		pos++;
+	}
+	bool secondvalid = second.cat() == catEscape;
+	Token third;
+	bool thirdvalid = false;
+	if (p.good() && first.cs() == "global" && secondvalid &&
+	    second.cs() == "long") {
+		third = p.get_token();
+		pos++;
+		while (p.good() && !p.isParagraph() &&
+		       (third.cat() == catSpace ||
+		        third.cat() == catNewline ||
+		        third.cat() == catComment)) {
+			third = p.get_token();
+			pos++;
+		}
+		thirdvalid = third.cat() == catEscape;
+	}
+	for (int i = 0; i < pos; ++i)
+		p.putback();
+	if (!secondvalid)
+		return false;
+	if (!thirdvalid)
+		return (first.cs() == "global" || first.cs() == "long") &&
+		       second.cs() == "def";
+	return first.cs() == "global" && second.cs() == "long" &&
+	       third.cs() == "def";
+}
+
+
+/// Parse a macro definition (assumes that is_macro() returned true)
+void parse_macro(Parser & p, ostream & os, Context & context)
+{
+	context.check_layout(os);
+	Token first = p.curr_token();
+	Token second;
+	Token third;
+	string command = first.asInput();
+	if (first.cs() != "def") {
+		p.get_token();
+		eat_whitespace(p, os, context, false);
+		second = p.curr_token();
+		command += second.asInput();
+		if (second.cs() != "def") {
+			p.get_token();
+			eat_whitespace(p, os, context, false);
+			third = p.curr_token();
+			command += third.asInput();
+		}
+	}
+	eat_whitespace(p, os, context, false);
+	string const name = p.get_token().cs();
+	eat_whitespace(p, os, context, false);
+
+	// parameter text
+	bool simple = true;
+	string paramtext;
+	int arity = 0;
+	while (p.next_token().cat() != catBegin) {
+		if (p.next_token().cat() == catParameter) {
+			// # found
+			p.get_token();
+			paramtext += "#";
+
+			// followed by number?
+			if (p.next_token().cat() == catOther) {
+				char c = p.getChar();
+				paramtext += c;
+				// number = current arity + 1?
+				if (c == arity + '0' + 1)
+					++arity;
+				else
+					simple = false;
+			} else
+				paramtext += p.get_token().cs();
+		} else {
+			paramtext += p.get_token().cs();
+			simple = false;
+		}
+	}
+
+	// only output simple (i.e. compatible) macro as FormulaMacros
+	string ert = '\\' + name + ' ' + paramtext + '{' + p.verbatim_item() + '}';
+	if (simple) {
+		context.check_layout(os);
+		begin_inset(os, "FormulaMacro");
+		os << "\n\\def" << ert;
+		end_inset(os);
+	} else
+		handle_ert(os, command + ert, context);
+}
+
 } // anonymous namespace
 
 
@@ -1538,49 +1646,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 		}
 
-		else if (t.cs() == "def") {
-			context.check_layout(os);
-			eat_whitespace(p, os, context, false);
-			string name = p.get_token().cs();
-			eat_whitespace(p, os, context, false);
-
-			// parameter text
-			bool simple = true;
-			string paramtext;
-			int arity = 0;
-			while (p.next_token().cat() != catBegin) {
-				if (p.next_token().cat() == catParameter) {
-					// # found
-					p.get_token();
-					paramtext += "#";
-
-					// followed by number?
-					if (p.next_token().cat() == catOther) {
-						char c = p.getChar();
-						paramtext += c;
-						// number = current arity + 1?
-						if (c == arity + '0' + 1)
-							++arity;
-						else
-							simple = false;
-					} else
-						paramtext += p.get_token().cs();
-				} else {
-					paramtext += p.get_token().cs();
-					simple = false;
-				}
-			}
-
-			// only output simple (i.e. compatible) macro as FormulaMacros
-			string ert = "\\def\\" + name + ' ' + paramtext + '{' + p.verbatim_item() + '}';
-			if (simple) {
-				context.check_layout(os);
-				begin_inset(os, "FormulaMacro");
-				os << "\n" << ert;
-				end_inset(os);
-			} else
-				handle_ert(os, ert, context);
-		}
+		else if (is_macro(p))
+			parse_macro(p, os, context);
 
 		else if (t.cs() == "noindent") {
 			p.skip_spaces();
@@ -2636,8 +2703,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "newcommand" ||
 			 t.cs() == "providecommand" ||
 			 t.cs() == "renewcommand") {
-			// these could be handled by parse_command(), but
-			// we need to call add_known_command() here.
+			// providecommand could be handled by parse_command(),
+			// but we need to call add_known_command() here.
 			string name = t.asInput();
 			if (p.next_token().asInput() == "*") {
 				// Starred form. Eat '*'
@@ -2652,10 +2719,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					   opt1 + opt2 +
 					   '{' + p.verbatim_item() + '}';
 
-			context.check_layout(os);
-			begin_inset(os, "FormulaMacro");
-			os << "\n" << ert;
-			end_inset(os);
+			if (t.cs() == "providecommand")
+				handle_ert(os, ert, context);
+			else {
+				context.check_layout(os);
+				begin_inset(os, "FormulaMacro");
+				os << "\n" << ert;
+				end_inset(os);
+			}
 		}
 		
 		else if (t.cs() == "vspace") {
