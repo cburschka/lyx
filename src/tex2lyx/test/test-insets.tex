@@ -1,3 +1,5 @@
+%% LyX trick_preamble_code_into_believing_that_this_was_created_by_lyx created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
 \documentclass[a4paper,12pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage[latin9]{inputenc}
@@ -16,7 +18,7 @@
 \providecommand{\makenomenclature}{\makeglossary}
 \usepackage{varioref}
 \usepackage{prettyref}
-\usepackage{subscript}
+\usepackage{makeidx}
 
 \usepackage{graphicx}
 
@@ -26,6 +28,12 @@
   \rule[.5ex]{\linewidth}{#1}\par}
 
 \newcommand{\lyxarrow}{\leavevmode\,$\triangleright$\,\allowbreak}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{subscript} % user specified as long as tex2lyx
+% produces a format less than 408
+
+\def\mycommand{\textquestiondown}
 
 \begin{document}
 
@@ -88,7 +96,8 @@ Now the natbib things:
 \section{Input files\index{Input files}}
 
 We can input files too, like this \input{DummyDocument}, or with the include
-variant \include{DummyDocument}
+variant \include{DummyDocument} % unfortunately, including the doc twice
+% generates a multiply defined label
 
 If you prefer verbatim input, you can choose
 between~\verbatiminput{foo} or~\verbatiminput*{foo}.
@@ -154,6 +163,16 @@ that LaTeX wants to espace because they are active, like \_\&\#\$\{\}\%.
 And what about special characters like hyphe\-nation mark,
 ellipsis\ldots, and end-of-sentence\@. LyX also supports a menu
 separator\lyxarrow{}and a spif\textcompwordmark{}fy ligature break.
+
+Test for whitespace handling of commands: The following lines should
+result in identical output:
+
+builtin \textasciicircum{} unicodesymbols \j{} user \mycommand{} xx\par
+builtin \textasciicircum {} unicodesymbols \j {} user \mycommand{} xx\par
+builtin \textasciicircum % with a comment
+{} unicodesymbols \j % and a second one
+{} user \mycommand % and another
+{} xx
 
 A sub\textsubscript{sc\emph{ript}} and super\textsuperscript{script
 with $a^2+b^2=c^2$ math}.

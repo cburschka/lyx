@@ -215,20 +215,24 @@ bool Parser::isParagraph()
 }
 
 
-void Parser::skip_spaces(bool skip_comments)
+bool Parser::skip_spaces(bool skip_comments)
 {
 	// We just silently return if we have no more tokens.
 	// skip_spaces() should be callable at any time,
 	// the caller must check p::good() anyway.
+	bool skipped = false;
 	while (good()) {
 		get_token();
 		if (isParagraph()) {
 			putback();
 			break;
 		}
-		if ( curr_token().cat() == catSpace ||
-		     curr_token().cat() == catNewline ||
-		    (curr_token().cat() == catComment && curr_token().cs().empty()))
+		if (curr_token().cat() == catSpace ||
+		    curr_token().cat() == catNewline) {
+			skipped = true;
+			continue;
+		}
+		if ((curr_token().cat() == catComment && curr_token().cs().empty()))
 			continue;
 		if (skip_comments && curr_token().cat() == catComment)
 			cerr << "  Ignoring comment: " << curr_token().asInput();
@@ -237,6 +241,7 @@ void Parser::skip_spaces(bool skip_comments)
 			break;
 		}
 	}
+	return skipped;
 }
 
 
@@ -325,10 +330,15 @@ string Parser::getFullOpt()
 }
 
 
-string Parser::getOpt()
+string Parser::getOpt(bool keepws)
 {
 	string const res = getArg('[', ']');
-	return res.empty() ? string() : '[' + res + ']';
+	if (res.empty()) {
+		if (keepws)
+			unskip_spaces(true);
+		return string();
+	}
+	return '[' + res + ']';
 }
 
 

@@ -153,15 +153,21 @@ public:
 	/*!
 	 * \returns getArg('[', ']') including the brackets or the
 	 * empty string if there is no such argument.
+	 * No whitespace is eaten if \p keepws is true and no optional
+	 * argument exists. This is important if an optional argument is
+	 * parsed that would go after a command in ERT: In this case the
+	 * whitespace is needed to separate the ERT from the subsequent
+	 * word. Without it, the ERT and the next word would be concatenated
+	 * during .tex export, thus creating an invalid command.
 	 */
-	std::string getOpt();
+	std::string getOpt(bool keepws = false);
 	/*!
-	 * \returns getFullArg('[', ']') including the parentheses or the
-	 * empty string if there is no such argument.
+	 * the same as getOpt but without the brackets
 	 */
 	std::string getOptContent();
 	/*!
-	 * the same as getOpt but without the brackets
+	 * \returns getFullArg('(', ')') including the parentheses or the
+	 * empty string if there is no such argument.
 	 */
 	std::string getFullParentheseArg();
 	/*!
@@ -192,7 +198,8 @@ public:
 	/// \return whether the current token starts a new paragraph
 	bool isParagraph();
 	/// skips spaces (and comments if \p skip_comments is true)
-	void skip_spaces(bool skip_comments = false);
+	/// \return whether whitespace was skipped (not comments)
+	bool skip_spaces(bool skip_comments = false);
 	/// puts back spaces (and comments if \p skip_comments is true)
 	void unskip_spaces(bool skip_comments = false);
 	///

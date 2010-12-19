@@ -371,16 +371,17 @@ void end_inset(ostream & os)
 }
 
 
-void skip_braces(Parser & p)
+bool skip_braces(Parser & p)
 {
 	if (p.next_token().cat() != catBegin)
-		return;
+		return false;
 	p.get_token();
 	if (p.next_token().cat() == catEnd) {
 		p.get_token();
-		return;
+		return true;
 	}
 	p.putback();
+	return false;
 }
 
 
@@ -439,6 +440,33 @@ Layout const * findLayout(TextClass const & textclass, string const & name)
 
 
 void eat_whitespace(Parser &, ostream &, Context &, bool);
+
+
+/*!
+ * Skips whitespace and braces.
+ * This should be called after a command has been parsed that is not put into
+ * ERT, and where LyX adds "{}" if needed.
+ */
+void skip_spaces_braces(Parser & p)
+{
+	/* The following four examples produce the same typeset output and
+	   should be handled by this function:
+	   - abc \j{} xyz
+	   - abc \j {} xyz
+	   - abc \j 
+	     {} xyz
+	   - abc \j %comment
+	     {} xyz
+	 */
+	// Unfortunately we need to skip comments, too.
+	// We can't use eat_whitespace since writing them after the {}
+	// results in different output in some cases.
+	bool const skipped_spaces = p.skip_spaces(true);
+	bool const skipped_braces = skip_braces(p);
+	if (skipped_spaces && !skipped_braces)
+		// put back the space (it is better handled by check_space)
+		p.unskip_spaces(true);
+}
 
 
 void output_command_layout(ostream & os, Parser & p, bool outer,
@@ -560,7 +588,8 @@ void parse_arguments(string const & command,
 			ert += '{' + p.verbatim_item() + '}';
 			break;
 		case optional:
-			ert += p.getOpt();
+			// true because we must not eat whitespace
+			ert += p.getOpt(true);
 			break;
 		}
 	}
@@ -1850,32 +1879,29 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "makeindex" || t.cs() == "maketitle") {
 			// FIXME: Somehow prevent title layouts if
 			// "maketitle" was not found
-			p.skip_spaces();
-			skip_braces(p); // swallow this
+			// swallow this
+			skip_spaces_braces(p);
 		}
 
 		else if (t.cs() == "tableofcontents") {
-			p.skip_spaces();
 			context.check_layout(os);
 			begin_command_inset(os, "toc", "tableofcontents");
 			end_inset(os);
-			skip_braces(p); // swallow this
+			skip_spaces_braces(p);
 		}
 
 		else if (t.cs() == "listoffigures") {
-			p.skip_spaces();
 			context.check_layout(os);
 			begin_inset(os, "FloatList figure\n");
 			end_inset(os);
-			skip_braces(p); // swallow this
+			skip_spaces_braces(p);
 		}
 
 		else if (t.cs() == "listoftables") {
-			p.skip_spaces();
 			context.check_layout(os);
 			begin_inset(os, "FloatList table\n");
 			end_inset(os);
-			skip_braces(p); // swallow this
+			skip_spaces_braces(p);
 		}
 
 		else if (t.cs() == "listof") {
@@ -2153,14 +2179,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			begin_command_inset(os, "index_print", "printindex");
 			end_inset(os);
-			skip_braces(p);
+			skip_spaces_braces(p);
 		}
 
 		else if (t.cs() == "printnomenclature") {
 			context.check_layout(os);
 			begin_command_inset(os, "nomencl_print", "printnomenclature");
 			end_inset(os);
-			skip_braces(p);
+			skip_spaces_braces(p);
 		}
 
 		else if (t.cs() == "url") {
@@ -2312,37 +2338,37 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			 || t.cs() == "LaTeX") {
 			context.check_layout(os);
 			os << t.cs();
-			skip_braces(p); // eat {}
+			skip_spaces_braces(p);
 		}
 
 		else if (t.cs() == "LaTeXe") {
 			context.check_layout(os);
 			os << "LaTeX2e";
-			skip_braces(p); // eat {}
+			skip_spaces_braces(p);
 		}
 
 		else if (t.cs() == "ldots") {
 			context.check_layout(os);
-			skip_braces(p);
 			os << "\\SpecialChar \\ldots{}\n";
+			skip_spaces_braces(p);
 		}
 
 		else if (t.cs() == "lyxarrow") {
 			context.check_layout(os);
 			os << "\\SpecialChar \\menuseparator\n";
-			skip_braces(p);
+			skip_spaces_braces(p);
 		}
 
 		else if (t.cs() == "textcompwordmark") {
 			context.check_layout(os);
 			os << "\\SpecialChar \\textcompwordmark{}\n";
-			skip_braces(p);
+			skip_spaces_braces(p);
 		}
 
 		else if (LYX_FORMAT >= 307 && t.cs() == "slash") {
 			context.check_layout(os);
 			os << "\\SpecialChar \\slash{}\n";
-			skip_braces(p);
+			skip_spaces_braces(p);
 		}
 
 		else if (LYX_FORMAT >= 307 && t.cs() == "nobreakdash") {
@@ -2370,19 +2396,19 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "textasciitilde") {
 			context.check_layout(os);
 			os << '~';
-			skip_braces(p);
+			skip_spaces_braces(p);
 		}
 
 		else if (t.cs() == "textasciicircum") {
 			context.check_layout(os);
 			os << '^';
-			skip_braces(p);
+			skip_spaces_braces(p);
 		}
 
 		else if (t.cs() == "textbackslash") {
 			context.check_layout(os);
 			os << "\n\\backslash\n";
-			skip_braces(p);
+			skip_spaces_braces(p);
 		}
 
 		else if (t.cs() == "_" || t.cs() == "&" || t.cs() == "#"
@@ -2461,7 +2487,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "newline") {
 			context.check_layout(os);
 			os << "\n\\" << t.cs() << "\n";
-			skip_braces(p); // eat {}
+			skip_spaces_braces(p);
 		}
 
 		else if (t.cs() == "input" || t.cs() == "include"
@@ -2577,7 +2603,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			begin_inset(os, "VSpace ");
 			os << t.cs();
 			end_inset(os);
-			skip_braces(p);
+			skip_spaces_braces(p);
 		}
 
 		else if (is_known(t.cs(), known_spaces)) {
@@ -2604,7 +2630,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			t.cs() == "cleardoublepage") {
 			context.check_layout(os);
 			os << "\n\\" << t.cs() << "\n";
-			skip_braces(p); // eat {}
+			skip_spaces_braces(p);
 		}
 
 		else if (t.cs() == "newcommand" ||
@@ -2726,8 +2752,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					     << "+" << to_utf8(rem) << endl;
 				context.check_layout(os);
 				os << to_utf8(s);
-				p.skip_spaces();
-				skip_braces(p); // eat {}
+				skip_spaces_braces(p);
 			}
 			//cerr << "#: " << t << " mode: " << mode << endl;
 			// heuristic: read up to next non-nested space

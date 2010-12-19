@@ -1,4 +1,22 @@
+%% LyX trick_preamble_code_into_believing_that_this_was_created_by_lyx created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
 \documentclass[legalpaper]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+
+\newcommand{\noun}[1]{\textsc{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+
+\newenvironment{lyxlist}[1]
+	{\begin{list}{}
+		{\settowidth{\labelwidth}{#1}
+		\setlength{\leftmargin}{\labelwidth}
+		\addtolength{\leftmargin}{\labelsep}
+		\renewcommand{\makelabel}[1]{##1\hfil}}}
+	{\end{list}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 
 \newenvironment{foo}{==[}{]==}
 
