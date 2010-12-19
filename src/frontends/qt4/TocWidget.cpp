@@ -39,13 +39,16 @@
 
 #include <vector>
 
+#define DELAY_UPDATE_VIEW
+
 using namespace std;
 
 namespace lyx {
 namespace frontend {
 
 TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
-	: QWidget(parent), depth_(0), persistent_(false), gui_view_(gui_view)
+	: QWidget(parent), depth_(0), persistent_(false), gui_view_(gui_view), update_delay_(0)
+
 {
 	setupUi(this);
 
@@ -249,7 +252,7 @@ void TocWidget::on_updateTB_clicked()
 void TocWidget::on_sortCB_stateChanged(int state)
 {
 	gui_view_.tocModels().sort(current_type_, state == Qt::Checked);
-	updateView();
+	updateViewForce();
 }
 
 
@@ -317,7 +320,7 @@ void TocWidget::on_typeCO_currentIndexChanged(int index)
 	if (index == -1)
 		return;
 	current_type_ = typeCO->itemData(index).toString();
-	updateView();
+	updateViewForce();
 	if (typeCO->hasFocus())
 		gui_view_.setFocus();
 }
@@ -389,6 +392,21 @@ void TocWidget::enableControls(bool enable)
 
 void TocWidget::updateView()
 {
+// Enable if you dont want the delaying business, cf #7138.
+#ifndef DELAY_UPDATE_VIEW
+	updateViewForce();
+	return;
+#endif
+	// already scheduled?
+	if (update_delay_ == -1)
+		return;
+	QTimer::singleShot(update_delay_, this, SLOT(updateViewForce()));
+	update_delay_ = -1;
+}
+
+void TocWidget::updateViewForce()
+{
+	update_delay_ = 2000;
 	if (!gui_view_.documentBufferView()) {
 		tocTV->setModel(0);
 		depthSL->setMaximum(0);
@@ -506,6 +524,9 @@ void TocWidget::init(QString const & str)
 	typeCO->blockSignals(true);
 	typeCO->setCurrentIndex(new_index);
 	typeCO->blockSignals(false);
+
+	// no delay when the whole outliner is reseted.
+	update_delay_ = 0;
 }
 
 } // namespace frontend

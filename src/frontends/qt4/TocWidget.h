@@ -44,8 +44,10 @@ public:
 		const;
 
 public Q_SLOTS:
-	/// Update the display of the dialog whilst it is still visible.
+	/// Schedule new update of the display unless already scheduled.
 	void updateView();
+	/// Update the display of the dialog whilst it is still visible.
+	void updateViewForce();
 
 protected Q_SLOTS:
 	///
@@ -99,6 +101,8 @@ private:
 	bool persistent_;
 	///
 	GuiView & gui_view_;
+	// next delay for outliner update in ms. -1 when already scheduled.
+	int update_delay_;
 };
 
 } // namespace frontend
