@@ -2492,7 +2492,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "input" || t.cs() == "include"
 			 || t.cs() == "verbatiminput") {
-			string name = '\\' + t.cs();
+			string name = t.cs();
 			if (t.cs() == "verbatiminput"
 			    && p.next_token().asInput() == "*")
 				name += p.get_token().asInput();
@@ -2554,9 +2554,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << "\ttemplate XFig\n"
 				   << "\tfilename " << outname << '\n';
 			} else {
-				begin_inset(os, "Include ");
-				os << name << '{' << outname
-				   << "}\npreview false\n";
+				begin_command_inset(os, "include", name);
+				os << "preview false\n"
+				      "filename \"" << outname << "\"\n";
 			}
 			end_inset(os);
 		}
