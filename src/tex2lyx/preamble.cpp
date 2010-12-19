@@ -56,11 +56,11 @@ namespace {
 //"chinese-simplified", "chinese-traditional", "japanese", "korean"
 // Both changes require first that support for non-babel languages (CJK,
 // armtex) is added.
-const char * const known_languages[] = { "afrikaans", "american", "arabic",
-"arabtex", "austrian", "bahasa", "basque", "belarusian", "brazil", "brazilian",
-"breton", "british", "bulgarian", "canadian", "canadien", "catalan",
-"croatian", "czech", "danish", "dutch", "english", "esperanto", "estonian",
-"finnish", "francais", "french", "frenchb", "frenchle", "frenchpro",
+const char * const known_languages[] = { "afrikaans", "albanian", "american",
+"arabic", "arabtex", "austrian", "bahasa", "basque", "belarusian", "brazil",
+"brazilian", "breton", "british", "bulgarian", "canadian", "canadien",
+"catalan", "croatian", "czech", "danish", "dutch", "english", "esperanto",
+"estonian", "finnish", "francais", "french", "frenchb", "frenchle", "frenchpro",
 "galician", "german", "germanb", "greek", "hebrew", "icelandic", "irish",
 "italian", "kazakh", "latvian", "lithuanian", "lsorbian", "magyar",
 "naustrian", "ngerman", "ngermanb", "norsk", "nynorsk", "polish", "portuges",
@@ -191,6 +191,10 @@ string babel2lyx(string language)
 		return "arabic_arabtex";
 	if (language == "arabic")
 		return "arabic_arabi";
+	if (language == "lsorbian")
+		return "lowersorbian";
+	if (language == "usorbian")
+		return "uppersorbian";
 	return language;
 }
 
