@@ -831,6 +831,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		      "hor_pos \"c\"\n"
 		      "has_inner_box 0\n"
 		      "inner_pos \"t\"\n"
+		      "use_parbox 0\n"
 		      "width \"100col%\"\n"
 		      "special \"none\"\n"
 		      "height \"1in\"\n"
@@ -2729,16 +2730,18 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 		}
 		
-		else if (t.cs() == "vspace") {
+		else if (t.cs() == "hspace" || t.cs() == "vspace") {
 			bool starred = false;
 			if (p.next_token().asInput() == "*") {
 				p.get_token();
 				starred = true;
 			}
+			string name = t.asInput();
 			string const length = p.verbatim_item();
 			string unit;
 			string valstring;
 			bool valid = splitLatexLength(length, valstring, unit);
+			bool known_hspace = false;
 			bool known_vspace = false;
 			bool known_unit = false;
 			double value;
@@ -2746,21 +2749,31 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				istringstream iss(valstring);
 				iss >> value;
 				if (value == 1.0) {
-					if (unit == "\\smallskipamount") {
-						unit = "smallskip";
-						known_vspace = true;
-					} else if (unit == "\\medskipamount") {
-						unit = "medskip";
-						known_vspace = true;
-					} else if (unit == "\\bigskipamount") {
-						unit = "bigskip";
-						known_vspace = true;
-					} else if (unit == "\\fill") {
-						unit = "vfill";
-						known_vspace = true;
+					if (t.cs()[0] == 'h') {
+						if (unit == "\\fill") {
+							if (!starred) {
+								unit = "";
+								name = "hfill";
+							}
+							known_hspace = true;
+						}
+					} else {
+						if (unit == "\\smallskipamount") {
+							unit = "smallskip";
+							known_vspace = true;
+						} else if (unit == "\\medskipamount") {
+							unit = "medskip";
+							known_vspace = true;
+						} else if (unit == "\\bigskipamount") {
+							unit = "bigskip";
+							known_vspace = true;
+						} else if (unit == "\\fill") {
+							unit = "vfill";
+							known_vspace = true;
+						}
 					}
 				}
-				if (!known_vspace) {
+				if (!known_hspace && !known_vspace) {
 					switch (unitFromString(unit)) {
 					case Length::SP:
 					case Length::PT:
@@ -2782,8 +2795,23 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				}
 			}
 
-			if (known_unit || known_vspace) {
-				// Literal length or known variable
+			if (t.cs()[0] == 'h' && (known_unit || known_hspace)) {
+				// Literal horizontal length or known variable
+				context.check_layout(os);
+				begin_inset(os, "Space \\");
+				os << name;
+				if (starred)
+					os << '*';
+				os << '{';
+				if (known_hspace)
+					os << unit;
+				os << "}\n";
+				if (known_unit && !known_hspace)
+					os << "\\length "
+					   << translate_len(length) << '\n';
+				end_inset(os);
+			} else if (known_unit || known_vspace) {
+				// Literal vertical length or known variable
 				context.check_layout(os);
 				begin_inset(os, "VSpace ");
 				if (known_unit)
@@ -2793,8 +2821,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					os << '*';
 				end_inset(os);
 			} else {
-				// LyX can't handle other length variables in Inset VSpace
-				string name = t.asInput();
+				// LyX can't handle other length variables in Inset V?Space
 				if (starred)
 					name += '*';
 				if (valid) {
