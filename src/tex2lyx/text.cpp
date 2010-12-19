@@ -192,12 +192,14 @@ char const * const known_tex_extensions[] = {"tex", 0};
 
 /// spaces known by InsetSpace
 char const * const known_spaces[] = { " ", "space", ",", "thinspace", "quad",
-"qquad", "enspace", "enskip", "negthinspace", 0};
+"qquad", "enspace", "enskip", "negthinspace", "hfill", "dotfill", "hrulefill",
+"leftarrowfill", "rightarrowfill", "upbracefill", "downbracefill", 0};
 
 /// the same as known_spaces with .lyx names
 char const * const known_coded_spaces[] = { "space{}", "space{}",
 "thinspace{}", "thinspace{}", "quad{}", "qquad{}", "enspace{}", "enskip{}",
-"negthinspace{}", 0};
+"negthinspace{}", "hfill{}", "dotfill{}", "hrulefill{}", "leftarrowfill{}",
+"rightarrowfill{}", "upbracefill{}", "downbracefill{}", 0};
 
 
 /// splits "x=z, y=b" into a map and an ordered keyword vector
@@ -710,7 +712,8 @@ void parse_box(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 			// We add a protected space if something real follows
 			if (p.good() && p.next_token().cat() != catComment) {
-				os << "\\InsetSpace ~\n";
+				begin_inset(os, "Space ~\n");
+				end_inset(os);
 			}
 		}
 #endif
@@ -1453,8 +1456,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (t.character() == '~') {
 				if (context.layout->free_spacing)
 					os << ' ';
-				else
-					os << "\\InsetSpace ~\n";
+				else {
+					begin_inset(os, "Space ~\n");
+					end_inset(os);
+				}
 			} else
 				os << t.cs();
 		}
@@ -1935,13 +1940,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			else
 				handle_ert(os, "\\ensuremath{" + s + "}",
 					   context);
-		}
-
-		else if (t.cs() == "hfill") {
-			context.check_layout(os);
-			os << "\n\\hfill\n";
-			skip_braces(p);
-			p.skip_spaces();
 		}
 
 		else if (t.cs() == "makeindex" || t.cs() == "maketitle") {
@@ -2677,9 +2675,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (is_known(t.cs(), known_spaces)) {
 			char const * const * where = is_known(t.cs(), known_spaces);
 			context.check_layout(os);
-			os << "\\InsetSpace ";
+			begin_inset(os, "Space ");
 			os << '\\' << known_coded_spaces[where - known_spaces]
 			   << '\n';
+			end_inset(os);
 			// LaTeX swallows whitespace after all spaces except
 			// "\\,". We have to do that here, too, because LyX
 			// adds "{}" which would make the spaces significant.
