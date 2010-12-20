@@ -48,6 +48,8 @@
 #include "insets/InsetListingsParams.h"
 #include "insets/RenderPreview.h"
 
+#include "mathed/MacroTable.h"
+
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -170,7 +172,8 @@ InsetInclude::InsetInclude(Buffer * buf, InsetCommandParams const & p)
 	if (isListings(params())) {
 		InsetListingsParams listing_params(to_utf8(p["lstparams"]));
 		label_ = createLabel(buffer_, from_utf8(listing_params.getParamValue("label")));
-	}
+	} else if (isInputOrInclude(params()) && buf)
+		loadIfNeeded();
 }
 
 
@@ -443,18 +446,33 @@ Buffer * InsetInclude::loadIfNeeded() const
 			// Buffer creation is not possible.
 			return 0;
 
+		// Set parent before loading, such that macros can be tracked
+		child->setParent(&buffer());
+
 		if (child->loadLyXFile() != Buffer::ReadSuccess) {
 			failedtoload_ = true;
+			child->setParent(0);
 			//close the buffer we just opened
 			theBufferList().release(child);
 			return 0;
 		}
-	
+
 		if (!child->errorList("Parse").empty()) {
 			// FIXME: Do something.
 		}
+	} else {
+		// The file was already loaded, so, simply
+		// inform parent buffer about local macros.
+		Buffer * parent = const_cast<Buffer *>(&buffer());
+		child->setParent(parent);
+		MacroNameSet macros;
+		child->listMacroNames(macros);
+		MacroNameSet::const_iterator cit = macros.begin();
+		MacroNameSet::const_iterator end = macros.end();
+		for (; cit != end; ++cit)
+			parent->usermacros.insert(*cit);
 	}
-	child->setParent(&buffer());
+
 	// Cache the child buffer.
 	child_buffer_ = child;
 	return child;
