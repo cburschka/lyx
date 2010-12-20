@@ -28216,7 +28216,13 @@ Sometimes it is useful to hide some document parts in the output.
 \begin_layout Standard
 For these cases LyX allows you to put text into branches.
  The text will then only appear in the output when its branch is activated.
- To create a branch, go in the 
+ To create a branch, either select the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Branch\SpecialChar \menuseparator
+Insert New Branch
+\family default
+ (if you just want to specify a new branch) or go in the 
 \family sans
 Document\SpecialChar \menuseparator
 Settings
@@ -28225,9 +28231,30 @@ Settings
 \family sans
 Branches
 \family default
-.
- The name of the branch, its activation state and the background color of
- the branches inside LyX can be specified in this dialog.
+, where you can specify and change the name of the branch, its activation
+ state (whether the content of the branch is shown in the output or not),
+ its background color inside LyX and whether the name of the branch should
+ be appended to the document file name on export if the branch is active
+ (see below for an example).
+ Furthermore, the dialog lets you merge two branches (just rename one branch
+ to the name of the other) and to add 
+\begin_inset Quotes eld
+\end_inset
+
+unknown branches
+\begin_inset Quotes erd
+\end_inset
+
+ (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+branches that were added to the document via copy and paste from other documents
+, without having being defined) to the document's branch list.
 \end_layout
 
 \begin_layout Standard
@@ -28238,7 +28265,8 @@ Insert\SpecialChar \menuseparator
 Branch
 \family default
  where you can choose a branch.
- You can later change the branch of the boxes by right-clicking on them.
+ You can later change the activation state of the branch by right-clicking
+ on them.
 \end_layout
 
 \begin_layout Standard
@@ -28270,6 +28298,104 @@ Answer: Wilhelm Conrad Röntgen
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+If you activate 
+\family sans
+Filename Suffix
+\family default
+ in 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Branches
+\family default
+, the name of the active branches will be appended to the file name at export.
+ Consider for example a file 
+\begin_inset Quotes eld
+\end_inset
+
+Exam.lyx
+\begin_inset Quotes erd
+\end_inset
+
+ which has the above branches.
+ If 
+\begin_inset Quotes eld
+\end_inset
+
+Filename Suffix
+\begin_inset Quotes erd
+\end_inset
+
+ is active, the PDF export file would be called 
+\begin_inset Quotes eld
+\end_inset
+
+Exam.pdf
+\begin_inset Quotes erd
+\end_inset
+
+ if both the 
+\begin_inset Quotes eld
+\end_inset
+
+Question
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Answer
+\begin_inset Quotes erd
+\end_inset
+
+ branch were inactive, 
+\begin_inset Quotes eld
+\end_inset
+
+Exam-Question.pdf
+\begin_inset Quotes erd
+\end_inset
+
+ if only the 
+\begin_inset Quotes eld
+\end_inset
+
+Question
+\begin_inset Quotes erd
+\end_inset
+
+ branch was active, likewise 
+\begin_inset Quotes eld
+\end_inset
+
+Exam-Answer.pdf
+\begin_inset Quotes erd
+\end_inset
+
+ if only the 
+\begin_inset Quotes eld
+\end_inset
+
+Answer
+\begin_inset Quotes erd
+\end_inset
+
+ branch was active, and 
+\begin_inset Quotes eld
+\end_inset
+
+Exam-Question-Answer.pdf
+\begin_inset Quotes erd
+\end_inset
+
+ if both branches were active.
+ This helps you to easily export different versions of your document without
+ much hassle.
 \end_layout
 
 \begin_layout Standard

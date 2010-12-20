@@ -107,12 +107,12 @@
 \branch Question
 \selected 1
 \filename_suffix 0
-\color #aa55ff
+\color #00ff00
 \end_branch
 \branch Réponses
 \selected 0
 \filename_suffix 0
-\color #00ff00
+\color #aa55ff
 \end_branch
 \index Index
 \shortcut idx
@@ -29473,7 +29473,17 @@ Il est parfois utile de masquer une partie du document à l'impression.
 \begin_layout Standard
 Dans ces cas, LyX permet de créer plusieurs branches pour le même document.
  Le texte n'apparaîtra dans la sortie que si sa branche est activée.
- Pour créer une branche, vous utilisez la fenêtre de dialogue 
+ Pour créer une branche, 
+\lang english
+either select the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Branch\SpecialChar \menuseparator
+Insert New Branch
+\family default
+ (if you just want to specify a new branch), 
+\lang french
+ou utilisez la fenêtre de dialogue 
 \family sans
 Document\SpecialChar \menuseparator
 Paramètres
@@ -29495,6 +29505,23 @@ Branches
 .
  Le nom de la branche, son état d'activation et la couleur de fond qui sert
  à la distinguer dans le document peuvent être modifiés dans cette fenêtre.
+ 
+\lang english
+Furthermore, the dialog lets you merge two branches (just rename one branch
+ to the name of the other) and to add 
+\begin_inset Quotes eld
+\end_inset
+
+unknown branches
+\begin_inset Quotes erd
+\end_inset
+
+ (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., branches that were added to the document via copy and paste from other
+ documents, without having being defined) to the document's branch list.
 \end_layout
 
 \begin_layout Standard
@@ -29546,6 +29573,106 @@ Réponse: Wilhelm Conrad Röntgen
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you activate 
+\family sans
+Filename Suffix
+\family default
+ in 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Branches
+\family default
+, the name of the active branches will be appended to the file name at export.
+ Consider for example a file 
+\begin_inset Quotes eld
+\end_inset
+
+Exam.lyx
+\begin_inset Quotes erd
+\end_inset
+
+ which has the above branches.
+ If 
+\begin_inset Quotes eld
+\end_inset
+
+Filename Suffix
+\begin_inset Quotes erd
+\end_inset
+
+ is active, the PDF export file would be called 
+\begin_inset Quotes eld
+\end_inset
+
+Exam.pdf
+\begin_inset Quotes erd
+\end_inset
+
+ if both the 
+\begin_inset Quotes eld
+\end_inset
+
+Question
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Answer
+\begin_inset Quotes erd
+\end_inset
+
+ branch were inactive, 
+\begin_inset Quotes eld
+\end_inset
+
+Exam-Question.pdf
+\begin_inset Quotes erd
+\end_inset
+
+ if only the 
+\begin_inset Quotes eld
+\end_inset
+
+Question
+\begin_inset Quotes erd
+\end_inset
+
+ branch was active, likewise 
+\begin_inset Quotes eld
+\end_inset
+
+Exam-Answer.pdf
+\begin_inset Quotes erd
+\end_inset
+
+ if only the 
+\begin_inset Quotes eld
+\end_inset
+
+Answer
+\begin_inset Quotes erd
+\end_inset
+
+ branch was active, and 
+\begin_inset Quotes eld
+\end_inset
+
+Exam-Question-Answer.pdf
+\begin_inset Quotes erd
+\end_inset
+
+ if both branches were active.
+ This helps you to easily export different versions of your document without
+ much hassle.
 \end_layout
 
 \begin_layout Standard

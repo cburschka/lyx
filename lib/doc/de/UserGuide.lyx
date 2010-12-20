@@ -32833,7 +32833,14 @@ Zweigen
 
 \begin_layout Standard
 Zuerst müssen Sie die verschiedenen Zweige definieren.
- Das machen Sie in 
+ Das machen entweder indem Sie das Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Zweig\SpecialChar \menuseparator
+Neuen Zweig einfügen
+\family default
+ verwenden (falls Sie nur einen neuen Zweig anlegen möchten), oder im Menü
+ 
 \family sans
 Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
@@ -32852,12 +32859,9 @@ Hinzufügen
 \family default
 .
  Der Name erscheint im unteren Feld, wo Sie ihn bearbeiten können.
-\end_layout
-
-\begin_layout Standard
-Dort können Sie den Zweig 
+ Dort können Sie den Zweig 
 \family sans
-(de)aktivieren
+(De)aktivieren
 \family default
 , ihm eine 
 \family sans
@@ -32868,7 +32872,27 @@ Farbe
 Entfernen
 \family default
 .
- Wenn Sie nun Text für einen Zweig schreiben wollen, wählen Sie ihn unter
+ 
+\lang english
+Furthermore, the dialog lets you merge two branches (just rename one branch
+ to the name of the other) and to add 
+\begin_inset Quotes eld
+\end_inset
+
+unknown branches
+\begin_inset Quotes erd
+\end_inset
+
+ (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., branches that were added to the document via copy and paste from other
+ documents, without having being defined) to the document's branch list.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie nun Text für einen Zweig schreiben wollen, wählen Sie ihn unter
  
 \family sans
 Einfügen\SpecialChar \menuseparator
@@ -32918,7 +32942,108 @@ Antwort: Wilhelm Conrad Röntgen
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace medskip
+Wenn Sie 
+\family sans
+Dateinamensendung
+\family default
+ im Menü 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Zweige
+\family default
+ aktivieren, wird der Name des aktiven Zweigs beim Export des Dokuments
+ an den Dateinamen angehängt.
+ 
+\lang english
+Consider for example a file 
+\begin_inset Quotes eld
+\end_inset
+
+Exam.lyx
+\begin_inset Quotes erd
+\end_inset
+
+ which has the above branches.
+ If 
+\begin_inset Quotes eld
+\end_inset
+
+Filename Suffix
+\begin_inset Quotes erd
+\end_inset
+
+ is active, the PDF export file would be called 
+\begin_inset Quotes eld
+\end_inset
+
+Exam.pdf
+\begin_inset Quotes erd
+\end_inset
+
+ if both the 
+\begin_inset Quotes eld
+\end_inset
+
+Question
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Answer
+\begin_inset Quotes erd
+\end_inset
+
+ branch were inactive, 
+\begin_inset Quotes eld
+\end_inset
+
+Exam-Question.pdf
+\begin_inset Quotes erd
+\end_inset
+
+ if only the 
+\begin_inset Quotes eld
+\end_inset
+
+Question
+\begin_inset Quotes erd
+\end_inset
+
+ branch was active, likewise 
+\begin_inset Quotes eld
+\end_inset
+
+Exam-Answer.pdf
+\begin_inset Quotes erd
+\end_inset
+
+ if only the 
+\begin_inset Quotes eld
+\end_inset
+
+Answer
+\begin_inset Quotes erd
+\end_inset
+
+ branch was active, and 
+\begin_inset Quotes eld
+\end_inset
+
+Exam-Question-Answer.pdf
+\begin_inset Quotes erd
+\end_inset
+
+ if both branches were active.
+ This helps you to easily export different versions of your document without
+ much hassle.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
 \end_inset
 
 
