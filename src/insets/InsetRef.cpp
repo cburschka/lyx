@@ -239,9 +239,9 @@ void InsetRef::toString(odocstream & os) const
 
 void InsetRef::forToc(docstring & os, size_t) const
 {
-	odocstringstream ods;
-	plaintext(ods, OutputParams(0));
-	os += ods.str();
+	// There's no need for details in the TOC, and a long label
+	// will just get in the way.
+	os += '#';
 }
 
 
