@@ -102,7 +102,8 @@ enum AsStringParameter
 	AS_STR_LABEL = 1, ///< Prefix with paragraph label.
 	AS_STR_INSETS = 2, ///< Go into insets.
 	AS_STR_NEWLINES = 4, ///< Get also newline characters.
-	AS_STR_SKIPDELETE = 8 ///< Skip deleted text in change tracking.
+	AS_STR_SKIPDELETE = 8, ///< Skip deleted text in change tracking.
+	AS_STR_INTOC = 16 ///< Skip insets that are not supposed to go into the TOC
 };
 
 

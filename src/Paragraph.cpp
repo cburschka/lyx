@@ -2928,8 +2928,11 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options) const
 		    || (c == '\n' && (options & AS_STR_NEWLINES)))
 			os.put(c);
 		else if (c == META_INSET && (options & AS_STR_INSETS)) {
-			getInset(i)->toString(os);
-			if (getInset(i)->asInsetMath())
+			Inset const * inset = getInset(i);
+			if ((options & AS_STR_INTOC) && !inset->isInToc())
+				continue;
+			inset->toString(os);
+			if (inset->asInsetMath())
 				os << " ";
 		}
 	}
@@ -3578,7 +3581,7 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 	if (from == to || from >= size())
 		return result;
 
-	docstring word = asString(from, to, AS_STR_INSETS + AS_STR_SKIPDELETE);
+	docstring word = asString(from, to, AS_STR_INSETS | AS_STR_SKIPDELETE);
 	Language * lang = d->getSpellLanguage(from);
 
 	wl = WordLangTuple(word, lang);
