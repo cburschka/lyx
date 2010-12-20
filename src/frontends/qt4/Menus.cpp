@@ -747,10 +747,10 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 		return;
 	WordLangTuple wl;
 	docstring_list suggestions;
-	pos_type from = bv->cursor().pos();
-	pos_type to = from;
 	Cursor const & cur = bv->cursor();
 	Paragraph const & par = cur.paragraph();
+	pos_type from = cur.pos();
+	pos_type to = from;
 	SpellChecker::Result res = par.spellCheck(from, to, wl, suggestions, true, true);
 	switch (res) {
 	case SpellChecker::UNKNOWN_WORD:
