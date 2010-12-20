@@ -57,20 +57,22 @@ namespace {
 // Both changes require first that support for non-babel languages (CJK,
 // armtex) is added.
 const char * const known_languages[] = { "afrikaans", "albanian", "american",
-"arabic", "arabtex", "austrian", "bahasa", "basque", "belarusian", "brazil",
-"brazilian", "breton", "british", "bulgarian", "canadian", "canadien",
-"catalan", "croatian", "czech", "danish", "dutch", "english", "esperanto",
-"estonian", "finnish", "francais", "french", "frenchb", "frenchle", "frenchpro",
-"galician", "german", "germanb", "greek", "hebrew", "icelandic", "irish",
-"italian", "kazakh", "latvian", "lithuanian", "lsorbian", "magyar",
-"naustrian", "ngerman", "ngermanb", "norsk", "nynorsk", "polish", "portuges",
-"portuguese", "romanian", "russian", "russianb", "scottish", "serbian", "slovak",
-"slovene", "spanish", "swedish", "thai", "turkish", "ukraineb", "ukrainian",
-"usorbian", "welsh", 0};
+"arabic", "arabtex", "austrian", "bahasa", "bahasai", "bahasam", "basque",
+"belarusian", "brazil", "brazilian", "breton", "british", "bulgarian",
+"canadian", "canadien", "catalan", "croatian", "czech", "danish", "dutch",
+"english", "esperanto", "estonian", "finnish", "francais", "french",
+"frenchb", "frenchle", "frenchpro", "galician", "german", "germanb", "greek",
+"hebrew", "icelandic", "indon", "indonesian", "interlingua", "irish",
+"italian", "kazakh", "latvian", "lithuanian", "lsorbian", "magyar", "malay",
+"meyalu", "naustrian", "ngerman", "ngermanb", "norsk", "nynorsk", "polish",
+"portuges", "portuguese", "romanian", "russian", "russianb", "scottish",
+"serbian", "serbian-latin", "slovak", "slovene", "spanish", "swedish", "thai", "turkish",
+"ukraineb", "ukrainian", "usorbian", "welsh", 0};
 
-//add this when updating to lyxformat 305:
-//bahasai, indonesian, and indon = equal to bahasa
-//malay and meyalu = equal to bahasam
+const char * const known_bahasa_languages[] = {"bahasa", "bahasai",
+						"indon", "indonesian", 0};
+const char * const known_bahasam_languages[] = {"bahasam", "malay",
+						"meyalu", 0};
 const char * const known_brazilian_languages[] = {"brazil", "brazilian", 0};
 const char * const known_french_languages[] = {"french", "frenchb", "francais",
 						"frenchle", "frenchpro", 0};
@@ -99,7 +101,7 @@ const char * const known_german_quotes_languages[] = {"austrian", "bulgarian",
 const char * const known_polish_quotes_languages[] = {"afrikaans", "croatian",
 "dutch", "estonian", "magyar", "polish", "romanian", 0};
 
-const char * const known_swedish_quotes_languages[] = {"bahasa", "finnish", 
+const char * const known_swedish_quotes_languages[] = {"finnish",
 "swedish", 0};
 
 char const * const known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
@@ -482,7 +484,11 @@ void handle_package(Parser &p, string const & name, string const & opts,
 void end_preamble(ostream & os, TextClass const & /*textclass*/)
 {
 	// merge synonym languages
-	if (is_known(h_language, known_brazilian_languages))
+	if (is_known(h_language, known_bahasa_languages))
+		h_language = "bahasa";
+	else if (is_known(h_language, known_bahasam_languages))
+		h_language = "bahasam";
+	else if (is_known(h_language, known_brazilian_languages))
 		h_language = "brazilian";
 	else if (is_known(h_language, known_french_languages))
 		h_language = "french";
@@ -527,6 +533,8 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 		h_quotes_language = "swedish";
 	//english
 	else if (is_known(h_language, known_english_quotes_languages)
+		|| is_known(h_language, known_bahasa_languages)
+		|| is_known(h_language, known_bahasam_languages)
 		|| is_known(h_language, known_brazilian_languages)
 		|| is_known(h_language, known_portuguese_languages))
 		h_quotes_language = "english";
