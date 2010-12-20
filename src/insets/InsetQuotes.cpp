@@ -333,6 +333,12 @@ void InsetQuotes::toString(odocstream & os) const
 }
 
 
+void InsetQuotes::forToc(docstring & os, size_t) const
+{
+	os += displayString();
+}
+
+
 void InsetQuotes::validate(LaTeXFeatures & features) const
 {
 	bool const use_babel = features.useBabel();

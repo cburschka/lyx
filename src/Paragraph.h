@@ -102,8 +102,7 @@ enum AsStringParameter
 	AS_STR_LABEL = 1, ///< Prefix with paragraph label.
 	AS_STR_INSETS = 2, ///< Go into insets.
 	AS_STR_NEWLINES = 4, ///< Get also newline characters.
-	AS_STR_SKIPDELETE = 8, ///< Skip deleted text in change tracking.
-	AS_STR_INTOC = 16 ///< Skip insets that are not supposed to go into the TOC
+	AS_STR_SKIPDELETE = 8 ///< Skip deleted text in change tracking.
 };
 
 
@@ -151,6 +150,8 @@ public:
 	///
 	docstring asString(pos_type beg, pos_type end,
 		int options = AS_STR_NONE) const;
+	///
+	void forToc(docstring &, size_t maxlen) const;
 
 	/// Extract only the explicitly visible text (without any formatting),
 	/// descending into insets

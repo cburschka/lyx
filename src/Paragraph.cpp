@@ -2928,16 +2928,29 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options) const
 		    || (c == '\n' && (options & AS_STR_NEWLINES)))
 			os.put(c);
 		else if (c == META_INSET && (options & AS_STR_INSETS)) {
-			Inset const * inset = getInset(i);
-			if ((options & AS_STR_INTOC) && !inset->isInToc())
-				continue;
-			inset->toString(os);
-			if (inset->asInsetMath())
+			getInset(i)->toString(os);
+			if (getInset(i)->asInsetMath())
 				os << " ";
 		}
 	}
 
 	return os.str();
+}
+
+
+void Paragraph::forToc(docstring & os, size_t maxlen) const
+{
+	for (pos_type i = 0; i < size() && os.length() < maxlen; ++i) {
+		if (isDeleted(i))
+			continue;
+		char_type const c = d->text_[i];
+		if (isPrintable(c))
+			os += c;
+		else if (c == '\t' || c == '\n')
+			os += ' ';
+		else if (c == META_INSET)
+			getInset(i)->forToc(os, maxlen);
+	}
 }
 
 

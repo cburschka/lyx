@@ -1923,6 +1923,15 @@ docstring Text::asString(pit_type beg, pit_type end, int options) const
 }
 
 
+void Text::forToc(docstring & os, size_t maxlen, bool shorten) const
+{
+	LASSERT(maxlen > 10, maxlen = 30);
+	for (size_t i = 0; i != pars_.size() && os.length() < maxlen; ++i)
+		pars_[i].forToc(os, maxlen);
+	if (shorten && os.length() >= maxlen)
+		os = os.substr(0, maxlen - 3) + from_ascii("...");
+}
+
 
 void Text::charsTranspose(Cursor & cur)
 {

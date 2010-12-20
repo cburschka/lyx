@@ -202,8 +202,8 @@ void InsetNote::addToToc(DocIterator const & cpit)
 
 	Toc & toc = buffer().tocBackend().toc("note");
 	InsetLayout const & il = getLayout();
-	docstring const label = translateIfPossible(il.labelstring());
-	docstring const str = label + from_ascii(": ") + text().getPar(0).asString();
+	docstring str = translateIfPossible(il.labelstring()) + from_ascii(": ");
+	text().forToc(str, TOC_ENTRY_LENGTH);
 	toc.push_back(TocItem(pit, 0, str, toolTipText()));
 	// Proceed with the rest of the inset.
 	InsetCollapsable::addToToc(cpit);

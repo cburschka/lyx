@@ -740,6 +740,13 @@ void InsetSpace::toString(odocstream & os) const
 }
 
 
+void InsetSpace::forToc(docstring & os, size_t) const
+{
+	// There's no need to be cute here.
+	os += " ";
+}
+
+
 bool InsetSpace::isStretchableSpace() const
 {
 	return params_.kind == InsetSpaceParams::HFILL

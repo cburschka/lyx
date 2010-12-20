@@ -166,6 +166,8 @@ public:
 	/// 
 	void toString(odocstream &) const;
 	///
+	void forToc(docstring &, size_t) const;
+	///
 	void addToToc(DocIterator const &);
 	///
 	Inset * clone() const { return new InsetText(*this); }

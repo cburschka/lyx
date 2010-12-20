@@ -242,6 +242,17 @@ void InsetHyperlink::toString(odocstream & os) const
 }
 
 
+void InsetHyperlink::forToc(docstring & os, size_t) const
+{
+	docstring const & n = getParam("name");
+	if (!n.empty()) {
+		os += n;
+		return;
+	}
+	os += getParam("target");
+}
+
+
 docstring InsetHyperlink::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/) const
 {
 	docstring url = getParam("target");

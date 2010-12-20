@@ -132,6 +132,8 @@ public:
 	///
 	void toString(odocstream &) const;
 	///
+	void forToc(docstring &, size_t) const;
+	///
 	bool hasSettings() const { return true; }
 	///
 	InsetCode lyxCode() const { return SPACE_CODE; }

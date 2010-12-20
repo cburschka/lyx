@@ -126,6 +126,12 @@ public:
 	///
 	docstring asString(pit_type beg, pit_type end,
 		int options = AS_STR_NONE) const;
+	/// Appends a possibly abbreviated representation of our text
+	/// to \param os, where \param maxlen defines the maximum size
+	/// of \param os. If \param shorten is true, then we will shorten
+	/// \param os to maxlen chars and replace the final three by "...,
+	/// if \param os is longer than maxlen chars.
+	void forToc(docstring & os, size_t maxlen, bool shorten = true) const;
 
 	/// insert a character at cursor position
 	/// FIXME: replace Cursor with DocIterator.

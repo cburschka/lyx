@@ -360,8 +360,9 @@ void InsetIndex::addToToc(DocIterator const & cpit)
 {
 	DocIterator pit = cpit;
 	pit.push_back(CursorSlice(*this));
-	docstring const item = text().asString(0, 1, AS_STR_LABEL | AS_STR_INSETS);
-	buffer().tocBackend().toc("index").push_back(TocItem(pit, 0, item));
+	docstring str;
+	text().forToc(str, TOC_ENTRY_LENGTH);
+	buffer().tocBackend().toc("index").push_back(TocItem(pit, 0, str));
 	// Proceed with the rest of the inset.
 	InsetCollapsable::addToToc(cpit);
 }

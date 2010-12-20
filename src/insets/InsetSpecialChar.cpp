@@ -324,6 +324,14 @@ void InsetSpecialChar::toString(odocstream & os) const
 }
 
 
+void InsetSpecialChar::forToc(docstring & os, size_t) const
+{
+	odocstringstream ods;
+	plaintext(ods, OutputParams(0));
+	os += ods.str();
+}
+
+
 void InsetSpecialChar::validate(LaTeXFeatures & features) const
 {
 	if (kind_ == MENU_SEPARATOR)

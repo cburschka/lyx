@@ -254,6 +254,11 @@ docstring Inset::toolTip(BufferView const &, int, int) const
 }
 
 
+void Inset::forToc(docstring &, size_t) const
+{
+}
+
+
 docstring Inset::contextMenu(BufferView const &, int, int) const
 {
 	return contextMenuName();

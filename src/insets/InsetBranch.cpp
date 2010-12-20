@@ -245,6 +245,13 @@ void InsetBranch::toString(odocstream & os) const
 }
 
 
+void InsetBranch::forToc(docstring & os, size_t maxlen) const
+{
+	if (isBranchSelected())
+		InsetCollapsable::forToc(os, maxlen);
+}
+
+
 void InsetBranch::validate(LaTeXFeatures & features) const
 {
 	if (isBranchSelected())
@@ -293,7 +300,8 @@ void InsetBranch::addToToc(DocIterator const & cpit)
 	pit.push_back(CursorSlice(*this));
 
 	Toc & toc = buffer().tocBackend().toc("branch");
-	docstring const str = params_.branch + ": " + text().getPar(0).asString();
+	docstring str = params_.branch + ": ";
+	text().forToc(str, TOC_ENTRY_LENGTH);
 	toc.push_back(TocItem(pit, 0, str, toolTipText()));
 	// Proceed with the rest of the inset.
 	InsetCollapsable::addToToc(cpit);

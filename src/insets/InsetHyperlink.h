@@ -38,6 +38,8 @@ public:
 	///
 	void toString(odocstream &) const;
 	///
+	void forToc(docstring &, size_t) const;
+	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
 	docstring contextMenuName() const;

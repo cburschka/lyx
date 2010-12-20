@@ -88,6 +88,8 @@ public:
 
 	/// 
 	void toString(odocstream &) const;
+	///
+	void forToc(docstring &, size_t maxlen) const;
 
 	///
 	void validate(LaTeXFeatures &) const;

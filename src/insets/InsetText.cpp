@@ -674,6 +674,13 @@ void InsetText::toString(odocstream & os) const
 }
 
 
+void InsetText::forToc(docstring & os, size_t maxlen) const
+{
+	if (!getLayout().isInToc())
+		return;
+	text().forToc(os, maxlen, false);
+}
+
 
 void InsetText::addToToc(DocIterator const & cdit)
 {
@@ -682,7 +689,7 @@ void InsetText::addToToc(DocIterator const & cdit)
 	Toc & toc = buffer().tocBackend().toc("tableofcontents");
 
 	BufferParams const & bufparams = buffer_->params();
-	const int min_toclevel = bufparams.documentClass().min_toclevel();
+	int const min_toclevel = bufparams.documentClass().min_toclevel();
 
 	// For each paragraph, traverse its insets and let them add
 	// their toc items
@@ -700,21 +707,8 @@ void InsetText::addToToc(DocIterator const & cdit)
 			dit.pos() = it->pos;
 			//lyxerr << (void*)&inset << " code: " << inset.lyxCode() << std::endl;
 			inset.addToToc(dit);
-			switch (inset.lyxCode()) {
-			case ARG_CODE: {
-				if (!tocstring.empty())
-					break;
-				dit.pos() = 0;
-				Paragraph const & insetpar =
-					*static_cast<InsetArgument&>(inset).paragraphs().begin();
-				if (!par.labelString().empty())
-					tocstring = par.labelString() + ' ';
-				tocstring += insetpar.asString(AS_STR_INSETS | AS_STR_INTOC);
-				break;
-			}
-			default:
-				break;
-			}
+			if (inset.lyxCode() == ARG_CODE && tocstring.empty())
+				inset.asInsetText()->text().forToc(tocstring, TOC_ENTRY_LENGTH);
 		}
 		// now the toc entry for the paragraph
 		int const toclevel = par.layout().toclevel;
@@ -722,7 +716,7 @@ void InsetText::addToToc(DocIterator const & cdit)
 			dit.pos() = 0;
 			// insert this into the table of contents
 			if (tocstring.empty())
-				tocstring = par.asString(AS_STR_LABEL | AS_STR_INSETS | AS_STR_INTOC);
+				par.forToc(tocstring, TOC_ENTRY_LENGTH);
 			toc.push_back(TocItem(dit, toclevel - min_toclevel,
 				tocstring, tocstring));
 		}

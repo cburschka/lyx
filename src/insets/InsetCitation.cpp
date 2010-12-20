@@ -546,6 +546,12 @@ void InsetCitation::toString(odocstream & os) const
 }
 
 
+void InsetCitation::forToc(docstring & os, size_t) const
+{
+	os += screenLabel();
+}
+
+
 // Have to overwrite the default InsetCommand method in order to check that
 // the \cite command is valid. Eg, the user has natbib enabled, inputs some
 // citations and then changes his mind, turning natbib support off. The output

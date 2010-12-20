@@ -1989,6 +1989,14 @@ void InsetMathHull::toString(odocstream & os) const
 }
 
 
+void InsetMathHull::forToc(docstring & os, size_t) const
+{
+	odocstringstream ods;
+	plaintext(ods, OutputParams(0));
+	os += ods.str();
+}
+
+
 docstring InsetMathHull::contextMenuName() const
 {
 	return from_ascii("context-math");

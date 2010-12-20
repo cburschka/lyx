@@ -69,6 +69,8 @@ std::string insetName(InsetCode);
 /// returns the Inset name corresponding to the \c InsetCode.
 /// Eg, insetDisplayName(BRANCH_CODE) == _("Branch")
 docstring insetDisplayName(InsetCode);
+///
+static int const TOC_ENTRY_LENGTH = 40;
 
 /// Common base class to all insets
 
@@ -320,11 +322,14 @@ public:
 	/// paragraph closes. this is appropriate e.g. for floats.
 	virtual docstring xhtml(XHTMLStream & xs, OutputParams const &) const;
 
-	// FIXME This method is used for things other than generating strings
-	// for the TOC. E.g., it is called by Paragraph::asString() to get the
-	// contents of the inset. These two functions should be disentangled.
-	/// 
+	/// Writes a string representation of the inset to the odocstream.
+	/// This one should be called when you want the whole contents of
+	/// the inset.
 	virtual void toString(odocstream &) const {}
+	/// Appends a potentially abbreviated version of the inset to
+	/// \param str. Intended for use by the TOC.
+	virtual void forToc(docstring & str,
+	                    size_t maxlen = TOC_ENTRY_LENGTH) const;
 
 	/// can the contents of the inset be edited on screen ?
 	// true for InsetCollapsables (not ButtonOnly) (not InsetInfo), InsetText

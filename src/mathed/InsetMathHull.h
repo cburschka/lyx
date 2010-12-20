@@ -132,6 +132,8 @@ public:
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	/// 
 	void toString(odocstream &) const;
+	///
+	void forToc(docstring &, size_t) const;
 
 	/// get notification when the cursor leaves this inset
 	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);

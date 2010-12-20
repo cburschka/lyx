@@ -237,6 +237,14 @@ void InsetRef::toString(odocstream & os) const
 }
 
 
+void InsetRef::forToc(docstring & os, size_t) const
+{
+	odocstringstream ods;
+	plaintext(ods, OutputParams(0));
+	os += ods.str();
+}
+
+
 void InsetRef::updateBuffer(ParIterator const & it, UpdateType)
 {
 	docstring const & ref = getParam("reference");

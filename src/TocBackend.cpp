@@ -149,7 +149,7 @@ bool TocBackend::updateItem(DocIterator const & dit)
 				*static_cast<InsetArgument&>(inset).paragraphs().begin();
 			if (!par.labelString().empty())
 				tocstring = par.labelString() + ' ';
-			tocstring += inset_par.asString(AS_STR_INSETS | AS_STR_INTOC);
+			tocstring += inset_par.asString(AS_STR_INSETS);
 			break;
 		}
 	}
@@ -157,7 +157,7 @@ bool TocBackend::updateItem(DocIterator const & dit)
 	int const toclevel = par.layout().toclevel;
 	if (toclevel != Layout::NOT_IN_TOC && toclevel >= min_toclevel
 		&& tocstring.empty())
-			tocstring = par.asString(AS_STR_LABEL | AS_STR_INSETS | AS_STR_INTOC);
+			tocstring = par.asString(AS_STR_LABEL | AS_STR_INSETS);
 
 	const_cast<TocItem &>(*toc_item).str_ = tocstring;
 
