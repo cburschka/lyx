@@ -1308,7 +1308,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		Context & context)
 {
 	Layout const * newlayout = 0;
-	// Store the latest bibliographystyle (needed for bibtex inset)
+	// Store the latest bibliographystyle and nocite{*} option
+	// (needed for bibtex inset)
+	string btprint;
 	string bibliographystyle;
 	bool const use_natbib = used_packages.find("natbib") != used_packages.end();
 	bool const use_jurabib = used_packages.find("jurabib") != used_packages.end();
@@ -2209,10 +2211,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			// LyX cannot handle newlines in a latex command
 			string after = subst(p.getOptContent(), "\n", " ");
-			begin_command_inset(os, "citation", t.cs());
-			os << "after " << '"' << after << '"' << "\n";
-			os << "key " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
-			end_inset(os);
+			string key = subst(p.verbatim_item(), "\n", " ");
+			// store the case that it is "\nocite{*}" to use it later for
+			// the BibTeX inset
+			if (key != "*") {
+				begin_command_inset(os, "citation", t.cs());
+				os << "after " << '"' << after << '"' << "\n";
+				os << "key " << '"' << key << '"' << "\n";
+				end_inset(os);
+			} else
+				btprint = key;
 		}
 
 		else if (t.cs() == "index") {
@@ -2641,6 +2649,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "bibliography") {
 			context.check_layout(os);
 			begin_command_inset(os, "bibtex", "bibtex");
+			if (!btprint.empty()) {
+				os << "btprint " << '"' << "btPrintAll" << '"' << "\n";
+				// clear the string because the next BibTeX inset can be without the
+				// \nocite{*} option
+				btprint.clear();
+			}
 			os << "bibfiles " << '"' << p.verbatim_item() << '"' << "\n";
 			// Do we have a bibliographystyle set?
 			if (!bibliographystyle.empty())
