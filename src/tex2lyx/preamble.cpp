@@ -68,7 +68,7 @@ const char * const known_languages[] = { "afrikaans", "albanian", "american",
 "polish", "portuges", "portuguese", "romanian", "russian", "russianb",
 "samin", "scottish", "serbian", "serbian-latin", "slovak", "slovene",
 "spanish", "swedish", "thai", "turkish", "ukraineb", "ukrainian",
-"usorbian", "welsh", 0};
+"usorbian", "vietnam", "welsh", 0};
 
 const char * const known_bahasa_languages[] = {"bahasa", "bahasai",
 						"indon", "indonesian", 0};
@@ -93,7 +93,7 @@ const char * const known_english_quotes_languages[] = {"american", "canadian",
 //"spanish-mexico"
 const char * const known_french_quotes_languages[] = {"albanian", "arabic",
 "basque", "canadien", "catalan", "galician", "greek", "italian", "norsk",
-"nynorsk", "spanish", "turkish", 0};
+"nynorsk", "spanish", "turkish", "vietnam", 0};
 
 const char * const known_german_quotes_languages[] = {"austrian", "bulgarian",
 "czech", "icelandic", "lithuanian", "lsorbian", "naustrian", "serbian",
