@@ -1,18 +1,13 @@
-Pre-release of LyX version 2.0.0 (beta 2)
+Pre-release of LyX version 2.0.0 (beta 3)
 ==========================================
 
-We are pleased to announce the second public pre-release of LyX 2.0.0.
+We are pleased to announce the third public pre-release of LyX 2.0.0.
 
-Due to the many reports we received, support for polyglossia, XeTeX's new
-language interface and babel replacement, has been added. In the same vein
-we added basic and experimental support for LuaTeX as well.
-
-Smaller changes to be highlighted are:
-* better support for sub/superscripts
-* externally launched documents are now possible to load in an already
-  running LyX instance
-* TikZ and PSTricks support in instant preview insets
-* context menu handling.
+Except usual bugfixing we tried to address some performance issues
+during this cycle, in particular we touched the following areas:
+* exporting of longer documents
+* editing of documents with rich inset structure
+* editing with opened outliner.
 
 Please report the problems and bugs at our lists or bug tracker and
 also note that this release is for testing purposes only. Users are
