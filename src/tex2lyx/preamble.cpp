@@ -56,6 +56,9 @@ namespace {
 //"chinese-simplified", "chinese-traditional", "japanese", "korean"
 // Both changes require first that support for non-babel languages (CJK,
 // armtex) is added.
+// add polutonikogreek for lyxformat 338
+// add mongolian for lyxformat 342
+// add turkmen for lyxformat 383
 const char * const known_languages[] = { "afrikaans", "albanian", "american",
 "arabic", "arabtex", "austrian", "bahasa", "bahasai", "bahasam", "basque",
 "belarusian", "brazil", "brazilian", "breton", "british", "bulgarian",
@@ -89,8 +92,10 @@ const char * const known_ukrainian_languages[] = {"ukrainian", "ukraineb", 0};
 const char * const known_english_quotes_languages[] = {"american", "canadian",
 "english", "esperanto", "hebrew", "irish", "scottish", "thai", 0};
 
-//add this to known_french_quotes_languages when updating to lyxformat 327:
-//"spanish-mexico"
+//add this to known_french_quotes_languages when updating to
+// - lyxformat 327: "spanish-mexico"
+// - lyxformat 338: "polutonikogreek"
+// - lyxformat 383: "turkmen"
 const char * const known_french_quotes_languages[] = {"albanian", "arabic",
 "basque", "canadien", "catalan", "galician", "greek", "italian", "norsk",
 "nynorsk", "spanish", "turkish", "vietnam", 0};
