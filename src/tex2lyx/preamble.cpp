@@ -63,11 +63,12 @@ const char * const known_languages[] = { "afrikaans", "albanian", "american",
 "english", "esperanto", "estonian", "finnish", "francais", "french",
 "frenchb", "frenchle", "frenchpro", "galician", "german", "germanb", "greek",
 "hebrew", "icelandic", "indon", "indonesian", "interlingua", "irish",
-"italian", "kazakh", "latvian", "lithuanian", "lsorbian", "magyar", "malay",
-"meyalu", "naustrian", "ngerman", "ngermanb", "norsk", "nynorsk", "polish",
-"portuges", "portuguese", "romanian", "russian", "russianb", "scottish",
-"serbian", "serbian-latin", "slovak", "slovene", "spanish", "swedish",
-"thai", "turkish", "ukraineb", "ukrainian", "usorbian", "welsh", 0};
+"italian", "kazakh", "latin", "latvian", "lithuanian", "lsorbian", "magyar",
+"malay", "meyalu", "naustrian", "ngerman", "ngermanb", "norsk", "nynorsk",
+"polish", "portuges", "portuguese", "romanian", "russian", "russianb",
+"samin", "scottish", "serbian", "serbian-latin", "slovak", "slovene",
+"spanish", "swedish", "thai", "turkish", "ukraineb", "ukrainian",
+"usorbian", "welsh", 0};
 
 const char * const known_bahasa_languages[] = {"bahasa", "bahasai",
 						"indon", "indonesian", 0};
