@@ -69,7 +69,7 @@ static NSString * toLanguage(AppleSpeller speller, const char * lang)
 		NSArray * languages = [speller->checker availableLanguages];
 		
 		for (NSString *element in languages) {
-			if ([element isEqualToString:lang_]) {
+			if (0 == [element caseInsensitiveCompare:lang_]) {
 				result = element;
 				break;
 			} else if ([lang_ hasPrefix:element]) {
@@ -104,7 +104,7 @@ SpellCheckResult AppleSpeller_check(AppleSpeller speller, const char * word, con
 			checkSpellingOfString:word_
 			startingAt:start
 			language:lang_
-			wrap:NO
+			wrap:(BOOL)NO
 			inSpellDocumentWithTag:speller->doctag
 			wordCount:NULL];
 
