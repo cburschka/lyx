@@ -2770,7 +2770,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						if (unit == "\\fill") {
 							if (!starred) {
 								unit = "";
-								name = "hfill";
+								name = "\\hfill";
 							}
 							known_hspace = true;
 						}
@@ -2815,17 +2815,17 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (t.cs()[0] == 'h' && (known_unit || known_hspace)) {
 				// Literal horizontal length or known variable
 				context.check_layout(os);
-				begin_inset(os, "Space \\");
+				begin_inset(os, "Space ");
 				os << name;
 				if (starred)
 					os << '*';
 				os << '{';
 				if (known_hspace)
 					os << unit;
-				os << "}\n";
+				os << "}";
 				if (known_unit && !known_hspace)
-					os << "\\length "
-					   << translate_len(length) << '\n';
+					os << "\n\\length "
+					   << translate_len(length);
 				end_inset(os);
 			} else if (known_unit || known_vspace) {
 				// Literal vertical length or known variable
