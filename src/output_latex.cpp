@@ -405,7 +405,7 @@ void TeXOnePar(Buffer const & buf,
 		<< everypar << "'");
 
 	OutputParams runparams = runparams_in;
-	runparams.isLastPar = (pit == paragraphs.size() - 1);
+	runparams.isLastPar = (pit == pit_type(paragraphs.size() - 1));
 	// We reinitialze par begin and end to be on the safe side
 	// with embedded inset as we don't know if they set those
 	// value correctly.
@@ -977,7 +977,7 @@ void latexParagraphs(Buffer const & buf,
 
 	pit_type pit = runparams.par_begin;
 	// lastpit is for the language check after the loop.
-	pit_type lastpit;
+	pit_type lastpit = pit;
 	// variables used in the loop:
 	bool was_title = false;
 	bool already_title = false;
