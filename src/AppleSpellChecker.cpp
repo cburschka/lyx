@@ -34,6 +34,10 @@ struct AppleSpellChecker::Private
 
 	/// the speller
 	AppleSpeller speller;
+	
+	/// language map
+	map<string, string> languageMap;
+	
 };
 
 
@@ -77,13 +81,17 @@ string AppleSpellChecker::Private::toString(SpellCheckResult status)
 
 SpellChecker::Result AppleSpellChecker::check(WordLangTuple const & word)
 {
+	if (!hasDictionary(word.lang()))
+		return WORD_OK;
+
 	string const word_str = to_utf8(word.word());
+	string const lang = d->languageMap[word.lang()->code()];
 	SpellCheckResult result =
 		AppleSpeller_check(d->speller,
-			word_str.c_str(), word.lang()->code().c_str());
+			word_str.c_str(), lang.c_str());
 	LYXERR(Debug::GUI, "spellCheck: \"" <<
 		   word.word() << "\" = " << d->toString(result) <<
-		   ", lang = " << word.lang()->code()) ;
+		   ", lang = " << lang) ;
 	return d->toResult(result);
 }
 
@@ -140,7 +148,21 @@ void AppleSpellChecker::suggest(WordLangTuple const & wl,
 
 bool AppleSpellChecker::hasDictionary(Language const * lang) const
 {
-	return AppleSpeller_hasLanguage(d->speller,lang->code().c_str());
+	string const langmap = d->languageMap[lang->code()];
+	bool result = !langmap.empty();
+
+	if (result)
+		return result;
+
+	result = AppleSpeller_hasLanguage(d->speller,lang->code().c_str());
+	if (result) {
+		d->languageMap[lang->code()] = lang->code();
+	} else {
+		result = AppleSpeller_hasLanguage(d->speller,lang->lang().c_str());
+		if (result)
+			d->languageMap[lang->code()] = lang->lang();
+	}
+	return result;
 }
 
 
