@@ -65,13 +65,9 @@ private:
 	DisplayType display() const;
 	///
 	bool noFontChange() const { return params_.type != InsetNoteParams::Note; }
-	/*!
-	 * Is the content of this inset part of the output document?
-	 *
-	 * Note that Note insets are not considered part of the
-	 * document, even in their 'greyed out' incarnation.
-	 */
-	bool producesOutput() const { return false; }
+	/// Is the content of this inset part of the output document?
+	bool producesOutput() const
+		{ return params_.type == InsetNoteParams::Greyedout; }
 	///
 	bool allowSpellCheck() const;
 	///
