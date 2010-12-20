@@ -903,7 +903,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			// the two environments as one otherwise (bug 5716)
 			docstring const sep = from_ascii("--Separator--");
 			TeX2LyXDocClass const & textclass(parent_context.textclass);
-			if (LYX_FORMAT >= 273 && textclass.hasLayout(sep)) {
+			if (textclass.hasLayout(sep)) {
 				Context newcontext(parent_context);
 				newcontext.layout = &(textclass[sep]);
 				newcontext.check_layout(os);
@@ -2432,13 +2432,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_spaces_braces(p);
 		}
 
-		else if (LYX_FORMAT >= 307 && t.cs() == "slash") {
+		else if (t.cs() == "slash") {
 			context.check_layout(os);
 			os << "\\SpecialChar \\slash{}\n";
 			skip_spaces_braces(p);
 		}
 
-		else if (LYX_FORMAT >= 307 && t.cs() == "nobreakdash") {
+		else if (t.cs() == "nobreakdash") {
 			context.check_layout(os);
 			os << "\\SpecialChar \\nobreakdash\n";
 		}
