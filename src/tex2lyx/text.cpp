@@ -2588,7 +2588,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				if (!tex_name.empty())
 					filename = tex_name;
 			}
-			bool xfig = false;
+			bool external = false;
 			string outname;
 			if (makeAbsPath(filename, path).exists()) {
 				string const abstexname =
@@ -2600,20 +2600,53 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				fix_relative_filename(filename);
 				string const lyxname =
 					changeExtension(filename, ".lyx");
-				if (t.cs() == "input" && FileName(absfigname).exists()) {
+				bool xfig = false;
+				external = FileName(absfigname).exists();
+				if (t.cs() == "input") {
+					string const ext = getExtension(abstexname);
+
+					// Combined PS/LaTeX:
+					// x.eps, x.pstex_t (old xfig)
+					// x.pstex, x.pstex_t (new xfig, e.g. 3.2.5)
 					FileName const absepsname(
 						changeExtension(abstexname, ".eps"));
+					FileName const abspstexname(
+						changeExtension(abstexname, ".pstex"));
+					bool const xfigeps =
+						(absepsname.exists() ||
+						 abspstexname.exists()) &&
+						ext == "pstex_t";
+
+					// Combined PDF/LaTeX:
+					// x.pdf, x.pdftex_t (old xfig)
+					// x.pdf, x.pdf_t (new xfig, e.g. 3.2.5)
 					FileName const abspdfname(
 						changeExtension(abstexname, ".pdf"));
-					string const ext = getExtension(abstexname);
 					bool const xfigpdf =
-						abspdfname.exists() && ext == "pdftex_t";
-					bool const xfigeps  =
-						absepsname.exists() && ext == "pstex_t";
-					xfig = xfigpdf || xfigeps;
+						abspdfname.exists() &&
+						(ext == "pdftex_t" || ext == "pdf_t");
+
+					// Combined PS/PDF/LaTeX:
+					// x_pspdftex.eps, x_pspdftex.pdf, x.pspdftex
+					string const absbase2(
+						removeExtension(abstexname) + "_pspdftex");
+					FileName const abseps2name(
+						addExtension(absbase2, ".eps"));
+					FileName const abspdf2name(
+						addExtension(absbase2, ".pdf"));
+					bool const xfigboth =
+						abspdf2name.exists() &&
+						abseps2name.exists() && ext == "pspdftex";
+
+					xfig = xfigpdf || xfigeps || xfigboth;
+					external = external && xfig;
 				}
-				if (xfig) {
+				if (external) {
 					outname = changeExtension(filename, ".fig");
+				} else if (xfig) {
+					// Don't try to convert, the result
+					// would be full of ERT.
+					outname = filename;
 				} else if (t.cs() != "verbatiminput" &&
 				    tex2lyx(abstexname, FileName(abslyxname),
 					    p.getEncoding())) {
@@ -2626,7 +2659,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				     << filename << "'." << endl;
 				outname = filename;
 			}
-			if (xfig) {
+			if (external) {
 				begin_inset(os, "External\n");
 				os << "\ttemplate XFig\n"
 				   << "\tfilename " << outname << '\n';
