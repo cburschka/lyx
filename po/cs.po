@@ -1490,7 +1490,7 @@ msgstr ""
 msgid "LaTe&X font encoding:"
 msgstr ""
 "Kódování\n"
-"LaTe&X-ového fontu:"
+"LaTe&X fontu:"
 
 #: src/frontends/qt4/ui/FontUi.ui:89 src/frontends/qt4/ui/PrefLatexUi.ui:34
 msgid "Specify the font encoding (e.g., T1)."
@@ -4039,27 +4039,25 @@ msgid "&Save"
 msgstr "&Ulo¾it"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:13
-#, fuzzy
-msgid "\"Nomenclature settings\""
-msgstr "Nomenklatura"
+msgid "Nomenclature settings"
+msgstr "Nastavení nomenklatury"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:19
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:32
 msgid "Define hanging indentation/label length for the nomenclature list."
-msgstr ""
+msgstr "Nastavení indentace/¹íøky ¹títku pro seznam nomenklatury."
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:22
 msgid "&List Indentation:"
-msgstr "O&dsazení Seznamu:"
+msgstr "O&dsazení seznamu:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:39
 msgid "Custom &Width:"
 msgstr "&Vlastní ¹íøka:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
-#, fuzzy
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
-msgstr "Vlastní hodnota. Nastavte typ mezery na \"Vlastní\"."
+msgstr "Vlastní hodnota. \"Odsazení seznamu\" musí být nastavené na \"Vlastní\"."
 
 #: src/frontends/qt4/ui/PrintUi.ui:28
 msgid "Pages"
@@ -4965,14 +4963,12 @@ msgid "VFill"
 msgstr "Výplò (VFill)"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:34
-#, fuzzy
 msgid "&Output Format:"
-msgstr "Výstupní formát"
+msgstr "&Výstupní formát"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:44
-#, fuzzy
 msgid "Select the output format"
-msgstr "&Standarní výstupní formát:"
+msgstr "Vybrat výstupní formát"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:54
 msgid "Complete source"
@@ -9626,7 +9622,6 @@ msgid "foot"
 msgstr "patièka"
 
 #: lib/layouts/stdinsets.inc:110
-#, fuzzy
 msgid "Greyedout"
 msgstr "Za¹edlé"
 
@@ -10394,9 +10389,8 @@ msgstr ""
 #: lib/layouts/theorems-ams.module:9 lib/layouts/theorems-chap.module:9
 #: lib/layouts/theorems-sec.module:8 lib/layouts/theorems-starred.module:7
 #: lib/layouts/theorems-std.module:8
-#, fuzzy
 msgid "theorems"
-msgstr "teorém"
+msgstr "teorémy"
 
 #: lib/layouts/theorems-ams-extended.module:40
 msgid "Criterion \\thetheorem."
@@ -10439,19 +10433,16 @@ msgid "Assumption \\thetheorem."
 msgstr "Assumption \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:382
-#, fuzzy
 msgid "Question \\thetheorem."
-msgstr "Definition \\thetheorem."
+msgstr "Question \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:395
-#, fuzzy
 msgid "Question*"
-msgstr "Question"
+msgstr "Question*"
 
 #: lib/layouts/theorems-ams-extended.module:398
-#, fuzzy
 msgid "Question."
-msgstr "Question"
+msgstr "Question."
 
 #: lib/layouts/theorems-ams.module:2
 msgid "Theorems (AMS)"
@@ -10523,25 +10514,22 @@ msgstr ""
 "prostøedí kapitol."
 
 #: lib/layouts/theorems-named.module:3
-#, fuzzy
 msgid "Named Theorems"
-msgstr "Teorémy"
+msgstr "Pojmenované teorémy"
 
 #: lib/layouts/theorems-named.module:7
 msgid ""
 "Facilitates the use of named theorems. The name of the theorem goes into the "
 "'Short Title' inset."
-msgstr ""
+msgstr "Pojmenované teorémy. Jméno se vkládá do prostøedí 'Krátký titulek'. "
 
 #: lib/layouts/theorems-named.module:11
-#, fuzzy
 msgid "Named Theorem"
-msgstr "Theorem"
+msgstr "Pojmenovaný teorém"
 
 #: lib/layouts/theorems-named.module:14
-#, fuzzy
 msgid "Named Theorem."
-msgstr "Theorem."
+msgstr "Pojmenovaný teorém."
 
 #: lib/layouts/theorems-sec-bytype.module:2
 msgid "Theorems (Numbered by Type within Sections)"
@@ -10737,9 +10725,8 @@ msgid "German"
 msgstr "Nìmèina"
 
 #: lib/languages:400
-#, fuzzy
 msgid "German (Switzerland)"
-msgstr "Nìmèina (Rakousko)"
+msgstr "Nìmèina (©výcarsko)"
 
 #: lib/languages:409 lib/ui/stdtoolbars.inc:279 lib/ui/stdtoolbars.inc:525
 #: src/frontends/qt4/GuiSymbols.cpp:61
@@ -10959,9 +10946,8 @@ msgid "South-Eastern European (ISO 8859-16)"
 msgstr "Jiho-východoevropské j. (ISO 8859-16)"
 
 #: lib/encodings:64
-#, fuzzy
 msgid "Western European (Macintosh Roman)"
-msgstr "Západoevropské j. (CP 850)"
+msgstr "Západoevropské j. (Macintosh Roman)"
 
 #: lib/encodings:67
 msgid "DOS (CP 437)"
@@ -11188,7 +11174,6 @@ msgid "Check Out for Edit|O"
 msgstr "Naèíst nejnovìj¹í verzi z repositáøe|r"
 
 #: lib/ui/classic.ui:71 lib/ui/stdmenus.inc:76
-#, fuzzy
 msgid "Revert to Repository Version|v"
 msgstr "Návrat k poslední verzi v repozitáøi|N"
 
@@ -12009,7 +11994,6 @@ msgid "Split Cell|C"
 msgstr "Rozdìlit buòku|R"
 
 #: lib/ui/stdcontext.inc:61
-#, fuzzy
 msgid "Insert|s"
 msgstr "Vlo¾it|V"
 
@@ -12094,9 +12078,8 @@ msgid "Formatted Reference|t"
 msgstr "Formátovaná reference|F"
 
 #: lib/ui/stdcontext.inc:94
-#, fuzzy
 msgid "Textual Reference|x"
-msgstr "Thanks Reference"
+msgstr "Doslovná reference|d"
 
 #: lib/ui/stdcontext.inc:96 lib/ui/stdcontext.inc:108
 #: lib/ui/stdcontext.inc:118 lib/ui/stdcontext.inc:126
@@ -12687,7 +12670,7 @@ msgstr "Aktualizovat lokální adresáø z repositáøe|l"
 
 #: lib/ui/stdmenus.inc:78
 msgid "Compare with Older Revision...|C"
-msgstr "Porovnat se star¹í revizí...|S"
+msgstr "Porovnat se star¹í revizí...|s"
 
 #: lib/ui/stdmenus.inc:80
 msgid "Use Locking Property|L"
@@ -13011,7 +12994,7 @@ msgstr "Formátování|F"
 
 #: lib/ui/stdmenus.inc:346
 msgid "List / TOC|i"
-msgstr "Seznamy / Obsah|e"
+msgstr "Seznamy / Obsah"
 
 #: lib/ui/stdmenus.inc:347
 msgid "Float|a"
@@ -13068,7 +13051,7 @@ msgstr "Výpis zdrojového kódu|i"
 
 #: lib/ui/stdmenus.inc:372
 msgid "Preview|w"
-msgstr "Náhled|d"
+msgstr "Náhled|e"
 
 #: lib/ui/stdmenus.inc:379
 msgid "Ordinary Quote|Q"
@@ -18107,9 +18090,8 @@ msgid "&Reconfigure"
 msgstr "&Rekonfigurovat"
 
 #: src/LyX.cpp:558
-#, fuzzy
 msgid "&Without LaTeX"
-msgstr "Opravy LaTeX-u"
+msgstr "&Bez LaTeX-u"
 
 #: src/LyX.cpp:559 src/VCBackend.cpp:786 src/VCBackend.cpp:790
 msgid "&Continue"
