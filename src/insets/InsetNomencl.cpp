@@ -210,6 +210,8 @@ docstring InsetPrintNomencl::xhtml(XHTMLStream &, OutputParams const &) const
 }
 
 
+// FIXME This should be changed to use the TOC. Perhaps
+// that could be done when XHTML output is added.
 int InsetPrintNomencl::docbook(odocstream & os, OutputParams const &) const
 {
 	os << "<glossary>\n";
