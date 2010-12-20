@@ -2204,11 +2204,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 		}
 
-		else if (t.cs() == "cite") {
+		else if (t.cs() == "cite"
+			|| t.cs() == "nocite") {
 			context.check_layout(os);
 			// LyX cannot handle newlines in a latex command
 			string after = subst(p.getOptContent(), "\n", " ");
-			begin_command_inset(os, "citation", "cite");
+			begin_command_inset(os, "citation", t.cs());
 			os << "after " << '"' << after << '"' << "\n";
 			os << "key " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
 			end_inset(os);
