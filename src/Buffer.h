@@ -544,7 +544,7 @@ public:
 
 	/// Collect user macro names at loading time
 	typedef std::set<docstring> UserMacroSet;
-	UserMacroSet usermacros;
+	mutable UserMacroSet usermacros;
 
 	/// Replace the inset contents for insets which InsetCode is equal
 	/// to the passed \p inset_code.

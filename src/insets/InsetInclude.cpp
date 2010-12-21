@@ -463,7 +463,7 @@ Buffer * InsetInclude::loadIfNeeded() const
 	} else {
 		// The file was already loaded, so, simply
 		// inform parent buffer about local macros.
-		Buffer * parent = const_cast<Buffer *>(&buffer());
+		Buffer const * parent = &buffer();
 		child->setParent(parent);
 		MacroNameSet macros;
 		child->listMacroNames(macros);

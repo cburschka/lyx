@@ -822,7 +822,7 @@ bool Buffer::readDocument(Lexer & lex)
 
 	// inform parent buffer about local macros
 	if (parent()) {
-		Buffer * pbuf = const_cast<Buffer *>(parent());
+		Buffer const * pbuf = parent();
 		UserMacroSet::const_iterator cit = usermacros.begin();
 		UserMacroSet::const_iterator end = usermacros.end();
 		for (; cit != end; ++cit)
