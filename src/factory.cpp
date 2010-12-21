@@ -272,7 +272,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			case INCLUDE_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
-				return new InsetInclude(icp);
+				return new InsetInclude(buf, icp);
 			}
 			
 			case INDEX_CODE:
@@ -465,7 +465,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 				inset.reset(new InsetHyperlink(inscmd));
 				break;
 			case INCLUDE_CODE:
-				inset.reset(new InsetInclude(inscmd));
+				inset.reset(new InsetInclude(buf, inscmd));
 				break;
 			case INDEX_PRINT_CODE:
 				inset.reset(new InsetPrintIndex(inscmd));

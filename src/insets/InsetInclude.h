@@ -36,7 +36,7 @@ class RenderMonitoredPreview;
 class InsetInclude : public InsetCommand {
 public:
 	///
-	InsetInclude(InsetCommandParams const &);
+	InsetInclude(Buffer const & buf, InsetCommandParams const &);
 	~InsetInclude();
 
 	void setBuffer(Buffer & buffer);

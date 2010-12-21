@@ -46,6 +46,8 @@
 #include "insets/InsetListingsParams.h"
 #include "insets/RenderPreview.h"
 
+#include "mathed/MacroTable.h"
+
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -158,17 +160,22 @@ InsetLabel * createLabel(docstring const & label_str)
 } // namespace anon
 
 
-InsetInclude::InsetInclude(InsetCommandParams const & p)
+InsetInclude::InsetInclude(Buffer const & buf, InsetCommandParams const & p)
 	: InsetCommand(p, "include"), include_label(uniqueID()),
 	  preview_(new RenderMonitoredPreview(this)), failedtoload_(false),
 	  set_label_(false), label_(0)
 {
+	// In order to be able to track macros at loading time, the
+	// buffer has to be set here and not after construction.
+	setBuffer(const_cast<Buffer &>(buf));
+
 	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
 
 	if (isListings(params())) {
 		InsetListingsParams listing_params(to_utf8(p["lstparams"]));
 		label_ = createLabel(from_utf8(listing_params.getParamValue("label")));
-	}
+	} else if (isInputOrInclude(params()) && isBufferValid())
+		loadIfNeeded(buffer());
 }
 
 
@@ -408,18 +415,32 @@ Buffer * InsetInclude::loadIfNeeded(Buffer const & parent) const
 			// Buffer creation is not possible.
 			return 0;
 
+		// Set parent before loading, such that macros can be tracked
+		child->setParent(&parent);
+
 		if (!child->loadLyXFile(included_file)) {
 			failedtoload_ = true;
+			child->setParent(0);
 			//close the buffer we just opened
 			theBufferList().release(child);
 			return 0;
 		}
-	
+
 		if (!child->errorList("Parse").empty()) {
 			// FIXME: Do something.
 		}
+	} else {
+		// The file was already loaded, so, simply
+		// inform parent buffer about local macros.
+		child->setParent(&parent);
+		MacroNameSet macros;
+		child->listMacroNames(macros);
+		MacroNameSet::const_iterator cit = macros.begin();
+		MacroNameSet::const_iterator end = macros.end();
+		for (; cit != end; ++cit)
+			parent.usermacros.insert(*cit);
 	}
-	child->setParent(&parent);
+
 	return child;
 }
 

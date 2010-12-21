@@ -634,6 +634,14 @@ bool Buffer::readDocument(Lexer & lex)
 	// read main text
 	bool const res = text().read(*this, lex, errorList, d->inset);
 
+	// inform parent buffer about local macros
+	if (parent()) {
+		Buffer const * pbuf = parent();
+		UserMacroSet::const_iterator cit = usermacros.begin();
+		UserMacroSet::const_iterator end = usermacros.end();
+		for (; cit != end; ++cit)
+			pbuf->usermacros.insert(*cit);
+	}
 	usermacros.clear();
 	updateMacros();
 	updateMacroInstances();

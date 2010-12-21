@@ -84,6 +84,8 @@ What's new
 - Fix insertion of a user math macro through the math-insert lfun when a
   selection is present (bug 6939).
 
+- Don't shadow user math macros defined in child documents (bug 7183).
+
 - Make the modules description in the menu "Document -> Settings" fully
   translatable (bug 6987).
 
