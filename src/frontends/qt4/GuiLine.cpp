@@ -73,7 +73,7 @@ GuiLine::GuiLine(QWidget * parent) : InsetParamsWidget(parent)
 docstring GuiLine::dialogToParams() const
 {
 	InsetCommandParams params(insetCode());
-	params["offset"] = from_utf8(widgetsToLength(OffsetLE, OffsetUnitCO));;
+	params["offset"] = from_utf8(widgetsToLength(OffsetLE, OffsetUnitCO));
 	params["width"] = from_utf8(widgetsToLength(WidthLE, WidthUnitCO));
 	params["height"] = from_utf8(widgetsToLength(HeightLE, HeightUnitCO));
 	params.setCmdName("rule");

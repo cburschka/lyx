@@ -986,14 +986,14 @@ void InsetMathGrid::mathmlize(MathStream & os) const
 	char const * const celltag = havetable ? "mtd" : "mrow";
 	for (row_type row = 0; row < nrows(); ++row) {
 		if (havetable)
-			os << MTag("mtr");;
+			os << MTag("mtr");
 		for (col_type col = 0; col < ncols(); ++col) {
 			os << MTag(celltag);
 			os << cell(index(row, col));
 			os << ETag(celltag);
 		}
 		if (havetable)
-			os << ETag("mtr");;
+			os << ETag("mtr");
 	}
 	if (havetable)
 		os << ETag("mtable");
@@ -1011,13 +1011,13 @@ void InsetMathGrid::htmlize(HtmlStream & os, string attrib) const
 	}
 	os << MTag("table", attrib);
 	for (row_type row = 0; row < nrows(); ++row) {
-		os << MTag("tr");;
+		os << MTag("tr");
 		for (col_type col = 0; col < ncols(); ++col) {
 			os << MTag("td");
 			os << cell(index(row, col));
 			os << ETag("td");
 		}
-		os << ETag("tr");;
+		os << ETag("tr");
 	}
 	os << ETag("table");
 }

@@ -166,7 +166,7 @@ void InsetMathString::write(WriteStream & os) const
 			}
 			case WriteStream::wsPreview: {
 				// indicate the encoding error by a boxed '?'
-				os << "{\\fboxsep=1pt\\fbox{?}}";;
+				os << "{\\fboxsep=1pt\\fbox{?}}";
 				LYXERR0("Uncodable character" << " '"
 					<< docstring(1, e.failed_char)
 					<< "'");

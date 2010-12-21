@@ -154,7 +154,7 @@ bool bruteFind(Cursor & cursor,
 	else
 		++et.pit();
 
-	double best_dist = numeric_limits<double>::max();;
+	double best_dist = numeric_limits<double>::max();
 	DocIterator best_cursor = et;
 
 	for ( ; it != et; it.forwardPos(true)) {
