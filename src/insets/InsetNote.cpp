@@ -204,7 +204,7 @@ void InsetNote::addToToc(DocIterator const & cpit)
 	InsetLayout const & il = getLayout();
 	docstring str = translateIfPossible(il.labelstring()) + from_ascii(": ");
 	text().forToc(str, TOC_ENTRY_LENGTH);
-	toc.push_back(TocItem(pit, 0, str, toolTipText()));
+	toc.push_back(TocItem(pit, 0, str, toolTipText(docstring(), 3, 60)));
 	// Proceed with the rest of the inset.
 	InsetCollapsable::addToToc(cpit);
 }

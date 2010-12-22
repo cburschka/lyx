@@ -195,7 +195,10 @@ public:
 	/// returns the text to be used as tooltip
 	/// \param prefix: a string that will preced the tooltip,
 	/// e.g., "Index: ".
-	docstring toolTipText(docstring prefix = empty_docstring()) const;
+	/// \param numlines: the number of lines in the tooltip
+	/// \param len: length of those lines
+	docstring toolTipText(docstring prefix = empty_docstring(),
+			size_t numlines = 5, size_t len = 80) const;
 
 	///
 	docstring contextMenu(BufferView const &, int, int) const;

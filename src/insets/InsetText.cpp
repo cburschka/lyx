@@ -824,9 +824,10 @@ docstring InsetText::contextMenuName() const
 }
 
 
-docstring InsetText::toolTipText(docstring prefix) const
+docstring InsetText::toolTipText(docstring prefix,
+		size_t numlines, size_t len) const
 {
-	static unsigned int max_length = 400; // five 80 column lines
+	size_t const max_length = numlines * len;
 	OutputParams rp(&buffer().params().encoding());
 	odocstringstream oss;
 	oss << prefix;
@@ -845,7 +846,7 @@ docstring InsetText::toolTipText(docstring prefix) const
 		if (str.length() > max_length)
 			break;
 	}
-	return support::wrapParas(str, 4, 80, 5);
+	return support::wrapParas(str, 4, len, numlines);
 }
 
 

@@ -302,7 +302,7 @@ void InsetBranch::addToToc(DocIterator const & cpit)
 	Toc & toc = buffer().tocBackend().toc("branch");
 	docstring str = params_.branch + ": ";
 	text().forToc(str, TOC_ENTRY_LENGTH);
-	toc.push_back(TocItem(pit, 0, str, toolTipText()));
+	toc.push_back(TocItem(pit, 0, str, toolTipText(docstring(), 3, 60)));
 	// Proceed with the rest of the inset.
 	InsetCollapsable::addToToc(cpit);
 }
