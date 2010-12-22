@@ -1153,6 +1153,7 @@ docstring wrap(docstring const & str, int const ind, size_t const width)
 docstring wrapParas(docstring const & str, int const indent,
 		    size_t const width, size_t const maxlines)
 {
+	docstring const dots = from_ascii("...");
 	if (str.empty())
 		return docstring();
 
@@ -1167,9 +1168,21 @@ docstring wrapParas(docstring const & str, int const indent,
 		if (nlines == 0)
 			continue;
 		size_t const curlines = retval.size();
-		if (maxlines > 0 && curlines + nlines >= maxlines) {
-			tmp.resize(maxlines - curlines - 1);
-			tmp.push_back(from_ascii("..."));
+		if (maxlines > 0 && curlines + nlines > maxlines) {
+			tmp.resize(maxlines - curlines);
+			docstring last = tmp.back();
+			size_t const lsize = last.size();
+			if (lsize > width - 3) {
+				size_t const i = last.find_last_of(' ', width - 3);
+				if (i == docstring::npos || i <= size_t(indent))
+					// no space found
+					last = last.substr(0, lsize - 3) + dots;
+				else
+					last = last.substr(0, i) + dots;
+			} else
+				last += dots;
+			tmp.pop_back();
+			tmp.push_back(last);
 		}
 		retval.insert(retval.end(), tmp.begin(), tmp.end());
 		if (maxlines > 0 && retval.size() >= maxlines)
