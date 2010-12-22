@@ -175,6 +175,8 @@ public:
 
 	FontSpan const & getRange(pos_type pos) const
 	{
+		/// empty span to indicate mismatch
+		static FontSpan empty_;
 		RangesIterator et = ranges_.end();
 		RangesIterator it = ranges_.begin();
 		for (; it != et; ++it) {
@@ -227,8 +229,6 @@ private:
 	bool needs_refresh_;
 	/// spell state cache version number
 	SpellChecker::ChangeNumber current_change_number_;
-	/// empty span to indicate mismatch for getRange()
-	FontSpan empty_;
 
 
 	void eraseCoveredRanges(FontSpan const fp)
