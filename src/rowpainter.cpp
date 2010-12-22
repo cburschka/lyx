@@ -394,7 +394,7 @@ void RowPainter::paintFromPos(pos_type & vpos, bool changed)
 						lang == "farsi";
 
 	// spelling correct?
-	bool const misspelled_ =
+	bool const misspelled =
 		lyxrc.spellcheck_continuously && par_.isMisspelled(pos);
 
 	// draw as many chars as we can
@@ -410,8 +410,21 @@ void RowPainter::paintFromPos(pos_type & vpos, bool changed)
 
 	paintForeignMark(orig_x, orig_font.language());
 
-	if (lyxrc.spellcheck_continuously && misspelled_) {
-		paintMisspelledMark(orig_x, changed);
+	if (lyxrc.spellcheck_continuously && misspelled) {
+		// check for cursor position
+		// don't draw misspelled marker for words at cursor position
+		// we don't want to disturb the process of text editing
+		BufferView const * bv = pi_.base.bv;
+		Cursor const & cur = bv->cursor();
+		bool current_word = false;
+		if (par_.id() == cur.paragraph().id()) {
+			pos_type cpos = cur.pos();
+			if (cpos > 0 && cpos == par_.size() && !par_.isWordSeparator(cpos-1))
+				--cpos;
+			current_word = par_.isSameSpellRange(pos, cpos) ;
+		}
+		if (!current_word)
+			paintMisspelledMark(orig_x, changed);
 	}
 }
 

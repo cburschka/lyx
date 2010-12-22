@@ -173,6 +173,18 @@ public:
 		return result;
 	}
 
+	FontSpan const & getRange(pos_type pos) const
+	{
+		RangesIterator et = ranges_.end();
+		RangesIterator it = ranges_.begin();
+		for (; it != et; ++it) {
+			if(it->inside(pos)) {
+				return it->range();
+			}
+		}
+		return empty_;
+	}
+
 	bool needsRefresh() const {
 		return needs_refresh_;
 	}
@@ -215,6 +227,8 @@ private:
 	bool needs_refresh_;
 	/// spell state cache version number
 	SpellChecker::ChangeNumber current_change_number_;
+	/// empty span to indicate mismatch for getRange()
+	FontSpan empty_;
 
 
 	void eraseCoveredRanges(FontSpan const fp)
@@ -2822,6 +2836,13 @@ bool Paragraph::isWordSeparator(pos_type pos) const
 	static docstring const quote = from_utf8(lyxrc.spellchecker_esc_chars + '\'');
 	return (!isLetterChar(c) && !isDigitASCII(c) && !contains(quote, c))
 		|| pos == size();
+}
+
+
+bool Paragraph::isSameSpellRange(pos_type pos1, pos_type pos2) const
+{
+	return pos1 == pos2
+		|| d->speller_state_.getRange(pos1) == d->speller_state_.getRange(pos2);
 }
 
 

@@ -477,7 +477,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	// Signals that a full-screen update is required
 	bool needsUpdate = !(lyxaction.funcHasFlag(cmd.action(),
 		LyXAction::NoUpdate) || singleParUpdate);
-
+	int const last_pid = cur.paragraph().id();
+	pos_type const last_pos = cur.pos();
+	bool const last_misspelled = lyxrc.spellcheck_continuously && cur.paragraph().isMisspelled(cur.pos());
+	
 	FuncCode const act = cmd.action();
 	switch (act) {
 
@@ -2170,6 +2173,18 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	needsUpdate |= (cur.pos() != cur.lastpos()) && cur.selection();
+
+	if (lyxrc.spellcheck_continuously && !needsUpdate) {
+		// Check for misspelled text
+		// The redraw is useful because of the painting of
+		// misspelled markers depends on the cursor position.
+		// Trigger a redraw for cursor moves inside misspelled text.
+		if (cur.paragraph().id() == last_pid && cur.pos() != last_pos) {
+			needsUpdate |= last_misspelled || cur.paragraph().isMisspelled(cur.pos());
+		} else if (cur.paragraph().id() != last_pid) {
+			needsUpdate |= last_misspelled || cur.paragraph().isMisspelled(cur.pos());
+		}
+	}
 
 	// FIXME: The cursor flag is reset two lines below
 	// so we need to check here if some of the LFUN did touch that.

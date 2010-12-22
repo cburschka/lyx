@@ -452,6 +452,11 @@ public:
 	/// \return true if pointed position is misspelled.
 	bool isMisspelled(pos_type pos) const;
 
+	/// \return true if both positions are inside the same
+	/// spell range - i.e. the same word.
+	/// use it for positions inside misspelled range only.
+	bool isSameSpellRange(pos_type pos1, pos_type pos2) const;
+
 	/// spell check of whole paragraph
 	/// remember results until call of requestSpellCheck()
 	void spellCheck() const;
