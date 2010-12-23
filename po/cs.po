@@ -2827,7 +2827,7 @@ msgstr "Na ¹íøk&u"
 #: src/frontends/qt4/ui/PageLayoutUi.ui:161
 #: src/frontends/qt4/GuiDocument.cpp:1254
 msgid "Page Layout"
-msgstr "Rozvr¾ení Stránky"
+msgstr "Rozvr¾ení stránky"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:170
 msgid "Headings &style:"
@@ -7519,30 +7519,30 @@ msgstr "Restriction:"
 #: lib/layouts/foils.layout:185 lib/layouts/simplecv.layout:97
 #: lib/layouts/aguplus.inc:78 lib/layouts/customHeadersFooters.module:10
 msgid "Left Header"
-msgstr "Left Header"
+msgstr "Levá hlavièka"
 
 #: lib/layouts/foils.layout:189 lib/layouts/aguplus.inc:91
 #: lib/layouts/customHeadersFooters.module:17
 msgid "Left Header:"
-msgstr "Left Header:"
+msgstr "Levá hlavièka:"
 
 #: lib/layouts/foils.layout:193 lib/layouts/simplecv.layout:114
 #: lib/layouts/aguplus.inc:101 lib/layouts/customHeadersFooters.module:36
 msgid "Right Header"
-msgstr "Right Header"
+msgstr "Pravá hlavièka"
 
 #: lib/layouts/foils.layout:197 lib/layouts/aguplus.inc:105
 #: lib/layouts/customHeadersFooters.module:39
 msgid "Right Header:"
-msgstr "Right Header:"
+msgstr "Pravá hlavièka:"
 
 #: lib/layouts/foils.layout:201 lib/layouts/customHeadersFooters.module:57
 msgid "Right Footer"
-msgstr "Right Footer"
+msgstr "Pravá patièka"
 
 #: lib/layouts/foils.layout:205 lib/layouts/customHeadersFooters.module:60
 msgid "Right Footer:"
-msgstr "Right Footer:"
+msgstr "Pravá patièka:"
 
 #: lib/layouts/foils.layout:232 lib/layouts/heb-article.layout:33
 #: lib/layouts/llncs.layout:422 lib/layouts/svjour.inc:443
@@ -9779,7 +9779,7 @@ msgid ""
 "Defines an environment to typeset Braille. For more details see Braille.lyx "
 "in examples."
 msgstr ""
-"Definuje prostøedí pro sazbu Braillova slepeckého písma. Detaily vizsoubor "
+"Definuje prostøedí pro sazbu Braillova slepeckého písma. Detaily viz soubor "
 "Braille.lyx v pøíkladech."
 
 #: lib/layouts/braille.module:22
@@ -9832,44 +9832,38 @@ msgstr "Braille (pouzdro)"
 
 #: lib/layouts/customHeadersFooters.module:2
 msgid "Custom Header/Footerlines"
-msgstr ""
+msgstr "Vlastní hlavièky/patièky"
 
 #: lib/layouts/customHeadersFooters.module:7
 msgid ""
-"Adds environments to define header and footer lines NOTE: To use this module "
+"Adds environments to define header and footer lines. NOTE: To use this module "
 "you must set the 'Headings style' in the menu Document Settings -> Page "
 "Layout to 'fancy'!"
-msgstr ""
+msgstr "Pøidává prostøedí pro definici hlavièky a patièky. Pro pou¾ití tohoto modulu musíte nastavit styl hlavièky v nastavení dokumentu (rozvr¾ení stránky) na 'pestrý (fancy)'"
 
 #: lib/layouts/customHeadersFooters.module:29
-#, fuzzy
 msgid "Center Header"
-msgstr "Left Header"
+msgstr "Centrovaná hlavièka"
 
 #: lib/layouts/customHeadersFooters.module:32
-#, fuzzy
 msgid "Center Header:"
-msgstr "Left Header:"
+msgstr "Centrovaná hlavièka:"
 
 #: lib/layouts/customHeadersFooters.module:43
-#, fuzzy
 msgid "Left Footer"
-msgstr "Right Footer"
+msgstr "Levá patièka"
 
 #: lib/layouts/customHeadersFooters.module:46
-#, fuzzy
 msgid "Left Footer:"
-msgstr "Poslední patièka:"
+msgstr "Levá patièka:"
 
 #: lib/layouts/customHeadersFooters.module:50
-#, fuzzy
 msgid "Center Footer"
-msgstr "Right Footer"
+msgstr "Centrovaná patièka"
 
 #: lib/layouts/customHeadersFooters.module:53
-#, fuzzy
 msgid "Center Footer:"
-msgstr "Language Footer:"
+msgstr "Centrovaná patièka:"
 
 #: lib/layouts/endnotes.module:2 lib/layouts/endnotes.module:9
 msgid "Endnote"
@@ -10515,7 +10509,7 @@ msgstr ""
 
 #: lib/layouts/theorems-named.module:3
 msgid "Named Theorems"
-msgstr "Pojmenované teorémy"
+msgstr "Teorémy (pojmenované)"
 
 #: lib/layouts/theorems-named.module:7
 msgid ""
@@ -20281,7 +20275,7 @@ msgstr "12"
 
 #: src/frontends/qt4/GuiDocument.cpp:795
 msgid "None (no fontenc)"
-msgstr ""
+msgstr "®ádné (bez fontenc)"
 
 #: src/frontends/qt4/GuiDocument.cpp:830
 msgid "empty"
@@ -20293,11 +20287,11 @@ msgstr "prostý"
 
 #: src/frontends/qt4/GuiDocument.cpp:832
 msgid "headings"
-msgstr "nadpisy(headings)"
+msgstr "hlavièky (headings)"
 
 #: src/frontends/qt4/GuiDocument.cpp:833
 msgid "fancy"
-msgstr "pestrý(fancy)"
+msgstr "pestrý (fancy)"
 
 #: src/frontends/qt4/GuiDocument.cpp:845
 msgid "A0"
@@ -20496,11 +20490,11 @@ msgstr "PDF vlastnosti"
 
 #: src/frontends/qt4/GuiDocument.cpp:1262
 msgid "Math Options"
-msgstr "Nastavení Matematiky"
+msgstr "Nastavení matematiky"
 
 #: src/frontends/qt4/GuiDocument.cpp:1263
 msgid "Float Placement"
-msgstr "Umístìní plovoucích objektù"
+msgstr "Umístìní plov. objektù"
 
 #: src/frontends/qt4/GuiDocument.cpp:1265
 msgid "Bullets"
