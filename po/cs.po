@@ -1464,11 +1464,11 @@ msgstr "FontUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:19
 msgid "Use OpenType- and TrueType fonts directly (requires XeTeX or LuaTeX)"
-msgstr ""
+msgstr "Pou¾ívat OpenType a TrueType fonty pøímo (vy¾aduje XeTeX nebo LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:22
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
-msgstr ""
+msgstr "Pou¾ít i fonty mimo distribuci TeX-u (&XeTeX/LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:42
 msgid "&Default Family:"
@@ -3627,7 +3627,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:151
 msgid "Forward search"
-msgstr ""
+msgstr "Dopøedné hledání"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:171
 msgid "DV&I command:"
@@ -3920,7 +3920,7 @@ msgid "&Spellchecker engine:"
 msgstr "Program pro &kontrolu pravopisu:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
-msgid "Accept words such as \"diskdrive\""
+msgid "Accept wwrds such as \"diskdrive\""
 msgstr "Akceptuj slova na zpùsob \"kafemlejnek\""
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:67
@@ -9870,14 +9870,13 @@ msgid "Endnote"
 msgstr "Koncová poznámka"
 
 #: lib/layouts/endnotes.module:6
-#, fuzzy
 msgid ""
 "Adds an endnote inset, in addition to footnotes. You will need to add "
 "\\theendnotes in TeX-code where you want the endnotes to appear."
 msgstr ""
 "Pøidává vlo¾ku pro koncové poznámky (Endnote) (krom ji¾ existujících "
 "poznámek pod èarou).Budete muset pøidat \\theendnotes do vlo¾ky TeX-ového "
-"kódu, a to v místì kde se majíkoncové poznámky objevit."
+"kódu, a to v místì, kde se mají koncové poznámky objevit."
 
 #: lib/layouts/endnotes.module:18
 msgid "endnote"
@@ -9885,19 +9884,18 @@ msgstr "koncová poznámka"
 
 #: lib/layouts/enumitem.module:2
 msgid "Customizable Lists (enumitem)"
-msgstr ""
+msgstr "Pøizpùsobení seznamù (enumitem)"
 
 #: lib/layouts/enumitem.module:7
 msgid ""
 "Controls the layout of enumerate, itemize and description with an optional "
 "argument. See http://mirror.ctan.org/macros/latex/contrib/enumitem/enumitem."
 "pdf"
-msgstr ""
+msgstr "Ovládá prostøedí seznamu, výètu, popisu volitelným argumentem. Viz. http://mirror.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf"
 
 #: lib/layouts/enumitem.module:112
-#, fuzzy
 msgid "Enumerate-Resume"
-msgstr "Výèet"
+msgstr "Výèet-Shrnutí"
 
 #: lib/layouts/eqs-within-sections.module:2
 msgid "Number Equations by Section"
@@ -9980,9 +9978,8 @@ msgstr ""
 "umìlecké fonty jako Fraktur nebo Kaligrafie pro poèáteèní písmeno."
 
 #: lib/layouts/initials.module:6 lib/layouts/logicalmkup.module:5
-#, fuzzy
 msgid "charstyles"
-msgstr "Styl znaku"
+msgstr "styly znakù"
 
 #: lib/layouts/initials.module:10 lib/layouts/initials.module:12
 msgid "Initial"
@@ -10146,13 +10143,12 @@ msgid "Sweave"
 msgstr "Sweave"
 
 #: lib/layouts/sweave.module:5
-#, fuzzy
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
 "via Sweave package."
 msgstr ""
 "Povoluje statistický programovací jazyk S/R jako¾to nástroj pro "
-"dokumentované programování"
+"dokumentované programování. Pou¾ívá balíèek Sweave."
 
 #: lib/layouts/sweave.module:27
 msgid "Chunk"
@@ -10367,7 +10363,6 @@ msgid "Theorems (AMS-Extended)"
 msgstr "Teorémy (roz¹íøení AMS)"
 
 #: lib/layouts/theorems-ams-extended.module:9
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -10376,7 +10371,7 @@ msgid ""
 msgstr ""
 "Definuje nìkterá pøídavná matematická prostøedí pro pou¾ití s balíèky AMS "
 "pro teorémy. Zahrnuje Criterion, Algorithm, Axiom, Condition, Note, "
-"Notation, Summary, Acknowledgement, Conclusion, Fact, Assumption,  Case v "
+"Notation, Summary, Acknowledgement, Conclusion, Fact, Assumption,  Case, Question v "
 "obou formách (èíslované/neèíslované)."
 
 #: lib/layouts/theorems-ams-extended.module:10
@@ -12363,7 +12358,7 @@ msgstr "Skok zpìt na ulo¾enou zálo¾ku|k"
 
 #: lib/ui/stdcontext.inc:292 lib/ui/stdmenus.inc:527
 msgid "Forward search|F"
-msgstr ""
+msgstr "Dopøedné hledání|h"
 
 #: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:111
 msgid "Move Paragraph Up|o"
@@ -13105,7 +13100,7 @@ msgstr "Komentáø|K"
 
 #: lib/ui/stdmenus.inc:479
 msgid "Insert New Branch...|I"
-msgstr ""
+msgstr "Vlo¾it novou vìtev...|V"
 
 #: lib/ui/stdmenus.inc:497
 msgid "Change Tracking|C"
@@ -13205,7 +13200,7 @@ msgstr "Sloupce|S"
 
 #: lib/ui/stdmenus.inc:587
 msgid "Feynman-diagram Manual|F"
-msgstr ""
+msgstr "Feynmanovy diagramy|F"
 
 #: lib/ui/stdtoolbars.inc:69
 msgid "New document"
@@ -14063,7 +14058,7 @@ msgstr "Kaligrafické\t\\mathcal"
 
 #: lib/ui/stdtoolbars.inc:378
 msgid "Formal Script\t\\mathscr"
-msgstr ""
+msgstr "Kaligrafické Formal\t\\mathscr"
 
 #: lib/ui/stdtoolbars.inc:379
 msgid "Normal text mode\t\\textrm"
@@ -14559,7 +14554,7 @@ msgstr "neq"
 
 #: lib/ui/stdtoolbars.inc:516
 msgid "in[[math relation]]"
-msgstr ""
+msgstr "in"
 
 #: lib/ui/stdtoolbars.inc:517
 msgid "ni"
@@ -16522,7 +16517,7 @@ msgstr "%1$s et al."
 #: src/BiblioInfo.cpp:416 src/BiblioInfo.cpp:453 src/BiblioInfo.cpp:464
 #: src/BiblioInfo.cpp:514 src/BiblioInfo.cpp:518
 msgid "ERROR!"
-msgstr ""
+msgstr "CHYBA!"
 
 #: src/BiblioInfo.cpp:657 src/BiblioInfo.cpp:660
 msgid "No year"
