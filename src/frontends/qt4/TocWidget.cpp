@@ -401,6 +401,12 @@ void TocWidget::updateView()
 	if (update_delay_ == -1)
 		return;
 	QTimer::singleShot(update_delay_, this, SLOT(updateViewForce()));
+	// Subtler optimization for having the delay more UI invisible.
+	// We trigger update immediately for sparse editation actions,
+	// i.e. there was no editation/cursor movement in last 2 sec.
+	// At worst there will be +1 redraw after 2s in a such "calm" mode.
+	if (update_delay_ != 0)
+		updateViewForce();
 	update_delay_ = -1;
 }
 
