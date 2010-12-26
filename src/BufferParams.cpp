@@ -572,8 +572,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 						 "document cannot be compiled until the following\n"
 						 "prerequisites are installed:\n"
 						 "\t%2$s\n"
-						 "See section 3.1.2.2 of the User's Guide for\n"
-						 "more information."), desc, prereqs);
+						 "See section 3.1.2.2 (Class Availability) of the\n"
+						 "User's Guide for more information."), desc, prereqs);
 			frontend::Alert::warning(_("Document class not available"),
 				       msg);
 		}
