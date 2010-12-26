@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-12-21 11:04+0100\n"
+"POT-Creation-Date: 2010-12-23 15:28+0100\n"
 "PO-Revision-Date: 2010-12-21 11:22+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -5601,7 +5601,7 @@ msgstr "BackMatter"
 #: lib/layouts/aastex.layout:122 lib/layouts/aastex.layout:450
 #: lib/layouts/ijmpc.layout:313 lib/layouts/ijmpd.layout:324
 #: lib/layouts/kluwer.layout:319 lib/layouts/kluwer.layout:332
-#: src/rowpainter.cpp:508
+#: src/rowpainter.cpp:523
 msgid "Appendix"
 msgstr "Príloha"
 
@@ -9829,10 +9829,11 @@ msgid "Custom Header/Footerlines"
 msgstr "Vlastné riadky pre Hlavičku/Pätu"
 
 #: lib/layouts/customHeadersFooters.module:7
+#, fuzzy
 msgid ""
-"Adds environments to define header and footer lines NOTE: To use this module "
-"you must set the 'Headings style' in the menu Document Settings -> Page "
-"Layout to 'fancy'!"
+"Adds environments to define header and footer lines. NOTE: To use this "
+"module you must set the 'Headings style' in the menu Document Settings -> "
+"Page Layout to 'fancy'!"
 msgstr ""
 "Pridáva prostredia na definície riadkov hlavičiek a pätičiek v NOTE: Na "
 "použitie tohto modulu treba nastaviť Štýl hlavičky v menu Dokument-"
@@ -12333,17 +12334,17 @@ msgid "Justified Line Break|J"
 msgstr "Zarovnanie konca riadkov"
 
 #: lib/ui/stdcontext.inc:286 lib/ui/stdmenus.inc:100 lib/ui/stdtoolbars.inc:78
-#: src/Text3.cpp:1219 src/mathed/InsetMathNest.cpp:585
+#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:585
 msgid "Cut"
 msgstr "Vystrihnúť"
 
 #: lib/ui/stdcontext.inc:287 lib/ui/stdmenus.inc:101 lib/ui/stdtoolbars.inc:79
-#: src/Text3.cpp:1224 src/mathed/InsetMathNest.cpp:594
+#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:594
 msgid "Copy"
 msgstr "Kopírovať"
 
 #: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1172 src/mathed/InsetMathGrid.cpp:1327
+#: src/Text3.cpp:1175 src/mathed/InsetMathGrid.cpp:1327
 #: src/mathed/InsetMathNest.cpp:564
 msgid "Paste"
 msgstr "Vlepiť"
@@ -17326,7 +17327,7 @@ msgstr ""
 "zmeňte prosím kódovanie súboru na\n"
 "UTF-8 iným programom.\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2486
+#: src/Changes.cpp:363 src/Paragraph.cpp:2500
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:300
 #: src/insets/InsetCommandParams.cpp:390 src/insets/InsetListings.cpp:184
 #: src/insets/InsetListings.cpp:192 src/insets/InsetListings.cpp:216
@@ -17334,7 +17335,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr "LyX varovanie: "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2487 src/insets/InsetBibitem.cpp:301
+#: src/Changes.cpp:364 src/Paragraph.cpp:2501 src/insets/InsetBibitem.cpp:301
 #: src/insets/InsetCommandParams.cpp:391 src/insets/InsetListings.cpp:185
 #: src/insets/InsetListings.cpp:193 src/insets/InsetNomencl.cpp:286
 #: src/mathed/InsetMathString.cpp:162
@@ -18936,15 +18937,15 @@ msgstr "Vrátiť sa k uloženej verzii dokumentu?"
 msgid "&Revert"
 msgstr "Vrátiť"
 
-#: src/Paragraph.cpp:1924
+#: src/Paragraph.cpp:1938
 msgid "Senseless with this layout!"
 msgstr "S týmto schéma to nemá zmysel!"
 
-#: src/Paragraph.cpp:1986
+#: src/Paragraph.cpp:2000
 msgid "Alignment not permitted"
 msgstr "Zarovnanie nepovolené"
 
-#: src/Paragraph.cpp:1987
+#: src/Paragraph.cpp:2001
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -18952,11 +18953,11 @@ msgstr ""
 "Nové schéma nepovoľuje používané zarovnanie.\n"
 "Prepnuté na štandardné."
 
-#: src/Paragraph.cpp:3034
+#: src/Paragraph.cpp:3055
 msgid "Memory problem"
 msgstr "Problém s pamäťou"
 
-#: src/Paragraph.cpp:3034
+#: src/Paragraph.cpp:3055
 msgid "Paragraph not properly initialized"
 msgstr "Odstavec nesprávne inicializovaný"
 
@@ -19076,23 +19077,23 @@ msgstr "Už v postupe pre regulárny výraz"
 msgid "Regexp editor mode"
 msgstr "Režim editoru pre regulárny výraz"
 
-#: src/Text3.cpp:1284
+#: src/Text3.cpp:1287
 msgid "Layout "
 msgstr "Schéma "
 
-#: src/Text3.cpp:1285
+#: src/Text3.cpp:1288
 msgid " not known"
 msgstr " neznámy"
 
-#: src/Text3.cpp:1748 src/frontends/qt4/GuiApplication.cpp:1361
+#: src/Text3.cpp:1751 src/frontends/qt4/GuiApplication.cpp:1361
 msgid "Missing argument"
 msgstr "Chýba parameter"
 
-#: src/Text3.cpp:1895 src/Text3.cpp:1907
+#: src/Text3.cpp:1898 src/Text3.cpp:1910
 msgid "Character set"
 msgstr "Znaková sada"
 
-#: src/Text3.cpp:2114 src/Text3.cpp:2125
+#: src/Text3.cpp:2117 src/Text3.cpp:2128
 msgid "Paragraph layout set"
 msgstr "Formát odstavca je nastavený"
 
@@ -23722,7 +23723,7 @@ msgstr "Všetky ladiace správy"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Ladenie `%1$s' (%2$s)"
 
-#: src/support/lstrings.cpp:1282
+#: src/support/lstrings.cpp:1295
 msgid "[[Replace with the code of your language]]"
 msgstr "sk"
 
