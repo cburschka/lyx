@@ -4365,7 +4365,7 @@ msgstr ""
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:38
 msgid ""
 "The checked language. Switching this alters the language of the checked word."
-msgstr ""
+msgstr "Kontrolovaný jazyk. Pøepnutím zmìníte jazyk kontrolovaného slova."
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:54
 msgid "Unknown word:"
@@ -10788,11 +10788,11 @@ msgstr "Mongol¹tina"
 
 #: lib/languages:592
 msgid "Norwegian (Bokmaal)"
-msgstr ""
+msgstr "Nor¹tina (Bokmaal)"
 
 #: lib/languages:600
 msgid "Norwegian (Nynorsk)"
-msgstr ""
+msgstr "Nor¹tina (Nynorsk)"
 
 #: lib/languages:625
 msgid "Polish"
@@ -10856,7 +10856,7 @@ msgstr "Tureètina"
 
 #: lib/languages:786
 msgid "Turkmen"
-msgstr ""
+msgstr "Turkmen¹tina"
 
 #: lib/languages:795
 msgid "Ukrainian"
@@ -15982,11 +15982,11 @@ msgstr "intercal"
 
 #: lib/external_templates:36
 msgid "GnumericSpreadsheet"
-msgstr ""
+msgstr "Tabulka(Gnumeric)"
 
 #: lib/external_templates:37 lib/external_templates:44
 msgid "Spreadsheet"
-msgstr ""
+msgstr "Tabulka"
 
 #: lib/external_templates:39
 msgid ""
@@ -15995,7 +15995,7 @@ msgid ""
 "is ok. Excessive width could be a problem.\n"
 "The gnumeric software is necessary for conversion,\n"
 "both for gnumeric and excel files.\n"
-msgstr ""
+msgstr "Tabulka vytvoøená v prostøedí gnumeric, openoffice nebo excelu.\n Import pøevádí do dlouhých tabulek (longtable),\nexcesivní ¹íøka neo¹etøována.\nPro konverzi je potøebný program gnumeric."
 
 #: lib/external_templates:76
 msgid "RasterImage"
@@ -16253,7 +16253,7 @@ msgstr "LilyPond music"
 
 #: lib/configure.py:508
 msgid "LilyPond book (LaTeX)"
-msgstr ""
+msgstr "Lilipond book (LaTeX)"
 
 #: lib/configure.py:509
 msgid "LaTeX (plain)"
@@ -16301,15 +16301,15 @@ msgstr "Prostý text, spojit øádky"
 
 #: lib/configure.py:520
 msgid "Gnumeric spreadsheet"
-msgstr ""
+msgstr "Tabulkový kalkulátor Gnumeric"
 
 #: lib/configure.py:521
 msgid "Excel spreadsheet"
-msgstr ""
+msgstr "Tabulkový kalkulátor Excel"
 
 #: lib/configure.py:522
 msgid "OpenOffice spreadsheet"
-msgstr ""
+msgstr "Tabulkový kalkulátor OpenOffice"
 
 #: lib/configure.py:525 lib/configure.py:527
 msgid "LyXHTML"
@@ -16977,7 +16977,7 @@ msgstr "&Naèíst pùvodní"
 msgid ""
 "An emergency file is succesfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
-msgstr ""
+msgstr "Nouzové ulo¾ení souboru bylo sice úspì¹nì otevøeno, ale pùvodní soubor %1$s má nastaveny atributy pouze pro ètení. Ujistìte se prosím, ¾e jste ulo¾ili tento dokument jako odli¹ný soubor."
 
 #: src/Buffer.cpp:3761
 msgid "Document was successfully recovered."
@@ -17042,9 +17042,9 @@ msgstr "Naèíst &pùvodní"
 #: src/Buffer.cpp:3817
 #, c-format
 msgid ""
-"A backup file is succesfully loaded,  but the original file %1$s is marked "
+"A backup file is succesfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
-msgstr ""
+msgstr "Zálo¾ní soubor byl sice úspì¹nì otevøen, ale pùvodní soubor %1$s má nastaveny atributy pouze pro ètení. Ujistìte se prosím, ¾e jste ulo¾ili tento dokument jako odli¹ný soubor."
 
 #: src/Buffer.cpp:4122 src/insets/InsetCaption.cpp:338
 msgid "Senseless!!! "
@@ -17070,7 +17070,7 @@ msgid ""
 "Saving this document to a new location has made the file:\n"
 "  %1$s\n"
 "inaccessible. You will need to update the included filename."
-msgstr ""
+msgstr "Ulo¾ením tohoto dokumentu na nové místo se stal soubor:\n  %1$s\nnedostupným. Budete muset aktualizovat cestu k dokumentu potomka."
 
 #: src/BufferParams.cpp:568
 #, c-format
@@ -18431,7 +18431,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3134
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
-msgstr ""
+msgstr "Standardní formát pou¾ívaný funkcí LFUN_BUFFER_[VIEW|UPDATE]."
 
 #: src/LyXRC.cpp:3138
 msgid "New documents will be assigned this language."
@@ -18634,7 +18634,7 @@ msgstr "Pou¾ít \"...\" pro zkrácení dlouhých doplnìní."
 
 #: src/LyXRC.cpp:3284
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
-msgstr ""
+msgstr "Povolit zkratku TeXMacs-u, jako napø. konverzi z => na \\Rightarrow."
 
 #: src/LyXRC.cpp:3288
 #, c-format
@@ -18820,7 +18820,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3438
 msgid "This is the place where the files of the thesaurus library reside."
-msgstr ""
+msgstr "Zde jsou umístìné soubory pro knihovnu tezauru."
 
 #: src/LyXRC.cpp:3442
 msgid ""
@@ -20060,7 +20060,7 @@ msgstr "Dal¹í pøíkaz"
 
 #: src/frontends/qt4/GuiCompare.cpp:43
 msgid "Compare LyX files"
-msgstr ""
+msgstr "Porovnat soubory LyX-u"
 
 #: src/frontends/qt4/GuiCompare.cpp:154
 msgid "Select document"
@@ -20587,7 +20587,7 @@ msgstr "%1$s, %2$s a %3$s"
 #: src/frontends/qt4/GuiDocument.cpp:1927
 #, c-format
 msgid "%1$s (unavailable)"
-msgstr ""
+msgstr "%1$s (nedostupný)"
 
 #: src/frontends/qt4/GuiDocument.cpp:2002
 msgid "Module provided by document class."
@@ -20952,7 +20952,7 @@ msgstr "dokument"
 
 #: src/frontends/qt4/GuiInfo.cpp:47
 msgid "lyxinfo"
-msgstr ""
+msgstr "lyxinfo"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:707
 msgid "Shift-"
@@ -21334,7 +21334,7 @@ msgstr "Skok na znaèku"
 
 #: src/frontends/qt4/GuiRef.cpp:371 src/frontends/qt4/GuiRef.cpp:390
 msgid "<No prefix>"
-msgstr ""
+msgstr "<Bez prefixu>"
 
 #: src/frontends/qt4/GuiSearch.cpp:41
 msgid "Find and Replace"
