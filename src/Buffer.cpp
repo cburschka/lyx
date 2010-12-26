@@ -3822,7 +3822,7 @@ Buffer::ReadStatus Buffer::loadAutosave()
 		if (ret_llf == ReadSuccess) {
 			if (isReadonly()) {
 				Alert::warning(_("File is read-only"),
-					bformat(_("A backup file is succesfully loaded,  "
+					bformat(_("A backup file is succesfully loaded, "
 					"but the original file %1$s is marked read-only. "
 					"Please make sure to save the document as a "
 					"different file."), 
