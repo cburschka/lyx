@@ -1038,6 +1038,36 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 		}
 	}
 
+	// Distribute lines from rows/columns to cells
+	// The code was stolen from convert_tablines() in lyx2lyx/lyx_1_6.py.
+	// Each standard cell inherits the settings of the corresponding
+	// rowinfo/colinfo. This works because all cells with individual
+	// settings were converted to multicolumn cells above.
+	// Each multicolumn cell inherits the settings of the rowinfo/colinfo
+	// corresponding to the first column of the multicolumn cell (default
+	// of the multicol package). This works because the special field
+	// overrides the line fields.
+	for (size_t row = 0; row < rowinfo.size(); ++row) {
+		for (size_t col = 0; col < cellinfo[row].size(); ++col) {
+			if (cellinfo[row][col].multi == CELL_NORMAL) {
+				cellinfo[row][col].topline = rowinfo[row].topline;
+				cellinfo[row][col].bottomline = rowinfo[row].bottomline;
+				cellinfo[row][col].leftlines = colinfo[col].leftlines;
+				cellinfo[row][col].rightlines = colinfo[col].rightlines;
+			} else if (cellinfo[row][col].multi == CELL_BEGIN_OF_MULTICOLUMN) {
+				size_t s = col + 1;
+				while (s < cellinfo[row].size() &&
+				       cellinfo[row][s].multi == CELL_PART_OF_MULTICOLUMN)
+					s++;
+				if (s < cellinfo[row].size() &&
+				    cellinfo[row][s].multi != CELL_BEGIN_OF_MULTICOLUMN)
+					cellinfo[row][col].rightlines = colinfo[col].rightlines;
+				if (col > 0 && cellinfo[row][col-1].multi == CELL_NORMAL)
+					cellinfo[row][col].leftlines = colinfo[col].leftlines;
+			}
+		}
+	}
+
 	//cerr << "// output what we have\n";
 	// output what we have
 	os << "\n<lyxtabular version=\"3\" rows=\"" << rowinfo.size()
@@ -1053,8 +1083,6 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 		   << verbose_align(colinfo[col].align) << "\""
 		   << " valignment=\""
 		   << verbose_valign(colinfo[col].valign) << "\""
-		   << write_attribute("leftline", colinfo[col].leftlines > 0)
-		   << write_attribute("rightline", colinfo[col].rightlines > 0)
 		   << write_attribute("width", translate_len(colinfo[col].width))
 		   << write_attribute("special", colinfo[col].special)
 		   << ">\n";
@@ -1063,8 +1091,6 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 
 	for (size_t row = 0; row < rowinfo.size(); ++row) {
 		os << "<row"
-		   << write_attribute("topline", rowinfo[row].topline)
-		   << write_attribute("bottomline", rowinfo[row].bottomline)
 		   << write_attribute("endhead",
 				      rowinfo[row].type == LT_HEAD)
 		   << write_attribute("endfirsthead",
