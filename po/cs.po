@@ -3921,7 +3921,6 @@ msgid "&Spellchecker engine:"
 msgstr "Program pro &kontrolu pravopisu:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
-#, fuzzy
 msgid "Accept words such as \"diskdrive\""
 msgstr "Akceptuj slova na zpùsob \"kafemlejnek\""
 
@@ -12072,7 +12071,7 @@ msgstr "Formátovaná reference|F"
 
 #: lib/ui/stdcontext.inc:94
 msgid "Textual Reference|x"
-msgstr "Doslovná reference|d"
+msgstr "Doslovná reference|D"
 
 #: lib/ui/stdcontext.inc:96 lib/ui/stdcontext.inc:108
 #: lib/ui/stdcontext.inc:118 lib/ui/stdcontext.inc:126
@@ -17101,7 +17100,7 @@ msgid ""
 "\t%2$s\n"
 "See section 3.1.2.2 (Class Availability) of the\n"
 "User's Guide for more information."
-msgstr ""
+msgstr "Vybraná tøída dokumentu\n\t%1$s\nvy¾aduje externí soubory, které nejsou k dispozici.\nTøída dokumentu mù¾e být stále pou¾ívána, ale dokument\nnemù¾e být zkompilován, dokud nebude nainstalováno následující:\n\t%2$s\nViz té¾ sekce 3.1.2.2 U¾ivatelské pøíruèky (Class Availability)."
 
 #: src/BufferParams.cpp:577
 msgid "Document class not available"
@@ -19516,18 +19515,18 @@ msgstr "Manuály"
 msgid ""
 "%1$s: the end was reached while searching forward.\n"
 "Continue searching from the beginning?"
-msgstr ""
+msgstr "%1$s: bylo dosa¾eno konce dokumentu pøi vyhledávání.\nPokraèovat ve vyhledávání od poèátku dokumentu?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:290
 #, c-format
 msgid ""
 "%1$s: the beginning was reached while searching backward.\n"
 "Continue searching from the end?"
-msgstr ""
+msgstr "%1$s: bylo dosa¾eno zaèátku dokumentu pøi zpìtném vyhledávání.\nPokraèovat ve vyhledávání od konce dokumentu?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:345
 msgid "Wrap search?"
-msgstr ""
+msgstr "Vyhledávat od zaèátku/konce?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:402
 msgid "Nothing to search"
@@ -19870,7 +19869,7 @@ msgstr "©íøka"
 #: src/frontends/qt4/GuiBox.cpp:315 src/frontends/qt4/GuiBox.cpp:390
 #: src/insets/InsetBox.cpp:140
 msgid "Makebox"
-msgstr ""
+msgstr "Makebox"
 
 #: src/frontends/qt4/GuiBranches.cpp:49 src/insets/Inset.cpp:108
 msgid "Branch"
@@ -21763,7 +21762,7 @@ msgstr "Informace TeX-u"
 
 #: src/frontends/qt4/GuiThesaurus.cpp:192
 msgid "No thesaurus available for this language!"
-msgstr ""
+msgstr "®ádný dostupný tezaurus pro tento jazyk!"
 
 #: src/frontends/qt4/GuiToc.cpp:36
 msgid "Outline"
@@ -22703,7 +22702,7 @@ msgstr "CHYBA: Neexistující typ plovoucího objektu!"
 #: src/insets/InsetFloatList.cpp:131
 #, c-format
 msgid "LyX cannot generate a list of %1$s"
-msgstr ""
+msgstr "LyX nemù¾e generovat seznam: %1$s"
 
 #: src/insets/InsetFloatList.cpp:136
 #, c-format
@@ -22812,7 +22811,7 @@ msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
 "Offending file:\n"
 "%1$s"
-msgstr ""
+msgstr "LyX neví jakým zpùsobem zahrnout ne-LyXové soubory pøi generování HTML výstupu. Problematický soubor:\n%1$s"
 
 #: src/insets/InsetIndex.cpp:147
 msgid "Index sorting failed"
