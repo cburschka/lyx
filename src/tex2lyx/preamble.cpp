@@ -139,6 +139,7 @@ const char * const known_coded_paper_margins[] = { "leftmargin", "topmargin",
 // default settings
 ostringstream h_preamble;
 string h_textclass               = "article";
+string h_use_default_options     = "false";
 string h_options                 = string();
 string h_language                = "english";
 string h_inputencoding           = "auto";
@@ -557,7 +558,8 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 		os << "\\begin_preamble\n" << h_preamble.str() << "\n\\end_preamble\n";
 	if (!h_options.empty())
 		os << "\\options " << h_options << "\n";
-	os << "\\language " << h_language << "\n"
+	os << "\\use_default_options " << h_use_default_options << "\n"
+	   << "\\language " << h_language << "\n"
 	   << "\\inputencoding " << h_inputencoding << "\n"
 	   << "\\font_roman " << h_font_roman << "\n"
 	   << "\\font_sans " << h_font_sans << "\n"
