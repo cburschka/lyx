@@ -2747,7 +2747,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			t.cs() == "clearpage" ||
 			t.cs() == "cleardoublepage") {
 			context.check_layout(os);
-			os << "\n\\" << t.cs() << "\n";
+			begin_inset(os, "Newpage ");
+			os << t.cs();
+			end_inset(os);
 			skip_spaces_braces(p);
 		}
 
