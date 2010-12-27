@@ -412,6 +412,7 @@ $$
 \dbltopfraction
 \def{}{}
 \definecolor{}{}{,,}
+\DeleteShortVerb{} % from doc.sty, argument must be verbatim
 \DescribeMacro{}
 \discretionary{}{}{}
 \encl{}
@@ -495,6 +496,7 @@ $$
 \makelabel{translate}
 \makelabels
 \maketitle
+\MakeShortVerb{} % from doc.sty, argument must be verbatim
 \markboth{}{translate}
 \markright{translate}
 \mathversion{}
