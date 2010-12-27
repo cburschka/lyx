@@ -72,7 +72,7 @@ enum LTRowType
 class RowInfo {
 public:
 	RowInfo() : topline(false), bottomline(false), type(LT_NORMAL),
-		    newpage(false) {}
+		    caption(false), newpage(false) {}
 	/// horizontal line above
 	bool topline;
 	/// horizontal line below
@@ -80,6 +80,8 @@ public:
 	/// These are for longtabulars only
 	/// row type (head, foot, firsthead etc.)
 	LTRowType type;
+	/// row for a caption
+	bool caption;
 	/// row for a newpage
 	bool newpage;
 };
@@ -1001,6 +1003,35 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 					cellinfo[row][col].align = 'c';
 				}
 
+			} else if (col == 0 && is_long_tabular &&
+			           p.next_token().cs() == "caption") {
+				// longtable caption support in LyX is a hack:
+				// Captions require a row of their own with
+				// the caption flag set to true, having only
+				// one multicolumn cell. The contents of that
+				// cell must contain exactly one caption inset
+				// and nothing else.
+				rowinfo[row].caption = true;
+				for (size_t c = 1; c < cells.size(); ++c) {
+					if (!cells[c].empty()) {
+						cerr << "Moving cell content '"
+						     << cells[c]
+						     << "' into the caption cell. "
+							"This will probably not work."
+						     << endl;
+						cells[0] += cells[c];
+					}
+				}
+				cells.resize(1);
+				cellinfo[row][col].align      = colinfo[col].align;
+				cellinfo[row][col].multi      = CELL_BEGIN_OF_MULTICOLUMN;
+				ostringstream os;
+				parse_text_in_inset(p, os, FLAG_CELL, false, context);
+				cellinfo[row][col].content += os.str();
+				// add dummy multicolumn cells
+				for (size_t c = 1; c < colinfo.size(); ++c)
+					cellinfo[row][c].multi = CELL_PART_OF_MULTICOLUMN;
+
 			} else {
 				cellinfo[row][col].leftlines  = colinfo[col].leftlines;
 				cellinfo[row][col].rightlines = colinfo[col].rightlines;
@@ -1100,6 +1131,7 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 		   << write_attribute("endlastfoot",
 				      rowinfo[row].type == LT_LASTFOOT)
 		   << write_attribute("newpage", rowinfo[row].newpage)
+		   << write_attribute("caption", rowinfo[row].caption)
 		   << ">\n";
 		for (size_t col = 0; col < colinfo.size(); ++col) {
 			CellInfo const & cell = cellinfo[row][col];

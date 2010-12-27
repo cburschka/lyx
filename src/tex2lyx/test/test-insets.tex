@@ -21,6 +21,8 @@
 \usepackage{makeidx}
 
 \usepackage{graphicx}
+\usepackage{doc}
+\usepackage{longtable}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
 \newcommand{\lyxline}[1][1pt]{%
@@ -122,6 +124,113 @@ An URL: \url{http://www.lyx.org}
 There is also some basic support for graphics, in the form
 \includegraphics{foo.eps}, or the slightly more elaborate
 \includegraphics[bb=10bp 0bp 96bp 96bp,clip,height=1cm, width=1cm]{foo.eps}.
+
+\section{Tables\index{Tables}}
+
+The following example is stolen from the longtable documentation.
+\let\package\textsf
+\let\env\textsf
+\providecommand\finalclearpage{\clearpage}
+\DeleteShortVerb{\|}
+\MakeShortVerb{\"}
+\def\v{\char`}
+
+\begin{longtable}{@{*}r||p{1in}@{*}}
+KILLED & LINE!!!! \kill
+\caption
+[An optional table caption (used in the list of tables)]
+{A long table\label{long}}\\
+\hline\hline
+\multicolumn{2}{@{*}c@{*}}%
+     {This part appears at the top of the table}\\
+\textsc{First}&\textsc{Second}\\
+\hline\hline
+\endfirsthead
+\caption[]{(continued)}\\
+\hline\hline
+\multicolumn{2}{@{*}c@{*}}%
+      {This part appears at the top of every other page}\\
+\textbf{First}&\textbf{Second}\\
+\hline\hline
+\endhead
+\hline
+This goes at the&bottom.\\
+\hline
+\endfoot
+\hline
+These lines will&appear\\
+in place of the & usual foot\\
+at the end& of the table\\
+\hline
+\endlastfoot
+\env{longtable}  columns  are specified& in the \\
+same way as  in the \env{tabular}& environment.\\
+"@{*}r||p{1in}@{*}"& in this case.\\
+Each row ends with a& "\\" command.\\
+The "\\"  command  has an& optional\\
+argument, just as in& the\\
+ \env{tabular}&environment.\\[10pt]
+See the  effect  of "\\[10pt]"&?\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Also  "\hline"  may be used,&  as in \env{tabular}.\\
+\hline
+That  was a "\hline"&.\\
+\hline\hline
+That  was "\hline\hline"&.\\
+\multicolumn{2}{||c||}%
+{This is a \ttfamily\v\\multicolumn\v{2\v}\v{||c||\v}}\\
+If a  page break  occurs at a "\hline" then& a line is drawn\\
+at the bottom of one  page  and at the& top of the next.\\
+\hline
+The  "[t] [b] [c]"  argument of \env{tabular}& can  not be used.\\
+The optional argument may be  one of& "[l] [r] [c]"\\
+to specify whether  the  table  should be& adjusted\\
+to the  left, right& or centrally.\\
+\hline\hline
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Some lines may take up a lot of space, like this: &
+    \raggedleft This last column is a ``p'' column so this
+    ``row'' of the table can take up several lines. Note however that
+    \TeX\ will  never break a page within such a row. Page breaks only
+    occur between rows of the table or at "\hline" commands.
+    \tabularnewline
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+\hline
+Lots\footnote{This is a footnote.} of lines& like this.\\
+Lots   of   lines& like this\footnote{\env{longtable} takes special
+    precautions, so that footnotes may also be used in `p' columns.}\\
+\hline
+Lots of lines& like this.\\
+Lots of lines& like this.
+\end{longtable}
 
 \section{Macros}
 
