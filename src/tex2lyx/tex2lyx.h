@@ -100,6 +100,7 @@ std::string active_environment();
 enum ArgumentType {
 	required,
 	verbatim,
+	item,
 	optional
 };
 

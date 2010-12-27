@@ -585,6 +585,15 @@ void parse_arguments(string const & command,
 			parse_text(p, os, FLAG_ITEM, outer, context);
 			ert = "}";
 			break;
+		case item:
+			// This argument consists only of a single item.
+			// The presence of '{' or not must be preserved.
+			p.skip_spaces();
+			if (p.next_token().cat() == catBegin)
+				ert += '{' + p.verbatim_item() + '}';
+			else
+				ert += p.verbatim_item();
+			break;
 		case verbatim:
 			// This argument may contain special characters
 			ert += '{' + p.verbatim_item() + '}';

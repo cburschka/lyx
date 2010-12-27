@@ -189,6 +189,8 @@ void read_command(Parser & p, string command, CommandMap & commands)
 			string const arg = p.getArg('{', '}');
 			if (arg == "translate")
 				arguments.push_back(required);
+			else if (arg == "item")
+				arguments.push_back(item);
 			else
 				arguments.push_back(verbatim);
 		} else {
