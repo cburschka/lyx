@@ -167,8 +167,7 @@ string h_pdf_bookmarksopenlevel  = "1";
 string h_pdf_breaklinks          = "0";
 string h_pdf_pdfborder           = "0";
 string h_pdf_colorlinks          = "0";
-string h_pdf_backref             = "0";
-string h_pdf_pagebackref         = "0";
+string h_pdf_backref             = "section";
 string h_pdf_pdfusetitle         = "1";
 string h_pdf_pagemode;
 string h_pdf_quoted_options;
@@ -592,7 +591,6 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 		      "\\pdf_pdfborder " << h_pdf_pdfborder << "\n"
 		      "\\pdf_colorlinks " << h_pdf_colorlinks << "\n"
 		      "\\pdf_backref " << h_pdf_backref << "\n"
-		      "\\pdf_pagebackref " << h_pdf_pagebackref << "\n"
 		      "\\pdf_pdfusetitle " << h_pdf_pdfusetitle << '\n';
 		if (!h_pdf_pagemode.empty())
 			os << "\\pdf_pagemode " << h_pdf_pagemode << '\n';
