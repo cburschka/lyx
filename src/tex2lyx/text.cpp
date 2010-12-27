@@ -712,7 +712,7 @@ void parse_box(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 			// We add a protected space if something real follows
 			if (p.good() && p.next_token().cat() != catComment) {
-				begin_inset(os, "Space ~\n");
+				begin_inset(os, "space ~\n");
 				end_inset(os);
 			}
 		}
@@ -1464,7 +1464,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				if (context.layout->free_spacing)
 					os << ' ';
 				else {
-					begin_inset(os, "Space ~\n");
+					begin_inset(os, "space ~\n");
 					end_inset(os);
 				}
 			} else
@@ -2732,7 +2732,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (is_known(t.cs(), known_spaces)) {
 			char const * const * where = is_known(t.cs(), known_spaces);
 			context.check_layout(os);
-			begin_inset(os, "Space ");
+			begin_inset(os, "space ");
 			os << '\\' << known_coded_spaces[where - known_spaces]
 			   << '\n';
 			end_inset(os);
@@ -2857,7 +2857,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (t.cs()[0] == 'h' && (known_unit || known_hspace)) {
 				// Literal horizontal length or known variable
 				context.check_layout(os);
-				begin_inset(os, "Space ");
+				begin_inset(os, "space ");
 				os << name;
 				if (starred)
 					os << '*';
@@ -2880,7 +2880,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					os << '*';
 				end_inset(os);
 			} else {
-				// LyX can't handle other length variables in Inset V?Space
+				// LyX can't handle other length variables in Inset VSpace/space
 				if (starred)
 					name += '*';
 				if (valid) {
