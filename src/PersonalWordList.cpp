@@ -61,7 +61,7 @@ void PersonalWordList::load()
 	if (line == header()) {
 		while (ifs) {
 			getline(ifs, line);
-			if (!line.empty()) {
+			if (!line.empty() && !line[0] == '#') {
 				docstring const word = from_utf8(line);
 				insert(word);
 			}
@@ -86,6 +86,8 @@ void PersonalWordList::save()
 	docstring_list::const_iterator et = words_.end();
 
 	ofs << header() << "\n";
+	ofs << "# encoding: utf-8\n";
+	ofs << "# one word per line\n";
 	for (; it != et; ++it) {
 		ofs << to_utf8(*it) << "\n";
 	}
