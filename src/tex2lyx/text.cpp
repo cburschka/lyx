@@ -1168,8 +1168,12 @@ void parse_noweb(Parser & p, ostream & os, Context & context)
 		// at all.
 		if (t.cat() == catEscape)
 			os << subst(t.asInput(), "\\", "\n\\backslash\n");
-		else
-			os << subst(t.asInput(), "\n", "\n\\newline\n");
+		else {
+			ostringstream oss;
+			begin_inset(oss, "Newline newline");
+			end_inset(oss);
+			os << subst(t.asInput(), "\n", oss.str());
+		}
 		// The scrap chunk is ended by an @ at the beginning of a line.
 		// After the @ the line may contain a comment and/or
 		// whitespace, but nothing else.
@@ -2556,14 +2560,17 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				handle_ert(os, "\\\\*" + p.getOpt(), context);
 			}
 			else {
-				os << "\n\\newline\n";
+				begin_inset(os, "Newline newline");
+				end_inset(os);
 			}
 		}
 
 		else if (t.cs() == "newline"
 			|| t.cs() == "linebreak") {
 			context.check_layout(os);
-			os << "\n\\" << t.cs() << "\n";
+			begin_inset(os, "Newline ");
+			os << t.cs();
+			end_inset(os);
 			skip_spaces_braces(p);
 		}
 
