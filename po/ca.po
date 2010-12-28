@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-12-27 18:54+0100\n"
+"POT-Creation-Date: 2010-12-28 23:31+0100\n"
 "PO-Revision-Date: 2008-07-28 17:53+0100\n"
 "Last-Translator: joan <joan@montane.cat>\n"
 "Language-Team: Catalan\n"
@@ -500,8 +500,8 @@ msgid "Remove the selected branch"
 msgstr "Suprimeix la branca seleccionada"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3777
-#: src/Buffer.cpp:3790
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3778
+#: src/Buffer.cpp:3791
 msgid "&Remove"
 msgstr "&Suprimeix"
 
@@ -540,7 +540,7 @@ msgstr ""
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2277 src/Buffer.cpp:3752 src/Buffer.cpp:3815
+#: src/Buffer.cpp:2277 src/Buffer.cpp:3753 src/Buffer.cpp:3816
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:222 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1775
@@ -4197,16 +4197,22 @@ msgstr "Nombre &màxim d'últims fitxers"
 msgid "&Open documents in tabs"
 msgstr "Obre els documents en &pestanyes"
 
-#: src/frontends/qt4/ui/PrefUi.ui:249
+#: src/frontends/qt4/ui/PrefUi.ui:245
+msgid ""
+"Whether to open documents in an already running instance of LyX.\n"
+"(Set the LyXServer pipe path and restart LyX to enable this feature)"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefUi.ui:248
 #, fuzzy
 msgid "S&ingle instance"
 msgstr "Cometes simples|Q"
 
-#: src/frontends/qt4/ui/PrefUi.ui:256
+#: src/frontends/qt4/ui/PrefUi.ui:255
 msgid "Whether to place close button on each tab or only one in the top left."
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefUi.ui:259
+#: src/frontends/qt4/ui/PrefUi.ui:258
 msgid "&Single close-tab button"
 msgstr ""
 
@@ -17400,7 +17406,7 @@ msgstr ""
 "%1$s és d'una versió del LyX diferent, però l'script lyx2lyx no ha pogut "
 "convertir-lo."
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3762 src/Buffer.cpp:3824
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3763 src/Buffer.cpp:3825
 #, fuzzy
 msgid "File is read-only"
 msgstr "El document és de només lectura"
@@ -17602,65 +17608,65 @@ msgstr "Voleu sobreescriure el fitxer?"
 msgid "Error running external commands."
 msgstr "S'ha produït un error en llegir informació de disposició interna"
 
-#: src/Buffer.cpp:3094
+#: src/Buffer.cpp:3095
 msgid "Preview source code"
 msgstr ""
 
-#: src/Buffer.cpp:3110
+#: src/Buffer.cpp:3111
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "La vista preliminar està llesta"
 
-#: src/Buffer.cpp:3114
+#: src/Buffer.cpp:3115
 #, fuzzy, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "La vista preliminar està llesta"
 
-#: src/Buffer.cpp:3225
+#: src/Buffer.cpp:3226
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "S'està desant automàticament %1$s"
 
-#: src/Buffer.cpp:3279
+#: src/Buffer.cpp:3280
 msgid "Autosave failed!"
 msgstr "Ha fallat el desament automàtic!"
 
-#: src/Buffer.cpp:3340
+#: src/Buffer.cpp:3341
 msgid "Autosaving current document..."
 msgstr "Autosalvat del document actual..."
 
-#: src/Buffer.cpp:3494
+#: src/Buffer.cpp:3495
 msgid "Couldn't export file"
 msgstr "No s'ha pogut exportar el fitxer"
 
-#: src/Buffer.cpp:3495
+#: src/Buffer.cpp:3496
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "No hi ha informació per exportar el format %1$s."
 
-#: src/Buffer.cpp:3558
+#: src/Buffer.cpp:3559
 msgid "File name error"
 msgstr "Nom del fitxer erroni"
 
-#: src/Buffer.cpp:3559
+#: src/Buffer.cpp:3560
 msgid "The directory path to the document cannot contain spaces."
 msgstr "La ruta al document no pot contenir espais."
 
-#: src/Buffer.cpp:3635
+#: src/Buffer.cpp:3636
 msgid "Document export cancelled."
 msgstr "S'ha cancel·lat l'exportació del document."
 
-#: src/Buffer.cpp:3645
+#: src/Buffer.cpp:3646
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "S'ha exportat el document com a %1$s al fitxer `%2$s'"
 
-#: src/Buffer.cpp:3651
+#: src/Buffer.cpp:3652
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "S'ha exportat el document com a %1$s"
 
-#: src/Buffer.cpp:3748
+#: src/Buffer.cpp:3749
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17671,64 +17677,64 @@ msgstr ""
 "\n"
 "Voleu recuperar la còpia d'emergència?"
 
-#: src/Buffer.cpp:3751
+#: src/Buffer.cpp:3752
 msgid "Load emergency save?"
 msgstr "Voleu obrir la còpia d'emergència?"
 
-#: src/Buffer.cpp:3752
+#: src/Buffer.cpp:3753
 msgid "&Recover"
 msgstr "&Recupera'l"
 
-#: src/Buffer.cpp:3752
+#: src/Buffer.cpp:3753
 msgid "&Load Original"
 msgstr "&Obre l'original"
 
-#: src/Buffer.cpp:3763
+#: src/Buffer.cpp:3764
 #, c-format
 msgid ""
 "An emergency file is succesfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:3769
+#: src/Buffer.cpp:3770
 msgid "Document was successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3771
+#: src/Buffer.cpp:3772
 msgid "Document was NOT successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3772
+#: src/Buffer.cpp:3773
 #, fuzzy, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr "Voleu obrir la còpia d'emergència?"
 
-#: src/Buffer.cpp:3776 src/Buffer.cpp:3788
+#: src/Buffer.cpp:3777 src/Buffer.cpp:3789
 #, fuzzy
 msgid "Delete emergency file?"
 msgstr "Seleccioneu un fitxer extern"
 
-#: src/Buffer.cpp:3777 src/Buffer.cpp:3790
+#: src/Buffer.cpp:3778 src/Buffer.cpp:3791
 #, fuzzy
 msgid "&Keep"
 msgstr "Cap"
 
-#: src/Buffer.cpp:3781
+#: src/Buffer.cpp:3782
 msgid "Emergency file deleted"
 msgstr ""
 
-#: src/Buffer.cpp:3782
+#: src/Buffer.cpp:3783
 msgid "Do not forget to save your file now!"
 msgstr ""
 
-#: src/Buffer.cpp:3789
+#: src/Buffer.cpp:3790
 #, fuzzy
 msgid "Remove emergency file now?"
 msgstr "Voleu obrir la còpia d'emergència?"
 
-#: src/Buffer.cpp:3812
+#: src/Buffer.cpp:3813
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17739,45 +17745,45 @@ msgstr ""
 "\n"
 "Voleu obrir la còpia de seguretat en el seu lloc?"
 
-#: src/Buffer.cpp:3814
+#: src/Buffer.cpp:3815
 msgid "Load backup?"
 msgstr "Voleu obrir la còpia de seguretat?"
 
-#: src/Buffer.cpp:3815
+#: src/Buffer.cpp:3816
 msgid "&Load backup"
 msgstr "&Obre la còpia de seguretat"
 
-#: src/Buffer.cpp:3815
+#: src/Buffer.cpp:3816
 msgid "Load &original"
 msgstr "Obre l'&original"
 
-#: src/Buffer.cpp:3825
+#: src/Buffer.cpp:3826
 #, c-format
 msgid ""
 "A backup file is succesfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4130 src/insets/InsetCaption.cpp:339
+#: src/Buffer.cpp:4131 src/insets/InsetCaption.cpp:339
 msgid "Senseless!!! "
 msgstr "Sense sentit!!! "
 
-#: src/Buffer.cpp:4251
+#: src/Buffer.cpp:4252
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "S'ha reobert el document %1$s."
 
-#: src/Buffer.cpp:4253
+#: src/Buffer.cpp:4254
 #, fuzzy, c-format
 msgid "Could not reload document %1$s."
 msgstr "No es pot reobrir el document %1$s"
 
-#: src/Buffer.cpp:4319
+#: src/Buffer.cpp:4320
 #, fuzzy
 msgid "Included File Invalid"
 msgstr "Inclou el fitxer...|d"
 
-#: src/Buffer.cpp:4320
+#: src/Buffer.cpp:4321
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -24469,10 +24475,6 @@ msgstr "Tots el missatges de depuració"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "S'està depurant `%1$s' (%2$s)"
 
-#: src/support/lstrings.cpp:1295
-msgid "[[Replace with the code of your language]]"
-msgstr "ca"
-
 #: src/support/os_win32.cpp:444
 msgid "System file not found"
 msgstr "No s'ha trobat el fitxer de sistema"
@@ -24500,6 +24502,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Usuari desconegut"
+
+#~ msgid "[[Replace with the code of your language]]"
+#~ msgstr "ca"
 
 #, fuzzy
 #~ msgid "value of the optional vertical offset"

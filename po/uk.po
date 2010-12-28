@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-12-27 18:54+0100\n"
+"POT-Creation-Date: 2010-12-28 23:31+0100\n"
 "PO-Revision-Date: 2010-10-31 15:22+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -492,8 +492,8 @@ msgid "Remove the selected branch"
 msgstr "Вилучити обрану базу даних"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3777
-#: src/Buffer.cpp:3790
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3778
+#: src/Buffer.cpp:3791
 msgid "&Remove"
 msgstr "Ви&лучити"
 
@@ -527,7 +527,7 @@ msgstr "Дод&ати всі"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2277 src/Buffer.cpp:3752 src/Buffer.cpp:3815
+#: src/Buffer.cpp:2277 src/Buffer.cpp:3753 src/Buffer.cpp:3816
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:222 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1775
@@ -4061,18 +4061,24 @@ msgstr "&Кількість недавніх файлів:"
 msgid "&Open documents in tabs"
 msgstr "Відкривати документи у в&кладках"
 
-#: src/frontends/qt4/ui/PrefUi.ui:249
+#: src/frontends/qt4/ui/PrefUi.ui:245
+msgid ""
+"Whether to open documents in an already running instance of LyX.\n"
+"(Set the LyXServer pipe path and restart LyX to enable this feature)"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefUi.ui:248
 #, fuzzy
 msgid "S&ingle instance"
 msgstr "Одинарна лапка|О"
 
-#: src/frontends/qt4/ui/PrefUi.ui:256
+#: src/frontends/qt4/ui/PrefUi.ui:255
 msgid "Whether to place close button on each tab or only one in the top left."
 msgstr ""
 "Визначає, слід додавати кнопку закриття на кожній вкладці чи лише одну "
 "кнопку закриття вгорі праворуч."
 
-#: src/frontends/qt4/ui/PrefUi.ui:259
+#: src/frontends/qt4/ui/PrefUi.ui:258
 msgid "&Single close-tab button"
 msgstr "&Єдина кнопка закриття вкладок"
 
@@ -16788,7 +16794,7 @@ msgstr ""
 "%1$s походить з новішої версії LyX, але скрипт lyx2lyx не зміг його "
 "перетворити."
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3762 src/Buffer.cpp:3824
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3763 src/Buffer.cpp:3825
 #, fuzzy
 msgid "File is read-only"
 msgstr "Документ доступний тільки для читання"
@@ -16994,65 +17000,65 @@ msgstr "Перезаписати файл?"
 msgid "Error running external commands."
 msgstr "Помилка під час спроби виконання зовнішніх команд."
 
-#: src/Buffer.cpp:3094
+#: src/Buffer.cpp:3095
 msgid "Preview source code"
 msgstr "Попередній перегляд джерела"
 
-#: src/Buffer.cpp:3110
+#: src/Buffer.cpp:3111
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Перегляд коду джерела для абзацу %1$d"
 
-#: src/Buffer.cpp:3114
+#: src/Buffer.cpp:3115
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Попередній перегляд коду джерела з параграфа %1$s до %2$s"
 
-#: src/Buffer.cpp:3225
+#: src/Buffer.cpp:3226
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Автоматичне збереження %1$s"
 
-#: src/Buffer.cpp:3279
+#: src/Buffer.cpp:3280
 msgid "Autosave failed!"
 msgstr "Автозбереження не вдалося!"
 
-#: src/Buffer.cpp:3340
+#: src/Buffer.cpp:3341
 msgid "Autosaving current document..."
 msgstr "Автозбереження поточного документа..."
 
-#: src/Buffer.cpp:3494
+#: src/Buffer.cpp:3495
 msgid "Couldn't export file"
 msgstr "Неможливо експортувати файл"
 
-#: src/Buffer.cpp:3495
+#: src/Buffer.cpp:3496
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Немає інформації для імпортування з %1$s"
 
-#: src/Buffer.cpp:3558
+#: src/Buffer.cpp:3559
 msgid "File name error"
 msgstr "Помилкова назва файла"
 
-#: src/Buffer.cpp:3559
+#: src/Buffer.cpp:3560
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Шлях до файлу LyX не повинен містити пробілів."
 
-#: src/Buffer.cpp:3635
+#: src/Buffer.cpp:3636
 msgid "Document export cancelled."
 msgstr "Експорт документа скасовано."
 
-#: src/Buffer.cpp:3645
+#: src/Buffer.cpp:3646
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Документ експортовано як %1$s у файл `%2$s'"
 
-#: src/Buffer.cpp:3651
+#: src/Buffer.cpp:3652
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Документ експортовано як %1$s"
 
-#: src/Buffer.cpp:3748
+#: src/Buffer.cpp:3749
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17063,34 +17069,34 @@ msgstr ""
 "\n"
 "Відновити?"
 
-#: src/Buffer.cpp:3751
+#: src/Buffer.cpp:3752
 msgid "Load emergency save?"
 msgstr "Завантажити аварійну копію?"
 
-#: src/Buffer.cpp:3752
+#: src/Buffer.cpp:3753
 msgid "&Recover"
 msgstr "&Відновити"
 
-#: src/Buffer.cpp:3752
+#: src/Buffer.cpp:3753
 msgid "&Load Original"
 msgstr "&Завантажити оригінал"
 
-#: src/Buffer.cpp:3763
+#: src/Buffer.cpp:3764
 #, c-format
 msgid ""
 "An emergency file is succesfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:3769
+#: src/Buffer.cpp:3770
 msgid "Document was successfully recovered."
 msgstr "Документ було успішно відновлено."
 
-#: src/Buffer.cpp:3771
+#: src/Buffer.cpp:3772
 msgid "Document was NOT successfully recovered."
 msgstr "Не вдалося відновити документ."
 
-#: src/Buffer.cpp:3772
+#: src/Buffer.cpp:3773
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17099,27 +17105,27 @@ msgstr ""
 "Вилучити аварійну копію?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3776 src/Buffer.cpp:3788
+#: src/Buffer.cpp:3777 src/Buffer.cpp:3789
 msgid "Delete emergency file?"
 msgstr "Вилучити файл аварійної копії?"
 
-#: src/Buffer.cpp:3777 src/Buffer.cpp:3790
+#: src/Buffer.cpp:3778 src/Buffer.cpp:3791
 msgid "&Keep"
 msgstr "&Зберегти"
 
-#: src/Buffer.cpp:3781
+#: src/Buffer.cpp:3782
 msgid "Emergency file deleted"
 msgstr "Аварійну копію вилучено"
 
-#: src/Buffer.cpp:3782
+#: src/Buffer.cpp:3783
 msgid "Do not forget to save your file now!"
 msgstr "Не забудьте зберегти ваш файл!"
 
-#: src/Buffer.cpp:3789
+#: src/Buffer.cpp:3790
 msgid "Remove emergency file now?"
 msgstr "Вилучити аварійну копію?"
 
-#: src/Buffer.cpp:3812
+#: src/Buffer.cpp:3813
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17130,44 +17136,44 @@ msgstr ""
 "\n"
 "Завантажити її?"
 
-#: src/Buffer.cpp:3814
+#: src/Buffer.cpp:3815
 msgid "Load backup?"
 msgstr "Повернутися до резервної?"
 
-#: src/Buffer.cpp:3815
+#: src/Buffer.cpp:3816
 msgid "&Load backup"
 msgstr "&Завантажити резервну"
 
-#: src/Buffer.cpp:3815
+#: src/Buffer.cpp:3816
 msgid "Load &original"
 msgstr "Завантажити &оригінал"
 
-#: src/Buffer.cpp:3825
+#: src/Buffer.cpp:3826
 #, c-format
 msgid ""
 "A backup file is succesfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4130 src/insets/InsetCaption.cpp:339
+#: src/Buffer.cpp:4131 src/insets/InsetCaption.cpp:339
 msgid "Senseless!!! "
 msgstr "Немає сенсу!!! "
 
-#: src/Buffer.cpp:4251
+#: src/Buffer.cpp:4252
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Документ %1$s перевантажено."
 
-#: src/Buffer.cpp:4253
+#: src/Buffer.cpp:4254
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Не вдалося перезавантажити документ %1$s."
 
-#: src/Buffer.cpp:4319
+#: src/Buffer.cpp:4320
 msgid "Included File Invalid"
 msgstr "Некоректний включений файл"
 
-#: src/Buffer.cpp:4320
+#: src/Buffer.cpp:4321
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -23858,10 +23864,6 @@ msgstr "Всі зневаджувальні повідомлення"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Зневадження `%1$s' (%2$s)"
 
-#: src/support/lstrings.cpp:1295
-msgid "[[Replace with the code of your language]]"
-msgstr "uk"
-
 #: src/support/os_win32.cpp:444
 msgid "System file not found"
 msgstr "Системний файл не знайдено"
@@ -23889,6 +23891,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Невідомий користувач"
+
+#~ msgid "[[Replace with the code of your language]]"
+#~ msgstr "uk"
 
 #~ msgid "Group labels by prefix (e.g. &quot;sec:&quot;)"
 #~ msgstr "Групувати мітки за префіксом (наприклад, «sec:»)"

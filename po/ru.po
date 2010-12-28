@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-12-27 18:54+0100\n"
+"POT-Creation-Date: 2010-12-28 23:31+0100\n"
 "PO-Revision-Date: 2010-04-21 02:16+0300\n"
 "Last-Translator: Sergey Tereschenko <serg.partizan@gmail.com>\n"
 "Language-Team: Russian <kruvalig@gmail.com>\n"
@@ -498,8 +498,8 @@ msgid "Remove the selected branch"
 msgstr "Удалить выбранную ветку"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3777
-#: src/Buffer.cpp:3790
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3778
+#: src/Buffer.cpp:3791
 msgid "&Remove"
 msgstr "&Удалить"
 
@@ -538,7 +538,7 @@ msgstr ""
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2277 src/Buffer.cpp:3752 src/Buffer.cpp:3815
+#: src/Buffer.cpp:2277 src/Buffer.cpp:3753 src/Buffer.cpp:3816
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:222 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1775
@@ -4162,17 +4162,23 @@ msgstr "&Количество недавних файлов:"
 msgid "&Open documents in tabs"
 msgstr "&Открывать документы во вкладках"
 
-#: src/frontends/qt4/ui/PrefUi.ui:249
+#: src/frontends/qt4/ui/PrefUi.ui:245
+msgid ""
+"Whether to open documents in an already running instance of LyX.\n"
+"(Set the LyXServer pipe path and restart LyX to enable this feature)"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefUi.ui:248
 #, fuzzy
 msgid "S&ingle instance"
 msgstr "Одинарная кавычка"
 
-#: src/frontends/qt4/ui/PrefUi.ui:256
+#: src/frontends/qt4/ui/PrefUi.ui:255
 msgid "Whether to place close button on each tab or only one in the top left."
 msgstr ""
 "Поместить кнопку закрытия на каждую вкладку или только в верхний левый угол."
 
-#: src/frontends/qt4/ui/PrefUi.ui:259
+#: src/frontends/qt4/ui/PrefUi.ui:258
 msgid "&Single close-tab button"
 msgstr "&Единственная кнопка закрытия вкладки"
 
@@ -17443,7 +17449,7 @@ msgstr ""
 "Файл %1$s создан в другой версии LyX. Сценарий lyx2lyx не смог преобразовать "
 "его."
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3762 src/Buffer.cpp:3824
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3763 src/Buffer.cpp:3825
 #, fuzzy
 msgid "File is read-only"
 msgstr "Документ доступен только для чтения"
@@ -17652,65 +17658,65 @@ msgstr "Перезаписать файл?"
 msgid "Error running external commands."
 msgstr "Ошибка чтения внутреней информации формата"
 
-#: src/Buffer.cpp:3094
+#: src/Buffer.cpp:3095
 msgid "Preview source code"
 msgstr "Предварительный просмотр исходного кода"
 
-#: src/Buffer.cpp:3110
+#: src/Buffer.cpp:3111
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Предварительный просмотр исходного кода для абзаца %1$d"
 
-#: src/Buffer.cpp:3114
+#: src/Buffer.cpp:3115
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Предварительный просмотр исходного кода абзацев %1$s-%2$s"
 
-#: src/Buffer.cpp:3225
+#: src/Buffer.cpp:3226
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Автоматическое сохранение %1$s"
 
-#: src/Buffer.cpp:3279
+#: src/Buffer.cpp:3280
 msgid "Autosave failed!"
 msgstr "Автосохранение не удалось!"
 
-#: src/Buffer.cpp:3340
+#: src/Buffer.cpp:3341
 msgid "Autosaving current document..."
 msgstr "Автосохранение текущего документа..."
 
-#: src/Buffer.cpp:3494
+#: src/Buffer.cpp:3495
 msgid "Couldn't export file"
 msgstr "Невозможно экспортировать файл"
 
-#: src/Buffer.cpp:3495
+#: src/Buffer.cpp:3496
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Нет информации для экспортирования формата %1$s."
 
-#: src/Buffer.cpp:3558
+#: src/Buffer.cpp:3559
 msgid "File name error"
 msgstr "Ошибка в названии файла"
 
-#: src/Buffer.cpp:3559
+#: src/Buffer.cpp:3560
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Путь к файлу LyX не должен содержать пробелов."
 
-#: src/Buffer.cpp:3635
+#: src/Buffer.cpp:3636
 msgid "Document export cancelled."
 msgstr "Экспорт документа отменён"
 
-#: src/Buffer.cpp:3645
+#: src/Buffer.cpp:3646
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Документ экспортирован из %1$s в файл `%2$s'"
 
-#: src/Buffer.cpp:3651
+#: src/Buffer.cpp:3652
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Документ экспортирован как %1$s"
 
-#: src/Buffer.cpp:3748
+#: src/Buffer.cpp:3749
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17721,34 +17727,34 @@ msgstr ""
 "\n"
 "Восстановить аварийную копию?"
 
-#: src/Buffer.cpp:3751
+#: src/Buffer.cpp:3752
 msgid "Load emergency save?"
 msgstr "Загрузить аварийную копию?"
 
-#: src/Buffer.cpp:3752
+#: src/Buffer.cpp:3753
 msgid "&Recover"
 msgstr "&Восстановить"
 
-#: src/Buffer.cpp:3752
+#: src/Buffer.cpp:3753
 msgid "&Load Original"
 msgstr "Загрузить &первоначальный"
 
-#: src/Buffer.cpp:3763
+#: src/Buffer.cpp:3764
 #, c-format
 msgid ""
 "An emergency file is succesfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:3769
+#: src/Buffer.cpp:3770
 msgid "Document was successfully recovered."
 msgstr "Документ был успешно восстановлен."
 
-#: src/Buffer.cpp:3771
+#: src/Buffer.cpp:3772
 msgid "Document was NOT successfully recovered."
 msgstr "Документ НЕ был успешно восстановлен."
 
-#: src/Buffer.cpp:3772
+#: src/Buffer.cpp:3773
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17757,28 +17763,28 @@ msgstr ""
 "Удалить запасной файл?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3776 src/Buffer.cpp:3788
+#: src/Buffer.cpp:3777 src/Buffer.cpp:3789
 msgid "Delete emergency file?"
 msgstr "Удалить запасной файл?"
 
-#: src/Buffer.cpp:3777 src/Buffer.cpp:3790
+#: src/Buffer.cpp:3778 src/Buffer.cpp:3791
 #, fuzzy
 msgid "&Keep"
 msgstr "Хранить"
 
-#: src/Buffer.cpp:3781
+#: src/Buffer.cpp:3782
 msgid "Emergency file deleted"
 msgstr "Обнаружен запасной файл"
 
-#: src/Buffer.cpp:3782
+#: src/Buffer.cpp:3783
 msgid "Do not forget to save your file now!"
 msgstr "Не забудьте сохранить ваш вайл прямо сейчас!"
 
-#: src/Buffer.cpp:3789
+#: src/Buffer.cpp:3790
 msgid "Remove emergency file now?"
 msgstr "Удалить запасной файл?"
 
-#: src/Buffer.cpp:3812
+#: src/Buffer.cpp:3813
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17789,45 +17795,45 @@ msgstr ""
 "\n"
 "Загрузить резервную копию вместо текущей?"
 
-#: src/Buffer.cpp:3814
+#: src/Buffer.cpp:3815
 msgid "Load backup?"
 msgstr "Загрузить резервную копию?"
 
-#: src/Buffer.cpp:3815
+#: src/Buffer.cpp:3816
 msgid "&Load backup"
 msgstr "Загрузить &резервную копию"
 
-#: src/Buffer.cpp:3815
+#: src/Buffer.cpp:3816
 msgid "Load &original"
 msgstr "Загрузить &первоначальную"
 
-#: src/Buffer.cpp:3825
+#: src/Buffer.cpp:3826
 #, c-format
 msgid ""
 "A backup file is succesfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4130 src/insets/InsetCaption.cpp:339
+#: src/Buffer.cpp:4131 src/insets/InsetCaption.cpp:339
 msgid "Senseless!!! "
 msgstr "Бессмыслено!!!"
 
-#: src/Buffer.cpp:4251
+#: src/Buffer.cpp:4252
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Документ %1$s перезагружен."
 
-#: src/Buffer.cpp:4253
+#: src/Buffer.cpp:4254
 #, fuzzy, c-format
 msgid "Could not reload document %1$s."
 msgstr "Не удалось перезагрузить документ %1$s"
 
-#: src/Buffer.cpp:4319
+#: src/Buffer.cpp:4320
 #, fuzzy
 msgid "Included File Invalid"
 msgstr "Включить файл|к"
 
-#: src/Buffer.cpp:4320
+#: src/Buffer.cpp:4321
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -24660,10 +24666,6 @@ msgstr "Все отладочные сообщения"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Отладка `%1$s' (%2$s)"
 
-#: src/support/lstrings.cpp:1295
-msgid "[[Replace with the code of your language]]"
-msgstr "ru"
-
 #: src/support/os_win32.cpp:444
 msgid "System file not found"
 msgstr "Системный файл не найден"
@@ -24691,6 +24693,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Неизвестный пользователь"
+
+#~ msgid "[[Replace with the code of your language]]"
+#~ msgstr "ru"
 
 #, fuzzy
 #~ msgid "DockWidget"

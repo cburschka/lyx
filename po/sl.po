@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-12-27 18:54+0100\n"
+"POT-Creation-Date: 2010-12-28 23:31+0100\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -533,8 +533,8 @@ msgid "Remove the selected branch"
 msgstr "Odstrani izbrano zbirko podatkov"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3777
-#: src/Buffer.cpp:3790
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3778
+#: src/Buffer.cpp:3791
 msgid "&Remove"
 msgstr "&Odstrani"
 
@@ -572,7 +572,7 @@ msgstr ""
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2277 src/Buffer.cpp:3752 src/Buffer.cpp:3815
+#: src/Buffer.cpp:2277 src/Buffer.cpp:3753 src/Buffer.cpp:3816
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:222 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1775
@@ -4347,16 +4347,22 @@ msgstr "&Največ zadnjih datotek:"
 msgid "&Open documents in tabs"
 msgstr "Odpira se spis "
 
-#: src/frontends/qt4/ui/PrefUi.ui:249
+#: src/frontends/qt4/ui/PrefUi.ui:245
+msgid ""
+"Whether to open documents in an already running instance of LyX.\n"
+"(Set the LyXServer pipe path and restart LyX to enable this feature)"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefUi.ui:248
 #, fuzzy
 msgid "S&ingle instance"
 msgstr "Navaden navedek|N"
 
-#: src/frontends/qt4/ui/PrefUi.ui:256
+#: src/frontends/qt4/ui/PrefUi.ui:255
 msgid "Whether to place close button on each tab or only one in the top left."
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefUi.ui:259
+#: src/frontends/qt4/ui/PrefUi.ui:258
 msgid "&Single close-tab button"
 msgstr ""
 
@@ -18164,7 +18170,7 @@ msgid ""
 "it."
 msgstr ""
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3762 src/Buffer.cpp:3824
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3763 src/Buffer.cpp:3825
 #, fuzzy
 msgid "File is read-only"
 msgstr "Spis je le za branje"
@@ -18361,70 +18367,70 @@ msgstr "Poglej datoteko"
 msgid "Error running external commands."
 msgstr "Splošni podatki"
 
-#: src/Buffer.cpp:3094
+#: src/Buffer.cpp:3095
 #, fuzzy
 msgid "Preview source code"
 msgstr "Predogled|#P"
 
-#: src/Buffer.cpp:3110
+#: src/Buffer.cpp:3111
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Predogled|#P"
 
-#: src/Buffer.cpp:3114
+#: src/Buffer.cpp:3115
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr ""
 
-#: src/Buffer.cpp:3225
+#: src/Buffer.cpp:3226
 #, fuzzy, c-format
 msgid "Auto-saving %1$s"
 msgstr "Sámoshranjevanje"
 
-#: src/Buffer.cpp:3279
+#: src/Buffer.cpp:3280
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Sámoshranjevanje spodletelo!"
 
-#: src/Buffer.cpp:3340
+#: src/Buffer.cpp:3341
 msgid "Autosaving current document..."
 msgstr "Trenutni spis se samodejno shranjuje..."
 
-#: src/Buffer.cpp:3494
+#: src/Buffer.cpp:3495
 #, fuzzy
 msgid "Couldn't export file"
 msgstr "Datoteke ni moč izvoziti"
 
-#: src/Buffer.cpp:3495
+#: src/Buffer.cpp:3496
 #, fuzzy, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Ni podatkov za pretvarjanje iz "
 
-#: src/Buffer.cpp:3558
+#: src/Buffer.cpp:3559
 #, fuzzy
 msgid "File name error"
 msgstr "Ime datoteke"
 
-#: src/Buffer.cpp:3559
+#: src/Buffer.cpp:3560
 msgid "The directory path to the document cannot contain spaces."
 msgstr ""
 
-#: src/Buffer.cpp:3635
+#: src/Buffer.cpp:3636
 #, fuzzy
 msgid "Document export cancelled."
 msgstr "Dokument izvožen kot "
 
-#: src/Buffer.cpp:3645
+#: src/Buffer.cpp:3646
 #, fuzzy, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument izvožen kot "
 
-#: src/Buffer.cpp:3651
+#: src/Buffer.cpp:3652
 #, fuzzy, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument izvožen kot "
 
-#: src/Buffer.cpp:3748
+#: src/Buffer.cpp:3749
 #, fuzzy, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -18432,64 +18438,64 @@ msgid ""
 "Recover emergency save?"
 msgstr "Obstaja zasilni izvod tega spisa!"
 
-#: src/Buffer.cpp:3751
+#: src/Buffer.cpp:3752
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:3752
+#: src/Buffer.cpp:3753
 #, fuzzy
 msgid "&Recover"
 msgstr "&Odstrani"
 
-#: src/Buffer.cpp:3752
+#: src/Buffer.cpp:3753
 msgid "&Load Original"
 msgstr ""
 
-#: src/Buffer.cpp:3763
+#: src/Buffer.cpp:3764
 #, c-format
 msgid ""
 "An emergency file is succesfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:3769
+#: src/Buffer.cpp:3770
 msgid "Document was successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3771
+#: src/Buffer.cpp:3772
 msgid "Document was NOT successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3772
+#: src/Buffer.cpp:3773
 #, fuzzy, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr "Izberi naslednjo vrstico"
 
-#: src/Buffer.cpp:3776 src/Buffer.cpp:3788
+#: src/Buffer.cpp:3777 src/Buffer.cpp:3789
 #, fuzzy
 msgid "Delete emergency file?"
 msgstr "Izberi naslednjo vrstico"
 
-#: src/Buffer.cpp:3777 src/Buffer.cpp:3790
+#: src/Buffer.cpp:3778 src/Buffer.cpp:3791
 #, fuzzy
 msgid "&Keep"
 msgstr "Pojasnilo"
 
-#: src/Buffer.cpp:3781
+#: src/Buffer.cpp:3782
 msgid "Emergency file deleted"
 msgstr ""
 
-#: src/Buffer.cpp:3782
+#: src/Buffer.cpp:3783
 msgid "Do not forget to save your file now!"
 msgstr ""
 
-#: src/Buffer.cpp:3789
+#: src/Buffer.cpp:3790
 msgid "Remove emergency file now?"
 msgstr ""
 
-#: src/Buffer.cpp:3812
+#: src/Buffer.cpp:3813
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -18497,48 +18503,48 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/Buffer.cpp:3814
+#: src/Buffer.cpp:3815
 #, fuzzy
 msgid "Load backup?"
 msgstr "Vrni se"
 
-#: src/Buffer.cpp:3815
+#: src/Buffer.cpp:3816
 #, fuzzy
 msgid "&Load backup"
 msgstr "&Vrni se"
 
-#: src/Buffer.cpp:3815
+#: src/Buffer.cpp:3816
 msgid "Load &original"
 msgstr ""
 
-#: src/Buffer.cpp:3825
+#: src/Buffer.cpp:3826
 #, c-format
 msgid ""
 "A backup file is succesfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4130 src/insets/InsetCaption.cpp:339
+#: src/Buffer.cpp:4131 src/insets/InsetCaption.cpp:339
 #, fuzzy
 msgid "Senseless!!! "
 msgstr "NaslovPošiljatelja"
 
-#: src/Buffer.cpp:4251
+#: src/Buffer.cpp:4252
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s je odprt."
 
-#: src/Buffer.cpp:4253
+#: src/Buffer.cpp:4254
 #, fuzzy, c-format
 msgid "Could not reload document %1$s."
 msgstr "Spisa ni moč odpreti"
 
-#: src/Buffer.cpp:4319
+#: src/Buffer.cpp:4320
 #, fuzzy
 msgid "Included File Invalid"
 msgstr "Vključi datoteko...|V"
 
-#: src/Buffer.cpp:4320
+#: src/Buffer.cpp:4321
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -25417,10 +25423,6 @@ msgstr ""
 msgid "Debugging `%1$s' (%2$s)"
 msgstr ""
 
-#: src/support/lstrings.cpp:1295
-msgid "[[Replace with the code of your language]]"
-msgstr "sl"
-
 #: src/support/os_win32.cpp:444
 #, fuzzy
 msgid "System file not found"
@@ -25447,6 +25449,9 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Neznana beseda:"
+
+#~ msgid "[[Replace with the code of your language]]"
+#~ msgstr "sl"
 
 #, fuzzy
 #~ msgid "value of the optional vertical offset"
