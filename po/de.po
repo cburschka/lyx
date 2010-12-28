@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-12-27 18:54+0100\n"
-"PO-Revision-Date: 2010-12-17 18:56+0100\n"
+"PO-Revision-Date: 2010-12-28 18:01+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -4170,9 +4170,8 @@ msgid "&Save"
 msgstr "&Speichern"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:13
-#, fuzzy
 msgid "Nomenclature settings"
-msgstr "\"Nomenklatur-Einstellungen\""
+msgstr "Nomenklatur-Einstellungen"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:19
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:32
@@ -9984,7 +9983,6 @@ msgid "Custom Header/Footerlines"
 msgstr "Benutzerdefinierte Kopf/Fußzeilen"
 
 #: lib/layouts/customHeadersFooters.module:7
-#, fuzzy
 msgid ""
 "Adds environments to define header and footer lines. NOTE: To use this "
 "module you must set the 'Headings style' in the menu Document Settings -> "
@@ -17229,7 +17227,7 @@ msgid "Load &original"
 msgstr "&Original laden"
 
 #: src/Buffer.cpp:3825
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "A backup file is succesfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
@@ -17268,7 +17266,7 @@ msgstr ""
 "unzugänglich gemacht. Bitte aktualisieren Sie den Pfad zu dieser Datei."
 
 #: src/BufferParams.cpp:568
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The selected document class\n"
 "\t%1$s\n"
@@ -17285,7 +17283,7 @@ msgstr ""
 "benötigt externe Dateien, welche nicht verfügbar sind.\n"
 "Die Dokumentklasse kann zwar verwendet werden,\n"
 "das Dokument kann aber nicht ausgegeben werden,\n"
-"so lange die folgenden Dateien nicht installiert sind:\n"
+"solange die folgenden Dateien nicht installiert sind:\n"
 "\t%2$s\n"
 "In Abschnitt 3.1.2.2 des Benutzerhandbuchs\n"
 "finden Sie weitere Hilfe."
