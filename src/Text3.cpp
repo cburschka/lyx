@@ -2174,13 +2174,17 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	needsUpdate |= (cur.pos() != cur.lastpos()) && cur.selection();
 
-	if (lyxrc.spellcheck_continuously && !needsUpdate && cur.inTexted()) {
+	if (lyxrc.spellcheck_continuously && !needsUpdate) {
 		// Check for misspelled text
 		// The redraw is useful because of the painting of
 		// misspelled markers depends on the cursor position.
 		// Trigger a redraw for cursor moves inside misspelled text.
-		if (cur.paragraph().id() != last_pid || cur.pos() != last_pos) {
-			needsUpdate |= last_misspelled || cur.paragraph().isMisspelled(cur.pos());
+		if (!cur.inTexted()) {
+			// move from regular text to math
+			needsUpdate = last_misspelled;
+		} else if (cur.paragraph().id() != last_pid || cur.pos() != last_pos) {
+			// move inside regular text
+			needsUpdate = last_misspelled || cur.paragraph().isMisspelled(cur.pos());
 		}
 	}
 

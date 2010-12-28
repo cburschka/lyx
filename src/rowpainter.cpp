@@ -417,7 +417,7 @@ void RowPainter::paintFromPos(pos_type & vpos, bool changed)
 		BufferView const * bv = pi_.base.bv;
 		Cursor const & cur = bv->cursor();
 		bool current_word = false;
-		if (par_.id() == cur.paragraph().id()) {
+		if (cur.inTexted() && par_.id() == cur.paragraph().id()) {
 			pos_type cpos = cur.pos();
 			if (cpos > 0 && cpos == par_.size() && !par_.isWordSeparator(cpos-1))
 				--cpos;
