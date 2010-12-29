@@ -120,6 +120,9 @@ What's new
   (such as quotation marks) as well as the description of a caption
   (bug 4889).
 
+- Fix painting of math-macro templates while moving the cursor or
+  performing a selection with the mouse (bug 7193).
+
 - Fix unexpected behavior when inserting big math delimiters around a
   matrix (bug 7088).
 

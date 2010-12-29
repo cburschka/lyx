@@ -40,6 +40,8 @@
 
 #include "insets/InsetText.h"
 
+#include "mathed/InsetMath.h"
+
 #include "support/debug.h"
 #include "support/textutils.h"
 
@@ -687,7 +689,10 @@ void RowPainter::paintOnlyInsets()
 		// If outer row has changed, nested insets are repaint completely.
 		Inset const * inset = par_.getInset(pos);
 		bool const nested_inset = inset &&
-			(inset->asInsetText() || inset->asInsetTabular());
+				((inset->asInsetMath() &&
+				  !inset->asInsetMath()->asMacroTemplate())
+				 || inset->asInsetText()
+				 || inset->asInsetTabular());
 		if (!nested_inset)
 			continue;
 		if (x_ > pi_.base.bv->workWidth() 

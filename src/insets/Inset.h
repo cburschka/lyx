@@ -121,6 +121,8 @@ public:
 
 	/// identification as math inset
 	virtual InsetMath * asInsetMath() { return 0; }
+	/// identification as math inset
+	virtual InsetMath const * asInsetMath() const { return 0; }
 	/// true for 'math' math inset, but not for e.g. mbox
 	virtual bool inMathed() const { return false; }
 	/// is this inset based on the InsetText class?
