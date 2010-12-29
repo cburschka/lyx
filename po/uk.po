@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-12-28 23:31+0100\n"
-"PO-Revision-Date: 2010-10-31 15:22+0200\n"
+"PO-Revision-Date: 2010-12-29 18:43+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -250,7 +250,7 @@ msgstr "&Гаразд"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:225
 msgid "Move the selected database downwards in the list"
-msgstr "Пересунути обрану базу даних вниз за списком"
+msgstr "Пересунути вказану базу даних вниз за списком"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:228 src/frontends/qt4/ui/ModulesUi.ui:121
 msgid "Do&wn"
@@ -258,7 +258,7 @@ msgstr "В&низ"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:235
 msgid "Move the selected database upwards in the list"
-msgstr "Пересунути обрану базу даних вгору за списком"
+msgstr "Пересунути вказану базу даних вгору за списком"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:238 src/frontends/qt4/ui/CitationUi.ui:127
 #: src/frontends/qt4/ui/ModulesUi.ui:114
@@ -283,7 +283,7 @@ msgstr "&Додати..."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:279
 msgid "Remove the selected database"
-msgstr "Вилучити обрану базу даних"
+msgstr "Вилучити вказану базу даних"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:282 src/frontends/qt4/ui/CitationUi.ui:95
 msgid "&Delete"
@@ -436,7 +436,7 @@ msgstr "&Доступні версії:"
 
 #: src/frontends/qt4/ui/BranchUi.ui:29
 msgid "Select your branch"
-msgstr "Обрати версію"
+msgstr "Вибрати версію"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25 src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:"
@@ -468,7 +468,7 @@ msgstr "До&ступні версії:"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:94
 msgid "Toggle the selected branch"
-msgstr "Увімкнути або вимкнути обрану версію"
+msgstr "Увімкнути або вимкнути вибрану версію"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:97
 msgid "(&De)activate"
@@ -489,7 +489,7 @@ msgstr "&Інші кольори..."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:130
 msgid "Remove the selected branch"
-msgstr "Вилучити обрану базу даних"
+msgstr "Вилучити вибрану базу даних"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3778
@@ -499,7 +499,7 @@ msgstr "Ви&лучити"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:140
 msgid "Change the name of the selected branch"
-msgstr "Змінити назву обраної гілки"
+msgstr "Змінити назву вибраної гілки"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:143
 msgid "Re&name..."
@@ -1476,10 +1476,12 @@ msgstr "FontUi"
 #: src/frontends/qt4/ui/FontUi.ui:19
 msgid "Use OpenType- and TrueType fonts directly (requires XeTeX or LuaTeX)"
 msgstr ""
+"Використовувати шрифти OpenType і TrueType напряму (потрібен XeTeX або LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:22
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
 msgstr ""
+"В&икористовувати шрифти, що не є частиною TeX (за допомогою XeTeX/LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:42
 msgid "&Default Family:"
@@ -1507,7 +1509,7 @@ msgstr "П&рямий:"
 
 #: src/frontends/qt4/ui/FontUi.ui:106
 msgid "Select the roman (serif) typeface"
-msgstr "Обрати пряму гарнітуру (serif)"
+msgstr "Вибрати пряму гарнітуру (serif)"
 
 #: src/frontends/qt4/ui/FontUi.ui:113
 msgid "&Sans Serif:"
@@ -1515,7 +1517,7 @@ msgstr "&Рублений:"
 
 #: src/frontends/qt4/ui/FontUi.ui:123
 msgid "Select the Sans Serif (grotesque) typeface"
-msgstr "Обрати рублену гарнітуру (grotesque)"
+msgstr "Вибрати рублену гарнітуру (grotesque)"
 
 #: src/frontends/qt4/ui/FontUi.ui:130
 msgid "S&cale (%):"
@@ -1532,7 +1534,7 @@ msgstr "&Машинопис:"
 
 #: src/frontends/qt4/ui/FontUi.ui:163
 msgid "Select the typewriter (monospaced) typeface"
-msgstr "Обрати машинописну (моноширинну) гарнітуру"
+msgstr "Вибрати машинописну (моноширинну) гарнітуру"
 
 #: src/frontends/qt4/ui/FontUi.ui:170
 msgid "Sc&ale (%):"
@@ -1577,7 +1579,7 @@ msgstr "&Зображення"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:55
 msgid "Select an image file"
-msgstr "Обрати файл з зображенням"
+msgstr "Вибрати файл з зображенням"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:65
 msgid "Output Size"
@@ -1753,9 +1755,8 @@ msgid "&Value:"
 msgstr "&Значення:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:100
-#, fuzzy
 msgid "Custom value. Needs spacing type \"Custom\"."
-msgstr "Налаштовується. Слід вказати тип інтервалу «Нетиповий»."
+msgstr "Налаштовується. Потрібен тип «Вибрати»."
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:110
 msgid "&Fill Pattern:"
@@ -1953,11 +1954,11 @@ msgstr "1"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:162
 msgid "Remove the selected index"
-msgstr "Вилучити обраний покажчик"
+msgstr "Вилучити позначений покажчик"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:172
 msgid "Rename the selected index"
-msgstr "Змінити назву обраного покажчика"
+msgstr "Змінити назву позначеного покажчика"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:175
 msgid "R&ename..."
@@ -1977,7 +1978,7 @@ msgstr "Назва відомостей:"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:16
 msgid "Inset Parameter Configuration"
-msgstr "Налаштування параметрів вкладок"
+msgstr "Налаштування параметрів вставок"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:47
 #: src/frontends/qt4/ui/ParagraphUi.ui:44
@@ -1994,7 +1995,7 @@ msgstr "Клас &документа"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:44
 msgid "Click to select a local document class definition file"
-msgstr "Натисніть, щоб обрати локальний файл визначення класу документа"
+msgstr "Натисніть, щоб вибрати локальний файл визначення класу документа"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:47
 msgid "&Local Layout..."
@@ -2019,7 +2020,7 @@ msgid ""
 "select/deselect."
 msgstr ""
 "Параметри, які попередньо визначено у файлі формату. Натисніть ліворуч, щоб "
-"обрати або скасувати вибір."
+"вибрати або скасувати вибір."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:83
 msgid "Cus&tom:"
@@ -2070,9 +2071,8 @@ msgid "&Quote Style:"
 msgstr "Вид &лапок:"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
-#, fuzzy
 msgid "Of&fset:"
-msgstr "Відступ:"
+msgstr "З&міщення:"
 
 #: src/frontends/qt4/ui/LineUi.ui:35
 msgid "Value of the vertical line offset."
@@ -2083,9 +2083,8 @@ msgid "Value of the line width."
 msgstr "Значення ширини лінії."
 
 #: src/frontends/qt4/ui/LineUi.ui:94
-#, fuzzy
 msgid "&Thickness:"
-msgstr "Товщина:"
+msgstr "&Товщина:"
 
 #: src/frontends/qt4/ui/LineUi.ui:107
 msgid "Value of the line thickness."
@@ -2531,7 +2530,6 @@ msgid "The LaTeX package mathdots is used"
 msgstr "Використано пакунок LaTeX mathdots"
 
 #: src/frontends/qt4/ui/MathsUi.ui:78
-#, fuzzy
 msgid "Use mathdo&ts package"
 msgstr "Використовувати math&dots"
 
@@ -2639,9 +2637,10 @@ msgid "De&fault Output Format:"
 msgstr "Типовий &формат виводу:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:67
-#, fuzzy
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
-msgstr "Увімкнути прямий/зворотний пошук (наприклад, SyncTeX)"
+msgstr ""
+"Увімкнути прямий/зворотний пошук між редактором і програмою перегляду "
+"(наприклад, SyncTeX)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:70
 msgid "S&ynchronize with Output"
@@ -2816,11 +2815,8 @@ msgid "&Format:"
 msgstr "&Формат:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:44
-#, fuzzy
 msgid "Choose a particular paper size, or set your own with \"Custom\""
-msgstr ""
-"Оберіть певний розмір паперу або вкажіть власний за допомогою варіанта "
-"«Обрати»"
+msgstr "Вибрати розмір паперу чи встановити свій за допомогою «Вибрати»"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:125
 msgid "&Orientation:"
@@ -2943,27 +2939,24 @@ msgid "Horizontal space of the phantom content"
 msgstr "Горизонтальний інтервал для вмісту фантома"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:73
-#, fuzzy
 msgid "&Horizontal Phantom"
-msgstr "Горизонтальний фантом"
+msgstr "&Горизонтальний фантом"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:80
 msgid "Vertical space of the phantom content"
 msgstr "Вертикальний інтервал для вмісту фантома"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:83
-#, fuzzy
 msgid "&Vertical Phantom"
-msgstr "Вертикальний фантом"
+msgstr "&Вертикальний фантом"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:42
 msgid "A&lter..."
 msgstr "&Інші..."
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:62
-#, fuzzy
 msgid "&Use system colors"
-msgstr "Використовувати системні кольори"
+msgstr "В&икористовувати системні кольори"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:25
 msgid "In Math"
@@ -3194,11 +3187,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:97
 msgid "Skip trailing non-word characters"
-msgstr ""
+msgstr "Пропускати кінцеві символи, що не є символами слів"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:100
 msgid "Use Mac-style for cursor moving between &words"
-msgstr ""
+msgstr "Пересування курсора між с&ловами у стилі Mac"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:110
 msgid "Fullscreen"
@@ -3367,26 +3360,23 @@ msgstr "Оберіть мову інтерфейсу користувача (м�
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:39
 msgid "Language pac&kage:"
-msgstr "Мовний &пакет:"
+msgstr "Мовний &пакунок:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:51
 msgid "Select which language package LyX should use"
-msgstr ""
+msgstr "Виберіть пакунок мови, який має використовувати LyX"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:55
-#, fuzzy
 msgid "Automatic"
-msgstr "Автоматична довідка"
+msgstr "Автоматично"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:60
-#, fuzzy
 msgid "Always Babel"
-msgstr "Завжди Перемикаються"
+msgstr "Завжди Babel"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:70
-#, fuzzy
 msgid "None[[language package]]"
-msgstr "Мовний &пакет:"
+msgstr "Жодного"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:78
 msgid "Enter the command to load the language package (default: babel)"
@@ -3422,7 +3412,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:163
 msgid "Set languages &globally"
-msgstr ""
+msgstr "Вс&тановити мови на загальному рівні"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:170
 msgid ""
@@ -3546,7 +3536,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:162
 msgid "BibTeX command and options"
-msgstr "Пакети і параметри LaTeX"
+msgstr "Команда і параметри BibTeX"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:182
 #: src/frontends/qt4/ui/PrefLatexUi.ui:257
@@ -3710,9 +3700,8 @@ msgid "&Working directory:"
 msgstr "&Тека користувача:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:215
-#, fuzzy
 msgid "H&unspell dictionaries:"
-msgstr "Словники Hunspell:"
+msgstr "С&ловники Hunspell:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:41
 msgid "Printer Command Options"
@@ -3837,7 +3826,7 @@ msgid ""
 "printer command and you have config.<printer> files installed for all your "
 "printers."
 msgstr ""
-"Зазвичай, це слід обрати, лише якщо ви використовуєте dvips як вашу команду "
+"Зазвичай, це слід вибрати, лише якщо ви використовуєте dvips як вашу команду "
 "друку та маєте файли config.<printer>, які встановлено для всіх ваших "
 "принтерів."
 
@@ -3964,9 +3953,8 @@ msgid "Accept compound &words"
 msgstr "Припускати складені &слова"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:74
-#, fuzzy
 msgid "Mark misspelled words with a underline."
-msgstr "Позначати помилки хвилястим підкресленням."
+msgstr "Позначати помилки підкресленням."
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:77
 msgid "S&pellcheck continuously"
@@ -4003,7 +3991,7 @@ msgid ""
 "the main work area of an edited document"
 msgstr ""
 "Позначення цього пункту надасть програмі змогу показувати допоміжні "
-"зауваження щодо вкладок у основній робочій області документа, що редагується"
+"зауваження щодо вставок у основній робочій області документа, що редагується"
 
 #: src/frontends/qt4/ui/PrefUi.ui:79
 msgid "&Enable tool tips in main work area"
@@ -4066,11 +4054,13 @@ msgid ""
 "Whether to open documents in an already running instance of LyX.\n"
 "(Set the LyXServer pipe path and restart LyX to enable this feature)"
 msgstr ""
+"Визначає, чи слід відкривати документи у вже запущеному екземплярі LyX.\n"
+"(Щоб скористатися можливістю, вкажіть шлях до каналу обробки LyXServer і "
+"перезапустіть LyX)"
 
 #: src/frontends/qt4/ui/PrefUi.ui:248
-#, fuzzy
 msgid "S&ingle instance"
-msgstr "Одинарна лапка|О"
+msgstr "&Єдиний екземпляр"
 
 #: src/frontends/qt4/ui/PrefUi.ui:255
 msgid "Whether to place close button on each tab or only one in the top left."
@@ -4088,9 +4078,8 @@ msgid "&Save"
 msgstr "&Зберегти"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:13
-#, fuzzy
 msgid "Nomenclature settings"
-msgstr "«Параметри номенклатури»"
+msgstr "Параметри номенклатури"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:19
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:32
@@ -4106,7 +4095,6 @@ msgid "Custom &Width:"
 msgstr "Нетипова &ширина:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
-#, fuzzy
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
 msgstr "Нетипове значення. «Відступ списку» слід визначити як «Нетиповий»."
 
@@ -4307,7 +4295,6 @@ msgid "Cas&e-sensitive"
 msgstr "З в&рахуванням регістру"
 
 #: src/frontends/qt4/ui/RefUi.ui:188
-#, fuzzy
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr "Групувати мітки за префіксом (наприклад, \"sec:\")"
 
@@ -4431,7 +4418,7 @@ msgstr "Поточне слово"
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:125
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:157
 msgid "Replace word with current choice"
-msgstr "Замінити слово на обране"
+msgstr "Замінити слово на вибране"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:80
 msgid "&Find Next"
@@ -4443,7 +4430,7 @@ msgstr "За&міна:"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:100
 msgid "Replace with selected word"
-msgstr "Замінити обраним словом"
+msgstr "Замінити вибраним словом"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:141
 msgid "S&uggestions:"
@@ -4555,14 +4542,12 @@ msgid "M&ultirow"
 msgstr "Б&агаторядкова"
 
 #: src/frontends/qt4/ui/TabularUi.ui:262
-#, fuzzy
 msgid "&Vertical Offset:"
-msgstr "&Вертикального проміжку"
+msgstr "&Вертикальний зсув:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:275
-#, fuzzy
 msgid "Optional vertical offset"
-msgstr "Значення вертикального відступу лінії."
+msgstr "Необов’язковий вертикальний зсув"
 
 #: src/frontends/qt4/ui/TabularUi.ui:293
 msgid "Cell setting"
@@ -4816,7 +4801,7 @@ msgstr "П&ерегляд"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:124
 msgid "Selected classes or styles"
-msgstr "Обрані стилі або класи"
+msgstr "Вибрані стилі або класи"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:128
 msgid "LaTeX classes"
@@ -4909,7 +4894,7 @@ msgstr "По&шук"
 #: src/frontends/qt4/ui/ThesaurusUi.ui:72
 #: src/frontends/qt4/ui/ThesaurusUi.ui:85
 msgid "The selected entry"
-msgstr "Обраний запис"
+msgstr "Вибраний запис"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:75
 msgid "&Selection:"
@@ -4917,11 +4902,11 @@ msgstr "&Вибір:"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:92
 msgid "Replace the entry with the selection"
-msgstr "Замінити запис обраним"
+msgstr "Замінити запис вибраним"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:102
 msgid "Click to select a proposal, double click to look it up."
-msgstr "Натисніть, щоб обрати пропозицію, клацніть двічі, щоб шукати її."
+msgstr "Натисніть, щоб вибрати пропозицію, клацніть двічі, щоб вказати її."
 
 #: src/frontends/qt4/ui/TocUi.ui:36
 msgid "Filter:"
@@ -4951,19 +4936,19 @@ msgstr "..."
 
 #: src/frontends/qt4/ui/TocUi.ui:122
 msgid "Decrease nesting depth of selected item"
-msgstr "Зменшити глибину каталогізації обраного елемента"
+msgstr "Зменшити глибину каталогізації вибраного елемента"
 
 #: src/frontends/qt4/ui/TocUi.ui:141
 msgid "Increase nesting depth of selected item"
-msgstr "Збільшити глибину каталогізації обраного елемента"
+msgstr "Збільшити глибину каталогізації вибраного елемента"
 
 #: src/frontends/qt4/ui/TocUi.ui:160
 msgid "Move selected item down by one"
-msgstr "Перемістити обраний елемент на один рівень нижче"
+msgstr "Перемістити вибраний елемент на один рівень нижче"
 
 #: src/frontends/qt4/ui/TocUi.ui:179
 msgid "Move selected item up by one"
-msgstr "Перемістити обраний елемент один рівень вище"
+msgstr "Перемістити вибраний елемент один рівень вище"
 
 #: src/frontends/qt4/ui/TocUi.ui:225
 msgid "Sort"
@@ -5023,14 +5008,12 @@ msgid "VFill"
 msgstr "Вертикальний клей"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:34
-#, fuzzy
 msgid "&Output Format:"
-msgstr "Формат виводу"
+msgstr "&Формат виводу:"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:44
-#, fuzzy
 msgid "Select the output format"
-msgstr "Типовий &формат виводу:"
+msgstr "Виберіть формат виведення даних"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:54
 msgid "Complete source"
@@ -9684,7 +9667,6 @@ msgid "foot"
 msgstr "примітка"
 
 #: lib/layouts/stdinsets.inc:110
-#, fuzzy
 msgid "Greyedout"
 msgstr "Висірене"
 
@@ -9898,15 +9880,14 @@ msgid "Custom Header/Footerlines"
 msgstr "Нетипові рядки шапки/підвалу"
 
 #: lib/layouts/customHeadersFooters.module:7
-#, fuzzy
 msgid ""
 "Adds environments to define header and footer lines. NOTE: To use this "
 "module you must set the 'Headings style' in the menu Document Settings -> "
 "Page Layout to 'fancy'!"
 msgstr ""
 "Додає середовища для визначення рядків шапки і підвалу. ЗАУВАЖЕННЯ: щоб "
-"скористатися цим модулем вам слід встановити значення стилю заголовків у "
-"меню «Документ -> Налаштувати -> Формат сторінки» у значення «красивий»!"
+"скористатися цим модулем вам слід встановити значення стилю заголовків у меню "
+"«Документ -> Налаштувати -> Формат сторінки» у значення «красивий»!"
 
 #: lib/layouts/customHeadersFooters.module:29
 msgid "Center Header"
@@ -9951,7 +9932,7 @@ msgstr "кінцева примітка"
 
 #: lib/layouts/enumitem.module:2
 msgid "Customizable Lists (enumitem)"
-msgstr ""
+msgstr "Налаштовувані списки (enumitem)"
 
 #: lib/layouts/enumitem.module:7
 msgid ""
@@ -9959,11 +9940,13 @@ msgid ""
 "argument. See http://mirror.ctan.org/macros/latex/contrib/enumitem/enumitem."
 "pdf"
 msgstr ""
+"Керує компонуванням enumerate, itemize і description за допомогою додаткового "
+"параметра. Докладніше: http://mirror.ctan."
+"org/macros/latex/contrib/enumitem/enumitem.pdf"
 
 #: lib/layouts/enumitem.module:112
-#, fuzzy
 msgid "Enumerate-Resume"
-msgstr "Нумерація"
+msgstr "Неперервна нумерація"
 
 #: lib/layouts/eqs-within-sections.module:2
 msgid "Number Equations by Section"
@@ -9990,9 +9973,8 @@ msgstr ""
 "номер розділу. Приклад: (2.1)."
 
 #: lib/layouts/fixltx2e.module:2
-#, fuzzy
 msgid "Fix LaTeX"
-msgstr "LaTeX"
+msgstr "Виправлення LaTeX"
 
 #: lib/layouts/fixltx2e.module:9
 msgid ""
@@ -10002,6 +9984,12 @@ msgid ""
 "different when you process it with future LaTeX versions, because fixltx2e "
 "may provide more bugfixes in future versions."
 msgstr ""
+"Завантажує пакунок LaTeX fixltx2e, у якому містяться деякі виправлення вад "
+"LaTeX. "
+"Ці виправлення не є частиною основного ядра LaTeX з міркувань зворотної "
+"сумісності. Якщо ви скористаєтеся цим модулем, вигляд вашого документа може "
+"змінитися під час обробки наступними версіями LaTeX, оскільки у наступних "
+"версіях можливі додаткові виправлення вад."
 
 #: lib/layouts/foottoend.module:2
 msgid "Foot to End"
@@ -10187,12 +10175,11 @@ msgstr "Minimalistic"
 #: lib/layouts/minimalistic.module:5
 msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
 msgstr ""
-"Перевизначає декілька вкладок (Index, Branch, URL) у стилі Minimalistic."
+"Перевизначає декілька вставок (Index, Branch, URL) у стилі Minimalistic."
 
 #: lib/layouts/noweb.module:2
-#, fuzzy
 msgid "Noweb"
-msgstr "NoWeb"
+msgstr "Noweb"
 
 #: lib/layouts/noweb.module:5
 msgid "Allows to use Noweb as a literate programming tool."
@@ -10209,13 +10196,12 @@ msgid "Sweave"
 msgstr "Sweave"
 
 #: lib/layouts/sweave.module:5
-#, fuzzy
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
 "via Sweave package."
 msgstr ""
 "Надає змогу використовувати статистичну мову S/R, як інструмент створення "
-"текстів програм."
+"програмованих текстів за допомогою пакунка Sweave."
 
 #: lib/layouts/sweave.module:27
 msgid "Chunk"
@@ -10573,25 +10559,24 @@ msgstr ""
 "документів з середовищем «chapter»."
 
 #: lib/layouts/theorems-named.module:3
-#, fuzzy
 msgid "Named Theorems"
-msgstr "Теореми"
+msgstr "Іменовані теореми"
 
 #: lib/layouts/theorems-named.module:7
 msgid ""
 "Facilitates the use of named theorems. The name of the theorem goes into the "
 "'Short Title' inset."
 msgstr ""
+"Полегшує використання іменованих теорем. Назву теореми можна вказати у полі "
+"«Короткий заголовок»."
 
 #: lib/layouts/theorems-named.module:11
-#, fuzzy
 msgid "Named Theorem"
-msgstr "Теорема"
+msgstr "Іменована теорема"
 
 #: lib/layouts/theorems-named.module:14
-#, fuzzy
 msgid "Named Theorem."
-msgstr "Теорема"
+msgstr "Іменована теорема."
 
 #: lib/layouts/theorems-sec-bytype.module:2
 msgid "Theorems (Numbered by Type within Sections)"
@@ -10862,11 +10847,11 @@ msgstr "Монгольська"
 
 #: lib/languages:592
 msgid "Norwegian (Bokmaal)"
-msgstr ""
+msgstr "Норвезька (букмол)"
 
 #: lib/languages:600
 msgid "Norwegian (Nynorsk)"
-msgstr ""
+msgstr "Норвезька (нюноршк)"
 
 #: lib/languages:625
 msgid "Polish"
@@ -11250,7 +11235,7 @@ msgstr "Показати журнал...|ж"
 
 #: lib/ui/classic.ui:82 lib/ui/stdmenus.inc:89
 msgid "Custom...|C"
-msgstr "Обрати...|О"
+msgstr "Вибрати...|р"
 
 #: lib/ui/classic.ui:90 lib/ui/stdmenus.inc:97
 msgid "Undo|U"
@@ -11286,7 +11271,7 @@ msgstr "Таблиця|Т"
 
 #: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:120 lib/ui/stdmenus.inc:572
 msgid "Math|M"
-msgstr "Математичне|а"
+msgstr "Математичні формули|а"
 
 #: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:549
 msgid "Spellchecker...|S"
@@ -11499,19 +11484,19 @@ msgstr "Блок рівнянь|р"
 
 #: lib/ui/classic.ui:202
 msgid "Align Environment|A"
-msgstr "Оточення з вирівнюванням|ю"
+msgstr "Середовище з вирівнюванням|ю"
 
 #: lib/ui/classic.ui:203
 msgid "AlignAt Environment"
-msgstr "Оточення AlignAt"
+msgstr "Середовище AlignAt"
 
 #: lib/ui/classic.ui:204
 msgid "Flalign Environment|F"
-msgstr "Оточення Flalign|F"
+msgstr "Середовище Flalign|F"
 
 #: lib/ui/classic.ui:207
 msgid "Gather Environment"
-msgstr "Оточення Gather"
+msgstr "Середовище Gather"
 
 #: lib/ui/classic.ui:208
 msgid "Multline Environment"
@@ -11703,17 +11688,17 @@ msgstr "Вирівняний блок AMS|б"
 #: lib/ui/classic.ui:269 lib/ui/stdcontext.inc:42 lib/ui/stdmenus.inc:300
 #: lib/ui/stdmenus.inc:417
 msgid "AMS alignat Environment|t"
-msgstr "Оточення AMS alignat|t"
+msgstr "Середовище AMS alignat|t"
 
 #: lib/ui/classic.ui:270 lib/ui/stdcontext.inc:43 lib/ui/stdmenus.inc:301
 #: lib/ui/stdmenus.inc:418
 msgid "AMS flalign Environment|f"
-msgstr "Оточення AMS flalign|f"
+msgstr "Середовище AMS flalign|f"
 
 #: lib/ui/classic.ui:273 lib/ui/stdcontext.inc:44 lib/ui/stdmenus.inc:302
 #: lib/ui/stdmenus.inc:419
 msgid "AMS gather Environment|g"
-msgstr "Оточення AMS gather|g"
+msgstr "Середовище AMS gather|g"
 
 #: lib/ui/classic.ui:274 lib/ui/stdcontext.inc:45 lib/ui/stdmenus.inc:303
 #: lib/ui/stdmenus.inc:420
@@ -11730,7 +11715,7 @@ msgstr "Блок варіантів|т"
 
 #: lib/ui/classic.ui:278 lib/ui/stdcontext.inc:33 lib/ui/stdmenus.inc:428
 msgid "Split Environment|S"
-msgstr "Оточення з вирівнюванням|ю"
+msgstr "Середовище з вирівнюванням|ю"
 
 #: lib/ui/classic.ui:280
 msgid "Font Change|o"
@@ -11882,11 +11867,11 @@ msgstr "Напівжирний|ж"
 
 #: lib/ui/classic.ui:349
 msgid "Decrease Environment Depth|v"
-msgstr "Зменшити глибину оточення|З"
+msgstr "Зменшити глибину середовища|З"
 
 #: lib/ui/classic.ui:350
 msgid "Increase Environment Depth|i"
-msgstr "Збільшити глибину оточення|г"
+msgstr "Збільшити глибину середовища|г"
 
 #: lib/ui/classic.ui:351
 msgid "Start Appendix Here|S"
@@ -12241,19 +12226,16 @@ msgid "Close All Notes|l"
 msgstr "Закрити всі примітки|З"
 
 #: lib/ui/stdcontext.inc:183 lib/ui/stdmenus.inc:483
-#, fuzzy
 msgid "Phantom|P"
-msgstr "Фантом"
+msgstr "Фантом|Ф"
 
 #: lib/ui/stdcontext.inc:184 lib/ui/stdmenus.inc:484
-#, fuzzy
 msgid "Horizontal Phantom|H"
-msgstr "Горизонтальний фантом"
+msgstr "Горизонтальний фантом|Г"
 
 #: lib/ui/stdcontext.inc:185 lib/ui/stdmenus.inc:485
-#, fuzzy
 msgid "Vertical Phantom|V"
-msgstr "Вертикальний фантом"
+msgstr "Вертикальний фантом|В"
 
 #: lib/ui/stdcontext.inc:195
 msgid "Protected Space|o"
@@ -12585,9 +12567,8 @@ msgid "Right|h"
 msgstr "Праворуч|а"
 
 #: lib/ui/stdcontext.inc:385
-#, fuzzy
 msgid "Decimal"
-msgstr "електронна пошта"
+msgstr "Десяткові"
 
 #: lib/ui/stdcontext.inc:391
 msgid "Append Row|A"
@@ -12687,7 +12668,7 @@ msgstr "Пересунути розділ вниз|н"
 
 #: lib/ui/stdcontext.inc:582
 msgid "Select Section|S"
-msgstr "Обрати розділу|б"
+msgstr "Вибрати розділ|б"
 
 #: lib/ui/stdcontext.inc:589
 msgid "Wrap by Preview|P"
@@ -12839,11 +12820,11 @@ msgstr "Звичайний текст, з'єднати рядки|з"
 
 #: lib/ui/stdmenus.inc:153
 msgid "Selection|S"
-msgstr "Обране|О"
+msgstr "Позначене|о"
 
 #: lib/ui/stdmenus.inc:154
 msgid "Selection, Join Lines|i"
-msgstr "Обране, з'єднати рядки|б"
+msgstr "Вибране, з'єднати рядки|б"
 
 #: lib/ui/stdmenus.inc:156
 msgid "Paste as LinkBack PDF"
@@ -13142,9 +13123,8 @@ msgid "Vertical Space...|V"
 msgstr "Вертикальний пробіл...|е"
 
 #: lib/ui/stdmenus.inc:397
-#, fuzzy
 msgid "Phantom|m"
-msgstr "Фантом"
+msgstr "Фантом|м"
 
 #: lib/ui/stdmenus.inc:399
 msgid "Hyphenation Point|H"
@@ -14001,17 +13981,14 @@ msgid "Negative space\t\\!"
 msgstr "Від'ємний пробіл\t\\!"
 
 #: lib/ui/stdtoolbars.inc:334
-#, fuzzy
 msgid "Phantom\t\\phantom"
 msgstr "Заповнювач\t\\phantom"
 
 #: lib/ui/stdtoolbars.inc:335
-#, fuzzy
 msgid "Horizontal phantom\t\\hphantom"
 msgstr "Горизонтальний заповнювач\t\\hphantom"
 
 #: lib/ui/stdtoolbars.inc:336
-#, fuzzy
 msgid "Vertical phantom\t\\vphantom"
 msgstr "Вертикальний заповнювач\t\\vphantom"
 
@@ -14160,9 +14137,8 @@ msgid "ddots"
 msgstr "ddots"
 
 #: lib/ui/stdtoolbars.inc:387
-#, fuzzy
 msgid "iddots"
-msgstr "ddots"
+msgstr "iddots"
 
 #: lib/ui/stdtoolbars.inc:390
 msgid "Frame Decorations"
@@ -14634,7 +14610,7 @@ msgstr "neq"
 
 #: lib/ui/stdtoolbars.inc:516
 msgid "in[[math relation]]"
-msgstr ""
+msgstr "in"
 
 #: lib/ui/stdtoolbars.inc:517
 msgid "ni"
@@ -14777,59 +14753,48 @@ msgid "omega"
 msgstr "омега"
 
 #: lib/ui/stdtoolbars.inc:555
-#, fuzzy
 msgid "varGamma"
-msgstr "Гама"
+msgstr "прописне Гама"
 
 #: lib/ui/stdtoolbars.inc:556
-#, fuzzy
 msgid "varDelta"
-msgstr "Делта"
+msgstr "прописне Дельта"
 
 #: lib/ui/stdtoolbars.inc:557
-#, fuzzy
 msgid "varTheta"
-msgstr "прописне тета"
+msgstr "прописне Тета"
 
 #: lib/ui/stdtoolbars.inc:558
-#, fuzzy
 msgid "varLambda"
-msgstr "Лямбда"
+msgstr "прописне Лямбда"
 
 #: lib/ui/stdtoolbars.inc:559
-#, fuzzy
 msgid "varXi"
-msgstr "прописне пі"
+msgstr "прописне Ксі"
 
 #: lib/ui/stdtoolbars.inc:560
-#, fuzzy
 msgid "varPi"
-msgstr "прописне пі"
+msgstr "прописне Пі"
 
 #: lib/ui/stdtoolbars.inc:561
-#, fuzzy
 msgid "varSigma"
-msgstr "прописне сигма"
+msgstr "прописне Сигма"
 
 #: lib/ui/stdtoolbars.inc:562
-#, fuzzy
 msgid "varUpsilon"
-msgstr "прописне епсилон"
+msgstr "прописне Іпсілон"
 
 #: lib/ui/stdtoolbars.inc:563
-#, fuzzy
 msgid "varPhi"
-msgstr "прописне фі"
+msgstr "прописне Фі"
 
 #: lib/ui/stdtoolbars.inc:564
-#, fuzzy
 msgid "varPsi"
-msgstr "Фарсі"
+msgstr "прописне Псі"
 
 #: lib/ui/stdtoolbars.inc:565
-#, fuzzy
 msgid "varOmega"
-msgstr "Омега"
+msgstr "прописне Омега"
 
 #: lib/ui/stdtoolbars.inc:566
 msgid "Gamma"
@@ -14837,7 +14802,7 @@ msgstr "Гама"
 
 #: lib/ui/stdtoolbars.inc:567
 msgid "Delta"
-msgstr "Делта"
+msgstr "Дельта"
 
 #: lib/ui/stdtoolbars.inc:568
 msgid "Theta"
@@ -14861,7 +14826,7 @@ msgstr "Сигма"
 
 #: lib/ui/stdtoolbars.inc:573
 msgid "Upsilon"
-msgstr "Упсілон"
+msgstr "Іпсілон"
 
 #: lib/ui/stdtoolbars.inc:574
 msgid "Phi"
@@ -14881,15 +14846,15 @@ msgstr "набла"
 
 #: lib/ui/stdtoolbars.inc:581
 msgid "partial"
-msgstr "partial"
+msgstr "часткова похідна"
 
 #: lib/ui/stdtoolbars.inc:582
 msgid "infty"
-msgstr "infty"
+msgstr "нескінченність"
 
 #: lib/ui/stdtoolbars.inc:583
 msgid "prime"
-msgstr "prime"
+msgstr "штрих"
 
 #: lib/ui/stdtoolbars.inc:584
 msgid "ell"
@@ -14897,7 +14862,7 @@ msgstr "ell"
 
 #: lib/ui/stdtoolbars.inc:585
 msgid "emptyset"
-msgstr "emptyset"
+msgstr "порожня множина"
 
 #: lib/ui/stdtoolbars.inc:586
 msgid "exists"
@@ -14909,11 +14874,11 @@ msgstr "для всіх"
 
 #: lib/ui/stdtoolbars.inc:588
 msgid "imath"
-msgstr "imath"
+msgstr "математичне i"
 
 #: lib/ui/stdtoolbars.inc:589
 msgid "jmath"
-msgstr "jmath"
+msgstr "математичне j"
 
 #: lib/ui/stdtoolbars.inc:590
 msgid "Re"
@@ -14925,7 +14890,7 @@ msgstr "Im"
 
 #: lib/ui/stdtoolbars.inc:592
 msgid "aleph"
-msgstr "aleph"
+msgstr "алеф"
 
 #: lib/ui/stdtoolbars.inc:593
 msgid "wp"
@@ -16073,11 +16038,11 @@ msgstr "intercal"
 
 #: lib/external_templates:36
 msgid "GnumericSpreadsheet"
-msgstr ""
+msgstr "ЕлектроннаТаблицяGnumeric"
 
 #: lib/external_templates:37 lib/external_templates:44
 msgid "Spreadsheet"
-msgstr ""
+msgstr "Електронна таблиця"
 
 #: lib/external_templates:39
 msgid ""
@@ -16087,6 +16052,11 @@ msgid ""
 "The gnumeric software is necessary for conversion,\n"
 "both for gnumeric and excel files.\n"
 msgstr ""
+"Електронна таблиця, створена за допомогою gnumeric, openoffice або excel.\n"
+"Програма імпортує її як довгу таблицю, отже ніяких обмежень на\n"
+"довжину не накладається. Ширина таблиці може стати проблемою.\n"
+"Для перетворення файлів gnumeric і excel слід встановити програму\n"
+"gnumeric.\n"
 
 #: lib/external_templates:76
 msgid "RasterImage"
@@ -16355,9 +16325,8 @@ msgid "LaTeX (plain)|L"
 msgstr "LaTeX (звичайний)|L"
 
 #: lib/configure.py:510
-#, fuzzy
 msgid "LaTeX (LuaTeX)"
-msgstr "LaTeX (pLaTeX)"
+msgstr "LaTeX (LuaTeX)"
 
 #: lib/configure.py:511
 msgid "LaTeX (pdflatex)"
@@ -16393,24 +16362,23 @@ msgstr "Звичайний текст, з'єднати рядки"
 
 #: lib/configure.py:520
 msgid "Gnumeric spreadsheet"
-msgstr ""
+msgstr "ел. таблиця Gnumeric"
 
 #: lib/configure.py:521
 msgid "Excel spreadsheet"
-msgstr ""
+msgstr "ел. таблиця Excel"
 
 #: lib/configure.py:522
 msgid "OpenOffice spreadsheet"
-msgstr ""
+msgstr "ел. таблиця OpenOffice"
 
 #: lib/configure.py:525 lib/configure.py:527
 msgid "LyXHTML"
 msgstr "LyXHTML"
 
 #: lib/configure.py:525 lib/configure.py:527
-#, fuzzy
 msgid "LyXHTML|y"
-msgstr "LyXHTML|X"
+msgstr "LyXHTML|y"
 
 #: lib/configure.py:534 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
@@ -16461,14 +16429,12 @@ msgid "PDF (XeTeX)|X"
 msgstr "PDF (XeTeX)|X"
 
 #: lib/configure.py:548
-#, fuzzy
 msgid "PDF (LuaTeX)"
-msgstr "PDF (XeTeX)"
+msgstr "PDF (LuaTeX)"
 
 #: lib/configure.py:548
-#, fuzzy
 msgid "PDF (LuaTeX)|u"
-msgstr "PDF (XeTeX)|X"
+msgstr "PDF (LuaTeX)|u"
 
 #: lib/configure.py:551
 msgid "DVI"
@@ -16479,14 +16445,12 @@ msgid "DVI|D"
 msgstr "DVI|D"
 
 #: lib/configure.py:552
-#, fuzzy
 msgid "DVI (LuaTeX)"
-msgstr "LaTeX (pLaTeX)"
+msgstr "DVI (LuaTeX)"
 
 #: lib/configure.py:552
-#, fuzzy
 msgid "DVI (LuaTeX)|V"
-msgstr "LaTeX (pLaTeX)"
+msgstr "DVI (LuaTeX)|V"
 
 #: lib/configure.py:555
 msgid "DraftDVI"
@@ -16598,9 +16562,8 @@ msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
 #: lib/configure.py:668
-#, fuzzy
 msgid "LyXBlogger"
-msgstr "LyX-блогер"
+msgstr "LyXBlogger"
 
 #: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1901
 #, c-format
@@ -16777,32 +16740,32 @@ msgid "Conversion script failed"
 msgstr "Неможливо знайти сценарій перетворення."
 
 #: src/Buffer.cpp:997
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
 "convert it."
 msgstr ""
-"%1$s походить зі старішої версії LyX, але скрипт lyx2lyx не зміг його "
-"перетворити."
+"%1$s походить зі старішої версії LyX, скрипт lyx2lyx не зміг його перетворити."
 
 #: src/Buffer.cpp:1004
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
 "it."
 msgstr ""
-"%1$s походить з новішої версії LyX, але скрипт lyx2lyx не зміг його "
+"%1$s походить з новішої версії LyX, отже скрипт lyx2lyx не зміг його "
 "перетворити."
 
 #: src/Buffer.cpp:1025 src/Buffer.cpp:3763 src/Buffer.cpp:3825
-#, fuzzy
 msgid "File is read-only"
-msgstr "Документ доступний тільки для читання"
+msgstr "Документ доступний лише для читання"
 
 #: src/Buffer.cpp:1026
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
 msgstr ""
+"Запис до файл %1$s неможливий, оскільки цей файл позначено як призначений "
+"лише для читання."
 
 #: src/Buffer.cpp:1035
 #, c-format
@@ -16855,24 +16818,21 @@ msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Спроба зберегти документ  %1$s\n"
 
 #: src/Buffer.cpp:1137 src/Buffer.cpp:1150 src/Buffer.cpp:1164
-#, fuzzy, c-format
+#, c-format
 msgid "Saved to %1$s. Phew.\n"
-msgstr "  Здається, вдалося зберегти до %1$s. Уфф...\n"
+msgstr "Здається, вдалося зберегти до %1$s. Уфф...\n"
 
 #: src/Buffer.cpp:1140
-#, fuzzy
 msgid "Save failed! Trying again...\n"
-msgstr "  Помилка збереження файла! Повторна спроба...\n"
+msgstr "Помилка збереження файла! Повторна спроба...\n"
 
 #: src/Buffer.cpp:1154
-#, fuzzy
 msgid "Save failed! Trying yet again...\n"
-msgstr "  Помилка збереження файла! Ще одна спроба...\n"
+msgstr "Помилка збереження файла! Ще одна спроба...\n"
 
 #: src/Buffer.cpp:1168
-#, fuzzy
 msgid "Save failed! Bummer. Document is lost."
-msgstr "  Зберегти не вдалося! Тримайтеся, документ втрачено."
+msgstr "Зберегти не вдалося! Тримайтеся, документ втрачено."
 
 #: src/Buffer.cpp:1255
 msgid "Iconv software exception Detected"
@@ -16898,7 +16858,7 @@ msgid ""
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
-"Деякі з символів вашого документа, мабуть, не можна відобразити у обраному "
+"Деякі з символів вашого документа, мабуть, не можна відобразити у вибраному "
 "кодуванні.\n"
 "Допомогти може зміна кодування документа на utf8."
 
@@ -17087,6 +17047,9 @@ msgid ""
 "An emergency file is succesfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
+"Файл аварійної копії успішно завантажено, але початковий файл %1$s позначено "
+"як придатний лише для читання. Будь ласка, збережіть документ до файла з "
+"іншою назвою."
 
 #: src/Buffer.cpp:3770
 msgid "Document was successfully recovered."
@@ -17154,6 +17117,9 @@ msgid ""
 "A backup file is succesfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
+"Файл резервної копії успішно завантажено, але початковий файл %1$s позначено "
+"як придатний лише для читання. Будь ласка, збережіть документ до файла з "
+"іншою назвою."
 
 #: src/Buffer.cpp:4131 src/insets/InsetCaption.cpp:339
 msgid "Senseless!!! "
@@ -17185,7 +17151,7 @@ msgstr ""
 "недоступним. Вам доведеться оновити назву включеного файла."
 
 #: src/BufferParams.cpp:568
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The selected document class\n"
 "\t%1$s\n"
@@ -17204,7 +17170,8 @@ msgstr ""
 "але LyX не зможе створити вихідних файлів, доки не\n"
 "буде встановлено таких пакунків:\n"
 "\t%2$s\n"
-"Докладніше про це у розділі 3.1.2.2 «Підручника користувача»."
+"Докладніше про це у розділі 3.1.2.2 («Доступність класів»)\n"
+"«Підручника користувача»."
 
 #: src/BufferParams.cpp:577
 msgid "Document class not available"
@@ -17256,7 +17223,7 @@ msgstr "Помилка читання"
 
 #: src/BufferView.cpp:188
 msgid "No more insets"
-msgstr "Більше немає вкладок"
+msgstr "Більше немає вставок"
 
 #: src/BufferView.cpp:728
 msgid "Save bookmark"
@@ -17309,7 +17276,7 @@ msgstr "Позначку встановлено"
 
 #: src/BufferView.cpp:1626
 msgid "Statistics for the selection:"
-msgstr "Статистичні дані обраного фрагмента:"
+msgstr "Статистичні дані вибраного фрагмента:"
 
 #: src/BufferView.cpp:1628
 msgid "Statistics for the document:"
@@ -17356,7 +17323,7 @@ msgstr ""
 #: src/BufferView.cpp:1779
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
-msgstr "Застосовано «%1$s» до %2$d вкладок"
+msgstr "Застосовано «%1$s» до %2$d вставок"
 
 #: src/BufferView.cpp:1787
 msgid "Branch name"
@@ -17525,7 +17492,7 @@ msgstr "текст"
 
 #: src/Color.cpp:171
 msgid "selection"
-msgstr "обране"
+msgstr "вибране"
 
 #: src/Color.cpp:172
 msgid "selected text"
@@ -17834,11 +17801,13 @@ msgid "There were errors during the build process."
 msgstr "Під час створення вихідного файла сталися помилки."
 
 #: src/Converter.cpp:478
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An error occurred while running:\n"
 "%1$s"
-msgstr "Сталася помилка при запуску %1$s"
+msgstr ""
+"Сталася помилка під час спроби виконання цієї команди:\n"
+"%1$s"
 
 #: src/Converter.cpp:501
 #, c-format
@@ -18029,9 +17998,9 @@ msgid "Language: %1$s, "
 msgstr "Мова: %1$s, "
 
 #: src/Font.cpp:192
-#, fuzzy, c-format
+#, c-format
 msgid "Number %1$s"
-msgstr "  Число %1$s"
+msgstr "Номер %1$s"
 
 #: src/Format.cpp:267 src/Format.cpp:280 src/Format.cpp:290
 msgid "Cannot view file"
@@ -18153,9 +18122,8 @@ msgid "Done!"
 msgstr "Готово!"
 
 #: src/LyX.cpp:402
-#, fuzzy
 msgid "The following files could not be loaded:"
-msgstr "Не вдалося завантажити клас документів «%1$s»."
+msgstr "Не вдалося завантажити такі файли:"
 
 #: src/LyX.cpp:439
 #, c-format
@@ -18185,15 +18153,14 @@ msgid "No textclass is found"
 msgstr "Не знайдено класу тексту"
 
 #: src/LyX.cpp:553
-#, fuzzy
 msgid ""
 "LyX will only have minimal functionality because no textclasses have been "
 "found. You can either try to reconfigure LyX normally, try to reconfigure "
 "without checking your LaTeX installation, or continue."
 msgstr ""
 "Усіма можливостями LyX не можна буде скористатися, оскільки не знайдено "
-"класів тексту. Ви можете або виконати звичайну переконфігурацію, або "
-"провести переконфігурацію з використанням типових класів тексту, або "
+"класів тексту. Ви можете або виконати звичайну переконфігурацію, "
+"переконфігурацію без перевірки компонентів встановленого LaTeX або "
 "продовжити роботу без будь-яких дій."
 
 #: src/LyX.cpp:557
@@ -18201,9 +18168,8 @@ msgid "&Reconfigure"
 msgstr "Пере&конфігурувати"
 
 #: src/LyX.cpp:558
-#, fuzzy
 msgid "&Without LaTeX"
-msgstr "LaTeX"
+msgstr "&Без LaTeX"
 
 #: src/LyX.cpp:559 src/VCBackend.cpp:786 src/VCBackend.cpp:790
 msgid "&Continue"
@@ -18307,7 +18273,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Встановити рівень у %1$s"
 
 #: src/LyX.cpp:1041
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -18371,6 +18336,11 @@ msgstr ""
 "або жодного\n"
 "                  з файлів під час пакетного експортування.\n"
 "                  Будь-яке інше значення буде еквівалентним до «all».\n"
+"\t-n [--no-remote]\n"
+"                  відкрити документи у новому екземплярі програми.\n"
+"\t-r [--remote]\n"
+"                  відкрити документи у вже запущеному екземплярі\n"
+"                  (потрібен працездатний канал lyxpipe).\n"
 "\t-batch          виконати команди без відкриття графічного інтерфейсу і "
 "завершити роботу.\n"
 "\t-version        резюме відомостей про версію і збірку\n"
@@ -18596,15 +18566,15 @@ msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
-"Шлях, за яким LyX буде переходити за потреби обрати приклад. Порожнє "
-"значення означає, що буде обрано теку, з якої LyX було запущено."
+"Шлях, за яким LyX буде переходити за потреби вибрати приклад. Порожнє "
+"значення означає, що буде вибрано теку, з якої LyX було запущено."
 
 #: src/LyXRC.cpp:3167
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
-"Кодування символів, що використовується пакетом fontenc LaTeX. Для всіх мов, "
+"Кодування символів, що використовується пакунком fontenc LaTeX. Для всіх мов, "
 "окрім англійської, особливо рекомендується кодування T1."
 
 #: src/LyXRC.cpp:3174
@@ -18680,7 +18650,7 @@ msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"Команда LaTeX для завантаження мовного пакета. Наприклад \"\\usepackage"
+"Команда LaTeX для завантаження мовного пакунка. Наприклад, \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 
 #: src/LyXRC.cpp:3223
@@ -18804,7 +18774,7 @@ msgid ""
 "environment variable PRINTER."
 msgstr ""
 "Типовий принтер. Якщо нічого не вказано, LyX буде використовувати змінну "
-"оточення PRINTER."
+"середовища PRINTER."
 
 #: src/LyXRC.cpp:3323
 msgid "The option to print only even pages."
@@ -18960,8 +18930,8 @@ msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
-"Шлях, за яким LyX буде переходити за потреби обрати шаблон. Порожнє значення "
-"означає, що буде обрано теку, з якої LyX було запущено."
+"Шлях, за яким LyX буде переходити за потреби вибрати шаблон. Порожнє значення "
+"означає, що буде вибрано теку, з якої LyX було запущено."
 
 #: src/LyXRC.cpp:3452
 msgid ""
@@ -19254,15 +19224,15 @@ msgid "Module not available"
 msgstr "Модуль недоступний"
 
 #: src/TextClass.cpp:1302
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
 "not available in your LaTeX installation, or a converter\n"
 "you have not installed. LaTeX output may not be possible.\n"
 msgstr ""
 "Для роботи модуля %1$s потрібен пакунок, якого немає\n"
-"у встановленому вами LaTeX. Ймовірно, вивести документLaTeX output\n"
-"у форматі LaTeX буде неможливо.\n"
+"у встановленому вами варіанті LaTeX або якого ви не встановили.\n"
+"Ймовірно, вивести документ у форматі LaTeX буде неможливо.\n"
 
 #: src/TextClass.cpp:1306
 msgid "Package not available"
@@ -19361,7 +19331,7 @@ msgstr ""
 "Після натискання кнопки «Гаразд», LyX спробує повторно відкрити документ."
 
 #: src/VCBackend.cpp:781
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
 "%1$s\n"
@@ -19389,7 +19359,7 @@ msgid "View &Log ..."
 msgstr "П&ереглянути журнал..."
 
 #: src/VCBackend.cpp:808
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error when updating document %1$s from repository.\n"
 "You have to manually resolve the conflicts NOW!\n"
@@ -19397,9 +19367,9 @@ msgid ""
 "\n"
 "After pressing OK, LyX will try to reopen the resolved document."
 msgstr ""
-"Під час оновлення зі сховища сталася помилка.\n"
+"Під час оновлення документа %1$s зі сховища сталася помилка.\n"
 "Вам слід НЕГАЙНО усунути конфлікти!\n"
-"'%1$s'.\n"
+"«%2$s».\n"
 "\n"
 "Після натискання кнопки «Гаразд», LyX спробує повторно відкрити документ."
 
@@ -19615,41 +19585,37 @@ msgid "Directories"
 msgstr "Теки"
 
 #: src/frontends/qt4/FindAndReplace.cpp:274
-#, fuzzy
 msgid "File"
-msgstr "Ф&айл"
+msgstr "Файл"
 
 #: src/frontends/qt4/FindAndReplace.cpp:277
-#, fuzzy
 msgid "Master document"
-msgstr "&Головний документ"
+msgstr "Головний документ"
 
 #: src/frontends/qt4/FindAndReplace.cpp:280
-#, fuzzy
 msgid "Open files"
-msgstr "Відкриті буфери"
+msgstr "Відкрити файли"
 
 #: src/frontends/qt4/FindAndReplace.cpp:283
-#, fuzzy
 msgid "Manuals"
-msgstr "Неповна"
+msgstr "Підручники"
 
 #: src/frontends/qt4/FindAndReplace.cpp:287
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s: the end was reached while searching forward.\n"
 "Continue searching from the beginning?"
 msgstr ""
-"Під час пошуку далі у %1$s досягнуто кінця документа.\n"
+"%1$s: під час пошуку далі досягнуто кінця документа.\n"
 "Продовжити пошук з початку?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:290
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s: the beginning was reached while searching backward.\n"
 "Continue searching from the end?"
 msgstr ""
-"Під час пошуку назад досягнуто початку %1$s.\n"
+"%1$s: під час пошуку назад досягнуто початку документа.\n"
 "Продовжити пошук з кінця?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:345
@@ -20955,9 +20921,8 @@ msgid "mm"
 msgstr "мм"
 
 #: src/frontends/qt4/GuiGraphics.cpp:475 src/lengthcommon.cpp:38
-#, fuzzy
 msgid "in[[unit of measure]]"
-msgstr "см куб."
+msgstr "у"
 
 #: src/frontends/qt4/GuiGraphics.cpp:786
 msgid "Select graphics file"
@@ -21194,7 +21159,7 @@ msgstr ""
 "Як пояснюється у Підручнику Користувача, ширина цього тексту визначає ширину "
 "позначки для кожного з елементів у середовищах на зразок Списку та Опису.\n"
 "\n"
-" Зазвичай, вам не слід її встановлювати, оскільки буде обрано найбільшу "
+" Зазвичай, вам не слід її встановлювати, оскільки буде вибрано найбільшу "
 "ширину серед усіх, що зустрінуться."
 
 #: src/frontends/qt4/GuiPhantom.cpp:25
@@ -21943,7 +21908,6 @@ msgid "Exit LyX"
 msgstr "Вийти з LyX"
 
 #: src/frontends/qt4/GuiView.cpp:828
-#, fuzzy
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr ""
 "Не вдалося завершити роботу LyX, оскільки LyX продовжує обробку документів."
@@ -22054,7 +22018,7 @@ msgstr "Немає інформації для імпортування з %1$s"
 #: src/frontends/qt4/GuiView.cpp:2061
 #, c-format
 msgid "Select %1$s file to import"
-msgstr "Обрати %1$s файл для імпорту"
+msgstr "Вибрати %1$s файл для імпорту"
 
 #: src/frontends/qt4/GuiView.cpp:2112 src/frontends/qt4/GuiView.cpp:2299
 #, c-format
@@ -22132,12 +22096,10 @@ msgid "&Retry"
 msgstr "&Повторити спробу"
 
 #: src/frontends/qt4/GuiView.cpp:2455
-#, fuzzy
 msgid "Close document"
-msgstr "Закрити документ "
+msgstr "Закрити документ"
 
 #: src/frontends/qt4/GuiView.cpp:2456
-#, fuzzy
 msgid "Document could not be closed because it is being processed by LyX."
 msgstr "Не вдалося закрити документ, оскільки не завершено його обробку LyX."
 
@@ -22221,19 +22183,19 @@ msgid "Successful preview of format: %1$s"
 msgstr "Успішно створено попередній перегляд формату: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2953
-#, fuzzy, c-format
+#, c-format
 msgid "Error while previewing format: %1$s"
-msgstr "Помилка під час спроби перегляду формату %1$s."
+msgstr "Помилка під час спроби перегляду у форматі %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2956
 #, c-format
 msgid "Successful export to format: %1$s"
-msgstr "Успішне експортування у формат: %1$s"
+msgstr "Успішне експортування у формат %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2957
-#, fuzzy, c-format
+#, c-format
 msgid "Error while exporting format: %1$s"
-msgstr "Помилка під час спроби експортування у формат %1$s."
+msgstr "Помилка під час спроби експортування у форматі: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:3142 src/frontends/qt4/GuiView.cpp:3154
 msgid "Exporting ..."
@@ -22403,7 +22365,7 @@ msgstr "Оновити [%1$s]|т"
 
 #: src/frontends/qt4/Menus.cpp:1138
 msgid "No Custom Insets Defined!"
-msgstr "Нетипових вкладок не визначено!"
+msgstr "Нетипових вставок не визначено!"
 
 #: src/frontends/qt4/Menus.cpp:1210
 msgid "<No Document Open>"
@@ -22438,14 +22400,14 @@ msgid "Index Entry|d"
 msgstr "Запис у предметному покажчику|п"
 
 #: src/frontends/qt4/Menus.cpp:1397
-#, fuzzy, c-format
+#, c-format
 msgid "Index: %1$s"
-msgstr "Шрифт: %1$s"
+msgstr "Покажчки: %1$s"
 
 #: src/frontends/qt4/Menus.cpp:1402 src/frontends/qt4/Menus.cpp:1431
-#, fuzzy, c-format
+#, c-format
 msgid "Index Entry (%1$s)"
-msgstr "Запис покажчика"
+msgstr "Запис покажчика (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:1448
 msgid "No Citation in Scope!"
@@ -22760,7 +22722,7 @@ msgstr "Не визначено бібліографії!"
 
 #: src/insets/InsetCitation.cpp:115
 msgid "No citations selected!"
-msgstr "Не обрано жодної цитати!"
+msgstr "Не вибрано жодної цитати!"
 
 #: src/insets/InsetCitation.cpp:286
 msgid "not cited"
@@ -22985,9 +22947,8 @@ msgid "Unknown index type!"
 msgstr "Невідомий тип покажчика!"
 
 #: src/insets/InsetIndex.cpp:457
-#, fuzzy
 msgid "All indexes"
-msgstr "<Всі покажчики>"
+msgstr "Всі покажчики"
 
 #: src/insets/InsetIndex.cpp:461
 msgid "subindex"
@@ -23020,9 +22981,9 @@ msgid "No version control"
 msgstr "Без керування версіями"
 
 #: src/insets/InsetInfo.cpp:442
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s unknown"
-msgstr "[[%1$s — невідомо]]"
+msgstr "%1$s — невідомо"
 
 #: src/insets/InsetLabel.cpp:74
 msgid "Label names must be unique!"
@@ -23345,14 +23306,12 @@ msgid "NameRef:"
 msgstr "Посилання на назву:"
 
 #: src/insets/InsetScript.cpp:368
-#, fuzzy
 msgid "subscript"
-msgstr "Нижній індекс"
+msgstr "нижній індекс"
 
 #: src/insets/InsetScript.cpp:378
-#, fuzzy
 msgid "superscript"
-msgstr "Верхній індекс"
+msgstr "верхній індекс"
 
 #: src/insets/InsetSpace.cpp:71
 msgid "Protected Space"
@@ -23624,15 +23583,16 @@ msgid "Unknown tabular feature '%1$s'"
 msgstr "Невідома властивість таблиці '%1$s'"
 
 #: src/mathed/InsetMathHull.cpp:1201
-#, fuzzy
 msgid "Bad math environment"
-msgstr "Оточення Gather"
+msgstr "Помилкове середовище math"
 
 #: src/mathed/InsetMathHull.cpp:1202
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
 msgstr ""
+"Обчислення не може бути виконано у математичних середовищах AMS.\n"
+"Змініть тип математичної формули і повторіть спробу."
 
 #: src/mathed/InsetMathHull.cpp:1308 src/mathed/InsetMathHull.cpp:1317
 msgid "No number"
@@ -23690,9 +23650,9 @@ msgid "FormatRef: "
 msgstr "FormatRef: "
 
 #: src/mathed/InsetMathSubstack.cpp:85
-#, fuzzy, c-format
+#, c-format
 msgid "Can't change horizontal alignment in '%1$s'"
-msgstr "Не можу додати горизонтальні лінії ґратки '%1$s'"
+msgstr "Не вдалося змінити горизонтальне вирівнювання у «%1$s»"
 
 #: src/mathed/MathMacroTemplate.cpp:495
 msgid "optional"
