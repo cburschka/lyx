@@ -330,11 +330,11 @@ void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt)
 		dispatch(cmd);
 		LYXERR(Debug::FIND, "dispatched");
 		if (bv->cursor().result().dispatched()) {
-			// Match found, selected and replaced if needed
+			// New match found and selected (old selection replaced if needed)
 			return;
 		}
 
-		// No match found in current buffer:
+		// No match found in current buffer (however old selection might have been replaced)
 		// select next buffer in scope, if any
 		bool prompt = nextPrevBuffer(buf, opt);
 		if (prompt) {
@@ -367,6 +367,9 @@ void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt)
 		lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
 					  buf_orig->absFileName()));
 	bv = view_.documentBufferView();
+	// This may happen after a replace occurred
+	if (cur_orig.pos() > cur_orig.lastpos())
+		cur_orig.pos() = cur_orig.lastpos();
 	bv->cursor().setCursor(cur_orig);
 }
 

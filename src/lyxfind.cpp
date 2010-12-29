@@ -1203,9 +1203,11 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 	cap::cutSelection(cur, false, false);
 	if (!cur.inMathed()) {
 		LYXERR(Debug::FIND, "Replacing by pasteParagraphList()ing repl_buffer");
+		LYXERR(Debug::FIND, "Before pasteParagraphList() cur=" << cur << endl);
 		cap::pasteParagraphList(cur, repl_buffer.paragraphs(),
 					repl_buffer.params().documentClassPtr(),
 					bv->buffer().errorList("Paste"));
+		LYXERR(Debug::FIND, "After pasteParagraphList() cur=" << cur << endl);
 	} else {
 		odocstringstream ods;
 		OutputParams runparams(&repl_buffer.params().encoding());
@@ -1226,6 +1228,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 		cur.niceInsert(repl_latex);
 	}
 	cur.pos() -= repl_buffer.paragraphs().begin()->size();
+	LYXERR(Debug::FIND, "Putting selection at cur=" << cur << " with len: " << repl_buffer.paragraphs().begin()->size());
 	bv->putSelectionAt(DocIterator(cur), repl_buffer.paragraphs().begin()->size(), !opt.forward);
 	bv->processUpdateFlags(Update::Force);
 }
@@ -1235,7 +1238,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 {
 	DocIterator cur;
-	int match_len;
+	int match_len = 0;
 
 	if (opt.search.empty()) {
 		bv->message(_("Search text is empty!"));
