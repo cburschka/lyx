@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-12-28 23:31+0100\n"
-"PO-Revision-Date: 2010-12-27 14:53+0100\n"
+"POT-Creation-Date: 2010-12-29 08:53+0100\n"
+"PO-Revision-Date: 2010-12-29 09:24+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -1745,7 +1745,7 @@ msgstr "Podporované typy rozstupov"
 msgid "&Value:"
 msgstr "&Hodnota:"
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:100
+#: src/frontends/qt4/ui/HSpaceUi.ui:100 src/frontends/qt4/ui/VSpaceUi.ui:61
 msgid "Custom value. Needs spacing type \"Custom\"."
 msgstr "Vlastná hodnota. Potrebuje typ rozstupu  &quot;Vlastný&quot;."
 
@@ -4013,11 +4013,13 @@ msgid "&Open documents in tabs"
 msgstr "Otvoriť dokumenty v paneloch"
 
 #: src/frontends/qt4/ui/PrefUi.ui:245
-#, fuzzy
 msgid ""
 "Whether to open documents in an already running instance of LyX.\n"
 "(Set the LyXServer pipe path and restart LyX to enable this feature)"
-msgstr "Či otvoriť dokumenty v už spustenej inštancii LyX-a."
+msgstr ""
+"Či otvoriť dokumenty v už spustenej inštancii LyX-a.\n"
+"(Nastavit cestu k dátovodu pre LyXServer a reštartovať LyX umožní túto "
+"vlastnosť)"
 
 #: src/frontends/qt4/ui/PrefUi.ui:248
 msgid "S&ingle instance"
@@ -4934,10 +4936,6 @@ msgstr "Toto varovanie odteraz už nezobrazovať!"
 #: src/frontends/qt4/ui/VSpaceUi.ui:32
 msgid "Insert the spacing even after a page break"
 msgstr "Vložiť rozstup i za zalomením stránky"
-
-#: src/frontends/qt4/ui/VSpaceUi.ui:61
-msgid "Custom value. Needs spacing type &quot;Custom&quot;."
-msgstr "Vlastná hodnota. Nastavte typ rozstupu na  &quot;Vlastný&quot;."
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:82
 msgid "DefSkip"
@@ -23725,6 +23723,10 @@ msgstr "Všetky ladiace správy"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Ladenie `%1$s' (%2$s)"
 
+#: src/support/lstrings.cpp:1295
+msgid "[[Replace with the code of your language]]"
+msgstr "sk"
+
 #: src/support/os_win32.cpp:444
 msgid "System file not found"
 msgstr "Systémový súbor nenájdený"
@@ -23753,8 +23755,8 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
-#~ msgid "[[Replace with the code of your language]]"
-#~ msgstr "sk"
+#~ msgid "Custom value. Needs spacing type &quot;Custom&quot;."
+#~ msgstr "Vlastná hodnota. Nastavte typ rozstupu na  &quot;Vlastný&quot;."
 
 #~ msgid "DockWidget"
 #~ msgstr "DockWidget"
