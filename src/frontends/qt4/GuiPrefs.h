@@ -71,6 +71,9 @@ public:
 public Q_SLOTS:
 	void change_adaptor();
 
+Q_SIGNALS:
+	void prefsApplied(LyXRC const & rc);
+
 public:
 	/// Apply changes
 	void applyView();
@@ -240,6 +243,9 @@ private Q_SLOTS:
 	void selectRoman(const QString&);
 	void selectSans(const QString&);
 	void selectTypewriter(const QString&);
+
+public Q_SLOTS:
+	void updateScreenFontSizes(LyXRC const & rc);
 };
 
 

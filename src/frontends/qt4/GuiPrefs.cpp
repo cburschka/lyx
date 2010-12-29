@@ -1003,6 +1003,18 @@ void PrefScreenFonts::update(LyXRC const & rc)
 	selectTypewriter(screenTypewriterCO->currentText());
 
 	screenZoomSB->setValue(rc.zoom);
+	updateScreenFontSizes(rc);
+
+	pixmapCacheCB->setChecked(rc.use_pixmap_cache);
+#if defined(Q_WS_X11)
+	pixmapCacheCB->setEnabled(false);
+#endif
+
+}
+
+
+void PrefScreenFonts::updateScreenFontSizes(LyXRC const & rc)
+{
 	doubleToWidget(screenTinyED, rc.font_sizes[FONT_SIZE_TINY]);
 	doubleToWidget(screenSmallestED, rc.font_sizes[FONT_SIZE_SCRIPT]);
 	doubleToWidget(screenSmallerED, rc.font_sizes[FONT_SIZE_FOOTNOTE]);
@@ -1013,12 +1025,6 @@ void PrefScreenFonts::update(LyXRC const & rc)
 	doubleToWidget(screenLargestED, rc.font_sizes[FONT_SIZE_LARGEST]);
 	doubleToWidget(screenHugeED, rc.font_sizes[FONT_SIZE_HUGE]);
 	doubleToWidget(screenHugerED, rc.font_sizes[FONT_SIZE_HUGER]);
-
-	pixmapCacheCB->setChecked(rc.use_pixmap_cache);
-#if defined(Q_WS_X11)
-	pixmapCacheCB->setEnabled(false);
-#endif
-
 }
 
 
@@ -3077,7 +3083,10 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	addModule(new PrefUserInterface(this));
 	addModule(new PrefEdit(this));
 	addModule(new PrefShortcuts(this));
-	addModule(new PrefScreenFonts(this));
+	PrefScreenFonts * screenfonts = new PrefScreenFonts(this);
+	connect(this, SIGNAL(prefsApplied(LyXRC const &)),
+			screenfonts, SLOT(updateScreenFontSizes(LyXRC const &)));
+	addModule(screenfonts);
 	addModule(new PrefColors(this));
 	addModule(new PrefDisplay(this));
 	addModule(new PrefInput(this));
@@ -3185,6 +3194,9 @@ void GuiPreferences::dispatchParams()
 	ostringstream ss;
 	rc_.write(ss, true);
 	dispatch(FuncRequest(LFUN_LYXRC_APPLY, ss.str()));
+	// issue prefsApplied signal. This will update the
+	// localized screen font sizes.
+	prefsApplied(rc_);
 	// FIXME: these need lfuns
 	// FIXME UNICODE
 	Author const & author = 
