@@ -183,9 +183,9 @@ public:
 	/// Renames and saves the buffer
 	bool saveAs(support::FileName const & fn);
 
-	/// Write document to stream. Returns \c false if unsuccesful.
+	/// Write document to stream. Returns \c false if unsuccessful.
 	bool write(std::ostream &) const;
-	/// Write file. Returns \c false if unsuccesful.
+	/// Write file. Returns \c false if unsuccessful.
 	bool writeFile(support::FileName const &) const;
 
 	/// \name Functions involved in reading files/strings.

@@ -821,7 +821,7 @@ cmd_ret const runCommand(string const & cmd)
 #error No popen() function.
 #endif
 
-	// (Claus Hentschel) Check if popen was succesful ;-)
+	// (Claus Hentschel) Check if popen was successful ;-)
 	if (!inf) {
 		lyxerr << "RunCommand:: could not start child process" << endl;
 		return make_pair(-1, string());

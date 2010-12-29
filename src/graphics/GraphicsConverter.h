@@ -45,14 +45,14 @@ public:
 
 	/** Connect and you'll be informed when the conversion process has
 	 *  finished.
-	 *  If the conversion is succesful, then the listener is passed \c true.
+	 *  If the conversion is successful, then the listener is passed \c true.
 	 */
 	typedef boost::signal<void(bool)> sig_type;
 	typedef sig_type::slot_type slot_type;
 	///
 	boost::signals::connection connect(slot_type const &) const;
 
-	/** If the conversion is succesful, this returns the name of the
+	/** If the conversion is successful, this returns the name of the
 	 *  resulting file.
 	 *  If conversion fails or has not been completed, however, it
 	 *  returns an empty string.

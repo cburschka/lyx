@@ -1061,7 +1061,7 @@ bool Buffer::save() const
 		} else {
 			Alert::error(_("Backup failure"),
 				     bformat(_("Cannot create backup file %1$s.\n"
-					       "Please check whether the directory exists and is writeable."),
+					       "Please check whether the directory exists and is writable."),
 					     from_utf8(backupName.absFileName())));
 			//LYXERR(Debug::DEBUG, "Fs error: " << fe.what());
 		}
@@ -3761,7 +3761,7 @@ Buffer::ReadStatus Buffer::loadEmergency()
 		if (success) {
 			if (isReadonly()) {
 				Alert::warning(_("File is read-only"),
-					bformat(_("An emergency file is succesfully loaded, "
+					bformat(_("An emergency file is successfully loaded, "
 					"but the original file %1$s is marked read-only. "
 					"Please make sure to save the document as a different "
 					"file."), from_utf8(d->filename.absFileName())));
@@ -3823,7 +3823,7 @@ Buffer::ReadStatus Buffer::loadAutosave()
 		if (ret_llf == ReadSuccess) {
 			if (isReadonly()) {
 				Alert::warning(_("File is read-only"),
-					bformat(_("A backup file is succesfully loaded, "
+					bformat(_("A backup file is successfully loaded, "
 					"but the original file %1$s is marked read-only. "
 					"Please make sure to save the document as a "
 					"different file."), 

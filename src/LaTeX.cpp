@@ -1008,7 +1008,7 @@ void LaTeX::deplog(DepTable & head)
 			// However, ...
 			if (suffixIs(token, ")"))
 				// no line break for sure
-				// pretend we've been succesfully searching
+				// pretend we've been successfully searching
 				found_file = true;
 		// (2) "No file file.ext"
 		} else if (regex_match(token, sub, reg2)) {
@@ -1049,7 +1049,7 @@ void LaTeX::deplog(DepTable & head)
 						file.absFileName(), ".toc")), head);
 		else
 			// not found, but we won't check further
-			// pretend we've been succesfully searching
+			// pretend we've been successfully searching
 			found_file = true;
 
 		// (8) "(file.ext"
@@ -1088,7 +1088,7 @@ void LaTeX::deplog(DepTable & head)
 					// we have a closing bracket, so the content
 					// is not a file name.
 					// no need to investigate further
-					// pretend we've been succesfully searching
+					// pretend we've been successfully searching
 					first = what[0].second;
 					found_file = true;
 				}
