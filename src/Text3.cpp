@@ -839,7 +839,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				Cursor dummy = cur;
 				dummy.pos() = dummy.pit() = 0;
 				if (cur.bv().checkDepm(dummy, cur))
-					cur.forceBufferUpdate();;
+					cur.forceBufferUpdate();
 			}
 		}
 		break;
