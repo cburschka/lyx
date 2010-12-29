@@ -259,13 +259,13 @@ GuiFontInfo::GuiFontInfo(FontInfo const & f)
 		switch (f.family()) {
 		case ROMAN_FAMILY: {
 			QString family = makeFontName(toqstr(lyxrc.roman_font_name),
-																		toqstr(lyxrc.roman_font_foundry)); 
+				toqstr(lyxrc.roman_font_foundry)); 
 			font.setFamily(family);
 #ifdef Q_WS_MACX
-#if QT_VERSION >= 0x040300
+#if QT_VERSION >= 0x040300 //&& QT_VERSION < 0x040800
 			// Workaround for a Qt bug, see http://www.lyx.org/trac/ticket/3684
-			// It is reported to Trolltech at 02/06/07 against 4.3 final.
-			// FIXME: Add an upper version limit as soon as the bug is fixed in Qt.
+			// and http://bugreports.qt.nokia.com/browse/QTBUG-11145.
+			// FIXME: Check whether this is really fixed in Qt 4.8
 			if (family == "Times" && !font.exactMatch())
 				font.setFamily("Times New Roman");
 #endif
