@@ -169,8 +169,11 @@ bool InsetSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 			InsetSpaceParams params;
 			string2params(to_utf8(cmd.argument()), params);
 			status.setOnOff(params_.kind == params.kind);
-		}
-		// fall through
+			status.setEnabled(true);	
+		} else
+			status.setEnabled(false);
+		return true;
+
 	case LFUN_INSET_DIALOG_UPDATE:
 		status.setEnabled(true);
 		return true;
