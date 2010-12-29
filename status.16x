@@ -81,6 +81,9 @@ What's new
 - Fix crash when removing a math macro argument while instant preview
   is active (bug 7090).
 
+- Fix the painting of the workarea for a non-standard DPI and using
+  emulated scaling on Windows Vista and Windows 7 (bug 7187).
+
 - Fix insertion of a user math macro through the math-insert lfun when a
   selection is present (bug 6939).
 

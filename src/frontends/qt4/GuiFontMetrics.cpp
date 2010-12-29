@@ -49,13 +49,13 @@ static inline QChar const ucs4_to_qchar(char_type const ucs4)
 // See comment in QLPainter::text() for more explanation.
 
 GuiFontMetrics::GuiFontMetrics(QFont const & font)
-: metrics_(font), smallcaps_metrics_(font), smallcaps_shape_(false)
+: metrics_(font, 0), smallcaps_metrics_(font), smallcaps_shape_(false)
 {
 }
 
 
 GuiFontMetrics::GuiFontMetrics(QFont const & font, QFont const & smallcaps_font)
-: metrics_(font), smallcaps_metrics_(smallcaps_font), smallcaps_shape_(true)
+: metrics_(font, 0), smallcaps_metrics_(smallcaps_font), smallcaps_shape_(true)
 {
 }
 
