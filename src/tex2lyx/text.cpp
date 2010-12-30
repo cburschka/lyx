@@ -2577,8 +2577,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 		}
 
-		else if (t.cs() == "newline"
-			|| t.cs() == "linebreak") {
+		else if (t.cs() == "newline" ||
+		         (t.cs() == "linebreak" &&
+		          p.next_token().asInput() != "[")) {
 			context.check_layout(os);
 			begin_inset(os, "Newline ");
 			os << t.cs();
@@ -2764,9 +2765,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "newpage" ||
-			t.cs() == "pagebreak" ||
-			t.cs() == "clearpage" ||
-			t.cs() == "cleardoublepage") {
+		         (t.cs() == "pagebreak" &&
+		          p.next_token().asInput() != "[") ||
+		         t.cs() == "clearpage" ||
+		         t.cs() == "cleardoublepage") {
 			context.check_layout(os);
 			begin_inset(os, "Newpage ");
 			os << t.cs();
