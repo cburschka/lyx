@@ -70,9 +70,13 @@ public:
 		std::string const & command_line_user_support_dir,
 		exe_build_dir_to_top_build_dir);
 
-	/** The directory containing the LyX executable.
+	/** The directory containing the main executable (LyX or tex2lyx).
 	 */
 	FileName const & binary_dir() const { return binary_dir_; }
+
+	/** The absolute path to the LyX executable.
+	 */
+	FileName const & lyx_binary() const { return lyx_binary_; }
 
 	/** The top of the LyX source code tree.
 	 */
@@ -137,6 +141,7 @@ public:
 
 private:
 	FileName binary_dir_;
+	FileName lyx_binary_;
 	FileName system_support_dir_;
 	FileName build_support_dir_;
 	FileName user_support_dir_;

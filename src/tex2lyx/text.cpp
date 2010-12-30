@@ -1811,8 +1811,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						     << endl;
 					}
 					name = dvips_name;
-				} else if (!pdftex_name.empty())
+				} else if (!pdftex_name.empty()) {
 					name = pdftex_name;
+					pdflatex = true;
+				}
 			}
 
 			if (makeAbsPath(name, path).exists())
@@ -2641,6 +2643,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					bool const xfigpdf =
 						abspdfname.exists() &&
 						(ext == "pdftex_t" || ext == "pdf_t");
+					if (xfigpdf)
+						pdflatex = true;
 
 					// Combined PS/PDF/LaTeX:
 					// x_pspdftex.eps, x_pspdftex.pdf, x.pspdftex

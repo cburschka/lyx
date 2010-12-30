@@ -28,6 +28,7 @@
 #include "support/Messages.h"
 #include "support/os.h"
 #include "support/Package.h"
+#include "support/Systemcall.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -168,6 +169,8 @@ void add_known_command(string const & command, string const & o1,
 
 
 bool noweb_mode = false;
+bool pdflatex = false;
+bool roundtrip = false;
 
 
 namespace {
@@ -288,7 +291,8 @@ int parse_help(string const &, string const &)
 		"\t-f                 Force overwrite of .lyx files.\n"
 		"\t-help              Print this message and quit.\n"
 		"\t-n                 translate a noweb (aka literate programming) file.\n"
-		"\t-s syntaxfile      read additional syntax file.\n" 
+		"\t-roundtrip         re-export created .lyx file infile.lyx.lyx to infile.lyx.tex.\n"
+		"\t-s syntaxfile      read additional syntax file.\n"
 		"\t-sysdir dir        Set system directory to DIR.\n"
 		"\t-userdir DIR       Set user directory to DIR."
 	     << endl;
@@ -369,6 +373,13 @@ int parse_noweb(string const &, string const &)
 }
 
 
+int parse_roundtrip(string const &, string const &)
+{
+	roundtrip = true;
+	return 0;
+}
+
+
 void easyParse(int & argc, char * argv[])
 {
 	map<string, cmd_helper> cmdmap;
@@ -382,6 +393,7 @@ void easyParse(int & argc, char * argv[])
 	cmdmap["-n"] = parse_noweb;
 	cmdmap["-sysdir"] = parse_sysdir;
 	cmdmap["-userdir"] = parse_userdir;
+	cmdmap["-roundtrip"] = parse_roundtrip;
 
 	for (int i = 1; i < argc; ++i) {
 		map<string, cmd_helper>::const_iterator it
@@ -523,6 +535,29 @@ bool tex2lyx(string const & infilename, FileName const & outfilename,
 	return tex2lyx(FileName(infilename), os, encoding);
 }
 
+
+bool tex2tex(string const & infilename, FileName const & outfilename,
+             string const & encoding)
+{
+	if (!tex2lyx(infilename, outfilename, encoding))
+		return false;
+	string command = quoteName(package().lyx_binary().toFilesystemEncoding());
+	if (overwrite_files)
+		command += " -f main";
+	else
+		command += " -f none";
+	if (pdflatex)
+		command += " -e pdflatex ";
+	else
+		command += " -e latex ";
+	command += quoteName(outfilename.toFilesystemEncoding());
+	Systemcall one;
+	if (one.startscript(Systemcall::Wait, command) == 0)
+		return true;
+	cerr << "Error: Running '" << command << "' failed." << endl;
+	return false;
+}
+
 } // namespace lyx
 
 
@@ -549,7 +584,7 @@ int main(int argc, char * argv[])
 		cerr << to_utf8(message.title_) << ":\n"
 		     << to_utf8(message.details_) << endl;
 		if (message.type_ == ErrorException)
-			exit(1);
+			return EXIT_FAILURE;
 	}
 
 	// Now every known option is parsed. Look for input and output
@@ -558,7 +593,17 @@ int main(int argc, char * argv[])
 	infilename = makeAbsPath(infilename).absFileName();
 
 	string outfilename;
-	if (argc > 2) {
+	if (roundtrip) {
+		if (argc > 2) {
+			// Do not allow a user supplied output filename
+			// (otherwise it could easily happen that LyX would
+			// overwrite the original .tex file)
+			cerr << "Error: output filename must not be given in roundtrip mode."
+			     << endl;
+			return EXIT_FAILURE;
+		}
+		outfilename = changeExtension(infilename, ".lyx.lyx");
+	} else if (argc > 2) {
 		outfilename = internal_path(os::utf8_argv(2));
 		if (outfilename != "-")
 			outfilename = makeAbsPath(outfilename).absFileName();
@@ -569,7 +614,7 @@ int main(int argc, char * argv[])
 	FileName const system_syntaxfile = libFileSearch("", "syntax.default");
 	if (system_syntaxfile.empty()) {
 		cerr << "Error: Could not find syntax file \"syntax.default\"." << endl;
-		exit(1);
+		return EXIT_FAILURE;
 	}
 	read_syntaxfile(system_syntaxfile);
 	if (!syntaxfile.empty())
@@ -580,13 +625,13 @@ int main(int argc, char * argv[])
 	if (symbols_path.empty()) {
 		cerr << "Error: Could not find file \"unicodesymbols\"." 
 		     << endl;
-		exit(1);
+		return EXIT_FAILURE;
 	}
 	FileName const enc_path = libFileSearch(string(), "encodings");
 	if (enc_path.empty()) {
 		cerr << "Error: Could not find file \"encodings\"." 
 		     << endl;
-		exit(1);
+		return EXIT_FAILURE;
 	}
 	encodings.read(enc_path, symbols_path);
 	if (!default_encoding.empty() && !encodings.fromLaTeXName(default_encoding))
@@ -598,14 +643,14 @@ int main(int argc, char * argv[])
 	if (outfilename == "-") {
 		if (tex2lyx(FileName(infilename), cout, default_encoding))
 			return EXIT_SUCCESS;
-		else
-			return EXIT_FAILURE;
+	} else if (roundtrip) {
+		if (tex2tex(infilename, FileName(outfilename), default_encoding))
+			return EXIT_SUCCESS;
 	} else {
 		if (tex2lyx(infilename, FileName(outfilename), default_encoding))
 			return EXIT_SUCCESS;
-		else
-			return EXIT_FAILURE;
 	}
+	return EXIT_FAILURE;
 }
 
 // }])

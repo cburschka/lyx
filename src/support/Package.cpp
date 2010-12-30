@@ -125,6 +125,24 @@ Package::Package(string const & command_line_arg0,
 			get_system_support_dir(abs_binary,
 					       command_line_system_support_dir);
 
+	// The LyX executable is one level above binary_dir_ if we are running
+	// tex2lyx in place. Otherwise it is in binary_dir_.
+	string abs_lyx_dir;
+	if (build_support_dir_.empty() ||
+	    top_build_dir_location == top_build_dir_is_one_level_up)
+		abs_lyx_dir = binary_dir_.absFileName();
+	else {
+		FileName fn(addPath(binary_dir_.absFileName(), "../"));
+		abs_lyx_dir = fn.realPath();
+	}
+	// The LyX executable may have a package suffix if we are not running
+	// in place.
+	if (build_support_dir_.empty())
+		lyx_binary_ = FileName(addName(abs_lyx_dir,
+		                               "lyx" + string(PROGRAM_SUFFIX)));
+	else
+		lyx_binary_ = FileName(addName(abs_lyx_dir, "lyx"));
+
 	locale_dir_ = get_locale_dir(system_support_dir_);
 
 	FileName const default_user_support_dir =
