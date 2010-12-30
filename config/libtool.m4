@@ -362,7 +362,7 @@ AC_DEFUN([_LT_REQUIRED_DARWIN_CHECKS],[
 # to the aix ld manual.
 AC_DEFUN([_LT_AC_SYS_LIBPATH_AIX],
 [AC_REQUIRE([LT_AC_PROG_SED])dnl
-AC_LINK_IFELSE(AC_LANG_PROGRAM,[
+AC_LINK_IFELSE([AC_LANG_PROGRAM([],[])],[
 lt_aix_libpath_sed='
     /Import File Strings/,/^$/ {
 	/^0/ {
