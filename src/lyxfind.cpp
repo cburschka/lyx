@@ -270,6 +270,13 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 		return pair<bool, int>(false, 0);
 
 	cap::replaceSelectionWithString(cur, replacestr, forward);
+	if (forward) {
+		cur.pos() += replacestr.length();
+		LASSERT(cur.pos() <= cur.lastpos(), /* */);
+	} else {
+		cur.pos() -= replacestr.length();
+		LASSERT(cur.pos() >= 0, /* */);
+	}
 	findOne(bv, searchstr, case_sens, whole, forward, false);
 
 	return pair<bool, int>(true, 1);
