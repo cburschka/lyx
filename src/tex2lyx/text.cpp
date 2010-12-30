@@ -201,6 +201,11 @@ char const * const known_coded_spaces[] = { "space{}", "space{}",
 "negthinspace{}", "hfill{}", "dotfill{}", "hrulefill{}", "leftarrowfill{}",
 "rightarrowfill{}", "upbracefill{}", "downbracefill{}", 0};
 
+/// These are translated by LyX to commands like "\\LyX{}", so we have to put
+/// them in ERT. "LaTeXe" must come before "LaTeX"!
+char const * const known_phrases[] = {"LyX", "TeX", "LaTeXe", "LaTeX", 0};
+char const * const known_coded_phrases[] = {"LyX", "TeX", "LaTeX2e", "LaTeX", 0};
+
 
 /// splits "x=z, y=b" into a map and an ordered keyword vector
 void split_map(string const & s, map<string, string> & res, vector<string> & keys)
@@ -1450,8 +1455,21 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			handle_ert(os, s, context);
 		}
 
-		else if (t.cat() == catLetter ||
-			       t.cat() == catOther ||
+		else if (t.cat() == catLetter) {
+			context.check_layout(os);
+			string phrase = t.cs();
+			while (p.next_token().isAlnumASCII())
+				phrase += p.get_token().cs();
+			if (is_known(phrase, known_coded_phrases))
+				handle_ert(os, phrase, context);
+			else {
+				for (size_t i = 1; i < phrase.length(); ++i)
+					p.putback();
+				os << t.cs();
+			}
+		}
+
+		else if (t.cat() == catOther ||
 			       t.cat() == catAlign ||
 			       t.cat() == catParameter) {
 			// This translates "&" to "\\&" which may be wrong...
@@ -2101,6 +2119,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "lyxline") {
 			context.check_layout(os);
 			os << "\\lyxline";
+		}
+
+		else if (is_known(t.cs(), known_phrases)) {
+			char const * const * where = is_known(t.cs(), known_phrases);
+			context.check_layout(os);
+			os << known_coded_phrases[where - known_phrases];
+			skip_spaces_braces(p);
 		}
 
 		else if (is_known(t.cs(), known_ref_commands)) {

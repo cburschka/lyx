@@ -85,6 +85,8 @@ public:
 	char character() const { return cs_.empty() ? 0 : cs_[0]; }
 	/// Returns the token verbatim
 	std::string asInput() const;
+	/// Is the token an alphanumerical character?
+	bool isAlnumASCII() const;
 
 private:
 	///

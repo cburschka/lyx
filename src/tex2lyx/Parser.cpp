@@ -12,6 +12,7 @@
 
 #include "Encoding.h"
 #include "Parser.h"
+#include "support/textutils.h"
 
 #include <iostream>
 
@@ -117,6 +118,13 @@ string Token::asInput() const
 	if (cat_ == catEscape)
 		return '\\' + cs_;
 	return cs_;
+}
+
+
+bool Token::isAlnumASCII() const
+{
+	return cat_ == catLetter ||
+	       (cat_ == catOther && cs_.length() == 1 && isDigitASCII(cs_[0]));
 }
 
 

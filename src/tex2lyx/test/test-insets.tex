@@ -24,6 +24,7 @@
 \usepackage{longtable}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
 \newcommand{\lyxline}[1][1pt]{%
   \par\noindent%
   \rule[.5ex]{\linewidth}{#1}\par}
@@ -291,6 +292,9 @@ that LaTeX wants to espace because they are active, like \_\&\#\$\{\}\%.
 And what about special characters like hyphe\-nation mark,
 ellipsis\ldots, and end-of-sentence\@. LyX also supports a menu
 separator\lyxarrow{}and a spif\textcompwordmark{}fy ligature break.
+
+LyX translates the phrases LyX, TeX, LaTeX2e and LaTeX
+to the commands \LyX{}, \TeX{}, \LaTeXe{} and \LaTeX{}.
 
 Test for whitespace handling of commands: The following lines should
 result in identical output:
