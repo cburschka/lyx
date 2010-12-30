@@ -2462,9 +2462,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_spaces_braces(p);
 		}
 
-		else if (t.cs() == "nobreakdash") {
+		else if (t.cs() == "nobreakdash" && p.next_token().asInput() == "-") {
 			context.check_layout(os);
-			os << "\\SpecialChar \\nobreakdash\n";
+			os << "\\SpecialChar \\nobreakdash-\n";
+			p.get_token();
 		}
 
 		else if (t.cs() == "textquotedbl") {
