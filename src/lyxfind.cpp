@@ -1196,9 +1196,6 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 	Buffer repl_buffer("", false);
 	repl_buffer.setUnnamed(true);
 	LASSERT(repl_buffer.readString(lyx), /**/);
-	repl_buffer.changeLanguage(
-		repl_buffer.language(),
-		cur.getFont().language());
 	if (opt.keep_case && sel_len >= 2) {
 		if (cur.inTexted()) {
 			if (firstUppercase(cur))
@@ -1209,6 +1206,9 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 	}
 	cap::cutSelection(cur, false, false);
 	if (!cur.inMathed()) {
+		repl_buffer.changeLanguage(
+			repl_buffer.language(),
+			cur.getFont().language());
 		LYXERR(Debug::FIND, "Replacing by pasteParagraphList()ing repl_buffer");
 		LYXERR(Debug::FIND, "Before pasteParagraphList() cur=" << cur << endl);
 		cap::pasteParagraphList(cur, repl_buffer.paragraphs(),
