@@ -205,6 +205,7 @@ char const * const known_coded_spaces[] = { "space{}", "space{}",
 /// them in ERT. "LaTeXe" must come before "LaTeX"!
 char const * const known_phrases[] = {"LyX", "TeX", "LaTeXe", "LaTeX", 0};
 char const * const known_coded_phrases[] = {"LyX", "TeX", "LaTeX2e", "LaTeX", 0};
+int const known_phrase_lengths[] = {3, 5, 7, 0};
 
 
 /// splits "x=z, y=b" into a map and an ordered keyword vector
@@ -1457,16 +1458,28 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cat() == catLetter) {
 			context.check_layout(os);
-			string phrase = t.cs();
-			while (p.next_token().isAlnumASCII())
-				phrase += p.get_token().cs();
-			if (is_known(phrase, known_coded_phrases))
-				handle_ert(os, phrase, context);
-			else {
-				for (size_t i = 1; i < phrase.length(); ++i)
-					p.putback();
-				os << t.cs();
+			// Workaround for bug 4752.
+			// FIXME: This whole code block needs to be removed
+			//        when the bug is fixed and tex2lyx produces
+			//        the updated file format.
+			// The replacement algorithm in LyX is so stupid that
+			// it even translates a phrase if it is part of a word.
+			bool handled = false;
+			for (int const * l = known_phrase_lengths; *l; ++l) {
+				string phrase = t.cs();
+				for (int i = 1; i < *l && p.next_token().isAlnumASCII(); ++i)
+					phrase += p.get_token().cs();
+				if (is_known(phrase, known_coded_phrases)) {
+					handle_ert(os, phrase, context);
+					handled = true;
+					break;
+				} else {
+					for (size_t i = 1; i < phrase.length(); ++i)
+						p.putback();
+				}
 			}
+			if (!handled)
+				os << t.cs();
 		}
 
 		else if (t.cat() == catOther ||
@@ -2122,6 +2135,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (is_known(t.cs(), known_phrases)) {
+			// FIXME: This needs to be changed when bug 4752 is fixed.
 			char const * const * where = is_known(t.cs(), known_phrases);
 			context.check_layout(os);
 			os << known_coded_phrases[where - known_phrases];
