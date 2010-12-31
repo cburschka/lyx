@@ -615,7 +615,8 @@ def checkConverterEntries():
     os.environ["PATH"] = os.path.join('..', 'src', 'tex2lyx') + \
         os.pathsep + path_orig
 
-    checkProg('a LaTeX/Noweb -> LyX converter', ['tex2lyx', 'tex2lyx' + version_suffix],
+# First search for tex2lyx with version suffix (bug 6986)
+    checkProg('a LaTeX/Noweb -> LyX converter', ['tex2lyx' + version_suffix, 'tex2lyx'],
         rc_entry = [r'''\converter latex      lyx        "%% -f $$i $$o"	""
 \converter literate   lyx        "%% -n -f $$i $$o"	""'''])
 
