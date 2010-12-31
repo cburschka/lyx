@@ -12,6 +12,7 @@
 
 #include "FindAndReplace.h"
 
+#include "Lexer.h"
 #include "GuiApplication.h"
 #include "GuiView.h"
 #include "GuiWorkArea.h"
@@ -49,6 +50,20 @@ namespace lyx {
 namespace frontend {
 
 
+/// Apply to buf the parameters supplied through bp
+static void ApplyParams(Buffer &buf, BufferParams const & bp) {
+	ostringstream ss;
+	ss << "\\begin_header\n";
+	bp.writeFile(ss);
+	ss << "\\end_header\n";
+	istringstream iss(ss.str());
+	Lexer lex;
+	lex.setStream(iss);
+	int unknown_tokens = buf.readHeader(lex);
+	LASSERT(unknown_tokens == 0, /* */);
+}
+
+
 FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 	:	view_(view)
 {
@@ -56,10 +71,12 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 	find_work_area_->setGuiView(view_);
 	find_work_area_->init();
 	find_work_area_->setFrameStyle(QFrame::StyledPanel);
+
 	setFocusProxy(find_work_area_);
 	replace_work_area_->setGuiView(view_);
 	replace_work_area_->init();
 	replace_work_area_->setFrameStyle(QFrame::StyledPanel);
+
 	// We don't want two cursors blinking.
 	replace_work_area_->stopBlinkingCursor();
 }
@@ -503,6 +520,15 @@ void FindAndReplaceWidget::on_replaceallPB_clicked()
 
 void FindAndReplaceWidget::showEvent(QShowEvent * /* ev */)
 {
+	Buffer & doc_buf = view_.documentBufferView()->buffer();
+	BufferParams & doc_bp = doc_buf.params();
+	Buffer & find_buf = find_work_area_->bufferView().buffer();
+	LYXERR(Debug::FIND, "Applying document params to find buffer");
+	ApplyParams(find_buf, doc_bp);
+	Buffer & replace_buf = replace_work_area_->bufferView().buffer();
+	LYXERR(Debug::FIND, "Applying document params to replace buffer");
+	ApplyParams(replace_buf, doc_bp);
+
 	view_.setCurrentWorkArea(find_work_area_);
 	LYXERR(Debug::FIND, "Selecting entire find buffer");
 	dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
