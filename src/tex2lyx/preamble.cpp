@@ -56,8 +56,6 @@ namespace {
 //"chinese-simplified", "chinese-traditional", "japanese", "korean"
 // Both changes require first that support for non-babel languages (CJK,
 // armtex) is added.
-// add polutonikogreek for lyxformat 338
-// add mongolian for lyxformat 342
 // add turkmen for lyxformat 383
 const char * const known_languages[] = { "afrikaans", "albanian", "american",
 "arabic", "arabtex", "austrian", "bahasa", "bahasai", "bahasam", "basque",
@@ -67,11 +65,11 @@ const char * const known_languages[] = { "afrikaans", "albanian", "american",
 "frenchb", "frenchle", "frenchpro", "galician", "german", "germanb", "greek",
 "hebrew", "icelandic", "indon", "indonesian", "interlingua", "irish",
 "italian", "kazakh", "latin", "latvian", "lithuanian", "lsorbian", "magyar",
-"malay", "meyalu", "naustrian", "ngerman", "ngermanb", "norsk", "nynorsk",
-"polish", "portuges", "portuguese", "romanian", "russian", "russianb",
-"samin", "scottish", "serbian", "serbian-latin", "slovak", "slovene",
-"spanish", "swedish", "thai", "turkish", "ukraineb", "ukrainian",
-"usorbian", "vietnam", "welsh", 0};
+"malay", "meyalu", "mongolian", "naustrian", "ngerman", "ngermanb", "norsk",
+"nynorsk", "polutonikogreek", "polish", "portuges", "portuguese", "romanian",
+"russian", "russianb", "samin", "scottish", "serbian", "serbian-latin",
+"slovak", "slovene", "spanish", "swedish", "thai", "turkish", "ukraineb",
+"ukrainian", "usorbian", "vietnam", "welsh", 0};
 
 const char * const known_bahasa_languages[] = {"bahasa", "bahasai",
 						"indon", "indonesian", 0};
@@ -93,12 +91,11 @@ const char * const known_english_quotes_languages[] = {"american", "canadian",
 "english", "esperanto", "hebrew", "irish", "scottish", "thai", 0};
 
 //add this to known_french_quotes_languages when updating to
-// - lyxformat 327: "spanish-mexico"
-// - lyxformat 338: "polutonikogreek"
-// - lyxformat 383: "turkmen"
+//lyxformat 383: "turkmen"
 const char * const known_french_quotes_languages[] = {"albanian", "arabic",
 "basque", "canadien", "catalan", "galician", "greek", "italian", "norsk",
-"nynorsk", "spanish", "turkish", "vietnam", 0};
+"nynorsk", "polutonikogreek", "spanish", "spanish-mexico", "turkish",
+"vietnam", 0};
 
 const char * const known_german_quotes_languages[] = {"austrian", "bulgarian",
 "czech", "icelandic", "lithuanian", "lsorbian", "naustrian", "serbian",
