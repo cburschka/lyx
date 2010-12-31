@@ -17,6 +17,7 @@
 #include "GuiView.h"
 #include "GuiWorkArea.h"
 #include "qt_helpers.h"
+#include "Language.h"
 
 #include "buffer_funcs.h"
 #include "BufferParams.h"
@@ -528,6 +529,12 @@ void FindAndReplaceWidget::showEvent(QShowEvent * /* ev */)
 	Buffer & replace_buf = replace_work_area_->bufferView().buffer();
 	LYXERR(Debug::FIND, "Applying document params to replace buffer");
 	ApplyParams(replace_buf, doc_bp);
+
+	string lang = doc_bp.language->lang();
+	LYXERR(Debug::FIND, "Setting current editing language to " << lang << endl);
+	FuncRequest cmd(LFUN_LANGUAGE, lang);
+	find_buf.text().dispatch(find_work_area_->bufferView().cursor(), cmd);
+	replace_buf.text().dispatch(replace_work_area_->bufferView().cursor(), cmd);
 
 	view_.setCurrentWorkArea(find_work_area_);
 	LYXERR(Debug::FIND, "Selecting entire find buffer");
