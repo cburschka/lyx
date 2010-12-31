@@ -20,8 +20,8 @@ call it from the command line only if you need to use more complicated
 options.
 .PP
 \fBtex2lyx\fR [ \fB\-userdir\fR \fIuserdir\fR ] [ \fB\-systemdir\fR \fIsystemdir\fR ]
-[ \fB\-n\fR ] [ \fB\-c\fR \fItextclass\fR ] [\ \fB\-s\fR\ \fIsfile1\fR[,\fIsfile2\fR...]]
-\fIinputfile\fR  
+[ \fB\-n\fR ] [ \fB\-c\fR \fItextclass\fR ] [\ \fB\-s\fR\ \fIsfile1\fR[,\fIsfile2\fR...]] [
+\fB\-roundtrip\fR ] \fIinputfile\fR [ \fIoutputfile\fR ]
 .\" .PP
 .\" \fBtex2lyx\fR [ \fB\-userdir\fR \fIuserdir\fR ] [ \fB\-systemdir\fR \fIsystemdir\fR ]
 .\" [\ \fB\-r\fR\ \fIrenv1\fR[,\fIrenv2\fR...]] [\ \fB\-s\fR\ \fIsfile1\fR[,\fIsfile2\fR...]]
@@ -74,11 +74,19 @@ chosen. Cf. the section \f(CWFILES\fR for details.
 Specify a user directory. Normally, you shouldn't need this. Your LyX user directory is
 chosen. Cf. the section \f(CWFILES\fR for details.
 .TP
+.BI \-roundtrip
+Call LyX to re-export the created output file to LaTeX. The output file name
+is always determined automatically to avoid over-writing the input file by
+accident: If the input file is named \fIfoo.tex\fR the output file will be
+named \fIfoo.lyx.lyx\fR, and the re-exported file will be named
+\fIfoo.lyx.tex\fR.
+.TP
 .BI \-help
 Help. Print out usage information and quit.
 .SH "DESCRIPTION"
 .SS "Introduction"
-\fBtex2lyx\fR will create a LyX file \fIdir/foo.lyx\fR from the LaTeX file
+\fBtex2lyx\fR will create a LyX file with the specified name (or
+\fIdir/foo.lyx\fR if no name was given) from the LaTeX file
 \fIdir/foo.tex\fR.
 .PP
 Suffixes .tex, .ltx and .latex are supported. If \fIinputfile\fR
@@ -109,7 +117,7 @@ Run \fBtex2lyx\fR.
 you don't want any output at all, try (in csh) `tex2lyx foo.tex >& /dev/null'.
 You should \s-1NOT\s0 redirect standard output to \fIfoo.lyx\fR.
 .IP "\(bu" 4
-Run LyX (version 1.4 or later) on the resulting .lyx file.
+Run LyX (version 1.6 or later) on the resulting .lyx file.
 .IP ""
 In theory, most of the file will have been translated, and anything that's
 untranslatable will be transferred to TeX code (ERT in LyX-speak). In theory, LyX will be
@@ -239,12 +247,12 @@ The foil document class has a couple of bugs. \fBtex2lyx\fR may do weird things 
 arguments to \f(CW\efoilhead\fR commands. Also, it may handle \f(CW\ebegin{dinglist}\fR
 incorrectly (although the stuff in the environment should translate normally).
 .PP
-All known bugs of \fBtex2lyx\fR can be found on \fI\s-1http://bugzilla.lyx.org\s0\fR.
+All known bugs of \fBtex2lyx\fR can be found on \fI\s-1http://www.lyx.org/trac/wiki/BugTrackerHome\s0\fR.
 .PP
 \fBtex2lyx\fR is rather robust. As mentioned above, it may not translate
 your file perfectly, but the result should be usable and it shouldn't crash. If you encounter
 problems---and the problem is not one of those mentioned above or on 
-\fI\s-1http://bugzilla.lyx.org\s0\fR---please report the issue as described in the section 
+\fI\s-1http://www.lyx.org/trac/wiki/BugTrackerHome\s0\fR---please report the issue as described in the section 
 on \fIBug Reports\fR.
 .SS "What LyX Can't Handle"
 LyX itself is missing a couple of features, such that even if \fBtex2lyx\fR translates
@@ -280,7 +288,7 @@ document. A user would do this if the noweb document had documentclass
 article.
 .SH "NOTES"
 .SS "Bug Reports"
-Bugs should be reported to the LyX bug tracker at http://bugzilla.lyx.org. Additionally,
+Bugs should be reported to the LyX bug tracker at http://www.lyx.org/trac/wiki/BugTrackerHome. Additionally,
 you can post a message to the LyX developers' mailing list. Its address is currently
 lyx-devel@lists.lyx.org. If your message bounces, you can check the LyX home page, 
 http://www.lyx.org/. If you are running \fBtex2lyx\fR on a huge file, please do not send all of the output in 
