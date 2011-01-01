@@ -2080,33 +2080,22 @@ lib_images_math_files = Split('''
     upsilon2.png
     upuparrows.png
     urcorner.png
-    varDelta.png
     varepsilon.png
-    varGamma.png
     varkappa.png
-    varLambda.png
-    varnothing.png 
-    varOmega.png
-    varphi.png 
-    varphi2.png 
-    varpi.png 
-    varpi2.png 
-    varpropto.png 
-    varPsi.png 
-    varrho.png 
-    varsigma.png 
-    varsigma2.png 
-    varsubsetneq.png 
-    varsubsetneqq.png 
-    varsupsetneq.png 
-    varsupsetneqq.png 
-    vartheta.png 
-    vartheta2.png 
-    vartriangle.png 
-    vartriangleleft.png 
-    vartriangleright.png 
-    varUpsilon.png
-    varXi.png
+    varnothing.png
+    varphi.png
+    varpi.png
+    varpropto.png
+    varrho.png
+    varsigma.png
+    varsubsetneq.png
+    varsubsetneqq.png
+    varsupsetneq.png
+    varsupsetneqq.png
+    vartheta.png
+    vartriangle.png
+    vartriangleleft.png
+    vartriangleright.png
     vdash.png
     vdash2.png
     vdash3.png
