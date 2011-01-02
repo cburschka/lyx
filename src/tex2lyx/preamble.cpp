@@ -179,6 +179,7 @@ string h_secnumdepth             = "3";
 string h_tocdepth                = "3";
 string h_paragraph_separation    = "indent";
 string h_defskip                 = "medskip";
+string h_paragraph_indentation   = "default";
 string h_quotes_language         = "english";
 string h_papercolumns            = "1";
 string h_papersides              = string();
@@ -604,9 +605,12 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	   << h_margins
 	   << "\\secnumdepth " << h_secnumdepth << "\n"
 	   << "\\tocdepth " << h_tocdepth << "\n"
-	   << "\\paragraph_separation " << h_paragraph_separation << "\n"
-	   << "\\defskip " << h_defskip << "\n"
-	   << "\\quotes_language " << h_quotes_language << "\n"
+	   << "\\paragraph_separation " << h_paragraph_separation << "\n";
+	if (LYX_FORMAT < 365 || h_paragraph_separation == "skip")
+		os << "\\defskip " << h_defskip << "\n";
+	else
+		os << "\\paragraph_indentation " << h_paragraph_indentation << "\n";
+	os << "\\quotes_language " << h_quotes_language << "\n"
 	   << "\\papercolumns " << h_papercolumns << "\n"
 	   << "\\papersides " << h_papersides << "\n"
 	   << "\\paperpagestyle " << h_paperpagestyle << "\n";
@@ -883,6 +887,11 @@ void parse_preamble(Parser & p, ostream & os,
 			if (name == "\\parindent" && content != "") {
 				if (content[0] == '0')
 					h_paragraph_separation = "skip";
+				else if (LYX_FORMAT >= 365)
+					h_paragraph_indentation = translate_len(content);
+				else
+					h_preamble << "\\setlength{" << name
+					           << "}{" << content << "}";
 			} else if (name == "\\parskip") {
 				if (content == "\\smallskipamount")
 					h_defskip = "smallskip";
