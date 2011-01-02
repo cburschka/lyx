@@ -32,7 +32,6 @@
 \newcommand{\lyxarrow}{\leavevmode\,$\triangleright$\,\allowbreak}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
-\usepackage{doc}
 \usepackage{subscript} % user specified as long as tex2lyx
 % produces a format less than 408
 
@@ -94,7 +93,8 @@ Now the natbib things:
 \textbackslash{}nocite: \nocite{article-crossref}
 
 \bibliographystyle{unsrt}
-\bibliography{xampl}
+% Remove duplicate call of \bibliography since LaTeX throws an error.
+% \bibliography{xampl}
 
 With \textbackslash{}nocite\{{*}\}:
 \bibliographystyle{unsrt}
@@ -129,12 +129,13 @@ There is also some basic support for graphics, in the form
 \section{Tables\index{Tables}}
 
 The following example is stolen from the longtable documentation.
+Since tex2lyx does not understand the special verbatim code that
+was used in the original some lines have been rewritten using
+\textbackslash textbackslash etc.
 \let\package\textsf
 \let\env\textsf
+\let\code\texttt
 \providecommand\finalclearpage{\clearpage}
-\DeleteShortVerb{\|}
-\MakeShortVerb{\"}
-\def\v{\char`}
 
 \begin{longtable}{@{*}r||p{1in}@{*}}
 KILLED & LINE!!!! \kill
@@ -166,28 +167,28 @@ at the end& of the table\\
 \endlastfoot
 \env{longtable}  columns  are specified& in the \\
 same way as  in the \env{tabular}& environment.\\
-"@{*}r||p{1in}@{*}"& in this case.\\
-Each row ends with a& "\\" command.\\
-The "\\"  command  has an& optional\\
+%\code{@\{*\}r||p\{1in\}@\{*\}}& in this case.\\
+Each row ends with a& \code{\textbackslash\textbackslash} command.\\
+The \code{\textbackslash\textbackslash} command  has an& optional\\
 argument, just as in& the\\
  \env{tabular}&environment.\\[10pt]
-See the  effect  of "\\[10pt]"&?\\
+See the effect of \code{\textbackslash\textbackslash[10pt]}&?\\
 Lots of lines& like this.\\
 Lots of lines& like this.\\
 Lots of lines& like this.\\
 Lots of lines& like this.\\
-Also  "\hline"  may be used,&  as in \env{tabular}.\\
+Also \code{\textbackslash hline} may be used,&  as in \env{tabular}.\\
 \hline
-That  was a "\hline"&.\\
+That  was a \code{\textbackslash hline}&.\\
 \hline\hline
-That  was "\hline\hline"&.\\
+That  was \code{\textbackslash hline\textbackslash hline}&.\\
 \multicolumn{2}{||c||}%
-{This is a \ttfamily\v\\multicolumn\v{2\v}\v{||c||\v}}\\
-If a  page break  occurs at a "\hline" then& a line is drawn\\
+{This is a \code{\textbackslash multicolumn\{2\}\{||c||\}}}\\
+If a  page break  occurs at a \code{\textbackslash hline} then& a line is drawn\\
 at the bottom of one  page  and at the& top of the next.\\
 \hline
-The  "[t] [b] [c]"  argument of \env{tabular}& can  not be used.\\
-The optional argument may be  one of& "[l] [r] [c]"\\
+The \code{[t] [b] [c]} argument of \env{tabular}& can  not be used.\\
+The optional argument may be  one of& \code{[l] [r] [c]}\\
 to specify whether  the  table  should be& adjusted\\
 to the  left, right& or centrally.\\
 \hline\hline
@@ -215,7 +216,7 @@ Some lines may take up a lot of space, like this: &
     \raggedleft This last column is a ``p'' column so this
     ``row'' of the table can take up several lines. Note however that
     \TeX\ will  never break a page within such a row. Page breaks only
-    occur between rows of the table or at "\hline" commands.
+    occur between rows of the table or at \code{\textbackslash hline} commands.
     \tabularnewline
 Lots of lines& like this.\\
 Lots of lines& like this.\\
@@ -268,9 +269,13 @@ test
 \subsection{Line breaks}
 
 They can also or be broken by a newline\\
-or a newline command \newline
+or by a starred newline \\*
+or by a newline with space, comment and argument \\ %hu
+[3cm]
+or by a newline command \newline
 or by a line break \linebreak
-or by a defined line break \linebreak[4]
+or by a defined line break \linebreak % again with a comment
+	[4]
 
 There are even newlines with weird arguments, but these are not
 handled by LyX\\*[1cm]
@@ -280,7 +285,8 @@ so we try to use ERT in this case.
 
 They can also or be broken by a newpage \newpage
 or by a page break \pagebreak
-or by a defined page break \pagebreak[4]
+or by a defined page break \pagebreak % again with a comment
+	[4]
 
 \section{Special characters\index{Special characters}}
 

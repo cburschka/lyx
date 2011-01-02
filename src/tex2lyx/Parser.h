@@ -131,6 +131,8 @@ public:
 	/// dump contents to screen
 	void dump() const;
 
+	/// Does an optional argument follow after the current token?
+	bool hasOpt();
 	///
 	typedef std::pair<bool, std::string> Arg;
 	/*!

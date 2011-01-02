@@ -293,6 +293,38 @@ char Parser::getChar()
 }
 
 
+bool Parser::hasOpt()
+{
+	// An optional argument can occur in any of the following forms:
+	// - \foo[bar]
+	// - \foo [bar]
+	// - \foo
+	//   [bar]
+	// - \foo %comment
+	//   [bar]
+
+	// remember current position
+	unsigned int oldpos = pos_;
+	// skip spaces and comments
+	while (good()) {
+		get_token();
+		if (isParagraph()) {
+			putback();
+			break;
+		}
+		if (curr_token().cat() == catSpace ||
+		    curr_token().cat() == catNewline ||
+		    curr_token().cat() == catComment)
+			continue;
+		putback();
+		break;
+	}
+	bool const retval = (next_token().asInput() == "[");
+	pos_ = oldpos;
+	return retval;
+}
+
+
 Parser::Arg Parser::getFullArg(char left, char right)
 {
 	skip_spaces(true);

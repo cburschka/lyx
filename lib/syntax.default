@@ -629,7 +629,16 @@ $$
 \textcircled{translate}
 \textcolor[]{,,}{translate}
 %\textcolor{}{}
-\textnormal{translate}
+\textbf{translate}     % hardcoded, but needed nevertheless for \let\xyz\textbf
+\textnormal{translate} % hardcoded, but needed nevertheless for \let\xyz\textnormal
+\textmd{translate}     % hardcoded, but needed nevertheless for \let\xyz\textmd
+\textit{translate}     % hardcoded, but needed nevertheless for \let\xyz\textit
+\textrm{translate}     % hardcoded, but needed nevertheless for \let\xyz\textrm
+\textsc{translate}     % hardcoded, but needed nevertheless for \let\xyz\textsc
+\textsf{translate}     % hardcoded, but needed nevertheless for \let\xyz\textsf
+\textsl{translate}     % hardcoded, but needed nevertheless for \let\xyz\textsl
+\texttt{translate}     % hardcoded, but needed nevertheless for \let\xyz\texttt
+\textup{translate}     % hardcoded, but needed nevertheless for \let\xyz\textup
 \textfraction
 \thanks{translate}
 \thicklines

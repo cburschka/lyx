@@ -455,7 +455,7 @@ void eat_whitespace(Parser &, ostream &, Context &, bool);
  * This should be called after a command has been parsed that is not put into
  * ERT, and where LyX adds "{}" if needed.
  */
-void skip_spaces_braces(Parser & p)
+void skip_spaces_braces(Parser & p, bool keepws = false)
 {
 	/* The following four examples produce the same typeset output and
 	   should be handled by this function:
@@ -471,7 +471,7 @@ void skip_spaces_braces(Parser & p)
 	// results in different output in some cases.
 	bool const skipped_spaces = p.skip_spaces(true);
 	bool const skipped_braces = skip_braces(p);
-	if (skipped_spaces && !skipped_braces)
+	if (keepws && skipped_spaces && !skipped_braces)
 		// put back the space (it is better handled by check_space)
 		p.unskip_spaces(true);
 }
@@ -643,17 +643,17 @@ void parse_box(Parser & p, ostream & os, unsigned flags, bool outer,
 	string height_unit = "in";
 	string height_special = "totalheight";
 	string latex_height;
-	if (p.next_token().asInput() == "[") {
+	if (p.hasOpt()) {
 		position = p.getArg('[', ']');
 		if (position != "t" && position != "c" && position != "b") {
 			position = "c";
 			cerr << "invalid position for minipage/parbox" << endl;
 		}
-		if (p.next_token().asInput() == "[") {
+		if (p.hasOpt()) {
 			latex_height = p.getArg('[', ']');
 			translate_box_len(latex_height, height_value, height_unit, height_special);
 
-			if (p.next_token().asInput() == "[") {
+			if (p.hasOpt()) {
 				inner_pos = p.getArg('[', ']');
 				if (inner_pos != "c" && inner_pos != "t" &&
 				    inner_pos != "b" && inner_pos != "s") {
@@ -794,9 +794,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		eat_whitespace(p, os, parent_context, false);
 		parent_context.check_layout(os);
 		begin_inset(os, "Float " + unstarred_name + "\n");
-		if (p.next_token().asInput() == "[") {
+		if (p.hasOpt())
 			os << "placement " << p.getArg('[', ']') << '\n';
-		}
 		os << "wide " << convert<string>(is_starred)
 		   << "\nsideways false"
 		   << "\nstatus open\n\n";
@@ -2464,19 +2463,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.setEncoding(enc);
 		}
 
-		else if (t.cs() == "LyX" || t.cs() == "TeX"
-			 || t.cs() == "LaTeX") {
-			context.check_layout(os);
-			os << t.cs();
-			skip_spaces_braces(p);
-		}
-
-		else if (t.cs() == "LaTeXe") {
-			context.check_layout(os);
-			os << "LaTeX2e";
-			skip_spaces_braces(p);
-		}
-
 		else if (t.cs() == "ldots") {
 			context.check_layout(os);
 			os << "\\SpecialChar \\ldots{}\n";
@@ -2603,11 +2589,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "\\") {
 			context.check_layout(os);
-			string const next = p.next_token().asInput();
-			if (next == "[")
+			if (p.hasOpt())
 				handle_ert(os, "\\\\" + p.getOpt(), context);
-			else if (next == "*") {
+			else if (p.next_token().asInput() == "*") {
 				p.get_token();
+				// getOpt() eats the following space if there
+				// is no optional argument, but that is OK
+				// here since it has no effect in the output.
 				handle_ert(os, "\\\\*" + p.getOpt(), context);
 			}
 			else {
@@ -2617,8 +2605,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "newline" ||
-		         (t.cs() == "linebreak" &&
-		          p.next_token().asInput() != "[")) {
+		         (t.cs() == "linebreak" && !p.hasOpt())) {
 			context.check_layout(os);
 			begin_inset(os, "Newline ");
 			os << t.cs();
@@ -2804,8 +2791,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "newpage" ||
-		         (t.cs() == "pagebreak" &&
-		          p.next_token().asInput() != "[") ||
+		         (t.cs() == "pagebreak" && !p.hasOpt()) ||
 		         t.cs() == "clearpage" ||
 		         t.cs() == "cleardoublepage") {
 			context.check_layout(os);
@@ -2843,7 +2829,38 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				end_inset(os);
 			}
 		}
-		
+
+		else if (t.cs() == "let" && p.next_token().asInput() != "*") {
+			// let could be handled by parse_command(),
+			// but we need to call add_known_command() here.
+			string ert = t.asInput();
+			string name;
+			p.skip_spaces();
+			if (p.next_token().cat() == catBegin) {
+				name = p.verbatim_item();
+				ert += '{' + name + '}';
+			} else {
+				name = p.verbatim_item();
+				ert += name;
+			}
+			string command;
+			p.skip_spaces();
+			if (p.next_token().cat() == catBegin) {
+				command = p.verbatim_item();
+				ert += '{' + command + '}';
+			} else {
+				command = p.verbatim_item();
+				ert += command;
+			}
+			// If command is known, make name known too, to parse
+			// its arguments correctly. For this reason we also
+			// have commands in syntax.default that are hardcoded.
+			CommandMap::iterator it = known_commands.find(command);
+			if (it != known_commands.end())
+				known_commands[t.asInput()] = it->second;
+			handle_ert(os, ert, context);
+		}
+
 		else if (t.cs() == "hspace" || t.cs() == "vspace") {
 			bool starred = false;
 			if (p.next_token().asInput() == "*") {

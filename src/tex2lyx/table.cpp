@@ -968,6 +968,7 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 				// special cell properties alignment
 				vector<ColInfo> t;
 				handle_colalign(p, t, ColInfo());
+				p.skip_spaces(true);
 				ColInfo & ci = t.front();
 
 				// The logic of LyX for multicolumn vertical
