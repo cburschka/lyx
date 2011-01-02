@@ -110,7 +110,9 @@ std::ostream & operator<<(std::ostream & os, Token const & t);
  */
 
 class Parser {
-
+	/// noncopyable
+	Parser(Parser const & p);
+	Parser & operator=(Parser const & p);
 public:
 	///
 	Parser(idocstream & is);
@@ -128,6 +130,10 @@ public:
 	int lineno() const { return lineno_; }
 	///
 	void putback();
+	/// store current position
+	void pushPosition();
+	/// restore previous position
+	void popPosition();
 	/// dump contents to screen
 	void dump() const;
 
@@ -228,6 +234,8 @@ private:
 	std::vector<Token> tokens_;
 	///
 	unsigned pos_;
+	///
+	std::vector<unsigned> positions_;
 	///
 	idocstringstream * iss_;
 	///

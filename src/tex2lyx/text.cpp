@@ -2272,7 +2272,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << "after " << '"' << after << '"' << "\n";
 				os << "key " << '"' << key << '"' << "\n";
 				end_inset(os);
-			} else
+			} else if (t.cs() == "nocite")
 				btprint = key;
 		}
 
@@ -2722,9 +2722,30 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "bibliographystyle") {
 			// store new bibliographystyle
 			bibliographystyle = p.verbatim_item();
-			// output new bibliographystyle.
-			// This is only necessary if used in some other macro than \bibliography.
-			handle_ert(os, "\\bibliographystyle{" + bibliographystyle + "}", context);
+			// If any other command than \bibliography and
+			// \nocite{*} follows, we need to output the style
+			// (because it might be used by that command).
+			// Otherwise, it will automatically be output by LyX.
+			p.pushPosition();
+			bool output = true;
+			for (Token t2 = p.get_token(); p.good(); t2 = p.get_token()) {
+				if (t2.cat() == catBegin)
+					break;
+				if (t2.cat() != catEscape)
+					continue;
+				if (t2.cs() == "nocite") {
+					if (p.getArg('{', '}') == "*")
+						continue;
+				} else if (t2.cs() == "bibliography")
+					output = false;
+				break;
+			}
+			p.popPosition();
+			if (output) {
+				handle_ert(os,
+					"\\bibliographystyle{" + bibliographystyle + '}',
+					context);
+			}
 		}
 
 		else if (t.cs() == "bibliography") {

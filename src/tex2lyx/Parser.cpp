@@ -276,6 +276,19 @@ void Parser::putback()
 }
 
 
+void Parser::pushPosition()
+{
+	positions_.push_back(pos_);
+}
+
+
+void Parser::popPosition()
+{
+	pos_ = positions_.back();
+	positions_.pop_back();
+}
+
+
 bool Parser::good()
 {
 	if (pos_ < tokens_.size())
