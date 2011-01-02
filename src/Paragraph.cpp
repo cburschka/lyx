@@ -3634,6 +3634,11 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 					LYXERR(Debug::GUI, "misspelled word is correct with dot: \"" <<
 					   word << "\" [" <<
 					   from << ".." << to << "]");
+				} else {
+					// spell check with dot appended failed
+					// restore original word/lang value
+					word = asString(from, to, AS_STR_INSETS | AS_STR_SKIPDELETE);
+					wl = WordLangTuple(word, lang);
 				}
 			}
 		}
