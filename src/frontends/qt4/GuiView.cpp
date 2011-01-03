@@ -631,6 +631,19 @@ void GuiView::saveLayout() const
 }
 
 
+void GuiView::saveUISettings() const
+{
+	// Save the toolbar private states
+	ToolbarMap::iterator end = d.toolbars_.end();
+	for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
+		it->second->saveSession();
+	// Now take care of all other dialogs
+	map<string, DialogPtr>::const_iterator it = d.dialogs_.begin();
+	for (; it!= d.dialogs_.end(); ++it)
+		it->second->saveSession();
+}
+
+
 bool GuiView::restoreLayout()
 {
 	QSettings settings;
@@ -862,16 +875,8 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	// Saving fullscreen requires additional tweaks in the toolbar code.
 	// It wouldn't also work under linux natively.
 	if (lyxrc.allow_geometry_session) {
-		// Save this window geometry and layout.
 		saveLayout();
-		// Then the toolbar private states.
-		ToolbarMap::iterator end = d.toolbars_.end();
-		for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
-			it->second->saveSession();
-		// Now take care of all other dialogs:
-		map<string, DialogPtr>::const_iterator it = d.dialogs_.begin();
-		for (; it!= d.dialogs_.end(); ++it)
-			it->second->saveSession();
+		saveUISettings();
 	}
 
 	close_event->accept();
@@ -3726,6 +3731,7 @@ void GuiView::resetDialogs()
 	// Make sure that no LFUN uses any GuiView.
 	guiApp->setCurrentView(0);
 	saveLayout();
+	saveUISettings();
 	menuBar()->clear();
 	constructToolbars();
 	guiApp->menus().fillMenuBar(menuBar(), this, false);
