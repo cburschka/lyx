@@ -112,8 +112,6 @@ private:
 	void showEvent(QShowEvent *);
 
 	///
-	QString name_;
-	///
 	QList<Action *> actions_;
 	/// initial visibility flags
 	int visibility_;
