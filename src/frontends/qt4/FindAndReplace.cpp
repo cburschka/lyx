@@ -315,6 +315,7 @@ docstring getQuestionString(FindAndReplaceOptions const & opt)
 
 void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt)
 {
+	view_.setBusy(true);
 	int wrap_answer = -1;
 	ostringstream oss;
 	oss << opt;
@@ -349,6 +350,7 @@ void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt)
 		LYXERR(Debug::FIND, "dispatched");
 		if (bv->cursor().result().dispatched()) {
 			// New match found and selected (old selection replaced if needed)
+			view_.setBusy(false);
 			return;
 		}
 
@@ -359,9 +361,11 @@ void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt)
 			if (wrap_answer != -1)
 				break;
 			docstring q = getQuestionString(opt);
+			view_.setBusy(false);
 			wrap_answer = frontend::Alert::prompt(
 				_("Wrap search?"), q,
 				0, 1, _("&Yes"), _("&No"));
+			view_.setBusy(true);
 			if (wrap_answer == 1)
 				break;
 		}
@@ -389,6 +393,7 @@ void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt)
 	if (cur_orig.pos() > cur_orig.lastpos())
 		cur_orig.pos() = cur_orig.lastpos();
 	bv->cursor().setCursor(cur_orig);
+	view_.setBusy(false);
 }
 
 
@@ -462,9 +467,7 @@ void FindAndReplaceWidget::findAndReplace(
 	FindAndReplaceOptions opt(searchString, casesensitive, matchword,
 				  !backwards, expandmacros, ignoreformat,
 				  regexp, replaceString, keep_case, scope);
-	view_.setBusy(true);
 	findAndReplaceScope(opt);
-	view_.setBusy(false);
 }
 
 
