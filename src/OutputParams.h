@@ -99,6 +99,14 @@ public:
 	*/
 	mutable bool inulemcmd;
 
+	/** Whether we are in the process of outputting title information. 
+	 */ 
+ 	mutable bool inTitle; 
+
+	/** Whether we have arleady output \maketitle or whatever.
+	 */
+	mutable bool didTitle;
+
 	/** the font at the point where the inset is
 	 */
 	Font const * local_font;
