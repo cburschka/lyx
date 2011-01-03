@@ -1578,7 +1578,8 @@ GuiWorkArea * TabWorkArea::addWorkArea(Buffer & buffer, GuiView & view)
 	// when hiding it again below).
 	if (!(currentWorkArea() && currentWorkArea()->isFullScreen()))
 		showBar(count() > 0);
-	addTab(wa, wa->windowTitle());
+	int const index = addTab(wa, wa->windowTitle());
+	setTabToolTip(index, wa->windowTitle());
 	QObject::connect(wa, SIGNAL(titleChanged(GuiWorkArea *)),
 		this, SLOT(updateTabTexts()));
 	if (currentWorkArea() && currentWorkArea()->isFullScreen())
