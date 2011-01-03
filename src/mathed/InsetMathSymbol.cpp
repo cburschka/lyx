@@ -60,8 +60,12 @@ void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 	//	<< "' drawn as: '" << sym_->draw
 	//	<< "'" << endl;
 
+	bool const italic_upcase_greek = sym_->inset == "cmr" &&
+					 sym_->extra == "mathalpha" &&
+					 mi.base.fontname == "mathit";
+	docstring const font = italic_upcase_greek ? from_ascii("cmm") : sym_->inset;
 	int const em = mathed_char_width(mi.base.font, 'M');
-	FontSetChanger dummy(mi.base, sym_->inset);
+	FontSetChanger dummy(mi.base, font);
 	mathed_string_dim(mi.base.font, sym_->draw, dim);
 	docstring::const_reverse_iterator rit = sym_->draw.rbegin();
 	kerning_ = mathed_char_kerning(mi.base.font, *rit);
@@ -91,13 +95,18 @@ void InsetMathSymbol::draw(PainterInfo & pi, int x, int y) const
 	//	<< "' in font: '" << sym_->inset
 	//	<< "' drawn as: '" << sym_->draw
 	//	<< "'" << endl;
+
+	bool const italic_upcase_greek = sym_->inset == "cmr" &&
+					 sym_->extra == "mathalpha" &&
+					 pi.base.fontname == "mathit";
+	docstring const font = italic_upcase_greek ? from_ascii("cmm") : sym_->inset;
 	int const em = mathed_char_width(pi.base.font, 'M');
 	if (isRelOp())
 		x += static_cast<int>(0.25*em+0.5);
 	else
 		x += static_cast<int>(0.0833*em+0.5);
 
-	FontSetChanger dummy(pi.base, sym_->inset.c_str());
+	FontSetChanger dummy(pi.base, font);
 	pi.draw(x, y - h_, sym_->draw);
 }
 
