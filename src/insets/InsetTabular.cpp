@@ -518,9 +518,6 @@ string const featureAsString(Tabular::Feature action)
 InsetTableCell splitCell(InsetTableCell & head, docstring const align_d, bool & hassep)
 {
 	InsetTableCell tail = InsetTableCell(head);
-	tail.getText(0)->setMacrocontextPosition(
-		head.getText(0)->macrocontextPosition());
-	tail.setBuffer(head.buffer());
 
 	DocIterator dit = doc_iterator_begin(&head.buffer(), &head);
 	for (; dit; dit.forwardChar())
@@ -2524,6 +2521,9 @@ int Tabular::TeXRow(odocstream & os, row_type row,
 			head.setBuffer(buffer());
 			bool hassep = false;
 			InsetTableCell tail = splitCell(head, column_info[c].decimal_point, hassep);
+			tail.getText(0)->setMacrocontextPosition(
+				head.getText(0)->macrocontextPosition());
+			tail.setBuffer(head.buffer());
 			head.latex(os, newrp);
 			os << '&';
 			ret += tail.latex(os, newrp);
@@ -3437,6 +3437,9 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 				bool hassep = false;
 				InsetTableCell tail = 
 					splitCell(head, tabular.column_info[c].decimal_point, hassep);
+				tail.getText(0)->setMacrocontextPosition(
+					head.getText(0)->macrocontextPosition());
+				tail.setBuffer(head.buffer());
 				Dimension dim1;
 				head.metrics(m, dim1);
 				decimal_hoffset = dim1.width();
