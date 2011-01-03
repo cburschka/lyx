@@ -326,7 +326,17 @@ void GuiToolbar::saveSession() const
 void GuiToolbar::restoreSession()
 {
 	QSettings settings;
-	setVisibility(settings.value(sessionKey() + "/visibility").toInt());
+	int const error_val = -1;
+	int visibility =
+		settings.value(sessionKey() + "/visibility", error_val).toInt();
+	if (visibility == error_val || visibility == 0) {
+		// The settings have not been found. This can happen when
+		// the ui file has changed so that we use the settings from
+		// the new ui file rather than the old settings.
+		visibility = 
+			guiApp->toolbars().defaultVisibility(fromqstr(objectName()));
+	}
+	setVisibility(visibility);
 }
 
 
