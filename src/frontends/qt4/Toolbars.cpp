@@ -370,7 +370,7 @@ void Toolbars::readToolbarSettings(Lexer & lex)
 		}
 		toolbar_visibility_[name] = visibility;
 
-		if (visibility >= MATH) {
+		if (visibility & ALLOWAUTO) {
 			if (ToolbarInfo const * ti = info(name))
 				const_cast<ToolbarInfo *>(ti)->gui_name +=
 					" (" + _("auto") + ")";
