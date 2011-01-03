@@ -945,7 +945,17 @@ void GuiToolbar::saveSession() const
 void GuiToolbar::restoreSession()
 {
 	QSettings settings;
-	setVisibility(settings.value(sessionKey() + "/visibility").toInt());
+	int const error_val = -1;
+	int visibility =
+		settings.value(sessionKey() + "/visibility", error_val).toInt();
+	if (visibility == error_val || visibility == 0) {
+		// This should not happen, but in case it does, we use the defaults
+		LYXERR0("Session settings could not be found!. "
+			"Defaults are used instead");
+		visibility = 
+			guiApp->toolbars().defaultVisibility(fromqstr(objectName()));
+	}
+	setVisibility(visibility);
 }
 
 
