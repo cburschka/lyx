@@ -4,20 +4,20 @@
 #
 # Lars Gullik Bjønnes <larsbj@lyx.org>, 1999.
 # Ingar Pareliussen <ingar.pareliussen@samfundet.no>, 2003,2005,2006, 2006, 2007, 2010.
-# Ingar Pareliussen <ingar.pareliussen@_dmmh_no>, 2010.
+# Ingar Pareliussen <ingar.pareliussen@_dmmh_no>, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-12-28 23:31+0100\n"
-"PO-Revision-Date: 2010-11-20 20:04+0100\n"
+"PO-Revision-Date: 2011-01-02 19:39+0100\n"
 "Last-Translator: Ingar Pareliussen <ingar.pareliussen@_dmmh_no>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Language: nn_NO\n"
 "X-Source-Language: C\n"
@@ -1466,10 +1466,12 @@ msgstr "SkrifttypeUI"
 #: src/frontends/qt4/ui/FontUi.ui:19
 msgid "Use OpenType- and TrueType fonts directly (requires XeTeX or LuaTeX)"
 msgstr ""
+"Brukar OpenType- og TrueType-skriftypar direkte (du treng XeTeX eller LuaTeX "
+") "
 
 #: src/frontends/qt4/ui/FontUi.ui:22
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
-msgstr ""
+msgstr "Br&uk ikkje TeX sine skrifttypar (gjennom XeTeX/LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:42
 msgid "&Default Family:"
@@ -2925,9 +2927,8 @@ msgid "A&lter..."
 msgstr "&Endra..."
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:62
-#, fuzzy
 msgid "&Use system colors"
-msgstr "Bruk systemfargane"
+msgstr "Br&uk systemfargane"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:25
 msgid "In Math"
@@ -3148,11 +3149,11 @@ msgstr "Endra mattemakroar med parameterliste (Slik som i LyX <1.6)"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:97
 msgid "Skip trailing non-word characters"
-msgstr ""
+msgstr "Hopp over slutteikn som ikkje høyrer til ord"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:100
 msgid "Use Mac-style for cursor moving between &words"
-msgstr ""
+msgstr "Bruk Mac-stil peikarrørsle for å skifte ord"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:110
 msgid "Fullscreen"
@@ -3325,22 +3326,19 @@ msgstr "Språ&k pakke:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:51
 msgid "Select which language package LyX should use"
-msgstr ""
+msgstr "Vel kva språkpakke LyX skal bruke"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:55
-#, fuzzy
 msgid "Automatic"
-msgstr "Automatisk hjelp"
+msgstr "Automatisk"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:60
-#, fuzzy
 msgid "Always Babel"
-msgstr "Byt alltid"
+msgstr "Alltid Babel"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:70
-#, fuzzy
 msgid "None[[language package]]"
-msgstr "Språ&k pakke:"
+msgstr "Ingen [[Språk pakke]]"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:78
 msgid "Enter the command to load the language package (default: babel)"
@@ -3376,7 +3374,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:163
 msgid "Set languages &globally"
-msgstr ""
+msgstr "Vel språk &globalt"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:170
 msgid ""
@@ -3654,9 +3652,8 @@ msgid "&Working directory:"
 msgstr "&Arbeidskatalog:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:215
-#, fuzzy
 msgid "H&unspell dictionaries:"
-msgstr "Hunspellordbøker:"
+msgstr "H&unspellordbøker:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:41
 msgid "Printer Command Options"
@@ -3898,9 +3895,8 @@ msgid "Accept compound &words"
 msgstr "Godta sa&mansetteord"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:74
-#, fuzzy
 msgid "Mark misspelled words with a underline."
-msgstr "Merk feilstava ord med bølgjalinje"
+msgstr "Merk feilstava ord med ei linje under"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:77
 msgid "S&pellcheck continuously"
@@ -3993,11 +3989,12 @@ msgid "&Open documents in tabs"
 msgstr "&Opna dokumentet i faner"
 
 #: src/frontends/qt4/ui/PrefUi.ui:245
-#, fuzzy
 msgid ""
 "Whether to open documents in an already running instance of LyX.\n"
 "(Set the LyXServer pipe path and restart LyX to enable this feature)"
-msgstr "Om du skal opne dokumentet i eit LyX windauge som er ope frå før."
+msgstr ""
+"Om du skal opne dokumentet i eit LyX windauge som er ope frå før.\n"
+"(Hugs å  sette stig til LyXServer sitt datarøyr og start LyX på nytt)"
 
 #: src/frontends/qt4/ui/PrefUi.ui:248
 msgid "S&ingle instance"
@@ -4017,9 +4014,8 @@ msgid "&Save"
 msgstr "&Lagra"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:13
-#, fuzzy
 msgid "Nomenclature settings"
-msgstr "&quot;Nomenklatur val&quot;"
+msgstr "Nomenklatur val"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:19
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:32
@@ -4032,14 +4028,13 @@ msgstr "&liste innrykk"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:39
 msgid "Custom &Width:"
-msgstr "Kolonne&breidd"
+msgstr "Spesialtilpassa breidd"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
-#, fuzzy
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
 msgstr ""
-"Spesialtilpassa verdiar. &quot;Liste innrykk &quot;må byttast ut med &quot;"
-"spesialtilpassa&quot;"
+"Spesialtilpassa verdiar. \"Liste innrykk\" må byttast ut med "
+"\"Spesialtilpassa\""
 
 #: src/frontends/qt4/ui/PrintUi.ui:28
 msgid "Pages"
@@ -4238,9 +4233,8 @@ msgid "Cas&e-sensitive"
 msgstr "&Skil mellom små og store bokstavar"
 
 #: src/frontends/qt4/ui/RefUi.ui:188
-#, fuzzy
 msgid "Group labels by prefix (e.g. \"sec:\")"
-msgstr "Grupper etikettane etter prefiks: (f.eks. &quot;bolk:&quot;)"
+msgstr "Grupper etikettane etter prefiks: (f.eks. \"bolk:\")"
 
 #: src/frontends/qt4/ui/RefUi.ui:191
 msgid "Grou&p"
@@ -4486,7 +4480,6 @@ msgid "&Vertical Offset:"
 msgstr "L&oddrett avstand:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:275
-#, fuzzy
 msgid "Optional vertical offset"
 msgstr "Valfri loddrett avstand"
 
@@ -4945,14 +4938,12 @@ msgid "VFill"
 msgstr "Fyll vertikalt"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:34
-#, fuzzy
 msgid "&Output Format:"
-msgstr "Førehandsvisingsformat"
+msgstr "&Førehandsvisingsformat:"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:44
-#, fuzzy
 msgid "Select the output format"
-msgstr "Standard førehandsvising"
+msgstr "Vel standard førehandsvising"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:54
 msgid "Complete source"
@@ -9606,9 +9597,8 @@ msgid "foot"
 msgstr "fot"
 
 #: lib/layouts/stdinsets.inc:110
-#, fuzzy
 msgid "Greyedout"
-msgstr "Som Grå-tekst"
+msgstr "Gråtekst"
 
 #: lib/layouts/stdinsets.inc:134 src/insets/InsetERT.cpp:150
 #: src/insets/InsetERT.cpp:152
@@ -9820,14 +9810,13 @@ msgid "Custom Header/Footerlines"
 msgstr "Tilpassa Hovud/botnlinjer"
 
 #: lib/layouts/customHeadersFooters.module:7
-#, fuzzy
 msgid ""
 "Adds environments to define header and footer lines. NOTE: To use this "
 "module you must set the 'Headings style' in the menu Document Settings -> "
 "Page Layout to 'fancy'!"
 msgstr ""
-"Legg til miljø som gir deg hovud- og botn-linjer. HUSK: at du må hugse å "
-"bytte hovudstil i menyen: Dokument val->sidestil til frodig."
+"Legg til miljø som gir deg hovud- og botn-linjer. HUGS: Du må bytte "
+"hovudstil i menyen: Dokument val-> sidestil til frodig."
 
 #: lib/layouts/customHeadersFooters.module:29
 msgid "Center Header"
@@ -9870,19 +9859,17 @@ msgid "endnote"
 msgstr "sluttnotar"
 
 #: lib/layouts/enumitem.module:2
-#, fuzzy
 msgid "Customizable Lists (enumitem)"
 msgstr "Tilpassa lister (enumitem)"
 
 #: lib/layouts/enumitem.module:7
-#, fuzzy
 msgid ""
 "Controls the layout of enumerate, itemize and description with an optional "
 "argument. See http://mirror.ctan.org/macros/latex/contrib/enumitem/enumitem."
 "pdf"
 msgstr ""
 "Kontroller stilen på nummererte-, punkt og beskrivande-lister. Sjå http://"
-"dante.ctan.org/CTAN/macros/latex/contrib/enumitem/enumitem.pdf"
+"mirror.ctan.org/CTAN/macros/latex/contrib/enumitem/enumitem.pdf"
 
 #: lib/layouts/enumitem.module:112
 msgid "Enumerate-Resume"
@@ -9913,9 +9900,8 @@ msgstr ""
 "føre, slik som Figur 2.1"
 
 #: lib/layouts/fixltx2e.module:2
-#, fuzzy
 msgid "Fix LaTeX"
-msgstr "LaTeX"
+msgstr "Fiks LaTeX"
 
 #: lib/layouts/fixltx2e.module:9
 msgid ""
@@ -9925,6 +9911,11 @@ msgid ""
 "different when you process it with future LaTeX versions, because fixltx2e "
 "may provide more bugfixes in future versions."
 msgstr ""
+"Lastar LaTeX pakken fixltx2e som inneheld eindel feilrettingar for LaTeX. "
+"Desse feilrettingane er ikkje ein del av LaTeXkjerna "
+"fordi dei ikkje er kompatible bakover. Om du brukar denne modulen kan "
+"sluttresultatet bli ulikt i framtida "
+"fordi det kan kome nye feilrettingar i framtida."
 
 #: lib/layouts/foottoend.module:2
 msgid "Foot to End"
@@ -10109,7 +10100,6 @@ msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
 msgstr "Omgjer fleire innskot  (Indeks, Grein, URL) til minimalistiske."
 
 #: lib/layouts/noweb.module:2
-#, fuzzy
 msgid "Noweb"
 msgstr "NoWeb"
 
@@ -10127,13 +10117,12 @@ msgid "Sweave"
 msgstr "Sweave"
 
 #: lib/layouts/sweave.module:5
-#, fuzzy
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
 "via Sweave package."
 msgstr ""
 "Tillet bruk av statistiskeverkty slik som S eller R til litterær "
-"programmering"
+"programmering gjennom Sweave pakken"
 
 #: lib/layouts/sweave.module:27
 msgid "Chunk"
@@ -10488,7 +10477,6 @@ msgid "Named Theorems"
 msgstr "Namngjevne Teorem"
 
 #: lib/layouts/theorems-named.module:7
-#, fuzzy
 msgid ""
 "Facilitates the use of named theorems. The name of the theorem goes into the "
 "'Short Title' inset."
@@ -10766,11 +10754,11 @@ msgstr "Mongol"
 
 #: lib/languages:592
 msgid "Norwegian (Bokmaal)"
-msgstr ""
+msgstr "Norsk (Bokmål)"
 
 #: lib/languages:600
 msgid "Norwegian (Nynorsk)"
-msgstr ""
+msgstr "Norsk (Nynorsk)"
 
 #: lib/languages:625
 msgid "Polish"
@@ -11544,7 +11532,7 @@ msgstr "Lite mellomrom|t"
 
 #: lib/ui/classic.ui:250 lib/ui/stdmenus.inc:394
 msgid "Horizontal Space...|o"
-msgstr "Loddrett avstand...|o"
+msgstr "Vassrett avstand...|o"
 
 #: lib/ui/classic.ui:251
 msgid "Vertical Space..."
@@ -12486,9 +12474,8 @@ msgid "Right|h"
 msgstr "Høgre|H"
 
 #: lib/ui/stdcontext.inc:385
-#, fuzzy
 msgid "Decimal"
-msgstr "epost:"
+msgstr "Desimal"
 
 #: lib/ui/stdcontext.inc:391
 msgid "Append Row|A"
@@ -14057,9 +14044,8 @@ msgid "ddots"
 msgstr "ddots"
 
 #: lib/ui/stdtoolbars.inc:387
-#, fuzzy
 msgid "iddots"
-msgstr "ddots"
+msgstr "iddots"
 
 #: lib/ui/stdtoolbars.inc:390
 msgid "Frame Decorations"
@@ -14531,7 +14517,7 @@ msgstr "neq"
 
 #: lib/ui/stdtoolbars.inc:516
 msgid "in[[math relation]]"
-msgstr ""
+msgstr "in[[matte relasjon]]"
 
 #: lib/ui/stdtoolbars.inc:517
 msgid "ni"
@@ -14674,59 +14660,48 @@ msgid "omega"
 msgstr "omega"
 
 #: lib/ui/stdtoolbars.inc:555
-#, fuzzy
 msgid "varGamma"
-msgstr "Gamma"
+msgstr "varGamma"
 
 #: lib/ui/stdtoolbars.inc:556
-#, fuzzy
 msgid "varDelta"
-msgstr "Delta"
+msgstr "varDelta"
 
 #: lib/ui/stdtoolbars.inc:557
-#, fuzzy
 msgid "varTheta"
-msgstr "vartheta"
+msgstr "varTheta"
 
 #: lib/ui/stdtoolbars.inc:558
-#, fuzzy
 msgid "varLambda"
-msgstr "Lambda"
+msgstr "varLambda"
 
 #: lib/ui/stdtoolbars.inc:559
-#, fuzzy
 msgid "varXi"
-msgstr "varpi"
+msgstr "varXi"
 
 #: lib/ui/stdtoolbars.inc:560
-#, fuzzy
 msgid "varPi"
-msgstr "varpi"
+msgstr "varPi"
 
 #: lib/ui/stdtoolbars.inc:561
-#, fuzzy
 msgid "varSigma"
-msgstr "varsigma"
+msgstr "varSigma"
 
 #: lib/ui/stdtoolbars.inc:562
-#, fuzzy
 msgid "varUpsilon"
-msgstr "varepsilon"
+msgstr "varUpsilon"
 
 #: lib/ui/stdtoolbars.inc:563
-#, fuzzy
 msgid "varPhi"
-msgstr "varphi"
+msgstr "varPhi"
 
 #: lib/ui/stdtoolbars.inc:564
-#, fuzzy
 msgid "varPsi"
-msgstr "Farsi"
+msgstr "varPsi"
 
 #: lib/ui/stdtoolbars.inc:565
-#, fuzzy
 msgid "varOmega"
-msgstr "Omega"
+msgstr "varOmega"
 
 #: lib/ui/stdtoolbars.inc:566
 msgid "Gamma"
@@ -15970,11 +15945,11 @@ msgstr "intercal"
 
 #: lib/external_templates:36
 msgid "GnumericSpreadsheet"
-msgstr ""
+msgstr "GnumericRekneark"
 
 #: lib/external_templates:37 lib/external_templates:44
 msgid "Spreadsheet"
-msgstr ""
+msgstr "Rekneark"
 
 #: lib/external_templates:39
 msgid ""
@@ -15984,6 +15959,10 @@ msgid ""
 "The gnumeric software is necessary for conversion,\n"
 "both for gnumeric and excel files.\n"
 msgstr ""
+"Eir rekneark laga i gnumeric, openoffice eller excel.\n"
+"Den blir importert som ein lang-tabell, så lengd\n"
+"er ok. Stor breidd kan vere eit problem.\n"
+"Gnumeric er naudsynt både for gnumeric- og excel-rekneark.\n"
 
 #: lib/external_templates:76
 msgid "RasterImage"
@@ -16251,9 +16230,8 @@ msgid "LaTeX (plain)|L"
 msgstr "LaTeX (enkel)|L"
 
 #: lib/configure.py:510
-#, fuzzy
 msgid "LaTeX (LuaTeX)"
-msgstr "LaTeX (pLaTeX)"
+msgstr "LaTeX (LuaTeX)"
 
 #: lib/configure.py:511
 msgid "LaTeX (pdflatex)"
@@ -16289,24 +16267,23 @@ msgstr "Rein tekst, knyt saman linjer"
 
 #: lib/configure.py:520
 msgid "Gnumeric spreadsheet"
-msgstr ""
+msgstr "Gnumeric-rekneark"
 
 #: lib/configure.py:521
 msgid "Excel spreadsheet"
-msgstr ""
+msgstr "Excel-rekneark"
 
 #: lib/configure.py:522
 msgid "OpenOffice spreadsheet"
-msgstr ""
+msgstr "Openoffice-rekneark"
 
 #: lib/configure.py:525 lib/configure.py:527
 msgid "LyXHTML"
 msgstr "LyXHTML"
 
 #: lib/configure.py:525 lib/configure.py:527
-#, fuzzy
 msgid "LyXHTML|y"
-msgstr "LyXHTML|X"
+msgstr "LyXHTML|y"
 
 #: lib/configure.py:534 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
@@ -16357,14 +16334,12 @@ msgid "PDF (XeTeX)|X"
 msgstr "PDF(XeTeX)|X"
 
 #: lib/configure.py:548
-#, fuzzy
 msgid "PDF (LuaTeX)"
-msgstr "PDF (XeTeX)"
+msgstr "PDF (LuaTeX)"
 
 #: lib/configure.py:548
-#, fuzzy
 msgid "PDF (LuaTeX)|u"
-msgstr "PDF(XeTeX)|X"
+msgstr "PDF(LuaTeX)|u"
 
 #: lib/configure.py:551
 msgid "DVI"
@@ -16375,14 +16350,12 @@ msgid "DVI|D"
 msgstr "DVI|D"
 
 #: lib/configure.py:552
-#, fuzzy
 msgid "DVI (LuaTeX)"
-msgstr "LaTeX (pLaTeX)"
+msgstr "DVI (LuaLaTeX)"
 
 #: lib/configure.py:552
-#, fuzzy
 msgid "DVI (LuaTeX)|V"
-msgstr "LaTeX (pLaTeX)"
+msgstr "DVI (LuaLaTeX)"
 
 #: lib/configure.py:555
 msgid "DraftDVI"
@@ -16494,7 +16467,6 @@ msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
 #: lib/configure.py:668
-#, fuzzy
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
 
@@ -16672,32 +16644,31 @@ msgid "Conversion script failed"
 msgstr "Feil ved køyring av eksport programmet"
 
 #: src/Buffer.cpp:997
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
 "convert it."
 msgstr ""
-"%1$s vart laga i ein gammal LyX versjon. men lyx2lyx-programmet klarte ikkje "
+"%1$s vart laga i ein gammal LyX-versjon og lyx2lyx-programmet klarte ikkje "
 "å konvertere det."
 
 #: src/Buffer.cpp:1004
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
 "it."
 msgstr ""
-"%1$s vart laga i ein nyare LyX versjon. men lyx2lyx-programmet klarte ikkje "
+"%1$s vart laga i ein nyare LyX-versjon og lyx2lyx-programmet klarte ikkje "
 "å konvertere det."
 
 #: src/Buffer.cpp:1025 src/Buffer.cpp:3763 src/Buffer.cpp:3825
-#, fuzzy
 msgid "File is read-only"
-msgstr "Dokumentet kan berre bli lest frå"
+msgstr "Fila kan berre bli lest frå"
 
 #: src/Buffer.cpp:1026
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
-msgstr ""
+msgstr "Fila %1$s  kan ikkje skrivast fordi den er merka som berre for lesing."
 
 #: src/Buffer.cpp:1035
 #, c-format
@@ -16750,24 +16721,21 @@ msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Prøver å skrive dokumentet %1$s\n"
 
 #: src/Buffer.cpp:1137 src/Buffer.cpp:1150 src/Buffer.cpp:1164
-#, fuzzy, c-format
+#, c-format
 msgid "Saved to %1$s. Phew.\n"
-msgstr "Vi klarte truleg å lagre dokumentet.%1$s :-)\n"
+msgstr "Lagra til.%1$s.\n"
 
 #: src/Buffer.cpp:1140
-#, fuzzy
 msgid "Save failed! Trying again...\n"
-msgstr "  Lagring fungerte ikkje. Prøver igjen...\n"
+msgstr "Klarte ikkje å lagre. Prøver igjen...\n"
 
 #: src/Buffer.cpp:1154
-#, fuzzy
 msgid "Save failed! Trying yet again...\n"
-msgstr "  Lagring fungerte ikkje. Prøver igjen på nytt...\n"
+msgstr "Klarte ikkje lagre. Prøver igjen på nytt...\n"
 
 #: src/Buffer.cpp:1168
-#, fuzzy
 msgid "Save failed! Bummer. Document is lost."
-msgstr "  Lagring fungerte ikkje. Diverre har dokumentet gått tapt."
+msgstr "Lagring fungerte ikkje. Diverre har dokumentet gått tapt."
 
 #: src/Buffer.cpp:1255
 msgid "Iconv software exception Detected"
@@ -16978,6 +16946,8 @@ msgid ""
 "An emergency file is succesfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
+"Ein nødkopi er lasta, men originalen %1$s er merka som berre for lesing. "
+"Lagra derfor dokumentet under eit anna namn."
 
 #: src/Buffer.cpp:3770
 msgid "Document was successfully recovered."
@@ -17045,6 +17015,8 @@ msgid ""
 "A backup file is succesfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
+"Ein reservekopi er lasta, men originalen %1$s er merka som berre for lesing. "
+"Lagra derfor dokumentet under eit anna namn."
 
 #: src/Buffer.cpp:4131 src/insets/InsetCaption.cpp:339
 msgid "Senseless!!! "
@@ -17076,7 +17048,7 @@ msgstr ""
 "utilgjengeleg. Du må oppdatere underdokumentet sitt filnamn."
 
 #: src/BufferParams.cpp:568
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The selected document class\n"
 "\t%1$s\n"
@@ -17092,8 +17064,8 @@ msgstr ""
 "\t%1$s\n"
 "krev eksternefiler som ikkje er tilgjengelege.\n"
 "Du kan bruke dokumentklassa, men LyX\n"
-"  kan ikkje lage ferdige dokument før\n"
-"desse er innstallert:\n"
+"kan ikkje lage ferdige dokument før\n"
+"desse er installert:\n"
 "\t%2$s\n"
 "Sjå bolk 3.1.2.2 av brukar guiden\n"
 "for meir informasjon."
@@ -17723,11 +17695,13 @@ msgid "There were errors during the build process."
 msgstr "Det vart rapportert feil under bygginga."
 
 #: src/Converter.cpp:478
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An error occurred while running:\n"
 "%1$s"
-msgstr "Vi fekk ein feil når vi køyrde %1$s"
+msgstr ""
+"Vi fekk ein feil når vi køyrde:\n"
+"%1$s"
 
 #: src/Converter.cpp:501
 #, c-format
@@ -17919,9 +17893,9 @@ msgid "Language: %1$s, "
 msgstr "Språk: %1$s,"
 
 #: src/Font.cpp:192
-#, fuzzy, c-format
+#, c-format
 msgid "Number %1$s"
-msgstr "   Nummerering %1$s"
+msgstr "Nummerering %1$s"
 
 #: src/Format.cpp:267 src/Format.cpp:280 src/Format.cpp:290
 msgid "Cannot view file"
@@ -18074,24 +18048,22 @@ msgid "No textclass is found"
 msgstr "Kan ikkje finne tekstklassa"
 
 #: src/LyX.cpp:553
-#, fuzzy
 msgid ""
 "LyX will only have minimal functionality because no textclasses have been "
 "found. You can either try to reconfigure LyX normally, try to reconfigure "
 "without checking your LaTeX installation, or continue."
 msgstr ""
 "LyX vil ha minimal funksjonalitet sidan ingen tekstklasser er funne. Du kan "
-"enten prøve å sette opp LyX normalt, prøve å sette opp med å berre bruke "
-"standardar, eller fortsetje."
+"enten prøve å sette opp LyX normalt, prøve å sette opp utan å sjekke LaTeX "
+"installasjonen, eller fortsetje."
 
 #: src/LyX.cpp:557
 msgid "&Reconfigure"
 msgstr "&Set opp på nytt"
 
 #: src/LyX.cpp:558
-#, fuzzy
 msgid "&Without LaTeX"
-msgstr "LaTeX"
+msgstr "&utan LaTeX"
 
 #: src/LyX.cpp:559 src/VCBackend.cpp:786 src/VCBackend.cpp:790
 msgid "&Continue"
@@ -19111,14 +19083,15 @@ msgid "Module not available"
 msgstr "Modulen er ikkje tilgjengeleg"
 
 #: src/TextClass.cpp:1302
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
 "not available in your LaTeX installation, or a converter\n"
 "you have not installed. LaTeX output may not be possible.\n"
 msgstr ""
 "Modulen %1$s treng ein pakke som ikkje\n"
-"er tilgjengeleg i LaTeX installasjonen din.Det er ikkje\n"
+"er tilgjengeleg i LaTeX installasjonen din eller i eit støtteprogram som "
+"ikkje er installert .Det er ikkje\n"
 "sikkert at dokumentet blir mogeleg å produsere.\n"
 
 #: src/TextClass.cpp:1306
@@ -19215,7 +19188,7 @@ msgstr ""
 "Etter du trykkjer OK vil LyX opne dokumentet på nytt."
 
 #: src/VCBackend.cpp:781
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
 "%1$s\n"
@@ -19226,7 +19199,7 @@ msgstr ""
 "Det er oppdaga endringar i arbeidskatalogen\n"
 "%1$s\n"
 "\n"
-"Dersom det er filkonflikt å du ordne opp i det og så gå tilbake til "
+"Dersom det er filkonflikt må du ordne opp i det eller gå tilbake til "
 "versjonen i kjeldebrønnen."
 
 #: src/VCBackend.cpp:785 src/VCBackend.cpp:789 src/VCBackend.cpp:1246
@@ -19465,41 +19438,37 @@ msgid "Directories"
 msgstr "Katalogar"
 
 #: src/frontends/qt4/FindAndReplace.cpp:274
-#, fuzzy
 msgid "File"
-msgstr "F&il"
+msgstr "Fil"
 
 #: src/frontends/qt4/FindAndReplace.cpp:277
-#, fuzzy
 msgid "Master document"
-msgstr "&Hovuddokumentet"
+msgstr "Hovuddokumentet"
 
 #: src/frontends/qt4/FindAndReplace.cpp:280
-#, fuzzy
 msgid "Open files"
-msgstr "Døm&e filer."
+msgstr "Opna filer"
 
 #: src/frontends/qt4/FindAndReplace.cpp:283
-#, fuzzy
 msgid "Manuals"
-msgstr "marginal"
+msgstr "Manualane"
 
 #: src/frontends/qt4/FindAndReplace.cpp:287
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s: the end was reached while searching forward.\n"
 "Continue searching from the beginning?"
 msgstr ""
-"Slutten av %1$s vart nådd medan vi leita framover.\n"
+"%1$s: slutten vart nådd medan vi leita framover.\n"
 "skal vi fortsette frå byrjinga?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:290
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s: the beginning was reached while searching backward.\n"
 "Continue searching from the end?"
 msgstr ""
-"Starten av %1$s vart nådd medan vi leita bakover.\n"
+"%1$s: Starten vart nådd medan vi leita bakover.\n"
 "skal vi fortsette frå slutten?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:345
@@ -20802,9 +20771,8 @@ msgid "mm"
 msgstr "mm"
 
 #: src/frontends/qt4/GuiGraphics.cpp:475 src/lengthcommon.cpp:38
-#, fuzzy
 msgid "in[[unit of measure]]"
-msgstr "cc[[eining]]"
+msgstr "in[[måleining]]"
 
 #: src/frontends/qt4/GuiGraphics.cpp:786
 msgid "Select graphics file"
@@ -21786,7 +21754,6 @@ msgid "Exit LyX"
 msgstr "Skru av LyX"
 
 #: src/frontends/qt4/GuiView.cpp:828
-#, fuzzy
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr "Kan ikkje late igjen LyX sidan LyX arbeider med eit dokument."
 
@@ -21974,12 +21941,10 @@ msgid "&Retry"
 msgstr "&Prøv på nytt"
 
 #: src/frontends/qt4/GuiView.cpp:2455
-#, fuzzy
 msgid "Close document"
-msgstr "Lat att dokumentet "
+msgstr "Lat att dokumentet"
 
 #: src/frontends/qt4/GuiView.cpp:2456
-#, fuzzy
 msgid "Document could not be closed because it is being processed by LyX."
 msgstr "Kan ikkje late igjen dokumentet sidan LyX arbeider med det."
 
@@ -23179,14 +23144,12 @@ msgid "NameRef:"
 msgstr "NamnRef:"
 
 #: src/insets/InsetScript.cpp:368
-#, fuzzy
 msgid "subscript"
-msgstr "Senka skrift"
+msgstr "senka skrift"
 
 #: src/insets/InsetScript.cpp:378
-#, fuzzy
 msgid "superscript"
-msgstr "Heva skrift"
+msgstr "heva skrift"
 
 #: src/insets/InsetSpace.cpp:71
 msgid "Protected Space"
@@ -23460,15 +23423,16 @@ msgid "Unknown tabular feature '%1$s'"
 msgstr "Ukjent tabellval '%1$s'"
 
 #: src/mathed/InsetMathHull.cpp:1201
-#, fuzzy
 msgid "Bad math environment"
-msgstr "Samla miljø"
+msgstr "Feil med mattemiljøet"
 
 #: src/mathed/InsetMathHull.cpp:1202
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
 msgstr ""
+"Utrekning kan ikkje bli gjort i AMS-mattemiljø.\n"
+"Endre matte-formulartype og prøv igjen."
 
 #: src/mathed/InsetMathHull.cpp:1308 src/mathed/InsetMathHull.cpp:1317
 msgid "No number"
@@ -23526,9 +23490,9 @@ msgid "FormatRef: "
 msgstr "FormatRef: "
 
 #: src/mathed/InsetMathSubstack.cpp:85
-#, fuzzy, c-format
+#, c-format
 msgid "Can't change horizontal alignment in '%1$s'"
-msgstr "Kan ikkje leggje til fleire vassrette linjer i rutenettet '%1$s'"
+msgstr "Kan ikkje endre vassrettjustering i '%1$s'"
 
 #: src/mathed/MathMacroTemplate.cpp:495
 msgid "optional"
