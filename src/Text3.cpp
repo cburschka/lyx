@@ -1281,33 +1281,37 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_QUOTE_INSERT: {
-		Paragraph & par = cur.paragraph();
+		// this avoids a double undo
+		// FIXME: should not be needed, ideally
+		if (!cur.selection())
+			cur.recordUndo();
+		cap::replaceSelection(cur);
+
+		Paragraph const & par = cur.paragraph();
 		pos_type pos = cur.pos();
-		BufferParams const & bufparams = bv->buffer().params();
+
 		Layout const & style = par.layout();
+		BufferParams const & bufparams = bv->buffer().params();
 		InsetLayout const & ilayout = cur.inset().getLayout(bufparams);
-		if (!style.pass_thru && !ilayout.isPassThru()
-		    && par.getFontSettings(bufparams, pos).language()->lang() != "hebrew") {
-			// this avoids a double undo
-			// FIXME: should not be needed, ideally
-			if (!cur.selection())
-				cur.recordUndo();
-			cap::replaceSelection(cur);
-			pos = cur.pos();
-			char_type c;
-			if (pos == 0)
-				c = ' ';
-			else if (cur.prevInset() && cur.prevInset()->isSpace())
-				c = ' ';
-			else
+		bool const hebrew = 
+			par.getFontSettings(bufparams, pos).language()->lang() == "hebrew";
+		bool const allow_inset_quote = 
+			!(style.pass_thru || ilayout.isPassThru() || hebrew);
+		
+		if (allow_inset_quote) {
+			char_type c = ' ';
+			if (pos > 0 && (!cur.prevInset() || !cur.prevInset()->isSpace()))
 				c = par.getChar(pos - 1);
-			string arg = to_utf8(cmd.argument());
-			cur.insert(new InsetQuotes(bv->buffer(), c, (arg == "single")
-				? InsetQuotes::SingleQuotes : InsetQuotes::DoubleQuotes));
+			string const arg = to_utf8(cmd.argument());
+			InsetQuotes::QuoteTimes const quote_type = (arg == "single")
+				? InsetQuotes::SingleQuotes : InsetQuotes::DoubleQuotes;
+			cur.insert(new InsetQuotes(bv->buffer(), c, quote_type));
 			cur.posForward();
-		}
-		else
+		} else {
+			// The cursor might have been invalidated by the replaceSelection.
+			cur.buffer().changed();
 			lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, "\""));
+		}			
 		break;
 	}
 

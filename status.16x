@@ -82,6 +82,9 @@ What's new
 - Fix crash when removing a math macro argument while instant preview
   is active (bug 7090).
 
+- Fix crash when inserting quotes with a selection spanning multiple
+  paragraphs (bug 7200).
+
 - Fix the painting of the workarea for a non-standard DPI and using
   emulated scaling on Windows Vista and Windows 7 (bug 7187).
 
