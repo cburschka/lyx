@@ -118,8 +118,6 @@ private:
 	/// initial visibility flags
 	int visibility_;
 	///
-	bool allowauto_;
-	///
 	GuiView & owner_;
 	///
 	GuiCommandBuffer * command_buffer_;

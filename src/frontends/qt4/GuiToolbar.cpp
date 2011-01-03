@@ -53,8 +53,7 @@ namespace frontend {
 
 GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 	: QToolBar(toqstr(tbinfo.gui_name), &owner), visibility_(0),
-	  allowauto_(false), owner_(owner), command_buffer_(0),
-	  tbinfo_(tbinfo), filled_(false)
+	  owner_(owner), command_buffer_(0), tbinfo_(tbinfo), filled_(false)
 {
 	setIconSize(owner.iconSize());
 	connect(&owner, SIGNAL(iconSizeChanged(QSize)), this,
@@ -91,7 +90,6 @@ void GuiToolbar::showEvent(QShowEvent * ev)
 void GuiToolbar::setVisibility(int visibility)
 {
 	visibility_ = visibility;
-	allowauto_ = visibility_ >= Toolbars::MATH;
 }
 
 
@@ -335,7 +333,7 @@ void GuiToolbar::restoreSession()
 void GuiToolbar::toggle()
 {
 	docstring state;
-	if (allowauto_) {
+	if (visibility_ & Toolbars::ALLOWAUTO) {
 		if (!(visibility_ & Toolbars::AUTO)) {
 			visibility_ |= Toolbars::AUTO;
 			hide();
