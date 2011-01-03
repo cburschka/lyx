@@ -330,9 +330,9 @@ void GuiToolbar::restoreSession()
 	int visibility =
 		settings.value(sessionKey() + "/visibility", error_val).toInt();
 	if (visibility == error_val || visibility == 0) {
-		// The settings have not been found. This can happen when
-		// the ui file has changed so that we use the settings from
-		// the new ui file rather than the old settings.
+		// This should not happen, but in case we use the defaults
+		LYXERR0("Session settings could not be found!. "
+			"Defaults are used instead");
 		visibility = 
 			guiApp->toolbars().defaultVisibility(fromqstr(objectName()));
 	}
