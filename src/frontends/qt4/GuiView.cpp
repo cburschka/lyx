@@ -3823,9 +3823,12 @@ void GuiView::hideDialog(string const & name, Inset * inset)
 	if (it == d.dialogs_.end())
 		return;
 
-	if (inset && currentBufferView()
-		&& inset != currentBufferView()->editedInset(name))
-		return;
+	if (inset) {
+		if (!currentBufferView())
+			return;
+		if (inset != currentBufferView()->editedInset(name))
+			return;
+	}
 
 	Dialog * const dialog = it->second.get();
 	if (dialog->isVisibleView())
