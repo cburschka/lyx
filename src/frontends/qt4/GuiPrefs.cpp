@@ -1196,28 +1196,34 @@ PrefDisplay::PrefDisplay(GuiPreferences * form)
 	connect(instantPreviewCO, SIGNAL(activated(int)), this, SIGNAL(changed()));
 	connect(previewSizeSB, SIGNAL(valueChanged(double)), this, SIGNAL(changed()));
 	connect(paragraphMarkerCB, SIGNAL(toggled(bool)), this, SIGNAL(changed()));
-	if (instantPreviewCO->currentIndex() == 0)
-		previewSizeSB->setEnabled(false);
-	else
-		previewSizeSB->setEnabled(true);
 }
 
 
 void PrefDisplay::on_instantPreviewCO_currentIndexChanged(int index)
 {
-	if (index == 0)
-		previewSizeSB->setEnabled(false);
-	else
-		previewSizeSB->setEnabled(true);
+	previewSizeSB->setEnabled(index != 0);
+}
+
+
+void PrefDisplay::on_displayGraphicsCB_toggled(bool on)
+{
+	instantPreviewCO->setEnabled(on);
+	previewSizeSB->setEnabled(on && instantPreviewCO->currentIndex() > 0);
 }
 
 
 void PrefDisplay::apply(LyXRC & rc) const
 {
 	switch (instantPreviewCO->currentIndex()) {
-		case 0: rc.preview = LyXRC::PREVIEW_OFF; break;
-		case 1:	rc.preview = LyXRC::PREVIEW_NO_MATH; break;
-		case 2:	rc.preview = LyXRC::PREVIEW_ON;	break;
+		case 0:
+			rc.preview = LyXRC::PREVIEW_OFF;
+			break;
+		case 1:
+			rc.preview = LyXRC::PREVIEW_NO_MATH;
+			break;
+		case 2:
+			rc.preview = LyXRC::PREVIEW_ON;
+			break;
 	}
 
 	rc.display_graphics = displayGraphicsCB->isChecked();
@@ -1252,6 +1258,9 @@ void PrefDisplay::update(LyXRC const & rc)
 	instantPreviewCO->setEnabled(rc.display_graphics);
 	previewSizeSB->setValue(rc.preview_scale_factor);
 	paragraphMarkerCB->setChecked(rc.paragraph_markers);
+	previewSizeSB->setEnabled(
+		rc.display_graphics
+		&& rc.preview != LyXRC::PREVIEW_OFF);
 }
 
 
