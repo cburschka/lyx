@@ -248,8 +248,10 @@ public:
 	void updateCompletion(Cursor & cur, bool start, bool keep);
 
 private:
-	///
+	/// Saves the layout and geometry of the window
 	void saveLayout() const;
+	/// Saves the settings of toolbars and all dialogs
+	void saveUISettings() const;
 	///
 	bool restoreLayout();
 	///
