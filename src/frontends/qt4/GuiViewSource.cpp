@@ -42,12 +42,13 @@ namespace frontend {
 
 ViewSourceWidget::ViewSourceWidget()
 	:	bv_(0), document_(new QTextDocument(this)),
-		highlighter_(new LaTeXHighlighter(document_))
+		highlighter_(new LaTeXHighlighter(document_)),
+		force_getcontent_(true)
 {
 	setupUi(this);
 
 	connect(viewFullSourceCB, SIGNAL(clicked()),
-		this, SLOT(updateView()));
+		this, SLOT(fullSourceChanged()));
 	connect(autoUpdateCB, SIGNAL(toggled(bool)),
 		updatePB, SLOT(setDisabled(bool)));
 	connect(autoUpdateCB, SIGNAL(toggled(bool)),
@@ -85,7 +86,8 @@ static size_t crcCheck(docstring const & s)
 	\param fullSource get full source code
 	\return true if the content has changed since last call.
  */
-static bool getContent(BufferView const * view, bool fullSource, QString & qstr)
+static bool getContent(BufferView const * view, bool fullSource,
+		       QString & qstr, bool force_getcontent)
 {
 	// get the *top* level paragraphs that contain the cursor,
 	// or the selected text
@@ -106,7 +108,7 @@ static bool getContent(BufferView const * view, bool fullSource, QString & qstr)
 	docstring s = ostr.str();
 	static size_t crc = 0;
 	size_t newcrc = crcCheck(s);
-	if (newcrc == crc)
+	if (newcrc == crc && !force_getcontent)
 		return false;
 	crc = newcrc;
 	qstr = toqstr(s);
@@ -116,8 +118,17 @@ static bool getContent(BufferView const * view, bool fullSource, QString & qstr)
 
 void ViewSourceWidget::setBufferView(BufferView const * bv)
 {
+	if (bv_ != bv)
+		force_getcontent_ = true;
 	bv_ = bv;
 	setEnabled(bv ?  true : false);
+}
+
+
+void ViewSourceWidget::fullSourceChanged()
+{
+	if (autoUpdateCB->isChecked())
+		updateView();
 }
 
 
@@ -132,7 +143,8 @@ void ViewSourceWidget::updateView()
 	setEnabled(true);
 
 	QString content;
-	if (getContent(bv_, viewFullSourceCB->isChecked(), content))
+	if (getContent(bv_, viewFullSourceCB->isChecked(), content,
+		  force_getcontent_))
 		document_->setPlainText(content);
 
 	CursorSlice beg = bv_->cursor().selectionBegin().bottom();
