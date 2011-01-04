@@ -1671,6 +1671,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (cmd.argument().empty())
 			cur.errorMessage(from_utf8(N_("Missing argument")));
 		else {
+			cur.recordUndo();
 			string s = to_utf8(cmd.argument());
 			string const s1 = token(s, ' ', 1);
 			int const nargs = s1.empty() ? 0 : convert<int>(s1);
