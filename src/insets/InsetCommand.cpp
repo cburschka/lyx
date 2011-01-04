@@ -29,6 +29,7 @@
 #include "insets/InsetExternal.h"
 #include "insets/InsetFloat.h"
 #include "insets/InsetGraphics.h"
+#include "insets/InsetIndex.h"
 #include "insets/InsetLine.h"
 #include "insets/InsetListings.h"
 #include "insets/InsetNote.h"
@@ -265,7 +266,7 @@ bool decodeInsetParam(string const & name, string & data,
 	switch (code) {
 	case BIBITEM_CODE:
 	case BIBTEX_CODE:
-	case INDEX_CODE:
+	case INDEX_PRINT_CODE:
 	case LABEL_CODE:
 	case LINE_CODE:
 	case NOMENCL_CODE:
@@ -315,6 +316,11 @@ bool decodeInsetParam(string const & name, string & data,
 	case FLOAT_CODE:  {
 		InsetFloatParams p;
 		data = InsetFloat::params2string(p);
+		break;
+	}
+	case INDEX_CODE: {
+		InsetIndexParams p;
+		data = InsetIndex::params2string(p);
 		break;
 	}
 	case LISTINGS_CODE: {
