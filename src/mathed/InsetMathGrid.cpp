@@ -67,9 +67,9 @@ static int extractInt(istream & is)
 static void resetGrid(InsetMathGrid & grid)
 {
 	while (grid.ncols() > 1)
-		grid.delCol(grid.ncols());
+		grid.delCol(grid.ncols() - 1);
 	while (grid.nrows() > 1)
-		grid.delRow(grid.nrows());
+		grid.delRow(grid.nrows() - 1);
 	grid.cell(0).erase(0, grid.cell(0).size());
 	grid.setDefaults();
 }
