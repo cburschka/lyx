@@ -1578,8 +1578,7 @@ GuiWorkArea * TabWorkArea::addWorkArea(Buffer & buffer, GuiView & view)
 	// when hiding it again below).
 	if (!(currentWorkArea() && currentWorkArea()->isFullScreen()))
 		showBar(count() > 0);
-	int const index = addTab(wa, wa->windowTitle());
-	setTabToolTip(index, wa->windowTitle());
+	addTab(wa, wa->windowTitle());
 	QObject::connect(wa, SIGNAL(titleChanged(GuiWorkArea *)),
 		this, SLOT(updateTabTexts()));
 	if (currentWorkArea() && currentWorkArea()->isFullScreen())
@@ -1868,12 +1867,13 @@ void TabWorkArea::updateTabTexts()
 
 	// set new tab titles
 	for (It it = paths.begin(); it != paths.end(); ++it) {
-		GuiWorkArea * i_wa = workArea(it->tab());
-		Buffer & buf = i_wa->bufferView().buffer();
+		int const tab_index = it->tab();
+		Buffer const & buf = workArea(tab_index)->bufferView().buffer();
+		QString tab_text = it->displayString();
 		if (!buf.fileName().empty() && !buf.isClean())
-			setTabText(it->tab(), it->displayString() + "*");
-		else
-			setTabText(it->tab(), it->displayString());
+			tab_text += "*";
+		setTabText(tab_index, tab_text);
+		setTabToolTip(tab_index, it->abs());
 	}
 }
 
