@@ -1191,7 +1191,7 @@ void LyXAction::init()
 		{ LFUN_CLIPBOARD_PASTE, "clipboard-paste", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_PRIMARY_SELECTION_PASTE
- * \li Action: Pastes the currently text selected text.
+ * \li Action: Pastes the currently selected text.
  * \li Notion: Primary selection mechanism is linux-only thing.
  * \li Syntax: primary-selection-paste [<ARG>]
  * \li Params: <ARG>: "paragraph" will cause pasting as one paragraph, i.e. "Join lines".
@@ -1200,8 +1200,11 @@ void LyXAction::init()
 		{ LFUN_PRIMARY_SELECTION_PASTE, "primary-selection-paste", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_SELECTION_PASTE
- * \li Action: Pastes the text in permanent selection.
+ * \li Action: Pastes the the internal selection text in permanent selection.
+ * \li Notion: Created in order to have middle mouse button pasting correct (bound to
+               command-alternatives selection-paste ; primary-selection-paste paragraph).
  * \li Syntax: selection-paste
+ * \li Origin: lasgouttes, 14 Jan 2009
  * \endvar
  */
 		{ LFUN_SELECTION_PASTE, "selection-paste", Noop, Edit },
