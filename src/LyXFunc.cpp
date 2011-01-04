@@ -1253,7 +1253,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			switch (code) {
 			case BIBITEM_CODE:
 			case BIBTEX_CODE:
-			case INDEX_CODE:
 			case LABEL_CODE:
 			case NOMENCL_CODE:
 			case REF_CODE:

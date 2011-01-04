@@ -87,6 +87,10 @@ What's new
 
 - Fix crash when inserting quotes with a selection spanning multiple
   paragraphs (bug 7200).
+
+- Remove traces of long removed index settings dialog. This fixes a crash
+  when issueing the non-functional lfuns "dialog-show index" and
+  "dialog-show-new-inset index" (bug 7180).
   
 - Correctly save the settings of UI components. They could disappear
   when starting LyX with a modified default.ui file and changing the 

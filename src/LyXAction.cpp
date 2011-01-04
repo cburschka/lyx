@@ -2509,7 +2509,7 @@ void LyXAction::init()
  * \li Syntax: dialog-show <NAME> [<DATA>]
  * \li Params: <NAME>: aboutlyx|bibitem|bibtex|box|branch|changes|character|citation|\n
                document|errorlist|ert|external|file|findreplace|float|graphics|\n
-               include|index|info|nomenclature|label|log|mathdelimiter|mathmatrix|\n
+               include|info|nomenclature|label|log|mathdelimiter|mathmatrix|\n
                note|paragraph|prefs|print|ref|sendto|space|spellchecker|symbols|\n
                tabular|tabularcreate|thesaurus|texinfo|toc|href|view-source|vspace\n
                wrap|listings|<SPECIAL> \n
