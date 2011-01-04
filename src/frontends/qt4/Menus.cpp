@@ -151,8 +151,10 @@ public:
 	MenuItem(Kind kind,
 		 QString const & label,
 		 QString const & submenu = QString(),
+		 QString const & tooltip = QString(),
 		 bool optional = false)
-		: kind_(kind), label_(label), submenuname_(submenu), optional_(optional)
+		: kind_(kind), label_(label), submenuname_(submenu),
+		  tooltip_(tooltip), optional_(optional)
 	{
 		LASSERT(kind == Submenu, /**/);
 	}
@@ -160,8 +162,10 @@ public:
 	MenuItem(Kind kind,
 		 QString const & label,
 		 FuncRequest const & func,
+		 QString const & tooltip = QString(),
 		 bool optional = false)
-		: kind_(kind), label_(label), func_(func), optional_(optional)
+		: kind_(kind), label_(label), func_(func),
+		  tooltip_(tooltip), optional_(optional)
 	{
 		func_.origin = FuncRequest::MENU;
 	}
@@ -183,12 +187,14 @@ public:
 		return index == -1 ? QString() : label_.mid(index + 1); 
 	}
 	/// The complete label, with label and shortcut separated by a '|'
-	QString fulllabel() const { return label_;}
+	QString fulllabel() const { return label_; }
 	/// The kind of entry
 	Kind kind() const { return kind_; }
 	/// the action (if relevant)
 	FuncRequest const & func() const { return func_; }
-	/// returns true if the entry should be ommited when disabled
+	/// the tooltip
+	QString const & tooltip() const { return tooltip_; }
+	/// returns true if the entry should be omitted when disabled
 	bool optional() const { return optional_; }
 	/// returns the status of the lfun associated with this entry
 	FuncStatus const & status() const { return status_; }
@@ -239,6 +245,8 @@ private:
 	FuncRequest func_;
 	///
 	QString submenuname_;
+	///
+	QString tooltip_;
 	///
 	bool optional_;
 	///
@@ -448,7 +456,7 @@ void MenuDefinition::read(Lexer & lex)
 			lex.next(true);
 			string const command = lex.getString();
 			FuncRequest func = lyxaction.lookupFunc(command);
-			add(MenuItem(MenuItem::Command, toqstr(name), func, optional));
+			add(MenuItem(MenuItem::Command, toqstr(name), func, QString(), optional));
 			optional = false;
 			break;
 		}
@@ -538,7 +546,7 @@ void MenuDefinition::read(Lexer & lex)
 			lex.next(true);
 			docstring const mname = lex.getDocString();
 			add(MenuItem(MenuItem::Submenu,
-				toqstr(mlabel), toqstr(mname), optional));
+				toqstr(mlabel), toqstr(mname), QString(), optional));
 			optional = false;
 			break;
 		}
@@ -667,14 +675,15 @@ void MenuDefinition::expandLastfiles()
 
 	for (; lfit != lf.end() && ii <= lyxrc.num_lastfiles; ++lfit, ++ii) {
 		string const file = lfit->absFilename();
+		QString const short_path = toqstr(makeDisplayPath(file, 30));
+		QString const long_path = toqstr(makeDisplayPath(file));
 		QString label;
 		if (ii < 10)
-			label = QString("%1. %2|%3").arg(ii)
-				.arg(toqstr(makeDisplayPath(file, 30))).arg(ii);
+			label = QString("%1. %2|%3").arg(ii).arg(short_path).arg(ii);
 		else
-			label = QString("%1. %2").arg(ii)
-				.arg(toqstr(makeDisplayPath(file, 30)));
-		add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_FILE_OPEN, file)));
+			label = QString("%1. %2").arg(ii).arg(short_path);
+		add(MenuItem(MenuItem::Command, label,
+			FuncRequest(LFUN_FILE_OPEN, file), long_path));
 	}
 }
 
@@ -1209,7 +1218,7 @@ void Menu::Impl::populate(QMenu & qMenu, MenuDefinition const & menu)
 		} else {
 			// we have a MenuItem::Command
 			qMenu.addAction(new Action(view, QIcon(), label(*m), 
-				m->func(), QString(), &qMenu));
+				m->func(), m->tooltip(), &qMenu));
 		}
 	}
 }

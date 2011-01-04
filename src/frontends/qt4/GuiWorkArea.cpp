@@ -1124,7 +1124,7 @@ void GuiWorkArea::updateWindowTitle()
 	Buffer & buf = buffer_view_->buffer();
 	FileName const fileName = buf.fileName();
 	if (!fileName.empty()) {
-		maximize_title = fileName.displayName(30);
+		maximize_title = fileName.displayName(130);
 		minimize_title = from_utf8(fileName.onlyFileName());
 		if (buf.lyxvc().inUse()) {
 			if (buf.lyxvc().locker().empty())
@@ -1615,12 +1615,14 @@ void TabWorkArea::updateTabTexts()
 
 	// set new tab titles
 	for (It it = paths.begin(); it != paths.end(); ++it) {
-		GuiWorkArea * i_wa = dynamic_cast<GuiWorkArea *>(widget(it->tab()));
-		Buffer & buf = i_wa->bufferView().buffer();
+		int const tab_index = it->tab();
+		GuiWorkArea * i_wa = dynamic_cast<GuiWorkArea *>(widget(tab_index));
+		Buffer const & buf = i_wa->bufferView().buffer();
+		QString tab_text = it->displayString();
 		if (!buf.fileName().empty() && !buf.isClean())
-			setTabText(it->tab(), it->displayString() + "*");
-		else
-			setTabText(it->tab(), it->displayString());
+			tab_text += "*";
+		setTabText(tab_index, tab_text);
+		setTabToolTip(tab_index, it->abs());
 	}
 }
 
