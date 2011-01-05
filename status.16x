@@ -88,6 +88,8 @@ What's new
 - Fix crash when inserting quotes with a selection spanning multiple
   paragraphs (bug 7200).
 
+- Fix assertion when pasting a column in a math matrix (bug 7106).
+
 - Remove traces of long removed index settings dialog. This fixes a crash
   when issueing the non-functional lfuns "dialog-show index" and
   "dialog-show-new-inset index" (bug 7180).
