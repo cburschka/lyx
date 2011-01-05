@@ -315,17 +315,18 @@ docstring getQuestionString(FindAndReplaceOptions const & opt)
 
 void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt)
 {
-	view_.setBusy(true);
+	BufferView * bv = view_.documentBufferView();
+	if (!bv)
+		return;
+	Buffer * buf = &bv->buffer();
+	Buffer * buf_orig = &bv->buffer();
+	DocIterator cur_orig(bv->cursor());
 	int wrap_answer = -1;
 	ostringstream oss;
 	oss << opt;
 	FuncRequest cmd(LFUN_WORD_FINDADV, from_utf8(oss.str()));
-	BufferView * bv = view_.documentBufferView();
-	Buffer * buf = &bv->buffer();
 
-	Buffer * buf_orig = &bv->buffer();
-	DocIterator cur_orig(bv->cursor());
-
+	view_.setBusy(true);
 	if (opt.scope == FindAndReplaceOptions::S_ALL_MANUALS) {
 		vector<string> const & v = allManualsFiles();
 		if (std::find(v.begin(), v.end(), buf->absFileName()) == v.end()) {
@@ -524,25 +525,28 @@ void FindAndReplaceWidget::on_replaceallPB_clicked()
 
 void FindAndReplaceWidget::showEvent(QShowEvent * /* ev */)
 {
-	Buffer & doc_buf = view_.documentBufferView()->buffer();
-	BufferParams & doc_bp = doc_buf.params();
-	Buffer & find_buf = find_work_area_->bufferView().buffer();
-	LYXERR(Debug::FIND, "Applying document params to find buffer");
-	ApplyParams(find_buf, doc_bp);
-	Buffer & replace_buf = replace_work_area_->bufferView().buffer();
-	LYXERR(Debug::FIND, "Applying document params to replace buffer");
-	ApplyParams(replace_buf, doc_bp);
+	BufferView * bv = view_.documentBufferView();
+	if (bv) {
+		Buffer & doc_buf = bv->buffer();
+		BufferParams & doc_bp = doc_buf.params();
+		Buffer & find_buf = find_work_area_->bufferView().buffer();
+		LYXERR(Debug::FIND, "Applying document params to find buffer");
+		ApplyParams(find_buf, doc_bp);
+		Buffer & replace_buf = replace_work_area_->bufferView().buffer();
+		LYXERR(Debug::FIND, "Applying document params to replace buffer");
+		ApplyParams(replace_buf, doc_bp);
 
-	string lang = doc_bp.language->lang();
-	LYXERR(Debug::FIND, "Setting current editing language to " << lang << endl);
-	FuncRequest cmd(LFUN_LANGUAGE, lang);
-	find_buf.text().dispatch(find_work_area_->bufferView().cursor(), cmd);
-	replace_buf.text().dispatch(replace_work_area_->bufferView().cursor(), cmd);
+		string lang = doc_bp.language->lang();
+		LYXERR(Debug::FIND, "Setting current editing language to " << lang << endl);
+		FuncRequest cmd(LFUN_LANGUAGE, lang);
+		find_buf.text().dispatch(find_work_area_->bufferView().cursor(), cmd);
+		replace_buf.text().dispatch(replace_work_area_->bufferView().cursor(), cmd);
 
-	view_.setCurrentWorkArea(find_work_area_);
-	LYXERR(Debug::FIND, "Selecting entire find buffer");
-	dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
-	dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
+		view_.setCurrentWorkArea(find_work_area_);
+		LYXERR(Debug::FIND, "Selecting entire find buffer");
+		dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
+		dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
+	}
 	find_work_area_->installEventFilter(this);
 	replace_work_area_->installEventFilter(this);
 }
