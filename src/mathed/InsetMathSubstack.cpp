@@ -73,6 +73,15 @@ bool InsetMathSubstack::getStatus(Cursor & cur, FuncRequest const & cmd,
 			flag.setEnabled(false);
 			return true;
 		}
+		// in contrary to \subaray, the columns in \substack
+		// are always centered and this cannot be changed
+		if (s == "align-left" || s == "align-right") {
+			flag.message(bformat(
+				from_utf8(N_("Can't change horizontal alignment in '%1$s'")),
+				from_utf8(name)));
+			flag.setEnabled(false);
+			return true;
+		}
 		return InsetMathGrid::getStatus(cur, cmd, flag);
 	}
 	default:
