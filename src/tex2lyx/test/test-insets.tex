@@ -16,9 +16,11 @@
 % the following is useful when we have the old nomencl.sty package
 \providecommand{\printnomenclature}{\printglossary}
 \providecommand{\makenomenclature}{\makeglossary}
+\makenomenclature
 \usepackage{varioref}
 \usepackage{prettyref}
 \usepackage{makeidx}
+\makeindex
 
 \usepackage{graphicx}
 \usepackage{longtable}
@@ -167,7 +169,7 @@ at the end& of the table\\
 \endlastfoot
 \env{longtable}  columns  are specified& in the \\
 same way as  in the \env{tabular}& environment.\\
-%\code{@\{*\}r||p\{1in\}@\{*\}}& in this case.\\
+\code{@\{*\}r||p\{1in\}@\{*\}}& in this case.\\
 Each row ends with a& \code{\textbackslash\textbackslash} command.\\
 The \code{\textbackslash\textbackslash} command  has an& optional\\
 argument, just as in& the\\

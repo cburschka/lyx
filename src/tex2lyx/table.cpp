@@ -520,7 +520,7 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 		Token const & t = p.get_token();
 
 #ifdef FILEDEBUG
-		cerr << "t: " << t << " flags: " << flags << "\n";
+		debugToken(cerr, t, flags);
 #endif
 
 		// comments and whitespace in hlines

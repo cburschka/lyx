@@ -128,6 +128,30 @@ bool Token::isAlnumASCII() const
 }
 
 
+#ifdef FILEDEBUG
+void debugToken(std::ostream & os, Token const & t, unsigned int flags)
+{
+	char sep = ' ';
+	os << "t: " << t << " flags: " << flags;
+	if (flags & FLAG_BRACE_LAST) { os << sep << "BRACE_LAST"; sep = '|'; }
+	if (flags & FLAG_RIGHT     ) { os << sep << "RIGHT"     ; sep = '|'; }
+	if (flags & FLAG_END       ) { os << sep << "END"       ; sep = '|'; }
+	if (flags & FLAG_BRACK_LAST) { os << sep << "BRACK_LAST"; sep = '|'; }
+	if (flags & FLAG_TEXTMODE  ) { os << sep << "TEXTMODE"  ; sep = '|'; }
+	if (flags & FLAG_ITEM      ) { os << sep << "ITEM"      ; sep = '|'; }
+	if (flags & FLAG_LEAVE     ) { os << sep << "LEAVE"     ; sep = '|'; }
+	if (flags & FLAG_SIMPLE    ) { os << sep << "SIMPLE"    ; sep = '|'; }
+	if (flags & FLAG_EQUATION  ) { os << sep << "EQUATION"  ; sep = '|'; }
+	if (flags & FLAG_SIMPLE2   ) { os << sep << "SIMPLE2"   ; sep = '|'; }
+	if (flags & FLAG_OPTION    ) { os << sep << "OPTION"    ; sep = '|'; }
+	if (flags & FLAG_BRACED    ) { os << sep << "BRACED"    ; sep = '|'; }
+	if (flags & FLAG_CELL      ) { os << sep << "CELL"      ; sep = '|'; }
+	if (flags & FLAG_TABBING   ) { os << sep << "TABBING"   ; sep = '|'; }
+	os << "\n";
+}
+#endif
+
+
 //
 // Parser
 //

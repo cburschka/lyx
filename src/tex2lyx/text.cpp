@@ -495,7 +495,8 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 	unsigned int optargs = 0;
 	while (optargs < context.layout->optargs) {
 		eat_whitespace(p, os, context, false);
-		if (p.next_token().character() != '[') 
+		if (p.next_token().cat() == catEscape ||
+		    p.next_token().character() != '[') 
 			break;
 		p.get_token(); // eat '['
 		begin_inset(os, "OptArg\n");
@@ -505,14 +506,10 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		eat_whitespace(p, os, context, false);
 		++optargs;
 	}
-#if 0
-	// This is the code needed to parse required arguments, but 
-	// required arguments come into being only much later than the
-	// file format tex2lyx is presently outputting.
 	unsigned int reqargs = 0;
-	while (reqargs < context.layout->reqargs) {
+	while (LYX_FORMAT >= 392 && reqargs < context.layout->reqargs) {
 		eat_whitespace(p, os, context, false);
-		if (p.next_token().character() != '{') 
+		if (p.next_token().cat() != catBegin)
 			break;
 		p.get_token(); // eat '{'
 		begin_inset(os, "OptArg\n");
@@ -522,7 +519,6 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		eat_whitespace(p, os, context, false);
 		++reqargs;
 	}
-#endif
 	parse_text(p, os, FLAG_ITEM, outer, context);
 	context.check_end_layout(os);
 	if (parent_context.deeper_paragraph) {
@@ -1337,7 +1333,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		Token const & t = p.get_token();
 
 #ifdef FILEDEBUG
-		cerr << "t: " << t << " flags: " << flags << "\n";
+		debugToken(cerr, t, flags);
 #endif
 
 		if (flags & FLAG_ITEM) {
@@ -1356,9 +1352,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			flags |= FLAG_LEAVE;
 		}
 
-		if (t.character() == ']' && (flags & FLAG_BRACK_LAST))
+		if (t.cat() != catEscape && t.character() == ']' &&
+		    (flags & FLAG_BRACK_LAST))
 			return;
-		if (t.character() == '}' && (flags & FLAG_BRACE_LAST))
+		if (t.cat() == catEnd && (flags & FLAG_BRACE_LAST))
 			return;
 
 		// If there is anything between \end{env} and \begin{env} we
@@ -1656,7 +1653,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 			string s;
 			bool optarg = false;
-			if (p.next_token().character() == '[') {
+			if (p.next_token().cat() != catEscape &&
+			    p.next_token().character() == '[') {
 				p.get_token(); // eat '['
 				s = parse_text_snippet(p, FLAG_BRACK_LAST,
 						       outer, context);
@@ -1782,7 +1780,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "\\begin_layout " 
 			   << to_utf8(context.textclass.defaultLayout().name()) 
 			   << '\n';
-			if (p.next_token().character() == '[') {
+			if (p.next_token().cat() != catEscape &&
+			    p.next_token().character() == '[') {
 				p.get_token(); // eat '['
 				begin_inset(os, "OptArg\n");
 				os << "status collapsed\n";

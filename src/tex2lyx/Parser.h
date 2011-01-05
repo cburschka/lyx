@@ -81,7 +81,17 @@ public:
 	std::string const & cs() const { return cs_; }
 	/// Returns the catcode of the token
 	CatCode cat() const { return cat_; }
-	///
+	/** Get the character of tokens that were constructed from a single
+	 * character input or a two character input and cat_ == catEscape.
+	 * FIXME: The intended usage is not clear. The Token class in
+	 *        ../mathed/MathParser.cpp (which is the anchestor of this
+	 *        class) uses a separate char member for this method. I
+	 *        believe that the intended usage is to not cover tokens with
+	 *        catEscape, e.g. \code
+	 *        return (cs_.empty() || cat_ == catEscape) ? 0 : cs_[0];
+	 *        \endcode
+	 *        All usages of this method should be checked. gb 2011-01-05
+	 */
 	char character() const { return cs_.empty() ? 0 : cs_[0]; }
 	/// Returns the token verbatim
 	std::string asInput() const;
