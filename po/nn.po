@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-11-29 14:02+0100\n"
-"PO-Revision-Date: 2011-01-03 21:24+0100\n"
+"PO-Revision-Date: 2011-01-04 22:49+0100\n"
 "Last-Translator: Ingar Pareliussen <ingar.pareliussen@_dmmh_no>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -21341,15 +21341,16 @@ msgid "Unknown tabular feature '%1$s'"
 msgstr "Ukjent tabellval '%1$s'"
 
 #: src/mathed/InsetMathHull.cpp:1152
-#, fuzzy
 msgid "Bad math environment"
-msgstr "Samla miljø"
+msgstr "Feil med mattemiljøet"
 
 #: src/mathed/InsetMathHull.cpp:1153
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
 msgstr ""
+"Utrekning kan ikkje bli gjort i AMS-mattemiljø.\n"
+"Endre matte-formulartype og prøv igjen."
 
 #: src/mathed/InsetMathHull.cpp:1257 src/mathed/InsetMathHull.cpp:1265
 msgid "No number"
