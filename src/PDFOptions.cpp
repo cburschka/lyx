@@ -185,8 +185,8 @@ int PDFOptions::writeLaTeX(OutputParams & runparams, odocstream & os,
 	}
 	// FIXME: handle the case that hyperref is loaded by the document class and
 	// hyperset is empty, see bug #7048
-	//if (!(hyperref_already_provided && hyperset.empty()))
-	//	os << from_utf8(opt);
+	if (!(hyperref_already_provided && hyperset.empty()))
+		os << from_utf8(opt);
 
 	if (need_unicode && enc && enc->iconvName() != "UTF-8"
 	    &&!runparams.isFullUnicode()) {
