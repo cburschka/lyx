@@ -3729,8 +3729,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				cell(cur.idx())->dispatch(cur, cmd);
 			break;
 		}
-		if (theClipboard().isInternal() ||
-		    !theClipboard().hasInternal() && theClipboard().hasLyXContents()) {
+		if (theClipboard().isInternal()) {
 			cur.recordUndoInset(INSERT_UNDO);
 			pasteClipboard(cur);
 		}

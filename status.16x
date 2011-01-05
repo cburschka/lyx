@@ -117,6 +117,9 @@ What's new
 - Don't allow to make tables within floats "long" as this could lead to
   LaTeX errors (bug 6585).
 
+- Don't use absolute paths on internal copy/paste operations on Mac
+  (bug 6538).
+
 - Correct the denomination of the languages Norsk and Nynorsk.
 
 - Do not allow to put the cursor in an InsetInfo. Instead, a context

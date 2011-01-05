@@ -18,6 +18,8 @@
 
 #include <QObject>
 
+#include <boost/cstdint.hpp>
+
 namespace lyx {
 namespace frontend {
 
@@ -57,6 +59,8 @@ private:
 	bool text_clipboard_empty_;
 	bool has_lyx_contents_;
 	bool has_graphics_contents_;
+	/// checksum for internal clipboard data (used on Mac) 
+	boost::uint32_t checksum;
 };
 
 QString const lyxMimeType();
