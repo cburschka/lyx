@@ -1,4 +1,4 @@
-#LyX 2.0.0beta2 created this file. For more info see http://www.lyx.org/
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 410
 \begin_document
 \begin_header
@@ -2183,23 +2183,24 @@ d'une cellule et sélectionner la cellule elle-même.
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-With the dialog option 
+En cochant l'option 
 \family sans
-Immediate
+Application
 \begin_inset space ~
 \end_inset
 
-Apply
+immédiate
 \family default
- every change you make in the dialog is directly applied.
- If you move the cursor to another table cell the dialog will then also
- be updated with the parameters of the new cell.
- If you change length values in the dialog you must press return to get
- the change applied.
-\lang french
-
+ de la fenêtre de dialogue, chaque modification d'un champ de la fenêtre
+ est appliquée directement.
+ Si vous déplacez le curseur vers une autre celule du tableau, la fenêtre
+ s'adapte avec les valeurs des paramètres de la nouvelle cellule.
+ Si vous modifiez les valeurs des longueurs qui se trouvent dans la fenêtre
+ de dialogue, vous devez appuyer sur 
+\family sans
+Entrée
+\family default
+ pour que la modification soit appliquée.
 \begin_inset Newline newline
 \end_inset
 
@@ -2208,24 +2209,29 @@ Vous pouvez utiliser les onglets suivants de la fenêtre de dialogue de tableaux
 \end_layout
 
 \begin_layout Description
-Tableau Avec cet onglet, vous pouvez choisir l'alignement horizontal et
+Paramètres
+\begin_inset space ~
+\end_inset
+
+du
+\begin_inset space ~
+\end_inset
+
+tableau Avec cet onglet, vous pouvez choisir l'alignement horizontal et
  la largeur de la colonne courante.
- L'alignement 
+ L'alignement horizontal 
 \family sans
-\lang english
-At
+Au
 \begin_inset space ~
 \end_inset
 
-Decimal
+séparateur
 \begin_inset space ~
 \end_inset
 
-Separator
+décimal
 \family default
- is described in
-\lang french
- section
+ est décrit dans la section
 \begin_inset space ~
 \end_inset
 
@@ -2269,11 +2275,7 @@ reference "sub:Multicolonnes"
 
 \end_inset
 
- ou 
-\lang english
-the cells of one column as multirow cell
-\lang french
-, voir la section
+ ou une cellule d'une colonne comme cellule multiligne, voir la section
 \begin_inset space ~
 \end_inset
 
@@ -2357,19 +2359,12 @@ pas
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-The table-wide vertical alignment is used for tables within text lines
-\lang french
- :
+Le paramètre global d'alignement vertical dans la ligne sert pour les tableaux
+ qui sont incorporés dans une ligne de texte :
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-A line with tables with different alignments:
-\lang french
- 
+Une ligne avec des tableaux alignés de différentes manières: 
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features tabularvalignment="top">
@@ -2848,9 +2843,7 @@ ou colonne ?
 
 \end_inset
 
- aligne le contenu de la colonne courante 
-\lang english
-at a character
+ aligne le contenu de la colonne courante sur un caractère
 \end_layout
 
 \begin_layout Labeling
@@ -2928,11 +2921,7 @@ re
 
 \end_inset
 
- transforme en 
-\lang english
-multirow
-\lang french
- la cellule ou la sélection courante
+ transforme en multiligne la cellule ou la sélection courante
 \end_layout
 
 \begin_layout Standard
@@ -5760,15 +5749,12 @@ Tableaux longs ! Alignement
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The horizontal alignment of longtables can be set in the table settings
- dialog.
- For left- and right-alignment the table will be directly at the page border.
- To add space between the table and the border one has to set the alignment
- to center
-\lang french
- et modifier les valeurs des longueurs 
+L'alignement horizontal des tableaux longs peut être modifié dans la fenêtre
+ de dialogue des paramètres de tableau.
+ Pour les alignements à droite et à gauche, le tableau sera directement
+ au bord de la page.
+ Pour ajouter de l'espace entre le tableau et la marge, on doit choisir
+ l'alignement centré et modifier les valeurs des longueurs 
 \series bold
 
 \backslash
@@ -7092,13 +7078,6 @@ reference "cha:Unités-de-longueur"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -9884,19 +9863,7 @@ Tableaux longs ! Flottants
 \begin_layout Standard
 Il peut y avoir des problèmes quand un flottant apparaît sur la page où
  commence un tableau long.
- Pour éviter une telle situation, 
-\lang english
-insert a 
-\begin_inset Quotes eld
-\end_inset
-
-clear page
-\begin_inset Quotes erd
-\end_inset
-
- (menu
-\lang french
- 
+ Pour éviter une telle situation, insérez un saut de page (menu 
 \family sans
 Insérer\SpecialChar \menuseparator
 Typographie
@@ -12693,9 +12660,7 @@ Multi-lignes
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is an example table with a multirow in the first column:
+Voici un exemple de tableau avec une cellule multiligne en première colonne:
 \end_layout
 
 \begin_layout Standard
@@ -12711,7 +12676,7 @@ Here is an example table with a multirow in the first column:
 \begin_inset Text
 
 \begin_layout Plain Layout
-a long cell entry
+un contenu long
 \end_layout
 
 \end_inset
@@ -12801,27 +12766,25 @@ i
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The width of multirow cells is set by setting the width and alignment for
- the whole column.
- The 
+La largeur de la cellule multiligne est déterminée par la largeur de toute
+ la colonne.
+ L'
 \family sans
-Vertical Offset
+Espacement
+\begin_inset space ~
+\end_inset
+
+vertical
 \family default
- shifts the content of the multirow up/down if the offset is positive/negative.
+ décale le contenu de la cellule vers le haut ou le bas selon que sa valeur
+ est positive ou négative.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If the column of a multirow cell has no explicit width, the multirow cell
- inherits the alignment of the column.
- Otherwise it is by default left-aligned.
-
-\lang french
- Pour passer outre le comportement implicite, vous devez redéfinir la commande
- 
+Si la colonne dans laquelle se trouve la multiligne n'a pas de largeur fixée
+ explicitement, la cellule hérite de l'alignement de la colonne.
+ Sinon, elle est alignée par défaut à gauche.Pour passer outre le comportement
+ implicite, vous devez redéfinir la commande 
 \series bold
 
 \backslash
@@ -12872,18 +12835,20 @@ raggedright
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This is an example table with a right-aligned multirow cell that has a vertical
- offset of -4
+Voici un exemple de tableau avec une cellule multiligne alignée à droite
+ avec un décalage vertical de of -4
 \begin_inset space \thinspace{}
 \end_inset
 
-mm and is in a 3
+mm dans une colonne de 3
 \begin_inset space \thinspace{}
 \end_inset
 
-cm wide column:
+cm de large
+\begin_inset space ~
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Standard
@@ -12917,7 +12882,7 @@ raggedleft}
 \begin_inset Text
 
 \begin_layout Plain Layout
-a long cell entry
+un contenu long
 \end_layout
 
 \end_inset
@@ -17514,12 +17479,8 @@ reference "tab:Tableau-centré-sur-séparateur-1"
 \end_inset
 
 .
- 
-\lang english
-This alignment is achieved by setting the cursor into the column and then
- either pressing the toolbar button
-\lang french
- 
+ Cet alignement est obtenu en mettant le curseur dans la colonne et ensuite,
+ soit en appuyant sur le bouton 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-decimal.png
 	scale 85
@@ -17527,23 +17488,17 @@ This alignment is achieved by setting the cursor into the column and then
 
 \end_inset
 
- 
-\lang english
-or setting the alignment in the table settings to 
+de la barre d'outils ou en modifiant le paramètre 
 \family sans
-At
-\begin_inset space ~
-\end_inset
-
-Decimal
-\begin_inset space ~
-\end_inset
-
-Separator
+Alignement horizontal
+\family default
+ à 
+\family sans
+Au séparateur décimal
 \family default
 .
- The alignment character can be a character of your choice and is specified
- in the table settings.
+ Le caractère sur lequel se fait l'alignement peut être choisi en le précisant
+ dans les paramètres du tableau.
 \end_layout
 
 \begin_layout Standard
@@ -17776,13 +17731,10 @@ en-tête
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For alignments at characters in formulas this method does not work because
- the field to specify the alignment character does not allow formulas.
- In this case one need to use the method from
-\lang french
- tableau
+L'alignement sur un caractère ne fonctionne pas avec des formules parce
+ que le champ utilisé pour préciser le caractère voulu n'accepte pas les
+ formules.
+ Dans ce cas on doit utiliser la méthode du tableau
 \begin_inset space ~
 \end_inset
 
@@ -17796,20 +17748,14 @@ reference "tab:Tableau-centré-sur-séparateur-2"
 .
  Ce tableau a été créé comme un tableau 4×2.
  L'en-tête est une cellule multicolonne centrée.
- La première colonne est alignée à droite et contient le 
-\lang english
-first part including the operator.
- The second column is left aligned and contains the rest.
- A small space was added at the beginning of each cell of the second column
- to get the space that is usually around operators.
-
-\lang french
+ La première colonne est alignée à droite et contient la première partie
+ et inclue l'opérateur.
+ La seconde colonne contient le reste de la cellule aligné à gauche.
+ Un petit espace a été ajouté au début de toutes les celleules de la deuxième
+ colonne pour obtenir l'espace que l'on a d'habitude autour d'un opérateur.
  Pour éviter l'espace qui est normalement placé entre deux colonnes d'un
- tableau, le paramètre LaTeX suivant 
-\lang english
-was used
-\lang french
- pour la deuxième colonne :
+ tableau, le paramètre LaTeX suivant a été utilisé pour la deuxième colonne
+ :
 \end_layout
 
 \begin_layout Standard
@@ -17831,11 +17777,8 @@ reference "tab:Plusieurs-exemples-alignements"
 \end_inset
 
  montre quelques exemples d'alignements.
- Pour l'alignement sur l'opérateur de relation, 
-\lang english
-a small space was added like for the second column of
-\lang french
- tableau
+ Pour l'alignement sur l'opérateur de relation, un petit espace a été ajouté
+ comme pour la deuxième colonne du tableau
 \begin_inset space ~
 \end_inset
 
@@ -21103,6 +21046,14 @@ reference "fig:Deux-images-déformées"
 \end_layout
 
 \begin_layout Description
+Sur
+\begin_inset space ~
+\end_inset
+
+la
+\begin_inset space ~
+\end_inset
+
 page
 \begin_inset space ~
 \end_inset
@@ -21228,49 +21179,25 @@ Paquetages LaTeX ! refstyle
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-You can select which LaTeX-package should be used for this feature by setting
- the option 
-\family sans
-Use refstyle (not prettyref) for cross-references
-\family default
- in the menu 
-\family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Document Class
-\family default
-.
- The format is specified by adding the command 
+Le format est précisé en ajoutant la commande 
 \series bold
 
 \backslash
 newrefformat
 \series default
- (prettyref) or 
+ (prettyref) ou 
 \series bold
 
 \backslash
 newref
 \series default
- (refstyle) to the preamble of the document.
- For example redefining all references to figures (which have the label
- shortcut 
-\begin_inset Quotes eld
+ (refstyle) au préambule du document.
+ Par exemple, pour redéfinir toutes les référence à des figures (qui ont
+ l'étiquette abrégée 'fig') on peut utiliser la commande suivante
+\begin_inset space ~
 \end_inset
 
-
-\family sans
-fig
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-) can be done with this command
-\lang french
-
+:
 \begin_inset Newline newline
 \end_inset
 
@@ -21278,11 +21205,7 @@ fig
 \series bold
 
 \backslash
-newref{fig}{refcmd={
-\lang english
-Image on page
-\lang french
- 
+newref{fig}{refcmd={Image sur la page 
 \backslash
 pageref{#1}}}
 \series default
@@ -21290,11 +21213,8 @@ pageref{#1}}}
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-For more information about the format, have a look at the package documentations
-\lang french
-, 
+Pour plus d'information sur le format, jetez un oeil dur la documentation
+ du paquetage, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "prettyref,refstyle"
@@ -21305,14 +21225,14 @@ key "prettyref,refstyle"
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Textual
+Référence
 \begin_inset space ~
 \end_inset
 
-reference: prints the caption of the reference
-\lang french
+textuelle: affiche la légende de la référence
+\begin_inset space ~
+\end_inset
+
 : 
 \begin_inset CommandInset ref
 LatexCommand nameref
@@ -21353,11 +21273,10 @@ page
 \begin_inset space ~
 \end_inset
 
-<page>
+<page> 
 \family default
- 
-\lang english
-will not print anything about the page if the label is on the same page.
+n'affichera rien au sujet de la page si l'étiquette se trouve sur la même
+ page.
 \end_layout
 
 \begin_layout Standard
@@ -21377,11 +21296,7 @@ status open
 \series bold
 Note:
 \series default
- 
-\lang english
-It is recommended to use
-\lang french
- le paquetage LaTeX 
+ L'utilisation du paquetage LaTeX 
 \series bold
 refstyle
 \series default
@@ -21395,11 +21310,7 @@ Paquetages LaTeX ! refstyle
 
 \end_inset
 
- 
-\lang english
-because
-\lang french
- 
+ est recommendée parce que 
 \series bold
 prettyref
 \series default
@@ -25769,40 +25680,37 @@ reference "fn:Note-en-bas"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Footnotes in tables are not printed by LaTeX due to technical reasons.
- However there exists another method to print them: Instead of the footnote
- the command 
+Le notes de bas de page se trouvant dans des tableaux ne sont pas imprimées
+ par LaTeX pour des raisons techniques.
+ Il existe pourtant une autre méthode pour les imprimer : on insère la commande
+ 
 \series bold
 
 \backslash
 footnotemark{}
 \series default
- is inserted as TeX-code.
- The text of the footnote is entered as argument of the TeX-code command
- 
+ en code TeX à la place de la note de bas de page.
+ Le texte de la note est mis en argument de la commande TeX 
 \series bold
 
 \backslash
 footnotetext
 \series default
- after the table.
+ après le tableau.
 \begin_inset Newline newline
 \end_inset
 
-This was done for the following table with the command
+C'est ce qui a été fait pour le tableau qui suit avec la commande
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 footnotetext{
 \series default
-Printed table footnote.
+Note de bas de page de tableau imprimée.
 \series bold
 }
 \end_layout
@@ -25819,16 +25727,16 @@ Printed table footnote.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-This an example text.
+Un exemple de texte
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
+Cette note ne sera pas imprimée
+\begin_inset space ~
+\end_inset
 
-\lang english
-This footnote will not be printed!
+!
 \end_layout
 
 \end_inset
@@ -25844,9 +25752,7 @@ This footnote will not be printed!
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-This an example text.
+Un autre exemple de texte
 \begin_inset ERT
 status collapsed
 
@@ -25882,7 +25788,11 @@ footnotetext{
 
 \end_inset
 
-Printed table footnote.
+
+\lang french
+Note de bas de page de tableau imprimée.
+\lang english
+
 \begin_inset ERT
 status collapsed
 
@@ -25897,14 +25807,10 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Footnotes in longtables are described in section
+Les notes de bas de page dans des tableaux longs sont décrites dans la section
 \begin_inset space ~
 \end_inset
 
-
-\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -25916,16 +25822,14 @@ reference "sub:Notes-dans-tableau-long"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Footnotes in minipage boxes are printed, but inside the box and with a different
- numbering because a minipage box is like a page inside a page.
- (For more about minipages, see section
+Les notes de bas de page qui se trouvent à l'intérieur d'une minipage sont
+ imprimées, mais à l'intérieur de la minipage et avec une numérotation différent
+e, vu que la minipage est considérée comme une page se trouvant dans une
+ autre page.
+ Pour plus d'information sur les minipages, voyez la section
 \begin_inset space ~
 \end_inset
 
-
-\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -25933,16 +25837,16 @@ reference "sec:Minipages"
 
 \end_inset
 
-
-\lang english
-.) To get a footnote in the minipage that is output at the bottom of the
- page like normal footnotes, also use the method of 
+.
+ Pour avoir une note de bas de page à l'intérieur d'une minipage et qui
+ s'imprime en bas de page comme une note normale, on doit aussi utiliser
+ la méthode utilisant les commandes 
 \series bold
 
 \backslash
 footnotemark{}
 \series default
- and 
+ et 
 \series bold
 
 \backslash
@@ -25952,8 +25856,6 @@ footnotetext
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -25968,16 +25870,12 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-This an example text in a minipage.
+Un exemple de texte dans une minipage.
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-Footnote in the minipage.
+Note de bas de page dans la minipage.
 \end_layout
 
 \end_inset
@@ -25986,9 +25884,7 @@ Footnote in the minipage.
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
-This an example text in a minipage.
+Un autre exemple de texte dans une minipage.
 \begin_inset ERT
 status collapsed
 
@@ -26010,8 +25906,6 @@ footnotemark{}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -26024,7 +25918,7 @@ footnotetext{
 
 \end_inset
 
-Footnote outside the minipage.
+Note de bas de page en denors de la minipage.
 \begin_inset ERT
 status collapsed
 
@@ -26046,28 +25940,24 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To refer to the same footnote several times without printing the footnote
- text every time, use the command 
+Pour faire référence plusieurs fois à la même note sans avoir à la dupliquer,
+ utilisez la commande 
 \series bold
 
 \backslash
 footnotemark[number]
 \series default
- in TeX-code.
+ en code TeX.
 \begin_inset Newline newline
 \end_inset
 
-As you do not know the number of the repeating footnote while you are writing
- the text, you have to store its number.
- For the following footnote mark example, these commands were inserted in
- TeX-code after Footnote
+Comme vous ne connaissez pas le numéro de la note au moment où vous écrivez
+ votre texte, vous devez enregistrer son numéro.
+ Dans l'exemple de marque de note de bas de page suivant, ces commandes
+ ont été insérées en code TeX après la note
 \begin_inset space ~
 \end_inset
 
-
-\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -26075,10 +25965,10 @@ reference "fn:Note-en-bas"
 
 \end_inset
 
+ pour enregistrer son numéro
+\begin_inset space ~
+\end_inset
 
-\lang english
- to store the footnote number
-\lang french
 :
 \end_layout
 
@@ -26087,22 +25977,22 @@ reference "fn:Note-en-bas"
 \series bold
 
 \backslash
-newcounter{MyRepeatFoot}
+newcounter{MaNoteDupliquee}
 \begin_inset Newline newline
 \end_inset
 
 
 \backslash
-setcounter{MyRepeatFoot}{
+setcounter{MaNoteDupliquee}{
 \backslash
 thefootnote}
 \end_layout
 
 \begin_layout Standard
+La note de bas de page a été créee avec la commande
+\begin_inset space ~
+\end_inset
 
-\lang english
-The footnote mark was then created with this command
-\lang french
 :
 \end_layout
 
@@ -26113,17 +26003,17 @@ The footnote mark was then created with this command
 \backslash
 footnotemark[
 \backslash
-theMyRepeatFoot]
+MaNoteDupliquee]
 \end_layout
 
 \begin_layout Standard
+Voici une note de bas de page dupliquée
+\begin_inset space ~
+\end_inset
 
-\lang english
-Here is a repeated footnote
-\lang french
 :
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -26140,12 +26030,8 @@ theMyRepeatFoot]
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you want to repeat the previous footnote, you can omit the storage of
- the footnote number and just use this command instead
-\lang french
-:
+Si vous voulez dupliquer la note précédente, vous pouvez omettre l'enregistremen
+t du numéro de note et juste utiliser la commande suivante
 \end_layout
 
 \begin_layout Standard
@@ -26159,13 +26045,13 @@ thefootnote]
 \end_layout
 
 \begin_layout Standard
+Voici une autre note de bas de page dupliquée
+\begin_inset space ~
+\end_inset
 
-\lang english
-Here is another repeated footnote
-\lang french
 :
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -27047,11 +26933,7 @@ endnote
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For endnotes there is
-\lang french
- la commande 
+Pour les notes de fin, il y a la commande 
 \series bold
 
 \backslash
@@ -28078,14 +27960,11 @@ Boîte
 
  est alors insérée.
  Le type de la boîte peut être précisé en faisant un clic droit sur la boîte
- et 
-\lang english
-selecting 
+ et en choisissant 
 \family sans
-Settings
+Paramètres
 \family default
-\lang french
-.
+ .
  La fenêtre de dialogue qui apparaît donne accès aux types de
 \family sans
  Boîte
@@ -28146,10 +28025,8 @@ reference "sec:Parboxes"
 
  et le type 
 \family sans
-\lang english
 Makebox
 \family default
-\lang french
  est décrit dans la section
 \begin_inset space ~
 \end_inset
@@ -28905,9 +28782,7 @@ cadre
 \begin_inset space ~
 \end_inset
 
-tracé 
-\lang english
-Nothing is drawn.
+tracé Rien n'est tracé
 \end_layout
 
 \begin_layout Description
@@ -29883,7 +29758,7 @@ FrameSep}{9pt}
 \end_layout
 
 \begin_layout Standard
-Pour les bôites à 
+Pour les boîtes à 
 \family sans
 Fond
 \begin_inset space ~
@@ -30427,13 +30302,10 @@ Boîtes ! Pour empêcher la césure
 \end_layout
 
 \begin_layout Standard
-Vous pouvez utiliser 
-\lang english
-the box type 
+Vous pouvez utiliser une boîte de type 
 \family sans
 Makebox
 \family default
-\lang french
  pour empêcher qu'un mot ou un texte ne soit coupé par une césure.
 \begin_inset Newline newline
 \end_inset
@@ -30442,7 +30314,11 @@ Voici un exemple de texte :
 \end_layout
 
 \begin_layout Standard
-Cette ligne est un exemple comment vous pouvez empêcher une césure: 
+Cette ligne est un exemple comment vous pouvez empêcher une césure
+\begin_inset space ~
+\end_inset
+
+: 
 \begin_inset Quotes eld
 \end_inset
 
@@ -30462,25 +30338,15 @@ motTrèsTrèsLong
 \begin_inset Quotes erd
 \end_inset
 
- 
-\lang english
-put the word into a box, set the 
-\family sans
-Inner
+ soit coupé, mettez le mot dans une boîte, mettez Boîte
 \begin_inset space ~
 \end_inset
 
-box
-\family default
- to 
-\family sans
-Makebox
-\family default
- and its width to 1
+intérieure à Makebox et sa largeur à 1
 \begin_inset space \thinspace{}
 \end_inset
 
-Width.
+Largeur.
 \end_layout
 
 \begin_layout Standard
@@ -30503,14 +30369,7 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
-
 motTrèsTrèsLong
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -34447,15 +34306,15 @@ lstparams "breaklines=true,caption={Lignes 10 - 15 de ce fichier LyX},extendedch
 \end_layout
 
 \begin_layout Standard
+L'insertion d'une formule dans un listing peut se faire de la façon suivante
+\begin_inset space ~
+\end_inset
 
-\lang english
-Inserting a formula into a listing can be done the following way:
+:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Open the listings dialog and add
+Ouvrez la fenêtre de dialogue listings et ajoutez
 \begin_inset Newline newline
 \end_inset
 
@@ -34467,24 +34326,20 @@ mathescape=true
 \begin_inset Newline newline
 \end_inset
 
-to the field of the 
+dans le champ de l'onglet 
 \family sans
-Advanced
+Avancé
 \family default
- tab.
+.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Create a formula outside the listing
+Créez la formule en dehors du listing.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Copy the content of the formula (not the formula inset) to the clipboard
- (shortcut 
+Copiez le contenu de la formule (pas l'insert de formule) vers le presse-papier
+ (raccourci 
 \begin_inset Info
 type  "shortcut"
 arg   "copy"
@@ -34494,9 +34349,7 @@ arg   "copy"
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-In the listing write 
+Dans le listing écrivez 
 \begin_inset Quotes eld
 \end_inset
 
@@ -34508,7 +34361,8 @@ $$
 \begin_inset Quotes erd
 \end_inset
 
- and copy from the clipboard between the dollar-signs (shortcut 
+ et copiez le contenu du presse-papier entre les deux signes dollar (raccourci
+ 
 \begin_inset Info
 type  "shortcut"
 arg   "paste"
@@ -34528,9 +34382,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Exemple de listing flottant 
-\lang english
-containing a formula
+Exemple de listing flottant contenant une formule
 \end_layout
 
 \end_inset
