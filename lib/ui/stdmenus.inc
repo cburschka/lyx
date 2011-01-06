@@ -459,7 +459,6 @@ Menuset
 	Menu "insert_box"
 		Item "Frameless|l" "box-insert Frameless"
 		Item "Simple Frame|F" "box-insert Boxed"
-		Item "Simple Frame, Page Breaks|P" "box-insert Framed"
 		Item "Oval, Thin|a" "box-insert ovalbox"
 		Item "Oval, Thick|v" "box-insert Ovalbox"
 		Item "Drop Shadow|w" "box-insert Shadowbox"
