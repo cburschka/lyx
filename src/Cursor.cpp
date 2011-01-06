@@ -1215,9 +1215,6 @@ LyXErr & operator<<(LyXErr & os, Cursor const & cur)
 
 namespace lyx {
 
-//#define FILEDEBUG 1
-
-
 bool Cursor::isInside(Inset const * p) const
 {
 	for (size_t i = 0; i != depth(); ++i)

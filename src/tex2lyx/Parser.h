@@ -107,6 +107,10 @@ private:
 
 std::ostream & operator<<(std::ostream & os, Token const & t);
 
+#ifdef FILEDEBUG
+extern void debugToken(std::ostream & os, Token const & t, unsigned int flags);
+#endif
+
 
 /*!
  * Actual parser class
