@@ -1094,6 +1094,16 @@ void parse_preamble(Parser & p, ostream & os,
 			}
 		}
 
+		else if (t.cs() == "@ifundefined") {
+			// prevent misparsing of \usepackage if it is used
+			// as an argument (see e.g. our own output of
+			// \@ifundefined above)
+			h_preamble << t.asInput();
+			h_preamble << '{' << p.verbatim_item() << '}';
+			h_preamble << '{' << p.verbatim_item() << '}';
+			h_preamble << '{' << p.verbatim_item() << '}';
+		}
+
 		else if (!t.cs().empty() && !in_lyx_preamble)
 			h_preamble << '\\' << t.cs();
 	}
