@@ -14323,9 +14323,24 @@ X font encoding
  selection is an expert setting which lets you change the value passed to
  the LaTeX-package
 \emph on
-fontenc
+ fontenc
 \emph default
-.
+ (see also sec.
+\begin_inset space ~
+\end_inset
+
+
+\lang ngerman
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-Einstellungen"
+
+\end_inset
+
+
+\lang english
+).
  Normally, you do not need to change (or even understand) this.
  Unless you have specific reasons use 
 \family sans
@@ -41013,6 +41028,13 @@ status collapsed
 \end_inset
 
 X
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:LaTeX-Einstellungen"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -41480,6 +41502,23 @@ reference "Dokumentklasse"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Section
+Unterdokumente
+\end_layout
+
+\begin_layout Standard
+Dieses Untermenü ist nur sichtbar, wenn das Dokument Unterdokumente enthält.
+ Siehe das Kapitel 
+\emph on
+Unterdokumente
+\emph default
+ des 
+\emph on
+Eingebettete Objekte
+\emph default
+ Handbuchs für mehr Informationen.
 \end_layout
 
 \begin_layout Section

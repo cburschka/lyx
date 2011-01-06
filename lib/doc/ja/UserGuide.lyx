@@ -18086,9 +18086,24 @@ X font encoding
  selection is an expert setting which lets you change the value passed to
  the LaTeX-package
 \emph on
-fontenc
+ fontenc
 \emph default
-.
+ (see also sec.
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-設定"
+
+\end_inset
+
+
+\lang english
+).
  Normally, you do not need to change (or even understand) this.
  Unless you have specific reasons use 
 \family sans
@@ -44938,6 +44953,27 @@ Child Documents
 \end_layout
 
 \begin_layout Section
+
+\lang english
+Child Documents
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This submenu is only visible when your document includes child documents.
+ Please refer to the section 
+\emph on
+Child Documents
+\emph default
+ of the 
+\emph on
+Embedded Objects
+\emph default
+ manual for details.
+\end_layout
+
+\begin_layout Section
 モジュール
 \end_layout
 
@@ -47202,7 +47238,13 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-Te
+
+\lang english
+Use
+\begin_inset space ~
+\end_inset
+
+LaTe
 \begin_inset ERT
 status collapsed
 
@@ -47213,7 +47255,17 @@ status collapsed
 
 \end_inset
 
-X文字コード これは文書フォントの既定文字コードです。
+X
+\begin_inset space ~
+\end_inset
+
+font
+\begin_inset space ~
+\end_inset
+
+encoding
+\lang japanese
+ これは文書フォントの既定文字コードです。
 \family sans
 T1
 \family default

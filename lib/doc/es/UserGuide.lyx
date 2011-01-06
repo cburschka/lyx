@@ -11857,9 +11857,24 @@ X font encoding
  selection is an expert setting which lets you change the value passed to
  the LaTeX-package
 \emph on
-fontenc
+ fontenc
 \emph default
-.
+ (see also sec.
+\begin_inset space ~
+\end_inset
+
+
+\lang spanish
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-Configuración"
+
+\end_inset
+
+
+\lang english
+).
  Normally, you do not need to change (or even understand) this.
  Unless you have specific reasons use 
 \family sans
@@ -40351,6 +40366,28 @@ Objetos insertados
 \end_layout
 
 \begin_layout Section
+Documentos hijo
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This submenu is only visible when your document includes child documents.
+ Please refer to
+\lang spanish
+ la sección 
+\emph on
+Documentos hijo
+\emph default
+ del manual 
+\emph on
+Objetos insertados
+\emph default
+\lang english
+ for details.
+\end_layout
+
+\begin_layout Section
 Módulos
 \end_layout
 
@@ -43461,11 +43498,23 @@ Configuración ! LaTeX
 \end_layout
 
 \begin_layout Description
-Codificación
+Usar
 \begin_inset space ~
 \end_inset
 
-Te
+codificación
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+fuente
+\begin_inset space ~
+\end_inset
+
+La
 \begin_inset ERT
 status collapsed
 
@@ -43476,7 +43525,7 @@ status collapsed
 
 \end_inset
 
-X Esta es la codificación predeterminada de la fuente del documento, 
+TeX Esta es la codificación predeterminada de la fuente del documento, 
 \family sans
 T1
 \family default
