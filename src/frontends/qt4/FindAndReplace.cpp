@@ -568,7 +568,7 @@ bool FindAndReplaceWidget::initialiseParams(std::string const & /*params*/)
 
 FindAndReplace::FindAndReplace(GuiView & parent,
 		Qt::DockWidgetArea area, Qt::WindowFlags flags)
-	: DockView(parent, "Find LyX", qt_("Advanced Find and Replace"),
+	: DockView(parent, "findreplaceadv", qt_("Advanced Find and Replace"),
 		   area, flags)
 {
 	widget_ = new FindAndReplaceWidget(parent);
