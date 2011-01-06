@@ -32845,7 +32845,7 @@ Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
 Unterdokumente
 \family default
- ausgeschlossen werden.
+ unterdrückt werden.
 \end_layout
 
 \end_deeper
@@ -33047,61 +33047,45 @@ Bemerkung:
 \end_layout
 
 \begin_layout Standard
+Wenn Sie nur bestimmte Unterdokumente des Dokuments ansehen/exportieren
+ wollen, z.
+\begin_inset space \thinspace{}
+\end_inset
 
-\lang english
-If you want to view/export only selected children of your master document,
- either because you want to save compiling time or because you want to distribut
-e single chapters of the book you are just writing, you can exclude children
- from the output.
- 
-\lang ngerman
-Dies geschieht über das Menü 
+B: um Zeit beim Kompilieren zu sparen oder weil Sie nur einige Kapitel eines
+ Buchs ausgeben möchten, können Sie Unterdokumente in der Ausgabe unterdrücken.
+ Dies geschieht über das Menü 
 \family sans
 Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
 Unterdokumente
 \family default
 .
- 
-\lang english
-You can exclude\SpecialChar \slash{}
-include children by double-clicking on the 
+ Unterdokumente können unterdrückt/eingebunden werden, indem man doppelt
+ in die Spalte 
 \family sans
-include to output
+In Ausgabe einbinden
 \family default
- column of the respective child document in the list (note that this only
- works for documents embedded via 
-\begin_inset Quotes eld
-\end_inset
-
-Include
-\begin_inset Quotes erd
-\end_inset
-
-, not with 
-\begin_inset Quotes eld
-\end_inset
-
+ hinter dem jeweiligen Unterdokument klickt (beachten Sie, dass dies nur
+ für Unterdokumente möglich ist, die per 
+\family sans
 Input
-\begin_inset Quotes erd
-\end_inset
-
-).
- If the option 
-\family sans
-Maintain counters and references
 \family default
- is enabled, LyX will assure that all page numbers, references etc.
+ eingebunden wurden).
+ Wenn die Option 
+\family sans
+Zähler und Querverweise wahren
+\family default
+ aktiviert ist, sorgt LyX dafür, dass alle Seitennummern, Querverweise usw.
 \begin_inset space ~
 \end_inset
 
-are correct as if the whole document was processed.
- This is useful if you want the selected sub-documents to look exactly as
- in the context of the whole document.
- However, LyX needs to process the whole document in the background for
- this feature.
- So if you want to save compile time and if counters and references do not
- need to be correct, disable this checkbox.
+korrekt sind, so als würde das gesamte Dokument ausgegeben werden.
+ Dies ist nützlich wenn die gewählten Unterdokumente in der Ausgabe so aussehen
+ sollen, als wenn sie Teil des fertigen, ganzen Dokuments wären.
+ Dazu muss LyX intern allerdings das gesamte Dokument prozessieren.
+ Um Zeit beim Kompilieren zu sparen und wenn die Seitennummern nicht wichtig
+ sind, wählen sie die Option nicht.
 \end_layout
 
 \begin_layout Standard
