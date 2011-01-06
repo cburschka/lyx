@@ -487,7 +487,6 @@ Sprache
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -1156,7 +1155,6 @@ Neu (Strg+N)
 \begin_inset Graphics
 	filename ../../images/buffer-new.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -1185,7 +1183,6 @@ Vorlage\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/file-open.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -1208,7 +1205,6 @@ Speichern (Strg+S)
 \begin_inset Graphics
 	filename ../../images/buffer-write.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -1249,7 +1245,6 @@ Drucken\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -1407,7 +1402,6 @@ Ausschneiden
 \begin_inset Graphics
 	filename ../../images/cut.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -1434,7 +1428,6 @@ Kopieren
 \begin_inset Graphics
 	filename ../../images/copy.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -1465,7 +1458,6 @@ Strg+V
 \begin_inset Graphics
 	filename ../../images/paste.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -1508,8 +1500,7 @@ Suchen
 \begin_inset space \space{}
 \end_inset
 
-Ersetzen\SpecialChar \ldots{}
-,
+Ersetzen,
 \begin_inset Index idx
 status collapsed
 
@@ -1533,7 +1524,6 @@ Ersetzen
 \begin_inset Graphics
 	filename ../../images/dialog-show_findreplace.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -1823,6 +1813,21 @@ Treffer
 \end_layout
 
 \begin_layout Standard
+LyX bietet außerdem ein fortgeschrittenes Suchen&Ersetzen, das in Kap.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Fortgeschrittenes-Suchen"
+
+\end_inset
+
+ beschrieben ist.
+\end_layout
+
+\begin_layout Standard
 Dinge wie Notizen, Gleitobjekte, usw.
 \begin_inset space \space{}
 \end_inset
@@ -1897,7 +1902,6 @@ Strg+Z
 \begin_inset Graphics
 	filename ../../images/undo.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -1920,7 +1924,6 @@ Strg+Y
 \begin_inset Graphics
 	filename ../../images/redo.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -2057,7 +2060,6 @@ Kopieren, Strg+C
 \begin_inset Graphics
 	filename ../../images/copy.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -2075,7 +2077,6 @@ Einfügen, Strg+V
 \begin_inset Graphics
 	filename ../../images/paste.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -2242,7 +2243,6 @@ Gliederung
 \begin_inset Graphics
 	filename ../../images/dialog-toggle_toc.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -2372,7 +2372,6 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
 \begin_inset Graphics
 	filename ../../images/reload.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -2384,7 +2383,6 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
 \begin_inset Graphics
 	filename ../../images/promote.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -2398,7 +2396,6 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
 \begin_inset Graphics
 	filename ../../images/demote.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -2412,7 +2409,6 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
 \begin_inset Graphics
 	filename ../../images/down.png
 	scale 70
-	scaleBeforeRotation
 
 \end_inset
 
@@ -2424,7 +2420,6 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
 \begin_inset Graphics
 	filename ../../images/up.png
 	scale 70
-	scaleBeforeRotation
 
 \end_inset
 
@@ -2448,7 +2443,6 @@ Der Werkzeugleistenknopf
 \begin_inset Graphics
 	filename ../../images/bookmark-goto_0.png
 	scale 70
-	rotateOrigin center
 
 \end_inset
 
@@ -2962,7 +2956,6 @@ Strg+X
 \begin_inset Graphics
 	filename ../../images/cut.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -2989,7 +2982,6 @@ Strg+C
 \begin_inset Graphics
 	filename ../../images/copy.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -3012,7 +3004,6 @@ oder
 \begin_inset Graphics
 	filename ../../images/paste.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -5290,7 +5281,6 @@ Einstellungen
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -5364,7 +5354,6 @@ Einstellungen
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -5575,7 +5564,6 @@ Standard
 \begin_inset Graphics
 	filename ../../images/layout.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -5588,7 +5576,6 @@ Aufzählung
 \begin_inset Graphics
 	filename ../../images/layout_Enumerate.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -5601,7 +5588,6 @@ Auflistung
 \begin_inset Graphics
 	filename ../../images/layout_Itemize.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -5614,7 +5600,6 @@ Liste
 \begin_inset Graphics
 	filename ../../images/layout_List.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -5627,7 +5612,6 @@ Beschreibung
 \begin_inset Graphics
 	filename ../../images/layout_Description.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -8043,7 +8027,6 @@ Einstellungen
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -10159,7 +10142,6 @@ verringern
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -10168,7 +10150,6 @@ verringern
 \begin_inset Graphics
 	filename ../../images/depth-decrement.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -10191,7 +10172,6 @@ Beachten Sie, dass LyX die Schachtelungstiefe nur dann ändert, wenn es möglich
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -10200,7 +10180,6 @@ Beachten Sie, dass LyX die Schachtelungstiefe nur dann ändert, wenn es möglich
 \begin_inset Graphics
 	filename ../../images/depth-decrement.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -10226,7 +10205,6 @@ verringern
 \begin_inset Graphics
 	filename ../../images/depth-decrement.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -10247,7 +10225,6 @@ erhöhen
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -10453,7 +10430,6 @@ Alt+Eingabe
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -10474,7 +10450,6 @@ gabe
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -10489,7 +10464,6 @@ gabe
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -10521,7 +10495,6 @@ Alt+Eingabe
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -10626,7 +10599,6 @@ Alt+Eingabe
 \begin_inset Graphics
 	filename ../../images/depth-decrement.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -10645,7 +10617,6 @@ Alt+Eingabe
 \begin_inset Graphics
 	filename ../../images/depth-decrement.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -10756,7 +10727,6 @@ Jetzt werden wir Eingabe drücken, dann
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -10811,7 +10781,6 @@ Standard
 \begin_inset Graphics
 	filename ../../images/depth-decrement.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -10872,7 +10841,6 @@ Alt+Eingabe
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -10907,7 +10875,6 @@ Alt+Eingabe
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -10929,7 +10896,6 @@ Alt+Eingabe
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -11005,7 +10971,6 @@ Wir wollen
 \begin_inset Graphics
 	filename ../../images/depth-decrement.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -11058,7 +11023,6 @@ Alt+Eingabe+
 \begin_inset Graphics
 	filename ../../images/depth-decrement.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -11082,7 +11046,6 @@ Alt+Eingabe+
 \begin_inset Graphics
 	filename ../../images/depth-decrement.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -11166,7 +11129,6 @@ Eingabe,
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -11210,7 +11172,6 @@ Eingabe,
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -11307,7 +11268,6 @@ blaue Fische
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -11320,7 +11280,6 @@ Alt+Eingabe, Gedicht,
 \begin_inset Graphics
 	filename ../../images/depth-decrement.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -12295,7 +12254,6 @@ Absatz-Einstellungen
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -14478,7 +14436,6 @@ Sie klicken auf den Werkzeugleistenknopf
 \begin_inset Graphics
 	filename ../../images/font-noun.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -14537,7 +14494,6 @@ Sie klicken auf den Werkzeugleistenknopf
 \begin_inset Graphics
 	filename ../../images/font-emph.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -14662,7 +14618,6 @@ Textstil
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
 	scale 70
-	scaleBeforeRotation
 
 \end_inset
 
@@ -15742,7 +15697,6 @@ können
 \begin_inset Graphics
 	filename ../../images/textstyle-apply.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -18452,7 +18406,6 @@ Notiz
 \begin_inset Graphics
 	filename ../../images/note-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -18592,7 +18545,6 @@ Fußnote
 \begin_inset Graphics
 	filename ../../images/footnote-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -18634,7 +18586,6 @@ Fußnote
 \begin_inset Graphics
 	filename ../../images/footnote-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -18718,7 +18669,6 @@ Randnotiz
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -18838,7 +18788,6 @@ Um eine Abbildung in Ihr Dokument einzufügen, klicken Sie auf das Symbol
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -18884,7 +18833,6 @@ Außerdem können Sie in diesem Dialogfenster einige Einstellungen ändern.
 	filename ../clipart/mobius.eps
 	lyxscale 30
 	scale 20
-	scaleBeforeRotation
 
 \end_inset
 
@@ -20081,7 +20029,6 @@ dung
 \begin_inset Graphics
 	filename ../../images/float-insert_figure.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -20143,8 +20090,6 @@ M.C.
 \align center
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
-	scaleBeforeRotation
-	rotateOrigin center
 
 \end_inset
 
@@ -20166,8 +20111,6 @@ status collapsed
 	filename ../clipart/platypus.eps
 	lyxscale 50
 	scale 60
-	scaleBeforeRotation
-	rotateOrigin center
 
 \end_inset
 
@@ -20263,7 +20206,6 @@ Marke
 \begin_inset Graphics
 	filename ../../images/label-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -20287,7 +20229,6 @@ Querverweis\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -20591,7 +20532,6 @@ Tabelle
 \begin_inset Graphics
 	filename ../../images/tabular-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -20802,7 +20742,6 @@ Einstellungen
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -20858,7 +20797,6 @@ und auf die rechte Maustaste klicken.
 \begin_inset Graphics
 	filename ../../images/toolbar-toggle_table.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -20902,7 +20840,6 @@ Horizontale Ausrichtung
 \begin_inset Graphics
 	filename ../../images/tabular-feature_m-align-left.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -20915,7 +20852,6 @@ Horizontale Ausrichtung
 \begin_inset Graphics
 	filename ../../images/tabular-feature_m-align-center.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -20928,7 +20864,6 @@ Horizontale Ausrichtung
 \begin_inset Graphics
 	filename ../../images/tabular-feature_m-align-right.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -20963,7 +20898,6 @@ Ausrichtung
 \begin_inset Graphics
 	filename ../../images/tabular-feature_m-valign-top.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -20976,7 +20910,6 @@ Ausrichtung
 \begin_inset Graphics
 	filename ../../images/tabular-feature_m-valign-middle.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -20989,7 +20922,6 @@ Ausrichtung
 \begin_inset Graphics
 	filename ../../images/tabular-feature_m-valign-bottom.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -21015,7 +20947,6 @@ Mehrfachspalte
 \begin_inset Graphics
 	filename ../../images/tabular-feature_multicolumn.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -21048,7 +20979,6 @@ Mehrfachzeile
 \begin_inset Graphics
 	filename ../../images/tabular-feature_multirow.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -21070,7 +21000,6 @@ Drehen der gesamten Tabelle oder einzelner Zellen um 90 Grad (
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-rotate-tabular.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -21083,7 +21012,6 @@ Drehen der gesamten Tabelle oder einzelner Zellen um 90 Grad (
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-rotate-cell.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -21131,7 +21059,6 @@ Rahmen für eine Zelle ein- und ausschalten (
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-top.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -21144,7 +21071,6 @@ Rahmen für eine Zelle ein- und ausschalten (
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-bottom.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -21157,7 +21083,6 @@ Rahmen für eine Zelle ein- und ausschalten (
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-left.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -21166,7 +21091,6 @@ Rahmen für eine Zelle ein- und ausschalten (
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-right.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -21179,7 +21103,6 @@ Rahmen für eine Zelle ein- und ausschalten (
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-all-lines.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -21192,7 +21115,6 @@ Rahmen für eine Zelle ein- und ausschalten (
 \begin_inset Graphics
 	filename ../../images/tabular-feature_unset-all-lines.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -21417,7 +21339,6 @@ Spalten
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-row.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -21430,7 +21351,6 @@ Spalten
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-column.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -21443,7 +21363,6 @@ Spalten
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-row.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -21452,7 +21371,6 @@ Spalten
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-column.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -21692,7 +21610,6 @@ drehen
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-rotate-tabular.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -21726,7 +21643,6 @@ drehen
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-rotate-cell.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -23341,7 +23257,6 @@ newline
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -24418,7 +24333,6 @@ Falls Sie zum Erstellen der Tabelle einfach nur die Schaltfläche
 \begin_inset Graphics
 	filename ../../images/tabular-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -24443,7 +24357,6 @@ Tabelle
 \begin_inset Graphics
 	filename ../../images/float-insert_table.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -24843,7 +24756,6 @@ Tabelle
 \begin_inset Graphics
 	filename ../../images/float-insert_table.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -25125,7 +25037,6 @@ Es gibt verschiedene Wege eine Formel einzufügen.
 \begin_inset Graphics
 	filename ../../images/math-mode.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -25276,7 +25187,6 @@ Mathe
 \begin_inset Graphics
 	filename ../../images/toolbar-toggle_math.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -25600,7 +25510,6 @@ Mathe-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math/super.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -25609,7 +25518,6 @@ Mathe-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math/sub.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -25698,7 +25606,6 @@ Einen Bruch kann man mit
 \begin_inset Graphics
 	filename ../../images/math/frac-square.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -25729,7 +25636,6 @@ Mathe-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math/frac.png
 	scale 50
-	scaleBeforeRotation
 
 \end_inset
 
@@ -25767,7 +25673,6 @@ Wurzeln erhält man, wenn man auf das
 \begin_inset Graphics
 	filename ../../images/math/sqrt.png
 	scale 70
-	scaleBeforeRotation
 
 \end_inset
 
@@ -25775,7 +25680,6 @@ Wurzeln erhält man, wenn man auf das
 \begin_inset Graphics
 	filename ../../images/math/root.png
 	scale 70
-	scaleBeforeRotation
 
 \end_inset
 
@@ -26021,7 +25925,6 @@ Mathe-Modus
 \begin_inset Graphics
 	filename ../../images/math/space.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26037,7 +25940,6 @@ Mathe-Modus
 \begin_inset Graphics
 	filename ../../images/math/style.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26094,7 +25996,6 @@ reference "sub:Schriftgrößen-Mathe"
 \begin_inset Graphics
 	filename ../../images/math/frac-square.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26120,7 +26021,6 @@ rend ist.
 \begin_inset Graphics
 	filename ../../images/math/font.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26132,7 +26032,6 @@ rend ist.
 \begin_inset Graphics
 	filename ../../images/math/functions.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26171,7 +26070,6 @@ reference "Andere-Mathe-Symbole"
 \begin_inset Graphics
 	filename ../../images/math/hat.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26183,7 +26081,6 @@ reference "Andere-Mathe-Symbole"
 \begin_inset Graphics
 	filename ../../images/math/intop.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26195,7 +26092,6 @@ reference "Andere-Mathe-Symbole"
 \begin_inset Graphics
 	filename ../../images/math/bigtriangledown.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26207,7 +26103,6 @@ reference "Andere-Mathe-Symbole"
 \begin_inset Graphics
 	filename ../../images/math/alpha.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26220,7 +26115,6 @@ reference "Andere-Mathe-Symbole"
 \begin_inset Graphics
 	filename ../../images/math/leftarrow.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26232,7 +26126,6 @@ reference "Andere-Mathe-Symbole"
 \begin_inset Graphics
 	filename ../../images/math/dashleftarrow.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26244,7 +26137,6 @@ reference "Andere-Mathe-Symbole"
 \begin_inset Graphics
 	filename ../../images/math/pm.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26256,7 +26148,6 @@ reference "Andere-Mathe-Symbole"
 \begin_inset Graphics
 	filename ../../images/math/leq.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26268,7 +26159,6 @@ reference "Andere-Mathe-Symbole"
 \begin_inset Graphics
 	filename ../../images/math/leqq.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26280,7 +26170,6 @@ reference "Andere-Mathe-Symbole"
 \begin_inset Graphics
 	filename ../../images/math/nless.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26292,7 +26181,6 @@ reference "Andere-Mathe-Symbole"
 \begin_inset Graphics
 	filename ../../images/math/ldots.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26304,7 +26192,6 @@ reference "Andere-Mathe-Symbole"
 \begin_inset Graphics
 	filename ../../images/math/dotplus.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26316,7 +26203,6 @@ reference "Andere-Mathe-Symbole"
 \begin_inset Graphics
 	filename ../../images/math/digamma.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26349,7 +26235,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/math/equation.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26362,7 +26247,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/math/sub.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26374,7 +26258,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/math/super.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26386,7 +26269,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/math/sqrt.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26398,7 +26280,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/math/root.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26410,7 +26291,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/math/frac.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26429,7 +26309,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/math/int.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26441,7 +26320,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/math/prod.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26453,7 +26331,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/math/lparen_rparen.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26465,7 +26342,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/math/lbracket_rbracket.png
 	scale 70
-	scaleBeforeRotation
 
 \end_inset
 
@@ -26476,7 +26352,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/math/lbrace_rbrace.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26488,7 +26363,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/dialog-show_mathdelimiter.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26500,7 +26374,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/math-matrix.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26512,7 +26385,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/math/cases.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26526,7 +26398,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-row.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26542,7 +26413,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-column.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26558,7 +26428,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-row.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26574,7 +26443,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-column.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -26590,7 +26458,6 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_inset Graphics
 	filename ../../images/toolbar-toggle_math_panels.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -27529,7 +27396,6 @@ Mathe-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math/delim.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -27703,7 +27569,6 @@ Mathe-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math-matrix.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -28256,7 +28121,6 @@ Sie können verschiedene Schriftstile benutzen, die Sie über die Schaltfläche
 \begin_inset Graphics
 	filename ../../images/math/font.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -29156,7 +29020,6 @@ math-size displaystyle
 \begin_inset Graphics
 	filename ../../images/math/style.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -29532,7 +29395,6 @@ Marke
 \begin_inset Graphics
 	filename ../../images/label-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -29554,7 +29416,6 @@ Querverweis
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -29900,7 +29761,6 @@ zurück
  Man kann auch mit dem Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/bookmark-goto_0.png
-	rotateOrigin center
 
 \end_inset
 
@@ -30170,7 +30030,6 @@ Sie können das Inhaltsverzeichnis auch als Gliederung verwenden.
 \begin_inset Graphics
 	filename ../../images/dialog-toggle_toc.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -30423,7 +30282,6 @@ Hyperlink
 \begin_inset Graphics
 	filename ../../images/url-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -30756,7 +30614,6 @@ Zitat\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_citation.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -31145,7 +31002,6 @@ Literaturverweis\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_citation.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -31283,7 +31139,6 @@ oder
 \begin_inset Graphics
 	filename ../../images/index-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -32279,7 +32134,6 @@ Nomenklatureintrag\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/nomencl-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -33492,7 +33346,6 @@ Strg+L
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -33652,7 +33505,6 @@ Text
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -34080,6 +33932,636 @@ netpbm
 \end_layout
 
 \begin_layout Section
+Fortgeschrittenes Suchen und Ersetzen
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Fortgeschrittenes-Suchen"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Suchen
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
+Ersetzen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Einleitung
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The advanced find and replace feature of LyX allows for searching of complex,
+ format-sensitive text segments and mathematics contents within LyX documents.
+ It is an enhancement of the standard (quick) find and replace feature.
+ The key-features are:
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Both searching of text and of mathematical formulas is allowed, where the
+ latter is done by entering mathematics in the usual way; not only entire
+ mathematical formulas are found, but also parts occurring within more complex
+ formulas
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Search may be format-insensitive, so that the searched text is found in
+ any context/style (standard text, section headings, notes, and even mathematics
+), or it may be format-sensitive, so that, for example, a word entered with
+ a section heading will only be found within section headings
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Search may be widened to a specific 
+\emph on
+scope
+\emph default
+, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+a set of files which may be all the children of the document being edited,
+ all the open files, or all the manuals available from the 
+\family sans
+Help
+\family default
+ menu
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Replace may optionally preserve capitalization, so that the replaced text
+ capitalization is adapted to the matching text (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+all lowercase, all uppercase, first uppercase followed by lowercase)
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Basic usage
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The advanced find and replace feature of LyX is activated through the menu
+ 
+\family sans
+Edit\SpecialChar \menuseparator
+Find & Replace
+\noun on
+ (
+\noun default
+Advanced
+\noun on
+)
+\family default
+\noun default
+ (shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "dialog-show findreplaceadv"
+\end_inset
+
+) or the toolbar button 
+\begin_inset Graphics
+	filename ../../images/dialog-toggle_findreplaceadv.png
+	scale 70
+	groupId Icon
+
+\end_inset
+
+.
+ This opens the 
+\family sans
+Advanced Find and Replace
+\family default
+ dialog.
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Searching for text
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Enter into the 
+\family sans
+Find
+\family default
+ LyX mini-editor a simple word, and search for occurrences of it by clicking
+ on the 
+\family sans
+Find Next
+\family default
+ button at the bottom of the dialog (or just press the 
+\family sans
+Return
+\family default
+ key).
+ The entered word is found both in text mode and in math mode, and in emphasized
+, bold or normal face, and in both in section titles and in standard text.
+ Pressing repeatedly 
+\family sans
+Enter
+\family default
+ keeps searching forward.
+ Similarly, pressing 
+\family sans
+Shift+Enter
+\family default
+ searches for the entered text backwards.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+While searching, the 
+\family sans
+Case sensitive
+\family default
+ option allows matches to occur only with the same case as entered in the
+ 
+\family sans
+Find
+\family default
+ editor.
+ The 
+\family sans
+Whole words
+\family default
+ option allows matches to occur only at word boundaries.
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Searching for mathematics
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Mathematical formulas may be searched for by typing in the 
+\family sans
+Find
+\family default
+ editor a mathematical formula, such as 
+\begin_inset Formula $x^{2}$
+\end_inset
+
+ or also something more complex like 
+\begin_inset Formula $\frac{x^{2}}{1+x^{2}}$
+\end_inset
+
+.
+ When searching for a formula, it is found both when it is alone and when
+ it occurs in sub-formulas and nested parts of sub-formulas, for example
+ the mentioned segments would be found in something like 
+\begin_inset Formula $\frac{x^{2}}{\sqrt{\frac{x^{2}}{1+x^{2}}}}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Style-aware search
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+It is also possible to search for text with specific styles.
+ This is done by switching to the 
+\family sans
+Advanced
+\family default
+ tab of the dialog and unchecking the 
+\family sans
+Ignore format
+\family default
+ option.
+ This way, entering in the 
+\family sans
+Find
+\family default
+ editor
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+a plain word and searching for it would not find instances of the word occurring
+ in emphasized or boldface.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+an emphasized or boldface word and searching for it would find the respective
+ instances with same face only, and within the same text style only.
+ Note that, for example, an emphasized text is found not only when occurring
+ alone, but also when it is contained in a longer emphasized sentence.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+a plain word in a section heading, and searching for it, finds occurrences
+ of if only within section headings.
+ Also, if the text to search is given an emphasized or bold face, in addition
+ to a section style, then it is found only when occurring with the same
+ style.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+some mathematics in a displayed formula will only find instances of this
+ formula that are also displayed formulas (and not inline formulas).
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Replace
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The text segments matching the text entered in the 
+\family sans
+Find
+\family default
+ editor may be replaced with the text segments entered in the 
+\family sans
+Replace
+\family default
+\noun on
+ 
+\noun default
+editor.
+ In order to find the next occurrence and replace it, click on the 
+\family sans
+Replace
+\family default
+ button or alternatively
+\noun on
+ 
+\noun default
+press 
+\family sans
+Enter
+\family default
+ or 
+\family sans
+Shift+Enter
+\family default
+ while being in the 
+\family sans
+Replace
+\family default
+\noun on
+ 
+\noun default
+editor.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You can replace full-featured formatted LyX segments in place of the matching
+ text segments in your document.
+ Typical scenarios in which to use this capability may be (just to mention
+ a few):
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+replacing occurrences of a word with a customized formatted version of the
+ same word, for example replacing occurrences of a name like 
+\begin_inset Quotes eld
+\end_inset
+
+func()
+\begin_inset Quotes erd
+\end_inset
+
+ with its typewriter version 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+func()
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+performing a notation rework of mathematical symbols, for example replacing
+ occurrences of 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $R$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ (you may want to enable the 
+\family sans
+Whole words
+\family default
+ and 
+\family sans
+Case sensitive
+\family default
+ options and disable the 
+\family sans
+Ignore format
+\family default
+ option in the 
+\family sans
+Advanced
+\family default
+ tab, in order to avoid replacing all 
+\begin_inset Quotes eld
+\end_inset
+
+R
+\begin_inset Quotes erd
+\end_inset
+
+ letters occurring in normal text), or occurrences of 
+\begin_inset Formula $x_{j}^{i}$
+\end_inset
+
+ with 
+\begin_inset Formula $x_{i,\, j}$
+\end_inset
+
+, or occurrences of 
+\begin_inset Formula $x[k]$
+\end_inset
+
+ with 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Advanced usage
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+There is a regular expression (regexp) based searching facility.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+A good explanation of regular expressions is given in this Wikipedia entry:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://en.wikipedia.org/wiki/Regular_expression"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ You can search for regular expression by inserting a regexp inset into
+ the 
+\family sans
+Find
+\family default
+ editor.
+ This is done via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Insert Regular Expression
+\family default
+ (shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "regexp-mode"
+\end_inset
+
+) while the cursor is in the 
+\family sans
+Find
+\family default
+ editor.
+ Characters entered within regexp insets are matched according to the regular
+ expression matching rules
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Under the constraint that any (sub)expression must match a well-formed LyX
+ text segment, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+when matching LaTeX code, no segments with unbalanced {} braces are allowed
+ to match expressions.
+\end_layout
+
+\end_inset
+
+, while text entered outside regexp insets is matched exactly against the
+ same text in the document.
+ Note that it is allowed to cut and paste regexp-mode insets as usual.
+ Examples of using such a feature may be:
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Searching for all fractions with a given denominator: for example, entering
+ in the 
+\family sans
+Find
+\family default
+ editor the fraction 
+\begin_inset Formula $\frac{.*}{1+x^{2}}$
+\end_inset
+
+ (where the 
+\begin_inset Formula $.*$
+\end_inset
+
+ on the numerator is the match-everything regular expression) finds all
+ fractions with the given denominator.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Searching for all text with a given style: for example, after unchecking
+ the 
+\family sans
+Ignore format
+\family default
+ option from the 
+\family sans
+Advanced
+\family default
+ tab, entering a 
+\series bold
+
+\begin_inset Formula $.*$
+\end_inset
+
+
+\series default
+ regular expression and adding for it an emphasized or bold face, finds
+ all emphasized and bold face text, respectively.
+ Also, inserting a 
+\begin_inset Formula $.*$
+\end_inset
+
+ regular expression in a bullet or enumerated list or a section heading,
+ you can find all bullet or enumerated lists or section headings.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Finally, references to (sub)expressions in regexp may be used as usual,
+ enclosing parts of the expression within round braces 
+\begin_inset Formula $()$
+\end_inset
+
+, and referring back to them through 
+\begin_inset Formula $\backslash1$
+\end_inset
+
+, 
+\begin_inset Formula $\backslash2$
+\end_inset
+
+, etc., where a 
+\begin_inset Formula $\backslash$
+\end_inset
+
+ symbol is entered in regexp mode by pressing twice the backslash key.
+ For example, try searching for the regexp 
+\begin_inset Formula $([a-z]+)[[:blank:]]\backslash1$
+\end_inset
+
+ in order to find word repetitions, if there are any.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note that back references work both when occurring within the same regexp,
+ and when occurring in multiple different regexps, where the numbering of
+ back-referenced sub-expressions is absolute, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+ 
+\begin_inset Formula $\backslash1$
+\end_inset
+
+ always refers to the first occurrence of 
+\begin_inset Formula $()$
+\end_inset
+
+ in all entered regexps.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note also that the use of back references in the replaced text is not (yet)
+ implemented.
+\end_layout
+
+\begin_layout Section
 Rechtschreibprüfung
 \begin_inset Index idx
 status collapsed
@@ -34199,7 +34681,6 @@ F7
 \begin_inset Graphics
 	filename ../../images/dialog-show_spellchecker.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35080,7 +35561,6 @@ Farben
 \begin_inset Graphics
 	filename ../../images/changes-merge.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35118,7 +35598,6 @@ Diese Werkzeugleiste enthält folgende Schaltknöpfe:
 \begin_inset Graphics
 	filename ../../images/changes-track.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35144,7 +35623,6 @@ Strg+Umschalt+E
 \begin_inset Graphics
 	filename ../../images/changes-output.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35172,7 +35650,6 @@ anzeigen
 \begin_inset Graphics
 	filename ../../images/change-next.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35184,7 +35661,6 @@ anzeigen
 \begin_inset Graphics
 	filename ../../images/change-accept.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35204,7 +35680,6 @@ akzeptieren
 \begin_inset Graphics
 	filename ../../images/change-reject.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35224,7 +35699,6 @@ ablehnen
 \begin_inset Graphics
 	filename ../../images/changes-merge.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35244,7 +35718,6 @@ zusammenfassen
 \begin_inset Graphics
 	filename ../../images/all-changes-accept.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35268,7 +35741,6 @@ akzeptieren
 \begin_inset Graphics
 	filename ../../images/all-changes-reject.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35292,7 +35764,6 @@ ablehnen
 \begin_inset Graphics
 	filename ../../images/note-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35319,7 +35790,6 @@ X-Notiz
 \begin_inset Graphics
 	filename ../../images/note-next.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35868,7 +36338,6 @@ pull-down
 \begin_inset Graphics
 	filename ../../images/buffer-new.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35883,7 +36352,6 @@ Neu
 \begin_inset Graphics
 	filename ../../images/file-open.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35899,7 +36367,6 @@ Datei\SpecialChar \menuseparator
 \begin_inset Graphics
 	filename ../../images/buffer-write.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35914,7 +36381,6 @@ Speichern
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35930,7 +36396,6 @@ Drucken\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/dialog-show_spellchecker.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35942,7 +36407,6 @@ Drucken\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/undo.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35957,7 +36421,6 @@ Rückgängig
 \begin_inset Graphics
 	filename ../../images/redo.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -35972,7 +36435,6 @@ Wiederholen
 \begin_inset Graphics
 	filename ../../images/cut.png
 	scale 70
-	scaleBeforeRotation
 
 \end_inset
 
@@ -35986,7 +36448,6 @@ Ausschneiden
 \begin_inset Graphics
 	filename ../../images/copy.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36001,7 +36462,6 @@ Kopieren
 \begin_inset Graphics
 	filename ../../images/paste.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36016,7 +36476,6 @@ Einfügen
 \begin_inset Graphics
 	filename ../../images/dialog-show_findreplace.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36038,7 +36497,6 @@ Strg+F
 \begin_inset Graphics
 	filename ../../images/font-emph.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36062,7 +36520,6 @@ Strg+E
 \begin_inset Graphics
 	filename ../../images/font-noun.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36082,7 +36539,6 @@ Alt+Z+K
 \begin_inset Graphics
 	filename ../../images/textstyle-apply.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36100,7 +36556,6 @@ Textstil
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36113,7 +36568,6 @@ Textstil
 \begin_inset Graphics
 	filename ../../images/math-mode.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36129,7 +36583,6 @@ Eingebettete Formel (Strg+M)
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36144,7 +36597,6 @@ Grafik
 \begin_inset Graphics
 	filename ../../images/tabular-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36159,7 +36611,6 @@ Tabelle
 \begin_inset Graphics
 	filename ../../images/dialog-toggle_toc.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36178,7 +36629,6 @@ reference "Gliederung"
 \begin_inset Graphics
 	filename ../../images/toolbar-toggle_math.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36190,7 +36640,6 @@ reference "Gliederung"
 \begin_inset Graphics
 	filename ../../images/toolbar-toggle_table.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36216,7 +36665,6 @@ Extra-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/layout.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36232,7 +36680,6 @@ Standard
 \begin_inset Graphics
 	filename ../../images/layout_Enumerate.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36248,7 +36695,6 @@ Aufzählung
 \begin_inset Graphics
 	filename ../../images/layout_Itemize.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36264,7 +36710,6 @@ Auflistung
 \begin_inset Graphics
 	filename ../../images/layout_List.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36280,7 +36725,6 @@ Liste
 \begin_inset Graphics
 	filename ../../images/layout_Description.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36296,7 +36740,6 @@ Beschreibung
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36308,7 +36751,6 @@ Beschreibung
 \begin_inset Graphics
 	filename ../../images/depth-decrement.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36322,7 +36764,6 @@ Beschreibung
 \begin_inset Graphics
 	filename ../../images/float-insert_figure.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36344,7 +36785,6 @@ Abbildung
 \begin_inset Graphics
 	filename ../../images/float-insert_table.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36364,7 +36804,6 @@ Tabelle
 \begin_inset Graphics
 	filename ../../images/label-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36382,7 +36821,6 @@ Marke
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36400,7 +36838,6 @@ Querverweis
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_citation.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36418,7 +36855,6 @@ Zitat
 \begin_inset Graphics
 	filename ../../images/index-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36437,7 +36873,6 @@ Handbuchergänzungen
 \begin_inset Graphics
 	filename ../../images/nomencl-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36465,7 +36900,6 @@ reference "Nomenklatur/Glossar"
 \begin_inset Graphics
 	filename ../../images/footnote-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36483,7 +36917,6 @@ Fußnote
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36498,7 +36931,6 @@ Randnotiz
 \begin_inset Graphics
 	filename ../../images/note-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36529,7 +36961,6 @@ X-Notiz
 \begin_inset Graphics
 	filename ../../images/box-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36544,7 +36975,6 @@ Box
 \begin_inset Graphics
 	filename ../../images/url-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36562,7 +36992,6 @@ URL
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36598,7 +37027,6 @@ Strg+L
 \begin_inset Graphics
 	filename ../../images/math-macro_newmacroname_newcommand.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36614,7 +37042,6 @@ Makro
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_include.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36644,7 +37071,6 @@ reference "Unterdokument"
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36656,7 +37082,6 @@ reference "Unterdokument"
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36668,7 +37093,6 @@ reference "Unterdokument"
 \begin_inset Graphics
 	filename ../../images/thesaurus-entry.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36698,7 +37122,6 @@ Ansicht/Aktualisierung-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36717,7 +37140,6 @@ DVI
 \begin_inset Graphics
 	filename ../../images/buffer-update_dvi.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36741,7 +37163,6 @@ DVI
 \begin_inset Graphics
 	filename ../../images/buffer-view_pdf2.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36760,7 +37181,6 @@ PDF (pdflatex)
 \begin_inset Graphics
 	filename ../../images/buffer-update_pdf2.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36784,7 +37204,6 @@ PDF (pdflatex)
 \begin_inset Graphics
 	filename ../../images/buffer-view_ps.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36803,7 +37222,6 @@ Postscript
 \begin_inset Graphics
 	filename ../../images/buffer-update_ps.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36892,7 +37310,6 @@ Mathe-Makros-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math-macro-remove-param.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36904,7 +37321,6 @@ Mathe-Makros-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math-macro-add-param.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36916,7 +37332,6 @@ Mathe-Makros-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math-macro-make-optional.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36928,7 +37343,6 @@ Mathe-Makros-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math-macro-make-nonoptional.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36940,7 +37354,6 @@ Mathe-Makros-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math-macro-remove-optional-param.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36952,7 +37365,6 @@ Mathe-Makros-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math-macro-add-optional-param.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36964,7 +37376,6 @@ Mathe-Makros-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math-macro-remove-greedy-param.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36976,7 +37387,6 @@ Mathe-Makros-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math-macro-append-greedy-param.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -36988,7 +37398,6 @@ Mathe-Makros-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math-macro-add-greedy-optional-param.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset
@@ -37266,7 +37675,6 @@ Das ist das Gleiche, als wenn Sie auf
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
 	scale 70
-	scaleBeforeRotation
 	groupId Icon
 
 \end_inset

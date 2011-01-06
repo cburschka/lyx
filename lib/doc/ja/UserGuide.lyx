@@ -611,6 +611,8 @@ status collapsed
 新規 
 \begin_inset Graphics
 	filename ../../images/buffer-new.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -629,6 +631,8 @@ status collapsed
 開く 
 \begin_inset Graphics
 	filename ../../images/file-open.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -647,6 +651,8 @@ status collapsed
 保存 
 \begin_inset Graphics
 	filename ../../images/buffer-write.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -689,6 +695,8 @@ status collapsed
 印刷 
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -984,6 +992,8 @@ name "sec:基本的な編集機能"
 切り取り 
 \begin_inset Graphics
 	filename ../../images/cut.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -996,6 +1006,8 @@ name "sec:基本的な編集機能"
 コピー 
 \begin_inset Graphics
 	filename ../../images/copy.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -1008,6 +1020,8 @@ name "sec:基本的な編集機能"
 貼り付け 
 \begin_inset Graphics
 	filename ../../images/paste.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -1032,6 +1046,8 @@ name "sec:基本的な編集機能"
 検索／置換 
 \begin_inset Graphics
 	filename ../../images/dialog-show_findreplace.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -1283,6 +1299,35 @@ status collapsed
 \color none
 オプションを使うと、完全な単語として一致するもののみに一致するように、LyXに強制することができます。つまり、「star」で検索すると「starlet」には一致
 しなくなります。
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+LyX offers also an advanced 
+\family sans
+\lang japanese
+検索／置換
+\family default
+\lang english
+ feature that is described in sec.
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Advanced-Find"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1362,6 +1407,8 @@ LyXでは、何か失敗をしても、簡単にもとに戻すことができ�
 かツールバーボタン
 \begin_inset Graphics
 	filename ../../images/undo.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -1387,6 +1434,8 @@ LyXでは、何か失敗をしても、簡単にもとに戻すことができ�
 あるいはツールバーボタン
 \begin_inset Graphics
 	filename ../../images/redo.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -1718,6 +1767,8 @@ LyXでは、文書内を動き回るのに二つの方法があります。
 メニューかツールバーボタン
 \begin_inset Graphics
 	filename ../../images/dialog-toggle_toc.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -1759,37 +1810,51 @@ reference "sec:図・表・アルゴリズム一覧"
 
 \begin_layout Standard
 文書構造ウィンドウ下部の
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Graphics
 	filename ../../images/down.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
 
-\begin_inset space \hspace{}
-\length -3mm
+\begin_inset space ~
 \end_inset
 
 および
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Graphics
 	filename ../../images/up.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
 
-\begin_inset space \hspace{}
-\length -3mm
+\begin_inset space ~
 \end_inset
 
 を使うと、例えば、第2.5節を第2.4節の前に持っていったりするなど、節の文書内での位置を変えることができます。すると、LyXは、自動的に節番号を新しい順序に振り直
 してくれます。
 \begin_inset Graphics
 	filename ../../images/promote.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
 ないし
 \begin_inset Graphics
 	filename ../../images/demote.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -1808,6 +1873,8 @@ Shift+Tab
 ツールバーボタン
 \begin_inset Graphics
 	filename ../../images/bookmark-goto_0.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -11752,12 +11819,16 @@ LyXは、本文を特定の文脈と性質をもった統合されたかたま�
 を選びます（ステータスバーに入れ子の階層が表示されます）。メニューの代わりに、ツールバーボタン
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
 ないし
 \begin_inset Graphics
 	filename ../../images/depth-decrement.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -18446,6 +18517,8 @@ status collapsed
 
 \begin_inset Graphics
 	filename ../../images/font-noun.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -18652,6 +18725,8 @@ Matthias Ettrich
 ツールバーボタン
 \begin_inset Graphics
 	filename ../../images/font-emph.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -19878,6 +19953,8 @@ status collapsed
 ダイアログで新しい文字形式を選択すると、その設定は保存されます。それを有効にするには、ツールバーボタン
 \begin_inset Graphics
 	filename ../../images/textstyle-apply.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -20928,6 +21005,8 @@ DVI
 の代わりには、ツールバーボタン
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -20963,6 +21042,8 @@ PDF
 の代わりにはツールバーボタン
 \begin_inset Graphics
 	filename ../../images/buffer-export_pdf2.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -20970,6 +21051,8 @@ PDF
 PostScriptの代わりには、ツールバーボタン
 \begin_inset Graphics
 	filename ../../images/buffer-view_ps.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -21039,6 +21122,8 @@ name "sub:ファイルを印刷"
 メニューを選択するか、ツールバーボタン
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -23331,7 +23416,7 @@ status collapsed
 \begin_inset Graphics
 	filename ../../images/note-insert.png
 	scale 85
-	scaleBeforeRotation
+	groupId toolbarbutton
 
 \end_inset
 
@@ -23407,6 +23492,8 @@ LyXは、脚注をボックスを使って表示します。
 
 \begin_inset Graphics
 	filename ../../images/footnote-insert.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -23592,6 +23679,8 @@ name "sec:傍注"
 メニューかツールバーボタン
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -23651,6 +23740,8 @@ name "sec:図"
 文書に図を挿入するには、カーソルを希望する本文中の位置に合わせて、ツールバーアイコン
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -24016,6 +24107,7 @@ name "sec:表"
 \begin_inset Graphics
 	filename ../../images/tabular-insert.png
 	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -27339,7 +27431,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
-	rotateOrigin center
 
 \end_inset
 
@@ -27398,7 +27489,6 @@ name "cap:エッシャー"
 \align center
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
-	rotateOrigin center
 
 \end_inset
 
@@ -28019,7 +28109,6 @@ status open
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
 	width 40col%
-	rotateOrigin center
 
 \end_inset
 
@@ -28777,6 +28866,8 @@ status collapsed
 数式を作成するには、ツールバーアイコン
 \begin_inset Graphics
 	filename ../../images/math-mode.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -29706,6 +29797,8 @@ status collapsed
 根号は、数式パネルの
 \begin_inset Graphics
 	filename ../../images/math/sqrt.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -30208,6 +30301,8 @@ arg   "space-insert protected"
 のボタン
 \begin_inset Graphics
 	filename ../../images/math/space.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -30329,6 +30424,8 @@ name "sub:関数"
 の
 \begin_inset Graphics
 	filename ../../images/math/functions.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -31188,6 +31285,8 @@ vec
 記号設定ボタン
 \begin_inset Graphics
 	filename ../../images/math/hat.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -31260,6 +31359,8 @@ LyXで使える括弧には、いくつかのものがあります。ほとん�
 の区分記号アイコン
 \begin_inset Graphics
 	filename ../../images/math/delim.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -31425,6 +31526,8 @@ status collapsed
 LyXでは、行列は数式パネルの行列ボタン
 \begin_inset Graphics
 	filename ../../images/math/matrix.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -32116,6 +32219,8 @@ status collapsed
 であり、数字の標準フォントはローマン体です。数式中でフォントを指定するには、数式パネルの
 \begin_inset Graphics
 	filename ../../images/math/font.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -32613,6 +32718,8 @@ status collapsed
 の中の
 \begin_inset Graphics
 	filename ../../images/math/font.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -32755,6 +32862,8 @@ displaystyle
 ン
 \begin_inset Graphics
 	filename ../../images/math/style.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -33082,6 +33191,7 @@ name "enu:第2項目"
 \begin_inset Graphics
 	filename ../../images/label-insert.png
 	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -33184,6 +33294,7 @@ sec:
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.png
 	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -33536,6 +33647,8 @@ reference "sec:数式番号と参照"
 前に持っていくことができ、ツールバーボタンの
 \begin_inset Graphics
 	filename ../../images/bookmark-goto_0.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -33879,6 +33992,8 @@ name "sub:ハイパーリンク"
 メニューか、ツールバーボタン
 \begin_inset Graphics
 	filename ../../images/href-insert.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -34086,6 +34201,8 @@ reference "sub:参考文献環境"
 メニューかツールバーボタン
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_citation.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -34449,6 +34566,8 @@ name "sec:索引"
 メニューかツールバーボタン
 \begin_inset Graphics
 	filename ../../images/index-insert.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -35444,6 +35563,8 @@ key "TeXCatalogue"
 メニューかツールバーボタン
 \begin_inset Graphics
 	filename ../../images/nomencl-insert.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -36594,6 +36715,8 @@ TeXコード
 メニューかツールバーボタン
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -37004,6 +37127,642 @@ yXのメインウィンドウで文書の一部を選択すれば、（1段落�
 \end_layout
 
 \begin_layout Section
+
+\lang english
+Advanced Find and Replace
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Advanced-Find"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ちかん@置換
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+けんさく@検索
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Introduction
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The advanced find and replace feature of LyX allows for searching of complex,
+ format-sensitive text segments and mathematics contents within LyX documents.
+ It is an enhancement of the standard (quick) find and replace feature.
+ The key-features are:
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Both searching of text and of mathematical formulas is allowed, where the
+ latter is done by entering mathematics in the usual way; not only entire
+ mathematical formulas are found, but also parts occurring within more complex
+ formulas
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Search may be format-insensitive, so that the searched text is found in
+ any context/style (standard text, section headings, notes, and even mathematics
+), or it may be format-sensitive, so that, for example, a word entered with
+ a section heading will only be found within section headings
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Search may be widened to a specific 
+\emph on
+scope
+\emph default
+, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+a set of files which may be all the children of the document being edited,
+ all the open files, or all the manuals available from the 
+\family sans
+Help
+\family default
+ menu
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Replace may optionally preserve capitalization, so that the replaced text
+ capitalization is adapted to the matching text (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+all lowercase, all uppercase, first uppercase followed by lowercase)
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Basic usage
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The advanced find and replace feature of LyX is activated through the menu
+ 
+\family sans
+Edit\SpecialChar \menuseparator
+Find & Replace
+\noun on
+ (
+\noun default
+Advanced
+\noun on
+)
+\family default
+\noun default
+ (shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "dialog-show findreplaceadv"
+\end_inset
+
+) or the toolbar button 
+\begin_inset Graphics
+	filename ../../images/dialog-toggle_findreplaceadv.png
+	scale 85
+	groupId toolbarbutton
+
+\end_inset
+
+.
+ This opens the 
+\family sans
+Advanced Find and Replace
+\family default
+ dialog.
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Searching for text
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Enter into the 
+\family sans
+Find
+\family default
+ LyX mini-editor a simple word, and search for occurrences of it by clicking
+ on the 
+\family sans
+Find Next
+\family default
+ button at the bottom of the dialog (or just press the 
+\family sans
+Return
+\family default
+ key).
+ The entered word is found both in text mode and in math mode, and in emphasized
+, bold or normal face, and in both in section titles and in standard text.
+ Pressing repeatedly 
+\family sans
+Enter
+\family default
+ keeps searching forward.
+ Similarly, pressing 
+\family sans
+Shift+Enter
+\family default
+ searches for the entered text backwards.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+While searching, the 
+\family sans
+Case sensitive
+\family default
+ option allows matches to occur only with the same case as entered in the
+ 
+\family sans
+Find
+\family default
+ editor.
+ The 
+\family sans
+Whole words
+\family default
+ option allows matches to occur only at word boundaries.
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Searching for mathematics
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Mathematical formulas may be searched for by typing in the 
+\family sans
+Find
+\family default
+ editor a mathematical formula, such as 
+\begin_inset Formula $x^{2}$
+\end_inset
+
+ or also something more complex like 
+\begin_inset Formula $\frac{x^{2}}{1+x^{2}}$
+\end_inset
+
+.
+ When searching for a formula, it is found both when it is alone and when
+ it occurs in sub-formulas and nested parts of sub-formulas, for example
+ the mentioned segments would be found in something like 
+\begin_inset Formula $\frac{x^{2}}{\sqrt{\frac{x^{2}}{1+x^{2}}}}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Style-aware search
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+It is also possible to search for text with specific styles.
+ This is done by switching to the 
+\family sans
+Advanced
+\family default
+ tab of the dialog and unchecking the 
+\family sans
+Ignore format
+\family default
+ option.
+ This way, entering in the 
+\family sans
+Find
+\family default
+ editor
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+a plain word and searching for it would not find instances of the word occurring
+ in emphasized or boldface.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+an emphasized or boldface word and searching for it would find the respective
+ instances with same face only, and within the same text style only.
+ Note that, for example, an emphasized text is found not only when occurring
+ alone, but also when it is contained in a longer emphasized sentence.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+a plain word in a section heading, and searching for it, finds occurrences
+ of if only within section headings.
+ Also, if the text to search is given an emphasized or bold face, in addition
+ to a section style, then it is found only when occurring with the same
+ style.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+some mathematics in a displayed formula will only find instances of this
+ formula that are also displayed formulas (and not inline formulas).
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Replace
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The text segments matching the text entered in the 
+\family sans
+Find
+\family default
+ editor may be replaced with the text segments entered in the 
+\family sans
+Replace
+\family default
+\noun on
+ 
+\noun default
+editor.
+ In order to find the next occurrence and replace it, click on the 
+\family sans
+Replace
+\family default
+ button or alternatively
+\noun on
+ 
+\noun default
+press 
+\family sans
+Enter
+\family default
+ or 
+\family sans
+Shift+Enter
+\family default
+ while being in the 
+\family sans
+Replace
+\family default
+\noun on
+ 
+\noun default
+editor.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You can replace full-featured formatted LyX segments in place of the matching
+ text segments in your document.
+ Typical scenarios in which to use this capability may be (just to mention
+ a few):
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+replacing occurrences of a word with a customized formatted version of the
+ same word, for example replacing occurrences of a name like 
+\begin_inset Quotes eld
+\end_inset
+
+func()
+\begin_inset Quotes erd
+\end_inset
+
+ with its typewriter version 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+func()
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+performing a notation rework of mathematical symbols, for example replacing
+ occurrences of 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $R$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ (you may want to enable the 
+\family sans
+Whole words
+\family default
+ and 
+\family sans
+Case sensitive
+\family default
+ options and disable the 
+\family sans
+Ignore format
+\family default
+ option in the 
+\family sans
+Advanced
+\family default
+ tab, in order to avoid replacing all 
+\begin_inset Quotes eld
+\end_inset
+
+R
+\begin_inset Quotes erd
+\end_inset
+
+ letters occurring in normal text), or occurrences of 
+\begin_inset Formula $x_{j}^{i}$
+\end_inset
+
+ with 
+\begin_inset Formula $x_{i,\, j}$
+\end_inset
+
+, or occurrences of 
+\begin_inset Formula $x[k]$
+\end_inset
+
+ with 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Advanced usage
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+There is a regular expression (regexp) based searching facility.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+A good explanation of regular expressions is given in this Wikipedia entry:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://en.wikipedia.org/wiki/Regular_expression"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ You can search for regular expression by inserting a regexp inset into
+ the 
+\family sans
+Find
+\family default
+ editor.
+ This is done via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Insert Regular Expression
+\family default
+ (shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "regexp-mode"
+\end_inset
+
+) while the cursor is in the 
+\family sans
+Find
+\family default
+ editor.
+ Characters entered within regexp insets are matched according to the regular
+ expression matching rules
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Under the constraint that any (sub)expression must match a well-formed LyX
+ text segment, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+when matching LaTeX code, no segments with unbalanced {} braces are allowed
+ to match expressions.
+\end_layout
+
+\end_inset
+
+, while text entered outside regexp insets is matched exactly against the
+ same text in the document.
+ Note that it is allowed to cut and paste regexp-mode insets as usual.
+ Examples of using such a feature may be:
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Searching for all fractions with a given denominator: for example, entering
+ in the 
+\family sans
+Find
+\family default
+ editor the fraction 
+\begin_inset Formula $\frac{.*}{1+x^{2}}$
+\end_inset
+
+ (where the 
+\begin_inset Formula $.*$
+\end_inset
+
+ on the numerator is the match-everything regular expression) finds all
+ fractions with the given denominator.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Searching for all text with a given style: for example, after unchecking
+ the 
+\family sans
+Ignore format
+\family default
+ option from the 
+\family sans
+Advanced
+\family default
+ tab, entering a 
+\series bold
+
+\begin_inset Formula $.*$
+\end_inset
+
+
+\series default
+ regular expression and adding for it an emphasized or bold face, finds
+ all emphasized and bold face text, respectively.
+ Also, inserting a 
+\begin_inset Formula $.*$
+\end_inset
+
+ regular expression in a bullet or enumerated list or a section heading,
+ you can find all bullet or enumerated lists or section headings.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Finally, references to (sub)expressions in regexp may be used as usual,
+ enclosing parts of the expression within round braces 
+\begin_inset Formula $()$
+\end_inset
+
+, and referring back to them through 
+\begin_inset Formula $\backslash1$
+\end_inset
+
+, 
+\begin_inset Formula $\backslash2$
+\end_inset
+
+, etc., where a 
+\begin_inset Formula $\backslash$
+\end_inset
+
+ symbol is entered in regexp mode by pressing twice the backslash key.
+ For example, try searching for the regexp 
+\begin_inset Formula $([a-z]+)[[:blank:]]\backslash1$
+\end_inset
+
+ in order to find word repetitions, if there are any.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note that back references work both when occurring within the same regexp,
+ and when occurring in multiple different regexps, where the numbering of
+ back-referenced sub-expressions is absolute, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+ 
+\begin_inset Formula $\backslash1$
+\end_inset
+
+ always refers to the first occurrence of 
+\begin_inset Formula $()$
+\end_inset
+
+ in all entered regexps.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note also that the use of back references in the replaced text is not (yet)
+ implemented.
+\end_layout
+
+\begin_layout Section
 スペルチェック
 \begin_inset CommandInset label
 LatexCommand label
@@ -37297,6 +38056,8 @@ name "sec:類語辞典"
 メニューかツールバーボタン
 \begin_inset Graphics
 	filename ../../images/thesaurus-entry.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -37384,6 +38145,8 @@ status collapsed
 。執筆者と変更の日時は、カーソルを変更箇所にあわせると、LyXのステータスバーに表示されます。ツールバーボタン
 \begin_inset Graphics
 	filename ../../images/changes-merge.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -37442,6 +38205,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/changes-track.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -37471,6 +38236,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/changes-output.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -37500,6 +38267,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/change-next.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -37525,6 +38294,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/change-accept.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -37554,6 +38325,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/change-reject.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -37583,6 +38356,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/changes-merge.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -37612,6 +38387,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/all-changes-accept.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -37641,6 +38418,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/all-changes-reject.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -37670,6 +38449,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/note-insert.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -37699,6 +38480,8 @@ LyX注釈
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/note-next.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43227,6 +44010,8 @@ status collapsed
 \family sans
 \begin_inset Graphics
 	filename ../../images/buffer-new.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43255,6 +44040,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/file-open.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43283,6 +44070,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-write.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43311,6 +44100,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43339,6 +44130,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show_spellchecker.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43367,6 +44160,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/undo.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43395,6 +44190,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/redo.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43423,6 +44220,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/cut.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43451,6 +44250,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/copy.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43479,6 +44280,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/paste.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43507,7 +44310,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show_findreplace.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43536,7 +44340,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/bookmark-goto_0.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43566,6 +44371,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/font-emph.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43596,6 +44403,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/font-noun.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43626,6 +44435,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/font-free-apply.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43656,6 +44467,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-mode.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43685,7 +44498,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43714,7 +44528,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/tabular-insert.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43743,7 +44558,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-toggle_toc.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43774,7 +44590,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/toolbar-toggle_math.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43800,7 +44617,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/toolbar-toggle_table.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43872,7 +44690,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43898,7 +44717,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout_Enumerate.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43924,7 +44744,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout_Itemize.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43950,7 +44771,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout_List.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -43976,7 +44798,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout_Description.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44002,7 +44825,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44031,7 +44855,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/depth-decrement.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44060,6 +44885,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/float-insert_figure.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44089,6 +44916,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/float-insert_table.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44118,6 +44947,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/label-insert.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44146,6 +44977,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44174,6 +45007,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_citation.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44202,6 +45037,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/index-insert.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44230,6 +45067,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/nomencl-insert.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44258,6 +45097,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/footnote-insert.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44286,7 +45127,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44315,6 +45157,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/note-insert.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44344,6 +45188,8 @@ LyX注釈
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/box-insert.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44372,6 +45218,8 @@ LyX注釈
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/url-insert.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44400,6 +45248,8 @@ URL
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44443,6 +45293,8 @@ eX
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-macro_newmacroname_newcommand.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44472,6 +45324,8 @@ eX
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_include.png
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44501,7 +45355,8 @@ eX
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44530,7 +45385,8 @@ eX
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44559,7 +45415,8 @@ eX
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/thesaurus-entry.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44642,7 +45499,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44671,7 +45529,8 @@ DVI
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-update_dvi.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44701,7 +45560,8 @@ DVI
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-view_pdf2.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44730,7 +45590,8 @@ PDF
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-update_pdf2.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44760,7 +45621,8 @@ PDF
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-view_ps.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
@@ -44789,7 +45651,8 @@ Postscript
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-update_ps.png
-	rotateOrigin center
+	scale 85
+	groupId toolbarbutton
 
 \end_inset
 
