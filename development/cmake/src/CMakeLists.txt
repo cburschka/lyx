@@ -95,12 +95,40 @@ if(WIN32)
 	message(STATUS "Using icon defined in resource file: ${FILE_RC}")
 endif()
 
+if(MSVC_IDE)
+	file(GLOB info_files ${TOP_SRC_DIR}/*)
+	set(lyx_info_files)
+	foreach(_it ${info_files})
+		if(NOT IS_DIRECTORY ${_it})
+			set_source_files_properties(${_it} PROPERTIES HEADER_FILE_ONLY TRUE)
+			set(lyx_info_files ${lyx_info_files} ${_it})
+		endif()
+	endforeach()
+	source_group(LyXInfo FILES ${lyx_info_files})
+	
+	file(GLOB cmake_files1 ${TOP_SRC_DIR}/development/cmake/*)
+	file(GLOB cmake_files2 ${TOP_SRC_DIR}/development/cmake/modules/*)
+	set(lyx_cmake_files)
+	foreach(_it ${cmake_files1} ${cmake_files2})
+		if(NOT IS_DIRECTORY ${_it})
+			get_filename_component(name ${_it} NAME)
+			if(NOT name STREQUAL CMakeLists.txt AND NOT ${_it} MATCHES "^/\\\\..*$;~$")
+				set_source_files_properties(${_it} PROPERTIES HEADER_FILE_ONLY TRUE)
+				set(lyx_cmake_files ${lyx_cmake_files} ${_it})
+			endif()
+		endif()
+	endforeach()
+	source_group(LyXCMake FILES ${lyx_cmake_files})
+endif()
+
 add_executable(${_lyx}
 	${WIN32_CONSOLE}
 	${lyx_sources}
 	${lyx_headers}
 	${vld_files}
 	${FILE_RC}
+	${lyx_info_files}
+	${lyx_cmake_files}
 )
 
 lyx_add_gcc_pch(${_lyx})
