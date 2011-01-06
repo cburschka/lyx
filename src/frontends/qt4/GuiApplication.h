@@ -67,7 +67,6 @@ public:
 	void registerSocketCallback(int fd, SocketCallback func);
 	void unregisterSocketCallback(int fd);
 	bool searchMenu(FuncRequest const & func, docstring_list & names) const;
-	docstring iconName(FuncRequest const & f, bool unknown);
 	void handleKeyFunc(FuncCode action);
 	//@}
 

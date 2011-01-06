@@ -849,7 +849,7 @@ void GuiApplication::clearSession()
 }
 
 
-docstring GuiApplication::iconName(FuncRequest const & f, bool unknown)
+docstring Application::iconName(FuncRequest const & f, bool unknown)
 {
 	return qstring_to_ucs4(lyx::frontend::iconName(f, unknown));
 }
@@ -2169,6 +2169,22 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 bool GuiApplication::getRgbColor(ColorCode col, RGBColor & rgbcol)
 {
 	QColor const & qcol = d->color_cache_.get(col);
+	if (!qcol.isValid()) {
+		rgbcol.r = 0;
+		rgbcol.g = 0;
+		rgbcol.b = 0;
+		return false;
+	}
+	rgbcol.r = qcol.red();
+	rgbcol.g = qcol.green();
+	rgbcol.b = qcol.blue();
+	return true;
+}
+
+
+bool Application::getRgbColorUncached(ColorCode col, RGBColor & rgbcol)
+{
+	QColor const qcol(lcolor.getX11Name(col).c_str());
 	if (!qcol.isValid()) {
 		rgbcol.r = 0;
 		rgbcol.g = 0;

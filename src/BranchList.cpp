@@ -48,6 +48,8 @@ Branch::Branch()
 	// no theApp() with command line export
 	if (theApp())
 		theApp()->getRgbColor(Color_background, color_);
+	else
+		frontend::Application::getRgbColorUncached(Color_background, color_);
 }
 
 
@@ -106,9 +108,14 @@ void Branch::setColor(string const & str)
 {
 	if (str.size() == 7 && str[0] == '#')
 		color_ = rgbFromHexName(str);
-	else
+	else {
 		// no color set or invalid color - use normal background
-		theApp()->getRgbColor(Color_background, color_);
+		// no theApp() with command line export
+		if (theApp())
+			theApp()->getRgbColor(Color_background, color_);
+		else
+			frontend::Application::getRgbColorUncached(Color_background, color_);
+	}
 }
 
 

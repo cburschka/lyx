@@ -209,6 +209,8 @@ public:
 	* It returns false on failure and sets r, g, b to 0.
 	*/
 	virtual bool getRgbColor(ColorCode col, RGBColor & rgbcol) = 0;
+	/// Like getRgbColor(), but static and slower
+	static bool getRgbColorUncached(ColorCode col, RGBColor & rgbcol);
 
 	/** Eg, passing Color_black returns "000000",
 	*      passing Color_white returns "ffffff".
@@ -232,7 +234,7 @@ public:
 		docstring_list & names) const = 0;
 
 	/// \return the icon file name for the given action.
-	virtual docstring iconName(FuncRequest const & f, bool unknown) = 0;
+	static docstring iconName(FuncRequest const & f, bool unknown);
 
 	/// Handle a accented char key sequence
 	/// FIXME: this is only needed for LFUN_ACCENT_* in Text::dispatch()

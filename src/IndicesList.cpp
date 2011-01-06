@@ -69,6 +69,8 @@ Index::Index()
 	// no theApp() with command line export
 	if (theApp())
 		theApp()->getRgbColor(Color_indexlabel, color_);
+	else
+		frontend::Application::getRgbColorUncached(Color_indexlabel, color_);
 }
 
 
@@ -112,9 +114,14 @@ void Index::setColor(string const & str)
 {
 	if (str.size() == 7 && str[0] == '#')
 		color_ = rgbFromHexName(str);
-	else
+	else {
 		// no color set or invalid color -- use predefined color
-		theApp()->getRgbColor(Color_indexlabel, color_);
+		// no theApp() with command line export
+		if (theApp())
+			theApp()->getRgbColor(Color_indexlabel, color_);
+		else
+			frontend::Application::getRgbColorUncached(Color_indexlabel, color_);
+	}
 }
 
 

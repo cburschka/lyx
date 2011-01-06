@@ -358,6 +358,10 @@ void InsetInfo::updateInfo()
 			break;
 		}
 		// iterate through the menubackend to find it
+		if (!theApp()) {
+			error("Can't determine menu entry for action %1$s in batch mode");
+			break;
+		}
 		if (!theApp()->searchMenu(func, names)) {
 			error("No menu entry for action %1$s");
 			break;
@@ -389,11 +393,15 @@ void InsetInfo::updateInfo()
 	}
 	case ICON_INFO: {
 		FuncRequest func = lyxaction.lookupFunc(name_);
-		docstring icon_name = theApp()->iconName(func, true);
+		docstring icon_name = frontend::Application::iconName(func, true);
 		//FIXME: We should use the icon directly instead of
 		// going through FileName. The code below won't work
 		// if the icon is embedded in the executable through
 		// the Qt resource system.
+		// This is only a negligible performance problem:
+		// If the installed icon differs from the resource icon the
+		// installed one is preferred anyway, and all icons that are
+		// embedded in the resources are installed as well.
 		FileName file(to_utf8(icon_name));
 		if (!file.exists())
 			break;
