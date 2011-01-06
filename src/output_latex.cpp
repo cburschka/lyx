@@ -978,6 +978,9 @@ void latexParagraphs(Buffer const & buf,
 	pit_type pit = runparams.par_begin;
 	// lastpit is for the language check after the loop.
 	pit_type lastpit = pit;
+	// variables used in the loop:
+	bool was_title = false;
+	bool already_title = false;
 	DocumentClass const & tclass = bparams.documentClass();
 
 	for (; pit < runparams.par_end; ++pit) {
@@ -990,12 +993,12 @@ void latexParagraphs(Buffer const & buf,
 				tclass.plainLayout() : par->layout();
 
 		if (layout.intitle) {
-			if (runparams.didTitle) {
+			if (already_title) {
 				LYXERR0("Error in latexParagraphs: You"
 					" should not mix title layouts"
 					" with normal ones.");
-			} else if (!runparams.inTitle) {
-				runparams.inTitle = true;
+			} else if (!was_title) {
+				was_title = true;
 				if (tclass.titletype() == TITLE_ENVIRONMENT) {
 					os << "\\begin{"
 							<< from_ascii(tclass.titlename())
@@ -1003,7 +1006,7 @@ void latexParagraphs(Buffer const & buf,
 					texrow.newline();
 				}
 			}
-		} else if (runparams.inTitle && !runparams.didTitle) {
+		} else if (was_title && !already_title) {
 			if (tclass.titletype() == TITLE_ENVIRONMENT) {
 				os << "\\end{" << from_ascii(tclass.titlename())
 						<< "}\n";
@@ -1013,8 +1016,8 @@ void latexParagraphs(Buffer const & buf,
 						<< "\n";
 			}
 			texrow.newline();
-			runparams.didTitle = true;
-			runparams.inTitle = false;
+			already_title = true;
+			was_title = false;
 		}
 
 
@@ -1040,7 +1043,7 @@ void latexParagraphs(Buffer const & buf,
 	}
 
 	// It might be that we only have a title in this document
-	if (runparams.inTitle && !runparams.didTitle) {
+	if (was_title && !already_title) {
 		if (tclass.titletype() == TITLE_ENVIRONMENT) {
 			os << "\\end{" << from_ascii(tclass.titlename())
 			    << "}\n";
