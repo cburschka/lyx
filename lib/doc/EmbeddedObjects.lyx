@@ -1,4 +1,4 @@
-#LyX 2.0.0beta2 created this file. For more info see http://www.lyx.org/
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 410
 \begin_document
 \begin_header
@@ -32572,13 +32572,21 @@ Files ! Include
 \end_layout
 
 \begin_layout Standard
-Child documents are used when you have a long document consisting of several
+Child documents are used if you have a long document consisting of several
  larger parts or sections.
  For maintenance it is often useful and sometimes even required to split
- the document in several files that can be revised separately.
- The different documents are then the so called child documents and a master
- document connects them to print the full document or parts of it.
- A child documents inherits elements of its master, for example the LaTeX
+ the document into several files that can be revised separately.
+ The different documents are then the so called 
+\begin_inset Quotes eld
+\end_inset
+
+child documents
+\begin_inset Quotes erd
+\end_inset
+
+, and a master document connects them to print the full document or parts
+ of it.
+ A child document inherits elements of its master, for example the LaTeX
  preamble, the bibliography, and labels for cross-references.
 \end_layout
 
@@ -32623,7 +32631,7 @@ Documents
 \end_layout
 
 \begin_layout Description
-Include You can include LyX and LaTeX-documents.
+Include You can include LyX- and LaTeX-documents.
  When you press the 
 \family sans
 Load
@@ -32671,7 +32679,7 @@ reference "sub:External-Subsection-1"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -32684,30 +32692,6 @@ The preamble of the child document is ignored; only the preamble of the
 \end_layout
 
 \begin_layout Standard
-If you are only working on a certain chapter of a large document and want
- to save compiling time, you can put each included file into a branch.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Branches are described in section 
-\emph on
-Branches
-\emph default
- of the LyX 
-\emph on
-Userguide
-\emph default
-.
-\end_layout
-
-\end_inset
-
- By enabling/disabling branches you can decide what included files will
- appear in the output.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Greyedout
 status open
 
@@ -32716,32 +32700,8 @@ status open
 \series bold
 Note:
 \series default
- Due to a bug in LyX the LaTeX command 
-\series bold
-
-\backslash
-includeonly
-\series default
- can currently not be used as an alternative to decide what files should
- be included.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- When you have included a LyX- or LaTeX-file, you are warned when you export/vie
-w the document in case the child document uses another document class than
+ If you have included a LyX- or LaTeX-file, you are warned when you export/view
+ the document in case the child document uses another document class than
  the master document as this will lead to unexpected outputs.
 \end_layout
 
@@ -32786,13 +32746,13 @@ Graphics
 \end_layout
 
 \begin_layout Itemize
-The LaTeX-command 
-\series bold
-
-\backslash
-includeonly
-\series default
- cannot be used.
+You cannot exclude Input files via the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Child Documents
+\family default
+.
 \end_layout
 
 \end_deeper
@@ -32812,7 +32772,7 @@ filename "DummyDocument2.lyx"
 \end_layout
 
 \begin_layout Description
-Verbatim With this method every text file can be included.
+Verbatim With this method any text file can be included.
  The file is shown in the output with its source code; no command used in
  the text is invoked.
  You can use the option 
@@ -32866,7 +32826,7 @@ filename "DummyTextDocument.txt"
 \begin_inset VSpace bigskip
 \end_inset
 
-Here is a child document inserted as Verbatim using the 
+ Here is a child document inserted as Verbatim using the 
 \family sans
 Mark spaces in output
 \family default
@@ -32940,6 +32900,84 @@ Note:
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+If you want to view/export only selected children of your master document,
+ either because you want to save compiling time or because you want to distribut
+e single chapters of the book you are just writing, you can exclude children
+ from the output.
+ This is done via the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Child Documents
+\family default
+.
+ You can exclude\SpecialChar \slash{}
+include children by double-clicking on the 
+\family sans
+include to output
+\family default
+ column of the respective child document in the list (note that this only
+ works for documents embedded via 
+\begin_inset Quotes eld
+\end_inset
+
+Include
+\begin_inset Quotes erd
+\end_inset
+
+, not with 
+\begin_inset Quotes eld
+\end_inset
+
+Input
+\begin_inset Quotes erd
+\end_inset
+
+).
+ If the option 
+\family sans
+Maintain counters and references
+\family default
+ is enabled, LyX will assure that all page numbers, references etc.
+\begin_inset space ~
+\end_inset
+
+are correct as if the whole document was processed.
+ This is useful if you want the selected sub-documents to look exactly as
+ in the context of the whole document.
+ However, LyX needs to process the whole document in the background for
+ this feature.
+ So if you want to save compile time and if counters and references do not
+ need to be correct, disable this checkbox.
+\end_layout
+
+\begin_layout Standard
+Alternatively, you can put each included file into a branch.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Branches are described in section 
+\emph on
+Branches
+\emph default
+ of the LyX 
+\emph on
+Userguide
+\emph default
+.
+\end_layout
+
+\end_inset
+
+ By enabling\SpecialChar \slash{}
+disabling branches you can decide which included files will
+ appear in the output.
+ This has the advantage that it also works with Input'ed sub-documents.
+ However, counters and references will not be maintained with this approach.
 \end_layout
 
 \begin_layout Chapter

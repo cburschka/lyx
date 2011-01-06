@@ -33359,56 +33359,6 @@ Le préambule du sous-document est tout simplement ignoré, seul le préambule
 \end_layout
 
 \begin_layout Standard
-Si vous travaillez uniquement sur un chapitre particulier d'un document
- important et que vous voulez optimiser le temps de compilation, vous pouvez
- inclure chaque fichier dans une branche
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Les branches sont décrites dans la section 
-\emph on
-Branches
-\emph default
- du 
-\emph on
-Guide de l'utilisateur
-\emph default
- de LyX.
-\end_layout
-
-\end_inset
-
-.
- En activant ou désactivant une branche, vous pouvez décider les fichiers
- inclus qui doivent apparaître dans la sortie imprimée.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- À cause d'un bug de LyX, la commande 
-\series bold
-
-\backslash
-includeonly
-\series default
- ne peut actuellement pas être utilisée comme solution alternative pour
- décider quels sont les fichiers qui doivent être inclus.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Greyedout
 status open
 
@@ -33470,13 +33420,15 @@ Graphique
 \end_layout
 
 \begin_layout Itemize
-La commande LaTeX 
-\series bold
 
-\backslash
-includeonly
-\series default
- ne peut pas être utilisée.
+\lang english
+You cannot exclude Input files via the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Child Documents
+\family default
+.
 \end_layout
 
 \end_deeper
@@ -33644,6 +33596,92 @@ Note:
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you want to view/export only selected children of your master document,
+ either because you want to save compiling time or because you want to distribut
+e single chapters of the book you are just writing, you can exclude children
+ from the output.
+ This is done via the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Child Documents
+\family default
+.
+ You can exclude\SpecialChar \slash{}
+include children by double-clicking on the 
+\family sans
+include to output
+\family default
+ column of the respective child document in the list (note that this only
+ works for documents embedded via 
+\begin_inset Quotes eld
+\end_inset
+
+Include
+\begin_inset Quotes erd
+\end_inset
+
+, not with 
+\begin_inset Quotes eld
+\end_inset
+
+Input
+\begin_inset Quotes erd
+\end_inset
+
+).
+ If the option 
+\family sans
+Maintain counters and references
+\family default
+ is enabled, LyX will assure that all page numbers, references etc.
+\begin_inset space ~
+\end_inset
+
+are correct as if the whole document was processed.
+ This is useful if you want the selected sub-documents to look exactly as
+ in the context of the whole document.
+ However, LyX needs to process the whole document in the background for
+ this feature.
+ So if you want to save compile time and if counters and references do not
+ need to be correct, disable this checkbox.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Alternatively
+\lang french
+, vous pouvez inclure chaque fichier dans une branche
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Les branches sont décrites dans la section 
+\emph on
+Branches
+\emph default
+ du 
+\emph on
+Guide de l'utilisateur
+\emph default
+ de LyX.
+\end_layout
+
+\end_inset
+
+.
+ En activant ou désactivant une branche, vous pouvez décider les fichiers
+ inclus qui doivent apparaître dans la sortie imprimée.
+ 
+\lang english
+This has the advantage that it also works with Input'ed sub-documents.
+ However, counters and references will not be maintained with this approach.
 \end_layout
 
 \begin_layout Chapter

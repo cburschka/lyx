@@ -1,4 +1,4 @@
-#LyX 2.0.0beta2 created this file. For more info see http://www.lyx.org/
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 410
 \begin_document
 \begin_header
@@ -30601,51 +30601,6 @@ reference "sub:外部文書の第1小節"
 \end_layout
 
 \begin_layout Standard
-大きな文書のうち、特定の章だけの作業を行っている際に、コンパイル時間を短縮したい場合、取り込んだファイルの各々を派生枝の中に入れる方法があります
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-派生枝は、LyX
-\emph on
-ユーザーの手引き
-\emph default
-の
-\emph on
-派生枝
-\emph default
-の節に説明されています。
-\end_layout
-
-\end_inset
-
-。派生枝を有効化したり無効化したりすることによって、取り込んだファイルのどれを出力に表示させるかを決めることができます。
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-【註】
-\series default
-LyXのバグにより、どのファイルを取り込むかを決める他の方法として、現在のところ、LaTeXコマンドの
-\series bold
-
-\backslash
-includeonly
-\series default
-を使用することはできません。
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Greyedout
 status open
 
@@ -30686,13 +30641,15 @@ Inputファイルは、LyX設定の操作性
 \end_layout
 
 \begin_layout Itemize
-LaTeXコマンドの
-\series bold
 
-\backslash
-includeonly
-\series default
-は使用することができません。
+\lang english
+You cannot exclude Input files via the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Child Documents
+\family default
+.
 \end_layout
 
 \end_deeper
@@ -30836,6 +30793,92 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you want to view/export only selected children of your master document,
+ either because you want to save compiling time or because you want to distribut
+e single chapters of the book you are just writing, you can exclude children
+ from the output.
+ This is done via the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Child Documents
+\family default
+.
+ You can exclude\SpecialChar \slash{}
+include children by double-clicking on the 
+\family sans
+include to output
+\family default
+ column of the respective child document in the list (note that this only
+ works for documents embedded via 
+\begin_inset Quotes eld
+\end_inset
+
+Include
+\begin_inset Quotes erd
+\end_inset
+
+, not with 
+\begin_inset Quotes eld
+\end_inset
+
+Input
+\begin_inset Quotes erd
+\end_inset
+
+).
+ If the option 
+\family sans
+Maintain counters and references
+\family default
+ is enabled, LyX will assure that all page numbers, references etc.
+\begin_inset space ~
+\end_inset
+
+are correct as if the whole document was processed.
+ This is useful if you want the selected sub-documents to look exactly as
+ in the context of the whole document.
+ However, LyX needs to process the whole document in the background for
+ this feature.
+ So if you want to save compile time and if counters and references do not
+ need to be correct, disable this checkbox.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Alternatively, you can put each included file into a branch.
+\lang japanese
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+派生枝は、LyX
+\emph on
+ユーザーの手引き
+\emph default
+の
+\emph on
+派生枝
+\emph default
+の節に説明されています。
+\end_layout
+
+\end_inset
+
+
+\lang english
+ By enabling\SpecialChar \slash{}
+disabling branches you can decide which included files will
+ appear in the output.
+ This has the advantage that it also works with Input'ed sub-documents.
+ However, counters and references will not be maintained with this approach.
 \end_layout
 
 \begin_layout Chapter

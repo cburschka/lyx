@@ -1,4 +1,4 @@
-#LyX 2.0.0beta2 created this file. For more info see http://www.lyx.org/
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 410
 \begin_document
 \begin_header
@@ -32215,55 +32215,6 @@ El preámbulo del documento hijo se ignora, sólo se utiliza el preámbulo
 \end_layout
 
 \begin_layout Standard
-En caso de estar trabajando solo en un capítulo determinado de un documento
- extenso, y con el fin de ahorrar tiempo de compilación, se puede poner
- cada archivo incluido en una rama.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Las ramas se describen en la sección
-\emph on
- Ramas
-\emph default
- de la  
-\emph on
-Guía del usuario
-\emph default
- de LyX.
-\end_layout
-
-\end_inset
-
- Habilitando/deshabilitando las ramas puedes decidir qué archivos incluidos
- aparecerán en la salida.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Nota:
-\series default
- Debido a un fallo de LyX, el comando LaTeX 
-\series bold
-
-\backslash
-includeonly
-\series default
- no se puede usar por el momento como alternativa para decidir qué archivos
- deberían ser incluidos.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Greyedout
 status open
 
@@ -32324,12 +32275,14 @@ Gráficos
 \end_layout
 
 \begin_layout Itemize
-No se puede utilizar el comando LaTeX 
-\series bold
 
-\backslash
-includeonly
-\series default
+\lang english
+You cannot exclude Input files via the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Child Documents
+\family default
 .
 \end_layout
 
@@ -32500,6 +32453,91 @@ Nota:
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you want to view/export only selected children of your master document,
+ either because you want to save compiling time or because you want to distribut
+e single chapters of the book you are just writing, you can exclude children
+ from the output.
+ This is done via the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Child Documents
+\family default
+.
+ You can exclude\SpecialChar \slash{}
+include children by double-clicking on the 
+\family sans
+include to output
+\family default
+ column of the respective child document in the list (note that this only
+ works for documents embedded via 
+\begin_inset Quotes eld
+\end_inset
+
+Include
+\begin_inset Quotes erd
+\end_inset
+
+, not with 
+\begin_inset Quotes eld
+\end_inset
+
+Input
+\begin_inset Quotes erd
+\end_inset
+
+).
+ If the option 
+\family sans
+Maintain counters and references
+\family default
+ is enabled, LyX will assure that all page numbers, references etc.
+\begin_inset space ~
+\end_inset
+
+are correct as if the whole document was processed.
+ This is useful if you want the selected sub-documents to look exactly as
+ in the context of the whole document.
+ However, LyX needs to process the whole document in the background for
+ this feature.
+ So if you want to save compile time and if counters and references do not
+ need to be correct, disable this checkbox.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Alternatively
+\lang spanish
+, se puede poner cada archivo incluido en una rama.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Las ramas se describen en la sección
+\emph on
+ Ramas
+\emph default
+ de la 
+\emph on
+Guía del usuario
+\emph default
+ de LyX.
+\end_layout
+
+\end_inset
+
+ Habilitando/deshabilitando las ramas puedes decidir qué archivos incluidos
+ aparecerán en la salida.
+ 
+\lang english
+This has the advantage that it also works with Input'ed sub-documents.
+ However, counters and references will not be maintained with this approach.
 \end_layout
 
 \begin_layout Chapter
