@@ -41,7 +41,9 @@ if (NOT ENCHANT_FOUND)
 	list(REMOVE_ITEM lyx_headers ${TOP_SRC_DIR}/src/Enchant.h)
 endif()
 
-lyx_automoc(${TOP_SRC_DIR}/src/Server.cpp)
+if (WIN32)
+	lyx_automoc(${TOP_SRC_DIR}/src/Server.cpp)
+endif()
 
 include_directories(
 	${CMAKE_CURRENT_BINARY_DIR}
