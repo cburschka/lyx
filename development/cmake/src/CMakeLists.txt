@@ -71,6 +71,13 @@ if(WIN32)
 endif()
 
 
+if(MSVC_IDE)
+	set(lyx_headers ${lyx_headers} ${TOP_SRC_DIR}/status.16x)
+	set_source_files_properties(${TOP_SRC_DIR}/status.16x PROPERTIES HEADER_FILE_ONLY TRUE)
+	source_group(Status ${TOP_SRC_DIR}/status.16x)
+endif()
+
+
 add_executable(${_lyx}
 	${WIN32_CONSOLE}
 	${lyx_sources}
