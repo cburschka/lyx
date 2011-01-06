@@ -2961,6 +2961,8 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options) const
 
 void Paragraph::forToc(docstring & os, size_t maxlen) const
 {
+	if (!d->params_.labelString().empty())
+		os += d->params_.labelString() + ' ';
 	for (pos_type i = 0; i < size() && os.length() < maxlen; ++i) {
 		if (isDeleted(i))
 			continue;
