@@ -1,7 +1,7 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
+# Copyright (c) 2006-2011, Peter Kümmel, <syntheticpp@gmx.net>
 #
 
 set(_lyx ${PACKAGE_BASE}${PROGRAM_SUFFIX})
@@ -16,7 +16,7 @@ add_subdirectory(mathed)
 add_subdirectory(support)
 add_subdirectory(tex2lyx)
 if (UNIX)
-  add_subdirectory(client)
+	add_subdirectory(client)
 endif()
 
 file(GLOB lyx_sources ${TOP_SRC_DIR}/src/${LYX_CPP_FILES})
@@ -32,19 +32,21 @@ list(REMOVE_ITEM lyx_sources
 	${TOP_SRC_DIR}/src/lyxmathed.cpp)
 
 if (NOT ASPELL_FOUND)
-  list(REMOVE_ITEM lyx_sources ${TOP_SRC_DIR}/src/ASpell.cpp)
-  list(REMOVE_ITEM lyx_headers ${TOP_SRC_DIR}/src/ASpell_local.h)
+	list(REMOVE_ITEM lyx_sources ${TOP_SRC_DIR}/src/ASpell.cpp)
+	list(REMOVE_ITEM lyx_headers ${TOP_SRC_DIR}/src/ASpell_local.h)
 endif()
 
 if (NOT ENCHANT_FOUND)
-  list(REMOVE_ITEM lyx_sources ${TOP_SRC_DIR}/src/Enchant.cpp)
-  list(REMOVE_ITEM lyx_headers ${TOP_SRC_DIR}/src/Enchant.h)
+	list(REMOVE_ITEM lyx_sources ${TOP_SRC_DIR}/src/Enchant.cpp)
+	list(REMOVE_ITEM lyx_headers ${TOP_SRC_DIR}/src/Enchant.h)
 endif()
 
 lyx_automoc(${TOP_SRC_DIR}/src/Server.cpp)
 
-include_directories(${CMAKE_CURRENT_BINARY_DIR}
-	${ZLIB_INCLUDE_DIR} ${QT_INCLUDES})
+include_directories(
+	${CMAKE_CURRENT_BINARY_DIR}
+	${ZLIB_INCLUDE_DIR}
+	${QT_INCLUDES})
 
 lyx_add_msvc_pch(lyx)
 
@@ -66,8 +68,8 @@ if (LYX_VLD)
 endif()
 
 if(WIN32)
-        set(FILE_RC ${CMAKE_SOURCE_DIR}/lyx.rc)
-        message(STATUS "Using icon defined in resource file: ${FILE_RC}")
+	set(FILE_RC ${CMAKE_SOURCE_DIR}/lyx.rc)
+	message(STATUS "Using icon defined in resource file: ${FILE_RC}")
 endif()
 
 
@@ -83,7 +85,7 @@ add_executable(${_lyx}
 	${lyx_sources}
 	${lyx_headers}
 	${vld_files}
-        ${FILE_RC}
+	${FILE_RC}
 )
 
 lyx_add_gcc_pch(${_lyx})
@@ -113,12 +115,12 @@ if (AIKSAURUSLIB_FOUND)
 endif()
 
 if (APPLE)
-  target_link_libraries(${_lyx} "-bind_at_load")
-  target_link_libraries(${_lyx} "-framework Carbon")
+	target_link_libraries(${_lyx} "-bind_at_load")
+	target_link_libraries(${_lyx} "-framework Carbon")
 endif()
 
 if (MINGW)
-  target_link_libraries(${_lyx} ole32)
+	target_link_libraries(${_lyx} ole32)
 endif()
 
 project_source_group("${GROUP_CODE}" lyx_sources lyx_headers)
