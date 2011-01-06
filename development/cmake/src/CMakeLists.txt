@@ -104,7 +104,7 @@ if(MSVC_IDE)
 			set(lyx_info_files ${lyx_info_files} ${_it})
 		endif()
 	endforeach()
-	source_group(LyXInfo FILES ${lyx_info_files})
+	source_group(LyXInfoFiles FILES ${lyx_info_files})
 	
 	file(GLOB cmake_files1 ${TOP_SRC_DIR}/development/cmake/*)
 	file(GLOB cmake_files2 ${TOP_SRC_DIR}/development/cmake/modules/*)
@@ -118,7 +118,7 @@ if(MSVC_IDE)
 			endif()
 		endif()
 	endforeach()
-	source_group(LyXCMake FILES ${lyx_cmake_files})
+	source_group(LyXCMakeFiles FILES ${lyx_cmake_files})
 endif()
 
 add_executable(${_lyx}
