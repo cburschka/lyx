@@ -281,6 +281,28 @@ vector<string> split_options(string const & input)
 
 
 /*!
+ * Retrieve a keyval option "name={value with=sign}" named \p name from
+ * \p options and return the value.
+ * The found option is also removed from \p options.
+ */
+string process_keyval_opt(vector<string> & options, string name)
+{
+	for (size_t i = 0; i < options.size(); ++i) {
+		vector<string> option;
+		split(options[i], option, '=');
+		if (option.size() < 2)
+			continue;
+		if (option[0] == name) {
+			options.erase(options.begin() + i);
+			option.erase(option.begin());
+			return join(option, "=");
+		}
+	}
+	return "";
+}
+
+
+/*!
  * Add package \p name with options \p options to used_packages.
  * Remove options from \p options that we don't want to output.
  */
@@ -315,6 +337,100 @@ string const scale_as_percentage(string const & scale)
 	// If the input string didn't match our expectations.
 	// return the default value "100"
 	return "100";
+}
+
+
+string remove_braces(string const & value)
+{
+	if (value.empty())
+		return value;
+	if (value[0] == '{' && value[value.length()-1] == '}')
+		return value.substr(1, value.length()-2);
+	return value;
+}
+
+
+void handle_hyperref(vector<string> & options)
+{
+	// FIXME swallow inputencoding changes that might surround the
+	//       hyperref setup if it was written by LyX
+	h_use_hyperref = "1";
+	// swallow "unicode=true", since LyX does always write that
+	vector<string>::iterator it =
+		find(options.begin(), options.end(), "unicode=true");
+	if (it != options.end())
+		options.erase(it);
+	it = find(options.begin(), options.end(), "pdfusetitle");
+	if (it != options.end()) {
+		h_pdf_pdfusetitle = "1";
+		options.erase(it);
+	}
+	string bookmarks = process_keyval_opt(options, "bookmarks");
+	if (bookmarks == "true")
+		h_pdf_bookmarks = "1";
+	else if (bookmarks == "false")
+		h_pdf_bookmarks = "0";
+	if (h_pdf_bookmarks == "1") {
+		string bookmarksnumbered =
+			process_keyval_opt(options, "bookmarksnumbered");
+		if (bookmarksnumbered == "true")
+			h_pdf_bookmarksnumbered = "1";
+		else if (bookmarksnumbered == "false")
+			h_pdf_bookmarksnumbered = "0";
+		string bookmarksopen =
+			process_keyval_opt(options, "bookmarksopen");
+		if (bookmarksopen == "true")
+			h_pdf_bookmarksopen = "1";
+		else if (bookmarksopen == "false")
+			h_pdf_bookmarksopen = "0";
+		if (h_pdf_bookmarksopen == "1") {
+			string bookmarksopenlevel =
+				process_keyval_opt(options, "bookmarksopenlevel");
+			if (!bookmarksopenlevel.empty())
+				h_pdf_bookmarksopenlevel = bookmarksopenlevel;
+		}
+	}
+	string breaklinks = process_keyval_opt(options, "breaklinks");
+	if (breaklinks == "true")
+		h_pdf_breaklinks = "1";
+	else if (breaklinks == "false")
+		h_pdf_breaklinks = "0";
+	string pdfborder = process_keyval_opt(options, "pdfborder");
+	if (pdfborder == "{0 0 0}")
+		h_pdf_pdfborder = "1";
+	else if (pdfborder == "{0 0 1}")
+		h_pdf_pdfborder = "0";
+	string backref = process_keyval_opt(options, "backref");
+	if (!backref.empty())
+		h_pdf_backref = backref;
+	string colorlinks = process_keyval_opt(options, "colorlinks");
+	if (colorlinks == "true")
+		h_pdf_colorlinks = "1";
+	else if (colorlinks == "false")
+		h_pdf_colorlinks = "0";
+	string pdfpagemode = process_keyval_opt(options, "pdfpagemode");
+	if (!pdfpagemode.empty())
+		h_pdf_pagemode = pdfpagemode;
+	string pdftitle = process_keyval_opt(options, "pdftitle");
+	if (!pdftitle.empty()) {
+		h_pdf_title = remove_braces(pdftitle);
+	}
+	string pdfauthor = process_keyval_opt(options, "pdfauthor");
+	if (!pdfauthor.empty()) {
+		h_pdf_author = remove_braces(pdfauthor);
+	}
+	string pdfsubject = process_keyval_opt(options, "pdfsubject");
+	if (!pdfsubject.empty())
+		h_pdf_subject = remove_braces(pdfsubject);
+	string pdfkeywords = process_keyval_opt(options, "pdfkeywords");
+	if (!pdfkeywords.empty())
+		h_pdf_keywords = remove_braces(pdfkeywords);
+	if (!options.empty()) {
+		if (!h_pdf_quoted_options.empty())
+			h_pdf_quoted_options += ',';
+		h_pdf_quoted_options += join(options, ",");
+		options.clear();
+	}
 }
 
 
@@ -463,6 +579,9 @@ void handle_package(Parser &p, string const & name, string const & opts,
 
 	else if (name == "jurabib")
 		h_cite_engine = "jurabib";
+
+	else if (name == "hyperref")
+		handle_hyperref(options);
 
 	else if (!in_lyx_preamble) {
 		if (options.empty())
@@ -951,6 +1070,9 @@ void parse_preamble(Parser & p, ostream & os,
 		}
 
 		else if (t.cs() == "jurabibsetup") {
+			// FIXME p.getArg('{', '}') is most probably wrong (it
+			//       does not handle nested braces).
+			//       Use p.verbatim_item() instead.
 			vector<string> jurabibsetup =
 				split_options(p.getArg('{', '}'));
 			// add jurabibsetup to the jurabib package options
@@ -958,6 +1080,17 @@ void parse_preamble(Parser & p, ostream & os,
 			if (!jurabibsetup.empty()) {
 				h_preamble << "\\jurabibsetup{"
 					   << join(jurabibsetup, ",") << '}';
+			}
+		}
+
+		else if (t.cs() == "hypersetup") {
+			vector<string> hypersetup =
+				split_options(p.verbatim_item());
+			// add hypersetup to the hyperref package options
+			handle_hyperref(hypersetup);
+			if (!hypersetup.empty()) {
+				h_preamble << "\\hypersetup{"
+				           << join(hypersetup, ",") << '}';
 			}
 		}
 
