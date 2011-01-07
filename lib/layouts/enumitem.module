@@ -97,7 +97,7 @@ Style Labeling
 	% mandatory second argument (label-pattern):
 	\newenvironment{elabeling}[2][]%
 	  {\settowidth{\lyxlabelwidth}{#2}
-	   \begin{description}[font=,style=sameline,
+	   \begin{description}[font=\normalfont,style=sameline,
 			       leftmargin=\lyxlabelwidth,#1]}
 	  {\end{description}}
 	EndPreamble
