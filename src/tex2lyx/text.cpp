@@ -447,6 +447,19 @@ Layout const * findLayout(TextClass const & textclass, string const & name)
 }
 
 
+InsetLayout const * findInsetLayout(TextClass const & textclass, string const & name, bool command)
+{
+	DocumentClass::InsetLayouts::const_iterator it = textclass.insetLayouts().begin();
+	DocumentClass::InsetLayouts::const_iterator en = textclass.insetLayouts().end();
+	for (; it != en; ++it)
+		if (it->second.latexname() == name &&
+		    ((command && it->second.latextype() == InsetLayout::COMMAND) ||
+		     (!command && it->second.latextype() == InsetLayout::ENVIRONMENT)))
+			return &(it->second);
+	return 0;
+}
+
+
 void eat_whitespace(Parser &, ostream &, Context &, bool);
 
 
@@ -1334,6 +1347,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		Context & context)
 {
 	Layout const * newlayout = 0;
+	InsetLayout const * newinsetlayout = 0;
 	// Store the latest bibliographystyle and nocite{*} option
 	// (needed for bibtex inset)
 	string btprint;
@@ -2974,6 +2988,17 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				} else
 					handle_ert(os, name + '{' + length + '}', context);
 			}
+		}
+
+		// The single '=' is meant here.
+		else if ((newinsetlayout = findInsetLayout(context.textclass, t.cs(), true))) {
+			p.skip_spaces();
+			context.check_layout(os);
+			begin_inset(os, "Flex ");
+			os << to_utf8(newinsetlayout->name()) << '\n'
+			   << "status collapsed\n";
+			parse_text_in_inset(p, os, FLAG_ITEM, false, context);
+			end_inset(os);
 		}
 
 		else {
