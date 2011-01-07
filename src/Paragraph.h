@@ -82,6 +82,10 @@ public:
 		return first <= p && p <= last;
 	}
 
+	inline bool empty() const
+	{
+		return first > last;
+	}
 };
 
 ///

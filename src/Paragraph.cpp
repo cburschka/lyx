@@ -137,7 +137,30 @@ public:
 
 	void setRange(FontSpan const fp, SpellChecker::Result state)
 	{
-		eraseCoveredRanges(fp);
+		Ranges result;
+		RangesIterator et = ranges_.end();
+		RangesIterator it = ranges_.begin();
+		for (; it != et; ++it) {
+			if (!it->covered(fp))
+				result.push_back(SpellResultRange(it->range(), it->result()));
+			else if (state == SpellChecker::WORD_OK) {
+				// trim or split the current misspelled range
+				// store misspelled ranges only
+				FontSpan range = it->range();
+				if (fp.first > range.first) {
+					// misspelled area in front of WORD_OK
+					range.last = fp.first - 1;
+					result.push_back(SpellResultRange(range, it->result()));
+					range = it->range();
+				}
+				if (fp.last < range.last) {
+					// misspelled area after WORD_OK range
+					range.first = fp.last + 1;
+					result.push_back(SpellResultRange(range, it->result()));
+				}
+			}
+		}
+		ranges_ = result;
 		if (state != SpellChecker::WORD_OK)
 			ranges_.push_back(SpellResultRange(fp, state));
 	}
@@ -207,8 +230,10 @@ public:
 			if (pos > refresh_.last)
 				refresh_.last = pos;
 		} else if (pos != -1) {
-			refresh_.first = pos;
-			refresh_.last = pos;
+			// init request check for neighbour positions too
+			refresh_.first = pos > 0 ? pos - 1 : 0;
+			// no need for special end of paragraph check
+			refresh_.last = pos + 1;
 		}
 		needs_refresh_ = pos != -1;
 	}
@@ -230,18 +255,6 @@ private:
 	/// spell state cache version number
 	SpellChecker::ChangeNumber current_change_number_;
 
-
-	void eraseCoveredRanges(FontSpan const fp)
-	{
-		Ranges result;
-		RangesIterator et = ranges_.end();
-		RangesIterator it = ranges_.begin();
-		for (; it != et; ++it) {
-			if (!it->covered(fp))
-				result.push_back(SpellResultRange(it->range(), it->result()));
-		}
-		ranges_ = result;
-	}
 
 	void correctRangesAfterPos(pos_type pos, int offset)
 	{
