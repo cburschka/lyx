@@ -40,7 +40,7 @@ public:
 		family = "default";
 		series = "default";
 		shape = "default";
-		language = "default";
+		language = "english";
 	}
 	std::string size;
 	std::string family;

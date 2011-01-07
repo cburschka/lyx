@@ -130,8 +130,8 @@ char const * const known_coded_quotes[] = { "prd", "ard", "ard", "ard",
 char const * const known_sizes[] = { "tiny", "scriptsize", "footnotesize",
 "small", "normalsize", "large", "Large", "LARGE", "huge", "Huge", 0};
 
-/// the same as known_sizes with .lyx names plus a default entry
-char const * const known_coded_sizes[] = { "default", "tiny", "scriptsize", "footnotesize",
+/// the same as known_sizes with .lyx names
+char const * const known_coded_sizes[] = { "tiny", "scriptsize", "footnotesize",
 "small", "normal", "large", "larger", "largest", "huge", "giant", 0};
 
 /// LaTeX 2.09 names for font families
@@ -481,6 +481,15 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 			   Context & parent_context,
 			   Layout const * newlayout)
 {
+	TeXFont const oldFont = parent_context.font;
+	// save the current font size
+	string const size = oldFont.size;
+	// reset the font size to default, because the font size switches
+	// don't affect section headings and the like
+	parent_context.font.size = Context::normalfont.size;
+	// we only need to write the font change if we have an open layout
+	if (!parent_context.atParagraphStart())
+		output_font_change(os, oldFont, parent_context.font);
 	parent_context.check_end_layout(os);
 	Context context(true, parent_context.textclass, newlayout,
 			parent_context.layout, parent_context.font);
@@ -530,6 +539,9 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 	// We don't need really a new paragraph, but
 	// we must make sure that the next item gets a \begin_layout.
 	parent_context.new_paragraph(os);
+	// Set the font size to the original value. No need to output it here
+	// (Context::begin_layout() will do that if needed)
+	parent_context.font.size = size;
 }
 
 
@@ -1733,20 +1745,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			 context.new_layout_allowed &&
 			 (newlayout = findLayout(context.textclass, t.cs() + '*')) &&
 			 newlayout->isCommand()) {
-			TeXFont const oldFont = context.font;
-			// save the current font size
-			string const size = oldFont.size;
-			// reset the font size to default, because the
-			// font size switches don't affect section
-			// headings and the like
-			context.font.size = known_coded_sizes[0];
-			output_font_change(os, oldFont, context.font);
 			// write the layout
 			p.get_token();
 			output_command_layout(os, p, outer, context, newlayout);
-			// set the font size to the original value
-			context.font.size = size;
-			output_font_change(os, oldFont, context.font);
 			p.skip_spaces();
 		}
 
@@ -1754,32 +1755,19 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (context.new_layout_allowed &&
 			 (newlayout = findLayout(context.textclass, t.cs())) &&
 			 newlayout->isCommand()) {
-			TeXFont const oldFont = context.font;
-			// save the current font size
-			string const size = oldFont.size;
-			// reset the font size to default, because the font size switches don't
-			// affect section headings and the like
-			context.font.size = known_coded_sizes[0];
-			output_font_change(os, oldFont, context.font);
 			// write the layout
 			output_command_layout(os, p, outer, context, newlayout);
-			// set the font size to the original value
-			context.font.size = size;
-			output_font_change(os, oldFont, context.font);
 			p.skip_spaces();
 		}
 
 		else if (t.cs() == "caption") {
-			// FIXME: this should get some cleanup. All
-			// the \begin_layout:s are output by the
-			// Context class!
 			p.skip_spaces();
 			context.check_layout(os);
 			p.skip_spaces();
 			begin_inset(os, "Caption\n\n");
-			os << "\\begin_layout " 
-			   << to_utf8(context.textclass.defaultLayout().name()) 
-			   << '\n';
+			Context newcontext(true, context.textclass);
+			newcontext.font = context.font;
+			newcontext.check_layout(os);
 			if (p.next_token().cat() != catEscape &&
 			    p.next_token().character() == '[') {
 				p.get_token(); // eat '['
@@ -1796,7 +1784,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.new_paragraph(os);
 			end_inset(os);
 			p.skip_spaces();
-			os << "\\end_layout\n";
+			newcontext.check_end_layout(os);
 		}
 
 		else if (t.cs() == "includegraphics") {
@@ -2352,9 +2340,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			char const * const * where = is_known(t.cs(), known_sizes);
 			context.check_layout(os);
 			TeXFont const oldFont = context.font;
-			// the font size index differs by 1, because the known_coded_sizes
-			// has additionally a "default" entry
-			context.font.size = known_coded_sizes[where - known_sizes + 1];
+			context.font.size = known_coded_sizes[where - known_sizes];
 			output_font_change(os, oldFont, context.font);
 			eat_whitespace(p, os, context, false);
 		}
@@ -2441,12 +2427,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// save the language for the case that a
 			// \foreignlanguage is used 
 
+			// FIXME: \lang needs a LyX name, but we set a LaTeX name
 			context.font.language = subst(p.verbatim_item(), "\n", " ");
 			os << "\\lang " << context.font.language << "\n";
 		}
 
 		else if (t.cs() == "foreignlanguage") {
 			context.check_layout(os);
+			// FIXME: \lang needs a LyX name, but we set a LaTeX name
 			os << "\n\\lang " << subst(p.verbatim_item(), "\n", " ") << "\n";
 			os << subst(p.verbatim_item(), "\n", " ");
 			// FIXME: the second argument of selectlanguage
