@@ -1,7 +1,9 @@
 ﻿Version 4.27
 - LyX 1.6.9
-- updated to eLyXer 1.1.1
+- updated to eLyXer 1.1.2
 - updated to ImageMagick 6.6.x-y
+- fix bug that a detected installed Python 3.x was used for LyX (LyX bug 7143)
+  LyX only works properly with Python 2.x
 
 
 Version 4.26
