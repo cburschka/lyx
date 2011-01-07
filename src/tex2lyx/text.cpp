@@ -2828,7 +2828,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					   opt1 + opt2 +
 					   '{' + p.verbatim_item() + '}';
 
-			if (t.cs() == "providecommand")
+			if (t.cs() == "providecommand" ||
+			    name[name.length()-1] == '*')
 				handle_ert(os, ert, context);
 			else {
 				context.check_layout(os);
