@@ -87,18 +87,14 @@ Function MissingPrograms
   # test if Python is installed
   # only use an existing python when it is version 2.5 or newer because some
   # older Compaq and Dell PCs were delivered with outdated Python interpreters
+  # Python 3.x was reported not to work with LyX properly, see
+  # http://www.lyx.org/trac/ticket/7143
   ReadRegStr $PythonPath HKLM "Software\Python\PythonCore\2.5\InstallPath" ""
   ${if} $PythonPath == ""
    ReadRegStr $PythonPath HKLM "Software\Python\PythonCore\2.6\InstallPath" ""
   ${endif}
   ${if} $PythonPath == ""
    ReadRegStr $PythonPath HKLM "Software\Python\PythonCore\2.7\InstallPath" ""
-  ${endif}
-  ${if} $PythonPath == ""
-   ReadRegStr $PythonPath HKLM "Software\Python\PythonCore\3.0\InstallPath" ""
-  ${endif}
-  ${if} $PythonPath == ""
-   ReadRegStr $PythonPath HKLM "Software\Python\PythonCore\3.1\InstallPath" ""
   ${endif}
   ${if} $PythonPath != ""
    StrCpy $PythonPath $PythonPath -1 # remove the "\" at the end
