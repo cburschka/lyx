@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0.0beta3 created this file. For more info see http://www.lyx.org/
+\lyxformat 410
 \begin_document
 \begin_header
 \textclass book
@@ -44,7 +44,7 @@
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -4048,11 +4048,11 @@ Sie können auch bereits geschriebene Formeln oder sonstige Ausdrücke mit
  Markieren Sie diese dazu und wählen Sie dann die gewünschten Symbole aus
  dem Menü aus.
  Versuchen Sie doch einmal, so die Gleichung 
-\begin_inset Formula $f=ma$
+\begin_inset Formula $F=ma$
 \end_inset
 
  in ihre vektorielle Form 
-\begin_inset Formula $\overrightarrow{f}=m\overrightarrow{a}$
+\begin_inset Formula $\vec{F}=m\vec{a}$
 \end_inset
 
  umzuschreiben.
@@ -4611,7 +4611,8 @@ f(x)=\left\{ \begin{array}{cc}
 \log_{8}x & x>0\\
 0 & x=0\\
 \sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0
-\end{array}\right.\]
+\end{array}\right.
+\]
 
 \end_inset
 
@@ -4641,7 +4642,8 @@ DVI
 
 \begin_layout Standard
 \begin_inset Formula \[
-x=y+y+y+y+y\]
+x=y+y+y+y+y
+\]
 
 \end_inset
 
@@ -4650,7 +4652,8 @@ x=y+y+y+y+y\]
 
 \begin_layout Standard
 \begin_inset Formula \[
-=5y\]
+=5y
+\]
 
 \end_inset
 
