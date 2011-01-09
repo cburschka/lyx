@@ -150,7 +150,7 @@ endforeach(_c_l)
 
 
 if (LYX_INSTALL_PREFIX)
-	set(CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX} CACHE PATH "LyX user's choice install prefix" FORCE)
+	set(CMAKE_INSTALL_PREFIX ${LYX_INSTALL_PREFIX} CACHE PATH "LyX user's choice install prefix" FORCE)
 	set(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 endif()
 
