@@ -4250,6 +4250,7 @@ Buffer::ReadStatus Buffer::reload()
 		updateTitles();
 		markClean();
 		message(bformat(_("Document %1$s reloaded."), disp_fn));
+		d->undo_.clear();
 	} else {
 		message(bformat(_("Could not reload document %1$s."), disp_fn));
 	}	

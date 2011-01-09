@@ -53,6 +53,9 @@ public:
 
 	~Undo();
 
+	/// Clear out all undo/redo contents.
+	void clear();
+
 	/// this will undo the last action - returns false if no undo possible
 	bool textUndo(DocIterator &);
 

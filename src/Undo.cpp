@@ -241,6 +241,16 @@ Undo::~Undo()
 }
 
 
+void Undo::clear()
+{
+	d->undostack_.clear();
+	d->redostack_.clear();
+	d->undo_finished_ = true;
+	d->group_id = 0;
+	d->group_level;
+}
+
+
 bool Undo::hasUndoStack() const
 {
 	return !d->undostack_.empty();
