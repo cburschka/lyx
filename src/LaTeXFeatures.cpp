@@ -60,6 +60,11 @@ namespace lyx {
 static docstring const lyx_def = from_ascii(
 	"\\providecommand{\\LyX}{L\\kern-.1667em\\lower.25em\\hbox{Y}\\kern-.125emX\\@}");
 
+static docstring const lyx_hyperref_def = from_ascii(
+	"\\providecommand{\\LyX}{\\texorpdfstring%\n"
+	"  {L\\kern-.1667em\\lower.25em\\hbox{Y}\\kern-.125emX\\@}\n"
+        "  {LyX}}");
+
 static docstring const noun_def = from_ascii(
 	"\\newcommand{\\noun}[1]{\\textsc{#1}}");
 
@@ -844,8 +849,12 @@ docstring const LaTeXFeatures::getMacros() const
 			macros << papersizepdf_def << '\n';
 	}
 
-	if (mustProvide("LyX"))
-		macros << lyx_def << '\n';
+	if (mustProvide("LyX")) {
+		if (isRequired("hyperref"))
+			macros << lyx_hyperref_def << '\n';
+		else
+			macros << lyx_def << '\n';
+	}
 
 	if (mustProvide("noun"))
 		macros << noun_def << '\n';
