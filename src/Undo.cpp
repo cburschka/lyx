@@ -247,7 +247,7 @@ void Undo::clear()
 	d->redostack_.clear();
 	d->undo_finished_ = true;
 	d->group_id = 0;
-	d->group_level;
+	d->group_level = 0;
 }
 
 
