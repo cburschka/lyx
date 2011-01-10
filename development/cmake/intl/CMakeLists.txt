@@ -1,7 +1,7 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
+# Copyright (c) 2006,2011 Peter KÃ¼mmel, <syntheticpp@gmx.net>
 #
 
 project(intl) 
@@ -12,57 +12,57 @@ configure_file(libgnuintl.h ${CMAKE_CURRENT_BINARY_DIR}/libintl.h COPYONLY)
 
 
 add_definitions(
-    -DHAVE_CONFIG_H=1
-    -DMAKE_INTL_LIB
-    -DIN_LIBINTL
-    -DENABLE_RELOCATABLE=1
-    -DIN_LIBRARY
-    -DNO_XMALLOC
-    -Dset_relocation_prefix=libintl_set_relocation_prefix
-    -Drelocate=libintl_relocate
-    -DDEPENDS_ON_LIBICONV=1)
+	-DHAVE_CONFIG_H=1
+	-DMAKE_INTL_LIB
+	-DIN_LIBINTL
+	-DENABLE_RELOCATABLE=1
+	-DIN_LIBRARY
+	-DNO_XMALLOC
+	-Dset_relocation_prefix=libintl_set_relocation_prefix
+	-Drelocate=libintl_relocate
+	-DDEPENDS_ON_LIBICONV=1)
     
 if(NOT APPLE)    
 	add_definitions(
-			-DLOCALEDIR=\\"${LOACLE_DIR}\\" 
-			-DLOCALE_ALIAS_PATH=\\"${LOACLE_DIR}\\"
-			-DLIBDIR=\\"${TOP_SRC_DIR}\\"
-			-DINSTALLDIR=\\"${PREFIX}\\" )
+		-DLOCALEDIR=\\"${LOACLE_DIR}\\" 
+		-DLOCALE_ALIAS_PATH=\\"${LOACLE_DIR}\\"
+		-DLIBDIR=\\"${TOP_SRC_DIR}\\"
+		-DINSTALLDIR=\\"${PREFIX}\\" )
 else()
 	add_definitions(
-			-DLOCALEDIR='\"${LOCALE_DIR}\"' 
-			-DLOCALE_ALIAS_PATH='\"${LOCALE_DIR}\"'
-			-DLIBDIR='\"${TOP_SRC_DIR}\"'
-			-DINSTALLDIR='\"${PREFIX}\"' )
+		-DLOCALEDIR='\"${LOCALE_DIR}\"' 
+		-DLOCALE_ALIAS_PATH='\"${LOCALE_DIR}\"'
+		-DLIBDIR='\"${TOP_SRC_DIR}\"'
+		-DINSTALLDIR='\"${PREFIX}\"' )
 endif()
 
 file(GLOB intl_headers ${TOP_SRC_DIR}/intl/*.h)
 
 set(intl_sources 
-      bindtextdom.c
-      dcgettext.c
-      dgettext.c
-      gettext.c
-      finddomain.c
-      loadmsgcat.c
-      localealias.c
-      textdomain.c
-      l10nflist.c
-      explodename.c
-      dcigettext.c
-      dcngettext.c
-      dngettext.c
-      ngettext.c
-      plural.c
-      plural-exp.c
-      localcharset.c
-      relocatable.c
-      localename.c
-      log.c
-      printf.c
-      osdep.c
-      intl-compat.c
-      langprefs.c
+	bindtextdom.c
+	dcgettext.c
+	dgettext.c
+	gettext.c
+	finddomain.c
+	loadmsgcat.c
+	localealias.c
+	textdomain.c
+	l10nflist.c
+	explodename.c
+	dcigettext.c
+	dcngettext.c
+	dngettext.c
+	ngettext.c
+	plural.c
+	plural-exp.c
+	localcharset.c
+	relocatable.c
+	localename.c
+	log.c
+	printf.c
+	osdep.c
+	intl-compat.c
+	langprefs.c
 )
 
 lyx_add_path(intl_sources ${TOP_SRC_DIR}/intl)

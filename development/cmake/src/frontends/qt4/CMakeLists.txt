@@ -1,23 +1,20 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
+# Copyright (c) 2006-2011 Peter Kümmel, <syntheticpp@gmx.net>
 #
 
 project(frontend_qt4)
 
-file(GLOB frontends_qt4_sources
-	${TOP_SRC_DIR}/src/frontends/qt4/${LYX_CPP_FILES})
+file(GLOB frontends_qt4_sources ${TOP_SRC_DIR}/src/frontends/qt4/${LYX_CPP_FILES})
 file(GLOB moc_files ${TOP_SRC_DIR}/src/frontends/qt4/${LYX_MOC_FILES})
 
 list(REMOVE_ITEM frontends_qt4_sources ${moc_files} .)
 list(REMOVE_ITEM frontends_qt4_sources ${TOP_SRC_DIR}/src/frontends/qt4/liblyxqt4.cpp)
 list(REMOVE_ITEM frontends_qt4_sources ${TOP_SRC_DIR}/src/frontends/qt4/Resources.cpp)
 
-file(GLOB frontends_qt4_headers
-	${TOP_SRC_DIR}/src/frontends/qt4/${LYX_HPP_FILES})
-file(GLOB frontend_qt4_UI
-	${TOP_SRC_DIR}/src/frontends/qt4/ui/*.ui)
+file(GLOB frontends_qt4_headers ${TOP_SRC_DIR}/src/frontends/qt4/${LYX_HPP_FILES})
+file(GLOB frontend_qt4_UI ${TOP_SRC_DIR}/src/frontends/qt4/ui/*.ui)
 
 lyx_add_msvc_pch(frontends_qt4)
 
@@ -45,15 +42,12 @@ endif()
 if(LYX_MERGE_FILES)
 	lyx_const_touched_files(_allinone frontends_qt4_sources)
 	set(depends_moc_uic ${frontends_qt4_headers} ${ui_files})
-	set_source_files_properties(_allinone_const.C
-		PROPERTIES OBJECT_DEPENDS "${depends_moc_uic}")
-	set_source_files_properties(_allinone_touched.C
-		PROPERTIES OBJECT_DEPENDS "${depends_moc_uic}")
+	set_source_files_properties(_allinone_const.C PROPERTIES OBJECT_DEPENDS "${depends_moc_uic}")
+	set_source_files_properties(_allinone_touched.C PROPERTIES OBJECT_DEPENDS "${depends_moc_uic}")
 	add_library(frontend_qt4 ${library_type}
 		${_allinone_files} ${frontends_qt4_headers} ${ui_files} ${resource_files})
 else()
-	add_library(frontend_qt4 ${library_type}
-		${frontends_qt4_sources} ${frontends_qt4_headers} ${ui_files} ${resource_files})
+	add_library(frontend_qt4 ${library_type} ${frontends_qt4_sources} ${frontends_qt4_headers} ${ui_files} ${resource_files})
 endif()
 
 
@@ -68,8 +62,7 @@ if(WIN32)
 	target_link_libraries(frontend_qt4 Gdi32)
 endif()
 
-project_source_group("${GROUP_CODE}"
-	frontends_qt4_sources frontends_qt4_headers)
+project_source_group("${GROUP_CODE}" frontends_qt4_sources frontends_qt4_headers)
 
 source_group("Uic files" FILES ${frontend_qt4_UI})
 

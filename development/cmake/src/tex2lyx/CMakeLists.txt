@@ -1,8 +1,8 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# Copyright (c) 2006, 2008, 2009 Peter Kümmel, <syntheticpp@gmx.net>
-# Copyright (c)       2008, 2009 Kornel Benko, <Kornel.Benko@berlin.de>
+# Copyright (c) 2006-2011 Peter KÃ¼mmel, <syntheticpp@gmx.net>
+# Copyright (c) 2008-2011 Kornel Benko, <Kornel.Benko@berlin.de>
 #
 
 set(_tex2lyx tex2lyx${PROGRAM_SUFFIX})
@@ -13,25 +13,26 @@ set(LINKED_sources ${TOP_SRC_DIR}/src/lengthcommon.cpp)
 set(LINKED_headers)
 
 foreach(_src insets/InsetLayout Color Counters
-    Encoding FloatList Floating
-    Layout LayoutModuleList Lexer ModuleList TextClass
-    FontInfo Spacing)
-  list(APPEND LINKED_sources ${TOP_SRC_DIR}/src/${_src}.cpp)
-  list(APPEND LINKED_headers ${TOP_SRC_DIR}/src/${_src}.h)
+	Encoding FloatList Floating
+	Layout LayoutModuleList Lexer ModuleList TextClass
+	FontInfo Spacing)
+	list(APPEND LINKED_sources ${TOP_SRC_DIR}/src/${_src}.cpp)
+	list(APPEND LINKED_headers ${TOP_SRC_DIR}/src/${_src}.h)
 endforeach(_src)
 
 file(GLOB tex2lyx_sources ${TOP_SRC_DIR}/src/tex2lyx/${LYX_CPP_FILES})
 
 file(GLOB tex2lyx_headers ${TOP_SRC_DIR}/src/tex2lyx/${LYX_HPP_FILES})
 
-include_directories(BEFORE ${TOP_SRC_DIR}/src/tex2lyx
-  ${TOP_SRC_DIR}/src/support/minizip ${ZLIB_INCLUDE_DIR})
+include_directories(BEFORE
+	${TOP_SRC_DIR}/src/tex2lyx
+	${TOP_SRC_DIR}/src/support/minizip
+	${ZLIB_INCLUDE_DIR})
 
 add_definitions(-DTEX2LYX)
 
 if(NOT LYX_MERGE_FILES)
-	add_executable(${_tex2lyx} ${tex2lyx_sources} ${LINKED_sources}
-		${tex2lyx_headers} ${LINKED_headers})
+	add_executable(${_tex2lyx} ${tex2lyx_sources} ${LINKED_sources} ${tex2lyx_headers} ${LINKED_headers})
 else()
 	lyx_const_touched_files(_allinone  tex2lyx_sources)
 	lyx_const_touched_files(_allinone_linked  LINKED_sources)

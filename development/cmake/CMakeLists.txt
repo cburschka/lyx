@@ -2,8 +2,8 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# Copyright (c) 2006-2010 Peter Kümmel, <syntheticpp@gmx.net>
-# Copyright (c) 2008-2010 Kornel Benko, <Kornel.Benko@berlin.de>
+# Copyright (c) 2006-2011 Peter Kümmel, <syntheticpp@gmx.net>
+# Copyright (c) 2008-2011 Kornel Benko, <Kornel.Benko@berlin.de>
 
 
 cmake_minimum_required(VERSION 2.6.4)

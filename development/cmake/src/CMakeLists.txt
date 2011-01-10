@@ -16,7 +16,7 @@ add_subdirectory(mathed)
 add_subdirectory(support)
 add_subdirectory(tex2lyx)
 if (UNIX)
-  add_subdirectory(client)
+	add_subdirectory(client)
 endif()
 
 file(GLOB lyx_sources ${TOP_SRC_DIR}/src/${LYX_CPP_FILES})
@@ -63,8 +63,8 @@ endif()
 
 
 lyx_automoc(${TOP_SRC_DIR}/src/Compare.cpp)
-if (WIN32)
-  lyx_automoc(${TOP_SRC_DIR}/src/Server.cpp)
+if(WIN32)
+	lyx_automoc(${TOP_SRC_DIR}/src/Server.cpp)
 endif()
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR}
@@ -123,23 +123,23 @@ target_link_libraries(${_lyx}
 	${QT_QTMAIN_LIBRARY}
 	${vld_dll})
 
-if (HUNSPELL_FOUND)
-        target_link_libraries(${_lyx} ${HUNSPELL_LIBRARY})
+if(HUNSPELL_FOUND)
+	target_link_libraries(${_lyx} ${HUNSPELL_LIBRARY})
 endif()
-if (ASPELL_FOUND)
+if(ASPELL_FOUND)
 	target_link_libraries(${_lyx} ${ASPELL_LIBRARY})
 endif()
-if (ENCHANT_FOUND)
-    target_link_libraries(${_lyx} ${ENCHANT_LIBRARY})
+if(ENCHANT_FOUND)
+	target_link_libraries(${_lyx} ${ENCHANT_LIBRARY})
 endif()
 
-if (APPLE)
-  target_link_libraries(${_lyx} "-bind_at_load")
-  target_link_libraries(${_lyx} "-framework Carbon")
+if(APPLE)
+	target_link_libraries(${_lyx} "-bind_at_load")
+	target_link_libraries(${_lyx} "-framework Carbon")
 endif()
 
-if (MINGW)
-  target_link_libraries(${_lyx} ole32)
+if(MINGW)
+	target_link_libraries(${_lyx} ole32)
 endif()
 
 project_source_group("${GROUP_CODE}" lyx_sources lyx_headers)
