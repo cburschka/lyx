@@ -1,5 +1,5 @@
 #
-#  Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
+#  Copyright (c) 2006-2011 Peter Kümmel, <syntheticpp@gmx.net>
 #
 #  Redistribution and use in source and binary forms, with or without
 #  modification, are permitted provided that the following conditions
@@ -171,7 +171,13 @@ macro(lyx_const_touched_files _allinone_name _list)
       file(APPEND ${_file_touched} "#include \"${_file_const}\"\n\n\n")
    endif()
 
-   set(${_file_list} ${_file_const} ${_file_touched})
+   #add merged files also to the project so they become editable
+   	if(${GROUP_CODE} MATCHES "flat")
+		lyx_add_info_files_no_group(${${_list}})
+	else()
+		lyx_add_info_files(MergedFiles ${${_list}})
+	endif()
+   set(${_file_list} ${_file_const} ${_file_touched} ${lyx_${groupname}_info_files})
 
    foreach (_current_FILE ${${_list}})
       get_filename_component(_abs_FILE ${_current_FILE} ABSOLUTE)
@@ -252,3 +258,27 @@ macro(LYX_OPTION _name _description _default _sys)
 	endif()
 endmacro()
 
+macro(lyx_add_info_files group)
+	foreach(_it ${ARGN})
+		if(NOT IS_DIRECTORY ${_it})
+			get_filename_component(name ${_it} NAME)
+			if(NOT ${_it} MATCHES "^/\\\\..*$;~$")
+				set_source_files_properties(${_it} PROPERTIES HEADER_FILE_ONLY TRUE)
+				set(lyx_${group}_info_files ${lyx_${group}_info_files} ${_it})
+			endif()
+		endif()
+	endforeach()
+	if(group)
+		source_group(${group} FILES ${lyx_${group}_info_files})
+	endif()
+	set(lyx_info_files ${lyx_info_files} ${lyx_${group}_info_files})
+endmacro()
+
+macro(lyx_add_info_files_no_group)
+	lyx_add_info_files( "" ${ARGN})
+endmacro()
+
+macro(lyx_find_info_files group files)
+	file(GLOB _filelist ${files})
+	lyx_add_info_files(${group} ${_filelist})
+endmacro()
