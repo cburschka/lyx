@@ -18,6 +18,9 @@ project(${LYX_PROJECT})
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
+# Supress regeneration
+set(CMAKE_SUPPRESS_REGENERATION FALSE)
+
 # where to look first for cmake modules,
 # before ${CMAKE_ROOT}/Modules is checked
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
@@ -101,10 +104,6 @@ else()
 	endif()
 endif()
 
-
-
-# Supress regeneration
-set(CMAKE_SUPPRESS_REGENERATION TRUE)
 
 set(VERSION_INFO "CMake Build")
 
