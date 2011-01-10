@@ -178,6 +178,9 @@ What's new
 - Don't allow to set an alignment for rows in math substack environments
   (bug 2498).
 
+- Fix crash when clicking on begin of unfinished command in math
+  when autocomplete is active (bug 7209).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
