@@ -97,7 +97,7 @@ bool checkPastePossible(int index)
 
 
 pair<PitPosPair, pit_type>
-pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
+pasteSelectionHelper(Cursor const & cur, ParagraphList const & parlist,
 		     DocumentClass const * const oldDocClass, ErrorList & errorlist)
 {
 	Buffer const & buffer = *cur.buffer();

@@ -2132,31 +2132,31 @@ Encoding const * Cursor::getEncoding() const
 }
 
 
-void Cursor::undispatched()
+void Cursor::undispatched() const
 {
 	disp_.dispatched(false);
 }
 
 
-void Cursor::dispatched()
+void Cursor::dispatched() const
 {
 	disp_.dispatched(true);
 }
 
 
-void Cursor::screenUpdateFlags(Update::flags f)
+void Cursor::screenUpdateFlags(Update::flags f) const
 {
 	disp_.screenUpdate(f);
 }
 
 
-void Cursor::forceBufferUpdate()
+void Cursor::forceBufferUpdate() const
 {
 	disp_.forceBufferUpdate();
 }
 
 
-void Cursor::clearBufferUpdate()
+void Cursor::clearBufferUpdate() const
 {
 	disp_.clearBufferUpdate();
 }
@@ -2168,7 +2168,7 @@ bool Cursor::needBufferUpdate() const
 }
 
 
-void Cursor::noScreenUpdate()
+void Cursor::noScreenUpdate() const
 {
 	disp_.screenUpdate(Update::None);
 }

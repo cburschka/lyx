@@ -225,15 +225,15 @@ public:
 	 * Right Thing (even if my getStatus partner said that I can do it).
 	 * It is sort of a kludge that should be used only rarely...
 	 */
-	void undispatched();
+	void undispatched() const;
 	/// the event was already dispatched
-	void dispatched();
+	void dispatched() const;
 	/// Set which screen update should be done
-	void screenUpdateFlags(Update::flags f);
+	void screenUpdateFlags(Update::flags f) const;
 	/// Forces an updateBuffer() call
-	void forceBufferUpdate();
+	void forceBufferUpdate() const;
 	/// Removes any pending updateBuffer() call
-	void clearBufferUpdate();
+	void clearBufferUpdate() const;
 	/// Do we need to call updateBuffer()?
 	bool needBufferUpdate() const;
 	/**
@@ -246,7 +246,7 @@ public:
 	 * This is a fairly rare event as well and only some optimization.
 	 * Not using noScreenUpdate() should never be wrong.
 	 */
-	void noScreenUpdate();
+	void noScreenUpdate() const;
 	/// fix cursor in circumstances that should never happen.
 	/// \retval true if a fix occured.
 	bool fixIfBroken();
