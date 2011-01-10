@@ -1624,7 +1624,7 @@ bool Cursor::inMacroMode() const
 {
 	if (!inMathed())
 		return false;
-	if (pos() == 0)
+	if (pos() == 0 || cell().empty())
 		return false;
 	InsetMathUnknown const * p = prevAtom()->asUnknownInset();
 	return p && !p->final();
