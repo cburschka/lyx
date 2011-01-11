@@ -243,7 +243,8 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype)
 		if (numbered(i) && cnts.hasCounter(eqstr)) {
 			cnts.step(eqstr, utype);
 			numbers_[i] = cnts.theCounter(eqstr, lang);
-		}
+		} else
+			numbers_[i] = empty_docstring();
 		if (label_[i])
 			label_[i]->updateBuffer(it, utype);
 	}
@@ -1182,12 +1183,6 @@ void InsetMathHull::normalize(NormalStream & os) const
 }
 
 
-void InsetMathHull::mathmlize(MathStream & os) const
-{
-	InsetMathGrid::mathmlize(os);
-}
-
-
 void InsetMathHull::infoize(odocstream & os) const
 {
 	os << "Type: " << hullName(type_);
@@ -1915,6 +1910,51 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 }
 
 
+// this duplicates code from InsetMathGrid, but
+// we need access here to label and number information,
+// and we simply do not have that in InsetMathGrid.
+void InsetMathHull::mathmlize(MathStream & os) const
+{
+	bool havenumbers = false;
+	for (size_t i = 0; i != numbered_.size(); ++i) {
+		if (numbered_[i]) {
+			havenumbers = true;
+			break;
+		}
+	}
+	bool const havetable = havenumbers || nrows() > 1 || ncols() > 1;
+
+	if (havetable)
+		os << MTag("mtable");
+	char const * const celltag = havetable ? "mtd" : "mrow";
+	// FIXME There does not seem to be wide support at the moment
+	// for mlabeledtr, so we have to use just mtr for now.
+	// char const * const rowtag = havenumbers ? "mlabeledtr" : "mtr";
+	char const * const rowtag = "mtr";
+	for (row_type row = 0; row < nrows(); ++row) {
+		if (havetable)
+			os << MTag(rowtag);
+		for (col_type col = 0; col < ncols(); ++col) {
+			os << MTag(celltag)
+			   << cell(index(row, col))
+			   << ETag(celltag);
+		}
+		// fleqn?
+		if (havenumbers) {
+			os << MTag("mtd");
+			docstring const & num = numbers_[row];
+			if (!num.empty())
+				os << '(' << num << ')';
+		  os << ETag("mtd");
+		}
+		if (havetable)
+			os << ETag(rowtag);
+	}
+	if (havetable)
+		os << ETag("mtable");
+}
+
+
 docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 {
 	BufferParams::MathOutput const mathtype = 
@@ -1926,7 +1966,7 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		odocstringstream os;
 		MathStream ms(os);
 		try {
-			InsetMathGrid::mathmlize(ms);
+			mathmlize(ms);
 			success = true;
 		} catch (MathExportException const &) {}
 		if (success) {

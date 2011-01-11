@@ -108,8 +108,6 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	void mathmlize(MathStream &) const;
-	///
 	void normalize(NormalStream &) const;
 	///
 	void infoize(odocstream & os) const;
@@ -130,6 +128,8 @@ public:
 	int docbook(odocstream &, OutputParams const &) const;
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	///
+	void mathmlize(MathStream &) const;
 	/// 
 	void toString(odocstream &) const;
 	///
