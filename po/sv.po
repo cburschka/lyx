@@ -4,7 +4,7 @@
 # Joacim Persson <sp2joap@ida.his.se> 1997, 1998.
 # Jim Rotmalm <jim.rotmalm@gmail.com>, 2010, 2011.
 #
-# Status 2011-01-10:
+# Status 2011-01-11:
 #   75% "acceptably done".
 #   ~250 shortcuts are not done.
 #   Improvements? Please tell me.
@@ -80,6 +80,7 @@
 #   keyword              -> nyckelord
 #   label                -> etikett
 #   layout               -> utformning (layout?)
+#   line               ? -> linje? rad?
 #   listing              -> listning?
 #   main text            -> brödtext
 #   mark                 -> märke
@@ -117,6 +118,7 @@
 #   revision             -> revision
 #   roman                -> antikva
 #   rotate               -> rotera
+#   row                ? -> rad?
 #   rule                 -> linjal (regel?)
 #   run                  -> kör
 #   scroll (bar)         -> rulla (rullningslist)
@@ -165,8 +167,8 @@ msgstr ""
 "Project-Id-Version: LyX 2.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-01-10 23:50+0100\n"
-"PO-Revision-Date: 2005-12-18 15:05+0100\n"
-"Last-Translator: Jim Rotmalm <>\n"
+"PO-Revision-Date: 2011-01-11 11:11+0100\n"
+"Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -3716,7 +3718,7 @@ msgstr "Åt&erställ klassalternativ när dokumentklassen ändras"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:21
 msgid "Output &line length:"
-msgstr "Mata ut &linjelängd:"
+msgstr "Utmatningens &linjelängd:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3056
 msgid ""
@@ -11154,7 +11156,7 @@ msgstr "Ny från mall..."
 
 #: lib/ui/classic.ui:49 lib/ui/stdmenus.inc:45
 msgid "Open...|O"
-msgstr "Öppna...|O"
+msgstr "Öppna..."
 
 #: lib/ui/classic.ui:51 lib/ui/stdmenus.inc:48
 msgid "Close|C"
@@ -18821,7 +18823,7 @@ msgstr "Okänd insättning"
 
 #: src/Text.cpp:464
 msgid "Change tracking error"
-msgstr ""
+msgstr "Ändringsspårningsfel"
 
 #: src/Text.cpp:465
 #, c-format
@@ -19090,7 +19092,7 @@ msgstr ""
 #: src/VCBackend.cpp:785 src/VCBackend.cpp:789 src/VCBackend.cpp:1246
 #: src/VCBackend.cpp:1250
 msgid "Changes detected"
-msgstr ""
+msgstr "Ändringar upptäckta"
 
 #: src/VCBackend.cpp:786 src/VCBackend.cpp:790
 msgid "&Abort"
@@ -19283,19 +19285,19 @@ msgstr "Matematik"
 
 #: src/frontends/qt4/BulletsModule.cpp:43
 msgid "Dings 1"
-msgstr ""
+msgstr "Dings 1"
 
 #: src/frontends/qt4/BulletsModule.cpp:44
 msgid "Dings 2"
-msgstr ""
+msgstr "Dings 2"
 
 #: src/frontends/qt4/BulletsModule.cpp:45
 msgid "Dings 3"
-msgstr ""
+msgstr "Dings 3"
 
 #: src/frontends/qt4/BulletsModule.cpp:46
 msgid "Dings 4"
-msgstr ""
+msgstr "Dings 4"
 
 #: src/frontends/qt4/FileDialog.cpp:181
 msgid "Directories"
@@ -19375,6 +19377,9 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
+"Detta program är fri mjukvara; du kan distribuera det och/eller modifiera "
+"det under villkoren i GNU General Public License, publicerad av Free Software "
+"Foundation; antingen version 2 eller (om du så vill) någon senare version."
 
 #: src/frontends/qt4/GuiAbout.cpp:98
 msgid ""
@@ -19386,6 +19391,13 @@ msgid ""
 "this program; if not, write to the Free Software Foundation, Inc., 51 "
 "Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 msgstr ""
+"LyX distribueras i hopp om att det ska vara användbart, men UTAN NÅGON "
+"GARANTI; även utan underförstådd garanti vid SÄLJBARHET eller LÄMPLIGHET "
+"FÖR NÅGOT SPECIELLT ÄNDAMÅL.\n"
+"Se GNU General Public License för ytterligare information.\n"
+"Du bör ha fått en kopia av GNU General Public License tillsammans med detta "
+"detta program; om inte, skriv till Free Software Foundation, Inc., 51 "
+"Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 
 #: src/frontends/qt4/GuiAbout.cpp:111
 msgid "not released yet"
