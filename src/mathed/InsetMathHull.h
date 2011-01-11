@@ -132,6 +132,8 @@ public:
 	void mathmlize(MathStream &) const;
 	///
 	void htmlize(HtmlStream &) const;
+	///
+	void mathAsLatex(WriteStream &) const;
 	/// 
 	void toString(odocstream &) const;
 	///

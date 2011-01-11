@@ -1998,6 +1998,44 @@ void InsetMathHull::mathmlize(MathStream & os) const
 }
 
 
+void InsetMathHull::mathAsLatex(WriteStream & os) const
+{
+	MathEnsurer ensurer(os, false);
+	bool havenumbers = false;
+	for (size_t i = 0; i != numbered_.size(); ++i) {
+		if (numbered_[i]) {
+			havenumbers = true;
+			break;
+		}
+	}
+	bool const havetable = havenumbers || nrows() > 1 || ncols() > 1;
+
+	if (!havetable) {
+		os << cell(index(0, 0));
+		return;
+	}
+
+	os << "<table class='mathtable'>";
+	for (row_type row = 0; row < nrows(); ++row) {
+		os << "<tr>";
+		for (col_type col = 0; col < ncols(); ++col) {
+			os << "<td class='math'>";
+			os << cell(index(row, col));
+			os << "</td>";
+		}
+		if (havenumbers) {
+			os << "<td>";
+			docstring const & num = numbers_[row];
+			if (!num.empty())
+				os << '(' << num << ')';
+		  os << "</td>";
+		}
+		os << "</tr>";
+	}
+	os << "</table>";
+}
+
+
 docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 {
 	BufferParams::MathOutput const mathtype = 
@@ -2075,14 +2113,15 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		odocstringstream ls;
 		WriteStream wi(ls, false, true, WriteStream::wsPreview);
 		ModeSpecifier specifier(wi, MATH_MODE);
-		InsetMathGrid::write(wi);
+		mathAsLatex(wi);
 		docstring const latex = ls.str();
 		
 		// class='math' allows for use of jsMath
 		// http://www.math.union.edu/~dpvc/jsMath/
 		// FIXME XHTML
 		// probably should allow for some kind of customization here
-		xs << html::StartTag(tag, "class='math'") 
+		xs << html::StartTag(tag, "class='math'")
+		   << XHTMLStream::ESCAPE_AND
 		   << latex 
 		   << html::EndTag(tag);
 		xs.cr();
