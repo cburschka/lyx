@@ -1910,8 +1910,51 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 }
 
 
+// FIXME XHTML
+// We need to do something about alignment here.
+//
+// This duplicates code from InsetMathGrid, but
+// we need access here to number information,
+// and we simply do not have that in InsetMathGrid.
+void InsetMathHull::htmlize(HtmlStream & os) const
+{
+	bool havenumbers = false;
+	for (size_t i = 0; i != numbered_.size(); ++i) {
+		if (numbered_[i]) {
+			havenumbers = true;
+			break;
+		}
+	}
+	bool const havetable = havenumbers || nrows() > 1 || ncols() > 1;
+
+	if (!havetable) {
+		os << cell(index(0, 0));
+		return;
+	}
+
+	os << MTag("table", "class='mathtable'");
+	for (row_type row = 0; row < nrows(); ++row) {
+		os << MTag("tr");
+		for (col_type col = 0; col < ncols(); ++col) {
+			os << MTag("td");
+			os << cell(index(row, col));
+			os << ETag("td");
+		}
+		if (havenumbers) {
+			os << MTag("td");
+			docstring const & num = numbers_[row];
+			if (!num.empty())
+				os << '(' << num << ')';
+		  os << ETag("td");
+		}
+		os << ETag("tr");
+	}
+	os << ETag("table");
+}
+
+
 // this duplicates code from InsetMathGrid, but
-// we need access here to label and number information,
+// we need access here to number information,
 // and we simply do not have that in InsetMathGrid.
 void InsetMathHull::mathmlize(MathStream & os) const
 {
@@ -1984,7 +2027,7 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		odocstringstream os;
 		HtmlStream ms(os);
 		try {
-			InsetMathGrid::htmlize(ms);
+			htmlize(ms);
 			success = true;
 		} catch (MathExportException const &) {}
 		if (success) {

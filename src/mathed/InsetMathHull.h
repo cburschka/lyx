@@ -130,6 +130,8 @@ public:
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	void mathmlize(MathStream &) const;
+	///
+	void htmlize(HtmlStream &) const;
 	/// 
 	void toString(odocstream &) const;
 	///
