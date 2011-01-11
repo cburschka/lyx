@@ -11,3 +11,8 @@ Requires amsmath
 AddToPreamble
 	\numberwithin{equation}{section}
 EndPreamble
+
+Counter equation
+	Within section
+	LabelString "\thesection.\arabic{equation}"
+End

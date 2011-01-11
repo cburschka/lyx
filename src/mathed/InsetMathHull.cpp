@@ -28,11 +28,15 @@
 #include "Exporter.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "Language.h"
 #include "LaTeXFeatures.h"
 #include "LyXRC.h"
 #include "MacroTable.h"
 #include "output_xhtml.h"
+#include "Paragraph.h"
+#include "ParIterator.h"
 #include "sgml.h"
+#include "TextClass.h"
 #include "TextPainter.h"
 #include "TocBackend.h"
 
@@ -46,6 +50,7 @@
 #include "frontends/alert.h"
 #include "frontends/Painter.h"
 
+#include "support/convert.h"
 #include "support/lassert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
@@ -143,7 +148,8 @@ static InsetLabel * dummy_pointer = 0;
 
 InsetMathHull::InsetMathHull(Buffer * buf)
 	: InsetMathGrid(buf, 1, 1), type_(hullNone), numbered_(1, true),
-	  label_(1, dummy_pointer), preview_(new RenderPreview(this))
+    numbers_(1, empty_docstring()), label_(1, dummy_pointer),
+    preview_(new RenderPreview(this))
 {
 	//lyxerr << "sizeof InsetMath: " << sizeof(InsetMath) << endl;
 	//lyxerr << "sizeof MetricsInfo: " << sizeof(MetricsInfo) << endl;
@@ -157,7 +163,8 @@ InsetMathHull::InsetMathHull(Buffer * buf)
 
 InsetMathHull::InsetMathHull(Buffer * buf, HullType type)
 	: InsetMathGrid(buf, getCols(type), 1), type_(type), numbered_(1, true),
-	  label_(1, dummy_pointer), preview_(new RenderPreview(this))
+    numbers_(1, empty_docstring()), label_(1, dummy_pointer),
+    preview_(new RenderPreview(this))
 {
 	buffer_ = buf;
 	initMath();
@@ -191,6 +198,7 @@ InsetMathHull & InsetMathHull::operator=(InsetMathHull const & other)
 	InsetMathGrid::operator=(other);
 	type_  = other.type_;
 	numbered_ = other.numbered_;
+	numbers_ = other.numbers_;
 	buffer_ = other.buffer_;
 	for (size_t i = 0; i < label_.size(); ++i)
 		delete label_[i];
@@ -224,7 +232,18 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype)
 		// MathParser.cpp).
 		return;
 	}
+
+	BufferParams const & bp = buffer_->params();
+	string const & lang = it->getParLanguage(bp)->code();
+	Counters & cnts = bp.documentClass().counters();
+	// so we don't have to write it ten times...
+	docstring const eqstr = from_ascii("equation");
+
 	for (size_t i = 0; i != label_.size(); ++i) {
+		if (numbered(i) && cnts.hasCounter(eqstr)) {
+			cnts.step(eqstr, utype);
+			numbers_[i] = cnts.theCounter(eqstr, lang);
+		}
 		if (label_[i])
 			label_[i]->updateBuffer(it, utype);
 	}
@@ -823,6 +842,7 @@ void InsetMathHull::addRow(row_type row)
 	}
 
 	numbered_.insert(numbered_.begin() + row + 1, numbered);
+	numbers_.insert(numbers_.begin() + row + 1, empty_docstring());
 	label_.insert(label_.begin() + row + 1, dummy_pointer);
 	if (!lab.empty())
 		label(row + 1, lab);
@@ -844,6 +864,7 @@ void InsetMathHull::swapRow(row_type row)
 	bool const b = numbered_[row];
 	numbered_[row] = numbered_[row + 1];
 	numbered_[row + 1] = b;
+	swap(numbers_[row], numbers_[row + 1]);
 	swap(label_[row], label_[row + 1]);
 	InsetMathGrid::swapRow(row);
 }
@@ -857,6 +878,7 @@ void InsetMathHull::delRow(row_type row)
 		bool const b = numbered_[row - 1];
 		numbered_[row - 1] = numbered_[row];
 		numbered_[row] = b;
+		swap(numbers_[row - 1], numbers_[row]);
 		swap(label_[row - 1], label_[row]);
 		InsetMathGrid::delRow(row);
 		return;
@@ -867,6 +889,7 @@ void InsetMathHull::delRow(row_type row)
 	if (row == nrows() + 1)
 		row--;
 	numbered_.erase(numbered_.begin() + row);
+	numbers_.erase(numbers_.begin() + row);
 	delete label_[row];
 	label_.erase(label_.begin() + row);
 }
@@ -892,9 +915,10 @@ docstring InsetMathHull::nicelabel(row_type row) const
 {
 	if (!numbered_[row])
 		return docstring();
+	docstring const & val = numbers_[row];
 	if (!label_[row])
-		return from_ascii("(#)");
-	return '(' + label_[row]->screenLabel() + from_ascii(", #)");
+		return '(' + val + ')';
+	return '(' + val + ',' + label_[row]->screenLabel() + ')';
 }
 
 
@@ -1173,6 +1197,7 @@ void InsetMathHull::infoize(odocstream & os) const
 void InsetMathHull::check() const
 {
 	LASSERT(numbered_.size() == nrows(), /**/);
+	LASSERT(numbers_.size() == nrows(), /**/);
 	LASSERT(label_.size() == nrows(), /**/);
 }
 

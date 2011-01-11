@@ -224,6 +224,8 @@ private:
 	///
 	std::vector<bool> numbered_;
 	///
+	std::vector<docstring> numbers_;
+	///
 	std::vector<InsetLabel *> label_;
 	///
 	boost::scoped_ptr<RenderPreview> preview_;
