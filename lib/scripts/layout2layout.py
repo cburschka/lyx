@@ -107,6 +107,9 @@ import os, re, string, sys
 # Incremented to format 30, 13 August 2010 by rgh
 # Introduced ResetsFont tag for InsetLayout.
 
+# Incremented to format 31, 12 January 2011 by rgh
+# Introducted NoCounter tag.
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -114,7 +117,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 30
+currentFormat = 31
 
 
 def usage(prog_name):
@@ -290,7 +293,7 @@ def convert(lines):
             continue
         
         # Only new features
-        if format == 29:
+        if format == 29 or format == 30:
           i += 1
           continue
 

@@ -60,7 +60,7 @@ namespace lyx {
 // development/updatelayouts.sh script, to update the format of 
 // all of our layout files.
 //
-int const LAYOUT_FORMAT = 30;
+int const LAYOUT_FORMAT = 31;
 	
 namespace {
 
@@ -196,6 +196,7 @@ enum TextClassTags {
 	TC_RIGHTMARGIN,
 	TC_FLOAT,
 	TC_COUNTER,
+	TC_NOCOUNTER,
 	TC_IFCOUNTER,
 	TC_NOFLOAT,
 	TC_TITLELATEXNAME,
@@ -233,6 +234,7 @@ namespace {
 		{ "input",             TC_INPUT },
 		{ "insetlayout",       TC_INSETLAYOUT },
 		{ "leftmargin",        TC_LEFTMARGIN },
+		{ "nocounter",         TC_NOCOUNTER },
 		{ "nofloat",           TC_NOFLOAT },
 		{ "nostyle",           TC_NOSTYLE },
 		{ "outputformat",      TC_OUTPUTFORMAT },
@@ -650,6 +652,14 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 		
 		case TC_CITEFORMAT:
 			readCiteFormat(lexrc);
+			break;
+
+		case TC_NOCOUNTER:
+			if (lexrc.next()) {
+				docstring const cnt = lexrc.getDocString();
+				if (!counters_.remove(cnt))
+					LYXERR0("Unable to remove counter: " + to_utf8(cnt));
+			}
 			break;
 
 		case TC_IFCOUNTER:

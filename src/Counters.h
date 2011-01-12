@@ -132,6 +132,8 @@ public:
 	void reset();
 	/// Reset counters matched by match string.
 	void reset(docstring const & match);
+	/// Remove counter \p cnt.
+	bool remove(docstring const & cnt);
 	/// Copy counters whose name matches match from the &from to
 	/// the &to array of counters. Empty string matches all.
 	void copy(Counters & from, Counters & to,

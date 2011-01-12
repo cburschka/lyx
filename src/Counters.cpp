@@ -294,6 +294,12 @@ void Counters::reset(docstring const & match)
 }
 
 
+bool Counters::remove(docstring const & cnt)
+{
+	return counterList_.erase(cnt);
+}
+
+
 void Counters::copy(Counters & from, Counters & to, docstring const & match)
 {
 	CounterList::iterator it = counterList_.begin();
