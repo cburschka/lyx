@@ -1,0 +1,525 @@
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options false
+\begin_modules
+enumitem
+\end_modules
+\language british
+\inputencoding auto
+\font_roman lmodern
+\font_sans lmss
+\font_typewriter lmtt
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref section
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+The enumitem Module
+\end_layout
+
+\begin_layout Standard
+The enumitem Module provides customisable list Styles using the 
+\begin_inset CommandInset href
+LatexCommand href
+name "enumitem LaTeX package"
+target "http://dante.ctan.org/CTAN/help/Catalogue/entries/enumitem.html"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Lists with optional arguments
+\end_layout
+
+\begin_layout Standard
+Itemize, Enumeration, and Description lists may have an optional arguments.
+ If the optional argument contains special characters (e.g.
+ the backslash), put it in an 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ERT box
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset OptArg
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+labelindent=
+\backslash
+parindent,leftmargin=*,label=
+\backslash
+Roman*.,widest=IV,align=left 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ An enumeration
+\end_layout
+
+\begin_layout Enumerate
+with left-aligned roman
+\end_layout
+
+\begin_layout Enumerate
+numbering
+\end_layout
+
+\begin_layout Enumerate
+1of items.
+\end_layout
+
+\begin_layout Standard
+Enumerating with 
+\begin_inset Quotes eld
+\end_inset
+
+Spanish layout
+\begin_inset Quotes erd
+\end_inset
+
+: italic letters followed by )
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset OptArg
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+emph{
+\backslash
+alph*})
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ first item
+\end_layout
+
+\begin_layout Enumerate
+second item
+\end_layout
+
+\begin_layout Standard
+Enumeration starting at a given value:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset OptArg
+status open
+
+\begin_layout Plain Layout
+start=4
+\end_layout
+
+\end_inset
+
+ This enumeration
+\end_layout
+
+\begin_layout Enumerate
+starts at 4.
+\end_layout
+
+\begin_layout Standard
+Description with emphasized (instead of bold) label and  left margin 1.5
+ em:
+\end_layout
+
+\begin_layout Description
+Strahlungsmodulation:
+\begin_inset OptArg
+status open
+
+\begin_layout Plain Layout
+leftmargin=1.5em,
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+font=
+\backslash
+itshape
+\backslash
+mdseries
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Durch die zeitliche Modulation der auf den Detektor treffenden Strahlung
+ wird trotz fehlender Gleichlichtempfindlichkeit der pyroelektrischen Detektoren
+ die reproduzierbare Betrachtung statischer Wärmeszenen ermöglicht.
+\end_layout
+
+\begin_layout Description
+Referenzstrahlung: Die Wärmestrahlung des Choppers geht direkt in das Messsignal
+ ein.
+\end_layout
+
+\begin_layout Standard
+More details and examples in 
+\begin_inset CommandInset href
+LatexCommand href
+name "enumitem.pdf"
+target "http://dante.ctan.org/CTAN/macros/latex/contrib/enumitem/enumitem.pdf"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Resume enumeration
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Enumerate-Resume
+Attention, if there is no previous enumeration to resume, a latex error
+ is thrown!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Enumerations can be resumed after intermediate paragraphs:
+\end_layout
+
+\begin_layout Enumerate
+first
+\end_layout
+
+\begin_layout Enumerate
+second
+\end_layout
+
+\begin_layout Standard
+regular text
+\end_layout
+
+\begin_layout Enumerate-Resume
+resumed (the numbering is not continued in the LyX GUI but correct in the
+ LaTeX output).
+\end_layout
+
+\begin_layout Standard
+Nesting enumerations:
+\end_layout
+
+\begin_layout Enumerate
+depth 1
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+first
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate-Resume
+resume without something to resume! (Works here.)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+second
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+with something nested inside
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+regular text 
+\end_layout
+
+\begin_layout Enumerate-Resume
+resumed at depth 2
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+regular text outside the list
+\end_layout
+
+\begin_layout Subsection*
+Compact Lists
+\end_layout
+
+\begin_layout Standard
+There are keywords for more compact variants of the standard lists:
+\end_layout
+
+\begin_layout Itemize
+A bullet list
+\end_layout
+
+\begin_layout Itemize
+with standard spacing 
+\end_layout
+
+\begin_layout Standard
+lorem ipsum
+\end_layout
+
+\begin_layout Itemize
+A bullet list 
+\begin_inset OptArg
+status open
+
+\begin_layout Plain Layout
+nolistsep
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+with less 
+\end_layout
+
+\begin_layout Itemize
+vertical space.
+ (nolistsep)
+\end_layout
+
+\begin_layout Standard
+lorem ipsum
+\end_layout
+
+\begin_layout Itemize
+A bullet list 
+\begin_inset OptArg
+status open
+
+\begin_layout Plain Layout
+noitemsep
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+with less 
+\end_layout
+
+\begin_layout Itemize
+vertical space.
+ (noitemsep)
+\end_layout
+
+\begin_layout Standard
+You can customize the itemset and listsep for all base lists in the LaTeX
+ preamble.
+ (Also per list type.) See 
+\begin_inset CommandInset href
+LatexCommand href
+name "enumitem.pdf"
+target "http://dante.ctan.org/CTAN/macros/latex/contrib/enumitem/enumitem.pdf"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Customisable LyX-List/Labeling
+\end_layout
+
+\begin_layout Standard
+The LyX 
+\begin_inset Quotes eld
+\end_inset
+
+List
+\begin_inset Quotes erd
+\end_inset
+
+ style (or KOMA script 
+\begin_inset Quotes eld
+\end_inset
+
+labeling
+\begin_inset Quotes erd
+\end_inset
+
+) is re-defined on the base of enumitems 
+\begin_inset Quotes eld
+\end_inset
+
+description
+\begin_inset Quotes erd
+\end_inset
+
+ to allow customisation like the base lists.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+nice description 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+with several items and
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+including
+\begin_inset space ~
+\end_inset
+
+one
+\begin_inset space ~
+\end_inset
+
+very
+\begin_inset space ~
+\end_inset
+
+long
+\begin_inset space ~
+\end_inset
+
+label at last.
+ 
+\end_layout
+
+\begin_layout Standard
+It also takes an optional argument:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring withNN
+nice description 
+\begin_inset OptArg
+status open
+
+\begin_layout Plain Layout
+style=nextline
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring withNN
+with several items and
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring withNN
+including
+\begin_inset space ~
+\end_inset
+
+one
+\begin_inset space ~
+\end_inset
+
+very
+\begin_inset space ~
+\end_inset
+
+long
+\begin_inset space ~
+\end_inset
+
+label and the item content starting at the next line.
+\end_layout
+
+\end_body
+\end_document

@@ -1,17 +1,20 @@
-#\DeclareLyXModule[enumitem.sty]{Customizable Lists (enumitem)}
+#\DeclareLyXModule[enumitem.sty]{Customisable Lists (enumitem)}
 #DescriptionBegin
-# Controls the layout of enumerate, itemize and description
+# Control the layout of enumerate, itemize, description, and list/labeling
 # with an optional argument.
-# See http://mirror.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf
+# See http://dante.ctan.org/CTAN/macros/latex/contrib/enumitem/enumitem.pdf
+# and example file shipped with LyX.
 #DescriptionEnd
 # Author: Günter Milde <milde@users.berlios.de>
 # 
-# 2008-12-04 first published version
+# 2008-12-04 first published version.
 # 2009-02-02 use name Labeling for "LyX-List/Labeling" list type,
 # 	     copy standard layout verbatim for failsave working with 
-#	     both KOMA and non-KOMA document classes
-# 2010-11-16 use Require keyword instead of \usepackage in preamble
-#
+#	     both KOMA and non-KOMA document classes.
+# 2011-01-12 bugfix: set elabeling label font to \normalfont.
+
+Format 11
+
 # The package enumitem provides user control over the layout of the three
 # basic list environments: enumerate, itemize and description. It supersedes
 # both enumerate and mdwlist (providing well-structured replacements for all
@@ -33,20 +36,18 @@
 # a) generally in the LaTeX preamble and 
 # b) per environment with optional arguments
 #
-# See enumitem.pdf for details and examples.
-#    http://dante.ctan.org/CTAN/macros/latex/contrib/enumitem/enumitem.pdf
+# See enumitem.pdf_ for details and examples.
 #
 # TODO: since version 2.0, enumitem supports "cloning" of lists.
 #       Producing a labeling as clone of a description allows
 #       Preamble-Styling specific to this list type.
 
-Format 30
-
 AddToPreamble
+	\usepackage{enumitem}		% customizable list environments
 	\newlength{\lyxlabelwidth}      % auxiliary length 
 EndPreamble
 
-# Customizable Basic Lists
+# Customisable Basic Lists
 # ------------------------
 
 # With enumitem, the three standard list environments take an optional
@@ -54,24 +55,21 @@ EndPreamble
 
 Style Itemize
 	OptionalArgs          1
-	Requires	enumitem
 End
 
 Style Enumerate
 	OptionalArgs          1
-	Requires	enumitem
 End
 
 Style Description
 	OptionalArgs          1
-	Requires	enumitem
 End
 
-# Customizable LyX List
+# Customisable LyX List
 # ---------------------
 
 Style Labeling
-	# verbatim insert definition of List environment, 
+        # verbatim insert definition of List environment, 
 	# The KOMA script classes replace List with Labeling, 
 	# this leads to an error with "CopyStyle List"!
 	Category              List
@@ -89,18 +87,17 @@ Style Labeling
 	LabelString           "00.00.0000"
 	# en of verbatim copy
 	
-	LatexName             elabeling
-	OptionalArgs          1
-	Requires	      enumitem
-	Preamble
+        LatexName             elabeling
+        OptionalArgs          1
+        Preamble
 	% labeling-like list based on enumitem's description list with
 	% mandatory second argument (label-pattern):
 	\newenvironment{elabeling}[2][]%
-	  {\settowidth{\lyxlabelwidth}{#2}
-	   \begin{description}[font=\normalfont,style=sameline,
+          {\settowidth{\lyxlabelwidth}{#2}
+           \begin{description}[font=\normalfont,style=sameline,
 			       leftmargin=\lyxlabelwidth,#1]}
-	  {\end{description}}
-	EndPreamble
+          {\end{description}}
+        EndPreamble
 End
 
 
@@ -110,14 +107,19 @@ End
 # Styles with pre-defined optional arguments for ease of use
 
 Style Enumerate-Resume
-	CopyStyle             Enumerate
+        CopyStyle             Enumerate
 	LatexParam            [resume]
 	OptionalArgs          0
-	Requires	      enumitem
 	# a blue label to indicate that this is not a WYSIWYG label
 	# because the numbering differs in the output
 	LabelFont
 	  Color		      blue
 	EndFont
 End
+
+# References
+# ----------
+#
+# .. _enumitem.pdf:
+#    http://dante.ctan.org/CTAN/macros/latex/contrib/enumitem/enumitem.pdf
 
