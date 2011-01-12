@@ -149,6 +149,15 @@ const char * const known_coded_paper_margins[] = { "leftmargin", "topmargin",
 "rightmargin", "bottommargin", "headheight", "headsep", "footskip",
 "columnsep", 0};
 
+/// commands that can start an \if...\else...\endif sequence
+const char * const known_if_commands[] = {"if", "ifarydshln", "ifbraket",
+"ifcancel", "ifcolortbl", "ifeurosym", "ifmarginnote", "ifmmode", "ifpdf",
+"ifsidecap", "ifupgreek", 0};
+
+/// conditional commands with three arguments like \@ifundefined{}{}{}
+const char * const known_if_3arg_commands[] = {"@ifundefined", "IfFileExists",
+0};
+
 // default settings
 ostringstream h_preamble;
 string h_textclass               = "article";
@@ -603,6 +612,22 @@ void handle_package(Parser &p, string const & name, string const & opts,
 	p.skip_spaces();
 }
 
+
+void handle_if(Parser & p, bool in_lyx_preamble)
+{
+	while (p.good()) {
+		Token t = p.get_token();
+		if (t.cat() == catEscape &&
+		    is_known(t.cs(), known_if_commands))
+			handle_if(p, in_lyx_preamble);
+		else {
+			if (!in_lyx_preamble)
+				h_preamble << t.asInput();
+			if (t.cat() == catEscape && t.cs() == "fi")
+				return;
+		}
+	}
+}
 
 
 void end_preamble(ostream & os, TextClass const & /*textclass*/)
@@ -1068,14 +1093,27 @@ void parse_preamble(Parser & p, ostream & os,
 			}
 		}
 
-		else if (t.cs() == "@ifundefined") {
+		else if (is_known(t.cs(), known_if_3arg_commands)) {
 			// prevent misparsing of \usepackage if it is used
 			// as an argument (see e.g. our own output of
 			// \@ifundefined above)
-			h_preamble << t.asInput();
-			h_preamble << '{' << p.verbatim_item() << '}';
-			h_preamble << '{' << p.verbatim_item() << '}';
-			h_preamble << '{' << p.verbatim_item() << '}';
+			string const arg1 = p.verbatim_item();
+			string const arg2 = p.verbatim_item();
+			string const arg3 = p.verbatim_item();
+			if (!in_lyx_preamble) {
+				h_preamble << t.asInput()
+				           << '{' << arg1 << '}'
+				           << '{' << arg2 << '}'
+				           << '{' << arg3 << '}';
+			}
+		}
+
+		else if (is_known(t.cs(), known_if_commands)) {
+			// must not parse anything in conditional code, since
+			// LyX would output the parsed contents unconditionally
+			if (!in_lyx_preamble)
+				h_preamble << t.asInput();
+			handle_if(p, in_lyx_preamble);
 		}
 
 		else if (!t.cs().empty() && !in_lyx_preamble)
