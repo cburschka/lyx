@@ -54,10 +54,13 @@ Input stdstarsections.inc
 
 # don't use the following styles
 NoStyle			Part
+NoCounter			part
 NoStyle			Part*
 NoStyle			Chapter
+NoCounter			chapter
 NoStyle			Chapter*
 NoStyle			Subparagraph
+NoCounter			subparagraph
 NoStyle			Subparagraph*
 
 
