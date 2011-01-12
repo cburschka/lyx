@@ -581,7 +581,6 @@ char const * simplefeatures[] = {
 	"framed",
 	"soul",
 	"textcomp",
-	"fixltx2e",
 	"pmboxdraw",
 	"bbding",
 	"ifsym",
@@ -700,6 +699,12 @@ string const LaTeXFeatures::getPackages() const
 	// fontspec (in BufferParams)
 	if (!params_.useNonTeXFonts && !loadAMSPackages().empty())
 		packages << loadAMSPackages();
+
+	// fixltx2e must be loaded after amsthm, since amsthm produces an error with
+	// the redefined \[ command (bug 7233). Load is as early as possible, since
+	// other packages might profit from it.
+	if (mustProvide("fixltx2e"))
+		packages << "\\usepackage{fixltx2e}\n";
 
 	// wasysym is a simple feature, but it must be after amsmath if both
 	// are used
