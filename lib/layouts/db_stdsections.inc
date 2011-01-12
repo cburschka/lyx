@@ -6,7 +6,7 @@
 # It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
-Format 30
+Format 31
 Input stdsections.inc
 
 Style Part
