@@ -1,0 +1,60 @@
+This file lists features that are supported by LyX but not yet converted (or
+not converted completely) by tex2lyx. Currently, only features up to file
+format 345 (LyX 1.6.x) are listed. The table is organized in three columns:
+
+
+Format:        First file format that supports the feature. In some cases the
+               feature may habe been revised in later file formats.
+LaTeX feature: LaTeX package, command or environment
+LyX feature:   LyX inset or document setting
+
+
+Format LaTeX feature                        LyX feature
+222    change tracking                      change tracking
+224    external insets defined in           InsetExternal
+       lib/external_templates. This is
+       quite difficult to recognize.
+226    nothing (impossible to import)       InsetBranch, \branch...\end_branch
+226    ?                                    InsetBox (Boxed/ovalbox/Ovalbox/
+                                                      Shadowbox/Doublebox)
+226    transformations                      InsetExternal
+228    draft                                InsetExternal
+231    sidewaysfigure/sidewaystable         InsetFloat
+232    bibtopic                             InsetBibTeX
+246    framed.sty                           InsetBox
+247    lmodern.sty, charter.sty, utopia.sty font settings (header)
+       ccfonts.sty, chancery.sty,
+       beraserif.sty, berasans.sty,
+       courier.sty, luximono.sty,
+       beramono.sty, mathptmx.sty
+248    booktabs.sty                         InsetTabular
+254    esint.sty                            \use_esint
+266    armenian                             \language, \lang
+267    XeTeX                                utf8 encoding
+268    CJK.sty                              CJK encodings, languages
+269    listings.sty                         InsetListings
+270    \alert, \structure (beamer)          layout
+281    ?                                    modules
+284    wrapfig.sty                          InsetWrap
+287    wrapfig.sty (optarg)                 InsetWrap
+290    wrapped tables                       InsetWrap
+292    japanese                             japanese-plain
+293    ?                                    InsetInfo
+299    hyperlink types                      InsetHyperlink
+309    \nocite                              InsetCitation
+310    \nocite{*}                           InsetBibtex
+312    rotfloat.sty                         InsetFloat
+312    wide sideways{figure,table}          InsetFloat
+315    column separation in page margins    header
+316    subfig.sty (subfloats)               InsetFloat
+317    floating placements                  InsetWrap
+322    ?                                    local layout
+325    japanese                             one japanese language
+326    PDFLaTeX for external insets         InsetExternal
+329    master documents                     \master
+330    \leftarrowfill, \rightarrowfill,     InsetHSpace
+       \upbracefill, \downbracefill
+332    ?                                    InsetGraphics groupId
+336    ?                                    \font_cjk
+343    ?                                    \use_default_options
+
