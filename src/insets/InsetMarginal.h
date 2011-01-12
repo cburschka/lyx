@@ -35,7 +35,7 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const & runparams) const;
 	///
-	void addToToc(DocIterator const &);
+	void addToToc(DocIterator const &) const;
 private:
 	///
 	Inset * clone() const { return new InsetMarginal(*this); }

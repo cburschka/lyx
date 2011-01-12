@@ -104,13 +104,13 @@ void InsetCaption::setCustomLabel(docstring const & label)
 }
 
 
-void InsetCaption::addToToc(DocIterator const & cpit)
+void InsetCaption::addToToc(DocIterator const & cpit) const
 {
 	if (type_.empty())
 		return;
 
 	DocIterator pit = cpit;
-	pit.push_back(CursorSlice(*this));
+	pit.push_back(CursorSlice(const_cast<InsetCaption &>(*this)));
 
 	Toc & toc = buffer().tocBackend().toc(type_);
 	docstring str = full_label_ + ". ";

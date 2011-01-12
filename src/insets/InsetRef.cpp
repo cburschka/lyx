@@ -280,7 +280,7 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType)
 }
 
 
-void InsetRef::addToToc(DocIterator const & cpit)
+void InsetRef::addToToc(DocIterator const & cpit) const
 {
 	docstring const & label = getParam("reference");
 	if (buffer().insetLabel(label))

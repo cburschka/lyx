@@ -682,10 +682,10 @@ void InsetText::forToc(docstring & os, size_t maxlen) const
 }
 
 
-void InsetText::addToToc(DocIterator const & cdit)
+void InsetText::addToToc(DocIterator const & cdit) const
 {
 	DocIterator dit = cdit;
-	dit.push_back(CursorSlice(*this));
+	dit.push_back(CursorSlice(const_cast<InsetText &>(*this)));
 	Toc & toc = buffer().tocBackend().toc("tableofcontents");
 
 	BufferParams const & bufparams = buffer_->params();
@@ -693,13 +693,13 @@ void InsetText::addToToc(DocIterator const & cdit)
 
 	// For each paragraph, traverse its insets and let them add
 	// their toc items
-	ParagraphList & pars = paragraphs();
+	ParagraphList const & pars = paragraphs();
 	pit_type pend = paragraphs().size();
 	for (pit_type pit = 0; pit != pend; ++pit) {
 		Paragraph const & par = pars[pit];
 		dit.pit() = pit;
 		// if we find an optarg, we'll save it for use later.
-		InsetText * arginset = 0;
+		InsetText const * arginset = 0;
 		InsetList::const_iterator it  = par.insetList().begin();
 		InsetList::const_iterator end = par.insetList().end();
 		for (; it != end; ++it) {

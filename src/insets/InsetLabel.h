@@ -53,7 +53,7 @@ public:
 	///
 	void updateBuffer(ParIterator const & it, UpdateType);
 	///
-	void addToToc(DocIterator const &);
+	void addToToc(DocIterator const &) const;
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes

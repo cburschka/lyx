@@ -492,8 +492,9 @@ public:
 	virtual void initUnicodeMath() const {}
 
 	/// Add an entry to the TocList
-	/// pit is the ParConstIterator of the paragraph containing the inset
-	virtual void addToToc(DocIterator const &) {}
+	/// Pass a DocIterator that points at the paragraph containing
+	/// the inset
+	virtual void addToToc(DocIterator const &) const {}
 	/// Collect BibTeX information
 	virtual void collectBibKeys(InsetIterator const &) const {}
 	/// Update the counters of this inset and of its contents.

@@ -998,7 +998,7 @@ void InsetInclude::addPreview(DocIterator const & /*inset_pos*/,
 }
 
 
-void InsetInclude::addToToc(DocIterator const & cpit)
+void InsetInclude::addToToc(DocIterator const & cpit) const
 {
 	TocBackend & backend = buffer().tocBackend();
 

@@ -481,7 +481,7 @@ void InsetCitation::updateBuffer(ParIterator const &, UpdateType)
 }
 
 
-void InsetCitation::addToToc(DocIterator const & cpit)
+void InsetCitation::addToToc(DocIterator const & cpit) const
 {
 	// NOTE
 	// XHTML output uses the TOC to collect the citations

@@ -356,10 +356,10 @@ void InsetIndex::string2params(string const & in, InsetIndexParams & params)
 }
 
 
-void InsetIndex::addToToc(DocIterator const & cpit)
+void InsetIndex::addToToc(DocIterator const & cpit) const
 {
 	DocIterator pit = cpit;
-	pit.push_back(CursorSlice(*this));
+	pit.push_back(CursorSlice(const_cast<InsetIndex &>(*this)));
 	docstring str;
 	text().forToc(str, TOC_ENTRY_LENGTH);
 	buffer().tocBackend().toc("index").push_back(TocItem(pit, 0, str));

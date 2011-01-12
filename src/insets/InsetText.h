@@ -168,7 +168,7 @@ public:
 	///
 	void forToc(docstring &, size_t) const;
 	///
-	void addToToc(DocIterator const &);
+	void addToToc(DocIterator const &) const;
 	///
 	Inset * clone() const { return new InsetText(*this); }
 	///

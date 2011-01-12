@@ -281,7 +281,7 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype)
 }
 
 
-void InsetMathHull::addToToc(DocIterator const & pit)
+void InsetMathHull::addToToc(DocIterator const & pit) const
 {
 	if (!buffer_) {
 		//FIXME: buffer_ should be set at creation for this inset! Problem is

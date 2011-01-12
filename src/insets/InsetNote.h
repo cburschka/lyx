@@ -91,7 +91,7 @@ private:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
-	void addToToc(DocIterator const &);
+	void addToToc(DocIterator const &) const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///

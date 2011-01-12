@@ -195,10 +195,10 @@ bool InsetNote::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetNote::addToToc(DocIterator const & cpit)
+void InsetNote::addToToc(DocIterator const & cpit) const
 {
 	DocIterator pit = cpit;
-	pit.push_back(CursorSlice(*this));
+	pit.push_back(CursorSlice(const_cast<InsetNote &>(*this)));
 
 	Toc & toc = buffer().tocBackend().toc("note");
 	InsetLayout const & il = getLayout();

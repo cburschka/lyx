@@ -3736,7 +3736,7 @@ void InsetTabular::updateBuffer(ParIterator const & it, UpdateType utype)
 }
 
 
-void InsetTabular::addToToc(DocIterator const & cpit)
+void InsetTabular::addToToc(DocIterator const & cpit) const
 {
 	DocIterator dit = cpit;
 	dit.forwardPos();

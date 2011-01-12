@@ -1031,7 +1031,7 @@ void InsetGraphics::editGraphics(InsetGraphicsParams const & p) const
 }
 
 
-void InsetGraphics::addToToc(DocIterator const & cpit)
+void InsetGraphics::addToToc(DocIterator const & cpit) const
 {
 	TocBackend & backend = buffer().tocBackend();
 

@@ -96,7 +96,7 @@ private:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
-	void addToToc(DocIterator const &);
+	void addToToc(DocIterator const &) const;
 	///
 	docstring contextMenuName() const;
 	/// Force inset into LTR environment if surroundings are RTL

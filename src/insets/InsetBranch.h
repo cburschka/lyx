@@ -81,7 +81,7 @@ private:
 	///
 	docstring contextMenuName() const;
 	///
-	void addToToc(DocIterator const &);
+	void addToToc(DocIterator const &) const;
 	///
 	InsetBranchParams const & params() const { return params_; }
 	///

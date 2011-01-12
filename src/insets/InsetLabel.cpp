@@ -142,7 +142,7 @@ void InsetLabel::updateBuffer(ParIterator const & par, UpdateType utype)
 }
 
 
-void InsetLabel::addToToc(DocIterator const & cpit)
+void InsetLabel::addToToc(DocIterator const & cpit) const
 {
 	docstring const & label = getParam("name");
 	Toc & toc = buffer().tocBackend().toc("label");
