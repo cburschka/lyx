@@ -1897,8 +1897,6 @@ docstring Text::getPossibleLabel(Cursor const & cur) const
 	}
 
 	if (!name.empty())
-		// FIXME refstyle
-		// We should allow customization of the separator or else change it
 		text = name + ':' + text;
 
 	return text;
