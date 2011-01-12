@@ -18,9 +18,11 @@ EndPreamble
 
 
 NoStyle Chapter
+NoCounter chapter
 NoStyle Chapter*
 
 NoStyle Subparagraph
+NoCounter subparagraph
 NoStyle Subparagraph*
 
 
