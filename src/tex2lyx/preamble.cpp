@@ -57,53 +57,69 @@ namespace {
 // Both changes require first that support for non-babel languages (CJK,
 // armtex) is added.
 // add turkmen for lyxformat 383
-const char * const known_languages[] = { "afrikaans", "albanian", "american",
-"arabic", "arabtex", "austrian", "bahasa", "bahasai", "bahasam", "basque",
-"belarusian", "brazil", "brazilian", "breton", "british", "bulgarian",
+/**
+ * known babel language names (including synonyms)
+ * not in standard babel: arabic, arabtex, belarusian, serbian-latin, thai
+ * not yet supported by LyX: kurmanji
+ * please keep this in sync with known_coded_languages line by line!
+ */
+const char * const known_languages[] = {"acadian", "afrikaans", "albanian",
+"american", "arabic", "arabtex", "austrian", "bahasa", "bahasai", "bahasam",
+"basque", "belarusian", "brazil", "brazilian", "breton", "british", "bulgarian",
 "canadian", "canadien", "catalan", "croatian", "czech", "danish", "dutch",
-"english", "esperanto", "estonian", "finnish", "francais", "french",
+"english", "esperanto", "estonian", "farsi", "finnish", "francais", "french",
 "frenchb", "frenchle", "frenchpro", "galician", "german", "germanb", "greek",
-"hebrew", "icelandic", "indon", "indonesian", "interlingua", "irish",
-"italian", "kazakh", "latin", "latvian", "lithuanian", "lsorbian", "magyar",
-"malay", "meyalu", "mongolian", "naustrian", "ngerman", "ngermanb", "norsk",
-"nynorsk", "polutonikogreek", "polish", "portuges", "portuguese", "romanian",
-"russian", "russianb", "samin", "scottish", "serbian", "serbian-latin",
-"slovak", "slovene", "spanish", "swedish", "thai", "turkish", "ukraineb",
-"ukrainian", "usorbian", "vietnam", "welsh", 0};
+"hebrew", "hungarian", "icelandic", "indon", "indonesian", "interlingua",
+"irish", "italian", "kazakh", "latin", "latvian", "lithuanian", "lowersorbian",
+"lsorbian", "magyar", "malay", "meyalu", "mongolian", "naustrian", "newzealand",
+"ngerman", "ngermanb", "norsk", "nynorsk", "polutonikogreek", "polish",
+"portuges", "portuguese", "romanian", "russian", "russianb", "samin",
+"scottish", "serbian", "serbian-latin", "slovak", "slovene", "spanish",
+"swedish", "thai", "turkish", "ukraineb", "ukrainian", "uppersorbian",
+"UKenglish", "USenglish", "usorbian", "vietnam", "welsh", 0};
 
-const char * const known_bahasa_languages[] = {"bahasa", "bahasai",
-						"indon", "indonesian", 0};
-const char * const known_bahasam_languages[] = {"bahasam", "malay",
-						"meyalu", 0};
-const char * const known_brazilian_languages[] = {"brazil", "brazilian", 0};
-const char * const known_french_languages[] = {"french", "frenchb", "francais",
-						"frenchle", "frenchpro", 0};
-const char * const known_german_languages[] = {"german", "germanb", 0};
-const char * const known_ngerman_languages[] = {"ngerman", "ngermanb", 0};
-const char * const known_portuguese_languages[] = {"portuges", "portuguese", 0};
-const char * const known_russian_languages[] = {"russian", "russianb", 0};
-const char * const known_ukrainian_languages[] = {"ukrainian", "ukraineb", 0};
+/**
+ * the same as known_languages with .lyx names
+ * please keep this in sync with known_languages line by line!
+ */
+const char * const known_coded_languages[] = {"french", "afrikaans", "albanian",
+"american", "arabic_arabi", "arabic_arabtex", "austrian", "bahasa", "bahasa", "bahasam",
+"basque", "belarusian", "brazilian", "brazilian", "breton", "british", "bulgarian",
+"canadian", "canadien", "catalan", "croatian", "czech", "danish", "dutch",
+"english", "esperanto", "estonian", "farsi", "finnish", "french", "french",
+"french", "french", "french", "galician", "german", "german", "greek",
+"hebrew", "magyar", "icelandic", "bahasa", "bahasa", "interlingua",
+"irish", "italian", "kazakh", "latin", "latvian", "lithuanian", "lowersorbian",
+"lowersorbian", "magyar", "bahasam", "bahasam", "mongolian", "naustrian", "english",
+"ngerman", "ngerman", "norsk", "nynorsk", "polutonikogreek", "polish",
+"portuguese", "portuguese", "romanian", "russian", "russian", "samin",
+"scottish", "serbian", "serbian-latin", "slovak", "slovene", "spanish",
+"swedish", "thai", "turkish", "ukrainian", "ukrainian", "uppersorbian",
+"uppersorbian", "english", "english", "vietnamese", "welsh", 0};
 
-//add these to known_english_quotes_languages when updating to lyxformat 268:
-//"chinese-simplified", "korean"
-// This requires first that support for non-babel languages (CJK) is added.
-const char * const known_english_quotes_languages[] = {"american", "canadian",
-"english", "esperanto", "hebrew", "irish", "scottish", "thai", 0};
+/// languages with english quotes (.lyx names)
+const char * const known_english_quotes_languages[] = {"american", "bahasa",
+"bahasam", "brazilian", "canadian", "chinese-simplified", "english",
+"esperanto", "hebrew", "irish", "korean", "portuguese", "scottish", "thai", 0};
 
 //add this to known_french_quotes_languages when updating to
 //lyxformat 383: "turkmen"
-const char * const known_french_quotes_languages[] = {"albanian", "arabic",
-"basque", "canadien", "catalan", "galician", "greek", "italian", "norsk",
-"nynorsk", "polutonikogreek", "spanish", "spanish-mexico", "turkish",
-"vietnam", 0};
+/// languages with french quotes (.lyx names)
+const char * const known_french_quotes_languages[] = {"albanian",
+"arabic_arabi", "arabic_arabtex", "basque", "canadien", "catalan", "french",
+"galician", "greek", "italian", "norsk", "nynorsk", "polutonikogreek",
+"russian", "spanish", "spanish-mexico", "turkish", "ukrainian", "vietnamese", 0};
 
+/// languages with german quotes (.lyx names)
 const char * const known_german_quotes_languages[] = {"austrian", "bulgarian",
-"czech", "icelandic", "lithuanian", "lsorbian", "naustrian", "serbian",
-"serbian-latin", "slovak", "slovene", "usorbian",  0};
+"czech", "german", "icelandic", "lithuanian", "lowersorbian", "naustrian",
+"ngerman", "serbian", "serbian-latin", "slovak", "slovene", "uppersorbian", 0};
 
+/// languages with polish quotes (.lyx names)
 const char * const known_polish_quotes_languages[] = {"afrikaans", "croatian",
 "dutch", "estonian", "magyar", "polish", "romanian", 0};
 
+/// languages with swedish quotes (.lyx names)
 const char * const known_swedish_quotes_languages[] = {"finnish",
 "swedish", 0};
 
@@ -137,7 +153,7 @@ const char * const known_coded_paper_margins[] = { "leftmargin", "topmargin",
 ostringstream h_preamble;
 string h_textclass               = "article";
 string h_use_default_options     = "false";
-string h_options                 = string();
+string h_options;
 string h_language                = "english";
 string h_inputencoding           = "auto";
 string h_font_roman              = "default";
@@ -182,27 +198,12 @@ string h_defskip                 = "medskip";
 string h_paragraph_indentation   = "default";
 string h_quotes_language         = "english";
 string h_papercolumns            = "1";
-string h_papersides              = string();
+string h_papersides;
 string h_paperpagestyle          = "default";
 string h_listings_params;
 string h_tracking_changes        = "false";
 string h_output_changes          = "false";
-string h_margins                 = "";
-
-
-/// translates a babel language name to a LyX language name
-string babel2lyx(string language)
-{
-	if (language == "arabtex")
-		return "arabic_arabtex";
-	if (language == "arabic")
-		return "arabic_arabi";
-	if (language == "lsorbian")
-		return "lowersorbian";
-	if (language == "usorbian")
-		return "uppersorbian";
-	return language;
-}
+string h_margins;
 
 
 // returns true if at least one of the options in what has been found
@@ -606,25 +607,8 @@ void handle_package(Parser &p, string const & name, string const & opts,
 
 void end_preamble(ostream & os, TextClass const & /*textclass*/)
 {
-	// merge synonym languages
-	if (is_known(h_language, known_bahasa_languages))
-		h_language = "bahasa";
-	else if (is_known(h_language, known_bahasam_languages))
-		h_language = "bahasam";
-	else if (is_known(h_language, known_brazilian_languages))
-		h_language = "brazilian";
-	else if (is_known(h_language, known_french_languages))
-		h_language = "french";
-	else if (is_known(h_language, known_german_languages))
-		h_language = "german";
-	else if (is_known(h_language, known_ngerman_languages))
-		h_language = "ngerman";
-	else if (is_known(h_language, known_portuguese_languages))
-		h_language = "portuguese";
-	else if (is_known(h_language, known_russian_languages))
-		h_language = "russian";
-	else if (is_known(h_language, known_ukrainian_languages))
-		h_language = "ukrainian";
+	// translate from babel to LyX names
+	h_language = babel2lyx(h_language);
 
 	// set the quote language
 	// LyX only knows the following quotes languages:
@@ -638,15 +622,10 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	if (h_language == "danish")
 		h_quotes_language = "danish";
 	// french
-	else if (is_known(h_language, known_french_quotes_languages)
-		|| is_known(h_language, known_french_languages)
-		|| is_known(h_language, known_russian_languages)
-		|| is_known(h_language, known_ukrainian_languages))
+	else if (is_known(h_language, known_french_quotes_languages))
 		h_quotes_language = "french";
 	// german
-	else if (is_known(h_language, known_german_quotes_languages)
-		|| is_known(h_language, known_german_languages)
-		|| is_known(h_language, known_ngerman_languages))
+	else if (is_known(h_language, known_german_quotes_languages))
 		h_quotes_language = "german";
 	// polish
 	else if (is_known(h_language, known_polish_quotes_languages))
@@ -655,14 +634,8 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	else if (is_known(h_language, known_swedish_quotes_languages))
 		h_quotes_language = "swedish";
 	//english
-	else if (is_known(h_language, known_english_quotes_languages)
-		|| is_known(h_language, known_bahasa_languages)
-		|| is_known(h_language, known_bahasam_languages)
-		|| is_known(h_language, known_brazilian_languages)
-		|| is_known(h_language, known_portuguese_languages))
+	else if (is_known(h_language, known_english_quotes_languages))
 		h_quotes_language = "english";
-
-	h_language = babel2lyx(h_language);
 
 	// output the LyX file settings
 	os << "#LyX file created by tex2lyx " << PACKAGE_VERSION << "\n"
@@ -744,6 +717,7 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 }
 
 } // anonymous namespace
+
 
 void parse_preamble(Parser & p, ostream & os, 
 	string const & forceclass, TeX2LyXDocClass & tc)
@@ -1128,6 +1102,16 @@ void parse_preamble(Parser & p, ostream & os,
 		h_papersides = ss.str();
 	}
 	end_preamble(os, tc);
+}
+
+
+/// translates a babel language name to a LyX language name
+string babel2lyx(string const & language)
+{
+	char const * const * where = is_known(language, known_languages);
+	if (where)
+		return known_coded_languages[where - known_languages];
+	return language;
 }
 
 // }])

@@ -43,6 +43,8 @@ class TeX2LyXDocClass : public DocumentClass
 /// in preamble.cpp
 void parse_preamble(Parser & p, std::ostream & os, 
 	std::string const & forceclass, TeX2LyXDocClass & tc);
+/// Translate babel language name to LyX language name
+extern std::string babel2lyx(std::string const & language);
 
 /// used packages with options
 extern std::map<std::string, std::vector<std::string> > used_packages;

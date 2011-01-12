@@ -1,9 +1,10 @@
 %% LyX trick_preamble_code_into_believing_that_this_was_created_by_lyx created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
-\documentclass[legalpaper]{article}
+\documentclass[legalpaper,francais,german,newzealand]{article}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
 
+\usepackage{babel}
 \newcommand{\noun}[1]{\textsc{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
@@ -159,6 +160,15 @@ and bibliography:
 
 \noindent blabla bla bla
 
+switch to german:\selectlanguage{german}
+Hallo!
+\foreignlanguage{french}{some \emph{french}}
+back to english:\selectlanguage{newzealand}
+and some nested \foreignlanguage{francais}{french \foreignlanguage{german}{nested
+\emph{german}} french} english stuff.
+Note that we both used \texttt{french} and the \texttt{francais} alias for the
+french text, but for some reason this does not work with the
+\texttt{newzealand} alias and \texttt{english} for english text.
 
 \section{Another Appendix section}
 

@@ -2441,21 +2441,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// save the language for the case that a
 			// \foreignlanguage is used 
 
-			// FIXME: \lang needs a LyX name, but we set a LaTeX name
-			context.font.language = subst(p.verbatim_item(), "\n", " ");
-			os << "\\lang " << context.font.language << "\n";
+			context.font.language = babel2lyx(p.verbatim_item());
+			os << "\n\\lang " << context.font.language << "\n";
 		}
 
 		else if (t.cs() == "foreignlanguage") {
-			context.check_layout(os);
-			// FIXME: \lang needs a LyX name, but we set a LaTeX name
-			os << "\n\\lang " << subst(p.verbatim_item(), "\n", " ") << "\n";
-			os << subst(p.verbatim_item(), "\n", " ");
-			// FIXME: the second argument of selectlanguage
-			// has to be parsed (like for \textsf, for
-			// example). 
-			// set back to last selectlanguage
-			os << "\n\\lang " << context.font.language << "\n";
+			string const lang = babel2lyx(p.verbatim_item());
+			parse_text_attributes(p, os, FLAG_ITEM, outer,
+			                      context, "\\lang",
+			                      context.font.language, lang);
 		}
 
 		else if (t.cs() == "inputencoding") {
