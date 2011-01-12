@@ -698,8 +698,8 @@ void InsetText::addToToc(DocIterator const & cdit)
 	for (pit_type pit = 0; pit != pend; ++pit) {
 		Paragraph const & par = pars[pit];
 		dit.pit() = pit;
-		// the string that goes to the toc (could be the optarg)
-		docstring tocstring;
+		// if we find an optarg, we'll save it for use later.
+		InsetText * arginset = 0;
 		InsetList::const_iterator it  = par.insetList().begin();
 		InsetList::const_iterator end = par.insetList().end();
 		for (; it != end; ++it) {
@@ -707,16 +707,22 @@ void InsetText::addToToc(DocIterator const & cdit)
 			dit.pos() = it->pos;
 			//lyxerr << (void*)&inset << " code: " << inset.lyxCode() << std::endl;
 			inset.addToToc(dit);
-			if (inset.lyxCode() == ARG_CODE && tocstring.empty())
-				inset.asInsetText()->text().forToc(tocstring, TOC_ENTRY_LENGTH);
+			if (inset.lyxCode() == ARG_CODE)
+				arginset = inset.asInsetText();
 		}
 		// now the toc entry for the paragraph
 		int const toclevel = par.layout().toclevel;
 		if (toclevel != Layout::NOT_IN_TOC && toclevel >= min_toclevel) {
-			dit.pos() = 0;
 			// insert this into the table of contents
-			if (tocstring.empty())
+			docstring tocstring;
+			if (arginset) {
+				tocstring = par.labelString();
+				if (!tocstring.empty())
+					tocstring += ' ';
+				arginset->text().forToc(tocstring, TOC_ENTRY_LENGTH);
+			} else
 				par.forToc(tocstring, TOC_ENTRY_LENGTH);
+			dit.pos() = 0;
 			toc.push_back(TocItem(dit, toclevel - min_toclevel,
 				tocstring, tocstring));
 		}
