@@ -2038,8 +2038,18 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 {
 	BufferParams::MathOutput const mathtype = 
 		buffer().params().html_math_output;
-	
+
 	bool success = false;
+
+	// we output all the labels just at the beginning of the equation.
+	// this should be fine.
+	for (size_t i = 0; i != label_.size(); ++i) {
+		InsetLabel const * const il = label_[i];
+		if (!il)
+			continue;
+		il->xhtml(xs, op);
+	}
+
 	// FIXME Eventually we would like to do this inset by inset.
 	if (mathtype == BufferParams::MathML) {
 		odocstringstream os;
