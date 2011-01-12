@@ -224,6 +224,12 @@ void InsetMathHull::setBuffer(Buffer & buffer)
 }
 
 
+namespace {
+	const char * counters_to_save[] = {"section", "chapter"};
+	unsigned int const numcnts = sizeof(counters_to_save)/sizeof(char *);
+}
+
+
 void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype)
 {
 	if (!buffer_) {
@@ -233,18 +239,40 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype)
 		return;
 	}
 
-	BufferParams const & bp = buffer_->params();
-	string const & lang = it->getParLanguage(bp)->code();
-	Counters & cnts = bp.documentClass().counters();
-	// so we don't have to write it ten times...
-	docstring const eqstr = from_ascii("equation");
+	// if any of the equations are numbered, then we want to save the values
+	// of some of the counters.
+	if (haveNumbers()) {
+		BufferParams const & bp = buffer_->params();
+		string const & lang = it->getParLanguage(bp)->code();
+		Counters & cnts = bp.documentClass().counters();
 
+		// right now, we only need to do this at export time
+		if (utype == OutputUpdate) {
+			for (size_t i = 0; i < numcnts; ++i) {
+				docstring const cnt = from_ascii(counters_to_save[i]);
+				if (cnts.hasCounter(cnt))
+					counter_map[cnt] = cnts.value(cnt);
+			}
+		}
+
+		// this has to be done separately
+		docstring const eqstr = from_ascii("equation");
+		if (cnts.hasCounter(eqstr)) {
+			if (utype == OutputUpdate) {
+				counter_map[eqstr] = cnts.value(eqstr);
+			LYXERR0(counter_map[eqstr]);}
+			for (size_t i = 0; i != label_.size(); ++i) {
+				if (numbered(i)) {
+					cnts.step(eqstr, utype);
+					numbers_[i] = cnts.theCounter(eqstr, lang);
+				} else
+					numbers_[i] = empty_docstring();
+			}
+		}
+	}
+
+	// now the labels
 	for (size_t i = 0; i != label_.size(); ++i) {
-		if (numbered(i) && cnts.hasCounter(eqstr)) {
-			cnts.step(eqstr, utype);
-			numbers_[i] = cnts.theCounter(eqstr, lang);
-		} else
-			numbers_[i] = empty_docstring();
 		if (label_[i])
 			label_[i]->updateBuffer(it, utype);
 	}
@@ -561,7 +589,29 @@ void InsetMathHull::preparePreview(DocIterator const & pos,
 		}
 	}
 
-	docstring const snippet = macro_preamble.str() + latexString(*this);
+	docstring setcnt;
+	if (forexport && haveNumbers()) {
+		docstring eqstr = from_ascii("equation");
+		CounterMap::const_iterator it = counter_map.find(eqstr);
+		if (it != counter_map.end()) {
+			int num = it->second;
+			if (num >= 0)
+				setcnt += from_ascii("\\setcounter{") + eqstr + '}' +
+				          '{' + convert<docstring>(num) + '}' + '\n';
+		}
+		for (size_t i = 0; i != numcnts; ++i) {
+			docstring cnt = from_ascii(counters_to_save[i]);
+			it = counter_map.find(cnt);
+			if (it == counter_map.end())
+					continue;
+			int num = it->second;
+			if (num > 0)
+				setcnt += from_ascii("\\setcounter{") + cnt + '}' +
+				          '{' + convert<docstring>(num) + '}';
+		}
+	}
+	docstring const snippet = macro_preamble.str() +
+	    setcnt + latexString(*this);
 	LYXERR(Debug::MACROS, "Preview snippet: " << snippet);
 	preview_->addPreview(snippet, *buffer, forexport);
 }
@@ -1908,13 +1958,7 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 }
 
 
-// FIXME XHTML
-// We need to do something about alignment here.
-//
-// This duplicates code from InsetMathGrid, but
-// we need access here to number information,
-// and we simply do not have that in InsetMathGrid.
-void InsetMathHull::htmlize(HtmlStream & os) const
+bool InsetMathHull::haveNumbers() const
 {
 	bool havenumbers = false;
 	for (size_t i = 0; i != numbered_.size(); ++i) {
@@ -1923,6 +1967,19 @@ void InsetMathHull::htmlize(HtmlStream & os) const
 			break;
 		}
 	}
+	return havenumbers;
+}
+
+
+// FIXME XHTML
+// We need to do something about alignment here.
+//
+// This duplicates code from InsetMathGrid, but
+// we need access here to number information,
+// and we simply do not have that in InsetMathGrid.
+void InsetMathHull::htmlize(HtmlStream & os) const
+{
+	bool const havenumbers = haveNumbers();
 	bool const havetable = havenumbers || nrows() > 1 || ncols() > 1;
 
 	if (!havetable) {
@@ -1956,13 +2013,7 @@ void InsetMathHull::htmlize(HtmlStream & os) const
 // and we simply do not have that in InsetMathGrid.
 void InsetMathHull::mathmlize(MathStream & os) const
 {
-	bool havenumbers = false;
-	for (size_t i = 0; i != numbered_.size(); ++i) {
-		if (numbered_[i]) {
-			havenumbers = true;
-			break;
-		}
-	}
+	bool havenumbers = haveNumbers();
 	bool const havetable = havenumbers || nrows() > 1 || ncols() > 1;
 
 	if (havetable)
@@ -1999,13 +2050,7 @@ void InsetMathHull::mathmlize(MathStream & os) const
 void InsetMathHull::mathAsLatex(WriteStream & os) const
 {
 	MathEnsurer ensurer(os, false);
-	bool havenumbers = false;
-	for (size_t i = 0; i != numbered_.size(); ++i) {
-		if (numbered_[i]) {
-			havenumbers = true;
-			break;
-		}
-	}
+	bool havenumbers = haveNumbers();
 	bool const havetable = havenumbers || nrows() > 1 || ncols() > 1;
 
 	if (!havetable) {
@@ -2115,7 +2160,6 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 	// if mathtype was LaTeX, since we won't have entered any of the
 	// earlier branches
 	if (!success /* || mathtype != BufferParams::LaTeX */) {
-		string const tag = (getType() == hullSimple) ? "span" : "div";
 		// Unfortunately, we cannot use latexString() because we do not want
 		// $...$ or whatever.
 		odocstringstream ls;
@@ -2128,6 +2172,7 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		// http://www.math.union.edu/~dpvc/jsMath/
 		// FIXME XHTML
 		// probably should allow for some kind of customization here
+		string const tag = (getType() == hullSimple) ? "span" : "div";
 		xs << html::StartTag(tag, "class='math'")
 		   << XHTMLStream::ESCAPE_AND
 		   << latex 

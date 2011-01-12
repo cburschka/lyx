@@ -222,6 +222,8 @@ private:
 	bool rowChangeOK() const;
 	/// can this change its number of cols?
 	bool colChangeOK() const;
+	/// are any of the equations numbered?
+	bool haveNumbers() const;
 
 	/// "none", "simple", "display", "eqnarray",...
 	HullType type_;
@@ -237,6 +239,10 @@ private:
 	mutable bool use_preview_;
 	///
 	DocIterator docit_;
+	///
+	typedef std::map<docstring, int> CounterMap;
+	/// used to store current values of important counters
+	CounterMap counter_map;
 //
 // Incorporate me
 //
