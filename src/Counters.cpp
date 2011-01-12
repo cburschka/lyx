@@ -296,6 +296,9 @@ void Counters::reset(docstring const & match)
 
 bool Counters::remove(docstring const & cnt)
 {
+	// NOTE It might be worth trying to remove this counter
+	// as "master" for any counter that declares it, but we
+	// don't actually need to do so.
 	return counterList_.erase(cnt);
 }
 
