@@ -50,6 +50,10 @@ public:
 	void reset();
 	/// Returns the master counter of this counter.
 	docstring const & master() const;
+	/// Checks if the master counter is cnt, and if so removes
+	/// it. This is used when a counter is deleted.
+	/// \return whether we removed the master.
+	bool checkAndRemoveMaster(docstring const & cnt);
 	/// Returns a LaTeX-like string to format the counter. 
 	/** This is similar to what one gets in LaTeX when using
 	 *  "\the<counter>". The \c in_appendix bool tells whether we

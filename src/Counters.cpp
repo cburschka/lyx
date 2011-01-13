@@ -145,6 +145,15 @@ docstring const & Counter::master() const
 }
 
 
+bool Counter::checkAndRemoveMaster(docstring const & cnt)
+{
+	if (master_ != cnt)
+		return false;
+	master_ = docstring();
+	return true;
+}
+
+
 docstring const & Counter::labelString(bool in_appendix) const
 {
 	return in_appendix ? labelstringappendix_ : labelstring_;
@@ -296,10 +305,17 @@ void Counters::reset(docstring const & match)
 
 bool Counters::remove(docstring const & cnt)
 {
-	// NOTE It might be worth trying to remove this counter
-	// as "master" for any counter that declares it, but we
-	// don't actually need to do so.
-	return counterList_.erase(cnt);
+	bool retval = counterList_.erase(cnt);
+	if (!retval)
+		return false;
+	CounterList::iterator it = counterList_.begin();
+	CounterList::iterator end = counterList_.end();
+	for (; it != end; ++it) {
+		if (it->second.checkAndRemoveMaster(cnt))
+			LYXERR(Debug::TCLASS, "Removed master counter `" +
+					to_utf8(cnt) + "' from counter: " + to_utf8(it->first));
+	}
+	return retval;
 }
 
 
