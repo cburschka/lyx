@@ -2013,7 +2013,7 @@ void InsetMathHull::htmlize(HtmlStream & os) const
 // and we simply do not have that in InsetMathGrid.
 void InsetMathHull::mathmlize(MathStream & os) const
 {
-	bool havenumbers = haveNumbers();
+	bool const havenumbers = haveNumbers();
 	bool const havetable = havenumbers || nrows() > 1 || ncols() > 1;
 
 	if (havetable)
