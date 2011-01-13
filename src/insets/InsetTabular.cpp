@@ -1886,6 +1886,8 @@ bool Tabular::getLTNewPage(row_type row) const
 
 bool Tabular::haveLTHead() const
 {
+	if (!is_long_tabular)
+		return false;
 	for (row_type i = 0; i < nrows(); ++i)
 		if (row_info[i].endhead)
 			return true;
@@ -1895,7 +1897,7 @@ bool Tabular::haveLTHead() const
 
 bool Tabular::haveLTFirstHead() const
 {
-	if (endfirsthead.empty)
+	if (!is_long_tabular || endfirsthead.empty)
 		return false;
 	for (row_type r = 0; r < nrows(); ++r)
 		if (row_info[r].endfirsthead)
@@ -1906,6 +1908,8 @@ bool Tabular::haveLTFirstHead() const
 
 bool Tabular::haveLTFoot() const
 {
+	if (!is_long_tabular)
+		return false;
 	for (row_type r = 0; r < nrows(); ++r)
 		if (row_info[r].endfoot)
 			return true;
@@ -1915,7 +1919,7 @@ bool Tabular::haveLTFoot() const
 
 bool Tabular::haveLTLastFoot() const
 {
-	if (endlastfoot.empty)
+	if (!is_long_tabular || endlastfoot.empty)
 		return false;
 	for (row_type r = 0; r < nrows(); ++r)
 		if (row_info[r].endlastfoot)
@@ -1951,6 +1955,8 @@ bool Tabular::ltCaption(row_type row) const
 
 bool Tabular::haveLTCaption() const
 {
+	if (!is_long_tabular)
+		return false;
 	for (row_type r = 0; r < nrows(); ++r)
 		if (row_info[r].caption)
 			return true;
