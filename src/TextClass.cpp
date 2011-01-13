@@ -1317,7 +1317,7 @@ DocumentClass & DocumentClassBundle::makeDocumentClass(
 						"\t%2$s\n"
 					"See section 3.1.2.3 of the User's Guide for more information."),
 				from_utf8(modName), prereqs);
-			frontend::Alert::warning(_("Package not available"), msg);
+			frontend::Alert::warning(_("Package not available"), msg, true);
 		}
 		FileName layout_file = libFileSearch("layouts", lm->getFilename());
 		if (!doc_class.read(layout_file, TextClass::MODULE)) {
