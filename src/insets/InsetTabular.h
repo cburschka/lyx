@@ -744,7 +744,8 @@ public:
 	/// auxiliary function for docbook
 	int docbookRow(odocstream & os, row_type, OutputParams const &) const;
 	///
-	docstring xhtmlRow(XHTMLStream & xs, row_type, OutputParams const &) const;
+	docstring xhtmlRow(XHTMLStream & xs, row_type, OutputParams const &,
+	                   bool header = false) const;
 
 	/// change associated Buffer
 	void setBuffer(Buffer & buffer);

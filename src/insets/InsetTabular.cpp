@@ -2875,9 +2875,10 @@ int Tabular::docbook(odocstream & os, OutputParams const & runparams) const
 
 
 docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
-			   OutputParams const & runparams) const
+			   OutputParams const & runparams, bool header) const
 {
 	docstring ret;
+	string const celltag = header ? "th" : "td";
 	idx_type cell = getFirstCellInRow(row);
 
 	xs << html::StartTag("tr");
@@ -2915,9 +2916,9 @@ docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
 		if (isMultiColumn(cell))
 			attr << " colspan='" << columnSpan(cell) << "'";
 
-		xs << html::StartTag("td", attr.str());
+		xs << html::StartTag(celltag, attr.str());
 		ret += cellInset(cell)->xhtml(xs, runparams);
-		xs << html::EndTag("td");
+		xs << html::EndTag(celltag);
 		++cell;
 	}
 	xs << html::EndTag("tr");
@@ -2928,8 +2929,63 @@ docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
 docstring Tabular::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
 {
 	docstring ret;
-	// It's unclear to me if we need to mess with the long table stuff. 
-	// We can borrow that too from docbook, if so.
+
+	if (is_long_tabular) {
+		// we'll wrap it in a div, so as to deal with alignment
+		string align;
+		switch (longtabular_alignment) {
+		case LYX_LONGTABULAR_ALIGN_LEFT:
+			align = "left";
+			break;
+		case LYX_LONGTABULAR_ALIGN_CENTER:
+			align = "center";
+			break;
+		case LYX_LONGTABULAR_ALIGN_RIGHT:
+			align = "right";
+			break;
+		}
+		xs << html::StartTag("div", "class='longtable' style='text-align: " + align + ";'");
+		if (haveLTCaption()) {
+			xs << html::StartTag("div", "class='longtable-caption' style='text-align: " + align + ";'");
+			for (row_type r = 0; r < nrows(); ++r)
+				if (row_info[r].caption)
+					ret += xhtmlRow(xs, r, runparams);
+			xs << html::EndTag("div");
+		}
+	}
+
+	xs << html::StartTag("table");
+
+	// output header info
+	bool const havefirsthead = haveLTFirstHead();
+	// if we have a first head, then we are going to ignore the
+	// headers for the additional pages, since there aren't any
+	// in XHTML. this test accomplishes that.
+	bool const havehead = !havefirsthead && haveLTHead();
+	if (havehead || havefirsthead) {
+		xs << html::StartTag("thead");
+		for (row_type r = 0; r < nrows(); ++r) {
+			if ((havefirsthead && row_info[r].endfirsthead)
+			    || (havehead && row_info[r].endhead)) {
+				ret += xhtmlRow(xs, r, runparams, true);
+			}
+		}
+		xs << html::EndTag("thead");
+	}
+	// output footer info
+	bool const havelastfoot = haveLTLastFoot();
+	// as before.
+	bool const havefoot = !havelastfoot && haveLTFoot();
+	if (havefoot || havelastfoot) {
+		xs << html::StartTag("tfoot");
+		for (row_type r = 0; r < nrows(); ++r) {
+			if ((havelastfoot && row_info[r].endlastfoot)
+			    || (havefoot && row_info[r].endfoot)) {
+				ret += xhtmlRow(xs, r, runparams);
+			}
+		}
+		xs << html::EndTag("tfoot");
+	}
 
 	xs << html::StartTag("tbody");
 	for (row_type r = 0; r < nrows(); ++r) {
@@ -2937,7 +2993,10 @@ docstring Tabular::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
 			ret += xhtmlRow(xs, r, runparams);
 		}
 	}
-	xs << html::EndTag("tbody");
+	xs << html::EndTag("tbody")
+	   << html::EndTag("table");
+	if (is_long_tabular)
+		xs << html::EndTag("div");
 	return ret;
 }
 
@@ -4703,13 +4762,7 @@ int InsetTabular::docbook(odocstream & os, OutputParams const & runparams) const
 
 docstring InsetTabular::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 {
-	// FIXME XHTML
-	// It'd be better to be able to get this from an InsetLayout, but at present
-	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
-	xs << html::StartTag("table");
-	docstring ret = tabular.xhtml(xs, rp);
-	xs << html::EndTag("table");
-	return ret;
+	return tabular.xhtml(xs, rp);
 }
 
 
