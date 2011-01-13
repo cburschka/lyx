@@ -45,6 +45,17 @@ LyXModule::LyXModule(string const & n, string const & i,
 }
 
 
+vector<string> LyXModule::prerequisites() const {
+#ifdef TEX2LYX
+	return vector<string>();
+#else
+	if (!checked_)
+		isAvailable();
+	return prerequisites_;
+#endif
+}
+
+
 bool LyXModule::isAvailable() const {
 #ifdef TEX2LYX
 	return true;
@@ -54,16 +65,16 @@ bool LyXModule::isAvailable() const {
 	if (checked_)
 		return available_;
 	checked_ = true;
+	available_ = true;
 	//check whether all of the required packages are available
 	vector<string>::const_iterator it  = package_list_.begin();
 	vector<string>::const_iterator end = package_list_.end(); 
 	for (; it != end; ++it) {
 		if (!LaTeXFeatures::isAvailable(*it)) {
 			available_ = false;
-			return available_;
+			prerequisites_.push_back(*it);
 		}
 	}
-	available_ = true;
 	return available_;
 #endif
 }

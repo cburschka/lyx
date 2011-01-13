@@ -58,6 +58,8 @@ public:
 	          std::string const & catgy);
 	/// whether the required packages are available
 	bool isAvailable() const;
+	/// the missing prerequisites, if any
+	std::vector<std::string> prerequisites() const;
 	///
 	std::string const & getName() const { return name_; }
 	///
@@ -108,6 +110,8 @@ private:
 	mutable bool checked_;
 	///
 	mutable bool available_;
+	///
+	mutable std::vector<std::string> prerequisites_;
 };
 
 typedef std::vector<LyXModule> LyXModuleList;

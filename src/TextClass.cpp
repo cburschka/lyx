@@ -1308,11 +1308,15 @@ DocumentClass & DocumentClassBundle::makeDocumentClass(
 			continue;
 		}
 		if (!lm->isAvailable()) {
+			docstring const prereqs = from_utf8(getStringFromVector(lm->prerequisites(), "\n\t"));
 			docstring const msg =
-				bformat(_("The module %1$s requires a package that is\n"
-				"not available in your LaTeX installation, or a converter\n"
-				"you have not installed. LaTeX output may not be possible.\n"), 
-				from_utf8(modName));
+				bformat(_("The module %1$s requires a package that is not\n"
+					"available in your LaTeX installation, or a converter that\n"
+					"you have not installed. LaTeX output may not be possible.\n"
+					"Missing prerequisites:\n"
+						"\t%2$s\n"
+					"See section 3.1.2.3 of the User's Guide for more information."),
+				from_utf8(modName), prereqs);
 			frontend::Alert::warning(_("Package not available"), msg);
 		}
 		FileName layout_file = libFileSearch("layouts", lm->getFilename());
