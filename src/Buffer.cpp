@@ -2688,7 +2688,8 @@ MacroData const * Buffer::Impl::getBufferMacro(docstring const & name,
 
 		// scope ends behind pos?
 		if (pos < it->second.first
-		    && theBufferList().isLoaded(it->second.second)) {
+			&& (cloned_buffer_ ||
+			    theBufferList().isLoaded(it->second.second))) {
 			// look for macro in external file
 			macro_lock = true;
 			MacroData const * data
