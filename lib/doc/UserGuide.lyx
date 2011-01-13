@@ -123,10 +123,11 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_be_strict true
+\author 1607599024 "Richard Heck" rgheck@comcast.net
 \end_header
 
 \begin_body
@@ -2587,8 +2588,13 @@ Availability
 \end_layout
 
 \begin_layout Standard
-New users are sometimes puzzled by the fact that many of the document classes
- listed under 
+
+\change_deleted 1607599024 1294953623
+New users are sometimes puzzled by the fact
+\change_inserted 1607599024 1294953628
+You will probably find
+\change_unchanged
+ that many of the document classes listed under 
 \family sans
 Document\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
@@ -2613,7 +2619,11 @@ Unavailable
 \end_inset
 
 .
- Or they are surprised that, when they open e.
+ 
+\change_inserted 1607599024 1294953653
+If you open a document that uses such a class, you will 
+\change_deleted 1607599024 1294953655
+Or they are surprised that, when they open e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -2625,21 +2635,47 @@ the
 \family sans
 iop-article
 \family default
- template, they receive a warning saying that the document requires files
- that are not installed to produce output.
- So it seems that something is wrong.
+ template, they 
+\change_unchanged
+receive a warning saying that 
+\change_inserted 1607599024 1294953700
+there are files that are required to produce output that are not installed.
+ 
+\change_deleted 1607599024 1294953702
+the document requires files that are not installed to produce output.
+ 
+\change_unchanged
+So it 
+\change_inserted 1607599024 1294953709
+may 
+\change_unchanged
+seem
+\change_deleted 1607599024 1294953710
+s
+\change_unchanged
+ that something is wrong.
 \end_layout
 
 \begin_layout Standard
-But nothing is wrong.
+
+\change_deleted 1607599024 1294953717
+But n
+\change_inserted 1607599024 1294953719
+N
+\change_unchanged
+othing is wrong.
  LyX includes many more document classes than you will ever need to use,
  and some of them, like 
 \family sans
 IOP
 \family default
-, are highly specialized.LyX tries to support as many different types of
- documents as possible, and it includes almost one hundred different layout
- files, with a growing number.
+, are highly specialized.
+
+\change_inserted 1607599024 1294953729
+ 
+\change_unchanged
+LyX tries to support as many different types of documents as possible, and
+ it includes almost one hundred different layout files, with a growing number.
  No LaTeX distribution will install by default all files that might be needed
  by some document class.
  There are just too many of them.
@@ -2647,8 +2683,15 @@ IOP
 \end_layout
 
 \begin_layout Standard
-If there is a document class you would like to use that is marked as `Unavailabl
-e', you need to install the appropriate package files.
+If there is a document class you would like to use that is marked as 
+\begin_inset Quotes erd
+\end_inset
+
+Unavailable
+\begin_inset Quotes erd
+\end_inset
+
+, you just need to install the appropriate package files.
  The easiest way to find out which files you need to install is to use that
  document class for a new file.
  LyX will display a dialog that will list the missing files.
@@ -2660,7 +2703,7 @@ Installing new LaTeX files
 \begin_inset Quotes erd
 \end_inset
 
- of the 
+ in of the 
 \emph on
 Customization
 \emph default
@@ -2743,13 +2786,39 @@ Document ! Settings
 \end_layout
 
 \begin_layout Standard
-Some modules require LaTeX packages that are not always installed by default.
- LyX will warn you if you do not have the needed package.
+Some modules require LaTeX packages 
+\change_inserted 1607599024 1294953807
+or file format converters 
+\change_unchanged
+that are not always installed by default.
+ LyX will warn you if you do not have 
+\change_inserted 1607599024 1294953817
+a 
+\change_deleted 1607599024 1294953818
+the 
+\change_unchanged
+needed package
+\change_inserted 1607599024 1294953887
+ or converter, and it will tell you what exactly you are missing
+\change_unchanged
+.
  You can still use the module while editing your file, but you will not
  be able to export to PDF or print your document, since LyX will not be
- able to compile the LaTeX file without the missing package.
+ able to compile the LaTeX file without the missing 
+\change_deleted 1607599024 1294953839
+package
+\change_inserted 1607599024 1294953843
+prerequisites
+\change_unchanged
+.
  If you want to be able to produce output, then you need to install the
- missing package and then reconfigure LyX by selecting 
+ missing 
+\change_deleted 1607599024 1294953855
+package
+\change_inserted 1607599024 1294953855
+prerequisites
+\change_unchanged
+ and then reconfigure LyX by selecting 
 \family sans
 Tools\SpecialChar \menuseparator
 Reconfigure
