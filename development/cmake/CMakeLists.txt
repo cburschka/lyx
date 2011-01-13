@@ -58,7 +58,6 @@ LYX_OPTION(DEBUG_GLIBC_PEDANTIC "Enable libstdc++pedantic debug mode" OFF GCC)
 LYX_OPTION(STDLIB_DEBUG "Use debug stdlib" OFF GCC)
 LYX_OPTION(CONCEPT_CHECKS "Enable concept-checks" OFF GCC)
 LYX_OPTION(QUIET "Don't generate verbose makefiles" OFF ALL)
-LYX_OPTION(SHARED_LIBRARIES "Build shared libraries" OFF ALL)
 
 message(STATUS)
 
@@ -216,7 +215,8 @@ if(LYX_DEBUG)
 endif()
 
 
-
+# When shared libs are supported enable this option
+#LYX_OPTION(SHARED_LIBRARIES "Build shared libraries" OFF ALL)
 if(LYX_SHARED_LIBRARIES)
 	set(library_type SHARED)
 else()
