@@ -92,19 +92,61 @@ string const outputLaTeXColor(RGBColor const & color)
 	int red = color.r;
 	int green = color.g;
 	int blue = color.b;
+#ifdef USE_CORRECT_RGB_CONVERSION
+	int const scale = 255;
+#else
 	// the color values are given in the range of 0-255, so to get
 	// an output of "0.5" for the value 127 we need to do the following
+	// FIXME: This is wrong, since it creates a nonlinear mapping:
+	//        There is a gap between 0/256 and 2/256!
+	//        0.5 cannot be represented in 8bit hex RGB, it would be 127.5.
 	if (red != 0)
 		++red;
 	if (green != 0)
 		++green;
 	if (blue != 0)
 		++blue;
+	int const scale = 256;
+#endif
 	string output;
-	output = convert<string>(float(red) / 256) + ", "
-			 + convert<string>(float(green) / 256) + ", "
-			 + convert<string>(float(blue) / 256);
+	output = convert<string>(float(red) / scale) + ", "
+			 + convert<string>(float(green) / scale) + ", "
+			 + convert<string>(float(blue) / scale);
 	return output;
+}
+
+
+RGBColor const RGBColorFromLaTeX(string const & color)
+{
+	vector<string> rgb = getVectorFromString(color);
+	while (rgb.size() < 3)
+		rgb.push_back("0");
+	RGBColor c;
+	for (int i = 0; i < 3; ++i) {
+		rgb[i] = trim(rgb[i]);
+		if (!isStrDbl(rgb[i]))
+			return c;
+	}
+#ifdef USE_CORRECT_RGB_CONVERSION
+	int const scale = 255;
+#else
+	// FIXME: This is wrong, since it creates a nonlinear mapping:
+	//        Both 0/256 and 1/256 are mapped to 0!
+	//        The wrong code exists only to match outputLaTeXColor().
+	int const scale = 256;
+#endif
+	c.r = static_cast<unsigned int>(scale * convert<double>(rgb[0]) + 0.5);
+	c.g = static_cast<unsigned int>(scale * convert<double>(rgb[1]) + 0.5);
+	c.b = static_cast<unsigned int>(scale * convert<double>(rgb[2]) + 0.5);
+#ifndef USE_CORRECT_RGB_CONVERSION
+	if (c.r != 0)
+		c.r--;
+	if (c.g != 0)
+		c.g--;
+	if (c.b != 0)
+		c.b--;
+#endif
+	return c;
 }
 
 

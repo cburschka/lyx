@@ -200,6 +200,7 @@ string h_use_esint               = "1";
 string h_cite_engine             = "basic";
 string h_use_bibtopic            = "false";
 string h_paperorientation        = "portrait";
+string h_notefontcolor;
 string h_secnumdepth             = "3";
 string h_tocdepth                = "3";
 string h_paragraph_separation    = "indent";
@@ -718,8 +719,10 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	   << "\\use_esint " << h_use_esint << "\n"
 	   << "\\cite_engine " << h_cite_engine << "\n"
 	   << "\\use_bibtopic " << h_use_bibtopic << "\n"
-	   << "\\paperorientation " << h_paperorientation << "\n"
-	   << h_margins
+	   << "\\paperorientation " << h_paperorientation << '\n';
+	if (LYX_FORMAT >= 382 && !h_notefontcolor.empty())
+		os << "\\notefontcolor " << h_notefontcolor << '\n';
+	os << h_margins
 	   << "\\secnumdepth " << h_secnumdepth << "\n"
 	   << "\\tocdepth " << h_tocdepth << "\n"
 	   << "\\paragraph_separation " << h_paragraph_separation << "\n";
@@ -1065,6 +1068,21 @@ void parse_preamble(Parser & p, ostream & os,
 						h_margins += "\\" + name + " " + value + "\n";
 					}
 				}
+			}
+		}
+
+		else if (t.cs() == "definecolor") {
+			string const color = p.getArg('{', '}');
+			string const space = p.getArg('{', '}');
+			string const value = p.getArg('{', '}');
+			if (LYX_FORMAT >= 382 &&
+			    color == "note_fontcolor" && space == "rgb") {
+				RGBColor c(RGBColorFromLaTeX(value));
+				h_notefontcolor = X11hexname(c);
+			} else {
+				h_preamble << "\\definecolor{" << color
+				           << "}{" << space << "}{" << value
+				           << '}';
 			}
 		}
 
