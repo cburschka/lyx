@@ -2134,9 +2134,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "\\lyxline";
 		}
 
-		else if (is_known(t.cs(), known_phrases)) {
+		else if (is_known(t.cs(), known_phrases) ||
+		         (t.cs() == "protect" &&
+		          p.next_token().cat() == catEscape &&
+		          is_known(p.next_token().cs(), known_phrases))) {
+			// LyX sometimes puts a \protect in front, so we have to ignore it
 			// FIXME: This needs to be changed when bug 4752 is fixed.
-			char const * const * where = is_known(t.cs(), known_phrases);
+			char const * const * where = is_known(
+				t.cs() == "protect" ? p.get_token().cs() : t.cs(),
+				known_phrases);
 			context.check_layout(os);
 			os << known_coded_phrases[where - known_phrases];
 			skip_spaces_braces(p);
