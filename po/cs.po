@@ -4016,11 +4016,10 @@ msgid "&Open documents in tabs"
 msgstr "Otevírat dokumenty v &panelech"
 
 #: src/frontends/qt4/ui/PrefUi.ui:245
-#, fuzzy
 msgid ""
 "Whether to open documents in an already running instance of LyX.\n"
 "(Set the LyXServer pipe path and restart LyX to enable this feature)"
-msgstr "Otevírat dokumenty v ji¾ bì¾ící instanci LyX-u."
+msgstr "Otevírat dokumenty v ji¾ bì¾ící instanci LyX-u.\n(Nastavte cestu pro napojení k LyXServeru (pipe) a restartujte LyX.)"
 
 #: src/frontends/qt4/ui/PrefUi.ui:248
 msgid "S&ingle instance"
@@ -16675,12 +16674,12 @@ msgid "Backup failure"
 msgstr "Zálohování selhalo"
 
 #: src/Buffer.cpp:1063
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writable."
 msgstr ""
-"LyX nebyl schopen vytvoøit zálo¾ní kopii v %1$s.\n"
+"LyX nebyl schopen vytvoøit zálo¾ní soubor v %1$s.\n"
 "Zkontrolujte, zda-li daný adresáø existuje a lze do nìj zapisovat."
 
 #: src/Buffer.cpp:1089
@@ -16927,7 +16926,7 @@ msgid "&Load Original"
 msgstr "&Naèíst pùvodní"
 
 #: src/Buffer.cpp:3764
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
@@ -16997,7 +16996,7 @@ msgid "Load &original"
 msgstr "Naèíst &pùvodní"
 
 #: src/Buffer.cpp:3826
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
