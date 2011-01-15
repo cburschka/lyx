@@ -1385,7 +1385,7 @@ Shortcut
 status collapsed
 
 \begin_layout Plain Layout
-Alt-V D
+Alt-V F D
 \end_layout
 
 \end_inset
@@ -1396,6 +1396,7 @@ status collapsed
 
 \begin_layout Plain Layout
 View\SpecialChar \menuseparator
+View (Other Formats)\SpecialChar \menuseparator
 DVI
 \end_layout
 
@@ -2598,7 +2599,7 @@ Check out the LyX source code.
 \begin_inset CommandInset href
 LatexCommand href
 name "information on the web"
-target "http://www.lyx.org/devel/cvs.php"
+target "http://www.lyx.org/HowToUseSVN"
 
 \end_inset
 
@@ -3792,7 +3793,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \shape up
-ksmod
+kxmod
 \end_layout
 
 \end_inset
@@ -4153,7 +4154,7 @@ kmod ' acute aeiouAEIOU
 status collapsed
 
 \begin_layout Plain Layout
-ksmod
+kxmod
 \end_layout
 
 \end_inset
@@ -6091,7 +6092,7 @@ endnotes
 
 \end_inset
 
- module—specifcally provide support for one package.
+ module—specifically provide support for one package.
  In a sense, layout modules are similar to included
 \begin_inset Foot
 status collapsed
@@ -6162,7 +6163,7 @@ After creating a new module and copying it to the
 status collapsed
 
 \begin_layout Plain Layout
-layout/
+layouts/
 \end_layout
 
 \end_inset
@@ -6221,17 +6222,7 @@ status collapsed
 
 \begin_layout Standard
 There are two situations you are likely to encounter when wanting to support
- a new LaTeX document class, involving LaTeX2e class (
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-.cls
-\end_layout
-
-\end_inset
-
-) and style (
+ a new LaTeX document class, involving style (
 \begin_inset Flex Code
 status collapsed
 
@@ -6241,7 +6232,17 @@ status collapsed
 
 \end_inset
 
-) files.
+) files and LaTeX2e class (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+.cls
+\end_layout
+
+\end_inset
+
+) .
  Supporting a style file is usually fairly easy.
  Supporting a new class file is a bit harder.
  We'll discuss the former in this section and the latter in the next.
@@ -16489,7 +16490,7 @@ So here then is an example that use all these features:
 \end_layout
 
 \begin_layout Standard
-The defines a macro that prints the author, followed by a comma, if the
+This defines a macro that prints the author, followed by a comma, if the
  
 \begin_inset Flex Code
 status collapsed
@@ -18140,7 +18141,7 @@ floattype
 
 \end_inset
 
- is LyX's name for this type of float, as determined by the float delcaration
+ is LyX's name for this type of float, as determined by the float declaration
  (see 
 \begin_inset CommandInset ref
 LatexCommand ref
