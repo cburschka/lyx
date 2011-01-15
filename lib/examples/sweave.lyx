@@ -1,5 +1,5 @@
-#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 410
 \begin_document
 \begin_header
 \textclass article
@@ -7,18 +7,25 @@
 \begin_modules
 sweave
 \end_modules
+\maintain_unincluded_children false
 \language english
 \inputencoding auto
-\font_roman default
-\font_sans default
-\font_typewriter default
+\fontencoding global
+\font_roman lmodern
+\font_sans lmss
+\font_typewriter lmtt
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -26,9 +33,18 @@ sweave
 \use_geometry false
 \use_amsmath 1
 \use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation skip
@@ -39,8 +55,8 @@ sweave
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -78,21 +94,21 @@ A simple example that will run in any S engine: The integers from 1 to 10
 
 \begin_layout Chunk
 <<print=TRUE>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 1:10 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 <<results=hide>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 print(1:20)
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 @ % the above is just to ensure that 2 code chunks can follow each other
 \end_layout
 
@@ -102,21 +118,21 @@ We can also emulate a simple calculator:
 
 \begin_layout Chunk
 <<echo=TRUE,print=TRUE>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 1 + 1 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 1 + pi
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 sin(pi/2)
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 @
 \end_layout
 
@@ -126,25 +142,25 @@ Now we look at Gaussian data:
 
 \begin_layout Chunk
 <<>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 library(stats)
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 x <- rnorm(20)
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 print(x)
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 print(t1 <- t.test(x))
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 @
 \end_layout
 
@@ -213,21 +229,21 @@ echo=true,keep.source=true
 
 \begin_layout Chunk
 <<engine=R>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 # A comment
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 data(iris)
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 summary(iris)
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 @ % def
 \end_layout
 
@@ -236,23 +252,37 @@ summary(iris)
 placement tbph
 wide false
 sideways false
-status collapsed
+status open
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+\noindent
 \align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 <<fig=TRUE>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
 library(graphics)
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
 pairs(iris)
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
 @
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -277,19 +307,32 @@ Pairs plot of the iris data.
 placement tbph
 wide false
 sideways false
-status collapsed
+status open
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+\noindent
 \align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 <<fig=true>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
 boxplot(Sepal.Length~Species,data=iris)
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
 @
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -311,13 +354,13 @@ Boxplot of sepal length grouped by species.
 
 \begin_layout Chunk
 <<engine=S4>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 function.that.comes.only.with.Splus(x)
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Chunk
 @
 \end_layout
 
@@ -327,17 +370,30 @@ wide false
 sideways false
 status open
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+\noindent
 \align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 <<fig=true>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
 boxplot(Sepal.Length~Species,data=iris)
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
 @
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
