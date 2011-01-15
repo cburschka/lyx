@@ -25,6 +25,8 @@
 #include <ostream>
 #include <string>
 
+#include <QMutexLocker>
+
 using namespace std;
 
 namespace {
@@ -64,6 +66,8 @@ struct IconvProcessor::Impl
 	iconv_t cd;
 	string tocode_;
 	string fromcode_;
+
+	QMutex mutex_; // iconv() is not thread save
 };
 
 
@@ -120,6 +124,8 @@ bool IconvProcessor::init()
 int IconvProcessor::convert(char const * buf, size_t buflen,
 		char * outbuf, size_t maxoutsize)
 {
+	QMutexLocker lock(&pimpl_->mutex_);
+
 	if (buflen == 0)
 		return 0;
 
