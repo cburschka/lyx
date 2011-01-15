@@ -67,7 +67,7 @@ struct IconvProcessor::Impl
 	string tocode_;
 	string fromcode_;
 
-	QMutex mutex_; // iconv() is not thread save
+	QMutex mutex_; // iconv() is not thread save, see #7240
 };
 
 
