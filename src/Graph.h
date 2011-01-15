@@ -13,6 +13,8 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
+#include "support/mutex.h"
+
 #include <list>
 #include <queue>
 #include <vector>
@@ -100,6 +102,9 @@ private:
 	/// seems kind of fragile. Perhaps a better solution would be
 	/// to pass the ids as we create the arrows.
 	int numedges_;
+
+	/// make public functions thread save
+	Mutex mutex_;
 };
 
 

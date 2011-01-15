@@ -57,6 +57,8 @@ void Graph::clearPaths()
 vector<int> const
 	Graph::getReachableTo(int target, bool clear_visited)
 {
+	Mutex::Locker lock(&mutex_);
+
 	vector<int> result;
 	if (!bfs_init(target, clear_visited))
 		return result;
@@ -92,6 +94,8 @@ vector<int> const
 	Graph::getReachable(int from, bool only_viewable,
 		bool clear_visited)
 {
+	Mutex::Locker lock(&mutex_);
+
 	vector<int> result;
 	if (!bfs_init(from, clear_visited))
 		return result;
@@ -128,6 +132,8 @@ vector<int> const
 
 bool Graph::isReachable(int from, int to)
 {
+	Mutex::Locker lock(&mutex_);
+
 	if (from == to)
 		return true;
 
@@ -159,6 +165,8 @@ bool Graph::isReachable(int from, int to)
 
 Graph::EdgePath const Graph::getPath(int from, int to)
 {
+	Mutex::Locker lock(&mutex_);
+
 	static const EdgePath path;
 	if (from == to)
 		return path;
@@ -199,6 +207,8 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 
 void Graph::init(int size)
 {
+	Mutex::Locker lock(&mutex_);
+
 	vertices_ = vector<Vertex>(size);
 	arrows_.clear();
 	numedges_ = 0;
@@ -207,6 +217,8 @@ void Graph::init(int size)
 
 void Graph::addEdge(int from, int to)
 {
+	Mutex::Locker lock(&mutex_);
+
 	arrows_.push_back(Arrow(from, to, numedges_));
 	numedges_++;
 	Arrow * ar = &(arrows_.back());
