@@ -28,6 +28,8 @@ class GuiThesaurus : public GuiDialog, public Ui::ThesaurusUi
 public:
 	GuiThesaurus(GuiView & lv);
 
+	void checkStatus();
+
 private Q_SLOTS:
 	void change_adaptor();
 	void entryChanged();

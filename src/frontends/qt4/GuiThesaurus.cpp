@@ -86,7 +86,16 @@ GuiThesaurus::GuiThesaurus(GuiView & lv)
 	bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
 }
 
-
+void GuiThesaurus::checkStatus()
+{
+	if (!isBufferAvailable()) {
+		// deactivate the thesaurus if we have no buffer
+		enableView(false);
+		return;
+	}
+	updateView();
+}
+	
 void GuiThesaurus::change_adaptor()
 {
 	changed();
@@ -119,7 +128,7 @@ void GuiThesaurus::selectionChanged()
 	if (pos > -1)
 		item = rex.cap(2).trimmed();
 	replaceED->setText(item);
-	replacePB->setEnabled(true);
+	replacePB->setEnabled(!isBufferReadonly());
 	changed();
 }
 
@@ -182,8 +191,9 @@ void GuiThesaurus::updateLists()
 			}
 		meaningsTV->setEnabled(true);
 		lookupPB->setEnabled(true);
-		replaceED->setEnabled(true);
-		replacePB->setEnabled(true);
+		bool const readonly = isBufferReadonly();
+		replaceED->setEnabled(!readonly);
+		replacePB->setEnabled(!readonly);
 	}
 
 	if (meanings.empty()) {
