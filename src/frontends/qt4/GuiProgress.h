@@ -55,8 +55,9 @@ Q_SIGNALS:
 	void appendLyXErrMessage(QString const & text);
 
 
-	void clearMessageText();    
+	void clearMessageText();
 	void updateStatusBarMessage(QString const &);
+	void triggerFlush();
 
 	// Alert interface
 	void warning(QString const & title, QString const & message);
@@ -76,7 +77,8 @@ private Q_SLOTS:
 	void doError(QString const &, QString const &);
 	void doInformation(QString const &, QString const &);
 
-        void updateWithLyXErr();
+	void updateWithLyXErr();
+	void startFlushing();
 
 
 private:
