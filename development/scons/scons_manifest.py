@@ -308,6 +308,7 @@ src_support_header_files = Split('''
     lyxalgo.h
     lyxlib.h
     lyxtime.h
+    mutex.h
     Messages.h
     numpunct_lyx_char_type.h
     os.h
@@ -348,6 +349,7 @@ src_support_files = Split('''
     lassert.cpp
     lstrings.cpp
     lyxtime.cpp
+    mutex.cpp
     Messages.cpp
     os.cpp
     Package.cpp

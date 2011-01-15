@@ -71,6 +71,8 @@ liblyxsupport_a_SOURCES = \
 	lyxlib.h \
 	lyxtime.cpp \
 	lyxtime.h \
+	mutex.h \
+	mutex.cpp \
 	Messages.cpp \
 	Messages.h \
 	numpunct_lyx_char_type.h \

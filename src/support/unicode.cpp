@@ -14,6 +14,7 @@
 
 #include "support/unicode.h"
 #include "support/debug.h"
+#include "support/mutex.h"
 
 #include <iconv.h>
 
@@ -25,7 +26,6 @@
 #include <ostream>
 #include <string>
 
-#include <QMutexLocker>
 
 using namespace std;
 
@@ -67,7 +67,7 @@ struct IconvProcessor::Impl
 	string tocode_;
 	string fromcode_;
 
-	QMutex mutex_; // iconv() is not thread save, see #7240
+	Mutex mutex_; // iconv() is not thread save, see #7240
 };
 
 
@@ -124,7 +124,7 @@ bool IconvProcessor::init()
 int IconvProcessor::convert(char const * buf, size_t buflen,
 		char * outbuf, size_t maxoutsize)
 {
-	QMutexLocker lock(&pimpl_->mutex_);
+	Mutex::Locker lock(&pimpl_->mutex_);
 
 	if (buflen == 0)
 		return 0;
