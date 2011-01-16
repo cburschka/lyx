@@ -1468,8 +1468,10 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 
 void PrefSpellchecker::apply(LyXRC & rc) const
 {
-	rc.spellchecker = fromqstr(spellcheckerCB->itemData(
-			spellcheckerCB->currentIndex()).toString());
+	string const speller = fromqstr(spellcheckerCB->
+		itemData(spellcheckerCB->currentIndex()).toString());
+	if (!speller.empty())
+		rc.spellchecker = speller;
 	rc.spellchecker_alt_lang = fromqstr(altLanguageED->text());
 	rc.spellchecker_esc_chars = fromqstr(escapeCharactersED->text());
 	rc.spellchecker_accept_compound = compoundWordCB->isChecked();
