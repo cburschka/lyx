@@ -2306,6 +2306,74 @@ bool GuiApplication::searchMenu(FuncRequest const & func,
 }
 
 
+// Ensure that a file is read only once (prevents include loops)
+static QStringList uifiles;
+// store which ui files define Toolbars
+static QStringList toolbar_uifiles;
+
+
+GuiApplication::ReturnValues GuiApplication::readUIFile(FileName ui_path)
+{
+	enum {
+		ui_menuset = 1,
+		ui_toolbars,
+		ui_toolbarset,
+		ui_include,
+		ui_last
+	};
+
+	LexerKeyword uitags[] = {
+		{ "include", ui_include },
+		{ "menuset", ui_menuset },
+		{ "toolbars", ui_toolbars },
+		{ "toolbarset", ui_toolbarset }
+	};
+
+	Lexer lex(uitags);
+	lex.setFile(ui_path);
+	if (!lex.isOK()) {
+		lyxerr << "Unable to set LyXLeX for ui file: " << ui_path
+					 << endl;
+	}
+
+	if (lyxerr.debugging(Debug::PARSER))
+		lex.printTable(lyxerr);
+
+	bool error = false;
+	while (lex.isOK()) {
+		switch (lex.lex()) {
+		case ui_include: {
+			lex.next(true);
+			QString const file = toqstr(lex.getString());
+			if (!readUIFile(file, true))
+				return ReadError;
+			break;
+		}
+		case ui_menuset:
+			d->menus_.read(lex);
+			break;
+
+		case ui_toolbarset:
+			d->toolbars_.readToolbars(lex);
+			break;
+
+		case ui_toolbars:
+			d->toolbars_.readToolbarSettings(lex);
+			toolbar_uifiles.push_back(toqstr(ui_path.absFileName()));
+			break;
+
+		default:
+			if (!rtrim(lex.getString()).empty())
+				lex.printError("LyX::ReadUIFile: "
+								 "Unknown menu tag: `$$Token'");
+			error = true;
+			break;
+		}
+	}
+	return (error ? ReadError : ReadOK);
+}
+
+
 bool GuiApplication::readUIFile(QString const & name, bool include)
 {
 	LYXERR(Debug::INIT, "About to read " << name << "...");
@@ -2343,8 +2411,6 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 		return readUIFile(defaultUIFile, false);
 	}
 
-	// Ensure that a file is read only once (prevents include loops)
-	static QStringList uifiles;
 	QString const uifile = toqstr(ui_path.absFileName());
 	if (uifiles.contains(uifile)) {
 		if (!include) {
@@ -2362,63 +2428,7 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 
 	LYXERR(Debug::INIT, "Found " << name << " in " << ui_path);
 
-	enum {
-		ui_menuset = 1,
-		ui_toolbars,
-		ui_toolbarset,
-		ui_include,
-		ui_last
-	};
-
-	LexerKeyword uitags[] = {
-		{ "include", ui_include },
-		{ "menuset", ui_menuset },
-		{ "toolbars", ui_toolbars },
-		{ "toolbarset", ui_toolbarset }
-	};
-
-	Lexer lex(uitags);
-	lex.setFile(ui_path);
-	if (!lex.isOK()) {
-		lyxerr << "Unable to set LyXLeX for ui file: " << ui_path
-		       << endl;
-	}
-
-	if (lyxerr.debugging(Debug::PARSER))
-		lex.printTable(lyxerr);
-
-	// store which ui files define Toolbars
-	static QStringList toolbar_uifiles;
-
-	while (lex.isOK()) {
-		switch (lex.lex()) {
-		case ui_include: {
-			lex.next(true);
-			QString const file = toqstr(lex.getString());
-			if (!readUIFile(file, true))
-				return false;
-			break;
-		}
-		case ui_menuset:
-			d->menus_.read(lex);
-			break;
-
-		case ui_toolbarset:
-			d->toolbars_.readToolbars(lex);
-			break;
-
-		case ui_toolbars:
-			d->toolbars_.readToolbarSettings(lex);
-			toolbar_uifiles.push_back(uifile);
-			break;
-
-		default:
-			if (!rtrim(lex.getString()).empty())
-				lex.printError("LyX::ReadUIFile: "
-					       "Unknown menu tag: `$$Token'");
-			break;
-		}
-	}
+	readUIFile(ui_path);
 
 	if (include)
 		return true;
