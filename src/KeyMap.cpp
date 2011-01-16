@@ -263,7 +263,6 @@ bool KeyMap::read(FileName const & bind_file, KeyMap * unbind_map)
 	retval = readWithoutConv(tempfile, unbind_map);
 	tempfile.removeFile();
 	return retval == ReadOK;
-	return true;
 }
 
 
