@@ -139,7 +139,7 @@ static void initializeResources()
 {
 	static bool initialized = false;
 	if (!initialized) {
-		Q_INIT_RESOURCE(Resources); 
+		Q_INIT_RESOURCE(Resources);
 		initialized = true;
 	}
 }
@@ -378,7 +378,7 @@ QString iconName(FuncRequest const & f, bool unknown)
 	path = ":/images/" + path;
 	QDir res(path);
 	if (!res.exists()) {
-		LYXERR0("Directory " << path << " not found in resource!"); 
+		LYXERR0("Directory " << path << " not found in resource!");
 		return QString();
 	}
 	name1 += ".png";
@@ -392,7 +392,7 @@ QString iconName(FuncRequest const & f, bool unknown)
 	LYXERR(Debug::GUI, "Cannot find icon with filename "
 			   << "\"" << name1 << "\""
 			   << " or filename "
-			   << "\"" << name2 << "\"" 
+			   << "\"" << name2 << "\""
 			   << " for command \""
 			   << lyxaction.getActionName(f.action())
 			   << '(' << to_utf8(f.argument()) << ")\"");
@@ -478,15 +478,15 @@ public:
 		: QTranslator(parent)
 	{}
 
-	QString translate(const char * /*context*/, 
-	  const char * sourceText, 
-	  const char * /*comment*/ = 0) 
+	QString translate(const char * /*context*/,
+	  const char * sourceText,
+	  const char * /*comment*/ = 0)
 	{
 		string const s = sourceText;
-		if (s == N_("About %1")	|| s == N_("Preferences") 
+		if (s == N_("About %1")	|| s == N_("Preferences")
 				|| s == N_("Reconfigure") || s == N_("Quit %1"))
 			return qt_(s);
-		else 
+		else
 			return QString();
 	}
 };
@@ -496,7 +496,7 @@ class GlobalMenuBar : public QMenuBar
 public:
 	///
 	GlobalMenuBar() : QMenuBar(0) {}
-	
+
 	///
 	bool event(QEvent * e)
 	{
@@ -662,7 +662,7 @@ public:
 	{
 		switch (formatetc.cfFormat) {
 		case CF_ENHMETAFILE:
-			return emfMimeType(); 
+			return emfMimeType();
 		case CF_METAFILEPICT:
 			return wmfMimeType();
 		}
@@ -791,7 +791,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	/// Only needed with Qt/Mac.
 	installTranslator(new MenuTranslator(this));
 #endif
-	
+
 #ifdef Q_WS_X11
 	// doubleClickInterval() is 400 ms on X11 which is just too long.
 	// On Windows and Mac OS X, the operating system's value is used.
@@ -861,7 +861,7 @@ FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 
 	BufferView * bv = 0;
 	BufferView * doc_bv = 0;
-	
+
 	if (cmd.action() == LFUN_NOACTION) {
 		status.message(from_utf8(N_("Nothing to do")));
 		status.setEnabled(false);
@@ -879,7 +879,7 @@ FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 	// If we do not have a GuiView, then other functions are disabled
 	else if (!current_view_)
 		status.setEnabled(false);
-		
+
 	// Does the GuiView know something?
 	else if (current_view_->getStatus(cmd, status))	{ }
 
@@ -896,10 +896,10 @@ FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 	// If we do not have a BufferView, then other functions are disabled
 	else if (!(bv = current_view_->currentBufferView()))
 		status.setEnabled(false);
-	
+
 	// Does the current BufferView know something?
 	else if (bv->getStatus(cmd, status)) { }
-		
+
 	// Does the current Buffer know something?
 	else if (bv->buffer().getStatus(cmd, status)) { }
 
@@ -911,12 +911,12 @@ FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 	// Does the document Buffer know something?
 	else if (doc_bv->buffer().getStatus(cmd, status)) { }
 
-	else { 
+	else {
 		LYXERR(Debug::ACTION, "LFUN not handled in getStatus(): " << cmd);
 		status.message(from_utf8(N_("Command not handled")));
 		status.setEnabled(false);
 	}
-	
+
 	// the default error message if we disable the command
 	if (!status.enabled() && status.message().empty())
 		status.message(from_utf8(N_("Command disabled")));
@@ -1333,7 +1333,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_FILE_OPEN: {
 		// FIXME: create a new method shared with LFUN_HELP_OPEN.
 		string const fname = to_utf8(cmd.argument());
-		if (d->views_.empty() || (!lyxrc.open_buffers_in_tabs 
+		if (d->views_.empty() || (!lyxrc.open_buffers_in_tabs
 			  && current_view_->documentBufferView() != 0)) {
 			// We want the ui session to be saved per document and not per
 			// window number. The filename crc is a good enough identifier.
@@ -1390,7 +1390,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 
 		string const graphicsbg = lcolor.getLyXName(Color_graphicsbg);
-		bool const graphicsbg_changed = 
+		bool const graphicsbg_changed =
 				lyx_name == graphicsbg && x11_name != graphicsbg;
 		if (graphicsbg_changed) {
 			// FIXME: The graphics cache no longer has a changeDisplay method.
@@ -1854,13 +1854,13 @@ Selection & GuiApplication::selection()
 }
 
 
-FontLoader & GuiApplication::fontLoader() 
+FontLoader & GuiApplication::fontLoader()
 {
 	return d->font_loader_;
 }
 
 
-Toolbars const & GuiApplication::toolbars() const 
+Toolbars const & GuiApplication::toolbars() const
 {
 	return d->toolbars_;
 }
@@ -1868,11 +1868,11 @@ Toolbars const & GuiApplication::toolbars() const
 
 Toolbars & GuiApplication::toolbars()
 {
-	return d->toolbars_; 
+	return d->toolbars_;
 }
 
 
-Menus const & GuiApplication::menus() const 
+Menus const & GuiApplication::menus() const
 {
 	return d->menus_;
 }
@@ -1880,7 +1880,7 @@ Menus const & GuiApplication::menus() const
 
 Menus & GuiApplication::menus()
 {
-	return d->menus_; 
+	return d->menus_;
 }
 
 
@@ -1926,7 +1926,7 @@ void GuiApplication::setGuiLanguage()
 	// install translation file for Qt built-in dialogs
 	QString const language_name = QString("qt_") + default_locale.name();
 
-	// language_name can be short (e.g. qt_zh) or long (e.g. qt_zh_CN). 
+	// language_name can be short (e.g. qt_zh) or long (e.g. qt_zh_CN).
 	// Short-named translator can be loaded from a long name, but not the
 	// opposite. Therefore, long name should be used without truncation.
 	// c.f. http://doc.trolltech.com/4.1/qtranslator.html#load
@@ -2020,7 +2020,7 @@ void GuiApplication::restoreGuiSession()
 		return;
 
 	Session & session = theSession();
-	LastOpenedSection::LastOpened const & lastopened = 
+	LastOpenedSection::LastOpened const & lastopened =
 		session.lastOpened().getfiles();
 
 	FileName active_file;
@@ -2118,7 +2118,7 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 		return QApplication::notify(receiver, event);
 	}
 	catch (ExceptionMessage const & e) {
-		switch(e.type_) { 
+		switch(e.type_) {
 		case ErrorException:
 			emergencyCleanup();
 			setQuitOnLastWindowClosed(false);
