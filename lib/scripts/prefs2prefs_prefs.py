@@ -29,7 +29,8 @@ def remove_obsolete(line):
   tags = ("\\use_tempdir", "\\spell_command", "\\personal_dictionary",
         "\\plaintext_roff_command", "\\use_alt_language", 
         "\\use_escape_chars", "\\use_input_encoding",
-        "\\use_personal_dictionary", "\\use_pspell")
+        "\\use_personal_dictionary", "\\use_pspell",
+        "\\use_spell_lib")
   line = line.lstrip()
   for tag in tags:
     if line.startswith(tag):

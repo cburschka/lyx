@@ -79,7 +79,7 @@ public:
 		RC_EXAMPLEPATH,
 		RC_EXPORT_OVERWRITE,
 		RC_FONT_ENCODING,
-		RC_FORMAT,
+		RC_FILEFORMAT,
 		RC_FORWARD_SEARCH_DVI,
 		RC_FORWARD_SEARCH_PDF,
 		RC_FULL_SCREEN_LIMIT,
@@ -109,6 +109,7 @@ public:
 		RC_LANGUAGE_CUSTOM_PACKAGE,
 		RC_LANGUAGE_PACKAGE_SELECTION,
 		RC_LOADSESSION,
+		RC_LYXRCFORMAT,
 		RC_MACRO_EDIT_STYLE,
 		RC_MAC_DONTSWAP_CTRL_META,
 		RC_MAC_LIKE_WORD_MOVEMENT,
@@ -120,9 +121,7 @@ public:
 		RC_OPEN_BUFFERS_IN_TABS,
 		RC_PARAGRAPH_MARKERS,
 		RC_PATH_PREFIX,
-		RC_PERS_DICT,
 		RC_PLAINTEXT_LINELEN,
-		RC_PLAINTEXT_ROFF_COMMAND,
 		RC_PREVIEW,
 		RC_PREVIEW_HASHED_LABELS,
 		RC_PREVIEW_SCALE_FACTOR,
@@ -164,7 +163,6 @@ public:
 		RC_SINGLE_CLOSE_TAB_BUTTON,
 		RC_SINGLE_INSTANCE,
 		RC_SORT_LAYOUTS,
-		RC_SPELL_COMMAND,
 		RC_SPELLCHECK_CONTINUOUSLY,
 		RC_SPELLCHECK_NOTES,
 		RC_SPELLCHECKER,
@@ -178,16 +176,10 @@ public:
 		RC_USELASTFILEPOS,
 		RC_USER_EMAIL,
 		RC_USER_NAME,
-		RC_USETEMPDIR,
-		RC_USE_ALT_LANG,
 		RC_USE_CONVERTER_CACHE,
-		RC_USE_ESC_CHARS,
-		RC_USE_INP_ENC,
-		RC_USE_PERS_DICT,
 		RC_USE_SYSTEM_COLORS,
 		RC_USE_TOOLTIP,
 		RC_USE_PIXMAP_CACHE,
-		RC_USE_SPELL_LIB,
 		RC_VIEWDVI_PAPEROPTION,
 		RC_VIEWER,
 		RC_VIEWER_ALTERNATIVES,
@@ -200,16 +192,24 @@ public:
 	///
 	void setDefaults();
 	///
-	int read(support::FileName const & filename);
+	bool read(support::FileName const & filename);
 	///
-	int read(std::istream &);
+	bool read(std::istream &);
 private:
+	enum ReturnValues {
+		ReadOK,
+		FileError,
+		ReadError,
+		FormatMismatch
+	};
 	///
-	int read(Lexer &);
+	ReturnValues readWithoutConv(support::FileName const &);
+	///
+	ReturnValues read(Lexer &);
 public:
-	/// 
+	///
 	typedef std::set<std::string> CommandSet;
-	/// maps a format to a set of commands that can be used to 
+	/// maps a format to a set of commands that can be used to
 	/// edit or view it.
 	typedef std::map<std::string, CommandSet> Alternatives;
 	///
@@ -217,7 +217,7 @@ public:
 		   bool ignore_system_lyxrc) const;
 	/// write rc. If a specific tag is given, only output that one.
 	void write(std::ostream & os,
-		   bool ignore_system_lyxrc, 
+		   bool ignore_system_lyxrc,
 		   std::string const & tag = std::string()) const;
 	///
 	void print() const;

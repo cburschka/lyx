@@ -54,6 +54,8 @@ namespace os = support::os;
 
 namespace {
 
+static unsigned int const LYXRC_FILEFORMAT = 1;
+
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
 	{ "\\accept_compound", LyXRC::RC_ACCEPT_COMPOUND },
@@ -97,7 +99,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\example_path", LyXRC::RC_EXAMPLEPATH },
 	{ "\\export_overwrite", LyXRC::RC_EXPORT_OVERWRITE },
 	{ "\\font_encoding", LyXRC::RC_FONT_ENCODING },
-	{ "\\format", LyXRC::RC_FORMAT },
+	{ "\\format", LyXRC::RC_FILEFORMAT },
 	{ "\\forward_search_dvi", LyXRC::RC_FORWARD_SEARCH_DVI },
 	{ "\\forward_search_pdf", LyXRC::RC_FORWARD_SEARCH_PDF },
 	{ "\\fullscreen_limit", LyXRC::RC_FULL_SCREEN_LIMIT },
@@ -137,9 +139,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\open_buffers_in_tabs", LyXRC::RC_OPEN_BUFFERS_IN_TABS },
 	{ "\\paragraph_markers", LyXRC::RC_PARAGRAPH_MARKERS },
 	{ "\\path_prefix", LyXRC::RC_PATH_PREFIX },
-	{ "\\personal_dictionary", LyXRC::RC_PERS_DICT },
 	{ "\\plaintext_linelen", LyXRC::RC_PLAINTEXT_LINELEN },
-	{ "\\plaintext_roff_command", LyXRC::RC_PLAINTEXT_ROFF_COMMAND },
 	{ "\\preview", LyXRC::RC_PREVIEW },
 	{ "\\preview_hashed_labels", LyXRC::RC_PREVIEW_HASHED_LABELS },
 	{ "\\preview_scale_factor", LyXRC::RC_PREVIEW_SCALE_FACTOR },
@@ -181,7 +181,6 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\single_close_tab_button", LyXRC::RC_SINGLE_CLOSE_TAB_BUTTON },
 	{ "\\single_instance", LyXRC::RC_SINGLE_INSTANCE },
 	{ "\\sort_layouts", LyXRC::RC_SORT_LAYOUTS },
-	{ "\\spell_command", LyXRC::RC_SPELL_COMMAND },
 	{ "\\spellcheck_continuously", LyXRC::RC_SPELLCHECK_CONTINUOUSLY },
 	{ "\\spellcheck_notes", LyXRC::RC_SPELLCHECK_NOTES },
 	{ "\\spellchecker", LyXRC::RC_SPELLCHECKER },
@@ -192,18 +191,11 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\tex_expects_windows_paths", LyXRC::RC_TEX_EXPECTS_WINDOWS_PATHS },
 	{ "\\thesaurusdir_path", LyXRC::RC_THESAURUSDIRPATH },
 	{ "\\ui_file", LyXRC::RC_UIFILE },
-	{ "\\use_alt_language", LyXRC::RC_USE_ALT_LANG },
 	{ "\\use_converter_cache", LyXRC::RC_USE_CONVERTER_CACHE },
-	{ "\\use_escape_chars", LyXRC::RC_USE_ESC_CHARS },
-	{ "\\use_input_encoding", LyXRC::RC_USE_INP_ENC },
 	{ "\\use_lastfilepos", LyXRC::RC_USELASTFILEPOS },
-	{ "\\use_personal_dictionary", LyXRC::RC_USE_PERS_DICT },
 	{ "\\use_pixmap_cache", LyXRC::RC_USE_PIXMAP_CACHE },
 	// compatibility with versions older than 1.4.0 only
-	{ "\\use_pspell", LyXRC::RC_USE_SPELL_LIB },
 	{ "\\use_system_colors", LyXRC::RC_USE_SYSTEM_COLORS },
-	// compatibility with versions older than 1.4.0 only
-	{ "\\use_tempdir", LyXRC::RC_USETEMPDIR },
 	{ "\\use_tooltip", LyXRC::RC_USE_TOOLTIP },
 	{ "\\user_email", LyXRC::RC_USER_EMAIL },
 	{ "\\user_name", LyXRC::RC_USER_NAME },
@@ -211,7 +203,8 @@ LexerKeyword lyxrcTags[] = {
 	// compatibility with versions older than 1.4.0 only
 	{ "\\viewer", LyXRC::RC_VIEWER},
 	{ "\\viewer_alternatives", LyXRC::RC_VIEWER_ALTERNATIVES },
-	{ "\\visual_cursor" ,LyXRC::RC_VISUAL_CURSOR}
+	{ "\\visual_cursor", LyXRC::RC_VISUAL_CURSOR },
+	{ "format", LyXRC::RC_LYXRCFORMAT }
 };
 
 const int lyxrcCount = sizeof(lyxrcTags) / sizeof(lyxrcTags[0]);
@@ -384,42 +377,53 @@ void oldFontFormat(string & family, string & foundry)
 } // namespace anon
 
 
-int LyXRC::read(FileName const & filename)
+bool LyXRC::read(FileName const & filename)
 {
 	Lexer lexrc(lyxrcTags);
-	if (lyxerr.debugging(Debug::PARSER))
-		lexrc.printTable(lyxerr);
-
 	lexrc.setFile(filename);
-	if (!lexrc.isOK())
-		return -2;
-
 	LYXERR(Debug::LYXRC, "Reading '" << filename << "'...");
+	ReturnValues retval = read(lexrc);
+	if (retval != FormatMismatch)
+		return retval == ReadOK;
 
-	return read(lexrc);
+	LYXERR(Debug::FILES, "Converting LyXRC file to " << LYXRC_FILEFORMAT);
+	FileName const tempfile = FileName::tempName("convert_lyxrc");
+	bool const success = prefs2prefs(filename, tempfile, false);
+	if (!success) {
+		LYXERR0 ("Unable to convert " << filename.absFileName() <<
+			" to format " << LYXRC_FILEFORMAT);
+		return false;
+	}
+	Lexer lexrc2(lyxrcTags);
+	lexrc2.setFile(tempfile);
+	LYXERR(Debug::LYXRC, "Reading '" << tempfile << "'...");
+	retval = read(lexrc2);
+	tempfile.removeFile();
+	return retval == ReadOK;
 }
 
 
-int LyXRC::read(istream & is)
+// don't need to worry about conversion, because this is always
+// from an internal source
+bool LyXRC::read(istream & is)
 {
 	Lexer lexrc(lyxrcTags);
+	lexrc.setStream(is);
+	LYXERR(Debug::LYXRC, "Reading istream...");
+	return read(lexrc) == ReadOK;
+}
+
+
+LyXRC::ReturnValues LyXRC::read(Lexer & lexrc)
+{
 	if (lyxerr.debugging(Debug::PARSER))
 		lexrc.printTable(lyxerr);
 
-	lexrc.setStream(is);
 	if (!lexrc.isOK())
-		return -2;
+		return ReadError;
 
-	LYXERR(Debug::LYXRC, "Reading istream...");
-
-	return read(lexrc);
-}
-
-
-int LyXRC::read(Lexer & lexrc)
-{
-	if (!lexrc.isOK())
-		return -2;
+	// format prior to 2.0 and introduction of format tag
+	unsigned int format = 0;
 
 	while (lexrc.isOK()) {
 		// By using two switches we take advantage of the compiler
@@ -440,6 +444,10 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 		}
 		switch (static_cast<LyXRCTags>(le)) {
+		case RC_LYXRCFORMAT:
+			if (lexrc.next())
+				format = lexrc.getInteger();
+			break;
 		case RC_INPUT: // Include file
 			if (lexrc.next()) {
 				FileName const tmp =
@@ -1051,7 +1059,7 @@ int LyXRC::read(Lexer & lexrc)
 			formats.setViewer(format, command);
 			break;
 		}
-		case RC_FORMAT: {
+		case RC_FILEFORMAT: {
 			string format, extension, prettyname, shortcut;
 			lexrc >> format >> extension >> prettyname >> shortcut;
 			string viewer, editor;
@@ -1248,32 +1256,21 @@ int LyXRC::read(Lexer & lexrc)
 			}
 			break;
 
-		// Obsoteted in 1.4.0
-		case RC_USETEMPDIR:
-		// Obsoleted in 2.0
-		case RC_SPELL_COMMAND:
-		case RC_PERS_DICT:
-		case RC_PLAINTEXT_ROFF_COMMAND: 
-		case RC_USE_ALT_LANG:
-		case RC_USE_ESC_CHARS:
-		case RC_USE_INP_ENC:
-		case RC_USE_PERS_DICT:
-		case RC_USE_SPELL_LIB:
-			LYXERR(Debug::LYXRC, "Skipping obsolete tag `" 
-			       << lexrc.getString() << "'.");
-			lexrc.next(true);
-			break;
-
 		case RC_LAST:
 			break; // this is just a dummy
 		}
+
+		// This is triggered the first time through the loop unless
+		// we hit a format tag.
+		if (format != LYXRC_FILEFORMAT)
+			return FormatMismatch;
 	}
 
 	/// Update converters data-structures
 	theConverters().update(formats);
 	theConverters().buildGraph();
 
-	return 0;
+	return ReadOK;
 }
 
 
@@ -1336,8 +1333,8 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 	if (tag == RC_LAST)
 		os << "# LyX " << lyx_version
 		   << " generated this file. If you want to make your own\n"
-		   << "# modifications you should do them from inside LyX and save.\n"
-		   << "\n";
+		   << "# modifications you should do them from inside LyX and save.\n\n"
+		   << "Format " << LYXRC_FILEFORMAT << "\n\n";
 
 	// Why the switch you might ask. It is a trick to ensure that all
 	// the elements in the LyXRCTags enum are handled. As you can see
@@ -1348,6 +1345,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 	case RC_LAST:
 	case RC_INPUT:
 		// input/include files are not done here
+	case RC_LYXRCFORMAT:
 	case RC_BINDFILE:
 		if (ignore_system_lyxrc ||
 		    bind_file != system_lyxrc.bind_file) {
@@ -2349,13 +2347,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-	case RC_USETEMPDIR:
-		if (tag != RC_LAST)
-			break;
-		// Ignore it
-	case RC_PLAINTEXT_ROFF_COMMAND: // Obsoleted in 2.0
-		if (tag != RC_LAST)
-			break;
 	case RC_PLAINTEXT_LINELEN:
 		if (ignore_system_lyxrc ||
 		    plaintext_linelen != system_lyxrc.plaintext_linelen) {
@@ -2394,21 +2385,12 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		   << "# SPELLCHECKER SECTION ##############################\n"
 		   << "#\n\n";
 
-	case RC_SPELL_COMMAND:
-	case RC_USE_SPELL_LIB:
-		// Obsoleted in 2.0
-		if (tag != RC_LAST)
-			break;
 	case RC_ACCEPT_COMPOUND:
 		if (ignore_system_lyxrc ||
 		    spellchecker_accept_compound != system_lyxrc.spellchecker_accept_compound) {
 			os << "\\accept_compound " << convert<string>(spellchecker_accept_compound)
 			   << '\n';
 		}
-		if (tag != RC_LAST)
-			break;
-	case RC_USE_ALT_LANG:
-		// Obsoleted in 2.0
 		if (tag != RC_LAST)
 			break;
 	case RC_ALT_LANG:
@@ -2419,18 +2401,11 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-	case RC_USE_ESC_CHARS:
-		if (tag != RC_LAST)
-			break;
 	case RC_ESC_CHARS:
 		if (ignore_system_lyxrc ||
 		    spellchecker_esc_chars != system_lyxrc.spellchecker_esc_chars) {
 			os << "\\escape_chars \"" << spellchecker_esc_chars << "\"\n";
 		}
-		if (tag != RC_LAST)
-			break;
-	case RC_USE_PERS_DICT:
-		// obsoleted in 2.0
 		if (tag != RC_LAST)
 			break;
 	case RC_USE_SYSTEM_COLORS:
@@ -2458,14 +2433,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			   << convert<string>(use_pixmap_cache)
 			   << '\n';
 		}
-		if (tag != RC_LAST)
-			break;
-	case RC_PERS_DICT:
-		// obsoleted in 2.0
-		if (tag != RC_LAST)
-			break;
-	case RC_USE_INP_ENC:
-		// obsoleted in 2.0
 		if (tag != RC_LAST)
 			break;
 
@@ -2689,7 +2656,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		   << "# FORMATS SECTION ##########################\n"
 		   << "#\n\n";
 
-	case RC_FORMAT:
+	case RC_FILEFORMAT:
 		// New/modified formats
 		for (Formats::const_iterator cit = formats.begin();
 		     cit != formats.end(); ++cit) {
@@ -2866,7 +2833,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_ACCEPT_COMPOUND:
 	case LyXRC::RC_ALT_LANG:
 	case LyXRC::RC_PLAINTEXT_LINELEN:
-	case LyXRC::RC_PLAINTEXT_ROFF_COMMAND:
 	case LyXRC::RC_AUTOCORRECTION_MATH:
 	case LyXRC::RC_AUTOREGIONDELETE:
 	case LyXRC::RC_AUTORESET_OPTIONS:
@@ -2912,7 +2878,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_ESC_CHARS:
 	case LyXRC::RC_EXAMPLEPATH:
 	case LyXRC::RC_FONT_ENCODING:
-	case LyXRC::RC_FORMAT:
+	case LyXRC::RC_FILEFORMAT:
 	case LyXRC::RC_GROUP_LAYOUTS:
 	case LyXRC::RC_HUNSPELLDIR_PATH:
 	case LyXRC::RC_INDEX_ALTERNATIVES:
@@ -2932,6 +2898,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_LANGUAGE_GLOBAL_OPTIONS:
 	case LyXRC::RC_LANGUAGE_CUSTOM_PACKAGE:
 	case LyXRC::RC_LANGUAGE_PACKAGE_SELECTION:
+	case LyXRC::RC_LYXRCFORMAT:
 	case LyXRC::RC_MAC_DONTSWAP_CTRL_META:
 	case LyXRC::RC_MAC_LIKE_WORD_MOVEMENT:
 	case LyXRC::RC_MACRO_EDIT_STYLE:
@@ -2944,7 +2911,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 		if (lyxrc_orig.path_prefix != lyxrc_new.path_prefix) {
 			prependEnvPath("PATH", lyxrc.path_prefix);
 		}
-	case LyXRC::RC_PERS_DICT:
 	case LyXRC::RC_PREVIEW:
 	case LyXRC::RC_PREVIEW_HASHED_LABELS:
 	case LyXRC::RC_PREVIEW_SCALE_FACTOR:
@@ -2983,7 +2949,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_SET_COLOR:
 	case LyXRC::RC_SHOW_BANNER:
 	case LyXRC::RC_OPEN_BUFFERS_IN_TABS:
-	case LyXRC::RC_SPELL_COMMAND:
 	case LyXRC::RC_SPELLCHECKER:
 	case LyXRC::RC_SPELLCHECK_CONTINUOUSLY:
 	case LyXRC::RC_SPELLCHECK_NOTES:
@@ -2999,16 +2964,10 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_UIFILE:
 	case LyXRC::RC_USER_EMAIL:
 	case LyXRC::RC_USER_NAME:
-	case LyXRC::RC_USETEMPDIR:
-	case LyXRC::RC_USE_ALT_LANG:
 	case LyXRC::RC_USE_CONVERTER_CACHE:
-	case LyXRC::RC_USE_ESC_CHARS:
-	case LyXRC::RC_USE_INP_ENC:
-	case LyXRC::RC_USE_PERS_DICT:
 	case LyXRC::RC_USE_SYSTEM_COLORS:
 	case LyXRC::RC_USE_TOOLTIP:
 	case LyXRC::RC_USE_PIXMAP_CACHE:
-	case LyXRC::RC_USE_SPELL_LIB:
 	case LyXRC::RC_VIEWDVI_PAPEROPTION:
 	case LyXRC::RC_SINGLE_CLOSE_TAB_BUTTON:
 	case LyXRC::RC_SINGLE_INSTANCE:
@@ -3044,12 +3003,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_ALT_LANG:
-	case RC_USE_ALT_LANG:
 		str = _("Specify an alternate language. The default is to use the language of the document.");
-		break;
-
-	case RC_PLAINTEXT_ROFF_COMMAND:
-		str = _("Use to define an external program to render tables in plain text output. E.g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is specified, an internal routine is used.");
 		break;
 
 	case RC_PLAINTEXT_LINELEN:
@@ -3155,7 +3109,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_ESC_CHARS:
-	case RC_USE_ESC_CHARS:
 		str = _("Specify additional chars that can be part of a word.");
 		break;
 
@@ -3167,7 +3120,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		str = _("The font encoding used for the LaTeX2e fontenc package. T1 is highly recommended for non-English languages.");
 		break;
 
-	case RC_FORMAT:
+	case RC_FILEFORMAT:
 		break;
 
 	case RC_INDEX_COMMAND:
@@ -3458,9 +3411,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_USER_NAME:
 		break;
 
-	case RC_USETEMPDIR:
-		break;
-
 	case RC_USE_USE_SYSTEM_COLORS:
 		str = _("Enable use the system colors for some things like main window background and selection.");
 		break;
@@ -3471,9 +3421,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_USE_PIXMAP_CACHE:
 		str = _("Enable the pixmap cache that might improve performance on Mac and Windows.");
-		break;
-
-	case RC_USE_SPELL_LIB:
 		break;
 
 	case RC_VIEWDVI_PAPEROPTION:

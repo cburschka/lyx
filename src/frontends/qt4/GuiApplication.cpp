@@ -1419,7 +1419,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		LyXRC const lyxrc_orig = lyxrc;
 
 		istringstream ss(to_utf8(cmd.argument()));
-		bool const success = lyxrc.read(ss) == 0;
+		bool const success = lyxrc.read(ss);
 
 		if (!success) {
 			lyxerr << "Warning in LFUN_LYXRC_APPLY!\n"
