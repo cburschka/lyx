@@ -137,8 +137,8 @@ def main(argv):
 		source = sys.stdin
 		output = sys.stdout
 	elif len(args) == 2:
-		source = open(args[1], 'rb')
-		output = open(args[2], 'wb')
+		source = open(args[0], 'rb')
+		output = open(args[1], 'wb')
 		opened_files = True
 	else:
 		usage()

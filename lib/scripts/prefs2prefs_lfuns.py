@@ -28,8 +28,8 @@ current_format = 1
 #
 # These accept a line as argument and should return a list:
 #  (bool, newline)
-# where the bool indicates whether we changed anything. In 
-# that case, one normally returns: (False, []).
+# where the bool indicates whether we changed anything. If not,
+# one normally returns: (False, []).
 
 no_match = (False, [])
 

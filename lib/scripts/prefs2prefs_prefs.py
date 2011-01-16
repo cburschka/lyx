@@ -23,8 +23,22 @@ current_format = 1
 #
 # Conversion chain
 
+no_match = (False, [])
+
+def remove_obsolete(line):
+  tags = ("\\use_tempdir", "\\spell_command", "\\personal_dictionary",
+        "\\plaintext_roff_command", "\\use_alt_language", 
+        "\\use_escape_chars", "\\use_input_encoding",
+        "\\use_personal_dictionary", "\\use_pspell")
+  line = line.lstrip()
+  for tag in tags:
+    if line.startswith(tag):
+      return (True, "")
+  return no_match
+
+
 conversions = [
 	[ # this will be a long list of conversions for format 0
-		
+    remove_obsolete
 	] # end conversions for format 0
 ]
