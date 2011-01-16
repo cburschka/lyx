@@ -168,8 +168,16 @@ private:
 		FuncRequest func;
 	};
 
+	enum ReturnValues {
+		ReadOK,
+		ReadError,
+		FileError,
+		FormatMismatch
+	};
 	///
 	bool read(support::FileName const & bind_file, KeyMap * unbind_map = 0);
+	///
+	ReturnValues readWithoutConv(support::FileName const & bind_file, KeyMap * unbind_map = 0);
 
 	/**
 	 * Given an action, find all keybindings
