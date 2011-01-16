@@ -977,5 +977,32 @@ int compare_timestamps(FileName const & file1, FileName const & file2)
 }
 
 
+bool prefs2prefs(FileName const & filename, FileName const & tempfile, bool lfuns)
+{
+	FileName const script = libFileSearch("scripts", "prefs2prefs.py");
+	if (script.empty()) {
+		LYXERR0("Could not find bind file conversion "
+				"script prefs2prefs.py.");
+		return false;
+	}
+
+	ostringstream command;
+	command << os::python() << ' ' << quoteName(script.toFilesystemEncoding())
+	  << ' ' << (lfuns ? "-l" : "-p") << ' '
+		<< quoteName(filename.toFilesystemEncoding())
+		<< ' ' << quoteName(tempfile.toFilesystemEncoding());
+	string const command_str = command.str();
+
+	LYXERR(Debug::FILES, "Running `" << command_str << '\'');
+
+	cmd_ret const ret = runCommand(command_str);
+	if (ret.first != 0) {
+		LYXERR0("Could not run bind file conversion script prefs2prefs.py.");
+		return false;
+	}
+	return true;
+}
+
+
 } //namespace support
 } // namespace lyx

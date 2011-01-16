@@ -268,6 +268,10 @@ std::string const readBB_from_PSFile(FileName const & file);
  */
 int compare_timestamps(FileName const & file1, FileName const & file2);
 
+/// \param lfuns: true if we're converting lfuns, false if prefs
+bool prefs2prefs(FileName const & filename, FileName const & tempfile,
+                 bool lfuns);
+
 typedef std::pair<int, std::string> cmd_ret;
 
 cmd_ret const runCommand(std::string const & cmd);
