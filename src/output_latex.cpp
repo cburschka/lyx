@@ -444,9 +444,23 @@ void TeXOnePar(Buffer const & buf,
 
 	if (style.pass_thru) {
 		Font const outerfont = text.outerFont(pit);
+		// can we have pass_thru for lists? if so, we need to do the whole
+		// switch and kaboodle here.
+		os << '\\' << from_ascii(style.latexname());
+
+		// Separate handling of optional argument inset.
+		if (style.optargs != 0 || style.reqargs != 0) {
+			int ret = latexArgInsets(par, os, runparams, style.reqargs, style.optargs);
+			while (ret > 0) {
+				texrow.newline();
+				--ret;
+			}
+		}
+		else
+			os << from_ascii(style.latexparam());
 		par.latex(bparams, outerfont, os, texrow, runparams, start_pos,
 			end_pos);
-		os << '\n';
+		os << from_ascii("}\n");
 		texrow.newline();
 		if (!style.parbreak_is_newline) {
 			os << '\n';
