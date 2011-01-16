@@ -167,12 +167,11 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 {
 	Mutex::Locker lock(&mutex_);
 
-	static const EdgePath path;
 	if (from == to)
-		return path;
+		return EdgePath();
 
 	if (to < 0 || !bfs_init(from))
-		return path;
+		return EdgePath();
 
 	clearPaths();
 	while (!Q_.empty()) {
@@ -201,7 +200,7 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 		}
 	}
 	// failure
-	return path;
+	return EdgePath();
 }
 
 
