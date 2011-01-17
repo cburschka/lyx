@@ -997,7 +997,7 @@ bool prefs2prefs(FileName const & filename, FileName const & tempfile, bool lfun
 
 	cmd_ret const ret = runCommand(command_str);
 	if (ret.first != 0) {
-		LYXERR0("Could not run bind file conversion script prefs2prefs.py.");
+		LYXERR0("Could not run file conversion script prefs2prefs.py.");
 		return false;
 	}
 	return true;
