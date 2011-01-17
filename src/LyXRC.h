@@ -195,13 +195,14 @@ public:
 	bool read(support::FileName const & filename);
 	///
 	bool read(std::istream &);
-private:
+	///
 	enum ReturnValues {
 		ReadOK,
 		FileError,
 		ReadError,
 		FormatMismatch
 	};
+private:
 	///
 	ReturnValues readWithoutConv(support::FileName const &);
 	///
