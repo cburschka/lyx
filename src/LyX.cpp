@@ -967,7 +967,7 @@ bool LyX::readRcFile(string const & name)
 	FileName const lyxrc_path = libFileSearch(string(), name);
 	if (!lyxrc_path.empty()) {
 		LYXERR(Debug::INIT, "Found in " << lyxrc_path);
-		if (lyxrc.read(lyxrc_path) != LyXRC::ReadOK) {
+		if (!lyxrc.read(lyxrc_path)) {
 			showFileError(name);
 			return false;
 		}
