@@ -191,21 +191,20 @@ public:
 	LyXRC();
 	///
 	void setDefaults();
-	///
-	bool read(support::FileName const & filename);
+	/// \param check_format: whether to try to convert the file format,
+	/// if it is not current. this should only be true, really, for the
+	/// user's own preferences file.
+	bool read(support::FileName const & filename, bool check_format);
 	///
 	bool read(std::istream &);
 private:
 	enum ReturnValues {
 		ReadOK,
-		FileError,
 		ReadError,
 		FormatMismatch
 	};
 	///
-	ReturnValues readWithoutConv(support::FileName const &);
-	///
-	ReturnValues read(Lexer &);
+	ReturnValues read(Lexer &, bool check_format);
 public:
 	///
 	typedef std::set<std::string> CommandSet;

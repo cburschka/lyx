@@ -377,13 +377,13 @@ void oldFontFormat(string & family, string & foundry)
 } // namespace anon
 
 
-bool LyXRC::read(FileName const & filename)
+bool LyXRC::read(FileName const & filename, bool check_format)
 {
 	Lexer lexrc(lyxrcTags);
 	lexrc.setFile(filename);
 	LYXERR(Debug::LYXRC, "Reading '" << filename << "'...");
-	ReturnValues retval = read(lexrc);
-	if (retval != FormatMismatch)
+	ReturnValues retval = read(lexrc, check_format);
+	if (!check_format || retval != FormatMismatch)
 		return retval == ReadOK;
 
 	LYXERR(Debug::FILES, "Converting LyXRC file to " << LYXRC_FILEFORMAT);
@@ -397,7 +397,7 @@ bool LyXRC::read(FileName const & filename)
 	Lexer lexrc2(lyxrcTags);
 	lexrc2.setFile(tempfile);
 	LYXERR(Debug::LYXRC, "Reading '" << tempfile << "'...");
-	retval = read(lexrc2);
+	retval = read(lexrc2, check_format);
 	tempfile.removeFile();
 	return retval == ReadOK;
 }
@@ -410,11 +410,11 @@ bool LyXRC::read(istream & is)
 	Lexer lexrc(lyxrcTags);
 	lexrc.setStream(is);
 	LYXERR(Debug::LYXRC, "Reading istream...");
-	return read(lexrc) == ReadOK;
+	return read(lexrc, false) == ReadOK;
 }
 
 
-LyXRC::ReturnValues LyXRC::read(Lexer & lexrc)
+LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 {
 	if (lyxerr.debugging(Debug::PARSER))
 		lexrc.printTable(lyxerr);
@@ -453,9 +453,9 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc)
 				FileName const tmp =
 					libFileSearch(string(),
 						      lexrc.getString());
-				if (read(tmp)) {
-					lexrc.printError("Error reading "
-							 "included file: " + tmp.absFileName());
+				if (read(tmp, check_format)) {
+					lexrc.printError(
+					    "Error reading included file: " + tmp.absFileName());
 				}
 			}
 			break;
@@ -1262,7 +1262,7 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc)
 
 		// This is triggered the first time through the loop unless
 		// we hit a format tag.
-		if (format != LYXRC_FILEFORMAT)
+		if (check_format && format != LYXRC_FILEFORMAT)
 			return FormatMismatch;
 	}
 

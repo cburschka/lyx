@@ -108,7 +108,9 @@ private:
 	 */
 	bool queryUserLyXDir(bool explicit_userdir);
 	/// read lyxrc/preferences
-	bool readRcFile(std::string const & name);
+	/// \param check_format: whether to try to convert the format of
+	/// the file, if there is a mismatch.
+	bool readRcFile(std::string const & name, bool check_format = false);
 	/// read the given languages file
 	bool readLanguagesFile(std::string const & name);
 	/// read the encodings.

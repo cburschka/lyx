@@ -806,7 +806,7 @@ bool LyX::init()
 	system_lcolor = lcolor;
 
 	// This one is edited through the preferences dialog.
-	if (!readRcFile("preferences"))
+	if (!readRcFile("preferences", true))
 		return false;
 
 	if (!readEncodingsFile("encodings", "unicodesymbols"))
@@ -960,21 +960,22 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 }
 
 
-bool LyX::readRcFile(string const & name)
+bool LyX::readRcFile(string const & name, bool check_format)
 {
 	LYXERR(Debug::INIT, "About to read " << name << "... ");
 
 	FileName const lyxrc_path = libFileSearch(string(), name);
-	if (!lyxrc_path.empty()) {
-		LYXERR(Debug::INIT, "Found in " << lyxrc_path);
-		if (!lyxrc.read(lyxrc_path)) {
-			showFileError(name);
-			return false;
-		}
-	} else {
+	if (lyxrc_path.empty()) {
 		LYXERR(Debug::INIT, "Not found." << lyxrc_path);
+		// FIXME
+		// This was the previous logic, but can it be right??
+		return true;
 	}
-	return true;
+	LYXERR(Debug::INIT, "Found in " << lyxrc_path);
+	bool const success = lyxrc.read(lyxrc_path, check_format);
+	if (!success)
+		showFileError(name);
+	return success;
 }
 
 // Read the languages file `name'

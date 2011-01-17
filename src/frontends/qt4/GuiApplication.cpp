@@ -1220,7 +1220,7 @@ void GuiApplication::reconfigure(string const & option)
 	// emit message signal.
 	if (current_view_)
 		current_view_->message(_("Reloading configuration..."));
-	lyxrc.read(libFileSearch(QString(), "lyxrc.defaults"));
+	lyxrc.read(libFileSearch(QString(), "lyxrc.defaults"), false);
 	// Re-read packages.lst
 	LaTeXFeatures::getAvailable();
 
