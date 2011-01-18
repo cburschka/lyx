@@ -210,9 +210,9 @@ AC_ARG_ENABLE(concept-checks,
         enable_concept_checks=no;
     fi;])
 
-AC_ARG_ENABLE(profiling,
-  AC_HELP_STRING([--enable-profiling],[enable profiling]),,
-  enable_profiling=no;)
+AC_ARG_ENABLE(gprof,
+  AC_HELP_STRING([--enable-gprof],[enable profiling using gprof]),,
+  enable_gprof=no;)
 
 ### set up optimization
 AC_ARG_ENABLE(optimization,
@@ -264,7 +264,7 @@ if test x$GXX = xyes; then
         CFLAGS="-g $CFLAGS"
 	CXXFLAGS="-g $CXXFLAGS"
     fi
-    if test x$enable_profiling = xyes ; then
+    if test x$enable_gprof = xyes ; then
         CFLAGS="-pg $CFLAGS"
         CXXFLAGS="-pg $CXXFLAGS"
         LDFLAGS="-pg $LDFLAGS"

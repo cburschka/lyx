@@ -211,7 +211,7 @@ this file.
 
 The following options allow to tweak more precisely the generated code:
 
-  o --enable-profiling instruments the code for use with the gprof
+  o --enable-gprof instruments the code for use with the gprof
     profiler. The result are only meaningful in conjunction with
     --enable-build-type=release.
 
