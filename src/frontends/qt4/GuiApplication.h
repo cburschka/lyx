@@ -183,6 +183,8 @@ private Q_SLOTS:
 
 private:
 	///
+	void validateCurrentView();
+	///
 	bool closeAllViews();
 	/// read the given ui (menu/toolbar) file
 	bool readUIFile(QString const & name, bool include = false);

@@ -1237,6 +1237,23 @@ void GuiApplication::reconfigure(string const & option)
 			     "updated document class specifications."));
 }
 
+void GuiApplication::validateCurrentView()
+{
+	if (!d->views_.empty() && !current_view_) {
+		// currently at least one view exists but no view has the focus.
+		// choose a view to open the document in it.
+		// a view without any open document is preferred.
+		GuiView * candidate = 0;
+		QHash<int, GuiView *>::const_iterator it = d->views_.begin();
+		QHash<int, GuiView *>::const_iterator end = d->views_.end();
+		for (; it != end; ++it) {
+			candidate = *it;
+			if (!candidate->documentBufferView())
+				break;
+		}
+		setCurrentView(candidate);
+	}
+}
 
 void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 {
@@ -1307,6 +1324,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_BUFFER_NEW:
+		validateCurrentView();
 		if (d->views_.empty()
 		   || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
 			createView(QString(), false); // keep hidden
@@ -1319,6 +1337,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 
 	case LFUN_BUFFER_NEW_TEMPLATE:
+		validateCurrentView();
 		if (d->views_.empty()
 		   || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
 			createView();
@@ -1331,6 +1350,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 
 	case LFUN_FILE_OPEN: {
+		validateCurrentView();
 		// FIXME: create a new method shared with LFUN_HELP_OPEN.
 		string const fname = to_utf8(cmd.argument());
 		if (d->views_.empty() || (!lyxrc.open_buffers_in_tabs
