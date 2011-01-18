@@ -47,7 +47,7 @@ def next_inset_toggle(line):
 
 
 def optional_insert(line):
-	return simple_renaming(line, "argument-insert", "optional-insert")
+	return simple_renaming(line, "optional-insert", "argument-insert")
 
 
 re_nm = re.compile(r'^(.*)notes-mutate\s+(\w+)\s+(\w+)(.*)$')
