@@ -1241,7 +1241,7 @@ void GuiApplication::validateCurrentView()
 {
 	if (!d->views_.empty() && !current_view_) {
 		// currently at least one view exists but no view has the focus.
-		// choose a view to open the document in it.
+		// choose the last view to make it current.
 		// a view without any open document is preferred.
 		GuiView * candidate = 0;
 		QHash<int, GuiView *>::const_iterator it = d->views_.begin();
