@@ -104,12 +104,12 @@ def update_format(lines):
 		return
 
 	line = lines[format_line]
-	m = re_format.search(l)
+	m = re_format.search(line)
 	if not m:
 		sys.stderr.write("Couldn't match format line!\n" + line + "\n")
 		sys.exit(1)
 	format = int(m.group(1))
-	lines[i] = "Format " + str(format + 1)
+	lines[format_line] = "Format " + str(format + 1)
 
 
 #
