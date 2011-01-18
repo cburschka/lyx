@@ -2319,10 +2319,12 @@ GuiApplication::ReturnValues GuiApplication::readUIFile(FileName ui_path)
 		ui_toolbars,
 		ui_toolbarset,
 		ui_include,
+		ui_format,
 		ui_last
 	};
 
 	LexerKeyword uitags[] = {
+		{ "format", ui_format },
 		{ "include", ui_include },
 		{ "menuset", ui_menuset },
 		{ "toolbars", ui_toolbars },
@@ -2340,15 +2342,40 @@ GuiApplication::ReturnValues GuiApplication::readUIFile(FileName ui_path)
 		lex.printTable(lyxerr);
 
 	bool error = false;
+	// format before introduction of format tag
+	unsigned int format = 0;
 	while (lex.isOK()) {
-		switch (lex.lex()) {
+		int const status = lex.lex();
+
+		// we have to do this check here, outside the switch,
+		// because otherwise we would start reading include files,
+		// e.g., if the first tag we hit was an include tag.
+		if (status == ui_format)
+			if (lex.next()) {
+				format = lex.getInteger();
+				continue;
+			}
+
+		// this will trigger unless the first tag we hit is a format
+		// tag, with the right format.
+		if (format != LFUN_FORMAT)
+			return FormatMismatch;
+
+		switch (status) {
+		case Lexer::LEX_FEOF:
+			continue;
+
 		case ui_include: {
 			lex.next(true);
 			QString const file = toqstr(lex.getString());
-			if (!readUIFile(file, true))
+			bool const success = readUIFile(file, true);
+			if (!success) {
+				LYXERR0("Failed to read inlcuded file: " << fromqstr(file));
 				return ReadError;
+			}
 			break;
 		}
+
 		case ui_menuset:
 			d->menus_.read(lex);
 			break;
@@ -2365,10 +2392,13 @@ GuiApplication::ReturnValues GuiApplication::readUIFile(FileName ui_path)
 		default:
 			if (!rtrim(lex.getString()).empty())
 				lex.printError("LyX::ReadUIFile: "
-								 "Unknown menu tag: `$$Token'");
+				               "Unknown menu tag: `$$Token'");
+			else
+				LYXERR0("Error with status: " << status);
 			error = true;
 			break;
 		}
+
 	}
 	return (error ? ReadError : ReadOK);
 }
@@ -2428,7 +2458,25 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 
 	LYXERR(Debug::INIT, "Found " << name << " in " << ui_path);
 
-	readUIFile(ui_path);
+	ReturnValues retval = readUIFile(ui_path);
+
+	if (retval == FormatMismatch) {
+		LYXERR(Debug::FILES, "Converting ui file to format " << LFUN_FORMAT);
+		FileName const tempfile = FileName::tempName("convert_ui");
+		bool const success = prefs2prefs(ui_path, tempfile, true);
+		if (!success) {
+			LYXERR0("Unable to convert " << ui_path.absFileName() <<
+				" to format " << LFUN_FORMAT << ".");
+		} else {
+			retval = readUIFile(tempfile);
+			tempfile.removeFile();
+		}
+	}
+
+	if (retval != ReadOK) {
+		LYXERR0("Unable to read UI file: " << ui_path.absFileName());
+		return false;
+	}
 
 	if (include)
 		return true;
