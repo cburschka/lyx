@@ -62,6 +62,8 @@
 #
 # This is the default toolbar:
 
+Format 1
+
 ToolbarSet
 
 	Toolbar "standard" "Standard"

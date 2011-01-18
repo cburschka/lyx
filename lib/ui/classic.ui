@@ -26,6 +26,8 @@
 # The interface is designed (partially) following the KDE Human Interface
 # Guidelines (http://usability.kde.org/hig/)
 
+Format 1
+
 Menuset
 
 	Menubar
@@ -257,7 +259,7 @@ Menuset
 		Item "Single Quote|Q" "quote-insert single"
 		Item "Ordinary Quote|O" "self-insert \""
 		Item "Menu Separator|M" "specialchar-insert menu-separator"
-		Item "Horizontal Line" "line-insert"
+		Item "Horizontal Line" "inset-insert line rule height 0.25ex width 100col% \end_inset"
 		Item "Page Break" "pagebreak-insert"
 	End
 
@@ -311,7 +313,7 @@ Menuset
 	End
 
 	Menu "insert_toc"
-		Item "Table of Contents|C" "toc-insert"
+		Item "Table of Contents|C" "inset-insert toc"
 		FloatListInsert
 		Item "Index List|I" "index-print"
 		Item "Nomenclature|N" "nomencl-print"
