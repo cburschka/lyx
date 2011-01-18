@@ -21,6 +21,9 @@
 
 namespace lyx {
 
+// current LFUN format
+static unsigned int const LFUN_FORMAT = 1;
+
 class FuncRequest;
 class LyXErr;
 
