@@ -21,7 +21,16 @@
 #
 # Conversion chain
 
+def simple_renaming(line, old, new):
+	if line.find(old) == -1:
+		return no_match
+	line = line.replace(old, new)
+	return (True, line)
+
 no_match = (False, [])
+
+########################
+### Format 1 conversions
 
 def remove_obsolete(line):
 	tags = ("\\use_tempdir", "\\spell_command", "\\personal_dictionary",
@@ -47,9 +56,17 @@ def language_use_babel(line):
 	newline = "\\language_package_selection " + newval
 	return (True, newline)
 
+def language_package(line):
+	return simple_renaming(line, "\\language_package", "\\language_custom_package")
+
+
+########################
+
+
 conversions = [
 	[ # this will be a long list of conversions for format 0
 		remove_obsolete,
-		language_use_babel
+		language_use_babel,
+		language_package
 	] # end conversions for format 0
 ]
