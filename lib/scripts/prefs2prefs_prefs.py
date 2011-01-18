@@ -17,8 +17,6 @@
 # the new line, if so, which will be used to replace the old line.
 
 
-current_format = 1
-
 ###########################################################
 #
 # Conversion chain

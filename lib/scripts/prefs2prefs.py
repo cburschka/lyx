@@ -100,7 +100,7 @@ def update_format(lines):
 	" Writes new format line "
 	(found, format_line) = find_format_line(lines)
 	if not found:
-		lines.insert(format_line, "Format 1")
+		lines[format_line:format_line] = ("Format 1", "")
 		return
 
 	line = lines[format_line]
@@ -149,15 +149,16 @@ def main(argv):
 
 	for (opt, param) in options:
 		if opt == "-l":
-			from prefs2prefs_lfuns import conversions, current_format
+			from prefs2prefs_lfuns import conversions
 		elif opt == "-p":
-			from prefs2prefs_prefs import conversions, current_format
+			from prefs2prefs_prefs import conversions
 	
 	if not conversions:
 		usage()
 		print "\nNeither -l nor -p given"
 		sys.exit(1)
 
+	current_format = len(conversions)
 	lines = read(source)
 	format = get_format(lines)
 

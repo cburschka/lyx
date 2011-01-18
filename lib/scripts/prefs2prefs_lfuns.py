@@ -20,8 +20,6 @@
 
 import sys, re
 
-current_format = 1
-
 ###########################################################
 #
 # Actual converter functions
