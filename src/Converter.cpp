@@ -713,8 +713,9 @@ vector<Format const *> Converters::importableFormats()
 {
 	vector<string> l = loaders();
 	vector<Format const *> result = getReachableTo(l[0], true);
-	for (vector<string>::const_iterator it = l.begin() + 1;
-	     it != l.end(); ++it) {
+	vector<string>::const_iterator it = l.begin() + 1;
+	vector<string>::const_iterator en = l.end();
+	for (; it != en; ++it) {
 		vector<Format const *> r = getReachableTo(*it, false);
 		result.insert(result.end(), r.begin(), r.end());
 	}
@@ -726,8 +727,9 @@ vector<Format const *> Converters::exportableFormats(bool only_viewable)
 {
 	vector<string> s = savers();
 	vector<Format const *> result = getReachable(s[0], only_viewable, true);
-	for (vector<string>::const_iterator it = s.begin() + 1;
-	     it != s.end(); ++it) {
+	vector<string>::const_iterator it = s.begin() + 1;
+	vector<string>::const_iterator en = s.end();
+	for (; it != en; ++it) {
 		vector<Format const *> r =
 			getReachable(*it, only_viewable, false);
 		result.insert(result.end(), r.begin(), r.end());
