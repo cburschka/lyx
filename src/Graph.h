@@ -47,8 +47,6 @@ public:
 private:
 	///
 	bool bfs_init(int, bool clear_visited, std::queue<int> & Q);
-	/// used to recover a marked path 
-	void getMarkedPath(int from, int to, EdgePath & path);
 	/// these represent the arrows connecting the nodes of the graph.
 	/// this is the basic representation of the graph: as a bunch of 
 	/// arrows.
