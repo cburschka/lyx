@@ -1571,7 +1571,7 @@ def convert_use_makebox(document):
       i = z
       continue
     document.body.insert(k + 1, "use_makebox 0")
-    i = z + 1
+    i = blay + 1 # not z + 1 (box insets may be nested)
 
 
 def revert_IEEEtran(document):
