@@ -182,7 +182,8 @@ void InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
 
 bool InsetBox::forcePlainLayout(idx_type) const
 {
-	return (!params_.inner_box || params_.use_makebox) && params_.type != "Shaded";
+	return (!params_.inner_box || params_.use_makebox)
+		&& params_.type != "Shaded" && params_.type != "Framed";
 }
 
 
@@ -224,7 +225,8 @@ bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_BREAK_PARAGRAPH:
-		if ((params_.inner_box && !params_.use_makebox) || params_.type == "Shaded")
+		if ((params_.inner_box && !params_.use_makebox)
+		     || params_.type == "Shaded" || params_.type == "Framed")
 			return InsetCollapsable::getStatus(cur, cmd, flag);
 		flag.setEnabled(false);
 		return true;
