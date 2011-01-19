@@ -46,10 +46,10 @@ bool Graph::bfs_init(int s, bool clear_visited, queue<int> & Q)
 }
 
 
-vector<int> const
+Graph::EdgePath const
 	Graph::getReachableTo(int target, bool clear_visited)
 {
-	vector<int> result;
+	EdgePath result;
 	queue<int> Q;
 	if (!bfs_init(target, clear_visited, Q))
 		return result;
@@ -81,11 +81,11 @@ vector<int> const
 }
 
 
-vector<int> const
+Graph::EdgePath const
 	Graph::getReachable(int from, bool only_viewable,
 		bool clear_visited)
 {
-	vector<int> result;
+	EdgePath result;
 	queue<int> Q;
 	if (!bfs_init(from, clear_visited, Q))
 		return result;

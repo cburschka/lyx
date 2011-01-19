@@ -30,9 +30,9 @@ public:
 	///
 	typedef std::vector<int> EdgePath;
 	/// \return a vector of the vertices from which "to" can be reached
-	std::vector<int> const getReachableTo(int to, bool clear_visited);
+	EdgePath const getReachableTo(int to, bool clear_visited);
 	/// \return a vector of the vertices that can be reached from "from"
-	std::vector<int> const
+	EdgePath const
 		getReachable(int from, bool only_viewable, bool clear_visited);
 	/// can "from" be reached from "to"?
 	bool isReachable(int from, int to);
