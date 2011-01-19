@@ -24,12 +24,13 @@ using namespace std;
 namespace lyx {
 
 
-bool Graph::bfs_init(int s, bool clear_visited, queue<int>* Q)
+bool Graph::bfs_init(int s, bool clear_visited, queue<int> & Q)
 {
-	if (s < 0 || !Q)
+	if (s < 0)
 		return false;
-
-	*Q = queue<int>();
+	
+	if (!Q.empty())
+		Q = queue<int>();
 
 	if (clear_visited) {
 		vector<Vertex>::iterator it = vertices_.begin();
@@ -38,7 +39,7 @@ bool Graph::bfs_init(int s, bool clear_visited, queue<int>* Q)
 			it->visited = false;
 	}
 	if (!vertices_[s].visited) {
-		Q->push(s);
+		Q.push(s);
 		vertices_[s].visited = true;
 	}
 	return true;
@@ -50,7 +51,7 @@ vector<int> const
 {
 	vector<int> result;
 	queue<int> Q;
-	if (!bfs_init(target, clear_visited, &Q))
+	if (!bfs_init(target, clear_visited, Q))
 		return result;
 
 	// Here's the logic, which is shared by the other routines.
@@ -86,7 +87,7 @@ vector<int> const
 {
 	vector<int> result;
 	queue<int> Q;
-	if (!bfs_init(from, clear_visited, &Q))
+	if (!bfs_init(from, clear_visited, Q))
 		return result;
 
 	while (!Q.empty()) {
@@ -125,7 +126,7 @@ bool Graph::isReachable(int from, int to)
 		return true;
 
 	queue<int> Q;
-	if (to < 0 || !bfs_init(from, true, &Q))
+	if (to < 0 || !bfs_init(from, true, Q))
 		return false;
 
 	while (!Q.empty()) {
@@ -157,7 +158,7 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 		return EdgePath();
 
 	queue<int> Q;
-	if (to < 0 || !bfs_init(from, true, &Q))
+	if (to < 0 || !bfs_init(from, true, Q))
 		return EdgePath();
 
 	vector<EdgePath> pathes;
