@@ -13,7 +13,6 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include "support/mutex.h"
 
 #include <list>
 #include <queue>
@@ -47,10 +46,7 @@ public:
 
 private:
 	///
-	bool bfs_init(int, bool clear_visited = true);
-	/// clears the paths from a previous search. should be
-	/// called before each new one.
-	void clearPaths();
+	bool bfs_init(int, bool clear_visited, std::queue<int>* Q);
 	/// used to recover a marked path 
 	void getMarkedPath(int from, int to, EdgePath & path);
 	/// these represent the arrows connecting the nodes of the graph.
@@ -83,8 +79,6 @@ private:
 		std::vector<Arrow *> out_arrows;
 		/// used in the search routines
 		bool visited;
-		///
-		EdgePath path;
 	};
 	/// a container for the vertices
 	/// the index into the vector functions as the identifier by which
@@ -94,17 +88,13 @@ private:
 	/// of Format, this is easy, since the Format objects already have ints
 	/// as identifiers.)
 	std::vector<Vertex> vertices_;
-	///
-	std::queue<int> Q_;
+	
 	/// a counter that we use to assign id's to the arrows
 	/// FIXME This technique assumes a correspondence between the
 	/// ids of the arrows and ids associated with Converters that
 	/// seems kind of fragile. Perhaps a better solution would be
 	/// to pass the ids as we create the arrows.
 	int numedges_;
-
-	/// make public functions thread save
-	Mutex mutex_;
 };
 
 

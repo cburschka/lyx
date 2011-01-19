@@ -24,12 +24,12 @@ using namespace std;
 namespace lyx {
 
 
-bool Graph::bfs_init(int s, bool clear_visited)
+bool Graph::bfs_init(int s, bool clear_visited, queue<int>* Q)
 {
-	if (s < 0)
+	if (s < 0 || !Q)
 		return false;
 
-	Q_ = queue<int>();
+	*Q = queue<int>();
 
 	if (clear_visited) {
 		vector<Vertex>::iterator it = vertices_.begin();
@@ -38,40 +38,30 @@ bool Graph::bfs_init(int s, bool clear_visited)
 			it->visited = false;
 	}
 	if (!vertices_[s].visited) {
-		Q_.push(s);
+		Q->push(s);
 		vertices_[s].visited = true;
 	}
 	return true;
 }
 
 
-void Graph::clearPaths()
-{
-	vector<Vertex>::iterator it = vertices_.begin();
-	vector<Vertex>::iterator en = vertices_.end();
-	for (; it != en; ++it)
-		it->path.clear();
-}
-
-
 vector<int> const
 	Graph::getReachableTo(int target, bool clear_visited)
 {
-	Mutex::Locker lock(&mutex_);
-
 	vector<int> result;
-	if (!bfs_init(target, clear_visited))
+	queue<int> Q;
+	if (!bfs_init(target, clear_visited, &Q))
 		return result;
 
 	// Here's the logic, which is shared by the other routines.
-	// Q_ holds a list of nodes we have been able to reach (in this
+	// Q holds a list of nodes we have been able to reach (in this
 	// case, reach backwards). It is initialized to the current node
 	// by bfs_init, and then we recurse, adding the nodes we can reach
 	// from the current node as we go. That makes it a breadth-first
 	// search.
-	while (!Q_.empty()) {
-		int const current = Q_.front();
-		Q_.pop();
+	while (!Q.empty()) {
+		int const current = Q.front();
+		Q.pop();
 		if (current != target || formats.get(target).name() != "lyx")
 			result.push_back(current);
 
@@ -81,7 +71,7 @@ vector<int> const
 			const int cv = (*it)->from;
 			if (!vertices_[cv].visited) {
 				vertices_[cv].visited = true;
-				Q_.push(cv);
+				Q.push(cv);
 			}
 		}
 	}
@@ -94,15 +84,14 @@ vector<int> const
 	Graph::getReachable(int from, bool only_viewable,
 		bool clear_visited)
 {
-	Mutex::Locker lock(&mutex_);
-
 	vector<int> result;
-	if (!bfs_init(from, clear_visited))
+	queue<int> Q;
+	if (!bfs_init(from, clear_visited, &Q))
 		return result;
 
-	while (!Q_.empty()) {
-		int const current = Q_.front();
-		Q_.pop();
+	while (!Q.empty()) {
+		int const current = Q.front();
+		Q.pop();
 		Format const & format = formats.get(current);
 		if (!only_viewable || !format.viewer().empty())
 			result.push_back(current);
@@ -121,7 +110,7 @@ vector<int> const
 			int const cv = (*cit)->to;
 			if (!vertices_[cv].visited) {
 				vertices_[cv].visited = true;
-				Q_.push(cv);
+				Q.push(cv);
 			}
 		}
 	}
@@ -132,17 +121,16 @@ vector<int> const
 
 bool Graph::isReachable(int from, int to)
 {
-	Mutex::Locker lock(&mutex_);
-
 	if (from == to)
 		return true;
 
-	if (to < 0 || !bfs_init(from))
+	queue<int> Q;
+	if (to < 0 || !bfs_init(from, true, &Q))
 		return false;
 
-	while (!Q_.empty()) {
-		int const current = Q_.front();
-		Q_.pop();
+	while (!Q.empty()) {
+		int const current = Q.front();
+		Q.pop();
 		if (current == to)
 			return true;
 
@@ -154,7 +142,7 @@ bool Graph::isReachable(int from, int to)
 			int const cv = (*cit)->to;
 			if (!vertices_[cv].visited) {
 				vertices_[cv].visited = true;
-				Q_.push(cv);
+				Q.push(cv);
 			}
 		}
 	}
@@ -165,18 +153,18 @@ bool Graph::isReachable(int from, int to)
 
 Graph::EdgePath const Graph::getPath(int from, int to)
 {
-	Mutex::Locker lock(&mutex_);
-
 	if (from == to)
 		return EdgePath();
 
-	if (to < 0 || !bfs_init(from))
+	queue<int> Q;
+	if (to < 0 || !bfs_init(from, true, &Q))
 		return EdgePath();
 
-	clearPaths();
-	while (!Q_.empty()) {
-		int const current = Q_.front();
-		Q_.pop();
+	vector<EdgePath> pathes;
+	pathes.resize(vertices_.size());
+	while (!Q.empty()) {
+		int const current = Q.front();
+		Q.pop();
 
 		vector<Arrow *>::const_iterator cit =
 			vertices_[current].out_arrows.begin();
@@ -186,16 +174,16 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 			int const cv = (*cit)->to;
 			if (!vertices_[cv].visited) {
 				vertices_[cv].visited = true;
-				Q_.push(cv);
+				Q.push(cv);
 				// NOTE If we wanted to collect all the paths, then
 				// we just need to collect them here and not worry
 				// about "visited".
-				EdgePath lastpath = vertices_[(*cit)->from].path;
+				EdgePath lastpath = pathes[(*cit)->from];
 				lastpath.push_back((*cit)->id);
-				vertices_[cv].path = lastpath;
+				pathes[cv] = lastpath;
 			}
 			if (cv == to) {
-				return vertices_[cv].path;
+				return pathes[cv];
 			}
 		}
 	}
@@ -206,8 +194,6 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 
 void Graph::init(int size)
 {
-	Mutex::Locker lock(&mutex_);
-
 	vertices_ = vector<Vertex>(size);
 	arrows_.clear();
 	numedges_ = 0;
@@ -216,8 +202,6 @@ void Graph::init(int size)
 
 void Graph::addEdge(int from, int to)
 {
-	Mutex::Locker lock(&mutex_);
-
 	arrows_.push_back(Arrow(from, to, numedges_));
 	numedges_++;
 	Arrow * ar = &(arrows_.back());
