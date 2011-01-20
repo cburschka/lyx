@@ -91,14 +91,14 @@
 #   view(er)             -> ansehen / Ansicht / Betrachter
 #   wrap                 -> umflossenes Gleitobjekt
 #
-# Jürgen Spitzmüller <spitz@lyx.org>, 2009, 2010.
+# Jürgen Spitzmüller <spitz@lyx.org>, 2009, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-01-13 11:58+0100\n"
-"PO-Revision-Date: 2010-12-10 07:15+0100\n"
-"Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
+"PO-Revision-Date: 2011-01-20 18:05+0100\n"
+"Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21716,9 +21716,9 @@ msgid "Standard[[mathref]]"
 msgstr "Standard"
 
 #: src/mathed/InsetMathSubstack.cpp:80
-#, fuzzy, c-format
+#, c-format
 msgid "Can't change horizontal alignment in '%1$s'"
-msgstr "Es können keine horizontalen Gitterlinien in '%1$s' hinzugefügt werden"
+msgstr "Die horizontale Ausrichtung kann in '%1$s' nicht geändert werden"
 
 #: src/mathed/MathMacroTemplate.cpp:495
 msgid "optional"
