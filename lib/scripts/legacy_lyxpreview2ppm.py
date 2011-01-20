@@ -56,7 +56,8 @@
 import glob, os, pipes, re, string, sys
 
 from lyxpreview_tools import copyfileobj, error, find_exe, \
-     find_exe_or_terminate, make_texcolor, mkstemp, run_command, warning
+     find_exe_or_terminate, make_texcolor, mkstemp, run_command, warning, \
+     write_metrics_info
 
 # Pre-compiled regular expression.
 latex_file_re = re.compile("\.tex$")
@@ -67,9 +68,10 @@ def usage(prog_name):
            "\twhere the colors are hexadecimal strings, eg 'faf0e6'"\
            % prog_name
 
-
-def extract_metrics_info(log_file, metrics_file):
-    metrics = open(metrics_file, 'w')
+# Returns a list of tuples containing page number and ascent fraction
+# extracted from dvipng output.
+# Use write_metrics_info to create the .metrics file with this info
+def legacy_extract_metrics_info(log_file):
 
     log_re = re.compile("Preview: ([ST])")
     data_re = re.compile("(-?[0-9]+) (-?[0-9]+) (-?[0-9]+) (-?[0-9]+)")
@@ -78,6 +80,7 @@ def extract_metrics_info(log_file, metrics_file):
     tp_descent = 0.0
 
     success = 0
+    results = []
     try:
         for line in open(log_file, 'r').readlines():
             match = log_re.match(line)
@@ -106,7 +109,7 @@ def extract_metrics_info(log_file, metrics_file):
                     if frac < 0 or frac > 1:
                             frac = 0.5
 
-                metrics.write("Snippet %s %f\n" % (match.group(1), frac))
+                results.append((match.group(1), frac))
 
             else:
                 tp_descent = string.atof(match.group(2))
@@ -115,10 +118,13 @@ def extract_metrics_info(log_file, metrics_file):
     except:
         # Unable to open the file, but do nothing here because
         # the calling function will act on the value of 'success'.
-        warning('Warning in extract_metrics_info! Unable to open "%s"' % log_file)
+        warning('Warning in legacy_extract_metrics_info! Unable to open "%s"' % log_file)
         warning(`sys.exc_type` + ',' + `sys.exc_value`)
 
-    return success
+    if success == 0:
+        error("Failed to extract metrics info from %s" % log_file)
+        
+    return results
 
 
 def extract_resolution(log_file, dpi):
@@ -223,7 +229,7 @@ def crop_files(pnmcrop, basename):
             copyfileobj(tmp, open(file,"wb"), 1)
 
 
-def legacy_conversion(argv):
+def legacy_conversion(argv, skipMetrics = False):
     latex_commands = ["latex", "pplatex", "platex", "latex2e"]
     # Parse and manipulate the command line arguments.
     if len(argv) == 7:
@@ -256,13 +262,13 @@ def legacy_conversion(argv):
 
     latex_status, latex_stdout = run_command(latex_call)
     if latex_status != None:
-        error("%s failed to compile %s" \
+        warning("%s had problems compiling %s" \
               % (os.path.basename(latex), latex_file))
 
-    return legacy_conversion_step2(latex_file, dpi, output_format)
+    return legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics)
 
 
-def legacy_conversion_step2(latex_file, dpi, output_format):
+def legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics = False):
     # External programs used by the script.
     path    = string.split(os.environ["PATH"], os.pathsep)
     dvips   = find_exe_or_terminate(["dvips"], path)
@@ -274,7 +280,7 @@ def legacy_conversion_step2(latex_file, dpi, output_format):
     ps_file  = latex_file_re.sub(".ps",  latex_file)
     pdf_file  = latex_file_re.sub(".pdf", latex_file)
 
-    dvips_call = '%s -o "%s" "%s"' % (dvips, ps_file, dvi_file)
+    dvips_call = '%s -i -o "%s" "%s"' % (dvips, ps_file, dvi_file)
     dvips_failed = False
 
     dvips_status, dvips_stdout = run_command(dvips_call)
@@ -300,12 +306,6 @@ def legacy_conversion_step2(latex_file, dpi, output_format):
         gs_ext = "ppm"
 
     # Generate the bitmap images
-    gs_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=%s ' \
-              '-sOutputFile="%s%%d.%s" ' \
-              '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
-              '-r%f "%s"' \
-              % (gs, gs_device, latex_file_re.sub("", latex_file), \
-                 gs_ext, alpha, alpha, resolution, ps_file)
 
     if dvips_failed:
         gs_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=%s ' \
@@ -315,18 +315,37 @@ def legacy_conversion_step2(latex_file, dpi, output_format):
                   % (gs, gs_device, latex_file_re.sub("", latex_file), \
                      gs_ext, alpha, alpha, resolution, pdf_file)
 
-    gs_status, gs_stdout = run_command(gs_call)
-    if gs_status != None:
-        error("Failed: %s %s" % (os.path.basename(gs), ps_file))
+        gs_status, gs_stdout = run_command(gs_call)
+        if gs_status != None:
+            error("Failed: %s %s" % (os.path.basename(gs), ps_file))
+    else:
+        gs_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=%s ' \
+                  '-sOutputFile="%s%%d.%s" ' \
+                  '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
+                  '-r%f "%%s"' \
+                  % (gs, gs_device, latex_file_re.sub("", latex_file), \
+                     gs_ext, alpha, alpha, resolution)
+        i = 0
+        ps_files = glob.glob("%s.[0-9][0-9][0-9]" % latex_file_re.sub("", latex_file))
+        ps_files.sort()
+        for file in ps_files:
+            i = i + 1
+            gs_status, gs_stdout = run_command(gs_call % (i, file))
+            if gs_status != None:
+                warning("Failed: %s %s" % (os.path.basename(gs), file))
+            else:
+                os.remove(file)
 
     # Crop the images
     if pnmcrop != None:
         crop_files(pnmcrop, latex_file_re.sub("", latex_file))
 
-    # Extract metrics info from the log file.
-    metrics_file = latex_file_re.sub(".metrics", latex_file)
-    if not extract_metrics_info(log_file, metrics_file):
-        error("Failed to extract metrics info from %s" % log_file)
+    # Allow to skip .metrics creation for custom management
+    # (see the dvipng method)
+    if not skipMetrics:
+        # Extract metrics info from the log file.
+        metrics_file = latex_file_re.sub(".metrics", latex_file)
+        write_metrics_info(legacy_extract_metrics_info(log_file), metrics_file)
 
     return 0
 

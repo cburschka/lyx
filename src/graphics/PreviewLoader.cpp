@@ -674,10 +674,14 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 		FileName const & file = it->second;
 		double af = ascent_fractions[metrics_counter];
 
-		PreviewImagePtr ptr(new PreviewImage(parent_, snip, file, af));
-		cache_[snip] = ptr;
+		// Add the image to the cache only if it's actually present
+		if (file.isReadableFile()) {
+			PreviewImagePtr ptr(new PreviewImage(parent_, snip, file, af));
+			cache_[snip] = ptr;
 
-		newimages.push_back(ptr);
+			newimages.push_back(ptr);
+		}
+
 	}
 
 	// Remove the item from the list of still-executing processes.

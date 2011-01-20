@@ -214,3 +214,9 @@ def mkstemp():
         return tempfile.TemporaryFile()
     else:
         return TempFile()
+
+def write_metrics_info(metrics_info, metrics_file):
+    metrics = open(metrics_file, 'w')
+    for metric in metrics_info:
+        metrics.write("Snippet %s %f\n" % metric)
+    metrics.close()
