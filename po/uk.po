@@ -2,21 +2,22 @@
 # Copyright (C) 2008 LyX Developers
 # This file is distributed under the same license as the LyX package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2007, 2008, 2009, 2010.
+# Yuri Chornoivan <yurchor@ukr.net>, 2007, 2008, 2009, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: uk-163\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-11-29 14:02+0100\n"
-"PO-Revision-Date: 2010-10-31 16:47+0100\n"
+"PO-Revision-Date: 2011-01-20 18:49+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: uk"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -9805,11 +9806,11 @@ msgstr "Монгольська"
 
 #: lib/languages:67
 msgid "Norwegian (Bokmaal)"
-msgstr ""
+msgstr "Норвезька (букмол)"
 
 #: lib/languages:68
 msgid "Norwegian (Nynorsk)"
-msgstr ""
+msgstr "Норвезька (нюноршк)"
 
 #: lib/languages:69
 msgid "Polish"
@@ -11436,17 +11437,14 @@ msgid "Edit Externally...|x"
 msgstr "Редагувати зовні...|з"
 
 #: lib/ui/stdcontext.inc:367
-#, fuzzy
 msgid "Multicolumn|u"
-msgstr "Багатоколонковість|Б"
+msgstr "Багатостовпчикова|Б"
 
 #: lib/ui/stdcontext.inc:369
-#, fuzzy
 msgid "Top Line|n"
 msgstr "Лінія згори|г"
 
 #: lib/ui/stdcontext.inc:370
-#, fuzzy
 msgid "Bottom Line|i"
 msgstr "Лінія внизу|н"
 
@@ -11459,38 +11457,32 @@ msgid "Right Line|R"
 msgstr "Лінія праворуч|п"
 
 #: lib/ui/stdcontext.inc:374
-#, fuzzy
 msgid "Left|f"
-msgstr "Ліворуч|Л"
+msgstr "Ліворуч|р"
 
 #: lib/ui/stdcontext.inc:376
-#, fuzzy
 msgid "Right|h"
-msgstr "Праворуч|П"
+msgstr "Праворуч|а"
 
 #: lib/ui/stdcontext.inc:384 lib/ui/stdmenus.inc:193
 msgid "Copy Row|o"
 msgstr "Копіювати рядок|о"
 
 #: lib/ui/stdcontext.inc:387
-#, fuzzy
 msgid "Add Column|p"
 msgstr "Додати стовпчик|т"
 
 #: lib/ui/stdcontext.inc:389
-#, fuzzy
 msgid "Copy Column|y"
 msgstr "Копіювати стовпчик|і"
 
 #: lib/ui/stdcontext.inc:392
-#, fuzzy
 msgid "Settings...|g"
-msgstr "Налаштувати...|Н"
+msgstr "Параметри...|П"
 
 #: lib/ui/stdcontext.inc:401
-#, fuzzy
 msgid "Copy Text|o"
-msgstr "Копіювати|К"
+msgstr "Копіювати текст|К"
 
 #: lib/ui/stdmenus.inc:33
 msgid "Document|D"
@@ -16723,7 +16715,8 @@ msgstr ""
 "\t-i [--import] формат файл.xxx\n"
 "                  імпортувати заданий файл.xxx у вказаному форматі.\n"
 "\t-f [--force-overwrite] що саме\n"
-"                  де «що саме» може приймати значення «all», «main» або «none»,\n"
+"                  де «що саме» може приймати значення «all», «main» або "
+"«none»,\n"
 "                  що відповідає перезапису всіх файлів, лише основного файла "
 "або жодного\n"
 "                  з файлів під час пакетного експортування.\n"
@@ -17791,41 +17784,40 @@ msgstr ""
 "'%1$s'."
 
 #: src/VCBackend.cpp:382
-#, fuzzy
 msgid "Up-to-date"
-msgstr "&Оновити"
+msgstr "Найновіший"
 
 #: src/VCBackend.cpp:384
-#, fuzzy
 msgid "Locally Modified"
-msgstr "Локальний файл формату"
+msgstr "Змінений локально"
 
 #: src/VCBackend.cpp:386
-#, fuzzy
 msgid "Locally Added"
-msgstr "Локальний файл формату"
+msgstr "Доданий локально"
 
 #: src/VCBackend.cpp:388
 msgid "Needs Merge"
-msgstr ""
+msgstr "Потребує об'єднання"
 
 #: src/VCBackend.cpp:390
 msgid "Needs Checkout"
-msgstr ""
+msgstr "Потребує звантаження"
 
 #: src/VCBackend.cpp:392
 msgid "No CVS file"
-msgstr ""
+msgstr "Немає файла CVS"
 
 #: src/VCBackend.cpp:394
 msgid "Cannot retrieve CVS status"
-msgstr ""
+msgstr "Не вдалося отримати стан CVS"
 
 #: src/VCBackend.cpp:521
 msgid ""
 "The repository version is newer then the current check out.\n"
 "You have to update from repository first or revert your changes."
 msgstr ""
+"Версія у сховищі є новішою за звантажену копію.\n"
+"Вам слід оновити ваше сховище або скасувати внесені вами зміни."
 
 #: src/VCBackend.cpp:526
 #, c-format
@@ -17835,9 +17827,13 @@ msgid ""
 "'%1$s'\n"
 "\n"
 msgstr ""
+"Помилкове значення стану під час пошуку змін.\n"
+"\n"
+"'%1$s'\n"
+"\n"
 
 #: src/VCBackend.cpp:567
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error when updating from repository.\n"
 "You have to manually resolve the conflicts NOW!\n"
@@ -17852,7 +17848,7 @@ msgstr ""
 "Після натискання кнопки «Гаразд», LyX спробує повторно відкрити документ."
 
 #: src/VCBackend.cpp:599
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
 "%1$s\n"
@@ -17863,10 +17859,8 @@ msgstr ""
 "У робочому каталозі виявлено зміни:\n"
 "%1$s\n"
 "\n"
-"У разі виникнення конфліктів перевага надаватиметься версіям з локального "
-"каталогу.\n"
-"\n"
-"Продовжити?"
+"У разі виникнення конфліктів вам доведеться розв’язати їх вручну або "
+"повернутися до версії зі сховища."
 
 #: src/VCBackend.cpp:603 src/VCBackend.cpp:607 src/VCBackend.cpp:970
 #: src/VCBackend.cpp:974
@@ -17874,14 +17868,12 @@ msgid "Changes detected"
 msgstr "Виявлено зміни"
 
 #: src/VCBackend.cpp:604 src/VCBackend.cpp:608
-#, fuzzy
 msgid "&Continue"
-msgstr "Далі"
+msgstr "&Продовжити"
 
 #: src/VCBackend.cpp:604 src/VCBackend.cpp:608
-#, fuzzy
 msgid "&Abort"
-msgstr "&Впорядкувати"
+msgstr "П&ерервати"
 
 #: src/VCBackend.cpp:604 src/VCBackend.cpp:971
 msgid "View &Log ..."
@@ -17893,6 +17885,9 @@ msgid ""
 "The document %1$s is not in repository.\n"
 "You have to check in the first revision before you can revert."
 msgstr ""
+"Документа %1$s немає у сховищі.\n"
+"Вам слід звантажити першу версію документа, перш ніж ви зможете скасувати "
+"внесені зміни."
 
 #: src/VCBackend.cpp:675
 #, c-format
@@ -17900,6 +17895,8 @@ msgid ""
 "Cannot revert document %1$s to repository version.\n"
 "The status '%2$s' is unexpected."
 msgstr ""
+"Неможливо повернути документ %1$s до версії до сховища.\n"
+"Неочікуване значення стану «%2$s»."
 
 #: src/VCBackend.cpp:776 src/VCBackend.cpp:823 src/VCBackend.cpp:918
 #: src/VCBackend.cpp:955 src/VCBackend.cpp:1011
@@ -18918,7 +18915,7 @@ msgstr "%1$s, %2$s і %3$s"
 #: src/frontends/qt4/GuiDocument.cpp:1407
 #, c-format
 msgid "%1$s (unavailable)"
-msgstr ""
+msgstr "%1$s (недоступний)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1479
 msgid "Module provided by document class."
@@ -21475,15 +21472,16 @@ msgid "Unknown tabular feature '%1$s'"
 msgstr "Невідома властивість таблиці '%1$s'"
 
 #: src/mathed/InsetMathHull.cpp:1152
-#, fuzzy
 msgid "Bad math environment"
-msgstr "Оточення Gather"
+msgstr "Помилкове середовище math"
 
 #: src/mathed/InsetMathHull.cpp:1153
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
 msgstr ""
+"Обчислення не може бути виконано у математичних середовищах AMS.\n"
+"Змініть тип математичної формули і повторіть спробу."
 
 #: src/mathed/InsetMathHull.cpp:1257 src/mathed/InsetMathHull.cpp:1265
 msgid "No number"
