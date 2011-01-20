@@ -1978,9 +1978,16 @@ def revert_diagram(document):
     # only need to do it once!
     return
 
+chapters = ("amsbook", "book", "docbook-book", "elsart", "extbook", "extreport", 
+    "jbook", "jreport", "jsbook", "literate-book", "literate-report", "memoir", 
+    "mwbk", "mwrep", "recipebook", "report", "scrbook", "scrreprt", "svmono", 
+    "svmult", "tbook", "treport", "tufte-book")
 
 def convert_bibtex_clearpage(document):
   " insert a clear(double)page bibliographystyle if bibtotoc option is used "
+
+  if document.textclass not in chapters:
+    return
 
   i = find_token(document.header, '\\papersides', 0)
   sides = 0
