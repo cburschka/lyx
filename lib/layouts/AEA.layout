@@ -4,6 +4,7 @@
 
 Format 31
 Input stdclass.inc
+Input theorems-ams.module
 Input theorems-bytype.module
 Input theorems-ams-extended-bytype.module
 
@@ -21,7 +22,6 @@ NoStyle		Paragraph
 NoCounter		paragraph
 NoStyle		Subparagraph
 NoCounter		subparagraph
-NoStyle		SpecialSection
 NoStyle		Part*
 NoStyle		Chapter*
 NoStyle		Section*
@@ -29,7 +29,6 @@ NoStyle		Subsection*
 NoStyle		Subsubsection*
 NoStyle		Paragraph*
 NoStyle		Subparagraph*
-NoStyle		SpecialSection*
 NoStyle		List
 NoStyle		LyX-Code
 NoStyle		Verse
