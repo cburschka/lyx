@@ -13,6 +13,8 @@
 \definecolor{note_fontcolor}{rgb}{0, 0, 1}
 \definecolor{shadecolor}{rgb}{1, 0, 0}
 \usepackage{framed}
+\usepackage{calc}
+\usepackage{fancybox}
 
 \setlength{\parskip}{3mm}
 \setlength{\parindent}{0sp}
@@ -86,6 +88,10 @@ blabla \makebox[3cm][l]{makebox 3} blabla
 
 \subsection{Framed Boxes}
 
+blabla \begin{framed}framed\end{framed} blabla
+
+blabla \begin{framed}\begin{framed}nested framed\end{framed}\end{framed} blabla
+
 blabla \fbox{fbox} blabla
 
 blabla \framebox{framebox 1} blabla
@@ -114,6 +120,14 @@ Dies ist ein Beispieltext. %
  \par\end{center}%
 \end{minipage}}
 Dies ist ein Beispieltext.
+
+blabla \ovalbox{ovalbox} blabla
+
+blabla \Ovalbox{Ovalbox} blabla
+
+blabla \shadowbox{shadowbox} blabla
+
+blabla \doublebox{doublebox} blabla
 
 $\boxed{\int A=B}$
 

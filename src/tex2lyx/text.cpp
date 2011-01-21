@@ -653,22 +653,26 @@ bool parse_command(string const & command, Parser & p, ostream & os,
 
 
 /// Parses a minipage or parbox
-void parse_box(Parser & p, ostream & os, unsigned flags, bool outer,
-	       Context & parent_context, bool use_parbox)
+void parse_box(Parser & p, ostream & os, unsigned outer_flags,
+               unsigned inner_flags, bool outer, Context & parent_context,
+               string const & outer_type, string const & special,
+               string const & inner_type)
 {
 	string position;
 	string inner_pos;
+	string hor_pos = "c";
 	// We need to set the height to the LaTeX default of 1\\totalheight
 	// for the case when no height argument is given
 	string height_value = "1";
 	string height_unit = "in";
 	string height_special = "totalheight";
 	string latex_height;
-	if (p.hasOpt()) {
+	if (!inner_type.empty() && p.hasOpt()) {
 		position = p.getArg('[', ']');
 		if (position != "t" && position != "c" && position != "b") {
+			cerr << "invalid position " << position << " for "
+			     << inner_type << endl;
 			position = "c";
-			cerr << "invalid position for minipage/parbox" << endl;
 		}
 		if (p.hasOpt()) {
 			latex_height = p.getArg('[', ']');
@@ -678,40 +682,100 @@ void parse_box(Parser & p, ostream & os, unsigned flags, bool outer,
 				inner_pos = p.getArg('[', ']');
 				if (inner_pos != "c" && inner_pos != "t" &&
 				    inner_pos != "b" && inner_pos != "s") {
+					cerr << "invalid inner_pos "
+					     << inner_pos << " for "
+					     << inner_type << endl;
 					inner_pos = position;
-					cerr << "invalid inner_pos for minipage/parbox"
-					     << endl;
 				}
 			}
 		}
 	}
 	string width_value;
 	string width_unit;
-	string const latex_width = p.verbatim_item();
+	string latex_width;
+	if (inner_type.empty()) {
+		if (special.empty())
+			latex_width = "\\columnwidth";
+		else {
+			Parser p2(special);
+			latex_width = p2.getOptContent();
+			string const opt = p2.getOptContent();
+			if (!opt.empty()) {
+				hor_pos = opt;
+				if (hor_pos != "l" && hor_pos != "c" &&
+				    hor_pos != "r") {
+					cerr << "invalid hor_pos " << hor_pos
+					     << " for " << outer_type << endl;
+					hor_pos = "c";
+				}
+			}
+		}
+	} else
+		latex_width = p.verbatim_item();
 	translate_len(latex_width, width_value, width_unit);
-	if (contains(width_unit, '\\') || contains(height_unit, '\\')) {
-		// LyX can't handle length variables
+	// LyX can't handle length variables
+	bool use_ert = contains(width_unit, '\\') || contains(height_unit, '\\');
+	if (!use_ert && !outer_type.empty() && !inner_type.empty()) {
+		// Look whether there is some content after the end of the
+		// inner box, but before the end of the outer box.
+		// If yes, we need to output ERT.
+		p.pushPosition();
+		if (inner_flags & FLAG_END)
+			p.verbatimEnvironment(inner_type);
+		else
+			p.verbatim_item();
+		p.skip_spaces(true);
+		if ((outer_type == "framed" && p.next_token().asInput() != "\\end") ||
+		    (outer_type != "framed" && p.next_token().cat() != catEnd)) {
+			// something is between the end of the inner box and
+			// the end of the outer box, so we need to use ERT.
+			use_ert = true;
+		}
+		p.popPosition();
+	}
+	if (use_ert) {
 		ostringstream ss;
-		if (use_parbox)
-			ss << "\\parbox";
-		else
-			ss << "\\begin{minipage}";
-		if (!position.empty())
-			ss << '[' << position << ']';
-		if (!latex_height.empty())
-			ss << '[' << latex_height << ']';
-		if (!inner_pos.empty())
-			ss << '[' << inner_pos << ']';
-		ss << "{" << latex_width << "}";
-		if (use_parbox)
-			ss << '{';
+		if (!outer_type.empty()) {
+			if (outer_flags & FLAG_END)
+				ss << "\\begin{" << outer_type << '}';
+			else {
+				ss << '\\' << outer_type << '{';
+				if (!special.empty())
+					ss << special;
+			}
+		}
+		if (!inner_type.empty()) {
+			if (inner_flags & FLAG_END)
+				ss << "\\begin{" << inner_type << '}';
+			else
+				ss << '\\' << inner_type;
+			if (!position.empty())
+				ss << '[' << position << ']';
+			if (!latex_height.empty())
+				ss << '[' << latex_height << ']';
+			if (!inner_pos.empty())
+				ss << '[' << inner_pos << ']';
+			ss << '{' << latex_width << '}';
+			if (!(inner_flags & FLAG_END))
+				ss << '{';
+		}
 		handle_ert(os, ss.str(), parent_context);
-		parent_context.new_paragraph(os);
-		parse_text_in_inset(p, os, flags, outer, parent_context);
-		if (use_parbox)
-			handle_ert(os, "}", parent_context);
-		else
-			handle_ert(os, "\\end{minipage}", parent_context);
+		if (!inner_type.empty()) {
+			parse_text(p, os, inner_flags, outer, parent_context);
+			if (inner_flags & FLAG_END)
+				handle_ert(os, "\\end{" + inner_type + '}',
+				           parent_context);
+			else
+				handle_ert(os, "}", parent_context);
+		}
+		if (!outer_type.empty()) {
+			parse_text(p, os, outer_flags, outer, parent_context);
+			if (outer_flags & FLAG_END)
+				handle_ert(os, "\\end{" + outer_type + '}',
+				           parent_context);
+			else
+				handle_ert(os, "}", parent_context);
+		}
 	} else {
 		// LyX does not like empty positions, so we have
 		// to set them to the LaTeX default values here.
@@ -720,18 +784,54 @@ void parse_box(Parser & p, ostream & os, unsigned flags, bool outer,
 		if (inner_pos.empty())
 			inner_pos = position;
 		parent_context.check_layout(os);
-		begin_inset(os, "Box Frameless\n");
+		begin_inset(os, "Box ");
+		if (outer_type == "framed")
+			os << "Framed\n";
+		else if (outer_type == "framebox")
+			os << "Boxed\n";
+		else if (outer_type == "shadowbox")
+			os << "Shadowbox\n";
+		else if (outer_type == "shaded")
+			os << "Shaded\n";
+		else if (outer_type == "doublebox")
+			os << "Doublebox\n";
+		else if (outer_type.empty())
+			os << "Frameless\n";
+		else
+			os << outer_type << '\n';
 		os << "position \"" << position << "\"\n";
-		os << "hor_pos \"c\"\n";
-		os << "has_inner_box 1\n";
+		os << "hor_pos \"" << hor_pos << "\"\n";
+		os << "has_inner_box " << !inner_type.empty() << "\n";
 		os << "inner_pos \"" << inner_pos << "\"\n";
-		os << "use_parbox " << use_parbox << "\n";
+		os << "use_parbox " << (inner_type == "parbox") << '\n';
 		os << "width \"" << width_value << width_unit << "\"\n";
 		os << "special \"none\"\n";
 		os << "height \"" << height_value << height_unit << "\"\n";
 		os << "height_special \"" << height_special << "\"\n";
 		os << "status open\n\n";
-		parse_text_in_inset(p, os, flags, outer, parent_context);
+		Context context(true, parent_context.textclass);
+		context.font = parent_context.font;
+
+		// If we have no inner box the contens will be read with the outer box
+		if (!inner_type.empty())
+			parse_text(p, os, inner_flags, outer, context);
+
+		// Ensure that the end of the outer box is parsed correctly:
+		// The opening brace has been eaten by parse_outer_box()
+		if (!outer_type.empty() && (outer_flags & FLAG_ITEM)) {
+			outer_flags &= ~FLAG_ITEM;
+			outer_flags |= FLAG_BRACE_LAST;
+		}
+
+		// Find end of outer box, output contents if inner_type is
+		// empty and output possible comments
+		if (!outer_type.empty()) {
+			// This does not output anything but comments if
+			// inner_type is not empty (see use_ert)
+			parse_text(p, os, outer_flags, outer, context);
+		}
+
+		context.check_end_layout(os);
 		end_inset(os);
 #ifdef PRESERVE_LAYOUT
 		// LyX puts a % after the end of the minipage
@@ -753,6 +853,54 @@ void parse_box(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 		}
 #endif
+	}
+}
+
+
+void parse_outer_box(Parser & p, ostream & os, unsigned flags, bool outer,
+                     Context & parent_context, string const & outer_type,
+                     string const & special)
+{
+	eat_whitespace(p, os, parent_context, false);
+	if (flags & FLAG_ITEM) {
+		// Eat '{'
+		if (p.next_token().cat() == catBegin)
+			p.get_token();
+		else
+			cerr << "Warning: Ignoring missing '{' after \\"
+			     << outer_type << '.' << endl;
+		eat_whitespace(p, os, parent_context, false);
+	}
+	string inner;
+	unsigned int inner_flags = 0;
+	if (outer_type == "shaded") {
+		// These boxes never have an inner box
+		;
+	} else if (p.next_token().asInput() == "\\parbox") {
+		inner = p.get_token().cs();
+		inner_flags = FLAG_ITEM;
+	} else if (p.next_token().asInput() == "\\begin") {
+		// Is this a minipage?
+		p.pushPosition();
+		p.get_token();
+		inner = p.getArg('{', '}');
+		p.popPosition();
+		if (inner == "minipage") {
+			p.get_token();
+			p.getArg('{', '}');
+			eat_whitespace(p, os, parent_context, false);
+			inner_flags = FLAG_END;
+		} else
+			inner = "";
+	}
+	if (inner_flags == FLAG_END) {
+		active_environments.push_back(inner);
+		parse_box(p, os, flags, FLAG_END, outer, parent_context,
+		          outer_type, special, inner);
+		active_environments.pop_back();
+	} else {
+		parse_box(p, os, flags, inner_flags, outer, parent_context,
+		          outer_type, special, inner);
 	}
 }
 
@@ -830,7 +978,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 
 	else if (name == "minipage") {
 		eat_whitespace(p, os, parent_context, false);
-		parse_box(p, os, FLAG_END, outer, parent_context, false);
+		parse_box(p, os, 0, FLAG_END, outer, parent_context, "", "", name);
 		p.skip_spaces();
 	}
 
@@ -857,23 +1005,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 
 	else if (name == "framed" || name == "shaded") {
 		eat_whitespace(p, os, parent_context, false);
-		parent_context.check_layout(os);
-		if (name == "framed")
-			begin_inset(os, "Box Framed\n");
-		else
-			begin_inset(os, "Box Shaded\n");
-		os << "position \"t\"\n"
-		      "hor_pos \"c\"\n"
-		      "has_inner_box 0\n"
-		      "inner_pos \"t\"\n"
-		      "use_parbox 0\n"
-		      "width \"100col%\"\n"
-		      "special \"none\"\n"
-		      "height \"1in\"\n"
-		      "height_special \"totalheight\"\n"
-		      "status open\n";
-		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
-		end_inset(os);
+		parse_outer_box(p, os, FLAG_END, outer, parent_context, name, "");
 		p.skip_spaces();
 	}
 
@@ -2766,8 +2898,18 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "parbox")
-			parse_box(p, os, FLAG_ITEM, outer, context, true);
-		
+			parse_box(p, os, 0, FLAG_ITEM, outer, context, "", "", t.cs());
+
+		else if (t.cs() == "ovalbox" || t.cs() == "Ovalbox" ||
+		         t.cs() == "shadowbox" || t.cs() == "doublebox")
+			parse_outer_box(p, os, FLAG_ITEM, outer, context, t.cs(), "");
+
+		else if (t.cs() == "framebox") {
+			string special = p.getOpt();
+			special += p.getOpt();
+			parse_outer_box(p, os, FLAG_ITEM, outer, context, t.cs(), special);
+		}
+
 		//\makebox() is part of the picture environment and different from \makebox{}
 		//\makebox{} will be parsed by parse_box when bug 2956 is fixed
 		else if (t.cs() == "makebox") {

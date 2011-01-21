@@ -266,9 +266,13 @@ bool Parser::skip_spaces(bool skip_comments)
 		}
 		if ((curr_token().cat() == catComment && curr_token().cs().empty()))
 			continue;
-		if (skip_comments && curr_token().cat() == catComment)
-			cerr << "  Ignoring comment: " << curr_token().asInput();
-		else {
+		if (skip_comments && curr_token().cat() == catComment) {
+			// If positions_ is not empty we are doing some kind
+			// of look ahead
+			if (!positions_.empty())
+				cerr << "  Ignoring comment: "
+				     << curr_token().asInput();
+		} else {
 			putback();
 			break;
 		}
@@ -285,7 +289,11 @@ void Parser::unskip_spaces(bool skip_comments)
 			putback();
 		else if (skip_comments && curr_token().cat() == catComment) {
 			// TODO: Get rid of this
-			cerr << "Unignoring comment: " << curr_token().asInput();
+			// If positions_ is not empty we are doing some kind
+			// of look ahead
+			if (!positions_.empty())
+				cerr << "Unignoring comment: "
+				     << curr_token().asInput();
 			putback();
 		}
 		else
