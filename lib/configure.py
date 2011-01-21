@@ -647,6 +647,8 @@ def checkConverterEntries():
         rc_entry = [ r'\converter lyx      wordhtml       "%%"	""' ])
     if elyxer.find('elyxer') >= 0:
       elyxerfound = True
+    else:
+      elyxerfound = False
 
     if elyxerfound:
       addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py -e html,png,jpg,jpeg,css $$i $$o"''')
