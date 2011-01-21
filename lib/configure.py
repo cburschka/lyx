@@ -638,19 +638,19 @@ def checkConverterEntries():
     checkProg('an MS Word -> LaTeX converter', ['wvCleanLatex $$i $$o'],
         rc_entry = [ r'\converter word       latex      "%%"	""' ])
 
-    # eLyXer: search as a Python module and then as an executable (elyxer.py, elyxer)
-    elyxerfound = checkModule('elyxer')
-    if elyxerfound:
-      addToRC(r'''\converter lyx      html       "python -m elyxer --directory $$r $$i $$o"	""''')
-    else:
-      path, elyxer = checkProg('a LyX -> HTML converter',
+    # eLyXer: search as an executable (elyxer.py, elyxer)
+    path, elyxer = checkProg('a LyX -> HTML converter',
         ['elyxer.py --directory $$r $$i $$o', 'elyxer --directory $$r $$i $$o'],
         rc_entry = [ r'\converter lyx      html       "%%"	""' ])
-      if elyxer.find('elyxer') >= 0:
-        elyxerfound = True
+    path, elyxer = checkProg('a LyX -> MS Word converter',
+        ['elyxer.py --directory $$r $$i $$o', 'elyxer --html --directory $$r $$i $$o'],
+        rc_entry = [ r'\converter lyx      wordhtml       "%%"	""' ])
+    if elyxer.find('elyxer') >= 0:
+      elyxerfound = True
 
     if elyxerfound:
       addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py -e html,png,jpg,jpeg,css $$i $$o"''')
+      addToRC(r'''\copier    wordhtml       "python -tt $$s/scripts/ext_copy.py -e html,png,jpg,jpeg,css $$i $$o"''')
     else:
       # search for other converters than eLyXer
       # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
@@ -662,27 +662,6 @@ def checkConverterEntries():
         addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
       else:
         addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py $$i $$o"''')
-
-    # Check if LyXBlogger is installed
-    lyxblogger_found = checkModule('lyxblogger')
-    if lyxblogger_found:
-      addToRC(r'\Format    blog       blog       "LyXBlogger"           "" "" ""  "document"')
-      addToRC(r'\converter xhtml      blog       "python -m lyxblogger $$i"       ""')
-
-    if elyxerfound:
-      addToRC(r'''\converter lyx      wordhtml       "python -m elyxer --html --directory $$r $$i $$o"	""''')
-    else:
-      path, elyxer = checkProg('a LyX -> MS Word converter',
-        ['elyxer.py --directory $$r $$i $$o', 'elyxer --html --directory $$r $$i $$o'],
-        rc_entry = [ r'\converter lyx      wordhtml       "%%"	""' ])
-      if elyxer.find('elyxer') >= 0:
-        elyxerfound = True
-
-    if elyxerfound:
-      addToRC(r'''\copier    wordhtml       "python -tt $$s/scripts/ext_copy.py -e html,png,jpg,jpeg,css $$i $$o"''')
-    else:
-      # search for other converters than eLyXer
-      # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
       path, htmlconv = checkProg('a LaTeX -> MS Word converter', ["htlatex $$i 'html,word' 'symbol/!' '-cvalidate'", \
           "htlatex.sh $$i 'html,word' 'symbol/!' '-cvalidate'", \
           "/usr/share/tex4ht/htlatex $$i 'html,word' 'symbol/!' '-cvalidate'"],
@@ -692,7 +671,14 @@ def checkConverterEntries():
       else:
         addToRC(r'''\copier    wordhtml       "python -tt $$s/scripts/ext_copy.py $$i $$o"''')
 
-    #
+
+    # Check if LyXBlogger is installed
+    lyxblogger_found = checkModule('lyxblogger')
+    if lyxblogger_found:
+      addToRC(r'\Format    blog       blog       "LyXBlogger"           "" "" ""  "document"')
+      addToRC(r'\converter xhtml      blog       "python -m lyxblogger $$i"       ""')
+
+#
     checkProg('an OpenOffice.org -> LaTeX converter', ['w2l -clean $$i'],
         rc_entry = [ r'\converter sxw        latex      "%%"	""' ])
     #
