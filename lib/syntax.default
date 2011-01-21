@@ -394,6 +394,10 @@ $$
 \chapter*{}
 \chaptername
 \check{}
+\CheckCommand{}[][]{}
+\CheckCommand*{}[][]{}
+\CheckCommandx{}[][]{} % xargs.sty
+\CheckCommandx*{}[][]{} % xargs.sty
 %\circle{}    % picture environment (JMarc)
 %\circle*{}
 \cleardoublepage
@@ -410,6 +414,10 @@ $$
 \dblfigrule
 \dblfloatpagefraction
 \dbltopfraction
+\DeclareRobustCommand{}[][]{}
+\DeclareRobustCommand*{}[][]{}
+\DeclareRobustCommandx{}[][]{} % xargs.sty
+\DeclareRobustCommandx*{}[][]{} % xargs.sty
 \def{}{}
 \definecolor{}{}{,,}
 \DeleteShortVerb{} % from doc.sty, argument must be verbatim
@@ -507,11 +515,13 @@ $$
 \newboolean{}
 \newcommand{}[][]{}
 \newcommand*{}[][]{}
-%\newcommand{}[]{}    % tex2lyx can support this when the file format is the one of LyX 1.6.x
+\newcommandx{}[][]{} % xargs.sty
+\newcommandx∗{}[][]{} % xargs.sty
 \newcounter{}[]
 \newenvironment{}[][]{}{}
 \newenvironment*{}[][]{}{}
-%\newenvironment{}[]{}{}    % tex2lyx can support this when the file format is the one of LyX 1.6.x
+\newenvironmentx{}[][]{}{} % xargs.sty
+\newenvironmentx*{}[][]{}{} % xargs.sty
 \newfont{}{ scaled }
 \newlength{}
 \newpage
@@ -553,6 +563,8 @@ $$
 \protect
 \providecommand{}[][]{}
 \providecommand*{}[][]{}
+\providecommandx{}[][]{} % xargs.sty
+\providecommandx*{}[][]{} % xargs.sty
 \ps
 \psfrag{}[][][][]{translate}
 \psfrag*{}[][][][]{translate}
@@ -570,10 +582,13 @@ $$
 \refstepcounter{}
 \renewcommand{}[][]{}
 \renewcommand*{}[][]{}
-%\renewcommand{}[]{}   % tex2lyx can support this when the file format is the one of LyX 1.6.x
+\renewcommandx{}[][]{} % xargs.sty
+\renewcommandx∗{}[][]{} % xargs.sty
 \renewenvironment{}[][]{}{}
 \renewenvironment*{}[][]{}{}
 %\renewenvironment{}[]{}{}
+\renewenvironmentx{}[][]{}{} % xargs.sty
+\renewenvironmentx*{}[][]{}{} % xargs.sty
 \resizebox{}{}{translate}
 \resizebox*{}{}{translate}
 \reversemarginpar

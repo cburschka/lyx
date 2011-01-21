@@ -24,6 +24,7 @@
 
 \usepackage{graphicx}
 \usepackage{longtable}
+\usepackage{xargs}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
 \providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
@@ -244,13 +245,27 @@ global def \global\def\macrob#1{b #1 b}
 long def \long\def\macroc#1{c #1 c}
 global long def \global\long\def\macrod#1{d #1 d}
 providecommand \providecommand{\macroe}[1]{e #1 e}
-newcommand \newcommand{\macrof}[1]{f #1 f}
-renewcommand \renewcommand{\macrof}[1]{g #1 g}
-newcommand* \newcommand*{\macroh}[1]{h #1 h}
-renewcommand* \renewcommand*{\macroh}[1]{i #1 i}
+providecommand* \providecommand*{\macrof}[1]{f #1 f}
+newcommand \newcommand{\macrog}[1]{g #1 g}
+renewcommand \renewcommand{\macrog}[1]{h #1 h}
+newcommand* \newcommand*{\macroi}[1]{i #1 i}
+renewcommand* \renewcommand*{\macroi}[1]{j #1 j}
+providecommandx \providecommandx{\macrok}[1]{k #1 k}
+providecommandx* \providecommandx*{\macrok}[1]{l #1 l}
+newcommandx \newcommandx{\macrom}[1]{m #1 m}
+renewcommandx \renewcommandx{\macrom}[1]{n #1 n}
+newcommandx* \newcommandx*{\macroo}[1]{o #1 o}
+renewcommandx* \renewcommandx*{\macroo}[1]{p #1 p}
+DeclareRobustCommand \DeclareRobustCommand{\macroq}[1]{q #1 q}
+DeclareRobustCommand* \DeclareRobustCommand*{\macror}[1]{r #1 r}
+DeclareRobustCommandx \DeclareRobustCommandx{\macros}[1]{s #1 s}
+DeclareRobustCommandx* \DeclareRobustCommandx*{\macrot}[1]{t #1 t}
 
 Now use them all:
-\macroa{x} \macrob{x} \macroc{x} \macrod{x} \macroe{x} \macrof{x} \macroh{x}
+\macroa{x} \macrob{x} \macroc{x} \macrod{x} \macroe{x} \macrof{x} \macrog{x}
+\macroi{x} \macrok{x} \macrom{x} \macroo{x} \macroq{x} \macror{x}
+The following tow don't work, but they should???
+%\macros{x} \macrot{x}
 
 \section{Special formattings\index{Special formattings}}
 

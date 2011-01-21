@@ -2965,11 +2965,18 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_spaces_braces(p);
 		}
 
-		else if (t.cs() == "newcommand" ||
+		else if (t.cs() == "DeclareRobustCommand" ||
+		         t.cs() == "DeclareRobustCommandx" ||
+		         t.cs() == "newcommand" ||
+		         t.cs() == "newcommandx" ||
 			 t.cs() == "providecommand" ||
-			 t.cs() == "renewcommand") {
-			// providecommand could be handled by parse_command(),
-			// but we need to call add_known_command() here.
+		         t.cs() == "providecommandx" ||
+		         t.cs() == "renewcommand" ||
+		         t.cs() == "renewcommandx") {
+			// DeclareRobustCommand, DeclareRobustCommandx,
+			// providecommand and providecommandx could be handled
+			// by parse_command(), but we need to call
+			// add_known_command() here.
 			string name = t.asInput();
 			if (p.next_token().asInput() == "*") {
 				// Starred form. Eat '*'
@@ -2984,7 +2991,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					   opt1 + opt2 +
 					   '{' + p.verbatim_item() + '}';
 
-			if (t.cs() == "providecommand" ||
+			if (t.cs() == "DeclareRobustCommand" ||
+			    t.cs() == "DeclareRobustCommandx" ||
+			    t.cs() == "providecommand" ||
+			    t.cs() == "providecommandx" ||
 			    name[name.length()-1] == '*')
 				handle_ert(os, ert, context);
 			else {
