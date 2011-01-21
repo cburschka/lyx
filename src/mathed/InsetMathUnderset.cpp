@@ -85,6 +85,8 @@ bool InsetMathUnderset::idxUpDown(Cursor & cur, bool up) const
 void InsetMathUnderset::write(WriteStream & os) const
 {
 	MathEnsurer ensurer(os);
+	if (os.fragile())
+		os << "\\protect";
 	os << "\\underset{" << cell(0) << "}{" << cell(1) << '}';
 }
 
