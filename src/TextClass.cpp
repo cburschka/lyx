@@ -1315,7 +1315,7 @@ DocumentClass & DocumentClassBundle::makeDocumentClass(
 					"you have not installed. LaTeX output may not be possible.\n"
 					"Missing prerequisites:\n"
 						"\t%2$s\n"
-					"See section 3.1.2.3 of the User's Guide for more information."),
+					"See section 3.1.2.3 (Modules) of the User's Guide for more information."),
 				from_utf8(modName), prereqs);
 			frontend::Alert::warning(_("Package not available"), msg, true);
 		}
