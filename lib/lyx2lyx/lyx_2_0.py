@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is part of lyx2lyx
 # -*- coding: utf-8 -*-
-# Copyright (C) 2010 The LyX team
+# Copyright (C) 2011 The LyX team
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
