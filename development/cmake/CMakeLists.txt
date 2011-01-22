@@ -191,7 +191,7 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 		endif()
 	endif()
 	if(WIN32)
-		set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/LYX_INSTALLED CACHE PATH "LyX default install prefix" FORCE)
+		set(CMAKE_INSTALL_PREFIX LYX_INSTALLED CACHE PATH "LyX default install prefix" FORCE)
 	endif()
 endif()
 
