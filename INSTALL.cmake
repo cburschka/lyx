@@ -261,5 +261,19 @@ Xcode/Mac
 Packaging
 ----------
 
-	- Source .tar.gz, .tar.bz2, .zip:
-		make package_source
+    - Source .tar.gz, .tar.bz2, .zip:
+        make package_source
+
+    - Binary .tar.gz and install .sh:
+        make package
+
+    - Binary .deb:
+        create : cpack -G DEB --config CPackConfig.cmake
+        list   : dpkg-deb -c lyx-*.deb
+        install: dpkg -i lyx-*.deb
+
+    - Binary .rpm:
+        create : cpack -G RPM --config CPackConfig.cmake
+        list   : rpm -qlp lyx-*.rpm              
+        install: rpm -U lyx-*.rpm   
+
