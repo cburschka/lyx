@@ -41,16 +41,32 @@ namespace lyx {
 
 
 void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
-		Context const & context)
+		Context const & context, InsetLayout const * layout)
 {
+	bool const forcePlainLayout =
+		layout ? layout->forcePlainLayout() : false;
 	Context newcontext(true, context.textclass);
-	newcontext.font = context.font;
+	if (forcePlainLayout)
+		newcontext.layout = &context.textclass.plainLayout();
+	else
+		newcontext.font = context.font;
 	parse_text(p, os, flags, outer, newcontext);
 	newcontext.check_end_layout(os);
 }
 
 
 namespace {
+
+void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
+		Context const & context, string const & name)
+{
+	InsetLayout const * layout = 0;
+	DocumentClass::InsetLayouts::const_iterator it =
+		context.textclass.insetLayouts().find(from_ascii(name));
+	if (it != context.textclass.insetLayouts().end())
+		layout = &(it->second);
+	parse_text_in_inset(p, os, flags, outer, context, layout);
+}
 
 /// parses a paragraph snippet, useful for example for \\emph{...}
 void parse_text_snippet(Parser & p, ostream & os, unsigned flags, bool outer,
@@ -2419,7 +2435,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			begin_inset(os, "Index\n");
 			os << "status collapsed\n";
-			parse_text_in_inset(p, os, FLAG_ITEM, false, context);
+			parse_text_in_inset(p, os, FLAG_ITEM, false, context, "Index");
 			end_inset(os);
 		}
 
@@ -2455,14 +2471,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			begin_command_inset(os, "nomencl_print", "printnomenclature");
 			end_inset(os);
 			skip_spaces_braces(p);
-		}
-
-		else if (t.cs() == "url") {
-			context.check_layout(os);
-			begin_inset(os, "Flex URL\n");
-			os << "status collapsed\n";
-			parse_text_in_inset(p, os, FLAG_ITEM, false, context);
-			end_inset(os);
 		}
 
 		else if (LYX_FORMAT >= 408 &&
@@ -3149,7 +3157,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			begin_inset(os, "Flex ");
 			os << to_utf8(newinsetlayout->name()) << '\n'
 			   << "status collapsed\n";
-			parse_text_in_inset(p, os, FLAG_ITEM, false, context);
+			parse_text_in_inset(p, os, FLAG_ITEM, false, context, newinsetlayout);
 			end_inset(os);
 		}
 

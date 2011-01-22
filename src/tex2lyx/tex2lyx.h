@@ -63,7 +63,8 @@ void parse_text(Parser & p, std::ostream & os, unsigned flags, bool outer,
  * Therefore this may only be used to parse text in insets or table cells.
  */
 void parse_text_in_inset(Parser & p, std::ostream & os, unsigned flags,
-			 bool outer, Context const & context);
+                         bool outer, Context const & context,
+                         InsetLayout const * layout = 0);
 
 
 /// in math.cpp

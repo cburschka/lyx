@@ -358,8 +358,18 @@ $$
 %
 % Arguments whose text is "translate" will have regular LaTeX in them (as
 % opposed to commands with special syntax) which should be translated by
-% reLyX like regular LaTeX. \mbox{} is an obvious example. LyX doesn't
+% tex2lyx like regular LaTeX. \mbox{} is an obvious example. LyX doesn't
 % support it, but only the "\mbox{" and the "}" need to be in TeX mode.
+% "translate" should be specified for as many arguments aspossible.
+% Besides the better on-screen display of the contents (a math inset looks
+% better than a formula in ERT), it enables LyX to apply some fixes to LaTeX
+% limitations: For example, footnotes in section headings do not work in
+% LaTeX, but LyX produces preamble code to fix that. Of course this works only
+% for footnote insets and not for footnotes in ERT. Example:
+% \section{title \texorpdfstring{\footnote{foo}}{bar}}
+% is some code that may occur in a .tex file created by LyX. The re-import
+% works only because the first argument of \texorpdfstring is specified as
+% translatable in this file.
 
 \abstractname
 \Acrobatmenu{}{}         % from the hyperref package
@@ -640,7 +650,7 @@ $$
 \tableofcontents
 \tabularnewline[]
 \telephone{translate}
-\texorpdfstring{}{}      % from the hyperref package
+\texorpdfstring{translate}{translate} % from the hyperref package
 \textcircled{translate}
 \textcolor[]{,,}{translate}
 %\textcolor{}{}
