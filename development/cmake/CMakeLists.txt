@@ -36,25 +36,9 @@ include(LyXMacros)
 
 LYX_OPTION_INIT()
 
-LYX_OPTION(CPACK "Use the CPack management (Implies LYX_INSTALL option)" OFF ALL)
-if(LYX_CPACK)
-	set(LYX_INSTALL ON CACHE BOOL "INSTALL option" FORCE)
-endif()
-
-LYX_OPTION(INSTALL "Build install projects/rules (implies a bunch of other options)" OFF ALL)
-if(LYX_INSTALL)
-	set(LYX_NLS ON CACHE BOOL "Nls option" FORCE)
-	set(LYX_ASPELL ON CACHE BOOL "Aspell option" FORCE)
-	if (WIN32)
-		set(LYX_HUNSPELL ON CACHE BOOL "Hunspell option" FORCE)
-	endif()
-	set(LYX_CONSOLE OFF CACHE BOOL "No console option" FORCE)
-	set(LYX_PACKAGE_SUFFIX ON CACHE BOOL "Package suffix option" FORCE)
-	set(LYX_RELEASE ON CACHE BOOL "Release option" FORCE)
-	set(LYX_PROFILE OFF CACHE BOOL "Profile option" FORCE)
-endif()
-
 # Options for all compilers/systems
+LYX_OPTION(CPACK "Use the CPack management (Implies LYX_INSTALL option)" OFF ALL)
+LYX_OPTION(INSTALL "Build install projects/rules (implies a bunch of other options)" OFF ALL)
 LYX_OPTION(NLS "Use nls" OFF ALL)
 LYX_OPTION(ASPELL "Require aspell" OFF ALL)
 LYX_OPTION(ENCHANT "Require Enchant" OFF ALL)
@@ -83,6 +67,31 @@ LYX_OPTION(CONSOLE "Show console on Windows" ON MSVC)
 LYX_OPTION(VLD "Use VLD with MSVC" OFF MSVC)
 LYX_OPTION(WALL "Enable all warnings" OFF MSVC)
 LYX_OPTION(LYX_CONFIGURE_CHECKS "Also run configure checks for MSVC" OFF MSVC)
+
+
+# Check option dependencies
+if(LYX_CPACK)
+	set(LYX_INSTALL ON)
+endif()
+
+if(LYX_INSTALL)
+	set(LYX_NLS ON)
+	set(LYX_ASPELL ON)
+	if (WIN32)
+		set(LYX_HUNSPELL ON)
+	endif()
+	set(LYX_CONSOLE OFF)
+	set(LYX_PACKAGE_SUFFIX ON)
+	set(LYX_RELEASE ON)
+	set(LYX_PROFILE OFF)
+endif()
+
+if(LYX_MERGE_FILES)
+	set(LYX_PCH OFF)
+else()
+	set(LYX_MERGE_REBUILD OFF)
+endif()
+
 
 
 message(STATUS)
@@ -343,12 +352,6 @@ endforeach(_v)
 message(STATUS "")
 
 
-if(LYX_MERGE_FILES)
-	set(LYX_PCH OFF)
-else()
-	set(LYX_MERGE_REBUILD OFF)
-endif()
-
 if(LYX_PCH)
 	# PCHs not supported by cmake: http://www.cmake.org/Bug/view.php?id=1260
 	# Not sure if it works for all non-msvc compilers
@@ -380,7 +383,6 @@ if(LYX_PCH)
 		endmacro()
 	endif()
 else()
-	set(LYX_PCH OFF CACHE STRING "Disable precompiled headers")
 	macro(lyx_add_msvc_pch)
 	endmacro(lyx_add_msvc_pch)
 	macro(lyx_add_gcc_pch name_)
