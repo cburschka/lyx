@@ -32,9 +32,9 @@ include(LyXMacros)
 # 2. parameter: description
 # 3. parameter: default value, ON or OFF
 # 4. parameter: system on which option is used: ALL, GCC, MSVC, ...
-message(STATUS)
-message(STATUS "Switch LYX_* variables by -DLYX_*=1 or 0:")
-message(STATUS)
+
+
+LYX_OPTION_INIT()
 
 LYX_OPTION(CPACK "Use the CPack management (Implies LYX_INSTALL option)" OFF ALL)
 if(LYX_CPACK)
@@ -471,6 +471,12 @@ if(LYX_INSTALL)
 	add_subdirectory(doc)
 	include(../Install)
 endif()
+
+
+message(STATUS)
+message(STATUS "Build options, switch LYX_* variables by -DLYX_*=1 or 0:")
+message(STATUS)
+LYX_OPTION_LIST_ALL()
 
 
 set(CPACK_PACKAGE_VERSION_MAJOR "${LYX_MAJOR_VERSION}")
