@@ -3477,13 +3477,14 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	runparams.linelen = lyxrc.plaintext_linelen;
 	runparams.includeall = includeall;
 	vector<string> backs = backends();
+	Converters converters = theConverters();
 	if (find(backs.begin(), backs.end(), format) == backs.end()) {
 		// Get shortest path to format
-		theConverters().buildGraph();
+		converters.buildGraph();
 		Graph::EdgePath path;
 		for (vector<string>::const_iterator it = backs.begin();
 		     it != backs.end(); ++it) {
-			Graph::EdgePath p = theConverters().getPath(*it, format);
+			Graph::EdgePath p = converters.getPath(*it, format);
 			if (!p.empty() && (path.empty() || p.size() < path.size())) {
 				backend_format = *it;
 				path = p;
@@ -3499,7 +3500,7 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 			}
 			return false;
 		}
-		runparams.flavor = theConverters().getFlavor(path);
+		runparams.flavor = converters.getFlavor(path);
 
 	} else {
 		backend_format = format;
@@ -3571,7 +3572,7 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	ErrorList & error_list = d->errorLists[error_type];
 	string const ext = formats.extension(format);
 	FileName const tmp_result_file(changeExtension(filename, ext));
-	bool const success = theConverters().convert(this, FileName(filename),
+	bool const success = converters.convert(this, FileName(filename),
 		tmp_result_file, FileName(absFileName()), backend_format, format,
 		error_list);
 
