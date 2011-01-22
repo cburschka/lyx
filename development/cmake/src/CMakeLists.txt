@@ -98,6 +98,7 @@ endif()
 lyx_find_info_files(LyXInfoFiles ${TOP_SRC_DIR}/*)
 lyx_find_info_files(LyXCMakeFiles ${TOP_SRC_DIR}/development/cmake/*)
 lyx_find_info_files(LyXCMakeFiles ${TOP_SRC_DIR}/development/cmake/modules/*)
+lyx_find_info_files(LyXUiFiles ${TOP_SRC_DIR}/lib/ui/*)
 
 add_executable(${_lyx}
 	${WIN32_CONSOLE}
