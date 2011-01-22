@@ -258,5 +258,8 @@ Xcode/Mac
 
 
 
-    
+Packaging
+----------
 
+	- Source .tar.gz, .tar.bz2, .zip:
+		make package_source
