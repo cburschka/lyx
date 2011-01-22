@@ -79,7 +79,7 @@ if [%2]==[] (
 
 if "%1%" == "devel" (
 	REM Build solution to develop LyX
-	cmake %LYX_SOURCE%\development\cmake -G%USED_STUDIO% -DLYX_MERGE_FILES=0 -DLYX_NLS=1 -DLYX_DEBUG=1
+	cmake %LYX_SOURCE%\development\cmake -G%USED_STUDIO% -DLYX_MERGE_FILES=0 -DLYX_NLS=1 -DLYX_RELEAE=0
 	REM needed when running lyx from the debugger
 	set LYX_DIR_20x=%LYX_SOURCE%\lib
 	start lyx.sln /build Debug
