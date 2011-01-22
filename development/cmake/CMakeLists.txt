@@ -77,6 +77,7 @@ LYX_OPTION(DEBUG_GLIBC_PEDANTIC "Enable libstdc++pedantic debug mode" OFF GCC)
 LYX_OPTION(STDLIB_DEBUG "Use debug stdlib" OFF GCC)
 LYX_OPTION(CONCEPT_CHECKS "Enable concept-checks" OFF GCC)
 LYX_OPTION(QUIET "Don't generate verbose makefiles" OFF ALL)
+LYX_OPTION(LYX_CONFIGURE_CHECKS "Also run configure checks for MSVC" OFF MSVC)
 
 
 message(STATUS)
@@ -337,16 +338,21 @@ endforeach(_v)
 message(STATUS "")
 
 
-# PCHs not supported by cmake: http://www.cmake.org/Bug/view.php?id=1260
-# Not sure if it works for all non-msvc compilers
-include(PCHSupport_26)
+if(LYX_MERGE_FILES)
+	set(LYX_PCH OFF)
+else()
+	set(LYX_MERGE_REBUILD OFF)
+endif()
 
 if(LYX_PCH)
+	# PCHs not supported by cmake: http://www.cmake.org/Bug/view.php?id=1260
+	# Not sure if it works for all non-msvc compilers
+	include(PCHSupport_26)
 	configure_file(${CMAKE_SOURCE_DIR}/pcheaders.h ${CMAKE_BINARY_DIR}/pcheaders.h)
 	configure_file(${CMAKE_SOURCE_DIR}/config.cpp.cmake ${CMAKE_BINARY_DIR}/config_pch.cpp)
 	add_definitions(-DLYX_ENABLE_PCH)
 
-	if(MSVC AND NOT MERGE_FILES)
+	if(MSVC)
 		macro(lyx_add_msvc_pch name_)
 			set_source_files_properties(${${name_}_sources} PROPERTIES
 				COMPILE_FLAGS "/Yuconfig.h /Fp\$(IntDir)/config.pch")
@@ -369,7 +375,7 @@ if(LYX_PCH)
 		endmacro()
 	endif()
 else()
-	set(LYX_PCH OFF CACHE STRING "Disaböe pre-compiled headers")
+	set(LYX_PCH OFF CACHE STRING "Disable precompiled headers")
 	macro(lyx_add_msvc_pch)
 	endmacro(lyx_add_msvc_pch)
 	macro(lyx_add_gcc_pch name_)
@@ -384,7 +390,6 @@ if(MSVC)
 		include(${LYX_VLD_PATH}/tools/cmake/vld.cmake)
 	endif()
 
-	# TODO options
 	if(LYX_WALL)
 		# Use the highest warning level
 		set(CMAKE_CXX_WARNING_LEVEL 4 CACHE TYPE STRING FORCE)
@@ -443,7 +448,7 @@ if(LYX_DEBUG_GLIBC_PEDANTIC)
 endif()
 
 # compiler tests, config.h generation
-if(MSVC AND NOT CONFIGURECHECKS)
+if(MSVC AND NOT LYX_CONFIGURE_CHECKS)
 	configure_file(configCompiler.h.msvc ${CMAKE_BINARY_DIR}/configCompiler.h)
 else()
 	include(ConfigureChecks.cmake)
