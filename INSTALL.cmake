@@ -2,49 +2,187 @@
 Building LyX with CMake
 =========================
 
-July, 2007
+    Install CMake from www.cmake.org or your distribution (version >= 2.6.4).
 
 
 
-All systems
-===========
+3rd party libraries
+--------------------
 
-    * CMake or CVS version from www.cmake.org
-    * Install Qt 4 and make sure qmake 4 is found
-      (add the folder with qmake to the environment variable PATH,
-       e.g. set PATH=<your path to qt>\bin;%PATH%).
+    Install Qt 4 and make sure qmake is found.
+        Add the folder with qmake to the environment variable PATH.
+        If you've compiled Qt by yourself or qmake is not found after
+        installing Qt fix PATH,
+        Linux/Unix: export PATH=<your path to qt>/bin:$PATH
+        Windows   : set PATH=<your path to qt>\bin;%PATH%
+    
+    
+    Windows specific
+    
+        On Windows install the supplementary modules:
+        * Visual Studio 2008: ftp://ftp.lyx.org/pub/lyx/contrib/lyx-windows-deps-msvc2008.zip
+        * Visual Studio 2010: ftp://ftp.devel.lyx.org/pub/contrib/windows/bin/     
+        
+        If cmake couldn't find these modules set GNUWIN32_DIR, eg. 
+        -DGNUWIN32_DIR=c:\gnuwin32. By default cmake searches in your 
+        program folder. Or use the cmake GUI to set the GNUWIN32_DIR path.
+
+        The build process tries to find aspell on Windows
+        in %ProgramFiles%/GnuWin32/ and in /usr/ or in /usr/local 
+        under Linux. If it could not find aspell, spell checking
+        will be disabled.
+        
+        
+        
+Generating build system files
+------------------------------
+
+    CMake is a build system file generator. On all systems it could
+    generate files for several build systems, for instance Makefiles
+    for make, project files for Visual Studio, Xcode, Eclipse.
+
+    Running cmake without any argument lists all supported build
+    systems on your system. Passing one of them as -G"<build system name>" 
+    argument when running cmake selects this.
+
+
+    
+Building out-of-source
+-----------------------
+
+    The standard way of using CMake is to build in a folder which doesn't resides
+    in the source tree. This has the advantage, that a complete fresh build could
+    be done by simply deleting all files in the build folder and to re-run cmake 
+    again.
+
+    Another benefit of out-of-source builds is that several builds (debug, release,
+    command-line builds, IDE project files) could all use the same source tree.
+
+    Therefore when using cmake create a folder outside of the source tree and
+    select this folder when using CMake's GUI, cmake-gui, or go into this folder
+    when you call cmake from the shell.
+
+    
+
+Using cmake
+------------
+
+    When calling cmake you must pass the path to the source tree (absolute are relative)
+    and optionally the generator (each system has its own default). Additional arguments 
+    could be passed with the -D prefix.
+
+    Here some examples, assuming the build folder is in the same folder as the source tree:
+
+    * Makefiles on Linux
+        cmake ../trunk/development/cmake
+    
+    * Project files for QtCreator:
+        Open the trunk/development/cmake/CMakeLists.txt file and select the build folder
+        or create the files in the command line using the -G"CodeBlocks *" option, eg
+            cmake ../trunk/development/cmake -G"CodeBlocks - Unix Makefiles"
+    
+    * Project files for Xcode
+        cmake ../trunk/development/cmake -GXcode
+        
+    * Project files for Visual Studio 10
+        cmake ..\trunk\development\cmake -G"Visual Studio 10"
+
+    * NMake files for Visual Studio
+        cmake ..\trunk\development\cmake -G"NMake Makefiles"
+
+    * Makefiles for MinGW
+        cmake ..\trunk\development\cmake -G"MinGW Makefiles"
+
+
+    Daily work:
+
+    * Re-running cmake is simple
+        cmake .
+
+    * Adding new files 
+        The cmake build system scans the directories, so no need to update any file,
+        just re-run cmake. Also the mocing rules are generated.
+
+    * Unused source code file
+        Because cmake scans the directories for *.cpp and *.h files it will also
+        add files to the build system which are not mentioned to build. To exclude
+        them change their ending and re-run cmake.
+
+
+        
       
+Build options
+--------------
 
-Windows only
-=============
+    Options could be passed by the -D prefix when running cmake.
+    Available options will be listed on each cmake run.
+    Here the options with their default value:
+    
+    # Available on all systems/compilers
+    -- LYX_CPACK                = OFF    : Use the CPack management (Implies LYX_INSTALL option)
+    -- LYX_INSTALL              = OFF    : Build install projects/rules (implies a bunch of other options)
+    -- LYX_NLS                  = OFF    : Use nls
+    -- LYX_ASPELL               = OFF    : Require aspell
+    -- LYX_ENCHANT              = OFF    : Require Enchant
+    -- LYX_HUNSPELL             = OFF    : Require Hunspell
+    -- LYX_DEVEL_VERSION        = OFF    : Build developer version
+    -- LYX_RELEASE              = ON     : Build release version, build debug when disabled
+    -- LYX_PACKAGE_SUFFIX       = ON     : Use version suffix for packaging
+    -- LYX_PCH                  = OFF    : Use precompiled headers
+    -- LYX_MERGE_FILES          = OFF    : Merge source files into one compilation unit
+    -- LYX_MERGE_REBUILD        = OFF    : Rebuild generated files from merged files build
+    -- LYX_QUIET                = OFF    : Don't generate verbose makefiles
+    -- LYX_INSTALL_PREFIX       = OFF    : Install path for LyX
+    -- LYX_EXTERNAL_LIBINTL     = ON     : Use external libintl
+    
+    # GCC specific 
+    -- LYX_PROFILE              = OFF    : Build profile version
+    -- LYX_EXTERNAL_BOOST       = OFF    : Use external boost
+    -- LYX_PROGRAM_SUFFIX       = ON     : Append version suffix to binaries
+    -- LYX_DEBUG_GLIBC          = OFF    : Enable libstdc++ debug mode
+    -- LYX_DEBUG_GLIBC_PEDANTIC = OFF    : Enable libstdc++pedantic debug mode
+    -- LYX_STDLIB_DEBUG         = OFF    : Use debug stdlib
+    -- LYX_CONCEPT_CHECKS       = OFF    : Enable concept-checks
 
-    Install the windows supplementary modules:
-      Download ftp://ftp.lyx.org/pub/lyx/contrib/lyx-windows-deps-msvc2008.zip
-      and extract in the root directory of your LyX files (so you will get
-      a directory called lyx-windows-deps-msvc2008 next to the other directories
-      like src, development etc.).
-     
-    If cmake couldn't find these modules set GNUWIN32_DIR, eg. 
-    -DGNUWIN32_DIR=c:\gnuwin32. By default cmake searches in your 
-    program folder. Or use the cmake GUI to set the GNUWIN32_DIR path.
+    # MSVC specific
+    -- LYX_CONSOLE              = ON     : Show console on Windows
+    -- LYX_VLD                  = OFF    : Use VLD with MSVC
+    -- LYX_WALL                 = OFF    : Enable all warnings
+    -- LYX_LYX_CONFIGURE_CHECKS = OFF    : Also run configure checks for MSVC
+
+    
+
+Using the merged files build
+-----------------------------
+
+    When the option 'LYX_MERGE_FILES' is used then for each library a files 
+    is generated which includes all source files of this library, this speeds 
+    up compilation about factor 5.
+
+    When you heavily work on one file you could comment out the relevant 
+    define in the '_allinone_const.C' file, so only the file _allinone_touched.C'
+    file will be re-compiled again an again.
 
 
-Building Visual C++ project files
---------------------------------------
+    - Adding new files
+      When you add new files the merging files have to be rebuild:
+        cmake -DLYX_MERGE_REBUILD=1 .
+      Or start over by completely  cleaning the build folder.
 
-    * Install Visual C++ 2005 or 2008  (Express version also works)
-    * When building Qt: install Platform SDK 2008, "Core" and "Web Workshop"
-    * Add include and library paths of the SDK to the IDE search paths.
-      Menu entry: Tools->Options->'VC++ directories'->'Library files' and 'Include files'
-    * Create a build directory, e.g. ..\trunk\..\build
-    * Call in the build directory 'cmake ..\trunk\development\cmake'
-    * Start lyx.sln
+    - Starting over with same configuration
+      Delete all files but CMakeCache.txt and call
+        cmake .
+
+
+
+Visual Studio C++
+------------------
     
     * Warnings: The default warning level of the msvc cmake builds 
       is /W3. To enable /W4 use
-        '-DWALL=1 '
+        '-DLYX_WALL=1 '
       and 
-        '-DDISABLEWALL=1'
+        '-DLYX_WALL=0'
       switches back to to /W3, 
       To disable a specific warning add it to MSVC_W_DISABLE in
       cmake/CMakeLists.txt. To make the warning an error add it
@@ -52,7 +190,7 @@ Building Visual C++ project files
       
     * Memory leak detection
       For MSVC the usage of 'Visual Leak Detection' could be enabled
-      (http://dmoulding.googlepages.com/vld): -Dvld=1
+      (http://dmoulding.googlepages.com/vld): -DLYX_VLD=1
       
       Building vld requires the 'Debugging Tools For Windows' (~16MB)
       http://www.microsoft.com/whdc/devtools/debugging/default.mspx
@@ -64,11 +202,11 @@ Building Visual C++ project files
       http://www.codeproject.com/tools/visualleakdetector.asp
       
       
-Some tips:
+    Some tips:
 
     * the Release build links much faster 
     * for the 'Debug' and 'Release' build all precompiled headers are enabled
-      to compile without pch (non file merge mode) This is usefull to check 
+      to compile without pch (non file merge mode) This could be used to check 
       if all necessary headers are included.
         * use 'MinSizeRel' which only precompiles the STL and Boost headers
         * use 'RelWithDebInfo' which does not use any precompiled headers
@@ -77,44 +215,30 @@ Some tips:
 
 GCC/Windows (Win2k only works with MSYS, XP?)
 ----------------------------------------------
-
-    * create a build directory, e.g. .../trunk/../build
-    * call: export QMAKESPEC=win32-g++ (MSYS) or set QMAKESPEC=win32-g++ (CMD)
-    * call in the build directory 'cmake ..\trunk\development\cmake'
+    QMAKESPEC is needed:
+      export QMAKESPEC=win32-g++ (MSYS) or set QMAKESPEC=win32-g++ (CMD)
 
 
 
-Building with GCC/Linux
-------------------------
+Ubuntu/Kubuntu
+--------------_
 
-    * create a build directory, e.g. .../trunk/../build
-    * call in the build directory 'cmake ../trunk/development/cmake'
-    * compiler and linker options could be suppressd by '-Dquiet=1' 
-
-
-
-Ubuntu packages
-----------------
     You need additionally these packages:
       * g++
       * cmake
       * qt4-dev-tools
 
+      
 
-
-Building with Xcode/Mac
------------------------
-
-    * create a build directory, e.g. .../trunk/../build
-    * call in the build directory 'cmake .../trunk/development/cmake -G Xcode'
-    * open .../trunk/../build/lyx-qt4.xcodeproj
-
-
-Some tips:
+Xcode/Mac
+----------
+    
+    Some tips:
 
     * Xcode prefers UTF8 when opening source files, though LyX usually uses
       Latin1. To fix that select all source files in Xcode and click "Get Info"
       in the context menu. Change the encoding to Latin1.
+
     * You can run and debug LyX from Xcode. For LyX to find its resources, there
       are two possibilities:
         a) Put a resource directory, e.g. a link to the lib directory of the 
@@ -122,35 +246,17 @@ Some tips:
         b) Select the lyx-qt4 executable in Xcode, click on "Get Info" in the 
            context menu and add "-sysdir a_valid_LyX_resource_directory" 
            pointing e.g. to a valid Contents/Resources of a LyX.app directory.
+
     * LyX on Mac doesn't look for fonts in the resource directory if the
       executable is not in an .app bundle. Instead you have to create a
       symbolic link to the fonts directory in the place where the executable
       is: ln -s .../trunk/lib/fonts .../trunk/../build/bin/Debug/
       If you don't do that math character will not show up correctly.
+
     * CMake properly finds the Qt4 library bundles from Trolltech's binary
       Qt4 package for Mac. So no need to compile Qt on your own.
 
 
 
-Experts only:
-
-    * Faster build process: with file merging enabled compilation 
-      is up to 5 times faster: '-Dmerge=1'.
-      To force a complete regeneration of the created files use
-      '-Dmerge_rebuild=1'.
-
-    * install win32libs with the 'KDE on Windows' installer
-       http://download.cegit.de/kde-windows/installer/
-       - use the msvc packages
-       - a release version of Qt is also available by the installer
     
 
-
-To generate other build files call 'cmake' 
-which shows a list of possibilities.
-
-
-The build process tries to find aspell on Windows
-in %ProgramFiles%/GnuWin32/ and in /usr/ or in /usr/local 
-under Linux. If it could not find aspell, spell checking
-will be disabled.
