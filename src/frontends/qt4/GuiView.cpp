@@ -88,9 +88,11 @@
 #include <QDesktopWidget>
 #include <QDragEnterEvent>
 #include <QDropEvent>
+#include <QLabel>
 #include <QList>
 #include <QMenu>
 #include <QMenuBar>
+#include <QMovie>
 #include <QPainter>
 #include <QPixmap>
 #include <QPixmapCache>
@@ -440,6 +442,19 @@ GuiView::GuiView(int id)
 
 	// For Drag&Drop.
 	setAcceptDrops(true);
+
+	// add busy indicator to statusbar
+	QLabel * busylabel = new QLabel(statusBar());
+	statusBar()->addPermanentWidget(busylabel);
+	QString fn = toqstr(lyx::libFileSearch("images", "busy.gif").absFileName());
+	QMovie * busyanim = new QMovie(fn, QByteArray(), busylabel);
+	busylabel->setMovie(busyanim);
+	busyanim->start();
+	busylabel->hide();
+	connect(&d.processing_thread_watcher_, SIGNAL(started()), 
+		busylabel, SLOT(show()));
+	connect(&d.processing_thread_watcher_, SIGNAL(finished()), 
+		busylabel, SLOT(hide()));
 
 	statusBar()->setSizeGripEnabled(true);
 	updateStatusBar();
