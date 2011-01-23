@@ -346,6 +346,7 @@ dist_images_DATA = \
 	images/buffer-write-as.png \
 	images/buffer-write.png \
 	images/build-program.png \
+	images/busy.gif \
 	images/change-accept.png \
 	images/change-next.png \
 	images/change-reject.png \

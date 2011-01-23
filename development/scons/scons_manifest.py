@@ -640,6 +640,7 @@ src_tex2lyx_copied_files = Split('''
 
 src_tex2lyx_extra_files = Split('''
     Makefile.am
+    TODO.txt
     pch.h
     tex2lyx.1in
     test/box-color-size-space-align.tex
@@ -1470,6 +1471,7 @@ lib_images_files = Split('''
     buffer-write-as.png
     buffer-write.png
     build-program.png
+    busy.gif
     change-accept.png
     change-next.png
     change-reject.png
