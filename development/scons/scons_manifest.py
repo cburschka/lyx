@@ -628,6 +628,7 @@ src_tex2lyx_copied_files = Split('''
     Floating.cpp
     FontInfo.cpp
     Layout.cpp
+    LayoutFile.cpp
     LayoutModuleList.cpp
     lengthcommon.cpp
     Lexer.cpp

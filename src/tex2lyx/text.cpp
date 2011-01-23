@@ -452,27 +452,25 @@ void handle_comment(ostream & os, string const & s, Context & context)
 }
 
 
-Layout const * findLayout(TextClass const & textclass, string const & name)
+Layout const * findLayout(TextClass const & textclass, string const & name, bool command)
 {
-	DocumentClass::const_iterator lit = textclass.begin();
-	DocumentClass::const_iterator len = textclass.end();
-	for (; lit != len; ++lit)
-		if (lit->latexname() == name)
-			return &*lit;
-	return 0;
+	Layout const * layout = findLayoutWithoutModule(textclass, name, command);
+	if (layout)
+		return layout;
+	if (checkModule(name, command))
+		return findLayoutWithoutModule(textclass, name, command);
+	return layout;
 }
 
 
 InsetLayout const * findInsetLayout(TextClass const & textclass, string const & name, bool command)
 {
-	DocumentClass::InsetLayouts::const_iterator it = textclass.insetLayouts().begin();
-	DocumentClass::InsetLayouts::const_iterator en = textclass.insetLayouts().end();
-	for (; it != en; ++it)
-		if (it->second.latexname() == name &&
-		    ((command && it->second.latextype() == InsetLayout::COMMAND) ||
-		     (!command && it->second.latextype() == InsetLayout::ENVIRONMENT)))
-			return &(it->second);
-	return 0;
+	InsetLayout const * insetlayout = findInsetLayoutWithoutModule(textclass, name, command);
+	if (insetlayout)
+		return insetlayout;
+	if (checkModule(name, command))
+		return findInsetLayoutWithoutModule(textclass, name, command);
+	return insetlayout;
 }
 
 
@@ -952,6 +950,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
                        string & last_env, Context & parent_context)
 {
 	Layout const * newlayout;
+	InsetLayout const * newinsetlayout = 0;
 	string const name = p.getArg('{', '}');
 	const bool is_starred = suffixIs(name, '*');
 	string const unstarred_name = rtrim(name, "*");
@@ -1069,8 +1068,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	}
 
 	// The single '=' is meant here.
-	else if ((newlayout = findLayout(parent_context.textclass, name)) &&
-		  newlayout->isEnvironment()) {
+	else if ((newlayout = findLayout(parent_context.textclass, name, false))) {
 		eat_whitespace(p, os, parent_context, false);
 		Context context(true, parent_context.textclass, newlayout,
 				parent_context.layout, parent_context.font);
@@ -1127,6 +1125,17 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		context.check_end_deeper(os);
 		parent_context.new_paragraph(os);
 		p.skip_spaces();
+	}
+
+	// The single '=' is meant here.
+	else if ((newinsetlayout = findInsetLayout(parent_context.textclass, name, false))) {
+		eat_whitespace(p, os, parent_context, false);
+		parent_context.check_layout(os);
+		begin_inset(os, "Flex ");
+		os << to_utf8(newinsetlayout->name()) << '\n'
+		   << "status collapsed\n";
+		parse_text_in_inset(p, os, FLAG_END, false, parent_context, newinsetlayout);
+		end_inset(os);
 	}
 
 	else if (name == "appendix") {
@@ -1905,8 +1914,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		// Must attempt to parse "Section*" before "Section".
 		else if ((p.next_token().asInput() == "*") &&
 			 context.new_layout_allowed &&
-			 (newlayout = findLayout(context.textclass, t.cs() + '*')) &&
-			 newlayout->isCommand()) {
+			 (newlayout = findLayout(context.textclass, t.cs() + '*', true))) {
 			// write the layout
 			p.get_token();
 			output_command_layout(os, p, outer, context, newlayout);
@@ -1915,8 +1923,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		// Section headings and the like
 		else if (context.new_layout_allowed &&
-			 (newlayout = findLayout(context.textclass, t.cs())) &&
-			 newlayout->isCommand()) {
+			 (newlayout = findLayout(context.textclass, t.cs(), true))) {
 			// write the layout
 			output_command_layout(os, p, outer, context, newlayout);
 			p.skip_spaces();

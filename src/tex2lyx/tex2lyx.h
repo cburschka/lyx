@@ -38,7 +38,10 @@ class Context;
 
 /// A trivial subclass, just to give us a public default constructor
 class TeX2LyXDocClass : public DocumentClass
-{};
+{
+public:
+	void setName(std::string const & name) { name_ = name; }
+};
 
 /// in preamble.cpp
 void parse_preamble(Parser & p, std::ostream & os, 
@@ -48,6 +51,7 @@ extern std::string babel2lyx(std::string const & language);
 
 /// used packages with options
 extern std::map<std::string, std::vector<std::string> > used_packages;
+extern const char * const modules_placeholder;
 
 /// in text.cpp
 std::string translate_len(std::string const &);
@@ -89,13 +93,27 @@ char const * const * is_known(std::string const &, char const * const *);
 
 /*!
  * Adds the command \p command to the list of known commands.
- * \param o1 first optional parameter to the latex command \newcommand
+ * \param o1 first optional parameter to the latex command \\newcommand
  * (with brackets), or the empty string if there were no optional arguments.
- * \param o2 wether \newcommand had a second optional parameter
+ * \param o2 wether \\newcommand had a second optional parameter.
+ * If \p definition is not empty the command is assumed to be from the LyX
+ * preamble and added to possible_textclass_commands.
  */
 void add_known_command(std::string const & command, std::string const & o1,
-		       bool o2);
-
+	bool o2, docstring const & definition = docstring());
+extern void add_known_environment(std::string const & environment,
+	std::string const & o1, bool o2, docstring const & beg,
+	docstring const & end);
+extern Layout const * findLayoutWithoutModule(TextClass const & textclass,
+	std::string const & name, bool command);
+extern InsetLayout const * findInsetLayoutWithoutModule(
+	TextClass const & textclass, std::string const & name, bool command);
+/*!
+ * Check whether a module provides command (if \p command is true) or
+ * environment (if \p command is false) \p name, and add the module to the
+ * list of used modules if yes.
+ */
+extern bool checkModule(std::string const & name, bool command);
 // Access to environment stack
 extern std::vector<std::string> active_environments;
 std::string active_environment();
@@ -107,7 +125,29 @@ enum ArgumentType {
 	optional
 };
 
+class FullCommand {
+public:
+	FullCommand() {}
+	FullCommand(std::vector<ArgumentType> const & a, docstring const & d)
+		: args(a), def(d) {}
+	std::vector<ArgumentType> args;
+	docstring def;
+};
+
+class FullEnvironment {
+public:
+	FullEnvironment() {}
+	FullEnvironment(std::vector<ArgumentType> const & a,
+	                docstring const & b, docstring const & e)
+		: args(a), beg(b), end(e) {}
+	std::vector<ArgumentType> args;
+	docstring beg;
+	docstring end;
+};
+
 typedef std::map<std::string, std::vector<ArgumentType> > CommandMap;
+typedef std::map<std::string, FullCommand> FullCommandMap;
+typedef std::map<std::string, FullEnvironment> FullEnvironmentMap;
 
 /// Known TeX commands with arguments that get parsed into ERT.
 extern CommandMap known_commands;
@@ -115,6 +155,10 @@ extern CommandMap known_commands;
 extern CommandMap known_environments;
 /// Known TeX math environments with arguments that get parsed into LyX mathed.
 extern CommandMap known_math_environments;
+/// Commands that might be defined by the document class or modules
+extern FullCommandMap possible_textclass_commands;
+/// Environments that might be defined by the document class or modules
+extern FullEnvironmentMap possible_textclass_environments;
 ///
 extern bool noweb_mode;
 /// Did we recognize any pdflatex-only construct?

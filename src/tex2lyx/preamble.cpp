@@ -44,6 +44,7 @@ namespace lyx {
 extern map<char, int> special_columns;
 
 map<string, vector<string> > used_packages;
+const char * const modules_placeholder = "\001modules\001";
 
 // needed to handle encodings with babel
 bool one_language = true;
@@ -674,6 +675,7 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	if (!h_options.empty())
 		os << "\\options " << h_options << "\n";
 	os << "\\use_default_options " << h_use_default_options << "\n"
+	   << modules_placeholder
 	   << "\\language " << h_language << "\n"
 	   << "\\inputencoding " << h_inputencoding << "\n"
 	   << "\\font_roman " << h_font_roman << "\n"
@@ -795,7 +797,6 @@ void parse_preamble(Parser & p, ostream & os,
 			h_preamble << t.asInput();
 
 		else if (t.cat() == catComment) {
-			// regex to parse comments (currently not used)
 			static regex const islyxfile("%% LyX .* created this file");
 			static regex const usercommands("User specified LaTeX commands");
 
@@ -834,9 +835,11 @@ void parse_preamble(Parser & p, ostream & os,
 			p.setCatCode('@', catOther);
 		}
 
-		else if (t.cs() == "newcommand" || t.cs() == "renewcommand"
-			    || t.cs() == "providecommand"
+		else if (t.cs() == "newcommand" || t.cs() == "newcommandx"
+		      || t.cs() == "renewcommand" || t.cs() == "renewcommandx"
+		      || t.cs() == "providecommand" || t.cs() == "providecommandx"
 				|| t.cs() == "DeclareRobustCommand"
+		      || t.cs() == "DeclareRobustCommandx"
 				|| t.cs() == "ProvideTextCommandDefault"
 				|| t.cs() == "DeclareMathAccent") {
 			bool star = false;
@@ -863,6 +866,10 @@ void parse_preamble(Parser & p, ostream & os,
 				// remove leading "\"
 				h_font_default_family = family.erase(0,1);
 			}
+
+			// Add the command to the known commands
+			add_known_command(name, opt1, !opt2.empty(), from_utf8(body));
+
 			// only non-lyxspecific stuff
 			if (!in_lyx_preamble) {
 				ostringstream ss;
@@ -872,9 +879,6 @@ void parse_preamble(Parser & p, ostream & os,
 				ss << '{' << name << '}' << opt1 << opt2
 				   << '{' << body << "}";
 				h_preamble << ss.str();
-
-				// Add the command to the known commands
-				add_known_command(name, opt1, !opt2.empty());
 /*
 				ostream & out = in_preamble ? h_preamble : os;
 				out << "\\" << t.cs() << "{" << name << "}"
@@ -897,7 +901,7 @@ void parse_preamble(Parser & p, ostream & os,
 			// options.
 			handle_opt(opts, known_languages, h_language);
 			delete_opt(opts, known_languages);
-			
+
 			// paper orientation
 			if ((it = find(opts.begin(), opts.end(), "landscape")) != opts.end()) {
 				h_paperorientation = "landscape";
@@ -932,6 +936,8 @@ void parse_preamble(Parser & p, ostream & os,
 			delete_opt(opts, known_class_paper_sizes);
 			// the remaining options
 			h_options = join(opts, ",");
+			// FIXME This does not work for classes that have a
+			//       different name in LyX than in LaTeX
 			h_textclass = p.getArg('{', '}');
 		}
 
@@ -955,14 +961,18 @@ void parse_preamble(Parser & p, ostream & os,
 
 		else if (t.cs() == "newenvironment") {
 			string const name = p.getArg('{', '}');
-			ostringstream ss;
-			ss << "\\newenvironment{" << name << "}";
-			ss << p.getOpt();
-			ss << p.getOpt();
-			ss << '{' << p.verbatim_item() << '}';
-			ss << '{' << p.verbatim_item() << '}';
-			if (!in_lyx_preamble)
-				h_preamble << ss.str();
+			string const opt1 = p.getOpt();
+			string const opt2 = p.getOpt();
+			string const beg = p.verbatim_item();
+			string const end = p.verbatim_item();
+			if (!in_lyx_preamble) {
+				h_preamble << "\\newenvironment{" << name
+				           << '}' << opt1 << opt2 << '{'
+				           << beg << "}{" << end << '}';
+			}
+			add_known_environment(name, opt1, !opt2.empty(),
+			                      from_utf8(beg), from_utf8(end));
+
 		}
 
 		else if (t.cs() == "def") {
@@ -1146,12 +1156,11 @@ void parse_preamble(Parser & p, ostream & os,
 		h_textclass = forceclass;
 	if (noweb_mode && !prefixIs(h_textclass, "literate-"))
 		h_textclass.insert(0, "literate-");
-	FileName layoutfilename = libFileSearch("layouts", h_textclass, "layout");
-	if (layoutfilename.empty()) {
-		cerr << "Error: Could not find layout file for textclass \"" << h_textclass << "\"." << endl;
-		exit(1);
+	tc.setName(h_textclass);
+	if (!tc.load()) {
+		cerr << "Error: Could not read layout file for textclass \"" << h_textclass << "\"." << endl;
+		exit(EXIT_FAILURE);
 	}
-	tc.read(layoutfilename);
 	if (h_papersides.empty()) {
 		ostringstream ss;
 		ss << tc.sides();

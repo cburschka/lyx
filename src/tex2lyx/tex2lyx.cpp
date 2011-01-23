@@ -17,6 +17,9 @@
 #include "Context.h"
 #include "Encoding.h"
 #include "Layout.h"
+#include "LayoutFile.h"
+#include "LayoutModuleList.h"
+#include "ModuleList.h"
 #include "TextClass.h"
 
 #include "support/convert.h"
@@ -135,13 +138,18 @@ string active_environment()
 }
 
 
+TeX2LyXDocClass textclass;
 CommandMap known_commands;
 CommandMap known_environments;
 CommandMap known_math_environments;
+FullCommandMap possible_textclass_commands;
+FullEnvironmentMap possible_textclass_environments;
+
+/// used modules
+LayoutModuleList used_modules;
 
 
-void add_known_command(string const & command, string const & o1,
-		       bool o2)
+void convertArgs(string const & o1, bool o2, vector<ArgumentType> & arguments)
 {
 	// We have to handle the following cases:
 	// definition                      o1    o2    invocation result
@@ -151,7 +159,6 @@ void add_known_command(string const & command, string const & o1,
 	// \newcommand{\foo}[1][]{bar #1}  "[1]" true  \foo[x]    bar x
 	// \newcommand{\foo}[1][x]{bar #1} "[1]" true  \foo[x]    bar x
 	unsigned int nargs = 0;
-	vector<ArgumentType> arguments;
 	string const opt1 = rtrim(ltrim(o1, "["), "]");
 	if (isStrUnsignedInt(opt1)) {
 		// The command has arguments
@@ -164,7 +171,155 @@ void add_known_command(string const & command, string const & o1,
 	}
 	for (unsigned int i = 0; i < nargs; ++i)
 		arguments.push_back(required);
+}
+
+
+void add_known_command(string const & command, string const & o1,
+                       bool o2, docstring const & definition)
+{
+	vector<ArgumentType> arguments;
+	convertArgs(o1, o2, arguments);
 	known_commands[command] = arguments;
+	if (!definition.empty())
+		possible_textclass_commands[command] =
+			FullCommand(arguments, definition);
+}
+
+
+void add_known_environment(string const & environment, string const & o1,
+                           bool o2, docstring const & beg, docstring const &end)
+{
+	vector<ArgumentType> arguments;
+	convertArgs(o1, o2, arguments);
+	known_environments[environment] = arguments;
+	if (!beg.empty() || ! end.empty())
+		possible_textclass_environments[environment] =
+			FullEnvironment(arguments, beg, end);
+}
+
+
+Layout const * findLayoutWithoutModule(TextClass const & textclass,
+                                       string const & name, bool command)
+{
+	DocumentClass::const_iterator it = textclass.begin();
+	DocumentClass::const_iterator en = textclass.end();
+	for (; it != en; ++it) {
+		if (it->latexname() == name &&
+		    ((command && it->isCommand()) || (!command && it->isEnvironment())))
+			return &*it;
+	}
+	return 0;
+}
+
+
+InsetLayout const * findInsetLayoutWithoutModule(TextClass const & textclass,
+                                                 string const & name, bool command)
+{
+	DocumentClass::InsetLayouts::const_iterator it = textclass.insetLayouts().begin();
+	DocumentClass::InsetLayouts::const_iterator en = textclass.insetLayouts().end();
+	for (; it != en; ++it) {
+		if (it->second.latexname() == name &&
+		    ((command && it->second.latextype() == InsetLayout::COMMAND) ||
+		     (!command && it->second.latextype() == InsetLayout::ENVIRONMENT)))
+			return &(it->second);
+	}
+	return 0;
+}
+
+
+bool checkModule(string const & name, bool command)
+{
+	// Cache to avoid slowdown by repated searches
+	static set<string> failed[2];
+
+	// Only add the module if the command was actually defined in the LyX preamble
+	if (command) {
+		if (possible_textclass_commands.find('\\' + name) == possible_textclass_commands.end())
+			return false;
+	} else {
+		if (possible_textclass_environments.find(name) == possible_textclass_environments.end())
+			return false;
+	}
+	if (failed[command].find(name) != failed[command].end())
+		return false;
+
+	// Create list of dummy document classes if not already done.
+	// This is needed since a module cannot be read on its own, only as
+	// part of a document class.
+	LayoutFile const & baseClass = LayoutFileList::get()[textclass.name()];
+	typedef map<string, DocumentClass *> ModuleMap;
+	static ModuleMap modules;
+	static bool init = true;
+	if (init) {
+		baseClass.load();
+		DocumentClassBundle & bundle = DocumentClassBundle::get();
+		LyXModuleList::const_iterator const end = theModuleList.end();
+		LyXModuleList::const_iterator it = theModuleList.begin();
+		for (; it != end; it++) {
+			string const module = it->getID();
+			LayoutModuleList m;
+			// FIXME this excludes all modules that depend on another one
+			if (!m.moduleCanBeAdded(module, &baseClass))
+				continue;
+			m.push_back(module);
+			modules[module] = &bundle.makeDocumentClass(baseClass, m);
+		}
+		init = false;
+	}
+
+	// Try to find a module that defines the command.
+	// Only add it if the definition can be found in the preamble of the
+	// style that corresponds to the command. This is a heuristic and
+	// different from the way how we parse the builtin commands of the
+	// text class (in that case we only compare the name), but it is
+	// needed since it is not unlikely that two different modules define a
+	// command with the same name.
+	ModuleMap::iterator const end = modules.end();
+	for (ModuleMap::iterator it = modules.begin(); it != end; it++) {
+		string const module = it->first;
+		if (!used_modules.moduleCanBeAdded(module, &baseClass))
+			continue;
+		if (findLayoutWithoutModule(textclass, name, command))
+			continue;
+		if (findInsetLayoutWithoutModule(textclass, name, command))
+			continue;
+		DocumentClass const * c = it->second;
+		Layout const * layout = findLayoutWithoutModule(*c, name, command);
+		InsetLayout const * insetlayout = layout ? 0 :
+			findInsetLayoutWithoutModule(*c, name, command);
+		docstring preamble;
+		if (layout)
+			preamble = layout->preamble();
+		else if (insetlayout)
+			preamble = insetlayout->preamble();
+		if (preamble.empty())
+			continue;
+		bool add = false;
+		if (command) {
+			FullCommand const & cmd =
+				possible_textclass_commands['\\' + name];
+			if (preamble.find(cmd.def) != docstring::npos)
+				add = true;
+		} else {
+			FullEnvironment const & env =
+				possible_textclass_environments[name];
+			if (preamble.find(env.beg) != docstring::npos &&
+			    preamble.find(env.end) != docstring::npos)
+				add = true;
+		}
+		if (add) {
+			FileName layout_file = libFileSearch("layouts", module, "module");
+			if (textclass.read(layout_file, TextClass::MODULE)) {
+				used_modules.push_back(module);
+				// speed up further searches:
+				// the module does not need to be checked anymore.
+				modules.erase(it);
+				return true;
+			}
+		}
+	}
+	failed[command].insert(name);
+	return false;
 }
 
 
@@ -460,12 +615,12 @@ void tex2lyx(idocstream & is, ostream & os, string const & encoding)
 		p.setEncoding(encoding);
 	//p.dump();
 
-	stringstream ss;
-	TeX2LyXDocClass textclass;
-	parse_preamble(p, ss, documentclass, textclass);
+	ostringstream ps;
+	parse_preamble(p, ps, documentclass, textclass);
 
 	active_environments.push_back("document");
 	Context context(true, textclass);
+	stringstream ss;
 	parse_text(p, ss, FLAG_END, true, context);
 	if (Context::empty)
 		// Empty document body. LyX needs at least one paragraph.
@@ -473,6 +628,19 @@ void tex2lyx(idocstream & is, ostream & os, string const & encoding)
 	context.check_end_layout(ss);
 	ss << "\n\\end_body\n\\end_document\n";
 	active_environments.pop_back();
+
+	// We know the used modules only after parsing the full text
+	ostringstream ms;
+	if (!used_modules.empty()) {
+		ms << "\\begin_modules\n";
+		LayoutModuleList::const_iterator const end = used_modules.end();
+		LayoutModuleList::const_iterator it = used_modules.begin();
+		for (; it != end; it++)
+			ms << *it << '\n';
+		ms << "\\end_modules\n";
+	}
+	os << subst(ps.str(), modules_placeholder, ms.str());
+
 	ss.seekg(0);
 	os << ss.str();
 #ifdef TEST_PARSER
@@ -636,6 +804,11 @@ int main(int argc, char * argv[])
 	encodings.read(enc_path, symbols_path);
 	if (!default_encoding.empty() && !encodings.fromLaTeXName(default_encoding))
 		error_message("Unknown LaTeX encoding `" + default_encoding + "'");
+
+	// Load the layouts
+	LayoutFileList::get().read();
+	//...and the modules
+	theModuleList.read();
 
 	// The real work now.
 	masterFilePath = onlyPath(infilename);

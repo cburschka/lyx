@@ -37,6 +37,7 @@ LINKED_FILES = \
 	../FontInfo.cpp \
 	../insets/InsetLayout.cpp \
 	../Layout.cpp \
+	../LayoutFile.cpp \
 	../LayoutModuleList.cpp \
 	../lengthcommon.cpp \
 	../Lexer.cpp \
