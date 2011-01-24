@@ -122,9 +122,7 @@ def as_txt_credits(contributers):
 
      results.append('''
 
-If your name doesn't appear here although you've done
-something for LyX, or your entry is wrong or incomplete,
-just drop some e-mail to lyx@lyx.org. Thanks.
+If your name doesn't appear here although you've done something for LyX, or your entry is wrong or incomplete, just drop some e-mail to lyx@lyx.org. Thanks.
 ''')
 
      return "".join(results)
