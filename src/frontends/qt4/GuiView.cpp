@@ -390,9 +390,6 @@ public:
 				   bool (Buffer::*syncFunc)(string const &, bool, bool) const,
 				   bool (Buffer::*previewFunc)(string const &, bool) const);
 
-	QTimer processing_cursor_timer_;
-	bool indicates_processing_;
-	QMap<GuiWorkArea*, Qt::CursorShape> orig_cursors_;
 	QVector<GuiWorkArea*> guiWorkAreas();
 };
 
@@ -443,6 +440,8 @@ GuiView::GuiView(int id)
 	// For Drag&Drop.
 	setAcceptDrops(true);
 
+#if (QT_VERSION >= 0x040400)
+
 	// add busy indicator to statusbar
 	QLabel * busylabel = new QLabel(statusBar());
 	statusBar()->addPermanentWidget(busylabel);
@@ -451,6 +450,7 @@ GuiView::GuiView(int id)
 	busylabel->setMovie(busyanim);
 	busyanim->start();
 	busylabel->hide();
+
 	connect(&d.processing_thread_watcher_, SIGNAL(started()), 
 		busylabel, SLOT(show()));
 	connect(&d.processing_thread_watcher_, SIGNAL(finished()), 
@@ -459,15 +459,14 @@ GuiView::GuiView(int id)
 	statusBar()->setSizeGripEnabled(true);
 	updateStatusBar();
 
-#if (QT_VERSION >= 0x040400)
 	connect(&d.autosave_watcher_, SIGNAL(finished()), this,
 		SLOT(autoSaveThreadFinished()));
+
+	connect(&d.autosave_watcher_, SIGNAL(started()), this,
+		SLOT(processingThreadFinished()));
 	connect(&d.processing_thread_watcher_, SIGNAL(finished()), this,
 		SLOT(processingThreadFinished()));
 
-	d.processing_cursor_timer_.setInterval(1000 * 3);
-	connect(&d.processing_cursor_timer_, SIGNAL(timeout()), this,
-		SLOT(indicateProcessing()));
 #endif
 
 	connect(this, SIGNAL(triggerShowDialog(QString const &, QString const &, Inset *)),
@@ -513,53 +512,9 @@ QVector<GuiWorkArea*> GuiView::GuiViewPrivate::guiWorkAreas()
 
 
 #if QT_VERSION >= 0x040400
-void GuiView::setCursorShapes(Qt::CursorShape shape)
-{
-	QVector<GuiWorkArea*> areas = d.guiWorkAreas();
-	Q_FOREACH(GuiWorkArea* wa, areas) {
-		wa->setCursorShape(shape);
-	}
-}
-
-
-void GuiView::restoreCursorShapes()
-{
-	QVector<GuiWorkArea*> areas = d.guiWorkAreas();
-	Q_FOREACH(GuiWorkArea* wa, areas) {
-		if (d.orig_cursors_.contains(wa)) {
-			wa->setCursorShape(d.orig_cursors_[wa]);
-		}
-	}
-}
-
-
-void GuiView::saveCursorShapes()
-{
-	d.orig_cursors_.clear();
-	QVector<GuiWorkArea*> areas = d.guiWorkAreas();
-	Q_FOREACH(GuiWorkArea* wa, areas) {
-		d.orig_cursors_[wa] = wa->cursorShape();
-	}
-}
-
-
-void GuiView::indicateProcessing()
-{
-	if (d.indicates_processing_) {
-		restoreCursorShapes();
-	} else {
-		setCursorShapes(Qt::BusyCursor);
-	}
-	d.indicates_processing_ = !d.indicates_processing_;
-}
-
 
 void GuiView::processingThreadStarted()
 {
-	saveCursorShapes();
-	d.indicates_processing_ = false;
-	indicateProcessing();
-	d.processing_cursor_timer_.start();
 }
 
 
@@ -572,15 +527,14 @@ void GuiView::processingThreadFinished(bool show_errors)
 	if (show_errors) {
 		errors(d.last_export_format);
  	}
-	d.processing_cursor_timer_.stop();
-	restoreCursorShapes();
-	d.indicates_processing_ = false;
 }
+
 
 void GuiView::processingThreadFinished()
 {
 	processingThreadFinished(true);
 }
+
 
 void GuiView::autoSaveThreadFinished()
 {
@@ -588,25 +542,6 @@ void GuiView::autoSaveThreadFinished()
 }
 
 #else
-
-void GuiView::setCursorShapes(Qt::CursorShape)
-{
-}
-
-
-void GuiView::restoreCursorShapes()
-{
-}
-
-
-void GuiView::saveCursorShapes()
-{
-}
-
-
-void GuiView::indicateProcessing()
-{
-}
 
 
 void GuiView::processingThreadStarted()
@@ -3043,7 +2978,6 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 		format = used_buffer->getDefaultOutputFormat();
 
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
-	gv_->processingThreadStarted();
 	if (!msg.empty()) {
 		progress_->clearMessages();
 		gv_->message(msg);

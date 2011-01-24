@@ -82,9 +82,6 @@ public:
 	/// are we busy ?
 	bool busy() const;
 
-	void saveCursorShapes();
-	void restoreCursorShapes();
-	void setCursorShapes(Qt::CursorShape shape);
 
 	/// \name Generic accessor functions
 	//@{
@@ -235,7 +232,6 @@ private Q_SLOTS:
 	void processingThreadFinished(bool show_errors);
 	void processingThreadFinished();
 	void autoSaveThreadFinished();
-	void indicateProcessing();
 
 	/// must be called in GUI thread
 	void doShowDialog(QString const & qname, QString const & qdata,
