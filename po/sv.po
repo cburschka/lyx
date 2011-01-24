@@ -4,7 +4,7 @@
 # Joacim Persson <sp2joap@ida.his.se> 1997, 1998.
 # Jim Rotmalm <jim.rotmalm@gmail.com>, 2010, 2011.
 #
-# Status 2011-01-20:
+# Status 2011-01-23:
 #   ~100% "acceptably done".
 #   ~270 shortcuts are not done.
 #   Improvements? Please tell me.
@@ -183,7 +183,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-01-21 01:23+0100\n"
-"PO-Revision-Date: 2011-01-20 21:12+0100\n"
+"PO-Revision-Date: 2011-01-23 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
 "Language: sv\n"
@@ -201,7 +201,7 @@ msgstr "Versionen hamnar här"
 
 #: src/frontends/qt4/ui/AboutUi.ui:64
 msgid "Credits"
-msgstr "Upphovsmän"
+msgstr "Medverkande"
 
 #: src/frontends/qt4/ui/AboutUi.ui:80 lib/layouts/apa.layout:199
 #: lib/layouts/agu_stdtitle.inc:81
@@ -10059,12 +10059,10 @@ msgid "endnote"
 msgstr "slutnot"
 
 #: lib/layouts/enumitem.module:2
-#, fuzzy
 msgid "Customisable Lists (enumitem)"
 msgstr "Anpassningsbara listor (enumitem)"
 
 #: lib/layouts/enumitem.module:8
-#, fuzzy
 msgid ""
 "Control the layout of enumerate, itemize, description, and list/labeling "
 "with an optional argument. See http://dante.ctan.org/CTAN/macros/latex/"
@@ -10072,7 +10070,7 @@ msgid ""
 msgstr ""
 "Kontrollerar utformningen av numrering, uppställning och beskrivning med ett "
 "valfritt argument. Se http://mirror.ctan.org/macros/latex/contrib/enumitem/"
-"enumitem.pdf"
+"enumitem.pdf och exempelfilen som följde med LyX."
 
 #: lib/layouts/enumitem.module:109
 msgid "Enumerate-Resume"
@@ -10091,9 +10089,8 @@ msgstr ""
 "till ekvationsnumret, som '(2.1)'."
 
 #: lib/layouts/eqs-within-sections.module:17
-#, fuzzy
 msgid "\\thesection.\\arabic{equation}"
-msgstr "Avsnitt \\arabic{section}"
+msgstr "\\thesection.\\arabic{equation}"
 
 #: lib/layouts/figs-within-sections.module:2
 msgid "Number Figures by Section"
@@ -10327,13 +10324,12 @@ msgid "Sweave"
 msgstr "Sweave"
 
 #: lib/layouts/sweave.module:6
-#, fuzzy
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
 "via Sweave package. See sweave.lyx in examples."
 msgstr ""
 "Gör det möjligt att använda det statistiska språket S/R som ett litterat "
-"programmeringsverktyg via Sweave-paketet."
+"programmeringsverktyg via Sweave-paketet. Se sweave.lyx i exempel."
 
 #: lib/layouts/sweave.module:28
 msgid "Chunk"
@@ -19292,7 +19288,7 @@ msgid "Module not available"
 msgstr "Modul ej tillgänglig"
 
 #: src/TextClass.cpp:1313
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The module %1$s requires a package that is not\n"
 "available in your LaTeX installation, or a converter that\n"
@@ -19301,9 +19297,12 @@ msgid ""
 "\t%2$s\n"
 "See section 3.1.2.3 of the User's Guide for more information."
 msgstr ""
-"Modulen %1$s kräver ett paket som inte är\n"
+"Modulen %1$s kräver ett paket som inte finns\n"
 "tillgänglig i din LaTeX-installation, eller en omvandlare\n"
-"du inte har installerat. LaTeX-utmatning kan vara ej möjlig.\n"
+"du inte har installerat. LaTeX-utmatning kanske ej är möjlig.\n"
+"Förutsättningar som saknas:\n"
+"\t%2$s\n"
+"Se avsnitt 3.1.2.3 i Användarguiden för mer information."
 
 #: src/TextClass.cpp:1320
 msgid "Package not available"
