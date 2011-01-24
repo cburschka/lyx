@@ -462,8 +462,8 @@ GuiView::GuiView(int id)
 	connect(&d.autosave_watcher_, SIGNAL(finished()), this,
 		SLOT(autoSaveThreadFinished()));
 
-	connect(&d.autosave_watcher_, SIGNAL(started()), this,
-		SLOT(processingThreadFinished()));
+	connect(&d.processing_thread_watcher_, SIGNAL(started()), this,
+		SLOT(processingThreadStarted()));
 	connect(&d.processing_thread_watcher_, SIGNAL(finished()), this,
 		SLOT(processingThreadFinished()));
 
