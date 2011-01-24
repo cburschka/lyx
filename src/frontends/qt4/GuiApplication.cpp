@@ -1271,8 +1271,6 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		LYXERR(Debug::ACTION, "action "
 		       << lyxaction.getActionName(action)
 		       << " [" << action << "] is disabled at this location");
-		if (current_view_)
-			current_view_->restartCursor();
 		dr.setMessage(flag.message());
 		dr.setError(true);
 		dr.dispatched(false);
