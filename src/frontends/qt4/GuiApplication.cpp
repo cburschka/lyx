@@ -1169,10 +1169,13 @@ void GuiApplication::gotoBookmark(unsigned int idx, bool openFile,
 		dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"));
 
 	// if the current buffer is not that one, switch to it.
-	BufferView * doc_bv = current_view_->documentBufferView();
+	BufferView * doc_bv = current_view_ ?
+		current_view_->documentBufferView() : 0;
 	if (!doc_bv || doc_bv->buffer().fileName() != tmp.filename) {
 		if (switchToBuffer) {
 			dispatch(FuncRequest(LFUN_BUFFER_SWITCH, file));
+			if (!current_view_)
+				return;
 			doc_bv = current_view_->documentBufferView();
 		} else
 			return;
@@ -1295,7 +1298,10 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// clear the last opened list, because
 		// maybe this will end the session
 		theSession().lastOpened().clear();
-		current_view_->closeScheduled();
+		// check for valid current_view_
+		validateCurrentView();
+		if (current_view_)
+			current_view_->closeScheduled();
 		break;
 
 	case LFUN_LYX_QUIT:
@@ -1418,8 +1424,9 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 
 		if (!lcolor.setColor(lyx_name, x11_name)) {
-			current_view_->message(
-				bformat(_("Set-color \"%1$s\" failed "
+			if (current_view_)
+				current_view_->message(
+					bformat(_("Set-color \"%1$s\" failed "
 				        "- color is undefined or "
 				        "may not be redefined"),
 				        from_utf8(lyx_name)));
@@ -1480,13 +1487,18 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	// --- lyxserver commands ----------------------------
 	case LFUN_SERVER_GET_FILENAME: {
-		LASSERT(current_view_ && current_view_->documentBufferView(), return);
-		docstring const fname = from_utf8(
+		if (current_view_ && current_view_->documentBufferView()) {
+			docstring const fname = from_utf8(
 				current_view_->documentBufferView()->buffer().absFileName());
-		dr.setMessage(fname);
-		LYXERR(Debug::INFO, "FNAME[" << fname << ']');
+			dr.setMessage(fname);
+			LYXERR(Debug::INFO, "FNAME[" << fname << ']');
+		} else {
+			dr.setMessage(docstring());
+			LYXERR(Debug::INFO, "No current file for LFUN_SERVER_GET_FILENAME");
+		}
 		break;
 	}
+
 	case LFUN_SERVER_NOTIFY: {
 		docstring const dispatch_buffer = d->keyseq.print(KeySequence::Portable);
 		dr.setMessage(dispatch_buffer);
@@ -2041,6 +2053,8 @@ void GuiApplication::restoreGuiSession()
 	LastOpenedSection::LastOpened const & lastopened =
 		session.lastOpened().getfiles();
 
+	validateCurrentView();
+
 	FileName active_file;
 	// do not add to the lastfile list since these files are restored from
 	// last session, and should be already there (regular files), or should
@@ -2062,7 +2076,7 @@ void GuiApplication::restoreGuiSession()
 
 	// Restore last active buffer
 	Buffer * buffer = theBufferList().getBuffer(active_file);
-	if (buffer)
+	if (buffer && current_view_)
 		current_view_->setBuffer(buffer);
 
 	// clear this list to save a few bytes of RAM
@@ -2150,7 +2164,7 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 			this->exit(1);
 
 		case BufferException: {
-			if (!current_view_->documentBufferView())
+			if (!current_view_ || !current_view_->documentBufferView())
 				return false;
 			Buffer * buf = &current_view_->documentBufferView()->buffer();
 			docstring details = e.details_ + '\n';
