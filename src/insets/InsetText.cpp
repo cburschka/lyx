@@ -413,7 +413,7 @@ int InsetText::latex(odocstream & os, OutputParams const & runparams) const
 		if (il.latextype() == InsetLayout::COMMAND) {
 			os << "}";
 		} else if (il.latextype() == InsetLayout::ENVIRONMENT) {
-			os << "\n\\end{" << from_utf8(il.latexname()) << "}\n";
+			os << "%\n\\end{" << from_utf8(il.latexname()) << "}\n";
 			rows += 2;
 		}
 	}

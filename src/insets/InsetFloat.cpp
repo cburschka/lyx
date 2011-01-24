@@ -386,8 +386,8 @@ int InsetFloat::latex(odocstream & os, OutputParams const & runparams_in) const
 	int const i = InsetText::latex(os, runparams);
 
 	// The \n is used to force \end{<floatname>} to appear in a new line.
-	// In this case, we do not case if the current output line is empty.
-	os << "\n\\end{" << from_ascii(tmptype) << "}\n";
+	// Also in this case, we care that the current output line is not empty.
+	os << "%\n\\end{" << from_ascii(tmptype) << "}\n";
 
 	return i + 4;
 }
