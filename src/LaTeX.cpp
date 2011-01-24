@@ -633,6 +633,10 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				   && contains(token, "undefined")) {
 				retval |= ERROR_RERUN;
 				LYXERR(Debug::LATEX, "Force rerun.");
+			// package etaremune
+			} else if (contains(token, "Etaremune labels have changed")) {
+				retval |= ERROR_RERUN;
+				LYXERR(Debug::LATEX, "Force rerun.");
 			} else if (contains(token, "Citation")
 				   && contains(token, "on page")
 				   && contains(token, "undefined")) {
