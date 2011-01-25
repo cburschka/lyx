@@ -10,32 +10,37 @@ AC_DEFUN([LYX_CHECK_VERSION],[
 echo "configuring LyX version" AC_PACKAGE_VERSION
 lyx_devel_version=no
 lyx_prerelease=no
+enable_debug=yes
 build_type=release
 AC_MSG_CHECKING([for build type])
 AC_ARG_ENABLE(build-type,
-  AC_HELP_STRING([--enable-build-type=TYPE],[set build setting according to TYPE=dev(elopment), rel(ease) or pre(release)]),
+  AC_HELP_STRING([--enable-build-type=TYPE],[set build setting according to TYPE=rel(ease), pre(release), dev(elopment), prof(iling), gprof]),
   [case $enableval in
-    dev*) lyx_devel_version=yes
-          build_type=development;;
-    pre*) lyx_prerelease=yes
-          build_type=prerelease;;
-    gp*)  lyx_profiling=yes
-          build_type=gprof;;
-    rel*) ;;
-    *) AC_ERROR([Bad build type specification \"$enableval\". Please use one of dev(elopment), rel(ease) or pre(release)]);;
+    dev*) build_type=development;;
+    pre*) build_type=prerelease;;
+    prof*)  build_type=profiling;;
+    gprof*) build_type=gprof;;
+    rel*) build_type=release;;
+    *) AC_ERROR([Bad build type specification \"$enableval\". Please use one of rel(ease), pre(release), dev(elopment), prof(iling), or gprof]);;
    esac],
   [case AC_PACKAGE_VERSION in
-    *svn*) lyx_devel_version=yes
-          build_type=development;;
-    *pre*|*alpha*|*beta*|*rc*) lyx_prerelease=yes
-          build_type=prerelease;;
+    *svn*) build_type=development;;
+    *pre*|*alpha*|*beta*|*rc*) build_type=prerelease;;
    esac])
 AC_MSG_RESULT([$build_type])
-if test $lyx_devel_version = yes ; then
-           AC_DEFINE(DEVEL_VERSION, 1, [Define if you are building a development version of LyX])
-           LYX_DATE="not released yet"
-fi
-AC_SUBST(lyx_devel_version)])
+lyx_flags="$lyx_flags build=$build_type"
+case $build_type in
+    release) enable_debug=no ;;
+    development) lyx_devel_version=yes
+                 AC_DEFINE(DEVEL_VERSION, 1, [Define if you are building a development version of LyX])
+		 LYX_DATE="not released yet" ;;
+    prerelease) lyx_prerelease=yes ;;
+    profiling) ;;
+    gprof);;
+esac
+    
+AC_SUBST(lyx_devel_version)
+])
 
 
 dnl Define the option to set a LyX version on installed executables and directories
@@ -184,17 +189,12 @@ AC_ARG_ENABLE(warnings,
 	enable_warnings=no;
     fi;])
 if test x$enable_warnings = xyes ; then
-  lyx_flags="warnings $lyx_flags"
+  lyx_flags="$lyx_flags warnings"
 fi
 
 ### We might want to disable debug
 AC_ARG_ENABLE(debug,
-  AC_HELP_STRING([--enable-debug],[enable debug information]),,
-  [ if test $lyx_devel_version = yes -o $lyx_prerelease = yes -o $lyx_profiling = yes ; then
-	enable_debug=yes;
-    else
-	enable_debug=no;
-    fi;])
+  AC_HELP_STRING([--enable-debug],[enable debug information]))
 
 AC_ARG_ENABLE(stdlib-debug,
   AC_HELP_STRING([--enable-stdlib-debug],[enable debug mode in the standard library]),,
@@ -248,7 +248,7 @@ AC_ARG_ENABLE(assertions,
 	enable_assertions=no;
     fi;])
 if test "x$enable_assertions" = xyes ; then
-   lyx_flags="assertions $lyx_flags"
+   lyx_flags="$lyx_flags assertions"
    AC_DEFINE(ENABLE_ASSERTIONS,1,
     [Define if you want assertions to be enabled in the code])
 fi
@@ -300,7 +300,7 @@ if test x$GXX = xyes; then
   if test x$enable_stdlib_debug = xyes ; then
     case $gxx_version in
       3.4*|4.*)
-        lyx_flags="stdlib-debug $lyx_flags"
+        lyx_flags="$lyx_flags stdlib-debug"
 	AC_DEFINE(_GLIBCXX_DEBUG, 1, [libstdc++ debug mode])
 	AC_DEFINE(_GLIBCXX_DEBUG_PEDANTIC, 1, [libstdc++ pedantic debug mode])
         ;;
@@ -309,17 +309,17 @@ if test x$GXX = xyes; then
   if test x$enable_concept_checks = xyes ; then
     case $gxx_version in
       3.3*)
-        lyx_flags="concept-checks $lyx_flags"
+        lyx_flags="$lyx_flags concept-checks"
         AC_DEFINE(_GLIBCPP_CONCEPT_CHECKS, 1, [libstdc++ concept checking])
 	;;
       3.4*|4.*)
-        lyx_flags="concept-checks $lyx_flags"
+        lyx_flags="$lyx_flags concept-checks"
 	AC_DEFINE(_GLIBCXX_CONCEPT_CHECKS, 1, [libstdc++ concept checking])
 	;;
     esac
   fi
 fi
-test "$lyx_pch_comp" = yes && lyx_flags="pch $lyx_flags"
+test "$lyx_pch_comp" = yes && lyx_flags="$lyx_flags pch"
 AM_CONDITIONAL(LYX_BUILD_PCH, test "$lyx_pch_comp" = yes)
 ])dnl
 

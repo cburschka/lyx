@@ -222,7 +222,7 @@ real_pkgdatadir=`eval "echo \`eval \"echo \\\`eval \\\"echo ${pkgdatadir}\\\"\\\
 real_localedir=`eval "echo \`eval \"echo ${datadir}/locale\"\`"`
 VERSION_INFO="Configuration\n\
   Host type:                    ${host}\n\
-  Special build flags:          ${lyx_flags}\n\
+  Special build flags:         ${lyx_flags}\n\
   C   Compiler:                 ${CC} ${CC_VERSION}\n\
   C   Compiler LyX flags:       ${AM_CPPFLAGS} ${AM_CFLAGS}\n\
   C   Compiler flags:           ${CPPFLAGS} ${CFLAGS}\n\
