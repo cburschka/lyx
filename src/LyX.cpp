@@ -745,6 +745,12 @@ bool LyX::init()
 					      "templates");
 	}
 
+	// init LyXDir environment variable
+	string const lyx_dir = package().lyx_dir().absFileName();
+	LYXERR(Debug::INIT, "Setting LyXDir... to \"" << lyx_dir << "\"");
+	if (!setEnv("LyXDir", lyx_dir))
+		LYXERR(Debug::INIT, "\t... failed!");
+
 	//
 	// Read configuration files
 	//
@@ -764,7 +770,7 @@ bool LyX::init()
 		prependEnvPath("PATH", package().binary_dir().absFileName());
 #endif
 	if (!lyxrc.path_prefix.empty())
-		prependEnvPath("PATH", lyxrc.path_prefix);
+		prependEnvPath("PATH", replaceEnvironmentPath(lyxrc.path_prefix));
 
 	// Check that user LyX directory is ok.
 	if (queryUserLyXDir(package().explicit_user_support()))
@@ -842,7 +848,7 @@ bool LyX::init()
 
 	os::windows_style_tex_paths(lyxrc.windows_style_tex_paths);
 	if (!lyxrc.path_prefix.empty())
-		prependEnvPath("PATH", lyxrc.path_prefix);
+		prependEnvPath("PATH", replaceEnvironmentPath(lyxrc.path_prefix));
 
 	FileName const document_path(lyxrc.document_path);
 	if (document_path.exists() && document_path.isDirectory())

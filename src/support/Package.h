@@ -78,6 +78,11 @@ public:
 	 */
 	FileName const & lyx_binary() const { return lyx_binary_; }
 
+	/** The absolute path to the LyX package directory.
+	 *  This is one level up from the binary dir.
+	 */
+	FileName const & lyx_dir() const { return lyx_dir_; }
+
 	/** The top of the LyX source code tree.
 	 */
 	static FileName const & top_srcdir();
@@ -142,6 +147,7 @@ public:
 private:
 	FileName binary_dir_;
 	FileName lyx_binary_;
+	FileName lyx_dir_;
 	FileName system_support_dir_;
 	FileName build_support_dir_;
 	FileName user_support_dir_;

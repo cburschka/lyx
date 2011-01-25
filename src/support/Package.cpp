@@ -116,6 +116,10 @@ Package::Package(string const & command_line_arg0,
 	FileName const abs_binary = abs_path_from_binary_name(command_line_arg0);
 	binary_dir_ = FileName(onlyPath(abs_binary.absFileName()));
 
+	// the LyX package directory
+	lyx_dir_ = FileName(addPath(binary_dir_.absFileName(), "../"));
+	lyx_dir_ = FileName(lyx_dir_.realPath());
+
 	// Is LyX being run in-place from the build tree?
 	buildDirs(abs_binary, top_build_dir_location,
 		build_support_dir_, system_support_dir_);
