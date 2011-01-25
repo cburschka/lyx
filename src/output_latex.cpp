@@ -380,6 +380,40 @@ int latexArgInsets(Paragraph const & par, odocstream & os,
 	return lines;
 }
 
+namespace {
+
+// output the proper paragraph start according to latextype.
+void parStartCommand(Paragraph const & par, odocstream & os, TexRow & texrow,
+		     OutputParams const & runparams,Layout const & style) 
+{
+	switch (style.latextype) {
+	case LATEX_COMMAND:
+		os << '\\' << from_ascii(style.latexname());
+
+		// Separate handling of optional argument inset.
+		if (style.optargs != 0 || style.reqargs != 0) {
+			int ret = latexArgInsets(par, os, runparams, style.reqargs, style.optargs);
+			while (ret > 0) {
+				texrow.newline();
+				--ret;
+			}
+		}
+		else
+			os << from_ascii(style.latexparam());
+		break;
+	case LATEX_ITEM_ENVIRONMENT:
+	case LATEX_LIST_ENVIRONMENT:
+		os << "\\item ";
+		break;
+	case LATEX_BIB_ENVIRONMENT:
+		// ignore this, the inset will write itself
+		break;
+	default:
+		break;
+	}
+}
+
+} // namespace anon
 
 // FIXME: this should be anonymous
 void TeXOnePar(Buffer const & buf,
@@ -444,23 +478,18 @@ void TeXOnePar(Buffer const & buf,
 
 	if (style.pass_thru) {
 		Font const outerfont = text.outerFont(pit);
-		// can we have pass_thru for lists? if so, we need to do the whole
-		// switch and kaboodle here.
-		os << '\\' << from_ascii(style.latexname());
+		parStartCommand(par, os, texrow,runparams, style);
 
-		// Separate handling of optional argument inset.
-		if (style.optargs != 0 || style.reqargs != 0) {
-			int ret = latexArgInsets(par, os, runparams, style.reqargs, style.optargs);
-			while (ret > 0) {
-				texrow.newline();
-				--ret;
-			}
-		}
-		else
-			os << from_ascii(style.latexparam());
 		par.latex(bparams, outerfont, os, texrow, runparams, start_pos,
 			end_pos);
-		os << from_ascii("}\n");
+
+		// I did not create a parEndCommand for this minuscule
+		// task because in the other user of parStartCommand
+		// the code is different (JMarc)
+		if (style.isCommand())
+			os << from_ascii("}\n");
+		else
+			os << from_ascii("\n");
 		texrow.newline();
 		if (!style.parbreak_is_newline) {
 			os << '\n';
@@ -687,31 +716,7 @@ void TeXOnePar(Buffer const & buf,
 		}
 	}
 
-	switch (style.latextype) {
-	case LATEX_COMMAND:
-		os << '\\' << from_ascii(style.latexname());
-
-		// Separate handling of optional argument inset.
-		if (style.optargs != 0 || style.reqargs != 0) {
-			int ret = latexArgInsets(par, os, runparams, style.reqargs, style.optargs);
-			while (ret > 0) {
-				texrow.newline();
-				--ret;
-			}
-		}
-		else
-			os << from_ascii(style.latexparam());
-		break;
-	case LATEX_ITEM_ENVIRONMENT:
-	case LATEX_LIST_ENVIRONMENT:
-		os << "\\item ";
-		break;
-	case LATEX_BIB_ENVIRONMENT:
-		// ignore this, the inset will write itself
-		break;
-	default:
-		break;
-	}
+	parStartCommand(par, os, texrow,runparams, style);
 
 	Font const outerfont = text.outerFont(pit);
 

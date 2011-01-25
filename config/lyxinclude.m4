@@ -19,6 +19,8 @@ AC_ARG_ENABLE(build-type,
           build_type=development;;
     pre*) lyx_prerelease=yes
           build_type=prerelease;;
+    gp*)  lyx_profiling=yes
+          build_type=gprof;;
     rel*) ;;
     *) AC_ERROR([Bad build type specification \"$enableval\". Please use one of dev(elopment), rel(ease) or pre(release)]);;
    esac],
@@ -188,7 +190,7 @@ fi
 ### We might want to disable debug
 AC_ARG_ENABLE(debug,
   AC_HELP_STRING([--enable-debug],[enable debug information]),,
-  [ if test $lyx_devel_version = yes -o $lyx_prerelease = yes ; then
+  [ if test $lyx_devel_version = yes -o $lyx_prerelease = yes -o $lyx_profiling = yes ; then
 	enable_debug=yes;
     else
 	enable_debug=no;
@@ -212,7 +214,11 @@ AC_ARG_ENABLE(concept-checks,
 
 AC_ARG_ENABLE(gprof,
   AC_HELP_STRING([--enable-gprof],[enable profiling using gprof]),,
-  enable_gprof=no;)
+  [if test $build_type = gprof ; then
+      enable_gprof=yes;
+    else
+      enable_gprof=no;
+    fi;])
 
 ### set up optimization
 AC_ARG_ENABLE(optimization,

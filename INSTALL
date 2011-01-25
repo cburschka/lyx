@@ -103,20 +103,21 @@ to create the Makefile by typing
 
   ./configure
 
-For more complicated cases, LyX configure takes the following specific
+For more complicated cases, LyX configure honors the following specific
 flags:
 
   o --enable-build-type=[rel(ease), dev(elopment), pre(release)]
     allows to tweak the compiled code. The following table describes
     the settings in terms of various options that are described later
 
-                      release   prerelease  development
-    optimization        -O2         -O2         -O
+                      release   prerelease  development gprof
+    optimization        -O2         -O2         -O       -O2
     assertions                       X           X
     stdlib-debug                                 X
     concept-checks                   X           X
     warnings                         X           X
-    debug                            X           X
+    debug                            X           X         X
+    gprof                                                  X
 
     The default are as follows in terms of version number
     release: stable release (1.x.y)
