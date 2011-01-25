@@ -36,6 +36,7 @@ Style Chunk
 	FreeSpacing           1
 	PassThru              1
 	ParbreakIsNewline     1
+	Spellcheck	      0
 	## What is LabelType used for?
 	LabelType             Static
 	TextFont
@@ -65,6 +66,7 @@ InsetLayout "Sweave Options"
 	MultiPar              false
 	PassThru              1
 	ParbreakIsNewline     1
+	Spellcheck	      0
 	FreeSpacing           true
 	ForceLTR              true
 End
@@ -86,6 +88,7 @@ InsetLayout "S/R expression"
 	MultiPar              false
 	PassThru              1
 	ParbreakIsNewline     1
+	Spellcheck	      0
 	FreeSpacing           true
 	ForceLTR              true
 End
@@ -107,6 +110,7 @@ InsetLayout "Sweave Input File"
 	MultiPar              false
 	PassThru              1
 	ParbreakIsNewline     1
+	Spellcheck	      0
 	FreeSpacing           true
 	ForceLTR              true
 End
