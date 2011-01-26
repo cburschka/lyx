@@ -745,10 +745,10 @@ void GuiView::focusInEvent(QFocusEvent * e)
 	QMainWindow::focusInEvent(e);
 	// Make sure guiApp points to the correct view.
 	guiApp->setCurrentView(this);
-	if (currentMainWorkArea())
-		currentMainWorkArea()->setFocus();
-	else if (currentWorkArea())
+	if (currentWorkArea())
 		currentWorkArea()->setFocus();
+	else if (currentMainWorkArea())
+		currentMainWorkArea()->setFocus();
 	else
 		d.bg_widget_->setFocus();
 }
