@@ -334,8 +334,8 @@ void InsetText::fixParagraphsFont()
 		if (par->isPassThru()) {
 			par->resetFonts(font);
 			par->params().clear();
-			++par;
 		}
+		++par;
 	}
 }
 
