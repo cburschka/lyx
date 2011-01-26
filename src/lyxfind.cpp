@@ -1216,7 +1216,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 					repl_buffer.params().documentClassPtr(),
 					bv->buffer().errorList("Paste"));
 		LYXERR(Debug::FIND, "After pasteParagraphList() cur=" << cur << endl);
-		cur.pos() -= repl_buffer.paragraphs().begin()->size();
+		sel_len = repl_buffer.paragraphs().begin()->size();
 	} else {
 		odocstringstream ods;
 		OutputParams runparams(&repl_buffer.params().encoding());
@@ -1234,10 +1234,13 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 		regex_replace(s, s, "\\\\\\[(.*)\\\\\\]", "$1");
 		repl_latex = from_utf8(s);
 		LYXERR(Debug::FIND, "Replacing by niceInsert()ing latex: '" << repl_latex << "'");
-		cur.niceInsert(repl_latex);
+		sel_len = cur.niceInsert(repl_latex);
 	}
-	LYXERR(Debug::FIND, "Putting selection at cur=" << cur << " with len: " << repl_buffer.paragraphs().begin()->size());
-	bv->putSelectionAt(DocIterator(cur), repl_buffer.paragraphs().begin()->size(), !opt.forward);
+	cur.pos() -= sel_len;
+	if (cur.pos() < 0)
+		cur.pos() = 0;
+	LYXERR(Debug::FIND, "Putting selection at cur=" << cur << " with len: " << sel_len);
+	bv->putSelectionAt(DocIterator(cur), sel_len, !opt.forward);
 	bv->processUpdateFlags(Update::Force);
 }
 
