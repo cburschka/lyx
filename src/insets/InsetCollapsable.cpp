@@ -831,7 +831,7 @@ int InsetCollapsable::latex(odocstream & os,
 		if (layout_->latextype() == InsetLayout::COMMAND) {
 			os << "}";
 		} else if (layout_->latextype() == InsetLayout::ENVIRONMENT) {
-			os << "\n\\end{" << from_utf8(layout_->latexname()) << "}\n";
+			os << "%\n\\end{" << from_utf8(layout_->latexname()) << "}\n";
 			i += 4;
 		}
 	}

@@ -66,6 +66,9 @@ What's new
 - Do not output PDF settings if these are disabled in the document
   settings (bug 7052).
 
+- Avoid inserting a blank line before the end of an environment when
+  exporting to LaTeX a custom inset (bug 7254).
+
 - Correctly check for RTF and DOC viewers.
 
 - KOMA classes: Support the optional argument of Addpart, Addchap and
