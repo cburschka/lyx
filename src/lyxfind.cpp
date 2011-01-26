@@ -1107,6 +1107,7 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match) {
 docstring stringifyFromForSearch(FindAndReplaceOptions const & opt,
 	DocIterator const & cur, int len)
 {
+	LASSERT(cur.pos() >= 0 && cur.pos() <= cur.lastpos(), /* */);
 	if (!opt.ignoreformat)
 		return latexifyFromCursor(cur, len);
 	else
@@ -1215,6 +1216,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 					repl_buffer.params().documentClassPtr(),
 					bv->buffer().errorList("Paste"));
 		LYXERR(Debug::FIND, "After pasteParagraphList() cur=" << cur << endl);
+		cur.pos() -= repl_buffer.paragraphs().begin()->size();
 	} else {
 		odocstringstream ods;
 		OutputParams runparams(&repl_buffer.params().encoding());
@@ -1234,7 +1236,6 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 		LYXERR(Debug::FIND, "Replacing by niceInsert()ing latex: '" << repl_latex << "'");
 		cur.niceInsert(repl_latex);
 	}
-	cur.pos() -= repl_buffer.paragraphs().begin()->size();
 	LYXERR(Debug::FIND, "Putting selection at cur=" << cur << " with len: " << repl_buffer.paragraphs().begin()->size());
 	bv->putSelectionAt(DocIterator(cur), repl_buffer.paragraphs().begin()->size(), !opt.forward);
 	bv->processUpdateFlags(Update::Force);
