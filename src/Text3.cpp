@@ -1357,13 +1357,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		Paragraph const & par = cur.paragraph();
 		pos_type pos = cur.pos();
 
-		Layout const & style = par.layout();
-		InsetLayout const & ilayout = cur.inset().getLayout();
 		BufferParams const & bufparams = bv->buffer().params();
 		bool const hebrew = 
 			par.getFontSettings(bufparams, pos).language()->lang() == "hebrew";
-		bool const allow_inset_quote = 
-			!(style.pass_thru || ilayout.isPassThru() || hebrew);
+		bool const allow_inset_quote = !(par.isPassThru() || hebrew);
 		
 		if (allow_inset_quote) {
 			char_type c = ' ';
@@ -2508,38 +2505,38 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_FONT_EMPH:
 		flag.setOnOff(fontinfo.emph() == FONT_ON);
-		enable = !cur.inset().getLayout().isPassThru();
+		enable = !cur.paragraph().isPassThru();
 		break;
 
 	case LFUN_FONT_ITAL:
 		flag.setOnOff(fontinfo.shape() == ITALIC_SHAPE);
-		enable = !cur.inset().getLayout().isPassThru();
+		enable = !cur.paragraph().isPassThru();
 		break;
 
 	case LFUN_FONT_NOUN:
 		flag.setOnOff(fontinfo.noun() == FONT_ON);
-		enable = !cur.inset().getLayout().isPassThru();
+		enable = !cur.paragraph().isPassThru();
 		break;
 
 	case LFUN_FONT_BOLD:
 	case LFUN_FONT_BOLDSYMBOL:
 		flag.setOnOff(fontinfo.series() == BOLD_SERIES);
-		enable = !cur.inset().getLayout().isPassThru();
+		enable = !cur.paragraph().isPassThru();
 		break;
 
 	case LFUN_FONT_SANS:
 		flag.setOnOff(fontinfo.family() == SANS_FAMILY);
-		enable = !cur.inset().getLayout().isPassThru();
+		enable = !cur.paragraph().isPassThru();
 		break;
 
 	case LFUN_FONT_ROMAN:
 		flag.setOnOff(fontinfo.family() == ROMAN_FAMILY);
-		enable = !cur.inset().getLayout().isPassThru();
+		enable = !cur.paragraph().isPassThru();
 		break;
 
 	case LFUN_FONT_TYPEWRITER:
 		flag.setOnOff(fontinfo.family() == TYPEWRITER_FAMILY);
-		enable = !cur.inset().getLayout().isPassThru();
+		enable = !cur.paragraph().isPassThru();
 		break;
 
 	case LFUN_CUT:
@@ -2633,7 +2630,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_TAB_INSERT:
 	case LFUN_TAB_DELETE:
-		enable = cur.inset().getLayout().isPassThru();
+		enable = cur.paragraph().isPassThru();
 		break;
 
 	case LFUN_SET_GRAPHICS_GROUP: {
@@ -2659,7 +2656,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 
 	case LFUN_LANGUAGE:
-		enable = !cur.inset().getLayout().isPassThru();
+		enable = !cur.paragraph().isPassThru();
 		flag.setOnOff(to_utf8(cmd.argument()) == cur.real_current_font.language()->lang());
 		break;
 
@@ -2711,7 +2708,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FONT_UWAVE:
 	case LFUN_TEXTSTYLE_APPLY:
 	case LFUN_TEXTSTYLE_UPDATE:
-		enable = !cur.inset().getLayout().isPassThru();
+		enable = !cur.paragraph().isPassThru();
 		break;
 
 	case LFUN_WORD_DELETE_FORWARD:

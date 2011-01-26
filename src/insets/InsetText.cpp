@@ -326,17 +326,16 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetText::fixParagraphsFont()
 {
-	if (!getLayout().isPassThru())
-		return;
-
 	Font font(inherit_font, buffer().params().language);
 	font.setLanguage(latex_language);
 	ParagraphList::iterator par = paragraphs().begin();
 	ParagraphList::iterator const end = paragraphs().end();
 	while (par != end) {
-		par->resetFonts(font);
-		par->params().clear();
-		++par;
+		if (par->isPassThru()) {
+			par->resetFonts(font);
+			par->params().clear();
+			++par;
+		}
 	}
 }
 

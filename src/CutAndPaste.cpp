@@ -537,7 +537,7 @@ void copySelectionHelper(Buffer const & buf, Text const & text,
 		// PassThru paragraphs have the Language
 		// latex_language. This is invalid for others, so we
 		// need to change it to the buffer language.
-		if (text.inset().getLayout().isPassThru())
+		if (it->isPassThru())
 			it->changeLanguage(buf.params(), 
 					   latex_language, buf.language());
 	}

@@ -1125,7 +1125,7 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		if (cur.inset().lyxCode() == CAPTION_CODE)
 			return cur.inset().getStatus(cur, cmd, flag);
 		// FIXME we should consider passthru paragraphs too.
-		flag.setEnabled(!cur.inset().getLayout().isPassThru());
+		flag.setEnabled(!(cur.inTexted() && cur.paragraph().isPassThru()));
 		break;
 
 	case LFUN_CITATION_INSERT: {

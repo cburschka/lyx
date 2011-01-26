@@ -1682,10 +1682,8 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			if (!buf || buf->isReadonly())
 				enable = false;
 			else {
-				// FIXME we should consider passthru
-				// paragraphs too.
-				Inset const & in = currentBufferView()->cursor().inset();
-				enable = !in.getLayout().isPassThru();
+				Cursor const & cur = currentBufferView()->cursor();
+				enable = !(cur.inTexted() && cur.paragraph().isPassThru());
 			}
 		}
 		else if (name == "latexlog")

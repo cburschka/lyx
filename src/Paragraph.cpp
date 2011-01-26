@@ -2070,6 +2070,11 @@ bool Paragraph::usePlainLayout() const
 }
 
 
+bool Paragraph::isPassThru() const
+{
+	return inInset().getLayout().isPassThru() || d->layout_->pass_thru;
+}
+
 namespace {
 
 // paragraphs inside floats need different alignment tags to avoid
@@ -2137,7 +2142,7 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 {
 	int column = 0;
 
-	if (params_.noindent()) {
+	if (params_.noindent() && !layout_->pass_thru) {
 		os << "\\noindent ";
 		column += 10;
 	}

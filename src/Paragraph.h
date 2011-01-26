@@ -213,6 +213,8 @@ public:
 	///
 	bool usePlainLayout() const;
 	///
+	bool isPassThru() const;
+	///
 	pos_type size() const;
 	///
 	bool empty() const;
