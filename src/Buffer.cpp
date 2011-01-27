@@ -3384,12 +3384,10 @@ string Buffer::getDefaultOutputFormat() const
 	if (!params().default_output_format.empty()
 	    && params().default_output_format != "default")
 		return params().default_output_format;
-	typedef vector<Format const *> Formats;
-	Formats formats = exportableFormats(true);
 	if (isDocBook()
-	    || isLiterate()
 	    || params().useNonTeXFonts
 	    || params().encoding().package() == Encoding::japanese) {
+		vector<Format const *> const formats = exportableFormats(true);
 		if (formats.empty())
 			return string();
 		// return the first we find
