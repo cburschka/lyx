@@ -1050,7 +1050,7 @@ void MenuDefinition::expandFormats(MenuItem::Kind kind, Buffer const * buf)
 					bformat(_("View [%1$s]|V"), qstring_to_ucs4(label))
 					: bformat(_("Update [%1$s]|U"), qstring_to_ucs4(label)));
 				MenuItem w(MenuItem::Command, toqstr(lbl),
-						FuncRequest(action, (*fit)->name()));
+					   FuncRequest(action));
 				add(w);
 				continue;
 			}
