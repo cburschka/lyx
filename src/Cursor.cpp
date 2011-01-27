@@ -1337,14 +1337,17 @@ void Cursor::insert(Inset * inset0)
 }
 
 
-void Cursor::niceInsert(docstring const & t, Parse::flags f, bool enter)
+int Cursor::niceInsert(docstring const & t, Parse::flags f, bool enter)
 {
 	MathData ar(buffer());
 	asArray(t, ar, f);
-	if (ar.size() == 1 && (enter || selection()))
+	if (ar.size() == 1 && (enter || selection())) {
 		niceInsert(ar[0]);
-	else
+		return 1;
+	} else {
 		insert(ar);
+		return ar.size();
+	}
 }
 
 

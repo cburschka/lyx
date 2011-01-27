@@ -396,8 +396,8 @@ public:
 	void plainInsert(MathAtom const & at);
 	///
 	void niceInsert(MathAtom const & at);
-	///
-	void niceInsert(docstring const & str, Parse::flags f = Parse::NORMAL,
+	/// return the number of inserted array items
+	int niceInsert(docstring const & str, Parse::flags f = Parse::NORMAL,
 			bool enter = true);
 
 	/// in pixels from top of screen
