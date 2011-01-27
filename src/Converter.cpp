@@ -412,8 +412,8 @@ bool Converters::convert(Buffer const * buffer,
 			command = subst(command, token_from, quoteName(infile2));
 			command = subst(command, token_base, quoteName(from_base));
 			command = subst(command, token_to, quoteName(outfile2));
-			command = subst(command, token_path, quoteName(infile.onlyPath().absFileName()));
-			command = subst(command, token_orig_path, quoteName(orig_from.onlyPath().absFileName()));
+			command = subst(command, token_path, quoteName(onlyPath(infile.absFileName())));
+			command = subst(command, token_orig_path, quoteName(onlyPath(orig_from.absFileName())));
 			command = subst(command, token_encoding, buffer ? buffer->params().encoding().iconvName() : string());
 			command = libScriptSearch(command);
 
