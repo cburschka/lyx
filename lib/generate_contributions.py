@@ -358,6 +358,14 @@ contributers = [
                  "23 February 2005",
                  u"Added support for unix sockets and thence the 'inverse DVI' feature"),
 
+     contributer(u"Patrick Atamaniuk",
+                 "atamaniuk () frobs ! net",
+                 "GPL",
+                 "License for my contributions",
+                 "m=129594232112957",
+                 "28 January 2011",
+                 u"fix-cm module"),
+
      contributer(u"Özgür Uğraş Baran",
                  "ugras.baran () gmail ! com",
                  "GPL",
