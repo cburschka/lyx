@@ -2932,6 +2932,7 @@ lib_layouts_module_files = Split('''
     eqs-within-sections.module
     figs-within-sections.module
     fixltx2e.module
+    fix-cm.module
     foottoend.module
     hanging.module
     initials.module
