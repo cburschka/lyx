@@ -534,6 +534,14 @@ contributers = [
                  "23 July 2008",
                  u"Ukrainian translation"),
 
+     contributer(u"Tommaso Cucinotta",
+                 "cucinotta () sssup !it",
+                 "GPL",
+                 "Re: View Menu proposal",
+                 "m=119030065212621",
+                 "20 Sep 2007",
+                 u"Advanced search feature"),
+
      contributer(u"Matthias Kalle Dalheimer",
                  "kalle () kdab ! net",
                  "GPL",
