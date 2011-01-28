@@ -925,6 +925,33 @@ void parse_outer_box(Parser & p, ostream & os, unsigned flags, bool outer,
 }
 
 
+void parse_listings(Parser & p, ostream & os, Context & parent_context)
+{
+	parent_context.check_layout(os);
+	begin_inset(os, "listings\n");
+	os << "inline false\n"
+	   << "status collapsed\n";
+	Context context(true, parent_context.textclass);
+	context.layout = &parent_context.textclass.plainLayout();
+	context.check_layout(os);
+	string const s = p.verbatimEnvironment("lstlisting");
+	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
+		if (*it == '\\')
+			os << "\n\\backslash\n";
+		else if (*it == '\n') {
+			// avoid adding an empty paragraph at the end
+			if (it + 1 != et) {
+				context.new_paragraph(os);
+				context.check_layout(os);
+			}
+		} else
+			os << *it;
+	}
+	context.check_end_layout(os);
+	end_inset(os);
+}
+
+
 /// parse an unknown environment
 void parse_unknown_environment(Parser & p, string const & name, ostream & os,
 			       unsigned flags, bool outer,
@@ -1027,6 +1054,17 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	else if (name == "framed" || name == "shaded") {
 		eat_whitespace(p, os, parent_context, false);
 		parse_outer_box(p, os, FLAG_END, outer, parent_context, name, "");
+		p.skip_spaces();
+	}
+
+	else if (name == "lstlisting") {
+		eat_whitespace(p, os, parent_context, false);
+		// FIXME handle listings with parameters
+		if (p.hasOpt())
+			parse_unknown_environment(p, name, os, FLAG_END,
+			                          outer, parent_context);
+		else
+			parse_listings(p, os, parent_context);
 		p.skip_spaces();
 	}
 
