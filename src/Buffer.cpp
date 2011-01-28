@@ -1055,10 +1055,15 @@ bool Buffer::save() const
 			backupName = FileName(addName(lyxrc.backupdir_path,
 						      mangledName));
 		}
-		// do not copy because of #6587
-		if (fileName().moveTo(backupName)) {
-			madeBackup = true;
-		} else {
+
+		// Except file is symlink do not copy because of #6587.
+		// Hard links have bad luck.
+		if (fileName().isSymLink())
+			madeBackup = fileName().copyTo(backupName);
+		else
+			madeBackup = fileName().moveTo(backupName);
+
+		if (!madeBackup) {
 			Alert::error(_("Backup failure"),
 				     bformat(_("Cannot create backup file %1$s.\n"
 					       "Please check whether the directory exists and is writable."),
