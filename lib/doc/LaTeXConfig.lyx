@@ -4727,6 +4727,45 @@ fancy
 \end_layout
 
 \begin_layout Subsection
+fix-cm
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "textclass"
+arg   "fix-cm"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/unpacked/fix-cm.sty
+\end_layout
+
+\begin_layout Description
+Notes: Changes the font definitions of the Computer Modern fonts, in order
+ to achieve the following effects: The appearance of the T1 and TS1 encoded
+ CM fonts (aka `EC') is made as similar as possible to the traditional (OT1
+ encoded) ones.
+ Particularly, number of broken or ugly design sizes are no longer used,
+ the look of the bold sans serif typeface at large sizes is considerably
+ improved, and mismatches between the text fonts and the corresponding math
+ fonts are avoided.
+ The Computer Modern fonts are made available with arbitrary sizes.
+ Only those design sizes of the fonts will be used, that are normally available
+ in Type1 format, too.
+  It can be used by including the 
+\family sans
+fix-cm
+\family default
+ module.
+\end_layout
+
+\begin_layout Subsection
 fixltx2e
 \end_layout
 
