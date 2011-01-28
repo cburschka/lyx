@@ -391,12 +391,9 @@ public:
 	{
 		pos_type textsize = owner_->size();
 		// check for sane arguments
-		if (to < from || from >= textsize)
+		if (to <= from || from >= textsize)
 			return;
-		FontSpan fp = FontSpan(from, to);
-		// don't mark end of paragraph
-		if (fp.last >= textsize)
-			fp.last = textsize - 1;
+		FontSpan fp = FontSpan(from, to - 1);
 		speller_state_.setRange(fp, state);
 	}
 
