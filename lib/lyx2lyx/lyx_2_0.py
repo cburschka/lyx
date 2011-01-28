@@ -2078,9 +2078,20 @@ def convert_passthru(document):
           document.warning("Can't find end of layout at line " + str(beg))
           beg += 1
           continue
+        document.warning(str(end))
+
         # we are now going to replace newline insets within this layout
         # by new instances of this layout. so we have repeated layouts
         # instead of newlines.
+
+        # first, though, we need to find out if the paragraph has any
+        # customization, so those can be propogated.
+        custom = []
+        i = beg + 1
+        while document.body[i].startswith("\\"):
+          custom.append(document.body[i])
+          i += 1
+
         ns = beg
         while True:
           ns = find_token(document.body, "\\begin_inset Newline newline", ns, end)
@@ -2093,13 +2104,14 @@ def convert_passthru(document):
             continue
           if document.body[ne + 1] == "":
             ne += 1
-          subst = ["\\end_layout", "", "\\begin_layout " + lay]
+          subst = ["\\end_layout", "", "\\begin_layout " + lay] + custom
           document.body[ns:ne + 1] = subst
           # now we need to adjust end, in particular, but might as well
           # do ns properly, too
-          newlines = (ne - ns) - len(subst)
+          newlines = (ne - ns) - len(subst) + len(custom)
           ns += newlines + 2
-          end += newlines + 1
+          end += newlines + 2
+
         # ok, we now want to find out if the next layout is the
         # same as this one. if so, we will insert an extra copy of it
         didit = False
