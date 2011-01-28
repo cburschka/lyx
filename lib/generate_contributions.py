@@ -1036,7 +1036,7 @@ contributers = [
                  "Re: The LyX licence",
                  "m=110907762926766",
                  "22 February 2005",
-                 u"linuxdoc sgml support. Current release manager."),
+                 u"linuxdoc sgml support."),
 
      contributer(u"Roman Maurer",
                  "roman.maurer () amis ! net",
@@ -1372,7 +1372,7 @@ contributers = [
                  "Re: czech translation",
                  "m=115522417204086",
                  "10 August 2006",
-                 u"Czech translation, support for the LaTeX package hyperref, fullscreen support, lfuns docs/review"),
+                 u"Czech translation, added various features, lfuns docs/review. Current release manager."),
 
      contributer(u"Szõke Sándor",
                  "alex () lyx ! hu",
