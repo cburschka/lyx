@@ -1036,7 +1036,7 @@ contributers = [
                  "Re: The LyX licence",
                  "m=110907762926766",
                  "22 February 2005",
-                 u"linuxdoc sgml support."),
+                 u"linuxdoc sgml support. Previous release manager."),
 
      contributer(u"Roman Maurer",
                  "roman.maurer () amis ! net",
