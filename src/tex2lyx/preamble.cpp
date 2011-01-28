@@ -848,7 +848,7 @@ void parse_preamble(Parser & p, ostream & os,
 				star = true;
 			}
 			string const name = p.verbatim_item();
-			string const opt1 = p.getOpt();
+			string const opt1 = p.getFullOpt();
 			string const opt2 = p.getFullOpt();
 			string const body = p.verbatim_item();
 			// font settings
@@ -961,8 +961,8 @@ void parse_preamble(Parser & p, ostream & os,
 
 		else if (t.cs() == "newenvironment") {
 			string const name = p.getArg('{', '}');
-			string const opt1 = p.getOpt();
-			string const opt2 = p.getOpt();
+			string const opt1 = p.getFullOpt();
+			string const opt2 = p.getFullOpt();
 			string const beg = p.verbatim_item();
 			string const end = p.verbatim_item();
 			if (!in_lyx_preamble) {

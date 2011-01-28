@@ -170,10 +170,10 @@ public:
 	 */
 	std::string getArg(char left, char right);
 	/*!
-	 * \returns getFullArg('[', ']') including the brackets or the
-	 * empty string if there is no such argument.
+	 * Like getOpt(), but distinguishes between a missing argument ""
+	 * and an empty argument "[]".
 	 */
-	std::string getFullOpt();
+	std::string getFullOpt(bool keepws = false);
 	/*!
 	 * \returns getArg('[', ']') including the brackets or the
 	 * empty string if there is no such argument.
@@ -185,10 +185,6 @@ public:
 	 * during .tex export, thus creating an invalid command.
 	 */
 	std::string getOpt(bool keepws = false);
-	/*!
-	 * the same as getOpt but without the brackets
-	 */
-	std::string getOptContent();
 	/*!
 	 * \returns getFullArg('(', ')') including the parentheses or the
 	 * empty string if there is no such argument.

@@ -641,7 +641,13 @@ void parse_arguments(string const & command,
 			break;
 		case optional:
 			// true because we must not eat whitespace
-			ert += p.getOpt(true);
+			// if an optional arg follows me must not strip the
+			// brackets from this one
+			if (i < no_arguments - 1 &&
+			    template_arguments[i+1] == optional)
+				ert += p.getFullOpt(true);
+			else
+				ert += p.getOpt(true);
 			break;
 		}
 	}
@@ -712,8 +718,8 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			latex_width = "\\columnwidth";
 		else {
 			Parser p2(special);
-			latex_width = p2.getOptContent();
-			string const opt = p2.getOptContent();
+			latex_width = p2.getArg('[', ']');
+			string const opt = p2.getArg('[', ']');
 			if (!opt.empty()) {
 				hor_pos = opt;
 				if (hor_pos != "l" && hor_pos != "c" &&
@@ -1874,7 +1880,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.set_item();
 			context.check_layout(os);
 			begin_command_inset(os, "bibitem", "bibitem");
-			os << "label \"" << p.getOptContent() << "\"\n";
+			os << "label \"" << p.getArg('[', ']') << "\"\n";
 			os << "key \"" << p.verbatim_item() << "\"\n";
 			end_inset(os);
 		}
@@ -2425,7 +2431,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			|| t.cs() == "nocite") {
 			context.check_layout(os);
 			// LyX cannot handle newlines in a latex command
-			string after = subst(p.getOptContent(), "\n", " ");
+			string after = subst(p.getArg('[', ']'), "\n", " ");
 			string key = subst(p.verbatim_item(), "\n", " ");
 			// store the case that it is "\nocite{*}" to use it later for
 			// the BibTeX inset
@@ -2450,7 +2456,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			begin_command_inset(os, "nomenclature", "nomenclature");
 			// LyX cannot handle newlines in a latex command
-			string prefix = subst(p.getOptContent(), "\n", " ");
+			string prefix = subst(p.getArg('[', ']'), "\n", " ");
 			if (!prefix.empty())
 				os << "prefix " << '"' << prefix << '"' << "\n";
 			os << "symbol " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
@@ -2920,7 +2926,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			parse_outer_box(p, os, FLAG_ITEM, outer, context, t.cs(), "");
 
 		else if (t.cs() == "framebox") {
-			string special = p.getOpt();
+			string special = p.getFullOpt();
 			special += p.getOpt();
 			parse_outer_box(p, os, FLAG_ITEM, outer, context, t.cs(), special);
 		}
@@ -2999,7 +3005,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				name += '*';
 			}
 			string const command = p.verbatim_item();
-			string const opt1 = p.getOpt();
+			string const opt1 = p.getFullOpt();
 			string const opt2 = p.getFullOpt();
 			add_known_command(command, opt1, !opt2.empty());
 			string const ert = name + '{' + command + '}' +

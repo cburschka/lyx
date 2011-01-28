@@ -406,11 +406,13 @@ string Parser::getArg(char left, char right)
 }
 
 
-string Parser::getFullOpt()
+string Parser::getFullOpt(bool keepws)
 {
 	Arg arg = getFullArg('[', ']');
 	if (arg.first)
 		return '[' + arg.second + ']';
+	if (keepws)
+		unskip_spaces(true);
 	return string();
 }
 
@@ -424,14 +426,6 @@ string Parser::getOpt(bool keepws)
 		return string();
 	}
 	return '[' + res + ']';
-}
-
-
-string Parser::getOptContent()
-// the same as getOpt but without the brackets
-{
-	string const res = getArg('[', ']');
-	return res.empty() ? string() : res;
 }
 
 
