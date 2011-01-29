@@ -27,6 +27,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\letter.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\lettre.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\scrclass.inc"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\svmult.layout"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  SetOutPath "$INSTDIR\Resources\ui"
