@@ -467,9 +467,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	cur.noScreenUpdate();
 
 	LASSERT(cur.text() == this, /**/);
-	CursorSlice oldTopSlice = cur.top();
-	bool oldBoundary = cur.boundary();
-	bool sel = cur.selection();
+	CursorSlice const oldTopSlice = cur.top();
+	bool const oldBoundary = cur.boundary();
+	bool const oldSelection = cur.selection();
 	// Signals that, even if needsUpdate == false, an update of the
 	// cursor paragraph is required
 	bool singleParUpdate = lyxaction.funcHasFlag(cmd.action(),
@@ -477,9 +477,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	// Signals that a full-screen update is required
 	bool needsUpdate = !(lyxaction.funcHasFlag(cmd.action(),
 		LyXAction::NoUpdate) || singleParUpdate);
-	int const last_pid = cur.paragraph().id();
-	pos_type const last_pos = cur.pos();
-	bool const last_misspelled = lyxrc.spellcheck_continuously && cur.paragraph().isMisspelled(cur.pos());
+	bool const last_misspelled = lyxrc.spellcheck_continuously
+		&& cur.paragraph().isMisspelled(cur.pos(), true);
 	
 	FuncCode const act = cmd.action();
 	switch (act) {
@@ -2184,9 +2183,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (!cur.inTexted()) {
 			// move from regular text to math
 			needsUpdate = last_misspelled;
-		} else if (cur.paragraph().id() != last_pid || cur.pos() != last_pos) {
+		} else if (oldTopSlice != cur.top() || oldBoundary != cur.boundary()) {
 			// move inside regular text
-			needsUpdate = last_misspelled || cur.paragraph().isMisspelled(cur.pos());
+			needsUpdate = last_misspelled
+				|| cur.paragraph().isMisspelled(cur.pos(), true);
 		}
 	}
 
@@ -2212,7 +2212,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	if (!needsUpdate
 	    && &oldTopSlice.inset() == &cur.inset()
 	    && oldTopSlice.idx() == cur.idx()
-	    && !sel // sel is a backup of cur.selection() at the beginning of the function.
+	    && !oldSelection // oldSelection is a backup of cur.selection() at the beginning of the function.
 	    && !cur.selection())
 		// FIXME: it would be better if we could just do this
 		//

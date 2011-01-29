@@ -421,6 +421,8 @@ void RowPainter::paintFromPos(pos_type & vpos, bool changed)
 			pos_type cpos = cur.pos();
 			if (cpos > 0 && cpos == par_.size() && !par_.isWordSeparator(cpos-1))
 				--cpos;
+			else if (cpos > 0 && par_.isWordSeparator(cpos))
+				--cpos;
 			current_word = par_.isSameSpellRange(pos, cpos) ;
 		}
 		if (!current_word)

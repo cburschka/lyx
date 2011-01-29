@@ -456,8 +456,10 @@ public:
 		bool check_learned = false) const;
 
 	/// Spell checker status at position \p pos.
-	/// \return true if pointed position is misspelled.
-	bool isMisspelled(pos_type pos) const;
+	/// If \p check_boundary is true the status of position immediately
+	/// before \p pos is tested too if it is at word boundary.
+	/// \return true if one of the tested positions is misspelled.
+	bool isMisspelled(pos_type pos, bool check_boundary = false) const;
 
 	/// \return true if both positions are inside the same
 	/// spell range - i.e. the same word.
