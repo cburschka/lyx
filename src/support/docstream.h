@@ -112,7 +112,7 @@ public:
 	///
 	void protectSpace(bool protectspace) { protectspace_ = protectspace; }
 	///
-	bool protectSpace() const { return protectspace_; };
+	bool protectSpace() const { return protectspace_; }
 private:
 	///
 	odocstream & os_;
@@ -147,11 +147,8 @@ otexstream & operator<<(otexstream &, char const *);
 ///
 otexstream & operator<<(otexstream &, char);
 ///
-otexstream & operator<<(otexstream &, double);
-///
-otexstream & operator<<(otexstream &, int);
-///
-otexstream & operator<<(otexstream &, unsigned int);
+template <typename Type>
+otexstream & operator<<(otexstream & ots, Type value);
 
 /// Helper struct for changing stream encoding
 struct SetEnc {
@@ -171,7 +168,6 @@ SetEnc setEncoding(std::string const & encoding);
     \endcode
  */
 odocstream & operator<<(odocstream & os, SetEnc e);
-otexstream & operator<<(otexstream & os, SetEnc e);
 idocstream & operator<<(idocstream & os, SetEnc e);
 
 }

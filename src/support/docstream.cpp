@@ -447,15 +447,6 @@ otexstream & operator<<(otexstream & ots, SafeBreakLine)
 }
 
 
-otexstream & operator<<(otexstream & ots, SetEnc e)
-{
-	ots.os() << e;
-	ots.canBreakLine(true);
-	ots.protectSpace(false);
-	return ots;
-}
-
-
 otexstream & operator<<(otexstream & ots, docstring const & s)
 {
 	size_t const len = s.length();
@@ -511,31 +502,20 @@ otexstream & operator<<(otexstream & ots, char c)
 }
 
 
-otexstream & operator<<(otexstream & ots, double d)
+template <typename Type>
+otexstream & operator<<(otexstream & ots, Type value)
 {
-	ots.os() << d;
+	ots.os() << value;
 	ots.canBreakLine(true);
 	ots.protectSpace(false);
 	return ots;
 }
 
-
-otexstream & operator<<(otexstream & ots, int i)
-{
-	ots.os() << i;
-	ots.canBreakLine(true);
-	ots.protectSpace(false);
-	return ots;
-}
-
-
-otexstream & operator<<(otexstream & ots, unsigned int i)
-{
-	ots.os() << i;
-	ots.canBreakLine(true);
-	ots.protectSpace(false);
-	return ots;
-}
+template otexstream & operator<< <SetEnc>(otexstream & os, SetEnc);
+template otexstream & operator<< <double>(otexstream &, double);
+template otexstream & operator<< <int>(otexstream &, int);
+template otexstream & operator<< <unsigned int>(otexstream &, unsigned int);
+template otexstream & operator<< <unsigned long>(otexstream &, unsigned long);
 
 }
 
