@@ -1,0 +1,42 @@
+# Sample test script for regression tests
+#
+# Adapted from the syntax of the original testkeys.py by McCabe-Dansted.
+# Run this script by providing it as single argument to run-test.sh
+#
+# WARNING: Syntax is poorly parsed: no extra spaces anywhere
+#
+# Lines starting with a '#' on the 1st column are comments
+#
+# Exec <cmd...>
+#   Causes the execution of <cmd...> in a os.system()
+#
+# TestBegin <args...>
+#   Starts a test case under deterministic conditions:
+#   Any currently running instance of LyX is killed
+#   A new LyX instance is spawned, with the command-line args <args...>
+#
+# TestEnd <cmd...>
+#   Ends a test case, killing the LyX instance under test, and
+#   executing the <cmd...> commands into an os.system(). The exit status
+#   of the commands sequence determines success or failure of the test
+#
+# KK: <chars...>
+#   Feeds the running LyX instance with the specified key characters.
+#   Special sequences:
+#     \A<char> ...... sends the sequence [Alt+<char>]
+#     \[<dir>] ...... sends a cursor movement, <dir> = Right, Left, Up, Down
+#     \[Tab] ........ sends a Tab character
+#     \[Return] ..... sends a Return
+#
+#
+# This example instructs LyX to type "Hello World", then exports it as
+# LaTeX, and verifies that the typed characters are indeed present in the
+# exported document.
+#
+Exec rm -f /tmp/test.lyx /tmp/test.tex
+TestBegin /tmp/test.lyx 2> /tmp/log 2>&1
+KK: Hello World
+KK: \Afs
+KK: \Ax
+KK: buffer-export latex\[Return]
+TestEnd grep "Hello World" /tmp/test.tex

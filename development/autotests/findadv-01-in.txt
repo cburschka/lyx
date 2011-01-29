@@ -1,0 +1,12 @@
+# After replacing with something that matches the search pattern, the next
+# match should not consider the just replaced text (#4388)
+#
+TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
+KK: aaa\[Home]
+KK: \CF
+KK: a\[Tab]
+KK: aba\[Return]\[Return]\[Return]
+KK: \Afs
+KK: \Ax
+KK: buffer-export latex\[Return]
+TestEnd grep "^abaabaa$" test.tex

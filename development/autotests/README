@@ -1,0 +1,13 @@
+Automated tests based on the "MonKey Testing" keytest program.
+
+In order to launch all the tests available in this folder, just run
+
+  ./run-tests.sh
+
+If you wish to launch one or more specific tests, then provide them
+as argument to the script, e.g.:
+
+  ./run-tests.sh <whatever>*-in.txt
+
+For failed tests you get a folder with the logs that help you identify
+the problem.

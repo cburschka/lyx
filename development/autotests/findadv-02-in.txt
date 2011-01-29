@@ -1,0 +1,12 @@
+# Basic test on refactoring of mathematics notation
+#
+TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
+KK: \Cm
+KK: x^(a) +\\frac 1+x^(a) \[Down]1-x^(a)  \C\[Home]
+KK: \CF
+KK: \Cmx^(a) \[Tab]
+KK: \Cmx_a \[Return]\[Return]\[Return]
+KK: \Afs
+KK: \Ax
+KK: buffer-export latex\[Return]
+TestEnd grep '^\$x_{a}+\\frac{1+x_{a}}{1-x\^{(a)}}\$' test.tex
