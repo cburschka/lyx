@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-01-29 11:46+0100\n"
-"PO-Revision-Date: 2011-01-16 19:12+0100\n"
+"POT-Creation-Date: 2011-01-29 00:42+0100\n"
+"PO-Revision-Date: 2011-01-29 11:58+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -492,8 +492,8 @@ msgid "Remove the selected branch"
 msgstr "Zmazať vybranú vetvu"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3785
-#: src/Buffer.cpp:3798
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3783
+#: src/Buffer.cpp:3796
 msgid "&Remove"
 msgstr "&Odstrániť"
 
@@ -527,7 +527,7 @@ msgstr "Pridaj Všetko"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2282 src/Buffer.cpp:3760 src/Buffer.cpp:3823
+#: src/Buffer.cpp:2282 src/Buffer.cpp:3758 src/Buffer.cpp:3821
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:222 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1775
@@ -1764,7 +1764,7 @@ msgstr "Vložiť rozstup i za zalomením riadku"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:19
 #: src/frontends/qt4/ui/HyperlinkUi.ui:32 lib/layouts/scrlttr2.layout:207
-#: lib/layouts/amsdefs.inc:159 lib/layouts/stdinsets.inc:270
+#: lib/layouts/amsdefs.inc:159 lib/layouts/stdinsets.inc:268
 #: lib/layouts/minimalistic.module:26
 msgid "URL"
 msgstr "URL"
@@ -1879,8 +1879,8 @@ msgstr "Vstup"
 msgid "Verbatim"
 msgstr "Doslovne (Verbatim)"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1076
-#: src/insets/InsetInclude.cpp:1082
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1075
+#: src/insets/InsetInclude.cpp:1081
 msgid "Program Listing"
 msgstr "Výpis zdrojového kódu"
 
@@ -2087,7 +2087,7 @@ msgid "Feedback window"
 msgstr "Okno pre odozvu"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:345
-#: src/insets/InsetListings.cpp:361 src/insets/InsetListings.cpp:363
+#: src/insets/InsetListings.cpp:360 src/insets/InsetListings.cpp:362
 msgid "Listing"
 msgstr "Výpis"
 
@@ -6214,7 +6214,7 @@ msgstr "CopNum"
 #: lib/layouts/apa.layout:213 lib/layouts/elsart.layout:392
 #: lib/layouts/iopart.layout:95 lib/layouts/llncs.layout:364
 #: lib/layouts/powerdot.layout:200 lib/layouts/slides.layout:167
-#: lib/layouts/stdinsets.inc:96 lib/layouts/svjour.inc:387
+#: lib/layouts/stdinsets.inc:95 lib/layouts/svjour.inc:387
 #: lib/layouts/theorems-ams-extended-bytype.module:151
 #: lib/layouts/theorems-ams-extended.module:174
 #: lib/layouts/theorems-ams-extended.module:183
@@ -9612,28 +9612,28 @@ msgstr "okraje"
 msgid "foot"
 msgstr "päta"
 
-#: lib/layouts/stdinsets.inc:111
+#: lib/layouts/stdinsets.inc:110
 msgid "Greyedout"
 msgstr "Zosivelé"
 
-#: lib/layouts/stdinsets.inc:136 src/insets/InsetERT.cpp:150
+#: lib/layouts/stdinsets.inc:134 src/insets/InsetERT.cpp:150
 #: src/insets/InsetERT.cpp:152
 msgid "ERT"
 msgstr "ERT"
 
-#: lib/layouts/stdinsets.inc:168 src/frontends/qt4/GuiDocument.cpp:1264
+#: lib/layouts/stdinsets.inc:166 src/frontends/qt4/GuiDocument.cpp:1264
 msgid "Listings"
 msgstr "Výpisy"
 
-#: lib/layouts/stdinsets.inc:201
+#: lib/layouts/stdinsets.inc:199
 msgid "Idx"
 msgstr "Idx"
 
-#: lib/layouts/stdinsets.inc:294
+#: lib/layouts/stdinsets.inc:292
 msgid "opt"
 msgstr "opt"
 
-#: lib/layouts/stdinsets.inc:375
+#: lib/layouts/stdinsets.inc:373
 msgid "Preview"
 msgstr "Náhľad"
 
@@ -9924,7 +9924,7 @@ msgstr ""
 
 #: lib/layouts/fix-cm.module:2
 msgid "Fix cm"
-msgstr ""
+msgstr "Fix cm"
 
 #: lib/layouts/fix-cm.module:8
 msgid ""
@@ -9932,6 +9932,9 @@ msgid ""
 "available with arbitrary sizes. For details see the documentation of the fix-"
 "cm.sty package: http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
 msgstr ""
+"Fix-cm zlepšuje zobrazenie fontov Computer Modern a robí ich "
+"dostupné s ľubovoľným rozmerom. Pre detaily pozrite na dokumentáciu balíka "
+"fix-cm.sty: http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
 
 #: lib/layouts/fixltx2e.module:2
 msgid "Fix LaTeX"
@@ -12345,18 +12348,18 @@ msgid "Justified Line Break|J"
 msgstr "Zarovnanie konca riadkov"
 
 #: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:587
+#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:585
 msgid "Cut"
 msgstr "Vystrihnúť"
 
 #: lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:594
 msgid "Copy"
 msgstr "Kopírovať"
 
 #: lib/ui/stdcontext.inc:290 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
 #: src/Text3.cpp:1175 src/mathed/InsetMathGrid.cpp:1327
-#: src/mathed/InsetMathNest.cpp:566
+#: src/mathed/InsetMathNest.cpp:564
 msgid "Paste"
 msgstr "Vlepiť"
 
@@ -16599,8 +16602,8 @@ msgstr ""
 "v LaTeX-ovej preambuly."
 
 #: src/Buffer.cpp:818 src/BufferParams.cpp:412
-#: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:452
-#: src/insets/InsetIndex.cpp:717
+#: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:451
+#: src/insets/InsetIndex.cpp:716
 msgid "Index"
 msgstr "Index"
 
@@ -16661,7 +16664,7 @@ msgid ""
 "it."
 msgstr "%1$s je z novšej verzie LyX-u, a skript lyx2lyx zlyhal pri konverzii."
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3770 src/Buffer.cpp:3832
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3768 src/Buffer.cpp:3830
 msgid "File is read-only"
 msgstr "Dokument je iba na čítanie"
 
@@ -16771,11 +16774,11 @@ msgstr "iconv konverzia zlyhala"
 msgid "conversion failed"
 msgstr "Konverzia zlyhala"
 
-#: src/Buffer.cpp:1393
+#: src/Buffer.cpp:1394
 msgid "Uncodable character in file path"
 msgstr "Nekódovateľný znak v ceste"
 
-#: src/Buffer.cpp:1394
+#: src/Buffer.cpp:1395
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -16875,51 +16878,51 @@ msgstr "Náhľad na zdrojový text odstavca %1$d"
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Náhľad zdrojového kódu pre odstavce %1$s - %2$s"
 
-#: src/Buffer.cpp:3234
+#: src/Buffer.cpp:3232
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatické ukladanie %1$s"
 
-#: src/Buffer.cpp:3288
+#: src/Buffer.cpp:3286
 msgid "Autosave failed!"
 msgstr "Automatické ukladanie sa nepodarilo!"
 
-#: src/Buffer.cpp:3349
+#: src/Buffer.cpp:3347
 msgid "Autosaving current document..."
 msgstr "Automatické ukladanie súčasného dokumentu..."
 
-#: src/Buffer.cpp:3502
+#: src/Buffer.cpp:3500
 msgid "Couldn't export file"
 msgstr "Nemôžem exportovať súbor"
 
-#: src/Buffer.cpp:3503
+#: src/Buffer.cpp:3501
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Žiadne informácie pre export formátu %1$s"
 
-#: src/Buffer.cpp:3566
+#: src/Buffer.cpp:3564
 msgid "File name error"
 msgstr "Chyba v názve súboru"
 
-#: src/Buffer.cpp:3567
+#: src/Buffer.cpp:3565
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Cesta k dokumentu nesmie obsahovať medzery."
 
-#: src/Buffer.cpp:3643
+#: src/Buffer.cpp:3641
 msgid "Document export cancelled."
 msgstr "Exportovanie dokumentu bolo zrušené."
 
-#: src/Buffer.cpp:3653
+#: src/Buffer.cpp:3651
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exportovaný ako %1$s do súboru `%2$s'"
 
-#: src/Buffer.cpp:3659
+#: src/Buffer.cpp:3657
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exportovaný ako %1$s"
 
-#: src/Buffer.cpp:3756
+#: src/Buffer.cpp:3754
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -16930,19 +16933,19 @@ msgstr ""
 "\n"
 "Získať núdzovú kópiu späť?"
 
-#: src/Buffer.cpp:3759
+#: src/Buffer.cpp:3757
 msgid "Load emergency save?"
 msgstr "Nahrať núdzovú kópiu ?"
 
-#: src/Buffer.cpp:3760
+#: src/Buffer.cpp:3758
 msgid "&Recover"
 msgstr "Získať späť"
 
-#: src/Buffer.cpp:3760
+#: src/Buffer.cpp:3758
 msgid "&Load Original"
 msgstr "Nahrať Originál"
 
-#: src/Buffer.cpp:3771
+#: src/Buffer.cpp:3769
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -16951,15 +16954,15 @@ msgstr ""
 "Bezpečnostný súbor úspešne načítaný, ale originálny súbor %1$s je označený "
 "len na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
-#: src/Buffer.cpp:3777
+#: src/Buffer.cpp:3775
 msgid "Document was successfully recovered."
 msgstr "Dokument bol úspešne obnovený."
 
-#: src/Buffer.cpp:3779
+#: src/Buffer.cpp:3777
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument nebol úspešne obnovený."
 
-#: src/Buffer.cpp:3780
+#: src/Buffer.cpp:3778
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -16968,27 +16971,27 @@ msgstr ""
 "Zmazať núdzovú kópiu teraz?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3784 src/Buffer.cpp:3796
+#: src/Buffer.cpp:3782 src/Buffer.cpp:3794
 msgid "Delete emergency file?"
 msgstr "Zmazať núdzový súbor?"
 
-#: src/Buffer.cpp:3785 src/Buffer.cpp:3798
+#: src/Buffer.cpp:3783 src/Buffer.cpp:3796
 msgid "&Keep"
 msgstr "Držať"
 
-#: src/Buffer.cpp:3789
+#: src/Buffer.cpp:3787
 msgid "Emergency file deleted"
 msgstr "Núdzový súbor vymazaný"
 
-#: src/Buffer.cpp:3790
+#: src/Buffer.cpp:3788
 msgid "Do not forget to save your file now!"
 msgstr "Teraz nezabudnite uložiť váš súbor!"
 
-#: src/Buffer.cpp:3797
+#: src/Buffer.cpp:3795
 msgid "Remove emergency file now?"
 msgstr "Zmazať núdzovú kópiu teraz?"
 
-#: src/Buffer.cpp:3820
+#: src/Buffer.cpp:3818
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -16999,19 +17002,19 @@ msgstr ""
 "\n"
 "Nahrať radšej zálohu ?"
 
-#: src/Buffer.cpp:3822
+#: src/Buffer.cpp:3820
 msgid "Load backup?"
 msgstr "Nahrať zálohu?"
 
-#: src/Buffer.cpp:3823
+#: src/Buffer.cpp:3821
 msgid "&Load backup"
 msgstr "Nahrať zálohu"
 
-#: src/Buffer.cpp:3823
+#: src/Buffer.cpp:3821
 msgid "Load &original"
 msgstr "Nahrať Originál"
 
-#: src/Buffer.cpp:3833
+#: src/Buffer.cpp:3831
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17020,25 +17023,25 @@ msgstr ""
 "Zálohový súbor úspešne načítaný, ale originálny súbor %1$s je označený len "
 "na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
-#: src/Buffer.cpp:4138 src/insets/InsetCaption.cpp:339
+#: src/Buffer.cpp:4136 src/insets/InsetCaption.cpp:339
 msgid "Senseless!!! "
 msgstr "Nezmyselné!!! "
 
-#: src/Buffer.cpp:4259
+#: src/Buffer.cpp:4257
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s znovu nahraný."
 
-#: src/Buffer.cpp:4262
+#: src/Buffer.cpp:4260
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Nedá sa znova nahrať dokument %1$s."
 
-#: src/Buffer.cpp:4328
+#: src/Buffer.cpp:4326
 msgid "Included File Invalid"
 msgstr "Zahrnutý Súbor je Neplatný"
 
-#: src/Buffer.cpp:4329
+#: src/Buffer.cpp:4327
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17294,7 +17297,7 @@ msgstr ""
 "zmeňte prosím kódovanie súboru na\n"
 "UTF-8 iným programom.\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2516
+#: src/Changes.cpp:363 src/Paragraph.cpp:2515
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:300
 #: src/insets/InsetCommandParams.cpp:390 src/insets/InsetListings.cpp:184
 #: src/insets/InsetListings.cpp:192 src/insets/InsetListings.cpp:216
@@ -17302,7 +17305,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr "LyX varovanie: "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2517 src/insets/InsetBibitem.cpp:301
+#: src/Changes.cpp:364 src/Paragraph.cpp:2516 src/insets/InsetBibitem.cpp:301
 #: src/insets/InsetCommandParams.cpp:391 src/insets/InsetListings.cpp:185
 #: src/insets/InsetListings.cpp:193 src/insets/InsetNomencl.cpp:286
 #: src/mathed/InsetMathString.cpp:162
@@ -18910,11 +18913,11 @@ msgstr ""
 "Nové schéma nepovoľuje používané zarovnanie.\n"
 "Prepnuté na štandardné."
 
-#: src/Paragraph.cpp:3073
+#: src/Paragraph.cpp:3072
 msgid "Memory problem"
 msgstr "Problém s pamäťou"
 
-#: src/Paragraph.cpp:3073
+#: src/Paragraph.cpp:3072
 msgid "Paragraph not properly initialized"
 msgstr "Odstavec nesprávne inicializovaný"
 
@@ -19026,7 +19029,7 @@ msgstr "Režim matematického editoru"
 msgid "No valid math formula"
 msgstr "Neplatný matematický vzorec"
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1020
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1018
 msgid "Already in regular expression mode"
 msgstr "Už v postupe pre regulárny výraz"
 
@@ -19092,7 +19095,7 @@ msgid "Module not available"
 msgstr "Modul nie je dostupný"
 
 #: src/TextClass.cpp:1313
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The module %1$s requires a package that is not\n"
 "available in your LaTeX installation, or a converter that\n"
@@ -19106,7 +19109,7 @@ msgstr ""
 "ktorý nemáte inštalovaný. Nezaistený výstup z LaTeXa.\n"
 "Chýbajúce predpoklady:\n"
 "\t%2$s\n"
-"Pozri sekciu 3.1.2.3 Užívateľskej Príručky pre viac informácií."
+"Pozri sekciu 3.1.2.3 (Moduly) Užívateľskej Príručky pre viac informácií."
 
 #: src/TextClass.cpp:1320
 msgid "Package not available"
@@ -22544,7 +22547,7 @@ msgstr "%1$s (%2$s, %3$s)"
 msgid "active"
 msgstr "aktívna"
 
-#: src/insets/InsetBranch.cpp:68 src/insets/InsetIndex.cpp:460
+#: src/insets/InsetBranch.cpp:68 src/insets/InsetIndex.cpp:459
 msgid "non-active"
 msgstr "ne-aktívna"
 
@@ -22638,7 +22641,7 @@ msgstr ""
 msgid "External template %1$s is not installed"
 msgstr "Externá šablóna %1$s nie je inštalovaná"
 
-#: src/insets/InsetFloat.cpp:275 src/insets/InsetFloat.cpp:463
+#: src/insets/InsetFloat.cpp:275 src/insets/InsetFloat.cpp:460
 msgid "float: "
 msgstr "plávajúci objekt: "
 
@@ -22647,15 +22650,15 @@ msgstr "plávajúci objekt: "
 msgid "ERROR: Unknown float type: %1$s"
 msgstr "CHYBA: Neznámy typ plávajúceho objektu: %1$s"
 
-#: src/insets/InsetFloat.cpp:401
+#: src/insets/InsetFloat.cpp:398
 msgid "float"
 msgstr "plávajúci objekt"
 
-#: src/insets/InsetFloat.cpp:466
+#: src/insets/InsetFloat.cpp:463
 msgid "subfloat: "
 msgstr "pod-plávajúci objekt: "
 
-#: src/insets/InsetFloat.cpp:474
+#: src/insets/InsetFloat.cpp:471
 msgid " (sideways)"
 msgstr " (na bok)"
 
@@ -22779,11 +22782,11 @@ msgstr ""
 "Problematický súbor:\n"
 "%1$s"
 
-#: src/insets/InsetIndex.cpp:148
+#: src/insets/InsetIndex.cpp:147
 msgid "Index sorting failed"
 msgstr "Triedenie indexu zlyhalo"
 
-#: src/insets/InsetIndex.cpp:149
+#: src/insets/InsetIndex.cpp:148
 #, c-format
 msgid ""
 "LyX's automatic index sorting algorithm faced\n"
@@ -22796,23 +22799,23 @@ msgstr ""
 "Prosím nastavte triedenie tohto záznamu ručne, ako\n"
 "vysvetlené v užívateľskej príručke."
 
-#: src/insets/InsetIndex.cpp:281
+#: src/insets/InsetIndex.cpp:280
 msgid "Index Entry"
 msgstr "Heslo Indexu"
 
-#: src/insets/InsetIndex.cpp:288 src/insets/InsetIndex.cpp:309
+#: src/insets/InsetIndex.cpp:287 src/insets/InsetIndex.cpp:308
 msgid "unknown type!"
 msgstr "neznámy typ!"
 
-#: src/insets/InsetIndex.cpp:457
+#: src/insets/InsetIndex.cpp:456
 msgid "Unknown index type!"
 msgstr "Neznámy typ indexu!"
 
-#: src/insets/InsetIndex.cpp:458
+#: src/insets/InsetIndex.cpp:457
 msgid "All indexes"
 msgstr "Všetky indexy"
 
-#: src/insets/InsetIndex.cpp:462
+#: src/insets/InsetIndex.cpp:461
 msgid "subindex"
 msgstr "Podindex"
 
@@ -22890,11 +22893,11 @@ msgstr ""
 "pre oddeľovač.\n"
 "Zatiaľ som znak '!' nahradil varovaním, ale musíte to vyšetriť."
 
-#: src/insets/InsetListings.cpp:267
+#: src/insets/InsetListings.cpp:266
 msgid "Uncodable characters in listings inset"
 msgstr "Nekódovateľné znaky vo výpise zdrojového kódu"
 
-#: src/insets/InsetListings.cpp:268
+#: src/insets/InsetListings.cpp:267
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"
@@ -23079,7 +23082,7 @@ msgstr "Popis: "
 msgid "Sorting: "
 msgstr "Triedenie: "
 
-#: src/insets/InsetNote.cpp:275
+#: src/insets/InsetNote.cpp:271
 msgid "note"
 msgstr "poznámka"
 
@@ -23237,7 +23240,7 @@ msgstr "Chránená horizontálna medzera (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Neznámy typ obsahu"
 
-#: src/insets/InsetTabular.cpp:4685
+#: src/insets/InsetTabular.cpp:4683
 msgid "Selection size should match clipboard content."
 msgstr "Veľkosť výberu by mala zodpovedať obsahu klipsovej dosky."
 
@@ -23382,23 +23385,23 @@ msgstr "Reťazec bol nahradený."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d reťazcov bolo nahradených."
 
-#: src/lyxfind.cpp:1257
+#: src/lyxfind.cpp:1255
 msgid "Search text is empty!"
 msgstr "Hľadaný text je prázdny"
 
-#: src/lyxfind.cpp:1271
+#: src/lyxfind.cpp:1269
 msgid "Invalid regular expression!"
 msgstr "Neplatný regulárny výraz!"
 
-#: src/lyxfind.cpp:1276
+#: src/lyxfind.cpp:1274
 msgid "Match not found!"
 msgstr "Vhodný výraz nebol nájdený!"
 
-#: src/lyxfind.cpp:1280
+#: src/lyxfind.cpp:1278
 msgid "Match found!"
 msgstr "Vhodný výraz nájdený!"
 
-#: src/mathed/InsetFormulaMacro.cpp:122
+#: src/mathed/InsetFormulaMacro.cpp:120
 #, c-format
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
@@ -23479,23 +23482,23 @@ msgstr "Počet stĺpcov sa nedá zmeniť v '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nedajú sa pridať horizontálne linky mriežky '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:1006
+#: src/mathed/InsetMathNest.cpp:1004
 msgid "create new math text environment ($...$)"
 msgstr "vytvoriť nové matematické textové prostredie ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1009
+#: src/mathed/InsetMathNest.cpp:1007
 msgid "entered math text mode (textrm)"
 msgstr "vstup do text. prostredia vnútri matem. (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1031
+#: src/mathed/InsetMathNest.cpp:1029
 msgid "Regular expression editor mode"
 msgstr "Modus  pre editáciu regulárnych výrazov"
 
-#: src/mathed/InsetMathNest.cpp:1633 src/mathed/InsetMathNest.cpp:1753
+#: src/mathed/InsetMathNest.cpp:1631 src/mathed/InsetMathNest.cpp:1751
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Automatická korektúra vypnutá ('!' na zapnutie)"
 
-#: src/mathed/InsetMathNest.cpp:1638 src/mathed/InsetMathNest.cpp:1755
+#: src/mathed/InsetMathNest.cpp:1636 src/mathed/InsetMathNest.cpp:1753
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Automatická korektúra zapnutá (<medzerník> na vypnutie)"
 
