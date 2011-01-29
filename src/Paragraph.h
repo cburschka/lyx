@@ -55,6 +55,7 @@ class TexRow;
 class Toc;
 class WordLangTuple;
 class XHTMLStream;
+class otexstream;
 
 class FontSpan {
 public:
@@ -168,7 +169,7 @@ public:
 	void validate(LaTeXFeatures &) const;
 
 	/// \param force means: output even if layout.inpreamble is true.
-	void latex(BufferParams const &, Font const & outerfont, odocstream &,
+	void latex(BufferParams const &, Font const & outerfont, otexstream &,
 		   TexRow & texrow, OutputParams const &,
 		   int start_pos = 0, int end_pos = -1, bool force = false) const;
 

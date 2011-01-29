@@ -334,7 +334,7 @@ void InsetScript::validate(LaTeXFeatures & features) const
 }
 
 
-int InsetScript::latex(odocstream & os, OutputParams const & runparams) const
+int InsetScript::latex(otexstream & os, OutputParams const & runparams) const
 {
 	switch (params_.type) {
 	case InsetScriptParams::Subscript:

@@ -84,7 +84,7 @@ docstring InsetFoot::toolTip(BufferView const & bv, int x, int y) const
 }
 
 
-int InsetFoot::latex(odocstream & os, OutputParams const & runparams_in) const
+int InsetFoot::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	OutputParams runparams = runparams_in;
 	// footnotes in titling commands like \title have moving arguments

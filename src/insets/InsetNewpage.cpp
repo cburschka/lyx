@@ -213,7 +213,7 @@ ColorCode InsetNewpage::ColorName() const
 }
 
 
-int InsetNewpage::latex(odocstream & os, OutputParams const &) const
+int InsetNewpage::latex(otexstream & os, OutputParams const &) const
 {
 	switch (params_.kind) {
 		case InsetNewpageParams::NEWPAGE:

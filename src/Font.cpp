@@ -438,7 +438,7 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 /// Writes ending block of LaTeX needed to close use of this font
 // Returns number of chars written
 // This one corresponds to latexWriteStartChanges(). (Asger)
-int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
+int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 				  OutputParams const & runparams,
 				  Font const & base,
 				  Font const & next,
@@ -531,7 +531,7 @@ int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
 		// We need to close the encoding even if it does not change
 		// to do correct environment nesting
 		Encoding const * const ascii = encodings.fromLyXName("ascii");
-		pair<bool, int> const c = switchEncoding(os, bparams,
+		pair<bool, int> const c = switchEncoding(os.os(), bparams,
 				runparams, *ascii);
 		LASSERT(c.first, /**/);
 		count += c.second;

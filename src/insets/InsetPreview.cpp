@@ -70,8 +70,9 @@ void InsetPreview::addPreview(DocIterator const & inset_pos,
 void InsetPreview::preparePreview(DocIterator const & pos) const  
 {
 	odocstringstream str;  
+	otexstream os(str);
 	OutputParams runparams(&pos.buffer()->params().encoding());
-	latex(str, runparams);
+	latex(os, runparams);
 	docstring const snippet = str.str();
 	preview_->addPreview(snippet, *pos.buffer());  
 }

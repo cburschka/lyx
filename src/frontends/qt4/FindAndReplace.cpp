@@ -143,7 +143,8 @@ bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 static docstring buffer_to_latex(Buffer & buffer) 
 {
 	OutputParams runparams(&buffer.params().encoding());
-	odocstringstream os;
+	odocstringstream ods;
+	otexstream os(ods);
 	runparams.nice = true;
 	runparams.flavor = OutputParams::LATEX;
 	runparams.linelen = 80; //lyxrc.plaintext_linelen;
@@ -154,10 +155,9 @@ static docstring buffer_to_latex(Buffer & buffer)
 	for (pit_type pit = 0; pit != endpit; ++pit) {
 		TeXOnePar(buffer, buffer.text(),
 			  pit, os, buffer.texrow(), runparams);
-		LYXERR(Debug::FIND, "searchString up to here: "
-			<< os.str());
+		LYXERR(Debug::FIND, "searchString up to here: " << ods.str());
 	}
-	return os.str();
+	return ods.str();
 }
 
 

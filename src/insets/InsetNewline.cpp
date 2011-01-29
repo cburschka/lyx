@@ -142,7 +142,7 @@ ColorCode InsetNewline::ColorName() const
 }
 
 
-int InsetNewline::latex(odocstream & os, OutputParams const & rp) const
+int InsetNewline::latex(otexstream & os, OutputParams const & rp) const
 {
 	switch (params_.kind) {
 		case InsetNewlineParams::NEWLINE:

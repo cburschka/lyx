@@ -136,7 +136,7 @@ docstring InsetRef::getEscapedLabel(OutputParams const & rp) const
 }
 
 
-int InsetRef::latex(odocstream & os, OutputParams const & rp) const
+int InsetRef::latex(otexstream & os, OutputParams const & rp) const
 {
 	string const cmd = getCmdName();
 	if (cmd != "formatted") {

@@ -75,7 +75,8 @@ void InsetMathMBox::write(WriteStream & ws) const
 		ws << "\\mbox{\n";
 		TexRow texrow;
 		OutputParams runparams(&buffer().params().encoding());
-		latexParagraphs(buffer(), text_.text(), ws.os(), texrow, runparams);
+		otexstream os(ws.os());
+		latexParagraphs(buffer(), text_.text(), os, texrow, runparams);
 		ws.addlines(texrow.rows());
 		ws << "}";
 	} else {
@@ -88,7 +89,7 @@ void InsetMathMBox::write(WriteStream & ws) const
 }
 
 
-int InsetMathMBox::latex(odocstream & os, OutputParams const & runparams) const
+int InsetMathMBox::latex(otexstream & os, OutputParams const & runparams) const
 {
 	os << "\\mbox{\n";
 	TexRow texrow;

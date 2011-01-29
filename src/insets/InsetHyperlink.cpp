@@ -108,7 +108,7 @@ void InsetHyperlink::viewTarget() const
 }
 
 
-int InsetHyperlink::latex(odocstream & os,
+int InsetHyperlink::latex(otexstream & os,
 			  OutputParams const & runparams) const
 {
 	docstring url = getParam("target");

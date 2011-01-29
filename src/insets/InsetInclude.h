@@ -87,7 +87,7 @@ public:
 	///
 	bool hasSettings() const { return true; }
 	///
-	int latex(odocstream &, OutputParams const &) const;
+	int latex(otexstream &, OutputParams const &) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///

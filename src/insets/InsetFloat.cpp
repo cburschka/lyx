@@ -325,7 +325,7 @@ docstring InsetFloat::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 }
 
 
-int InsetFloat::latex(odocstream & os, OutputParams const & runparams_in) const
+int InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	if (runparams_in.inFloat != OutputParams::NONFLOAT) {
 		if (runparams_in.moving_arg)
@@ -372,24 +372,27 @@ int InsetFloat::latex(odocstream & os, OutputParams const & runparams_in) const
 		placement = buf_placement;
 	}
 
-	// The \n is used to force \begin{<floatname>} to appear in a new line.
-	// The % is needed to prevent two consecutive \n chars in the case
-	// when the current output line is empty.
-	os << "%\n\\begin{" << from_ascii(tmptype) << '}';
+	// clear counter
+	os.countLines();
+	// Force \begin{<floatname>} to appear in a new line.
+	os << breakln << "\\begin{" << from_ascii(tmptype) << '}';
 	// We only output placement if different from the def_placement.
 	// sidewaysfloats always use their own page
 	if (!placement.empty() && !params_.sideways) {
 		os << '[' << from_ascii(placement) << ']';
 	}
 	os << '\n';
+	int lines = os.countLines();
 
-	int const i = InsetText::latex(os, runparams);
+	lines += InsetText::latex(os, runparams);
 
-	// The \n is used to force \end{<floatname>} to appear in a new line.
-	// Also in this case, we care that the current output line is not empty.
-	os << "%\n\\end{" << from_ascii(tmptype) << "}\n";
+	// clear counter
+	os.countLines();
+	// Force \end{<floatname>} to appear in a new line.
+	os << breakln << "\\end{" << from_ascii(tmptype) << "}\n";
+	lines += os.countLines();
 
-	return i + 4;
+	return lines;
 }
 
 
@@ -484,9 +487,10 @@ docstring InsetFloat::getCaption(OutputParams const & runparams) const
 		return docstring();
 
 	odocstringstream ods;
-	ins->getOptArg(ods, runparams);
+	otexstream os(ods);
+	ins->getOptArg(os, runparams);
 	ods << '[';
-	ins->getArgument(ods, runparams);
+	ins->getArgument(os, runparams);
 	ods << ']';
 	return ods.str();
 }

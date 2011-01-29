@@ -27,6 +27,7 @@ class BufferParams;
 class Language;
 class LaTeXFeatures;
 class OutputParams;
+class otexstream;
 
 ///
 class Font {
@@ -81,7 +82,7 @@ public:
 	    Returns number of chars written. Base is the font state we want
 	    to achieve.
 	*/
-	int latexWriteEndChanges(odocstream &, BufferParams const & bparams,
+	int latexWriteEndChanges(otexstream &, BufferParams const & bparams,
 				 OutputParams const & runparams,
 				 Font const & base,
 				 Font const & next,

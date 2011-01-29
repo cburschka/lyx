@@ -48,7 +48,7 @@ private:
 	bool hasSettings() const { return true; }
 	void metrics(MetricsInfo &, Dimension &) const;
 	void draw(PainterInfo & pi, int x, int y) const;
-	int latex(odocstream &, OutputParams const &) const;
+	int latex(otexstream &, OutputParams const &) const;
 	int plaintext(odocstream &, OutputParams const &) const;
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;

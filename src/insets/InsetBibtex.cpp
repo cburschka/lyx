@@ -235,7 +235,7 @@ static string normalizeName(Buffer const & buffer,
 }
 
 
-int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
+int InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 {
 	// the sequence of the commands:
 	// 1. \bibliographystyle{style}

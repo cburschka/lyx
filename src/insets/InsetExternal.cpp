@@ -518,13 +518,14 @@ static bool isPreviewWanted(InsetExternalParams const & params)
 
 static docstring latexString(InsetExternal const & inset)
 {
-	odocstringstream os;
+	odocstringstream ods;
+	otexstream os(ods);
 	// We don't need to set runparams.encoding since it is not used by
 	// latex().
 	OutputParams runparams(0);
 	runparams.flavor = OutputParams::LATEX;
 	inset.latex(os, runparams);
-	return os.str();
+	return ods.str();
 }
 
 
@@ -635,7 +636,7 @@ void InsetExternal::read(Lexer & lex)
 }
 
 
-int InsetExternal::latex(odocstream & os, OutputParams const & runparams) const
+int InsetExternal::latex(otexstream & os, OutputParams const & runparams) const
 {
 	if (params_.draft) {
 		// FIXME UNICODE
@@ -666,14 +667,14 @@ int InsetExternal::latex(odocstream & os, OutputParams const & runparams) const
 
 		if (cit != et.formats.end()) {
 			return external::writeExternal(params_, "PDFLaTeX",
-						       buffer(), os,
+						       buffer(), os.os(),
 						       *(runparams.exportdata),
 						       external_in_tmpdir,
 						       dryrun);
 		}
 	}
 
-	return external::writeExternal(params_, "LaTeX", buffer(), os,
+	return external::writeExternal(params_, "LaTeX", buffer(), os.os(),
 				       *(runparams.exportdata),
 				       external_in_tmpdir,
 				       dryrun);

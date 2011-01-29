@@ -779,9 +779,9 @@ void InsetMathHull::header_write(WriteStream & os) const
 
 	case hullEquation:
 		if (n)
-			os << "\\begin{equation" << star(n) << "}\n";
+			os << "\n\\begin{equation" << star(n) << "}\n";
 		else
-			os << "\\[\n";
+			os << "\n\\[\n";
 		break;
 
 	case hullEqnArray:
@@ -789,17 +789,17 @@ void InsetMathHull::header_write(WriteStream & os) const
 	case hullFlAlign:
 	case hullGather:
 	case hullMultline:
-		os << "\\begin{" << hullName(type_) << star(n) << "}\n";
+		os << "\n\\begin{" << hullName(type_) << star(n) << "}\n";
 		break;
 
 	case hullAlignAt:
 	case hullXAlignAt:
-		os << "\\begin{" << hullName(type_) << star(n) << '}'
+		os << "\n\\begin{" << hullName(type_) << star(n) << '}'
 		  << '{' << static_cast<unsigned int>((ncols() + 1)/2) << "}\n";
 		break;
 
 	case hullXXAlignAt:
-		os << "\\begin{" << hullName(type_) << '}'
+		os << "\n\\begin{" << hullName(type_) << '}'
 		  << '{' << static_cast<unsigned int>((ncols() + 1)/2) << "}\n";
 		break;
 
@@ -808,7 +808,7 @@ void InsetMathHull::header_write(WriteStream & os) const
 		break;
 
 	default:
-		os << "\\begin{unknown" << star(n) << "}\n";
+		os << "\n\\begin{unknown" << star(n) << "}\n";
 		break;
 	}
 }
@@ -1920,6 +1920,7 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 	++ms.tab(); ms.cr(); ms.os() << '<' << bname << '>';
 
 	odocstringstream ls;
+	otexstream ols(ls);
 	if (runparams.flavor == OutputParams::XML) {
 		ms << MTag("alt role='tex' ");
 		// Workaround for db2latex: db2latex always includes equations with
@@ -1936,7 +1937,7 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 		ms << ETag("math");
 	} else {
 		ms << MTag("alt role='tex'");
-		res = latex(ls, runparams);
+		res = latex(ols, runparams);
 		ms << from_utf8(subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;"));
 		ms << ETag("alt");
 	}

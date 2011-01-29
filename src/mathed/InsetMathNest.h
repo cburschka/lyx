@@ -111,7 +111,7 @@ public:
 	/// writes [, name(), and args in []
 	void normalize(NormalStream & os) const;
 	///
-	int latex(odocstream & os, OutputParams const & runparams) const;
+	int latex(otexstream & os, OutputParams const & runparams) const;
 	///
 	bool setMouseHover(BufferView const * bv, bool mouse_hover);
 	///

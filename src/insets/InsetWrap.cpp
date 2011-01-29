@@ -182,7 +182,7 @@ void InsetWrap::validate(LaTeXFeatures & features) const
 }
 
 
-int InsetWrap::latex(odocstream & os, OutputParams const & runparams_in) const
+int InsetWrap::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	OutputParams runparams(runparams_in);
 	runparams.inFloat = OutputParams::MAINFLOAT;

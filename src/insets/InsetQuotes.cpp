@@ -261,7 +261,7 @@ void InsetQuotes::read(Lexer & lex)
 }
 
 
-int InsetQuotes::latex(odocstream & os, OutputParams const & runparams) const
+int InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 {
 	const int quoteind = quote_index[side_][language_];
 	string qstr;

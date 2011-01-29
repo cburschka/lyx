@@ -144,6 +144,8 @@ public:
 	bool spellcheck() const { return spellcheck_; }
 	///
 	bool resetsFont() const { return resetsfont_; }
+	///
+	bool isDisplay() const { return display_; }
 private:
 	///
 	void makeDefaultCSS() const;
@@ -232,6 +234,8 @@ private:
 	bool spellcheck_;
 	///
 	bool resetsfont_;
+	///
+	bool display_;
 };
 
 ///

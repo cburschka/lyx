@@ -370,7 +370,7 @@ void InsetText::validate(LaTeXFeatures & features) const
 }
 
 
-int InsetText::latex(odocstream & os, OutputParams const & runparams) const
+int InsetText::latex(otexstream & os, OutputParams const & runparams) const
 {
 	// This implements the standard way of handling the LaTeX
 	// output of a text inset, either a command or an
@@ -388,10 +388,16 @@ int InsetText::latex(odocstream & os, OutputParams const & runparams) const
 				os << from_utf8(il.latexparam());
 			os << '{';
 		} else if (il.latextype() == InsetLayout::ENVIRONMENT) {
-			os << "%\n\\begin{" << from_utf8(il.latexname()) << "}\n";
+			// clear counter
+			os.countLines();
+			if (il.isDisplay())
+			    os << breakln;
+			else
+			    os << safebreakln;
+			os << "\\begin{" << from_utf8(il.latexname()) << "}\n";
 			if (!il.latexparam().empty())
 				os << from_utf8(il.latexparam());
-			rows += 2;
+			rows += os.countLines();
 		}
 	}
 	OutputParams rp = runparams;
@@ -412,8 +418,17 @@ int InsetText::latex(odocstream & os, OutputParams const & runparams) const
 		if (il.latextype() == InsetLayout::COMMAND) {
 			os << "}";
 		} else if (il.latextype() == InsetLayout::ENVIRONMENT) {
-			os << "%\n\\end{" << from_utf8(il.latexname()) << "}\n";
-			rows += 2;
+			// clear counter
+			os.countLines();
+			// A comment environment doesn't need a % before \n\end
+			if (il.isDisplay() || runparams.inComment)
+			    os << breakln;
+			else
+			    os << safebreakln;
+			os << "\\end{" << from_utf8(il.latexname()) << "}\n";
+			if (!il.isDisplay())
+				os.protectSpace(true);
+			rows += os.countLines();
 		}
 	}
 	return rows;

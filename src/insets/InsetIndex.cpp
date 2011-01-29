@@ -57,7 +57,7 @@ InsetIndex::InsetIndex(Buffer * buf, InsetIndexParams const & params)
 {}
 
 
-int InsetIndex::latex(odocstream & os,
+int InsetIndex::latex(otexstream & os,
 		      OutputParams const & runparams_in) const
 {
 	OutputParams runparams(runparams_in);
@@ -76,7 +76,8 @@ int InsetIndex::latex(odocstream & os,
 
 	// get contents of InsetText as LaTeX and plaintext
 	odocstringstream ourlatex;
-	InsetText::latex(ourlatex, runparams);
+	otexstream ots(ourlatex);
+	InsetText::latex(ots, runparams);
 	odocstringstream ourplain;
 	InsetText::plaintext(ourplain, runparams);
 	docstring latexstr = ourlatex.str();
@@ -557,7 +558,7 @@ bool InsetPrintIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-int InsetPrintIndex::latex(odocstream & os, OutputParams const & runparams_in) const
+int InsetPrintIndex::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	if (!buffer().masterBuffer()->params().use_indices) {
 		if (getParam("type") == from_ascii("idx"))

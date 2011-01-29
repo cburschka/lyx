@@ -82,6 +82,77 @@ typedef std::basic_istringstream<char_type> idocstringstream;
 /// UCS4 output stringstream
 typedef std::basic_ostringstream<char_type> odocstringstream;
 
+/** Wrapper class for odocstream.
+    This class helps ensuring that no blank lines may be inadvertently output.
+    Use the special variables "breakln" and "safebreakln" as if they were
+    iomanip's to ensure that the next output will start at the beginning of
+    a line. Using "breakln", a '\n' char will be output if needed, while
+    using "safebreakln", "%\n" will be output if needed.
+    Use countLines() to retrieve the number of \n output since previous call.
+  */
+
+class otexstream {
+public:
+	///
+	explicit otexstream(odocstream & os)
+		: os_(os), lines_(0), canbreakline_(false), protectspace_(false)
+	{}
+	///
+	odocstream & os() { return os_; }
+	///
+	void put(char_type const & c);
+	///
+	size_t countLines() { size_t l = lines_; lines_ = 0; return l; }
+	///
+	void addLines(size_t n) { lines_ += n; }
+	///
+	void canBreakLine(bool breakline) { canbreakline_ = breakline; }
+	///
+	bool canBreakLine() const { return canbreakline_; }
+	///
+	void protectSpace(bool protectspace) { protectspace_ = protectspace; }
+	///
+	bool protectSpace() const { return protectspace_; };
+private:
+	///
+	odocstream & os_;
+	///
+	size_t lines_;
+	///
+	bool canbreakline_;
+	///
+	bool protectspace_;
+};
+
+/// Helper structs for breaking a line
+struct BreakLine {
+	char n;
+};
+
+struct SafeBreakLine {
+	char n;
+};
+
+extern BreakLine breakln;
+extern SafeBreakLine safebreakln;
+
+///
+otexstream & operator<<(otexstream &, BreakLine);
+///
+otexstream & operator<<(otexstream &, SafeBreakLine);
+///
+otexstream & operator<<(otexstream &, docstring const &);
+///
+otexstream & operator<<(otexstream &, char const *);
+///
+otexstream & operator<<(otexstream &, char);
+///
+otexstream & operator<<(otexstream &, double);
+///
+otexstream & operator<<(otexstream &, int);
+///
+otexstream & operator<<(otexstream &, unsigned int);
+
 /// Helper struct for changing stream encoding
 struct SetEnc {
 	SetEnc(std::string const & e) : encoding(e) {}
@@ -100,6 +171,7 @@ SetEnc setEncoding(std::string const & encoding);
     \endcode
  */
 odocstream & operator<<(odocstream & os, SetEnc e);
+otexstream & operator<<(otexstream & os, SetEnc e);
 idocstream & operator<<(idocstream & os, SetEnc e);
 
 }

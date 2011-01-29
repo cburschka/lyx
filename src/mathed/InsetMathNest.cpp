@@ -394,12 +394,14 @@ void InsetMathNest::normalize(NormalStream & os) const
 }
 
 
-int InsetMathNest::latex(odocstream & os, OutputParams const & runparams) const
+int InsetMathNest::latex(otexstream & os, OutputParams const & runparams) const
 {
-	WriteStream wi(os, runparams.moving_arg, true,
+	WriteStream wi(os.os(), runparams.moving_arg, true,
 		       runparams.dryrun ? WriteStream::wsDryrun : WriteStream::wsDefault,
 		       runparams.encoding);
+	wi.canBreakLine(os.canBreakLine());
 	write(wi);
+	os.canBreakLine(wi.canBreakLine());
 	return wi.line();
 }
 

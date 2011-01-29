@@ -479,7 +479,7 @@ Buffer * InsetInclude::loadIfNeeded() const
 }
 
 
-int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
+int InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 {
 	string incfile = to_utf8(params()["filename"]);
 
@@ -960,14 +960,15 @@ bool preview_wanted(InsetCommandParams const & params, Buffer const & buffer)
 
 docstring latexString(InsetInclude const & inset)
 {
-	odocstringstream os;
+	odocstringstream ods;
+	otexstream os(ods);
 	// We don't need to set runparams.encoding since this will be done
 	// by latex() anyway.
 	OutputParams runparams(0);
 	runparams.flavor = OutputParams::LATEX;
 	inset.latex(os, runparams);
 
-	return os.str();
+	return ods.str();
 }
 
 

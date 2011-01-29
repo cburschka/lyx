@@ -528,11 +528,12 @@ bool createInsetMath_fromDialogStr(docstring const & str, MathData & ar)
 		InsetSpaceParams isp(true);
 		InsetSpace::string2params(to_utf8(str), isp);
 		InsetSpace is(isp);
-		odocstringstream os;
+		odocstringstream ods;
+		otexstream os(ods);
 		Encoding const * const ascii = encodings.fromLyXName("ascii");
 		OutputParams op(ascii);
 		is.latex(os, op);
-		mathed_parse_cell(ar, os.str());
+		mathed_parse_cell(ar, ods.str());
 		if (ar.size() == 2) {
 			// remove "{}"
 			if (ar[1].nucleus()->asBraceInset())

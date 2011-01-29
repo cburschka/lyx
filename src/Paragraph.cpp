@@ -288,14 +288,14 @@ public:
 
 	/// Output the surrogate pair formed by \p c and \p next to \p os.
 	/// \return the number of characters written.
-	int latexSurrogatePair(odocstream & os, char_type c, char_type next,
+	int latexSurrogatePair(otexstream & os, char_type c, char_type next,
 			       OutputParams const &);
 
 	/// Output a space in appropriate formatting (or a surrogate pair
 	/// if the next character is a combining character).
 	/// \return whether a surrogate pair was output.
 	bool simpleTeXBlanks(OutputParams const &,
-			     odocstream &, TexRow & texrow,
+			     otexstream &, TexRow & texrow,
 			     pos_type i,
 			     unsigned int & column,
 			     Font const & font,
@@ -304,20 +304,20 @@ public:
 	/// Output consecutive unicode chars, belonging to the same script as
 	/// specified by the latex macro \p ltx, to \p os starting from \p i.
 	/// \return the number of characters written.
-	int writeScriptChars(odocstream & os, docstring const & ltx,
+	int writeScriptChars(otexstream & os, docstring const & ltx,
 			   Change const &, Encoding const &, pos_type & i);
 
 	/// This could go to ParagraphParameters if we want to.
-	int startTeXParParams(BufferParams const &, odocstream &, TexRow &,
+	int startTeXParParams(BufferParams const &, otexstream &, TexRow &,
 			      OutputParams const &) const;
 
 	/// This could go to ParagraphParameters if we want to.
-	int endTeXParParams(BufferParams const &, odocstream &, TexRow &,
+	int endTeXParParams(BufferParams const &, otexstream &, TexRow &,
 			    OutputParams const &) const;
 
 	///
 	void latexInset(BufferParams const &,
-				   odocstream &,
+				   otexstream &,
 				   TexRow & texrow, OutputParams &,
 				   Font & running_font,
 				   Font & basefont,
@@ -330,7 +330,7 @@ public:
 
 	///
 	void latexSpecialChar(
-				   odocstream & os,
+				   otexstream & os,
 				   OutputParams const & runparams,
 				   Font const & running_font,
 				   Change const & running_change,
@@ -341,18 +341,18 @@ public:
 	///
 	bool latexSpecialT1(
 		char_type const c,
-		odocstream & os,
+		otexstream & os,
 		pos_type i,
 		unsigned int & column);
 	///
 	bool latexSpecialTypewriter(
 		char_type const c,
-		odocstream & os,
+		otexstream & os,
 		pos_type i,
 		unsigned int & column);
 	///
 	bool latexSpecialPhrase(
-		odocstream & os,
+		otexstream & os,
 		pos_type & i,
 		unsigned int & column,
 		OutputParams const & runparams);
@@ -837,7 +837,7 @@ int Paragraph::eraseChars(pos_type start, pos_type end, bool trackChanges)
 }
 
 
-int Paragraph::Private::latexSurrogatePair(odocstream & os, char_type c,
+int Paragraph::Private::latexSurrogatePair(otexstream & os, char_type c,
 		char_type next, OutputParams const & runparams)
 {
 	// Writing next here may circumvent a possible font change between
@@ -866,7 +866,7 @@ int Paragraph::Private::latexSurrogatePair(odocstream & os, char_type c,
 
 
 bool Paragraph::Private::simpleTeXBlanks(OutputParams const & runparams,
-				       odocstream & os, TexRow & texrow,
+				       otexstream & os, TexRow & texrow,
 				       pos_type i,
 				       unsigned int & column,
 				       Font const & font,
@@ -911,7 +911,7 @@ bool Paragraph::Private::simpleTeXBlanks(OutputParams const & runparams,
 }
 
 
-int Paragraph::Private::writeScriptChars(odocstream & os,
+int Paragraph::Private::writeScriptChars(otexstream & os,
 					 docstring const & ltx,
 					 Change const & runningChange,
 					 Encoding const & encoding,
@@ -1005,7 +1005,7 @@ bool Paragraph::Private::isTextAt(string const & str, pos_type pos) const
 
 
 void Paragraph::Private::latexInset(BufferParams const & bparams,
-				    odocstream & os,
+				    otexstream & os,
 				    TexRow & texrow,
 				    OutputParams & runparams,
 				    Font & running_font,
@@ -1021,7 +1021,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	LASSERT(inset, /**/);
 
 	if (style.pass_thru) {
-		inset->plaintext(os, runparams);
+		inset->plaintext(os.os(), runparams);
 		return;
 	}
 
@@ -1066,7 +1066,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	}
 
 	bool close = false;
-	odocstream::pos_type const len = os.tellp();
+	odocstream::pos_type const len = os.os().tellp();
 
 	if (inset->forceLTR()
 	    && running_font.isRightToLeft()
@@ -1138,7 +1138,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 		texrow.start(owner_->id(), i + 1);
 		column = 0;
 	} else {
-		column += (unsigned int)(os.tellp() - len);
+		column += (unsigned int)(os.os().tellp() - len);
 	}
 
 	if (owner_->isDeleted(i))
@@ -1146,14 +1146,13 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 }
 
 
-void Paragraph::Private::latexSpecialChar(
-					     odocstream & os,
-					     OutputParams const & runparams,
-					     Font const & running_font,
-					     Change const & running_change,
-					     Layout const & style,
-					     pos_type & i,
-					     unsigned int & column)
+void Paragraph::Private::latexSpecialChar(otexstream & os,
+					  OutputParams const & runparams,
+					  Font const & running_font,
+					  Change const & running_change,
+					  Layout const & style,
+					  pos_type & i,
+					  unsigned int & column)
 {
 	char_type const c = text_[i];
 
@@ -1278,7 +1277,7 @@ void Paragraph::Private::latexSpecialChar(
 }
 
 
-bool Paragraph::Private::latexSpecialT1(char_type const c, odocstream & os,
+bool Paragraph::Private::latexSpecialT1(char_type const c, otexstream & os,
 	pos_type i, unsigned int & column)
 {
 	switch (c) {
@@ -1306,7 +1305,7 @@ bool Paragraph::Private::latexSpecialT1(char_type const c, odocstream & os,
 }
 
 
-bool Paragraph::Private::latexSpecialTypewriter(char_type const c, odocstream & os,
+bool Paragraph::Private::latexSpecialTypewriter(char_type const c, otexstream & os,
 	pos_type i, unsigned int & column)
 {
 	switch (c) {
@@ -1328,7 +1327,7 @@ bool Paragraph::Private::latexSpecialTypewriter(char_type const c, odocstream & 
 }
 
 
-bool Paragraph::Private::latexSpecialPhrase(odocstream & os, pos_type & i,
+bool Paragraph::Private::latexSpecialPhrase(otexstream & os, pos_type & i,
 	unsigned int & column, OutputParams const & runparams)
 {
 	// FIXME: if we have "LaTeX" with a font
@@ -1364,20 +1363,21 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 		// output is wrong if this paragraph contains content
 		// that needs to switch encoding.
 		odocstringstream ods;
+		otexstream os(ods);
 		if (is_command) {
 			ods << '\\' << from_ascii(layout_->latexname());
 			// we have to provide all the optional arguments here, even though
 			// the last one is the only one we care about.
 			// Separate handling of optional argument inset.
 			if (layout_->optargs != 0 || layout_->reqargs != 0)
-				latexArgInsets(*owner_, ods, features.runparams(),
-											 layout_->reqargs, layout_->optargs);
+				latexArgInsets(*owner_, os, features.runparams(),
+					layout_->reqargs, layout_->optargs);
 			else
-				ods << from_ascii(layout_->latexparam());
+				os << from_ascii(layout_->latexparam());
 		}
 		docstring::size_type const length = ods.str().length();
 		// this will output "{" at the beginning, but not at the end
-		owner_->latex(bp, f, ods, tr, features.runparams(), 0, -1, true);
+		owner_->latex(bp, f, os, tr, features.runparams(), 0, -1, true);
 		if (ods.str().length() > length) {
 			if (is_command)
 				ods << '}';
@@ -2134,7 +2134,7 @@ void adjust_row_column(string const & str, TexRow & texrow, int & column)
 
 
 int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
-				 odocstream & os, TexRow & texrow,
+				 otexstream & os, TexRow & texrow,
 				 OutputParams const & runparams) const
 {
 	int column = 0;
@@ -2209,7 +2209,7 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 
 
 int Paragraph::Private::endTeXParParams(BufferParams const & bparams,
-			       odocstream & os, TexRow & texrow,
+			       otexstream & os, TexRow & texrow,
 			       OutputParams const & runparams) const
 {
 	int column = 0;
@@ -2281,7 +2281,7 @@ int Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 // This one spits out the text of the paragraph
 void Paragraph::latex(BufferParams const & bparams,
 	Font const & outerfont,
-	odocstream & os, TexRow & texrow,
+	otexstream & os, TexRow & texrow,
 	OutputParams const & runparams,
 	int start_pos, int end_pos, bool force) const
 {
@@ -2433,8 +2433,9 @@ void Paragraph::latex(BufferParams const & bparams,
 		if (!runparams.pass_thru && !style.pass_thru &&
 		    runparams.encoding->package() != Encoding::none &&
 		    font.language()->encoding()->package() != Encoding::none) {
-			pair<bool, int> const enc_switch = switchEncoding(os, bparams,
-					runparams, *(font.language()->encoding()));
+			pair<bool, int> const enc_switch =
+			    	switchEncoding(os.os(), bparams, runparams,
+					*(font.language()->encoding()));
 			if (enc_switch.first) {
 				column += enc_switch.second;
 				runparams.encoding = font.language()->encoding();

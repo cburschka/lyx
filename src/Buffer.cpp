@@ -1366,8 +1366,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	if (output_preamble) {
 		if (!runparams.nice) {
 			// code for usual, NOT nice-latex-file
-			os << "\\batchmode\n"; // changed
-			// from \nonstopmode
+			os << "\\batchmode\n"; // changed from \nonstopmode
 			d->texrow.newline();
 		}
 		if (!original_path.empty()) {
@@ -1454,7 +1453,8 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	}
 
 	// the real stuff
-	latexParagraphs(*this, text(), os, d->texrow, runparams);
+	otexstream ots(os);
+	latexParagraphs(*this, text(), ots, d->texrow, runparams);
 
 	// Restore the parenthood if needed
 	if (output_preamble)
@@ -3133,9 +3133,11 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 		else if (runparams.flavor == OutputParams::HTML) {
 			XHTMLStream xs(os);
 			xhtmlParagraphs(text(), *this, xs, runparams);
-		} else 
+		} else {
 			// latex or literate
-			latexParagraphs(*this, text(), os, texrow, runparams);
+			otexstream ots(os);
+			latexParagraphs(*this, text(), ots, texrow, runparams);
+		}
 	}
 }
 

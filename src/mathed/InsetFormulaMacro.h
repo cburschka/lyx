@@ -44,7 +44,7 @@ public:
 	///
 	void write(std::ostream & os) const;
 	///
-	int latex(odocstream & os, OutputParams const &) const;
+	int latex(otexstream & os, OutputParams const &) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///

@@ -126,7 +126,7 @@ void InsetListings::read(Lexer & lex)
 }
 
 
-int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
+int InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 {
 	string param_string = params().params();
 	// NOTE: I use {} to quote text, which is an experimental feature
@@ -159,8 +159,8 @@ int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 			(outer_language->encoding()->hasFixedWidth()) ?
 				outer_language->encoding() 
 				: encodings.fromLyXName("iso8859-1");
-		pair<bool, int> const c = switchEncoding(os, buffer().params(),
-				runparams, *lstenc, true);
+		pair<bool, int> const c = switchEncoding(os.os(),
+				buffer().params(), runparams, *lstenc, true);
 		runparams.encoding = lstenc;
 		encoding_switched = true;
 	}
@@ -237,10 +237,12 @@ int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 		OutputParams rp = runparams;
 		rp.moving_arg = true;
 		docstring const caption = getCaption(rp);
+		// clear counter
+		os.countLines();
 		if (param_string.empty() && caption.empty())
-			os << "\n\\begin{lstlisting}\n";
+			os << breakln << "\\begin{lstlisting}\n";
 		else {
-			os << "\n\\begin{lstlisting}[";
+			os << breakln << "\\begin{lstlisting}[";
 			if (!caption.empty()) {
 				os << "caption={" << caption << '}';
 				if (!param_string.empty())
@@ -248,15 +250,14 @@ int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 			}
 			os << from_utf8(param_string) << "]\n";
 		}
-		lines += 2;
-		os << code << "\n\\end{lstlisting}\n";
-		lines += 2;
+		os << code << breakln << "\\end{lstlisting}\n";
+		lines += os.countLines();
 	}
 
 	if (encoding_switched){
 		// Switch back
-		pair<bool, int> const c = switchEncoding(os, buffer().params(),
-				runparams, *save_enc, true);
+		pair<bool, int> const c = switchEncoding(os.os(),
+				buffer().params(), runparams, *save_enc, true);
 		runparams.encoding = save_enc;
 	}
 
@@ -391,8 +392,9 @@ docstring InsetListings::getCaption(OutputParams const & runparams) const
 		return docstring();
 
 	odocstringstream ods;
-	ins->getOptArg(ods, runparams);
-	ins->getArgument(ods, runparams);
+	otexstream os(ods);
+	ins->getOptArg(os, runparams);
+	ins->getArgument(os, runparams);
 	// the caption may contain \label{} but the listings
 	// package prefer caption={}, label={}
 	docstring cap = ods.str();

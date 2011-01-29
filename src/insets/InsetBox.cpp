@@ -237,7 +237,7 @@ bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-int InsetBox::latex(odocstream & os, OutputParams const & runparams) const
+int InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 {
 	BoxType btype = boxtranslator().find(params_.type);
 

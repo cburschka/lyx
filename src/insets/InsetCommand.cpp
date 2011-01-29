@@ -119,7 +119,7 @@ void InsetCommand::setParams(InsetCommandParams const & p)
 }
 
 
-int InsetCommand::latex(odocstream & os, OutputParams const & runparams_in) const
+int InsetCommand::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	OutputParams runparams = runparams_in;
 	os << getCommand(runparams);

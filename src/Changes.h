@@ -103,7 +103,7 @@ public:
 
 	/// output latex to mark a transition between two change types
 	/// returns length of text outputted
-	static int latexMarkChange(odocstream & os, BufferParams const & bparams,
+	static int latexMarkChange(otexstream & os, BufferParams const & bparams,
 				   Change const & oldChange, Change const & change,
 				   OutputParams const & runparams);
 

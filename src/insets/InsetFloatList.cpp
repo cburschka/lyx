@@ -113,7 +113,7 @@ void InsetFloatList::read(Lexer & lex)
 }
 
 
-int InsetFloatList::latex(odocstream & os, OutputParams const &) const
+int InsetFloatList::latex(otexstream & os, OutputParams const &) const
 {
 	FloatList const & floats = buffer().params().documentClass().floats();
 	FloatList::const_iterator cit = floats[to_ascii(getParam("type"))];

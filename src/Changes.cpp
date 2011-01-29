@@ -391,7 +391,7 @@ docstring getLaTeXMarkup(docstring const & macro, docstring const & author,
 } //namespace anon
 
 
-int Changes::latexMarkChange(odocstream & os, BufferParams const & bparams,
+int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 			     Change const & oldChange, Change const & change,
 			     OutputParams const & runparams)
 {

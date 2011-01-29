@@ -39,7 +39,7 @@ InsetLayout::InsetLayout() :
 	passthru_(false), parbreakisnewline_(false), freespacing_(false), 
 	keepempty_(false), forceltr_(false), 
 	needprotect_(false), intoc_(false), spellcheck_(true), 
-	resetsfont_(true)
+	resetsfont_(true), display_(true)
 { 
 	labelfont_.setColor(Color_error);
 }
@@ -81,6 +81,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_COUNTER,
 		IL_CUSTOMPARS,
 		IL_DECORATION,
+		IL_DISPLAY,
 		IL_FONT,
 		IL_FORCELTR,
 		IL_FORCEPLAIN,
@@ -122,6 +123,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "counter", IL_COUNTER},
 		{ "custompars", IL_CUSTOMPARS },
 		{ "decoration", IL_DECORATION },
+		{ "display", IL_DISPLAY },
 		{ "end", IL_END },
 		{ "font", IL_FONT },
 		{ "forceltr", IL_FORCELTR },
@@ -344,6 +346,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_RESETSFONT:
 			lex >> resetsfont_;
+			break;
+		case IL_DISPLAY:
+			lex >> display_;
 			break;
 		case IL_END:
 			getout = true;

@@ -70,14 +70,16 @@ void InsetFormulaMacro::write(ostream & os) const
 }
 
 
-int InsetFormulaMacro::latex(odocstream & os,
+int InsetFormulaMacro::latex(otexstream & os,
 			     OutputParams const & runparams) const
 {
 	//lyxerr << "InsetFormulaMacro::latex" << endl;
-	WriteStream wi(os, runparams.moving_arg, true,
+	WriteStream wi(os.os(), runparams.moving_arg, true,
 		       runparams.dryrun ? WriteStream::wsDryrun: WriteStream::wsDefault,
 		       runparams.encoding);
+	wi.canBreakLine(os.canBreakLine());
 	tmpl()->write(wi);
+	os.canBreakLine(wi.canBreakLine());
 	return 2;
 }
 

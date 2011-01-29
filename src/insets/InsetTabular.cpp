@@ -2022,7 +2022,7 @@ bool Tabular::isPartOfMultiRow(row_type row, col_type column) const
 }
 
 
-int Tabular::TeXTopHLine(odocstream & os, row_type row, string const lang) const
+int Tabular::TeXTopHLine(otexstream & os, row_type row, string const lang) const
 {
 	// we only output complete row lines and the 1st row here, the rest
 	// is done in Tabular::TeXBottomHLine(...)
@@ -2085,7 +2085,7 @@ int Tabular::TeXTopHLine(odocstream & os, row_type row, string const lang) const
 }
 
 
-int Tabular::TeXBottomHLine(odocstream & os, row_type row, string const lang) const
+int Tabular::TeXBottomHLine(otexstream & os, row_type row, string const lang) const
 {
 	// we output bottomlines of row r and the toplines of row r+1
 	// if the latter do not span the whole tabular
@@ -2158,8 +2158,8 @@ int Tabular::TeXBottomHLine(odocstream & os, row_type row, string const lang) co
 }
 
 
-int Tabular::TeXCellPreamble(odocstream & os, idx_type cell,
-							 bool & ismulticol, bool & ismultirow) const
+int Tabular::TeXCellPreamble(otexstream & os, idx_type cell,
+			     bool & ismulticol, bool & ismultirow) const
 {
 	int ret = 0;
 	row_type const r = cellRow(cell);
@@ -2308,8 +2308,8 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell,
 }
 
 
-int Tabular::TeXCellPostamble(odocstream & os, idx_type cell,
-							  bool ismulticol, bool ismultirow) const
+int Tabular::TeXCellPostamble(otexstream & os, idx_type cell,
+			      bool ismulticol, bool ismultirow) const
 {
 	int ret = 0;
 	row_type const r = cellRow(cell);
@@ -2336,7 +2336,7 @@ int Tabular::TeXCellPostamble(odocstream & os, idx_type cell,
 }
 
 
-int Tabular::TeXLongtableHeaderFooter(odocstream & os,
+int Tabular::TeXLongtableHeaderFooter(otexstream & os,
 					 OutputParams const & runparams) const
 {
 	if (!is_long_tabular)
@@ -2448,7 +2448,7 @@ bool Tabular::isValidRow(row_type row) const
 }
 
 
-int Tabular::TeXRow(odocstream & os, row_type row,
+int Tabular::TeXRow(otexstream & os, row_type row,
 		       OutputParams const & runparams) const
 {
 	idx_type cell = cellIndex(row, 0);
@@ -2591,7 +2591,7 @@ int Tabular::TeXRow(odocstream & os, row_type row,
 }
 
 
-int Tabular::latex(odocstream & os, OutputParams const & runparams) const
+int Tabular::latex(otexstream & os, OutputParams const & runparams) const
 {
 	int ret = 0;
 
@@ -2718,8 +2718,10 @@ int Tabular::latex(odocstream & os, OutputParams const & runparams) const
 	else
 		os << "\\end{tabular}";
 	if (rotate) {
-		os << "\n\\end{sideways}";
-		++ret;
+		// clear counter
+		os.countLines();
+		os << breakln << "\\end{sideways}";
+		ret += os.countLines();
 	}
 
 	return ret;
@@ -4718,7 +4720,7 @@ Inset::DisplayType InsetTabular::display() const
 }
 
 
-int InsetTabular::latex(odocstream & os, OutputParams const & runparams) const
+int InsetTabular::latex(otexstream & os, OutputParams const & runparams) const
 {
 	return tabular.latex(os, runparams);
 }

@@ -163,7 +163,9 @@ static docstring const tabularnewline_def = from_ascii(
 	
 static docstring const lyxgreyedout_def = from_ascii(
 	"%% The greyedout annotation environment\n"
-	"\\newenvironment{lyxgreyedout}{\\textcolor{note_fontcolor}\\bgroup}{\\egroup}\n");
+	"\\newenvironment{lyxgreyedout}\n"
+	"  {\\textcolor{note_fontcolor}\\bgroup\\ignorespaces}\n"
+	"  {\\ignorespacesafterend\\egroup}\n");
 
 // We want to omit the file extension for includegraphics, but this does not
 // work when the filename contains other dots.

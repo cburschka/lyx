@@ -56,6 +56,7 @@ class ParIterator;
 class Text;
 class TocList;
 class XHTMLStream;
+class otexstream;
 
 namespace graphics { class PreviewLoader; }
 
@@ -464,7 +465,7 @@ public:
 	 *  \sa Buffer::writeLaTeXSource for the reason.
 	 *  \return the number of rows (\n's) of generated LaTeX code.
 	 */
-	virtual int latex(odocstream &, OutputParams const &) const { return 0; }
+	virtual int latex(otexstream &, OutputParams const &) const { return 0; }
 	/// returns true to override begin and end inset in file
 	virtual bool directWrite() const;
 	///

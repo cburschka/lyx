@@ -81,7 +81,7 @@ private:
 	///
 	InsetCode lyxCode() const { return FLOAT_CODE; }
 	///
-	int latex(odocstream &, OutputParams const &) const;
+	int latex(otexstream &, OutputParams const &) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///

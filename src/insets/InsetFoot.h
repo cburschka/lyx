@@ -32,7 +32,7 @@ private:
 	///
 	docstring name() const { return from_ascii("Foot"); }
 	///
-	int latex(odocstream &, OutputParams const &) const;
+	int latex(otexstream &, OutputParams const &) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///

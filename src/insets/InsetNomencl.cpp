@@ -294,7 +294,7 @@ docstring nomenclWidest(Buffer const & buffer, OutputParams const & runparams)
 } // namespace anon
 
 
-int InsetPrintNomencl::latex(odocstream & os, OutputParams const & runparams_in) const
+int InsetPrintNomencl::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	OutputParams runparams = runparams_in;
 	int lines = 0;

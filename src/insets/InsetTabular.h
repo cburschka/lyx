@@ -447,7 +447,7 @@ public:
 	///
 	void read(Lexer &);
 	///
-	int latex(odocstream &, OutputParams const &) const;
+	int latex(otexstream &, OutputParams const &) const;
 	///
 	int docbook(odocstream & os, OutputParams const &) const;
 	///
@@ -713,19 +713,19 @@ public:
 	///
 	// helper function for Latex returns number of newlines
 	///
-	int TeXTopHLine(odocstream &, row_type row, std::string const lang) const;
+	int TeXTopHLine(otexstream &, row_type row, std::string const lang) const;
 	///
-	int TeXBottomHLine(odocstream &, row_type row, std::string const lang) const;
+	int TeXBottomHLine(otexstream &, row_type row, std::string const lang) const;
 	///
-	int TeXCellPreamble(odocstream &, idx_type cell, bool & ismulticol, bool & ismultirow) const;
+	int TeXCellPreamble(otexstream &, idx_type cell, bool & ismulticol, bool & ismultirow) const;
 	///
-	int TeXCellPostamble(odocstream &, idx_type cell, bool ismulticol, bool ismultirow) const;
+	int TeXCellPostamble(otexstream &, idx_type cell, bool ismulticol, bool ismultirow) const;
 	///
-	int TeXLongtableHeaderFooter(odocstream &, OutputParams const &) const;
+	int TeXLongtableHeaderFooter(otexstream &, OutputParams const &) const;
 	///
 	bool isValidRow(row_type const row) const;
 	///
-	int TeXRow(odocstream &, row_type const row,
+	int TeXRow(otexstream &, row_type const row,
 		   OutputParams const &) const;
 	///
 	// helper functions for plain text
@@ -802,7 +802,7 @@ public:
 	///
 	DisplayType display() const;
 	///
-	int latex(odocstream &, OutputParams const &) const;
+	int latex(otexstream &, OutputParams const &) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///

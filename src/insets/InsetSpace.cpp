@@ -521,7 +521,7 @@ void InsetSpace::read(Lexer & lex)
 }
 
 
-int InsetSpace::latex(odocstream & os, OutputParams const & runparams) const
+int InsetSpace::latex(otexstream & os, OutputParams const & runparams) const
 {
 	switch (params_.kind) {
 	case InsetSpaceParams::NORMAL:

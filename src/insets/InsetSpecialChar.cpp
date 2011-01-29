@@ -205,7 +205,7 @@ void InsetSpecialChar::read(Lexer & lex)
 }
 
 
-int InsetSpecialChar::latex(odocstream & os,
+int InsetSpecialChar::latex(otexstream & os,
 			    OutputParams const & rp) const
 {
 	switch (kind_) {

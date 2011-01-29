@@ -220,7 +220,7 @@ bool InsetNote::isMacroScope() const
 }
 
 
-int InsetNote::latex(odocstream & os, OutputParams const & runparams_in) const
+int InsetNote::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)
 		return 0;
@@ -233,7 +233,12 @@ int InsetNote::latex(odocstream & os, OutputParams const & runparams_in) const
 	} 
 
 	odocstringstream ss;
-	InsetCollapsable::latex(ss, runparams);
+	otexstream ots(ss);
+	ots.canBreakLine(os.canBreakLine());
+	InsetCollapsable::latex(ots, runparams);
+	docstring const str = ss.str();
+	os << str;
+
 	// the space after the comment in 'a[comment] b' will be eaten by the
 	// comment environment since the space before b is ignored with the
 	// following latex output:
@@ -245,11 +250,10 @@ int InsetNote::latex(odocstream & os, OutputParams const & runparams_in) const
 	//  b
 	//
 	// Adding {} before ' b' fixes this.
-	if (params_.type == InsetNoteParams::Comment)
-		ss << "{}";
+	// The {} will be automatically added, but only if needed, by
+	// telling otexstream to protect an immediately following space.
+	os.protectSpace(ots.protectSpace());
 
-	docstring const str = ss.str();
-	os << str;
 	runparams_in.encoding = runparams.encoding;
 	// Return how many newlines we issued.
 	return int(count(str.begin(), str.end(), '\n'));
