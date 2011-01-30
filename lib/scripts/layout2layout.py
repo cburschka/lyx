@@ -110,6 +110,9 @@ import os, re, string, sys
 # Incremented to format 31, 12 January 2011 by rgh
 # Introducted NoCounter tag.
 
+# Incremented to format 32, 30 January 2011 by forenr
+# Added Display tag for InsetLayout
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -117,7 +120,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 31
+currentFormat = 32
 
 
 def usage(prog_name):
@@ -291,9 +294,9 @@ def convert(lines):
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
             continue
-        
+
         # Only new features
-        if format == 29 or format == 30:
+        if format >= 29 and format <= 31:
           i += 1
           continue
 

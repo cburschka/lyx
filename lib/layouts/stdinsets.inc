@@ -4,7 +4,7 @@
 #
 # Detailled format description is available in the customization manual
 
-Format 31
+Format 32
 
 Provides stdinsets 1
 
