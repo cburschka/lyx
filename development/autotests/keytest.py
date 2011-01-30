@@ -285,7 +285,7 @@ while not failed:
     c = x.getCommand()
     if c is None:
         break
-    if c == "":
+    if c.strip() == "":
         continue
     outfile.writelines(c + '\n')
     outfile.flush()
