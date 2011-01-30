@@ -143,15 +143,15 @@ class CommandSourceFromFile(CommandSource):
         if self.i >= len(self.lines):
             self.loops = self.loops + 1
             if self.loops >= int(max_loops):
-                os._exit(0)
+                return None
             self.i = 0
             return 'Loop'
-        line = self.lines[self.i]
+        line = self.lines[self.i].rstrip('\n')
         self.count = self.count + 1
         self.i = self.i + 1
-        #print 'Line read: <<' + line + '>>\n'
+        #print '\nLine read: <<' + line + '>>\n'
         sys.stdout.write('r')
-        return line.rstrip('\n').rstrip()
+        return line
 
 def lyx_exists():
     if lyx_pid is None:
@@ -283,6 +283,10 @@ failed = False
 while not failed:
     #os.system('echo -n LOADAVG:; cat /proc/loadavg')
     c = x.getCommand()
+    if c is None:
+        break
+    if c == "":
+        continue
     outfile.writelines(c + '\n')
     outfile.flush()
     if c[0] == '#':
