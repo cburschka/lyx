@@ -3,12 +3,14 @@
 Lang it_IT.utf8
 TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
 KK: \Cm
-KK: x^2\C\[Home]
+KK: x^2  \[Return]
+KK: \Cm
+KK: x^2  \C\[Home]
 KK: \CF
 KK: \Cm
 KK: x^2\[Tab]
 KK: \Cm
-KK: x^2n\[Return]\[Return]\[Escape]
+KK: x^2n\[Return]\[Return]
 KK: \Afs
 KK: \Ax
 KK: buffer-export latex\[Return]
