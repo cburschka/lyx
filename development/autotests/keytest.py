@@ -142,7 +142,7 @@ class CommandSourceFromFile(CommandSource):
             os._exit(0)
         if self.i >= len(self.lines):
             self.loops = self.loops + 1
-            if self.loops >= max_loops:
+            if self.loops >= int(max_loops):
                 os._exit(0)
             self.i = 0
             return 'Loop'
@@ -153,13 +153,14 @@ class CommandSourceFromFile(CommandSource):
         sys.stdout.write('r')
         return line.rstrip('\n').rstrip()
 
+def lyx_exists():
+    if lyx_pid is None:
+        return False
+    fname = '/proc/' + lyx_pid + '/status'
+    return os.path.exists(fname)
 
 def lyx_sleeping():
-    if lyx_pid is None:
-        return True
     fname = '/proc/' + lyx_pid + '/status'
-    if not os.path.exists(fname):
-        return False
     f = open(fname, 'r')
     lines = f.readlines()
     sleeping = lines[1].find('(sleeping)') > 0
@@ -177,7 +178,7 @@ def sendKeystring(keystr, LYX_PID):
         print 'print .' + keystr + '.\n'
         keystr = 'a'
     before_secs = time.time()
-    while not lyx_sleeping():
+    while lyx_exists() and not lyx_sleeping():
         time.sleep(0.02)
         sys.stdout.write('.')
         sys.stdout.flush()
@@ -189,7 +190,7 @@ def sendKeystring(keystr, LYX_PID):
 
             os._exit(1)
     if not screenshot_out is None:
-        while not lyx_sleeping():
+        while lyx_exists() and not lyx_sleeping():
             time.sleep(0.02)
             sys.stdout.write('.')
             sys.stdout.flush()
@@ -199,7 +200,7 @@ def sendKeystring(keystr, LYX_PID):
         time.sleep(0.1)
     sys.stdout.flush()
     if (subprocess.call(
-            ["xvkbd", "-xsendevent", "-delay", DELAY, "-text", keystr],
+            ["xvkbd", "-xsendevent", "-window", lyx_window_name, "-delay", DELAY, "-text", keystr],
             stdout=FNULL,stderr=FNULL
             ) == 0):
         sys.stdout.write('*')
@@ -277,8 +278,9 @@ if lyx_pid != "":
     sendKeystring("\Afn", lyx_pid)
 
 write_commands = True
+failed = False
 
-while True:
+while not failed:
     #os.system('echo -n LOADAVG:; cat /proc/loadavg')
     c = x.getCommand()
     outfile.writelines(c + '\n')
@@ -304,6 +306,7 @@ while True:
             time.sleep(1)
         print 'lyx_pid: ' + lyx_pid + '\n'
         print 'lyx_win: ' + lyx_window_name + '\n'
+        time.sleep(1)
         #RaiseWindow()
         #sendKeystring("\Afn", lyx_pid)
     elif c[0:5] == 'Sleep':
@@ -321,7 +324,7 @@ while True:
         print 'Raising Lyx'
         RaiseWindow()
     elif c[0:4] == 'KK: ':
-        if os.path.exists('/proc/' + lyx_pid + '/status'):
+        if lyx_exists():
             sendKeystring(c[4:], lyx_pid)
         else:
             ##os.system('killall lyx; sleep 2 ; killall -9 lyx')
@@ -333,18 +336,36 @@ while True:
     elif c == 'Loop':
         RaiseWindow()
         sendKeystring(ResetCommand, lyx_pid)
+    elif c[0:6] == 'Assert':
+        cmd = c[7:].rstrip()
+        print "\nExecuting " + cmd
+        result = os.system(cmd)
+        failed = failed or (result != 0)
+        print "result=" + str(result) + ", failed=" + str(failed)
     elif c[0:7] == 'TestEnd':
-        time.sleep(1)
+        time.sleep(0.5)
         print "\nTerminating lyx instance: " + str(lyx_pid) + "\n"
         os.system("kill -9 " + str(lyx_pid) + "\n");
-        cmd = c[7:].rstrip()
+        while lyx_exists():
+            print "Waiting for lyx to die...\n"
+            time.sleep(0.5)
+        cmd = c[8:].rstrip()
+        print "\nExecuting " + cmd
         result = os.system(cmd)
-        print "Test case terminated: "
-        if result == 0:
-            print "Ok\n"
-            os._exit(0)
-        else:
-            print "FAIL\n"
-            os._exit(1)
+        failed = failed or (result != 0)
+        print "result=" + str(result) + ", failed=" + str(failed)
+    elif c[0:4] == 'Lang':
+        lang = c[5:].rstrip()
+        print "\nSetting LANG=" + lang
+        os.environ['LANG'] = lang
     else:
         print "Unrecognised Command '" + c + "'\n"
+        failed = True
+
+print "Test case terminated: "
+if failed:
+    print "FAIL\n"
+    os._exit(1)
+else:
+    print "Ok\n"
+    os._exit(0)

@@ -1,5 +1,11 @@
 Automated tests based on the "MonKey Testing" keytest program.
 
+DEPENDENCIES
+
+xvkbd, wmctrl, pcregrep
+
+USAGE
+
 In order to launch all the tests available in this folder, just run
 
   ./run-tests.sh
@@ -11,3 +17,19 @@ as argument to the script, e.g.:
 
 For failed tests you get a folder with the logs that help you identify
 the problem.
+
+SYNTAX
+
+Each test-case script should be named as xxx-in.txt. The syntax of the
+script is described in detail in the sample test-case script
+hello-world-in.txt.
+
+TODO
+
+Speed-up the execution of the tests as much as possible (i.e., get rid
+of heuristic waits when present and replace them with exact check of
+the condition we're waiting for).
+
+Allow for tests with multiple LyX instances, e.g., for copy&paste
+across LyX instances, or multiple applications, i.e., for testing
+the interaction between LyX and other applications.
