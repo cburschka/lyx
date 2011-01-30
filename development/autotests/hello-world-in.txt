@@ -13,12 +13,28 @@
 # TestBegin <args...>
 #   Starts a test case under deterministic conditions:
 #   Any currently running instance of LyX is killed
-#   A new LyX instance is spawned, with the command-line args <args...>
+#   A new LyX instance is spawned, with the command-line arguments
+#   specified in <args...>.
 #
 # TestEnd <cmd...>
 #   Ends a test case, killing the LyX instance under test, and
 #   executing the <cmd...> commands into an os.system(). The exit status
-#   of the commands sequence determines success or failure of the test
+#   of the commands sequence determines success or failure of the test.
+#   This is equivalent to:
+#     TestEnd
+#     Assert <cmd...>
+#
+# Assert <cmd...>
+#   Executes the <cmd...> commands into an os.system() and, if the
+#   exit status is non-zero, then abort the test execution making it fail.
+#
+# Lang <lang>
+#   Sets the environment variable LANG to <lang>. Useful before launching
+#   LyX (i.e., before a TestBegin command, in order to set deterministically
+#   the language settings, which impacts the actual key sequences needed to
+#   operate within LyX. This way, different developers can write different
+#   test cases in different languages and still they can be executed by
+#   anyone.
 #
 # KK: <chars...>
 #   Feeds the running LyX instance with the specified key characters.
@@ -33,10 +49,10 @@
 # LaTeX, and verifies that the typed characters are indeed present in the
 # exported document.
 #
-Exec rm -f /tmp/test.lyx /tmp/test.tex
-TestBegin /tmp/test.lyx 2> /tmp/log 2>&1
+Lang it_IT.utf8
+TestBegin test.lyx > lyx-log.txt 2>&1
 KK: Hello World
 KK: \Afs
 KK: \Ax
 KK: buffer-export latex\[Return]
-TestEnd grep "Hello World" /tmp/test.tex
+TestEnd grep "Hello World" test.tex
