@@ -2847,11 +2847,12 @@ bool Paragraph::isWordSeparator(pos_type pos) const
 {
 	if (Inset const * inset = getInset(pos))
 		return !inset->isLetter();
+	if (pos == size())
+		return true;
 	char_type const c = d->text_[pos];
 	// We want to pass the ' and escape chars to the spellchecker
 	static docstring const quote = from_utf8(lyxrc.spellchecker_esc_chars + '\'');
-	return (!isLetterChar(c) && !isDigitASCII(c) && !contains(quote, c))
-		|| pos == size();
+	return (!isLetterChar(c) && !isDigitASCII(c) && !contains(quote, c));
 }
 
 
@@ -3766,7 +3767,9 @@ void Paragraph::spellCheck() const
 bool Paragraph::isMisspelled(pos_type pos, bool check_boundary) const
 {
 	bool result = SpellChecker::misspelled(d->speller_state_.getState(pos));
-	if (!result && check_boundary && pos > 0 && isWordSeparator(pos))
+	if (result || pos <= 0 || pos >= size())
+		return result;
+	if (check_boundary && isWordSeparator(pos))
 		result = SpellChecker::misspelled(d->speller_state_.getState(pos - 1));
 	return result;
 }
