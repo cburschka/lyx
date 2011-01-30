@@ -737,7 +737,8 @@ void GuiTabular::updateContents()
 	if (!pwidth.zero()) {
 		colwidth = pwidth.asString();
 		lengthToWidgets(widthED, widthUnit, colwidth, default_unit);
-	}
+	} else
+		widthED->clear();
 
 	// if there is a LaTeX argument, the width and alignment will be overwritten
 	// therefore disable them in this case
