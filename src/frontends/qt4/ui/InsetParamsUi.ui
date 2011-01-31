@@ -39,14 +39,31 @@
     </spacer>
    </item>
    <item row="1" column="1">
-    <widget class="QCheckBox" name="synchronizedViewCB">
-     <property name="layoutDirection">
-      <enum>Qt::LeftToRight</enum>
-     </property>
-     <property name="text">
-      <string>I&amp;mmediate Apply</string>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QCheckBox" name="synchronizedCB">
+       <property name="toolTip">
+        <string>Update dialog when moving context</string>
+       </property>
+       <property name="text">
+        <string>S&amp;ynchronize Dialog</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="immediateApplyCB">
+       <property name="toolTip">
+        <string>Apply settings immediately</string>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="text">
+        <string>I&amp;mmediate Apply</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item row="2" column="0" colspan="2">
     <layout class="QHBoxLayout">
@@ -124,7 +141,7 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>synchronizedViewCB</tabstop>
+  <tabstop>immediateApplyCB</tabstop>
   <tabstop>restorePB</tabstop>
   <tabstop>okPB</tabstop>
   <tabstop>applyPB</tabstop>

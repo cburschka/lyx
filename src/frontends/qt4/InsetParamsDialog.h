@@ -43,7 +43,8 @@ protected Q_SLOTS:
 	void on_okPB_clicked();
 	void on_applyPB_clicked();
 	void on_closePB_clicked();
-	void on_synchronizedViewCB_stateChanged(int state);
+	void on_immediateApplyCB_stateChanged(int state);
+	void on_synchronizedCB_stateChanged(int state);
 
 private:
 	/// \name DialogView inherited methods
@@ -59,7 +60,7 @@ private:
 	///
 	void updateView(bool update_widget);
 	///
-	docstring checkWidgets(bool synchronized_view);
+	docstring checkWidgets(bool immediate);
 	/// pimpl
 	struct Private;
 	Private * d;
