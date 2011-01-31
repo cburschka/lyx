@@ -5,13 +5,11 @@ dnl         Allan Rae (rae@lyx.org)
 
 
 dnl Usage LYX_CHECK_VERSION   Displays version of LyX being built and
-dnl sets variables "lyx_devel_version" and "lyx_prerelease"
+dnl sets variable "build_type"
 AC_DEFUN([LYX_CHECK_VERSION],[
 echo "configuring LyX version" AC_PACKAGE_VERSION
 lyx_devel_version=no
 lyx_prerelease=no
-enable_debug=yes
-build_type=release
 AC_MSG_CHECKING([for build type])
 AC_ARG_ENABLE(build-type,
   AC_HELP_STRING([--enable-build-type=TYPE],[set build setting according to TYPE=rel(ease), pre(release), dev(elopment), prof(iling), gprof]),
@@ -26,17 +24,15 @@ AC_ARG_ENABLE(build-type,
   [case AC_PACKAGE_VERSION in
     *svn*) build_type=development;;
     *pre*|*alpha*|*beta*|*rc*) build_type=prerelease;;
+    *) build_type=release ;;
    esac])
 AC_MSG_RESULT([$build_type])
 lyx_flags="$lyx_flags build=$build_type"
 case $build_type in
-    release) enable_debug=no ;;
     development) lyx_devel_version=yes
                  AC_DEFINE(DEVEL_VERSION, 1, [Define if you are building a development version of LyX])
 		 LYX_DATE="not released yet" ;;
     prerelease) lyx_prerelease=yes ;;
-    profiling) ;;
-    gprof);;
 esac
     
 AC_SUBST(lyx_devel_version)
@@ -194,31 +190,26 @@ fi
 
 ### We might want to disable debug
 AC_ARG_ENABLE(debug,
-  AC_HELP_STRING([--enable-debug],[enable debug information]))
+  AC_HELP_STRING([--enable-debug],[enable debug information]),,
+  [AS_CASE([$build_type], [rel*], [enable_debug=no], [enable_debug=yes])]
+)
 
 AC_ARG_ENABLE(stdlib-debug,
   AC_HELP_STRING([--enable-stdlib-debug],[enable debug mode in the standard library]),,
-  [ if test $lyx_devel_version = yes ; then
-      enable_stdlib_debug=yes;
-    else
-      enable_stdlib_debug=no;
-    fi;])
+  [AS_CASE([$build_type], [dev*], [enable_stdlib_debug=yes], 
+	  [enable_stdlib_debug=no])]
+)
 
 AC_ARG_ENABLE(concept-checks,
   AC_HELP_STRING([--enable-concept-checks],[enable concept checks]),,
-  [ if test $lyx_devel_version = yes -o $lyx_prerelease = yes ; then
-	enable_concept_checks=yes;
-    else
-        enable_concept_checks=no;
-    fi;])
+  [AS_CASE([$build_type], [dev*|pre*], [enable_concept_checks=yes], 
+	  [enable_concept_checks=no])]
+)
 
 AC_ARG_ENABLE(gprof,
   AC_HELP_STRING([--enable-gprof],[enable profiling using gprof]),,
-  [if test $build_type = gprof ; then
-      enable_gprof=yes;
-    else
-      enable_gprof=no;
-    fi;])
+  [AS_CASE([$build_type], [gprof], [enable_gprof=yes], [enable_gprof=no])]
+)
 
 ### set up optimization
 AC_ARG_ENABLE(optimization,
@@ -242,18 +233,14 @@ lyx_pch_comp=no
 
 AC_ARG_ENABLE(assertions,
   AC_HELP_STRING([--enable-assertions],[add runtime sanity checks in the program]),,
-  [if test $lyx_devel_version = yes -o $lyx_prerelease = yes ; then
-	enable_assertions=yes;
-    else
-	enable_assertions=no;
-    fi;])
+  [AS_CASE([$build_type], [dev*|pre*], [enable_assertions=yes],
+	  [enable_assertions=no])]
+)
 if test "x$enable_assertions" = xyes ; then
    lyx_flags="$lyx_flags assertions"
    AC_DEFINE(ENABLE_ASSERTIONS,1,
     [Define if you want assertions to be enabled in the code])
 fi
-
-
 
 # set the compiler options correctly.
 if test x$GXX = xyes; then
