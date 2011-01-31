@@ -22,7 +22,9 @@
 #  - margins set to dynamic to ensure alignment of line headings
 #  - categories
 #  - ordering control left at the beginning (any other way ?)
-
+# rev.4; J.-P. Chretien nov 2010
+#  - remove \input{pdftexconfig.tex} workaround
+#    (not needed if a4paper class option is not used)
 
 Format 11
 
@@ -125,11 +127,6 @@ Preamble
       \needsendfaxfalse 
     \fi		% if needSendFax
   }	%findemessage
-
-% to get the specified pagesize 
-% (workaround for an a4paper/lettre problem in pdf mode)
-\@ifpackageloaded{ifpdf}{}{\usepackage{ifpdf}}
-\ifpdf\input pdftexconfig.tex\fi
 
 EndPreamble
 

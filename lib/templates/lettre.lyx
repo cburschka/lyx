@@ -1,4 +1,4 @@
-#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.9svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -19,7 +19,7 @@
 \paperfontsize 11
 \spacing single
 \use_hyperref false
-\papersize a4paper
+\papersize default
 \use_geometry false
 \use_amsmath 1
 \use_esint 1
@@ -37,6 +37,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -53,6 +54,39 @@ La liste des styles couvre tous les éléments d'une lettre qui apparaissent
 
 \begin_layout Plain Layout
 L'ordre des éléments est indifférent.
+\end_layout
+
+\begin_layout Plain Layout
+La classe lettre ne connaît pas l'option a4paper, ne pas sélectionner 
+\family sans
+Document\SpecialChar \menuseparator
+Paramètres\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Format de la page\SpecialChar \menuseparator
+Format\SpecialChar \menuseparator
+A4.
+\end_layout
+
+\begin_layout Plain Layout
+Si vous devez imprimer une lettre sur un format de papier différent de A4,
+ il vaut mieux modifier le fichier 
+\family typewriter
+default.ins
+\family default
+ si la mise en page ne convient pas, en le renommant par exemple 
+\family typewriter
+letter.ins
+\family default
+ (voir la documentation du paquetage lettre).
+ Le fichier 
+\family typewriter
+default.ins
+\family default
+ se trouve dans le répertoire 
+\family typewriter
+tex/latex/lettre
+\family default
+ de la distribution LaTeX.
 \end_layout
 
 \end_inset
@@ -82,7 +116,7 @@ Mon tel
 
 \begin_layout NoFax
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Ce style LyX est utile pour éviter qu'apparaissent les données implictes
@@ -177,11 +211,11 @@ DG, DRH
 
 \begin_layout EndOfMessage
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Marqueur de fin de lettre obligatoire (il peut y avoir plusieurs lettres
- dans le même fichier)
+ dans le même fichier).
 \end_layout
 
 \end_inset
