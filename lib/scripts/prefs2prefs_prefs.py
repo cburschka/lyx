@@ -16,6 +16,8 @@
 # where the Bool says if  we've modified anything and the NewLine is 
 # the new line, if so, which will be used to replace the old line.
 
+import re
+
 
 ###########################################################
 #
@@ -59,12 +61,29 @@ def language_use_babel(line):
 def language_package(line):
 	return simple_renaming(line, "\\language_package", "\\language_custom_package")
 
+lfre = re.compile(r'^\\converter\s+"?(\w+)"?\s+"?(\w+)"?\s+"([^"]*?)"\s+"latex"')
+def latex_flavor(line):
+	if not line.startswith("\\converter"):
+		return no_match
+	m = lfre.match(line)
+	if not m:
+		return no_match
+	conv = m.group(1)
+	fmat = m.group(2)
+	args = m.group(3)
+	flavor = "pdflatex"	
+	if conv in ("platex", "xetex", "luatex"):
+		flavor = conv
+	return (True, 
+		"\\converter \"%s\" \"%s\" \"%s\" \"latex=%s\"" % (conv, fmat, args, flavor))
+
 
 ########################
 
 
 conversions = [
 	[ # this will be a long list of conversions for format 0
+		latex_flavor,
 		remove_obsolete,
 		language_use_babel,
 		language_package
