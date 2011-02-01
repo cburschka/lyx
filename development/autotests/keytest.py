@@ -224,7 +224,7 @@ def RaiseWindow():
     #os.system("echo x-session-manager open files: `lsof -p $X_PID | grep ICE-unix | wc -l`")
     ####os.system("wmctrl -l | ( grep '"+lyx_window_name+"' || ( killall lyx ; sleep 1 ; killall -9 lyx ))")
     #os.system("wmctrl -R '"+lyx_window_name+"' ;sleep 0.1")
-    system_retry(30, "wmctrl -R '"+lyx_window_name+"'")
+    system_retry(30, "wmctrl -a '"+lyx_window_name+"'")
 
 
 lyx_pid = os.environ.get('LYX_PID')
@@ -274,7 +274,7 @@ else:
 
 outfile = open(outfilename, 'w')
 
-if lyx_pid != "":
+if not lyx_pid is None:
     RaiseWindow()
     sendKeystring("\Afn", lyx_pid)
 
@@ -298,6 +298,8 @@ while not failed:
         if lyx_pid != "":
             print "Found running instance(s) of LyX: " + lyx_pid + ": killing them all\n"
             os.system("killall lyx")
+            time.sleep(0.5)
+            os.system("killall -KILL lyx")
         time.sleep(0.2)
         print "Starting LyX . . ."
         if lyx_userdir is None:
@@ -306,17 +308,15 @@ while not failed:
             os.system(lyx_exe + " -userdir " + lyx_userdir + " " + c[9:] + "&")
         while True:
             lyx_pid=os.popen("pidof lyx").read().rstrip()
-            lyx_window_name=os.popen("wmctrl -l -p | grep ' " + str(lyx_pid) +  " ' | cut -d ' ' -f 1").read().rstrip()
-            if lyx_window_name != "":
-                break
+            if lyx_pid != "":
+                lyx_window_name=os.popen("wmctrl -l -p | grep ' " + str(lyx_pid) +  " ' | cut -d ' ' -f 1").read().rstrip()
+                if lyx_window_name != "":
+                    break
             print 'lyx_win: ' + lyx_window_name + '\n'
             print "Waiting for LyX to show up . . ."
             time.sleep(1)
         print 'lyx_pid: ' + lyx_pid + '\n'
         print 'lyx_win: ' + lyx_window_name + '\n'
-        time.sleep(1)
-        #RaiseWindow()
-        #sendKeystring("\Afn", lyx_pid)
     elif c[0:5] == 'Sleep':
         print "\nSleeping for " + c[6:] + "\n"
         time.sleep(float(c[6:]))
