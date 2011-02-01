@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-01-29 15:51+0100\n"
-"PO-Revision-Date: 2011-01-29 09:03+0730\n"
+"POT-Creation-Date: 2011-02-01 12:19+0100\n"
+"PO-Revision-Date: 2011-02-01 18:23+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
 "Language: id\n"
@@ -38,7 +38,7 @@ msgstr "Hak cipta"
 #: src/frontends/qt4/ui/ErrorListUi.ui:60
 #: src/frontends/qt4/ui/ExternalUi.ui:619
 #: src/frontends/qt4/ui/IncludeUi.ui:250
-#: src/frontends/qt4/ui/InsetParamsUi.ui:115 src/frontends/qt4/ui/LogUi.ui:87
+#: src/frontends/qt4/ui/InsetParamsUi.ui:132 src/frontends/qt4/ui/LogUi.ui:87
 #: src/frontends/qt4/ui/ParagraphUi.ui:260 src/frontends/qt4/ui/PrefsUi.ui:93
 #: src/frontends/qt4/ui/RefUi.ui:137 src/frontends/qt4/ui/SearchUi.ui:203
 #: src/frontends/qt4/ui/ShowFileUi.ui:55
@@ -233,7 +233,7 @@ msgstr "&Masukkan bibliografi dalam Daftar Isi"
 #: src/frontends/qt4/ui/ExternalUi.ui:599
 #: src/frontends/qt4/ui/GraphicsUi.ui:721
 #: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/IndexUi.ui:41
-#: src/frontends/qt4/ui/InsetParamsUi.ui:95
+#: src/frontends/qt4/ui/InsetParamsUi.ui:112
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 #: src/frontends/qt4/ui/MathMatrixUi.ui:307 src/frontends/qt4/ui/NoteUi.ui:38
 #: src/frontends/qt4/ui/ParagraphUi.ui:240
@@ -771,7 +771,7 @@ msgstr "Gunakan semua perubahan segera"
 #: src/frontends/qt4/ui/DocumentUi.ui:77
 #: src/frontends/qt4/ui/ExternalUi.ui:609
 #: src/frontends/qt4/ui/GraphicsUi.ui:742
-#: src/frontends/qt4/ui/InsetParamsUi.ui:105
+#: src/frontends/qt4/ui/InsetParamsUi.ui:122
 #: src/frontends/qt4/ui/ListingsUi.ui:549
 #: src/frontends/qt4/ui/ParagraphUi.ui:250 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:124 src/frontends/qt4/ui/SendtoUi.ui:85
@@ -822,7 +822,7 @@ msgstr "&Turun"
 #: src/frontends/qt4/ui/CitationUi.ui:174
 #: src/frontends/qt4/ui/DocumentUi.ui:44
 #: src/frontends/qt4/ui/GraphicsUi.ui:692
-#: src/frontends/qt4/ui/InsetParamsUi.ui:62
+#: src/frontends/qt4/ui/InsetParamsUi.ui:79
 #: src/frontends/qt4/ui/ParagraphUi.ui:217 src/frontends/qt4/ui/PrefsUi.ui:47
 #: src/frontends/qt4/ui/WrapUi.ui:121
 msgid "&Restore"
@@ -1959,12 +1959,26 @@ msgstr "Nama Informasi:"
 msgid "Inset Parameter Configuration"
 msgstr "Konfigurasi Parameter Sisipan"
 
-#: src/frontends/qt4/ui/InsetParamsUi.ui:47
+#: src/frontends/qt4/ui/InsetParamsUi.ui:46
+msgid "Update dialog when moving context"
+msgstr ""
+
+#: src/frontends/qt4/ui/InsetParamsUi.ui:49
+#, fuzzy
+msgid "S&ynchronize Dialog"
+msgstr "Sesuaikan dengan keluaran"
+
+#: src/frontends/qt4/ui/InsetParamsUi.ui:56
+#, fuzzy
+msgid "Apply settings immediately"
+msgstr "Gunakan semua perubahan segera"
+
+#: src/frontends/qt4/ui/InsetParamsUi.ui:62
 #: src/frontends/qt4/ui/ParagraphUi.ui:44
 msgid "I&mmediate Apply"
 msgstr "Terapkan se&gera"
 
-#: src/frontends/qt4/ui/InsetParamsUi.ui:72
+#: src/frontends/qt4/ui/InsetParamsUi.ui:89
 msgid "New Inset"
 msgstr "Sisipan Baru"
 
@@ -9890,10 +9904,11 @@ msgid "Customisable Lists (enumitem)"
 msgstr "Daftar dapat diatur (enumitem)"
 
 #: lib/layouts/enumitem.module:8
+#, fuzzy
 msgid ""
 "Control the layout of enumerate, itemize, description, and list/labeling "
-"with an optional argument. See http://dante.ctan.org/CTAN/macros/latex/"
-"contrib/enumitem/enumitem.pdf and example file shipped with LyX."
+"with an optional argument. See http://mirror.ctan.org/macros/latex/contrib/"
+"enumitem/enumitem.pdf and example file shipped with LyX."
 msgstr ""
 "Mengkontrol tataletak daftar bernomor,  bersimbol, deskripsi dan dafter "
 "dengan opsi argumen. Lihat http://dante.ctan.org/CTAN/macros/latex/contrib/"
@@ -12728,11 +12743,11 @@ msgstr "Baris & Kolom|o"
 
 #: lib/ui/stdmenus.inc:130
 msgid "Increase List Depth|I"
-msgstr "Increase List Depth|I"
+msgstr "Lebih Masuk Kanan|M"
 
 #: lib/ui/stdmenus.inc:131
 msgid "Decrease List Depth|D"
-msgstr "Decrease List Depth|D"
+msgstr "Balik Kiri Sedikit|r"
 
 #: lib/ui/stdmenus.inc:132
 msgid "Dissolve Inset"
@@ -13356,11 +13371,11 @@ msgstr "Daftar bersimbol"
 
 #: lib/ui/stdtoolbars.inc:117
 msgid "Increase depth"
-msgstr "Lebih masuk kekanan"
+msgstr "Lebih masuk kanan"
 
 #: lib/ui/stdtoolbars.inc:118
 msgid "Decrease depth"
-msgstr "Kurang kekiri sedikit"
+msgstr "Balik kiri sedikit"
 
 #: lib/ui/stdtoolbars.inc:120
 msgid "Insert figure float"
@@ -18965,11 +18980,11 @@ msgstr ""
 "sebelumnya.\n"
 "Pengaturan dikembalikan ke bawaan."
 
-#: src/Paragraph.cpp:3073
+#: src/Paragraph.cpp:3074
 msgid "Memory problem"
 msgstr "Masalah dengan memori"
 
-#: src/Paragraph.cpp:3073
+#: src/Paragraph.cpp:3074
 msgid "Paragraph not properly initialized"
 msgstr "Paragraf tidak diinisialisasi dengan tepat"
 
