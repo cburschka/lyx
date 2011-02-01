@@ -374,7 +374,8 @@ public:
 				     std::string const & sf, std::string const & tt,
 				     bool const & sc, bool const & osf,
 				     int const & sfscale, int const & ttscale,
-				     bool const & use_nonlatexfonts) const;
+				     bool const & use_nonlatexfonts,
+				     LaTeXFeatures & features) const;
 
 	/// get the appropriate cite engine (natbib handling)
 	CiteEngine citeEngine() const;

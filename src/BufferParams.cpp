@@ -1367,9 +1367,10 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	// font selection must be done before loading fontenc.sty
 	string const fonts =
-		loadFonts(fonts_roman, fonts_sans,
-			  fonts_typewriter, fonts_expert_sc, fonts_old_figures,
-			  fonts_sans_scale, fonts_typewriter_scale, useNonTeXFonts);
+		loadFonts(fonts_roman, fonts_sans, fonts_typewriter,
+			  fonts_expert_sc, fonts_old_figures,
+			  fonts_sans_scale, fonts_typewriter_scale,
+			  useNonTeXFonts, features);
 	if (!fonts.empty()) {
 		os << from_ascii(fonts);
 		nlines =
@@ -2583,7 +2584,8 @@ string const BufferParams::loadFonts(string const & rm,
 				     string const & sf, string const & tt,
 				     bool const & sc, bool const & osf,
 				     int const & sfscale, int const & ttscale,
-				     bool const & use_systemfonts) const
+				     bool const & use_systemfonts,
+				     LaTeXFeatures & features) const
 {
 	/* The LaTeX font world is in a flux. In the PSNFSS font interface,
 	   several packages have been replaced by others, that might not
@@ -2604,9 +2606,9 @@ string const BufferParams::loadFonts(string const & rm,
 	ostringstream os;
 
 	/* Fontspec (XeTeX, LuaTeX): we provide GUI support for oldstyle
-	 * numbers (Numbers=OldStyle) and sf/tt scaling. The Ligatures=TeX
-	 * option assures TeX ligatures (such as "--") are resolved.
-	 * Note that tt does not use these ligatures.
+	 * numbers (Numbers=OldStyle) and sf/tt scaling. The Ligatures=TeX/
+	 * Mapping=tex-text option assures TeX ligatures (such as "--")
+	 * are resolved. Note that tt does not use these ligatures.
 	 * TODO:
 	 *    -- add more GUI options?
 	 *    -- add more fonts (fonts for other scripts)
@@ -2614,8 +2616,19 @@ string const BufferParams::loadFonts(string const & rm,
 	 *       OldStyle, enable/disable the widget accordingly. 
 	*/
 	if (use_systemfonts) {
+		// "Mapping=tex-text" and "Ligatures=TeX" are equivalent.
+		// However, until v.2 (2010/07/11) fontspec only knew
+		// Mapping=tex-text (for XeTeX only); then "Ligatures=TeX"
+		// was introduced for both XeTeX and LuaTeX (LuaTeX
+		// didn't understand "Mapping=tex-text", while XeTeX
+		// understood both. With most recent versions, both
+		// variants are understood by both engines. However,
+		// we want to provide support for at least TeXLive 2009.
+		string const texmapping =
+			(features.runparams().flavor == OutputParams::XETEX) ?
+			"Mapping=tex-text" : "Ligatures=TeX";
 		if (rm != "default") {
-			os << "\\setmainfont[Ligatures=TeX";
+			os << "\\setmainfont[" << texmapping;
 			if (osf)
 				os << ",Numbers=OldStyle";
 			os << "]{" << parseFontName(rm) << "}\n";
@@ -2625,10 +2638,10 @@ string const BufferParams::loadFonts(string const & rm,
 			if (sfscale != 100)
 				os << "\\setsansfont[Scale=" 
 				   << float(sfscale) / 100 
-				   << ",Ligatures=TeX]{"
+				   << "," << texmapping << "]{"
 				   << sans << "}\n";
 			else
-				os << "\\setsansfont[Ligatures=TeX]{"
+				os << "\\setsansfont[" << texmapping << "]{"
 				   << sans << "}\n";
 		}
 		if (tt != "default") {
