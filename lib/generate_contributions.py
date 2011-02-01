@@ -1240,6 +1240,14 @@ contributers = [
                  "29 January 2007",
                  u"Various bug fixes"),
 
+     contributer(u"Jim Rotmalm",
+                 "jim.rotmalm () gmail ! com",
+                 "GPL",
+                 "License for my contributions.",
+                 "m=129582352017079",
+                 "24 January 2011",
+                 u"Swedish translation"),
+
      contributer(u"Paul A. Rubin",
                  "rubin () msu ! edu",
                  "GPL",
