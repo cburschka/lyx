@@ -234,6 +234,7 @@ outfilename = os.environ.get('KEYTEST_OUTFILE')
 max_drop = os.environ.get('MAX_DROP')
 lyx_window_name = os.environ.get('LYX_WINDOW_NAME')
 screenshot_out = os.environ.get('SCREENSHOT_OUT')
+lyx_userdir = os.environ.get('LYX_USERDIR')
 
 max_loops = os.environ.get('MAX_LOOPS')
 if max_loops is None:
@@ -299,10 +300,13 @@ while not failed:
             os.system("killall lyx")
         time.sleep(0.2)
         print "Starting LyX . . ."
-        os.system(lyx_exe + c[9:] + "&")
+        if lyx_userdir is None:
+            os.system(lyx_exe + c[9:] + "&")
+        else:
+            os.system(lyx_exe + " -userdir " + lyx_userdir + " " + c[9:] + "&")
         while True:
             lyx_pid=os.popen("pidof lyx").read().rstrip()
-            lyx_window_name=os.popen("wmctrl -l | grep 'lyx$\\|LyX:' | sed -e 's/.*\\([Ll]y[Xx].*\\)$/\\1/'").read().rstrip()
+            lyx_window_name=os.popen("wmctrl -l -p | grep ' " + str(lyx_pid) +  " ' | cut -d ' ' -f 1").read().rstrip()
             if lyx_window_name != "":
                 break
             print 'lyx_win: ' + lyx_window_name + '\n'
