@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-01-29 00:42+0100\n"
+"POT-Creation-Date: 2011-02-01 12:19+0100\n"
 "PO-Revision-Date: 2010-12-29 17:14+0100\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -42,7 +42,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/ErrorListUi.ui:60
 #: src/frontends/qt4/ui/ExternalUi.ui:619
 #: src/frontends/qt4/ui/IncludeUi.ui:250
-#: src/frontends/qt4/ui/InsetParamsUi.ui:115 src/frontends/qt4/ui/LogUi.ui:87
+#: src/frontends/qt4/ui/InsetParamsUi.ui:132 src/frontends/qt4/ui/LogUi.ui:87
 #: src/frontends/qt4/ui/ParagraphUi.ui:260 src/frontends/qt4/ui/PrefsUi.ui:93
 #: src/frontends/qt4/ui/RefUi.ui:137 src/frontends/qt4/ui/SearchUi.ui:203
 #: src/frontends/qt4/ui/ShowFileUi.ui:55
@@ -238,7 +238,7 @@ msgstr "Añadir bibliografía al I&G"
 #: src/frontends/qt4/ui/ExternalUi.ui:599
 #: src/frontends/qt4/ui/GraphicsUi.ui:721
 #: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/IndexUi.ui:41
-#: src/frontends/qt4/ui/InsetParamsUi.ui:95
+#: src/frontends/qt4/ui/InsetParamsUi.ui:112
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 #: src/frontends/qt4/ui/MathMatrixUi.ui:307 src/frontends/qt4/ui/NoteUi.ui:38
 #: src/frontends/qt4/ui/ParagraphUi.ui:240
@@ -496,8 +496,8 @@ msgid "Remove the selected branch"
 msgstr "Quitar la rama seleccionada"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3783
-#: src/Buffer.cpp:3796
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3785
+#: src/Buffer.cpp:3798
 msgid "&Remove"
 msgstr "&Quitar"
 
@@ -531,7 +531,7 @@ msgstr "Añadir &todo"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2282 src/Buffer.cpp:3758 src/Buffer.cpp:3821
+#: src/Buffer.cpp:2282 src/Buffer.cpp:3760 src/Buffer.cpp:3823
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:222 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1775
@@ -777,7 +777,7 @@ msgstr "Aplicar cam&bios inmediatamente"
 #: src/frontends/qt4/ui/DocumentUi.ui:77
 #: src/frontends/qt4/ui/ExternalUi.ui:609
 #: src/frontends/qt4/ui/GraphicsUi.ui:742
-#: src/frontends/qt4/ui/InsetParamsUi.ui:105
+#: src/frontends/qt4/ui/InsetParamsUi.ui:122
 #: src/frontends/qt4/ui/ListingsUi.ui:549
 #: src/frontends/qt4/ui/ParagraphUi.ui:250 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:124 src/frontends/qt4/ui/SendtoUi.ui:85
@@ -828,7 +828,7 @@ msgstr "&Bajar"
 #: src/frontends/qt4/ui/CitationUi.ui:174
 #: src/frontends/qt4/ui/DocumentUi.ui:44
 #: src/frontends/qt4/ui/GraphicsUi.ui:692
-#: src/frontends/qt4/ui/InsetParamsUi.ui:62
+#: src/frontends/qt4/ui/InsetParamsUi.ui:79
 #: src/frontends/qt4/ui/ParagraphUi.ui:217 src/frontends/qt4/ui/PrefsUi.ui:47
 #: src/frontends/qt4/ui/WrapUi.ui:121
 msgid "&Restore"
@@ -1767,7 +1767,7 @@ msgstr "Insertar el espaciado incluso después de un salto de página"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:19
 #: src/frontends/qt4/ui/HyperlinkUi.ui:32 lib/layouts/scrlttr2.layout:207
-#: lib/layouts/amsdefs.inc:159 lib/layouts/stdinsets.inc:268
+#: lib/layouts/amsdefs.inc:159 lib/layouts/stdinsets.inc:270
 #: lib/layouts/minimalistic.module:26
 msgid "URL"
 msgstr "URL"
@@ -1882,8 +1882,8 @@ msgstr "Incorporar"
 msgid "Verbatim"
 msgstr "Literal"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1075
-#: src/insets/InsetInclude.cpp:1081
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1076
+#: src/insets/InsetInclude.cpp:1082
 msgid "Program Listing"
 msgstr "Listado de programa"
 
@@ -1972,12 +1972,26 @@ msgstr "Nombre de información:"
 msgid "Inset Parameter Configuration"
 msgstr "Configuración de parámetros del recuadro"
 
-#: src/frontends/qt4/ui/InsetParamsUi.ui:47
+#: src/frontends/qt4/ui/InsetParamsUi.ui:46
+msgid "Update dialog when moving context"
+msgstr ""
+
+#: src/frontends/qt4/ui/InsetParamsUi.ui:49
+#, fuzzy
+msgid "S&ynchronize Dialog"
+msgstr "S&incronizar con Salida"
+
+#: src/frontends/qt4/ui/InsetParamsUi.ui:56
+#, fuzzy
+msgid "Apply settings immediately"
+msgstr "Aplicar cam&bios inmediatamente"
+
+#: src/frontends/qt4/ui/InsetParamsUi.ui:62
 #: src/frontends/qt4/ui/ParagraphUi.ui:44
 msgid "I&mmediate Apply"
 msgstr "Aplicar in&mediatamente"
 
-#: src/frontends/qt4/ui/InsetParamsUi.ui:72
+#: src/frontends/qt4/ui/InsetParamsUi.ui:89
 msgid "New Inset"
 msgstr "Insertar"
 
@@ -2093,7 +2107,7 @@ msgid "Feedback window"
 msgstr "Ventana de retroalimentación"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:345
-#: src/insets/InsetListings.cpp:360 src/insets/InsetListings.cpp:362
+#: src/insets/InsetListings.cpp:361 src/insets/InsetListings.cpp:363
 msgid "Listing"
 msgstr "Listado"
 
@@ -5647,7 +5661,7 @@ msgstr "Apéndices"
 #: lib/layouts/aastex.layout:122 lib/layouts/aastex.layout:453
 #: lib/layouts/ijmpc.layout:315 lib/layouts/ijmpd.layout:326
 #: lib/layouts/kluwer.layout:321 lib/layouts/kluwer.layout:334
-#: src/rowpainter.cpp:523
+#: src/rowpainter.cpp:525
 msgid "Appendix"
 msgstr "Apéndice"
 
@@ -6259,7 +6273,7 @@ msgstr "CopNum"
 #: lib/layouts/apa.layout:213 lib/layouts/elsart.layout:392
 #: lib/layouts/iopart.layout:95 lib/layouts/llncs.layout:364
 #: lib/layouts/powerdot.layout:200 lib/layouts/slides.layout:167
-#: lib/layouts/stdinsets.inc:95 lib/layouts/svjour.inc:387
+#: lib/layouts/stdinsets.inc:96 lib/layouts/svjour.inc:387
 #: lib/layouts/theorems-ams-extended-bytype.module:151
 #: lib/layouts/theorems-ams-extended.module:174
 #: lib/layouts/theorems-ams-extended.module:183
@@ -9657,28 +9671,28 @@ msgstr "margen"
 msgid "foot"
 msgstr "pie"
 
-#: lib/layouts/stdinsets.inc:110
+#: lib/layouts/stdinsets.inc:111
 msgid "Greyedout"
 msgstr "Resaltado en gris"
 
-#: lib/layouts/stdinsets.inc:134 src/insets/InsetERT.cpp:150
+#: lib/layouts/stdinsets.inc:136 src/insets/InsetERT.cpp:150
 #: src/insets/InsetERT.cpp:152
 msgid "ERT"
 msgstr "ERT"
 
-#: lib/layouts/stdinsets.inc:166 src/frontends/qt4/GuiDocument.cpp:1264
+#: lib/layouts/stdinsets.inc:168 src/frontends/qt4/GuiDocument.cpp:1264
 msgid "Listings"
 msgstr "Listados"
 
-#: lib/layouts/stdinsets.inc:199
+#: lib/layouts/stdinsets.inc:201
 msgid "Idx"
 msgstr "Ind"
 
-#: lib/layouts/stdinsets.inc:292
+#: lib/layouts/stdinsets.inc:294
 msgid "opt"
 msgstr "opt"
 
-#: lib/layouts/stdinsets.inc:373
+#: lib/layouts/stdinsets.inc:375
 msgid "Preview"
 msgstr "Vista previa"
 
@@ -9930,8 +9944,8 @@ msgstr "Listas personalizables (enumitem)"
 #, fuzzy
 msgid ""
 "Control the layout of enumerate, itemize, description, and list/labeling "
-"with an optional argument. See http://dante.ctan.org/CTAN/macros/latex/"
-"contrib/enumitem/enumitem.pdf and example file shipped with LyX."
+"with an optional argument. See http://mirror.ctan.org/macros/latex/contrib/"
+"enumitem/enumitem.pdf and example file shipped with LyX."
 msgstr ""
 "Controla el formato de enumeración, enumeración* y descripción con un "
 "argumento opcional. Véase http://dante.ctan.org/CTAN/macros/latex/contrib/"
@@ -12398,18 +12412,18 @@ msgid "Justified Line Break|J"
 msgstr "Salto de línea justificada|j"
 
 #: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:585
+#: src/Text3.cpp:1221 src/mathed/InsetMathNest.cpp:587
 msgid "Cut"
 msgstr "Cortar"
 
 #: lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:594
+#: src/Text3.cpp:1226 src/mathed/InsetMathNest.cpp:596
 msgid "Copy"
 msgstr "Copiar"
 
 #: lib/ui/stdcontext.inc:290 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1175 src/mathed/InsetMathGrid.cpp:1327
-#: src/mathed/InsetMathNest.cpp:564
+#: src/Text3.cpp:1174 src/mathed/InsetMathGrid.cpp:1327
+#: src/mathed/InsetMathNest.cpp:566
 msgid "Paste"
 msgstr "Pegar"
 
@@ -16654,8 +16668,8 @@ msgstr ""
 "preámbulo LaTeX."
 
 #: src/Buffer.cpp:818 src/BufferParams.cpp:412
-#: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:451
-#: src/insets/InsetIndex.cpp:716
+#: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:452
+#: src/insets/InsetIndex.cpp:717
 msgid "Index"
 msgstr "Índice"
 
@@ -16722,7 +16736,7 @@ msgid ""
 msgstr ""
 "%1$s es de una versión nueva de LyX y el guión lyx2lyx falló al convertirlo."
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3768 src/Buffer.cpp:3830
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3770 src/Buffer.cpp:3832
 msgid "File is read-only"
 msgstr "El archivo es de solo lectura"
 
@@ -16836,11 +16850,11 @@ msgstr "Falló la conversión iconv"
 msgid "conversion failed"
 msgstr "falló la conversión"
 
-#: src/Buffer.cpp:1394
+#: src/Buffer.cpp:1393
 msgid "Uncodable character in file path"
 msgstr "Carácter no codificable en la ruta del archivo"
 
-#: src/Buffer.cpp:1395
+#: src/Buffer.cpp:1394
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -16940,51 +16954,51 @@ msgstr "Vista preliminar del código fuente para el párrafo %1$d"
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Vista preliminar del código fuente del párrafo %1$s al %2$s"
 
-#: src/Buffer.cpp:3232
+#: src/Buffer.cpp:3234
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Auto-guardado %1$s"
 
-#: src/Buffer.cpp:3286
+#: src/Buffer.cpp:3288
 msgid "Autosave failed!"
 msgstr "¡El auto-guardado falló!"
 
-#: src/Buffer.cpp:3347
+#: src/Buffer.cpp:3349
 msgid "Autosaving current document..."
 msgstr "Autoguardando documento actual..."
 
-#: src/Buffer.cpp:3500
+#: src/Buffer.cpp:3502
 msgid "Couldn't export file"
 msgstr "No se pudo exportar archivo"
 
-#: src/Buffer.cpp:3501
+#: src/Buffer.cpp:3503
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Sin información para exportar el formato %1$s."
 
-#: src/Buffer.cpp:3564
+#: src/Buffer.cpp:3566
 msgid "File name error"
 msgstr "Error del nombre de archivo"
 
-#: src/Buffer.cpp:3565
+#: src/Buffer.cpp:3567
 msgid "The directory path to the document cannot contain spaces."
 msgstr "La ruta del directorio al documento no puede contener espacios."
 
-#: src/Buffer.cpp:3641
+#: src/Buffer.cpp:3643
 msgid "Document export cancelled."
 msgstr "Exportación del documento cancelada."
 
-#: src/Buffer.cpp:3651
+#: src/Buffer.cpp:3653
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Documento exportado como %1$s al archivo `%2$s'"
 
-#: src/Buffer.cpp:3657
+#: src/Buffer.cpp:3659
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Documento exportado como %1$s"
 
-#: src/Buffer.cpp:3754
+#: src/Buffer.cpp:3756
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -16995,19 +17009,19 @@ msgstr ""
 "\n"
 "¿Recuperar el guardado de emergencia?"
 
-#: src/Buffer.cpp:3757
+#: src/Buffer.cpp:3759
 msgid "Load emergency save?"
 msgstr "¿Cargar guardado de emergencia?"
 
-#: src/Buffer.cpp:3758
+#: src/Buffer.cpp:3760
 msgid "&Recover"
 msgstr "&Recuperar"
 
-#: src/Buffer.cpp:3758
+#: src/Buffer.cpp:3760
 msgid "&Load Original"
 msgstr "&Cargar original"
 
-#: src/Buffer.cpp:3769
+#: src/Buffer.cpp:3771
 #, fuzzy, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17017,15 +17031,15 @@ msgstr ""
 "marcado como solo lectura. Asegúrate de guardar el documento como archivo "
 "distinto."
 
-#: src/Buffer.cpp:3775
+#: src/Buffer.cpp:3777
 msgid "Document was successfully recovered."
 msgstr "El documento se ha recuperado con éxito."
 
-#: src/Buffer.cpp:3777
+#: src/Buffer.cpp:3779
 msgid "Document was NOT successfully recovered."
 msgstr "El documento NO se ha recuperado con éxito."
 
-#: src/Buffer.cpp:3778
+#: src/Buffer.cpp:3780
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17034,27 +17048,27 @@ msgstr ""
 "¿Eliminar ahora el archivo de emergencia?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3782 src/Buffer.cpp:3794
+#: src/Buffer.cpp:3784 src/Buffer.cpp:3796
 msgid "Delete emergency file?"
 msgstr "¿Eliminar el archivo de emergencia?"
 
-#: src/Buffer.cpp:3783 src/Buffer.cpp:3796
+#: src/Buffer.cpp:3785 src/Buffer.cpp:3798
 msgid "&Keep"
 msgstr "&Mantener"
 
-#: src/Buffer.cpp:3787
+#: src/Buffer.cpp:3789
 msgid "Emergency file deleted"
 msgstr "Archivo de emergencia borrado"
 
-#: src/Buffer.cpp:3788
+#: src/Buffer.cpp:3790
 msgid "Do not forget to save your file now!"
 msgstr "¡No olvides guardar ahora el archivo!"
 
-#: src/Buffer.cpp:3795
+#: src/Buffer.cpp:3797
 msgid "Remove emergency file now?"
 msgstr "¿Eliminar ahora el archivo de emergencia?"
 
-#: src/Buffer.cpp:3818
+#: src/Buffer.cpp:3820
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17065,19 +17079,19 @@ msgstr ""
 "\n"
 "¿Cargar la copia de seguridad en su lugar?"
 
-#: src/Buffer.cpp:3820
+#: src/Buffer.cpp:3822
 msgid "Load backup?"
 msgstr "¿Cargar copia de seguridad?"
 
-#: src/Buffer.cpp:3821
+#: src/Buffer.cpp:3823
 msgid "&Load backup"
 msgstr "Cargar copia de &seguridad"
 
-#: src/Buffer.cpp:3821
+#: src/Buffer.cpp:3823
 msgid "Load &original"
 msgstr "Cargar &original"
 
-#: src/Buffer.cpp:3831
+#: src/Buffer.cpp:3833
 #, fuzzy, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17087,25 +17101,25 @@ msgstr ""
 "marcado como solo lectura. No olvides guardar el documento como archivo "
 "distinto."
 
-#: src/Buffer.cpp:4136 src/insets/InsetCaption.cpp:339
+#: src/Buffer.cpp:4138 src/insets/InsetCaption.cpp:339
 msgid "Senseless!!! "
 msgstr "¡Sin sentido! "
 
-#: src/Buffer.cpp:4257
+#: src/Buffer.cpp:4259
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Documento %1$s abierto."
 
-#: src/Buffer.cpp:4260
+#: src/Buffer.cpp:4262
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "No se pudo recargar el documento %1$s"
 
-#: src/Buffer.cpp:4326
+#: src/Buffer.cpp:4328
 msgid "Included File Invalid"
 msgstr "Archivo incluido no válido"
 
-#: src/Buffer.cpp:4327
+#: src/Buffer.cpp:4329
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17361,7 +17375,7 @@ msgstr ""
 "entonces por favor cambie la codificación del archivo\n"
 "a UTF-8 con otro programa que no sea LyX.\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2515
+#: src/Changes.cpp:363 src/Paragraph.cpp:2516
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:300
 #: src/insets/InsetCommandParams.cpp:390 src/insets/InsetListings.cpp:184
 #: src/insets/InsetListings.cpp:192 src/insets/InsetListings.cpp:216
@@ -17369,7 +17383,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr "Aviso de LyX: "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2516 src/insets/InsetBibitem.cpp:301
+#: src/Changes.cpp:364 src/Paragraph.cpp:2517 src/insets/InsetBibitem.cpp:301
 #: src/insets/InsetCommandParams.cpp:391 src/insets/InsetListings.cpp:185
 #: src/insets/InsetListings.cpp:193 src/insets/InsetNomencl.cpp:286
 #: src/mathed/InsetMathString.cpp:162
@@ -19020,11 +19034,11 @@ msgstr ""
 "El nuevo diseño no permite la alineación usada previamente.\n"
 "Poniendo la predeterminada."
 
-#: src/Paragraph.cpp:3072
+#: src/Paragraph.cpp:3074
 msgid "Memory problem"
 msgstr "Problema de memoria"
 
-#: src/Paragraph.cpp:3072
+#: src/Paragraph.cpp:3074
 msgid "Paragraph not properly initialized"
 msgstr "Párrafo no adecuadamente iniciado"
 
@@ -19136,7 +19150,7 @@ msgstr "Modo del editor de ecuaciones"
 msgid "No valid math formula"
 msgstr "Fórmula matemática no válida"
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1018
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1020
 msgid "Already in regular expression mode"
 msgstr "Ya en modo expresión regular"
 
@@ -19144,23 +19158,23 @@ msgstr "Ya en modo expresión regular"
 msgid "Regexp editor mode"
 msgstr "Modo editor de regexp"
 
-#: src/Text3.cpp:1287
+#: src/Text3.cpp:1286
 msgid "Layout "
 msgstr "Estilo "
 
-#: src/Text3.cpp:1288
+#: src/Text3.cpp:1287
 msgid " not known"
 msgstr " no conocido"
 
-#: src/Text3.cpp:1752 src/frontends/qt4/GuiApplication.cpp:1381
+#: src/Text3.cpp:1751 src/frontends/qt4/GuiApplication.cpp:1381
 msgid "Missing argument"
 msgstr "Falta argumento"
 
-#: src/Text3.cpp:1900 src/Text3.cpp:1912
+#: src/Text3.cpp:1899 src/Text3.cpp:1911
 msgid "Character set"
 msgstr "Conjunto de caracteres"
 
-#: src/Text3.cpp:2119 src/Text3.cpp:2130
+#: src/Text3.cpp:2118 src/Text3.cpp:2129
 msgid "Paragraph layout set"
 msgstr "Estilo de párrafo establecido"
 
@@ -22662,7 +22676,7 @@ msgstr "%1$s (%2$s, %3$s)"
 msgid "active"
 msgstr "activa"
 
-#: src/insets/InsetBranch.cpp:68 src/insets/InsetIndex.cpp:459
+#: src/insets/InsetBranch.cpp:68 src/insets/InsetIndex.cpp:460
 msgid "non-active"
 msgstr "no activa"
 
@@ -22756,7 +22770,7 @@ msgstr ""
 msgid "External template %1$s is not installed"
 msgstr "La plantilla externa %1$s no está instalada"
 
-#: src/insets/InsetFloat.cpp:275 src/insets/InsetFloat.cpp:460
+#: src/insets/InsetFloat.cpp:275 src/insets/InsetFloat.cpp:463
 msgid "float: "
 msgstr "flotante: "
 
@@ -22765,15 +22779,15 @@ msgstr "flotante: "
 msgid "ERROR: Unknown float type: %1$s"
 msgstr "ERROR: Tipo de flotante desconocido: %1$s"
 
-#: src/insets/InsetFloat.cpp:398
+#: src/insets/InsetFloat.cpp:401
 msgid "float"
 msgstr "flotante"
 
-#: src/insets/InsetFloat.cpp:463
+#: src/insets/InsetFloat.cpp:466
 msgid "subfloat: "
 msgstr "subflotante: "
 
-#: src/insets/InsetFloat.cpp:471
+#: src/insets/InsetFloat.cpp:474
 msgid " (sideways)"
 msgstr " (de lado)"
 
@@ -22897,11 +22911,11 @@ msgstr ""
 "implicado:\n"
 "%1$s"
 
-#: src/insets/InsetIndex.cpp:147
+#: src/insets/InsetIndex.cpp:148
 msgid "Index sorting failed"
 msgstr "Falló la ordenación del índice"
 
-#: src/insets/InsetIndex.cpp:148
+#: src/insets/InsetIndex.cpp:149
 #, c-format
 msgid ""
 "LyX's automatic index sorting algorithm faced\n"
@@ -22914,23 +22928,23 @@ msgstr ""
 "Por favor, especifica manualmente el orden de esta entrada,\n"
 "como se explica en la Guía del usuario."
 
-#: src/insets/InsetIndex.cpp:280
+#: src/insets/InsetIndex.cpp:281
 msgid "Index Entry"
 msgstr "Entrada de índice"
 
-#: src/insets/InsetIndex.cpp:287 src/insets/InsetIndex.cpp:308
+#: src/insets/InsetIndex.cpp:288 src/insets/InsetIndex.cpp:309
 msgid "unknown type!"
 msgstr "¡tipo desconocido!"
 
-#: src/insets/InsetIndex.cpp:456
+#: src/insets/InsetIndex.cpp:457
 msgid "Unknown index type!"
 msgstr "Tipo de índice desconocido!"
 
-#: src/insets/InsetIndex.cpp:457
+#: src/insets/InsetIndex.cpp:458
 msgid "All indexes"
 msgstr "Todos los índices"
 
-#: src/insets/InsetIndex.cpp:461
+#: src/insets/InsetIndex.cpp:462
 msgid "subindex"
 msgstr "subíndice"
 
@@ -23008,11 +23022,11 @@ msgstr ""
 "para ser usado como delimitador. De momento, se reemplaza '!'\n"
 "por un aviso, ¡pero debes investigar!"
 
-#: src/insets/InsetListings.cpp:266
+#: src/insets/InsetListings.cpp:267
 msgid "Uncodable characters in listings inset"
 msgstr "Caracteres no codificables en el listado insertado"
 
-#: src/insets/InsetListings.cpp:267
+#: src/insets/InsetListings.cpp:268
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"
@@ -23195,7 +23209,7 @@ msgstr "Descripción:"
 msgid "Sorting: "
 msgstr "Clasificación:"
 
-#: src/insets/InsetNote.cpp:271
+#: src/insets/InsetNote.cpp:275
 msgid "note"
 msgstr "nota"
 
@@ -23353,7 +23367,7 @@ msgstr "Espacio protegido horizontal (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Tipo de IG desconocido"
 
-#: src/insets/InsetTabular.cpp:4683
+#: src/insets/InsetTabular.cpp:4685
 msgid "Selection size should match clipboard content."
 msgstr ""
 "El tamaño de la selección debería coincidir con el contenido del "
@@ -23500,23 +23514,23 @@ msgstr "La cadena ha sido reemplazada."
 msgid "%1$d strings have been replaced."
 msgstr "Las cadenas %1$d se han reemplazado."
 
-#: src/lyxfind.cpp:1255
+#: src/lyxfind.cpp:1257
 msgid "Search text is empty!"
 msgstr "¡La cadena de búsqueda está vacía!"
 
-#: src/lyxfind.cpp:1269
+#: src/lyxfind.cpp:1271
 msgid "Invalid regular expression!"
 msgstr "¡Expresión regular inválida!"
 
-#: src/lyxfind.cpp:1274
+#: src/lyxfind.cpp:1276
 msgid "Match not found!"
 msgstr "¡Coincidencia no encontrada!"
 
-#: src/lyxfind.cpp:1278
+#: src/lyxfind.cpp:1280
 msgid "Match found!"
 msgstr "¡Coincidencia encontrada!"
 
-#: src/mathed/InsetFormulaMacro.cpp:120
+#: src/mathed/InsetFormulaMacro.cpp:122
 #, c-format
 msgid " Macro: %1$s: "
 msgstr " Macro: %1$s: "
@@ -23598,23 +23612,23 @@ msgstr "No se puede cambiar el número de columnas en '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "No se pueden añadir líneas de cuadrícula horizontal en '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:1004
+#: src/mathed/InsetMathNest.cpp:1006
 msgid "create new math text environment ($...$)"
 msgstr "crear un nuevo entorno de texto de ecuaciones ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1007
+#: src/mathed/InsetMathNest.cpp:1009
 msgid "entered math text mode (textrm)"
 msgstr "entrado modo de texto de ecuaciones (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1029
+#: src/mathed/InsetMathNest.cpp:1031
 msgid "Regular expression editor mode"
 msgstr "Modo editor de expresión regular"
 
-#: src/mathed/InsetMathNest.cpp:1631 src/mathed/InsetMathNest.cpp:1751
+#: src/mathed/InsetMathNest.cpp:1633 src/mathed/InsetMathNest.cpp:1753
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Autocorrección No ('!' para entrar)"
 
-#: src/mathed/InsetMathNest.cpp:1636 src/mathed/InsetMathNest.cpp:1753
+#: src/mathed/InsetMathNest.cpp:1638 src/mathed/InsetMathNest.cpp:1755
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Autocorrección Sí (<espacio> para salir)"
 
