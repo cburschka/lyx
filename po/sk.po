@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-02-01 10:47+0100\n"
-"PO-Revision-Date: 2011-01-29 11:58+0100\n"
+"PO-Revision-Date: 2011-02-01 10:53+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -1970,15 +1970,13 @@ msgstr "Konfigurácia Parametrov Vložky"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:46
 msgid "Update dialog when moving context"
-msgstr ""
+msgstr "Synchronizovať dialóg pri zmenách v kontexte"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:49
-#, fuzzy
 msgid "S&ynchronize Dialog"
-msgstr "Synchronizovať s Výstupom"
+msgstr "Synchronizovať Dialóg"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:56
-#, fuzzy
 msgid "Apply settings immediately"
 msgstr "Okamžite použiť zmeny"
 
@@ -9895,7 +9893,6 @@ msgid "Customisable Lists (enumitem)"
 msgstr "Prispôsobilé Listiny (enumitem)"
 
 #: lib/layouts/enumitem.module:8
-#, fuzzy
 msgid ""
 "Control the layout of enumerate, itemize, description, and list/labeling "
 "with an optional argument. See http://mirror.ctan.org/macros/latex/contrib/"
