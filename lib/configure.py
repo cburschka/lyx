@@ -726,10 +726,17 @@ def checkConverterEntries():
         rc_entry = [ r'\converter dvi        pdf3       "%%"	""' ])
     #
     path, dvipng = checkProg('dvipng', ['dvipng'])
-    if dvipng == "dvipng":
+    path, dv2dt  = checkProg('DVI to DTL converter', ['dv2dt'])
+    if dvipng == "dvipng" and dv2dt == 'dv2dt':
         addToRC(r'\converter lyxpreview png        "python -tt $$s/scripts/lyxpreview2bitmap.py"	""')
     else:
+        # set empty converter to override the default imagemagick
         addToRC(r'\converter lyxpreview png        ""	""')
+    if dv2dt == 'dv2dt':
+        addToRC(r'\converter lyxpreview ppm        "python -tt $$s/scripts/lyxpreview2bitmap.py"	""')
+    else:
+        # set empty converter to override the default imagemagick
+        addToRC(r'\converter lyxpreview ppm        ""	""')
     #  
     checkProg('a fax program', ['kdeprintfax $$i', 'ksendfax $$i', 'hylapex $$i'],
         rc_entry = [ r'\converter ps         fax        "%%"	""'])
@@ -833,10 +840,15 @@ def checkConverterEntries():
             version_number = match.groups()[0]
             version = version_number.split('.')
             if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 13):
-                addToRC(r'\converter lyxpreview-lytex ppm "python -tt $$s/scripts/lyxpreview-lytex2bitmap.py" ""')
-                if dvipng == "dvipng":
+                if dv2dt == 'dv2dt':
+                    addToRC(r'\converter lyxpreview-lytex ppm "python -tt $$s/scripts/lyxpreview-lytex2bitmap.py" ""')
+                else:
+                    # set empty converter to override the default imagemagick
+                    addToRC(r'\converter lyxpreview-lytex ppm "" ""')
+                if dvipng == "dvipng" and dv2dt == 'dv2dt':
                     addToRC(r'\converter lyxpreview-lytex png "python -tt $$s/scripts/lyxpreview-lytex2bitmap.py" ""')
                 else:
+                    # set empty converter to override the default imagemagick
                     addToRC(r'\converter lyxpreview-lytex png "" ""')
                 # Note: The --lily-output-dir flag is required because lilypond-book
                 #       does not process input again unless the input has changed,
@@ -860,8 +872,7 @@ def checkConverterEntries():
     # checkProg('Image converter', ['convert $$i $$o'])
     #
     # Entries that do not need checkProg
-    addToRC(r'''\converter lyxpreview ppm        "python -tt $$s/scripts/lyxpreview2bitmap.py"	""
-\converter lyxpreview-platex ppm        "python -tt $$s/scripts/lyxpreview-platex2bitmap.py"	""
+    addToRC(r'''\converter lyxpreview-platex ppm        "python -tt $$s/scripts/lyxpreview-platex2bitmap.py"	""
 \converter csv        lyx        "python -tt $$s/scripts/csv2lyx.py $$i $$o"	""
 \converter date       dateout    "python -tt $$s/scripts/date.py %d-%m-%Y > $$o"	""
 \converter docbook    docbook-xml "cp $$i $$o"	"xml"
