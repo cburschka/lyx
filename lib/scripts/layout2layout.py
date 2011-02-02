@@ -306,7 +306,7 @@ def convert(lines):
             val = match.group(2)
             lines[i] = space + "UsesFloatPkg " + val
             newval = 'true'
-            if val.lower() == 'true':
+            if val == '1' or val.lower() == 'true':
               newval = 'false'
             lines.insert(i, space + "IsPredefined " + newval)
             i += 1
