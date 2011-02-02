@@ -1297,7 +1297,7 @@ void LaTeXFeatures::getFloatDefinitions(odocstream & os) const
 		Floating const & fl = floats.getType(cit->first);
 
 		// For builtin floats we do nothing.
-		if (!fl.usesFloatPkg())
+		if (fl.isPredefined())
 			continue;
 
 		// We have to special case "table" and "figure"

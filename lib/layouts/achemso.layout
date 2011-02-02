@@ -61,7 +61,7 @@ Float
 	Style			plain
 	ListName		"List of Schemes"
 	IsPredefined true
-	UsesFloatPkg false
+	UsesFloatPkg true
 End
 
 InsetLayout scheme
@@ -83,7 +83,7 @@ Float
 	Style			plain
 	ListName		"List of Charts"
 	IsPredefined true
-	UsesFloatPkg false
+	UsesFloatPkg true
 End
 
 InsetLayout chart
@@ -105,7 +105,7 @@ Float
 	Style			plain
 	ListName		"List of Graphs"
 	IsPredefined true
-	UsesFloatPkg false
+	UsesFloatPkg true
 End
 
 InsetLayout graph
