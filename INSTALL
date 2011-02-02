@@ -58,17 +58,6 @@ widely tested. For compilation you need to compile against at least
 Qt 4.2.2. The only special point to make is that you must ensure that both
 LyX and the Qt libraries are compiled with the same C++ compiler.
 
-Note that if Qt is using Xft2/fontconfig, you may need to install the
-latex-xft-fonts package (at ftp://ftp.lyx.org/pub/lyx/contrib/) to get
-maths symbols displayed properly. To find out, type:
-
-	ldd `which lyx` | grep fontconfig
-
-at the console. Most recent distributions are known to use fontconfig.
-
-If, however, your version of Qt does not use fontconfig, then TeX
-fonts should be added to the font path. 'man xset' is your friend.
-
 To build LyX with spell checking capabilities included you have to
 install at least one of the development packages of the spell checker
 libraries. See the RELEASE-NOTES for details.
