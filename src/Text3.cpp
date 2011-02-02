@@ -245,7 +245,8 @@ static bool doInsertInset(Cursor & cur, Text * text,
 		if (edit)
 			inset->edit(cur, true);
 		// Now put this into inset
-		cur.text()->insertStringAsLines(cur, ds, Font(inherit_font));
+		Font const f(inherit_font, cur.current_font.language());
+		cur.text()->insertStringAsLines(cur, ds, f);
 		cur.leaveInset(*inset);
 		return true;
 	}
