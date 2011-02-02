@@ -142,7 +142,7 @@ End
 \begin_body
 
 \begin_layout Title
-Customizing LyX: Features for the Advanced User
+NCustomizing LyX: Features for the Advanced User
 \end_layout
 
 \begin_layout Author
@@ -13080,6 +13080,86 @@ reference "sec:Tags-for-XHTML"
 status collapsed
 
 \begin_layout Plain Layout
+IsPredefined
+\end_layout
+
+\end_inset
+
+ [
+\emph on
+
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+
+\emph default
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Indicates whether the float is already defined in the document class or
+ if we instead need to load 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+float.sty
+\end_layout
+
+\end_inset
+
+ and use what it provides to define it on-the-fly.
+ The default is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+, which means: use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+float.sty
+\end_layout
+
+\end_inset
+
+.
+ It should be set to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ if the float is already defined by the LaTeX document class.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 ListCommand
 \end_layout
 
@@ -13116,7 +13196,7 @@ must
 status collapsed
 
 \begin_layout Plain Layout
-NeedsFloatPkg
+UsesFloatPkg
 \end_layout
 
 \end_inset
@@ -13127,12 +13207,12 @@ NeedsFloatPkg
 status collapsed
 
 \begin_layout Plain Layout
-NeedsFloatPkg
+UsesFloatPkg
 \end_layout
 
 \end_inset
 
- is true, since in that case there is a standard way.
+ is true, since in that case there is a standard way to define the command.
 \end_layout
 
 \begin_layout Description
@@ -13168,84 +13248,6 @@ string
  It is used for the screen label within LyX; it is passed to LaTeX for use
  as the title there; and it is used as the title in XHTML output.
  It will be translated to the document language.
-\end_layout
-
-\begin_layout Description
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-NeedsFloatPkg
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-0
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-1
-\end_layout
-
-\end_inset
-
-] Indicates whether the float is already defined in the document class or
- if we instead need to load 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-float.sty
-\end_layout
-
-\end_inset
-
- and use what it provides.
- The default is 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-
-, which means: use 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-float.sty
-\end_layout
-
-\end_inset
-
-.
- It should be set to 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-0
-\end_layout
-
-\end_inset
-
- if the float is already defined by the LaTeX document class.
 \end_layout
 
 \begin_layout Description
@@ -13584,6 +13586,52 @@ end{algorithm*}
 \end_inset
 
  will be available.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+UsesFloatPkg
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+1
+\end_layout
+
+\end_inset
+
+] Tells us whether this float is defined using the facilities provided by
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+float.sty
+\end_layout
+
+\end_inset
+
+, either by the class file or a package, or on-the-fly by LyX itself.
 \end_layout
 
 \begin_layout Standard
