@@ -4,7 +4,7 @@
 # in most LyX layouts.
 
 
-Format 32
+Format 33
 
 Float
 	Type                  table
@@ -14,7 +14,8 @@ Float
 	NumberWithin          none
 	Style                 plain
 	ListName              "List of Tables"
-	NeedsFloatPkg         false
+	IsPredefined true
+	UsesFloatPkg false
 	ListCommand           listoftables
 	RefPrefix             tab
 End
@@ -28,7 +29,8 @@ Float
 	NumberWithin          none
 	Style                 plain
 	ListName              "List of Figures"
-	NeedsFloatPkg         false
+	IsPredefined true
+	UsesFloatPkg false
 	ListCommand           listoffigures
 	RefPrefix             fig
 End
@@ -42,6 +44,7 @@ Float
 	NumberWithin          none
 	Style                 ruled
 	ListName              "List of Algorithms"
-	NeedsFloatPkg         true
+	IsPredefined false
+	UsesFloatPkg true
 	RefPrefix             alg
 End

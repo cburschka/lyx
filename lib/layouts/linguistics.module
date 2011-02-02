@@ -7,7 +7,7 @@
 
 # Author: Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 32
+Format 33
 
 # single numbered example with covington.sty
 Style Numbered_Example_(multiline)
@@ -171,6 +171,7 @@ Float
 	NumberWithin          none
 	Style                 plain
 	ListName              "List of Tableaux"
-	NeedsFloatPkg         true
+	IsPredefined false
+	UsesFloatPkg true
 End
 

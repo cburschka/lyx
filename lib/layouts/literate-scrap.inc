@@ -6,7 +6,7 @@
 #                   resembles more closely the produced paper doc (more WYSIWYG)
 #
 
-Format 32
+Format 33
 OutputType              literate
 
 Style Scrap

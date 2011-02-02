@@ -4,7 +4,7 @@
 # Created: 29-Aug-05 by Mael Hilléreau
 # Last modified: 20-May-06 by Uwe Stöhr
 
-Format 32
+Format 33
 
 Input stdcounters.inc
 Input stdinsets.inc
@@ -383,7 +383,8 @@ Float
   NumberWithin          none
   Style                 plain
   ListName              "List of Tables"
-  NeedsFloatPkg         false
+  IsPredefined true
+  UsesFloatPkg false
 	ListCommand           listoftables
 End
   
@@ -394,7 +395,8 @@ Float
   NumberWithin          none
   Style                 plain
   ListName              "List of Figures"
-  NeedsFloatPkg         false
+  IsPredefined true
+  UsesFloatPkg false
 	ListCommand           listoffigures
 End
 
@@ -405,7 +407,8 @@ Float
   NumberWithin          none
   Style                 ruled
   ListName              "List of Algorithms"
-  NeedsFloatPkg         true
+  IsPredefined false
+  UsesFloatPkg true
 End
 
 ###

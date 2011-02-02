@@ -3,7 +3,7 @@
 # achemso textclass definition file.
 # Author: Uwe Stöhr (uwestoehr@web.de)
 
-Format 32
+Format 33
 
 Columns                 1
 Sides                   1
@@ -58,7 +58,8 @@ Float
 	NumberWithin		none
 	Style			plain
 	ListName		"List of Schemes"
-	NeedsFloatPkg false
+	IsPredefined true
+	UsesFloatPkg false
 End
 
 InsetLayout scheme
@@ -79,7 +80,8 @@ Float
 	NumberWithin		none
 	Style			plain
 	ListName		"List of Charts"
-	NeedsFloatPkg false
+	IsPredefined true
+	UsesFloatPkg false
 End
 
 InsetLayout chart
@@ -100,7 +102,8 @@ Float
 	NumberWithin		none
 	Style			plain
 	ListName		"List of Graphs"
-	NeedsFloatPkg false
+	IsPredefined true
+	UsesFloatPkg false
 End
 
 InsetLayout graph
