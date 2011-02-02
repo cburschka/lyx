@@ -2375,7 +2375,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			// make sure we know about such floats
 			if (cit == floats.end() ||
 					// and that we know how to generate a list of them
-			    (!cit->second.needsFloatPkg() && cit->second.listCommand().empty())) {
+			    (!cit->second.usesFloatPkg() && cit->second.listCommand().empty())) {
 				flag.setUnknown(true);
 				// probably not necessary, but...
 				enable = false;

@@ -459,7 +459,7 @@ void LaTeXFeatures::useFloat(string const & name, bool subfloat)
 	// use the "H" modifier. This includes modified table and
 	// figure floats. (Lgb)
 	Floating const & fl = params_.documentClass().floats().getType(name);
-	if (!fl.floattype().empty() && fl.needsFloatPkg()) {
+	if (!fl.floattype().empty() && fl.usesFloatPkg()) {
 		require("float");
 	}
 }
@@ -1297,7 +1297,7 @@ void LaTeXFeatures::getFloatDefinitions(odocstream & os) const
 		Floating const & fl = floats.getType(cit->first);
 
 		// For builtin floats we do nothing.
-		if (!fl.needsFloatPkg()) 
+		if (!fl.usesFloatPkg())
 			continue;
 
 		// We have to special case "table" and "figure"

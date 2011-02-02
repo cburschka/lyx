@@ -36,7 +36,7 @@ Floating::Floating(string const & type, string const & placement,
 			 string const & htmlStyle, bool needsfloat)
 	: floattype_(type), placement_(placement), ext_(ext), within_(within),
 	  style_(style), name_(name), listname_(listName), listcommand_(listCmd),
-	  refprefix_(refPrefix), needsfloatpkg_(needsfloat), html_tag_(htmlTag), 
+	  refprefix_(refPrefix), usesfloatpkg_(needsfloat), html_tag_(htmlTag),
 		html_attrib_(htmlAttrib), html_style_(htmlStyle)
 {}
 

@@ -951,7 +951,7 @@ bool TextClass::readFloat(Lexer & lexrc)
 	string style;
 	string type;
 	string within;
-	bool needsfloat = true;
+	bool usesfloat = true;
 
 	bool getout = false;
 	while (!getout && lexrc.isOK()) {
@@ -975,7 +975,7 @@ bool TextClass::readFloat(Lexer & lexrc)
 				style = fl.style();
 				name = fl.name();
 				listname = fl.listName();
-				needsfloat = fl.needsFloatPkg();
+				usesfloat = fl.usesFloatPkg();
 				listcommand = fl.listCommand();
 				refprefix = fl.refPrefix();
 			} 
@@ -1016,7 +1016,7 @@ bool TextClass::readFloat(Lexer & lexrc)
 			break;
 		case FT_NEEDSFLOAT:
 			lexrc.next();
-			needsfloat = lexrc.getBool();
+			usesfloat = lexrc.getBool();
 			break;
 		case FT_HTMLATTR:
 			lexrc.next();
@@ -1040,7 +1040,7 @@ bool TextClass::readFloat(Lexer & lexrc)
 
 	// Here we have a full float if getout == true
 	if (getout) {
-		if (!needsfloat && listcommand.empty()) {
+		if (!usesfloat && listcommand.empty()) {
 			// if this float uses the same auxfile as an existing one,
 			// there is no need for it to provide a list command.
 			FloatList::const_iterator it = floatlist_.begin();
@@ -1054,12 +1054,12 @@ bool TextClass::readFloat(Lexer & lexrc)
 			}
 			if (!found_ext)
 				LYXERR0("The layout does not provide a list command " <<
-			          "for the builtin float `" << type << "'. LyX will " <<
+			          "for the float `" << type << "'. LyX will " <<
 			          "not be able to produce a float list.");
 		}
 		Floating fl(type, placement, ext, within, style, name, 
 				listname, listcommand, refprefix, 
-				htmltag, htmlattr, htmlstyle, needsfloat);
+				htmltag, htmlattr, htmlstyle, usesfloat);
 		floatlist_.newFloat(fl);
 		// each float has its own counter
 		counters_.newCounter(from_ascii(type), from_ascii(within),
