@@ -468,7 +468,13 @@ docstring InsetFloat::getCaption(OutputParams const & runparams) const
 					static_cast<InsetCaption *>(it->inset);
 				ins->getOptArg(ods, runparams);
 				ods << '[';
-				ins->getArgument(ods, runparams);
+				odocstringstream odss;
+				ins->getArgument(odss, runparams);
+				docstring arg = odss.str();
+				// Protect ']'
+				if (arg.find(']') != docstring::npos)
+					arg = '{' + arg + '}';
+				ods << arg;
 				ods << ']';
 				return ods.str();
 			}
