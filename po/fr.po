@@ -251,8 +251,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-01 12:19+0100\n"
-"PO-Revision-Date: 2010-12-05 19:12+0100\n"
+"POT-Creation-Date: 2011-02-02 11:38+0100\n"
+"PO-Revision-Date: 2011-02-01 17:44+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -2225,17 +2225,15 @@ msgstr "Paramètre de configuration d'insert"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:46
 msgid "Update dialog when moving context"
-msgstr ""
+msgstr "Mettre à jour le menu de dialogue au changement de contexte"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:49
-#, fuzzy
 msgid "S&ynchronize Dialog"
-msgstr "S&ynchroniser avec le résultat imprimable"
+msgstr "S&ynchroniser le dialogue"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:56
-#, fuzzy
 msgid "Apply settings immediately"
-msgstr "Appliquer les changements &immédiatement"
+msgstr "Appliquer les régleges immédiatement"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:62
 #: src/frontends/qt4/ui/ParagraphUi.ui:44
@@ -4228,9 +4226,8 @@ msgid "Accept compound &words"
 msgstr "Accepter les mots &composés"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:74
-#, fuzzy
 msgid "Mark misspelled words with a underline."
-msgstr "Souligner vaguement les mots mal orthographiés."
+msgstr "Souligner les mots mal orthographiés."
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:77
 msgid "S&pellcheck continuously"
@@ -4329,11 +4326,13 @@ msgid "&Open documents in tabs"
 msgstr "&Ouvrir les documents en on&glet"
 
 #: src/frontends/qt4/ui/PrefUi.ui:245
-#, fuzzy
 msgid ""
 "Whether to open documents in an already running instance of LyX.\n"
 "(Set the LyXServer pipe path and restart LyX to enable this feature)"
-msgstr "Possibilité d'ouvrir les documents dans une session LyX existante"
+msgstr ""
+"Possibilité d'ouvrir les documents dans une session LyX existante\n"
+"(positionner le chemin d'accès au pipe LyXServer\n"
+" et redémarrer LyX pour activer cette fonctionnalité)."
 
 #: src/frontends/qt4/ui/PrefUi.ui:248
 msgid "S&ingle instance"
@@ -4355,9 +4354,8 @@ msgid "&Save"
 msgstr "&Enregistrer"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:13
-#, fuzzy
 msgid "Nomenclature settings"
-msgstr "« Paramètres de nomenclature »"
+msgstr "Paramètres de nomenclature"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:19
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:32
@@ -4375,7 +4373,6 @@ msgid "Custom &Width:"
 msgstr "&Largeur réglable :"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
-#, fuzzy
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
 msgstr ""
 "Valeur réglable. Le paramètre « indentation de la liste » doit être établi à "
@@ -4830,9 +4827,8 @@ msgid "&Vertical Offset:"
 msgstr "&Espacement vertical :"
 
 #: src/frontends/qt4/ui/TabularUi.ui:275
-#, fuzzy
 msgid "Optional vertical offset"
-msgstr "décalage vertical optionnel"
+msgstr "Décalage vertical optionnel"
 
 #: src/frontends/qt4/ui/TabularUi.ui:293
 msgid "Cell setting"
@@ -5288,14 +5284,12 @@ msgid "VFill"
 msgstr "Ressort vertical"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:34
-#, fuzzy
 msgid "&Output Format:"
-msgstr "Format du résultat"
+msgstr "&Format de la sortie :"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:44
-#, fuzzy
 msgid "Select the output format"
-msgstr "&Format implicite du résultat :"
+msgstr "Sélectionner le format de sortie"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:54
 msgid "Complete source"
@@ -9967,7 +9961,6 @@ msgid "foot"
 msgstr "bas"
 
 #: lib/layouts/stdinsets.inc:111
-#, fuzzy
 msgid "Greyedout"
 msgstr "Grisée"
 
@@ -10181,7 +10174,6 @@ msgid "Custom Header/Footerlines"
 msgstr "Personnalisation en-têtes/pieds de page"
 
 #: lib/layouts/customHeadersFooters.module:7
-#, fuzzy
 msgid ""
 "Adds environments to define header and footer lines. NOTE: To use this "
 "module you must set the 'Headings style' in the menu Document Settings -> "
@@ -10233,20 +10225,19 @@ msgid "endnote"
 msgstr "endnote"
 
 #: lib/layouts/enumitem.module:2
-#, fuzzy
 msgid "Customisable Lists (enumitem)"
 msgstr "Liste personnalisable (enumitem)"
 
 #: lib/layouts/enumitem.module:8
-#, fuzzy
 msgid ""
 "Control the layout of enumerate, itemize, description, and list/labeling "
 "with an optional argument. See http://mirror.ctan.org/macros/latex/contrib/"
 "enumitem/enumitem.pdf and example file shipped with LyX."
 msgstr ""
-"Règle la disposition des listes à puces, énumérations et descriptions avec "
-"un argument facultatif. Voir http://mirror.ctan.org/macros/latex/contrib/"
-"enumitem/enumitem.pdf"
+"Règle la disposition des listes à puces, énumérations, descriptions, et des "
+"listes étiquetées avec un argument facultatif. Voir http://mirror.ctan.org/"
+"macros/latex/contrib/enumitem/enumitem.pdf et le fichier exemple de la "
+"distribution LyX."
 
 #: lib/layouts/enumitem.module:109
 msgid "Enumerate-Resume"
@@ -10265,9 +10256,8 @@ msgstr ""
 "ajouter le numéro de section au numéro d'équation, comme dans « (2.1) »."
 
 #: lib/layouts/eqs-within-sections.module:17
-#, fuzzy
 msgid "\\thesection.\\arabic{equation}"
-msgstr "Section \\arabic{section}"
+msgstr "\\thesection.\\arabic{equation}"
 
 #: lib/layouts/figs-within-sections.module:2
 msgid "Number Figures by Section"
@@ -10283,7 +10273,7 @@ msgstr ""
 
 #: lib/layouts/fix-cm.module:2
 msgid "Fix cm"
-msgstr ""
+msgstr "fix-cm"
 
 #: lib/layouts/fix-cm.module:8
 msgid ""
@@ -10291,6 +10281,9 @@ msgid ""
 "available with arbitrary sizes. For details see the documentation of the fix-"
 "cm.sty package: http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
 msgstr ""
+"fix-c améliore l'apparence des polices Computer Modern et les rend "
+"disponibles dans toutes les tailles. Pour les détails voir la documentation "
+"du paquetage fix-cm : http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
 
 #: lib/layouts/fixltx2e.module:2
 msgid "Fix LaTeX"
@@ -10515,13 +10508,12 @@ msgid "Sweave"
 msgstr "Sweave"
 
 #: lib/layouts/sweave.module:6
-#, fuzzy
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
 "via Sweave package. See sweave.lyx in examples."
 msgstr ""
 "Autoriser l'utilisation du langage statistique S/R pour la programmation "
-"littéraire via la paquetage Sweave."
+"littéraire via la paquetage Sweave. Voir sweave.lyx dans les exemples."
 
 #: lib/layouts/sweave.module:28
 msgid "Chunk"
@@ -12456,7 +12448,7 @@ msgstr "Référence mise en forme|o"
 
 #: lib/ui/stdcontext.inc:96
 msgid "Textual Reference|x"
-msgstr "Référence  textuelle|x"
+msgstr "Référence textuelle|x"
 
 #: lib/ui/stdcontext.inc:98 lib/ui/stdcontext.inc:110
 #: lib/ui/stdcontext.inc:120 lib/ui/stdcontext.inc:128
@@ -16332,11 +16324,11 @@ msgstr "intercal"
 
 #: lib/external_templates:36
 msgid "GnumericSpreadsheet"
-msgstr ""
+msgstr "TableurGnumeric"
 
 #: lib/external_templates:37 lib/external_templates:44
 msgid "Spreadsheet"
-msgstr ""
+msgstr "Tableur"
 
 #: lib/external_templates:39
 msgid ""
@@ -16346,6 +16338,11 @@ msgid ""
 "The gnumeric software is necessary for conversion,\n"
 "both for gnumeric and excel files.\n"
 msgstr ""
+"Un tableur créé avec gnumeric, openoffice ou excel.\n"
+"Il est importé comme une table longue, donc toutes les longueurs\n"
+"sont admises. Une largeur excessive peut poser problème.\n"
+"L'application Gnumeric est nécessaire pour effectuer la conversion,\n"
+"pour les fichiers gnumeric et excel.\n"
 
 #: lib/external_templates:76
 msgid "RasterImage"
@@ -16647,15 +16644,15 @@ msgstr "Texte brut par Lignes"
 
 #: lib/configure.py:520
 msgid "Gnumeric spreadsheet"
-msgstr ""
+msgstr "Tableur Gnumeric"
 
 #: lib/configure.py:521
 msgid "Excel spreadsheet"
-msgstr ""
+msgstr "Tableur Excel"
 
 #: lib/configure.py:522
 msgid "OpenOffice spreadsheet"
-msgstr ""
+msgstr "Tableur Openoffice"
 
 #: lib/configure.py:525 lib/configure.py:527
 msgid "LyXHTML"
@@ -17080,7 +17077,7 @@ msgid "Backup failure"
 msgstr "Échec de la copie de sauvegarde"
 
 #: src/Buffer.cpp:1068
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writable."
@@ -17332,7 +17329,7 @@ msgid "&Load Original"
 msgstr "&Charger l'original"
 
 #: src/Buffer.cpp:3771
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
@@ -17402,7 +17399,7 @@ msgid "Load &original"
 msgstr "Charger l'&original"
 
 #: src/Buffer.cpp:3833
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
@@ -17441,7 +17438,7 @@ msgstr ""
 "inaccessible. Vous devrez mettre à jour le nouveau nom du fichier."
 
 #: src/BufferParams.cpp:568
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The selected document class\n"
 "\t%1$s\n"
@@ -17456,18 +17453,18 @@ msgstr ""
 "La classe de document sélectionnée\n"
 "\t%1$s\n"
 "requiert des fichiers externes non disponibles.\n"
-"La classe eut néanmoins être utilisée, mais le document\n"
+"La classe peut néanmoins être utilisée, mais le document\n"
 "ne pourra pas être compilé tant que\n"
 "les pré-requis suivants ne seront pas installés :\n"
 "\t%2$s\n"
-"Voir le paragraphe 3.1.2.2 du Guide de l'Utilisateur\n"
-"pour en savoir plus."
+"Voir le paragraphe 3.1.2.2 (Disponibilité des classes) du\n"
+"Guide de l'Utilisateur pour en savoir plus."
 
 #: src/BufferParams.cpp:577
 msgid "Document class not available"
 msgstr "Classe de document non disponible"
 
-#: src/BufferParams.cpp:2004
+#: src/BufferParams.cpp:2005
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -17482,11 +17479,11 @@ msgstr ""
 "sera utilisée. LyX ne pourra pas produire\n"
 "un résultat imprimable correct."
 
-#: src/BufferParams.cpp:2010
+#: src/BufferParams.cpp:2011
 msgid "Document class not found"
 msgstr "Classe de document introuvable"
 
-#: src/BufferParams.cpp:2017
+#: src/BufferParams.cpp:2018
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -17501,15 +17498,15 @@ msgstr ""
 "sera utilisée. LyX ne pourra pas produire\n"
 "un résultat imprimable correct."
 
-#: src/BufferParams.cpp:2023 src/BufferView.cpp:1262 src/BufferView.cpp:1294
+#: src/BufferParams.cpp:2024 src/BufferView.cpp:1262 src/BufferView.cpp:1294
 msgid "Could not load class"
 msgstr "Chargement de la classe impossible"
 
-#: src/BufferParams.cpp:2057
+#: src/BufferParams.cpp:2058
 msgid "Error reading internal layout information"
 msgstr "Erreur de lecture du format interne"
 
-#: src/BufferParams.cpp:2058 src/TextClass.cpp:1326
+#: src/BufferParams.cpp:2059 src/TextClass.cpp:1326
 msgid "Read Error"
 msgstr "Erreur de lecture"
 
@@ -18467,9 +18464,8 @@ msgid "&Reconfigure"
 msgstr "&Reconfigurer"
 
 #: src/LyX.cpp:558
-#, fuzzy
 msgid "&Without LaTeX"
-msgstr "Correction LaTeX"
+msgstr "&Sans LaTeX"
 
 #: src/LyX.cpp:559 src/VCBackend.cpp:786 src/VCBackend.cpp:790
 msgid "&Continue"
@@ -19544,7 +19540,7 @@ msgid "Module not available"
 msgstr "Module non disponible"
 
 #: src/TextClass.cpp:1313
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The module %1$s requires a package that is not\n"
 "available in your LaTeX installation, or a converter that\n"
@@ -19554,9 +19550,12 @@ msgid ""
 "See section 3.1.2.3 (Modules) of the User's Guide for more information."
 msgstr ""
 "Le module %1$s requiert un paquetage qui n'est\n"
-" pas disponible\n"
-"dans votre installation LaTeX, ou un convertisseur que vous\n"
+" pas disponible dans votre installation LaTeX, ou un convertisseur que vous\n"
 "n'avez pas installé. La compilation LaTeX peut ne pas être possible.\n"
+"Pré-requis manquants :\n"
+"\t%2$s\n"
+"Voir le paragraphe 3.1.2.3 (Modules)  du\n"
+"Guide de l'Utilisateur pour en savoir plus."
 
 #: src/TextClass.cpp:1320
 msgid "Package not available"
@@ -19765,12 +19764,12 @@ msgstr ""
 "Poursuivre ?"
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:368
+#: src/frontends/qt4/FindAndReplace.cpp:375
 msgid "&Yes"
 msgstr "&Oui"
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:368
+#: src/frontends/qt4/FindAndReplace.cpp:375
 msgid "&No"
 msgstr "&Non"
 
@@ -19906,23 +19905,23 @@ msgstr "Dings 4"
 msgid "Directories"
 msgstr "Répertoires"
 
-#: src/frontends/qt4/FindAndReplace.cpp:292
+#: src/frontends/qt4/FindAndReplace.cpp:299
 msgid "File"
 msgstr "Fichier"
 
-#: src/frontends/qt4/FindAndReplace.cpp:295
+#: src/frontends/qt4/FindAndReplace.cpp:302
 msgid "Master document"
 msgstr "Document maître"
 
-#: src/frontends/qt4/FindAndReplace.cpp:298
+#: src/frontends/qt4/FindAndReplace.cpp:305
 msgid "Open files"
 msgstr "Ouvrir les fichiers"
 
-#: src/frontends/qt4/FindAndReplace.cpp:301
+#: src/frontends/qt4/FindAndReplace.cpp:308
 msgid "Manuals"
 msgstr "Manuels"
 
-#: src/frontends/qt4/FindAndReplace.cpp:305
+#: src/frontends/qt4/FindAndReplace.cpp:312
 #, c-format
 msgid ""
 "%1$s: the end was reached while searching forward.\n"
@@ -19931,7 +19930,7 @@ msgstr ""
 "%1$s : fin atteinte lors de la recherche en avant.\n"
 "Continuer la recherche depuis le début ?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:308
+#: src/frontends/qt4/FindAndReplace.cpp:315
 #, c-format
 msgid ""
 "%1$s: the beginning was reached while searching backward.\n"
@@ -19940,19 +19939,19 @@ msgstr ""
 "%1$s : début atteint lors de la recherche en arrière.\n"
 "Continuer la recherche depuis la fin ?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:367
+#: src/frontends/qt4/FindAndReplace.cpp:374
 msgid "Wrap search?"
 msgstr "Recherche récursive ?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:429
+#: src/frontends/qt4/FindAndReplace.cpp:436
 msgid "Nothing to search"
 msgstr "Rien à rechercher"
 
-#: src/frontends/qt4/FindAndReplace.cpp:478
+#: src/frontends/qt4/FindAndReplace.cpp:485
 msgid "No open document(s) in which to search"
 msgstr "Aucun document ouvert dans lequel rechercher"
 
-#: src/frontends/qt4/FindAndReplace.cpp:571
+#: src/frontends/qt4/FindAndReplace.cpp:580
 msgid "Advanced Find and Replace"
 msgstr "Rechercher et remplacer (avancé)"
 
